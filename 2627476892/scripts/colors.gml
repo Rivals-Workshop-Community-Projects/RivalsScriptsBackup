@@ -330,11 +330,11 @@ set_color_profile_slot( 29, 7, 51, 51, 51 ); //Shoes
 set_color_profile_slot( 30, 0, 255, 213, 0 ); //Hat
 set_color_profile_slot( 30, 1, 224, 224, 224 ); //face
 set_color_profile_slot( 30, 2, 77, 77, 77 ); //body
-set_color_profile_slot( 30, 3, 0, 252, 181 ); //Hood
+set_color_profile_slot( 30, 3, 0, 252, 244 ); //Hood
 set_color_profile_slot( 30, 4, 133, 133, 133 ); //Arms
 set_color_profile_slot( 30, 5, 255, 213, 0 ); //Symbol
-set_color_profile_slot( 30, 6, 0, 237, 170 ); //Hands
-set_color_profile_slot( 30, 7, 0, 237, 170 ); //Shoes
+set_color_profile_slot( 30, 6, 0, 252, 244 ); //Hands
+set_color_profile_slot( 30, 7, 0, 252, 244 ); //Shoes
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

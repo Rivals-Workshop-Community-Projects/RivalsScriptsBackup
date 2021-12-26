@@ -2,12 +2,13 @@ set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
-set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
+set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
+set_attack_value(AT_FSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("fspecial_air_hurt"));
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_ustrong_charge"));
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
@@ -18,8 +19,8 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 20);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_leaves"));
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX_FRAME, 0);
@@ -29,8 +30,8 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7.5);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 15);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);

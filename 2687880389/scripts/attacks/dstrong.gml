@@ -91,9 +91,9 @@ set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_KNOCKBACK_SCALING, 1.05);
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_HITPAUSE_SCALING, 1.05);
-//set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_VISUAL_EFFECT, 13);
+set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_VISUAL_EFFECT, 304);
 //set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_VISUAL_EFFECT_X_OFFSET, 10);
-set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 //set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_ANGLE_FLIPPER, 6);
 //set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_HITSTUN_MULTIPLIER, 1.0);
 

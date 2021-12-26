@@ -9,9 +9,14 @@ switch (state){
         image_index = floor(image_number*state_timer/(image_number*5));
     break;
 }
-if state == PS_WALL_JUMP {
-
-if clinging {image_index = 0; clingtime = state_timer} else {
-	image_index = ((state_timer-clingtime)/walljump_time)*image_number
-}
+switch (state){
+    case PS_WALL_JUMP:
+    if clinging {
+        image_index = clamp(floor(state_timer/4), 0, 1)
+    } else if state_timer > 3 {
+        image_index = 2 + floor(walljump_timer/8)
+    }
+    break;
+    
+    default: break;
 }

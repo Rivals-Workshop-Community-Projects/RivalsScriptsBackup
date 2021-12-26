@@ -114,7 +114,7 @@ switch (selected_player_color) {
 
 // Physical size
 char_height         = 68;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = lightweight? 0.8 : 0.95;		// 0.9  -  1.2
+knockback_adj       = lightweight? 1.2 : 0.95;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 3.1;		// 3    -  4.5
@@ -259,8 +259,8 @@ set_victory_bg(sprite_get("victory_background")); // victory_background.png
 set_victory_theme(sound_get("victory_theme")); // victory_theme.ogg
 
 // Movement SFX
-land_sound          = asset_get("sfx_land_light");
-landing_lag_sound   = asset_get("sfx_land_med");
+land_sound          = asset_get("sfx_land_med2");
+landing_lag_sound   = asset_get("sfx_land_heavy");
 waveland_sound      = asset_get("sfx_waveland_ran"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
 jump_sound          = asset_get("sfx_jumpground");
 djump_sound         = asset_get("sfx_jumpair");

@@ -115,7 +115,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 15);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Grab Hitbox");
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
@@ -134,7 +134,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 15);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Grab Hitbox");
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -153,7 +153,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 3, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 15);
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Grab Hitbox");
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 1);
@@ -172,7 +172,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 4, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_HITPAUSE, 15);
 
 set_hitbox_value(AT_NSPECIAL, 5, HG_MUNO_HITBOX_NAME, "Pull in");
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 1);
@@ -266,7 +266,7 @@ set_hitbox_value(AT_NSPECIAL, 8, HG_DAMAGE, 5);
 set_hitbox_value(AT_NSPECIAL, 8, HG_SHAPE, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_ANGLE, 270);
 set_hitbox_value(AT_NSPECIAL, 8, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_NSPECIAL, 8, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_NSPECIAL, 8, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 8, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 8, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITPAUSE_SCALING, 0);

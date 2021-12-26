@@ -901,7 +901,7 @@ if (attack == AT_USTRONG) {
 	}
 	
 	// End playing sound
-	if ((window == 3) && (window_timer == 14)) {
+	if ((window == 3) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
         sound_stop(current_effect_sound);
 	}
 }

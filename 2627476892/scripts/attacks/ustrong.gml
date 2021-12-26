@@ -93,3 +93,4 @@ set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_USTRONG, 3, HG_EXTENDED_PARRY_STUN, true);

@@ -7,10 +7,44 @@ var selected_color = get_player_color(player);
 // 0th alt needs to be recolored
 if (selected_color == 0) {
     draw_sprite_ext(sprite_get("charselect_original"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-} else if (get_player_color(player) == 21) {
+    set_character_color_shading(0, 1);
+    set_character_color_shading(1, 1);
+    set_character_color_shading(2, 1);
+    set_character_color_shading(3, 1);
+    set_character_color_shading(4, 1);
+    set_character_color_shading(5, 1);
+    set_character_color_shading(6, 1);
+    set_character_color_shading(7, 1);
+} else if (get_player_color(player) == 20) { // disable shading for EA
+	draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+    set_character_color_shading(0, 0);
+    set_character_color_shading(1, 0);
+    set_character_color_shading(2, 0);
+    set_character_color_shading(3, 0);
+    set_character_color_shading(4, 0);
+    set_character_color_shading(5, 0);
+    set_character_color_shading(6, 0);
+    set_character_color_shading(7, 0);
+} else if (get_player_color(player) == 21) { // disable shading for Hologram
 	draw_sprite_ext(sprite_get("charselect_hologram"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+    set_character_color_shading(0, 0);
+    set_character_color_shading(1, 0);
+    set_character_color_shading(2, 0);
+    set_character_color_shading(3, 0);
+    set_character_color_shading(4, 0);
+    set_character_color_shading(5, 0);
+    set_character_color_shading(6, 0);
+    set_character_color_shading(7, 0);
 } else {
 	draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+	set_character_color_shading(0, 1);
+    set_character_color_shading(1, 1);
+    set_character_color_shading(2, 1);
+    set_character_color_shading(3, 1);
+    set_character_color_shading(4, 1);
+    set_character_color_shading(5, 1);
+    set_character_color_shading(6, 1);
+    set_character_color_shading(7, 1);
 }
 
 // End of Retroblast-specific code

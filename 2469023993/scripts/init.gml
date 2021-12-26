@@ -12,6 +12,7 @@ walk_anim_speed = .125;
 dash_anim_speed = .3;
 pratfall_anim_speed = .25;
 can_wall_cling = true;
+walljump_timer = 0;
 
 walk_speed = 3.5;
 walk_accel = 0.5;
@@ -41,7 +42,7 @@ max_djumps = 1;
 double_jump_time = 54; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
 walljump_vsp = 10;
-walljump_time = 32;
+walljump_time = 12;
 max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .5;

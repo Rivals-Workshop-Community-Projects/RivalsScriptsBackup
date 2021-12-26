@@ -103,10 +103,6 @@ for (var i = 0; i < 3; i++) {
     set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_WIDTH, 52);
     set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_HEIGHT, 52);
     set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_PRIORITY, 1);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_BASE_KNOCKBACK, 7);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_KNOCKBACK_SCALING, 0.9);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_BASE_HITPAUSE, 7);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_HITPAUSE_SCALING, 0.9);
     set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_VISUAL_EFFECT_X_OFFSET, -12);
     set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_VISUAL_EFFECT_Y_OFFSET, 20);
     set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_VISUAL_EFFECT, blast_hit_effect);
@@ -119,10 +115,6 @@ for (var i = 0; i < 3; i++) {
     set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_WIDTH, 40);
     set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_HEIGHT, 40);
     set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_PRIORITY, 1);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_BASE_KNOCKBACK, 7);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_KNOCKBACK_SCALING, 0.9);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_BASE_HITPAUSE, 7);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_HITPAUSE_SCALING, 0.9);
     set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_VISUAL_EFFECT_X_OFFSET, -12);
     set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_VISUAL_EFFECT_Y_OFFSET, 20);
     set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_VISUAL_EFFECT, blast_hit_effect);

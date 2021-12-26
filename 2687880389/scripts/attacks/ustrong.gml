@@ -8,7 +8,7 @@ set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 // Windup
 var sliding_friction = 0.05;
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 4);// 5
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -19,14 +19,14 @@ set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, sliding_fricti
 //set_window_value(AT_USTRONG, 1, AG_WINDOW_VSPEED_TYPE, 2);
 
 // Hold
-set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 4); // 5
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, sliding_friction);
 
 // Pre-kick
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 9); // 15
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -34,10 +34,10 @@ set_window_value(AT_USTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, sliding_fricti
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_clairen_uspecial_rise"));
 //set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, laser_blast_sound);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX_FRAME, 14);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX_FRAME, 8);
 
 
-// Shoryu-kick!
+// Shoryu-kick! (It's just Flash Kick)
 var kick_duration = hi_jump_kick ? 6 : 4;
 set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, kick_duration);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
@@ -76,9 +76,9 @@ set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.55);
+set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.55);
+set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, blast_hit_effect);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 
@@ -99,9 +99,9 @@ set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0.55);
+set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0.55);
+set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, blast_hit_effect);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 

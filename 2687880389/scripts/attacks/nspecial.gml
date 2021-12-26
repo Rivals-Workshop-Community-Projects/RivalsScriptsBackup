@@ -17,12 +17,12 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 9);
 
 // Swing
-var grab_charge_duration = remap_specials ? 16 : 8;
+var grab_charge_duration = 8;
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, grab_charge_duration);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED, remap_specials ? 5 : 4);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED, 4);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
@@ -37,6 +37,8 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 0);
 //set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 //set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, 0);
+//set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
 // Grab whiff
@@ -78,7 +80,7 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, remap_specials ? 0 : 4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, grab_charge_duration);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 35);

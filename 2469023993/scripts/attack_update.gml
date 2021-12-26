@@ -204,6 +204,10 @@ if swift_mode = true{
 	set_hitbox_value(AT_USPECIAL, 7, HG_VISUAL_EFFECT, 301);
 	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 5);
 	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6);
+	set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 6);
+	set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 6);
+	set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_ori_seinhit_heavy"));
+	set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, 303);
 	if (window == 2 && attack == AT_USPECIAL && window_timer < 40){
 		super_armor = true;
 	}
@@ -433,6 +437,10 @@ if swift_mode = false{
 	set_hitbox_value(AT_USPECIAL, 7, HG_VISUAL_EFFECT, 303);
 	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 4);
 	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 5);
+	set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 4);
+	set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 3);
+	set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_ori_seinhit_medium"));
+	set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, 302);
 	if (window == 2 && attack == AT_USPECIAL && window_timer < 20) super_armor = true;
 	if (window == 2 && attack == AT_USPECIAL && window_timer > 20) super_armor = false;
 	//sounds on strongs
@@ -476,6 +484,8 @@ if (attack == AT_FSPECIAL) {
         set_state(PS_IDLE_AIR);
     }
 }
+
+
 
 //dspecial and super armor bs
 

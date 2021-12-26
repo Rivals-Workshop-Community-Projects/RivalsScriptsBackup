@@ -27,7 +27,7 @@ set_num_hitboxes(AT_BAIR, 1);
 
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 1, HG_WINDOW_CREATION_FRAME, 5);
+set_hitbox_value(AT_BAIR, 1, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -28);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -24);
@@ -35,7 +35,7 @@ set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 55);
 set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 85);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 8);
-set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 280);
+set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);

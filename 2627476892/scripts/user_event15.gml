@@ -248,6 +248,26 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.18", "22 December, 2021");
+
+initHeader("Buffs:");
+initSection("+ Fair's base kb was increased, 8 -> 9
++ Dair's final hitbox does more kb, 7 -> 8
+");
+
+initHeader("Nerfs:");
+initSection("- Fair's kb scaling was reduced, .6 -> .5
+- Bair angle changed from 280 -> 270
+- Uair damage lowered, 7 -> 6
+- Ustrong now has extended parry stun
+");
+
+initHeader("Changes:");
+initSection("= Fspecial overall has more hitpause
+");
+
+
+//
 initPatch("1.17", "12 December, 2021");
 
 initHeader("Buffs:");

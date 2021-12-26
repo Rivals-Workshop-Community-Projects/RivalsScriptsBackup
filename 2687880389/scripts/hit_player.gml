@@ -7,10 +7,13 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
         // Grab the struck opponent
         hit_player_obj.RETROBLAST_HOLDER_ID = id;
         
+        // Play a grab-confirm sound
+        sound_play(asset_get("sfx_waveland_syl"));
+        
         // Reward player with an additional Booster Rush and full fuel
-        if (booster_rush_charges < max_booster_rush_charges) {
+        /*if (booster_rush_charges < max_booster_rush_charges) {
             booster_rush_charges++;
-        }
+        }*/
         if (rocket_fuel < max_rocket_fuel) {
             rocket_fuel = max_rocket_fuel;
         }

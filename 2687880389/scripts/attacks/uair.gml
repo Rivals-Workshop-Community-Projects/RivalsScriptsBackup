@@ -53,6 +53,7 @@ set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 5.5);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .85);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 5.5);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .85);
+set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 // Lingering hit
@@ -70,7 +71,7 @@ set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .6);
-set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 /*
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 3);

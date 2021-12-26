@@ -50,7 +50,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, 12);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));

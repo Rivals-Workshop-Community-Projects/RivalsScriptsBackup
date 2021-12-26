@@ -85,6 +85,11 @@ if state == PS_AIR_DODGE or state == PS_PARRY_START or state == PS_PARRY or stat
 	can_swift = true;
 }
 
+if state == PS_WALL_JUMP && !clinging {
+    if state_timer == 0 walljump_timer = 0
+    else walljump_timer++
+}
+
 if swallowed {
     swallowed = 0
     var ability_spr = sprite_get("kirbothrow");
