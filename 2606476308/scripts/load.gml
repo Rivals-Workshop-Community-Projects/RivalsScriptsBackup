@@ -70,9 +70,10 @@ sprite_change_offset("spinny_rocks", 122, 122);
 
 set_victory_bg( sprite_get( "victory" ));
 
-//personal sprites
 sprite_change_offset("flying_rock_mask", 40, 40);
 sprite_change_offset("flying_rock_stuck", 40, 40);
 sprite_change_offset("flying_rock_spinning", 40, 40);
 sprite_change_offset("flying_rock", 40, 40);
+
+sprite_change_offset("vfx_rockhit_large", 128, 128);
 

@@ -42,9 +42,9 @@ leave_ground_max = 4; //the maximum hsp you can have when you go from grounded t
 max_jump_hsp = 4.5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .5;
+air_accel = 0.65;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
-air_friction = .01;
+air_friction = .04;
 max_djumps = 2;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 5;
@@ -113,6 +113,7 @@ bubble_y = 8;
 
 bat_sweetspot = hit_fx_create( sprite_get( "sweetspot" ), 7 );
 bat_explosion = hit_fx_create( sprite_get( "explosion" ), 15 );
+vfx_rockhit_large = hit_fx_create( sprite_get( "vfx_rockhit_large" ), 18 );
 
 //Halloween Stuff
 halloween_end = hit_fx_create( sprite_get( "halloween_end" ), 9);

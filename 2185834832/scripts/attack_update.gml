@@ -178,25 +178,25 @@ if(attack == AT_USPECIAL_2){
 		if(window == 1){
 			if(!forceNoWater){
 				set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialair"));
-				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -15);
+				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -16);
 				set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 				if(shield_pressed){
 					forceNoWater = true
 					spawn_hit_fx(x - 8*spr_dir, y - 90, 111)
 					sound_play(asset_get("sfx_waterhit_weak"))
-					vsp = -5
+					vsp = -4
 					window_timer = 1
 					window = 1
 				}
 			}else{
 				set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
-				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9);
+				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9.5);
 				set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
 			}
 		}
 	}else{
 		set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
-		set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9);
+		set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9.5);
 		set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
 	}
 	if(window == 1){

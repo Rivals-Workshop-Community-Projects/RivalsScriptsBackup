@@ -186,9 +186,9 @@ initImage_ext(sprite_get("uspecial"), -4, fa_center, 1, 1, true, c_white, 1, fal
 
 initTip("DSPECIAL: Wisp Quake");
 initWords("Using another wisp he politely stole- I mean borrowed, Regor will snap his fingers to create a powerful but small blast that send his foes flying. However, if he misses, he's left wide open.");
-initWords("It's useful for combo finishers, but slip up and you... Well, it's punish-safe as you'd expect based on it's appearance.");
+initWords("It's useful for combo finishers, but slip up and you... Well, it's 'punish-safe' as you'd expect based on it's appearance.");
 initImage_ext(sprite_get("dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("Although, if you successfully land this attack in the air, you can cancel out of the move by jumping. However, there will be small cooldown if you do so if you try doing it again immediately.");
+initWords("Although, if you successfully land this attack in the air, you can cancel out of the move by jumping. However, there will be a cooldown if you try doing it again immediately. Same goes for a wall-jump cancel.");
 
 initTip("DAIR: Hell Ride");
 initWords("If the correct hitbox lands on the opponent, Regor will ride on his foe for a while before kicking them away with another blow. What happens afterwards is up to you. More combo follow-ups or finish them.");
@@ -241,6 +241,23 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.01", "26 December, 2021");
+initHeader("GENERAL:");
+initSection("He only respects Roger.");
+initHeader("JAB:");
+initSection("Hitbox 1 slightly bigger");
+initHeader("DTILT:");
+initSection("Lifetime reduced from 3 -> 2");
+initHeader("MISC:");
+initSection("Changed the airdodge sfx with a more appropriate one.");
+initSection("Added victory themes for: 
+Ultra Ego
+Midnight Highway
+You're going to Brazil
+Matsune Hiku
+Abyss
+The Jank");
+
 initPatch("1.0", "01 December, 2021");
 initHeader("HOLY CRAP(tm)! THE EDGE-HOG HAS BEEN RELEASED!");
 initSection("what have i done...?");
@@ -252,6 +269,7 @@ initWords("Regor came to be between a joke among friends. It all started when th
 initWords("Plus, Muno releasing a template character with a DBZ beam clash was just asking for trouble.");
 initHeader("Made by");
 initSection("TheGreatGBA - https://twitter.com/TheGreatGBA");
+initSection("Pehk_n_Kahl - https://twitter.com/Pehk_n_Kahl");
 initHeader("Additional SFX from");
 initSection("Vo.codes");
 initSection("Sonic Colours");

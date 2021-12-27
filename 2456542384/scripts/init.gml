@@ -39,7 +39,7 @@ sprite_change_offset("feri", 84, 113);
 
 // Physical size
 char_height         = 52;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1;		// 0.9  -  1.2
+knockback_adj       = 1.1;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 3.25;		// 3    -  4.5

@@ -169,10 +169,10 @@ hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 // Movement SFX
 land_sound          = sound_get("sfx_dbz_land");
 landing_lag_sound   = asset_get("sfx_land_med");
-waveland_sound      = asset_get("sfx_waveland_ran"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
+waveland_sound      = asset_get("sfx_waveland_ran"); 		// recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
 jump_sound          = sound_get("sfx_dbz_jump");
 djump_sound         = sound_get("ARC_BTL_CMN_GK_JumpAir");
-air_dodge_sound     = asset_get("sfx_quick_dodge");
+air_dodge_sound     = sound_get("ARC_BTL_CMN_PC_AirDash");	// asset_get("sfx_quick_dodge");
 
 // Visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
@@ -186,6 +186,12 @@ if (get_player_color(player) == 1)
 {
 	set_victory_theme(sound_get("victory_snurple"));
 	set_victory_bg(sprite_get("victorybgSNURPLE"));
+}
+
+if (get_player_color(player) == 4)
+{
+	set_victory_theme(sound_get("victory_ego"));
+	set_victory_bg(sprite_get("victorybg"));
 } 
 
 if (get_player_color(player) == 5)
@@ -216,6 +222,12 @@ if (get_player_color(player) == 9)
 {
 	set_victory_theme(sound_get("victory_ultra"));
 	set_victory_bg(sprite_get("victorybg"));
+}
+
+if (get_player_color(player) == 10)
+{
+	set_victory_theme(sound_get("victory_abyss"));
+	set_victory_bg(sprite_get("victorybgABYSS"));
 } 
 
 if (get_player_color(player) == 11)
@@ -246,12 +258,36 @@ if (get_player_color(player) == 15)
 {
 	set_victory_theme(sound_get("victory_roger"));
 	set_victory_bg(sprite_get("victorybgROGER"));
+}
+
+if (get_player_color(player) == 17)
+{
+	set_victory_theme(sound_get("victory_brazil"));
+	set_victory_bg(sprite_get("victorybgBRAZIL"));
 } 
 
 if (get_player_color(player) == 18)
 {
 	set_victory_theme(sound_get("victory_gold"));
 	set_victory_bg(sprite_get("victorybgGOLD"));
+}
+
+if (get_player_color(player) == 20)
+{
+	set_victory_theme(sound_get("victory_miku"));
+	set_victory_bg(sprite_get("victorybgMIKU"));
+}
+
+if (get_player_color(player) == 21)
+{
+	set_victory_theme(sound_get("victory_jank"));
+	set_victory_bg(sprite_get("victorybgJANK"));
+} 
+
+if (get_player_color(player) == 22)
+{
+	set_victory_theme(sound_get("victory_midnight"));
+	set_victory_bg(sprite_get("victorybg"));
 } 
 
 if (get_player_color(player) == 29)
@@ -266,11 +302,13 @@ if (get_player_color(player) == 30)
 	set_victory_bg(sprite_get("victorybgMEPH"));
 } 
 
-else if (get_player_color(player) != 1 && get_player_color(player) != 5 && get_player_color( player ) != 6 && 
-get_player_color( player ) != 7 && get_player_color( player ) != 8 && get_player_color( player ) != 9 && 
-get_player_color( player ) != 11 && get_player_color( player ) != 12 && get_player_color( player ) != 13 && 
-get_player_color( player ) != 14 && get_player_color( player ) != 15 && get_player_color( player ) != 18 && 
-get_player_color( player ) != 29 && get_player_color( player ) != 30)
+else if (get_player_color(player) != 1 && get_player_color(player) != 4 && get_player_color(player) != 5 
+&& get_player_color( player ) != 6 && get_player_color( player ) != 7 && get_player_color( player ) != 8 
+&& get_player_color( player ) != 9 && get_player_color( player ) != 10 && get_player_color( player ) != 11 
+&& get_player_color( player ) != 12 && get_player_color( player ) != 13 && get_player_color( player ) != 14 
+&& get_player_color( player ) != 15 && get_player_color( player ) != 17 && get_player_color( player ) != 18 
+&& get_player_color( player ) != 20 && get_player_color( player ) != 21 && get_player_color( player ) != 22 
+&& get_player_color( player ) != 29 && get_player_color( player ) != 30)
 {
 	set_victory_theme(sound_get("victory"));
 	set_victory_bg(sprite_get("victorybg"));

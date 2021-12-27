@@ -152,7 +152,7 @@ if (attack == AT_FSPECIAL){
     if window == 5{
     	hsp = 10 * spr_dir;
     	vsp = 0;
-    	can_jump = true;
+    	if window_timer > 3 can_jump = true;
     	can_fast_fall = false;
     	if window_timer == 1 {
     		sound_play(asset_get("sfx_blow_weak1"))

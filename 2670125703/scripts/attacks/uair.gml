@@ -42,6 +42,7 @@ set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
+set_hitbox_value(AT_UAIR, 1, HG_TECHABLE, 2);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_GROUP, 1);
 

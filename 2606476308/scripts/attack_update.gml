@@ -56,6 +56,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     if(window == 2){
         if(!(instance_exists(flying_rock1) && flying_rock1_uspecial || instance_exists(flying_rock2)  && flying_rock2_uspecial || instance_exists(flying_rock3)  && flying_rock3_uspecial)){
         	set_state(PS_PRATFALL);
+        	prat_land_time = 15
         	grabbedid = noone
         }
     }
@@ -457,7 +458,7 @@ if(attack == AT_NSPECIAL){
 			set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 303);
 		}else if(state_timer >= 40){
 			set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-			set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 304);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_rockhit_large);
 		}
 		if(instance_exists(flying_rock1)){
 			extended_nspecial_window = true

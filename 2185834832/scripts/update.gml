@@ -22,9 +22,9 @@ if(state == PS_DOUBLE_JUMP){
 	}
 	if(state_timer == 1){
 	    if(left_down){
-	    	hsp = -6
+	    	hsp = -6.5
 	    }else if(right_down){
-	    	hsp = 6
+	    	hsp = 6.5
 	    }else{
 	    	hsp = 0
 	    }
@@ -32,6 +32,9 @@ if(state == PS_DOUBLE_JUMP){
     if(state_timer < 1){
     	vsp = 1
     	double_jump_timer = 20
+    }
+    if(state_timer < 4){
+    	move_cooldown[AT_USPECIAL] = 2
     }
 }
 
@@ -90,7 +93,7 @@ if(!free){
 	uspecVar = 1
 	fspecVar = 2
 	dspecFlying = false
-	emergencyCount = 0
+	//emergencyCount = 0
 }
 
 if(waterLevel > 99 && waterCharges < 3){
@@ -114,19 +117,11 @@ if(waterLevel > 100){
 	waterLevel = 0
 }
 
-combatTimer -= 0.2
-
-if(waterLevel > 0){
-	if(combatTimer < 0){
-		waterLevel -= 1
-		combatTimer = 8
-	}
-}
-
 if(window == 0){
 	strongAttack = false
 }
 
+/*
 if(waterCharges > 0){
 	waterLevelEmergency = 0
 }else{
@@ -144,6 +139,7 @@ if(waterLevelEmergency > 0){
 		waterLevelEmergency = 0
 	}
 }
+*/
 
 //torga kirby
 if (swallowed == 1) {

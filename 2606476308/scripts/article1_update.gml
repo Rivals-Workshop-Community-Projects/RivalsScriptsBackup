@@ -6,12 +6,12 @@ if(state == 0){
 	if(hit_timer <= 0){
 		if(player_id.attack != AT_NSPECIAL && player_id.attack != AT_USPECIAL){
     		if(hit_timer <= 0 && magnet == false){
-		        var rock_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y)
+		        rock_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y)
 			}else if(hit_timer <= 0 && magnet == true){
-				var rock_hitbox = create_hitbox(AT_FSPECIAL, 1, x, y)
+				rock_hitbox = create_hitbox(AT_FSPECIAL, 1, x, y)
 			}
 		}else{
-			var rock_hitbox = create_hitbox(AT_FSPECIAL, 2, x, y)
+			rock_hitbox = create_hitbox(AT_FSPECIAL, 2, x, y)
 		}
 	}
 	
@@ -64,14 +64,14 @@ if(state == 1){
 if(state == 2){
 	//hitbox
 	if(hit_timer <= 0 && magnet == false && cancelled != true){
-        var rock_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y)
+        rock_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y)
         if(rock_hitbox.x > player_id.x){
         	rock_hitbox.spr_dir = -1
         }else{
         	rock_hitbox.spr_dir = 1
         }
 	}else if(hit_timer <= 0 && magnet == true && cancelled != true){
-		var rock_hitbox = create_hitbox(AT_FSPECIAL, 1, x, y)
+		rock_hitbox = create_hitbox(AT_FSPECIAL, 1, x, y)
 		if(rock_hitbox.x > player_id.x){
         	rock_hitbox.spr_dir = -1
         }else{
@@ -104,12 +104,6 @@ if(state == 2){
 	}
 }
 
-//fly back
-if(state == 3){
-	
-}
-
-
 //--------------------------------------------//
 
 //constant checks
@@ -120,14 +114,17 @@ with (asset_get("pHitBox")){
 		if(player_id == other.player_id && other.gotHit_timer <= 0){
 			if(other.state == 1 && other.state_timer > 2 && attack != AT_USPECIAL){
 				other.has_hit_player = true
-				spawn_hit_fx(x, y, hit_effect)
+				spawn_hit_fx(lerp(x, other.x, 0.5), lerp(y, other.y, 0.5), hit_effect)
 				sound_play(sound_effect)
-				sound_play(asset_get("sfx_kragg_rock_pull"))
 				other.gotHit_timer = 25
 				other.vsp = -8
 				other.old_vsp = -8
 				if(other.grounded_state == "ground"){
-					other.hsp = 2*spr_dir
+					if(attack != AT_BAIR){
+						other.hsp = 2*spr_dir
+					}else{
+						other.hsp = -2*spr_dir
+					}
 					other.old_hsp = 2*spr_dir
 					other.spr_dir = spr_dir
 				}else if(other.grounded_state == "wall"){
@@ -144,6 +141,9 @@ with (asset_get("pHitBox")){
 					player_id.old_vsp = -8
 					player_id.old_hsp = 0
 					player_id.hsp = 0
+					instance_destroy();
+				}else{
+					sound_play(asset_get("sfx_kragg_rock_pull"))
 				}
 				if(type == 1){
 					with(player_id){
@@ -154,6 +154,7 @@ with (asset_get("pHitBox")){
 						hitpause = true
 					}
 				}
+				exit;
 			}
 		}else if(other.gotHit_timer <= 0 && player_id != other.player_id){
 			spawn_hit_fx(x, y, hit_effect)

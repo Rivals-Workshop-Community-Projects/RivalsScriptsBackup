@@ -105,6 +105,7 @@ if (attack == AT_UAIR)
 if (attack == AT_DAIR)
 {
 	can_fast_fall = false;
+	can_wall_jump = true;
 	
 	if (window == 1 && window_timer == 1)
 	{
@@ -141,11 +142,6 @@ if (attack == AT_DAIR)
 		{
 			hsp = 8 * spr_dir;
 		}
-	}
-	
-	if (window > 1)
-	{
-		can_wall_jump = true;
 	}
 	
 	if (window == 4 || window == 5)
@@ -227,10 +223,16 @@ if (attack == AT_DSPECIAL)
 {
 	can_fast_fall = false;
 	can_move = false;
+	can_wall_jump = true;
 	
 	if (window == 1 && window_timer == 1)
 	{
 		sound_play(sound_get("sfx_dspecial_quake"), false, noone, 0.75);	
+	}
+	
+	if (can_wall_jump)
+	{
+		move_cooldown[AT_DSPECIAL] = 60;
 	}
 	
 	if (has_hit)
