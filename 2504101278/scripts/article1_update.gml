@@ -4,6 +4,33 @@ var destroy = false;
 var homing = false;
 switch (state)
 {
+    //Splitting
+    case -1:
+        hsp *=0.9
+        image_index = (state_timer / split_time) * sprite_get_number(sprite_index);
+        
+        //MAKE THE BABY SPLIT
+        if image_index >= sprite_get_number(sprite_index)
+        {
+            var effect = spawn_hit_fx(floor(x+hsp),floor(y+36+vsp),player_id.split_baby_fx);
+            effect.depth = depth-3;
+            destroy = true;
+            
+            with (player_id)
+            {
+                var i = -1;
+                repeat (2)
+                {
+                    var baby = create_hitbox(AT_NSPECIAL_2, 1, other.x, other.y);
+                    baby.hsp = sign(other.hsp)*7
+                    baby.vsp = i*3;
+                    i+=2;
+                    print("created")
+                }
+            }
+        }
+    break;
+    
     //NORMAL
     case 0:
         if split_baby and !homing
@@ -11,6 +38,10 @@ switch (state)
             sprite_index = sprite_get("nspecial_proj_diagonal")
             image_index = sign(vsp) == -1;
             spr_dir = sign(hsp) != 0 ? sign(hsp) : 1;
+         }
+         else if !split_baby
+         {
+             sprite_index = FLOAT_SPRITE;
          }
         
         var fdspecial_hit = checkCarry();
@@ -29,22 +60,13 @@ switch (state)
                     break;
                 case AT_DSPECIAL:
                 case AT_FSTRONG:
-                    if can_manual_move_count == 0 and !split_baby
+                //HIT WITH DSPECIAL & FSTRONG
+                    if can_manual_move_count == 0 and !split_baby and state != -1
                     {
-                        var i = -1;
-                        with (player_id)
-                        {
-                            repeat (2)
-                            {
-                                var baby = instance_create(other.x,other.y,"obj_article1");
-                                baby.hsp = (fdspecial_hit[1] == AT_DSPECIAL ? fdspecial_hit[0].x_scale : spr_dir)*5;
-                                baby.vsp = i*6;
-                                baby.split_baby = true;
-                                i+=2
-                            }
-                        }
-                        spawn_hit_fx(floor(x),floor(y),player_id.hit_sprites[1]);
-                        destroy = true;
+        			    state_timer = 0;
+					    lock_state = true;
+					    state = -1;
+					    player_id.move_cooldown[AT_NSPECIAL_2] = 30;	
                     }
                 break;
             }
@@ -85,21 +107,35 @@ switch (state)
         //var ground, plat;
         //ground = instance_place(x+hsp,y+vsp,asset_get("par_block"));
         //plat = instance_place(x+hsp,y+vsp,asset_get("par_jumpthrough"));
+        
+        var turn, sprtoshow;
+        turn = being_carried ? sign(hsp) : player_id.spr_dir;
+        sprtoshow = sprite_get_number(sprite_index)*( (-turn+1)/2);
         if (!split_baby)
         {
             if !being_carried
             {
+                accel_buffer = max(accel_buffer-1,0)
+                if (player_id.left_down and sprtoshow == sprite_get_number(sprite_index)) or (player_id.right_down and sprtoshow == 0)
+                {
+                    accel = accel_buffer == 0;
+                }
+                else if accel_buffer_max
+                {
+                    accel_buffer = accel_buffer_max;
+                }
+                
+                accel = !accel_on ? false : accel;
+
                 if can_manual_move_count == 0
                 {
-                    var which = player_id.left_down ? -1 : player_id.right_down;
+                    var which = player_id.spr_dir;
                     hsp = lerp(hsp, max_hsp*which, 0.03)
                 }
-                hsp = !homing*lerp(hsp, 0, .1);
+                hsp = !homing*lerp(hsp, 0, .1-(.075*(accel)));
             }
-            
-            var turn;
-            turn = being_carried ? sign(hsp) : player_id.spr_dir;
-            image_index = lerp(image_index,sprite_get_number(sprite_index)*( (-turn+1)/2),0.1)
+
+            image_index = lerp(image_index,sprtoshow,0.1);
         }
         else
         {
@@ -126,6 +162,7 @@ switch (state)
         }
         else
         {
+            //print("hitbox does not exist")
             setMiniState(STATE_POP);
             hsp = 0;
             vsp = 0;
@@ -133,6 +170,7 @@ switch (state)
     
     break;
     
+    //multihit
     case 1:
         ignores_walls = true;
         hsp = 0;
@@ -151,7 +189,9 @@ switch (state)
         
         if state_timer >= (n*4)+1
         {
+            //print("state timer lol")
             setMiniState(2);
+            //print("finished multi")
             image_index = 0;
             player_id.move_cooldown[AT_NSPECIAL] = 60;
         }
@@ -165,13 +205,12 @@ switch (state)
         if state_timer == 0
         {
             spr_dir = player_id.spr_dir
-            sound_play(asset_get("mfx_star"))
+            if !split_baby sound_play(asset_get("mfx_star"))
             sprite_index = POP_SPRITE;
         }
-        image_index += .2
+        image_index += .14
         if image_index >= sprite_get_number(sprite_index) destroy = true;
     break;
-    
 
 }
 

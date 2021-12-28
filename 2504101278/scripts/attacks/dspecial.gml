@@ -7,7 +7,7 @@ set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 15); // 10->15
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_grenade_launch"));
@@ -49,6 +49,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 3);
+set_hitbox_value(AT_DSPECIAL, 1, HG_FORCE_FLINCH, 1); // ADDED THIS
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 1);
@@ -58,9 +59,9 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 398);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 42);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
-set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 361);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.05);
+set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 40); // 361->40
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8); // 9->8
+set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.9); //1.05 -> .9
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 126);

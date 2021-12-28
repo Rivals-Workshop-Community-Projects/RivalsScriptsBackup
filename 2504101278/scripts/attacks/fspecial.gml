@@ -10,7 +10,7 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 78);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 52); //78 -> 52
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 26);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
@@ -27,12 +27,12 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_ori_bash_launch"));
 
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 37);
 
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 43);
 

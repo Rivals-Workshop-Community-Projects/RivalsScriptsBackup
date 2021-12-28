@@ -118,8 +118,8 @@ set_color_profile_slot( 11, 5, 255, 0, 60 ); //Lightning
 
 // Reflection
 set_color_profile_slot( 12, 0, 255, 154, 74 ); //Body
-set_color_profile_slot( 12, 1, 250, 164, 4 ); //Eye
-set_color_profile_slot( 12, 2, 208, 79, 15 ); //Colored Veins
+set_color_profile_slot( 12, 1, 136, 4, 4 ); //Eye
+set_color_profile_slot( 12, 2, 250, 4, 68 ); //Colored Veins
 set_color_profile_slot( 12, 3, 136, 4, 4 ); //Iris 1
 set_color_profile_slot( 12, 4, 250, 186, 100 ); //Iris 2
 set_color_profile_slot( 12, 5, 0, 255, 251 ); //Lightning

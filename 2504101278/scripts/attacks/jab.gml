@@ -49,7 +49,7 @@ set_hitbox_value(AT_JAB, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 20);
-set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
+set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, -1);
 
@@ -70,6 +70,6 @@ set_hitbox_value(AT_JAB, 2, HG_ANGLE, 70);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 20);
-set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
+set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
 set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, -1);

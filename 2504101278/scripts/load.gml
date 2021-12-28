@@ -42,12 +42,15 @@ sprite_change_offset("fstrong", 100, 172);
 sprite_change_offset("ustrong", 126, 172);
 sprite_change_offset("dstrong", 126, 172);
 sprite_change_offset("nspecial", 126, 172);
+sprite_change_offset("nspecial2", 126, 172);
 sprite_change_offset("fspecial", 126, 172);
 sprite_change_offset("fspecial_air", 126, 172);
 sprite_change_offset("uspecial", 126, 172);
 sprite_change_offset("dspecial", 126, 172);
 sprite_change_offset("dspecial_laser", 42, 44);
 sprite_change_offset("taunt", 126, 172);
+sprite_change_offset("intro", 126, 172);
+sprite_change_offset("vfx_nspecial_split", 126, 172);
 
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("plat_bg", 64, 94);
@@ -55,8 +58,9 @@ sprite_change_offset("plat_bg", 64, 94);
 sprite_change_offset("nspecial_proj", 60, 60);
 sprite_change_offset("nspecial_proj_diagonal", 60, 60);
 sprite_change_offset("nspecial_hit", 54, 54);
-sprite_change_collision_mask( "nspecial_proj", true, 0, 0, 0, 0, 0, 0 );
-sprite_change_collision_mask( "nspecial_proj_diagonal", true, 0, 0, 0, 0, 0, 0 );
+sprite_change_offset("nspecial_proj_split", 60, 60);
+// sprite_change_collision_mask( "nspecial_proj", true, 0, 0, 0, 0, 0, 0 );
+// sprite_change_collision_mask( "nspecial_proj_diagonal", true, 0, 0, 0, 0, 0, 0 );
 
 sprite_change_offset("nspecial_die", 60, 60);
 
@@ -69,9 +73,10 @@ sprite_change_offset("light_particle_white", 8, 8);
 sprite_change_offset("lemon", 30, 30);
 sprite_change_offset("lime", 30, 30);
 
-sprite_change_offset("hfx_blob_small", 30, 30);
-sprite_change_offset("hfx_blob_medium", 55, 55);
-sprite_change_offset("hfx_blob_large", 85, 85);
+sprite_change_offset("hfx_fire", 74, 78);
+sprite_change_offset("hfx_blob_small", 32, 30);
+sprite_change_offset("hfx_blob_medium", 74,62);
+sprite_change_offset("hfx_blob_large", 116, 118);
 sprite_change_offset("vfx_ustrong_spark", 126, 174);
 
 sprite_change_offset("void_hurtbox", 126, 172)

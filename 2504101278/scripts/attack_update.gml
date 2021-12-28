@@ -1,9 +1,40 @@
 //B - Reversals
+
+//USPEC
+#macro USPEC_w1LEN 19
+
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
  
 switch(attack){
+	case AT_NSPECIAL_2:
+		hsp *= 0.86
+		vsp = lerp(vsp,0,0.1);
+		
+		switch (window)
+		{
+			case 1:
+                if window_timer == 10 {
+            sound_play(asset_get("sfx_ori_dspecial_bash_miss"),false,noone,.6) 
+            sound_play(sound_get("marx_laugh2"));    
+                }
+            break;
+			case 2:
+				if window_timer == 1 and (instance_exists(nspecial_projectile) and nspecial_projectile.state == 0)
+				{
+					nspecial_projectile.spr_dir = sign(nspecial_projectile.hsp) == 0 ? 1 : sign(nspecial_projectile.hsp)
+					nspecial_projectile.state_timer = 0;
+					nspecial_projectile.lock_state = true;
+					nspecial_projectile.state = -1;
+					nspecial_projectile.sprite_index = sprite_get("nspecial_proj_split");
+					nspecial_projectile.image_index = 0;
+					move_cooldown[AT_NSPECIAL_2] = 30;	
+				}
+			break;
+		}
+		
+	break;
     case AT_JAB:
         var frame_len = get_window_value(AT_JAB, 2, AG_WINDOW_LENGTH) / get_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES);
         var on_right_frame = (clamp(window_timer,frame_len,frame_len*4) == window_timer)
@@ -17,7 +48,7 @@ switch(attack){
         
             if has_hit_player and attack_pressed
             {
-                print("DO IT")
+                //print("DO IT")
                 var at = 0;
                 var turn = (left_down and spr_dir == 1) or (right_down and spr_dir == -1)
                 at = down_down ? AT_DTILT : ((left_down or right_down) ? AT_FTILT : up_down ? AT_UTILT : AT_JAB);
@@ -31,13 +62,46 @@ switch(attack){
         
     break;
    case AT_DATTACK: 
-        if window == 2 && window_timer == (2) {
-            sound_play(asset_get("sfx_abyss_explosion"));
-            shake_camera(4, 7);
-        }
-        if window <= 3 {
-            can_fast_fall = false;
-        }
+   
+		switch window{
+			case 1:
+			break;
+		
+			case 2:
+				if window_timer == 2
+				{
+					sound_play(asset_get("sfx_abyss_explosion"));
+            		shake_camera(4, 7);
+				}
+			
+			case 3:
+				can_fast_fall = false;
+				if window_timer == 1
+				{
+					if !joy_pad_idle and clamp(joy_dir, 40, 150) == joy_dir
+			    	{
+			    		var base_angle = 10;
+			    		var left = (180-(base_angle*2))*(spr_dir == -1);
+			    		var angle = base_angle + (left);
+			    		
+			    		hsp = lengthdir_x(12,angle);
+			    		vsp = lengthdir_y(12,angle);
+			    		//spr_angle = point_direction(0,0,hsp,vsp);
+			    		spr_angle = 10*spr_dir;
+			    	}
+			    	else
+			    	{
+			    		print(joy_dir)
+			    		hsp = (12*spr_dir)
+			    	}
+				}
+			default:
+			{
+				can_fast_fall = false;
+				spr_angle = round(lerp(spr_angle,0,0.2));
+			}
+			break;
+		}
     
     break;
     case AT_FSTRONG:
@@ -103,15 +167,13 @@ switch(attack){
         if window == 2 and window_timer == 1
         {
             sound_play(sound_get("marx_laugh"));
-            move_cooldown[attack] = 140;
+            move_cooldown[attack] = 230;
             
             var posx, posy;
             posx = x + (40*spr_dir);
             posy = y - 40;
             
-            var t = instance_create(posx, posy,"obj_article1")
-            t.hsp = 6*spr_dir + hsp;
-            
+            hitbox = create_hitbox(AT_NSPECIAL,1,posx,posy);
         }
     
     break;
@@ -119,36 +181,66 @@ switch(attack){
     	switch (window)
     	{
     		case 1:
-    			if window_timer == 1
+    		var ex = instance_exists(nspecial_projectile) and nspecial_projectile.state < 2
+    		if ex uspecial_backupcoords = [nspecial_projectile.x,nspecial_projectile.y+40];
+    			switch (window_timer)
     			{
-    				if get_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE) != 7 set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 7);
-    				vsp = -4
-    			}
-    			else if (window_timer == get_window_value(AT_USPECIAL,1,AG_WINDOW_LENGTH)-1 and (!instance_exists(nspecial_projectile) or (instance_exists(nspecial_projectile) and (nspecial_projectile.state != 0 or distance_to_object(nspecial_projectile) < 20))))
-    			{
-    				window = 5;
-    				window_timer = 0;
-    				if instance_exists(nspecial_projectile) and distance_to_object(nspecial_projectile) < 20 and nspecial_projectile.state == 0
+    				case 1:
+    					if get_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE) != 7 set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 7);
+    					vsp = -5
+    				break;
+    				case USPEC_w1LEN:
     				{
-    					nspecial_projectile.hsp = 0;
-    					nspecial_projectile.vsp = 0;
-    					nspecial_projectile.state = 2;
-    					nspecial_projectile.state_timer = 0;
-    					nspecial_projectile.lock_state = true;
-    					vsp = -10
-    					set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
+    					var xx, yy, diff, exist, right_state, threshold, close_enough;
+    					xx = 0;
+    					yy = 0;
+    					diff = 0;
+    					exist = instance_exists(nspecial_projectile);
+    					right_state = exist and nspecial_projectile.state < 2
+    					threshold = 70;
+    					close_enough = false;
+    					if right_state
+    					{
+	    					xx = clamp(nspecial_projectile.x, bbox_left, bbox_right);
+				            yy = clamp(nspecial_projectile.y, bbox_top, bbox_bottom);
+				            diff = sqrt(sqr(xx-nspecial_projectile.x) + sqr(yy-nspecial_projectile.y) );
+				            
+				            close_enough = diff <= threshold;
+    					}
+    					//print("diff is "+ string(diff))
+    					//print(close_enough)
     					
-    					repeat (2+random_func(11,3,true))
-		                {
-		                	spawnParticle(sprite_get("light_particle_green"), 0.2, [nspecial_projectile.x, nspecial_projectile.y], [round(random_func(3+i,6,false)-random_func(5+i, 12, false)), round(random_func(6+i,6,false)-random_func(7+i, 12, false))], 0.9)
-		                	i++;
-		                }
+    					if (!exist or (right_state and close_enough) or shield_down)
+    					{
+    						window = 5;
+    						window_timer = 0;
+    						if !exist or shield_down break;
+    						
+	    					nspecial_projectile.hsp = 0;
+	    					nspecial_projectile.vsp = 0;
+	    					nspecial_projectile.state = 2;
+	    					nspecial_projectile.state_timer = 0;
+	    					nspecial_projectile.lock_state = true;
+	    					vsp = -10
+	    					set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
+	    					var i = 1;
+	    					repeat (2+random_func(11,3,true))
+			                {
+			                	spawnParticle(sprite_get("light_particle_green"), 0.2, [nspecial_projectile.x, nspecial_projectile.y], [round(random_func(3+i,6,false)-random_func(5+i, 12, false)), round(random_func(6+i,6,false)-random_func(7+i, 12, false))], 0.9)
+			                	i++;
+			                }
+    					}
+    					
     				}
     			}
     			break;
     		case 2:
+    		var ex = instance_exists(nspecial_projectile) and nspecial_projectile.state < 2
+    		if ex uspecial_backupcoords = [nspecial_projectile.x,nspecial_projectile.y+40];
     			if window_timer == get_window_value(AT_USPECIAL,2,AG_WINDOW_LENGTH)-1
     			{
+    				var coords = uspecial_backupcoords;
+    				if ex coords = [nspecial_projectile.x,nspecial_projectile.y+40]
 	    			x = nspecial_projectile.x;
 	    			y = nspecial_projectile.y+40;
 	    			instance_destroy(nspecial_projectile.hitbox)
@@ -177,10 +269,10 @@ switch(attack){
     		case 2:
     			switch window_timer
     			{
-    				case 6:
+    				case 10:
     					sound_play(asset_get("sfx_absa_cloud_crackle"));
     				break;
-    				case 16:
+    				case 20:
     					sound_play(asset_get("sfx_boss_final_cannon"));
     				break;
     			}
@@ -224,7 +316,7 @@ switch(attack){
                 }
                 break;
                 
-                case 40:
+                case 26:
                 sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"))
                 break;
             }
@@ -247,7 +339,7 @@ switch(attack){
                     sound_stop(fspecial_sound);
                     fspecial_sound = noone;
                 }
-            vsp = lerp(vsp, 0, .1)
+            vsp = lerp(vsp, 0, .05)
             break;
             case 6:
                 fspecial_stored = [-1, -1];
@@ -379,11 +471,11 @@ switch(attack){
 // }
 
 #define spawnParticle
-/// @param spr
-/// @param animspeed
-/// @param pos
-/// @param velocity
-/// @param fric
+/// @param {undefined} spr
+/// @param {undefined} animspeed
+/// @param {undefined} pos
+/// @param {undefined} velocity
+/// @param {undefined} fric
 /// spawnParticle(spr, animspeed, pos, velocity, fric)
 
 var spr = argument0, animspeed = argument1, pos = argument2, velocity = argument3, fric = argument4;

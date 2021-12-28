@@ -48,7 +48,7 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND
 	    if window == 5 and window_timer mod fspecial_interval == 0 and current_shot < n
 	    {
 			
-	    	print("creating")
+	    	//print("creating")
 	    	sound_play(asset_get("sfx_ori_charged_flame_release"))
 	        var minang, maxang;
 	        minang = free ? -45-(n*2.5) : 0;
@@ -83,6 +83,29 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND
     }
 }
 
+if(introTimer2 < 2)
+    introTimer2++
+else if(state == PS_SPAWN)
+{
+    introTimer2 = 0;
+    introTimer++;
+    if(introTimer == 0)
+    	sound_play(asset_get("sfx_boss_vortex_start"),false,noone, 0.6);
+    if(introTimer == 14)
+        sound_play(sound_get("scream_void"));
+    if(introTimer == 15)
+    	shake_camera(18, 3)
+    if(introTimer == 17)
+    	shake_camera(1, 48)
+}
+//this increments introTimer every few frames, depending on the number entered
+
+if (introTimer < 37) {
+    draw_indicator = false;
+} else {
+    draw_indicator = true;
+}
+//this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
 //SANDBERT CODE
 // if (attack == AT_NSPECIAL){
 //     if (window == 3){
@@ -168,6 +191,11 @@ if (array_find_index(states,state) != -1 or ((state == PS_ATTACK_AIR or state ==
 // }
 
 #define spawnParticle
+/// @param {undefined} spr
+/// @param {undefined} animspeed
+/// @param {undefined} pos
+/// @param {undefined} velocity
+/// @param {undefined} fric
 /// spawnParticle(spr, animspeed, pos, velocity, fric)
 
 var spr = argument0, animspeed = argument1, pos = argument2, velocity = argument3, fric = argument4;
@@ -190,6 +218,10 @@ ds_list_add(particles,newParticle);
 return 180*( -(spr_dir-1) / 2 );
 
 #define spawnFspecialProjectile
+/// @param {undefined} cx
+/// @param {undefined} cy
+/// @param {undefined} angle
+/// @param {undefined} spd
 /// spawnFspecialProjectile(cx, cy, angle, spd)
 var cx = argument0, cy = argument1, angle = argument2, spd = argument3;
 

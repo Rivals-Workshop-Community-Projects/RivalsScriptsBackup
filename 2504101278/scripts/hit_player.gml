@@ -1,4 +1,15 @@
+var spawn = "none";
+
 switch my_hitboxID.attack {
+    case AT_FSTRONG:
+        if my_hitboxID.hbox_num != 6 spawn = "fire";
+    break;
+    case AT_DSTRONG:
+        spawn = "big";
+    break;
+    case AT_DTILT:
+        spawn = (my_hitboxID.hbox_num == 2) ? "big" : "med";
+    break;
     case AT_DATTACK:
      if my_hitboxID.hbox_num == 2 {
          sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
@@ -6,13 +17,37 @@ switch my_hitboxID.attack {
      }
      
     break;
+    case AT_UTILT:
+        spawn = (my_hitboxID.hbox_num == 1) ? "big" : "med";
+    break;
+    case AT_NAIR:
+        if (my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 3)
+        {
+            spawn = "small"
+        }
+        else if (my_hitboxID.hbox_num == 2)
+        {
+            spawn = "big";
+        }
+        else if (my_hitboxID.hbox_num == 4)
+        {
+            spawn = "med";
+        }
+    break;
     case AT_DAIR:
-        old_vsp = -vsp
+        old_vsp = -vsp;
+        spawn = (my_hitboxID.hbox_num == 1) ? "big" : "med";
+    break;
+    case AT_FAIR:
+    case AT_UAIR:
+        spawn = (my_hitboxID.hbox_num == 3) ? "big" : "med";
     break;
     case AT_NSPECIAL:
         if my_hitboxID.hbox_num == 1
         {
-            with nspecial_projectile
+            //print(my_hitboxID.owner)
+            
+            with my_hitboxID.owner
             {
                 state = 1;
                 state_timer = 0;
@@ -21,6 +56,29 @@ switch my_hitboxID.attack {
         }
     break;
 }
+
+var coords = [lerp(my_hitboxID.x, hit_player_obj.x, 0.5), lerp(my_hitboxID.y, hit_player_obj.y - (hit_player_obj.char_height/2), 0.5)];
+
+switch (spawn)
+{
+    case "small":
+        var t = spawn_hit_fx(coords[0],coords[1],hit_sprites[0]);
+        t.depth = depth-3;
+    break;
+    case "big":
+        var t = spawn_hit_fx(coords[0],coords[1],hit_sprites[2]);
+        t.depth = depth-3;
+    break;
+    case "med":
+        var t = spawn_hit_fx(coords[0],coords[1],hit_sprites[1]);
+        t.depth = depth-3;   
+    break;
+    case "fire":
+        var t = spawn_hit_fx(coords[0],coords[1],fire_fx);
+        t.depth = depth-3;  
+    break;
+}
+
 //Sound Layering code: I will look back here and make adjustments when the rest of his moves are completed)
 
 //if my_hitboxID.damage <= 2 {

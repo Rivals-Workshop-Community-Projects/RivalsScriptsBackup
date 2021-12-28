@@ -64,6 +64,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 20);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USPECIAL, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_PARENT_HITBOX, 2);
@@ -82,6 +83,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 125);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_PARENT_HITBOX, 3);

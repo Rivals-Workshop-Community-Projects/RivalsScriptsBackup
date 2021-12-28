@@ -64,9 +64,10 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, hit_sprites[2]);
+set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 10);
 
 //Back Hit
 set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 2);
@@ -85,6 +86,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, hit_sprites[2]);
+set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 10);

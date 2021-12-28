@@ -4,7 +4,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
 var numAlts = 32; // change this
 
-patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
+patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR));
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);

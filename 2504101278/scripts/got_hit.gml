@@ -1,11 +1,22 @@
 //set_state(PS_PARRY);
 
-if (prev_state == PS_ATTACK_AIR or prev_state == PS_ATTACK_GROUND) and attack == AT_FSPECIAL // if hit anytime while performing fspecial, you lose the charge
+if (prev_state == PS_ATTACK_AIR or prev_state == PS_ATTACK_GROUND) // if hit anytime while performing fspecial, you lose the charge
 {
-    if fspecial_sound != noone
+    switch (attack)
     {
-        sound_stop(fspecial_sound);
-        fspecial_sound = noone;
+        case AT_FSPECIAL:
+        if fspecial_sound != noone
+        {
+            sound_stop(fspecial_sound);
+            fspecial_sound = noone;
+        }
+        fspecial_stored = [-1,-1]
+        break;
+        case AT_DSPECIAL:
+            instance_destroy(dspecial_laser);
+            destroy_hitboxes();
+            dspecial_laser = noone;
+            move_cooldown[AT_DSPECIAL] = 120
+        break;
     }
-    fspecial_stored = [-1,-1]
 }

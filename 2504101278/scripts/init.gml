@@ -26,7 +26,7 @@ moonwalk_accel = 1.4;
 jump_start_time = 5;
 jump_speed = 7;
 short_hop_speed = 3;
-djump_speed = 6;
+djump_speed = 5;
 leave_ground_max = 6.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -42,11 +42,11 @@ walljump_time = 28;
 max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .2;
-hitstun_grav = .45
+hitstun_grav = .51
 knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 14;
 wave_land_time = 9;
 wave_land_adj = 1.4; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .06; //grounded deceleration when wavelanding
@@ -97,11 +97,13 @@ air_dodge_sound = asset_get("sfx_boss_shine");
 
 //Character Specific Init
 
-hit_sprites[0] = hit_fx_create(sprite_get("hfx_blob_small"), 30);
-hit_sprites[1] = hit_fx_create(sprite_get("hfx_blob_medium"), 30);
-hit_sprites[2] = hit_fx_create(sprite_get("hfx_blob_large"), 30);
+hit_sprites[0] = hit_fx_create(sprite_get("hfx_blob_small"), 28);
+hit_sprites[1] = hit_fx_create(sprite_get("hfx_blob_medium"), 32);
+hit_sprites[2] = hit_fx_create(sprite_get("hfx_blob_large"), 24);
 hit_sprites[3] = hit_fx_create(sprite_get("nspecial_projfx"), 30);
 spr_vfx_ustrong_spark = sprite_get("vfx_ustrong_spark");
+fire_fx = hit_fx_create(sprite_get("hfx_fire"), 24);
+split_baby_fx = hit_fx_create(sprite_get("vfx_nspecial_split"), 20);
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
@@ -110,6 +112,10 @@ bubble_y = 8;
 fspecial_stored = [-1, -1]; // [WINDOW, WINDOW_TIMER]
 fspecial_interval = 3; //frames inbetween spawns
 fspecial_sound = noone;
+
+uspecial_backupcoords = [0,0]
+
+dspecial_laser = noone;
 
 dair_direction = 270
 nspecial_projectile = noone;
@@ -120,6 +126,9 @@ particles = ds_list_create();
 var cur = get_player_color(player);
 var slot = 2;
 afterimage_color = make_color_rgb(get_color_profile_slot_r(cur, slot), get_color_profile_slot_g(cur, slot), get_color_profile_slot_b(cur, slot));
+
+slot = 1;
+afterimage2_color = make_color_rgb(get_color_profile_slot_r(cur, slot), get_color_profile_slot_g(cur, slot), get_color_profile_slot_b(cur, slot));
 
 afterimage_alpha = .9 //starting alpha
 afterimage_alphadecay = 0.1 // alpha decay
@@ -138,3 +147,7 @@ ncode2 = " Gentle breezes? Treats? He may even dream again... "
 ncode3 = " a dream of friends reunited! "
 has_fail = true;
 fail_text = "Your efforts were null and Void";
+
+introTimer = -4;
+//setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
+introTimer2 = 0;

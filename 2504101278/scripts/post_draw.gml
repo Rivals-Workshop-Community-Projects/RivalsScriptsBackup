@@ -14,6 +14,16 @@ if len != 0
 }
 
 shader_end()
+
+gpu_set_fog(1,afterimage_color,1,1)
+gpu_set_blendmode(bm_add)
+if fspecial_stored[0] == 3
+{
+	var t = sin(get_gameplay_time()/16);
+	draw_sprite_ext(sprite_index,image_index,x,y,image_xscale, image_yscale,spr_angle,c_white,0.3 + 0.2*(t))
+}
+gpu_set_fog(0,c_white,1,1)
+gpu_set_blendmode(bm_normal);
 // gpu_set_blendmode(bm_add)
 // with (asset_get("pHitBox"))
 // {
