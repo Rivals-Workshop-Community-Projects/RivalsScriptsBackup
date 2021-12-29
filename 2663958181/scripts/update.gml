@@ -49,8 +49,10 @@ if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND or attack != AT_FSPECIAL
 }
 
 if is_shifting{
-    air_max_speed = air_max_speed_shif;
-	air_accel = air_accel_shift;
+	if air_max_speed != air_max_speed_shif{
+	    air_max_speed = air_max_speed_shif;
+		air_accel = air_accel_shift;
+	}
 	if state_cat = SC_HITSTUN or state == PS_DOUBLE_JUMP or state == PS_WALL_JUMP or state == PS_WALL_TECH{
 		is_shifting = false;
 	}
@@ -73,9 +75,11 @@ if is_shifting{
 		}
 	}
 } else {
-	// Return to the norm.
-	air_accel = air_accel_norm;
-	air_max_speed = air_max_speed_norm;
+	if air_max_speed != air_accel_norm{
+		// Return to the norm.
+		air_accel = air_accel_norm;
+		air_max_speed = air_max_speed_norm;
+	}
 }
 
 // Shades
@@ -84,6 +88,10 @@ current_sprite_set = shades;
 if get_gameplay_time() == 2{
 	if shield_down{
 		shades = 1;
+		/*
+		if attack_down{
+			shades = 2;
+		}*/
 	}
 }
 
@@ -146,19 +154,20 @@ with (obj_article1) {
 
 
 if under_cloud{
-	print("Under Cloud");
+	//print("Under Cloud");
 	is_squr_wet = true;
 	squr_buff_timer = 0;
 } else {
-	print("Not Under Cloud");
+	//print("Not Under Cloud");
 	if is_squr_wet{
 		if squr_buff_timer <= squr_buff_timer_max{
 			if state_cat == SC_HITSTUN and state != PS_TUMBLE{
 				if squr_buff_timer != squr_buff_timer_max - 1 {
 					squr_buff_timer++;
 				}
+			} else {
+				squr_buff_timer++;
 			}
-			squr_buff_timer++;
 		} else {
 			is_squr_wet = false;
 		}
@@ -176,66 +185,87 @@ if raincloud == noone{
 
 if is_squr_wet{
 	//print_debug("WET");
-	shift_speed = rain_shift_speed;
-	shiftjump_speed = rain_shiftjump_speed;
-	turbocrawl_speed = rain_turbocrawl_speed;
-	pivot_boost = rain_pivot_boost;
-	hydroplane_speed = rain_hydroplane;
-	wave_land_adj = rain_wave_land_adj;
-	wave_friction = rain_wave_friction;
-	ground_friction = rain_ground_friction;
-	air_friction = rain_air_friction;
+	if shift_speed != rain_shift_speed{
+		sound_play(sound_get("sfx_stat_up"), false, 0, .25);
+		sound_stop(sound_get("sfx_stat_down"));
+		shift_speed = rain_shift_speed;
+		shiftjump_speed = rain_shiftjump_speed;
+		turbocrawl_speed = rain_turbocrawl_speed;
+		pivot_boost = rain_pivot_boost;
+		hydroplane_speed = rain_hydroplane;
+		wave_land_adj = rain_wave_land_adj;
+		wave_friction = rain_wave_friction;
+		ground_friction = rain_ground_friction;
+		air_friction = rain_air_friction;
+		
+		var nspec_bkb = 7;
+		var nspec_kbs = .8;
+		var nspec_bhp = 10;
+		var nspec_hps = .65;
+		var fspec_bkb = 6;
+		var fspec_kbs = .55;
+		var fspec_bhp = 8;
+		var uspec_bkb = 8;
+		var uspec_kbs = .5;
+		var uspec_bhp = 18;
+		var uspec_hps = .95;
+		
+		set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .05);
+		set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
+		set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
+		
+		// Knockback Increase
+		// NSpecial
+		set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_BASE_KNOCKBACK, nspec_bkb);
+		set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_KNOCKBACK_SCALING, nspec_kbs);
+		set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_BASE_HITPAUSE, nspec_bhp);
+		set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_HITPAUSE_SCALING, nspec_hps);
+		
+		set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, nspec_bkb);
+		set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, nspec_kbs);
+		set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, nspec_bhp);
+		set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, nspec_hps);
+		
+		set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 7);
+		set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_EXTRA_HITPAUSE, 7);
+		
+		set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sfx_supereffective);
+		set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_HIT_SFX, sfx_supereffective);
+		
+		// FSpecial
+		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, fspec_bkb);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, fspec_kbs);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, fspec_bhp);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 5);
+		
+		set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sfx_supereffective);
+		
+		// USpecial
+		set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, uspec_bkb);
+		set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, uspec_kbs);
+		set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, uspec_bhp);
+		set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, uspec_hps);
+		set_hitbox_value(AT_USPECIAL, 5, HG_EXTRA_HITPAUSE, 10);
+		
+		set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sfx_supereffective);
+	}
 	
-	var nspec_bkb = 7;
-	var nspec_kbs = .8;
-	var nspec_bhp = 10;
-	var nspec_hps = .65;
-	var fspec_bkb = 6;
-	var fspec_kbs = .55;
-	var fspec_bhp = 8;
-	var uspec_bkb = 8;
-	var uspec_kbs = .85;
-	var uspec_bhp = 18;
-	var uspec_hps = .95;
-	
-	set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .05);
-	set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
-	set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
-	
-	// Knockback Increase
-	// NSpecial
-	set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_BASE_KNOCKBACK, nspec_bkb);
-	set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_KNOCKBACK_SCALING, nspec_kbs);
-	set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_BASE_HITPAUSE, nspec_bhp);
-	set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_HITPAUSE_SCALING, nspec_hps);
-	
-	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, nspec_bkb);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, nspec_kbs);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, nspec_bhp);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, nspec_hps);
-	
-	set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 7);
-	set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_EXTRA_HITPAUSE, 7);
-	
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sfx_supereffective);
-	set_hitbox_value(AT_NSPECIAL_AIR, 3, HG_HIT_SFX, sfx_supereffective);
-	
-	// FSpecial
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, fspec_bkb);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, fspec_kbs);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, fspec_bhp);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 5);
-	
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sfx_supereffective);
-	
-	// USpecial
-	set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, uspec_bkb);
-	set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, uspec_kbs);
-	set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, uspec_bhp);
-	set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, uspec_hps);
-	set_hitbox_value(AT_USPECIAL, 5, HG_EXTRA_HITPAUSE, 10);
-	
-	set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sfx_supereffective);
+	if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
+		switch(attack){
+			case AT_NSPECIAL:
+			case AT_NSPECIAL_AIR:
+			case AT_FSPECIAL:
+			case AT_USPECIAL:
+			case AT_FSTRONG:
+			case AT_DSTRONG:
+			case AT_USTRONG:
+				if window == 1 and window_timer == 1{
+					spawn_hit_fx(x, y - 16, vfx_specialshine);
+					sound_play(asset_get("sfx_orca_absorb"))
+				}
+				break;
+		}
+	}
 	
 	// Change Outline
 	if wet_flash < 155 and wait_timer_thing == -1{
@@ -262,48 +292,51 @@ if is_squr_wet{
 	}
 	init_shader();
 } else {
-	//print_debug("DRY");
-	reset_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION);
-	reset_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
-	reset_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+	if shift_speed != norm_shift_speed{
+		sound_play(sound_get("sfx_stat_down"), false, 0, .25);
+		//print_debug("DRY");
+		reset_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+		reset_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+		reset_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+		
+		reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_BASE_HITPAUSE);
+		reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_HITPAUSE_SCALING);
+		reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_EXTRA_HITPAUSE);
 	
-	reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_BASE_KNOCKBACK);
-	reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_KNOCKBACK_SCALING);
-	reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_BASE_HITPAUSE);
-	reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_HITPAUSE_SCALING);
-	reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_EXTRA_HITPAUSE);
-
-	reset_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK);
-	reset_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING);
-	reset_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE);
-	reset_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING);
-	reset_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE);
-	
-	reset_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK);
-	reset_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING);
-	reset_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE);
-	reset_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE);
-	
-	reset_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK);
-	reset_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING);
-	reset_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE);
-	reset_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING);
-	reset_hitbox_value(AT_USPECIAL, 5, HG_EXTRA_HITPAUSE);
-	
-	reset_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX);
-	reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_HIT_SFX);
-	reset_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX);
-	reset_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX);
-	
-	shift_speed = norm_shift_speed;
-	shiftjump_speed = norm_shiftjump_speed;
-	turbocrawl_speed = norm_turbocrawl_speed;
-	pivot_boost = norm_pivot_boost;
-	hydroplane_speed = norm_hydroplane;
-	wave_land_adj = norm_wave_land_adj;
-	wave_friction = norm_wave_friction;
-	ground_friction = norm_ground_friction;
-	air_friction = norm_air_friction;
+		reset_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE);
+		reset_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING);
+		reset_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE);
+		
+		reset_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE);
+		reset_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE);
+		
+		reset_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE);
+		reset_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING);
+		reset_hitbox_value(AT_USPECIAL, 5, HG_EXTRA_HITPAUSE);
+		
+		reset_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX);
+		reset_hitbox_value(AT_NSPECIAL_AIR, 3, HG_HIT_SFX);
+		reset_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX);
+		reset_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX);
+		
+		shift_speed = norm_shift_speed;
+		shiftjump_speed = norm_shiftjump_speed;
+		turbocrawl_speed = norm_turbocrawl_speed;
+		pivot_boost = norm_pivot_boost;
+		hydroplane_speed = norm_hydroplane;
+		wave_land_adj = norm_wave_land_adj;
+		wave_friction = norm_wave_friction;
+		ground_friction = norm_ground_friction;
+		air_friction = norm_air_friction;
+	}
 	
 	wet_flash = 0;   // literally don't even worry about this.
 	wait_timer_thing = -1;

@@ -142,6 +142,14 @@ if move_cooldown[AT_USPECIAL_GROUND] > 0 {
 	
  	}
  	
+ 
+ if "ai_target" in self && invincible && invince_time <= 2 {
+   		
+		draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 1);
+
+	
+}
+
 shader_end() 
 
 if spr_dir = 0.99 {

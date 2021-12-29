@@ -1,5 +1,21 @@
 ///
 
+if left_down and right_down and down_down and attack_pressed and "cheating" not in self and get_gameplay_time() <= 140 {
+	cheatingfr = instance_create(x,y,"oPlayer")
+	cheating = true 
+}
+
+if "cheating" in self {
+	print("AIex")
+	visible = false 
+	hitpause = true
+	hitstop = 999
+	invincible = true 
+	invince_time = 999
+	draw_indicator = false 
+	
+}
+
 if state == PS_PRATFALL or state == PS_PRATLAND or (!free && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
 	canceltime = 0
 }

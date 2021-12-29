@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 21;
+	var noOfPatches = 22;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -91,10 +91,9 @@ if (afterImageTimer > 0)
 for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0) afterImage[i].alpha--;
 
 // hue
-//hue+=3;
-//hue%=255;
-
-//init_shader();
+++hue;
+hue%=255;
+init_shader();
 
 #define MenuNav(_maxv, _prevState, _nextState)
 {

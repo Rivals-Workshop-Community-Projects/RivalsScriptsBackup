@@ -399,6 +399,19 @@ if ("practice" in self)
 						AddText("");
 						AddText("+ DStrong Endlag 13>12");
 						break;
+					case 21:
+						AddText("v1.20 - 29 Dec 2021");
+						AddText("Soulrifle funny patch");
+						AddText("");
+						AddText("USpec can now be walljump-cancelled");
+						AddText("");
+						AddText("FTilt Angle 40 -> 30");
+						AddText("FTilt KB 7.5+0.4 -> 7.0+0.4");
+						AddText("");
+						AddText("FSpec now doesnt have pratfall on hit");
+						AddText("");
+						AddText("Added Paint alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

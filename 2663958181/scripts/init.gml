@@ -3,6 +3,8 @@ crouchbox_spr = sprite_get("squr_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+small_sprites = true;
+
 char_height = 52;
 idle_anim_speed = .15;
 crouch_anim_speed = .1;
@@ -112,7 +114,12 @@ air_accel_shift     = 2;		// 0.2  -  0.4
 air_accel           = air_accel_norm;
 air_max_speed       = air_max_speed_norm; //the maximum hsp you can accelerate to when in a normal aerial state
 
-shades = 0;
+// Yee-HAW
+if get_player_color(player) == 28{
+    shades = 1; // Change to 2 when cowboy hat is done
+} else {
+    shades = 0;
+}
 had_shades = 0;
 shades_to_equip = 1;
 
@@ -221,6 +228,8 @@ sfx_supereffective = sound_get("sfx_hopsfavoritething");
 
 hfx_waterfallfinal = hit_fx_create(sprite_get("hfx_waterfallfinal"), 21);
 
+vfx_specialshine = hit_fx_create(sprite_get("vfx_specialshine"), 32);
+
 wall_frames = 6;
 
 //crouch animation frames
@@ -261,7 +270,7 @@ roll_backward_max = 9;
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
-waveland_sound = asset_get("sfx_waveland_zet");
+waveland_sound = asset_get("sfx_waveland_ran");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");

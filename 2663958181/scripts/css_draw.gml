@@ -68,10 +68,10 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 29;
+	col_max = 30;
 	ce[0,0] 	= make_color_rgb(149, 222, 246)
 	ce[0,1] 	= "Default"
-	ce[0,2] 	= "Designed by Aozane. Modified by Softcore."
+	ce[0,2] 	= "Designed by Aozane. Modified by Softcore. Mod by EquinoxDoodles."
 	ce[1,0] 	= make_color_rgb(181, 206, 255)
 	ce[1,1] 	= "Blue"
 	ce[1,2] 	= "[ROAACO] Inspired by Shiny Squirtle."
@@ -80,10 +80,10 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[2,2] 	= "[ROAACO] Inspired by Charmander and Torkoal."
 	ce[3,0] 	= make_color_rgb(134, 198, 208)
 	ce[3,1] 	= "Green"
-	ce[3,2] 	= "[ROAACO] Shiny Moemon Squirtle"
+	ce[3,2] 	= "[ROAACO] Shiny Moemon Squirtle."
 	ce[4,0] 	= make_color_rgb(214, 206, 214)
 	ce[4,1] 	= "White"
-	ce[4,2] 	= "[ROAACO] Colors from Project+."
+	ce[4,2] 	= "[ROAACO] Inspired by Oshawott."
 	ce[5,0] 	= make_color_rgb(189, 142, 214)
 	ce[5,1] 	= "Crystal"
 	ce[5,2] 	= "[ROAACO] Inspired by Shiny Blastoise."
@@ -121,10 +121,10 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[9,2]		= "Colors from Project+."
 	ce[10,0]	= make_color_rgb(48, 90, 171)
 	ce[10,1]	= "Sapphire"
-	ce[10,2]	= "Colors from Project+."
+	ce[10,2]	= "Inspired by Carracosta."
 	ce[11,0]	= make_color_rgb(181, 173, 148)
 	ce[11,1]	= "Platinum"
-	ce[11,2]	= "Colors from Project+."
+	ce[11,2]	= "Inspired by Turtonator."
 	ce[12,0]	= make_color_rgb(165, 190, 107)
 	ce[12,1]	= "Green"
 	ce[12,2]	= "[ROAACO] Inspired by Turtwig."
@@ -136,13 +136,13 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[14,2]	= "Bubbles says you're valid."
 	ce[15,0]	= make_color_rgb(255, 208, 0)
 	ce[15,1]	= "Inner Strength"
-	ce[15,2]	= "The Mad Lad who started all of this..."
+	ce[15,2]	= "Designed for InnerOtaku, the mad lad who allowed this to happen."
 	ce[16,0]	= make_color_rgb(255, 255, 255)
 	ce[16,1]	= "Mathematical"
 	ce[16,2]	= "Inspired by Finn from Adventure Time."
 	ce[17,0]	= make_color_rgb(220, 105, 250)
 	ce[17,1]	= "Come and Learn"
-	ce[17,2]	= "Inspired by Pibby."
+	ce[17,2]	= "Inspired by Pibby from Come Learn with Pibby."
 	ce[18,0]	= make_color_rgb(255, 221, 30)
 	ce[18,1]	= "Golden"
 	ce[18,2]	= "She deserves it."
@@ -154,34 +154,34 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[20,2]	= "with a healthy dose of Chemical X."
 	ce[21,0]	= make_color_rgb(130, 192, 117)
 	ce[21,1]	= "when day is dark"
-	ce[21,2]	= "always rember happy day"
+	ce[21,2]	= "always rember happy day - 4chan Green Text."
 	ce[22,0]	= make_color_rgb(201, 153, 81)
 	ce[22,1]	= "Targma"
-	ce[22,2]	= "Balls."
+	ce[22,2]	= "Balls. Based on the workshop character, Targma, a volcano themed turtle."
 	ce[23,0]	= make_color_rgb(86, 144, 61)
 	ce[23,1]	= "Lode & Puul"
-	ce[23,2]	= "When's the DE?"
+	ce[23,2]	= "When's the DE? Based on the workshop character, Lode & Puul, a magnet themed turtle."
 	ce[24,0]	= make_color_rgb(164, 150, 149)
 	ce[24,1]	= "Torga"
-	ce[24,2]	= "Balls."
+	ce[24,2]	= "Balls. Based on the workshop character, Torga, a water themed turtle."
 	ce[25,0]	= make_color_rgb(145, 139, 127)
 	ce[25,1]	= "Galega"
-	ce[25,2]	= "Tugma... wink"
+	ce[25,2]	= "Tugma... wink. Based on the workshop character, Galega, an air themed turtle."
 	ce[26,0]	= make_color_rgb(172, 33, 50)
 	ce[26,1]	= "Wild Fire"
-	ce[26,2]	= "The Feral Flame. You'll seen soon enough."
+	ce[26,2]	= "The Feral Flame. You'll see soon enough..."
 	ce[27,0]	= make_color_rgb(246, 104, 148)
 	ce[27,1]	= "Liz"
 	ce[27,2]	= "oh my gosh its liz timerpg from friday night funkin by slep16 omg"
-	ce[28,0]	= make_color_rgb(254, 238, 238)
-	ce[28,1]	= "Kanna"
-	ce[28,2]	= "ちゅうちゅう、Yeah! Please me! ちゅうちゅう、Yeah! Without you..."
+	ce[28,0]	= make_color_rgb(125, 204, 221)
+	ce[28,1]	= "Only On Wednesdays"
+	ce[28,2]	= "For Wombat and their P+ Tournaments! Hold Attack for Cowboy instead of shades."
 	ce[29,0]	= make_color_rgb(232, 63, 63)
 	ce[29,1]	= "The Ravyn Alt"
 	ce[29,2]	= "every tiny little girl character needs the palette rhat makes them look Evil - Ravyn"
-	//ce[30,0]	= make_color_rgb(232, 63, 63)
-	//ce[30,1]	= "???"
-	//ce[30,2]	= "This is a secret color that will hopefully be unlocked later"
+	ce[30,0]	= make_color_rgb(254, 238, 238)
+	ce[30,1]	= "Kanna"
+	ce[30,2]	= "ちゅうちゅう、Yeah! Based on Kanna from Miss Kobayashi's Dragon Maid."
 	//ce[31,0]	= make_color_rgb(232, 63, 63)
 	//ce[31,1]	= "???"
 	//ce[31,2]	= "This is a secret color that will hopefully be unlocked later"
@@ -258,12 +258,12 @@ if (color_desc_activate){
 	}else{
 		if (dial_time>0){ dial_time--; }
 	}
-	draw_set_alpha(0.3);
+	draw_set_alpha(0.6);
 	draw_rectangle_colour(tmp_xl2-1, tmp_yl1+3, tmp_xl2, tmp_yl2, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
-	textDraw(round(tmp_xl1+(tmp_bw/2))-3, round(tmp_yl1+(tmp_bh/2))-4, "fName", c_dkgray, 0, 100, 1, false, 0.3, "?");
+	textDraw(round(tmp_xl1+(tmp_bw/2))-3, round(tmp_yl1+(tmp_bh/2))-4, "fName", c_dkgray, 0, 100, 1, false, 0.8, "?");
 	var dial_ease = ease_linear( 0, 100, dial_time, dial_max )
 	draw_set_alpha(dial_ease/130);
-	if get_player_color(player) == 29{
+	if ue == 22 or ue == 23 or ue == 25 or ue == 29{
 		draw_rectangle_colour(x+10, y+45-round(dial_ease/30), x+210, y+153, c_black, c_black, c_black, c_black, false);
 	} else {
 		draw_rectangle_colour(x+10, y+75-round(dial_ease/30), x+210, y+153, c_black, c_black, c_black, c_black, false);
@@ -271,7 +271,7 @@ if (color_desc_activate){
 	draw_set_alpha(dial_ease/500);
 	draw_rectangle_colour(tmp_xl1, tmp_yl1+3, tmp_xl2, tmp_yl2, c_white, c_white, c_white, c_white, false);
 	draw_set_alpha(1);
-	if get_player_color(player) == 29{
+	if ue == 22 or ue == 23 or ue == 25 or ue == 29{
 		textDraw(x+14, (y+60)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, "- '"+ce[ue,1]+"'");
 		textDraw(x+14, (y+80)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, ce[ue,2]);
 	} else {

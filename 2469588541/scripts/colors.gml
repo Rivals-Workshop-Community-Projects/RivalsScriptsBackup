@@ -69,13 +69,13 @@ set_color_profile_slot( 4, 5, 120, 80, 80 ); //Limbs
 set_color_profile_slot( 4, 6, 110, 70, 70 ); //Limbs2
 
 // Purple
-set_color_profile_slot( 5, 0, 178, 150, 227 ); //Scarf
-set_color_profile_slot( 5, 1, 221, 144, 230 ); //Fur tone
-set_color_profile_slot( 5, 2, 224, 198, 218 ); //Fur tone2
-set_color_profile_slot( 5, 3, 255, 64, 147 ); //Eye
-set_color_profile_slot( 5, 4, 255, 255, 255 ); //Eye2
-set_color_profile_slot( 5, 5, 195, 207, 217 ); //Limbs
-set_color_profile_slot( 5, 6, 125, 126, 145 ); //Limbs2
+set_color_profile_slot( 5, 0, 255, 204, 242 ); //Scarf
+set_color_profile_slot( 5, 1, 255, 180, 242 ); //Fur tone
+set_color_profile_slot( 5, 2, 255, 255, 220 ); //Fur tone2
+set_color_profile_slot( 5, 3, 255, 204, 242 ); //Eye
+set_color_profile_slot( 5, 4, 253, 243, 255 ); //Eye2
+set_color_profile_slot( 5, 5, 171, 121, 237 ); //Limbs
+set_color_profile_slot( 5, 6, 128, 97, 224 ); //Limbs2
 
 // Kitsune
 set_color_profile_slot( 6, 0, 214, 73, 94 ); //Scarf
@@ -185,14 +185,14 @@ set_color_profile_slot( 17, 4, 180, 180, 180 ); //Eye2
 set_color_profile_slot( 17, 5, 156, 46, 59 ); //Limbs
 set_color_profile_slot( 17, 6, 97, 30, 37 ); //Limbs2
 
-// Xue Hua
-set_color_profile_slot( 18, 0, 255, 204, 242 ); //Scarf
-set_color_profile_slot( 18, 1, 255, 180, 242 ); //Fur tone
-set_color_profile_slot( 18, 2, 255, 255, 220 ); //Fur tone2
-set_color_profile_slot( 18, 3, 255, 204, 242 ); //Eye
-set_color_profile_slot( 18, 4, 253, 243, 255 ); //Eye2
-set_color_profile_slot( 18, 5, 171, 121, 237 ); //Limbs
-set_color_profile_slot( 18, 6, 128, 97, 224 ); //Limbs2
+// Spectrum
+set_color_profile_slot( 18, 0, 93, 250, 253 ); //Scarf
+set_color_profile_slot( 18, 1, 255, 41, 116 ); //Fur tone
+set_color_profile_slot( 18, 2, 121, 130, 145 ); //Fur tone2
+set_color_profile_slot( 18, 3, 41, 142, 204 ); //Eye
+set_color_profile_slot( 18, 4, 93, 250, 253 ); //Eye2
+set_color_profile_slot( 18, 5, 85, 91, 102 ); //Limbs
+set_color_profile_slot( 18, 6, 45, 44, 64 ); //Limbs2
 
 // Sai M
 set_color_profile_slot( 19, 0, 58, 102, 37 ); //Scarf
@@ -302,14 +302,14 @@ set_color_profile_slot( 30, 4, 79, 61, 92 ); //Eye2
 set_color_profile_slot( 30, 5, 66, 27, 94 ); //Limbs
 set_color_profile_slot( 30, 6, 36, 16, 53 ); //Limbs2
 
-// Spectrum
-set_color_profile_slot( 31, 0, 93, 250, 253 ); //Scarf
-set_color_profile_slot( 31, 1, 255, 41, 116 ); //Fur tone
-set_color_profile_slot( 31, 2, 121, 130, 145 ); //Fur tone2
-set_color_profile_slot( 31, 3, 41, 142, 204 ); //Eye
-set_color_profile_slot( 31, 4, 93, 250, 253 ); //Eye2
-set_color_profile_slot( 31, 5, 85, 91, 102 ); //Limbs
-set_color_profile_slot( 31, 6, 45, 44, 64 ); //Limbs2
+// Paint
+set_color_profile_slot( 31, 0, 255, 255, 128 ); //Scarf
+set_color_profile_slot( 31, 1, 64, 68, 77 ); //Fur tone
+set_color_profile_slot( 31, 2, 127, 130, 135 ); //Fur tone2
+set_color_profile_slot( 31, 3, 200, 60, 200 ); //Eye
+set_color_profile_slot( 31, 4, 255, 128, 255 ); //Eye2
+set_color_profile_slot( 31, 5, 128, 255, 255 ); //Limbs
+set_color_profile_slot( 31, 6, 60, 200, 200 ); //Limbs2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

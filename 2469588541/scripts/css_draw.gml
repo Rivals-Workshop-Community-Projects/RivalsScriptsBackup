@@ -41,7 +41,7 @@ alt_name[14]  = "Miles per hour";
 alt_name[15]  = "Nova Visionary";
 alt_name[16]  = "Flickering Spectre";
 alt_name[17]  = "Illusion";
-alt_name[18]  = "Xue Hua";
+alt_name[18]  = "Spectrum";
 alt_name[19]  = "Sai M";
 alt_name[20]  = "No Swiping";
 alt_name[21]  = "Star Wolf";
@@ -54,7 +54,7 @@ alt_name[27]  = "Sylvan Watcher";
 alt_name[28]  = "Avatar's Bison";
 alt_name[29]  = "Champion";
 alt_name[30]  = "Abyss";
-alt_name[31]  = "Spectrum";
+alt_name[31]  = "Paint";
 var num_alts = array_length_1d(alt_name);
 shader_end();
 
@@ -79,6 +79,11 @@ if (currAlt != 0)			textDraw(temp_x + 2 + min(image_alpha,1) * 8, temp_y + 80 + 
 textLen =		 (textLen + textDraw(temp_x + 2 + min(image_alpha,1) * 16, temp_y + 96 + offset, "fName", c_white, 0, 1000, 1, true, image_alpha, alt_name[currAlt]))/2;
 if (currAlt != num_alts-1)	textDraw(temp_x + 2 + min(image_alpha,1) * 8, temp_y + 112+ offset, "fName", c_gray, 0, 1000, 1, true, image_alpha, alt_name[currAlt+1]);
 
+
+if ("hue" not in self) hue = 0;
+++hue;
+hue%=255;
+init_shader();
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 {

@@ -1,20 +1,43 @@
 //ai_init - setting the basic AI attack behaviors
+
+if (get_training_cpu_action() != CPU_FIGHT)  {
+	move_cooldown[AT_TAUNT] = 5
+}
+
 if (get_training_cpu_action() == CPU_FIGHT) && get_gameplay_time() > 120{
-    
 
-    if ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND {
+
+///
+
+if (state == PS_DASH
+   	or state == PS_IDLE
+   	or state == PS_CROUCH
+   	or state == PS_WALK
+   	or state == PS_WALK_TURN
+   	or state == PS_DASH_STOP
+   	or state == PS_DASH_TURN
+   	or state == PS_WAVELAND)  {
+   		
+	invincible = true 
+	invince_time = 1
 	
-   if xdist < 100 && can_attack && ai_target.window == 1 && ((x < ai_target.x && ai_target.spr_dir == -1) or (x > ai_target.x && ai_target.spr_dir == 1))  {
-   	
-   	if !free {
-   	set_state (PS_ROLL_FORWARD)
-   	} 
-
-   }
+		nearbyhitbox = collision_circle( x, y - 30, 30, asset_get("pHitBox"), true, true ) 
+	if nearbyhitbox != noone{
+		if nearbyhitbox.player_id != self && nearbyhitbox.hit_priority > 0  {
+				 set_state(PS_PARRY)
+				 window_timer = 3
+                  invince_time = 0
+                  with nearbyhitbox {
+                  	 hitbox_timer = 0
+                  }
+     	}
+	}
+	
+} else {
 	
 }
 
-///
+move_cooldown[AT_DSPECIAL] = 5
 
 if state == PS_RESPAWN && visible{
 	move_cooldown[AT_TAUNT] = 0 ;
@@ -303,8 +326,7 @@ if (targetdamage == 20 && get_gameplay_time() > 120 && hitpause && state_cat != 
     	clear_button_buffer(PC_JUMP_PRESSED);
     	jump_down = false;
     	jump_pressed = false;
-    	tiltDance();
-    	
+   	
     }
 	
 	if (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL or (state == PS_DASH_START or state == PS_DASH or state == PS_DASH_TURN) and state != PS_SPAWN){
@@ -748,16 +770,7 @@ if (targetdamage == 20 && get_gameplay_time() > 120 && hitpause && state_cat != 
 			
 		}
 		
-		//DSpecial
-		if(ai_target.state == PS_ROLL_BACKWARD or ai_target.state == PS_ROLL_FORWARD or ai_target.state == PS_TECH_GROUND or ai_target.state == PS_TECH_BACKWARD or ai_target.state == PS_TECH_FORWARD) and ai_target.state_timer <= 2{
-			//predictloc(10);
-			predictlocTarget(10);
-			if (xtrag < x + 50 and xtrag > x - 50) and (y - 10 < ytrag and ytrag < y + char_height + 10){
-				set_attack(AT_DSPECIAL);
-				y -= 10
-			}
-			
-		}
+
 		
 		//Fspecial
 		xdist = abs(xtrag - x);
@@ -785,6 +798,8 @@ if (targetdamage == 20 && get_gameplay_time() > 120 && hitpause && state_cat != 
     // 	num_whiffs = 0;
     // }
     
+
+
 }
 
 if (ai_recovering){
@@ -812,6 +827,34 @@ if (get_training_cpu_action() == CPU_STAND){
 	}
 	
 }
+
+    if ai_target.state_cat != SC_HITSTUN && ai_target.state != PS_PRATFALL && ai_target.state != PS_PRATLAND{
+	
+    if !free && get_gameplay_time()%90 < 30{
+    	down_down = false 
+    	attack_pressed = false 
+    	attack_down = false 
+    	jump_down = false 
+    	special_down = false 
+    	if ai_target.x < x {
+    		left_down = true 
+    		left_hard_pressed = false 
+    	} else {
+    		right_down = true
+    		right_hard_pressed = false 
+    	}
+    	move_cooldown[AT_JAB] = 2
+    	move_cooldown[AT_UTILT] = 2
+    	move_cooldown[AT_DTILT] = 2
+    	move_cooldown[AT_FTILT] = 2
+    	move_cooldown[AT_DATTACK] = 2
+    	move_cooldown[AT_FSTRONG] = 2
+    	move_cooldown[AT_USTRONG] = 2
+    	move_cooldown[AT_DSTRONG] = 2
+    }
+	
+    }
+    
 #define Fspecial
 /// @param side
 /// @param ...
@@ -1451,12 +1494,7 @@ if len != 0{
 #define tiltDance
 
 if !free{
-	if spr_dir == 1{
-		left_down = true;
-	}else{
-		right_down = true;
-	}
-	
+
 }
 
 

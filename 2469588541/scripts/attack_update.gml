@@ -135,10 +135,7 @@ switch (attack)
 
     case AT_FSPECIAL:
         can_fast_fall = false;
-        if(free)
-		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
-		else
-		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
+        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, free&&!has_hit_player?7:1);
         switch (window)
         {
             case 1:
@@ -215,6 +212,7 @@ switch (attack)
                 break;
             case 2:
                 USpecRemoveResources();
+                can_wall_jump = true;
                 if (!hitpause)
                 {
                     if (!free) uspecLanded = true;
@@ -226,6 +224,7 @@ switch (attack)
                 break;
             case 3:
                 USpecRemoveResources();
+                can_wall_jump = true;
                 if (window_timer == 1) spawn_hit_fx(x, y-floor(char_height/2), bigstar_effect);
                 else if (window_timer == get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH)-1)
                 {
@@ -241,6 +240,7 @@ switch (attack)
                 }
                 break;
             case 4:
+                can_wall_jump = true;
                 if (window_timer == 1)
                 {
                     if (uspecLanded || !free || (has_rune("F") && has_hit_player))

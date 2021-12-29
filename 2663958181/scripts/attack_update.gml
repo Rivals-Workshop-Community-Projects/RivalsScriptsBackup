@@ -6,6 +6,13 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 switch(attack){
     case AT_TAUNT:
         switch(window){
+            case 1:
+                if window_timer < 4{
+                    if shield_down or shield_pressed{
+                        set_attack(AT_TAUNT_2);
+                    }
+                }
+                break;
             case 2:
                 if window_timer == 24{
                     sound_play(asset_get("sfx_swipe_weak2"));
@@ -22,6 +29,13 @@ switch(attack){
     case AT_TAUNT_2:
         switch(window){
             case 1:
+                if window_timer == 1{
+                    shades_to_equip = 1;
+                    /*
+                    if attack_down{
+                        shades_to_equip = 2;
+                    }*/
+                }
                 if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2{
                     sound_play(asset_get("sfx_blow_weak1"))
                 }
@@ -36,8 +50,12 @@ switch(attack){
                 }
                 // Equip
                 if window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH){
-                    if shades != 1{
-                        shades = 1;
+                    if shades < 1{
+                        if shades_to_equip == 2{
+                            shades = 2;
+                        } else {
+                            shades = 1;
+                        }
                     } else {
                         shades = 0;
                     }
@@ -305,13 +323,22 @@ switch(attack){
                     if ((spr_dir == -1 and right_down) or (spr_dir == 1 and left_down)){
                         set_window_value(attack, 2, AG_WINDOW_HSPEED, 1);
                         set_window_value(attack, 2, AG_WINDOW_VSPEED, -9);
+                        set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 80);
+                        set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 90);
+                        set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 90);
                     } else {
                         if ((spr_dir == -1 and left_down) or (spr_dir == 1 and right_down)){
                             set_window_value(attack, 2, AG_WINDOW_HSPEED, 5);
                             set_window_value(attack, 2, AG_WINDOW_VSPEED, -6);
+                            set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 65);
+                            set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 75);
+                            set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 75);
                         } else {
                             set_window_value(attack, 2, AG_WINDOW_HSPEED, 4);
                             set_window_value(attack, 2, AG_WINDOW_VSPEED, -8);
+                            set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 70);
+                            set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 80);
+                            set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 80);
                         }
                     }
                 }

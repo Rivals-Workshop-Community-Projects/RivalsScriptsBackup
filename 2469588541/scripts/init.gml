@@ -132,7 +132,7 @@ beegstar_effect = hit_fx_create(sprite_get("bighit"), 16);
 transcounter = 0;
 
 // hue
-//hue = 0;
+hue = 0;
 
 // USpec
 uspecDir = 0;

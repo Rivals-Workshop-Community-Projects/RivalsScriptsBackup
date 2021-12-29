@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 30 );
+set_num_palettes( 31 );
 
 // Shiny (Blue)
 set_color_profile_slot( 1, 0, 181, 206, 255 ); //fucking blue
@@ -340,15 +340,15 @@ set_color_profile_slot( 27, 5, 40, 27, 74 ); //coat 2
 set_color_profile_slot( 27, 6, 246, 188, 147 ); //skin 1
 set_color_profile_slot( 27, 7, 209, 129, 129 ); //skin 2
 
-// Kanna
-set_color_profile_slot( 28, 0, 254, 238, 238 ); //fucking blue
-set_color_profile_slot( 28, 1, 217, 174, 180 ); //fucking blue (but dark)
-set_color_profile_slot( 28, 2, 84, 77, 117 ); //backie packie
-set_color_profile_slot( 28, 3, 49, 54, 92 ); //dark backie packie
-set_color_profile_slot( 28, 4, 255, 200, 217 ); //coat
-set_color_profile_slot( 28, 5, 209, 130, 188 ); //coat 2
-set_color_profile_slot( 28, 6, 255, 245, 216 ); //skin 1
-set_color_profile_slot( 28, 7, 254, 185, 173 ); //skin 2
+// Wombat
+set_color_profile_slot( 28, 0, 125, 204, 221 ); //fucking blue
+set_color_profile_slot( 28, 1, 89, 136, 186 ); //fucking blue (but dark)
+set_color_profile_slot( 28, 2, 132, 87, 50 ); //backie packie
+set_color_profile_slot( 28, 3, 77, 39, 25 ); //dark backie packie
+set_color_profile_slot( 28, 4, 241, 227, 182 ); //coat
+set_color_profile_slot( 28, 5, 199, 158, 133 ); //coat 2
+set_color_profile_slot( 28, 6, 242, 226, 218 ); //skin 1
+set_color_profile_slot( 28, 7, 201, 155, 155 ); //skin 2
 
 // the ravyn alt (Not Genesis)
 set_color_profile_slot( 29, 0, 232, 63, 63 ); //fucking blue
@@ -359,6 +359,16 @@ set_color_profile_slot( 29, 4, 56, 56, 56 ); //coat
 set_color_profile_slot( 29, 5, 26, 26, 26 ); //coat 2
 set_color_profile_slot( 29, 6, 242, 226, 208 ); //skin 1
 set_color_profile_slot( 29, 7, 219, 193, 187 ); //skin 2
+
+// Kanna
+set_color_profile_slot( 30, 0, 254, 238, 238 ); //fucking blue
+set_color_profile_slot( 30, 1, 217, 174, 180 ); //fucking blue (but dark)
+set_color_profile_slot( 30, 2, 84, 77, 117 ); //backie packie
+set_color_profile_slot( 30, 3, 49, 54, 92 ); //dark backie packie
+set_color_profile_slot( 30, 4, 255, 200, 217 ); //coat
+set_color_profile_slot( 30, 5, 209, 130, 188 ); //coat 2
+set_color_profile_slot( 30, 6, 255, 245, 216 ); //skin 1
+set_color_profile_slot( 30, 7, 254, 185, 173 ); //skin 2
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
