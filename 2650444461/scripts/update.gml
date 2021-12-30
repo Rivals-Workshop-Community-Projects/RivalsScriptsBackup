@@ -121,6 +121,7 @@ if(!loaded){
 		trainingmode = true;
 	}
 	
+	phone.utils_cur[phone.UTIL_FPS_WARN] = false;phone.utils_cur_updated[phone.UTIL_FPS_WARN] = true;
 	loaded = true;
 }
 

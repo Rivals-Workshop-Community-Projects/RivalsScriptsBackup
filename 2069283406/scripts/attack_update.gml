@@ -25,17 +25,17 @@ if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && at
 		}
 		
 		if abs(hit_player_obj.x - x) > 10 && abs(hit_player_obj.y - 25 - y) > 10  {
-	     var angle = point_direction(x + 20*spr_dir, y,  hit_player_obj.x,  hit_player_obj.y - 25 );
+	     var angle = point_direction(x + 20*spr_dir, y,  hit_player_obj.x + hit_player_obj.hsp*2,  hit_player_obj.y+hit_player_obj.vsp*3 - 25 );
 		 x += floor(lengthdir_x(10, angle))
 		}
 		
          if attack != AT_BAIR {
-		 x += (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 16
+		 x += (hit_player_obj.x + hit_player_obj.hsp*2 - 20*spr_dir - x) / 16
          } else {
-         x += (hit_player_obj.x + hit_player_obj.hsp + 40*spr_dir - x) / 8
+         x += (hit_player_obj.x + hit_player_obj.hsp*2 + 40*spr_dir - x) / 8
          }
          
-		y += ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 12
+		y += ((hit_player_obj.y) - y + hit_player_obj.vsp*3) / 12
 
         
        	y += (hit_player_obj.y - y) / 12
@@ -683,7 +683,7 @@ if attack == AT_NSPECIAL{
 		}
          y += floor(lengthdir_y(10, angle))
          
-		hsp = (hit_player_obj.x + hit_player_obj.hsp - 30*spr_dir - x) / 24
+		hsp = (hit_player_obj.x + hit_player_obj.hsp*2 - 30*spr_dir - x) / 24
 		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 24
 
         

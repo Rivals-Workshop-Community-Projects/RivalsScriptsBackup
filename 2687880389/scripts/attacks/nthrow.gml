@@ -8,7 +8,7 @@ set_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE, sprite_get("nthrow_hurt"));
 set_attack_value(AT_NTHROW, AG_USES_CUSTOM_GRAVITY, 1);
 
 // windup/turn
-set_window_value(AT_NTHROW, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_NTHROW, 1, AG_WINDOW_LENGTH, 12); // 15
 set_window_value(AT_NTHROW, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_VSPEED_TYPE, 1);
@@ -19,7 +19,7 @@ set_window_value(AT_NTHROW, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, air_friction);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX, codename_mischeif_active ? sound_get("marina_yah") : asset_get("sfx_swipe_weak1"));
-set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX_FRAME, 14);
+set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX_FRAME, 11);
 
 // YEET
 set_window_value(AT_NTHROW, 2, AG_WINDOW_LENGTH, 6);
@@ -55,12 +55,12 @@ set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_Y, -47);
 set_hitbox_value(AT_NTHROW, 1, HG_WIDTH, 118);
 set_hitbox_value(AT_NTHROW, 1, HG_HEIGHT, 29);
 set_hitbox_value(AT_NTHROW, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_NTHROW, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 45);
+set_hitbox_value(AT_NTHROW, 1, HG_DAMAGE, 10);
+set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, 6.8);
-set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 6.8);
-set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 1.1);
+set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 1.15);
 //set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 0);
 //set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 1); // no visual effect

@@ -2,7 +2,7 @@ set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
+set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 // Windup
@@ -44,6 +44,7 @@ set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAME_START, 6);
 
 // Return to your original position
 set_window_value(AT_NAIR, 7, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NAIR, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_NAIR, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 7, AG_WINDOW_ANIM_FRAME_START, 7);
 

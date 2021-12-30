@@ -36,6 +36,7 @@ var palette_names = [
   "Guperman"
   "Lethal"
   "They/Them btw"
+  "Real Mayonnaise"
 ];
 
 shader_end()

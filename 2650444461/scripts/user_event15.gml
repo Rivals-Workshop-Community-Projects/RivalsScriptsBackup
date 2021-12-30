@@ -114,7 +114,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -258,6 +258,13 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.4", "28th December, 2021");
+initHeader("Nerfs");
+initSection("- Adjusted DAir hitboxes to be a little smaller, and added sourspots near Mudkip. It also comes out a bit slower (f16->f18)");
+initSection("- DStrong comes out later (f17->f20) and has more endlag (+2f), reduced lifetime of the eruptions (4->2)");
+initSection("- Dive now has more endlag when exiting the water if it whiffs (8 extra frames)");
+initSection("- Reduced FAir kbs (0.85->0.8)");
 
 initPatch("1.3", "30th November, 2021");
 initHeader("Fixes / Other Changes");

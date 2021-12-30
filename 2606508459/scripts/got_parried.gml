@@ -26,4 +26,10 @@ switch (my_hitboxID.attack)
         move_cooldown[AT_JAB] = 60;
         //set_state(PS_PRATFALL);
         break;
+    case AT_NAIR:
+        if (my_hitboxID.hbox_num == 1)
+        {
+            parry_lag = 40;
+        }
+        break;
 }

@@ -61,7 +61,7 @@ set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 150);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, cards_small);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_leafy_hit2"));

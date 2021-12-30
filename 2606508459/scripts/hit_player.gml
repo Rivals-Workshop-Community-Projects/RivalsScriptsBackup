@@ -138,6 +138,7 @@ if (my_hitboxID.attack == AT_NSPECIAL &&
 {
     with (fBall_obj)
     {
+        /*
         //Scatter Particles
         var cp = arr_particles_scatter
         for (var i = 0; i < array_length_1d(cp); i++)
@@ -150,6 +151,7 @@ if (my_hitboxID.attack == AT_NSPECIAL &&
             ];
         }
         _parCool = c_parCool;
+        */
         
         //Spawn effect
         spawn_hit_fx(x, y, c_hitFX);
@@ -251,3 +253,13 @@ if (my_hitboxID.attack == AT_NSPECIAL &&
     y = tar_y;
 }
 */
+
+//Do not affect the enemy with sphere if it just got hit by a shine
+
+/*
+if (my_hitboxID.attack == AT_NSPECIAL_2)
+{
+    shine_exept = 10;
+}
+*/
+//END

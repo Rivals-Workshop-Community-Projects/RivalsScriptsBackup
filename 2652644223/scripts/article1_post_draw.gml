@@ -2,7 +2,6 @@ for(i = 0; i < 3; i++)
 {
     if(bullets_held-1 >= i)
         bullets[i].alpha = 1;
-    bullets[i].rot -= 20*spr_dir;
     draw_sprite_ext(sprite_get("dspecial_fire"), 0, x,y, 0.9*spr_dir, 0.9, bullets[i].rot, c_white, bullets[i].alpha - (bullets[i].enhanced ? 0 : 0.3));
 }
 with player_id

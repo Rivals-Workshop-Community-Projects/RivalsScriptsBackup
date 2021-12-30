@@ -6,6 +6,7 @@ hitstun_hurtbox_spr = -1;
 
 canceltime = 0
 
+cheating = 0
 countering = 0
 
 introhit = 0

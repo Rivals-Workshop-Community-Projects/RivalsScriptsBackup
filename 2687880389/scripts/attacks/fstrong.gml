@@ -44,6 +44,7 @@ for (var i = 0; i < 3; i++) {
     
     // Pause to reflect
     set_window_value(AT_FSTRONG, 6 + (4 * i), AG_WINDOW_LENGTH, 10);
+    set_window_value(AT_FSTRONG, 6 + (4 * i), AG_WINDOW_HAS_WHIFFLAG, 1);
     set_window_value(AT_FSTRONG, 6 + (4 * i), AG_WINDOW_ANIM_FRAMES, 2);
     set_window_value(AT_FSTRONG, 6 + (4 * i), AG_WINDOW_ANIM_FRAME_START, 9 + (13 * i));
 }
@@ -90,6 +91,7 @@ if (fstrong_recoil_enabled) {
 
 // Return to your original position
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FSTRONG, 15, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_ANIM_FRAME_START, 11);
 

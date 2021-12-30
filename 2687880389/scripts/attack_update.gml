@@ -254,6 +254,7 @@ if ((attack == AT_NSPECIAL)
     
     if (attack == AT_NSPECIAL) {
     	if (window == 1) { // Allow changing directions during windup
+    		created_grab_hitbox = false;
             if (left_down) {
                 if (spr_dir > 0) {
                     // Turn around
@@ -265,6 +266,11 @@ if ((attack == AT_NSPECIAL)
                     spr_dir *= -1;
                 }
             }
+    	} else if (window == 2) {
+    		if ((window_timer == 4) && !created_grab_hitbox) {
+    			grab_hitbox = create_hitbox(AT_NSPECIAL, 1, x, y);
+    			created_grab_hitbox = true;
+    		}
     	} else if (holding_someone && (window == 3)) {
         	vsp = 0;
         	if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
@@ -348,7 +354,7 @@ if ((attack == AT_NSPECIAL)
         }
     } else if (attack == AT_UTHROW) {
     	if ((window == 2) && (window_timer == 1)) {
-    		current_effect_sound = sound_play(laser_charge_sound, false, noone, 1, 1.2);
+    		current_effect_sound = sound_play(takeoff_start_sound, false, noone, 1, 1.3);
     	} else if ((window == 2) && (window_timer == (get_window_value(attack, window, AG_WINDOW_LENGTH) - 4))) {
 	        sound_stop(current_effect_sound);
 	        sound_play(laser_blast_sound, false, noone, 1, 0.5);
@@ -605,6 +611,7 @@ if (attack == AT_USPECIAL){
 if (attack == AT_DSPECIAL) {
 	//move_cooldown[AT_DSPECIAL] = 2;
 	can_fast_fall = false;
+	can_wall_jump = true;
 	/*
 	if (window > 1) {
 		can_jump = true;

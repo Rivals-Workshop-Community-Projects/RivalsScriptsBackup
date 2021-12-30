@@ -4,6 +4,8 @@ state_timer ++;
 if(bullets_held != 0)
     idle_timer ++;
 player_id.move_cooldown[AT_DSPECIAL] = 30;
+for(i = 0; i < 3; i++)
+    bullets[i].rot -= 20*spr_dir;
 #region States
 switch(state)
 {
@@ -38,7 +40,7 @@ switch(state)
                 //detect player closest to you
                 with(oPlayer)
                 {
-                    if(id != other.player_id)
+                    if(id != other.player_id && visible)
                     {
                         var Dist = point_distance(x,y,other.x,other.y);
                         if(other.closestDist == 0 || Dist > other.closestDist)

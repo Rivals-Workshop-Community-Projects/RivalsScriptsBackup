@@ -1,5 +1,5 @@
 // Check if we grabbed someone
-if (my_hitboxID.attack == AT_NSPECIAL) {
+if (my_hitboxID == grab_hitbox) {
     // Fail grab under certain circumstances
     if ((!hit_player_obj.invincible)
         && (!hit_player_obj.super_armor))

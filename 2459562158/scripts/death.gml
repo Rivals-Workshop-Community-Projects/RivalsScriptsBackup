@@ -3,7 +3,7 @@
 sound_play(sound_get("death"))
 
 can_uspe = true;
-
+/*
 with(obj_article_platform)
 {
     if (player_id == other)
@@ -11,5 +11,5 @@ with(obj_article_platform)
        destroyed = true;
     }
 }
-
+*/
 inside_water = false;

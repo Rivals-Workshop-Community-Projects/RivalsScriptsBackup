@@ -7,7 +7,7 @@ set_attack_value(AT_FTHROW, AG_AIR_SPRITE, sprite_get("fthrow"));
 set_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE, sprite_get("fthrow_hurt"));
 
 // Up
-set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 4); // 6
 set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_VSPEED_TYPE, 1);
@@ -16,7 +16,7 @@ set_window_value(AT_FTHROW, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_HSPEED, 0);
 
 // Over
-set_window_value(AT_FTHROW, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FTHROW, 2, AG_WINDOW_LENGTH, 2); // 4
 set_window_value(AT_FTHROW, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_VSPEED_TYPE, 1);
@@ -25,7 +25,7 @@ set_window_value(AT_FTHROW, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_HSPEED, 0);
 
 // Rest
-set_window_value(AT_FTHROW, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FTHROW, 3, AG_WINDOW_LENGTH, 4); // 6
 set_window_value(AT_FTHROW, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTHROW, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FTHROW, 3, AG_WINDOW_VSPEED_TYPE, 1);
@@ -34,7 +34,7 @@ set_window_value(AT_FTHROW, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FTHROW, 3, AG_WINDOW_HSPEED, 0);
 
 // Ready
-set_window_value(AT_FTHROW, 4, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FTHROW, 4, AG_WINDOW_LENGTH, 3); // 4
 set_window_value(AT_FTHROW, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_VSPEED_TYPE, 1);
@@ -43,7 +43,7 @@ set_window_value(AT_FTHROW, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_SFX, codename_mischeif_active ? sound_get("marina_ha") : asset_get("sfx_swipe_weak2"));
-set_window_value(AT_FTHROW, 4, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_FTHROW, 4, AG_WINDOW_SFX_FRAME, 2);
 
 // Hi, I'm a Chuckster
 set_window_value(AT_FTHROW, 5, AG_WINDOW_LENGTH, 3);
@@ -57,7 +57,7 @@ set_window_value(AT_FTHROW, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FTHROW, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, air_friction);
 
 // Recoil
-set_window_value(AT_FTHROW, 6, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_FTHROW, 6, AG_WINDOW_LENGTH, 5); // 7
 set_window_value(AT_FTHROW, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTHROW, 6, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FTHROW, 6, AG_WINDOW_VSPEED_TYPE, 1);
@@ -67,7 +67,7 @@ set_window_value(AT_FTHROW, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, air_friction);
 
 
 // Return
-set_window_value(AT_FTHROW, 7, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_FTHROW, 7, AG_WINDOW_LENGTH, 5); // 7
 set_window_value(AT_FTHROW, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTHROW, 7, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FTHROW, 7, AG_WINDOW_VSPEED_TYPE, 1);
@@ -89,8 +89,8 @@ set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_Y, -74);
 set_hitbox_value(AT_FTHROW, 1, HG_WIDTH, 106);
 set_hitbox_value(AT_FTHROW, 1, HG_HEIGHT, 88);
 set_hitbox_value(AT_FTHROW, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_FTHROW, 1, HG_DAMAGE, 6);
-set_hitbox_value(AT_FTHROW, 1, HG_ANGLE, 60);
+set_hitbox_value(AT_FTHROW, 1, HG_DAMAGE, 8);
+set_hitbox_value(AT_FTHROW, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FTHROW, 1, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, 6);

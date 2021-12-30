@@ -113,7 +113,7 @@ bubble_y = 8;
 
 bat_sweetspot = hit_fx_create( sprite_get( "sweetspot" ), 7 );
 bat_explosion = hit_fx_create( sprite_get( "explosion" ), 15 );
-vfx_rockhit_large = hit_fx_create( sprite_get( "vfx_rockhit_large" ), 18 );
+vfx_rockhit_large = hit_fx_create( sprite_get( "vfx_rockhit_large" ), 24 );
 
 //Halloween Stuff
 halloween_end = hit_fx_create( sprite_get( "halloween_end" ), 9);

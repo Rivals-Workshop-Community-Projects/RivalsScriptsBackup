@@ -17,6 +17,13 @@ if (attack == AT_FSTRONG &&
     timing_fstrong = fx_hardway_duration;
 }
 
+//====> TRAINING MODE #######################################################
+
+if (attack == AT_TAUNT && get_match_setting(SET_PRACTICE))
+{
+    fs_charge = 199;
+}
+
 //====> ATTACKS CANCELLABLE INTO HADOKEN #######################################################
 
 if (attack == AT_JAB || attack == AT_NAIR)
@@ -93,11 +100,11 @@ if (attack == AT_NSPECIAL)
     //Snap of the no MP sequence after 15 frames
     else if (window == 13)
     {
-        if (window_timer == 20)                
-        {                        
-            attack_end();            
-            hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
-        }
+        if (window_timer == 20)                        
+        {                                    
+            attack_end();                        
+            hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");        
+        }    
     }
     
     //Actual Attack Logic
@@ -119,11 +126,10 @@ if (attack == AT_NSPECIAL)
             }
             else
             {
-                if (window_timer == 1)                                
-                {
-                    sound_play(sound_get("charge_1"), false, 0, .5);
-                    set_attack_value( AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
-                    
+                if (window_timer == 1)                                                
+                {                    
+                    sound_play(sound_get("charge_1"), false, 0, .5);                   
+                    set_attack_value( AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));                                        
                     if (nspecial_charge < 2)        { window = 2; }
                     else if (nspecial_charge < 6)   { window = 3; }
                     else                            { window = 4; }
@@ -141,12 +147,10 @@ if (attack == AT_NSPECIAL)
             }
         }
         
-        if (window == 5 && window_timer == 1)
-        {
-            spawn_hit_fx(x - (36 * spr_dir), y - 20, fx_bling);
-        }
-        
-        
+        if (window == 5 && window_timer == 1)        
+        {            
+            spawn_hit_fx(x - (36 * spr_dir), y - 20, fx_bling);  
+        }                 
         if ((window == 2 || window == 3 || window == 4 || window == 5 || window == 6) && 
             (!special_down || attack_down))
         {
@@ -179,6 +183,16 @@ if (attack == AT_NSPECIAL)
             set_attack_value( AT_NSPECIAL, AG_AIR_SPRITE, sprite_get ("nspecial_down") );
         }*/
         
+        //B Reverse
+        if (!flag_breverse &&
+            window == 7 && 
+            ((left_down && spr_dir > 0) || (right_down && spr_dir < 0)))
+        {
+            spr_dir *= -1;
+            image_xscale *= -1;
+            flag_breverse = true;
+        }
+        
         //Shoot
         if ((window == 8 ||
             window == 11 /*|| 
@@ -186,6 +200,9 @@ if (attack == AT_NSPECIAL)
             && flag_nspecial == 0
             )
         {
+            //Restart B Reverse flag
+            flag_breverse = false;
+            
             //Stop sound
             sound_stop(sound_get( "charge_1" ));
 
@@ -194,12 +211,6 @@ if (attack == AT_NSPECIAL)
             
             //Shoot the fireball
             spawn_hit_fx(x, y, fx_nspecial_dust1);
-            
-            if ((left_down && spr_dir > 0) || (right_down && spr_dir < 0))
-            {
-                spr_dir *= -1;
-                image_xscale *= -1;
-            }
             
             if (use_spm == 2 && free)
             {
@@ -280,11 +291,34 @@ if (attack == AT_NSPECIAL)
         
         //Shoot animation loop normalization
         //End the attack at the end window of the first nspecial variant 
-        if ((window == 9 && window_timer == 15) || (window == 12 && window_timer == 15))        
-        {
-            attack_end();
-            set_state(PS_IDLE);
-        }
+        if ((window == 9 && window_timer == 15) || (window == 12 && window_timer == 15))                
+        {            
+            attack_end();            
+            set_state(PS_IDLE);        
+            
+        }    
+        
+    }
+}
+
+//Input Catooken
+if (attack_down && 
+    special_down &&
+    (
+        (attack == AT_NSPECIAL_2 && window == 1) || 
+        (attack == AT_JAB && window == 1)
+    )
+)
+{
+    window = 1;
+    window_timer = 0;
+    if (move_cooldown[AT_NSPECIAL] <= 0)
+    {
+        set_attack(43);
+    }
+    else
+    {
+        set_attack(44);
     }
 }
 
@@ -305,11 +339,10 @@ if (attack == 43)
         }
         else
         {
-            if (window_timer == 1)                                
-            {                                        
-                sound_play(asset_get("sfx_zap"));                    
-                set_attack_value( 43, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
-                
+            if (window_timer == 1)                                            
+            {                                                        
+                sound_play(asset_get("sfx_zap"));                                    
+                set_attack_value( 43, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));                                
                 if (nspecial_charge < 2)        { window = 2; }
                 else if (nspecial_charge < 6)   { window = 3; }
                 else                            { window = 4; }
@@ -349,15 +382,26 @@ if (attack == 43)
         }
     }
     
-    //Shoot
-    if (window == 8 && window_timer == 1 && move_cooldown[AT_NSPECIAL] <= 0)
+    //B Reverse
+    if (!flag_breverse &&
+        window == 7 && 
+        (left_down && spr_dir > 0) || (right_down && spr_dir < 0))
     {
-        spawnFireBall(
-            x + (nspecial_offsetX * image_xscale),
-            y + nspecial_offsetY,
-            x, 
+        spr_dir *= -1;
+        image_xscale *= -1;
+        flag_breverse = true;
+    }
+    
+    //Shoot
+    if (window == 8 && window_timer == 1 && move_cooldown[AT_NSPECIAL] <= 0)    
+    {        
+        flag_breverse = false;
+        spawnFireBall(            
+            x + (nspecial_offsetX * image_xscale),            
+            y + nspecial_offsetY,            
+            x,
             y - 30, 
-            2, 
+            2,
             3, 
             fBall_distance, 
             0, 
@@ -400,6 +444,26 @@ if (attack == 44)
     }
 }
 
+//====> FINAL SMASH, PHOENIX CATOOKEN (49) #######################################################
+if (attack == 49)
+{
+    if (window == 5 && window_timer == 1)
+    {
+        fs_currHB = spawnFireBall(            
+            x + (nspecial_offsetX * image_xscale),
+            y + nspecial_offsetY,            
+            x,
+            y - 30, 
+            4,
+            3, 
+            fBall_distance, 
+            0, 
+            false,
+            free
+        );
+    }
+}
+
 //====> NEUTRAL B 2 #######################################################
 /*
     Call all the fire balls
@@ -412,19 +476,35 @@ if (attack == AT_NSPECIAL_2)
         set_attack(AT_NSPECIAL);
     }*/
     
+    var txo = 0; //Target X Offset
+    var tyo = -25; //Target Y Offset
+    
     can_jump = !was_parried;
     
-    if (window == 1 && window_timer == 1)        
-    {                 
-        nspecial_targetX = x;        
-        nspecial_targetY = y - 25; 
+    if (window == 1 && window_timer == 1)            
+    {
+        var nstx = x + txo;
+        var nsty = y + tyo;
         
+        nspecial_targetX = nstx;
+        nspecial_targetY = nsty;
         //spawn_hit_fx(nspecial_targetX, nspecial_targetY, fx_shine);
         
         //Indicator
         if (fBall_obj != noone)
         {
             sound_play(asset_get("sfx_frog_fspecial_cancel"));
+        
+            /*
+            spawn_hit_fx(nstx, nsty - c_callRadius, fx_miniSpark); //UP
+            spawn_hit_fx(nstx + c_callRadius*.7, nsty - c_callRadius*.7, fx_miniSpark); //UR
+            spawn_hit_fx(nstx + c_callRadius, nsty, fx_miniSpark); //RIGHT
+            spawn_hit_fx(nstx + c_callRadius*.7, nsty + c_callRadius*.7, fx_miniSpark); //RD
+            spawn_hit_fx(nstx, nsty + c_callRadius, fx_miniSpark); //DOWN
+            spawn_hit_fx(nstx - c_callRadius*.7, nsty + c_callRadius*.7, fx_miniSpark); //DL
+            spawn_hit_fx(nstx - c_callRadius, nsty, fx_miniSpark); //LEFT
+            spawn_hit_fx(nstx - c_callRadius*.7, nsty - c_callRadius*.7, fx_miniSpark); //LU
+            */
             
             with (fBall_obj)
             {
@@ -445,7 +525,7 @@ if (attack == AT_NSPECIAL_2)
     if (flag_ballCall == 1)
     {
         //sound_play(asset_get("mfx_tut_fail"));
-        print_debug("NO CALL ALERT")
+        //print_debug("NO CALL ALERT")
     }
     
     if (flag_ballCall == 0 &&
@@ -462,9 +542,26 @@ if (attack == AT_NSPECIAL_2)
         {
             with (fBall_obj)
             {
-                _targetX = other.nspecial_targetX;
-                _targetY = other.nspecial_targetY;
+                var _dist = point_distance(x, y, other.x + txo, other.y + tyo);
+                
+                if (!other.dip_radius ||
+                    (c_callRadius == 0 || //If call_radius is 0 then let it be unimpided
+                     _dist <= c_callRadius))
+                {
+                    _targetX = other.nspecial_targetX;
+                    _targetY = other.nspecial_targetY;
+                }
+                else
+                {
+                    var vx = ((other.x + txo) - x) / _dist;
+                    var vy = ((other.y + tyo) - y) / _dist;
+                    
+                    _targetX = x + (c_callRadius * vx);
+                    _targetY = y + (c_callRadius * vy);
+                }
+                
                 _reduceChargeNSCool = c_reduceChargeNSCool;
+                _flipperChangeCool = c_flipperChangeCool;
                 _reduceChargeNSFlag = true;
             }
             if (window_timer = 1 && true)
@@ -473,7 +570,8 @@ if (attack == AT_NSPECIAL_2)
             }
         }
         
-        //flag_ballCall = 1;
+        //DEACTIVATE IF SOMETHING GOES WRONG
+        flag_ballCall = 1;
     }
     
     if (window == 4)
@@ -761,6 +859,7 @@ if (mode == 0 ||
         c_id = 0;
         c_mode = mode; //other.nspecial_mode;
         c_owner = other;
+        c_callRadius = other.c_callRadius;
         c_direction = other.image_xscale;
         c_img_spd = .2;
         c_vanishFX = 21;
@@ -795,7 +894,9 @@ else if (mode >= 0)
 {
     var use_offX = nspecial_offsetX;
     var use_offY = nspecial_offsetY;
-    if (tilt && !place_meeting(x, y + 20, asset_get("par_block"))) 
+    var generalOne = mode == 4 ? 1 : 0;
+    
+    if (tilt && !place_meeting(x, y + 20, asset_get("par_block")) && mode != 4) 
     {
         //The catooken will only snap to the hand if above 20 units off the ground
         use_offY += 40 
@@ -804,45 +905,102 @@ else if (mode >= 0)
     var use_charge = floor(charge / 2);
     if (use_charge > 3) { use_charge = 3; }
     
-    //Tilt
-    if (tilt)
+    var useHsp = 4
+    
+    if (mode == 2)
     {
-        set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1);
-        set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1); 
+        //Tilt
+        if (tilt)
+        {
+            /*
+            set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1);
+            set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1); 
+            */
+            set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, useHsp * .7 );
+            set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, useHsp * .7 ); 
+        }
+        else
+        {
+            /*
+            set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge));
+            set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, 0);
+            */
+            set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, useHsp );
+            set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, 0 ); 
+        }
+        
+        //Parameters
+        set_hitbox_value( 43, 1, HG_DAMAGE, pBall_base_dmg + (pBall_inc_dmg * use_charge));
+        set_hitbox_value( 43, 1, HG_BASE_HITPAUSE, pBall_base_hitpause + (pBall_inc_hitpause * use_charge));
+        set_hitbox_value( 43, 1, HG_BASE_KNOCKBACK, 4);
+        set_hitbox_value( 43, 1, HG_KNOCKBACK_SCALING, .3);
+        set_hitbox_value( 43, 1, HG_LIFETIME, 70);
+    }
+    else if (mode == 4)
+    {
+        set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, 10);
+        set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, 0);
+        
+        //Parameters
+        set_hitbox_value( 43, 1, HG_DAMAGE, 30);
+        set_hitbox_value( 43, 1, HG_BASE_HITPAUSE, 20);
+        set_hitbox_value( 43, 1, HG_BASE_KNOCKBACK, 11);
+        set_hitbox_value( 43, 1, HG_KNOCKBACK_SCALING, 1.3);
+        set_hitbox_value( 43, 1, HG_LIFETIME, 300);
+        set_hitbox_value( 43, 1, HG_EFFECT, 1);
+    }
+    
+    //Parameters that are 1 when is Final Smash
+    set_hitbox_value( 43, 1, HG_PROJECTILE_WALL_BEHAVIOR, generalOne);
+    set_hitbox_value( 43, 1, HG_PROJECTILE_GROUND_BEHAVIOR, generalOne);
+    set_hitbox_value( 43, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, generalOne);
+    set_hitbox_value( 43, 1, HG_PROJECTILE_DOES_NOT_REFLECT, generalOne);
+    set_hitbox_value( 43, 1, HG_PROJECTILE_IS_TRANSCENDENT, generalOne);
+    
+    //Sound
+    if (mode == 4)
+    {
+        set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball_land"));
     }
     else
     {
-        set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge));
-        set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, 0);
-    }
-    
-    //Parameters
-    set_hitbox_value( 43, 1, HG_DAMAGE, pBall_base_dmg + (pBall_inc_dmg * use_charge));
-    set_hitbox_value( 43, 1, HG_BASE_HITPAUSE, pBall_base_hitpause + (pBall_inc_hitpause * use_charge));
-    
-    //Sound
-    switch (use_charge)
-    {
-        case 0: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2")); break;
-        case 1: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2")); break;
-        case 2: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); break;
-        case 3: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); break;
+        switch (use_charge)
+        {
+            case 0: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2")); break;
+            case 1: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2")); break;
+            case 2: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); break;
+            case 3: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); break;
+        }
     }
     
     var new_pBall = create_hitbox(43, 1, x + (use_offX * image_xscale), y + use_offY);
     
     with (new_pBall)
     {
-        sprite_index = tilt ? 
-            sprite_get("ball_formC_" + string(use_charge + 1) + "T") : 
-            sprite_get("ball_formC_" + string(use_charge + 1));
+        if (mode == 2)
+        {
+            sprite_index = tilt ? 
+                sprite_get("ball_formC_" + string(use_charge + 1) + "T") : 
+                sprite_get("ball_formC_" + string(use_charge + 1));
+        }
+        else if (mode == 4)
+        {
+            sprite_index = sprite_get("ball_formFS");
+        }
     }
     
     if (arr_pBall[pBall_rotation] != noone)     { instance_destroy(arr_pBall[pBall_rotation]); }
     
-    arr_pBall[pBall_rotation] = new_pBall;
-    pBall_rotation++;
-    if (pBall_rotation >= pBall_amount) { pBall_rotation = 0; }
+    arr_pBall[0] = new_pBall;
+    
+    if (mode == 4)
+    {
+        return new_pBall;
+    }
+    
+    //arr_pBall[pBall_rotation] = new_pBall;
+    //pBall_rotation++;
+    //if (pBall_rotation >= pBall_amount) { pBall_rotation = 0; }
 }
 
 return noone

@@ -1,5 +1,22 @@
 //article1_update
 
+/*if (_currHB != noone)
+{
+    try
+    {
+        print_debug(_currHB.hit_flipper)
+    }
+    catch (e)
+    {
+        print_debug("nm...")
+        _currHB = noone;
+    }
+}
+else
+{
+    print_debug("no ball")
+}*/
+
 //====> INITIAL LOGIC ###########################################
 if (init == 0)
 {
@@ -7,9 +24,10 @@ if (init == 0)
     if (_charge > 3) { _charge = 3; }
     
     //Base Sprite
-    sprite_index = sprite_get("ball_form0");
+    //sprite_index = sprite_get("ball_form0");
     
     //Particles
+    /*
     var cp = arr_particles_init
     var cp_len = array_length_1d(cp);
     for (var i = 0; i < array_length_1d(cp); i++)
@@ -17,7 +35,7 @@ if (init == 0)
         /*
         Every random number requires a unique id, 
         so to ensure we get two different values a second id is created
-        */
+        *-/
         var ii = i + cp_len;
         
         var tar_x = cp[i, 0] + random_func( i, cp[i, 1] - cp[i, 0], true);
@@ -29,8 +47,10 @@ if (init == 0)
             y + tar_y
         ];
     }
+    */
     
     _postHitCool = c_HBStartup;
+    _postHitCoolMax = c_HBStartup;
     _parCool = c_parCool;
     _lifetime = c_HBLifespan;
 }
@@ -55,6 +75,34 @@ else
     */
 }
 
+//Change Flipper if the object is moving too fast
+//Also perform fx
+try
+{
+    if ((abs(x - pf_x) > 8 || abs(y - pf_y[0]) > 8) && timer % 3 == 0)
+    {
+        spawn_hit_fx(x, y, fx_ballLeft)
+    }
+    
+    if (_currHB != noone)
+    {
+        if (abs(x - pf_x) > 0.5 && _flipperChangeCool == 0)
+        {
+            _currHB.hit_flipper = 6;
+        }
+        else
+        {
+            _currHB.hit_flipper = 7;
+        }
+    }
+}
+catch(e)
+{
+    print_debug(e)
+    _currHB = noone
+}
+
+/*
 //====> Move particles
 for (var i = 0; i < array_length_1d(arr_particles_pos); i++)
 {
@@ -69,6 +117,7 @@ for (var i = 0; i < array_length_1d(arr_particles_pos); i++)
         arr_particles_pos[i, 1] = lerp(arr_particles_pos[i, 1], y, c_changeFactorY);
     }
 }
+*/
 
 //====> Create special effect
 if (fx_shine_on &&
@@ -90,12 +139,15 @@ if (_charge < 0 &&
 if (_reduceChargeNSCool == 0 &&
     _reduceChargeNSFlag)
 {
-    //_charge--;
-    //_postHitCool = c_HBPostHitCool;
-    _lifetime = c_HBLifespan;
-    //if (instance_exists(_currHB)) { instance_destroy(_currHB); }
-    //_currHB = noone;
+    if (false) //True = The ball will be deducted one charge if called
+    {
+        _charge--;
+        _postHitCool += 1; //c_HBPostHitCool;
+        if (instance_exists(_currHB)) { instance_destroy(_currHB); }
+        _currHB = noone;
+    }
     
+    _lifetime = c_HBLifespan;
     _reduceChargeNSFlag = false;
 }
 
@@ -162,6 +214,7 @@ else
     
     _lifetime = c_HBLifespan;
     _postHitCool = c_HBPostHitCool;
+    _postHitCoolMax = c_HBPostHitCool;
     _hit = false;
 }
 
@@ -190,9 +243,25 @@ if (_explode)
     flag_destroy = true;
 }
 
+//====> Detect Proximity
+var txo = 0; //Target X Offset
+var tyo = -25; //Target Y Offset
+
+_inRange = (!c_owner.dip_radius ||
+    (c_callRadius == 0 || //If call_radius is 0 then let it be unimpided
+    point_distance(x, y, c_owner.x + txo, c_owner.y + tyo) <= c_callRadius))
+
+if (_currHB != noone)
+{
+    
+}
+
+//print_debug(_inRange)
+
 //====> Collide with other fireballs
 if (_currHB != noone)
 {
+    var _kill = false;
     with (_currHB)
     {
         var o = other.c_owner;
@@ -230,6 +299,8 @@ if (_currHB != noone)
                 else                    { other._targetX -= floor(rd * 2.5); }
                 if (y > _HBHit.y)       { other._targetY += floor(vrd * 2.5); }
                 else                    { other._targetY -= floor(vrd * 2.5); }
+                
+                _kill = true;
             }
             else if (_HBHit.player_id == o && _HBHit.attack == AT_NSPECIAL)
             {
@@ -299,8 +370,8 @@ if (_currHB != noone)
                             else                        { other._targetX -= rd * modf[0]; }
                             other._targetY -= vrd * modf[0];
                             _fxDirection = 1;
-                            _boingH = true;
-                            _boingV = 2;
+                            //_boingH = true;
+                            //_boingV = 2;
                             break;
                         
                         //Forward Up Strong
@@ -444,8 +515,8 @@ if (_currHB != noone)
                     {
                         o.hitpause = true;
                         o.hitstop = 6;
-                        o.invincible = true;
-                        o.invince_time = 4;
+                        //o.invincible = true;
+                        //o.invince_time = 4;
                     }
                     
                     if (o.dip_boing)
@@ -484,6 +555,11 @@ if (_currHB != noone)
                 }
             }
         }
+    }
+    
+    if (_kill)
+    {
+        _currHB = noone;
     }
 }
 
@@ -540,7 +616,8 @@ if (instance_exists(_currHB))
     with(oPlayer)
     {
         if (state_cat == SC_HITSTUN ||
-            abs(other.x - other.pf_x) > 0.1) //ensure that the ball will hit if it is moving fast enough
+            abs(other.x - other.pf_x) > 0.5 || 
+            abs(other.y - other.pf_y[0]) > 0.5) //ensure that the ball will hit if it is moving fast enough
         {
             other._currHB.can_hit[player] = true;
         }
@@ -563,6 +640,7 @@ if (_postHitCool < 0 &&
     //spawn_hit_fx(x, y, c_hitFX);
     _charge--;
     _postHitCool = c_HBPostHitCool * 2;
+    _postHitCoolMax = c_HBPostHitCool * 2;
     //flag_destroy = true;
 }
 
@@ -636,12 +714,12 @@ if (c_HBLifespan > 0 &&
 {
     var lock = 0; //1 = left, 2 = right, 10 = up, 20 = down
     
-    if (x < view_get_xview()) { lock = 1; }  //Snap Left    
-    if (x > view_get_xview() + 958) { lock = 2; }  //Snap Rigth    
-    if (y < view_get_yview()) { lock += 10; }  //Snap Up    
-    if (y > view_get_yview() + 486) { lock += 20; }  //Snap Down       
+    if (x < view_get_xview()) { lock = 1; }  //Snap Left     // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+    if (x > view_get_xview() + 958) { lock = 2; }  //Snap Rigth     // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+    if (y < view_get_yview()) { lock += 10; }  //Snap Up     // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+    if (y > view_get_yview() + 486) { lock += 20; }  //Snap Down        // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
     
-    if (lock > 0) // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+    if (lock > 0)
     {
         _offscreen = true;
         var nso = c_owner.nspecial_offscreen;
@@ -653,18 +731,18 @@ if (c_HBLifespan > 0 &&
                 break;
             case 1:  
                 _offscreenX = 2;
-                _offscreenY = y - view_get_yview();
+                _offscreenY = y - view_get_yview(); // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
                 _offscreenId = 4;
                 break; 
             //Left            
             case 2:
                 _offscreenX = 958; 
-                _offscreenY = y - view_get_yview(); 
+                _offscreenY = y - view_get_yview();  // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
                 _offscreenId = 0; 
                 break;
             //Right            
             case 10: 
-                _offscreenX = x - view_get_xview(); 
+                _offscreenX = x - view_get_xview();  // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
                 _offscreenY = 0;
                 _offscreenId = 6; 
                 break; 
@@ -681,7 +759,7 @@ if (c_HBLifespan > 0 &&
                 _offscreenId = 7; 
                 break; 
             //Up Right
-            case 20: _offscreenX = x - view_get_xview();
+            case 20: _offscreenX = x - view_get_xview(); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
                 _offscreenY = 486; 
                 _offscreenId = 2; 
                 break; 
@@ -698,7 +776,7 @@ if (c_HBLifespan > 0 &&
                 _offscreenId = 1; 
                 break; 
             //Down Right
-        } // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+        }
     }
     else
     {
@@ -718,9 +796,29 @@ _trapCool--;            if (_trapCool < 0)              { _trapCool = 0; }
 _fxCool--;              if (_fxCool < 0)                { _fxCool = 0; }
 _parCool--;             if (_parCool < 0)               { _parCool = 0; }
 _reduceChargeNSCool--;  if (_reduceChargeNSCool < 0)    { _reduceChargeNSCool = 0; }
+_flipperChangeCool--;   if (_flipperChangeCool < 0)     { _flipperChangeCool = 0; }
+_sclr_hold--;           if (_sclr_hold < 0)             { _sclr_hold = 0; }
 
 pf_squish = _fx_ballSquish_frames;
 _fx_ballSquish_frames--;    if (_fx_ballSquish_frames < 0)    { _fx_ballSquish_frames = 0; }
+
+if (_repositionCool <= 0 &&
+    _postHitCool <= 0 &&
+    _repositionCool <= 0)
+{
+    if (_sclr_hold <= 0)
+    {
+        sclr_timer += sclr_change       
+        if (sclr_timer >= sclr_max) { sclr_change *= -1; }
+        if (sclr_timer <= sclr_min) { sclr_change *= -1; }
+    }
+}
+else
+{
+    sclr_timer = 0;
+    sclr_change = abs(sclr_change);
+    _sclr_hold = c_sclr_hold;
+}
 
 //Mantain after a cycle (conditional)
 if (_currHB != noone)   { _lifetime--;      if (_lifetime < 0)      { _lifetime = 0; } }
@@ -730,6 +828,7 @@ if (instance_exists(_currHB))
 { 
     _currHB.length += 1;
 }
+timer++;
 
 //====> First time running flag
 even = even == 1 ? 0 : 1;

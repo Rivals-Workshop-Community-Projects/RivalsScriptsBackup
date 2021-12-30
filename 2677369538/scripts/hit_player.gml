@@ -15,7 +15,7 @@ if (attack == AT_FSTRONG){
 	}
 }
 
-if !(my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_DSPECIAL){
+if !(my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR){
 	if (attack == AT_FSPECIAL){
 		//if (window == 2){ window = 4; window_timer = 0; }
 		if (window == 6){ which_bash = 2; }

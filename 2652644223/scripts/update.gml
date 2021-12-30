@@ -123,7 +123,7 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 old_scarf_x = floor((scarf_x+old_scarf_x)/2);
 old_scarf_y = floor((scarf_y+old_scarf_y)/2);
 
-if(get_gameplay_time() % (8-scarf_timer) == 0 && !scarf_off)
+if(get_gameplay_time() % (8-scarf_timer) == 0 && !scarf_off && visible)
 {
     fx = spawn_hit_fx(old_scarf_x+4*spr_dir,old_scarf_y,scarf_fire);
     fx.draw_angle = scarf_angle;
@@ -188,6 +188,26 @@ if(state == PS_SPAWN)
     }
 }
 
+if(hud_bullet != bullets)
+{
+    hud_bullet = bullets
+    hud_timer = 30;
+    if(bullets == 0)
+    {
+        outline_timer = 20;
+        sound_play(asset_get("sfx_abyss_despawn"));
+    }
+}
+
+if(hud_timer != 0)
+    hud_timer--;
+if(bullets == 0)
+{
+    hud_reload_timer ++;
+    if (hud_reload_timer == 30)
+        hud_reload_timer = 0;
+}
+    
 if (get_training_cpu_action() != CPU_FIGHT && state != PS_SPAWN) {
     if(prac_timer != 0)
         prac_timer --;

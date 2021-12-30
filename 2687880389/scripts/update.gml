@@ -53,9 +53,15 @@ if (rocketing) {
 }
 */
 
+
 // Give something back on wall jump
 if (state == PS_WALL_JUMP) {
 	if (!previously_wall_jumping) {
+		
+		// Stop playing certain sounds on walljump
+		sound_stop(current_effect_sound);
+		sound_stop(current_rocket_sound);
+
 		/*
 		if (booster_rush_charges < max_booster_rush_charges) {
 			booster_rush_charges++;

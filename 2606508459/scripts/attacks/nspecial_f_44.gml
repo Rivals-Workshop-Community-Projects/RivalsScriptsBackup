@@ -24,7 +24,7 @@ ig++;
 //Stay exploded
 set_window_value(44, ig, AG_WINDOW_TYPE, 9);
 set_window_value(44, ig, AG_WINDOW_LENGTH, 32);
-set_window_value(44, ig, AG_WINDOW_ANIM_FRAMES, 8);
+set_window_value(44, ig, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(44, ig, AG_WINDOW_ANIM_FRAME_START, 7);
 
 //END

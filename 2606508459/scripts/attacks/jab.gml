@@ -7,7 +7,7 @@ var ig = 1;
 
 //Jab 1 Start
 set_window_value(AT_JAB, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 5); //3
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAMES, 1);
 
 ig++;

@@ -1,6 +1,8 @@
 //Fernet
 
+//***************************************************************************
 //====> CUSTOM CONSTANTS ###########################################
+//***************************************************************************
 
 //DIP SWITCHES
 dip_developerMode = false;
@@ -12,6 +14,7 @@ dip_MP = false;
 dip_ballHitstop = true;
 dip_boing = true;
 dip_swapSpecial = true;
+dip_radius = true;
 
 /*
 dip_mode = get_player_color(player);
@@ -29,7 +32,9 @@ hud_MPNum = [152, -8];
 hud_MPSymbol = [130, -16];
 hud_MPMode = [189, -18];
 
+//***************************************************************************
 //====> CUSTOM VARIABLES ###########################################
+//***************************************************************************
 
 //Previous Frame
 pre_state = state;
@@ -58,6 +63,8 @@ fx_nspecial_dust2 = hit_fx_create( sprite_get("nspecial_dust2"), fx_nspecial_dus
 fx_nspecial_ground_cool_c = 10;
 fx_nspecial_ground_cool = 0;
 
+fx_miniSpark = hit_fx_create( sprite_get("miniSpark"), 10 );
+
 c_elec_timer = 60;
 elec_timer = 0;
 elec_target = noone;
@@ -65,6 +72,7 @@ elec_target = noone;
 intro_timer = -2;
 intro_fpf = .2;
 intro_timerMax = 24;
+intro_sprite = get_player_color(player) > 14 ? sprite_get("intro2") : sprite_get("intro");
 
 hurtground_sprite = sprite_get("hurtground");
 
@@ -120,6 +128,8 @@ ballCall_blinkMax = 255;
 ballCall_blinkMin = 100;
 ballCall_blinkChange = 15;
 ballCall_blinkCurr = 0;
+
+c_callRadius = 300; //500;
 
 //FSpecial
 fspecial_chargeHSP = 0;
@@ -178,7 +188,7 @@ fBall_obj = noone;
 //for (var i = 0; i < fBall_amount; i++)      { arr_fBall[i] = noone; }
 
 //PBall
-pBall_amount = 1; //Amount of PBalls the player can have at the same time
+pBall_amount = 2; //1; //Amount of PBalls the player can have at the same time
 pBall_rotation = 0;
 pBall_base_hsp = 2;
 pBall_inc_hsp = 2;
@@ -211,15 +221,70 @@ flag_fspecial_2 = 0;
 flag_dspecial = 0;
 flag_ballCall = 0;
 flag_taunt = false;
+flag_breverse = false;
 
+//***************************************************************************
 //====> RC COMP ########################################################################################
+//***************************************************************************
 
 kart_sprite = sprite_get("kart");
 //kart_sprite = sprite_get("regigigas_kart");
 kart_frames = 1;
 kart_engine_sound = 4;
 
+//***************************************************************************
+//====> KIRBY ###########################################
+//***************************************************************************
+
+kirbyability = 16;
+swallowed = 0
+enemykirby = noone
+
+kirbyIcon = sprite_get("kirby_icon");
+kirbyIconB = sprite_get("kirby_icon_B");
+
+//***************************************************************************
+//====> FINAL SMASH ###########################################
+//***************************************************************************
+
+fs_char_chosen_final_smash = "custom";
+fs_charge = 0;
+fs_char_portrait_y = 0;
+
+fs_currHB = noone;
+fx_fs1 = hit_fx_create( sprite_get("ballBlast"), 30 );
+
+//***************************************************************************
+//====> POKEMON STADIUM ###########################################
+//***************************************************************************
+
+pkmn_stadium_front_img = sprite_get("pokemon_stadium");
+pkmn_stadium_back_img = sprite_get("pokemon_stadium_back");
+
+//***************************************************************************
+//====> DIALOGUE BUDDY ###########################################
+//***************************************************************************
+
+//diag_portrait = sprite_get("");
+
+//***************************************************************************
+//====> OTHERS ###########################################
+//***************************************************************************
+
+if (get_player_color(player) > 14)
+{
+   arena_title = "The Amethyst Pupil"; 
+   boxing_title = "The Amethyst\nPupil";
+}
+else
+{
+    arena_title = "The Stars Right Hand";
+    boxing_title = "The Stars\nRight Hand";
+}
+
+//***************************************************************************
 //====> DEFAULT VARIABLES ########################################################################################
+//***************************************************************************
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");

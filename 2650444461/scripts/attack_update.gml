@@ -322,7 +322,7 @@ if (attack == AT_NSPECIAL){
     	}
     }
 }else if (attack == AT_DSTRONG){
-    if(window == 2 && window_timer == 8 && !hitpause){
+    if(window == 2 && window_timer == 10 && !hitpause){
         if(position_meeting(x-30*spr_dir,y,asset_get("par_block")) || position_meeting(x-30*spr_dir,y,asset_get("par_jumpthrough"))){
             var eruption = spawn_hit_fx(x-60*spr_dir,y,fx_eruption_small_fast);eruption.spr_dir = -spr_dir;create_hitbox(AT_DSTRONG, 3, x-60*spr_dir, y-40);
         }

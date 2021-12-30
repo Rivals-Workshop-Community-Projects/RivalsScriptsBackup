@@ -134,8 +134,7 @@ set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, nothing);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_obstacle_hit"));
-set_hitbox_value(AT_DSPECIAL, 4, HG_TECHABLE, 1);
-set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_TYPE, 1); //When you hit someone, spawn this

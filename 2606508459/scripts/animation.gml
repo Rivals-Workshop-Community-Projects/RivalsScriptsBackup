@@ -29,12 +29,12 @@ switch (state)
         {
             if (intro_timer < intro_timerMax && intro_timer >= 0) 
             {
-                sprite_index = sprite_get("intro");
+                sprite_index = intro_sprite;
                 image_index = floor(intro_timer);
             } 
             else if (intro_timer < 0) 
             {
-                sprite_index = sprite_get("intro");
+                sprite_index = intro_sprite;
                 image_index = 0;
             } 
             else 

@@ -243,10 +243,12 @@ if (free == true && slapped == false && removerat_time < 10){
 else if (free == false && slapped == false){
     jumpy = true;
     sprite_index = sprite_get("rat_bombardier_run");
+	if (player_id.state_cat != SC_HITSTUN){
     if (player_id.special_pressed && player_id.joy_pad_idle == true && hitbox_timer > 2 && turntime < 100){
         vsp = -0.1;//Not needed I guess?
         hsp = 0;
         turn = true;
+	}
     }
     if (turned == true){ hsp = 3 * spr_dir;
     if (removerat_time >= 15){ instance_destroy(); }
@@ -277,7 +279,8 @@ if (attack == AT_NSPECIAL && hbox_num == 2){
 
 //if (attack == AT_NSPECIAL && hbox_num == 4){ can_hit_self = 1; }
 
-if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
+if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR){
+if (hbox_num == 1){ //Rats, we are the rats
 	through_platforms = 2;
 	grounds = 1;
 	walls = 1;
@@ -456,6 +459,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 	if (hitbox_timer < 290 && hsp == 0){
 	vsp = ease_expoInOut( 1, -1, propeller, 35);
 	}
+}
 }
 
 #define spawn_base_dust

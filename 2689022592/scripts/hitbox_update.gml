@@ -10,6 +10,7 @@ switch attack {
 	  	sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .6, 1.5)
       }
       
+      if hitbox_timer < 60 {
        with (asset_get("pHitBox")) {
         if player_id == other.player_id {
           if attack == AT_DSPECIAL && hbox_num == 2 {
@@ -29,6 +30,9 @@ switch attack {
     if hitbox_timer % 2 == 0 {
     spawn_hit_fx(x + 10 - random_func(1,21,true) - hsp , y + 10 - random_func(1,21,true) - vsp, droplet  )
     }
+    
+     }
+      
   break;    
   
   case AT_DSPECIAL :

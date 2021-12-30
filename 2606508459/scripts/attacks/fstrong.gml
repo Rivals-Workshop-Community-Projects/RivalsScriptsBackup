@@ -8,7 +8,7 @@ var ig = 1;
 
 //Forward Special Charge
 set_window_value(AT_FSTRONG, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, ig, AG_WINDOW_LENGTH, 14); //from 15
+set_window_value(AT_FSTRONG, ig, AG_WINDOW_LENGTH, 10); //from 14
 set_window_value(AT_FSTRONG, ig, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSTRONG, ig, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, ig, AG_WINDOW_SFX, asset_get("sfx_absa_concentrate"));

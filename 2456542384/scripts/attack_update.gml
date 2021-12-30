@@ -139,11 +139,15 @@ if (attack == AT_FSPECIAL){
 		}
 	}
 	//wallgrab
-	if !has_hit_player && (collision_rectangle(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,asset_get("par_block"),false,true) || collision_rectangle(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,asset_get("par_jumpthrough"),false,true)) {
+	if !has_hit_player && !hitpause && (
+		collision_rectangle(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,asset_get("par_block"),false,true) || 
+		collision_rectangle(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,asset_get("par_jumpthrough"),false,true)) 
+		&& !was_parried {
+			
         if window == 2 {
             vsp = 0;
             hsp = 0;
-            if window_timer == 3 {
+            if window_timer >= 3 {
             	window = 5
             	window_timer = 0;
             }
@@ -201,15 +205,16 @@ if (attack == AT_USPECIAL){
 		}
 	}
     //wallgrab
-	if !has_hit_player && (
+	if !has_hit_player && !hitpause && (
 	//wall detection
 	collision_rectangle(x + 10 * spr_dir,y-15,x + 65 * spr_dir,y-165,asset_get("par_block"),false,true) || collision_rectangle(x + 60 * spr_dir,y-55,x + 130 * spr_dir,y-270,asset_get("par_block"),false,true)
 	//platform detection
-	|| collision_rectangle(x + 10 * spr_dir,y-15,x + 65 * spr_dir,y-165,asset_get("par_jumpthrough"),false,true) || collision_rectangle(x + 60 * spr_dir,y-55,x + 130 * spr_dir,y-270,asset_get("par_jumpthrough"),false,true) ) {
+	|| collision_rectangle(x + 10 * spr_dir,y-15,x + 65 * spr_dir,y-165,asset_get("par_jumpthrough"),false,true) || collision_rectangle(x + 60 * spr_dir,y-55,x + 130 * spr_dir,y-270,asset_get("par_jumpthrough"),false,true) )
+	&& !was_parried {
         if window == 2 {
             vsp = 0;
             hsp = 0;
-            if window_timer == 3 {
+            if window_timer >= 3 {
             	window = 6;
             	window_timer = 0;
             }

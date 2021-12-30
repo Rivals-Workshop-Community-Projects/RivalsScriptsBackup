@@ -11,8 +11,8 @@ if(state_timer == 1)
         set_hitbox_value(AT_BAIR, 3, HG_EXTRA_HITPAUSE, 12);
         set_hitbox_value(AT_UAIR, 2, HG_EXTRA_HITPAUSE, 12);
         set_hitbox_value(AT_DAIR, 2, HG_EXTRA_HITPAUSE, 12);
-        set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 12);
-        set_hitbox_value(AT_DTILT, 2, HG_EXTRA_HITPAUSE, 12);
+        set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 9);
+        set_hitbox_value(AT_DTILT, 2, HG_EXTRA_HITPAUSE, 9);
         set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 8);
         set_hitbox_value(AT_USTRONG, 2, HG_EXTRA_HITPAUSE, 8);
         set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 8);
@@ -151,7 +151,6 @@ if (attack == AT_DSPECIAL){
         }
     }
 }
-
 if (attack == AT_USPECIAL){
     can_fast_fall = false;
     if (window == 1)
@@ -221,14 +220,14 @@ if(attack == AT_JAB)
         bullets --;
     }
 }
-if(attack == AT_FAIR)
-{
-    if(hitpause && window_timer < 3)
-    {
-        old_hsp = -5*spr_dir;
-        old_vsp = -6; 
-    }
-}
+// if(attack == AT_FAIR)
+// {
+//     if(hitpause && window_timer < 3)
+//     {
+//         old_hsp = -5*spr_dir;
+//         old_vsp = -6; 
+//     }
+// }
 
 if(attack == AT_BAIR || attack == AT_DAIR)
 {

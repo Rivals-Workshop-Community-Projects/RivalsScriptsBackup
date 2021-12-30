@@ -129,7 +129,7 @@ set_hitbox_value(AT_DSTRONG, ig, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSTRONG, ig, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, ig, HG_ANGLE, 55);
 set_hitbox_value(AT_DSTRONG, ig, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSTRONG, ig, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_DSTRONG, ig, HG_KNOCKBACK_SCALING, 1.1); //from 1
 set_hitbox_value(AT_DSTRONG, ig, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSTRONG, ig, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_DSTRONG, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);

@@ -9,7 +9,7 @@ var ig = 1;
 
 //Startup animation
 set_window_value(43, ig, AG_WINDOW_TYPE, 1);
-set_window_value(43, ig, AG_WINDOW_LENGTH, 12);
+set_window_value(43, ig, AG_WINDOW_LENGTH, 14);
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAMES, 7);
 
 ig++;
@@ -56,7 +56,7 @@ ig++;
 
 //Normal Special Start Alt (7)
 set_window_value(43, ig, AG_WINDOW_TYPE, 1);
-set_window_value(43, ig, AG_WINDOW_LENGTH, 2);
+set_window_value(43, ig, AG_WINDOW_LENGTH, 4);
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAME_START, 31);
 
@@ -74,7 +74,7 @@ ig++;
 
 //Normal Special End Alt (9)
 set_window_value(43, ig, AG_WINDOW_TYPE, 1);
-set_window_value(43, ig, AG_WINDOW_LENGTH, 15);
+set_window_value(43, ig, AG_WINDOW_LENGTH, 10); //15
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAME_START, 34);
 set_window_value(43, ig, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -84,7 +84,7 @@ ig = 1;
 
 //Catooken Hitbox
 set_hitbox_value(43, ig, HG_HITBOX_TYPE, 2);
-set_hitbox_value(43, ig, HG_LIFETIME, 70);
+set_hitbox_value(43, ig, HG_LIFETIME, 50);
 set_hitbox_value(43, ig, HG_PRIORITY, 2);
 set_hitbox_value(43, ig, HG_DAMAGE, 4); //Change in init
 set_hitbox_value(43, ig, HG_ANGLE, 45);
@@ -95,10 +95,10 @@ set_hitbox_value(43, ig, HG_PROJECTILE_ANIM_SPEED, .3);
 set_hitbox_value(43, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 set_hitbox_value(43, ig, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-set_hitbox_value(43, ig, HG_BASE_HITPAUSE, 30);
-set_hitbox_value(43, ig, HG_HITPAUSE_SCALING, .8);
-set_hitbox_value(43, ig, HG_PROJECTILE_HSPEED, 4);
-set_hitbox_value(43, ig, HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value(43, ig, HG_BASE_HITPAUSE, 6); //6
+set_hitbox_value(43, ig, HG_EXTRA_HITPAUSE, 2); //15
+set_hitbox_value(43, ig, HG_HITPAUSE_SCALING, .5); //.5
 set_hitbox_value(43, ig, HG_VISUAL_EFFECT, 22);
+set_hitbox_value(43, ig, HG_PROJECTILE_MASK, sprite_get("ball_formC_mask"));
 
 //END

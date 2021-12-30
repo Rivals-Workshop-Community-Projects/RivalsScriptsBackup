@@ -12,17 +12,19 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_NSPECIA
 }
 
 //grab grand debug
-/*
-if state == PS_ATTACK_AIR && attack == AT_DAIR {
-draw_rectangle_color(x-15,y-20,x+15,y+75,c_blue,c_blue,c_blue,c_blue,true);
+if should_debug {
+	if state == PS_ATTACK_AIR && attack == AT_DAIR {
+	draw_rectangle_color(x-15,y-20,x+15,y+75,c_blue,c_blue,c_blue,c_blue,true);
+	}
+	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL {
+	draw_rectangle_color(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,c_blue,c_blue,c_blue,c_blue,true);
+	}
+	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECIAL {
+	draw_rectangle_color(x + 10 * spr_dir,y-15,x + 65 * spr_dir,y-165,c_blue,c_blue,c_blue,c_blue,true);
+	draw_rectangle_color(x + 60 * spr_dir,y-55,x + 130 * spr_dir,y-270,c_blue,c_blue,c_blue,c_blue,true);
+	}
+	draw_debug_text(x - 30,y + 25,"Window: "+string(window))
+	draw_debug_text(x - 30,y + 40,"Window Timer: "+string(window_timer))
 }
-if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL {
-draw_rectangle_color(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,c_blue,c_blue,c_blue,c_blue,true);
-}
-if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECIAL {
-draw_rectangle_color(x + 10 * spr_dir,y-15,x + 65 * spr_dir,y-165,c_blue,c_blue,c_blue,c_blue,true);
-draw_rectangle_color(x + 45 * spr_dir,y-45,x + 125 * spr_dir,y-195,c_blue,c_blue,c_blue,c_blue,true);
-}
-*/
 
 user_event(12);

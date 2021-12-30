@@ -17,6 +17,7 @@ if (attack == AT_DSPECIAL){
 		attack = AT_DSPECIAL_AIR;
 		if (move_cooldown[AT_DSPECIAL_AIR] <= 0){
 			attack = AT_DSPECIAL_AIR;hsp *= 0.25;sound_play(sound_get("Dive"));
+			reset_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_LENGTH);
 		}
 	}else{
 		vsp = -2;

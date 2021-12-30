@@ -4,10 +4,11 @@
 
 if (dip_swapSpecial)
 {
-    if (attack == AT_NSPECIAL) { attack = AT_NSPECIAL_2; }
+    if (attack == AT_NSPECIAL && fs_charge < 200) { attack = AT_NSPECIAL_2; }
     else if (attack == AT_DSPECIAL) { attack = AT_NSPECIAL; }
-    //else if (attack == AT_DSPECIAL) { attack = 43; }
     
+    /*
+    */
     if (attack_pressed && special_down &&
         (
             state == PS_IDLE

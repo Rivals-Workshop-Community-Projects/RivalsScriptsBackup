@@ -319,7 +319,7 @@ if state == PS_AIR_DODGE {
    
 if state_timer < 10 {	
 	spawn_hit_fx( x + 20 - random_func(3, 40, true) , y - 10 -  random_func(4, 60, true) , hpar2)
-
+draw_indicator = false 
 
 spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, true) , hpar3)
 }
@@ -327,16 +327,10 @@ spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, t
 
 	if state_timer == 5 {
 		sound_play(asset_get("sfx_absa_singlezap1"),false,noone,0.6);
-		visible = false
-		var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
-		if (joy_pad_idle){
 		
-		}else{
-			x += (80 * cos(angle));
-			y += (80 * sin(angle));
-		}
+		
 	} else {
-		visible = true
+
 	}
 	
 	

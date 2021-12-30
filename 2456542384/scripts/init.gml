@@ -30,6 +30,10 @@ bite_plat = noone;
 //jab parrystun thing
 last_hit_stun = false;
 
+//debug
+should_debug = false;
+
+//compatibility
 kirbyability = 18
 
 feri_costume = sprite_get("feri");

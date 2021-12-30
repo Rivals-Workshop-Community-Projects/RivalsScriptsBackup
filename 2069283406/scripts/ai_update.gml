@@ -1,5 +1,7 @@
 //ai_init - setting the basic AI attack behaviors
 
+temp_level = 9
+
 if (get_training_cpu_action() != CPU_FIGHT)  {
 	move_cooldown[AT_TAUNT] = 5
 }
@@ -828,14 +830,18 @@ if (get_training_cpu_action() == CPU_STAND){
 	
 }
 
+switch AImode {
+	
+	case 0:
     if ai_target.state_cat != SC_HITSTUN && ai_target.state != PS_PRATFALL && ai_target.state != PS_PRATLAND{
 	
-    if !free && get_gameplay_time()%90 < 30{
+    if !free && get_gameplay_time()%90 <= 45{
     	down_down = false 
     	attack_pressed = false 
     	attack_down = false 
     	jump_down = false 
     	special_down = false 
+    	shield_down = false
     	if ai_target.x < x {
     		left_down = true 
     		left_hard_pressed = false 
@@ -854,7 +860,118 @@ if (get_training_cpu_action() == CPU_STAND){
     }
 	
     }
-    
+   break;
+   
+   
+   case 1:
+   
+      if !free {
+        down_down = false 
+    	attack_pressed = false 
+    	attack_down = false 
+    	jump_down = false 
+    	special_down = false 
+    		left_down = false
+    		left_hard_pressed = false 
+    		right_down = false 
+    		right_hard_pressed = false 
+    	move_cooldown[AT_JAB] = 2
+    	move_cooldown[AT_UTILT] = 2
+    	move_cooldown[AT_DTILT] = 2
+    	move_cooldown[AT_FTILT] = 2
+    	move_cooldown[AT_DATTACK] = 2
+    	move_cooldown[AT_FSTRONG] = 2
+    	move_cooldown[AT_USTRONG] = 2
+    	move_cooldown[AT_DSTRONG] = 2
+      }
+      
+   break;
+   
+   case 2: 
+   
+   if can_special && move_cooldown[AT_FSPECIAL] = 0{
+   	
+   	    
+      	set_attack(AT_FSPECIAL)
+    	window = 1
+    	window_timer = 0
+    	
+   	   if ai_target.x < x {
+    		spr_dir = -1
+       } else {
+    		spr_dir = 1
+       }
+   }
+   
+   break;
+   
+   case 3.1: 
+   
+       	    right_hard_pressed = false 
+    		right_down = false
+    		left_hard_pressed = true 
+    		left_down = true
+   
+   break;
+   
+   case 3.2: 
+   
+       	    right_hard_pressed = true
+    		right_down = true
+    		left_hard_pressed = false
+    		left_down = false
+   
+   break;
+   
+   case 4: 
+   
+   jump_pressed = false
+   down_down = false 
+   shield_down = false
+   attack_pressed = false 
+   attack_down = false 
+   jump_down = false 
+   special_down = false 
+    	
+   if can_jump && !free && state != PS_WAVELAND{
+   set_state(PS_WAVELAND)
+   state_timer = 1 
+   hsp = 12 - 24*(random_func(1,2,true))
+   sound_play(sound_get("RZ3"),false,noone,0.6);
+   spawn_hit_fx( x  , y , dsshadow)
+   }
+   break;
+   
+   case 5: 
+   
+   if !free && can_attack {
+        jump_pressed = false
+        down_down = false 
+        shield_down = false
+    	attack_pressed = false 
+    	attack_down = false 
+    	jump_down = false 
+    	special_down = false 
+    	
+    	move_cooldown[AT_TAUNT] = 0
+    	set_attack(AT_TAUNT)
+    	window = 1
+    	window_timer = 0
+    	down_down = true 
+   }
+   
+   break;
+   
+   case 6: 
+   
+   if !free {
+        jump_pressed = true
+   }
+   
+   break;
+   
+}
+
 #define Fspecial
 /// @param side
 /// @param ...

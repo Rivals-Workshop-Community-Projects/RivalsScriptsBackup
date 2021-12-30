@@ -7,7 +7,7 @@ set_attack_value(AT_UTHROW, AG_AIR_SPRITE, sprite_get("uthrow"));
 set_attack_value(AT_UTHROW, AG_HURTBOX_SPRITE, sprite_get("uthrow_hurt"));
 
 // You raise me up
-set_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH, 4); // 5
 set_window_value(AT_UTHROW, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_VSPEED_TYPE, 1);
@@ -16,7 +16,7 @@ set_window_value(AT_UTHROW, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_HSPEED, 0);
 
 // Wait, what's that sound
-set_window_value(AT_UTHROW, 2, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_UTHROW, 2, AG_WINDOW_LENGTH, 20); // 24
 set_window_value(AT_UTHROW, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_UTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_UTHROW, 2, AG_WINDOW_VSPEED_TYPE, 1);
@@ -66,7 +66,7 @@ set_hitbox_value(AT_UTHROW, 1, HG_WIDTH, 68);
 set_hitbox_value(AT_UTHROW, 1, HG_HEIGHT, 68);
 set_hitbox_value(AT_UTHROW, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UTHROW, 1, HG_DAMAGE, 12);
-set_hitbox_value(AT_UTHROW, 1, HG_ANGLE, 75);
+set_hitbox_value(AT_UTHROW, 1, HG_ANGLE, 87);
 set_hitbox_value(AT_UTHROW, 1, HG_BASE_KNOCKBACK, 6.6);
 set_hitbox_value(AT_UTHROW, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_UTHROW, 1, HG_BASE_HITPAUSE, 6.6);

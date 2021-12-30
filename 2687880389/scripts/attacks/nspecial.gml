@@ -79,8 +79,8 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 4);
+//set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
+//set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, grab_charge_duration);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 35);
@@ -91,7 +91,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 0.1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 2);
+//set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1); // no visual effect
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 0);
 

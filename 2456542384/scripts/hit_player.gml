@@ -100,7 +100,7 @@ if (my_hitboxID.attack == AT_USPECIAL) {
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
     	  && was_parried == false
-	  && hit_player_obj.clone == false) {
+	  && hit_player_obj.clone == false){
 	    //window
 	    set_attack_value(AT_USPECIAL,AG_NUM_WINDOWS,5);
 	    //make launcher spike if target is above 50%

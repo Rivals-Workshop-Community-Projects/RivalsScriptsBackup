@@ -15,7 +15,7 @@ set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_SFX, laser_blast_sound);
-set_window_value(AT_DAIR, 2, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_DAIR, 2, AG_WINDOW_SFX_FRAME, 5);
 
 // Big blast
 set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 3);
@@ -30,7 +30,8 @@ set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 // Hold that pose
-set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 
@@ -51,7 +52,7 @@ set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 52);
 set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 54);
 set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 5);
+set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 11);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.9);
@@ -73,7 +74,7 @@ set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 52);
 set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 73);
 set_hitbox_value(AT_DAIR, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_DAIR, 2, HG_PRIORITY, 1);
-set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 5);
+set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 70);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0.8);

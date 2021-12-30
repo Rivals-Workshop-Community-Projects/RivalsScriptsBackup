@@ -145,7 +145,8 @@ if (attack == AT_DTILT){
 
 //FStrong
 if (attack == AT_FSTRONG){
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 9 + strong_charge / 2);
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 8 + strong_charge / 12);
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 8 + strong_charge / 6);
 	var spawnposL = random_func( 19, 46, true);
 	var spawnposR = random_func( 20, 45, true);
 	if (window == 1){ confetti_L = random_func( 1, 100, true); }
@@ -176,26 +177,6 @@ if (attack == AT_FSTRONG){
 		}
 	}
 }
-
-/* if (attack == AT_NSPECIAL){
-    if (window == 3){
-        if (special_pressed){
-            window = 1;
-            window_timer = 0;
-        }
-    }
-}
-
-if (attack == AT_FSPECIAL){
-    if (window == 2){
-        if (special_pressed){
-            window = 3;
-            window_timer = 0;
-            destroy_hitboxes();
-        }
-    }
-    can_fast_fall = false;
-} */
 
 //UStrong
 if (attack == AT_USTRONG){
@@ -249,9 +230,12 @@ if (attack == AT_FSPECIAL){
 	if (window == 7 && window_timer > 1){ move_cooldown[AT_FSPECIAL] = 1; can_dash = true; can_jump = true; }
 	if ( window == 6 ){ can_fast_fall = true; } else { can_fast_fall = false; }
 	move_cooldown[AT_FSPECIAL] = 10;
+	if (window == 1){ attack_end(); }
 	if (window == 2){
 		which_bash = 0
-		if (has_hit == true && hitpause == true){ window = 4; window_timer = 0; }
+		if (has_hit == true && hitpause == true){
+		if !(my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR){ window = 4; window_timer = 0; }
+		}
 	}
 	if (window == 2){
 		if (special_pressed && window_timer > 5){ 
@@ -296,7 +280,9 @@ if (attack == AT_FSPECIAL){
 		can_move = true; 
 	}
 	if (window == 6){
-		if (has_hit == true && hitpause == true){ window = 5; window_timer = 0; }
+		if (has_hit == true && hitpause == true){
+		if !(my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR){ window = 5; window_timer = 0; }
+		}
 		//can_jump = 1;
 		can_wall_jump = 1;
 		var stick_dir = right_stick_pressed or down_stick_pressed or left_stick_pressed or up_stick_pressed
@@ -330,6 +316,7 @@ if (attack == AT_FSPECIAL){
 	if (window == 8){
 		sound_stop(sound_get("sfx_king_dash"));
 		if (window_timer == 1){
+		attack_end();
 		create_hitbox(AT_FSPECIAL, 4, x, y); }
 		if (window_timer >= 16){ window = 9; window_timer = 0; }
 		can_wall_jump = 1;
@@ -413,9 +400,6 @@ if (attack == AT_DSPECIAL){
 	if (window == 1 && window_timer == 1){
 	//propeller_rats += 1;
 	//attack_end();
-	}
-	if (window == 3){
-		can_jump = true;
 	}
 	if (has_hit_player){
 	//propeller_rats += 1;

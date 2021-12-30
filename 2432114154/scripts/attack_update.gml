@@ -298,7 +298,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
     
     if attack == AT_FSPECIAL{
     	
-    	prat_land_time = 10;
+    	prat_land_time = 8;
     	can_wall_jump = true
         if window == 1 {
         hsp /= 1.2
@@ -324,7 +324,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
             	sound_play(asset_get("sfx_ori_bash_use"))
             	sound_play(asset_get("sfx_bird_nspecial"))
             	spawn_hit_fx(x, y-30, 303)
-            	hsp = 24*spr_dir
+            	hsp = 16*spr_dir
             }
             
 
@@ -334,7 +334,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
                  
 
          
-         vsp = -5
+         vsp = -2
          if window_timer % 2 == 0{
              spawn_hit_fx(x + hsp, y , saillusion)
          }
@@ -343,12 +343,12 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
         if window == 2 && window_timer > 6 {
             spawn_hit_fx(x, y, saillusion)
          hsp /= 1.2
-         vsp = -5
+         vsp = -2
         } 
         
         if window == 3  {
-         hsp /= 1.2
-         vsp /= 1.4
+         hsp /= 1.1
+         vsp /= 1.2
          if !free {
              set_state(PS_PRATFALL)
          }
@@ -387,12 +387,11 @@ if get_player_color(player) == 10 {
         
         
         if attack == AT_USPECIAL{
-        	prat_land_time = 20;
-            if down_down {
-                fall_through = true
-            }
+        	
             can_fast_fall = false
             if window == 1 {
+            	starting_point = x
+        	    prat_land_time = 20;
             	if state_timer == 1 {
             		spawn_base_dust(x,y,"land",spr_dir)
             	}
@@ -554,7 +553,9 @@ if get_player_color(player) == 10 {
                   spawn_hit_fx (x, y - 30, bh3)
              }
              if !free && !has_hit_player{
-             set_state (PS_PRATFALL)
+        	 prat_land_time = 10 + floor(abs(starting_point - x)/26)
+             hsp /= 1.4	
+             set_state (PS_PRATLAND)
              }
          }
         }

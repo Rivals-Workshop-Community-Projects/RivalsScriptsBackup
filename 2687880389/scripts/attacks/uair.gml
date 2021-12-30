@@ -32,6 +32,7 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
 // flip back
 set_window_value(AT_UAIR, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_UAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 
@@ -47,7 +48,7 @@ set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -87);
 set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 63);
 set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 7);
+set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 85);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 5.5);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .85);

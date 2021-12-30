@@ -347,6 +347,8 @@ charge_button_sprite = sprite_get("charge_button");
 // nspecial grab
 holding_someone = false;
 RETROBLAST_HOLDER_ID = noone;
+grab_hitbox = noone;
+created_grab_hitbox = false;
 
 // dspecial
 engine_revving_up_sound = sound_get("engine_revving");
@@ -387,7 +389,7 @@ tire_screech_burnout_end_sound = sound_get("tire_screech_burnout_end");
 
 // Laser sounds
 laser_charge_sound = sound_get("laser_charge");
-laser_blast_sound = sound_get("laser_blast");
+laser_blast_sound = sound_get("laser_blast2");
 
 // Car horn sounds
 active_horn = sound_get("horn");

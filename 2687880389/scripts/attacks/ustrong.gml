@@ -48,12 +48,14 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HSPEED_TYPE, 2);
 
 // recoil
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 
 // return to jump pose
 set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 9);
 

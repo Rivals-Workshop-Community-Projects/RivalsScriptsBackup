@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 3, 13 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28);
+set_num_palettes( 30 );
 
 // Old Ducky
 set_color_profile_slot( 1, 0, 255, 255, 0 ); //Feathers
@@ -305,6 +305,26 @@ set_color_profile_slot( 27, 4, 255, 56, 191 ); //Gloves/Light
 set_color_profile_slot( 27, 5, 163, 42, 159 ); //Eyes
 set_color_profile_slot( 27, 6, 79, 48, 120 ); //Outfit 2 / Rest
 set_color_profile_slot( 27, 7, 255, 234, 199 ); //Outfit 1/ Legs
+
+// TheJank
+set_color_profile_slot( 28, 0, 82, 97, 107 ); //Feathers
+set_color_profile_slot( 28, 1, 41, 41, 41 ); //Hair
+set_color_profile_slot( 28, 2, 7, 59, 140 ); //Scarf
+set_color_profile_slot( 28, 3, 177, 196, 177 ); //Shoulder
+set_color_profile_slot( 28, 4, 0, 247, 255 ); //Gloves/Light
+set_color_profile_slot( 28, 5, 5, 26, 117 ); //Eyes
+set_color_profile_slot( 28, 6, 67, 96, 140 ); //Outfit 2 / Rest
+set_color_profile_slot( 28, 7, 7, 59, 140 ); //Outfit 1/ Legs
+
+// BBOUT
+set_color_profile_slot( 29, 0, 34, 78, 143 ); //Feathers
+set_color_profile_slot( 29, 1, 45, 99, 45 ); //Hair
+set_color_profile_slot( 29, 2, 10, 56, 17 ); //Scarf
+set_color_profile_slot( 29, 3, 139, 81, 150 ); //Shoulder
+set_color_profile_slot( 29, 4, 129, 0, 130 ); //Gloves/Light
+set_color_profile_slot( 29, 5, 161, 82, 142 ); //Eyes
+set_color_profile_slot( 29, 6, 112, 46, 122 ); //Outfit 2 / Rest
+set_color_profile_slot( 29, 7, 34, 78, 143 ); //Outfit 1/ Legs
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

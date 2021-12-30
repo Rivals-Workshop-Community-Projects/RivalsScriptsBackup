@@ -3,6 +3,7 @@
 //neutral_attacks[0] = AT_NSPECIAL;
 // neutral_attacks[1] = AT_NAIR;
 
+AImode = 0
 
 FTILTprob = random_func(3,1,false);
 facing = false;

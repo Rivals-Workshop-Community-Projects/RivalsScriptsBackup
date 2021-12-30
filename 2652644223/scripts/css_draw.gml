@@ -9,7 +9,7 @@ patch_day = "";
 patch_month = "";
 
 var drawAlpha = 1;
-var num_alts = 28;
+var num_alts = 30;
 var alt_cur = get_player_color(player);
 
 var doNotInitShader = "alt_name" in self; // check if running for the first time
@@ -62,8 +62,8 @@ alt_name[24] = "Between Worlds";
 alt_name[25] = "Portal Zer0";
 alt_name[26] = "Star Duck";
 alt_name[27] = "Undecided Residence";
-alt_name[28] = "Robotic Protector";
-alt_name[29] = "Unleashed Blocks";
+alt_name[28] = "Remnants of a Creator";
+alt_name[29] = "Sparked Berry";
 alt_name[30] = "Black Ghost";
 alt_name[31] = "Housewife Agent";
 

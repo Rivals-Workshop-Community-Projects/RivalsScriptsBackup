@@ -221,8 +221,8 @@ if ("phone_inited" in self && phone_inited){
  */
 
 // Gameplay-relevant, and codecs because im biased :>
-pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
-pho_has_trum_codec = 1;	// Trummel & Alto codec
+pho_has_muno_phone = 0;	// MunoPhone support		(should always be 1, obviously...)
+pho_has_trum_codec = 0;	// Trummel & Alto codec
 pho_has_copy_power = 0;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 

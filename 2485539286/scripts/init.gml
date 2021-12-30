@@ -78,7 +78,7 @@ knockback_adj = 69;//the multiplier to KB dealt to you. 1 = default, >1 = lighte
 land_time = 4; //normal landing frames
 prat_land_time = 20;
 wave_land_time = 8;
-wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = .5; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -105,7 +105,7 @@ techroll_speed = 9.8;
 air_dodge_startup_frames = 2;
 air_dodge_active_frames = 4;
 air_dodge_recovery_frames = 4;
-air_dodge_speed = 4;
+air_dodge_speed = 9;
 
 //roll animation frames
 roll_forward_startup_frames = 2;

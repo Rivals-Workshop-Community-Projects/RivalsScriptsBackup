@@ -17,6 +17,10 @@ if(my_hitboxID.attack == AT_DSPECIAL_AIR){
 		vsp = -12;old_vsp = -12;destroy_hitboxes();
 		upb = false;move_cooldown[AT_USPECIAL] = 0;fspecialcooldown = false;
 	}
+	
+	if(my_hitboxID.hbox_num == 3){
+		set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_LENGTH, 16);
+	}
 }
 
 if(my_hitboxID.attack == AT_DTILT){

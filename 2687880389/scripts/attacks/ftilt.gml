@@ -20,12 +20,14 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
 // Cooldown
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 // Bring it around town
-set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FTILT, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 
@@ -40,7 +42,7 @@ set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 105);
 set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 91);
 set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 7);
+set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.5);

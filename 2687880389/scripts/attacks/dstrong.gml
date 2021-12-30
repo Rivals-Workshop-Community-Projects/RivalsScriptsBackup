@@ -37,14 +37,16 @@ for (var i = 0; i < num_dstrong_spins; i++) {
 }
 
 // Dizzy
-set_window_value(AT_DSTRONG, 4 + num_dstrong_spins, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSTRONG, 4 + num_dstrong_spins, AG_WINDOW_LENGTH, 12); // 20
+set_window_value(AT_DSTRONG, 4 + num_dstrong_spins, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DSTRONG, 4 + num_dstrong_spins, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 4 + num_dstrong_spins, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_DSTRONG, 4 + num_dstrong_spins, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSTRONG, 4 + num_dstrong_spins, AG_WINDOW_CUSTOM_GROUND_FRICTION, dstrong_accel);
 
 // Aaaand stop
-set_window_value(AT_DSTRONG, 5 + num_dstrong_spins, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSTRONG, 5 + num_dstrong_spins, AG_WINDOW_LENGTH, 8); // 12
+set_window_value(AT_DSTRONG, 5 + num_dstrong_spins, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DSTRONG, 5 + num_dstrong_spins, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 5 + num_dstrong_spins, AG_WINDOW_ANIM_FRAME_START, 13);
 
@@ -71,7 +73,7 @@ for (var i = 1; i <= num_dstrong_hitboxes; i++) {
 }
 
 for (var i = 1; i <= (num_dstrong_hitboxes - 1); i++) {
-    set_hitbox_value(AT_DSTRONG, i, HG_DAMAGE, 2);
+    set_hitbox_value(AT_DSTRONG, i, HG_DAMAGE, 3);
     set_hitbox_value(AT_DSTRONG, i, HG_ANGLE, 25);
     set_hitbox_value(AT_DSTRONG, i, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(AT_DSTRONG, i, HG_KNOCKBACK_SCALING, 0);
@@ -85,7 +87,7 @@ for (var i = 1; i <= (num_dstrong_hitboxes - 1); i++) {
 }
 
 // Final hit
-set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_DAMAGE, 5);
+set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_DAMAGE, 6);
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_ANGLE, 50);
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_KNOCKBACK_SCALING, 1.05);
