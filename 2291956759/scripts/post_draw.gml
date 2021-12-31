@@ -18,6 +18,13 @@ if cheapmode = 1 && get_gameplay_time() < 300{
 	draw_debug_text(x - 80 ,y -162,"Your name seem sus.");
 	draw_debug_text(x - 140 ,y -142,"(down + taunt to active anticheat.)");
 }
+/*
+if invincible && invince_time <= 2 {
+   		
+		draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 1);
 
+	
+}
+*/
 shader_end() 
 

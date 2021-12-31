@@ -1,7 +1,24 @@
 ///
-
-
-
+/*
+if !free && state != PS_PARRY && invince_time < 5 {
+   		
+	invincible = true 
+	invince_time = 1
+	
+		nearbyhitbox = collision_circle( x, y - 30, 30, asset_get("pHitBox"), true, true ) 
+	if nearbyhitbox != noone{
+		if nearbyhitbox.player_id != self && nearbyhitbox.hit_priority > 0{
+				 set_state(PS_PARRY)
+				 window_timer = 3
+                  invince_time = 0
+                  with nearbyhitbox {
+                  	 hitbox_timer = 0
+                  }
+     	}
+	}
+	
+}
+*/ 
 if state == PS_PRATFALL {
 	can_fast_fall = true
 }

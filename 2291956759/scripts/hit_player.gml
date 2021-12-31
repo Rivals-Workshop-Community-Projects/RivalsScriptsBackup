@@ -39,9 +39,9 @@ if my_hitboxID.attack == AT_DAIR && !isyellow{
 hit_player_obj.y += 14
 if hit_player_obj.y > room_height/2 + 300 {
 	if x > room_height/2 {
-	hit_player_obj.x += 10
+	hit_player_obj.x += 14
 	} else {
-	hit_player_obj.x -= 10	
+	hit_player_obj.x -= 14	
 	}
 }
 

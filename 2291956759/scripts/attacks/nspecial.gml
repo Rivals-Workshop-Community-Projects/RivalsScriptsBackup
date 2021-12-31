@@ -55,7 +55,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 40);
+set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);

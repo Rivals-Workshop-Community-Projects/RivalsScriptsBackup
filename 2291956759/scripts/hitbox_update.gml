@@ -1,9 +1,10 @@
 ///
 
 if attack == AT_FSPECIAL && hbox_num == 3{
-	
-	player_id.move_cooldown[AT_FSPECIAL] = 5
-	
+  if hitbox_timer == 1 {	
+	player_id.move_cooldown[AT_FSPECIAL] = 30
+  }
+  
   if spr_dir == 1 && hsp < 0 {
   	hsp *= -1
   }
@@ -83,7 +84,7 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 	
 }
 
-if attack == AT_FSPECIAL && type == 2 {
+if attack == AT_FSPECIAL && type == 2 && hbox_num != 3{
 	if hitbox_timer > 5 && hitbox_timer < 15 {
 		hsp /= 1.1
 		vsp /= 1.1
@@ -593,43 +594,45 @@ if hbox_num == 5 {
 		player_id.hit_player_obj.y += floor((y + 30 - player_id.hit_player_obj.y)/12)
 	}
 	
+	if hitbox_timer > 32*4 {
+		vsp = 0
+	}
+	
 	if hitbox_timer == 1 {
 		heath = 0
 		waiting = 0
 	}
 	
 	if hitbox_timer == 11*4 - 1 {
-		if waiting < 100 {
-			hsp += 0.2*spr_dir
-			hitbox_timer = 11*4 - 2
-			waiting += 1 
-			image_index = 10
-			
-		if waiting > 20 && waiting < 100 {
-			shake_camera(4, 6)
-				spawn_hit_fx( x , y + 20  , i2 )
-				spawn_hit_fx( x , y + 20  , i1 )
-				sound_play(asset_get("sfx_ori_bash_use"))
-				sound_play(sound_get("SpaceCut")) 
-				if player_id.hit_player_obj.x > room_width/2 {
-				spr_dir = -1
-				x = player_id.hit_player_obj.x + 40*spr_dir
-				}
-				if player_id.hit_player_obj.x <= room_width/2 {
-				spr_dir = 1
-				x = player_id.hit_player_obj.x - 40*spr_dir
-				}
-				hsp = -6* spr_dir
-				waiting = 115
-				hitbox_timer = 10*4
-				spawn_hit_fx( x , y + 20  , i2 )
-				spawn_hit_fx( x , y + 20  , i1 )
-		}
-		}
+		//if waiting < 100 {
+		//	hsp += 0.1*spr_dir
+		//	hitbox_timer = 11*4 - 2
+		//	waiting += 1 
+		//	image_index = 10
+		//	
+		//if waiting > 20 && waiting < 100 {
+		//	shake_camera(4, 6)
+		//		spawn_hit_fx( x , y + 30  , i2 )
+		//		spawn_hit_fx( x , y + 30  , i1 )
+		//		sound_play(asset_get("sfx_ori_bash_use"))
+		//		sound_play(sound_get("SpaceCut")) 
+		//		if player_id.hit_player_obj.x > room_width/2 {
+		//		spr_dir = -1
+		//		x = player_id.hit_player_obj.x + 40*spr_dir
+		//		}
+		//		if player_id.hit_player_obj.x <= room_width/2 {
+		//		spr_dir = 1
+		//		x = player_id.hit_player_obj.x - 40*spr_dir
+		//		}
+		//		hsp = -6* spr_dir
+		//		waiting = 115
+		//		hitbox_timer = 10*4
+		//		spawn_hit_fx( x , y + 30  , i2 )
+		//		spawn_hit_fx( x , y + 30  , i1 )
+		//}
+		//}
 	}
-	
-	hsp /= 1.2
-	vsp = 0
+	hsp /= 1.4
 	if (hitbox_timer >= 5*4 && hitbox_timer < 12*4){
 	nearbyhitbox = collision_circle( x-12, y-12, 34, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone && nearbyhitbox.hit_priority > 0{
@@ -771,7 +774,7 @@ if hbox_num == 5 {
     
     if hitbox_timer == 34*4 {
     	player_id.akaihit = 0
-    	 create_hitbox(AT_DSPECIAL , 28 , x + 40*spr_dir  , y - 50  );
+    	 create_hitbox(AT_DSPECIAL , 28 , x + 40*spr_dir  , y - 40  );
     }
     
 }

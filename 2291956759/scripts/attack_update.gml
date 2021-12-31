@@ -199,7 +199,7 @@ if attack == AT_FSPECIAL {
         sound_play(asset_get("sfx_bird_nspecial")) 
     }
     if window == 2 && free && window_timer == 4 {
-        vsp = -7
+        vsp = -4
         hsp = -4 * spr_dir
     }
     
@@ -220,7 +220,7 @@ if attack == AT_FSPECIAL {
 }
 
 if attack == AT_USPECIAL {
-	
+	prat_land_time = 14;
 		can_fast_fall = false
 		
 	if window == 2 or (window == 1 && window_timer > 1){
@@ -270,7 +270,7 @@ if attack == AT_USPECIAL {
 }
 
 if attack == AT_DSPECIAL {
-    
+    djumps = 0
 //    if taunt_pressed && ink >= 300 && !free{
 //    	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
 //    	set_attack (AT_FSPECIAL)
@@ -318,6 +318,7 @@ if attack == AT_DSPECIAL {
         sound_play(asset_get("sfx_ori_bash_use"))
         visible = false
         sound_stop(asset_get("sfx_ori_grenade_aim"))
+        prat_land_time = 3
     }
     
     if window == 1 && window_timer == 1 && !free {
@@ -410,7 +411,7 @@ if attack == AT_DSPECIAL {
             if summon%5 = 4 {
                 if ink >= 100 + akaichoose{
                 sound_play(asset_get("sfx_orca_absorb"))     
-                create_hitbox(AT_DSPECIAL, 5, x + 62*spr_dir, y - 30)
+                create_hitbox(AT_DSPECIAL, 5, x + 62*spr_dir, y - 40)
                 ink -= 100 + akaichoose
                 if akaichoose < 200 {
                 akaichoose += 100

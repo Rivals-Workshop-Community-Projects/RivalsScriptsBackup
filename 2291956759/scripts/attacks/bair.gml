@@ -69,7 +69,7 @@ set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 140);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -26);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 305);

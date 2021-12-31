@@ -83,7 +83,7 @@ sprite_change_offset("summonzetta", 96, 96);
 sprite_change_offset("summonmayu", 104, 96);
 sprite_change_offset("summonsaji", 96, 96);
 sprite_change_offset("summonalex", 96, 96);
-sprite_change_offset("summonakai", 96, 96);
+sprite_change_offset("summonakai", 96, 126);
 
 sprite_change_offset("zettahurt", 64, 110);
 sprite_change_offset("mayuhurt", 64, 110);

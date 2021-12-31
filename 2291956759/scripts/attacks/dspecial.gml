@@ -669,7 +669,7 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_UNBASHABLE, true);
-set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_GRAVITY, .5);
+set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_GRAVITY, 0.2);
 set_hitbox_value(AT_DSPECIAL, 5, HG_IGNORES_PROJECTILES, true);
 
 set_hitbox_value(AT_DSPECIAL, 26, HG_HITBOX_TYPE, 2);
