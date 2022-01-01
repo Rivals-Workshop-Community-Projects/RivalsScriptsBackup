@@ -136,6 +136,7 @@ if (attack == AT_FSPECIAL){
 	if window == 1 && window_timer == get_window_value(AT_FSPECIAL,1,AG_WINDOW_LENGTH)-2 && free {
 		if vsp > -6 {
 			vsp = -6;
+               
 		}
 	}
 	//wallgrab

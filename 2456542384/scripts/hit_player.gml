@@ -58,7 +58,7 @@ if (my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_DAIR) {
 
 if (my_hitboxID.attack == AT_NSPECIAL) {
 	// FSPEC COOLDOWN NO MORE WOBBLING 
-    move_cooldown[AT_NSPECIAL] = 85;
+    move_cooldown[AT_NSPECIAL] = 70;
 	//Before grabbing the opponent, first make sure that:
 	//-The player is in an attack animation
 	//-The opponent is in hitstun

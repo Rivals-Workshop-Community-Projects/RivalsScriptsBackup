@@ -44,7 +44,7 @@ if attack == AT_TAUNT {
     should_bite = false;
 }
 //flower activator
-if attack == AT_DSPECIAL && (instance_exists(dros_flower) || flower_cooldown_rn > 0 || place_meeting(x,y+1,asset_get("par_jumpthrough")) || free) {//use dspecial 2 if flower exists, is on cooldown, or you're on a platform
+if attack == AT_DSPECIAL && (instance_exists(dros_flower) || flower_cooldown_rn > 0 || free) {//use dspecial 2 if flower exists, is on cooldown, or you're on a platform
     attack = AT_DSPECIAL_2;
 }
 

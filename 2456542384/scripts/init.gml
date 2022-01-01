@@ -10,7 +10,7 @@
 
 //flower gimmick
 dros_flower = noone;
-dros_flower_cooldown = 140;
+dros_flower_cooldown = 80;
 flower_on_cooldown = false;
 flower_cooldown_rn = 0;
 
