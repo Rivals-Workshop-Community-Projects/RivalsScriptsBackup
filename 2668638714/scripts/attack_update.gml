@@ -1,3 +1,8 @@
+if attack == AT_DSPECIAL or attack == AT_USPECIAL or attack == AT_FSPECIAL or attack == AT_NSPECIAL or attack == AT_NSPECIAL_2
+{
+	trigger_b_reverse();
+}
+
 switch (attack)
 {
     case AT_DSPECIAL:
@@ -26,15 +31,15 @@ switch (attack)
         if (instance_exists(voltorb_obj) and voltorb_obj.state != PS_DEAD and voltorb_obj != PS_ATTACK_GROUND)
         {
             var dir = point_direction(voltorb_obj.x,voltorb_obj.y,x,y-(char_height/2))
-            var dist = distance_to_object(voltorb_obj);
+            var dist = distance_to_object(voltorb_obj)/165;
             
             var maxsp = 10;
+            var closeboost = (4*(window_timer < 2));
+            voltorb_obj.hsp = clamp(voltorb_obj.hsp + lengthdir_x(window_timer*dist + closeboost,dir), -maxsp, maxsp);
+            voltorb_obj.vsp = clamp(voltorb_obj.vsp + lengthdir_y(window_timer*dist + closeboost,dir), -maxsp, maxsp);
             
-            voltorb_obj.hsp = clamp(voltorb_obj.hsp + lengthdir_x(window_timer*(dist/120),dir), -maxsp, maxsp);
-            voltorb_obj.vsp = clamp(voltorb_obj.vsp + lengthdir_y(window_timer*(dist/120),dir), -maxsp, maxsp);
-            
-            hsp = clamp(hsp + lengthdir_x(window_timer*(dist/120),dir+180), -maxsp, maxsp);
-            vsp = clamp(vsp + lengthdir_y(window_timer*(dist/120),dir+180), -maxsp, maxsp);
+            hsp = clamp(hsp + lengthdir_x(window_timer*dist + closeboost,dir+180), -maxsp, maxsp);
+            vsp = clamp(vsp + lengthdir_y(window_timer*dist + closeboost,dir+180), -maxsp, maxsp);
         }
         else
         {
@@ -97,7 +102,8 @@ switch (attack)
             case 5:
                 if window_timer == 1 and !hitpause
                 {
-                	sound_play(asset_get("sfx_abyss_explosion_big"));
+                	if strong_powered_up sound_play(sound_get("boom"));
+                	sound_play(asset_get("sfx_abyss_explosion_big"),false,noone,0.8,1.1);
                 }
             break;
         }
@@ -133,7 +139,7 @@ switch (attack)
             break;
             case 2:
             case 3:
-                if (attack_pressed and (up_stick_down or up_down) and !was_parried) utilt_rekka = true; 
+                if (special_pressed and (up_stick_down or up_down) and !was_parried) utilt_rekka = true; 
                 
                 if (window == 3)
                 {
@@ -144,7 +150,7 @@ switch (attack)
                         window_timer = 0;
                     }
                     
-                    if window_timer >= get_window_value(attack,window,AG_WINDOW_LENGTH)-1
+                    if window_timer >= (get_window_value(attack,window,AG_WINDOW_LENGTH)*(1 + (0.5*!has_hit)))-1
                     {
                         set_state(was_parried ? PS_PRATLAND : PS_IDLE);
                     }
@@ -327,6 +333,7 @@ switch (attack)
         }
     break;
     case AT_TAUNT_2:
+    
         if window == 3 and window_timer == 1
         {
             sound_play(asset_get("sfx_forsburn_reappear_hit"),false,noone,.5);

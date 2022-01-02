@@ -89,6 +89,7 @@ set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.4);
 //set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, hit_sprites[0]);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
+set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 3);
 
 set_hitbox_value(AT_DAIR, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);

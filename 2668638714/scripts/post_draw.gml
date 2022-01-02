@@ -1,11 +1,11 @@
 shader_start()
-with pHitBox
-{
-    if (attack == AT_NSPECIAL_2 and hbox_num == 2)
-    {
-        draw_sprite_ext(sprite_get("vblast"),get_gameplay_time()/2,x,y,1,1,point_direction(0,0,hsp,vsp),-1,1);
-    }
-}
+// with pHitBox
+// {
+//     if (attack == AT_NSPECIAL_2 and hbox_num == 2)
+//     {
+//         draw_sprite_ext(sprite_get("vblast"),get_gameplay_time()/2,x,y,1,1,point_direction(0,0,hsp,vsp),-1,1);
+//     }
+// }
 //draw in front of char
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR
 {

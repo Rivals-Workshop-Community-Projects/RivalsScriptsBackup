@@ -126,6 +126,12 @@ if !free || state == SC_HITSTUN || state == PS_WALL_JUMP || state = PS_HITSTUN_L
 move_cooldown[AT_FSPECIAL] = 0;
 }
 
+//bair reset
+if !free || state == SC_HITSTUN || state = PS_HITSTUN_LAND
+|| state = PS_TUMBLE || state = PS_PRATFALL|| state = PS_PRATLAND{
+bairused = false;
+}
+
 //whether the player is inside smoke, and consumes it. returns true if smoke was consumed
 #define consumeSmokeCloud()
 {

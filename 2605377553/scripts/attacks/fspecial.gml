@@ -88,7 +88,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, fspecdie);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 15);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 20);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 16);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 36);

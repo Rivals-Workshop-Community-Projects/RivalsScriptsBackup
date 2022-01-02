@@ -61,6 +61,8 @@ sprite_change_offset("dspecial",  100,124);
 sprite_change_offset("taunt",  100,124);
 sprite_change_offset("taunt_2",  100,124);
 sprite_change_offset("intro", 100,124);
+sprite_change_offset("vfx_explosion",100,124);
+
 
 sprite_change_offset("vblast", 88,4);
 sprite_change_offset("voltorb_forward", 50, 50);
@@ -68,6 +70,9 @@ sprite_change_offset("voltorb_idle", 50, 50);
 sprite_change_offset("voltorb_nspecial", 50, 50);
 sprite_change_offset("voltorb_attack", 50, 50);
 sprite_change_offset("voltorb_death", 50, 50);
+sprite_change_offset("voltorb_explode_start", 50, 50);
+sprite_change_offset("voltorb_explode_active", 75, 75);
+sprite_change_offset("voltorb_explode_endlag", 75, 75);
 sprite_change_offset("hud_voltorb", 24, 24);
 sprite_change_offset("orb_hurtbox", 100, 124);
 sprite_change_offset("orb_crouch_hurtbox",  100,124);
@@ -82,6 +87,8 @@ sprite_change_offset("vfx_shatter_small", 30, 30);
 sprite_change_offset("vfx_shatter_medium", 60, 60);
 sprite_change_offset("vfx_shatter_large", 140, 140);
 sprite_change_offset("vfx_star_medium", 64, 64);
+sprite_change_offset("electricvfx", 54, 54);
+sprite_change_offset("electricvfx2", 30,30);
 
 sprite_change_offset("feri", 84, 114);
 sprite_change_offset("guiltyelectrode", 31, 0);

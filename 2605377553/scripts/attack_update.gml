@@ -8,6 +8,9 @@ if attack == AT_USTRONG
 		hud_offset = 64;}
 }
 
+
+
+
 if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG
 {
 	var fstrongEnd = 4;
@@ -59,7 +62,7 @@ if attack == AT_JAB
 //bair
 if attack == AT_BAIR
 {
-  hsp += 0.1*spr_dir
+  hsp += 0.2*spr_dir
 	if window == 2 && window_timer == 2 {
 		sound_play(asset_get("sfx_abyss_explosion"))
 	}
@@ -172,6 +175,11 @@ if (attack == AT_FSPECIAL){
 	can_fast_fall = false;
     can_wall_jump = true;
 	move_cooldown[AT_FSPECIAL] = 999;
+	
+	//fspecial cancels into aerials on hit (leap hit)
+	if has_hit && !hitpause {
+	can_attack = true;
+	}
 	
 }
 

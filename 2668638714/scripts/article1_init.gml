@@ -1,7 +1,12 @@
 elec_anim_frames = 24;
-nspec_anim_frames = 20;
 death_anim_frames = 20;
 spawn_anim_frames = 18;
+
+
+nspec_start_anim_frames = 6;
+nspec_anim_frames = 8;
+nspec_death_anim_frames = 15;
+
 should_change_anim = false;
 sprite_index = sprite_get("voltorb_forward");
 mask_index = sprite_get("voltorb_idle");
@@ -16,7 +21,7 @@ inactive_timer_max = 300;
 ignores_walls = false;
 
 hitbox = noone;
-
+nspecial_hitbox = noone;
 electrify_hitbox = noone;
 //make hbox_group array (the old version was really bad because the array actually affected all players no matter what lol)
 hbox_group = array_create(4,0);

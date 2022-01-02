@@ -6,6 +6,21 @@ var offy = lerp(my_hitboxID.y, hit_player_obj.y - (hit_player_obj.char_height/2)
 
 switch my_hitboxID.attack
 {
+	case AT_FAIR:
+    	if my_hitboxID.hbox_num != 2
+    	{
+    		var t=spawn_hit_fx(offx + (my_hitboxID.hit_effect_x*spr_dir), offy + my_hitboxID.hit_effect_y, my_hitboxID.hbox_num == 1 ? electricvfx : electricvfx);
+    		t.depth = depth - 4  
+    	}
+	break;
+	case AT_DSPECIAL:
+	case AT_JAB:
+    	if my_hitboxID.hbox_num == 2
+    	{
+    		var t=spawn_hit_fx(offx + (my_hitboxID.hit_effect_x*spr_dir), offy + my_hitboxID.hit_effect_y, electricvfx2);
+    		t.depth = depth - 4  
+    	}
+	break;
 	case AT_USPECIAL:
 		if my_hitboxID.hbox_num == 1 /* and ((uspec_held <= 6 and instance_exists(voltorb_obj)) or !instance_exists(voltorb_obj)) */
 		{
@@ -17,7 +32,11 @@ switch my_hitboxID.attack
 		}
 	break;
 	case AT_FSPECIAL:
-	
+		if my_hitboxID.hbox_num == 1
+    	{
+    		var t=spawn_hit_fx(offx + (my_hitboxID.hit_effect_x*spr_dir), offy + my_hitboxID.hit_effect_y, electricvfx2);
+    		t.depth = depth - 4  
+    	}
 		var boost = 2*(window == 6)
 		if (window == 6 and !was_parried) take_damage(player,-1,5);
 		destroy_hitboxes()
@@ -64,6 +83,8 @@ switch my_hitboxID.attack
     t.depth = depth - 4  
 	break;
 	case AT_FSTRONG:
+	var t=spawn_hit_fx(offx + (my_hitboxID.hit_effect_x*spr_dir), offy + my_hitboxID.hit_effect_y, electricvfx);
+	t.depth = depth - 4  
      if my_hitboxID.hbox_num == 2 {
          sound_play(asset_get("sfx_absa_kickhit"),false,noone,0.8);
      }

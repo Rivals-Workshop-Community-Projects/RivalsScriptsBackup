@@ -150,6 +150,7 @@ of the standing-up animation. Dan Moment
 */
 charged_vfx = hit_fx_create(sprite_get("vfx"),21)
 charged_vfx2 = hit_fx_create(sprite_get("vfx2"),24)
+kamikaze_vfx = hit_fx_create(sprite_get("vfx_explosion"),27)
 
 dair_shatter = hit_fx_create(sprite_get("dair_shatter"), 15)
 lockon = hit_fx_create(sprite_get("vfx_lockon"), 20);
@@ -164,6 +165,8 @@ hit_sprites[0] = hit_fx_create(sprite_get("vfx_shatter_small"), 20);
 hit_sprites[1] = hit_fx_create(sprite_get("vfx_shatter_medium"), 24);
 hit_sprites[2] = hit_fx_create(sprite_get("vfx_shatter_large"), 24);
 hit_sprites[3] = hit_fx_create(sprite_get("vfx_star_medium"), 24);
+electricvfx = hit_fx_create(sprite_get("electricvfx"), 28);
+electricvfx2 = hit_fx_create(sprite_get("electricvfx2"), 18);
 
 uspec_held = 0;
 uspec_parry_pressed = false;

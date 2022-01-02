@@ -88,6 +88,8 @@ sprite_change_offset("hfx_smokeball", 40, 0);
 sprite_change_offset("hfx_midsmoke", 35, 40);
 sprite_change_offset("hfx_bigsmoke", 55, 80);
 
+sprite_change_offset("nothing", 55, 80);
+
 sprite_change_offset("chain_link",0,11);
 
 //hehe

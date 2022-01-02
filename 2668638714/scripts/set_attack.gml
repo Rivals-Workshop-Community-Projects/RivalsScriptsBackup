@@ -2,9 +2,9 @@ if attack == AT_NSPECIAL and instance_exists(voltorb_obj)
 {
     attack = AT_NSPECIAL_2;
     
-    if !(voltorb_obj.state == PS_ATTACK_GROUND or voltorb_obj.state == PS_DEAD) and (voltorb_obj.inactive_timer == 0)
+    if !(voltorb_obj.state == PS_ATTACK_GROUND or voltorb_obj.state == PS_DASH or voltorb_obj.state == PS_PRATFALL or voltorb_obj.state == PS_DEAD) and (voltorb_obj.inactive_timer == 0)
     {
-        voltorb_obj.state = PS_ATTACK_GROUND;
+        voltorb_obj.state = PS_DASH;
         voltorb_obj.state_timer = 0;
         voltorb_obj.lock_state = true;
     }
@@ -27,7 +27,7 @@ if attack == AT_USPECIAL
     set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 3);
 }
 
-if (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG)
+if (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG or attack == AT_TAUNT_2)
 {
     dstrong_forgiveness = 0;
     if fspecial_charge == fspecial_max_charge
@@ -39,6 +39,15 @@ if (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG)
         
         switch (attack)
         {
+            case AT_TAUNT_2:
+                set_hitbox_value(AT_TAUNT_2, 2, HG_DAMAGE, 16);
+                set_hitbox_value(AT_TAUNT_2, 2, HG_ANGLE, 90);
+                set_hitbox_value(AT_TAUNT_2, 2, HG_BASE_KNOCKBACK, 12); //5->7
+                set_hitbox_value(AT_TAUNT_2, 2, HG_KNOCKBACK_SCALING, 1.4);
+                set_hitbox_value(AT_TAUNT_2, 2, HG_BASE_HITPAUSE, 8);
+                set_hitbox_value(AT_TAUNT_2, 2, HG_HITPAUSE_SCALING, 1.0);
+                set_hitbox_value(AT_TAUNT_2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+            break;
             case AT_FSTRONG:
                 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 16);
                 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.2);
@@ -87,6 +96,15 @@ if (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG)
         //reset
         switch (attack)
         {
+            case AT_TAUNT_2:
+                reset_hitbox_value(AT_TAUNT_2, 1, HG_DAMAGE)
+                reset_hitbox_value(AT_TAUNT_2, 1, HG_ANGLE)
+                reset_hitbox_value(AT_TAUNT_2, 1, HG_BASE_KNOCKBACK); //5->7
+                reset_hitbox_value(AT_TAUNT_2, 1, HG_KNOCKBACK_SCALING);
+                reset_hitbox_value(AT_TAUNT_2, 1, HG_BASE_HITPAUSE);
+                reset_hitbox_value(AT_TAUNT_2, 1, HG_HITPAUSE_SCALING);
+                reset_hitbox_value(AT_TAUNT_2, 1, HG_HIT_SFX);
+            break;
             case AT_FSTRONG:
                 reset_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE);
                 reset_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING);

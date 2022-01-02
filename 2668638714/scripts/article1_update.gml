@@ -11,9 +11,11 @@ inactive_timer = max(inactive_timer-1,0)
 
 if state == PS_WALK
 {
-	if point_distance(0,0,hsp,vsp) > 2 and !instance_exists(hitbox)
+	var travel_spd = point_distance(0,0,hsp,vsp);
+	if travel_spd > 2.5 and !instance_exists(hitbox)
 	{
 		hitbox = create_hitbox(AT_DSPECIAL, 1, x, y);
+		hitbox.kb_angle = 90 - (sign(hsp)*40)
 	}
 }
 
@@ -22,10 +24,16 @@ if instance_exists(hitbox)
 	hitbox.x = x + hsp;
 	hitbox.y = y + vsp;
 	
-	if !(point_distance(0,0,hsp,vsp) > 2)
+	if !(point_distance(0,0,hsp,vsp) > 4)
 	{
 		instance_destroy(hitbox)
 	}
+}
+
+if instance_exists(nspecial_hitbox)
+{
+	nspecial_hitbox.x = x + hsp;
+	nspecial_hitbox.y = y + vsp;
 }
 
 lock_state = false;
@@ -50,38 +58,60 @@ var should_die = false;
             image_index += (inactive_timer == 0)*0.14
         break;
         
+        //Nspecial Startup
+        case PS_DASH:
+        	sprite_index = sprite_get("voltorb_explode_start")
+        	next_anim = PS_ATTACK_GROUND;
+        	image_index = (state_timer / nspec_start_anim_frames) * sprite_get_number(sprite_index);
+        	if (image_index + ((1 / nspec_start_anim_frames) * sprite_get_number(sprite_index)) >= sprite_get_number(sprite_index))
+            {
+                changeState(next_anim)
+            }
+            
+            if state_timer == 4
+            {
+            	sound_play(asset_get("sfx_absa_cloud_pop"))
+            }
+            break;
         //Nspecial
         case PS_ATTACK_GROUND:
         	if instance_exists(electrify_hitbox) instance_destroy(electrify_hitbox);
-        	next_anim = PS_DEAD;
-        	sprite_index = sprite_get("voltorb_nspecial")
+        	next_anim = PS_PRATFALL;
+        	sprite_index = sprite_get("voltorb_explode_active")
         	image_index = (state_timer / nspec_anim_frames) * sprite_get_number(sprite_index);
         	
-        	if state_timer > 9 and state_timer <= 18 and state_timer mod 3 == 0
+        	if state_timer == 0
         	{
-        		with player_id
-        		{
-        			var shock = create_hitbox(AT_NSPECIAL_2, 2, voltorb_obj.x, voltorb_obj.y + (state_timer-15));
-		            var shockspd = 24;
-		            var xx = x;
-		            x = -100000;
-		            
-		            var nearest = instance_nearest(shock.x,shock.y,oPlayer);
-		            var nearestdir = point_direction(shock.x,shock.y,nearest.x + nearest.hsp,nearest.y + nearest.vsp - (nearest.char_height/2));
-		            //print(nearestdir)
-		            shock.hsp = lengthdir_x(shockspd,nearestdir);
-		            shock.vsp = lengthdir_y(shockspd,nearestdir);
-		            shock.x += shock.hsp;
-		            shock.y += shock.vsp;
-		            
-		            x = xx;
-        		}
+        		nspecial_hitbox = create_hitbox(AT_NSPECIAL_2, 2, x, y);
         	}
+        	
+        	// if state_timer > 9 and state_timer <= 18 and state_timer mod 3 == 0
+        	// {
+        	// 	with player_id
+        	// 	{
+        	// 		var shock = create_hitbox(AT_NSPECIAL_2, 2, voltorb_obj.x, voltorb_obj.y + (state_timer-15));
+		       //     var shockspd = 24;
+		       //     var xx = x;
+		       //     x = -100000;
+		            
+		       //     var nearest = instance_nearest(shock.x,shock.y,oPlayer);
+		       //     var nearestdir = point_direction(shock.x,shock.y,nearest.x + nearest.hsp,nearest.y + nearest.vsp - (nearest.char_height/2));
+		       //     //print(nearestdir)
+		       //     shock.hsp = lengthdir_x(shockspd,nearestdir);
+		       //     shock.vsp = lengthdir_y(shockspd,nearestdir);
+		       //     shock.x += shock.hsp;
+		       //     shock.y += shock.vsp;
+		            
+		       //     x = xx;
+        	// 	}
+        	// }
         	
         	
         	if (floor(image_index) >= sprite_get_number(sprite_index))
             {
-                changeState(next_anim)    
+                changeState(next_anim)
+                sprite_index = sprite_get("voltorb_explode_endlag")
+                image_index = 0;
             }
         break;
         
@@ -110,6 +140,12 @@ var should_die = false;
         	{
         		electrify_hitbox.x = x + hsp;
         		electrify_hitbox.y = y + vsp;
+        		//electrify_hitbox.kb_angle = 0;
+        		
+        		//var same_dir = 2*(player_id.spr_dir == sign(hsp))-1 
+        		
+        		//electrify_hitbox.kb_angle = abs((90-(45*(sign(hsp))))) * same_dir;
+        		// print(electrify_hitbox.kb_angle)
         	}
         	
         	next_anim = PS_DEAD;
@@ -121,11 +157,14 @@ var should_die = false;
             }        	
         break;
         
+        case PS_PRATFALL:
         case PS_DEAD:
         	if instance_exists(electrify_hitbox) instance_destroy(electrify_hitbox)
         	
-        	sprite_index = sprite_get("voltorb_death")
-        	image_index = (state_timer / death_anim_frames) * sprite_get_number(sprite_index);
+        	sprite_index = sprite_get(state == PS_PRATFALL ? "voltorb_explode_endlag" : "voltorb_death")
+        	var anim_frames = state == PS_PRATFALL ? nspec_death_anim_frames : death_anim_frames; 
+        	
+        	image_index = (state_timer / anim_frames) * sprite_get_number(sprite_index);
         	if (floor(image_index) >= sprite_get_number(sprite_index))
             {
                 should_die = true;
@@ -221,8 +260,8 @@ if hbox.attack == AT_FSPECIAL and hit_player_obj == player_id and state != PS_DE
 		destroy_hitboxes()
 		window = 8;
 		window_timer = 0;
-		old_vsp = -5-boost;
-		old_hsp /= 1.4;
+		old_vsp = -6-boost;
+		old_hsp /= 3;
 		fspecial_used = false;
 		move_cooldown[AT_FSPECIAL] = 30;
     }
@@ -230,11 +269,14 @@ if hbox.attack == AT_FSPECIAL and hit_player_obj == player_id and state != PS_DE
 
 if hit_player_obj != player_id
 {
-    if state == PS_IDLE and inactive_timer == 0
-    {
-    	inactive_timer = inactive_timer_max;
-    	sound_play(sound_get("inactive"));
-	}
+	hsp = 0;
+	vsp = 0;
+	should_destroy = true;
+ //   if state == PS_IDLE and inactive_timer == 0
+ //   {
+ //   	inactive_timer = inactive_timer_max;
+ //   	sound_play(sound_get("inactive"));
+	// }
 }
 else
 {
@@ -247,6 +289,11 @@ else
 		dir_changed = false;
 		switch hbox.attack
 		{
+			case AT_DAIR:
+				knock = 4;
+				dir = 270;
+				dir_changed = 0;
+			break;
 			case AT_USPECIAL:
 				if hbox.hbox_num == 1
 				{
@@ -262,18 +309,33 @@ else
 				if hbox.hbox_num != 2 break;
 			case AT_FSPECIAL:
 			case AT_FSTRONG:
-				dir = 0;
+				dir = hbox.attack == AT_FAIR ? 15 : 0;
 				dir_changed = true;
+				
+				if hbox.attack == AT_FSTRONG and hbox.hbox_num == 2 knock /= 2.3;
 			break;
 			case AT_BAIR:
-				knock = 5;
+				knock = 4;
 				dir = 180;
 				dir_changed = true;
 			break;
+			case AT_JAB:
+				if hbox.hbox_num == 1
+				{
+					dir = 0;
+					dir_changed = true;
+				}
+			break;
 		}
 		knock *= 2.5;
-		hsp = lengthdir_x(knock, dir + (180*(player_id.spr_dir == -1)*dir_changed) );
-		vsp = lengthdir_y(knock, dir + (180*(player_id.spr_dir == -1)*dir_changed) );
+		
+		var new_dir = (player_id.spr_dir == -1 and dir_changed) ? 180-dir : dir;
+		
+		hsp = lengthdir_x(knock, new_dir);
+		vsp = lengthdir_y(knock, new_dir);
+		
+		// hsp = lengthdir_x(knock, dir + (180*(player_id.spr_dir == -1)*dir_changed) );
+		// vsp = lengthdir_y(knock, dir + (180*(player_id.spr_dir == -1)*dir_changed) );
 	}
 	
 	if !(hbox.attack == AT_USPECIAL and hbox.hbox_num == 1)
@@ -305,7 +367,7 @@ if (should_destroy)
 	{
 		move_cooldown[AT_NSPECIAL] = 120;
 	}
-	changeState(PS_DEAD)
+	if state != PS_DEAD changeState(PS_DEAD)
 }
 #define filters(hbox)
 //These are the filters that check whether a hitbox should be able to hit the article.

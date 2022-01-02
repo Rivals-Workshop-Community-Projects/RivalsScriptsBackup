@@ -9,6 +9,18 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
 {
     switch attack
     {
+        case AT_TAUNT_2:
+        if window == 3 and strong_powered_up
+		{
+			var t = spawn_hit_fx(x,y,kamikaze_vfx);
+			t.depth = depth - 1;
+			
+			sound_play(sound_get("boom"));
+            sound_play(asset_get("sfx_abyss_explosion_big"),false,noone,0.8,1);
+            create_hitbox(AT_TAUNT_2,2,x,y-24)
+			create_deathbox(x,y,10,10,player,true,0,10,1)
+		}
+        break;
         case AT_DSTRONG:
             if (window == 4 and window_timer == 0) and !hitpause
             {
@@ -68,6 +80,12 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
             
             if window_timer mod 10 == 0
             {
+                //spawn_base_dust(x,y,"land")
+                if !free
+                {
+                    spawn_base_dust(x-20,y,"dash",1)
+                    spawn_base_dust(x+20,y,"dash",-1)
+                }
                 sound_play(asset_get("sfx_absa_cloud_crackle"), false, noone, 0.5, lerp(0.98,1.25,fspecial_charge/fspecial_max_charge) + (window_timer > 6)*.04 )
             }
             
@@ -90,7 +108,7 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
             
             if (shield_pressed)
             {
-                window = 9;
+                window = 10;
                 window_timer = 0;
             }
             
@@ -105,6 +123,11 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
                     sound_play(sound_get("strong_2_charge"))
                     window = 6;
                     window_timer = -1;
+                    strong_powered_up = true;
+                }
+                else
+                {
+                    strong_powered_up = false;
                 }
                 fspecial_charge = 0;
                 break;
@@ -126,15 +149,24 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
             
             case 5:
             case 7:
-            
+            case 9:
             if (right_down-left_down == -spr_dir and !was_parried)
             {
-                hsp -= sign(hsp)
+                hsp -= sign(hsp)*1.35
             }
             
             if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)-1)
             {
-                set_state(get_window_value(attack,window,AG_WINDOW_TYPE) == 7 or was_parried ? PS_PRATFALL : PS_IDLE_AIR);
+                if window == 9
+                {
+                    var idle_state = free ? PS_IDLE_AIR : PS_IDLE;
+                    set_state(get_window_value(attack,strong_powered_up ? 7 : 5,AG_WINDOW_TYPE) == 7 or was_parried ? PS_PRATFALL : idle_state);
+                }
+                else
+                {
+                    window = 9;
+                    window_timer = 0;
+                }
             }
             break;
             case 8:
@@ -169,7 +201,7 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
             case 1:
                 if special_down uspec_held++
                 
-                if shield_pressed
+                if shield_down and !(uspec_held >= 12)
                 {
                     uspec_parry_pressed = true;
                 }
@@ -338,3 +370,35 @@ if (instance_exists(thunderfx_obj))
     thunderfx_obj.x = x + hsp;
     thunderfx_obj.y = y + vsp;
 }
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

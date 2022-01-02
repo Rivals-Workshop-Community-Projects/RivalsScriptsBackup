@@ -13,8 +13,10 @@ sword = hit_fx_create( sprite_get( "hfx_sword" ), 30 );
 bigsmoke = hit_fx_create( sprite_get( "hfx_bigsmoke" ), 50 );
 midsmoke = hit_fx_create( sprite_get( "hfx_midsmoke" ), 50 );
 smokeball = hit_fx_create( sprite_get( "hfx_smokeball" ), 15 );
+nothing = hit_fx_create( sprite_get( "nothing" ), 30 );
 set_hit_particle_sprite( 1, sprite_get( "particle_1" ) );
 set_hit_particle_sprite( 2, sprite_get( "particle_2" ) );
+set_hit_particle_sprite( 3, sprite_get( "nothing" ) );
 fspecdie = hit_fx_create( sprite_get( "fspec_die" ), 30 );
 
 //extra alts
@@ -151,5 +153,6 @@ markConsumed = false;
 sickAfterGraceMax = 0;
 sickAfterGrace = 0;//How many frames the opponent is invincible from getting sick again after recovering from sickness
 
-//bair hfx
-//bairburst = hit_fx_create( sprite_get("bairburst"), 30 )
+//bair 
+bairused = false;
+
