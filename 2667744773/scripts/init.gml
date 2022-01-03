@@ -44,6 +44,8 @@ walljump_time = 32;
 max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .35;
+default_gravity_speed = .35;
+hover_gravity_speed = .10;
 hitstun_grav = .5;
 knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
@@ -104,6 +106,7 @@ bubble_y = 8;
 //Flutter
 flutterTimer = 70;
 flutterAttack = 0;
+influtter = false;
 
 NspecialCount = 1;
 PinMissile = false;
@@ -111,6 +114,7 @@ Dspecial_count = 0;
 timestop_ready = false;
 timestop = false;
 timestop_amount = 60;
+boost_jump = false;
 
 hfx_dair_sweetspot = hit_fx_create(sprite_get("hfx_dair_sweetpot"), 27);
 hfx_poison_sweetspot = hit_fx_create(sprite_get("poison_hit_sweet"), 30);

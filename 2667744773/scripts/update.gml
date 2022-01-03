@@ -32,6 +32,22 @@ if "superTrue" in self {
 
 if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP || state == PS_TUMBLE) && vsp > 3 && (jump_down || up_down) && (flutterTimer > 1) {
 	set_attack(AT_EXTRA_1);
+	influtter = true;
+	
+}else if((flutterTimer < 0 || state == PS_IDLE_AIR) && free){
+	influtter = false;
+	gravity_speed = default_gravity_speed;
+	
+}
+
+
+if(free && (attack == AT_NAIR || attack == AT_FAIR || attack == AT_BAIR || attack == AT_DAIR || attack == AT_UAIR )){
+	if(flutterTimer > 0){
+		if(influtter){
+			gravity_speed = hover_gravity_speed;
+			flutterTimer--;
+		}
+	}
 }
 
 if (state == PS_ATTACK_AIR) and (attack == AT_EXTRA_1) {
@@ -58,6 +74,7 @@ if(flutterTimer < 0){
 	sound_play(sound_get("low_fly"));
 	flutterTimer = 0;
 }
+
 
 
 

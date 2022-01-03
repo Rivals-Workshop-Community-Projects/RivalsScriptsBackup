@@ -3,20 +3,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-if(attack == AT_UAIR || attack == AT_FAIR || attack == AT_BAIR){
-	if(flutterTimer > 0){
-		if(up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed){
-			if(up_down){
-    			if(window_timer == 1){
-					spawn_base_dust(x-(0*spr_dir), y, "n_wavedash", 0);
-    				sound_play(sound_get("Substitute"));
-    				flutterTimer -= 15;	
-    			}
-			}
-		}
-	}
-}
-
 
 
 if(attack == AT_FSTRONG){
@@ -132,11 +118,6 @@ if(attack == AT_UAIR){
 	}
 }
 
-if(attack == AT_JAB){
-	if(was_parried){
-		set_state(PS_PRATLAND);
-	}
-}
 
 if(attack == AT_BAIR){
 	if (window == 2 && collision_point(x - 80 * spr_dir, y - 20, asset_get("par_block"),false,true) != noone)
@@ -315,6 +296,11 @@ if (attack == AT_FSPECIAL){
 		}
 		
 	}
+	if(window == 3){
+		if(window_timer == 1){
+			spawn_hit_fx(x + (20* spr_dir), -10, 19);
+		}
+	}
 	if(window == 4){
 		can_jump = true;
 		can_shield = true;
@@ -376,18 +362,16 @@ if(attack == AT_TAUNT_2){
 
 
 
-if (attack == AT_EXTRA_1) {
+if (attack == AT_EXTRA_1) { 
 	can_wall_jump = true;
 	can_attack = true;
 	can_special = true;
 	can_shield = true;
 	can_jump = true;
 	can_fast_fall = true;
-	
 	if 3 > vsp {
 	flutterTimer--;
 	}
-	
 	if vsp > -5 {
 		if vsp > 3 {
 			vsp -= .9;
@@ -396,7 +380,6 @@ if (attack == AT_EXTRA_1) {
 			vsp -= .35;
 		}
 	}
-	
 	if window_timer == 7 && flutterTimer > 0 && (jump_down || up_down) {
 	window_timer = 0;
 	}
@@ -406,9 +389,19 @@ if (attack == AT_EXTRA_1) {
 			
 			if right_down {
 				hsp = 7;
+				spawn_base_dust(x-(20*spr_dir), y, "dash_start", 1);
+				sound_play(sound_get("Substitute"));
 			}
 			else if left_down {
 				hsp = -7;
+				spawn_base_dust(x-(20*spr_dir), y, "dash_start", -1);
+				sound_play(sound_get("Substitute"));
+			}	
+			else if up_down {
+				spawn_base_dust(x-(0*spr_dir), y, "n_wavedash", 0);
+				sound_play(sound_get("Substitute"));
+				flutterTimer -= 10;	
+				vsp = -10;
 			}
 		}
 
@@ -416,16 +409,24 @@ if (attack == AT_EXTRA_1) {
 			
 			if left_strong_pressed {
 				hsp = -7;
+				spawn_base_dust(x-(20*spr_dir), y, "dash_start", -1);
+				sound_play(sound_get("Substitute"));
 			}		
 			if right_strong_pressed {
 				hsp = 7;
+				spawn_base_dust(x-(20*spr_dir), y, "dash_start", 1);
+				sound_play(sound_get("Substitute"));
 			}	
 			if up_strong_pressed {
+				spawn_base_dust(x-(0*spr_dir), y, "n_wavedash", 0);
+				sound_play(sound_get("Substitute"));
+				flutterTimer -= 10;	
 				vsp = -10;
 			}				
 		}
 	}
 }
+
 
 
 if(attack == AT_EXTRA_2){

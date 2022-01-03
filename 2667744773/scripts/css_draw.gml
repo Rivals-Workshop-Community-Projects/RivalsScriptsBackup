@@ -14,7 +14,7 @@ if (get_color_profile_slot_r(1, 0) == 255 ) {
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.1";
+patch_ver = "1.2";
 patch_day = "28";
 patch_month = "November";
  
