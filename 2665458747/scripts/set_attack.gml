@@ -26,6 +26,24 @@ suckerpunchsludge = false;
 
 croagfstrongcharge = 0;
 
+if has_rune("A")
+{
+    set_hitbox_value(AT_FTILT, 2, HG_EFFECT, 0);
+    set_hitbox_value(AT_FTILT, 2, HG_FORCE_FLINCH, 1);
+}
+
+if has_rune("B")
+{
+    set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 270);
+    set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 1);
+}
+
+if has_rune("O")
+{
+    set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 15);
+}
+
+
 if down_down && attack == AT_TAUNT
 {
     set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("waveland"));

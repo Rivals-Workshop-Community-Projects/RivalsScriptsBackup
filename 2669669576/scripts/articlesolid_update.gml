@@ -38,19 +38,66 @@ if(state == 1){
     if(free){
         with oPlayer{
             if(place_meeting(x, y+4, other) and other.y >= y){
-                other.vsp = 1;
+                other.vsp = 2;
             }
         }
     }
     if(life == 600){
         life = 0;
-        state = 4
+        state = 4;
+        image_index = 0;
         sprite_index = sprite_get("wall_despawn");
     }
     hit_detection();
 } else if (state == 3){
     sprite_index = sprite_get("wall_break");
-    if(hitstop <= 0 or life > 10){
+    if(hitstop <= 0){
+        var temp_angle = kb_dir;
+        var force = 20
+        with(player_id){
+        
+            var eye_hitbox = create_hitbox(AT_FSPECIAL, 3, fspecial_wall.x, fspecial_wall.y+68);
+            eye_hitbox.hsp = lengthdir_x( force, temp_angle );
+            eye_hitbox.vsp = lengthdir_y( force, temp_angle );
+            eye_hitbox.spr_dir = sign(eye_hitbox.hsp);
+            if(eye_hitbox.spr_dir  == 0){
+                eye_hitbox.spr_dir = 1;
+            }
+            eye_hitbox.proj_angle = sign(eye_hitbox.hsp)*darctan2(abs(eye_hitbox.vsp), abs(eye_hitbox.hsp))
+            eye_hitbox.player = other.player_who_hit_wall;
+            
+            temp_angle+=-spr_dir*5;
+            eye_hitbox = create_hitbox(AT_FSPECIAL, 3, fspecial_wall.x, fspecial_wall.y+82);
+            eye_hitbox.hsp = lengthdir_x( force, temp_angle );
+            eye_hitbox.vsp = lengthdir_y( force, temp_angle );
+            eye_hitbox.spr_dir = sign(eye_hitbox.hsp);
+            if(eye_hitbox.spr_dir  == 0){
+                eye_hitbox.spr_dir = 1;
+            }
+            eye_hitbox.proj_angle = sign(eye_hitbox.hsp)*darctan2(abs(eye_hitbox.vsp), abs(eye_hitbox.hsp))
+            
+            eye_hitbox.player = other.player_who_hit_wall;
+            temp_angle+=spr_dir*10;
+            eye_hitbox = create_hitbox(AT_FSPECIAL, 3, fspecial_wall.x, fspecial_wall.y+54);
+            eye_hitbox.hsp = lengthdir_x( force, temp_angle );
+            eye_hitbox.vsp = lengthdir_y( force, temp_angle );
+            eye_hitbox.spr_dir = sign(eye_hitbox.hsp);
+            if(eye_hitbox.spr_dir  == 0){
+                eye_hitbox.spr_dir = 1;
+            }
+            eye_hitbox.proj_angle = sign(eye_hitbox.hsp)*darctan2(abs(eye_hitbox.vsp), abs(eye_hitbox.hsp))
+            eye_hitbox.player = other.player_who_hit_wall;
+            
+        
+            spawn_hit_fx(fspecial_wall.x+spr_dir*8, fspecial_wall.y+68, shatter);
+        }
+		with(oPlayer){
+			if(place_meeting(x, y+5, other) and !free and other.y >= y){
+				free = true;
+				state = PS_PRATFALL;
+			}	
+		}
+        
         instance_destroy(self);
     }
 } else if (state == 4){
@@ -246,41 +293,20 @@ if(hbox.attack == AT_DAIR){
 var temp_angle = kb_dir;
 var force = 20
 sound_play(sound_get("shatter"));
+if(hbox.player != player_id.player){
+    player_id.fspecial_hard_cd = true;
+    player_id.move_cooldown[AT_FSPECIAL] = 300;
+    player_id.move_cooldown[AT_FSPECIAL_AIR] = 300;
+} else {
+	
+    player_id.move_cooldown[AT_FSPECIAL] = 60;
+    if(player_id.move_cooldown[AT_FSPECIAL_AIR] < 60){
+    	player_id.fspecial_hard_cd = true;
+    	player_id.move_cooldown[AT_FSPECIAL_AIR] = 60;
+    }
+}
+player_who_hit_wall = hbox.player
 with(player_id){
-
-    var eye_hitbox = create_hitbox(AT_FSPECIAL, 3, fspecial_wall.x, fspecial_wall.y+68);
-    eye_hitbox.hsp = lengthdir_x( force, temp_angle );
-    eye_hitbox.vsp = lengthdir_y( force, temp_angle );
-    eye_hitbox.spr_dir = sign(eye_hitbox.hsp);
-    if(eye_hitbox.spr_dir  == 0){
-        eye_hitbox.spr_dir = 1;
-    }
-    eye_hitbox.proj_angle = sign(eye_hitbox.hsp)*darctan2(abs(eye_hitbox.vsp), abs(eye_hitbox.hsp))
-    eye_hitbox.player = hbox.player;
-    
-    temp_angle+=-spr_dir*5;
-    eye_hitbox = create_hitbox(AT_FSPECIAL, 3, fspecial_wall.x, fspecial_wall.y+82);
-    eye_hitbox.hsp = lengthdir_x( force, temp_angle );
-    eye_hitbox.vsp = lengthdir_y( force, temp_angle );
-    eye_hitbox.spr_dir = sign(eye_hitbox.hsp);
-    if(eye_hitbox.spr_dir  == 0){
-        eye_hitbox.spr_dir = 1;
-    }
-    eye_hitbox.proj_angle = sign(eye_hitbox.hsp)*darctan2(abs(eye_hitbox.vsp), abs(eye_hitbox.hsp))
-    
-    eye_hitbox.player = hbox.player;
-    temp_angle+=spr_dir*10;
-    eye_hitbox = create_hitbox(AT_FSPECIAL, 3, fspecial_wall.x, fspecial_wall.y+54);
-    eye_hitbox.hsp = lengthdir_x( force, temp_angle );
-    eye_hitbox.vsp = lengthdir_y( force, temp_angle );
-    eye_hitbox.spr_dir = sign(eye_hitbox.hsp);
-    if(eye_hitbox.spr_dir  == 0){
-        eye_hitbox.spr_dir = 1;
-    }
-    eye_hitbox.proj_angle = sign(eye_hitbox.hsp)*darctan2(abs(eye_hitbox.vsp), abs(eye_hitbox.hsp))
-    eye_hitbox.player = hbox.player;
-    
-
     spawn_hit_fx(fspecial_wall.x+spr_dir*8, fspecial_wall.y+68, shatter);
 }
 
@@ -304,10 +330,17 @@ vsp = lengthdir_y(orig_knock, kb_dir);
 //Feel free to tweak this as necessary.
 with hbox {
     var player_equal = player == other.player_id.player;
+    var standing_on_wall = false;
+    var wall = other;
+    with(hbox.player_id){
+        if(!free and y <= wall.y){
+            standing_on_wall = true;
+        }
+    }
     var team_equal = get_player_team(player) == get_player_team(other.player_id.player);
     return ("owner" not in self || owner != other) //check if the hitbox was created by this article
         && hit_priority != 0 && hit_priority <= 10
-        && (groundedness == 0 || groundedness == 1+other.free)
+        && (groundedness == 0 || groundedness == 1+other.free) && (!standing_on_wall)
         //&& (!hbox.type == 2) //uncomment to prevent the article from being hit by its owner.
         //&& ( (get_match_setting(SET_TEAMS) && (get_match_setting(SET_TEAMATTACK) || !team_equal) ) || player_equal) //uncomment to prevent the article from being hit by its owner's team.
 }

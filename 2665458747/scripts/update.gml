@@ -237,6 +237,63 @@ with oPlayer
     }
 }
 
+if has_rune("M")
+{
+	with oPlayer 
+	{
+		if ("croagpoisonovertimedamage" in self && croagpoisonovertimedamage && "croagpoison" in self && croagpoison >= 25)
+		{
+			if croagpoisonovertimedamagetimer<=59
+			{
+				croagpoisonovertimedamagetimer++;
+			}
+			else if croagpoisonovertimedamagetimer>=59
+			{
+				croagpoisonovertimedamagetimer = 0;
+				take_damage(self.player,-1, 5);
+			}
+			
+			var croagthing_x = x;
+			var croagthing_y = y;
+			var croagthing_spr_dir = spr_dir;
+			switch (croagpoisonovertimedamagetimer)
+			{
+				case 54:
+				{
+					with other
+					{
+					spawn_hit_fx(croagthing_x+32*croagthing_spr_dir, croagthing_y-48, poison_fx )
+					}
+				}break;
+				
+				case 58:
+				{
+					with other
+					{
+					spawn_hit_fx(croagthing_x-32*croagthing_spr_dir, croagthing_y-64, poison_fx )
+					}
+				}break;
+				
+				case 2:
+				{
+					with other
+					{
+					spawn_hit_fx(croagthing_x-48*croagthing_spr_dir, croagthing_y-24, poison_fx )
+					}
+				}break;
+				
+				case 6:
+				{
+					with other
+					{
+					spawn_hit_fx(croagthing_x+48*croagthing_spr_dir, croagthing_y-32, poison_fx )
+					}
+				}break;
+			}
+		}
+	}
+}
+
 if knockoffvisualcooldown >= 1 {knockoffvisualcooldown--;}
 
 if (introTimer2 < 1) 

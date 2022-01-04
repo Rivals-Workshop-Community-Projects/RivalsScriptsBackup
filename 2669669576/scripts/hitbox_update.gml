@@ -15,6 +15,7 @@ if(attack == AT_FSTRONG and hbox_num == 1){
     }*/
 }
 
+
 if(attack == AT_FSTRONG and hbox_num == 4){
     if(hitbox_timer == 6){
         destroyed = true;
@@ -25,6 +26,7 @@ if(attack == AT_FSTRONG and hbox_num == 4){
 if(attack == AT_FSTRONG and hbox_num == 2){
     image_index = floor(hitbox_timer/4);
     if(hitbox_timer == 1){
+        sound_play(asset_get("sfx_ell_strong_attack_explosion"))
         mini_hitbox = create_hitbox(AT_FSTRONG, 5, floor(x)+spr_dir*28, floor(y)+12);
     }
     if(instance_exists(mini_hitbox) and mini_hitbox.has_hit and !proj_has_hit){
@@ -42,6 +44,12 @@ if(attack == AT_FSTRONG and hbox_num == 2){
     }
 }
 
+if(attack == AT_FSTRONG and type == 2){
+    x = player_id.x+spr_dir*player_id.fstrong_punch_distance;    
+    
+}
+
+
 if(attack == AT_FSPECIAL and hbox_num == 3){
     if(hitbox_timer == 3){
         transcendent = false;
@@ -56,4 +64,9 @@ if(attack == AT_FSPECIAL and hbox_num == 3){
             }
         }
     }
+}
+
+
+if(attack == AT_FSTRONG and player_id.state_cat == SC_HITSTUN){
+   destroyed = true;
 }

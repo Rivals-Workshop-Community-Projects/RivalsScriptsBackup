@@ -1,0 +1,1 @@
+draw_sprite_ext(sprite_get("arrow_icon"), 1, x-6, y-20, 1, 1, 0, get_player_hud_color(player), 1);

@@ -3,6 +3,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+
 switch(attack){
     case AT_DATTACK:
 		if(window == 1 and window_timer == 1 and get_player_color(player) > 15){
@@ -29,9 +30,31 @@ switch(attack){
 				sound_play(sound_get("grunt6"));
 				attack_audio = sound_get("grunt6");
 			}
-            if(window == 6 and has_hit and attack_pressed){
-                window++;
-                window_timer = 0;
+            if(window == 6 and has_hit){
+            	if(attack_pressed and up_down or up_stick_down){
+            		window_timer = 0;
+            		window = 1;
+            		attack_end();
+            		set_attack(AT_UAIR);
+            	} else if (attack_pressed and down_down or down_stick_down) {
+            		window_timer = 0;
+            		window = 1;
+            		attack_end();
+            		set_attack(AT_DAIR);
+            	} else if (attack_pressed and (left_down and spr_dir == 1 or right_down and spr_dir == -1) or (left_stick_down and spr_dir == 1 or right_stick_down and spr_dir == -1)){
+            		window_timer = 0;
+            		window = 1;
+            		attack_end();
+            		set_attack(AT_BAIR);
+            	} else if (attack_pressed and (left_down and spr_dir == -1 or right_down and spr_dir == 1) or (left_stick_down and spr_dir == -1 or right_stick_down and spr_dir == 1)){
+            		window_timer = 0;
+            		window = 1;
+            		attack_end();
+            		set_attack(AT_FAIR);
+            	} else if(attack_pressed) {
+                	window++;
+                	window_timer = 0;
+            	}
             }
             if(window == 7 and window_timer == 8){
                 vsp-=4;
@@ -53,7 +76,7 @@ switch(attack){
     case AT_NSPECIAL:
     	trigger_wavebounce();
     	if(window == 1) {
-			move_cooldown[AT_NSPECIAL] = 30;
+			
 			nspecial_hitbox = noone;
 			if(window_timer == get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH)){
 				sound_play(asset_get("sfx_frog_fspecial_charge_loop"), true, noone, 1, 1);
@@ -62,21 +85,30 @@ switch(attack){
 				sound_play(sound_get("shadow_charge"), 0, noone, .7+proj_size/10, .9+proj_size/10);
 				if(nspecial_cur_window!= 0){
 					window = nspecial_cur_window;
-					window_timer = nspecial_cur_frame;
+					window_timer = 0;
 				}
 				if(proj_size > 3){
-					sound_stop(sound_get("shadow_charge"));
-					sound_stop(asset_get("sfx_frog_fspecial_charge_loop"));
-					sound_play(asset_get("sfx_swipe_medium1"));
-					sound_play(sound_get("shadow_throw"));
-					window_timer = 0;
-					window = 6;
-					nspecial_cur_size = 1;
-					nspecial_hitbox = create_hitbox(AT_NSPECIAL, proj_size, x-spr_dir*24, y-30);
-					nspecial_hitbox.shadowball_size = proj_size;
-					nspecial_hitbox.hsp = 0;
-					nspecial_cur_window = 0;
-					nspecial_cur_frame = 0;
+					if(shield_pressed){
+						sound_play(asset_get("sfx_frog_fspecial_cancel"));
+						sound_stop(asset_get("sfx_frog_fspecial_charge_loop"));
+						clear_button_buffer(PC_SHIELD_PRESSED);
+						nspecial_cur_size = proj_size;
+						window = 7;
+						attack_end();
+					} else {
+						sound_stop(sound_get("shadow_charge"));
+						sound_stop(asset_get("sfx_frog_fspecial_charge_loop"));
+						sound_play(asset_get("sfx_swipe_medium1"));
+						sound_play(sound_get("shadow_throw"));
+						window_timer = 0;
+						window = 6;
+						nspecial_cur_size = 1;
+						nspecial_hitbox = create_hitbox(AT_NSPECIAL, proj_size, x-spr_dir*24, y-30);
+						nspecial_hitbox.shadowball_size = proj_size;
+						nspecial_hitbox.hsp = 0;
+						nspecial_cur_window = 0;
+						nspecial_cur_frame = 0;
+					}
 				}
 			}
 		}
@@ -95,7 +127,7 @@ switch(attack){
 			
 			if(window_timer == get_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH)){
 				
-				if(proj_size > 3){
+				if(proj_size > 3 or window == 4){
 					sound_play(asset_get("sfx_frog_fspecial_charge_full"));
 					sound_play(sound_get("shadow_charge"), 0, noone, .7+proj_size/10, .9+proj_size/10);
 					sound_stop(asset_get("sfx_frog_fspecial_charge_loop"));
@@ -106,9 +138,11 @@ switch(attack){
 					sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
 					sound_play(sound_get("shadow_charge"), 0, noone, .7+proj_size/10, .9+proj_size/10);
 					proj_size++;
+					nspecial_cur_size = proj_size;
 				}
 			}
 			if(!(special_down) and proj_size > 0){
+				
 				window_timer = 0;
 				window = 6;
 				sound_stop(asset_get("sfx_frog_fspecial_charge_loop"));
@@ -124,6 +158,7 @@ switch(attack){
 			}
 		} else if (window == 6 and instance_exists(nspecial_hitbox)){
 			if(window_timer < 6){
+				move_cooldown[AT_NSPECIAL] = 45;
 				nspecial_hitbox.x = x-spr_dir*24+hsp;
 				nspecial_hitbox.y = y-30+vsp;
 			}
@@ -131,7 +166,10 @@ switch(attack){
 				//print_debug(proj_size);
 				nspecial_hitbox.x = x+spr_dir*34+hsp;
 				nspecial_hitbox.y = y-30+vsp;
-				nspecial_hitbox.hsp = spr_dir*10*(1+proj_size/10*2);
+				nspecial_hitbox.hsp = spr_dir*5.5*(1+proj_size/10*2);
+				if(proj_size == 2){
+					nspecial_hitbox.hsp = spr_dir*9;
+				}
 			}
 		}
 		
@@ -161,9 +199,9 @@ switch(attack){
 			vsp = lerp(vsp, 20, .06)
 		}
 		
-		if(window == 3 or window == 2 and has_hit and !hitpause){
+		if((window == 3 or window == 2 and window_timer > 6)and !hitpause){
 			if(shield_down){
-				window++;
+				window= 4;
 				window_timer = 0;
 			}
 		}
@@ -189,7 +227,7 @@ switch(attack){
 		if(window == 5 and !hitpause){
 			if(window_timer = 1){
 				has_hit = false;
-				spawn_hit_fx(x, y, dive);
+				spawn_hit_fx(floor(x), floor(y), dive);
 				sound_play(asset_get("sfx_abyss_hazard_hit"));
 				dspecial_falling_loop = 0;
 			}
@@ -212,8 +250,8 @@ switch(attack){
 			}
 		}
 		if(window == 6){
-			if(window_timer == 7){
-				spawn_hit_fx(x, y+6, dive);
+			if(window_timer == 11){
+				spawn_hit_fx(floor(x), floor(y+6), dive);
 				sound_play(asset_get("sfx_abyss_hazard_hit"));
 				sound_play(asset_get("sfx_swipe_heavy1"));
 			}if(window_timer == 1){
@@ -223,14 +261,21 @@ switch(attack){
 		if(window == 8 and window_timer == 9){
 			sound_play(sound_get("venoshock"));
 		}
+		if(window == 8 and window_timer > 9){
+			hsp*=.65;
+		}
 		
 		if(window == 8 and !has_hit and window_timer == get_window_value(AT_DSPECIAL, window, AG_WINDOW_LENGTH)){
 			attack_end();
+			hsp = hsp/2;
 			set_state(PS_PRATFALL);
 		}
 		break;
 		case AT_FTILT:
-		
+			if(was_parried){
+				window = 7;
+				attack_end();
+			}
 			if(window = 1){
 				if(window_timer == 3){
 					sound_play(asset_get("sfx_swipe_medium1"));
@@ -294,9 +339,14 @@ switch(attack){
         }
         break;
         case AT_USTRONG:
+        	if(was_parried){
+				window = 5;
+				attack_end();
+			}
+        
         	can_fast_fall = false;
         	if(window == 2 and window_timer = 3){
-        		vsp = -((strong_charge/60)*12+8)
+        		vsp = -((strong_charge/60)*14+10)
         	}
         break;
         
@@ -320,8 +370,8 @@ switch(attack){
 				draw_indicator = false;
 				if(!joy_pad_idle){
 					var joy = joy_dir;
-					vsp = lerp(vsp, lengthdir_y(18,joy), 0.25)
-					hsp = lerp(hsp, lengthdir_x(18,joy), 0.25)
+					vsp = lerp(vsp, lengthdir_y(14,joy), 0.23)
+					hsp = lerp(hsp, lengthdir_x(14,joy), 0.23)
 				}
 			} else if(window == 5){
 				if(has_hit){
@@ -381,12 +431,15 @@ switch(attack){
 			}
     	break;
     	case AT_FSPECIAL_AIR:
-    		move_cooldown[AT_FSPECIAL_AIR] = 9000;
     	case AT_FSPECIAL:
     		if(window == 2 and window_timer == 1){
     			if(!free){
-    				move_cooldown[AT_FSPECIAL] = 45;
+    				move_cooldown[AT_FSPECIAL] = 60;
+    				move_cooldown[AT_FSPECIAL_AIR] = 60;
+    				fspecial_hard_cd = true;
     			} else {
+    				fspecial_hard_cd = false;
+    				move_cooldown[AT_FSPECIAL_AIR] = 9000;
     				move_cooldown[AT_FSPECIAL] = 9000;
     			}
     			if(instance_exists(fspecial_wall)){
@@ -394,21 +447,21 @@ switch(attack){
     				fspecial_wall.life = 0;
     				fspecial_wall.sprite_index = sprite_get("wall_despawn");
     			}
-    			fspecial_wall = instance_create(x+spr_dir*100, y-128, "obj_article_solid");
+    			fspecial_wall = instance_create(x+spr_dir*80, y-128, "obj_article1");
     			fspecial_wall.spr_dir = spr_dir;
     		}
     	break;
     	case AT_FSTRONG:
 			if(window == 1 and window_timer == 1){
 				fstrong_punch_distance = 0;
-				fstrong_accel = .14
-			} else if(window == 1 and window_timer == 8){
+				fstrong_accel = .2
+			} else if(window == 1 and window_timer == 7){
 				sound_play(sound_get("shadowcharge"));
 				fstrong_hitbox = create_hitbox(AT_FSTRONG, 1, floor(x+spr_dir*(fstrong_punch_distance)), y-40);
-			} else if(window == 1 and window_timer == 9){
+			} else if(window == 1 and window_timer == 8){
 				fstrong_hitbox.hitbox_timer = 0;
 				fstrong_punch_distance+=4*fstrong_accel;
-				fstrong_accel += .05;
+				fstrong_accel += .085;
 				fstrong_hitbox.x = x+spr_dir*fstrong_punch_distance;
 			}
 		break;
@@ -433,11 +486,10 @@ switch(attack){
 			trigger_b_reverse();
 			can_move = false;
 			can_fast_fall = false;
-							if (window == 1 and window_timer == 1 and u_player_reset) {
-					u_player = noone;
-				}
+			if (window == 1 and window_timer == 1 and u_player_reset) {
+				u_player = noone;
+			}
 			if (window < 5 and window > 1) {
-
 				if (window_timer > 8 or attack == AT_USPECIAL_2) {
 					//print_debug(shadowball_hit);
 					if(!joy_pad_idle and shadowball_hit_timer <= 0){
@@ -445,7 +497,9 @@ switch(attack){
 						vsp = lerp(vsp, lengthdir_y(14,joy), 0.25)
 						hsp = lerp(hsp, lengthdir_x(14,joy), 0.25)
 					} else if(shadowball_hit and shadowball_hit_timer > 0){
-						x = lerp(x, shadowball_hit_player.x, 0.3)
+						var left_blast = 60+get_stage_data(SD_X_POS)-get_stage_data(SD_SIDE_BLASTZONE);
+						var right_blast = -60+get_stage_data(SD_X_POS)+get_stage_data(SD_SIDE_BLASTZONE)+get_stage_data(SD_WIDTH);
+						x = clamp(lerp(x, shadowball_hit_player.x, 0.3), left_blast, right_blast)
 						y = lerp(y, shadowball_hit_player.y, 0.3)
 					}
 				} 
@@ -461,11 +515,11 @@ switch(attack){
 				
 			} else if(window == 5){
 				if(has_hit){
-					if(window_timer == get_window_value(AT_UAIR, 5, AG_WINDOW_LENGTH)){
+					if(window_timer == get_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH)){
 						attack_end();
 						set_state(PS_IDLE_AIR);
 					}
-					can_attack = true;
+					//can_attack = true;
 				} 
 			}
 		break;

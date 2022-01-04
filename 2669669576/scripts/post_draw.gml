@@ -23,7 +23,6 @@ if(state == PS_PARRY){
             break;
     }
     shader_end();
-    
 }
 
 if(state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) and attack == AT_NSPECIAL {

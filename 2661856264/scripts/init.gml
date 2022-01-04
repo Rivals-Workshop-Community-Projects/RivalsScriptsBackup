@@ -173,8 +173,10 @@ bubble_y = 8;
 nspecial_rand = 0;
 fspecial_charge = 0;
 fspecial_cont = 0;
+fspecial_speed = 3;
 
 stealth_rock = 0;
+stealth_rock_aux = 0;
 
 point_1 = make_colour_rgb(255, 255, 0); 
 point_2 = make_colour_rgb(242, 101, 34); 

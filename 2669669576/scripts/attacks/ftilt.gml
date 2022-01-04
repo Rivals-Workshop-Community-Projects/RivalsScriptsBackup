@@ -3,7 +3,7 @@ set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
 
 set_window_value(AT_FTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 set_window_value(AT_FTILT, 2, AG_WINDOW_TYPE, 9);
@@ -17,7 +17,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FTILT, 4, AG_WINDOW_HSPEED, 3);

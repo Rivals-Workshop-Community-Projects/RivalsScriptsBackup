@@ -5,11 +5,11 @@ user_event(14);
 
 //Plays the "Supereffective!" sound when it galaxies someone
 if instance_number(oPlayer) == 2 {
-    if move_cooldown[AT_DSPECIAL] == 0 && hitstop{
+    if move_cooldown[AT_TAUNT] == 0 && hitstop{
         with oPlayer if (activated_kill_effect) {
             if hit_player_obj == other {
                 with other {
-                    move_cooldown[AT_DSPECIAL] = 20;
+                    move_cooldown[AT_TAUNT] = 20;
                     sound_play(sound_get("supereffective"));
                 }
             }
@@ -69,8 +69,6 @@ switch (state)
 	case PS_PARRY:
 		if (state_timer == 1 && !hitpause)
 			sound_play(sound_get("parry_start"));
-		if (state_timer == 1 && (attack == AT_FSPECIAL))
-			stealth_rock -= 1;
 			break;
 		break;
 	case PS_CROUCH:
@@ -84,15 +82,9 @@ switch (state)
 		break;
 	case PS_ROLL_FORWARD:
 		sound_stop(asset_get("sfx_kragg_roll_loop"));
-		if (state_timer == 1 && attack == AT_FSPECIAL)
-			stealth_rock -= 1;
-			break;
 		break;
 	case PS_ROLL_BACKWARD:
 		sound_stop(asset_get("sfx_kragg_roll_loop"));
-		if (state_timer == 1 && attack == AT_FSPECIAL)
-			stealth_rock -= 1;
-			break;
 		break;
 	default:
 		break;
@@ -100,4 +92,36 @@ switch (state)
 
 if (stealth_rock > 4){
 	stealth_rock = 4;
+}
+
+//This makes the Hit_s effect spawn whenever a rock is destroeyd (at their position)
+if (stealth_rock_aux != stealth_rock){
+	if (stealth_rock_aux == 1){
+		spawn_hit_fx(x-30*spr_dir, y-50, rock_s);
+	}
+	if (stealth_rock_aux == 2){
+		if (stealth_rock == 1){
+			spawn_hit_fx(x+30*spr_dir, y-50, rock_s);
+		}
+		if (stealth_rock == 0){
+			spawn_hit_fx(x+30*spr_dir, y-50, rock_m);	
+		}
+	}
+	if (stealth_rock_aux == 3){
+		if (stealth_rock == 2){
+			spawn_hit_fx(x-30*spr_dir, y+30, rock_s);
+		}
+		if (stealth_rock == 1){
+			spawn_hit_fx(x-30*spr_dir, y+30, rock_m);	
+		}
+	}
+	if (stealth_rock_aux == 4){
+		if (stealth_rock == 3){
+			spawn_hit_fx(x+30*spr_dir, y+30, rock_s);	
+		}
+		if (stealth_rock == 2){
+			spawn_hit_fx(x+30*spr_dir, y+30, rock_m);	
+		}
+	}
+	stealth_rock_aux = stealth_rock;
 }

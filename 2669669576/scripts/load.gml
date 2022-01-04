@@ -71,6 +71,7 @@ sprite_change_offset("fstrongproj_active", 128, 128);
 sprite_change_offset("vfx_shatter_large", 140, 140);
 sprite_change_offset("wall_loop", 131, 60);
 sprite_change_offset("wall_spawn", 131, 60);
+sprite_change_offset("wall_spawn_anim", 131, 60);
 sprite_change_offset("wall_break", 131, 60);
 sprite_change_offset("wall_despawn", 131, 60);
 sprite_change_offset("wall_collision", 131, 60);

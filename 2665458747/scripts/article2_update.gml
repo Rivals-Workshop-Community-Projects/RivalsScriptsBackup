@@ -3,13 +3,21 @@
 
 if (!instance_exists(attachedhitbox) || place_meeting(x,y, asset_get("plasma_field_obj"))) && state == 0
 {
-	if (player_id.state_cat != SC_HITSTUN) || (player_id.was_parried) || (attachedhitbox.was_parried)
+	if !(player_id.was_parried)
 	{
-    	state = 1;
+		var poisonous = collision_circle(x,y, 32,oPlayer,true,true)
+    	if has_rune("O") && poisonous != noone
+    	{
+    		state = 7;
+    	}
+    	else
+    	{
+    		state = 1;
+    	}
 	}
-	else if place_meeting(x,y, asset_get("plasma_field_obj")) || (player_id.state_cat == SC_HITSTUN) || (player_id.was_parried)
+	else if place_meeting(x,y, asset_get("plasma_field_obj")) || (player_id.was_parried)
 	{
-		precautionarytimer-=200;
+		state = 6;
 	}
 }
 else if instance_exists(attachedhitbox)
@@ -17,7 +25,7 @@ else if instance_exists(attachedhitbox)
     x = round(attachedhitbox.x);
     y = round(attachedhitbox.y);
     
-    if (attachedhitbox.was_parried) || (player_id.state_cat == SC_HITSTUN)
+    if (attachedhitbox.was_parried)
     {
     	precautionarytimer-=200;
     }

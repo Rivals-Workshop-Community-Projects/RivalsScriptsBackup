@@ -3,7 +3,7 @@ set_attack_value(AT_JAB, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 
 set_window_value(AT_JAB, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);

@@ -612,15 +612,29 @@ switch(attack)
 							
 							if poison_sting_charge >=30
 							{
-							sting_damage = 2;
-							sting_pause = 6;
-							sting_pause_scaling = 0.05;
+								sting_damage = 2;
+								sting_pause = 6;
+								if has_rune("O")
+								{
+									sting_pause_scaling = 1.5;
+								}
+								else
+								{
+									sting_pause_scaling = 0.5;
+								}
 							}
 							else if poison_sting_charge <= 30
 							{
 								sting_damage = 1;
 								sting_pause = 4;
-								sting_pause_scaling = 0.1;
+								if has_rune("O")
+								{
+									sting_pause_scaling = 1;
+								}
+								else
+								{
+									sting_pause_scaling = 0.1;
+								}
 							}
 							
 							poisonsting_variables_set()
@@ -829,7 +843,14 @@ switch(attack)
 							}
 						}
 					}
-					if sludgeNumber > 1 // checks if there are more than 2 objects
+					if sludgeNumber > 1 && !has_rune("N")// checks if there are more than 2 objects
+					{
+						with (oldestSludge) //destroys the oldest sludge
+						{
+							state = 6;
+						}
+					}
+					else if sludgeNumber > 3 && has_rune("N")// checks if there are more than 2 objects
 					{
 						with (oldestSludge) //destroys the oldest sludge
 						{
@@ -976,6 +997,12 @@ switch(attack)
 				
 				if !hitpause{bounce_transp -= 0.06;}
 				bounce_transp = clamp(bounce_transp, 0, 1);
+				
+				if has_rune("J") && window_timer == 6
+				{
+					invincible = true;
+					invince_time = 36;
+				}
 			}break;
 			
 			case 3:
@@ -986,6 +1013,7 @@ switch(attack)
 				clamp(vsp, -4,0)
 				can_wall_jump = true;
 				bounce_transp = 0.4;
+				stancedodge_win(3)
 			}break;
 			
 			case 4:
@@ -1010,6 +1038,11 @@ switch(attack)
 				{
 					spawn_hit_fx( x, y, bounce_land_fx )
 					
+					if has_rune("J")
+					{
+					invincible = true;
+					invince_time = 30;
+					}
 					window = 8;
 					window_timer = 0;
 					destroy_hitboxes();
@@ -1030,8 +1063,7 @@ switch(attack)
 					bounce_transp += 0.08;
 					bounce_transp = clamp(bounce_transp, 0, 1);
 				}
-				
-				if !was_parried{can_jump = true;}
+				stancedodge_win(4)
 			}break;
 			
 			case 5:
@@ -1045,6 +1077,7 @@ switch(attack)
 				}
 				
 				hsp = 0;
+				stancedodge_win(5)
 			}break;
 			
 			case 6:

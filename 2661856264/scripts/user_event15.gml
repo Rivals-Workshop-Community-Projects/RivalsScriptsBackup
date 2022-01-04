@@ -177,10 +177,9 @@ so that things like page breaks can work properly.
 #define CORE_tips
 
 initTip("Trait: Sturdy Armor");
-initWords("As you can see around your character, Golem's main trait is that, once specific outlines are out, it gains Soft or Super Armor.");
-initWords("A yellow outline will grant Soft Armor 6, while a brown outline will give Soft Armor 13, which means that until you deal that much damage, it has armor for that attack!");
-initImage_ext(sprite_get("armor"), 1, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("armor"), 2, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initWords("As you can see around your character, Golem's main trait is that, once a yellow outlines is out, it gains Sturdy Armor.");
+initWords("This yellow outline will take away low enough knockback against Golem, provided the attack's damage isn't above 13%.");
+initImage_ext(sprite_get("armor"), 1, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("DSpecial: Stealth Rock");
 initWords("Golem will summon a ring of rocks around himself to attack, that will leave 1 behind on whiff, 2 on hit.");
@@ -188,39 +187,38 @@ initWords("You can stack up to 4, and you can consume them to enhance each of th
 initImage_ext(sprite_get("dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("Armored Normals: DTilt, UTilt and NAir");
-initWords("Normally, only DTilt has access to the yellow armor among Golem's normals.");
+initWords("Normally, only DTilt has access to Sturdy Armor among Golem's normals.");
 initImage_ext(sprite_get("dtilt"), 4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("With Rocks, UTilt and NAir also get that, while DTilt will get the brown armor");
+initWords("With Rocks, UTilt and NAir also get that.");
 initImage_ext(sprite_get("utilt"), 5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("nair"), 4, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Armored Strongs");
-initWords("Normally, only FStrong has access to the brown armor among Golem's strongs.");
+initWords("Normally, only FStrong has access to Sturdy Armor among Golem's strongs.");
 initImage_ext(sprite_get("fstrong_complete"), 9, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("With Rocks, UStrong and DStrong also get that, while FStrong will get super armor.");
-initImage_ext(sprite_get("ustrong"), 4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("dstrong"), 4, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initWords("With Rocks, DStrong also gets that, while FStrong will get super armor during the initial window.");
+initImage_ext(sprite_get("dstrong"), 4, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("NSpecial: Rock Throw/SOS Battle");
 initWords("If you tap the move, Golem will throw a rock that will slowly roll on the ground. It has low knockback when hitting, allowing for followups.");
 initImage_ext(sprite_get("nspecial_proj"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("HOWEVER, if you hold the move, Golem will 'call for help' by throwing its Geodude companion to the opponent! Geodude likes to bounce rather than roll, and also has much higher knockback and damage than the stone.");
 initImage_ext(sprite_get("nspec_proj_alt"), 0, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("Normally the move would have a 1.5 seconds cooldown, unless you use rocks. It has no cooldown if you use rocks.");
+initWords("Normally the move would have a 1.5 seconds cooldown, unless you use rocks, in which case it has only 1 second.");
 
 initTip("FSpecial: Rollout");
 initWords("Pretty straight forward: Golem will initially cover themselves in rocks, and then start rolling like a mad... Golem I guess.");
 initImage_ext(sprite_get("fspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("The initial jump can be canceled into a dodge; while rolling you're immune to projectiles and the move can be jump-cancelled on hit.");
-initWords("PLUS: if you have rocks, you can always cancel into a parry/roll. Yes I really wanted to make this move viable.");
+initWords("The initial jump and the rolling part have different hit properties, and only these parts can be normally canceled into rolls and parries. By pressing the Special button during the rolling part you cancel the move, and finally, it is immune to projectiles.");
+initWords("PLUS: if you have rocks, you can cancel it into jumps if it hits people. Yes I really wanted to make this move viable.");
 initImage_ext(sprite_get("fspecial"), 5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("parry"), 0, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("jump"), 0, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("USpecial: Explosion");
 initWords("It detonates its own body. The power from that explosion can propel it up steep mountain paths with amazing speed.");
 initImage_ext(sprite_get("uspecial_complete"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("The explosion itself is a spike.");
-initWords("If you have rocks to spare: this move gets super armored while ascending.");
+initWords("At the cost of 2 rocks: this move gets Super Armored while ascending.");
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -258,6 +256,36 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.4", "22/01/03");
+initHeader("Forth Patch");
+initSection("Reworks");
+initWords("The Armor mechanic got reworked as a whole:");
+initWords_ext("The soft armor got increased from 6 to 13;", fa_left, c_white, 1, false);
+initWords_ext("Each Sturdy Armor move protects you once during the move;", fa_left, c_white, 1, false);
+initWords_ext("Said armor is completely ignored if an attack galaxies/could kill.", fa_left, c_white, 1, false);
+initWords("DAir is now better suited for combos:");
+initWords_ext("Reduced Landing Lag (8 > 5);", fa_left, c_white, 1, false);
+initWords_ext("Reduced Startup frames (9 > 5);", fa_left, c_white, 1, false);
+initWords_ext("Reduced damage on both hits (first: 5 > 4; second: 8 > 7).", fa_left, c_white, 1, false);
+initWords("FSpecial works pretty differently, while still offering an anti-projectile dash:");
+initWords_ext("You can't charge the move anymore;", fa_left, c_white, 1, false);
+initWords_ext("You can now cancel the initial jump and dash into rolls and parries;", fa_left, c_white, 1, false);
+initWords_ext("You can now stop the move while rolling by pressing the Special button;", fa_left, c_white, 1, false);
+initWords_ext("Jump-Canceling the move will now cost 1 rock;", fa_left, c_white, 1, false);
+initWords_ext("While turning, Golem will slowly take back his speed rather than going straight from turning to rolling speed;", fa_left, c_white, 1, false);
+initWords_ext("Due to the move normally not being JCancelable, I also changed all properties on the jumping hitbox (damage: 6 > 8; base knockback: 6 > 8; knockback scaling: 0.3 > 0.65) and the rolling hitbox (angle: 60 > 80; damage: 3 > 4; base knockback: 6 > 7; knockback scaling: 0.3 > 0.5);", fa_left, c_white, 1, false);
+initWords_ext("Added vfx to make the move look more polished and not just a moving strip.", fa_left, c_white, 1, false);
+initSection("Buffs");
+initWords("Reduced FAir's Landing Lag (14 > 7);");
+initWords("Reduced UAir's Landing Lag (8 > 7);");
+initWords("Redacted previous UStrong's knockback scaling nerf (1.1 > 1.15).");
+initSection("Nerfs");
+initWords("Changed angle to FTilt's outer sourspot (Sakurai > 50);");
+initWords("Enhanced NSpec will have less less cooldown (1 second instead of 1.5) rather than none;");
+initWords("Enhanced USpec will now cost 2 rocks rather than 1.");
+initSection("Other");
+initWords("Added a VFX for when 1 or 2 rocks are consumed.");
+
 initPatch("1.3", "21/12/16");
 initHeader("Third Patch");
 initSection("Reworks");

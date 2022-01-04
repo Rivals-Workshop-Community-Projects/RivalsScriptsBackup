@@ -69,7 +69,7 @@ window_num++;
 
 // Window 6 / Frame(s) # - / Emerging
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
@@ -113,6 +113,7 @@ var window_for_hitbox = 1;
 
 //Set Hitbox Values - This is the basic block of a functional hitbox
 window_for_hitbox = 2; // Set this to change the window that the hitbox comes out at and its length quickly
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
@@ -475,17 +476,17 @@ set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 100);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 4);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 52);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, 1);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .9);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .95);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
-
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 hitbox_num++;
 
 /*

@@ -1,0 +1,102 @@
+if (attack == AT_FSPECIAL){
+    if (spr_dir == 1){
+         var missile_angle = (n_mod(proj_angle, 360));
+    }
+    else{
+        var missile_angle = (n_mod((proj_angle + 180), 360));
+    }
+    if (sprite_index == 2325){
+        var small = 1;
+    }
+    else{
+        var small = 0;
+    }
+
+    if (not player_id.joy_pad_idle){
+        
+       
+        
+        if (player_id.joy_dir < missile_angle){
+            if (missile_angle - player_id.joy_dir > (player_id.joy_dir+360) - missile_angle){
+                if (small == 1){
+                    proj_angle += 6;
+                }
+                else{
+                    proj_angle += 0.5;
+                }
+                
+
+            }
+            else{
+                if (small == 1){
+                    proj_angle -= 6;
+                }
+                else{
+                    proj_angle -= 0.5;
+                }
+                
+            }
+        }
+        else{
+            
+            
+            if ((player_id.joy_dir - missile_angle)>((missile_angle + 360) - player_id.joy_dir)){
+                if (small == 1){
+                    proj_angle -= 6;
+                }
+                else{
+                    proj_angle -= 0.5;
+                }
+                
+            }
+            else{
+                if (small == 1){
+                    proj_angle += 6;
+                }
+                else{
+                    proj_angle += 0.5;
+                }
+                
+
+            }
+        }
+        
+        if (spr_dir == 1 && (missile_angle > 90 && missile_angle < 270)){
+            spr_dir = -1;
+            proj_angle += 180
+        }
+        if (spr_dir == -1 && (missile_angle <= 90 || missile_angle >= 270)){
+            spr_dir = 1;
+            proj_angle += 180
+        }
+        
+    }
+    
+    hsp = lengthdir_x(18, missile_angle);
+    vsp = lengthdir_y(18, missile_angle);
+
+    if (small == 1){
+        spawn_hit_fx(x, y, trail);
+    }
+    else{
+        var effect = spawn_hit_fx(x, y, trail);
+        // make effect bigger somehow :(
+    }
+    
+
+    
+    if (not free){
+        destroyed = true;
+    }
+    
+    
+}
+
+if (attack == AT_NSPECIAL){
+    hit_flipper = 8;
+}
+
+#define n_mod(dividend, divisor)
+var result = dividend % divisor;
+while (result < 0) result += divisor;
+return result;

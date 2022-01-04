@@ -1,4 +1,4 @@
-sprite_index = sprite_get("wall_spawn");
+sprite_index = sprite_get("wall_loop");
 mask_index = sprite_get("wall_collision");
 life = 0;
 ignored_players[0] = false;
@@ -18,8 +18,8 @@ repeat(4) {
     i2 = 0;
     i1++;
 }
-sound_play(asset_get("sfx_abyss_portal_spawn"));
-sound_play(sound_get("meanlook"));
+sound_play(asset_get("sfx_may_arc_cointoss"));
+
 my_hitbox = noone;
 state = 1;
  

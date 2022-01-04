@@ -3,6 +3,7 @@
 muno_event_type = 4;
 user_event(14);
 
+print(stealth_rock_aux)
 
 if (stealth_rock > 0){
 	shader_start()

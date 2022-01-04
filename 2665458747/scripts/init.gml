@@ -210,6 +210,8 @@ set_hit_particle_sprite( 1, sprite_get("poison_fx"));
 
 dodgepuff_forward = sprite_get("airdodge_forward");
 
+
+
 //Post_draw
 subst_timer = 0;
 
