@@ -87,8 +87,8 @@ if(variable_instance_exists(id,"diag"))
     diagchoice = [
     "Bold of you to assume I care.",
     "This is a brand new coat. You had best hope you don't get it dirty.",
-    "I'm a busy woman, and you're not exactly worth my time."
-	"(I'm sure Everest won't mind if I return home a little late...)"
+    "I'm a busy woman, and you're not exactly worth my time.",
+	"(I'm sure Everest won't mind if I return home a little late...)",
 	"Fair warning, you may well regret picking this fight."]
 }
 

@@ -1,4 +1,5 @@
 // Preeee
+
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR{
     if attack == AT_FSTRONG{
         shader_start();

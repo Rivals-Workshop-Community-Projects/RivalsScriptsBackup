@@ -45,16 +45,25 @@ offscreen_track = 0;
 
 // Animation Handling
 // Speed Rune
-if get_player_color(player_id.player) != 28{
-    anim_type[0] = 5;
-    anim_type[1] = 2;
-    anim_type[2] = 4;
-    anim_type[3] = 2;
-} else {
-    anim_type[0] = 9;
-    anim_type[1] = 8;
-    anim_type[2] = 4;
-    anim_type[3] = 2;
+switch(get_player_color(player_id.player)){
+    case 27:
+        anim_type[0] = 5;
+        anim_type[1] = 10;
+        anim_type[2] = 4;
+        anim_type[3] = 2;
+        break;
+    case 28:
+        anim_type[0] = 9;
+        anim_type[1] = 8;
+        anim_type[2] = 4;
+        anim_type[3] = 2;
+        break;
+    default:
+        anim_type[0] = 5;
+        anim_type[1] = 2;
+        anim_type[2] = 4;
+        anim_type[3] = 2;
+        break;
 }
 
 // Boom Rune

@@ -52,7 +52,7 @@ if (color >= 17){
     	sound_play(sound_get("CSS_select"));
     	soundtime++
     }
-    if color == 25 and soundtime == 1{
+    if color == 24 and soundtime == 1{
     	sound_stop(sound_get("CSS_select"));
     	sound_stop(sound_get("timestop"));
     	sound_play(sound_get("timestop"));
@@ -278,7 +278,7 @@ image_index = color;
 				case 19:
 			name = " 20: Maribelle";
 			var position = 19;
-			ColorPrev = make_color_rgb(0, 217, 255);
+			ColorPrev = make_color_rgb(227, 156, 41);
 			ColorNext = make_color_rgb(42, 38, 49 );
 			ColorNextNext = make_color_rgb(73, 57, 58 );
 			if (path_position == 19 && path_scale == 0){
@@ -287,20 +287,9 @@ image_index = color;
 			    break;
 
 				case 20:
-			name = " 21: Parasoul";
+			name = " 21: Beatrice";
 			var position = 20;
 			ColorPrev = make_color_rgb(235, 201, 201);
-			ColorNext = make_color_rgb(73, 57, 58 );
-			ColorNextNext = make_color_rgb(255, 83, 124);
-			if (path_position == 20 && path_scale == 0){
-				path_position = 21;
-			}
-			    break;
-
-				case 21:
-			name = " 22: Beatrice";
-			var position = 21;
-			ColorPrev = make_color_rgb(42, 38, 49);
 			ColorNext = make_color_rgb(255, 83, 124 );
 			ColorNextNext = make_color_rgb(204, 179, 189);
 			if (path_position == 21 && path_scale == 0){
@@ -308,9 +297,9 @@ image_index = color;
 			}
 			    break;
 
-				case 22:
-			name = " 23: Sweetheart";
-			var position = 22;
+				case 21:
+			name = " 22: Sweetheart";
+			var position = 21;
 			ColorPrev = make_color_rgb(73, 57, 58);
 			ColorNext = make_color_rgb(204, 179, 189 );
 			ColorNextNext = make_color_rgb(253, 250, 253);
@@ -319,9 +308,9 @@ image_index = color;
 			}
 			    break;
 
-				case 23:
-			name = " 24: Kaede";
-			var position = 23;
+				case 22:
+			name = " 23: Kaede";
+			var position = 22;
 			ColorPrev = make_color_rgb(255, 83, 124);
 			ColorNext = make_color_rgb(253, 250, 253 );
 			ColorNextNext = make_color_rgb(191, 54, 93);
@@ -330,9 +319,9 @@ image_index = color;
 			}
 			    break;
 
-				case 24:
-			name = " 25: Hilda";
-			var position = 24;
+				case 23:
+			name = " 24: Hilda";
+			var position = 23;
 			ColorPrev = make_color_rgb(204, 179, 189);
 			ColorNext = make_color_rgb(191, 54, 93 );
 			ColorNextNext = make_color_rgb(255, 220, 158);
@@ -341,9 +330,9 @@ image_index = color;
 			}
 				break;
 
-				case 25:
-			name = " 26: Elice";
-			var position = 25;
+				case 24:
+			name = " 25: Elice";
+			var position = 24;
 			ColorPrev = make_color_rgb(253, 250, 253);
 			ColorNext = make_color_rgb(255, 220, 158 );
 			ColorNextNext = make_color_rgb(169, 169, 169);
@@ -352,32 +341,43 @@ image_index = color;
 			}
 			    break;
 
-				case 26:
-			name = " 27: Nia";
-			var position = 26;
+				case 25:
+			name = " 26: Nia";
+			var position = 25;
 			ColorPrev = make_color_rgb(191, 54, 93);
 			ColorNext = make_color_rgb(169, 169, 169 );
-			ColorNextNext = make_color_rgb(191, 10, 48);
+			ColorNextNext = make_color_rgb(180, 34, 36);
 			if (path_position == 26 && path_scale == 0){
 				path_position = 27;
 			}
 			    break;
 
-				case 27:
-			name = " 28: Okayu";
-			var position = 27;
+				case 26:
+			name = " 27: Okayu";
+			var position = 26;
 			ColorPrev = make_color_rgb(255, 220, 158);
-			ColorNext = make_color_rgb(191, 10, 48 );
-			ColorNextNext = make_color_rgb(20, 120, 0);
+			ColorNext = make_color_rgb(180, 34, 36 );
+			ColorNextNext = make_color_rgb(191, 10, 48);
 			if (path_position == 27 && path_scale == 0){
 				path_position = 28;
+			}
+			    break;
+
+				case 27:
+			name = " 28: Genesis";
+			var position = 27;
+			ColorPrev = make_color_rgb(235, 201, 201);
+			ColorNext = make_color_rgb(191, 10, 48 );
+			ColorNextNext = make_color_rgb(20, 120, 0);
+			if (path_position == 20 && path_scale == 0){
+				path_position = 21;
 			}
 			    break;
 
 				case 28:
 			name = " 29: Heatwave";
 			var position = 28;
-			ColorPrev = make_color_rgb(255, 220, 158);
+			ColorPrev = make_color_rgb(180, 34, 36);
 			ColorNext = make_color_rgb(20, 120, 0 );
 			ColorNextNext = make_color_rgb(53, 58, 157);
 			if (path_position == 28 && path_scale == 0){

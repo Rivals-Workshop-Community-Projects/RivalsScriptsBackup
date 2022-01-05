@@ -52,3 +52,80 @@ with obj_article1 if player_id == other.id && !was_bashed {
 if tip_active && break_active {
 	draw_debug_text(floor(x-80), floor(y+10), "Press Attack + Special!")
 }
+
+
+if genesis_timer > 0 {
+	maskHeader();
+
+	// draw mask shape
+	draw_circle_color(x, y, genesis_timer_2*30, c_black, c_black, false)
+	
+	maskMidder();
+	
+	with asset_get("par_block") {
+		var _id = self
+		var _x = get_instance_x(_id)
+		var _y = get_instance_y(_id)
+		with other {
+			//if _x > view_get_xview() && _x < view_get_xview() + view_get_wview() {
+				var _xscale = 0
+				var _yscale = 0
+				
+				while position_meeting(_x+(_xscale*32),_y,_id) {
+					_xscale += 0.5
+				}
+				
+				while position_meeting(_x,_y+(_yscale*32),_id) {
+					_yscale += 0.5
+				}
+				draw_sprite_ext(sprite_get("b_error"), 0, _x, _y, _xscale, _yscale, 0, c_white, genesis_timer/20)
+			//}
+		}
+	}
+	
+	with asset_get("par_jumpthrough") {
+		var _id = self
+		var _x = get_instance_x(_id)
+		var _y = get_instance_y(_id)
+		with other {
+			var _xscale = 0
+			var _yscale = 0
+			
+			while position_meeting(_x+(_xscale*32),_y,_id) {
+				_xscale += 0.5
+			}
+			
+			while position_meeting(_x,_y+(_yscale*32),_id) {
+				_yscale += 0.5
+			}
+			draw_sprite_ext(sprite_get("j_error"), 0, _x, _y, _xscale, _yscale, 0, c_white, genesis_timer/20)
+		}
+	}
+	
+
+	maskFooter();
+	
+}
+
+
+
+#define maskHeader
+
+gpu_set_blendenable(false);
+gpu_set_colorwriteenable(false,false,false,true);
+draw_set_alpha(0);
+draw_rectangle_color(0,0, room_width, room_height, c_white, c_white, c_white, c_white, false);
+draw_set_alpha(genesis_timer/20);
+
+#define maskMidder
+
+gpu_set_blendenable(true);
+gpu_set_colorwriteenable(true,true,true,true);
+gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+gpu_set_alphatestenable(true);
+
+#define maskFooter
+
+gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);

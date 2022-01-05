@@ -35,7 +35,7 @@ set_num_hitboxes(AT_DSPECIAL, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 38*2);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 124*2);//70//118
+set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 168*2);//70//118//124
 set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 3);//3
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
@@ -68,7 +68,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 50*2);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 144*2);//95
+set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 194*2);//95//144
 set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);//8
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 60);

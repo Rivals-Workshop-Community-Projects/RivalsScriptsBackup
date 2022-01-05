@@ -120,6 +120,9 @@ smokeconsume_fx_bot = hit_fx_create(asset_get("fire_consume_top_spr"), 18)
 smokeconsume_fx_top = hit_fx_create(asset_get("fire_consume_bot_spr"), 18)
 rounds_left = 12;
 
+genesis_smoke_id = noone;
+genesis_taunt = 0;
+
 set_victory_bg(sprite_get("victory_bg"));
 set_victory_theme(sound_get("victory_theme"));
 

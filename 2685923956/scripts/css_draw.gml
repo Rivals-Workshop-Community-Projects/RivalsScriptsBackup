@@ -76,7 +76,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 23; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(255, 226, 123)
@@ -91,11 +91,11 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[3,0] = make_color_rgb(60, 255, 0)
 	ce[3,1] = "Yui"
 	ce[3,2] = ""
-	ce[4,0] = make_color_rgb(100, 115, 115)
-	ce[4,1] = "Nightly"
+	ce[4,0] = make_color_rgb(121, 138, 121)
+	ce[4,1] = "Grey"
 	ce[4,2] = ""
-	ce[5,0] = make_color_rgb(219, 106, 227)
-	ce[5,1] = "Delta-Zeta"
+	ce[5,0] = make_color_rgb(183, 127, 189)
+	ce[5,1] = "Lavender"
 	ce[5,2] = ""
 	ce[6,0] = make_color_rgb(128, 112, 152)
 	ce[6,1] = "Kantonian Spirit"
@@ -103,54 +103,68 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[7,0] = make_color_rgb(167, 186, 74)
 	ce[7,1] = "Kantonian Vision"
 	ce[7,2] = ""
-	ce[8,0] = make_color_rgb(18, 52, 138)
-	ce[8,1] = "Sea"
+	
+	ce[8,0] = make_color_rgb(219, 106, 227)
+	ce[8,1] = "Delta-Zeta"
 	ce[8,2] = ""
-	ce[9,0] = make_color_rgb(107, 20, 20)
-	ce[9,1] = "Earth"
+	
+	ce[9,0] = make_color_rgb(18, 52, 138)
+	ce[9,1] = "Sea"
 	ce[9,2] = ""
-	ce[10,0] = make_color_rgb(55, 102, 70)
-	ce[10,1] = "Sky"
+	ce[10,0] = make_color_rgb(107, 20, 20)
+	ce[10,1] = "Earth"
 	ce[10,2] = ""
-	ce[11,0] = make_color_rgb(235, 113, 68)
-	ce[11,1] = "Triangle"
+	ce[11,0] = make_color_rgb(55, 102, 70)
+	ce[11,1] = "Sky"
 	ce[11,2] = ""
-	ce[12,0] = make_color_rgb(125, 235, 125)
-	ce[12,1] = "Serebii"
+	ce[12,0] = make_color_rgb(235, 113, 68)
+	ce[12,1] = "Triangle"
 	ce[12,2] = ""
-	ce[13,0] = make_color_rgb(0, 185, 255)
-	ce[13,1] = "Livart"
+	ce[13,0] = make_color_rgb(255, 54, 88)
+	ce[13,1] = "A"
 	ce[13,2] = ""
-	ce[14,0] = make_color_rgb(255, 98, 0)
-	ce[14,1] = "Brilante"
+	ce[14,0] = make_color_rgb(51, 154, 255)
+	ce[14,1] = "O"
 	ce[14,2] = ""
-	ce[15,0] = make_color_rgb(194, 255, 28)
-	ce[15,1] = "Ericcil"
+	ce[15,0] = make_color_rgb(105, 218, 255)
+	ce[15,1] = "Mana"
 	ce[15,2] = ""
-	ce[16,0] = make_color_rgb(79, 209, 191)
-	ce[16,1] = "Virtual"
+	ce[16,0] = make_color_rgb(125, 235, 125)
+	ce[16,1] = "Serebii"
 	ce[16,2] = ""
-	ce[17,0] = make_color_rgb(107, 71, 42)
-	ce[17,1] = "Gold W"
+	ce[17,0] = make_color_rgb(128, 45, 156)
+	ce[17,1] = "M2"
 	ce[17,2] = ""
+	
 	ce[18,0] = make_color_rgb(67, 75, 181)
 	ce[18,1] = "Cosmo"
 	ce[18,2] = ""
 	ce[19,0] = make_color_rgb(67, 181, 145)
 	ce[19,1] = "Aurora"
 	ce[19,2] = ""
-	ce[20,0] = make_color_rgb(255, 54, 88)
-	ce[20,1] = "A"
+	
+	ce[20,0] = make_color_rgb(107, 71, 42)
+	ce[20,1] = "Gold W" //(winnin2)
 	ce[20,2] = ""
-	ce[21,0] = make_color_rgb(51, 154, 255)
-	ce[21,1] = "O"
+	ce[21,0] = make_color_rgb(100, 115, 115)
+	ce[21,1] = "Nightly" //(bw)
 	ce[21,2] = ""
-	ce[22,0] = make_color_rgb(128, 45, 156)
-	ce[22,1] = "M2"
+	ce[22,0] = make_color_rgb(79, 209, 191)
+	ce[22,1] = "Virtual"
 	ce[22,2] = ""
-	ce[23,0] = make_color_rgb(48, 57, 77)
-	ce[23,1] = "Dusk"
+	ce[23,0] = make_color_rgb(0, 185, 255)
+	ce[23,1] = "Livart"
 	ce[23,2] = ""
+	ce[24,0] = make_color_rgb(255, 98, 0)
+	ce[24,1] = "Brilante"
+	ce[24,2] = ""
+	ce[25,0] = make_color_rgb(194, 255, 28)
+	ce[25,1] = "Ericcil"
+	ce[25,2] = ""
+	
+	ce[26,0] = make_color_rgb(48, 57, 77)
+	ce[26,1] = "Dusk"
+	ce[26,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

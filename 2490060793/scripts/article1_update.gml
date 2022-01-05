@@ -278,6 +278,7 @@ if (hitbox != noone) && (timer > 10) {
             
             if is_tipper {
             	spawn_hit_fx(other.x, other.y, tipper_hfx)
+            	
             	sound_play(asset_get("sfx_absa_kickhit"))
             	
 	            var tipper_dmg = get_hitbox_value(hitbox.attack, tipper_num, HG_DAMAGE);

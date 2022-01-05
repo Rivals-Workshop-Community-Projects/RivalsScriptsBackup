@@ -483,8 +483,7 @@ if get_player_color(player) == 10 {
          	
          	
                   with hit_player_obj{
-                  	
-                  	state_timer -= 1
+                  
                   	
                   	can_tech = false 
                   	

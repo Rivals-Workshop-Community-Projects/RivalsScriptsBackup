@@ -8,6 +8,10 @@ ncode1 = "A proclaimed Historian who wanders around Venam's Edge."
 ncode2 = "If it wasn't for their works, history and events happened prio"
 ncode3 = "to 'Hell Impact' would be lost or become a vague folktale.."
 
+alreadydead = 0
+regconized = 0
+triggercutscene = 0
+
 galax = 0
 
 ui1x = 0

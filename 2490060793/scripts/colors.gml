@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 27 );
 
 // Yoyo
 set_color_profile_slot( 1, 0, 63, 63, 116 ); //Body main
@@ -326,10 +326,19 @@ set_color_profile_slot( 25, 5, 133, 255, 133 ); //Sparks
 set_color_profile_slot( 25, 6, 81, 92, 102 ); //Meter Dark White
 set_color_profile_slot( 25, 7, 20, 207, 35 ); //Meter Dark main
 
+// Genesis
+set_color_profile_slot( 26, 0, 84, 83, 83 ); //Body main
+set_color_profile_slot( 26, 1, 49, 44, 46 ); //Body shade
+set_color_profile_slot( 26, 2, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 26, 3, 231, 241, 252 ); //Meter White
+set_color_profile_slot( 26, 4, 222, 27, 42 ); //Meter main
+set_color_profile_slot( 26, 5, 242, 105, 13 ); //Sparks
+set_color_profile_slot( 26, 6, 158, 177, 201 ); //Meter Dark White
+set_color_profile_slot( 26, 7, 179, 3, 17 ); //Meter Dark main
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Body main","colors":[{"r":70,"g":158,"b":206,"main":true}]},{"name":"Body shade","colors":[{"r":46,"g":116,"b":161,"main":true}]},{"name":"Eyes","colors":[{"r":250,"g":255,"b":255,"main":true},{"r":209,"g":214,"b":214}]},{"name":"Meter White","colors":[{"r":255,"g":0,"b":0,"main":true}]},{"name":"Meter main","colors":[{"r":26,"g":0,"b":0,"main":true}]},{"name":"Sparks","colors":[{"r":204,"g":86,"b":43,"main":true},{"r":255,"g":234,"b":102}]},{"name":"Meter Dark White","colors":[{"r":0,"g":26,"b":0,"main":true}]},{"name":"Meter Dark main","colors":[{"r":0,"g":255,"b":0,"main":true}]}]}
 === END JSON PALETTE ===
 */
-

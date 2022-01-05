@@ -27,6 +27,9 @@ fs_meter_y = -20
 fs_char_portrait_y = 90;
 fs_char_portrait_x = 30;
 
+genesis_timer = 0 //for genesis taunt
+genesis_timer_2 = 0
+
 shape_circle = sprite_get("hitbox_circle")
 shape_rect = sprite_get("hitbox_rect")
 shape_roundrect = sprite_get("hitbox_roundrect")
@@ -82,6 +85,7 @@ timer = 0;
 height_timer = 0;
 
 orb_explosion_vfx = hit_fx_create(sprite_get("orb_explosion_vfx"), 14);
+b_vfx = hit_fx_create(sprite_get("b_vfx"), 28);
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");

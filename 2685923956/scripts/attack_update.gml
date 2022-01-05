@@ -1,7 +1,7 @@
 // attack_update
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_DSTRONG){
+if (attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){// || attack == AT_DSTRONG){
     trigger_b_reverse();
 }
 
@@ -94,16 +94,21 @@ if (attack==AT_FAIR){
 if (attack==AT_DAIR){
 	if (!hitpause){
 		if (window==2){
-			if (window_timer==3){ sound_play(sound_get("psy_1")); };
-			if (window_timer==6){ sound_play(sound_get("psy_1"),false,noone,0.8); sound_play(sound_get("psy_2")); };
+			if (window_timer==3){ sound_play(sound_get("psy_1")); };//3
+			if (window_timer==6){ sound_play(sound_get("psy_1"),false,noone,0.8); sound_play(sound_get("psy_2")); };//6
 		}
 	}
 }
 if (attack==AT_FSTRONG||attack==AT_DSTRONG||attack==AT_USTRONG){
 	if (smash_charging){
 		can_move = false;
-		vsp = 0;
 		hsp = 0;
+		if (strong_charge<20){
+			vsp = 0;
+		}else{
+			var teststs = (strong_charge-20)/40
+			vsp = clamp(vsp,-3,5.8*teststs)
+		}
 	}
 }
 if (attack==AT_FSTRONG){
@@ -114,8 +119,14 @@ if (attack==AT_FSTRONG){
 if (attack==AT_DSTRONG){
 	if (window==1&&window_timer==1){
 		dstr_used = true;
+		dstr_turned = false;
 		dstr_timer = 0;
 		dstr_max = get_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH) + get_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH) + get_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH)
+	}
+	if (window==1&&dstr_turned==false){
+		if (left_pressed && spr_dir == 1){ spr_dir = -1; dstr_turned = true; }
+		if (right_pressed && spr_dir == -1){ spr_dir = 1; dstr_turned = true; }
+		
 	}
 	if (!hitpause){
 			
@@ -199,6 +210,9 @@ if (attack==AT_FSPECIAL){
 			hsp = ease_linear( 9, 6+inputdir, window_timer, 8 )*spr_dir
 		}
 		if (window==5){
+			iasa_script();
+		}
+		if (window==4&&window_timer>6){
 			iasa_script();
 		}
 		if (window>1){

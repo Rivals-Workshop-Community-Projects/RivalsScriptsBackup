@@ -124,6 +124,10 @@ sprite_change_offset("runeshatter", 72, 72);
 sprite_change_offset("runeazspawn", 72, 72);
 sprite_change_offset("runeazactive", 72, 72);
 sprite_change_offset("runeazshatter", 72, 72);
+sprite_change_offset("runespawn_genesis", 72, 72);
+sprite_change_offset("runeactive_genesis", 72, 72);
+sprite_change_offset("runeshatter_genesis", 72, 72);
+
 
 // Rune (Explosion)
 sprite_change_offset("runeboomspawn", 72, 72);

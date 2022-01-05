@@ -38,12 +38,12 @@ set_window_value(AT_UAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_UAIR, 1);
 
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 18);//9
-set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -62);
+set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 13);//9//18
+set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -57);//-62
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 3);//6
-set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 110);//97
-set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 50);
+set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 100);//97//110
+set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 60);//50
 set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 75);

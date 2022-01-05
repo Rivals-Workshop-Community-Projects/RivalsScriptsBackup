@@ -55,7 +55,7 @@ if (state == 0){
     }
 }
 
-var firsthits_vdisp = 124//118
+var firsthits_vdisp = 168//124//118
 
 
 // // // // STATE 1 - START

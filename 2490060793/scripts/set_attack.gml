@@ -35,3 +35,9 @@ if attack == AT_FSPECIAL {
     noprat = false
     reset_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE);
 }
+
+if attack == AT_TAUNT && get_player_color(player) == 26 {
+    attack = AT_EXTRA_1
+    genesis_timer = 0
+    genesis_timer_2 = 0
+}

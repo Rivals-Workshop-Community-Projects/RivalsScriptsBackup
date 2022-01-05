@@ -137,6 +137,17 @@ if proposed_balance{
                     break;
             }
             break;
+        case AT_TAUNT_2:
+        	if window == 5 and window_timer == get_window_value(attack, 5, AG_WINDOW_LENGTH) - 3{
+        		sound_play(asset_get("mfx_confirm"));
+        	}
+        	if window == 6{
+        		set_attack_value(AT_TAUNT_2, AG_SPRITE, asset_get("empty_sprite"));
+        	}
+        	if window == 7{
+        		set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("taunt"));
+        	}
+        	break;
         case AT_DAIR:
         	switch(window){
         		case 2:
@@ -452,7 +463,7 @@ if proposed_balance{
                 switch(window){
                     case 1:
                     	can_fast_fall = false;
-                        if window_timer == 8{
+                        if window_timer == 5{
                     		sound_play(asset_get("sfx_bird_sidespecial_start"));
                         }
                         break;

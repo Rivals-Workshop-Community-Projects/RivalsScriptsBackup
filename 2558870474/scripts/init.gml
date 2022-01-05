@@ -257,15 +257,24 @@ spr_azrune_spawn = sprite_get("runeazspawn");
 spr_azrune_active = sprite_get("runeazactive");
 spr_azrune_shatter = sprite_get("runeazshatter");
 
-if get_player_color(player) != 28{
-	spr_rune_spawn	 = spr_speedrune_spawn;
-	spr_rune_active	 = spr_speedrune_active;
-	spr_rune_shatter = spr_speedrune_shatter;
-}
-else {
-	spr_rune_spawn	 = spr_azrune_spawn;
-	spr_rune_active	 = spr_azrune_active;
-	spr_rune_shatter = spr_azrune_shatter;
+spr_generune_active = sprite_get("runeactive_genesis");
+
+switch(get_player_color(player)){
+	case 27:
+		spr_rune_spawn	 = spr_speedrune_spawn;
+		spr_rune_active	 = spr_generune_active;
+		spr_rune_shatter = spr_speedrune_shatter;
+		break;
+	case 28:
+		spr_rune_spawn	 = spr_azrune_spawn;
+		spr_rune_active	 = spr_azrune_active;
+		spr_rune_shatter = spr_azrune_shatter;
+		break;
+	default:
+		spr_rune_spawn	 = spr_speedrune_spawn;
+		spr_rune_active	 = spr_speedrune_active;
+		spr_rune_shatter = spr_speedrune_shatter;
+		break;
 }
 
 // Rune (Speed)
@@ -282,15 +291,15 @@ sfx_example = sound_get("example"); // if there were a file called "example.ogg"
 sfx_snap = sound_get("sfx_snap");
 
 switch(get_player_color(player)){
-    case 21:
+    case 20:
         sfx_laugh = sound_get("ahaha");
         laugh_loop_max = 1;
         break;
-	case 22:
+	case 21:
         sfx_laugh = sound_get("sfx_sweetheart_laugh");
         laugh_loop_max = 1;
         break;
-    case 24:
+    case 23:
         sfx_laugh = sound_get("sfx_hilda_laugh");
         laugh_loop_max = 2;
         break;
@@ -351,3 +360,10 @@ tipperbox_roundrec_sprite = sprite_get("tipperbox_roundrect_spr");
 
 // Secret Color Hon Hon
 secretcolor = (object_index == oTestPlayer);
+
+genesis_taunt_rot = 0;
+genesis_taunt_type = 0;
+genesis_taunt_num = 0;
+genesis_taunt_sprites = 2624;
+genesis_taunt_attacks = 726;
+genesis_taunt_scripts = 972;

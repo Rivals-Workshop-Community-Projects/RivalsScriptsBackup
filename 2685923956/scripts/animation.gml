@@ -11,8 +11,10 @@ if (state==PS_IDLE_AIR){
 }
 if (state==PS_SPAWN){
 	var timemax = 90;
-	if (state_timer<timemax){
-		sprite_index = sprite_get("intro")
-		image_index = 0 + state_timer * 10 / timemax;
+	if (get_gameplay_time()<=timemax){
+		if (state_timer<timemax){
+			sprite_index = sprite_get("intro")
+			image_index = 0 + state_timer * 10 / timemax;
+		}
 	}
 }

@@ -10,3 +10,7 @@ if !pulse {
         }
     }
 }
+
+if get_player_color(player) == 26 {
+    draw_sprite_ext(sprite_get("x_error"), 0, x, y, 1, 1, timer, c_white, dsin(timer)*0.2 + 0.4)
+}

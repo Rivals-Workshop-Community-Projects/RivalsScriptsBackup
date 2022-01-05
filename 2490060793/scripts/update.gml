@@ -264,12 +264,31 @@ if !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPEC
 	fspec_movearr[4] = [undefined,undefined]
 }
 
-//hitfx colour
-/*
-with hit_fx_obj {
-	
+//genesis taunt
+if attack == AT_EXTRA_1 && state == PS_ATTACK_GROUND {
+	genesis_timer = clamp(genesis_timer+1, 0, 20)
+} else {
+	genesis_timer = clamp(genesis_timer-2, 0, 1000)
 }
-*/
+
+genesis_timer_2++
+
+//bfx
+var bfx_sprite = sprite_get("b_vfx")
+with hit_fx_obj if sprite_index == bfx_sprite {
+	spr_dir = 1
+}
+
+
+if timer == 1 && get_player_color(player) == 26 {
+	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, b_vfx);
+	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, b_vfx);
+	set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, b_vfx);
+	set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, b_vfx);
+	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, b_vfx);
+	set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, b_vfx);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, b_vfx);
+}
 
 #define spawn_base_dust(x, y, name, dir)
 //This function spawns base cast dusts. Names can be found below.

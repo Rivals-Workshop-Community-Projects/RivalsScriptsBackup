@@ -259,85 +259,85 @@ set_color_profile_slot( 19, 5, 102, 86, 74 ); //Boots
 set_color_profile_slot( 19, 6, 255, 255, 255 ); //Umbrella
 set_color_profile_slot( 19, 7, 235, 201, 201 ); //IceIceBaby
 
-// Egrets
-set_color_profile_slot( 20, 0, 255, 237, 223 ); //Fur
-set_color_profile_slot( 20, 1, 180, 34, 36 ); //Hair/Tail
-set_color_profile_slot( 20, 2, 42, 38, 49 ); //Floof
-set_color_profile_slot( 20, 3, 42, 38, 49 ); //Jacket
-set_color_profile_slot( 20, 4, 42, 38, 49 ); //Skirt
-set_color_profile_slot( 20, 5, 42, 38, 49 ); //Boots
-set_color_profile_slot( 20, 6, 42, 38, 49 ); //Umbrella
-set_color_profile_slot( 20, 7, 255, 190, 80 ); //IceIceBaby
-
 // When They Cry
-set_color_profile_slot( 21, 0, 242, 217, 200 ); //Fur
-set_color_profile_slot( 21, 1, 192, 143, 80 ); //Hair/Tail
-set_color_profile_slot( 21, 2, 114, 52, 55 ); //Floof
-set_color_profile_slot( 21, 3, 73, 57, 58 ); //Jacket
-set_color_profile_slot( 21, 4, 114, 52, 55 ); //Skirt
-set_color_profile_slot( 21, 5, 73, 57, 58 ); //Boots
-set_color_profile_slot( 21, 6, 53, 43, 37 ); //Umbrella
-set_color_profile_slot( 21, 7, 205, 163, 75 ); //IceIceBaby
+set_color_profile_slot( 20, 0, 242, 217, 200 ); //Fur
+set_color_profile_slot( 20, 1, 192, 143, 80 ); //Hair/Tail
+set_color_profile_slot( 20, 2, 114, 52, 55 ); //Floof
+set_color_profile_slot( 20, 3, 73, 57, 58 ); //Jacket
+set_color_profile_slot( 20, 4, 114, 52, 55 ); //Skirt
+set_color_profile_slot( 20, 5, 73, 57, 58 ); //Boots
+set_color_profile_slot( 20, 6, 53, 43, 37 ); //Umbrella
+set_color_profile_slot( 20, 7, 205, 163, 75 ); //IceIceBaby
 
 // Sweetheart
-set_color_profile_slot( 22, 0, 237, 161, 125 ); //Fur
-set_color_profile_slot( 22, 1, 255, 140, 206 ); //Hair/Tail
-set_color_profile_slot( 22, 2, 250, 216, 212 ); //Floof
-set_color_profile_slot( 22, 3, 255, 83, 124 ); //Jacket
-set_color_profile_slot( 22, 4, 255, 83, 124 ); //Skirt
-set_color_profile_slot( 22, 5, 252, 207, 206 ); //Boots
-set_color_profile_slot( 22, 6, 255, 83, 124 ); //Umbrella
-set_color_profile_slot( 22, 7, 250, 216, 212 ); //IceIceBaby
+set_color_profile_slot( 21, 0, 237, 161, 125 ); //Fur
+set_color_profile_slot( 21, 1, 255, 140, 206 ); //Hair/Tail
+set_color_profile_slot( 21, 2, 250, 216, 212 ); //Floof
+set_color_profile_slot( 21, 3, 255, 83, 124 ); //Jacket
+set_color_profile_slot( 21, 4, 255, 83, 124 ); //Skirt
+set_color_profile_slot( 21, 5, 252, 207, 206 ); //Boots
+set_color_profile_slot( 21, 6, 255, 83, 124 ); //Umbrella
+set_color_profile_slot( 21, 7, 250, 216, 212 ); //IceIceBaby
 
 // Ultimate Pianist
-set_color_profile_slot( 23, 0, 248, 238, 238 ); //Fur
-set_color_profile_slot( 23, 1, 236, 221, 187 ); //Hair/Tail
-set_color_profile_slot( 23, 2, 174, 124, 94 ); //Floof
-set_color_profile_slot( 23, 3, 204, 179, 189 ); //Jacket
-set_color_profile_slot( 23, 4, 77, 42, 68 ); //Skirt
-set_color_profile_slot( 23, 5, 179, 165, 141 ); //Boots
-set_color_profile_slot( 23, 6, 246, 244, 240 ); //Umbrella
-set_color_profile_slot( 23, 7, 229, 80, 174 ); //IceIceBaby
+set_color_profile_slot( 22, 0, 248, 238, 238 ); //Fur
+set_color_profile_slot( 22, 1, 236, 221, 187 ); //Hair/Tail
+set_color_profile_slot( 22, 2, 174, 124, 94 ); //Floof
+set_color_profile_slot( 22, 3, 204, 179, 189 ); //Jacket
+set_color_profile_slot( 22, 4, 77, 42, 68 ); //Skirt
+set_color_profile_slot( 22, 5, 179, 165, 141 ); //Boots
+set_color_profile_slot( 22, 6, 246, 244, 240 ); //Umbrella
+set_color_profile_slot( 22, 7, 229, 80, 174 ); //IceIceBaby
 
 // Dazzling Darkness
-set_color_profile_slot( 24, 0, 251, 235, 232 ); //Fur
-set_color_profile_slot( 24, 1, 250, 237, 205 ); //Hair/Tail
-set_color_profile_slot( 24, 2, 64, 66, 66 ); //Floof
-set_color_profile_slot( 24, 3, 253, 250, 253 ); //Jacket
-set_color_profile_slot( 24, 4, 64, 66, 66 ); //Skirt
-set_color_profile_slot( 24, 5, 59, 51, 47 ); //Boots
-set_color_profile_slot( 24, 6, 64, 66, 66 ); //Umbrella
-set_color_profile_slot( 24, 7, 242, 252, 255 ); //IceIceBaby
+set_color_profile_slot( 23, 0, 251, 235, 232 ); //Fur
+set_color_profile_slot( 23, 1, 250, 237, 205 ); //Hair/Tail
+set_color_profile_slot( 23, 2, 64, 66, 66 ); //Floof
+set_color_profile_slot( 23, 3, 253, 250, 253 ); //Jacket
+set_color_profile_slot( 23, 4, 64, 66, 66 ); //Skirt
+set_color_profile_slot( 23, 5, 59, 51, 47 ); //Boots
+set_color_profile_slot( 23, 6, 64, 66, 66 ); //Umbrella
+set_color_profile_slot( 23, 7, 242, 252, 255 ); //IceIceBaby
 
 // Winter's Coming
-set_color_profile_slot( 25, 0, 255, 255, 255 ); //Fur
-set_color_profile_slot( 25, 1, 255, 82, 193 ); //Hair/Tail
-set_color_profile_slot( 25, 2, 231, 199, 237 ); //Floof
-set_color_profile_slot( 25, 3, 191, 54, 93 ); //Jacket
-set_color_profile_slot( 25, 4, 231, 199, 237 ); //Skirt
-set_color_profile_slot( 25, 5, 55, 28, 37 ); //Boots
-set_color_profile_slot( 25, 6, 255, 255, 255 ); //Umbrella
-set_color_profile_slot( 25, 7, 255, 82, 193 ); //IceIceBaby
+set_color_profile_slot( 24, 0, 255, 255, 255 ); //Fur
+set_color_profile_slot( 24, 1, 255, 82, 193 ); //Hair/Tail
+set_color_profile_slot( 24, 2, 231, 199, 237 ); //Floof
+set_color_profile_slot( 24, 3, 191, 54, 93 ); //Jacket
+set_color_profile_slot( 24, 4, 231, 199, 237 ); //Skirt
+set_color_profile_slot( 24, 5, 55, 28, 37 ); //Boots
+set_color_profile_slot( 24, 6, 255, 255, 255 ); //Umbrella
+set_color_profile_slot( 24, 7, 255, 82, 193 ); //IceIceBaby
 
 // Driver
-set_color_profile_slot( 26, 0, 254, 237, 218 ); //Fur
-set_color_profile_slot( 26, 1, 201, 191, 185 ); //Hair/Tail
-set_color_profile_slot( 26, 2, 191, 67, 63 ); //Floof
-set_color_profile_slot( 26, 3, 255, 220, 158 ); //Jacket
-set_color_profile_slot( 26, 4, 255, 223, 166 ); //Skirt
-set_color_profile_slot( 26, 5, 227, 225, 225 ); //Boots
-set_color_profile_slot( 26, 6, 170, 137, 103 ); //Umbrella
-set_color_profile_slot( 26, 7, 152, 230, 254 ); //IceIceBaby
+set_color_profile_slot( 25, 0, 254, 237, 218 ); //Fur
+set_color_profile_slot( 25, 1, 201, 191, 185 ); //Hair/Tail
+set_color_profile_slot( 25, 2, 191, 67, 63 ); //Floof
+set_color_profile_slot( 25, 3, 255, 220, 158 ); //Jacket
+set_color_profile_slot( 25, 4, 255, 223, 166 ); //Skirt
+set_color_profile_slot( 25, 5, 227, 225, 225 ); //Boots
+set_color_profile_slot( 25, 6, 170, 137, 103 ); //Umbrella
+set_color_profile_slot( 25, 7, 152, 230, 254 ); //IceIceBaby
 
 // Mogu Mogu
-set_color_profile_slot( 27, 0, 255, 245, 240 ); //Fur
-set_color_profile_slot( 27, 1, 226, 208, 237 ); //Hair/Tail
-set_color_profile_slot( 27, 2, 253, 95, 255 ); //Floof
-set_color_profile_slot( 27, 3, 169, 169, 169 ); //Jacket
-set_color_profile_slot( 27, 4, 255, 255, 255 ); //Skirt
-set_color_profile_slot( 27, 5, 253, 236, 126 ); //Boots
-set_color_profile_slot( 27, 6, 188, 124, 250 ); //Umbrella
-set_color_profile_slot( 27, 7, 255, 255, 255 ); //IceIceBaby
+set_color_profile_slot( 26, 0, 255, 245, 240 ); //Fur
+set_color_profile_slot( 26, 1, 226, 208, 237 ); //Hair/Tail
+set_color_profile_slot( 26, 2, 253, 95, 255 ); //Floof
+set_color_profile_slot( 26, 3, 169, 169, 169 ); //Jacket
+set_color_profile_slot( 26, 4, 255, 255, 255 ); //Skirt
+set_color_profile_slot( 26, 5, 253, 236, 126 ); //Boots
+set_color_profile_slot( 26, 6, 188, 124, 250 ); //Umbrella
+set_color_profile_slot( 26, 7, 255, 255, 255 ); //IceIceBaby
+
+// Genesis
+set_color_profile_slot( 27, 0, 255, 237, 223 ); //Fur
+set_color_profile_slot( 27, 1, 180, 34, 36 ); //Hair/Tail
+set_color_profile_slot( 27, 2, 42, 38, 49 ); //Floof
+set_color_profile_slot( 27, 3, 180, 34, 36 ); //Jacket
+set_color_profile_slot( 27, 4, 42, 38, 49 ); //Skirt
+set_color_profile_slot( 27, 5, 42, 38, 49 ); //Boots
+set_color_profile_slot( 27, 6, 42, 38, 49 ); //Umbrella
+set_color_profile_slot( 27, 7, 255, 57, 65 ); //IceIceBaby
 
 // Heatwave
 set_color_profile_slot( 28, 0, 225, 232, 245 ); //Fur

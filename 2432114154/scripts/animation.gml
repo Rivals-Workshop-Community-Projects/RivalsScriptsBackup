@@ -26,7 +26,7 @@ if isyellow {
      if state_timer < 600 {
      image_index = (state_timer%24/6) 
      
-     if random_func(1,60,true) == 6 {
+     if random_func(1,60,true) == 6  && state != PS_RESPAWN{
          state_timer = 600
      }
      

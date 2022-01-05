@@ -1,4 +1,4 @@
-hurtbox_spr = asset_get("ex_guy_hurt_box");
+hurtbox_spr = sprite_get("aaa_hurtbox_ground");//asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
@@ -142,6 +142,7 @@ fsp_used = false;
 doomdesire_storage = -4;
 doomdesire_cooldown_amount = 600;
 dstr_used = false;
+dstr_turned = false;
 dsp_got_parried = false;
 
 //- - - - - compats

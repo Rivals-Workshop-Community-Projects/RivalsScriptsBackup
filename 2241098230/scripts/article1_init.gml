@@ -3,6 +3,7 @@
 smoke1_spr = sprite_get("smoke1");
 smoke2_spr = sprite_get("smoke2");
 smoke3_spr = sprite_get("smoke3");
+smoke4_spr = sprite_get("smoke4");
 
 smoke_timer = 0;
 hit_cooldown = 0;
@@ -20,5 +21,7 @@ hit = 0;
 
 _init = true;
 disable_movement = true;
+uses_shader = true;
 
 sprite_index = asset_get("empty_sprite")
+visible = false;

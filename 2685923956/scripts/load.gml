@@ -37,8 +37,8 @@ sprite_change_offset("dair", 93, 134);
 sprite_change_offset("fstrong", 93, 134);
 sprite_change_offset("ustrong", 93, 134);
 sprite_change_offset("dstrong", 93, 134);
-sprite_change_offset("dstrong_hfx1", 100, 100);
-sprite_change_offset("dstrong_hfx2", 100, 100);
+sprite_change_offset("dstrong_hfx1", 160, 160);
+sprite_change_offset("dstrong_hfx2", 160, 160);
 sprite_change_offset("nspecial", 93, 134);
 sprite_change_offset("nspecial_star", 26, 12);
 sprite_change_offset("nspecial_star_decay", 26, 12);
@@ -48,7 +48,7 @@ sprite_change_offset("dspecial", 93, 134);
 sprite_change_offset("dspecial_eye", 100, 100);
 sprite_change_offset("dspecial_eye2", 100, 100);
 sprite_change_offset("dspecial_eye3", 100, 100);
-sprite_change_offset("dspecial_doomdesire", 100, 123+48);
+sprite_change_offset("dspecial_doomdesire", 100, 123+48+50);
 sprite_change_offset("taunt", 93, 134);
 
 sprite_change_offset("hurt", 93, 134);
@@ -65,3 +65,14 @@ sprite_change_offset("eye", 8, 8);
 sprite_change_offset("sparkles1", 8, 8);
 sprite_change_offset("sparkles2", 8, 8);
 sprite_change_offset("sparkles3", 8, 8);
+
+sprite_change_offset("aaa_hurtbox_ground", 93, 134);
+
+
+
+
+
+
+
+
+

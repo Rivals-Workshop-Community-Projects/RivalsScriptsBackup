@@ -64,7 +64,7 @@ if (dstr_counter){
 }
 if (fsp_used){
 	move_cooldown[AT_FSPECIAL] = 2;
-	if ( ((state==PS_HITSTUN||state==PS_WALL_JUMP)&&state_timer==1) || !free){
+	if ( ((state==PS_WALL_JUMP)&&state_timer==1) || !free){//state==PS_HITSTUN||
 		move_cooldown[AT_FSPECIAL] = 0;
 		fsp_used = false;
 	}
@@ -81,9 +81,11 @@ if (dstr_used){
 //normal: 0.80 1.10 1.40 1.70 2 1 0 -1
 //gravity: fastfall speed used
 if (state==PS_DOUBLE_JUMP){
-	if (window_timer<5){
-		if (round(vsp) == fast_fall||round(vsp) == fast_fall-1){ //if jirachi's speed is the fastfall speed at the beginning of doublejump:
-			djumps = 0;
+	if (djumps==1){
+		if (window_timer<5){
+			if (round(vsp) == fast_fall||round(vsp) == fast_fall-1){ //if jirachi's speed is the fastfall speed at the beginning of doublejump:
+				djumps = 0;
+			}
 		}
 	}
 }

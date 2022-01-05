@@ -54,6 +54,45 @@ with obj_article1{
 	} 
 }
 
+if attack == AT_TAUNT_2 && (state == 5 || state == 6) && window == 6 {
+    draw_rectangle_color(0,210,1000,356,c_black,c_black,c_black,c_black,0);
+    draw_sprite_ext(asset_get("connect_circ_spr"),0,480,270,1,1,0,c_white,1);
+    draw_sprite_ext(asset_get("connect_tri_spr"),0,480,270,1,1,-genesis_taunt_rot*2,c_white,1);
+    draw_set_font(asset_get("roundFont"));
+    
+    switch genesis_taunt_type {
+        case 0:
+            draw_text_transformed(410,325,"Loading Sprites",1,1,0);
+            draw_text_transformed(435,348,string(genesis_taunt_num)+" / "+string(genesis_taunt_sprites),1,1,0);
+            if genesis_taunt_num > genesis_taunt_sprites {
+                genesis_taunt_type++;
+                genesis_taunt_num = 0;
+            } else genesis_taunt_num += round(genesis_taunt_sprites / 30);
+            break;
+        case 1:
+            draw_text_transformed(410,325,"Loading Attacks",1,1,0);
+            draw_text_transformed(445,348,string(genesis_taunt_num)+" / "+string(genesis_taunt_attacks),1,1,0);
+            if genesis_taunt_num > genesis_taunt_attacks {
+                genesis_taunt_type++;
+                genesis_taunt_num = 0;
+            } else genesis_taunt_num += round(genesis_taunt_attacks / 50);
+            break;
+        case 2:
+            draw_text_transformed(410,325,"Loading Scripts",1,1,0);
+            draw_text_transformed(455,348,string(genesis_taunt_num)+" / "+string(genesis_taunt_scripts),1,1,0);
+            if genesis_taunt_num > genesis_taunt_scripts {
+                genesis_taunt_type++;
+                genesis_taunt_num = 0;
+                window_timer = 0;
+                window = 5;
+            } else genesis_taunt_num += 1;
+            break;
+    }
+    
+    
+    genesis_taunt_rot += .5;
+}
+
 //draw_debug_text(xx, yy - 18, "Window: " + string(window));
 //draw_debug_text(xx, yy - 36, "Rune 2: " + string(summon_tracker[1]));
 //draw_debug_text(xx, yy - (36 + 18), "Rune 1: " + string(summon_tracker[0]));

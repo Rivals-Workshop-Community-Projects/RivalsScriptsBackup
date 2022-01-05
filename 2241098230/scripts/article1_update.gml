@@ -15,7 +15,7 @@ if (_init) {
             spr_dir : 1,
             
             visible : false,
-            sprite_index : sprite_get("smoke1"),
+            sprite_index : sprite_get("smoke3"),
             mask_index : sprite_get("smoke1")
         }        
         smoke_objects[i].dir = smoke_spread_dir_min + ((smoke_spread_dir_max - smoke_spread_dir_min) * ( (i * 7) / smoke_particle_amount % 1.4))
@@ -32,6 +32,7 @@ if (_init) {
         smoke_objects[i].parent = id;
     }
     depth = 0;
+    visible = true;
     _init = false;
 }
 else {

@@ -19,7 +19,7 @@ set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, sound_get("psy_1"));
 set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 1);
 
 //at1
-set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 2);//3
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
@@ -32,7 +32,7 @@ set_window_value(AT_FAIR, 4, AG_WINDOW_SFX, sound_get("psy_1"));
 set_window_value(AT_FAIR, 4, AG_WINDOW_SFX_FRAME, 1);
 
 //at2
-set_window_value(AT_FAIR, 5, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_FAIR, 5, AG_WINDOW_LENGTH, 2);//3
 set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
 
@@ -45,7 +45,7 @@ set_window_value(AT_FAIR, 6, AG_WINDOW_SFX, sound_get("psy_3"));
 set_window_value(AT_FAIR, 6, AG_WINDOW_SFX_FRAME, 1);
 
 //at3
-set_window_value(AT_FAIR, 7, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FAIR, 7, AG_WINDOW_LENGTH, 4);//5
 set_window_value(AT_FAIR, 7, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FAIR, 7, AG_WINDOW_ANIM_FRAMES, 1);
 
@@ -69,7 +69,7 @@ set_num_hitboxes(AT_FAIR, 3);
 //hit1
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 2);//3
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 52);//57
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -40);//-42
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 77);//67
@@ -91,7 +91,7 @@ set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_med"));
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 5);
-set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 2);//3
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 52);//57
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 2);
@@ -99,7 +99,7 @@ set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 2);
 //hit3
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 7);
-set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 2);//3
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_X, 55);//63
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 82);

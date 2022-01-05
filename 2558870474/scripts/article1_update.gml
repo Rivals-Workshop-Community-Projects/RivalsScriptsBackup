@@ -340,6 +340,12 @@ switch(anim_type[state]){
         var frame_dur = 6;
         image_index = round((state_timer mod (frames * frame_dur)) / frame_dur);
         break;
+    case 10:    // SPEEN and animate
+        var frames = 24;
+        var frame_dur = 6;
+        image_index = round((state_timer mod (frames * frame_dur)) / frame_dur);
+        image_angle += 2;
+        break;
 }
 
 //If not already at the sprite it should be, switch to the new sprite

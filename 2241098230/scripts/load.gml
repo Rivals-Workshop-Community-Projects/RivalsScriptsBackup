@@ -57,6 +57,7 @@ sprite_change_offset("uspecial", 80, 158);
 sprite_change_offset("dspecial", 80, 158);
 sprite_change_offset("dspecial_air", 80, 158);
 sprite_change_offset("taunt", 80, 158);
+sprite_change_offset("taunt_2", 80, 158);
 
 sprite_change_offset("plat", 80, 100);
 sprite_change_offset("ryk_hurtbox", 48, 126);
@@ -65,6 +66,9 @@ sprite_change_offset("ryk_crouchbox", 48, 126);
 sprite_change_offset("smoke1", 32, 32);
 sprite_change_offset("smoke2", 32, 32);
 sprite_change_offset("smoke3", 32, 32);
+sprite_change_offset("smoke4", 32, 32);
 sprite_change_offset("smoke_debuff", 16, 16);
 
+sprite_change_offset("genesis_smoke", 128, 128);
+sprite_change_offset("genesis_smoke_outline", 128, 128);
 sprite_change_collision_mask("smoke3", 0, 2, 8, 8, 56, 56, 2);

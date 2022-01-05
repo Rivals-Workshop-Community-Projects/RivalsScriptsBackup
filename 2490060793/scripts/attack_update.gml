@@ -377,6 +377,12 @@ if attack == AT_FSPECIAL_2 {
     */
 }
 
+if attack == AT_EXTRA_1 {
+	if taunt_down && window_timer == window_length {
+		window_timer = window_length-1
+	}
+}
+
 if window <= 2 user_event(0)
 #define spawn_base_dust(x, y, name, dir)
 //This function spawns base cast dusts. Names can be found below.

@@ -48,6 +48,7 @@ sprite_change_offset("uspecial", 80, 158);
 sprite_change_offset("dspecial", 80, 158);
 sprite_change_offset("dspecial_air", 80, 118);
 sprite_change_offset("taunt", 80, 158);
+sprite_change_offset("taunt_genesis", 80, 158);
 
 sprite_change_offset("limit_charge", 80, 158);
 sprite_change_offset("limit_vfx_large", 31, 31);
@@ -71,6 +72,7 @@ sprite_change_offset("orb_pulse", 80, 80);
 sprite_change_offset("fspec_indicator", 80, 158);
 sprite_change_offset("nspecial_vfx", 80, 158);
 sprite_change_offset("orb_explosion_vfx", 80, 80);
+sprite_change_offset("b_vfx", 140, 140);
 sprite_change_offset("tipper_vfx", 140, 140);
 
 sprite_change_offset("intro", 80, 158);
@@ -83,6 +85,8 @@ sprite_change_offset("killzoom_bg", 230, 125);
 sprite_change_offset("killzoom_layer1", 230, 125);
 sprite_change_offset("killzoom_layer2", 230, 125);
 sprite_change_offset("killzoom_layer3", 230, 125);
+
+sprite_change_offset("x_error", 34, 34);
 
 sprite_change_collision_mask("hitbox_circle", 0, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("hitbox_rect", 0, 0, 0, 0, 0, 0, 0);

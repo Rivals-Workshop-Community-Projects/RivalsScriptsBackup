@@ -847,6 +847,26 @@ if (attack == AT_DSPECIAL){
     can_move = false
 }
 
+
+if (attack == AT_TAUNT_2) {
+	if (window == 1) {
+		genesis_taunt = 0;
+	}
+	if (window == 2 && window_timer == 1) {
+		if (!instance_exists(genesis_smoke_id)) {
+			genesis_smoke_id = instance_create(round(x) + 32, round(y) - 48, "obj_article2")
+			genesis_smoke_id.depth = 10;
+		}
+	}
+	if (window == 3) {
+		genesis_taunt++;
+		if (genesis_taunt >= 60 && !hitpause) {
+			window ++;
+			window_timer = 0;
+		}
+	}
+}
+
 #define create_smoke(_x, _y, _amount, _length, _dir_min, _dir_max, _spd_min, _spd_max, _frict)
 var smoke = instance_create(_x, _y, "obj_article1");
 smoke.smoke_length = _length;
