@@ -22,7 +22,7 @@ if (attack == AT_FSPECIAL){
                     proj_angle += 6;
                 }
                 else{
-                    proj_angle += 0.5;
+                    proj_angle += 1;
                 }
                 
 
@@ -32,7 +32,7 @@ if (attack == AT_FSPECIAL){
                     proj_angle -= 6;
                 }
                 else{
-                    proj_angle -= 0.5;
+                    proj_angle -= 1;
                 }
                 
             }
@@ -45,7 +45,7 @@ if (attack == AT_FSPECIAL){
                     proj_angle -= 6;
                 }
                 else{
-                    proj_angle -= 0.5;
+                    proj_angle -= 1;
                 }
                 
             }
@@ -54,7 +54,7 @@ if (attack == AT_FSPECIAL){
                     proj_angle += 6;
                 }
                 else{
-                    proj_angle += 0.5;
+                    proj_angle += 1;
                 }
                 
 
@@ -94,6 +94,17 @@ if (attack == AT_FSPECIAL){
 
 if (attack == AT_NSPECIAL){
     hit_flipper = 8;
+}
+if (attack == AT_NAIR){
+    hit_flipper = 3;
+}
+if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR){
+    hitpause = 20;
+    kb_value = 200;
+}
+
+if (attack == AT_NAIR){
+    hbox_group = -1;
 }
 
 #define n_mod(dividend, divisor)

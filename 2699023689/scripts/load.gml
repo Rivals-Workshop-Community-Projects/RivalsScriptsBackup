@@ -2,11 +2,12 @@
 
 grav = 0.3;
 max_djumps = 3;
-djump_speed = 8 ;
+djump_speed = 8;
 jump_speed = 8;
 short_hop_speed = 4;
 air_accel = 0.35;
 air_friction = 0.04;
+walljump_vsp = 8;
 
 
 // Ori
@@ -17,7 +18,7 @@ sprite_change_offset("dashturn", 65, 119);
 sprite_change_offset("jump", 65, 90);
 sprite_change_offset("walk", 65, 119);
 sprite_change_offset("walkturn", 65, 119);
-
+sprite_change_offset("tech", 65, 119);
 
 sprite_change_offset("roll_forward", 65, 119);
 sprite_change_offset("roll_backward", 65, 119);
@@ -41,7 +42,8 @@ sprite_change_offset("crouch", 65, 119);
 sprite_change_offset("uair", 65, 85);
 sprite_change_offset("parry", 65, 119);
 sprite_change_offset("dattack", 65, 119);
-sprite_change_offset("dspecial", 65, 85);
+sprite_change_offset("dspecial", 65, 131);
+sprite_change_offset("dspecial_air", 65, 108);
 
 //Ranno
 sprite_change_offset("bair", 65, 100);

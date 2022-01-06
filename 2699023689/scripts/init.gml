@@ -36,3 +36,12 @@ midmissile = 0;
 //nspecial vars
 shine_timer = 30;
 big_shine_timer = 30;
+
+//nair vars
+last_speed = 0;
+attack_held = 0;
+bounce = 0;
+
+//dspecial vars
+was_free = 0;
+landed = 0;
