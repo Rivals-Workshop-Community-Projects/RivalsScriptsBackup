@@ -75,11 +75,15 @@ if (free
 {
     if (up_strong_down || (strong_down && up_down)) {
         attack = AT_USTRONG;
-        rocket_fuel -= booster_rush_cost;
+        if (!infinite_energy) {
+            rocket_fuel -= booster_rush_cost;
+        }
         fuel_recovery_active = false;
     } else if (strong_down || left_strong_down || right_strong_down) {
         attack = AT_FSTRONG;
-        rocket_fuel -= booster_rush_cost;
+        if (!infinite_energy) {
+            rocket_fuel -= booster_rush_cost;
+        }
         fuel_recovery_active = false;
         if (((left_strong_down || left_down) && (spr_dir > 0))
             || ((right_strong_down || right_down) && (spr_dir < 0)))

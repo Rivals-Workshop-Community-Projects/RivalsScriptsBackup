@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 11, 25, 41 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 15 );
+set_num_palettes( 24 );
 
 // Shiny
 set_color_profile_slot( 1, 0, 83, 108, 166 ); //Fur1
@@ -50,23 +50,23 @@ set_color_profile_slot( 5, 1, 255, 244, 196 ); //Fur2
 set_color_profile_slot( 5, 2, 151, 115, 222 ); //Eye Shadow
 set_color_profile_slot( 5, 3, 81, 0, 168 ); //Eye Color
 
-// Litten
-set_color_profile_slot( 6, 0, 99, 87, 87 ); //Fur1
-set_color_profile_slot( 6, 1, 222, 75, 51 ); //Fur2
-set_color_profile_slot( 6, 2, 255, 227, 18 ); //Eye Shadow
-set_color_profile_slot( 6, 3, 38, 207, 0 ); //Eye Color
-
 // Liepard
-set_color_profile_slot( 7, 0, 151, 78, 191 ); //Fur1
-set_color_profile_slot( 7, 1, 255, 227, 18 ); //Fur2
-set_color_profile_slot( 7, 2, 247, 104, 161 ); //Eye Shadow
-set_color_profile_slot( 7, 3, 27, 212, 27 ); //Eye Color
+set_color_profile_slot( 6, 0, 151, 78, 191 ); //Fur1
+set_color_profile_slot( 6, 1, 255, 227, 18 ); //Fur2
+set_color_profile_slot( 6, 2, 247, 104, 161 ); //Eye Shadow
+set_color_profile_slot( 6, 3, 27, 212, 27 ); //Eye Color
 
 // Meowth
-set_color_profile_slot( 8, 0, 255, 244, 196 ); //Fur1
-set_color_profile_slot( 8, 1, 189, 106, 38 ); //Fur2
-set_color_profile_slot( 8, 2, 99, 87, 87 ); //Eye Shadow
-set_color_profile_slot( 8, 3, 87, 227, 255 ); //Eye Color
+set_color_profile_slot( 7, 0, 255, 244, 196 ); //Fur1
+set_color_profile_slot( 7, 1, 189, 106, 38 ); //Fur2
+set_color_profile_slot( 7, 2, 99, 87, 87 ); //Eye Shadow
+set_color_profile_slot( 7, 3, 87, 227, 255 ); //Eye Color
+
+// Litten
+set_color_profile_slot( 8, 0, 99, 87, 87 ); //Fur1
+set_color_profile_slot( 8, 1, 222, 75, 51 ); //Fur2
+set_color_profile_slot( 8, 2, 255, 227, 18 ); //Eye Shadow
+set_color_profile_slot( 8, 3, 38, 207, 0 ); //Eye Color
 
 // Natukat
 set_color_profile_slot( 9, 0, 255, 162, 0 ); //Fur1
@@ -103,6 +103,60 @@ set_color_profile_slot( 14, 0, 138, 99, 68 ); //Fur1
 set_color_profile_slot( 14, 1, 245, 216, 202 ); //Fur2
 set_color_profile_slot( 14, 2, 99, 87, 87 ); //Eye Shadow
 set_color_profile_slot( 14, 3, 148, 255, 184 ); //Eye Color
+
+// Zeraora
+set_color_profile_slot( 15, 0, 255, 245, 61 ); //Fur1
+set_color_profile_slot( 15, 1, 99, 87, 87 ); //Fur2
+set_color_profile_slot( 15, 2, 122, 221, 240 ); //Eye Shadow
+set_color_profile_slot( 15, 3, 87, 227, 255 ); //Eye Color
+
+// Blaze
+set_color_profile_slot( 16, 0, 237, 182, 255 ); //Fur1
+set_color_profile_slot( 16, 1, 255, 242, 255 ); //Fur2
+set_color_profile_slot( 16, 2, 151, 51, 222 ); //Eye Shadow
+set_color_profile_slot( 16, 3, 255, 195, 0 ); //Eye Color
+
+// Absol
+set_color_profile_slot( 17, 0, 238, 241, 247 ); //Fur1
+set_color_profile_slot( 17, 1, 87, 88, 99 ); //Fur2
+set_color_profile_slot( 17, 2, 87, 88, 99 ); //Eye Shadow
+set_color_profile_slot( 17, 3, 219, 35, 35 ); //Eye Color
+
+// Ranked Gold
+set_color_profile_slot( 18, 0, 255, 225, 0 ); //Fur1
+set_color_profile_slot( 18, 1, 255, 249, 240 ); //Fur2
+set_color_profile_slot( 18, 2, 224, 127, 0 ); //Eye Shadow
+set_color_profile_slot( 18, 3, 193, 166, 255 ); //Eye Color
+
+// Rouge
+set_color_profile_slot( 19, 0, 237, 237, 237 ); //Fur1
+set_color_profile_slot( 19, 1, 255, 195, 0 ); //Fur2
+set_color_profile_slot( 19, 2, 87, 157, 255 ); //Eye Shadow
+set_color_profile_slot( 19, 3, 87, 227, 255 ); //Eye Color
+
+// Maractus
+set_color_profile_slot( 20, 0, 109, 204, 92 ); //Fur1
+set_color_profile_slot( 20, 1, 49, 122, 94 ); //Fur2
+set_color_profile_slot( 20, 2, 255, 245, 61 ); //Eye Shadow
+set_color_profile_slot( 20, 3, 247, 136, 207 ); //Eye Color
+
+// Parker
+set_color_profile_slot( 21, 0, 209, 114, 57 ); //Fur1
+set_color_profile_slot( 21, 1, 255, 185, 143 ); //Fur2
+set_color_profile_slot( 21, 2, 99, 46, 199 ); //Eye Shadow
+set_color_profile_slot( 21, 3, 112, 255, 79 ); //Eye Color
+
+// TRANS RIGHTS
+set_color_profile_slot( 22, 0, 140, 236, 255 ); //Fur1
+set_color_profile_slot( 22, 1, 255, 255, 255 ); //Fur2
+set_color_profile_slot( 22, 2, 255, 166, 247 ); //Eye Shadow
+set_color_profile_slot( 22, 3, 255, 184, 248 ); //Eye Color
+
+// Champion Hoppyknitz
+set_color_profile_slot( 23, 0, 212, 208, 187 ); //Fur1
+set_color_profile_slot( 23, 1, 123, 90, 113 ); //Fur2
+set_color_profile_slot( 23, 2, 81, 130, 81 ); //Eye Shadow
+set_color_profile_slot( 23, 3, 148, 255, 189 ); //Eye Color
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

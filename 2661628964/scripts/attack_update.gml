@@ -6,34 +6,36 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 if (attack == AT_NSPECIAL){
     if window == 3 and window_timer == 1{
         if meowth_timer == 600 and meowth_active == 0{
-            instance_create( x + 48 * spr_dir, y, "obj_article1" );
+            meowth_object = instance_create( x + 48 * spr_dir, y, "obj_article1" );
             meowth_active = 1
             meowth_timer -= 300
             meowth_hp = 20
         }
         else if oshawott_timer == 600 and oshawott_active == 0{
-            instance_create( x + 48 * spr_dir, y, "obj_article2" );
+            osha_object = instance_create( x + 48 * spr_dir, y, "obj_article2" );
             oshawott_active = 1
             oshawott_timer -= 300
             oshawott_hp = 20
         }
         else if meowth_active == 1 and cycle == 0 and meowth_timer == 600{
-            asset_get("obj_article1").x = x + 48 * spr_dir
-            asset_get("obj_article1").y = y
+            meowth_object.x = x + 48 * spr_dir
+            meowth_object.y = y
             meowth_timer -= 300
             if oshawott_active{
                 cycle = 1
             }
         }
         else if oshawott_active == 1 and cycle == 1 and oshawott_timer == 600{
-            asset_get("obj_article2").x = x + 48 * spr_dir
-            asset_get("obj_article2").y = y
+            osha_object.x = x + 48 * spr_dir
+            osha_object.y = y
             oshawott_timer -= 300
             if meowth_active{
                 cycle = 0
             }
         }
+        can_jump = true;
     }
+    
 }
 
 if (attack == AT_FSPECIAL){
@@ -167,4 +169,17 @@ if attack == AT_DAIR{
         fall_through = true;
     }
     can_fast_fall = false;
+}
+
+if attack == AT_DTILT{
+    if window == 2 and window_timer >= 2 or window == 3{
+         can_jump = true;
+        // if jump_pressed{
+        //     state = PS_JUMPSQUAT
+        //     window = 1
+        //     window_timer = 0
+        //     destroy_hitboxes();
+        //     clear_button_buffer(attack)
+        // }
+    }
 }

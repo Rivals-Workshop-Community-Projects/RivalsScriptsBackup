@@ -10,7 +10,7 @@ switch attack {
 	  	sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .6, 1.5)
       }
       
-      if hitbox_timer < 60 {
+      if hitbox_timer < 90 {
        with (asset_get("pHitBox")) {
         if player_id == other.player_id {
           if attack == AT_DSPECIAL && hbox_num == 2 {

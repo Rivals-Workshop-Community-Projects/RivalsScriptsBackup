@@ -181,7 +181,8 @@ techroll_speed      = 10;       // 8    -  11
 
 // Variables
 rainbow_color = c_white; // (used for one of Sandbert w/ a Phone's cheat codes)
-
+rainbow_activate = false;
+infinite_energy = false; // Used for Sandbert phone cheat
 
 
 // Animation Info

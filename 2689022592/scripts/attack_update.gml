@@ -109,13 +109,13 @@ switch attack {
 	break;
 	
 	case AT_DATTACK:
-	     if window == 1 && window_timer == 9 && !hitpause {
+	     if window == 1 && window_timer == 10 && !hitpause {
 	     	sound_play(asset_get("sfx_swipe_weak2"),false,noone,1,1.4)
 	     }
 	break;
 	
 	case AT_BAIR:
-	     if window == 1 && window_timer == 9 && !hitpause {
+	     if window == 1 && window_timer == 6 && !hitpause {
 	     	sound_play(asset_get("sfx_swipe_weak1"),false,noone,1,1.4)
 	     }
 	break;

@@ -357,6 +357,36 @@ with phone{
 	// NOTE: Using sprite_get() does not work here, so sprites must be saved as
 	// variables. See init.gml for an example of this with spr_nspecial_proj.
 	
+	
+	initTip("Driving 101");
+	initTipWords("Crouch to enter vehicle mode, then press left or right while holding down to drive around!
+				  You reach a comfortable cruising speed quickly, but if the stage allows for it, you can continue to accelerate at a slow rate.");
+	initTipImage(player_id.spr_crouchmoving, -5, fa_center, 1, c_white, 5);
+	//initTipImage(player_id.spr_crouchmoving, -5, fa_center, 1, c_white, 3);
+	
+	initTip("Energy Meter");
+	initTipWords("fspecial costs half the max energy meter.
+				  uspecial slowly consumes energy while in use.
+				  Energy begins to recharge when you touch the ground, wall, or get hit.
+				  Energy will continue to recharge until you use a move that spends it - don't feel stuck to the ground!");
+	initTipImage(player_id.spr_fspecial, 3, fa_left, 1, c_white, 5);
+	initTipImage(player_id.spr_uspecial, 9, fa_right, 1, c_white, 5);
+	//initTipImage(player_id.spr_fspecial, 3, fa_left, 1, c_white, 0);
+	//initTipImage(player_id.spr_uspecial, 9, fa_right, 1, c_white, 0);
+	
+	initTip("nspecial: Grab and Throw");
+	initTipWords("You can grab opponents at close range, then throw them in one of 4 directions.
+				  Down throw does the most damage, but doesn't have much KO potential.");
+	initTipImage(player_id.spr_nspecial, 5, fa_center, 1, c_white, 5);
+	//initTipImage(player_id.spr_nspecial, 5, fa_center, 1, c_white, 1);
+	
+	initTip("dspecial: Ramming Speed");
+	initTipWords("Can be charged to give super armor for one hit.
+				  Using the move earlier/later doesn't give any bonus damage.");
+	initTipImage(player_id.spr_dspecial, 7, fa_center, 1, c_white, 5);
+	//initTipImage(player_id.spr_dspecial, 7, fa_center, 1, c_white, 0);
+	
+	/*
 	initTip("NSpecial: Fast Repeat Shots");
 	initTipWords("After shooting a heart with NSpecial, you can fire another shot sooner than you can perform any other action. Rack up damage against a distracted opponent!");
 	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
@@ -459,8 +489,7 @@ with phone{
 	initTipWords(''No hardcoding or custom-cropped images, just easy-to-use paragraph and image formatting (including all of the fancy gimmicks like shaking and scrolling).'');
 	
 	initTipWords(''Check out user_event15.gml'');", fa_left, c_gray, 1, 0);
-	
-	
+	*/
 }
 
 
@@ -495,6 +524,115 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.5", "6 Jan, 2022");
+	initPatchWords_ext("Filled in most character-specific Munophone functionality.", fa_left, c_gray, 1, 0);
+	initPatchWords("Presentation
+				   - Fixed a bug causing visor/chest to be incorrectly colored on most alts");
+	
+	initPatch("1.4", "1 Jan, 2022");
+	initPatchWords_ext("Filled in most character-specific Munophone functionality.", fa_left, c_gray, 1, 0);
+	initPatchWords("Munophone now fully featured:
+				   - Added 'Infinite Energy' cheat
+				   - Slightly modified the 'Disco' cheat to be more noticeable on Retroblast
+				   - All other old cheats should continue to work
+				   - Brought patch notes in from Steam
+				   - Replaced Sandbert's tips section
+				   - Added Frame Data notes/adjustments for nspecial/dspecial/fstrong");
+	
+	initPatch("1.3", "26 Dec, 2021");
+	initPatchWords_ext("Rebalance, giving most moves whifflag and a damage increase.", fa_left, c_gray, 1, 0);
+	initPatchWords("Fixes:
+					- Kragg rock interaction allowing Retroblast to summon Kragg on next grab - found by Trail Mix
+					Balance - suggestions courtesy of AWasteOfAName/gnome/Nackles42/Trail Mix
+					- Increased delay after dattack (10->13)
+					- Removed hitpause from the grab itself (2->0)
+					- Can now walljump out of dspecial
+					- Reduced forward throw time before throw (20->13)
+					- Reduced up throw time after throw (14->10)
+					- Adjusted forward throw angle (60->50)
+					- Reduced back throw time before throw (15->12)
+					- Adjusted back throw angle (45->40)
+					- Increased back throw knockback/hitpause scaling (1.1->1.15)
+					- Reduced up throw time before throw (29->24)
+					- Changed up throw angle (75->87)
+					- Reduced endlag of dstrong (32->30 on whiff)
+					- Adjusted endlag of ustrong (13->11 on hit, 17 on whiff)
+					- Adjusted endlag of utilt (12->10 on hit, 15 on whiff)
+					- Damage increases across the board:
+					- bair sweekspot (5->11) and sourspot (5->7)
+					- bthrow (4->10)
+					- dair sweekspot (5->11) and sourspot (5->7)
+					- dattack sweekspot (5->6) and sourspot (3->4)
+					- dspecial (6->7)
+					- dstrong (11->15) (+1 per hit)
+					- dtilt (4->8)
+					- dthrow (5->12)
+					- fair (4->6)
+					- fthrow (6->8)
+					- ftilt (7->9)
+					- uair sweekspot (7->9)
+					- utilt (6->8)
+					- Whifflag added across the board - found by ArtistOfSeer
+					- bair (0->4)
+					- dair (0->4), taken out of endlag
+					- dattack (0->4)
+					- dspecial (0->4), taken out of endlag
+					- dstrong (0->10), taken ouf of endlag
+					- dtilt (0->6), taken out of endlag
+					- fair (0->6), landing lag (4->6)
+					- fstrong (0->2)
+					- ftilt (0->6), taken out of endlag
+					- nair whifflag (0->2), landing lag (4->6)
+					- uair (0->3)
+					- ustrong (0->6), partially taken from endlag
+					- utilt (0->5), partially taken from endlag
+					Presentation:
+					- Mentioned ability to drive during crouch in description (and here) since it's not immediately obvious, but intuitive enough to discover
+					- Removed unsupported stickers (Munophone, T&A convo.) from Character Select Screen
+					- Changed uthrow sound to match its speed
+					- Adjusted 'blast' sound timing (bair/dair/fstrong)");
+
+	initPatch("1.2", "23 Dec, 2021");
+	initPatchWords_ext("Mostly presentation cleanup.", fa_left, c_gray, 1, 0);
+	initPatchWords("Fixes
+					- Lightweight rune now properly INCREASES knockback_adj (0.8->1.2)
+					Balance
+					- Reduced ustrong startup (25->17)
+					- Increased ustrong knockback/hitpause scaling (0.55->0.8)
+					- Increased dspecial knockback/hitpause scaling (0.6->0.8)
+					Presentation
+					- Removed shading from Early Access alt - found by Charcola
+					- Bigger visual effect on last hit of dstrong/first hitbox of uair
+					- Changed sound on last hit of dstrong/first hitbox of uair
+					- Changed sounds of swipe/hit on fair
+					- Changed landing sounds to be heavier
+					- Added grab-confirm sound (subject to change)
+					Thanks to Delta Parallax/Gnome/Wattmelon for balance/presentation suggestions");
+
+	initPatch("1.1", "21 Dec, 2021");
+	initPatchWords_ext("Addressed bug fixes.", fa_left, c_gray, 1, 0);
+	initPatchWords("Fixes
+					- Rune enabling aerial strong attacks no longer drains energy for normal aerials - found by Bruh Mentos
+					- uspecial sound no longer persists if user is hit or KO'd found by - found by Delta Parallax
+					- Replaced default Munophone sprites, but haven't updates phone contents yet - found by multiple
+					- Will add proper Munophone functionality under the hood when possible
+					- Fix for incorrectly recolored win/loss images - found by WasabiPea
+					- 'Hologram' alt now has more appropriate css/win/loss images
+					Balance
+					- Reduced endlag on jab 1 & 2 (16->9)
+					- Reduced maximum delay between first and second hit of nair (8->5)
+					- Reduced nair base kb (3->2.5)
+					- Increased nair base hitpause (3->5)
+					- Reduced fair startup (10->8)
+					- Increased base landing lag of uair (4->8)
+					- Adjusted bair angle (155->140)
+					- Adjusted ftilt angle (95->90)
+					Big thanks to Delta Parallax/Gnome/WattMelon for balance suggestions");
+
+	initPatch("1.0", "20 Dec, 2021");
+	initPatchWords_ext("Retroblast's debut.", fa_left, c_gray, 1, 0);
+	
+	/*
 	initPatch("1.1", "32 Mebruary, 20XX");
 	initPatchWords("Buffs
 	- a");
@@ -512,7 +650,7 @@ with phone{
 	initPatch("1.0", "30 Mebruary, 20XX");
 	initPatchWords_ext("HOLY CRAP THE CHARACTER IS OUT!", fa_center, c_white, 0, 1);
 	initPatchImage(other.spr_doublejump, 0, fa_center, 1, c_white, 1);
-	
+	*/
 }
 
 
@@ -560,6 +698,9 @@ with self{
 	// NOTE: If you remove these cheat codes, you will need to remove where
 	// they're referenced elsewhere in code. The comment above each cheat tells
 	// you which files reference it.
+
+	// update.gml
+	initCheat("Unlimited Energy", "cheat_unlimited_power", [0, 1], ["Off", "On"], "Take to the skies without worrying about that pesky energy bar!");
 	
 	// post_draw.gml
 	initCheat("Say woag", "cheat_funny_snail", [0, 1], ["no", "yes"], "Say woag? Yes. No. AAAAAA");
@@ -581,7 +722,6 @@ with self{
 	
 	// update.gml
 	initCheat("stop hitting yourself", "cheat_recoil", [0, 1], ["Off", "On"], "ouf");
-	
 }
 
 

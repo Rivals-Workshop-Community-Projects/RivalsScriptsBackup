@@ -1,7 +1,5 @@
 if object_index != oPlayer exit;
 
-//set_character_color_slot(0, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color))
-
 // TODO - remapping in this file occasionally recolors the hud
 
 /*
@@ -14,7 +12,13 @@ if ((state != PS_PARRY)
     if (codename_default_active) {
         set_character_color_slot( 0, 255, 106, 0, 1 ); //energy
         set_character_color_slot( 1, 111, 0, 255, 1 ); //helmet
-        set_character_color_slot( 2, 255, 106, 0, 1 ); //visor
+        if (rainbow_activate) {
+            set_character_color_slot( 2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color ));
+            set_article_color_slot( 2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color ));
+        } else {
+            set_character_color_slot( 2, 255, 106, 0, 1 ); //visor
+            set_article_color_slot( 2, 255, 106, 0, 1 ); //visor
+        }
         set_character_color_slot( 3, 0, 247, 255, 1 ); //flesh
         set_character_color_slot( 4, 0, 102, 255, 1 ); //torso
         set_character_color_slot( 5, 111, 0, 255, 1 ); //hands
@@ -22,7 +26,6 @@ if ((state != PS_PARRY)
         set_character_color_slot( 7, 111, 0, 255, 1 ); //feet
         set_article_color_slot( 0, 255, 106, 0, 1 ); //energy
         set_article_color_slot( 1, 111, 0, 255, 1 ); //helmet
-        set_article_color_slot( 2, 255, 106, 0, 1 ); //visor
         set_article_color_slot( 3, 0, 247, 255, 1 ); //flesh
         set_article_color_slot( 4, 0, 102, 255, 1 ); //torso
         set_article_color_slot( 5, 111, 0, 255, 1 ); //hands
@@ -31,7 +34,13 @@ if ((state != PS_PARRY)
     } else if (codename_wireframe_active) {
         //set_character_color_slot( 0, 0, 255, 0, 1 ); //energy
         set_character_color_slot( 1, 0, 64, 0, 0.3 ); //helmet
-        //set_character_color_slot( 2, 0, 255, 0, 1 ); //visor
+        if (rainbow_activate) {
+            set_character_color_slot( 2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color ));
+            set_article_color_slot( 2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color ));
+        } else {
+            //set_character_color_slot( 2, 0, 255, 0, 1 ); //visor
+            //set_article_color_slot( 0, 255, 0, 0, 1 ); //visor
+        }
         set_character_color_slot( 3, 0, 64, 0, 0.3 ); //flesh
         set_character_color_slot( 4, 0, 64, 0, 0.3 ); //torso
         set_character_color_slot( 5, 0, 64, 0, 0.3 ); //hands
@@ -39,12 +48,16 @@ if ((state != PS_PARRY)
         set_character_color_slot( 7, 0, 64, 0, 0.3 ); //feet
         set_article_color_slot( 0, 0, 255, 0, 1 ); //energy
         set_article_color_slot( 1, 0, 64, 0, 0.3 ); //helmet
-        //set_article_color_slot( 0, 255, 0, 0, 1 ); //visor
         set_article_color_slot( 3, 0, 64, 0, 0.3 ); //flesh
         set_article_color_slot( 4, 0, 64, 0, 0.3 ); //torso
         set_article_color_slot( 5, 0, 64, 0, 0.3 ); //hands
         set_article_color_slot( 6, 0, 64, 0, 0.3 ); //connectors
         set_article_color_slot( 7, 0, 64, 0, 0.3 ); //feet
+    } else {
+        if (rainbow_activate) {
+            set_character_color_slot( 2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color ));
+            set_article_color_slot( 2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color ));
+        }
     }
     if (flat_shading_selected) {
         // Make the shading flat

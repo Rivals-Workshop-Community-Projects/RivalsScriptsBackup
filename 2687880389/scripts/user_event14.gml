@@ -265,6 +265,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 // Ground
 spr_idle = sprite_get("idle");
 spr_crouch = sprite_get("crouch");
+spr_crouchmoving = sprite_get("crouchmoving");
 spr_walk = sprite_get("walk");
 spr_walkturn = sprite_get("walkturn");
 spr_dash = sprite_get("dash");

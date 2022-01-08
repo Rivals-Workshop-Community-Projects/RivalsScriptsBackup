@@ -17,8 +17,8 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 9);
 
 // Swing
-var grab_charge_duration = 8;
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, grab_charge_duration);
+var nspecial_grab_charge_duration = 8;
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, nspecial_grab_charge_duration);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
@@ -75,13 +75,14 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_HSPEED, 0);
 
+
 set_num_hitboxes(AT_NSPECIAL, 1);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, grab_charge_duration);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, nspecial_grab_charge_duration);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 35);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -41);
@@ -94,6 +95,14 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 0.1);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1); // no visual effect
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 0);
+
+
+// Munophone notes
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD,
+"On a successful grab you have " + string(get_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH)) + " frames to decide where to throw.
+Otherwise you fumble and take an extra " + string(get_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH)) + " frames to recover.");
+var nspecial_hitbox_start = get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) + 4;
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_ACTIVE, string(nspecial_hitbox_start + 1) + "-" + string(nspecial_hitbox_start + nspecial_grab_charge_duration));
 
 /*
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 6);

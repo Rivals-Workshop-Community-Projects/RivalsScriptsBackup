@@ -29,8 +29,20 @@ actionable = 0;
 firstdirection = 0;
 
 //fspecial vars
-hovertime = 0;
+hovertime = 0;   
 midmissile = 0;
+
+//fspecial vars (slipstream)
+//slip_x = 0
+//slip_y = 0;
+//slip_lifetime = 0;
+//slip_dir = 0;
+//slip_draw = 0;
+//slipstream_parts = sprite_get("slipstream_parts");
+//slip_fx_y = [];
+//slip_fx_x = [];
+//slip_fx_ages = [];
+//slip_fx_sprites = [];
 
 
 //nspecial vars

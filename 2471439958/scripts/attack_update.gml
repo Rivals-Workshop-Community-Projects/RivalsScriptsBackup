@@ -5,14 +5,10 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL ||
     trigger_b_reverse();
 }
 
-if (attack == AT_USPECIAL or attack == AT_USPECIAL_GROUND)
-{
-	if (window == 2) 
-	{
-		if (special_down && uspec_meter > 0)
-		{
-			if (window_timer == get_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH))
-			{
+if (attack == AT_USPECIAL or attack == AT_USPECIAL_GROUND){
+	if (window == 2) {
+		if (special_down && uspec_meter > 0){
+			if (window_timer == get_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH)){
 				window_timer = 0;
 			}
 			--uspec_meter;
@@ -31,7 +27,12 @@ if (attack == AT_USPECIAL or attack == AT_USPECIAL_GROUND)
 			move_cooldown[AT_USPECIAL] = 25;;// can't use uspec again once you let go
 			//Cambie esto por un peque�o cooldown de 20 frames para evitar spamear en el aire
 		}
-	
+	}
+}
+
+if attack == AT_USPECIAL{
+	if window == 2{
+	can_shield = true;
 	}
 }
 
@@ -124,8 +125,8 @@ move_cooldown[AT_UAIR] = 20
 }
 
 if attack == AT_DAIR and window = 8 and window_timer = 1 {
-move_cooldown[AT_DAIR] = 120
-move_cooldown[AT_DATTACK] = 120
+move_cooldown[AT_DAIR] = 180
+move_cooldown[AT_DATTACK] = 180
 }
 
 
@@ -165,9 +166,10 @@ else{
 if (attack == AT_FSPECIAL ) && (has_hit=true){
 	if  window == 7 && window_timer == 1 && special_down{
 		hsp = 9 * spr_dir;
-		vsp = -6.5
+		vsp = -5
 		move_cooldown[AT_FSPECIAL] = 90
 		fspec_cancel = 1
+		sound_play(asset_get("sfx_swipe_weak1"))
 	}
 	if window == 1{
 		fspec_cancel = 0
@@ -210,7 +212,7 @@ if (attack == AT_FSPECIAL) {
 			|| (place_meeting(x, y, asset_get("par_jumpthrough"))) 
 		)
 			{
-				other.window = 7
+				other.window = 6
 				other.window_timer = 0
 				other.fspecialGrab = 1
 				other.vsp = 0
@@ -218,7 +220,7 @@ if (attack == AT_FSPECIAL) {
 				//instance_destroy(self)
 			}
 	}
-	if (window == 7 && (fspecialGrab == 1 || has_hit)) {
+	if (window == 6 && (fspecialGrab == 1 || has_hit)) {
 		if (window_timer == 1) {
 			hsp = spr_dir * fspecialSpeed 
 		}
@@ -295,19 +297,22 @@ if (attack == AT_DAIR) {
 	
 	if window == 3{
 	if vsp = 0 && hitpause = 0 {
-		window = 4;
+		window = 5;
 		}
 	}
 	if window == 4{
 		can_jump = true;
 		can_shield = true;
+		if is_special_pressed( DIR_UP ){
+			set_attack( AT_USPECIAL );
+		}
 	}	
 	
-	if window == 6 {
-		window = 9;
+	if window == 7 {
+		window = 10;
 		
 	}
-	if window == 5 && window_timer == 1 {
+	if window == 6 && window_timer == 1 {
 		sound_play(asset_get("sfx_shovel_hit_heavy2"));
 		destroy_hitboxes();
 		can_jump = false;
@@ -319,7 +324,7 @@ if (attack == AT_DAIR) {
 if (attack == AT_DAIR) {
 	if window == 2 && window_timer > 1{
 		if attack_pressed or down_strong_pressed{
-		window = 6;
+		window = 7;
 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
 		spawn_hit_fx( x + 10*spr_dir, y + -20, 254);
 		if (caleb==1){
@@ -333,68 +338,82 @@ if (attack == AT_DAIR) {
 }
 
 //TAUNT SELECT
-if (attack == AT_TAUNT){
+if (attack == AT_EXTRA_1){
 	if window == 2{
-		if taunt_down{
-			set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 4);
+		if special_down{
+			set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 4);
 			}
 		}
 	if window == 3 && window_timer == 11{
-		if taunt_down{
+		if special_down{
 			window_timer = 1;
+		}
+	if window >= 1{
+		hold = 0
+		can_jump = true;
+		can_shield = true;
 		}
 	}
 }
 
-if (attack == AT_TAUNT){
+if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR or attack = AT_NSPECIAL){
+	if window == 1 && window_timer >= 7{
+		if special_down{
+			hold = 1
+			}
+		}
+	if window == 1 && window_timer <= 6{
+		hold = 0
+	}
+}
+
+if (attack == AT_EXTRA_1){
     			if fire = 1{
-                	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("element_switch2_fire"));
+                	set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("element_switch2_fire"));
                 }
 				if ice = 1{
-					set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("element_switch2_ice"));
+					set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("element_switch2_ice"));
 				}
 				if thunder = 1{
-					set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("element_switch2_plasma"));
+					set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("element_switch2_plasma"));
 				}
 				if pistols = 1{
-					set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("element_switch2_earth"));
+					set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("element_switch2_earth"));
 				}
 }
 
 
 
 //ELEMENTAL SWITCHER ALT
-switch(attack) {
-    
-    case AT_TAUNT :
+if (attack == AT_EXTRA_1){
     
     	if window == 1 && (!joy_pad_idle) {
             clear_button_buffer( PC_ATTACK_PRESSED )
        }
            
      if window == 3 {
-    if joy_dir < 45 || joy_dir >= 315 {
+    if right_down {
     fire = 0
 	ice = 1
 	thunder = 0
 	pistols = 0
     }
              
-    if joy_dir < 135 and joy_dir >= 45 {
+    if up_down {
     fire = 1
 	ice = 0
 	thunder = 0
 	pistols = 0
     }
              
-    if joy_dir < 225 and joy_dir >= 135 {
+    if left_down {
     fire = 0
 	ice = 0
 	thunder = 1
 	pistols = 0
     }
              
-    if joy_dir < 315 and joy_dir >= 225 {
+    if down_down {
     fire = 0
 	ice = 0
 	thunder = 0
@@ -405,9 +424,11 @@ switch(attack) {
 	//ice = 0
 	//thunder = 0
 	//pistols = 0
-            }
+            
+    	} if window == 4 {
+    		move_cooldown[AT_EXTRA_1] = 20
+    	}	
     }
-    break ;
 }
 
 if (attack == AT_JAB) {
@@ -467,17 +488,17 @@ if (attack == AT_DSPECIAL) {
     		set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 11);
     }
     	
-    if window > 2 {
+    if window > 2 && window < 4 {
     	
     	if left_down * spr_dir  {
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 2);
-    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -10);
+    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -11);
             set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .9);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 80);
     	}
     		
     	if right_down * spr_dir {
-    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
+    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 8);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -5);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .9);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 60);
@@ -486,7 +507,7 @@ if (attack == AT_DSPECIAL) {
     	}
     	
     	if left_down * -spr_dir  {
-    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
+    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 8);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -5);
             set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .9);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 60);
@@ -495,7 +516,7 @@ if (attack == AT_DSPECIAL) {
     		
     	if right_down * -spr_dir {
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 2);
-    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -10);
+    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -11);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .9);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 80);
     		
@@ -503,7 +524,7 @@ if (attack == AT_DSPECIAL) {
     	
     	if up_down {
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
-    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -10);
+    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -11);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .3);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 11);
@@ -514,6 +535,7 @@ if (attack == AT_DSPECIAL) {
 
     
 }
+
 
 
 

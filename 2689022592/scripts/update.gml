@@ -126,3 +126,17 @@ with asset_get("oPlayer") {
        }
    }
 }
+
+if move_cooldown[AT_NSPECIAL_2] == 0 {
+with oPlayer if (activated_kill_effect) {
+  if hit_player_obj == other {
+  	with other {
+  	    sound_play(asset_get("sfx_ori_energyhit_heavy"),false, noone, 1, 1.2)
+  		sound_play(asset_get("sfx_absa_kickhit"),false, noone, 1, .8)
+        sound_play(asset_get("sfx_boss_vortex_end"),false, noone, 1, 1.2)
+        sound_play(asset_get("sfx_boss_vortex_end"),false, noone, 1, .8)
+        move_cooldown[AT_NSPECIAL_2] = 120
+  	}
+  }
+}
+}

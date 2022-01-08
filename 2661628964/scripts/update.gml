@@ -6,7 +6,15 @@ if intro_timer < 108{
     }*/
 }
 
-if get_player_color(player) == 1{
+if stock_bm == 1{
+    covet2 = 1
+}
+if attack == AT_DSPECIAL and window == 1 and window_timer == 1{
+    covet2 = 0
+    hit_assists = false
+}
+
+if get_player_color(player) == 1 or get_player_color(player) == 23 or get_player_color(player) == 18{
     shiny_timer +=1
     //print("dog")
     //print(shiny_timer)
@@ -15,6 +23,29 @@ if shiny_timer >= 25{
     shiny_timer = 0
     shiny_x = random_func(0, 49, true)
     shiny_y = random_func(1, 60, true)
+}
+
+if get_player_color(player) == 23{
+    set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt2"));
+    if covet2 != 1 and hit_assists == false{
+        set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial_w"));
+        set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial_w"));
+    }
+    else{
+        set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial2"));
+        set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial2"));
+    }
+}
+else{
+    set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+    if covet2 != 1 and  hit_assists == false{
+        set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
+        set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
+    }
+    else{
+        set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial2"));
+        set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial2"));
+    }
 }
 
 if fakeout == 0{
@@ -90,12 +121,13 @@ if assurance_player != noone and assurance_player.last_hit > 0 and assurance_pla
 if attack == AT_BAIR and window == 3 and window_timer == 1{
     set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 5);
     set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 130);
-    set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 5);
+    set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
     set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .5);
     set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
-    set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0);
+    set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.5);
     set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("payback"));
     set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 151);
+    set_hitbox_value(AT_BAIR, 1, HG_EXTRA_CAMERA_SHAKE, 0);
 }
 //print(assurance_player.last_hit)
 
@@ -151,7 +183,12 @@ if killarticles = 1 and state != PS_RESPAWN{
     killarticles = 0
 }
 
-
+if state == PS_ATTACK_AIR and attack == AT_DSPECIAL{
+    max_fall = 6; 
+}
+else{
+    max_fall = 10; 
+}
 /*var parry_sound = 0
 
 if state == PS_PARRY and state_timer == 1 and parry_sound = 0{

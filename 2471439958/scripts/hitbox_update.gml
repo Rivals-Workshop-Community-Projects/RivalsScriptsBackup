@@ -141,8 +141,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 			}
 		} if player_id.window == 5 && abs(hsp) < 1 && abs (vsp) <1{
 			vsp = 6;													//Aqui puedes cambiar el boost que recibe
-			hsp = 5*player_id.spr_dir + 3*player_id.right_down -3*player_id.left_down;	
-			sound_play(asset_get("sfx_blow_medium3"));									//SONIDO VA AQUI
+			hsp = 5*player_id.spr_dir + 3*player_id.right_down -3*player_id.left_down;								//SONIDO VA AQUI
 		}
 	}
 }

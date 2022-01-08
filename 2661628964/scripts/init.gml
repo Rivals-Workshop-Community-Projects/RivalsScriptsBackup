@@ -33,6 +33,10 @@ shiny_x = 0
 shiny_y = 0
 shiny_timer = 0;
 utilt_parried = 0;
+covet2 = 0;
+hit_assists = false;
+meowth_object = noone
+osha_object = noone
 
 intro_timer = 0;
 

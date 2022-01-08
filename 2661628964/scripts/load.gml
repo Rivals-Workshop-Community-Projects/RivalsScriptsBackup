@@ -45,7 +45,10 @@ sprite_change_offset("nspecial", 35, 57, true);
 sprite_change_offset("fspecial", 28, 31, true);
 sprite_change_offset("uspecial", 35, 40, true);
 sprite_change_offset("dspecial", 28, 38, true);
+sprite_change_offset("dspecial2", 32, 58, true);
+sprite_change_offset("dspecial_w", 32, 58, true);
 sprite_change_offset("taunt", 31, 57, true);
+sprite_change_offset("taunt2", 31, 57, true);
 
 sprite_change_offset("plat", 32, 29);
 

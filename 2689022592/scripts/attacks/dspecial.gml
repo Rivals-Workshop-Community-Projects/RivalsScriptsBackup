@@ -69,7 +69,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 302);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 140);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 140);
 set_hitbox_value(AT_DSPECIAL, 3, HG_SHAPE, 0);
-set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 7);
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 11);
 set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING,0.2);

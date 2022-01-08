@@ -10,7 +10,7 @@ if (attack == AT_FSPECIAL){
     }
     else{
         var small = 0;
-    }
+    }                                   
 
     if (not player_id.joy_pad_idle){
         
@@ -56,7 +56,7 @@ if (attack == AT_FSPECIAL){
                 else{
                     proj_angle += 1;
                 }
-                
+               
 
             }
         }
@@ -91,6 +91,15 @@ if (attack == AT_FSPECIAL){
     
     
 }
+//if (attack == AT_FSPECIAL){
+//    player_id.slip_y = y;
+//    player_id.slip_x = x;
+//    player_id.slip_draw = true;
+//    if player_id.slip_lifetime < 0{
+//        destroyed = true;
+//    }
+//    player_id.slip_dir = spr_dir;
+//}
 
 if (attack == AT_NSPECIAL){
     hit_flipper = 8;

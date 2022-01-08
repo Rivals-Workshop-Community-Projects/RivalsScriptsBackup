@@ -97,24 +97,24 @@ set_color_profile_slot( 6, 6, 255, 217, 0 ); //eyes
 set_color_profile_slot( 6, 7, 255, 255, 255 ); //cleaver
 
 // Hikaru
-set_color_profile_slot( 7, 0, 243, 232, 232 ); //white
-set_color_profile_slot( 7, 1, 212, 34, 34 ); //scarf
-set_color_profile_slot( 7, 2, 97, 41, 0 ); //hair
-set_color_profile_slot( 7, 3, 214, 109, 212 ); //hoodie
-set_color_profile_slot( 7, 4, 255, 0, 179 ); //wood
+set_color_profile_slot( 7, 0, 255, 243, 243 ); //white
+set_color_profile_slot( 7, 1, 219, 85, 85 ); //scarf
+set_color_profile_slot( 7, 2, 128, 59, 44 ); //hair
+set_color_profile_slot( 7, 3, 255, 135, 254 ); //hoodie
+set_color_profile_slot( 7, 4, 255, 181, 233 ); //wood
 set_color_profile_slot( 7, 5, 255, 0, 0 ); //blood
 set_color_profile_slot( 7, 6, 255, 255, 255 ); //eyes
-set_color_profile_slot( 7, 7, 255, 28, 28 ); //cleaver
+set_color_profile_slot( 7, 7, 255, 84, 124 ); //cleaver
 
 // Yuuto Ichika
 set_color_profile_slot( 8, 0, 255, 231, 222 ); //white
-set_color_profile_slot( 8, 1, 109, 174, 209 ); //scarf
-set_color_profile_slot( 8, 2, 186, 209, 255 ); //hair
-set_color_profile_slot( 8, 3, 72, 85, 156 ); //hoodie
-set_color_profile_slot( 8, 4, 255, 238, 153 ); //wood
+set_color_profile_slot( 8, 1, 186, 205, 214 ); //scarf
+set_color_profile_slot( 8, 2, 105, 195, 255 ); //hair
+set_color_profile_slot( 8, 3, 99, 113, 191 ); //hoodie
+set_color_profile_slot( 8, 4, 255, 213, 0 ); //wood
 set_color_profile_slot( 8, 5, 255, 218, 97 ); //blood
 set_color_profile_slot( 8, 6, 255, 255, 255 ); //eyes
-set_color_profile_slot( 8, 7, 112, 67, 25 ); //cleaver
+set_color_profile_slot( 8, 7, 163, 113, 66 ); //cleaver
 
 // Cupcake
 set_color_profile_slot( 9, 0, 255, 248, 253 ); //white
@@ -157,24 +157,24 @@ set_color_profile_slot( 12, 6, 255, 255, 255 ); //eyes
 set_color_profile_slot( 12, 7, 82, 82, 82 ); //cleaver
 
 // Deadweight
-set_color_profile_slot( 13, 0, 255, 217, 189 ); //white
-set_color_profile_slot( 13, 1, 94, 30, 30 ); //scarf
+set_color_profile_slot( 13, 0, 255, 230, 212 ); //white
+set_color_profile_slot( 13, 1, 128, 40, 40 ); //scarf
 set_color_profile_slot( 13, 2, 214, 214, 214 ); //hair
-set_color_profile_slot( 13, 3, 31, 38, 74 ); //hoodie
+set_color_profile_slot( 13, 3, 57, 63, 99 ); //hoodie
 set_color_profile_slot( 13, 4, 217, 217, 217 ); //wood
-set_color_profile_slot( 13, 5, 120, 120, 120 ); //blood
+set_color_profile_slot( 13, 5, 255, 120, 0 ); //blood
 set_color_profile_slot( 13, 6, 255, 255, 255 ); //eyes
 set_color_profile_slot( 13, 7, 97, 97, 97 ); //cleaver
 
 // Dante
 set_color_profile_slot( 14, 0, 255, 255, 255 ); //white
-set_color_profile_slot( 14, 1, 64, 15, 15 ); //scarf
-set_color_profile_slot( 14, 2, 224, 224, 224 ); //hair
-set_color_profile_slot( 14, 3, 143, 0, 0 ); //hoodie
-set_color_profile_slot( 14, 4, 71, 44, 19 ); //wood
+set_color_profile_slot( 14, 1, 89, 62, 40 ); //scarf
+set_color_profile_slot( 14, 2, 224, 214, 195 ); //hair
+set_color_profile_slot( 14, 3, 176, 54, 33 ); //hoodie
+set_color_profile_slot( 14, 4, 114, 117, 125 ); //wood
 set_color_profile_slot( 14, 5, 173, 0, 0 ); //blood
 set_color_profile_slot( 14, 6, 255, 255, 255 ); //eyes
-set_color_profile_slot( 14, 7, 130, 130, 130 ); //cleaver
+set_color_profile_slot( 14, 7, 185, 188, 196 ); //cleaver
 
 // Yuri (FFCC RoF)
 set_color_profile_slot( 15, 0, 255, 231, 222 ); //white
@@ -218,23 +218,23 @@ set_color_profile_slot( 18, 7, 255, 71, 71 ); //cleaver
 
 // Travis Touchdown
 set_color_profile_slot( 19, 0, 255, 255, 255 ); //white
-set_color_profile_slot( 19, 1, 74, 84, 97 ); //scarf
+set_color_profile_slot( 19, 1, 99, 113, 130 ); //scarf
 set_color_profile_slot( 19, 2, 52, 46, 56 ); //hair
-set_color_profile_slot( 19, 3, 97, 21, 21 ); //hoodie
+set_color_profile_slot( 19, 3, 161, 35, 35 ); //hoodie
 set_color_profile_slot( 19, 4, 87, 87, 87 ); //wood
-set_color_profile_slot( 19, 5, 87, 149, 222 ); //blood
-set_color_profile_slot( 19, 6, 255, 201, 84 ); //eyes
-set_color_profile_slot( 19, 7, 87, 149, 222 ); //cleaver
+set_color_profile_slot( 19, 5, 143, 195, 255 ); //blood
+set_color_profile_slot( 19, 6, 209, 175, 100 ); //eyes
+set_color_profile_slot( 19, 7, 181, 225, 255 ); //cleaver
 
-// Metapuns
-set_color_profile_slot( 20, 0, 224, 209, 255 ); //white
-set_color_profile_slot( 20, 1, 73, 197, 222 ); //scarf
-set_color_profile_slot( 20, 2, 255, 165, 174 ); //hair
-set_color_profile_slot( 20, 3, 207, 134, 240 ); //hoodie
-set_color_profile_slot( 20, 4, 209, 255, 209 ); //wood
-set_color_profile_slot( 20, 5, 0, 192, 227 ); //blood
-set_color_profile_slot( 20, 6, 255, 255, 255 ); //eyes
-set_color_profile_slot( 20, 7, 255, 207, 252 ); //cleaver
+// Doom Slayer
+set_color_profile_slot( 20, 0, 252, 217, 204 ); //white
+set_color_profile_slot( 20, 1, 160, 105, 65 ); //scarf
+set_color_profile_slot( 20, 2, 120, 107, 80 ); //hair
+set_color_profile_slot( 20, 3, 126, 153, 38 ); //hoodie
+set_color_profile_slot( 20, 4, 99, 69, 54 ); //wood
+set_color_profile_slot( 20, 5, 199, 0, 0 ); //blood
+set_color_profile_slot( 20, 6, 75, 158, 127 ); //eyes
+set_color_profile_slot( 20, 7, 122, 122, 122 ); //cleaver
 
 // sir will's stitch
 set_color_profile_slot( 21, 0, 250, 251, 255 ); //white
@@ -323,18 +323,18 @@ set_color_profile_slot( 29, 2, 49, 37, 56 ); //hair
 set_color_profile_slot( 29, 3, 49, 37, 56 ); //hoodie
 set_color_profile_slot( 29, 4, 212, 101, 255 ); //wood
 set_color_profile_slot( 29, 5, 179, 11, 255 ); //blood
-set_color_profile_slot( 29, 6, 94, 94, 94 ); //eyes
+set_color_profile_slot( 29, 6, 222, 141, 227 ); //eyes
 set_color_profile_slot( 29, 7, 134, 11, 255 ); //cleaver
 
-// Doom Slayer
-set_color_profile_slot( 30, 0, 252, 199, 179 ); //white
-set_color_profile_slot( 30, 1, 160, 105, 65 ); //scarf
-set_color_profile_slot( 30, 2, 130, 107, 84 ); //hair
-set_color_profile_slot( 30, 3, 150, 158, 58 ); //hoodie
-set_color_profile_slot( 30, 4, 99, 69, 54 ); //wood
-set_color_profile_slot( 30, 5, 130, 135, 140 ); //blood
-set_color_profile_slot( 30, 6, 117, 164, 171 ); //eyes
-set_color_profile_slot( 30, 7, 120, 134, 133 ); //cleaver
+// Genesis
+set_color_profile_slot( 30, 0, 130, 130, 145 ); //white
+set_color_profile_slot( 30, 1, 207, 201, 201 ); //scarf
+set_color_profile_slot( 30, 2, 71, 59, 71 ); //hair
+set_color_profile_slot( 30, 3, 51, 51, 51 ); //hoodie
+set_color_profile_slot( 30, 4, 51, 51, 51 ); //wood
+set_color_profile_slot( 30, 5, 255, 25, 95 ); //blood
+set_color_profile_slot( 30, 6, 255, 0, 0 ); //eyes
+set_color_profile_slot( 30, 7, 255, 25, 95 ); //cleaver
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

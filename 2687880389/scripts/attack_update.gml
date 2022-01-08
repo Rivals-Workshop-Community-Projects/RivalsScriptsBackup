@@ -405,7 +405,9 @@ if (attack == AT_FSPECIAL) {
     	
     	if (rocket_fuel >= booster_rush_cost) {
     		fuel_recovery_active = false;
-    	    rocket_fuel -= booster_rush_cost;
+        	if (!infinite_energy) {
+    	    	rocket_fuel -= booster_rush_cost;
+        	}
     	}
     }
     
@@ -470,10 +472,12 @@ if (attack == AT_USPECIAL) {
         if (window < 3) {
         	fuel_recovery_active = false;
             if (rocket_fuel > 0) {
-            	if (rocket_fuel >= fuel_consumption_rate) {
-                	rocket_fuel -= fuel_consumption_rate;
-            	} else {
-            		rocket_fuel = 0;
+            	if (!infinite_energy) {
+	            	if (rocket_fuel >= fuel_consumption_rate) {
+	                	rocket_fuel -= fuel_consumption_rate;
+	            	} else {
+	            		rocket_fuel = 0;
+	            	}
             	}
                 if (special_down) {
                     //var max_rocket_rising_speed = remap_specials ? -3 : -5.5;

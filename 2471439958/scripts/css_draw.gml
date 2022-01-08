@@ -42,7 +42,7 @@ alt_name[16] = "Firion (FFII)";
 alt_name[17] = "Prompto (FFXV)";
 alt_name[18] = "Ardyn (FFXV)";
 alt_name[19] = "Travis Touchdown (NMH)";
-alt_name[20] = "Metapuns";
+alt_name[20] = "Doom Slayer";
 alt_name[21] = "Sir Will's stitch";
 alt_name[22] = "Yui";
 alt_name[23] = "Zoe";
@@ -52,7 +52,7 @@ alt_name[26] = "Alternate Reality";
 alt_name[27] = "Margaret Moonlight (NMH)";
 alt_name[28] = "Whitty (FNF)";
 alt_name[29] = "Bat Bat";
-alt_name[30] = "Doom Slayer";
+alt_name[30] = "Genesis 8";
  
  
 draw_set_halign(fa_left);

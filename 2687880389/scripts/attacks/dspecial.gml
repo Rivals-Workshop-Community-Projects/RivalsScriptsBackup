@@ -80,6 +80,7 @@ set_window_value(AT_DSPECIAL, 8, AG_WINDOW_SFX, transform_up_sound);
 set_window_value(AT_DSPECIAL, 8, AG_WINDOW_SFX_FRAME, 0);
 set_window_value(AT_DSPECIAL, 8, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
+
 set_num_hitboxes(AT_DSPECIAL, 1);
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
@@ -102,6 +103,12 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, .8);
 //set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 20);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 
+
+// Munophone notes
+set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD,
+"Can be released " + string(get_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH)) + " frames earlier and still have super armor.
+Can be released " + string(get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH)) + " frames earlier than that without armor.
+Also, " + string(get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH)) + " frames at the beginning are skipped if already crouching.");
 
 
 /*

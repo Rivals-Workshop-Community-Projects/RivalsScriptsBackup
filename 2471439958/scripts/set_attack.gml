@@ -1,12 +1,5 @@
 //set_attack
 
-if (attack == AT_TAUNT){
-    if attack_down{
-        attack = AT_TAUNT_2;
-    }
-    
-}
-
 if (attack == AT_NSPECIAL){
     if pistols = 1{
         attack = AT_NSPECIAL_2;
@@ -30,6 +23,16 @@ if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR){
         attack = AT_NSPECIAL;
     }
     
+}
+if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR or attack = AT_NSPECIAL){
+    if move_cooldown[AT_NSPECIAL] > 0{
+        attack = AT_EXTRA_1;
+    }
+}
+if (attack == AT_DATTACK){
+    if move_cooldown[AT_DATTACK] > 0{
+        attack = AT_EXTRA_2;
+    }
 }
 if (attack == AT_FSTRONG){
     if pistols = 1{

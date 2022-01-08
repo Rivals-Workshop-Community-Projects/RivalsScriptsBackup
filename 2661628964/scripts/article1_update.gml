@@ -130,6 +130,18 @@ if (state == 1){
 	if state_timer >= 80{
 		state_timer = 0
 	}
+	with (oPlayer) //pushes opponent away when touching
+	{
+	  if (place_meeting(x,y,other) and other.player_id != self)
+	  {
+	    if x >= other.x and y >= other.y{
+	    	x += 3
+	    }
+	    if x < other.x and y >= other.y{
+	    	x -= 3
+	    }
+	  }
+	}
 }
 
 
@@ -326,6 +338,12 @@ if hbox.type == 1{
             hitstop = desired_hitstop;
             hitstop_full = desired_hitstop;
         }
+    }
+    if hit_player_num == player and hit_player_obj.attack == AT_DSPECIAL{
+    	hit_player_obj.hit_assists = true
+    	hit_player_obj.x = x + (32 * spr_dir)
+    	hit_player_obj.spr_dir = spr_dir
+    	//print("OKAY")
     }
     /*if hit_player_num != player{
     	hbox.length = 0

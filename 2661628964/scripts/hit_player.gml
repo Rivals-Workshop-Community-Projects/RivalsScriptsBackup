@@ -65,10 +65,11 @@ if attack == AT_FSTRONG and my_hitboxID.hbox_num == 1 and assurance_active == 1{
 if (attack == AT_BAIR and my_hitboxID.hbox_num == 2) and (hit_player_obj.state == PS_ATTACK_AIR or hit_player_obj.state == PS_ATTACK_GROUND){
     set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 10);
     set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 140);
-    set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);
-    set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1);
-    set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 12);
+    set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7);
+    set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .8);
+    set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 16);
     set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .5);
     set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("payback2"));
     set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, payback_vfx);
+    set_hitbox_value(AT_BAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 }

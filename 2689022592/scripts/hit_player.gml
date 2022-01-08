@@ -2,7 +2,7 @@
 boi = false
 reset = false
 hbox = my_hitboxID
-
+move_cooldown[AT_NSPECIAL_2] = 0
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, (hit_player_obj.old_hsp)*spr_dir - 2 + random_func(1,5,true) );
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, (hit_player_obj.old_vsp) - 2 + random_func(2,5,true));
 
@@ -12,15 +12,23 @@ switch hbox.attack {
 	case AT_DSPECIAL :
 	    	boi = true
 	    	//reset = true
-	    	//if hbox.hbox_num == 3 { 
-	    	//    with (asset_get("pHitBox")) {
-            //      if player_id == other && attack == AT_DSPECIAL && hbox_num = 3 { 
-            //             hitbox_timer = 0
-            //      }
-            //      
-            //    }
-	    	//	
-	    	//}
+	    	if hbox.hbox_num == 3 { 
+	    	    with (asset_get("pHitBox")) {
+                  if player_id == other && attack == AT_DSPECIAL && hbox_num = 3 { 
+                         hitbox_timer = 0
+                         if damage > 0 damage -= 1
+                  }
+                  
+                }
+	    		
+	    	}
+	break 
+	
+	case AT_UAIR :
+	     if hbox.hbox_num == 3 {
+	    	sound_play(asset_get("sfx_blow_heavy1"),false, noone, 1, 1.4)
+	     }
+	    	//reset = true
 	break 
 	
 	case AT_USPECIAL :
@@ -35,7 +43,8 @@ switch hbox.attack {
 	case AT_FSPECIAL :
 	     targeting = hit_player_obj
 	     move_cooldown[AT_EXTRA_2] = 30
-	    	sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, 1, .8)
+	    	//sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, 1, .8)
+	    	sound_play(asset_get("sfx_waterhit_heavy"),false, noone, 1, .9)
 	    	boi = true
 	    	//reset = true
 	break 
@@ -62,22 +71,25 @@ switch hbox.attack {
 	
 	case AT_DTILT :
 		sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .6, 1.5)
-		boi = true
+		//boi = true
 	break;
 	
 	case AT_DATTACK:
-		sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .8, 1.3)
-		boi = true
+		sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .8, .95)
+	    	sound_play(asset_get("sfx_blow_heavy2"),false, noone, 1, 1.4)
+		//boi = true
 	break;
 
 	case AT_BAIR:
 	     if hbox.hbox_num == 1 {
-	    	//sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .6, 1.4)
+	     	//boi = true
+	    	sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .6, 1.4)
 	     }
+	     
 	     if hbox.hbox_num == 2 {
 	    	sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .8, .9)
 	    	sound_play(asset_get("sfx_blow_heavy2"),false, noone, 1, 1.2)
-	    	boi = true
+	    	//boi = true
 	     }
 	     
 	break;
@@ -201,7 +213,7 @@ if has_rune("K") {
 	take_damage(player,-1,floor(hbox.damage*-0.33))
 }
 
-if has_rune("M") {
+if has_rune("M") && my_hitboxID.type == 1{
 	sound_play(asset_get("sfx_blow_heavy1"),false, noone, 1, max(0.6,2 - (hitstop*hitstop/150)))
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, (old_hsp)*spr_dir - 2 + random_func(1,5,true) );
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, (old_vsp) - 2 + random_func(2,5,true));

@@ -109,7 +109,7 @@ if (ice == 1){
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 5);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 5);
 	
-	set_hitbox_value(AT_FAIR, 1, HG_EFFECT, 5);
+	set_hitbox_value(AT_FAIR, 1, HG_EFFECT, 0);
 	}
 
 	if (ice_cont < 30){
@@ -160,10 +160,9 @@ if (ice_active_cont >= 400){ //How long the ice effect is active, in frames
 }
 
 if (attack == AT_FSTRONG){
-		if window == 5 && has_hit=true && fire = 1{ 
+		if window == 5 && has_hit = true && fire = 1{ 
 		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_fire"));
-	}
-	else if fire = 1
+	}if fire = 1 && window < 2
 	{
 		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 	}
@@ -436,7 +435,7 @@ if thunder == 1{
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_SPRITE, sprite_get("thunder_effect"));
 	
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 7);
-	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_plasma"));	
+	
 	
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_strong"));
 	
@@ -463,7 +462,7 @@ if thunder == 1{
 	
 	//FORWARD AIR PLASMA
 	
-	set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fairB_plasma"));
+	
 	
 	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
 	
@@ -594,7 +593,7 @@ if fire == 1{
 	
 	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
 	
-	set_num_hitboxes(AT_FAIR, 4);
+	set_num_hitboxes(AT_FAIR, 3);
 	
 	set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
@@ -628,7 +627,14 @@ if fire == 1{
 	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 204);
 }
 
-	
+if thunder == 1{
+	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_plasma"));	
+	set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fairB_plasma"));
+}
+if thunder == 1 and genesis == 1{
+	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_G8"));	
+	set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fairB_G8"));
+}
 
 
 if (taunt_pressed){
@@ -727,6 +733,9 @@ if (attack == 49){
         //sound_play(sound_get("JUMP"));
     //}
 //}
+
+
+
 if(caleb==1)&&(state==14)&&(state_timer==80){
 		sound_play( sound_get("am_not_dead_yet"));
 }

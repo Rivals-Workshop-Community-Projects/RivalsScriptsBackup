@@ -3,6 +3,7 @@ set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("stinger"));
 set_attack_value(AT_DATTACK, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_DATTACK, AG_LANDING_LAG, 8);
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("stinger_hurt"));
+set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
 
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 4);
 

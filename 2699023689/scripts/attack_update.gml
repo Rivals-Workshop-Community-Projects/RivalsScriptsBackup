@@ -79,6 +79,11 @@ if (attack == AT_FSPECIAL){
         window_timer = 0;
     }
     midmissile = 2;
+    
+    //if window == 1{
+    //    slip_lifetime = 300;
+    //    slip_draw = 0;
+    //}
 }
 
 

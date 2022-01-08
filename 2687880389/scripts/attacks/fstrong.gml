@@ -15,7 +15,8 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 var cycles_per_frame = 5;
-for (var i = 0; i < 3; i++) {
+var fstrong_num_angles = 3;
+for (var i = 0; i < fstrong_num_angles; i++) {
     // Hold
     set_window_value(AT_FSTRONG, 3 + (4 * i), AG_WINDOW_LENGTH, 4);
     set_window_value(AT_FSTRONG, 3 + (4 * i), AG_WINDOW_ANIM_FRAMES, 0);
@@ -88,12 +89,12 @@ if (fstrong_recoil_enabled) {
     set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED_TYPE, 1);
 }
 
-
 // Return to your original position
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_ANIM_FRAME_START, 11);
+
 
 set_num_hitboxes(AT_FSTRONG, 6);
 
@@ -192,6 +193,35 @@ for (var i = 0; i < 3; i++) {
     set_hitbox_value(AT_FSTRONG, 2 + (2 * i), HG_HITBOX_X, tip_hitbox_x);
     set_hitbox_value(AT_FSTRONG, 2 + (2 * i), HG_HITBOX_Y, tip_hitbox_y);
 }
+
+
+// Munophone notes
+set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Only hitboxes of the same angle will appear together.");
+// Exclude windows of up/down angles
+for (var i = 1; i < fstrong_num_angles; i++) {
+    var fstrong_windows_per_angle = 4;
+    for (var j = 3; j < 3 + fstrong_windows_per_angle; j++) {
+        var fstrong_current_window = j + (fstrong_windows_per_angle * i)
+        set_window_value(AT_FSTRONG, fstrong_current_window, AG_MUNO_WINDOW_EXCLUDE, 1);
+    }
+}
+
+set_hitbox_value(AT_FSTRONG, 1, HG_MUNO_HITBOX_MISC_ADD, "Neutral angle");
+set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_MISC_ADD, "Neutral angle");
+
+var fstrong_first_hitbox_frame = get_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH)
+                               + get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH)
+                               + get_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH)
+                               + get_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH);
+set_hitbox_value(AT_FSTRONG, 3, HG_MUNO_HITBOX_MISC_ADD, "Upward angle");
+set_hitbox_value(AT_FSTRONG, 3, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 4)));
+set_hitbox_value(AT_FSTRONG, 4, HG_MUNO_HITBOX_MISC_ADD, "Upward angle");
+set_hitbox_value(AT_FSTRONG, 4, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 2)));
+
+set_hitbox_value(AT_FSTRONG, 5, HG_MUNO_HITBOX_MISC_ADD, "Downward angle");
+set_hitbox_value(AT_FSTRONG, 5, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 4)));
+set_hitbox_value(AT_FSTRONG, 6, HG_MUNO_HITBOX_MISC_ADD, "Downward angle");
+set_hitbox_value(AT_FSTRONG, 6, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 2)));
 
 /*
 // Sweetspot

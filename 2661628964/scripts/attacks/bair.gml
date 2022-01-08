@@ -36,26 +36,28 @@ set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 130);
-set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .05);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 151);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("payback"));
+set_hitbox_value(AT_BAIR, 1, HG_EXTRA_CAMERA_SHAKE, 0);
 
 //detection box for payback
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME, 5);
-set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 1);
+set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, -35);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 70);
-set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 70);
+set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 75);
+set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 75);
 set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 0);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 130);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 0);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_BAIR, 2, HG_EFFECT, 11);//detection box color

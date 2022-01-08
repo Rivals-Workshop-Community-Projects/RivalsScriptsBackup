@@ -74,7 +74,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_EFFECT, 6);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, quickattack_vfx);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("quick2"));

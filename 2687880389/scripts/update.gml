@@ -1,14 +1,20 @@
 // Muno code
 user_event(14);
 
-rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100) : make_color_rgb(
-	get_color_profile_slot_r(get_player_color(player), 0),
-	get_color_profile_slot_g(get_player_color(player), 0),
-	get_color_profile_slot_b(get_player_color(player), 0),
-	);
-set_character_color_slot(0, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color))
-
-
+//rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100) : make_color_rgb(
+rainbow_activate = phone_cheats[cheat_skittles];
+if (rainbow_activate) {
+	rainbow_color = make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255);
+	set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color))
+}
+/*
+rainbow_color
+    = rainbow_activate ? make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255)
+                       : make_color_rgb(get_color_profile_slot_r(get_player_color(player), 0),
+										get_color_profile_slot_g(get_player_color(player), 0),
+										get_color_profile_slot_b(get_player_color(player), 0));
+set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color))
+*/
 
 max_djumps = phone_cheats[cheat_more_djumps];
 
@@ -18,6 +24,7 @@ spr_dir = phone_cheats[cheat_widebert] * sign(spr_dir);
 if phone_cheats[cheat_recoil] with pHitBox if player_id == other can_hit_self = 1;
 // End of Muno code
 
+infinite_energy = phone_cheats[cheat_unlimited_power];
 
 // Play rocket sound while hovering
 if (((attack == AT_USPECIAL) && (window < 3))
