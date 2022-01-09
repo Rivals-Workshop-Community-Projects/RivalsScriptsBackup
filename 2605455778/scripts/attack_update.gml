@@ -179,7 +179,7 @@ switch(attack){
                 window_timer = 0;
             }
             if(place_meeting(x+2*spr_dir, y, asset_get("par_block")) && window == 2){ //get on ledge
-                print_debug("collide");
+                //print_debug("collide");
                 if(!place_meeting(x+2*spr_dir, y-60, asset_get("par_block"))){
                     y = y-15;
                     hsp -= 5*spr_dir;
@@ -200,13 +200,29 @@ switch(attack){
     case AT_FSPECIAL_2:
         can_fast_fall = false;
         old_jump = false;
-        can_wall_jump = true;
+        if(window != 8){
+            can_wall_jump = true;
+        }
+        if(window == 1 && free && !shield_down && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+            if((spr_dir == 1 && left_down) || (spr_dir == -1 && right_down)){
+                fspecial_moonroll = true;
+                print_debug("turn");
+            }else{
+                fspecial_moonroll = false;
+            }
+        }
         if(window == 1 && shield_down){
             attack = AT_FSPECIAL;
             window = 1;
             window_timer = 0;
         }else if(window == 2){
-            if(!hitpause){
+            if(!free){
+                fspecial_moonroll = false;
+            }
+            if(fspecial_moonroll && window_timer < 10){
+                hsp = -8*spr_dir;
+            }
+            if(!hitpause && !fspecial_moonroll){
                 hsp = 10*spr_dir; //for turnaround speed
             }
             if(window_timer == 1){
@@ -223,6 +239,7 @@ switch(attack){
                 sound_play(asset_get("sfx_blow_heavy1"));
                 window = 5;
                 window_timer = 0;
+                create_hitbox(AT_FSPECIAL_2, 3, x, y);
                 old_hsp = 11*spr_dir;
                 old_vsp = vsp;
                 hitpause = true;
@@ -234,6 +251,9 @@ switch(attack){
             }
         }
         if(window == 6){
+            if(window_timer > 10){
+                destroy_hitboxes();
+            }
             if(window_timer == 1 && !hitpause){
                 create_hitbox(AT_FSPECIAL_2, 1, x, y);
             }
@@ -243,7 +263,14 @@ switch(attack){
             if(window_timer == get_window_value(attack, 6, AG_WINDOW_LENGTH)){
                 window = eggroll_window_store;
                 window_timer = eggroll_timer_store;
-                create_hitbox(AT_FSPECIAL_2, 1, x, y);
+                switch(eggroll_window_store){
+                    case 2:
+                        create_hitbox(AT_FSPECIAL_2, 1, x, y);
+                    break;
+                    case 5:
+                        create_hitbox(AT_FSPECIAL_2, 3, x, y);
+                    break;
+                }
                 attack_end();
             }
             if(eggroll_window_store == 5 && !was_parried){
@@ -269,14 +296,16 @@ switch(attack){
             hsp = 0;
             switch(sideup){
                 case 0:
-                    vsp = -18;
-                    set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_TYPE, 7);
-                    armorpoints = 0;
+                    vsp = -10;
+                    armorloss = true;
+                    set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_TYPE, 1);
+                    fdownsprecovery = true;
                 break;
                 case 1:
-                    vsp = -14;
-                    set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_TYPE, 7);
-                    armorpoints = 0;
+                    vsp = -10;
+                    armorloss = true;
+                    set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_TYPE, 1);
+                    fdownsprecovery = true;
                 break;
                 case 2:
                     vsp = -10;
@@ -292,6 +321,29 @@ switch(attack){
             }
             destroy_hitboxes();
         }
+         if(place_meeting(x+2*spr_dir, y, asset_get("par_block")) && window == 2){
+            if(has_dinoplat){
+                window = 8;
+                window_timer = 0;
+            }
+         }
+         if(window == 8){
+            if(instance_exists(obj_article_platform)){
+                obj_article_platform.destroyed = true;
+            }
+            if(has_dinoplat){
+                wallPlat();
+                has_dinoplat = false;
+            }
+            if(window_timer == 1 && !hitpause){
+                create_hitbox(attack, 2, x, y);
+                var effect;
+                effect = spawn_hit_fx(x+20*spr_dir, y-40, totemPowfx);
+                effect.draw_angle = -90*-spr_dir;
+                shake_camera(4, 3);
+                sound_play(asset_get("sfx_kragg_rock_shatter"));
+            }
+         }
     break;
     
     case AT_USPECIAL:
@@ -334,7 +386,6 @@ switch(attack){
                         if(place_meeting(x, y, other) && !place_meeting(x, y, asset_get("plasma_field_obj"))){
                             var rockPow = create_hitbox(AT_USPECIAL, 3, x, y-50);
                             sound_play(asset_get("sfx_abyss_explosion"));
-                            //print_debug(rockPow.damage);
                             spawn_hit_fx(x, y, player_id.totemPowfx);
                             if(collision_circle(x, y, 150, player_id, true, true)){
                                 player_id.armorgain = true;
@@ -346,14 +397,22 @@ switch(attack){
                 }
             }
         }
-        if(window == 1 && shield_pressed && armorpoints > 0 && !upcancel){
-            super_armor = true;
+        if(window == 1 && shield_pressed && !upcancel){
+            if(armorpoints > 0){
+                super_armor = true;
+                armorloss = true;
+            }else{
+                uppratt = true;
+            }
             old_jump = false;
-            armorloss = true;
+            upcancel = true;
             window = 3;
             window_timer = 0;
             vsp = -10;
-            upcancel = true;
+        }
+        if(window == 3 && uppratt && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && free){
+            state = PS_PRATFALL;
+            uppratt = false;
         }
     break;
 
@@ -403,13 +462,15 @@ switch(attack){
         }
     break;
     case AT_FTILT:
-        if(armorpoints > 0){
-            moveArmorLoss = true;
-            if(window == 1 && window_timer == get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH)){
-                var ftRock = create_hitbox(AT_FTILT, 2, x+23*spr_dir, y-75)
-            }
-            if(window == 2 && window_timer == 1){
-                armorpoints -= 1;
+        if(window != 4){
+            if(armorpoints > 0){
+                moveArmorLoss = true;
+                if(window == 1 && window_timer == get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH)){
+                    var ftRock = create_hitbox(AT_FTILT, 2, x+23*spr_dir, y-75)
+                }
+                if(window == 2 && window_timer == 1){
+                    armorpoints -= 1;
+                }
             }
         }
     break;
@@ -453,7 +514,26 @@ while (temp_x > max_temp_x){
         temp_x--;
     }
 }
-instance_create(x+temp_x*spr_dir, y, "obj_article1");
+if(!place_meeting(x, y+2, obj_article_platform)){
+    instance_create(x+temp_x*spr_dir, y, "obj_article1");
+}
+#define wallPlat
+has_dinoplat = false;
+with(obj_article_platform){
+    if (player_id == other){
+        destroy = true;
+    }
+}
+stageplatcreate = false;
+var platlocationcheck;
+platlocationcheck = instance_position(x-18*spr_dir, y+2, all);
+if(!variable_instance_exists(platlocationcheck, "player_id") && platlocationcheck != noone){
+    
+}else{
+    var plat;
+    plat = instance_create(x-18*spr_dir, y+2, "obj_article_platform");
+    plat.amStage = false;
+}
 #define ground_col(xx, yy)
 return (position_meeting(xx, yy, asset_get("par_block"))
     || position_meeting(xx, yy, asset_get("par_jumpthrough")));
@@ -486,7 +566,12 @@ if(is_special_pressed(DIR_DOWN)){
 var rockPow = create_hitbox(AT_USPECIAL, 2, x, y);
 destroyed = true;
 #define armorgainattack
-armorgainfx = spawn_hit_fx(x, y, djarmorgain);
+if(attack == AT_DSPECIAL){
+    armorgainfx = spawn_hit_fx(x, y, djarmorgain);
+    armorgainfx.spr_dir *= -1;
+}else{
+    armorgainfx = spawn_hit_fx(x, y, djarmorgain);
+}
 #define armorlossattack
 armorpoints -= 1;
 armorlossfx = spawn_hit_fx(x, y, djarmorexit);

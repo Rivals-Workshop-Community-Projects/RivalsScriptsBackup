@@ -16,7 +16,7 @@ with(pHitBox){
     if(other.player_id.url == player_id.url 
     && (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_NSPECIAL)
     && hbox_num == 1){
-        if(place_meeting(x, y, other)){
+        if(place_meeting(x, y, other) && player_id.window != 6){
             if(attack == AT_FSPECIAL && !other.player_id.has_hit){
                 if(player.id == other){
                     other.fspecialHit = true;
@@ -48,6 +48,7 @@ if(fspecialHit){
     player_id.x = x-50*player_id.spr_dir;
     player_id.hitpause = true;
     player_id.hitstop = 5;
+    player_id.hitstop_full = 5;
     fspecialHit = false;
 }
 if(sprite_index == player_id.totemSpawnAnim && totemAnimCounter == 8){

@@ -59,6 +59,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("swingstrong"));
@@ -78,11 +80,13 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("swingmid"));
 
 
-set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Cancel into self starting on frame " + string(get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) + get_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH) + 1) + ".");
+
+

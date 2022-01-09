@@ -1,7 +1,7 @@
 inRock = false;
 firstP = false;
 prison_canAct = false;
-prison_time = 200;
+prison_time = 150;
 prison_happen = false;
 prison_time_counter = 0;
 prison_lockout_counter = 0;
@@ -14,4 +14,5 @@ test = 0;
 myPrison = noone;
 prev_prisoner = noone;
 airPrison = false;
-prisononce = false;
+onDinockPlat = false;
+DinockPlatref = noone;

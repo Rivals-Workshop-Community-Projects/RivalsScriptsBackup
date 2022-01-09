@@ -25,13 +25,13 @@ ground_friction_default = ground_friction;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 13;
-short_hop_speed = 8;
-djump_speed = -1.8;
+jump_speed = 12.5;
+short_hop_speed = 9;
+djump_speed = -1.2;
 
-djump_accel = -3;
-djump_accel_start_time = 3;
-djump_accel_end_time = 11;
+djump_accel = -3.7;
+djump_accel_start_time = 5;
+djump_accel_end_time = 12;
 oldSpeed = 0;
 dj_speed_modifier = 4; //makes wavelanding from double jump go farther
 
@@ -143,6 +143,11 @@ rockPrisonBreak = sprite_get("rockprisonBreak");
 rockBreakCounter = 0;
 swallowAnimCounter = 0;
 
+wallPlattotem = sprite_get("totemPlat");
+wallplattotemproj = sprite_get("totemPlat_destroyproj");
+stagePlattotem = sprite_get("totemPlat_stage");
+stagePlattotemMask = sprite_get("totemPlat_stage_mask");
+
 canledgecancel = false;
 eggroll_timer_store = 0;
 eggroll_window_store = 0;
@@ -167,6 +172,13 @@ upcancel = false;
 fdownsprecovery = false;
 groundstart = false;
 totemAndplayer = false;
+has_dinoplat = true;
+uppratt = false;
+stageplatcreate = false;
+onDinockPlat = false;
+DinockPlatref = noone;
+armorplus = 0;
+fspecial_moonroll = false;
 
 //workshop comp
 feri_costume = sprite_get("costume_dinock");

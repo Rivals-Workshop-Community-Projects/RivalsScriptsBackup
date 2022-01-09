@@ -8,7 +8,7 @@ set_attack_value(AT_DSPECIAL_2, AG_AIR_SPRITE, sprite_get("burst"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("burst_hurt"));
 
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 15);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.25);
@@ -17,7 +17,7 @@ set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("scream"));
 
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 7);
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.25);
 
 set_num_hitboxes(AT_DSPECIAL_2, 1);

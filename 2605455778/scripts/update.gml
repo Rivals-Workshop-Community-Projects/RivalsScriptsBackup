@@ -29,6 +29,11 @@ if(armorloss){
     armorloss = false;
     djhit = false;
 }
+if(armorplus){
+    armorpoints += armorplus;
+    armorgainfx = spawn_hit_fx(x, y, djarmorgain);
+    armorplus = 0;
+}
 if(armorgain){
     if(attack == AT_USPECIAL || state == PS_WALL_JUMP){
         armorpoints += 1;
@@ -65,6 +70,11 @@ if(swallow == true){
     gravity_speed = gravity_speed_default;
 }
 with(asset_get("oPlayer")){
+    if(free){
+        prison_time = 90;
+    }else{
+        prison_time = 150;
+    }
     if(self != other){
         if(state != PS_RESPAWN && prisoner == other){
             //print_debug(prisoner);
@@ -88,19 +98,19 @@ with(asset_get("oPlayer")){
                 wrap_time = 9999;
             }
             if(free && prison_time_counter > 50){
-                airPrison = true;
+                // //airPrison = true;
                 state = PS_HITSTUN;
-                hsp = 0;
-                old_hsp = 0;
-                if(hitpause){
-                    prison_time_counter += 4;
-                }
-                prison_time_counter++;
-                if(prison_time_counter < 120){
-                    vsp = 0;
-                    prison_time_counter++;
-                }
-                old_vsp = 0;
+                // hsp = 0;
+                // old_hsp = 0;
+                // if(hitpause){
+                //     prison_time_counter += 4;
+                // }
+                // //prison_time_counter++;
+                // if(prison_time_counter < 120){
+                //     vsp = 0;
+                //     //prison_time_counter++;
+                // }
+                // old_vsp = 0;
                 hitstun = prison_time - prison_time_counter;
             }
             if(!free){
@@ -111,15 +121,14 @@ with(asset_get("oPlayer")){
                     prison_plat = instance_place(x, y+2, asset_get("par_jumpthrough"));
                 }
                 state = PS_WRAPPED;
-                if(airPrison){
-                    airPrison = false;
-                    prisononce = true;
-                    if(prison_time_counter > 160){
-                        prison_time_counter -= 40;
-                    }else{
-                        prison_time_counter -= 70;
-                    }
-                }
+                // if(airPrison){
+                //     airPrison = false;
+                //     if(prison_time_counter > 160){
+                //         prison_time_counter -= 40;
+                //     }else{
+                //         prison_time_counter -= 70;
+                //     }
+                // }
             }else{
                 if(prison_plat != noone){
                     state = PS_WRAPPED;
@@ -172,7 +181,7 @@ with(asset_get("oPlayer")){
             prison_lockout_counter--;
             //print_debug(prison_lockout_counter);
         }
-        print_debug(prison_time_counter);
+        //print_debug(prison_time_counter);
     }
 }
 if(attack == AT_FSPECIAL){
@@ -187,11 +196,12 @@ if(state == PS_DOUBLE_JUMP && armorpoints > 0){
 if(instance_exists(armorgainfx)){
     armorsfxtimer++;
     armorgainfx.depth = -10;
-    armorgainfx.x = x;
     if(attack == AT_DSPECIAL){
         armorgainfx.y = y+15;
+        armorgainfx.x = x+20*spr_dir;
     }else{
         armorgainfx.y = y;
+        armorgainfx.x = x;
     }
     if(armorsfxtimer == 20){
         sound_play(asset_get("sfx_ice_nspecial_armor"));
@@ -218,14 +228,56 @@ if(fdownsprecovery){
         fdownsprecovery = false;
     }
 }
+//print_debug(has_dinoplat);
+if(!has_dinoplat && !free){ //check if ground has owner
+    var below;
+    below = instance_position(x, y+2, all);
+    if(!variable_instance_exists(below, "player_id") && below != noone){
+        has_dinoplat = true;
+    }
+}
+if(instance_exists(obj_article_platform)){
+    if(obj_article_platform.destroy){
+        spawn_hit_fx(obj_article_platform.x-25*obj_article_platform.spr_dir, obj_article_platform.y+35, djarmorexit);
+    }
+}
+with(asset_get("oPlayer")){
+    if(!instance_exists(DinockPlatref)){
+        DinockPlatref = noone;
+    }
+    if(DinockPlatref != noone && (free || !place_meeting(x, y+2, DinockPlatref))){
+        DinockPlatref.jumpcount += 1;
+        DinockPlatref = noone;
+    }
+}
+if(state == PS_PARRY_START && prev_state == PS_CROUCH && !parry_cooldown){
+    super_armor = true;
+    state = PS_ATTACK_GROUND;
+    attack = AT_FTILT;
+    window = 4;
+    window_timer = 0;
+    //print_debug("Yoshi Parry");
+}
+if(attack == AT_FTILT && window == 4){
+    if(window_timer <= 2){
+        super_armor = true;
+    }
+    if(window_timer <= 5){
+        if(jump_pressed){
+            state = PS_JUMPSQUAT;
+            clear_button_buffer(PC_SHIELD_PRESSED);
+            clear_button_buffer(PC_JUMP_PRESSED);
+        }
+    }else{
+        state = PS_PARRY_START;
+    }
+}
 old_armorpoints = armorpoints;
-//print_debug(hit_totem);
 #define exit_prison
     sound_stop(asset_get("sfx_dizzy"));
     if(prev_state != PS_RESPAWN && state != PS_PARRY){
         state = PS_IDLE;
     }
-    prisononce = false;
     visible = true;
     prison_canAct = false;
     invincible = true;

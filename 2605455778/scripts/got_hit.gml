@@ -23,3 +23,8 @@ if(state == PS_DOUBLE_JUMP){
 swallowarmor = false;
 nextarmor = false;
 //print_debug(string(orig_knock) + "; " + string(hitstun));
+if(state == PS_ATTACK_GROUND && attack == AT_FTILT && window == 4 && super_armor){
+    hit_player_obj.has_hit = false;
+    take_damage( player, -1, -enemy_hitboxID.damage );
+    armorplus = 1; 
+}

@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 20 );
 
 // fry
 set_color_profile_slot( 1, 0, 191, 43, 21 ); //skin
@@ -142,6 +142,20 @@ set_color_profile_slot( 17, 1, 23, 255, 251 ); //claws
 set_color_profile_slot( 17, 2, 166, 97, 88 ); //crystal
 set_color_profile_slot( 17, 3, 107, 62, 80 ); //radiation
 set_color_profile_slot( 17, 4, 111, 135, 237 ); //skin shade-
+
+// High Tier Mortal
+set_color_profile_slot( 18, 0, 26, 26, 26 ); //skin
+set_color_profile_slot( 18, 1, 255, 0, 0 ); //claws
+set_color_profile_slot( 18, 2, 255, 0, 0 ); //crystal
+set_color_profile_slot( 18, 3, 255, 4, 0 ); //radiation
+set_color_profile_slot( 18, 4, 15, 14, 14 ); //skin shade-
+
+// summit
+set_color_profile_slot( 19, 0, 44, 42, 51 ); //skin
+set_color_profile_slot( 19, 1, 255, 28, 48 ); //claws
+set_color_profile_slot( 19, 2, 255, 255, 255 ); //crystal
+set_color_profile_slot( 19, 3, 201, 0, 114 ); //radiation
+set_color_profile_slot( 19, 4, 23, 23, 38 ); //skin shade-
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

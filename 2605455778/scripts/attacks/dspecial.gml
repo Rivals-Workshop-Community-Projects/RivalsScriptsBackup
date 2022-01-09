@@ -24,15 +24,22 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX_FRAME, 7);
 
-//waiting window to transition to AT_DSPECIAL_AIR
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 2);
+
+// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 8); //platform spawn
+// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
+// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
+// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX_FRAME, 7);
+
+// set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 10); //platform spawn recovery
+// set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 7);
+// set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 16);
 
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 32); //armor get
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 16);
-//set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
-//set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_kragg_roll_start"));
-//set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX_FRAME, 0);
 
 set_num_hitboxes(AT_DSPECIAL, 1);
 
@@ -75,3 +82,25 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 193);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
+
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2); //platform dropping hitbox
+set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 10);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_SHAPE, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 100);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 20);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 5);
+set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 50);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("totemPlat_destroyproj"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("totemPlat_destroyproj"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 10);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 3);
+set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 270);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, rockeggpowfx);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, totemPowfx);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

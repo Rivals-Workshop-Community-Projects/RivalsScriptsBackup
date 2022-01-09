@@ -1,5 +1,5 @@
 
-}
+
 
 if burststop > 0 {
 		burststop += 60;

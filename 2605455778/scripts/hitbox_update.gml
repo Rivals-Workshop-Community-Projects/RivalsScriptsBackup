@@ -23,6 +23,23 @@ if(attack == AT_USPECIAL && hbox_num == 1){
         image_index += 1;
     }
 }
+if(attack == AT_DSPECIAL && hbox_num == 3){
+    if(image_index < 1){
+        if(uspecialRockTimer % 4 == 0){
+            image_index += 1;
+        }
+    }
+    with(player_id){
+        if(other.uspecialRockTimer < 10){
+            other.vsp = 0;
+        }else{
+            other.vsp = 7;
+        }
+    }
+    if(grounds == 0 && !free){
+        destroyed = true;
+    }
+}
 
 if(attack == AT_UTILT && hbox_num == 4 && hitbox_timer == 9){
     spawn_hit_fx(x, y, 19);

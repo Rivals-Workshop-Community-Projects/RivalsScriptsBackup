@@ -6,6 +6,14 @@
  * Base Cast Frame Data:
  * docs.google.com/spreadsheets/d/19UtK7xG2c-ehxdlhCFKMpM4_IHSG-EXFgXLJaunE79I
  */
+ //inner alt
+if (get_player_color(player) == 18 ){
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("boom"));
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("blood_rage"));
+} 
+    
+    
+   
 
 //rioku -- Trail effects for blood rage strongs
 demon_trail_size = 3;

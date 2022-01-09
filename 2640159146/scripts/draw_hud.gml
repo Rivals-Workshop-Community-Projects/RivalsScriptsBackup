@@ -11,9 +11,13 @@ var blood_percentage = bloodmeter / 100;
 meter_draw_percentage = lerp(meter_draw_percentage, blood_percentage, 0.35);
 
 shader_start();
+if get_player_color( player ) == 16 {
+    shader_end();
+    draw_sprite(sprite_get("meterempty_gen"),0, temp_x + 34, temp_y - 40);
+} else {
 draw_sprite(sprite_get("meterempty"),0, temp_x + 34, temp_y - 40);
 draw_sprite_part(blood_full,blood_anim, 0, 0, blood_width * meter_draw_percentage, blood_height, temp_x + 60, temp_y - 40);
-
+}
 shader_end();
 
 } else {

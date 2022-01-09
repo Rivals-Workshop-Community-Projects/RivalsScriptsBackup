@@ -43,6 +43,9 @@ sprite_change_offset("uspecial", 64, 118);
 sprite_change_offset("dspecial_ground", 66, 92);
 sprite_change_offset("dspecial_air", 74, 96);
 sprite_change_offset("burst", 98, 118);
+sprite_change_offset("burst_blw", 98, 118);
+sprite_change_offset("burst_blw_flip", 98, 118);
+
 sprite_change_offset("bloodheat_die", 69, 95);
 sprite_change_offset("taunt", 62, 112);
 sprite_change_offset("jordan", 62, 112);

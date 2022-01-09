@@ -53,6 +53,9 @@ else
    {
   var hfx = spawn_hit_fx(burstfrontx, burstfronty, spikes_fx1);
        hfx.spr_dir = burst_dir;
+               sound_play(asset_get("sfx_swipe_medium2"));
+        		sound_play(sound_get("swingmid"), 0, noone, 1, .3)
+		sound_play(asset_get("sfx_icehit_medium2"), 0, noone, 1, 1.4)
         burstfrontx += (burst_dir * 50); //go forward 50 pixels
         front_dspec_hitbox_timer = 0;
         	front_dspec_hitbox_var = true;
@@ -77,6 +80,9 @@ else
    {
   var hfx = spawn_hit_fx(burstbackx, burstbacky, spikes_fx2);
        hfx.spr_dir = burst_dir;
+        sound_play(asset_get("sfx_swipe_medium2"));
+        		sound_play(sound_get("swingmid"), 0, noone, 1, .3)
+		sound_play(asset_get("sfx_icehit_medium2"), 0, noone, 1, 1.4)
         burstbackx -= (burst_dir * 50); //go forward 50 pixels
         back_dspec_hitbox_timer = 0;
         	back_dspec_hitbox_var = true;
@@ -199,3 +205,11 @@ if (burstmeter == 0 and free == false and blooddie = 0 and state_cat != SC_GROUN
    return found_ground;
 }
 
+//i hate you inner
+if (get_player_color(player) == 18) {
+    set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("blood_rage"));
+    set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("Getthatassbanned"));
+    if (attack == AT_TAUNT && window == 3 && window_timer == 3) {
+        sound_play(sound_get("boom"));
+    }
+}

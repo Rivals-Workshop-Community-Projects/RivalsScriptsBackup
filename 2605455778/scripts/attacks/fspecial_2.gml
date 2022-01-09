@@ -71,6 +71,17 @@ set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_SFX, asset_get("sfx_ice_uspecial_start"));
 set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_SFX_FRAME, 0);
 
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_LENGTH, 20); //wall
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_ANIM_FRAME_START, 30);
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_HSPEED, 0);
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_SFX, asset_get("sfx_kragg_roll_end"));
+set_window_value(AT_FSPECIAL_2, 8, AG_WINDOW_SFX_FRAME, 0);
+
 set_num_hitboxes(AT_FSPECIAL_2, 1);
 
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_TYPE, 1); //armored roll
@@ -91,13 +102,13 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 1.5);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
-set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITBOX_TYPE, 1); //armored roll
+set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITBOX_TYPE, 1); //wall slam
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_WINDOW, 5);
-set_hitbox_value(AT_FSPECIAL_2, 2, HG_LIFETIME, 30);
+set_hitbox_value(AT_FSPECIAL_2, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_FSPECIAL_2, 2, HG_WIDTH, 55);
-set_hitbox_value(AT_FSPECIAL_2, 2, HG_HEIGHT, 55);
+set_hitbox_value(AT_FSPECIAL_2, 2, HG_WIDTH, 150);
+set_hitbox_value(AT_FSPECIAL_2, 2, HG_HEIGHT, 150);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_ANGLE, 90);
@@ -108,3 +119,21 @@ set_hitbox_value(AT_FSPECIAL_2, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITSTUN_MULTIPLIER, 1.5);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITBOX_TYPE, 1); //armored roll
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_WINDOW, 5);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_LIFETIME, 30);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITBOX_X, 10);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_WIDTH, 75);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HEIGHT, 75);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PRIORITY, 2);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_DAMAGE, 6);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_KNOCKBACK_SCALING, .3);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_EFFECT, 6);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_BASE_HITPAUSE, 15);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITSTUN_MULTIPLIER, 1.5);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

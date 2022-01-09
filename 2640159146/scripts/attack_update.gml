@@ -149,6 +149,13 @@ else if (bloodmeter > bloodmetermax && !hitpause && state != PS_HITSTUN){
 	attack_end();
 	destroy_hitboxes();
 	set_attack(AT_DSPECIAL_2);
+	if get_player_color( player ) == 13 || get_player_color( player ) == 18 {
+		if spr_dir == 1 {
+			set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("burst_blw"));
+		} else {
+			set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("burst_blw_flip"));
+		}
+	}
 	hurtboxID.sprite_index = get_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE);
 	burstactive = false;
 	djumps = 0;
@@ -176,6 +183,7 @@ if (attack == AT_NSPECIAL) {
     	if(window_timer < 12){
     		grabbed_player_obj.hitstop = 2;
     		grabbed_player_obj.hitstop_full = 2;
+    		grabbed_player_obj.hitpause = true;
     	}
 		if(window_timer < 4){
 				grabbed_player_obj.x = lerp(grabbed_player_obj.x, x+spr_dir*40, .25);
@@ -207,7 +215,7 @@ if attack == AT_FSTRONG {
     }
 } 
 if (attack == AT_FSTRONG) {
-	if(window == 1){
+		if(window == 1){
     	grabbed_player_obj = noone;
     }
     if(window < 4 and grabbed_player_obj!= noone and !hitpause){
@@ -215,9 +223,10 @@ if (attack == AT_FSTRONG) {
     	window_timer = 0;
     } 
     if(window == 4){
-    	if(window_timer < 12){
+    	if(window_timer < 4){
     		grabbed_player_obj.hitstop = 2;
     		grabbed_player_obj.hitstop_full = 2;
+    		grabbed_player_obj.hitpause = true;
     	}
 		if(window_timer < 4){
 				grabbed_player_obj.x = lerp(grabbed_player_obj.x, x+spr_dir*50, .25);
@@ -232,6 +241,7 @@ if (attack == AT_FSTRONG) {
     } else if (window == 5){
     		grabbed_player_obj.hitstop = 2;
     		grabbed_player_obj.hitstop_full = 2;
+    		grabbed_player_obj.hitpause = true;
     		if(window_timer < 9){
 				grabbed_player_obj.x = x-spr_dir*32;
     			grabbed_player_obj.y = y-8;
@@ -246,6 +256,7 @@ if (attack == AT_FSTRONG) {
     		if(window_timer < 6){
 	    	    grabbed_player_obj.hitstop = 2;
 	    		grabbed_player_obj.hitstop_full = 2;
+	    		grabbed_player_obj.hitpause = true;
     		}
     		if(window_timer < 5){
     			grabbed_player_obj.x = x-spr_dir*20;
@@ -256,8 +267,10 @@ if (attack == AT_FSTRONG) {
     		}
     		
     }
-
+	
 }
+
+
 
 //====================================
 //FSTRONG_2
@@ -275,11 +288,13 @@ if (attack == AT_FSTRONG_2) {
     if(window < 4 and grabbed_player_obj!= noone and !hitpause){
     	window = 4;
     	window_timer = 0;
-    } 
+    }
+
     if(window == 4){
-    	if(window_timer < 12){
+    	if(window_timer < 4){
     		grabbed_player_obj.hitstop = 2;
     		grabbed_player_obj.hitstop_full = 2;
+    		grabbed_player_obj.hitpause = true;
     	}
 		if(window_timer < 4){
 				grabbed_player_obj.x = lerp(grabbed_player_obj.x, x+spr_dir*50, .25);
@@ -292,8 +307,9 @@ if (attack == AT_FSTRONG_2) {
     			grabbed_player_obj.y = y-8;
 		}
     } else if (window == 5){
-    		grabbed_player_obj.hitstop = 2;
-    		grabbed_player_obj.hitstop_full = 2;
+    		grabbed_player_obj.hitstop = 9;
+    		grabbed_player_obj.hitstop_full = 9;
+    		grabbed_player_obj.hitpause = true;
     		if(window_timer < 9){
 				grabbed_player_obj.x = x-spr_dir*32;
     			grabbed_player_obj.y = y-8;
@@ -308,6 +324,7 @@ if (attack == AT_FSTRONG_2) {
     		if(window_timer < 6){
 	    	    grabbed_player_obj.hitstop = 2;
 	    		grabbed_player_obj.hitstop_full = 2;
+	    		grabbed_player_obj.hitpause = true;
     		}
     		if(window_timer < 5){
     			grabbed_player_obj.x = x-spr_dir*20;
@@ -335,11 +352,15 @@ if (attack == AT_FSPECIAL){
     if(window < 4 and fspecial_grabbed_player!= noone and !hitpause){
     	window = 4;
     	window_timer = 0;
+    	fspecial_grabbed_player.hitstop = 2;
+    	fspecial_grabbed_player.hitstop_full = 2;
+    	fspecial_grabbed_player.hitpause = true;
     } 
     if(window == 4){
-    	if(window_timer < 12){
+    	if(window_timer < 14){
     		fspecial_grabbed_player.hitstop = 2;
     		fspecial_grabbed_player.hitstop_full = 2;
+    		fspecial_grabbed_player.hitpause = true;
     	}
 		if(window_timer < 4){
 				fspecial_grabbed_player.x = lerp(fspecial_grabbed_player.x, x, .15);
@@ -495,3 +516,10 @@ switch (attack){
 		}
 	break;
 }
+
+//inner alt code
+if (get_player_color(player) == 18){
+if (attack == AT_TAUNT && window == 1 && window_timer == 3) { 
+sound_play(sound_get("Getthatassbanned"));
+}} 
+
