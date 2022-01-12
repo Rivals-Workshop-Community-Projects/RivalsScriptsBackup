@@ -53,6 +53,8 @@ if(hit_wall){
 	spawn_hit_fx(x, y, hit_fx_create(sprite_get("magma_explosion"), 10));
 }
 
+
+// collision with wall article
 var article = noone;
 with(asset_get("obj_article3")){
 	if (player_id == other.player_id){
@@ -62,9 +64,19 @@ with(asset_get("obj_article3")){
 if( article != noone
 && place_meeting(x, y, article) 
 && abs(hsp) > 1.5 && !has_collided){
-	hsp = -1*hsp_previous;
+	// hsp = -1*hsp_previous;
+	if (abs(hsp) > 6){
+		hsp = -1*hsp_previous; //original
+	}else{
+		hsp = -sign(hsp_previous)*6; // test, minimum speed
+	}
 	spawn_hit_fx(x,y,4);
 	spawn_hit_fx(x, y, hit_fx_create(sprite_get("magma_explosion"), 10));
+	sound_play(asset_get("sfx_ell_dspecial_explosion_3"));
+	has_collided = true;
+} else if (article != noone
+&& place_meeting(x, y, article) && abs(hsp) <= 1.5 && !has_collided){
+	lifespan = 1;
 	has_collided = true;
 } else{
 	has_collided = false;
@@ -125,18 +137,21 @@ with (asset_get("pHitBox")) {
     && other.last_hitbox_group == hbox_group)){
     	switch(attack){
 			case AT_JAB:
-				other.hsp = 9*sign(other.x+24*spr_dir - x);
+				other.hsp = 8*sign(other.x+24*spr_dir - x);
 				other.vsp = -3;
 				break;
 			case AT_FTILT:
 				other.hsp = 12*sign(other.x+68*spr_dir - x);;
 				other.vsp = -6;
 				break;
+			case AT_DTILT:
+				other.hsp = 0;
+				other.vsp = -20;
+				break;
 			case AT_UTILT:
 				other.vsp = -8;
 				break;
     		case AT_NAIR: 
-				// this is where it gets epic:
 				var sp = point_direction(x,y, other.x, other.y)
 				other.hsp = lengthdir_x(10,sp);
 				other.vsp = lengthdir_y(10,sp);
@@ -146,11 +161,11 @@ with (asset_get("pHitBox")) {
 				other.vsp = 5;
 				break;
 			case AT_DAIR:
-				other.hsp = 3*sign(other.x+24*spr_dir - x);
-				other.vsp = -7;
+				// other.hsp = 3*sign(other.x+24*spr_dir - x);
+				other.vsp = 15;
 				break;
 			case AT_UAIR:
-				other.vsp = lengthdir_y(0.2*(kb_value*kb_value), get_hitbox_angle(id));
+				other.vsp = -11
 				break;
 			case AT_USPECIAL:
 				var sp = point_direction(x,y, other.x, other.y)
@@ -163,7 +178,7 @@ with (asset_get("pHitBox")) {
 				break;
 			case AT_DSPECIAL_AIR:
 				if (hbox_num == 1){
-					other.hsp = 6*sign(other.x+36*spr_dir - x);
+					other.hsp = 4*sign(other.x+36*spr_dir - x);
 					other.vsp = 18;
 				} else if (hbox_num == 2){
 					other.hsp = 6*sign(other.x+36*spr_dir - x);
@@ -195,7 +210,7 @@ with (asset_get("pHitBox")) {
         other.speed_kb = kb_value*2; //kb_value*2
         other.free = true;
         
-        // TODO in later update (Muno's suggestions)
+        // TODO in later update (Muno's suggestions) -- yea..
 	//      other.player_id.hitpause = true;
 		// other.player_id.hitstop = other.player_id.hitstop_amount; 
 
@@ -209,8 +224,8 @@ with (asset_get("pHitBox")) {
 			// other.vsp = 0;
 			// other.hitpause_timer = player_id.hitstop_amount;
 			
-			sound_play(sound_effect);
-            spawn_hit_fx(other.x, other.y, hit_fx_create(sprite_get("starburst"), 10));
+			sound_play(asset_get("sfx_blow_heavy2")); //todo 
+            spawn_hit_fx(other.x, other.y, hit_fx_create(sprite_get("round"), 10));
             other.hitboxed = true;
             hitbox_timer = 30;
             
@@ -241,7 +256,7 @@ with (asset_get("pHitBox")) {
 		
 		if (!other.hitboxed){
 			other.last_whacked_by = player;
-			sound_play(sound_effect);
+			sound_play(asset_get("sfx_blow_heavy2")); // todo? sound dependent on 
             with (other) {spawn_hit_fx(other.x, other.y, hit_fx_create(sprite_get("starburst"), 10));}
             other.hitboxed = true;
             other.hitbox_timer = 30;

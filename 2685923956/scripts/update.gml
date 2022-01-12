@@ -28,7 +28,7 @@ if (blink_cooldown>0){
 if (state==PS_IDLE_AIR && prev_state==PS_ATTACK_GROUND && attack==AT_DTILT && state_timer==1){if (spin1!=-4){sound_stop(spin1); sound_stop(spin2); sound_play(asset_get("sfx_birdflap")); sound_play(asset_get("sfx_birdflap"));}}
 
 if (!alt_init){
-	if (get_player_color( player ) == 23){
+	if (get_player_color( player ) == 26){
 		//print("spidercol detected")
 		set_victory_portrait(sprite_get("portrait_beta"));
 	}else{

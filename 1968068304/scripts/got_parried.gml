@@ -84,10 +84,10 @@ switch (my_hitboxID.attack) {
 }
 
 #define scr_destroy_platform_on_parry
+/// scr_destroy_platform_on_parry(destroyfast)
 var destroyfast = argument0;
 //damage the platform
 hp = min(hp, 0);
-draw_hp = hp;
 //slow movement speed
 hsp = clamp(hsp, -1, 1);
 vsp = 0;

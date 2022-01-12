@@ -128,7 +128,7 @@ epinel_fspecial_start_position_x = 0;
 epinel_fspecial_start_position_y = 0;
 epinel_fspecial_hit_player = false;
 epinel_platform_ricochet = false;
-epinel_weightless_logic_article = instance_create(room_width / 2, room_height + 10000, "obj_article_solid");
+epinel_weightless_logic_article = instance_create(round(room_width / 2), -20000, "obj_article_solid");
 epinel_weightless_logic_article.player_id = id;
 epinel_buffered_standing_on_platform_id = noone;
 epinel_aerial_rise = 0;
@@ -180,6 +180,7 @@ epinel_fx_cannot = hit_fx_create( sprite_get( "fx_cannot" ), 14 );
 
 epinel_sprite_inertia = sprite_get("inertia_fx_by_NeXus");
 epinel_sprite_heavy = sprite_get("fx_heavy");
+epinel_sprite_heavy_arrow = sprite_get("heavy_arrow");
 
 set_victory_bg(CH_KRAGG);
 set_victory_theme(sound_get("Epinel_Victory_Theme_by_TailZMusicYT"));

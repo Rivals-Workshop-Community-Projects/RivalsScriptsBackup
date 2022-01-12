@@ -9,6 +9,8 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 1);
 
 set_num_hitboxes(AT_EXTRA_1, 1);
 
+// IS THIS FILE EVEN USED??
+
 // set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_SPRITE, sprite_get("magma_explosion"));
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_SPRITE, sprite_get("jab"));
 set_hitbox_value(AT_EXTRA_1, 1, HG_PARENT_HITBOX, 1);

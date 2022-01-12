@@ -11,6 +11,7 @@ if (attack == AT_DSPECIAL_2){
 	}
 }
 
+// some bug in NSPECIAL code SOMEWHEREEE aaah (but not here?)
 if (attack == AT_NSPECIAL){
 	fuckthisshit_timer++;
 

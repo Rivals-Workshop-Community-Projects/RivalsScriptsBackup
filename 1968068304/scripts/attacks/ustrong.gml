@@ -130,7 +130,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_USTRONG, 3, HG_PRIORITY, 5); //inertia
 set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 12);
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 8.5); //8
 set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 22);
 set_hitbox_value(AT_USTRONG, 3, HG_EXTRA_HITPAUSE, -8);

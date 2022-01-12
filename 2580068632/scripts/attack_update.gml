@@ -1,7 +1,7 @@
 //Jab
 if (attack == AT_JAB){
 	if ((window < 6) && !hitpause && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		spawn_base_dust( x - (22 * spr_dir), y, "walk", spr_dir)
+		spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
 	}
 	if (attack_down && window > 1 && window < 6){
 		if (window == 5){
@@ -19,6 +19,7 @@ if (attack == AT_JAB){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
 			//spawn_base_dust( x + (40 * spr_dir), y, "walk", spr_dir * -1)
+			spawn_base_dust( x + (42 * spr_dir), y, "wavedash", spr_dir*-1)
 			if (voiced == true){
 				sound_stop(vc_mk_jab)
 				sound_play(vc_mk_grunt_4)
@@ -37,6 +38,15 @@ if (attack == AT_JAB){
 			}
 		}
 	}
+	if (image_index == 14){
+		dattack_land_var++;
+		if (dattack_land_var == 1){
+			spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
+			sound_play(landing_lag_sound);
+		}
+	} else {
+		dattack_land_var = 0;
+	}
 }
 
 if (attack == AT_JAB){
@@ -54,6 +64,15 @@ if (attack == AT_DATTACK){
 			}
 		}
 	}
+	if (image_index == 6){
+		dattack_land_var++;
+		if (dattack_land_var == 1){
+			spawn_base_dust( x - (2 * spr_dir), y, "land", spr_dir)
+			sound_play(landing_lag_sound);
+		}
+	} else {
+		dattack_land_var = 0;
+	}
 	if (has_hit && has_rune("C")){
 		can_jump = true;
 	}
@@ -67,7 +86,7 @@ if (attack == AT_FTILT){
 		}
 	}
 	if ((window == 1 || window == 4 || window == 7) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		spawn_base_dust( x - (22 * spr_dir), y, "walk", spr_dir)
+		spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
 		if (voiced == true){
 			var haa = random_func( 1, 6, true );
 			switch (haa){
@@ -182,7 +201,9 @@ if (attack == AT_UTILT){
 if (attack == AT_DTILT){
 	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
-		spawn_base_dust( x + (76 * spr_dir), y, "walk", spr_dir*-1)
+		spawn_base_dust( x + (76 * spr_dir), y, "wavedash", spr_dir*-1)
+		//var mario = spawn_hit_fx( x+(52*spr_dir), y - 3, dtilt_swipe_fx );
+		//mario.draw_angle = -27*spr_dir
 		if (voiced == true){
 			var gs = random_func( 1, 6, true );
 			switch (gs){
@@ -279,7 +300,7 @@ if (attack == AT_NAIR || attack == AT_FAIR || attack == AT_UAIR || attack == AT_
 
 //Fstrong
 if (attack == AT_FSTRONG){
-	if (attack == AT_FSTRONG && window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+	if (attack == AT_FSTRONG && window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
 		spawn_base_dust( x + (50 * spr_dir), y, "dash", spr_dir*-1)
 		spawn_base_dust( x - (20 * spr_dir), y, "dash_start", spr_dir)
 		if (voiced){

@@ -16,7 +16,7 @@ if (free)
 	
 	
 	if (epinel_heavy_state > 0) {
-		max_fall = 12;
+		max_fall = fast_fall; //12
 		
 		if (epinel_heavy_state > 1) move_cooldown[AT_USPECIAL] = max(move_cooldown[AT_USPECIAL], 2);
 	}
@@ -95,11 +95,15 @@ if (free)
 }
 else //if not free
 {
+	var is_attacking = false;
     //increase dash speed over time.
     switch (state) {
     	case PS_DASH:
     		epinel_dash_momentum += 1 + runeD * 1.5; //runeD = increases dash acceleration
 			dash_speed = 3.25 + min(5.25, sqrt(max(2.56, epinel_dash_momentum)) / 1.5);
+			if (instance_exists(epinel_other_standing_on_platform_id)) && epinel_other_standing_on_platform_id.hsp != 0 && spr_dir != sign(epinel_other_standing_on_platform_id.hsp) {
+				dash_speed += min(abs(epinel_other_standing_on_platform_id.hsp) / 2, 8);
+			} 
     	break;
     	case PS_JUMPSQUAT:
     		recover_from_heavy_state_if_epinel_is_not_in_inertia();
@@ -109,17 +113,17 @@ else //if not free
     		//do nothing, but don't run default
     	break;
     	
+    	
     	case PS_LAND:
     	case PS_LANDING_LAG:
-			if (state_timer > 2 && epinel_other_standing_on_platform_id != noone) {
-				set_state(PS_IDLE);
-				spawn_hit_fx(x, y, epinel_fx_inertia_small).depth = depth - 1;
-			}
-		case PS_HITSTUN_LAND:
-		case PS_PRATLAND:
-			recover_from_heavy_state_if_epinel_is_not_in_inertia();
-			epinel_dash_momentum = 0;
-			dash_speed = 3.25;
+    		recover_from_heavy_state_if_epinel_is_not_in_inertia();
+    	break;
+		
+		//case PS_HITSTUN_LAND: //why
+		//case PS_PRATLAND:
+			//recover_from_heavy_state_if_epinel_is_not_in_inertia();
+			//epinel_dash_momentum = 0;
+			//dash_speed = 3.25;
 			
 		break;
 		
@@ -134,14 +138,83 @@ else //if not free
 			}
 		break;
 		
+		case PS_ATTACK_AIR:
+		case PS_ATTACK_GROUND:
+			is_attacking = true;
+			epinel_dash_momentum = 0;
+			dash_speed = 3.25;
+			
+			switch (attack) {
+				case AT_NSPECIAL:
+				case AT_NSPECIAL_2:
+				case AT_FSPECIAL:
+				case AT_FSPECIAL_AIR:
+				case AT_DSPECIAL_AIR:
+				case AT_DAIR:
+				case AT_UAIR:
+					//maintain heavy state during these moves
+					epinel_heavy_state = min(epinel_heavy_state, 1);
+				break;
+				default:
+					//otherwise, recover from heavy state at the start of the attack
+					if (state_timer == 0) recover_from_heavy_state_if_epinel_is_not_in_inertia();
+				break;
+			}
+			
+		break; 
+		
+		case PS_HITSTUN:
+		case PS_HITSTUN_LAND:
+		case PS_WRAPPED:
+		case PS_FROZEN:
+		case PS_SPAWN:
+		case PS_RESPAWN:
+			//don't get rid of heavy state in any of these states
+			//just set momentum/dash speed
+			epinel_dash_momentum = 0;
+			dash_speed = 3.25;
+		break;
+		
+		
+		case PS_TECH_GROUND:
+		case PS_TECH_BACKWARD:
+		case PS_TECH_FORWARD:
+			//cancel heavy state on a tech.
+			if (epinel_heavy_state > 0) {
+				sound_play(sound_get("releaseland"), 0, noone, 0.4);
+				spawn_hit_fx(x, y+16, epinel_fx_parry).depth = depth + 1;
+				spawn_hit_fx(x, y+16, epinel_fx_parry_front).depth = depth - 1;
+				epinel_heavy_state = 0;
+			}
+			epinel_dash_momentum = 0;
+			dash_speed = 3.25;
+		break;
+		
     	case PS_WAVELAND:
     		if (state_timer == 2 && epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id) ) {
 				//hsp *= 1.05; //+= sign(hsp);
-				epinel_other_standing_on_platform_id.hsp = clamp(epinel_other_standing_on_platform_id.hsp + sign(hsp), -epinel_other_standing_on_platform_id.top_speed, epinel_other_standing_on_platform_id.top_speed);
-    			if (abs(hsp) > 0.5 && ( sign(epinel_other_standing_on_platform_id.hsp) != sign(hsp) || abs(epinel_other_standing_on_platform_id.hsp) < 4) ) {
-    				epinel_other_standing_on_platform_id.hsp = sign(hsp) * 4;
+				
+				var epi_sign_hsp = sign(hsp);
+				var new_plat_speed = clamp(epinel_other_standing_on_platform_id.hsp + sign(hsp), -epinel_other_standing_on_platform_id.top_speed, epinel_other_standing_on_platform_id.top_speed);
+				with (epinel_other_standing_on_platform_id) {
+					if (plat_hitpause) {
+						hsp = old_hsp;
+					}
+					
+					hsp = clamp(hsp + sign(epi_sign_hsp), -top_speed, top_speed);
+					
+					if (abs(other.hsp) > 0.5 && (sign(hsp != sign(epi_sign_hsp) || abs(hsp) < 4))) {
+						hsp = epi_sign_hsp * 4;
+					}
+					if (plat_hitpause) {
+						old_hsp = hsp;
+						hsp = 0;
+					}
+					//if (abs(hsp) > 0.5 && ( sign(epinel_other_standing_on_platform_id.hsp) != sign(hsp) || abs(epinel_other_standing_on_platform_id.hsp) < 4) ) {
+    				//epinel_other_standing_on_platform_id.hsp = sign(hsp) * 4;
     				//epinel_other_standing_on_platform_id.friction_poll = 4;
     			}
+    			
     			spawn_hit_fx(x, y, epinel_fx_inertia_small).depth = depth - 1;
     		}
     		else {
@@ -150,18 +223,18 @@ else //if not free
 			}
     		//continue; no break
     	case PS_IDLE:
-    		if (recover_from_heavy_state_if_epinel_is_not_in_inertia() == false) {
-    			if (state_timer > 2500) {
-	    			set_state(PS_ATTACK_GROUND);
-	    			attack = AT_EXTRA_2;
-	    			window = 1;
-	    			window_timer = 0;
-    			}
+    		if (state_timer > 2500) {
+    			set_state(PS_ATTACK_GROUND);
+    			attack = AT_EXTRA_2;
+    			window = 1;
+    			window_timer = 0;
     		}
+
     		//continue; no break
     	default:
     		epinel_dash_momentum = 0;
 			dash_speed = 3.25;
+			recover_from_heavy_state_if_epinel_is_not_in_inertia();
 		break;
     }
     
@@ -170,17 +243,11 @@ else //if not free
 	
 		//regain uair jump when on the ground.
 	//if (/*epinel_uair_jump_counter > 0 &&*/ state_cat != SC_AIR_COMMITTED && (state != PS_ATTACK_GROUND || attack != AT_USPECIAL)) { 
-	if (attack != AT_USPECIAL) {
+	if ( (!is_attacking) || (attack != AT_USPECIAL && attack != AT_UAIR && attack != AT_DAIR && attack != AT_FSPECIAL_AIR) ) {
 		epinel_uair_jump_counter = 0; epinel_consecutive_uair_jumps = 0; epinel_consecutive_dair_jumps = 0; epinel_nspecial_halt_vsp = true; 
 		move_cooldown[AT_USPECIAL] = 0;
-		
-		if (is_epinel_performing_a_move_that_maintains_heavy_state()) {
-			epinel_heavy_state = min(epinel_heavy_state, 1);
-		}
-		else {
-			recover_from_heavy_state_if_epinel_is_not_in_inertia();
-		}
 	}
+
 	
 }
 
@@ -197,9 +264,8 @@ if (state == PS_RESPAWN && state_timer == 90) {
 	plat.player_id = id;
 	plat.player = player;
 	plat.spr_dir = spr_dir;
-	plat.sprite_index = sprite_get("plat_large_by_Gourami");
-	plat.hp = 2;
-	plat.draw_hp = 500;
+	plat.sprite_index = sprite_get("plat_article_large");
+	plat.hp = plat.hp_threshold;
 	plat.vsp = 0;
 	plat.break_when_not_stood_on = true;
 	epinel_other_standing_on_platform_id = plat;

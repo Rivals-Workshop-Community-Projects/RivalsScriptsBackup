@@ -140,7 +140,7 @@ break;
 case 2430633441:
 choose_dialogue_line(
 "As many times as necessary.", DIAG_DEFAULT, 
-"Peace needs a common language, so let's talk the only way we can.", DIAG_DEFAULT);
+"Peace needs a common language... let us talk the only way we can.", DIAG_DEFAULT);
 break;
 
 case 2485539286:
@@ -180,7 +180,7 @@ break;
 
 case 2229832619:
 choose_dialogue_line(
-"Back to sleep. You and I.", DIAG_DEFAULT,
+"Back to sleep. You, then I.", DIAG_DEFAULT,
 "Change of plans. Let's take you home.", DIAG_DEFAULT);
 break;
 

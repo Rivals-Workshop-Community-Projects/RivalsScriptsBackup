@@ -12,13 +12,13 @@ var move_priority = get_hitbox_value( my_hitboxID.attack, my_hitboxID.hbox_num, 
 if (move_priority == 5 
     && hit_player_obj.super_armor == false 
 	&& hit_player_obj.invincible == false
-	&& (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)) {
+	&& (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) ) {
 	
 	if (hit_player_obj.epinel_other_weightless_timer > 0 && !runeM) {
 		hit_player_obj.epinel_other_weightless_inflicted = 2; 
 	}
 	else {
-		if (my_hitboxID.attack == AT_USTRONG) hit_player_obj.epinel_other_weightless_inflicted = 5; //short inertia
+		if (my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_DATTACK) hit_player_obj.epinel_other_weightless_inflicted = 5; //short inertia
 		else hit_player_obj.epinel_other_weightless_inflicted = 1; 
 		if (hit_player_obj.hitstun >= 1) { hit_player_obj.hitstun += 3; }
 		if (runeM) hit_player_obj.hitstop += 7;
@@ -165,10 +165,20 @@ switch (my_hitboxID.attack) {
 		
 		
 		//for dattack hitbox 5, hit the opponent through a platform if epinel is standing on one
-		if (my_hitboxID.hbox_num == 6) {
+		if (my_hitboxID.hbox_num == 6 && hit_player_obj.state_cat == SC_HITSTUN && hit_player_obj.hitpause && hitpause) {
 			if (hit_player_obj.epinel_other_weightless_inflicted <= 3) {
 				hit_player_obj.epinel_other_weightless_inflicted = 3;
 			}
+			//hitstop += 10;
+			//hit_player_obj.hitstop += 10;
+			/*
+			if (epinel_other_standing_on_platform_id != noone
+			 && instance_exists(epinel_other_standing_on_platform_id)) {
+				with (epinel_other_standing_on_platform_id) {
+					instant_destroy = true;
+				}
+			}
+			*/
 		}
 		
 		
@@ -182,7 +192,7 @@ switch (my_hitboxID.attack) {
 				hit_player_obj.epinel_other_weightless_timer = 0;
 			}
 			
-			if (my_hitboxID.attack == AT_DATTACK && hit_player_obj.hitstun > 0) {
+			if (my_hitboxID.attack == AT_DATTACK && hit_player_obj.state_cat == SC_HITSTUN) {
 				
 				var is_standing_on_platform = (epinel_other_standing_on_platform_id != noone
 							 && instance_exists(epinel_other_standing_on_platform_id));
@@ -194,6 +204,9 @@ switch (my_hitboxID.attack) {
 						//stop moving
 						hsp = 0;
 					}
+					//end hitpause early
+					if (hitpause) hitstop = min(hitstop, 2);
+					
 				}
 				
 				if (my_hitboxID.hbox_num == 3) {
@@ -201,11 +214,11 @@ switch (my_hitboxID.attack) {
 					sound_play(sound_get("smallexplosion"), 0, noone, 0.5, 1.4);
 					//break platform if epinel is standing on one.
 					if (epinel_grabbed_player_object_id == hit_player_obj && is_standing_on_platform) {
-						hit_player_obj.hitstop = 8;
-						hitstop += 7;
+						hit_player_obj.hitstop = 7;
+						hitstop += 6;
 						my_hitboxID.hitbox_timer = 10; //destroy this hitbox for the next frame?
 						set_hitbox_value(AT_DATTACK, 6, HG_WINDOW_CREATION_FRAME, 0);
-						sound_play(asset_get("sfx_kragg_roll_turn"));
+						//sound_play(asset_get("sfx_kragg_roll_turn"));
 						with (epinel_other_standing_on_platform_id) {
 							crumble = 1.3; //min(crumble, 1.3);
 							hp = min(hp, 0);
@@ -238,7 +251,7 @@ switch (my_hitboxID.attack) {
 		epinel_grabbed_player_object_id = hit_player_obj;
 		if (my_hitboxID.attack == AT_BAIR) {
 			epinel_grabbed_player_x_offset = round((x - hit_player_obj.x) * 0.9 * spr_dir);
-			epinel_grabbed_player_y_offset = round(y - hit_player_obj.y - (char_height + scr_get_player_height(hit_player_obj)) / 4 );
+			epinel_grabbed_player_y_offset = round(y - hit_player_obj.y);// - (char_height + scr_get_player_height(hit_player_obj)) / 4 );
 		}
 		else {
 			epinel_grabbed_player_x_offset = round(x - hit_player_obj.x);
@@ -290,6 +303,9 @@ switch (my_hitboxID.attack) {
 		if (old_vsp > -4.5) old_hsp *= 0.9;
 		old_vsp = min(old_vsp, -4.5 + (hit_player_obj.old_vsp / 1.5)); //-9.5
 		old_vsp = clamp(old_vsp, -15, -6.5);
+		if (hit_player_obj.state_cat == SC_HITSTUN && epinel_grabbed_player_object_id == noone) {
+			epinel_grabbed_player_object_id = hit_player_obj;
+		}
 		
 	break;
 	
@@ -366,6 +382,7 @@ switch (my_hitboxID.attack) {
 			window_timer = 0;
 			invince_time = max(15, invince_time); //extra invincibility
 			sound_play(asset_get("sfx_may_arc_cointoss"));
+			spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 19);
 			epinel_charge_timer = 1;
 			if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
 				old_hsp = -2.25 * spr_dir;
@@ -380,6 +397,7 @@ switch (my_hitboxID.attack) {
 		}
 		//pull the player to epinel's height during multihits
 		if (my_hitboxID.hbox_num <= 5 && hit_player_obj.state == PS_HITSTUN && hit_player_obj.hitpause) {
+			scr_move_opponent_in_epinel_inertia_direction_if_currently_in_inertia();
 			hit_player_obj.old_vsp += clamp((y - hit_player_obj.y) / 5, -5, 5);
 			//if on a platform, slow it down
 			if (instance_exists(epinel_other_standing_on_platform_id)) {
@@ -460,21 +478,31 @@ switch (my_hitboxID.attack) {
 	
 	case AT_USPECIAL:
 		
-		if (was_parried || hit_player_obj.invincible) break;
+		if (was_parried || hit_player_obj.invincible || hit_player_obj.state = PS_RESPAWN || (my_hitboxID.type == 1 && hit_player_obj.state_cat != SC_HITSTUN)) break;
+		
+		var hitbox_type = my_hitboxID.hbox_num;
+		
+		sound_play(sound_get("drop"));
 		
 		with (hit_player_obj) {
 			//inflict weak inertia
-			epinel_other_weightless_inflicted = max(epinel_other_weightless_inflicted, 1);
+			switch (hitbox_type) {
+				case 1:
+				epinel_other_weightless_inflicted = max(epinel_other_weightless_inflicted, 1);
+				break;
+				
+				default:
+				epinel_other_weightless_inflicted = max(epinel_other_weightless_inflicted, 3);
+				break;
+			}
 			epinel_other_player_that_inflicted_weightless_id = other.id;
 		
-			//add hitstun and launch if already in hitstun	
-			if (state_cat == SC_HITSTUN && hitstun > 2) {
+			if (state_cat == SC_HITSTUN) {
 				hitstun += 15;
 				if (!hitpause) vsp -= 1;
 			}
 		
 			spawn_hit_fx(x, round(y - char_height/2), other.epinel_fx_inertia);
-		
 		}
 	break;
 	
@@ -622,7 +650,13 @@ if (tempvar_dist0 < tempvar_dist1) return argument[1];
 //tiebreaker: just return the first player.
 return argument[0];
 
+#define scr_move_opponent_in_epinel_inertia_direction_if_currently_in_inertia
+if (epinel_other_weightless_timer <= 0) return;
+hit_player_obj.x += round(clamp(epinel_other_weightless_hsp * 3, -10, 10));
+hit_player_obj.y += round(clamp(epinel_other_weightless_vsp * 3, -10, 10));
 
+
+return;
 
 #define scr_get_player_width
 return (argument[0].hurtboxID.bbox_right - argument[0].hurtboxID.bbox_left);

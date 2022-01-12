@@ -22,6 +22,7 @@ with (oPlayer) {
 		1, 1, 
 		point_direction(0, 0, hsp + spr_dir * 0.01, vsp), c_white, 
 		epinel_other_weightless_timer / 80 + 0.75 );
+		//draw_line_color(x, y, x + epinel_other_weightless_hsp * 600, y + epinel_other_weightless_vsp * 600, c_purple, c_purple );
 		
 		if (other.id != id) outline_color = [ 230, 0, 230 ];
 	}
@@ -32,7 +33,8 @@ with (oPlayer) {
 
 if (epinel_heavy_state) {
 	//draw_sprite(epinel_sprite_heavy, 5000 - move_cooldown[AT_USPECIAL] / 2, x, y);
-	draw_sprite(epinel_sprite_heavy, state_timer / 2, x, y);
+	draw_sprite(epinel_sprite_heavy, state_timer / 3, x, y);
+	draw_sprite_ext(epinel_sprite_heavy_arrow, 0, x, y, 2, 2, 0, c_white, 0.5);
 }
 
 shader_end();

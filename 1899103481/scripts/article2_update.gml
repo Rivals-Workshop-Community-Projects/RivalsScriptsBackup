@@ -2,6 +2,8 @@ shoot_timer--;
 lifetime--;
 
 
+// TODO: if about to spit projectile, play sound & animation of "about to spit" (helps anticipation for both players)
+
 if (lifetime < 1){
 	spawn_hit_fx(x, y, hit_fx_create(sprite_get("dspecial_turret_explode"), 14));
 	sound_play(asset_get("sfx_ell_dspecial_explosion_1"));
@@ -27,6 +29,14 @@ if (place_meeting(x, y, oth) && oth.player_id != player_id){
 		sound_play(asset_get("sfx_ell_dspecial_explosion_1"));
 		instance_destroy();
 	// }
+}
+
+if (shoot_timer > 0 && shoot_timer < 25){ // 5 animation frames before boom
+	if (shoot_timer == 24){ sound_play(asset_get("sfx_ori_spirit_flame_2"));}
+	image_speed = 1/2;
+} else if (shoot_timer > 25 && image_index == image_number-1){
+	image_speed = 0;
+	image_index = 0;
 }
 
 if (shoot_timer < 1){

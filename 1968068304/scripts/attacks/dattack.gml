@@ -232,11 +232,11 @@ set_hitbox_value(AT_DATTACK, 6, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_DATTACK, 6, HG_WIDTH, 66);
 set_hitbox_value(AT_DATTACK, 6, HG_HEIGHT, 70);
 set_hitbox_value(AT_DATTACK, 6, HG_PRIORITY, 5); //inertia
-set_hitbox_value(AT_DATTACK, 6, HG_DAMAGE, 9); //extra damage
+set_hitbox_value(AT_DATTACK, 6, HG_DAMAGE, 7); //extra damage
 set_hitbox_value(AT_DATTACK, 6, HG_ANGLE, 270); //meteor
-set_hitbox_value(AT_DATTACK, 6, HG_BASE_KNOCKBACK, 9.5);
-set_hitbox_value(AT_DATTACK, 6, HG_KNOCKBACK_SCALING, .75);
-set_hitbox_value(AT_DATTACK, 6, HG_BASE_HITPAUSE, 1); //low hitpause
+set_hitbox_value(AT_DATTACK, 6, HG_BASE_KNOCKBACK, 7); //9.5
+set_hitbox_value(AT_DATTACK, 6, HG_KNOCKBACK_SCALING, .65); //.75
+set_hitbox_value(AT_DATTACK, 6, HG_BASE_HITPAUSE, 10); //low hitpause
 set_hitbox_value(AT_DATTACK, 6, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DATTACK, 6, HG_VISUAL_EFFECT, 304 ); //"basic large"
 set_hitbox_value(AT_DATTACK, 6, HG_ANGLE_FLIPPER, 0);
@@ -245,7 +245,7 @@ set_hitbox_value(AT_DATTACK, 6, HG_SDI_MULTIPLIER, 0.5);
 set_hitbox_value(AT_DATTACK, 6, HG_EXTRA_CAMERA_SHAKE, 1); 
 set_hitbox_value(AT_DATTACK, 6, HG_TECHABLE, 2); //through platforms 
 set_hitbox_value(AT_DATTACK, 6, HG_HIT_SFX, sound_get("smallexplosion"));
-
+set_hitbox_value(AT_DATTACK, 6, HG_HIT_LOCKOUT, 8);
 
 
 

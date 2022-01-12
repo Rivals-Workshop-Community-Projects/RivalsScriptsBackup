@@ -124,42 +124,53 @@ if (attack==AT_DSTRONG){
 		dstr_max = get_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH) + get_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH) + get_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH)
 	}
 	if (window==1&&dstr_turned==false){
-		if (left_pressed && spr_dir == 1){ spr_dir = -1; dstr_turned = true; }
-		if (right_pressed && spr_dir == -1){ spr_dir = 1; dstr_turned = true; }
+		if ((left_pressed||left_down) && spr_dir == 1){ spr_dir = -1; dstr_turned = true; }
+		if ((right_pressed||right_down) && spr_dir == -1){ spr_dir = 1; dstr_turned = true; }
 		
 	}
 	if (!hitpause){
 			
 		if (window==2||window==3||window==4){
 			dstr_timer++;
-			hsp = ease_cubeIn( 1, 7, dstr_timer, dstr_max )*spr_dir
-			vsp = ease_cubeIn( 1, 3, dstr_timer, dstr_max )
+			if (!was_parried){
+				hsp = ease_cubeIn( 1, 7, dstr_timer, dstr_max )*spr_dir
+				vsp = ease_cubeIn( 1, 3, dstr_timer, dstr_max )
+			}
 		}
 		if (window==5){
 			hsp = 8*spr_dir
 			vsp = 5
 			if (!free||window_timer==12){//||has_hit){
-				spawn_hit_fx( x+(14*spr_dir), y-12, ironhead_hfx_1 );
-				sound_play(sound_get("iron_3"));
-				if (!free){shake_camera( 6, 2 );};
-				destroy_hitboxes()
-				create_hitbox( AT_DSTRONG, 2, x+(6*spr_dir), y-29 )
-				window_timer = 0;
-				window = 6;
+				if (!was_parried){
+					spawn_hit_fx( x+(14*spr_dir), y-12, ironhead_hfx_1 );
+					sound_play(sound_get("iron_3"));
+					if (!free){shake_camera( 6, 2 );};
+					destroy_hitboxes()
+					create_hitbox( AT_DSTRONG, 2, x+(6*spr_dir), y-29 )
+					window_timer = 0;
+					window = 6;
+				}else{
+					window = 7;
+					window_timer = 10;
+				}
 			}
 		}
 		if (window==6){
 			if (window_timer==1){
-				hsp = 2*spr_dir
-				vsp = -7+clamp(dstr_counter*2,0,6.5)
+				if (!was_parried){
+					hsp = 2*spr_dir
+					vsp = -7+clamp(dstr_counter*2,0,6.5)
+				}
 				dstr_counter++;
 			}
 		}
 		if (window<5){
 			if (!free){
-				attack_end();
-				set_state( PS_LANDING_LAG );
-				landing_lag_time = 10;
+				if (!was_parried){
+					attack_end();
+					set_state( PS_LANDING_LAG );
+					landing_lag_time = 10;
+				}
 			}
 		}
 		if (window<6){
@@ -182,9 +193,11 @@ if (attack==AT_USTRONG){
 		}
 	}
 	if (!free){
-		attack_end();
-		set_state( PS_LANDING_LAG );
-		landing_lag_time = 10;
+		if (!was_parried){
+			attack_end();
+			set_state( PS_LANDING_LAG );
+			landing_lag_time = 10;
+		}
 	}
 	if (window<7){
 		can_move = false;
@@ -206,8 +219,12 @@ if (attack==AT_FSPECIAL){
 	}
 	if (!hitpause){
 		if (window==3){
-			var inputdir = (right_down-left_down)*spr_dir
-			hsp = ease_linear( 9, 6+inputdir, window_timer, 8 )*spr_dir
+			if (!was_parried){
+				var inputdir = (right_down-left_down)*spr_dir
+				hsp = ease_linear( 9, 6+inputdir, window_timer, 8 )*spr_dir
+			}else{
+				hsp = 0;
+			}
 		}
 		if (window==5){
 			iasa_script();
@@ -217,10 +234,12 @@ if (attack==AT_FSPECIAL){
 		}
 		if (window>1){
 			if (!free){
-				attack_end();
-				set_state( PS_LANDING_LAG );
-				
-				landing_lag_time = 10;
+				if (!was_parried){
+					attack_end();
+					set_state( PS_LANDING_LAG );
+					
+					landing_lag_time = 10;
+				}
 			}
 		}
 	}

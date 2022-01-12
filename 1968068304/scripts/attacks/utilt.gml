@@ -51,7 +51,7 @@ set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-set_hitbox_value(AT_UTILT, 1, HG_DRIFT_MULTIPLIER, 0.5);
+//set_hitbox_value(AT_UTILT, 1, HG_DRIFT_MULTIPLIER, 0.5);
 set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 0.75);
 
 //late hitboxes
@@ -72,7 +72,7 @@ set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-set_hitbox_value(AT_UTILT, 2, HG_DRIFT_MULTIPLIER, 0.5);
+//set_hitbox_value(AT_UTILT, 2, HG_DRIFT_MULTIPLIER, 0.5);
 set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 0.75);
 
 set_hitbox_value(AT_UTILT, 3, HG_PARENT_HITBOX, 0);
@@ -92,5 +92,5 @@ set_hitbox_value(AT_UTILT, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UTILT, 3, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-set_hitbox_value(AT_UTILT, 3, HG_DRIFT_MULTIPLIER, 0.5);
+//set_hitbox_value(AT_UTILT, 3, HG_DRIFT_MULTIPLIER, 0.5);
 set_hitbox_value(AT_UTILT, 3, HG_HITSTUN_MULTIPLIER, 0.75);

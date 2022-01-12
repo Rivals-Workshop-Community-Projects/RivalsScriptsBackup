@@ -49,6 +49,7 @@ sprite_change_offset("jab_muno", 92, 138);
 sprite_change_offset("dattack", 92, 138);
 sprite_change_offset("ftilt", 92, 138);
 sprite_change_offset("dtilt", 92, 138);
+sprite_change_offset("dtilt_swipe_fx", 44, 62);
 sprite_change_offset("utilt", 92, 138);
 
 //Aerials

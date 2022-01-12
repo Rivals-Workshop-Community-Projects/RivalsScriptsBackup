@@ -5,7 +5,6 @@ with (obj_article_platform) {
 	if (player_id != other.id) continue;
 	
 	hp = min(hp, 0);
-	draw_hp = min(draw_hp, hp);
 	time_until_crumble = min(time_until_crumble, 0);
 	sound_play(asset_get("sfx_kragg_roll_end"));
 	break_when_not_stood_on = true;

@@ -229,6 +229,43 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.9", "9 January, 2022");
+initHeader("General");
+initSection("~ Adjusted shading of Meta Knight’s body in some animations.
+~ The white shine on Meta Knight’s sword shouldn’t show up during the active frames of parry anymore.");
+initHeader("Jab");
+initSection("~ Adjusted dust effects.
+~ Adjusted smear.");
+initHeader("Dash Attack");
+initSection("~ Adjusted endlag frames.
+~ A dust effect and a sound effect plays when Meta Knight lands.");
+initHeader("Forward Tilt");
+initSection("~ Adjusted dust effects.
+~ Adjusted fading smears.");
+initHeader("Down Tilt");
+initSection("~ Adjusted dust effects.");
+initHeader("Neutral Air");
+initSection("~ Adjusted smear to be more rounded.");
+initHeader("Forward Air");
+initSection("~ Adjusted smear.");
+initHeader("Up Air");
+initSection("~ Adjusted smear to be more rounded.
+~ Hitboxes should better match the smear.");
+initHeader("Down Air");
+initSection("~ Has an additional startup frame.
+~ Cleaned up the animation to remove some jagged outlines.
+~ Adjusted smear to be more rounded.
+~ Hitboxes should better match the smear.");
+initHeader("Back Air");
+initSection("~ The first two hits have been adjusted to be more behind Meta Knight.
+~ Hitbox sizes adjusted to match the new smears.");
+initHeader("Forward Strong");
+initSection("~ Adjusted timing of dust effects.");
+initHeader("Up Strong");
+initSection("~ Fixed a part of Meta Knight’s armor pad being transparent for one frame.");
+initHeader("Neutral Special (Mach Tornado)");
+initSection("~ The tornado visual is larger.");
+
 initPatch("1.8", "16 November, 2021");
 initHeader("General");
 initSection("~ The MunoPhone has been upgraded to the MunoPhone Touch.

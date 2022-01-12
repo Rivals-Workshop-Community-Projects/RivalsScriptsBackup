@@ -33,15 +33,35 @@ with (oPlayer) {
 				if (invul_timer <= 0) { 
 					landed_on = true;
 					
-					//if this character is epinel, accelerate the platform in some direction.
-					if (other.epinel_other_is_epinel) {
+					//if this character is the epinel who made this platform, accelerate the platform in some direction.
+					if (other.id == player_id ) {
 						var relative_spd = (other.hsp * 1.5) - hsp;
 						hsp += clamp(floor(sqrt(abs(relative_spd))) * sign(relative_spd), -3, 3);
+					}
+					else if (hp > 1) {
+						//if not that epinel, become briefly stunned.
+						with (other) {
+							//print("landing state: " + get_state_name(state) + " " + string(state_timer));
+							switch (state) {
+								case PS_LAND:
+								case PS_LANDING_LAG:
+								case PS_HITSTUN_LAND:
+								case PS_PRATLAND:
+								case PS_WAVELAND:
+								case PS_AIR_DODGE:
+									scr_epinel_platform_trip();
+								break;
+								
+							}
+						}
 					}
 				}
 	
 				//set epinel's platform variable to this platform.
 				other.epinel_other_standing_on_platform_id = id;
+				
+				//mark that this platform has been landed on.
+				landed_on = true;
 				
 				//set this platform's top speed.
 				if (other.epinel_other_is_epinel) {
@@ -55,6 +75,13 @@ with (oPlayer) {
 				
 				break; //break here; we are only looking for one platform
 			}
+		}
+		//platform trip check for aerials
+		else if ((state == PS_LANDING_LAG || state == PS_LAND) && state_timer == 0 
+		&& instance_exists(epinel_other_standing_on_platform_id) 
+		&& id != epinel_other_standing_on_platform_id.player_id 
+		&& epinel_other_standing_on_platform_id.hp > 1) {
+			scr_epinel_platform_trip();
 		}
 	}
 	
@@ -109,7 +136,7 @@ with (oPlayer) {
 			
 			//'inflicted = 5' = short inertia.
 			case 5:
-				epinel_other_weightless_timer = max(epinel_other_weightless_timer, 16); 
+				epinel_other_weightless_timer = max(epinel_other_weightless_timer, 24); 
 			break;
 			
 			//'inflicted = 1' = normal inertia.
@@ -134,6 +161,15 @@ with (oPlayer) {
 			//disable jumping, so that this status effect doesn't swallow it.
 			can_jump = false;
 			
+			//trail effect.
+			if (epinel_other_weightless_timer % 10 == 0 && !hitpause && instance_exists(epinel_other_player_that_inflicted_weightless_id) 
+			&& (!epinel_other_is_epinel || (super_armor == false && soft_armor == 0))) {
+				
+				with (epinel_other_player_that_inflicted_weightless_id) {
+					spawn_hit_fx(other.x, other.y - round(other.char_height / 2), epinel_fx_inertia_small)//.image_alpha = 0.5;// - 0.5 * (other.epinel_other_player_that_inflicted_weightless_id == id);
+				}
+				
+			}
 			
 			//if the player wall-jumped
 			
@@ -162,6 +198,12 @@ with (oPlayer) {
 				case PS_TECH_BACKWARD:
 				case PS_TECH_FORWARD:
 				case PS_WALL_TECH:
+					in_tech_state = true;
+					scr_epinel_cap_inertia_speed_if_not_in_hitstun();
+				break;
+				
+				case PS_WALL_JUMP:
+					if (state_timer > 0) break; 
 					in_tech_state = true;
 					scr_epinel_cap_inertia_speed_if_not_in_hitstun();
 				break;
@@ -241,6 +283,26 @@ with (oPlayer) {
 	//}
 }
 
+
+#define scr_epinel_platform_trip
+if (prev_state == PS_PRATLAND || hitpause) return;
+hsp *= 0.25;
+//set_state(PS_PRATLAND);
+//if (was_parried) parry_lag = max(parry_lag, 15);
+//else { parry_lag = 15; was_parried = true; }
+//other.draw_glow = 100;
+var xx = x;
+var yy = y;
+with (other.player_id) {
+	spawn_hit_fx(xx, yy, epinel_fx_parry).depth = other.depth + 1;
+	spawn_hit_fx(xx, yy, epinel_fx_parry_front).depth = other.depth - 10;
+	spawn_hit_fx(xx, yy, epinel_fx_parry_front).depth = other.depth - 10;
+	var sfx = sound_get("releaseland");
+}
+sound_play(sfx, false, noone, 0.4, 0.9);
+sound_play(asset_get("sfx_pillar_crumble"), false, noone, 0.75, 0.75);
+shake_camera(1, 2);
+return;
 
 #define scr_epinel_create_platform_landing_particles
 if (!instance_exists(argument0.player_id)) return;

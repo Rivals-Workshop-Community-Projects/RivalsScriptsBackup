@@ -21,7 +21,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED, 5);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED_TYPE, 2);

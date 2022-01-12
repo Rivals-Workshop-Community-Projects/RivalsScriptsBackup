@@ -191,9 +191,9 @@ set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_GROUP, 1);
 //shape
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_X, -6);
-set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_Y, -65);
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_Y, -60);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WIDTH, 46);
-set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HEIGHT, 54);
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HEIGHT, 62);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_SHAPE, 0); //circle
 //knockback
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_BASE_KNOCKBACK, 3);

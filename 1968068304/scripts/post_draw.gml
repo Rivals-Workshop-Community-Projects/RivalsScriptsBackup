@@ -4,7 +4,7 @@ shader_start();
 
 if (epinel_heavy_state) {
 	//draw_sprite(epinel_sprite_heavy, 5000 - move_cooldown[AT_USPECIAL] / 2, x, y);
-	draw_sprite(epinel_sprite_heavy, state_timer / 2, x, y);
+	//draw_sprite(epinel_sprite_heavy, state_timer / 3, x, y);
 }
 
 if ((attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) && window == 3 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) {
@@ -33,7 +33,7 @@ with (obj_article3) {
 
 with (obj_article1)
 {
-	if (player_id != other || state < 101 || exist_timer <= 0 || exist_timer >= expire_time) continue;
+	if (player_id != other || state != 101 || exist_timer <= 0 || exist_timer >= expire_time) continue;
 	var fxscale = 1 - 0.5 * (state == 102);
     draw_sprite_ext( sprite_get("inertia_fx_by_NeXus"), exist_timer / 4, x, y, fxscale, fxscale, point_direction(0, 0, hsp, vsp), c_white, 1);
 }
@@ -48,7 +48,7 @@ with (obj_article2)
 with (obj_article_platform)
 {
 	if (player_id != other) continue;
-	draw_sprite_ext( sprite_get("dspecial_glow_health"), draw_timer / 5, x, y, min(1, crumble), 1, 0, c_white, draw_glow / 100);
+	if (draw_glow > 0) draw_sprite_ext( sprite_get("dspecial_glow_health"), draw_timer / 5, x, y, min(1, crumble), 1, 0, c_white, draw_glow / 100);
 }
 
 shader_end();

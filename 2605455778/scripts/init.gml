@@ -12,7 +12,7 @@ pratfall_anim_speed = .25;
 
 walk_speed = 3.25;
 walk_accel = 0.2;
-walk_turn_time = 15;
+walk_turn_time = 8;
 initial_dash_time = 12;
 initial_dash_speed = 7;
 dash_speed = 5.85;
@@ -144,6 +144,7 @@ rockBreakCounter = 0;
 swallowAnimCounter = 0;
 
 wallPlattotem = sprite_get("totemPlat");
+wallPlattotemSpawn = sprite_get("totemPlat_spawn");
 wallplattotemproj = sprite_get("totemPlat_destroyproj");
 stagePlattotem = sprite_get("totemPlat_stage");
 stagePlattotemMask = sprite_get("totemPlat_stage_mask");
@@ -179,6 +180,8 @@ onDinockPlat = false;
 DinockPlatref = noone;
 armorplus = 0;
 fspecial_moonroll = false;
+aireggy = false;
+Upbcanledgecancel = false;
 
 //workshop comp
 feri_costume = sprite_get("costume_dinock");
@@ -203,3 +206,4 @@ icepowfx = hit_fx_create(sprite_get("icepow"), 20);
 armorlosssmallfx = hit_fx_create(sprite_get("armorlossSmall"), 20);
 rockeggpowfx = hit_fx_create(sprite_get("rockeggpowfx"), 20);
 totemPowfx = hit_fx_create(sprite_get("totemPOW"), 20);
+armorbreakfx = hit_fx_create(sprite_get("armorbreakvfx"), 20);

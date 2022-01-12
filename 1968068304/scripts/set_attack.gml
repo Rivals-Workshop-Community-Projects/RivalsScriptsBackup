@@ -71,6 +71,11 @@ if (free) {
 		break;
 		
 		
+		case AT_TAUNT:
+		case AT_TAUNT_2:
+			if (state != PS_RESPAWN && prev_state != PS_RESPAWN) scr_epinel_reset_consecutive_move_counters_and_buffers();
+		break;
+		
 		default:
 			scr_epinel_reset_consecutive_move_counters_and_buffers();
 		break;
@@ -87,7 +92,7 @@ else {
 	}
 	else if (attack == AT_TAUNT) {
 		if (up_down || up_stick_down) attack = AT_EXTRA_2;
-		else if  (joy_pad_idle && !down_stick_down && !left_stick_down && !right_stick_down) attack = AT_TAUNT_2; //(down_down || right_down || left_down || down_stick_down || left_stick_down || right_stick_down) attack = AT_TAUNT_2;
+		else if  (!joy_pad_idle || down_stick_down || left_stick_down || right_stick_down) attack = AT_TAUNT_2; //(down_down || right_down || left_down || down_stick_down || left_stick_down || right_stick_down) attack = AT_TAUNT_2;
 		
 	}
 	

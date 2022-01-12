@@ -4,8 +4,9 @@ if(state == PS_HITSTUN && prev_state == PS_DOUBLE_JUMP && armorpoints > 0){
     sound_play(asset_get("sfx_ice_shatter_big"));
         if(armorhit == false){
             djhit = true;
-            armorlossfx = spawn_hit_fx(x, y, djarmorexit);
+            armorlossfx = spawn_hit_fx(x, y, armorbreakfx);
             armorlossfx.depth = -10;
+            print_debug("armor break");
             //sound_play(asset_get("sfx_shovel_hit_heavy1"));
         }
     armorhit = true;
@@ -28,3 +29,6 @@ if(state == PS_ATTACK_GROUND && attack == AT_FTILT && window == 4 && super_armor
     take_damage( player, -1, -enemy_hitboxID.damage );
     armorplus = 1; 
 }
+
+Upbcanledgecancel = false;
+aireggy = false;

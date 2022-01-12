@@ -4,6 +4,10 @@ voiced = 0
 voiced_in_vs = false
 normal_voiced_toggle = 0
 
+dattack_land_var = 0;
+
+dtilt_swipe_fx = hit_fx_create(sprite_get("dtilt_swipe_fx"), 12);
+
 land_index_thingy = 0;
 
 wings_out = false
@@ -365,6 +369,10 @@ switch (get_player_color( player )){
 	case 23:
 	
 		break;
+}
+
+if (brawl_mode){
+	set_victory_theme(sound_get("victory_brawl"));
 }
 
 spr_nspecial_muno = sprite_get("nspecial_muno");

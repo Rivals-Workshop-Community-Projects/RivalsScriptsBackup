@@ -19,14 +19,16 @@ switch (state) {
 	case 100: //pebble particle.
 		sprite_index = sprite_get("part_smallrocks");
 		image_index = random_func( random_index + 1, 3, false );
-		hsp += random_func( random_index, 4, true ) - 2;
+		hsp += random_func( random_index, 6, false ) - 3;
+		hsp += sign(hsp);
 		vsp += -image_index - 3;
 	break;
 	
 	case 101: //floating pebble.
 		sprite_index = sprite_get("part_smallrocks");
 		image_index = random_func( random_index + 1, 3, false );
-		hsp += random_func( random_index, 5, false ) - 2.5;
+		hsp += random_func( random_index, 7, false ) - 3.5;
+		hsp += sign(hsp);
 		vsp -= random_func( random_index + 2, 3, false );
 		expire_time = 50;
 	break;
@@ -39,7 +41,26 @@ switch (state) {
 		vsp = -random_func( random_index + 2, 1, false ) - 1;
 		expire_time = 25;
 	break;
-		
+	
+	case 200: //broken platform left
+	case 201:
+	case 202:
+		sprite_index = sprite_get("brokenplat_l");
+		image_index = state - 200;
+		hsp = -spr_dir * 8;
+		vsp = -5 + image_index * 0.5;
+		expire_time = 50;
+	break;
+	
+	case 203: //broken platform right
+	case 204:
+	case 205:
+		sprite_index = sprite_get("brokenplat_r");
+		image_index = state - 203;
+		hsp = spr_dir * 8;
+		vsp = -4 - image_index * 0.5;
+		expire_time = 50;
+	break;
 } //end switch (state) 'create'
 	
 //no break
@@ -80,9 +101,13 @@ switch (state) {
 	
 	
 	case 100: //pebble
-		vsp += 0.4;
-		hsp *= 0.99;
-		if (exist_timer > 20) destroy = true;
+		vsp += 0.25;
+		hsp *= 0.98;
+		if (exist_timer > 15) {
+			image_alpha -= 0.05;
+			if (exist_timer > 30) destroy = true;
+		}
+		
 	break; //end 100 (pebble)
 	
 	
@@ -98,9 +123,27 @@ switch (state) {
 			vsp += expire_time / 200 + 0.1;
 			hsp *= 0.99;
 			
-			if (exist_timer > expire_time * 2) destroy = true;
+			if (exist_timer > expire_time) {
+				image_alpha -= 0.05;
+				if (exist_timer > expire_time * 2) destroy = true;
+			}
 		}
 	break; //end 101 (floating pebble), 102 (taunt pebble)
+	
+	
+	case 200: //broken platform
+	case 201:
+	case 202:
+	case 203:
+	case 204:
+	case 205:
+		vsp += 0.25;
+		hsp *= 0.96;
+		if (exist_timer > 20) { 
+			image_alpha -= 0.04;
+			if (exist_timer > 60) destroy = true;
+		}
+	break; //end 100 (pebble)
 	
 } //end switch (state) 'step'
 

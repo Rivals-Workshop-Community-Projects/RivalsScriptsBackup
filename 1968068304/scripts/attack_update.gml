@@ -1,11 +1,12 @@
 //B - Reversals
-if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_USPECIAL) {
+if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR) {// || attack == AT_USPECIAL) {
     trigger_b_reverse();
 }
 
 
 
 //uspecial cancel
+/*
 if (has_hit_player && !was_parried && special_pressed && up_down && !hitpause && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 9) {
 	var cancel_into_uspecial = false;
 	switch (attack) {
@@ -27,6 +28,7 @@ if (has_hit_player && !was_parried && special_pressed && up_down && !hitpause &&
 		safely_set_attack(AT_USPECIAL);
 	}
 }
+*/
 
 //if epinel is in the air, set his old_vsp to a lower value than normal. this offsets his gravity perks.
 if (was_parried && hitpause && free && old_vsp == 0) {
@@ -191,9 +193,11 @@ switch (attack) { //open switch(attack)
 			break;
 			
 			case 10:
-				//landed attack; break the platform under epinel if there is one
-				if (has_hit && window <= 1 && !hitpause && instance_exists(epinel_other_standing_on_platform_id)) {
+				////landed attack; break the platform under epinel if there is one
+				if (has_hit && window_timer <= 1 && !hitpause && instance_exists(epinel_other_standing_on_platform_id)) {
 					epinel_other_standing_on_platform_id.instant_destroy = true;
+					//also steal ownership of the platform
+					epinel_other_standing_on_platform_id.player_id = id;
 				}
 				
 				//landed attack: rotate right before ending the attack.
@@ -275,6 +279,8 @@ switch (attack) { //open switch(attack)
 					//workaround to give a grounded move landing lag.
 					set_attack_value(AT_UTILT, AG_CATEGORY, 2);
 					set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 19);
+					epinel_charge_timer = 0;
+					epinel_grabbed_player_object_id = noone; //this isn't actually a grab, but it does track the opponent
 				break;
 				
 				case 2:
@@ -300,6 +306,14 @@ switch (attack) { //open switch(attack)
 					}
 				break;
 			}
+		}
+		if (window == 3 && epinel_grabbed_player_object_id != noone && epinel_charge_timer == 0 && vsp < 0 && !hitpause) {
+			if (instance_exists(epinel_grabbed_player_object_id)) {
+				hsp += clamp(epinel_grabbed_player_object_id.hsp / 2, -3, 3 );
+				spawn_hit_fx(x, y, epinel_fx_jump).depth = depth+1;
+				sound_play(jump_sound, false, noone, 1, 0.95);
+			}
+			epinel_charge_timer = 1;
 		}
 	break;
 	
@@ -535,7 +549,7 @@ switch (attack) { //open switch(attack)
 				epinel_is_armored = 1;
 				
 				if (window_timer == 1 && !hitpause) {
-					spawn_hit_fx( x, round(y - char_height / 2), epinel_fx_inertia_medium );
+					spawn_hit_fx( x, round(y - char_height / 2), epinel_fx_inertia_medium);//depth = depth-1;
 				}
 				
 				else if (window_timer == 6) {
@@ -783,7 +797,7 @@ switch (attack) { //open switch(attack)
 				epinel_is_armored = 1;
 				
 				if (window_timer == 1 && !hitpause) {
-					spawn_hit_fx( x, round(y - char_height / 2), epinel_fx_inertia_medium );
+					spawn_hit_fx( x, round(y - char_height / 2), epinel_fx_inertia_medium );//.depth = depth-1;
 				}
 				
 				//if we touch the ground during this window, switch all smoothly to the grounded version.
@@ -864,7 +878,7 @@ switch (attack) { //open switch(attack)
 				if (window_timer == 1) {
 					
 					//set extra cooldown for this move
-					set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_LENGTH, 31 + max(1, floor((epinel_charge_timer - 15) / 3) ));
+					set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_LENGTH, 27 + max(1, floor((epinel_charge_timer - 15) / 3) ));
 					set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_VSPEED, -3 - max(0, floor((epinel_charge_timer - 15) / 10) ));
 					set_window_value(AT_FSPECIAL_AIR, 8, AG_WINDOW_HSPEED, -1 - max(0, floor((epinel_charge_timer - 15) / 25) ));
 					//store start position
@@ -1021,11 +1035,11 @@ switch (attack) { //open switch(attack)
 				vsp = max(vsp, 0);
 				if (hitpause) break;
 				
-				if (window_timer == 1) {
+				//if (window_timer == 1) {
 					//for this move, epinel_charge_timer keeps track of whether the player has cancelled the attack or not
 					epinel_charge_timer = 0;
 					hsp = clamp(hsp, -3, 3);
-				}
+				//}
 				//make absolutely sure epinel snaps to his own platforms, overriding if the game engine decides to shift him onto a stage platform
 				if (window_timer == 2 && instance_exists(epinel_other_standing_on_platform_id)) {
 					y = epinel_other_standing_on_platform_id.y;
@@ -1035,24 +1049,43 @@ switch (attack) { //open switch(attack)
 			case 2:
 				//at the end of this window, transition to the correct window
 				hsp = 0;
-				if (window_timer >= get_window_value( attack, window, AG_WINDOW_LENGTH ) && !instance_exists(epinel_other_standing_on_platform_id))  {
-					//if we're not on an inertia platform, check for solid ground
-					//check if there is enough room to dig out a platform.
-					//don't make a platform if this move has been cancelled earlier.
-					
-					if (!check_if_epinel_has_room_to_spawn_dspecial_platform()) {
-						if (!instance_exists(epinel_other_standing_on_platform_id)) {
-							spawn_hit_fx(x, y - 50, epinel_fx_cannot);
-						}
+				if (window_timer >= get_window_value( attack, window, AG_WINDOW_LENGTH )) {
+					if (!instance_exists(epinel_other_standing_on_platform_id))  {
+						//if we're not on an inertia platform, check for solid ground
+						//check if there is enough room to dig out a platform.
+						//don't make a platform if this move has been cancelled earlier.
 						
+						if (!check_if_epinel_has_room_to_spawn_dspecial_platform()) {
+							if (!instance_exists(epinel_other_standing_on_platform_id)) {
+								spawn_hit_fx(x, y - 50, epinel_fx_cannot);
+							}
+							
+						}
+						else if (!shield_down) {
+							//create platform
+							window = 5;
+							window_timer = 0;
+						}
+						//otherwise, just go into the surf stance
 					}
-					else if (!shield_down && !epinel_charge_timer) {
-						//create platform
-						window = 5;
-						window_timer = 0;
+					//if we are on a platform, make this Epinel the owner of that platform.
+					else {
+						if (epinel_other_standing_on_platform_id.player_id != id
+						&& instance_exists(epinel_other_standing_on_platform_id.player_id) 
+						&& epinel_other_standing_on_platform_id.player_id.epinel_other_standing_on_platform_id != epinel_other_standing_on_platform_id) //I swear this makes sense
+						{
+							epinel_other_standing_on_platform_id.player_id = id;
+						}
 					}
-					//otherwise, just go into the surf stance
 				}
+			case 7:
+				if (sign(epinel_charge_timer) != -1) {
+					epinel_charge_timer++;
+					if (!special_down && !down_stick_down) {
+						epinel_charge_timer = -epinel_charge_timer; //prevent charging past this
+					}
+				}
+				
 			break;
 			
 			
@@ -1070,9 +1103,9 @@ switch (attack) { //open switch(attack)
 			//don't break
 			
 			case 3: //start surfing
-			case 5: //create platform startup
+			//case 5: //create platform startup
 				//the player can jump-cancel  or drop-cancel at any of these points
-				if (epinel_charge_timer < 2) {
+				if (!was_parried && state_timer >= 5) {
 					can_jump = true;
 					if (jump_down == false && down_hard_pressed == true && instance_exists(epinel_other_standing_on_platform_id)) {
 						set_state(PS_IDLE);
@@ -1091,7 +1124,7 @@ switch (attack) { //open switch(attack)
 			case 10: //final endlag
 				//can jump cancel if epinel wasn't parried
 				if (was_parried) break;
-				can_jump = (epinel_charge_timer < 2);
+				can_jump = true;
 				//can also cancel into another down special
 				if (is_special_pressed( DIR_DOWN )) {
 					window = 1;
@@ -1109,7 +1142,10 @@ switch (attack) { //open switch(attack)
 						dig.spr_dir = spr_dir;
 						dig.player_id = id;
 						dig.image_xscale = (1 + runeG / 3);
-						if (special_down) dig.vsp = -4;
+						//print(epinel_charge_timer);
+						if (sign(epinel_charge_timer) = 1) dig.vsp = -5;
+						else if (abs(epinel_charge_timer) > 4) dig.vsp = -4;
+						//if (special_down) dig.vsp = -4;
 						else dig.vsp = -2;
 						dig.hsp = (right_down - left_down) * 2;
 						
@@ -1164,24 +1200,32 @@ switch (attack) { //open switch(attack)
 		can_move = false;
 		can_fast_fall = false;
 		//while falling:
-		if (window == 3 || window == 4 || window == 8 || window == 9) {
-			//clamp hsp. allow minimal movement.
-			hsp = clamp(hsp + (0.25 + runeA / 5) * (right_down - left_down), -(3.5 + runeA), 3.5 + runeA);
-			
-			//fall faster than normal.
-			if (vsp > -2) vsp = min(vsp * 1.04 + (epinel_air_dspecial_platform_hits * 0.02) + (epinel_heavy_state > 0) * 0.04,  20 + epinel_heavy_state * 5);
-			else if (free) vsp += 0.02;
-			
-			//cancel this move if shield is pressed.
-			if (shield_pressed && state_timer >= 45 && vsp > 6) {
-				window = 15;
-				window_timer = 0;
-				if (scr_epinel_is_below_bottom_of_screen()) {
-					old_vsp = min(-0.5, old_vsp);
-					vsp = min(-0.5, vsp);
+		switch (window) {
+			case 2:
+				if (window_timer < 3) break;
+			case 3:
+			case 4:
+			case 8:
+			case 9:
+				//clamp hsp. allow minimal movement.
+				hsp = clamp(hsp + (0.25 + runeA / 5) * (right_down - left_down), -(3.5 + runeA), 3.5 + runeA);
+				
+				//fall faster than normal.
+				if (vsp > -2) vsp = min(vsp * 1.04 + (epinel_air_dspecial_platform_hits * 0.02) + (epinel_heavy_state > 0) * 0.04,  20 + epinel_heavy_state * 5);
+				else if (free) vsp += 0.02;
+				
+				//cancel this move if shield is pressed.
+				if (shield_pressed && state_timer >= 45 && vsp > 6) {
+					window = 15;
+					window_timer = 0;
+					if (scr_epinel_is_below_bottom_of_screen()) {
+						old_vsp = min(-0.5, old_vsp);
+						vsp = min(-0.5, vsp);
+					}
 				}
-			}
+			break;
 		}
+
 		
 		//failsafe: if something should happen to make this attack last longer than 20 seconds, go to window 15.
 		if (window < 15 && state_timer > 1200) {
@@ -1245,7 +1289,7 @@ switch (attack) { //open switch(attack)
 							break;
 						}
 						
-						if ((x != drag_x || y != drag_y) && place_meeting(drag_x, drag_y, asset_get("par_block")) == false) {
+						if ((x != drag_x || y != drag_y) ) {//&& place_meeting(drag_x, drag_y, asset_get("par_block")) == false) {
 							x = drag_x;
 							y = drag_y;
 							
@@ -1355,6 +1399,11 @@ switch (attack) { //open switch(attack)
 					window = 8;
 					window_timer = 0;
 				}
+				//extend the attack length if epinel is not falling yet
+				else if (window_timer >= 6 && vsp < (-4 * (epinel_other_weightless_timer <= 0)) ) {
+					window_timer = 4;
+					create_hitbox(attack, 9, x, y);
+				}
 				//prevent any additional upward movement from a double-jump.
 				old_jump = false;
 			break;
@@ -1395,6 +1444,7 @@ switch (attack) { //open switch(attack)
 				else if (window_timer > 1) {
 					//go to a different window depending on if we are on one of epinel's platforms or not.
 					if (epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id)) {
+						
 						//do nothing
 						//window = 8;
 						//window_timer = 0;
@@ -1417,9 +1467,12 @@ switch (attack) { //open switch(attack)
 				//break the platform that epinel is on.
 				if (epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id)) {
 
-						//break the platform.
+						//break the platform and steal ownership.
 						if (epinel_other_standing_on_platform_id.hp > -1) sound_play(asset_get("sfx_kragg_rock_shatter"));
-						epinel_other_standing_on_platform_id.hp = min(epinel_other_standing_on_platform_id.hp, -1);
+						
+						epinel_other_standing_on_platform_id.instant_destroy = true;
+						epinel_other_standing_on_platform_id.player_id = id;
+						//epinel_other_standing_on_platform_id.hp = min(epinel_other_standing_on_platform_id.hp, -1);
 						
 						//reassign the platform's owner.
 						epinel_other_standing_on_platform_id.player_id = id;
@@ -1524,7 +1577,8 @@ switch (attack) { //open switch(attack)
 						}
 					}
 					//set the platform's hp to -1.
-					epinel_other_standing_on_platform_id.hp = min(epinel_other_standing_on_platform_id.hp, -1);
+					epinel_other_standing_on_platform_id.instant_destroy = true;
+					//epinel_other_standing_on_platform_id.hp = min(epinel_other_standing_on_platform_id.hp, -1);
 					//shorten the lifespan of the resulting inertia pillar.
 					epinel_other_standing_on_platform_id.pillar_lifetime_factor = 0;
 					//reassign the platform's owner.
@@ -1771,7 +1825,7 @@ switch (attack) { //open switch(attack)
 						var starting_y = other.y - other.epinel_grabbed_player_y_offset;
 						var drag_x = round(ease_quadIn( starting_x, round(other.x + 10 * other.spr_dir), other.epinel_charge_timer, 14 )); 
 						var drag_y = round(ease_quadOut( starting_y, round(other.y + char_height * 0.5 - other.char_height * 0.5), other.epinel_charge_timer, 14 )); 
-						if ((x != drag_x || y != drag_y) && place_meeting(drag_x, drag_y, asset_get("par_block")) == false) {
+						if ((x != drag_x || y != drag_y) ) {// && place_meeting(drag_x, drag_y, asset_get("par_block")) == false) {
 							x = drag_x;
 							y = drag_y;
 						}
@@ -1812,21 +1866,14 @@ switch (attack) { //open switch(attack)
 			case 1:
 				//reset charge.
 				if (window_timer == 1) {
-					epinel_charge_timer = 0; 
+					epinel_charge_timer = 90; 
 					//move_cooldown[AT_USPECIAL] = 9999;
 					
 
 				}
 				else if (window_timer == 2) {
+					spawn_hit_fx(x, y - char_height / 2, epinel_fx_absorb);
 					spawn_hit_fx(x, y - char_height / 2, epinel_fx_inertia_medium);
-					//do the same for all of epinel's platforms
-					with (obj_article_platform) {
-						if (player_id != other || hp <= 0) continue;
-						with (other) spawn_hit_fx(other.x, other.y, epinel_fx_inertia_medium);
-						draw_glow = 100;
-						//extend crumble time so that the platform isn't destroyed too early
-						if (hp == 1) time_until_crumble = max(time_until_crumble, 60);
-					}
 				}
 				//prevent falling.
 				if (y > room_height + char_height) { vsp = min(vsp, 0); } //prevent falling whatsoever while offscreen below the map
@@ -1839,6 +1886,9 @@ switch (attack) { //open switch(attack)
 				
 				//prevent double-jump.
 				old_jump = false;
+				
+				//get direction
+				if (!joy_pad_idle) epinel_charge_timer = joy_dir;
 				
 				//charged version transition
 				//if (hitpause == false && special_down && window_timer == 9) {
@@ -1860,6 +1910,7 @@ switch (attack) { //open switch(attack)
 					move_cooldown[AT_USPECIAL] = 60;
 					//spawn effect.
 					//spawn_hit_fx(x, y - char_height / 2, epinel_fx_inertia);
+					/*
 					spawn_hit_fx(x, y - char_height / 2, epinel_fx_absorb);
 					
 					//spawn effect and projectile on all of epinel's platforms
@@ -1874,7 +1925,7 @@ switch (attack) { //open switch(attack)
 						vsp = min(vsp, -1);
 						if (hp == 1) hp = 0;
 					}
-					
+					*/
 					
 					sound_play(sound_get("drop"));
 					
@@ -1884,12 +1935,22 @@ switch (attack) { //open switch(attack)
 					epinel_other_weightless_inflicted = 3;
 					epinel_other_player_that_inflicted_weightless_id = id;
 					
+					var uspec_dir;
+					if (joy_pad_idle) uspec_dir = epinel_charge_timer;
+					else uspec_dir = joy_dir - (shield_down * 22.5 * spr_dir);
+					
+					hsp = lengthdir_x(8, uspec_dir);
+					vsp = lengthdir_y(8, uspec_dir);
+						
+					epinel_heavy_state = 2;
+					
+					/*
 					var inertiadir;
 					if (joy_pad_idle) {
 						hsp = 0;
 						vsp = 0;
 						
-						/*if (free)*/ epinel_heavy_state = 2;
+						epinel_heavy_state = 2;
 					}
 					
 					else {
@@ -1900,7 +1961,7 @@ switch (attack) { //open switch(attack)
 						hsp = lengthdir_x(8, inertiadir);
 						vsp = lengthdir_y(8, inertiadir);
 						
-						/*if (free || vsp < 0)*/ epinel_heavy_state = 2;
+						epinel_heavy_state = 2;
 					}
 					
 					/*
@@ -1924,7 +1985,7 @@ switch (attack) { //open switch(attack)
 				
 				//if (free) { vsp = -3 + epinel_charge_timer*1.5; hsp = 0; }
 			break;
-				
+			/*	
 
 			case 3:
 				//charged ver startup
@@ -1943,14 +2004,15 @@ switch (attack) { //open switch(attack)
 					
 			break;
 			
-
-			
+*/
+			/*
 			
 			case 5:
 				if (window_timer < 5 * (1 + epinel_charge_timer)) {
 					can_move = false;
 				}
 			break;
+			*/
 			//case 6:
 			//if (epinel_charge_timer == 1 && window_timer >= get_window_value(AT_USPECIAL, window, AG_WINDOW_LENGTH)) {
 			//	set_state(PS_IDLE_AIR);
@@ -2175,7 +2237,7 @@ switch (attack) { //open switch(attack)
 	break;
 	
 	
-	case AT_TAUNT: {
+	case AT_TAUNT_2: {
 		if (window == 3 && window_timer == 1 && !hitpause) { 
 			sound_play(sound_get("smallexplosion"));
 			for (var i = 1; i <= 3; i++;) { 
@@ -2349,7 +2411,7 @@ if (found_plat == noone) {
 		//check if inside x coord range
 		var intersect_dir = sign(other.hsp);
 		var intersect_x = (min(other.y, y) - (intersect_dir * other.x) - y) * -intersect_dir;
-		var plat_width = 57 * image_xscale + 10;
+		var plat_width = 63 * image_xscale + 10;
 		var plat_offset = -other.spr_dir * 20;
 		if (x - plat_width + plat_offset > intersect_x || x + plat_width + plat_offset <= intersect_x) continue; 
 		
@@ -2443,7 +2505,8 @@ for(var i = 1; i <= n; i++) {
 	newarticle.state = 100;
 	newarticle.player_id = id;
 	newarticle.random_index = i;
-	newarticle.vsp = 0;
+	if (instance_exists(epinel_other_standing_on_platform_id))
+	newarticle.vsp = epinel_other_standing_on_platform_id.vsp;
 	newarticle.hsp = 0;
 }
 return;
@@ -2457,7 +2520,7 @@ for(var i = 1; i <= n; i++) {
 	newarticle.player_id = id;
 	newarticle.random_index = i;
 	newarticle.vsp = -epinel_air_dspecial_platform_hits
-	newarticle.hsp = (i mod 3) - 1;
+	newarticle.hsp = ((i mod 3) - 1) * 3;
 }
 return;
 
@@ -2487,7 +2550,7 @@ if (found_plat == noone) {
 		//check if inside y coord range
 		if (other.y < y - 16 || other.y > y + 32) continue;
 		//check if inside x coord range
-		var plat_width = 57 * image_xscale + 16;
+		var plat_width = 63 * image_xscale + 16;
 		if (abs(x - other.x) > plat_width / 2) continue;
 		var this_plat_distance = abs(y - other.y);
 		//no other plats found: use this plat
@@ -2607,7 +2670,7 @@ return;
 
 
 #define check_if_epinel_has_room_to_spawn_dspecial_platform
-var plat_radius = 48 *  (1 + runeG / 3);
+var plat_radius = 24 *  (1 + runeG / 3);
 var check =  (!free
 	&& position_meeting(x, y+1, asset_get("par_block") )
 	&& position_meeting(x + plat_radius, y+1, asset_get("par_block") )

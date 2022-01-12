@@ -5,7 +5,7 @@ set_attack_value(AT_DTILT, AG_OFF_LEDGE, 0); //don't fall off the ledge
 
 //startup
 set_window_value(AT_DTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));//asset_get("sfx_gus_dirt"));//("sfx_ice_nspecial_hit_ground"));//("sfx_swipe_weak2"));
@@ -48,10 +48,10 @@ set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_GROUP, 1);
 
 //position
-set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 48);
+set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 43);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, -12);
 //shape
-set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 68);
+set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 78);
 set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 28);
 set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 0);
 //knockback

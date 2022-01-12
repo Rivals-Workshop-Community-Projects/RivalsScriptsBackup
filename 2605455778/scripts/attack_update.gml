@@ -251,7 +251,7 @@ switch(attack){
             }
         }
         if(window == 6){
-            if(window_timer > 10){
+            if(window_timer > 10 && window_timer < get_window_value(attack, 6, AG_WINDOW_LENGTH)){
                 destroy_hitboxes();
             }
             if(window_timer == 1 && !hitpause){
@@ -321,7 +321,7 @@ switch(attack){
             }
             destroy_hitboxes();
         }
-         if(place_meeting(x+2*spr_dir, y, asset_get("par_block")) && window == 2){
+         if(collision_circle(x+10*spr_dir, y-30, 10, asset_get("par_block"), true, true) && (window == 2 || window == 5)){
             if(has_dinoplat){
                 window = 8;
                 window_timer = 0;
@@ -347,6 +347,7 @@ switch(attack){
     break;
     
     case AT_USPECIAL:
+    old_jump = false;
     can_wall_jump = true;
         if(window == 1){
             if (window_timer == 1){
@@ -413,6 +414,17 @@ switch(attack){
         if(window == 3 && uppratt && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && free){
             state = PS_PRATFALL;
             uppratt = false;
+        }
+        if(free){
+            aireggy = true;
+        }
+        if(aireggy && !free){
+            Upbcanledgecancel = true
+            aireggy = false;
+        }
+        if(Upbcanledgecancel && free && (window == 3 || (window == 2 && window_timer > 15))){
+            state = PS_IDLE_AIR;
+            Upbcanledgecancel = false;
         }
     break;
 

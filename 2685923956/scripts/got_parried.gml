@@ -8,3 +8,9 @@ if (doomdesire_storage!=-4){
 		doomdesire_storage.state_end = 1
 	}
 }
+if (my_hitboxID.attack==AT_DSTRONG){
+	old_vsp = 0;
+	old_fsp = 0;
+	vsp = 0;
+	fsp = 0;
+}

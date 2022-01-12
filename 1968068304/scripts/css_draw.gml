@@ -15,14 +15,14 @@ patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_cha
 patch_day = "04";
 patch_month = "MAR";
  
-var num_alts = 15;
+var num_alts = 18;
 var alt_cur = get_player_color(player);
  
  
  
 //Alt name init. var doesn't work with arrays lol
  
-alt_name[0]  = "Default";
+alt_name[0]  = "Stasis";
 alt_name[1]  = "Slush";
 alt_name[2]  = "Illusion";
 alt_name[3]  = "Mobius";
@@ -31,15 +31,15 @@ alt_name[5]  = "Catastrophe";
 alt_name[6]  = "Adamantite";
 alt_name[7]  = "Weave";
 alt_name[8]  = "Virus";
-alt_name[9]  = "Vapor (Equinox)";
-alt_name[10] = "Gold (Jblockman1)";
-alt_name[11] = "Tech (Supersonic)";
-alt_name[12] = "Thirteen";
-alt_name[13] = "Virulisk";
-alt_name[14] = "Alkaline";
-alt_name[15] = "woag";
- 
- 
+alt_name[9]  = "Equinox";
+alt_name[10] = "Jblockman1";
+alt_name[11] = "Supersonic";
+alt_name[12] = "Rainbow";
+alt_name[13] = "Thirteen";
+alt_name[14] = "Virulisk";
+alt_name[15] = "Political";
+alt_name[16] = "Heart"; 
+alt_name[17] = "Truan't"; 
  
 //Patch
  

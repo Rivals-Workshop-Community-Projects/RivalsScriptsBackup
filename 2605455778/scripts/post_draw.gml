@@ -57,3 +57,4 @@ if(attack == AT_NSPECIAL){
         }
     }
 }
+//draw_circle_color(x+10*spr_dir, y-30, 10, 1, 1,  false);

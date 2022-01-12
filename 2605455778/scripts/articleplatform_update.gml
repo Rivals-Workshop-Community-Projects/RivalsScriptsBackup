@@ -1,4 +1,10 @@
 platanimcounter++;
+if(sprite_index == player_id.wallPlattotemSpawn && platanimcounter % 6 == 0){
+    image_index += 1;
+}
+if(sprite_index == player_id.wallPlattotemSpawn && image_index == image_number){
+    sprite_index = player_id.wallPlattotem;
+}
 if(destroy){
     with(asset_get("oPlayer")){
         onDinockPlat = false;

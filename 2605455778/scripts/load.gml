@@ -92,6 +92,8 @@ sprite_change_offset("upspecial_proj_swallow", 32, 32);
 sprite_change_offset("rockeggpowfx", 96, 96);
 sprite_change_offset("totemPOW", 198, 398);
 sprite_change_offset("totemPlat", 70, 104);
+sprite_change_offset("totemPlat_spawn", 70, 104);
 sprite_change_offset("totemPlat_stage", 98, 64);
 sprite_change_offset("totemPlat_stage_mask", 98, 64);
 sprite_change_offset("totemPlat_destroyproj", 100, 96);
+sprite_change_offset("armorbreakvfx", 135, 143);

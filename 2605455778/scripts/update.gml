@@ -236,10 +236,19 @@ if(!has_dinoplat && !free){ //check if ground has owner
         has_dinoplat = true;
     }
 }
-if(instance_exists(obj_article_platform)){
-    if(obj_article_platform.destroy){
-        spawn_hit_fx(obj_article_platform.x-25*obj_article_platform.spr_dir, obj_article_platform.y+35, djarmorexit);
+var dplat = noone;
+with(obj_article_platform){
+    if(player_id == other){
+        if(destroy){
+            dplat = self;
+        }
     }
+}
+if(dplat != noone){
+        var a = spawn_hit_fx(dplat.x-1*dplat.spr_dir, dplat.y+30, 303);
+        var b = spawn_hit_fx(dplat.x-1*dplat.spr_dir, dplat.y+30, 303);
+        b.hit_angle = 160*spr_dir;
+        //a.depth = -100;
 }
 with(asset_get("oPlayer")){
     if(!instance_exists(DinockPlatref)){

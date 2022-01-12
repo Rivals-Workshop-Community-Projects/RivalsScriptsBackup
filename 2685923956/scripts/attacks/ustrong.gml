@@ -67,10 +67,10 @@ set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 55);
 set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 74);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 12);
-set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);//80
-set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);//80s
+set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 8);//7
 set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.0);//1.1
-set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 9);//8
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("hit_big_2")); //additional sound played at hit_player.gml

@@ -73,7 +73,7 @@ sprite_change_offset("hover", 34, 70);
 
 sprite_change_offset("plat", 64, 94);
 
-sprite_change_offset("absorb", 100, 100);
+sprite_change_offset("absorb", 45, 39);
 sprite_change_offset("fspecial_afterimage", 34, 74);
 sprite_change_offset("fspecial_air_afterimage", 38, 74);
 //sprite_change_offset("nspecial_proj", 64, 94);
@@ -101,6 +101,7 @@ sprite_change_offset("fx_cannot", 6, 26);
 sprite_change_offset("inertia_fx_by_NeXus", 40, 40);
 sprite_change_offset("inertia_fx_big_by_NeXus", 80, 80);
 sprite_change_offset("fx_heavy", 40, 72);
+sprite_change_offset("heavy_arrow", 20, 32);
 
 sprite_change_offset("fspecial_indicator", 6, 6);
 //sprite_change_offset("dspecial_platform", 50, 0);
@@ -121,7 +122,11 @@ sprite_change_offset("plat_shard", 20, 20);
 
 sprite_change_offset("plat_by_Gourami", 57, 0);
 sprite_change_offset("plat_large_by_Gourami", 57, 0);
-sprite_change_offset("dspecial_platform_hitbox", 57, 0);
+sprite_change_offset("plat_article", 63, 4);
+sprite_change_offset("plat_article_large", 63, 14);
+sprite_change_offset("brokenplat_l", 63, 4);
+sprite_change_offset("brokenplat_r", 63, 4);
+sprite_change_offset("dspecial_platform_hitbox", 63, 0);
 sprite_change_offset("dspecial_platform_hitbox_old", 57, 0);
 
 sprite_change_offset("sweetspot_hitbox", 100, 100);

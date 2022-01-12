@@ -12,86 +12,67 @@ draw_glow = max(0, draw_glow - 1);
 draw_timer_decimal += 1 + draw_glow / 100;
 draw_timer = round(draw_timer_decimal);// = (draw_timer + 1) mod draw_seed;
 
-//platform hitstop has to be handled manually?
-if (hitstop > 0) {
-	hitstop = max(hitstop-1, 0);
-	if (hsp != 0 && vsp == 0 && false) {
-		with (oPlayer) {
-			if (epinel_other_standing_on_platform_id == other
-			 && !place_meeting(x - other.old_hsp, y, asset_get("par_block")) ) {
-				x -= other.old_hsp;
-			}
-		}
-	}
-}
+invul_timer--;
+
+
+
 
 //check if a character landed on the platform this frame
 if (instant_destroy) {
 	if (hp >= 0) {
 		instant_destroy = false;
-		draw_hp = -1;
 		hp = -1;
 		sound_play(asset_get("sfx_kragg_roll_end"));
+		
+		if (player_id.attack == AT_DATTACK && player_id.epinel_other_standing_on_platform_id == id && player_id.state == PS_ATTACK_GROUND) 
+			{ scr_epinel_platform_create_broken_plat_fx(player_id.x - x - (player_id.spr_dir * 85)); }
+		else
+			{ scr_epinel_platform_create_broken_plat_fx(player_id.x - x); }
 	}
 }
 else if (landed_on) {
 	landed_on = false;
-	if (draw_hp > 2) {
-		if (landing_damage > 0) {
-			hp = max(2, hp - landing_damage);
-			landing_damage = -40;
-			sound_play(asset_get("sfx_pillar_crumble"));
-		}
-	}
-	else if (draw_hp == 0 || draw_hp == 1) {
+	
+	if (being_stood_on_timer == 0) scr_epinel_damage_platform_if_not_above_ground();
+	
+	if (hp == 0 || hp == 1) {
 		hp = 0;
-		draw_hp = 0;
 		sound_play(asset_get("sfx_kragg_roll_end"));
 		scr_epinel_platform_create_warning_fx();
 	}
+	else {
+		sound_play(asset_get("sfx_pillar_crumble"), 0, noone, 0.5, 1.1);
+	}
 }
 
 
 
-
-//decrease hp each frame.
-if (hp > 1 && hp != hp_threshold) {
-	hp = max(1, hp - 1);
-}
-
-//draw_hp update.
-draw_hp = max(hp, draw_hp - 5);
-
-//landing damage update.
-landing_damage = min(200, landing_damage + 2);
 
 
 
 if (crumble > 1) {
 	
-	//detect platforms if moving.
-	if (hsp != 0)  scr_platform_collide_with_other_platforms();
 	
-	if (hitstop <= 0) {
-	
-		//drift towards the speed of spr_dir.
-		if (gravity_poll == 0) {
-			gravity_poll = 10;
-		}
-		else {
-			gravity_poll -= 1;
-			if (gravity_poll = 0) {
-				if (vsp != 0) { 
-					vsp -= sign(vsp);//min(0, round(vsp + 1));
-					if (vsp == 0 && hsp == 0) { 
-						scr_platform_collide_with_other_platforms();
-						//destroy this platform if it is still touching another platform.
-						
-						
-					}
+	//drift towards the speed of spr_dir.
+	if (gravity_poll == 0) {
+		gravity_poll = 12;
+	}
+	else {
+		gravity_poll -= 1;
+		if (gravity_poll = 0) {
+			if (vsp != 0) { 
+				vsp -= sign(vsp);//min(0, round(vsp + 1));
+				if (vsp == 0) { 
+					scr_platform_collide_with_other_platforms(0);
 				}
 			}
 		}
+	}
+	
+	//detect platforms if moving.
+	if (hsp != 0 && vsp == 0)  scr_platform_collide_with_other_platforms(0);
+	
+	if (plat_hitstop <= 0) {
 	
 		if (friction_poll == 0) {
 			friction_poll = ceil(25 / (abs(hsp) + 1));
@@ -114,6 +95,8 @@ if (crumble > 1) {
 
 //check if someone is on this platform
 var player_is_standing_on_this_platform = 0;
+//check if any opponent is attacking
+var opponent_is_attacking = 0;
 //friction.
 
 
@@ -199,8 +182,15 @@ with (oPlayer) {
 				epinel_other_platform_collision_check_timer--;
 			}
 		}
+		
 	} //end if 'while marked as standing on this platform'
-	
+	else {
+		//if not standing on that platform
+		//if under the platform and not this platform's owner, check for attacks.
+		if (id != other.player_id && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) &&  y > other.y ) {
+			opponent_is_attacking = 1;
+		}
+	}
 	
 	//after all these checks: is this player an epinel? 
 	if (epinel_other_is_epinel) {
@@ -219,6 +209,11 @@ with (oPlayer) {
 			//make this platform glow.
 			if (other.draw_glow < 50) other.draw_glow = min(50, other.draw_glow + 5);
 			
+			//add hitstop.
+			if (hitpause) {
+				other.plat_hitstop = floor(hitstop);
+			}
+			
 			if ( ( is_using_an_attack && window <= 5 && attack == AT_DSPECIAL  ) && hitstop <= 0 && other.hitstop == 0 && other.hitpause == false) 		
 		    {
 				var freq = 2 - runeA;
@@ -233,7 +228,7 @@ with (oPlayer) {
 						hsp = clamp(hsp, -top_speed, top_speed);
 						draw_glow = min(100, draw_glow + 5);
 						if (hp > 10) hp -= 8 - other.runeA * 4;
-						else if (draw_hp == 1 && time_until_crumble > 3) time_until_crumble -= 3;
+						else if (hp == 1 && time_until_crumble > 3) time_until_crumble -= 3;
 						//halt friction upon reaching top speed
 						if (abs(hsp) == top_speed) {
 							friction_poll = 3;
@@ -244,40 +239,105 @@ with (oPlayer) {
 		}
 	}
 }
-		
 
-//make the platform float upwards
-if (vsp >= -1 && hitstop == 0) {
-	rise_poll = (rise_poll + 1) mod 8;
-	vsp = -(rise_poll == 0 && !player_is_standing_on_this_platform);
+
+//platform hitstop has to be handled manually?
+if (plat_hitstop > 0) {
+	
+	if (!plat_hitpause) {
+		old_hsp = hsp;
+		hsp = 0;
+		plat_hitpause = 1;
+	}
+	else {
+		old_hsp += hsp;
+		hsp = 0;
+	}
+	plat_hitstop--;
 }
 else {
-	rise_poll = 0;
+	if (plat_hitpause) {
+		plat_hitpause = 0;
+		hsp = clamp(old_hsp, -top_speed, top_speed);
+		old_hsp = 0;
+	}
 }
+	
+		
+
+	/*
+	if (hsp != 0 && vsp == 0 && false) {
+		with (oPlayer) {
+			if (epinel_other_standing_on_platform_id == other
+			 && !place_meeting(x - other.old_hsp, y, asset_get("par_block")) ) {
+				x -= other.old_hsp;
+			}
+		}
+	}
+	*/
+
+
+
+//check for damage
+if (opponent_is_attacking && invul_timer <= 0 && hp > 1) {
+	with (pHitBox) {
+		
+		if (type != 2 && player_id.y > other.y && player_id != other.player_id && hit_priority != 0 && damage > 0 && place_meeting(x, y, other)) {
+			
+			sound_play(sound_effect, false, noone, 0.7);
+			sound_play(asset_get("sfx_pillar_crumble"));
+			var xx = x + hit_effect_x;
+			var yy = y + hit_effect_y;
+			with (player_id) {
+				spawn_hit_fx(xx, yy, other.hit_effect);
+				if (!hitpause) {
+					hitpause = true;
+					hitstop = min(hitstop, 2);
+					old_hsp = hsp;
+					old_vsp = vsp;
+				}
+			}
+			with(other) {
+				if (hp > hp_threshold) hp = hp_threshold;
+				else hp = 1;
+				invul_timer = 40;
+			}
+			break;
+		}
+	}
+}
+
 
 
 //crumble when moving offstage with a player on-board
 if (player_is_standing_on_this_platform) {
-	if (scr_epinel_is_platform_moving_outside_bounds()) {
-		hp = min(hp, 2);
-		draw_hp = hp;
-		time_until_crumble = min(time_until_crumble, 30);
+	if (invul_timer <= 0) being_stood_on_timer++;
+	if being_stood_on_timer >= 40 {
+		being_stood_on_timer = 0;
+		//check for ground beneath platform; deal damage if there is none
+		scr_epinel_damage_platform_if_not_above_ground();
 	}
-	//decay faster when a player is standing on the platform
-	else if (hp > 4) hp--; 
 }
+else {
+	being_stood_on_timer = 0;
+	
+	if (break_when_not_stood_on) hp = min(hp, 1);
+	//	hp--;
+	//	invul_timer = 45;
+	//}
+}
+	
+	
+	
+
 
 
 //at 1 hp, crumble automatically after a time limit if a player is standing on this platform.
-if (draw_hp == 2) {
-	sound_play(asset_get("sfx_pillar_crumble"));
-	image_index = 2;
-}
-else if (draw_hp == 1) {
+
+if (hp == 1) {
 	image_index = 2;
 	//if (break_when_not_stood_on == true), this platform should break when its owner is not standing on it.
 	if (break_when_not_stood_on == true && (player_id == noone || instance_exists( player_id ) == false || player_id.epinel_other_standing_on_platform_id != id) ) {
-		draw_hp = 0;
 		hp = 0;
 		sound_play(asset_get("sfx_kragg_roll_end"));
 		//draw warnings above the head of each player standing on this platform
@@ -302,7 +362,6 @@ else if (draw_hp == 1) {
 			}
 			
 			if (tempvar_object_on_platform > 0) {
-				draw_hp = 0;
 				hp = 0;
 				sound_play(asset_get("sfx_kragg_roll_end"));
 				if (tempvar_object_on_platform == 1) {
@@ -314,15 +373,15 @@ else if (draw_hp == 1) {
 	}
 }
 else {
-	image_index = (draw_hp <= hp_threshold);
+	image_index = (hp <= hp_threshold);
 }
 	
 	
 
 //crumble.
-if (draw_hp <= 0 || hp <= 0) {
+if (hp <= 0) {
 	if (crumble < 1) sprite_index = asset_get("empty_sprite");
-	else image_index = 2 + ((crumble * 10) mod 2);
+	else image_index = 2 + (((crumble * 10) mod 2) > 1);
 	
 	vsp = 0;
 	
@@ -344,9 +403,28 @@ if (draw_hp <= 0 || hp <= 0) {
 		}
 		else sound_play(asset_get("sfx_kragg_roll_turn"));
 		
+		var xx = x;
+		var yy = y;
+		
+		
 		with (oPlayer) {
 			//stop standing on this platform
-			if (epinel_other_standing_on_platform_id == other.id) epinel_other_standing_on_platform_id = noone;
+			if (epinel_other_standing_on_platform_id == other.id) {
+				
+				//if this player is epinel performing dash attack on this platform, make him use at_extra_1 instead
+				if (epinel_other_is_epinel && state == PS_ATTACK_GROUND && attack == AT_DATTACK) {
+					attack_end();
+					destroy_hitboxes();
+					set_attack(AT_EXTRA_1);
+					if (!place_meeting(x - 8 * spr_dir, y, asset_get("par_block"))) x -= 8 * spr_dir; 
+					if (!place_meeting(x, y + 8, asset_get("par_block"))) y += 8;
+					//spr_dir = -spr_dir;
+					hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
+				}
+				
+				//set as no longer standing on this platform
+				epinel_other_standing_on_platform_id = noone;
+			}
 			//if this player == epinel, use him to spawn a fx (because platforms can't???) then continue
 			if (id != other.player_id) continue;
 				
@@ -374,21 +452,18 @@ if (draw_hp <= 0 || hp <= 0) {
 			}
 
 			//spawn_hit_fx( other.x, other.y, 192); //rock large
-			spawn_hit_fx( other.x-spacing, other.y, 193).image_xscale = image_xscale;
-			spawn_hit_fx( other.x+spacing, other.y, 193).image_xscale = image_xscale;
-			spawn_hit_fx( other.x, other.y, 193).image_xscale = image_xscale;
+			spawn_hit_fx( xx-spacing, yy, 193).image_xscale = image_xscale;
+			spawn_hit_fx( xx+spacing, yy, 193).image_xscale = image_xscale;
 			
-			//if this player is epinel performing dash attack on this platform, make him use at_extra_1 instead
-			if (epinel_other_is_epinel && state == PS_ATTACK_GROUND && attack == AT_DATTACK) {
-				attack_end();
-				destroy_hitboxes();
-				set_attack(AT_EXTRA_1);
-				if (!place_meeting(x - 8 * spr_dir, y, asset_get("par_block"))) x -= 8 * spr_dir; 
-				if (!place_meeting(x, y + 8, asset_get("par_block"))) y += 8;
-				//spr_dir = -spr_dir;
-				hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
+			if (other.hp > -1) {
+				spawn_hit_fx( other.x, other.y, 193).image_xscale = image_xscale;
 			}
-			
+			else {
+				//inertia hitbox
+				create_hitbox(AT_USPECIAL, 2, other.x, other.y + 10);
+				spawn_hit_fx(xx, yy+10, epinel_fx_absorb);
+				spawn_hit_fx(xx, yy+10, epinel_fx_inertia_medium);
+			}
 		}
 		hp = -2;
 		
@@ -417,28 +492,42 @@ else {
 }
 
 
+
+
+
+#define scr_is_platform_above_ground
+var image_yscale_prev = image_yscale
+image_yscale = 100;
+var return_value = place_meeting(x, y, asset_get("par_block"));
+image_yscale = image_yscale_prev;
+return return_value;
+
 #define scr_platform_collide_with_other_platforms
+/// scr_platform_collide_with_other_platforms(loops)
+var loops = argument0;
+if (argument0 >= 3) {
+	scr_epinel_platform_destroy_if_touching_other_platforms();
+	return;
+}
 with (obj_article_platform) {
 	//skip if not an epinel platform.
 	if (id == other.id || !instance_exists(player_id) || !player_id.epinel_other_is_epinel || crumble < 1) { continue; }
 	
 	//check for a collision
 	var x_distance = abs(x - other.x) 
-	var x_overlap_distance = 110 * (image_xscale + other.image_xscale) / 2;
+	var x_overlap_distance = 124 * (image_xscale + other.image_xscale) / 2;
 	if ( abs(y - other.y) < 30 && x_distance < x_overlap_distance ) {
 		
 		//if they didn't collide by moving into each other from the side, just push the one above.
-		if (abs((x - hsp) - (other.x - other.hsp)) < x_overlap_distance) { 
+		if false {//(abs((x - hsp) - (other.x - other.hsp)) < x_overlap_distance) { 
 		//if (hsp == 0 && other.hsp == 0) {
-			if (y < other.y) { rise_poll = 6; gravity_poll = 2; vsp = min(vsp, -1); }
-			else if (y > other.y) with other  { rise_poll = 6; gravity_poll = 2; vsp = min(vsp, -1); }
+			if (y < other.y) { rise_poll = 6; gravity_poll = 2; vsp = min(vsp, -2); }
+			else if (y > other.y) with other  { rise_poll = 6; gravity_poll = 2; vsp = min(vsp, -2); }
 			
-			var play_break_sound = (draw_hp > hp_threshold || other.draw_hp > other.hp_threshold);
+			var play_break_sound = (hp > hp_threshold || other.hp > other.hp_threshold);
 			if (play_break_sound) {
 				hp = min(hp, hp_threshold);
-				draw_hp = min(draw_hp, hp_threshold);
 				other.hp = min(other.hp, hp_threshold);
-				other.draw_hp = min(other.draw_hp, hp_threshold);
 				sound_play(asset_get("sfx_pillar_crumble"));
 			}
 		}
@@ -452,27 +541,63 @@ with (obj_article_platform) {
 					position_sign = player_id.spr_dir;
 				}
 			}
+			with (player_id) {
+				spawn_hit_fx(point_between, other.y + 10, 14);
+			}
 			//swap speed and position
-			x = round(point_between + 57 * image_xscale * position_sign);
-			other.x = round(point_between - 57 * image_xscale * position_sign);
+			x = round(point_between + 63 * image_xscale * position_sign);
+			other.x = round(point_between - 63 * image_xscale * position_sign);
 			var trade_hsp = hsp;
 			hsp = sign(other.hsp) * ceil(abs(other.hsp / 2));
 			other.hsp = sign(trade_hsp) * ceil(abs(trade_hsp / 2));
 			//drop health of both platforms
-			hp = min(hp, hp_threshold);
-			draw_hp = min(draw_hp, hp_threshold);
-			other.hp = min(other.hp, hp_threshold);
-			other.draw_hp = min(other.draw_hp, hp_threshold);
+			//hp = min(hp, hp_threshold);
+			//draw_hp = min(draw_hp, hp_threshold);
+			//other.hp = min(other.hp, hp_threshold);
+			//other.draw_hp = min(other.draw_hp, hp_threshold);
+			if (hp > 0) { hp -= (argument0 == 0); if hp == 0 sound_play(asset_get("sfx_kragg_roll_end")); }
+			with (other) { if (hp > 0) { hp -= (argument0 == 0); if hp == 0 sound_play(asset_get("sfx_kragg_roll_end")); } }
 			sound_play(asset_get("sfx_pillar_crumble"));
-			scr_epinel_platform_destroy_if_touching_other_platforms();
-			with (other) { scr_epinel_platform_destroy_if_touching_other_platforms(); }
+			//scr_epinel_platform_destroy_if_touching_other_platforms();
+			//with (other) { scr_epinel_platform_destroy_if_touching_other_platforms(); }
+			with (other) {scr_platform_collide_with_other_platforms(argument0 + 1); }
 			break;
 		}
 	}
 }
 return;
 
+
 #define scr_epinel_platform_create_warning_fx
+if (instance_exists(player_id)) {
+	//draw warnings above the head of each player standing on this platform
+	var tempvar_this_player_id = player_id;
+	with (oPlayer) {
+		if (!free && epinel_other_standing_on_platform_id == other.id && (epinel_other_is_epinel <= 0 || state != PS_ATTACK_GROUND )) {
+			var tempvar_warn;
+			with (tempvar_this_player_id) { tempvar_warn = spawn_hit_fx( other.x + other.spr_dir * 20, other.y - other.char_height, epinel_fx_warning ); }
+			switch (get_player_team( player )) {
+				default:
+					tempvar_warn.image_blend = c_red;
+				break;
+			}
+		}
+	}
+}
+return;
+
+
+#define scr_epinel_platform_create_broken_plat_fx
+/// scr_epinel_platform_create_broken_plat_fx(hit_x)
+var hit_x = argument0;
+var index;
+if (hit_x < -24) index = 0;
+else if (hit_x > 24) index = 2;
+else index = 1;
+
+instance_create(x, y, "obj_article1").state = 200 + index;
+instance_create(x, y, "obj_article1").state = 203 + index;
+
 if (instance_exists(player_id)) {
 	//draw warnings above the head of each player standing on this platform
 	var tempvar_this_player_id = player_id;
@@ -514,8 +639,13 @@ if (is_collision) {
 
 return;
 
-#define scr_epinel_is_platform_moving_outside_bounds
-var outside_bounds = ( (x <= boundary_l && hsp <= 0) || (x > boundary_r && hsp >= 0) );
-if (!outside_bounds) return false;
-boundary_hp--;
-return (boundary_hp <= 0);
+
+#define scr_epinel_damage_platform_if_not_above_ground
+if (hp > 1 && !scr_is_platform_above_ground()) {
+	hp--;
+	if (hp == 1 || hp == hp_threshold) {
+		sound_play(asset_get("sfx_pillar_crumble"));
+		time_until_crumble = min(time_until_crumble, 5);
+	}
+} 
+return;

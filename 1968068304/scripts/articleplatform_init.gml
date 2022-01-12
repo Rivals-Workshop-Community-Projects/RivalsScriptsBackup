@@ -1,16 +1,12 @@
 //article_solid_init
 
 init = 0;
-sprite_index = sprite_get("plat_by_Gourami"); //asset_get("empty_sprite");
+sprite_index = sprite_get("plat_article"); //asset_get("empty_sprite");
 mask_index = sprite_get("dspecial_platform_hitbox");
 image_index = 0;
 spr_dir = 1;
 image_xscale = 1;
 
-
-boundary_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) + 320;
-boundary_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE) - 320;
-boundary_hp = 20;
 
 //can_be_grounded = false;
 //ignores_walls = true; //
@@ -23,16 +19,22 @@ hsp_poll = 0;
 rise_poll = 0;
 rise_distance = 0;
 
-hp = 1200; //platform becomes unstable when hp falls to 1, and breaks when it falls to zero
-hp_threshold = 400; //platform hp stops falling temporarily at this value, until a player lands on it again
+plat_hitstop = 0;
+plat_hitpause = 0;
+
+
+hp = 3; //platform becomes unstable when hp falls to 1, and breaks when it falls to zero
+hp_threshold = 2; //platform hp stops falling temporarily at this value, until a player lands on it again
+
+being_stood_on_timer = 0;
+
 invul_timer = 40; //above zero when the platform can't take more damage
-landing_damage = 50;
 landed_on = false;
 instant_destroy = false;
 top_speed = 8;
 top_speed_low = 8;
 top_speed_high = 12;
-time_until_crumble = 120; //when health runs out, this timer begins to tick to 0. at 0, the platform starts crumbling.
+time_until_crumble = 60; //when health runs out, this timer begins to tick to 0. at 0, the platform starts crumbling.
 crumble = 2; //reduces gradually to zero when crumbling 
 plat_hitbox_id = noone; //id of the hitbox attached to this platform when uspecial is used
 
@@ -45,7 +47,6 @@ draw_timer_decimal = 0;
 draw_state = 0;
 draw_seed = random_func(5, 10, true) + 50; //180
 draw_glow = 50;
-draw_hp = hp;
 
 time_created = get_gameplay_time();
 
@@ -92,7 +93,6 @@ if (instance_number(obj_article_platform) > 3) {
 if (plat_count >= 3 && plat_count > plat_tie) {
 	with (lowest_health_plat_id) {
 		hp = min(hp, 0);
-		draw_hp = min(draw_hp, hp);
 		time_until_crumble = min(time_until_crumble, 0);
 		sound_play(asset_get("sfx_kragg_roll_end"));
 	}

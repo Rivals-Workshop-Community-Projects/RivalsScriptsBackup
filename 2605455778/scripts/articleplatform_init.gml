@@ -3,7 +3,7 @@ if(player_id.stageplatcreate){
     print_debug("stage");
     spr_dir = player_id.spr_dir;
 }else{
-    sprite_index = player_id.wallPlattotem;
+    sprite_index = player_id.wallPlattotemSpawn;
     spr_dir = -player_id.spr_dir;
     print_debug("wall");
     with(obj_article1){

@@ -27,7 +27,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_FTILT, 3, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_FTILT, 3, AG_WINDOW_HSPEED, 4.5);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HSPEED_TYPE, 1);
 //set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_FTILT, 3, AG_WINDOW_SFX, asset_get("sfx_dust_knuckle"));
@@ -138,8 +138,8 @@ set_hitbox_value(AT_FTILT, 3, HG_WIDTH, 44);
 set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 38);
 set_hitbox_value(AT_FTILT, 3, HG_SHAPE, 0);
 //knockback
-set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FTILT, 3, HG_KNOCKBACK_SCALING, 0.4); 
+set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_FTILT, 3, HG_KNOCKBACK_SCALING, 0.5); 
 set_hitbox_value(AT_FTILT, 3, HG_ANGLE, 45);
 //stun
 set_hitbox_value(AT_FTILT, 3, HG_BASE_HITPAUSE, 5);
