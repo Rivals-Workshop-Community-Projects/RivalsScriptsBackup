@@ -17,7 +17,7 @@ if attack == AT_EXTRA_3 {
     
     if state_timer <= 5 {
 
-    } else if state_timer > 15 {
+    } else if state_timer > 5 {
     	can_attack = true
     }
     
@@ -326,24 +326,19 @@ if !hitpause {
                 ncharge += 5
             }
             
-            //if (special_down and ncharge <= 20) && window_timer > 1 {
-            //    ncharge += 1
-            //    window_timer = 4
-            //}
+            if (special_down and ncharge <= 50) && window_timer > 1 {
+                ncharge += 1
+                window_timer -= 1
+            }
         }
         
-        if window == 2 && window_timer == 1 {
-             if ncharge < 20 {
-               create_hitbox(AT_NSPECIAL,1,x+20*spr_dir,y-56)
+        if window == 2 && window_timer == 1 && !hitpause{
+        	create_hitbox(AT_NSPECIAL,1,x+20*spr_dir,y-56)
+            if ncharge < 20 {
+               
            }
            
-           if ncharge >= 20 && ncharge < 50 {
-               create_hitbox(AT_NSPECIAL,2,x+20*spr_dir,y-56)
-           }
-           
-           if ncharge >= 50 && ncharge < 65 {
-               create_hitbox(AT_NSPECIAL,3,x+20*spr_dir,y-56)
-           }    
+              
            
            if ncharge >= 65 {
                
@@ -402,12 +397,12 @@ if !hitpause {
                                       sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
             }
             
-             if window_timer == 11 && voiced == 1{
+             if window_timer == 10 && voiced == 1{
              	sound_play(sound_get("b1"),false,noone,0.8,0.9)
                  sound_play(sound_get("fspec"),false,noone,0.6)
              }
              
-             if window_timer == 11 && voiced == 0{
+             if window_timer == 10 && voiced == 0{
              	sound_play(sound_get("b1"),false,noone,0.8,0.9)
              }
         }
@@ -428,7 +423,7 @@ if !hitpause {
         if window == 2 && window_timer == 1 {
             hsp /= 2
             
-            move_cooldown[AT_DSPECIAL] = 90
+            move_cooldown[AT_DSPECIAL] = 60
             //spawn_hit_fx(x,y-15,sw)
             spawn_hit_fx(x,y-15,sw2)
                             //create_hitbox(AT_DSPECIAL,11, x + 10 * spr_dir , y - 36)

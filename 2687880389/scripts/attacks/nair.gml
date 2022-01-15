@@ -32,7 +32,7 @@ set_window_value(AT_NAIR, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 set_window_value(AT_NAIR, 4, AG_WINDOW_SFX_FRAME, 1);
 
 // Second hit
-var nair_kick_duration = 18;
+var nair_kick_duration = 14; // 18
 set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 5);
@@ -89,8 +89,8 @@ set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 6);
 set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, nair_kick_duration);
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_X, -1);
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_Y, -49);
-set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 150);
-set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 65);
+set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 136); // 150
+set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 56); // 65
 set_hitbox_value(AT_NAIR, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 3);
 set_hitbox_value(AT_NAIR, 3, HG_ANGLE, 65);

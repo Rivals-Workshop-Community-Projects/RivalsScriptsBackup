@@ -1,6 +1,9 @@
 //B - Reversals
 
 
+
+
+
 if (attack == AT_DSPECIAL || attack == AT_FSPECIAL 
 || attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_EXTRA_1 || attack == AT_EXTRA_2){
     trigger_b_reverse();
@@ -200,7 +203,7 @@ if attack == AT_FAIR {
 }
 
 if attack == AT_FSTRONG {
-     set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 7);
+     set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 4);
      set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 8);
      set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
      set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
@@ -271,8 +274,6 @@ if attack == AT_DATTACK {
 }
 
 if attack == AT_USTRONG { 
-    
-    move_cooldown[AT_USTRONG] = 20
     
     if window == 3 && window_timer == 1 && !hitpause{
         sound_play(sound_get("SpaceCut"));
@@ -512,7 +513,9 @@ if attack == AT_USPECIAL {
 }
 
 if attack == AT_FSPECIAL  {
+	
 	prat_land_time = 12;
+	can_wall_jump = true 
 	
 	if state_timer > 10 && !hitpause {
 		move_cooldown[AT_UTILT] += 2
@@ -563,7 +566,7 @@ if attack == AT_FSPECIAL  {
 		
 	if (window == 1 && window_timer > 6) or window > 1 {
 		
-	if window == 1 && window_timer > 6 && jump_pressed{
+	if window == 1 && window_timer > 6 && attack_pressed{
 		move_cooldown[AT_USPECIAL] = 0 
 		set_attack (AT_USPECIAL)
 	    window = 1
@@ -574,16 +577,7 @@ if attack == AT_FSPECIAL  {
 	    
 	}
 	
-	if window == 2 && jump_pressed{
-		move_cooldown[AT_USPECIAL] = 0 
-		set_attack (AT_USPECIAL)
-	    window = 1
-	    window_timer = 2
-	    vsp = -3
-	    sound_play(asset_get("sfx_ell_steam_release"));
-	    hsp /= 2
-	    
-	}
+
 	
 	  if special_pressed && !hitpause {
 	  	
@@ -694,7 +688,7 @@ if attack == AT_FSPECIAL  {
 		window_timer = 2
 	   }
 	   
-	   if jump_pressed {
+	   if attack_pressed {
 	   		   	move_cooldown[AT_USPECIAL] = 0 
 		set_attack (AT_USPECIAL)
 	    window = 1
@@ -910,9 +904,33 @@ if window == 1 && window_timer == 1{
 	        	sound_play(asset_get("mfx_back"))
 	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
-	   
-	   
-	    
+	        if left_down or down_down {
+	        if gunname == 4 && t21 != 0 gunname ++
+	        if gunname == 5 && t22 != 0 gunname ++
+	        if gunname == 6 && t23 != 0 gunname ++
+	        if gunname == 7 && t24 != 0 gunname ++
+	        
+	        if gunname == 8 && t31 != 0 gunname ++
+	        if gunname == 9 && t32 != 0 gunname ++
+	        if gunname == 10 && t33 != 0 gunname ++
+	        if gunname == 11 && t34 != 0 gunname ++
+	        if gunname == 12 && t35 != 0 gunname ++
+	        if gunname == 13 && t36 != 0 gunname ++
+	        }
+	        if right_down or up_down {
+	        if gunname == 4 && t21 != 0 gunname --
+	        if gunname == 5 && t22 != 0 gunname --
+	        if gunname == 6 && t23 != 0 gunname --
+	        if gunname == 7 && t24 != 0 gunname --
+	        
+	        if gunname == 8 && t31 != 0 gunname --
+	        if gunname == 9 && t32 != 0 gunname --
+	        if gunname == 10 && t33 != 0 gunname --
+	        if gunname == 11 && t34 != 0 gunname --
+	        if gunname == 12 && t35 != 0 gunname --
+	        if gunname == 13 && t36 != 0 gunname --
+	        }
+	        
 	    }
 	    
 	    	
@@ -993,6 +1011,17 @@ if window == 1 && window_timer == 1{
 			
 			}
 			
+			if gunname >= 8 {
+				bursted = 1
+				shake_camera(5,5)
+		sound_play(sound_get("exp1"));
+		spawn_hit_fx( x , y - 22 , exp1 )
+		create_hitbox(AT_EXTRA_3 , 7 ,x   , y - 22 );
+		gone = spawn_hit_fx(x + 30*spr_dir ,y - 40,burst)
+		gone.spr_dir = spr_dir*-1
+	    sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+	    sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+			}
 
 		}
 		
@@ -1096,6 +1125,10 @@ if attack == AT_EXTRA_1 {
    		 set_attack(AT_USPECIAL)
 	   	 window = 6
 	   	 window_timer = 1
+	   	 
+	   	 sound_play(sound_get("exp1"));
+		spawn_hit_fx( x , y - 22 , exp1 )
+		create_hitbox(AT_EXTRA_3 , 7 ,x   , y - 22 );
    	}
    	
    }
@@ -1217,10 +1250,6 @@ if window == 9 {
 		
 		if window == 11 {
 			
-		
-			
-			
-			
 			
 			can_move = false
 			
@@ -1247,13 +1276,20 @@ if window == 9 {
 		}
 		
 		if window == 12 && window_timer == 12 {
+			gunname = 0 user_event(1)
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+		    t21 = 1
 			drops = 0
 			if !free {
 				set_state (PS_IDLE)
 			}
 			
 			if free {
-				
+				 
 					vsp = -6
 				
 				prat_land_time = 12;
@@ -1291,6 +1327,11 @@ if window == 13 {
 			
 			
 			if window_timer == 1 {
+			
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
 			sound_play(asset_get("sfx_ell_eject"))
 	      	}
 		}
@@ -1298,7 +1339,9 @@ if window == 13 {
 		
 		
 		if window == 14 && window_timer == 16 {
+		    t22 = 1
 			drops = 0
+			gunname = 0 user_event(1)	
 			if !free {
 				set_state (PS_IDLE)
 			}
@@ -1343,7 +1386,13 @@ if window == 15 {
 			}
 			
 			if window_timer == 17 {
-				drops = 0
+			gunname = 0 user_event(1)
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+		        t23 = 1
 				if !free {
 				set_state (PS_IDLE)
 			}
@@ -1361,7 +1410,7 @@ if window == 15 {
 	
 	///SGSSG
 	
-	if window >= 18 and window <= 20 {
+if window >= 18 and window <= 21 {
 if window == 18 {
         	if window_timer <= 4 {
 	if left_down{
@@ -1389,18 +1438,17 @@ if window == 18 {
 		}
 		
 		if window > 19 {
-	    hsp /= 1.02
+	    hsp /= 1.04
 		}
 		
 		if window <= 19 {
 			vsp /= 1.5
+		} else {
+			vsp /= 1.1
 		}
  		
 		if window == 20{
-			
-			
-			
-			
+	
 			if window_timer == 2 && !hitpause{
 				 create_hitbox(AT_EXTRA_1 , 21 , x - 30 * spr_dir, y - 20 );	
 				 create_hitbox(AT_EXTRA_1 , 22 , x - 30 * spr_dir, y - 20 );
@@ -1423,19 +1471,18 @@ if window == 18 {
 		
 		
 		if window == 21 && window_timer == 10 {
-if window == 21 {
-        	if window_timer <= 4 {
-	if left_down{
-		spr_dir = -1
-	}
-
-   	if right_down{
-		spr_dir = 1
-	}	
-}
-}			
-			drops = 0
-				if !free {
+            
+            drops = 0
+			gunname = 0 user_event(1)
+		    t24 = 1
+		   	oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+			
+		    
+			if !free {
 				set_state (PS_IDLE)
 			}
 			
@@ -1443,7 +1490,7 @@ if window == 21 {
 				prat_land_time = 16;
 				set_state (PS_IDLE_AIR)
 			}	
-			}
+		}
 		
 		
 	}
@@ -1576,10 +1623,17 @@ set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_ANIM_SPEED, 0.6 + ((random_func(3,
 		
 		
 		if window == 4 && window_timer == 16 {
+			gunname = 0 user_event(1) user_event(1)
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+		    t32 = 1
 			drops = 0
 
 			
-				if !free {
+			if !free {
 				set_state (PS_IDLE)
 			}
 			
@@ -1591,7 +1645,8 @@ set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_ANIM_SPEED, 0.6 + ((random_func(3,
 		
 		
 	}
-	
+
+///plane	
 	
 		if window >= 5 and window <= 8 {
 			
@@ -1621,6 +1676,13 @@ if window == 8 {
 		if window == 8 && window_timer == 20 {
 			faces = 0
 			drops = 0
+			gunname = 0 user_event(1) user_event(1)
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+		    t31 = 1
 				if !free {
 				set_state (PS_IDLE)
 			}
@@ -1634,7 +1696,11 @@ if window == 8 {
 		
 	}
 	
-	
+
+
+
+/// BFG
+
 		if window >= 9 and window <= 12 {
 		   vsp /= 1.5
 		   hsp /= 1.3
@@ -1657,8 +1723,15 @@ if window == 9 {
         }
         
 		if window == 12 && window_timer == 20 {
+			gunname = 0 user_event(1) user_event(1)
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+		    t34 = 1
 			drops = 0
-				if !free {
+			if !free {
 				set_state (PS_IDLE)
 			}
 			
@@ -1671,7 +1744,8 @@ if window == 9 {
 		
 	}
 	
-	
+
+/// Orbital strike
 	if window >= 13 and window <= 14 {
 		   vsp /= 1.5
 		   hsp /= 1.3
@@ -1695,6 +1769,13 @@ if window == 13 {
         }
         
 		if window == 14 && window_timer == 20 {
+			gunname = 0 user_event(1) user_event(1) 
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+		    t35 = 1
 			drops = 0
              if !free {
 				set_state (PS_IDLE)
@@ -1709,7 +1790,7 @@ if window == 13 {
 		
 		
 	}
-	
+//Car Key	
 		if window >= 15 and window <= 17 {
 		can_move = false	
 		super_armor = true
@@ -1805,7 +1886,13 @@ if window == 13 {
 	     	
    	         	
 			drops = 0
-	
+	        gunname = 0 user_event(1)  user_event(1) 
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+		    t33 = 1
 			}
 		}
 		
@@ -1834,6 +1921,13 @@ if window == 13 {
 			
 			
 			if lmtime <= 0 {
+			gunname = 0 user_event(1) user_event(1) 
+			oop = spawn_hit_fx(x,y - 40, 302)
+			oop.depth = depth + 1
+			spawn_hit_fx(x - 30*spr_dir ,y - 40,burst)
+			sound_play(asset_get("sfx_ell_eject"),false,noone,1,1.4)
+			sound_play(asset_get("sfx_ell_overheat"),false,noone,.8,1.2)
+		    t36 = 1
 				prat_land_time = 90
              sound_play(sound_get("exp2"));
        destroyed = 1
@@ -2108,10 +2202,14 @@ if window == 13 {
 if attack == AT_EXTRA_3 && window_timer < 6 {
 			if window == 1 {
 				casing = 1
+				 if get_player_color(player) == 1 hunter = 1 
+				 Vrank = 1
 			}
 			
 			if window = 2 {
 				casing = 0
+				 Vrank = 0
+				 hunter = 0
 				create_hitbox(AT_EXTRA_3 , 1 , x - 5 * spr_dir, y - 20 );	
                 create_hitbox(AT_EXTRA_3 , 2 , x - 5 * spr_dir, y - 20 );	
 			}

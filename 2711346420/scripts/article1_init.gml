@@ -98,6 +98,10 @@ touching_wall_cooldown = 0;
 
 stored_hsp = 0;
 
+should_explode = false;
+
+infinite_lifetime_rune = false;
+
 //HITBOX STUFF aaaa
 can_get_hit = true;
 hitbox_hit = noone;
@@ -106,6 +110,10 @@ hit_by = noone;
 
 monkey_ball_hit_cooldown = 0;
 monkey_ball_draw_dark_spr = false;
+
+monkey_ball_can_be_hit_again_timer = 0;
+
+hey_did_i_get_parried = false;
 
 //2
 is_hitbox_active = false;

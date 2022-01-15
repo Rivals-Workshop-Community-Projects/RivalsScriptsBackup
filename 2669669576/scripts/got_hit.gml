@@ -9,3 +9,10 @@ if(enemy_hitboxID.type == 1){
     shadowball_hit = false;
     shadowball_hit_timer = 0;
 }
+
+if(prev_state == PS_ATTACK_AIR or prev_state == PS_ATTACK_GROUND) and attack == AT_NSPECIAL{
+	//print("Oof ouch owie ow ive been hit");
+	if(instance_exists(nspecial_hitbox)){
+	    nspecial_hitbox.destroyed = true;
+	}
+}

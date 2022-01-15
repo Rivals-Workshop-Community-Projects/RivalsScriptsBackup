@@ -4,10 +4,8 @@ if (my_hitboxID.attack == AT_USPECIAL){
     uspecial_can_glide = false;
 }
 
-if (my_hitboxID.attack == AT_DSPECIAL){
+if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
     with (monkeyBall){
-        should_start_to_die = true;
-		death_var_thing = 29;
-		cur_hitbox.destroyed = true;
+		hey_did_i_get_parried = true;
     }
 }

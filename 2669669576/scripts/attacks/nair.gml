@@ -9,7 +9,7 @@ set_attack_value(attack, AG_HURTBOX_AIR_SPRITE, 0);
 set_attack_value(attack, AG_NUM_WINDOWS, 9);
 set_attack_value(attack, AG_HAS_LANDING_LAG, 1);
 set_attack_value(attack, AG_OFF_LEDGE, 0);
-set_attack_value(attack, AG_LANDING_LAG, 4);
+set_attack_value(attack, AG_LANDING_LAG, 6);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
 
@@ -18,7 +18,7 @@ var window_num = 1;
 
 // Window 1 / Frame(s) # - / Nair 1 Startup
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 7);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1);

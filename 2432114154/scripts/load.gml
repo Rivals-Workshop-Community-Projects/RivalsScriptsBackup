@@ -6,11 +6,16 @@ sprite_change_offset("walkturn", 46, 92);
 
 sprite_change_offset("cutscene", 350/2, 350/2);
 
+sprite_change_offset("bruh", 22, 22);
+
 sprite_change_offset("dash", 46, 92);
 sprite_change_offset("dash2", 102, 124);
 
 sprite_change_offset("galaxy1", 480/2, 270/2);
 
+sprite_change_offset("djump4", 64, 104);
+sprite_change_offset("djump2", 64, 104);
+sprite_change_offset("djump3", 64, 104);
 
 sprite_change_offset("dashstart", 46, 92);
 sprite_change_offset("dashstop", 46, 92);;

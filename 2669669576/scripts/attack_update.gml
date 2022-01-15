@@ -17,6 +17,11 @@ switch(attack){
         }
         break;
     case AT_NAIR:
+    
+		if(was_parried){
+			window = 10;
+			attack_end();
+		}
     	can_wall_jump = true;
     		if(window == 1 and window_timer == 3 and get_player_color(player) > 15){
 				sound_play(sound_get("grunt7"));
@@ -61,12 +66,13 @@ switch(attack){
             }
         break;
     case AT_UAIR:
+
     	can_wall_jump = true;
     	if(window == 1 and window_timer == 3 and get_player_color(player) > 15){
 			sound_play(sound_get("grunt1"));
 			attack_audio = sound_get("grunt1");
 		}
-        if((attack_down or up_stick_down) and window == 3 and (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) and has_hit or window_timer = floor(get_window_value(attack, window, AG_WINDOW_LENGTH)*1.5))){
+        if((attack_down or up_stick_down) and !was_parried and window == 3 and (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) and has_hit or window_timer = floor(get_window_value(attack, window, AG_WINDOW_LENGTH)*1.5))){
             has_hit = false;
             attack_end();
             window_timer = 0;
@@ -166,16 +172,18 @@ switch(attack){
 				//print_debug(proj_size);
 				nspecial_hitbox.x = x+spr_dir*34+hsp;
 				nspecial_hitbox.y = y-30+vsp;
-				nspecial_hitbox.hsp = spr_dir*5.5*(1+proj_size/10*2);
-				if(proj_size == 2){
-					nspecial_hitbox.hsp = spr_dir*9;
-				}
+				nspecial_hitbox.hsp = spr_dir*3.5*(1+proj_size/4*2);
 			}
 		}
 		
 
 		break;
 	case AT_DSPECIAL:
+		if(window < 4 and was_parried){
+			window = 8;
+			attack_end();
+		}
+	
 		can_fast_fall = false;
 		if(window == 1){
 			dspecial_falling_loop = 0;
@@ -200,12 +208,13 @@ switch(attack){
 		}
 		
 		if((window == 3 or window == 2 and window_timer > 6)and !hitpause){
-			if(shield_down){
+			if(shield_down and has_hit){
 				window= 4;
 				window_timer = 0;
 			}
 		}
 		if(window == 4){
+			
 			set_attack_value(attack, AG_CATEGORY, 1);
 		}
 		if !hitpause and (window == 2 or window == 3){
@@ -226,6 +235,7 @@ switch(attack){
 		}
 		if(window == 5 and !hitpause){
 			if(window_timer = 1){
+				destroy_hitboxes();
 				has_hit = false;
 				spawn_hit_fx(floor(x), floor(y), dive);
 				sound_play(asset_get("sfx_abyss_hazard_hit"));
@@ -331,7 +341,7 @@ switch(attack){
 			sound_play(sound_get("grunt7"));
 			attack_audio = sound_get("grunt7");
 		}
-		if((attack_down or (spr_dir == 1 and left_stick_down) or (spr_dir == -1 and right_stick_down)) and window == 3 and (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) and has_hit or window_timer = floor(get_window_value(attack, window, AG_WINDOW_LENGTH)*1.5))){
+		if((attack_down or (spr_dir == 1 and left_stick_down) or (spr_dir == -1 and right_stick_down)) and !was_parried and window == 3 and (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) and has_hit or window_timer = floor(get_window_value(attack, window, AG_WINDOW_LENGTH)*1.5))){
             attack_end();
             has_hit = false;
             window_timer = 0;
@@ -542,6 +552,9 @@ if(attack == AT_NAIR or attack == AT_FAIR or attack == AT_BAIR or attack == AT_D
         vsp = -7;
     }
 }
+
+
+
 
 #define trigger_wavebounce() 
 {

@@ -26,6 +26,8 @@ if(wall_lockout > 0){
 	wall_lockout--;
 }
 
+
+
 if(!free and !fspecial_hard_cd and (state == PS_LAND or state == PS_LANDING_LAG or state == PS_PRATLAND) and !place_meeting(x, y+4, fspecial_wall)){
 	move_cooldown[AT_FSPECIAL_AIR] = 0;
 	move_cooldown[AT_FSPECIAL] = 0;

@@ -139,7 +139,7 @@ switch (attack)
             break;
             case 2:
             case 3:
-                if (special_pressed and (up_stick_down or up_down) and !was_parried) utilt_rekka = true; 
+                if (attack_pressed and (up_stick_down or up_down) and !was_parried) utilt_rekka = true; 
                 
                 if (window == 3)
                 {

@@ -20,7 +20,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 23;
+var num_alts = 24;
 var alt_cur = get_player_color(player);
  
  
@@ -50,6 +50,7 @@ alt_name[19] = "Flipnote";
 alt_name[20] = "Bonby";
 alt_name[21] = "Vaporwave";
 alt_name[22] = "Shiny";
+alt_name[23] = "Champion";
  
  
  

@@ -154,6 +154,14 @@ uspec_meter = uspec_max;
 //Victory Theme
 set_victory_theme(sound_get("victory_theme"));
 
+//AfterImageTest
+if(get_player_color(player) == 30){ 
+    // afterimage
+    afterImageTimer = 0;
+    afterImageMax = 5;
+    afterImage = array_create(afterImageMax, -1);
+}
+
 //SUPPORT ZONE
 
 // Hikaru Support

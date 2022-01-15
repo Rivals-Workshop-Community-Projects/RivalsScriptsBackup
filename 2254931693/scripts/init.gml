@@ -26,9 +26,9 @@ ground_friction = .45;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 11;
+jump_speed = 9;
 short_hop_speed = 6;
-djump_speed = 11.5;
+djump_speed = 9;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6.5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.75; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -100,8 +100,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-set_victory_bg( sprite_get( "bonbyvictorybackground" ))
-set_victory_theme( sound_get( "bonby_victory" ));
+set_victory_bg( sprite_get( "bonbyvictorybackground" ));
+set_victory_theme(sound_get("bonby_victory"));
 
 frog_exists = 0;
 frog_deathtimer = -1;

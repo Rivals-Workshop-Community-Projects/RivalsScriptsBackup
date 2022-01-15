@@ -73,6 +73,7 @@ var window_for_hitbox = 1;
 //Top Hitbox
 window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 30);
@@ -84,9 +85,9 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.10);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); // 197 - lightning large
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 hitbox_num++;
@@ -94,6 +95,7 @@ hitbox_num++;
 // Bottom hitbox / spike
 window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 39);
@@ -105,10 +107,10 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 4);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); // 197 - lightning large
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 1);
 hitbox_num++;

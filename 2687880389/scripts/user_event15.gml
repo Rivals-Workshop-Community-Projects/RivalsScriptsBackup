@@ -524,20 +524,55 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.6", "10 Jan, 2022");
+	initPatchWords_ext("Another balance/cleanup pass, largely nerfs.", fa_left, c_gray, 1, 0);
+	initPatchWords("Fixes
+					- Fixed hurtbox on the first frame after dspecial/dstrong being idle instead of crouch
+					- Fixed issue of dspecial/dstrong sometimes having idle hurtbox throughout the whole move
+					- Cleaned up some grab/throw animation code so held opponents should move more reliably
+					- Opponents should no longer be able to dodge while held, this should fix 'dropped opponent' issues
+					Balance
+					- Dspecial now travels faster at full charge, covering more distance
+					- Removed 'pity' energy refill amount on hit (1/8th max -> 0)
+					- Energy continues to begin recharging on hit and pity amount is still awarded on walljump (unchanged)
+					- Driving speed 'limit' changed (20->17)
+					- Will continue to accelerate slowly after reaching that speed (unchanged)
+					- Reduced the time nair's lingering hitbox is active (18->14)
+					- Slightly reduced the size of nair's lingering hitbox
+					- Reduced dash attack hitboxes active lifetime (6->3)
+					- Increased fair's endlag (11->14, 17->20 on whiff)
+					- Fair visual and hurtbox adjusted to have the arm sticking out during the active hitbox frames
+					- Slightly reduced size of fair's hitbox and adjusted the position to more closely fit the smear frame
+					- Increased ustrong startup almost back to what it was a few patches ago (17->22)
+					- First hit of jab now forces fliching on ground
+					- Increased endlag after first hit of jab if second hit not initiated to reduce possibility of an infinite (9->11)
+					- Adjusted scaling kb (1.2->0.85) of fthrow
+					- Adjusted kb (6.8->6.1) and scaling kb (1.15->1.05) of bthrow
+					- Adjusted kb (6.6->6.5) and scaling kb (1.1->0.9) of uthrow
+					- Made hitboxes for fthrow/bthrow larger for more reliable connection with smaller opponents
+					- Reduced overall size of utilt hitbox at the top, stretched it down at the back edge
+					- Increased dstrong's travelable distance
+					- Increased crouch hurtbox size
+					Presentation
+					- Adjusted (hopefully improved?) visual effects for throws
+					- Added and adjusted timing of sounds for throws
+					- Added a visual cue when dspecial is fully charged
+					Thanks to snappystunner/Succ for suggestions");
+	
 	initPatch("1.5", "6 Jan, 2022");
-	initPatchWords_ext("Filled in most character-specific Munophone functionality.", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Fixed a visual bug on most alts.", fa_left, c_gray, 1, 0);
 	initPatchWords("Presentation
 				   - Fixed a bug causing visor/chest to be incorrectly colored on most alts");
 	
 	initPatch("1.4", "1 Jan, 2022");
 	initPatchWords_ext("Filled in most character-specific Munophone functionality.", fa_left, c_gray, 1, 0);
 	initPatchWords("Munophone now fully featured:
-				   - Added 'Infinite Energy' cheat
-				   - Slightly modified the 'Disco' cheat to be more noticeable on Retroblast
-				   - All other old cheats should continue to work
-				   - Brought patch notes in from Steam
-				   - Replaced Sandbert's tips section
-				   - Added Frame Data notes/adjustments for nspecial/dspecial/fstrong");
+					- Added 'Infinite Energy' cheat
+					- Slightly modified the 'Disco' cheat to be more noticeable on Retroblast
+					- All other old cheats should continue to work
+					- Brought patch notes in from Steam
+					- Replaced Sandbert's tips section
+					- Added Frame Data notes/adjustments for nspecial/dspecial/fstrong");
 	
 	initPatch("1.3", "26 Dec, 2021");
 	initPatchWords_ext("Rebalance, giving most moves whifflag and a damage increase.", fa_left, c_gray, 1, 0);

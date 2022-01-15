@@ -1,4 +1,5 @@
 
+
 if (state == PS_SPAWN) {
     if (introTimer < 31 && introTimer >= 0) {
          if get_player_color(player) == 3{

@@ -5,11 +5,12 @@ nspecial_cur_size = 1;
 shadowball_hit = false;
 shadowball_hit_timer = 0;
 
+/*
 if(instance_exists(fspecial_wall)){
     fspecial_wall.state = 4;
     fspecial_wall.life = 0;
     fspecial_wall.sprite_index = sprite_get("wall_despawn");
-}
+}*/
 
 if(my_hitboxID.type == 2){
     my_hitboxID.hitbox_timer = 0;

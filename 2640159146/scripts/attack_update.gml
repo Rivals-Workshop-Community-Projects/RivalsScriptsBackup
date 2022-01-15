@@ -35,6 +35,7 @@ if burst = 1 && (attack == AT_FSPECIAL || attack == AT_NSPECIAL || attack == AT_
 	usingspecial = true;
 	burststop = 240;
 	cooldownstart = true;
+		
 
 }
 
@@ -88,6 +89,8 @@ if burst = 1 {
 		set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 		set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
 		
+		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 14);
+		
 		set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 6.75);
 		set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, .7);
 		
@@ -105,6 +108,8 @@ if burst = 1 {
 		
 		reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK);
 		reset_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING);
+		
+		reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
 		
 		reset_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK);
 		reset_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING);
@@ -458,7 +463,7 @@ switch(attack) {
 		if window == 1 && window_timer == 9 sound_play(sound_get("swingmid"))
 	break;
 	case AT_BAIR: 
-		if window == 1 && window_timer == 5 sound_play(sound_get("swingmid"), 0, noone, 1, .9)
+		if window == 1 && window_timer == 10 sound_play(sound_get("swingmid"), 0, noone, 1, .9)
 	break;
 	case AT_USPECIAL: {
 		if window == 1 && window_timer == 1 {

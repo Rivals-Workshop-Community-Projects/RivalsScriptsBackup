@@ -1,56 +1,4 @@
 //Paired with FSpecial
-/* Maw's Throw Template
-# Creating the 'Throw'
-Your 'Throw' animation should start at the point where the 'Grab' hits the opponent, and continue through to the end of the attack. 
-
-<details>
-  <summary>Example 'Throw' attack setup</summary>
- 
-  ```GML
-//attacks/nspecial_2.gml
-//a minimal 'throw' attack example with a single hitbox. 
-//You can copy-paste this into your project to quickly test this template.
-
-set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 2);
-set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial"));
-set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
-set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 3);
-
-//startup
-set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 15);
-set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 4);
-
-//active
-set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 3);
-set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-
-//recovery
-set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
-
-set_num_hitboxes(AT_NSPECIAL_2, 1);
-
-//throw hitbox
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_LIFETIME, get_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH));
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_X, 30);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_HEIGHT, 50);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE, 8);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITPAUSE_SCALING, 0.3);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-*/
-
 var attack = AT_FTHROW; // Swap Taunt for attack that this is
 
 //Attack Values-----------------------------------------------------------------------------
@@ -131,18 +79,10 @@ set_num_hitboxes(attack, 6); // Swap 1 for number of hitboxes
 var hitbox_num = 1;
 var window_for_hitbox = 1;
 
-// visual effect randomization. Uses hitbox numbers to seed random function
-var random_x_offset_upper_limit = 40;
-var random_x_offset_lower_limit = 0;
-var random_y_offset_upper_limit = 40;
-var random_y_offset_lower_limit = 0;
-
-var random_x_offset = random_x_offset_lower_limit + random_func(hitbox_num,random_x_offset_upper_limit - random_x_offset_lower_limit,true);
-var random_y_offset = random_y_offset_lower_limit + random_func(hitbox_num,random_y_offset_upper_limit - random_y_offset_lower_limit,true);
-
 // Landing Hitbox
 window_for_hitbox = 3; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 5);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2);
@@ -165,13 +105,15 @@ window_for_hitbox = 3;
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 hitbox_num++;
 
-// Hitbox 1 
+// Hitbox 2 - 5
+for(var hitbox_num = 2; hitbox_num < 6; hitbox_num++){
 window_for_hitbox = 4; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 0);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 1);
+    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, (hitbox_num - 1) * 3);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -33);
     set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
@@ -181,102 +123,24 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 2);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 3);
     //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 20); // 20  - lightning small 
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, random_x_offset);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, random_y_offset);
+    set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, -1); // Negate most drive and SDI during shock.
+    set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, -1);
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); // 303 - basic small directional
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 30);
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 30);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1")); //sfx_absa_singlezap1 sfx_absa_singlezap2
-hitbox_num++;
+}
 
-var random_x_offset = random_x_offset_lower_limit + random_func(hitbox_num,random_x_offset_upper_limit - random_x_offset_lower_limit,true);
-var random_y_offset = random_y_offset_lower_limit + random_func(hitbox_num,random_y_offset_upper_limit - random_y_offset_lower_limit,true);
-
-// Hitbox 2
-window_for_hitbox = 4; 
+// Hitbox 6 - Final Hitbox with knockback
+window_for_hitbox = 5; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
-    set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 5);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -33);
-    set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
-    set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 66);
-    set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
-    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 2);
-    //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 21); // 21  - lightning medium
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, random_x_offset);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, random_y_offset);
-    set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
-    
-hitbox_num++;
-var random_x_offset = random_x_offset_lower_limit + random_func(hitbox_num,random_x_offset_upper_limit - random_x_offset_lower_limit,true);
-var random_y_offset = random_y_offset_lower_limit + random_func(hitbox_num,random_y_offset_upper_limit - random_y_offset_lower_limit,true);
-// Hitbox 3
-window_for_hitbox = 4; 
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
-    set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 10);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -33);
-    set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
-    set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 66);
-    set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
-    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 2);
-    //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 20); // 20  - lightning small
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, random_x_offset);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, random_y_offset);
-    set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
-hitbox_num++;
-var random_x_offset = random_x_offset_lower_limit + random_func(hitbox_num,random_x_offset_upper_limit - random_x_offset_lower_limit,true);
-var random_y_offset = random_y_offset_lower_limit + random_func(hitbox_num,random_y_offset_upper_limit - random_y_offset_lower_limit,true);
-
-// Hitbox 4
-window_for_hitbox = 4; 
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 3);
-    set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 15);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -33);
-    set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
-    set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 66);
-    set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
-    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 2);
-    //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 20); // 21  - lightning medium
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, random_x_offset);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, random_y_offset);
-    set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
-hitbox_num++;
-var random_x_offset = random_x_offset_lower_limit + random_func(hitbox_num,random_x_offset_upper_limit - random_x_offset_lower_limit,true);
-var random_y_offset = random_y_offset_lower_limit + random_func(hitbox_num,random_y_offset_upper_limit - random_y_offset_lower_limit,true);
-
-// Hitbox 5 - Final Hitbox with knockback
-window_for_hitbox = 4; 
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 4);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 19);
+    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -33);
     set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
@@ -286,16 +150,14 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_ANGLE, 60);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
     set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); // 197 - lightning large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, random_x_offset);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, random_y_offset);
-    set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 20);
+    set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, 1); // 
+    set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, 1);
+    set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 hitbox_num++;
-var random_x_offset = random_x_offset_lower_limit + random_func(hitbox_num,random_x_offset_upper_limit - random_x_offset_lower_limit,true);
-var random_y_offset = random_y_offset_lower_limit + random_func(hitbox_num,random_y_offset_upper_limit - random_y_offset_lower_limit,true);
 
 /*
 //Template for attacks - 

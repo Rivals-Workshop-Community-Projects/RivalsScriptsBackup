@@ -5,6 +5,7 @@ sprite_change_offset("idle", 48, 94);
 sprite_change_offset("idle_alt", 48, 94);
 sprite_change_offset("idle_wait", 48, 94);
 sprite_change_offset("idle_halloween", 48, 94);
+sprite_change_offset("idle_genesis", 48, 94);
 sprite_change_offset("taunt", 48, 94);
 sprite_change_offset("intro", 80, 94);
 sprite_change_offset("intro2", 48, 94);
@@ -79,6 +80,7 @@ sprite_change_offset("final_smash", 112, 190);
 sprite_change_offset("fail", 80, 94);
 sprite_change_offset("fspecial", 80, 126);
 sprite_change_offset("fspecial_2", 80, 94);
+sprite_change_offset("fspecial_2_air", 80, 94);
 sprite_change_offset("uspecial", 80, 126);
 sprite_change_offset("dspecial", 48, 94);
 
@@ -149,6 +151,9 @@ sprite_change_offset("catooken_ind", 16, 32);
 
 sprite_change_offset("brand", 0, 0);
 sprite_change_offset("halloween_drop", 48, 94);
+sprite_change_offset("funnyg8referencelmao", 48, 94);
+sprite_change_offset("gen8background", 48, 62);
+sprite_change_offset("introGenesis", 80, 158);
 
 //COMP
 sprite_change_offset("kirby_icon", 16, 32);
@@ -166,7 +171,7 @@ set_victory_bg(sprite_get("victory_bg"));
 //BLUE EXCEPTION
 try
 {
-    if (get_player_color(player) == 17)
+    if (get_player_color(player) == alt_kiera)
     {
         set_victory_portrait( sprite_get( "portrait3" ));
         set_victory_sidebar( sprite_get( "result_small3" ));
@@ -177,7 +182,7 @@ try
         fs_portrait_x = 40;
     }
     
-    else if (get_player_color(player) >= 15)
+    else if (get_player_color(player) >= alt_split)
     {
         set_victory_portrait( sprite_get( "portrait2" ));
         set_victory_sidebar( sprite_get( "result_small2" ));

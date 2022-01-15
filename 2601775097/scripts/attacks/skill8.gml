@@ -50,7 +50,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(atk, windowNum, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(atk, 4);
+set_num_hitboxes(atk, 5);
 
 hitboxNum = 1; //fire
 set_hitbox_value(atk, hitboxNum, HG_PARENT_HITBOX, 1);
@@ -118,6 +118,26 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
+
+
+hitboxNum ++; //burning fury constant hitbox
+set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); // 1 = physical attack || 2 = projectile
+set_hitbox_value(atk, hitboxNum, HG_WINDOW, 0); //at which window from the above the attack is created
+set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 2); //hitbox duration in frames
+set_hitbox_value(atk, hitboxNum, HG_WIDTH, 100);
+set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 100);
+set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 1);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE, 50);
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(atk, hitboxNum, HG_SDI_MULTIPLIER, 0.7);
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 10); //hitstun
+set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow2);
+set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
+set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 2); //it needs to be a different value for every different move in the file
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("empty"));
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
 
 
 //munophone

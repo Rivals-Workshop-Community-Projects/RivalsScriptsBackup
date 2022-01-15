@@ -64,9 +64,11 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
 			{
 				expl.parried = 0;
 			}
+			
+			// Extra hitpause on throw
 			if(transcendent == true)
 			{
-				expl.fc_timer = 12;
+				expl.fc_timer = 0; //12
 				sound_play(asset_get("sfx_blow_heavy1"));
 			}
 			else

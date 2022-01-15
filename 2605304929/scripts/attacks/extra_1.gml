@@ -1,4 +1,5 @@
 // Ground grab special input
+/*
 var attack = AT_EXTRA_1; // Swap Taunt for attack that this is
 
 //Attack Values-----------------------------------------------------------------------------
@@ -56,6 +57,7 @@ var window_for_hitbox = 1;
 //Set Hitbox Values - This is the basic block of a functional hitbox
 window_for_hitbox = 2; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 45);

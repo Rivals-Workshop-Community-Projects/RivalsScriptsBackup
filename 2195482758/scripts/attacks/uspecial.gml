@@ -153,4 +153,3 @@ set_hitbox_value(AT_USPECIAL, 6, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_USPECIAL, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 6, HG_DRIFT_MULTIPLIER, 0.01);
-

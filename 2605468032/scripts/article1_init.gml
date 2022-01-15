@@ -24,8 +24,6 @@ drag_y = 0;
 
 mouse = -1;
 
-bloop = 0;
-
 state = 0;
 state_timer = 0;
 

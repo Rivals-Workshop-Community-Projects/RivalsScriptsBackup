@@ -50,8 +50,8 @@ alt_name[22] = "Spectrum";
 alt_name[23] = "Swordfighter";
 alt_name[24] = "Slayer of Demons";
 alt_name[25] = "Thunderclap Flash";
-alt_name[26] = "Astral";
-alt_name[27] = "Redline";
+alt_name[26] = "Paint";
+alt_name[27] = "Voidfox";
 alt_name[28] = "Champion";
 alt_name[29] = "Enby";
 alt_name[30] = "Ace";
@@ -78,6 +78,10 @@ if (currAlt != 0)			textDraw(temp_x + 2 + min(image_alpha,1) * 8, temp_y + 80 + 
 textLen =		 (textLen + textDraw(temp_x + 2 + min(image_alpha,1) * 16, temp_y + 96 + offset, "fName", c_white, 0, 1000, 1, true, image_alpha, alt_name[currAlt]))/2;
 if (currAlt != num_alts-1)	textDraw(temp_x + 2 + min(image_alpha,1) * 8, temp_y + 112+ offset, "fName", c_gray, 0, 1000, 1, true, image_alpha, alt_name[currAlt+1]);
 
+if ("hue" not in self) hue = 0;
+hue+=3;
+hue%=255;
+init_shader();
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 {

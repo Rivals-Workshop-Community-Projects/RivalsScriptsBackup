@@ -1,3 +1,16 @@
+//Rune D
+if ((attack == AT_JAB && window > 4) || attack == AT_UTILT || attack == AT_BAIR || attack == AT_DAIR || attack == AT_FSTRONG){
+	if (has_rune("D")){
+		if (has_hit == true){
+			can_jump = true;
+			can_attack = true;
+			can_strong = true;
+			can_ustrong = true;
+			can_special = true;
+		}
+	}
+}
+
 //Jab
 if (attack == AT_JAB){
 	if (window == 1 || window == 4){
@@ -19,9 +32,22 @@ if (attack == AT_DATTACK){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (10 * spr_dir), y, "dash_start", spr_dir)
 		}
+		if (has_rune("A")){
+			if ((right_down && spr_dir == -1)
+			|| (left_down && spr_dir == 1)){
+				set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, -10);
+				set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED, -8);
+				set_window_value(AT_DATTACK, 4, AG_WINDOW_HSPEED, -5);
+			} else {
+				set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 10);
+				set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED, 8);
+				set_window_value(AT_DATTACK, 4, AG_WINDOW_HSPEED, 5);
+			}
+		}
 	}
-	if (!hitpause && dattack_strong_hit == true){
+	if (!hitpause && dattack_strong_hit == true && has_rune("A")){
 		//can_attack = true;
+		can_jump = true;
 	}
 	if (image_index == 10){
 		timer_var_for_dattack++;
@@ -32,14 +58,27 @@ if (attack == AT_DATTACK){
 	} else {
 		timer_var_for_dattack = 0;
 	}
+	if (free){
+		set_state(PS_IDLE_AIR);
+		hsp *= 1.16;
+		if (hsp > 11){
+			hsp = 11;
+		} else if (hsp < -11){
+			hsp = -11;
+		}
+		spawn_base_dust( x - (12 * spr_dir), y, "dash", spr_dir)
+		sound_play(asset_get("sfx_blink_dash"));
+	}
 }
 
 //Ftilt
 if (attack == AT_FTILT){
 	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-2){
+			spawn_base_dust( x + (32 * spr_dir), y, "wavedash", spr_dir * -1)
+		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x - (0 * spr_dir), y, "dash", spr_dir)
-			spawn_base_dust( x + (48 * spr_dir), y, "walk", spr_dir * -1)
 		}
 	}
 	if (window == 4){
@@ -317,6 +356,16 @@ if (attack != AT_FSPECIAL){
 }
 if (attack == AT_FSPECIAL){
 	can_wall_jump = true;
+	
+	//rune
+	if (has_rune("K")){
+		if (window == 3){
+			super_armor = true;
+		} else {
+			super_armor = false;
+		}
+	}
+	
 	if (window == 1){
 		if (!instance_exists(monkeyBall) && !inside_monkey_ball){
 			fspecial_startup = true;
@@ -333,15 +382,26 @@ if (attack == AT_FSPECIAL){
 			fspecial_startup = true;
 			*/
 			if (monkey_ball_can_be_rode == false){
-				set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 50);
-				set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 50);
-				set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
-				set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
-				set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 75);
-				set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
-				set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .7);
-				set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 7);
-				set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .5);
+				if (!has_rune("E")){
+					set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 50);
+					set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 50);
+					set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
+					set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
+					set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 75);
+					set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
+					set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .7);
+					set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 7);
+					set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .5);
+				} else if (has_rune("E")){//rune
+					enterMonkeyBall(4);
+					monkey_ball_onstage = false;
+					inside_monkey_ball = true;
+					//spawn_hit_fx(monkeyBall.x,monkeyBall.y,304);
+					monkey_ball_tilt = monkeyBall.cur_rot/1.25
+					instance_destroy(monkeyBall);
+					sound_play(sfx_monkey_ball_2_pop);
+					monkey_ball_can_be_rode = false;
+				}
 			} else if (monkey_ball_can_be_rode == true){
 				enterMonkeyBall(4);
 				monkey_ball_onstage = false;
@@ -502,16 +562,28 @@ if (attack == AT_FSPECIAL){
 
 if (attack != AT_USPECIAL){
 	uspec_past_window_1 = false;
+	uspecial_rune_grabbed_ball = false;
 }
 
 if (attack == AT_USPECIAL){
 	can_fast_fall = false;
 	uspec_img_indx = image_index;
+	
+	//rune
+	if (has_rune("K")){
+		if (window == 2 || window == 3){
+			super_armor = true;
+		} else {
+			super_armor = false;
+		}
+	}
+	
 	if (window == 1){
 		//uspecial_can_glide = true;
 		uspec_past_window_1 = false;
 		if (window_timer == 1){
 			if (inside_monkey_ball){
+				uspecial_rune_grabbed_ball = false;
 				if (instance_exists(monkeyBall)){
 					uspec_ball_onstage = true;
 				} else {
@@ -520,62 +592,76 @@ if (attack == AT_USPECIAL){
 			} else if (!inside_monkey_ball){
 				if (monkey_ball_can_be_rode == false){
 					if (instance_exists(monkeyBall)){
-						uspec_ball_onstage = true;
-						/*
-						enterMonkeyBall(4);
-						monkey_ball_onstage = false;
-						spawn_hit_fx(monkeyBall.x,monkeyBall.y,304);
-						instance_destroy(monkeyBall);
-						sound_play(sfx_monkey_ball_2_pop);
-						*/
-						
-						//worsened verions
-						
-						set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
-						set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
-						set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 2);
-						set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 0);
-						set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -38);
-						set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 44);
-						set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 64);
-						set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
-						set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
-						set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 7);
-						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
-						set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-						set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
-						set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 7);
-						set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, 0.6);
-						set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 302);
-						set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
-						set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
+						if (!has_rune("E")){
+							uspec_ball_onstage = true;
+							/*
+							enterMonkeyBall(4);
+							monkey_ball_onstage = false;
+							spawn_hit_fx(monkeyBall.x,monkeyBall.y,304);
+							instance_destroy(monkeyBall);
+							sound_play(sfx_monkey_ball_2_pop);
+							*/
+							
+							//worsened verions
+							//ball is onstage and aiai is not in it
+							//oh and he also doesnt have rune E
+							
+							set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
+							set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
+							set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 2);
+							set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 0);
+							set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -38);
+							set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 44);
+							set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 64);
+							set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
+							set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
+							set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 7);
+							set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
+							set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+							set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
+							set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 7);
+							set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, 0.6);
+							set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 302);
+							set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+							set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
+							set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
 
-						set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
-						set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 3);
-						set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 16);
-						set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 0);
-						set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -38);
-						set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 44);
-						set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 64);
-						set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 0);
-						set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 1);
-						set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 4);
-						set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 80);
-						set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 7);
-						set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 0.5);
-						set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 6);
-						set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 302);
-						set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-						set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 0);
-						set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
-						
-						set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -10.5);
-						set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
-						
-						set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX_FRAME, 40);
-						
-						hurtboxID.sprite_index = sprite_get("uspecial_hurt");
+							set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
+							set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 3);
+							set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 16);
+							set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 0);
+							set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -38);
+							set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 44);
+							set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 64);
+							set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 0);
+							set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 1);
+							set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 4);
+							set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 80);
+							set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 7);
+							set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 0.5);
+							set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 6);
+							set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 302);
+							set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+							set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 0);
+							set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
+							
+							set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -10.5);
+							set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
+							
+							set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX_FRAME, 40);
+							
+							hurtboxID.sprite_index = sprite_get("uspecial_hurt");
+						} else if (has_rune("E")){
+							enterMonkeyBall(4);
+							monkey_ball_onstage = false;
+							inside_monkey_ball = true;
+							//spawn_hit_fx(monkeyBall.x,monkeyBall.y,304);
+							monkey_ball_tilt = monkeyBall.cur_rot/1.25
+							instance_destroy(monkeyBall);
+							sound_play(sfx_monkey_ball_2_pop);
+							monkey_ball_can_be_rode = false;
+							hurtboxID.sprite_index = sprite_get("uspecial_hurt_inside");
+						}
 						
 					} else {//ball isnt onstage and aiai is not in it
 						uspec_ball_onstage = true;
@@ -598,6 +684,7 @@ if (attack == AT_USPECIAL){
 					sound_play(sfx_monkey_ball_2_pop);
 					monkey_ball_can_be_rode = false;
 					hurtboxID.sprite_index = sprite_get("uspecial_hurt_inside");
+					uspecial_rune_grabbed_ball = true;
 				}
 			}
 		}
@@ -612,6 +699,15 @@ if (attack == AT_USPECIAL){
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x - (0 * spr_dir), y, "jump", spr_dir)
+		}
+	}
+	if (has_rune("E")){
+		if (hurtboxID.sprite_index = sprite_get("uspecial_hurt")){
+			if (uspecial_rune_grabbed_ball == true){
+				hurtboxID.sprite_index = sprite_get("uspecial_hurt_getin");
+			} else if (uspecial_rune_grabbed_ball == false){
+				hurtboxID.sprite_index = sprite_get("uspecial_hurt_inside");
+			}
 		}
 	}
 	if (window > 1){
@@ -641,7 +737,7 @@ if (attack == AT_USPECIAL){
 		set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
 		set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 2);
 		set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 0);
-		set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -40);
+		set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -36);
 		set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 80);
 		set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 80);
 		set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
@@ -661,7 +757,7 @@ if (attack == AT_USPECIAL){
 		set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 3);
 		set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 16);
 		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 0);
-		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -40);
+		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -36);
 		set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 80);
 		set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 80);
 		set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 0);
@@ -723,6 +819,7 @@ if (attack != AT_DSPECIAL){
 if (attack == AT_DSPECIAL){
 	//setting up
 	if (window == 1){
+		dspecial_rune_did_explode = false;
 		if (!instance_exists(monkeyBall) && !inside_monkey_ball){
 			dspecial_startup = true;
 			dspecial_exit_startup = false;
@@ -750,6 +847,9 @@ if (attack == AT_DSPECIAL){
 	if (window < 3){//>
 		dspecial_exit_startup = false;
 	}
+	if (window != 2){
+		dspecial_rune_timer = 0;
+	}
 	// monkey ball shenanegans
     if (window == 2){
 		if (!inside_monkey_ball){
@@ -758,15 +858,24 @@ if (attack == AT_DSPECIAL){
 				hurtboxID.sprite_index = sprite_get("monkey_ball_hurt");
 			} else if (instance_exists(monkeyBall)){
 				if (monkey_ball_can_be_rode == true && monkeyBall.monkey_ball_hit_cooldown == 0){
-					/*
-					enterMonkeyBall(1);
-					hurtboxID.sprite_index = sprite_get("monkey_ball_hurt");
-					print("going in");
-					*/
 					//print("going in");
 					monkey_ball_tilt = monkeyBall.cur_rot/1.25
 					enterMonkeyBall(3);
 					
+				} else if (monkey_ball_can_be_rode == false && has_rune("C")){
+					dspecial_startup = false;
+					dspecial_exit_startup = false;
+					dspecial_rune_did_explode = true;
+					dspecial_rune_timer++;
+					if (dspecial_rune_timer == 1){
+						create_hitbox(AT_DSPECIAL, 2, monkeyBall.x, monkeyBall.y);
+						spawn_hit_fx(monkeyBall.x,monkeyBall.y+12,143);
+						monkeyBall.should_explode = true;
+						move_cooldown[AT_DSPECIAL] = 20;
+						window = 3;
+						window_timer = 0;
+						clear_button_buffer(PC_SPECIAL_PRESSED);
+					}
 				}
 			}
 		} else if (inside_monkey_ball){
@@ -783,19 +892,28 @@ if (attack == AT_DSPECIAL){
     }
 	if (window == 3){
 		dspecial_exit_startup = true;
-		if (!inside_monkey_ball && !instance_exists(monkeyBall)){
-			if (window_timer < 2){
-				dspecial_drawexit_timer = 2;
-			} else if (window_timer >= 2 && window_timer < 4){
-				dspecial_drawexit_timer = 1;
-			} else if (window_timer >= 4  && window_timer < 7){
-				dspecial_drawexit_timer = 0;
+		if (dspecial_rune_did_explode == false){
+			if (!inside_monkey_ball && !instance_exists(monkeyBall)){
+				if (window_timer < 2){
+					dspecial_drawexit_timer = 2;
+				} else if (window_timer >= 2 && window_timer < 4){
+					dspecial_drawexit_timer = 1;
+				} else if (window_timer >= 4  && window_timer < 7){
+					dspecial_drawexit_timer = 0;
+				} else {
+					dspecial_drawexit_timer = 16;
+				}
 			} else {
 				dspecial_drawexit_timer = 16;
 			}
-		} else {
+		} else if (dspecial_rune_did_explode == true){
 			dspecial_drawexit_timer = 16;
 		}
+	}
+	if (inside_monkey_ball){
+		hurtboxID.sprite_index = sprite_get("monkey_ball_hurt");
+	} else if (!inside_monkey_ball){
+		hurtboxID.sprite_index = sprite_get("aiai_hurtbox");
 	}
 }
 

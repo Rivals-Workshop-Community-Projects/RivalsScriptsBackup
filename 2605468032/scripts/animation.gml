@@ -28,33 +28,19 @@ switch (state){
             case AT_DSTRONG:
                 if (get_player_color(player) == 7)
                 {
-                    sprite_index = sprite_get("dstrong_ea")
+                    sprite_index = sprite_get("dstrong_ea");
                 }
                 break;
             case AT_USTRONG:
                 if (get_player_color(player) == 7)
                 {
-                    sprite_index = sprite_get("ustrong_ea")
+                    sprite_index = sprite_get("ustrong_ea");
                 }
                 break;
             case AT_FSPECIAL:
-                if (get_player_color(player) != 7)
+                if (get_player_color(player) == 7)
                 {
-                    if ((instance_exists(projectile) or instance_exists(pikmin) or shrimp_set == 1 or fish == 1) or fspec_set == 1)
-                    {
-                        sprite_index = sprite_get("fspecial_shrimp")
-                    }
-                }
-                else if (get_player_color(player) == 7)
-                {
-                    if ((instance_exists(projectile) or instance_exists(pikmin) or shrimp_set == 1 or fish == 1) or fspec_set == 1)
-                    {
-                        sprite_index = sprite_get("fspecial_shrimp_ea")
-                    }
-                    else
-                    {
-                        sprite_index = sprite_get("fspecial_ea")
-                    }
+                    sprite_index = sprite_get("fspecial_shrimp_ea");
                 }
                 break;
         }
@@ -69,23 +55,9 @@ switch (state){
                 }
                 break;
             case AT_FSPECIAL:
-                if (get_player_color(player) != 7)
+                if (get_player_color(player) == 7)
                 {
-                    if ((instance_exists(projectile) or instance_exists(pikmin) or shrimp_set == 1 or fish == 1) or fspec_set == 1)
-                    {
-                        sprite_index = sprite_get("fspecial_air_shrimp")
-                    }
-                }
-                else if (get_player_color(player) == 7)
-                {
-                    if ((instance_exists(projectile) or instance_exists(pikmin) or shrimp_set == 1 or fish == 1) or fspec_set == 1)
-                    {
-                        sprite_index = sprite_get("fspecial_air_shrimp_ea")
-                    }
-                    else
-                    {
-                        sprite_index = sprite_get("fspecial_air_ea")
-                    }
+                    sprite_index = sprite_get("fspecial_air_shrimp_ea")
                 }
                 break;
         }

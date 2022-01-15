@@ -80,6 +80,7 @@ var window_for_hitbox = 1;
 //Surfboard hitbox
 window_for_hitbox = 2; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
@@ -103,6 +104,7 @@ hitbox_num++;
 //Rising hitbox top
 window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
@@ -115,8 +117,8 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 4);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 60);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .3);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 4);
@@ -125,6 +127,7 @@ hitbox_num++;
 //Rising hitbox bottom
 window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is

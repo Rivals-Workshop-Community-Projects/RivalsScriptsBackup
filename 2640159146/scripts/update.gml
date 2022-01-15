@@ -6,7 +6,9 @@ rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time(
 	get_color_profile_slot_b(get_player_color(player), 0),
 	);
 set_character_color_slot(0, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));
-
+if get_player_color( player ) == 19 {
+    set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("screamgen"));
+}
 
 if cooldownstart = true {
 	burststop -= 1;

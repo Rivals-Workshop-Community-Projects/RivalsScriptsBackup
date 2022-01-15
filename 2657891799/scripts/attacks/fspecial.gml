@@ -31,7 +31,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO, 3);
 
 //reappear fwd
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
@@ -55,7 +55,7 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.7);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_GOTO, 7);
 
 //reappear back
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HAS_SFX, 1);

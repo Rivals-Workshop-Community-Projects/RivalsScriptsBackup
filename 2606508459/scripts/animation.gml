@@ -4,7 +4,8 @@ switch (state)
 {
     case PS_IDLE:
         //SPECIAL COSTUMES
-        if (!moved && curr_alt == 20) { sprite_index = sprite_get("idle_halloween"); } 
+        if (!moved && curr_alt == alt_halloween) { sprite_index = sprite_get("idle_halloween"); } 
+        else if (curr_alt == alt_gen8) { sprite_index = sprite_get("idle_genesis"); } 
         
         else if (idle_wait)
         { 
@@ -25,7 +26,7 @@ switch (state)
         
     //Intro Animation
     case PS_SPAWN:
-        if (curr_alt != 20)
+        if (curr_alt != alt_halloween)
         {
             if (intro_timer < intro_timerMax && intro_timer >= 0) 
             {

@@ -11,7 +11,7 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_HSPEED, 4);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_mega_instant"));
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 0);
 
 
@@ -28,9 +28,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 10)
 set_window_value(AT_FAIR, 3, AG_WINDOW_HSPEED, 16);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FAIR, 3, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_weak"));
-set_window_value(AT_FAIR, 3, AG_WINDOW_SFX_FRAME, 6);
+
 
 set_window_value(AT_FAIR, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 14);
@@ -61,7 +59,7 @@ set_hitbox_value(AT_FAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_swing_mega_instant"));
-set_hitbox_value(AT_FAIR, 1, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_FAIR, 1, HG_HITSTUN_MULTIPLIER, 1);
 
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 3);
@@ -84,7 +82,7 @@ set_hitbox_value(AT_FAIR, 3, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
-set_hitbox_value(AT_FAIR, 3, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_FAIR, 3, HG_HITSTUN_MULTIPLIER, 1);
 
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 3);
@@ -107,4 +105,4 @@ set_hitbox_value(AT_FAIR, 2, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
-set_hitbox_value(AT_FAIR, 2, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_FAIR, 2, HG_HITSTUN_MULTIPLIER, 1);

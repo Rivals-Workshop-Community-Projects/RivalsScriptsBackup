@@ -5,9 +5,9 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 //If you can Enhance, plays the effect/sounds, depending on the attack changes the recoil
 if (window == 1 && enhanced == false && attack != AT_JAB && ex_cooldown == 0){
-    if (parry_ex == true && shield_pressed) || 
+    if (parry_ex >= 0 && shield_pressed) || 
     
-    (parry_ex == false && 
+    (parry_ex <= 0 && 
     
     ((attack == AT_NSPECIAL || attack == AT_FSPECIAL 
     || attack == AT_DSPECIAL || attack == AT_USPECIAL) && 
@@ -293,6 +293,11 @@ if (attack == AT_FSPECIAL){
     //Sets the cooldown
     if (window == 1 && free){
         move_cooldown[AT_FSPECIAL] = 9999;
+        set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 7);
+    }
+    if (window == 1 && !free){
+        move_cooldown[AT_FSPECIAL] = 9999;
+        set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
     }
     can_fast_fall = false;
     can_wall_jump = true;
@@ -334,6 +339,7 @@ if (attack == AT_FSPECIAL){
     //Can Jump on hit
     if (window > 2 && has_hit && !hitpause){
         move_cooldown[AT_FSPECIAL] = 0;
+        set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
         if (enhanced == false){
             can_jump = true;
     //        can_attack = true;
@@ -344,6 +350,7 @@ if (attack == AT_FSPECIAL){
             }
         }
     }
+    
     //Makes so you can FSpecial back to the stage and not get stuck on the wall (thanks Supersonic!)
     if (window > 2){
         var max_height = 32;

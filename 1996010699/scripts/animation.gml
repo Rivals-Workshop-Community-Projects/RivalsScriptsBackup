@@ -75,6 +75,19 @@ if(sprite_index == sprite_get("ustrong")){
 		}
 	}
 }
+
+if(sprite_index == sprite_get("dstrong")){
+	if(window > 4){
+		sprite_index = sprite_get("dstrongKT");
+	}
+}
+
+if(sprite_index == sprite_get("ftilt")){
+	if(window > 4){
+		sprite_index = sprite_get("ftiltKT");
+	}
+}
+
 	
 if(item[14, 3] == 1){
 	if (sprite_index == sprite_get("dspecial")){

@@ -129,11 +129,16 @@ if (state == 2){
         	            instance_destroy();
                          exit;
         	}if(player_id.window == 6){
+        		if(player_id.window_timer < 3){
+        				    x = player_id.x + 30 * player_id.spr_dir;
+        					y = player_id.y - 20;
+        		}if(player_id.window_timer == 3){
         		spawn_hit_fx(player_id.x + player_id.spr_dir * 30, player_id.y - 20, 112);
         		sound_play(asset_get("sfx_ori_energyhit_heavy"));
         		create_hitbox(AT_NSPECIAL, 1, player_id.x + player_id.spr_dir * 30, player_id.y - 20);
         		    instance_destroy();
                     exit;
+        		}
         	}
         }
         }if(state_timer > 2){

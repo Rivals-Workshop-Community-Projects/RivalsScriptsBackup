@@ -9,6 +9,10 @@ var ig = 1;
 
 //Up Special Start
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_TYPE, 1);
+set_window_value(AT_USPECIAL, ig, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_USPECIAL, ig, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_CUSTOM_GRAVITY, 0);
@@ -38,9 +42,9 @@ set_window_value(AT_USPECIAL, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_LENGTH, 3); //from 4
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED, uspecial_air_max_speed * 2.5);
-set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, ig, AG_WINDOW_VSPEED, -13);
+//set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED, uspecial_air_max_speed * 2.5);
+//set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_USPECIAL, ig, AG_WINDOW_VSPEED, -10);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_SFX, asset_get("sfx_forsburn_combust"));
@@ -53,8 +57,8 @@ set_window_value(AT_USPECIAL, ig, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED, uspecial_air_max_speed * 2.5);
-set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED_TYPE, 1);
+//set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED, uspecial_air_max_speed * 2.5);
+//set_window_value(AT_USPECIAL, ig, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, ig, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 set_num_hitboxes(AT_USPECIAL, 5);

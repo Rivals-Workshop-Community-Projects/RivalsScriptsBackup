@@ -687,6 +687,11 @@ if hbox_num == 5 {
 
 	
 	if hitbox_timer == 12*4 {
+		if x < player_id.hit_player_obj.x {
+        	spr_dir = 1
+        } else {
+        	spr_dir = -1
+        }
 			hsp = 12*spr_dir
            sound_play(asset_get("sfx_bird_downspecial")) 
     	   	   	sound_play(asset_get("sfx_swipe_medium1")) 

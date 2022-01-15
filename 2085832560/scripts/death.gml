@@ -1,5 +1,8 @@
 infernal2 /= 1.5
 
+bursted = 0
+gunname = 0
+
  with (asset_get("pHitBox")) {
         if player_id == other.id {
           destroyed = true;
@@ -15,3 +18,11 @@ infernal2 /= 1.5
     rank = 0
     rankm = 220
     prevrank = 0
+    
+    if tooltip != 0 {
+        
+        tooltip += 1 + random_func(5,10,true)
+        
+    } else {
+        tooltip = 1
+    }

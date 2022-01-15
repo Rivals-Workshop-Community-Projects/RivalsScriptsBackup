@@ -18,7 +18,7 @@ vsp = vsp + 0.75;
 }
 
 if (free = 1 && state = PS_PRATFALL){
-vsp = vsp + 0.65;
+vsp = vsp + 1.15;
 }
 
 if (free = 0){
@@ -29,6 +29,7 @@ sprite_change_offset("frog_idle_air", 148, 326);
 sprite_change_offset("frog_land", 148, 326);
 sprite_change_offset("frog_hit", 148, 326);
 sprite_change_offset("frog_hitland", 148, 326);
+sprite_change_offset("frog_tongue_startup", 148, 326);
 sprite_change_offset("frog_tongue", 148, 326);
 sprite_change_offset("frog_grabbing", 148, 326);
 sprite_change_offset("frog_parried", 148, 326);
@@ -43,6 +44,7 @@ sprite_change_offset("frog_idle_air", 148, 327);
 sprite_change_offset("frog_land", 148, 327);
 sprite_change_offset("frog_hit", 148, 327);
 sprite_change_offset("frog_hitland", 148, 327);
+sprite_change_offset("frog_tongue_startup", 148, 327);
 sprite_change_offset("frog_tongue", 148, 327);
 sprite_change_offset("frog_grabbing", 148, 327);
 sprite_change_offset("frog_parried", 148, 327);
@@ -100,7 +102,7 @@ switch(state){
             sprite_index = sprite_get("frog_idle");  
         image_index = state_timer / 4;
         if (player_id.attack == AT_NSPECIAL_2 && player_id.window = 1 && player_id.window_timer = 3 && (player_id.state = PS_ATTACK_GROUND || player_id.state = PS_ATTACK_AIR)){
-            state = PS_ATTACK_GROUND;
+            state = PS_SPAWN;
             state_timer = 0;
         }
         if (player_id.attack == 48 && player_id.window = 2 && player_id.window_timer = 1 && (player_id.state = PS_ATTACK_GROUND || player_id.state = PS_ATTACK_AIR)){
@@ -151,34 +153,57 @@ switch(state){
             state = PS_IDLE_AIR;
             state_timer = 0;
         }        
+        break;   
+        
+    //NSpecial Startup
+    case PS_SPAWN:
+        sprite_index = sprite_get("frog_tongue_startup");
+
+        image_index = state_timer / 4;     
+        
+        if (state_timer = 1){
+ 
+             sound_play(sound_get("bonby_frog_start"));
+                        
+        if player_id.spr_dir = 1{
+            spr_dir = 1;
+        }
+        
+        if player_id.spr_dir = -1{
+            spr_dir = -1;
+        }   
+        
+        }
+
+        if state_timer = 12{
+            state = PS_ATTACK_GROUND;
+            state_timer = 0;             
+        }
+        
+        if player_id.state_cat = SC_HITSTUN{
+            state = PS_IDLE;
+            state_timer = 0;            
+        }
         break;        
         
     //NSpecial
     case PS_ATTACK_GROUND:
         sprite_index = sprite_get("frog_tongue");
+
+        image_index = state_timer / 3;        
+        
         if state_timer = 1{
-        sound_play(sound_get("bonby_frog_start"));
-        if player_id.spr_dir = 1{
-            spr_dir = 1;
+            sound_play(sound_get("bonby_frog_tongue"));
         }
-        if player_id.spr_dir = -1{
-            spr_dir = -1;
-        }    
+   
+        
+        if state_timer = 3{
+            create_hitbox(39, 1, x + (86 * spr_dir), y - 100);
         }
-        if state_timer = 16{
-        sound_play(sound_get("bonby_frog_tongue"));
-        }        
-        if state_timer < 16{
-        image_index = state_timer / 7;
-        }
-        if state_timer > 15{
-        image_index = state_timer / 4;
-        }
-        if state_timer = 16{
-            create_hitbox(39, 1, x + (84 * spr_dir), y - 100);
-        }
-        if state_timer = 44{
+        
+        if state_timer = 26{
             state = PS_IDLE;
+            state_timer = 0;      
         }
         break;
         
@@ -337,11 +362,11 @@ if (state_timer > 0 && free = 1){
     case PS_PRATFALL:
         sprite_index = sprite_get("frog_hit");
         image_index = state_timer / 4;
-        if (state_timer > 2 && hitstop = 0 && free = 0){
-            sound_play(sound_get("bonby_frog_land"))
-            hsp = 0;
-            state = PS_PRATLAND;
-            state_timer = 0;
+        mask_index = asset_get("empty_sprite")       
+        depth = -10;
+
+        if (state_timer = 1){
+            vsp = -14;
         }
         if hsp > 0{
             spr_dir = -1;

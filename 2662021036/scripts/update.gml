@@ -13,7 +13,18 @@ set_character_color_shading( 5, 0 );
 set_character_color_shading( 6, 0 );
 }
 
-
+with (asset_get("pHitBox")) //references all hitbox objects
+{
+	//checks if the hitbox is a melee one that we own
+	if (player_id == other and attack == 49)
+	{
+		sprite_index = other.final_hb_sprite; // changes the hitbox sprite
+		image_xscale = other.spr_dir
+		if (other.state == PS_ATTACK_GROUND || other.state == PS_ATTACK_AIR) && other.attack = 49 && other.window = 7 && other.window_timer % 3 == 0{
+		for(var i = 0; i < 20; i++) can_hit[i] = true;	
+		}
+	}
+}
 
 
 
@@ -91,3 +102,17 @@ with (asset_get("oPlayer")) {
 }
 
 
+with (asset_get("oPlayer")) {
+	
+	if (url == 2265876548){
+		other.id = id;
+		other.url = random_func( 21, 9999999999, false );
+					canon = false;supercanon = false;hypercanon = false;op = false;
+					runeA = false;runeB = false;runeC = false;runeD = false;runeE = false;runeF = false;
+					runeG = false;runeH = false;runeI = false;runeJ = false;runeK = false;
+					runeL = false;runeM = false;runeN = false;runeO = false;
+					runesUpdated = false;
+		
+	}
+	
+}

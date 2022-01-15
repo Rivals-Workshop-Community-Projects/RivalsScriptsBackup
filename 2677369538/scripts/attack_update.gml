@@ -238,7 +238,7 @@ if (attack == AT_FSPECIAL){
 		}
 	}
 	if (window == 2){
-		if (special_pressed && window_timer > 5){ 
+		if (special_pressed && window_timer > 5 && hitpause == false){ 
 			window = 8;
 			window_timer = 0;
 			destroy_hitboxes();
@@ -315,8 +315,11 @@ if (attack == AT_FSPECIAL){
 	}
 	if (window == 8){
 		sound_stop(sound_get("sfx_king_dash"));
-		if (window_timer == 1){
+		if (window_timer < 1){
+		destroy_hitboxes();
 		attack_end();
+		}
+		if (window_timer == 1){
 		create_hitbox(AT_FSPECIAL, 4, x, y); }
 		if (window_timer >= 16){ window = 9; window_timer = 0; }
 		can_wall_jump = 1;

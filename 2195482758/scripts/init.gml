@@ -60,7 +60,8 @@ knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 10; // was 8
-wave_land_adj = 1.45; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+base_wave_land_adj = 1.45; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = base_wave_land_adj; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .06; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -87,7 +88,8 @@ techroll_speed = 8;
 air_dodge_startup_frames = 0;
 air_dodge_active_frames = 5;
 air_dodge_recovery_frames = 3;
-air_dodge_speed = 7.5;
+base_air_dodge_speed = 7.5;
+air_dodge_speed = base_air_dodge_speed;
 
 //roll animation frames
 roll_forward_startup_frames = 3;
@@ -215,6 +217,7 @@ scream_timer = 0;
 
 // Utilt tomfoolery
 spin_timer = 0;
+utilt_stick = false;
 
 // Victory
 set_victory_theme( sound_get( "tenru_victory" ));

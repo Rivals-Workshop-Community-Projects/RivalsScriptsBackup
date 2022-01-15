@@ -48,8 +48,8 @@ if (attack == AT_FAIR){
 }
 
 //Strongs Wind SFXs
-if (((attack == AT_FSTRONG && window == 2 && window_timer == 9) 
-|| (attack == AT_USTRONG && window == 2 && window_timer == 9) 
+if (((attack == AT_FSTRONG && window == 2 && window_timer == 12) 
+|| (attack == AT_USTRONG && window == 2 && window_timer == 12) 
 || (attack == AT_DSTRONG && window == 2 && window_timer == 6)) && !hitpause){
     sound_play(asset_get("sfx_bird_nspecial"));
 }
@@ -332,7 +332,7 @@ if (attack == AT_USPECIAL){
    }
    //If aerial, move upwards and enters pratfall
    else {
-       set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -4);
+       set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -3.5);
        set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
        set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 5);
        

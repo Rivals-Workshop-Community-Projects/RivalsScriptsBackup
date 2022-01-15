@@ -299,6 +299,7 @@ switch attack {
             ss_dist = 60*spr_dir
             ss_type = 0
             reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO);
+            used_uspec = true
         }
     }
     break;
@@ -352,10 +353,14 @@ switch attack {
     break;
 }
 
-if (attack == AT_FSPECIAL || attack == AT_UTHROW || attack == AT_DAIR) && (!free || ss_free_timer <= 6 || has_hit) {
+if (attack == AT_FSPECIAL || attack == AT_UTHROW || attack == AT_DAIR) && (!free || ss_free_timer <= 6 || has_hit) && !used_uspec {
     set_window_value(AT_UTHROW, 3, AG_WINDOW_TYPE, 0);
     set_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE, 0);
     set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 0);
+} else if used_uspec {
+    reset_window_value(AT_UTHROW, 3, AG_WINDOW_TYPE);
+    reset_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE);
+    reset_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE);
 }
 
 #define doll_exists()

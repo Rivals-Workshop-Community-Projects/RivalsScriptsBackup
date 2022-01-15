@@ -42,10 +42,10 @@ set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 20);
-set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 303);
 
-
+set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 20);
 set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 600);

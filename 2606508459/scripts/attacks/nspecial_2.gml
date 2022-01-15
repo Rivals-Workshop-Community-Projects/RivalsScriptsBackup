@@ -1,3 +1,4 @@
+//Shine
 set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial_3"));
 set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_3_hurt"));
@@ -63,18 +64,18 @@ if (dip_swapSpecial)
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_PRIORITY, 2);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_DAMAGE, 3);
-    set_hitbox_value(AT_NSPECIAL_2, ig, HG_BASE_HITPAUSE, 8);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_ANGLE, 90);
-    set_hitbox_value(AT_NSPECIAL_2, ig, HG_BASE_KNOCKBACK, 10);
-    set_hitbox_value(AT_NSPECIAL_2, ig, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(AT_NSPECIAL_2, ig, HG_BASE_HITPAUSE, 8);
-    set_hitbox_value(AT_NSPECIAL_2, ig, HG_HITPAUSE_SCALING, 0.6);
+    set_hitbox_value(AT_NSPECIAL_2, ig, HG_BASE_KNOCKBACK, 8);
+    set_hitbox_value(AT_NSPECIAL_2, ig, HG_KNOCKBACK_SCALING, 0.1);
+    set_hitbox_value(AT_NSPECIAL_2, ig, HG_BASE_HITPAUSE, 3);
+    set_hitbox_value(AT_NSPECIAL_2, ig, HG_HITPAUSE_SCALING, 0);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_SHAPE, 0);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_HITBOX_X, 0);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_HITBOX_Y, -33);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_WIDTH, 100);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_HEIGHT, 100);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_ANGLE_FLIPPER, 8);
+    set_hitbox_value(AT_NSPECIAL_2, ig, HG_HITSTUN_MULTIPLIER, 0.75);
 }
 
 //END

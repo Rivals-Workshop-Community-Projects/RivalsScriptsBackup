@@ -92,15 +92,17 @@ if (ice == 1){
 
 	if (ice_cont == 30){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 5);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 30);
+	
 	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 5);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 30);
+	
 	set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 5);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .8);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 30);
 	
@@ -295,18 +297,21 @@ if (ice == 1){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -0);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 158);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .9);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("bulletI"));
 	
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 14);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, -2);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 158);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .9);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("bulletI"));
 	
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 14);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, 2);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 158);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, .9);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("bulletI"));
 	
 	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3.6);
@@ -411,6 +416,7 @@ if thunder == 1{
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 157);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_uair"));
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tesla"));	
 	
@@ -520,6 +526,7 @@ if fire == 1{
 	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -28);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 3);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .5);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
@@ -531,6 +538,7 @@ if fire == 1{
 	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 1);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 3);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .5);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("bulletF"));
 	
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 15);
@@ -539,6 +547,7 @@ if fire == 1{
 	set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 3);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("bulletF"));
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 3);	
+	set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, .5);
 	
 	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.6);
 	
@@ -574,7 +583,7 @@ if fire == 1{
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 5);
-	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 3);
@@ -583,7 +592,7 @@ if fire == 1{
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
-	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 35);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 38);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 16);
 	
@@ -627,13 +636,15 @@ if fire == 1{
 	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 204);
 }
 
-if thunder == 1{
+if thunder == 1 && genesis == 0{
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_plasma"));	
 	set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fairB_plasma"));
 }
-if thunder == 1 and genesis == 1{
+if genesis == 1{
+	if thunder == 1{
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_G8"));	
 	set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fairB_G8"));
+	}
 }
 
 
@@ -672,18 +683,21 @@ if (taunt_pressed){
 		}
 	}
 	if (element_change == 6){
-		sound_play(sound_get("element_switcher"));
 		if fire = 1{
 		spawn_hit_fx( x + 2*spr_dir, y + -25, switcherF);
+		sound_play(sound_get("element_switcher"));
 		}
 		if ice = 1{
 		spawn_hit_fx( x + 2*spr_dir, y + -25, switcherI);
+		sound_play(sound_get("element_switcher"));
 		}
 		if thunder = 1{
 		spawn_hit_fx( x + 2*spr_dir, y + -25, switcherP);
+		sound_play(sound_get("element_switcher"));
 		}
 		if pistols = 1{
 		spawn_hit_fx( x + 2*spr_dir, y + -25, switcherR);
+		sound_play(sound_get("element_switcher"));
 		}
 	}
 }
@@ -733,6 +747,20 @@ if (attack == 49){
         //sound_play(sound_get("JUMP"));
     //}
 //}
+
+//#region After Image Code
+if(get_player_color(player) == 30){
+if(afterImageTimer = 0) {afterImageTimer = 6;}
+//	if (afterImageTimer > 0)
+	{
+	    afterImage[afterImageTimer-1]={sprite_index:sprite_index,image_index:image_index,x:x,y:y,spr_dir:spr_dir,alpha:4};
+	    afterImageTimer--;
+	}
+	for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 4) afterImage[i].alpha--;
+//}
+//afterImageTimer++;
+}
+//#endregion
 
 
 

@@ -121,7 +121,7 @@ if hbox.type == 1 {
             hitstop_full = desired_hitstop;
         }
         
-        if !is_greninja other.damage += hbox.damage
+        if id != other.player_id other.damage += hbox.damage
         
         if is_greninja other.recent_player = id
         other.last_hit = id
@@ -164,7 +164,7 @@ kb_dir = get_hitbox_angle(hbox);
 hsp = lengthdir_x(orig_knock, kb_dir);
 vsp = lengthdir_y(orig_knock, kb_dir);
 
-if can_dead || damage >= 12 {
+if can_dead || damage >= 6 {
     state = PS_DEAD
     state_timer = 0
     hit_counter++

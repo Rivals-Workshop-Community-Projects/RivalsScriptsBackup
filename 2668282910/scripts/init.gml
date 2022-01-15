@@ -172,12 +172,15 @@ enhanced_now = false;
 ex = 0;
 ex_cooldown = 0;
 infinite_ex = false;
-parry_ex = true;
+parry_ex = 1;
 
 nspecial_turn = false;
 
 fspecial_hit = false;
 fspecial_grab = false;
+
+dstrong_grab = false;
+dstrong_grab_x = 40;
 
 will_o_wisp = noone;
 

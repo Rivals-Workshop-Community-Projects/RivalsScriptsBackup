@@ -287,11 +287,27 @@ in a Patch.
 #define CORE_patches
 
 /*
-initPatch("1.?", "??/??/2021");
+initPatch("1.?", "??/??/2022");
 initHeader("General");
 initSection("nothing to see here.
 ");
 */
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//														1.8																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+initPatch("1.8", "4/01/2022");
+initHeader("D-strong");
+initSection("= Fixed issue where Bar would not burn with the attack
+");
+initHeader("Accel Blitz");
+initSection("= Fixed bug where Bar would not render while dying in pratfall (again)
+= Fixed potential bug where the indicator will not despawn properly
+");
+initHeader("Theïkós U-strong");
+initSection("= Hitspark fixed back to the weak light hit instead of weak fire hit
+");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //																														//
 //														1.7																//

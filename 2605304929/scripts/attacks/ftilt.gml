@@ -31,16 +31,16 @@ window_num++;
 
 // Window #2 / Frame(s) # 4 / Active hitbox
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 
 window_num++;
 
-// Window #3 / Frame(s) # 5-6 / Endlag
+// Window #3 / Frame(s) # 5-7 / Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 //set_window_value(attack, window_num, AG_WINDOW_HSPEED, 6);
@@ -59,6 +59,7 @@ var window_for_hitbox = 1;
 //Set Hitbox Values - This is the basic block of a functional hitbox
 window_for_hitbox = 2; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 49);
@@ -70,11 +71,11 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 7);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .5);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 2);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 150); //150 - light water medium
-set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); //303 - basic small directional
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 hitbox_num++;
 

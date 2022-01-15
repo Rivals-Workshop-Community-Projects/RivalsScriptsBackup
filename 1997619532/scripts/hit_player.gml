@@ -3,6 +3,9 @@
 //	introhit = 1
 //}
 
+if  my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_FAIR or my_hitboxID.attack == AT_BAIR or my_hitboxID.attack == AT_UTILT or my_hitboxID.attack == AT_FTILT or my_hitboxID.attack == AT_DATTACK {
+	halob += 0.5
+}
 
 if get_player_color(player) != 4 && get_player_color(player) != 15 && get_player_color(player) != 8 && get_player_color(player) != 17 {
  sound_play(sound_get("slices"),false,noone,.5 + my_hitboxID.damage/15 , 2.5 - min((hitstop*hitstop)/120 , 1.2) )
@@ -151,7 +154,7 @@ if get_player_color(player) == 5 && sakura == 1 {
      
 if my_hitboxID.attack == AT_EXTRA_3 {
 	
-	 halo -= 1   
+	 halob -= 1   
 	
 }
 
@@ -184,7 +187,7 @@ if my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 2 {
 		
 	}
 	
-	halo -= 1
+	halob -= 1
 
 			hit_player_obj.x = x + (45 * spr_dir)
 
@@ -192,12 +195,12 @@ if my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 2 {
 }
 
 if my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 3 {
-	halo += 1   
+	halob += 1   
 	sound_play(sound_get("RI2"))
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2) {
-	 halo -= 1   
+	 halob -= 1   
 	 wavehit = 6
 	 wavetime = 2
 	   sound_play(sound_get("RI"),false,noone, 1.2 ,1.2)	
@@ -217,24 +220,24 @@ if (my_hitboxID.attack == AT_UAIR) && uairhit > 0 {
 	 uairhit -= 1   
 }
 
-if (my_hitboxID.attack == AT_UAIR) && uairhit == 0 && halo < 6 {
-	 halo -= 1   
+if (my_hitboxID.attack == AT_UAIR) && uairhit == 0 && halob < 6 {
+	 halob -= 1   
 }
 
 if (my_hitboxID.attack == AT_USTRONG) {
 	 halotimer = 180; 
-	 halo += 1  
+	 halob += 1  
 }
 
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1) {
 	 halotimer = 180; 
-	 halo += 1   
+	 halob += 1   
 	 sound_play(sound_get("slice"))
 }
 
 if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 3) {
 	 halotimer = 180; 
-	 halo += 1   
+	 halob += 1   
 }
 
 if (my_hitboxID.attack == AT_FSTRONG) {
@@ -244,7 +247,7 @@ if (my_hitboxID.attack == AT_FSTRONG) {
 if (my_hitboxID.attack == AT_DSTRONG) {
 	 halotimer = 180; 
 	 if my_hitboxID.hbox_num < 3 {
-	 	halo -= 1
+	 	halob -= 1
 	 }
 }
 
@@ -256,29 +259,29 @@ if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 2) {
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3) {
 	
-	 halo -= 1   
+	 halob -= 1   
 	 wavehit -= 1
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 5) {
 	
-	 halo -= 1   
+	 halob -= 1   
 	 wavehit -= 1
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) {
 	
-	 halo -= 1   
+	 halob -= 1   
 }
 
 if my_hitboxID.attack == AT_TAUNT {
 	
-	 halo += 5   
+	 halob += 5   
 	halotimer = 180; 
 }
 
-if halo < 6 {     
- halo += 1    
+if halob < 6 {     
+ halob += 1    
  halotimer = 180; 
 } 
 

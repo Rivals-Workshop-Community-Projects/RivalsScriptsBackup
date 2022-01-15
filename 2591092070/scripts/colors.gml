@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 13 );
+set_num_palettes( 14 );
 
 // Yoyo
 set_color_profile_slot( 1, 0, 63, 63, 116 ); //Skin
@@ -91,6 +91,12 @@ set_color_profile_slot( 12, 0, 148, 82, 59 ); //Skin
 set_color_profile_slot( 12, 1, 99, 44, 25 ); //Skin Shade
 set_color_profile_slot( 12, 2, 247, 232, 17 ); //Ring
 set_color_profile_slot( 12, 3, 217, 156, 15 ); //Ring Shade
+
+// Go-Lucky
+set_color_profile_slot( 13, 0, 118, 0, 235 ); //Skin
+set_color_profile_slot( 13, 1, 66, 0, 173 ); //Skin Shade
+set_color_profile_slot( 13, 2, 247, 158, 0 ); //Ring
+set_color_profile_slot( 13, 3, 223, 102, 57 ); //Ring Shade
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

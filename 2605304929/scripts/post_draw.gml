@@ -21,10 +21,30 @@ if(state == PS_IDLE || state == PS_CROUCH){
 
 // fspecial recovery white effect draw
 if(fspecial_recovery_enabled_flag == true){
-    gpu_set_fog(true,c_white,0,0);
+    /*
+    gpu_set_fog(true,c_yellow,0,0);
     draw_sprite_ext(sprite_index, image_index, x, y, spr_dir * 1, 1, image_angle, 1, .5);
-    gpu_set_fog(false,c_white,0,0);
+    gpu_set_fog(false,c_yellow,0,0);
+    */
+    shader_start();
+        draw_sprite_ext(sprite_get("fspecial_recovery_icon"), get_gameplay_time() / 2, x, y - 40, 1, 1, 0, c_white, 1);
+    shader_end();
 }
+
+//Genesis glitchy thing
+if(get_player_color(player) == 22)
+{
+    var rand_x, rand_y;
+    rand_x = random_func(3,50,true);
+    rand_y = random_func(6,75,true);
+    shader_start();
+    if(random_func(2, 100, false) > 95){
+        draw_sprite_part_ext(sprite_index,image_index,75+rand_x,50+rand_y,random_func(8,200,true),random_func(2,200,true),x-60*spr_dir+(random_func(6,20,true)+rand_x)*spr_dir,y-130+random_func(10,20,true)+rand_y,spr_dir,1,c_white,.75);
+        draw_sprite_part_ext(sprite_get("hitfx_large_elec"),3,75+rand_x,50+rand_y,random_func(8,200,true),random_func(2,200,true),x-60*spr_dir+(random_func(6,20,true)+rand_x)*spr_dir,y-130+random_func(10,20,true)+rand_y,spr_dir * .5,.5,c_white,.75);
+    }
+    shader_end();
+}
+
 #define Spawn_Bubbles(x,y)
 {
     var bubble_hitfx_object = spawn_hit_fx(x,y,hitfx_bubbles); // 5 - dark water small

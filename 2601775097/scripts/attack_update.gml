@@ -1004,7 +1004,7 @@ switch (attack)
         }
 
         //FX logic
-        if (window == 4 && window_timer == 1) 
+        if (window == 4 && window_timer == 1) // && !burningfury_active //V2
         {
             //FX position
             var fx_xpos = 0
@@ -1048,8 +1048,6 @@ switch (attack)
 
         if (burningfury_active)
         {
-            set_hitbox_value(AT_SKILL8, 4, HG_BASE_KNOCKBACK, 6);
-            set_hitbox_value(AT_SKILL8, 4, HG_KNOCKBACK_SCALING, 0.02);
             set_hitbox_value(AT_SKILL8, 4, HG_BASE_HITPAUSE, 7);
             set_hitbox_value(AT_SKILL8, 4, HG_HITSTUN_MULTIPLIER, 1.1);
             set_hitbox_value(AT_SKILL8, 4, HG_DAMAGE, 7);
@@ -1058,18 +1056,37 @@ switch (attack)
             set_hitbox_value(AT_SKILL8, 4, HG_HIT_PARTICLE_NUM, 2);
             set_hitbox_value(AT_SKILL8, 4, HG_HITBOX_COLOR, 2);
 
+            //V1
+            set_hitbox_value(AT_SKILL8, 4, HG_BASE_KNOCKBACK, 6);
+            set_hitbox_value(AT_SKILL8, 4, HG_KNOCKBACK_SCALING, 0.02);
             set_hitbox_value(AT_SKILL8, 1, HG_DAMAGE, 6);
             set_hitbox_value(AT_SKILL8, 1, HG_VISUAL_EFFECT, fx_fireblow2);
             set_hitbox_value(AT_SKILL8, 1, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
             set_hitbox_value(AT_SKILL8, 1, HG_EXTRA_HITPAUSE, 16);
-            set_hitbox_value(AT_SKILL8, 1, HG_HITBOX_COLOR, 2);
+
+            //V2
+            /*
+            //uses a different hitbox
+            for (var i = 1; i <= 3; i++) set_hitbox_value(AT_SKILL8, i, HG_WINDOW, 0);
+            emberfist_up = false;
+            emberfist_down = false;
+
+            set_window_value(attack, 4, AG_WINDOW_LENGTH, 14);
+
+            if (window == 4)
+            {
+                ember_fury_time_active = true;
+                ember_spr_dir = spr_dir;
+                ember_x = x;
+                ember_y = y;
+            }
+            */
             
             if (window == 5) burningfury_active = false
         }
         else
         {
-            reset_hitbox_value(AT_SKILL8, 4, HG_BASE_KNOCKBACK);
-            reset_hitbox_value(AT_SKILL8, 4, HG_KNOCKBACK_SCALING);
+            
             reset_hitbox_value(AT_SKILL8, 4, HG_BASE_HITPAUSE);
             reset_hitbox_value(AT_SKILL8, 4, HG_HITSTUN_MULTIPLIER);
             reset_hitbox_value(AT_SKILL8, 4, HG_DAMAGE);
@@ -1078,10 +1095,19 @@ switch (attack)
             reset_hitbox_value(AT_SKILL8, 4, HG_HIT_PARTICLE_NUM);
             reset_hitbox_value(AT_SKILL8, 4, HG_HITBOX_COLOR);
 
+            //V1
+            reset_hitbox_value(AT_SKILL8, 4, HG_BASE_KNOCKBACK);
+            reset_hitbox_value(AT_SKILL8, 4, HG_KNOCKBACK_SCALING);
             reset_hitbox_value(AT_SKILL8, 1, HG_DAMAGE);
             reset_hitbox_value(AT_SKILL8, 1, HG_VISUAL_EFFECT);
             reset_hitbox_value(AT_SKILL8, 1, HG_HIT_SFX);
             reset_hitbox_value(AT_SKILL8, 1, HG_EXTRA_HITPAUSE);
+
+            //V2
+            /*
+            for (var i = 1; i <= 3; i++) reset_hitbox_value(AT_SKILL8, i, HG_WINDOW);
+            reset_window_value(attack, 4, AG_WINDOW_LENGTH);
+            */
         }
 
         if (user_event_1_active) //this game hates me so i put this code here

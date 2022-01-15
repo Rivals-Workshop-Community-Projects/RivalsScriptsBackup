@@ -14,7 +14,7 @@ set_hitbox_value(39, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(39, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(39, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(39, 1, HG_SHAPE, 2);
-set_hitbox_value(39, 1, HG_LIFETIME, 5);
+set_hitbox_value(39, 1, HG_LIFETIME, 4);
 set_hitbox_value(39, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(39, 1, HG_WIDTH, 190);
 set_hitbox_value(39, 1, HG_HEIGHT, 190);

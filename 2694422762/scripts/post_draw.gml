@@ -53,7 +53,7 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) {
 
 if (card_charge == 3) {
 	if (get_gameplay_time() % 60 <= 8) {
-		gpu_set_fog(1, c_white, 0, 1)
+		gpu_set_fog(1, c_orange, 0, 1)
 		    draw_sprite_ext(sprite_index, image_index, round(x + draw_x), round(y + draw_y), spr_dir, 1, spr_angle, c_white, 0.5);
 		gpu_set_fog(0, 0, 0, 0)
 	}
@@ -62,7 +62,7 @@ if (card_charge == 3) {
 var bar_amount = blackjack_meter / (blackjack_meter_max);
 blackjack_meter_lerp = lerp(blackjack_meter_lerp, bar_amount, 0.3)
 
-var bar_color_amt = floor(bar_amount * 3);
+var bar_color_amt = max(floor(bar_amount * 3), 0);
 var bar_color = c_white;
 if (blackjack_cooling_timer > 0) {
 	bar_color = blackjack_meter_colors_cooling

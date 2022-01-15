@@ -40,7 +40,11 @@ if get_player_color( player ) == 19{
     maskHeader();
     draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_white, 1);
     maskMidder();
-    draw_sprite_tiled_ext(sprite_get("gradient"), get_gameplay_time()/4, draw_x, draw_y, 1, 1, c_white, 1)
+    if burst == 1 {
+    draw_sprite_tiled_ext(sprite_get("gradient2"), get_gameplay_time()/4, draw_x, draw_y, 1, 1, c_white, 1)
+    } else {
+    draw_sprite_tiled_ext(sprite_get("gradient"), get_gameplay_time()/4, draw_x, draw_y, 1, 1, c_white, 1)  
+    }
     maskFooter();
 }
 //================================================================================

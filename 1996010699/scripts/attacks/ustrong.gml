@@ -121,7 +121,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 66);
-set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_boss_laser_hit"));
+set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE_FLIPPER, 6);
 
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);

@@ -1,4 +1,236 @@
 
+if bursted != 0 && down_down {
+	move_cooldown[AT_DSPECIAL] = 5
+}
+
+
+      
+if state == PS_RESPAWN {
+      if state_timer == 90 {
+      shake_camera(5,5)
+      sound_stop(sound_get("exp1"))
+      sound_play(sound_get("exp1"),false,noone,1,1)
+      spawn_hit_fx(x ,y - 40, exp1)
+      }
+}
+  
+      
+if "in_adventure" in self {
+	
+   if get_gameplay_time() == 2 {
+   	 x = 2477
+   	 y = 10455
+   }	
+   
+   has_walljump_actual = true
+   
+   if move_cooldown[AT_JAB] > 0 {
+		hitpause = 0
+		hitstop = 0
+	}
+	
+	
+   if state == PS_WALL_JUMP {
+
+        move_cooldown[AT_FSPECIAL_2] = 10
+        if get_gameplay_time() % 3 == 0 {
+        	sound_play(sound_get("bike1"),false,noone,1,0.9)
+     	sound_play(sound_get("slice"))
+     	spawn_hit_fx(x,y - 10, 14)
+     	shake_camera(2,2)
+        }
+     	spr_dir *= -1
+     	move_cooldown[AT_FSPECIAL] = 0
+      	 set_attack(AT_FSPECIAL)
+      	 window = 6
+      	 window_timer = 6
+      	 vsp = -8
+      	 hsp = 4*spr_dir
+      	 
+   }
+   
+         if attack == 18 && window == 5 && window_timer == 5 && !hitpause{
+      	old_hsp = hsp
+      	old_vsp = vsp
+      	move_cooldown[AT_FSPECIAL] = 0
+      	 set_attack(AT_FSPECIAL)
+      	 window = 6
+      	 window_timer = 1
+      	 hsp = old_hsp
+      	 vsp = old_vsp
+      }
+      
+   if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
+   	  
+   	  
+   	  soft_armor = 999
+   	  
+   	  if !free && down_down {
+   	  	  hsp -= 0.5*spr_dir 
+   	  	  move_cooldown[AT_USPECIAL_GROUND] = 5
+   	  	  if state_timer %5 == 0 {
+   	  	  	sound_stop(sound_get("bike1"))
+   	  	  	sound_play(sound_get("bike1"),false,noone,1,0.8)
+   	  	  }
+   	  }
+   	  
+   	  if !free && down_hard_pressed {
+   	  	  y += 8
+   	  }
+   	  
+   	  if right_down && hsp < 10 && move_cooldown[AT_DTILT] < 10 {
+   	  	hsp += 0.3
+   	  }
+   	  
+   	  if left_down && hsp > -10 && move_cooldown[AT_DTILT] < 10 {
+   	  	hsp -= 0.3
+   	  }
+   	  
+   	  
+   	  lmtime = 300
+   	
+
+      
+      move_cooldown[AT_UTILT] = 0
+      
+      if attack == AT_BAIR && window == 3 && window_timer == 11 {
+      	 sound_play(asset_get("sfx_ell_eject"),false,noone,1,.85)
+      	 spawn_hit_fx(x,y - 20, 302)
+      	 y -= 10 
+      	move_cooldown[AT_FSPECIAL] = 0
+      	 set_attack(AT_FSPECIAL)
+      	 window = 3
+      	 window_timer = 1
+      }
+      
+
+      if attack == AT_FSPECIAL or attack == AT_BAIR or attack == AT_USPECIAL {
+      	move_cooldown[AT_NSPECIAL_2] = 999
+      }
+      
+      if attack == AT_FSPECIAL && shield_down && move_cooldown[AT_DTILT] == 0{
+      	   
+      	   vsp += 0.22
+      	   
+      	   if window == 6 && window_timer == 10 {
+      	   	 window = 3
+      	     window_timer = 0
+      	   }
+      	   
+      	   if !free && abs(hsp) > 6 {
+      	   	hsp = -8*spr_dir
+      	   } else {
+      	   y -= 3
+      	   window = 6
+      	   window_timer = 1
+      	   hsp -= 10*spr_dir
+      	   vsp -= 8
+      	   }
+      	   
+      	   switch random_func(1,6,true) {
+      	   	   case 0 :
+      	   	     sound_play(sound_get("SGF"));
+      	   	     sgg = spawn_hit_fx( x, y, shotgun2 )
+      	   	     sgg.depth = 0
+      	   	     create_hitbox(AT_FSTRONG,1,x + 110*spr_dir,y -40)
+      	   	     create_hitbox(AT_FSTRONG,2,x + 70*spr_dir,y -40)
+      	   	     create_hitbox(AT_EXTRA_3 , 1 , x - 25 * spr_dir, y - 20 );	
+                 create_hitbox(AT_EXTRA_3 , 2 , x - 25 * spr_dir, y - 20 );	
+      	   	   break ;
+      	   	   
+      	   	   case 1 :
+      	   	   
+      	   	    sound_play(sound_get("gun3s"));
+                sgg = spawn_hit_fx( x + (55 * spr_dir) , y - 36, 305 )
+                sgg.depth = 0
+                create_hitbox(AT_EXTRA_1 , 8 , x + (22 * spr_dir) , y - 36 );
+                create_hitbox(AT_EXTRA_2, 1 , x - (30 * spr_dir), y - 20 );
+      	   	   break ;
+      	   	   
+      	   	   case 2 :
+      	   	    sound_play(sound_get("exp2"));
+      	   	    sound_play(asset_get("sfx_ell_overheat"));
+      	   	     sgg = spawn_hit_fx( x + (20 * spr_dir) , y - 30, 302 )
+      	   	     sgg.depth = 0
+                 create_hitbox(AT_EXTRA_1 , 21 , x - 30 * spr_dir, y - 20 );	
+				 create_hitbox(AT_EXTRA_1 , 22 , x - 30 * spr_dir, y - 20 );
+				 create_hitbox(AT_EXTRA_1 , 23 , x - 30 * spr_dir, y - 20 );
+				 create_hitbox(AT_EXTRA_1 , 24 , x - 30 * spr_dir, y - 20 );
+				 create_hitbox(AT_EXTRA_2, 1 , x - (30 * spr_dir), y - 20 );
+      	   	   break ;
+      	   	   
+      	   	   case 3 :
+      	   	      sound_play(sound_get("exp1"));
+      	   	      sgg = spawn_hit_fx( x + (20 * spr_dir) , y - 30, 303 )
+      	   	      sgg.depth = 0
+			      create_hitbox(AT_EXTRA_2, 2 , x + (50 * spr_dir), y - 30 );	
+			      create_hitbox(AT_EXTRA_2, 1 , x - (30 * spr_dir), y - 20 );	
+			      move_cooldown[AT_FTILT] = 20
+      	   	   break ;
+      	   	   
+      	   	   case 4 :
+      	   	    sound_play(sound_get("gun3s"));
+                sgg = spawn_hit_fx( x + (55 * spr_dir) , y - 56, 305 )
+                sgg.depth = 0
+                create_hitbox(AT_EXTRA_1 , 8 , x + (22 * spr_dir) , y - 46 );
+                create_hitbox(AT_EXTRA_2, 1 , x - (30 * spr_dir), y - 20 );
+      	   	   break ;
+      	   	   
+      	   	   case 5 :
+      	   	     sound_play(sound_get("SGF"));
+      	   	     sgg = spawn_hit_fx( x, y, shotgun2 )
+      	   	     sgg.depth = 0
+      	   	     create_hitbox(AT_FSTRONG,1,x + 110*spr_dir,y -40)
+      	   	     create_hitbox(AT_FSTRONG,2,x + 70*spr_dir,y -40)
+      	   	     create_hitbox(AT_EXTRA_3 , 1 , x - 25 * spr_dir, y - 20 );	
+                 create_hitbox(AT_EXTRA_3 , 2 , x - 25 * spr_dir, y - 20 );	
+      	   	   break ;
+     	   	 
+      	   }
+      	   
+      	   move_cooldown[AT_DTILT] = 20
+      	   
+      }
+      
+      if move_cooldown[AT_DTILT] == 10 {
+      	      	 create_hitbox(AT_EXTRA_3 , 1 , x - 25 * spr_dir, y - 20 );	
+                 create_hitbox(AT_EXTRA_3 , 2 , x - 25 * spr_dir, y - 20 );	
+                 create_hitbox(AT_EXTRA_2, 1 , x - (30 * spr_dir), y - 20 );
+      }
+      
+      if move_cooldown[AT_FTILT] > 0 && move_cooldown[AT_FTILT] % 4 == 0 {
+      	
+      	set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_HSPEED, -3 - (random_func(1,  3, true)) );
+        set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_VSPEED, -4.5 - (random_func(2,  3, true)) );
+        
+        set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_VSPEED, 1 - (random_func(2, 10, true)/3) );
+        
+      	   	      sound_play (sound_get("exp1"),false,noone,1,1.2);
+      	   	      spawn_hit_fx( x + (20 * spr_dir) , y - 30, 303 )
+			      create_hitbox(AT_EXTRA_2, 2 , x + (50 * spr_dir), y - 30 );	
+			      create_hitbox(AT_EXTRA_2, 1 , x - (30 * spr_dir), y - 20 );	
+      }
+   
+   } else {
+   	
+   	 if move_cooldown[AT_NSPECIAL_2] > 30 && attack != AT_TAUNT { //&& get_gameplay_time() > 160 {
+   	 	sound_play(asset_get("sfx_ell_eject"));
+   	 	sound_play(asset_get("sfx_ell_overheat"));
+   	 	shake_camera(6,6)
+   	 	set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_HSPEED, 3);
+        set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_VSPEED, -8);
+        set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_GRAVITY, 0.3);
+   	 	create_hitbox(AT_BAIR,2,x,y - 50)
+   	 	move_cooldown[AT_NSPECIAL_2] = 30
+   	 }
+   	 
+   }
+
+
+
+}
+
+
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self
@@ -49,12 +281,7 @@ if gainlockout > 0 {
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_HSPEED, 6 * spr_dir);
 set_hitbox_value(AT_TAUNT, 2, HG_PROJECTILE_HSPEED, -6 * spr_dir);
 
-if(get_gameplay_time() == 1){
 
-inx = x
-iny = y
-	
-}
 
 /*
 if(get_gameplay_time() == 2){
@@ -327,6 +554,7 @@ if get_gameplay_time() % 7 == 6 {
 
 if get_gameplay_time() <= 120 && hunter == 0 and taunt_pressed && get_player_color(player) == 1{
 	hunter = 1
+	casing = 1
 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
 	sound_play(sound_get("Dintro"));
 	set_victory_theme(sound_get("Dwin"));
@@ -337,6 +565,7 @@ if get_gameplay_time() <= 120 && hunter == 0 and taunt_pressed && get_player_col
 
 if get_gameplay_time() <= 120 && Vrank == 0 and taunt_pressed && get_player_color(player) != 1{
 	Vrank = 1
+	casing = 1
 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
     sound_play(sound_get("rankc")) 	
 }

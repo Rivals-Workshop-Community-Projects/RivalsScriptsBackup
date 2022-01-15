@@ -186,12 +186,15 @@ initWords("Golem will summon a ring of rocks around himself to attack, that will
 initWords("You can stack up to 4, and you can consume them to enhance each of the moves described in this Phone.");
 initImage_ext(sprite_get("dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("Armored Normals: DTilt, UTilt and NAir");
+initTip("Enhanced Normals: DTilt, UTilt and NAir");
 initWords("Normally, only DTilt has access to Sturdy Armor among Golem's normals.");
 initImage_ext(sprite_get("dtilt"), 4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("With Rocks, UTilt and NAir also get that.");
 initImage_ext(sprite_get("utilt"), 5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("nair"), 4, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initWords("On top of that, if you have rocks, you can jump-cancel your Dash Attack.");
+initImage_ext(sprite_get("dattack"), 8, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("jump"), 0, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Armored Strongs");
 initWords("Normally, only FStrong has access to Sturdy Armor among Golem's strongs.");
@@ -256,6 +259,31 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.5", "22/01/09");
+initHeader("Fifth Patch");
+initSection("Reworks");
+initWords("UTilt got reworked from a combo starter for low percents and kill option for high percents into a combo starter at all percents:");
+initWords_ext("UTilt's knockback scaling got reduced (1.15 > 0.5);", fa_left, c_white, 1, false);
+initWords_ext("The move will now have much less endlag on hit (13f > 8f).", fa_left, c_white, 1, false);
+initWords("DAttack got a bit reworked to be less safe, but more rewarding with stones:");
+initWords_ext("It has more endlag on whiff (9 > 15);", fa_left, c_white, 1, false);
+initWords_ext("You can now jump-cancel the move on hit if you have rocks (this will consume rocks);", fa_left, c_white, 1, false);
+initSection("Buffs");
+initWords("None. Sorry.");
+initSection("Nerfs");
+initWords("DSpecial:");
+initWords("The move's startup is now slower (5 > 7);");
+initWords("Each hitbox of the multihit is now more SDIable (1 > 1.1).");
+initSection("Other");
+initWords("BAir got a couple minor changes:");
+initWords_ext("BAir's latebox doesn't have an angle flipper anymore;", fa_left, c_white, 1, false);
+initWords_ext("The semispike now has more base hitpause (7 > 10).", fa_left, c_white, 1, false);
+initWords("FStrong's armor is now displayed correctly (during the first window, when it's actually present);");
+initWords("Geodude now has less vertical speed (8 > 6);");
+initWords("FSpecial now has more hitpause on the jumping hitbox (5 > 8, with a scaling of 0.65) and the rolling hitbox (5 > 6, with a scaling of 0.5);");
+initWords("USpecial now has a different hitpause formula on the spike explosion hitbox (18 > 14, with a scaling of 1.1);");
+initWords("Changed Golem's victory song from the Pokemon TCG's victory theme to the ending part of a song purposefully made by TailwindZ (which it's gonna be used in the future, dw ;)).");
+
 initPatch("1.4", "22/01/03");
 initHeader("Forth Patch");
 initSection("Reworks");

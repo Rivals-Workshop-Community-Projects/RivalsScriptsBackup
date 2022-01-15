@@ -99,10 +99,8 @@ bubble_x = 0;
 bubble_y = 8;
 
 //the
-the_timer = 0;
-the_charge = false;
-the_charging = false;
-the_shine = 0;
+itgoesdown = 0;
+itgoesup = 0;
 
 // You could use var in attack_update, but this should save a couple allocations every cycle
 dair_hitbox = noone;

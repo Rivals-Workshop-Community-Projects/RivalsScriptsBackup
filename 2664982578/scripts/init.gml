@@ -210,6 +210,8 @@ if(alt == 14 || alt == 15 || alt == 16 || alt == 17 || alt == 18 || alt == 23){
 	bbout_egg = true;
 }if(alt == 18 || alt == 23 || alt == 24){ 
 	champ_skin = true;
+}if(alt == 24){ 
+	set_victory_portrait(sprite_get("nothingthere_portrait"));
 }
 
 

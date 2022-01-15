@@ -2,8 +2,8 @@
 //booster_rush_charges = max_booster_rush_charges;
 //rocket_fuel = max_rocket_fuel;
 fuel_recovery_active = true;
-rocket_fuel += pity_fuel_amount;
-rocket_fuel = (rocket_fuel > max_rocket_fuel) ? max_rocket_fuel : rocket_fuel;
+//rocket_fuel += pity_fuel_amount;
+//rocket_fuel = (rocket_fuel > max_rocket_fuel) ? max_rocket_fuel : rocket_fuel;
 
 afterimage_countdown = 0;
 

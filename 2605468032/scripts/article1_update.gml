@@ -224,12 +224,7 @@ switch(state)
         hsp = 0;
         vsp = 0;
         destroy_timer++
-        if (destroy_timer == 1 and bloop == 1)
-        {
-            create_hitbox(AT_FSPECIAL, 2, x, y - 35);
-            bloop = 0;
-        }
-        else if (destroy_timer == 3)
+        if (destroy_timer == 3)
         {
             explode = create_hitbox(AT_EXTRA_1, 1, x, y - 40)
         }
@@ -300,11 +295,6 @@ if (countdown == 0)
             state = PS_HITSTUN
         }
     }
-    if (bloop == 1)
-    {
-        create_hitbox(AT_FSPECIAL, 2, x, y - 35)
-    }
-    bloop = 0;
     state = 9;
     image_index = 0;
     countdown = -1;

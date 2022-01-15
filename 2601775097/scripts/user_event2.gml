@@ -54,7 +54,8 @@ if (theikos_alt)
 
         if (theikos_color_alpha <= 0) theikos_color_increase = true;
     }
-    color_rgb = make_color_rgb(theikos_red, theikos_green, theikos_blue);
-    set_color_profile_slot(26, alt_col_hair, color_get_red(color_rgb), color_get_green(color_rgb), color_get_blue(color_rgb));
+    set_color_profile_slot(26, alt_col_hair, theikos_red, theikos_green, theikos_blue);
     init_shader();
 }
+
+//merge_color(small num, big num, time);

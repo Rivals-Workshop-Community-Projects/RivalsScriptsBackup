@@ -18,240 +18,7 @@ if ((attack == AT_NSPECIAL)
     } else {
     	can_move = false;
     }
-    // Prevent grab spamming
-    //move_cooldown[AT_NSPECIAL] = 20;
-    
-    holding_someone = false;
-    // Try to make sure nobody else can grab who we're holding
-    var last_frame_of_window = get_window_value(attack, window, AG_WINDOW_LENGTH);
-    with (oPlayer) {
-        if (RETROBLAST_HOLDER_ID == other.id) {
-        //if (RETROBLAST_HOLDER_ID != noone) {
-        //if (RETROBLAST_HOLDER_ID == other.player_id) {
-        //if (id != other.id) {
-            other.holding_someone = true;
-            // Some characters will respect the grabbed player's super armor and fail their grab and let us finish ours
-            //super_armor = true;
-            // Prevent the opponent from acting
-            //state = PS_HITSTUN;
-            // Not sure what the difference between this and setting state to hitpause is
-            hitpause = true;
-            // This is how many frames to stay in hitpause.  It refreshes to 2 every cycle of this move
-            hitstop = 2;
-            //white_flash_timer = 0;
-            // Hold 'em still
-            //hsp = -0.5 * other.spr_dir;
-            //vsp = -0.5;
-            // Bump them away gently if we fumble
-            //old_hsp = -0.5 * other.spr_dir;
-            //old_vsp = -0.5;
-            
-            // Determine the offset needed to appear where the holder is holding this player
-            var grab_x_offset = x;
-            var grab_y_offset = y;
-            
-            switch (other.attack) {
-                case AT_NSPECIAL :
-                    spr_dir = -other.spr_dir;
-                    switch (other.window) {
-                        case 3 :
-                        	if (other.window_timer < last_frame_of_window) {
-                            	grab_x_offset = other.x + (54 * other.spr_dir);
-                            	grab_y_offset = other.y - 32;
-                        	} else {
-                            	grab_x_offset = other.x + (46 * other.spr_dir);
-                            	grab_y_offset = other.y - 34;
-                        	}
-                            break;
-                        case 4 :
-                            grab_x_offset = other.x + (46 * other.spr_dir);
-                            grab_y_offset = other.y - 34;
-                            break;
-                        case 6 :
-                            grab_x_offset = other.x + (46 * other.spr_dir);
-                            grab_y_offset = other.y - 34;
-                            break;
-                        default :
-                            break;
-                    }
-                    break;
-                case AT_NTHROW :
-                    switch (other.window) {
-                        case 1 :
-                            if (other.window_timer < (last_frame_of_window / 3)) {
-                                spr_dir = other.spr_dir;
-                                grab_x_offset = other.x - (46 * other.spr_dir);
-                                grab_y_offset = other.y - 32;
-                            } else if (other.window_timer < ((2 * last_frame_of_window) / 3)) {
-                                spr_dir = other.spr_dir;
-                                grab_x_offset = other.x - (44 * other.spr_dir);
-                                grab_y_offset = other.y - 28;
-                            } else if (other.window_timer < last_frame_of_window) {
-                                spr_dir = other.spr_dir;
-                                grab_x_offset = other.x - (28 * other.spr_dir);
-                                grab_y_offset = other.y - 24;
-                            } else {
-                            	spr_dir = -other.spr_dir;
-                                grab_x_offset = other.x + (90 * other.spr_dir);
-                                grab_y_offset = other.y - 28;
-                            }
-                            break;
-                        case 2 :
-                            spr_dir = -other.spr_dir;
-                            if (other.window_timer < (last_frame_of_window / 2)) {
-                                grab_x_offset = other.x + (90 * other.spr_dir);
-                                grab_y_offset = other.y - 28;
-                            }
-                            break;
-                        default :
-                            break;
-                    }
-                    break;
-                
-                case AT_FTHROW :
-                    spr_dir = -other.spr_dir;
-                    switch (other.window) {
-                        case 1 :
-                        	if (other.window_timer < last_frame_of_window) {
-                            	grab_x_offset = other.x + (26 * other.spr_dir);
-                            	grab_y_offset = other.y - 56;
-                        	} else {
-                        		grab_x_offset = other.x - (56 * other.spr_dir);
-                            	grab_y_offset = other.y - 80;
-                        	}
-                            break;
-                        case 2 :
-                        	if (other.window_timer < last_frame_of_window) {
-	                            grab_x_offset = other.x - (56 * other.spr_dir);
-	                            grab_y_offset = other.y - 80;
-                        	} else {
-	                            grab_x_offset = other.x - (60 * other.spr_dir);
-	                            grab_y_offset = other.y - 74;
-                        	}
-                            break;
-                        case 3 :
-                        	if (other.window_timer < last_frame_of_window) {
-	                            grab_x_offset = other.x - (60 * other.spr_dir);
-	                            grab_y_offset = other.y - 74;
-                        	} else {
-	                            grab_x_offset = other.x - (42 * other.spr_dir);
-	                            grab_y_offset = other.y - 96;
-                        	}
-                            break;
-                        case 4 :
-                        	if (other.window_timer < last_frame_of_window) {
-	                            grab_x_offset = other.x - (42 * other.spr_dir);
-	                            grab_y_offset = other.y - 96;
-                        	} else {
-	                            grab_x_offset = other.x + (46 * other.spr_dir);
-	                            grab_y_offset = other.y - 96;
-                        	}
-                            break;
-                        default :
-                            break;
-                    }
-                    break;
-                    
-                case AT_UTHROW :
-                    spr_dir = -other.spr_dir;
-                    switch (other.window) {
-                        case 1 :
-                        	if (other.window_timer < last_frame_of_window) {
-	                            grab_x_offset = other.x + (46 * other.spr_dir);
-	                            grab_y_offset = other.y - 44;
-                        	} else {
-                        		grab_x_offset = other.x + (40 * other.spr_dir);
-                            	grab_y_offset = other.y - 54;
-            				}
-                            break;
-                        case 2 :
-                            grab_x_offset = other.x + (40 * other.spr_dir);
-                            grab_y_offset = other.y - 54;
-                            break;
-                        default :
-                            break;
-                    }
-                    break;
-                
-                case AT_DTHROW :
-                	// I think trying to use get_window_value here accesses
-                	// the window belonging to the grabbed target, so I'll
-                	// need to be clever if I want to do that some other way.
-                	//var current_window_length = get_window_value(other.attack, other.window, AG_WINDOW_LENGTH);
-                    spr_dir = -other.spr_dir;
-                    switch (other.window) {
-                        case 1 :
-                			if (other.window_timer == last_frame_of_window) {
-	                            grab_x_offset = other.x + (46 * other.spr_dir);
-	                            grab_y_offset = other.y - 32;
-                			} else if (other.window_timer < (last_frame_of_window / 2)) {
-	                            grab_x_offset = other.x + (46 * other.spr_dir);
-	                            grab_y_offset = other.y - 26;
-                            } else {
-	                            grab_x_offset = other.x + (46 * other.spr_dir);
-	                            grab_y_offset = other.y - 20;
-                            }
-                            break;
-                        case 2 :
-                        	if (other.window_timer < last_frame_of_window) {
-                    			grab_x_offset = other.x + (46 * other.spr_dir);
-                            	grab_y_offset = other.y - 32;
-                        	} else {
-                        		grab_x_offset = other.x + (44 * other.spr_dir);
-	                            grab_y_offset = other.y - 68;
-                        	}
-                            break;
-                        case 3 :
-                        	if (other.window_timer < last_frame_of_window) {
-	                            grab_x_offset = other.x + (44 * other.spr_dir);
-	                            grab_y_offset = other.y - 68;
-                        	} else {
-	                            grab_x_offset = other.x + (-10 * other.spr_dir);
-	                            grab_y_offset = other.y - 100;
-                        	}
-                            break;
-                        case 4 :
-	                        if (free) {
-	                            grab_x_offset = other.x + (-10 * other.spr_dir);
-	                            grab_y_offset = other.y - 100;
-                        	} else {
-                        		grab_x_offset = other.x + (46 * other.spr_dir);
-	                        	grab_y_offset = other.y - 26;
-                        	}
-                            break;
-                        case 5 :
-                        	grab_x_offset = other.x + (46 * other.spr_dir);
-	                        grab_y_offset = other.y - 26;
-                            break;
-                        default :
-                            break;
-                    }
-                    break;
-                default :
-                    break;
-            }
-            
-            x = grab_x_offset;
-            y = grab_y_offset;
-        }
-    }
-    
-    //sound_play(sound_get("borpo"));
-    
-    // TODO - prove we can at least detect holding an opponent
-    /*
-    if (window == 3) {
-        window = 6;
-        window_timer = 0;
-        with (asset_get("oPlayer")) {
-            if (RETROBLAST_HOLDER_ID == other.id) {
-                RETROBLAST_HOLDER_ID = noone;
-            }
-        }
-        holding_someone = false;
-    }
-    */
-    
+
     if (attack == AT_NSPECIAL) {
     	if (window == 1) { // Allow changing directions during windup
     		created_grab_hitbox = false;
@@ -353,13 +120,6 @@ if ((attack == AT_NSPECIAL)
             let_everyone_go();
         }
     } else if (attack == AT_UTHROW) {
-    	if ((window == 2) && (window_timer == 1)) {
-    		current_effect_sound = sound_play(takeoff_start_sound, false, noone, 1, 1.3);
-    	} else if ((window == 2) && (window_timer == (get_window_value(attack, window, AG_WINDOW_LENGTH) - 4))) {
-	        sound_stop(current_effect_sound);
-	        sound_play(laser_blast_sound, false, noone, 1, 0.5);
-    	}
-    		
         // Oficially let go
         if ((window == 2)
             && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
@@ -685,6 +445,7 @@ if (attack == AT_DSPECIAL) {
 		if (!was_parried) {
 			if (!free) {
 				set_state(PS_CROUCH);
+				change_hurtbox_sprite_to_crouch_next_frame = true;
 				state_timer = 4;
 			} else {
 				window = 8;
@@ -713,7 +474,6 @@ if (attack == AT_DSPECIAL) {
 if (attack == AT_DSTRONG) {
 	// Slide a little left or right
 	if ((window > 2) && (window < 4 + num_dstrong_spins)) {
-		var dstrong_max_speed = 4;
 		if (left_down) {
 			if (abs(hsp) < dstrong_max_speed) {
 				hsp -= dstrong_accel;
@@ -744,6 +504,7 @@ if (attack == AT_DSTRONG) {
 		&& !was_parried)
 	{
 		set_state(PS_CROUCH);
+		change_hurtbox_sprite_to_crouch_next_frame = true;
 		state_timer = 4;
 	}
 	

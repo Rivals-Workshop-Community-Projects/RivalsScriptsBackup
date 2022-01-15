@@ -24,6 +24,7 @@ shotoTurnBuffer = 0;
 shotoDir = 0;
 shotoMove = 0;
 shotoMoveBuffer = 0;
+shotoDirHeld = 0;
 isShoto = -1;
 inputNSpec2 = 0;
 inputNSpec = 0;

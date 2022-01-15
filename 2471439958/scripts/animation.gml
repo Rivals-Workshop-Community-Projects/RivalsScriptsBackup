@@ -68,6 +68,8 @@ case PS_ATTACK_GROUND:
 }
 if get_player_color(player) == 30{
 	genesis = 1
+}else{
+	genesis = 0
 }
 
 

@@ -25,14 +25,42 @@ if(state == PS_DOUBLE_JUMP){
     if(double_jump_backward_flag == true){sprite_index = (sprite_get("doublejump_backward"));}
 }
 
-// Lukaru's intro code
+// Intro Code
 if(state == PS_SPAWN){
-    var length = 13; // num of anim frames
-    var spd = 5; // in game frames per anim frame
-    if (state_timer % spd == 0) introTimer++;
-    sprite_index = sprite_get(introTimer<length&&introTimer>=0?"intro":"idle");
-    if (introTimer < 0) image_index = 0;
-    else if (introTimer < length) image_index = introTimer;
+	// Length of the spawn state is 125 frames.
+	switch(get_player_color(player)){
+		case 22:
+		sprite_index = sprite_get("intro_g8");
+		break;
+		default:
+		sprite_index = sprite_get("intro");
+		break;
+	}
+	image_index = 0;
+	// Parameters of the intro sequence
+	var start_intro_movement_timer = 6; // Set this to calibrate where the animation should start
+	var number_of_frames_in_strip = 18;
+	var animation_speed = 6; // Inverse
+	// Image Index Handler
+	if(get_gameplay_time() >= start_intro_movement_timer && image_index != number_of_frames_in_strip){ // starts animation. 
+	    image_index = clamp(floor((get_gameplay_time() - start_intro_movement_timer) / animation_speed),0,number_of_frames_in_strip);
+	}
+	
+	// Sound Handler
+	switch(get_player_color(player)){
+		case 22:
+			if(state_timer == 1){
+				sound_play(sound_get("thunder_3"));
+			}
+			if(image_index == 9 && intro_sound_played_flag == false){ // play reload sound on image index 8S
+			    sound_play(asset_get("sfx_syl_dspecial_howl"));
+			    intro_sound_played_flag = true;
+			}
+			//
+			break;
+		default:
+			break;
+	}
 }
 
 //Respawn Code
@@ -40,6 +68,35 @@ if(state == PS_RESPAWN){
 	sprite_index = sprite_get("plat_idle");
 	image_index = get_gameplay_time() / 10;
 }
+
+// Code for Dspecial Draw Logic
+if(attack == AT_DTHROW && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	switch(window){
+		case 2:
+		case 3:
+		case 4:
+		sprite_index = sprite_get("dthrow"); // Foreground
+			break;
+		default:
+		sprite_index = sprite_get("dthrow_behind"); // Full Sprite
+			break;
+	}
+}
+
+// Code for AT_EXTRA_2 Logic
+if(attack == AT_EXTRA_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	switch(window){
+		case 2:
+		case 3:
+		case 4:
+		sprite_index = sprite_get("extra_2"); // Foreground
+			break;
+		default:
+		sprite_index = sprite_get("extra_2_behind"); // Full Sprite
+			break;
+	}
+}
+
 
 /*
 // SFX Lists

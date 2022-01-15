@@ -233,6 +233,13 @@ initSection("Code to detect ground below player when using NSpecial");
 initHeader("Supersonic");
 initSection("Hit detection code for Leech Seed");
 
+initPatch("1.5", "7 January, 2021");
+
+initHeader("Adjustments");
+initSection("-Added 3 new alts");
+initSection("-Added compatibility with Final Smash Buddy");
+
+
 initPatch("1.4", "1 December, 2021");
 
 initHeader("Adjustments");

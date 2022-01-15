@@ -338,10 +338,10 @@ if (attack == AT_DAIR) {
 }
 
 //TAUNT SELECT
-if (attack == AT_EXTRA_1){
+if (attack == AT_EXTRA_3){
 	if window == 2{
 		if special_down{
-			set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 4);
+			set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 4);
 			}
 		}
 	if window == 3 && window_timer == 11{
@@ -367,25 +367,25 @@ if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR or attack = AT_NSPECIAL)
 	}
 }
 
-if (attack == AT_EXTRA_1){
+if (attack == AT_EXTRA_3){
     			if fire = 1{
-                	set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("element_switch2_fire"));
+                	set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("element_switch2_fire"));
                 }
 				if ice = 1{
-					set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("element_switch2_ice"));
+					set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("element_switch2_ice"));
 				}
 				if thunder = 1{
-					set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("element_switch2_plasma"));
+					set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("element_switch2_plasma"));
 				}
 				if pistols = 1{
-					set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("element_switch2_earth"));
+					set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("element_switch2_earth"));
 				}
 }
 
 
 
 //ELEMENTAL SWITCHER ALT
-if (attack == AT_EXTRA_1){
+if (attack == AT_EXTRA_3){
     
     	if window == 1 && (!joy_pad_idle) {
             clear_button_buffer( PC_ATTACK_PRESSED )
@@ -426,25 +426,19 @@ if (attack == AT_EXTRA_1){
 	//pistols = 0
             
     	} if window == 4 {
-    		move_cooldown[AT_EXTRA_1] = 20
+    		move_cooldown[AT_EXTRA_3] = 20
     	}	
     }
 }
 
 if (attack == AT_JAB) {
-	if window == 3 && window_timer == 9{
-		window = 12;
-		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
-	}
-}
-
-if (attack == AT_JAB) {
-	if window < 4{
+	if window <= 6{
 		if special_pressed {
-		window = 6;
+		destroy_hitboxes();
+		attack_end();
+		set_attack( AT_EXTRA_1 );
 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
 		spawn_hit_fx( x + 10*spr_dir, y + -20, 306);
-		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 27);
 		}
 	}
 }
@@ -452,24 +446,11 @@ if (attack == AT_JAB) {
 //--------------------------------//
 
 
-
-if (attack == AT_JAB){
-	if window == 1 && window_timer == 1 {
-		set_window_value(AT_JAB, 13, AG_WINDOW_LENGTH, 13);
-		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
+//Shredder Jump Cancel
+if (attack == AT_EXTRA_1){
+	if window == 1{
 	}
-	if window == 5 && window_timer == 12 {
-		window = 13;
-		set_window_value(AT_JAB, 13, AG_WINDOW_LENGTH, 9);
-		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
-	}
-	if window == 13 && window_timer >= 10 {
-		move_cooldown[AT_JAB] = 20
-	}
-}
-
-if (attack == AT_JAB){
-	if window >= 9 && has_hit=true{
+	if window >= 4 && has_hit=true{
 		can_jump=true;
 		can_ustrong=true;
 	}
@@ -604,3 +585,18 @@ case 49:								//FINAL SMASH BUDDY
 }
 
 
+
+/*Aerial Shredder
+if (attack == AT_NAIR) {
+	if window >= 1{
+		if special_pressed {
+		attack_end()
+		set_attack( AT_EXTRA_1 );
+		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+		spawn_hit_fx( x + 10*spr_dir, y + -20, 306);
+		hsp = 0
+		vsp = -3
+		can_fast_fall = false;
+		}
+	}
+}

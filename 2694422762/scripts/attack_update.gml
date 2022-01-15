@@ -43,7 +43,7 @@ if (attack == AT_DATTACK) {
 }
 if (attack == AT_DAIR) {
     if ((window == 2) || (window == 3 && window_timer >= 0 && window_timer <= 12)) {
-        if (attack_down || strong_down) {
+        if (attack_down || strong_down || down_stick_down) {
 	        set_attack_value(attack, AG_CATEGORY, 2);
 	        if (!free && !hitpause) {
 	            window = 4;
@@ -60,7 +60,7 @@ if (attack == AT_DAIR) {
 	        		collision_pos[0] + collision_size[0] / 2,
 	        		collision_pos[1] + collision_size[1] / 2,
 	        		lucy_card_id, 0, 1);
-	        	if (collision_rect && !hitpause) {
+	        	if (collision_rect && !hitpause && lucy_card_id.dair_cooldown <= 0) {
                     sound_play(asset_get("sfx_shovel_brandish"));
 		            window = 4;
 		            window_timer = 0;
@@ -70,6 +70,7 @@ if (attack == AT_DAIR) {
                         state_timer = 0;
                         window = 1;
                         window_timer = 0;
+                        dair_cooldown = 60;
 		            }
 	        	}
 	        }

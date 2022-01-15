@@ -44,13 +44,15 @@ if(do_taunt_2)
 if(clinging && jump_down)
 {
 	walljump_vsp-=0.1;
-	walljump_vsp = max(walljump_vsp,5);
+	walljump_vsp = max(walljump_vsp,4);
 	
-	walljump_hsp+=0.1;
-	walljump_hsp = min(walljump_hsp,7);
+	walljump_hsp-=0.1;
+	walljump_hsp = max(walljump_hsp,2);
+	
 }
 else if(state != PS_WALL_JUMP)
 {
+	clinging = false;
 	walljump_vsp = base_walljump_vsp;
 	walljump_hsp = base_walljump_hsp;
 }
@@ -125,7 +127,7 @@ if (introTimer < 23) {
 
 
 
-if(draw_indicator == false && introTimer2 == 1 && (introTimer == 16 || introTimer == 17 || introTimer == 18 || introTimer == 19 || window_timer == 20 ))
+if(draw_indicator == false && introTimer2 == 1 && (introTimer == 16 || introTimer == 17 || introTimer == 18 || introTimer == 19 || window_timer == 20 )) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
 	sound_play(sound_get("tenru_small_firecracker"));
 }
@@ -206,6 +208,15 @@ if( state == PS_IDLE && introTimer >= 24)
 
 	
 }
+
+
+// Waveland reset
+if(state != PS_AIR_DODGE && state != PS_WAVELAND && state != PS_ATTACK_AIR)
+{
+	wave_land_adj = base_wave_land_adj;
+	air_dodge_speed = base_air_dodge_speed;
+}
+
 // Taunt code
 if(attack == AT_TAUNT)
 {
@@ -532,7 +543,7 @@ with(pHitBox){
     //     //print_debug(string(id));
         
         
-        
+
      // Wall bounce (unused)  ( (hsp < 0 && neg_hsp < 0)  || (hsp > 0 && neg_hsp > 0)
      // If bounced
      if((vsp < 0 && neg_vsp < 0) && !(reset && hitbox_timer == 0))  
@@ -806,3 +817,12 @@ if trummelcodecneeded{
 
 
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

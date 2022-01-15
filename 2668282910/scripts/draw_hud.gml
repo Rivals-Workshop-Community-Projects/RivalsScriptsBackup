@@ -28,12 +28,16 @@ if (state == PS_SPAWN){
  //   if (no_ex_sfx == true){
  //       draw_debug_text(temp_x+27, temp_y-15, "EX Ready SFX Disabled!"); 
  //   }
-    if (parry_ex == true){
+    if (parry_ex == 1){
         draw_debug_text(temp_x+27, temp_y-30, "Press PARRY to use double");
         draw_debug_text(temp_x+27, temp_y-15, "tap for the EX moves."); 
     }
-    if (parry_ex == false){
-        draw_debug_text(temp_x+27, temp_y-15, "Using EX Double Tap!"); 
+    if (parry_ex == -1){
+        draw_debug_text(temp_x+27, temp_y-30, "Using EX Double Tap!"); 
+        draw_debug_text(temp_x+27, temp_y-15, "Tap Special for both"); 
+    }
+    if (parry_ex == 0){
+        draw_debug_text(temp_x+27, temp_y-15, "Using Both!"); 
     }
 }
 

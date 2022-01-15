@@ -45,23 +45,23 @@ if introhit = 0 {
 }
 intro = 1
 
-	if rank >= 4 &&  my_hitboxID.damage > 1 {   
-		 sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20)
-
-
-		if my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT{
-			hitstop += 2
-			hit_player_obj.hitstop += 2
-		}
-	if my_hitboxID.damage > 2 {
-	   	 with hit_player_obj {
-                 take_damage( player, -1 , 1)
-         }	
-         
-     }
-
-	}
-
+//	if rank >= 4 &&  my_hitboxID.damage > 1 {   
+//		 sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20)
+//
+//
+//		if my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT{
+//			hitstop += 2
+//			hit_player_obj.hitstop += 2
+//		}
+//	if my_hitboxID.damage > 2 {
+//	   	 with hit_player_obj {
+//                 take_damage( player, -1 , 1)
+//         }	
+//         
+//     }
+//
+//	}
+//
 ///if my_hitboxID.attack != AT_EXTRA_1 and my_hitboxID.attack != AT_EXTRA_2
 ///and my_hitboxID.attack != AT_EXTRA_3 and move_cooldown[AT_FSPECIAL_2] == 0{
 ///	
@@ -137,13 +137,13 @@ if my_hitboxID.attack == AT_UAIR {
 if my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == 3 {
     
     move_cooldown[AT_USTRONG] = 40
-create_hitbox(AT_EXTRA_3 , 6 ,hit_player_obj.x   , hit_player_obj.y - 700 );
+create_hitbox(AT_EXTRA_3 , 6 ,hit_player_obj.x   , hit_player_obj.y - 400 );
 
-create_hitbox(AT_EXTRA_3 , 4 ,hit_player_obj.x   , hit_player_obj.y - 300 );
-create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(12, 100, true)  , hit_player_obj.y - 300 - random_func(10, 100, true));
-create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(13, 100, true)  , hit_player_obj.y - 300 - random_func(11, 100, true));
-  create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(10, 100, true) + 50  , hit_player_obj.y - 400 - random_func(12, 100, true));
-        create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(11, 100, true) + 50  , hit_player_obj.y - 400 - random_func(13, 100, true));
+create_hitbox(AT_EXTRA_3 , 4 ,hit_player_obj.x   , hit_player_obj.y - 200 );
+create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(12, 100, true)  , hit_player_obj.y - 200 - random_func(10, 100, true));
+create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(13, 100, true)  , hit_player_obj.y - 200 - random_func(11, 100, true));
+  create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(10, 100, true) - 50  , hit_player_obj.y - 300 - random_func(12, 100, true));
+        create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(11, 100, true) + 50  , hit_player_obj.y - 300 - random_func(13, 100, true));
 }
 
 if my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == 4 {
@@ -152,10 +152,10 @@ if my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == 4 {
 
 
 
-create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(12, 100, true)  , hit_player_obj.y - 300 - random_func(10, 100, true));
-create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(13, 100, true)  , hit_player_obj.y - 300 - random_func(11, 100, true));
- create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(10, 100, true) + 50  , hit_player_obj.y - 200 - random_func(12, 100, true));
-        create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(11, 100, true) + 50  , hit_player_obj.y - 200 - random_func(13, 100, true));
+create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(12, 100, true)  , hit_player_obj.y - 200 - random_func(10, 100, true));
+create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(13, 100, true)  , hit_player_obj.y - 200 - random_func(11, 100, true));
+ create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(10, 100, true) - 50  , hit_player_obj.y - 100 - random_func(12, 100, true));
+        create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(11, 100, true) + 50  , hit_player_obj.y - 100 - random_func(13, 100, true));
  
 }
 

@@ -17,7 +17,7 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
 // Recoil
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 11); // 9
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
@@ -64,6 +64,7 @@ set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_Y_OFFSET, -5);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 4);
+set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 
 // Second hit - knock them away
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);

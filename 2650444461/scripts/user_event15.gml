@@ -108,7 +108,7 @@ phone.extra_top_size = 0;
 phone.supports_fast_graphics = false;
 
 // Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
-phone.dont_fast = false;
+phone.dont_fast = true;
 
 // Set to true and this will DISABLE a lot of the phone's side utilities.
 // If you're porting the phone to an existing char and don't need any of these
@@ -258,6 +258,10 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.5", "13th January, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed DAttack not having whifflag");
 
 initPatch("1.4", "28th December, 2021");
 initHeader("Nerfs");

@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 17, 8 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 19 );
 
 // Vine
 set_color_profile_slot( 1, 0, 60, 73, 122 ); //Petals
@@ -147,6 +147,30 @@ set_color_profile_slot( 15, 2, 136, 45, 89 ); //SkinDark
 set_color_profile_slot( 15, 3, 170, 219, 237 ); //Eyes
 set_color_profile_slot( 15, 4, 202, 189, 217 ); //Stamen
 set_color_profile_slot( 15, 5, 210, 72, 149 ); //Petal Pattern
+
+// Minimum
+set_color_profile_slot( 16, 0, 143, 62, 121 ); //Petals
+set_color_profile_slot( 16, 1, 79, 110, 120 ); //Skin
+set_color_profile_slot( 16, 2, 70, 87, 93 ); //SkinDark
+set_color_profile_slot( 16, 3, 191, 38, 116 ); //Eyes
+set_color_profile_slot( 16, 4, 143, 37, 23 ); //Stamen
+set_color_profile_slot( 16, 5, 219, 184, 205 ); //Petal Pattern
+
+// Maximum
+set_color_profile_slot( 17, 0, 161, 132, 58 ); //Petals
+set_color_profile_slot( 17, 1, 123, 99, 132 ); //Skin
+set_color_profile_slot( 17, 2, 85, 61, 94 ); //SkinDark
+set_color_profile_slot( 17, 3, 233, 216, 56 ); //Eyes
+set_color_profile_slot( 17, 4, 66, 130, 22 ); //Stamen
+set_color_profile_slot( 17, 5, 243, 235, 203 ); //Petal Pattern
+
+// Ranked Gold
+set_color_profile_slot( 18, 0, 255, 145, 0 ); //Petals
+set_color_profile_slot( 18, 1, 255, 204, 0 ); //Skin
+set_color_profile_slot( 18, 2, 229, 162, 0 ); //SkinDark
+set_color_profile_slot( 18, 3, 242, 248, 255 ); //Eyes
+set_color_profile_slot( 18, 4, 160, 151, 204 ); //Stamen
+set_color_profile_slot( 18, 5, 242, 248, 255 ); //Petal Pattern
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

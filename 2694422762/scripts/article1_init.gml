@@ -33,3 +33,5 @@ p_x = 0;
 p_y = 0;
 out_color = c_white;
 die_timer = 0;
+
+dair_cooldown = 0;

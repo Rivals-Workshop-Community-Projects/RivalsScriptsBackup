@@ -11,6 +11,11 @@ draw_debug_text(temp_x, temp_y-130,"ball onstage: " + string(monkey_ball_onstage
 draw_debug_text(temp_x, temp_y-146,"can ride the monkey ball: " + string(monkey_ball_can_be_rode))
 draw_debug_text(temp_x, temp_y-162,"in ball: " + string(inside_monkey_ball))
 //draw_debug_text(temp_x, temp_y-178,"in nspec: " + string(nspecial_startup))
+if (instance_exists(monkeyBall)){
+	draw_debug_text(temp_x, temp_y-180,"does ball exist: " + string("yes"))
+} else {
+	draw_debug_text(temp_x, temp_y-180,"does ball exist: " + string("no"))
+}
 //further y positions should go up in multiples of 16 from 64
 }
 //draw_debug_text(temp_x, temp_y-300,"AAA: " + string(uspec_past_window_1))

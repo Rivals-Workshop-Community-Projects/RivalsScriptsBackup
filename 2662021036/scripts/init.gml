@@ -218,10 +218,32 @@ can_spawn = false;
 
 secret_v = 99;
 
+fs_char_portrait_y = 198;
+fs_char_chosen_final_smash = "custom";
+fs_char_attack_index = 49;
+fs_ball_offset_x = -50;
+fs_ball_offset_y = -32;
+
+final_blackbg_opacity = 0;
+final_sunflash_opacity = 1;
+finalsunfadeout = 1;
+
+sprite_change_collision_mask( "final_hitbox", true, 0, 0, 0, 0, 0, 0 );
+final_hb_sprite = sprite_get("final_hitbox");
+
+finalsunmovement = 0;
+finalsuncounter = 0;
+
 pkmn_stadium_front_img = sprite_get("pokemonstadium1");
 pkmn_stadium_back_img = sprite_get("pokemonstadium2");
 
 miiverse_post = sprite_get("miiverse_post");
+
+if ("superTrue" in self){
+    set_hitbox_value(49, 1, HG_DAMAGE, 2);    
+    set_hitbox_value(49, 2, HG_DAMAGE, 45);
+}
+
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

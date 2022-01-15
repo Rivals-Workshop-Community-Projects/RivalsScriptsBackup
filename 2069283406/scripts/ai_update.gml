@@ -1,7 +1,5 @@
 //ai_init - setting the basic AI attack behaviors
 
-temp_level = 9
-
 if (get_training_cpu_action() != CPU_FIGHT)  {
 	move_cooldown[AT_TAUNT] = 5
 }
@@ -938,7 +936,7 @@ switch AImode {
    state_timer = 1 
    hsp = 12 - 24*(random_func(1,2,true))
    sound_play(sound_get("RZ3"),false,noone,0.6);
-   spawn_hit_fx( x  , y , dsshadow)
+   spawn_hit_fx( x  , y -6 , dsshadow)
    }
    break;
    
@@ -961,15 +959,6 @@ switch AImode {
    }
    
    break;
-   
-   case 6: 
-   
-   if !free {
-        jump_pressed = true
-   }
-   
-   break;
-   
 }
 
 #define Fspecial

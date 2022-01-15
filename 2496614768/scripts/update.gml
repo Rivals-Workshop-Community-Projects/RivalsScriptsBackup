@@ -2,7 +2,11 @@
 
 if canceltime > 1 {
 	
-
+	if attack == AT_FSPECIAL {
+    prat_land_time = 8;
+	} else {
+	prat_land_time = 15;	
+	}
 	
 	if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack != AT_FSPECIAL  {
 		canceltime = 100

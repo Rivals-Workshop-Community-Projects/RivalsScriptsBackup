@@ -68,7 +68,7 @@ set_hitbox_value(AT_UTILT, ig, HG_PRIORITY, 2);
 set_hitbox_value(AT_UTILT, ig, HG_DAMAGE, 5); // raised damage to better reward most likely to land strike
 set_hitbox_value(AT_UTILT, ig, HG_ANGLE, 85);
 set_hitbox_value(AT_UTILT, ig, HG_BASE_KNOCKBACK, 7); // raised kb to 5 from 3/4 (can't remember LOL)
-set_hitbox_value(AT_UTILT, ig, HG_KNOCKBACK_SCALING, .3); // raised kb scaling to .4 from .3
+set_hitbox_value(AT_UTILT, ig, HG_KNOCKBACK_SCALING, .4); // raised kb scaling to .4 from .3
 set_hitbox_value(AT_UTILT, ig, HG_BASE_HITPAUSE, 5); // raised hitpause to 5 to match kb
 set_hitbox_value(AT_UTILT, ig, HG_HITPAUSE_SCALING, .4); // added hp scaling
 set_hitbox_value(AT_UTILT, ig, HG_VISUAL_EFFECT, 305);
@@ -92,7 +92,7 @@ set_hitbox_value(AT_UTILT, ig, HG_PRIORITY, 2);
 set_hitbox_value(AT_UTILT, ig, HG_DAMAGE, 5); // raised damage to better reward most likely to land strike
 set_hitbox_value(AT_UTILT, ig, HG_ANGLE, 85);
 set_hitbox_value(AT_UTILT, ig, HG_BASE_KNOCKBACK, 7); // raised kb to 5 from 3/4 (can't remember LOL)
-set_hitbox_value(AT_UTILT, ig, HG_KNOCKBACK_SCALING, .3); // raised kb scaling to .4 from .3
+set_hitbox_value(AT_UTILT, ig, HG_KNOCKBACK_SCALING, .6); // raised kb scaling to .4 from .3
 set_hitbox_value(AT_UTILT, ig, HG_BASE_HITPAUSE, 5); // raised hitpause to 5 to match kb
 set_hitbox_value(AT_UTILT, ig, HG_HITPAUSE_SCALING, .4); // added hp scaling
 set_hitbox_value(AT_UTILT, ig, HG_VISUAL_EFFECT, 305);

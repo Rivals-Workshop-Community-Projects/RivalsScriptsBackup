@@ -2,6 +2,7 @@
 
 hurtbox_spr = sprite_get("stand_box");
 
+cheatingreal = 0 
 fireon = 0
 firerange = -100
 with (asset_get("pHitBox")) {

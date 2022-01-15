@@ -3,6 +3,23 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+bursted = 0
+
+tooltip = 0
+
+t21 = 0
+t22 = 0
+t23 = 0
+t24 = 0
+
+t31 = 0
+t32 = 0
+t33 = 0
+t34 = 0
+t35 = 0
+t36 = 0
+
+
 Hikaru_Title = "Infernal Fuel"
 
 nname = "[ ? ? ? ]"
@@ -10,6 +27,7 @@ ncode1 = "Sorry dude, peeping into this girl's data is a no-no."
 ncode2 = "We would like to keep our secrets, even to the government"
 ncode3 = "                         ---:Lynk:--- ;) "
 
+hit_player_event = 11
 
 fs_char_chosen_final_smash = "custom";
 fs_char_chosen_trigger = "ori";
@@ -87,7 +105,7 @@ leave_ground_max = 5; //the maximum hsp you can have when you go from grounded t
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3.5; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .2;
+air_accel = .25;
 prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 air_friction = .045;
 max_djumps = 1;
@@ -99,13 +117,13 @@ wall_frames = 2; //anim frames before you leave the wall
 max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .5;
-hitstun_grav = .54;
-knockback_adj = 0.92; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+hitstun_grav = .55;
+knockback_adj = 0.90; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 8;
-wave_land_adj = 0.76; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 0.70; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -169,6 +187,9 @@ sprite_change_offset("nairs1", 102, 140);
 
 nairs2  = hit_fx_create( sprite_get( "nairs2" ), 9 );
 sprite_change_offset("nairs2", 102, 140);
+
+burst  = hit_fx_create( sprite_get( "burst" ), 45 );
+sprite_change_offset("burst", 32, 32);
 
 nairs3 = hit_fx_create( sprite_get( "nairs3" ), 9 );
 sprite_change_offset("nairs3", 102, 140);

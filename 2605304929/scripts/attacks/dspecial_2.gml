@@ -77,6 +77,7 @@ var window_for_hitbox = 1;
 // Hitbox 1 - Final Hitbox with knockback
 window_for_hitbox = 4; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 4);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
@@ -92,7 +93,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 60);
     set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
     //set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 20);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); // 197 - lightning large
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // 304 - basic large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"))
 //hitbox_num++;
 

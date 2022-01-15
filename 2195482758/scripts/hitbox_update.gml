@@ -24,6 +24,7 @@ if(was_parried)
 //     }
 // }
 
+
 // Parrybox
 if(attack == AT_NSPECIAL && hbox_num == 1)
 {

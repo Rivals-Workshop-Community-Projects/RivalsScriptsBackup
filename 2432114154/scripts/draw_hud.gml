@@ -21,7 +21,7 @@ shader_start();
 print(triggercutscene)
   draw_sprite_ext(sprite_get("cutscene"),0,(room_width/2 - 200), room_height/2 ,4,5,0,-1,triggercutscene/100)
   draw_sprite_ext(sprite_get("cutscene"),0,min( (room_width/2 - 200), (room_width/2 - 200) - (2200-triggercutscene*(triggercutscene/2))), room_height/2 ,4,4,0,-1,1)
- draw_sprite_ext(sprite_get("cutscene"),1,min( (room_width/2 + 600), (room_width/2 - 200) - (1200-triggercutscene*(triggercutscene/2))), room_height/2 - triggercutscene*4  ,2,2,0,-1,1)
+ draw_sprite_ext(sprite_get("cutscene"),1,min( (room_width/2 + 600), (room_width/2 - 200) - (1200-triggercutscene*(triggercutscene/2))), room_height/2 - 60 + triggercutscene*3  ,2,2,0,-1,1)
  draw_sprite_ext(sprite_get("cutscene"),1,min( (room_width/2 + 600), (room_width/2 - 200) - (1200-triggercutscene*(triggercutscene/4))), room_height/2 - triggercutscene*2  ,3,3,0,-1,.5)
    
    
@@ -81,8 +81,8 @@ print(triggercutscene)
  shader_end();   
  
 if ((triggercutscene >= 120 && triggercutscene < 180) or  (triggercutscene >= 300 && triggercutscene < 320)) && triggercutscene%5 == 0 {
-    sound_play(asset_get("sfx_forsburn_spew_end"),false,noone,.8,.85)
-    sound_play(asset_get("sfx_forsburn_spew_end"),false,noone,1,1.2)
+    sound_play(asset_get("sfx_forsburn_spew_end"),false,noone,.8,zitch - 0.15)
+    sound_play(asset_get("sfx_forsburn_spew_end"),false,noone,1,zitch + 0.2)
 }
 
 
@@ -290,11 +290,11 @@ if string_count("zephrie", string_lower(name)) > 0 {
  if regconized == 0  {
     if triggercutscene >= 120 && triggercutscene < 330  {
          if ((triggercutscene < 140 or triggercutscene > 300) and triggercutscene%4 < 2) or (triggercutscene >= 140 && triggercutscene <= 300) {
-             if get_player_stocks(player) == 1 {
+             if get_player_stocks(player) <= 2 {
                  draw_debug_text( room_width/2 - 380, room_height/2 - 200 - floor(triggercutscene/5),"Well fought, but atlas.");
-             } else if get_player_stocks(player) == 2 {
+             } else if get_player_stocks(player) == 3 {
                  draw_debug_text( room_width/2 - 380, room_height/2 - 200 - floor(triggercutscene/5),"The void canvas gained one more stroke.");
-             } else if get_player_stocks(player) >= 3 {
+             } else if get_player_stocks(player) >= 4 {
                  draw_debug_text( room_width/2 - 380, room_height/2 - 200 - floor(triggercutscene/5),"That's it? What a waste of time.");
              }
          }

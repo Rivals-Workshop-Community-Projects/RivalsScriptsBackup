@@ -116,7 +116,7 @@ window_for_hitbox = 2; // Set this to change the window that the hitbox comes ou
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -26);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -20);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 60);
@@ -139,7 +139,7 @@ window_for_hitbox = 2; // Set this to change the window that the hitbox comes ou
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 26);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -20);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 60);
@@ -162,7 +162,7 @@ window_for_hitbox = 2; // Set this to change the window that the hitbox comes ou
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 6);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 32);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -40);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 70);
@@ -184,7 +184,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 9);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -10);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -60);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
@@ -206,7 +206,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 12);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -10);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -16);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
@@ -228,7 +228,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 15);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -20);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -10);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
@@ -251,7 +251,7 @@ window_for_hitbox = 3;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 20);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -20);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
@@ -273,7 +273,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 30);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -46);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
@@ -295,7 +295,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 6);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -12);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -58);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
@@ -317,7 +317,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 9);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -16);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -20);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
@@ -341,7 +341,7 @@ window_for_hitbox = 5;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -40);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
@@ -366,7 +366,7 @@ window_for_hitbox = 7;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -40);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
@@ -391,7 +391,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -40);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
@@ -416,7 +416,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 6);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -40);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);
@@ -441,7 +441,7 @@ hitbox_num++;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 9);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 1); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -40);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 80);

@@ -236,7 +236,7 @@ set_color_profile_slot( 20, 5, 241, 181, 153 ); //Skin
 set_color_profile_slot( 20, 6, 102, 46, 61 ); //Leggy 1
 set_color_profile_slot( 20, 7, 102, 46, 61 ); //Leggy 2
 
-// Ink it Up LOL it's Marie instead of Callie. Why? Cause people keep asking for a Callie Splatoon alt
+// LOL it's Marie instead of Callie. Why? Cause people keep asking for a Callie Splatoon alt
 set_color_profile_slot( 21, 0, 228, 230, 228 ); //Hair Bottom
 set_color_profile_slot( 21, 1, 16, 16, 41 ); //Shirt
 set_color_profile_slot( 21, 2, 174, 226, 55 ); //Tie/Hoodie
@@ -276,25 +276,25 @@ set_color_profile_slot( 24, 5, 255, 216, 212 ); //Skin
 set_color_profile_slot( 24, 6, 251, 252, 255 ); //Leggy 1
 set_color_profile_slot( 24, 7, 251, 252, 255 ); //Leggy 2
 
-// Event - Heatwave
-set_color_profile_slot( 25, 0, 16, 40, 89 ); //Hair Bottom
-set_color_profile_slot( 25, 1, 204, 79, 41 ); //Shirt
-set_color_profile_slot( 25, 2, 16, 40, 89 ); //Tie/Hoodie
-set_color_profile_slot( 25, 3, 204, 63, 20 ); //Skirt
-set_color_profile_slot( 25, 4, 224, 118, 20 ); //Eyes
-set_color_profile_slot( 25, 5, 242, 176, 145 ); //Skin
-set_color_profile_slot( 25, 6, 212, 203, 17 ); //Leggy 1
-set_color_profile_slot( 25, 7, 145, 17, 46 ); //Leggy 2
-
 // Tomori
-set_color_profile_slot( 26, 0, 253, 141, 222 ); //Hair Bottom
-set_color_profile_slot( 26, 1, 214, 232, 255 ); //Shirt
-set_color_profile_slot( 26, 2, 255, 242, 53 ); //Tie/Hoodie
-set_color_profile_slot( 26, 3, 35, 194, 237 ); //Skirt
-set_color_profile_slot( 26, 4, 62, 151, 171 ); //Eyes
-set_color_profile_slot( 26, 5, 255, 221, 189 ); //Skin
-set_color_profile_slot( 26, 6, 48, 27, 27 ); //Leggy 1
-set_color_profile_slot( 26, 7, 48, 27, 27 ); //Leggy 2
+set_color_profile_slot( 25, 0, 253, 141, 222 ); //Hair Bottom
+set_color_profile_slot( 25, 1, 214, 232, 255 ); //Shirt
+set_color_profile_slot( 25, 2, 255, 242, 53 ); //Tie/Hoodie
+set_color_profile_slot( 25, 3, 35, 194, 237 ); //Skirt
+set_color_profile_slot( 25, 4, 62, 151, 171 ); //Eyes
+set_color_profile_slot( 25, 5, 255, 221, 189 ); //Skin
+set_color_profile_slot( 25, 6, 48, 27, 27 ); //Leggy 1
+set_color_profile_slot( 25, 7, 48, 27, 27 ); //Leggy 2
+
+// Event - Genesis
+set_color_profile_slot( 26, 0, 191, 4, 13 ); //Hair Bottom
+set_color_profile_slot( 26, 1, 11, 18, 20 ); //Shirt
+set_color_profile_slot( 26, 2, 251, 252, 255 ); //Tie/Hoodie
+set_color_profile_slot( 26, 3, 11, 18, 20 ); //Skirt
+set_color_profile_slot( 26, 4, 163, 15, 42 ); //Eyes
+set_color_profile_slot( 26, 5, 255, 216, 212 ); //Skin
+set_color_profile_slot( 26, 6, 191, 4, 13 ); //Leggy 1
+set_color_profile_slot( 26, 7, 191, 4, 13 ); //Leggy 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

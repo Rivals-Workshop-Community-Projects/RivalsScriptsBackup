@@ -7,6 +7,18 @@ if(state == PS_RESPAWN){
 	draw_sprite_ext(sprite_get("plat_bg"),image_index,x,y,spr_dir,1,0,c_white,1);
 	shader_end();
 }
+
+// afterimage  Code for Amateratsu
+if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amateratsu
+	for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0 && draw_indicator)
+	{
+	    shader_start();
+	    gpu_set_blendmode(bm_subtract);
+	    draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir*1, 1, 0, c_white, afterImage[i].alpha/20);
+	    gpu_set_blendmode(bm_normal);
+	    shader_end();
+	}
+}
 /*
 if(attack == AT_DSPECIAL && tsunami_proj != 0){
     shader_start();

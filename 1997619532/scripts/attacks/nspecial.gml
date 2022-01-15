@@ -57,7 +57,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("bladewave"));
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, 0.1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);

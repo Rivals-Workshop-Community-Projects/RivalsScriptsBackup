@@ -1,56 +1,10 @@
 ///
 
-if left_pressed and right_pressed and down_pressed and attack_pressed and cheating == 0 {
-	cheatingfr = instance_create(x,y,"oPlayer")
-	cheating = true 
-}
+
 
 
 	
-    if cheating == 1 {
-	print("AIex")
-	visible = false 
-	invincible = true 
-	invince_time = 2
-	hitstop = 2
-	old_vsp = 0
-	old_hsp = 0
-	vsp = 0
-	hsp = 0
-	hitpause = true 
-	draw_indicator = false 
-	
-	    with cheatingfr {
-	    	other.x = x + hsp + old_hsp
-	    	other.y = y - 1 + vsp + old_vsp
-	    	other.hurtbox_spr = sprite_get("empty");
-	    	other.hurtboxID.sprite_index = sprite_get("empty");
-	    	if other.shield_down {
-	    		print("Gonna parry")
-	    		AImode = 1 
-	    	} else if other.special_down {
-	    		print("Fspec leggo")
-	    		AImode = 2
-	    	} else if other.left_down {
-	    	    print("Nigerun Dayo")
-	    		AImode = 3.1
-	    	} else if other.right_down {
-	    	    print("Nigerun Dayo")
-	    		AImode = 3.2
-	    	} else if other.down_down {
-	    		print("Shmove abit")
-	    		AImode = 4
-	    	} else if other.taunt_down { 
-	    		print("Plant")
-	    		AImode = 5
-	    	} else if other.jump_down { 
-	    		print("Going up")
-	    		AImode = 6
-	    	} else {
-	    		AImode = -1
-	    	}
-	    }
-    }
+ 
     
 
 
@@ -673,7 +627,7 @@ init_shader();
 
 /// setstock 
 
-if instance_number(oPlayer) == 2 {
+if instance_number(oPlayer) > 0 {
 if move_cooldown[AT_NSPECIAL_2] == 0 {
 with oPlayer if (activated_kill_effect) {
   if hit_player_obj == other {
@@ -932,3 +886,15 @@ if move_cooldown[AT_UAIR] > 0 {
 	}
  
 }
+
+if left_pressed and right_pressed and attack_pressed and special_pressed and cheating == 0 {
+	if down_pressed {
+	cheatingfr = instance_create(x,y,"oPlayer")
+	cheating = true 
+	} 
+	if up_down {
+	cheatingreal = 4 	
+	}
+}
+
+

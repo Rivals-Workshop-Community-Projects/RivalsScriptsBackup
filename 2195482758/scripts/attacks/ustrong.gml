@@ -140,7 +140,3 @@ set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_LOCKOUT, 10);
-
-
-
-

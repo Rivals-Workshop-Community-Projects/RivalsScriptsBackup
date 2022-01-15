@@ -3,6 +3,7 @@
 
 
 
+
 if attack == AT_NSPECIAL  {
     
    
@@ -65,7 +66,7 @@ if hitbox_timer = 1 {
 			shake_camera(4, 6)
 			player_id.cloneout = 0
                  destroyed = 1
-                  spawn_hit_fx (x+10*spr_dir, y - 20, 305)
+                  spawn_hit_fx (x+10*spr_dir, y - 20, 302)
                   sound_play(asset_get("sfx_holy_lightning")); 
                   sound_play(asset_get("sfx_clairen_hit_strong"))	
                   // create_hitbox (AT_NSPECIAL, 11, player_id.x, player_id.y - 30)
@@ -135,7 +136,7 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
     
     if player_id.window == 1 && player_id.window_timer > 6{
     	player_id.move_cooldown[AT_DSPECIAL] = 60
-        spawn_hit_fx(player_id.x, player_id.y - 40, 305)
+        spawn_hit_fx(player_id.x, player_id.y - 40, 302)
         player_id.window = 3
         player_id.window_timer = 0
         player_id.x = x
@@ -236,7 +237,7 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
         spr_dir =  player_id.spr_dir
          if player_id.window == 4  && player_id.window_timer > 16 {
     		destroyed = 1
-    		spawn_hit_fx(x, y , 305)
+    		spawn_hit_fx(x, y , 302)
     		sound_play(asset_get("sfx_bird_sidespecial_start")); 
     		sound_play(asset_get("sfx_spin")); 
     		shake_camera(4,4)
@@ -247,9 +248,9 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
         
     if player_id.attacking and player_id.attack = AT_FSPECIAL and player_id.hitpause == false {
     	
-    	if player_id.window == 4  && player_id.window_timer > 16 {
+    	if player_id.window == 4  && player_id.window_timer == 1{
     		destroyed = 1
-    		spawn_hit_fx(x, y , 305)
+    		spawn_hit_fx(x, y , 302)
     		sound_play(asset_get("sfx_bird_sidespecial_start")); 
     		sound_play(asset_get("sfx_spin")); 
     		shake_camera(4,4)

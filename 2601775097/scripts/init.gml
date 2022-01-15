@@ -538,6 +538,13 @@ homing_outline_increase = true;
 
 emberfist_up = false;
 emberfist_down = false;
+ember_fury_time_active = false;
+ember_fury_time = 0;
+ember_fury_time_max = 48;
+ember_fury_time_rate = 8;
+ember_spr_dir = 1;
+ember_x = 0;
+ember_y = 0;
 
 hookshot = -1; //placeholder for the hitbox
 hookshot_speedboost = false; //used for flinging bar

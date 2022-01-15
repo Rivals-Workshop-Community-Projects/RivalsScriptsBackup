@@ -136,14 +136,3 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 1);
-
-
-
-
-
-
-
-
-
-
-

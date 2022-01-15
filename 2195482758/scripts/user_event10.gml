@@ -57,7 +57,7 @@ if phone_practice with phone{
 	
 	x = 10;
 	
-	var scrolled_left = (view_get_xview() + view_get_wview() * 0.5) < (other.room_width / 2 - 4);
+	var scrolled_left = (view_get_xview() + view_get_wview() * 0.5) < (other.room_width / 2 - 4); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
 	
 	scrolled_left = true; // make it ALWAYS fade when lowered
 	

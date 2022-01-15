@@ -12,10 +12,6 @@ if (state == PS_HITSTUN) {
 
 // Up Special Uses
 
-//if (CannUSpcUses == 0) {
-//    move_cooldown[AT_USPECIAL] = 6;
-//}
-
 if (state == PS_HITSTUN || state == PS_WALL_JUMP || free == false) {
 	CannTpUsed = false;
     CannUSpcUses = 1;
@@ -31,6 +27,19 @@ if (state == PS_HITSTUN && attack == AT_DSPECIAL) {
     	}
     	
     }
+}
+
+// Cannonball Teleport Delay
+
+if (CannNSpecialCooldownTimer > 0) {
+	CannNSpecialCooldownTimer -= 1;
+	move_cooldown[AT_NSPECIAL] = 6;
+	CannNSpecialCooldownSound = false;
+} else {
+	if (CannNSpecialCooldownSound == false) {
+		sound_play(asset_get("sfx_diamond_collect"));
+		CannNSpecialCooldownSound = true;
+	}
 }
 
 // Neutral Special Power Timer

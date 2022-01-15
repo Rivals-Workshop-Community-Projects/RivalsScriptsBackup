@@ -1,5 +1,16 @@
 ///
-shader_start();    
+shader_start();   
+
+if "in_adventure" in self {
+ if invincible {
+	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,-1,1)
+  }
+ 
+ if move_cooldown[AT_FSPECIAL_2] > 0  {
+   draw_sprite_ext(sprite_get("fspecial"), 12, x + 20*spr_dir, y - 30  , spr_dir*1, 1, 90*spr_dir , -1 , 1);
+ }
+}
+
 if move_cooldown[AT_FSTRONG_2] != 0 {
 	  gpu_set_blendmode(bm_add);
 	          draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
@@ -19,7 +30,7 @@ if move_cooldown[AT_FSTRONG_2] != 0 {
   gpu_set_blendmode(bm_normal);	
 }
 
-if rank >= 4{
+if rank >= 4 && state != PS_PRATFALL && state != PS_PRATLAND{
 	  gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  - random_func(1,2,true), y - 1 - vsp - random_func(2,2,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
 		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2 + random_func(1,2,true) , y + 1 - vsp*2 + random_func(2,2,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
@@ -48,10 +59,15 @@ shader_start();
     	         draw_sprite_ext(sprite_get("NS2"), 5 , x - 46 , y - 120, 0.6,0.6,0, -1, 0.4 + (gunname = 2)  );
     	         draw_sprite_ext(sprite_get("NS3"), 4 , x - 46 , y - 100, 0.6,0.6,0, -1, 0.4 + (gunname = 3)  );
     	         
+    	         
     	         draw_sprite_ext(sprite_get("NS4"), 3 , x - 6 , y - 150, 0.6,0.6,0, -1, 0.4 + (gunname = 4)  );
+    	         draw_sprite_ext(sprite_get("NS4"), 3 , x - 6 , y - 150, 0.6,0.6,0, c_black, t21 );
     	         draw_sprite_ext(sprite_get("NS6"), 3 , x - 10 , y - 130, 0.6,0.6,0, -1, 0.4 + (gunname = 5)  );
+    	         draw_sprite_ext(sprite_get("NS6"), 3 , x - 10 , y - 130, 0.6,0.6,0, c_black, t22  );
     	         draw_sprite_ext(sprite_get("NS7"), get_gameplay_time()/4 , x - 10 , y - 110, 0.6,0.6,0, -1, 0.4 + (gunname = 6)  );
+    	         draw_sprite_ext(sprite_get("NS7"), 0 , x - 10 , y - 110, 0.6,0.6,0, c_black, t23  );
     	         draw_sprite_ext(sprite_get("NS8"), 2 , x - 10 , y - 85, 0.6,0.6,0, -1, 0.4 + (gunname = 7)  );
+    	         draw_sprite_ext(sprite_get("NS8"), 2 , x - 10 , y - 85, 0.6,0.6,0, c_black, t24  );
     	         
     	         draw_sprite_ext(sprite_get("NS5"), 3 , x  + 38,  y - 180, 0.6,0.6,0, -1, 0.4 + (gunname = 8)  );
     	         draw_sprite_ext(sprite_get("NS9"), 3 , x  + 38,  y - 160, 0.6,0.6,0, -1, 0.4 + (gunname = 9)  );
@@ -80,6 +96,8 @@ shader_end()
 		if window > 12 && window_timer == 1 {
 			infernal2 += 2
 		}
+
+/*
 	if window >= 12 and window <= 14 && (infernal2 > 300) {
 
 		if spr_dir == -1{
@@ -116,7 +134,7 @@ shader_end()
         }
 		
 	}
-	
+*/	
 	
 	if window >= 1 && window <= 6 {
 	    

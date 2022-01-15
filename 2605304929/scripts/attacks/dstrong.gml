@@ -72,6 +72,7 @@ var window_for_hitbox = 1;
 //Set Hitbox Values - This is the basic block of a functional hitbox
 window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -54);
@@ -80,10 +81,11 @@ set_hitbox_value(attack, hitbox_num, HG_WIDTH, 82);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 70);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 135);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6); //6 = Horizontal knockback sends away from the enemy player
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.1);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 14);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
@@ -93,6 +95,7 @@ hitbox_num++;
 //Set Hitbox Values - This is the basic block of a functional hitbox
 window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 60);
@@ -102,9 +105,10 @@ set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 70);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6); //6 = Horizontal knockback sends away from the enemy player
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.1);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 14);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

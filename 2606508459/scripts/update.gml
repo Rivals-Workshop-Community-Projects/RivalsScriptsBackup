@@ -53,13 +53,23 @@ if (fs_currHB != noone)
     }
 }
 
+//====> INTRO #######################################################
+
+if (state == PS_SPAWN && get_player_color(player) == alt_gen8)
+{
+    if (intro_timer == 0) sound_play(asset_get("sfx_clairen_tip_strong"))
+    if (intro_timer == 1) sound_play(asset_get("sfx_clairen_uspecial_swing"))
+    if (intro_timer == 5) sound_play(asset_get("sfx_clairen_dspecial_counter_active"))
+    if (intro_timer == 10) sound_play(asset_get("sfx_absa_boltcloud"))
+}
+
 //====> IDLE #######################################################
 
 //Init movement
 if (!(state == PS_IDLE || state == PS_SPAWN) && !moved)
 {
     moved = true;
-    if (get_player_color(player) == 20)
+    if (get_player_color(player) == alt_halloween)
     {
         var _md = spawn_hit_fx(x, y, move_drop);
         _md.image_xscale = spr_dir;
@@ -73,21 +83,24 @@ else
     idle_wait = false;
 }
 
-if (!idle_wait)
+if (get_player_color(player) != alt_gen8)
 {
-    if (idle_count >= idle1_frames)
+   if (!idle_wait)
     {
-        idle_wait = true;
-        idle_count = 0;
+        if (idle_count >= idle1_frames)
+        {
+            idle_wait = true;
+            idle_count = 0;
+        }
     }
-}
-else
-{
-    if (idle_count >= idle2_frames)
+    else
     {
-        idle_wait = false;
-        idle_count = 0;
-    }
+        if (idle_count >= idle2_frames)
+        {
+            idle_wait = false;
+            idle_count = 0;
+        }
+    } 
 }
 
 //====> HURT #######################################################
@@ -632,14 +645,49 @@ if(variable_instance_exists(id,"diag"))
     */
 }
 
+//====> MELEE ICONS #######################################################
+
+if (variable_instance_exists(id, "act_melee_icons"))
+{
+    meleei_active = true
+    with (pet_obj)
+    {
+        if (variable_instance_exists(id, "useX"))
+        {
+            other.meleei_useX = useX
+            other.meleei_numPlayers = numPlayers
+            other.meleei_activePlayers = activePlayers
+        }
+    }
+}
+else
+{
+    meleei_active = false
+}
+
+//print_debug(meleei_active)
+
 //====> TIMERS #######################################################
 
-intro_timer += intro_fpf        if (intro_timer >= intro_timerMax)      { intro_timer = intro_timerMax; }       
+//Increase, Stay at Max
+intro_timer += intro_fpf        if (intro_timer >= intro_timerMax)      { intro_timer = intro_timerMax; }
+
+//Decrease, Stay at 0
 uspecial_hits_cool--;           if (uspecial_hits_cool < 0)             { uspecial_hits_cool = 0; }
 fx_nspecial_ground_cool--;      if (fx_nspecial_ground_cool < 0)        { fx_nspecial_ground_cool = 0; }
 special_parried_cool--;         if (special_parried_cool < 0)           { special_parried_cool = 0; }
 elec_timer--;                   if (elec_timer < 0)                     { elec_timer = 0; }
 //shine_exept--;                  if (shine_exept < 0)                    { shine_exept = 0; }
+
+//Increase, Auto-Reset
+fx_gen8_timer++;                if (fx_gen8_timer > c_fx_gen8_timer)    { fx_gen8_timer = 0; }
+
+//====> PREVIOUS FRAME #######################################################
+
+pf_x = [x, pf_x[0], pf_x[1], pf_x[2], pf_x[3]]
+pf_y = [y, pf_y[0], pf_y[1], pf_y[2], pf_y[3]]
+//pf_sprite = sprite_index;
+//pf_image = image_index;
 
 //====> FUNCTIONS #######################################################
 

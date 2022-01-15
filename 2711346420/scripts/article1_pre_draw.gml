@@ -35,7 +35,7 @@ if (state == 0){
 			current_ball_spr_2 = sprite_get("monkey_ball_front_spin")
 		}
 		var should_spin_faster = 0;
-	} else{
+	} else {
 		var should_spin_faster = 0;
 		current_ball_spr = sprite_get("monkey_ball")
 		current_ball_spr_2 = sprite_get("monkey_ball_front")

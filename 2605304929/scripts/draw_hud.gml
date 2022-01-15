@@ -1,5 +1,5 @@
 // Code to prevent error from running on first frame
-
+//#region Gannoncide Platform Icon
 if ("ganoncide_preventor_available_flag" not in self){ // 
     exit;
     }
@@ -10,6 +10,27 @@ if(ganoncide_preventor_available_flag == true){
 else{
     draw_sprite_ext(sprite_get( "platform_icon"), 1, temp_x + 190, temp_y,1,1,0,c_dkgray,1);
 }
+//#endregion
+
+
+//#region Secret Alts
+if(state == PS_SPAWN){
+    var current_alt = get_player_color(player);
+    if(current_alt == 30){
+        var attack_button, special_button, strong_button, jump_button, shield_button, taunt_button;
+        var alt_index = attack_down + special_down*2 + strong_down*4 + jump_down*8 + shield_down*16 + taunt_down*32;
+        if(attack_down){draw_debug_text(temp_x + 0, temp_y - 40,"AT:1");}
+        if(special_down){draw_debug_text( temp_x + 33, temp_y - 40,"SP:2");}
+        if(strong_down){draw_debug_text( temp_x + 66, temp_y - 40,"ST:4");}
+        if(jump_down){draw_debug_text( temp_x + 99, temp_y - 40,"JP:8");}
+        if(shield_down){draw_debug_text( temp_x + 131, temp_y - 40,"SH:16");}
+        if(taunt_down){draw_debug_text( temp_x + 170, temp_y - 40,"TA:32");}
+        draw_debug_text( temp_x + 0, temp_y - 25,"Color Picker Alt Number: " + string(alt_index));
+        draw_debug_text( temp_x + 0, temp_y - 10,"Name: " + string(color_select_alt_name));
+    }
+}
+//#endregion
+
 //
 //Debug Text  
 /*

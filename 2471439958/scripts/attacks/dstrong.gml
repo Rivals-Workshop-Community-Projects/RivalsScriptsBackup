@@ -167,20 +167,19 @@ set_hitbox_value(AT_DSTRONG, 6, HG_WIDTH, 70);
 set_hitbox_value(AT_DSTRONG, 6, HG_HEIGHT, 60);
 set_hitbox_value(AT_DSTRONG, 6, HG_PRIORITY, 5);
 set_hitbox_value(AT_DSTRONG, 6, HG_DAMAGE, 2);
-set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE, 60);
-set_hitbox_value(AT_DSTRONG, 6, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE, 70);
+set_hitbox_value(AT_DSTRONG, 6, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSTRONG, 6, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, sound_get("chainsaw1"));
 set_hitbox_value(AT_DSTRONG, 6, HG_EXTRA_CAMERA_SHAKE, 10);
-set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSTRONG, 6, HG_TECHABLE, 1);
 
 //CHAINSAW FINAL HIT HITBOXES
 set_hitbox_value(AT_DSTRONG, 7, HG_PARENT_HITBOX, 7);
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSTRONG, 7, HG_WINDOW_CREATION_FRAME, 5);
+set_hitbox_value(AT_DSTRONG, 7, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_DSTRONG, 7, HG_WINDOW, 6);
 set_hitbox_value(AT_DSTRONG, 7, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_X, 30);

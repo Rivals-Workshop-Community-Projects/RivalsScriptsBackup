@@ -16,7 +16,11 @@ if(state == 1){
     var proj_y = 0;
     with(pHitBox){
         if(type == 2 and player != other.player and !plasma_safe and place_meeting(x, y, other)){
-            destroyed = true;
+        	if(orig_player == other.player and attack == AT_NSPECIAL){
+            
+        	} else {
+        		destroyed = true;
+        	}
         } else if (player == other.player and attack == AT_NSPECIAL and place_meeting(x, y, other) and "upgraded_shadowball" not in self){
             proj_size = hbox_num;
             proj_y = y;
@@ -30,6 +34,7 @@ if(state == 1){
             spawn_hit_fx(floor(other.x), floor(proj_y), curse);
             var bunga = create_hitbox(AT_NSPECIAL, proj_size+1, floor(other.x), floor(proj_y));
             bunga.upgraded_shadowball = true;
+            bunga.length = bunga.length*.7;
             bunga.shadowball_size = proj_size;
         }
     }
@@ -307,7 +312,7 @@ if(hbox.player != player_id.player){
 }
 player_who_hit_wall = hbox.player
 with(player_id){
-    spawn_hit_fx(fspecial_wall.x+spr_dir*8, fspecial_wall.y+68, shatter);
+    //spawn_hit_fx(fspecial_wall.x+spr_dir*8, fspecial_wall.y+68, shatter);
 }
 
 /*//Default Hitstun Calculation

@@ -24,7 +24,7 @@ accelblitz_active_timer = false;
 accelblitz_done_once = false;
 accelblitz_post_timer = 0;
 if (accel_vulnerability) accel_vulnerability = false;
-if (instance_exists(artc_accel_indicator) instance_destroy(artc_accel_indicator);
+if (instance_exists(artc_accel_indicator)) instance_destroy(artc_accel_indicator);
 
 //chasm burster's variables
 burst_count_start = false;

@@ -493,7 +493,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 25){ // Color 3 Secret Alt
+		if (get_player_color(player) == 26){ // Color 26 Secret Alt
 
 			// Riptide - alt color
 			if (up_down && !down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
@@ -504,11 +504,22 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 25){ // Color 3 Secret Alt
+		if (get_player_color(player) == 26){ // Color 26 Secret Alt
 
 			// Yshtola - alt color
 			if (!up_down && down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
 				SecretColor = 10;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 26){ // Color 26 Secret Alt
+
+			// Heatwave - alt color
+			if (!up_down && !down_down && left_down && !right_down && !shield_down && attack_down && !special_down){
+				SecretColor = 11;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();

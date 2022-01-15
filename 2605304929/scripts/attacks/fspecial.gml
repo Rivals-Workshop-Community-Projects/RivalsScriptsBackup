@@ -184,12 +184,13 @@ var window_for_hitbox = 1; // Set this to change the window that the hitbox come
 //Set Hitbox Values - This is the basic block of a functional hitbox
 window_for_hitbox = 3;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 60);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -20);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 68);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 36);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 47);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -8);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 58);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 19);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
@@ -197,19 +198,20 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 21); //21  - lightning medium
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 hitbox_num++;
 
 //Set Hitbox Values - This is the basic block of a functional hitbox
 window_for_hitbox = 4;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 53);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, 4);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 68);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 36);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 45);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, 2);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 62);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 24);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 0);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
@@ -217,7 +219,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 21); //21  - lightning medium
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
 hitbox_num++;

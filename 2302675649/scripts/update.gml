@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 38;
+	var noOfPatches = 40;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -95,6 +95,9 @@ if (state == PS_AIR_DODGE && state_timer == 0)
 	airdodgeStart.y = y;
 	clear_button_buffer(PC_SPECIAL_PRESSED);
 }
+
+// uspec walljump
+if (!free) uspecWalljump = true;
 
 // portal flash
 if (teleFlash > 0) teleFlash--;

@@ -50,8 +50,8 @@ set_hitbox_value(AT_FTILT, ig, HG_SHAPE, 2);
 set_hitbox_value(AT_FTILT, ig, HG_PRIORITY, 2);
 set_hitbox_value(AT_FTILT, ig, HG_DAMAGE, 8);
 set_hitbox_value(AT_FTILT, ig, HG_ANGLE, 45); // changed to 45 from 20 in light of angle flipper removal
-set_hitbox_value(AT_FTILT, ig, HG_BASE_KNOCKBACK, 7); // reduced bkb from 8 to 5
-set_hitbox_value(AT_FTILT, ig, HG_KNOCKBACK_SCALING, .5); // reduced kbs from .6 to .3
+set_hitbox_value(AT_FTILT, ig, HG_BASE_KNOCKBACK, 7); // increased it again to make it stronger [reduced bkb from 8 to 5]
+set_hitbox_value(AT_FTILT, ig, HG_KNOCKBACK_SCALING, .65); // increased it again because it felt wrong tbh[reduced kbs from .6 to .3]
 set_hitbox_value(AT_FTILT, ig, HG_BASE_HITPAUSE, 8); // increased to 8 from 6
 set_hitbox_value(AT_FTILT, ig, HG_HITPAUSE_SCALING, .4); // increased to .4 from .2
 set_hitbox_value(AT_FTILT, ig, HG_EXTRA_HITPAUSE, 2); // added extra hp to facilitate frame advantage on hit

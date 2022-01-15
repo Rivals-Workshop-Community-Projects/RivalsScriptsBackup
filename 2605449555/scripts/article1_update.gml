@@ -746,8 +746,6 @@ if (state == 0 || state == 1 || state == 21) {
 		if (state != 21) {
 			player_id.CannBallTpHsp = cannonball_BonkHsp;
 			player_id.CannBallTpVsp = cannonball_BonkVsp;
-		} else {
-			
 		}
 		
 	}
@@ -759,10 +757,12 @@ if (state == 0 || state == 1 || state == 21) {
 			if (state == 0) {
 				state = 1;
 				state_timer = 0;
+				player_id.CannNSpecialCooldownTimer = 180;
 				ignores_walls = true;
 			}
 		} else {
 			player_id.CannCannonBallActive = false;
+			player_id.CannNSpecialCooldownTimer = 150;
 			instance_destroy();
 		}
 		

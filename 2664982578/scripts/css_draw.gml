@@ -2,8 +2,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "0.0";
-patch_day = "11";
-patch_month = "DEC";
+patch_day = "1";
+patch_month = "JAN";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);
@@ -46,6 +46,9 @@ draw_sprite(sprite_get("stockicon"),0,x+173,y+34);
 
 if (get_player_color(player)==14 || get_player_color(player)==15 || get_player_color(player)== 16 || get_player_color(player)== 17 || get_player_color(player)== 18 || get_player_color(player)== 23){
         draw_sprite(sprite_get("eggdog_charselect"),0,x+8,y+8);
+}
+if (get_player_color(player)==24){
+        draw_sprite(sprite_get("nothingthere_charselect"),0,x+8,y+8);
 }
 
  

@@ -56,58 +56,13 @@ if (instance_number(oPlayer) > 1)
         }
     }
 }
-if (pikmin != noone)
-{
-    y_offset = sprite_get_height(pikmin.hurtbox_spr) / 6;
-    if (pikmin.state != PS_RESPAWN)
-    pikmin_time--
-    if (pikmin_time mod 16 == 0)
-    {
-        pikmin_frame++;
-        pikmin_sound = 1
-    }
-    else if (pikmin_frame mod 4 == 2)
-    {
-        if (pikmin_sound == 1)
-        {
-            spawn_hit_fx(pikmin.x - (20 * pikmin.spr_dir), pikmin.y - (y_offset + 25), 301);
-            take_damage(pikmin.player, player, 2);
-            sound_play(asset_get("sfx_orca_bite"))
-            pikmin_sound = 0;
-        }
-    }
-    
-    if (pikmin_time <= 0 or pikmin.state == PS_RESPAWN)
-    {
-        if (pikmin.state != PS_RESPAWN)
-        {
-            create_hitbox(AT_FSPECIAL, 2, pikmin.x - (20 * pikmin.spr_dir), pikmin.y - floor(y_offset * 2))
-        }
-        else if (pikmin.state == PS_RESPAWN)
-        {
-            shrimp_set = 0;
-        }
-    
-        pikmin = noone
-        pikmin_time = 320;
-        pikmin_frame = 0;
-    }
-}
+
 if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND)
 {
     follow = 0;
     pop = 0;
     shrimp = shrimp_set;
     nspec_charge = 0;
-    if ((state == PS_RESPAWN or state == PS_DEAD) and pikmin != noone)
-    {
-        
-        create_hitbox(AT_FSPECIAL, 2, pikmin.x - (20 * pikmin.spr_dir), pikmin.y - floor(y_offset * 2))
-        
-        pikmin = noone
-        pikmin_time = 320;
-        pikmin_frame = 0;
-    }
 }
 
 if (free == false)

@@ -12,7 +12,7 @@ if (attack == AT_NSPECIAL){
 	vsp = min(vsp,3);
 	
 	// Reset angle
-	if(window == 1 && window_timer == 1)
+	if(window == 1 && window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 	{
 		firecracker_angle = default_firecracker_angle;
 		fc_count = 1;
@@ -331,14 +331,14 @@ if (attack == AT_FSPECIAL){
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_down"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_down_air"));
-			fspec_yoff = 30;
+			fspec_yoff = 35;
 			fspec_xoff = -10;
 		}
 		else if((joy_dir > 30 && joy_dir < 200 && spr_dir == 1) || (joy_dir < 150 && joy_dir > 0 && spr_dir == -1) || up_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_up"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));
-			fspec_yoff = -22;
+			fspec_yoff = -24;
 			fspec_xoff = -10;
 		}
 		else
@@ -366,7 +366,7 @@ if (attack == AT_FSPECIAL){
 	}
 	
 	// Resetting things
-	if(window_timer == 1 && window == 1)
+	if(window_timer == 1 && window == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 	{
 		grabbedProj = noone;
 		grabbedid = noone;
@@ -418,7 +418,7 @@ if (attack == AT_FSPECIAL){
 
 
 	// Grabbing projectile
-	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4) && !shield_down && !special_down)
+	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4))
 	{
 		
 	// First, get nearby hitboxes
@@ -427,6 +427,15 @@ if (attack == AT_FSPECIAL){
 	y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
 	80, //70
 	pHitBox, 
+	true,
+	true );
+	
+	// Player check
+	var tempPlayer = collision_circle(
+	x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
+	y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+	70, //70
+	oPlayer, 
 	true,
 	true );
 	
@@ -455,7 +464,7 @@ if (attack == AT_FSPECIAL){
  
 	
 		// Then, check if its a projectile
-		if(tempProj != noone)
+		if(tempProj != noone && (tempPlayer == noone))
 		{
 			var is_bashable = 0;
 			var is_transcendent = 0;
@@ -478,7 +487,7 @@ if (attack == AT_FSPECIAL){
 					
 					transcendent = true;
 					hitbox_timer = 0;
-					
+		
 					// Toon link jank
 					if("player_id" in self)
 					if(player_id.url == 2164231403) num = 3
@@ -509,6 +518,9 @@ if (attack == AT_FSPECIAL){
 					
 					var yoff = get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y) - 5;	
 					
+					// Increase firecracker charge
+					IncreaseCharge(grabbedProj);
+					
 					with(grabbedProj)
 					{
 						if(orig_player != other.player)
@@ -525,6 +537,8 @@ if (attack == AT_FSPECIAL){
 						hitbox_timer = 0;
 						damage = damage + 3;
 						
+
+
 						
 						// Grabbing projectiles
 						grabbed = 1;
@@ -660,7 +674,7 @@ if (attack == AT_FSPECIAL){
 	{
 		// First, get nearby hitboxes
 		var tempPlat = collision_circle(
-		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
+		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*3),
 		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
 		20, 
 		asset_get("par_jumpthrough"), 
@@ -668,7 +682,7 @@ if (attack == AT_FSPECIAL){
 		true );
 		
 		var tempSolid = collision_circle(
-		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)+10)*spr_dir),
+		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir*3),
 		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
 		20, 
 		asset_get("par_block"), 
@@ -707,7 +721,7 @@ if (attack == AT_FSPECIAL){
 			
 			KRAGG = true;
 
-		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir)
+		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*3)
 		   	, y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y))
 		   	, 19 );	
 		}
@@ -893,10 +907,11 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         			if("player_id" in self)
         				if(player_id.url == CH_ELLIANA) rocket_angle = 270;
         			
-        			var new_vsp = proj_strength*get_hitbox_value( AT_FSPECIAL, 3, HG_BASE_KNOCKBACK );
+        			var new_vsp = proj_strength*get_hitbox_value( AT_FSPECIAL, 3, HG_BASE_KNOCKBACK )*1.5;
         			with(grabbedid)
         			{
         			vsp = new_vsp/1.5;
+        			hsp = other.spr_dir * 3;
         			//vsp += grav * vertical_strength/2;
         			spawn_hit_fx( x, y, 301 );
         			}
@@ -1293,7 +1308,7 @@ if (attack == AT_USPECIAL){
     // }
     
     // Grabbing projectile
-	if(grabbedProj == noone && (window < 7 && window > 2) && !shield_down && !special_down)
+	if(grabbedProj == noone && (window < 7 && window > 2))
 	{
 	// First, get nearby hitboxes
 	var tempProj = collision_circle(
@@ -1304,10 +1319,19 @@ if (attack == AT_USPECIAL){
 	true,
 	true );
 	
+	// Player check
+	var tempPlayer = collision_circle(
+	x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
+	y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+	70, //70
+	oPlayer, 
+	true,
+	true );
+	
 
 		
 		// Kragg pillar crash
-		if(tempProj != noone)
+		if(tempProj != noone && tempPlayer == noone)
 		{
 			if(tempProj.player_id.url == CH_KRAGG)
 			{
@@ -1377,6 +1401,8 @@ if (attack == AT_USPECIAL){
 				
 				var yoff = get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)-20;	
 				var xoff = get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir;
+				
+				IncreaseCharge(grabbedProj);
 				with(grabbedProj)
 				{
 					if(orig_player != other.player)
@@ -1701,23 +1727,42 @@ if (attack == AT_DSPECIAL){
 	
 	//can_move = true;
 	
-	// Drift forward
-	if(right_down && spr_dir == 1)
+	// Drifting
+	if(window < 3)
 	{
-		hsp+=.05;
-	}
-	if(left_down && spr_dir == -1)
-	{
-		hsp -= .05;
+		// Drift forward
+		if(right_down && spr_dir == 1)
+		{
+			hsp+=.05;
+			vsp+=.2;
+		}
+		if(left_down && spr_dir == -1)
+		{
+			hsp -= .05;
+			vsp +=.2;
+		}
+		
+		// Drift back
+		if(right_down && spr_dir == -1)
+		{
+			hsp-=.05;
+			vsp-=.3;
+		}
+		if(left_down && spr_dir == 1)
+		{
+			hsp += .05;
+			vsp-=.3;
+		}
 	}
 	
-	if(window == 1 && window_timer == 1)
+	
+	if(window == 1 && window_timer == 4)
 	{
 		land_dust_timer = 24;
 		whiffspin = false;
 		
 		if(dspec_big_flip == 1){ set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-16); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_bash_projectile")); dspec_big_flip = 2;}
-		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-9); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
+		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-11); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
 		
 	}
 	
@@ -1774,7 +1819,8 @@ if (attack == AT_DSPECIAL){
 	{
 		window = 4;
 		window_timer = 99;
-		
+		wave_land_adj = 1.8;
+		air_dodge_speed = 9;
 	}
 	
 	
@@ -1793,11 +1839,12 @@ if (attack == AT_DSPECIAL){
     }
    
     // Double hop
-	if(!free && window > 2 && down_down && special_pressed && dspec_big_flip == 0)
-	{
+	if(!free && window > 2 && special_down && dspec_big_flip == 0)
+	{	
 		move_cooldown[AT_DSPECIAL] = 0;
 		dspec_big_flip = 1;
-		set_state(PS_IDLE);
+		window = 1;
+		window_timer = get_window_value(AT_DSPECIAL,1,AG_WINDOW_LENGTH)-3;
 	}
     
     // // Super armor
@@ -1904,19 +1951,31 @@ if (attack == AT_AIR_DSPECIAL){
 		jump_queue = 1;
 	}
 	
-	if ((((jump_pressed && djumps == 0) || jump_queue == 1 || (shield_pressed && has_airdodge)) || (special_pressed && !(down_down))) && (window == 2 && window_timer >= 12))
+	can_wall_jump = (window == 2 && window_timer >= 12);
+	
+	if ((((jump_pressed && djumps == 0) || jump_queue == 1 || (shield_pressed)) || (special_pressed && !(down_down))) && (window == 2 && window_timer >= 12))
 	{
-		// Set jump is queued
-		if(jump_queue == 1)
+		if(shield_pressed && !has_airdodge)
 		{
-			jump_pressed = true;
-			set_state(PS_IDLE_AIR);
+			set_state(PS_PRATFALL);
 		}
-
-		jump_queue = 0;
-		window = 3;
-		window_timer = 6;
-		vsp = 8;
+		else
+		{
+			// Set jump is queued
+			if(jump_queue == 1)
+			{
+				jump_pressed = true;
+				set_state(PS_IDLE_AIR);
+			}
+	
+			jump_queue = 0;
+			window = 3;
+			window_timer = 6;
+			vsp = 8;
+			
+			wave_land_adj = 2;
+			air_dodge_speed = 9;
+		}
 	}
 	
 	
@@ -2001,6 +2060,8 @@ if (attack == AT_AIR_DSPECIAL){
 				grabbedProj = tempProj;
 				var yoff = get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y);
 				var xoff = get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X)*spr_dir;
+				
+				IncreaseCharge(grabbedProj);
 				with(grabbedProj)
 				{
 					if(orig_player != other.player)
@@ -2468,6 +2529,8 @@ if(attack == AT_UTILT){
 	var whifflag_offset = 1.0;
 	if(has_hit_player)
 		whifflag_offset = 0.5;
+		
+
 	
 	
 	// Mash stuff
@@ -2501,7 +2564,7 @@ if(attack == AT_UTILT){
 	
 	
 	// 1st cancel
-	if((window == 3 || (window == 2 && window_timer == 4)) && attack_down && window_timer < 6 && !was_parried)
+	if((window == 3 || (window == 2 && window_timer == 4)) && (attack_down || up_stick_down) && window_timer < 6 && !was_parried)
 	{
 		window = 4;
 		window_timer = 0;
@@ -2511,7 +2574,7 @@ if(attack == AT_UTILT){
 	}
 	
 	// Loop spin
-	if(window == 8 && attack_down && window_timer > 0 && has_hit == false && !was_parried)
+	if(window == 8 && (attack_down || up_stick_down) && window_timer > 0 && has_hit == false && !was_parried)
 	{
 		window = 6;
 		window_timer = 0;
@@ -2527,7 +2590,7 @@ if(attack == AT_UTILT){
 	}
 	
 	// 2nd cancel
-	if((!hitpause && window < 10 && window > 3 && attack_pressed && window_timer < 15) || (has_hit != false && window == 9 && window_timer > 0))
+	if((!hitpause && window < 10 && window > 3 && (attack_pressed || (!utilt_stick && up_stick_down) ) && window_timer < 15) || (has_hit != false && window == 9 && window_timer > 0))
 	{
 		window = 10;
 		window_timer = 0;
@@ -2570,6 +2633,9 @@ if(attack == AT_UTILT){
 		window = 12;
 		window_timer = 99;
 	}
+	
+	// Stick storage
+	utilt_stick = up_stick_down;
 }
 #endregion
 
@@ -2730,6 +2796,12 @@ if(attack == AT_FSTRONG){
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 8);
+		
+		if(window >= 3 && window <= 5 && down_down)
+		{
+			vsp += 0.3;
+			vsp = min(vsp,max_fall);
+		}
 	}
 	
 	if(window == 4 && window_timer == phone_window_end && free){
@@ -2800,3 +2872,35 @@ if(attack == AT_DTILT)
 }
 
 #endregion
+
+#define IncreaseCharge(firecracker)
+{
+	var fcnum = 0;
+	
+	with(firecracker)
+	{
+		num_fc = min(3,num_fc+1);
+		if(sprite_index == sprite_get("firecracker_double_spin")) sprite_index = sprite_get("firecracker_triple_spin"); 
+		if(sprite_index == sprite_get("firecracker_double_bunt")) sprite_index = sprite_get("firecracker_triple_bunt");
+		if(sprite_index == sprite_get("firecracker_double")) sprite_index = sprite_get("firecracker_triple"); 
+		if(sprite_index == sprite_get("firecracker_single_bunt")) sprite_index = sprite_get("firecracker_double_bunt");
+		if(sprite_index == sprite_get("firecracker_single_spin")) sprite_index = sprite_get("firecracker_double_spin");
+		if(sprite_index == sprite_get("firecracker_single")) sprite_index = sprite_get("firecracker_double");
+		
+		fcnum = num_fc-1;
+		
+		//hitbox_timer -= 10;
+	}
+	
+	//sound_play( sound_get( "tenru_fc" + string(fcnum) ) );
+}
+
+// NO-INJECT
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

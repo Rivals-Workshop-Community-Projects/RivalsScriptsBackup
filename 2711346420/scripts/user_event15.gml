@@ -167,7 +167,7 @@ so that things like page breaks can work properly.
 initTip("Monkey Ball");
 initWords("AiAis main stage control is the Monkey Ball. All of his specials use it.
 While inside the Monkey Ball, you can do any normal (or Dspecial) to get out of it and place the Monkey Ball down onstage.
-Your movement speed is also slightly increased while inside of it, and your physics are much more slippery, but your hurtbox is much bigger as a result.
+Your movement speed is also increased while inside of it, and your physics are much more slippery, but your hurtbox is much bigger as a result.
 Very useful as an offsenive tool, as it can quickly rack up damage on opponents if you use it as a projectile, then repeatedly hit it into them alongside using your normals to damage them.
 Be careful, though: your opponents can knock the Monkey Ball around as well, so watch out.
 
@@ -255,6 +255,37 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.4", "12 January, 2022");
+initHeader("Back Air");
+initSection("~ Using the move while on the Pure Gold alt now properly plays the animation. I accidentally changed the file name at one point and it messed up the animation.");
+
+initPatch("1.3", "9 January, 2022");
+initHeader("Down Special (Monkey Ball)");
+initSection("~ Fixed a bug where if the Monkey Ball was parried, it would never respawn.");
+
+initPatch("1.2", "9 January, 2022");
+initHeader("General");
+initSection("~ Fixed a bug where if AiAi slid off a ledge while in the Monkey Ball after previously taunting, the respawn platform would show up for one frame.
+- Initial Dash Speed (outside of Monkey Ball): 7.2 -> 7
+- Dash Speed (outside Monkey Ball: 6.6 -> 6
++ Initial Dash Speed (while inside Monkey Ball): 7.6 -> 8
++ Platboost (while inside Monkey Ball): 5.5 -> 6.5
+~ Air Friction (while inside Monkey Ball): .02 -> .04
+
+Basically, movement inside the Monkey Ball should be more noticeably faster than AiAi’s movement outside the Monkey Ball.
+Said movement outside the Monkey Ball is also lowered a little bit to make the change in speed more noticeable.
+
+~ All hitboxes have been given names to what they are in the Data section of the MunoPhone.");
+initHeader("Forward Tilt");
+initSection("~ Adjusted animation to have a smoother motion and a visual kick effect.
+~ Adjusted dust effects.");
+initHeader("Up Air");
+initSection("~ Adjusted the arms during startup and his lower half during endlag a tiny bit.");
+initHeader("Down Special (Monkey Ball)");
+initSection("~ Fixed AiAi’s hurtbox not properly changing when he gets inside the Monkey Ball when using DSpecial.
+~ Adjusted gravity speed of the Monkey Ball.
+~ A bug where the Monkey Ball not respawning when it hits the blastzone while it still looks like the hitbox is active should be fixed.");
 
 initPatch("1.1", "7 January, 2022");
 initHeader("General");
@@ -425,7 +456,7 @@ phone.move_ordering = [
 phone.include_stats = true;
 
 // Notes for the "Stats" page - put "-" for no notes.
-phone.stats_notes = "-";
+phone.stats_notes = "Being inside the Monkey Ball changes your stats. Reopen the phone while inside/out of the ball to change the stats shown on this page.";
 
 // Whether or not to include a custom data page, which can hold any values you
 // want - useful for data that's specific to your character's mechanics.

@@ -29,6 +29,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_USTRONG, 4);
 
+set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_NAME, "Front Hitbox");
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);
 //set_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME, 3);
@@ -50,6 +51,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 //hit 2
+set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_NAME, "Overhead Hitbox");
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 2);
@@ -69,8 +71,11 @@ set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_MISC_ADD, "This move's 3rd hitbox shares the same stats as this hitbox.");
 
 //hit 2 again
+set_hitbox_value(AT_USTRONG, 3, HG_MUNO_HITBOX_EXCLUDE, 1);
+set_hitbox_value(AT_USTRONG, 3, HG_MUNO_HITBOX_NAME, "Overhead Hitbox");
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 3, HG_WINDOW_CREATION_FRAME, 2);
@@ -92,6 +97,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 //behind
+set_hitbox_value(AT_USTRONG, 4, HG_MUNO_HITBOX_NAME, "Back Hitbox");
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 4, HG_WINDOW_CREATION_FRAME, 4);

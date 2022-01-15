@@ -5,6 +5,11 @@ if my_hitboxID.attack == AT_BAIR {
 	sound_play(asset_get("sfx_blow_heavy1"),false,noone,1, 2.2 - min((hitstop*hitstop)/120 , 1.5) )
 }
 
+if my_hitboxID.attack == AT_FAIR {
+	sound_play(sound_get("slice"),false,noone,1.2,0.65)
+}
+
+
 if my_hitboxID.attack == AT_DSTRONG {
 	sound_play(sound_get("slice"),false,noone,1.2,0.6)
 	sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1.1)

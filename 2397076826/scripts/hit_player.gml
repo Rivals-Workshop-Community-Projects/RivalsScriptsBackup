@@ -1,4 +1,19 @@
-///
+
+//if "controlled_player" not in self {
+// controlled_player = instance_create(x,y,"oPlayer", hit_player_obj.player)
+//}
+
+if move_cooldown[AT_USTRONG] != 0 {
+	with hit_player_obj {
+		take_damage(player,-1,-5)
+	}
+}
+
+if attack == AT_NSPECIAL or attack == AT_FSPECIAL or attack == AT_FSTRONG or attack == AT_DSTRONG or attack == AT_USTRONG {
+	move_cooldown[AT_USTRONG] = floor(hitstop + 20)
+}
+
+
 
 if my_hitboxID.attack == AT_USPECIAL && hitstop = 0{
 	hitstop = 10
@@ -31,6 +46,10 @@ if cloneout = 0 && my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT
      	cloneout = 1
      	 
 } 
+
+if cloneout = 0 && (my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL or my_hitboxID.attack == AT_NSPECIAL) {
+	cloneout = -1
+}
 
    if sword  {
    	shake_camera(floor(hitstop/2)+2,floor(hitstop/2) + 2)

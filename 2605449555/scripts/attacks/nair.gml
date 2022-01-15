@@ -7,7 +7,7 @@ set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 // Startup
 
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 
 // Swing 1

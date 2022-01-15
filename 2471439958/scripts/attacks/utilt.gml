@@ -75,7 +75,7 @@ set_hitbox_value(AT_UTILT, 3, HG_HEIGHT, 50);
 set_hitbox_value(AT_UTILT, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 2);
 set_hitbox_value(AT_UTILT, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_UTILT, 3, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_UTILT, 3, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_UTILT, 3, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_UTILT, 3, HG_TECHABLE, 1);

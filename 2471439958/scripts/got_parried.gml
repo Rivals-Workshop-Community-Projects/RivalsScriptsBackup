@@ -1,10 +1,15 @@
-if(my_hitboxID.attack == AT_JAB){
-    if window == 3{
-    parry_lag = 0;
-    }
-    if window == 4{
-        parry_lag = 30;
-    }
+if(my_hitboxID.attack == AT_DAIR){
+    set_state( PS_PRATFALL );
+}
+if(my_hitboxID.attack == AT_FSPECIAL){
+    set_state( PS_PRATFALL );
+}
+if(my_hitboxID.attack == PS_ATTACK_AIR || PS_ATTACK_GROUND){
+    ice_cont = 0;
+    ice_active = false;
+    hit_player_obj.ice_mark = 0;
+    ice_active_cont = 0;
+    hit_player_obj.outline_color = [0, 0, 0];
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2) {
@@ -19,9 +24,6 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2) {
          spr_dir *= -1
          can_hit_self = true
          length = 20
-         ice_mark = 0;
-        ice_mark_cont = 0;
-        ice_cont = 0
      }   
     }
     }
@@ -39,9 +41,11 @@ if (my_hitboxID.attack == AT_NSPECIAL_2 && my_hitboxID.type == 2) {
          spr_dir *= -1
          can_hit_self = true
          length = 20
-         ice_mark = 0;
-        ice_mark_cont = 0;
-        ice_cont = 0
+    ice_cont = -30;
+    ice_active = false;
+    hit_player_obj.ice_mark = 0;
+    ice_active_cont = 0;
+    hit_player_obj.outline_color = [0, 0, 0];
      }   
         
     }

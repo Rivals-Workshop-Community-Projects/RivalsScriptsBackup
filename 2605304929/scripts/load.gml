@@ -45,9 +45,6 @@ sprite_change_offset("nspecial", 128, 162);
 sprite_change_offset("nspecial_air", 128, 162);
 sprite_change_offset("nspecial_proj", 128, 128);
 
-sprite_change_offset("consume_elec", 128, 128);
-sprite_change_offset("consume_water", 128, 128);
-
 //Specials Throw Sprites
 sprite_change_offset("fspecial", 128, 162);
 sprite_change_offset("fthrow", 128, 162); // Fspecial Throw
@@ -60,21 +57,20 @@ sprite_change_offset("uspecial_2", 128, 162); // Uspecial Execute
 sprite_change_offset("dspecial", 128, 162);
 sprite_change_offset("dspecial_air", 128, 162); 
 sprite_change_offset("dthrow", 128, 162); // Dstrong Throw
+sprite_change_offset("dthrow_behind", 128, 162); // Dstrong Throw Back Sprite
 sprite_change_offset("dspecial_2", 128, 162); // Dspecial Execute
 
 // A+B Command Input Grabs
 sprite_change_offset("extra_1", 128, 162); // Ground Throw
 sprite_change_offset("nspecial_2", 128, 162); // Success Ground Throw Animation
 sprite_change_offset("extra_2", 128, 162); // Air Throw
+sprite_change_offset("extra_2_behind", 128, 162); // Execute Nspecial on Behind Sprites
 sprite_change_offset("nthrow", 128, 162); // Success Air Throw Animation
 sprite_change_offset("extra_3", 128, 162); // Execute Variant
 sprite_change_offset("extra_3_behind", 128, 162); // Execute Variant Aboce Sprites
 
 //Element Sprites
-sprite_change_offset("buildup_electricity", 128, 128); // 
 sprite_change_offset("buildup_water", 128, 128); //
-sprite_change_offset("meter_electricity", 128, 128); //
-sprite_change_offset("meter_water", 128, 128); //
 
 //HitFX
 sprite_change_offset("hitfx_large_elec", 128, 128); //
@@ -82,6 +78,11 @@ sprite_change_offset("hitfx_large_water", 128, 128); //
 sprite_change_offset("hitfx_large_combined", 128, 128); //
 sprite_change_offset("hitfx_water_paw", 128, 128); // 
 sprite_change_offset("hitfx_elec_paw", 128, 128); //
+sprite_change_offset("hitfx_boosted_grab", 128, 128); //
+sprite_change_offset("consume_elec", 128, 382); // Custom Offsets
+sprite_change_offset("consume_water", 128, 128);
+sprite_change_offset("cooldown_electricity", 128, 128);
+sprite_change_offset("hitfx_water_dust", 128, 128);
 
 //Hurt Sprites
 sprite_change_offset("hurt", 128, 162);
@@ -101,6 +102,7 @@ sprite_change_offset("platform_icon", 128, 128);
 
 //Other Stuff
 sprite_change_offset("intro", 128, 162);
+sprite_change_offset("intro_g8", 128, 162);
 sprite_change_offset("plat", 128, 162);
 sprite_change_offset("plat_bg", 128, 162);
 sprite_change_offset("plat_idle", 128, 162);
@@ -108,11 +110,27 @@ sprite_change_offset("idle_transition", 128, 162);
 sprite_change_offset("bubbles", 128, 128);
 sprite_change_offset("taunt", 128, 162);
 sprite_change_offset("taunt_proj", 128, 162);
-sprite_change_offset("hud", 128, 128);
+sprite_change_offset("fspecial_recovery_icon", 128, 128);
 
+// Final Smash Stuff
+sprite_change_offset("final_smash_grab", 128, 162);
+sprite_change_offset("final_smash_throw", 128, 162);
+sprite_change_offset("cintematic_final_smash_grab1", 350, 350);
+sprite_change_offset("cintematic_final_smash_throw1", 350, 350);
+sprite_change_offset("cintematic_final_smash_eyes", 350, 350);
+sprite_change_offset("Cintematic_Final_Smash_Throw_Background", 0, 0);
+
+// Hurtbox
+sprite_change_offset("hurtbox", 128, 164);
+sprite_change_offset("crouch_hurtbox", 128, 164);
 
 // Victory Stuff
 set_victory_theme(sound_get("victory"));
 set_victory_bg(sprite_get("victory_bg"));
+
+//Compat Stuf
+sprite_change_offset("dialogue_buddy", 102, 72);
+
+
 //set_victory_theme(CH_CLAIREN);
 //set_victory_bg( sprite_get( "custom" ));

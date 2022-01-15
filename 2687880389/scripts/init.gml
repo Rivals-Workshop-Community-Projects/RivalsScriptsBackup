@@ -275,7 +275,7 @@ bubble_y = 8;
 blast_hit_effect = hit_fx_create(sprite_get("blast_hit"), 42);
 
 // crawl
-crawl_speed = 20;
+crawl_speed = 17; // 20
 crawl_accel = 0.8;
 crouch_time = 0;
 crouch_time_max = 4;
@@ -350,6 +350,10 @@ holding_someone = false;
 RETROBLAST_HOLDER_ID = noone;
 grab_hitbox = noone;
 created_grab_hitbox = false;
+// Different throw sounds
+fthrow_sound_effect = codename_mischeif_active ? sound_get("marina_ha") : asset_get("sfx_clairen_nspecial_grab_success");
+bthrow_sound_effect = codename_mischeif_active ? sound_get("marina_yah") : asset_get("sfx_clairen_nspecial_grab_success");
+dthrow_sound_effect = codename_mischeif_active ? sound_get("marina_hooah") : sound_get("mechanical_startup");
 
 // dspecial
 engine_revving_up_sound = sound_get("engine_revving");
@@ -357,6 +361,7 @@ driving_dash_sound = sound_get("engine_dash");
 armor_available = false;
 driving_dash_duration = 18;
 driving_dash_stored = false;
+change_hurtbox_sprite_to_crouch_next_frame = false;
 
 // Afterimages
 //num_afterimages_max = 11;
@@ -378,11 +383,13 @@ current_effect_sound = noone;
 
 // ustrong
 sliding_speed = 0;
-sliding_speed_accel = 0.1;
+sliding_friction = 0.05;
+sliding_speed_accel = sliding_friction + 0.05;
 takeoff_start_sound = sound_get("takeoff_charge");
 
 // dstrong
-dstrong_accel = 0.5;
+dstrong_max_speed = 7; // 4
+dstrong_accel = 1; // 0.5
 num_dstrong_spins = 2;
 looping_dust_timer = 0;
 tire_screech_burnout_start_sound = sound_get("tire_screech_burnout_start");

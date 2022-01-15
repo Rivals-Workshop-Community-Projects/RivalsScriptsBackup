@@ -18,6 +18,7 @@ cloneinv = 0
 
 sword = 0
 
+cloned = 0
 
 	shsp = 0
     svsp = 0

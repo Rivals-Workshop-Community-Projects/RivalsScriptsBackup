@@ -40,6 +40,8 @@ if attack == AT_USPECIAL {
     reset_hitbox_value(AT_USPECIAL, 1, HG_FINAL_BASE_KNOCKBACK);
 }
 
+used_uspec = false
+
 hit_doll = undefined
 counter_hit = noone
 

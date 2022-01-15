@@ -17,6 +17,25 @@ switch(attack)
     case 1: //A
 	{
         can_fast_fall = !(window >= 2);
+
+        if (window == 1 && window_timer == 1)
+		{
+            if (unown_a_used)
+            {
+                set_window_value(attack, 2, AG_WINDOW_VSPEED, 0);
+                set_window_value(attack, 2, AG_WINDOW_VSPEED_TYPE, 0);
+            }
+            else 
+            {
+                reset_window_value(attack, 2, AG_WINDOW_VSPEED);
+                reset_window_value(attack, 2, AG_WINDOW_VSPEED_TYPE);
+            }
+		}
+		else if (window == 2 && window_timer == 1 && !hitpause) 
+        {
+            if (vsp > 0) vsp = 0;
+            unown_a_used = true;
+        }
 	} break;
 	//===========================
 	case 2: //B
@@ -104,6 +123,8 @@ switch(attack)
 		}
         if (window == 3)
         {
+            vsp = clamp(vsp, -max_fall, max_fall);
+            can_wall_jump = true;
             unown_g_used = true;
         	if (y < -40)
         	{
@@ -116,10 +137,19 @@ switch(attack)
         		window_timer = 0;
                 reset_window_value(attack, 4, AG_WINDOW_TYPE); //pratfall
                 reset_window_value(attack, 4, AG_WINDOW_HAS_SFX); //sfx
+
+                if (instance_place(x, y - 2, asset_get("par_block")))
+                {
+                    //bonked on ceiling
+                    sound_play(asset_get("sfx_land_light"))
+                    window = 4;
+                    window_timer = 1; //avoids sfx
+                }
         	}
         }
         if (window == 4)
         {
+            can_wall_jump = true;
         	if (y < -40) && (vsp < 0) vsp *= 0.5;
         }
 	} break;
@@ -375,7 +405,7 @@ switch(attack)
 	//===========================
     case 25: //Y
     {
-        can_fast_fall = false;
+        can_fast_fall = (window == 3);
         hsp *= 0.75; 
         if (window == 1)
         {
@@ -428,14 +458,13 @@ switch(attack)
     	{
     		if (unown_best_word_length > 1)
     		{
+				move_cooldown[AT_TAUNT] = 60;
     			//vfx
     			inward_hidden_power_timer = inward_hidden_power_timer_max;
             	inward_hidden_power_fast = true;
             	
             	//calculate damage boost
-            	var bonus = unown_current_bonus
-            	   + (unown_letter_exclamation_bonus * (string_length(unown_text_buffer)
-            	       - min(unown_best_word_length, array_length(unown_word_length_bonus))));
+            	var bonus = unown_current_bonus;
             	
             	//setup hitboxes
             	var hb_size = floor(min(200, bonus * 100 + 60));

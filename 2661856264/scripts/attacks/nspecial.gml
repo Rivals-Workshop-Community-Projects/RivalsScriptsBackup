@@ -95,7 +95,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("rock_hit"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("nspec_proj_alt"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, sprite_get("nspec_proj_alt"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 3);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, -8);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, -6);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GRAVITY, .35);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 2);

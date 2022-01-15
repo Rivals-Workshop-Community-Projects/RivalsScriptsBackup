@@ -91,6 +91,79 @@ if state_timer > 20 && window_timer != 20 {
 
 }
 
+if cheating == 1 {
+    //	print("AIex")
+	visible = false 
+	invincible = true 
+	invince_time = 2
+	hitstop = 2
+	old_vsp = 0
+	old_hsp = 0
+	vsp = 0
+	hsp = 0
+	hitpause = true 
+	draw_indicator = false 
+	
+	    with cheatingfr {
+	    	other.x = x + hsp + old_hsp
+	    	other.y = y - 1 + vsp + old_vsp
+	    	other.hurtbox_spr = sprite_get("empty");
+	    	other.hurtboxID.sprite_index = sprite_get("empty");
+	    	if other.shield_down {
+	    		//print("Gonna parry")
+	    		AImode = 1 
+	    	} else if other.special_down {
+	    		//print("Fspec leggo")
+	    		AImode = 2
+	    	} else if other.left_down {
+	    	    //print("Nigerun Dayo")
+	    		AImode = 3.1
+	    	} else if other.right_down {
+	    	    //print("Nigerun Dayo")
+	    		AImode = 3.2
+	    	} else if other.down_down {
+	    		//print("Shmove abit")
+	    		AImode = 4
+	    	} else if other.taunt_down { 
+	    		//print("Plant")
+	    		AImode = 5
+	    	} else if other.jump_down { 
+	    		//print("Going up")
+	    		AImode = 6
+	    	} else {
+	    		AImode = -1
+	    	}
+	    }
+    }
+    
+if (state == PS_DASH
+   	or state == PS_IDLE
+   	or state == PS_CROUCH
+   	or state == PS_WALK
+   	or state == PS_WALK_TURN
+   	or state == PS_DASH_STOP
+   	or state == PS_DASH_TURN
+   	or state == PS_WAVELAND) && cheatingreal = 4  {
+   		
+	invincible = true 
+	invince_time = 1
+	
+		nearbyhitbox = collision_circle( x, y - 30, 30, asset_get("pHitBox"), true, true ) 
+	if nearbyhitbox != noone{
+		if nearbyhitbox.player_id != self && nearbyhitbox.hit_priority > 0  {
+				 set_state(PS_PARRY)
+				 window_timer = 3
+                  invince_time = 0
+                  with nearbyhitbox {
+                  	 hitbox_timer = 0
+                  }
+     	}
+	}
+	
+} else {
+	
+}
+
 if has_rune("K") {
 	
 	set_attack_value(AT_DTILT, AG_CATEGORY, 2);

@@ -43,20 +43,20 @@ ig = 1;
 
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, ig, HG_WINDOW, 2);
-set_hitbox_value(AT_DTILT, ig, HG_LIFETIME, 3); // changed lifetime to match length of active window
+set_hitbox_value(AT_DTILT, ig, HG_LIFETIME, 3);
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_X, 49);
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_Y, -14);
 set_hitbox_value(AT_DTILT, ig, HG_WIDTH, 71);
 set_hitbox_value(AT_DTILT, ig, HG_HEIGHT, 32);
-set_hitbox_value(AT_DTILT, ig, HG_SHAPE, 2); // changed hitbox index from 2 to 1 (dummy)
+set_hitbox_value(AT_DTILT, ig, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, ig, HG_PRIORITY, 2);
 set_hitbox_value(AT_DTILT, ig, HG_DAMAGE, 4);
-set_hitbox_value(AT_DTILT, ig, HG_ANGLE, 100); // changed angle to 100 from 85 to bring enemies in
-set_hitbox_value(AT_DTILT, ig, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_DTILT, ig, HG_KNOCKBACK_SCALING, .3); // reduced kb scaling by .1
-set_hitbox_value(AT_DTILT, ig, HG_BASE_HITPAUSE, 4); // raised base hitpause to 4 from 3
-set_hitbox_value(AT_DTILT, ig, HG_HITPAUSE_SCALING, .3); // added hitpause scaling
-set_hitbox_value(AT_DTILT, ig, HG_EXTRA_HITPAUSE, 2); // added extra hitpause to allow frame advantage on hit
+set_hitbox_value(AT_DTILT, ig, HG_ANGLE, 100);
+set_hitbox_value(AT_DTILT, ig, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DTILT, ig, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_DTILT, ig, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_DTILT, ig, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(AT_DTILT, ig, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_DTILT, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_DTILT, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_DTILT, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
@@ -66,20 +66,20 @@ ig++;
 
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, ig, HG_WINDOW, 3);
-set_hitbox_value(AT_DTILT, ig, HG_LIFETIME, 3); // changed lifetime to match length of active window
+set_hitbox_value(AT_DTILT, ig, HG_LIFETIME, 3);
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_X, -24);
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_Y, -6);
 set_hitbox_value(AT_DTILT, ig, HG_WIDTH, 63);
 set_hitbox_value(AT_DTILT, ig, HG_HEIGHT, 27);
-set_hitbox_value(AT_DTILT, ig, HG_SHAPE, 2); // changed hitbox index from 2 to 1 (dummy)
+set_hitbox_value(AT_DTILT, ig, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, ig, HG_PRIORITY, 2);
 set_hitbox_value(AT_DTILT, ig, HG_DAMAGE, 4);
-set_hitbox_value(AT_DTILT, ig, HG_ANGLE, 100); // changed angle to 100 from 85 to bring enemies in
-set_hitbox_value(AT_DTILT, ig, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_DTILT, ig, HG_KNOCKBACK_SCALING, .3); // reduced kb scaling by .1
-set_hitbox_value(AT_DTILT, ig, HG_BASE_HITPAUSE, 4); // raised base hitpause to 4 from 3
-set_hitbox_value(AT_DTILT, ig, HG_HITPAUSE_SCALING, .3); // added hitpause scaling
-set_hitbox_value(AT_DTILT, ig, HG_EXTRA_HITPAUSE, 2); // added extra hitpause to allow frame advantage on hit
+set_hitbox_value(AT_DTILT, ig, HG_ANGLE, 100);
+set_hitbox_value(AT_DTILT, ig, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DTILT, ig, HG_KNOCKBACK_SCALING, .4); // reduced kb scaling by .3
+set_hitbox_value(AT_DTILT, ig, HG_BASE_HITPAUSE, 4); 
+set_hitbox_value(AT_DTILT, ig, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(AT_DTILT, ig, HG_EXTRA_HITPAUSE, 2); 
 set_hitbox_value(AT_DTILT, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_DTILT, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_DTILT, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

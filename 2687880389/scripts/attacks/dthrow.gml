@@ -16,7 +16,7 @@ set_window_value(AT_DTHROW, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_DTHROW, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DTHROW, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_DTHROW, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DTHROW, 1, AG_WINDOW_SFX, codename_mischeif_active ? sound_get("marina_hooah") : asset_get("sfx_shovel_swing_med2"));
+set_window_value(AT_DTHROW, 1, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_med2"));
 set_window_value(AT_DTHROW, 1, AG_WINDOW_SFX_FRAME, 11);
 
 // Going up
@@ -72,10 +72,11 @@ set_hitbox_value(AT_DTHROW, 1, HG_ANGLE, -100);
 set_hitbox_value(AT_DTHROW, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DTHROW, 1, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_DTHROW, 1, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_DTHROW, 1, HG_HITPAUSE_SCALING, 1.0);
-set_hitbox_value(AT_DTHROW, 1, HG_VISUAL_EFFECT, 1); // no visual effect
+set_hitbox_value(AT_DTHROW, 1, HG_HITPAUSE_SCALING, 1.5);
+set_hitbox_value(AT_DTHROW, 1, HG_VISUAL_EFFECT_Y_OFFSET, 30);
+set_hitbox_value(AT_DTHROW, 1, HG_VISUAL_EFFECT, 155);
 set_hitbox_value(AT_DTHROW, 1, HG_IGNORES_PROJECTILES, 0);
-set_hitbox_value(AT_DTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
+set_hitbox_value(AT_DTHROW, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_DTHROW, 1, HG_HIT_SFX, asset_get("sfx_kragg_rock_shatter"));
 /*
 // windup/turn

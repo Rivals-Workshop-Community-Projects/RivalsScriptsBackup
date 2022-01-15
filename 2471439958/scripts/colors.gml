@@ -99,7 +99,7 @@ set_color_profile_slot( 6, 7, 255, 255, 255 ); //cleaver
 // Hikaru
 set_color_profile_slot( 7, 0, 255, 243, 243 ); //white
 set_color_profile_slot( 7, 1, 219, 85, 85 ); //scarf
-set_color_profile_slot( 7, 2, 128, 59, 44 ); //hair
+set_color_profile_slot( 7, 2, 99, 56, 40 ); //hair
 set_color_profile_slot( 7, 3, 255, 135, 254 ); //hoodie
 set_color_profile_slot( 7, 4, 255, 181, 233 ); //wood
 set_color_profile_slot( 7, 5, 255, 0, 0 ); //blood
@@ -327,14 +327,14 @@ set_color_profile_slot( 29, 6, 222, 141, 227 ); //eyes
 set_color_profile_slot( 29, 7, 134, 11, 255 ); //cleaver
 
 // Genesis
-set_color_profile_slot( 30, 0, 130, 130, 145 ); //white
-set_color_profile_slot( 30, 1, 207, 201, 201 ); //scarf
-set_color_profile_slot( 30, 2, 71, 59, 71 ); //hair
+set_color_profile_slot( 30, 0, 128, 121, 121 ); //white
+set_color_profile_slot( 30, 1, 230, 224, 224 ); //scarf
+set_color_profile_slot( 30, 2, 153, 28, 28 ); //hair
 set_color_profile_slot( 30, 3, 51, 51, 51 ); //hoodie
 set_color_profile_slot( 30, 4, 51, 51, 51 ); //wood
-set_color_profile_slot( 30, 5, 255, 25, 95 ); //blood
+set_color_profile_slot( 30, 5, 255, 25, 25 ); //blood
 set_color_profile_slot( 30, 6, 255, 0, 0 ); //eyes
-set_color_profile_slot( 30, 7, 255, 25, 95 ); //cleaver
+set_color_profile_slot( 30, 7, 255, 25, 25 ); //cleaver
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

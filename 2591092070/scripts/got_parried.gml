@@ -6,3 +6,9 @@ if(my_hitboxID.attack == AT_FSPECIAL)
             destroyed = true;
         }
     }
+    
+if(my_hitboxID.attack == AT_NSPECIAL)
+    with(pHitBox)
+    {
+    destroyed = true;
+    }

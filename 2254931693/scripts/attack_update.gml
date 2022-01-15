@@ -3,7 +3,7 @@
 
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -36,7 +36,12 @@ if (window = 3){
 }
 
 if (attack == AT_USTRONG && window > 1){
+    if (has_rune("G")){
+    hud_offset = 210;
+    }
+    if (!has_rune("G")){
     hud_offset = 90;
+    }    
 }
 
 
@@ -438,7 +443,7 @@ if (attack == AT_USPECIAL && (window = 2 || window = 3)){
 }
 
 
-if (attack == AT_USPECIAL && has_hit_player && window = 2){
+if (attack == AT_USPECIAL && has_hit_player && window = 2 && !has_rune("L")){
  with (hit_player_obj){
     var uspecialautolinkdir = point_direction(x, y, other.x, other.y - 36);
     var uspecialautolinkspeed = 8;
@@ -446,6 +451,25 @@ if (attack == AT_USPECIAL && has_hit_player && window = 2){
     vsp = lengthdir_y(uspecialautolinkspeed, uspecialautolinkdir);
  }
 }
+
+
+if (has_rune("L")){
+    
+    
+
+if ((attack == AT_USPECIAL || attack == AT_USPECIAL_GROUND)) {
+    if (window = 2){
+    super_armor = true;
+    }
+    
+    if (window = 3){
+        super_armor = false;
+    }
+}   
+    
+}
+
+
 
 if (attack == AT_NAIR && strong_charge > 10 && window = 1){
     vsp = 0;

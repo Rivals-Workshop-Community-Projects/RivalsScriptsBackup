@@ -112,6 +112,7 @@ hitbox_num++;
 for(var hitbox_num = 1; hitbox_num < 5; hitbox_num++){
 window_for_hitbox = 1; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
@@ -138,6 +139,7 @@ hitbox_num++;
 window_for_hitbox = 2;
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
     set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 1);
@@ -161,6 +163,7 @@ hitbox_num++;
 // Hitbox 6
 window_for_hitbox = 2; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
@@ -185,6 +188,7 @@ hitbox_num++;
 // Hitbox 7
 window_for_hitbox = 3; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
@@ -209,6 +213,7 @@ hitbox_num++;
 // Hitbox 8
 window_for_hitbox = 3; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
@@ -234,6 +239,7 @@ hitbox_num++;
 // Hitbox 9 - Final Hitbox with knockback/ outside of grab window to prevent interacting with grab code
 window_for_hitbox = 4; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
@@ -252,7 +258,7 @@ window_for_hitbox = 4;
     //set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 10);
     //set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.5);
     //set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, .5);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 157); //157 - lightning extra large
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
     set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 3);
 //hitbox_num++;

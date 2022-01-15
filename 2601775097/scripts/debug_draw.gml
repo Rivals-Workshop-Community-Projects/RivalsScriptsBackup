@@ -111,20 +111,18 @@ if (phone_cheats[CHEAT_STATS] == 1)
 
 //draw_debug_text(x, y, "text = " + string(variable));
 
-//draw_debug_text(x, y+16, "dist (x,y) = " + string(dist_x) + "," + string(dist_y));
-//draw_debug_text(x, y+16, "indicator (x,y) = " + string(accel_temp_x) + "," + string(accel_temp_y));
-
-//if (instance_exists(artc_accel_indicator))
-//{
-//    with (artc_accel_indicator)
-//    {
-//        draw_debug_text(player_id.x, player_id.y, "x,y = " + string(x) + "," + string(y));
-//    }
-//}
-
-
 //actuall variable checking stuff i did over time
 {
+    //draw_debug_text(x, y+16, "dist (x,y) = " + string(dist_x) + "," + string(dist_y));
+    //draw_debug_text(x, y+16, "indicator (x,y) = " + string(accel_temp_x) + "," + string(accel_temp_y));
+    
+    //if (instance_exists(artc_accel_indicator))
+    //{
+    //    with (artc_accel_indicator)
+    //    {
+    //        draw_debug_text(player_id.x, player_id.y, "x,y = " + string(x) + "," + string(y));
+    //    }
+    //}
     //draw_debug_text(x, y, "bar (x,y) = " + string(x) + "," + string(y));
     //draw_debug_text(x, y+16, "indicator (x,y) = " + string(accel_temp_x) + "," + string(accel_temp_y));
 

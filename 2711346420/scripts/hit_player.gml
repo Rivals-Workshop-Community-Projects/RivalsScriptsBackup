@@ -97,8 +97,8 @@ if (my_hitboxID.attack == AT_DSPECIAL){
                 if (place_meeting(x, y, other.my_hitboxID)){
                     should_destroy_hitbox = true;
 					monkey_ball_hit_cooldown = 35;
-                    hsp = hsp*-.6;
-                    vsp = vsp*-.6;
+                    hsp = hsp*-.35;
+                    vsp = vsp*-.35;
 					/*
                     if (abs(hsp) < 2 && vsp < -2){
                         vsp = vsp*-.5;

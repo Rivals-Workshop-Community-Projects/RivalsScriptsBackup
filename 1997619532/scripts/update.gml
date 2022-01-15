@@ -1,4 +1,8 @@
 
+
+
+halo = clamp( halob, -100, 6 )
+
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	attacking = true
 } else {

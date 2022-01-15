@@ -28,7 +28,7 @@ if get_player_color(player) == 6 {
 }
 
 if get_player_color(player) == 1 {
-     if cloneout != 0 {
+     if cloneout > 0 {
      	
      	draw_sprite_ext(sprite_get("halo1"), get_gameplay_time()/3, x - 24*spr_dir - hsp , y - 54 - vsp , spr_dir, 1, 0 , -1 , 0.8);
      	     	
@@ -91,7 +91,7 @@ if attacking && (attack == AT_FSPECIAL or attack == AT_USPECIAL) && window = 3 {
 
 }
 
-if cloneout != 0 && move_cooldown[AT_EXTRA_2] == 0 {
+if cloneout > 0 && move_cooldown[AT_EXTRA_2] == 0 {
 
 	
 	

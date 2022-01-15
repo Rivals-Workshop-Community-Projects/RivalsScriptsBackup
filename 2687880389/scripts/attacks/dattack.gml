@@ -37,7 +37,7 @@ set_num_hitboxes(AT_DATTACK, 2);
 // blast
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_DATTACK, 1, HG_LIFETIME, 6);
+set_hitbox_value(AT_DATTACK, 1, HG_LIFETIME, 3); // 6
 /*
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 53);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -24);
@@ -63,7 +63,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 // feet
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 6);
+set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 3); // 6
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_Y, -18);
 set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 68);

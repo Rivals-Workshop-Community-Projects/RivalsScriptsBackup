@@ -108,12 +108,12 @@ set_color_profile_slot( 10, 4, 211, 226, 154 ); //Skin 2
 set_color_profile_slot( 10, 5, 211, 226, 154 ); //water
 
 // Summit
-set_color_profile_slot( 11, 0, 78, 78, 110 ); //Skin
+set_color_profile_slot( 11, 0, 63, 63, 89 ); //Skin
 set_color_profile_slot( 11, 1, 234, 243, 240 ); //Fins
-set_color_profile_slot( 11, 2, 219, 25, 60 ); //Marks
-set_color_profile_slot( 11, 3, 234, 243, 240 ); //Light
-set_color_profile_slot( 11, 4, 219, 25, 60 ); //Skin 2
-set_color_profile_slot( 11, 5, 234, 243, 240 ); //water
+set_color_profile_slot( 11, 2, 204, 0, 37 ); //Marks
+set_color_profile_slot( 11, 3, 255, 255, 255 ); //Light
+set_color_profile_slot( 11, 4, 204, 0, 37 ); //Skin 2
+set_color_profile_slot( 11, 5, 204, 51, 79 ); //water
 
 // Infamous
 set_color_profile_slot( 12, 0, 76, 82, 107 ); //Skin

@@ -119,7 +119,8 @@ if attack == AT_DTILT and has_hit and !hitstop {
 }
 
 if attack == AT_EXTRA_1 {
-	halo = 0
+	can_fast_fall = false
+	halob = 0
 	prat_land_time = 20;
 	 move_cooldown[AT_FSPECIAL] = 5
 	 
@@ -222,7 +223,7 @@ if window == 2 && window_timer % 3 = 0 {
 
 if attack == AT_EXTRA_2 {
 	//Blender
-	halo = 0
+	halob = 0
 	prat_land_time = 20;
 	can_fast_fall = false
 	
@@ -285,7 +286,7 @@ if attack == AT_EXTRA_3 {
     		rekk.depth = -1000
     		
     		
-    	    halo = 0
+    	    halob = 0
     		var rek = spawn_hit_fx( x - (8 * spr_dir) , y - 50 , 306 )
     		rek.depth = 1000
     	shake_camera(6,6)
@@ -576,7 +577,7 @@ if window_timer == 1 && window == 1 {
 		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
     		halodeact.depth = 1
 		window = 3
-		halo = 0    	
+		halob = 0    	
 			shake_camera(6,6)
    	
    }

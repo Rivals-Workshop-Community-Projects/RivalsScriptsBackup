@@ -63,7 +63,7 @@ set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 	set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG_2, 1, HG_DAMAGE, 12);
 	set_hitbox_value(AT_FSTRONG_2, 1, HG_EFFECT, 0);
-	set_hitbox_value(AT_FSTRONG_2, 1, HG_ANGLE, 50);
+	set_hitbox_value(AT_FSTRONG_2, 1, HG_ANGLE, 45);
 
 
 set_hitbox_value(AT_FSTRONG_2, 2, HG_PARENT_HITBOX, 2);
@@ -86,7 +86,7 @@ set_hitbox_value(AT_FSTRONG_2, 2, HG_EXTRA_CAMERA_SHAKE, 1);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_KNOCKBACK_SCALING, 1.2);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_DAMAGE, 15);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_EFFECT, 0);
-	set_hitbox_value(AT_FSTRONG_2, 2, HG_ANGLE, 45);
+	set_hitbox_value(AT_FSTRONG_2, 2, HG_ANGLE, 38);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_WIDTH, 50);
 
 

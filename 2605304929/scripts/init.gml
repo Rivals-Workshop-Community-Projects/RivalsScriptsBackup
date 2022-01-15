@@ -1,5 +1,5 @@
-hurtbox_spr = asset_get("ex_guy_hurt_box");
-crouchbox_spr = asset_get("ex_guy_crouch_box");
+hurtbox_spr = sprite_get("hurtbox");
+crouchbox_spr = sprite_get("crouch_hurtbox");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
@@ -109,7 +109,6 @@ grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
 
-
 //Fspecial Variable
 ganoncide_preventor_available_flag = true; // Flag used to detect ganoncide and prevent it, but only one time before touching ground
 fspecial_recovery_enabled_flag = false;
@@ -117,11 +116,12 @@ grabbed_player_obj_spr_angle=0;
 grabbed_player_obj_draw_x = 0;
 grabbed_player_obj_draw_y = 0;
 
-//Input Variables
-AB_input_prevention_flag = false;
+//Dspecial Variables
 djump_given_back_flag = false;
+height_changed_flag = false;
+fall_through_timer = 0;
+fall_through_flag = false;
 
-//Status Effect
 //Status Effect
 electric_buff_water_attack_threshold = 9;
 water_buff_electric_attack_threshold = 15;
@@ -129,23 +129,60 @@ water_buff_electric_attack_flag = false;
 electric_buff_water_attack_flag = false;
 element_debug_draw = true;
 element_draw = true;
+hitfx_consume_water_obj = noone;
+hitfx_cooldown_obj = noone;
+hitfx_water_dust_obj_1 = noone;
+hitfx_water_dust_obj_2 = noone;
+hitfx_boosted_grab_obj = noone;
 
 // HitFX
 hitfx_large_elec = hit_fx_create(sprite_get("hitfx_large_elec"),12);
 hitfx_large_water = hit_fx_create(sprite_get("hitfx_large_water"),12);
 hitfx_water_paw = hit_fx_create(sprite_get("hitfx_water_paw"),25);
 hitfx_elec_paw = hit_fx_create(sprite_get("hitfx_elec_paw"),25);
-hitfx_consume_water = hit_fx_create(sprite_get("consume_water"),30);
+hitfx_consume_water = hit_fx_create(sprite_get("consume_water"),45);
+hitfx_boosted_grab = hit_fx_create(sprite_get("hitfx_boosted_grab"),15);
 hitfx_consume_elec = hit_fx_create(sprite_get("consume_elec"),30);
 hitfx_bubbles = hit_fx_create(sprite_get("bubbles"),30);
 hitfx_large_combined = hit_fx_create(sprite_get("hitfx_large_combined"),15);
+hitfx_cooldown = hit_fx_create(sprite_get("cooldown_electricity"),60);
+hitfx_water_dust = hit_fx_create(sprite_get("hitfx_water_dust"),14);
 
-// Lukaru's Intro Code
-// intro
-introTimer = -4;
+// intro Code
+intro_sound_played_flag = false;
 
-// Hud Code
-distance_to_opponent = [0,0,0];
+//Alt Color Variable
+color_select_alt_name = "";
+color_picker_alt_index = 0;
 
 // Platform Code
 article_platform_id = noone;
+
+// Final Smash Compat
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 96;
+fs_charge = 0;
+AT_FINAL_SMASH_GRAB = 49;
+AT_FINAL_SMASH_THROW = 48;
+cinetmatic_timer = 0;
+play_final_smash_grab_cintematic_flag = false;
+//fs_portrait_x = OFFSET HERE
+//`fs_char_portrait_override = sprite_get('MY PORTRAIT OVERRIDE SPRITE");`
+//`fs_char_attack_index = AT_ATTACK_INDEX_OF_YOUR_CHOICE;`
+
+// Lukaru After Images code for Amateratsu Alt
+// Other code affected is in Colors / Init Shader / Pre draw / update
+if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amateratsu // Genesis 8 Skin
+    // afterimage
+    afterImageTimer = 0;
+    afterImageMax = 6;
+    afterImage = array_create(afterImageMax, -1);
+}
+// Other Compat Stuff
+// Compatibility Stuff -----------------------------------------------
+Hikaru_Title = "Dance in the rain with me";
+arena_title = "The Eye of the Storm";
+battle_text = "*They took everything from me."; // Opening line of "Lost at Birth" by Public Enemy
+
+//Dialogue Buddy by Ducky! get it at https://steamcommunity.com/workshop/filedetails/discussion/2557293251/3062995463267073852/
+diag_portrait=sprite_get("dialogue_buddy"); // This will allow you to put any custom portrait onto the dialogue buddy!

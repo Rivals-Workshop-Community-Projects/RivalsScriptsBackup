@@ -1,6 +1,6 @@
 //pre_draw.gml
 
-if ((state == PS_RESPAWN) || (attack == AT_TAUNT && free)) && (sprite_index == sprite_get("idle") || sprite_index == sprite_get("taunt")){
+if ((state == PS_RESPAWN) || (attack == AT_TAUNT && free)) && !place_meeting(x,y+4,(asset_get("par_block"))) &&(sprite_index == sprite_get("idle") || sprite_index == sprite_get("taunt")){
     draw_sprite(sprite_get("plat_behind"), 0, x, y);
     //draw_sprite(sprite_get("plat"), 0, x, y);
 }
@@ -17,7 +17,7 @@ if (inside_monkey_ball && uspec_ball_onstage == false && uspec_past_window_1 == 
 } else if (!inside_monkey_ball && dspecial_startup == true && dspecial_exit_startup == false && fspecial_startup == false){
 	draw_sprite_ext( sprite_get("monkey_ball_uspec"), dspecial_draw_timer, x-(0*spr_dir), y, spr_dir, 1, 0, c_white, 1);
 //Dspecial Exit
-} else if (!inside_monkey_ball && dspecial_startup == false && dspecial_exit_startup == true && fspecial_startup == false){
+} else if (!inside_monkey_ball && dspecial_startup == false && dspecial_exit_startup == true && fspecial_startup == false && dspecial_rune_did_explode == false){
 	draw_sprite_ext( sprite_get("monkey_ball_uspec"), dspecial_drawexit_timer, x-(0*spr_dir), y, spr_dir, 1, 0, c_white, 1);
 //Fspecial Startup
 } else if (dspecial_startup == false && dspecial_exit_startup == false && fspecial_startup == true){

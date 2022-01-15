@@ -351,7 +351,7 @@ if (my_hitboxID.attack == AT_SKILL9 && my_hitboxID.hbox_num == 1 && (state == PS
 
 #define ManaBurn()
 {
-	if (!has_rune("K") && !theikos_active && phone_cheats[CHEAT_MPDRAIN] == 0) mp_current -= round(my_hitboxID.damage / 2);
+	if (!has_rune("K") && !theikos_active && "phone_cheats" in self && phone_cheats[CHEAT_MPDRAIN] == 0) mp_current -= round(my_hitboxID.damage / 2);
 }
 #define HolyBurn()
 {

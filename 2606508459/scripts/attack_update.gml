@@ -312,7 +312,7 @@ if (attack_down &&
 {
     window = 1;
     window_timer = 0;
-    if (move_cooldown[AT_NSPECIAL] <= 0)
+    if (move_cooldown[AT_EXTRA_1] <= 0)
     {
         set_attack(43);
     }
@@ -393,7 +393,7 @@ if (attack == 43)
     }
     
     //Shoot
-    if (window == 8 && window_timer == 1 && move_cooldown[AT_NSPECIAL] <= 0)    
+    if (window == 8 && window_timer == 1 && move_cooldown[AT_EXTRA_1] <= 0)    
     {        
         flag_breverse = false;
         spawnFireBall(            
@@ -408,7 +408,7 @@ if (attack == 43)
             false,
             free
         );
-        move_cooldown[AT_NSPECIAL] = 60;
+        move_cooldown[AT_EXTRA_1] = 60;
     }
 }
 
@@ -440,7 +440,6 @@ if (attack == 44)
     {
         attack_end();
         set_state(PS_IDLE);
-        print_debug("Access")
     }
 }
 
@@ -724,7 +723,7 @@ else
 if (attack == AT_USPECIAL)
 {
     can_wall_jump = true;
-    
+    can_fast_fall = false;
     if (flag_uspecial == 0 &&
         window == 1)
     {
@@ -880,7 +879,6 @@ if (mode == 0 ||
 
     if (fBall_obj != noone)     
     {
-        print_debug("enter");
         spawn_hit_fx(fBall_obj.x, fBall_obj.y, fBall_obj.c_vanishFX);
         instance_destroy(fBall_obj._currHB); 
         instance_destroy(fBall_obj);

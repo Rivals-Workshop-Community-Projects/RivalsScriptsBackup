@@ -234,7 +234,7 @@ if (swallowed == 1) {
 		set_hitbox_value(AT_EXTRA_3, 3, HG_VISUAL_EFFECT, 305)
     }
 }
-/*
+
 if(item[15, 3] == 1 && state == PS_CROUCH && crouchCounter < 100){
 	crouchCounter++;
 	
@@ -260,7 +260,7 @@ if(crouchCounter >= 100 && !hitpause){
 		spawn_hit_fx( x - ((25 - random_func(1, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , smokeKT3 );
 	}
 }
-*/
+
 if(!free){
 	carbounceRestoredJumps = false;
 }
@@ -274,9 +274,9 @@ if(state = PS_WALL_JUMP){
 }
 
 //pandora unlock
-//if(suitcaseLevel >= 10 && item[15, 3] == 0 && item[15, 7] == false){
-//	achieveUnlock(15);
-//}
+if(suitcaseLevel >= 8 && item[15, 3] == 0 && item[15, 7] == false){
+	achieveUnlock(15);
+}
 
 //f key unlock
 if(practice && get_gameplay_time() > 10 && keyboard_string == "f" && item[26, 3] == 0 && item[26, 7] == false){
@@ -316,6 +316,22 @@ if(state_cat == SC_AIR_NEUTRAL && prev_state == PS_ATTACK_GROUND && attack == AT
 	item[3, 6] = "101% SANDBERT DAIR";
 }
 
+if(PS_SPAWN){
+	with (oPlayer) {
+		if (player != other.player) {  
+			other.name = get_char_info(player, INFO_STR_NAME);
+		}
+	}
+	if (string_count("sai", string_lower(name)) > 0 && item[15, 3] == 0 && item[15, 7] == false ) {
+		if(state_timer == 1){
+			pandoraIntro = true;
+		} else if (state_timer == 88){
+			achieveUnlock(15);
+		}
+	}
+}
+
+
 //intro stuff
 if(get_player_color(player) == 7){
 	abyssIntro = true;
@@ -327,9 +343,7 @@ if(get_player_color(player) == 7){
 	halloweenIntro = true;
 } else if (get_player_color(player) == 15){
 	goldenIntro = true;
-} /* else if(get_player_color(player) == 14){
-	pandoraIntro = true;
-}*/
+}
 if(get_player_color(player) == 15 && get_gameplay_time() % 21 == 0 && !hitpause && state != PS_RESPAWN){
 	spawn_hit_fx( x - ((22 - random_func(1, 50, true)) * spr_dir) , y - random_func(12, 58, true) , sparkle );
 }

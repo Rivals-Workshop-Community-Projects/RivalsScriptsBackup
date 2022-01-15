@@ -54,6 +54,8 @@ sprite_change_offset("dspecial2", 64, 94);
 sprite_change_offset("dspecial", 64, 94);
 sprite_change_offset("ewgf", 64, 94);
 sprite_change_offset("taunt", 64, 94);
+sprite_change_offset("taunt2", 64, 94);
+sprite_change_offset("genesistaunt", 64, 94);
 sprite_change_offset("star", 10,10);
 
 sprite_change_offset("fs", 64, 94);

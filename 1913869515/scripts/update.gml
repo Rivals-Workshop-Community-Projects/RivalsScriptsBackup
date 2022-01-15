@@ -254,12 +254,7 @@ if(player_id == other.id) {
 
 ////////////////
 
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 0);
-	set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 0);
-	set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_KNOCKBACK, 0);
-	set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_KNOCKBACK, 0);
-	set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_KNOCKBACK, 0);
-	set_hitbox_value(AT_FSPECIAL, 7, HG_BASE_KNOCKBACK, 0);
+
 
 
 if (!free)  {
@@ -290,10 +285,10 @@ if zbayo == -1 && state_timer % 3 = 0 && !hitstop{
 if zbayo > 0 {
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 1);
 	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 1);
-	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 3);
+	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 1);
 	
-	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 3);
-	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 3);
+	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 1);
+	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 1);
 	set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 80);
 	
 	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 65);
@@ -721,13 +716,7 @@ if get_player_color(player) == 3 {
       } 
      }
       
-    if (spr_dir == 1){  
-        set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_SPRITE, sprite_get("B"));   
-        set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("B"));
-    } else {
-    	set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_SPRITE, sprite_get("B2"));   
-    	set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("B2"));
-    }
+
     
    
     set_hitbox_value(AT_FSPECIAL, 9, HG_LIFETIME, 15);

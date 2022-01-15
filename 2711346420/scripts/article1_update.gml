@@ -16,8 +16,8 @@ if (lifetime > 2500){
 }
 
 if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_cooldown == 0) {
-	with (asset_get("pHitBox")){
-		//if (player != other.player_id.player){
+	if (!has_rune("G")){
+		with (asset_get("pHitBox")){
 			if (place_meeting(x, y, other) && ((type == 1) || (type == 2 && player_id == other.player_id))){
 				if (player_id == other.player_id){//Hitboxes belonging to AiAi
 					if (attack == AT_DSPECIAL){
@@ -25,8 +25,8 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_c
 					}
 					else if (attack == AT_NSPECIAL){
 						other.hitbox_hit = self;
-						other.hsp = 8.5*spr_dir;
-						other.vsp = -4.5;
+						other.hsp = 8*spr_dir;
+						other.vsp = -4.25;
 					}
 					else{
 						if (attack == AT_UTILT || attack == AT_DTILT || attack == AT_DAIR || attack == AT_UAIR || attack == AT_USTRONG || attack == AT_USPECIAL){
@@ -43,7 +43,35 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_c
 					other.hitbox_hit = self;
 				}
 			}
-		//}
+		}
+	} else if (has_rune("G")){
+		with (asset_get("pHitBox")){
+			if (place_meeting(x, y, other) && ((type == 1) || (type == 2 && player_id == other.player_id))){
+				if (player_id == other.player_id){//Hitboxes belonging to AiAi
+					if (attack == AT_DSPECIAL){
+						//nothing
+					}
+					else if (attack == AT_NSPECIAL){
+						other.hitbox_hit = self;
+						other.hsp = 8.25*spr_dir;
+						other.vsp = -4;
+					}
+					else{
+						if (attack == AT_UTILT || attack == AT_DTILT || attack == AT_DAIR || attack == AT_UAIR || attack == AT_USTRONG || attack == AT_USPECIAL){
+							other.spin_fast = 50;
+							other.hsp = 2.1*spr_dir
+						} else {
+							other.spin_fast = 20;
+						}
+						other.hitbox_hit = self;
+					}
+				}
+				else{//Hitboxes from other players
+					//other.spin_fast = 20;
+					//other.hitbox_hit = self;
+				}
+			}
+		}
 	}
 	if (hitbox_hit != noone){
 		if (hit_lockout <= 0){
@@ -261,7 +289,7 @@ if (state == 0){
 	//Gravity + Bouncing
 	if (free){ //Gravity
 		if (!hitpause && vsp < 10){
-			vsp = vsp + .5;
+			vsp = vsp + .55;
 			stored_vertical_spd = vsp;
 			grounded_timer = 0;
 		}
@@ -304,6 +332,12 @@ if (state == 0){
 		cur_hitbox.y = y;
 	}
 
+	if (!place_meeting(x,y,cur_hitbox)){
+		//print("ball is not touching hitbox")
+	} else {
+		//print("ball is touching hitbox")
+	}
+
 	//Spawning the hitbox
 	if (should_spawn_hitbox){//Check to see if the hitbox should spawn
 		if (is_hitbox_active == false){//Check to see if the hitbox is currently active
@@ -318,32 +352,83 @@ if (state == 0){
 			is_hitbox_active = true;
 		}
 	}
-
+	
 	//Destroy Hitbox
 	if (should_destroy_hitbox == true && is_hitbox_active == true){
 		should_destroy_hitbox = false;
 		is_hitbox_active = false;
-		cur_hitbox.hitbox_timer = 56464478128844468;//idc
+		cur_hitbox.hitbox_timer = 696969666669696699669696696;//idc
 		cur_hitbox = noone;
 	}
+	//
+	//Note to self: if the hitbox lifetime is less than the max_hitbox_time variable, the Monkey Ball will bug out.
+	//
+	if(infinite_lifetime_rune){
+	max_hitbox_time = 30000;
+	}else{
 	max_hitbox_time = 30;
+	}
+	/*
+	if (instance_exists(cur_hitbox)){
+		print("hitbox timer: " + string(cur_hitbox.hitbox_timer))
+	}
+	*/
 	if (is_hitbox_active){
 		if (cur_hitbox.hitbox_timer > max_hitbox_time)
 		|| (hsp == 0 && vsp == 0 && !free){
 			should_destroy_hitbox = true;
 		}
 	}
-
+	/*
+	print("is hitbox active: " + string(is_hitbox_active))
+	print("should destroy htibox: " + string(should_destroy_hitbox))
+	print("should spawn hbox: "+string(should_spawn_hitbox))
+	print("has rune F: " + string(infinite_lifetime_rune))
+	*/
+	if (!place_meeting(x,y,cur_hitbox)){
+		is_hitbox_active = false;
+	}
 	//Destroys the Monkey Ball if it hits the blastzones.
-	if (y > blastzone_b || x < blastzone_l || x > blastzone_r){
+
+	if (y > blastzone_b - 5|| x < blastzone_l || x > blastzone_r){
+		print("Monkey Ball despawned")
 		sound_stop(player_id.sfx_monkey_ball_2_pop);
 		sound_play(player_id.sfx_monkey_ball_2_pop);
 		player_id.monkey_ball_onstage = false;
 		player_id.monkeyBall = noone;
+		player_id.monkey_ball_can_be_rode = false;
 		monkey_ball_hit_cooldown = 0;
 		instance_destroy();
 		exit;
 	}
+	
+	if(hey_did_i_get_parried == true){
+		print("Monkey Ball despawned")
+		sound_stop(player_id.sfx_monkey_ball_2_pop);
+		sound_play(player_id.sfx_monkey_ball_2_pop);
+		player_id.monkey_ball_onstage = false;
+		player_id.monkeyBall = noone;
+		player_id.monkey_ball_can_be_rode = false;
+		monkey_ball_hit_cooldown = 0;
+		instance_destroy();
+		exit;
+		hey_did_i_get_parried = false;
+	}
+
+	//Explosion Rune
+	if (should_explode == true){
+		print("Monkey Ball despawned")
+		sound_stop(player_id.sfx_monkey_ball_2_pop);
+		//sound_play(player_id.sfx_monkey_ball_2_pop);
+		sound_play(asset_get("sfx_abyss_explosion_big"));
+		player_id.monkey_ball_onstage = false;
+		player_id.monkeyBall = noone;
+		player_id.monkey_ball_can_be_rode = false;
+		monkey_ball_hit_cooldown = 0;
+		instance_destroy();
+		exit;
+	}
+
 	if (cur_rot > 359 || cur_rot < -359){
 		cur_rot = 0;
 	}

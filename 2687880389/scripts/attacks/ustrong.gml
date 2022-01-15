@@ -7,7 +7,6 @@ set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 // Windup
-var sliding_friction = 0.05;
 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 4);// 5
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 1);
@@ -26,7 +25,7 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, sliding_friction);
 
 // Pre-kick
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 9); // 15
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 14); // 15 // 9
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

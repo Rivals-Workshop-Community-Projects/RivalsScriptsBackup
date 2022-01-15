@@ -3,7 +3,8 @@ switch (my_hitboxID.attack)
 	case AT_USPECIAL:
 		if (my_hitboxID.hbox_num != 1)
 		{
-			has_walljump = true;
+			if (uspecWalljump) has_walljump = true;
+			uspecWalljump = false;
 			sound_play(sound_get("hitsfx1"));
 			sound_play(asset_get("sfx_blow_heavy2"));
 			USpecFX();
@@ -67,6 +68,8 @@ switch (my_hitboxID.attack)
 	case AT_FAIR:
 		if (my_hitboxID.hbox_num == 2)
 			sound_play(asset_get("sfx_blow_heavy2"));
+		else if (my_hitboxID.hbox_num == 1)
+			sound_play(asset_get("sfx_blow_heavy1"));
 		else
 			sound_play(asset_get("sfx_blow_weak2"));
 		break;

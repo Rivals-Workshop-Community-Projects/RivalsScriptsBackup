@@ -36,8 +36,14 @@ draw_indicator = false
 		vsp = 0
 	}
 	
+	
 if !instance_exists(AClone) {
+	if cloneout != -1 {
 	cloneout = 0
+	} else if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
+	create_hitbox(AT_DSPECIAL, 1, x, y - 40)
+     	cloneout = 1	
+	}
 } else {
 	cloneout = 1
 }
@@ -229,3 +235,28 @@ Bline = get_color_profile_slot_b ( alt , 0 )
 
 }
 init_shader();
+
+//
+//if "ay" in self {
+//with oPlayer {
+//	if player != self {
+//	player = other.player
+//	}
+//}
+//}
+
+/*	
+    if "controlled_player" in self {
+    	
+    	with controlled_player {
+          //player = other.player
+          	player = other.player
+          	print("aight")
+    	}
+    	
+    }
+	
+	
+	
+
+

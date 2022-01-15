@@ -18,7 +18,7 @@ set_window_value(AT_NTHROW, 1, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, air_friction);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX, codename_mischeif_active ? sound_get("marina_yah") : asset_get("sfx_swipe_weak1"));
+set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(AT_NTHROW, 1, AG_WINDOW_SFX_FRAME, 11);
 
 // YEET
@@ -49,21 +49,21 @@ set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NTHROW, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NTHROW, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_NTHROW, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_NTHROW, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_X, 29);
+set_hitbox_value(AT_NTHROW, 1, HG_SHAPE, 2); // 0
+set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_X, 39); // 29
 set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_Y, -47);
-set_hitbox_value(AT_NTHROW, 1, HG_WIDTH, 118);
-set_hitbox_value(AT_NTHROW, 1, HG_HEIGHT, 29);
+set_hitbox_value(AT_NTHROW, 1, HG_WIDTH, 128); // 118
+set_hitbox_value(AT_NTHROW, 1, HG_HEIGHT, 35); // 29
 set_hitbox_value(AT_NTHROW, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NTHROW, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 40);
-set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, 6.8);
-set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, 1.15);
-set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 6.8);
-set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 1.15);
+set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, 6.1); // 6.8
+set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, 1.05); // 1.15
+set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 6.1); // 6.8
+set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 1.05); // 1.15
 //set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 0);
 //set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 1); // no visual effect
+set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NTHROW, 1, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_NTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
 

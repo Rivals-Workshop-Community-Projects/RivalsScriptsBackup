@@ -6,7 +6,7 @@ hitstun_hurtbox_spr = -1;
 
 canceltime = 0
 
-cheating = 0
+
 countering = 0
 
 introhit = 0
@@ -187,3 +187,6 @@ sprite_change_offset("darken", 1000, 1000);
 
 fc = hit_fx_create( sprite_get( "firecurve" ), 16);
 sprite_change_offset("firecurve", 80, 80);
+
+cheating = 0
+cheatingreal = 0

@@ -247,6 +247,37 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.16", "5 January, 2022");
+
+initHeader("Nerfs:");
+initSection("- MB base kb reduced, 12 -> 10
+- MB kb scaling reduced, 1.2 -> 1.1
+- MB overall damage reduced, 34 -> 30
+");
+
+//
+initPatch("1.15", "1 January, 2022");
+
+initHeader("Nerfs:");
+initSection("- Nair has 2 more frame of startup
+- Nair hitbox was made smaller
+- Bair's base kb was reduced, 8 -> 7
+- Ustrong base kb lowered, 11 -> 10
+- Fspecial's kb scaling was reduced, 1 -> 0.9
+- Fspecial's angle was changed, 50 -> 60
+- Balling's base kb was reduced, 8 -> 7
+");
+
+initHeader("Changes:");
+initSection("= Fspecial has forced cancel when egg reaches near the bottom blast zone
+= When Egg cancels Fspecial while holding the Adrenaline Orb, the explosion hitbox is created 1 frame after the grab release (to prevent false galaxies)
+");
+
+initHeader("Unknown:");
+initSection("? Added parry sfx
+");
+
+//
 initPatch("1.14", "11 December, 2021");
 
 initHeader("Buffs:");

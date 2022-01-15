@@ -1,6 +1,6 @@
 set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
-set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
+set_attack_value(AT_FSTRONG, AG_CATEGORY, 0);
 set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 

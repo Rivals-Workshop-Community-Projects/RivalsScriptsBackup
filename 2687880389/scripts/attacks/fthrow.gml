@@ -42,7 +42,7 @@ set_window_value(AT_FTHROW, 4, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FTHROW, 4, AG_WINDOW_SFX, codename_mischeif_active ? sound_get("marina_ha") : asset_get("sfx_swipe_weak2"));
+set_window_value(AT_FTHROW, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 set_window_value(AT_FTHROW, 4, AG_WINDOW_SFX_FRAME, 2);
 
 // Hi, I'm a Chuckster
@@ -87,15 +87,15 @@ set_hitbox_value(AT_FTHROW, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_X, 27);
 set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_Y, -74);
 set_hitbox_value(AT_FTHROW, 1, HG_WIDTH, 106);
-set_hitbox_value(AT_FTHROW, 1, HG_HEIGHT, 88);
+set_hitbox_value(AT_FTHROW, 1, HG_HEIGHT, 94); // 88
 set_hitbox_value(AT_FTHROW, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_FTHROW, 1, HG_ANGLE, 50);
-set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FTHROW, 1, HG_KNOCKBACK_SCALING, 1.2);
-set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, 1.2);
-set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, 1); // no visual effect
+set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, 6); // 6
+set_hitbox_value(AT_FTHROW, 1, HG_KNOCKBACK_SCALING, 0.85); // 1.2
+set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, 6); // 6
+set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, 0.85); // 1.2
+set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FTHROW, 1, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
 //set_hitbox_value(AT_FTHROW, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));

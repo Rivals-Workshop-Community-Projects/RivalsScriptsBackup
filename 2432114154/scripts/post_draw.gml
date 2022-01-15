@@ -1,5 +1,14 @@
 shader_start();
 
+if taunt_down && special_down {
+    if move_cooldown[AT_TAUNT] > 0 {
+        draw_debug_text(x - 80 ,y - 155, "VA volume : " + string(zolume));	
+        draw_debug_text(x - 80 ,y - 130, "VA pitch  : " + string(zitch));	
+    }
+    
+}
+
+
 if attacking && attack == AT_TAUNT && window == 4 {
   gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_index, image_index , x  + 3 - random_func(1,6,true), y + 3 - random_func(2,6,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
@@ -47,4 +56,11 @@ if attacking && attack == AT_EXTRA_2  {
 }
 
 shader_end() 
+
+if get_gameplay_time() <= 126  {
+  
+  draw_sprite_ext(sprite_get("intro"), min(29, get_gameplay_time()/4.2) , x - 132*spr_dir, y - 254 , spr_dir*2, 2, 0 , -1 , 1);
+
+}
+
 

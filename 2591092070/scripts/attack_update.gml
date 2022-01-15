@@ -67,74 +67,14 @@ if (attack == AT_DATTACK){
 }
 daily reminder that this was possible in beta
 */
-{
-if (attack == AT_NSPECIAL && window == 2){
-    can_jump = true;
-    can_shield = true;
-    can_fast_fall = false;
-    can_move = true;
-    the_timer++;
-    the_charging = true;
-    
-    if (special_pressed && the_charge = false){
-        window_timer = 0;
-        window = 4;
-        the_charging = false;
-        the_charge = false;
-    }
-    
-    if (the_timer > 80 && the_charge = false){
-        window = 6;
-        the_charging = false;
-        the_charge = true;
-    }
-    
-    if (window_timer == 2){
-        sound_play(asset_get("sfx_spin"));
-    }
-    
-    
-    
-}
-
-if (attack == AT_NSPECIAL && window == 4){
-    the_timer = 0;
-}
-
-if (attack == AT_NSPECIAL && window == 1 && the_charge = true){
-    window = 4;
-    the_charge = false;
-}
 
 if (attack == AT_NSPECIAL){
-	if(window == 1){
-		reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED );
-		reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED );
-		reset_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED );
-		reset_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED );
-		reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED );
-		reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED );
+	the_hitbox = 0;
+	if (window == 2){
+	if(free && window_timer == 6){
+		vsp = -5.5;
 	}
-    if(window == 4){
-        if(window_timer == 7 && up_down){
-        	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -4.5);
-			set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 8);
-			set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.5);
-            set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 11);
-			set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, -4.5);
-        }else if(window_timer == 7 && down_down){
-        	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 4.5);
-			set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 8);
-			set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, 4.5);
-            set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 11);
-			set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, 4.5);
-        }
-    }
-}
-
-
+	}
 }
 
 if (attack == AT_DSTRONG) {
@@ -145,7 +85,7 @@ if (attack == AT_DSTRONG) {
 }
 
 if (attack == AT_NSPECIAL) {
-	if(window == 4 && window_timer == 1){
+	if(window == 1 && window_timer == 1){
 		sound_play(asset_get("sfx_bird_sidespecial_start"));
 		
 	}
@@ -167,8 +107,57 @@ if(attack == AT_TAUNT){
 if (attack == AT_FSPECIAL) {
 	if(window == 1 && window_timer == 1){
 		sound_play(asset_get("sfx_swipe_medium1"));
+	reset_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW); 
+	reset_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW);
+	reset_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW);
+	reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED );
+	reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED );
+	reset_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED );
+	reset_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED );
+	reset_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED );
+	reset_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED ); //yeah.
+	reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GRAVITY);
+	reset_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_GRAVITY);
+	itgoesup = 0;
+	itgoesdown = 0;
 		
 	}
+	if (window == 1 && window_timer == 12){
+		if (special_down){
+			set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 5);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 5);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 2);
+		}
+	}
+	if(window == 1){
+        if(window_timer == 12 && up_down){
+        		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED, 6);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -3);
+        	    set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED, 8);
+				set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -3);
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.08);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_GRAVITY, 0.08);
+				itgoesup = 1;
+				if (itgoesup == 1 && pHitBox == 3) {
+    				pHitBox.vsp -= 0.5;
+				}
+    	  }else if(window_timer == 12 && down_down){
+    		 	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 3);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED, 6);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, 3);
+        	    set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED, 8);
+				set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, 3);
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GRAVITY, -0.08);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_GRAVITY, -0.08);
+				itgoesdown = 1;
+				if (itgoesdown == 1 && pHitBox == 3) {
+    				pHitBox.vsp += 0.5;
+				}
+    		}
+    	}
 }
 
 if (attack == AT_FSPECIAL){
@@ -177,7 +166,7 @@ if (attack == AT_FSPECIAL){
 
 if (attack == AT_NSPECIAL) {
 	if(window == 4){
-		move_cooldown[AT_NSPECIAL] = 150;
+		move_cooldown[AT_NSPECIAL] = 130;
 	}
 }
 

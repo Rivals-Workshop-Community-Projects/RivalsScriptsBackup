@@ -20,15 +20,15 @@ set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_UTILT, 2);
+set_num_hitboxes(AT_UTILT, 3);
 
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 5);
-set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 50);
-set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -70);
-set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 80);
-set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 80);
+set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 57);
+set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -75);
+set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 60);
+set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 60);
 set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 70);
@@ -86,3 +86,26 @@ set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_UNBASHABLE, 0);
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 
 set_hitbox_value(AT_UTILT, 2, HG_HIT_PARTICLE_NUM, 1);
+
+set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UTILT, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, 5);
+set_hitbox_value(AT_UTILT, 3, HG_HITBOX_X, 30);
+set_hitbox_value(AT_UTILT, 3, HG_HITBOX_Y, -50);
+set_hitbox_value(AT_UTILT, 3, HG_WIDTH, 40);
+set_hitbox_value(AT_UTILT, 3, HG_HEIGHT, 40);
+set_hitbox_value(AT_UTILT, 3, HG_PRIORITY, 1);
+set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 7);
+set_hitbox_value(AT_UTILT, 3, HG_ANGLE, 70);
+set_hitbox_value(AT_UTILT, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_UTILT, 3, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_UTILT, 3, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_UTILT, 3, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT, hit_up);
+set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT_X_OFFSET, 20);
+set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT_Y_OFFSET, -30);
+set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, sound_get("BTL_SPEAR1"));
+set_hitbox_value(AT_UTILT, 3, HG_ANGLE_FLIPPER, 0);
+
+set_hitbox_value(AT_UTILT, 3, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_UTILT, 3, HG_HIT_LOCKOUT, 2);

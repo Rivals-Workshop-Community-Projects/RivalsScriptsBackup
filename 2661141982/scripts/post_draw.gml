@@ -22,4 +22,14 @@ else
     fs_zoom = 1;
     fs_go_to_hud = false;
 }
+
+//Genesis
+if(get_player_color(player) == 11)
+{
+    var rand_x, rand_y;
+    rand_x = random_func(3,75,true);
+    rand_y = random_func(6,50,true);
+    if(random_func(2, 100, false) > 95)
+        draw_sprite_part_ext(sprite_index,image_index,50+rand_x,25+rand_y,random_func(8,200,true),random_func(2,200,true),x-20*spr_dir+(random_func(6,20,true)+rand_x)*spr_dir,y-80+random_func(10,20,true)+rand_y,spr_dir,1,c_white,1);
+}
 shader_end();

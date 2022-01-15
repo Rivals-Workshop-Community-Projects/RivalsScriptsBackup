@@ -5,7 +5,7 @@ if (attack == AT_FTILT) {
 }
 
 // Teleport to Cannonball
-if (special_down == true && CannTpUsed == false && joy_pad_idle == true && CannTeleportable == true && CannCannonBallActive == true && CannBallOppHit == false && CannTpUsed == false && (CannBoomY < room_height - 100 && CannBoomX > 100 && CannBoomX < room_width - 100)) {
+if (special_down == true && CannTpUsed == false && joy_pad_idle == true && CannTeleportable == true && CannCannonBallActive == true && CannBallOppHit == false && CannTpUsed == false && CannNSpecialCooldownTimer <= 0 && (CannBoomY < room_height - 100 && CannBoomX > 100 && CannBoomX < room_width - 100)) {
 	attack = AT_FTILT; // Teleport to Cannonball
 }
 
@@ -22,14 +22,6 @@ if (attack == AT_DSPECIAL) {
     CannDSpcDmg = 0;
     CannCounter = false;
 }
-
-/*if (HeatLevel == 10 && attack != AT_USPECIAL && attack != AT_NSPECIAL && attack != AT_FSPECIAL && attack != AT_DSPECIAL) {
-    HeatOutline = true;
-    outline_color = [143, 24, 11];
-    var DamageLol = get_player_damage( player );
-    set_player_damage( player, DamageLol + 2);
-    sound_play(asset_get("sfx_zetter_fireball_fire"));
-}*/
 
 if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG) {
 	CannGrabbedId = 0;

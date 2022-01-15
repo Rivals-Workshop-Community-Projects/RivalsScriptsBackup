@@ -9,6 +9,8 @@ set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_JAB, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+set_window_value(AT_JAB, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_JAB, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 
 
 //jab1 active
@@ -17,6 +19,8 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_JAB, 2, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_JAB, 2, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_JAB, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_JAB, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 
 //jab1 end
 set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 12);

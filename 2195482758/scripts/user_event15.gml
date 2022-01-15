@@ -191,7 +191,7 @@ if ("phone_inited" in self && phone_inited){
 				k_firecracker_angle = 45
 				print_debug(string(k_firecracker_angle));
 				// Reset angle
-				if(window == 1 && window_timer == 1)
+				if(window == 1 && window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 				{
 					k_firecracker_angle = k_default_firecracker_angle;
 					k_fc_count = 1;
@@ -470,7 +470,7 @@ if ("phone_inited" in self && phone_inited){
 			- back
 			- forward
 			
-			Also works on your own firecrackers! In fact, grabbing your own firecracker and throwing it will make it stun enemies longer, as well as making it trancendent!
+			Also works on your own firecrackers! In fact, grabbing your own firecracker and throwing it will give it an extra charge, as well as making it trancendent!
 			
 			By default, Tenru will also grab the stage with this move, flinging you sideways. Hold down special or parry when grabbing to ignore the stage if you just want to grab a player or projectile.
 			
@@ -1699,3 +1699,12 @@ with obj_stage_article if num == 5 {
 	    array_room_ID[_room_id_ind] = _room_id;
 	}
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

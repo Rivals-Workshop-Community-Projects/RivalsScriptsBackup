@@ -33,13 +33,9 @@ maxdraw = hitstop
 hitdmg = my_hitboxID.damage/10
 
 angledraw = random_func(1,360,true)  
+
 }
 
-if my_hitboxID.attack == AT_FSPECIAL {
-ztarget = hit_player_obj
-spawn_hit_fx( ztarget.x , ztarget.y - 30 , shit5 )
-spawn_hit_fx( ztarget.x , ztarget.y - 30 , shit1 )
-}
 
 
 
@@ -83,9 +79,9 @@ if  halo < 3 {
 halo += 1
 }
 sound_play(sound_get("stackfinish"));
-var dmdamge = min(floor(my_hitboxID.damage/2),10)
+var dmdamge = min(floor(my_hitboxID.damage/2.5),8)
 with hit_player_obj {
-		take_damage( player, -1 , 4 + dmdamge)
+		take_damage( player, -1 , 2 + dmdamge)
 }
 
 
@@ -110,14 +106,9 @@ move_cooldown[AT_EXTRA_3] = 160
 
 
 
-if state != PS_HITSTUN {
+if state_cat != SC_HITSTUN {
 	
 	
-	if my_hitboxID.attack == AT_FSPECIAL {
-		
-		move_cooldown[AT_EXTRA_2] = 100
-		
-	}
 	
 if (attack == AT_TAUNT){
     reset_window_value(AT_TAUNT, 18, AG_WINDOW_SFX);
@@ -128,38 +119,10 @@ if (attack == AT_TAUNT && my_hitboxID.hbox_num == 1){
 }
 
 
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
-
-    sound_play(asset_get("sfx_holy_lightning"));
-    sound_play(sound_get("SpaceCutB"));
-    zFhit = 0
-    zFhittimer = 30
-}
 
 
 
 
-
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num != 11){
-	
-	 with (asset_get("pHitBox")) {
-        if player_id == other.id {
-        	if attack == AT_FSPECIAL {
-              destroyed = true;
-        	}
-        }
-    }
-    
-	move_cooldown[AT_USPECIAL] = 0
-    
-    
-    sound_play(asset_get("sfx_holy_lightning"));
-    sound_play(sound_get("SpaceCutB"));
-    zFhit = 0
-    if zFhittimer == 0 {
-    zFhittimer = 30
-    }
-}
 
 }
 

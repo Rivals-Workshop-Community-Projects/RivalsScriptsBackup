@@ -8,6 +8,12 @@ ncode1 = "A proclaimed Historian who wanders around Venam's Edge."
 ncode2 = "If it wasn't for their works, history and events happened prio"
 ncode3 = "to 'Hell Impact' would be lost or become a vague folktale.."
 
+spawn_counter = 0
+jumping = 0
+
+zolume = 0
+zitch = 1
+
 alreadydead = 0
 regconized = 0
 triggercutscene = 0
@@ -118,7 +124,7 @@ crouch_recovery_frames = 1;
 
 //parry animation frames
 dodge_startup_frames = 1;
-dodge_active_frames = 3;
+dodge_active_frames = 2;
 dodge_recovery_frames = 3;
 
 //tech animation frames
@@ -157,6 +163,7 @@ air_dodge_sound = asset_get("sfx_waveland_orc");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
 
 
 sh1 = hit_fx_create( sprite_get( "sh1" ), 30);

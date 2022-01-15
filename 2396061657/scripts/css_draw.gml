@@ -195,13 +195,13 @@ else {
 				break;	
 				
 				case 25: 
-			name = " 26: Event"; 
-			draw_sprite_ext( sprite_get("css_cal_icon"), 0, x + 176, y + 108, 1, 1, 0, c_white, 1);
+			name = " 26: Everything"; 
 			var position = 25;
 				break;
 				
 				case 26: 
-			name = " 27: Everything"; 
+			name = " 27: Event"; 
+			draw_sprite_ext( sprite_get("css_cal_icon"), 0, x + 176, y + 108, 1, 1, 0, c_white, 1);
 			var position = 26;
 				break;	
 		}
@@ -283,13 +283,13 @@ draw_sprite_ext( sprite_get("select_highlight"), 0, x + 8, y + 8, 1, 1, 0, Highl
 draw_set_font(1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 231, "v2.0.3", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 231, "v2.1.0", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 218, y + 214, "November 7th, 2021", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 218, y + 214, "January 9th, 2022", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Initial Name	+ Rectangles
 //if (image_alpha > 0){

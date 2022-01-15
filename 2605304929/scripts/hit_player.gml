@@ -79,7 +79,7 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 }
 
 //DSpecial Command Grab
-if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && my_hitboxID.hbox_num == 2) {
+if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && (my_hitboxID.hbox_num == 3)) {
 
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
@@ -102,8 +102,8 @@ if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR)
 	}
 }
 
-// A+B Input Air Command Grab
-if (my_hitboxID.attack == AT_EXTRA_2) {
+// Nspecial Air Command Grab
+if (my_hitboxID.attack == AT_NSPECIAL_AIR) {
 
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
@@ -150,12 +150,41 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
 	}
 }
 
+// Final Smash Grab 
+// 
+if (my_hitboxID.attack == AT_FINAL_SMASH_GRAB) {
+
+	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
+	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
+    	  && was_parried == false
+	  && hit_player_obj.clone == false) {
+		
+		//transition to the 'throw' part of the attack.
+		attack_end();
+		set_attack(AT_FINAL_SMASH_THROW);
+		
+		instance_create(room_width / 2,room_height / 2,"obj_article1");
+		//if this attack hasn't grabbed a player yet, grab the player we just hit.
+		if (!instance_exists(grabbed_player_obj)) { grabbed_player_obj = hit_player_obj; }
+		
+		//if this attack has already grabbed a different opponent, prioritize grabbing the closest opponent.
+		else {
+			var old_grab_distance = point_distance(x, y, grabbed_player_obj.x, grabbed_player_obj.y);
+			var new_grab_distance = point_distance(x, y,     hit_player_obj.x,     hit_player_obj.y);
+			if (new_grab_distance < old_grab_distance) { grabbed_player_obj = hit_player_obj; }
+		}
+	}
+}
+
 //#endregion
 
 //#region Execute Command Grab Section
 
 if(water_buff_electric_attack_flag == 1){
-	spawn_hit_fx(x,y-80,hitfx_consume_water);
+	hitfx_consume_water_obj = spawn_hit_fx(x,y-80,hitfx_consume_water);
+	hitfx_boosted_grab_obj = spawn_hit_fx(x,y-36,hitfx_boosted_grab);
+	
+	sound_play(asset_get("sfx_ice_uspecial_jump"));
 	switch(attack){
 		case AT_UTHROW: 
 			attack_end(); 
@@ -219,9 +248,9 @@ if(water_buff_electric_attack_flag == 1){
 			water_buff_electric_attack_flag = false;
 			break;
 	
-		case AT_NSPECIAL_2: 
+		case AT_NSPECIAL_2: // Grounded
 			attack_end(); 
-			set_attack(AT_EXTRA_3);
+			set_attack(AT_EXTRA_2);
 			// Runs this section again
 			if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 				&& (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
@@ -238,7 +267,7 @@ if(water_buff_electric_attack_flag == 1){
 			}
 			water_buff_electric_attack_flag = false;
 			break;
-		case AT_NTHROW: 
+		case AT_NTHROW: // Aerial
 			attack_end(); 
 			set_attack(AT_EXTRA_3);
 			// Runs this section again
@@ -273,93 +302,173 @@ with(my_hitboxID){
 	hitfx_x_offset_temp = hit_effect_x;
 	hitfx_y_offset_temp = hit_effect_y;
 }
-// Water Paw Effects
-if(my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3 ||
-	my_hitboxID.attack == AT_UTILT ||
-	my_hitboxID.attack == AT_DTILT ||
-	my_hitboxID.attack == AT_FTILT ||
-	my_hitboxID.attack == AT_NAIR ||
-	my_hitboxID.attack == AT_DATTACK ||
-	my_hitboxID.attack == AT_DAIR)
-	{
-	var hitfx_water_paw_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_water_paw);
-		hitfx_water_paw_object.depth = depth - 1;
-	}
-// Elec Paw Effects
-if(my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == 5 ||
-	my_hitboxID.attack == AT_USPECIAL ||
-	my_hitboxID.attack == AT_FSPECIAL ||
-	my_hitboxID.attack == AT_FSPECIAL_2 ||
-	my_hitboxID.attack == AT_DSPECIAL ||
-	my_hitboxID.attack == AT_DSPECIAL_AIR ||
-	my_hitboxID.attack == AT_NTHROW
-	)
-	{
-	var hitfx_elec_paw_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_elec_paw);
+
+//SFX / HFX Layering Indiviual
+switch(my_hitboxID.attack){
+	case AT_JAB:
+		if(my_hitboxID.hbox_num == 1){
+		var hitfx_water_paw_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_water_paw);
+			hitfx_water_paw_object.depth = depth - 1;
+			}
+		if(my_hitboxID.hbox_num == 2){
+			var hitfx_water_paw_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_water);
+			hitfx_water_paw_object.depth = depth - 1;
+			sound_play(asset_get("sfx_waterhit_medium"),false,noone,.75,1); // soundID,looping,panning,volume,pitch
+			}
+		if(my_hitboxID.hbox_num == 3 ){
+			var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_combined);
+			hitfx_water_object.depth = depth - 1;
+			sound_play(sound_get( "quick-shock"),false,noone,.5,1); // soundID,looping,panning,volume,pitch
+			}
+			break;
+	case AT_FAIR:
+		if(my_hitboxID.hbox_num == 1){sound_play(sound_get( "lightning_ps1" ),false,noone,1,1.5);} // soundID,looping,panning,volume,pitch}{)
+		if(my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2){
+			var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_combined);
+			hitfx_water_object.depth = depth - 1;
+		}
+		break;
+	case AT_UAIR:
+		sound_play(asset_get( "sfx_blow_medium1" ),false,noone,.8,2); // soundID,looping,panning,volume,pitch
+		var water_fit_fx_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), 302); // 302 - basic small with spin effect in center
+		water_fit_fx_object.depth = depth - 1; 
+		break;
+	case AT_DSPECIAL:
+	case AT_DSPECIAL_AIR:
+		var hitfx_elec_paw_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_elec_paw);
+		hitfx_elec_paw_object.depth = depth - 1;
+		if(my_hitboxID.hbox_num == 1){
+			sound_play(sound_get( "quick-shock"),false,noone,.75,1); // soundID,looping,panning,volume,pitch
+		}
+	case AT_FTILT:
+		sound_play(asset_get("sfx_waterhit_medium"),false,noone,.8,1); // soundID,looping,panning,volume,pitch
+		break;
+	default:
+		break;
+}
+
+//Elec Paw Hitfx
+switch(my_hitboxID.attack){
+	case AT_EXTRA_3: 
+	case AT_FTHROW:
+	case AT_UTHROW:
+	case AT_DTHROW:
+	if(my_hitboxID.hbox_num == 6 ){
+		var hitfx_elec_paw_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_elec_paw);
 		hitfx_elec_paw_object.depth = depth - 1;
 	}
-// Water Elec Combined Hitfx That applies the buff
-if((my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3 )||
-	my_hitboxID.attack == AT_USTRONG ||
-	my_hitboxID.attack == AT_DSTRONG ||
-	my_hitboxID.attack == AT_FSTRONG ||
-	(my_hitboxID.attack == AT_FAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2)) ||
-	my_hitboxID.attack == AT_BAIR)
-	{
-	var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_combined);
-		hitfx_water_object.depth = depth - 1;
-		sound_play(asset_get( "sfx_absa_boltcloud" ),false,noone,.5,2); // soundID,looping,panning,volume,pitch
-	}
-	
-// Lighting Hitfx
-if(my_hitboxID.attack == AT_USPECIAL || //my_hitboxID.attack == AT_UTHROW || my_hitboxID.attack == AT_USPECIAL_2 ||
-	my_hitboxID.attack == AT_FSPECIAL || //my_hitboxID.attack == AT_FTHROW || my_hitboxID.attack == AT_FSPECIAL_2 ||
-	my_hitboxID.attack == AT_DSPECIAL || //my_hitboxID.attack == AT_DTHROW || my_hitboxID.attack == AT_DSPECIAL_2 ||
-	my_hitboxID.attack == AT_NSPECIAL || //my_hitboxID.attack == AT_NSPECIAL_2 || my_hitboxID.attack == AT_EXTRA_3 ||
-	my_hitboxID.attack == AT_EXTRA_2 //|| my_hitboxID.attack == AT_NTHROW)
-)
-	{
-	var hitfx_elec_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_elec);
+	break;
+	case AT_USPECIAL:
+	case AT_FSPECIAL:
+	case AT_FSPECIAL_2:
+	case AT_DSPECIAL:
+	case AT_DSPECIAL_AIR:
+	case AT_NTHROW:
+	var hitfx_elec_paw_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_elec_paw);
+		hitfx_elec_paw_object.depth = depth - 1;
+		break;
+	case AT_DSPECIAL_AIR:
+		switch(my_hitboxID.hbox_num){
+			case 1:
+			case 2:
+			case 3:
+				var hitfx_elec_paw_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_elec_paw);
+				hitfx_elec_paw_object.depth = depth - 1;
+				break;
+			default:
+				break;
+			}
+		break;
+	default:
+		break;
+}
+// Elec HFX obbject
+switch(my_hitboxID.attack){
+	case AT_USPECIAL:
+	case AT_FSPECIAL:
+	case AT_DSPECIAL:
+	case AT_NSPECIAL:
+	case AT_NSPECIAL_AIR: // // Lighting Hitfx
+		var hitfx_elec_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_elec);
 		hitfx_elec_object.depth = depth - 1;
+		break;
+	case AT_FSPECIAL_2:
+	if(my_hitboxID.hbox_num == 4){
+		var hitfx_elec_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_elec);
+		hitfx_elec_object.depth = depth - 1;
+		break;
 	}
-
-
-// Fair SFX
-if(my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 1){
-	sound_play(sound_get( "lightning" ),false,noone,1,1.5); // soundID,looping,panning,volume,pitch}{
+	default:
+		break;
 }
-// Grab Ending Attacks SFX
-if(my_hitboxID.attack == AT_USPECIAL_2 && my_hitboxID.hbox_num == get_num_hitboxes(AT_USPECIAL_2)){
-	sound_play(sound_get( "thunder" ),false,noone,1,.75); // soundID,looping,panning,volume,pitch
-	var hitfx_elec_consume_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_consume_elec);
-	hitfx_elec_consume_object.depth = depth - 1;
+// Lightning Clould HFX
+switch(my_hitboxID.attack){
+	case AT_USPECIAL_2:
+	case AT_FSPECIAL_2:
+	case AT_DSPECIAL_2:
+	case AT_EXTRA_3:
+	case 48: // AT_FINAL_SMASH_THROW
+		if(my_hitboxID.hbox_num == get_num_hitboxes(my_hitboxID.attack)){
+		sound_play(sound_get( "thunder_3" ),false,noone,1,1); // soundID,looping,panning,volume,pitch
+		var hitfx_elec_consume_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_consume_elec);
+		hitfx_elec_consume_object.depth = depth - 1;
+		}
+		break;
+	default:
+		break;
+}
+// Water Elec hfx
+switch(my_hitboxID.attack){
+	case AT_USTRONG:
+	case AT_DSTRONG:
+	case AT_FSTRONG:
+	case AT_BAIR:
+		var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_combined);
+		hitfx_water_object.depth = depth - 1;
+		sound_play(sound_get( "quick-shock" ),false,noone,1,1); // soundID,looping,panning,volume,pitch
+		//print("in_loop")
+		break;
+	default:
+		break;
+}
+//Water Paw fx
+switch(my_hitboxID.attack){
+	case AT_UTILT:
+	case AT_DTILT:
+	case AT_DAIR:
+	case AT_NAIR:
+		var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_water_paw);
+		hitfx_water_object.depth = depth - 1;
+		sound_play(asset_get( "sfx_waterhit_heavy" ),false,noone,.5,2); // soundID,looping,panning,volume,pitch
+		break;
+	case AT_DSPECIAL_AIR:
+		switch(my_hitboxID.hbox_num){
+			case 4:
+			case 5:
+				var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_water_paw);
+				hitfx_water_object.depth = depth - 1;
+				sound_play(asset_get( "sfx_waterhit_heavy" ),false,noone,.5,2); // soundID,looping,panning,volume,pitch
+				//print("in loop");
+				break;
+			default:
+				break;
+		}
+		break;
+	default:
+		break;
 }
 
-if(my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == get_num_hitboxes(AT_FSPECIAL_2)){
-	sound_play(sound_get( "thunder" ),false,noone,1,.75); // soundID,looping,panning,volume,pitch
-	var hitfx_elec_consume_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_consume_elec);
-	hitfx_elec_consume_object.depth = depth - 1;
+// Water FX
+switch(my_hitboxID.attack){
+	case AT_FTILT:
+	case AT_DATTACK:
+		var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_water);
+		hitfx_water_object.depth = depth - 1;
+		sound_play(asset_get( "sfx_waterhit_heavy" ),false,noone,.5,2); // soundID,looping,panning,volume,pitch
+		break;
+	default:
+		break;
 }
-
-if(my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == get_num_hitboxes(AT_DSPECIAL_2)){
-	sound_play(sound_get( "thunder" ),false,noone,1,.75); // soundID,looping,panning,volume,pitch
-	var hitfx_elec_consume_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_consume_elec);
-	hitfx_elec_consume_object.depth = depth - 1;
-}
-
-if(my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == get_num_hitboxes(AT_EXTRA_3)){
-	sound_play(sound_get( "thunder" ),false,noone,1,.75); // soundID,looping,panning,volume,pitch
-	var hitfx_elec_consume_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_consume_elec);
-	hitfx_elec_consume_object.depth = depth - 1;
-}
-
-// Utilt layering
-if(my_hitboxID.attack == AT_UAIR){
-	sound_play(asset_get( "sfx_waterhit_medium" ),false,noone,1,1); // soundID,looping,panning,volume,pitch
-	var water_fit_fx_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), 150); // 150 - light water medium
-	water_fit_fx_object.depth = depth - 1;
-}
-
 //#endregion
 
 #define Resolve_Element(hitbox_attack_name)
@@ -376,8 +485,7 @@ if(my_hitboxID.attack == AT_UAIR){
 	if(hitbox_attack_name == AT_FSPECIAL||
 	hitbox_attack_name == AT_USPECIAL ||
 	hitbox_attack_name == AT_NSPECIAL ||
-	hitbox_attack_name == AT_NSPECIAL ||
-	hitbox_attack_name == AT_EXTRA_2)
+	hitbox_attack_name == AT_NSPECIAL_AIR)
 	{element = "grab";}
 	
 	//Jab Hitboxes
@@ -393,7 +501,8 @@ if(my_hitboxID.attack == AT_UAIR){
 	hitbox_attack_name == AT_DSPECIAL_AIR)
 	{
 		if(my_hitboxID.hbox_num == 1){element = "non-elemental";}
-		if(my_hitboxID.hbox_num == 2){element = "grab";}
+		if(my_hitboxID.hbox_num == 2){element = "non-elemental";}
+		if(my_hitboxID.hbox_num == 3){element = "grab";}
 	}
 	
 	return element;

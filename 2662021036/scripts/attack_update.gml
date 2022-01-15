@@ -265,6 +265,52 @@ secret_v.hitstop = 0;
 
 }
 
+if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == 49){
+    
+    can_move = false;
+    
+    if (window == 1 && window_timer == 2){
+
+instance_create( room_width/2, room_height/2, "obj_article2" );
+
+
+}
+
+
+
+
+if (window < 6){
+    with (oPlayer){
+        if (player != other.player){
+            hitpause = true;
+            hitstop = 1;
+            old_hsp = hsp;
+            old_vsp = vsp;
+
+        }
+    }
+}   
+
+if (window = 1){
+        if (window_timer = 2){  
+     finalsunmovement = 0; 
+    finalsuncounter = 0;   
+        }
+        if (window_timer > 2){    
+    finalsunmovement = ease_quartOut(0, 160, finalsuncounter, 20)
+    if (finalsuncounter < 20){
+    finalsuncounter += 1;
+    }  
+}
+}
+
+    if (window > 5 && window < 8){
+        
+        shake_camera(2, 2);
+    }
+
+}
+
 
 #define check_spawn_knot(_spawn_x, _spawn_y)
 spawn_y = _spawn_y;

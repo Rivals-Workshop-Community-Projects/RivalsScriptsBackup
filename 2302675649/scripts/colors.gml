@@ -286,25 +286,25 @@ set_color_profile_slot( 25, 5, 251, 221, 195 ); //skin
 set_color_profile_slot( 25, 6, 215, 162, 123 ); //skin2
 set_color_profile_slot( 25, 7, 230, 152, 72 ); //hair
 
-// Astral
-set_color_profile_slot( 26, 0, 237, 219, 255 ); //sword
-set_color_profile_slot( 26, 1, 95, 64, 219 ); //shirt
-set_color_profile_slot( 26, 2, 74, 35, 158 ); //shirt2
-set_color_profile_slot( 26, 3, 112, 27, 181 ); //pants
-set_color_profile_slot( 26, 4, 68, 39, 140 ); //pants2
-set_color_profile_slot( 26, 5, 254, 235, 209 ); //skin
-set_color_profile_slot( 26, 6, 239, 194, 159 ); //skin2
-set_color_profile_slot( 26, 7, 116, 29, 145 ); //hair
+// Paint
+set_color_profile_slot( 26, 0, 255, 255, 128 ); //sword
+set_color_profile_slot( 26, 1, 98, 106, 117 ); //shirt
+set_color_profile_slot( 26, 2, 54, 53, 77 ); //shirt2
+set_color_profile_slot( 26, 3, 26, 44, 56 ); //pants
+set_color_profile_slot( 26, 4, 9, 14, 43 ); //pants2
+set_color_profile_slot( 26, 5, 216, 169, 127 ); //skin
+set_color_profile_slot( 26, 6, 172, 112, 74 ); //skin2
+set_color_profile_slot( 26, 7, 200, 150, 60 ); //hair
 
-// Redline
-set_color_profile_slot( 27, 0, 187, 52, 66 ); //sword
-set_color_profile_slot( 27, 1, 85, 102, 113 ); //shirt
-set_color_profile_slot( 27, 2, 6, 3, 1 ); //shirt2
-set_color_profile_slot( 27, 3, 57, 56, 71 ); //pants
-set_color_profile_slot( 27, 4, 6, 3, 1 ); //pants2
-set_color_profile_slot( 27, 5, 228, 192, 153 ); //skin
-set_color_profile_slot( 27, 6, 6, 3, 1 ); //skin2
-set_color_profile_slot( 27, 7, 17, 35, 48 ); //hair
+// Voidfox
+set_color_profile_slot( 27, 0, 18, 18, 18 ); //sword
+set_color_profile_slot( 27, 1, 245, 255, 240 ); //shirt
+set_color_profile_slot( 27, 2, 167, 163, 171 ); //shirt2
+set_color_profile_slot( 27, 3, 26, 62, 11 ); //pants
+set_color_profile_slot( 27, 4, 21, 42, 14 ); //pants2
+set_color_profile_slot( 27, 5, 245, 255, 240 ); //skin
+set_color_profile_slot( 27, 6, 167, 163, 171 ); //skin2
+set_color_profile_slot( 27, 7, 94, 135, 82 ); //hair
 
 // Champion
 set_color_profile_slot( 28, 0, 134, 227, 97 ); //sword

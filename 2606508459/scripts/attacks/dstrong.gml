@@ -1,6 +1,6 @@
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
-set_attack_value(AT_DSTRONG, AG_CATEGORY, 1);
+set_attack_value(AT_DSTRONG, AG_CATEGORY, 0);
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 
@@ -101,8 +101,8 @@ set_hitbox_value(AT_DSTRONG, ig, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSTRONG, ig, HG_DAMAGE, 7);
 set_hitbox_value(AT_DSTRONG, ig, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, ig, HG_ANGLE, 70);
-set_hitbox_value(AT_DSTRONG, ig, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DSTRONG, ig, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_DSTRONG, ig, HG_BASE_KNOCKBACK, 9);// was at 12 and killed at  31 percent it was insane ("my fault btw" from zonyx)
+set_hitbox_value(AT_DSTRONG, ig, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_DSTRONG, ig, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, ig, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_DSTRONG, ig, HG_VISUAL_EFFECT, 304);

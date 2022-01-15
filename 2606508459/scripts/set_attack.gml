@@ -27,7 +27,7 @@ if (dip_swapSpecial)
             )
         ))
     {
-        if (move_cooldown[AT_NSPECIAL] <= 0)
+        if (move_cooldown[AT_EXTRA_1] <= 0)
         {
             attack = 43;
         }
@@ -53,3 +53,12 @@ if (attack == AT_NSPECIAL)
         attack = AT_NSPECIAL_2;
     }
 }
+
+//====> TAUNT #######################################################
+
+if (attack == AT_TAUNT && get_player_color(player) == alt_gen8)
+{
+    attack = AT_TAUNT_2
+}
+
+//END

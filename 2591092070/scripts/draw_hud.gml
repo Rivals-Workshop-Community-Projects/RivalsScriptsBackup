@@ -13,8 +13,3 @@ if move_cooldown[AT_NSPECIAL] > 0 {
 }
 
 
-shader_start();
-if (the_timer >= 80) {
-	draw_sprite_ext(sprite_get("icon"), 1, temp_x+28, temp_y+8, 1, 1, 0, c_white, 1);
-}
-shader_end();

@@ -32,7 +32,7 @@ player_id.window_timer = 0;
 
 }
 
-if (player_id.state == PS_HITSTUN || player_id.state == PS_RESPAWN || player_id.state == PS_JUMPSQUAT || player_id.state == PS_PARRY_START)
+if (player_id.state == PS_HITSTUN || player_id.state == PS_RESPAWN || player_id.state == PS_JUMPSQUAT || player_id.state == PS_PARRY_START || player_id.state == PS_DOUBLE_JUMP)
 {
 	instance_destroy();
 }

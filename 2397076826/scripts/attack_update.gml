@@ -493,11 +493,11 @@ if attack == AT_FSPECIAL {
  }
  
 
-	if  fspechit{ 
+	if  fspechit { 
 	hsp /= 1.04
 	if window = 4 && window_timer == 1  && has_hit_player {
 		create_hitbox(AT_FSPECIAL, 7, x, y)
-			 if cloneout = 0 {
+	 if cloneout = 0 {
 	 	fspechit2 = 1	
      	//create_hitbox(AT_DSPECIAL, 1, x, y - 40)
      	cloneout = 1

@@ -7,6 +7,9 @@ window_timer += 0.2
 
 if !hitpause && !isyellow{
     
+    if attack == AT_FAIR && window == 1 && window_timer == 1 && !hitpause {
+	sound_play(asset_get("sfx_ice_on_player"),false,noone,.7,1.5)
+    }
     
     if attack == AT_BAIR && window == 1 && window_timer == 1 && !hitpause {
 	sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1.5)

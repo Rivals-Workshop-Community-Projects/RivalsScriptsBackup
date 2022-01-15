@@ -32,6 +32,7 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UAIR, 2);
 
+set_hitbox_value(AT_UAIR, 1, HG_MUNO_HITBOX_NAME, "Main Hitbox");
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 2);
@@ -51,7 +52,9 @@ set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 2);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -14);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_UAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "This move's 2nd hitbox shares the same stats as this hitbox.");
 
+set_hitbox_value(AT_UAIR, 2, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 2);

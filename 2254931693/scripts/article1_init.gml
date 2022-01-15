@@ -13,7 +13,7 @@ hbox_group = array_create(4,array_create(50,array_create(10,0))); //ew
 hitstun = 0;
 hitstun_full = 0;
  
-kb_adj = 1;
+kb_adj = 0;
 kb_dir = 0;
 orig_knock = 0;
 

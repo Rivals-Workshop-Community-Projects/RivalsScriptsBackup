@@ -174,10 +174,12 @@ if (hitpause <= 0) {
                 instance_destroy(id);
                 exit;
             }
-        break
+        break;
     }
     state_timer ++;
     window_timer ++;
+    if (dair_cooldown > 0)
+        dair_cooldown --;
 }
     
 hitpause --;

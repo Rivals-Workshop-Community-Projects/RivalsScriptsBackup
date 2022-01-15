@@ -81,17 +81,6 @@ switch(attack)
             if (window_timer == 1)
             {
                 fspec_use += 1;
-                if (!instance_exists(projectile) and !instance_exists(pikmin) and shrimp_set == 0 and fish == 0)
-                fspec_set = 0;
-                else 
-                fspec_set = 1;
-            }
-            else if (window_timer == 12)
-            {
-                if (fspec_set == 0)
-                projectile = create_hitbox(AT_FSPECIAL, 1, x + (20 * spr_dir), y - 60);
-                else
-                create_hitbox(AT_FSPECIAL, 3, x + (20 * spr_dir), y - 60);
             }
         }
         else if (window == 2)
@@ -104,9 +93,9 @@ switch(attack)
         }
         else if (window == 3)
         {
-            if (window_timer == 8)
+            if (window_timer == 1)
             {
-                move_cooldown[AT_FSPECIAL] = 60;
+                move_cooldown[AT_FSPECIAL] = 45;
             }
         }
         break;

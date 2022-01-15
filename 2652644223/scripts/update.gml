@@ -40,6 +40,16 @@ if(attack == AT_TAUNT || last_attack_hit == AT_FSPECIAL || last_attack_hit == AT
 else
     set_victory_portrait(sprite_get("portrait"));
 
+//Genesis
+if(get_player_color(player) == 30)
+{
+    set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntgen"));
+    set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("glitch1"));
+    idle_anim_speed = .2;
+    if(state == PS_IDLE && state_timer % 20 == 0 && random_func(2, 50, false) > 45)
+        sound_play(sound_get("glitch2"), false, noone, 0.65, 1.2);
+}
+
 if(last_hit_timer != 0)
     last_hit_timer --;
 else

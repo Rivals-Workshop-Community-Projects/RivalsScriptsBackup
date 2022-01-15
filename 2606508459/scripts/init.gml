@@ -38,6 +38,8 @@ hud_MPMode = [189, -18];
 
 //Previous Frame
 pre_state = state;
+pf_x = [x, x, x, x, x]
+pf_y = [y, y, y, y, y]
 
 //Colors
 shadr_init = false;
@@ -65,14 +67,13 @@ fx_nspecial_ground_cool = 0;
 
 fx_miniSpark = hit_fx_create( sprite_get("miniSpark"), 10 );
 
+c_fx_gen8_timer = 36;
+fx_gen8_timer = 0;
+fx_gen8_sprites = 9;
+
 c_elec_timer = 60;
 elec_timer = 0;
 elec_target = noone;
-
-intro_timer = -2;
-intro_fpf = .2;
-intro_timerMax = 24;
-intro_sprite = get_player_color(player) > 14 ? sprite_get("intro2") : sprite_get("intro");
 
 hurtground_sprite = sprite_get("hurtground");
 
@@ -86,8 +87,10 @@ idle_anim_speed = .2; //Default Variable
 
 idle1_ids = 8;
 idle2_ids = 17;
+idleg_ids = 19;
 idle1_frames = idle1_ids * (25 * idle_anim_speed) * 3;
 idle2_frames = idle2_ids * (25 * idle_anim_speed);
+idleg_frames = idleg_ids * (25 * idle_anim_speed);
 idle_count = 0;
 idle_wait = false;
 
@@ -224,6 +227,28 @@ flag_taunt = false;
 flag_breverse = false;
 
 //***************************************************************************
+//====> ALT MAINTENANCE ###########################################
+//***************************************************************************
+
+alt_split = 17
+
+alt_kiera = 20
+alt_halloween = 22
+alt_gen8 = 13
+
+//***************************************************************************
+//====> INTRO ###########################################
+//***************************************************************************
+
+intro_timer = -2;
+intro_fpf = .2;
+intro_timerMax = 
+    get_player_color(player) == alt_gen8 ? 18 : 24;
+intro_sprite = 
+    get_player_color(player) == alt_gen8 ? sprite_get("introGenesis") :
+    get_player_color(player) >= alt_split ? sprite_get("intro2") : sprite_get("intro");
+
+//***************************************************************************
 //====> RC COMP ########################################################################################
 //***************************************************************************
 
@@ -268,18 +293,24 @@ pkmn_stadium_back_img = sprite_get("pokemon_stadium_back");
 //diag_portrait = sprite_get("");
 
 //***************************************************************************
+//====> MELEE ICON (PROTOTYPE) ###########################################
+//***************************************************************************
+
+melee_icon = sprite_get("meleeicon")
+
+//***************************************************************************
 //====> OTHERS ###########################################
 //***************************************************************************
 
 if (get_player_color(player) > 14)
 {
    arena_title = "The Amethyst Pupil"; 
-   boxing_title = "The Amethyst\nPupil";
+   boxing_title = "The Amethyst Pupil";
 }
 else
 {
     arena_title = "The Stars Right Hand";
-    boxing_title = "The Stars\nRight Hand";
+    boxing_title = "The Stars Right Hand";
 }
 
 //***************************************************************************

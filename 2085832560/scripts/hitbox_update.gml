@@ -48,6 +48,20 @@ if attack == AT_USTRONG && hbox_num > 1 {
 		var  ustrongs2 = hit_fx_create( sprite_get( "ustrongs2" ), 12);
 	spawn_hit_fx( x , y , ustrongs2 )
 	
+	if has_hit && hitbox_timer < 20 {
+		player_id.move_cooldown[AT_USTRONG] = 30
+		with player_id.hit_player_obj {
+		if state_cat == SC_HITSTUN or hitpause{	
+		if y > room_height/2 - 160 {	
+		y += floor ((other.y - y)/30)
+		}
+		vsp = -4
+		old_vsp = -4
+		x += floor ((other.x - x)/24)
+		}
+	    }
+	}
+	
 }
 
 if attack == AT_EXTRA_3 && hbox_num > 2 && hbox_num < 7 {
@@ -170,12 +184,19 @@ if attack == AT_UAIR && hbox_num > 1 {
 	}
 		
 	if vsp > 0 {
+		if has_hit{ 
 		sound_play(sound_get("exp1"));
 		
 		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
 		spawn_hit_fx( x , y , exp1 )
 		destroyed = 1
 		create_hitbox(AT_EXTRA_3 , 11 ,x   , y );
+		} else {
+		sound_play(asset_get("sfx_blow_medium2"),false,noone,1,.8);
+		sound_play(asset_get("sfx_spin"),false,noone,1,1.2);
+		destroyed = 1	
+		spawn_hit_fx( x , y , 14 )
+		}
 	}
 	
 	
@@ -407,24 +428,35 @@ if attack == AT_EXTRA_1 && hbox_num == 18 {
 	
 	var smoke1 = hit_fx_create( sprite_get( "smoke1" ), 20 );
 	
-
+    
+    transcendent = true 
+     
 		spawn_hit_fx( x + 8 - random_func(1, 16, true) , y + 8 - random_func(2, 16, true) , smoke1 )
 
 	
 	
-	if hitbox_timer == 560{
+	if x < 0 or x > room_width {
+		x -= 60*spr_dir 
+		
+		hitbox_timer = 800 
+		
 		sound_play(sound_get("exp1"));
 		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
 		spawn_hit_fx( x , y + 10 , 306 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 10 );
 		
-		hsp *= -40
+		sprite_index = sprite_get("gun6")
+		
+		image_xscale *= 6
+		image_yscale *= 6
+		
+		hsp *= -4
 	}	
 	
 	
-	if hitbox_timer == 599{
+	if hitbox_timer == 950{
 		 sound_play(sound_get("exp2"));
-		
+		destroyed = true 
 		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
 		spawn_hit_fx( x , y + 10 , exp1 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y + 10 );

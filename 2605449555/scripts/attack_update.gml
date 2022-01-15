@@ -139,9 +139,7 @@ if (attack == AT_BAIR) {
     }
     if (window == 2) {
     	if (window_timer == 8 && hitpause == false) {
-    		hsp = 5 * spr_dir;
-    		//vsp = -3;
-    		move_cooldown[AT_BAIR] = 20;
+    		move_cooldown[AT_BAIR] = 15;
     	}
     }
     
@@ -410,10 +408,6 @@ if (attack == AT_FTILT) {
 			CannBallDelete = false;
 		}
 		
-		if (window_timer == 2) {
-			create_hitbox(AT_USPECIAL, 8, x - 20 * spr_dir, y - 30);
-		}
-		
 		grav = 0.2;
 	}
 	
@@ -633,10 +627,6 @@ if (attack == AT_DSPECIAL) {
     	damage_scaling = 1;
     }
 	
-	if (window == 2) {
-	    
-	}
-	
 	if (window == 3) {
 	    if (window_timer == 1) {
             sound_play(asset_get("sfx_ell_utilt_retract"));
@@ -665,13 +655,15 @@ if (attack == AT_USTRONG) {
 	}
 	
 	if (CannGrabbedId != 0) {
-		if (CannUStrongEasingTimer < 20) {
-			CannGrabbedId.x = ease_cubeOut( CannUStrongStartX, x - (10 * spr_dir), CannUStrongEasingTimer, 20 );
-			CannGrabbedId.y = ease_cubeOut( CannUStrongStartY, y - 55, CannUStrongEasingTimer, 20 );
-			CannUStrongEasingTimer += 1;
-		} else {
-			CannGrabbedId.x = x - (10 * spr_dir);
-			CannGrabbedId.y = y - 55;
+		if (hitpause == false) {
+			if (CannUStrongEasingTimer < 20) {
+				CannGrabbedId.x = ease_cubeOut( round(CannUStrongStartX), round(x - (10 * spr_dir)), CannUStrongEasingTimer, 20 );
+				CannGrabbedId.y = ease_cubeOut( round(CannUStrongStartY), round(y - 55), CannUStrongEasingTimer, 20 );
+				CannUStrongEasingTimer += 1;
+			} else {
+				CannGrabbedId.x = x - (10 * spr_dir);
+				CannGrabbedId.y = y - 55;
+			}
 		}
 		CannGrabbedId.hsp = 0;
 		CannGrabbedId.vsp = 0;

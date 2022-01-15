@@ -6,7 +6,7 @@ var bar_height = 8;
 var bar_amount = blackjack_meter / blackjack_meter_max;
 blackjack_meter_lerp = lerp(blackjack_meter_lerp, bar_amount, 0.3)
 
-var bar_color_amt = floor(bar_amount * 3);
+var bar_color_amt = max(floor(bar_amount * 3), 0);
 var bar_color = c_white;
 if (blackjack_cooling_timer > 0) {
 	bar_color = blackjack_meter_colors_cooling

@@ -1,8 +1,6 @@
 //update.gml
 
-if (state_cat == SC_AIR_NEUTRAL ){
-	KILL_RATS = 0;
-}
+KILL_RATS = 0;
 
 // Bubble Frog
 if (state == PS_AIR_DODGE && state_timer == 2){

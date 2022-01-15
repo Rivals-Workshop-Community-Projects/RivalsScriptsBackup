@@ -1,6 +1,11 @@
 if ("rollArray" in self)
 {
 	var tempColour = GetColourPlayer(0);
+	if (get_player_color(player)==26)
+	{
+        var color_rgb1=make_color_rgb(255, 255, 128);
+		tempColour = make_color_hsv((color_get_hue(color_rgb1)+hue)%255,color_get_saturation(color_rgb1),color_get_value(color_rgb1));
+	}
 	var tempColour2 = GetColourPlayer(5);
 	var tempColour3 = GetColourPlayer(3);
 	var outlineColour = make_colour_rgb(outline_color[0],outline_color[1],outline_color[2]);
@@ -348,6 +353,8 @@ if ("rollArray" in self)
 	// true: default to scale 2
 	switch (get_stage_data(SD_ID))
 	{
+		default:
+			return true;
 		case 1://"Sylvan Radiance";
 		case 23://"Lovers Encore";
 		case 16:
@@ -355,7 +362,6 @@ if ("rollArray" in self)
 		case 19://"Howl of the Forest";
 		case 24://"In the Halls of the Usurper (Rivals Ver.)";
 		case 22://"Tutorial Session";
-		default:
 			return true;
 		case 2://"Fiery Ambitions";
 		case 3://"Fight and Flight";

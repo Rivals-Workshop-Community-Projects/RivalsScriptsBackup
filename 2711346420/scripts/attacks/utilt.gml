@@ -28,6 +28,7 @@ set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UTILT, 1);
 
+set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_NAME, "Overhead Hitbox");
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 2);

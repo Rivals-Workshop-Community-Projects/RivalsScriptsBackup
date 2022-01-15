@@ -43,7 +43,7 @@ set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_BAIR, 5, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_BAIR, 5, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_strong"));
+set_window_value(AT_BAIR, 5, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_mega_instant"));
 set_window_value(AT_BAIR, 5, AG_WINDOW_SFX_FRAME, 4);
 
 
@@ -52,7 +52,7 @@ set_window_value(AT_BAIR, 6, AG_WINDOW_LENGTH, 1)
 set_window_value(AT_BAIR, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_BAIR, 6, AG_WINDOW_ANIM_FRAME_START, 20);
 set_window_value(AT_BAIR, 6, AG_WINDOW_HAS_SFX, 0);
-set_window_value(AT_BAIR, 6, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_strong"));
+set_window_value(AT_BAIR, 6, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_mega_instant"));
 set_window_value(AT_BAIR, 6, AG_WINDOW_SFX_FRAME, 0);
 
 set_window_value(AT_BAIR, 7, AG_WINDOW_TYPE, 1);

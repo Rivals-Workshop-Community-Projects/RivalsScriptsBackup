@@ -36,9 +36,9 @@ if state == PS_AIR_DODGE || state == PS_PARRY_START || state == PS_PARRY || stat
 
 if proj_doll > 0 proj_doll --
 
-if (proj_doll && (special_pressed || special_down))
+if !used_uspec && ((proj_doll && (special_pressed || special_down))
 || (force_cancel)
-|| (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack != AT_FSPECIAL && hit_doll != undefined && !hitstop && (special_pressed || special_down) {
+|| (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack != AT_FSPECIAL && hit_doll != undefined && !hitstop && (special_pressed || special_down)) {
     ss_start = true
     ss_dist = 60*spr_dir
     ss_timer = (force_cancel || proj_doll) ? 100 : 0
@@ -47,6 +47,7 @@ if (proj_doll && (special_pressed || special_down))
     reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO);
     move_cooldown[AT_FSPECIAL] = 12
     has_hit = false
+    used_uspec = true
     destroy_hitboxes()
     attack_end()
 }

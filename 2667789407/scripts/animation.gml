@@ -99,17 +99,23 @@ switch (state)
             init_shader();
         }
 //=============================================================================
-        else if (attack == AT_TAUNT) && !hitpause
-        && (window == 2 && window_timer == 0 && get_num_hitboxes(attack) > 0) //exclamation
+        else if (attack == AT_TAUNT) && !hitpause && (get_num_hitboxes(attack) > 0)
         {
-            switch (hidden_power_strength_vfx)
+            if (window == 1 && window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1)
             {
-                case 1: spawn_hit_fx( x, y - unown_eye_center_offset, 302 ); break;
-                case 2: spawn_hit_fx( x, y - unown_eye_center_offset, 254 ); break;
-                case 3: spawn_hit_fx( x, y - unown_eye_center_offset, 304 ); break;
-            } hidden_power_strength_vfx = 0;
-            
-            spawn_hit_fx( x, y - unown_eye_center_offset, hitfx_hiddenpower );
+                sound_play(asset_get("sfx_ori_stomp_hit"))
+            }
+            else if (window == 2 && window_timer == 0)
+            {
+                switch (hidden_power_strength_vfx)
+                {
+                    case 1: spawn_hit_fx( x, y - unown_eye_center_offset, 302 ); break;
+                    case 2: spawn_hit_fx( x, y - unown_eye_center_offset, 254 ); break;
+                    case 3: spawn_hit_fx( x, y - unown_eye_center_offset, 304 ); break;
+                } hidden_power_strength_vfx = 0;
+                
+                spawn_hit_fx( x, y - unown_eye_center_offset, hitfx_hiddenpower );
+            }
         }
 //=============================================================================
     } break;

@@ -1,4 +1,4 @@
-//hovertime -= 1;                 missile :(((((
+hovertime -= 1;
 midmissile -= 1;
 //slip_lifetime -= 1;
 if (state != PS_AIR_DODGE){

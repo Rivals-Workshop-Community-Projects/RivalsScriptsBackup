@@ -1,5 +1,5 @@
 //debug-draw
-debug = false;
+debug = false; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 if(debug){
     //debug = false;
     draw_debug_text(x, y + 5, "JOYPAD DIRECTION: " + string(joy_dir));

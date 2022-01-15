@@ -86,9 +86,14 @@ if (infinite_ex == true){
 //	sound_play(sound_get("ex_ready"));
 //    no_ex_sfx = true;
 //}
-if (state == PS_SPAWN && shield_pressed && parry_ex == true){
+if (state == PS_SPAWN && shield_pressed && parry_ex == 1){
 	sound_play(sound_get("ex_ready"));
-    parry_ex = false;
+    parry_ex = -1;
+}
+
+if (state == PS_SPAWN && special_pressed && parry_ex == -1){
+	sound_play(sound_get("ex_ready"));
+    parry_ex = 0;
 }
 
 //Resets the EX Value
@@ -184,6 +189,20 @@ if (fspecial_grab == true){
 }
 if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_FSPECIAL){
     fspecial_grab = false;
+}
+
+//FSpecial "Comand Grab"
+if (dstrong_grab == true){
+	hit_player_obj.hitstop = 1;
+		if (hit_player_obj.x > x){
+		    hit_player_obj.x = x+dstrong_grab_x;
+		}
+		if (hit_player_obj.x < x){
+			hit_player_obj.x = x-dstrong_grab_x;
+		}
+}
+if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_FSPECIAL){
+    dstrong_grab = false;
 }
 
 //if (x > get_stage_data(SD_X_POS) + 230){ //soltar o oponente com o FSPecial perto da plataforma

@@ -66,4 +66,7 @@ if (my_hitboxID.player != hit_player_obj.player) {
 	blackjack_meter += damage_dealt;
 	
 	blackjack_meter %= blackjack_meter_max + 1;
+    if (blackjack_meter == blackjack_meter_max) {
+        sound_play(asset_get("mfx_mm_coin_win"));
+    }
 }

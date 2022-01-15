@@ -3,11 +3,13 @@ grabbed_player_obj_draw_x = 0;
 grabbed_player_obj_draw_y = 0;
 
 if (attack == AT_DSPECIAL && free) {
+	reset_attack_value(AT_DSPECIAL_AIR,AG_NUM_WINDOWS);
     attack = AT_DSPECIAL_AIR;
 }
 
 if (attack == AT_NSPECIAL && free) {
-    attack = AT_EXTRA_2;
+	if(fs_charge >= 200){attack = AT_NSPECIAL}
+    else attack = AT_NSPECIAL_AIR;
 }
 
 if(attack == AT_USTRONG){

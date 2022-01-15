@@ -8,7 +8,8 @@ try
         set_character_color_slot( 7, 255, 195, 201 );
     }
     
-    if (_curr < 15)
+    if (_curr < 17)
+    //if (_curr < alt_split)
     {
         //Replace Ankles with Tail tip
         set_color_profile_slot( 0, 4, 219, 112, 147 );
@@ -36,4 +37,6 @@ catch (er)
     set_character_color_slot( 7, 255, 195, 201 );
 }
 
-shadr_init = true;//END // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+shadr_init = true;
+
+//END

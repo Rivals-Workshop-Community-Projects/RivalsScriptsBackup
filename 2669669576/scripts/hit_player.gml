@@ -1,4 +1,4 @@
-if(!fast_falling){
+if(!fast_falling and state_cat != SC_HITSTUN){
     if my_hitboxID.attack == AT_DAIR
     {
         if my_hitboxID.hbox_num == 1

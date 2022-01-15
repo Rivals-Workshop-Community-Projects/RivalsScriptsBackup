@@ -248,6 +248,30 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.19", "12 January, 2022");
+
+initHeader("Buffs:");
+initSection("+ Ftilt comes out 1 frame faster, F9 -> F8
++ Utilt comes out 1 frame faster, F7 -> F6
++ Nair comes out 1 frame faster, F8 -> F7
++ Bair comes out 1 frame faster, F15 -> F14
++ Uair comes out 1 frame faster, F8 -> F7
++ Dair comes out 1 frame faster, F9 -> F8
+");
+
+initHeader("Nerfs:");
+initSection("- Dattack comes out 2 frames slower, F10 -> F12
+- Ustrong comes out 2 frames slower, F13 -> F15
+- Dstrong angles changed to not be as steep, 50 -> 60
+- Dstrong kb scaling lowered, 1 -> .95
+- Max charge Fspecial's base kb was lowered, 11 -> 10
+");
+
+initHeader("Changes:");
+initSection("= Uair's kb and hitpause was adjusted to feel less sluggish
+");
+
+//
 initPatch("1.18", "22 December, 2021");
 
 initHeader("Buffs:");
@@ -266,7 +290,6 @@ initHeader("Changes:");
 initSection("= Fspecial overall has more hitpause
 ");
 
-
 //
 initPatch("1.17", "12 December, 2021");
 
@@ -281,7 +304,6 @@ initSection("+ Fair base kb increased, 7 -> 8
 initHeader("Changes:");
 initSection("= All attacks should correctly set SDI and Drift back to 1
 ");
-
 
 //
 initPatch("1.16", "23 November, 2021");
@@ -316,7 +338,6 @@ Changes:
 = The amount of time left to charge Dspecial by 1 is kept upon cancel 
 (It now works similarly to Samus or Sheik Nspec instead of relying on specific window frames)");
 
-
 //
 initPatch("1.15", "2 November, 2021");
 
@@ -340,7 +361,6 @@ initSection("= Jab, Ftilt, Utilt, Ustrong have more exaggerated attack poses (an
 = Dattack rework, it's now a multihit (and it can go off ledge lol)
 ");
 
-
 //
 initPatch("1.14", "17 October, 2021");
 
@@ -355,7 +375,6 @@ initSection("- Nspecial's farthest reaching grab hitbox was made a little smalle
 initHeader("Changes:");
 initSection("= Nspecial should more consistently pull in at long ranges now
 = Added the 1.13 patch notes to Lancer's munophone cause I forgot last time lol");
-
 
 //
 initPatch("1.13", "16 October, 2021");
@@ -376,7 +395,6 @@ initHeader("Changes:");
 initSection("= Slippery now lasts for 10 seconds, and does not go away after 1 use of any strong
 = Slippery lowers Lancer's base ground friction, .5 -> .2");
 
-
 //
 initPatch("1.12", "15 October, 2021");
 
@@ -389,7 +407,6 @@ initSection("= Fixed a bug where getting hit during dspecial would spawn a lot o
 = Adjusted some SFX
 = Added some extra VFX to slippery strongs
 = When Lancer is Slippery, his outline turns from black to dark green");
-
 
 //
 initPatch("1.11", "14 October, 2021");

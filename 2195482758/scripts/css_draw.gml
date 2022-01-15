@@ -100,4 +100,3 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 #define rectDraw(x1, y1, x2, y2, color)
  
 draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
-

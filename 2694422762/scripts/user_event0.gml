@@ -220,7 +220,7 @@ deck = init_deck();
 
 game_status = GAME_GOING;
 game_player = noone;
-with oPlayer if get_player_hud_color(player) == 6612290 other.game_player = id;
+//with oPlayer if get_player_hud_color(player) == 6612290 other.game_player = id;
 if !instance_exists(game_player)
 	game_player = id;
 draw_game = false;

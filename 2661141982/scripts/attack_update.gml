@@ -10,9 +10,24 @@ if (attack == AT_NSPECIAL || attack == AT_JAB || attack == AT_UTILT ||attack == 
 //    can_move = true;
 //	can_jump = true;
 //}
-var no_hp = !hitpause;
-if(state_timer == 1) fx = -4;
 
+var no_hp = !hitpause;
+if(state_timer == 1) 
+{
+	fx = -4;
+	if(get_player_color(player) == 4 || alt2_secret == 3)
+	{
+		sound_stop(sound_get("win_shoryu"))
+		sound_stop(sound_get("win_hado"))
+		sound_stop(sound_get("win_tatsu"))
+		switch(attack)
+		{
+			case AT_FSPECIAL: sound_play(sound_get("win_tatsu"),false,noone,1.7,1.1) break;
+			case AT_USPECIAL: sound_play(sound_get("win_shoryu"),false,noone,1.7,1.1) break;
+			case AT_USPECIAL_2: case AT_NSPECIAL: sound_play(sound_get("win_hado"),false,noone,1.7,1.1) break;
+		}
+	}
+}
 switch (attack)
 {
 	case 49: //FINAL SMASH
@@ -431,10 +446,27 @@ switch (attack)
 		    window_timer = 0;
 		}
 	break;
-	
-	
-	
-	
+	case AT_TAUNT:
+		if(get_player_color(player) == 11 || down_down && state_timer == 1)
+			set_attack(AT_TAUNT_2);
+	break;	
+	case AT_TAUNT_2:
+		if(get_player_color(player) == 11)
+		{
+			set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("genesistaunt"));
+			set_window_value(AT_TAUNT_2, 2, AG_WINDOW_HAS_SFX, 1);
+			hud_offset = 20;
+		}
+		if(window == 2 && window_timer == 1)
+		{
+			sound_play(asset_get("sfx_blow_medium2"),false, noone, 1, 0.8)
+			sound_play(asset_get("sfx_abyss_seed_explode"),false, noone, 1.2, 0.9)
+			shake_camera(10,10)
+		}
+		if(window != 3)
+			draw_x = -10*spr_dir;
+		else
+			draw_x = 0;
 }
 /*
 if (attack == AT_DSPECIAL){

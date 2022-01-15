@@ -25,7 +25,7 @@ if(status_effect_water == true){
     }
                 
     gpu_set_fog(true,c_blue,0,0);
-    draw_sprite_ext(sprite_index, image_index, x, y, spr_dir * 1, 1, image_angle, 1, .33);
+    draw_sprite_ext(sprite_index, image_index, x, y, (spr_dir + small_sprites) * 1, 1 + small_sprites, image_angle, 1, .33);
     gpu_set_fog(false,c_blue,0,0);
     /*
     // set the character's outline color to red:

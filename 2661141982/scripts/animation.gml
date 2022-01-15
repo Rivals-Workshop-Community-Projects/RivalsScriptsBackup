@@ -10,4 +10,7 @@ switch(state)
         if (introTimer < 0) image_index = 0;
         else if (introTimer < length) image_index = introTimer;
         break;
+    case PS_IDLE:
+        if(random_func(4, 100, false) > 90 && get_player_color(player) == 11)
+            image_index -= 1+random_func(1, 4, true);
 }

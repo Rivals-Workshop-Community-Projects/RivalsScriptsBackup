@@ -73,8 +73,9 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 	
 	
 	if hitbox_timer == 259 {
-		destroyed = true
-		sound_play(asset_get("sfx_spin"),false,noone,1,1.3)
+		hitbox_timer -= 1
+		//destroyed = true
+		//sound_play(asset_get("sfx_spin"),false,noone,1,1.3)
 	}
 
 		if player_id.move_cooldown[AT_NSPECIAL] > 0{
@@ -180,6 +181,19 @@ if attack == AT_DSPECIAL{
 
 if attack == AT_NSPECIAL  && hbox_num <= 3{
 
+if hbox_num == 1 && hitbox_timer == 1 {
+    if player_id.ncharge >= 20 && player_id.ncharge < 50 {
+              batted = 1
+              vsp = -9
+    }
+    
+    if player_id.ncharge >= 50 && player_id.ncharge < 65 {
+        vsp = -16
+        batted = 1
+    }	
+    player_id.ncharge = 0
+}
+
 if player_id.move_cooldown[AT_FSPECIAL_2] != 0 {
 	hit_priority = 0
 }
@@ -230,12 +244,21 @@ if lockouttimer < 0 {
     }
     
     grav = 0.1
-    if (place_meeting(x, y, asset_get("par_block"))) && vsp > 0{
-    	vsp *= -1
-    	spawn_hit_fx(x,y,14)
-    	sound_play(asset_get("sfx_blow_medium1"),false,noone,0.6)
+    if (place_meeting(x, y-6, asset_get("par_block"))) && vsp > 0{
+    	if abs(vsp) < 1 && abs(hsp) < 1 {
+    		sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1,.8)
+    	   spawn_hit_fx(x,y+8,13)
+    		destroyed = true
+    	}
+    	hsp /= 1.05
+    	sound_play(asset_get("sfx_blow_medium1"),false,noone,abs(vsp/8))
+    	ax = spawn_hit_fx(x,y+8,14)
+    	ax.draw_angle = random_func(1,306,true)
+    	ax.spr_dir = vsp/4
+    	ax.image_yscale = vsp/4
+    	vsp *= -0.9
     	if hbox_num == 3 {
-    		sound_play(asset_get("sfx_absa_singlezap2"))
+    		sound_play(asset_get("sfx_absa_singlezap2"),false,noone,abs(vsp/8))
     	}
     }
    
@@ -266,13 +289,21 @@ if lockouttimer < 0 {
             spr_dir = 1
         }
         
-      if (place_meeting(x, y + vsp, asset_get("par_block"))) && vsp > 0  {
-        vsp *= -1
-    	spawn_hit_fx(x - 8*spr_dir ,y + vsp + 30,14)
-    	shake_camera(2,2)	
-    	sound_play(asset_get("sfx_blow_medium1"))
+      if (place_meeting(x, y - 8 + vsp, asset_get("par_block"))) && vsp > 0  {
+      	if abs(vsp) < 4 && abs(hsp) < 4 {
+    		sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1,.8)
+    	   spawn_hit_fx(x,y+8,13)
+    		destroyed = true
+    	}
+    	hsp /= 1.1
+    	sound_play(asset_get("sfx_blow_medium1"),false,noone,abs(vsp/8))
+    	ax = spawn_hit_fx(x,y+8,14)
+    	ax.draw_angle = random_func(1,306,true)
+    	ax.spr_dir = min(1,vsp/4)
+    	ax.image_yscale = min(1,vsp/4)
+    	vsp *= -0.8
     	if hbox_num == 3 {
-    		sound_play(asset_get("sfx_absa_singlezap2"))
+    		sound_play(asset_get("sfx_absa_singlezap2"),false,noone,abs(vsp/8))
     	}
       }
         grav = 0.4
@@ -510,7 +541,7 @@ if lockouttimer < 0 {
                destroyed = true 
          	}
          	
-         if nearbyhitbox.attack == AT_FSPECIAL && (hitbox_timer > 30 or vsp > 0){
+         if nearbyhitbox.attack == AT_FSPECIAL && (hitbox_timer > 30 or vsp > 0) {
          	   sound_play(sound_get("strongb"),false,noone,1.2)
          	   shake_camera(5,8)
          	   spawn_hit_fx(x,y ,305)
@@ -545,7 +576,7 @@ if lockouttimer < 0 {
                case 1 :
                with nearbyhitbox.player_id {
                create_hitbox(AT_NSPECIAL,2,other.x,other.y)
-               create_hitbox(AT_NSPECIAL,10,other.x,other.y + 20)
+               //create_hitbox(AT_NSPECIAL,10,other.x,other.y + 20)
                }
                
                break;
@@ -553,7 +584,7 @@ if lockouttimer < 0 {
                case 2 :
                with nearbyhitbox.player_id {
                create_hitbox(AT_NSPECIAL,3,other.x,other.y)
-               create_hitbox(AT_NSPECIAL,10,other.x,other.y + 20)
+               //create_hitbox(AT_NSPECIAL,10,other.x,other.y + 20)
                }
                break;
                

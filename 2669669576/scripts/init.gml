@@ -24,6 +24,8 @@ nspecial_cur_window = 0;
 nspecial_cur_frame = 0;
 nspecial_cur_size = 1;
 fspecial_hard_cd = false;
+nspecial_hitbox = noone;
+
 //weird delta variables im too lazy to check if they still do anything
 u_cooldown = 0;
 u_max_cool = 150;

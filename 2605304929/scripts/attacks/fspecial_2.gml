@@ -85,10 +85,10 @@ set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 22);
 
 window_num++;
 
-// Window #8 / Frame(s) #23 - 26 / Kick End
+// Window #8 / Frame(s) #23 - 27 / Kick End
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 23);
 
 //Hitbox Values --------------------------------------------------------------------------
@@ -101,6 +101,7 @@ var window_for_hitbox = 1;
 // #1 Landing Hitbox
 window_for_hitbox = 3; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2);
@@ -126,6 +127,7 @@ hitbox_num++;
 // #2 Stomp Hitbox
 window_for_hitbox = 4; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2);
@@ -151,6 +153,7 @@ hitbox_num++;
 // #3 Stomp 2 Hitbox
 window_for_hitbox = 5; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 3);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2);
@@ -176,6 +179,7 @@ hitbox_num++;
 // #4 Kick Hitbox - Final Hitbox with knockback
 window_for_hitbox = 7; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 5);
     set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
     set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
@@ -191,7 +195,7 @@ window_for_hitbox = 7;
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.15);
     set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 60);
     set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hitfx_large_elec); // 157 - lightning extra large
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // Normal Large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);

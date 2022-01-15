@@ -58,6 +58,7 @@ if (blackjack_cooling_timer > 0) {
     if (blackjack_cooling_timer % blackjack_cooling_div == blackjack_cooling_div - 1) {
         blackjack_meter --;
         if (blackjack_meter <= 0) {
+            blackjack_meter = 0;
             blackjack_cooling_timer = 0
             blackjack_meter_cooling = false;
         }

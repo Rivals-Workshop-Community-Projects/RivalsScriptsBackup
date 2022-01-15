@@ -34,9 +34,9 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 0);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_gained_2"));
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX_FRAME, 14);
+//set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_gained_2"));
+//set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX_FRAME, 14);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 
 // Hold it if you want
@@ -51,8 +51,8 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, driving_dash_duration);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED, 10.5);
+//set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
+//set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED, 10.5);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
 
 // Stop
@@ -61,8 +61,8 @@ set_window_value(AT_DSPECIAL, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.8);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.8);
+set_window_value(AT_DSPECIAL, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1.5); // 0.8
+set_window_value(AT_DSPECIAL, 6, AG_WINDOW_CUSTOM_AIR_FRICTION, 1.5); // 0.8
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
 // Return to car neutral

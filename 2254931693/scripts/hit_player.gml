@@ -8,6 +8,17 @@ with (asset_get("pHitBox")){
 }
 
 
+
+if ((my_hitboxID.attack == AT_USPECIAL || my_hitboxID.attack == AT_USPECIAL_GROUND) && my_hitboxID.hbox_num != 1 && my_hitboxID.hbox_num != 6 && has_rune("L")){
+ with (hit_player_obj){
+    var cyclonedir = point_direction(x, y, other.x, other.y - 10);
+    var cyclonespeed = 12;
+    hsp = lengthdir_x(cyclonespeed, cyclonedir);
+    vsp = lengthdir_y(cyclonespeed, cyclonedir);
+ }
+}
+
+
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num = 1){
     if  (hit_player_obj.state_cat = SC_HITSTUN){
     window = 8;

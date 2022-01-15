@@ -35,20 +35,26 @@ switch (get_player_color(player))
         }
     }
     break;
-    //astral
+    //paint
     case 26:
     {
-        AstralColours(1, 219, 64, 180, 82, 64, 219 );
-        AstralColours(2, 158, 35, 105, 35, 37, 158 );
-        AstralColours(3, 173, 20, 181, 20, 146, 181);
-        AstralColours(4, 109, 34, 122, 34, 91, 122 );
+        if ("hue" not in self) hue = 0;
+        var color_rgb1=make_color_rgb(255, 255, 128);
+        var color_rgb2=make_color_rgb(200, 150, 60);
+        AltColour(0, make_color_hsv((color_get_hue(color_rgb1)+hue)%255,color_get_saturation(color_rgb1),color_get_value(color_rgb1)));
+        AltColour(7, make_color_hsv((color_get_hue(color_rgb2)+hue)%255,color_get_saturation(color_rgb2),color_get_value(color_rgb2)));
     }
     break;
-    //redline
+    //voidfox
     case 27:
     {
-        set_character_color_shading(0, 3);
-        set_character_color_shading(7, 3);
+        if ("state" in self)
+        {
+            if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_EXTRA_1)
+                set_character_color_slot(0, 162, 255, 0, 1);
+            else
+                set_character_color_slot(0, 18, 18, 18, 1);
+        }
     }
     break;
     //champion
@@ -96,12 +102,11 @@ if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
     winner_name = "Void Dragon Lonin wins!";
 }
 
-#define AstralColours(_index, _r, _g, _b, _r2, _g2, _b2)
+#define AltColour(_index, _colour)
 {
-    var lerpAmount = y/room_height;
-    set_character_color_slot(   _index,
-                                floor(lerp(_r, _r2, lerpAmount)),
-                                floor(lerp(_g, _g2, lerpAmount)),
-                                floor(lerp(_b, _b2, lerpAmount)),
-                                1);
+	var temp_r = color_get_red(_colour);
+	var temp_g = color_get_green(_colour);
+	var temp_b = color_get_blue(_colour);
+	set_character_color_slot(_index, temp_r, temp_g, temp_b, 1);
+	set_article_color_slot(_index, temp_r, temp_g, temp_b, 1);
 }

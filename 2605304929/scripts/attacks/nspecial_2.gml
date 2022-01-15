@@ -26,7 +26,6 @@ set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2")); // asset_get("") or sound_get("")
 set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, get_window_value(attack,window_num,AG_WINDOW_LENGTH) -1);
 
-
 window_num++;
 
 // Window #2 / Frame(s) # 4- / Throw Start / 90 Degrees Render Opponent
@@ -71,21 +70,22 @@ var window_for_hitbox = 1;
 //Set Hitbox Values - This is the basic block of a functional hitbox
 window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -69);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -40);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -41);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 88);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 100);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 85);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 7);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 5);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 100);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .2);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 2);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 22); // 22  - lightning directional
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); // 302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 hitbox_num++;

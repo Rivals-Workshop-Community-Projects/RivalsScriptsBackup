@@ -140,6 +140,7 @@ switch (attack)
                 hsp/=1.2;
                 break;
             case 2:
+                if (window_timer < 6 && (!has_hit_player || hit_player_obj.y > y)) fall_through = true;
                 if (window_timer == 1) jsTimer = 10;
                 if (state_timer >= (aura?dairCancel/2:dairCancel))
                 {

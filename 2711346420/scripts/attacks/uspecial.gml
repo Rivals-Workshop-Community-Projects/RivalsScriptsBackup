@@ -58,11 +58,12 @@ set_window_value(AT_USPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 15);
 
 set_num_hitboxes(AT_USPECIAL, 3);
 
+set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "Early Hitbox");
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 0);
-set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 80);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
@@ -77,12 +78,14 @@ set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "Stats are weaker if used while outside the Monkey Ball.");
 
+set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Late Hitbox");
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 16);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 0);
-set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 80);
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 80);
 set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 0);
@@ -96,4 +99,5 @@ set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
-//value changes are in attack_update.gml
+set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_MISC_ADD, "Stats are weaker if used while outside the Monkey Ball.");
+//value changes are in attack_update.gml and update.gml

@@ -314,6 +314,9 @@ CannUStrongStartY = 0; // Hit player y position at start of easing
 
 CannFSpecialLanded = false;
 
+CannNSpecialCooldownTimer = 0; // If you teleport this will be set so that you can't shoot for a bit
+CannNSpecialCooldownSound = true; // Plays a sound
+
 /* Max Heat Stats
 walk_speed = 3.75;
 walk_accel = 0.225;

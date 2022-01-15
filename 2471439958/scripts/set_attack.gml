@@ -8,10 +8,10 @@ if (attack == AT_NSPECIAL){
 }
 if (attack == AT_NSPECIAL){
     if (fire = 0) && (ice = 0) && (thunder = 0) && (pistols = 0){
-        attack = AT_EXTRA_3;
+        attack = AT_EXTRA_1;
     }
 }
-if (attack == AT_EXTRA_3){
+if (attack == AT_EXTRA_1){
     if (fire = 1) or (ice = 1) or (thunder = 1) or (pistols = 1){
         attack = AT_NSPECIAL;
     }
@@ -26,7 +26,7 @@ if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR){
 }
 if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR or attack = AT_NSPECIAL){
     if move_cooldown[AT_NSPECIAL] > 0{
-        attack = AT_EXTRA_1;
+        attack = AT_EXTRA_3;
     }
 }
 if (attack == AT_DATTACK){

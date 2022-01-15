@@ -439,6 +439,14 @@ if (attack == AT_FSPECIAL_2) {
 			window_timer = 0;
 		}
 	}
+	
+	//fuck you, no more cool suicide!
+	if(window == 1){
+	if (free && y >= room_height - 25){
+		window = 6;
+		window_timer = 0;
+		}
+	}
 }
 if(attack == AT_USPECIAL){
 	if(window == 1 && window_timer = 4){
@@ -668,10 +676,14 @@ if(hatch_amount >= 3000){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						window = 1;
+						window_timer = 0;
 			}if(taunt_pressed || taunt_down){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						window = 1;
+						window_timer = 0;
 			}
 		}
 	}	if(attack == AT_NAIR){
@@ -680,10 +692,14 @@ if(hatch_amount >= 3000){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						window = 1;
+						window_timer = 0;
 			}if(taunt_pressed || taunt_down){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						window = 1;
+						window_timer = 0;
 			}
 		}
 	}	if(attack == AT_NSPECIAL){
@@ -692,6 +708,8 @@ if(hatch_amount >= 3000){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						window = 1;
+						window_timer = 0;
 			}
 		}
 	}	if(attack == AT_TAUNT){
@@ -700,6 +718,8 @@ if(hatch_amount >= 3000){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						window = 1;
+						window_timer = 0;
 			}
 		}
 	}

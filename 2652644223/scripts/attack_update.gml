@@ -233,13 +233,13 @@ if(attack == AT_BAIR || attack == AT_DAIR)
 {
     if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
      || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 3 && bullets > 0 && !hitpause && free)
-    { window = 4; window_timer = 0; if(attack==AT_BAIR){vsp = -4; hsp = 3*spr_dir;}else vsp = -6; sound_play(sound_get("revolver_shot")); bullets--;}
+    { window = 4; window_timer = 0; destroy_hitboxes(); if(attack==AT_BAIR){vsp = -4; hsp = 3*spr_dir;}else vsp = -6; sound_play(sound_get("revolver_shot")); bullets--;}
 }
 if(attack == AT_UAIR)
 {
     if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
     || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 2 && window_timer > 5 && bullets > 0 && !hitpause && free)
-    { window = 4; window_timer = 0; vsp += 2; sound_play(sound_get("revolver_shot")); bullets--;}
+    { window = 4; window_timer = 0; vsp += 2; destroy_hitboxes(); sound_play(sound_get("revolver_shot")); bullets--;}
 }
 if(attack == AT_USTRONG)
 {   

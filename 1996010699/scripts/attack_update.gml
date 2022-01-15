@@ -123,7 +123,7 @@ if(attack == AT_DSTRONG){
 }
 
 if(attack == AT_FTILT){
-	if(window == 2 && window_timer == 1 && crouchCounter >= 100){
+	if(window == 1 && window_timer == 4 && crouchCounter >= 100){
 		window = 5;
 		window_timer = 0;
 	}
@@ -1045,13 +1045,12 @@ switch(attack){
 		case 14:	//down special
 			set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, shine);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -32);
+			set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zetter_shine"));
 			
 			itemsDisplayed[displaySlot] = item[14, 5];
 			displaySlot++;
 			break;
 		case 15:	//voidbox
-			set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_absa_new_whip1"));
-			
 			itemsDisplayed[displaySlot] = item[15, 5];
 			displaySlot++;
 			break;

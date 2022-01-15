@@ -591,6 +591,26 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Slightly changed Spectrum alt");
 						break;
+					case 38:
+						AddText("v1.38 - 30 Dec 2021");
+						AddText("");
+						AddText("Replaced Astral alt with Paint alt.");
+						AddText("Replaced Redline alt with Voidfox alt.");
+						AddText("");
+						AddText("Lonin's image inside the portal is now darker.");
+						AddText("");
+						AddText("Hitting USpec now restores walljump only once.");
+						AddText("");
+						AddText("DAir is now less 'Sticky' on platforms.");
+						break;
+					case 39:
+						AddText("v1.39 - 5 Jan 2021");
+						AddText("");
+						AddText("Paint alt's colour changes now reflect in afterimages");
+						AddText("");
+						AddText("FAir Normal: KB 6+1.0 -> 6+0.9");
+						AddText("FAir Normal: Stronger hit sound");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -815,28 +835,23 @@ if ("rollArray" in self)
 		case 36:
 			return "Tactical Evolution EX ~ Creatures Medley";
 		default:
-			if (string_count("2061009621", get_stage_data(SD_ID)) > 0)
-				return "Derek Fiechter - Night at the Castle";
-			else if (string_count("2298935492", get_stage_data(SD_ID)) > 0)
-				return "Loeder - Miitopia Boss Battle 1 8-BIT";
-			else if (string_count("2082867100", get_stage_data(SD_ID)) > 0)
-				return "Evan King - [KARLSONVIBE]";
-			else if (string_count("2210984773", get_stage_data(SD_ID)) > 0)
-				return "Porter Robinson - Shelter";
-			else if (string_count("2158754801", get_stage_data(SD_ID)) > 0)
-				return "Bill Kiley - You Will Never Know";
-			else if (string_count("2392386094", get_stage_data(SD_ID)) > 0)
-				return "ARCHYTAS AAAAAAAAAAAAAA";
-			else if (string_count("2499100511", get_stage_data(SD_ID)) > 0)
-				return "Hyper Potions - Porta Vista";
-			else if (string_count("2498298211", get_stage_data(SD_ID)) > 0)
-				return "Pokemon Masters EX - Lillie Battle Theme";
-			else if (string_count("2598328548", get_stage_data(SD_ID)) > 0)
-				return "No Straight Roads - Vs. Sayu";
-			else if (string_count("2669189302", get_stage_data(SD_ID)) > 0)
-				return "Hyper Potions - Waterfall";
+			if (CheckStageUrl("2061009621"))		return "Derek Fiechter - Night at the Castle";
+			else if (CheckStageUrl(2298935492))	return "Loeder - Miitopia Boss Battle 1 8-BIT";
+			else if (CheckStageUrl(2082867100))	return "Evan King - [KARLSONVIBE]";
+			else if (CheckStageUrl(2210984773))	return "Porter Robinson - Shelter";
+			else if (CheckStageUrl(2158754801))	return "Bill Kiley - You Will Never Know";
+			else if (CheckStageUrl(2392386094))	return "ARCHYTAS AAAAAAAAAAAAAA";
+			else if (CheckStageUrl(2499100511))	return "Hyper Potions - Porta Vista";
+			else if (CheckStageUrl(2498298211))	return "Pokemon Masters EX - Lillie Battle Theme";
+			else if (CheckStageUrl(2598328548))	return "No Straight Roads - Vs. Sayu";
+			else if (CheckStageUrl(2669189302))	return "Hyper Potions - Waterfall";
 			return "Darude - Sandstorm";
 	}
+}
+
+#define CheckStageUrl(_url)
+{
+	return string_count(string(_url), string(get_stage_data(SD_ID))) > 0;
 }
 
 #define DrawTutBlock()

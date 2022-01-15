@@ -48,15 +48,14 @@ if (best_damage > 0)
 	do_hitpause(HITSTOP_AMOUNT);
 	
 	//apply damage buff to N
-	best_damage *= 2;
-    best_knockback *= 1.35;
-    best_scaling *= 1.35;
-    print(string(best_damage) + " k" + string(best_knockback) + " s" + string(best_scaling))
+	best_damage *= unown_n_damage_mult;
+    best_knockback *= unown_n_kb_mult;
+    best_scaling *= unown_n_kb_mult;
+    //print(string(best_damage) + " k" + string(best_knockback) + " s" + string(best_scaling))
     
 	set_hitbox_value(UNOWN_ATK.N, 1, HG_DAMAGE, floor(best_damage));
 	set_hitbox_value(UNOWN_ATK.N, 1, HG_BASE_KNOCKBACK, best_knockback);
 	set_hitbox_value(UNOWN_ATK.N, 1, HG_KNOCKBACK_SCALING, best_scaling);
-	    
 }
 
 //==================================================================

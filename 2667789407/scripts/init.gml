@@ -30,7 +30,7 @@ jump_change         = 3;		// 3
 air_accel           = 0.35;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
 air_friction        = 0.04;		// 0.02 -  0.07
-max_fall            = 6;		// 6    -  11
+max_fall            = 8;		// 6    -  11
 fast_fall           = 12;		// 11   -  16
 gravity_speed       = 0.3;		// 0.3  -  0.6
 hitstun_grav        = 0.45;		// 0.45 -  0.53
@@ -39,7 +39,7 @@ hitstun_grav        = 0.45;		// 0.45 -  0.53
 jump_start_time     = 5;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
 jump_speed          = 11;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed     = 6;		// 4    -  7.4
-djump_speed         = 8;		// 6    -  12       absa's is -1 because of her floaty djump
+djump_speed         = 7.25;		// 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         = 0;		// -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time= 0;		//                  the amount of time that   djump_accel   is applied for
 max_djumps          = 3;		// 0    -  3        the 0 is elliana because she has hover instead
@@ -194,6 +194,8 @@ unown_d_accel = 0.5;
 
 unown_n_cooldown = 40;
 unown_n_invincibility = 50;
+unown_n_damage_mult = 1.5;
+unown_n_kb_mult = 1.2;
 
 unown_maxspeed_base = air_max_speed;
 //Word buffer stat bonuses
@@ -255,6 +257,7 @@ lev_target_accel = (2.0 * lev_target_vsp) / lev_cycle_time;
 //attack flags
 
 //once per airtime
+unown_a_used = false;
 unown_c_used = false; 
 unown_g_used = false; 
 unown_t_used = false; 
@@ -300,7 +303,7 @@ unown_last_special_word = "";
 
 //unown_word_length_bonus[3] = scale of bonus for a 3-letter word in the buffer
 unown_word_length_bonus = [0, 0, 0.20, 0.40, 0.60, 0.75, 0.90, 1.0, 1.05, 1.10, 1.15, 1.20, 1.25];
-unown_letter_exclamation_bonus = 0.015; //added bonus for using "!" for each additional letter not in a word
+unown_letter_exclamation_bonus = 0.015; //added bonus for using "!" for each additional letter not in a word (obsolteted)
 unown_recalculate_stats = true; //set to true to let passive buffs recalculate (needed at the start to init the forms)
 
 unown_dictionary = {}; //misnomer: actually a trie

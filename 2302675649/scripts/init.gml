@@ -122,12 +122,13 @@ jsCStick = false;
 // vfx slice
 vfxSlice = {sliceAng:0,sliceX:0,sliceY:0,sliceTimer:0};
 
-// USpec vfx
+// USpec
 uspecArray = array_create(10, -1);
 uspecStart = {x:0, y:0};
 uspecStartup = 20;
 uspecStartupConst = uspecStartup;
 uspecSpeed = {hsp:0, vsp:0, joy_pad_idle:0, joy_dir:0};
+uspecWalljump = true;
 
 // FSpec hookshot
 fspecPos = {x: 0, y: 0};		// final pos

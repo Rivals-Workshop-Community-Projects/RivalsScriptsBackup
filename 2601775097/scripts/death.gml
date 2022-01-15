@@ -7,12 +7,13 @@ glide_time = glide_time_max;
 burningfury_active = false;
 burningfury_target = noone;
 
+//DONE IN UPDATE.GML
 accelblitz_active = false;
 accelblitz_active_timer = false;
 accelblitz_done_once = false;
 accelblitz_post_timer = 0;
 if (accel_vulnerability) accel_vulnerability = false;
-if (instance_exists(artc_accel_indicator) instance_destroy(artc_accel_indicator);
+if (instance_exists(artc_accel_indicator)) instance_destroy(artc_accel_indicator);
 
 burst_count_start = false;
 burst_count = -1;

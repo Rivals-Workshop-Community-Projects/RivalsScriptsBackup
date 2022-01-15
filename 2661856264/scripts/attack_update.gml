@@ -2,8 +2,17 @@ if (attack == AT_JAB && window == 3 && window_timer > 3){
     can_special = true;
 }
 
-if (attack == AT_DATTACK && window <= 2){
-    can_ustrong = true;
+if (attack == AT_UTILT && window == 4 && window_timer > 8 && has_hit){
+    iasa_script();
+}
+
+if (attack == AT_DATTACK){
+    if (window <= 2){
+        can_ustrong = true;
+    }
+    if (window == 4 && window_timer >= 6 && has_hit){
+        iasa_script();
+    }
 }
 
 //Rockless Armor Stuff
@@ -11,13 +20,29 @@ if (stealth_rock == 0){
     if (attack == AT_DTILT) && (window == 2 || window == 3){
         soft_armor = 13; 
     }
-    if (attack == AT_FSTRONG && window == 1){
-        soft_armor = 13;
+    if (attack == AT_FSTRONG){
+        if (window == 1 && window_timer > 4){
+            soft_armor = 13;
+        }
+        if (window >= 2){
+            soft_armor = 0;
+        }
     }
 }
 
 //Rock Stuff
 if (stealth_rock >= 1){
+    
+    if (attack == AT_DATTACK){
+        if (window == 3 && has_hit){
+            can_jump = true;
+            if (jump_pressed){
+                stealth_rock -= 1;
+                sound_play(sound_get("special"))
+            }
+        }
+    }
+    
     if (attack == AT_NAIR){
         if (window == 1){
             if (window_timer = 1){
@@ -59,7 +84,7 @@ if (stealth_rock >= 1){
     }
     
     if (attack == AT_FSTRONG){
-        if (window == 1){
+        if (window == 1 && window_timer > 4){
             super_armor = true;
             if (window_timer = 1){
                 sound_play(sound_get("special"));
@@ -163,11 +188,11 @@ if (attack == AT_NSPECIAL){
 //FSpecial
 if (attack == AT_FSPECIAL){
     attack_end();
-    can_fastfall = false;
     //Resets the variables
     if (window == 1){
         fspecial_charge = 0;
         fspecial_cont = 0;
+        can_fastfall = false;
     }
     //Launching
     if (window == 3){
@@ -175,11 +200,12 @@ if (attack == AT_FSPECIAL){
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED, fspecial_speed);
         can_wall_jump = true;
         can_shield = true;
+        can_fastfall = false;
         if (window_timer == 1){
             spawn_base_dust(x, y, "djump", -1);
         }
         if (window_timer > 30 && special_pressed){
-            window = 6;
+            window = 7;
             window_timer = 1;
             destroy_hitboxes();
             fspecial_cont = 0;
@@ -296,7 +322,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

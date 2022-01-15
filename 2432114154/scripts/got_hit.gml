@@ -10,10 +10,37 @@ sound_play(sound_get("RI"))
 move_cooldown[AT_EXTRA_1] = 60
 
 
+	        
+
 spawn_hit_fx (x, y - 40, 304)
 take_damage( player, -1 , floor(-0.5 * enemy_hitboxID.damage))
 inkshield -= enemy_hitboxID.damage*5
 x -= 20 * spr_dir
+} else {
+    sound_stop(sound_get("zoice_at1"))
+    sound_stop(sound_get("zoice_at2"))
+    sound_stop(sound_get("zoice_at3"))
+  if enemy_hitboxID.damage > 3 {
+      sound_stop(sound_get("zoice_hurt1"))
+      sound_stop(sound_get("zoice_hurt2"))
+      sound_stop(sound_get("zoice_hurt3"))
+    switch random_func(1,3,true) {
+    	     	case 0:
+    	     	sound_play(sound_get("zoice_hurt1"),false,noone,zolume,zitch)
+    	     	sound_play(sound_get("zoice_hurt1"),false,noone,zolume/2,zitch)
+    	     	break;
+    	     	
+    	     	case 1 :
+    	     	sound_play(sound_get("zoice_hurt2"),false,noone,zolume ,zitch)
+    	     	sound_play(sound_get("zoice_hurt2"),false,noone,zolume/2 ,zitch)
+    	     	break;
+    	     	
+    	     	case 2 :
+    	     	sound_play(sound_get("zoice_hurt3"),false,noone,zolume ,zitch)
+    	     	sound_play(sound_get("zoice_hurt3"),false,noone,zolume/2 ,zitch)
+    	     	break;
+    }
+  }
 }
 sound_stop(asset_get("sfx_troupple_rumble"))
 
@@ -64,4 +91,7 @@ if (hit_player_obj.attack == AT_JAB or hit_player_obj.attack == AT_NAIR)
     sound_play(asset_get("sfx_waterhit_medium"),false,noone,1,0.9)
 }
 
+} else {
+    sound_play(sound_get("RI2"),false,noone,1,max(0.8, 1.6 - (hit_player_obj.hitpause*hit_player_obj.hitpause)/100))
+    take_damage(player,-1, floor(enemy_hitboxID.damage*-0.5) )
 }

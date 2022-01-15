@@ -1,4 +1,5 @@
 sprite_change_offset("idle", 116, 142);
+sprite_change_offset("idlegen", 116, 142);
 sprite_change_offset("crouch", 116, 142);
 sprite_change_offset("stand_hurt", 116, 142);
 sprite_change_offset("crouch_hurt", 116, 142);
@@ -51,6 +52,7 @@ sprite_change_offset("uspecdraw", 116, 142);
 sprite_change_offset("uspecfire", 116, 142);
 sprite_change_offset("dspecial", 116, 142);
 sprite_change_offset("taunt", 116, 142);
+sprite_change_offset("tauntgen", 116, 142);
 sprite_change_offset("taunt_2", 116, 142);
 
 sprite_change_offset("plat", 116, 142);

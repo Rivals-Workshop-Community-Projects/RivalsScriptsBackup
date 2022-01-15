@@ -4,7 +4,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-var num_alts = 13;
+var num_alts = 14;
 var alt_cur = get_player_color(player);
  
  
@@ -24,6 +24,7 @@ alt_name[9]  = "Oxob";
 alt_name[10] = "Chimera";
 alt_name[11] = "Bomber";
 alt_name[12] = "Black n' Gold";
+alt_name[13] = "Go-Lucky";
  
 //Alt
  

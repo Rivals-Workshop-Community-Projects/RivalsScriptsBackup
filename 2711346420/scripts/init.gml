@@ -24,6 +24,10 @@ dspecial_startup = false;
 dspecial_exit_startup = false;
 dspecial_draw_timer = -1;
 dspecial_drawexit_timer = -1;
+
+dspecial_rune_timer = 0;
+dspecial_rune_did_explode = false;
+
 inside_monkey_ball = false;
 monkey_ball_tilt = 0;
 monkey_ball_tilt_counter = 0;
@@ -36,6 +40,8 @@ monkey_ball_spawn_y_offset = 0;
 
 monkey_ball_can_be_rode = false;
 
+monkey_ball_rune_did_teleport = false;
+
 monkeyBall = noone;
 
 fspecial_startup = false;
@@ -45,6 +51,7 @@ uspecial_can_glide = true;
 uspec_ball_onstage = false;
 uspec_past_window_1 = false;
 uspec_img_indx = 0;
+uspecial_rune_grabbed_ball = false;
 
 hurtbox_spr = sprite_get("aiai_hurtbox");
 crouchbox_spr = sprite_get("aiai_crouchbox");
@@ -62,8 +69,8 @@ walk_speed = 3.25;
 walk_accel = 0.2;
 walk_turn_time = 7;
 initial_dash_time = 9;
-initial_dash_speed = 7.2;
-dash_speed = 6.6;
+initial_dash_speed = 7;
+dash_speed = 6;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;

@@ -213,7 +213,7 @@ switch attack {
     
     case AT_DATTACK :
     
-    if window == 1 && window_timer == 9 && !hitpause {
+    if window == 1 && window_timer == 6 && !hitpause {
         sound_play(asset_get("sfx_spin"))
     }
     
@@ -227,7 +227,7 @@ switch attack {
     }
     
     if window < 3 && !hitpause {
-        hsp = (12 - state_timer/2)*spr_dir
+        hsp = (10 - state_timer/2)*spr_dir
     }
     
     
@@ -882,7 +882,7 @@ switch attack {
     
     case AT_FSPECIAL :
     
-
+     prat_land_time = 5;
 	 set_attack_value(AT_FAIR, AG_CATEGORY, 2);
      set_attack_value(AT_NAIR, AG_CATEGORY, 2);
      set_attack_value(AT_BAIR, AG_CATEGORY, 2);
@@ -976,7 +976,7 @@ switch attack {
     break;    
     
     case AT_USPECIAL:
-    
+    prat_land_time = 16;
     can_fast_fall = false 
     
     if window < 4 {

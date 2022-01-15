@@ -11,6 +11,8 @@ var ig = 1;
 set_window_value(AT_NAIR, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, ig, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NAIR, ig, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_NAIR, ig, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NAIR, ig, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 ig++;
 
@@ -19,8 +21,6 @@ set_window_value(AT_NAIR, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, ig, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_NAIR, ig, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, ig, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_NAIR, ig, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NAIR, ig, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 ig++;
 

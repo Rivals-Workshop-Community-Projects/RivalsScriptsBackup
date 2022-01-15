@@ -1,6 +1,6 @@
 set_attack_value(AT_FAIR, AG_CATEGORY, 1);
 set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair"));
-set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
@@ -20,17 +20,23 @@ set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 //set_window_value(AT_FAIR, 2, AG_WINDOW_HSPEED_TYPE, 0);
 //set_window_value(AT_FAIR, 2, AG_WINDOW_HSPEED, 4);
 
-// Hold
-set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+// Trailing end // new
+set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 3); // 0
+//set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
-// Return to your original position
-set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 5);
+// Hold
+set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
+
+// Return to your original position
+set_window_value(AT_FAIR, 5, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_num_hitboxes(AT_FAIR,1);
 
@@ -43,9 +49,9 @@ set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -46);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 105);
 set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 81);
 */
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 46);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -46);
-set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 130);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 44); // 46
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -45); // -46
+set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 124); // 130
 set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 6);

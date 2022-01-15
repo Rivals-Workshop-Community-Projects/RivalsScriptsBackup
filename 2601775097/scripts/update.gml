@@ -450,17 +450,14 @@ else
     blast_power = 0;
     reset_window_value(AT_SKILL3, 6, AG_WINDOW_TYPE);
 }
-
 if (!free) photon_used = false;
+
 
 //accel blitz logic (tis a long one chief)
 if (accelblitz_active) //accel blitz's motion blur after bar's teleport
 {
     //color logic
-    if (user_event_1_active)
-    {
-        var blend_color = make_colour_rgb(237, 207, 97);
-    }
+    if (user_event_1_active) var blend_color = make_colour_rgb(237, 207, 97);
     else
     {
         var blend_r = get_color_profile_slot_r(alt_cur, 6);
@@ -470,29 +467,25 @@ if (accelblitz_active) //accel blitz's motion blur after bar's teleport
     }
 
     //blur logic from the joke motion blur character
-    for(var i = array_length_1d(blur) - 1; i > 0; i--)
-    {
-	    blur[@ i] = blur[i - 1];
-    }
+    for(var i = array_length_1d(blur) - 1; i > 0; i--) blur[@ i] = blur[i - 1];
     blur[@ i] = [sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, blend_color, image_alpha];
 }
 else blur[@ i] = [sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, blend_color, image_alpha];
+
 //this timer will allow bar to act out of accel blitz
 if (accelblitz_active_timer)
 {
     accelblitz_post_timer ++;
+    //visual stuff
     if (accelblitz_post_timer % 5 == 0 && accelblitz_post_timer != 20 && !runeG_blitzjump)
     {
         if (hitpause_flash) hitpause_flash = false;
         else hitpause_flash = true;
     }
 
+    //disable everything
     if (accelblitz_post_timer >= 20)
     {
-        accelblitz_active_timer = false;
-        accelblitz_active = false;
-        blur_array_length = 2;
-
         //if bar:
         //- didn't hit
         //- is in midair
@@ -500,9 +493,24 @@ if (accelblitz_active_timer)
         //- isn't dodging
         //- the move was used already
         if (!has_hit && free && !theikos_active && !pHurtBox.dodging && accelblitz_done_once) set_state(PS_PRATFALL);
+
+        accelblitz_active = false;
+        accelblitz_active_timer = false;
+        blur_array_length = 2;
     }
 }
 else if (!accelblitz_active_timer && attack != AT_SKILL4) accelblitz_active = false; //stops motion blur
+
+//reset variables on landing
+if (!free || state == PS_WALL_JUMP || state == PS_WALL_TECH)
+{
+    if (accelblitz_post_timer > 1 && accelblitz_post_timer < 20) state = PS_PRATLAND;
+
+    accelblitz_active = false;
+    accelblitz_active_timer = false;
+    accelblitz_done_once = false;
+    accelblitz_post_timer = 0;
+}
 
 //fuck you dan
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_SKILL4 && window == 3 && window_timer == 0)
@@ -511,30 +519,13 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_SKILL4
     vsp = 0;
 }
 
-//allows bar to do accel blitz again if the conditions are met, and resets the variables to set up another accel blitz
-//this code shouldsn't affect theikos bar at all
-if (accelblitz_post_timer > 1 && !free && state != PS_PRATLAND)
-{
-    state = PS_PRATLAND;
-    accelblitz_post_timer = 0;
-}
-else if (state != PS_ATTACK_GROUND && !free || state == PS_WALL_JUMP || state == PS_ATTACK_GROUND && attack != AT_SKILL4)
-{
-    accelblitz_active = false;
-    accelblitz_active_timer = false;
-    accelblitz_done_once = false;
-    accelblitz_post_timer = 0;
-}
-//prevent bar from using it again
-if (accelblitz_done_once && free && up_down && special_down) state = PS_PRATFALL;
-//prevernts superposition of an invincible pratfall
-if (accelblitz_done_once && !accelblitz_active_timer && !pHurtBox.dodging) state = PS_PRATFALL;
 //getting hit while blitzing will stun bar heavily
 if (accel_vulnerability && (state == PS_HITSTUN || state == PS_HITSTUN_LAND))
 {
     if (accel_hit_time > 0) accel_hit_time --;
     hitstop = accel_hit_time;
 }
+
 
 //chasm burster (air) logic
 if (free)
@@ -617,7 +608,7 @@ if (burst_count_start && !hitpause)
     }
 }
 
-//guard aura logic
+//polaris logic
 if (polaris_active)
 {
     if (get_gameplay_time() % 6 == 0) light_charge(x, y-96, 180);
@@ -696,6 +687,29 @@ if (homing_post_buffer_counting)
         homing_post_buffer_counting = false;
     }
 }
+
+//ember fist
+/*
+if (ember_fury_time_active)
+{
+    ember_fury_time --;
+
+    if (ember_fury_time <= 0)
+    {
+        ember_fury_time_active = false;
+        ember_fury_time = ember_fury_time_max;
+    }
+}
+
+if (ember_fury_time % ember_fury_time_rate == 0 && ember_fury_time != 0 && ember_fury_time != ember_fury_time_max)
+{
+    var rapid_hitbox = create_hitbox(attack, 5, ember_x+64*ember_spr_dir, ember_y-32);
+    var random_x = (random_func(765, 5, true)-2)*8;
+    var random_y = (random_func(245, 5, true)-2)*8;
+    var rapid_blast = spawn_hit_fx(rapid_hitbox.x+random_x*ember_spr_dir, rapid_hitbox.y+random_y, fx_fireblow1);
+    rapid_blast.depth = -8;
+}
+*/
 
 
 //light hookshot

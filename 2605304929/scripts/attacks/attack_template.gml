@@ -2,9 +2,9 @@ var attack = AT_TAUNT; // Swap Taunt for attack that this is
 
 //Attack Values-----------------------------------------------------------------------------
 set_attack_value(attack, AG_CATEGORY, 0);
-set_attack_value(attack, AG_SPRITE, 0);
+set_attack_value(attack, AG_SPRITE, 0); //sprite_get("")
 set_attack_value(attack, AG_AIR_SPRITE, 0);
-set_attack_value(attack, AG_HURTBOX_SPRITE, 0);
+set_attack_value(attack, AG_HURTBOX_SPRITE, 0); //sprite_get("_hurt")
 set_attack_value(attack, AG_HURTBOX_AIR_SPRITE, 0);
 set_attack_value(attack, AG_NUM_WINDOWS, 0);
 set_attack_value(attack, AG_HAS_LANDING_LAG, 0);
@@ -31,9 +31,10 @@ set_num_hitboxes(attack, 1); // Swap 1 for number of hitboxes
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
 
-//Set Hitbox Values - This is the basic block of a functional hitbox
+// Hitbox # / Window # - / Description
 window_for_hitbox = 1; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
@@ -75,7 +76,7 @@ set_window_value(attack, window_num, AG_WINDOW_CANCEL_TYPE, 0);
 set_window_value(attack, window_num, AG_WINDOW_CANCEL_FRAME, 0);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 0); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, 0); // asset_get("") or sound_get("")
-set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0); //get_window_value(attack,window_num,AG_WINDOW_LENGTH)-1);
 
 //individual hitbox properties --------------------------------------------------------
 set_hitbox_value(attack, hitbox_num, HG_PARENT_HITBOX, 0);

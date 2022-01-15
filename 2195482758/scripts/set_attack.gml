@@ -25,7 +25,7 @@ switch(attack){
         	{
         	    do_taunt_2 = true;
         	    //print_debug("tess");
-        		//set_attack(AT_TAUNT_2);
+        		//set_attack(AT_TAUNT_2); // WARN: Risk of crash. in `attack_set.gml` you can just write `attack = x` instead of `set_attack(x)`.
         	}
         break;
 }

@@ -135,6 +135,13 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 4 {
   create_hitbox(AT_NSPECIAL, 12 ,hit_player_obj.x,hit_player_obj.y - 40)
 }
 
+if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 {
+  
+  destroy_hitboxes()
+
+}
+
+
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 5 {
   create_hitbox(AT_NSPECIAL, 13 ,hit_player_obj.x,hit_player_obj.y - 40)
 }

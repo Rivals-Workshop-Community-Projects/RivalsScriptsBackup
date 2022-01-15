@@ -40,6 +40,7 @@ overt = 600
 stabt = 0;
 hitflash = false
 halo = 0;
+halob = 0
 haloann = 0;
 halotimer = 250;
 

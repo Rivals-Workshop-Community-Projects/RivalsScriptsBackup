@@ -242,7 +242,7 @@ so that things like page breaks can work properly.
 	initWords("");	
 	initHeader("Frog's Vulnerability");	
 	initImage(sprite_get("_pho_frogparry"), -5);		
-	initWords("Lastly, remember that your frog can be attacked by opponents. If it gets parried or knocked offstage, you'll be unable to use NSpecial or Dspecial for a short time.");
+	initWords("Lastly, remember that your frog can be attacked by opponents. If it gets parried or attacked, you'll be unable to use NSpecial or Dspecial for a short time.");
 	
 	initTip("F-Special");
 	initImage(sprite_get("fspecial"), 5);		
@@ -318,6 +318,37 @@ in a Patch.
 */
 
 #define CORE_patches
+
+
+	initPatch("2.24", "January 3rd, 2022");
+	
+
+	initHeader("Adjustments");		
+	initSection("-BAir sweetspot, DAir, FTilt, DStrong, UStrong and DAttack now use hit effect 304 (basic large)");	
+	initSection("-Increased FTilt base hitpause (5 -> 7)");
+	initSection("-Increased BAir sweetspot base knockback (7 -> 8.5)");		
+	initSection("-Decreased FAir base knockback (6 -> 5)");		
+	initSection("-Increased USpecial movement window speed (26 -> 22)");	
+	initSection("-Added abyss rune G: USTRONG has greatly increased range");		
+	initSection("-Added abyss rune L: USpecial becomes a faster 2-hit move with windboxes and super armor");	
+
+	initHeader("Buffs");	
+	initSection("-Increased FAir active frames (4 -> 5)");		
+	initSection("-Increased FAir knockback scaling (0.75 -> 0.85)");		
+	initSection("-Decreased FAir endlag (14 -> 11)");		
+	initSection("-Decreased detached NSpecial startup");	
+	
+	initHeader("Nerfs");
+	initSection("-Decreased jump speed (11 -> 9)");	
+	initSection("-Decreased double jump speed (11.5 -> 9)");		
+	initSection("-Increased BAir landing lag (9 -> 13)");		
+	initSection("-Decreased BAir sweetspot active frames (3 -> 2)");
+	initSection("-Decreased BAir sweetspot knockback scaling (0.85 -> 0.75)");		
+	initSection("-Decreased BAir late hit active frames (5 -> 4)");		
+	initSection("-Decreased detached NSpecial hitbox size");			
+	initSection("-Detached NSpecial is now interrupted if the player gets put into hitstun during its startup");		
+	initSection("-Frog can now be destroyed by the opponent in one hit");		
+	initSection("-Decreased USpecial rapid hitboxes lifetime (4 -> 2)");		
 
 	initPatch("2.23", "November 9th, 2021");
 

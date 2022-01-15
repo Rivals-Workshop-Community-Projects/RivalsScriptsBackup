@@ -39,8 +39,9 @@ sprite_change_offset("airdodge", 50, 90);
 sprite_change_offset("waveland", 50, 90);
 sprite_change_offset("tech", 50, 90);
 
-sprite_change_offset("jab", 58, 90);
+sprite_change_offset("jab", 58, 110);
    sprite_change_offset("jabV2", 58, 110);
+   sprite_change_offset("shredder", 58, 110);
 sprite_change_offset("dattack", 60, 100);
 sprite_change_offset("ftilt", 76, 110);
 sprite_change_offset("dtilt", 50, 86);
@@ -124,6 +125,7 @@ set_victory_bg( sprite_get( "victory_background" ));
 
 sprite_change_offset("plat", 64, 94);
 
+sprite_change_offset("switcher_menu",33,33)
 
 sprite_change_offset("miiverse", 60, 30);
 sprite_change_offset("FinalSmash", 70, 120);

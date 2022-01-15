@@ -4,6 +4,11 @@
 //Args: ["Sprite", Index, X, Y, color, SubImage]
 
 dip_developerMode = false;
+var alt_portrait = [
+    ["charselect2", [17, 18, 19, 21]],
+    ["charselect3", [20]],
+]
+var alt_split = 17
 
 //var txt_version = "Beta Version 2.0"
 var txt_version = ""
@@ -14,11 +19,6 @@ var rec_w = 5;      //width
 var rec_h = 3;      //height
 var rec_xm = 3;     //x margin
 var rec_ym = 2;     //y margin
-
-var alt_arr = [
-    ["charselect2", [15, 16, 18, 19]],
-    ["charselect3", [17]],
-]
 
 var arr_peeps = [
     ["Fernet", "KeroBerry1/The5oul", 0, "@"]
@@ -34,16 +34,18 @@ var arr_peeps = [
     ,["Fierce", "hts9", 3, "@"]
     ,["Ava", "SophieVennen", 12, "@"]
     ,["Techno & Tenor", "BobTheGUYYYYY", 14, "@"]
+    ,["Genesis", "Genesis_Smash", 21, "@"]
     ,["Tak", "Taktaagic", 15, "@"]
     //,["Lukastar", "Lukaru", 16, "@"]
     //,["Fox", "Alt by Zerks", 17, ""]
     ,["Anglara", "Laylowthetyrant", 20, "@"]
+    ,["Tricolour", "Z0nyX", 22, "@"]
     ,["T. Gear", "KeroBerry1/The5oul", 0, "@"]
+    ,["A. Master", "KeroBerry1", 0, "@"]
     ,["TuQiu", "Usagibun1", 9, "@"] 
     ,["Kiera", "YeahBeezii", 18, "@"]
-    ,["A. Master", "KeroBerry1", 0, "@"]
     ,["Daora", "Opengunner", 19, "@"]
-    //,["Halloween", "2021 Dev Derby", 21, ""]
+    //,["Halloween", "2021 Dev Derby", 22, ""]
 ];
 
 var arr_secret = [
@@ -104,13 +106,13 @@ else
 //Lookup curr_alt against alt_A and alt_B arrays
 var _useAlt = noone;
 
-for (var i = 0; i < array_length_1d(alt_arr); i++)
+for (var i = 0; i < array_length_1d(alt_portrait); i++)
 {
     if (_useAlt == noone)
     {
-        for (var ix = 0; ix < array_length_1d(alt_arr[i][1]); ix++)
+        for (var ix = 0; ix < array_length_1d(alt_portrait[i][1]); ix++)
         {
-            if (alt_arr[i][1][ix] == curr_alt) { _useAlt = alt_arr[i][0]; }
+            if (alt_portrait[i][1][ix] == curr_alt) { _useAlt = alt_portrait[i][0]; }
         }
     }
 }
@@ -171,7 +173,7 @@ for (var i = 0; i < len_peeps; i++)
         y + rec_y + rec_ym,
         x + rec_x + ((i + 1) * rec_xm) + (i * rec_w) + rec_w,
         y + rec_y + rec_ym + rec_h,
-        curr_alt == i ? (i > 14 ? c_yellow : c_white) : (i > 14 ? c_orange : c_gray)
+        curr_alt == i ? (i >= alt_split ? c_yellow : c_white) : (i >= alt_split ? c_orange : c_gray)
     );
 }
 

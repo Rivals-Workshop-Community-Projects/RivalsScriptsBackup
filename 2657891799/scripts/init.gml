@@ -49,6 +49,7 @@ jet_array = array_create(28, [0,0,0,0])
 splash_info = [undefined,undefined] //[x,y]
 draw_jet = false
 draw_jet_timer = 0
+used_uspec = false
 
 //substitute
 doll_id = noone

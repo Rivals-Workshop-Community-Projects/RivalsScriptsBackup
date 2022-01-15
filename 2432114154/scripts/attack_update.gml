@@ -1,4 +1,54 @@
 
+if window == 1 && window_timer == 1 {
+	
+	if attack != AT_FSTRONG 
+	&& attack != AT_DSTRONG
+	&& attack != AT_USTRONG
+	&& attack != AT_FSPECIAL
+	&& attack != AT_USPECIAL
+	&& attack != AT_DSPECIAL {
+		switch random_func(1,4,true) {
+    	     	case 0:
+    	     	sound_play(sound_get("zoice_at1"),false,noone,zolume,zitch + .05 - random_func(2,5,true)/100)
+    	     	sound_play(sound_get("zoice_at1"),false,noone,zolume/3,zitch + .05 - random_func(2,5,true)/100)
+    	     	break;
+    	     	
+    	     	case 1 :
+    	     	sound_play(sound_get("zoice_at2"),false,noone,zolume,zitch + .05 - random_func(2,5,true)/100)
+    	     	break;
+    	     	
+    	     	case 2 :
+    	     	sound_play(sound_get("zoice_at3"),false,noone,zolume,zitch + .05 - random_func(2,5,true)/100)
+    	     	break;
+    	     	
+    	     	case 3 :
+    	     	sound_play(sound_get("zoice_cfull1"),false,noone,zolume,zitch + .05 - random_func(2,5,true)/100)
+     	     	break;	
+    	     	
+      }
+  } else {
+  	  switch random_func(1,2,true) {
+    	     	case 0:
+    	     	sound_play(sound_get("zoice_windup1"),false,noone,zolume,zitch + .05 - random_func(2,5,true)/100)
+    	     	sound_play(sound_get("zoice_windup1"),false,noone,zolume,zitch + .05 - random_func(2,5,true)/100)
+    	     	break;
+    	     	
+    	     	case 1 :
+    	     	sound_play(sound_get("zoice_windup2"),false,noone,zolume,zitch + .05 - random_func(2,5,true)/100)
+    	     	sound_play(sound_get("zoice_windup2"),false,noone,zolume/2,zitch + .05 - random_func(2,5,true)/100)
+    	     	break;
+    	     
+
+    	     	
+      }
+  }
+	
+}
+
+
+
+
+
         if attack == AT_DSTRONG && window == 3 && window_timer < 3 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
         	hit_player_obj.x += (floor(x - 40*spr_dir - hit_player_obj.x)/10)
         	hit_player_obj.y += (floor(y - 10 - hit_player_obj.y)/4)
@@ -9,6 +59,7 @@
     if attack == AT_FSPECIAL{
     	
     	if has_hit {
+    		djumps = 0
               old_vsp = -5
               old_hsp = 4*spr_dir
               set_attack(AT_DSPECIAL)
@@ -25,14 +76,23 @@ if attack == AT_FAIR && window == 1 && window_timer == 1 && !hitpause {
 	sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.2)
 }
 
-if attack == AT_UAIR && window == 1 && window_timer == 1 && !hitpause{
+if attack == AT_UAIR {
+	
+	if window == 1 && window_timer == 1 && !hitpause{
 	sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,.9)
-}
-
-
-if attack == AT_UAIR && window == 1 && window_timer == 10 && !hitpause{
+	sound_play(asset_get("sfx_forsburn_cape_hit"),false,noone,1,1)
+      }
+   if window == 1 && window_timer == 10 && !hitpause{
 		sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,.9)
+		sound_play(asset_get("sfx_ori_glide_featherout"),false,noone,1,1)
+   }
+    
+    if window > 1 or (window == 1 && window_timer > 6) or (window == 1 && state_timer % 4 < 2 && window_timer < 6) {
+    draw_indicator = false
+    }
+   
 }
+
 
 if attack == AT_BAIR && window == 1 && window_timer == 1 && !hitpause{
 	sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1.15)
@@ -92,7 +152,17 @@ if window == 1 && window_timer = 1 {
 	sound_play(asset_get("sfx_orca_absorb"))
 }
 
+if window == 1 && window_timer = 5 {
+	sound_play(sound_get("zoice_cfull6"),false,noone,zolume,zitch)
+	sound_play(sound_get("zoice_cfull6"),false,noone,zolume,zitch) 
+}
+
 if window == 2 && window_timer = 1 {
+
+		
+		
+     
+
 	hsp = 8 * (1  - (x < inkvictim.x)*2)
 	sound_play(asset_get("sfx_orcane_fspecial"),false,noone,1,1.2)
 }
@@ -319,11 +389,9 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
             if get_player_color(player) == 10 {
             	sound_play(sound_get("fox_illusion_swoosh"),false,noone,1,0.85 + (random_func(1,30,true)/100))
             }
-            			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
-                sound_play(asset_get("sfx_clairen_swing_mega_instant"))
+            			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
             	sound_play(asset_get("sfx_ori_bash_use"))
-            	sound_play(asset_get("sfx_bird_nspecial"))
-            	spawn_hit_fx(x, y-30, 303)
+            	sound_play(asset_get("sfx_bird_nspecial"),false,noone,1,1.5)
             	hsp = 16*spr_dir
             }
             
@@ -334,16 +402,20 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
                  
 
          
-         vsp = -2
+         vsp = -1.5
          if window_timer % 2 == 0{
-             spawn_hit_fx(x + hsp, y , saillusion)
+             spawn_hit_fx(x + hsp, y , i1)
          }
         }  
         
+        if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) && window == 2  {
+    	     	vsp = -15
+        }
+             
         if window == 2 && window_timer > 6 {
-            spawn_hit_fx(x, y, saillusion)
+            spawn_hit_fx(x, y, i1)
          hsp /= 1.2
-         vsp = -2
+         vsp = -1.5
         } 
         
         if window == 3  {
@@ -362,7 +434,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
     
         if attack == AT_NSPECIAL{
         	clear_button_buffer(PC_SPECIAL_PRESSED)
-        	if window <= 2 && window_timer < 6{ 
+        	if window <= 2 { 
         	create_hitbox(AT_NSPECIAL,2,x,y - 30)
         	}
          ///if window < 3 {    
@@ -374,9 +446,10 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
          ///}
          
          if window == 1 && window_timer == 1 && !hitpause {
-if get_player_color(player) == 10 {
-	sound_play(sound_get("fox_shine"),false,noone,1,0.85 + (random_func(1,30,true)/100))
-}
+            if get_player_color(player) == 10 {
+            	sound_play(sound_get("fox_shine"),false,noone,1,0.85 + (random_func(1,30,true)/100))
+            }
+            sound_play(asset_get("sfx_swish_medium"),false,noone,1,0.85 + (random_func(1,30,true)/100))
          }
          
          if window > 1 && get_gameplay_time() > 120{
@@ -405,6 +478,8 @@ if get_player_color(player) == 10 {
             }
             if window == 2 {
             	
+            	
+            	
             	if window_timer == 1 && !hitpause {
             		spawn_base_dust(x - 10,y,"dash_start",1)
             		spawn_base_dust(x + 10,y,"dash_start",-1)
@@ -431,7 +506,11 @@ if get_player_color(player) == 10 {
          		sound_play(asset_get("sfx_spin"),false,noone,1.5)
         	 sound_play(sound_get("RZ"),false,noone,.75,1.2)
          	
-         	
+         	if has_hit_player {
+         		sound_play(sound_get("RZ"),false,noone,.6,.8)
+         		sound_play(sound_get("zoice_upb"),false,noone,zolume,zitch)
+	            sound_play(sound_get("zoice_upb"),false,noone,zolume,zitch)
+         	}
 		var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
 		if (joy_pad_idle){
 			hsp = 4*spr_dir;
@@ -451,6 +530,7 @@ if get_player_color(player) == 10 {
          }
          
          if window == 3  {
+         	
          	
          	if hsp < 0  && state_timer < 400{
              		spr_dir = -1 
@@ -484,7 +564,9 @@ if get_player_color(player) == 10 {
          	
                   with hit_player_obj{
                   
-                  	
+                  if state_cat == SC_HITSTUN {
+                  	if !hitpause state_timer -= 1
+                  }
                   	can_tech = false 
                   	
                   	if y > other.y - 100 {
@@ -594,6 +676,7 @@ if get_player_color(player) == 10 {
                  sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"))
                  super_armor = true
                  countering = 1
+                 shake_camera(2,4)
                  sound_play(sound_get("RI"))
                  spawn_hit_fx (x, y - 30, 302)
              }

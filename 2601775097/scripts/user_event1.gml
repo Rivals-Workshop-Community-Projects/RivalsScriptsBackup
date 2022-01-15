@@ -154,7 +154,7 @@ if ((theikos_active || godpower || od_already_active || theikos_alt) && !is_8bit
 
     // theikos Ustrong
     fx_lightpillar = sprite_get("theikos_fx_ustrong_lightpillar");
-    set_hitbox_value(AT_USTRONG_2, 1, HG_VISUAL_EFFECT, fx_fireblow1);
+    set_hitbox_value(AT_USTRONG_2, 1, HG_VISUAL_EFFECT, fx_lightblow1);
     set_hitbox_value(AT_USTRONG_2, 1, HG_HIT_PARTICLE_NUM, 5);
 
     // theikos Dstrong
@@ -317,7 +317,7 @@ else
 
     // theikos Ustrong
     fx_lightpillar = sprite_get("fx_ustrong_t_lightpillar");
-    set_hitbox_value(AT_USTRONG_2, 1, HG_VISUAL_EFFECT, fx_fireblow1);
+    set_hitbox_value(AT_USTRONG_2, 1, HG_VISUAL_EFFECT, fx_lightblow1);
     set_hitbox_value(AT_USTRONG_2, 1, HG_HIT_PARTICLE_NUM, 1);
 
     // theikos Dstrong
