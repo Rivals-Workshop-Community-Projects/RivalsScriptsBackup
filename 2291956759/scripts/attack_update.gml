@@ -313,7 +313,7 @@ if attack == AT_DSPECIAL {
             set_state (PS_IDLE)
         }
         
-    if window == 1 && window_timer == 12 && free {
+    if window == 1 && window_timer == 10 && free {
         set_state (PS_PRATFALL)
         spawn_hit_fx (x, y + 4, i1)
         vsp = 100
@@ -344,6 +344,10 @@ if attack == AT_DSPECIAL {
         window_timer -= 1
     }
     
+    if window == 1 && window_timer > 15 && window_timer < 20 && !free && (special_down or attack_down) {
+    	window_timer = 20
+    }
+    
     if window == 2 && window_timer == 1 {
              
             if summon%5 = 0 {
@@ -357,7 +361,7 @@ if attack == AT_DSPECIAL {
                 move_cooldown[AT_DSPECIAL] = 30
                 } else {
                 window = 1
-                window_timer = 10
+                window_timer = 8
                 sound_play(asset_get("mfx_back"))  
                 }
                 
@@ -374,7 +378,7 @@ if attack == AT_DSPECIAL {
                 move_cooldown[AT_DSPECIAL] = 30
                 } else {
                 window = 1
-                window_timer = 10
+                window_timer = 8
                 sound_play(asset_get("mfx_back"))  
                 }
             }
@@ -390,7 +394,7 @@ if attack == AT_DSPECIAL {
                 move_cooldown[AT_DSPECIAL] = 30
                 } else {
                 window = 1
-                window_timer = 10
+                window_timer = 8
                 sound_play(asset_get("mfx_back"))  
                 }
             }
@@ -406,7 +410,7 @@ if attack == AT_DSPECIAL {
                 move_cooldown[AT_DSPECIAL] = 30
                 } else {
                 window = 1
-                window_timer = 10
+                window_timer = 8
                 sound_play(asset_get("mfx_back"))  
                 }
             }
@@ -422,7 +426,7 @@ if attack == AT_DSPECIAL {
                 move_cooldown[AT_DSPECIAL] = 30
                 } else {
                 window = 1
-                window_timer = 10
+                window_timer = 8
                 sound_play(asset_get("mfx_back"))  
                 }
             }

@@ -97,3 +97,4 @@ sprite_change_offset("totemPlat_stage", 98, 64);
 sprite_change_offset("totemPlat_stage_mask", 98, 64);
 sprite_change_offset("totemPlat_destroyproj", 100, 96);
 sprite_change_offset("armorbreakvfx", 135, 143);
+sprite_change_offset("offscreen_platform", 16, 16);

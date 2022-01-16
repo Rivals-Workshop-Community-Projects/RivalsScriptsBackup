@@ -232,7 +232,7 @@ if(fdownsprecovery){
 if(!has_dinoplat && !free){ //check if ground has owner
     var below;
     below = instance_position(x, y+2, all);
-    if(!variable_instance_exists(below, "player_id") && below != noone){
+    if(!variable_instance_exists(below, "player_id") && below != noone && DinockPlatref == noone){
         has_dinoplat = true;
     }
 }

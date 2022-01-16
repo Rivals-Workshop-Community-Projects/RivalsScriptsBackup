@@ -235,6 +235,7 @@ if (attack == AT_DATTACK) {
 	if window == 1{
 		set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 4);
 	}
+	/*
 	if window == 2{
 		if attack_pressed {
 			set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 14);
@@ -264,6 +265,7 @@ if (attack == AT_DATTACK) {
 	
 		
 	}
+*/
 }
 
 if (attack == AT_DAIR){

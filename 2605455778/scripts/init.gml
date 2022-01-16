@@ -26,7 +26,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 12.5;
-short_hop_speed = 9;
+short_hop_speed = 7.5;
 djump_speed = -1.2;
 
 djump_accel = -3.7;
@@ -182,6 +182,10 @@ armorplus = 0;
 fspecial_moonroll = false;
 aireggy = false;
 Upbcanledgecancel = false;
+xMag = 0;
+yMag = 0;
+subMag = 6;
+offscreen = false;
 
 //workshop comp
 feri_costume = sprite_get("costume_dinock");

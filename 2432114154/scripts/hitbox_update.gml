@@ -87,17 +87,25 @@ if attack == AT_NSPECIAL {
 	    	
 	    	
 	    	with other.player_id {
+	    		djumps = 0
+	    		attack_end()
+	    		set_attack(AT_NSPECIAL)
+	    		window = 2
+	    		window_timer = 1
+	    		hit_player_obj = other.player_id
 	    	 if move_cooldown[AT_EXTRA_1] == 0 {
 	    		sound_play(sound_get("zoice_shine"),false,noone,zolume,zitch)
     	     	sound_play(sound_get("zoice_shine"),false,noone,zolume,zitch)
 	    	 }
 	    		move_cooldown[AT_EXTRA_1] = 30
-	    		spawn_counter += floor(other.damage/1.5) + floor(other.kb_value*(1 + other.kb_scale*3))
-                sound_play(sound_get("RI2"),false,noone,1,max(0.8, 1.6 - (hit_player_obj.hitpause*hit_player_obj.hitpause)/100))
+	    		spawn_counter += max(3, floor(other.damage/1.5) + floor(other.kb_value*(1 + other.kb_scale*2)))
+                sound_play(sound_get("RI"),false,noone,1,max(1, 1.4 - (hit_player_obj.hitpause*hit_player_obj.hitpause)/100))
                 shake_camera(4,2)
                 spawn_hit_fx(x,y - 36,302)
+                counter_x = other.x 
+                counter_y = other.y
 	    	}
-	    	
+	    	spawn_hit_fx(x,y,302)
 			hit_priority = 0
 			destroyed = true
 			
@@ -125,24 +133,28 @@ if attack == AT_DTILT && hbox_num == 4 {
 	if hitbox_timer < 30 {
 		vsp /= 1.05
 		hsp /= 1.05
-		image_index = hitbox_timer/5
+		image_index = hitbox_timer/3
 	} else {
 		if hitbox_timer % 2 == 0 {
 		   gat = spawn_hit_fx(x,y ,bh2)
 		   gat.spr_dir = .5
            gat.image_yscale = .5
 		}
-		image_index = hitbox_timer/2
+		image_index = hitbox_timer
 	}
 	
-	if hitbox_timer == 30 {
+	if hitbox_timer >= 30 {
+		if hitbox_timer == 30 {
 	    spawn_hit_fx(x,y,bh2)
 		hit_priority = 9
 		sound_play(asset_get("sfx_swish_medium"),false,noone,1,.6 + (random_func(1,30,true)/100))
+		} else if hitbox_timer < 60 {
 		var angle = point_direction(x, y, player_id.hit_player_obj.x - 20 - random_func(2,41,true), player_id.hit_player_obj.y - 16 - random_func(1,40,true) );
 
             hsp = lengthdir_x(12, angle)
             vsp = lengthdir_y(12, angle)
+		}
+		
 	}
 	
 }

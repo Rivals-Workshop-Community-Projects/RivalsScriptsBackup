@@ -26,5 +26,14 @@ if invincible && invince_time <= 2 {
 	
 }
 */
+
+if (UImode == 4) && invincible && invince_time <= 2 {
+   		
+		draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 1);
+
+	
+}
+
+
 shader_end() 
 

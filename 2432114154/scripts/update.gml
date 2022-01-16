@@ -40,18 +40,18 @@ if taunt_down && special_down && move_cooldown[AT_TAUNT] == 0 {
 	zitch = clamp(zitch,0.8,1.6)
 }
 
-if spawn_counter > 0 && get_gameplay_time()%2 == 0 {
+if spawn_counter > 3 && get_gameplay_time()%2 == 0 {
 	
-	set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_HSPEED, -2 - random_func(1,15,true)/2 );
+	set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_HSPEED, 4 - random_func(1,17,true)/2 );
     
-    set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_VSPEED, 2 - random_func(2,15,true)/2 );
+    set_hitbox_value(AT_DTILT, 4, HG_PROJECTILE_VSPEED, 4 - random_func(2,17,true)/2 );
 		
 
 		print("No u !")
 		
        spawn_counter -= 3
            		
-        create_hitbox(AT_DTILT, 4, x - 10*spr_dir ,y - 20 - random_func(2,20,true))   
+        create_hitbox(AT_DTILT, 4, counter_x - 10 + random_func(3,20,true) , counter_y - 10 + random_func(2,20,true))   
 }
 
 if !hitpause {
@@ -213,20 +213,20 @@ set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 9);
 
 ///Dtilt 
 
-set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 12);
 
 set_num_hitboxes(AT_DTILT, 2);
 
 
 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 110);
+set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 100);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 5);
+set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 0);
@@ -234,17 +234,17 @@ set_hitbox_value(AT_DTILT, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_DTILT, 2, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_DTILT, 2, HG_WINDOW_CREATION_FRAME, 4);
+set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_DTILT, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 4);
-set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 110);
+set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 100);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DTILT, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 20);
-set_hitbox_value(AT_DTILT, 2, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_DTILT, 2, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_weak"));
 set_hitbox_value(AT_DTILT, 2, HG_TECHABLE, 1);
@@ -974,7 +974,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, -18);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_Y, -46);
 set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 90);
-set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 32);
+set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 44);
 set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 8);
@@ -1299,4 +1299,13 @@ with oPlayer {
   }
 }
 
+}
+
+if left_pressed and right_pressed and attack_pressed and special_pressed  {
+	if up_down {
+	UImode = 4 	
+	}
+	if down_down {
+	UImode = 0 	
+	}
 }

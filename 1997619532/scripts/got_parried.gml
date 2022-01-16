@@ -17,7 +17,7 @@ if (my_hitboxID.attack == AT_DAIR) {
 }    
 
 
-halo -= 5
+halob -= 1
 
 
 if (my_hitboxID.attack == AT_JAB) {

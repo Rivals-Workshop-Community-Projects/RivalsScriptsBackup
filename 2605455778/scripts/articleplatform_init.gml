@@ -21,3 +21,5 @@ standed = false;
 amStage = false;
 platanimcounter = 0;
 platlifetimer = 0;
+xMag = x;
+offscreen = false;

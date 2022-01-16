@@ -58,3 +58,34 @@ if(attack == AT_NSPECIAL){
     }
 }
 //draw_circle_color(x+10*spr_dir, y-30, 10, 1, 1,  false);
+
+with(obj_article_platform){
+    mag();
+}
+#define mag
+    if(player_id == other){
+        if (x < view_get_xview()){
+            print_debug("left");
+            xMag = view_get_xview() + 36;
+            subMag = 4;
+            offscreen = true;
+            //article has fallen out of the left side of view
+        }else if(x > view_get_xview() + view_get_wview()){
+            //article has fallen out of the right side of view
+            print_debug("right");
+            xMag = view_get_xview() + view_get_wview() - 36;
+            subMag = 4;
+            offscreen = true;
+        }else{
+            xMag = x;
+            subMag = 6;
+            offscreen = false;
+        }
+        if((y < view_get_yview()) || (y > view_get_yview() + view_get_hview())){
+            offscreen = true;
+        }
+        draw_sprite_ext(asset_get("offscreen_cloud_bg_spr"), subMag, xMag, view_get_yview()+view_get_hview()-84, spr_dir, 1, 0,
+        get_player_hud_color( player ), offscreen);
+        draw_sprite_ext(sprite_get("offscreen_platform"), subMag, xMag, view_get_yview()+view_get_hview()-84, spr_dir, 1, 0,
+        c_white, offscreen);
+    }

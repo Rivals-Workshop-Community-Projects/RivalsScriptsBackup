@@ -9,7 +9,12 @@ ncode2 = "If it wasn't for their works, history and events happened prio"
 ncode3 = "to 'Hell Impact' would be lost or become a vague folktale.."
 
 spawn_counter = 0
+counter_x = 0
+counter_y = 0
+
 jumping = 0
+
+UImode = 0
 
 zolume = 0
 zitch = 1
@@ -118,7 +123,7 @@ wave_land_adj = 1.14; //the multiplier to your initial hsp when wavelanding. Usu
 wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 1;
+crouch_startup_frames = 2;
 crouch_active_frames = 1;
 crouch_recovery_frames = 1;
 

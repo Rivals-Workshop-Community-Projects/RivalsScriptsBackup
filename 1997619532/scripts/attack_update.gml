@@ -543,7 +543,7 @@ if attack == AT_DSPECIAL {
     if window == 3 && window_timer == 1{
     	shake_camera(6,6)
     	stabt += 1
-        halo += 6
+        halob += 6
     }
 
 }

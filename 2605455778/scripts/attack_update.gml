@@ -278,7 +278,9 @@ switch(attack){
             }
         }
         if(window == 5){
-            can_jump = true;
+            if(!was_parried){
+                can_jump = true;
+            }
             if(!hitpause){
                 hsp = 11*spr_dir;
                 can_wall_jump = true;
@@ -321,11 +323,11 @@ switch(attack){
             }
             destroy_hitboxes();
         }
-         if(collision_circle(x+10*spr_dir, y-30, 10, asset_get("par_block"), true, true) && (window == 2 || window == 5)){
-            if(has_dinoplat){
-                window = 8;
-                window_timer = 0;
-            }
+         if(collision_circle(x+10*spr_dir, y-30, 10, asset_get("par_block"), true, true) && (window == 2 || (window == 3 && window_timer < 11) || window == 5)){
+                if(has_dinoplat){
+                    window = 8;
+                    window_timer = 0;
+                }
          }
          if(window == 8){
             if(instance_exists(obj_article_platform)){
