@@ -67,10 +67,14 @@ if attack == AT_NSPECIAL{
 						pill_state = 5;
 					}
 					else {
-						vsp = -abs(vsp);
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.75*player_id.spr_dir; length = length* 4/5;}
-						else{ hsp = hsp*-1.25; }
+						vsp = -abs(vsp);		
+						length = length* 4/5;
 						if abs(hsp) < 1 { hsp = 4.5*player_id.spr_dir; }
+						else{
+							hsp = abs(hsp)*1.75*player_id.spr_dir; 
+						}
+						spr_dir = player_id.spr_dir;
+						player = orig_player;				//Just in case, its my pill again
 						//grav = 0.56;
 						pill_state =0;
 					}
@@ -274,7 +278,7 @@ if attack == AT_NSPECIAL{
 				extra_hitpause+=2;
 				show = 1;
 				vsp = -abs(vsp/2);
-				if abs(hsp) < 1{hsp = player_id.spr_dir*(4.5+ player_id.strong_charge/10);}
+				if abs(hsp) < 1{hsp = player_id.spr_dir*(5+ player_id.strong_charge/10);}
 				else{hsp = player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}
 				spr_dir = player_id.spr_dir;
 			}
@@ -294,8 +298,8 @@ if attack == AT_NSPECIAL{
 				extra_hitpause+=2;
 				show = 1;
 				vsp = -abs(vsp/2);
-				if (hsp ==0){hsp = -player_id.spr_dir*(4.5+ player_id.strong_charge/10); }
-				else{hsp = -player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}
+				if (hsp ==0){hsp = -player_id.spr_dir*(5+ player_id.strong_charge/10); }
+				else{hsp = -player_id.spr_dir*(abs(hsp*2.5)+ player_id.strong_charge/10);}
 				spr_dir = -player_id.spr_dir;
 			}
 		}

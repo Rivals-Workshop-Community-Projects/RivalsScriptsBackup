@@ -252,7 +252,7 @@ if (attack == AT_FSPECIAL && window == 2 ) {
 						}
 					}else{
 						spr_dir *= -1;
-						hsp *=  -1.25;
+						hsp *=  -1.5;
 					}
 					//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
 					if variable_instance_exists(self, "C_knock") {
