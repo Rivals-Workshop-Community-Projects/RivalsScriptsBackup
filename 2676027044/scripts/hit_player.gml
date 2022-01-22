@@ -13,7 +13,7 @@ switch(my_hitboxID.attack){
 				hit_player_obj.mimikyu_curse = true;
 			}
 			if (my_hitboxID.hbox_num == 1){
-				hit_player_obj.mimikyu_curse_tick = clamp(hit_player_obj.mimikyu_curse_tick + 2, 0, 3);
+				hit_player_obj.mimikyu_curse_tick = clamp(hit_player_obj.mimikyu_curse_tick + 1, 0, 3);
 			}
 		}
 	break;
@@ -28,7 +28,9 @@ switch(my_hitboxID.attack){
 	
 	case AT_FTILT:
 		if (my_hitboxID.orig_player == player){
-			hit_player_obj.mimikyu_curse_tick = clamp(hit_player_obj.mimikyu_curse_tick + 1, 0, 3);
+			if (my_hitboxID.hbox_num == 3){
+				hit_player_obj.mimikyu_curse_tick = clamp(hit_player_obj.mimikyu_curse_tick + 1, 0, 3);
+			}
 		}
 	break;
 	

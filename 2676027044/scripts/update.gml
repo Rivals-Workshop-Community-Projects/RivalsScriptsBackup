@@ -137,7 +137,7 @@ if (mim_wisp != noone){
 				
 				if (other.attack == AT_USPECIAL && (other.atk_air || other.atk_ground)){
 					active = false;
-					cooldown_timer = 100;
+					cooldown_timer = 150;
 					spawn_hit_fx( x, y - 35, other.hfx_shadow_mid);
 					state = 6;
 				}
@@ -145,7 +145,7 @@ if (mim_wisp != noone){
 				if (other.attack == AT_FSPECIAL && other.window == 2 && (other.atk_air || other.atk_ground)){
 					active = false;
 					spawn_hit_fx( x, y - 35, other.hfx_shadow_mid);
-					cooldown_timer = 100;
+					cooldown_timer = 150;
 					state = 6;
 				}
 			}
@@ -163,7 +163,7 @@ if (mim_wisp != noone){
 					if (other.attack == AT_USTRONG && other.window == 3 && other.window_timer >= 1 && (other.atk_air || other.atk_ground) && !other.has_hit_player){
 						active = false;
 						spawn_hit_fx( x, y - 35, other.hfx_shadow_mid);
-						cooldown_timer = 100;
+						cooldown_timer = 150;
 					}
 					
 				}

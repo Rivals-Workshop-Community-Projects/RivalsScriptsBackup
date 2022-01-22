@@ -14,11 +14,16 @@ if (attack == AT_NSPECIAL && hbox_num == 1){
 	}
 }*/
 if (attack == AT_FSPECIAL){
-	vsp = knife_vsp;
-	hsp = knife_hsp;
+	/*vsp = knife_vsp;
+	hsp = knife_hsp;*/
+	if (has_hit){
+		player_id.knife.state = 3;
+	}
 }
 if (attack == AT_USPECIAL){
 	vsp = projectile_vsp;
+	if (has_hit){
+	}
 }
 
 if (attack == AT_NSPECIAL && hbox_num == 2){

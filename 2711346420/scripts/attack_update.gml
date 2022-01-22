@@ -527,6 +527,7 @@ if (attack == AT_FSPECIAL){
 						spawn_base_dust( x + (22 * spr_dir), y, "walljump", spr_dir*-1)
 						hsp = -3.5*spr_dir
 						vsp = -4.5
+						monkey_ball_tilt_counter *= -1;
 					}
 				} else {
 					if (!free){

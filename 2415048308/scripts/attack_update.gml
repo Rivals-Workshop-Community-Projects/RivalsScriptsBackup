@@ -128,6 +128,11 @@ if (free == false && move_cooldown[AT_USPECIAL] > 0){
 }
 var maddummy = id;
 if (attack == AT_USPECIAL){
+	if (window == 1 && window_timer == 1){
+		if (uspecial_hit == true){
+			uspecial_hit = false;
+		}
+	}
 	can_wall_jump = true;
 	with pHitBox{
 	if (has_hit == true && attack != AT_NSPECIAL){
@@ -164,6 +169,11 @@ if (attack == AT_TAUNT){
 		sound_stop(sound_get("sfx_bleep"));
 		cussing = false;
 	}
+}
+
+if (has_rune("G") && attack == AT_DSTRONG){
+	set_hitbox_value(AT_DSTRONG, 1, HG_GROUNDEDNESS, 1);
+	set_num_hitboxes(AT_DSTRONG,2);
 }
 
 if (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL){

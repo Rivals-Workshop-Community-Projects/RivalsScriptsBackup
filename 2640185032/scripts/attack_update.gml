@@ -253,6 +253,7 @@ switch(attack){
             knife_timer = 0;
             increase = 0;
             increased = false;
+            move_cooldown[AT_NSPECIAL] = 35;
         }
         break;
 
@@ -323,10 +324,10 @@ switch(attack){
             if(has_hit && !hitpause && (window == 2 && window_timer == 3)){
                 destroy_hitboxes();
                 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
-                set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 16);
+                set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 14 + (2 * uspec_bounce));
                 window_timer = 0;
                 window = 4;
-                vsp = min(-2, -10 + (2 * uspec_bounce));
+                vsp = min(-2.5, -10 + (2.5 * uspec_bounce));
             }
             
             //transition into knife throw

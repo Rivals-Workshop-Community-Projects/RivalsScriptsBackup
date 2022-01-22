@@ -11,6 +11,11 @@ my_hitboxID.has_hit = true;
 var hitpause_exclude = 0;
 
 switch(my_hitboxID.attack){
+	case AT_DTILT:
+		if hit_player_obj.state_cat == SC_HITSTUN{
+			hit_player_obj.free = 1;
+		}
+		break;
 	case AT_FAIR:
 		if rune_crit_fair sound_play(asset_get("sfx_war_horn"));
 	case AT_NSPECIAL_AIR: //Thorns

@@ -160,37 +160,37 @@ if(has_rune("O"))
 	if(shotoDir == 1 && left_down || shotoDir == -1 && right_down ) shotoDirHeld++;
 	else shotoDirHeld = 0;
 	//MoveInputs
-	switch(inputUSpec)
-	{
-		case 0: if((right_down && shotoDir == 1 || left_down && shotoDir == -1) && !down_down) { inputUSpec = 1; inputTimer = 20;}
-		case 2: if(down_down && !(right_down && shotoDir == 1 || left_down && shotoDir == -1)) { inputUSpec++;} break;
-		case 1: case 3: if(down_down && 
-		(right_pressed && shotoDir == 1 || left_pressed && shotoDir == -1)) { inputUSpec++;} break;
-		case 4: if((right_down && shotoDir == 1 || left_down && shotoDir == -1) && shotoMove == 0 && canShoto && attack_pressed) { inputUSpec = 0; shotoMove = AT_USPECIAL; clear_button_buffer(PC_ATTACK_PRESSED)} break;
-	}
 	switch(inputNSpec2)
 	{
-		case 0: if((right_pressed && shotoDir == -1 || left_pressed && shotoDir == 1) && !down_down) { inputNSpec2 = 1; inputTimer = 20;}
-		case 1: if(down_down && 
-		(right_pressed && shotoDir == -1 || left_pressed && shotoDir == 1)) { inputNSpec2++;} break;
-		case 2: if(down_down) { inputNSpec2++; inputTimer = 20;} break;
-		case 3: if(down_down && 
-		(right_pressed && shotoDir == 1 || left_pressed && shotoDir == -1)) { inputNSpec2++;} break;
-		case 4: if((right_down && shotoDir == 1 || left_down && shotoDir == -1) && !down_down && shotoMove == 0 && canShoto && attack_pressed) {inputNSpec2 = 0; shotoMove = 69; clear_button_buffer(PC_ATTACK_PRESSED)} break;
+		case 0: if(((right_down || right_stick_down) && shotoDir == -1 || (left_pressed || left_stick_pressed) && shotoDir == 1) && !(down_down || down_stick_down)) { inputNSpec2 = 1; inputTimer = 20;}
+		case 1: if((down_down || down_stick_down) && 
+		((right_pressed || right_stick_pressed) && shotoDir == -1 || (left_pressed || left_stick_pressed) && shotoDir == 1)) { inputNSpec2++;} break;
+		case 2: if((down_down || down_stick_down)) { inputNSpec2++; inputTimer = 20;} break;
+		case 3: if((down_down || down_stick_down) && 
+		((right_pressed || right_stick_pressed) && shotoDir == 1 || (left_pressed || left_stick_pressed) && shotoDir == -1)) { inputNSpec2++;} break;
+		case 4: if(((right_down || right_stick_down) && shotoDir == 1 || (left_down || left_stick_down) && shotoDir == -1) && !(down_down || down_stick_down) && shotoMove == 0 && canShoto && attack_pressed) {inputNSpec2 = 0; shotoMove = 69; clear_button_buffer(PC_ATTACK_PRESSED)} break;
 	}
 	switch(inputNSpec)
 	{
-		case 0: if(down_down && !(right_pressed && shotoDir == 1 || left_pressed && shotoDir == -1)) { inputNSpec = 1; inputTimer = 20;}
-		case 1: if(down_down && 
-		(right_pressed && shotoDir == 1 || left_pressed && shotoDir == -1)) { inputNSpec++;} break;
-		case 2: if((right_down && shotoDir == 1 || left_down && shotoDir == -1) && !down_down && shotoMove == 0 && canShoto && attack_pressed) {inputNSpec = 0; shotoMove = AT_NSPECIAL; clear_button_buffer(PC_ATTACK_PRESSED)} break;
+		case 0: if((down_down || down_stick_down) && !((right_pressed || right_stick_pressed) && shotoDir == 1 || (left_pressed || left_stick_pressed) && shotoDir == -1)) { inputNSpec = 1; inputTimer = 20;}
+		case 1: if((down_down || down_stick_down) && 
+		((right_pressed || right_stick_pressed) && shotoDir == 1 || (left_pressed || left_stick_pressed) && shotoDir == -1)) { inputNSpec++;} break;
+		case 2: if(((right_down || right_stick_down) && shotoDir == 1 || (left_down || left_stick_down) && shotoDir == -1) && !(down_down || down_stick_down) && shotoMove == 0 && canShoto && attack_pressed) {inputNSpec = 0; shotoMove = AT_NSPECIAL; clear_button_buffer(PC_ATTACK_PRESSED)} break;
 	}
 	switch(inputFSpec)
 	{
-		case 0: if(down_down) { inputFSpec = 1; inputTimer = 20;}
-		case 1: if(down_down && 
-		(right_pressed && shotoDir == -1 || left_pressed && shotoDir == 1)) { inputFSpec++;} break;
-		case 2: if((right_down && shotoDir == -1 || left_down && shotoDir == 1) && !down_down && shotoMove == 0 && canShoto && attack_pressed) { inputFSpec = 0; shotoMove = AT_FSPECIAL; clear_button_buffer(PC_ATTACK_PRESSED)} break;
+		case 0: if((down_down || down_stick_down)) { inputFSpec = 1; inputTimer = 20;}
+		case 1: if((down_down || down_stick_down) && 
+		((right_pressed || right_stick_pressed) && shotoDir == -1 || (left_pressed || left_stick_pressed) && shotoDir == 1)) { inputFSpec++;} break;
+		case 2: if(((right_down || right_stick_down) && shotoDir == -1 || (left_down || left_stick_down) && shotoDir == 1) && !(down_down || down_stick_down) && shotoMove == 0 && canShoto && attack_pressed) { inputFSpec = 0; shotoMove = AT_FSPECIAL; clear_button_buffer(PC_ATTACK_PRESSED)} break;
+	}
+	switch(inputUSpec)
+	{
+		case 0: if(((right_down || right_stick_down) && shotoDir == 1 || (left_down || left_stick_down) && shotoDir == -1) && !(down_down || down_stick_down)) { inputUSpec = 1; inputTimer = 20;}
+		case 1: if((down_down || down_stick_down) && !((right_down || right_stick_down) && shotoDir == 1 || (left_down || left_stick_down) && shotoDir == -1)) { inputUSpec++;} break;
+		case 2: if((down_down || down_stick_down) && 
+		((right_pressed || right_stick_pressed) && shotoDir == 1 || (left_pressed || left_stick_pressed) && shotoDir == -1)) { inputUSpec++;} break;
+		case 3: if(((right_down || right_stick_down) && shotoDir == 1 || (left_down || left_stick_down) && shotoDir == -1) && shotoMove == 0 && canShoto && attack_pressed) { inputUSpec = 0; shotoMove = AT_USPECIAL; clear_button_buffer(PC_ATTACK_PRESSED)} break;
 	}
 	if(shotoMoveBuffer != 0)
 	{	shotoMoveBuffer --; if(shotoMoveBuffer == 1) shotoMove = 0; }

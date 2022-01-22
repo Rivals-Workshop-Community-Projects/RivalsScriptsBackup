@@ -6,7 +6,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hu
 set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
-set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_COOLDOWN, 40);
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_COOLDOWN, 30); // 40
 set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_CD_SPECIAL, 1);
 
 // startup

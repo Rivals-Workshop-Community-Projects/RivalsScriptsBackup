@@ -12,6 +12,7 @@ if my_hitboxID.attack = AT_FTHROW && my_hitboxID.hit_priority == 7{
     my_hitboxID.hitbox_timer = 0;
     my_hitboxID.hsp *= 1.5;
     my_hitboxID.vsp *= 1.5;
+    proj_angle = point_direction(0,0,abs(hsp),sign(hsp)*vsp);
 }
 if my_hitboxID.attack = AT_FSPECIAL{
     my_hitboxID.destroyed = true

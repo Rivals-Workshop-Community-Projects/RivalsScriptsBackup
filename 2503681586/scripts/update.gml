@@ -101,76 +101,79 @@ if is_nana && "is_bubble" !in self {
 	}
 */
 		
+	if (walk_speed != 4)	{
+		walk_speed = 4
+		walk_accel = 0.8;
+		walk_turn_time = 6;
+		initial_dash_speed = 7;
+		dash_speed = 7;
+		dash_turn_time = 6;
+		dash_stop_percent = .2;
+		ground_friction = .3;
+		moonwalk_accel = 1.8;
 		
-	wall_speed = 4
-	walk_accel = 0.8;
-	walk_turn_time = 6;
-	initial_dash_speed = 7;
-	dash_speed = 7;
-	dash_turn_time = 6;
-	dash_stop_percent = .2;
-	ground_friction = .3;
-	moonwalk_accel = 1.8;
-	
-	jump_start_time = 5;
-	jump_speed = 11;
-	short_hop_speed = 6;
-	djump_speed = 11;
-	leave_ground_max = 7; 
-	max_jump_hsp = 7; 
-	air_max_speed = 7; 
-	air_accel = .35;
-	prat_fall_accel = .6; //multiplier of air_accel while in pratfall
-	air_friction = .015;
-	walljump_hsp = 6;
-	walljump_vsp = 12;
-	walljump_time = 32;
-	max_fall = 5;
-	fast_fall = 8;
-	gravity_speed = .35;
-	hitstun_grav = .45;
-	knockback_adj = .5; //Calculation Only :monkaS:
-	air_dodge_speed = 7;
-	roll_forward_max = 4; //roll speed
-	roll_backward_max = 4;
+		jump_start_time = 5;
+		jump_speed = 11;
+		short_hop_speed = 6;
+		djump_speed = 11;
+		leave_ground_max = 7; 
+		max_jump_hsp = 7; 
+		air_max_speed = 7; 
+		air_accel = .35;
+		prat_fall_accel = .6; //multiplier of air_accel while in pratfall
+		air_friction = .015;
+		walljump_hsp = 6;
+		walljump_vsp = 12;
+		walljump_time = 32;
+		max_fall = 5;
+		fast_fall = 8;
+		gravity_speed = .35;
+		hitstun_grav = .45;
+		knockback_adj = .5; //Calculation Only :monkaS:
+		air_dodge_speed = 7;
+		roll_forward_max = 4; //roll speed
+		roll_backward_max = 4;
+	}
 	break;
 		
 		case 1: //No Bubble
 	if prev_state == PS_HITSTUN && state != PS_RESPAWN && state_cat != SC_HITSTUN && !(state == PS_TECH_GROUND || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD || state == PS_WALL_TECH) {
 		state = PS_PRATFALL
 	}
+
+	if (walk_speed != 2)	{
+		walk_speed = 2
+		walk_accel = 0.8;
+		walk_turn_time = 6;
+		initial_dash_speed = 3;
+		dash_speed = 3;
+		dash_turn_time = 6;
+		dash_stop_percent = .2;
+		ground_friction = .5;
+		moonwalk_accel = 1.8;
 		
-	wall_speed = 2
-	walk_accel = 0.8;
-	walk_turn_time = 6;
-	initial_dash_speed = 3;
-	dash_speed = 3;
-	dash_turn_time = 6;
-	dash_stop_percent = .2;
-	ground_friction = .5;
-	moonwalk_accel = 1.8;
-	
-	jump_start_time = 5;
-	jump_speed = 9;
-	short_hop_speed = 6;
-	djump_speed = 9;
-	leave_ground_max = 7; 
-	max_jump_hsp = 7; 
-	air_max_speed = 7; 
-	air_accel = .25;
-	prat_fall_accel = .6; //multiplier of air_accel while in pratfall
-	air_friction = .015;
-	walljump_hsp = 5;
-	walljump_vsp = 9;
-	walljump_time = 32;
-	max_fall = 5;
-	fast_fall = 8;
-	gravity_speed = .7;
-	hitstun_grav = .45;
-	knockback_adj = 1.2;
-	air_dodge_speed = 7;
-	roll_forward_max = 4; //roll speed
-	roll_backward_max = 4;
+		jump_start_time = 5;
+		jump_speed = 9;
+		short_hop_speed = 6;
+		djump_speed = 9;
+		leave_ground_max = 7; 
+		max_jump_hsp = 7; 
+		air_max_speed = 7; 
+		air_accel = .25;
+		prat_fall_accel = .6; //multiplier of air_accel while in pratfall
+		air_friction = .015;
+		walljump_hsp = 5;
+		walljump_vsp = 9;
+		walljump_time = 32;
+		max_fall = 11;
+		fast_fall = 13;
+		gravity_speed = .7;
+		hitstun_grav = .45;
+		knockback_adj = 1.2;
+		air_dodge_speed = 7;
+		roll_forward_max = 4; //roll speed
+		roll_backward_max = 4;
+	}
 	break;		
 		
 		default:

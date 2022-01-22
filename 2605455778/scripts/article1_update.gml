@@ -61,3 +61,7 @@ if(sprite_index == player_id.totemSpawnAnim && totemAnimCounter == 8){
 if(sprite_index == player_id.totemSpawnAnim && totemAnimCounter == 25){
     sound_play(asset_get("sfx_plant_eat"));
 }
+if(position_empty(x, y+2)){
+    print_debug("totem in air");
+    destroy = true;
+}

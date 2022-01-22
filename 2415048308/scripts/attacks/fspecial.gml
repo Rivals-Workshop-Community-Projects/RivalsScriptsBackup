@@ -34,13 +34,15 @@ set_num_hitboxes(AT_FSPECIAL, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Knife");
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 60);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 36);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 36);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 5);
+set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 361);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9.3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);

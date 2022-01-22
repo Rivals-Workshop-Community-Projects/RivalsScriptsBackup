@@ -67,8 +67,7 @@ switch(attack){
 			can_wall_jump = true; 
 			
 			if (window == 1){
-			
-				set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE , 0);
+				set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 				
 				if (window_timer == 1){
 					fspec_flip = false;
@@ -98,17 +97,14 @@ switch(attack){
 					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
 					touched_wisp = false;
 				}
-				
-				if (special_down){
-					set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE , 1);
+
+				if (!free){
+					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
 				}
-				else {
-					set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE , 0);
-				}
-				
 			}
 			
 			if (window == 3 && !free){
+				set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 0);
 				window = 4;
 				window_timer = 0;
 			}
@@ -236,9 +232,11 @@ switch(attack){
 				uspec_pratfall = false;
 			}
 			
+			
 			if (!free){
 				uspec_touched_ground = true;
 			}
+			
 			
 			if (!uspec_pratfall){
 				set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
@@ -255,14 +253,10 @@ switch(attack){
 					touched_wisp = false;
 					uspec_pratfall = true;
 					
-					if (!free){
-						uspec_was_grounded_at_start = true;
-					}
 				}
 
 				uspec_dir1 = 90;
 				uspec_dir2 = 90;
-				
 				
 				if (window_timer == 12){
 					
@@ -334,7 +328,7 @@ switch(attack){
 				}
 				
 				if (window_timer == 7){
-					if (free && uspec_was_grounded_at_start && !touched_wisp){
+					if (free && !uspec_was_grounded_at_start && !touched_wisp){
 						uspec_touched_ground = false;
 						uspec_pratfall = true;
 					}
@@ -373,6 +367,10 @@ switch(attack){
 				if (joy_pad_idle || uspec_dir2 == uspec_dir1){
 					window = 5;
 					window_timer = 0;
+				}
+			
+				if (!free){
+					uspec_was_grounded_at_start = true;
 				}
 			}
 			
@@ -579,6 +577,7 @@ switch(attack){
 				}
 			}
 			
+			/*
 			if (has_hit_player){
 				
 				if (window == 3 && landed_curse_tipper){					
@@ -614,6 +613,18 @@ switch(attack){
 					if (window_timer == 2 && !hitpause){
 						y = y -80;
 						touched_wisp = false;
+					}
+				}
+			}
+			*/
+			
+			if (has_hit_player){
+				if (window == 3 && landed_curse_tipper){
+				
+					if (!hitpause){
+						hitpause = true;
+						hitstop_full = 2;
+						hitstop = 2;
 					}
 				}
 			}

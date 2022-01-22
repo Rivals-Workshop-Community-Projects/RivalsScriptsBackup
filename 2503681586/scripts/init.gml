@@ -264,7 +264,7 @@ dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 6;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .1;
+ground_friction = .2;
 moonwalk_accel = 1.2;
 
 jump_start_time = 5;
@@ -293,7 +293,7 @@ land_time = 4; //normal landing frames
 prat_land_time = 6;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .15; //grounded deceleration when wavelanding
+wave_friction = .05; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;
@@ -319,7 +319,7 @@ techroll_speed = 8;
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 1;
 air_dodge_recovery_frames = 1;
-air_dodge_speed = 6;
+air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 0;

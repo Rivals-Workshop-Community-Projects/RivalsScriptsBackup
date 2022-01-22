@@ -1,5 +1,4 @@
 //hitbox_update
-
 // if (attack == AT_UTILT){
 //     player_id.move_cooldown[AT_UTILT] = 30
 //     if (!free || y > room_height) destroyed = true;
@@ -10,9 +9,11 @@ if (attack == AT_FTILT){
     if get_player_color(player) == 12 image_index = 2
 }
 if (attack == AT_FTHROW){
-	if hitbox_timer == 1 && !has_rune("O") player_id.move_cooldown[AT_FTHROW] = 210;
+	if hitbox_timer == 1 && !has_rune("O"){
+		player_id.move_cooldown[AT_FTHROW] = 210;
+		proj_angle = point_direction(0,0,abs(hsp),sign(hsp)*vsp);
+	}
 	player_id.grov_current_nspecial = 0;
-	proj_angle = point_direction(0,0,abs(hsp),sign(hsp)*vsp);
     if !free destroyed = true;
     
     if get_player_color(player) == 13 image_index = 1
@@ -38,8 +39,8 @@ if (attack == AT_DTHROW){
     		sound_play(sound_get("Glass_Break"))
     		sound_play(asset_get("sfx_blow_weak2"))
 	    	instance_create(x,y+9,"obj_article1")
-	    	instance_create(x+32,y+9,"obj_article1")
-	    	instance_create(x-32,y+9,"obj_article1")
+	    	instance_create(x+40,y+9,"obj_article1")
+	    	instance_create(x-40,y+9,"obj_article1")
     	}
     }
     if get_player_color(player) == 13 image_index = 1

@@ -256,6 +256,20 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.5", "16 January, 2022");
+initHeader("Back Air");
+initSection("~ Early Hit Hitpause Scaling: .5 -> .7 
+~ Late Hit Base Hitpause: 6 -> 6.5
+~ Late Hit Hitpause Scaling: .4 -> .65");
+initHeader("Down Strong");
+initSection("~ Both Hits Hitpause Scaling: .5 -> .7");
+initHeader("Forward Special (Monkey Dash)");
+initSection("~ Adjusted rotation of the Monkey Ball after bonking into a wall.");
+initHeader("Down Special (Monkey Ball)");
+initSection("~ The hitbox on the Monkey Ball should now not copy what the angle flipper was of the hitbox it got hit by.
+~ The angle of the hitbox is now dependent on the Monkey Ball’s current speed.
+~ Added a very slight cooldown to specials if the Monkey Ball despawns.");
+
 initPatch("1.4", "12 January, 2022");
 initHeader("Back Air");
 initSection("~ Using the move while on the Pure Gold alt now properly plays the animation. I accidentally changed the file name at one point and it messed up the animation.");

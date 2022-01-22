@@ -27,6 +27,7 @@ if char_height != grov_char_height{
     if (attack != AT_NSPECIAL || ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR))) char_height = grov_char_height
 }
 
+// Resets/lowers emera shard timer.
 with(oPlayer){
     if grov_emeratimer > 0{
         if free || hsp == 0 grov_emeratimer = 0
@@ -39,7 +40,7 @@ with(oPlayer){
 
 
 // Blue leaf
-if get_gameplay_time() == 1 && taunt_down && get_player_color(player) == 0{
+if get_gameplay_time() == 1 && shield_down && get_player_color(player) == 0{
     grov_gen3 = true
 }
 

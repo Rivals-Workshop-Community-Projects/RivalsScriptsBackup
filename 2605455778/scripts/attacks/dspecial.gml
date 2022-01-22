@@ -26,17 +26,6 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX_FRAME, 7);
 
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 2);
 
-// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 8); //platform spawn
-// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
-// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-// set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX_FRAME, 7);
-
-// set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 10); //platform spawn recovery
-// set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 7);
-// set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 16);
-
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 32); //armor get
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 16);

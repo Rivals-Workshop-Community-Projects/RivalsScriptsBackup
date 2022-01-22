@@ -71,8 +71,12 @@ if is_nana && !(nana_state == 5 || nana_state == 6) {
 		break;
 		}
 	} else {
-		y -= 4
+		vsp = -4
 		attack = 3
+		if abs(right_down - left_down) {
+			spr_dir = (right_down - left_down);
+			hsp += (spr_dir * 2)
+		}
 	}
 }
 

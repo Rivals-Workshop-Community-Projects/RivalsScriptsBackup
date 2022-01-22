@@ -8,7 +8,7 @@ set_attack_value(AT_UTHROW, AG_HURTBOX_SPRITE, sprite_get("uthrow_hurt"));
 set_attack_value(AT_UTHROW, AG_HURTBOX_AIR_SPRITE, sprite_get("uthrow_air_hurt"));
 
 set_window_value(AT_UTHROW, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 
@@ -30,7 +30,7 @@ set_num_hitboxes(AT_UTHROW, 1);
 set_hitbox_value(AT_UTHROW, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_UTHROW, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_UTHROW, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_UTHROW, 1, HG_LIFETIME, 50);
+set_hitbox_value(AT_UTHROW, 1, HG_LIFETIME, 100);
 set_hitbox_value(AT_UTHROW, 1, HG_HITBOX_X, 20);
 set_hitbox_value(AT_UTHROW, 1, HG_HITBOX_Y, -44);
 set_hitbox_value(AT_UTHROW, 1, HG_WIDTH, 24);

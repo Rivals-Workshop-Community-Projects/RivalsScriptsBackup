@@ -19,3 +19,13 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
 		mim_wisp.active = false;
 	}
 }
+else {
+	if (my_hitboxID.attack != AT_NSPECIAL){
+		if (mim_wisp != noone && instance_exists(mim_wisp)){
+			mim_wisp.state = 7;
+			mim_wisp.cooldown_timer = 200;
+			mim_wisp.active = false;
+		}
+	}
+}
+

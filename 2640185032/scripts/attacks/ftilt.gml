@@ -109,10 +109,10 @@ set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 25);
 set_hitbox_value(AT_FTILT, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_FTILT, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_FTILT, 3, HG_DAMAGE, 2);
-set_hitbox_value(AT_FTILT, 3, HG_ANGLE, 70);
+set_hitbox_value(AT_FTILT, 3, HG_ANGLE, 55); //was 70
 set_hitbox_value(AT_FTILT, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, vfx_knifebreak);
-set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 4); //was 5
 set_hitbox_value(AT_FTILT, 3, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_FTILT, 3, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FTILT, 3, HG_HITPAUSE_SCALING, 0.3);

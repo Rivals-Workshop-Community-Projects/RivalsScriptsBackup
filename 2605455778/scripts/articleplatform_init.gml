@@ -23,3 +23,4 @@ platanimcounter = 0;
 platlifetimer = 0;
 xMag = x;
 offscreen = false;
+magwallplattotem = sprite_get("offscreen_platform");

@@ -78,5 +78,5 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("sfx_knifehit_m"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 40);
+set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);

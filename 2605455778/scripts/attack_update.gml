@@ -212,6 +212,7 @@ switch(attack){
             }
         }
         if(window == 1 && shield_down){
+            //set_state(PS_ATTACK_AIR);
             attack = AT_FSPECIAL;
             window = 1;
             window_timer = 0;
@@ -431,7 +432,10 @@ switch(attack){
     break;
 
     case AT_DSPECIAL:
-        if(window == 1 && window_timer == 10 && !special_down){
+        if(window == 1 && window_timer == 1){
+            attack_end();
+        }
+        if(window == 1 && window_timer == 4 && special_down){
             window = 4;
             window_timer = 0;
             armorpoints += 1;
@@ -446,8 +450,14 @@ switch(attack){
         if(window == 4 && window_timer == 1 && !hitpause){
             sound_play(asset_get("sfx_kragg_roll_start"));
         }
+        if(window == 4 && free){
+            set_state(PS_IDLE_AIR);
+        }
     break;
     case AT_DSPECIAL_AIR:
+        if(window == 1 && window_timer == 1){
+            attack_end();
+        }
         can_wall_jump = true;
         can_fast_fall = false;
         can_move = false
@@ -487,6 +497,11 @@ switch(attack){
                 }
             }
         }
+    break;
+    case AT_UTHROW:
+    if(window_timer < 3){
+        vsp = -5;
+    }
     break;
 }
 if(get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && super_armor
@@ -539,15 +554,9 @@ with(obj_article_platform){
     }
 }
 stageplatcreate = false;
-var platlocationcheck;
-platlocationcheck = instance_position(x-18*spr_dir, y+2, all);
-if(!variable_instance_exists(platlocationcheck, "player_id") && platlocationcheck != noone){
-    
-}else{
-    var plat;
-    plat = instance_create(x-18*spr_dir, y+2, "obj_article_platform");
-    plat.amStage = false;
-}
+var plat;
+plat = instance_create(x-18*spr_dir, y+2, "obj_article_platform");
+plat.amStage = false;
 #define ground_col(xx, yy)
 return (position_meeting(xx, yy, asset_get("par_block"))
     || position_meeting(xx, yy, asset_get("par_jumpthrough")));
@@ -588,5 +597,7 @@ if(attack == AT_DSPECIAL){
 }
 #define armorlossattack
 armorpoints -= 1;
-armorlossfx = spawn_hit_fx(x, y, djarmorexit);
+if(!hitpause){
+    armorlossfx = spawn_hit_fx(x, y, djarmorexit);
+}
 armorlossfx.depth = -10;

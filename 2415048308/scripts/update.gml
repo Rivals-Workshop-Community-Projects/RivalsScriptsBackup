@@ -150,11 +150,17 @@ if phone_cheats[cheat_flight] == true{
 	}
 }
 
+if has_rune("N"){
+	if shield_down && !has_airdodge && state_cat != SC_HITSTUN{
+		flying();
+	}
+}
+
 if phone_cheats[cheat_infinite_dummy] && instance_exists(dummy){
 	dummy.idle_timer = 0;
 }
 
-if phone_cheats[cheat_rapid] {
+if phone_cheats[cheat_rapid] or has_rune("O"){
 	move_cooldown[AT_NSPECIAL] = 0;
 	if (attack == AT_NSPECIAL){
 		if (window == 2 && window_timer > 10){

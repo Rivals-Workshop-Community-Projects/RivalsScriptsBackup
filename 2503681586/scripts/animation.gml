@@ -14,13 +14,13 @@ if custom_clone {
 					case PS_ROLL_FORWARD:
 						//hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
 						sprite_index = sprite_get("f_rollforward")
-						image_index = round(state_timer / 12) 
+						image_index = floor(state_timer / 12) 
 					break;
 					case PS_TECH_BACKWARD:
 					case PS_ROLL_BACKWARD:
 						//hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
 						sprite_index = sprite_get("f_rollback")
-						image_index = round(state_timer / 12) 
+						image_index = floor(state_timer / 12) 
 					break;
 					
 					//Ground Neutrals		
@@ -28,7 +28,7 @@ if custom_clone {
 					case PS_IDLE:
 						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
 						sprite_index = sprite_get("f_idle")
-						image_index =  round(state_timer / 10) 
+						image_index =  floor(state_timer / 10) 
 					break;
 					case PS_CROUCH:
 						hurtboxID.sprite_index  = sprite_get("f_crouch_hurt")
@@ -49,13 +49,13 @@ if custom_clone {
 					case PS_WALK:
 						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
 						sprite_index = sprite_get("f_walk")
-						image_index =  round(state_timer / 5) 
+						image_index =  floor(state_timer / 5) 
 					break;				
 					case PS_DASH_TURN:
 					case PS_WALK_TURN:
 						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
 						sprite_index = sprite_get("f_turn")
-						image_index = round(state_timer / 3) 
+						image_index = floor(state_timer / 3) 
 					break;
 					case PS_DASH_START:
 						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
@@ -65,7 +65,7 @@ if custom_clone {
 					case PS_DASH:
 						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
 						sprite_index = sprite_get("f_dash")
-						image_index = round(state_timer / 5) 
+						image_index = floor(state_timer / 5) 
 					break;
 					case PS_DASH_STOP:
 						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
@@ -79,7 +79,7 @@ if custom_clone {
 						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
 						sprite_index = sprite_get("f_jump")
 						if 32 > state_timer {
-						image_index = round(state_timer / 13) 
+						image_index = floor(state_timer / 13) 
 						} else {
 							image_index = 2
 						}
@@ -105,7 +105,7 @@ if custom_clone {
 						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
 						sprite_index = sprite_get("f_walljump")
 						if 11 > state_timer {
-							image_index = round(state_timer / 5) 
+							image_index = floor(state_timer / 5) 
 						} else {
 							image_index = 2
 						}
@@ -153,7 +153,7 @@ if custom_clone {
 						hurtboxID.sprite_index  = sprite_get("f_other_hurt")
 						sprite_index = sprite_get("fx_walljump")
 						if 11 > state_timer {
-							image_index = round(state_timer / 5) 
+							image_index = floor(state_timer / 5) 
 						} else {
 							image_index = 2
 						}

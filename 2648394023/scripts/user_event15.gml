@@ -254,6 +254,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.4", "18 January, 2022");
+initHeader("NSpecial - Buffs");
+initSection("Cooldown 40 --> 30.");
+initHeader("DSpecial - Buffs");
+initSection("Angle 50 --> 40.
+Knockback scaling 0.6 --> 0.7.");
+
 initPatch("1.3", "19 November, 2021");
 initHeader("FSpecial - Bugfixes");
 initSection("Prism's hurtbox now obeys a hitbox's Hit Lockout.");

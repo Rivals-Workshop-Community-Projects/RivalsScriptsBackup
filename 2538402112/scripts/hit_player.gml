@@ -8,3 +8,5 @@ if has_rune("G"){
         grov_pounce_foe_id = hit_player_obj
     }
 }
+
+// if my_hitboxID.attack = AT_FAIR && my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_leafy_hit2"))

@@ -85,19 +85,12 @@ if (state == PS_DASH
 		nearbyhitbox = collision_circle( x, y - 30, 30, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone{
 		if nearbyhitbox.player_id != self && nearbyhitbox.hit_priority > 0  {
-			if nearbyhitbox.type == 1 {
 				 set_state(PS_PARRY)
 				 window_timer = 3
                   invince_time = 0
                   with nearbyhitbox {
                   	 hitbox_timer = 0
                   }
-			} else {
-				attack_end()
-	    		set_attack(AT_NSPECIAL)
-	    		window = 2
-	    		window_timer = 1
-			}
      	}
 	}
 	

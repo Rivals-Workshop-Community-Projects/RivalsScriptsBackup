@@ -89,7 +89,7 @@ set_color_profile_slot( 5, 7, 18, 149, 173 ); //Orb/Gear
 // Manaphy
 set_color_profile_slot( 6, 0, 26, 140, 189 ); //Green
 set_color_profile_slot( 6, 1, 13, 88, 148 ); //Red
-set_color_profile_slot( 6, 2, 32, 138, 41 ); //Eye
+set_color_profile_slot( 6, 2, 3, 138, 14 ); //Eye
 set_color_profile_slot( 6, 3, 28, 129, 171 ); //Leaf
 set_color_profile_slot( 6, 4, 196, 94, 111 ); //Mouth
 set_color_profile_slot( 6, 5, 0, 0, 0 ); //EyeBlack
@@ -149,9 +149,9 @@ set_color_profile_slot( 11, 7, 18, 149, 173 ); //Orb/Gear
 // Early Access
 set_color_profile_slot( 12, 0, 83, 122, 62 ); //Green
 set_color_profile_slot( 12, 1, 211, 226, 154 ); //Red
-set_color_profile_slot( 12, 2, 255, 249, 249 ); //Eye
+set_color_profile_slot( 12, 2, 167, 186, 74 ); //Eye
 set_color_profile_slot( 12, 3, 35, 67, 49 ); //Leaf
-set_color_profile_slot( 12, 4, 255, 249, 249 ); //Mouth
+set_color_profile_slot( 12, 4, 211, 226, 154 ); //Mouth
 set_color_profile_slot( 12, 5, 0, 0, 0 ); //EyeBlack
 set_color_profile_slot( 12, 6, 0, 0, 0 ); //EyeBlack2
 set_color_profile_slot( 12, 7, 35, 67, 49 ); //Orb/Gear
@@ -209,7 +209,7 @@ set_color_profile_slot( 17, 7, 18, 149, 173 ); //Orb/Gear
 // Golden
 set_color_profile_slot( 18, 0, 207, 194, 8 ); //Green
 set_color_profile_slot( 18, 1, 194, 204, 204 ); //Red
-set_color_profile_slot( 18, 2, 230, 255, 252 ); //Eye
+set_color_profile_slot( 18, 2, 152, 136, 237 ); //Eye
 set_color_profile_slot( 18, 3, 219, 129, 18 ); //Leaf
 set_color_profile_slot( 18, 4, 196, 94, 111 ); //Mouth
 set_color_profile_slot( 18, 5, 0, 0, 0 ); //EyeBlack

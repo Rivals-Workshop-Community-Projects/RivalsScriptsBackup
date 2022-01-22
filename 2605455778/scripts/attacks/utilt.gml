@@ -98,6 +98,7 @@ set_hitbox_value(AT_UTILT, 3, HG_ANGLE_FLIPPER, 3);
 
 set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_SPRITE, sprite_get("upspecial_proj_swallow"));
 set_hitbox_value(AT_UTILT, 4, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_ANIM_SPEED, .3);
 set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_MASK, 0);
 set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

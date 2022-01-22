@@ -1,11 +1,14 @@
 //Compat
 //dategirl_init = 0;
 //Chatting = true;
-//Hikaru_Title = "Light Bringer";
+Hikaru_Title = "Light Bringer";
 steve_death_message = "Steve went closer to the light";
-//pkmn_stadium_front_img = sprite_get("pkmn_sprite1");
-//pkmn_stadium_back_img = sprite_get("pkmn_sprite2");
+pkmn_stadium_front_img = sprite_get("pkmn_sprite1");
+pkmn_stadium_back_img = sprite_get("pkmn_sprite2");
 //plushForAmber = sprite_get("plushforamber");
+kinniku_front = sprite_get("kinnikufront")
+kinniku_behind = sprite_get("kinnikubehind")
+
 
 //Regular Stuff
 hurtbox_spr = asset_get("ex_guy_hurt_box");

@@ -37,7 +37,7 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, sound_get("swing4"));
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX_FRAME, 8);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, .5);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, .6);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 2);

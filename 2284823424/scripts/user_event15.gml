@@ -402,6 +402,14 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.3", "18 January, 2022");
+initHeader("DTilt - Bugfixes");
+initSection("No longer interrupts certain armored attacks.");
+
+initPatch("2.2", "16 January, 2022");
+initHeader("DTilt - Bugfixes");
+initSection("Now correctly deals knockback at the edge of platforms.");
+
 initPatch("2.1", "20 November, 2021");
 initHeader("NSpecial - Reworks");
 initSection("? Block only appears once the other 7 containers have been exhausted.");

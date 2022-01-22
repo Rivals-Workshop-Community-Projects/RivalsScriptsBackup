@@ -62,7 +62,7 @@ if canTutorial == 1 {
 			
 	//Buttons
 		
-			draw_sprite( sprite_get("hudArrow"), round((get_gameplay_time() % 32) /8), tutorialX - 12, tutorialY + 404 + (tutorialArrow * 20));
+			draw_sprite( sprite_get("hudArrow"), floor((get_gameplay_time() % 32) /8), tutorialX - 12, tutorialY + 404 + (tutorialArrow * 20));
 			
 		shader_end();
 			//Header Text
@@ -113,8 +113,8 @@ if canTutorial == 1 {
 					draw_debug_text(tutorialX + 20, tutorialY + 340, "The grey square is wheter or not Kash (Clownfish) has his airdodge or not." )
 					
 					shader_start();
-					draw_sprite( sprite_get("idle") , round((get_gameplay_time() % 40) / 6.6), tutorialX + 672, tutorialY + 128);
-					draw_sprite( sprite_get("f_idle") , round((get_gameplay_time() % 60) / 8), tutorialX + 672, tutorialY + 220);
+					draw_sprite( sprite_get("idle") , floor((get_gameplay_time() % 40) / 6.6), tutorialX + 672, tutorialY + 128);
+					draw_sprite( sprite_get("f_idle") , floor((get_gameplay_time() % 60) / 8), tutorialX + 672, tutorialY + 220);
 					shader_end();
 				break;
 				
@@ -139,7 +139,7 @@ if canTutorial == 1 {
 					draw_debug_text(tutorialX + 20 , tutorialY + 340, "Extra Hitpause on Tentacle Moves: B/F/N/UAIR, D/F/USTRONG, D/FTILT, FSPECIAL, JAB, and DATTACK " )
 					
 					shader_start();
-					draw_sprite( sprite_get("idle") , round((get_gameplay_time() % 40) / 6.6), tutorialX + 672, tutorialY + 128);
+					draw_sprite( sprite_get("idle") , floor((get_gameplay_time() % 40) / 6.6), tutorialX + 672, tutorialY + 128);
 					shader_end();
 				break;
 				
@@ -154,17 +154,17 @@ if canTutorial == 1 {
 		
 					
 					shader_start();
-					draw_sprite( sprite_get("nspecial") , round((get_gameplay_time() % 60) / (60 / 7) ), tutorialX + 64, tutorialY + 336);
-					draw_sprite_ext(sprite_get("nspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 7) ), tutorialX + 64, tutorialY + 336, 1, 1, 0, c_white, .5)
+					draw_sprite( sprite_get("nspecial") , floor((get_gameplay_time() % 60) / (60 / 7) ), tutorialX + 64, tutorialY + 336);
+					draw_sprite_ext(sprite_get("nspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 7) ), tutorialX + 64, tutorialY + 336, 1, 1, 0, c_white, .5)
 					
-					draw_sprite( sprite_get("ustrong") , round((get_gameplay_time() % 60) / (60 / 6)), tutorialX + 196, tutorialY + 336);
-					draw_sprite_ext(sprite_get("ustrong_hurt"), round((get_gameplay_time() % 60) / (60 / 6) ), tutorialX + 196, tutorialY + 336, 1, 1, 0, c_white, .5)
+					draw_sprite( sprite_get("ustrong") , floor((get_gameplay_time() % 60) / (60 / 6)), tutorialX + 196, tutorialY + 336);
+					draw_sprite_ext(sprite_get("ustrong_hurt"), floor((get_gameplay_time() % 60) / (60 / 6) ), tutorialX + 196, tutorialY + 336, 1, 1, 0, c_white, .5)
 					
-					draw_sprite( sprite_get("uair") , round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 352, tutorialY + 336);
-					draw_sprite_ext(sprite_get("uair_hurt"), round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 352, tutorialY + 336, 1, 1, 0, c_white, .5)
+					draw_sprite( sprite_get("uair") , floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 352, tutorialY + 336);
+					draw_sprite_ext(sprite_get("uair_hurt"), floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 352, tutorialY + 336, 1, 1, 0, c_white, .5)
 					
-					draw_sprite( sprite_get("fspecial") , round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 336);
-					draw_sprite_ext(sprite_get("fspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 336, 1, 1, 0, c_white, .5)
+					draw_sprite( sprite_get("fspecial") , floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 336);
+					draw_sprite_ext(sprite_get("fspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 336, 1, 1, 0, c_white, .5)
 					shader_end();
 				break;
 				
@@ -188,14 +188,14 @@ if canTutorial == 1 {
 					draw_debug_text(tutorialX + 40, tutorialY + 320, "If Mone hits a player, he can jump cancel the fspecial." )
 		
 					shader_start();
-						draw_sprite( sprite_get("throw") , round((get_gameplay_time() % 60) / (60 / 7)), tutorialX + 548, tutorialY + 192);
-						draw_sprite_ext(sprite_get("throw_hurt"), round((get_gameplay_time() % 60) / (60 / 7)), tutorialX + 548, tutorialY + 192, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("throw") , floor((get_gameplay_time() % 60) / (60 / 7)), tutorialX + 548, tutorialY + 192);
+						draw_sprite_ext(sprite_get("throw_hurt"), floor((get_gameplay_time() % 60) / (60 / 7)), tutorialX + 548, tutorialY + 192, 1, 1, 0, c_white, .5)
 						
-						draw_sprite( sprite_get("nspecial") , round((get_gameplay_time() % 60) / (60 / 7)), tutorialX + 672, tutorialY + 256);
-						draw_sprite_ext(sprite_get("nspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 7)), tutorialX + 672, tutorialY + 256, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("nspecial") , floor((get_gameplay_time() % 60) / (60 / 7)), tutorialX + 672, tutorialY + 256);
+						draw_sprite_ext(sprite_get("nspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 7)), tutorialX + 672, tutorialY + 256, 1, 1, 0, c_white, .5)
 					
-						draw_sprite( sprite_get("fspecial") , round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 336);
-						draw_sprite_ext(sprite_get("fspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 336, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("fspecial") , floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 336);
+						draw_sprite_ext(sprite_get("fspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 336, 1, 1, 0, c_white, .5)
 					shader_end();
 				break;
 				
@@ -208,8 +208,8 @@ if canTutorial == 1 {
 					draw_debug_text(tutorialX + 40, tutorialY + 100, "This cancel has set knockback and will work at any %" )
 		
 					shader_start();
-						draw_sprite( sprite_get("uair") , round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 256);
-						draw_sprite_ext(sprite_get("uair_hurt"), round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 256, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("uair") , floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 256);
+						draw_sprite_ext(sprite_get("uair_hurt"), floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 512, tutorialY + 256, 1, 1, 0, c_white, .5)
 					shader_end();
 				break;
 				
@@ -231,11 +231,11 @@ if canTutorial == 1 {
 					draw_debug_text(tutorialX, tutorialY + 320, "Kash can recover his bubble state by being inside of Bubble when he has no bubble" )
 
 					shader_start();
-						draw_sprite( sprite_get("uspecial") , round((get_gameplay_time() % 60) / (60 / 10)), tutorialX + 256, tutorialY + 232);
-						draw_sprite_ext(sprite_get("uspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 10)), tutorialX + 256, tutorialY + 232, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("uspecial") , floor((get_gameplay_time() % 60) / (60 / 10)), tutorialX + 256, tutorialY + 232);
+						draw_sprite_ext(sprite_get("uspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 10)), tutorialX + 256, tutorialY + 232, 1, 1, 0, c_white, .5)
 						
-						draw_sprite( sprite_get("dspecial") , round((get_gameplay_time() % 60) / (60 / 10)), tutorialX + 640, tutorialY + 320);
-						draw_sprite_ext(sprite_get("dspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 10)), tutorialX + 640, tutorialY + 320, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("dspecial") , floor((get_gameplay_time() % 60) / (60 / 10)), tutorialX + 640, tutorialY + 320);
+						draw_sprite_ext(sprite_get("dspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 10)), tutorialX + 640, tutorialY + 320, 1, 1, 0, c_white, .5)
 					shader_end();
 				break;
 				
@@ -255,8 +255,8 @@ if canTutorial == 1 {
 					draw_debug_text(tutorialX + 20, tutorialY + 260, "Kash is freely actionable when ever Mone is in an attack." )
 
 					shader_start();
-					draw_sprite( sprite_get("f_idle") , round((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 672, tutorialY + 128);
-					draw_sprite( sprite_get("f_die") , round((get_gameplay_time() % 21) / (21 / 7)), tutorialX + 672, tutorialY + 160);
+					draw_sprite( sprite_get("f_idle") , floor((get_gameplay_time() % 60) / (60 / 8)), tutorialX + 672, tutorialY + 128);
+					draw_sprite( sprite_get("f_die") , floor((get_gameplay_time() % 21) / (21 / 7)), tutorialX + 672, tutorialY + 160);
 					shader_end();
 				break;
 				
@@ -276,20 +276,20 @@ if canTutorial == 1 {
 					draw_debug_text(tutorialX, tutorialY + 220, "Letting go of a direction when using FAIR reduces Kash's movement" )
 
 					shader_start();
-						draw_sprite( sprite_get("f_nspecial") , round((get_gameplay_time() % 60) / (60 / 12)), tutorialX + 32, tutorialY + 320);
-						draw_sprite_ext(sprite_get("f_nspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 12)), tutorialX + 32, tutorialY + 320, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("f_nspecial") , floor((get_gameplay_time() % 60) / (60 / 12)), tutorialX + 32, tutorialY + 320);
+						draw_sprite_ext(sprite_get("f_nspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 12)), tutorialX + 32, tutorialY + 320, 1, 1, 0, c_white, .5)
 						
-						draw_sprite( sprite_get("f_fspecial") , round((get_gameplay_time() % 60) / (60 / 11)), tutorialX + 128, tutorialY + 320);
-						draw_sprite_ext(sprite_get("f_fspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 11)), tutorialX + 128, tutorialY + 320, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("f_fspecial") , floor((get_gameplay_time() % 60) / (60 / 11)), tutorialX + 128, tutorialY + 320);
+						draw_sprite_ext(sprite_get("f_fspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 11)), tutorialX + 128, tutorialY + 320, 1, 1, 0, c_white, .5)
 						
-						draw_sprite( sprite_get("f_dspecial") , round((get_gameplay_time() % 60) / (60 / 9)), tutorialX + 288, tutorialY + 352);
-						draw_sprite_ext(sprite_get("f_dspecial_hurt"), round((get_gameplay_time() % 60) / (60 / 9)), tutorialX + 288, tutorialY + 352, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("f_dspecial") , floor((get_gameplay_time() % 60) / (60 / 9)), tutorialX + 288, tutorialY + 352);
+						draw_sprite_ext(sprite_get("f_dspecial_hurt"), floor((get_gameplay_time() % 60) / (60 / 9)), tutorialX + 288, tutorialY + 352, 1, 1, 0, c_white, .5)
 						
-						draw_sprite( sprite_get("f_uspecial") , round((get_gameplay_time() % 60) / (30 / 3)), tutorialX + 416, tutorialY + 352);
-						draw_sprite_ext(sprite_get("f_uspecial_hurt"), round((get_gameplay_time() % 60) / (30 / 3)), tutorialX + 416, tutorialY + 352, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("f_uspecial") , floor((get_gameplay_time() % 60) / (30 / 3)), tutorialX + 416, tutorialY + 352);
+						draw_sprite_ext(sprite_get("f_uspecial_hurt"), floor((get_gameplay_time() % 60) / (30 / 3)), tutorialX + 416, tutorialY + 352, 1, 1, 0, c_white, .5)
 						
-						draw_sprite( sprite_get("f_fair") , round((get_gameplay_time() % 60) / (30 / 3)), tutorialX + 512, tutorialY + 320);
-						draw_sprite_ext(sprite_get("f_fair_hurt"), round((get_gameplay_time() % 60) / (30 / 3)), tutorialX + 512, tutorialY + 320, 1, 1, 0, c_white, .5)
+						draw_sprite( sprite_get("f_fair") , floor((get_gameplay_time() % 60) / (30 / 3)), tutorialX + 512, tutorialY + 320);
+						draw_sprite_ext(sprite_get("f_fair_hurt"), floor((get_gameplay_time() % 60) / (30 / 3)), tutorialX + 512, tutorialY + 320, 1, 1, 0, c_white, .5)
 					shader_end();
 				break;
 

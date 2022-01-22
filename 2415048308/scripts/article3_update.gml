@@ -43,33 +43,31 @@ if (state == 2){
         if (knife_angle == 0){
             image_angle = 0;
         }
-        if (state_timer == 1 && knife_hitbox == noone){
+        if (!player_id.hitpause){
         	if knife_angle == 0{
-		knife_hitbox = create_hitbox( AT_FSPECIAL, 1, x + 52*spr_dir, y + 12);
+		create_hitbox( AT_FSPECIAL, 1, x + 42*spr_dir, y + 12);
         	}
         	if knife_angle == 1{
         	if spr_dir == 1{
         		
-		knife_hitbox = create_hitbox( AT_FSPECIAL, 1, x + 52*spr_dir, y - 40);
-        	} else 	knife_hitbox = create_hitbox( AT_FSPECIAL, 1, x + 36*spr_dir, y + 48);
+		create_hitbox( AT_FSPECIAL, 1, x + 38*spr_dir, y - 24);
+        	} else 	create_hitbox( AT_FSPECIAL, 1, x + 26*spr_dir, y + 38);
         	}
         	
         	if knife_angle == -1{
-        		
         	if spr_dir == 1{
-        		
-		knife_hitbox = create_hitbox( AT_FSPECIAL, 1, x + 36*spr_dir, y + 48);
-        	} else knife_hitbox = create_hitbox( AT_FSPECIAL, 1, x + 52*spr_dir, y - 40);
+		create_hitbox( AT_FSPECIAL, 1, x + 26*spr_dir, y + 38);
+        	} else  create_hitbox( AT_FSPECIAL, 1, x + 38*spr_dir, y - 24);
         	}
         }
         if (state_timer == 50){
 		instance_destroy();
 		exit;
         }
-        if (free == false && vsp > 0){
+        if (free == false && vsp > 0 or hit_wall == true){
         	sound_play(asset_get("sfx_shovel_hit_light2"));
         	spawn_hit_fx(x + 20*spr_dir, y + 10, 136);
-			knife_hitbox = noone;
+			
 			instance_destroy();
 			exit;
         	

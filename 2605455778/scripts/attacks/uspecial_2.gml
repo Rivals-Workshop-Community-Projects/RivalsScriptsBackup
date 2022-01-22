@@ -42,6 +42,7 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, rockeggpowfx);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_TYPE, 2); //regular pow
 set_hitbox_value(AT_USPECIAL_2, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_USPECIAL_2, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);

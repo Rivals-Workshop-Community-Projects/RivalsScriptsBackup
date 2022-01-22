@@ -253,6 +253,7 @@ switch(state){
 	case 6:
 		vsp = 0;
 		hsp = 0;
+		wisp_alpha = 0.6;
 		if (cooldown_timer <= 1){
 			var hitfx = spawn_hit_fx(x, y - 35, player_id.hfx_fire3);
 			player_id.mim_wisp = noone;
@@ -265,6 +266,7 @@ switch(state){
 	case 7:
 		vsp = 0;
 		hsp = 0;
+		wisp_alpha = 0.6;
 		if (cooldown_timer <= 1){
 			var hitfx = spawn_hit_fx(x, y - 35, player_id.hfx_fire3);
 			player_id.mim_wisp = noone;
@@ -311,7 +313,7 @@ switch(active){
 			if (!instance_exists(wisp_hitbox) && wisp_hitbox != noone){
 				player_id.mim_wisp.active = false;
 				player_id.mim_wisp.state = 6
-				player_id.mim_wisp.cooldown_timer = 90;
+				player_id.mim_wisp.cooldown_timer = 200;
 			}
 			
 			if (place_meeting(x, y, asset_get("plasma_field_obj"))){

@@ -8,7 +8,7 @@ set_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE, sprite_get("fthrow_hurt"));
 set_attack_value(AT_FTHROW, AG_HURTBOX_AIR_SPRITE, sprite_get("fthrow_air_hurt"));
 
 set_window_value(AT_FTHROW, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 

@@ -58,12 +58,9 @@ if(attack == AT_NSPECIAL){
     }
 }
 //draw_circle_color(x+10*spr_dir, y-30, 10, 1, 1,  false);
-
+shader_start();
 with(obj_article_platform){
-    mag();
-}
-#define mag
-    if(player_id == other){
+        if(player_id == other){
         if (x < view_get_xview()){
             print_debug("left");
             xMag = view_get_xview() + 36;
@@ -86,6 +83,8 @@ with(obj_article_platform){
         }
         draw_sprite_ext(asset_get("offscreen_cloud_bg_spr"), subMag, xMag, view_get_yview()+view_get_hview()-84, spr_dir, 1, 0,
         get_player_hud_color( player ), offscreen);
-        draw_sprite_ext(sprite_get("offscreen_platform"), subMag, xMag, view_get_yview()+view_get_hview()-84, spr_dir, 1, 0,
+        draw_sprite_ext(magwallplattotem, subMag, xMag, view_get_yview()+view_get_hview()-84, spr_dir, 1, 0,
         c_white, offscreen);
     }
+}
+shader_end();

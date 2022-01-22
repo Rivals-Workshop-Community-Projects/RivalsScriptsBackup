@@ -61,6 +61,7 @@ switch(attack)
         if window == 2{
             can_wall_jump = true;
             can_jump = true;
+            can_shield = true;
             // TEST
             // if left_pressed{
             //     if spr_dir == 1 grov_current_nspecial = 1
@@ -99,13 +100,15 @@ switch(attack)
                 window_timer = 0
             }
         }
+        break;
     case AT_FTHROW:
         if free{
             set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_X, 18);
             set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_Y, -22);
             set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_HSPEED, 11);
-            set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_VSPEED, 7);
+            set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_VSPEED, 6);
             set_hitbox_value(AT_FTHROW, 1, HG_LIFETIME, 15);
+            if (window == 2 && window_timer == 1) if vsp > -2 vsp = -2
         }
         else{
             reset_hitbox_value(AT_FTHROW, 1, HG_HITBOX_X);
@@ -121,12 +124,13 @@ switch(attack)
             boom.effect_num = 1
             boom.sprite_index = sprite_get("blastseed_explosion");
             if !has_rune("O") move_cooldown[AT_NTHROW] = 300;
+            if vsp > 0 vsp = 0
         }
         break;
     case AT_FSPECIAL:
         can_move = false
         if (window == 1 && window_timer == 1){
-            grov_fspecial_cooldown = 70;
+            grov_fspecial_cooldown = 50;
         }
         if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
             if spr_dir == 1 grov_wandangle = 0;
@@ -136,23 +140,24 @@ switch(attack)
         if window = 3{
             if !joy_pad_idle{
                 var max_wand_angle = 75
+                var angle_change = 5
                 if up_down{
                     if (grov_wandangle < 90 || grov_wandangle > 270){
-                        grov_wandangle += 5;
+                        grov_wandangle += angle_change;
                         grov_wandangle = min(grov_wandangle, max_wand_angle)
                     }
                     if (grov_wandangle > 90 && grov_wandangle < 270){
-                        grov_wandangle -= 5;
+                        grov_wandangle -= angle_change;
                         grov_wandangle = max(grov_wandangle, 180-max_wand_angle)
                     }
                 }
                 else if down_down{
                     if (grov_wandangle < 90 || grov_wandangle > 270){
-                        grov_wandangle -= 5;
+                        grov_wandangle -= angle_change;
                         grov_wandangle = max(grov_wandangle, -max_wand_angle)
                     }
                     if (grov_wandangle > 90 && grov_wandangle < 270){
-                        grov_wandangle += 5;
+                        grov_wandangle += angle_change;
                         grov_wandangle = min(grov_wandangle, 180+max_wand_angle)
                     }
                 }
@@ -193,7 +198,11 @@ switch(attack)
                 }
                 
                 if grov_pounce_foe{
-                    if free vsp = -5;
+                    if free{
+                        if vsp < 0  vsp = -5;
+                        else        vsp = -3;
+                        djumps = 0;
+                    }
                     else vsp = 0;
                 }
                 else if vsp > 0 vsp = 0;
@@ -353,7 +362,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

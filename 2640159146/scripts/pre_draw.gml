@@ -27,12 +27,7 @@ if get_player_color( player ) == 12 {
     FlagPart(make_colour_rgb(247, 168, 223), 3/5, 1/5); // pink
     FlagPart(c_white, 1/5, 2/5);
     gpu_set_fog(0, c_white, 0, 0);
-}
-if get_player_color( player ) == 13 {
-    FlagPart(c_black, 1/3, 0);
-	FlagPart(c_white, 1/3, 1/3);
-    FlagPart(make_colour_rgb(251, 238, 31), 1/3, 2/3); // yellow
-    gpu_set_fog(0, c_white, 0, 0);
+
 }
 
 if get_player_color( player ) == 19{

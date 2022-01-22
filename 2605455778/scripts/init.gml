@@ -148,6 +148,7 @@ wallPlattotemSpawn = sprite_get("totemPlat_spawn");
 wallplattotemproj = sprite_get("totemPlat_destroyproj");
 stagePlattotem = sprite_get("totemPlat_stage");
 stagePlattotemMask = sprite_get("totemPlat_stage_mask");
+magwallplattotem = sprite_get("offscreen_platform");
 
 canledgecancel = false;
 eggroll_timer_store = 0;

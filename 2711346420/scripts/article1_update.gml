@@ -90,7 +90,8 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_c
 			hitbox_damage = hitbox_hit.damage;
 			//hitbox_sfx = hitbox_hit.sound_effect;
 			hitbox_sfx = asset_get("sfx_blow_heavy1")
-			var hitbox_flipper = hitbox_hit.hit_flipper;
+			//var hitbox_flipper = hitbox_hit.hit_flipper;
+			var hitbox_flipper = 0;
 			
 			//gonna use this to set the hitbox owner to be whoever hit it
 			hit_by = hitbox_hit.player;
@@ -346,6 +347,14 @@ if (state == 0){
 				cur_hitbox.hsp = hsp * 1.5;
 				//cur_hitbox.vsp = vsp * 1.05;
 			}
+			if (hsp > 1){
+				cur_hitbox.kb_angle = 55;
+			} else if (hsp < -1){//>
+				cur_hitbox.kb_angle = 125;
+			} else if (hsp > -1 && hsp < 1){//>
+				cur_hitbox.kb_angle = 90;
+			}
+			//print(cur_hitbox.kb_angle)
 			//in here for if someone else hits the ball
 			cur_hitbox.player = hit_by; //Set who the owner of the Monkey Ball is
 			should_spawn_hitbox = false;
@@ -398,11 +407,15 @@ if (state == 0){
 		player_id.monkeyBall = noone;
 		player_id.monkey_ball_can_be_rode = false;
 		monkey_ball_hit_cooldown = 0;
+		player_id.move_cooldown[AT_NSPECIAL] = 15;
+		player_id.move_cooldown[AT_FSPECIAL] = 15;
+		player_id.move_cooldown[AT_USPECIAL] = 15;
+		player_id.move_cooldown[AT_DSPECIAL] = 15;
 		instance_destroy();
 		exit;
 	}
 	
-	if(hey_did_i_get_parried == true){
+	if (hey_did_i_get_parried == true){
 		print("Monkey Ball despawned")
 		sound_stop(player_id.sfx_monkey_ball_2_pop);
 		sound_play(player_id.sfx_monkey_ball_2_pop);
@@ -425,6 +438,10 @@ if (state == 0){
 		player_id.monkeyBall = noone;
 		player_id.monkey_ball_can_be_rode = false;
 		monkey_ball_hit_cooldown = 0;
+		player_id.move_cooldown[AT_NSPECIAL] = 15;
+		player_id.move_cooldown[AT_FSPECIAL] = 15;
+		player_id.move_cooldown[AT_USPECIAL] = 15;
+		player_id.move_cooldown[AT_DSPECIAL] = 15;
 		instance_destroy();
 		exit;
 	}
