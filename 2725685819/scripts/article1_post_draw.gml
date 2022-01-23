@@ -1,0 +1,1 @@
+// draw_sprite_ext(sprite_get("nspecial_proj_rb"), image_index, x , y, 1 * spr_dir, 1, 0, player_id.color_hsv, 1);

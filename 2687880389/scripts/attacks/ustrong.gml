@@ -47,13 +47,13 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HSPEED_TYPE, 2);
 
 // recoil
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 10); // 8
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 
 // return to jump pose
-set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 3); // 3
 set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 9);
@@ -77,9 +77,9 @@ set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.9); // 0.8
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.9); // 0.8
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, blast_hit_effect);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 
@@ -100,9 +100,9 @@ set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0.9); // 0.8
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0.9); // 0.8
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, blast_hit_effect);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 

@@ -89,9 +89,9 @@ for (var i = 1; i <= (num_dstrong_hitboxes - 1); i++) {
 // Final hit
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_DAMAGE, 6);
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_ANGLE, 50);
-set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_BASE_KNOCKBACK, 8); // 6
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_KNOCKBACK_SCALING, 1.05);
-set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_BASE_HITPAUSE, 8); // 6
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_HITPAUSE_SCALING, 1.05);
 set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_VISUAL_EFFECT, 304);
 //set_hitbox_value(AT_DSTRONG, num_dstrong_hitboxes, HG_VISUAL_EFFECT_X_OFFSET, 10);

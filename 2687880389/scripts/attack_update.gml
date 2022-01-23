@@ -573,11 +573,13 @@ if (attack == AT_DTILT) {
 }
 */
 
+/*
 if (attack == AT_DATTACK) {
-	if (window >= 3) {
+	if ((window >= 2) && (has_hit) && (!was_parried)) {
 		can_jump = true;
 	}
 }
+*/
 
 /*
 if (attack == AT_DTHROW) {
@@ -663,6 +665,8 @@ if (attack == AT_USTRONG) {
 	{
 		sliding_speed += (spr_dir * sliding_speed_accel);
 		hsp = sliding_speed;
+	} else if (window >= 5) { // dampen movement during endlag
+		hsp *= 0.85;
 	} else {
 		sliding_speed = hsp;
 	}

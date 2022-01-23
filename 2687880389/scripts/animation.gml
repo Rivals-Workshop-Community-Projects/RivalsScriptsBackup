@@ -86,6 +86,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	            //super_armor = true;
 	            // Prevent the opponent from acting
 	            //state = PS_HITSTUN;
+	            set_state(PS_HITSTUN);
 	            // Not sure what the difference between this and setting state to hitpause is
 	            hitpause = true;
 	            // This is how many frames to stay in hitpause. Refresh it to 2 every cycle of this move

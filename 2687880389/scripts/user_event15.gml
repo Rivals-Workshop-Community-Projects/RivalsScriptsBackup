@@ -364,8 +364,8 @@ with phone{
 	initTipImage(player_id.spr_crouchmoving, -5, fa_center, 1, c_white, 5);
 	//initTipImage(player_id.spr_crouchmoving, -5, fa_center, 1, c_white, 3);
 	
-	initTip("Energy Meter");
-	initTipWords("fspecial costs half the max energy meter.
+	initTip("The Energy Meter");
+	initTipWords("fspecial costs half the max energy meter - at least one circle needs to be filled in to use it.
 				  uspecial slowly consumes energy while in use.
 				  Energy begins to recharge when you touch the ground, wall, or get hit.
 				  Energy will continue to recharge until you use a move that spends it - don't feel stuck to the ground!");
@@ -380,8 +380,15 @@ with phone{
 	initTipImage(player_id.spr_nspecial, 5, fa_center, 1, c_white, 5);
 	//initTipImage(player_id.spr_nspecial, 5, fa_center, 1, c_white, 1);
 	
+	initTip("Strong options");
+	initTipWords("You can move left or right while spinning during dstrong.
+				  You can aim fstrong up or down to change knockback angle, damage, and how far Retroblast is pushed back.
+				  fstrong also has an active hibox for a little while during the move, so it's possible to hit an opponent while flying backward.");
+	initTipImage(player_id.spr_dstrong, -5, fa_center, 1, c_white, 5);
+	//initTipImage(player_id.spr_nspecial, 5, fa_center, 1, c_white, 1);
+	
 	initTip("dspecial: Ramming Speed");
-	initTipWords("Can be charged to give super armor for one hit.
+	initTipWords("Can be charged to give super armor for one hit and increases the distance covered.
 				  Using the move earlier/later doesn't give any bonus damage.");
 	initTipImage(player_id.spr_dspecial, 7, fa_center, 1, c_white, 5);
 	//initTipImage(player_id.spr_dspecial, 7, fa_center, 1, c_white, 0);
@@ -523,6 +530,27 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+
+	initPatch("1.7", "22 Jan, 2022");
+	initPatchWords_ext("Make the strongs stronger!", fa_left, c_gray, 1, 0);
+	initPatchWords("Balance
+					- Added horizontal momentum to jab
+					- Reduced dattack horizontal distance covered
+					- Can no longer jump-cancel dattack (resolves bug of being able to jump out of dattack even if parried)
+					- Increased ustrong scaling kb (0.8->0.9)
+					- Increased fstrong base kb (7->7.3) and equalized/increased scaling kb (0.85/0.9/0.95->1.1) for all angles
+					- Increased dstrong base kb (6->8)
+					- Increased ustrong endlag (11->13, 17->20 on whiff)
+					- Applied horizontal movement dampening during ustrong endlag (1(none)->0.85)
+					- Increased dspecial scaling kb (0.8->0.85)
+					Presentation
+					- Added tip for fstrong/dstrong options
+					- Updated dspecial tip to mention distance difference when charged
+					- Tweaked held opponent's state, should now always use hurt sprite
+					Misc.
+					- Tweaked AI move selection
+					- Gave AI consideration for distance to opponent when performing dspecial to determine charge
+					Thanks to Opengunner and TGP for suggestions");
 	
 	initPatch("1.6", "10 Jan, 2022");
 	initPatchWords_ext("Another balance/cleanup pass, largely nerfs.", fa_left, c_gray, 1, 0);
@@ -530,7 +558,7 @@ with phone{
 					- Fixed hurtbox on the first frame after dspecial/dstrong being idle instead of crouch
 					- Fixed issue of dspecial/dstrong sometimes having idle hurtbox throughout the whole move
 					- Cleaned up some grab/throw animation code so held opponents should move more reliably
-					- Opponents should no longer be able to dodge while held, this should fix 'dropped opponent' issues
+					- Opponents should no longer be able to dodge while held, this should fix 'dropped opponent' issues - Found by A completely sane man./snappystunner/Succ
 					Balance
 					- Dspecial now travels faster at full charge, covering more distance
 					- Removed 'pity' energy refill amount on hit (1/8th max -> 0)

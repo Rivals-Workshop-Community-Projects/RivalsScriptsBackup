@@ -306,6 +306,26 @@ set_color_profile_slot( 27, 5, 111, 0, 255 ); //hands
 set_color_profile_slot( 27, 6, 174, 0, 255 ); //connectors
 set_color_profile_slot( 27, 7, 111, 0, 255 ); //feet
 
+// Mettaton EX
+set_color_profile_slot( 28, 0, 255, 204, 16 ); //energy
+set_color_profile_slot( 28, 1, 51, 51, 51 ); //helmet
+set_color_profile_slot( 28, 2, 255, 204, 16 ); //visor
+set_color_profile_slot( 28, 3, 207, 207, 207 ); //flesh
+set_color_profile_slot( 28, 4, 255, 51, 228 ); //torso
+set_color_profile_slot( 28, 5, 207, 207, 207 ); //hands
+set_color_profile_slot( 28, 6, 51, 51, 51 ); //connectors
+set_color_profile_slot( 28, 7, 255, 51, 228 ); //feet
+
+// Queen
+set_color_profile_slot( 29, 0, 94, 255, 31 ); //energy
+set_color_profile_slot( 29, 1, 0, 136, 255 ); //helmet
+set_color_profile_slot( 29, 2, 51, 51, 51 ); //visor
+set_color_profile_slot( 29, 3, 255, 255, 255 ); //flesh
+set_color_profile_slot( 29, 4, 0, 136, 255 ); //torso
+set_color_profile_slot( 29, 5, 0, 136, 255 ); //hands
+set_color_profile_slot( 29, 6, 255, 255, 255 ); //connectors
+set_color_profile_slot( 29, 7, 51, 51, 51 ); //feet
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

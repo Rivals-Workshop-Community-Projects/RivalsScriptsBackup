@@ -259,6 +259,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.5", "22nd January, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed NSpecial charge not going away on death");
+
 initPatch("1.5", "13th January, 2022");
 initHeader("Fixes / Other Changes");
 initSection("- Fixed DAttack not having whifflag");

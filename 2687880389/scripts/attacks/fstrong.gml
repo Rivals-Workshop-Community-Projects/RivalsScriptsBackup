@@ -129,28 +129,28 @@ for (var i = 0; i < 3; i++) {
 for (var i = 1; i <= 2; i++) {
     set_hitbox_value(AT_FSTRONG, i, HG_DAMAGE, 13);
     set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 55);
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7);
-    set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 0.9);
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7);
-    set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 0.9);
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.5); // 7
+    set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.1); // 0.9
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.5); // 7
+    set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 1.1); // 0.9
 }
 // High
 for (var i = 3; i <= 4; i++) {
     set_hitbox_value(AT_FSTRONG, i, HG_DAMAGE, 14);
     set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 70);
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7);
-    set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 0.95);
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7);
-    set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 0.95);
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.5); // 7
+    set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.1); // 0.95
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.5); // 7
+    set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 1.1); // 0.95
 }
 // Low
 for (var i = 5; i <= 6; i++) {
     set_hitbox_value(AT_FSTRONG, i, HG_DAMAGE, 12);
     set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 40);
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7);
-    set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 0.85);
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7);
-    set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 0.85);
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.5); // 7
+    set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.1); // 0.85
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.5); // 7
+    set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 1.1); // 0.85
 }
 
 // Make the hitbox placement self-adjust with angle

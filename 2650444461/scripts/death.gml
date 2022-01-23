@@ -1,1 +1,2 @@
-// called when the character gets KO'd
+nspecialcharge = 0;
+nspecialcharge2 = 0;

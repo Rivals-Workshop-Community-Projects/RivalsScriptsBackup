@@ -15,6 +15,8 @@ set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_JAB, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_JAB, 2, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_JAB, 2, AG_WINDOW_HSPEED, 4);
 
 // Recoil
 set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 11); // 9
@@ -36,6 +38,8 @@ set_window_value(AT_JAB, 4, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 5);
 
 // Recoil
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 9);

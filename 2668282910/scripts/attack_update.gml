@@ -353,7 +353,7 @@ if (attack == AT_FSPECIAL){
     
     //Makes so you can FSpecial back to the stage and not get stuck on the wall (thanks Supersonic!)
     if (window > 2){
-        var max_height = 32;
+        var max_height = 40;
         if place_meeting(x+hsp,y+vsp,asset_get("par_block")) { //check if you're about to collide with a wall
           for (var i = 0; i < max_height; i += 2) { //increase y shift
             if !place_meeting(x+hsp,y+vsp-i,asset_get("par_block")) { //if you are no longer colliding with the ground at that y shift
