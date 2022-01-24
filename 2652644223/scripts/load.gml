@@ -9,6 +9,7 @@ sprite_change_offset("dash", 116, 142);
 sprite_change_offset("dashstart", 116, 142);
 sprite_change_offset("dashstop", 116, 142);
 sprite_change_offset("dashturn", 116, 142);
+sprite_change_offset("intro", 116, 142);
 
 sprite_change_offset("hurt", 116, 142);
 sprite_change_offset("hurtground", 116, 142);
@@ -72,3 +73,5 @@ sprite_change_offset("dtilt_proj", 116, 142);
 sprite_change_offset("reload_input", 118, 142);
 sprite_change_offset("scarf_fire", 106, 100);
 sprite_change_offset("miiverse", 60, 30);
+sprite_change_offset("Kinniku_Behind", 140, 190);
+sprite_change_offset("Kinniku_Front", 140, 190);

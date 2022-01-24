@@ -73,6 +73,15 @@ miiverse_post = sprite_get("miiverse");
 ncode1 = "Doesn't seem to come from here.";
 ncode2 = "Technology has far advanced our times.";
 ncode3 = "Too dangerous to be kept alive. Exterminate.";
+kinniku_behind = sprite_get("Kinniku_Behind");
+kinniku_front = sprite_get("Kinniku_Front");
+
+// intro
+introTimer = -4;
+introText = "";
+introText2 = "";
+countPlayers = 0;
+enemyObj = noone;
 
 char_height = 58;
 idle_anim_speed = .1;

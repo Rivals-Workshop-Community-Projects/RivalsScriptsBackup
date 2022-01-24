@@ -28,6 +28,7 @@ switch(state)
     case PS_PRATFALL:
         scarf_front = true;
         break;
+    case PS_HITSTUN:
     case PS_SPAWN:
     case PS_RESPAWN:
         scarf_off = true;

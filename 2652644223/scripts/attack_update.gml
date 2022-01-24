@@ -80,7 +80,7 @@ if (attack == AT_NSPECIAL){
     if (window == 2)
     {  
         if(window_timer == 1)
-        { sound_play(sound_get("revolver_shot"));  bullets --; }
+        { sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40));  bullets --; }
     }
     move_cooldown[AT_NSPECIAL] = 15;
 }
@@ -216,7 +216,7 @@ if(attack == AT_JAB)
     {
         if(hitpause)
             window_timer = 2;
-        sound_play(sound_get("revolver_shot"));
+        sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40));
         bullets --;
     }
 }
@@ -233,13 +233,13 @@ if(attack == AT_BAIR || attack == AT_DAIR)
 {
     if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
      || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 3 && bullets > 0 && !hitpause && free)
-    { window = 4; window_timer = 0; destroy_hitboxes(); if(attack==AT_BAIR){vsp = -4; hsp = 3*spr_dir;}else vsp = -6; sound_play(sound_get("revolver_shot")); bullets--;}
+    { window = 4; window_timer = 0; destroy_hitboxes(); if(attack==AT_BAIR){vsp = -4; hsp = 3*spr_dir;}else vsp = -6; sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40)); bullets--;}
 }
 if(attack == AT_UAIR)
 {
     if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
     || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 2 && window_timer > 5 && bullets > 0 && !hitpause && free)
-    { window = 4; window_timer = 0; vsp += 2; destroy_hitboxes(); sound_play(sound_get("revolver_shot")); bullets--;}
+    { window = 4; window_timer = 0; vsp += 2; destroy_hitboxes(); sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40)); bullets--;}
 }
 if(attack == AT_USTRONG)
 {   
@@ -251,7 +251,7 @@ if(attack == AT_USTRONG)
     }
     if(window == 2 && window_timer == 12)
     {
-        sound_play(sound_get("revolver_shot"));
+        sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40));
         bullets --;
     }
 }
@@ -295,7 +295,7 @@ if(attack == AT_DSTRONG)
             if(hitpause)
                 window_timer += 2;
             bullets --;
-            sound_play(sound_get("revolver_shot"));
+            sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40));
         }
         if(window_timer == 10 && bullets == 0)
         {
@@ -357,6 +357,8 @@ if(attack == AT_DTILT)
                 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_Y, -9999);
         }
     }
+    if(window == 2 && window_timer == 4)
+        sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40));
     if(window == 3)
     {
         if(window_timer <= 1)
