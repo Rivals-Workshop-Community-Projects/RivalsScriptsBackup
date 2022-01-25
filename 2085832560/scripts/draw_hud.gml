@@ -30,7 +30,10 @@ if state == PS_RESPAWN {
         
         if state_timer < 120 {
             if state_timer%8 == 0 {
-                sound_play(sound_get("beepv2"))
+                sound_play(sound_get("beepv2"),false,noone,.75*casing)
+            }
+            if state_timer%2 == 0 {
+                sound_play(asset_get("mfx_orby_talk"),false,noone,1-casing)
             }
          gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_get("nc5"), 3 + (state_timer%10)/5, temp_x - 42 + random_func(2,4,true), temp_y - 112 + random_func(2,4,true),1.5,1.5,0,-1,.4 );

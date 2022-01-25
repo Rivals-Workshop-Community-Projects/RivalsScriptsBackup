@@ -1,10 +1,29 @@
 //ai_update - called every frame for this character as a CPU
 if (get_training_cpu_action() == CPU_FIGHT) && get_gameplay_time() > 120{	
  
+  if get_player_color(player) == 1  {
+  hunter = 1
+  }
+
+   attacking = true
+   
+   casing = 1
+
+ if get_gameplay_time() % 60 == random_func(2,60,true) {
+ 	if infernal2 < 290 {
+ 	infernal2 += 25
+ 	}
+        gunname = 1 + random_func(1,13,true)
+        spawn_hit_fx( x, y - 30, stylec )
+ 		
+ 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.75,1.1);
+ 		
+ }
+ 
 if gunname = 0 {
-	casing = 1
 	choosengun = 0
 }
+
 if attack == AT_FSPECIAL {
 	if x > ai_target.x && !ai_recovering {
 		spr_dir = -1
@@ -80,7 +99,6 @@ if attack == AT_EXTRA_2 && window >= 21 {
 	
 }
   if attack == AT_NSPECIAL && window == 2 {
-  	  gunname = 1 + random_func(1,13,true)
   	  sound_play(asset_get("mfx_back"))
   	  if state_timer > 30 {
   	  attack_pressed = true

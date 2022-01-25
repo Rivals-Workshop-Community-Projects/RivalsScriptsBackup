@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 61, 6, 14 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 21 );
 
 // Gold Fool
 set_color_profile_slot( 1, 0, 255, 179, 0 ); //Enegy/blood
@@ -216,15 +216,25 @@ set_color_profile_slot( 18, 5, 115, 255, 253 ); //Robe
 set_color_profile_slot( 18, 6, 255, 115, 184 ); //Underrobe
 set_color_profile_slot( 18, 7, 255, 255, 255 ); //Eye
 
-// Mayonnaise
-set_color_profile_slot( 19, 0, 255, 250, 222 ); //Enegy/blood
-set_color_profile_slot( 19, 1, 33, 70, 158 ); //Hair
-set_color_profile_slot( 19, 2, 255, 253, 235 ); //Fur
-set_color_profile_slot( 19, 3, 237, 120, 116 ); //Irises
-set_color_profile_slot( 19, 4, 255, 248, 36 ); //Mouth/ear
-set_color_profile_slot( 19, 5, 255, 249, 66 ); //Robe
-set_color_profile_slot( 19, 6, 33, 70, 158 ); //Underrobe
+// Tagia
+set_color_profile_slot( 19, 0, 255, 216, 43 ); //Enegy/blood
+set_color_profile_slot( 19, 1, 255, 220, 64 ); //Hair
+set_color_profile_slot( 19, 2, 255, 236, 166 ); //Fur
+set_color_profile_slot( 19, 3, 52, 207, 78 ); //Irises
+set_color_profile_slot( 19, 4, 52, 207, 78 ); //Mouth/ear
+set_color_profile_slot( 19, 5, 46, 191, 69 ); //Robe
+set_color_profile_slot( 19, 6, 15, 61, 37 ); //Underrobe
 set_color_profile_slot( 19, 7, 255, 255, 255 ); //Eye
+
+// Mayonnaise
+set_color_profile_slot( 20, 0, 255, 250, 222 ); //Enegy/blood
+set_color_profile_slot( 20, 1, 33, 70, 158 ); //Hair
+set_color_profile_slot( 20, 2, 255, 253, 235 ); //Fur
+set_color_profile_slot( 20, 3, 237, 120, 116 ); //Irises
+set_color_profile_slot( 20, 4, 255, 248, 36 ); //Mouth/ear
+set_color_profile_slot( 20, 5, 255, 249, 66 ); //Robe
+set_color_profile_slot( 20, 6, 33, 70, 158 ); //Underrobe
+set_color_profile_slot( 20, 7, 255, 255, 255 ); //Eye
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

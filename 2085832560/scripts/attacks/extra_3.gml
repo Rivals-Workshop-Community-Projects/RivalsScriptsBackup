@@ -235,9 +235,9 @@ set_hitbox_value(AT_EXTRA_3, 6, HG_PRIORITY, 3);
 set_hitbox_value(AT_EXTRA_3, 6, HG_DAMAGE, 1);
 set_hitbox_value(AT_EXTRA_3, 6, HG_ANGLE, 270);
 set_hitbox_value(AT_EXTRA_3, 6, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_EXTRA_3, 6, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_EXTRA_3, 6, HG_BASE_KNOCKBACK, 12);
 set_hitbox_value(AT_EXTRA_3, 6, HG_KNOCKBACK_SCALING, 0.1);
-set_hitbox_value(AT_EXTRA_3, 6, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(AT_EXTRA_3, 6, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_EXTRA_3, 6, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_EXTRA_3, 6, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 set_hitbox_value(AT_EXTRA_3, 6, HG_HITBOX_GROUP, -1);
@@ -245,7 +245,7 @@ set_hitbox_value(AT_EXTRA_3, 6, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_3, 6, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_EXTRA_3, 6, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_3, 6, HG_PROJECTILE_DOES_NOT_REFLECT, true);
-set_hitbox_value(AT_EXTRA_3, 6,  HG_TECHABLE, 2);
+set_hitbox_value(AT_EXTRA_3, 6, HG_TECHABLE, 2);
 ///Explosion
 
 set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_TYPE, 2);
@@ -432,6 +432,43 @@ set_hitbox_value(AT_EXTRA_3, 23, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_3, 23, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 
+set_hitbox_value(AT_EXTRA_3, 24, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_EXTRA_3, 24, HG_WINDOW, 4);
+set_hitbox_value(AT_EXTRA_3, 24, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_EXTRA_3, 24, HG_LIFETIME, 8);
+set_hitbox_value(AT_EXTRA_3, 24, HG_HITBOX_X, 12);
+set_hitbox_value(AT_EXTRA_3, 24, HG_HITBOX_Y, -10);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PRIORITY, 1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_SPRITE, sprite_get("empty"));
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_AIR_FRICTION, 0.00);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_HSPEED, 0);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_GRAVITY, 0);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_ANIM_SPEED, 0.45);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_WIDTH, 150);
+set_hitbox_value(AT_EXTRA_3, 24, HG_HEIGHT, 120);
+set_hitbox_value(AT_EXTRA_3, 24, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PRIORITY, 1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_DAMAGE, 5);
+set_hitbox_value(AT_EXTRA_3, 24, HG_ANGLE, 60);
+set_hitbox_value(AT_EXTRA_3, 24, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_EXTRA_3, 24, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_EXTRA_3, 24, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_BASE_HITPAUSE, 11);
+set_hitbox_value(AT_EXTRA_3, 24, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_EXTRA_3, 24, HG_HIT_SFX, asset_get("sfx_burnapplied"));
+set_hitbox_value(AT_EXTRA_3, 24, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_EXTRA_3, 24, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+
+
 //Uair 
 
 set_hitbox_value(AT_EXTRA_3, 10, HG_HITBOX_TYPE, 2);
@@ -497,7 +534,7 @@ set_hitbox_value(AT_EXTRA_3, 11, HG_DAMAGE, 3);
 set_hitbox_value(AT_EXTRA_3, 11, HG_ANGLE, 90);
 set_hitbox_value(AT_EXTRA_3, 11, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_EXTRA_3, 11, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_EXTRA_3, 11, HG_KNOCKBACK_SCALING, 0.75);
+set_hitbox_value(AT_EXTRA_3, 11, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_EXTRA_3, 11, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_EXTRA_3, 11, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_EXTRA_3, 11, HG_HIT_SFX, asset_get("sfx_burnapplied"));

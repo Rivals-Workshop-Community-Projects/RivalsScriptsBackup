@@ -265,6 +265,7 @@ if attack == AT_DATTACK {
     
     
         if window == 2 && free {
+        	sound_play(asset_get("sfx_clairen_swing_mega_instant"));
              set_attack (AT_FAIR)
         window = 2
         window_timer = 0
@@ -507,7 +508,7 @@ if attack == AT_USPECIAL {
      if window == 6 && window_timer == 1 {
      	    sound_play(sound_get("exp2"));
             spawn_hit_fx( x + (30 * spr_dir) , y - 10, exp1 )
-            create_hitbox(AT_EXTRA_3 , 23 , x + (32 * spr_dir) , y - 14 );
+            create_hitbox(AT_EXTRA_3 , 24 , x + (32 * spr_dir) , y - 14 );
         }   
 	
 }
@@ -882,29 +883,39 @@ if window == 1 && window_timer == 1{
 	       
 
 	        if down_pressed  {
+	        	move_cooldown[AT_UTHROW] = 0
+	        	move_cooldown[AT_DTHROW] = 15
 	        	gunname += 1
 	        	sound_play(asset_get("mfx_back"))
 	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
 	        
 	        if up_pressed {
+	        	move_cooldown[AT_DTHROW] = 0
+	        	move_cooldown[AT_UTHROW] = 15
 	        	gunname -= 1
 	        	sound_play(asset_get("mfx_back"))
 	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
 	        
 	        if left_pressed {
+	        	move_cooldown[AT_DTHROW] = 0
+	        	move_cooldown[AT_UTHROW] = 15
 	        	gunname -= 4
 	        	sound_play(asset_get("mfx_back"))
 	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
 	        
 	        if right_pressed {
+	        	move_cooldown[AT_UTHROW] = 0
+	        	move_cooldown[AT_DTHROW] = 15
 	        	gunname += 4
 	        	sound_play(asset_get("mfx_back"))
 	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
-	        if left_down or down_down {
+	    }
+	    
+	        if move_cooldown[AT_DTHROW] > 0 {
 	        if gunname == 4 && t21 != 0 gunname ++
 	        if gunname == 5 && t22 != 0 gunname ++
 	        if gunname == 6 && t23 != 0 gunname ++
@@ -917,7 +928,8 @@ if window == 1 && window_timer == 1{
 	        if gunname == 12 && t35 != 0 gunname ++
 	        if gunname == 13 && t36 != 0 gunname ++
 	        }
-	        if right_down or up_down {
+	        
+	        if move_cooldown[AT_UTHROW] > 0 {
 	        if gunname == 4 && t21 != 0 gunname --
 	        if gunname == 5 && t22 != 0 gunname --
 	        if gunname == 6 && t23 != 0 gunname --
@@ -931,7 +943,7 @@ if window == 1 && window_timer == 1{
 	        if gunname == 13 && t36 != 0 gunname --
 	        }
 	        
-	    }
+	    
 	    
 	    	
 	    

@@ -1,4 +1,6 @@
 
+
+
 if bursted != 0 && down_down {
 	move_cooldown[AT_DSPECIAL] = 5
 }
@@ -754,6 +756,7 @@ if state == PS_DOUBLE_JUMP {
 
 if infernal2 > 301{
 	 if get_player_color(player) == 1 && hunter == 1 {
+	 	sound_stop(sound_get("Dmax"))	
 	 	sound_play(sound_get("Dmax"));
 	 }	
 	spawn_hit_fx( x , y - 30, 306 )
