@@ -173,7 +173,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX,  asset_get("sfx_bubblepop"));
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 4); //6
 
 //3-5
 set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_NAME, "3 - 5");
@@ -196,7 +196,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX,  asset_get("sfx_may_arc_hit"));
-set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 4); //6
 
 //6-8
 set_hitbox_value(AT_DSPECIAL, 3, HG_MUNO_HITBOX_NAME, "6 - 8");
@@ -219,7 +219,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX,  asset_get("sfx_may_arc_hit"));
-set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE_FLIPPER, 4); //6
 
 //9-11
 set_hitbox_value(AT_DSPECIAL, 4, HG_MUNO_HITBOX_NAME, "9 - 11");
@@ -241,7 +241,7 @@ set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX,  asset_get("sfx_absa_harderhit"));
-set_hitbox_value(AT_DSPECIAL, 4, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSPECIAL, 4, HG_ANGLE_FLIPPER, 4); //6
 
 //12-14
 set_hitbox_value(AT_DSPECIAL, 5, HG_MUNO_HITBOX_NAME, "12 - 14");
@@ -263,7 +263,7 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX,  asset_get("sfx_absa_harderhit"));
-set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE_FLIPPER, 4); //6
 
 //15-17
 set_hitbox_value(AT_DSPECIAL, 6, HG_MUNO_HITBOX_NAME, "15 - 17 (Hit 1)");
@@ -306,7 +306,7 @@ set_hitbox_value(AT_DSPECIAL, 7, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSPECIAL, 7, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_DSPECIAL, 7, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 7, HG_HIT_SFX,  asset_get("sfx_absa_uair"));
-set_hitbox_value(AT_DSPECIAL, 7, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSPECIAL, 7, HG_ANGLE_FLIPPER, 4); //6
 set_hitbox_value(AT_DSPECIAL, 7, HG_HITBOX_GROUP, 1);
 
 //18-20
@@ -350,7 +350,7 @@ set_hitbox_value(AT_DSPECIAL, 9, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSPECIAL, 9, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSPECIAL, 9, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 9, HG_HIT_SFX,  asset_get("sfx_absa_uair"));
-set_hitbox_value(AT_DSPECIAL, 9, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSPECIAL, 9, HG_ANGLE_FLIPPER, 4); //6
 set_hitbox_value(AT_DSPECIAL, 9, HG_HITBOX_GROUP, 1);
 
 //21
@@ -484,5 +484,5 @@ set_hitbox_value(AT_DSPECIAL, 15, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSPECIAL, 15, HG_HITPAUSE_SCALING, 1.1);
 set_hitbox_value(AT_DSPECIAL, 15, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 15, HG_HIT_SFX,  asset_get("sfx_fish_collect"));
-set_hitbox_value(AT_DSPECIAL, 15, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSPECIAL, 15, HG_ANGLE_FLIPPER, 3); //6
 set_hitbox_value(AT_DSPECIAL, 15, HG_HITBOX_GROUP, -1);

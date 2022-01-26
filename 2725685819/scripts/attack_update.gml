@@ -202,7 +202,7 @@ switch(attack){
 	
 	
 	case AT_FSPECIAL:
-	
+	move_cooldown[AT_FSPECIAL]= 20;
 	if (window == 1)
 	{
 		
@@ -354,7 +354,6 @@ switch(attack){
 		if (window <= 2){
 			
 		if has_hit_player && !was_parried{
-		can_jump = true;
 		can_ustrong = true;
 			
 		}
@@ -425,20 +424,31 @@ switch(attack){
 			jc_object = instance_create( x + (75 * spr_dir), y - 40, "obj_article1" );
 			
 			if (jc_buff){
-			jc_object =	instance_create( grabbed_player.x, grabbed_player.y - 40, "obj_article1" );
+				if (instance_exists(grabbed_player))
+				jc_object =	instance_create( grabbed_player.x, grabbed_player.y - 40, "obj_article1" );
 			}
 			
 		}
 		
-		if (window == 1){
+		if (window <= 2){
 			
 	
 			
 		can_fast_fall = false;
-		vsp = clamp(vsp,-5, 5);
-		hsp = clamp(hsp,-5, 5);
+		if free
+		vsp *= 0.9;
+		
+		hsp = clamp(hsp,-10, 10);
 		}
 		
+		if (window == 3 && window_timer == 1 && free)
+		{
+			if !jc_buff
+			vsp = -2;
+			else
+			vsp = 0;
+		
+		}
 		can_move = false;
 	break;
 	
@@ -464,8 +474,12 @@ switch(attack){
 			fspec_charge++;
 		}
 		
-		vsp = clamp(vsp,-5, 5);
-		hsp = clamp(hsp,-5, 5);
+		if free
+		vsp *= 0.8;
+		
+		hsp = clamp(hsp,-10, 10);
+		
+		
 		
 		if (window_timer == 13)
 		{
@@ -486,6 +500,15 @@ switch(attack){
 			
 		}
 		
+	}
+	
+	if (window == 2 && window_timer == 1 && free)
+	vsp = -3;
+	
+	if (window == 3 && free)
+	{
+		if (vsp > 0)
+		vsp -= 0.1;
 	}
 	
 		
@@ -534,10 +557,14 @@ switch(attack){
 			
 			
 			if (!has_rune("G")){
+				if (grabbed_player.state == PS_RESPAWN)
+				grabbed_player = noone;
+				
+				if (grabbed_player != noone){
 				x = grabbed_player.x - (50*spr_dir);
 				y = grabbed_player.y;
-				hsp = 0;
-				vsp = -0;
+				}
+				
 				//print_debug(string(trick_fall));
 				if (grabbed_player.state_cat == SC_HITSTUN){
 					
@@ -553,6 +580,8 @@ switch(attack){
 
 				
 				}
+				
+				
 			} 
 			else{
 				move_cooldown[attack] = 60;
@@ -729,17 +758,39 @@ switch(attack){
 	
 	case AT_FAIR:
 	
-		if (window == 1 && window_timer == 3)
+		if (window == 1 )
 		{
+			if (window_timer == 3)
 			sound_play(asset_get("sfx_forsburn_cape_swipe"));
+			
+			if (down_down)
+			fair_angle = -1;
+			else if (up_down)
+			fair_angle = 1;
+			else if (left_down || right_down)
+			fair_angle = 0;
+			else
+			fair_angle = 0;
+			
+			
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				if (fair_angle == -1)
+				vsp = 0.5;
+				else if (fair_angle == 1)
+				vsp = -3;
+				else 
+				vsp = -2
+			}
+			
 		}
 	
-		if (window <= 2 && window != 4){
+		if (window <= 2){
 			can_move = false;
 		}
+		
 		move_cooldown[attack] = 10;
 		
-		if (has_hit_player){
+		if (has_hit_player || window > 2){
 		can_fast_fall = true;
 		can_move = true;
 		}

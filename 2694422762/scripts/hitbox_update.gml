@@ -99,8 +99,8 @@ if ((attack == AT_NSPECIAL && hbox_num == 1) || (attack == AT_USTRONG && hbox_nu
                                 x = other.x;
                                 y = other.y;
                                 sprite_index = sprite_get("card_proj2");
-                                damage *= 3;
-                                kb_value *= 2;
+                                damage *= 2;
+                                kb_value *= 1.5;
                                 transcendent = 1;
                                 damage = ceil(damage);
                                 hsp = lengthdir_x(stuck_dist, stuck_dir);

@@ -186,3 +186,6 @@ battle_text = "*They took everything from me."; // Opening line of "Lost at Birt
 
 //Dialogue Buddy by Ducky! get it at https://steamcommunity.com/workshop/filedetails/discussion/2557293251/3062995463267073852/
 diag_portrait=sprite_get("dialogue_buddy"); // This will allow you to put any custom portrait onto the dialogue buddy!
+
+kinniku_front = sprite_get("kinniku_front");
+kinniku_behind = sprite_get("kinniku_behind");

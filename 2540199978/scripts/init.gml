@@ -142,6 +142,7 @@ fspecSpeed = 4;
 fspecHoldTime = 80;
 fspecHoldTimer = 0;
 fspecGrabbedObj = noone;
+grabDjump = true;
 
 // snowflake
 flake = {x:x==0?room_width/2:x, y:y==0?room_height/2:y, hsp:0, vsp:0, isOut:false};
@@ -150,6 +151,7 @@ particle = hit_fx_create(sprite_get("particle"), 21);
 aura = 0;
 hue = 0;
 moyai_effect = hit_fx_create(sprite_get("moyai"), 10);
+boost_effect = hit_fx_create(sprite_get("boostFx"), 20);
 
 // uspec
 uspecTarget = false;

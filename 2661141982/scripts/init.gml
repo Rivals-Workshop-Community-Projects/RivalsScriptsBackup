@@ -9,7 +9,6 @@ pkmn_stadium_back_img = sprite_get("pkmn_sprite2");
 kinniku_front = sprite_get("kinnikufront")
 kinniku_behind = sprite_get("kinnikubehind")
 
-
 //Regular Stuff
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");

@@ -35,7 +35,7 @@ if savex != 0 {
 }
 
 if attackbar > 0  && enemy_hitboxID.type == 1 {
-	take_damage(player, -1, floor(enemy_hitboxID.damage*0.5) + 5)
+	take_damage(player, -1, floor(enemy_hitboxID.damage*0.2) + 2)
      sound_play(sound_get("hextra"))
      //set_state (PS_HITSTUN)
      spawn_hit_fx (x,y - 40, lighten2)

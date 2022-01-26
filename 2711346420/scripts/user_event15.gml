@@ -256,6 +256,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.6", "25 January, 2022");
+initHeader("Down Special (Monkey Ball)");
+initSection("~ Increased the total frames of hit lockout (14 frames -> 16 frames) on the Monkey Ball to prevent Dash Attack from hitting the Monkey Ball twice for some odd reason.
+~ When the Monkey Ball is in hitpause, a brief white layer will appear on it.
+~ The Monkey Ball’s hitpause when hit by an attack is now rounded up or down if it has a decimal place in it to prevent the Monkey Ball from freezing in place. I don’t know why that happens if has a decimal in it, it just kinda does.");
+
+
 initPatch("1.5", "16 January, 2022");
 initHeader("Back Air");
 initSection("~ Early Hit Hitpause Scaling: .5 -> .7 
@@ -572,11 +579,11 @@ otto_bobblehead_sprite = sprite_get("otto");
 otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
 // Steve death message.
-steve_death_message = "Steve couldn't keep himself from monkeying around";
+steve_death_message = "Steve couldn't stop monkeying around";
 
 // Link spear. (determines which spear your char will drop the first time)
+//i made it thunderspear because its yellow Lol!
 link_spear_drop = 7;
-//i made it thunderspear because its yellow lol
 
 /*
 Spear IDs:

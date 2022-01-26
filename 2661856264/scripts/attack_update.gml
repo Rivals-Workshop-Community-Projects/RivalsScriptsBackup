@@ -187,6 +187,9 @@ if (attack == AT_NSPECIAL){
 
 //FSpecial
 if (attack == AT_FSPECIAL){
+    if (was_parried){
+        set_state(PS_PRATFALL);
+    }
     attack_end();
     //Resets the variables
     if (window == 1){
@@ -199,18 +202,16 @@ if (attack == AT_FSPECIAL){
         fspecial_speed = 8;
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED, fspecial_speed);
         can_wall_jump = true;
-        can_shield = true;
         can_fastfall = false;
         if (window_timer == 1){
             spawn_base_dust(x, y, "djump", -1);
         }
-        if (window_timer > 30 && special_pressed){
-            window = 7;
-            window_timer = 1;
-            destroy_hitboxes();
-            fspecial_cont = 0;
-        }
     }
+    if (window == 4){
+        can_wall_jump = true;
+        can_shield = true;
+    }
+        
     //Rolling
     if (window == 5){
         can_shield = true;
@@ -322,7 +323,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
     default: 

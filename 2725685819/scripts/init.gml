@@ -122,6 +122,7 @@ cling_timer_default = 40; //40
 cling_timer = cling_timer_default;
 cling_limit = 2;
 
+fair_angle = 0;
 
 //rune vars
 trick_cancel = false;

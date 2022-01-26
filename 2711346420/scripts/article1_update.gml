@@ -75,7 +75,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_c
 	}
 	if (hitbox_hit != noone){
 		if (hit_lockout <= 0){
-			var hit_lockout_max = 14;
+			var hit_lockout_max = 16;
 			
 			hit_lockout = hit_lockout_max;
 			//hit_lockout = 0;
@@ -153,7 +153,8 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_c
 			//put player in hitstop
 		    if (hitbox_hit.type == 1){
 			     hitpause = true;
-			     hitstop = hitbox_hit.hitpause;
+			     hitstop = round(hitbox_hit.hitpause);
+				 //print(hitstop)
 			     if (!hitpause){
 			        old_hsp = hsp;
 			        old_vsp = vsp;
@@ -252,6 +253,13 @@ if (state == 0){
 		}
 		hitpause = false;
 	}
+	
+	if (hitpause){
+		//print("i am in hitpause")
+	} else if (!hitpause){
+		//print("i am not in hitpause")
+	}
+	
 	if (touching_wall_cooldown == 0){
 		if (free && place_meeting(x+(6*spr_dir*-1),y-4,(asset_get("par_block")))){
 			touching_wall = true;
@@ -306,6 +314,10 @@ if (state == 0){
 			}
 		}
 		grounded_timer++;
+	}
+
+	if (hitpause == false && is_hitbox_active == true){
+		
 	}
 
 	//Ball Friction

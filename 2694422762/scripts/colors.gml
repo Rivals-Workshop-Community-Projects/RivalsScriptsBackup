@@ -306,15 +306,15 @@ set_color_profile_slot( 27, 5, 143, 141, 155 ); //White
 set_color_profile_slot( 27, 6, 0, 0, 0 ); //Eye
 set_color_profile_slot( 27, 7, 255, 255, 255 ); //Eyewhite
 
-// Worst Tarot
-set_color_profile_slot( 28, 0, 130, 110, 83 ); //Fur
-set_color_profile_slot( 28, 1, 130, 110, 83 ); //Fur2
-set_color_profile_slot( 28, 2, 248, 201, 32 ); //Hair
-set_color_profile_slot( 28, 3, 204, 19, 93 ); //Red
-set_color_profile_slot( 28, 4, 210, 217, 229 ); //Suit
-set_color_profile_slot( 28, 5, 210, 217, 229 ); //White
-set_color_profile_slot( 28, 6, 215, 221, 230 ); //Eye
-set_color_profile_slot( 28, 7, 215, 221, 230 ); //Eyewhite
+// TAGGED
+set_color_profile_slot( 28, 0, 228, 236, 247 ); //Fur
+set_color_profile_slot( 28, 1, 228, 236, 247 ); //Fur2
+set_color_profile_slot( 28, 2, 255, 223, 82 ); //Hair
+set_color_profile_slot( 28, 3, 255, 249, 128 ); //Red
+set_color_profile_slot( 28, 4, 66, 162, 9 ); //Suit
+set_color_profile_slot( 28, 5, 228, 236, 247 ); //White
+set_color_profile_slot( 28, 6, 193, 37, 255 ); //Eye
+set_color_profile_slot( 28, 7, 255, 255, 255 ); //Eyewhite
 
 switch (get_match_setting(SET_SEASON)) {
   case 1: // valentines

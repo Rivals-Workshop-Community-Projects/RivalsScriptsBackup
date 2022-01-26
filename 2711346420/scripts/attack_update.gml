@@ -31,6 +31,8 @@ if (attack == AT_DATTACK){
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (10 * spr_dir), y, "dash_start", spr_dir)
+			
+			//sound_play(asset_get("sfx_spin"), false, noone, 0.8, .5);
 		}
 		if (has_rune("A")){
 			if ((right_down && spr_dir == -1)

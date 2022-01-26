@@ -84,6 +84,9 @@ wave_land_time = 8;
 wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = 0.1; //grounded deceleration when wavelanding
 
+
+Omega = true 
+
 //crouch animation frames
 crouch_startup_frames = 2;
 crouch_active_frames = 1;
@@ -158,3 +161,4 @@ sprite_change_offset("lup", 30, 30);
 
 esp = hit_fx_create( sprite_get( "esp2" ), 9 );
 sprite_change_offset("esp", 32, 32);
+

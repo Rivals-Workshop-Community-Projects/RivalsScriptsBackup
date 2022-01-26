@@ -98,7 +98,12 @@ if (my_hitboxID.attack == AT_DSPECIAL){
                     should_destroy_hitbox = true;
 					monkey_ball_hit_cooldown = 35;
                     hsp = hsp*-.35;
-                    vsp = vsp*-.35;
+					if (vsp > 0){
+						//vsp = vsp*-.6;
+						vsp = vsp*-.35;
+					} else if (vsp < 0){//>
+						vsp = vsp*-.35;
+					}
 					/*
                     if (abs(hsp) < 2 && vsp < -2){
                         vsp = vsp*-.5;

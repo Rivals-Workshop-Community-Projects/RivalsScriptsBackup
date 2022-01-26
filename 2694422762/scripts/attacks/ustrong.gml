@@ -43,7 +43,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_NAME, "Card Projectile");
-set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_DAMAGE, "7 (" + string(round(7 * 1.5)) + ")");
+set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_DAMAGE, "5 (" + string(round(5 * 2)) + ")");
 set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_BKB, "6 (" + string(round(6 * 1.5)) + ")");
 set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_MISC, "Values in parentheses are when passed through FSPECIAL 
 card.");
@@ -53,7 +53,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 32);
 set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 16);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 7);
+set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 85);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1);

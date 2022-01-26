@@ -59,7 +59,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6.5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 8.0);//6.5
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, splashfx);//6

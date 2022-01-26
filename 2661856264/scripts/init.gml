@@ -106,13 +106,13 @@ dodge_active_frames     = 0;
 dodge_recovery_frames   = 4;
 
 // Tech
-tech_active_frames      = 5;
-tech_recovery_frames    = 1;
+tech_active_frames      = 3;
+tech_recovery_frames    = 3;
 
 // Tech roll
-techroll_startup_frames     = 2;
-techroll_active_frames      = 3;
-techroll_recovery_frames    = 1;
+techroll_startup_frames     = 3;
+techroll_active_frames      = 5;
+techroll_recovery_frames    = 3;
 
 // Airdodge
 air_dodge_startup_frames    = 4;
@@ -181,9 +181,24 @@ stealth_rock_aux = 0;
 point_1 = make_colour_rgb(255, 255, 0); 
 point_2 = make_colour_rgb(242, 101, 34); 
 
+//Compatibilies
+//Pokémon Stadium
+pkmn_stadium_front_img = sprite_get("ps_front");
+pkmn_stadium_back_img = sprite_get("ps_back");
+pkmn_stadium_name_override = "Golem";
+
+//Mt. Dedede Stadium
+arena_short_name = "Golem";
+arena_title = "The Megaton Pokémon";
+
+//Boxing Ring
+boxing_short_name = "Golem";
+boxing_title = "The Megaton Pokémon";
+
+//Hikaru
+Hikaru_Title2 = "The Megaton Pokémon";
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
-
 muno_event_type = 0;
 user_event(14);

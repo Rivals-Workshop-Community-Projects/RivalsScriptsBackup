@@ -38,7 +38,7 @@ switch (state)
         }
         hsp = 0;
         vsp = 0;
-        if (state_timer > 1 && player_id.state_cat == SC_HITSTUN) state_timer--;
+        if (player_id.state_cat == SC_HITSTUN) state_timer = 1;
         if (state_timer+offsetTimer >= idleTime-30 && state_timer % 5 == 0) x += state_timer%2==0?-4:4;
         if (state_timer+offsetTimer >= idleTime)
         {

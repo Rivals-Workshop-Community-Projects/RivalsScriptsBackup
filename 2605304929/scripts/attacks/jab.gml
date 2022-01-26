@@ -184,7 +184,6 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
-set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 1);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 
 hitbox_num++;

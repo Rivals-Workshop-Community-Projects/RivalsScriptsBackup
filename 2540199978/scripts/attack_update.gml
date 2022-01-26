@@ -135,7 +135,13 @@ switch (attack)
                     vsp = 0;
                     set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
                     sound_play(asset_get("sfx_blow_medium1"));
+		            sound_play(sound_get("flakeIce"));
                     spawn_hit_fx(x+40*spr_dir, y-35, 302);
+			        if (grabDjump && djumps >= 1)
+			        {
+			        	--djumps;
+			        	grabDjump = false;
+			        }
                 }
             }
             else
@@ -357,10 +363,11 @@ switch (attack)
                     hsp = lengthdir_x(dist, angle);
                     vsp = lengthdir_y(dist, angle);
 
-                    if (uspecTarget && flake.isOut) with (obj_article1) if (player_id == other.id && state == 1 && returning)
-			        {
-			            newState = 2;
-			        }
+                    if (uspecTarget && flake.isOut)
+                    {
+                        with (obj_article1) if (player_id == other.id && state == 1 && returning) newState = 2;
+                    }
+                    else spawn_hit_fx(x, y-floor(char_height/2), boost_effect);
                 }
                 if (uspecTarget)
                 {
@@ -389,8 +396,19 @@ switch (attack)
                     hurtboxID.sprite_index = sprite_get("uspec_hurt2");
                     tutDone[3] = true;
                 }
-                if (window_timer == get_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH)-1 && window = 6 && (left_down ^^ right_down))
-                    spr_dir = -left_down + right_down;
+                if (window_timer == get_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH)-1 && window == 6)
+                {
+                    if (left_down ^^ right_down) spr_dir = -left_down + right_down;
+                    for (var i = 1; i <= 7; ++i)
+                    {
+                        var icebreak = instance_create(x, y, "obj_article3");
+                        icebreak.sprite_index = sprite_get("iceBreak");
+                        icebreak.image_index = i-1;
+                        icebreak.dieTime = random_func_2(2+5*i, 4, 0)+8;
+                        icebreak.hsp = random_func_2(3+5*i, 4, 0)-2+hsp*1.2;
+                        icebreak.vsp = random_func_2(4+5*i, 4, 0)-2+vsp*1.2;
+                    }
+                }
                 break;
         }
         break;

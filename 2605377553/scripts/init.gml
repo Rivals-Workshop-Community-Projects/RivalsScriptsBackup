@@ -156,3 +156,4 @@ sickAfterGrace = 0;//How many frames the opponent is invincible from getting sic
 //bair 
 bairused = false;
 
+nothanks =  false;

@@ -23,6 +23,9 @@ set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_SFX_FRAME, 15);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 //iasa
 set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 40);

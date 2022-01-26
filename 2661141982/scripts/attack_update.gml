@@ -156,7 +156,7 @@ switch (attack)
         }
 	break;
 	case AT_NSPECIAL:
-		move_cooldown[AT_NSPECIAL] = 30;
+		move_cooldown[AT_NSPECIAL] = 20;//30
 	    can_wall_jump  = true;
 	
 		if(attack_pressed && lure_timer == 0 && (window == 1 && window_timer > 1))

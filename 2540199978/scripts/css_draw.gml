@@ -48,7 +48,7 @@ alt_name[12]  = "#B4DA55 #F42069";
 alt_name[13]  = "Ace";
 alt_name[14]  = "Enby";
 alt_name[15]  = "Kitsune";
-alt_name[16]  = "Nobura";
+alt_name[16]  = "Two Fist Wushu";
 alt_name[17]  = "Plasma Fists";
 alt_name[18]  = "Red Panda";
 alt_name[19]  = "No. 2 Type B";
@@ -57,6 +57,8 @@ alt_name[21]  = "Sweet Leonin";
 alt_name[22]  = "Falling Stars";
 alt_name[23]  = "Lorekeeper";
 alt_name[24]  = "Acolyte";
+alt_name[25]  = "Double Trouble";
+alt_name[26]  = "Paint";
 var num_alts = array_length_1d(alt_name);
 
 sprite_change_offset("snowflake", 11, 11);
@@ -84,6 +86,10 @@ if (currAlt != 0)			textDraw(temp_x + 2 + min(image_alpha,1) * 8, temp_y + 80 + 
 textLen =		 (textLen + textDraw(temp_x + 2 + min(image_alpha,1) * 16, temp_y + 96 + offset, "fName", c_white, 0, 1000, 1, true, image_alpha, alt_name[currAlt]))/2;
 if (currAlt != num_alts-1)	textDraw(temp_x + 2 + min(image_alpha,1) * 8, temp_y + 112+ offset, "fName", c_gray, 0, 1000, 1, true, image_alpha, alt_name[currAlt+1]);
 
+if ("hue" not in self) hue = 0;
+hue+=3;
+hue%=255;
+init_shader();
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 {

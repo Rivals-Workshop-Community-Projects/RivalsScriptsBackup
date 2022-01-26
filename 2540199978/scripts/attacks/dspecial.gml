@@ -31,3 +31,4 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 8);
+set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);

@@ -6,6 +6,12 @@ switch (my_hitboxID.attack)
 		{
 			old_hsp = 0;
 			fspecGrabbedObj = hit_player_obj;
+			sound_play(sound_get("flakeIce"));
+			if (grabDjump && djumps >= 1)
+			{
+				--djumps;
+				grabDjump = false;
+			}
 		}
 		else if (my_hitboxID.hbox_num == 2)
 		{
@@ -28,18 +34,26 @@ switch (my_hitboxID.attack)
 		break;
 
 	case AT_FSTRONG:
-		sound_play(asset_get("sfx_blow_heavy2"), 0, noone, 4, 1);
+		sound_play(asset_get("sfx_blow_heavy2"), 0, -4, 2, 1);
 		break;
 
 	case AT_USTRONG:
 	    hit_player_obj.x += ((x + spr_dir * 0) - hit_player_obj.x)/5;
 	    hit_player_obj.y += ((y - 80) - hit_player_obj.y)/5;
-		sound_play(asset_get("sfx_icehit_heavy2"));
 		if (ustrongLoop < 3) hit_player_obj.should_make_shockwave = false;
+		else sound_play(asset_get("sfx_icehit_heavy2"));
 		break;
 
 	case AT_DAIR:
 		old_vsp = -8.25;
 		can_fast_fall = true;
+		break;
+
+	case AT_FAIR:
+		old_vsp -= 3;
+		break;
+
+	case AT_DSPECIAL:
+		sound_play(sound_get("flakeIce"),0,-4,2);
 		break;
 }

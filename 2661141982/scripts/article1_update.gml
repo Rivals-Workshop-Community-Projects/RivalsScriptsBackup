@@ -146,14 +146,7 @@ if hit_lockout <= 0
                 hitstop = desired_hitstop;
                 hitstop_full = desired_hitstop;
             }
-            if attack == AT_DAIR {old_vsp = -12; hitstop /= 3;}
-            
-            // if other.attack == AT_DSPECIAL
-            // {
-            //     old_vsp = -4;
-            //     attack_end();
-            //     set_state(PS_IDLE)
-            // }
+            if (attack == AT_DAIR && article.player_id.url == url) {old_vsp = -12; hitstop /= 3;}
         }
         other.hitstop = floor(desired_hitstop);
         if hbox_group != -1 other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] = 1;

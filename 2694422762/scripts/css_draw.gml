@@ -154,8 +154,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[27,1] = "Shrine Warden"
     ce[27,2] = ""
     ce[28,0] = make_color_rgb(get_color_profile_slot_r(28, 1), get_color_profile_slot_g(28, 1), get_color_profile_slot_b(28, 1));
-    ce[28,1] = "Worst Tarot"
-    ce[28,2] = ""
+    ce[28,1] = "TAGGED"
+    ce[28,2] = "Almost Good"
     ce[29,0] = make_color_rgb(get_color_profile_slot_r(29, 1), get_color_profile_slot_g(29, 1), get_color_profile_slot_b(29, 1));
     ce[29,1] = "Seasonal"
     ce[29,2] = "Changes with the seasons!"

@@ -58,13 +58,15 @@ hitbox_delay = 4;
 }
 
 
-    var my_player = player_id.player
+    var my_player = current_owner;
     with(pHitBox){
         
         if place_meeting( x, y, other.id ) && (!other.jc_buff){
             if (player != my_player) && (id != other.nspec_hitbox) && get_player_team( my_player ) != get_player_team( player ){
                 
+                if ("trick_stack" in player_id)
                 player_id.trick_stack -= 1;
+                
                 
                 other.lifetime = 0;
                 

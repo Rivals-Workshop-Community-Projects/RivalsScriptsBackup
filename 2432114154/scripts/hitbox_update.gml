@@ -2,6 +2,24 @@
 
 plasma_safe = true
 
+if attack == AT_UTHROW {
+	if hitbox_timer == 1 {
+		with (asset_get("oPlayer")) {
+			if player == other.hbox_num other.target = self
+		}
+	}
+	
+	if hitbox_timer == 2 {
+		spawn_hit_fx(x,y - 20,bh3)
+		spawn_hit_fx(x,y - 20,bh2)
+				       hsp = (target.x - x)/20
+                       vsp = (target.y - 200 - y)/20
+                       
+	}
+	vsp += 0.9
+	spawn_hit_fx(floor(x),floor(y) + 10 + random_func(y%5,20,true), i1)
+}
+
 if attack == AT_EXTRA_2 && hbox_num < 5{
 	
 	

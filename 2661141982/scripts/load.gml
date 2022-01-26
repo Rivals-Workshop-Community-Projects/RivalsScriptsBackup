@@ -61,8 +61,8 @@ sprite_change_offset("star", 10,10);
 sprite_change_offset("fs", 64, 94);
 sprite_change_offset("beamfs", 64, 128);
 
-sprite_change_offset("kinnikubehind", 140, 90);
-sprite_change_offset("kinnikufront", 140, 90);
+sprite_change_offset("kinnikubehind", 140, 190);
+sprite_change_offset("kinnikufront", 140, 190);
 
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("uspecial_proj", 64, 64);

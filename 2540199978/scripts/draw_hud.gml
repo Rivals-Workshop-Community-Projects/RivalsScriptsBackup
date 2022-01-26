@@ -128,6 +128,60 @@ if ("practice" in self)
 						AddText("");
 						AddText("Icicles now will also despawn on death");
 						break;
+					case 7:
+						AddText("v1.7 - 23 Jan 2022");
+						AddText("");
+						AddText("Added hit sfx to DSpec and FSpec");
+						AddText("Added visual effects to USpec");
+						AddText("BAir - Changed 1 animation frame (Startup)");
+						AddText("UAir - Slightly changed animation");
+						AddText("FAir - Slightly changed animation");
+						AddText("");
+						AddText("UAir Sweet Lifetime 2 -> 3");
+						AddText("UAir Sour Lifetime 4 -> 8");
+						AddText("FAir Lifetime 2 -> 3");
+						AddText("FAir Damage 6 -> 7");
+						AddText("Adjusted FAir hitbox to match sprites.");
+						AddText("");
+						AddText("UTilt Damage 6 -> 8");
+						AddText("UTilt now has less ground friction.");
+						AddText("DTilt - Reduced Hurtbox height");
+						AddText("");
+						AddText("Fully charged Icicles in idle state will have its return timer reset to while Flake is in Hitstun");
+						AddText("FSpecial Final 8+0.8 -> 9+0.8");
+						AddText("FSpecial Final Damage 8 -> 9");
+						AddText("");
+						AddText("DStrong Angle 280 -> 275");
+						AddText("UStrong Final KB 7.5+1.1 -> 10.5+0.9 (Galaxies Zetter on Jules at the same %)");
+						AddText("");
+						AddText("Added Double Trouble alt for RagingBagon");
+						AddText("Somewhat reduced the hit sfx volume for FStrong and UStrong");
+						break;
+					case 8:
+						AddText("v1.7.1 - 24 Jan 2022");
+						AddText("");
+						AddText("Reverted UStrong Final KB (10.5+0.9 -> 7.5+1.1)");
+						AddText("");
+						AddText("Grabbing an opponent or your snowflake with FSpec will now restore your Doublejump once per airtime");
+						AddText("");
+						AddText("Icicles now will properly despawn on parry");
+						AddText("");
+						AddText("DSpecial now has extended parry stun");
+						AddText("");
+						AddText("NAir startup 8 -> 7");
+						AddText("");
+						AddText("FAir now gets a small boost upwards on hit (-3 vsp)");
+						AddText("");
+						AddText("UAir Startup 11 -> 10");
+						AddText("");
+						AddText("DTilt KB 7+0.3 -> 8+0.3");
+						AddText("");
+						AddText("DAttack KB 5+0.3 -> 6+0.3");
+						AddText("DAttack Angle 65 -> 60");
+						AddText("");
+						AddText("Added Paint alt");
+						AddText("Slightly touched up USpec particle effect physics");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -172,6 +226,7 @@ if ("practice" in self)
 							break;
 						case 1:
 							AddText("Grabbing the Snowflake with FSpecial will disable the Pratfall at the end of the move.");
+							AddText("This will also restore your Doublejump once per airtime.");
 							AddText("You can either extend combos or recover with this.");
 							break;
 						case 2:

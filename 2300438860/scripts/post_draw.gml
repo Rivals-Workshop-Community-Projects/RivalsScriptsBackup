@@ -6,7 +6,12 @@
 
 shader_start();
 
+if (Genocide == 4) && invincible && invince_time <= 2 {
+   		
+		draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 1);
 
+	
+}
 
 
 if state == PS_AIR_DODGE {

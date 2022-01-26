@@ -1,4 +1,4 @@
-//Nspecial Execution Ground on Sleeper Hold
+//Nspecial Execution Ground Ankle Strech
 var attack = AT_EXTRA_2; // Swap Taunt for attack that this is
 
 //Attack Values-----------------------------------------------------------------------------
@@ -19,7 +19,7 @@ var window_num = 1;
 
 // Window #1 / Frame(s) # 0-3 / Start Up / Lift
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
@@ -54,7 +54,7 @@ window_num++;
 
 // Window #5 / Frame(s) # 6-9 / Trans to Grab
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
@@ -65,7 +65,7 @@ window_num++;
 
 // Window #6 / Frame(s) # 10-14 / Drag Down Drop // Turn Around
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
@@ -76,7 +76,7 @@ window_num++;
 
 // Window #7 / Frame(s) # 15-18 / Arm / Leg Wrap (includes one cell backwars)
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
@@ -87,7 +87,7 @@ window_num++;
 
 // Window #8 / Frame(s) # 19-21 / Transition to Stretch
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 19);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
@@ -154,7 +154,7 @@ set_hitbox_value(attack, hitbox_num, HG_ANGLE, 100);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); // 302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
@@ -178,7 +178,7 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 2);
 //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 19); //19  - sweetspot small
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 30);

@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 7;
+	var noOfPatches = 9;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -73,7 +73,9 @@ transcounter = clamp((((get_player_color(player) == 6) && (state==PS_SPAWN||(att
 
 // uspecial
 if (!free || state == PS_WALL_JUMP) uspecBan = false;
+if (!free) grabDjump = true;
 if (uspecBan) move_cooldown[AT_USPECIAL] = 2;
+if (state == PS_PRATFALL) can_fast_fall = true;
 
 // fspecial
 move_cooldown[AT_FSPECIAL] = 2;
@@ -200,7 +202,7 @@ if (!free && place_meeting(x, y, asset_get("par_block")))
 	topcustom = y;
 }
 
-//init_shader();
+init_shader();
 
 #define MenuNav(_maxv, _prevState, _nextState)
 {

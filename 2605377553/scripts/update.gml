@@ -99,7 +99,7 @@ init_shader();
 with (oPlayer){
 
 	//make sure some values are reset upon death
-    if (state == PS_RESPAWN || state == PS_SPAWN || state == PS_DEAD) && sickOwner == other
+    if (state == PS_RESPAWN || state == PS_SPAWN || state == PS_DEAD)
 	{
         malsick = false;
 		sickAfterGrace = sickAfterGraceMax;

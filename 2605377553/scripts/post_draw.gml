@@ -55,4 +55,16 @@ if (state == PS_ATTACK_GROUND && attack == AT_NSPECIAL || state == PS_ATTACK_AIR
     draw_sprite_ext(sprite_get("chains_front"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
 }
 
+//no.
+if (get_gameplay_time() == 3 && nothanks = true) {
+    print("This is LITERALLY none of your business.");
+}
+
+if (get_gameplay_time() == 50 && nothanks = true) {
+    sound_play(sound_get("jerma"));
+}
+
+if nothanks && get_gameplay_time() <= 160 {
+    draw_debug_text(x - 30,y-100,"Uhh... how about no?")
+}
 

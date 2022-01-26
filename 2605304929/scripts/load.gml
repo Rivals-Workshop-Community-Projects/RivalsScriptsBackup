@@ -130,7 +130,8 @@ set_victory_bg(sprite_get("victory_bg"));
 
 //Compat Stuf
 sprite_change_offset("dialogue_buddy", 102, 72);
-
+sprite_change_offset("kinniku_front", 140, 180);
+sprite_change_offset("kinniku_behind", 140, 180);
 
 //set_victory_theme(CH_CLAIREN);
 //set_victory_bg( sprite_get( "custom" ));

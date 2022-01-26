@@ -43,6 +43,7 @@ if (state == clamp(state,5,6))
 	{
 		sprite_index = asset_get("empty_sprite");
 		draw_indicator = false;
+		image_index = 5;
 	}
 	
 

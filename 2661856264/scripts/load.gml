@@ -70,4 +70,5 @@ sprite_change_offset("hfx_rock_small", 64, 64);
 sprite_change_offset("hfx_rock_large", 128, 128);
 sprite_change_offset("hfx_rock_big", 256, 256);
 
+set_victory_bg(sprite_get("victorybg"));
 set_victory_theme(sound_get("victory_tcg"));

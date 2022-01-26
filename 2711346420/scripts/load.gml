@@ -99,6 +99,7 @@ sprite_change_offset("monkey_ball_front_uspec", 92, 122);
 sprite_change_offset("monkey_ball_front_spin", 41, 41);
 sprite_change_offset("monkey_ball_mask", 41, 41);
 sprite_change_offset("monkey_ball_hurt", 42, 80);
+sprite_change_offset("monkey_ball_light", 41, 41);
 sprite_change_offset("monkey_ball_dark", 41, 41);
 
 sprite_change_offset("gfz", 17, 37);

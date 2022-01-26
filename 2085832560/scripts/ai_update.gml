@@ -10,19 +10,30 @@ if (get_training_cpu_action() == CPU_FIGHT) && get_gameplay_time() > 120{
    casing = 1
 
  if get_gameplay_time() % 60 == random_func(2,60,true) {
- 	if infernal2 < 290 {
- 	infernal2 += 25
- 	}
-        gunname = 1 + random_func(1,13,true)
+
+ 	
+ 	choosengun += 1 + random_func(1,3,true)
+        gunname = choosengun%13
         spawn_hit_fx( x, y - 30, stylec )
  		
  		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.75,1.1);
  		
  }
  
-if gunname = 0 {
-	choosengun = 0
-}
+ 
+  if hitpause && hitstop == hitstop_full && state_cat != SC_HITSTUN {
+ 	
+    if infernal2 < 250 {
+ 	infernal2 = 250
+ 	}
+ 	
+      	choosengun += 1 + random_func(1,10,true)
+        gunname = choosengun%13
+        spawn_hit_fx( x, y - 30, stylec )
+ 		
+ 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.75,1.1);
+  	
+  }
 
 if attack == AT_FSPECIAL {
 	if x > ai_target.x && !ai_recovering {
@@ -103,7 +114,6 @@ if attack == AT_EXTRA_2 && window >= 21 {
   	  if state_timer > 30 {
   	  attack_pressed = true
   	  }
-  	  choosengun = 1
   }
 }
 
@@ -116,8 +126,7 @@ if attack == AT_EXTRA_2 && window >= 21 {
 		up_down = false;
 		special_pressed = true;
 		attack_pressed = false;
-		choosengun = 0
-    }
+   }
     
     if gunname >= 4 && gunname <= 7 && infernal2 >= 200 {
         joy_pad_idle = true;
@@ -127,7 +136,6 @@ if attack == AT_EXTRA_2 && window >= 21 {
 		up_down = false;
 		special_pressed = true;
 		attack_pressed = false;
-		choosengun = 0
     }
     
     
@@ -139,7 +147,6 @@ if attack == AT_EXTRA_2 && window >= 21 {
 		up_down = false;
 		special_pressed = true;
 		attack_pressed = false;
-		choosengun = 0
     }
     
 if ai_recovering {

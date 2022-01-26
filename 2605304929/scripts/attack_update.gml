@@ -371,7 +371,12 @@ if (attack == AT_USPECIAL_2 && instance_exists(grabbed_player_obj)) {
 	move_cooldown[AT_USPECIAL] = 30;
 	can_wall_jump = true; // Wall Jump out of the attack
 	can_fast_fall = false;
-
+	// Anti Gib code from the top
+	var top_boundry = room_height;
+	if(y < 150 && window == 1){
+		window = 2
+		window_timer = 1;
+	}
 
 	hurtboxID.sprite_index = get_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
 	
@@ -635,7 +640,7 @@ if (attack == AT_EXTRA_2 && instance_exists(grabbed_player_obj)) {
 			grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
 			grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
 			
-			if(window == 5 && window_timer == get_window_value(AT_NSPECIAL_2,5,AG_WINDOW_LENGTH)){
+			if(window == 5 && window_timer == get_window_value(AT_EXTRA_2,5,AG_WINDOW_LENGTH)){
 				spr_dir = spr_dir * -1; //
         		grabbed_player_obj.spr_dir = -1 * spr_dir; //Opponent should be facing towards Daora
 		    }
@@ -820,7 +825,6 @@ if (attack == AT_FINAL_SMASH_THROW && instance_exists(grabbed_player_obj)) {
 
 if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2 || attack == AT_USPECIAL_2 || attack == AT_DSPECIAL_2 || attack == AT_FINAL_SMASH_THROW){
 	//Referenced from Amvira's code for anti-ganoncide; release grabbed foe once you're almost out of the viewport
-	if(ganoncide_preventor_available_flag = true){
 	/*
 	print("room_width:" + string(room_width));
 	print("room_height:" + string(room_height));
@@ -828,10 +832,10 @@ if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2 || at
 	print("y:" + string(y));
 	*/
 	var bottom_boundry = room_height - 130;
-	var left_side_boundry = 20;
-	var right_side_boundry = room_width - 20;
-	if(x < left_side_boundry ||
-		x > right_side_boundry ||
+	//var left_side_boundry = 20;
+	//var right_side_boundry = room_width - 20;
+	if(//x < left_side_boundry || 
+		//x > right_side_boundry ||
 		y > bottom_boundry){
 			if(attack != AT_FSPECIAL){
 				if(article_platform_id == noone){
@@ -862,15 +866,16 @@ if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2 || at
 				grabbed_player_obj.vsp = -7;
 				grabbed_player_obj = noone;}
 				can_shield = true;
-				//can_jump = true;
+				can_jump = true;
+			if(ganoncide_preventor_available_flag = true){
 				fspecial_recovery_enabled_flag = true;
 				/* // Uspecial Exception
 				if(special_down && up_down){
 					iasa_script();
 				}
 				*/
+				}
 			}
-		}
 	}
 }
 

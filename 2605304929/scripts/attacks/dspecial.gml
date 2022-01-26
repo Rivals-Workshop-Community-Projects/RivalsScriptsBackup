@@ -18,7 +18,7 @@ var window_num = 1;
 
 // Window #1 / Frame(s) # 0-1 / Slowdown
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 //set_window_value(attack, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -29,10 +29,10 @@ set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
 
 window_num++;
 
-// Window #2 / Frame(s) # 2-6 / Start Up
+// Window #2 / Frame(s) # 2-7 / Start Up
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_glide_start")); // asset_get("") or sound_get("")
@@ -40,11 +40,11 @@ set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
 
 window_num++;
 
-// Window #3 / Frame(s) #7 / Strong box
+// Window #3 / Frame(s) #8 / Strong box
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 14);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 2);
@@ -54,11 +54,11 @@ set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 2);
 
 window_num++;
 
-// Window #4 / Frame(s) #8-9 / Sour Spot
+// Window #4 / Frame(s) #9-10 / Sour Spot
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 0);
@@ -69,11 +69,11 @@ set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 
 window_num++;
 
-// Window #5 / Frame(s) # 10-12 / Before Sweetspot transition
+// Window #5 / Frame(s) # 11-13 / Before Sweetspot transition
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 0);
@@ -86,11 +86,11 @@ set_window_value(attack, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, .6); // Default
 window_num++;
 
-// Window #6 / Frame(s) # 13 / Sweetspot Active
+// Window #6 / Frame(s) # 14 / Sweetspot Active
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
@@ -104,11 +104,11 @@ set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, .6); // D
 
 window_num++;
 
-// Window #7 / Frame(s) # 14-19 / Endlag
+// Window #7 / Frame(s) # 15-20 / Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 16);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 17);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 14);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 15);
 //set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
 //set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);

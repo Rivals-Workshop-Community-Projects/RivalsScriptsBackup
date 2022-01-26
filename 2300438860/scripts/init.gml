@@ -31,7 +31,7 @@ finisherinc = 0
         galy = 0
         
 
-
+Genocide = false 
 
 cosmetic = 1
 

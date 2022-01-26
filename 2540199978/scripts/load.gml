@@ -55,5 +55,7 @@ sprite_change_offset("particle", 4, 4);
 sprite_change_offset("maid", 40, 72);
 sprite_change_offset("moyai", 145, 211);
 sprite_change_offset("final_ice", 17, 25);
+sprite_change_offset("boostFx", 61, 39);
+sprite_change_offset("iceBreak", 23, 38);
 set_victory_theme(sound_get("Flake"));
 set_victory_bg(sprite_get("vic"));

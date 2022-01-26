@@ -41,8 +41,8 @@ set_window_value(AT_DSTRONG, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
 set_num_hitboxes(AT_DSTRONG, 0);
 
 set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_NAME, "Card Projectile");
-set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_DAMAGE, "8 (" + string(round(8 * 1.5)) + ")");
-set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_BKB, "7 (" + string(round(7 * 1.5)) + ")");
+set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_DAMAGE, "5 (" + string(round(5 * 2)) + ")");
+set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_BKB, "6 (" + string(round(6 * 1.5)) + ")");
 set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_MISC, "Values in parentheses are when passed through FSPECIAL
 card.");
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 2);
@@ -51,7 +51,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 32);
 set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 16);
 set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 8);
+set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
@@ -60,7 +60,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, fx_cardhit);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sound_get("sfx_lucy_cardhit1"));
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 6);
-set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("card_proj1"));
 set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_MASK, sprite_get("card_proj1"));

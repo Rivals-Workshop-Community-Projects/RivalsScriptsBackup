@@ -74,7 +74,12 @@ if (state == 0){
 		}
 		draw_sprite_ext( current_ball_spr, 0, x, y + offset_y, 1, 1, cur_rot, c_white, transparency );
 		draw_sprite_ext( current_ball_spr_2, 0, x, y + offset_y, 1, 1, cur_rot, c_white, transparency );
-		draw_sprite_ext( sprite_get("monkey_ball_spin_smear"), 0, x, y + offset_y, 1, 1, cur_rot*1.35, c_white, transparency );
+		if (hitpause){
+			draw_sprite_ext( sprite_get("monkey_ball_light"), 0, x, y + offset_y, 1, 1, cur_rot, c_white, 0.6 );
+			draw_sprite_ext( sprite_get("monkey_ball_spin_smear"), 0, x, y + offset_y, 1.025, 1.025, cur_rot*1.35, c_white, transparency );
+		} else if (!hitpause){
+			draw_sprite_ext( sprite_get("monkey_ball_spin_smear"), 0, x, y + offset_y, 1, 1, cur_rot*1.35, c_white, transparency );
+		}
 	}
 	else{
 		if (rot_speed != 0){

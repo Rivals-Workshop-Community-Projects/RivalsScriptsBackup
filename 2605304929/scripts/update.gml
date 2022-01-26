@@ -139,10 +139,11 @@ if(state_timer == 1){
 if(state == PS_SPAWN){
 	if(get_player_color(player) == 30){
 		color_picker_alt_index = attack_down + special_down*2 + strong_down*4 + jump_down*8 + shield_down*16 + taunt_down*32;
+		//print(state_timer)
 		//print(alt_index);
-		Color_Select(get_player_color(player),color_picker_alt_index);
-		if(state_timer == 100){ white_flash_timer = 25;}
-		if(state_timer == 125){init_shader();}
+		if(state_timer <= 80){Color_Select(get_player_color(player),color_picker_alt_index);}
+		if(state_timer == 60){ white_flash_timer = 20;}
+		if(state_timer == 100){init_shader();}
 	}
 }
 
@@ -442,8 +443,25 @@ if(variable_instance_exists(id,"diag"))
 			set_article_color_slot( 7, 111, 91, 151 ); //kimono accents
 			break;
 			
-		case 7: // STR + SP + ATK
-		
+		case 7: // STR + SP + ATK 
+			color_select_alt_name = "Unbackedcon"
+			// Unbackedcon
+			set_color_profile_slot( current_alt, 0, 77, 87, 159 ); //fur
+			set_color_profile_slot( current_alt, 1, 230, 230, 230 ); //fur tip
+			set_color_profile_slot( current_alt, 2, 229, 189, 29 ); //hair
+			set_color_profile_slot( current_alt, 3, 36, 194, 26 ); //horns + accents
+			set_color_profile_slot( current_alt, 4, 74, 74, 74 ); //kimono top
+			set_color_profile_slot( current_alt, 5, 41, 229, 30 ); //kimono wave
+			set_color_profile_slot( current_alt, 6, 51, 51, 51 ); //kimono bottom
+			set_color_profile_slot( current_alt, 7, 201, 201, 201 ); //kimono accents
+			set_article_color_slot( 0, 77, 87, 159 ); //fur
+			set_article_color_slot( 1, 230, 230, 230 ); //fur tip
+			set_article_color_slot( 2, 229, 189, 29 ); //hair
+			set_article_color_slot( 3, 36, 194, 26 ); //horns + accents
+			set_article_color_slot( 4, 74, 74, 74 ); //kimono top
+			set_article_color_slot( 5, 41, 229, 30 ); //kimono wave
+			set_article_color_slot( 6, 51, 51, 51 ); //kimono bottom
+			set_article_color_slot( 7, 201, 201, 201 ); //kimono accents
 			break;
 			
 		//Brackets + Events

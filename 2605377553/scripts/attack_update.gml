@@ -62,7 +62,7 @@ if attack == AT_JAB
 //bair
 if attack == AT_BAIR
 {
-  hsp += 0.2*spr_dir
+  //hsp += 0.2*spr_dir
 	if window == 2 && window_timer == 2 {
 		sound_play(asset_get("sfx_abyss_explosion"))
 	}

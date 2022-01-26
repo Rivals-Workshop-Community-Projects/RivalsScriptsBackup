@@ -99,6 +99,7 @@ if ((get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_CHAOS_EXCLUDE
 			sound_play(asset_get("sfx_ori_energyhit_heavy"),0,0,1,.75);
 			sound_play(asset_get("sfx_clairen_tip_strong"));
 			shake_camera( 10, 5 );
+			hit_player_obj.trick_timer = hit_player_obj.trick_timer_default;
 			hit_player_obj.trick_marked = true;
 			
 			}

@@ -259,6 +259,33 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.7", "22/01/24");
+initHeader("Seventh Patch");
+initSection("Buffs");
+initWords("Fixed a bug that made it so that you could cancel FSpecial into dodges and walljumps only during its first 10 frames of the initial jump rather than during the jump's entirety.");
+initSection("Nerfs");
+initWords("FSpecial:");
+initWords_ext("Fixed a bug that sometimes made you not get in parrystun when the move was parried;", fa_left, c_white, 1, false);
+initWords_ext("Removed the ability to cancel the move into its endlag by pressing Special during the initial jump (still present while the grounded rolling).", fa_left, c_white, 1, false);
+initWords("Fixed a bug that basically made stealth rocks not get removed when parried.");
+initSection("Other");
+initWords("Fixed Tech Roll's animation;");
+initWords("BAir's sourspot:");
+initWords_ext("Inverted the direction of the angle (Sakurai > 135, which is 45 but backwards);", fa_left, c_white, 1, false);
+initWords_ext("Now has a different sound when hitting (heavy1, same as DAir's second hit and UTilt);", fa_left, c_white, 1, false);
+initWords_ext("Has more base hitpause (5 > 7.5).", fa_left, c_white, 1, false);
+initWords("Added a victory background;");
+initWords("Edited the victory theme so that it actually has an ending;");
+initWords("Added Pokémon Stadium, Boxing Ring, Mt. Dedede, Rat and Hikaru compatibilities.");
+
+initPatch("1.6", "22/01/13");
+initHeader("Sixth Patch");
+initSection("Buffs");
+initWords("Rocks won't be removed if you jump during DAttack's endlag (only while the move is active);");
+initSection("Other");
+initWords("Added the finished tag;");
+initWords("Fixed FStrong's armor outline;");
+
 initPatch("1.5", "22/01/09");
 initHeader("Fifth Patch");
 initSection("Reworks");
@@ -272,8 +299,8 @@ initSection("Buffs");
 initWords("None. Sorry.");
 initSection("Nerfs");
 initWords("DSpecial:");
-initWords("The move's startup is now slower (5 > 7);");
-initWords("Each hitbox of the multihit is now more SDIable (1 > 1.1).");
+initWords_ext("The move's startup is now slower (5 > 7);", fa_left, c_white, 1, false);
+initWords_ext("Each hitbox of the multihit is now more SDIable (1 > 1.1).", fa_left, c_white, 1, false);
 initSection("Other");
 initWords("BAir got a couple minor changes:");
 initWords_ext("BAir's latebox doesn't have an angle flipper anymore;", fa_left, c_white, 1, false);

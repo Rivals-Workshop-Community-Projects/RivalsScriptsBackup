@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 27 );
 
 // Blue
 set_color_profile_slot( 1, 0, 118, 116, 232 ); //Snow1
@@ -186,7 +186,7 @@ set_color_profile_slot( 15, 5, 175, 188, 210 ); //Fur2
 set_color_profile_slot( 15, 6, 214, 124, 137 ); //AltFur1
 set_color_profile_slot( 15, 7, 150, 57, 100 ); //AltFur2
 
-// Nobura
+// Two Fist Wushu
 set_color_profile_slot( 16, 0, 247, 246, 245 ); //Snow1
 set_color_profile_slot( 16, 1, 161, 170, 165 ); //Snow2
 set_color_profile_slot( 16, 2, 64, 63, 55 ); //Cloak1
@@ -275,6 +275,26 @@ set_color_profile_slot( 24, 4, 230, 230, 230 ); //Fur1
 set_color_profile_slot( 24, 5, 133, 157, 171 ); //Fur2
 set_color_profile_slot( 24, 6, 161, 161, 161 ); //AltFur1
 set_color_profile_slot( 24, 7, 99, 109, 133 ); //AltFur2
+
+// Double Trouble
+set_color_profile_slot( 25, 0, 66, 162, 252 ); //Snow1
+set_color_profile_slot( 25, 1, 53, 77, 212 ); //Snow2
+set_color_profile_slot( 25, 2, 53, 69, 195 ); //Cloak1
+set_color_profile_slot( 25, 3, 54, 36, 171 ); //Cloak2
+set_color_profile_slot( 25, 4, 48, 48, 42 ); //Fur1
+set_color_profile_slot( 25, 5, 26, 26, 26 ); //Fur2
+set_color_profile_slot( 25, 6, 225, 235, 247 ); //AltFur1
+set_color_profile_slot( 25, 7, 197, 202, 212 ); //AltFur2
+
+// Paint
+set_color_profile_slot( 26, 0, 255, 255, 0 ); //Snow1
+set_color_profile_slot( 26, 1, 171, 171, 0 ); //Snow2
+set_color_profile_slot( 26, 2, 223, 215, 228 ); //Cloak1
+set_color_profile_slot( 26, 3, 179, 173, 202 ); //Cloak2
+set_color_profile_slot( 26, 4, 79, 79, 79 ); //Fur1
+set_color_profile_slot( 26, 5, 36, 43, 51 ); //Fur2
+set_color_profile_slot( 26, 6, 223, 215, 228 ); //AltFur1
+set_color_profile_slot( 26, 7, 179, 173, 202 ); //AltFur2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

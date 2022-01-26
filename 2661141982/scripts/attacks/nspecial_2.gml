@@ -40,7 +40,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_HEIGHT, 160);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .75);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .9);//.75
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITPAUSE_SCALING, 1.0);
 //set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 251);
@@ -63,7 +63,7 @@ set_hitbox_value(AT_NSPECIAL_2, 2, HG_HEIGHT, 60);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_NSPECIAL_2, 2, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_NSPECIAL_2, 2, HG_KNOCKBACK_SCALING, .8);//.5
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_weak"));

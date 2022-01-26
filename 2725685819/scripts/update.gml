@@ -148,6 +148,8 @@ var trick_color = make_color_rgb(trick_color_r,trick_color_g,trick_color_b);
 
 with (oPlayer){
     if (player != other.player && get_player_team( player ) != get_player_team( other.player )){
+    	// print_debug(string(trick_timer));
+    	
     //if they fucking die
     if (state == PS_RESPAWN){
         if other.grabbed_player == id
@@ -169,7 +171,7 @@ with (oPlayer){
             init_shader();   
             trick_stack = 0;
             trick_deterioration = trick_deter_default;
-            //print_debug(string(trick_timer));
+            
             
             //what happens if chaos time runs out
             if (trick_timer <= 0){
@@ -216,6 +218,9 @@ with (oPlayer){
         
     }
 }
+
+//messing around
+// window_timer += 1;
 
 
 

@@ -17,9 +17,18 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1{
 	
 	jc_object.current_owner = hit_player_obj.player;
 	jc_object.spr_dir *= -1;
+	jc_object.hit_limit = 8;
+	jc_object.lifetime = 60*5;
+	
+	
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num > 1{
 	was_parried = true;
+	
+}
+
+if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1{
+	my_hitboxID.hitbox_timer = 0;
 	
 }
