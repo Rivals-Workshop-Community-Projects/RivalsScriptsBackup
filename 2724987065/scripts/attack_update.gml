@@ -248,7 +248,7 @@ switch(attack){
 					if (!made_boom) {
 						made_boom = true;
 						shake_camera(8, 24);
-						sound_play(sound_get("crusty_dive"));
+						sound_play(sound_get("dive"));
 						sound_play(asset_get("sfx_blow_heavy1"));
 						if attack == AT_DSPECIAL_2 {
 							sound_play(sound_get("stardiver2"));
@@ -273,7 +273,7 @@ switch(attack){
 				if (!made_boom) {
 					made_boom = true;
 					shake_camera(8, 24);
-					sound_play(sound_get("crusty_dive"));
+					sound_play(sound_get("dive"));
 					sound_play(asset_get("sfx_blow_heavy1"));
 					if attack == AT_DSPECIAL_2 {
 						sound_play(sound_get("stardiver2"));

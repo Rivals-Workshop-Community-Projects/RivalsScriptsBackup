@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 8, 25 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 18 );
 
 // trance
 set_color_profile_slot( 1, 0, 151, 108, 178 ); //coat
@@ -147,6 +147,22 @@ set_color_profile_slot( 15, 2, 102, 58, 31 ); //ratS
 set_color_profile_slot( 15, 3, 193, 193, 193 ); //hair
 set_color_profile_slot( 15, 4, 216, 0, 0 ); //blade
 set_color_profile_slot( 15, 5, 177, 53, 217 ); //stick
+
+// ralsei
+set_color_profile_slot( 16, 0, 78, 204, 141 ); //coat
+set_color_profile_slot( 16, 1, 43, 43, 43 ); //rat
+set_color_profile_slot( 16, 2, 23, 21, 21 ); //ratS
+set_color_profile_slot( 16, 3, 43, 43, 43 ); //hair
+set_color_profile_slot( 16, 4, 246, 14, 150 ); //blade
+set_color_profile_slot( 16, 5, 246, 14, 150 ); //stick
+
+// yanchang
+set_color_profile_slot( 17, 0, 85, 160, 225 ); //coat
+set_color_profile_slot( 17, 1, 255, 255, 255 ); //rat
+set_color_profile_slot( 17, 2, 235, 234, 232 ); //ratS
+set_color_profile_slot( 17, 3, 61, 94, 73 ); //hair
+set_color_profile_slot( 17, 4, 255, 167, 43 ); //blade
+set_color_profile_slot( 17, 5, 138, 111, 49 ); //stick
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

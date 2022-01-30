@@ -29,8 +29,8 @@ switch (state) {
 				shake_camera(7, 22);
 				var fx2 = spawn_hit_fx(x, y, boom_fx);
 				fx2.depth = -11;
-				with oPlayer sound_stop(sound_get("crusty_dive"));
-				sound_play(sound_get("crusty_dive"), 0, noone, .8);
+				with oPlayer sound_stop(sound_get("dive"));
+				sound_play(sound_get("dive"), 0, noone, .8);
 			}
 			break;
 		}

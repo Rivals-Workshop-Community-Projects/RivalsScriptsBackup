@@ -56,7 +56,9 @@ alt_names = [
 	"Forest",
 	"Cherry",
 	"Witch",
-	"Ratchel"
+	"Ratchel",
+	"Ralsei",
+	"Bored Fisherdude"
 	];
 
 
@@ -279,7 +281,15 @@ in a Patch.
 
 // other patches go here...
 
-initPatch("1.0", "The day i released freya"); // (replace the date lol)
+initPatch("1.1", "Jan 29, 2022"); // (replace the date lol)
+initHeader("Balance");
+initSection("Fair damage reduced from 4+6 -> 3+5");
+initHeader("SFX");
+initSection("Adjusted down special sfx");
+initHeader("Alts");
+initSection("Added 2 new alts (thanks Zerks)");
+
+initPatch("1.0", "Jan 19, 2022"); // (replace the date lol)
 initHeader("Existence");
 initSection("Damn, I exist.
 -Freya");
@@ -520,27 +530,27 @@ To use multiple gimmicks on a single page, MULTIPLY them together.
 */
 
 // Custom speaker setup - use 1, 2, 3, 4, ... for the index.
-SPK_SAND = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
-SPK_TWIN = initSpeaker(2, "Sandbert's evil twin", sprite_get("_pho_example_speaker"));
+//SPK_SAND = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
+//SPK_TWIN = initSpeaker(2, "Sandbert's evil twin", sprite_get("_pho_example_speaker"));
 
-initCodec(0); // this should just always be 0, because there are no codec gimmicks
-initCodecPage(SPK_TRUM, 0, 0, "wow is that sandbert with a phone");
-initCodecPage(SPK_ALTO, 4, 0, "UNBLOCK ME ON FACEBOOK, COWARD");
-initCodecPage(SPK_SAND, 0, GIM_COLOR * GIM_LAUGH_TRACK, "no"); // this page uses the custom speaker
+//initCodec(0); // this should just always be 0, because there are no codec gimmicks
+//initCodecPage(SPK_TRUM, 0, 0, "wow is that sandbert with a phone");
+//initCodecPage(SPK_ALTO, 4, 0, "UNBLOCK ME ON FACEBOOK, COWARD");
+//initCodecPage(SPK_SAND, 0, GIM_COLOR * GIM_LAUGH_TRACK, "no"); // this page uses the custom speaker
 
-spr_custom_trummel_color = c_red;
+//spr_custom_trummel_color = c_red;
 
 // Otto bobblehead.
-otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
+//otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
 
 // Otto bobblehead body. (optional, don't really need this)
-otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
+//otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
 // Steve death message.
-steve_death_message = "Steve got canceled on Twitter";
+//steve_death_message = "Steve got canceled on Twitter";
 
 // Link spear. (determines which spear your char will drop the first time)
-link_spear_drop = 3;
+//link_spear_drop = 3;
 
 /*
 Spear IDs:
@@ -559,7 +569,7 @@ Spear IDs:
 // Works kind of similarly to MunoPhone.
 // initCodecPagePit(speaker, expression, voice, text);
 // List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
-
+/*
 initCodecPit();
 initCodecPagePit(SPK_PIT,	3,	0,	"Hey, it's Sandbert!");
 initCodecPagePit(SPK_PIT,	1,	6,	"...Isn't he a bit above my power level?");
@@ -573,7 +583,7 @@ initCodecPagePit(SPK_VIR,	6,	4,	"Maybe you should turn on some Cheats for this f
 initCodecPagePit(SPK_PALU,	0,	2,	"No, I'm sure he'll be fine.");
 initCodecPagePit(SPK_PALU,	2,	5,	"...As long as he avoids the Kamehameha.");
 initCodecPagePit(SPK_PIT,	4,	1,	"The WHAT?!?");
-
+*/
 
 
 /*
