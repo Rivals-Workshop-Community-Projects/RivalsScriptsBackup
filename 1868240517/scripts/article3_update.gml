@@ -90,7 +90,7 @@ switch type {
             }
 
             sprite_index = sprite_get("items");
-            print_debug(string((type-2) % image_number));
+            // print_debug(string((type-2) % image_number));
         }
         image_index = type-2;
         image_angle = (floor(state_timer/4) % 8)*45;

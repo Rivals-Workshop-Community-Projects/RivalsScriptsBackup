@@ -1,8 +1,8 @@
 //article1_update, wall
 
 state_timer ++;
-if (init == 0) {
-    init = 1;
+if (_init == 0) {
+    _init = 1;
     
     with (asset_get("obj_article1")) {
         if (id != other.id && player_id == other.player_id && state != 2) {
@@ -151,17 +151,34 @@ if (state == 1) {
         hitting = 0;
     }
     if (insta != noone){ 
+   // 	if insta == orig_player_id && "nspecial_done" in insta {
+   // 		insta.nspecial_done = 0;
+			// insta.uspecial_done = 0;
+   // 	}
         with (insta) {
             //if (other.spr_dir*cos(degtorad(point_direction(other.x,other.y,x,y))) > 0) {
-            if ((state == PS_HITSTUN) && other.spr_dir != sign(hsp)) {
-                hsp = -hsp*1.2;
-                spr_dir = other.spr_dir;
-                other.has_bounced = 1;
-                if (other.hitting == 0) {
-                	other.hit_count++;
-            		other.hitting = 1;
+            if ((state == PS_HITSTUN) && hsp != 0 && other.spr_dir != sign(hsp)) {
+            	spr_dir = other.spr_dir;
+                
+            	if (shield_down && can_tech) set_state(PS_WALL_TECH);
+            	else {
+            		other.has_bounced = 1;
+	                if (other.hitting == 0) {
+	                	other.hit_count++;
+	            		other.hitting = 1;
+	            	}
+	                old_hsp = -hsp*1.2;
+	                old_vsp = vsp;
+	                hsp = 0;
+	                vsp = 0;
+	                hitpause = true;
+	                hitstop_full = other.bounce_hitpause;
+	                hitstop = other.bounce_hitpause;
+
             	}
             }
+            
+            
         }
     }
     if (has_bounced == 1 && state_timer > 20) {

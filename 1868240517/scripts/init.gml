@@ -5,7 +5,6 @@ hurtbox_dash_spr = sprite_get("dash_hurt");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-
 //Custom Vars
 small_sprites = true;
 set_victory_theme(sound_get("R00V"));
@@ -149,7 +148,6 @@ color_hsv = 0;
 player_color = 0;
 rel_pos_10 = 0;
 color_hsv_old = 0;
-
 
 disk = noone;
 reflect = undefined;

@@ -34,12 +34,13 @@ if got_gun < got_gun_max {
     got_gun++;
     var c = get_player_color(player);
     var col = make_color_rgb(get_color_profile_slot_r(c, 0), get_color_profile_slot_g(c, 0), get_color_profile_slot_b(c, 0));
-    var ds = 2;
+    var ds = 4;
+    var alpha = 0.3;
     gpu_set_fog(1,col,-1000,0);
-    draw_sprite_ext(sprite_index,image_index,x-ds,y,spr_dir*2,image_yscale*2,image_angle,c_black,1-got_gun/got_gun_max);
-    draw_sprite_ext(sprite_index,image_index,x+ds,y,spr_dir*2,image_yscale*2,image_angle,c_black,1-got_gun/got_gun_max);
-    draw_sprite_ext(sprite_index,image_index,x,y-ds,spr_dir*2,image_yscale*2,image_angle,c_black,1-got_gun/got_gun_max);
-    draw_sprite_ext(sprite_index,image_index,x,y+ds,spr_dir*2,image_yscale*2,image_angle,c_black,1-got_gun/got_gun_max);
+    draw_sprite_ext(sprite_index,image_index,x-ds,y,spr_dir*2,image_yscale*2,image_angle,c_black,alpha*(1-got_gun/got_gun_max));
+    draw_sprite_ext(sprite_index,image_index,x+ds,y,spr_dir*2,image_yscale*2,image_angle,c_black,alpha*(1-got_gun/got_gun_max));
+    draw_sprite_ext(sprite_index,image_index,x,y-ds,spr_dir*2,image_yscale*2,image_angle,c_black,alpha*(1-got_gun/got_gun_max));
+    draw_sprite_ext(sprite_index,image_index,x,y+ds,spr_dir*2,image_yscale*2,image_angle,c_black,alpha*(1-got_gun/got_gun_max));
     gpu_set_fog(0,c_yellow,0,0);
 }
 
@@ -53,7 +54,7 @@ if (state == 5 || state == 6) {
         var c = get_player_color(player);
         var col = make_color_rgb(get_color_profile_slot_r(c, 0), get_color_profile_slot_g(c, 0), get_color_profile_slot_b(c, 0));
         var ds = 2;
-        var alpha = 1;
+        var alpha = 0.3;
         gpu_set_fog(1,col,-1000,0);
         draw_sprite_ext(sprite_index,image_index,x-ds,y,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
         draw_sprite_ext(sprite_index,image_index,x+ds,y,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
@@ -81,6 +82,21 @@ if (state == 5 || state == 6) {
         gpu_set_blendmode(bm_normal);*/
     } 
 }
+
+// var c = get_player_color(player);
+// var col = make_color_rgb(get_color_profile_slot_r(c, 0), get_color_profile_slot_g(c, 0), get_color_profile_slot_b(c, 0));
+// var ds = 2;
+// var alpha = 0.3;
+// gpu_set_fog(1,col,-1000,0);
+// draw_sprite_ext(sprite_index,image_index,x-ds,y,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
+// draw_sprite_ext(sprite_index,image_index,x+ds,y,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
+// draw_sprite_ext(sprite_index,image_index,x,y-ds,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
+// draw_sprite_ext(sprite_index,image_index,x,y+ds,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
+// draw_sprite_ext(sprite_index,image_index,x-ds,y+ds,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
+// draw_sprite_ext(sprite_index,image_index,x+ds,y+ds,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
+// draw_sprite_ext(sprite_index,image_index,x-ds,y-ds,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
+// draw_sprite_ext(sprite_index,image_index,x+ds,y-ds,spr_dir*2,image_yscale*2,image_angle,c_black,alpha);
+// gpu_set_fog(0,c_yellow,0,0);
 
 
 

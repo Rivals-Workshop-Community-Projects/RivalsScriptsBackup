@@ -1,5 +1,6 @@
 //update
-if state == PS_SPAWN {
+// if state == PS_SPAWN {
+if get_gameplay_time() == 2 {
 	in_intro = 1;
     if attack_down && shield_down code_1 = 1;
     if attack_down && up_down code_2 = 4;
@@ -18,7 +19,7 @@ if state == PS_SPAWN {
 			set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, taunt_sfx);
     	}
     }
-} else in_intro = false;
+} //else in_intro = false;
 //player_color = get_player_color(player);
 
 if move_cooldown[AT_NSPECIAL] == 20 {
@@ -665,7 +666,7 @@ if enemykirby != undefined { //if kirby is in a match & swallowed
                 }
                 break;
         }
-        var th_vfx = instance_create(x+xoff*spr_dir,y+yoff,"obj_article3");
+        var th_vfx = instance_create(floor(x+xoff*spr_dir),y+yoff,"obj_article3");
         with th_vfx {
             player_id = other.id;
             spr_dir = other.spr_dir;

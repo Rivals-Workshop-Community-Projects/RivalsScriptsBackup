@@ -1,7 +1,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "4.0";
+patch_ver = "";
 patch_day = "";
 patch_month = "";
  
@@ -35,9 +35,9 @@ alt_name[15] = "UNUSED";
  
 draw_set_halign(fa_left);
  
-textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
+// textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
  
-textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
+// textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
  
  
  

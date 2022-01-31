@@ -1,6 +1,6 @@
 //article1_init
 
-init = 0;
+_init = 0;
 
 idle_spr = sprite_get("wall_idle");
 wall_spr =  sprite_get("dspecial_wall");
@@ -76,4 +76,6 @@ glitch_x_offp = 0;
 glitch_y_offp = 0;
 glitch_switch = 0;
 glitch_switch_frame = 10;
+
+bounce_hitpause = 3;
 
