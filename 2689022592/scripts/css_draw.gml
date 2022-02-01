@@ -36,11 +36,13 @@ var palette_names = [
   "Guperman"
   "Lethal"
   "They/Them btw"
+  "Tagia"
   "Real Mayonnaise"
+  "Seven Eleven"
 ];
 
 shader_end()
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
-draw_debug_text(floor(x)+14,floor(y)+110 - alt*3,string(palette_names[alt]));
+draw_debug_text(floor(x)+14,floor(y)+110 - floor(alt*2.5),string(palette_names[alt]));
 

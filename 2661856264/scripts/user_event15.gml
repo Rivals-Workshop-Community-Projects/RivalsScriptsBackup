@@ -212,8 +212,8 @@ initWords("Normally the move would have a 1.5 seconds cooldown, unless you use r
 initTip("FSpecial: Rollout");
 initWords("Pretty straight forward: Golem will initially cover themselves in rocks, and then start rolling like a mad... Golem I guess.");
 initImage_ext(sprite_get("fspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("The initial jump and the rolling part have different hit properties, and only these parts can be normally canceled into rolls and parries. By pressing the Special button during the rolling part you cancel the move, and finally, it is immune to projectiles.");
-initWords("PLUS: if you have rocks, you can cancel it into jumps if it hits people. Yes I really wanted to make this move viable.");
+initWords("The initial jump and the rolling part have different hit properties. You can cancel the move with the Special Button, but you'll enter pratfall. Finally, the rolling itself is projectile-immune.");
+initWords("PLUS: if you have rocks, you can cancel it into jumps if it hits people and dodges/rolls whenever. Yes I really wanted to make this move viable.");
 initImage_ext(sprite_get("fspecial"), 5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("jump"), 0, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
@@ -259,6 +259,24 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.8", "22/01/30");
+initHeader("Eighth Patch");
+initSection("Reworks");
+initWords("FSpecial has received some nerfs and buffs:");
+initWords_ext("+ The rolling hitbox is now the same as it was before patch 1.4 (angle: 80 > 60; base knockback: 7 > 6; knockback scaling: 0.5 > 0.3) and it's also positioned slightly more forward;", fa_left, c_white, 1, false);
+initWords_ext("+ The jumping hitbox now covers Golem completely;", fa_left, c_white, 1, false);
+initWords_ext("+ You can now cancel the move while in the air by pressing the Special button (after 10 frame of airtime);", fa_left, c_white, 1, false);
+initWords_ext("- The move's normal endlag will put you in pratfall;", fa_left, c_white, 1, false);
+initWords_ext("- Canceling the move into Dodges, Rolls and Parry will now cost a rock;", fa_left, c_white, 1, false);
+initWords_ext("- Canceling the move into UStrong on hit will now also cost a rock.", fa_left, c_white, 1, false);
+initSection("Buffs");
+initWords("DTilts's hitboxes got increased in size.");
+initSection("Nerfs");
+initWords("Knockback adjustment is now on par with Kragg's (0.87 > 0.9);");
+initWords("DAir:");
+initWords_ext("The first hit has more knockback (4 > 5);", fa_left, c_white, 1, false);
+initWords_ext("The move itself has more landing lag (5 > 6 + whifflag).", fa_left, c_white, 1, false);
+
 initPatch("1.7", "22/01/24");
 initHeader("Seventh Patch");
 initSection("Buffs");

@@ -96,9 +96,14 @@ if (stealth_rock >= 1){
         }
     }
     if (attack == AT_FSPECIAL){
+        can_shield = true;
+        if (shield_pressed && has_airdodge = true){
+            stealth_rock -= 1;
+            sound_play(sound_get("special"))
+        }
         if (has_hit){
             can_jump = true;
-            if (jump_pressed){
+            if (jump_pressed || up_strong_pressed){
                 stealth_rock -= 1;
                 sound_play(sound_get("special"))
             }
@@ -206,15 +211,25 @@ if (attack == AT_FSPECIAL){
         if (window_timer == 1){
             spawn_base_dust(x, y, "djump", -1);
         }
+        if (special_pressed){
+            window = 7;
+            window_timer = 1;
+            destroy_hitboxes();
+            fspecial_cont = 0;
+        }
     }
     if (window == 4){
         can_wall_jump = true;
-        can_shield = true;
+        if (special_pressed){
+            window = 7;
+            window_timer = 1;
+            destroy_hitboxes();
+            fspecial_cont = 0;
+        }
     }
         
     //Rolling
     if (window == 5){
-        can_shield = true;
         fspecial_cont++;
         //Destroys the previous hitbox
         if (window_timer == 0){
@@ -250,6 +265,9 @@ if (attack == AT_FSPECIAL){
     //Endlag
     if (window == 7){
         sound_stop(asset_get("sfx_kragg_roll_loop"));
+        if (window_timer == 24 && free){
+            set_state(PS_PRATFALL);
+        }
     }
 }
 
@@ -323,7 +341,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

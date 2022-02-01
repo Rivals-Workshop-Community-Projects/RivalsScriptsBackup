@@ -11,7 +11,7 @@
 
 // Physical size
 char_height         = 45;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 0.87;		// 0.9  -  1.2
+knockback_adj       = 0.9;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 2.25;		// 3    -  4.5

@@ -1,6 +1,8 @@
 hurtbox_spr = sprite_get("stand_box");
 crouchbox_spr = sprite_get("crouch_box");
 
+set_victory_theme(sound_get("QuoVadis"));
+
 Hikaru_Title = "Vampire priestee"
 
 nname = "Tengia Vlad Sviatoslavych"

@@ -167,13 +167,20 @@ if (state == 1) {
 	                	other.hit_count++;
 	            		other.hitting = 1;
 	            	}
-	                old_hsp = -hsp*1.2;
-	                old_vsp = vsp;
-	                hsp = 0;
-	                vsp = 0;
-	                hitpause = true;
-	                hitstop_full = other.bounce_hitpause;
-	                hitstop = other.bounce_hitpause;
+	            	if hsp == 0 && vsp == 0 {
+	            		old_hsp *= 1.2;
+	            	} else {
+		            	old_hsp = -hsp*1.2;
+		                old_vsp = vsp;
+		                hsp = 0;
+		                vsp = 0;
+	            	}
+                	hitpause = true;
+	                if hitstop < other.bounce_hitpause {
+	                	
+	                	hitstop = other.bounce_hitpause;
+	                	hitstop_full = other.bounce_hitpause;
+	                }
 
             	}
             }
