@@ -24,7 +24,7 @@ if ("rollArray" in self)
 	}
 
 	// taunt menu
-	if (practice && !"temp_level" in self)
+	if (practice && (!variable_instance_exists(self, "temp_level") || temp_level==0))
 	{
 		draw_set_alpha(tutAlpha);
 		ResetText();
@@ -610,6 +610,16 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("FAir Normal: KB 6+1.0 -> 6+0.9");
 						AddText("FAir Normal: Stronger hit sound");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.39.1 - 1 Feb 2021");
+						AddText("");
+						AddText("Slightly changed NAir smears");
+						break;
+					case 40:
+						AddText("v1.40 - 4 Feb 2021");
+						AddText("");
+						AddText("Fixed Rollback temp_level bug");
 						break;
 				}
 				DrawTutorialBlock();

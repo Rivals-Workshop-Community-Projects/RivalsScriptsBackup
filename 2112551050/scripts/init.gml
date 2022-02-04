@@ -1,7 +1,7 @@
 //break_fx = hit_fx_create(sprite_get("break_fx"), 12)
 
 debug = false; //debug var
-debugVar = 0;
+debugVar = debug;
 
 videoMode = false; //tools to end match early
 
@@ -86,6 +86,9 @@ randAttacks1 = false; //first phase rand attacks
 menuIndex = 0; //for navigating menus during your attack phase
 menuIndexTimer = 0; //time spent in each menuIndex
 
+attack_bar_type = 1; //weapon dependant
+attacks_left = 1; //used for multi-bar attacks
+
 //sound vars
 bone_hit = sound_get("bone_hit");
 
@@ -98,6 +101,9 @@ survivalModeInputs = array_create(8);
 survivalModeInputCounter = 0;
 survivalModeStr = "";
 survivalTimer = 0;
+survivalModeTest = false;
+survivalModeInputsTest = [3,2,0,1,1,3,3,2,0,0];
+survivalModeInputCounterTest = 0;
 
 drawTextbox = false; //if true will draw textbox background
 
@@ -2144,6 +2150,7 @@ interactionSpeech = undefined;
 urlSans = 1869814191;
 urlKris[0] = 1867608473;
 urlKris[1] = 1875062006; //clover
+urlKris[2] = 2249417003; //gun ralsei
 urlDog = 1871374719;
 urlPapyrus[0] = 1873681040; //old
 urlPapyrus[1] = 2100204665; //new

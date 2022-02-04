@@ -12,3 +12,5 @@ zTimer[2] = -40;
 sprite_index = asset_get("empty_sprite");
 
 mask_index = asset_get("empty_sprite");
+
+gun_bar_vfx = hit_fx_create(sprite_get("gun_attack"), 12);

@@ -350,6 +350,7 @@ if is_squr_wet{
 
 
 var temp_stage_id = get_stage_data(SD_ID);
+//print_debug(string(temp_stage_id))
 
 // Check if you are on Kragg Rock
 if place_meeting(x, y+2, asset_get("pillar_obj")) or place_meeting(x, y + 2, asset_get("rock_obj")){
@@ -410,8 +411,6 @@ if on_kragg_thing or on_ice or touching_grass or on_puddle or on_shov_dirt or on
 	sound_overriding = false;
 }
 
-//print_debug(string(temp_stage_id));
-
 if on_kragg_thing or on_shov_rock or on_epi_plat{
 	bonk_type = 3;
 }
@@ -439,7 +438,25 @@ if on_thing and !sound_overriding{
 		case 36:	// Creatures of Aether Stage
 		case 27:	// Rock Ring
 		case 23:	// Go to School
+		case 35:
 			bonk_type = 3;
+			break;
+		case 33:
+			if y < 500{
+				if x < 590{
+					bonk_type = 10;
+				} else {
+					bonk_type = 12;
+				}
+			}
+			if y > 500{
+				if x < 620{
+					bonk_type = 3;
+				} else {
+					bonk_type = 4;
+				}
+			}
+			
 			break;
 		case 2:		// Fire Capital
 			if y < 330{
@@ -459,7 +476,15 @@ if on_thing and !sound_overriding{
 		case 3:		// Air Armada
 		case 14:	// CEO Ring
 		case 24:	// Shovel Knight Stage
-			bonk_type = 9
+		case 34:
+			bonk_type = 9;
+			break;
+		case 32:
+			if x == 699 and y == 496{
+				bonk_type = 69;
+			} else {
+				bonk_type = 9;
+			}
 			break;
 		case 17:
 			if y < 420{
@@ -597,6 +622,12 @@ switch(bonk_type){
     	break;
     case 11:
     	bonk_sound = sfx_hit_stone;
+    	break;
+    case 12:
+    	bonk_sound = sfx_hit_gate;
+    	break;
+    case 69:
+    	bonk_sound = sfx_hit_giik;
     	break;
 }
 

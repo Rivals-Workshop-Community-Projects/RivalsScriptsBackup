@@ -17,3 +17,7 @@ sprite_index = asset_get("empty_sprite");
 mask_index = sprite_get("sans_hitbox");
 
 depth = -1;
+
+weapon = 0; //0 = knife, 1 = gun
+has_been_hit = false;
+hit_cooldown = 0;

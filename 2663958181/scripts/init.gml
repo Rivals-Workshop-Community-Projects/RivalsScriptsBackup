@@ -222,7 +222,9 @@ sfx_hit_cloth   = sound_get("sfx_hit_cloth");
 sfx_hit_gameboy = sound_get("sfx_hit_gameboy");
 sfx_hit_metal   = sound_get("sfx_hit_metal");
 sfx_hit_water   = sound_get("sfx_hit_water");
-sfx_hit_glass   = sound_get("sfx_hit_stone")
+sfx_hit_glass   = sound_get("sfx_hit_stone");
+sfx_hit_gate    = sound_get("sfx_hit_snowmetal");
+sfx_hit_giik    = sound_get("sfx_hit_giik")
 
 sfx_supereffective = sound_get("sfx_hopsfavoritething");
 

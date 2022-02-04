@@ -882,7 +882,7 @@ switch (attack)
 		else if (window_timer == get_window_value(AT_NTHROW, 1, AG_WINDOW_LENGTH)) window_timer = 0;
 		with (oPlayer)
 		{
-			if ("temp_level" in self && !free)
+			if ("temp_level" in self && temp_level != 0 && !free)
 			{
 				if (state != PS_WALK_TURN) set_state(PS_WALK_TURN);
 			}

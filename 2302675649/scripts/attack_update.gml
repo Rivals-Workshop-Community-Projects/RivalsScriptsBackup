@@ -537,7 +537,7 @@ switch (attack)
                 if (window_timer > uspecStartup && !special_down)
                 {
                     window_timer = 0;
-                    window = ("temp_level" in self)?3:2;
+                    window = ("temp_level" in self && temp_level!=0)?3:2;
                 }
                 with (asset_get("obj_article1")) if (player_id == other.id) isDespawn = true;
                 break;

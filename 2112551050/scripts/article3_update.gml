@@ -12,7 +12,7 @@ with obj_stage_article {
 var playerSelect = false;
 with oPlayer {
 	if (!dead) {
-	    if !(variable_instance_exists(id, "temp_level")) {
+	    if temp_level == 0 {
 	    	if (attack_pressed) {
 	    		playerSelect = true;
 	    	}

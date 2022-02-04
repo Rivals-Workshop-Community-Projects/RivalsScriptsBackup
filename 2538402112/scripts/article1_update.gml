@@ -33,7 +33,8 @@ with asset_get("pHurtBox"){
                     if playerID.hsp != 0{
                         playerID.grov_emeratimer = 30
                         hurt = true
-                        take_damage(player,-1,1);
+                        // take_damage(player,-1,1);
+                        set_player_damage(player,get_player_damage(player)+1)
                     }
                 }
                 with other{

@@ -7,11 +7,39 @@ with (obj_stage_article) {
 
 dodgeTimer++;
 
-if (place_meeting(x, y, pHitBox)) && (timer >= 20) && (player_id.menuIndex == 1) { //sans got hit
-	player_id.menuIndex = 5;
-	player_id.menuIndexTimer = 0;
-	dodgeState = 1;
-	dodgeTimer = 0;
+if (place_meeting(x, y, pHitBox)) && (timer >= 20) && (player_id.menuIndex == 1) && (hit_cooldown == 0) { //sans got hit
+	has_been_hit = true;
+	hit_cooldown = 20;
+}
+
+if hit_cooldown > 0 {
+	hit_cooldown--;
+}
+
+if has_been_hit {
+	switch weapon {
+		case 0: //knife
+		player_id.menuIndex = 5;
+		player_id.menuIndexTimer = 0;
+		dodgeState = 1;
+		dodgeTimer = 0;
+		has_been_hit = false;
+		drawAttackFx = true;
+		break;
+		
+		case 1: //gun
+		player_id.attacks_left--;
+		has_been_hit = false;
+		if player_id.attacks_left == 0 {
+			player_id.menuIndex = 5;
+			player_id.menuIndexTimer = 0;
+			dodgeState = 1;
+			dodgeTimer = 0;
+			has_been_hit = false;
+			drawAttackFx = true;
+		}
+		break;
+	}
 }
 
 //print_debug(string(dodgeState))
@@ -134,8 +162,12 @@ if (endAnims) {
 		plzkillme = true;
 	}
 }
-
-if (player_id.attackMarkerx > 300) || (plzkillme) {
+if player_id.attack_bar_type == 0 {
+	var bar_active_time = 300;
+} else if player_id.attack_bar_type == 1 {
+	var bar_active_time = 600;
+}
+if (player_id.attackMarkerx > bar_active_time) || (plzkillme) {
     instance_destroy();
 }
 

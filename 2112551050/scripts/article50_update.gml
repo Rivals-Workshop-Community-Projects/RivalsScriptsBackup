@@ -106,7 +106,7 @@ if (timer > 2) {
 			
 			with oPlayer {
 				if (state == PS_ROLL_BACKWARD) || (state == PS_ROLL_FORWARD) || (state == PS_AIR_DODGE) {
-					if !(variable_instance_exists(id, "temp_level")) {
+					if temp_level == 0 {
 						var article = instance_place(x, y, obj_stage_article);
 						if (article == other.id) {
 							take_damage(player, -1, 1);

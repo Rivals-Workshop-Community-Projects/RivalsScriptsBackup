@@ -115,6 +115,7 @@ grov_fspecial_airuse = false
 grov_char_height = char_height
 grov_emeratimer = 0
 grov_gen3 = false
+grov_hasruneO = false; // Added to prevent draw_hud from crashing when f5ing with runes on.
 
 //workshop support
 plushForAmber = sprite_get("plushForAmber");
@@ -186,3 +187,4 @@ if has_rune("E"){
     roll_backward_max = 13;
     air_dodge_speed = 11;
 }
+if has_rune("O") grov_hasruneO = true;

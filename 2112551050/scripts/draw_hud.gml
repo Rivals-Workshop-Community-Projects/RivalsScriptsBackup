@@ -41,14 +41,21 @@ if !blackScreen && (state != 10) {
 		var hpFrac = playerHP/playerHPMax;
 		var krFrac = (playerHP - KR)/playerHPMax;
 		if (cpuId == undefined) && (!deathAnim) {
-			var hudColour = get_player_hud_color(player);
-			var hudName = get_char_info(player, INFO_STR_NAME);
-			if (string_width(hudName) > 60) {
-				while (string_width(hudName) > 60) {
-					hudName = string_delete(hudName, string_length(hudName), 1);
+			if !(url == 1933111975 && codec) {
+				var hudColour = get_player_hud_color(player);
+				var hudName = get_char_info(player, INFO_STR_NAME);
+				if (string_width(hudName) > 60) {
+					while (string_width(hudName) > 60) {
+						hudName = string_delete(hudName, string_length(hudName), 1);
+					}
+					
+					hudName = hudName + "..."
 				}
-				
-				hudName = hudName + "..."
+				with other {
+					draw_rectangle_color(hudX + 140, hudY - 2, hudX - 86, hudY - 34, c_black,c_black,c_black,c_black,false);
+					draw_text_transformed_color(hudX + 20, hudY - 26, "HP: " + string(other.playerHP) + "/" + string(other.playerHPMax), 1.5, 1.5, 0, c_white,c_white,c_white,c_white, 1);
+					draw_text_transformed_color(hudX - 85, hudY - 26, hudName, 1.5, 1.5, 0, c_white,c_white,c_white,c_white, 1);
+				}
 			}
 			with other {
 				draw_rectangle_color(hudX, hudY, hudX + hudLength, hudY + hudHeight, hudColour,hudColour,hudColour,hudColour,false); //red bg
@@ -56,9 +63,6 @@ if !blackScreen && (state != 10) {
 				if (other.KR > 0) {
 					draw_rectangle_color(hudX + (hudLength*krFrac) - 1, hudY, hudX + (hudLength*hpFrac), hudY + hudHeight, c_fuchsia,c_fuchsia,c_fuchsia,c_fuchsia,false); //purple KR
 				}
-				draw_rectangle_color(hudX + 140, hudY - 2, hudX - 86, hudY - 34, c_black,c_black,c_black,c_black,false);
-				draw_text_transformed_color(hudX + 20, hudY - 26, "HP: " + string(other.playerHP) + "/" + string(other.playerHPMax), 1.5, 1.5, 0, c_white,c_white,c_white,c_white, 1);
-				draw_text_transformed_color(hudX - 85, hudY - 26, hudName, 1.5, 1.5, 0, c_white,c_white,c_white,c_white, 1);
 			}
 		} else {
 			with other {
@@ -122,6 +126,29 @@ if (expertMode) {
 	if (timer < 400) {
 		draw_text_transformed_colour(view_get_wview()/2, 170, "I", 500, 8, 0, c_black,c_black,c_black,c_black,expertAlpha);
 		draw_text_transformed_colour(view_get_wview()/2, 200, "Expert Mode", 5, 5, 0, c_red,c_red,c_red,c_red,expertAlpha);
+	}
+}
+
+if (survivalModeTest) {
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_set_colour(c_white);
+	draw_set_alpha(1);
+	if timer mod 5 == 0 {
+		print_debug("GG G|GGGGGG||G GGG G|GGG G|GGGGGGGG|G|GG|G");
+	}
+	survivalTimer++;
+	
+	if survivalTimer >= 2 {
+		music_play_file("dogsong");
+		draw_rectangle_color(0, 0, 1000, 1000, c_black,c_black,c_black,c_black, false);
+		draw_sprite_ext(sprite_get("dog"), floor(survivalTimer/20) mod 2, 400, 200, 10, 10, 0, c_white, 1)
+	}
+	
+	with oPlayer {
+		if !dead && cpuId = undefined {
+			state = PS_DEAD;
+		}
 	}
 }
 

@@ -1,5 +1,5 @@
 //
-
+print_debug("woag")
 //create_hitbox(AT_JAB, 1, x, y);
 
 timer++;

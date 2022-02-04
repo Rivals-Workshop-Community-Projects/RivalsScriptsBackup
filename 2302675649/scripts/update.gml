@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 40;
+	var noOfPatches = 41;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -175,7 +175,7 @@ switch (state)
 		if (state_timer % 22 == 14) PlayRandomStep();
 		break;
 	case PS_HITSTUN:
-		if ("temp_level" in self && "temp_level" in hit_player_obj && aura && !hitpause && state_timer > 20) set_state(PS_TUMBLE);
+		if ("temp_level" in self && temp_level != 0 && "temp_level" in hit_player_obj  && hit_player_obj.temp_level != 0 && aura && !hitpause && state_timer > 20) set_state(PS_TUMBLE);
 		break;
 }
 

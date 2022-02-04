@@ -6,7 +6,7 @@
 // draw_sprite_ext(sprite_get("nspecial_cooldown"), 4, temp_x+x_pos, temp_y-12, 2, 2, 0, temp_color, 1);
 // if (move_cooldown[AT_NSPECIAL] > 0) draw_sprite_ext(sprite_get("wand_disabled"), 0, temp_x+x_pos-2, temp_y-12, 2, 2, 0, c_white, 1);
 
-if !has_rune("O"){
+if !grov_hasruneO{
     var temp_color = c_white;
     var x_pos = 186;
     if (move_cooldown[AT_FTHROW] > 0) temp_color = c_gray;

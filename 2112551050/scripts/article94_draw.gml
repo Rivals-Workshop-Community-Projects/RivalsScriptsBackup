@@ -354,8 +354,20 @@ if (player_id.drawAttackBar) || (player_id.attackBarFade > 0) {
 	if (!player_id.attackMarkerMove) {
 		flashIndex = floor(timer/5) mod 2;
 	}
-	draw_sprite_ext(sprite_get("attack_bar"), 0, x + 4, y + 376, xScale, 0.5, 0, c_white, alpha);
-	draw_sprite_ext(sprite_get("attack_marker"), flashIndex, x + 4 + player_id.attackMarkerx, y + 376, 0.5, 0.5, 0, c_white, alpha);
+	switch player_id.attack_bar_type {
+		case 0: //knife
+		draw_sprite_ext(sprite_get("attack_bar"), 0, x + 4, y + 376, xScale, 0.5, 0, c_white, alpha);
+		draw_sprite_ext(sprite_get("attack_marker"), flashIndex, x + 4 + player_id.attackMarkerx, y + 376, 0.5, 0.5, 0, c_white, alpha);
+		break;
+		
+		case 1: //gun
+		draw_sprite_ext(sprite_get("attack_bar"), 0, x + 4, y + 376, xScale, 0.5, 0, c_white, alpha);
+		for (var i = 0; i < player_id.attacks_left; i++) {
+			draw_sprite_ext(sprite_get("attack_marker"), flashIndex, (x - 360) + player_id.attackMarkerx + (i*100), y + 376, 0.5, 0.5, 0, c_white, alpha);
+		}
+		break;
+	}
+	
 }
 
 //every dead

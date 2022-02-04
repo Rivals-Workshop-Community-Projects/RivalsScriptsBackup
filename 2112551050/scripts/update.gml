@@ -4,9 +4,325 @@ state_timer++;
 attackFxTimer++;
 missTimer++;
 
+if get_gameplay_time() == 1 {
+	//var dev = instance_create(room_width/2, room_height/2 + 150, "obj_stage_article", 69);
+}
+
+with oPlayer {
+	if url != 1933111975 && trummelcodecneeded {
+	    trummelcodec = 17;
+	    trummelcodecmax = 26;
+	    with other {
+	    	other.trummelcodecsprite1 = sprite_get("codec");
+	    	other.trummelcodecsprite2 = sprite_get("X");
+	    }
+	    var page = 0;
+	    /*
+	    //Page X
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    */
+	    
+	    //Page 0
+	    trummelcodecspeaker[page] = 0;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "What on earth are you";
+	    trummelcodecline[page,2] = "guys doing over there!?";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 1
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 5;
+	
+	    trummelcodecline[page,1] = "I DON'T KNOW!!!";
+	    trummelcodecline[page,2] = "WHY DOES HE DO SO";
+	    trummelcodecline[page,3] = "MUCH DAMAGE!?!?!?";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 2
+	    trummelcodecspeaker[page] = 3;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "im surprised the pink";
+	    trummelcodecline[page,2] = "dude didnt warn you";
+	    trummelcodecline[page,3] = "beforehand.";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 3
+	    trummelcodecspeaker[page] = 0;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "I thought the only way";
+	    trummelcodecline[page,2] = "to fight Sans is by";
+	    trummelcodecline[page,3] = "doing a genocide run.";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 4
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 5;
+	
+	    trummelcodecline[page,1] = "I was sleeping!";
+	    trummelcodecline[page,2] = "I have no idea how this";
+	    trummelcodecline[page,3] = "happened! I didn't kill";
+	    trummelcodecline[page,4] = "anyone!";
+	    page++;
+	    
+	    //Page 5
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 2;
+	
+	    trummelcodecline[page,1] = "...";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 6
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 4;
+	
+	    trummelcodecline[page,1] = "Trummel...";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 7
+	    trummelcodecspeaker[page] = 2;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "i can explain";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 8
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 4;
+	
+	    trummelcodecline[page,1] = "Tell me how many.";
+	    trummelcodecline[page,2] = "Spit it out.";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 9
+	    trummelcodecspeaker[page] = 2;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "it was just a few";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 10
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 5;
+	
+	    trummelcodecline[page,1] = "JUST A FEW?";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 11
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 4;
+	
+	    trummelcodecline[page,1] = "Judging by our";
+	    trummelcodecline[page,2] = "current situation,";
+	    trummelcodecline[page,3] = "I think you have killed";
+	    trummelcodecline[page,4] = "more than 'just a few'.";
+	    page++;
+	    
+	    //Page 12
+	    trummelcodecspeaker[page] = 2;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "i couldn't help it";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "fight button go brrr";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 13
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 5;
+	
+	    trummelcodecline[page,1] = "You do know killing";
+	    trummelcodecline[page,2] = "people is a bad thing?";
+	    trummelcodecline[page,3] = "Do you feel no remorse";
+	    trummelcodecline[page,4] = "for your actions?";
+	    page++;
+	    
+	    //Page 14
+	    trummelcodecspeaker[page] = 3;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "i dont know.";
+	    trummelcodecline[page,2] = "he seemed to be";
+	    trummelcodecline[page,3] = "pretty...";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 15
+	    trummelcodecspeaker[page] = 3;
+	    trummelcodecexpression[page] = 1;
+	
+	    trummelcodecline[page,1] = "...shell-bent in murdering";
+	    trummelcodecline[page,2] = "them.";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 16
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 3;
+	
+	    trummelcodecline[page,1] = "OMG";
+	    trummelcodecline[page,2] = "...";
+	    trummelcodecline[page,3] = "Well at least your puns";
+	    trummelcodecline[page,4] = "are better than Trum's.";
+	    page++;
+	    
+	    //Page 17
+	    trummelcodecspeaker[page] = 2;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "hey mine arent that";
+	    trummelcodecline[page,2] = "bad";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 18
+	    trummelcodecspeaker[page] = 3;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "guess you could say";
+	    trummelcodecline[page,2] = "that i...";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 19
+	    trummelcodecspeaker[page] = 3;
+	    trummelcodecexpression[page] = 1;
+	
+	    trummelcodecline[page,1] = "...stole your thunder.";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 20
+	    trummelcodecspeaker[page] = 2;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "lol that was a good one";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 21
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "I've changed my mind.";
+	    trummelcodecline[page,2] = "These puns are trash.";
+	    trummelcodecline[page,3] = "Lets just get this";
+	    trummelcodecline[page,4] = "over with.";
+	    page++;
+	    
+	    //Page 22
+	    trummelcodecspeaker[page] = 2;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "ok lets do this";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 23
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 4;
+	
+	    trummelcodecline[page,1] = "Shut up, Trummel.";
+	    trummelcodecline[page,2] = "You have no say in";
+	    trummelcodecline[page,3] = "this matter.";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 24
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 4;
+	
+	    trummelcodecline[page,1] = "I can't believe you left";
+	    trummelcodecline[page,2] = "EXW just so you could";
+	    trummelcodecline[page,3] = "waste your time killing";
+	    trummelcodecline[page,4] = "for this stupid run.";
+	    page++;
+	    
+	    //Page 25
+	    trummelcodecspeaker[page] = 0;
+	    trummelcodecexpression[page] = 0;
+	
+	    trummelcodecline[page,1] = "(shhhh, people aren't";
+	    trummelcodecline[page,2] = "supposed to know about";
+	    trummelcodecline[page,3] = "that!)";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	    
+	    //Page 26
+	    trummelcodecspeaker[page] = 1;
+	    trummelcodecexpression[page] = 5;
+	
+	    trummelcodecline[page,1] = "(oops. sorry.)";
+	    trummelcodecline[page,2] = "";
+	    trummelcodecline[page,3] = "";
+	    trummelcodecline[page,4] = "";
+	    page++;
+	}
+	
+	if url == 1933111975 {
+		if codec && speaker == 3 {
+			if (codecindex == 1){
+				if (currentcodecline == 1){
+					sans_speech = 0;
+				}
+			}
+				if (currentcodecline <= 4) {
+					sans_speech++;
+					if (sans_speech >= 4) {
+						with other {
+							sound_play(sound_get("sans_speak"), false, 0);
+						}
+						sans_speech = 0;
+					}
+				}
+		}
+	}
+}
+
 //cpu destroy code;
 with oPlayer {
-    if (variable_instance_exists(id, "temp_level")) { //if has temp_level mean is cpu
+    if (temp_level != 0) { //temp_level > 0 = player
         cpuId = id;
         state = PS_DEAD;
         jump_down = true;
@@ -164,6 +480,20 @@ if (is_aether_stage() && !survivalMode) {
 		}
 	}
 }
+
+//player shadows
+if (timer == 2) {
+	with oPlayer {
+		if !dead && cpuId == undefined {
+			with other {
+				var shadow = instance_create(other.x, other.y, "obj_stage_article", 5);
+					shadow.target_id = other.id;
+					shadow.depth = -10;
+			}
+		}
+	}
+}
+
 if (timer == 2) {
 	with oPlayer {
 		playerHPMax += (numPlayers-1)*15;
@@ -419,13 +749,18 @@ switch (state) {
     	move_cooldown[AT_DSPECIAL_AIR] = 10;
     	move_cooldown[AT_NSPECIAL_AIR] = 10;
     }
-    music_stop();
+    if timer < 180 {
+    	music_stop();
+    }
     
     //survival mode
     if (survivalModeInputCounter >= array_length(survivalModeInputs)) {
     	survivalMode = true;
+    } else if (survivalModeInputCounterTest >= array_length(survivalModeInputsTest)) {
+    	survivalModeTest = true;
     } else {
     	var inputIndex = survivalModeInputCounter;
+    	var inputIndexTest = survivalModeInputCounterTest;
 	    if (numPlayers == 1) && (timer > 2) {
 	    	with oPlayer {
 	    		if (cpuId == undefined) {
@@ -463,6 +798,44 @@ switch (state) {
 	    					break;
 	    				} else if (right_pressed || up_pressed || left_pressed) {
 	    					other.survivalModeInputCounter = 0;
+	    				}
+	    				break;
+	    			}
+	    			
+	    			switch other.survivalModeInputsTest[inputIndexTest] {
+	    				case 0: //left
+	    				if (left_pressed) {
+	    					other.survivalModeInputCounterTest++;
+	    					break;
+	    				} else if (right_pressed || up_pressed || down_pressed) {
+	    					other.survivalModeInputCounterTest = 0;
+	    				}
+	    				break;
+	    				
+	    				case 1: //right
+	    				if (right_pressed) {
+	    					other.survivalModeInputCounterTest++;
+	    					break;
+	    				} else if (left_pressed || up_pressed || down_pressed) {
+	    					other.survivalModeInputCounterTest = 0;
+	    				}
+	    				break;
+	    				
+	    				case 2: //up
+	    				if (up_pressed) {
+	    					other.survivalModeInputCounterTest++;
+	    					break;
+	    				} else if (right_pressed || left_pressed || down_pressed) {
+	    					other.survivalModeInputCounterTest = 0;
+	    				}
+	    				break;
+	    				
+	    				case 3: //down
+	    				if (down_pressed) {
+	    					other.survivalModeInputCounterTest++;
+	    					break;
+	    				} else if (right_pressed || up_pressed || left_pressed) {
+	    					other.survivalModeInputCounterTest = 0;
 	    				}
 	    				break;
 	    			}
@@ -692,6 +1065,11 @@ switch (state) {
                 drawSans = false;
             }
         }
+        with (obj_stage_article) {
+			if (get_article_script(id) == 5) {
+		        instance_destroy(id);
+		    }
+		}
     }
     
     if (state_timer == 40) {
@@ -1044,11 +1422,20 @@ switch (state) {
     		}
     		
     		if (sansAttackIndex != 25) { //already created
-    			instance_create(get_marker_x(24), get_marker_y(24), "obj_stage_article", 4);
+    			var sans = instance_create(get_marker_x(24), get_marker_y(24), "obj_stage_article", 4);
+    				sans.weapon = 0;
+    			attack_bar_type = 0;
+    			//attacks_left = 4;
     		}
     	}
     	
-    	if (attackMarkerx > 300) && (sansAttackIndex < 25) {
+    	if attack_bar_type == 0 {
+    		var bar_active_time = 300;
+    	} else if attack_bar_type == 1 {
+    		var bar_active_time = 600;
+    	}
+    	
+    	if (attackMarkerx > bar_active_time) && (sansAttackIndex < 25) {
     		state = 5;
 			state_timer = 0;
 			temp_timer = 0;
@@ -2458,7 +2845,7 @@ switch (state) {
     				var playerX = 0;
 		    		var playerY = 0;
 	    			with oPlayer {
-			    		if !(variable_instance_exists(id, "temp_level")) { //is hooman
+			    		if temp_level == 0 { //is hooman
 			    			playerX = x;
 			    			playerY = y - 30;
 			    		}
@@ -4053,6 +4440,15 @@ switch (state) {
                 state_timer = 0;
             }
         }
+        with oPlayer {
+			if !dead && cpuId == undefined {
+				with other {
+					var shadow = instance_create(other.x, other.y, "obj_stage_article", 5);
+						shadow.target_id = other.id;
+						shadow.depth = -10;
+				}
+			}
+		}
     }
     break;
     

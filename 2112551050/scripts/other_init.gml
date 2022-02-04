@@ -25,3 +25,10 @@ won = false;
 takenDamage = false;
 
 initHit = false;
+
+sans_speech = 0;
+
+trummelcodecneeded = false;
+url = undefined;
+
+cpuId = undefined;
