@@ -20,22 +20,22 @@ if (state = PS_CROUCH){
 }
 
 if !(state = PS_WALK){
-walk_speed = 2.4;
+walk_speed = 2;
 }
 
 if (state = PS_WALK){
-    if (state_timer >= 17){
+    if (state_timer >= 12){
         walk_speed = 10;
-        if (state_timer >= 30){
+        if (state_timer >= 24){
 walk_speed = 0;
-        if (state_timer >= 46){
+        if (state_timer >= 36){
  state_timer = 1;
         }
         }
     }
     
     if (state_timer == 1){
-        walk_speed = 1;
+        walk_speed = 2;
         snd_rng = random_func(0, 3, true);
         
         if (snd_rng == 0){
@@ -47,7 +47,7 @@ walk_speed = 0;
         }
     }
     
-    if (state_timer == 20){
+    if (state_timer == 18){
         shake_camera( 3, 3 ); 
         snd_rng = random_func(0, 4, true);
         
@@ -105,8 +105,8 @@ if (state == PS_DASH && state_timer == 60){
         }
 }
 
-       if !(state == PS_DASH){
-       	with self{
+       if (state != PS_DASH){
+       	with (self){
             sound_stop(sound_get("dash1"));
             sound_stop(sound_get("dash2"));
             sound_stop(sound_get("dash3"));
@@ -173,7 +173,12 @@ if (easter_egg_timer <= 90) {
 		voiced_peacock = true;
 		cancelled_voice = false;
 		
-		 if !(oPlayer.url == 2135192216 || oPlayer.url == CH_ELLIANA || oPlayer.url == CH_ZETTERBURN || oPlayer.url == CH_CLAIREN || oPlayer.url == CH_ORI || oPlayer.url == 2229862078 || oPlayer.url == 2261916872 || oPlayer.url == 1870630263 || oPlayer.url == 1890617624 || oPlayer.url == 1871153050 || oPlayer.url == 1970731843 || oPlayer.url == 2190448871 || oPlayer.url == 2407716024 || get_player_color(player) != 15 || get_player_color(player) != 17 || get_player_color(player) != 18 || (oPlayer.url == "2605435443")){
+		 if  !(oPlayer.url == 2135192216
+		 || oPlayer.url == 2407716024
+		 || oPlayer.url == 2605435443
+		 || get_player_color(player) == 19
+		 || get_player_color(player) == 20
+		 || get_player_color(player) == 21){
     snd_rng = random_func(0, 4, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));
@@ -184,9 +189,9 @@ if (easter_egg_timer <= 90) {
     } else if (snd_rng == 3){
         sound_play(sound_get("voice_intro4"));
     }
-}
+		 	}
     
-  if (oPlayer.url == 2135192216 && get_player_color(player) != 15 && get_player_color(player) != 17 && get_player_color(player) != 18 && (oPlayer.url != "2605435443")){
+  if (oPlayer.url == 2135192216 && get_player_color(player) != 19 && get_player_color(player) != 20 && get_player_color(player) != 21 && (oPlayer.url != "2605435443")){
     snd_rng = random_func(0, 5, true);
     
     if (snd_rng == 0) {
@@ -202,7 +207,7 @@ if (easter_egg_timer <= 90) {
     }
 }
 
-    if (oPlayer.url == 2407716024 && get_player_color(player) != 15 && get_player_color(player) != 17 && get_player_color(player) != 18 && (oPlayer.url != "2605435443")){
+    if (oPlayer.url == 2407716024 && get_player_color(player) != 19 && get_player_color(player) != 20 && get_player_color(player) != 21 && (oPlayer.url != "2605435443")){
 	    snd_rng = random_func(0, 5, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));
@@ -217,7 +222,7 @@ if (easter_egg_timer <= 90) {
     }
 }   
 
-if ((oPlayer.url == "2605435443") && get_player_color(player) != 15 && get_player_color(player) != 17 && get_player_color(player) != 18){
+if ((oPlayer.url == "2605435443") && get_player_color(player) != 19 && get_player_color(player) != 20 && get_player_color(player) != 21){
 	    snd_rng = random_func(0, 6, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));
@@ -233,14 +238,14 @@ if ((oPlayer.url == "2605435443") && get_player_color(player) != 15 && get_playe
         sound_play(sound_get("voice_intro_bb2"));
     }
 }
-if (get_player_color(player) == 15){
+if (get_player_color(player) == 19){
 	        sound_play(sound_get("voice_intro_sans"));
 }
-if (get_player_color(player) == 17){
+if (get_player_color(player) == 20){
         sound_play(sound_get("voice_intro_ena"));
     }
 
-if (get_player_color(player) == 18){
+if (get_player_color(player) == 21){
         sound_play(sound_get("voice_intro_tankman"));
     }
 } 
@@ -370,6 +375,70 @@ if (state == PS_PARRY_START && taunt_pressed){
    set_attack = AT_UTHROW;
 }
 
+//Sound Stun Cycle
+sound_stun_timer--;
+if(sound_stun_timer <= 1){
+         sound_stun_timer = 0;
+}
+if(sound_stun_timer == 0){
+	sound_stun = true;
+}
 
+//Time freeze
+
+time_frozen = time_freeze_ticks > 0;
+time_freeze_ticks = clamp(time_freeze_ticks - 1, 0, 9999);
+
+if (attack = 49 && window = 1){
+if time_frozen{
+    var articles = ["obj_article1", "obj_article2", "obj_article3", "obj_article_solid", "obj_article_platform"]
+    
+    with (asset_get("oPlayer")) {
+        if (player != other.player) {
+            //print_debug( string(hsp) + ", " + string(vsp) + " || " + string(old_hsp) + ", " + string(old_vsp))
+            if (hitstop == 0 or abs(vsp) > 1 or abs(hsp) > 0){
+                old_vsp = vsp;
+                old_hsp = hsp;
+                vsp = -1;
+                hsp = -1;
+                can_move = false;
+            }
+            vsp = -1;
+            hsp = -1;
+            hitstop = 2;
+            hitstop_full = 2;
+            hitpause = true;
+            can_move = false;
+        }
+    }
+	
+	var attacks = [AT_JAB, AT_FTILT, AT_DTILT, AT_UTILT, AT_FSTRONG, AT_DSTRONG, AT_USTRONG, AT_DATTACK, AT_BAIR, AT_NAIR, AT_FAIR, AT_UAIR, AT_DAIR, AT_TAUNT, AT_NSPECIAL, AT_FSPECIAL, AT_USPECIAL, AT_DSPECIAL]
+	
+	with (asset_get("oPlayer")) {
+        if (player != other.player) {
+			for (var i = 0; i < array_length_1d(attacks); ++i){
+				if move_cooldown[attacks[i]] < 2{
+					move_cooldown[attacks[i]] = 2;
+			    }
+			}
+        }
+    }
+
+    
+    with (asset_get("oPlayer")) {
+        for (var i = 0; i < array_length_1d(articles); ++i){
+            with ( asset_get( string(articles[i]) ) ){
+                hitstop = 2;
+            }
+        }
+    }
+}
+}
+	if !(free){
+		if (joy_pad_idle && special_pressed && state_timer <= 1){
+		fs_force_fs = true;
+		}
+	}
+	
 //execute noise cancel code
 user_event(0);

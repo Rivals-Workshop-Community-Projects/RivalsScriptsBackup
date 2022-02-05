@@ -3,6 +3,72 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+//Final Smash
+	if(attack == 49){
+		    hurtbox_spr = sprite_get("big_band_hurtbox");
+	    fs_force_fs = false;
+		
+	/*	}
+		
+		if (state_timer == 100){
+			window = 4;
+			window_timer = 0;
+		}
+		
+		if(window = 5 && window_timer = 1){
+			sound_play(sound_get("fsmash_shot"));
+		}
+		
+		if (state_timer == 220){
+			window = 6;
+			window_timer = 0;
+		} */
+
+    if window <= 2{
+    	time_freeze_ticks = 1;
+    }
+    can_fast_fall = false;
+    can_move = false;
+    
+    if (window == 2){
+    	fs_timer--;
+    		if (has_hit_player){
+    		times_hit++;
+    	}
+    	
+    }
+    if (fs_timer == 0 && taunted == true){
+    	taunted = false;
+    }
+    if (fs_timer == 0 || times_hit == 20){
+    	window = 3;
+    	window_timer = 0;
+    	fs_timer = 200;
+    	times_hit = 0;
+    }
+    if (window == 3 && window_timer == 31 && taunted == false){
+    window = 8;
+    window_timer = 0;
+    }
+    if (window == 5){
+    	tuba_timer--;
+    	if(tuba_timer = 0){
+    		window = 6;
+    		window_timer = 0;
+    		tuba_timer = 80;
+    		    	fs_timer = 200;
+    	times_hit = 0;
+    	taunted = false;
+    	}
+    }
+    
+    if(window == 3 && taunted == true && has_hit_player && window_timer == 8){
+    window = 4;
+    window_timer = 0;
+    }
+
+}
+
 if (attack == AT_TAUNT){
 	if (window == 2 && window_timer == 2){
         snd_rng = random_func(0, 5, true);
@@ -38,10 +104,9 @@ if (attack == AT_TAUNT){
 }
 
 if (attack == AT_FSPECIAL_AIR && !free){
-    state = PS_LAND;
+window = 4;
     state_timer = 0;
     sound_play(sound_get("land"));
-    hurtbox_spr = sprite_get("big_band_hurtbox");
 }
 
 if (attack == AT_NSPECIAL_AIR){
@@ -50,7 +115,6 @@ if (attack == AT_NSPECIAL_AIR){
     state = PS_LAND;
     state_timer = 0;
     sound_play(sound_get("land"));
-set_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("big_band_hurtbox"));
 }
 if (window >= 1 && has_hit_player){
 	can_move = false;
@@ -80,8 +144,8 @@ if (window == 2 && window_timer >= 4){
 }
 if (window == 1 && free){
 move_cooldown[AT_NSPECIAL_AIR] = 60*60;	
-if (window == 2){
-	move_cooldown[AT_FSPECIAL_AIR] = 100;
+if (window == 4){
+	move_cooldown[AT_FSPECIAL_AIR] = 200;
 }
 }
 }
@@ -188,9 +252,6 @@ if(attack == AT_FSPECIAL_AIR){
     	if (!hitpause && !down_hard_pressed && !fast_falling && window <= 3){
     	vsp = min(vsp, 3);	
     	}
-    	if(window == 2 && window_timer == 1){
-    	sound_play(sound_get("cymbal")); 
-    	}
 move_cooldown[AT_FSPECIAL_AIR] = 87;
 move_cooldown[AT_NSPECIAL_AIR] = 87;
 }
@@ -222,22 +283,26 @@ if(attack == AT_EXTRA_2){
     }
 
 if (attack == AT_DSPECIAL){
+	if (free && move_cooldown[AT_DSPECIAL] <= 1){
+   move_cooldown[AT_DSPECIAL] = 60*60;
+   move_cooldown[AT_DTHROW] = 60*60;
+	}
+	if !(free){
+		if (move_cooldown[AT_DSPECIAL] <= 1){
+		   move_cooldown[AT_DSPECIAL] = 1;	
+		   move_cooldown[AT_DTHROW] = 1;	
+		}
+	}
+
 	
 			if(special_down && state_timer == 6 && taunted == true){
 	attack = AT_DTHROW;
 }
-    	if (has_hit_player){
-    		 with (hit_player_obj){
-    		 	 if (super_armor == false){
-     self.hitstop = 0.50;
-    	}
-    	}
-    	}
-    	
 		move_cooldown[AT_DSPECIAL] = 40;
 }
 
 if(attack == AT_DTHROW){
+    	
 		move_cooldown[AT_DSPECIAL] = 180;
 		if (window == 3){
 			   shake_camera( 5, 5 );
@@ -313,7 +378,8 @@ if (attack == AT_JAB || attack == AT_DTILT || attack == AT_FTILT || attack == AT
 if (attack == AT_DATTACK){
 	if(has_hit_player && !was_parried){
 		        can_special = true;
-		        can_Uspecial = false;
+		        can_uspecial = false;
+		        can_jump = true;
 	}
 }
 
@@ -620,7 +686,7 @@ switch (attack) {
 	    break;
 
     case AT_UTILT:
-	            if (has_hit_player && !hitpause && window_timer >= 6) {
+	            if (has_hit_player && !hitpause) {
 	                can_strong = 1;
 	                can_uspecial = 1;
 	      	        can_special = 1;
@@ -1057,7 +1123,57 @@ if (attack == AT_EXTRA_1 && window == 1 && window_timer == 2) {
         sound_play(sound_get("voice_breathe"));
     }
 
+//Final Smash
+	if(attack == 49){
+		
+			if (window == 1 && window_timer <= 2){
+	chain_rng = random_func(0,2,true);
+	if (chain_rng == 0){
+		voice_fs_alt1 = true;
+	} else if (chain_rng == 1){
+				voice_fs_alt2 = true;
+	}
+			}
+	
+	if(window == 1 && window_timer == 2 && voice_fs_alt1 == true){
+        sound_play(sound_get("voice_final_smash_intro1"));
+	}
+        if (window == 2 && window_timer == 2 && voice_fs_alt1 == true){
+        sound_play(sound_get("voice_final_smash_intro_end1"));  
+        voice_fs_alt1 = false;
+        }
 
+	
+	if(window == 1 && window_timer == 2 && voice_fs_alt2 == true){
+        sound_play(sound_get("voice_final_smash_intro2"));
+	}
+        if (window == 2 && window_timer == 2 && voice_fs_alt2 == true){
+        sound_play(sound_get("voice_final_smash_intro_end2"));  
+                voice_fs_alt2 = false;
+        }
+		
+
+if (window == 5 && window_timer == 1){
+	    	    snd_rng = random_func(0, 4, true);
+	    	        if (snd_rng == 0) {
+        sound_play(sound_get("voice_tuba1"));
+    } else if (snd_rng == 1) {
+        sound_play(sound_get("voice_tuba2"));
+    } else if (snd_rng == 2) {
+        sound_play(sound_get("voice_tuba3"));
+    } else if (snd_rng == 3) {
+        sound_play(sound_get("voice_tuba4"));
+    }
+}
+if(window == 6 && window_timer == 1){
+        sound_play(sound_get("voice_final_smash_end"));	
+}
+		
+if (window == 7 && voice_fs_alt1 == true || window == 7 && voice_fs_alt2 == true || window == 3 && voice_fs_alt1 == true || window == 3 && voice_fs_alt2 == true){
+	voice_fs_alt2 = false;
+	voice_fs_alt1 = false;
+	}
+}
 }
 }
     
@@ -1222,6 +1338,26 @@ if (attack == AT_UTHROW){
 	if (window == 3){
 		honk = false;
 	}
+}
+
+//Sound Stun Trigger
+
+if (attack == AT_USPECIAL || attack == AT_DSPECIAL || attack == AT_DTHROW || attack == AT_FSPECIAL_AIR || attack == AT_USPECIAL_2){
+	if(has_hit_player && sound_stun == true){
+		 with (hit_player_obj){
+         self.hitstop = 46;
+         can_move = false;
+         state = PS_HITSTUN;
+         
+}
+sound_stun = false;
+if (is_end_of_window){
+		sound_stun_timer = 75;
+}
+	}
+}
+if (sound_stun == false && sound_stun_timer >= 0 && has_hit_player){
+	sound_stun_timer = 120;
 }
 
 

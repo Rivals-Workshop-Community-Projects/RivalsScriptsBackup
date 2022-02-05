@@ -59,6 +59,8 @@ sprite_change_offset("taunt", 112, 158);
 sprite_change_offset("taunt2", 80, 158);
 sprite_change_offset("toot_vfx", 80, 158);
 
+sprite_change_offset("final_smash", 170, 190);
+
 sprite_change_offset("plat", 64, 94);
 
 sprite_change_offset("nspecial_proj", 64, 94);

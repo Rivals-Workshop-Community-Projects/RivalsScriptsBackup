@@ -94,9 +94,12 @@ with (pHitBox)
                         break;
                         
                         case 10:
-                            if (poison != 4)
-                            poison -= 1;
+while (poison > 0) {
+  poison--;
+}
                         break;
+                        
+
                     }
                     
                     //workshop compatibility
@@ -123,6 +126,7 @@ with (pHitBox)
                 prev_mark = marked;
                 prev_wrap = wrapped;
                 prev_bamboo = bambood;
+                prev_poison = poison;
             }
         }
     }

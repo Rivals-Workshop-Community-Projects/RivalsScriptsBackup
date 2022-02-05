@@ -20,6 +20,7 @@ switch (attack) {
 
 if (attack == AT_FSPECIAL && free){
     attack = AT_FSPECIAL_AIR;
+        state_timer = 0;
 }
 
 if (attack == AT_USPECIAL && free){

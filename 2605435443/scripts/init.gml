@@ -3,14 +3,14 @@ crouchbox_spr = sprite_get("big_band_crouchbox");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-char_height = 99;
+char_height = 98;
 idle_anim_speed = .17;
 crouch_anim_speed = .1;
-walk_anim_speed = .2;
+walk_anim_speed = .24;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
-walk_speed = 2.4;
+walk_speed = 2;
 walk_accel = 0.1;
 walk_turn_time = 7;
 initial_dash_time = 8;
@@ -135,8 +135,8 @@ easter_egg_timer = 0;
 easter_egg_set = false;
 voice_activated = false;
 cancelled_voice = true;
-voiced_peacock = false;
-peacock_player = self
+sound_stun = true;
+sound_stun_timer = 120;
 
 got_hit_ticks = 0;
 got_hit_num = 0;
@@ -146,6 +146,27 @@ voice_utilt_chain2 = false;
 voice_utilt_chain3 = false;
 taunted = false;
 hitpause_buffer = false;
+
+
+voice_fs_alt1 = false;
+voice_fs_alt2 = false;
+voice_fs_alt3 = false;
+
+css_sfx = 2;
+
+//Final Smash
+fs_char_portrait_y = 120;
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "default";
+fs_go_to_hud = false;
+fs_force_fs = false;
+
+fs_timer = 200;
+times_hit = 0;
+tuba_timer = 80;
+
+time_frozen = false
+time_freeze_ticks = 0
 
 //Noise Cancelling stuff
 ncparry_timer = 0;

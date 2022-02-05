@@ -2,8 +2,6 @@
 
 
 
-
-	
  
     
 
@@ -887,6 +885,9 @@ if move_cooldown[AT_UAIR] > 0 {
  
 }
 
+
+
+
 if left_pressed and right_pressed and attack_pressed and special_pressed and cheating == 0 {
 	if down_pressed {
 	cheatingfr = instance_create(x,y,"oPlayer")
@@ -897,4 +898,69 @@ if left_pressed and right_pressed and attack_pressed and special_pressed and che
 	}
 }
 
+/*
+ 
+with (asset_get("oPlayer")) {
+	   soft_armor = 999
+	   
+				if (player != other.player) {
+					hsp /= 1.05
+				   if (other.state == PS_ATTACK_GROUND or other.state == PS_ATTACK_AIR) && can_attack && other.window == 1{
+				   	hsp = 4*spr_dir
+				   	old_vsp = 0
+				   	old_hsp = 0
+				   	if other.attack == AT_JAB {
+				   	set_attack(AT_JAB)
+				   	window = 1
+				   	window_timer = 0
+				   	}
+				   	if other.attack == AT_DATTACK {
+				   	set_attack(AT_FSTRONG)
+				   	window = 1
+				   	window_timer = 10
+				   	}
+				   	if other.attack == AT_FTILT {
+				   	set_attack(AT_UTILT)
+				   	window = 1
+				   	}
+				   	if other.attack == AT_FAIR {
+				   	set_attack(AT_DATTACK)
+				   	window = 1
+				   	window_timer = 0
+				   	hitpause = true 
+				   	hitstop = 5
+				   	}
+				   	if other.attack == AT_DTILT {
+				   	set_attack(AT_DTILT)
+				   	window = 1
+				   	window_timer = 0
+				   	}
+				   	if other.attack == AT_FSPECIAL {
+				   	set_attack(AT_NSPECIAL)
+				   	window = 1
+				   	window_timer = 0
+				   	hitpause = true 
+				   	hitstop = 8
+				   	}
+				   	if other.attack == AT_NSPECIAL {
+				   	set_attack(AT_DSPECIAL)
+				   	window = 1
+				   	window_timer = 1
+				   	}
+				   	if other.attack == AT_DSTRONG {
+				   	set_attack(AT_TAUNT)
+				   	window = 1
+				   	window_timer = 1
+				   	}
+				   }
+					
+				} else {
+					invincible = true 
+	                invince_time = 5
+	                cheatingreal = 4
+				}
+				
+				
+}
 
+	
