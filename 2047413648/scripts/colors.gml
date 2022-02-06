@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 29, 12 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 10 );
+set_num_palettes( 11 );
 
 // Void ?
 set_color_profile_slot( 1, 0, 139, 209, 0 ); //mask mark
@@ -99,6 +99,14 @@ set_color_profile_slot( 9, 2, 0, 70, 189 ); //hair
 set_color_profile_slot( 9, 3, 44, 50, 87 ); //fur
 set_color_profile_slot( 9, 4, 37, 42, 74 ); //unnamed clor row
 set_color_profile_slot( 9, 5, 31, 44, 143 ); //cloak
+
+// The Hollower
+set_color_profile_slot( 10, 0, 255, 222, 202 ); //mask mark
+set_color_profile_slot( 10, 1, 255, 255, 255 ); //white/sword
+set_color_profile_slot( 10, 2, 214, 180, 180 ); //hair
+set_color_profile_slot( 10, 3, 250, 250, 250 ); //fur
+set_color_profile_slot( 10, 4, 232, 183, 183 ); //unnamed clor row
+set_color_profile_slot( 10, 5, 161, 16, 23 ); //cloak
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

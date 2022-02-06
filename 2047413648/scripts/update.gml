@@ -466,3 +466,14 @@ create_hitbox(AT_DAIR,6,x,y)
 create_hitbox(AT_DAIR,7,x,y)
 state_timer = 1
 }
+
+
+ 
+ 
+ 
+ if hitpause{
+	sound_play(sound_get("RI"),false,noone,1,max(1, 1.4 - (hit_player_obj.hitpause*hit_player_obj.hitpause)/100))
+	x -= 10*spr_dir 
+	hitstop = 0
+}
+}

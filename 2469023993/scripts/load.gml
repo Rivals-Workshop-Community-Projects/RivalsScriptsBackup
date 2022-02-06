@@ -53,6 +53,9 @@ sprite_change_offset("taunt_power", 125, 158);
 sprite_change_offset("nspecial_air", 125, 158);
 sprite_change_offset("fspecial_air", 125, 158);
 
+sprite_change_offset("hfx_box", 125, 158);
+sprite_change_offset("hfx_box_small", 62, 75);
+
 sprite_change_offset("finalsmesh", 125, 158);
 
 sprite_change_offset("finalsmesh_air", 125, 158);

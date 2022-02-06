@@ -89,6 +89,16 @@ has_nspecial = true;
 afterimage_color = make_color_rgb(get_color_profile_slot_r(get_player_color(player), 4), get_color_profile_slot_g(get_player_color(player), 4), get_color_profile_slot_b(get_player_color(player), 4));
 animation_index = 0;
 hue_palette = 2;
+//idk how to do this better. fixes endless abyss crashing
+if get_player_team(1) == get_player_team(2) && get_player_team(2) == get_player_team(3) && get_player_team(3) == get_player_team(4) {
+    probably_in_abyss = true;
+} else probably_in_abyss = false;
+
+//for (var i = 1; i < 5; i++) {
+//    print_debug(get_player_team(i));
+//}
+//print_debug(get_player_team(player));
+
 
 // Animation Info
 

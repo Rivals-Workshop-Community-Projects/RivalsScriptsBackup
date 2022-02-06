@@ -281,6 +281,15 @@ in a Patch.
 
 // other patches go here...
 
+initPatch("1.2", "Feb 5, 2022"); // (replace the date lol)
+initHeader("Bugfix");
+initSection("Endless Abyss no longer crashes on startup.
+Probably.
+Idk I dont play abyss.");
+initHeader("CSS Stuff");
+initSection("Removed Munophone icon on CSS");
+initSection("Removed the ''Blue Stuff'' from CSS (if you know, you know)");
+
 initPatch("1.1", "Jan 29, 2022"); // (replace the date lol)
 initHeader("Balance");
 initSection("Fair damage reduced from 4+6 -> 3+5");

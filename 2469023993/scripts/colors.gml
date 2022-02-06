@@ -124,13 +124,13 @@ set_color_profile_slot( 12, 3, 0, 0, 0 ); //OUTLINE
 set_color_profile_slot( 12, 4, 255, 168, 168 ); //EYES
 set_color_profile_slot( 12, 5, 235, 78, 78 ); //ENERGY
 
-// Rebellious Shift
-set_color_profile_slot( 13, 0, 81, 0, 173 ); //BODY
-set_color_profile_slot( 13, 1, 116, 0, 122 ); //SHADE
-set_color_profile_slot( 13, 2, 237, 0, 167 ); //LIGHT
+// Spacefrost Shift
+set_color_profile_slot( 13, 0, 175, 204, 227 ); //BODY
+set_color_profile_slot( 13, 1, 134, 178, 209 ); //SHADE
+set_color_profile_slot( 13, 2, 98, 131, 156 ); //LIGHT
 set_color_profile_slot( 13, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 13, 4, 255, 161, 222 ); //EYES
-set_color_profile_slot( 13, 5, 143, 87, 186 ); //ENERGY
+set_color_profile_slot( 13, 4, 219, 255, 250 ); //EYES
+set_color_profile_slot( 13, 5, 156, 208, 247 ); //ENERGY
 
 // Gooey Shift
 set_color_profile_slot( 14, 0, 0, 179, 134 ); //BODY
@@ -230,7 +230,7 @@ set_color_profile_slot( 25, 5, 255, 214, 138 ); //ENERGY
 
 // Furious Shift
 set_color_profile_slot( 26, 0, 28, 28, 28 ); //BODY
-set_color_profile_slot( 26, 1, 77, 77, 77 ); //SHADE
+set_color_profile_slot( 26, 1, 61, 0, 0 ); //SHADE
 set_color_profile_slot( 26, 2, 255, 8, 0 ); //LIGHT
 set_color_profile_slot( 26, 3, 0, 0, 0 ); //OUTLINE
 set_color_profile_slot( 26, 4, 255, 124, 0 ); //EYES

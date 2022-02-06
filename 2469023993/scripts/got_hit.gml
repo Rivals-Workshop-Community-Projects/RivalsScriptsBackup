@@ -16,7 +16,7 @@ if can_swift = true{
 if (state_cat == SC_HITSTUN && radio == 1){
 	if (orig_knock > 17){
 		if (random_func(0, 6, true) == 3){
-			sound_play(sound_get("pain1"));
+			sound_play(sound_get("pain5"));
 		}
 	}
 	else if (orig_knock > 9)

@@ -16,7 +16,7 @@ switch (state) {
 		image_index = state_timer/10;
 		break;
 	case PS_SPAWN:
-		if state_timer < 80 {
+		if state_timer < 80 && !probably_in_abyss {
 			sprite_index = sprite_get("dspecial");
 			draw_y = clamp(-2320 + 58 * state_timer, -2320, 0);
 			hud_offset = -draw_y;

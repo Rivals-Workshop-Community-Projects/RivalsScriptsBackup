@@ -28,13 +28,15 @@ with asset_get("pHurtBox"){
     if instance_exists(playerID) && playerID != other.player_id && !playerID.free && playerID.grov_emeratimer == 0{
         if (get_player_team(playerID.player) != get_player_team(other.player_id.player) || get_match_setting(SET_TEAMATTACK) == 1)
             if place_meeting(x,y,other){
-                playerID.grov_emerashard = true
-                if !playerID.invincible && playerID.grov_emeratimer == 0 && playerID.clone == false{
-                    if playerID.hsp != 0{
-                        playerID.grov_emeratimer = 30
-                        hurt = true
-                        // take_damage(player,-1,1);
-                        set_player_damage(player,get_player_damage(player)+1)
+                with playerID{
+                    grov_emerashard = true
+                    if !invincible && grov_emeratimer == 0 && clone == false{
+                        if hsp != 0{
+                            grov_emeratimer = 30
+                            hurt = true
+                            take_damage(player,-1,1);
+                            // set_player_damage(player,get_player_damage(player)+1)
+                        }
                     }
                 }
                 with other{

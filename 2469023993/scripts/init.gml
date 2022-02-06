@@ -9,7 +9,7 @@ char_height = 52;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
 walk_anim_speed = .125;
-dash_anim_speed = .3;
+dash_anim_speed = .25;
 pratfall_anim_speed = .25;
 can_wall_cling = true;
 walljump_timer = 0;
@@ -39,10 +39,10 @@ air_accel = 0.3;
 prat_fall_accel = .3; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
-double_jump_time = 54; //the number of frames to play the djump animation. Can't be less than 31.
+double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
 walljump_vsp = 10;
-walljump_time = 12;
+walljump_time = 22;
 max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .5;
@@ -102,11 +102,19 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+boxFX = hit_fx_create(sprite_get("hfx_box"), 32);
+smallboxFX = hit_fx_create(sprite_get("hfx_box_small"), 32);
+
+nitrus = 0;
 used_fspecial = false;
 can_swift = true;
 swift_mode = false;
 swift_timer = 0;
 training = get_training_cpu_action() != CPU_FIGHT;
+
+grabbed_player_obj = noone;    //the player object currently being grabbed.
+grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
+grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
 
 radio = 0;
 

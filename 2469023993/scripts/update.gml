@@ -7,16 +7,15 @@ if !free or state == PS_WALL_JUMP or state == PS_WALL_TECH {
 }
 
 if swift_mode = true{
-	move_cooldown[AT_DSPECIAL] = 30;
+	move_cooldown[AT_DSPECIAL] = 300;
 	move_cooldown[AT_TAUNT] = 10;
 	move_cooldown[AT_TAUNT_2] = 10;
 	swift_timer++;
-	knockback_adj = 1.05;
 	walk_speed = 4;
 	walk_anim_speed = .175;
 	wave_land_adj = 1.5;
 	dash_speed = 10;
-	dash_anim_speed = .35;
+	dash_anim_speed = .3;
 	initial_dash_speed = 10.5;
 	air_dodge_speed = 9;
 	air_max_speed = 6;
@@ -36,12 +35,11 @@ if swift_timer > 700{
 }
 
 if swift_mode = false{
-	knockback_adj = 1.15;
 	walk_speed = 3.5;
 	walk_anim_speed = .125;
 	wave_land_adj = 1.35;
 	dash_speed = 8;
-	dash_anim_speed = .3;
+	dash_anim_speed = .25;
 	initial_dash_speed = 8.5;
 	air_dodge_speed = 7.5;
 	air_max_speed = 5;
@@ -59,6 +57,16 @@ if swift_mode = false{
 if swift_timer = 700{
 	sound_play(sound_get("swiftoff"));
 	sound_stop(sound_get("swifton"));
+}
+
+if (move_cooldown[AT_DSPECIAL] > 0){
+    nitrus = 1;
+} else {
+	nitrus = 0;
+}
+
+if nitrus = 1 && swift_mode = true{
+	nitrus = 2;
 }
 
 

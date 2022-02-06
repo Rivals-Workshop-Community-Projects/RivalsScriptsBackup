@@ -20,7 +20,7 @@ if (init == 0){
     with (asset_get("obj_article1")){
         if (id != other.id && player_id == other.player_id){
 					if (state != 2){ 
-						take_damage(player, -1, 5 );
+						//take_damage(player, -1, 5 ); oh no... it's broken...,,
 						sound_play(asset_get("sfx_syl_nspecial_flowerhit"));
 						state = 2; // die
 						state_timer = 0; 
@@ -175,55 +175,59 @@ if (state == 3){
 
 // // STATE 4 - EXPLODE
 if (state == 4){
-	image_index = 9;
-	hsp = 0;
-	vsp += .5;
-	if (state_timer <= 5) { 
-		vsp = -5;
-	}
-	
-	if (state_timer = 15) { 
-		create_hitbox(AT_JAB, 5, x + 2, y - 5);
-		sound_play(asset_get("sfx_abyss_seed_explode"));
-		player_id.minion_active = false;    
-		spawn_hit_fx( x, y - 5, 117 );
-		instance_destroy();
-		exit;
-	}
+
+		image_index = 9;
+		hsp = 0;
+		vsp += .5;
+		if (state_timer <= 5) { 
+			vsp = -5;
+		}
+		
+		if (state_timer = 15) { 
+			create_hitbox(AT_JAB, 5, x + 2, y - 5);
+			sound_play(asset_get("sfx_abyss_seed_explode"));
+			player_id.minion_active = false;    
+			spawn_hit_fx( x, y - 5, 117 );
+			instance_destroy();
+			exit;
+		}
 }
 
 // // STATE 5 - KILLED BY OTHER PLAYER
 var oth = instance_place(x, y, asset_get("pHitBox"));
-if (place_meeting(x, y, oth) && oth.player_id != player_id && state == 1){
-		sound_play(asset_get("sfx_syl_nspecial_flowerhit"));
-	if (minion_poisoned = false) {
-		take_damage(player, -1, 5 );
-	}
-	player_id.minion_active = false;
-	hsp = 0;    
-	spawn_hit_fx( x, y, 116 );
-    instance_destroy();
-    exit;
-}
+if (place_meeting(x, y, oth) && oth.player_id != player_id){
 
-// // STATE 7 - KILLED BY USPECIAL (UNUSED SINCE 2.0)
-/*
-if (state == 7){
-	image_index = 9;
-	hsp = 0;
-	vsp += .6;
-	if (state_timer <= 5) { 
-		vsp = -5;
+	if (minion_poisoned = true) {
+			state = 6;
+			state_timer = 0; 
 	}
-	if (state_timer >= 23) { 
-		player_id.minion_active = false;
+
+	else {
+
+		//take_damage(player, -1, 5 ); take damage machine broke
 		sound_play(asset_get("sfx_syl_nspecial_flowerhit"));
+		player_id.minion_active = false;
+		hsp = 0;    
 		spawn_hit_fx( x, y, 116 );
 		instance_destroy();
 		exit;
+
+	}
+
+}
+
+// // STATE 6 - POISONED EXPLOSION
+if (state == 6){
+
+		if (state_timer = 1) { 
+			create_hitbox(AT_JAB, 5, x + 2, y - 5);
+			sound_play(asset_get("sfx_abyss_seed_explode"));
+			player_id.minion_active = false;    
+			spawn_hit_fx( x, y - 5, 117 );
+			instance_destroy();
+			exit;
 	}
 }
-*/
 
 if (player_id.attack = AT_FSPECIAL) { 
 	var tha = instance_place(x, y, asset_get("pHitBox"));

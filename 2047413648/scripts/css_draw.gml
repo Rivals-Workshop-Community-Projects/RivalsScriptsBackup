@@ -4,6 +4,17 @@ var temp_y = floor(y+10);
 var buildtag = "indev";
 var alt = get_player_color(player);
 
+var charuuid = string(sprite_get("idle"));
+if ("css_char" not in self || css_char != charuuid) {
+    css_char = charuuid;
+    sound_stop(sound_get("finish"))
+    sound_stop(sound_get("RI"))    
+               sound_play(sound_get("finish"),false,noone,.7,.7)	
+               sound_play(sound_get("finish"),false,noone,1,1.3)	
+               sound_play(sound_get("RI"),false,noone,.6,.6)	
+}
+
+
 draw_sprite_ext(sprite_get("charselectbg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 
 if ("prev_alt" not in self){
@@ -85,6 +96,7 @@ var palette_names = [
   "nonsense tournament winner alt",
   "Equaliza",
   "Riptide",
+  "The Hollower",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

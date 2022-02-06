@@ -7,7 +7,7 @@ if training{
 }
 
 if(get_player_damage( player ) <= 75 && radio == 1){
-	sound_play( sound_get( "pain5" ) );
+	sound_play( sound_get( "pain1" ) );
 }
 else if(get_player_damage( player ) >= 76 && radio == 1){
 	sound_play( sound_get( "pain7" ) );

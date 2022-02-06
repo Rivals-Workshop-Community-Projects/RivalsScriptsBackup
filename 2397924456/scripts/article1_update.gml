@@ -865,7 +865,7 @@ else{
 badly_damaged = (legion_health <= 5 * health_ratio);
 
 if !legion_health && can_damage_player{
-	take_damage(player, player, 10);
+	with player_id take_damage(player, player, 10);
 	can_damage_player = 0;
 }
 if legion_health can_damage_player = 1;

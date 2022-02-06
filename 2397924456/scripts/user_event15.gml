@@ -242,6 +242,12 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.4", "05 February, 2022");
+initHeader("Legion - Bugfixes");
+initSection("Fixed a crash introduced with the new RoA patch.");
+initHeader("UStrong - Nerfs");
+initSection("Knockback growth 1 -> 0.99999.");
+
 initPatch("1.3", "19 September, 2021");
 initHeader("General");
 initSection("Upgraded to MunoPhone Touch.
