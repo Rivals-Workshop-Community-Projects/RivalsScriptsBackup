@@ -548,6 +548,9 @@ if(attack == AT_FTILT)
 {
 	var ttime = 1;
 	
+	// Flip var reset
+	if(window == 1 && window_timer <= 1) ftilt_flip = false;
+
 	// FX
 	if(window == 1 && window_timer == get_window_value(AT_FTILT,1,AG_WINDOW_LENGTH)-1) sound_play(sound_get("monarch_smallblink2"),false,0,.7,1)
 	
@@ -560,18 +563,13 @@ if(attack == AT_FTILT)
 		tmid.depth = -100;	
 		
 		// Move forward
-		teleport(100 * spr_dir);
+		teleport(70 * spr_dir);
 		
-		
-
-		
-		// Flip direction
-		spr_dir *= -1;
 
 	    portal_afterimage.timer = teleport_afterimage_time;
 	    portal_afterimage.sprite_index = sprite_index;
 	    portal_afterimage.image_index = image_index+2;
-	    portal_afterimage.x = x+dir(10);
+	    portal_afterimage.x = x-dir(10);
 	    portal_afterimage.y = y;
 	    portal_afterimage.spr_dir = spr_dir;
 	    last_pcolor = 1;
@@ -579,20 +577,20 @@ if(attack == AT_FTILT)
 	    portal_line_timer = teleport_afterimage_time;
 	}
 	
+	
+	
 	// Return teleport
 	if(window == 2 && window_timer == windowend(2))
 	{
 		// Spawn effect
 		treturn = spawn_hit_fx( x, y, teleport_lite_return );
 		treturn.depth = -100;
-		
-		
 	}
 	
 	// Butterfly FX
 	if(window == 2 && window_timer == ttime + 2)
 	{
-		var tbutterflies1 = spawn_hit_fx( x + (spr_dir*100), y, teleport_lite_butterflies );
+		var tbutterflies1 = spawn_hit_fx( x - (spr_dir*100*(ftilt_flip ? -1 : 1)), y, teleport_lite_butterflies );
 	}
 	
 	if(window == 3 && window_timer ==3) butterflyFX(40,80,5,dir(30),-40)
@@ -603,7 +601,16 @@ if(attack == AT_FTILT)
 		tbutterflies2.image_xscale *= -1;
 	}
 	
-	
+	// Reversing
+	if(window == 2 && !ftilt_flip)
+	{
+		// Flip direction on input
+		if((spr_dir == 1 && (left_down || left_stick_down)) || (spr_dir == -1 && (right_down || right_stick_down)))
+		{
+			spr_dir *= -1;
+			ftilt_flip = true;
+		}
+	}
 
 }
 
@@ -617,8 +624,8 @@ if(attack == AT_FSTRONG)
 	var tdistance = 145;
 	
 	// Make % thing dissapear
-	if(window == 7) draw_indicator = false;
-	else draw_indicator = true;
+	draw_indicator = window != 7;
+
 
 	// Shift position on return
 	if(window == 7 && window_timer == get_window_value(AT_FSTRONG,6,AG_WINDOW_LENGTH)) x+= 60*spr_dir;
@@ -730,7 +737,57 @@ if(attack == AT_USTRONG)
 	
 	if(window == 6) spark = noone;
 	
+	
+	// Command grab
+	
+	// Init reset values
+	if(window == 1 && window_timer == 1)
+	{
+		// Set these at the start of the attack where there are NO ACTIVE HITBOXES
+        GrabbedId = 0;
+        GrabEasingTimer = 0;
+        GrabStartX = 0;
+        GrabStartY = 0;
+	}
+	
+	// Reset after move has played out
+	if(window == 5 && window_timer == 1)
+	{
+        GrabbedId = 0;
+        GrabEasingTimer = 0;
+	}
+	
+	// Grab during spin
+	if(window == 4)
+	{
+		var xoff = -8;
+		var yoff = -96;
+		
+		// This window is one where hitboxes exist for a multihit attack
+        if (GrabbedId != 0 && hitpause == false) { // Checks for a hit and that the hit player isn't in hitpause
+            if (GrabbedId.state != PS_DEAD || GrabbedId.state != PS_RESPAWN || GrabbedId.state != PS_TECH_GROUND ||GrabbedId.state != PS_TECH_FORWARD || GrabbedId.state != PS_TECH_BACKWARD || GrabbedId.state != PS_WALL_TECH) { // Checks to see if the player hit died or teched during the attack
+                if (GrabEasingTimer < 15) {
+                    // Uses an easing function to move them over a period of frames. Set this to whatever looks good.
+                    GrabbedId.x = ease_cubeOut( round(GrabbedId.x), round(x + (xoff * spr_dir)), GrabEasingTimer, 15 ); // Changes the hit player's x location over time
+                    GrabbedId.y = ease_cubeOut( round(GrabbedId.y), round(y + yoff), GrabEasingTimer, 15 ); // Changes the hit player's y location over time
+                    GrabEasingTimer += 1; // Timer
+                } else {
+                    GrabbedId.x = x + (xoff * spr_dir); // Makes sure they stay at the desired x position
+                    GrabbedId.y = y + yoff; // Makes sure they stay at the desired y position
+                }
+                // No movement so that the changes in position don't become jank
+                GrabbedId.hsp = 0; 
+                GrabbedId.vsp = 0;
+            } else {
+                // If they die remove them from the attack
+                GrabbedId = 0;
+            }
+        }
+	}
+
+
 }
+
 
 //#endregion
 
@@ -1154,44 +1211,44 @@ if (attack == AT_FAIR){
 if (attack == AT_NAIR){
 	
 	// Dissapear fx
-	if(window == 1 && window_timer == get_window_value(AT_NAIR,1,AG_WINDOW_LENGTH))
-	{
-		// FX
+	// if(window == 1 && window_timer == get_window_value(AT_NAIR,1,AG_WINDOW_LENGTH))
+	// {
+	// 	// FX
 
-		// tmid = spawn_hit_fx( x-dir(2), y-10, teleport_lite_start_smaller );
-		// tmid.depth = -100;	
+	// 	// tmid = spawn_hit_fx( x-dir(2), y-10, teleport_lite_start_smaller );
+	// 	// tmid.depth = -100;	
 		
-		butterflyFX(70,70,6,0,-40);
+	// 	butterflyFX(70,70,6,0,-40);
 		
-		portal_afterimage.timer = 15;
-	    portal_afterimage.sprite_index = sprite_index;
-	    portal_afterimage.image_index = image_index;
-	    portal_afterimage.x = x;
-	    portal_afterimage.y = y;
-	    portal_afterimage.spr_dir = spr_dir;
-	    last_pcolor = 1;
+	// 	portal_afterimage.timer = 15;
+	//     portal_afterimage.sprite_index = sprite_index;
+	//     portal_afterimage.image_index = image_index;
+	//     portal_afterimage.x = x;
+	//     portal_afterimage.y = y;
+	//     portal_afterimage.spr_dir = spr_dir;
+	//     last_pcolor = 1;
 
-	}
+	// }
 	
-	// Intangible segment
-	if(window == 3){
+	// // Intangible segment
+	// if(window == 3){
 		
-		// Invisible
-		draw_indicator = true;
-	}
-	else draw_indicator = false;
+	// 	// Invisible
+	// 	draw_indicator = true;
+	// }
+	// else draw_indicator = false;
 	
 	// Reappear fx
-	if(window == 2 && window_timer == get_window_value(AT_NAIR,2,AG_WINDOW_LENGTH)-1){
-		// Spawn end fx
-		portal_afterimage.timer = 8;
-	    portal_afterimage.sprite_index = sprite_index;
-	    portal_afterimage.image_index = image_index+1;
-	    portal_afterimage.x = x+hsp;
-	    portal_afterimage.y = y+vsp;
-	    portal_afterimage.spr_dir = spr_dir;
-	    last_pcolor = 2;
-	}
+	// if(window == 2 && window_timer == get_window_value(AT_NAIR,2,AG_WINDOW_LENGTH)-1 && !hitpause){
+	// 	// Spawn end fx
+	// 	portal_afterimage.timer = 8;
+	//     portal_afterimage.sprite_index = sprite_index;
+	//     portal_afterimage.image_index = image_index+1;
+	//     portal_afterimage.x = x+hsp;
+	//     portal_afterimage.y = y+vsp;
+	//     portal_afterimage.spr_dir = spr_dir;
+	//     last_pcolor = 2;
+	// }
 	
 	if(window == 4 && window_timer == 2)
 	{

@@ -62,6 +62,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 120);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 120);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EFFECT, 12);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .4);
@@ -78,3 +79,25 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, sound_get("monarch_gunhit2"));
 
+// Normal hit
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 8);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 100);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 100);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_EFFECT, 12);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 15);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, .2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 270);
+set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE_FLIPPER, 8);
+set_hitbox_value(AT_DSPECIAL, 3, HG_TECHABLE, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_LOCKOUT, -1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, sound_get("monarch_gunhit2"));

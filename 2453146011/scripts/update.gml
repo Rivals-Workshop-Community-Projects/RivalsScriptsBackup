@@ -151,7 +151,8 @@ if((has_hit_player && hitpause && attack != AT_UTILT && attack != AT_BAIR &&
 (hbAttack == AT_JAB 	&&	hbNum == 3) ||
 (hbAttack == AT_USTRONG &&	hbNum == 7) ||
 (hbAttack == AT_DATTACK &&	hbNum == 3) ||
-(hbAttack == AT_UTILT) 
+(hbAttack == AT_UTILT) ||
+(hbAttack == AT_USPECIAL)
 )) 
 || slashsub > 0) slashsub += .5;
 
@@ -339,6 +340,78 @@ if(state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD)
 }
 
 
+// Fspecial funcitonality after delay
+if(fspec_delay_timer == 1)
+{
+
+    portal_afterimage.timer = 10;
+    portal_afterimage.sprite_index = sprite_index;
+    portal_afterimage.image_index = image_index;
+    portal_afterimage.x = x;
+    portal_afterimage.y = y;
+    portal_afterimage.spr_dir = spr_dir;
+    last_pcolor = 1;
+    portal_white = 15;
+    old_hsp = -hsp/2;
+    old_vsp = free ? -4.5 : vsp;
+    vsp_prev = old_vsp;
+    hsp_prev = -hsp/2;
+    
+    spawn_hit_fx(fspec_hit_player.x,fspec_hit_player.y-(char_height/1.5),newtprings);
+    
+    //hitpause = true;
+    //hitstop = hpTime;
+    //hitstop_full = hpTime;
+    
+
+    
+	
+    sound_play(sound_get("monarch_fspecialhit"))
+    
+    var isRight = -spr_dir;
+    
+    var xtemp = x;
+    var ytemp = y;
+    
+    
+    //other.x = xtemp;
+    //other.y = ytemp;
+    
+    x = fspec_hit_player.x - (50*isRight);
+    y = fspec_hit_player.y;
+    
+    set_state(PS_LAND);
+
+
+	
+    
+    spr_dir *=-1;
+    hit_fspec = true;
+    fspec_line_timer = 15;
+    
+    // Knife special interaction
+    if(time_knife != noone){
+    	if(time_knife.stuck_player == fspec_hit_player){
+    		time_knife.early_trigger = true;
+    		time_knife.did_hitbox = true;
+    	}
+    	else
+    	{
+    		visible = true;
+			invincible = false;
+    	}
+    }
+    else
+    {
+    	visible = true;
+		invincible = false;
+    }
+    
+    //fx
+    // spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-hit_player_obj.char_height/2,star_faster);
+    // butterflyFX(100,100,10,hit_player_obj.x-x,hit_player_obj.y-y-hit_player_obj.char_height/2);
+}
+if(fspec_delay_timer > 0) fspec_delay_timer--;
 
 
 // Tech fx
@@ -585,13 +658,17 @@ with(pHitBox){
         var ceilPlat = place_meeting(x, y, asset_get("par_block"));
         var ceilFloor = place_meeting(x, y-15, asset_get("par_jumpthrough"));
         
+		if(ceilPlat)
+		{
+			destroyed = true;
+		}
+        
         // Priorizie walls
         if(rightWall || leftWall)
         {
         	ceilPlat = null;
         	ceilFloor = null;
         }
-
         
         // if(!ceilPlat && !ceilFloor)
         //     canPlacePortal = true;
@@ -612,8 +689,8 @@ with(pHitBox){
  
         }
         
-       
         // Check floor
+        if(!destroyed)
         if(y < other.phone_blastzone_b && canPlacePortal && (ceilPlat || (ceilFloor && (other.throw_dir == "up" || other.throw_dir == "down")) || rightWall || leftWall || !destroyed && (collision_circle(x,y, other.throw_dir == "down" ? 38 : 5, asset_get("par_block"), true,true) != noone || 
         
         (  (collision_circle(x,y,other.throw_dir == "down" ? 38 : 15, asset_get("par_jumpthrough"), true,true) != noone) && (other.throw_dir == "up" || other.throw_dir == "down")  )
@@ -700,8 +777,6 @@ with(pHitBox){
                     {
                         portal_1.image_angle += 180;
                         portal_1.isCeil = true;
-                        
-                      
                     } else{
                     	portal_1.isFloor = true;
                     
@@ -801,6 +876,24 @@ with(pHitBox){
     
 }
 
+// Command grab stuff
+if (state_cat == SC_HITSTUN) {
+    // Remove Grab ID when in hitstun
+    GrabbedId = 0;
+}
+if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && GrabbedId != 0) {
+    // Set player's launch for if the move is somehow canceled early it uses the launch of the last hit (this is mainly for aerial multihits, you can change the part in the 1st parentheses to something else, but the dsin and dcos are for the angles so they are needed).
+    GrabbedId.vsp = ( GrabKB + (GrabScaling * GrabKB / 2) ) * dsin(GrabAngle) * -1;
+    GrabbedId.hsp = ( GrabKB + (GrabScaling * GrabKB / 2) ) * dcos(GrabAngle) * spr_dir;
+    // Other variable reseting related to the above stuff
+    GrabAngle = 0;
+    GrabKB = 0;
+    GrabScaling = 0;
+    // Remove Grab ID when in hitstun
+    GrabbedId = 0;
+}
+
+
 // gravity reset
 if(gravity_speed_init > gravity_speed) gravity_speed+=0.8;
 if(gravity_speed > gravity_speed_init) gravity_speed = gravity_speed_init;
@@ -823,8 +916,6 @@ hsp_prev = hsp;
 
 //Portal cooldown
 if(global_portal_cooldown > 0) global_portal_cooldown--;
-
-
 
 // Delete portals
 if(charges == 0)
@@ -865,9 +956,9 @@ if(!("is_monarch" in self) || player == other.player)
 		if(instance_exists(monarch.portal_1) && instance_exists(monarch.portal_2))
 		{
 			if(last_pcolor == 2)
-			{	monarch.portal_1.portal_white = 15;	}
+			{	monarch.portal_1.portal_white = 30;	}
 			else 
-			{	monarch.portal_2.portal_white = 15;	}
+			{	monarch.portal_2.portal_white = 30;	}
 		}
 		
 		visible = true;
@@ -918,6 +1009,7 @@ if(!("is_monarch" in self) || player == other.player)
     	portal_afterimage.x = xprevious;
     	portal_afterimage.y = yprevious;
     	portal_afterimage.spr_dir = last_spr_dir;
+    	
 	}
 	else
 	{
@@ -934,12 +1026,15 @@ if(!("is_monarch" in self) || player == other.player)
 	    	if(portal_afterimage.timer == 0 && teleported)
 	    	{
 	    		teleported = false;
+	    		
 	    		// Clear pratfall
 	    		if(state == PS_PRATFALL) set_state(PS_IDLE_AIR);
-	    		if("uspecial_buffer" in self) uspecial_buffer = false;
 	    		
-	    		
-
+	    		if("uspecial_buffer" in self) 
+	    		{
+	    			uspecial_buffer = false;
+	    			print_debug("here3");
+	    		}
 	    		
 		    	portal_afterimage.timer = 10;
 		    	portal_afterimage.sprite_index = sprite_index;
@@ -951,11 +1046,8 @@ if(!("is_monarch" in self) || player == other.player)
 	    	
 	        if(portal_timer == 0 )
 	        {
-	        	if(portal_cooldown == 0)
-	        	{
-		            in_portal = false;
-		            portal_timer = 2;
-	        	}
+	            in_portal = false;
+	            portal_timer = 2;
 	        }
 	        else
 	        {
@@ -978,6 +1070,7 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN)
 {
 	can_blink = true;
 }
+
 
 #define butterflyFX(_xrange,_yrange,_density,_xoff,_yoff)
 {
@@ -1107,8 +1200,8 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN)
 			y2 = (y1+y3)/2;
 			x2 = (x1+x3)/2;
 			
-			x2-=abs(xtemp - (x1+x3)/2)/10 * ((abs(hsp))/2) * ((x2 < ((x1+x3)/2)) ? 1 : -1);
-			y2+=(abs(ytemp - (y1+y3)/2)/10) * (upangle ? -1 : 1) * ((abs(vsp))/2);
+			x2-=abs(xtemp - (x1+x3)/2)/10 * ((abs(old_hsp))/2) * ((x2 < ((x1+x3)/2)) ? 1 : -1);
+			y2+=(abs(ytemp - (y1+y3)/2)/10) * (upangle ? -1 : 1) * ((abs(old_vsp))/2);
 
 
 		

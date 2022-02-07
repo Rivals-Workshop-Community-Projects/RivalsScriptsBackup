@@ -16,18 +16,18 @@ if(get_hitbox_angle(my_hitboxID) <= 290 && get_hitbox_angle(my_hitboxID) >= 250)
 }
 
 if(my_hitboxID.attack = AT_USPECIAL){
-    x = other.x;
+    // x = other.x;
     
-    if(other.free == true && free == true)
-    {
-        y = other.y;
-    }
+    // if(other.free == true && free == true)
+    // {
+    //     y = other.y;
+    // }
 }
 
 if(my_hitboxID.attack = AT_BAIR && my_hitboxID.hbox_num == 1 && hit_player_obj.clone == false){
 	
-	if(attack_down || (left_stick_down && spr_dir == 1) || (right_stick_down && spr_dir == -1))
-	{
+	// if(attack_down || (left_stick_down && spr_dir == 1) || (right_stick_down && spr_dir == -1))
+	// {
 		var BKB = get_hitbox_value(AT_BAIR,1,HG_BASE_KNOCKBACK);
 	    var KBA = hit_player_obj.knockback_adj;
 	    var KBS = get_hitbox_value(AT_BAIR,1,HG_KNOCKBACK_SCALING);
@@ -48,7 +48,14 @@ if(my_hitboxID.attack = AT_BAIR && my_hitboxID.hbox_num == 1 && hit_player_obj.c
 	    do_a_fast_fall = false;
 	    free = true;
 	    play_sound = true;
-	}
+	//}
+}
+
+// Fair hop
+if(my_hitboxID.attack == AT_FAIR)
+{
+	if(my_hitboxID.hbox_num == 1) old_vsp = -3;
+	if(my_hitboxID.hbox_num == 2) old_vsp -= 1;
 }
 
 // Up air jank
@@ -101,14 +108,74 @@ if(my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.clone == false){
 	}
 }
 
+
+// Command grab
+if ((my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num <= 2)) {
+    if (hit_player_obj.state_cat == SC_HITSTUN) {
+        // In case an article activates this it won't do anything
+        if (hit_player_obj != obj_article1 && hit_player_obj != obj_article2 && hit_player_obj != obj_article3 && hit_player_obj != obj_article_solid && hit_player_obj != obj_article_platform) {
+            // These are for the multihit pull / grab code
+            GrabStartX = hit_player_obj.x;
+            GrabStartY = hit_player_obj.y;
+            GrabbedId = hit_player_obj.id;
+            // These are if they fall out of the grab without if they are in hitpause
+            GrabAngle = my_hitboxID.kb_angle;
+            GrabScaling = my_hitboxID.kb_scale;
+            GrabKB = my_hitboxID.kb_value;
+            // IMPORTANT to include this
+            hit_player_obj.should_make_shockwave = false;
+        }
+    } else {
+        GrabbedId = 0;
+    }
+}
+
+// Fspec
 if(my_hitboxID.attack = AT_FSPECIAL){
-	var hpTime = 15;
+	// Delay
+	sound_play(sound_get("monarch_smallblink2"),false,0,.7,1);
 	
+	hbox = create_hitbox(AT_DSPECIAL,3,ceil(stuck_player.x),ceil(stuck_player.y)-15);
+
+	hitpause = true;
+	hitstop = get_hitbox_value(AT_DSPECIAL,3,HG_BASE_HITPAUSE)-8;
+	hitstop_full = get_hitbox_value(AT_DSPECIAL,3,HG_BASE_HITPAUSE)-8;
+	
+	portal_white = 25;
+	
+	tmid = spawn_hit_fx( x, y, newtpstart );
+	tmid.depth = depth-1;
+	
+	visible = false;
+	invincible = true;
+	
+	old_hsp = hsp;
+	old_vsp = vsp;
+	
+	vsp_prev = vsp;
+	hsp_prev = hsp;
+	
+	
+	// Store hit player
+	fspec_hit_player = hit_player_obj;
+
 	// Cooldown
 	move_cooldown[AT_FSPECIAL] = 60;
 	
+	// Store pos
+	last_player_pos.x = x;
+	last_player_pos.y = y - char_height/2;
+	
+	fspec_delay_timer = 10;
+	
+	var hpTime = 25;
+
+   	hitpause = true;
+	hitstop = hpTime-5;
+	hitstop_full = hpTime-5;
+	
     //Afterimage
-    with(hit_player_obj)
+    with(fspec_hit_player)
     {
         portal_afterimage.timer = 10;
     	portal_afterimage.sprite_index = sprite_index;
@@ -130,11 +197,11 @@ if(my_hitboxID.attack = AT_FSPECIAL){
     		// Charged box
 			with(monarch) {
 				set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
-				create_hitbox(AT_DSPECIAL,2,ceil(x),ceil(y)-15);
+				create_hitbox(AT_DSPECIAL,2,ceil(other.x),ceil(other.y)-15);
 				reset_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE);
 				sound_play(sound_get("monarch_gunhit2"),false,0,0.8,1.1);
 				
-				spawn_hit_fx(x,y,hitfx12);
+				spawn_hit_fx(other.x,other.y,hitfx12);
 			}
 		}
 		else{
@@ -143,55 +210,6 @@ if(my_hitboxID.attack = AT_FSPECIAL){
 	    	hitstop_full = hpTime;
 		}
     }
-    
-    portal_afterimage.timer = 10;
-    portal_afterimage.sprite_index = sprite_index;
-    portal_afterimage.image_index = image_index;
-    portal_afterimage.x = x;
-    portal_afterimage.y = y;
-    portal_afterimage.spr_dir = spr_dir;
-    last_pcolor = 1;
-    portal_white = 15;
-    old_hsp = hsp;
-    old_vsp = vsp;
-    vsp_prev = vsp;
-    hsp_prev = hsp;
-    
-    spawn_hit_fx(other.x,other.y-(char_height/1.5),newtprings);
-    
-    //hitpause = true;
-    //hitstop = hpTime;
-    //hitstop_full = hpTime;
-    
-	
-    sound_play(sound_get("monarch_fspecialhit"))
-    
-    
-    var xtemp = x;
-    var ytemp = y;
-    
-    x = other.x;
-    y = other.y;
-    
-    other.x = xtemp;
-    other.y = ytemp;
-    
-    spr_dir *=-1;
-    hit_fspec = true;
-    fspec_line_timer = 15;
-    
-    // Knife special interaction
-    if(time_knife != noone){
-    	if(time_knife.stuck_player == hit_player_obj){
-    		time_knife.fspec_trigger = true;
-    	}
-    }
-    
-    //fx
-    // spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-hit_player_obj.char_height/2,star_faster);
-    // butterflyFX(100,100,10,hit_player_obj.x-x,hit_player_obj.y-y-hit_player_obj.char_height/2);
-    
-
 }
 
 if(my_hitboxID.attack == AT_UTILT && window > 1)

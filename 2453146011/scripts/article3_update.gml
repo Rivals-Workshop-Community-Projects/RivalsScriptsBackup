@@ -202,38 +202,96 @@ if(!charged){
     if(charged) sound_play(sound_get("monarch_zap"),false,0,0.5);
 }
 
+
 //#endregion
 
 
+//#region Knife White
+
+if(player_id.attack != AT_DSPECIAL_2)
+{
+	knife_white = max(0, (clock_timer + 10) - teleport_time)*0.5;
+	if(knife_white > 0) shake_timer = knife_white*0.5;
+}
+else
+{
+	knife_white = max(0,knife_white);
+	knife_white+=0.4;
+	shake_timer = knife_white*0.5;
+}
+
+//#endregion
+
 //#region time's up
 
-if(clock_timer == teleport_time || early_trigger) // || fspecial_trigger
+if(clock_timer >= teleport_time || early_trigger) // || fspecial_trigger
 {
+	var hbox = noone;
+	
+	if(!did_hitbox)
+	{
+		did_hitbox = true;
+		
+		//visible = false;
+		
+		
+		
+		other_grounded = (stuck_player == noone) ? false : !stuck_player.free;
+		
+		with(player_id)
+		{
+			sound_play(sound_get("monarch_smallblink2"),false,0,.7,1);
+			
+			hbox = create_hitbox(AT_DSPECIAL,3,ceil(stuck_player.x),ceil(stuck_player.y)-15);
+		
+			hitpause = true;
+			hitstop = get_hitbox_value(AT_DSPECIAL,3,HG_BASE_HITPAUSE)-8;
+			hitstop_full = get_hitbox_value(AT_DSPECIAL,3,HG_BASE_HITPAUSE)-8;
+			
+			portal_white = 25;
+			
+			tmid = spawn_hit_fx( x, y, newtpstart );
+			tmid.depth = depth-1;
+			
+			visible = false;
+			invincible = true;
+			
+			old_hsp = hsp;
+			old_vsp = vsp;
+			
+			vsp_prev = vsp;
+			hsp_prev = hsp;
+		}
+	}
+	else if(!player_id.hitpause)
+	{
     var doFall = true;
-    var hbox = noone;
+    
+	player_id.visible = true;
+	player_id.invincible = false;
     
     // Charge damage
     with(player_id) set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 10);
     
     // Stun hitbox
-    if(stuck_player != noone){
-        if( (stuck_player.state == 12 || charged) && !stuck_player.activated_kill_effect){
-            hbox = create_hitbox(AT_DSPECIAL,2,ceil(x),ceil(y)-15);
+    // if(stuck_player != noone){
+    //     if( (stuck_player.state == 12 || charged) && !stuck_player.activated_kill_effect){
+    //         hbox = create_hitbox(AT_DSPECIAL,2,ceil(x),ceil(y)-15);
             
-            var hpTime = 10;
+    //         var hpTime = 10;
         	
-        	with(player_id){
-        	    hitpause = true;
-            	hitstop = hpTime;
-            	hitstop_full = hpTime;
-            	//gravity_speed = 0;
-            	old_vsp = -8;
-            	old_hsp = 0;
-        	}
+    //     	with(player_id){
+    //     	    hitpause = true;
+    //         	hitstop = hpTime;
+    //         	hitstop_full = hpTime;
+    //         	//gravity_speed = 0;
+    //         	old_vsp = -8;
+    //         	old_hsp = 0;
+    //     	}
         	
-        	doFall = false;
-        }
-    }
+    //     	doFall = false;
+    //     }
+    // }
     
     
     player_id.last_knife_pos.x = x;
@@ -242,74 +300,101 @@ if(clock_timer == teleport_time || early_trigger) // || fspecial_trigger
     player_id.last_player_pos.x = player_id.x;
     player_id.last_player_pos.y = player_id.y - char_height/2 + (early_trigger ? 10 : 0);
     
+    // Face stuck player
+    if(stuck_player != noone)
+    {
+		player_id.spr_dir = sign(stuck_player.x - x);
+    }
+    
     
     player_id.knife_line_timer = 15;
 
-    if(!player_id.hitpause || !doFall){
-    with(player_id)
+    if(!player_id.hitpause || !doFall || other_grounded)
     {
-        // Teleport
-        x = other.x;
-        y = other.y;
-        
-        if(other.charged) {
-            spawn_hit_fx(other.x,other.y,hitfx12);
-            
-            if(hbox == noone){
-                set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 160);
-                set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 160);
-                set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, floor(12*2.5));
-                
-                hbox = create_hitbox(AT_DSPECIAL,2,ceil(other.x),ceil(other.y)-15);
-                
-                reset_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH);
-                reset_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT);
-                reset_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME);
-            }
-            
-            
-            sound_play(sound_get("monarch_gunhit2"),false,0,0.8,1.1);
-        }
-       reset_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE);
-        
-        
-        // Fall to platform/ground w/ failsafe
-        if(doFall){
-            var limit = 100;
-            
-            if( !place_meeting(x,y+char_height,asset_get("par_block")))
-            {
-                while(place_meeting(x,y,asset_get("par_jumpthrough")) == false && (place_meeting(x,y+1,asset_get("par_block")) == false) && limit > 0){
-                    y++;
-                    limit--;
-                }
-            }
-            else
-            {
-                while((place_meeting(x,y,asset_get("par_block")) == false) && limit > 0){
-                    y++;
-                    limit--;
-                }
-            }
-        }
-        portal_cooldown = 2;
-        teleported = true;
-        
+	    with(player_id)
+	    {
+	        // Teleport
+	        x = other.x;
+	        y = other.y;
+	        
+	        if(other.charged) {
+	            spawn_hit_fx(other.x,other.y,hitfx12);
+	            
+	            if(hbox == noone){
+	                set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 160);
+	                set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 160);
+	                set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, floor(12*2.5));
+	                
+	                hbox = create_hitbox(AT_DSPECIAL,2,ceil(other.x),ceil(other.y)-15);
+	                
+	                reset_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH);
+	                reset_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT);
+	                reset_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME);
+	            }
+	            
+	            
+	            var hpTime = 10;
+        	
+	        	
+        	    hitpause = true;
+            	hitstop = hpTime;
+            	hitstop_full = hpTime;
+            	//gravity_speed = 0;
+            	
 
-        
-        sound_play(sound_get("monarch_appear"),false,0,other.charged ? 0.8 : 1)
-        
-        if(other.early_trigger) y-=30;
-        if(!doFall) {
-            y= other.stuck_player.y + 20;
-        }
-        
-        // Spawn fx
-        var sdir_store = spr_dir;
-        spr_dir = 1;
-        var fx = spawn_hit_fx(x,y-50,time_appear)
-        spr_dir = sdir_store;
-    }
+            	old_vsp = other.other_grounded ? 0 : -8;
+	            old_hsp = 0;
+ 
+            	
+            	if(!other.other_grounded)
+            	{
+	            	doFall = false;
+            	}
+	            
+	            
+	            sound_play(sound_get("monarch_gunhit2"),false,0,0.8,1.1);
+	        }
+	
+	       reset_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE);
+	        
+	        
+	        // Fall to platform/ground w/ failsafe
+	        if(doFall || other.other_grounded){
+	            var limit = 100;
+	            
+	            if( !place_meeting(x,y+char_height,asset_get("par_block")))
+	            {
+	                while(place_meeting(x,y,asset_get("par_jumpthrough")) == false && (place_meeting(x,y+1,asset_get("par_block")) == false) && limit > 0){
+	                    y++;
+	                    limit--;
+	                }
+	            }
+	            else
+	            {
+	                while((place_meeting(x,y,asset_get("par_block")) == false) && limit > 0){
+	                    y++;
+	                    limit--;
+	                }
+	            }
+	        }
+	        portal_cooldown = 2;
+	        teleported = true;
+	        
+	
+	        
+	        sound_play(sound_get("monarch_appear"),false,0,other.charged ? 0.8 : 1)
+	        
+	        if(other.early_trigger) y-=30;
+	        if(!doFall && other.stuck_player != noone) {
+	            y= other.stuck_player.y + 20;
+	        }
+	        
+	        // Spawn fx
+	        var sdir_store = spr_dir;
+	        spr_dir = 1;
+	        var fx = spawn_hit_fx(x,y-50,time_appear)
+	        spr_dir = sdir_store;
+	    }
     }
     else
     {
@@ -326,6 +411,7 @@ if(clock_timer == teleport_time || early_trigger) // || fspecial_trigger
 
     
     instance_destroy();
+	}
 }
 
 //#endregion

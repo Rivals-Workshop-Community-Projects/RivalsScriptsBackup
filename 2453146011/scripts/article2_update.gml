@@ -106,6 +106,34 @@ else if(portal_delay == 1)
 
 //#endregion
 
+// Destroy if player dies
+if(player_id.state == PS_RESPAWN)
+{
+    player_id.fspecial_obj = noone;
+    player_id.fspec_charged = false;
+    instance_destroy();
+    exit;
+}
+
+// Destroy if hit with a hitbox
+var HitboxColl = collision_circle(x,y,10,pHitBox,true,true);
+if(HitboxColl != noone)
+{
+	if(HitboxColl.player_id != player_id)
+	{
+		with(player_id)
+		{
+			sound_play(sound_get("monarch_fspecialmiss"));
+			butterflyFX(40,40,4,floor(other.x)-x,floor(other.y)-y,false);
+			spawn_hit_fx( other.x, other.y, 256 );
+		}
+		
+		player_id.fspecial_obj = noone;
+	    player_id.fspec_charged = false;
+	    instance_destroy();
+	    exit;
+	}
+}
 
 //#region release
 // Player collision

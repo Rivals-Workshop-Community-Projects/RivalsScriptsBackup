@@ -8,11 +8,11 @@ set_attack_value(AT_BAIR, AG_USES_CUSTOM_GRAVITY, 1);
 
 // Shtab
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_BAIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 8);
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sound_get("monarch_woosh3"));
 
 
@@ -91,7 +91,7 @@ set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 270);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .8); //.6
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -32);

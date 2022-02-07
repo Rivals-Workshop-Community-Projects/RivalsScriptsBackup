@@ -22,3 +22,5 @@ last_pcolor = 0;
 portal_timer = 2;
 portal_cooldown = 0;
 portal_afterimage = {x:x,y:y,sprite_index:sprite_index,image_index:image_index,timer:0};
+portal_delay = 0;
+max_portal_delay = 0;

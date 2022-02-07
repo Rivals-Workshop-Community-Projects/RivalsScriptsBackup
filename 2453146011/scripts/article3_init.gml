@@ -4,6 +4,7 @@ sprite_index = asset_get("nspecial_proj");
 max_despawn_timer = 35;
 despawn_timer = max_despawn_timer;
 parried = -1;
+knife_white = 0;
 
 spr_dir = player_id.spr_dir;
 release_box = noone;
@@ -12,6 +13,8 @@ init = true;
 can_be_grounded = true;
 ignores_walls = true;
 uses_shader = true;
+did_hitbox = false;
+other_grounded = false;
 
 
 x = floor(x);

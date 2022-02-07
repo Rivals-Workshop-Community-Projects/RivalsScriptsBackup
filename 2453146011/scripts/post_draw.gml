@@ -2,10 +2,21 @@
 
 // Munophone
 user_event(12); 
-
-if(lite || phone_playtest) exit;
-
 shader_start();
+
+if(attack == AT_USPECIAL && window == 2)
+{
+	var bdir = sign(hsp);
+	if(bdir == 0) bdir = 1;
+	
+	gpu_set_blendmode(bm_add);
+	draw_sprite_ext( sprite_get("fspecial_proj"),window_timer,x+(16*bdir),y-(char_height/2),bdir,1,0,c_white,.5);
+}
+
+
+if(lite || phone_playtest) {shader_end(); exit;}
+
+
 
 
 
@@ -220,8 +231,6 @@ if(portal_white > 0)
 	draw_rectangle_color(0,0, room_width,room_height, c_white,c_white,c_white,c_white,false);
 	gpu_set_alphatestenable(false);
 	gpu_set_blendmode(bm_normal);
-	
-
 }
 
 

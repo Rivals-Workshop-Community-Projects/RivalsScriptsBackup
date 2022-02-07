@@ -54,8 +54,8 @@ knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 land_time = 4; //normal landing frames
 prat_land_time = 14;
 wave_land_time = 7;
-wave_land_adj = 1.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .07; //grounded deceleration when wavelanding
+wave_land_adj = 1.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .06; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -81,7 +81,7 @@ techroll_speed = 10;
 air_dodge_startup_frames = 2;
 air_dodge_active_frames = 3;
 air_dodge_recovery_frames = 3;
-air_dodge_speed = 9.5;
+air_dodge_speed = 8;
 
 //roll animation frames
 roll_forward_startup_frames = 5;
@@ -171,6 +171,11 @@ fspecial_obj = noone;
 hit_fspec = false;
 fspec_charged = false;
 fspec_line_timer = 0;
+fspec_hit_player = noone;
+fspec_delay_timer = 0;
+
+// Filt stuff
+ftilt_flip = false;
 
 // Effects
 teleport_start = hit_fx_create( sprite_get( "teleport_start" ), 25 );
@@ -384,6 +389,13 @@ idleState = 0;
 lite = false;
 liteModeTime = 30;
 frameTimer = 0;
+
+
+// Command grabbery
+GrabStartX = 0;
+GrabStartY = 0;
+GrabEasingTimer = 0;
+GrabbedId = 0;
 
 // Colors
 if(get_player_color(player) == 0)

@@ -75,13 +75,9 @@ if(state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODG
 
 // Fspecial line
 if(fspec_line_timer > 0){
-	
-	var Obj1 = self;
-	var Obj2 = last_hit_player;
-	
 	gpu_set_blendmode(bm_add);
 	draw_set_alpha(fspec_line_timer/15);
-	draw_triangle(Obj1.x , Obj1.y - Obj1.char_height/2, Obj2.x , Obj2.y - Obj2.char_height/2,  monRed, monLightBlue,fspec_line_timer/4);
+	draw_triangle(x , y-(char_height/2) , last_player_pos.x , last_player_pos.y-15,  monRed, monLightBlue,fspec_line_timer/2);
 	draw_set_alpha(1);
 	gpu_set_blendmode(bm_normal);
 }
@@ -90,7 +86,7 @@ if(fspec_line_timer > 0){
 if(knife_line_timer > 0){
 	gpu_set_blendmode(bm_add);
 	draw_set_alpha(knife_line_timer/15);
-	draw_triangle(last_knife_pos.x , last_knife_pos.y , last_player_pos.x , last_player_pos.y,  monRed, monLightBlue,knife_line_timer/2);
+	draw_triangle(last_knife_pos.x , last_knife_pos.y , last_player_pos.x , last_player_pos.y+15,  monRed, monLightBlue,knife_line_timer/2);
 	draw_set_alpha(1);
 	gpu_set_blendmode(bm_normal);
 }

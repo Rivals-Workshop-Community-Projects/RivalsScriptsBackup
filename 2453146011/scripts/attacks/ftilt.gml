@@ -8,7 +8,7 @@ set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 5);
 
 // Invis
 set_window_value(AT_FTILT, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 
@@ -26,7 +26,7 @@ set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_FTILT, 4, AG_WINDOW_HSPEED, 7);
+set_window_value(AT_FTILT, 4, AG_WINDOW_HSPEED, 5); // 7
 
 // Endlag
 set_window_value(AT_FTILT, 5, AG_WINDOW_TYPE, 1);
@@ -54,6 +54,6 @@ set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .7); //.6
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .65);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, hitfx3);
-set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
+set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, -16);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("monarch_knifehit2"));
 set_hitbox_value(AT_FTILT, 1, HG_EXTRA_CAMERA_SHAKE, 2);

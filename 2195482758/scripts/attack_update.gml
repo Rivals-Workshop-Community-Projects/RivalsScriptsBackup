@@ -674,7 +674,7 @@ if (attack == AT_FSPECIAL){
 	{
 		// First, get nearby hitboxes
 		var tempPlat = collision_circle(
-		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*3),
+		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*2.2),
 		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
 		20, 
 		asset_get("par_jumpthrough"), 
@@ -682,7 +682,7 @@ if (attack == AT_FSPECIAL){
 		true );
 		
 		var tempSolid = collision_circle(
-		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir*3),
+		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir*2.2),
 		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
 		20, 
 		asset_get("par_block"), 
@@ -721,7 +721,7 @@ if (attack == AT_FSPECIAL){
 			
 			KRAGG = true;
 
-		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*3)
+		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*2.2)
 		   	, y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y))
 		   	, 19 );	
 		}
@@ -1308,7 +1308,7 @@ if (attack == AT_USPECIAL){
     // }
     
     // Grabbing projectile
-	if(grabbedProj == noone && (window < 7 && window > 2))
+	if(grabbedProj == noone && (window < 7 && window > 2) && !special_down)
 	{
 	// First, get nearby hitboxes
 	var tempProj = collision_circle(
@@ -1628,7 +1628,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     		{
     			window = 7;
     			window_timer = 1;
-    			vsp = -15;
+    			vsp = -14;
     			hsp = 2.2*spr_dir;
     		}
     	
@@ -1728,31 +1728,26 @@ if (attack == AT_DSPECIAL){
 	//can_move = true;
 	
 	// Drifting
-	if(window < 3)
+	if(window < 3 && dspec_big_flip > 0)
 	{
-		// Drift forward
-		if(right_down && spr_dir == 1)
-		{
-			hsp+=.05;
-			vsp+=.2;
-		}
-		if(left_down && spr_dir == -1)
-		{
-			hsp -= .05;
-			vsp +=.2;
-		}
+		// Convert joy dir to radians
+		var rad_joy_dir = joy_dir;
+		var turning_speed = .3;
+		var move_speed = 13;
 		
-		// Drift back
-		if(right_down && spr_dir == -1)
+		rad_joy_dir = degtorad(rad_joy_dir);
+		
+		if(!joy_pad_idle)
 		{
-			hsp-=.05;
-			vsp-=.3;
+			// Teleport in direction of stick
+			var targethsp = cos(rad_joy_dir) * move_speed;
+			var targetvsp = sin(rad_joy_dir) * -move_speed;
+		
+		
+			if(hsp > targethsp) hsp -= turning_speed else hsp += turning_speed;
+			if(vsp > targetvsp) vsp -= turning_speed else vsp += turning_speed;
 		}
-		if(left_down && spr_dir == 1)
-		{
-			hsp += .05;
-			vsp-=.3;
-		}
+
 	}
 	
 	
@@ -1762,7 +1757,7 @@ if (attack == AT_DSPECIAL){
 		whiffspin = false;
 		
 		if(dspec_big_flip == 1){ set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-16); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_bash_projectile")); dspec_big_flip = 2;}
-		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-11); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
+		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-12); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
 		
 	}
 	
@@ -1837,10 +1832,21 @@ if (attack == AT_DSPECIAL){
         land_dust_timer = 0;
         sound_play( asset_get( "sfx_land" ) );
     }
-   
+    
     // Double hop
 	if(!free && window > 2 && special_down && dspec_big_flip == 0)
 	{	
+		// Reverse
+		if(left_down) spr_dir = -1;
+		if(right_down) spr_dir = 1;
+		
+		// Reverse w/ joystick
+		if(!joy_pad_idle)
+		{
+			if(joy_dir > 90 && joy_dir < 270) spr_dir = -1;
+			if(joy_dir < 90 || joy_dir > 270) spr_dir = 1;
+		}
+		
 		move_cooldown[AT_DSPECIAL] = 0;
 		dspec_big_flip = 1;
 		window = 1;
@@ -1980,7 +1986,7 @@ if (attack == AT_AIR_DSPECIAL){
 	
 	
 	 // Grabbing projectile
-	if(grabbedProj == noone && (window == 2))
+	if(grabbedProj == noone && (window == 2) && !special_down)
 	{
 		
 	// First, get nearby hitboxes

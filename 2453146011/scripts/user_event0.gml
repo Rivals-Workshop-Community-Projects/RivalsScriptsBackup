@@ -196,8 +196,44 @@ repeat(3)
 {
 with(stuff_to_teleport[i])
 {
+	
 	// Skip if not in range
     if(point_distance(x,y,other.x,other.y) > 100) continue;
+    
+    // Player input check
+    if("down_down" in stuff_to_teleport[i])
+    {
+    	var DoSkip = false;
+    	
+    	// I need these, shut up
+    	var OtherFloor = other.isFloor;
+    	var OtherCeil = other.isCeil;
+    	var OtherRightWall = other.rightWall;
+    	var OtherLeftWall = other.leftWall;
+    	
+    	// Check hitstun
+		with(stuff_to_teleport[i])
+		{
+			if (state == 12 || state == 7 || state == 0 || state == SC_HITSTUN)
+			{
+				var threshold = 1;
+				
+				if(OtherFloor && vsp > threshold) DoSkip = true;
+				if(OtherCeil && vsp < -threshold) DoSkip = true;
+				if(OtherRightWall && hsp > threshold) DoSkip = true;
+				if(OtherLeftWall && hsp < -threshold) DoSkip = true;
+			}
+		}
+		
+		if(!DoSkip)
+		{
+			if(OtherFloor && !down_down) continue;
+			if(OtherCeil && !up_down) continue;
+			if(OtherRightWall && !right_down) continue;
+			if(OtherLeftWall && !left_down) continue;
+		}
+    }
+	
 	
 	var projCheck = true;
 	
@@ -205,9 +241,9 @@ with(stuff_to_teleport[i])
 	
     if(instance_exists(other) && projCheck)
     {
-    var collidedPlayer = collision_rectangle(x-10 + (hsp/2), y- (i == 2 ? 35 : monarch.original_char_height*1.5), x+10 + (hsp/2), y- (i == 2 ? -35 : 5) +(vsp/2), other, false, true);
+    var collidedPlayer = collision_rectangle(x-30 + (hsp/2), y- (i == 2 ? 35 : monarch.original_char_height*1.5), x+30 + (hsp/2), y- (i == 2 ? -35 : 5) +(vsp/2), other, false, true);
     
-
+	
    
     var correctPos = false;
     
@@ -253,7 +289,7 @@ with(stuff_to_teleport[i])
 		// On floor check for players
 		if(!other.rightWall && !other.leftWall && !other.isCeil)
 		{
-			if( !(abs(x-other.x)<23)) correctPos = false;
+			if(!(abs(x-other.x)<43)) correctPos = false;
 		}
 	}
 	
@@ -262,6 +298,8 @@ with(stuff_to_teleport[i])
     {
         if(in_portal == false && portal_cooldown == 0)
         {
+        	 
+        	
             // Set wall bools
             var otherWall = false;
             var otherCeil = false;
@@ -474,9 +512,26 @@ with(stuff_to_teleport[i])
                 image_xscale *= -1;
             }
             
-            // hsp cap
+
+            // hsp cap and Min speed
             if("state" in self){
+            	// Min speed
+            	var minSpeed = 8;
+	            
+	            old_hsp = hsp;
+	            old_vsp = vsp;
+				if(otherWall) old_hsp = max(abs(hsp),minSpeed)*spr_dir;
+				else if(otherCeil) old_vsp = max(vsp,minSpeed);
+				else old_vsp = min(vsp,-minSpeed);
+				
+				
+            	// Hsp cap
             	if(state != SC_HITSTUN) hsp = sign(hsp)*min(air_max_speed*2,abs(hsp));
+            }
+            else
+            {
+            	old_hsp = hsp;
+            	old_vsp = vsp;
             }
 
 
@@ -496,15 +551,14 @@ with(stuff_to_teleport[i])
 	        portal_cooldown = 30;
 	       
 	        last_pcolor = other.portal_id;
-	        monarch.global_portal_cooldown = 10;
+	        monarch.global_portal_cooldown = 30;
 	        
 	        if(teleported)
 	        {
-	        	other.portal_white = 15;
+	        	other.portal_white = 40;
 		        portal_delay = max_portal_delay;
-		        old_hsp = hsp;
-		        old_vsp = vsp;
-		        
+
+
 		        // Disable hitboxes
 		        // SHUT UP IT'S THE ONLY THING THAT WORKS
 		        with(pHitBox)
