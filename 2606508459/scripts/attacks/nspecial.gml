@@ -141,6 +141,8 @@ set_hitbox_value(AT_NSPECIAL, ig, HG_VISUAL_EFFECT, 22);
 
 set_hitbox_value(AT_NSPECIAL, ig, HG_ANGLE_FLIPPER, 7);
 set_hitbox_value(AT_NSPECIAL, ig, HG_ANGLE, 70); //45
+set_hitbox_value(AT_NSPECIAL, ig, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_PARRY_STUN, 1);
 
 ig++
 
@@ -160,7 +162,7 @@ set_hitbox_value(AT_NSPECIAL, ig, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_NSPECIAL, ig, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, ig, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, ig, HG_HITBOX_Y, 0);
-set_hitbox_value(AT_NSPECIAL, ig, HG_WIDTH, 110);
+set_hitbox_value(AT_NSPECIAL, ig, HG_WIDTH, 110);                  
 set_hitbox_value(AT_NSPECIAL, ig, HG_HEIGHT, 110);
 
 /**/

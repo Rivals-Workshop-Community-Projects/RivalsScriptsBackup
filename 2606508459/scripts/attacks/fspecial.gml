@@ -87,7 +87,7 @@ set_hitbox_value(AT_FSPECIAL, ig, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FSPECIAL, ig, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, ig, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 set_hitbox_value(AT_FSPECIAL, ig, HG_VISUAL_EFFECT, 22);
-set_hitbox_value(AT_FSPECIAL, ig, HG_ANGLE, 65); //85
+set_hitbox_value(AT_FSPECIAL, ig, HG_ANGLE, 45); //65
 set_hitbox_value(AT_FSPECIAL, ig, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL, ig, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_FSPECIAL, ig, HG_BASE_HITPAUSE, 8);

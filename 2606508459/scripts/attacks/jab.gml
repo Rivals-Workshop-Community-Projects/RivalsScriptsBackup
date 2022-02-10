@@ -10,6 +10,7 @@ set_window_value(AT_JAB, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 5); //3
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, ig, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_JAB, ig, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_JAB, ig, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 
 ig++;

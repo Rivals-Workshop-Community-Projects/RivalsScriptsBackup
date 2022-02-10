@@ -435,6 +435,10 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
         if attack == AT_NSPECIAL{
         	clear_button_buffer(PC_SPECIAL_PRESSED)
         	if window <= 2 { 
+        		
+        		if state_timer == 1 {
+        			move_cooldown[AT_EXTRA_1] = 0
+        		}
         	create_hitbox(AT_NSPECIAL,2,x,y - 30)
         	}
          ///if window < 3 {    

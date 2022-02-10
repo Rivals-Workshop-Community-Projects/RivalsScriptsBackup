@@ -1,5 +1,16 @@
 shader_start();
 
+if "danger" in self {
+	
+	if danger > 0 {
+	shake_camera(2,2)
+	danger -- 
+	draw_sprite_ext(sprite_get("roundin1"),0,room_width/2 + 180 - danger*3, room_height/2 - 80, 1,1,0,-1,min(0.6,danger/30))
+	draw_sprite_ext(sprite_get("roundin1"),0,room_width/2 - 180 + danger*3, room_height/2 + 90, 1,1,180,-1,min(danger/30))
+	
+	}
+}
+
 if taunt_down && special_down {
     if move_cooldown[AT_TAUNT] > 0 {
         draw_debug_text(x - 80 ,y - 155, "VA volume : " + string(zolume));	

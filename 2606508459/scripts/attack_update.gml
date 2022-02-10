@@ -475,6 +475,16 @@ if (attack == AT_NSPECIAL_2)
         set_attack(AT_NSPECIAL);
     }*/
     
+    //B Reverse
+    if (!flag_breverse &&
+        window == 1 && 
+        ((left_down && spr_dir > 0) || (right_down && spr_dir < 0)))
+    {
+        spr_dir *= -1;
+        image_xscale *= -1;
+        flag_breverse = true;
+    }
+    
     var txo = 0; //Target X Offset
     var tyo = -25; //Target Y Offset
     
@@ -576,6 +586,7 @@ if (attack == AT_NSPECIAL_2)
     if (window == 4)
     {
         flag_ballCall = 0;
+        flag_breverse = false;
     }
 }
 
@@ -623,8 +634,9 @@ if (attack == AT_FSPECIAL)
         window_timer = 0;
         window = 0;
         set_attack(AT_FSPECIAL_2);
-        //attack = AT_FSPECIAL_2;
     }
+    /*
+    */
     
     if (flag_fspecial != 0)
     {
@@ -863,8 +875,8 @@ if (mode == 0 ||
         c_img_spd = .2;
         c_vanishFX = 21;
         c_HBLifespan = 0;
-        c_HBStartup = inmediate ? 0 : 80; //How many frames until the hit box activates
-        c_HBPostHitCool = 60;       //Post Hit Cooldown (custom property)
+        c_HBStartup = inmediate ? 0 : 40; //How many frames until the hit box activates //80
+        c_HBPostHitCool = 60;       //Post Hit Cooldown (custom property) //60
         c_HBRepositionDist = 100;   //Reposition Distance (custom property)
         c_HBVRepositionDist = 60;   //Reposition Distance (custom property)
         c_hitFX = 304;              //Fire Burst

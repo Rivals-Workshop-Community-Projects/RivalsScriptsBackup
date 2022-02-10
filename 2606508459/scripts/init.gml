@@ -132,7 +132,7 @@ ballCall_blinkMin = 100;
 ballCall_blinkChange = 15;
 ballCall_blinkCurr = 0;
 
-c_callRadius = 300; //500;
+c_callRadius = 500; //300;
 
 //FSpecial
 fspecial_chargeHSP = 0;

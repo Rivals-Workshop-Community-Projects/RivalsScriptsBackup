@@ -62,7 +62,7 @@ set_num_hitboxes(AT_EXTRA_2, 0);
 
 set_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_2, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_EXTRA_2, 1, HG_LIFETIME, 200);
+set_hitbox_value(AT_EXTRA_2, 1, HG_LIFETIME, 90);
 set_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_X, 10);
 set_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_Y, -52);
 set_hitbox_value(AT_EXTRA_2, 1, HG_WIDTH, 40);
@@ -98,7 +98,7 @@ set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 
 set_hitbox_value(AT_EXTRA_2, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_2, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_EXTRA_2, 2, HG_LIFETIME, 200);
+set_hitbox_value(AT_EXTRA_2, 2, HG_LIFETIME, 90);
 set_hitbox_value(AT_EXTRA_2, 2, HG_HITBOX_X, 10);
 set_hitbox_value(AT_EXTRA_2, 2, HG_HITBOX_Y, -52);
 set_hitbox_value(AT_EXTRA_2, 2, HG_WIDTH, 40);
@@ -134,7 +134,7 @@ set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_PLASMA_SAFE, true);
 
 set_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_2, 3, HG_WINDOW, 2);
-set_hitbox_value(AT_EXTRA_2, 3, HG_LIFETIME, 200);
+set_hitbox_value(AT_EXTRA_2, 3, HG_LIFETIME, 90);
 set_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_X, 10);
 set_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_Y, -52);
 set_hitbox_value(AT_EXTRA_2, 3, HG_WIDTH, 40);
@@ -170,7 +170,7 @@ set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_PLASMA_SAFE, true);
 
 set_hitbox_value(AT_EXTRA_2, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_2, 4, HG_WINDOW, 2);
-set_hitbox_value(AT_EXTRA_2, 4, HG_LIFETIME, 200);
+set_hitbox_value(AT_EXTRA_2, 4, HG_LIFETIME, 90);
 set_hitbox_value(AT_EXTRA_2, 4, HG_HITBOX_X, 10);
 set_hitbox_value(AT_EXTRA_2, 4, HG_HITBOX_Y, -52);
 set_hitbox_value(AT_EXTRA_2, 4, HG_WIDTH, 40);

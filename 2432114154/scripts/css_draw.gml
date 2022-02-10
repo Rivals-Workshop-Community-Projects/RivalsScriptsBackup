@@ -3,21 +3,29 @@ var temp_x = floor(x+10);
 var temp_y = floor(y+10);
 var buildtag = "indev";
 var alt = get_player_color(player);
+var charuuid = string(sprite_get("idle"));
 
-if ("prev_alt" not in self){
+if ("css_char" not in self || css_char != charuuid) {
 drawtime = 0
 drawing = 1
+    css_char = charuuid;
+    sound_play(sound_get("RI"),false,noone,1,1)
+	sound_play(asset_get("sfx_waterhit_heavy2"),false,noone,1,1)
+	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,.4)
+	sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,.4)
 }
-    
+
 if ("prev_alt" in self && prev_alt != alt){
-     drawing = random_func(4, 4, true)
      drawtime = 0
+     sound_play(asset_get("sfx_waterhit_medium"),false,noone,1,1)
 }
 
 drawtime += 1 
 
 
 prev_alt = alt;
+
+
 
 
      
@@ -93,7 +101,9 @@ if drawtime < 15 {
         draw_sprite_ext(sprite_get("charselectflash"),0,temp_x-2,temp_y-2,2,2,0,-1,1);   
     }
     
-    if drawtime < 3 {
+    if drawtime < 4 {
+        draw_sprite_ext(sprite_get("charselectflash"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+        draw_sprite_ext(sprite_get("charselectflash"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
         draw_sprite_ext(sprite_get("charselectflash"),0,temp_x-2,temp_y-2,2,2,0,-1,1);    
     }
     

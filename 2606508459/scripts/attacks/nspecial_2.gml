@@ -11,7 +11,7 @@ var ig = 1;
 
 //Startup 1
 set_window_value(AT_NSPECIAL_2, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL_2, ig, AG_WINDOW_LENGTH, 5); //1
+set_window_value(AT_NSPECIAL_2, ig, AG_WINDOW_LENGTH, 2); //1
 set_window_value(AT_NSPECIAL_2, ig, AG_WINDOW_ANIM_FRAMES, 1);
 
 ig++;

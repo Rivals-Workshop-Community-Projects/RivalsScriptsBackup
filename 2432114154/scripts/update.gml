@@ -1104,7 +1104,7 @@ if isyellow {
 }
 
 
-if move_cooldown[AT_EXTRA_1] > 0 {
+if move_cooldown[AT_EXTRA_1] > 0 && state_cat != SC_HITSTUN {
 	
 
 	if get_gameplay_time() % 10 == 5  { spawn_hit_fx(floor(x),floor(y) - 30,bh3) }
@@ -1309,3 +1309,134 @@ if left_pressed and right_pressed and attack_pressed and special_pressed  {
 	UImode = 0 	
 	}
 }
+
+
+/* codes archived, I made funny smash's hitbox clanking 
+
+ with (asset_get("pHitBox")) {
+ 	
+        if player_id == other.id {
+        	
+              with (asset_get("pHitBox")) {
+ 	      
+ 	             nearbyhitbox = collision_circle( x-12, y-12, 34,other, true, true ) 
+	           
+	            if nearbyhitbox != noone && player_id != other.player_id && hit_priority != 0 && player_id.hitpause == false && other.player_id.hitpause == false{
+	            	
+	            	 if abs(damage - other.damage) <= 3 { 
+	            	 	with other {
+	            	         sound_play(sound_get("RI"),false,noone,.8,max(1, 1.6 - random_func(1,10,true)/100))
+	            	 	}
+	            	 	
+	            	 	if get_gameplay_time()%4 == 0 {
+	            	 		with other {
+	            	 		sound_play(sound_get("DANGER"),false,noone,0.8)
+	            	 		}
+	            	 		 with player_id {
+	            	 		 	take_damage(player,-1,20)
+	            	 		 } 
+	            	 		 with other.player_id {
+	            	 		 	take_damage(player,-1,20)
+	            	 		 } 
+	            	 		 other.player_id.danger = 20
+	            	 		 spawn_hit_fx(floor(x/2 + other.x/2),floor(y/2 + other.y/2),302)
+	            	         player_id.old_vsp = max(-6,(min(6,(player_id.y - other.player_id.y)/10)))
+	            	         player_id.old_hsp = max(-6,(min(6,(player_id.x - other.player_id.x)/10)))
+	            	         player_id.hitstop = 30
+	            	         player_id.hitpause = 1
+	            	         player_id.invincible = true 
+	            	         player_id.invince_time = 5
+	            	         other.player_id.old_vsp = max(-6,(min(6,(other.player_id.y - player_id.y)/10)))
+	            	         other.player_id.old_hsp = max(-6,(min(6,(other.player_id.x - player_id.x)/10)))
+	            	         other.player_id.hitstop = 30
+	            	         other.player_id.hitpause = 1
+	            	         other.player_id.invincible = true 
+	            	         other.player_id.invince_time = 5
+	            	         other.destroyed = true 
+	            	         destroyed = true 
+	            	          other.player_id.brrr = 30
+	            	           player_id.brrr = 30
+	            	 	} else {
+	            	         spawn_hit_fx(floor(x/2 + other.x/2),floor(y/2 + other.y/2),302)
+	            	         player_id.old_vsp = max(-6,(min(6,(player_id.y - other.player_id.y)/10)))
+	            	         player_id.old_hsp = max(-6,(min(6,(player_id.x - other.player_id.x)/10)))
+	            	         player_id.hitstop = 15
+	            	         player_id.hitpause = 1
+	            	         player_id.invincible = true 
+	            	         player_id.invince_time = 5
+	            	         other.player_id.old_vsp = max(-6,(min(6,(other.player_id.y - player_id.y)/10)))
+	            	         other.player_id.old_hsp = max(-6,(min(6,(other.player_id.x - player_id.x)/10)))
+	            	         other.player_id.hitstop = 15
+	            	         other.player_id.hitpause = 1
+	            	         other.player_id.invincible = true 
+	            	         other.player_id.invince_time = 5
+	            	         other.destroyed = true 
+	            	         destroyed = true 
+	            	          other.player_id.brrr = 15
+	            	           player_id.brrr = 15
+	            	 	}
+	            	} else if damage > other.damage {
+	            		with other {
+	            		     sound_play(sound_get("RI2"),false,noone,1,max(1, 1.4 - random_func(1,10,true)/100))
+	            		}
+	            	         player_id.old_vsp = player_id.vsp
+	            	         player_id.old_hsp = player_id.hsp
+	            	         player_id.hitstop = 12
+	            	         player_id.hitpause = 1
+	            	         spawn_hit_fx(floor(other.x),floor(other.y),304)
+	            	         player_id.invincible = true 
+	            	         player_id.invince_time = 20
+	            	         other.player_id.old_vsp = max(-6,(min(6,(other.player_id.y - player_id.y)/10)))
+	            	         other.player_id.old_hsp = max(-6,(min(6,(other.player_id.x - player_id.x)/10)))
+	            	         other.player_id.hitstop = 90
+	            	         other.player_id.hitpause = 1
+	            	         other.player_id.brrr = -90
+	            	         other.destroyed = true
+  		
+	            	} else if damage < other.damage {
+	            		with other {
+	            		     sound_play(sound_get("RI2"),false,noone,1,max(1, 1.4 - random_func(1,10,true)/100))
+	            		}
+	            	         spawn_hit_fx(floor(x),floor(y),304)
+	            	         other.player_id.old_vsp = other.player_id.vsp
+	            	         other.player_id.old_hsp = other.player_id.hsp
+	            	         other.player_id.hitstop = 12
+	            	         other.player_id.hitpause = 1
+	            	         other.player_id.invincible = true 
+	            	         other.player_id.invince_time = 20
+	            	         player_id.old_vsp = max(-6,(min(6,(other.player_id.y - player_id.y)/10)))
+	            	         player_id.old_hsp = max(-6,(min(6,(other.player_id.x - player_id.x)/10)))
+	            	         player_id.hitstop = 90
+	            	         player_id.hitpause = 1
+  	                         player_id.brrr = -90
+  	                         destroyed = true
+	            	}
+                      
+	            }
+              } 
+       }
+ }
+ 
+ 
+ with (asset_get("oPlayer")) { 
+ 	
+    if "brrr" in self {
+    	if brrr > 0 {
+    		brrr -- 
+    		x += 2
+    		if brrr % 3 == 0 {
+    			x -= 6
+    		}
+    	}
+    	
+    	if brrr < 0 {
+    		brrr ++
+    		x += 2
+    		if brrr % 3 == 0 {
+    			x -= 6
+    		}
+    	}
+    } 	
+ 	
+ 	
+ }

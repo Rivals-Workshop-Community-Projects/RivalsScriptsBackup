@@ -78,6 +78,8 @@ sprite_change_offset("DSshadow", 102, 124);
 sprite_change_offset("extra_1", 102, 124);
 sprite_change_offset("inkring", 80, 80);
 
+sprite_change_offset("roundin1", 1800/2, 1000/2);
+
 sprite_change_offset("nspecial", 102, 124);
 sprite_change_offset("nspecialf", 102, 124);
 sprite_change_offset("fspecial", 102, 124);

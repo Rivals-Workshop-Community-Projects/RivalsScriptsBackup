@@ -134,6 +134,7 @@ flag_freeTimer = false;
 pf_x = 0;
 pf_y = [0, 0, 0, 0, 0];
 _ballHitpause = false;
+_parryMode = false;
 
 //Hitbox State
 _hit = 0;

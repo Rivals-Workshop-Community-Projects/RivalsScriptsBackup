@@ -615,15 +615,22 @@ if (instance_exists(_currHB))
 {
     with(oPlayer)
     {
-        if (state_cat == SC_HITSTUN ||
-            abs(other.x - other.pf_x) > 0.5 || 
-            abs(other.y - other.pf_y[0]) > 0.5) //ensure that the ball will hit if it is moving fast enough
+        if (other._parryMode)
         {
-            other._currHB.can_hit[player] = true;
+            other._currHB.can_hit[player] = (player == other.c_owner.player)
         }
         else
         {
-            other._currHB.can_hit[player] = false;
+            if (state_cat == SC_HITSTUN ||
+            abs(other.x - other.pf_x) > 0.5 || 
+            abs(other.y - other.pf_y[0]) > 0.5) //ensure that the ball will hit if it is moving fast enough
+            {
+                other._currHB.can_hit[player] = true;
+            }
+            else
+            {
+                other._currHB.can_hit[player] = false;
+            }
         }
     }
 }
@@ -690,11 +697,17 @@ if (instance_exists(_currHB))
 {
     if (_currHB.was_parried)
     {
-        if (_currHB.x > c_owner.x) _targetX = c_owner.x - 40;
-        else _targetX = c_owner.x + 40;
-        _targetY = c_owner.y - 40;
         _currHB.was_parried = false;
+        _parryMode = true;
     }
+}
+
+if (_parryMode && _currHB != noone) 
+{
+    if (_currHB.x > c_owner.x) _targetX = c_owner.x - 40;
+    else _targetX = c_owner.x + 40;
+    _targetY = c_owner.y - 40;
+    print_debug("parrymode")
 }
 
 //====> Kill when lifetime runs out

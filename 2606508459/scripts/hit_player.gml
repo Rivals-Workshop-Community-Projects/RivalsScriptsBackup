@@ -138,6 +138,8 @@ if (my_hitboxID.attack == AT_NSPECIAL &&
 {
     with (fBall_obj)
     {
+        _parryMode = false
+        
         /*
         //Scatter Particles
         var cp = arr_particles_scatter

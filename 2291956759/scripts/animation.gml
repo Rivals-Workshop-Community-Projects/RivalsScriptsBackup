@@ -3,6 +3,9 @@
 
 
 
+/// have an intro, you're welcome
+
+
 if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_USPECIAL && window <= 2 {
     
     

@@ -183,8 +183,8 @@ set_color_profile_slot( 15, 2, 100, 135, 158 ); //Top
 set_color_profile_slot( 15, 3, 119, 255, 187 ); //Pattern1
 set_color_profile_slot( 15, 4, 52, 254, 86 ); //Pattern2
 set_color_profile_slot( 15, 5, 32, 45, 34 ); //Dark parts
-set_color_profile_slot( 15, 6, 31, 64, 69 ); //Fur
-set_color_profile_slot( 15, 7, 13, 18, 26 ); //Fur shading
+set_color_profile_slot( 15, 6, 51, 94, 79 ); //Fur
+set_color_profile_slot( 15, 7, 23, 28, 46 ); //Fur shading
 
 // BLW
 set_color_profile_slot( 16, 0, 255, 208, 0 ); //Energy

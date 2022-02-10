@@ -22,7 +22,7 @@ if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 3 && isyellow &&
     set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 124);
     set_attack_value(AT_BAIR, AG_CATEGORY, 2);
     
-    y += floor ( (hit_player_obj.y + 20 - y)/3 )
+    y += floor ( (hit_player_obj.y + 30 - y)/3 )
     
 	spr_dir *= -1
 	old_vsp = -12

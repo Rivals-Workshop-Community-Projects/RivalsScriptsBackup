@@ -3,7 +3,7 @@
 
 /// have an intro, you're welcome
 if get_gameplay_time() <= 120 {
-	
+	visible = true
 with (asset_get("oPlayer")) {
 	
 			if (player != other.player) {
@@ -12,17 +12,19 @@ with (asset_get("oPlayer")) {
 			    if string_count("lynk", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and 
 			    string_count("tengia", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and 
 			    string_count("ase", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0  and 
-			    string_count("yanchang", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 
-			    and get_gameplay_time() == 4 and visible and draw_y == 0 and (sprite_index == sprite_get("idle") or select <= 16) {
+			    string_count("yanchang", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and  
+			    string_count("lucah", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0 and  
+			    string_count("elri", string_lower( get_char_info(player, INFO_STR_NAME) )) == 0
+			    and get_gameplay_time() == 6 and visible and draw_y == 0 and (sprite_index == sprite_get("idle") or select <= 19) {
 			    	if "needintro" not in self {
 			    	print("This bozo didn't have an intro")
 			    	needintro = true
 			    }
 			    }
 			    
-			    if get_gameplay_time() > 4 {
+			    if get_gameplay_time() > 6 {
 			    	
-			    	if select > 16 {
+			    	if select > 19 {
 			    	if "needintro" in self {
 			    		
                          if get_gameplay_time() == 40 {
@@ -49,12 +51,12 @@ with (asset_get("oPlayer")) {
 			    		 	
 			    		 } else if get_gameplay_time() < 62{
 			    		 	draw_indicator = false 
-			    		 	draw_y = 999
+			    		 	visible = false
 			    		 	sprite_index = sprite_get("hurt")
 			    		 	image_index = 0
 			    		 } else if get_gameplay_time() < 70 {
 			    		 	sprite_index = sprite_get("hurt")
-			    		 	
+			    		 	visible = true 
 			    		 	image_index = (get_gameplay_time()-82)/5
 			    		 } else if get_gameplay_time() <= 90 {
 			    		 	sprite_index = sprite_get("hurt")
@@ -88,10 +90,9 @@ with (asset_get("oPlayer")) {
 			    		 	draw_indicator = false 
 			    		 	sprite_index = asset_get("empty_sprite")
 			    		 	image_index = (get_gameplay_time()-3)/3
-			    		 	draw_y = 999
-			    		 } 
-			    		 
-			    		 else if get_gameplay_time() <= 90 {
+			    		 	visible = false
+			    		 }  else if get_gameplay_time() <= 90 {
+			    		 	visible = true 
                             set_state(PS_CROUCH)
                             state_timer = 2
 			    		 }
