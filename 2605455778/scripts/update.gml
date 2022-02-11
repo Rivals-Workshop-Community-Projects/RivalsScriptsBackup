@@ -98,19 +98,7 @@ with(asset_get("oPlayer")){
                 wrap_time = 9999;
             }
             if(free && prison_time_counter > 50){
-                // //airPrison = true;
                 state = PS_HITSTUN;
-                // hsp = 0;
-                // old_hsp = 0;
-                // if(hitpause){
-                //     prison_time_counter += 4;
-                // }
-                // //prison_time_counter++;
-                // if(prison_time_counter < 120){
-                //     vsp = 0;
-                //     //prison_time_counter++;
-                // }
-                // old_vsp = 0;
                 hitstun = prison_time - prison_time_counter;
             }
             if(!free){
@@ -121,14 +109,6 @@ with(asset_get("oPlayer")){
                     prison_plat = instance_place(x, y+2, asset_get("par_jumpthrough"));
                 }
                 state = PS_WRAPPED;
-                // if(airPrison){
-                //     airPrison = false;
-                //     if(prison_time_counter > 160){
-                //         prison_time_counter -= 40;
-                //     }else{
-                //         prison_time_counter -= 70;
-                //     }
-                // }
             }else{
                 if(prison_plat != noone){
                     state = PS_WRAPPED;
@@ -143,7 +123,7 @@ with(asset_get("oPlayer")){
             if(prison_time_counter >= prison_time - (prison_time / 4)){
                 prison_canAct = true;
             }
-            if(prison_time_counter == prison_time - (prison_time / 4)){
+            if(prison_time_counter == round(prison_time - (prison_time / 4))){
                 sound_play(asset_get("sfx_dizzy"));
             }
             if(attack_pressed && prison_time_counter >= prison_time - (prison_time / 4)){
@@ -287,6 +267,12 @@ old_armorpoints = armorpoints;
     if(prev_state != PS_RESPAWN && state != PS_PARRY){
         state = PS_IDLE;
     }
+    
+    vsp = 0;
+    hsp = 0;
+    old_vsp = 0;
+    old_hsp = 0;
+    
     visible = true;
     prison_canAct = false;
     invincible = true;

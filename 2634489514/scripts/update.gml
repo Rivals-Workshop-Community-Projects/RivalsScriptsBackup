@@ -6,7 +6,7 @@ if get_gameplay_time() < 2 exit; //Spawning players is fucked, it will spawn all
 if !_init {
 	//Get following player
 	with oPlayer if get_player_hud_color(player) == 6612290 other.follow_player = id; //Online hud color
-	if follow_player == noone  with oPlayer if !("temp_level" in self) {
+	if follow_player == noone  with oPlayer if (!("temp_level" in self) || temp_level == 0) {
 	    other.follow_player = id;
 	    break;
 	}
@@ -111,7 +111,7 @@ if !_init {
 	var wall_here;
 	with oPlayer { //Fixes for various things due to article solids
 		//Removing CPUs without ending the game
-		if "temp_level" in self {
+		if (!("temp_level" in self) || temp_level != 0) {
 			visible = false;
 			image_xscale = 0;
 			image_yscale = 0;

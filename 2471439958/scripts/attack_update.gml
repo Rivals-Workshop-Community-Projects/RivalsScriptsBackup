@@ -5,7 +5,10 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL ||
     trigger_b_reverse();
 }
 
-if (attack == AT_USPECIAL or attack == AT_USPECIAL_GROUND){
+if (attack == AT_USPECIAL){
+	if (window == 1) {
+			--uspec_meter;
+		}
 	if (window == 2) {
 		if (special_down && uspec_meter > 0){
 			if (window_timer == get_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH)){
@@ -70,18 +73,37 @@ if (attack == AT_USPECIAL_GROUND)
 
 if (attack == AT_USPECIAL) && vsp == 0{
 	if fire = 1{
-		vsp = -2.6;
+		vsp = -3.6;
 	}
 	if ice = 1{
-		vsp = -3.6;
+		vsp = -4.6;
 	}
 	if thunder = 1{
 		vsp = -2;
 	}
 	if pistols = 1{
-		vsp = -1.5;
+		vsp = -2;
 	}
 }	
+if (attack == AT_USPECIAL){
+	if fire = 1{
+	}
+	if ice = 1{
+	var meter_gain = -1; // change this to how much you extra meter you lose per frame
+	uspec_meter = min(uspec_meter+meter_gain,uspec_max);
+	}
+	if thunder = 1{
+	}
+	if pistols = 1{
+	}
+}
+
+if (attack == AT_USPECIAL){
+	if vsp < -7{
+	--uspec_meter;
+	--uspec_meter;
+	}
+}
 //SHOTGUN
 if (attack == AT_NSPECIAL)
 {

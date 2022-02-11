@@ -221,7 +221,7 @@ if attack == AT_FSPECIAL {
 	if window == 2 {
 		if window_timer <= 4 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
 			state_timer = 90
-			
+			djumps = 0
 			
 			if hitpause {
 				hit_player_obj.y += floor((y - 10 - hit_player_obj.y)/6)
@@ -641,19 +641,19 @@ set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 3);
 }
 
 if (window == 1 && window_timer == 11)  {
-prat_land_time = 12;	
-set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 80);
-set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.7);
+prat_land_time = 10;	
+set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("slice"));
 
-set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 80);
-set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 90);
+set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .6);
@@ -665,7 +665,7 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -6.5);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -5);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 4);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
@@ -691,7 +691,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 17);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -9.8);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
@@ -863,46 +863,26 @@ if (attack == AT_NSPECIAL){
     
  
     
-    if hit_player_obj.state_cat != SC_HITSTUN {
     	
-       if(window == 5 && window_timer == get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)){
+       if !hitpause && ((window == 5 && window_timer == 6) or (window == 9 && window_timer == 6)){
     	if !free {
-        set_attack (AT_EXTRA_1)
+        set_attack (AT_JAB)
         window = 8
-        window_timer = 6
-        spr_dir *= -1
+        window_timer = 0
+    	} else {
+    	set_attack (AT_FAIR)
+        window = 3
+        window_timer = 0	
     	}
     
-    }
+      }
     
-     if(window == 6 && window_timer == get_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH)){
-     	set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
-    		set_attack (AT_BAIR)
-    	window = 5
-    	sound_play(asset_get("sfx_ice_shieldup"));
-    }
+
     
-        if(window == 9 && window_timer == get_window_value(AT_NSPECIAL, 9, AG_WINDOW_LENGTH)){
-    	if !free {
-        set_attack (AT_EXTRA_1)
-        window = 8
-        window_timer = 6
-        spr_dir *= -1
-    	}
-    	if free {
-    		sound_play(asset_get("sfx_ice_shieldup"));
-    		set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
-    		set_attack (AT_BAIR)
-    	window = 5
-    	}
-    }
-    }
+
     
-     if hit_player_obj.state_cat == SC_HITSTUN {
-     	 if(window == 6 && window_timer == get_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH)){
-    	window = 10
-    }
-     }
+    
+
     
      
 }

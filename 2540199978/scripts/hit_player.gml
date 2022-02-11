@@ -50,7 +50,7 @@ switch (my_hitboxID.attack)
 		break;
 
 	case AT_FAIR:
-		old_vsp -= 3;
+		old_vsp -= 1;
 		break;
 
 	case AT_DSPECIAL:

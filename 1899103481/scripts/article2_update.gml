@@ -1,6 +1,6 @@
 shoot_timer--;
 lifetime--;
-
+state_timer++;
 
 // TODO: if about to spit projectile, play sound & animation of "about to spit" (helps anticipation for both players)
 
@@ -31,12 +31,14 @@ if (place_meeting(x, y, oth) && oth.player_id != player_id){
 	// }
 }
 
-if (shoot_timer > 0 && shoot_timer < 25){ // 5 animation frames before boom
-	if (shoot_timer == 24){ sound_play(asset_get("sfx_ori_spirit_flame_2"));}
-	image_speed = 1/2;
-} else if (shoot_timer > 25 && image_index == image_number-1){
-	image_speed = 0;
+if ((shoot_timer > 0 && shoot_timer < 21) || (image_index > 0)){ // 5 animation frames before boom
+	if (shoot_timer == 20){ 
+		sound_play(asset_get("sfx_ori_spirit_flame_2"));
+	}
+	image_index = state_timer * anim_speed_active;
+} else {
 	image_index = 0;
+	state_timer = 0;
 }
 
 if (shoot_timer < 1){
@@ -59,9 +61,11 @@ if (shoot_timer < 1){
 	}
     lava_splosh = create_hitbox(AT_DSPECIAL_2, 1, x + x_adjust, y+y_adjust);
     with (lava_splosh){
+    	state_timer = 0;
+    	anim_speed_proj = 1/5;
         lifetime = 1000;
         isBoosted = false; //whether the lava splosh projectile has been boosted by the lava wall
-        image_speed = 0.2;
+        image_index = state_timer * anim_speed_proj;
         // image_angle = direction;
         vsp = -10;
         if (other.turret_angle == 45){
@@ -75,7 +79,9 @@ if (shoot_timer < 1){
 }
 
 with (lava_splosh){
+	state_timer++;
     lifetime--;
+    image_index = state_timer * anim_speed_proj;
     if (!isBoosted){
         with (other.player_id){
             damage = 5;

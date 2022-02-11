@@ -63,3 +63,14 @@ if (attack == AT_FSPECIAL){
   vsp = clamp(vsp, -2, 2);
 }
 }
+
+
+
+if (attack == AT_JAB) && switcher == 1{
+    if taunt_down{
+        attack = AT_TAUNT_2;
+    }
+}
+if (attack == AT_TAUNT) && switcher == 1{
+        attack = AT_EXTRA_2;
+}

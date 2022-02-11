@@ -10,10 +10,9 @@ walk_anim_speed = 0.04;
 dash_anim_speed = .05;
 pratfall_anim_speed = .25;
 
-standard_height = 42;
-nspecial_height = 88;
-dspecial_height = 160;
-utilt_height = 72;
+standard_height = 56;
+fspecial_height = 72;
+dspecial_height = 120;
 stored_spr_dir = 1;
 
 walk_speed = 3;

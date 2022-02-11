@@ -19,7 +19,7 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         	if (has_rune("E"))
         		super_armor = true;
         	else
-        		soft_armor = 6;
+        		soft_armor = 4;
         }
         else {
             soft_armor = 0;
@@ -32,7 +32,7 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         	if (has_rune("E"))
         		super_armor = true;
         	else
-        		soft_armor = 6;
+        		soft_armor = 4;
         }
         else {
             soft_armor = 0;
@@ -45,7 +45,7 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         	if (has_rune("E"))
         		super_armor = true;
         	else
-        		soft_armor = 6;
+        		soft_armor = 4;
         }
         else {
             soft_armor = 0;
@@ -58,7 +58,7 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         	if (has_rune("D"))
         		super_armor = true;
         	else
-        		soft_armor = 12;
+        		soft_armor = 8;
         }
         else {
             soft_armor = 0;
@@ -71,7 +71,7 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         	if (has_rune("D"))
         		super_armor = true;
         	else
-        		soft_armor = 12;
+        		soft_armor = 8;
         }
         else {
             soft_armor = 0;
@@ -83,7 +83,7 @@ if (slowstart_state == SLOWSTART_STATE_OFF) {
         	if (has_rune("D"))
         		super_armor = true;
         	else
-        		soft_armor = 12;
+        		soft_armor = 8;
         }
         else {
             soft_armor = 0;

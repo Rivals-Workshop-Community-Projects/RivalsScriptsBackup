@@ -16,7 +16,8 @@ caleb = 0;
 machina = 0;
 lcie = 0;
 gaming = 0;
-crystal = 0;
+switcher = 0;
+dynamite_boost = 0;
 
 fire = 1;
 ice = 0;
@@ -73,7 +74,7 @@ max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .50;
 hitstun_grav = .5;
-knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames
 prat_land_time = 3;

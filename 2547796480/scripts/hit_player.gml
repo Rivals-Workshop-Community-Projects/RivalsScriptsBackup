@@ -4,7 +4,6 @@ if ANwounded > 0 && my_hitboxID.type == 1 && hit_player_obj.char_height != 60.14
 }
 	
 if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
-   batt = 5
    if hit_player_obj.ANwounded < 1 {
    move_cooldown[AT_NSPECIAL] = 30
    hit_player_obj.ANtimeslow = 30

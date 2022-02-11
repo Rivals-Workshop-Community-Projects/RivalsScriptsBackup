@@ -31,4 +31,6 @@ if (charging and (hit_bkb > 0 and hit_dmg > 0)){
 explosion_type = 0;
 explosion_count = 0;
 
-sound_stop(asset_get("sfx_holy_tablet_spawning"));
+sound_stop(sound_get("sfx_charge1"));
+sound_stop(sound_get("sfx_charge2"));
+sound_stop(sound_get("sfx_castheavy2"));

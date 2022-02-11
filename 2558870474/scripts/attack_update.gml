@@ -296,16 +296,13 @@ if proposed_balance{
 
                             // Check the charge and play sound
                             if charge == 1{
-                                sound_play(asset_get("sfx_ice_shatter_big"));
+                                sound_play(sound_get("sfx_charge1"));
                             }
                             if charge == 2{
-                                sound_play(asset_get("sfx_ice_dspecial_ground"));
-                                sound_play(asset_get("sfx_holy_tablet_spawning"));
+                                sound_play(sound_get("sfx_charge2"));
                             }
                             if charge == 3{
-                            	sound_stop(asset_get("sfx_holy_tablet_spawning"));
-                                sound_play(asset_get("sfx_ice_nspecial_hit_ground"));
-                                sound_play(asset_get("sfx_holy_tablet_appear"));
+                            	sound_play(sound_get("sfx_castheavy2"));
                             }
 
                             window = 2;
@@ -330,7 +327,9 @@ if proposed_balance{
                 case 3: // Casting (Active)
                 	//max_fall = 9.5;		// 6    -  11
                 	if window_timer < 6{
-                		sound_stop(asset_get("sfx_holy_tablet_spawning"));
+                		sound_stop(sound_get("sfx_charge1"));
+                		sound_stop(sound_get("sfx_charge2"));
+                		sound_stop(sound_get("sfx_castheavy2"));
                 		switch(spr_dir){
                 			case -1:
                 				if right_pressed{
@@ -348,20 +347,20 @@ if proposed_balance{
                 		charging = true;
                 	}
                     // stuff in the active frames (aka hitbox creation)
-                    if (window_timer == 9){
+                    if (window_timer == 7){
                         // spawn hitboxes
                         if charge == 0{
-                        	sound_play(sound_get("sfx_castmid"));
+                        	sound_play(sound_get("sfx_castlight"));
 							create_hitbox(AT_NSPECIAL, 1, x + (10 * spr_dir), y-30);
 							//move_cooldown[AT_NSPECIAL] = 40;
                         }
                         if charge == 1{
-                        	sound_play(sound_get("sfx_castheavy"));
+                        	sound_play(sound_get("sfx_castmid"));
                     		create_hitbox(AT_NSPECIAL, 2, x + (20 * spr_dir), y-30);
                     		//move_cooldown[AT_NSPECIAL] = 70;
                         }
                         if charge == 2{
-                        	sound_play(sound_get("sfx_auroraswipe"));
+                        	sound_play(sound_get("sfx_castheavy"));
                     		create_hitbox(AT_NSPECIAL, 3, x + (20 * spr_dir), y-30);
                     		//move_cooldown[AT_NSPECIAL] = 120;
                         }
@@ -392,15 +391,18 @@ if proposed_balance{
 	                	}
                 	}
 
-                	sound_stop(asset_get("sfx_ice_dspecial_form"));
-                	sound_stop(asset_get("sfx_holy_tablet_spawning"));
+            		sound_stop(sound_get("sfx_charge1"));
+            		sound_stop(sound_get("sfx_charge2"));
+            		sound_stop(sound_get("sfx_castheavy2"));
                 	//can_shield = true;
                     // cleared the button buffer to prevent accidental parry.
                     //clear_button_buffer(PC_SHIELD_PRESSED);
                     break;
                 case 6:
+                	if window_timer == 14{
+                		sound_play(sound_get("sfx_charge3"));
+                	}
                 	if window_timer == 16{
-	                	sound_play(sound_get("sfx_auroraswipe"));
 	                	if spr_dir == 1{
 	                		create_hitbox(AT_NSPECIAL, 6, x+10, y-30);
 	                	} else {

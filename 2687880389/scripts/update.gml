@@ -24,6 +24,9 @@ spr_dir = phone_cheats[cheat_widebert] * sign(spr_dir);
 if phone_cheats[cheat_recoil] with pHitBox if player_id == other can_hit_self = 1;
 // End of Muno code
 
+if phone_cheats[cheat_perma_final_smash] fs_charge = 200;
+// End of Final Smash additional code
+
 infinite_energy = phone_cheats[cheat_unlimited_power];
 
 // Play rocket sound while hovering
@@ -264,6 +267,7 @@ with (hit_fx_obj) {
 }
 
 // Manage potential afterimages
+//afterimage_countdown_prev = afterimage_countdown;
 if (afterimage_countdown > 0) {
 	afterimage_countdown--;
 	
@@ -347,7 +351,8 @@ if (titanium_ally) {
 //print_debug("Number of charges: " + string(booster_rush_charges));
 //print_debug("Fuel: " + string(rocket_fuel));
 //print_debug("driving: " + string(driving) + ", driving_prev: " + string(driving_prev));
-print_debug("state: " + get_state_name(state));// + "state_prev: " + string(state_prev));
+//print_debug("state: " + get_state_name(state) + ", attack: " + string(attack) + ", window: " + string(window) + ", window_timer: " + string(window_timer));// + "state_prev: " + string(state_prev));
+//print_debug("afterimage countdown: " + string(afterimage_countdown) + "prev: " + string(afterimage_countdown_prev));
 
 // Function to spawn built-in dust effects, courtesy of SupersonicNK
 #define spawn_base_dust

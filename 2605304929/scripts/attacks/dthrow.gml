@@ -75,14 +75,11 @@ set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
-
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 1);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED, 5);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
-set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1")); //  or sound_get("")
-set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 26);
+
 
 window_num++;
 
@@ -97,7 +94,7 @@ set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1")); //  or sound_get("")
-set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 26);
+set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 5);
 
 window_num++;
 

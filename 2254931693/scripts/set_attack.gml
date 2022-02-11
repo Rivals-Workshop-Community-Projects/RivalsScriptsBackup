@@ -19,9 +19,5 @@ if (attack == AT_DSPECIAL && frog_exists = 1){
     
 }
 
-	muno_event_type = 2;
-	user_event(14);
-
-
 
 

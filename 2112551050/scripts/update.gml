@@ -322,7 +322,7 @@ with oPlayer {
 
 //cpu destroy code;
 with oPlayer {
-    if (temp_level != 0) { //temp_level > 0 = player
+    if (temp_level != 0) { //is cpu
         cpuId = id;
         state = PS_DEAD;
         jump_down = true;

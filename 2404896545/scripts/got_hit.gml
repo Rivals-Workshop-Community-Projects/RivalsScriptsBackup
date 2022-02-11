@@ -6,3 +6,4 @@ if(hitpause == true){
         sound_play(sound_get("hurt1"));
     }
 }
+char_height = standard_height;

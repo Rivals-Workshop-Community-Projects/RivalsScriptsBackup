@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 11, 27, 16 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 24 );
 
 // Blue
 set_color_profile_slot( 1, 0, 79, 138, 255 ); //ClothesRim
@@ -168,13 +168,13 @@ set_color_profile_slot( 13, 7, 58, 92, 42 ); //Frog
 
 // Cinna
 set_color_profile_slot( 14, 0, 30, 159, 252 ); //ClothesRim
-set_color_profile_slot( 14, 1, 255, 159, 41 ); //Skin
-set_color_profile_slot( 14, 2, 43, 16, 41 ); //Clothes
-set_color_profile_slot( 14, 3, 23, 9, 22 ); //ClothesShade
+set_color_profile_slot( 14, 1, 255, 145, 35 ); //Skin
+set_color_profile_slot( 14, 2, 81, 15, 3 ); //Clothes
+set_color_profile_slot( 14, 3, 49, 10, 2 ); //ClothesShade
 set_color_profile_slot( 14, 4, 55, 28, 9 ); //Hair
-set_color_profile_slot( 14, 5, 43, 16, 41 ); //Pants
+set_color_profile_slot( 14, 5, 49, 10, 2 ); //Pants
 set_color_profile_slot( 14, 6, 211, 23, 8 ); //Shoes
-set_color_profile_slot( 14, 7, 251, 75, 75 ); //Frog
+set_color_profile_slot( 14, 7, 211, 23, 8 ); //Frog
 
 // Desert
 set_color_profile_slot( 15, 0, 255, 229, 92 ); //ClothesRim
@@ -245,6 +245,26 @@ set_color_profile_slot( 21, 4, 20, 73, 110 ); //Hair
 set_color_profile_slot( 21, 5, 20, 73, 110 ); //Pants
 set_color_profile_slot( 21, 6, 97, 160, 207 ); //Shoes
 set_color_profile_slot( 21, 7, 179, 207, 227 ); //Frog
+
+// Win
+set_color_profile_slot( 22, 0, 245, 205, 61 ); //ClothesRim
+set_color_profile_slot( 22, 1, 125, 83, 65 ); //Skin
+set_color_profile_slot( 22, 2, 46, 46, 46 ); //Clothes
+set_color_profile_slot( 22, 3, 26, 24, 22 ); //ClothesShade
+set_color_profile_slot( 22, 4, 46, 46, 46 ); //Hair
+set_color_profile_slot( 22, 5, 23, 22, 17 ); //Pants
+set_color_profile_slot( 22, 6, 18, 16, 5 ); //Shoes
+set_color_profile_slot( 22, 7, 71, 71, 71 ); //Frog
+
+// Tag
+set_color_profile_slot( 23, 0, 255, 217, 0 ); //ClothesRim
+set_color_profile_slot( 23, 1, 255, 230, 158 ); //Skin
+set_color_profile_slot( 23, 2, 61, 181, 85 ); //Clothes
+set_color_profile_slot( 23, 3, 41, 122, 54 ); //ClothesShade
+set_color_profile_slot( 23, 4, 255, 221, 71 ); //Hair
+set_color_profile_slot( 23, 5, 30, 66, 36 ); //Pants
+set_color_profile_slot( 23, 6, 61, 181, 85 ); //Shoes
+set_color_profile_slot( 23, 7, 61, 181, 85 ); //Frog
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

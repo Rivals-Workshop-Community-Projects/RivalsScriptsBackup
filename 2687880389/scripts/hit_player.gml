@@ -30,6 +30,7 @@ switch (my_hitboxID.attack) {
     case AT_FSTRONG :
     case AT_UTHROW :
     case AT_USTRONG :
+    case 49 : // Final Smash
     //case AT_DSPECIAL :
     case AT_DATTACK :
         blast_attack = true;

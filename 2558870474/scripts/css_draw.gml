@@ -3,6 +3,9 @@
 //Trying something different for CSS draw to learn
 //more of GML dialect like Switch and For statements
 
+// idk how you do this shit man
+
+
 //Timer for Fading out text
 image_alpha = max(image_alpha - 0.1, 0);
 image_speed = 0;
@@ -19,6 +22,7 @@ var name = " ";
 
 var ColorPrev = [0, 0, 0];
 var ColorNext = [0, 0, 0];
+
 var soundtime = 0;
 
 //path_scale = 0;
@@ -32,6 +36,19 @@ var soundtime = 0;
 //		var cPage = 2;
 //	break;
 //}
+
+/*
+if "something" not in self and color == 0{
+	sound_play(sound_get("sfx_charge1"));
+	print_debug("TEST")
+	something = 0;
+}*/
+
+var charuuid = string(sprite_get("idle"));
+if ("css_char" not in self || css_char != charuuid) {
+    css_char = charuuid;
+    sound_play(sound_get("sfx_charge1"));
+}
 
 // Updating image_alpha when a new color is selected
 if (color <= 16){

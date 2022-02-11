@@ -12,6 +12,27 @@ if (free){
 	sleep_kirby_hat_offset_y = -4; //
 }
 
+// intro animation
+
+if (get_gameplay_time() == 2) {
+	with(oPlayer) {
+        if url == 2432114154 {
+			other.nothanks = true;
+        }
+    }
+}
+
+if (nothanks == true) {
+	
+	if (get_gameplay_time() == 4) {
+		set_attack(AT_NTHROW);
+	}
+	
+	if (get_gameplay_time() < 127) {
+		can_move = false;
+	}
+}
+
 
 // munophone touch support
 	muno_event_type = 1;

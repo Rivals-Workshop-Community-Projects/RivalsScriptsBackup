@@ -203,7 +203,7 @@ if attack == AT_NSPECIAL and place_meeting(x, y, obj_article1)
   //print_debug("Rune collision detected.")
   if (hbox_num == 1 or hbox_num == 2 or hbox_num == 3 or hbox_num == 6)
     {
-    hitrune = instance_place(x, y, obj_article1)
+    hitrune = instance_place(x, y, obj_article1);
 
     //print_debug("Projectile valid.")
 
@@ -277,12 +277,19 @@ if attack == AT_NSPECIAL and place_meeting(x, y, obj_article1)
           length = 180;
           through_platforms = 180;
           window_timer = 0;
+          // Resetting the Hitbox
+          for(var i = 0; i < 5; i++;){
+            can_hit[i] = true;
+          }
           }
         else //If it's not going to a player, it needs to last forever so it gets to the next rune.
           {
           length = 999;
           through_platforms = 999;
           window_timer = 0;
+          for(var i = 0; i < 5; i++;){
+            can_hit[i] = true;
+          }
           }
 
         //The code for moving to the target.

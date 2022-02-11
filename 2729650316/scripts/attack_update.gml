@@ -132,7 +132,11 @@ if (attack == AT_USTRONG) {
         set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
     }
     if(window == 3)
+    {
+        if(!has_hit && window_timer > 6)
+        {   can_move = false; hsp *= 0.95; }
         set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 3);
+    }
     //Grabbed part
     if(instance_exists(grabbed_player_obj))
     {
@@ -145,6 +149,7 @@ if (attack == AT_USTRONG) {
             {
                 hitstop = 4;
                 hitpause = true;
+                fall_through = true;
             }
             //if this is the first frame of a window, store the grabbed player's relative position.
             if (window_timer <= 1) {

@@ -69,6 +69,8 @@ if ((my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_FSTRONG || my_
             hit_player_obj.x = lerp(hit_player_obj.x,x+20*spr_dir,0.5)
             hit_player_obj.y = lerp(hit_player_obj.y,y-5,0.5)
             set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 5);
+            window = 3;
+            window_timer = 5;
         }
 		
 		//if this attack hasn't grabbed a player yet, grab the player we just hit.
@@ -87,7 +89,7 @@ if(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 2)
 {
     sound_play(asset_get("sfx_boss_fireball_land"),false,noone,1,1.4);
     if(get_player_damage(hit_player_obj.player) > 70)
-        sound_play(sound_get("crowd_cheer"), false, noone, 1.5, 1)
+        sound_play(sound_get("crowd_cheer"), false, noone, 1, 1)
     hit_player_obj.x = lerp(hit_player_obj.x,x+20*spr_dir,1)
     hit_player_obj.y = lerp(hit_player_obj.y,y,1)
     crowdHype ++;
@@ -97,7 +99,7 @@ if(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 2)
     sound_play(sound_get("crunch"),false, noone, 0.6, 1.1);
     sound_play(asset_get("sfx_boss_fireball_land"),false,noone,2,1.2);
     if(get_player_damage(hit_player_obj.player) > 70)
-        sound_play(sound_get("crowd_cheer"), false, noone, 1.5, 1)
+        sound_play(sound_get("crowd_cheer"), false, noone, 1, 1)
     shake_camera( 20, 10)
     hit_player_obj.x = lerp(hit_player_obj.x,x,1)
     hit_player_obj.y = lerp(hit_player_obj.y,y-40,1)
@@ -109,7 +111,7 @@ if(my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 2)
 {
     sound_play(asset_get("sfx_boss_fireball_land"),false,noone,2,1.5);
     if(get_player_damage(hit_player_obj.player) > 90)
-        sound_play(sound_get("crowd_cheer"), false, noone, 1.5, 1)
+        sound_play(sound_get("crowd_cheer"), false, noone, 1, 1)
     hit_player_obj.x = lerp(hit_player_obj.x,x,1)
     hit_player_obj.y = lerp(hit_player_obj.y,y-20,1)
     crowdHype ++;

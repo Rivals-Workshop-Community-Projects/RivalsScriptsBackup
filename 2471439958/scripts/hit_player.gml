@@ -41,9 +41,9 @@ if (my_hitboxID.attack == AT_UAIR && window == 2 && hit_player_obj.hitstun > 0) 
 
 //FAIR TEST
 
-if (my_hitboxID.attack == AT_FAIR && window == 2)
-{
-     has_fair_hit = true;
+if (my_hitboxID.attack == AT_DSTRONG && window == 5){
+    hit_player_obj.x = x + spr_dir * 15
+    hit_player_obj.y = y + -10
 }
 
 //ICE MARK

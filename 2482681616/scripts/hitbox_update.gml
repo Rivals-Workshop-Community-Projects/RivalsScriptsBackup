@@ -30,7 +30,7 @@ if (attack == AT_NSPECIAL)
     if (hitbox_timer > 14) {
         img_spd = 0.1;
         
-        if (floor(image_index) >= image_number) {
+        if (floor(image_index) >= image_number - 1) {
             instance_destroy();
             exit;
         }

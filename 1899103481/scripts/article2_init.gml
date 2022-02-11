@@ -1,7 +1,10 @@
 // init = 0;
 lava_splosh = noone;
 sprite_index = sprite_get("dspecial_turret");
-image_speed = 0;
+// image_speed = 0; // image_speed causes desyncs :(
+anim_speed_idle = 0;
+anim_speed_active = 1/3; // 1/2;
+state_timer = 0;
 
 can_be_grounded = true;
 ignores_walls = true;

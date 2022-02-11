@@ -82,7 +82,7 @@ if (attack == AT_USPECIAL){
           	hsp /= 1.1
           } else {
           	if vsp > -6  {
-          	 vsp -= 1.8
+          	 vsp -= 2
           	}
           }
           
@@ -93,7 +93,7 @@ if (attack == AT_USPECIAL){
       if jettime > 45 && (down_down or !free or vsp > 4) {
       	sound_play(asset_get("sfx_ell_eject"),false,noone,0.8,1.15); 
       	if vsp < 6 && down_down {
-       		vsp = 6
+       		vsp = 10
        	}
        	set_state (PS_PRATFALL)
        	

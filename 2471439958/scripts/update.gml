@@ -56,28 +56,29 @@ if (attack == AT_NSPECIAL)
 	//move_cooldown[AT_NSPECIAL] = 5;						//cooldown  por ahora desactivado
 }
 
+
 if uspec_meter <= 0{
 	uspec_meter = 0;
 }
-if (uspec_meter < 1){
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -1.3);
+if (attack == AT_USPECIAL) && (uspec_meter == 0){
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -1);
 	set_num_hitboxes(AT_USPECIAL, 0);
-	set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 16);
 }
 if (uspec_meter > 1) && fire == 1{
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.6);
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3);
 	set_num_hitboxes(AT_USPECIAL, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
 }if (uspec_meter > 1)&& ice == 1{
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3.6);
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -4);
 	set_num_hitboxes(AT_USPECIAL, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
 }if (uspec_meter > 1)&& thunder == 1{
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.6);
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3);
 	set_num_hitboxes(AT_USPECIAL, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
 }if (uspec_meter > 1)&& pistols == 1{
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2);
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.5);
 	set_num_hitboxes(AT_USPECIAL, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
 }
@@ -189,7 +190,6 @@ if (attack == AT_DSPECIAL){
 
 if (pistols == 1){
 
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2);
 	
 	set_hitbox_value(AT_USPECIAL, 1, HG_EFFECT, 0);
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 1);
@@ -314,7 +314,6 @@ if (ice == 1){
 	set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, .9);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("bulletI"));
 	
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3.6);
 	
 	set_hitbox_value(AT_USPECIAL, 1, HG_EFFECT, 0);
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 2);
@@ -420,7 +419,6 @@ if thunder == 1{
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_uair"));
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tesla"));	
 	
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.6);
 	
 	set_hitbox_value(AT_USPECIAL, 1, HG_EFFECT, 11);
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 1);
@@ -548,8 +546,7 @@ if fire == 1{
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("bulletF"));
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 3);	
 	set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, .5);
-	
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.6);
+
 	
 	set_hitbox_value(AT_USPECIAL, 1, HG_EFFECT, 1);
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 0);
@@ -647,8 +644,7 @@ if genesis == 1{
 	}
 }
 
-
-if (taunt_pressed){
+if (taunt_pressed) && switcher == 1{
 	if down_down && (element_change == 5){
 	fire = 0
 	ice = 0
@@ -683,19 +679,19 @@ if (taunt_pressed){
 		}
 	}
 	if (element_change == 6){
-		if fire = 1{
+		if up_down && fire = 1{
 		spawn_hit_fx( x + 2*spr_dir, y + -25, switcherF);
 		sound_play(sound_get("element_switcher"));
 		}
-		if ice = 1{
+		if right_down && ice = 1{
 		spawn_hit_fx( x + 2*spr_dir, y + -25, switcherI);
 		sound_play(sound_get("element_switcher"));
 		}
-		if thunder = 1{
+		if left_down && thunder = 1{
 		spawn_hit_fx( x + 2*spr_dir, y + -25, switcherP);
 		sound_play(sound_get("element_switcher"));
 		}
-		if pistols = 1{
+		if down_down && pistols = 1{
 		spawn_hit_fx( x + 2*spr_dir, y + -25, switcherR);
 		sound_play(sound_get("element_switcher"));
 		}
@@ -727,11 +723,11 @@ if (attack == 49){
 
 //SERVANT OF THE CRYSTAL
 
-//if get_gameplay_time() <= 120 && machina == 0 and taunt_pressed && get_player_color(player) == 12{
-	//machina = 1
-	//sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
+if get_gameplay_time() <= 120 && switcher == 0 and shield_pressed{
+	switcher = 1
+	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
 	//sound_play(sound_get("machina_intro"));
-//}
+}
 
 //if get_player_color(player) == 12{
 	//set_victory_theme(sound_get("machina_victory"));

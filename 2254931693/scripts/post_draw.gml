@@ -11,6 +11,3 @@ if (has_rune("L") && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && wi
         draw_sprite_ext(sprite_get("cyclone_rune_front"), image_index, x + 4 * spr_dir, y + 2, 1 * spr_dir, 1, 0, c_white, 1)
 }
 
-
-	muno_event_type = 4;
-	user_event(14);

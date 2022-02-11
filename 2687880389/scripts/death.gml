@@ -5,7 +5,6 @@ fuel_recovery_active = true;
 
 afterimage_countdown = 0;
 
-sound_stop(current_laser_charge_sound);
 sound_stop(engine_revving_up_sound);
 sound_stop(current_effect_sound);
 sound_stop(current_rocket_sound);

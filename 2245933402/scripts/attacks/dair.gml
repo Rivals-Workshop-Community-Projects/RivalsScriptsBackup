@@ -6,7 +6,7 @@ set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("stand_box"));
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
@@ -39,7 +39,7 @@ set_window_value(AT_DAIR, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 0);
+set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 set_num_hitboxes(AT_DAIR,2);

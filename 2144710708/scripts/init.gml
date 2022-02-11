@@ -944,3 +944,10 @@ Namco_Taunt_Sound = sound_get("vineboom")
 
 // pit support
 user_event(7);
+
+// bailey support
+kinniku_front = sprite_get("owen_kinniku_front");
+kinniku_behind = sprite_get("owen_kinniku_behind");
+
+// "support"
+nothanks = false;

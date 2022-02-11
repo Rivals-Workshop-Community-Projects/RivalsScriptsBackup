@@ -71,6 +71,8 @@ if(state == PS_HITSTUN || state == PS_WALL_JUMP || state == PS_RESPAWN || !free)
     // uspecial_timer = 1;
 }
 
+state_timer_prev = state_timer;
+
 #define can_lava_jump()
 	if (article_3 != noone){
 		if (free 

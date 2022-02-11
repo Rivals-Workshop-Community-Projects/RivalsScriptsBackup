@@ -74,5 +74,5 @@ set_hitbox_value(AT_UTHROW, 1, HG_HITPAUSE_SCALING, 0.9); // 1.1
 //set_hitbox_value(AT_UTHROW, 1, HG_VISUAL_EFFECT, 1); // no visual effect
 set_hitbox_value(AT_UTHROW, 1, HG_VISUAL_EFFECT, blast_hit_effect);
 //set_hitbox_value(AT_UTHROW, 1, HG_IGNORES_PROJECTILES, 0);
-//set_hitbox_value(AT_UTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
+set_hitbox_value(AT_UTHROW, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_UTHROW, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));

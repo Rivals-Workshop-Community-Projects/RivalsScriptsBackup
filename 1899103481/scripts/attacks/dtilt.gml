@@ -22,7 +22,7 @@ set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 // set_window_value(AT_DTILT, 3, AG_WINDOW_HSPEED_TYPE, 2);
 // set_window_value(AT_DTILT, 3, AG_WINDOW_VSPEED, -9);
 // set_window_value(AT_DTILT, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 6);
+set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DTILT,1);
 

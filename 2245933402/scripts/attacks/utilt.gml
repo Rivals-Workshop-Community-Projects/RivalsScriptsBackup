@@ -3,7 +3,7 @@ set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("stand_box"));
 
 set_window_value(AT_UTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);

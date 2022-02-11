@@ -218,3 +218,7 @@ sprite_change_offset("owen_pacman", 16, 16);
 
 //
 sprite_change_offset("uspecial_proj_new", 16, 0);
+
+// bailey stuff
+sprite_change_offset("owen_kinniku_behind", 140, 190);
+sprite_change_offset("owen_kinniku_front", 140, 190);

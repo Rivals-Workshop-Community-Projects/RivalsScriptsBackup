@@ -52,9 +52,10 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 64);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 96);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 96);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 60); // test with platforms etc
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -32); // test with platforms etc
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 70);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 64);
 // set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10);

@@ -6,7 +6,7 @@ set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
@@ -64,7 +64,7 @@ set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 140);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -32);

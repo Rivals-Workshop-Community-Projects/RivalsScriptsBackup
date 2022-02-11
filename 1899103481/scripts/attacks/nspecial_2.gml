@@ -13,6 +13,8 @@ set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 4);
 // set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .11);
+// set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
+// set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX, );
 
 // SINGLE HOLD FRAME (MAGNET)
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_TYPE, 1);

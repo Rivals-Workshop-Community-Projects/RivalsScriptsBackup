@@ -1,4 +1,5 @@
 // print("state: " + string(state));
+state_timer++;
 
 if (lifespan > 0){
     lifespan--;
@@ -13,13 +14,14 @@ if (lifespan > 0){
 
 if (lifespan < 1 && state == 0){
     sprite_index = sprite_get("lava_platform_exploded");
-    image_speed = 0.5;
+    image_index = 0;
+    state_timer = 0;
     state = 1;
 }
 
 switch(state){
     case -1:
-        image_speed = 0.5;
+        image_index = state_timer * anim_speed_creating;
         // print("state = -1 ")
         if (image_index > 3 && !hitbox_created){
             // print("create pillar hitbox")
@@ -33,8 +35,9 @@ switch(state){
          break;
     
     case 1:
+    image_index = state_timer * anim_speed_creating;
         if (image_index == 0){
-           
+            
             sound_play(asset_get("sfx_ell_big_missile_ground"));
         } else if(image_index > image_number - 1){
             instance_destroy();
@@ -43,10 +46,8 @@ switch(state){
         break;
     
     default: // 0 = active
-        image_alpha = 1;
         sprite_index = sprite_get("lava_platform");
-        // image_index = 0;
-        image_speed = 1/3;
+        image_index = state_timer * anim_speed_active;
 }
 
 // own hitboxes remove wall? should this stay or not?

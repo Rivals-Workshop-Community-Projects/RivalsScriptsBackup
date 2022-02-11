@@ -73,7 +73,7 @@ sprite_change_offset("bouncehurt", 64, 110);
 sprite_change_offset("spinhurt", 64, 110);
 
 sprite_change_offset("jab", 74, 104);
-sprite_change_offset("dattack", 74, 94);
+sprite_change_offset("dattack", 54, 94);
 sprite_change_offset("ftilt", 54, 126);
 sprite_change_offset("dtilt", 80, 94);
 sprite_change_offset("utilt", 55, 126);

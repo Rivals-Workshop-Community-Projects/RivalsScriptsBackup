@@ -1,3 +1,5 @@
+// state_timer = 0;
+
 if (attack == AT_USTRONG){
 	isBoosted = false;
 	

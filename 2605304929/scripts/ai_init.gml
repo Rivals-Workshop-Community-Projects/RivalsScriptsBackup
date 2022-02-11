@@ -5,6 +5,7 @@ The arrays can be any size. Each entry in the array has the same probability of 
 ai_update.gml – called every frame for a CPU version of the character. Used for special cases like recovery and complex special moves. Use ai_target to reference the player object the CPU is currently targeting. Use ai_recovering to check if the CPU is recovering or not. Use temp_level to reference the CPU’s difficulty level (1-9).
 */
 /* Simple AI */
+
 far_down_attacks[0] = AT_DSPECIAL;
 
 far_side_attacks[0] = AT_DSPECIAL;
@@ -51,11 +52,19 @@ mid_up_attacks[0] = AT_USTRONG;
 far_up_attacks[0] = AT_USPECIAL;
 
 neutral_attacks[0] = AT_JAB;
-*/
-/* Custom AI
+
+
+// Custom AI
 
 ai_current_mode = 0;
+ai_current_mode_timer = 0;
+ai_attack_cooldown = 0;
+ai_sequence = 1;
+ai_sequence_timer = 0;
+ai_neutral_route_selection = 0;
 
+attack_that_hit = 0;
+target_percentage = 0;
 /*
 SD_X_POS	The x position of the left side of the main stage. Use room_width minus this value to get the x position of the right side of the stage
 SD_Y_POS	The y position of the top of the main stage
@@ -65,7 +74,7 @@ SD_SIDE_BLASTZONE	The distance between the left side of the main stage and the l
 SD_WIDTH	The width of the main stage
 SD_ID	The unique ID for the stage. Returns -1 if the custom stage is not yet published to the workshop
 */
-/*
+
 // Stage Variables 
 ai_stage_x = get_stage_data( SD_X_POS );
 ai_stage_y = get_stage_data( SD_Y_POS );
@@ -73,4 +82,3 @@ ai_stage_top_blastzone = get_stage_data( SD_TOP_BLASTZONE );
 ai_stage_bottom_blastzone = get_stage_data( SD_BOTTOM_BLASTZONE );
 ai_stage_side_blastzone = get_stage_data( SD_SIDE_BLASTZONE );
 ai_stage_width = get_stage_data( SD_WIDTH );
-*/

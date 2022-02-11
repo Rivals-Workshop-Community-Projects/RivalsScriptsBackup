@@ -401,7 +401,7 @@ switch(attack){
                 }
             }
         }
-        if(window == 1 && shield_pressed && !upcancel){
+        if(window == 1 && shield_pressed && !upcancel && !swallowups){
             if(armorpoints > 0){
                 super_armor = true;
                 armorloss = true;
@@ -413,6 +413,8 @@ switch(attack){
             window = 3;
             window_timer = 0;
             vsp = -10;
+            clear_button_buffer(PC_SHIELD_PRESSED);
+            clear_button_buffer(PC_SPECIAL_PRESSED);
         }
         if(window == 3 && uppratt && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && free){
             state = PS_PRATFALL;
@@ -513,8 +515,42 @@ if(get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && super_armor
     super_armor = false;
 }
 if(swallowarmor){
-    if(window >= 2){
-        super_armor = true;
+    switch(attack){
+        case AT_NAIR:
+            if(window == 2){
+                super_armor = true;
+            }
+        break;
+        case AT_FAIR:
+            if(window == 2){
+                super_armor = true;
+            }
+        break;
+        case AT_UAIR:
+            if(window == 2){
+                super_armor = true;
+            }
+        break;
+        case AT_DAIR:
+            if(window >= 2 && window < 4){
+                super_armor = true;
+            }
+        break;
+        case AT_FSTRONG:
+            if(window == 3){
+                super_armor = true;
+            }
+        break;
+        case AT_USTRONG:
+            if(window == 3){
+                super_armor = true;
+            }
+        break;
+        case AT_DSTRONG:
+            if(window >= 3){
+                super_armor = true;
+            }
+        break;
     }
 }
 prev_attack = attack;

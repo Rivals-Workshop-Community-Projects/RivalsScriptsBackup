@@ -137,8 +137,8 @@ nspecLeaderObj = noone;
 fspecActive = false;
 fspecDir = 1;
 fspecDist = 0;
-fspecMaxDist = 250;
-fspecSpeed = 4;
+fspecMaxDist = 200;
+fspecSpeed = 5;
 fspecHoldTime = 80;
 fspecHoldTimer = 0;
 fspecGrabbedObj = noone;
@@ -157,12 +157,17 @@ boost_effect = hit_fx_create(sprite_get("boostFx"), 20);
 uspecTarget = false;
 uspecAngle = 90;
 uspecBan = false;
+uspecGround = true;
+uspecHeld = true;
 
 // jab lag
 jabLag = 0;
 
 // ustrong
 ustrongLoop = 0;
+
+// intro
+introTimer = -4;
 
 //topcustom
 topcustom = 0;

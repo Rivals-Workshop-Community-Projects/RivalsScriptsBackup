@@ -179,7 +179,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     	}
     }
     
-    if nearbyhitbox != noone && type == 1 && hitpause != 1.1412 && other.hitbox_timer > 0{
+    if nearbyhitbox != noone && type == 1 && hitpause != 1.1412 && other.hitbox_timer > 0 {
 			
           with other {
           	enemies = 0

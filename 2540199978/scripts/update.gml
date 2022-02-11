@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 9;
+	var noOfPatches = 11;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -74,7 +74,7 @@ transcounter = clamp((((get_player_color(player) == 6) && (state==PS_SPAWN||(att
 // uspecial
 if (!free || state == PS_WALL_JUMP) uspecBan = false;
 if (!free) grabDjump = true;
-if (uspecBan) move_cooldown[AT_USPECIAL] = 2;
+if (uspecBan && move_cooldown[AT_USPECIAL] < 2) move_cooldown[AT_USPECIAL] = 2;
 if (state == PS_PRATFALL) can_fast_fall = true;
 
 // fspecial

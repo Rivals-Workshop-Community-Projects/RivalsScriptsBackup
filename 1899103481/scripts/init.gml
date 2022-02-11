@@ -27,7 +27,10 @@ article_3_count = get_article_count("obj_article3");
 
 fx_waveland = hit_fx_create(sprite_get("waveland_fx"), 16);
 lava_platform_aim = hit_fx_create(sprite_get("lava_platform_aim"), 10);
+fx_round_blast = hit_fx_create(sprite_get("ball_explode"), 12);
 
+sound_already_played_this_frame = false;
+state_timer_prev = -1;
 
 jump_just_pressed = false; //previous frame had no jump input, but now it does
 jump_timer = 0; // number of frames jump input has been held

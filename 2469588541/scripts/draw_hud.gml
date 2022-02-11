@@ -1,7 +1,7 @@
 if ("practice" in self)
 {
 	// taunt menu
-	if (practice && !"temp_level" in self)
+	if (practice && (!variable_instance_exists(self, "temp_level") || temp_level==0))
 	{
 		draw_set_alpha(tutAlpha);
 		ResetText();
@@ -411,6 +411,11 @@ if ("practice" in self)
 						AddText("FSpec now doesnt have pratfall on hit");
 						AddText("");
 						AddText("Added Paint alt");
+						break;
+					case 22:
+						AddText("v1.21 - 4 Feb 2021");
+						AddText("");
+						AddText("Fixed Rollback temp_level bug");
 						break;
 				}
 				DrawTutorialBlock();

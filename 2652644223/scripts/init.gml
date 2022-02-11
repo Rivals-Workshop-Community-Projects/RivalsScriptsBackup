@@ -75,6 +75,8 @@ ncode2 = "Technology has far advanced our times.";
 ncode3 = "Too dangerous to be kept alive. Exterminate.";
 kinniku_behind = sprite_get("Kinniku_Behind");
 kinniku_front = sprite_get("Kinniku_Front");
+set_victory_bg(sprite_get("victory_bg"));
+set_victory_theme(sound_get("fduckyvic"));
 
 // intro
 introTimer = -4;

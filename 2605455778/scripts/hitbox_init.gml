@@ -8,3 +8,5 @@ prev_pos = player_id.x;
 if(attack == AT_DSPECIAL && hbox_num == 3){
     depth = 10;
 }
+
+swallowups = false;

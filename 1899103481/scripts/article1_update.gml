@@ -115,6 +115,7 @@ if (lifespan < 1
 		sound_play(asset_get("sfx_ori_charged_flame_release"));
 		sound_play(asset_get("sfx_ori_charged_flame_release"));
 	}
+	with(ball_box) {instance_destroy()}; // testttt new new
     instance_destroy();
     exit;
 }
@@ -293,7 +294,7 @@ if (projectile == 1) {
 	if hitted != noone && hitted != player_id && !hitted.invincible {
 		spawn_hit_fx(x, y, hit_fx_create(sprite_get("round"), 20));
 		if (!hitted.hitpause){
-			ball_box = create_hitbox(AT_NSPECIAL,1,hitted.x,hitted.y);
+			ball_box = create_hitbox(AT_NSPECIAL,1,hitted.x,hitted.y); // need to keep track of this instance for referencing it
 		}
 		if hitted.state == PS_PARRY && hitted.state_timer <= hitted.dodge_active_frames+hitted.dodge_startup_frames {
 			hsp = 9*-sign(hsp);
@@ -312,7 +313,13 @@ if (projectile == 1) {
 				ball_timer = 30;
 				player_id.magnet = 30;
 		}
+	} else if (hitted != noone && hitted.invincible){
+		print("haha plot armor")
+		with (ball_box) {
+			instance_destroy();
+		}
 	}
+	
 	//opponent has hit it
 } else if (projectile == 2){	
 	spawn_hit_fx(x - 4 + random_func(0, 8, true), y - 4 + random_func(1, 8, true), hit_fx_create(sprite_get("nspecial_proj_trace"), 80));
@@ -351,3 +358,4 @@ if (projectile == 1) {
 } else{
 	sprite_index = sprite_get("nspecial_proj");
 }
+

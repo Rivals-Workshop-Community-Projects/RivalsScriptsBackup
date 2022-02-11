@@ -1,7 +1,6 @@
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
-set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_COOLDOWN, 48);
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 8);
@@ -23,7 +22,6 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
-set_window_value(AT_FSPECIAL, 4, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 1);
 

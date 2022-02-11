@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 3, 13 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31);
+set_num_palettes(32);
 
 // Old Ducky
 set_color_profile_slot( 1, 0, 255, 255, 0 ); //Feathers
@@ -335,6 +335,16 @@ set_color_profile_slot( 30, 4, 255, 255, 255 ); //Gloves/Light
 set_color_profile_slot( 30, 5, 189, 0, 0 ); //Eyes
 set_color_profile_slot( 30, 6, 56, 56, 56 ); //Outfit 2 / Rest
 set_color_profile_slot( 30, 7, 242, 194, 208 ); //Outfit 1/ Legs
+
+// Miku
+set_color_profile_slot( 31, 0, 238, 252, 249 ); //Feathers
+set_color_profile_slot( 31, 1, 47, 245, 222 ); //Hair
+set_color_profile_slot( 31, 2, 184, 40, 155 ); //Scarf
+set_color_profile_slot( 31, 3, 238, 252, 249 ); //Shoulder
+set_color_profile_slot( 31, 4, 0, 219, 172 ); //Gloves/Light
+set_color_profile_slot( 31, 5, 30, 120, 156 ); //Eyes
+set_color_profile_slot( 31, 6, 59, 87, 82 ); //Outfit 2 / Rest
+set_color_profile_slot( 31, 7, 156, 235, 255 ); //Outfit 1/ Legs
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

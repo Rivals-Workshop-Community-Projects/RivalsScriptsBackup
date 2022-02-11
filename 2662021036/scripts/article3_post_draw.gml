@@ -6,11 +6,11 @@
 if ((get_local_setting(SET_HUD_SIZE) > 0 || get_local_setting(SET_HUD_NAMES) > 0)){
     
     if (state = PS_IDLE){
-draw_sprite_ext( sprite_get("_pho_cooldown_arrow"), 0, x - 4, y - 42, 1, 1, 0, player_id.indicator_color, 1 );
+draw_sprite_ext( sprite_get("arrow"), 0, x - 4, y - 42, 1, 1, 0, player_id.indicator_color, 1 );
 }
 
     if (state = PS_JUMPSQUAT || state = PS_CROUCH){
-draw_sprite_ext( sprite_get("_pho_cooldown_arrow"), 0, x - 4, y - 58, 1, 1, 0, player_id.indicator_color, 1 );
+draw_sprite_ext( sprite_get("arrow"), 0, x - 4, y - 58, 1, 1, 0, player_id.indicator_color, 1 );
 }
 
 

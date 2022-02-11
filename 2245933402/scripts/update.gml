@@ -260,29 +260,26 @@ if ostyle == 3{
 	set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 	set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 	
-	set_attack_value(AT_BAIR, AG_LANDING_LAG, 12);
-	set_window_value(AT_BAIR, 4, AG_WINDOW_LENGTH, 14);
+	set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
 	
-	set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 12);
+
 	
-	set_attack_value(AT_NAIR, AG_LANDING_LAG, 10);
-	set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 16);
+	set_attack_value(AT_NAIR, AG_LANDING_LAG, 8);
+
 	
-	set_attack_value(AT_DAIR, AG_LANDING_LAG, 12);
-	set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 18);
+	set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
+
 	
 } else {
 	
-	set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
-	set_window_value(AT_BAIR, 4, AG_WINDOW_LENGTH, 10);
+	set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
 	
-	set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 8);
 	
 	set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
-	set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 12);
+
 	
-	set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
-	set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 15);
+	set_attack_value(AT_DAIR, AG_LANDING_LAG, 6);
+
 
 	
 } 

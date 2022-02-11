@@ -46,19 +46,19 @@ draw_debug_text(temp_x + 0, temp_y - 55,"Spl input:" + string(special_pressed));
 draw_debug_text(temp_x + 0, temp_y - 70,"Stk input:" + string(strong_down)); //special
 draw_debug_text(temp_x + 0, temp_y - 85,"Sld input:" + string(shield_pressed)); //special
 
-draw_debug_text(temp_x + 110, temp_y - 10,"Jump input:" + string(jump_pressed)); //special
-draw_debug_text(temp_x + 110, temp_y - 25,"Up input:" + string(up_pressed));
-draw_debug_text(temp_x + 110, temp_y - 40,"Down input:" + string(down_pressed));
-draw_debug_text(temp_x + 110, temp_y - 55,"Right input:" + string(right_pressed));
-draw_debug_text(temp_x + 110, temp_y - 70,"Left input:" + string(left_pressed));
+draw_debug_text(temp_x + 110, temp_y - 10,"target_relative_x:" + string(target_relative_x)); //special
+draw_debug_text(temp_x + 110, temp_y - 25,"target_relative_y:" + string(target_relative_y));
+draw_debug_text(temp_x + 110, temp_y - 40,"ai_facing_target:" + string(ai_facing_target));
+draw_debug_text(temp_x + 110, temp_y - 55,":" + string(0));
+draw_debug_text(temp_x + 110, temp_y - 70,":" + string(0));
 draw_debug_text(temp_x + 110, temp_y - 85,"Joy Direction:" + string(joy_dir));
 
-draw_debug_text(temp_x + 220, temp_y - 10,"target_relative_x:" + string(target_relative_x)); //special
-draw_debug_text(temp_x + 220, temp_y - 25,"target_relative_y:" + string(target_relative_y));
-draw_debug_text(temp_x + 220, temp_y - 40,"ai_facing_target:" + string(ai_facing_target));
-draw_debug_text(temp_x + 220, temp_y - 55,"ai_above_target:" + string(ai_above_target));
-draw_debug_text(temp_x + 220, temp_y - 70,"ai_current_mode:" + string(ai_current_mode));
-draw_debug_text(temp_x + 220, temp_y - 85,"null:" + string(0));
+draw_debug_text(temp_x + 270, temp_y - 10,":" + string(0)); //special
+draw_debug_text(temp_x + 270, temp_y - 25,":" + string(0));
+draw_debug_text(temp_x + 270, temp_y - 40,"ai_neutral_route:" + string(ai_neutral_route_selection));
+draw_debug_text(temp_x + 270, temp_y - 55,"ai_sequence_timer:" + string(ai_sequence_timer));
+draw_debug_text(temp_x + 270, temp_y - 70,"ai_sequence:" + string(ai_sequence));
+draw_debug_text(temp_x + 270, temp_y - 85,"ai_current_mode:" + string(ai_current_mode));
 
 //#endregion
 */

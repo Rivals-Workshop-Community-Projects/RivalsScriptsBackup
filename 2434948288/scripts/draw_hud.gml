@@ -1,7 +1,7 @@
 if ("practice" in self)
 {
 	// taunt menu
-	if (practice && !"temp_level" in self)
+	if (practice && (!variable_instance_exists(self, "temp_level") || temp_level==0))
 	{
 		draw_set_alpha(tutAlpha);
 		ResetText();
@@ -172,6 +172,11 @@ if ("practice" in self)
 						AddText("(If you think you cant recover, try USpec->AirdodgeCancel->DAir->TapUSpec->HeldUSpec)");
 						AddText("");
 						AddText("Added Greed alt");
+						break;
+					case 10:
+						AddText("v1.10 - 4 Feb 2021");
+						AddText("");
+						AddText("Fixed Rollback temp_level bug");
 						break;
 				}
 				DrawTutorialBlock();

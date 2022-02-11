@@ -15,7 +15,7 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
     	  && was_parried == false
-	  && hit_player_obj.clone == false) {
+	  && hit_player_obj.clone == false && !hit_player_obj.super_armor && hit_player_obj.soft_armor = 0 && !hit_player_obj.invincible) {
 		
 		//transition to the 'throw' part of the attack.
 		destroy_hitboxes();
@@ -33,4 +33,18 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 			if (new_grab_distance < old_grab_distance) { grabbed_player_obj = hit_player_obj; }
 		}
 	}
+}
+
+//Hitstop changes while in Slow Start to be a little less.
+if (slowstart_state == SLOWSTART_STATE_ON) {
+    if hitstop >= 5 {
+        hitstop -= 3
+        hit_player_obj.hitstop -= 3
+    }
+
+     if hitstop >= 10 {
+        hitstop -= 3
+        hit_player_obj.hitstop -= 3
+    }
+
 }

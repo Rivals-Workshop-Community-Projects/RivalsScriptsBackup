@@ -1,6 +1,10 @@
 /// ALL THE RUNE BS IN HERE
 
-
+if get_gameplay_time() < 30 {
+	draw_y = 999
+} else if get_gameplay_time() == 60 {
+	draw_y = 0
+}
 
 ///
 ///rune A type="A"

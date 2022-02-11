@@ -1,11 +1,19 @@
 switch(state)
 {
-    //case PS_SPAWN:
-	//	if (state_timer % 5 == 0) introTimer++;
-	//	sprite_index = sprite_get(introTimer<19?"intro":"idle");
-	//	if (introTimer < 0) image_index = 0;
-	//	else if (introTimer < 19) image_index = introTimer;
-	//	break;
+    case PS_SPAWN:
+		if (state_timer % 5 == 0) introTimer++;
+		sprite_index = sprite_get(introTimer<17?"dspecial":"idle");
+		if (introTimer < 16)
+		{
+			image_index = (introTimer < 0)?1:(introTimer%4)+1;
+			draw_y = (cos(state_timer/16)-1)*8;
+		}
+		else if (introTimer < 17)
+		{
+			image_index = 0;
+			draw_y = 0;
+		}
+		break;
     //case PS_IDLE:
     //case PS_RESPAWN:
 	//	if (floor(state_timer*idle_anim_speed/6)%6 == 5)

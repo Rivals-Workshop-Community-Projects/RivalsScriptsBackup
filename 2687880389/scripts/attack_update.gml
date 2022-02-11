@@ -1,3 +1,20 @@
+// Alt-specific things
+// Have macros representing which alt is which for switch statements
+#macro codename_default_number     0
+#macro codename_mega_number        7
+#macro codename_metroid_number     8
+#macro codename_halo_number        9
+#macro codename_dva_number        10
+#macro codename_rob_number        11
+#macro codename_emerl_number      12
+#macro codename_aperture_number   13
+#macro codename_ironman_number    14
+#macro codename_cyborg_number     15
+#macro codename_mischeif_number   16
+#macro codename_ugh_number        17
+#macro codename_ea_number         20
+#macro codename_wireframe_number  21
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
@@ -18,127 +35,224 @@ if ((attack == AT_NSPECIAL)
     } else {
     	can_move = false;
     }
-
-    if (attack == AT_NSPECIAL) {
-    	if (window == 1) { // Allow changing directions during windup
-    		created_grab_hitbox = false;
-            if (left_down) {
-                if (spr_dir > 0) {
-                    // Turn around
-                    spr_dir *= -1;
-                }
-            } else if (right_down) {
-                if (spr_dir < 0){
-                    // Turn around
-                    spr_dir *= -1;
-                }
-            }
-    	} else if (window == 2) {
-    		if ((window_timer == 4) && !created_grab_hitbox) {
-    			grab_hitbox = create_hitbox(AT_NSPECIAL, 1, x, y);
-    			created_grab_hitbox = true;
-    		}
-    	} else if (holding_someone && (window == 3)) {
-        	vsp = 0;
-        	if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-	        	// Opponent was grabbed, enter holding position
-	            window = 6;
-	            window_timer = 0;
-        	}
-        } else if (window == 6) { // Holding, time to decide on a throw
-            // If a direction is pressed, do that throw
-            /*if (special_down) {
-            	// same as pressing forward
-                attack = AT_FTHROW;
-                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                window = 0;
-                window_timer = 0;
-            } else */if (up_down) {
-                attack = AT_UTHROW;
-                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                window = 0;
-                window_timer = 0;
-            } else if (down_down) {
-                attack = AT_DTHROW;
-                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                window = 0;
-                window_timer = 0;
-            } else if (left_down) {
-                if (spr_dir > 0) { // backward throw
-                    attack = AT_NTHROW;
-                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                    window = 0;
-                    window_timer = 0;
-                    // Turn around
-                    spr_dir *= -1;
-                } else { // forward throw
-                    attack = AT_FTHROW;
-                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                    window = 0;
-                    window_timer = 0;
-                }
-            } else if (right_down) {
-                if (spr_dir > 0) { // forward throw
-                    attack = AT_FTHROW;
-                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                    window = 0;
-                    window_timer = 0;
-                } else { // backward throw
-                    attack = AT_NTHROW;
-                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
-                    window = 0;
-                    window_timer = 0;
-                    // Turn around
-                    spr_dir *= -1;
-                }
-            } else {
-                // If hold expired, drop 'em ya butterfingers
-                if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-                    with (asset_get("oPlayer")) {
-                        if (RETROBLAST_HOLDER_ID == other.id) {
-                            RETROBLAST_HOLDER_ID = noone;
-                        }
+	var current_window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+    switch (attack) {
+        case AT_NSPECIAL :
+	        switch (window) {
+	        	case 1 : // Allow changing directions during windup
+			    	created_grab_hitbox = false;
+		            if (left_down) {
+		                if (spr_dir > 0) {
+		                    // Turn around
+		                    spr_dir *= -1;
+		                }
+		            } else if (right_down) {
+		                if (spr_dir < 0){
+		                    // Turn around
+		                    spr_dir *= -1;
+		                }
+		            }
+		        	break;
+	        	case 2 :
+		    		if ((window_timer == 4) && !created_grab_hitbox) {
+		    			grab_hitbox = create_hitbox(AT_NSPECIAL, 1, x, y);
+		    			created_grab_hitbox = true;
+		    		}
+		        	break;
+	        	case 3 :
+					if (holding_someone) {
+			        	vsp = 0;
+			        	if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+				        	// Opponent was grabbed, enter holding position
+				            window = 6;
+				            window_timer = 0;
+			        	}
+					}
+		        	break;
+	        	case 6 : // Holding, time to decide on a throw
+		            // If a direction is pressed, do that throw
+		            /*if (special_down) {
+		            	// same as pressing forward
+		                attack = AT_FTHROW;
+		                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		                window = 0;
+		                window_timer = 0;
+		            } else */if (up_down) {
+		                attack = AT_UTHROW;
+		                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		                window = 0;
+		                window_timer = 0;
+		            } else if (down_down) {
+		                attack = AT_DTHROW;
+		                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		                window = 0;
+		                window_timer = 0;
+		            } else if (left_down) {
+		                if (spr_dir > 0) { // backward throw
+		                    attack = AT_NTHROW;
+		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		                    window = 0;
+		                    window_timer = 0;
+		                    // Turn around
+		                    spr_dir *= -1;
+		                } else { // forward throw
+		                    attack = AT_FTHROW;
+		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		                    window = 0;
+		                    window_timer = 0;
+		                }
+		            } else if (right_down) {
+		                if (spr_dir > 0) { // forward throw
+		                    attack = AT_FTHROW;
+		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		                    window = 0;
+		                    window_timer = 0;
+		                } else { // backward throw
+		                    attack = AT_NTHROW;
+		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		                    window = 0;
+		                    window_timer = 0;
+		                    // Turn around
+		                    spr_dir *= -1;
+		                }
+		            } else {
+		                // If hold expired, drop 'em ya butterfingers
+		                if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+		                    with (asset_get("oPlayer")) {
+		                        if (RETROBLAST_HOLDER_ID == other.id) {
+		                            RETROBLAST_HOLDER_ID = noone;
+		                        }
+		                    }
+		                    holding_someone = false;
+		                    window = 7;
+		                    window_timer = 0;
+		                }
+		            }
+		        	break;
+	        	default :
+	        		break;
+	        }
+	        break;
+	        
+        case AT_NTHROW :
+    		off_edge = true; // don't slip off ledge
+    		var throw_at = ceil((current_window_length * 2) / 3);
+            switch (window) {
+                case 1 :
+                    if ((window_timer == 1) && !codename_mischeif_active) {
+                    	current_effect_sound = sound_play(asset_get("sfx_ell_drill_loop"),
+                    	                                		false, noone, 1, 0.6);
+                    } else if (window_timer == throw_at) {
+                    	//var shake_duration = current_window_length - throw_at + get_hitbox_value(attack, 1, HG_LIFETIME);
+        				//shake_camera(6, shake_duration);
+                    } else if (window_timer == (current_window_length - 1)) {
+                    	sound_stop(current_effect_sound);
+                    	current_effect_sound = sound_play(bthrow_sound_effect,
+                    	                                		false, noone, 1, codename_mischeif_active ? 1 : 0.8);
                     }
-                    holding_someone = false;
-                    window = 7;
-                    window_timer = 0;
-                }
+                    break;
+                case 2 :
+                    if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+			            let_everyone_go();
+			        }
+                	break;
+                default :
+                    break;
             }
-        }
-    } else if (attack == AT_NTHROW) {
-    	off_edge = true; // don't slip off ledge
-        // Oficially let go
-        if ((window == 2)
-            && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
-        {
-            let_everyone_go();
-        }
-    } else if (attack == AT_FTHROW) {
-    	off_edge = true; // don't slip off ledge
-        // Oficially let go
-        if ((window == 5) && (window_timer == 1)) {
-            let_everyone_go();
-        }
-    } else if (attack == AT_UTHROW) {
-        // Oficially let go
-        if ((window == 2)
-            && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
-        {
-            let_everyone_go();
-        }
-    } else if (attack == AT_DTHROW) {
-    	// Break out of loop on contact with the ground
-    	if ((window == 4) && (!free)) {
-    		window = 5
-    		window_timer = 0;
-    	}
-    	
-    	// Oficially let go
-        if ((window == 5)
-            && (window_timer == 1))
-        {
-            let_everyone_go();
-        }
+            break;
+            
+        case AT_FTHROW :
+    		off_edge = true; // don't slip off ledge
+            switch (window) {
+                case 1 :
+                	if ((window_timer == 1) && !codename_mischeif_active) {
+                    	current_effect_sound = sound_play(asset_get("sfx_ell_drill_loop"),
+                    	                                		false, noone, 1, 0.7);
+                    }
+                    break;
+                case 4 :
+                    if (window_timer == (current_window_length - 1)) {
+                    	sound_stop(current_effect_sound);
+                    	current_effect_sound = sound_play(fthrow_sound_effect,
+                    	                                		false, noone, 1, codename_mischeif_active ? 1 : 0.9);
+                    }
+                    break;
+                case 5 :
+                    if (window_timer == 1) {
+			        	//shake_camera(3, get_window_value(attack, window, AG_WINDOW_LENGTH));
+			            let_everyone_go();
+			        }
+                    break;
+                default :
+                    break;
+            }
+            break;
+            
+        case AT_UTHROW :
+            switch (window) {
+                case 1 :
+                    if (window_timer == 1) {
+						current_effect_sound = sound_play(takeoff_start_sound,
+																false, noone, 1, 1.3);
+                    }
+                    break;
+                case 2 :
+			        if (window_timer = 1) {
+			        	shake_camera(1, current_window_length / 4);
+			    	} else if (window_timer == current_window_length  / 4) {
+			        	shake_camera(1, current_window_length / 4);
+			    	} else if (window_timer == current_window_length  * 2 / 4) {
+			        	shake_camera(3, current_window_length / 4);
+			    	} else if (window_timer == current_window_length  * 3 / 4) {
+			        	shake_camera(4, current_window_length / 4);
+			    	} else if (window_timer == (current_window_length - 1)) {
+				        sound_stop(current_effect_sound);
+				        current_effect_sound = sound_play(laser_blast_sound,
+																false, noone, 1, 0.5);
+                    } else if (window_timer == current_window_length) {
+			            let_everyone_go();
+			        }
+                    break;
+                default :
+                    break;
+            }
+            break;
+            
+        case AT_DTHROW :
+            switch (window) {
+                case 1 :
+                	if (window_timer == 1) {
+						current_effect_sound = sound_play(asset_get("sfx_ell_drill_loop"),
+                    	                                		false, noone, 1, 0.5);
+                    }
+                    break;
+                case 2 :
+                	if (window_timer == 1) {
+						sound_stop(current_effect_sound);
+						current_effect_sound = sound_play(dthrow_sound_effect);
+                    }
+                    break;
+                case 4 :
+                	// Break out of loop on contact with the ground
+                	if (!free) {
+			    		window = 5
+			    		window_timer = 0;
+                	}
+                    break;
+                case 5 :
+                	if (window_timer == 0) {
+                		shake_camera(10, get_window_value(attack, window, AG_WINDOW_LENGTH));
+						sound_stop(current_effect_sound);
+                    } else if (window_timer == 1) {
+            			let_everyone_go();
+                    }
+                    break;
+                default :
+                    break;
+            }
+            break;
+        default :
+            break;
     }
 }
 
@@ -681,6 +795,86 @@ if (attack == AT_USTRONG) {
         sound_stop(current_effect_sound);
 	}
 }
+
+// Can hold taunt if you want
+if (attack == AT_TAUNT_2) {
+	if (window == 1) && (window_timer == 1) {
+		if (specific_taunt_transformation_required) {
+			selected_taunt_transformation = selected_player_color;
+		} else {
+			selected_taunt_transformation = random_func(0, highest_random_transformation_option - 1, true) + 1;
+		}
+	} else if ((window == 2)
+			   && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
+	{
+		var taunt_sound = sound_get("horn_transform");
+		switch (selected_taunt_transformation) {
+		    case codename_mega_number :
+		        taunt_sound = sound_get("horn_megaman");
+		        break;
+		    case codename_metroid_number :
+		        taunt_sound = sound_get("horn_samus");
+		        break;
+		    case codename_halo_number :
+		        taunt_sound = sound_get("horn_need_weapon");
+		        break;
+		    case codename_dva_number :
+		        taunt_sound = sound_get("horn_dva");
+		        break;
+		    case codename_rob_number :
+		        taunt_sound = sound_get("horn_rob");
+		        break;
+		    case codename_emerl_number :
+		        taunt_sound = sound_get("horn_emerl");
+		        break;
+		    case codename_aperture_number :
+		        taunt_sound = sound_get("horn_turret");
+		        break;
+		    case codename_ironman_number :
+		        taunt_sound = sound_get("horn_ironman");
+		        break;
+		    case codename_cyborg_number :
+		        taunt_sound = sound_get("horn_booyah");
+		        break;
+		    case codename_mischeif_number :
+		        taunt_sound = sound_get("horn_marina_yahoo");
+		        break;
+		    case codename_ugh_number :
+		        taunt_sound = sound_get("horn_ugh");
+		        break;
+			default :
+				break;
+		}
+		sound_play(taunt_sound);
+	} else if ((window == 5) && (!taunt_down)) {
+		window = 6;
+		window_timer = 0;
+	}
+}
+
+if (attack == 49) { // Final Smash
+	// Play sounds as needed
+	if ((window == 1) && (window_timer == 2)) {
+		layered_sound_1 = sound_play(takeoff_start_sound, false, noone, 1, 1.6);
+		layered_sound_2 = sound_play(takeoff_start_sound, false, noone, 1, 1.9);
+	} else if ((window == 2) && (window_timer == 1)) {
+		sound_stop(layered_sound_1);
+		sound_stop(layered_sound_2);
+		layered_sound_2 = sound_play(asset_get("sfx_clairen_uspecial_rise"), false, noone, 1, 0.8);
+	} else if ((window == 2) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+		layered_sound_1 = sound_play(laser_blast_sound, false, noone, 1, 1.1);
+		layered_sound_2 = sound_play(laser_blast_sound, false, noone, 1, 0.5);
+		layered_sound_3 = sound_play(asset_get("sfx_birdclap"), false, noone, 1, 1.1);
+		// Start the screen shake here
+		shake_camera(12, 13);
+	} else if ((window == 4) && (window_timer == 1)) {
+		layered_sound_3 = sound_play(asset_get("sfx_ell_steam_release"), false, noone, 1, 1.2);
+	} else if ((window == 4) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+		sound_stop(layered_sound_1);
+		sound_stop(layered_sound_2);
+	}
+}
+
 
 // Emulate the charge attack flashing
 smash_flash_timer++;

@@ -3,17 +3,12 @@
 //print_debug("Init Time setting is "+string(get_match_setting(SET_TIMER)));
 updated = 0;
 _init = 0;
-am_vers = "1.2";
-patch_notes = "AM Patch 1.2:
-- fixed a bug which caused all non-player 1 slots to not function
-- fixed Lucid Dream output - (Hello!)
-- multiplayer deaths should no longer cause a desync
-- fixed `hit_player_event` on_hit simulations crashing upon clash
-- walljump now only depletes on the first frame of PS_WALLJUMP
-- stage depths widened for vfx to render correctly for custom characters
-- fixed various guard article offsets
-- various camera improvements
-- guard blood rage can be satisfied with a sacrifice of a stock now";
+am_vers = "1.3";
+patch_notes = "AM Patch 1.3:
+- works with the 4 new character patch!
+- it's really laggy at the moment however
+- recommended to play on the previous patch
+- (can access patches via steam betas)";
 
 //SPEEDRUN STRATS
 // speedrun_timer = 0; //Timers kept in follow_player

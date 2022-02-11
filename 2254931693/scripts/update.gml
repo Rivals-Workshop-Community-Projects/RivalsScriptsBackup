@@ -1,8 +1,5 @@
 //update
 
-	muno_event_type = 1;
-	user_event(14);
-
 
 
 with (asset_get("pHitBox")) //references all hitbox objects

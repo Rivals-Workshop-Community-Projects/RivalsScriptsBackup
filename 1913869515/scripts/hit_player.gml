@@ -250,4 +250,11 @@ if get_player_color(player) == 5{
       }
             
 
-
+if ( my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2 && state_cat != SC_HITSTUN ){
+	
+   hitstop = 6 
+   hitpause = true 
+   old_hsp = hsp 
+   old_vsp = vsp 
+	
+}

@@ -4,10 +4,9 @@ set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 set_attack_value(AT_NAIR, AG_AIR_SPRITE, sprite_get("nair_air"));
 set_attack_value(AT_NAIR, AG_HURTBOX_AIR_SPRITE, sprite_get("nair_air_hurt")); //TODO: add aerial hurtbox sprite
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 3);
-set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 0);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 5);
+// set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1); // needs attack_update code... (on key release)
+// set_attack_value(AT_NAIR, AG_LANDING_LAG, 5);
 set_attack_value(AT_NAIR, AG_OFF_LEDGE, 1);
-// set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
 
 
 set_window_value(AT_NAIR, 1, AG_WINDOW_TYPE, 1);
@@ -32,6 +31,7 @@ set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NAIR, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NAIR, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, .02);
 set_window_value(AT_NAIR, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .6);
+set_window_value(AT_NAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_NAIR,1);
 

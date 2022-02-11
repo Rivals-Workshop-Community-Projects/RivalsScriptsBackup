@@ -20,6 +20,10 @@
 // draw_debug_text( x, y - 140, "jump_just_pressed: " + string(jump_just_pressed));
 // draw_debug_text( x, y - 100, "jump_timer: " + string(jump_timer));
 
+// with(asset_get("obj_article2")){
+// draw_debug_text( x, y - 100, "shoot_timer: " + string(shoot_timer));
+// }
+
 // with (asset_get("pHitBox")){
 	// draw_debug_text(x, y-180, "fuckthisshit_timer: " + string(fuckthisshit_timer));
 // }

@@ -17,9 +17,3 @@ draw_sprite_ext(sprite_get("secret"), window_timer / 3, 0, 0, 1, 1, 0, c_white, 
 if "phone" not in self exit;
 
 
-
-// MunoPhone Touch code - don't touch
-// should be at BOTTOM of file, but above any #define lines
-muno_event_type = 5;
-user_event(14);
-

@@ -72,6 +72,7 @@ if (has_rune("O")) {
 	
 	with (hit_fx_obj) {
 		if (player_id == other.id) {
+			spr_dir = other.spr_dir * 2
 			image_xscale = 2;
 			image_yscale = 2;
 			

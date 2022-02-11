@@ -22,3 +22,17 @@ if (afterimage_countdown > 0) {
 		}
 	}
 }
+
+// Draw special transformation
+
+if (PS_ATTACK_GROUND) && (attack == AT_TAUNT_2) {
+	if (window >= 3) && (window <= 6) {
+		shader_start();
+		draw_sprite_ext(trransformed_taunt_sprite,
+						selected_taunt_transformation,
+						x, y, spr_dir, 1, 0,
+						c_white, 1);
+						
+		shader_end();
+	}
+}

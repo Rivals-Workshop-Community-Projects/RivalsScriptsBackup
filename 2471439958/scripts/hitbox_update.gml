@@ -56,8 +56,14 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 //NUEVA INTERACCION: DSPECIAL Y USPECIAL
 	if  player_id.attack == AT_USPECIAL && player_id.window == 2 && vsp > 0 &&  player_id.state == PS_ATTACK_AIR && ( y < player_id.y +64 &&  y > player_id.y) {
 		 if x < (player_id.x + 32) && x > (player_id.x - 32) {					//Con estos valores se forma la caja de deteccion, se puede variar
+			player_id.hsp = player_id.hsp * 2.5;													//Aqui puedes cambiar el boost que recibe
+			//Y por supuesto, aqui iria un posible sound effect
+		}
+	}
+	if  player_id.attack == AT_USPECIAL && player_id.window == 2 && vsp > 0 &&  player_id.state == PS_ATTACK_AIR && ( y < player_id.y +64 &&  y > player_id.y) {
+		 if x < (player_id.x + 32) && x > (player_id.x - 32) {					//Con estos valores se forma la caja de deteccion, se puede variar
 			destroyed = true;
-			player_id.vsp = -8;													//Aqui puedes cambiar el boost que recibe
+			player_id.vsp = player_id.vsp * 2.5;
 			//Y por supuesto, aqui iria un posible sound effect
 		}
 	}
@@ -91,6 +97,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 	if (destroyed)
 	{
 		sound_play(sound_get("EXPLODCL"));
+		shake_camera(8,4);
 		create_hitbox( AT_DSPECIAL, 2, x + 1*spr_dir, y + 4*spr_dir );
 	}
 }

@@ -337,9 +337,11 @@ switch (attack)
             case 1:
                 uspecTarget = false;
                 reset_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE);
+                if (uspecGround) set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
+                if (!special_down) uspecHeld = false;
                 break;
             case 2:
-                if (window_timer == 1 && flake.isOut && special_down)
+                if (window_timer == 1 && flake.isOut && uspecHeld)
                 {
                     uspecTarget = true;
                     uspecAngle = point_direction(x, y-floor(char_height/2), flake.x, flake.y);
@@ -357,9 +359,9 @@ switch (attack)
                 break;
             case 3:
                 var angle = uspecTarget?uspecAngle:90;
-                if (window_timer == 1)
+                if (window_timer == 1 && !hitpause)
                 {
-                    var dist = uspecTarget?20:25;
+                    var dist = (uspecTarget&&!uspecGround)?20:25;
                     hsp = lengthdir_x(dist, angle);
                     vsp = lengthdir_y(dist, angle);
 
@@ -387,7 +389,7 @@ switch (attack)
                 }
             case 5:
             case 6:
-                uspecBan = true;
+                uspecBan = !uspecGround;
                 if (uspecTarget)
                 {
                     spr_angle -= spr_angle/2;
@@ -398,8 +400,9 @@ switch (attack)
                 }
                 if (window_timer == get_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH)-1 && window == 6)
                 {
+                    if (uspecGround) move_cooldown[AT_USPECIAL] = 8;
                     if (left_down ^^ right_down) spr_dir = -left_down + right_down;
-                    for (var i = 1; i <= 7; ++i)
+                    if (!hitpause) for (var i = 1; i <= 7; ++i)
                     {
                         var icebreak = instance_create(x, y, "obj_article3");
                         icebreak.sprite_index = sprite_get("iceBreak");

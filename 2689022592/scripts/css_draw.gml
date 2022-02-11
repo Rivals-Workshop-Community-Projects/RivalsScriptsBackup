@@ -4,6 +4,17 @@ var temp_y = floor(y+10);
 var buildtag = "indev";
 var alt = get_player_color(player);
 
+var charuuid = string(sprite_get("idle"));
+if ("css_char" not in self || css_char != charuuid) {
+    css_char = charuuid;
+    sound_stop(asset_get("sfx_waterhit_heavy2"))
+    sound_stop(asset_get("sfx_boss_vortex_end"))
+                sound_play(asset_get("sfx_waterhit_heavy2"),false, noone, 1, .7)
+                sound_play(asset_get("sfx_boss_vortex_end"),false, noone, .8, .8)
+	
+}
+
+
 if "prev_alt" not in self {
     prev_alt = alt
 }
@@ -39,6 +50,7 @@ var palette_names = [
   "Tagia"
   "Real Mayonnaise"
   "Seven Eleven"
+  "Mina the Hollower"
 ];
 
 shader_end()

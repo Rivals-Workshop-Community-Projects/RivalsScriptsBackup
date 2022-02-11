@@ -1,3 +1,5 @@
+// state_timer++;
+
 if (attack == AT_NAIR && window == 3 ){
 	destroyed = true;
 }
@@ -21,7 +23,8 @@ if (attack == AT_NSPECIAL){
 		&& (hitbox_timer > 1
 		|| fuckthisshit_timer > 1)){
 			fuckthisshit_timer = 0;
-			destroyed = true;
+			instance_destroy(); // not working when opponent = invincible...
+			exit; // yes?
 		}
 	}
 }

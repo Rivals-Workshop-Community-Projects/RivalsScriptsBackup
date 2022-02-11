@@ -219,7 +219,9 @@ if (attack == AT_FSPECIAL && was_parried && window = 2){
 
 if (attack == AT_FSPECIAL && has_hit_player){
     
-        if (y > phone_blastzone_b - 100) {
+    var blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
+    
+        if (y > blastzone_b - 100) {
             if grabbed_player_damage < 120{
     with hit_player_obj {
         self.y = other.y - 60;
@@ -239,7 +241,7 @@ if (attack == AT_FSPECIAL && has_hit_player){
     
     
     
-    if (window == 4 && y < phone_blastzone_b - 100){
+    if (window == 4 && y < blastzone_b - 100){
         if (window_timer = 1){
             vsp = -8;
             hsp = hsp * 0.65;
@@ -260,7 +262,7 @@ if (attack == AT_FSPECIAL && has_hit_player){
 }
 }
 
-    if (window == 5 && y < phone_blastzone_b - 100){
+    if (window == 5 && y < blastzone_b - 100){
     with (hit_player_obj){
         if (super_armor = false){
                 hitstop = 8;    
@@ -447,8 +449,10 @@ if (attack == AT_USPECIAL && has_hit_player && window = 2 && !has_rune("L")){
  with (hit_player_obj){
     var uspecialautolinkdir = point_direction(x, y, other.x, other.y - 36);
     var uspecialautolinkspeed = 8;
+    if (super_armor = false){
     hsp = lengthdir_x(uspecialautolinkspeed, uspecialautolinkdir);
     vsp = lengthdir_y(uspecialautolinkspeed, uspecialautolinkdir);
+    }
  }
 }
 

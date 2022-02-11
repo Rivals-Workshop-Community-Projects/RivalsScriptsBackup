@@ -184,7 +184,7 @@ for (var i = 0; i < 3; i++) {
     // Distance between hitbox centers
     var hb_origin_distance = 40;
     var hb_origin_angle = aim_angle;
-    // Relative position from fulcrum to base hitbox
+    // Relative position from fulcrum to tip hitbox
     var tip_hitbox_x = base_hitbox_x + lengthdir_x(hb_origin_distance, hb_origin_angle);
     var tip_hitbox_y = base_hitbox_y + lengthdir_y(hb_origin_distance, hb_origin_angle);
 

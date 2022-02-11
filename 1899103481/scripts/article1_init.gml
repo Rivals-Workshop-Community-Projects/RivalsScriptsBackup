@@ -2,6 +2,8 @@
 init = 0;
 sprite_index = sprite_get("nspecial_proj");
 
+ball_box = noone;
+
 state = 0;
 state_timer = 0;
 can_be_grounded = false;

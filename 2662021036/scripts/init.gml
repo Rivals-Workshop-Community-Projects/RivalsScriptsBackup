@@ -136,18 +136,6 @@ crouch_startup_frames   = 2;
 crouch_active_frames    = 1;
 crouch_recovery_frames  = 2;
 
-/*
-
-Muno's Words of Wisdom: Due to a Certified Dan Moment, you must duplicate the
-last frame of your crouch animation. So like, if your animation has 10 frames
-total, add an 11th that's the copy of the 10th. You do NOT include this 11th
-frame in the crouch_recovery_frames or etc; configure these values AS IF there
-were only 10 frames.
-
-The reason for this is that otherwise, the crouch just glitches out at the end
-of the standing-up animation. Dan Moment
-
-*/
 
 set_num_hitboxes(AT_EXTRA_1, 1);
 
@@ -245,8 +233,3 @@ if ("superTrue" in self){
 }
 
 
-// MunoPhone Touch code - don't touch
-// should be at BOTTOM of file, but above any #define lines
-
-muno_event_type = 0;
-user_event(14);

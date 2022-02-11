@@ -9,7 +9,7 @@ patch_day = "";
 patch_month = "";
 
 var drawAlpha = 1;
-var num_alts = 31;
+var num_alts = 32;
 var alt_cur = get_player_color(player);
 
 var doNotInitShader = "alt_name" in self; // check if running for the first time
@@ -65,7 +65,7 @@ alt_name[27] = "Undecided Residence";
 alt_name[28] = "Remnants of a Creator";
 alt_name[29] = "Sparked Berry";
 alt_name[30] = "Eighth Revelation";
-alt_name[31] = "Housewife Agent";
+alt_name[31] = "Vocalist Takeover";
 
 if(!doNotInitShader){
     init_shader(); // makes the shader update when you return to the CSS (don't know why the game is coded so that this necessary)

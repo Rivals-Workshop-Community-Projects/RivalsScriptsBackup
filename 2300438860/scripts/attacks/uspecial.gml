@@ -9,7 +9,7 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("nspecen"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 0);

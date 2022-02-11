@@ -65,7 +65,7 @@ set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 1.05); // 1.15
 //set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NTHROW, 1, HG_IGNORES_PROJECTILES, 0);
-set_hitbox_value(AT_NTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
+//set_hitbox_value(AT_NTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
 
 /*
 // Windup

@@ -276,13 +276,25 @@ set_color_profile_slot( 25, 4, 204, 204, 204 ); //crowbar
 set_color_profile_slot( 25, 5, 204, 204, 204 ); //crowbar edges
 */
 
-// dark matter
+// dark matter (old)
+
 set_color_profile_slot( 25, 0, 151, 112, 71 ); //body
 set_color_profile_slot( 25, 1, 61, 61, 61 ); //hair
 set_color_profile_slot( 25, 2, 248, 239, 42  ); //shirt
 set_color_profile_slot( 25, 3, 61, 61, 61 ); //shorts
 set_color_profile_slot( 25, 4, 230, 217, 227 ); //crowbar
 set_color_profile_slot( 25, 5, 248, 239, 42 ); //crowbar edges
+
+// dark matter (new)
+/*
+set_color_profile_slot( 25, 0, 61, 61, 61 ); //body
+set_color_profile_slot( 25, 1, 61, 61, 61 ); //hair
+set_color_profile_slot( 25, 2, 248, 239, 42 ); //shirt
+set_color_profile_slot( 25, 3, 230, 217, 227 ); //shorts
+set_color_profile_slot( 25, 4, 151, 112, 71 ); //crowbar
+set_color_profile_slot( 25, 5, 230, 217, 227 ); //crowbar edges
+*/
+
 
 // beginning of Waloogi686869 alts
 
@@ -327,12 +339,22 @@ set_color_profile_slot( 30, 4, 125, 117, 77 ); //crowbar
 set_color_profile_slot( 30, 5, 87, 208, 87 ); //crowbar edges
 
 // funy riptide alt
+/*
 set_color_profile_slot( 31, 0, 242, 228, 214 ); //body
 set_color_profile_slot( 31, 1, 253, 183, 1 ); //hair
 set_color_profile_slot( 31, 2, 1, 199, 217 ); //shirt
 set_color_profile_slot( 31, 3, 12, 25, 58 ); //shorts
 set_color_profile_slot( 31, 4, 216, 93, 1 ); //crowbar
 set_color_profile_slot( 31, 5, 253, 183, 1 ); //crowbar edges
+*/
+
+// funny genesis alt
+set_color_profile_slot( 31, 0, 242, 225, 225 ); //body
+set_color_profile_slot( 31, 1, 253, 0, 0 ); //hair
+set_color_profile_slot( 31, 2, 12, 25, 58 ); //shirt
+set_color_profile_slot( 31, 3, 12, 25, 58 ); //shorts
+set_color_profile_slot( 31, 4, 253, 0, 0 ); //crowbar
+set_color_profile_slot( 31, 5, 242, 225, 225 ); //crowbar edges
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

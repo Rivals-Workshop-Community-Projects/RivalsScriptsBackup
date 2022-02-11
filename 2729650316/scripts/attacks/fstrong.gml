@@ -51,7 +51,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 30);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 12);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 18);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

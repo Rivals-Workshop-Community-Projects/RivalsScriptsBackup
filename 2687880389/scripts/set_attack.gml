@@ -18,6 +18,13 @@ if (remap_specials) {
 }
 */
 
+// Special Taunt
+if (attack == AT_TAUNT) && (down_down) {
+    attack = AT_TAUNT_2;
+    window = 1;
+    window_timer = 0;
+}
+
 // If playing as Emerl, play a sound if attacking during the leap
 if (codename_emerl_active) {
     if (afterimage_countdown > 0) {

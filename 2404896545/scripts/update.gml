@@ -2,6 +2,10 @@ if(state == PS_LANDING_LAG or state == PS_LAND){
 	sound_stop(sound_get("song"));
 }
 
+if((attack != AT_FSPECIAL and attack != AT_DSPECIAL) or (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND)){
+	char_height = standard_height;
+}
+
 if(state != PS_ATTACK_GROUND and (down_down or up_down)){
 	set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAME_START, 2);
 	set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 3);

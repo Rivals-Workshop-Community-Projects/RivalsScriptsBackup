@@ -13,7 +13,7 @@ if ("practice" in self)
 	}
 
 	// taunt menu
-	if (practice && !"temp_level" in self)
+	if (practice && (!variable_instance_exists(self, "temp_level") || temp_level==0))
 	{
 		draw_set_alpha(tutAlpha);
 		ResetText();
@@ -181,6 +181,40 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added Paint alt");
 						AddText("Slightly touched up USpec particle effect physics");
+						break;
+					case 9:
+						AddText("v1.8 - 26 Jan 2022");
+						AddText("'The Revert patch'");
+						AddText("");
+						AddText("Reverted DTilt hurtbox");
+						AddText("");
+						AddText("UTilt resprite (Thanks Delta Parallax!)");
+						AddText("Changed UTilt hitbox timing and size to fit the new animation");
+						AddText("UTilt Damage 8 -> 7");
+						AddText("UTilt Startup 5 -> 6");
+						AddText("UTilt Endlag 8 -> 12 (Before whifflag mult)");
+						AddText("");
+						AddText("FAir on hit vsp boost -3 -> -1");
+						AddText("Reverted FAir Damage 7 -> 6");
+						AddText("");
+						AddText("Improved USpec Tap/Held input detection");
+						AddText("Grounded USpec:");
+						AddText("- No longer has pratfall");
+						AddText("- Can now USpec again in the air (It doesn't combo tho)");
+						AddText("- Held (homing) variant now travels the same distance as Tap");
+						AddText("");
+						AddText("Decreased FSpec max teleport distance 250 -> 200");
+						AddText("Increased FSpec speed 4 -> 5");
+						AddText("FSpec damage 9 -> 8");
+						AddText("FSpec KB 9+0.8 -> 8+0.8");
+						AddText("");
+						AddText("Added a simple intro reusing DSpec sprites");
+						AddText("Paint alt effects now work properly");
+						break;
+					case 10:
+						AddText("v1.9 - 4 Feb 2022");
+						AddText("");
+						AddText("Fixed Rollback temp_level bug");
 						break;
 				}
 				DrawTutorialBlock();

@@ -26,6 +26,7 @@ if (attack == AT_NSPECIAL){
 if (attack == AT_FSPECIAL){
 	can_wall_jump = true;
 	can_fast_fall = false;
+	char_height = fspecial_height;
 	if(window == 1 and window_timer == 1){
 		shelled = false;
 		reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE);
@@ -94,6 +95,7 @@ if(attack == AT_USPECIAL){
 
 if (attack == AT_DSPECIAL){
 	can_fast_fall = false;
+	char_height = dspecial_height;
 	if(window == 1){
 		shelled = false;
 		reset_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH);

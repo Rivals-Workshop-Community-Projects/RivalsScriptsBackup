@@ -2,7 +2,7 @@
 -- V2.31 --
 
 Cosmetic Changes:
-- Replaced taunt cause i hated it
+- Replaced taunt because it was horrible
 
 -- V2.30 --
 Balance Changes:

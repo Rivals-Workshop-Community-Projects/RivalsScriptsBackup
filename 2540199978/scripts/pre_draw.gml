@@ -1,6 +1,11 @@
 if ("rollArray" in self)
 {
 	var tempColour = GetColourPlayer(0);
+	if (get_player_color(player)==26)
+	{
+        var color_rgb1=make_color_rgb(255, 255, 128);
+		tempColour = make_color_hsv((color_get_hue(color_rgb1)+hue)%255,color_get_saturation(color_rgb1),color_get_value(color_rgb1));
+	}
 	var tempColour2 = GetColourPlayer(5);
 	var tempColour3 = GetColourPlayer(3);
 	//var outlineColour = make_colour_rgb(outline_color[0],outline_color[1],outline_color[2]);

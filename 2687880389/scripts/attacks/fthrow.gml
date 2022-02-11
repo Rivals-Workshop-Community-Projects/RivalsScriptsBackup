@@ -97,5 +97,5 @@ set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, 6); // 6
 set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, 0.85); // 1.2
 set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FTHROW, 1, HG_IGNORES_PROJECTILES, 0);
-set_hitbox_value(AT_FTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
+//set_hitbox_value(AT_FTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
 //set_hitbox_value(AT_FTHROW, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));

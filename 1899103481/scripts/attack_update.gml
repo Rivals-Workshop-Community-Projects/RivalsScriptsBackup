@@ -4,9 +4,13 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL ||
 }
 
 // jab parry fix
-if (attack == AT_JAB && was_parried){
-	was_parried = false;
+if (attack == AT_JAB){
+	if (was_parried){
+		was_parried = false;
+	}
+	move_cooldown[AT_JAB] = 5;
 }
+
 
 // code is getting a bit crazy, forget this
 if (window == 1 && window_timer == 1){
@@ -53,15 +57,15 @@ if (attack == AT_NSPECIAL){
     move_cooldown[AT_NSPECIAL] = 12;
 }
 // NSPECIAL MAGNET PULL
-if (attack == AT_NSPECIAL_2){ 
-	if (special_down){	
+if (attack == AT_NSPECIAL_2){
+	if (special_down){
 		nspec_hold_timer++;
 		if (article_1_count > 0){
 			set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_HSPEED, 6*signflipper);
 		}
 	}
 	
-    if (window == 2){ 
+    if (window == 2){
     	can_jump = true; 
 		if (special_down && window_timer > 6){ // ??? this code sucks
 			window_timer = 6; 
@@ -70,8 +74,7 @@ if (attack == AT_NSPECIAL_2){
 		
 		if (special_down){
 			if (article_1_count > 0
-			&& magnet == 0
-			&& window == 2){
+			&& magnet == 0){
 				with(article_1){
 					// MAGNET PULL FAR AWAY
 					if (distance_to_object(player_id) > 128){
@@ -81,7 +84,6 @@ if (attack == AT_NSPECIAL_2){
 						pull_towards_player(2, 60, 10);
 					}
 				}
-			} else if (article_1_count > 0 && magnet == 0){
 				if (nspec_sound_timer == 0){
 					with (article_1){
 						spawn_hit_fx(x, y, 301);
@@ -133,6 +135,7 @@ if (attack == AT_FSPECIAL){
 		}
 		if (window_timer > 10){
 			window_timer = 11;
+			if (has_airdodge){ can_shield = true; }
 		} 
 	}
 	
@@ -150,7 +153,8 @@ if (attack == AT_FSPECIAL){
     // var turret_offset = floor(spr_dir * lerp(strong_charge*turret_interval, 60*turret_interval, 0.5)) //uhh
     // var turret_offset = 32 + spr_dir * ease_sineOut(a,b,strong_charge * 15, 60 * 15) //uhh
     // var turret_offset = floor(spr_dir * 0.7*(power(strong_charge, 1.8))) // slow start, grows faster
-    var turret_offset = floor(spr_dir * 50*(power(strong_charge, 0.6))) // fast start, grows slower
+    // var turret_offset = floor(spr_dir * 50*(power(strong_charge, 0.6))) // fast start, grows slower
+    var turret_offset = floor(spr_dir * (32+(6*(power(strong_charge, 1.2))))) // testestsetset
     if (window == 2 && strong_charge > 0 && strong_charge % 4 == 0){
 		if (!checkFreeAtPos(x+turret_offset+spr_dir*64, y+4)){ //spr_dir*32
 	    	spawn_hit_fx(x + turret_offset, y, lava_platform_aim);
@@ -171,7 +175,6 @@ if (attack == AT_FSPECIAL){
 	            }
 	    	}
 	    	var lavaBlock = instance_create(x + turret_offset + spr_dir*64, y, "obj_article3"); // x instead of xPos now
-	    	lavaBlock.image_speed = 1/3; // causing pause screen problems still?
     	}
     }
     move_cooldown[AT_FSPECIAL] = 30;
@@ -226,6 +229,17 @@ if (attack == AT_DSPECIAL){
     }
 }
 
+if attack == AT_DSTRONG{
+	if ((window == 3 && window_timer % 6 == 0 && window_timer < 16)
+	|| (window == 2 && window_timer == 4)){
+		// if (oPlayer.state_cat != SC_HITSTUN){
+		if (!sound_already_played_this_frame){
+			if	(state_timer_prev != state_timer){
+				sound_play(asset_get("sfx_clairen_spin"));
+			}
+		}
+	}
+}
 
 if (attack == AT_NAIR){
 	var sliding = false;

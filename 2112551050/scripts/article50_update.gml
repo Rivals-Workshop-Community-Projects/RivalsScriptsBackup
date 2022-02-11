@@ -123,7 +123,7 @@ if (timer > 2) {
 				if (playerID.cpuId == undefined) && !(playerID.takenDamage) {
 					var article = instance_place(x, y, obj_stage_article);
 					if (article == other.id) {
-						take_damage(player, -1, 1);
+						with playerID take_damage(player, -1, 1);
 						playerHit = true;
 						hurtboxPlayerID = playerID;
 					}

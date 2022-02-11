@@ -287,12 +287,13 @@ sprite_change_offset("css_icons", 24, 24);
 //sprite_change_offset("icon_inventory", 128, 128);
 textDraw(temp_x + 170, temp_y + 40, "fName", c_white, 100, 1000, 1, false, 0.25,"v" + string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)));
 
+/* Disabled for new portrait
 // Bubbles
 sprite_change_offset("bubbles", 128, 128);
 if(timer < 64){
 draw_sprite_ext(sprite_get("bubbles"),timer/8,x+45,y+84,1,1,0,c_white,1);
 }
-
+*/
 //Revamped for new loaction
 if (color_desc_activate){
 	// Detect Cursor

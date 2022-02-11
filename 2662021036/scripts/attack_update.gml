@@ -4,6 +4,18 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL ||
     trigger_b_reverse();
 }
 
+if (attack == AT_FSPECIAL){
+    move_cooldown[AT_FSPECIAL] = 48;
+}
+
+if (attack == AT_DSPECIAL){
+    move_cooldown[AT_DSPECIAL] = 90;
+}
+
+if (attack == AT_FAIR){
+    move_cooldown[AT_FAIR] = 13;
+}
+
 if (attack == AT_JAB && window = 2){
            clear_button_buffer( PC_ATTACK_PRESSED ); 
 }

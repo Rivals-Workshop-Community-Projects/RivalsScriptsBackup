@@ -9,12 +9,14 @@
        //draw_debug_text(temp_x,temp_y - 30,"Press Taunt for voiced mode");
 //}
 
-//if get_player_color(player) == 12 and machina == 1 && get_gameplay_time() <= 200{
-       //draw_debug_text(temp_x,temp_y - 12,"I'll protect Rem");
-//}       
-//if get_player_color(player) == 12 and machina == 0 && get_gameplay_time() <= 120{
-       //draw_debug_text(temp_x,temp_y - 30,"Press Taunt for voiced mode");
-//}
+if get_gameplay_time() <= 200 and switcher == 1{
+       draw_debug_text(temp_x,temp_y - 30,"Hold taunt and press attack");
+       draw_debug_text(temp_x,temp_y - 12,"to use the actual taunt");
+}       
+if get_gameplay_time() <= 120 and switcher == 0{
+       draw_debug_text(temp_x,temp_y - 30,"Press Shield for advanced elemental");
+       draw_debug_text(temp_x,temp_y - 12,"switcher mode");
+}
 
 shader_start();
 // nspec

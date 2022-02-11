@@ -1,3 +1,13 @@
+//if (!variable_instance_exists(id, "sound_on_start")){
+//    sound_on_start = 0;
+//    sound_play(sound_get("two3"))
+//}
+
+if (get_color_profile_slot_r(0, 0) == 239) {
+    sound_play(sound_get("two3"));
+	set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0) + 1, get_color_profile_slot_g(0, 0), get_color_profile_slot_b(0, 0));
+}
+
 //--- ---
 //
 // hyuponia's "ae" css code

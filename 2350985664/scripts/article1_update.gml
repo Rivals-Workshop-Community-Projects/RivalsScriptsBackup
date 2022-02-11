@@ -40,7 +40,10 @@ if (instance_exists(victim_id)) // mainly for forsburn's clone
             
             if (step % 120 == 0)
             {
-                take_damage(victim_id.player, player_id, 1 + has_rune("I") * 2);
+                with(victim_id)
+                {
+                    take_damage(player,other.player_id.player, 1 + has_rune("I") * 2);
+                }
                 spawn_hit_fx(victim_id.x,victim_id.y - victim_id.char_height,blood_fx)
                 life -= 1;
                 

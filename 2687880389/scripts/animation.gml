@@ -66,6 +66,11 @@ if (((state == PS_ATTACK_AIR) || (state == PS_ATTACK_GROUND))
 */
 
 if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
+	if (attack == 49) { // Final Smash
+		// Hurtbox doesn't seem to update itself properly, so set it here
+		hurtboxID.sprite_index = final_smash_hurtbox_spr;
+	}
+	
 	if ((attack == AT_NSPECIAL)
 	    || (attack == AT_NTHROW)
 	    || (attack == AT_FTHROW)
@@ -129,10 +134,7 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	                    switch (other.window) {
 	                        case 1 :
 	                            spr_dir = other.spr_dir;
-	                            if ((other.window_timer == 0) && !other.codename_mischeif_active) {
-	                            	other.current_effect_sound = sound_play(asset_get("sfx_ell_drill_loop"),
-	                            	                                		false, noone, 1, 0.6);
-	                            } else if (other.window_timer < (current_window_length / 3)) {
+	                            if (other.window_timer < (current_window_length / 3)) {
 	                                grab_x_offset = other.x - (46 * other.spr_dir);
 	                                grab_y_offset = other.y - 32;
 	                            } else if (other.window_timer < ((2 * current_window_length) / 3)) {
@@ -141,11 +143,6 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	                            } else {
 	                                grab_x_offset = other.x - (28 * other.spr_dir);
 	                                grab_y_offset = other.y - 24;
-	                            }
-	                            if (other.window_timer == (current_window_length - 1)) {
-	                            	sound_stop(other.current_effect_sound);
-	                            	other.current_effect_sound = sound_play(other.bthrow_sound_effect,
-	                            	                                		false, noone, 1, other.codename_mischeif_active ? 1 : 0.8);
 	                            }
 	                            break;
 	                        case 2 :
@@ -166,10 +163,6 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	                        case 1 :
 	                        	grab_x_offset = other.x + (26 * other.spr_dir);
 	                        	grab_y_offset = other.y - 56;
-	                        	if ((other.window_timer == 0) && !other.codename_mischeif_active) {
-	                            	other.current_effect_sound = sound_play(asset_get("sfx_ell_drill_loop"),
-	                            	                                		false, noone, 1, 0.7);
-	                            }
 	                            break;
 	                        case 2 :
 	                            grab_x_offset = other.x - (56 * other.spr_dir);
@@ -182,11 +175,6 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	                        case 4 :
 	                            grab_x_offset = other.x - (42 * other.spr_dir);
 	                            grab_y_offset = other.y - 96;
-	                            if (other.window_timer == (current_window_length - 1)) {
-	                            	sound_stop(other.current_effect_sound);
-	                            	other.current_effect_sound = sound_play(other.fthrow_sound_effect,
-	                            	                                		false, noone, 1, other.codename_mischeif_active ? 1 : 0.9);
-	                            }
 	                            break;
 	                        case 5 :
 	                        	if (other.window_timer == 0) {
@@ -205,19 +193,10 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	                        case 1 :
 	                            grab_x_offset = other.x + (46 * other.spr_dir);
 	                            grab_y_offset = other.y - 44;
-	                            if (other.window_timer == 0) {
-    								other.current_effect_sound = sound_play(other.takeoff_start_sound,
-    																		false, noone, 1, 1.3);
-	                            }
 	                            break;
 	                        case 2 :
 	                            grab_x_offset = other.x + (40 * other.spr_dir);
 	                            grab_y_offset = other.y - 54;
-	                            if (other.window_timer == (current_window_length - 1)) {
-							        sound_stop(other.current_effect_sound);
-							        other.current_effect_sound = sound_play(other.laser_blast_sound,
-																			false, noone, 1, 0.5);
-	                            }
 	                            break;
 	                        default :
 	                            break;
@@ -239,18 +218,10 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 		                            grab_x_offset = other.x + (46 * other.spr_dir);
 		                            grab_y_offset = other.y - 20;
 	                            }
-                            	if (other.window_timer == 0) {
-    								other.current_effect_sound = sound_play(asset_get("sfx_ell_drill_loop"),
-	                            	                                		false, noone, 1, 0.5);
-	                            }
 	                            break;
 	                        case 2 :
 	                			grab_x_offset = other.x + (46 * other.spr_dir);
 	                        	grab_y_offset = other.y - 18;
-                            	if (other.window_timer == 0) {
-    								sound_stop(other.current_effect_sound);
-    								other.current_effect_sound = sound_play(other.dthrow_sound_effect);
-	                            }
 	                            break;
 	                        case 3 :
 	                            grab_x_offset = other.x + (44 * other.spr_dir);
@@ -263,9 +234,6 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	                        case 5 :
 	                        	grab_x_offset = other.x + (46 * other.spr_dir);
 		                        grab_y_offset = other.y - 26;
-                            	if (other.window_timer == 0) {
-    								sound_stop(other.current_effect_sound);
-	                            }
 	                            break;
 	                        default :
 	                            break;
@@ -294,6 +262,17 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 		}
 	}
 }
+
+/*
+if ((afterimage_countdown_prev != 0)
+	&& (afterimage_countdown == 0))
+{
+	if (abs(hsp) > air_max_speed) {
+		//sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+		hsp = ((hsp + (spr_dir * air_max_speed)) / 2) * fspecial_damping;
+	}
+}
+*/
 
 // Function to spawn built-in dust effects, courtesy of SupersonicNK
 #define spawn_base_dust

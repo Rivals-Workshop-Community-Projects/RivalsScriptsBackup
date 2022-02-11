@@ -35,7 +35,7 @@ if(instance_exists(crowdVictim))
     {
         if(crowdHype >= 15)
         {
-            sound_play(sound_get("crowd_awesome"))
+            sound_play(sound_get("crowd_awesome"), false, noone, 0.7, 1.1)
             crowdHype = 0;
         }
         else
@@ -50,9 +50,9 @@ if(instance_exists(crowdVictim))
         if(crowdHype >= 5)
         {
             if(random_func( 2, 100, false ) > 50)
-                sound_play(sound_get("crowd_galaxy"), false, noone, 0.8, 1.1)
+                sound_play(sound_get("crowd_galaxy"), false, noone, 0.6, 1.1)
             else
-                sound_play(sound_get("crowd_galaxy2"), false, noone, 0.8, 1.1)
+                sound_play(sound_get("crowd_galaxy2"), false, noone, 0.6, 1.1)
         }
         crowdHype ++;
         crowdVictim.activated_kill_effect = false;

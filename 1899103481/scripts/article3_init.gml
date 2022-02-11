@@ -3,9 +3,14 @@ somevar = 3; //???
 sprite_index = sprite_get("lava_platform_create"); // VERY IMPORTANT, CRASHES IF YOU REMOVE IT
 mask_index = sprite_get("lava_platform_mask")
 
+anim_speed_creating = 1/4;
+anim_speed_destroyed = 1/6;
+anim_speed_active = 1/6;
+state_timer = 0;
+
 hitbox_created = false;
 
-lifespan = 960;
+lifespan = 180; // 960
 state = -1;
 destroy_timer = 0;
 

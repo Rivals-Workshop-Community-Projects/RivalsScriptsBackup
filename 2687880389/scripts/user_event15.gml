@@ -58,9 +58,10 @@ if ("phone_inited" in self && phone_inited){
 			
 			swallowed = 0; // don't touch this line please im begging you
 			
-			var copy_spr = sprite_get("copy_sprite");
-			var copy_hrt = sprite_get("copy_hurt");
-			var copy_icn = sprite_get("copy_icon");
+			var copy_spr = sprite_get("kirby_copy_ability");
+			var copy_hrt = sprite_get("kirby_copy_ability_hurt");
+			var copy_icn = sprite_get("kirby_ability_hud");
+			var blast_sound = sound_get("laser_blast2");
 			// add more to transfer other sprites, or sfx
 			
 			with enemykirby{
@@ -71,38 +72,149 @@ if ("phone_inited" in self && phone_inited){
 				
 				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
 				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
+        		set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
 				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
+				set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 3);
 				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
 				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
 				
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 4);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 0);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 				
-				set_num_hitboxes(AT_EXTRA_3, 1);
 				
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+				set_num_hitboxes(AT_EXTRA_3, 0);
+				
+				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
+				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 7);
+				set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 3);
+				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
+				
+				// Windup
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 4);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 0);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAME_START, 0);
+
+				// Charge
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 4);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 0);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+
+				var cycles_per_frame = 5;
+				var fstrong_num_angles = 1;
+			    // Hold
+			    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 4);
+			    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 0);
+			    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+			    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HSPEED, 0);
+			    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, 0);
+			    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HSPEED_TYPE, 1);
+			    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 2);
+			
+			    // Pre-fire glow
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 4);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAMES, 0);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAME_START, 4);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HSPEED, 0);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HSPEED, 0);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HSPEED_TYPE, 1);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_VSPEED_TYPE, 2);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HAS_SFX, 1);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX, blast_sound);
+			    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX_FRAME, 3);
+			    
+			    // Fire
+			    //set_window_value(AT_EXTRA_3, 5, AG_WINDOW_TYPE, 7);
+			    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_LENGTH, cycles_per_frame * 4);
+			    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAMES, 4);
+			    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAME_START, 5);
+			    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+			    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HSPEED, -7.5);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_VSPEED, -3);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HSPEED_TYPE, 2);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_VSPEED_TYPE, 2);
+			    
+			    // Pause to reflect
+			    set_window_value(AT_EXTRA_3, 6, AG_WINDOW_LENGTH, 10);
+			    set_window_value(AT_EXTRA_3, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
+			    set_window_value(AT_EXTRA_3, 6, AG_WINDOW_ANIM_FRAMES, 2);
+			    set_window_value(AT_EXTRA_3, 6, AG_WINDOW_ANIM_FRAME_START, 9);
+
+				// Return to your original position
+				set_window_value(AT_EXTRA_3, 7, AG_WINDOW_LENGTH, 4);
+				set_window_value(AT_EXTRA_3, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
+				set_window_value(AT_EXTRA_3, 7, AG_WINDOW_ANIM_FRAMES, 0);
+				set_window_value(AT_EXTRA_3, 7, AG_WINDOW_ANIM_FRAME_START, 11);
+
+
+				set_num_hitboxes(AT_EXTRA_3, 2);
+
+			    // Base
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 5);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, cycles_per_frame * 4);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 52);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 52);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 1);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_X_OFFSET, -12);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
+			    //set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, blast_hit_effect);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+			    
+			    // Tip
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_TYPE, 1);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW, 5);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_LIFETIME, cycles_per_frame * 2);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_WIDTH, 40);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_HEIGHT, 40);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_PRIORITY, 1);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT_X_OFFSET, -12);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
+			    //set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT, blast_hit_effect);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+
+				// Set damage/knockback angles
+				// Neutral
+				for (var i = 1; i <= 2; i++) {
+				    set_hitbox_value(AT_EXTRA_3, i, HG_DAMAGE, 13);
+				    set_hitbox_value(AT_EXTRA_3, i, HG_ANGLE, 55);
+				    set_hitbox_value(AT_EXTRA_3, i, HG_BASE_KNOCKBACK, 7.5); // 7
+				    set_hitbox_value(AT_EXTRA_3, i, HG_KNOCKBACK_SCALING, 1.1); // 0.9
+				    set_hitbox_value(AT_EXTRA_3, i, HG_BASE_HITPAUSE, 7.5); // 7
+				    set_hitbox_value(AT_EXTRA_3, i, HG_HITPAUSE_SCALING, 1.1); // 0.9
+				}
+
+				// Make the hitbox placement self-adjust with angle
+				// Fulcrum offset from player's current position
+				var fulcrum_x = 0;
+				var fulcrum_y = 0;
+				// offset from fulcrum to base hitbox
+				var fulcrum_offset_x = 27;
+				var fulcrum_offset_y = -22;
+				var distance_to_base = point_distance(0, 0, fulcrum_offset_x, fulcrum_offset_y);
+				var aim_angle = 0;
+    
+			    // Relative position from fulcrum to base hitbox
+			    var angle_to_base = aim_angle + point_direction(0, 0, fulcrum_offset_x, fulcrum_offset_y);
+			    
+			    var base_hitbox_x = fulcrum_x + lengthdir_x(distance_to_base, angle_to_base);
+			    var base_hitbox_y = fulcrum_y + lengthdir_y(distance_to_base, angle_to_base);
+			
+			    // Distance between hitbox centers
+			    var hb_origin_distance = 40;
+			    var hb_origin_angle = aim_angle;
+			    // Relative position from fulcrum to tip hitbox
+			    var tip_hitbox_x = base_hitbox_x + lengthdir_x(hb_origin_distance, hb_origin_angle);
+			    var tip_hitbox_y = base_hitbox_y + lengthdir_y(hb_origin_distance, hb_origin_angle);
+			
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, base_hitbox_x);
+			    set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, base_hitbox_y);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_X, tip_hitbox_x);
+			    set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_Y, tip_hitbox_y);
 			}
 		}
-		
-		
 		
 		// Update code
 		
@@ -221,17 +333,17 @@ if ("phone_inited" in self && phone_inited){
  */
 
 // Gameplay-relevant, and codecs because im biased :>
-pho_has_muno_phone = 0;	// MunoPhone support		(should always be 1, obviously...)
+pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
 pho_has_trum_codec = 0;	// Trummel & Alto codec
-pho_has_copy_power = 0;	// Kirby Copy Ability
+pho_has_copy_power = 1;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 
 // Character cosmetics
-pho_has_otto_bhead = 1;	// Bobblehead for Otto's bike
+pho_has_otto_bhead = 0;	// Bobblehead for Otto's bike
 pho_has_steve_dmsg = 1;	// Death message for Steve
 pho_has_feri_taunt = 0;	// Costume for Feri's taunt
-pho_has_hikaru_fak = 0;	// Title for Hikaru's fakie
-pho_has_rat_allout = 0;	// Quip for Rat's all-out attack
+pho_has_hikaru_fak = 1;	// Title for Hikaru's fakie
+pho_has_rat_allout = 1;	// Quip for Rat's all-out attack
 pho_has_tco_sketch = 0;	// Drawing for The Chosen One's down taunt
 pho_has_ahime_dead = 0;	// Sprite for Abyss Hime's slicing effect
 pho_has_tink_picto = 0;	// Photograph for Toon Link's picto box
@@ -239,16 +351,16 @@ pho_has_fire_taunt = 0; // Fire's Taunt
 pho_has_wall_e_ost = 0; // Wall-E's music
 pho_has_amber_love = 0; // Amber's plush and/or hug
 pho_has_moon_music = 0; // Moonchild's taunt music
-pho_has_agentn_cdc = 0; // Agent N's codec
+pho_has_agentn_cdc = 1; // Agent N's codec
 
 // Stage cosmetics
 pho_has_drac_codec = 0;	// Dialogue for the Dracula boss fight
 pho_has_miivs_post = 0;	// Posts for the Miiverse stage
-pho_has_dede_title = 0;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
-pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
+pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
+pho_has_soul_title = 1; // Text for the Soulbound Conflict stage
+pho_has_been_found = 1; // Death sprite for the Trial Grounds stage
 pho_has_resort_pic = 0; // Portrait for the Last Resort stage
-pho_has_pkmn_image = 0; // Battle sprite for Pokémon Stadium
+pho_has_pkmn_image = 1; // Battle sprite for Pokémon Stadium
 pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
@@ -368,7 +480,8 @@ with phone{
 	initTipWords("fspecial costs half the max energy meter - at least one circle needs to be filled in to use it.
 				  uspecial slowly consumes energy while in use.
 				  Energy begins to recharge when you touch the ground, wall, or get hit.
-				  Energy will continue to recharge until you use a move that spends it - don't feel stuck to the ground!");
+				  Energy recharges faster while grounded, but don't feel stuck to the ground!
+				  Energy will constantly recharge until you use a move that spends it!");
 	initTipImage(player_id.spr_fspecial, 3, fa_left, 1, c_white, 5);
 	initTipImage(player_id.spr_uspecial, 9, fa_right, 1, c_white, 5);
 	//initTipImage(player_id.spr_fspecial, 3, fa_left, 1, c_white, 0);
@@ -392,6 +505,10 @@ with phone{
 				  Using the move earlier/later doesn't give any bonus damage.");
 	initTipImage(player_id.spr_dspecial, 7, fa_center, 1, c_white, 5);
 	//initTipImage(player_id.spr_dspecial, 7, fa_center, 1, c_white, 0);
+	
+		initTip("Multiple Taunts");
+	initTipWords("Pressing down and taunt at the same time will do an alternate taunt.
+				  Some alt. palettes have a dedicated form, while the rest will randomly choose one.");
 	
 	/*
 	initTip("NSpecial: Fast Repeat Shots");
@@ -530,6 +647,41 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+
+	initPatch("1.9", "9 Feb, 2022");
+	initPatchWords_ext("Added compatibility and a special down-taunt.", fa_left, c_gray, 1, 0);
+	initPatchWords("Presentation
+					- Re-enabled appropriate Munophone compatibility buttons on CSS
+					- Added down-taunt (form depends on alt)
+					- Added a Munophone tip describing the down-taunt
+					- Added shake-shake via dtilt
+					Compatibility
+					- Kirby
+					- Agent N
+					- Steve
+					- Hikaru
+					- Rat
+					- Pokemon Stadium
+					- Trial Grounds
+					- Mt. Dedede
+					- Soulbound Conflict");
+
+	initPatch("1.8", "4 Feb, 2022");
+	initPatchWords_ext("Added a Final Smash and finally nerfed fspecial.", fa_left, c_gray, 1, 0);
+	initPatchWords("Balance
+					- Reduced fspecial horizontal speed (11->10)
+					- Reduced energy charge rate while airborne (2->1.2)
+					- Increased energy charge rate while grounded (3->3.2)
+					- Increased energy gained from wall-kick (1/8 max -> 1/4 max)
+					- Increased on-grab damage (1->2)
+					Presentation
+					- Added Final Smash (Thanks to ikersfletch for code/examples)
+					- Added cheat for infinite Final Smash charge
+					- Added some form of screen-shake to all throws (Suggested by Succ)
+					- Refactored grab code to remove duplicated sounds when grabbing multiple opponents
+					- Mentioned energy-recharge difference in Munophone tips
+					Fixes
+					- Fixed issue where performing a self-KO with down-throw would allow the user to instantly summon previously grabbed opponents on next grab");
 
 	initPatch("1.7", "22 Jan, 2022");
 	initPatchWords_ext("Make the strongs stronger!", fa_left, c_gray, 1, 0);
@@ -785,6 +937,9 @@ with self{
 	
 	// update.gml
 	initCheat("stop hitting yourself", "cheat_recoil", [0, 1], ["Off", "On"], "ouf");
+		
+	// update.gml
+	initCheat("Always have Final Smash", "cheat_perma_final_smash", [0, 1], ["Off", "On"], "Final Smash is always charged.");
 }
 
 
@@ -1000,6 +1155,14 @@ if pho_has_trum_codec{
 
 
 
+// Kirby copy ability
+if (pho_has_copy_power) {
+	kirbyability = 16;
+	swallowed = 0
+}
+
+
+
 // Otto bobblehead
 
 if pho_has_otto_bhead{
@@ -1015,7 +1178,7 @@ if pho_has_otto_bhead{
 
 if pho_has_steve_dmsg{
 	
-	steve_death_message = "Steve transformed into Steve, but with fewer stocks";
+	steve_death_message = "Steve's stock was blasted away.";
 	
 }
 
@@ -1036,7 +1199,7 @@ if pho_has_feri_taunt{
 
 if pho_has_hikaru_fak{
 	
-	Hikaru_Title = "woaf";
+	Hikaru_Title = "Transformed";
 	
 }
 
@@ -1046,7 +1209,8 @@ if pho_has_hikaru_fak{
 
 if pho_has_rat_allout{
 	
-	personaQuips[10] = "woaf";
+	// Needed to be added in other_init.gml
+	personaQuips[10] = "You're not getting away!";
 	
 }
 
@@ -1148,9 +1312,10 @@ if pho_has_moon_music{
 
 if pho_has_agentn_cdc{
 	
-	ncode1 = "line1";
-	ncode2 = "line2";
-	ncode3 = "line3";
+	nname = "Retroblast";
+	ncode1 = "A shape-changing robot from the future of the past.";
+	ncode2 = "Able to fire high-energy blasts from its extremities.";
+	ncode3 = "It's fast, but not fast enough.";
 	
 }
 
@@ -1196,8 +1361,8 @@ if pho_has_miivs_post{
 
 if pho_has_dede_title{
 	
-	arena_title = "woag";
-	arena_short_name = "woaf";
+	arena_title = "Shape-Changing Challenger";
+	arena_short_name = "Retroblast";
 	
 }
 
@@ -1207,7 +1372,7 @@ if pho_has_dede_title{
 
 if pho_has_soul_title{
 	
-	battle_text = "* woag";
+	battle_text = "* Retroblast wants to see who's faster!";
 	
 }
 
@@ -1241,7 +1406,7 @@ if pho_has_pkmn_image{
 	
 	pkmn_stadium_front_img = sprite_get("pkmn_front");
 	pkmn_stadium_back_img = sprite_get("pkmn_back");
-	pkmn_stadium_name_override = "sdkhjfskhgfkslhfglkha";
+	pkmn_stadium_name_override = "Retroblst";
 	
 }
 

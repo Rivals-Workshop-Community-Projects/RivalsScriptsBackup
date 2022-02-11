@@ -6,18 +6,18 @@ set_attack_value(AT_FTILT, AG_MUNO_ATTACK_MISC, "Hitting when supercharged will 
 set_hitbox_value(AT_FTILT, 2, HG_MUNO_HITBOX_NAME, "Sweetspot");
 set_hitbox_value(AT_FTILT, 2, HG_MUNO_HITBOX_MISC, "Creates electric terrain or stuns on hit.");
 
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, sound_get("sfx_claw_swing_med"));
-set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 15);
+set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 11);
 
 set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 2);
 
-set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 7);

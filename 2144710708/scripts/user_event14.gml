@@ -672,7 +672,7 @@ if (fps_real) < 60 && !phone_online && phone.utils_cur[phone.UTIL_FPS_WARN]{
 	draw_debug_text(32, 32, "Low FPS! (" + string(floor(fps_real)) + ")");
 }
 
-if phone_online && get_gameplay_time() < 300 draw_debug_text(10, 48, "ONLINE: Press the F1 key to enable Fast Graphics.");
+//if phone_online && get_gameplay_time() < 300 draw_debug_text(10, 48, "ONLINE: Press the F1 key to enable Fast Graphics.");
 
 if !phone.has_opened_yet && phone_practice{
 	var x_pos = 20;

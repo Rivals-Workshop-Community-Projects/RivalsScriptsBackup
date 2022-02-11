@@ -1,7 +1,7 @@
 set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("taunt_2"));
 set_attack_value(AT_TAUNT_2, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_TAUNT_2, AG_HAS_LANDING_LAG, 3);
-set_attack_value(AT_TAUNT_2, AG_OFF_LEDGE, 1);
+set_attack_value(AT_TAUNT_2, AG_OFF_LEDGE, 0);
 set_attack_value(AT_TAUNT_2, AG_HURTBOX_SPRITE, sprite_get("stand_hurt"));
 
 set_window_value(AT_TAUNT_2, 1, AG_WINDOW_TYPE, 1);

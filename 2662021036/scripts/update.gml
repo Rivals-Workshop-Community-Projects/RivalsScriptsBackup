@@ -1,7 +1,4 @@
-// MunoPhone Touch code - don't touch
-// should be at TOP of file
-muno_event_type = 1;
-user_event(14);
+
 
 if get_player_color(player) == 7 {
 set_character_color_shading( 0, 0 );

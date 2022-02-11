@@ -265,7 +265,7 @@ in a Patch.
 initPatch("1.0", "18 November, 2021");
 initSection("* The character has been released.");
 
-initPatch("1.1", "18 November, 2021");
+initPatch("1.2", "18 November, 2021");
 initHeader("Neutral Specials");
 initWords("- Both have been reduced in knockback and kb scaling");
 initWords("- Both moves also have significantly less hitstun");
@@ -273,13 +273,13 @@ initHeader("Alternate Colors");
 initWords("+ 14 more color swaps have been added, with special thanks to Prober for most of them and Specter for the Xurkitree alt base");
 //initSection("* The character has been released.");
 
-initPatch("1.2", "21 November, 2021");
+initPatch("1.3", "21 November, 2021");
 initHeader("Jab");
 initWords("+ Parry stun is no longer inflicted when parried");
 initHeader("Misc.");
 initWords("~ In addition to being hit when charged outside of terrain (including but not limited to supercharged strongs/specials), an indicator will appear when Koko is parried when charged.");
 
-initPatch("1.3", "22 November, 2021");
+initPatch("1.4", "22 November, 2021");
 initHeader("Down Special");
 initWords("+ New counter animation has been applied to give the move more readability");
 initWords("~ New sound effect given to the spark");
@@ -289,7 +289,7 @@ initWords("- Endlag frames 24 -> 36");
 initHeader("Down Tilt");
 initWords("+ Sweetspt now generates an electric terrain");
 
-initPatch("1.4", "23 November, 2021");
+initPatch("1.5", "23 November, 2021");
 initHeader("Down Special");
 initWords("- The counter is no longer triggered if an invincible opponent strikes");
 initHeader("Misc");
@@ -297,14 +297,27 @@ initWords("~ Hitpause on various attacks has been decreased for better gamefeel"
 initWords("~ New sound effects from Smash Ultimate have been added, including but not limited to a spike sound for DAir and a sourspot sound for BAir");
 initSection("Special thanks to Vertyx for these quality of life changes :)");
 
-initPatch("1.5", "18 December, 2021");
+initPatch("1.6", "18 December, 2021");
 initHeader("Aerials");
-initWords("- Most of their startup vsp has been halved to reduce any additional");
+initWords("- Most of their startup vsp has been halved to reduce any additional leverage");
 initHeader("Electric Sweetspots");
 initWords("+ All 20 x 20 -> 26 x 26");
 initHeader("Misc.");
 initWords("+ NSpecial last hit bkb 8.5 -> 9");
 initWords("+ UStrong Sourspot bkb hit bkb 8 -> 8.5");
+
+initPatch("1.7", "5 February, 2022");
+initHeader("FAir");
+initWords("~ New animation has been implemented where it does a back flip instead of a quick kick forward");
+initWords("+ In light of this, a late vertical hitting hitbox has been added that hits higher than the sour and sweet spots before it");
+initWords("+ Landing Lag 12 -> 9");
+initHeader("FTilt");
+initWords("+ Startup 16 -> 12");
+initWords("+ Endlag 6 -> 4");
+initHeader("Other");
+initWords("+ Jab Endlag 8 -> 6");
+initWords("~ UTilt has a slightly updated animation");
+initWords("- DJump Speed 10 -> 8");
 
 initPatch("About Tapu Koko", "");
 initHeader("Created by");

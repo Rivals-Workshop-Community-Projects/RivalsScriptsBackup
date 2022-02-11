@@ -1,3 +1,10 @@
+// THIS IS EVERYTHING SANDBERT NEEDS FOR A FINAL SMASH, GAMEPLAY-SIDE:
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 106;
+// EVERYTHING AFTER IS JUST 'SANDBERT WITH A PHONE' by MUNO
+// I MADE NONE OF THIS! I ONLY MADE THE FINAL SMASH!
+// GO GIVE BOTH THANKS AND CREDIT TO THEM!
+
 // Runes
 // tier 1
 double_rocket_time = has_rune("A");
@@ -32,7 +39,6 @@ targeting_enabled = has_rune("O");
 #macro codename_ugh_number        17
 #macro codename_ea_number         20
 #macro codename_wireframe_number  21
-#macro codename_silhouette_number 22
 // Have a bool that can be queried for each alt
 codename_default_active    = false;
 codename_mega_active       = false;
@@ -48,7 +54,6 @@ codename_mischeif_active   = false;
 codename_ugh_active        = false;
 codename_ea_active         = false;
 codename_wireframe_active  = false;
-codename_silhouette_active = false;
 
 selected_player_color = get_player_color(player);
 switch (selected_player_color) {
@@ -93,9 +98,6 @@ switch (selected_player_color) {
         break;
     case codename_wireframe_number :
         codename_wireframe_active = true;
-        break;
-    case codename_silhouette_number :
-        codename_silhouette_active = true;
         break;
     default :
         break;
@@ -326,12 +328,12 @@ energy_b = get_color_profile_slot_b(energy_color_slot, 0);
 var rocket_seconds = 1.2;
 //rocket_seconds *= double_rocket_time ? 2 : 1;
 fuel_consumption_rate = 4; // keep this as a multiple of 2
-airborne_fuel_recovery_rate = 2;
-grounded_fuel_recovery_rate = 3;
+airborne_fuel_recovery_rate = 1.2;//2;
+grounded_fuel_recovery_rate = 3.2//3;
 fuel_recovery_active = true;
 max_rocket_fuel = rocket_seconds * 60 * fuel_consumption_rate;
 fuel_consumption_rate = double_rocket_time ? fuel_consumption_rate / 2 : fuel_consumption_rate;
-pity_fuel_amount = max_rocket_fuel / 8;
+pity_fuel_amount = max_rocket_fuel / 4;//8;
 rocket_fuel = max_rocket_fuel;
 //uspecial sound
 rocket_sound = sound_get("rocket_effect");
@@ -340,8 +342,11 @@ meter_sprite = sprite_get("meter");
 meter_fill_sprite = sprite_get("meter_fill");
 
 // fspecial charges
+fspecial_leap_hsp = 10;//11;
+fspecial_leap_vsp = -7.5;
 //max_booster_rush_charges = increased_charges ? 2 : 1;
 //booster_rush_charges = max_booster_rush_charges;
+//fspecial_damping = 1;
 booster_rush_cost = increased_charges ? max_rocket_fuel / 3 : max_rocket_fuel / 2;
 charge_button_sprite = sprite_get("charge_button");
 
@@ -367,6 +372,7 @@ change_hurtbox_sprite_to_crouch_next_frame = false;
 //num_afterimages_max = 11;
 num_afterimages_max = 5;
 afterimage_countdown = 0;
+//afterimage_countdown_prev = 0;
 //afterimages = array_create(num_afterimages, noone);
 afterimages = ds_list_create();
 
@@ -403,6 +409,8 @@ laser_blast_sound = sound_get("laser_blast2");
 active_horn = sound_get("horn");
 if (codename_halo_active) {
     active_horn = sound_get("horn_warthog");
+} else if (codename_mischeif_active) {
+    active_horn = sound_get("horn_shake_shake");
 }
 /*
 switch (selected_player_color) {
@@ -441,13 +449,21 @@ switch (selected_player_color) {
 }
 */
 
+// Can use different images for special taunt
+trransformed_taunt_sprite = codename_wireframe_active ? sprite_get("taunt_filling_hologram") : sprite_get("taunt_filling");
+highest_random_transformation_option = codename_ugh_number;
+specific_taunt_transformation_required = (selected_player_color > codename_default_number) && (selected_player_color <= codename_ugh_number);
+selected_taunt_transformation = 0;
+
 // Set different victory/loss portraits depending on alt selected
+fs_char_portrait_override = sprite_get("portrait");
 if (codename_default_active) { // Default win/loss portraits are miscolored, replace them
     set_victory_portrait(sprite_get("portrait_original"));
     set_victory_sidebar(sprite_get("result_small_original"));
 } else if (codename_wireframe_active) {
     set_victory_portrait(sprite_get("portrait_hologram"));
     set_victory_sidebar(sprite_get("result_small_hologram"));
+    fs_char_portrait_override = sprite_get("portrait_hologram");
 } else {
     set_victory_portrait(sprite_get("portrait"));
     set_victory_sidebar(sprite_get("result_small"));
@@ -455,7 +471,7 @@ if (codename_default_active) { // Default win/loss portraits are miscolored, rep
 
 // Decide if the shanding needs to be flat
 flat_shading_selected = false;
-if (codename_ea_active || codename_wireframe_active || codename_silhouette_active) {
+if (codename_ea_active || codename_wireframe_active) {
     flat_shading_selected = true;
 }
 
@@ -472,6 +488,12 @@ RETROBLAST_HOLDER_ID = noone;
 // Track if this character is being targetted, share stacks
 RETROBLAST_TARGETTING_ME = noone;
 RETROBLAST_TARGET_STACKS = 0;
+
+// Final Smash hurtbox doesn't seem to update properly
+final_smash_hurtbox_spr = sprite_get("final_smash_hurt");
+layered_sound_1 = noone;
+layered_sound_2 = noone;
+layered_sound_3 = noone;
 
 // Muno template: (don't change)
 

@@ -36,7 +36,7 @@ if ("rollArray" in self)
 	}
 
 	// taunt menu
-	if (practice && !"temp_level" in self)
+	if (practice && (!variable_instance_exists(self, "temp_level") || temp_level==0))
 	{
 		draw_set_alpha(tutAlpha);
 		ResetText();
@@ -164,6 +164,12 @@ if ("rollArray" in self)
 						AddText("FStrong Angle 361 -> 40");
 						AddText("");
 						AddText("Added Pilot's Lucario idle costumes to Up/Down taunt");
+						break;
+					case 6:
+						AddText("v2.5 - 4 Feb 2022");
+						AddText("");
+						AddText("Fixed Rollback temp_level bug");
+						AddText("Renamed Hue alt to Paint");
 						break;
 				}
 				DrawTutorialBlock();
