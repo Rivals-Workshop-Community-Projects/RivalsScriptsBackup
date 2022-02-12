@@ -4,6 +4,7 @@
 user_event(12); 
 shader_start();
 
+// Uspec visual
 if(attack == AT_USPECIAL && window == 2)
 {
 	var bdir = sign(hsp);
@@ -11,6 +12,19 @@ if(attack == AT_USPECIAL && window == 2)
 	
 	gpu_set_blendmode(bm_add);
 	draw_sprite_ext( sprite_get("fspecial_proj"),window_timer,x+(16*bdir),y-(char_height/2),bdir,1,0,c_white,.5);
+}
+
+// Roll visual
+if(state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD)
+{
+	if(state_timer >=6 && state_timer <= 14)
+	{
+		var bdir = sign(hsp);
+		if(bdir == 0) bdir = 1;
+		
+		gpu_set_blendmode(bm_add);
+		draw_sprite_ext( sprite_get("fspecial_proj"),window_timer,x+(16*bdir),y-(char_height*0.8),bdir,1,0,c_white,.5);
+	}
 }
 
 

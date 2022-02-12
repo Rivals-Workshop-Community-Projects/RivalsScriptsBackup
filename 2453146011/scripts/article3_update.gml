@@ -178,7 +178,7 @@ if(shake_timer > 0){
 
 //#region outside stage
 
-if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN || (dspec2 && (player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND)))
+if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN || (dspec2 && (player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND)) || player_id.activated_kill_effect)
 {
     // Reset stuff
     sound_stop(sound_get("monarch_countdown"))

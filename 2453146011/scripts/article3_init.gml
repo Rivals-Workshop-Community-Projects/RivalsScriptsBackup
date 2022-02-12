@@ -15,6 +15,7 @@ ignores_walls = true;
 uses_shader = true;
 did_hitbox = false;
 other_grounded = false;
+should_destroy = false;
 
 
 x = floor(x);
