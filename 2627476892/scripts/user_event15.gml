@@ -248,6 +248,30 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.20", "14 February, 2022");
+
+initHeader("Buffs:");
+initSection("+ Nair comes out 2 frames faster, F7 -> F5
++ Fair comes out 2 frame faster, F9 -> F7
++ Fair has 2 less landing lag, 7 -> 5
++ Uair no longer has angle flipper 6
++ Fstrong comes out 2 frames faster, F16 -> F14
++ Weight lowered, 1.1 -> 1.05
+");
+
+initHeader("Nerfs:");
+initSection("- Whiffing Nspecial has more endlag
+- All Nspecial projectiles now have a hitstun mult of 0.8
+- Max charge Fspecial has less bkb, 10 -> 9
+");
+
+initHeader("Changes:");
+initSection("= Fstrong's kb was adjusted, 10 * .9 -> 8 * 1.1
+= Uair's kb scaling was adjusted, .5 -> .2
+= Ustrong rework, the explosive now explodes on contact with an enemy and lasts a little bit longer
+");
+
+//
 initPatch("1.19", "12 January, 2022");
 
 initHeader("Buffs:");

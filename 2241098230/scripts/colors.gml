@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 5, 8, 9 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 20 );
 
 // Blue
 set_color_profile_slot( 1, 0, 255, 209, 196 ); //Skin
@@ -182,8 +182,26 @@ set_color_profile_slot( 17, 1, 47, 43, 42 ); //Hair
 set_color_profile_slot( 17, 2, 215, 223, 233 ); //Fire/Gold
 set_color_profile_slot( 17, 3, 47, 43, 42 ); //Pants
 set_color_profile_slot( 17, 4, 255, 255, 228 ); //White
-set_color_profile_slot( 17, 5,  248, 92, 105 ); //Fire Outline
+set_color_profile_slot( 17, 5, 248, 92, 105 ); //Fire Outline
 set_color_profile_slot( 17, 6, 215, 223, 233 ); //Smoke
+
+// Chad Win
+set_color_profile_slot( 18, 0, 190, 190, 190 ); //Skin
+set_color_profile_slot( 18, 1, 212, 84, 74 ); //Hair
+set_color_profile_slot( 18, 2, 255, 132, 0 ); //Fire/Gold
+set_color_profile_slot( 18, 3, 196, 39, 39 ); //Pants
+set_color_profile_slot( 18, 4, 255, 229, 251 ); //White
+set_color_profile_slot( 18, 5, 158, 26, 0 ); //Fire Outline
+set_color_profile_slot( 18, 6, 79, 97, 104 ); //Smoke
+
+// Might of the Embers
+set_color_profile_slot( 19, 0, 143, 149, 141 ); //Skin
+set_color_profile_slot( 19, 1, 196, 44, 69 ); //Hair
+set_color_profile_slot( 19, 2, 238, 220, 0 ); //Fire/Gold
+set_color_profile_slot( 19, 3, 97, 61, 48 ); //Pants
+set_color_profile_slot( 19, 4, 255, 255, 228 ); //White
+set_color_profile_slot( 19, 5, 173, 41, 3 ); //Fire Outline
+set_color_profile_slot( 19, 6, 255, 124, 0 ); //Smoke
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

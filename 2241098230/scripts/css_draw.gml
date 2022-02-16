@@ -142,6 +142,14 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[col,1] = "Genesis" // the name of the alternate color.
     ce[col,2] = "Genesis" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
+    ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
+    ce[col,1] = "Chad Win" // the name of the alternate color.
+    ce[col,2] = "Chad Win" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    col++;
+    ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
+    ce[col,1] = "Might of the Embers" // the name of the alternate color.
+    ce[col,2] = "Exetior" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    col++;
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

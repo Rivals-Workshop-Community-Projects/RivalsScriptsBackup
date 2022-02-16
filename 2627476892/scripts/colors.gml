@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 17 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 30 );
 
 // Green
 set_color_profile_slot( 1, 0, 70, 255, 95 ); //Hat
@@ -296,45 +296,35 @@ set_color_profile_slot( 26, 5, 255, 255, 255 ); //Symbol
 set_color_profile_slot( 26, 6, 255, 212, 194 ); //Hands
 set_color_profile_slot( 26, 7, 44, 47, 57 ); //Shoes
 
-// S-Gura
-set_color_profile_slot( 27, 0, 45, 122, 194 ); //Hat
-set_color_profile_slot( 27, 1, 255, 223, 209 ); //face
-set_color_profile_slot( 27, 2, 45, 122, 194 ); //body
-set_color_profile_slot( 27, 3, 230, 244, 255 ); //Hood
-set_color_profile_slot( 27, 4, 142, 168, 194 ); //Arms
-set_color_profile_slot( 27, 5, 209, 82, 82 ); //Symbol
-set_color_profile_slot( 27, 6, 255, 223, 209 ); //Hands
-set_color_profile_slot( 27, 7, 158, 208, 255 ); //Shoes
-
 // S-Falcon
-set_color_profile_slot( 28, 0, 230, 67, 59 ); //Hat
-set_color_profile_slot( 28, 1, 252, 220, 182 ); //face
-set_color_profile_slot( 28, 2, 81, 83, 137 ); //body
-set_color_profile_slot( 28, 3, 0, 0, 0 ); //Hood
-set_color_profile_slot( 28, 4, 215, 161, 99 ); //Arms
-set_color_profile_slot( 28, 5, 237, 207, 51 ); //Symbol
-set_color_profile_slot( 28, 6, 246, 235, 112 ); //Hands
-set_color_profile_slot( 28, 7, 246, 235, 112 ); //Shoes
+set_color_profile_slot( 27, 0, 230, 67, 59 ); //Hat
+set_color_profile_slot( 27, 1, 252, 220, 182 ); //face
+set_color_profile_slot( 27, 2, 81, 83, 137 ); //body
+set_color_profile_slot( 27, 3, 0, 0, 0 ); //Hood
+set_color_profile_slot( 27, 4, 215, 161, 99 ); //Arms
+set_color_profile_slot( 27, 5, 237, 207, 51 ); //Symbol
+set_color_profile_slot( 27, 6, 246, 235, 112 ); //Hands
+set_color_profile_slot( 27, 7, 246, 235, 112 ); //Shoes
 
 // S-Lancer Gaming
-set_color_profile_slot( 29, 0, 51, 51, 51 ); //Hat
-set_color_profile_slot( 29, 1, 235, 239, 255 ); //face
-set_color_profile_slot( 29, 2, 51, 51, 51 ); //body
-set_color_profile_slot( 29, 3, 105, 105, 105 ); //Hood
-set_color_profile_slot( 29, 4, 158, 158, 158 ); //Arms
-set_color_profile_slot( 29, 5, 51, 51, 51 ); //Symbol
-set_color_profile_slot( 29, 6, 51, 51, 51 ); //Hands
-set_color_profile_slot( 29, 7, 51, 51, 51 ); //Shoes
+set_color_profile_slot( 28, 0, 51, 51, 51 ); //Hat
+set_color_profile_slot( 28, 1, 235, 239, 255 ); //face
+set_color_profile_slot( 28, 2, 51, 51, 51 ); //body
+set_color_profile_slot( 28, 3, 105, 105, 105 ); //Hood
+set_color_profile_slot( 28, 4, 158, 158, 158 ); //Arms
+set_color_profile_slot( 28, 5, 51, 51, 51 ); //Symbol
+set_color_profile_slot( 28, 6, 51, 51, 51 ); //Hands
+set_color_profile_slot( 28, 7, 51, 51, 51 ); //Shoes
 
 // FTL
-set_color_profile_slot( 30, 0, 255, 213, 0 ); //Hat
-set_color_profile_slot( 30, 1, 224, 224, 224 ); //face
-set_color_profile_slot( 30, 2, 77, 77, 77 ); //body
-set_color_profile_slot( 30, 3, 0, 252, 244 ); //Hood
-set_color_profile_slot( 30, 4, 133, 133, 133 ); //Arms
-set_color_profile_slot( 30, 5, 255, 213, 0 ); //Symbol
-set_color_profile_slot( 30, 6, 0, 252, 244 ); //Hands
-set_color_profile_slot( 30, 7, 0, 252, 244 ); //Shoes
+set_color_profile_slot( 29, 0, 255, 213, 0 ); //Hat
+set_color_profile_slot( 29, 1, 224, 224, 224 ); //face
+set_color_profile_slot( 29, 2, 77, 77, 77 ); //body
+set_color_profile_slot( 29, 3, 0, 252, 244 ); //Hood
+set_color_profile_slot( 29, 4, 133, 133, 133 ); //Arms
+set_color_profile_slot( 29, 5, 255, 213, 0 ); //Symbol
+set_color_profile_slot( 29, 6, 0, 252, 244 ); //Hands
+set_color_profile_slot( 29, 7, 0, 252, 244 ); //Shoes
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -421,7 +421,10 @@ if(!(instance_exists(obj_article2) && obj_article2.player_id == id))
 with(pHitBox){
     if((attack == AT_EXTRA_3 && player_id == other.enemykirby) || (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1))
     {
-
+    	// Only one firecracker at once
+		with(player_id){
+			move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL],2);
+		}
 
         // Variables
         id_assigned = 0;

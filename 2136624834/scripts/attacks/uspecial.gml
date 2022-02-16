@@ -83,7 +83,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW_CREATION_FRAME, 7);
-set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 5);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -60);
 set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 3);

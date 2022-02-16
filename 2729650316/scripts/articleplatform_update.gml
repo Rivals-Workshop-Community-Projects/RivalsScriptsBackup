@@ -59,27 +59,49 @@ with(oPlayer)
         sent_down = false;
 }
 
-if(hitting_ground(0))
-{
-    free = false;
-    vsp = 0;
-    if(hitting_ground(-1))
-        y -= 2;
-}
-else if (free)
-    vsp += .5;
+// if(hitting_ground(0))
+// {
+//     free = false;
+//     vsp = 0;
+//     if(hitting_ground(-1))
+//         y -= 2;
+// }
+// else if (free)
+//     vsp += .5;
 
 if(vsp != 0) mask_index = asset_get("empty_sprite");
+else mask_index = sprite_get("table_mask");
 
+with(pHitBox)
+{
+    if(player_id == other.player_id)
+    {
+        if(attack == AT_DSPECIAL && hbox_num == 2)
+        {
+            other.hsp = floor(x-other.x);
+            // other.x = x;
+            other.y = y;
+            other.vsp = vsp;
+        }
+    }
+}
 if(destroyed)
 {
+    with(pHitBox)
+    {
+        if(player_id == other.player_id)
+        {
+            if(attack == AT_DSPECIAL && hbox_num == 2)
+                destroyed = true;
+        }
+    }
     instance_destroy();
     exit;
 }
 
-#define hitting_ground(y1)
-{
-    return(collision_rectangle(x-33,y+30+y1,x+33,y+34+y1,asset_get("par_block"),true,false) 
-    || collision_rectangle(x-33,y+30+y1,x+33,y+34+y1,asset_get("par_jumpthrough"),true,false) 
-    || collision_rectangle(x-33,y+30+y1,x+33,y+34+y1,asset_get("obj_article_platform"),true,false));
-}
+// #define hitting_ground(y1)
+// {
+//     return(collision_rectangle(x-33,y+30+y1,x+33,y+34+y1,asset_get("par_block"),true,false) 
+//     || collision_rectangle(x-33,y+30+y1,x+33,y+34+y1,asset_get("par_jumpthrough"),true,false) 
+//     || collision_rectangle(x-33,y+30+y1,x+33,y+34+y1,asset_get("obj_article_platform"),true,false));
+// }

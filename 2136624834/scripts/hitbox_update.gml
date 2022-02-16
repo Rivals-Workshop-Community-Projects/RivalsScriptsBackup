@@ -97,7 +97,7 @@ if attack == AT_FSTRONG  {
 	}
 	
 	if player_id.fstronghit > 1 && player_id.timefreeze < 20{
-		hsp = 1 * spr_dir
+		hsp = 1*spr_dir
 		hitbox_timer -= 1
 	}
 	

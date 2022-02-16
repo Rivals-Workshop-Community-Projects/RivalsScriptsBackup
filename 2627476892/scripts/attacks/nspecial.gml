@@ -19,7 +19,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 
 // endlag
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 10);
 
@@ -183,7 +183,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_X, 76);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_Y, -24);
 set_hitbox_value(AT_NSPECIAL, 5, HG_WIDTH, 130);
-set_hitbox_value(AT_NSPECIAL, 5, HG_HEIGHT, 80);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HEIGHT, 90);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_ANGLE, 0);
 set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_KNOCKBACK, 5);
@@ -231,7 +231,7 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_DAMAGE, 5);
 set_hitbox_value(AT_NSPECIAL, 7, HG_SHAPE, 1);
 set_hitbox_value(AT_NSPECIAL, 7, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 7, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_NSPECIAL, 7, HG_BASE_KNOCKBACK, 11);
+set_hitbox_value(AT_NSPECIAL, 7, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 7, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 7, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITPAUSE_SCALING, 0);
@@ -241,7 +241,7 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_MASK, sprite_get("spade_projectil
 set_hitbox_value(AT_NSPECIAL, 7, HG_HIT_SFX, sound_get("snd_damage"));
 set_hitbox_value(AT_NSPECIAL, 7, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_VSPEED, -6);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_VSPEED, -5);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -251,6 +251,7 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 7, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_NSPECIAL, 7, HG_DRIFT_MULTIPLIER, 0.1);
+set_hitbox_value(AT_NSPECIAL, 7, HG_HITSTUN_MULTIPLIER, 0.8);
 
 set_hitbox_value(AT_NSPECIAL, 8, HG_MUNO_HITBOX_NAME, "Down Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 8, HG_WINDOW, 7);
@@ -276,7 +277,7 @@ set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_MASK, sprite_get("spade_projectil
 set_hitbox_value(AT_NSPECIAL, 8, HG_HIT_SFX, sound_get("snd_damage"));
 set_hitbox_value(AT_NSPECIAL, 8, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_VSPEED, 6);
+set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_VSPEED, 5);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -287,6 +288,7 @@ set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_TECHABLE, 1);
+set_hitbox_value(AT_NSPECIAL, 8, HG_HITSTUN_MULTIPLIER, 0.8);
 
 set_hitbox_value(AT_NSPECIAL, 9, HG_MUNO_HITBOX_NAME, "Forward Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 9, HG_WINDOW, 8);
@@ -312,7 +314,7 @@ set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_MASK, sprite_get("spade_projectil
 set_hitbox_value(AT_NSPECIAL, 9, HG_HIT_SFX, sound_get("snd_damage"));
 set_hitbox_value(AT_NSPECIAL, 9, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_HSPEED, 6);
+set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_HSPEED, 5);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -322,6 +324,7 @@ set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_NSPECIAL, 9, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 9, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 9, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 9, HG_HITSTUN_MULTIPLIER, 0.8);
 
 set_hitbox_value(AT_NSPECIAL, 10, HG_MUNO_HITBOX_NAME, "Back Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 10, HG_WINDOW, 9);
@@ -347,7 +350,7 @@ set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_MASK, sprite_get("spade_projecti
 set_hitbox_value(AT_NSPECIAL, 10, HG_HIT_SFX, sound_get("snd_damage"));
 set_hitbox_value(AT_NSPECIAL, 10, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_HSPEED, -6);
+set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_HSPEED, -5);
 set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -357,3 +360,4 @@ set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_NSPECIAL, 10, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 10, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_NSPECIAL, 10, HG_DRIFT_MULTIPLIER, 0.1);
+set_hitbox_value(AT_NSPECIAL, 10, HG_HITSTUN_MULTIPLIER, 0.8);

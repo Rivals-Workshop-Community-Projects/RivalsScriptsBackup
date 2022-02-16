@@ -12,7 +12,7 @@ state = 0;                                          //The behavior state the art
 state_timer = 0;                                    //The point in time during that state the article should start in. (0 = beginning)
 hitstop = 0;                                        //The frames remaining in hitpause. Hitpause automatically prevents movement
 hsp = 0;                                            //The horizontal speed of the article. Multiply by spr_dir to correctly handle forward (+) or backward (-) movement
-vsp = 0.1;                                            //The vertical speed of the article.
+vsp = 0;                                            //The vertical speed of the article.
 depth = player_id.depth - 2;
 bonus_damage = false;
 destroyed = false;

@@ -75,6 +75,7 @@ if (attack == AT_NSPECIAL){
             if (shield_pressed || jump_pressed){
                 nspecial_charge = 0;
                 sound_stop(sound_get("nspecial_charge"));
+                sound_stop(sound_get("voice_nspecial_charge"));
             }
             if (special_pressed){
                 window = 3;
@@ -104,10 +105,12 @@ if (attack == AT_NSPECIAL){
         if (window_timer == 1){
             if (nspecial_charge == 4){
                 sound_stop(sound_get("nspecial_charge"));
+                sound_stop(sound_get("voice_nspecial_charge"));
                 sound_play(sound_get("nspecial_lunge_large"));
             }
             else {
                 sound_stop(sound_get("nspecial_charge"));
+                sound_stop(sound_get("voice_nspecial_charge"));
                 sound_play(sound_get("nspecial_lunge_small"));
             }
         }
@@ -122,6 +125,7 @@ if (attack == AT_NSPECIAL){
         }
         if (window_timer == 1){
             sound_stop(sound_get("nspecial_charge"));
+            sound_stop(sound_get("voice_nspecial_charge"));
             sound_play(asset_get("sfx_swipe_heavy1"));
         }
     }
@@ -129,6 +133,9 @@ if (attack == AT_NSPECIAL){
     if (window == 5 || window == 8){
         nspecial_charge = 0;
         reset_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS);
+    }
+    if (star_cancel == true){
+    	attack = AT_NSPECIAL_2;
     }
 }
 
@@ -192,6 +199,9 @@ if (attack == AT_FSPECIAL){
         if (window_timer <= 8){
             vsp = -3;
         }
+    }
+    if (star_cancel == true){
+    	attack = AT_FSPECIAL_2;
     }
     
     if (phone_cheats[cheat_fspecial_cancel] && window > 1) iasa_script();
@@ -258,6 +268,9 @@ if (attack == AT_USPECIAL){
         if (!free){
             invincible = true;
         }
+    }
+    if (star_cancel == true){
+    	attack = AT_USPECIAL_2;
     }
 }
 
@@ -350,13 +363,19 @@ if (attack == AT_DSPECIAL){
 }
 
 if (attack != AT_NSPECIAL || attack != AT_FSPECIAL || attack != AT_USPECIAL || attack != AT_DSPECIAL){
-    if (star_meter >= 1 && has_hit == true){
+    if (star_meter >= 1 && has_hit == true && hitpause){
         can_special = true;
+        star_cancel = true;
+    }
+    else {
+    	star_cancel = false;
+    	has_hit = false;
     }
 }
 
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL|| attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL_2 || attack == AT_USPECIAL_2){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL_2 || attack == AT_USPECIAL_2){
     can_special = false;
+    star_cancel = false;
 }
 
 if (attack == AT_TAUNT){
@@ -370,5 +389,144 @@ if (attack == AT_TAUNT){
         if (window_timer == 32){
             sound_play(asset_get("sfx_swipe_medium1"));
         }
+    }
+}
+
+if (!muted && !hitpause){
+    if (attack == AT_JAB){
+        if (window == 2 && window_timer == 1){
+            var randomvoice = random_func(0, 5, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_light1"));
+		    } else if (randomvoice == 1){
+		        sound_play(sound_get("voice_attack_light2"));
+		    } else if (randomvoice == 2){
+		        sound_play(sound_get("voice_attack_jab1"));
+		    }
+		}
+		if (window == 5 && window_timer == 1){
+		    var randomvoice = random_func(0, 5, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_light1"));
+		    } else if (randomvoice == 1){
+		        sound_play(sound_get("voice_attack_light2"));
+		    } else if (randomvoice == 2){
+		        sound_play(sound_get("voice_attack_jab2"));
+		    }
+		}
+		if (window == 7 && window_timer == 1){
+		    var randomvoice = random_func(0, 5, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_light1"));
+		    } else if (randomvoice == 1){
+		        sound_play(sound_get("voice_attack_light2"));
+		    } else if (randomvoice == 2){
+		        sound_play(sound_get("voice_attack_jab3"));
+		    }
+		}
+    }
+    if (attack == AT_DTILT || attack == AT_NAIR || attack == AT_BAIR){
+        if (window == 1 && window_timer == 1){
+            var randomvoice = random_func(0, 3, true);
+            if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_medium1"));
+		    } else if (randomvoice == 1){
+		        sound_play(sound_get("voice_attack_medium2"));
+		    }
+		}
+    }
+    if (attack == AT_FTILT || attack == AT_UTILT || attack == AT_UAIR || attack == AT_DAIR || attack == AT_FAIR || attack == AT_DATTACK){
+        if (window == 2 && window_timer == 2){
+            var randomvoice = random_func(0, 3, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_medium1"));
+		    } else if (randomvoice == 1){
+		        sound_play(sound_get("voice_attack_medium2"));
+		    }
+        }
+    }
+    if (attack == AT_FSTRONG){
+        if (window_timer == 2 && (window == 3 || window == 6)){
+            var randomvoice = random_func(0, 2, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_heavy1"));
+		    }
+        }
+        if (window == 9 && window_timer == 2){
+            var randomvoice = random_func(0, 2, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_medium1"));
+		    }
+        }
+    }
+    if (attack == AT_USTRONG){
+        if (window == 3 && window_timer == 2){
+            var randomvoice = random_func(0, 2, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_heavy2"));
+		    }
+        }
+    }
+    if (attack == AT_DSTRONG){
+        if (window == 3 && window_timer == 2){
+            var randomvoice = random_func(0, 2, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_attack_heavy3"));
+		    }
+        }
+    }
+    if (attack == AT_NSPECIAL){
+        if (window == 1 && window_timer == 1){
+            sound_play(sound_get("voice_nspecial_charge"));
+        }
+        if (window_timer == 1 && (window == 4 || window == 7)){
+            if (nspecial_charge == 4){
+                sound_play(sound_get("voice_nspecial_attack2"));
+            } else{
+                sound_play(sound_get("voice_nspecial_attack1"));
+            }
+        }
+    }
+    if (attack == AT_FSPECIAL){
+        if (window == 3 && window_timer == 1){
+            sound_play(sound_get("voice_fspecial"));
+        }
+    }
+    if (attack == AT_USPECIAL && window == 1 && window_timer == 1){
+        sound_play(sound_get("voice_upspecial"));
+    }
+    if (attack == AT_DSPECIAL){
+        if (window == 8){
+            sound_play(sound_get("voice_dspecial"));
+        }
+    }
+    if (attack == AT_NSPECIAL_2 || attack == AT_USPECIAL_2){
+        if (window_timer == 3 && (window == 2 || window == 5)){
+            var randomvoice = random_func(0, 3, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_star1"));
+		    } else if (randomvoice == 1){
+		        sound_play(sound_get("voice_star2"));
+		    } else if (randomvoice == 2){
+		        sound_play(sound_get("voice_star3"));
+		    }
+        }
+    }
+    if (attack == AT_FSPECIAL_2){
+        if (window == 4 && window_timer == 4){
+            var randomvoice = random_func(0, 3, true);
+		    if (randomvoice == 0){
+		        sound_play(sound_get("voice_star1"));
+		    } else if (randomvoice == 1){
+		        sound_play(sound_get("voice_star2"));
+		    } else if (randomvoice == 2){
+		        sound_play(sound_get("voice_star3"));
+		    }
+        }
+    }
+    if (attack == AT_TAUNT){
+    	if (window == 1 && window_timer == 1){
+    		sound_play(sound_get("voice_taunt"));
+    	}
     }
 }

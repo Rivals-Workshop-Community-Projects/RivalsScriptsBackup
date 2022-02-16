@@ -11,7 +11,7 @@
 
 // Physical size
 char_height         = 46;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1.1;		// 0.9  -  1.2
+knockback_adj       = 1.05;		// 0.9  -  1.2
 small_sprites = 1;
 
 // Ground movement
@@ -198,11 +198,11 @@ if(alt == 6){ //susie
 	lancer_laugh = sound_get("snd_momlaugh");
 }if(alt == 17){ //sans
 	lancer_laugh = sound_get("snd_sanslaugh");
-}if(alt == 28){ //falcon
+}if(alt == 27){ //falcon
 	lancer_laugh = sound_get("snd_ouwoouh");
 }if(alt == 26){ //the baby
 	lancer_laugh = sound_get("snd_babymario");
-}if(alt == 30){ //ftl
+}if(alt == 29){ //ftl
 	lancer_laugh = sound_get("ftl_laugh");
 }
 if(alt == 0){

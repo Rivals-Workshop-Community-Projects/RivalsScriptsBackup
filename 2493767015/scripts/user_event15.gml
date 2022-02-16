@@ -376,13 +376,13 @@ with phone{
 	initTip("Stars");
 	initTipWords("Instead of having the KO Meter from the arcade, the Star mechanic from the home release is used. Getting a star can be done by these five methods:
 	Finishing a 3-Hit combo with Ftilt, Dattack, Fair, Bair, Dair, Strongs, Fspecial, and Uspecial.
-	Dodging 3 times with Dspecial and performing a counterattack.
+	Performing 2 counterattacks in a row.
 	Performing a Strong to intercept an opponent's attack.
 	Parrying an attack.
 	Hitting an opponent while they're taunting.
 	");
 	initTipImage_ext(player_id.spr_starempty, 1, fa_center, 1, c_white, 0, 10, 90, 0, 40);
-	initTipWords("After getting at least one star, all Specials that aren't Dspecial are enhanced and can be special cancelled out of!
+	initTipWords("After getting at least one star, all Specials (that aren't Down Special) become Star Enhanced! They can be performed by pressing Special and Attack at the same time, or by performing a Special after a normal attack.
 	Nspecial will be performed instantly with no charge. Damage and knockback will scale based on the number of stars.
 	Fspecial starts up quicker and sends the opponent downwards. Damage and knockback will also scale based on the number of stars.
 	Uspecial will send Mac farther than normal with an extra spin in the middle of the attack. Recovery distance will scale based on the number of stars.");
@@ -421,6 +421,25 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.6", "February 12, 2022");
+	initPatchWords_ext("Star System:
+-Star Enhanced specials can only be performed by pressing A and B at the same time. This allows Mac to use his normal specials without spending any stars! Cancelling normals into Star specials still only need a B press to activate.
+
+Down Tilt:
+-Animation and hitbox adjusted.
+
+Down Strong:
+-Animation adjusted.
+
+Down Special:
+-Dodge requirement for star removed. If you land the countermove of Down Special twice without losing a stock, you will be awarded a star.
+
+Misc.:
+-Added 9 new colors! (blame Zerks)
+-Portrait redrawn.
+-New sound plays when selecting Mac.
+-Mac now has a voiced mode! (feat. Doc Louis from the hit Club Nintendo game, Doc Louis's Punch Out)", fa_left, c_white, 0, 0);
 	
 	initPatch("1.5", "July 9, 2021");
 	initPatchWords_ext("Up Strong:

@@ -62,7 +62,7 @@ sprite_change_offset("taunt2", 20, 37, true);//
 sprite_change_offset("phone_open", 20, 37, true);//
 sprite_change_offset("we_do_a_little_trolling", 45, 45);//
 sprite_change_offset("explosion", 45, 65);//
-sprite_change_offset("thrash_machine", 40, 74);//
+sprite_change_offset("thrash_machine", 40, 44);//
 sprite_change_offset("beeg_explosion", 67, 97);//
 sprite_change_offset("we_do_a_little_trolling_2", 70, 70);//
 

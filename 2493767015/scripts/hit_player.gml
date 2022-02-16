@@ -52,11 +52,14 @@ if (attack == AT_FTILT || attack == AT_DATTACK || attack == AT_FAIR || attack ==
 	}
 }
 
-if (attack == AT_DSPECIAL && my_hitboxID.hbox_num == 5 && times_dodged >= 3){
-	times_dodged = 0;
-	star_meter++;
-	sound_play(sound_get("star_get"));
-	spawn_hit_fx(x-100*spr_dir, y-128, star_get);
+if (attack == AT_DSPECIAL && my_hitboxID.hbox_num == 5){
+	times_countered++;
+	if (times_countered == 2){
+		times_countered = 0;
+		star_meter++;
+		sound_play(sound_get("star_get"));
+		spawn_hit_fx(x-100*spr_dir, y-128, star_get);
+	}
 }
 
 if (attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_USTRONG){
@@ -69,9 +72,9 @@ if (attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_USTRONG){
 
 if (hit_player_obj.prev_state == PS_ATTACK_GROUND){
 	if (hit_player_obj.attack == AT_TAUNT){
-	star_meter++;
-	sound_play(sound_get("star_get"));
-	spawn_hit_fx(x-100*spr_dir, y-128, star_get);
+		star_meter++;
+		sound_play(sound_get("star_get"));
+		spawn_hit_fx(x-100*spr_dir, y-128, star_get);
+		}
 	}
-}
 }

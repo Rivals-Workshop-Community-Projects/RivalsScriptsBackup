@@ -58,6 +58,52 @@ iny = y
 	
 }
 
+with (asset_get("oPlayer")) {
+  if "forze" in self {
+  	if forze = 1 {
+  		can_tech = false
+  		with other {
+  			fz1 = spawn_hit_fx(other.x + other.hsp ,other.y + other.vsp - 30,forze1)
+  			fz1.depth = other.depth + 1
+  			fz1.spr_dir = 1
+  			fz2 = spawn_hit_fx(other.x + other.hsp ,other.y + other.vsp - 30,forze2)
+  			fz2.depth = other.depth - 1
+  			fz2.spr_dir = 1
+  			if get_gameplay_time()%3 == 0 {
+  			spawn_hit_fx( other.x - (20) + random_func(1, 40, true) , other.y - 50 + random_func(2, 40, true) , tauntpar1 )
+  			}
+  		}
+  		
+  		if state == PS_DEAD or state == PS_RESPAWN {
+  			forze = 0
+  		}
+		
+  		if !hitpause && visible && (!free or state_cat != SC_HITSTUN) {
+  			sound_play(asset_get("sfx_buzzsaw_hit"),false, noone, 1);
+  			invincible = false 
+  			hitpause = false 
+  			invince_time = 0
+  			set_attack(PS_IDLE)
+  			with other {
+  				spawn_hit_fx(other.x ,other.y - 30,302)
+  				create_hitbox(AT_NSPECIAL,11,other.x,other.y - 30)
+  			}
+  		}
+  		
+  		
+  	}
+  	
+  		if forze = -2 {
+  			hitpause = true 
+  			hitstop = 15
+  			old_hsp = 0
+  			old_vsp = -7.5
+  			forze = 0
+  		}
+  		
+  }	
+	
+}
 /*
 if(get_gameplay_time() == 2){
 	
@@ -279,11 +325,11 @@ if fstronghit > 0 {
 
 set_victory_theme(sound_get("Drak"));
 
-if timestop < 100 and move_cooldown[AT_DSPECIAL] < 5  {
-	move_cooldown[AT_DSPECIAL] = 5
+if timestop < 30 or free {
+	move_cooldown[AT_DSPECIAL] = 2
 }
 
-if timestop > 100 or timestop < 100 && timestop > 95 {
+if timestop > 100 or (timestop < 100 && timestop > 95) {
 		sound_play(sound_get("RI2"));
 	timestop = 100
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 306 )

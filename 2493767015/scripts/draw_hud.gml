@@ -21,3 +21,7 @@ if (phone_cheats[cheat_combo] = 1){
     draw_debug_text(temp_x, temp_y-70, "Combo: " + string(combo_counter));
     draw_debug_text(temp_x, temp_y-30, "Dodges: " + string(times_dodged));
 }
+
+if (state = PS_SPAWN){
+    draw_debug_text(temp_x, temp_y - 70, "Press TAUNT for Voiced Mode.");
+}

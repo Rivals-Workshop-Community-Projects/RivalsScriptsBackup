@@ -13,7 +13,7 @@ if get_player_color(player) == 7 {
 
 if attack == AT_DSPECIAL && attacking && !free{
     
-    if window < 5 {
+    if window < 5 && state_timer > 8 {
 
          
     	  gpu_set_blendmode(bm_add);
@@ -38,9 +38,12 @@ if attack == AT_DSPECIAL && attacking && !free{
              }
          }
        }
-       			draw_set_alpha(state_timer/150);
+       	draw_set_alpha((state_timer - 5)/150);
         draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
     	draw_set_alpha(1);
+    	
+    	
+    	draw_sprite_ext(sprite_index, image_index , x , y  , spr_dir, 1, 0 , -1 , 0.4);
    
     }
     

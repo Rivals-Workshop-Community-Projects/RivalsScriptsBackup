@@ -168,7 +168,10 @@ nspecial_speed = 0;
 dodge_actions = false;
 times_dodged = 0;
 already_dodged = false;
+times_countered = 0;
 star_meter = 0;
+star_cancel = false;
+muted = true;
 
 boxing_title = "Bruiser from
 the Bronx"

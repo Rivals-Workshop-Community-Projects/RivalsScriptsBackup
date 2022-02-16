@@ -284,7 +284,7 @@ if(attack == AT_FSPECIAL){
     		    		spawn_hit_fx(x, y, vfx_afterimage);
     		    			}
     		}	
-    }    if(window == 5 && window_timer = 16){
+    }    if(window == 5 && window_timer = phone_window_end){
     	var dust = spawn_hit_fx(x, y - 34, dust_effect);
         dust.depth = -10;
     }    if(window == 3 && window_timer = 18){

@@ -32,9 +32,33 @@ if attack == AT_EXTRA_3 {
 	
 }
 
+if attack == AT_DTHROW && !hitpause  {
+	if window == 4 && window_timer == 1 {
+	 ts1 = spawn_hit_fx(x,y-40,306)
+	 ts2 = spawn_hit_fx(x,y-40,304)
+	}
+	if window == 4 && window_timer == 6 {
+		create_hitbox(AT_DTHROW , 1 , x, y );
+		set_attack(AT_UTHROW)
+				sound_stop(sound_get("RI"));
+		sound_play(sound_get("RI"),false,noone,1,.6);
+		sound_play(asset_get("sfx_spin"),false,noone,1,.6);
+		shake_camera(4,6)
+	}
+	
+}
 
 if attack == AT_DSPECIAL && !hitpause  {
 	
+    if window == 1 && (timestop < 100 or (state_timer == 8 && !special_down)) {
+     set_attack(AT_DTHROW)
+     if timestop <= 30 {
+     	timestop = 0
+     } else {
+     	timestop -= 22
+     }
+    }
+
 	set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 1);
 	
 	if vsp > 0 {
@@ -54,27 +78,7 @@ if window == 5 && window_timer == 1 {
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 306 )
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 302 )
 }
-if window == 5 && window_timer == 2 && has_hit_player{
-	
-	finaldir = spr_dir
-	
-	startdir = hit_player_obj.spr_dir
 
-	
-	create_hitbox(AT_USPECIAL , 3 , x, y );
-	timehit = 0
-	timestop = 0
-	sound_stop(sound_get("RI"));
-	suppress_stage_music( 0, 0.001 );
-	sound_play(sound_get("RI"));
-	sound_play(sound_get("timestop"),false, noone, 2);
-	sound_play(asset_get("sfx_ori_charged_flame_charge"),false, noone, 0.5,1);
-	sound_play(asset_get("sfx_ori_charged_flame_charge"),false, noone, 0.5,0.9);
-	sound_play(asset_get("sfx_spin"),false, noone, 1.4,0.2);
-	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 306 )
-	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 302 )
-	timefreeze = 360
-}
 
 if window == 5 && window_timer == 2 && !has_hit_player{
 	timestop = 60
@@ -665,9 +669,10 @@ if attack == AT_NSPECIAL {
         if timestop > 10 {
 		ncharge += 1 
         } else {
+        	timestop = 0
         set_attack (AT_FSTRONG)
         window = 5
-        window_timer = 0
+        window_timer = 6
         }
 		
 			if window_timer % 3 == 0 {
@@ -698,7 +703,7 @@ if attack == AT_NSPECIAL {
 		}
 	}
 	
-	if window == 4 && window_timer == 14 {
+	if window == 4 && window_timer == 12 {
 		
 	
 		window = 5 
@@ -708,7 +713,7 @@ if attack == AT_NSPECIAL {
 	}
 	
 	
-if !hitpause and ((window == 3 && window_timer == 9) or (window == 5 && window_timer == 1)){
+if !hitpause and ((window == 3 && window_timer == 4) or (window == 5 && window_timer == 1)){
 	   move_cooldown[AT_NSPECIAL] = 30
 	   
 	if ncharge < 20 {

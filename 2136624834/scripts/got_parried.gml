@@ -16,7 +16,7 @@ if (my_hitboxID.attack == AT_FSTRONG) {
     }
     
     
-timestop -= 4
+timestop *= 0.58
 
 
 

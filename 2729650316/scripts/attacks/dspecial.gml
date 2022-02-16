@@ -17,7 +17,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
-set_num_hitboxes(AT_DSPECIAL, 0);
+set_num_hitboxes(AT_DSPECIAL, 2);
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 2);
@@ -36,3 +36,19 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
+
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 99999);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, -1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 0);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("table"));
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("table"));
+set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, -0.1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GRAVITY, 1);

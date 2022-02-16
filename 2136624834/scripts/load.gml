@@ -81,10 +81,14 @@ sprite_change_offset("sno2", 8, 8);
 sprite_change_offset("flake1", 200, 200);
 sprite_change_offset("flake2", 150, 150);
 sprite_change_offset("flake3", 46, 50);
+sprite_change_offset("flake4", 46, 50);
 
 sprite_change_offset("flakedio1", 110, 120);
 sprite_change_offset("flakedio2", 90, 120);
 sprite_change_offset("flakedio3", 200, 200);
+sprite_change_offset("flakedio4", 200, 200);
+
+
 
 sprite_change_offset("plat", 32, 10);
 

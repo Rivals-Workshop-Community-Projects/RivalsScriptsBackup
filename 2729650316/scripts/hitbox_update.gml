@@ -30,7 +30,15 @@ if(attack == AT_USPECIAL_2)
         }
     }
 }
-
+if(attack == AT_DSPECIAL && hbox_num == 2)
+{
+    if((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_DSPECIAL && player_id.window == 1|| player_id.state == PS_RESPAWN || was_parried && !free)
+        destroyed = true;
+    proj_break = 1;
+    for(i = 0; i < 4; i++)
+        can_hit[i+1] = false;
+    if(!free) {grarv = 0 vsp = 0;} else grav = 1;
+}
 if(attack == AT_NSPECIAL)
 {
     depth = 10;

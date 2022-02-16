@@ -120,7 +120,7 @@ introResetBool = false;
 // Firecrackers
 can_throw = false;
 NSFC = noone;
-firecracker_speed = 10; // 13
+firecracker_speed = 8; // 13
 default_firecracker_angle = 15;
 firecracker_angle = 65;
 fc_bounce_timer = 34;
@@ -138,7 +138,7 @@ fc_effect = hit_fx_create( sprite_get( "explosion_single" ), 7 );
 party_effect = hit_fx_create( sprite_get( "party_boom" ), 28 );
 party_has_moved = false;
 
-fc_lifetime = 85; // 75
+fc_lifetime = 100; // 85
 
 fc_string = "firecracker_single";
 

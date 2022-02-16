@@ -71,7 +71,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.1);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, -1);

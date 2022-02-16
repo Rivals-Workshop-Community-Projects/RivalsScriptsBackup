@@ -1,11 +1,11 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.19";
-patch_day = "12";
-patch_month = "JAN";
+patch_ver = "1.20";
+patch_day = "14";
+patch_month = "FEB";
  
-var num_alts = 31;
+var num_alts = 30;
 var alt_cur = get_player_color(player);
  
 //Alt name init. var doesn't work with arrays lol
@@ -37,10 +37,9 @@ alt_name[23]  = "Mean Bean";
 alt_name[24]  = "The J in Jevil"; 
 alt_name[25]  = "30 Minutes or Less"; 
 alt_name[26]  = "Back in Business"; 
-alt_name[27]  = "Cyber Shark";
-alt_name[28]  = "Show me your Moves!"; 
-alt_name[29]  = "Lancer Gaming"; 
-alt_name[30]  = "Faster than Lancer"; 
+alt_name[27]  = "Show me your Moves!"; 
+alt_name[28]  = "Lancer Gaming"; 
+alt_name[29]  = "Faster than Lancer"; 
  
 //Patch
  
@@ -84,7 +83,7 @@ if (get_player_color(player)==19){
     }
     
 //Special Icon
-if (get_player_color(player)== 28 || get_player_color(player)== 29){
+if (get_player_color(player)== 27 || get_player_color(player)== 28){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
     
@@ -96,7 +95,7 @@ if (get_player_color(player)==31){
    
 //rainbow 
 if !("hue" in self) hue = 0
-if get_player_color(player) = 29 {
+if get_player_color(player) = 28 {
 //remember rivals starts with 0
 	hue+=1 
 	if hue>255 hue-=255;
@@ -108,10 +107,10 @@ if get_player_color(player) = 29 {
 	//shift that colour by Hue, make sure it also loops
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	//make a gamemaker color variable using the new hue
-	set_color_profile_slot(29, 0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	set_color_profile_slot(29, 5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	set_color_profile_slot(29, 6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	set_color_profile_slot(29, 7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_color_profile_slot(28, 0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_color_profile_slot(28, 5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_color_profile_slot(28, 6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_color_profile_slot(28, 7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 
 
 
@@ -124,10 +123,10 @@ if get_player_color(player) = 29 {
 	//kirby's feet keep the same hue as his skin
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 	//make a gamemaker color variable using the new hue
-	set_color_profile_slot(29, 0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	set_color_profile_slot(29, 5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-    set_color_profile_slot(29, 6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-    set_color_profile_slot(29, 7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_color_profile_slot(28, 0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_color_profile_slot(28, 5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+    set_color_profile_slot(28, 6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+    set_color_profile_slot(28, 7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 	//set the new color using rgb values from the gamemaker color
 	}
 //Keep repeating for every slot

@@ -43,6 +43,7 @@ fver = 0
 songplay = 0
 songtimer = 0
 
+timestop2 = 0
 timestop = 0
 timehit = 0
 
@@ -141,6 +142,12 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+forze1 = hit_fx_create( sprite_get( "forze1" ), 1);
+sprite_change_offset("forze1", 50, 50);
+
+forze2 = hit_fx_create( sprite_get( "forze2" ), 1);
+sprite_change_offset("forze2", 50, 50);
 
 tauntpar1 = hit_fx_create( sprite_get( "tauntpar1" ), 28);
 sprite_change_offset("tauntpar1", 30, 30);
