@@ -14,11 +14,11 @@ if (get_color_profile_slot_r(1, 0) == 255 ) {
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.3";
+patch_ver = "1.5";
 patch_day = "28";
 patch_month = "November";
  
-var num_alts = 26;
+var num_alts = 32;
 var alt_cur = get_player_color(player);
  
  
@@ -51,6 +51,11 @@ alt_name[22] = "SuccDrill";
 alt_name[23] = "VaporDrill";
 alt_name[24] = "RickDrill";
 alt_name[25] = "BLMDrill";
+alt_name[26] = "SamDrill";
+alt_name[27] = "QDrill";
+alt_name[28] = "ClawDrill";
+alt_name[29] = "RexDrill";
+alt_name[30] = "PrimeDrill";
  
 //Patch
  
@@ -68,16 +73,17 @@ rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
 var draw_y = -1;
 for(i = 0; i < num_alts; i++){
 	var draw_x = temp_x + 2 + 10 * i;
-	if(i < 13){
+	if(i < 16){
 		draw_y = 4;
 	} else {
-		draw_x -= temp_x + 2 + 10 * 11 - 4;
+		draw_x -= temp_x * 7 + 6;
 		draw_y = -1;
 	}
     var draw_color = (i == alt_cur) ? c_white : c_gray;
     
     rectDraw(draw_x, temp_y + 137+draw_y, draw_x + 7, temp_y + 140+draw_y, draw_color);
 }
+ 
  
 draw_set_halign(fa_left);
  

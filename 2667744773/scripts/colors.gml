@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 11, 70, 2 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 31 );
 
 // KakunaDrill
 set_color_profile_slot( 1, 0, 255, 225, 0 ); //yellow
@@ -34,7 +34,7 @@ set_color_profile_slot( 1, 1, 0, 0, 0 ); //red
 set_color_profile_slot( 1, 2, 255, 179, 0 ); //black
 set_color_profile_slot( 1, 3, 255, 230, 138 ); //white
 set_color_profile_slot( 1, 4, 255, 225, 0 ); //skin
-set_color_profile_slot( 1, 5, 97, 247, 42 ); //Green
+set_color_profile_slot( 1, 5, 194, 38, 224 ); //Green
 
 // CartipieDrill
 set_color_profile_slot( 2, 0, 0, 130, 0 ); //yellow
@@ -42,7 +42,7 @@ set_color_profile_slot( 2, 1, 255, 0, 0 ); //red
 set_color_profile_slot( 2, 2, 0, 194, 0 ); //black
 set_color_profile_slot( 2, 3, 232, 204, 158 ); //white
 set_color_profile_slot( 2, 4, 194, 146, 33 ); //skin
-set_color_profile_slot( 2, 5, 97, 247, 42 ); //Green
+set_color_profile_slot( 2, 5, 197, 201, 227 ); //Green
 
 // ButterDrill
 set_color_profile_slot( 3, 0, 80, 38, 112 ); //yellow
@@ -50,7 +50,7 @@ set_color_profile_slot( 3, 1, 255, 0, 0 ); //red
 set_color_profile_slot( 3, 2, 51, 173, 255 ); //black
 set_color_profile_slot( 3, 3, 213, 202, 232 ); //white
 set_color_profile_slot( 3, 4, 247, 223, 215 ); //skin
-set_color_profile_slot( 3, 5, 97, 247, 42 ); //Green
+set_color_profile_slot( 3, 5, 78, 204, 230 ); //Green
 
 // GigaButterDrill
 set_color_profile_slot( 4, 0, 59, 18, 89 ); //yellow
@@ -58,21 +58,21 @@ set_color_profile_slot( 4, 1, 214, 0, 0 ); //red
 set_color_profile_slot( 4, 2, 0, 145, 85 ); //black
 set_color_profile_slot( 4, 3, 184, 209, 203 ); //white
 set_color_profile_slot( 4, 4, 219, 150, 112 ); //skin
-set_color_profile_slot( 4, 5, 97, 247, 42 ); //Green
+set_color_profile_slot( 4, 5, 224, 7, 7 ); //Green
 
 // SytherDrill
-set_color_profile_slot( 5, 0, 48, 150, 68 ); //yellow
-set_color_profile_slot( 5, 1, 255, 226, 130 ); //red
-set_color_profile_slot( 5, 2, 255, 226, 130 ); //black
+set_color_profile_slot( 5, 0, 255, 226, 130 ); //yellow
+set_color_profile_slot( 5, 1, 38, 85, 112 ); //red
+set_color_profile_slot( 5, 2, 48, 150, 68 ); //black
 set_color_profile_slot( 5, 3, 151, 176, 144 ); //white
 set_color_profile_slot( 5, 4, 232, 133, 79 ); //skin
-set_color_profile_slot( 5, 5, 97, 247, 42 ); //Green
+set_color_profile_slot( 5, 5, 145, 247, 71 ); //Green
 
 // ScizorDrill
-set_color_profile_slot( 6, 0, 196, 50, 50 ); //yellow
+set_color_profile_slot( 6, 0, 212, 37, 36 ); //yellow
 set_color_profile_slot( 6, 1, 255, 170, 0 ); //red
-set_color_profile_slot( 6, 2, 69, 77, 69 ); //black
-set_color_profile_slot( 6, 3, 144, 135, 163 ); //white
+set_color_profile_slot( 6, 2, 94, 39, 39 ); //black
+set_color_profile_slot( 6, 3, 216, 170, 168 ); //white
 set_color_profile_slot( 6, 4, 255, 199, 140 ); //skin
 set_color_profile_slot( 6, 5, 0, 255, 0 ); //Green
 
@@ -98,7 +98,7 @@ set_color_profile_slot( 9, 1, 46, 36, 15 ); //red
 set_color_profile_slot( 9, 2, 46, 36, 15 ); //black
 set_color_profile_slot( 9, 3, 252, 248, 169 ); //white
 set_color_profile_slot( 9, 4, 252, 248, 169 ); //skin
-set_color_profile_slot( 9, 5, 0, 255, 0 ); //Green
+set_color_profile_slot( 9, 5, 252, 248, 169 ); //Green
 
 // Gen2
 set_color_profile_slot( 10, 0, 168, 115, 0 ); //yellow
@@ -106,7 +106,7 @@ set_color_profile_slot( 10, 1, 255, 0, 20 ); //red
 set_color_profile_slot( 10, 2, 54, 11, 11 ); //black
 set_color_profile_slot( 10, 3, 255, 222, 181 ); //white
 set_color_profile_slot( 10, 4, 255, 184, 97 ); //skin
-set_color_profile_slot( 10, 5, 0, 255, 0 ); //Green
+set_color_profile_slot( 10, 5, 255, 184, 97 ); //Green
 
 // QueenBeeDrill
 set_color_profile_slot( 11, 0, 107, 59, 0 ); //yellow
@@ -114,7 +114,7 @@ set_color_profile_slot( 11, 1, 255, 0, 204 ); //red
 set_color_profile_slot( 11, 2, 48, 20, 0 ); //black
 set_color_profile_slot( 11, 3, 245, 201, 255 ); //white
 set_color_profile_slot( 11, 4, 255, 213, 0 ); //skin
-set_color_profile_slot( 11, 5, 0, 255, 0 ); //Green
+set_color_profile_slot( 11, 5, 232, 201, 0 ); //Green
 
 // KirbyDrill
 set_color_profile_slot( 12, 0, 255, 89, 192 ); //yellow
@@ -138,7 +138,7 @@ set_color_profile_slot( 14, 1, 36, 36, 36 ); //red
 set_color_profile_slot( 14, 2, 28, 28, 28 ); //black
 set_color_profile_slot( 14, 3, 163, 207, 255 ); //white
 set_color_profile_slot( 14, 4, 247, 223, 215 ); //skin
-set_color_profile_slot( 14, 5, 0, 255, 0 ); //Green
+set_color_profile_slot( 14, 5, 0, 225, 255 ); //Green
 
 // BarryDrill
 set_color_profile_slot( 15, 0, 255, 204, 0 ); //yellow
@@ -146,7 +146,7 @@ set_color_profile_slot( 15, 1, 156, 80, 0 ); //red
 set_color_profile_slot( 15, 2, 36, 18, 0 ); //black
 set_color_profile_slot( 15, 3, 217, 196, 119 ); //white
 set_color_profile_slot( 15, 4, 255, 204, 0 ); //skin
-set_color_profile_slot( 15, 5, 0, 255, 0 ); //Green
+set_color_profile_slot( 15, 5, 255, 204, 0 ); //Green
 
 // WriggleDrill
 set_color_profile_slot( 16, 0, 0, 255, 217 ); //yellow
@@ -227,6 +227,46 @@ set_color_profile_slot( 25, 2, 33, 33, 33 ); //black
 set_color_profile_slot( 25, 3, 255, 236, 173 ); //white
 set_color_profile_slot( 25, 4, 112, 34, 8 ); //skin
 set_color_profile_slot( 25, 5, 0, 255, 0 ); //Green
+
+// SamDrill
+set_color_profile_slot( 26, 0, 171, 122, 89 ); //yellow
+set_color_profile_slot( 26, 1, 121, 86, 64 ); //red
+set_color_profile_slot( 26, 2, 163, 123, 111 ); //black
+set_color_profile_slot( 26, 3, 255, 183, 50 ); //white
+set_color_profile_slot( 26, 4, 224, 224, 224 ); //skin
+set_color_profile_slot( 26, 5, 255, 155, 50 ); //Green
+
+// QDrill
+set_color_profile_slot( 27, 0, 164, 103, 214 ); //yellow
+set_color_profile_slot( 27, 1, 244, 253, 254 ); //red
+set_color_profile_slot( 27, 2, 232, 173, 60 ); //black
+set_color_profile_slot( 27, 3, 95, 39, 140 ); //white
+set_color_profile_slot( 27, 4, 247, 223, 215 ); //skin
+set_color_profile_slot( 27, 5, 164, 103, 214 ); //Green
+
+// ClawDrill
+set_color_profile_slot( 28, 0, 82, 82, 82 ); //yellow
+set_color_profile_slot( 28, 1, 223, 101, 106 ); //red
+set_color_profile_slot( 28, 2, 253, 230, 152 ); //black
+set_color_profile_slot( 28, 3, 176, 196, 219 ); //white
+set_color_profile_slot( 28, 4, 151, 178, 212 ); //skin
+set_color_profile_slot( 28, 5, 181, 113, 52 ); //Green
+
+// RexDrill
+set_color_profile_slot( 29, 0, 106, 76, 56 ); //yellow
+set_color_profile_slot( 29, 1, 203, 92, 86 ); //red
+set_color_profile_slot( 29, 2, 164, 170, 175 ); //black
+set_color_profile_slot( 29, 3, 230, 125, 26 ); //white
+set_color_profile_slot( 29, 4, 242, 195, 165 ); //skin
+set_color_profile_slot( 29, 5, 222, 99, 42 ); //Green
+
+// PrimeDrill
+set_color_profile_slot( 30, 0, 143, 66, 255 ); //yellow
+set_color_profile_slot( 30, 1, 0, 0, 0 ); //red
+set_color_profile_slot( 30, 2, 255, 255, 255 ); //black
+set_color_profile_slot( 30, 3, 143, 66, 255 ); //white
+set_color_profile_slot( 30, 4, 255, 255, 255 ); //skin
+set_color_profile_slot( 30, 5, 173, 117, 255 ); //Green
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

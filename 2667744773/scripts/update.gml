@@ -30,11 +30,11 @@ if "superTrue" in self {
 }
 
 
-if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP || state == PS_TUMBLE) && vsp > 3 && (jump_down || up_down) && (flutterTimer > 1) {
+if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP || state == PS_TUMBLE) && vsp > 1 && free && (jump_down || up_down) && (flutterTimer > 1) {
 	set_attack(AT_EXTRA_1);
 	influtter = true;
 	
-}else if((flutterTimer < 0 || state == PS_IDLE_AIR) && free){
+}else if(flutterTimer < 0 || state == PS_IDLE_AIR || !free || state_cat == SC_GROUND_COMMITTED ){
 	influtter = false;
 	gravity_speed = default_gravity_speed;
 	
@@ -50,7 +50,7 @@ if(free && (attack == AT_NAIR || attack == AT_FAIR || attack == AT_BAIR || attac
 	}
 }
 
-if (state == PS_ATTACK_AIR) and (attack == AT_EXTRA_1) {
+if (state == PS_ATTACK_AIR) and (attack == AT_EXTRA_1) and !free {
 	air_accel = float_air_accel;
 } else {
 	air_accel = default_air_accel;

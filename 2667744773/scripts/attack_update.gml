@@ -27,7 +27,8 @@ if(attack == AT_DSPECIAL){
 		}
 		if(flutterTimer > 0 && Dspecial_count >= 2){
 		can_shield = true
-		if(shield_pressed){
+		can_jump = true
+		if(shield_pressed || jump_pressed){
 			sound_play(sound_get("Run"));
 			flutterTimer -= 30;
 		}
@@ -41,7 +42,7 @@ if(attack == AT_DSPECIAL){
 		}
 	}
 	if(window == 3){
-		if(window_timer == 0){
+		if(window_timer == 1){
 			spawn_hit_fx(x ,y, 193);
 		}
 	}

@@ -287,7 +287,7 @@ switch attack {
          if state_timer > 25 {
          	
          if special_down or state_timer >= 45{
-         	attack_end()
+         	attack_end();
              set_attack(AT_EXTRA_1)
              window = 7
              window_timer = 1
@@ -296,7 +296,7 @@ switch attack {
          }
          
          if right_down {
-         	attack_end()
+         	attack_end();
          	
              if spr_dir = -1 {
              	spr_dir *= -1

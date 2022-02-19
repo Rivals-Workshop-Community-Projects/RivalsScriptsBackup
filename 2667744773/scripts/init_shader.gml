@@ -2,7 +2,6 @@
 
 animate_portrait("_portrait_intro", 40, 6, "_portrait_idle", 20, 5);
 
-
 #define animate_portrait(SpriteName, StartUp, AnimSpeed, IdleSpriteName, IdleStartUp, IdleSpeed)
 if (object_index == asset_get("draw_result_screen"))
 {

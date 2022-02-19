@@ -152,7 +152,7 @@ if string_count("ducky", string_lower(name)) > 0 {
     regconized = 1
 }
 if string_count("glare", string_lower(name)) > 0 {
-    line1 = "Fancy light show, but atlas..."
+    line1 = "Fancy light show, but alas..."
     line2 = "...Succumb to the void."
     regconized = 1
 }
@@ -291,7 +291,7 @@ if string_count("zephrie", string_lower(name)) > 0 {
     if triggercutscene >= 120 && triggercutscene < 330  {
          if ((triggercutscene < 140 or triggercutscene > 300) and triggercutscene%4 < 2) or (triggercutscene >= 140 && triggercutscene <= 300) {
              if get_player_stocks(player) <= 2 {
-                 draw_debug_text( room_width/2 - 380, room_height/2 - 200 - floor(triggercutscene/5),"Well fought, but atlas.");
+                 draw_debug_text( room_width/2 - 380, room_height/2 - 200 - floor(triggercutscene/5),"Well fought, but alas.");
              } else if get_player_stocks(player) == 3 {
                  draw_debug_text( room_width/2 - 380, room_height/2 - 200 - floor(triggercutscene/5),"The void canvas gained one more stroke.");
              } else if get_player_stocks(player) >= 4 {
