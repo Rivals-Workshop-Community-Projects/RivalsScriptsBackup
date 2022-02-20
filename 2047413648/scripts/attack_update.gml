@@ -952,7 +952,7 @@ if window >= 2 && window < 4 {
          sound_play(asset_get("sfx_ori_bash_launch"));
          
 
-		var jum = spawn_hit_fx( x   , y , 303)
+		var jum = spawn_hit_fx( x   , y , 14)
     		 jum.depth = 11
 	}
 	
@@ -1080,8 +1080,8 @@ if window == 2 or window == 3 {
 				}
 				
 			if window_timer % 4 = 0 {
-				
-					var jum = spawn_hit_fx( x - 10 * spr_dir   , y , 303)
+				 
+					var jum = spawn_hit_fx( x - 10 * spr_dir   , y , 14)
 					sound_play(asset_get("sfx_ice_shieldup"),false,noone,0.5);
     		 jum.depth = 11
 			}

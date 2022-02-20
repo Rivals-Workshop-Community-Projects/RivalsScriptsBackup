@@ -4,6 +4,7 @@ set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_EXTRA_1, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_EXTRA_1, AG_LANDING_LAG, 5); 
 set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("hatch_hurt"));
+set_attack_value(AT_EXTRA_1, AG_USES_CUSTOM_GRAVITY, 1);
 
 //startup
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 18); 
@@ -14,6 +15,7 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED_TYPE, 1); 
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED, 0); 
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED, 0); 
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 6); 
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAMES, 3);
@@ -24,6 +26,7 @@ set_window_value(AT_EXTRA_1, 2, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_VSPEED, 0); 
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_SFX, sound_get("hatch_hyperbeam"));
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 
 //attack
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 24); 
@@ -33,6 +36,7 @@ set_window_value(AT_EXTRA_1, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_VSPEED_TYPE, 1); 
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_HSPEED, 0); 
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_VSPEED, 0); 
+set_window_value(AT_EXTRA_1, 3, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_LENGTH, 24); 
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_ANIM_FRAMES, 6);
@@ -41,6 +45,7 @@ set_window_value(AT_EXTRA_1, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_VSPEED_TYPE, 1); 
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_HSPEED, 0); 
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_VSPEED, 0); 
+set_window_value(AT_EXTRA_1, 4, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_LENGTH, 24); 
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_ANIM_FRAMES, 6);
@@ -52,12 +57,14 @@ set_window_value(AT_EXTRA_1, 5, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_SFX_FRAME, 23);
+set_window_value(AT_EXTRA_1, 5, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 
 //endlag
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_LENGTH, 40); 
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_EXTRA_1, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
 
 set_num_hitboxes(AT_EXTRA_1, 8);
 

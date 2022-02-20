@@ -6,11 +6,11 @@ set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 //startup
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 6); 
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 4); 
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_kragg_rock_land"));
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 5); 
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 3); 
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 
 //attack
@@ -35,8 +35,8 @@ set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW_CREATION_FRAME, 3); 
 set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 4); 
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -20); 
-set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 90); 
-set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 90); 
+set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 75); 
+set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 75); 
 set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 5); 
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 65);

@@ -20,21 +20,21 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, sound_get("smw_yoshi_spit"));
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 9);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.01);
 
 // endlag
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, sound_get("chest_close"));
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX_FRAME, 12);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX_FRAME, 9);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
 
 set_num_hitboxes(AT_NSPECIAL, 2);
@@ -50,7 +50,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 12);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 254);

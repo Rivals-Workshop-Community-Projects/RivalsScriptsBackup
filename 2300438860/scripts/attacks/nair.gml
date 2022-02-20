@@ -39,7 +39,7 @@ set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 74);
 set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 53);
 set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 135);
+set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 120);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 5);
@@ -49,7 +49,7 @@ set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("hweak"));
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, .7);
+set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, .9);
 
 set_hitbox_value(AT_NAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
@@ -72,7 +72,7 @@ set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, sound_get("hmed"));
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 305);
-set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, 0.7);
+set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, 0.9);
 
 set_hitbox_value(AT_NAIR, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_TYPE, 1);
@@ -95,7 +95,7 @@ set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, sound_get("hmed"));
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_NAIR, 3, HG_HITSTUN_MULTIPLIER, 0.7);
+set_hitbox_value(AT_NAIR, 3, HG_HITSTUN_MULTIPLIER, 0.9);
 
 set_hitbox_value(AT_NAIR, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NAIR, 4, HG_HITBOX_TYPE, 1);

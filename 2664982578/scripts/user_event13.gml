@@ -18,7 +18,7 @@ init_variables(); //this is required. don't touch it.
 add_sprites("airdodge","crouch","dash","dashstart","dashstop","dashturn","doublejump",
             "idle","jump","jumpstart","land","landinglag","pratfall","parry",
             "roll_backward","roll_forward","tech","walkturn","walljump","waveland",
-            "walk","orb_idle","orb_proj","bighurt","hurt","downhurt","uphurt");
+            "walk","orb_idle","orb_proj");
 
 //================Attacks================
 //  Base Attacks

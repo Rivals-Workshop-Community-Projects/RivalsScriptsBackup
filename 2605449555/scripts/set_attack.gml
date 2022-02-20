@@ -4,10 +4,10 @@ if (attack == AT_FTILT) {
     attack = AT_JAB;
 }
 
-// Teleport to Cannonball
-if (special_down == true && CannTpUsed == false && joy_pad_idle == true && CannTeleportable == true && CannCannonBallActive == true && CannBallOppHit == false && CannTpUsed == false && CannNSpecialCooldownTimer <= 0 && (CannBoomY < room_height - 100 && CannBoomX > 100 && CannBoomX < room_width - 100)) {
-	attack = AT_FTILT; // Teleport to Cannonball
-}
+// Teleport to Cannonball REMOVED
+//if (special_down == true && CannTpUsed == false && joy_pad_idle == true && CannTeleportable == true && CannCannonBallActive == true && CannBallOppHit == false && CannTpUsed == false && CannNSpecialCooldownTimer <= 0 && (CannBoomY < room_height - 100 && CannBoomX > 100 && CannBoomX < room_width - 100)) {
+//	attack = AT_FTILT; // Teleport to Cannonball
+//}
 
 RaiseHeat = false;
 

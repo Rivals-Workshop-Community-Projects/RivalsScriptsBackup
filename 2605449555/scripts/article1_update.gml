@@ -138,19 +138,17 @@ if (state == 0) {
 			if (other.cannonball_OppHit == false) {
 				
 				if (player != other.player_id.player) {
-					//sound_play(sound_get("gazer_hit"));
 					other.cannonball_enemy_id = self.id;
 					other.cannonball_enemy_idX = self.x;
 					other.cannonball_enemy_idY = self.y;
-					
 				}
 				
-				if (point_distance(other.x,other.y, other.cannonball_enemy_idX, other.cannonball_enemy_idY) <= 50 && other.cannonball_enemy_id.state != PS_AIR_DODGE && other.cannonball_enemy_id.state != PS_ROLL_BACKWARD && other.cannonball_enemy_id.state != PS_ROLL_FORWARD && other.cannonball_enemy_id.state != PS_TECH_GROUND && other.cannonball_enemy_id.state != PS_TECH_FORWARD && other.cannonball_enemy_id.state != PS_TECH_BACKWARD && other.cannonball_enemy_id.state != PS_WALL_TECH && other.cannonball_enemy_id.state != PS_DEAD && other.cannonball_enemy_id.state != PS_RESPAWN && initial_invince == false && invincible == false) { // When hitting an opponent
+				if (point_distance(other.x,other.y, other.cannonball_enemy_idX, other.cannonball_enemy_idY) <= 50 && other.cannonball_enemy_id.state != PS_AIR_DODGE && other.cannonball_enemy_id.state != PS_ROLL_BACKWARD && other.cannonball_enemy_id.state != PS_ROLL_FORWARD && other.cannonball_enemy_id.state != PS_TECH_GROUND && other.cannonball_enemy_id.state != PS_TECH_FORWARD && other.cannonball_enemy_id.state != PS_TECH_BACKWARD && other.cannonball_enemy_id.state != PS_WALL_TECH && other.cannonball_enemy_id.state != PS_DEAD && other.cannonball_enemy_id.state != PS_RESPAWN && other.cannonball_enemy_id.invince_time <= 0) { // When hitting an opponent
 					if (other.cannonball_BurningForm == true) {
 						other.state_timer = 0;
 						other.state = 1;
 						other.ignores_walls = true;
-					} else if (other.cannonball_NoBonkTime <= 0 && other.player_id.attack != AT_FTILT && other.cannonball_NoHitPlayer <= 0 && other.cannonball_enemy_id.state != PS_AIR_DODGE && other.cannonball_enemy_id.state != PS_ROLL_BACKWARD && other.cannonball_enemy_id.state != PS_ROLL_FORWARD && other.cannonball_enemy_id.state != PS_TECH_GROUND && other.cannonball_enemy_id.state != PS_TECH_FORWARD && other.cannonball_enemy_id.state != PS_TECH_BACKWARD && other.cannonball_enemy_id.state != PS_WALL_TECH && other.cannonball_enemy_id.state != PS_DEAD && other.cannonball_enemy_id.state != PS_RESPAWN && initial_invince == false && invincible == false) {
+					} else if (other.cannonball_NoBonkTime <= 0 && other.player_id.attack != AT_FTILT && other.cannonball_NoHitPlayer <= 0 && other.cannonball_enemy_id.state != PS_AIR_DODGE && other.cannonball_enemy_id.state != PS_ROLL_BACKWARD && other.cannonball_enemy_id.state != PS_ROLL_FORWARD && other.cannonball_enemy_id.state != PS_TECH_GROUND && other.cannonball_enemy_id.state != PS_TECH_FORWARD && other.cannonball_enemy_id.state != PS_TECH_BACKWARD && other.cannonball_enemy_id.state != PS_WALL_TECH && other.cannonball_enemy_id.state != PS_DEAD && other.cannonball_enemy_id.state != PS_RESPAWN && other.cannonball_enemy_id.invince_time <= 0) {
 						other.state_timer = 0;
 						other.cannonball_ShakeTime = 9;
 						other.cannonball_BonkHsp = other.hsp;
@@ -159,12 +157,12 @@ if (state == 0) {
 					}
 				}
 			} else {
-				if (point_distance(other.x,other.y, other.player_id.x, other.player_id.y) <= 50 && other.player_id.state != PS_AIR_DODGE && other.player_id.state != PS_ROLL_BACKWARD && other.player_id.state != PS_ROLL_FORWARD && other.player_id.state != PS_TECH_GROUND && other.player_id.state != PS_TECH_FORWARD && other.player_id.state != PS_TECH_BACKWARD && other.player_id.state != PS_WALL_TECH && other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && initial_invince == false && invincible == false) { // When hitting Cann (opponent controls)
+				if (point_distance(other.x,other.y, other.player_id.x, other.player_id.y) <= 50 && other.player_id.state != PS_AIR_DODGE && other.player_id.state != PS_ROLL_BACKWARD && other.player_id.state != PS_ROLL_FORWARD && other.player_id.state != PS_TECH_GROUND && other.player_id.state != PS_TECH_FORWARD && other.player_id.state != PS_TECH_BACKWARD && other.player_id.state != PS_WALL_TECH && other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && other.player_id.invince_time <= 0) { // When hitting Cann (opponent controls)
 					if (other.cannonball_BurningForm == true) {
 						other.state_timer = 0;
 						other.state = 1;
 						other.ignores_walls = true;
-					} else if (other.cannonball_NoBonkTime <= 0 && other.player_id.attack != AT_FTILT && other.player_id.state != PS_AIR_DODGE && other.player_id.state != PS_ROLL_BACKWARD && other.player_id.state != PS_ROLL_FORWARD && other.player_id.state != PS_TECH_GROUND && other.player_id.state != PS_TECH_FORWARD && other.player_id.state != PS_TECH_BACKWARD && other.player_id.state != PS_WALL_TECH && other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && initial_invince == false && invincible == false) {
+					} else if (other.cannonball_NoBonkTime <= 0 && other.player_id.attack != AT_FTILT && other.player_id.state != PS_AIR_DODGE && other.player_id.state != PS_ROLL_BACKWARD && other.player_id.state != PS_ROLL_FORWARD && other.player_id.state != PS_TECH_GROUND && other.player_id.state != PS_TECH_FORWARD && other.player_id.state != PS_TECH_BACKWARD && other.player_id.state != PS_WALL_TECH && other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && other.player_id.invince_time <= 0) {
 						other.state_timer = 0;
 						other.cannonball_ShakeTime = 9;
 						other.cannonball_BonkHsp = other.hsp;
@@ -737,7 +735,9 @@ if (state != 1) {
 	}
 }
 
-if (state == 0 || state == 1 || state == 21) {
+// Removed TP Mechanic
+
+/*if (state == 0 || state == 1 || state == 21) {
 	// Get Positions For Tp
 	
 	if (player_id.CannBallGetValues == true) {
@@ -767,7 +767,7 @@ if (state == 0 || state == 1 || state == 21) {
 		}
 		
 	}
-}
+}*/
 
 // Make sure DSpecial lands on cannonball
 //if (player_id.attack == AT_DSPECIAL && player_id.CannCounterAttack == true) {

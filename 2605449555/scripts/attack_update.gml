@@ -376,7 +376,7 @@ if (attack == AT_NSPECIAL) {
 
 // Teleport
 
-if (attack == AT_FTILT) {
+/*if (attack == AT_FTILT) {
 	if (window == 1) {
 		if (window_timer == 1) {
 			CannTpX = x;
@@ -417,7 +417,7 @@ if (attack == AT_FTILT) {
 		can_attack = true; 
 		can_special = true;
 	}
-}
+}*/
 
 if (attack == AT_FSPECIAL) {
 	

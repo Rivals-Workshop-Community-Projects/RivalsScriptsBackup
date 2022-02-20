@@ -242,9 +242,8 @@ if(attack == AT_USTRONG){
 			sound_play(sound_get("grab_fail"));
 		}
 	}if(window == 6){
-		if(window_timer = 20 && !free){
-			window = 7;
-			window_timer = 9;
+		if(window_timer = phone_window_end && !free){
+			set_state(PS_IDLE);
 		}
 	}if(window == 6 && window_timer > 6){
 			    	grabbed_player_obj = noone; 
@@ -514,8 +513,8 @@ if(attack == AT_DSPECIAL_2){
 	soft_armor = 9999;
 	super_armor = false;
 	if(window == 1 && window_timer = 6){
-		set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_KNOCKBACK, enemy_knockback * 1.2); 
-		set_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING, enemy_knockback_scaling * 1.2); 
+		set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_KNOCKBACK, enemy_knockback * 1.3); 
+		set_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING, enemy_knockback_scaling * 1.3); 
 		set_hitbox_value(AT_DSPECIAL_2, 2, HG_DAMAGE, enemy_damage * 1.5); 
 
 	}

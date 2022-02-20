@@ -11,12 +11,12 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_cape_swipe"));
 
-set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 9); 
+set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 8); 
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 8); 
+set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 7); 
 
 //attack
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 6);
@@ -50,6 +50,7 @@ set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FAIR, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_FAIR, 1, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_FAIR, 1, HG_HITSTUN_MULTIPLIER, 0.7);
 
 set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_NAME, "Sour Spot technically");
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
@@ -70,6 +71,7 @@ set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FAIR, 2, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_FAIR, 2, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_FAIR, 2, HG_HITSTUN_MULTIPLIER, 0.7);
 
 set_hitbox_value(AT_FAIR, 3, HG_MUNO_HITBOX_NAME, "Sour Spot technically");
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
@@ -90,3 +92,4 @@ set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FAIR, 3, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_FAIR, 3, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_FAIR, 3, HG_HITSTUN_MULTIPLIER, 0.7);

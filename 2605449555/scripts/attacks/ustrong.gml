@@ -96,4 +96,5 @@ set_hitbox_value(AT_USTRONG, 4, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_USTRONG, 4, HG_KNOCKBACK_SCALING, 0.45);
 set_hitbox_value(AT_USTRONG, 4, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_USTRONG, 4, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_USTRONG, 4, HG_TECHABLE, 2);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

@@ -517,22 +517,23 @@ switch attack {
     
     
     if window == 1 && window_timer == 1 && !hitpause {
-    
         sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1)
     }
     
-
+    if window == 2 && window_timer == 2 && !hitpause {
+    	x += 20*spr_dir
+    }
     
     if window == 3 {
         if window_timer == 1  && !hitpause{
-            hsp = 8*spr_dir
+            if !free hsp = 6*spr_dir
                   spawn_base_dust(x,y,"dash_start",spr_dir)
                   spawn_base_dust(x - 20*spr_dir,y,"dash",spr_dir*-1)
         }
         
         if free {
             can_move = false
-            hsp /= 1.1
+            //hsp /= 1.1
         }
         
         if window_timer % 4 == 0 && !hitpause && free{

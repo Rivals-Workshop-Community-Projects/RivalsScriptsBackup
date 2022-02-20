@@ -247,6 +247,36 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.17", "19 February, 2022");
+
+initHeader("Buffs:");
+initSection("+ Nair comes out 2 frames faster, 10 -> 8
++ Fair comes out 1 frame faster, F19 -> F18
++ Dtilt comes out 1 frame faster, F7 -> F6
++ Utilt comes out 1 frame faster, F8 -> F7
++ Fstrong comes out 2 frames faster, F20 -> F18
++ Nspecial now has less endlag
++ Dspecial's counter throw now scales it's counter a little bit higher
++ Magic Burst's endlag window now has lowered gravity
+");
+
+initHeader("Nerfs:");
+initSection("- Nair's hitbox has been made smaller
+- All of Fair's hitboxes now have a 0.7 hitstun mult
+- Dair's landing hitbox was made smaller
+- Dattack now has a 0.6 hitstun mult
+- Ustrong's grab hitbox was made a little smaller
+- Fspecial's grab hitbox was made a little smaller
+- Ballin's angle was changed. 280 -> 270
+");
+
+initHeader("Changes:");
+initSection("= Fixed small sprites issue
+= Fixed an Ustrong window issue
+= Fspecial's landing hitbox's kb was adjusted and it's angle was changed, 10 * 0.9 -> 9 * 1. 60 -> 70
+");
+
+//
 initPatch("1.16", "5 January, 2022");
 
 initHeader("Nerfs:");
