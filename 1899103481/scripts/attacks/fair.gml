@@ -8,14 +8,14 @@ set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 set_window_value(AT_FAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1")); // uhghg just let me play swipe before impact sound
+set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_FAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_FAIR, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_FAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 6);
@@ -59,10 +59,10 @@ set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -22);
 set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 96);
 set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 86);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 1);
-set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 50);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .3);
+set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .45);

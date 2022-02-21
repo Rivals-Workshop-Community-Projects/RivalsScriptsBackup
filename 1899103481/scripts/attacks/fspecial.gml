@@ -17,15 +17,15 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
 // set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, 4);
 // set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_absa_whip_charge"));
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 7);
+// set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.4); // uhh
 // set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-// set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_blow_heavy1"));
+// set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_kragg_rock_shatter")); // pick a landing sound
 // set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 2);
 // set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
 // set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
@@ -85,10 +85,10 @@ set_hitbox_value(AT_FSPECIAL,2, HG_WIDTH, 48);
 set_hitbox_value(AT_FSPECIAL,2, HG_HEIGHT, 16);
 // set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 90);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.77);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 13);

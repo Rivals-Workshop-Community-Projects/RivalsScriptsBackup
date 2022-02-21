@@ -2,8 +2,6 @@
 // Thank you Kirbo
 // OHOHOHOHOHO
 
-small_sprites = true;
-
 // Adventure Mode
 am_is_water = true;
 am_is_verbal = true;

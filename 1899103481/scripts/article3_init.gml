@@ -10,7 +10,7 @@ state_timer = 0;
 
 hitbox_created = false;
 
-lifespan = 180; // 960
+lifespan = 800; // 960
 state = -1;
 destroy_timer = 0;
 

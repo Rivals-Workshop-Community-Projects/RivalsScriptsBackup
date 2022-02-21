@@ -38,7 +38,9 @@ if (attack == AT_NSPECIAL){
 					newMagmaBall.hsp = 7 * spr_dir;
 					newMagmaBall.vsp = -2;
 				}
-				sound_play(asset_get("sfx_ell_big_missile_fire"));
+				sound_play(asset_get("sfx_ell_big_missile_fire"), 0, noone, 0.7, 0.9);
+				// sound_play(asset_get("sfx_ori_grenade_hit_ground"), 0, noone, 0.6, 1.9);
+				sound_play(asset_get("sfx_ell_fist_fire"), 0, noone, 0.8, 1.5);
 				magnet = 30;
 			}
 
@@ -137,6 +139,8 @@ if (attack == AT_FSPECIAL){
 			window_timer = 11;
 			if (has_airdodge){ can_shield = true; }
 		} 
+	} else if (window == 1 && window_timer == 15) {
+		sound_play(asset_get("sfx_blow_heavy2"));
 	}
 	
     if (window == 2 && window_timer == 0){
@@ -154,7 +158,7 @@ if (attack == AT_FSPECIAL){
     // var turret_offset = 32 + spr_dir * ease_sineOut(a,b,strong_charge * 15, 60 * 15) //uhh
     // var turret_offset = floor(spr_dir * 0.7*(power(strong_charge, 1.8))) // slow start, grows faster
     // var turret_offset = floor(spr_dir * 50*(power(strong_charge, 0.6))) // fast start, grows slower
-    var turret_offset = floor(spr_dir * (32+(6*(power(strong_charge, 1.2))))) // testestsetset
+    var turret_offset = floor(spr_dir * (32+(2.5*(power(strong_charge, 1.5))))) // testestsetset
     if (window == 2 && strong_charge > 0 && strong_charge % 4 == 0){
 		if (!checkFreeAtPos(x+turret_offset+spr_dir*64, y+4)){ //spr_dir*32
 	    	spawn_hit_fx(x + turret_offset, y, lava_platform_aim);
@@ -235,7 +239,7 @@ if attack == AT_DSTRONG{
 		// if (oPlayer.state_cat != SC_HITSTUN){
 		if (!sound_already_played_this_frame){
 			if	(state_timer_prev != state_timer){
-				sound_play(asset_get("sfx_clairen_spin"));
+				sound_play(asset_get("sfx_ori_stomp_spin"));
 			}
 		}
 	}
@@ -260,7 +264,7 @@ if (attack == AT_NAIR){
 		
 		if (attack_down){
 			sliding = true;
-			set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 30);
+			set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 20); //tweak this for balance probably
 
 			if (window == 2){
 				hsp += spr_dir * (900-window_timer*window_timer) / 1800
@@ -308,22 +312,47 @@ if (attack == AT_DTILT){
 }
 
 if (attack == AT_USTRONG){
-	move_cooldown[AT_USTRONG] = 60;
+	move_cooldown[AT_USTRONG] = 45;
+	
 	if (window == 1){
             if (left_down){
-                set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_HSPEED, -2*spr_dir);
+            	ustrong_hsp = -2
             } else if (right_down) {
-                set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_HSPEED, 2*spr_dir);
+                ustrong_hsp = 2
             } else{
-                set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_HSPEED, 0);
+                ustrong_hsp = 0;
             }
 	}
-	set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_VSPEED, -(12+floor(strong_charge/6)));
-	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 6+floor(strong_charge/10));
-	set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 5+floor(strong_charge/10));
+	ustrong_vsp = -(10+floor(strong_charge/7));
+	// set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 6+floor(strong_charge/10)); // shoots magma ball now
+	// set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 5+floor(strong_charge/10));
 	
-	if (strong_charge >= 30){
+	// if (strong_charge >= 30){
 		// set sprite to more powerful splosh // uh nvm I already did that somewhere
+	// }
+	
+	if (window == 1 && window_timer == 16){
+		if (article_1_count == 0){
+			sound_play(asset_get("sfx_ell_fist_fire"));
+		}
+	}	
+	
+    if (window == 2 && window_timer == 6){
+        if (article_1_count == 0){
+			self.newMagmaBall = instance_create(x, y-32, "obj_article1");
+			spawn_hit_fx(x, y, hit_fx_create(sprite_get("magma_explosion"), 10));
+			// newMagmaBall.ballHitbox = create_hitbox(AT_EXTRA_1, 1, newMagmaBall.x, newMagmaBall.y);
+			newMagmaBall.hsp = ustrong_hsp;
+			newMagmaBall.vsp = ustrong_vsp;
+
+		}
+    }
+}
+
+if (attack == AT_FSTRONG){
+	if (has_hit && !fstrong_sound_has_played){
+		sound_play(asset_get("sfx_ell_utilt_cannon"))
+		fstrong_sound_has_played = true;
 	}
 }
 

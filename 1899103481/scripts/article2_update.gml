@@ -67,11 +67,13 @@ if (shoot_timer < 1){
         isBoosted = false; //whether the lava splosh projectile has been boosted by the lava wall
         image_index = state_timer * anim_speed_proj;
         // image_angle = direction;
-        vsp = -10;
+        vsp = -7; // -10
         if (other.turret_angle == 45){
-            hsp = -4;
+            hsp = -6;
         } else if (other.turret_angle == 315){
-            hsp = 4;
+            hsp = 6;
+        } else {
+        	vsp = -10;
         }
         other.shoot_timer = 120;
         sound_play(asset_get("sfx_ell_small_missile_fire"));

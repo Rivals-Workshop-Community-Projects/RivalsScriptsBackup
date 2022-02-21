@@ -46,6 +46,13 @@ can_create_hitbox = true; // for nair, might need a rename
 signflipper = 0;
 dattack_timer = 0;
 
+// FSTRONG
+fstrong_sound_has_played = false; // one day I will will make a proper function...
+
+// USTRONG
+ustrong_hsp = 0;
+ustrong_vsp = 0;
+
 //FSPECIAL
 can_super_jump = true;
 has_super_jumped = false;

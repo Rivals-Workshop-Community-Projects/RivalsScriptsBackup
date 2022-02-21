@@ -1,3 +1,6 @@
+
+small_sprites = true;
+
 sprite_change_offset("eirlys_hurt_box", 126, 158);      // Finished
 sprite_change_offset("eirlys_crouch_box", 126, 158);    // Finished
 

@@ -62,8 +62,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 55); //50
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0);
 
 // fricking code needs a whole rework because hitpause introduces a bug (invisible floating hitbox)
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 5); // 4
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.4); // 0.2
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7); // 4
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2); // 0.2
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1); //-1

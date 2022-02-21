@@ -76,6 +76,9 @@ if( article != noone
 	has_collided = true;
 } else if (article != noone
 && place_meeting(x, y, article) && abs(hsp) <= 1.5 && !has_collided){
+	with (article){ // trick to remove pillar quickly??
+		lifespan = 1;
+	}
 	lifespan = 1;
 	has_collided = true;
 } else{
@@ -132,6 +135,7 @@ with (asset_get("pHitBox")) {
     && place_meeting(x,y,other) 
     && player != 0 
     && attack != AT_NSPECIAL
+    && attack != AT_USTRONG
     && attack != AT_TAUNT
     && other.last_hitbox != id
     && !(other.attack_id == other.last_attack_id // condition hell....
@@ -146,8 +150,8 @@ with (asset_get("pHitBox")) {
 				other.vsp = -6;
 				break;
 			case AT_DTILT:
-				other.hsp = 0;
-				other.vsp = -20;
+				other.hsp = 14 * sign(other.hsp)
+				other.vsp = -7;
 				break;
 			case AT_UTILT:
 				other.vsp = -8;
@@ -160,6 +164,10 @@ with (asset_get("pHitBox")) {
 			case AT_FAIR:
 				other.hsp = 11*sign(other.x + 40*spr_dir - x);
 				other.vsp = 5;
+				break;
+			case AT_BAIR:
+				other.hsp = -3*sign(other.x + 40*spr_dir - x);
+				other.vsp = -10;
 				break;
 			case AT_DAIR:
 				// other.hsp = 3*sign(other.x+24*spr_dir - x);
@@ -198,6 +206,12 @@ with (asset_get("pHitBox")) {
 				other.hsp = 3*hsp;
 				other.vsp = 1*vsp;
 				destroyed = true;
+				break;
+			case AT_DSTRONG:
+				// if (hbox_num == 1){
+					other.hsp = 14*sign(other.x+68*spr_dir - x);;
+					other.vsp = -3;
+				// }
 				break;
 			case AT_TAUNT:
 				

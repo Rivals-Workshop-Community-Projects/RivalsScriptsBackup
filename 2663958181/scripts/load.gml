@@ -4,6 +4,8 @@ sprite_change_offset("squr_crouch_box", 126, 164);       // Done
 var x_off = 63;
 var y_off = 82;
 
+small_sprites = true;
+
 sprite_change_offset("idle",                x_off, y_off, true);   // Done
 sprite_change_offset("crouch",              x_off, y_off, true);   // Done
 sprite_change_offset("walk",                x_off, y_off, true);   // Done
