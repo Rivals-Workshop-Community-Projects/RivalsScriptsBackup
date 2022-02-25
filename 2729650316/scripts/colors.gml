@@ -96,14 +96,14 @@ set_color_profile_slot( 6, 5, 29, 31, 29 ); //Black
 set_color_profile_slot( 6, 6, 255, 166, 0 ); //Eyes
 set_color_profile_slot( 6, 7, 0, 255, 0 ); //Table
 
-// Ring Your Bells (Seasonal)
-set_color_profile_slot( 7, 0, 195, 232, 196 ); //Light Fur
-set_color_profile_slot( 7, 1, 36, 42, 69 ); //Dark Fur
-set_color_profile_slot( 7, 2, 30, 140, 0 ); //Red Tights
+// Valentine's Massacre
+set_color_profile_slot( 7, 0, 232, 195, 209 ); //Light Fur
+set_color_profile_slot( 7, 1, 69, 36, 49 ); //Dark Fur
+set_color_profile_slot( 7, 2, 181, 85, 151 ); //Red Tights
 set_color_profile_slot( 7, 3, 115, 0, 0 ); //Yellow Tights
 set_color_profile_slot( 7, 4, 115, 0, 0 ); //Kneepads
 set_color_profile_slot( 7, 5, 196, 196, 196 ); //Black
-set_color_profile_slot( 7, 6, 60, 255, 38 ); //Eyes
+set_color_profile_slot( 7, 6, 255, 176, 227 ); //Eyes
 set_color_profile_slot( 7, 7, 0, 255, 0 ); //Table
 
 // Akira Taue

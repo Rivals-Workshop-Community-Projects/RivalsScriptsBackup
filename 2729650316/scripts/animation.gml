@@ -50,7 +50,17 @@ switch(state)
                 if (string_count("vergil", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 || string_count("birgil", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 )
                 {
                     introText = "I am not underestimating that lawn chair";
-                    introText2 = "but Ive got chairs of my own!";
+                    introText2 = "but I've got chairs of my own!";
+                }
+                if (string_count("kris", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 || string_count("birgil", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 )
+                {
+                    introText = "A handicap match?";
+                    introText2 = "You should have brought more friends!";
+                }
+                if (string_count("penny", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 || string_count("birgil", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 )
+                {
+                    introText = "Hey, that arm real?";
+                    introText2 = "Show me how hard it can punch!";
                 }
                 if (string_count("phoenix wright", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "Lawyers have no place in the ring!";
@@ -65,13 +75,94 @@ switch(state)
                 if (string_count("ducky", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "You better not quack under pressure!";
                 if (string_count("añi", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "Cant have a fiesta without bashing a pinata!";
+                    introText = "Can't have a fiesta without bashing a pinata!";
                 if (string_count("cupcake", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "With legs like that, you better not disappoint me!";
                 if (string_count("fernet", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "Time for some grappling training, kiddo!";
                 if (string_count("daora", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "Time to show you some real grappling!";
+                    introText = "A little electricity won’t put me down!";
+                if (string_count("mario", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "It’ll be an honor to Kinniku Buster you, Mario!";
+                if (string_count("old man", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Come on, old-timer, if you still got it!";
+                if (string_count("astra", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "I’m the only one who determines my future!";
+                if (string_count("kyort", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Bring it on, weenie king!";
+                if (string_count("tenru", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "I’ll be the one who has the last laugh!";
+                if (string_count("r-00", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Special delivery! Tables with your name on them!";
+                if (string_count("carcossant", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "I’m ripping that mask right off your face!";
+                if (string_count("untitled goose", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "GOOOOOOOSE!";
+                if (string_count("amber", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Aww, come on, how can I fight something so cute?!";
+                if (string_count("buffy", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "This match ain’t big enough for the two of us!";
+                if (string_count("lukastar", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Nice powers but nothing a good steel chair can’t stop!";
+                if (string_count("callie", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "You want an interview? I have hard hitting answers!";
+                if (string_count("chara", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Someone pick up this weirdo child before I do!";
+                if (string_count("anglara", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Dunking you won’t be a problem!";
+                if (string_count("crewmate", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Time to eject you from the ring!";
+                if (string_count("chef", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Don’t get mad if I break your grill!";
+                if (string_count("monokuma", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Let’s see what color your blood is!";
+                if (string_count("agent n", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "What the hell, I haven’t done anything!";
+                if (string_count("zetta", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "I love a challenge like you!";
+                if (string_count("mayu", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "I’ve dealt with a lot worse than a sword, kid!";
+                if (string_count("alex", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "You and my friend should slug it out after this!";
+                if (string_count("oboama", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "You agreed to this so I’m not holding back!";
+                if (string_count("gigachad", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Better know how to use those muscles!";
+                if (string_count("bat bar", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Show me what you can do with that bat!";
+                if (string_count("sai", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "I’m not going down without a fight! COME ON!";
+                if (string_count("golem", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("egg", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("tapu koko", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("litwick", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("lucario", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("hau", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("blaziken", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("greninja", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("gengar", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("bubbles", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("pikachu", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("accelgor", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("snom", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("regigigas", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("archen", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("lopunny", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("plusle", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("gengar", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("meloetta", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("mudkip", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("jigglypuff", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("mewtwo", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("litwick", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("mimikyu", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("gardevoir", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("quagsire", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("purrloin", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("eevee", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("vileplume", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
+                string_count("jirachi", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "You should run away while you have the chance!";
                 //base cast
                 if (string_count("zetterburn", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                 {
@@ -80,7 +171,7 @@ switch(state)
                 }
                 if (string_count("kragg", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                 {
-                    introText = "I dont need to tell you";
+                    introText = "I don't need to tell you";
                     introText2 = "what your rock says.";
                 }
                 if (string_count("maypul", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
@@ -91,7 +182,7 @@ switch(state)
                 if (string_count("sylvanos", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                 {
                     introText = "When I drive you into the ground,";
-                    introText2 = "youre going to stay there!";
+                    introText2 = "you're going to stay there!";
                 }
                 if (string_count("wrastor", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                 {
@@ -106,19 +197,30 @@ switch(state)
                 if (string_count("elliana", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                 {
                     introText = "I can help you fly but";
-                    introText2 = "you wont be coming back down!";
+                    introText2 = "you won't be coming back down!";
                 }
                 if (string_count("ranno", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                 {
-                    introText = "I doubt your frog splash";
-                    introText2 = "will be enough to stop me!";
+                    introText = "Your frog splash";
+                    introText2 = "won't be enough to stop me!";
                 }
+                if (string_count("pomme", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0  || enemyObj.url == 18)
+                    introText = "I am the star of this duet, little miss diva!";
+                if (string_count("olympia", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 || enemyObj.url == 19)
+                {
+		    introText = "When I beat you, you will be";
+		    introText2 = "my new tag partner, got it?!";
+		}
+                if (string_count("mollo", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0  || enemyObj.url == 16)
+                    introText = "Hope those bombs don’t blow up in your face!";
+                if (string_count("hodan", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0  || enemyObj.url == 17)
+                    introText = "What I am here for is none of your monkey business!";
                 if (string_count("etalus", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "Mind if I break the ice... and your jaw?!";
                 if (string_count("orcane", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "You should be honored that you will get no mercy!";
                 if (string_count("forsburn", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "Youre only smoke and mirrors to me!";
+                    introText = "You're only smoke and mirrors to me!";
                 if (string_count("clairen", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "Cute sword but my toys are better!";
                     
@@ -133,8 +235,8 @@ switch(state)
 
                     introChoices = [
                         "Step up or shut up!",
-                        "Its showtime!",
-                        "Who's next?! Youre next on my list!",
+                        "It's showtime!",
+                        "Who's next?! You're next on my list!",
                         "If you want some, come get some!"
                     ];
                     introText = introChoices[random_func(floor(seed%24),array_length(introChoices), true)];
