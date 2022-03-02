@@ -14,59 +14,62 @@ if (attack == AT_NSPECIAL){
 	// Parry cancel
 	if(window_timer > 6 && window == 1 && shield_pressed)
 	{
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_bunt"));
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_bunt_air"));
-		set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_bunt_hurt"));
-		set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_bunt_hurt_air"));
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.7);
-		
-		fc_bunt = true;
-		
-		// Make zdrop firecracker
-		var fc_zdrop = create_hitbox(AT_NSPECIAL,1,x,y-(char_height * 0.5));
-		
-		fc_zdrop.vsp = -3;
-		fc_zdrop.hsp = 0;
-		
-		fc_zdrop.grav *= 0.68;
-		
-		switch(fc_count)
-	    {
-	    	case 1:
-	    	fc_zdrop.sprite_index = sprite_get("firecracker_single_bunt");
-	    	break;
-	    	case 2:
-			fc_zdrop.sprite_index = sprite_get("firecracker_double_bunt");
-	    	break;
-	    	case 3:
-	    	fc_zdrop.sprite_index = sprite_get("firecracker_triple_bunt");
-	    	break;
-	    }
-	    
-	    fc_zdrop.num_fc = fc_count;
-		
-		// Set state
-		if(!free)
+		if( (free && has_airdodge) || (!free))
 		{
-			if(spr_dir == 1)
+			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_bunt"));
+			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_bunt_air"));
+			set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_bunt_hurt"));
+			set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_bunt_hurt_air"));
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.7);
+			
+			fc_bunt = true;
+			
+			// Make zdrop firecracker
+			var fc_zdrop = create_hitbox(AT_NSPECIAL,1,x,y-(char_height * 0.5));
+			
+			fc_zdrop.vsp = -3;
+			fc_zdrop.hsp = 0;
+			
+			fc_zdrop.grav *= 0.68;
+			
+			switch(fc_count)
+		    {
+		    	case 1:
+		    	fc_zdrop.sprite_index = sprite_get("firecracker_single_bunt");
+		    	break;
+		    	case 2:
+				fc_zdrop.sprite_index = sprite_get("firecracker_double_bunt");
+		    	break;
+		    	case 3:
+		    	fc_zdrop.sprite_index = sprite_get("firecracker_triple_bunt");
+		    	break;
+		    }
+		    
+		    fc_zdrop.num_fc = fc_count;
+			
+			// Set state
+			if(!free)
 			{
-				if(right_down) set_state(PS_ROLL_FORWARD); 
-				else if(left_down)  set_state(PS_ROLL_BACKWARD);
-				else set_state(PS_PARRY);
+				if(spr_dir == 1)
+				{
+					if(right_down) set_state(PS_ROLL_FORWARD); 
+					else if(left_down)  set_state(PS_ROLL_BACKWARD);
+					else set_state(PS_PARRY);
+				}
+				else if(spr_dir == -1)
+				{
+					if(left_down) set_state(PS_ROLL_FORWARD); 
+					else if(right_down)  set_state(PS_ROLL_BACKWARD);
+					else set_state(PS_PARRY);
+				}
 			}
-			else if(spr_dir == -1)
+			else
 			{
-				if(left_down) set_state(PS_ROLL_FORWARD); 
-				else if(right_down)  set_state(PS_ROLL_BACKWARD);
-				else set_state(PS_PARRY);
+				set_state(PS_AIR_DODGE);
 			}
+			
+			exit;
 		}
-		else
-		{
-			set_state(PS_AIR_DODGE);
-		}
-		
-		exit;
 	}
 	
 	// Reset angle
@@ -196,7 +199,7 @@ if (attack == AT_NSPECIAL){
 	}
 	
 	// Spin/bunt throw
-	if((window == 1 && window_timer < fc_max_hold_time && window_timer > 6) && (attack_down || left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed || shield_down))
+	if((window == 1 && window_timer < fc_max_hold_time && window_timer > 6) && (attack_down || left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed ))
 	{
 		window_timer = fc_max_hold_time;
 		//fc_backspin = !(left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed);
@@ -338,7 +341,7 @@ if (attack == AT_NSPECIAL){
 		
 		
 		// Set firecracker speed
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, throw_speed * (-dsin(firecracker_angle)*1.3) + (vsp* 1.2 )); //(fc_bunt ? 1.4 : 0.5
+		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, throw_speed * (-dsin(firecracker_angle)*1.3) + (vsp* 0.5)); //(fc_bunt ? 1.4 : 0.5
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, throw_speed * dcos(firecracker_angle));
 		
 		if(fc_bunt){ 

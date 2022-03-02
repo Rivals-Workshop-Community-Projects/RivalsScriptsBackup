@@ -1,4 +1,5 @@
-
+muno_event_type = 6;
+user_event(14);
 
 // Start of Retroblast-specific code
 
@@ -48,8 +49,6 @@ if (selected_color == 0) {
 }
 
 // End of Retroblast-specific code
-
-user_event(12);
 
 // The following was contributed by Hyuponia's css tile swapping code tempalte
 

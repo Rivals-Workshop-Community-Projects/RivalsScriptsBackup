@@ -153,7 +153,7 @@ switch(sfx_announcer)
 
 with(oPlayer) 
 {
-	if("url" in self && !clone && clones_player_id == 0 && !custom_clone)
+	if("url" in self && !clone && !custom_clone)
 	{
 	//At the start of the match, give everyone a groove variable.
 	//Groove Selects. Grooves based of ScribeAwoken's ideas of multiple platform fighters

@@ -74,4 +74,4 @@ set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 6.5);
 set_hitbox_value(AT_DTILT, 2, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

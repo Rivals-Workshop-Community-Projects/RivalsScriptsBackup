@@ -336,6 +336,16 @@ set_color_profile_slot( 30, 5, 255, 25, 25 ); //blood
 set_color_profile_slot( 30, 6, 255, 0, 0 ); //eyes
 set_color_profile_slot( 30, 7, 255, 25, 25 ); //cleaver
 
+// Bloodborne
+set_color_profile_slot( 31, 0, 255, 245, 219 ); //white
+set_color_profile_slot( 31, 1, 65, 65, 74 ); //scarf
+set_color_profile_slot( 31, 2, 128, 128, 130 ); //hair
+set_color_profile_slot( 31, 3, 57, 57, 59 ); //hoodie
+set_color_profile_slot( 31, 4, 102, 57, 49 ); //wood
+set_color_profile_slot( 31, 5, 197, 227, 218 ); //blood
+set_color_profile_slot( 31, 6, 0, 0, 0 ); //eyes
+set_color_profile_slot( 31, 7, 157, 157, 168 ); //cleaver
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

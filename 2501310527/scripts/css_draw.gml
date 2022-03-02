@@ -1,3 +1,9 @@
+var charuuid = string(sprite_get("idle"));
+    if ("css_char" not in self || css_char != charuuid) {
+        css_char = charuuid;
+        sound_play(sound_get("blaster_smb3"));
+    }
+
 //--- ---
 //
 // hyuponia's "ae" css code
@@ -63,6 +69,10 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     //--- ---
     // the primary part you should change.
     //--- ---
+    
+    
+
+    
     altsel = sound_get("minibillshoot_smw"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     

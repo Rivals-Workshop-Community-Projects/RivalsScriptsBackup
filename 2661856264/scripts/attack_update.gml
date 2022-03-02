@@ -99,13 +99,13 @@ if (stealth_rock >= 1){
         can_shield = true;
         if (shield_pressed && has_airdodge = true){
             stealth_rock -= 1;
-            sound_play(sound_get("special"))
+            sound_play(sound_get("special"));
         }
         if (has_hit){
             can_jump = true;
             if (jump_pressed || up_strong_pressed){
                 stealth_rock -= 1;
-                sound_play(sound_get("special"))
+                sound_play(sound_get("special"));
             }
         }
     }

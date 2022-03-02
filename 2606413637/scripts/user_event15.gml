@@ -266,6 +266,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.8", "20 February, 2022");
+initHeader("General - Bugfixes");
+initSection("Fixed sprite size.");
+
 initPatch("1.7", "22 November, 2021");
 initHeader("NSpecial - Nerfs");
 initSection("Air version now has pratfall.");

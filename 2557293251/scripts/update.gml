@@ -24,10 +24,11 @@ if(total_players == 0)
 	{
         diag = ""; 
 		diag_name = get_char_info(player, INFO_STR_NAME);
-		diag_index=0;
+		diag_index = 0;
 
-		if(!clone && clones_player_id == 0 && !custom_clone)
+		if(!clone && !custom_clone)
 		{
+			print_debug("hi!");
 			otherUrl = 0;
 			if(other.diag_player == 0)
 				other.diag_player = player;
@@ -46,9 +47,9 @@ else if(exist_timer == 100)
 {
 	with(oPlayer)
 	{
-		if(!clone || clones_player_id == 0 || !custom_clone)
+		if(!clone && !custom_clone)
     	{
-			if(clone && custom_clone)
+			if(clone || clone && custom_clone)
 			{ print_debug("Goodbye"); exit; }   
 			
 			//check out other people
@@ -1199,36 +1200,36 @@ else if(exist_timer == 100)
 					break;
 					#endregion
 				}
-			
-				if(!variable_instance_exists(id,"diagchoice")) //if empty just say something!
-					diagchoice = [
-					"This is the end for you!",
-					"Sorry Master, but this time I'll have to go all out just this once!",
-					"If you run away now, then I'll spare you and you won't have to see 1% of my true power.",
-					"This is serious business, kid. Get out of here.",
-					"What do you mean my girlfriend is in another castle?",
-					"You must be strong, let's fight!",
-					"This will be your grave.",
-					"I'm going to be the strongest in the universe!",
-					"I'll have you know I graduated top of my class in the Air Armada, and I've been involved in numerous secret raids.",
-					"If you're done talking, let's get this over with.",
-					"You're not going anywhere.",
-					"Stop right there, I have to ask you something!",
-					"Would you please sign my petition?",
-					"I'd like to see you try.",
-					"I hope your fists can back up that much talk.",
-					"You don't seem that tough, do you need help at the gym?",
-					"Hey buddy, you know the leather club is two blocks down.",
-					"The answer lies.. in the heart of battle!",
-					"I am adapt incarnate!",
-					"So false, Worstie.",
-					"You know they say all men are created EQUAL. But you look at me, and that statement is not true!",
-					"Let's make this a good fight!",
-					"You think you can beat me? Well, maybe you can, but not today! I think.",
-					"Wait, I am not supposed to be here.",
-					"Do you have time to talk about our lord and saviour, Dan Fornace?"];
 			}
 		}
+			if(!variable_instance_exists(id,"diagchoice")) //if empty just say something!
+				diagchoice = [
+				"This is the end for you!",
+				"Sorry Master, but this time I'll have to go all out just this once!",
+				"If you run away now, then I'll spare you and you won't have to see 1% of my true power.",
+				"This is serious business, kid. Get out of here.",
+				"What do you mean my girlfriend is in another castle?",
+				"You must be strong, let's fight!",
+				"This will be your grave.",
+				"I'm going to be the strongest in the universe!",
+				"I'll have you know I graduated top of my class in the Air Armada, and I've been involved in numerous secret raids.",
+				"If you're done talking, let's get this over with.",
+				"You're not going anywhere.",
+				"Stop right there, I have to ask you something!",
+				"Would you please sign my petition?",
+				"I'd like to see you try.",
+				"I hope your fists can back up that much talk.",
+				"You don't seem that tough, do you need help at the gym?",
+				"Hey buddy, you know the leather club is two blocks down.",
+				"The answer lies.. in the heart of battle!",
+				"I am adapt incarnate!",
+				"So false, Worstie.",
+				"You know they say all men are created EQUAL. But you look at me, and that statement is not true!",
+				"Let's make this a good fight!",
+				"You think you can beat me? Well, maybe you can, but not today! I think.",
+				"Wait, I am not supposed to be here.",
+				"Do you have time to talk about our lord and saviour, Dan Fornace?"];
+
 			if (diag == "")
 				diag = diagchoice[random_func( floor((other.seed) + get_player_color(player)) % 24, array_length(diagchoice),true)];
 	}

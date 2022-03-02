@@ -281,7 +281,7 @@ switch attack {
          
          hit_player_obj.fall_through = true
          
-         hit_player_obj.x += floor((x + 12*spr_dir - hit_player_obj.x)/4)
+         hit_player_obj.x += floor((x + 22*spr_dir - hit_player_obj.x)/4)
          hit_player_obj.y += floor((y - 34 - hit_player_obj.y)/4)
          
          if state_timer > 25 {

@@ -166,7 +166,7 @@ bubble_y = 8;
 
 
 
-small_sprites = true;
+small_sprites = 1;
 djump = 1;
 
 cargo_grab = false;

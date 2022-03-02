@@ -166,7 +166,7 @@ bubble_y = 8;
 
 AT_STRONG = AT_EXTRA_1;
 
-small_sprites = true;
+small_sprites = 1;
 
 blaster = noone;
 blaster_out = false;
@@ -215,6 +215,11 @@ blaster_smoke_tiny = hit_fx_create( sprite_get( "smoke_tiny" ), 20 );
 smoke_mid = noone;
 
 blaster_intro = hit_fx_create( sprite_get( "intro" ), 14 );
+
+pkmn_stadium_front_img  = sprite_get("pokemon_front_bill");
+pkmn_stadium_back_img = sprite_get("pokemon_back_bill");
+pkmn_stadium_name_override = "Bullet B."
+guiltySprite = sprite_get("trial")
 
 introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. 

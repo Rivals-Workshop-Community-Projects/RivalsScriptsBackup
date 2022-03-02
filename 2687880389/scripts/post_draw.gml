@@ -1,3 +1,10 @@
+// MunoPhone Touch code - don't touch
+// should be at TOP of file
+muno_event_type = 4;
+user_event(14);
+
+
+
 if phone_cheats[cheat_funny_snail]{
 	draw_debug_text(x, y, "woag");
 }

@@ -50,7 +50,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 18);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.55);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, rock_l);
-set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("rock_hit"));
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("rock_hit_ll"));
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 30);
 set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_CAMERA_SHAKE, 2);
 
@@ -71,6 +71,6 @@ set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, .45);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, rock_m);
-set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("rock_hit_l"));
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 30);
 set_hitbox_value(AT_FSTRONG, 2, HG_EXTRA_CAMERA_SHAKE, 1);

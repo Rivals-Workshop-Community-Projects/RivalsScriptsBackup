@@ -116,6 +116,14 @@ if (attack == AT_FSPECIAL){
 
 //dspecial shenans
 if (attack == AT_DSPECIAL){
+    if (!free){
+        set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, -3);
+        set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -10);
+    }
+    else {
+        set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, -3);
+        set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -6);
+    }
     can_fast_fall = false;
     if (window == 7 && window_timer >= 4) {
         can_move = true;

@@ -120,7 +120,7 @@ introResetBool = false;
 // Firecrackers
 can_throw = false;
 NSFC = noone;
-firecracker_speed = 8; // 13
+firecracker_speed = 10; // 13
 default_firecracker_angle = 15;
 firecracker_angle = 65;
 fc_bounce_timer = 34;

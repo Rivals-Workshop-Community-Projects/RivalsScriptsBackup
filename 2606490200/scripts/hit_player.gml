@@ -9,7 +9,7 @@ if my_hitboxID.attack == AT_FSPECIAL && move_cooldown [AT_NAIR] > 0 {
 
 if my_hitboxID.attack == AT_FSPECIAL && move_cooldown [AT_BAIR] > 0 {
 
-     spawn_hit_fx( floor((hit_player_obj.x + x)/2) + 10*spr_dir, floor((hit_player_obj.y + y)/2) - 40, 305) 
+     //spawn_hit_fx( floor((hit_player_obj.x + x)/2) + 10*spr_dir, floor((hit_player_obj.y + y)/2) - 40, 305) 
 
 }
 
@@ -42,11 +42,6 @@ shake_camera(8,8)
 if my_hitboxID.attack == AT_FSPECIAL  {
     
     hsp = 0
-if move_cooldown [AT_NAIR] == 0 && move_cooldown [AT_BAIR] == 0 {
-   fxchad2 = spawn_hit_fx( floor((hit_player_obj.x + x)/2) + 10*spr_dir, floor((hit_player_obj.y + y)/2) - 40, i5) 
-   fxchad2.depth = 5
-shake_camera(8,10)
-}
 
     sound_play(asset_get("sfx_absa_kickhit"))
 }

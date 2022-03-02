@@ -1,3 +1,9 @@
+var charuuid = string(sprite_get("idle"));
+    if ("css_char" not in self || css_char != charuuid) {
+        css_char = charuuid;
+        sound_play(sound_get("shadow_clone"));
+    }
+
 //--- ---
 //
 // hyuponia's "ae" css code
@@ -14,7 +20,7 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "template"
+var qe_b = "Ryu Hayabusa"
 // ! you can now scroll down until you reach "the primary part you should change."
  
 var tmp_cur = 0;

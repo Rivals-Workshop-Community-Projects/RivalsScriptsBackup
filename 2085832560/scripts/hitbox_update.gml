@@ -449,8 +449,8 @@ if attack == AT_EXTRA_1 && hbox_num == 18 {
 		
 		image_xscale *= 6
 		image_yscale *= 6
-		
-		hsp *= -4
+		spr_dir *= -1
+		hsp *= -4 
 	}	
 	
 	

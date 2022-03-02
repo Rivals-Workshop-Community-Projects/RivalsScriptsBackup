@@ -189,14 +189,44 @@ pkmn_stadium_name_override = "Golem";
 
 //Mt. Dedede Stadium
 arena_short_name = "Golem";
-arena_title = "The Megaton Pokémon";
+arena_title = "The Rock Blaster";
 
 //Boxing Ring
 boxing_short_name = "Golem";
-boxing_title = "The Megaton Pokémon";
+boxing_title = "The Mud Slapper";
 
 //Hikaru
 Hikaru_Title2 = "The Megaton Pokémon";
+
+//Henry Stickmin
+has_fail = true;
+fail_text = "Henry panicked and whited out!";
+
+//Assist Buddy
+assistAttack = AT_FSTRONG; //The attack to use as the assist
+assistOffsetX = -32; //The horizontal distance they spawn from the player
+assistOffsetY = 0; //The vertical distance they spawn from the player
+assistVelX = 0; //The horizontal velocity applied when the assist is called
+assistVelY = 0; //The vertical velocity applied when the assist is called
+assistGroundOnly = true; //Whether or not they are forced to the ground
+assistFloat = false; //Whether or not they stay in place vertically
+assistCool = 60; //The time it takes for the assist to recharge
+
+//Agent N & Lynk
+nname = "Golem"
+ncode1 = "The Megaton Pokémon, capable of manipulating"
+ncode2 = "rocks to create a layer of armor or explode."
+ncode3 = "Doesn't like moving much."
+
+//Wall-E
+walle_taunt_sound = sound_get("cry")
+walle_taunt_type = [2]
+
+//Soulbound Conflict
+battle_text = "Keep rollin', rollin', rollin', rolling.";
+
+//Miiverse
+miiverse_post = sprite_get("miiverse");
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

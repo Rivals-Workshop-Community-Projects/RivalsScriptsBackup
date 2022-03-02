@@ -53,6 +53,7 @@ alt_name[27] = "Margaret Moonlight (NMH)";
 alt_name[28] = "Whitty (FNF)";
 alt_name[29] = "Bat Bat";
 alt_name[30] = "Genesis 8";
+alt_name[31] = "Bloodborne";
  
  
 draw_set_halign(fa_left);

@@ -47,7 +47,7 @@ set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 2);
-set_hitbox_value(AT_NAIR, 1, HG_EXTRA_HITPAUSE, 1);
+set_hitbox_value(AT_NAIR, 1, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 1);

@@ -27,7 +27,7 @@ else
 {
     with(oPlayer)
     {
-        if("url" in self && !clone && clones_player_id == 0 && !custom_clone)
+        if("url" in self && !clone && !custom_clone)
         {
             draw_sprite_ext(other.groove_sprite[bud_groove], 0,  view_get_xview() + (view_get_wview() / groovepos) + groove_hud_x, view_get_yview() + view_get_hview()/1.25 + groove_hud_y, 1, 1, 0, c_white, 1);
             

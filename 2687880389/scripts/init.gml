@@ -495,6 +495,39 @@ layered_sound_1 = noone;
 layered_sound_2 = noone;
 layered_sound_3 = noone;
 
-// Muno template: (don't change)
+// Compatibility
+// Kirby
+kirbyability = 16;
+swallowed = 0;
+// Break the targets (not yet supported)
+pho_has_btt_layout = false;
+// Hikaru
+Hikaru_Title = "Transformed";
+// Rat
+personaQuips[10] = "You're not getting away!";
+// Agent N
+nname = "Retroblast";
+ncode1 = "A shape-changing robot from the future of the past.";
+ncode2 = "Able to fire high-energy blasts from its extremities.";
+ncode3 = "It's fast, but not fast enough.";
+// Mt. Dedede
+arena_title = "Shape-Changing Challenger";
+arena_short_name = "Retroblast";
+// Soulbound Conflict
+battle_text = "* Retroblast wants to see who's faster!";
+// Trial Grounds
+sprite_change_offset("trial_grounds", 31, 0);
+guiltySprite = sprite_get("trial_grounds");
+// Pokemon Stadium
+pkmn_stadium_front_img = sprite_get("pkmn_front");
+pkmn_stadium_back_img = sprite_get("pkmn_back");
+pkmn_stadium_name_override = "Retroblst";
 
-user_event(14); // General init
+
+
+// Muno template: (don't change)
+// MunoPhone Touch code - don't touch
+// should be at BOTTOM of file, but above any #define lines
+
+muno_event_type = 0;
+user_event(14);

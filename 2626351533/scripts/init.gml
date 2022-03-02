@@ -164,7 +164,7 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-small_sprites = true;
+small_sprites = 1;
 
 can_glide = false;
 glide_used = false;

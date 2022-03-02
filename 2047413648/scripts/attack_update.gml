@@ -687,11 +687,8 @@ if (attack == AT_UAIR && window == 1 && window_timer == 1 ) {
 }
 
 
-if (attack == AT_BAIR && window == 1 && window_timer == 1 ){
+if (attack == AT_BAIR && window == 1 && window_timer == 1 && !hitpause){
     sound_play(asset_get("sfx_ori_ustrong_charge"))
-}
-
-if (attack == AT_BAIR && window == 1 && window_timer == 1 ){
     sound_play(asset_get("sfx_ice_shieldup"))
 }
 
@@ -725,7 +722,6 @@ if (attack == AT_FAIR && has_hit_player ){
 	
 	
 	if window == 2 && !hitpause {
-        can_fast_fall = false
         fall_through = true
 		vsp = 0
 		hsp /= 2
@@ -801,6 +797,7 @@ if attack == AT_USTRONG && window == 3 && !hitpause{
 		sound_play(asset_get("sfx_spin"))
 	}
 }
+
 
 if (attack == AT_BAIR && window == 1 && window_timer == 9 ){
 	sound_play(asset_get("sfx_swipe_weak2"))
@@ -1269,7 +1266,6 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 			if fcharge > 0 {
 				fcharge -= 1
 			} else {
-				vsp = -8
 				set_state(PS_PRATFALL)
 				prat_land_time = 20;
 			}

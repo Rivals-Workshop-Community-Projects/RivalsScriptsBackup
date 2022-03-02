@@ -1,6 +1,6 @@
 sprite_change_offset("intro", 50, 186);
 
-sprite_change_offset("idle", 50, 90);
+sprite_change_offset("idle", 50, 90); sprite_change_offset("idle_bloodborne", 50, 90);
     sprite_change_offset("idle_EX", 50, 90);
     sprite_change_offset("idle_EX1", 50, 90);
 sprite_change_offset("hurtbox", 50, 90);
@@ -14,7 +14,7 @@ sprite_change_offset("uphurt", 50, 90);
 sprite_change_offset("spinhurt", 50, 90);
 
 sprite_change_offset("crouch", 50, 86);
-sprite_change_offset("walk", 50, 90);
+sprite_change_offset("walk", 50, 90); sprite_change_offset("walk_bloodborne", 50, 90);
 sprite_change_offset("walkturn", 50, 90);
 sprite_change_offset("dash", 50, 90);
 sprite_change_offset("dashB", 50, 90);

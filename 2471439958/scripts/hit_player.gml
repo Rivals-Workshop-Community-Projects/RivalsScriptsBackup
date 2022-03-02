@@ -39,7 +39,14 @@ if (my_hitboxID.attack == AT_UAIR && window == 2 && hit_player_obj.hitstun > 0) 
     hit_player_obj.y = y + -32
 }
 
-//FAIR TEST
+//BAIR CONNECT
+
+if (my_hitboxID.attack == AT_BAIR && window == 2 && hit_player_obj.hitstun > 0) {
+    hit_player_obj.x = x + spr_dir * -45
+    hit_player_obj.y = y + -2
+}
+
+//DSTRONG CONNECT
 
 if (my_hitboxID.attack == AT_DSTRONG && window == 5){
     hit_player_obj.x = x + spr_dir * 15

@@ -71,6 +71,6 @@ if (attack == AT_JAB) && switcher == 1{
         attack = AT_TAUNT_2;
     }
 }
-if (attack == AT_TAUNT) && switcher == 1{
-        attack = AT_EXTRA_2;
+if (attack == AT_TAUNT) && switcher == 0{
+        attack = AT_TAUNT_2;
 }

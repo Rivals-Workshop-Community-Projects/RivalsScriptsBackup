@@ -706,6 +706,11 @@ if (attack == 49){
 		hit_player.can_fast_fall=false;
 }
 
+//Bloodborne mode
+/*if (attack == AT_JAB){
+		bloodborne = 1;
+}*/
+
 
 //NO Element
 

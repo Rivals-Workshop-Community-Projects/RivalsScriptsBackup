@@ -1,3 +1,9 @@
+var charuuid = string(sprite_get("idle"));
+    if ("css_char" not in self || css_char != charuuid) {
+        css_char = charuuid;
+        sound_play(asset_get("sfx_bird_nspecial"));
+    }
+
 //--- ---
 //
 // hyuponia's "ae" css code

@@ -6,8 +6,8 @@ if(variable_instance_exists(id,"hud_bullet"))
 
     if(hud_timer != 0 && bullets != 0)
     {
-        draw_sprite(sprite_get("hud_bullet"), (6-hud_bullet >= hud_enhanced? 0 : 1), x - 14, y+2);
-        draw_debug_text(x-4, y + 8, "x" + string(bullets));
+        draw_sprite(sprite_get("hud_bullet"), (6-hud_bullet >= hud_enhanced? 0 : 1), floor(x - 14), floor(y+2));
+        draw_debug_text(floor(x-4), floor(y + 8), "x" + string(bullets));
     }
     //Reload Bar
     if(attack == AT_TAUNT_2 && tac_reload && !hud_fail && hud_enhanced == 0 && state == PS_ATTACK_GROUND && state_timer > 8 && window <= 2)
@@ -25,10 +25,12 @@ if(state == PS_ATTACK_AIR && attack == AT_USPECIAL && window == 2)
 }
 
 //Intro
-if(state == PS_SPAWN && state_timer > 10 && state_timer < 100)
+if(get_gameplay_time() < 120 || (get_gameplay_time() > 120 && get_gameplay_time() < 150 && get_gameplay_time()%2 == 0))
 {
-    draw_debug_text( x-string_length(introText)*4, y+20, introText);
-    draw_debug_text( x-string_length(introText2)*4, y+36, introText2);
+    if(get_gameplay_time() > 120 && get_gameplay_time()%2 == 0)
+        intro_y --;
+    draw_debug_text( intro_x-string_length(introText)*4, intro_y+20, introText);
+    draw_debug_text( intro_x-string_length(introText2)*4, intro_y+36, introText2);
 }
 
 //Genesis

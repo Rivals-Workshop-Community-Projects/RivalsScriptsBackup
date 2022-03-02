@@ -22,7 +22,13 @@ if attack == AT_DAIR && hbox_num == 3 {
      spawn_hit_fx (x , y + 20 , 108)
     }
            
-     if !free{
+           if has_hit {
+           	hsp = 10*spr_dir
+           	vsp = -10
+           	gravity = 0.3
+           	has_hit = false
+           }
+     if !free {
          destroyed = 1
          create_hitbox(AT_USPECIAL , 4 , x  , y );
          spawn_hit_fx (x , y , 253)

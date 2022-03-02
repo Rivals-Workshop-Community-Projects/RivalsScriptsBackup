@@ -1,45 +1,31 @@
 /*
 
-* MUNOPHONE OPERATION MANUAL *
+╔══════════════╦════════════════════════════════════════════════════════════╗
+║  SECTION #0  ║															║
+╠══════════════╝															║
+║																			║
+║ MunoPhone Touch - Introduction											║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-      - 1st Edition -
+MunoPhone Touch is a utility pack for RoA characters, featuring:
+- a phone interface for accessing bonus features in Practice Mode
+- a number of backend coding-assist features
+- a more balanced, cleanly-coded version of Sandbert to use as a character base
+- and more!
 
+In order to use the MunoPhone Touch, you should be at least somewhat used to
+coding in RoA. All of the code is cookie-cutter and has simple templates, but it
+certainly helps to know what exactly the words you're typing mean.
 
+If you have any questions, you can find my Discord server, Twitter, etc. at my
+website, https://bymuno.com. Get in touch! (Steam comments are unreliable, as I
+don't check them frequently.)
 
-╔══════════════╦═══════════════════════════════════════════════════════════════╗
-║  SECTION 01  ║                                                               ║
-╠══════════════╝                                                               ║
-║                                                                              ║
-║ Table of Contents & Premable                                                 ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-- 01: Table of Contents & Preamble
-- 02: Installation: Creating a New Character
-- 03: Installation: Importing to an Existing Character
-- 04: Creating Tips, Patch Notes, & Abouts
-- 05: Frame Data Guide & HG_MUNO_ / AG_MUNO_
-- 06: Making Cheat Codes & Referencing Phone Settings
-- 07: Utility Variables
-- 08: Character Compatibility
-
-The difficulty level of using the MunoPhone is roughly the same as the basics of
-making a Rivals character itself. If you have a decent mindset for programming,
-you should be able to grasp everything by reading below + messing around with
-the code in user_event15.gml (the other user_events aren't meant to be edited).
-
-If you have any questions, you can ping me (Muno) wherever is most convenient:
-
-- discord.gg/yhchvBB   Muno's personal discord      [RECOMMENDED]
-- discord.gg/qVKzVuZ   Rivals Extended Workshop
-- discord.gg/RoA       The official RoA discord
-
-Steam comments are unreliable, as I don't check them frequently.
-
-LASTLY - To get notified of MunoPhone firmware updates, join the Muno Discord
-(the first one in the list above) and get the MunoPhone Dev role. You'll be
-pinged whenever improvements to the phone are uploaded, so that you can add them
-to your character.
+LASTLY - To get notified of MunoPhone firmware updates, join the my Discord
+server (found at my website) and get the MunoPhone Dev role. You'll be pinged
+whenever improvements to the phone are uploaded, so that you can add them to
+your character.
 
 */
 
@@ -47,13 +33,16 @@ to your character.
 
 /*
 
-╔══════════════╦═══════════════════════════════════════════════════════════════╗
-║  SECTION 02  ║                                                               ║
-╠══════════════╝                                                               ║
-║                                                                              ║
-║ Installation: Creating a New Character                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+╔══════════════╦════════════════════════════════════════════════════════════╗
+║  SECTION #1  ║															║
+╠══════════════╝															║
+║																			║
+║ Making a NEW Character with MunoPhone Touch								║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+* If you've ALREADY made a character, see the next section for instructions on
+how to install the MunoPhone!
 
 This is actually really simple, and it's the same steps used to make a new
 character from the REAL Sandbert. Even if you know how to do that, though, keep
@@ -61,7 +50,7 @@ reading, since there are other important steps.
 
 1. Navigate to
 
-Program Files (x86)/Steam/steamapps/workshop/content/383980
+	Program Files (x86)/Steam/steamapps/workshop/content/383980
 
 (...you must have already done that if you're reading this, right?)
 
@@ -70,22 +59,24 @@ end of the mod's Steam URL.
 
 2. Copy it to
 
-Appdata/Local/RivalsofAether/workshop/
+	Appdata/Local/RivalsofAether/workshop/
 
-and feel free to change the name of the folder.
+and feel free to change the name of the folder you just copied.
 
 3. Play your character in Practice Mode to ensure that it works.
 
 4. That's pretty much it! All of the user-edited content for the MunoPhone is
-located in user_event15.gml and attacks/_phone.gml; don't touch any of the other
-"user_event" files or lines of code.
+located in user_event15.gml and attacks/_phone.gml. The user_event14.gml file is
+the behind-the-scenes MunoPhone code, which you should leave alone unless you
+know what you're doing. All the rest is just regular character code.
 
-Keep reading to SECTION 03 and onward for info on how to actually configure all
-of the options for the MunoPhone.
+If you're new to making characters, check out these handy guides!
+- https://ko-fi.com/Blog/Post/Rivals-of-Aether-Workshop-A-Complete-Starter-Guid-I2I42WI2N
+- https://pastebin.com/HdBYheUr
 
-For more information on how to make a Rivals character in general, see
-https://pastebin.com/HdBYheUr for a birds-eye overview, and ask around in the
-troubleshooting channels of the Extended Workshop or RoA discord.
+One final note: the commented numbers in files like jab.gml are just the
+pre-patch values for Sandbert with a Phone's moves, e.g. documenting what a
+value used to be before it got nerfed.
 
 */
 
@@ -93,123 +84,103 @@ troubleshooting channels of the Extended Workshop or RoA discord.
 
 /*
 
-╔══════════════╦═══════════════════════════════════════════════════════════════╗
-║  SECTION 03  ║                                                               ║
-╠══════════════╝                                                               ║
-║                                                                              ║
-║ Installation: Importing to an Existing Character                             ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+╔══════════════╦════════════════════════════════════════════════════════════╗
+║  SECTION #2  ║															║
+╠══════════════╝															║
+║																			║
+║ Adding MunoPhone Touch to an EXISTING Character							║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-This is a LITTLE more involved than making a character from scratch - but barely
-so.
+* This section of the guide is intended for people who have ALREADY created a
+character, and want to add the MunoPhone to that character. If you're starting
+from scratch, skip this part!
+
+	NOTE:
+	
+	It's possible that your character has the OLD version of the MunoPhone
+	installed (the green flip-phone). If that's the case, please refer to the
+	old _readme.gml and follow its existing-character installation guide in
+	reverse - remove all of the files and code it tells you to add.
+	
+	You should NOT DELETE your user_event15.gml, since that has all of your
+	custom Tips and such. However, you'll need to rename it or move it
+	somewhere else, since ultimately it'll need to be replaced with the
+	MunoPhone Touch's user_event15.gml (the format of the file has changed
+	compared to the old MunoPhone). Please see the last section of this readme
+	for instructions on transferring your content to the new user_event15, after
+	you've finished the rest of the readme!
+
+As for installing the MunoPhone Touch...
 
 1. Copy these files into your character, putting them in the same folders as
 they're in for Sandbert:
-- all user_eventX.gml files
-- attacks/_phone.gml
-- everything in the sounds and sprites folders which starts with "_pho"
 
-2. Add the following lines of code to your character in the specified places:
-- user_event(11);   at the bottom of draw_hud.gml
-- user_event(12);   at the bottom of post_draw.gml
-- user_event(12);   at the bottom of css_draw.gml
-- user_event(13);   at the bottom of set_attack.gml
-- user_event(14);   at the top    of update.gml
-- user_event(14);   at the bottom of init.gml
+- scripts/user_event14.gml
+- scripts/user_event15.gml
+- scripts/articlephone_post_draw.gml
+- scripts/_readme.gml
+- scripts/_docs.gml
+- scripts/attacks/_phone.gml
+- everything in the sounds/ and sprites/ folders which starts with "_pho"
+
+2. Add the following lines of code to your character in the specified places, to
+allow the MunoPhone to run code at certain moments:
+
+(if a file doesn't exist, you can just create a new empty one)
+
+at the bottom of init.gml:
+
+	muno_event_type = 0;
+	user_event(14);
+
+at the top of update.gml:
+
+	muno_event_type = 1;
+	user_event(14);
+
+at the bottom of set_attack.gml:
+
+	muno_event_type = 2;
+	user_event(14);
+
+at the top of post_draw.gml: (yes, it skips the "3")
+
+	muno_event_type = 4;
+	user_event(14);
+
+at the bottom of draw_hud.gml:
+
+	muno_event_type = 5;
+	user_event(14);
+	
+in css_draw.gml (ideal order of code depends on what else you have in there):
+	
+	muno_event_type = 6;
+	user_event(14);
 
 NOTE: "at the bottom" means BEFORE any #define lines, if you have them.
 
-3. Play your character in Practice Mode to ensure that it works.
+3. This step depends on whether or not your character uses a Solid Article.
 
-4. That's pretty much it! Keep reading for instructions on how to actually set
-up the MunoPhone's apps for your character, as well as other useful things that
-the template bundles in.
+If it does NOT use a Solid Article (or you don't know what a Solid Article is),
+- copy scripts/articlesolid_init.gml into your character.
 
-*/
+If it DOES use a Solid Article,
+- open Sandbert's articlesolid_init.gml.
+- copy the contents of this file to your clipboard.
+- open your character's articlesolid_init.gml.
+- paste the contents of Sandbert's file to the VERY TOP of your file.
 
+4. Try your character in Practice Mode to ensure that it works.
 
+5. Make a phone-opening animation for your character, like Sandbert's - by
+default, the filename should be "phone_open_stripX.png". Then, change the
+animation timings in scripts/attacks/_phone.gml as necessary (unless your
+anim matches the frame count of Sandbert's).
 
-/*
-
-╔══════════════╦═══════════════════════════════════════════════════════════════╗
-║  SECTION 04  ║                                                               ║
-╠══════════════╝                                                               ║
-║                                                                              ║
-║ Creating Tips, Patch Notes, & Abouts                                         ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-Abouts are actually very simple! In the Abouts section of user_event15.gml, you
-can edit the example entries - the titles AND text. You can delete one of them,
-delete BOTH of them, copy-paste the lines to add additional ones, whatever.
-
-ex.
-
-initAbout("TITLE", "CONTENTS");
-
-Use this to provide credits or plug your online presence.
-
-
-
-Tips and Patch Notes use a more involved format, which allows you to do many
-more things. Patches act the same as Tips (except the word "Tip" is replaced
-with "Patch" in the function names), so I'm going to just say "Tips" but imply
-that the same applies to Patch Notes. (except for one thing that i'll note)
-
-As with the Abouts, you can add or delete Tips by just having more or fewer of
-the same lines. However, the structure is a bit different:
-- initTip("TITLE") defines a new Tip.
---- for Patches, instead use initPatch("VERSION NUMBER", "DATE")
-- initTipWords("CONTENTS") defines a new paragraph within the most recently
-  defined Tip, so you can have multiple paragraphs per Tip.
-
-ex.
-
-initTip("TIP 1 TITLE");
-initTipWords("TIP 1, PARAGRAPH 1");
-initTipWords("TIP 1, PARAGRAPH 2");
-initTipWords("TIP 1, PARAGRAPH 3");
-
-initTip("TIP 2 TITLE");
-initTipWords("TIP 2, PARAGRAPH 1");
-initTipWords("TIP 2, PARAGRAPH 2");
-initTipWords("TIP 2, PARAGRAPH 3");
-
-If you replace initTipWords() with initTipWords_ext(), you can access more
-options for your text, such as color, alignment, and several preset "gimmicks"
-like shaking and scrolling text. See user_event15.gml for full documentation.
-
-ex.
-
-initTip("TITLE");
-initTipWords("NORMAL TEXT");
-initTipWords_ext("RED, RIGHT-ALIGNED TEXT", fa_right, c_red, 0, 0);
-
-You can also have initTipImage(), which has its own arguments (see event15).
-
-ex.
-
-initTip("TITLE");
-initTipWords("TEXT");
-initTipImage(player_id.spr_jab, 0, fa_center, 1, c_white, 0);
-
-IMPORTANT NOTE: You cannot use sprite_get("sprite_name") here. Instead, you must
-save the sprite_get() to a variable, then reference THAT variable inside the
-Tip's initialisation. This is because the character itself, not the MunoPhone
-object, is required to call sprite_get().
-
-An example of this can be found immediately above the Tips section, for the
-projectile from Sandbert's NSpecial. The default sprites for a character already
-have variables like this set up in user_event14.gml.
-
-initTipImage_ext() is for cropping images, so that only a part of the sprite
-will appear in the Tip. This is useful if you have lots of empty space around
-your character sprites, like I always do.
-
-That should be all of the basics. Information on several more features of the
-Tips app, such as some advanced formatting options, can be found in
-user_event15.gml.
+That's pretty much it! Visit event15.gml to set up the MunoPhone Touch's core
+apps, and keep reading this readme for documentation on other features.
 
 */
 
@@ -217,35 +188,30 @@ user_event15.gml.
 
 /*
 
-╔══════════════╦═══════════════════════════════════════════════════════════════╗
-║  SECTION 05  ║                                                               ║
-╠══════════════╝                                                               ║
-║                                                                              ║
-║ Frame Data Guide & HG_MUNO_ / AG_MUNO_                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+╔══════════════╦════════════════════════════════════════════════════════════╗
+║  SECTION #3  ║															║
+╠══════════════╝															║
+║																			║
+║ Frame Data Guide															║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-The Frame Data Guide is the most advanced part of the MunoPhone ecosystem...
-from the perspective of me, the MunoPhone lead developer, that is. For YOU, it's
-remarkably simple, thanks to my and Archy's hard work. If you want to see the
-extent of it, just look at user_event12.gml...
-
-The system automatically pulls the frame data and hitbox values from all of your
-character's attacks, including any extra attacks you've added beyond the normal
-ones. Optionally, you can also include a Stats page, AND a page for documenting
-whatever information you want (e.g. numbers related to a character gimmick). For
-more on that, see user_event15.gml.
+The Frame Data Guide automatically pulls the frame data and hitbox values from
+all of your character's attacks, including any extra attacks you've added beyond
+the normal ones. Optionally, you can also include a Stats page, AND a page for
+documenting whatever information you want (e.g. numbers related to a character
+gimmick). For more on that, see user_event15.gml.
 
 Now, the automatic data parser is pretty thorough and fairly accurate. But
 inevitably, some Workshop characters will have weird setups due to an inventive
-move gimmick, or there might be a hole in OUR code. If it's the latter, report
-the bug and we'll try to fix it for the next release!
+move gimmick, or there might be a hole in MY code. If it's the latter, report
+the bug and I'll try to fix it for the next release!
 
 Either way, you as a character dev have ways to correct mistakes made by the
-parser. Using various AG_ and HG_ indexes, you can override or otherwise guide
-the frame data gatherer's results. Just go into the attack's .gml file, and add
-lines with the custom AG_s and HG_s. You should feel right at home if you've
-worked on a character before.
+parser. Using various AG_ and HG_ indexes added by the phone, you can override
+or otherwise guide	the frame data gatherer's results. Just go into the attack's
+.gml file, and add lines with the custom AG_s and HG_s. You should feel right at
+home if you've worked on a character before.
 
 ex.
 
@@ -253,148 +219,26 @@ set_attack_value(AT_JAB, AG_MUNO_ATTACK_EXCLUDE, 1);
 set_window_value(AT_JAB, 1, AG_MUNO_WINDOW_EXCLUDE, 1);
 set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_EXCLUDE, 1);
 
-Below is a listing of EVERY custom index present in the MunoPhone and what it
-does. Not only are there ones for correcting the frame data guide, but there are
-ALSO a lot of miscellaneous utility ones. Pretty cool, right?
+For a full list of the AG_ and HG_ indexes added by the phone, see _docs.gml.
 
-
-
-General Attack Indexes - frame data correction
-
-AG_MUNO_ATTACK_EXCLUDE
-- Set to 1 to exclude this move from the list of moves
-AG_MUNO_ATTACK_NAME
-- Enter a string to override the move's name in the attack list
-AG_MUNO_ATTACK_FAF
-- Enter a string to override FAF
-AG_MUNO_ATTACK_ENDLAG
-- Enter a string to override endlag
-AG_MUNO_ATTACK_LANDING_LAG
-- Enter a string to override landing lag
-AG_MUNO_ATTACK_MISC
-- Enter a string to OVERRIDE the move's "Notes" section, which automatically
-  includes the Cooldown System and Misc. Window Traits found below
-AG_MUNO_ATTACK_MISC_ADD
-- Enter a string to ADD TO the move's "Notes" section (preceded by the auto-
-  generated one, then a line break)
-
-P.S. Adding Notes to a move is good for if a move requires a long explanation of
-     the data, or if a move overall has certain behavior that should be listed
-     such as a manually coded cancel window
-
-General Window Indexes - frame data correction
-
-AG_MUNO_WINDOW_EXCLUDE
-- 0: include window in timeline (default)
-- 1: exclude window from timeline
-- 2: exclude window from timeline, only for the on-hit time
-- 3: exclude window from timeline, only for the on-whiff time
-AG_MUNO_WINDOW_ROLE
-- 0: none (acts identically to AG_MUNO_WINDOW_EXCLUDE = 1)
-- 1: startup
-- 2: active (or IN BETWEEN active frames, eg between multihits)
-- 3: endlag
-AG_MUNO_ATTACK_USES_ROLES
-- Must be set to 1 for AG_MUNO_WINDOW_ROLE to take effect
-
-P.S. If your move's windows are structured non-linearly, you can use
-     AG_MUNO_WINDOW_ROLE to force the frame data system to parse the window
-     order correctly (to a certain extent).
-
-General Hitbox Indexes - frame data correction
-
-HG_MUNO_HITBOX_EXCLUDE
-- Set to 1 to exclude this hitbox from the frame data guide
-HG_MUNO_HITBOX_NAME
-- Enter a string to override the hitbox's name, very useful if the move has
-  multiple hitboxes
-
-HG_MUNO_HITBOX_ACTIVE
-- Enter a string to override active frames
-HG_MUNO_HITBOX_DAMAGE
-- Enter a string to override damage
-HG_MUNO_HITBOX_BKB
-- Enter a string to override base knockback
-HG_MUNO_HITBOX_KBG
-- Enter a string to override knockback growth
-HG_MUNO_HITBOX_ANGLE
-- Enter a string to override angle
-HG_MUNO_HITBOX_PRIORITY
-- Enter a string to override priority
-HG_MUNO_HITBOX_GROUP
-- Enter a string to override group
-HG_MUNO_HITBOX_BHP
-- Enter a string to override base hitpause
-HG_MUNO_HITBOX_HPG
-- Enter a string to override hitpause scaling
-HG_MUNO_HITBOX_MISC
-- Enter a string to override the auto-generated misc notes (which include misc
-  properties like angle flipper or elemental effect)
-HG_MUNO_HITBOX_MISC_ADD
-- Enter a string to ADD TO the auto-generated misc notes, not override (line
-  break will be auto-inserted)
-
-Cooldown System - this will automatically handle a move's cooldown for you!
-
-AG_MUNO_ATTACK_COOLDOWN
-- Set this to a number, and the move's move_cooldown[] will be set to it
-  automatically. Set it to any negative number and it will refresh when landing,
-  getting hit, or walljumping. (gets converted to positive when applied)
-AG_MUNO_ATTACK_CD_SPECIAL
-- Set various cooldown effects on a per-ATTACK basis.
-- 1: the cooldown will use the phone_arrow_cooldown variable instead of
-     move_cooldown[attack], causing it to display on the overhead player indicator;
-     multiple attacks can share this cooldown.
-- 2: the cooldown will use the phone_invis_cooldown variable instead of
-     move_cooldown[attack], which doesn't display anywhere (unless you code your
-     own HUD element) but does allow you to share the cooldown between moves.
-AG_MUNO_WINDOW_CD_SPECIAL
-- Set various cooldown effects on a per-WINDOW basis.
-- 1: a window will be exempted from causing cooldown. It is HIGHLY RECOMMENDED
-     to do this for any startup windows, so that the cooldown doesn't apply if
-     you're hit out of the move before being able to use it.
-- 2: a window will reset the cooldown to 0.
-- 3: a window will set cooldown only if the has_hit variable is false, and set
-     it to 0 if has_hit        is true.
-- 4: a window will set cooldown only if the has_hit_player variable is false,
-     and set it to 0 if has_hit_player is true.
-
-Misc. Window Traits
-
-AG_MUNO_WINDOW_INVUL
-- Apply invulnerability during the window.
-- -1: invulnerable
-- -2: super armor
-- above 0: that amount of soft armor
-
-Misc. Hitbox Traits
-
-HG_MUNO_OBJECT_LAUNCH_ANGLE
-- Override the on-hit launch direction of compatible Workshop objects, typically
-  ones without gravity. For example, Otto uses this for the ball rehit angles.
-  Feel free to code this into your attacks, AND to support it for your own
-  hittable articles.
-
-
-
-...That was a lot.
-
-If you're a big brain coder and have made your OWN custom AG_s or HG_s, there's
-a chance that their indexes overlap. To resolve this, see user_event14.gml.
-
-The only other thing to say is that the frame data guide is MUCH friendlier if
-you follow good practices when programming windows and hitboxes. Here are some
+Also, a piece of advice: that the frame data guide is MUCH friendlier if you
+follow good practices when programming windows and hitboxes. Here are some
 guidelines, which you should follow in general (not only because of the
 MunoPhone):
-- Startup, active frames, and ending lag should be segregated by distinct breaks
-  in windows. If a move is active on frames 4-10, then the active window should
-  last 7 frames after a 3 frame startup window.
-- Each hitbox should have its OWN window, and gaps between hitboxes should
-  correspond to gaps between active windows.
-- Whifflag should be applied to ALL endlag windows, except for moves which lack
-  any melee hitboxes... or Specials, which traditionally do not have whifflag.
-- Simplify windows as much as possible while following the above guidelines.
-  Don't add more windows than you need to.
+
+	Startup, active frames, and ending lag should be segregated by distinct
+	breaks in windows. If a move is active on frames 4-10, then the active
+	window should last 7 frames, after a 3 frame startup window.
+	
+	Each hitbox should have its OWN window, and gaps between hitboxes should
+	correspond to gaps between active windows.
+	
+	Whifflag should be applied to ALL endlag windows, except for moves which
+	lack any melee hitboxes... or Specials, which traditionally do not have
+	whifflag in RoA.
+	
+	Simplify windows as much as possible while following the above guidelines.
+	Don't add tons of windows for no reason.
 
 */
 
@@ -402,204 +246,69 @@ MunoPhone):
 
 /*
 
-╔══════════════╦═══════════════════════════════════════════════════════════════╗
-║  SECTION 06  ║                                                               ║
-╠══════════════╝                                                               ║
-║                                                                              ║
-║ Making Cheat Codes & Referencing Phone Settings                              ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+╔══════════════╦════════════════════════════════════════════════════════════╗
+║  SECTION #4  ║															║
+╠══════════════╝															║
+║																			║
+║ Referencing Phone Utilities												║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-You can make cheat codes for your character! To do this, go to event15 and just
-edit or copy-paste the example cheat codes. The arguments are:
+The Cheats app lets you create ingame settings that players can use in Practice
+Mode to make things happen in the game. See user_event15.gml for details.
 
-initCheat(A, B, C, D, E);
-- A: the name of the cheat
-- B: the "backstage name" of the cheat
-- C: an array of possible values it can have
-- D: an array of names for each value in C
-- E: a longer description of the cheat
+As it turns out, the phone itself has a collection of character-universal
+Cheat-like options, called Utilities. As a character dev, you can reference any
+of these, and run code based on the value of the setting.
 
-To reference a cheat in your code, reference phone_cheats[<backstage name>]. It
-will contain the currently-selected value (from argument C).
+The handiest one is Fast Graphics. The MunoPhone can detect when the game's FPS
+dips below 60, and automatically enable Fast Graphics - and then you, the
+character dev, can disable certain visual effects when Fast Graphics activates.
 
-ex.
+To use Fast Graphics, first, enable it in user_event15.gml. Then, in your code,
+reference the phone_fast variable. For example:
 
-if (phone_cheats[cheat_more_djumps]){
-    max_djumps = 100;
-}
-else{
-    max_djumps = 1;
-}
+	// attack_update.gml
+	
+	if (attack == AT_USPECIAL && window == 2 && window_timer == 1){
+		if !phone_fast{
+			spawn_hit_fx(x, y, vfx_uspecial_start);
+		}
+	}
 
-or
+This may help alleviate lag on lower-end machines. P.S. In Practice Mode, use
+the Utilites app to toggle Fast Graphics.
 
-max_djumps = phone_cheats[cheat_more_djumps];
+Fast Graphics is the most useful Utilities option, so it has its own keyword
+(phone_fast). For the rest, you'll need to directly access the phone's data
+arrays, like this:
 
-etc.
+	// update.gml
+	
+	if phone.utils_cur[phone.UTIL_GREEN]{
+		print("The greenscreen is currently enabled.");
+	}
+	
+	if phone.utils_cur_updated[phone.UTIL_GREEN]{
+		if phone.utils_cur[phone.UTIL_GREEN]{
+			print("The user just turned on the greenscreen.");
+		}
+		else{
+			print("The user just turned off the greenscreen.");
+		}
+	}
 
+These arrays are very similar to the ones used for Cheats.
 
-
-Similarly, you can reference the MunoPhone's own settings, though you aren't
-meant to ADD any. The array is called phone_settings[], and both it and the
-backstage name variables are stored inside the phone object, not the player
-object like with cheats.
-
-You can view all of the settings and their backstage names in event14. The most
-useful one is fast vs fancy graphics, which affects some phone UI elements but
-can also be used by your char's more resource-intensive features, to improve
-performance on weaker computers. Its value is 0 if fancy graphics are being
-used, and 1 for fast graphics.
-
-ex.
-
-if !(phone.phone_settings[setting_fast_graphics]){
-    draw_sprite(spr_idle, 0, x, y);
-}
-
-Not only do fast graphics turn on when the user changes the phone setting, but
-it ALSO turns on if the framerate ever drops below 60 FPS - except this won't
-happen if the phone is open. If you want to disable this automatic fast-graphics
-switcher, set phone.dont_fast in event15.
-
-*/
-
-
-
-/*
-
-╔══════════════╦═══════════════════════════════════════════════════════════════╗
-║  SECTION 07  ║                                                               ║
-╠══════════════╝                                                               ║
-║                                                                              ║
-║ Variable Documentation                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-The MunoPhone template creates certain variables inside the oPlayer object. Some
-of these are purely for behind-the-scenes work, while others exist to add
-functionality for use by the character dev. This section documents the name and
-behavior of each; some of them are quite useful.
-
-NOTE: This does not include the various compatibility-related vars, nor does it
-include the phone's own asset-storage vars (e.g. vars containg SFX indexes).
-
-phone_attacking
-    Every frame, this gets set to the value of
-        (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
-    , so you can reference it to check if your character is performing an
-    attack - useful for running attack-only code outside attack_update. e.g.
-        if (phone_attacking && attack == AT_USPECIAL)
-
-phone_window_end
-    Every frame if phone_attacking is true, this gets set to the value of
-        floor(get_window_value(attack, window, AG_WINDOW_LENGTH) *
-        ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit)
-        ? 1.5 : 1))
-    ...which is a fancy way of saying "the last frame of the current attack
-    window." You can use this to run code at the end of a window, e.g.
-        if (window_timer == window_end)
-
-phone_inited
-    This is true after the phone's init code has run its course, and the var
-    does not exist before that point. You can use this to only run code AFTER
-    init.gml has run, e.g. to avoid the annoying debug error in draw_hud.
-
-phone_playtest
-    This is true if you are playtesting the character on the CSS, and false
-    otherwise.
-
-phone_practice
-    This is true if you are playing in Practice Mode, and false otherwise. It
-    also gets set to false when the MunoPhone is powered off, and is always
-    false for CPU players.
-
-phone_ditto
-    This is true if you are fighting a copy of the same character, and false
-    otherwise.
-
-phone_online
-    This is true if you are playing an online match, and false otherwise.
-
-phone_darkened_player_color
-    This stores a GML color which is that of the current player color, but
-    darkened.
-
-phone_invul_override
-    Set this to true during attack_update to disable the phone's checks for
-    AG_MUNO_WINDOW_INVUL during that frame, allowing you to manually set soft
-    armor, super armor, and invul even if you have set AG_MUNO_WINDOW_INVUL for
-    the attack.
-
-phone_blastzone_r
-    This stores the X coordinate of the right blastzone.
-
-phone_blastzone_l
-    This stores the X coordinate of the left blastzone.
-
-phone_blastzone_t
-    This stores the Y coordinate of the top blastzone.
-
-phone_blastzone_b
-    This stores the Y coordinate of the bottom blastzone.
-
-phone_custom_debug
-    This stores the user-defined values for the Print Debug phone setting.
-
-phone_arrow_cooldown
-    This is the cooldown value for any attacks which use the
-    AG_MUNO_ATTACK_CD_SPECIAL value of 1.
-
-phone_invis_cooldown
-    This is the cooldown value for any attacks which use the
-    AG_MUNO_ATTACK_CD_SPECIAL value of 2.
-
-muno_char_id
-    In a match with ANY MunoPhone characters present, ALL characters will have
-    this variable in them. For Muno's characters, this number is the same as the
-    "fighter number" seen on the Steam thumbnail - Trummel 1, Otto 2, etc. For
-    all other characters, its value is noone (the GML constant whose value is
-    -4).
-
-muno_char_name
-    In a match with ANY MunoPhone characters present, ALL characters will have
-    this variable in them. By default, it is the character's actual name, taken
-    from config.ini. Phone characters can override this, as seen in event15.
-
-muno_char_icon
-    In a match with ANY MunoPhone characters present, ALL characters will have
-    this variable in them. By default, it is the character's actual icon, taken
-    from the character select screen. Phone characters can override this, as
-    seen in event15.
-
-phone
-    This is the variable for the phone object.
-    
-spr_[VARIOUS]
-    The variables starting with spr_ contain sprite indexes obtained with
-    sprite_get(). This allows you to autocomplete the name in GMEdit, and also
-    helps optimise things by calling sprite_get() only once. You can do:
-        draw_sprite(spr_nspecial, 0, x, y);
-
-phone_cheats
-    This is the array which stores cheat codes... more on that in the cheat
-    codes section.
-
-phone_lagging
-    This is an internal variable used to determine whether or not Fast Graphics
-    should be automatically enabled.
-
-phone_using_landing_cd
-    This is an internal variable used to determine whether or not to run the
-    checks for move cooldowns that reset upon landing/hitstun/walljump.
-
-phone_using_invul
-    This is an internal variable used to determine whether or not to run the
-    checks for invulnerability / armor.
-
-phone_user_id
-    This is an internal variable used to streamline the code that allows the
-    MunoPhone to connect to the Training Town stage.
+As of writing, the list of Utilities is:
+- UTIL_FAST			Fast Graphics
+- UTIL_FPS_WARN		Low FPS Warning
+- UTIL_OPAQUE		Opaque Background
+- UTIL_DMG_FREEZE	Freeze Own Damage
+- UTIL_STATE_SAVE	Save Position and Damage
+- UTIL_STATE_LOAD	Load Position and Damage
+- UTIL_GREEN		Greenscreen
+- UTIL_CPU			CPU Behavior Changes
 
 */
 
@@ -607,61 +316,142 @@ phone_user_id
 
 /*
 
-╔══════════════╦═══════════════════════════════════════════════════════════════╗
-║  SECTION 08  ║                                                               ║
-╠══════════════╝                                                               ║
-║                                                                              ║
-║ Character Compatibility                                                      ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+╔══════════════╦════════════════════════════════════════════════════════════╗
+║  SECTION #5  ║															║
+╠══════════════╝															║
+║																			║
+║ Transferring Content from the Old MunoPhone								║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-I'm NOT going to explain all of the compatibilities here, only my own. It's
-already enough work adding them to the template...
+As mentioned in SECTION #2, this section of the guide is intended for users who
+already have the old flip phone installed on a character and want to upgrade to
+the MunoPhone touch. Specifically, it walks you through the process of
+transferring your custom data (e.g. Tips) from the old event15 to the new one.
 
-To flag your character as having or not having a compatibility, just change the
-variables in event15 to 1 or 0. Simple as that. The code for each one will ONLY
-run if its has_ variable is set to 1. Also, its CSS badge will only show up if
-its var is set to 1. Hold the 0 key on the CSS to see all of the badges.
+First, the MunoPhone Touch does drop support for certain features found in the
+old event15.
 
-Trummel's codecs are the only one that really needs explaining. The format is
-similar to Tips, you can have more than 1 if you want. In VS mode, the first
-codec will always be used - but in Practice Mode, Trummel can select any of
-them from your character.
+Removed features:
+- Character Compatibility icons
+- Character Compatibility templates for non-Muno characters
+	- just move these outside of user_event15
+- phone.taunt_hint_x and phone.taunt_hint_y
+- phone_custom_debug
 
-The main thing to talk about is page gimmicks. Gimmicks are a special effect
-that happens when the page loads, e.g. a laugh track plays or the page gets
-instantly skipped. Here's the standard format for using them:
+The rest of this section will give instructions on how to transfer everything
+else from the old event15, starting from the top. As you go along, also
+remember to fill out the NEW fields that weren't there before.
 
-initCodec(0);
-initCodecPage(SPK_TRUM, 0, 0, "woag");
-var h = GIM_LAUGH_TRACK;
-initCodecPage(SPK_ALTO, 0, h, "This page has a laugh track.");
-var h = GIM_LAUGH_TRACK * GIM_SKIP;
-initCodecPage(SPK_ALTO, 0, h, "This page has a laugh track AND gets skipped.");
+Compatibility Setup --> CSS Draw
 
-For nicer formatting, the gimmick handles are stored to a var, and then that
-gets used as the argument for initCodecPage(). To use more than 1 gimmick on a
-single page, you have to MULTIPLY them together.
+	Copy the values of these vars from the old file to the new file, if needed:
+	- num_alts
 
-OH yeah, you can also define custom speakers. To get the sprite to fit, you can
-edit the example speaker sprite found in the sprites folder. Each expression has
-2 animation frames; the idea here is the same as Old Trummel, so read his guide
-at https://pastebin.com/g31b9yPq
+General Character Info --> General Settings
 
-...And in general, a lot of this code is similar to what's found in Trummel's
-user_event1.gml (which is where his local codecs are created). So check that out
-for more usage examples.
+	Copy the values of these vars from the old file to the new file, if needed:
+	- muno_char_name
+	- muno_char_icon
+	- phone.dont_fast
+	- phone.lightweight
+	
+	Copy the value of the old file's phone.shader to the new file's
+	phone.uses_shader, if needed.
 
-For Otto's compatibility, you can just edit the example bobblehead sprites and
-be done with it. If you want it to animate, just make it a strip instead of a
-single frame.
+Tips --> Tips
 
-...Do I really need to explain Steve's? It's just text.
+	This is one area where the syntax has changed a bit. First, the Tips section
+	should no longer be wrapped in a "with phone{}", like it was in the old
+	MunoPhone.
+	
+	Secondly, the syntax has changed a bit. Here is a comparison of the old and
+	new functions:
+	
+		OLD: initTipWords(text)
+		NEW: initWords(text)
+		
+		OLD: initTipWords_ext(text, align, color, indent, gimmick)
+		NEW: initWords_ext(text, alignment, color, indent, ignore_height)
+		
+		OLD: initTipImage(sprite, frame, align, xscale, color, gimmick)
+		NEW: initImage(sprite, frame)
+		
+		OLD: initTipImage_ext(sprite, frame, align, xscale, color, gimmick,
+			border_l, border_r, border_u, border_d)
+		NEW: initImage_ext(sprite, frame, alignment, xscale, yscale,
+			uses_shader, color, alpha, ignore_height, crop_left, crop_right,
+			crop_up, crop_down)
+	
+	Notes:
+	- Paragraph/image gimmicks have been removed, but a couple of them have been
+		promoted to their own arguments.
+	- initImage() takes fewer arguments, defaulting to center-align.
+	- border_l and crop_left (etc) are the same thing.
+	- initImage() and initImage_ext() can now take sprite_get() directly,
+		instead of needing a proxy var like the old phone.
+	- Consider using the new initHeader() and initSection() where convenient.
+	
+	Copy your old Tips into the new event15 while editing the syntax to match
+	the above changes. Smart use of find-and-replace is recommended.
 
+Patch Notes --> Patches
+
+	These have seen largely the same changes as Tips, and these two apps now use
+	the same generic content functions (instead of having both initPatchWords()
+	and initTipWords(), there's now just initWords(); etc).
+	
+	It is strongly recommended to use initHeader() and initSection() when
+	writing Patches.
+	
+	Also, note that the Patches app is the new home of the old About app's
+	content. It's recommended to just start the Abouts from scratch (edit the
+	new template and copy over your old text).
+
+Cheat Codes --> Cheats
+
+	The syntax for these has been slightly changed.
+	
+	Syntax comparison:
+	
+		OLD: initCheat(display name, backstage name, [options], [option names],
+			description)
+		
+		NEW: CHEAT_[NAME_HERE] = initCheat(name, [options], [option_names],
+			description)
+	
+	The "backstage name" is no longer an argument of the function. Instead, the
+	function *returns* the ID of the Cheat, and then you save that into a
+	variable directly.
+	
+	In other words, you take the second argument from the old function, remote
+	it, stick it in front without the quotation marks, and add an equals sign.
+	
+	Aside from this, you can copy the Cheats over verbatim.
+
+Frame Data Guide --> Frame Data
+
+	Copy the values of these vars from the old file to the new file, if needed:
+	- phone.move_ordering
+	- phone.include_stats
+	- phone.stats_notes
+	- phone.include_custom
+	- phone.custom_name
+	
+	You can also copy the initCFDHeader() and initCFDBody() calls from the old
+	file to the new one. Keep in mind that the layout of the custom data page is
+	different compared to the old phone, and is more suited for very short
+	headers / descriptions (usually numbers).
+	
+Compatibility --> Muno Character Compatibility
+
+	The compatibility templates for Trummel codecs, Otto bobbleheads, and Steve
+	death messages can be copied over verbatim.
 */
 
 
 
+// That's it! Happy modding.
 
 
 
@@ -683,16 +473,3 @@ single frame.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                          //woag

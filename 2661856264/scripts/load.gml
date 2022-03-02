@@ -50,7 +50,6 @@ sprite_change_offset("dspecial", 74, 62);
 sprite_change_offset("taunt", 42, 62);
 sprite_change_offset("phone_open", 50, 62);
 
-
 sprite_change_offset("hurtbox", 42, 64);
 sprite_change_offset("hurtbox_crouch", 42, 62);
 sprite_change_offset("dattack_armor", 40, 72);
@@ -69,6 +68,8 @@ sprite_change_offset("nspec_proj_alt", 31, 25);
 sprite_change_offset("hfx_rock_small", 64, 64);
 sprite_change_offset("hfx_rock_large", 128, 128);
 sprite_change_offset("hfx_rock_big", 256, 256);
+
+sprite_change_offset("miiverse", 60, 30);
 
 set_victory_bg(sprite_get("victorybg"));
 set_victory_theme(sound_get("victory_tcg"));

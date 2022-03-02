@@ -1,5 +1,10 @@
-// Muno code
+// MunoPhone Touch code - don't touch
+// should be at TOP of file
+
+muno_event_type = 1;
 user_event(14);
+
+if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
 
 //rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100) : make_color_rgb(
 rainbow_activate = phone_cheats[cheat_skittles];
@@ -346,6 +351,180 @@ if (titanium_ally) {
 		}
 	}
 }
+
+// Compatibility
+
+// Kirby Copy Ability
+// Initial swallow
+if swallowed {
+	
+	swallowed = 0; // don't touch this line please im begging you
+	
+	var copy_spr = sprite_get("kirby_copy_ability");
+	var copy_hrt = sprite_get("kirby_copy_ability_hurt");
+	var copy_icn = sprite_get("kirby_ability_hud");
+	var blast_sound = sound_get("laser_blast2");
+	// add more to transfer other sprites, or sfx
+	
+	with enemykirby{
+		newicon = copy_icn;
+		muno_last_swallowed = other.id;
+		
+		// edit the below just like a regular attack script
+		
+		set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+		set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
+		set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
+		set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
+		set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 3);
+		set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
+		set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
+		
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 0);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAME_START, 0);
+		
+		
+		set_num_hitboxes(AT_EXTRA_3, 0);
+		
+		set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+		set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
+		set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 7);
+		set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 3);
+		set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
+		
+		// Windup
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 0);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAME_START, 0);
+
+		// Charge
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 0);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+
+		var cycles_per_frame = 5;
+		var fstrong_num_angles = 1;
+	    // Hold
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 4);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 0);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HSPEED_TYPE, 1);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 2);
+	
+	    // Pre-fire glow
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 4);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAMES, 0);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAME_START, 4);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HSPEED_TYPE, 1);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_VSPEED_TYPE, 2);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HAS_SFX, 1);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX, blast_sound);
+	    set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX_FRAME, 3);
+	    
+	    // Fire
+	    //set_window_value(AT_EXTRA_3, 5, AG_WINDOW_TYPE, 7);
+	    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_LENGTH, cycles_per_frame * 4);
+	    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAMES, 4);
+	    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAME_START, 5);
+	    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+	    set_window_value(AT_EXTRA_3, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HSPEED, -7.5);
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_VSPEED, -3);
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HSPEED_TYPE, 2);
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_VSPEED_TYPE, 2);
+	    
+	    // Pause to reflect
+	    set_window_value(AT_EXTRA_3, 6, AG_WINDOW_LENGTH, 10);
+	    set_window_value(AT_EXTRA_3, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
+	    set_window_value(AT_EXTRA_3, 6, AG_WINDOW_ANIM_FRAMES, 2);
+	    set_window_value(AT_EXTRA_3, 6, AG_WINDOW_ANIM_FRAME_START, 9);
+
+		// Return to your original position
+		set_window_value(AT_EXTRA_3, 7, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_EXTRA_3, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
+		set_window_value(AT_EXTRA_3, 7, AG_WINDOW_ANIM_FRAMES, 0);
+		set_window_value(AT_EXTRA_3, 7, AG_WINDOW_ANIM_FRAME_START, 11);
+
+
+		set_num_hitboxes(AT_EXTRA_3, 2);
+
+	    // Base
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 5);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, cycles_per_frame * 4);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 52);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 52);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 1);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_X_OFFSET, -12);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
+	    //set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, blast_hit_effect);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+	    
+	    // Tip
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_TYPE, 1);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW, 5);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_LIFETIME, cycles_per_frame * 2);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_WIDTH, 40);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_HEIGHT, 40);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_PRIORITY, 1);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT_X_OFFSET, -12);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
+	    //set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT, blast_hit_effect);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+
+		// Set damage/knockback angles
+		// Neutral
+		for (var i = 1; i <= 2; i++) {
+		    set_hitbox_value(AT_EXTRA_3, i, HG_DAMAGE, 13);
+		    set_hitbox_value(AT_EXTRA_3, i, HG_ANGLE, 55);
+		    set_hitbox_value(AT_EXTRA_3, i, HG_BASE_KNOCKBACK, 7.5); // 7
+		    set_hitbox_value(AT_EXTRA_3, i, HG_KNOCKBACK_SCALING, 1.1); // 0.9
+		    set_hitbox_value(AT_EXTRA_3, i, HG_BASE_HITPAUSE, 7.5); // 7
+		    set_hitbox_value(AT_EXTRA_3, i, HG_HITPAUSE_SCALING, 1.1); // 0.9
+		}
+
+		// Make the hitbox placement self-adjust with angle
+		// Fulcrum offset from player's current position
+		var fulcrum_x = 0;
+		var fulcrum_y = 0;
+		// offset from fulcrum to base hitbox
+		var fulcrum_offset_x = 27;
+		var fulcrum_offset_y = -22;
+		var distance_to_base = point_distance(0, 0, fulcrum_offset_x, fulcrum_offset_y);
+		var aim_angle = 0;
+
+	    // Relative position from fulcrum to base hitbox
+	    var angle_to_base = aim_angle + point_direction(0, 0, fulcrum_offset_x, fulcrum_offset_y);
+	    
+	    var base_hitbox_x = fulcrum_x + lengthdir_x(distance_to_base, angle_to_base);
+	    var base_hitbox_y = fulcrum_y + lengthdir_y(distance_to_base, angle_to_base);
+	
+	    // Distance between hitbox centers
+	    var hb_origin_distance = 40;
+	    var hb_origin_angle = aim_angle;
+	    // Relative position from fulcrum to tip hitbox
+	    var tip_hitbox_x = base_hitbox_x + lengthdir_x(hb_origin_distance, hb_origin_angle);
+	    var tip_hitbox_y = base_hitbox_y + lengthdir_y(hb_origin_distance, hb_origin_angle);
+	
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, base_hitbox_x);
+	    set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, base_hitbox_y);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_X, tip_hitbox_x);
+	    set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_Y, tip_hitbox_y);
+	}
+}
+
+// Update code
+with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
+	// you can treat this like an attack_update.gml for when kirby is using your character's ability
+	
+	// this system avoids conflicts between 2 swallowed chars IF they both use the munophone system for copy abilities.
+}
+
 
 //print_debug("Player state: " + string(state) + ", prev state: " + string(prev_state));
 //print_debug("Number of charges: " + string(booster_rush_charges));

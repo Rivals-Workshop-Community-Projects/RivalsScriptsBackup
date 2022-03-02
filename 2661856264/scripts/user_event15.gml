@@ -259,6 +259,22 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.9", "22/02/22");
+initHeader("Ninth Patch");
+initSection("Nerfs");
+initWords("Fixed a bug with FSpecial not removing the rock when JCanceled.");
+initSection("Others");
+initWords("Replaced the rock_hit sounds: instead of using one from Pokémon and the default rock-breaking one (from Kragg), FSpecial, NSpecial, DSpecial and FStrong will now use Sm4sh sounds;");
+initWords("Edited the CSS (removed the azure lines);");
+initWords("Edited the Mt. Dedede title and the Ring one;");
+initWords("Added the following compatibilities:");
+initWords_ext("Henry Stickmin;", fa_left, c_white, 1, false);
+initWords_ext("Assist Buddy;", fa_left, c_white, 1, false);
+initWords_ext("Agent N/Lynk;", fa_left, c_white, 1, false);
+initWords_ext("Wall-E;", fa_left, c_white, 1, false);
+initWords_ext("Souldbound Conflict;", fa_left, c_white, 1, false);
+initWords_ext("Miiverse.", fa_left, c_white, 1, false);
+
 initPatch("1.8", "22/01/30");
 initHeader("Eighth Patch");
 initSection("Reworks");

@@ -341,7 +341,7 @@ if (attack == AT_DAIR) {
 		destroy_hitboxes();
 		can_jump = false;
 		can_shield = false;
-		shake_camera(8,4)
+		shake_camera( 8, 6)
 	}	
 }
 //Down Air Throw
@@ -363,31 +363,28 @@ if (attack == AT_DAIR) {
 
 //TAUNT SELECT
 if (attack == AT_EXTRA_3){
+		can_shield = false;
 	if window == 2{
-		if special_down{
+		if special_down or shield_down{
 			set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 4);
 			}
 		}
 	if window == 3 && window_timer == 11{
-		if special_down{
+		if special_down or shield_down{
 			window_timer = 1;
 		}
 	if window >= 1{
 		hold = 0
 		can_jump = true;
-		can_shield = true;
 		}
 	}
 }
 
 if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR or attack = AT_NSPECIAL){
-	if window == 1 && window_timer >= 7{
-		if special_down{
-			hold = 1
-			}
+	if window == 1{
+		if shield_pressed{
+			set_attack( AT_EXTRA_3 );
 		}
-	if window == 1 && window_timer <= 6{
-		hold = 0
 	}
 }
 
@@ -466,6 +463,7 @@ if (attack == AT_JAB) {
 		}
 	}
 }
+
 
 //--------------------------------//
 
@@ -608,7 +606,16 @@ case 49:								//FINAL SMASH BUDDY
 	break;
 }
 
-
+/*
+//Spin to kill
+if (attack == AT_NAIR) {
+	if window == 3 && window_timer == 2{
+		if (attack_down){
+			window = 2;
+			attack_end();
+		}
+	}
+}*/
 
 /*Aerial Shredder
 if (attack == AT_NAIR) {

@@ -20,6 +20,8 @@ if(state == PS_SPAWN)
     #region Dialogue
     if(state_timer == 1)
     {
+        intro_x = x;
+        intro_y = y;
         with(oPlayer)
         {
             other.countPlayers ++;
@@ -386,6 +388,16 @@ if(state == PS_SPAWN)
                     "ZPD, requesting backup to my position."
                 ];
                 introText = introChoices[random_func(floor(seed%24),array_length(introChoices1), true)];
+        }
+        if(countPlayers == 1 || get_match_setting(SET_PRACTICE))
+        {
+                var seed = 0;
+                seed += get_player_color(player);
+                seed += x/20;
+                seed += 4;
+
+                introText = "Press Up+Taunt to toggle Auto-Reload";
+                introText2 = "Press Down+Taunt to reload/enhance Bullets";
         }
     }
 }

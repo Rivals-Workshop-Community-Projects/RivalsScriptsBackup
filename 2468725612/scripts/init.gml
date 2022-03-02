@@ -141,7 +141,7 @@ of the standing-up animation. Dan Moment
 
 */
 
-small_sprites = true;
+small_sprites = 1;
 
 // Hurtbox sprites
 hurtbox_spr         = sprite_get("hurtbox_idle");

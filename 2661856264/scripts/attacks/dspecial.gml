@@ -42,7 +42,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 193);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 3);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("rock_hit_s"));
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 2);
@@ -64,7 +64,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1.1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SDI_MULTIPLIER, 1.1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 3);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, sound_get("rock_hit_s"));
 
 set_hitbox_value(AT_DSPECIAL, 3, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -120,5 +120,5 @@ set_hitbox_value(AT_DSPECIAL, 7, HG_HITPAUSE_SCALING, 0.75);
 set_hitbox_value(AT_DSPECIAL, 7, HG_VISUAL_EFFECT, rock_s);
 set_hitbox_value(AT_DSPECIAL, 7, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_DSPECIAL, 7, HG_SDI_MULTIPLIER, 1);
-set_hitbox_value(AT_DSPECIAL, 7, HG_HIT_SFX, asset_get("sfx_kragg_rock_shatter"));
+set_hitbox_value(AT_DSPECIAL, 7, HG_HIT_SFX, sound_get("rock_hit_l"));
 

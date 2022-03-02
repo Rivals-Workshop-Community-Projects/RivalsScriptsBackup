@@ -1,8 +1,8 @@
 with(oPlayer)
 {
-    if(!clone || clones_player_id == 0 || !custom_clone)
+    if(!clone && !custom_clone)
     {
-        if(clone && custom_clone)
+        if(clone || custom_clone)
         { print_debug("Goodbye"); exit; }   
         diag_ease = clamp(other.diag_timer-30,0,60);
         diag_ease2 = clamp(other.diag_timer-30,0,30);
