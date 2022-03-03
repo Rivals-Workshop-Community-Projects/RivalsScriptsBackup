@@ -118,7 +118,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     if player_id.move_cooldown[AT_NSPECIAL_2] == 4 && hitbox_timer >= 20 {
     	hsp = shsp
         vsp = svsp
-    	hitbox_timer = -30
+    	hitbox_timer = -60
     	player = orig_player
     	hit_priority = 9
     	spawn_hit_fx(x,y,timeS2)
