@@ -110,7 +110,15 @@ switch attack {
 	
 	case AT_FTILT :
      if window == 1 && !hitpause {
-	 	if window_timer == 1 {
+     	if window_timer == 1 {
+     		if (((left_down) or left_stick_down) && side == 1 ) or (((right_down) or right_stick_down) && side == -1) {
+     		  side *= -1
+     		  spr_dir *= -1
+              attack = AT_FTHROW
+              window_timer = 0
+            }
+     	}
+	 	if window_timer == 2 {
 	 		set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 76);
             set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 36);
 	 	 cur_sound = sound_play(sound_get("v_hoo"),false,noone,.8,1.05 - random_func(1,10,true)/100)
@@ -122,8 +130,8 @@ switch attack {
 	 if window == 2 && !hitpause {
 	 	if window_timer == 7 { 
 	 		if has_hit_player {
-	 			set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 86);
-                set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 56);
+	 			set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 96);
+                set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 66);
 	 		}
 	 		sound_play(sound_get("swingm2"),false,noone,0.6,1.3)
 	 	}
@@ -192,6 +200,10 @@ switch attack {
 	case AT_DATTACK :
 	if window == 1 && !hitpause {
 	 	if window_timer == 1 {
+	 		if right_down - left_down != 0 {
+	 			spr_dir = right_down - left_down 
+	 			side = right_down - left_down 
+	 		}
 	 		set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 76);
             set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 86);
 	 	 cur_sound = sound_play(sound_get("v_heehee"),false,noone,.8,1.05 - random_func(1,10,true)/100)
@@ -352,7 +364,7 @@ switch attack {
 	 	if window_timer == 1 {
 	 	 cur_sound = sound_play(sound_get("v_ah"),false,noone,1,1.05 - random_func(1,10,true)/100)
 	 	}
-        if window_timer == 12 { 
+        if window_timer == 11 { 
 	 		sound_play(sound_get("swingh3"),false,noone,0.7,1.2)
 	 		cur_sound = sound_play(sound_get("v_doo"),false,noone,.8,1.05 - random_func(1,10,true)/100)
 	 	}
@@ -380,6 +392,24 @@ switch attack {
 	
 	
 	case AT_FSPECIAL :
+	
+	if move_cooldown[AT_FSPECIAL_2] == 0 {
+        set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .4);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 2);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .5);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 20)
+        set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	} else {
+		set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 4);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .1);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 3);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .5);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 1)
+        set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+	}
 	
 	if window == 1 && !hitpause {
 	 	if window_timer == 1 {
@@ -500,6 +530,15 @@ switch attack {
 	   if window < 3 {
 	    if vsp > 0 vsp /= 2
 	   }
+	   if window == 5 {
+	   	if special_down { 
+	   		window_timer = 1 
+	   	} else {
+	   		window = 3
+	   		window_timer = 1
+	   	}
+	   	if vsp > 0 vsp /= 1.4
+	   }
 	   
 	   if window == 1 {
 	   	 if state_timer == 1 && !hitpause {
@@ -511,7 +550,10 @@ switch attack {
 	   
 	   if window == 2 {
 	   	invincible = true 
-	   	    
+	   	    if window_timer == 20 && special_down {
+	   	    	window = 5
+	   	    	window_timer = 1 
+	   	    }
 	   		nearbyhitbox = collision_circle( x, y - 30, 69, asset_get("pHitBox"), true, true ) 
 	               if nearbyhitbox != noone{
 	               	if nearbyhitbox.player_id != self && nearbyhitbox.hit_priority > 0  {
@@ -521,9 +563,10 @@ switch attack {
 	               			 window_timer = 1 
 	               			 hit_player_obj = nearbyhitbox.player_id
 	               			 sound_play(sound_get("swingh3"),false,noone,0.7,.7)
+	               			 sound_stop(cur_sound)
 	               			 cur_sound = sound_play(sound_get("v_heehee"),false,noone,.9,1.05 - random_func(1,10,true)/100)
 	               			 hit_player_obj.hitpause = true 
-	               			 hit_player_obj.hitstop = max(10, min(30,nearbyhitbox.hitpause*3))
+	               			 hit_player_obj.hitstop = max(20, min(40,nearbyhitbox.hitpause*4))
 	               			 hit_player_obj.old_hsp = hit_player_obj.hsp 
 	               			 hit_player_obj.old_vsp = hit_player_obj.vsp
 	               			 if hit_player_obj.hatstate == 0 { 
@@ -533,9 +576,9 @@ switch attack {
                                  h3x.depth = -6
 	               			 }
 	               	            if hit_player_obj.x > x {
-	               		        	target = 30
+	               		        	target = 46
 	               		        } else {
-	               		        	target = -30
+	               		        	target = -46
 	               		        }
 	               		
 	               			 with hit_player_obj {
@@ -550,13 +593,16 @@ switch attack {
 	   }
 	   }
 	   
-	   if window = 3 {
+	   if window = 3 or window == 5{
 	   	invincible = false
 	   }
 	
 	   if window = 4 {
+	   	       move_cooldown[AT_FSTRONG] = 30
+	           move_cooldown[AT_DSTRONG] = 30
+	           move_cooldown[AT_USTRONG] = 30
 	   	if free {
-	   		vsp = -4
+	   		vsp = -3
 	   		old_vsp = -4
 	   	}
 	   	 spawn_hit_fx(x - 20 + random_func(1,40,true), y + vsp - 50 + random_func(2,50,true),p1)

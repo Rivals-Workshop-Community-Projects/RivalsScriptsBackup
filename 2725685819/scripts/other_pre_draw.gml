@@ -1,5 +1,7 @@
 //ee
 
+
+
 //colors
 var trick_vfx_intensity = floor(trick_stack) * 2;
 var trick_player, trick_color_r, trick_color_g, trick_color_b;
@@ -136,6 +138,15 @@ if (instance_exists(other_player_id)){
 if (floor(trick_stack) > 0 || trick_marked){
 
 
+//COMPATIBILIT-HEE HEE
+var distort_draw_y;
+
+if ("hatstate" in other_player_id)
+distort_draw_y = 0;
+else
+distort_draw_y = draw_y;
+
+
 if (trick_marked)
 trick_vfx_intensity = 5;
 
@@ -149,12 +160,12 @@ trick_color = merge_colour(trick_color, c_white, 0.5);
 
 gpu_set_fog(1,trick_color,0,0);
 	if (!trick_marked){
-	draw_sprite_ext( sprite_index, image_index, (x + draw_x) + vfx_rand, (y + draw_y), (1 + small_sprites) * spr_dir, (1 + small_sprites), spr_angle, trick_color, floor(trick_stack)/10 );
-	draw_sprite_ext( sprite_index, image_index, (x + draw_x) - vfx_rand, (y + draw_y), (1 + small_sprites) * spr_dir, (1 + small_sprites), spr_angle, trick_color, floor(trick_stack)/10 );
+	draw_sprite_ext( sprite_index, image_index, (x + draw_x) + vfx_rand, (y + distort_draw_y), (1 + small_sprites) * spr_dir, (1 + small_sprites), spr_angle, trick_color, floor(trick_stack)/10 );
+	draw_sprite_ext( sprite_index, image_index, (x + draw_x) - vfx_rand, (y + distort_draw_y), (1 + small_sprites) * spr_dir, (1 + small_sprites), spr_angle, trick_color, floor(trick_stack)/10 );
 	}
 	else if (trick_marked){
-	draw_sprite_ext( sprite_index, image_index, (x + draw_x) + vfx_rand, (y + draw_y) + 2, (1.1 + small_sprites) * spr_dir, (1.1 + small_sprites), spr_angle, trick_color, 0.6 );
-	draw_sprite_ext( sprite_index, image_index, (x + draw_x) - vfx_rand, (y + draw_y) + 2, (1.1 + small_sprites) * spr_dir, (1.1 + small_sprites), spr_angle, trick_color, 0.6 );
+	draw_sprite_ext( sprite_index, image_index, (x + draw_x) + vfx_rand, (y + distort_draw_y) + 2, (1.1 + small_sprites) * spr_dir, (1.1 + small_sprites), spr_angle, trick_color, 0.6 );
+	draw_sprite_ext( sprite_index, image_index, (x + draw_x) - vfx_rand, (y + distort_draw_y) + 2, (1.1 + small_sprites) * spr_dir, (1.1 + small_sprites), spr_angle, trick_color, 0.6 );
 	}
 gpu_set_fog(0,0,0,0);
 

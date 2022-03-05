@@ -12,6 +12,7 @@ if attack == AT_NSPECIAL{
 	if limit == 1{																				//For RUNE K
 		if damage >18 { damage = 18; C_dam =7;}
 		if kb_value >18 {  kb_value = 18; C_knock =7;}
+		if extra_hitpause >20 {  extra_hitpause =20;}
 	}
 	if C_dam > 7 { C_dam = 7;}
 	if C_knock > 7 {C_knock = 7;}
@@ -48,28 +49,28 @@ if attack == AT_NSPECIAL{
 					if (pill_state == 2 ){					//Fstrong
 						vsp = 0;
 						if hsp == 0 {hsp = 4.5*player_id.spr_dir;}
-						length = 150;
+						length = 120;
 						pill_state = 9;
 					}else if (pill_state == 3){				//Dspecial
 						vsp = -5;
 						hsp = 4.5*player_id.spr_dir; 
-						length = 150;
+						length = 120;
 						pill_state =0;
 					}else if (pill_state == 4){				//Dstrong1 // No Gravity
 						vsp = 0;
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 4/5;}
-						else{ hsp = hsp*-1.25; }
+						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
+						else{ hsp = hsp*-1.5; }
 						pill_state = 4;
 					}else if (pill_state == 5){				//Dstrong2 // No Gravity
 						vsp = 0;
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 4/5;}
-						else{ hsp = hsp*-1.25; }
+						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
+						else{ hsp = hsp*-1.5; }
 						pill_state = 5;
 					}
 					else {
 						vsp = -abs(vsp);		
-						length = length* 4/5;
-						if abs(hsp) < 1 { hsp = 4.5*player_id.spr_dir; }
+						length = length* 3/4;
+						if abs(hsp) <= 1 { hsp = 4.5*player_id.spr_dir; }
 						else{
 							hsp = abs(hsp)*1.75*player_id.spr_dir; 
 						}
@@ -107,13 +108,13 @@ if attack == AT_NSPECIAL{
 
 	//CHECK IF INTERACTS WITH USPECIAL (RECOVERY)
 	if (hitbox_timer > 6)  && player_id.attack == AT_USPECIAL  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2 {
-		if abs(x -( player_id.x +26*player_id.spr_dir))<40{
-			if abs(y - (player_id.y - 26))<40{
+		if abs(x -( player_id.x +30*player_id.spr_dir))<45{
+			if abs(y - (player_id.y - 25))<40{
 				x = player_id.x +26*player_id.spr_dir;
 				y = player_id.y - 26;
 				vsp = -15;
 				hsp = 2.5*player_id.spr_dir;
-				length = 225;
+				length = 200;
 				hitbox_timer = 0;
 				if grav!= 0 {grav = 0.5;}
 				else { grav = 0.25;}
@@ -161,7 +162,7 @@ if attack == AT_NSPECIAL{
 				hsp = hsp/6;
 				y = player_id.y - 62;
 				hitbox_timer =0;
-				length = 99999;
+				length = 9999;
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=4;
@@ -182,7 +183,7 @@ if attack == AT_NSPECIAL{
 				hsp = hsp/8;
 				y = player_id.y - 54;
 				hitbox_timer =0;
-				length = 99999;
+				length = 9999;
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=9;
@@ -217,7 +218,7 @@ if attack == AT_NSPECIAL{
 					roll = -1;
 				}
 				if pill_state != 2{			//FSTRONG
-					length =150;
+					length =120;
 					hitbox_timer =0;
 					player_id.pilleffect=5;
 					prev_hsp = hsp;
@@ -251,7 +252,7 @@ if attack == AT_NSPECIAL{
 				vsp = - 15;
 				hsp = 0;
 				hitbox_timer =0;
-				length = 250;
+				length = 240;
 				walls = 0;
 				player_id.pilleffect=3;
 				pill_state =3;
@@ -269,7 +270,7 @@ if attack == AT_NSPECIAL{
 	if (hitbox_timer > 12)  && player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer <3{
 		if abs(x - (player_id.x+40*player_id.spr_dir))<45{
 			if abs(y - (player_id.y - 20))<45{
-				length = 149 + player_id.strong_charge;
+				length = 119 + player_id.strong_charge;
 				hitbox_timer =0;
 				player_id.pilleffect=6;
 				pill_state = 4;
@@ -289,7 +290,7 @@ if attack == AT_NSPECIAL{
 	if (hitbox_timer > 12)  && player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer >5{
 		if abs(x - (player_id.x-34*player_id.spr_dir))<45{
 			if abs(y - (player_id.y - 20))<45{
-				length = 149 + player_id.strong_charge;
+				length = 119 + player_id.strong_charge;
 				hitbox_timer =0;
 				player_id.pilleffect=7;
 				pill_state = 5;

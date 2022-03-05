@@ -95,8 +95,8 @@ if attack == AT_NSPECIAL {			//PILL LOGIC
 	
 	if window ==2 || window == 3{	
 		if !(has_rune("I")){									//RUNE LOGIC
-			move_cooldown[AT_NSPECIAL] = 42;
-			move_cooldown[AT_TAUNT] = 42;
+			move_cooldown[AT_NSPECIAL] = 40;
+			move_cooldown[AT_TAUNT] = 40;
 		}
 	}
 }
@@ -192,83 +192,89 @@ if attack == AT_FSPECIAL {
 }
 
 //---------------------------------------------ACTUAL REFLECTOR LOGIC - THANKS ARCHY-----------------------------------------
-//------------------------------------------------------V4 UPDATE: 22/11-----------------------------------------
+//------------------------------------------------------V5 UPDATE: 03/02-----------------------------------------
 
 //ACTIVE REFLECTOR
 if (attack == AT_FSPECIAL && window == 2 ) {		
 	if done_reflecting == 0{
 		//Interact with oponent hitboxes
 		with (asset_get("pHitBox")){					//From the perspective of the hitbox
+			if type == 2 && hit_priority >= (88) {
+				hit_priority -=1;
+			}
 			if type == 2 && other.player !=  player {		//Not my own projectile / not the same
 				if (abs (x -  (other.x + 44*other.spr_dir)) <=50 ) && (abs (y -  (other.y - 34)) <=40 ) && hitstun_factor!= -1 {		//detectiong
-					other.done_reflecting = 1;										//Player gets notified
-					//CHECK IF ARTICLES EXIST IN THE SAME PLACE AS THE HITBOX
-					hit_check = noone;
-					//article 1
-					if hit_check == noone {hit_check = instance_place(x,y,obj_article1);}
-					//article 2
-					if hit_check == noone {hit_check = instance_place(x,y,obj_article2);}
-					//article 3
-					if hit_check == noone {hit_check = instance_place(x,y,obj_article3);}
-					//article platform
-					if hit_check == noone {hit_check = instance_place(x,y,obj_article_platform);}
-					//article solid
-					if hit_check == noone {hit_check = instance_place(x,y,obj_article_solid);}		
-
-					//Reflect Logic	
-					//For the Player
-					other.invincible = 1;
-					other.invince_time = 16;							
-					spawn_hit_fx( other.x +44*other.spr_dir, other.y-34, 194 );			//VISUAL EFFECT 
-					other.play_sound = 1;
-					was_parried = true;											
-
-					//CODE FOR TENRU INTERACTION I GUESS
-					if variable_instance_exists(self, "reflected") {
-					   reflected = true;
-					}
-					//CODE FOR MATT I GUESS
-					if variable_instance_exists(self, "UnReflectable") {
-					   UnReflectable = false;
-					}
-
-					//For the hitbox
-					image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
-					//Actual Reflect
-					damage *= 1.25
-					kb_value *= 1.25;
-					can_hit_self = true;
-					if does_not_reflect == false {hitbox_timer =0;}
-
-					//Movement
-					x = other.x +50*other.spr_dir;
-					if abs(hsp) <= 1  {				//Varely any HSP
-						hsp = 4*other.spr_dir;
-						spr_dir = other.spr_dir;
-						if !free && grav != 0 {				
-							vsp = -5;
-						} else{
-							vsp = -abs(vsp);
-						}
-					}else{
-						spr_dir *= -1;
-						hsp *=  -1.5;
-					}
-					//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
-					if variable_instance_exists(self, "C_knock") {
-					   C_knock += 2;
-					   forced = 1;
-					   extra_hitpause +=2;
-					}
-					//Movement For Articles
-					if hit_check != noone {							//Reflect Article
-						if hit_check.player == player{				//The article is from the same player as the hitbox
-							hit_check.hsp *= -1.25;	
-							hit_check.spr_dir *= -1;
-							hit_check = noone;
-						}
-					} 
+					if hit_priority !=  (0) && hit_priority !=  (-1) &&  hit_priority < (88) {			//THE CHEAT
 					
+						//CHECK IF ARTICLES EXIST IN THE SAME PLACE AS THE HITBOX
+						hit_check = noone;
+						//article 1
+						if hit_check == noone {hit_check = instance_place(x,y,obj_article1);}
+						//article 2
+						if hit_check == noone {hit_check = instance_place(x,y,obj_article2);}
+						//article 3
+						if hit_check == noone {hit_check = instance_place(x,y,obj_article3);}
+						//article platform
+						if hit_check == noone {hit_check = instance_place(x,y,obj_article_platform);}
+						//article solid
+						if hit_check == noone {hit_check = instance_place(x,y,obj_article_solid);}		
+
+						//Reflect Logic	
+						//For the Player
+						other.invincible = 1;
+						other.invince_time = 16;							
+						spawn_hit_fx( other.x +44*other.spr_dir, other.y-34, 111 );			//VISUAL EFFECT 
+						other.play_sound = 1;
+						was_parried = true;											
+
+						//CODE FOR TENRU INTERACTION I GUESS
+						if variable_instance_exists(self, "reflected") {
+						   reflected = true;
+						}
+						//CODE FOR MATT I GUESS
+						if variable_instance_exists(self, "UnReflectable") {
+						   UnReflectable = false;
+						}
+
+						//For the hitbox
+						image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
+						//Actual Reflect
+						damage *= 1.25
+						kb_value *= 1.25;
+						can_hit_self = true;
+						if does_not_reflect == false {hitbox_timer =0;}
+						hit_priority = 88 + 12;
+
+						//Movement
+						x = other.x +50*other.spr_dir;
+						if abs(hsp) <= 1  {				//Varely any HSP
+							hsp = 4*other.spr_dir;
+							spr_dir = other.spr_dir;
+							if !free && grav != 0 {				
+								vsp = -5;
+							} else{
+								vsp = -abs(vsp);
+							}
+						}else{
+							spr_dir *= -1;
+							hsp *=  -1.5;
+						}
+						//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
+						if variable_instance_exists(self, "C_knock") {
+						   C_knock += 2;
+						   forced = 1;
+						   extra_hitpause +=2;
+						}
+						//Movement For Articles
+						if hit_check != noone {							//Reflect Article
+							if hit_check.player == player{				//The article is from the same player as the hitbox
+								hit_check.hsp *= -1.5;	
+								hit_check.spr_dir *= -1;
+								hit_check = noone;
+								other.done_reflecting = 1;										//Player gets notified
+							}
+						} 
+					}
 				}
 			}
 		}

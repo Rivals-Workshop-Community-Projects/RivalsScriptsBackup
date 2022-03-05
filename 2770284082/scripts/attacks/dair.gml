@@ -6,7 +6,7 @@ set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));

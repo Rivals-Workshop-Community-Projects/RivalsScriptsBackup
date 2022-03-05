@@ -44,10 +44,19 @@ or state == PS_PARRY))&&state_timer < 15 {
 }
 
 
-if damageminigate > 2 {
+if damageminigate > 3 {
     take_damage(player,-1,-1)
-    damageminigate -= 2
+    damageminigate -= 3
+    spawn_hit_fx(x - 20 + random_func(1,40,true), y + vsp - 50 + random_func(2,50,true),p1)
+    spawn_hit_fx(x - 20 + random_func(3,40,true), y + vsp - 50 + random_func(4,50,true),p2)
+    spawn_hit_fx(x - 20 + random_func(3,40,true), y + vsp - 50 + random_func(4,50,true),p3)
 }
+
+if damageminigate < -6 {
+    take_damage(player,-1,1)
+    damageminigate += 6
+}
+
 
 
 with (asset_get("pHitBox")) {
@@ -70,6 +79,13 @@ sprite_change_offset("spark3", 30, 30);
 
 
 with (asset_get("oPlayer")) {
+	
+	//if hit_player_obj == other && state_cat == SC_HITSTUN && !hitpause {
+	//	with other {
+	//		spawn_hit_fx( other.x - (20) + random_func(3, 40, true) - other.hsp*3, other.y - 50 + random_func(4, 40, true) - other.vsp*3, p2 )
+	//		spawn_hit_fx( other.x - (20) + random_func(4, 40, true) - other.hsp*2, other.y - 50 + random_func(5, 40, true) - other.vsp*2, p3 )
+	//	}
+	//}
   if "hatstate" in self {
       if state == PS_DEAD or state == PS_RESPAWN {
   			hatstate = 0
@@ -78,15 +94,9 @@ with (asset_get("oPlayer")) {
   	if hatstate = 2*other.player*other.player {
   		can_tech = false
   		with other {
-  			if get_gameplay_time()%3 == 0 {
-  			spawn_hit_fx( other.x - (20) + random_func(1, 40, true) , other.y - 50 + random_func(2, 40, true) , p1 )
-  			}
-  			if get_gameplay_time()%3 == 1 {
-  			spawn_hit_fx( other.x - (20) + random_func(1, 40, true) , other.y - 50 + random_func(2, 40, true) , p2 )
-  			}
-  			if get_gameplay_time()%3 == 2 {
-  			spawn_hit_fx( other.x - (20) + random_func(1, 40, true) , other.y - 50 + random_func(2, 40, true) , p3 )
-  			}
+  			spawn_hit_fx( other.x - (20) + random_func(5, 40, true) - other.hsp*5, other.y - 50 + random_func(6, 40, true) - other.vsp*5, p1 )
+			spawn_hit_fx( other.x - (20) + random_func(8, 40, true) - other.hsp*4, other.y - 50 + random_func(7, 40, true) - other.vsp*4, p2 )
+			spawn_hit_fx( other.x - (20) + random_func(4, 40, true) - other.hsp*2, other.y - 50 + random_func(5, 40, true) - other.vsp*2, p3 )
   		}
   		
   		
@@ -103,6 +113,7 @@ with (asset_get("oPlayer")) {
   			    h3x = spawn_hit_fx(floor(hit_player_obj.x), floor(hit_player_obj.y - hit_player_obj.char_height-10), h3)
                 h3x.depth = -6
   				create_hitbox(AT_DSPECIAL,11,other.x,other.y - 60)
+  				create_hitbox(AT_NSPECIAL,3,floor(hit_player_obj.x), floor(hit_player_obj.y - hit_player_obj.char_height-10))
   			}
   			
   		}

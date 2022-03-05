@@ -134,7 +134,7 @@ if pilleffect ==1 {								//Fire
 	sound_play(  sound_get("melee_stronghit") );
 	set_num_hitboxes(AT_USPECIAL, 3);
 } else if pilleffect ==2 {						//Wind
-	spawn_hit_fx( x +44*spr_dir, y-34, 194 );
+	spawn_hit_fx( x +44*spr_dir, y-34, 111 );		//194
 	pilleffect=0;
 	sound_play(  sound_get("mantle"));
 } else if pilleffect ==3 {						//Dspecial
@@ -143,7 +143,7 @@ if pilleffect ==1 {								//Fire
 	sound_play(  sound_get("melee_wack"));
 	set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 0);
 } else if pilleffect ==4 {						//Ustrong 2
-	spawn_hit_fx( x +6*spr_dir, y-66, 301 );
+	spawn_hit_fx( x +6*spr_dir, y-66, 109);
 	pilleffect=0;
 	sound_play( asset_get("sfx_blow_heavy2"));
 	set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 0);
@@ -152,22 +152,22 @@ if pilleffect ==1 {								//Fire
 	sound_play(  asset_get("sfx_absa_uair"));
 	set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 0);
 } else if pilleffect ==6 {						//Dstrong
-	spawn_hit_fx( x +50*spr_dir, y-20, 301 );
+	spawn_hit_fx( x +50*spr_dir, y-20, 109 );
 	pilleffect=0;
 	sound_play(  asset_get("sfx_blow_heavy1"));
 	set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 0);
 } else if pilleffect ==7 {						//Dstrong
-	spawn_hit_fx( x -30*spr_dir, y-20, 301 );
+	spawn_hit_fx( x -30*spr_dir, y-20, 109 );
 	pilleffect=0;
 	sound_play(asset_get("sfx_blow_heavy1"));
 	set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 0);
 }  else if pilleffect ==8 {						//Ustrong 1
-	spawn_hit_fx( x -37*spr_dir, y-58, 301 );
+	spawn_hit_fx( x -37*spr_dir, y-58, 109 );
 	pilleffect=0;
 	sound_play( asset_get("sfx_blow_heavy2"));
 	set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 0);
 }  else if pilleffect ==9 {						//Ustrong 3
-	spawn_hit_fx( x +35*spr_dir, y-52, 301 );
+	spawn_hit_fx( x +35*spr_dir, y-52, 109 );		//301
 	pilleffect=0;
 	sound_play( asset_get("sfx_blow_heavy2"));
 	set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 0);
@@ -554,8 +554,8 @@ if enemykirby != undefined { //if kirby is in a match & swallowed
 					if right_down{spr_dir =1;}
 				}
 				if  window == 3{
-					move_cooldown[AT_EXTRA_3] = 42;
-					move_cooldown[AT_NSPECIAL] = 42;
+					move_cooldown[AT_EXTRA_3] = 40;
+					move_cooldown[AT_NSPECIAL] = 40;
 				}
 			}
 		}

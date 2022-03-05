@@ -1,3 +1,5 @@
+fspecial_stored = [-1, -1];
+
 switch my_hitboxID.attack
 {
     case AT_JAB:

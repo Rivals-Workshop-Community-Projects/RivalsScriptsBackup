@@ -21,6 +21,11 @@ if (side == -1 && hit_player_obj.x < x) or (side == 1 && hit_player_obj.x > x) {
    
 }
 
+if (side == 1 && hit_player_obj.x < x) or (side == 1 && hit_player_obj.x > x) {
+    damageminigate -= enemy_hitboxID.damage 
+    
+}
+
 if (side == 1 && hit_player_obj.x < x) or (side == -1 && hit_player_obj.x > x) {
 if hit_player_obj.hatstate == player*player or hit_player_obj.hatstate == 2*player*player {
     hit_player_obj.hatstate = 0

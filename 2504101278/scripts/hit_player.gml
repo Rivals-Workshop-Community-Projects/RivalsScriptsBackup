@@ -1,6 +1,13 @@
 var spawn = "none";
 
 switch my_hitboxID.attack {
+    case AT_USTRONG:
+    case AT_DSPECIAL:
+        if my_hitboxID.attack == AT_DSPECIAL and my_hitboxID.hbox_num != 2 break;
+        
+        hit_player_obj.black_sil = hit_player_obj.hitstop;
+        sound_play(asset_get("sfx_blow_heavy2"))
+    break;
     case AT_FSTRONG:
         if my_hitboxID.hbox_num != 6 spawn = "fire";
     break;
@@ -35,7 +42,7 @@ switch my_hitboxID.attack {
         }
     break;
     case AT_DAIR:
-        old_vsp = -vsp;
+        old_vsp = -4;
         spawn = (my_hitboxID.hbox_num == 1) ? "big" : "med";
     break;
     case AT_FAIR:

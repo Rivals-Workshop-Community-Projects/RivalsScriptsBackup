@@ -43,7 +43,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_spirit_flame_hit_1"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 125);
+set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, fire_fx);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
@@ -64,7 +64,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8); // 9->8
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.9); //1.05 -> .9
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, .9);
-set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 126);
+set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, vfx_ustrong_hit);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));

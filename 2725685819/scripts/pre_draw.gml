@@ -9,6 +9,8 @@ var free_chaos = has_rune("M");
 var trick_player = get_player_color(player);
 var trick_color_r, trick_color_g, trick_color_b;
 
+
+
 //get color
 if (trick_player == 8) {
 trick_color_r = get_color_profile_slot_r(trick_player, 7);
@@ -48,6 +50,17 @@ var range_alpha = ((trick_range-nearest_dist)/trick_range);
 
 if (nearest_dist != -1){
 
+
+//COMPATIBILIT-HEE HEE
+var distort_draw_y;
+
+if ("thrusting" in nearest_player)
+distort_draw_y = 0;
+else
+distort_draw_y = nearest_player.draw_y;
+
+
+
 if (trick_path < 1)
 trick_path += 0.1;
 else if (trick_path == 1)
@@ -61,7 +74,7 @@ range_alpha = 0.1;
 if (nearest_dist != -1)
 draw_sprite_ext( sprite_index, image_index,
 lerp((x + draw_x), (nearest_player.x + nearest_player.draw_x), trick_path),
-lerp((y + draw_y), (nearest_player.y + nearest_player.draw_y), trick_path),
+lerp((y + distort_draw_y), (nearest_player.y + distort_draw_y), trick_path),
 (1 + small_sprites) * spr_dir, (1 + small_sprites), 
 spr_angle,
 trick_color, range_alpha);
@@ -81,8 +94,8 @@ if  get_gameplay_time()%3 == 0
 vfx_rand = random_func( 0, 10, true );
 	
 gpu_set_fog(1,trick_color,0,0);
-	draw_sprite_ext( sprite_get("jump"), 5, (x + draw_x) + vfx_rand, (y + draw_y) + 2, (1.1 + small_sprites) * spr_dir, (1.1 + small_sprites), spr_angle, trick_color, 0.2 );
-	draw_sprite_ext( sprite_get("jump"), 5, (x + draw_x) - vfx_rand, (y + draw_y) + 2, (1.1 + small_sprites) * spr_dir, (1.1 + small_sprites), spr_angle, trick_color, 0.2 );
+	draw_sprite_ext( sprite_get("jump"), 5, (x + draw_x) + vfx_rand, (y + distort_draw_y) + 2, (1.1 + small_sprites) * spr_dir, (1.1 + small_sprites), spr_angle, trick_color, 0.2 );
+	draw_sprite_ext( sprite_get("jump"), 5, (x + draw_x) - vfx_rand, (y + distort_draw_y) + 2, (1.1 + small_sprites) * spr_dir, (1.1 + small_sprites), spr_angle, trick_color, 0.2 );
 gpu_set_fog(0,0,0,0);
 
 }

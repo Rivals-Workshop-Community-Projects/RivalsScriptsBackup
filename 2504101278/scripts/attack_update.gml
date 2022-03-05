@@ -1,5 +1,6 @@
 //B - Reversals
 
+
 //USPEC
 #macro USPEC_w1LEN 19
 
@@ -76,7 +77,7 @@ switch(attack){
 			
 			case 3:
 				can_fast_fall = false;
-				if window_timer == 1
+				if window_timer == 1 and !was_parried
 				{
 					if !joy_pad_idle and clamp(joy_dir, 40, 150) == joy_dir
 			    	{
@@ -91,7 +92,7 @@ switch(attack){
 			    	}
 			    	else
 			    	{
-			    		print(joy_dir)
+			    		//print(joy_dir)
 			    		hsp = (12*spr_dir)
 			    	}
 				}
@@ -344,8 +345,10 @@ switch(attack){
             case 6:
                 fspecial_stored = [-1, -1];
                 //print("-----")
+                if window_timer == 6 move_cooldown[AT_FSPECIAL] = 30;
             break;
             case 7:
+            //print("lol")
             if window_timer == 1
             {
                 var i=0;

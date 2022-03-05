@@ -7,7 +7,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 6);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 7);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_heavy1"));
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 0);

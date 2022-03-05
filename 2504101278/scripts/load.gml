@@ -54,6 +54,7 @@ sprite_change_offset("vfx_nspecial_split", 126, 172);
 
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("plat_bg", 64, 94);
+sprite_change_offset("biglightning_vfx", 160, 160);
 
 sprite_change_offset("nspecial_proj", 60, 60);
 sprite_change_offset("nspecial_proj_diagonal", 60, 60);
@@ -63,7 +64,7 @@ sprite_change_offset("nspecial_proj_split", 60, 60);
 // sprite_change_collision_mask( "nspecial_proj_diagonal", true, 0, 0, 0, 0, 0, 0 );
 
 sprite_change_offset("nspecial_die", 60, 60);
-
+sprite_change_offset("hud_voidling", 20, 20);
 sprite_change_offset("nspecial_die", 60, 60);
 sprite_change_offset("nspecial_projfx", 60,60);
 

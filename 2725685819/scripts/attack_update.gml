@@ -418,7 +418,7 @@ switch(attack){
 			window_timer = 0;
 		}
 
-		if (window == 3 && window_timer == 1){
+		if (window == 3 && window_timer == 1 && !hitpause){
 			
 			if (!jc_buff)
 			jc_object = instance_create( x + (75 * spr_dir), y - 40, "obj_article1" );

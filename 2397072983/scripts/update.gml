@@ -265,26 +265,17 @@ if move_cooldown[AT_EXTRA_1] == 19 && state_cat != SC_HITSTUN{
 }
 
 
-if (move_cooldown[AT_NSPECIAL_2] = 121 or move_cooldown[AT_NSPECIAL_2] % 10 > 0){
+if (move_cooldown[AT_NSPECIAL_2] > 0 and move_cooldown[AT_NSPECIAL_2] % 3 == 0){
 	    	
 		  	with dplayer{
 		    	hitpause = true
-		    	hitstop = 10
-		    	hsp = old_hsp
-		        vsp = old_vsp
-		  		}
-		  		
-		    }
-		 
-if move_cooldown[AT_NSPECIAL_2] >= 1 and move_cooldown[AT_NSPECIAL_2] % 3 == 0 {
-			with dplayer{
-		    	hitpause = 0
-		    	hitstop = 0
-		    	hsp = old_hsp
-		        vsp = old_vsp
+		    	hitstop = 2
+		    	old_hsp = hsp 
+		        old_vsp = vsp
 		  	}
-
+		  		
 }
+		 
 
 
 if dplayer.state != PS_ATTACK_GROUND and dplayer.state != PS_ATTACK_AIR{

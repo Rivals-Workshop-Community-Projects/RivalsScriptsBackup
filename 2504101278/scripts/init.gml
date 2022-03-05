@@ -33,7 +33,7 @@ air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
-air_friction = .04;
+air_friction = .045;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
@@ -102,6 +102,7 @@ hit_sprites[1] = hit_fx_create(sprite_get("hfx_blob_medium"), 32);
 hit_sprites[2] = hit_fx_create(sprite_get("hfx_blob_large"), 24);
 hit_sprites[3] = hit_fx_create(sprite_get("nspecial_projfx"), 30);
 spr_vfx_ustrong_spark = sprite_get("vfx_ustrong_spark");
+vfx_ustrong_hit = hit_fx_create(sprite_get("biglightning_vfx"), 32);
 fire_fx = hit_fx_create(sprite_get("hfx_fire"), 24);
 split_baby_fx = hit_fx_create(sprite_get("vfx_nspecial_split"), 20);
 

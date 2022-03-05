@@ -2,7 +2,7 @@ set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
-set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("air_box"));
+set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("stand_box"));
 
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
@@ -70,13 +70,14 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 69);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
-set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 60);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 45);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .2);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 20)
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1.0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .75);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));

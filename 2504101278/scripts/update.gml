@@ -1,5 +1,13 @@
 //B - Reversals
 
+with oPlayer
+{
+	if self != other
+	{
+		black_sil = max(0,black_sil-1);
+	}
+}
+
 updateParticles1();
 updateParticles2();
 if state == PS_ATTACK_AIR
@@ -51,8 +59,8 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND
 	    	//print("creating")
 	    	sound_play(asset_get("sfx_ori_charged_flame_release"))
 	        var minang, maxang;
-	        minang = free ? -45-(n*2.5) : 0;
-	        maxang = free ? -45+(n*2.5) : (10+(n*4));
+	        minang = free ? -30-(n*2.5) : 0;
+	        maxang = free ? -30+(n*2.5) : (10+(n*4));
 	        
 			var angle = (spr_dir*lerp(minang, maxang, current_shot/n)) + getStartAngle();
 	
@@ -93,10 +101,6 @@ else if(state == PS_SPAWN)
     	sound_play(asset_get("sfx_boss_vortex_start"),false,noone, 0.6);
     if(introTimer == 14)
         sound_play(sound_get("scream_void"));
-    if(introTimer == 15)
-    	shake_camera(18, 3)
-    if(introTimer == 17)
-    	shake_camera(1, 48)
 }
 //this increments introTimer every few frames, depending on the number entered
 

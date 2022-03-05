@@ -8,6 +8,7 @@ var charuuid = string(sprite_get("idle"));
 if ("css_char" not in self || css_char != charuuid) {
 drawtime = 0
 drawing = 1
+soundlol = 0
     css_char = charuuid;
     sound_play(sound_get("hatoff1"),false,noone,.7,.6)
 	sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1)
@@ -17,14 +18,13 @@ drawing = 1
 if ("prev_alt" not in self){
 drawtime = 0
 drawing = 1
-soundlol = 0
 }
     
 if ("prev_alt" in self && prev_alt != alt){
      drawing = random_func(4, 4, true)
      drawtime = 0
      
-     soundlol += random_func(1,2,true) + 1
+    if "soundlol" in self soundlol += random_func(1,2,true) + 1
 sound_stop(cur_sound)
 
 switch soundlol%7 {
@@ -90,7 +90,7 @@ var palette_names = [
   "codename[Void]", 
   "codename[Blood Call]",
   "codename[Mr.Boa]",
-  "codename[Guy]",
+  "codename[Buff]",
   "codename[BLW]",
   "codename[Lucky]",
 ];

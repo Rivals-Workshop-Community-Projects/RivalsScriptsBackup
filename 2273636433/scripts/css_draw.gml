@@ -28,7 +28,8 @@ alt_name[20] = "Gameboy";
 alt_name[21] = "NES";
 alt_name[22] = "BLMario";
 alt_name[23] = "Vaporwave";
-alt_name[24] = "TSMSB";
+alt_name[24] = "TSMSB"; 
+alt_name[25] = "Nauseon Line";
 
 num_alts = 25;
 //Alt
@@ -72,3 +73,13 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 #define rectDraw(x1, y1, x2, y2, color)
 
 draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
+
+
+
+// Checks if the seventh slot of the first skins yellow shade is 255 (it is),
+// then plays the noise and sets the colour to 256. 256 rounds down to 255
+// in game automatically so there is no penalty to alts for using this method.
+if (get_color_profile_slot_b(9, 0) == 255) {
+    sound_play(sound_get("pill_hit"));
+    set_color_profile_slot(9, 0, get_color_profile_slot_r(9, 0), get_color_profile_slot_g(9, 0), get_color_profile_slot_b(9, 0) + 1);
+}

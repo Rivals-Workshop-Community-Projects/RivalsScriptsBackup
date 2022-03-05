@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 2, 4, 24 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 26 );
 
 // Pink
 set_color_profile_slot( 1, 0, 255, 135, 135 ); //Lab Coat
@@ -200,7 +200,7 @@ set_color_profile_slot( 19, 1, 78, 23, 141 ); //Pants
 set_color_profile_slot( 19, 2, 79, 61, 94 ); //Hair / Shoes
 set_color_profile_slot( 19, 3, 220, 113, 255 ); //Gloves
 set_color_profile_slot( 19, 4, 166, 172, 214 ); //Skin
-set_color_profile_slot( 19, 5, 220, 113, 255 ); //Tie / Eyes
+set_color_profile_slot( 19, 5, 255, 238, 109 ); //Tie / Eyes
 set_color_profile_slot( 19, 6, 220, 113, 255 ); //HeadBand
 
 // Gameboy
@@ -247,6 +247,15 @@ set_color_profile_slot( 24, 3, 254, 205, 28 ); //Gloves
 set_color_profile_slot( 24, 4, 233, 183, 152 ); //Skin
 set_color_profile_slot( 24, 5, 164, 222, 222 ); //Tie / Eyes
 set_color_profile_slot( 24, 6, 240, 217, 173 ); //HeadBand
+
+// Nauseon Line
+set_color_profile_slot( 25, 0, 247, 216, 104 ); //Lab Coat
+set_color_profile_slot( 25, 1, 121, 121, 121 ); //Pants
+set_color_profile_slot( 25, 2, 170, 214, 232 ); //Hair / Shoes
+set_color_profile_slot( 25, 3, 121, 121, 121 ); //Gloves
+set_color_profile_slot( 25, 4, 227, 175, 227 ); //Skin
+set_color_profile_slot( 25, 5, 106, 0, 255 ); //Tie / Eyes
+set_color_profile_slot( 25, 6, 207, 207, 207 ); //HeadBand
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
