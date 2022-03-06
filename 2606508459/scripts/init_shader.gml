@@ -37,6 +37,6 @@ catch (er)
     set_character_color_slot( 7, 255, 195, 201 );
 }
 
-shadr_init = true;
+shadr_init = true; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 
 //END

@@ -60,7 +60,7 @@ if (dip_swapSpecial)
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_HITBOX_GROUP, 1);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_WINDOW, 2);
     //set_hitbox_value(AT_NSPECIAL_2, ig, HG_WINDOW_CREATION_FRAME, 1);
-    set_hitbox_value(AT_NSPECIAL_2, ig, HG_LIFETIME, 1);
+    set_hitbox_value(AT_NSPECIAL_2, ig, HG_LIFETIME, 3);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_PRIORITY, 2);
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
     set_hitbox_value(AT_NSPECIAL_2, ig, HG_DAMAGE, 3);

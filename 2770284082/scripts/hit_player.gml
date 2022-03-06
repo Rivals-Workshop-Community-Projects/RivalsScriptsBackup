@@ -14,6 +14,11 @@ if my_hitboxID.attack == AT_FTHROW {
     old_hsp = 0
 }
 
+if my_hitboxID.attack == AT_BAIR {
+    hit_player_obj.free = true
+}
+    
+    
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 2 {
    move_cooldown[AT_FSPECIAL_2] = 60
 }

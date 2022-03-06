@@ -247,6 +247,7 @@ if (attack == AT_USPECIAL){
         window_timer = 0;
     }
     if (window == 4) {
+        super_armor = true;
         if (window_timer == 1){
             spr_dir = turnlock;
         }
@@ -260,6 +261,7 @@ if (attack == AT_USPECIAL){
             }
             else {
                 window = 5;
+                super_armor = false;
                 window_timer = 0;
             }
         }

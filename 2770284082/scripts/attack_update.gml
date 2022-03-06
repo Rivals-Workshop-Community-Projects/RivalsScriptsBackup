@@ -199,6 +199,14 @@ switch attack {
 	
 	case AT_DATTACK :
 	if window == 1 && !hitpause {
+		if window_timer == 1 {
+     		if (((left_down) or left_stick_down) && side == 1 ) or (((right_down) or right_stick_down) && side == -1) {
+     		  side *= -1
+     		  spr_dir *= -1
+              hsp *= -1
+            }
+     	}
+     	
 	 	if window_timer == 1 {
 	 		if right_down - left_down != 0 {
 	 			spr_dir = right_down - left_down 
@@ -216,7 +224,7 @@ switch attack {
 	 
 	if window == 2 && !hitpause {
 		if has_hit_player {
-			set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 86);
+			set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 90);
             set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 96);
 		}
 		if window_timer == 6 {

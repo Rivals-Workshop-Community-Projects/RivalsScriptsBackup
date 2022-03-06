@@ -100,7 +100,7 @@ if (attack == AT_NSPECIAL)
     //Snap of the no MP sequence after 15 frames
     else if (window == 13)
     {
-        if (window_timer == 20)                        
+        if (window_timer == 20)
         {                                    
             attack_end();                        
             hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");        
@@ -126,7 +126,7 @@ if (attack == AT_NSPECIAL)
             }
             else
             {
-                if (window_timer == 1)                                                
+                if (window_timer == 1)
                 {                    
                     sound_play(sound_get("charge_1"), false, 0, .5);                   
                     set_attack_value( AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));                                        
@@ -147,7 +147,7 @@ if (attack == AT_NSPECIAL)
             }
         }
         
-        if (window == 5 && window_timer == 1)        
+        if (window == 5 && window_timer == 1)
         {            
             spawn_hit_fx(x - (36 * spr_dir), y - 20, fx_bling);  
         }                 
@@ -291,7 +291,7 @@ if (attack == AT_NSPECIAL)
         
         //Shoot animation loop normalization
         //End the attack at the end window of the first nspecial variant 
-        if ((window == 9 && window_timer == 15) || (window == 12 && window_timer == 15))                
+        if ((window == 9 && window_timer == 15) || (window == 12 && window_timer == 15))
         {            
             attack_end();            
             set_state(PS_IDLE);        
@@ -339,7 +339,7 @@ if (attack == 43)
         }
         else
         {
-            if (window_timer == 1)                                            
+            if (window_timer == 1)
             {                                                        
                 sound_play(asset_get("sfx_zap"));                                    
                 set_attack_value( 43, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));                                
@@ -393,7 +393,7 @@ if (attack == 43)
     }
     
     //Shoot
-    if (window == 8 && window_timer == 1 && move_cooldown[AT_EXTRA_1] <= 0)    
+    if (window == 8 && window_timer == 1 && move_cooldown[AT_EXTRA_1] <= 0)
     {        
         flag_breverse = false;
         spawnFireBall(            
@@ -477,7 +477,7 @@ if (attack == AT_NSPECIAL_2)
     
     //B Reverse
     if (!flag_breverse &&
-        window == 1 && 
+        (window == 1 || (window == 2 && window_timer < 4)) && 
         ((left_down && spr_dir > 0) || (right_down && spr_dir < 0)))
     {
         spr_dir *= -1;
@@ -490,7 +490,7 @@ if (attack == AT_NSPECIAL_2)
     
     can_jump = !was_parried;
     
-    if (window == 1 && window_timer == 1)            
+    if (window == 1 && window_timer == 1)
     {
         var nstx = x + txo;
         var nsty = y + tyo;
@@ -503,17 +503,6 @@ if (attack == AT_NSPECIAL_2)
         if (fBall_obj != noone)
         {
             sound_play(asset_get("sfx_frog_fspecial_cancel"));
-        
-            /*
-            spawn_hit_fx(nstx, nsty - c_callRadius, fx_miniSpark); //UP
-            spawn_hit_fx(nstx + c_callRadius*.7, nsty - c_callRadius*.7, fx_miniSpark); //UR
-            spawn_hit_fx(nstx + c_callRadius, nsty, fx_miniSpark); //RIGHT
-            spawn_hit_fx(nstx + c_callRadius*.7, nsty + c_callRadius*.7, fx_miniSpark); //RD
-            spawn_hit_fx(nstx, nsty + c_callRadius, fx_miniSpark); //DOWN
-            spawn_hit_fx(nstx - c_callRadius*.7, nsty + c_callRadius*.7, fx_miniSpark); //DL
-            spawn_hit_fx(nstx - c_callRadius, nsty, fx_miniSpark); //LEFT
-            spawn_hit_fx(nstx - c_callRadius*.7, nsty - c_callRadius*.7, fx_miniSpark); //LU
-            */
             
             with (fBall_obj)
             {

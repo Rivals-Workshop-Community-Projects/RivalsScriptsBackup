@@ -18,11 +18,11 @@ if (meleei_active)
         if (player == meleei_activePlayers[i][0]) break;
         currPos++
     }
-    var _printY = meleei_yoff + view_get_yview() + 470
+    var _printY = meleei_yoff + view_get_yview() + 470 // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
     shader_start();
     for (var i = 0; i < get_player_stocks(player); i++) 
     {
-        var _printX = meleei_xoff + (currPos * 238) + (view_get_xview() + meleei_useX) + (i * 22)
+        var _printX = meleei_xoff + (currPos * 238) + (view_get_xview() + meleei_useX) + (i * 22) // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
         draw_sprite_ext( meleei_sprite, 0, _printX, _printY, 1, 1, 0, c_white, 1); 
     }
     shader_end();
