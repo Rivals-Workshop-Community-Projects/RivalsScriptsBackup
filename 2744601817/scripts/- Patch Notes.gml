@@ -1,4 +1,12 @@
 /*
+-- Beta V1.1 --
+
+Gameplay Changes:
+- Nair's first two hits are now untechable
+- Buffed Air Movement
+Max Air Speed (4.5->5.5)
+Max Jump Horitzontal Speed (4->7)
+
 -- Beta V0.2 --
 
 Gameplay Changes:
