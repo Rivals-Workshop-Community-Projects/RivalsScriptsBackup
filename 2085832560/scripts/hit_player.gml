@@ -162,10 +162,15 @@ create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(13, 100, true)  , h
 
 ////
 
-
+if my_hitboxID.attack == AT_DATTACK {
+	if hit_player_obj.state_cat == SC_HITSTUN {
+		hit_player_obj.x += floor((x + 100*spr_dir - hit_player_obj.x)/4)
+	}
+}
 if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 4 {
 
 sound_play(sound_get("slice"));
+
 
 }
 

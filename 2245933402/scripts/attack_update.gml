@@ -3,6 +3,12 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if (attack == AT_DATTACK){
+	if has_hit_player {
+		can_jump = true
+	}
+}
+
 if !hitpause {
 if (attack == AT_NSPECIAL){
     

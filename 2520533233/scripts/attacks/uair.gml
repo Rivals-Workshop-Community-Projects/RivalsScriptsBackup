@@ -7,7 +7,7 @@ set_attack_value(AT_UAIR, AG_LANDING_LAG, 5);
 
 // startup
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
@@ -23,7 +23,7 @@ set_window_value(AT_UAIR, 2, AG_WINDOW_VSPEED, -1);
 
 //endlag/sourspot spike
 set_window_value(AT_UAIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

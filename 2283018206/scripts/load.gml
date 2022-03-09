@@ -87,14 +87,18 @@ sprite_change_offset("bike_taunt", 100, 140);
 sprite_change_offset("ball_idle", 100, 140);
 sprite_change_offset("ball_idle_triangle", 100, 140);
 sprite_change_offset("ball_idle_square", 100, 140);
+sprite_change_offset("ball_idle_evil", 100, 140);
 sprite_change_offset("ball_expand", 100, 140);
 sprite_change_offset("ball_compress", 100, 140);
+sprite_change_offset("ball_compress_evil", 100, 140);
 sprite_change_offset("ball_moving", 100, 140);
 sprite_change_offset("ball_moving_triangle", 100, 140);
 sprite_change_offset("ball_moving_square", 100, 140);
+sprite_change_offset("ball_moving_evil", 100, 140);
 sprite_change_offset("ball_bounce", 100, 140);
 sprite_change_offset("ball_bounce_triangle", 100, 140);
 sprite_change_offset("ball_bounce_square", 100, 140);
+sprite_change_offset("ball_bounce_evil", 100, 140);
 
 sprite_change_offset("hud_speedometer", 14, 0);
 sprite_change_offset("article_offscreen", 33, 33);

@@ -243,6 +243,18 @@ colorSet(a, 7, $ff8c36); //Tan (R)
 
 a++;
 
+// no way evil otto???
+colorSet(a, 0, $fdfe1e); //Yellow
+colorSet(a, 1, $fdfe1e); //Yellow (S)
+colorSet(a, 2, $fdfe1e); //Brown
+colorSet(a, 3, $fdfe1e); //Brown (S)
+colorSet(a, 4, $fdfe1e); //Gray
+colorSet(a, 5, $fdfe1e); //Gray (S)
+colorSet(a, 6, $fdfe1e); //Blue (R)
+colorSet(a, 7, $fdfe1e); //Tan (R)
+
+a++;
+
 
 set_num_palettes(a);
 

@@ -5,6 +5,7 @@ if attacking && attack == AT_TAUNT && window == 3 && state_timer > 40 {
 }
 
 
+/* codes archived, Auto parry in neutral state
 if left_pressed and right_pressed and attack_pressed and special_pressed  {
 	if up_down {
 	Genocide = 4 	
@@ -13,6 +14,7 @@ if left_pressed and right_pressed and attack_pressed and special_pressed  {
 	Genocide = 0 	
 	}
 }
+*/
 
 if (state == PS_DASH
    	or state == PS_IDLE

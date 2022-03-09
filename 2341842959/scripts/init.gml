@@ -137,6 +137,7 @@ explosion_cont = 0;
 levei_parry = false;
 
 uspecial_rot = 0;
+charge = 0;
 
 shot_fired = false;
 fspecial_dir = 1;

@@ -18,16 +18,19 @@ if attack == AT_USPECIAL && hbox_num == 3 {
 
 
 if attack == AT_DAIR && hbox_num == 3 {
-    if hitbox_timer % 2 == 0 {
-     spawn_hit_fx (x , y + 20 , 108)
-    }
+    
            
-           if has_hit {
-           	hsp = 10*spr_dir
-           	vsp = -10
-           	gravity = 0.3
-           	has_hit = false
-           }
+            if has_hit  {
+            	sound_play(asset_get("sfx_absa_kickhit"));
+            	sound_play(asset_get("sfx_abyss_explosion"));
+           	destroyed = true 
+           	spawn_hit_fx (x , y , 253)
+            }
+            
+           	if hitbox_timer % 2 == 0 {
+             spawn_hit_fx (x , y  , 108)
+            }
+           
      if !free {
          destroyed = 1
          create_hitbox(AT_USPECIAL , 4 , x  , y );

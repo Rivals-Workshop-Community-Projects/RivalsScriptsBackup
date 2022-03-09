@@ -48,7 +48,6 @@ if my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num <= 2{
 	bbullet = 2 
 }
 
-/*
 if my_hitboxID.attack == AT_JAB && gun = 0{
 	if nbullet < 5 {
     nbullet += 2
@@ -79,7 +78,7 @@ if my_hitboxID.attack == AT_DTILT  {
 	}
 	dbullet = 1
 }
-*/
+
 }
 
 

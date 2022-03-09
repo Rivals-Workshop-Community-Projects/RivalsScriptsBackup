@@ -294,19 +294,19 @@ spr_hud_cursor = sprite_get("hud_cursor");
 //Ball
 spr_ball_idle = [
 	sprite_get("ball_idle_triangle"),
-	sprite_get("ball_idle"),
+	evil_sprite_get("ball_idle"),
 	sprite_get("ball_idle_square")
 	];
 spr_ball_expand = sprite_get("ball_expand");
-spr_ball_compress = sprite_get("ball_compress");
+spr_ball_compress = evil_sprite_get("ball_compress");
 spr_ball_moving = [
 	sprite_get("ball_moving_triangle"),
-	sprite_get("ball_moving"),
+	evil_sprite_get("ball_moving"),
 	sprite_get("ball_moving_square")
 	];
 spr_ball_bounce = [
 	sprite_get("ball_bounce_triangle"),
-	sprite_get("ball_bounce"),
+	evil_sprite_get("ball_bounce"),
 	sprite_get("ball_bounce_square")
 	];
 
@@ -498,3 +498,9 @@ spr_airdodge_waveland[1] = sprite_get("bike_land");         //Done
 spr_taunt[1] = sprite_get("bike_taunt");
 spr_walljump[1] = sprite_get("bike_walljump");
 spr_pratfall[1] = sprite_get("bike_pratfall");
+
+
+
+#define evil_sprite_get(name)
+
+return sprite_get(name + (get_player_color(player) == 16 ? "_evil" : ""));

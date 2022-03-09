@@ -64,6 +64,7 @@ if isyellow {
     
 }
 
+/* codes archived, Auto parry in neutral state
 if left_pressed and right_pressed and attack_pressed and special_pressed  {
 	if up_down {
 	UImode = 4 	
@@ -100,3 +101,4 @@ if (state == PS_DASH
 } else {
 	
 }
+*/

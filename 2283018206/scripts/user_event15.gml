@@ -71,6 +71,7 @@ MunoPhone Touch.
 // Character's name, used in a couple of places in the phone.
 // (if you delete this line, it'd just use the config.ini name)
 muno_char_name = "Otto";
+muno_char_id = 2;
 
 // Whether or not the phone sprite should recolor w/ your alt costume.
 // (set to "true" if you make a custom phone sprite in your char's colors)
@@ -237,6 +238,11 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.30", "08 March, 2022");
+initHeader("General");
+initSection("no way
+evil otto");
 
 initPatch("1.29", "19 September, 2021");
 initHeader("General");

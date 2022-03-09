@@ -49,10 +49,9 @@ if window == 1 and window_timer == 1{
 			set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, vfx_hit_med1);
-			set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, vfx_hit_med1);
-			set_hitbox_value(AT_NAIR, 7, HG_VISUAL_EFFECT, vfx_hit_med1);
+			set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT, vfx_hit_med1);
+			set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_NAIR, 8, HG_VISUAL_EFFECT, vfx_hit_med1);
-			set_hitbox_value(AT_NAIR, 10, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FAIR, 4, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, vfx_hit_med1);

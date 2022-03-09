@@ -15,18 +15,22 @@ if (state == PS_ATTACK_GROUND && attack == AT_FTILT && window == 1 && window_tim
 }
 */
 
+if (charge == 3){
+
 if (get_player_color(player) == 16){
-	set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
-	set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
-	set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
+	set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
+	set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
+	set_window_value(AT_USPECIAL, 8, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
 }
 else {
-    set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, sound_get("skunkburst"));
-    set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, sound_get("skunkburst"));
-    set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX, sound_get("skunkburst"));
+    set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("skunkburst"));
+    set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX, sound_get("skunkburst"));
+    set_window_value(AT_USPECIAL, 8, AG_WINDOW_SFX, sound_get("skunkburst"));
 }
 
-if (tokens < 1){
+}
+
+if (tokens < 3){
     move_cooldown[AT_USPECIAL] = 0;
 }
 else {

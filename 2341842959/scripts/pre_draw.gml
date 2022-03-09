@@ -22,9 +22,15 @@ if (gas_bair_cont > 0 && gas_bair_cont < 5){
     draw_sprite_ext(sprite_get("gas_BAIR"), gas_bair_cont, gas_bair_posx, gas_bair_posy, gas_dir, 1, 0, c_white, 1 );
 }
 
-if (gas_nspecial_cont > 0 && gas_nspecial_cont < 6){
-    draw_sprite_ext(sprite_get("gas_NSPECIAL_HOLD"), gas_nspecial_cont, gas_nspecial_posx, 
-    gas_nspecial_posy, spr_dir, 1, uspecial_rot, c_white, 1 );
+if (gas_nspecial_cont > 0){
+	if (charge < 3 && gas_nspecial_cont < 5){
+		draw_sprite_ext(sprite_get("gas_DTILT"), gas_nspecial_cont, gas_nspecial_posx, 
+    	gas_nspecial_posy, spr_dir, 1, uspecial_rot, c_white, 1 );	
+	}
+    if (charge == 3 && gas_nspecial_cont < 6){
+		draw_sprite_ext(sprite_get("gas_NSPECIAL_HOLD"), gas_nspecial_cont, gas_nspecial_posx, 
+    	gas_nspecial_posy, spr_dir, 1, uspecial_rot, c_white, 1 );	
+	}
 }
 
 if (gas_djump == 1){

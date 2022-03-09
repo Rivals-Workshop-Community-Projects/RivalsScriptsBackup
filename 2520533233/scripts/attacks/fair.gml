@@ -38,7 +38,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
 // Endlag
 set_window_value(AT_FAIR, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
-set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -6,6 +6,7 @@ if atrain < 100 && state == PS_DOUBLE_JUMP && state_timer < 25{
     
 }
 
+/* codes archived, Auto parry in neutral state
 if left_pressed and right_pressed and attack_pressed and special_pressed  {
 	if up_down {
 	Omega = 4 	
@@ -42,6 +43,8 @@ if (state == PS_DASH
 } else {
 	
 }
+
+*/
 
 if htrain >= 100 && (state == PS_DASH_START or state == PS_DASH) {
     sprite_index = sprite_get("dash2")

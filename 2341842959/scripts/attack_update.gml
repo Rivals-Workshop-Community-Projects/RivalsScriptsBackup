@@ -180,16 +180,16 @@ if (attack == AT_USPECIAL && window == 1){
     gas_nspecial_posy = y;
 }
 
-if (attack == AT_USPECIAL && window > 1){
-    if (window == 2 && window_timer == 1){
-        gas_nspecial_posx = x;
+if (attack == AT_USPECIAL && window > 5){
+    if (window == 6 && window_timer == 1){
+        gas_nspecial_posx = x-5*spr_dir;
         gas_nspecial_posy = y+10;
     }
-    if (window == 3 && window_timer == 1){
+    if (window == 7 && window_timer == 1){
         gas_nspecial_posx = x-40*spr_dir;
         gas_nspecial_posy = y-40;
     }
-    if (window == 4 && window_timer == 1){
+    if (window == 8 && window_timer == 1){
         gas_nspecial_posx = x;
         gas_nspecial_posy = y-110;
     }
@@ -198,6 +198,8 @@ if (attack == AT_USPECIAL && window > 1){
     }
     
 }
+
+
 }
 
 //DAttack Stops at ledge/hit
@@ -302,33 +304,134 @@ if (attack == AT_DSPECIAL && window == 1){
     }
 }
 
-if (attack == AT_USPECIAL && window == 1){
-    tokens = 3.1;
+if (attack == AT_USPECIAL){
+//    tokens = 3.1;
+
+	if (window == 1){
+		set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, sound_get("fart"));
+    	set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX, sound_get("fart"));
+    	set_window_value(AT_USPECIAL, 8, AG_WINDOW_SFX, sound_get("fart"));
+	}
+
+	if (window < 6){
+		
+	if (window == 3 && window_timer == 1){
+		spawn_hit_fx( x, y-25, 116 ); 
+	}
+	
+	if (window == 4 && window_timer == 1){
+		spawn_hit_fx( x, y-25, 120 ); 
+	}
+
+
+	if (window <= 2){
+		charge = 1;
+	}
+	if (window == 3){
+		charge = 2;
+	}
+	if (window == 4){
+		charge = 3;
+	}
+	
+	if (window == 5){
+		if (charge == 1){
+			set_window_value(AT_USPECIAL, 6, AG_WINDOW_VSPEED, -8);
+			set_window_value(AT_USPECIAL, 7, AG_WINDOW_HSPEED, 7);
+			set_window_value(AT_USPECIAL, 8, AG_WINDOW_VSPEED, 8);
+			set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 5);
+			set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 5);
+			set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 5);
+			set_hitbox_value(AT_USPECIAL, 4, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 5, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 6, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 7, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 8, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 9, HG_LIFETIME, 0);
+		}
+		if (charge == 2){
+			set_window_value(AT_USPECIAL, 6, AG_WINDOW_VSPEED, -12);
+			set_window_value(AT_USPECIAL, 7, AG_WINDOW_HSPEED, 9);
+			set_window_value(AT_USPECIAL, 8, AG_WINDOW_VSPEED, 12);
+			set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 4, HG_LIFETIME, 5);
+			set_hitbox_value(AT_USPECIAL, 5, HG_LIFETIME, 5);
+			set_hitbox_value(AT_USPECIAL, 6, HG_LIFETIME, 5);
+			set_hitbox_value(AT_USPECIAL, 7, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 8, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 9, HG_LIFETIME, 0);
+		}
+		if (charge == 3){
+			set_window_value(AT_USPECIAL, 6, AG_WINDOW_VSPEED, -15);
+			set_window_value(AT_USPECIAL, 7, AG_WINDOW_HSPEED, 12);
+			set_window_value(AT_USPECIAL, 8, AG_WINDOW_VSPEED, 15);
+			set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 4, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 5, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 6, HG_LIFETIME, 0);
+			set_hitbox_value(AT_USPECIAL, 7, HG_LIFETIME, 5);
+			set_hitbox_value(AT_USPECIAL, 8, HG_LIFETIME, 5);
+			set_hitbox_value(AT_USPECIAL, 9, HG_LIFETIME, 5);
+		}
+	}
+
+	if (window > 1 && window < 5 && window_timer == 14 && !special_down){
+		window_timer = 1;
+		window = 5;
+	}
+	
+	if (window == 2 && window_timer == 14 && special_down && tokens > 2){
+		window_timer = 1;
+		window = 5;
+	}
+	if (window == 3 && window_timer == 14 && special_down && tokens > 1){
+		window_timer = 1;
+		window = 5;
+	}
+
     
 	if ((up_down && !right_down && !left_down && !down_down) || (joy_pad_idle)){
 		uspecial_rot = 0;
-		set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 2);
+		set_window_value(AT_USPECIAL, 5, AG_WINDOW_GOTO, 6);
 		set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 	}
 	
 	if (right_down && !up_down && !down_down && !left_down){
 		spr_dir = 1;
 		uspecial_rot = 270;
-		set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 3);
+		set_window_value(AT_USPECIAL, 5, AG_WINDOW_GOTO, 7);
 		set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 15);
 	}
 	
 	if (left_down && !right_down && !up_down && !down_down){
 		spr_dir = -1;
 		uspecial_rot = 90;
-		set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 3);
+		set_window_value(AT_USPECIAL, 5, AG_WINDOW_GOTO, 7);
 		set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 15);
 	}
 	
 	if (down_down && !right_down && !left_down && !up_down && free){
 		uspecial_rot = 180;
-		set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 4);
+		set_window_value(AT_USPECIAL, 5, AG_WINDOW_GOTO, 8);
 		set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 19);
+	}
+	
+}
+	
+	if (window > 5 && window < 9 && window_timer == 2){
+		if (charge == 1){
+			tokens += 1.1; 
+		}
+		if (charge == 2){
+			tokens += 2.1; 
+		}
+		if (charge == 3){
+			tokens += 3.1; 
+		}
 	}
 		
 
