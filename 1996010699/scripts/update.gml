@@ -244,7 +244,7 @@ if(item[15, 3] == 1 && state == PS_CROUCH && crouchCounter < 100){
 }
 
 if (crouchCounter > 90 && crouchCounter < 100){
-	spawn_hit_fx( x , y - 30 , 306 );
+	spawn_hit_fx( x , y - 30 , 13 );
 	sound_play(asset_get("sfx_shovel_hit_med2"));
 	crouchCounter = 100;
 }
@@ -575,7 +575,7 @@ with(oPlayer){
 		alive_players++;
 	}
 }
-
+/*
 with(oPlayer){
 	if((alive_players == 2) && (other.player != player) && get_player_stocks(player) == 1 && get_player_damage(player) >= 100 && markedForDeath == false){
 		markedForDeath = true;	//marks opponent to die to uptilt2
@@ -586,7 +586,7 @@ with(oPlayer){
 }
 
 if(get_player_stocks(player) == 9 || get_match_setting(SET_STOCKS) == 9){
-	item[11, 6] = "3gGbCqj";
+	item[11, 6] = "3gGbCqj";	//no idea what this is lol
 } else {
 	item[11, 6] = "INFINITY UTILT";
 }
@@ -594,6 +594,7 @@ if(get_player_stocks(player) == 9 || get_match_setting(SET_STOCKS) == 9){
 if(!practice && get_match_setting(SET_STOCKS) != 0 && (item[11, 3] == 0) && (item[11, 7] == false) && (canBuyGodhead == true)){
 	achieveUnlock(11);
 }
+*/
 
 if (instance_exists(crysProj_id) && crysProj_id != noone){
     if (crysProj_timer == 0){

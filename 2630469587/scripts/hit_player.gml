@@ -91,11 +91,11 @@ if (my_hitboxID.attack == AT_FSPECIAL_AIR) {
 }
 
 if (my_hitboxID.attack == AT_DATTACK) {
-    set_window_value(AT_DATTACK, 7, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_DATTACK, 7, AG_WINDOW_LENGTH, 5);
 }
 
 if (my_hitboxID.attack == AT_FSTRONG) {
-    set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 14);
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 15);
 }
 
 if (voice_mode && (my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR)) {
@@ -139,7 +139,7 @@ if ((my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 2) || (my_hitb
 }
 
 
-if ((my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3) || (my_hitboxID.attack == AT_FSTRONG_2 && (my_hitboxID.hbox_num == 2)) || my_hitboxID.attack == AT_FTILT || my_hitboxID.attack == AT_UTILT || my_hitboxID.attack == AT_UAIR || my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_NAIR || (my_hitboxID.attack == AT_USTRONG && (my_hitboxID.hbox_num == 1 && my_hitboxID.hbox_num == 2 && my_hitboxID.hbox_num == 4)) || my_hitboxID.attack == AT_EXTRA_2)
+if ((my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3) || (my_hitboxID.attack == AT_FSTRONG_2 && (my_hitboxID.hbox_num == 2)) || my_hitboxID.attack == AT_FTILT || my_hitboxID.attack == AT_UTILT || my_hitboxID.attack == AT_UAIR || my_hitboxID.attack == AT_FAIR /*|| my_hitboxID.attack == AT_NAIR*/ || (my_hitboxID.attack == AT_USTRONG && (my_hitboxID.hbox_num == 1 && my_hitboxID.hbox_num == 2 && my_hitboxID.hbox_num == 4)) || my_hitboxID.attack == AT_EXTRA_2)
 {
 	spark_rng = random_func(0, 2, true);
 		if (spark_rng == 0) {

@@ -356,8 +356,7 @@ if (attack == AT_USPECIAL) {
                 if (special_down) {
                     //var max_rocket_rising_speed = remap_specials ? -3 : -5.5;
                     //var max_rocket_rising_speed = -5.5;
-                    var max_rocket_rising_speed = -6.0;
-                    
+
                     //var max_rocket_rising_speed = -3;
                     var speed_diff = max_rocket_rising_speed + vsp;
                     if (vsp > max_rocket_rising_speed) {
@@ -872,6 +871,15 @@ if (attack == 49) { // Final Smash
 	} else if ((window == 4) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
 		sound_stop(layered_sound_1);
 		sound_stop(layered_sound_2);
+	}
+}
+
+// fspecial/uspecial cancel out of any attack if it hit
+if (special_cancels_enabled) {
+	if (has_hit && !holding_someone) {
+		can_special = true;
+		move_cooldown[AT_NSPECIAL] = 1;
+		move_cooldown[AT_DSPECIAL] = 1;
 	}
 }
 

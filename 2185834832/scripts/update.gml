@@ -38,6 +38,10 @@ if(state == PS_DOUBLE_JUMP){
     }
 }
 
+if(instance_exists(waterBomb) and !free){
+	move_cooldown[AT_USPECIAL] = 2;
+}
+
 if(state != PS_DOUBLE_JUMP && state != PS_ATTACK_AIR){
 	double_jump_timer = 0
 }else if(state == PS_ATTACK_AIR){
@@ -60,7 +64,7 @@ if (torga_grav_jump == 1) {
 
 if (state == PS_DOUBLE_JUMP && check_fast_fall && djumps > 0) epinel_grav_jump = 1;
 
-if(attack != AT_DSTRONG || window == 0){
+if(attack != AT_DSTRONG && attack != AT_FAIR || window == 0){
 	if(grabbedid != noone){
 		grabbedid.ungrab = 1
         grabbedid.state = PS_TUMBLE;

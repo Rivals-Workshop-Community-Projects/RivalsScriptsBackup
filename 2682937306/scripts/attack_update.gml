@@ -183,14 +183,14 @@ if (attack == AT_DTILT){
 if (attack == AT_DSTRONG){
 	if (window == 4){ shake_camera( 1, 1 ); }
 	if (window == 3 && window_timer == 1){
-	earthquake_L = instance_create(x-40, y-29, "obj_article1");
+	earthquake_L = instance_create(x-40, y-34, "obj_article1");
 	//earthquake_L.spr_dir = spr_dir;
 	earthquake_L.player_id = id;
 	earthquake_L.state = 6;
 	earthquake_L.state_timer = 0;
 	//move_cooldown[AT_DSTRONG] = 20;
 	
-	earthquake_R = instance_create(x+40, y-29, "obj_article1");
+	earthquake_R = instance_create(x+40, y-34, "obj_article1");
 	//earthquake_R.spr_dir = spr_dir;
 	earthquake_R.player_id = id;
 	earthquake_R.state = 7;

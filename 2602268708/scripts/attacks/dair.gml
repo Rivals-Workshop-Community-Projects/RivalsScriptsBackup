@@ -46,8 +46,9 @@ set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, funnyhit);
+set_hitbox_value(AT_DAIR, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
-set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("FUNNY CHUCKYA MOVE"));
 //credit to Codename Comlink for sourcing the MVC3 sound for funny chuckya move
 
@@ -67,7 +68,6 @@ set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0.65);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, .6);
-set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-
-//credit to Codename Comlink for sourcing the MVC3 sound for funny chuckya move
+set_hitbox_value(AT_DAIR, 2, HG_HIT_PARTICLE_NUM, 1);

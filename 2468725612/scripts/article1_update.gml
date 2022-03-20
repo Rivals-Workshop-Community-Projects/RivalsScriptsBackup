@@ -141,7 +141,7 @@ if (state == 4){
 	vsp = 3.5;
 	if (place_meeting(x, y, player_id)){
 		if (state_timer > 5){
-			spawn_hit_fx( x, y, 194);
+			spawn_hit_fx( x, y, 194).pause = 7;
 			sound_play(asset_get("mfx_chat_received"));
 		}
 		player_id.hat_on = true;

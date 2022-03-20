@@ -128,3 +128,6 @@ set_color_profile_slot( 15, 1, 212, 201, 179 ); //Emblem
 set_color_profile_slot( 15, 2, 255, 135, 0 ); //Arm
 set_color_profile_slot( 15, 3, 255, 207, 120 ); //Specular
 set_color_profile_slot( 15, 4, 236, 192, 0 ); //Son
+
+
+set_color_profile_slot(99, 0, 0, 0, 0); //Timer of sorts for CSS sound

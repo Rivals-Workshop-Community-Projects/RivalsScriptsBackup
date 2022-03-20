@@ -68,10 +68,10 @@ set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, kick_duration);
 //set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -75);
 //set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 87);
 //set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 144);
-set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 54);
-set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -75);
-set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 76);
-set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 124);
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 36); // 54
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -66); // -75
+set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 76); // 76
+set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 119); // 134
 set_hitbox_value(AT_USTRONG, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 9);
@@ -91,10 +91,10 @@ set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, kick_duration);
 //set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -108);
 //set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 150);
 //set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 108);
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 17);
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -105);
-set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 131);
-set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 84);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 13); // 17
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -92); // -105
+set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 115); // 131
+set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 84); // 84
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 9);
@@ -110,17 +110,17 @@ set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_WINDOW, 4);
 set_hitbox_value(AT_USTRONG, 3, HG_LIFETIME, kick_duration);
-set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_X, 21);
-set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_Y, -10);
-set_hitbox_value(AT_USTRONG, 3, HG_WIDTH, 70);
-set_hitbox_value(AT_USTRONG, 3, HG_HEIGHT, 47);
+set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_X, 21); // 21
+set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_Y, -10); // -10
+set_hitbox_value(AT_USTRONG, 3, HG_WIDTH, 70); // 70
+set_hitbox_value(AT_USTRONG, 3, HG_HEIGHT, 38); // 47
 set_hitbox_value(AT_USTRONG, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_USTRONG, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 9);
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, 80);
-set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 9.8); // 10
 set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, 0.9); // 0.8
-set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 9.8); // 10
 set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, 0.9); // 0.8
 set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, blast_hit_effect);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));

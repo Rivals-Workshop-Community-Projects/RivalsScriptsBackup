@@ -138,7 +138,7 @@ fc_effect = hit_fx_create( sprite_get( "explosion_single" ), 7 );
 party_effect = hit_fx_create( sprite_get( "party_boom" ), 28 );
 party_has_moved = false;
 
-fc_lifetime = 100; // 85
+fc_lifetime = 400; // 85 -> // 100
 
 fc_string = "firecracker_single";
 
@@ -182,7 +182,9 @@ caught_projectile = false;
 grabbedTimer = 0;
 grabbed_solid = false;
 can_grab_solid_fspec = true;
+can_grab_plat_fspec = true;
 can_grab_solid_uspec = true;
+can_grab_plat_uspec = true;
 base_uspecial_vsp = -9;
 varying_uspecial_vsp = -9;
 fspec_yoff = 0;

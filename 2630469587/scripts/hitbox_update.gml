@@ -3,6 +3,7 @@ if (attack == AT_FSTRONG && (hbox_num == 1 || hbox_num == 3)) {
         if (!was_parried) {
         create_hitbox(AT_FSTRONG, 2, x, y)
         sound_play( sound_get( "cut" ) );
+        shake_camera( 2, 4 );
         }
     }
     
@@ -20,15 +21,18 @@ if (attack == AT_FSTRONG && (hbox_num == 1 || hbox_num == 3)) {
         player_id.move_cooldown[AT_FSTRONG] = 4;
     }
     if (attack == AT_FSTRONG && (hbox_num == 3)) {
-        player_id.move_cooldown[AT_FSTRONG] = 6;
+        player_id.move_cooldown[AT_FSTRONG] = 4;
     }
 }
+
+
 
 if (attack == AT_FSTRONG_2 && (hbox_num == 1 || hbox_num == 3)) {
     if ((hbox_num == 1 || hbox_num == 3) && hitbox_timer == 25 && !in_hitpause && !was_parried) {
         if (!was_parried) {
         create_hitbox(AT_FSTRONG_2, 2, x, y)
         sound_play( sound_get( "cut" ) );
+        shake_camera( 2, 4 );
         }
     }
 }

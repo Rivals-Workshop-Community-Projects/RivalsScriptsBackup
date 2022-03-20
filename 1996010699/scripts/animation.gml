@@ -87,7 +87,6 @@ if(sprite_index == sprite_get("ftilt")){
 		sprite_index = sprite_get("ftiltKT");
 	}
 }
-
 	
 if(item[14, 3] == 1){
 	if (sprite_index == sprite_get("dspecial")){

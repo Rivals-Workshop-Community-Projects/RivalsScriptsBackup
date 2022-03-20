@@ -115,6 +115,12 @@ if !attacking {
 	}
 }	
 
+if ostyle == 3{
+move_cooldown[AT_NSPECIAL] = 5
+move_cooldown[AT_FSPECIAL] = 5
+move_cooldown[AT_DSPECIAL] = 5
+}
+
 if ostyle == 1{
 
 move_cooldown[AT_NSPECIAL] = 5
@@ -179,7 +185,7 @@ dash_stop_time = 9;
 
 jump_start_time = 4;
 jump_speed = 14;
-short_hop_speed = 9;
+short_hop_speed = 7;
 djump_speed = 14;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground

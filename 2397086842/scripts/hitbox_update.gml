@@ -254,8 +254,8 @@ if lockouttimer < 0 {
     	sound_play(asset_get("sfx_blow_medium1"),false,noone,abs(vsp/8))
     	ax = spawn_hit_fx(x,y+8,14)
     	ax.draw_angle = random_func(1,306,true)
-    	ax.spr_dir = vsp/4
-    	ax.image_yscale = vsp/4
+    	ax.spr_dir = min(1,vsp/4)
+    	ax.image_yscale = min(1,vsp/4)
     	vsp *= -0.9
     	if hbox_num == 3 {
     		sound_play(asset_get("sfx_absa_singlezap2"),false,noone,abs(vsp/8))
@@ -315,7 +315,8 @@ if lockouttimer < 0 {
     nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone && (lockouttimer == 0 or player != nearbyhitbox.player) {
 		hit_priority = 9 
-		if player == nearbyhitbox.player {
+		
+		if player_id == nearbyhitbox.player_id {
 		lockouttimer = -15
 		}
 		
@@ -353,10 +354,10 @@ if lockouttimer < 0 {
       	
       		x += floor(nearbyhitbox.x - x)/2
 			y += floor(nearbyhitbox.y - y)/2
-			
+			destroyed = 1
              	 sound_play(asset_get("sfx_absa_whip"),false,noone,1.2) 
              	sound_play(asset_get("sfx_blow_heavy2"),false,noone,1.2)
-             	destroyed = 1
+             	
                switch hbox_num {
                case 1 :
                with nearbyhitbox.player_id {
@@ -376,6 +377,8 @@ if lockouttimer < 0 {
                with nearbyhitbox.player_id {
                create_hitbox(AT_NSPECIAL,3,floor(other.x),floor(other.y))
                }
+               
+               
                break;     
                	
         }
@@ -466,27 +469,29 @@ if lockouttimer < 0 {
     nearbyhitbox2 = collision_circle( x - hsp, y - vsp , 32, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox2 != noone {
 	   if nearbyhitbox2.type == 2 && nearbyhitbox2.hit_effect_x != -0.69 && hitbox_timer > 5 && nearbyhitbox2.hit_priority >= 1 && hitbox_timer > 5{
-	   	    shake_camera(4,4)
 	   	    if hitbox_timer > 10 {
-		    sound_play(asset_get("sfx_absa_singlezap1"))
-		    spawn_hit_fx((x + nearbyhitbox2.x)/2,(y + nearbyhitbox2.y)/2,302)
+		    sound_play(asset_get("sfx_blow_medium2"),false,noone,.7,1.2)
+		    spawn_hit_fx((x + nearbyhitbox2.x)/2,(y + nearbyhitbox2.y)/2,14)
 	   	    }
 	   	    
             hitbox_timer = 5
             
              if nearbyhitbox2.x < x {
-             hsp += 2
+             hsp += 0.5
+             x += 2
 	   	     } else {
-             hsp -= 2
+	   	     hsp -= 0.5
+             x -= 2
 	   	     }
 	   	     
 	   	     if nearbyhitbox2.y < y {
-             vsp += 2
+	   	     	vsp += 0.5
+             y += 2
 	   	     } else {
-             vsp -= 2
+	   	     	vsp -= 0.5
+             y -= 2
 	   	     }
 	   	     
-               batted = 1
 	   }
 	}
 	   
@@ -668,6 +673,41 @@ if lockouttimer < 0 {
          		}
          		
                batted = 1
+               
+               if player != orig_player && string_count("bat bat", string_lower( get_char_info(player, INFO_STR_NAME))) > 0 {
+      	
+      	        	x += floor(nearbyhitbox.x - x)/2
+		        	y += floor(nearbyhitbox.y - y)/2
+		        	destroyed = 1
+                     	 sound_play(asset_get("sfx_absa_whip"),false,noone,1.2) 
+                     	sound_play(asset_get("sfx_blow_heavy2"),false,noone,1.2)
+                     	
+                       switch hbox_num {
+                       case 1 :
+                       with nearbyhitbox.player_id {
+                       create_hitbox(AT_NSPECIAL,2,floor(other.x),floor(other.y))
+                       }
+                       break;
+                       
+                       case 2 :
+                       sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.7)
+                       with nearbyhitbox.player_id {
+                       create_hitbox(AT_NSPECIAL,3,floor(other.x),floor(other.y))
+                       }
+                       break;
+                       
+                       case 3 :
+                       sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
+                       with nearbyhitbox.player_id {
+                       create_hitbox(AT_NSPECIAL,3,floor(other.x),floor(other.y))
+                       }
+                       
+                       
+                       break;     
+                       	
+              }
+              }
+               
          	}
          	
          }

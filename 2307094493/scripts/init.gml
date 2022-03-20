@@ -3,6 +3,18 @@ air_hurtbox_spr = sprite_get("lode_hurtbox_air");
 crouchbox_spr = sprite_get("lode_crouchhurtbox");
 hitstun_hurtbox_spr = -1;
 
+introTimer = -4;
+//setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
+introTimer2 = 0;
+
+// THIS IS EVERYTHING SANDBERT NEEDS FOR A FINAL SMASH, GAMEPLAY-SIDE:
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "ori";
+fs_char_portrait_y = 170;
+// EVERYTHING AFTER IS JUST 'SANDBERT WITH A PHONE' by MUNO
+// I MADE NONE OF THIS! I ONLY MADE THE FINAL SMASH!
+// GO GIVE BOTH THANKS AND CREDIT TO THEM!
+
 hook_jump_mult = 0.8;
 direc = 0;
 direc_sided = 0;
@@ -13,8 +25,8 @@ hitten = 0;
 
 height = bbox_top - bbox_bottom;
 
-positive_kb_modifier = 0.85;
-negative_kb_modifier = 1.20;
+positive_kb_modifier = 1.00;
+negative_kb_modifier = 1.00;
 
 tail_r = get_color_profile_slot_r(get_player_color(player), 5);
 tail_g = get_color_profile_slot_g(get_player_color(player), 5);
@@ -30,7 +42,7 @@ max_nut_count = 1;
 nut_count = 0;
 
 ds_time_start = 0;  //The time that down special started.
-ds_discharge_time = 36;    //How long the player needs to hold the button to discharge.
+ds_discharge_time = 23;    //How long the player needs to hold the button to discharge.
 ds_hit_list = noone;    //List of enemies along the line for down special's discharge.
 ds_crackle_sound = asset_get("sfx_absa_cloud_crackle");   //Sound played per cycle of dspceial.
 ds_charge_sound = asset_get("sfx_absa_cloud_pop"); //Sound played when player's charge is set.
@@ -48,6 +60,7 @@ field_neg_open_length = 86;    //Number of frames the negative open sound lasts.
 field_neg_close_sound = sound_get("Close-");
 field_neg_active_sound = sound_get("Live-");
 
+ltweet = sprite_get("ltweet");
 Sweet = hit_fx_create( sprite_get( "SweetHit" ), 30);
 sprite_change_offset("SweetHit", 45, 45);
 
@@ -149,16 +162,36 @@ bubble_y = 8;
 
 // Kirby Functionality
 kirbyability = 5;
-newicon = 0;
 swallowed = 0;
-enemykirby = noone;
 
 //trummel & alto
 trummelcodecneeded = false;
 trummelcodec_id = noone;
 sans_speech = 0;
 
+///Ncodec
+
+nname = "Loadent"
+
+ncode1 = "Pro spy from the future"
+ncode2 = "Accidentally stuck in the past"
+ncode3 = "Manipulates polarity of objects and people"
+
 //tco
-tcoart = sprite_get("sanstcoart");
+tcoart = sprite_get("loadtcoart1");
+
+Hikaru_Title = "Magnetic Mischief";
+
+arena_title = "Magnetic Mischief";
 
 feri_costume = sprite_get("feri_costume_load");
+
+miiverse_post = sprite_get("LoadMii");
+
+pkmn_stadium_front_img = sprite_get("pkmfront");
+pkmn_stadium_back_img = sprite_get("pkmback");
+
+battle_text = "* Static raises your fur.";
+
+muno_event_type = 0;
+user_event(14);

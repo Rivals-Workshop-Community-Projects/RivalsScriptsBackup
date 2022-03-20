@@ -266,6 +266,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.9", "10 March, 2022");
+initHeader("DTilt - Buffs");
+initSection("SSJ only: startup 8 --> 6.");
+
 initPatch("1.8", "20 February, 2022");
 initHeader("General - Bugfixes");
 initSection("Fixed sprite size.");

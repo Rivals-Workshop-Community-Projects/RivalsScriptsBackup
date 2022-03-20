@@ -55,7 +55,8 @@ set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, crystal_hit2);
+set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USTRONG, 1, HG_FORCE_FLINCH, 1);
 
@@ -75,7 +76,8 @@ set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
-set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, crystal_hit1);
+set_hitbox_value(AT_USTRONG, 2, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);

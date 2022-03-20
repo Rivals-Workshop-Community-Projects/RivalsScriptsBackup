@@ -1,90 +1,38 @@
 if (attack == AT_USTRONG){ //Rocks flying up and away, also making sure they don't touch the air
     depth = 10;
-    if (image_index >= 6){
+		if (player_id.hitpause == true){ in_hitpause = true; } else { in_hitpause = false; }
+    if (hitbox_timer < 5){ var new_rock_pos = random_func( 20, 100, true );
+    	if (free == true && freemd == false){
+    	x = player_id.x;
+    	}
+    }
+    if (hitbox_timer >= 5 && hitbox_timer < 20){ sprite_index = sprite_get("ustrong_proj"); }
+    if (hitbox_timer <= 10){
+        	if (free == true && freemd == false){
+            if (player_id.spr_dir == 1){ x = player_id.x - new_rock_pos; }
+            if (player_id.spr_dir == -1) { x = player_id.x + new_rock_pos; }
+        }
+    }
+    if (hitbox_timer >= 20){
         sprite_index = sprite_get("ustrong_proj2"); img_spd = 0.3;
         hsp = 0; vsp = -10; hit_priority = 5; image_xscale = 0.1; image_yscale = 0.4;
     }
-    if (hitbox_timer <= 2){
-        var new_rock_pos = random_func( 20, 200, true );
-        var reposition = false;
-        if !( (place_meeting( x, y+1, asset_get("par_block"))) || (place_meeting( x, y+1, asset_get("par_jumpthrough")))){
-            if (player_id.spr_dir == 1){ x = x - new_rock_pos; }
-            if (player_id.spr_dir == -1) { x = x + new_rock_pos; }
-            sprite_index = asset_get("empty_sprite");
-        	img_spd = 0.001;
-        }
-    }
-    if (hitbox_timer >= 3 && hitbox_timer < 5){
-        if !( (place_meeting( x, y-1, asset_get("par_block"))) || (place_meeting( x, y-1, asset_get("par_jumpthrough")))){
-            if (player_id.spr_dir == 1){ x = player_id.x + new_rock_pos; hsp = 0; }
-            if (player_id.spr_dir == -1) { x = player_id.x - new_rock_pos; hsp = 0; }
-        }
-    }
     
-    if (sprite_index = asset_get("empty_sprite")){
-    switch(hbox_num){
-    case 1:
-    if (hitbox_timer >= 5){ sprite_index = sprite_get("ustrong_proj"); img_spd = 1; }
-    break;
-    
-    case 2:
-    if (hitbox_timer >= 5){ sprite_index = sprite_get("ustrong_proj"); img_spd = 1; }
-    break;
-    
-    case 3:
-    if (hitbox_timer >= 5){ sprite_index = sprite_get("ustrong_proj"); img_spd = 1; }
-    break;
-    
-    case 4:
-    if (hitbox_timer >= 5){ sprite_index = sprite_get("ustrong_proj"); img_spd = 1; }
-    break;
-    
-    case 5:
-    if (hitbox_timer >= 5){ sprite_index = sprite_get("ustrong_proj"); img_spd = 1; }
-    break;
-    
-    case 6:
-    if (hitbox_timer >= 5){ sprite_index = sprite_get("ustrong_proj"); img_spd = 1; }
-    break;
-        }
+    if (hitbox_timer == 3){
+    	if !( (place_meeting( x, y+2, asset_get("par_block"))) || (place_meeting( x, y+2, asset_get("par_jumpthrough")))){
+    		if (reposition == true){
+    		}
+		}
     }
 }
 
 
 if (attack == AT_DSTRONG){
+	if (player_id.hitpause == true){ in_hitpause = true; } else { in_hitpause = false; }
 	if (hbox_num < 3){
 		if !((place_meeting( x, y+1, asset_get("par_block"))) || (place_meeting( x, y+1, asset_get("par_jumpthrough")))){ instance_destroy(); }
 	}
 }
-	/*
-	if (player_id.buffup == false){
-	//damage = damage+1;
-	damage = 10;
-	kb_value = kb_value+0;
-	hitpause = hitpause+0;
-	}
-	//depth = 1;
-	//x = player_id.x;
-	//ignores_walls = true;
-	//through_platforms = 1;
-	//vsp = 20;
-	if (hitbox_timer < 2){
-		if !( (place_meeting( x, y+1, asset_get("par_block"))) || (place_meeting( x+300, y+300, asset_get("par_jumpthrough")))){ instance_destroy(); }
-	}
-	if (hbox_num == 1){ //Right
-		if (hitbox_timer == 5){ create_hitbox(AT_DSTRONG, 3, x+2, y-0); }
-	}
-	if (hbox_num == 2){ //Left
-		if (hitbox_timer == 5){ create_hitbox(AT_DSTRONG, 4, x-2 , y-0); }
-	}
-	if (hbox_num == 3){ //Rapid right
-		if (hitbox_timer == 6){ create_hitbox(AT_DSTRONG, 3, x+60, y-0); }
-	}
-	if (hbox_num == 4){ //Rapid left
-		if (hitbox_timer == 6){ create_hitbox(AT_DSTRONG, 4, x-60, y-0); }
-	}
-}
-*/
 
 if (attack == AT_UAIR){
 	ignores_walls = true;
@@ -296,17 +244,17 @@ if (hitbox_timer >= 250 || destroyed == true){ player_id.buffup = false; instanc
 }
 
 if (attack == AT_FSPECIAL){
+		if (player_id.hitpause == true){ in_hitpause = true; } else { in_hitpause = false; }
 	if (hitbox_timer > 4 && hitbox_timer < 10){
 	image_xscale = 0.3;
 	image_yscale = 0.3;
 	}
-	
 	if (hitbox_timer == 14){ instance_destroy(); }
 	if (hitbox_timer >= 15 && hitbox_timer < 20){
 		image_index = 5;
 		var hit_id = player_id.hit_player_obj;
 		hit_id.x = x;
-		hit_id.y = y + hit_id.char_height * 0.5;
+		hit_id.y = y + hit_id.char_height * 0.4;
 		var fly_speed = 0.01;
 		var crad_dir = point_direction(player_id.x, player_id.y - player_id.char_height * 0.5, x, y);
 		var crad_dist = point_distance(player_id.x, player_id.y - player_id.char_height * 0.5, x, y);
@@ -317,11 +265,11 @@ if (attack == AT_FSPECIAL){
 	if (hitbox_timer >= 20){
 	var hit_id = player_id.hit_player_obj;
 	hit_id.x = x;
-	hit_id.y = y + hit_id.char_height * 0.5;
+	hit_id.y = y + hit_id.char_height * 0.4;
 	image_index = 5;
 	image_xscale = 0.05;
 	image_yscale = 0.05;
-	var fly_speed = 0.8;
+	var fly_speed = 2;
 	var crad_dir = point_direction(player_id.x, player_id.y - player_id.char_height * 0.5, x, y);
 	var crad_dist = point_distance(player_id.x, player_id.y - player_id.char_height * 0.5, x, y);
 	var drag_speed = max(sqrt(crad_dist) * fly_speed / 1, fly_speed);
@@ -378,6 +326,8 @@ switch(attack){
 	kb_value = prev_kb;
 	hitpause = prev_hitpause;
 	}
+	
+	if (player_id.hitpause == true){ in_hitpause = true; } else { in_hitpause = false; }
 	break;
 	
 	case AT_DAIR:
@@ -394,6 +344,8 @@ switch(attack){
 	kb_value = prev_kb;
 	hitpause = prev_hitpause;
 	}
+	
+	if (player_id.hitpause == true){ in_hitpause = true; } else { in_hitpause = false; }
 	break;
 	
 	case AT_BAIR:

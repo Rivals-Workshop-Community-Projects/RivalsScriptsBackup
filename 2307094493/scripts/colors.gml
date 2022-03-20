@@ -146,15 +146,15 @@ set_color_profile_slot( 11, 5, 222, 255, 242 ); //Tail
 set_color_profile_slot( 11, 6, 214, 90, 214 ); //Negative
 set_color_profile_slot( 11, 7, 3, 54, 44 ); //Positive
 
-// Icy
-set_color_profile_slot( 12, 0, 130, 136, 138 ); //Fur
-set_color_profile_slot( 12, 1, 255, 255, 255 ); //Skin
-set_color_profile_slot( 12, 2, 217, 255, 230 ); //Jacket
-set_color_profile_slot( 12, 3, 92, 161, 237 ); //Gold
-set_color_profile_slot( 12, 4, 92, 161, 237 ); //Marks
-set_color_profile_slot( 12, 5, 255, 255, 255 ); //Tail
-set_color_profile_slot( 12, 6, 178, 206, 237 ); //Negative
-set_color_profile_slot( 12, 7, 37, 64, 94 ); //Positive
+// Award
+set_color_profile_slot( 12, 0, 255, 141, 59 ); //Fur
+set_color_profile_slot( 12, 1, 255, 213, 207 ); //Skin
+set_color_profile_slot( 12, 2, 110, 17, 184 ); //Jacket
+set_color_profile_slot( 12, 3, 255, 198, 13 ); //Gold
+set_color_profile_slot( 12, 4, 255, 255, 255 ); //Marks
+set_color_profile_slot( 12, 5, 222, 100, 139 ); //Tail
+set_color_profile_slot( 12, 6, 255, 255, 255 ); //Negative
+set_color_profile_slot( 12, 7, 74, 35, 77 ); //Positive
 
 // Refraction
 set_color_profile_slot( 13, 0, 221, 179, 145 ); //Fur
@@ -206,25 +206,25 @@ set_color_profile_slot( 17, 5, 219, 204, 212 ); //Tail
 set_color_profile_slot( 17, 6, 243, 173, 239 ); //Negative
 set_color_profile_slot( 17, 7, 48, 26, 37 ); //Positive
 
-// Sparks
-set_color_profile_slot( 18, 0, 57, 44, 59 ); //Fur
-set_color_profile_slot( 18, 1, 244, 212, 173 ); //Skin
-set_color_profile_slot( 18, 2, 161, 79, 136 ); //Jacket
-set_color_profile_slot( 18, 3, 130, 30, 30 ); //Gold
-set_color_profile_slot( 18, 4, 255, 220, 66 ); //Marks
-set_color_profile_slot( 18, 5, 244, 212, 173 ); //Tail
-set_color_profile_slot( 18, 6, 179, 18, 18 ); //Negative
-set_color_profile_slot( 18, 7, 89, 77, 23 ); //Positive
-
 // Jem
-set_color_profile_slot( 19, 0, 120, 80, 47 ); //Fur
-set_color_profile_slot( 19, 1, 237, 184, 143 ); //Skin
-set_color_profile_slot( 19, 2, 22, 23, 23 ); //Jacket
-set_color_profile_slot( 19, 3, 255, 74, 198 ); //Gold
-set_color_profile_slot( 19, 4, 255, 74, 198 ); //Marks
-set_color_profile_slot( 19, 5, 161, 156, 156 ); //Tail
-set_color_profile_slot( 19, 6, 161, 156, 156 ); //Negative
-set_color_profile_slot( 19, 7, 22, 23, 23 ); //Positive
+set_color_profile_slot( 18, 0, 120, 80, 47 ); //Fur
+set_color_profile_slot( 18, 1, 237, 184, 143 ); //Skin
+set_color_profile_slot( 18, 2, 22, 23, 23 ); //Jacket
+set_color_profile_slot( 18, 3, 255, 74, 198 ); //Gold
+set_color_profile_slot( 18, 4, 255, 74, 198 ); //Marks
+set_color_profile_slot( 18, 5, 161, 156, 156 ); //Tail
+set_color_profile_slot( 18, 6, 161, 156, 156 ); //Negative
+set_color_profile_slot( 18, 7, 22, 23, 23 ); //Positive
+
+// Sparks
+set_color_profile_slot( 19, 0, 57, 44, 59 ); //Fur
+set_color_profile_slot( 19, 1, 244, 212, 173 ); //Skin
+set_color_profile_slot( 19, 2, 161, 79, 136 ); //Jacket
+set_color_profile_slot( 19, 3, 130, 30, 30 ); //Gold
+set_color_profile_slot( 19, 4, 255, 220, 66 ); //Marks
+set_color_profile_slot( 19, 5, 244, 212, 173 ); //Tail
+set_color_profile_slot( 19, 6, 179, 18, 18 ); //Negative
+set_color_profile_slot( 19, 7, 89, 77, 23 ); //Positive
 
 // Pig Kid
 set_color_profile_slot( 20, 0, 71, 74, 74 ); //Fur

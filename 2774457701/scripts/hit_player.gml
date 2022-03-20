@@ -1,0 +1,1 @@
+// hit_player is a script that runs code when you hit an enemy player.

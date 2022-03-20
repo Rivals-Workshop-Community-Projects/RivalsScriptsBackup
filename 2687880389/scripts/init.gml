@@ -21,6 +21,7 @@ remap_specials = false; //has_rune("I"); // Remove
 // tier 3
 hi_jump_kick = has_rune("L");
 titanium_ally = has_rune("M");
+special_cancels_enabled = has_rune("N");
 targeting_enabled = has_rune("O");
 
 // Alt-specific things
@@ -39,6 +40,9 @@ targeting_enabled = has_rune("O");
 #macro codename_ugh_number        17
 #macro codename_ea_number         20
 #macro codename_wireframe_number  21
+#macro codename_mettaton_number   22
+#macro codename_queen_number      23
+#macro codename_cabinet_number    24
 // Have a bool that can be queried for each alt
 codename_default_active    = false;
 codename_mega_active       = false;
@@ -54,6 +58,9 @@ codename_mischeif_active   = false;
 codename_ugh_active        = false;
 codename_ea_active         = false;
 codename_wireframe_active  = false;
+codename_mettaton_active   = false;
+codename_queen_active      = false;
+codename_cabinet_active    = false;
 
 selected_player_color = get_player_color(player);
 switch (selected_player_color) {
@@ -98,6 +105,15 @@ switch (selected_player_color) {
         break;
     case codename_wireframe_number :
         codename_wireframe_active = true;
+        break;
+    case codename_mettaton_number :
+        codename_mettaton_active = true;
+        break;
+    case codename_queen_number :
+        codename_queen_active = true;
+        break;
+    case codename_cabinet_number :
+        codename_cabinet_active = true;
         break;
     default :
         break;
@@ -277,8 +293,9 @@ bubble_y = 8;
 blast_hit_effect = hit_fx_create(sprite_get("blast_hit"), 42);
 
 // crawl
-crawl_speed = 17; // 20
-crawl_accel = 0.8;
+crawl_speed = 15; // 17
+crawl_accel = 0.85 // 0.8
+gradual_crawl_accel = 0.005;
 crouch_time = 0;
 crouch_time_max = 4;
 driving = false;
@@ -326,6 +343,7 @@ energy_b = get_color_profile_slot_b(energy_color_slot, 0);
 //var rocket_seconds = remap_specials ? 3 : 0.6;
 //var rocket_seconds = 1.0;
 var rocket_seconds = 1.2;
+max_rocket_rising_speed = -5.5; //-6
 //rocket_seconds *= double_rocket_time ? 2 : 1;
 fuel_consumption_rate = 4; // keep this as a multiple of 2
 airborne_fuel_recovery_rate = 1.2;//2;
@@ -342,12 +360,15 @@ meter_sprite = sprite_get("meter");
 meter_fill_sprite = sprite_get("meter_fill");
 
 // fspecial charges
-fspecial_leap_hsp = 10;//11;
+fspecial_leap_hsp = 9;//11;
 fspecial_leap_vsp = -7.5;
 //max_booster_rush_charges = increased_charges ? 2 : 1;
 //booster_rush_charges = max_booster_rush_charges;
 //fspecial_damping = 1;
-booster_rush_cost = increased_charges ? max_rocket_fuel / 3 : max_rocket_fuel / 2;
+booster_rush_cost_percent = increased_charges ? 0.4 : 0.7;
+booster_rush_cost = max_rocket_fuel * booster_rush_cost_percent;
+indicator_offset = 10 + (188 * booster_rush_cost_percent);
+charge_indicator_sprite = sprite_get("meter_marker");
 charge_button_sprite = sprite_get("charge_button");
 
 // nspecial grab
@@ -464,6 +485,16 @@ if (codename_default_active) { // Default win/loss portraits are miscolored, rep
     set_victory_portrait(sprite_get("portrait_hologram"));
     set_victory_sidebar(sprite_get("result_small_hologram"));
     fs_char_portrait_override = sprite_get("portrait_hologram");
+} else if (codename_mettaton_active) {
+    set_victory_portrait(sprite_get("portrait_mettaton"));
+    set_victory_sidebar(sprite_get("result_small_mettaton"));
+} else if (codename_queen_active) {
+    set_victory_portrait(sprite_get("portrait_queen"));
+    set_victory_sidebar(sprite_get("result_small_queen"));
+    fs_char_portrait_override = sprite_get("portrait_queen_clean");
+} else if (codename_cabinet_active) {
+    set_victory_portrait(sprite_get("portrait_cabinet"));
+    set_victory_sidebar(sprite_get("result_small_cabinet"));
 } else {
     set_victory_portrait(sprite_get("portrait"));
     set_victory_sidebar(sprite_get("result_small"));

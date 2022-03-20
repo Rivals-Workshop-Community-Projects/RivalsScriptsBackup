@@ -124,6 +124,9 @@ tilt = 0;
 //Down Tilt pellet ammount
 pellets = 0;
 
+//Menu sound
+menuplayed = 0;
+
 //Intro
 introTimer = -2; //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;

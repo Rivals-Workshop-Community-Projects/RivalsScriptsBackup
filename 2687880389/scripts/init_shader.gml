@@ -1,4 +1,4 @@
-if object_index != oPlayer exit;
+if (object_index != oPlayer) exit;
 
 // TODO - remapping in this file occasionally recolors the hud
 
@@ -9,6 +9,11 @@ if ((state != PS_PARRY)
     || ((state == PS_PARRY)
         && (state_timer != 1)))
 {
+    if (codename_queen_active) {
+        // Queen alt's feet need to be recolored
+        set_character_color_slot( 7, 51, 51, 51, 1 ); //feet
+        set_article_color_slot( 7, 51, 51, 51, 1 ); //feet
+    }
     if (codename_default_active) {
         set_character_color_slot( 0, 255, 106, 0, 1 ); //energy
         set_character_color_slot( 1, 111, 0, 255, 1 ); //helmet

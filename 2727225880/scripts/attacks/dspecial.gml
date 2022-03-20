@@ -126,7 +126,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_X, 25);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 70);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 40);
-set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 50);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 3);
@@ -134,7 +134,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, .6);
-set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 20);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 30);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
@@ -147,13 +147,13 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 70);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 40);
-set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 10);
+set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 12);
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 50);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, .6);
-set_hitbox_value(AT_DSPECIAL, 3, HG_EXTRA_HITPAUSE, 30);
+set_hitbox_value(AT_DSPECIAL, 3, HG_EXTRA_HITPAUSE, 40);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 304);
 

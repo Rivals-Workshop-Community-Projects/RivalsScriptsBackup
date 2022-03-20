@@ -19,13 +19,8 @@ if attack == AT_USPECIAL && hbox_num == 3 {
 
 if attack == AT_DAIR && hbox_num == 3 {
     
-           
-            if has_hit  {
-            	sound_play(asset_get("sfx_absa_kickhit"));
-            	sound_play(asset_get("sfx_abyss_explosion"));
-           	destroyed = true 
-           	spawn_hit_fx (x , y , 253)
-            }
+        
+            
             
            	if hitbox_timer % 2 == 0 {
              spawn_hit_fx (x , y  , 108)

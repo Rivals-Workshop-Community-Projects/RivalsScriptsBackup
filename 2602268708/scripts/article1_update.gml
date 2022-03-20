@@ -35,10 +35,6 @@ with pHitBox
 
 switch (state)
 {
-    case "not_started":
-        if !free switchState("idle");
-    break;
-   
     
     case "idle":
 	
@@ -96,8 +92,10 @@ switch (state)
 				vsp = 0;
 			}
 			
+			if !free{
 			hsp = lerp(hsp, move_speed * spr_dir, 0.05);
-			  
+			}
+			
 			with (oPlayer)
 			{
 				if place_meeting(x,y,other) and self != other.player_id
@@ -107,7 +105,7 @@ switch (state)
 						shouldLoop = false;
 						image_index = 8;
 						sound_play(sound_get("sm64_woosh"))
-						with player_id create_hitbox(AT_DSPECIAL, 1, other.x + 16*(other.spr_dir), other.y - 24)
+						with player_id create_hitbox(AT_DSPECIAL, 1, other.x + 10*(other.spr_dir), other.y - 24)
 						switchState("throw");
 					}
 					break;
@@ -167,10 +165,10 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state 
 	shouldDestroy = true;
 }
 
-if (clamp(x, 0, room_width) != x or clamp(y, 0, room_height) != y) or shouldDestroy
+if (y > get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS)) || shouldDestroy
 {
     sound_stop(whir);
-    with player_id move_cooldown[AT_DSPECIAL] = 60
+    with player_id move_cooldown[AT_DSPECIAL] = 5
     instance_destroy();
 }
 

@@ -140,7 +140,7 @@ set_color_profile_slot( 12, 4, 255, 179, 203 ); //Red
 set_color_profile_slot( 12, 5, 255, 179, 203 ); //Blue
 set_color_profile_slot( 12, 6, 255, 179, 203 ); //Gray
 
-// BLM   
+// BLM
 set_color_profile_slot( 13, 0, 148, 92, 58 ); //White
 set_color_profile_slot( 13, 1, 55, 59, 59 ); //Yellow
 set_color_profile_slot( 13, 2, 255, 251, 74 ); //Green
@@ -150,13 +150,13 @@ set_color_profile_slot( 13, 5, 90, 198, 247 ); //Blue
 set_color_profile_slot( 13, 6, 181, 189, 198 ); //Gray
 
 // HeartGold
-set_color_profile_slot( 14, 0, 255, 238, 150 ); //White
-set_color_profile_slot( 14, 1, 255, 238, 150 ); //Yellow
-set_color_profile_slot( 14, 2, 255, 238, 150 ); //Green
-set_color_profile_slot( 14, 3, 255, 238, 150 ); //Black
-set_color_profile_slot( 14, 4, 255, 238, 150 ); //Red
-set_color_profile_slot( 14, 5, 255, 238, 150 ); //Blue
-set_color_profile_slot( 14, 6, 255, 238, 150 ); //Gray
+set_color_profile_slot( 14, 0, 255, 215, 87 ); //White
+set_color_profile_slot( 14, 1, 255, 215, 87 ); //Yellow
+set_color_profile_slot( 14, 2, 255, 215, 87 ); //Green
+set_color_profile_slot( 14, 3, 255, 215, 87 ); //Black
+set_color_profile_slot( 14, 4, 255, 215, 87 ); //Red
+set_color_profile_slot( 14, 5, 255, 215, 87 ); //Blue
+set_color_profile_slot( 14, 6, 255, 215, 87 ); //Gray
 
 // SoulSilver
 set_color_profile_slot( 15, 0, 204, 204, 204 ); //White
@@ -175,7 +175,6 @@ set_color_profile_slot( 16, 3, 74, 165, 99 ); //Black
 set_color_profile_slot( 16, 4, 255, 215, 87 ); //Red
 set_color_profile_slot( 16, 5, 255, 217, 94 ); //Blue
 set_color_profile_slot( 16, 6, 255, 217, 97 ); //Gray
-
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

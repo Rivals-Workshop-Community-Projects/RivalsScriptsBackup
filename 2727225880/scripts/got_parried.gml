@@ -5,8 +5,16 @@ if (attack == AT_NSPECIAL) {
       if "speeddisk" in self {
   	if (instance_exists(speeddisk)) {
     speeddisk.state = 4
-      nspecial_access_timer = 120
+
   	} }
   	
   	
+} else {
+    
+     if "speeddisk" in self {
+  	if (instance_exists(speeddisk)) {
+    speeddisk.state = 1
+
+  	} }
+    
 }

@@ -139,26 +139,22 @@ if my_hitboxID.damage > 7 {
 }*/
 
 switch my_hitboxID.sound_effect {
-	case 199: //icehit weak
-	case 498:
-	case 499:
-	case 500: //weak1 and weak2
-	case 501: //weak1 and weak2
-	case 506: //weak1 and weak2
+	case 643: //icehit weak
+	case 201:
+	case 644:
 		sound_play(sound_get("hweak"));
 	break;
 
-	case 204: //icehit medium
-	case 503:
-	case 504:
-	case 505: //medium1 2 and 3
+	case 206:
+	case 647: //icehit medium
+	case 648: //medium1 2 and 3
+	case 649: //weak1 and weak2
 		sound_play(sound_get("hmed"));
 		//spawn_hit_fx(hit_player_obj.x,hit_player_obj.y - 40, 303 );
 	break;
 
-	case 510:
-	case 511: //heavy1 and 2
-	case 512: //heavy1 and 2
+	case 654:
+	case 655: //heavy1 and 2
 		sound_play(sound_get("hstrong"));
 	break;
 

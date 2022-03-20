@@ -10,7 +10,7 @@ set_color_profile_slot_range( 1, 1, 1, 1 );
 
 // LIMBS
 set_color_profile_slot( 0, 2, 164, 161, 173 );
-set_color_profile_slot_range( 2, 13, 15, 44 );
+set_color_profile_slot_range( 2, 2, 15, 44 );
 
 // KEY
 set_color_profile_slot( 0, 3, 255, 231, 0 );
@@ -18,18 +18,18 @@ set_color_profile_slot_range( 3, 17, 3, 27 );
 
 // BOBBLE
 set_color_profile_slot( 0, 4, 213, 7, 7 );
-set_color_profile_slot_range( 4, 31, 58, 29 );
+set_color_profile_slot_range( 4, 18, 2, 29 );
 
 // BOBBLEHIGH
 set_color_profile_slot( 0, 5, 255, 124, 10 );
-set_color_profile_slot_range( 5, 6, 47, 21 );
+set_color_profile_slot_range( 5, 1, 1, 1 );
 
 // EYES
 set_color_profile_slot( 0, 6, 250, 255, 255 );
 set_color_profile_slot_range( 6, 61, 16, 19 );
 
 // PROJECTILE BLUE
-set_color_profile_slot( 0, 7, 17, 73, 255 );
+set_color_profile_slot( 0, 7, 17, 73, 254 );
 set_color_profile_slot_range( 7, 1, 1, 41 );
 
 
@@ -87,14 +87,14 @@ set_color_profile_slot( 5, 6, 250, 255, 255 ); //EYES
 set_color_profile_slot( 5, 7, 196, 232, 255 ); //PROJECTILE BLUE
 
 // SEASONAL
-set_color_profile_slot( 6, 0, 0, 255, 0 ); //BODY
-set_color_profile_slot( 6, 1, 0, 255, 0 ); //BODYHIGH
-set_color_profile_slot( 6, 2, 0, 255, 0 ); //LIMBS
-set_color_profile_slot( 6, 3, 0, 255, 0 ); //KEY
-set_color_profile_slot( 6, 4, 0, 255, 0 ); //BOBBLE
-set_color_profile_slot( 6, 5, 0, 255, 0 ); //BOBBLEHIGH
-set_color_profile_slot( 6, 6, 0, 255, 0 ); //EYES
-set_color_profile_slot( 6, 7, 0, 255, 0 ); //PROJECTILE BLUE
+set_color_profile_slot( 6, 0, 80, 63, 94 ); //BODY
+set_color_profile_slot( 6, 1, 143, 114, 168 ); //BODYHIGH
+set_color_profile_slot( 6, 2, 144, 59, 206 ); //LIMBS
+set_color_profile_slot( 6, 3, 146, 152, 189 ); //KEY
+set_color_profile_slot( 6, 4, 220, 113, 255 ); //BOBBLE
+set_color_profile_slot( 6, 5, 255, 207, 254 ); //BOBBLEHIGH
+set_color_profile_slot( 6, 6, 230, 165, 52 ); //EYES
+set_color_profile_slot( 6, 7, 255, 231, 0 ); //PROJECTILE BLUE
 
 // ABYSS
 set_color_profile_slot( 7, 0, 80, 63, 94 ); //BODY
@@ -349,6 +349,6 @@ set_color_profile_slot( 31, 7, 40, 104, 216 ); //PROJECTILE BLUE
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"BODY","colors":[{"r":192,"g":33,"b":255,"main":true},{"r":120,"g":27,"b":215}]},{"name":"BODYHIGH","colors":[{"r":255,"g":155,"b":217,"main":true}]},{"name":"LIMBS","colors":[{"r":"164","g":"161","b":"173","main":true},{"r":106,"g":103,"b":115},{"r":53,"g":50,"b":63},{"r":155,"g":153,"b":168},{"r":128,"g":127,"b":147}]},{"name":"KEY","colors":[{"r":"255","g":"231","b":"0","main":true},{"r":188,"g":120,"b":3}]},{"name":"BOBBLE","colors":[{"r":"213","g":"7","b":"7","main":true},{"r":142,"g":5,"b":44},{"r":183,"g":79,"b":93},{"r":146,"g":78,"b":112},{"r":210,"g":105,"b":114},{"r":173,"g":104,"b":132}]},{"name":"BOBBLEHIGH","colors":[{"r":255,"g":124,"b":10,"main":true},{"r":204,"g":137,"b":95},{"r":231,"g":164,"b":115}]},{"name":"EYES","colors":[{"r":250,"g":255,"b":255,"main":true},{"r":173,"g":173,"b":209}]},{"name":"PROJECTILE BLUE","colors":[{"r":17,"g":73,"b":255,"main":true},{"r":10,"g":43,"b":153}]}]}
+{"formatversion":1,"data":[{"name":"BODY","colors":[{"r":192,"g":33,"b":255,"main":true},{"r":120,"g":27,"b":215}]},{"name":"BODYHIGH","colors":[{"r":255,"g":155,"b":217,"main":true}]},{"name":"LIMBS","colors":[{"r":"164","g":"161","b":"173","main":true},{"r":106,"g":103,"b":115},{"r":53,"g":50,"b":63}]},{"name":"KEY","colors":[{"r":"255","g":"231","b":"0","main":true},{"r":188,"g":120,"b":3}]},{"name":"BOBBLE","colors":[{"r":"213","g":"7","b":"7","main":true},{"r":142,"g":5,"b":44}]},{"name":"BOBBLEHIGH","colors":[{"r":255,"g":124,"b":10,"main":true}]},{"name":"EYES","colors":[{"r":250,"g":255,"b":255,"main":true},{"r":173,"g":173,"b":209}]},{"name":"PROJECTILE BLUE","colors":[{"r":17,"g":73,"b":255,"main":true},{"r":10,"g":43,"b":153}]}]}
 === END JSON PALETTE ===
 */

@@ -24,13 +24,7 @@ if (you_have_a_fucking_chakram_out) {
     
     
     move_cooldown[AT_NSPECIAL] = 9999;
-} else {
-    
-    
-    move_cooldown[AT_NSPECIAL] = 0;
-}
-
-
+} 
 
 
 

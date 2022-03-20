@@ -1,3 +1,38 @@
+if (!has_hit_already) {
+	if (attack == AT_FSTRONG) {
+		
+		torren_speedforce += 60
+		
+	}
+	else if (attack == AT_USTRONG) {
+		
+		torren_speedforce += 60
+		
+	}
+	else if (attack == AT_DSTRONG) {
+		
+		torren_speedforce += 60
+		
+	}
+	else if (attack == AT_FSPECIAL) {
+		
+		torren_speedforce += 90
+		
+	}
+	else if (attack == AT_DSPECIAL) {
+		if my_hitboxID.hbox_num == 1 {
+			torren_speedforce += 60 }
+		if my_hitboxID.hbox_num == 2 {
+			torren_speedforce += 120 }
+		if my_hitboxID.hbox_num == 3 {
+			torren_speedforce += 160 }	
+			
+	} else if (torren_speedforce > 0) {
+		
+	//	torren_speedforce += 10
+	}
+}
+
 
 
 
@@ -80,23 +115,6 @@ if (has_hit && !hit_player_obj.zoomered) {
 
 */
 
-if ((attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG ||  attack == AT_DSPECIAL || attack == AT_FSPECIAL) && !has_hit_already) {
-	
-		if (torren_speedforce > 0) {
-		
-		extra_zoom_hit = true
-	}
-	
-	torren_speedforce = 120
-
-	if (attack == AT_DSPECIAL && window == 6) {
-		
-				extra_zoom_hit = true
-
-	}
-	
-}  
-
 
 
 
@@ -143,10 +161,12 @@ if (attack == AT_FAIR && window < 3) { //hi delta
 
 
 
-if(has_hit && my_hitboxID.attack != AT_NSPECIAL){
+if(has_hit_player && my_hitboxID.attack != AT_NSPECIAL){
 	//
 //	free = true
 speedmultiplier = hit_player_obj.orig_knock
+
+speedopponenthitstungravity = hit_player_obj.hitstun_grav
 
 if (attack == AT_NAIR) {
 	
@@ -157,8 +177,12 @@ if (attack == AT_NAIR) {
 
 //0.3*(my_hitboxID.kb_value * 4 * ((hit_player_obj.knockback_adj - 1) * 0.6 + 1)) + 0.3*(get_player_damage(hit_player_obj.player) * 0.12 * my_hitboxID.kb_scale * 4 * 0.65 * hit_player_obj.knockback_adj)
 
-attackangle = my_hitboxID.kb_angle
+attackangle = my_hitboxID.kb_angle //  * ((dsin(my_hitboxID.kb_angle) + 2)/3) )* sign(my_hitboxID.kb_angle)
 
+if (attack == AT_NAIR) {
+	
+	attackangle = 380
+}
            shouldreverse = my_hitboxID.hit_flipper
       //     speedmultiplier = clamp(speedmultiplier, 3, 10)
 

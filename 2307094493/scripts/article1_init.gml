@@ -28,7 +28,7 @@ neg_mult = 2.5;  //Multiplier to the effects of the negative field.
 speed_limit = 20;
 
 //Other Variables
-haccel = 0.5;  //The rate at which hsp increases during spawn.
+haccel = 0.8;  //The rate at which hsp increases during spawn.
 vaccel = 0.5;   //The rate at which vsp increases during spawn (while holding up).
-hp = 1; //Damage that can be taken before being destroyed.
+hp = 5; //Damage that can be taken before being destroyed.
 colliding_hitboxes = ds_list_create();

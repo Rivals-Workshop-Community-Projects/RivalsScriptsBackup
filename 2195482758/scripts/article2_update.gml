@@ -53,8 +53,8 @@ with(player_id)
 {
     if(expl_can_hit)
     {
-        set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 4);
-        set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 4);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 2.5);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 2.5);
     }
     else
     {

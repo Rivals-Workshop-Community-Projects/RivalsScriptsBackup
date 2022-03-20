@@ -292,6 +292,88 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.4", "17 March, 2022");
+initHeader("Patch? WHAT");
+initSection("zoom launching angles have been adjusted slightly
+
+Zoom reworked. Now just a timer that gets added to w/ certain attacks. So..?
+
++initial dash speed 6.5-7.5
++dash speed 6.0-6.5
++initial dash time 14-16
+
+-dtilt hitbox shrinkwrapped
+
+-dattack grab damage 3-2
+-dattack throw damage 10-8
+-dattack bkb 8-7
+-dattack startup 10-12 frames
+-dattack endlag 12-14 frames (w/o whifflag, so 18-21)
+
++utilt angle 70-80
++utilt bkb 7-6
+
++fstrong angle 70-60
++fstrong/ustrong launch farther initially, but launch distance scales lower with charge
++fstrong launches more forward
+
+~nair kbs 0.6-0.5
+
++fair startup 7-6 frames
++fair endlag 12-11 frames
+~fair 2nd hit bkb 5-6
+~fair 2nd hit kbs 0.6-0.55
+
+-Uair can now be properly teched after hitfalling
+-uair spike angle 290-270 (whoops)
+
+-bair startup 6-7 frames
+-bair endlag 10-11 frames
+-bair landing lag 5-6 frames
+
+~dair angle 285(-75) - -80(280)
+
++nspecial is now transcendent
+~nspecial no longer has hitpause on hitting it
+~when nspecial disappears it immediately can be used again (no sky respawn)
+nspecial now has slight cooldown if destroyed (30 frames)
+-nspecial stops moving if you get hit
++grabbing nspecial now gives u zoom
+
+~fspecial landing hit angle 50-65
++fspecial initial spike hit is more generous
+-fspecial initial spike damage 8-6
+-fspecial falling spike damage 5-4
+-fspecial landing hit damage 8-4
+-fspecial goes not as far
+~fspecial late falling hit sends out (270-60), no longer spikes
+~fspecial late falling hit forces flinch (also now techable due to above)
+
++dspecial medium charge damage 8-9
++dspecial medium charge stun 20 frames - 30 frames
++dspecial full charge damage 10-12
++dspecial full charge stun 30 frames - 40 frames
+
++buffed the vertical gain from holding up during uspecial (now barely reaches top plat)
++uspecial final hit angle 50-40
+~uspecial multihits base hitpause 4-3
+
++taunt is now shorter but can be held infinitely
+
+forgive me for my patchly sins");
+
+initPatch("1.3", "21 January, 2022");
+initHeader("Random fixes part two");
+initSection("
+nspecial scaling .5-.35
+dstrong last hit scaling 0.8-1.0
+dstrong last hit bkb 6-7
+
+uspecial last hit scaling 0.6-0.7
+
+
+");
+
 initPatch("1.2", "21 January, 2022");
 initHeader("Random fixes part two");
 initSection("More sound changes and vfx (for real)

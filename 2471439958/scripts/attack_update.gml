@@ -458,9 +458,12 @@ if (attack == AT_JAB) {
 		destroy_hitboxes();
 		attack_end();
 		set_attack( AT_EXTRA_1 );
-		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
-		spawn_hit_fx( x + 10*spr_dir, y + -20, 306);
+		/*sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+		spawn_hit_fx( x + 10*spr_dir, y + -20, 306); */
 		}
+	}
+	if window == 6{
+	can_jump = true;
 	}
 }
 

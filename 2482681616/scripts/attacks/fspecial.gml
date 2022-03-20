@@ -96,7 +96,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1.6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1.4);
 
 if (has_rune("O")) {
     big_yes(AT_FSPECIAL);

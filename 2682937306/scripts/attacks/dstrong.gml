@@ -42,7 +42,7 @@ set_num_hitboxes(AT_DSTRONG, 4);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 2); //Right
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 36);
+set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 35);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 8);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -40);
 set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 4);
@@ -76,7 +76,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_CAMERA_SHAKE, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 2); //Left
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 36);
+set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 35);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, -8);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -40);
 set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 4);
@@ -108,8 +108,8 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 2, HG_EXTRA_CAMERA_SHAKE, 2);
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 2); //Going right
-set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 100);
-set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 10);
+set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 10);
 set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 23);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 5);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -5);
@@ -143,8 +143,8 @@ set_hitbox_value(AT_DSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 3, HG_EXTRA_CAMERA_SHAKE, 2);
 
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 2); //Going left
-set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 100);
-set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 10);
+set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW_CREATION_FRAME, 10);
 set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 23);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, 5);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_Y, -5);

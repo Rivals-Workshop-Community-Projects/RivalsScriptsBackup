@@ -70,6 +70,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, bomb_explode);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, bomb_explode);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_PARTICLE_NUM, 2);
 
 // usually id do temp num stuff but i guess this works - Lemons
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);

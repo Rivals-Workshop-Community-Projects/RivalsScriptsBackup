@@ -318,7 +318,9 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || uspecial_ground 
 	uspecial_ground = false;
 	
 	can_grab_solid_fspec = true;
+	can_grab_plat_fspec = true;
 	can_grab_solid_uspec = true;
+	can_grab_plat_uspec = true;
 	leniancy_recovery = false;
 	can_air_dspecial = true;
 	varying_uspecial_vsp = base_uspecial_vsp;
@@ -435,7 +437,7 @@ with(pHitBox){
         if(was_parried && !reset)
         {
         	hitbox_timer = 0;
-			with(parrybox) hitbox_timer = 0;
+			//with(parrybox) hitbox_timer = 0;
         	
         	
         	// Set up variables
@@ -541,10 +543,14 @@ with(pHitBox){
         }
         
         
-        //print_debug(string(smoketimer));
-        
-    //     //print_debug(string(id));
-        
+        // Outside stage
+        if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN)
+		{
+			if(hitbox_timer >= 10)
+			{
+		    	hitbox_timer = other.fc_lifetime-1;
+			}
+		}
         
 
      // Wall bounce (unused)  ( (hsp < 0 && neg_hsp < 0)  || (hsp > 0 && neg_hsp > 0)
@@ -561,12 +567,22 @@ with(pHitBox){
          if(!is_spin) hitbox_timer = min(other.fc_lifetime-1,hitbox_timer+10); // Subtract from lifetime
          
 		// Destroy on second regrab bounce
-         if(transcendent && bounced >= 2) hitbox_timer = other.fc_lifetime-10;
+         //if(transcendent && bounced >= 2) hitbox_timer = other.fc_lifetime-10;
          
          if(is_spin)
          {
          	hsp = -4 * sign(hsp);
          }
+         
+         // Transition to backspin
+         if(!is_spin && bounced >= 1 && !is_bunt)
+         {
+         	hsp *= 0.8;
+         	img_spd = 0.4;
+         	is_spin = true;
+         	sprite_index = sprite_index == sprite_get("firecracker_single") ? sprite_get("firecracker_single_spin") : sprite_index == sprite_get("firecracker_double") ? sprite_get("firecracker_double_spin") : sprite_get("firecracker_triple_spin");
+         }
+         
          
          // Explode if bunt
          //if(is_bunt) hitbox_timer = other.fc_lifetime-1;
@@ -624,7 +640,7 @@ with(pHitBox){
          expl.img_ind = image_index;
          expl.image_index = image_index;
          
-         instance_destroy(parrybox);
+         //instance_destroy(parrybox);
          
          if(reflected || is_kirby == 1)
          {
@@ -647,7 +663,7 @@ with(pHitBox){
         other.last_fc_vsp[my_slot] = 0;
         other.last_fc_hsp[my_slot] = 0;
         
-        instance_destroy(parrybox);
+        //instance_destroy(parrybox);
     }
     
         

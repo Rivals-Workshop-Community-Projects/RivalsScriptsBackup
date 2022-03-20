@@ -27,20 +27,20 @@ sprite_change_offset("airdodge", 85, 145);
 sprite_change_offset("waveland", 87, 151);
 sprite_change_offset("tech", 87, 151);
 
-sprite_change_offset("jab", 94, 149);
+sprite_change_offset("jab", 134, 151);
 sprite_change_offset("kick", 94, 149);
 sprite_change_offset("dattack", 87, 151);
 sprite_change_offset("ftilt", 91, 149);
 sprite_change_offset("dtilt", 82, 151);
 sprite_change_offset("utilt", 87, 151);
-sprite_change_offset("nair", 75, 139);
-sprite_change_offset("fair", 89, 149);
+sprite_change_offset("nair", 131, 157);
+sprite_change_offset("fair", 92, 149);
 sprite_change_offset("bair", 87, 149);
 sprite_change_offset("uair", 84, 153);
 sprite_change_offset("dair", 72, 147);
 sprite_change_offset("fstrong", 88, 149);
 sprite_change_offset("ustrong", 90, 151);
-sprite_change_offset("dstrong", 93, 149);
+sprite_change_offset("dstrong", 149, 149);
 sprite_change_offset("nspecial", 91, 149);
 sprite_change_offset("nspecialair", 83, 151);
 sprite_change_offset("fspecial", 87, 149);
@@ -48,10 +48,11 @@ sprite_change_offset("uspecial", 90, 149);
 sprite_change_offset("dspecial", 92, 159);
 sprite_change_offset("dspecialair", 83, 167);
 sprite_change_offset("taunt", 82, 149);
+sprite_change_offset("taunt_2", 91, 149);
 
 sprite_change_offset("plat", 64, 94);
 
-sprite_change_offset("entrance", 108, 159);
+sprite_change_offset("entrance", 155, 159);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("judgement", 60, 58);
 sprite_change_offset("judgementweak", 60, 58);

@@ -31,6 +31,7 @@ if(fspecial_recovery_enabled_flag == true){
     shader_end();
 }
 
+/* Removed 3/18/22
 //Genesis glitchy thing
 if(get_player_color(player) == 22)
 {
@@ -44,7 +45,7 @@ if(get_player_color(player) == 22)
     }
     shader_end();
 }
-
+*/
 #define Spawn_Bubbles(x,y)
 {
     var bubble_hitfx_object = spawn_hit_fx(x,y,hitfx_bubbles); // 5 - dark water small

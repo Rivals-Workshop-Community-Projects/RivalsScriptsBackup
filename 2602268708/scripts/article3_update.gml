@@ -39,13 +39,8 @@ if (player_id.nspecial_grabbed_player == id){
 				
 			if ("hitbox" in self && instance_exists(hitbox)){}
 			else{
-				hitbox = create_hitbox(AT_USPECIAL, 2, x, y);
+				hitbox = create_hitbox(AT_USPECIAL, 1, x, y);
 				hitbox.ownerarticle = id;
-			}
-			if ("hitbox2" in self && instance_exists(hitbox2)){}
-			else{
-				hitbox2 = create_hitbox(AT_USPECIAL, 1, x, y);
-				hitbox2.ownerarticle = id;
 			}
 		}
 	}
@@ -62,8 +57,6 @@ else{
 			
 			if ("hitbox" in self && instance_exists(hitbox))
 				hitbox.destroyed = true;
-			if ("hitbox2" in self && instance_exists(hitbox2))
-				hitbox2.destroyed = true;
 			exit;
 		}
 	}	
@@ -80,20 +73,13 @@ if (free){
 	if (!disable_hitboxes){
 		if ("hitbox" in self && instance_exists(hitbox)){}
 		else{
-			hitbox = create_hitbox(AT_USPECIAL, 2, x, y);
+			hitbox = create_hitbox(AT_USPECIAL, 1, x, y);
 			hitbox.ownerarticle = id;
-		}
-		if ("hitbox2" in self && instance_exists(hitbox2)){}
-		else{
-			hitbox2 = create_hitbox(AT_USPECIAL, 1, x, y);
-			hitbox2.ownerarticle = id;
 		}
 	}
 	else{
 		if ("hitbox" in self && instance_exists(hitbox))
 			hitbox.destroyed = true;
-		if ("hitbox2" in self && instance_exists(hitbox2))
-			hitbox2.destroyed = true;
 	}
 }
 else{
@@ -118,8 +104,6 @@ else{
 if (disappear_time > disappear_time_max){
 	if "hitbox" in self && instance_exists(hitbox)
 		hitbox.destroyed = true;
-	if "hitbox2" in self && instance_exists(hitbox2)
-		hitbox2.destroyed = true;
     instance_destroy();
     exit;
 }
@@ -135,21 +119,6 @@ if ("hitbox" in self && instance_exists(hitbox)){
 	*/
 }
 
-if ("hitbox2" in self && instance_exists(hitbox2)){
-	var wtf_ang = cannon_dir-90;
-	var wtf_fuck = 16;
-	var wtf_x = -wtf_fuck * cos(degtorad(wtf_ang));
-	var wtf_y = wtf_fuck * sin(degtorad(wtf_ang));
-
-	hitbox2.mask_index = sprite_get("uspecial_barrel_mask"); 
-	hitbox2.image_angle = cannon_dir;
-	
-	hitbox2.x = x + hsp + wtf_x + 1;
-	hitbox2.y = y + vsp + wtf_y - 17;
-	hitbox2.destroyed = (free) ? false : true;
-	/*
-	var directionToTarget = point_direction(x, y, x + hsp, y + vsp);
-
-	hitbox2.kb_angle = directionToTarget;
-	*/
+if y > get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS){
+disappear_time = 181;
 }

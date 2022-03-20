@@ -2,6 +2,7 @@
 phantom_active = false;
 has_dash = true;
 has_usp1_stall = true; // Handles stall protection for USpecial 1.
+has_nair_stall = true;
 keyboard_mode = false;
 kb_mode_activation_time = 0; // Purely visual.
 start_sprdir = 0; // preventing some jank with nspecial

@@ -23,8 +23,8 @@ if(attack == AT_UTILT){
 	if (window <= 4){
 		if(item[23, 3] == 1){
 			set_attack_value(AT_UTILT, AG_OFF_LEDGE, 1);
-			if(!free){
-				hsp = (spr_dir * -2);
+			if(!free && abs(hsp) < 5){
+				hsp += (spr_dir * -0.5);
 			}
 			//if uptilt continues off ledge due to joycon drift, increase drift speed
 			if(free && abs(hsp) < 5){

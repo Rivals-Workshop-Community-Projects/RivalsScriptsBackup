@@ -6,7 +6,7 @@ set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_UAIR, AG_LANDING_LAG, 9);
 
 set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 3);
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED_TYPE, 0);
@@ -14,9 +14,9 @@ set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sound_get("lightswingsoku"));
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 6);
 
-set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAMES, 5);
-set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_UAIR, 2, AG_WINDOW_HAS_SFX, 0);
 set_window_value(AT_UAIR, 2, AG_WINDOW_SFX_FRAME, 0);
 
@@ -31,7 +31,7 @@ set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 2);
-set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 5);
+set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 10);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -5);
 set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 48);
 set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 28);
@@ -52,8 +52,8 @@ set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("weakslash"));
 
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_UAIR, 2, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 1);
+set_hitbox_value(AT_UAIR, 2, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_X, 25);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 45);
@@ -75,7 +75,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("weakslash"));
 
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 2);
-set_hitbox_value(AT_UAIR, 3, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_UAIR, 3, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_UAIR, 3, HG_LIFETIME, 1);
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_X, 30);
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_Y, -55);
@@ -98,7 +98,7 @@ set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, sound_get("weakslash"));
 
 set_hitbox_value(AT_UAIR, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 4, HG_WINDOW, 2);
-set_hitbox_value(AT_UAIR, 4, HG_WINDOW_CREATION_FRAME, 4);
+set_hitbox_value(AT_UAIR, 4, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_UAIR, 4, HG_LIFETIME, 1);
 set_hitbox_value(AT_UAIR, 4, HG_HITBOX_X, 0);
 set_hitbox_value(AT_UAIR, 4, HG_HITBOX_Y, -95);

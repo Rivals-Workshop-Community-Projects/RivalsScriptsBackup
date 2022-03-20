@@ -1,6 +1,4 @@
-
 // GIGA DRAIN
-
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
@@ -42,11 +40,11 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_TECHABLE, 3);

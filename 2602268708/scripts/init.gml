@@ -22,7 +22,6 @@ dashcount = 0;
 cling = 0;
 wallanim = 0;
 idleState = 0;
-fired = 0;
 thitground = false;
 
 introTimer = -4;
@@ -67,7 +66,7 @@ hitstun_grav = .5;
 knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames
-prat_land_time = 4;
+prat_land_time = 8;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -121,10 +120,18 @@ bomb_hit = hit_fx_create( sprite_get( "fspecial_bombhit" ), 14 );
 bomb_bounce = hit_fx_create( sprite_get( "bouncefx" ), 8 );
 whomp_explode = hit_fx_create( sprite_get( "fstrong_whomp_destroyed" ), 19 );
 thwomp_explode = hit_fx_create( sprite_get( "dstrong_thwomp_destroyed" ), 19 );
+thwomp_hit1 = hit_fx_create( sprite_get( "thwomp_hfx_1" ), 32 );
+thwomp_hit2 = hit_fx_create( sprite_get( "thwomp_hfx_2" ), 20 );
+whomp_hit1 = hit_fx_create( sprite_get( "whomp_hfx_1" ), 32 );
+whomp_hit2 = hit_fx_create( sprite_get( "whomp_hfx_2" ), 20 );
+crystal_hit1 = hit_fx_create( sprite_get( "crystal_hfx_1" ), 32 );
+crystal_hit2 = hit_fx_create( sprite_get( "crystal_hfx_2" ), 20 );
 cannon_base = hit_fx_create( sprite_get( "uspecial_base_strip1" ), 1 );
 launchblast = hit_fx_create( sprite_get( "uspecial_blast_fx" ), 22 );
-
+cannonball = hit_fx_create( sprite_get( "cannonball_hfx" ), 18 );
 funnyhit = hit_fx_create( sprite_get( "dair_sweetspotfx" ), 24 );
+
+set_hit_particle_sprite( 1, sprite_get( "hit_particle1" ) );
 
 // Character-specific assets init
 
@@ -136,6 +143,8 @@ spr_heaveho = sprite_get("heaveho")
 spr_whomp = sprite_get("fstrong_whomp")
 
 last_cosmetic_proj = false;
+
+fspeshold = 0;
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

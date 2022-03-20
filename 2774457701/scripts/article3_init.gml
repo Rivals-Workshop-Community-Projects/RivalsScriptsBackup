@@ -1,0 +1,10 @@
+sprite_index = sprite_get("Uteki bubble");
+state = 0;
+state_timer = 0;
+can_be_grounded = true;
+ignores_walls = false;
+free = false;
+hsp = 0;
+vsp = -7;
+grav = 0.3;
+despawntimer = 0;

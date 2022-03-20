@@ -42,5 +42,5 @@ set_hitbox_value(AT_EXTRA_2, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_EXTRA_2, 1, HG_HIT_SFX, sound_get("weakslash"));
+set_hitbox_value(AT_EXTRA_2, 1, HG_HIT_SFX, sound_get("weakslash2"));
 

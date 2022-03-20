@@ -198,7 +198,8 @@ if (attack == AT_NSPECIAL){
 		window_timer = fc_max_hold_time;
 	}
 	
-	// Spin/bunt throw
+	// Spin/bunt throw [disabled]
+	if(false)
 	if((window == 1 && window_timer < fc_max_hold_time && window_timer > 6) && (attack_down || left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed ))
 	{
 		window_timer = fc_max_hold_time;
@@ -395,15 +396,15 @@ if (attack == AT_FSPECIAL){
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_down"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_down_air"));
-			fspec_yoff = 35;
-			fspec_xoff = -10;
+			fspec_yoff = 45;
+			fspec_xoff = 0;
 		}
 		else if((joy_dir > 30 && joy_dir < 200 && spr_dir == 1) || (joy_dir < 150 && joy_dir > 0 && spr_dir == -1) || up_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_up"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));
 			fspec_yoff = -24;
-			fspec_xoff = -10;
+			fspec_xoff = 0;
 		}
 		else
 		{
@@ -489,7 +490,7 @@ if (attack == AT_FSPECIAL){
 	var tempProj = collision_circle(
 	x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
 	y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
-	80, //70
+	100, //70
 	pHitBox, 
 	true,
 	true );
@@ -734,37 +735,52 @@ if (attack == AT_FSPECIAL){
     
     
     // Grabbing Platforms
-	if(can_grab_solid_fspec && !grabbed_solid && grabbedid == noone && (window == 3||window ==4) && !shield_down && !special_down)
+	if((can_grab_solid_fspec || can_grab_plat_fspec) && !grabbed_solid && grabbedid == noone && (window == 3||window ==4) && !shield_down && !special_down)
 	{
+		var can_grab = false;
+		
 		// First, get nearby hitboxes
 		var tempPlat = collision_circle(
-		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*2.2),
-		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*2.4 - fspec_xoff),
+		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)+fspec_yoff), 
 		20, 
 		asset_get("par_jumpthrough"), 
 		true,
 		true );
 		
 		var tempSolid = collision_circle(
-		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir*2.2),
-		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir*2.4 - fspec_xoff),
+		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)+fspec_yoff), 
 		20, 
 		asset_get("par_block"), 
 		true,
 		true );
 		
+		// Handle plat/solid grab vars
 		if(tempSolid == noone)
 		{
-			tempSolid = tempPlat;
+			if(can_grab_plat_fspec)
+			{
+				tempSolid = tempPlat;
+				can_grab_plat_fspec = true; // was !freeyea
+				can_grab = true;
+			}
+		}
+		else
+		{
+			if(can_grab_solid_fspec)
+			{
+				can_grab_solid_fspec = !free;
+				can_grab = true;
+			}
 		}
 		
 		
 		// Then, check if a collision is found
-		if(hitpause == false && grabbedid == noone && tempSolid != noone)
+		if(hitpause == false && grabbedid == noone && tempSolid != noone && can_grab)
 		{
 			grabbedid = tempSolid;
 			grabbed_solid = true;
-			can_grab_solid_fspec = free && tempPlat!=noone;
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
 			
 			 // Play sound and hitpause
@@ -785,7 +801,7 @@ if (attack == AT_FSPECIAL){
 			
 			KRAGG = true;
 
-		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*2.2)
+		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*2.4 - fspec_xoff)
 		   	, y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y))
 		   	, 19 );	
 		}
@@ -798,7 +814,7 @@ if (attack == AT_FSPECIAL){
 		if(window_timer <= 1 && window == 3)
 		{
 			create_hitbox(AT_FSPECIAL,1,x,y);
-			create_hitbox(AT_FSPECIAL,2,x,y);
+			//create_hitbox(AT_FSPECIAL,2,x,y);
 		}
 			
 	}
@@ -848,6 +864,9 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 				transcendent = true;
 				vsp = 0;
 				hsp = 0;
+				is_spin = false;
+				img_spd = 1;
+				sprite_index = sprite_index == sprite_get("firecracker_single_spin") ? sprite_get("firecracker_single") : sprite_index == sprite_get("firecracker_double_spin") ? sprite_get("firecracker_double") : sprite_index == sprite_get("firecracker_triple_spin") ? sprite_get("firecracker_triple") : sprite_index;
 				
 				if("player_id" in self) if(player_id.url == 1905208125)
 				{
@@ -1537,10 +1556,11 @@ if (attack == AT_USPECIAL){
 
 	
 	// Grabbing Platforms
-	if(can_grab_solid_uspec && grabbedid == noone && (window < 7 && window > 2) && !shield_down && !special_down)
+	if((can_grab_solid_uspec || can_grab_plat_uspec) && grabbedid == noone && (window < 7 && window > 2) && !shield_down && !special_down)
 	{
 		var extension_x = 15;
-		var extension_y = 16;
+		var extension_y = 6;
+		var can_grab = false;
 		
 		// First, get nearby hitboxes
 		var tempPlat = collision_ellipse(
@@ -1561,17 +1581,30 @@ if (attack == AT_USPECIAL){
 		true,
 		true );
 		
+		// Handle plat/solid grab vars
 		if(tempSolid == noone)
 		{
-			tempSolid = tempPlat;
+			if(can_grab_plat_uspec)
+			{
+				tempSolid = tempPlat;
+				can_grab_plat_uspec = !free;
+				can_grab = true;
+			}
+		}
+		else
+		{
+			if(can_grab_solid_uspec)
+			{
+				can_grab_solid_uspec = !free;
+				can_grab = true;
+			}
 		}
 		
 		// Then, check if a collision is found
-		if(hitpause == false && grabbedid == noone && tempSolid != noone)
+		if(hitpause == false && grabbedid == noone && tempSolid != noone && can_grab)
 		{
 			grabbedid = tempSolid;
 			grabbed_solid = true;
-			can_grab_solid_uspec = free && tempPlat!=noone;
 			
 			 // Play sound and hitpause
 			sound_play(sound_get("tenru_grab"));
@@ -1618,8 +1651,8 @@ if (attack == AT_USPECIAL){
 	
 	// Custom hitbox creation
 	if(!hitpause && grabbedid == noone && grabbedProj == noone && window >= 3 && window <= 7 && !KRAGG)
-		if(window_timer <= 1 && window < 7)
-			create_hitbox(AT_USPECIAL,window-2,x,y);
+		if(window_timer == get_window_value(AT_USPECIAL,window,AG_WINDOW_LENGTH) && window < 6)
+			create_hitbox(AT_USPECIAL,window-1,x,y);
 			
 
     
@@ -1643,8 +1676,8 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     	set_window_value(AT_USPECIAL, 8, AG_WINDOW_HAS_WHIFFLAG, 0);
     	
     	// Double jump
-    	// if(!grabbed_solid)
-    	// 	djumps = 0;
+    	if(!grabbed_solid)
+    		djumps = 0;
     	
 	    // Grabbed player properties
 	    if(!grabbed_solid)
@@ -1664,6 +1697,10 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 				{
 					vsp = 0;
 					hsp = 0;
+					is_spin = false;
+					img_spd = 1;
+					sprite_index = sprite_index == sprite_get("firecracker_single_spin") ? sprite_get("firecracker_single") : sprite_index == sprite_get("firecracker_double_spin") ? sprite_get("firecracker_double") : sprite_index == sprite_get("firecracker_triple_spin") ? sprite_get("firecracker_triple") : sprite_index;
+				
 					
 					if("player_id" in self) if(player_id.url == 1905208125)
 					{
@@ -1792,26 +1829,39 @@ if (attack == AT_DSPECIAL){
 	//can_move = true;
 	
 	// Drifting
-	if(window < 3 && dspec_big_flip > 0)
+	if(window < 3 && dspec_big_flip > 0 && window_timer == 1)
 	{
 		// Convert joy dir to radians
 		var rad_joy_dir = joy_dir;
 		var turning_speed = .3;
-		var move_speed = 13;
+		var move_speed = 21;
+		
+		if(spr_dir == 1) 
+		{
+			if(rad_joy_dir > 180) rad_joy_dir = 35;
+			rad_joy_dir = clamp(rad_joy_dir,35,90);
+		}
+		else rad_joy_dir = clamp(rad_joy_dir,90,145);
 		
 		rad_joy_dir = degtorad(rad_joy_dir);
 		
 		if(!joy_pad_idle)
 		{
-			// Teleport in direction of stick
-			var targethsp = cos(rad_joy_dir) * move_speed;
-			var targetvsp = sin(rad_joy_dir) * -move_speed;
-		
-		
-			if(hsp > targethsp) hsp -= turning_speed else hsp += turning_speed;
-			if(vsp > targetvsp) vsp -= turning_speed else vsp += turning_speed;
+			// Set speed to stick dir
+			hsp = cos(rad_joy_dir) * move_speed * 0.65;
+			vsp = sin(rad_joy_dir) * -move_speed;
 		}
-
+		
+		// if(!joy_pad_idle)
+		// {
+		// 	// Teleport in direction of stick
+		// 	var targethsp = cos(rad_joy_dir) * move_speed;
+		// 	var targetvsp = sin(rad_joy_dir) * -move_speed;
+		
+		
+		// 	if(hsp > targethsp) hsp -= turning_speed else hsp += turning_speed;
+		// 	if(vsp > targetvsp) vsp -= turning_speed else vsp += turning_speed;
+		// }
 	}
 	
 	
@@ -1821,7 +1871,7 @@ if (attack == AT_DSPECIAL){
 		whiffspin = false;
 		
 		if(dspec_big_flip == 1){ set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-16); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_bash_projectile")); dspec_big_flip = 2;}
-		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-12); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
+		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-13); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
 		
 	}
 	
@@ -1839,19 +1889,9 @@ if (attack == AT_DSPECIAL){
 	// }
 	
 	// Fall through platforms
-	if(joy_dir >= 225 && joy_dir <= 315)
-	{
-		fall_through = true;
-	}
-	else
-	{
-		fall_through = false;
-	}
-	
-	if(joy_pad_idle)
-	{
-		fall_through = false;
-	}
+	fall_through = down_down && special_down;
+	if(joy_pad_idle) fall_through = true;
+	if(dspec_big_flip > 0) fall_through = false;
 
  
 	// Reverse direction at the end
@@ -2270,6 +2310,10 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
 				transcendent = true;
 				hsp = 0;
 				vsp = 0;
+				is_spin = false;
+				img_spd = 1;
+				sprite_index = sprite_index == sprite_get("firecracker_single_spin") ? sprite_get("firecracker_single") : sprite_index == sprite_get("firecracker_double_spin") ? sprite_get("firecracker_double") : sprite_index == sprite_get("firecracker_triple_spin") ? sprite_get("firecracker_triple") : sprite_index;
+				
 				
 				if("player_id" in self) if(player_id.url == 1905208125)
 				{

@@ -6,3 +6,7 @@ if (player_id.buffup == true){
 	kb_value = 17;
 	hitpause = 8;
 }
+*/
+
+new_rock_pos = false;
+reposition = false;

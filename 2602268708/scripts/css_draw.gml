@@ -13,7 +13,10 @@ patch_month = "";
 var num_alts = 32;
 var alt_cur = get_player_color(player);
  
- 
+if (get_color_profile_slot_b(0, 7) == 254) {
+    sound_play(sound_get("chuckyanoise"));
+	set_color_profile_slot(0, 7, get_color_profile_slot_r(0, 7), get_color_profile_slot_g(0, 7), get_color_profile_slot_b(0, 7) + 1);
+}
  
 //Alt name init. var doesn't work with arrays lol
  

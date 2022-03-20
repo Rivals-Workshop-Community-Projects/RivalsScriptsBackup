@@ -80,7 +80,7 @@ hitstun_grav = .5;
 knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 7;
+prat_land_time = 11;
 wave_land_time = 13;
 wave_land_adj = 1.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .16; //grounded deceleration when wavelanding
@@ -160,7 +160,7 @@ dspecVar = 0
 fspecVar = 2
 waterLevel = 0
 waterCharges = 1
-waterBomb = 0
+waterBomb = noone
 combatTimer = 5
 waterTimer = 1
 strongAttack = false

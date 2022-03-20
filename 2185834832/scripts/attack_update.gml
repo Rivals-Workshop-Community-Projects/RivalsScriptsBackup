@@ -26,6 +26,24 @@ if (attack == AT_DSTRONG && state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR 
     }
 }
 
+if (attack == AT_FAIR && state == PS_ATTACK_AIR){
+    if (window > 1 && grabbedid != noone){
+		grabbedid.ungrab = 0;
+        //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
+        if(window == 3 && window_timer < 9){
+	        grabbedid.x = lerp(grabbedid.x, x + 50*spr_dir, 0.3); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
+			grabbedid.y = lerp(grabbedid.y, y - 20, 0.1); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
+        }
+        grabbedid.wrap_time = 6000;
+        grabbedid.state = PS_WRAPPED;
+        if(window == 3 && window_timer > 8 || window == 4){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
+            grabbedid.ungrab = 1
+            grabbedid.state = PS_TUMBLE;
+            grabbedid = noone;
+        }
+    }
+}
+
 if (attack == AT_DAIR){
 	if (window == 3 && window_timer == 15){
 		set_state( PS_IDLE_AIR );
@@ -88,15 +106,9 @@ if (attack == AT_JAB && window == 3){
 }
 
 if (attack == AT_DSPECIAL){
-	if(waterLevelEmergency > 7 && !free){
-		if(window == 1 || window == 2 && window_timer < 16)
-		was_parried = true
-	}
 	if (window == 2 && window_timer == 15 && !free){
-			if(waterCharges > 0 || waterLevelEmergency > 7){
-	        saw_blade = instance_create(x + (spr_dir*85),y - 69, "obj_article1");
-	        move_cooldown[AT_DSPECIAL] = 50
-		}
+	   saw_blade = instance_create(x + (spr_dir*85),y - 69, "obj_article1");
+	   move_cooldown[AT_DSPECIAL] = 50
 	}
 	if(window < 2 && saw_blade != 0){
 		if(instance_exists(saw_blade)){
@@ -119,33 +131,21 @@ if(attack == AT_EXTRA_1){
 		y = saw_blade.y + 69
 		}
 	}
+	if(window == 2 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+		set_state(PS_PRATLAND);
+		was_parried = true;
+		parry_lag = 30;
+	}
 }
 
 if (attack == AT_USPECIAL){
-	if(waterLevelEmergency > 7 && window == 1){
-		was_parried = true
-	}
 	if(!free){
-		if(!instance_exists(waterBomb) || waterBomb == 0){
-			if (window == 2 && window_timer == 3){
-					if(waterCharges > 0 && uspec_non <= 0 || waterLevelEmergency > 7 && uspec_non <= 0){
-					waterCharges -= 1
-			        waterBomb = instance_create(x + (spr_dir*25),y - 65,"obj_article2");
-				}
-			}
-		}else if(window == 1 && waterBomb != 0){
-			window = 2
-			window_timer = 0
-			uspec_non = 10
+
+		if (window == 2 && window_timer == 3 and !instance_exists(waterBomb)){
+			waterBomb = instance_create(x + (spr_dir*25),y - 65,"obj_article2");
 		}
-		if(window == 1){
-			if(waterCharges <= 0 && waterLevelEmergency <= 7){
-				window = 2
-				window_timer = 0
-				uspec_non = 10
-			}
-		}
-	if(window == 2 && window_timer == 2 && waterBomb != 0){
+
+	if(window == 2 && window_timer == 2){
 			if(instance_exists(waterBomb)){
 				sound_play(asset_get("sfx_waterhit_weak"))
 				move_cooldown[AT_USPECIAL] = 50
@@ -160,64 +160,38 @@ if (attack == AT_USPECIAL){
 }
 
 if(attack == AT_USPECIAL_2){
-	if(waterLevelEmergency > 7 && window == 1){
-		if(!forceNoWater){
-			was_parried = true
-		}else{
-			was_parried = false
-		}
-	}
 	if(window == 3){
 		uspecVar = 0
 	}
-	if (waterCharges > 0 || waterLevelEmergency > 7){
-		if(window == 2 && window_timer == 1 && !forceNoWater){
-			waterCharges -= 1
-	        waterBomb = instance_create(x - (10 * spr_dir),y - 30,"obj_article2");
-		}
-		if(window == 1){
-			if(!forceNoWater){
-				set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialair"));
-				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -16);
-				set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
-				if(shield_pressed){
-					forceNoWater = true
-					spawn_hit_fx(x - 8*spr_dir, y - 90, 111)
-					sound_play(asset_get("sfx_waterhit_weak"))
-					vsp = -4
-					window_timer = 1
-					window = 1
-				}
-			}else{
-				set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
-				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9.5);
-				set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
-			}
-		}
-	}else{
-		set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
-		set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9.5);
-		set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
+
+	if(window == 2 && window_timer == 1 && !forceNoWater){
+        waterBomb = instance_create(x - (10 * spr_dir),y - 30,"obj_article2");
 	}
+	if(window == 1){
+		if(!forceNoWater){
+			set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialair"));
+			set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -16);
+			set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
+			if(shield_pressed or instance_exists(waterBomb)){
+				print("Waterbomb exists")
+				forceNoWater = true
+				spawn_hit_fx(x - 8*spr_dir, y - 90, 111)
+				sound_play(asset_get("sfx_waterhit_weak"))
+				vsp = -4
+				window_timer = 1
+				window = 1
+			}
+		}else{
+			set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
+			set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9.5);
+			set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
+		}
+	}
+	
 	if(window == 1){
 		if(window_timer == 0){
 			forceNoWater = false
 		}
-	}
-	if(free){
-		if(waterCharges == 0  && waterLevelEmergency <= 7 && !forceNoWater){
-			move_cooldown[AT_USPECIAL] = 35
-			move_cooldown[AT_USPECIAL_2] = 35
-		}else if(forceNoWater){
-			move_cooldown[AT_USPECIAL] = 45
-			move_cooldown[AT_USPECIAL_2] = 45
-		}else{
-			move_cooldown[AT_USPECIAL] = 12
-			move_cooldown[AT_USPECIAL_2] = 12
-		}
-	}else{
-		move_cooldown[AT_USPECIAL] = 0
-		move_cooldown[AT_USPECIAL_2] = 0
 	}
 }
 
@@ -401,6 +375,10 @@ if(attack == AT_JAB){
 }
 
 if(attack == AT_NSPECIAL){
+	if(has_hit and !hitpause){
+		can_jump = true;
+	}
+	
 	if(vsp < -10){
 		double_jump_timer = 0
 	}
@@ -451,7 +429,7 @@ if(attack == AT_NSPECIAL){
 			window = 3
 			window_timer = 20
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 14);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 11);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1);

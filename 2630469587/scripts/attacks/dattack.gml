@@ -8,7 +8,7 @@ set_attack_value(AT_DATTACK, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 10);
 
-set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);

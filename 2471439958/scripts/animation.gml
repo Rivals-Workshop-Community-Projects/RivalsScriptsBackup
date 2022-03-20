@@ -88,12 +88,12 @@ if state == PS_IDLE {
 		sprite_index = sprite_get( "idle_EX" );
 		image_index = floor(image_number*state_timer/(image_number*7));
 		idle_anim_speed = .16;
-		}else
+		}/*else
 		if bloodborne == 1{
 		sprite_index = sprite_get( "idle_bloodborne" );
 		image_index = floor(image_number*state_timer/(image_number*7));
 		idle_anim_speed = .16;
-		}	
+		}	*/
 }
 if state == PS_IDLE {
 		if get_player_color(player) == 2  or get_player_color(player) == 3 or get_player_color(player) == 4 or get_player_color(player) == 11 or get_player_color(player) == 12 or get_player_color(player) == 15 or get_player_color(player) == 16 or get_player_color(player) == 18 or get_player_color(player) == 19 or get_player_color(player) == 20 or get_player_color(player) == 26 or get_player_color(player) == 30{
@@ -142,7 +142,7 @@ if (gaming == 1) or (crystal == 1){
 	suppress_stage_music( 0, 100 );
 }
 
-
+/* (Do NOT restore the code, I havent made the animations for it to fully work)
 //Bloodborne
 if state == PS_IDLE{
 	if  (bloodborne == 0){
@@ -303,4 +303,4 @@ if state == PS_CROUCH{
 		if  (bloodborne == 1){
 		sprite_index = sprite_get( "crouch_bloodborne" );
 	}
-}
+} */

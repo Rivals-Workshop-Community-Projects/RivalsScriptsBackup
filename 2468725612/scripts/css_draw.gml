@@ -72,7 +72,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = sound_get("utilt"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 15; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 25; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(84, 49, 130) // "color preview square" color. can be anything.
@@ -135,8 +135,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[19,0] = make_color_rgb(189, 173, 124)
     ce[19,1] = "Trench Coat"
     ce[19,2] = ""
-    ce[20,0] = make_color_rgb(64, 87, 113)
-    ce[20,1] = "Are you lucky?"
+    ce[20,0] = make_color_rgb(82, 82, 126)
+    ce[20,1] = "The Lucky Roll"
     ce[20,2] = ""
     ce[21,0] = make_color_rgb(30, 25, 44)
     ce[21,1] = "Tournament"
@@ -150,6 +150,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[24,0] = make_color_rgb(81, 102, 43)
     ce[24,1] = "Classic"
     ce[24,2] = ""
+    ce[25,0] = make_color_rgb(44, 59, 73)
+    ce[25,1] = "The Fowl Play"
+    ce[25,2] = ""
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

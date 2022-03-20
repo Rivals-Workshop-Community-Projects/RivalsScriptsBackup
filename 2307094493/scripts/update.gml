@@ -1,20 +1,37 @@
+//kirby
+if swallowed {
+	swallowed = 0
+	var abilityspr = sprite_get("kdair");
+	var abilityhurtspr = sprite_get("kdair_hurt");
+	var myicon = sprite_get("kirbyicon");
+
+	with enemykirby {
+		
+	}
+}
 //Prevent having too many nuts out at once.
 // print_debug(string(nut_count));
 if (nut_count >= max_nut_count) {
 	move_cooldown[AT_NSPECIAL_AIR] = 2;
 }
 
-//kirby
-if (swallowed) {
-	swallowed = 0;
-	var abilityspr = sprite_get("kdair");
-	var abilityhurtspr = sprite_get("kdair_hurt");
-	var myicon = sprite_get("kirbyicon")	
-
-	// with enemykirby {
-
-    // }
+if (introTimer2 < 20) {
+    introTimer2++;
+} else {
+    introTimer2 = 0;
+    introTimer++;
 }
+//this increments introTimer every few frames, depending on the number entered
+
+if (introTimer < 20) {
+    draw_indicator = false;
+} else {
+    draw_indicator = true;
+}
+//this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
+
+muno_event_type = 1;
+user_event(14);
 
 if (attack == AT_USPECIAL && window > 2 && state_timer > 60 && !free) {
 	set_state(PS_LAND);
@@ -47,7 +64,7 @@ if (state == PS_WALL_JUMP) {
 //}
 
 //Destroy hit player list when not in the down special discharge window to prevent memory leaks.
-if (!(attack == AT_DSPECIAL && window != 5 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))) {
+if (!(attack == AT_EXTRA_3 && window != 5 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))) {
 	if(ds_list_valid(ds_hit_list)) {
 		ds_list_destroy(ds_hit_list);
 	}

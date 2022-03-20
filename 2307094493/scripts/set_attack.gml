@@ -12,3 +12,6 @@ if (attack == AT_NSPECIAL) {
 if (attack == AT_FSPECIAL) {
 	attack = AT_FSPECIAL_AIR;
 }
+
+muno_event_type = 2;
+user_event(14);

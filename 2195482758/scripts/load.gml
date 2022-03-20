@@ -50,7 +50,7 @@ sprite_change_offset("nspecial_air", 64, 126);
 sprite_change_offset("nspecial_spin_air", 64, 126);
 sprite_change_offset("nspecial_bunt_air", 64, 126);
 sprite_change_offset("fspecial", 256, 254);
-sprite_change_offset("fspecial_down", 256, 254);
+sprite_change_offset("fspecial_down", 256, 238);
 sprite_change_offset("fspecial_up", 256, 254);
 sprite_change_offset("fspecial_air", 256, 231);
 sprite_change_offset("fspecial_down_air", 256, 231);

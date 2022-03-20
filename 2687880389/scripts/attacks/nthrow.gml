@@ -56,7 +56,7 @@ set_hitbox_value(AT_NTHROW, 1, HG_WIDTH, 128); // 118
 set_hitbox_value(AT_NTHROW, 1, HG_HEIGHT, 35); // 29
 set_hitbox_value(AT_NTHROW, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NTHROW, 1, HG_DAMAGE, 10);
-set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 40);
+set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 48); // 40
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, 6.1); // 6.8
 set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, 1.05); // 1.15
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 6.1); // 6.8
@@ -66,6 +66,9 @@ set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 1.05); // 1.15
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NTHROW, 1, HG_IGNORES_PROJECTILES, 0);
 //set_hitbox_value(AT_NTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
+
+// Munophone notes
+set_attack_value(AT_NTHROW, AG_MUNO_ATTACK_NAME, "BThrow");
 
 /*
 // Windup

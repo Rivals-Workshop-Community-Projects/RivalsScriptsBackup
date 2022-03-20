@@ -233,6 +233,12 @@ if (state != PS_HITSTUN && state != PS_ATTACK_GROUND && state != PS_ATTACK_GROUN
     wave_friction = 0; 
 }*/
 
+// Wave Bonk
+if (get_gameplay_time() <= 120 && shield_pressed == true) {
+    waveland_sound = asset_get("sfx_shovel_hit_heavy1");
+    sound_play(asset_get("sfx_diamond_collect"));
+}
+
 // Heat Glow Anim
 
 if (HeatLevel >= 10) {

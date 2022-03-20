@@ -80,6 +80,7 @@ sprite_change_offset("kirby_copy_ability_hurt", 36, 70);
 sprite_change_offset("blast_hit", 0, 30);
 //sprite_change_offset("blast_hit", 1, 62);
 sprite_change_offset("marker", 64, 32);
+sprite_change_offset("meter_marker", 1, 9);
 sprite_change_offset("shield_icon", 19, 19);
 sprite_change_offset("charge_button", 11, 31);
 sprite_change_offset("meter", 0, 31);

@@ -137,14 +137,14 @@ set_color_profile_slot( 10, 6, 13, 15, 14 ); //skirt
 set_color_profile_slot( 10, 7, 57, 66, 62 ); //ears
 
 // Tak Tak
-set_color_profile_slot( 11, 0, 49, 222, 161 ); //Energy
-set_color_profile_slot( 11, 1, 157, 27, 184 ); //Hair + parts
-set_color_profile_slot( 11, 2, 205, 52, 54 ); //shirt
-set_color_profile_slot( 11, 3, 87, 24, 23 ); //cloak1 + sock
-set_color_profile_slot( 11, 4, 205, 52, 54 ); //eyes
-set_color_profile_slot( 11, 5, 255, 255, 255 ); //body
-set_color_profile_slot( 11, 6, 67, 55, 71 ); //skirt
-set_color_profile_slot( 11, 7, 67, 55, 71 ); //ears
+set_color_profile_slot( 11, 0, 0, 255, 255 ); //Energy
+set_color_profile_slot( 11, 1, 108, 38, 153 ); //Hair + parts
+set_color_profile_slot( 11, 2, 169, 45, 54 ); //shirt
+set_color_profile_slot( 11, 3, 55, 52, 64 ); //cloak1 + sock
+set_color_profile_slot( 11, 4, 169, 45, 54 ); //eyes
+set_color_profile_slot( 11, 5, 235, 228, 240 ); //body
+set_color_profile_slot( 11, 6, 85, 87, 103 ); //skirt
+set_color_profile_slot( 11, 7, 74, 67, 79 ); //ears
 
 // Equaliza
 set_color_profile_slot( 12, 0, 89, 244, 255 ); //Energy

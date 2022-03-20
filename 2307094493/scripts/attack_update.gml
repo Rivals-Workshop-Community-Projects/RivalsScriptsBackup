@@ -3,6 +3,16 @@ if (attack == AT_NSPECIAL_AIR || attack == AT_FSPECIAL || attack == AT_FSPECIAL_
     trigger_b_reverse();
 }
 
+if attack == AT_TAUNT && window == 2 && window_timer == 30 && taunt_down { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	window = 2;
+	window_timer = 0;
+}
+
+if attack == AT_TAUNT && window == 2 && window_timer > 15 {
+if  window_timer == 15 && taunt_down { // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	window_timer = 3;
+}}
+
 if (attack == AT_DATTACK && window == 2 && window_timer == 1 && has_hit) {
 		can_ustrong = true;}
 

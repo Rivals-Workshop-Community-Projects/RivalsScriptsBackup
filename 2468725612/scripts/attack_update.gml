@@ -59,8 +59,8 @@ if (attack != AT_NSPECIAL && attack != AT_NSPECIAL_2 && attack != AT_USPECIAL
         attack_holo_icon = attack_icon;
         attack_holo_size = attack_size;
         sound_play(sound_get("nspecial_pick"));	
-        spawn_hit_fx( x, y-20, 111);
-        spawn_hit_fx( hologram.x, hologram.y-20, 111);
+        spawn_hit_fx( x, y-20, 111).pause = 7;
+        spawn_hit_fx( hologram.x, hologram.y-20, 111).pause = 7;
         attack_config = true;
     }
     if (window == 1 && window_timer == 1){
@@ -136,9 +136,9 @@ if (attack == AT_NSPECIAL){
 		set_window_value(AT_NSPECIAL, 1, AG_WINDOW_GOTO, 7);
 		
 		if (window == 1 && window_timer == 10 && hat_out == false){
-			spawn_hit_fx( x+(40*spr_dir), y-65, 306);
+			spawn_hit_fx( x+(40*spr_dir), y-65, 306).pause = 7;
 			hat = instance_create(x, (room_height/4)-100, "obj_article1");
-			spawn_hit_fx( hat.x, hat.y, 306);
+			spawn_hit_fx( hat.x, hat.y, 306).pause = 7;
 		    hat.state = 4;
 		}
     }
@@ -181,8 +181,8 @@ if (attack == AT_NSPECIAL_2 && hologram_is_alive == true){
         spawn_hit_fx( hologram.x+(10*hologram.spr_dir), hologram.y-52, 256);
     }
     if (window == 5 && window_timer == 10){
-    	spawn_hit_fx( x, y-20, 111);
-        spawn_hit_fx( hologram.x, hologram.y-20, 111);
+    	spawn_hit_fx( x, y-20, 111).pause = 7;
+        spawn_hit_fx( hologram.x, hologram.y-20, 111).pause = 7;
         attack_hologram = attack_meu;
         attack_holo_nome = attack_nome;
         attack_holo_icon = attack_icon;
@@ -781,8 +781,8 @@ if (attack == AT_DSPECIAL_AIR && window == 2 && !free){
 	window_timer = 1;
 	shake_camera( 8, 4 );    
     if (!hitpause){
-    	spawn_hit_fx( x, y-24, 154);
-    	spawn_hit_fx( x+30, y-24, 154);
+    	spawn_hit_fx( x, y-24, 154).pause = 7;
+    	spawn_hit_fx( x+30, y-24, 154).pause = 7;
     }
 }
 
@@ -801,9 +801,9 @@ if (attack == AT_TAUNT && window == 1 && !hitpause){
 	}
 	if (window_timer == 8){
 		
-		spawn_hit_fx( x+16*spr_dir, y-20, 304);	
+		spawn_hit_fx( x+16*spr_dir, y-20, 304).pause = 7;	
 		if (hologram_is_alive == true && hologram.free == false){
-			spawn_hit_fx( hologram.x+16*hologram.spr_dir, hologram.y-20, 304);
+			spawn_hit_fx( hologram.x+16*hologram.spr_dir, hologram.y-20, 304).pause = 7;
 			if (shake_on == true){
 				shake_camera(24, 6);
 			}
@@ -891,6 +891,6 @@ if (has_rune("F")){
 	set_hitbox_value(AT_DSTRONG_2, 1, HG_HIT_SFX, sound_get("sfx_zetter_fireball_fire"));
 	
 	if ((attack == AT_DSTRONG || attack == AT_DSTRONG_2) && window == 2 && window_timer == 8 && !hitpause){
-		spawn_hit_fx( x+(60*spr_dir), y-20, 143);
+		spawn_hit_fx( x+(60*spr_dir), y-20, 143).pause = 7;
 	}
 }

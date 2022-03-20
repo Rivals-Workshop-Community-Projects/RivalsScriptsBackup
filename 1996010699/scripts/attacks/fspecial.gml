@@ -122,7 +122,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 306);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_uair"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 5);

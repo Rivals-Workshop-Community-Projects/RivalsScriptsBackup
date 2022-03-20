@@ -46,7 +46,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.05);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_DRIFT_MULTIPLIER, 0.7);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_SDI_MULTIPLIER, 0.7);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITPAUSE_SCALING, 0.1);

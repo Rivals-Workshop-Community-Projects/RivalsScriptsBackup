@@ -17,3 +17,19 @@ if (poi_off == true){
 		}
 	}
 }
+
+if ((my_hitboxID.attack == AT_UAIR) ||
+(my_hitboxID.attack == AT_FAIR) ||
+(my_hitboxID.attack == AT_DAIR) ||
+(my_hitboxID.attack == AT_BAIR) ||
+(my_hitboxID.attack == AT_FSPECIAL) ||
+(my_hitboxID.attack == AT_DSTRONG) ||
+(my_hitboxID.attack == AT_USTRONG)){
+	hitpause = true;
+	hitstop = hit_player_obj.hitstop;
+	hitstop_full = hit_player_obj.hitstop_full;
+	old_vsp = vsp
+	old_hsp = hsp;
+	vsp = 0;
+    hsp = 0;
+}

@@ -34,13 +34,13 @@ if (special_pressed && get_gameplay_time() < 90 && !voice_mode) {
 }
 
 // entrance anim
-if (get_gameplay_time() < 5)
+if (get_gameplay_time() < 10)
 {
     if (!has_enter) and (!instance_exists(oTestPlayer))
-    {
-        has_enter = true;
-        set_attack(AT_NTHROW);
-    }
+    	{
+        	has_enter = true;
+        	set_attack(AT_NTHROW);
+    	}
 }
 
 if ((attack == AT_NTHROW) && (window == 3) && (window_timer == 19))
@@ -50,12 +50,24 @@ if ((attack == AT_NTHROW) && (window == 3) && (window_timer == 19))
     
 }
 
+if ((attack == AT_DTHROW) && (window == 7) && (window_timer == 15))
+{
+    set_state(PS_SPAWN);
+    state_timer += 95;
+    
+}
+
 // Restores dash when grounded/wall jumping.
 if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED || state == PS_WALL_JUMP) {
 	has_fly = true;
 	has_usp1_stall = true;
 	move_cooldown[AT_FSPECIAL]=0;
 	move_cooldown[AT_FSPECIAL_AIR]=0;
+}
+
+// Restores nair stall on hit if grounded/wall jumping/double jumping
+if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED || state == PS_WALL_JUMP || state == PS_DOUBLE_JUMP) {
+	has_nair_stall = true;
 }
 
 
@@ -122,7 +134,7 @@ if (!free) {
 
 
 //print_debug(dracvoice);
-print_debug(page);
+//print_debug(page);
 //print_debug(fstrong1fhit)
 //print_debug(start_sprdir);
 

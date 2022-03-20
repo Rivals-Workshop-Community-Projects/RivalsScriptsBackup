@@ -8,6 +8,7 @@ if(state == PS_RESPAWN){
 	shader_end();
 }
 
+/* Disabled 3/18/22
 // afterimage  Code for Amateratsu
 if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amateratsu
 	for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0 && draw_indicator)
@@ -19,6 +20,7 @@ if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amatera
 	    shader_end();
 	}
 }
+*/ 
 /*
 if(attack == AT_DSPECIAL && tsunami_proj != 0){
     shader_start();

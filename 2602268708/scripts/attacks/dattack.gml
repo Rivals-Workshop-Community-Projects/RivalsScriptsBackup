@@ -55,26 +55,6 @@ set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.05);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_X_OFFSET, 8);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
+set_hitbox_value(AT_DATTACK, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, -1);
-
-//idk what the hell is going on with uspecial hitboxes so im putting the body hitbox here
-set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 5);
-set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 1);
-set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 0);
-set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_Y, -32);
-set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 64);
-set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 64);
-set_hitbox_value(AT_DATTACK, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 1);
-set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 0);
-set_hitbox_value(AT_DATTACK, 2, HG_ANGLE_FLIPPER, 8);
-set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 3);
-set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_X_OFFSET, 8);
-set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_Y_OFFSET, 8);
-set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, sound_get("ssbu_cannonbody"));
-set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, -1);
-

@@ -13,9 +13,9 @@ pratfall_anim_speed = .25;
 walk_speed = 2.5; //changed
 walk_accel = 0.2;
 walk_turn_time = 6;
-initial_dash_time = 14;
-initial_dash_speed = 6.50; //changed
-dash_speed = 6.0; //changed
+initial_dash_time = 16;
+initial_dash_speed = 7.50; //changed
+dash_speed = 6.5; //changed
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -174,6 +174,8 @@ set_victory_theme(CH_KRAGG); // victory_theme.ogg
 nspecial_access_timer = 0;
 	
 set_angle = true
+
+speedopponenthitstungravity = 1
 
 
 torren_rock_small = hit_fx_create( sprite_get( "hfx_rock_small_bg" ), 24 );

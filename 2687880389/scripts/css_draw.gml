@@ -5,47 +5,58 @@ user_event(14);
 
 var selected_color = get_player_color(player);
 
-// 0th alt needs to be recolored
-if (selected_color == 0) {
-    draw_sprite_ext(sprite_get("charselect_original"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-    set_character_color_shading(0, 1);
-    set_character_color_shading(1, 1);
-    set_character_color_shading(2, 1);
-    set_character_color_shading(3, 1);
-    set_character_color_shading(4, 1);
-    set_character_color_shading(5, 1);
-    set_character_color_shading(6, 1);
-    set_character_color_shading(7, 1);
-} else if (get_player_color(player) == 20) { // disable shading for EA
-	draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-    set_character_color_shading(0, 0);
-    set_character_color_shading(1, 0);
-    set_character_color_shading(2, 0);
-    set_character_color_shading(3, 0);
-    set_character_color_shading(4, 0);
-    set_character_color_shading(5, 0);
-    set_character_color_shading(6, 0);
-    set_character_color_shading(7, 0);
-} else if (get_player_color(player) == 21) { // disable shading for Hologram
-	draw_sprite_ext(sprite_get("charselect_hologram"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-    set_character_color_shading(0, 0);
-    set_character_color_shading(1, 0);
-    set_character_color_shading(2, 0);
-    set_character_color_shading(3, 0);
-    set_character_color_shading(4, 0);
-    set_character_color_shading(5, 0);
-    set_character_color_shading(6, 0);
-    set_character_color_shading(7, 0);
-} else {
-	draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-	set_character_color_shading(0, 1);
-    set_character_color_shading(1, 1);
-    set_character_color_shading(2, 1);
-    set_character_color_shading(3, 1);
-    set_character_color_shading(4, 1);
-    set_character_color_shading(5, 1);
-    set_character_color_shading(6, 1);
-    set_character_color_shading(7, 1);
+switch (selected_color) {
+	case 0 : // 0th alt needs to be recolored
+	    draw_sprite_ext(sprite_get("charselect_original"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		break;
+	case 21 :
+		draw_sprite_ext(sprite_get("charselect_hologram"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+	    break;
+	case 22 :
+		draw_sprite_ext(sprite_get("charselect_mettaton"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		break;
+	case 23 :
+		draw_sprite_ext(sprite_get("charselect_queen"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		break;
+	case 24 :
+		draw_sprite_ext(sprite_get("charselect_cabinet"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		break;
+	default :
+		draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		break;
+}
+
+switch (selected_color) {
+	case 20 : // disable shading for EA
+		set_character_color_shading(0, 0);
+		set_character_color_shading(1, 0);
+		set_character_color_shading(2, 0);
+		set_character_color_shading(3, 0);
+		set_character_color_shading(4, 0);
+		set_character_color_shading(5, 0);
+		set_character_color_shading(6, 0);
+		set_character_color_shading(7, 0);
+	    break;
+	case 21 : // disable shading for Hologram
+		set_character_color_shading(0, 0);
+		set_character_color_shading(1, 0);
+		set_character_color_shading(2, 0);
+		set_character_color_shading(3, 0);
+		set_character_color_shading(4, 0);
+		set_character_color_shading(5, 0);
+		set_character_color_shading(6, 0);
+		set_character_color_shading(7, 0);
+	    break;
+	default :
+		set_character_color_shading(0, 1);
+		set_character_color_shading(1, 1);
+		set_character_color_shading(2, 1);
+		set_character_color_shading(3, 1);
+		set_character_color_shading(4, 1);
+		set_character_color_shading(5, 1);
+		set_character_color_shading(6, 1);
+		set_character_color_shading(7, 1);
+		break;
 }
 
 // End of Retroblast-specific code
@@ -120,7 +131,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 21; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 23; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(111, 0, 255) // "color preview square" color. can be any color!
@@ -189,6 +200,18 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[21,0] = make_color_rgb(0, 255, 0)
 	ce[21,1] = "Hologram"
 	ce[21,2] = "...it was a hologram."
+	ce[22,0] = make_color_rgb(255, 51, 228)
+	ce[22,1] = "Mettaton EX"
+	ce[22,2] = "Oh, YES."
+	ce[23,0] = make_color_rgb(0, 136, 255)
+	ce[23,1] = "Queen"
+	ce[23,2] = "Ohohohoho!~"
+	ce[24,0] = make_color_rgb(0, 122, 94)
+//	ce[24,1] = "Cabinet Man"
+//	ce[24,2] = "This must be what love would have felt like..."
+//	ce[25,0] = make_color_rgb(255, 0, 0)
+//	ce[25,1] = "Robot"
+//	ce[25,2] = "Hey look, it's me! :)"
 	//ce[22,0] = make_color_rgb(0, 0, 0)
 	//ce[22,1] = "Cabinet Man"
 	//ce[22,2] = "I'm half human, and half machine."

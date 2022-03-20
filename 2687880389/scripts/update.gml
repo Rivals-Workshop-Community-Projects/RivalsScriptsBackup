@@ -177,7 +177,7 @@ if (state == PS_CROUCH) {
 		if (abs(hsp) < crawl_speed) {
 			hsp -= (crawl_speed - abs(hsp)) * 0.05;
 		} else {
-			hsp *= 1.005;
+			hsp *= (1 + gradual_crawl_accel);
 		}
 	} else if (right_down) {
 		spr_dir = 1;
@@ -186,7 +186,7 @@ if (state == PS_CROUCH) {
 		if (abs(hsp) < crawl_speed) {
 			hsp += (crawl_speed - abs(hsp)) * 0.05;
 		} else {
-			hsp *= 1.005;
+			hsp *= (1 + gradual_crawl_accel);
 		}
 	}
 	

@@ -4,7 +4,7 @@ grav_sp = 0.4;
 move_speed = 4;
 sprite_index = sprite_get("heaveho")
 
-state = "not_started"
+state = "idle"
 state_timer = 0;
 lock_state = false;
 

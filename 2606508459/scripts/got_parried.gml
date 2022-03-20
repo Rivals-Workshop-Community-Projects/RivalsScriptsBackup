@@ -32,4 +32,8 @@ switch (my_hitboxID.attack)
             parry_lag = 40;
         }
         break;
+    case 43:
+        move_cooldown[43] = 0;
+        my_hitboxID.hitbox_timer = 0;
 }
+

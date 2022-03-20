@@ -1,0 +1,10 @@
+sprite_index = sprite_get("Uteki puddle");
+state = 0;
+state_timer = 0;
+can_be_grounded = true;
+ignores_walls = true;
+free = false;
+hsp = 0;
+vsp = 5;
+_grav = 0;
+despawntimer = 300;

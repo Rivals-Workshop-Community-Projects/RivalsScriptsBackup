@@ -69,6 +69,8 @@ sprite_change_offset("AirCharge(+)", 75, 112);
 sprite_change_offset("AirCharge(-)", 70, 112);
 sprite_change_offset("acorn", 16, 22);
 sprite_change_offset("acornmask", 16, 22);
+sprite_change_offset("finalsmash", 10, 260);
+sprite_change_offset("FinalsmashLT", 120, 118);
 
 sprite_change_offset("negative_close", 40, 40);
 sprite_change_offset("negative_open", 50, 50);
@@ -79,10 +81,38 @@ sprite_change_offset("positive_close", 40, 40);
 sprite_change_offset("positive_open", 50, 50);
 sprite_change_offset("positive", 40, 40);
 sprite_change_offset("positive_shot", 16, 28);
+sprite_change_offset("loadtweetblank", 65, 118);
+sprite_change_offset("ltweet", 65, 118);
+sprite_change_offset("ltweet00", 65, 118);
+sprite_change_offset("ltweet0", 65, 118);
+sprite_change_offset("ltweet1", 65, 118);
+sprite_change_offset("ltweet2", 65, 118);
+sprite_change_offset("ltweet3", 65, 118);
+sprite_change_offset("ltweet4", 65, 118);
+sprite_change_offset("ltweet5", 65, 118);
+sprite_change_offset("ltweet6", 65, 118);
+sprite_change_offset("ltweet7", 65, 118);
+sprite_change_offset("ltweet8", 65, 118);
+sprite_change_offset("ltweet9", 65, 118);
+sprite_change_offset("ltweet10", 65, 118);
+sprite_change_offset("ltweet11", 65, 118);
+sprite_change_offset("ltweet12", 65, 118);
+sprite_change_offset("ltweet13", 65, 118);
+sprite_change_offset("ltweet14", 65, 118);
+sprite_change_offset("ltweet15", 65, 118);
+sprite_change_offset("ltweet16", 65, 118);
+sprite_change_offset("ltweet17", 65, 118);
+sprite_change_offset("ltweet18", 65, 118);
+sprite_change_offset("ltweet19", 65, 118);
 
 //Compatability
 sprite_change_offset("feri_costume_load", 84, 114);
+sprite_change_offset("LoadMii", 60, 30);
+sprite_change_offset("phone_open", 84, 114);
+sprite_change_offset("intro", 180, 118);
 
+sprite_change_offset("kdair", 65, 118);
+sprite_change_offset("kdair_hurt", 65, 118);
 
 //Victory 
 set_victory_theme(sound_get("Load_victory"));

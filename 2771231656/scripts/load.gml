@@ -1,0 +1,62 @@
+sprite_change_offset("idle", 128, 190);
+sprite_change_offset("hurt", 95, 153);
+sprite_change_offset("bighurt", 95, 153);
+sprite_change_offset("downhurt", 95, 153);
+sprite_change_offset("uphurt", 95, 153);
+sprite_change_offset("crouch", 125, 190);
+sprite_change_offset("walk", 135, 190);
+sprite_change_offset("walkturn", 110, 175);
+sprite_change_offset("dash", 125, 190);
+sprite_change_offset("dashstart", 95, 143);
+sprite_change_offset("dashstop", 95, 143);
+sprite_change_offset("dashturn", 95, 175);
+sprite_change_offset("float", 135, 190);
+
+sprite_change_offset("jumpstart", 90, 128);
+sprite_change_offset("jump", 95, 135);
+sprite_change_offset("doublejump", 125, 190);
+sprite_change_offset("walljump", 95, 153);
+sprite_change_offset("pratfall", 95, 153);
+sprite_change_offset("land", 95, 143);
+sprite_change_offset("landinglag", 95, 143);
+
+sprite_change_offset("parry", 100, 143);
+sprite_change_offset("roll_forward", 95, 142);
+sprite_change_offset("roll_backward", 95, 142);
+sprite_change_offset("airdodge", 145, 186);
+sprite_change_offset("waveland", 95, 143);
+sprite_change_offset("tech", 105, 142);
+
+sprite_change_offset("jab", 85, 145);
+sprite_change_offset("dattack", 100, 143);
+sprite_change_offset("ftilt", 100, 175);
+sprite_change_offset("dtilt", 110, 175);
+sprite_change_offset("utilt", 95, 143);
+sprite_change_offset("nair", 110, 190);
+sprite_change_offset("fair", 105, 165);
+sprite_change_offset("bair", 125, 190);
+sprite_change_offset("uair", 125, 185);
+sprite_change_offset("dair", 95, 170);
+sprite_change_offset("fstrong", 100, 145);
+sprite_change_offset("ustrong", 120, 175);
+sprite_change_offset("dstrong", 110, 145);
+sprite_change_offset("nspecial", 90, 160);
+sprite_change_offset("fspecial", 95, 172);
+sprite_change_offset("uspecial", 95, 153);
+sprite_change_offset("dspecial", 100, 175);
+sprite_change_offset("taunt", 115, 175);
+
+sprite_change_offset("plat", 71, 87);
+
+sprite_change_offset("nspecial_proj", 97, 237);
+sprite_change_offset("ganon_hurt", 130, 190);
+sprite_change_offset("dspecial_air", 155, 143);
+sprite_change_offset("crouch_hurt", 118, 190);
+sprite_change_offset("taunt2", 110, 145);
+sprite_change_offset("intro", 105, 143);
+sprite_change_offset("bye_sword", 125, 190);
+sprite_change_offset("fspecial_air", 95, 143);
+sprite_change_offset("ball1", 125, 145);
+sprite_change_offset("ball2", 125, 150);
+sprite_change_offset("ball3", 125, 155);
+sprite_change_offset("darkness", 125, 155)

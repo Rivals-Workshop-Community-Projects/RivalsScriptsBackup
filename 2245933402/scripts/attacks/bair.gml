@@ -86,7 +86,7 @@ set_hitbox_value(AT_BAIR, 3, HG_DAMAGE, 3);
 set_hitbox_value(AT_BAIR, 3, HG_ANGLE, 45);
 set_hitbox_value(AT_BAIR, 3, HG_VISUAL_EFFECT, 14);
 set_hitbox_value(AT_BAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -5);
-set_hitbox_value(AT_BAIR, 3, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_BAIR, 3, HG_HITSTUN_MULTIPLIER, 1.2);
 set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_MASK, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_ANIM_SPEED, .6);

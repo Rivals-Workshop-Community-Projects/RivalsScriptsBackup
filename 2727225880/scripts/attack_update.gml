@@ -48,10 +48,10 @@ if (attack == AT_BAIR && window == get_attack_value( attack, AG_NUM_WINDOWS ) &&
 #region ustrong charge speed increase
 if (attack == AT_USTRONG) { //adds speed based on the charge
 	
-	set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, (-7.5 - strong_charge/5));
-	set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, (3 + round(strong_charge/9)));
-	set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, (3 + round(strong_charge/9)));
-	set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, (3 + round(strong_charge/9)));
+	set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, (-9 - strong_charge/6));
+	set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, (3 + round(strong_charge/10)));
+	set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, (3 + round(strong_charge/10)));
+	set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, (3 + round(strong_charge/10)));
 
 if ((window == 2 && window_timer = get_window_value( attack, window, AG_WINDOW_LENGTH )) || window == 3 || window == 4) {
 	
@@ -136,7 +136,7 @@ if (window == 1) {
 if (window == 2 && window_timer == 1) {
 
 	vsp = -7
-	hsp = 10*spr_dir + hsp/4
+	hsp = 9*spr_dir + hsp/4
 	
 }
 if (window == 3 || window == 4) {
@@ -506,7 +506,10 @@ if ((window == 4 || window == 3) && !free) {
 	window = 5
 	window_timer = 0
 	if (grabbed_player_obj.this_is_a_player) {
-		grabbed_player_obj.y = y + 0 } else {grabbed_player_obj.y = y  }
+		grabbed_player_obj.y = y -5
+		grabbed_player_obj.free = true
+		
+	} else {grabbed_player_obj.y = y  }
 				grabbed_player_obj.x = x //moves the player and changes windows and stuff idk
 
 		
@@ -527,7 +530,9 @@ transition_to_next_window = false
 	if (window < 4 || (window == 4 && window_timer <  get_window_value( attack, window, AG_WINDOW_LENGTH))) { //moves the player and changes windows and stuff idk
 		
 			if (grabbed_player_obj.this_is_a_player) {
-		grabbed_player_obj.y = y - 40 } else {grabbed_player_obj.y = y - 80 }
+		grabbed_player_obj.y = y - 40 
+					grabbed_player_obj.free = true
+			} else {grabbed_player_obj.y = y - 80 }
 grabbed_player_obj.x = x + 20*spr_dir
 	}
 	
@@ -638,62 +643,8 @@ if (torren_speedforce <= 0) {
 	extra_zoom_hit = false
 }
 
-//gives zoomification once hitting with stronk attack
-if ((attack == AT_FAIR || attack == AT_DAIR || attack == AT_BAIR || attack == AT_NAIR || attack == AT_UTILT) && has_hit_player  && window == get_attack_value( attack, AG_NUM_WINDOWS) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-//	if (free || has_used_speedforce == true ) {
-if (extra_zoom_hit == false) {
-	torren_speedforce = 0 }
-	else { extra_zoom_hit = false }
 
-	//}
-	//	else {has_used_speedforce = true }
-	
-}
 
-if (has_hit && torren_speedforce > 0) { 	torren_speedforce = 120 }
-
-if ((attack == AT_DAIR || attack == AT_NAIR) && !free && !hitpause && has_hit_player) {
-	
-	
-	if (extra_zoom_hit == false) {
-		
-			if (has_used_speedforce == false) {
-	
-	 has_used_speedforce = true 
-	 		
-	 	} else { torren_speedforce = 0 }
-		
-		//if there IS an extra hit
-	} else {
-		
-		
-		if (has_used_speedforce == false) {
-	
-	 has_used_speedforce = true 
-	 		
-	 	} else { extra_zoom_hit = false }
-		
-		
-		
-		
-	}
-	
-	
-	
-
-	 	
-
-	 	
-	
-	 	
-	 }
-	 	
-	 	//so
-	 	//if theres no extra hit, then do __
-	 	//if extra hit, then do ___
-	 	
-	 	
-	 	 
 
 
 
@@ -712,9 +663,7 @@ if (attack == AT_DSPECIAL) {
 }
 
 //checks if within distance of article. Currently speedzone not coded lol!
-if (speedzone == true) {
-	torren_speedforce = 3
-}
+
 
 
 //checks for flipper 5 (and all flippers i guess?) if hits PLAYER ONLY
@@ -754,11 +703,17 @@ if (attack == AT_DSTRONG && window == 4) {
 
 
 
+
+
+
+
 if(!hitpause && has_hit && torren_speedforce > 0 && zoom_time > 0 && (attack == AT_NAIR || attack == AT_BAIR||attack == AT_FAIR || attack == AT_DAIR || attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_UTILT || attack == AT_DSPECIAL)){ //
 	//
 //lowers zoom time by 1 each frame (starts once hitpause ends)
 zoom_time -= 1;
-		torren_speedforce = 60
+
+	if (torren_speedforce < 10) {
+		torren_speedforce = 10 }
 
 //can_fast_fall = true
 
@@ -801,23 +756,22 @@ if ((spr_dir ==  -1 && shouldreverse != 5 )|| (spr_dir = 1 && shouldreverse = 5)
 	
 	
 	if ((right_pressed || right_down) ) {
-			if (abs(zoomangle - attackangle) < 18) {
-			zoomangle = zoomangle + 3
-			}
+		//	if (abs(zoomangle - attackangle) < 18) {
+			zoomangle = zoomangle + 15
+	//		}
 			
 		} else	if ((left_pressed || left_down) ) {
-			if (abs(zoomangle - attackangle) < 18) {
-			zoomangle = zoomangle - 3
-			}
+	//		if (abs(zoomangle - attackangle) < 18) {
+			zoomangle = zoomangle - 15
+		//	}
 			
-		} else if (zoomangle < attackangle) {
-			
-			zoomangle = zoomangle + 3
-		} else if (zoomangle > attackangle) {
-			
-			zoomangle = zoomangle - 3
-		}
+	
 		} else {	zoomangle = attackangle }
+		
+		
+		
+		
+	}else {	zoomangle = attackangle }
 	
 	
 	
@@ -826,7 +780,7 @@ if ((spr_dir ==  -1 && shouldreverse != 5 )|| (spr_dir = 1 && shouldreverse = 5)
 	 if (attack != AT_DSPECIAL) {
 					if (attack != AT_DSTRONG) {
 					
-				vsp = clamp(-1.1*zoom_multiplier*(speedmultiplier)*dsin(zoomangle), -20, 20) }
+				vsp = clamp(-1.1*zoom_multiplier*(speedmultiplier)*dsin(zoomangle), -20, 20) - speedopponenthitstungravity/2 }
 				hsp = clamp(-1.05*zoom_multiplier*(speedmultiplier)*dcos(zoomangle), -10, 10)
 					
 					if (attack == AT_NAIR) {
@@ -865,7 +819,6 @@ if ((spr_dir ==  -1 && shouldreverse != 5 )|| (spr_dir = 1 && shouldreverse = 5)
 			window_timer = 0
 	} else 
 
-		
 		if (attack == AT_UTILT || attack == AT_USTRONG || attack == AT_FSTRONG) {
 	if (set_angle == true) {
 			
@@ -875,30 +828,28 @@ if ((spr_dir ==  -1 && shouldreverse != 5 )|| (spr_dir = 1 && shouldreverse = 5)
 	
 	
 	if ((right_pressed || right_down) ) {
-			if (abs(zoomangle - attackangle) < 18) {
-			zoomangle = zoomangle - 3
-			}
+		//	if (abs(zoomangle - attackangle) < 18) {
+			zoomangle = zoomangle - 15
+	//		}
 			
 		} else	if ((left_pressed || left_down) ) {
-			if (abs(zoomangle - attackangle) < 18) {
-			zoomangle = zoomangle + 3
-			}
+	//		if (abs(zoomangle - attackangle) < 18) {
+			zoomangle = zoomangle + 15
+		//	}
 			
-		} else if (zoomangle < attackangle) {
-			
-			zoomangle = zoomangle + 3
-		} else if (zoomangle > attackangle) {
-			
-			zoomangle = zoomangle - 3
-		}
-		} else {	zoomangle = attackangle }
 	
+		} else {	zoomangle = attackangle }
+		
+		
+		
+		
+	}else {	zoomangle = attackangle }
 	
 	
 		 if (attack != AT_DSPECIAL) {
 
 					if (attack != AT_DSTRONG) {
-				vsp = clamp(-1.1*(speedmultiplier)*dsin(zoomangle), -20, 20) }
+				vsp = clamp(-1.1*(speedmultiplier)*dsin(zoomangle), -20, 20) - speedopponenthitstungravity/2 }
 				hsp = clamp(1.05*zoom_multiplier*(speedmultiplier)*dcos(zoomangle), -10, 10)
 				
 					if (attack == AT_NAIR) {
@@ -938,8 +889,8 @@ if (attack == AT_FSTRONG) {
       	//	y = y - 10
       	
       		x = x + 15*spr_dir
-      	 	vsp = -10 - strong_charge/20
-      	hsp = 6*spr_dir + strong_charge/10*spr_dir
+      	 	vsp = -8 - strong_charge/15
+      	hsp = 9*spr_dir + strong_charge/15*spr_dir
       	
       	
       	
@@ -950,7 +901,7 @@ if (attack == AT_FSTRONG) {
       } if (window == 3 && window_timer == 1 && !has_hit) {
       	
       	//vsp = -10
-      	hsp = 6*spr_dir + strong_charge/20*spr_dir
+      	hsp = 9*spr_dir + strong_charge/15*spr_dir
       }
 	
 	can_fast_fall = false;
@@ -967,7 +918,7 @@ if (window == 1 ||( window == 2 && window_timer < get_window_value(attack, windo
 
 if (window == 4 && window_timer == 1 && !has_hit) {
 	
-	hsp = clamp(hsp, -5, 5)
+	hsp = clamp(hsp, -6, 5)
 	
 }
 	
@@ -1138,7 +1089,7 @@ if (!hitpause) {
  if (!joy_pad_idle){
  	
  	hsp_added = lengthdir_x(3 , joy_dir)
- 	vsp_added = lengthdir_y(2.5, joy_dir);
+ 	vsp_added = lengthdir_y(3, joy_dir);
  	
   // * dcos(window_timer*45/4)
  	
@@ -1152,8 +1103,8 @@ if (!hitpause) {
  uspecial_timer = (window - 1)*7 + window_timer
  
  //higher # next to window_timer, speed decays fa
- 	hsp = 2.5*spr_dir * dcos(uspecial_timer*1.5) + hsp_added * dcos(uspecial_timer*1.5)
- 	vsp = -3.5* dcos(uspecial_timer*1.5) + vsp_added * dcos(uspecial_timer*1.5)
+ 	hsp = 3*spr_dir * dcos(uspecial_timer*1.5) + hsp_added * dcos(uspecial_timer*1.5)
+ 	vsp = -4* dcos(uspecial_timer*1.5) + vsp_added * dcos(uspecial_timer*1.5)
  
  
  
@@ -1265,6 +1216,10 @@ if (window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH ) || (win
 
  if (window == 7 || window == 9 || window == 10 || window == 12 || window == 13) { //for endlag and dash forward/back
 		window += 1
+		
+	
+		
+		
 	} 
 	else if (window == 1) {
 		if ((spr_dir == 1 && (left_pressed || left_down)) || (spr_dir == -1 && (right_pressed || right_down))) {
@@ -1313,12 +1268,12 @@ if (window == 1 || window == 9 || window == 12 || window == 4 || window == 5 || 
 
 if (window == 10) {
 	
-	hsp = 10*spr_dir
+	hsp = 12*spr_dir
 	vsp = clamp(vsp, -10, 1.5)
 }
 if (window == 13) {
 	
-	hsp = -10*spr_dir
+	hsp = -12*spr_dir
 	vsp = clamp(vsp, -10, 1.5)
 }
 
@@ -1351,6 +1306,29 @@ if (window == 3) {
 #endregion
 
 
+
+
+#region taunt 
+
+if (attack == AT_TAUNT) {
+	
+	
+	if (window == 2 && !taunt_down && state_timer > 25) {
+		
+		window = 3;
+		window_timer = 0;
+	} else if (window == 2 && taunt_down && window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH )) {
+		
+		window_timer = 0;
+		
+} 
+	
+	
+	
+}
+
+
+#endregion
 
 
 #region checking attack amt

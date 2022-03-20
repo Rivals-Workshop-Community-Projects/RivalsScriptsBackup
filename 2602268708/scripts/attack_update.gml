@@ -19,8 +19,7 @@ switch (attack)
 	case AT_NSPECIAL:
 	break;
 	case AT_FSPECIAL:
-		//Give fspecial cooldown, random bob-omb
-		move_cooldown[AT_FSPECIAL] = 60;
+		//Random bob-omb
 		if (window == 1 && window_timer == 1)
 		{
 			bomb_numbering = random_func( 0, 4, false);
@@ -45,7 +44,7 @@ switch (attack)
 					nspecial_grab_timer++;
 				//slowdown, don't allow the player to move
 				hsp *= 0.9;
-				vsp *= 0.8;
+				vsp *= 0.6;
 				can_move = false;
 				
 				//don't execute the next code if you're in the first window
@@ -55,12 +54,13 @@ switch (attack)
 				
 				var dir, new_dir;
 				dir = left_down - right_down;
-				new_dir = clamp(cannon_dir + (dir*2), -80, 80);
-				//new_dir = cannon_dir + (dir*2);
-				
-				if dir != 0 and get_gameplay_time() mod 16 == 0 and cannon_dir != new_dir cannon_move_sound = sound_play( bits ? sound_get("8bit_cannon_move") : sound_get("cannon_move"))
-				cannon_dir = new_dir;
-				
+				if (!joy_pad_idle){
+					new_dir = clamp(cannon_dir + (dir*2), -80, 80);
+					//new_dir = cannon_dir + (dir*2);
+					
+					if dir != 0 and get_gameplay_time() mod 16 == 0 and cannon_dir != new_dir cannon_move_sound = sound_play( bits ? sound_get("8bit_cannon_move") : sound_get("cannon_move"))
+						cannon_dir = new_dir;
+				}
 				if window_timer > 5 and !cannon_button_down
 				{
 					window++;
@@ -68,7 +68,7 @@ switch (attack)
 				}
 			break;
 			case 3:
-				if window_timer == 1 && !hitpause
+				if window_timer == 5 && !hitpause
 				{
 				super_armor = false;
 					var article = instance_create(x,y,"obj_article3");
@@ -81,6 +81,11 @@ switch (attack)
 						sound_stop(sound_get("cannon_move")); 
 					}
 					var spd = 12+floor(cannon_charge/8.5);
+					
+					// im capping this because holy SHIT
+					spd = min(spd, 23);
+					
+					// maths
 					hsp = lengthdir_x(spd, 90 + cannon_dir);
 					vsp = lengthdir_y(spd, 90 + cannon_dir);
 					move_cooldown[AT_USPECIAL] = 30;
@@ -95,8 +100,6 @@ switch (attack)
 						var funnyhitbox = create_hitbox(AT_USPECIAL, 1, x, y);
 					}
 				}
-			break;
-			default:
 			break;
 		}
 	break;
@@ -115,7 +118,7 @@ switch (attack)
 	break;
 	case AT_DSTRONG:
 	    if (window == 2 && window_timer == 4 && free) {
-		vsp = -1;
+		vsp = -5;
 		}
 		if (window == 4 && window_timer >= 5 && free)
 		{
@@ -150,12 +153,6 @@ switch (attack)
 		}
 	break;
 }
-
-// if (attack == AT_USTRONG){
-//     if window == 3 && window_timer == (11) {
-//             sound_play(sound_get("sm64_shatter"));
-//     }
-// }
 
 //8BIT MODE
 if(bits = 1){

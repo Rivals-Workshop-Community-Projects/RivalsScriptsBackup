@@ -23,7 +23,7 @@ draw_debug_text( x, y + 55, string(has_hit && torren_speedforce > 0 && zoom_time
 
 
 
-/*
 
-draw_debug_text(x, y + 25, string(you_have_a_fucking_chakram_out))
+
+//draw_debug_text(x, y + 25, string(state_timer))
 

@@ -1,9 +1,7 @@
 //draw_debug_text( x-65, y-150, get_state_name( state ));
 //draw_debug_text( x-65, y-135, "Too Soon: " + string( TooSoon ));
-//draw_debug_text( x-65, y-120, "Throttle: " + string( throttle ));
 //draw_debug_text( x-65, y-105, "window: " + string( window ));
 //draw_debug_text( x-65, y-90, "window timer: " + string( window_timer ));
-//draw_debug_text( x-65, y-75, "hitable: " + string( hitable_throttle ));
 
 
 //draw_debug_text( x-65, y-105, "buff up: " + string( buffup ));

@@ -33,7 +33,8 @@ if(sprite_index == sprite_get("firecracker_single_spin") || sprite_index == spri
     is_spin = true;
     with(player_id) sound_play( sound_get( "tenru_fc_spin" ) );
 } 
-else 
+
+if(is_bunt) 
 {
     through_platforms = 9999999;
 }
@@ -44,10 +45,10 @@ if(is_bunt && num_fc > 0) with(player_id) sound_play( sound_get( "tenru_fc_bunt"
 lastPlayer = player_id;
 currentPlayer = player_id;
 
-if(attack == AT_NSPECIAL && hbox_num == 1)
-{
-    parrybox = create_hitbox(AT_NSPECIAL,3,floor(x),floor(y));
-}
+// if(attack == AT_NSPECIAL && hbox_num == 1)
+// {
+//     parrybox = create_hitbox(AT_NSPECIAL,3,floor(x),floor(y));
+// }
 
 // Note - I really wish I knew this was a thing before
 // I set up this complex ID storage system to track hitboxes

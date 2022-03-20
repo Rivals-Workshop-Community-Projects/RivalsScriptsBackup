@@ -43,9 +43,11 @@ if(hitstun > 0){
 
 if (state == 0){
     image_index += 0.25
-    create_hitbox(AT_USPECIAL, 1, x + 6*spr_dir, y - 18)
+    if(!instance_exists(my_waterbomb_hitbox)){
+    	my_waterbomb_hitbox = create_hitbox(AT_USPECIAL, 1, floor(x + spr_dir*2 + hsp), floor(y - 12 + vsp));
+    }    
     if(state_timer == 0){
-    	vsp = -7.8
+    	vsp = -6
     	hsp = 2 * spr_dir
     }
     vsp += 0.24
@@ -58,6 +60,7 @@ if (state == 0){
     }else if(hsp < 0){
     	spr_dir = -1
     }
+
 }
 
 
@@ -66,7 +69,9 @@ if (state == 0){
 
 if (state == 1){
     image_index += 0.15
-    create_hitbox(AT_USPECIAL, 1, x + 6*spr_dir, y - 18)
+    if(!instance_exists(my_waterbomb_hitbox)){
+    	my_waterbomb_hitbox = create_hitbox(AT_USPECIAL, 1, floor(x + spr_dir*2 + hsp), floor(y - 12 + vsp));
+    }
     if(state_timer == 0){
     	vsp = 6
     	hsp = 0
@@ -115,7 +120,6 @@ with (asset_get("pHitBox")){
 		}
 	}
 }
-
 //State 2: Dying
 
 if (state == 2){
@@ -140,8 +144,6 @@ if (state == 2){
 
 //NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)
 
-
-
 //Sprite and animation handling
 
 //If not already at the sprite it should be, switch to the new sprite and restart the animation
@@ -158,4 +160,16 @@ if (sprite_index != sprite[state]){
 //Make time progress
 state_timer++;
 hitstun--;
-got_hit_timer--
+got_hit_timer--;
+if(instance_exists(my_waterbomb_hitbox)){
+	my_waterbomb_hitbox.x = floor(x + spr_dir*2 + hsp);
+	my_waterbomb_hitbox.y = floor(y - 12 + vsp);
+	my_waterbomb_hitbox.hitbox_timer = 0;
+}
+
+
+if(state != 2 and instance_exists(my_waterbomb_hitbox) and my_waterbomb_hitbox.destroyed = true){
+	spawn_hit_fx(x, y, bbExplode);
+	sound_play( asset_get("sfx_waterhit_weak"));
+	instance_destroy();
+}

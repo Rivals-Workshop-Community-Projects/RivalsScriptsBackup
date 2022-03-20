@@ -30,8 +30,8 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, -1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 70);
+set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 7);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 85);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 65);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4);
@@ -46,6 +46,8 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 7);
@@ -62,12 +64,13 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.7);
-
+set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, false);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);

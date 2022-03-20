@@ -53,7 +53,7 @@ switch (state){
 	if (((state_timer mod 4) == 0)){ image_index++; }
 	if (((state_timer mod 12) == 0)){ create_hitbox( AT_DSPECIAL, 2, x+12 * spr_dir, y+10 ); }
 	
-	if (state_timer > 300){ state = 3; state_timer = 0; image_index = 0; }
+	if (state_timer > 135){ state = 3; state_timer = 0; image_index = 0; }
 	
 	break;
 	
@@ -87,14 +87,19 @@ switch (state){
 	
 	can_be_grounded = true;
 	ignores_walls = false;
-	hsp = -16;
+	//hsp = -16;
+	if (player_id.hitpause == true){ hitstop = true; hsp = 0; }
 	if (state_timer < 5){ vsp = 11; hsp = 0; }
+	
+	if (hitstop == false){
+		hsp = 16;
 	if (free == false && ((state_timer mod 4) == 0)){ create_hitbox(AT_DSTRONG, 4, x, y-40); }
 	if (state_timer > 5 && free == true || state_timer > 5 && (place_meeting( x-5, y, asset_get("par_block")) || (place_meeting( x+5, y, asset_get("par_block"))) )){ instance_destroy(); }
 	if (player_id.attack == AT_DSTRONG && player_id.window >= 4){
 	player_id.attack = AT_DSTRONG;
 	player_id.window = 4;
 	player_id.window_timer = 0;
+		}
 	}
 	break;
 	
@@ -104,14 +109,19 @@ switch (state){
 	
 	can_be_grounded = true;
 	ignores_walls = false;
-	hsp = 16;
+		//hsp = 16;
+	if (player_id.hitpause == true){ hitstop = true; hsp = 0; }
 	if (state_timer < 5){ vsp = 11; hsp = 0; }
+	
+	if (hitstop == false){
+		hsp = -16;
 	if (free == false && ((state_timer mod 4) == 0)){ create_hitbox(AT_DSTRONG, 4, x, y-40); }
 	if (state_timer > 5 && free == true || state_timer > 5 && (place_meeting( x-5, y, asset_get("par_block")) || (place_meeting( x+5, y, asset_get("par_block"))) )){ instance_destroy(); }
 	if (player_id.attack == AT_DSTRONG && player_id.window >= 4){
 	player_id.attack = AT_DSTRONG;
 	player_id.window = 4;
 	player_id.window_timer = 0;
+		}
 	}
 	break;
 	

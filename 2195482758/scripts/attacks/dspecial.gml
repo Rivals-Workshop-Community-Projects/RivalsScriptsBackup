@@ -18,11 +18,11 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, 8);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, 10);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -12.4);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 1.6);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 2);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
 

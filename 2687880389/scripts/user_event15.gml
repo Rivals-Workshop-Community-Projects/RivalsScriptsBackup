@@ -67,7 +67,7 @@ MunoPhone Touch.
 
 // Character's name, used in a couple of places in the phone.
 // (if you delete this line, it'd just use the config.ini name)
-muno_char_name = "Sandbert";
+muno_char_name = "Retroblast";
 
 // Whether or not the phone sprite should recolor w/ your alt costume.
 // (set to "true" if you make a custom phone sprite in your char's colors)
@@ -169,6 +169,44 @@ so that things like page breaks can work properly.
 
 #define CORE_tips
 
+initTip("Driving 101");
+initWords("Crouch to enter vehicle mode, then press left or right while holding down to drive around!");
+initWords("You reach a comfortable cruising speed quickly, but if the stage allows for it, you can continue to accelerate at a slow rate.");
+initImage_ext(sprite_get("crouchmoving"), -5, fa_center, 1, 1, true, c_white, 5, false, noone, noone, noone, noone);
+
+initTip("The Energy Meter");
+initWords("fspecial costs half the max energy meter - at least one circle needs to be filled in to use it.");
+initWords("uspecial slowly consumes energy while in use.");
+initWords("Energy begins to recharge when you touch the ground, wall, or get hit.");
+initWords("Energy recharges faster while grounded, but don't feel stuck to the ground!");
+initWords("Energy will constantly recharge until you use a move that spends it!");
+initImage_ext(sprite_get("fspecial"), 3, fa_left, 1, 1, true, c_white, 5, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("uspecial"), 9, fa_right, 1, 1, true, c_white, 5, false, noone, noone, noone, noone);
+
+initTip("nspecial: Grab and Throw");
+initWords("You can grab opponents at close range, then throw them in one of 4 directions.");
+initWords("Back throw has the best KO potential.");
+initWords("Down throw does the most damage, but doesn't have much KO potential.");
+initImage_ext(sprite_get("fthrow"), 5, fa_left, -1, 1, true, c_white, 5, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("nspecial"), 5, fa_center, -1, 1, true, c_white, 5, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("nthrow"), 4, fa_right, 1, 1, true, c_white, 5, false, noone, noone, noone, noone);
+
+initTip("Strong options");
+initWords("You can move left or right while spinning during dstrong.");
+initWords("You can aim fstrong up or down to change knockback angle and how far Retroblast is pushed back.");
+initWords("fstrong also has an active hibox for a little while during the move, so it's possible to hit an opponent while flying backward.");
+initImage_ext(sprite_get("dstrong"), -5, fa_center, 1, 1, true, c_white, 5, false, noone, noone, noone, noone);
+
+initTip("dspecial: Ramming Speed");
+initWords("Can be charged to give super armor for one hit and increases the distance covered.");
+initWords("Using the move earlier/later doesn't give any bonus damage.");
+initImage_ext(sprite_get("dspecial"), 7, fa_center, 1, 1, true, c_white, 5, false, noone, noone, noone, noone);
+
+initTip("Multiple Taunts");
+initWords("Pressing down and taunt at the same time will do an alternate taunt.");
+initWords("Some alt. palettes have a dedicated form, while the rest will randomly choose one.");
+
+/*
 initTip("NSpecial: Kamehameha");
 initWords("This Sandbert's NSpecial is completely different from the normal version of the character: it's Goku's Kamehameha!");
 initWords("The longer it's charged, the more distance it travels. The more distance it has left to travel by the time it reaches the enemy, the more damage and knockback it deals.");
@@ -208,7 +246,7 @@ initWords("Within a year, Sandbert became renowned not just in Air Nation but ac
 initWords_ext("Chapter 4", fa_center, c_gray, 0, false);
 initWords("Sandbert is a defender of the colossal Aetherian Forest. Deliberate and loyal, he is one of the infamous Wall Runners who patrol the Rock Wall. From their position atop the Wall, Sandbert and his fellow Runners defend both sides of the rock face and the forest below.");
 initWords("While normally slow because of their massive bodies, Wall Runners can curl up into balls and traverse the Wall at high speeds. Unlike other Wall Runners, Sandbert has the legendary ability to control the earth with his will. When in peril, Sandbert can summon the earth to aid him, and he repairs the Wall when it is under siege.");
-
+*/
 
 
 /*
@@ -408,6 +446,30 @@ initHeader("Compatible with");
 initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
+initPatch("1.11", "19 Mar, 2022");
+initWords("Balance, colors, and a rune!");
+initHeader("Balance");
+initWords("Thanks to LessTime and Underachiever Mako for suggestions");
+initSection("- Increased fspecial cost (50%->70% of meter)
+			- Reduced initial fpsecial hsp (10->9)
+			- Reduced uspecial max ascent speed (6.0->5.5)
+			- Decreased ftilt damage (9->7)
+			- Increased landing lag of bair/dair (4->8)
+			- ustrong hitboxes shrunk down to no longer include most of the spines, but still stretches out a little at the bottom of the front for better gamefeel
+			- Decreased ustrong base kb/hitpause (10->9.8)
+			- Adjusted fair kb angle (60->65)
+			- Reduced fair base kb/hitpause (5.5->5.2)
+			- Adjusted fstrong kb angle for aiming low (40->54) and mid (55->62)
+			- Decreased fstrong kb for all aim directions (7.5->7.25)
+			- Decreased soft speed limit when driving (17->15)
+			- Increased incremental acceleration factor when driving (0.8->0.85) (this is already in addition to a diminishing proportional factor prior to hitting the soft speed limit. You probably won't notice, but I think it helps make driving feel just a little faster than running)");
+initHeader("Presentation");
+initSection("- 2 new alts - Thanks to Zerks for the suggestions
+			- Replaced default Munophone tips (and updated fstrong tip - base/scaling kb is not affected by angle)
+			- Updated Munophone name for bthrow (previously 'nthrow')");
+initHeader("Runes");
+initSection("- Limiter Removal: All attacks cancelable by fspecial/uspecial on hit - Thanks to Underachiever Mako for the suggestion");
+
 initPatch("1.10", "27 Feb, 2022");
 initWords("Upgraded to a Munophone Touch.");
 initHeader("Presentation");
@@ -681,11 +743,6 @@ zero".
 
 #define CORE_cheats
 
-//
-CHEAT_FLY = initCheat("Fly", [0, 1], ["Off", "On"], "Take flight. So balanced
-
-(hold shield to not fly)");
-
 // update.gml
 cheat_unlimited_power = initCheat("Unlimited Energy", [0, 1], ["Off", "On"], "Take to the skies without worrying about that pesky energy bar!");
 
@@ -694,6 +751,11 @@ cheat_funny_snail = initCheat("Say woag", [0, 1], ["no", "yes"], "Say woag? Yes.
 
 // update.gml
 cheat_more_djumps = initCheat("Max DJumps", [1, 2, 3, 4, 5, 0], ["1", "2", "3", "4", "5", "0"], "Change Sandbert's maximum number of double jumps.");
+
+// update.gml
+CHEAT_FLY = initCheat("Fly", [0, 1], ["Off", "On"], "Take flight. So balanced
+
+(hold shield to not fly)");
 
 /*
 // attack_update.gml

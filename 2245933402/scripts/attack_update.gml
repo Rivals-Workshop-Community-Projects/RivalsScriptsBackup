@@ -3,6 +3,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+
 if (attack == AT_DATTACK){
 	if has_hit_player {
 		can_jump = true
@@ -51,12 +52,13 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_USPECIAL){
     can_fast_fall = false
-    if ostyle == 1 {
+    if ostyle == 1 or ostyle == 3{
     	sound_play(asset_get("sfx_spin"),false,noone,1,1.5); 
         sound_play(asset_get("sfx_bird_downspecial"),false,noone,.7,1.5); 
        	set_state (PS_PRATFALL)
        	vsp = -14
-       	spawn_hit_fx (x , y - 40 , 302)
+       	goup = spawn_hit_fx (x , y - 40 , 302)
+       	goup.pause = 6
     }
     
         
@@ -198,7 +200,7 @@ if (attack == AT_JAB){
 
 
 if attack == AT_UTILT && ostyle == 3 {
-    if window == 3 && window_timer == 3 && has_hit  {
+    if window == 3 && window_timer == 3 && has_hit && bullet == 0 {
                   sound_play(sound_get("SGL"));
                   bullet = 1
     }
@@ -209,7 +211,7 @@ if attack == AT_UTILT && ostyle == 3 {
                   sound_play(sound_get("SGF"));
                   bullet = 0
                             
-          create_hitbox(AT_UTILT , 3 , x + 60*spr_dir, y - 66 );
+              create_hitbox(AT_UTILT , 3 , x + 60*spr_dir, y - 66 );
             }
     }
     

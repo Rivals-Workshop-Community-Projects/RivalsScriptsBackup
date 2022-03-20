@@ -71,7 +71,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("empty_sprite")); //empty_sprite 
 //set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 10.0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.35);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

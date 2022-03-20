@@ -1,3 +1,10 @@
+var frames = get_color_profile_slot_r(99, 0);
+var seconds = get_color_profile_slot_g(99, 0);
+set_color_profile_slot(99, 0, ++frames, seconds, 0);
+if (frames % 60 == 0) set_color_profile_slot(99, 0, frames, ++seconds, 0);
+if (frames == 1) { //countdown CSS sound player by AurumKitsune
+sound_play(sound_get("victory_laugh"));
+}
 
 patch_ver = "1.0";
 

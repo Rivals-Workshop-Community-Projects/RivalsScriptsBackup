@@ -31,11 +31,11 @@ if (afterImageTimer > 0)
 else
 {
 	if (torren_speedforce > 0) {
-		afterImageTimer = 3
-		if (extra_zoom_hit == true) {
+//		afterImageTimer = 3
+//		if (extra_zoom_hit == true) {
 			
 			afterImageTimer = 16
-		}
+	//	}
 		
 	} else  afterImageTimer = 0
 	
@@ -107,7 +107,7 @@ with oPlayer if (self != other) {
 
 
 
-if (torren_speedforce >  0 && tauntvar%2== 0){
+if (torren_speedforce >  0 && tauntvar%2== 0 && !hitpause){
 	
 	torren_speedforce -= 1;
 }

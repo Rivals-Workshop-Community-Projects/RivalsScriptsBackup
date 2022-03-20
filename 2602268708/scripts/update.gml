@@ -4,24 +4,6 @@ if(get_player_color( player ) == 8) || (get_player_color( player ) == 27) || (ge
 bits = 1;
 }
 
-if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR and state != PS_AIR_DODGE and (up_down and shield_pressed) and !free y-=4
-
-//USPECIAL BODY HITBOX
-if(attack == AT_USPECIAL && window == 3){
-fired = 20;
-}
-
-if !(state == PS_PRATFALL || attack == AT_USPECIAL){
-fired = 0;
-} else if (fired > 0) && (has_hit == false) && (state == PS_PRATFALL){
-create_hitbox(AT_DATTACK, 2, x, y);
-fired--;
-}
-//i shouldnt need multiple reset things but dan moment or something idk
-if !(free) && (fired > 0){
-fired = 0;
-}
-
 if nspecial_grabbed_player != noone
 {
 	if instance_exists(nspecial_grabbed_player){ // switch/case statements dont work here btw
@@ -85,9 +67,9 @@ if nspecial_grabbed_player != noone
 			
 			//innefficient as hell manual shaking baybeeee
 			if (nspecial_grab_timer == 15) || (nspecial_grab_timer == 12) || (nspecial_grab_timer == 11) || (nspecial_grab_timer == 8) || (nspecial_grab_timer == 7) || (nspecial_grab_timer == 4) || (nspecial_grab_timer == 3){
-			nspecial_grabbed_player.x += -4; nspecial_grabbed_player.y += 4; }
+			nspecial_grabbed_player.x += -4; nspecial_grabbed_player.y += 4; nspecial_grabbed_player.spr_dir = 1; }
 			if (nspecial_grab_timer == 14) || (nspecial_grab_timer == 13) || (nspecial_grab_timer == 10) || (nspecial_grab_timer == 9) || (nspecial_grab_timer == 6) || (nspecial_grab_timer == 5) || (nspecial_grab_timer == 2) || (nspecial_grab_timer == 1){
-			nspecial_grabbed_player.x += 4; nspecial_grabbed_player.y += -4; }
+			nspecial_grabbed_player.x += 4; nspecial_grabbed_player.y += -4; nspecial_grabbed_player.spr_dir = -1; }
 			
 			with nspecial_grabbed_player
 			{
@@ -172,6 +154,12 @@ switch (state)
 	case PS_PARRY:
 	    if (state_timer == 1){ sound_play(sound_get("sm64_clink")); }
 	break;
+}
+
+if (state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && (attack == AT_FSPECIAL && window <= 2){
+if special_down { fspeshold++; }
+} else {
+fspeshold = 0;
 }
 
 if (introTimer2 < 3) {

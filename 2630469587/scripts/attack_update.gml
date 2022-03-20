@@ -146,15 +146,15 @@ if (attack == AT_USPECIAL_2){
 //Phantom code ends here
 
 if (attack == AT_JAB){
-	if (window == 13 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6) && (special_pressed || up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
+	if (window == 12 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6) && (special_pressed || up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
     	attack_end();
     	set_attack(AT_FSTRONG_2);
     	CorrectHurtboxes();
     }
-    if (window >= 12){
+    if (window >= 11){
             iasa_script();
     }
-    if (window >= 10 && window_timer >= 4 && is_special_pressed(DIR_UP) && has_hit){
+    if (window >= 9 && window_timer >= 4 && is_special_pressed(DIR_UP) && has_hit){
         has_hit_player = false;
         attack_end();
         set_attack(AT_USPECIAL);
@@ -162,8 +162,8 @@ if (attack == AT_JAB){
         window_timer = 4;
         sound_play( sound_get( "myonstart" ) );
     }
-    if (window == 11 && window_timer == 4 && was_parried) {
-        window = 16;
+    if (window == 10 && window_timer == 1 && was_parried) {
+        window = 15;
         window_timer = 6;
     }
 }
@@ -235,6 +235,10 @@ if (attack == AT_FSPECIAL_AIR){
 	if (window == 1 && window_timer == 1) {
         reset_window_value(AT_FSPECIAL_AIR, 5, AG_WINDOW_LENGTH);
     }
+    if (window == 2 && window_timer == 1) {
+        reset_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH);
+        reset_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME);
+    }
 	if (window == 9 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6) && (special_pressed || up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
     	attack_end();
     	set_attack(AT_FSTRONG_2);
@@ -243,7 +247,7 @@ if (attack == AT_FSPECIAL_AIR){
 	if (window == 5 && window_timer == 3 && was_parried) {
         window = 15;
     }
-    if (window == 1 && window_timer == 16) {
+    if (window == 1 && window_timer == 13) {
     	if (spr_dir == 1) {
 		var hit_effect = spawn_hit_fx(x-10, y-20, TJCflash);
 		hit_effect.depth = depth - 6;
@@ -316,19 +320,25 @@ if (attack == AT_FAIR){
 
 if (attack == AT_EXTRA_2){
     if (window == 2 && window_timer == 1){
-        sound_play( sound_get( "fair" ) );
+        sound_play( sound_get( "fair2" ) );
     }
 }
 
 if (attack == AT_NAIR && hitpause == false){
-    if (window == 3 && (window_timer == 1 || window_timer == 4 || window_timer == 7 || window_timer == 9)){
+    if (window == 3 && (window_timer == 1 || window_timer == 8)){
         sound_play( sound_get( "weee" ) );
     }
+    //stall in the air on hit, restored on double jump/walljump/grounded
+    if (has_nair_stall && window == 3 && has_hit && window_timer <= 10) {
+    	vsp = -2;
+    }
+    if (window == 3 && window_timer == get_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH)) has_nair_stall = false;
 }
 //funny nair spin
 /*
 if (attack == AT_NAIR) {
     if (window == 3 && window_timer == 8 && attack_down && has_hit) {
+    	attack_end();
         window = 3;
         window_timer = 0;
     }
@@ -388,6 +398,20 @@ if (attack == AT_DAIR){
 }
 
 if (attack == AT_EXTRA_1) {
+	if (window == 1 && window_timer == 1) {
+		set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 13);
+		set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 12);
+		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH, 83);
+		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT, 85);
+		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_Y, -41);
+	}
+	if (window == 2 && window_timer == 1) {
+		reset_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH);
+		reset_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME);
+		reset_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH);
+		reset_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT);
+		reset_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_Y);
+	}
     if ((window == 1) && hitpause == false) {
         can_move = true;
         can_jump = true;
@@ -492,15 +516,19 @@ if (attack == AT_FSTRONG){
     {
         if (down_down && spr_dir == 1) {
             create_hitbox(AT_FSTRONG, 3, x + 150, y - 40)
+            set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 8);
         }
         else if (down_down && spr_dir == -1) {
             create_hitbox(AT_FSTRONG, 3, x - 150, y - 40)
+            set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 8);
         }
         else if (up_down && spr_dir == 1) {
             create_hitbox(AT_FSTRONG, 3, x + 230, y - 40)
+            set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 8);
         }
         else if (up_down && spr_dir == -1) {
             create_hitbox(AT_FSTRONG, 3, x - 230, y - 40)
+            set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 8);
         }
         else if (spr_dir == 1) {
             create_hitbox(AT_FSTRONG, 1, x + 70, y - 40)
@@ -534,8 +562,10 @@ if (attack == AT_FSTRONG_2){
     {
         create_hitbox(AT_FSTRONG_2, 1, hit_player_obj.x, hit_player_obj.y - 40);
     }
-    if (window == 1 && window_timer == 4 && hitpause == false && !was_parried && hit_player_obj.state_cat != SC_HITSTUN) {
+    else if (window == 1 && window_timer == 4 && hitpause == false && !was_parried && hit_player_obj.state_cat != SC_HITSTUN && (hit_player_obj.state != PS_SPAWN || hit_player_obj.state != PS_RESPAWN || hit_player_obj.state != PS_DEAD)) {
     	create_hitbox(AT_FSTRONG_2, 3, hit_player_obj.x, hit_player_obj.y - 40);
+    }
+    else if (window == 1 && window_timer == 4 && hitpause == false && !was_parried && (hit_player_obj.state == PS_SPAWN || hit_player_obj.state == PS_RESPAWN || hit_player_obj.state == PS_DEAD)) {
     }
 }
 
@@ -702,6 +732,19 @@ if (attack == AT_FTHROW) {
 //phantom.state_timer = 0;
 //    }
 //}
+	if (attack == AT_DSPECIAL_AIR) {
+		if (window == 3 && window_timer == 1) {
+			reset_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH);
+			reset_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT);
+		}
+	}
+	
+	if (attack == AT_EXTRA_3) {
+		if (window == 1 && window_timer == 1) {
+			reset_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH);
+			reset_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT);
+		}
+	}
 
 if (attack == AT_DSPECIAL) {
 	//reset 'grabbed_player' variables on the first frame when performing a grab.
@@ -808,6 +851,10 @@ if (attack == AT_DSPECIAL_2 && window == 5 && window_timer == 6) {
     else {
         spr_dir = -1;
     }
+}
+
+if (attack == AT_DSPECIAL_2 && window == 5 && window_timer == 6) {
+    move_cooldown[AT_DSPECIAL] = 2;
 }
 
 if (attack == AT_DSPECIAL_AIR && (window == 1 || window == 2 || window == 3 || window == 4)) {

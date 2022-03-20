@@ -9,3 +9,5 @@
     draw_sprite( sprite_get("HuD"), 1, temp_x + 133, temp_y - 22);
 }
     shader_end();
+    muno_event_type = 5;
+user_event(14);

@@ -2,7 +2,11 @@
 
 if (attack == AT_FSTRONG){
     if (hitbox_timer = 1){
-	vsp = -1; hsp = 1 * spr_dir; sound_play(sound_get("whomp")); player_id.move_cooldown[AT_FSTRONG] = 30; }
+	vsp = -1; hsp = 1 * spr_dir;
+	    if(player_id.bits == 1){
+		    sound_play(sound_get("chuckyanoise_smb2")); } else { sound_play(sound_get("whomp")); }
+	player_id.move_cooldown[AT_FSTRONG] = 30; }
+	
 	if (hitbox_timer = 7){ vsp = 0; }
     if (hitbox_timer > 15){ grav = 0.9; }
 	if (hitbox_timer == 15){
@@ -42,11 +46,12 @@ if (attack == AT_DSTRONG){
         if (free) && (thitground == false){
 		create_hitbox(AT_DSTRONG, 1, x, y+40);
 		create_hitbox(AT_DSTRONG, 2, x, y+40);
-		} else if (free == 0){
+		} else if !free{
+		    if !thitground { image_index = 0; }
 		    thitground = true;
 			img_spd = 0.3;
-		    if (image_index == 3){destroyed = true; }
 		}
+		if (image_index >= 2.7){destroyed = true; }
         if (destroyed == true){ 
 		create_hitbox(AT_DSTRONG, 4, x, y+60);
 		if(player_id.bits == 1){
@@ -57,6 +62,9 @@ if (attack == AT_DSTRONG){
 
 if (attack == AT_FSPECIAL)
 {
+    if y < get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS){
+    player_id.move_cooldown[AT_FSPECIAL] = 5;
+	}
     if (player_id.nspecial_grabbed_player == id){
     hit_priority = 0;
     } else {
@@ -64,6 +72,7 @@ if (attack == AT_FSPECIAL)
     }
 	
 	if (player_id.nspecial_grabbed_player == id){
+	    bounced = true;
 		++length;
 		spr_dir = player_id.spr_dir;
 		
@@ -132,6 +141,11 @@ if (attack == AT_FSPECIAL)
 				player_id.nspecial_grabbed_player = id;
 			}
 		}
+		if hitbox_timer <= 1 && player_id.fspeshold > 12{
+		        player_id.nspecial_grab_timer = player_id.nspecial_grab_max_time;
+				player_id.nspecial_grabbed_player = id;
+				player_id.fspeshold = 0;
+		}
 	}
 }
 
@@ -143,7 +157,7 @@ if (attack == AT_TAUNT_2 && hbox_num == 1) {
 }
 
 if attack == AT_DSPECIAL && hbox_num == 1{
-x = obj_article1.x + 16*obj_article1.spr_dir;
+x = obj_article1.x + 10*obj_article1.spr_dir;
 y = obj_article1.y - 24;
 }
 

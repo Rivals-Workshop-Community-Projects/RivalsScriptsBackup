@@ -28,6 +28,15 @@ if(my_hitboxID.attack == AT_DSTRONG){
 	}
 }
 
+if(my_hitboxID.attack == AT_FAIR){
+	if(my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4){
+		grabbedid = hit_player_obj;
+        hit_player_obj.grabbed = 1;
+		grabbedid.ungrab = 0;
+	}
+}
+
+/*
 if(waterCharges < 3){
 	if(my_hitboxID.attack == AT_USPECIAL){
 		if(my_hitboxID.hbox_num == 2){
@@ -195,11 +204,12 @@ if(waterCharges < 3){
 		}
 	}
 }
-
+*/
 if(attack == AT_NSPECIAL){
+	/*
 	if(waterCharges < 3){
 	waterCharges += 1
-	}
+	}*/
 	stupid_hit_var = true
 }
 

@@ -6,9 +6,16 @@ if (my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_FSPECIAL) && my
        
 }
 
-
+if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 3 {
+            	sound_play(asset_get("sfx_absa_kickhit"));
+            	sound_play(asset_get("sfx_abyss_explosion"));
+           	my_hitboxID.destroyed = true 
+           	spawn_hit_fx (my_hitboxID.x , my_hitboxID.y , 253)
+}
+            
+            
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 2 {
-    move_cooldown[AT_TAUNT_2] = 8
+    move_cooldown[AT_TAUNT_2] = 6
     sound_play(asset_get("sfx_icehit_medium1"));
 }
 
@@ -55,18 +62,15 @@ if my_hitboxID.attack == AT_JAB && gun = 0{
 }
 
 if my_hitboxID.attack == AT_FAIR or my_hitboxID.attack == AT_FTILT {
-	if bbullet ==  0 {
+	if bbullet <= 0 {
 		sound_play(sound_get("SGL"));
-
 	}
-	
-	bbullet = 2
+	bbullet = 1
 }
 
 if my_hitboxID.attack == AT_UAIR  {
 	if bullet ==  0 {
 		sound_play(sound_get("SGL"));
-
 	}
 	bullet = 1 
 }

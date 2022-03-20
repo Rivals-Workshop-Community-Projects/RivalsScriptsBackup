@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 11, 81, 81 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 24 );
 
 // Optimum Primer
 set_color_profile_slot( 1, 0, 0, 255, 247 ); //energy
@@ -246,45 +246,45 @@ set_color_profile_slot( 21, 5, 0, 255, 0 ); //hands
 set_color_profile_slot( 21, 6, 0, 255, 0 ); //connectors
 set_color_profile_slot( 21, 7, 0, 255, 0 ); //feet
 
-// Cabinet Man
-set_color_profile_slot( 22, 0, 235, 26, 119 ); //energy
-set_color_profile_slot( 22, 1, 44, 32, 115 ); //helmet
-set_color_profile_slot( 22, 2, 235, 26, 119 ); //visor
-set_color_profile_slot( 22, 3, 0, 122, 94 ); //flesh
-set_color_profile_slot( 22, 4, 44, 32, 115 ); //torso
-set_color_profile_slot( 22, 5, 235, 26, 119 ); //hands
-set_color_profile_slot( 22, 6, 0, 122, 94 ); //connectors
-set_color_profile_slot( 22, 7, 235, 26, 119 ); //feet
+// Mettaton EX
+set_color_profile_slot( 22, 0, 255, 204, 16 ); //energy
+set_color_profile_slot( 22, 1, 51, 51, 51 ); //helmet
+set_color_profile_slot( 22, 2, 255, 204, 16 ); //visor
+set_color_profile_slot( 22, 3, 207, 207, 207 ); //flesh
+set_color_profile_slot( 22, 4, 255, 51, 228 ); //torso
+set_color_profile_slot( 22, 5, 207, 207, 207 ); //hands
+set_color_profile_slot( 22, 6, 51, 51, 51 ); //connectors
+set_color_profile_slot( 22, 7, 255, 51, 228 ); //feet
 
-// Robot
-set_color_profile_slot( 23, 0, 255, 221, 0 ); //energy
-set_color_profile_slot( 23, 1, 255, 0, 0 ); //helmet
-set_color_profile_slot( 23, 2, 255, 233, 92 ); //visor
-set_color_profile_slot( 23, 3, 207, 207, 207 ); //flesh
-set_color_profile_slot( 23, 4, 255, 0, 0 ); //torso
-set_color_profile_slot( 23, 5, 255, 0, 0 ); //hands
-set_color_profile_slot( 23, 6, 207, 207, 207 ); //connectors
+// Queen
+set_color_profile_slot( 23, 0, 94, 255, 31 ); //energy
+set_color_profile_slot( 23, 1, 0, 136, 255 ); //helmet
+set_color_profile_slot( 23, 2, 51, 51, 51 ); //visor
+set_color_profile_slot( 23, 3, 255, 255, 255 ); //flesh
+set_color_profile_slot( 23, 4, 0, 136, 255 ); //torso
+set_color_profile_slot( 23, 5, 0, 136, 255 ); //hands
+set_color_profile_slot( 23, 6, 255, 255, 255 ); //connectors
 set_color_profile_slot( 23, 7, 255, 0, 0 ); //feet
 
-// Nightdrive
-set_color_profile_slot( 24, 0, 255, 106, 0 ); //energy
-set_color_profile_slot( 24, 1, 120, 19, 148 ); //helmet
+// Cabinet Man
+set_color_profile_slot( 24, 0, 235, 26, 119 ); //energy
+set_color_profile_slot( 24, 1, 44, 32, 115 ); //helmet
 set_color_profile_slot( 24, 2, 235, 26, 119 ); //visor
-set_color_profile_slot( 24, 3, 0, 247, 255 ); //flesh
-set_color_profile_slot( 24, 4, 120, 19, 148 ); //torso
-set_color_profile_slot( 24, 5, 65, 0, 196 ); //hands
-set_color_profile_slot( 24, 6, 0, 136, 255 ); //connectors
-set_color_profile_slot( 24, 7, 65, 0, 196 ); //feet
+set_color_profile_slot( 24, 3, 0, 122, 94 ); //flesh
+set_color_profile_slot( 24, 4, 44, 32, 115 ); //torso
+set_color_profile_slot( 24, 5, 235, 26, 119 ); //hands
+set_color_profile_slot( 24, 6, 0, 122, 94 ); //connectors
+set_color_profile_slot( 24, 7, 235, 26, 119 ); //feet
 
-// nightdrive_classic
-set_color_profile_slot( 25, 0, 255, 106, 0 ); //energy
-set_color_profile_slot( 25, 1, 77, 12, 95 ); //helmet
-set_color_profile_slot( 25, 2, 235, 26, 119 ); //visor
-set_color_profile_slot( 25, 3, 0, 247, 255 ); //flesh
-set_color_profile_slot( 25, 4, 77, 12, 95 ); //torso
-set_color_profile_slot( 25, 5, 43, 3, 122 ); //hands
-set_color_profile_slot( 25, 6, 18, 1, 50 ); //connectors
-set_color_profile_slot( 25, 7, 43, 3, 122 ); //feet
+// Robot
+set_color_profile_slot( 25, 0, 255, 221, 0 ); //energy
+set_color_profile_slot( 25, 1, 255, 0, 0 ); //helmet
+set_color_profile_slot( 25, 2, 255, 233, 92 ); //visor
+set_color_profile_slot( 25, 3, 207, 207, 207 ); //flesh
+set_color_profile_slot( 25, 4, 255, 0, 0 ); //torso
+set_color_profile_slot( 25, 5, 255, 0, 0 ); //hands
+set_color_profile_slot( 25, 6, 207, 207, 207 ); //connectors
+set_color_profile_slot( 25, 7, 255, 0, 0 ); //feet
 
 // Retroblast
 set_color_profile_slot( 26, 0, 255, 106, 0 ); //energy
@@ -296,35 +296,25 @@ set_color_profile_slot( 26, 5, 111, 0, 255 ); //hands
 set_color_profile_slot( 26, 6, 174, 0, 255 ); //connectors
 set_color_profile_slot( 26, 7, 111, 0, 255 ); //feet
 
-// Retroblast_new
+// Nightdrive
 set_color_profile_slot( 27, 0, 255, 106, 0 ); //energy
-set_color_profile_slot( 27, 1, 111, 0, 255 ); //helmet
-set_color_profile_slot( 27, 2, 255, 106, 0 ); //visor
-set_color_profile_slot( 27, 3, 219, 219, 219 ); //flesh
-set_color_profile_slot( 27, 4, 0, 102, 255 ); //torso
-set_color_profile_slot( 27, 5, 111, 0, 255 ); //hands
-set_color_profile_slot( 27, 6, 174, 0, 255 ); //connectors
-set_color_profile_slot( 27, 7, 111, 0, 255 ); //feet
+set_color_profile_slot( 27, 1, 120, 19, 148 ); //helmet
+set_color_profile_slot( 27, 2, 235, 26, 119 ); //visor
+set_color_profile_slot( 27, 3, 0, 247, 255 ); //flesh
+set_color_profile_slot( 27, 4, 120, 19, 148 ); //torso
+set_color_profile_slot( 27, 5, 65, 0, 196 ); //hands
+set_color_profile_slot( 27, 6, 0, 136, 255 ); //connectors
+set_color_profile_slot( 27, 7, 65, 0, 196 ); //feet
 
-// Mettaton EX
-set_color_profile_slot( 28, 0, 255, 204, 16 ); //energy
-set_color_profile_slot( 28, 1, 51, 51, 51 ); //helmet
-set_color_profile_slot( 28, 2, 255, 204, 16 ); //visor
-set_color_profile_slot( 28, 3, 207, 207, 207 ); //flesh
-set_color_profile_slot( 28, 4, 255, 51, 228 ); //torso
-set_color_profile_slot( 28, 5, 207, 207, 207 ); //hands
-set_color_profile_slot( 28, 6, 51, 51, 51 ); //connectors
-set_color_profile_slot( 28, 7, 255, 51, 228 ); //feet
-
-// Queen
-set_color_profile_slot( 29, 0, 94, 255, 31 ); //energy
-set_color_profile_slot( 29, 1, 0, 136, 255 ); //helmet
-set_color_profile_slot( 29, 2, 51, 51, 51 ); //visor
-set_color_profile_slot( 29, 3, 255, 255, 255 ); //flesh
-set_color_profile_slot( 29, 4, 0, 136, 255 ); //torso
-set_color_profile_slot( 29, 5, 0, 136, 255 ); //hands
-set_color_profile_slot( 29, 6, 255, 255, 255 ); //connectors
-set_color_profile_slot( 29, 7, 51, 51, 51 ); //feet
+// nightdrive_classic
+set_color_profile_slot( 28, 0, 255, 106, 0 ); //energy
+set_color_profile_slot( 28, 1, 77, 12, 95 ); //helmet
+set_color_profile_slot( 28, 2, 235, 26, 119 ); //visor
+set_color_profile_slot( 28, 3, 0, 247, 255 ); //flesh
+set_color_profile_slot( 28, 4, 77, 12, 95 ); //torso
+set_color_profile_slot( 28, 5, 43, 3, 122 ); //hands
+set_color_profile_slot( 28, 6, 18, 1, 50 ); //connectors
+set_color_profile_slot( 28, 7, 43, 3, 122 ); //feet
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

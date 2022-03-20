@@ -83,6 +83,8 @@ set_character_color_shading( 6, 0 );
 
 //Stolen from SuperSonicNK but they put it in #modding-resources so that's allowed
 switch (get_match_setting(SET_SEASON)) {
+//debug_season = 4;
+//switch (debug_season) {
   case 1: // valentines
 	set_color_profile_slot( 6, 0, 255, 133, 193 ); //BODY
 	set_color_profile_slot( 6, 1, 255, 194, 219 ); //BODYHIGH
@@ -117,14 +119,14 @@ switch (get_match_setting(SET_SEASON)) {
     break;
   case 4: // christmas
     //set your christmas holiday alt
-	set_color_profile_slot( 7, 0, 80, 63, 94 ); //BODY
-	set_color_profile_slot( 7, 1, 143, 114, 168 ); //BODYHIGH
-	set_color_profile_slot( 7, 2, 144, 59, 206 ); //LIMBS
-	set_color_profile_slot( 7, 3, 146, 152, 189 ); //KEY
-	set_color_profile_slot( 7, 4, 220, 113, 255 ); //BOBBLE
-	set_color_profile_slot( 7, 5, 255, 207, 254 ); //BOBBLEHIGH
-	set_color_profile_slot( 7, 6, 230, 165, 52 ); //EYES
-	set_color_profile_slot( 7, 7, 255, 231, 0 ); //PROJECTILE BLUE
+    set_color_profile_slot( 6, 0, 68, 179, 34 ); //BODY
+    set_color_profile_slot( 6, 1, 135, 240, 103 ); //BODYHIGH
+    set_color_profile_slot( 6, 2, 255, 72, 72 ); //LIMBS
+    set_color_profile_slot( 6, 3, 239, 52, 15 ); //KEY
+    set_color_profile_slot( 6, 4, 253, 235, 232 ); //BOBBLE
+    set_color_profile_slot( 6, 5, 255, 255, 255 ); //BOBBLEHIGH
+    set_color_profile_slot( 6, 6, 255, 255, 255 ); //EYES
+    set_color_profile_slot( 6, 7, 68, 179, 34 ); //PROJECTILE BLUE
     break;
 }
 

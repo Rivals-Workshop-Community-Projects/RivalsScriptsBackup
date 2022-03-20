@@ -6,6 +6,19 @@ with (pHitBox) if (player_id == other && (attack == AT_FSPECIAL || attack == AT_
 		destroy_effect.draw_angle = proj_angle;
 	}
 }
+
+if (state == PS_SPAWN) {
+    if (introTimer < 20 && introTimer >= 0) {
+        sprite_index = sprite_get("intro");
+        image_index = introTimer;
+    } else if (introTimer < 0) {
+        sprite_index = sprite_get("intro");
+        image_index = 0;
+    } else {
+        sprite_index = sprite_get("idle");
+    }
+}
+
 switch (state){
     case PS_IDLE:
     case PS_RESPAWN:

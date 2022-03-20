@@ -22,14 +22,14 @@ alt_name[8]  = "Original";
 alt_name[9]  = "Bi pride";
 alt_name[10]  = "Melon";
 alt_name[11]  = "Neon";
-alt_name[12]  = "Icy";
+alt_name[12]  = "Award";
 alt_name[13]  = "Refraction";
 alt_name[14]  = "Deor";
 alt_name[15]  = "Royal";
 alt_name[16]  = "Rough";
 alt_name[17]  = "Icon";
-alt_name[18]  = "Sparks";
-alt_name[19]  = "Jem";
+alt_name[18]  = "Jem";
+alt_name[19]  = "Sparks";
 alt_name[20]  = "Pig Kid";
 alt_name[21]  = "Fish";
 alt_name[22]  = "Sky Rat";
@@ -41,14 +41,13 @@ alt_name[25]  = "BLM";
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 2.3", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Subscribe to @PK_King544 on YT", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "April 10th, 2021", c_white, c_white, c_white, c_white, 1);
-
+draw_text_color(x + 210, y - 6, "", c_white, c_white, c_white, c_white, 1);
 
 // Nut
 if (alt_cur == 0){

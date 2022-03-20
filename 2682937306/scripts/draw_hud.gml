@@ -1,4 +1,4 @@
-if (state == PS_SPAWN || state == PS_RESPAWN || state == PS_DEAD){ }// has_bomb = true; }
+if (state == PS_SPAWN || state == PS_RESPAWN || state == PS_DEAD){ tornado_id = noone; }
 
 if !(state == PS_DEAD || state == PS_RESPAWN || tornado_id == noone && instance_exists(tornado_id)){
 draw_sprite_ext(sprite_get("sand_hud"), 0, temp_x+185, temp_y-18, 2, 2, 0, c_white, 1);
