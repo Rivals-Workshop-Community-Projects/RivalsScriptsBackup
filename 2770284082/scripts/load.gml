@@ -85,3 +85,4 @@ set_victory_theme(sound_get("v_aitstabdutobebackhoo"));
 sprite_change_offset("hat1", 30, 30);
 sprite_change_offset("hat2", 30, 30);
 sprite_change_offset("hat3", 30, 30);
+sprite_change_offset("hat4", 30, 30);

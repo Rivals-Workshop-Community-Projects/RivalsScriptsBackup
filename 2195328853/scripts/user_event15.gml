@@ -230,6 +230,24 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.70", "21st March 2022");
+initHeader("Buffs");
+initSection("- FAir has more range,,,");
+initSection("- DAir hitboxes are a bit bigger, and the sourspot is a bit stronger (bkb 5->6, kbs 0.7->0.9)");
+initSection("- Small FSpecial clouds now have hitstun and knockback");
+initSection("- Increased FStrong kbs (0.92->1.0)");
+initSection("- Changed UStrong angle (95->90) and increased knockback (bkb 6->7, kbs 0.98->1.0)");
+initSection("- Decreased DStrong startup (24->20)");
+initSection("- All strongs now have lower ground friction, letting you slide a bit during the startup");
+initSection("- FTilt and UTilt do more damage and knockback");
+initSection("- Blob Ball no longer despawns over time");
+initSection("- DSpecial tap down now spikes");
+initSection("- Hold USpecial is now much stronger, the sourspot can combo better, and it has less endlag");
+initSection("- DAttack endlag can now be cancelled on hit");
+initHeader("Fixes / Other Changes");
+initSection("- Lowered ground friction (0.5->0.25)");
+initSection("- Improved FAir animation, giving it a bit more weight and smoother endlag");
+
 initPatch("1.69", "24th November, 2021");
 initHeader("Buffs");
 initSection("- C r a w l");
@@ -238,7 +256,6 @@ initPatch("1.68", "24th November, 2021");
 initHeader("Buffs");
 initSection("- Crouch buffs again because epic");
 initSection("- Increased airdodge speed a bit (7.5->8)");
-
 initHeader("Fixes / Other Changes");
 initSection("- Changed crouch animation");
 initSection("- Added 5 new alts, with Box God alt having special box sprites for DSpecial, parry, and blob ball");

@@ -64,7 +64,7 @@ if my_hitboxID.attack == AT_NSPECIAL {
 		my_hitboxID.destroyed = true;
 	}
 }if my_hitboxID.attack == AT_FSPECIAL {
-	if(my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3){ //steam cloud hitbox
+	if(my_hitboxID.hbox_num == 2 /*|| my_hitboxID.hbox_num == 3*/){ //steam cloud hitbox
 		sound_play(asset_get("sfx_ell_steam_hit"));
 	}
 }if my_hitboxID.attack == AT_DSPECIAL {

@@ -22,10 +22,14 @@ if shield > 1 {
     if shield == 1 {
      if canhalo == 1 {    
         soft_armor = 0
+        if phaseh > 1 {
         sound_play(asset_get("sfx_ori_charged_flame_charge"),false,noone,.8,0.75 - phaseh/100)
         sound_play(asset_get("sfx_absa_kickhit"),false,noone,.8,1)
         sound_play(sound_get("perish"),false,noone,1,1 - phaseh/50)
-        move_cooldown[AT_EXTRA_1] = 400 + phaseh*30
+        move_cooldown[AT_EXTRA_1] = 300 + phaseh*40
+        } else {
+        move_cooldown[AT_EXTRA_1] = 2   
+        }
         move_cooldown[AT_UAIR] = 60
         vfxb = spawn_hit_fx(x,y - 50,306)
         vfxb.image_xscale = 1.4
@@ -49,7 +53,7 @@ if shield == 1 {
     vfxb.depth = -6
     angle += (10 + min(10,(enemy_hitboxID.kb_value)*2))*(1 - get_gameplay_time()%3)
     sound_stop(sound_get("olaugh"))
-    sound_play(sound_get("olaugh"),false,noone,.75,1 - phaseh/10) 
+    sound_play(sound_get("olaugh"),false,noone,.75,1 - phaseh/190) 
     sound_play(sound_get("RI"),false,noone,enemy_hitboxID.kb_value/10,1.5)
 
 }

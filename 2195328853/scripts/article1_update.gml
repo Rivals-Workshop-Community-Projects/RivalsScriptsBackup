@@ -419,7 +419,7 @@ if(hitstop < 0){
 		spawn_hit_fx(x,y, player_id.fx_blob_ball_explosion);
 	}
 }
-if(x > room_width || x < 0 || y >= room_height+65 || y <= -200 || ball_timer > 300 || balldestroy){
+if(x > room_width || x < 0 || y >= room_height+65 || y <= -200 /*|| ball_timer > 300*/ || balldestroy){
     if (instance_exists(ballhitbox)) {
     	instance_destroy(ballhitbox);
     	ballhitbox = noone;

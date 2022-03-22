@@ -340,13 +340,6 @@ if (attack == AT_NSPECIAL){
         	destroy_hitboxes();
         	window = 6;window_timer = 0;
         }
-    }else if(window == 6){
-    	if(window_timer <= 1){
-
-	    }
-        if(window_timer == 3){
-        	//window = 7;window_timer = 0;
-        }
     }
 }else if (attack == AT_DSPECIAL){
     can_fast_fall = false;
@@ -521,7 +514,7 @@ if (attack == AT_NSPECIAL){
             window = 4;window_timer = 0;
         }
     }
-    if(window > 2 && window < 3){
+    if(window > 1 && window < 4){
     	var rand_dir = random_func(1, 359, true);
     	spawn_hit_fx((x) + round(lengthdir_x(25, rand_dir)), (y - 30) + round(lengthdir_y(25, rand_dir)), fx_bluetrailslow);
     }
@@ -567,6 +560,8 @@ if (attack == AT_NSPECIAL){
 }else if (attack == AT_DATTACK){
     if(has_rune("A") && window >= 2 && has_hit && jump_pressed){
         window = 10;window_timer = 100;
+    }if(window >= 3){
+    	cancelattack();
     }
 }else if (attack == AT_DSTRONG){
     if(window == 1){
@@ -606,3 +601,9 @@ if (attack == AT_NSPECIAL){
     }
     djumps = 5;
 }
+
+#define cancelattack
+    if(has_hit && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
+	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)){
+		window = 20;
+	}

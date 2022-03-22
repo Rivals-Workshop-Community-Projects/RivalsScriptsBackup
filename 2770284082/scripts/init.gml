@@ -12,6 +12,8 @@ ncode3 = "with Anomalies, notoriously [Burger Clown]"
 cur_sound = sound_play(sound_get("v_hee"))
 	 	sound_stop(cur_sound)
 
+reversed = 0
+
 voiced = 1
 
 soundlol = 0

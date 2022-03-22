@@ -5,6 +5,37 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+
+
+if attack == AT_FTILT or attack == AT_DTILT or attack == AT_DATTACK or attack == AT_UTILT 
+or attack == AT_FAIR or attack == AT_NAIR or attack == AT_UAIR {
+	
+	if has_hit_player{
+		move_cooldown[AT_EXTRA_3] = 0
+	}
+	
+	if window == 1 && window_timer == 1 {
+		move_cooldown[AT_EXTRA_3] -= 5
+	}
+	
+	if window == get_attack_value(attack, AG_NUM_WINDOWS) && !has_hit_player {
+	    if  move_cooldown[AT_EXTRA_3] <= 0 {
+	    	move_cooldown[AT_EXTRA_3] = 20 + random_func(1,50,true)
+	    }
+	    
+	}
+	
+		if move_cooldown[AT_EXTRA_3] > 0 && move_cooldown[AT_EXTRA_3] < 5 {
+	    	move_cooldown[AT_EXTRA_3] = 2
+	    }
+	    
+	if move_cooldown[AT_EXTRA_3] > 0 && window != get_attack_value(attack, AG_NUM_WINDOWS) {
+		sound_stop(cur_sound)
+	}
+   
+	
+}
+
 switch attack {
 	
 	case AT_TAUNT :
@@ -109,6 +140,8 @@ switch attack {
 	break ;
 	
 	case AT_FTILT :
+	
+     	
      if window == 1 && !hitpause {
      	if window_timer == 1 {
      		if (((left_down) or left_stick_down) && side == 1 ) or (((right_down) or right_stick_down) && side == -1) {
@@ -189,6 +222,17 @@ switch attack {
 		hsp = 8*spr_dir
 		}
 	}
+	
+	if window == 2 && window_timer <= 5 && attack_pressed && !has_hit_player{
+	     	attack_end();
+	     	destroy_hitboxes();
+     		attack = AT_DATTACK
+     		window = 1
+     		window_timer = 0
+     		hsp = 6*spr_dir
+     		old_hsp = 6*spr_dir
+     		hurtboxID.sprite_index = get_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE);
+     }
 	
 	if has_hit_player && !hitpause {
 		window_timer += 0.5
@@ -466,7 +510,6 @@ switch attack {
 	 	if state_timer > 30 {
 	 		spawn_hit_fx(x - 30 + random_func(1,60,true), y + vsp - 50 + random_func(2,50,true),p1)
             spawn_hit_fx(x - 30 + random_func(3,60,true), y + vsp - 50 + random_func(4,50,true),p2)
-            //spawn_hit_fx(x - 20 + random_func(3,40,true), y + vsp - 60 + random_func(4,40,true),p3)  
 	 	}
 	 	
 	 	if (!special_down or state_timer == 50) && !hitpause {
@@ -483,7 +526,6 @@ switch attack {
 	 	set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 12 + floor(state_timer/6));
 	 	spawn_hit_fx(x - 30 + random_func(1,60,true) - hsp, y + vsp - 60 + random_func(2,50,true),p1)
         spawn_hit_fx(x - 30 + random_func(3,60,true) - hsp, y + vsp - 60 + random_func(4,50,true),p2)
-        spawn_hit_fx(x - 20 + random_func(3,40,true) - hsp, y + vsp - 60 + random_func(4,40,true),p3)  
         
         hsp = (5 + state_timer/4)*spr_dir
         vsp = 0
@@ -509,15 +551,29 @@ switch attack {
 	case AT_NSPECIAL :
 	   if window == 1 {
 	   	 if state_timer == 1 && !hitpause {
+	   	 	reversed = 0
 	   	 	cur_sound = sound_play(sound_get("v_daa"),false,noone,.7,1.05 - random_func(1,10,true)/100)
 	   	 	side = spr_dir
 	   	 }
 	   	 if state_timer == 5 && !hitpause {
-	   	 	if right_down - left_down != 0 {
-	 			side = right_down - left_down
-	 		    spr_dir = right_down - left_down
-	 		}
+	   	 	if right_down && side == -1 {
+	   	 		side = 1
+	   	 		spr_dir = 1 
+	   	 		reversed = 1
+	   	 		sound_play(sound_get("shing"),false, noone, .8, 1.15)
+	   	 		brv = spawn_hit_fx(x,y - 50,305)
+	   	 		brv.pause = 5
+	   	 	}
+	   	 	if left_down && side == 1 {
+	   	 		side = -1
+	   	 		spr_dir = -1 
+	   	 		reversed = 1
+	   	 		sound_play(sound_get("shing"),false, noone, .8, 1.15)
+	   	 		brv = spawn_hit_fx(x,y - 50,305)
+	   	 		brv.pause = 5
+	   	 	}
 	   	 }
+	   	 
 	   	 if state_timer == 8 && !hitpause {
 	   	 	sound_play(sound_get("swingm3"),false,noone,0.6,.7)
 	   	 	cur_sound = sound_play(sound_get("v_shchk"),false,noone,.7,1.05 - random_func(1,10,true)/100)
@@ -533,6 +589,7 @@ switch attack {
 	break;
 	
 	case AT_DSPECIAL :
+	   move_cooldown[AT_EXTRA_3] = 0
 	   hsp /= 1.2
 	   move_cooldown[AT_DSPECIAL] = 20
 	   if window < 3 {

@@ -1,6 +1,8 @@
 //
 //sound_stop(cur_sound)
 
+print(move_cooldown[AT_EXTRA_3])
+
 if get_gameplay_time() <= 120 && voiced == 1 {
 
 	if taunt_down {
@@ -60,6 +62,8 @@ if damageminigate < -6 {
 
 
 with (asset_get("pHitBox")) {
+
+  if(player_id == other.id) && type == 1 {
 p1 = hit_fx_create( sprite_get( "spark1" ), 12);
 sprite_change_offset("spark1", 5, 5);
 
@@ -68,7 +72,7 @@ sprite_change_offset("spark2", 5, 5);
 
 p3 = hit_fx_create( sprite_get( "spark3" ), 20);
 sprite_change_offset("spark3", 30, 30);
-  if(player_id == other.id) && type == 1 {
+
       spawn_hit_fx(x - 30 + random_func(1,60,true), y + vsp - 40 + random_func(2,60,true),p1)
       spawn_hit_fx(x - 30 + random_func(3,60,true), y + vsp - 40 + random_func(4,60,true),p2)
       if hitbox_timer % 3 == 0 {

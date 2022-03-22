@@ -383,7 +383,7 @@ if oattack == 6 {
 
 //grab
 if oattack == 7 {
-	move_cooldown[AT_NSPECIAL_2] += 150
+	move_cooldown[AT_NSPECIAL_2] += 290
     if move_cooldown[AT_DSPECIAL] == 0 move_cooldown[AT_DSPECIAL] = 220 
     if move_cooldown[AT_USPECIAL] == 0 move_cooldown[AT_USPECIAL] = 220
     oattack = 0 
@@ -451,7 +451,7 @@ if oattack == 10 {
 //Chao Control
 if oattack == 11 {
     oattack = 0 
-    move_cooldown[AT_NSPECIAL_2] = 800
+    move_cooldown[AT_NSPECIAL_2] = 500
     move_cooldown[AT_DSPECIAL] = 220
     move_cooldown[AT_USPECIAL] = 220
     move_cooldown[AT_DTILT] = 160 
@@ -460,6 +460,7 @@ if oattack == 11 {
     sound_play(sound_get("CC"),false,noone,1,.95)
     sound_play(sound_get("CC"),false,noone,.6,.8)
 }
+
 if move_cooldown[AT_DTILT] > 0 {
     
 if move_cooldown[AT_DTILT] = 120 {
