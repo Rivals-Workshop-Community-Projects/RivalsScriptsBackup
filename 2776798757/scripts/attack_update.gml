@@ -169,17 +169,6 @@ if (attack == AT_DSPECIAL_2){
 }
 
 if (attack == AT_NSPECIAL_2){
-	move_cooldown[AT_FSPECIAL] = 100;
-	move_cooldown[AT_FSPECIAL_2] = 100;
-	move_cooldown[AT_DSPECIAL_2] = 100;
-	move_cooldown[AT_NSPECIAL_2] = 100;
-	move_cooldown[AT_FSTRONG_2] = 100;
-	move_cooldown[AT_DSTRONG_2] = 100;
-	move_cooldown[AT_USTRONG_2] = 100;
-	move_cooldown[AT_EXTRA_1] = 100;
-}
-
-if (attack == AT_FSTRONG_2){
 	move_cooldown[AT_FSPECIAL] = 50;
 	move_cooldown[AT_FSPECIAL_2] = 50;
 	move_cooldown[AT_DSPECIAL_2] = 50;
@@ -190,18 +179,7 @@ if (attack == AT_FSTRONG_2){
 	move_cooldown[AT_EXTRA_1] = 50;
 }
 
-if (attack == AT_DSTRONG_2){
-	move_cooldown[AT_FSPECIAL] = 400;
-	move_cooldown[AT_FSPECIAL_2] = 400;
-	move_cooldown[AT_DSPECIAL_2] = 400;
-	move_cooldown[AT_NSPECIAL_2] = 400;
-	move_cooldown[AT_FSTRONG_2] = 400;
-	move_cooldown[AT_DSTRONG_2] = 400;
-	move_cooldown[AT_USTRONG_2] = 400;
-	move_cooldown[AT_EXTRA_1] = 400;
-}
-
-if (attack == AT_USTRONG_2){
+if (attack == AT_FSTRONG_2){
 	move_cooldown[AT_FSPECIAL] = 20;
 	move_cooldown[AT_FSPECIAL_2] = 20;
 	move_cooldown[AT_DSPECIAL_2] = 20;
@@ -210,6 +188,28 @@ if (attack == AT_USTRONG_2){
 	move_cooldown[AT_DSTRONG_2] = 20;
 	move_cooldown[AT_USTRONG_2] = 20;
 	move_cooldown[AT_EXTRA_1] = 20;
+}
+
+if (attack == AT_DSTRONG_2){
+	move_cooldown[AT_FSPECIAL] = 150;
+	move_cooldown[AT_FSPECIAL_2] = 150;
+	move_cooldown[AT_DSPECIAL_2] = 150;
+	move_cooldown[AT_NSPECIAL_2] = 150;
+	move_cooldown[AT_FSTRONG_2] = 150;
+	move_cooldown[AT_DSTRONG_2] = 150;
+	move_cooldown[AT_USTRONG_2] = 150;
+	move_cooldown[AT_EXTRA_1] = 150;
+}
+
+if (attack == AT_USTRONG_2){
+	move_cooldown[AT_FSPECIAL] = 5;
+	move_cooldown[AT_FSPECIAL_2] = 5;
+	move_cooldown[AT_DSPECIAL_2] = 5;
+	move_cooldown[AT_NSPECIAL_2] = 5;
+	move_cooldown[AT_FSTRONG_2] = 5;
+	move_cooldown[AT_DSTRONG_2] = 5;
+	move_cooldown[AT_USTRONG_2] = 5;
+	move_cooldown[AT_EXTRA_1] = 5;
 }
 
 if (attack == AT_EXTRA_1){
@@ -263,6 +263,7 @@ if (attack == AT_EXTRA_2){
 		sound_play(sound_get( "taunt" ));
 	}
 }
+
 
 if (attack == AT_EXTRA_2) {
     if (window == 2 && has_hit_player == true && hitpause == false) {

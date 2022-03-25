@@ -62,7 +62,7 @@ set_window_value(AT_NSPECIAL, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.8);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -84,10 +84,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("lv1shothit"));
 //Midcharged
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 2);
@@ -131,14 +129,14 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, true);
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_UNBASHABLE, 0);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, sound_get("lv1shothit"));
 
 if !has_rune("G") exit;
 
-set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 12);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);

@@ -72,10 +72,11 @@ set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_DESTROY_EFFECT, 109);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_DAMAGE, 6);
-set_hitbox_value(AT_NSPECIAL_2, 2, HG_ANGLE, -50)
+set_hitbox_value(AT_NSPECIAL_2, 2, HG_ANGLE, -35)
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_EFFECT, 5);;
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NSPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_NSPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.3);
+set_hitbox_value(AT_NSPECIAL_2, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_VISUAL_EFFECT, 27);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_HIT_SFX, sound_get("lv1shothit"));

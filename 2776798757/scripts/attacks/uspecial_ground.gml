@@ -54,5 +54,4 @@ set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_ANGLE, 75);
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_VISUAL_EFFECT, 3);

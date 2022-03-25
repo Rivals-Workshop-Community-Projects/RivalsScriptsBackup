@@ -98,15 +98,3 @@ if (attack == AT_DSTRONG_2){
 	hsp = (0);
 	}
 }
-
-if (attack == AT_USTRONG_2){
-	if hitbox_timer > 52 {
-	vsp = (0);
-	}
-}
-
-if (attack == AT_USTRONG_2){
-	if hitbox_timer > 90 {
-	vsp = vsp + (7);
-	}
-}
