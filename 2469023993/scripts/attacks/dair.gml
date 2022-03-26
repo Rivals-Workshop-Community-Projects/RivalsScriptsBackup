@@ -30,7 +30,7 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
 
 set_num_hitboxes(AT_DAIR,5);
 
-set_hitbox_value(AT_DAIR, 1, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_DAIR, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 2);

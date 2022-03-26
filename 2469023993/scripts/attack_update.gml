@@ -61,7 +61,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 3);
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 11);
 	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 7);
-	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 8);
+	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 9);
 	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 13);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 2);
 	set_hitbox_value(AT_FAIR, 6, HG_DAMAGE, 3);
@@ -195,8 +195,8 @@ if swift_mode = true{
 	set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sound_get("kickEX"));
 	set_window_value(AT_DAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 	set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-	set_window_value(AT_DTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-	set_window_value(AT_DTILT, 3, AG_WINDOW_SFX, sound_get("slamEX"));
+	set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+	set_window_value(AT_DTILT, 2, AG_WINDOW_SFX, sound_get("slamEX"));
 	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("spinEX"));
 	set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_end"));
@@ -442,8 +442,8 @@ if swift_mode = false{
 	set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
 	set_window_value(AT_DAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 	set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-	set_window_value(AT_DTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-	set_window_value(AT_DTILT, 3, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_hit"));
+	set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_DTILT, 2, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_hit"));
 	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 	set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_start"));
