@@ -34,6 +34,10 @@ if (instance_exists(fspecial_id) && attack == AT_FSPECIAL && window == 2){
 	fspecial_id.hitstop = 30;
 }
 
+if (state_cat == SC_HITSTUN && instance_exists(fspecial_id)){
+	fspecial_id = noone;
+}
+
 if (!instance_exists(apple) && move_cooldown[AT_DSPECIAL] > 0){
 	move_cooldown[AT_DSPECIAL] = 0;
 }

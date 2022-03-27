@@ -25,7 +25,7 @@ if (move_cooldown[AT_USPECIAL] > 0 && attack != AT_USPECIAL){
 }
 draw_sprite_ext(sprite_get("portal_hud"), 0, temp_x + 40, temp_y - 14, 1, 1, 0, portal_color, 1);
 
-//draw_debug_text(temp_x+20, temp_y-100, string(ustrong_proj_angle));
+//draw_debug_text(temp_x+20, temp_y-100, string(hsp));
 
 /*if (instance_exists(apple3)){draw_debug_text(temp_x+20, temp_y-100, string("level = ") + string(apple3.level) + string(", charges = ") + string(apple.charges));}*/
 /*if (instance_exists(portal1) && instance_exists(portal1)){

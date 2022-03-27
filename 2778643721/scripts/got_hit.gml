@@ -1,6 +1,6 @@
 //h
 
-if (attack == AT_FSPECIAL && fspecial_id != noone){
+if (fspecial_id != noone){
     fspecial_id = noone;
 }
 

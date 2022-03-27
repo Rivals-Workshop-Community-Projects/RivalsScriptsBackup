@@ -167,7 +167,7 @@ if (attack == AT_UTILT){
     
 }
 
-if (attack == AT_FSTRONG){
+if (attack == AT_FSTRONG or attack == AT_FSTRONG_2){
     if (window == 1){
         if (window_timer == 12){
             sound_play(asset_get("sfx_swipe_medium2"));
@@ -178,6 +178,10 @@ if (attack == AT_FSTRONG){
         		sound_play(sound_get("sfx_doriyah"));
         	}
         }
+        if (window == 4){
+        //move_cooldown[AT_FSTRONG] = 30;
+        }
+        
 }
 
 if (attack == AT_DATTACK){
@@ -206,7 +210,7 @@ if (attack == AT_FSPECIAL){
     	fspecial_vsp = 0;
     	fspecial_teleported = false;
         if (free == false){
-            vsp -= 6;
+            vsp -= 4;
         }
     }
     
@@ -230,6 +234,22 @@ if (attack == AT_FSPECIAL){
     			y += 2;
     		}
     	}*/
+    	var fsp_hsp = get_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
+    		var fsp_vsp = get_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED);
+    		if (has_hit){
+	    		var prev_timer = window_timer;
+	    		window_timer = 0;
+	    		window_timer = prev_timer;
+    			if (fsp_hsp != 0){
+    			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 9);	
+    			}
+    			if (fsp_vsp != 0 && fsp_vsp < 0){
+    			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -9);	
+    			}
+    			if (fsp_vsp != 0 && fsp_vsp > 0){
+    			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 9);	
+    			}
+    		}
     	if (!hitpause){
     		fspecial_timer++;
     	}

@@ -224,11 +224,13 @@ initImage_ext(sprite_get("bair"), -4, fa_left, 1, 1, true, c_white, 1, false, no
 initImage_ext(sprite_get("sphere_doomer"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 	
 initTip("Developer Tips");
-initWords("- While there are always many ways to play a character, a key goal in playing Magolor is to use his portals to extend and enhance the power of some of his zoning tools!
+initWords("- Certain tips on the phone have multiple pages. Press attack to turn the page to the next one!
+- While there are always many ways to play a character, a key goal in playing Magolor is to use his portals to extend and enhance the power of some of his zoning tools!
 - With the portals being able to face in 8 different directions each, you can use this to your advantage and use them to set up traps, snipe from different directions, and even bring the opponent right to you in some cases!
 - Despite his longer range with most attacks, Magolor's more up close and personal attacks can string together quite nicely, too. Try using moves like DTilt and DAir to initiate combos!
 - Gem Apples will hit anyone in the way if they're in the air, so you can use that to potentially chain it with an explosion if you detonate after it hits.
-- Magolor's Forward and Down Strongs have a significant amount of startup, but at the same time are some of his deadliest attacks. When the time is right, bring on the super ability and finish your foes with the power of the mighty Ultra Sword and Grand Hammer!");
+- Magolor's Forward and Down Strongs have a significant amount of startup, but at the same time are some of his deadliest attacks. When the time is right, bring on the super ability and finish your foes with the power of the mighty Ultra Sword and Grand Hammer!
+- Hold taunt during FStrong for a surprise.");
 
 initTip("Magolor's Background");
 initWords_ext("Origin", fa_center, c_gray, 0, false);
@@ -308,6 +310,25 @@ initSection("DSpecial");
 initWords("+ All Gem Apple explosions now have extra hitpause which increases by level");
 initWords("- You can no longer special cancel the laugh by default");
 initWords("+ The laugh can now be cancelled with strongs & specials if the explosion hits");
+
+initPatch("1.2", "March 26, 2022");
+initSection("FStrong");
+initWords("~ The move has received a bit of an overhaul, with the sword being smaller and thus the hitboxes reaching a shorter range");
+initWords("+ Active Window Length 12 -> 9");
+initWords("- All Hitboxes have .5 Hitstun Multiplier");
+initWords("- Removed the Late Hitbox");
+initWords("~ Added a New Tip");
+initSection("FSpecial");
+initWords("- Final Hit Damage 5 -> 2");
+initWords("- Final Hit Base Knockback 8 -> 7");
+initWords("- Final Hit Knockback Scaling .85 -> .5");
+initWords("- Hitbox Sizes Decreased to 70 x 70, active hurtbox grown bigger than that");
+initWords("- Unless teleported during the move, Magolor will move significantly slower on hit
+
+");
+initWords("~ Fixed a bug where hitting Magolor while he simultaneously hits a foe will bring the target back to him if he uses the move again");
+initSection("Misc");
+initWords("~ A couple things were added to the Dev Tips page on MunoPhone");
 
 initPatch("About Magolor", "");
 initWords("Magolor and the Kirby franchise belong to Nintendo and HAL Laboratories.");
