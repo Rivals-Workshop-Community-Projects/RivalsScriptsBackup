@@ -3,7 +3,6 @@
 
 
 
-
    	if !hitpause { 
    		finisher = 0
         finisherinc = 0
@@ -321,7 +320,7 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 7);
     set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 55);
     set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 50);
 
-    set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .5);
+    set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .7);
     set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .4);
 
 }
@@ -461,6 +460,7 @@ if get_gameplay_time() % 5 == 0 && (hit_player_obj.hsp > 10 or hit_player_obj.hs
 	
 }
 
+/*
 if get_gameplay_time() <= 120 && zvoice == 0 {
 
 
@@ -470,6 +470,7 @@ if get_gameplay_time() <= 120 && zvoice == 0 {
 	}
 	
 }
+*/
 
 if get_gameplay_time() == 130 {
 if zvoice == 0 {
@@ -527,7 +528,7 @@ if offensetimer > 160 and offense > 0{
 	offensetimer = 0
 		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
     		halodeact.depth = depth + 10
-    		
+    		halodeact.pause = 5
     	sound_play(asset_get("sfx_ice_shieldup"));	
 		sound_play(asset_get("sfx_jumpair"));
 }

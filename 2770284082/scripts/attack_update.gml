@@ -7,7 +7,7 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 
 
 
-if attack == AT_FTILT or attack == AT_DTILT or attack == AT_DATTACK or attack == AT_UTILT 
+if attack == AT_FTILT or attack == AT_DTILT or attack == AT_UTILT 
 or attack == AT_FAIR or attack == AT_NAIR or attack == AT_UAIR {
 	
 	if has_hit_player{
@@ -223,16 +223,7 @@ switch attack {
 		}
 	}
 	
-	if window == 2 && window_timer <= 5 && attack_pressed && !has_hit_player{
-	     	attack_end();
-	     	destroy_hitboxes();
-     		attack = AT_DATTACK
-     		window = 1
-     		window_timer = 0
-     		hsp = 6*spr_dir
-     		old_hsp = 6*spr_dir
-     		hurtboxID.sprite_index = get_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE);
-     }
+
 	
 	if has_hit_player && !hitpause {
 		window_timer += 0.5
@@ -242,20 +233,30 @@ switch attack {
 	break ;
 	
 	case AT_DATTACK :
-	if window == 1 && !hitpause {
-		if window_timer == 1 {
-     		if (((left_down) or left_stick_down) && side == 1 ) or (((right_down) or right_stick_down) && side == -1) {
-     		  side *= -1
-     		  spr_dir *= -1
-              hsp *= -1
-            }
-     	}
-     	
+	attack = AT_FTILT
+
+	if window == 1 && !hitpause && window_timer == 1{
+		set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+		set_hitbox_value(AT_DATTACK, 2, HG_EXTRA_HITPAUSE, 0);
+		set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 5);
+	     side = spr_dir 
+		 sound_stop(cur_sound) 
+	 	 cur_sound = sound_play(sound_get("v_bah"),false,noone,.8,1.05 - random_func(1,10,true)/100)
+	 	 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 302);
+	}
+	if window == 1 {
+		strong_charge += 5
+		if strong_charge >= 60 {
+			set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 10);
+			set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+		    set_hitbox_value(AT_DATTACK, 2, HG_EXTRA_HITPAUSE, 20);
+		    set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 304);
+		}
+	}
+	
+	if window == 2 && !hitpause {
+     	spr_dir = side
 	 	if window_timer == 1 {
-	 		if right_down - left_down != 0 {
-	 			spr_dir = right_down - left_down 
-	 			side = right_down - left_down 
-	 		}
 	 		set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 76);
             set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 86);
 	 	 cur_sound = sound_play(sound_get("v_heehee"),false,noone,.8,1.05 - random_func(1,10,true)/100)
@@ -266,7 +267,7 @@ switch attack {
 	 	}
 	 }
 	 
-	if window == 2 && !hitpause {
+	if window == 3 && !hitpause {
 		if has_hit_player {
 			set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 90);
             set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 96);
@@ -555,22 +556,22 @@ switch attack {
 	   	 	cur_sound = sound_play(sound_get("v_daa"),false,noone,.7,1.05 - random_func(1,10,true)/100)
 	   	 	side = spr_dir
 	   	 }
-	   	 if state_timer == 5 && !hitpause {
+	   	 if state_timer == 6 && !hitpause {
 	   	 	if right_down && side == -1 {
 	   	 		side = 1
 	   	 		spr_dir = 1 
 	   	 		reversed = 1
 	   	 		sound_play(sound_get("shing"),false, noone, .8, 1.15)
-	   	 		brv = spawn_hit_fx(x,y - 50,305)
-	   	 		brv.pause = 5
+	   	 		brv = spawn_hit_fx(x - 20,y - 50,305)
+	   	 		brv.pause = 4
 	   	 	}
 	   	 	if left_down && side == 1 {
 	   	 		side = -1
 	   	 		spr_dir = -1 
 	   	 		reversed = 1
 	   	 		sound_play(sound_get("shing"),false, noone, .8, 1.15)
-	   	 		brv = spawn_hit_fx(x,y - 50,305)
-	   	 		brv.pause = 5
+	   	 		brv = spawn_hit_fx(x + 20,y - 50,305)
+	   	 		brv.pause = 4
 	   	 	}
 	   	 }
 	   	 

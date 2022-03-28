@@ -520,7 +520,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -5);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -8);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
@@ -1194,10 +1194,11 @@ if(attack == AT_DAIR){
     
    
    if (window == 4 && !hitpause) {
-    	vsp = -6
+    	vsp = -4
        	hsp = -3 * spr_dir
     	set_attack (AT_BAIR)
     	window = 10
+    	move_cooldown[AT_DAIR] = 30
     }
     
     if(window == 3 && window_timer == get_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH)){

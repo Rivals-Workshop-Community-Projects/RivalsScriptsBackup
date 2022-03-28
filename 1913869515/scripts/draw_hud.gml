@@ -11,6 +11,7 @@ draw_debug_text( temp_x- 15, temp_y-30, "vsp: " + string(vsp));
 draw_debug_text( temp_x- 15, temp_y-45, "grav: " + string(grav));
 draw_debug_text( 10, 10, "FPS : " + string(fps_real));
 */
+/*
 if get_player_color(player) != 5{
 if zvoice == 1 && get_gameplay_time() <= 200{
        draw_debug_text(temp_x,temp_y - 15,"Voiced");
@@ -28,7 +29,7 @@ if get_player_color(player) == 5 and zvoice == 1 && get_gameplay_time() <= 200{
 if get_player_color(player) == 5 and zvoice == 0 && get_gameplay_time() <= 120{
        draw_debug_text(temp_x,temp_y - 25,"Taunt to active Senbonzakura Mode");
 }
-
+*/
 shader_start();
 if introtimer > 0 {
     

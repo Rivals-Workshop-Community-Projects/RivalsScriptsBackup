@@ -1,7 +1,6 @@
 //
 //sound_stop(cur_sound)
 
-print(move_cooldown[AT_EXTRA_3])
 
 if get_gameplay_time() <= 120 && voiced == 1 {
 
