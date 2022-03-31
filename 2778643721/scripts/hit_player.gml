@@ -11,7 +11,7 @@ if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num =- 1){
     my_hitboxID.player_id.vsp -= 10;
 }
 
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 && !hit_player_obj.clone && !hit_player_obj.super_armor){
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 && !hit_player_obj.clone && !hit_player_obj.super_armor && !hit_player_obj.invincible){
     fspecial_id = hit_player_obj;
 }
 

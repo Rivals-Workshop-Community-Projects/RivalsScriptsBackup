@@ -70,10 +70,12 @@ set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 256);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_HSPEED, 8);
+set_hitbox_value(AT_DSTRONG, 2, HG_GROUNDEDNESS, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ori_seinhit_weak"));
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 3);
+set_hitbox_value(AT_DSTRONG, 3, HG_GROUNDEDNESS, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 60 + strong_charge);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, -120);
 set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 1);

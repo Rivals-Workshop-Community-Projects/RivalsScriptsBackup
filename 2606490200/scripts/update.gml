@@ -74,7 +74,8 @@ if htrain >= 100 && htrain < 300 {
 		 sound_play(asset_get("sfx_kragg_rock_pillar"))	
 	}
 	spawn_hit_fx(x,y - 50,156)
-	spawn_hit_fx(x,y - 50,306)
+	fx = spawn_hit_fx(x,y - 50,306)
+	fx.pause = 6
 	uped += 1
 	sound_play(asset_get("sfx_abyss_explosion_start"))	
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
@@ -109,7 +110,8 @@ if atrain >= 100 && atrain < 300 {
 		 sound_play(asset_get("sfx_kragg_rock_pillar"))	
 	}
 	spawn_hit_fx(x,y - 50,156)
-	spawn_hit_fx(x,y - 50,306)
+	fx = spawn_hit_fx(x,y - 50,306)
+	fx.pause = 6
 	uped += 1
 	sound_play(asset_get("sfx_abyss_explosion_start"))		
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
@@ -145,7 +147,8 @@ if btrain >= 100 && btrain < 300 {
 		 sound_play(asset_get("sfx_kragg_rock_pillar"))	
 	}
 	spawn_hit_fx(x,y - 50,156)
-	spawn_hit_fx(x,y - 50,306)
+	fx = spawn_hit_fx(x,y - 50,306)
+	fx.pause = 6
 	uped += 1
 	sound_play(asset_get("sfx_abyss_explosion_start"))		
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
@@ -185,7 +188,8 @@ if ltrain >= 100 && ltrain < 300 {
 		 sound_play(asset_get("sfx_kragg_rock_pillar"))	
 	}
 	spawn_hit_fx(x,y - 50,156)
-	spawn_hit_fx(x,y - 50,306)
+	fx = spawn_hit_fx(x,y - 50,306)
+	fx.pause = 6
 	uped += 1
 	sound_play(asset_get("sfx_abyss_explosion_start"))		
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
@@ -375,15 +379,12 @@ if state_timer > 10 && window_timer != 20 {
 }
 
 
-if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD) && htrain = 100{
+if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD) && htrain >= 100 {
    
 if state_timer == 1 {
     	sound_play(asset_get("sfx_ori_bash_use"));
 }
-	 
-	 if state_timer == 9 {
-	 	spawn_hit_fx (x, y - 40, 27)
-	 }
+
 	 
 	 if state_timer < 9{
 	     hsp = -0.5 * spr_dir
@@ -419,7 +420,8 @@ if move_cooldown[AT_USPECIAL] > 0 {
 }
 
 if move_cooldown[AT_USPECIAL] == 1 {
-	spawn_hit_fx(x,y - 50,305)
+	fx = spawn_hit_fx(x,y - 50,305)
+	fx.pause = 6
 	sound_play(asset_get("sfx_bird_sidespecial_start"));
 
 	hsp /= 6 

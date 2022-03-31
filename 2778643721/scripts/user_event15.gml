@@ -215,12 +215,12 @@ initTip("DSpecial: Gem Apple Bomb");
 initWords("Magolor throws out a gem apple, which can be aimed higher by holding up, or a shorter distance away by holding the opposite direction you're facing. The apple can be kicked around by almost any hitbox, and as it's left out longer, it'll charge more and more. If it goes through a portal, it'll gain a little extra charge.");
 initImage_ext(sprite_get("apple_mockup"), -5, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("Depending on how many times the apple has charged, its explosion size will vary if Magolor uses DSpecial again, and its most powerful explosion will occur if it's left out to explode on its own, or if it's 3 seconds into its last stage. The power of microtransactions is quite destructive, wouldn't you say so?");
-initImage_ext(sprite_get("dspecial_2"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initImage_ext(sprite_get("dspecial_2"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("Furthermore, partway through Magolor's laughing fit can he cancel out of it by holding down, allowing for him to further act on anyone hit by the explosion. Magolor can also cancel into the detonation process at the end of FSpecial, so he can either blow up anyone he launches into the apple wiht the move or completely bypass the pratfall (though he still can't use the move in the air again).");
 
 initTip("BAir: Sphere Doomer");
 initWords("Even for a zoner like Magolor, this is definitely one of the more unorthodox moves in his kit! Magolor will turn around in the other direction and open a portal to unleash a sphere doomer, which will fly a short distance forward before disappearing. Not only is this a normal that has a projectile, but the direction he's facing also flips entirely so he can't use the move in the same direction again.");
-initImage_ext(sprite_get("bair"), -4, fa_left, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initImage_ext(sprite_get("bair"), -4, fa_left, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 initImage_ext(sprite_get("sphere_doomer"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 	
 initTip("Developer Tips");
@@ -329,6 +329,19 @@ initWords("- Unless teleported during the move, Magolor will move significantly 
 initWords("~ Fixed a bug where hitting Magolor while he simultaneously hits a foe will bring the target back to him if he uses the move again");
 initSection("Misc");
 initWords("~ A couple things were added to the Dev Tips page on MunoPhone");
+
+initPatch("1.3", "March 29, 2022");
+initSection("Optimization");
+initWords("~ Removed excess files leftover from Sandbert and Munophone docs");
+initWords("~ Implemented small_sprites compatibility");
+initWords("~ Made base hurtbox thinner");
+initSection("Balance");
+initWords("+ All FStrong hitboxes except the sourspot now have .75 hitstun multiplier");
+initWords("- DStrong shockwaves now only hit grounded foes");
+initWords("~ FSpecial no longer affects invincible targets");
+
+initPatch("1.3.5", "March 29, 2022");
+initWords("+ Raised FStrong hitstun multiplier to .95 (.85 for sourspot)");
 
 initPatch("About Magolor", "");
 initWords("Magolor and the Kirby franchise belong to Nintendo and HAL Laboratories.");

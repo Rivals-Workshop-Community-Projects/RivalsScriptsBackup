@@ -1,5 +1,7 @@
 ///
 
+
+
 if state_cat == SC_HITSTUN && gudhit == 1 && !hitpause {
 	vsp = -15
 	hitstun += 30

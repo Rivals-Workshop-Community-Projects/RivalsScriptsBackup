@@ -4,6 +4,9 @@ air_hurtbox_spr = sprite_get("air_box");
 hitstun_hurtbox_spr = sprite_get("air_box");
 
 
+fs_char_chosen_final_smash = "custom"
+fs_char_portrait_y = 60
+
 ncode1 = "A human from ancient age when mankind can"
 ncode2 = "beat monster with raw strength alone, no data"
 ncode3 = "on what is the extend of their abilities."

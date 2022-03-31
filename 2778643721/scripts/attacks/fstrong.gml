@@ -28,15 +28,21 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_FSTRONG, 7);
+set_num_hitboxes(AT_FSTRONG, 5);
 //early
 
+set_hitbox_value(AT_FSTRONG, 1, HG_MUNO_HITBOX_NAME, "Early Smear");
+set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Early Sword");
+set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Smear 1");
+set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Smear 2");
+set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Sword");
 
-set_hitbox_value(AT_FSTRONG, 1, HG_HITSTUN_MULTIPLIER, .5);
-set_hitbox_value(AT_FSTRONG, 2, HG_HITSTUN_MULTIPLIER, .5);
-set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, .5);
-set_hitbox_value(AT_FSTRONG, 4, HG_HITSTUN_MULTIPLIER, .5);
-set_hitbox_value(AT_FSTRONG, 5, HG_HITSTUN_MULTIPLIER, .5);
+
+set_hitbox_value(AT_FSTRONG, 1, HG_HITSTUN_MULTIPLIER, .85);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITSTUN_MULTIPLIER, .95);
+set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, .95);
+set_hitbox_value(AT_FSTRONG, 4, HG_HITSTUN_MULTIPLIER, .95);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITSTUN_MULTIPLIER, .95);
 //set_hitbox_value(AT_FSTRONG, 6, HG_HITSTUN_MULTIPLIER, .5);
 //sourspot
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);

@@ -179,7 +179,7 @@ if (attack == AT_FSTRONG or attack == AT_FSTRONG_2){
         	}
         }
         if (window == 4){
-        //move_cooldown[AT_FSTRONG] = 30;
+        //move_cooldown[AT_FSTRONG] = 10;
         }
         
 }

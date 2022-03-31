@@ -8,6 +8,7 @@
  */
 
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
+small_sprites = true;
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 128;
 // Physical size

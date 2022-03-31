@@ -156,7 +156,7 @@ switch (attack)
         }
 	break;
 	case AT_NSPECIAL:
-		move_cooldown[AT_NSPECIAL] = 20;//30
+		move_cooldown[AT_NSPECIAL] = 35;
 	    can_wall_jump  = true;
 	
 		if(attack_pressed && lure_timer == 0 && (window == 1 && window_timer > 1))
@@ -348,19 +348,20 @@ switch (attack)
                 {
                 	ewgf_input++;
                 	ewgf_timer = 10;
+                    reset_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE);
+					if(attack_pressed && !free)
+					{
+                        sound_play(asset_get("sfx_absa_singlezap1"));
+                        white_flash_timer = 10;
+                        set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 20);
+                    	set_attack(AT_EXTRA_1);
+					}
                 }
             break;
             case 3:
                 if(attack_pressed && !free)
                 {
-                    if(ewgf_timer == 9)
-                    {  
-                        sound_play(asset_get("sfx_absa_singlezap1"));
-                        white_flash_timer = 10;
-                        set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 20);
-                    }
-                    else
-                        reset_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE);
+					reset_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE);
                     set_attack(AT_EXTRA_1);
                 }
             break;
@@ -444,6 +445,8 @@ switch (attack)
 		    set_attack(AT_DSPECIAL);
 		    window = 5;
 		    window_timer = 0;
+			ewgf_timer = 20;
+			ewgf_input = 0;
 		}
 	break;
 	case AT_TAUNT:

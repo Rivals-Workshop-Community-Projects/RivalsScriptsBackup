@@ -9,7 +9,7 @@ or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD) && attackbar == 0{
      draw_sprite_ext(sprite_index, image_index-2, x  - shsp*4.5 , y  - svsp*4.5, 1 * spr_dir, 1, 0 , c_white , 0.1);
 }
 
-if attacking && attack == AT_DATTACK{
+if attacking && (attack == AT_DATTACK or attack == AT_FTHROW){
 	 draw_sprite_ext(sprite_index, image_index-1, x  - shsp*2 , y  - svsp*2, 1 * spr_dir, 1, 0 , c_white , 0.3);
      draw_sprite_ext(sprite_index, image_index-2, x  - shsp*4 , y  - svsp*4, 1 * spr_dir, 1, 0 , c_white , 0.2);
 }

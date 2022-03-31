@@ -28,8 +28,8 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
     if (attack == 49){
         
     if (get_player_color( player ) == 8 or get_player_color( player ) == 5 or get_player_color( player ) == 6){
-    draw_sprite_ext(sprite_get("final_smash_fx_soul"), image_index, x, y, 1*spr_dir, 1, 0, c_white, 1);
-    } else draw_sprite_ext(sprite_get("final_smash_fx"), image_index, x, y, 1*spr_dir, 1, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("final_smash_fx_soul"), image_index, x - 10*spr_dir , y - 58, 2*spr_dir, 2, 0, c_white, 1);
+    } else draw_sprite_ext(sprite_get("final_smash_fx"), image_index, x - 10*spr_dir, y - 58, 2*spr_dir, 2, 0, c_white, 1);
     draw_sprite_ext(sprite_get("final_smash_flash"), image_index, x, y, 99999, 99999, 0, c_white, 1);
     }
 }

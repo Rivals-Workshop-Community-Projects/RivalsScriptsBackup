@@ -72,7 +72,7 @@ char_height = 52;
 idle_anim_speed = .2;
 crouch_anim_speed = .1;
 walk_anim_speed = .2;
-dash_anim_speed = .24;
+dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
 walk_speed = 4;

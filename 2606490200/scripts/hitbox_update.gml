@@ -59,40 +59,47 @@ if attack == AT_USPECIAL {
     if hitbox_timer = 4*13  {
         sound_play(asset_get("sfx_abyss_explosion"),false,noone,1,1)
         sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1)
-        spawn_hit_fx(x,y,306)
-        spawn_hit_fx(x,y,305)
+        fx = spawn_hit_fx(x,y,305)
+        fx.pause = 8
+        fx = spawn_hit_fx(x,y,306)
+        fx.pause = 8
         vsp = 0
         shake_camera(4,4)
         hit_priority = 9
         
-        
+       
         with player_id {
         	
         	
         	if !special_down {
         		prat_land_time = 16;
-        		spawn_hit_fx(x,y - 10,305)
-        		spawn_hit_fx(x,y - 40,305)
-        		spawn_hit_fx(x,y - 70,305)
+        		fx1 = spawn_hit_fx(x,y - 10,305)
+        		fx2 = spawn_hit_fx(x,y - 40,305)
+        		fx3 = spawn_hit_fx(x,y - 70,305)
+        		fx1.pause = 6
+        		fx2.pause = 6
+        		fx3.pause = 6
             	x = other.x
             	y = other.y + 40
             	set_state(PS_PRATFALL)
             	vsp = -9
             	
             }
-            
+          
             
         }
+          
     }
+   
     
     if hitbox_timer = 4*13 + 3 {
-        image_xscale *= 2
-        image_yscale *= 2
+        image_xscale *= 2.2
+        image_yscale *= 2.2
     }
     
-    if hitbox_timer = 4*13 + 3 && player_id.special_down && player_id.state == PS_ATTACK_AIR{
-        image_xscale *= 1.3
-        image_yscale *= 1.3
+    if hitbox_timer = 4*13 + 3 && player_id.state == PS_ATTACK_AIR{
+        image_xscale *= 1.2
+        image_yscale *= 1.2
         
         create_hitbox(AT_USPECIAL,2,x,y)
         
@@ -140,8 +147,8 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	    		
 	    	}
 	    	
-            spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
-	    	
+            fx = spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
+	    	fx.pause = 6 
 			hsp = (player_id.x - x)/10
 			vsp = (player_id.y - 30 - y)/10
 			spr_dir *= -1

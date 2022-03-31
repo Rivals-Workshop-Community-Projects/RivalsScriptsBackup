@@ -1,5 +1,72 @@
 ///
 
+if attack == 49 {
+	sound_play(sound_get("hcine"),false,noone,1)
+	if !free { 
+		attack = AT_FTHROW
+		hsp = 8*spr_dir
+	} else {
+		attack = AT_DTHROW
+		window = 2
+	}
+	state_timer = 1
+}
+
+  if attack == AT_DTHROW {
+  	vsp = -1
+  	hitpause = false 
+        if window == 1 && window_timer == 4 && !hitpause {
+                sound_play(asset_get("sfx_ice_on_player"))
+        }
+        
+    if has_hit_player && hitpause && window_timer < 8 && !hitpause  {
+		window_timer += 1
+				hit_player_obj.x += ((x + (40 * spr_dir)) - hit_player_obj.x) / 4
+				hit_player_obj.y += ((y - (40)) - hit_player_obj.y) / 4
+	}
+	
+	
+	if state_timer < 30 && window == 3 { 
+	  window = 2 
+	  window_timer = 1
+	  spr_dir *= -1
+	  sound_play(asset_get("sfx_ice_on_player"),false,noone,1,.6)
+	  sound_play(sound_get("dspec2"))
+	  
+	}
+	
+	if state_timer % 6 == 0 && state_timer < 30{
+		sound_play(sound_get("fspec2"),false,noone,0.8,1.2)
+	  	create_hitbox(AT_FSPECIAL,1, x,y - 30)
+	  	fx = spawn_hit_fx(x,y-30,306)
+	  fx.pause = 5
+	  }
+	  if state_timer % 6 == 2 && state_timer < 30{
+	  	create_hitbox(AT_FSPECIAL,3, x,y - 30)
+	  }
+	  if state_timer % 6 == 4 && state_timer < 30{
+	  	create_hitbox(AT_FSPECIAL,4, x,y - 30)
+	  }
+	  
+	super_armor = false 
+    soft_armor = 999
+	
+  }
+   
+ if attack == AT_FTHROW {
+        if window == 1 && window_timer % 4 == 0 && !hitpause {
+            sound_play(asset_get("sfx_ice_shieldup"))
+            fx = spawn_hit_fx(x - 34*spr_dir,y - 52,302)
+            fx.pause = 5
+        }
+        if window == 1 && window_timer == 11 && !hitpause{
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.95)
+        }
+        
+        super_armor = false 
+        soft_armor = 999
+  }
+    
 if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || attack == AT_FSPECIAL){
     trigger_b_reverse();
 }
@@ -48,6 +115,8 @@ if !hitpause {
             sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.95)
         }
     }
+    
+    
     
     if attack == AT_FSTRONG {
     	can_fast_fall = false
@@ -506,7 +575,8 @@ if !hitpause {
           		shake_camera (4,6)
           		sound_play(sound_get("uspec"))
           		sound_play(asset_get("sfx_abyss_explosion"))
-          		          		spawn_hit_fx (x + 26*spr_dir,y - 38, 305)
+          		          		fx = spawn_hit_fx (x + 26*spr_dir,y - 38, 305)
+          		          		fx.pause = 6
           		          		move_cooldown[AT_DSPECIAL] = 60
           		if !free {
           		set_state(PS_PRATFALL)
@@ -595,7 +665,8 @@ if attack == AT_NAIR {
            	 sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
               sound_play(asset_get("sfx_bird_sidespecial_start"))
            		sound_play(sound_get("dspec2"))
-           		spawn_hit_fx (x + 30*spr_dir,y - 46, 304)
+           		fx = spawn_hit_fx (x + 30*spr_dir,y - 46, 304)
+           		fx.pause = 4
            		vsp = -6
            		hsp = -4*spr_dir
            	}
