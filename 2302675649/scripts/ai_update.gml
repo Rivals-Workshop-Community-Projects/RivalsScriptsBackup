@@ -21,12 +21,10 @@ SetAttack();
 			if (!free && state != PS_PRATFALL && state_cat != SC_HITSTUN) ai_state = AS_NEUTRAL;
 			break;
 		case AS_ADVANTAGE:
-			if (!ai_target.was_parried && ai_target.state_cat != SC_HITSTUN) ai_state = AS_NEUTRAL;
+			if (point_distance(x, y, ai_target.x, ai_target.y) > 200 && !ai_target.was_parried && ai_target.state_cat != SC_HITSTUN) ai_state = AS_NEUTRAL;
 			break;
 		case AS_NEUTRAL:
-			if (point_distance(x, y, ai_target.x, ai_target.y) <= 200
-			&& (has_hit_player || ai_target.state_cat == SC_HITSTUN || ai_target.was_parried || (ai_target.state == PS_PARRY && ai_target.state_timer == 6)))
-				ai_state = AS_ADVANTAGE;
+			if (ai_target.state_cat == SC_HITSTUN || ai_target.was_parried || (ai_target.state == PS_PARRY && ai_target.state_timer == 6)) ai_state = AS_ADVANTAGE;
 			break;
 	}
 }
@@ -64,7 +62,7 @@ SetAttack();
 			break;
 		case AS_RECOVER:
 			ai_attack_time = 40;
-			if (state_cat != SC_HITSTUN) HoldTowardsStage();
+			if (state_cat != SC_HITSTUN && state_cat != SC_GROUND_COMMITTED) HoldTowardsStage();
 			break;
 		case AS_NEUTRAL:
 			ai_attack_time = 30;
@@ -75,11 +73,20 @@ SetAttack();
 	{
 		switch (attack)
 		{
+			case AT_UTHROW:
+				if (has_hit_player) jump_pressed = true;
+				break;
+
 			case AT_JAB:
-				if (has_hit_player) DoAttack(AT_DTILT);
+				if (has_hit_player) DoAttack(ai_target.free?AT_FTILT:abs(ai_target.x-x)>70?AT_DTILT:AT_FSTRONG);
 				break;
 
 			case AT_USPECIAL:
+				if (ai_state == AS_RECOVER)
+				{
+					HoldTowardsStage();
+					if (can_wall_jump) jump_pressed = true;
+				}
 				switch (window)
 				{
 					case 5:
@@ -102,12 +109,37 @@ SetAttack();
 							joy_dir = 270;
 						}
 					}
+					else joy_pad_idle = true;
 					break;
 				}
 				break;
 
 			case AT_FSPECIAL:
-				if (window == 1) down_down = true;
+				if (window == 1)
+				{
+					down_down = true;
+					if (ai_state == AS_RECOVER) HoldTowardsStage();
+					else HoldTowardsTarget();
+				}
+				break;
+
+			case AT_NSPECIAL:
+				if (!aura)
+				{
+					var frameOffset = 4;
+					var xdist = abs((ai_target.x+ai_target.hsp*frameOffset)-x);
+					var ydist = abs((ai_target.y+ai_target.vsp*frameOffset)-y);
+					var dist = point_distance(0, 0, xdist, ydist);
+					special_down = true;
+					if (ydist <= 32 && xdist < 150 && !((ai_target.state == PS_PARRY_START || ai_target.state == PS_PARRY) && ai_target.state_timer <= 6)) special_down = false;
+					if (nspecCharge >= nspecMax-7 || ydist > 90 || spr_dir==(ai_target.x>x?-1:1))
+					{
+						shield_pressed = true;
+						jump_pressed = true;
+						jump_counter = 0;
+					}
+					tryParry();
+				}
 				break;
 
 			case AT_NTHROW:
@@ -212,18 +244,30 @@ SetAttack();
 						{
 							DoAttack(AT_FSPECIAL);
 						}
-						else if (dist > 200 && dist < 250 && (get_player_damage(ai_target.player) >= 100 || aura))
+						else if (!free && xdist < 70 && ydist < 10)
+						{
+							DoAttack(AT_JAB);
+						}
+						else if (!free && xdist < 90 && ydist < 10)
+						{
+							DoAttack(AT_DTILT);
+						}
+						else if (NumOfPortals() < 1 || dist < 80)
+						{
+							SetTask(TSK_STRONG);
+						}
+						else if (dist > 200 && dist < 250 && (collision_line(ai_target.x, ai_target.y, ai_target.x, room_height, asset_get("par_block"), 0, 1) && get_player_damage(ai_target.player) >= 110 || aura))
 						{
 							DoAttack(AT_USPECIAL);
 						}
-						else if (xdist > 150 && !move_cooldown[AT_DSPECIAL])
+						else if (!free && xdist > 150 && !move_cooldown[AT_DSPECIAL])
 						{
 							HoldTowardsTarget();
 							DoAttack(AT_DSPECIAL);
 						}
-						else if (dist < 80)
+						else if (!free && ai_state == AS_NEUTRAL && ydist < 90)
 						{
-							SetTask(TSK_STRONG);
+							DoAttack(AT_NSPECIAL);
 						}
 						break;
 					case TSK_STRONG:
@@ -248,6 +292,8 @@ SetAttack();
 {
 	left_down = x > floor(room_width/2);
 	right_down = !left_down;
+	right_pressed = right_down;
+	left_pressed = left_down;
 }
 
 #define HoldTowardsTarget()
@@ -274,6 +320,8 @@ SetAttack();
 			break;
 		case AT_NAIR:
 		case AT_JAB:
+			HoldTowardsTarget();
+			ForceSprDir();
 			up_down = false;
 			down_down = false;
 			left_down = false;
@@ -289,6 +337,8 @@ SetAttack();
 			}
 			break;
 		case AT_FTILT:
+			HoldTowardsTarget();
+			ForceSprDir();
 		case AT_FAIR:
 			HoldTowardsTarget();
 			attack_pressed = true;
@@ -296,6 +346,7 @@ SetAttack();
 			break;
 		case AT_DTILT:
 			HoldTowardsTarget();
+			ForceSprDir();
 		case AT_DAIR:
 			down_down = true;
 			attack_pressed = true;
@@ -323,6 +374,7 @@ SetAttack();
 				HoldTowardsTarget();
 			special_pressed = true;
 			special_down = true;
+			ForceSprDir();
 			break;
 		case AT_DSPECIAL:
 			down_down = true;
@@ -333,6 +385,19 @@ SetAttack();
 			up_down = true;
 			special_pressed = true;
 			special_down = true;
+			break;
+		case AT_FSTRONG:
+			HoldTowardsTarget();
+			if (left_down)
+			{
+				left_strong_pressed = true;
+				left_strong_down = true;
+			}
+			else
+			{
+				right_strong_pressed = true;
+				right_strong_down = true;
+			}
 			break;
 		case 49:
 			if (aura && can_attack)
@@ -427,4 +492,9 @@ SetAttack();
     var i = 0;
     with (asset_get("obj_article1")) if (player_id == other.id && !isDespawn) i++;
     return i;
+}
+
+#define ForceSprDir()
+{
+	if (left_down^^right_down) spr_dir = right_down-left_down;
 }

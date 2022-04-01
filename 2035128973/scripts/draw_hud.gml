@@ -171,6 +171,13 @@ if ("rollArray" in self)
 						AddText("Fixed Rollback temp_level bug");
 						AddText("Renamed Hue alt to Paint");
 						break;
+					case 7:
+						AddText("v2.6 - 1 Apr 2022");
+						AddText("");
+						AddText("Fixed a bug with parrying USpec bone");
+						AddText("");
+						AddText("Fastfall can now be used while in pratfall");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

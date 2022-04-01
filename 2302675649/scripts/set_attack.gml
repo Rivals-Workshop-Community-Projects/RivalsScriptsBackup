@@ -14,13 +14,9 @@ switch (attack)
 		}
 		break;
 	case AT_FSTRONG:
-		attack = has_rune("A")&&CheckJumpStrong()?AT_NTHROW:AT_FTILT;
-		break;
 	case AT_USTRONG:
-		attack = has_rune("A")&&CheckJumpStrong()?AT_NTHROW:AT_UTILT;
-		break;
 	case AT_DSTRONG:
-		attack = has_rune("A")&&CheckJumpStrong()?AT_NTHROW:AT_DTILT;
+		attack = has_rune("A")&&CheckJumpStrong()?AT_NTHROW:AT_UTHROW;
 		break;
 	case AT_TAUNT:
 		if (down_down || up_down)

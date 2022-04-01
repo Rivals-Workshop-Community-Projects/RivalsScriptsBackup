@@ -12,16 +12,9 @@ for (var kickCharge = 0; kickCharge <multikick_energy; kickCharge++)
 }
 
 //Add polish to the meter, code in update.gml animates this
-if (multikick_energy == 200)
+if (multikick_energy == 200 && meterShine < 8)
 {
-    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 12, temp_y-15, 2, 2, 0, col, shine0);
-    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 28, temp_y-15, 2, 2, 0, col, shine1);
-    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 44, temp_y-15, 2, 2, 0, col, shine2);
-    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 60, temp_y-15, 2, 2, 0, col, shine3);
-    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 76, temp_y-15, 2, 2, 0, col, shine4);
-    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 92, temp_y-15, 2, 2, 0, col, shine5);
-    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 108, temp_y-15, 2, 2, 0, col, shine6);
-    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 124, temp_y-15, 2, 2, 0, col, shine7);
+    draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 12 + (meterShine * 16) , temp_y-15, 2, 2, 0, col, 1);
 }
 
 //Draw the fuel meter and canister
@@ -48,7 +41,7 @@ if (debugCheck == true)
 }
 
 //Practise prompt
-if (fuel < 40 && motorbike = false && practice == true)
+if (fuel < 40 && motorbike = false && practice == true && practice_hud_clearance < 200)
 {
     draw_debug_text(temp_x- 16, temp_y-60, string("Press Shield during Down Special"));
     draw_debug_text(temp_x- 16, temp_y-44, string("to fully fuel the bike to max"));
@@ -58,4 +51,14 @@ if (fuel >=40 && motorbike == false)
 {
     draw_debug_text(temp_x- 16, temp_y-44, string("DOWN +"));
     draw_sprite_ext(sprite_get("fuel_prompt"), 0, temp_x + 44, temp_y-48, 2, 2, 0, col, 1);
+}
+
+//Not particularly ideal but Has to be done here because update doesn't run in pause screen
+if (motorbike == true)
+{
+	if ("temp_pause" in self && instance_exists(temp_pause))
+	{
+		sound_stop(sound_get("motorbike_move"));
+		sound_stop(sound_get("motorbike_idle"));
+	}
 }

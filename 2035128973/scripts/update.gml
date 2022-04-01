@@ -1,7 +1,8 @@
 // taunt menu
+
 if (practice)
 {
-	var noOfPatches = 7;
+	var noOfPatches = 8;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -101,6 +102,7 @@ if (state == PS_PARRY && state_timer == 1)
 
 //if (state == PS_WALL_JUMP || !free) uspecBan = false;
 //if (uspecBan) move_cooldown[AT_USPECIAL] = 2;
+if (state == PS_PRATFALL) can_fast_fall = true;
 
 if (killCard.timer>0) killCard.timer--;
 if (instance_exists(hit_player_obj) && (hit_player_obj.state == PS_RESPAWN || hit_player_obj.state == PS_DEAD) && hit_player_obj.state_timer == 0)

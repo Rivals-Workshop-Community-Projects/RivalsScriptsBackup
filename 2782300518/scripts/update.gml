@@ -1,10 +1,7 @@
 //update
 
 //This code enables voice lines for the rest of the character
-if (voice_toggle > 14)
-{
-	voice = 1;
-}
+voice = (voice_toggle > 14);
 
 //multikick Recharge meter
 if (kickTime > 0)
@@ -17,14 +14,7 @@ if (kickTime > 0)
 if (feline_power = false)
 {
 	kickTime = 0;
-	if (motorbike == true)
-	{
-		multikick_energy = 200 - move_cooldown[AT_NSPECIAL_2];
-	}
-	else
-	{
-		multikick_energy = 200 - move_cooldown[AT_NSPECIAL];
-	}
+	multikick_energy = (motorbike? 200 - move_cooldown[AT_NSPECIAL_2] : 200 - move_cooldown[AT_NSPECIAL]);
 }
 
 if (move_cooldown[AT_NSPECIAL] == 0 && kickTime > 0)
@@ -36,71 +26,15 @@ if (move_cooldown[AT_NSPECIAL] == 0 && kickTime > 0)
 if (multikick_energy == 200)
 {
 	feline_power = true;
-	
-	//Animation for the kick meter
-	if (meterShine >= 0 && meterShine < 2)
+	meterShine++;
+	if (meterShine == 174)
 	{
-		shine7 = false;
-		shine0 = true;
-		meterShine++;
-	}
-	else if (meterShine > 1 && meterShine < 3)
-	{
-		shine0 = false;
-		shine1 = true;
-		meterShine++;
-	}
-	else if (meterShine > 2 && meterShine < 4)
-	{
-		shine1 = false;
-		shine2 = true;
-		meterShine++;
-	}
-	else if (meterShine > 3 && meterShine < 5)
-	{
-		shine2 = false;
-		shine3 = true;
-		meterShine++;
-	}
-	else if (meterShine > 4 && meterShine < 6)
-	{
-		shine3 = false;
-		shine4 = true;
-		meterShine++;
-	}
-	else if (meterShine > 5 && meterShine < 7)
-	{
-		shine4 = false;
-		shine5 = true;
-		meterShine++;
-	}
-	else if (meterShine > 6 && meterShine < 8)
-	{
-		shine5 = false;
-		shine6 = true;
-		meterShine++;
-	}
-	else if (meterShine > 7 && meterShine < 9)
-	{
-		shine6 = false;
-		shine7 = true;
-		meterShine++;
-	}
-	else if (meterShine == 174)
-	{
-		shine7 = false;
 		meterShine = 0;
-	}
-	else
-	{
-		shine7 = false;
-		meterShine++;
 	}
 }
 
 //Carol's Doulbe jump is a pounce, so if she double jumps there should be no additional vsp
 if (state==PS_DOUBLE_JUMP && motorbike == false){
-	vsp =0
 	feline_power = false;
 	set_state(PS_ATTACK_AIR);
 	attack=AT_EXTRA_2;
@@ -134,10 +68,12 @@ if ((can_wall_jump == false || has_walljump == false) && walljump_number < wallj
     }
 }
 
-//Reset Wall jumps
+//Reset Wall jumps and certain cooldowns
 if (!free)
 {
 	walljump_number = 0;
+	move_cooldown[AT_USPECIAL] = 0;
+	move_cooldown[AT_DAIR] = 0;
 }
 
 if (walljump_number == 5 && motorbike == false)
@@ -146,14 +82,7 @@ if (walljump_number == 5 && motorbike == false)
 }
 
 //Bike can cling to walls, check for this
-if (motorbike = true)
-{
-	can_wall_cling = true;
-}
-else
-{
-	can_wall_cling = false;	
-}
+can_wall_cling = (motorbike = true && y > SD_Y_POS + 150? true : false );
 
 //Enables the ability to ride up walls
 if (clinging == true)
@@ -172,18 +101,6 @@ if (clinging == true)
 if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == false){
 	comboCounter = 0;
     switch (state){
-    	case PS_IDLE:
-        tsprite_index=sprite_get("tail_idle");
-		trotation=0;
-		timage_number=12;
-		timage_speed=0.25;
-		tfront=false;
-		tx=-45*spr_dir;
-		ty=-66;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-    	break;
      	case PS_PARRY:
      	tsprite_index=sprite_get("tail_idle");
 		trotation=0;
@@ -395,7 +312,7 @@ if (!free && motorbike == true)
 if ((state == PS_WALK || state = PS_DASH_START || state=PS_DASH) && motorbike == true && fuel > 0)
 {
 	//You would get hurt if you got hit by a bike... so here's a hitbox for moving on the bike
-	if (state_timer > 20)
+	if ((state == PS_WALK && state_timer > 100 || state == PS_DASH && state_timer > 10))
 	{
 		create_hitbox( AT_EXTRA_1, 1, x, y);
 	}
@@ -565,6 +482,10 @@ if (get_gameplay_time() >= 140)
    	{
    		practice = true;
    	}
+}
+if (practice)
+{
+	practice_hud_clearance++;
 }
 
 //Kirby Stuff

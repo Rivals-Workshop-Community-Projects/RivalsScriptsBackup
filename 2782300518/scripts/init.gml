@@ -24,8 +24,8 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 10;
-short_hop_speed = 6;
+jump_speed = 12;
+short_hop_speed = 5;
 djump_speed = 5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
@@ -131,17 +131,24 @@ bike_state_timer = 0;
 practice = false;      //Whether you're in Practice Mode or not.
 timer1 = get_game_timer();      //The initial game timer.
 timer2 = 0;                     //The game timer after a couple seconds pass.
+practice_hud_clearance = 0;
 
+//Dodge voice variables
 dodgeTime=0;
 dodgeJumpCD=0;
 dodgeCounter=0;
 dodgeTaunt= false;
 
+//Additional variables
 feline_power = true;
 comboCounter = 0;
+moveDisc = true;
+cancelMomentum = false;
 
+//Debug Variable
 debugCheck = false;
 
+//Extras
 pkmn_stadium_front_img = sprite_get("pkmn_carol_front");
 pkmn_stadium_back_img = sprite_get("pkmn_carol_back");
 btt_get_data = "false";
@@ -168,14 +175,6 @@ jump_disc=hit_fx_create(sprite_get("jump_disc"), 40);
 multikick_energy = 200;
 kickTime=0;
 meterShine = 0;
-shine0 = false;
-shine1 = false;
-shine2 = false;
-shine3 = false;
-shine4 = false;
-shine5 = false;
-shine6 = false;
-shine7 = false;
 
 voice = 0;
 voice_toggle = get_player_color(player);
@@ -207,13 +206,13 @@ if has_rune("B"){
 
 if has_rune("I")
 {
-    jump_speed = 13;
+    jump_speed = 15;
 }
 
 if has_rune("O")
 {
     fuel = 40;
-    jump_speed = 15;
+    jump_speed = 16;
     walk_accel = 0.8;
     initial_dash_time = 9;
     initial_dash_speed = 8;

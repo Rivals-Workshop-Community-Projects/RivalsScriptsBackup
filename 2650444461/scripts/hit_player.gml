@@ -9,6 +9,8 @@ if(my_hitboxID.attack == AT_FSPECIAL){
 	if(my_hitboxID.hbox_num <= 7){
 		hit_player_obj.should_make_shockwave = false;
 	}
+	set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 110);set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 95);
+	set_hitbox_value(AT_FSPECIAL, 8, HG_WIDTH, 110);set_hitbox_value(AT_FSPECIAL, 8, HG_HEIGHT, 95);
 }
 
 if(my_hitboxID.attack == AT_DSPECIAL_AIR){

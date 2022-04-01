@@ -5,8 +5,10 @@ if attack == 49 {
 	if !free { 
 		attack = AT_FTHROW
 		hsp = 8*spr_dir
+		hit_player_obj.canUseCounterTimer = 90
 	} else {
 		attack = AT_DTHROW
+		hit_player_obj.canUseCounterTimer = 40
 		window = 2
 	}
 	state_timer = 1

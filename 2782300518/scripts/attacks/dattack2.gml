@@ -1,5 +1,6 @@
 set_attack_value(3, AG_SPRITE, sprite_get("dattack2"));
 set_attack_value(3, AG_NUM_WINDOWS, 3);
+set_attack_value(3, AG_OFF_LEDGE, 1);
 set_attack_value(3, AG_AIR_SPRITE, sprite_get("dattack2"));
 set_attack_value(3, AG_HURTBOX_SPRITE, sprite_get("dattack2_hurt"));
 
@@ -30,10 +31,10 @@ set_hitbox_value(3, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(3, 1, HG_WINDOW, 1);
 set_hitbox_value(3, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(3, 1, HG_LIFETIME, 18);
-set_hitbox_value(3, 1, HG_HITBOX_X, 20);
-set_hitbox_value(3, 1, HG_HITBOX_Y, -28);
-set_hitbox_value(3, 1, HG_WIDTH, 74);
-set_hitbox_value(3, 1, HG_HEIGHT, 74);
+set_hitbox_value(3, 1, HG_HITBOX_X, 14);
+set_hitbox_value(3, 1, HG_HITBOX_Y, -38);
+set_hitbox_value(3, 1, HG_WIDTH, 84);
+set_hitbox_value(3, 1, HG_HEIGHT, 84);
 set_hitbox_value(3, 1, HG_PRIORITY, 2);
 set_hitbox_value(3, 1, HG_DAMAGE, 9);
 set_hitbox_value(3, 1, HG_ANGLE, 60);

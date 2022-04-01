@@ -604,7 +604,7 @@ if ("rollArray" in self)
 						AddText("DAir is now less 'Sticky' on platforms.");
 						break;
 					case 39:
-						AddText("v1.39 - 5 Jan 2021");
+						AddText("v1.39 - 5 Jan 2022");
 						AddText("");
 						AddText("Paint alt's colour changes now reflect in afterimages");
 						AddText("");
@@ -612,14 +612,39 @@ if ("rollArray" in self)
 						AddText("FAir Normal: Stronger hit sound");
 						AddText("");
 						AddText("----------------------------------");
-						AddText("v1.39.1 - 1 Feb 2021");
+						AddText("v1.39.1 - 1 Feb 2022");
 						AddText("");
 						AddText("Slightly changed NAir smears");
 						break;
 					case 40:
-						AddText("v1.40 - 4 Feb 2021");
+						AddText("v1.40 - 4 Feb 2022");
 						AddText("");
 						AddText("Fixed Rollback temp_level bug");
+						break;
+					case 41:
+						AddText("v1.41 - 24 Mar 2022");
+						AddText("");
+						AddText("Fixed Rollback temp_level bug that I missed");
+						AddText("");
+						AddText("Lonin grounded Strongs now performs a Grab instead of Tilts");
+						AddText("Added AI for grabbing");
+						break;
+					case 42:
+						AddText("v1.42 - 31 Mar 2022");
+						AddText("");
+						AddText("NSpecial Damage 4=18 -> 8=18");
+						AddText("");
+						AddText("Grab Startup 10 -> 8");
+						AddText("Grab Endlag 14 -> 16");
+						AddText("");
+						AddText("Tweaked AI slightly");
+						AddText("");
+						AddText("Updated song list");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.42.1 - 31 Mar 2022");
+						AddText("");
+						AddText("Added CSS sound effect");
 						break;
 				}
 				DrawTutorialBlock();
@@ -733,6 +758,11 @@ if ("rollArray" in self)
 	}
 	else if (aura)
 		draw_debug_text(temp_x + 128, temp_y - 10, "Void Dragon");
+	//else if ("ai_state" in self)
+	//{
+	//	draw_debug_text(temp_x + 128, temp_y - 10, AIStateToString(ai_state));
+	//	draw_debug_text(temp_x + 128, temp_y + 4, TaskToString(task));
+	//}
 }
 
 #define AIStateToString(_state)
@@ -842,6 +872,14 @@ if ("rollArray" in self)
 			return "The Earthen Division (Main Event Ver.)";
 		case 29:
 			return "Tetherball Versus";
+		case 32:
+			return "Embers of a Burning Dystopia";
+		case 33:
+			return "The King of Onsen";
+		case 34:
+			return "Dazzling Dark Future";
+		case 35:
+			return "Luminous Impactor";
 		case 36:
 			return "Tactical Evolution EX ~ Creatures Medley";
 		default:

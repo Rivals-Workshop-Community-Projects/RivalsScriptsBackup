@@ -24,7 +24,6 @@ if (ai_target.state == PS_DEAD or ai_target.state == PS_RESPAWN){
    rangedtimer = 100;
 }
 
-//Ai tests saw Carol throw herself off the edge with pounce then fail to recover, this should help prevent that somewhat
 if (free && !ai_recovering && motorbike == false)
 {
 	if (x < stagex + 20 || x > (room_width - stagex) -20)
@@ -34,24 +33,21 @@ if (free && !ai_recovering && motorbike == false)
 	}
 }
 
-if (attack == AT_FSPECIAL)
-{
-	special_down = true;
-}
-
 //Carol's recovery is more unique that other characters, this code helps her recover
 if (ai_recovering && motorbike == false)
 {
 	up_down=false;
+	right_down=false;
+	left_down=false;
 	
 	if (x<get_stage_data( SD_X_POS)) {
 		right_down=true;
 		left_down=false;
 	} else{
-		right_down=false;
 		left_down=true;
+		right_down=false;
 	}
-	if (djumps == max_djumps)
+	if (djumps == max_djumps && special_down == false)
 	{
 		special_down = true;
 		if (can_wall_jump && has_walljump)
@@ -76,8 +72,8 @@ if (fuel == 40 && !ai_recovering && motorbike == false && !free)
 }
 
 //Attempt to either wall jump or ride up the walls when near a wall (I don't know if this works or not!)
-if (can_wall_jump && (position_meeting(x + 20, y-50,asset_get("par_block")))
-|| position_meeting(x - 20, y-50,asset_get("par_block")) && !ai_recovering )
+if (can_wall_jump && (position_meeting(x + 20, y-50,asset_get("par_block"))) || position_meeting(x - 20, 
+y-50,asset_get("par_block")) && !ai_recovering && y > get_stage_data( SD_Y_POS))
 {
 	if (motorbike == true)
 	{
@@ -96,7 +92,10 @@ if (get_player_damage(ai_target.player) >= strongPercent)
 {
 	joy_pad_idle = false;
 	attack_down = false;
-	special_down = false;
+	if (!ai_recovering)
+	{
+		special_down = false;
+	}
 	strong_pressed = true;
 }
 
@@ -212,8 +211,11 @@ if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16){
 	if (((0 > rangedtimer) and (!ai_recovering and inactive > 20)) and (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) and state_cat != SC_HITSTUN and !ai_target_offstage and !offstage  and !can_DACUS and xdist > 100 and !wait_time > 0){
     	if ai_target.x > x{
     		right_hard_pressed = true;
-    		special_down = false;
-        	special_pressed = false;
+    		if (!ai_recovering)
+    		{
+	    		special_down = false;
+		     	special_pressed = false;
+    		}
 			if state == PS_DASH {
 				right_down = true;
 			}
@@ -320,7 +322,10 @@ if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16){
     {
     	joy_pad_idle = false;
 		attack_down = false;
-		special_down = false;
+		if (!ai_recovering)
+		{
+			special_down = false;
+		}
 		shield_down = true;
 		do_not_attack = true;
     }

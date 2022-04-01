@@ -72,5 +72,6 @@ sprite_change_offset("drip", 52, 122);
 sprite_change_offset("nspecialKirby", 34, 56);
 sprite_change_offset("oldLonin", 24, 58);
 sprite_change_offset("genesis", 42, 74);
+sprite_change_offset("grab", 42, 128);
 set_victory_bg(sprite_get("vic"));
 set_victory_theme(sound_get("lonin2"));

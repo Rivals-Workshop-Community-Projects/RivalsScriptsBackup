@@ -259,7 +259,17 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.5", "22nd January, 2022");
+initPatch("1.8", "31st March, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed bug where recovery options wouldn't reset on death, forcing you to land first");
+
+initPatch("1.7", "26th March, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- FSpecial multihit can no longer be SDI'd, and the hitboxes grow bigger after it has hit someone. Should make it more consistent");
+initSection("- Removed blue css lighting");
+initSection("- Updated phone");
+
+initPatch("1.6", "22nd January, 2022");
 initHeader("Fixes / Other Changes");
 initSection("- Fixed NSpecial charge not going away on death");
 

@@ -32,10 +32,22 @@ if (attack==AT_DAIR && motorbike == false)
 			window = 2;
 		}
 	}
+	if (vsp == 0)
+	{
+		destroy_hitboxes();
+	}
 	//Cooldown to prevent the move from being spammed, since its so good
 	if (window = 2 && window_timer == 10)
 	{
 		move_cooldown[AT_DAIR] = 40;
+	}
+	if (can_shield && shield_pressed)
+	{
+		move_cooldown[AT_DAIR] = 40;
+	}
+	if (can_special && special_pressed)
+	{
+		move_cooldown[AT_DAIR] = 40;		
 	}
 }
 
@@ -62,7 +74,7 @@ if (attack==40 && motorbike == true)
 	initial_dash_speed = 5;
 	dash_speed = 7;
 	dash_stop_time = 4;
-	jump_speed = 10;
+	jump_speed = 12;
 	short_hop_speed = 10;
 	max_djumps = 1;
 	hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -82,7 +94,17 @@ if (attack==40 && motorbike == true)
 	
 	if has_rune("I")
 	{
-	    jump_speed = 13;
+	    jump_speed = 15;
+	}
+	
+	if has_rune("O")
+	{
+	   	jump_speed = 16;
+		walk_accel = 0.8;
+    	initial_dash_time = 9;
+		initial_dash_speed = 8;
+    	dash_turn_time = 8;
+    	dash_turn_accel = 1.5;
 	}
 }
 
@@ -399,6 +421,7 @@ if (attack == AT_FSPECIAL && motorbike == false)
 	//If you simply throw the disc without zooming towards it, this attack ends the move and prevents it moving to window 3	
 	if (window == 2 && window_timer == 24)
 	{
+		moveDisc = true;
 		move_cooldown[AT_FSPECIAL] = 60;
 		destroy_hitboxes();
 		attack_end();
@@ -432,18 +455,20 @@ if (attack == AT_FSPECIAL && motorbike == false)
 	}
 	if (window == 3)
 	{
-		set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED, 0);
-		set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, 0);
+		moveDisc = false;
 	}
 	
 	//This code allows Carol to jump off enemies and immediately bounce up if she hits a wall
 	if (window == 3 && hsp == 0)
 	{
 		window = 4;
+		sound_stop(sound_get ("spin_jump"));
+		sound_play(sound_get ("spin_jump"));
 	}
 	//Set Cooldown at the very end of the move
 	if (window = 4 && window_timer == 32)
 	{	
+		moveDisc = true;
 		move_cooldown[AT_FSPECIAL] = 60;
 	}
 }
@@ -458,6 +483,29 @@ if (attack==AT_EXTRA_2 && motorbike == false)
 			sound_stop(sound_get ("carol_pounce_voice"));
 			sound_play(sound_get ("carol_pounce_voice"));
 		}
+	}
+	
+	if (left_pressed)
+	{
+		spr_dir = -1;
+		tx=-45*spr_dir;
+		hsp = 0;
+		hsp = -6;
+		destroy_hitboxes();
+		create_hitbox( AT_EXTRA_2, 1, x + 20, y-21);
+	}
+	if (right_pressed)
+	{
+		spr_dir = 1;
+		tx=-45*spr_dir;
+		hsp = 0;
+		hsp = 6;
+		destroy_hitboxes();
+		create_hitbox( AT_EXTRA_2, 1, x + 20, y-21);
+	}
+	if (window == 2 && window_timer == 25)
+	{
+		destroy_hitboxes();
 	}
 }
 
@@ -642,6 +690,20 @@ if (attack==AT_EXTRA_1)
 		crouchbox_spr = sprite_get("bike_crouch_hurtbox");
 		jump_sound = sound_get("motorbike_wheelie");
 		djump_sound = sound_get("motorbike_spin");
+		
+		if has_rune("I")
+		{
+	    	jump_speed = 15;
+		}
+	
+		if has_rune("O")
+		{
+		   	jump_speed = 16;
+			walk_accel = 0.8;
+		 	initial_dash_time = 9;
+			initial_dash_speed = 11;
+	 		dash_turn_time = 12;
+		}
 	}
 }
 
@@ -672,7 +734,7 @@ if (attack==AT_DSPECIAL_2)
 		initial_dash_speed = 7;
 		dash_speed = 7;
 		dash_stop_time = 4;
-		jump_speed = 10;
+		jump_speed = 12;
 		djump_speed = 5;
 		hurtbox_spr = asset_get("ex_guy_hurt_box");
 		crouchbox_spr = asset_get("ex_guy_crouch_box");
@@ -691,12 +753,12 @@ if (attack==AT_DSPECIAL_2)
 		
 		if has_rune("I")
 		{
-			jump_speed = 13;
+			jump_speed = 15;
 		}
 		
 		if has_rune("O")
 		{
-	    	jump_speed = 15;
+	    	jump_speed = 16;
 			walk_accel = 0.8;
     		initial_dash_time = 9;
 			initial_dash_speed = 8;
@@ -710,7 +772,7 @@ if (attack==AT_DSPECIAL_2)
 if (attack == 43 && motorbike == true)
 {
 	hsp = 0;
-	if (window == 5 && window_timer == 14)
+	if (window == 3 && window_timer == 14)
 	{
 		move_cooldown[43] = 10;
 	}

@@ -4,6 +4,7 @@ switch (attack)
     case AT_FSPECIAL:
     case AT_DSPECIAL:
     case AT_USPECIAL:
+    case AT_UTHROW:
     case 49:
         trigger_b_reverse();
         break;
@@ -596,6 +597,33 @@ switch (attack)
         SkipWindow(5, 6);
     }
     break;
+	case AT_UTHROW:
+		switch (window)
+		{
+			case 2:
+				if (has_hit_player) Grab(40, -1, 4, 4);
+				else if (window_timer == get_window_value(AT_UTHROW, 2, AG_WINDOW_LENGTH))
+				{
+					window = 6;
+					window_timer = 0;
+				}
+				break;
+			case 3:
+				if (window_timer == get_window_value(AT_UTHROW, 3, AG_WINDOW_LENGTH) && has_hit_player)
+				{
+					Grab(40, -1, 1, 1);
+					hit_player_obj.spr_dir = -spr_dir;
+				}
+				break;
+        }
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+            SkipWindow(5, 7);
+            SkipWindow(6, 7);
+        }
+        break;
     case 49:
     {
         suppress_stage_music(0, 0.03);
@@ -776,5 +804,21 @@ switch (attack)
     {
         instance_destroy(auraClone);
         sound_play(asset_get("sfx_abyss_despawn"));
+    }
+}
+
+#define Grab(xpos, ypos, xsmooth, ysmooth)
+{
+    if (xsmooth != 0)
+    {
+        hit_player_obj.x += ((x + spr_dir * xpos) - hit_player_obj.x)/xsmooth;
+        hit_player_obj.hsp = 0;
+        hit_player_obj.old_hsp = 0;
+    }
+    if (ysmooth != 0)
+    {
+        hit_player_obj.y += ((y + ypos) - hit_player_obj.y)/ysmooth;
+        hit_player_obj.vsp = 0;
+        hit_player_obj.old_vsp = 0;
     }
 }

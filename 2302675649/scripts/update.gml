@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 41;
+	var noOfPatches = 43;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -120,7 +120,7 @@ with (oPlayer)
 	if ("outlineState" in self && outlineState != 0 && state_cat != SC_HITSTUN) outlineState = 0;
 
 	// Duane hurtbox
-	if (url == "1867634411")
+	if ("url" in id && url == "1867634411")
 	{
 		hurtbox_spr = sprite_index;
 		crouchbox_spr = sprite_index;

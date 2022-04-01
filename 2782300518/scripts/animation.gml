@@ -33,6 +33,7 @@ if (motorbike == true) //Change all the sprites used if Carol is on the bike
 		break;
 		case PS_LAND:
 		case PS_LANDING_LAG:
+		case PS_PRATLAND:
 		sprite_index=sprite_get("land2");
 		break;
 		case PS_WALK:

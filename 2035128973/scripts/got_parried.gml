@@ -6,3 +6,8 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 && my_hitboxI
 	my_hitboxID.hitbox_timer = 0;
 	my_hitboxID.transcendent = 1;
 }
+
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1)
+{
+	my_hitboxID.destroyed = 1;
+}

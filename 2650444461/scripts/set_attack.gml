@@ -5,6 +5,8 @@ if (attack == AT_FSPECIAL){
 	reset_attack_value(AT_FSPECIAL, AG_AIR_SPRITE);
 	reset_hitbox_value(AT_FSPECIAL, 8, HG_DAMAGE);reset_hitbox_value(AT_FSPECIAL, 8, HG_BASE_HITPAUSE);reset_hitbox_value(AT_FSPECIAL, 8, HG_ANGLE);
 	reset_hitbox_value(AT_FSPECIAL, 8, HG_BASE_KNOCKBACK);reset_hitbox_value(AT_FSPECIAL, 8, HG_KNOCKBACK_SCALING);
+	reset_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH);reset_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT);
+	reset_hitbox_value(AT_FSPECIAL, 8, HG_WIDTH);reset_hitbox_value(AT_FSPECIAL, 8, HG_HEIGHT);
 }
 
 if (attack == AT_USPECIAL){
