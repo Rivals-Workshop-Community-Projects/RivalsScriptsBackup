@@ -61,6 +61,7 @@ spice_level = 0;
 spice_cooldown = 0;
 pot_trapped = noone;
 pot_has_trapped = false;
+pot_trapped_gumbo = false;
 
 food_id = 0;
 

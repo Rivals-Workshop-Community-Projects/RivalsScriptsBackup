@@ -1,0 +1,1 @@
+draw_sprite(spr_index, img_index, floor(x + draw_x), floor(y + draw_y))

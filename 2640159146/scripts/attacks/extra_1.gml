@@ -10,10 +10,10 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, asset_get("sfx_frog_uspecial_divekick"));
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX_FRAME, 9);
 
-set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 40);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAME_START, 6);

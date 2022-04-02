@@ -70,6 +70,8 @@ if (((attack == AT_USPECIAL) && (move_cooldown[AT_USPECIAL] == 0))
 
 // Can skip turning into a car if already a car (if (driving)), but don't incur that penalty
 if (attack == AT_DSPECIAL) {
+    dspecial_grounded = false;
+	dspecial_dust_deployed = false;
     if (free) {
         window = 1;
     } else {
@@ -123,5 +125,7 @@ if (free
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
-muno_event_type = 2;
-user_event(14);
+if (enable_munophone) {
+    muno_event_type = 2;
+    user_event(14);
+}

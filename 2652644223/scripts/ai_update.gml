@@ -3,10 +3,13 @@
 #macro AS_ADVANTAGE 1
 #macro AS_RECOVER 2
 
-ChangeStates();
-CheckRecover();
-AttackUpdate();
-SetAttack();
+if(get_training_cpu_action() == CPU_FIGHT)
+{
+	ChangeStates();
+	CheckRecover();
+	AttackUpdate();
+	SetAttack();
+}
 
 #define ChangeStates()
 {

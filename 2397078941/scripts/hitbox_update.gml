@@ -50,13 +50,15 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
 	  		
 	  if hitpause == 20 {
       	create_hitbox(AT_NSPECIAL, 7, x , y )
-      	spawn_hit_fx(x,y, 304)
+      	fx = spawn_hit_fx(x,y, 304)
+      	fx.pause = 8
       	sound_play(asset_get("sfx_ori_energyhit_medium"))
       }
       
       if hitpause == 30 {
       	create_hitbox(AT_NSPECIAL, 7, x , y )
-      	spawn_hit_fx(x,y, 306)
+      	fx = spawn_hit_fx(x,y, 306)
+      	fx.pause = 8
       	sound_play(asset_get("sfx_ori_energyhit_heavy"))	
       }
       
@@ -119,7 +121,8 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
          shake_camera(4,9)
 	    sound_play(asset_get("sfx_abyss_seed_explode"))
          sound_play(asset_get("sfx_abyss_explosion"))
-         spawn_hit_fx(x,y,306)
+         fx = spawn_hit_fx(x,y,306)
+         fx.pause = 8
          destroyed = true
      }
      }
@@ -139,7 +142,8 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
          shake_camera(4,9)
 	  		sound_play(asset_get("sfx_abyss_seed_explode"))
          sound_play(asset_get("sfx_abyss_explosion"))
-         spawn_hit_fx(x,y,306)
+         fx = spawn_hit_fx(x,y,306)
+         fx.pause = 10
      }
      
         if hitbox_timer = 36 { 
@@ -185,7 +189,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	   	     }
 	   }
 	   
-	    if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x != -0.666 && hitbox_timer > 1 && hitbox_timer < 10 && hitbox_timer > 0 && nearbyhitbox.player != orig_player{
+	    if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x != -0.666 && hitbox_timer > 1 && hitbox_timer < 10 && hitbox_timer > 0 && nearbyhitbox.player != orig_player && nearbyhitbox.hit_priority != 0{
 	         
             hitbox_timer = -10
 	        image_index = 8
@@ -196,7 +200,8 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	        	spr_dir = -1
 	        }
 	        
-	        spawn_hit_fx(x,y,302)
+	        fx = spawn_hit_fx(x,y,302)
+	        fx.pause = 10
 	        sound_play(asset_get("sfx_abyss_hex_hit"),false,noone,1,0.8)
 	        
 	        create_hitbox(AT_FSPECIAL,1,x,y + 6 )
@@ -246,7 +251,8 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 		    nearbyhitbox.image_xscale *= 1.1
 		    nearbyhitbox.image_yscale *= 1.1
 			
-		     spawn_hit_fx(x,y,302) 
+		    fx = spawn_hit_fx(x,y,302) 
+		    fx.pause = 10
 		    shake_camera(4,4)
 		    sound_play(asset_get("sfx_abyss_hex_hit"))
              
@@ -325,7 +331,8 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 		        set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 	        }
 	         image_index = 0 
-	         spawn_hit_fx(x,y,302) 
+	         fx = spawn_hit_fx(x,y,302) 
+	         fx.pause = 10
 		    shake_camera(4,4)
 		    sound_play(asset_get("sfx_abyss_hex_hit"))
 	        hsp = 15 * nearbyhitbox.spr_dir
@@ -378,7 +385,8 @@ if attack == AT_NSPECIAL && hbox_num == 3 {
      if player_id.window == 3 or player_id.attacking == false or player_id.has_hit_player = true {
      	destroyed = 1
      	    sound_play(asset_get("sfx_ori_energyhit_medium"))
-     	    spawn_hit_fx(x + 20*spr_dir, y + 10, 306)
+     	    fx = spawn_hit_fx(x + 20*spr_dir, y + 10, 306)
+     	    fx.pause = 12
 	  		create_hitbox(AT_NSPECIAL, 4, x + 20*spr_dir, y + 10 )
       }
       
@@ -468,7 +476,8 @@ if attack == AT_DSPECIAL && hbox_num == 1 && !free && player_id.milkpizz != 1  {
 
 
     if hitbox_timer == 179 {
-    	spawn_hit_fx(x,y - 10, 302)
+    	fx = spawn_hit_fx(x,y - 10, 302)
+    	fx.pause = 10
     }
     
 
@@ -491,7 +500,8 @@ if attack == AT_DSPECIAL && hbox_num == 3 {
     }
     
     if hitbox_timer == 179 {
-    	spawn_hit_fx(x,y - 10, 302)
+    	fx = spawn_hit_fx(x,y - 10, 302)
+    	fx.pause = 10
     }
     
 }

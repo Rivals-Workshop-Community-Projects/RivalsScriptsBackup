@@ -128,7 +128,7 @@ if (has_rune("D")){
 }
 */
 
-if (my_hitboxID.attack == AT_FTILT){
+if (my_hitboxID.attack == AT_FTILT) || (my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 1){
     if (!hit_player_obj.birdluigifire){ 
         sound_play(asset_get("sfx_burnapplied"));
     }
@@ -297,7 +297,7 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2){
     }
 }
 
-if (my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num == 1){
+if ((my_hitboxID.attack == AT_UAIR || (my_hitboxID.attack == AT_FAIR && !special_down)) && my_hitboxID.hbox_num == 1){
     if (hit_player_obj.should_make_shockwave){
         sound_play(sound_get("bat"));
     }

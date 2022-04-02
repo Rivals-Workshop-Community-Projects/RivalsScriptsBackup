@@ -482,7 +482,8 @@ with phone{
 	  20. Obligatory Trans Alt: Based on the color scheme of the trans flag
 	  21. Silence Enemy: Based on Loud Bird's color scheme from Dicey Dungeons
 	  22. '...there is only me.' / Fate Chosen: Bird Luigi's default color scheme, inverted!
-	  23. Calm the Nerves: Based on Garcello's color palette, from Friday Night Funkin: Smoke 'Em Out Struggle.");
+	  23. Calmed Nerves: Based on Garcello's color palette, from Friday Night Funkin: Smoke 'Em Out Struggle.
+	  24. Air Preference: Based on Falco's color palette, from Super Smash Bros. Melee.");
 	
 	initTip("bird");
 	initTipWords_ext("bird", fa_center, c_dkgray, 0, 0);
@@ -521,7 +522,33 @@ with phone{
 	 * put the version number and full date.
 	 */
 
-	initPatch("1.7", "11  May, 2021");
+	initPatch("1.8", "1 April, 2022");
+	initPatchWords_ext("The ", fa_left, make_colour_rgb(207, 46, 46), 1, 0);
+	initPatchWords("Major Changes
+	- Replaced Fair.
+	- Relocated spaghetti.png");
+	initPatchWords("Buffs
+	- Slightly increased dtilt hitbox size.");
+	initPatchWords("Nerfs
+	- ");
+	initPatchWords("Misc. Changes
+	- Removed claws from jab animation.
+	- Fixed date of previous update release.
+	- Added Parkan victory screen support.
+	- Renamed Garcello alt.
+	- CPU Bird Luigis will now try to glide more often when recovering
+	- CPU Bird Luigis will now use their djump to exit tumbling states instead of letting themselves fall to their death.
+	- Garcello alt now has some sprites adjusted to work properly with its unique properties.
+	- die (loud bird taunt)
+	- Added original   starwalker alt.
+	- Added sfx upon selection.
+	- Made slight adjustments to icon.
+	- Trollface Egg now applies for one additional day.
+	- Added Falco alt.");
+	initPatchWords("Egg Changes
+	- ");
+
+	initPatch("1.7", "14  May, 2021");
 	initPatchWords_ext("The (thanks gnome)", fa_left, make_colour_rgb(207, 46, 46), 1, 0);
 	initPatchWords_ext("thanks gnome", fa_left, make_colour_rgb(127, 184, 215), 1, 0); //gnome sent me most of these patch notes lmao
 	initPatchWords("Buffs

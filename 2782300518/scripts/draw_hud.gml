@@ -11,11 +11,11 @@ for (var kickCharge = 0; kickCharge <multikick_energy; kickCharge++)
     draw_sprite_ext(sprite_get("multikick_charge"), 0, (temp_x + 12) + (kickCharge * 0.765), temp_y-14, 2, 2, 0, col, 1);
 }
 
-//Add polish to the meter, code in update.gml animates this
-if (multikick_energy == 200 && meterShine < 8)
+//Add polish to the meter, code in update.gml animates this (feature disabled due to performance issues)
+/*if (multikick_energy == 200 && meterShine < 8)
 {
     draw_sprite_ext(sprite_get("multikick_meter_polish"), 0, temp_x + 12 + (meterShine * 16) , temp_y-15, 2, 2, 0, col, 1);
-}
+}*/
 
 //Draw the fuel meter and canister
 draw_sprite_ext(sprite_get("fuel_meter"), 0, temp_x-16, temp_y-32, 2, 2, 0, col, 1);

@@ -1,6 +1,12 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
+if (get_color_profile_slot_r(1, 0) == 168)
+{
+    sound_play(sound_get("dspec"),0,-4,2);
+	set_color_profile_slot( 1, 0, 167, 208, 232 );
+}
+
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(max(get_char_info(player, INFO_VER_MINOR), 0));
 image_alpha = max(image_alpha-0.02, 0);
 
@@ -31,7 +37,7 @@ alt_name[4]  = "Black";
 alt_name[5]  = "Purple";
 alt_name[6]  = "Kitsune";
 alt_name[7]  = "Trancend";
-alt_name[8]  = "Riptide";
+alt_name[8]  = "Paint";
 alt_name[9]  = "Roaring Beast";
 alt_name[10]  = "Protean Aura";
 alt_name[11]  = "Thunderclap";
@@ -54,7 +60,7 @@ alt_name[27]  = "Sylvan Watcher";
 alt_name[28]  = "Avatar's Bison";
 alt_name[29]  = "Champion";
 alt_name[30]  = "Abyss";
-alt_name[31]  = "Paint";
+alt_name[31]  = "Riptide";
 var num_alts = array_length_1d(alt_name);
 shader_end();
 

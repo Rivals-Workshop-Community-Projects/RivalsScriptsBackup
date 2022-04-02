@@ -236,7 +236,7 @@ switch(attack){
     		hsp = spr_dir*abs(hsp) *.95;
     	}
     	
-    	 if(can_jump and jump_down){
+    	 if(can_jump and (jump_down or jump_pressed)){
     	 	if(left_pressed){
     	 		spr_dir = -1
     	 	} else if (right_pressed){

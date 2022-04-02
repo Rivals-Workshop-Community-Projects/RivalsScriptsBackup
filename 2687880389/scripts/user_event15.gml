@@ -175,7 +175,7 @@ initWords("You reach a comfortable cruising speed quickly, but if the stage allo
 initImage_ext(sprite_get("crouchmoving"), -5, fa_center, 1, 1, true, c_white, 5, false, noone, noone, noone, noone);
 
 initTip("The Energy Meter");
-initWords("fspecial costs half the max energy meter - at least one circle needs to be filled in to use it.");
+initWords("fspecial costs " + string(booster_rush_cost_percent * 100) + " percent of the energy meter - the circle needs to be filled in to use it.");
 initWords("uspecial slowly consumes energy while in use.");
 initWords("Energy begins to recharge when you touch the ground, wall, or get hit.");
 initWords("Energy recharges faster while grounded, but don't feel stuck to the ground!");
@@ -198,8 +198,10 @@ initWords("fstrong also has an active hibox for a little while during the move, 
 initImage_ext(sprite_get("dstrong"), -5, fa_center, 1, 1, true, c_white, 5, false, noone, noone, noone, noone);
 
 initTip("dspecial: Ramming Speed");
-initWords("Can be charged to give super armor for one hit and increases the distance covered.");
-initWords("Using the move earlier/later doesn't give any bonus damage.");
+initWords("Can be charged to increase speed and the distance covered.");
+initWords("While surrounded with energy (while the hitbox is active) Retroblast is immune to projectiles!");
+initWords("If contact is made with the ground at any point, the move will redirect to go horizontally for the remainder of the duration.");
+initWords("Using the move earlier/later doesn't give any bonus damage, but the timing can throw off opponents.");
 initImage_ext(sprite_get("dspecial"), 7, fa_center, 1, 1, true, c_white, 5, false, noone, noone, noone, noone);
 
 initTip("Multiple Taunts");
@@ -446,6 +448,29 @@ initHeader("Compatible with");
 initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
+initPatch("1.12", "1 Apr, 2022");
+initWords("Not a joke, this is just when the patch was ready.");
+initHeader("Balance");
+initSection("- Increased dattack endlag (13->16, 17->21 on whiff)
+			- nspecial grab whiff endlag increased (14->21)
+			- dspecial functionality adjusted");
+initWords("Thanks to LessTime for suggestions");
+initHeader("Dspecial:");
+initWords("- Super Armor completely removed
+			- Charging now only affects speed
+			- Now Projectile Immune during active hitbox, regardless of charge
+			- When used in the air, begins descent at an angle 60 degrees downward from horizontal
+			- Redirects to horizontal for the remainder of the duration if contact is made with the ground at any point during the move");
+initHeader("Performance:");
+initWords("- Reduced some Munophone invocations outside of training mode");
+initHeader("Presentation:");
+initWords("- Updated Munophone tips with dspecial changes
+			- Added audio/visual cue when the energy meter crosses the fspecial threshold
+			- Adjusted dpsecial charge visual
+			- New Cabinet Man alt
+			- Removed Mettaton's unique portrait - I just wasn't happy with how it turned out
+			- Slightly adjusted some palettes' dark-gray tones to be lighter");
+
 initPatch("1.11", "19 Mar, 2022");
 initWords("Balance, colors, and a rune!");
 initHeader("Balance");

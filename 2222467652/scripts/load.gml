@@ -35,12 +35,13 @@ sprite_change_offset("waveland", 48, 76);
 sprite_change_offset("tech", 36, 58);
 
 sprite_change_offset("jab", 42, 64);
+sprite_change_offset("jab_archen", 42, 64);
 sprite_change_offset("dattack", 36, 56);
 sprite_change_offset("ftilt", 60, 52);
 sprite_change_offset("dtilt", 54, 48);
 sprite_change_offset("utilt", 38, 128);
 sprite_change_offset("nair", 46, 68);
-sprite_change_offset("fair", 58, 90);
+sprite_change_offset("fair", 36, 58);
 sprite_change_offset("bair", 108, 80);
 sprite_change_offset("uair", 38, 68);
 sprite_change_offset("dair", 64, 64);
@@ -70,9 +71,11 @@ sprite_change_offset("plat", 1, 1);
 sprite_change_offset("respawn_platform", 58, 28);
 sprite_change_offset("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 27, 29);
 sprite_change_offset("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA_outline", 27, 29);
+sprite_change_offset("bighurt_fading", 27, 29);
 
 sprite_change_offset("fstrong_old", 64, 48);
 sprite_change_offset("uair_old", 56, 62);
+sprite_change_offset("fair_old", 58, 90);
 
 sprite_change_offset("boulder", 16, 16);
 sprite_change_offset("boulderalt", 16, 16);
@@ -116,6 +119,7 @@ sprite_change_offset("dspecial_proj", 6, 9);
 sprite_change_offset("dspecial_proj2", 0, 3);
 sprite_change_offset("dspecial_proj_alt", 6, 9);
 sprite_change_offset("goomba_mask", 18, 16);
+sprite_change_offset("die", 9, 9);
 
 sprite_change_offset("ancientpower", 37, 37);
 sprite_change_offset("ancientpower_pop", 37, 37);
@@ -152,3 +156,5 @@ sprite_change_offset("custom_color_idle_preview_glow4", 22, 31);
 sprite_change_offset("custom_color_idle_preview_glow5", 22, 31);
 sprite_change_offset("custom_color_idle_preview_glow6", 22, 31);
 sprite_change_offset("custom_color_idle_preview_glow7", 16, 16);
+
+sprite_change_offset("starwalker", 35, 68);

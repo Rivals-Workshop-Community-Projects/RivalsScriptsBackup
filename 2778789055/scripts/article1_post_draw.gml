@@ -25,3 +25,4 @@ if(spice_cooldown > 0){
   draw_sprite_ext(sprite_get("spice_icon_cooldown"), 0, x - 7, y +5, 1, 1, 0, c_white, 1);  
 }
 }
+

@@ -15,7 +15,8 @@ alt_archen = 19;
 alt_pride1 = 20;
 alt_loudbird = 21;
 alt_negative = 22;
-alt_garcello = 23
+alt_garcello = 23;
+alt_starwalker = 24;
 
 switch (get_match_setting(SET_SEASON)){
     case 1: // valentines
@@ -130,6 +131,12 @@ if (get_player_color(player) == alt_garcello){
     set_article_color_slot(0, 0, 255, 150, 0.8);
     set_article_color_slot(6, 245, 255, 250, 0.8);
     set_character_color_shading(6, 0.2);
+}
+
+if (get_player_color(player) == alt_starwalker){
+    for (var slot_num = 0; slot_num < 6; slot_num++){
+         set_character_color_shading(slot_num, 0);
+    }
 }
 
 if object_index != oPlayer exit;

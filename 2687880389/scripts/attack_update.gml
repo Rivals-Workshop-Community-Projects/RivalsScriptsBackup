@@ -502,9 +502,9 @@ if (attack == AT_DSPECIAL) {
 	
 	if ((window == 2) && (window_timer == 1)) {
 		current_effect_sound = sound_play(engine_revving_up_sound);
-	} else if ((window == 3) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+	}/* else if ((window == 3) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
 		armor_available = true;
-	}
+	}*/
 	if (((window == 2) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
 	      || (window == 3)
 		  || (window == 4))
@@ -516,8 +516,8 @@ if (attack == AT_DSPECIAL) {
 			window_timer = 0;
 			sound_stop(current_effect_sound);
 			current_effect_sound = sound_play(driving_dash_sound);
-			if (armor_available) {
-				super_armor = true;
+			if (armor_available && dspecial_grounded) {
+				//super_armor = true;
 			}
 		} else if (shield_pressed && can_store_dspecial_charge) {
 			if (window == 4) {
@@ -545,12 +545,12 @@ if (attack == AT_DSPECIAL) {
 			create_hitbox(AT_DSPECIAL, 1, x + (10 * spr_dir), y - 16);
 		}
 		*/
-		if (armor_available) {
-			super_armor = true;
+		if (armor_available && dspecial_grounded) {
+			//super_armor = true;
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
 			armor_available = false;
-			super_armor = false;
+			//super_armor = false;
 		}
 	} else if ((window == 7) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
 		attack_end();

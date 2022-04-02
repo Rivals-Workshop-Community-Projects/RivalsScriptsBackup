@@ -83,12 +83,12 @@ if (get_player_color( player ) == 7){
     draw_sprite(sprite_get("customicon"), 0, x + 178, y + 112);
 }
 
-//Alt name showing system.
+//Alt name showing system
 if !("birdluigi_css_init" in self){
     birdluigi_css_init = true;
     missingno_time = 0;
     css_name_visibility = 1;
-    css_names = array_create(22, "Default");
+    css_names = array_create(32, "Default");
     match_seasonname = ["Valentine's", "Summer", "Halloween", "Christmas"];
     css_names[1] = "Bird Up";
     css_names[2] = "Another Castle";
@@ -112,8 +112,10 @@ if !("birdluigi_css_init" in self){
     css_names[20] = "Obligatory Trans Alt";
     css_names[21] = "Silence Enemy";
     css_names[22] = "'...there is only me.'";
-    css_names[23] = "Calm The Nerves";
-    css_icons = array_create(22, 0);
+    css_names[23] = "Calmed Nerves";
+    css_names[24] = "The ORIGINAL";
+    css_names[25] = "Air Preference";
+    css_icons = array_create(32, 0);
     css_icons[6] = 0;
     css_icons[7] = 1;
     css_icons[8] = 2;
@@ -132,8 +134,12 @@ if !("birdluigi_css_init" in self){
     css_icons[21] = 2;
     css_icons[22] = 2;
     css_icons[23] = 2;
+    css_icons[24] = 2;
+    css_icons[25] = 2;
+    css_icons[26] = 2;
     css_icon_x = 40;
     css_icon_y = 142;
+    sound_play(sound_get("crack2"));
 }
 
 if (get_player_color( player ) != 22){
@@ -161,6 +167,16 @@ if (css_name_visibility > 0){
     if (css_name_visibility > -1){
         draw_sprite(sprite_get("alt_icons"), css_icons[get_player_color(player)], round(x) + css_icon_x - 30, round(y) + css_icon_y - 6);
         draw_debug_text(round(x) + css_icon_x, round(y) + css_icon_y, css_names[get_player_color( player )]);
+    }
+}
+
+if (get_player_color( player ) == 24){
+    if (css_name_visibility > 0){
+        draw_sprite(sprite_get("original"), css_icons[get_player_color(player)], round(x) + css_icon_x + 30, round(y) + css_icon_y - round(css_name_visibility * 5));
+    } else {
+        if (css_name_visibility > -1){
+            draw_sprite(sprite_get("original"), css_icons[get_player_color(player)], round(x) + css_icon_x + 30, round(y) + css_icon_y);
+        }
     }
 }
 

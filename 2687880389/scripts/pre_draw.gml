@@ -1,4 +1,6 @@
 
+// TODO - Draw Rotom's blue aura here
+
 
 // Draw afterimages
 if (afterimage_countdown > 0) {
@@ -9,13 +11,11 @@ if (afterimage_countdown > 0) {
 			//if ((i % 3) == 2) {
 			if ((i % 2) == 1) {
 				var curr = afterimages[| i];
-				//var shade_color = c_orange;
-				var shade_color = c_white;
 				shader_start();
 				gpu_set_blendmode(bm_add);
 				draw_sprite_ext(curr.sprite_index, curr.image_index,
 								curr.x, curr.y, curr.spr_dir, 1, 0,
-								shade_color, i / num_afterimages);
+								c_white, i / num_afterimages);
 				gpu_set_blendmode(bm_normal);
 				shader_end();
 			}
@@ -28,7 +28,7 @@ if (afterimage_countdown > 0) {
 if (PS_ATTACK_GROUND) && (attack == AT_TAUNT_2) {
 	if (window >= 3) && (window <= 6) {
 		shader_start();
-		draw_sprite_ext(trransformed_taunt_sprite,
+		draw_sprite_ext(transformed_taunt_sprite,
 						selected_taunt_transformation,
 						x, y, spr_dir, 1, 0,
 						c_white, 1);

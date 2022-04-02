@@ -83,6 +83,7 @@ sprite_change_offset("nspecial_air", 32, 78);
 sprite_change_offset("nspecial2", 42, 88);
 sprite_change_offset("fspecial", 32, 78);
 sprite_change_offset("fspecial2", 56, 78);
+sprite_change_offset("fspecial_proj", 24, 24);
 sprite_change_offset("uspecial", 32, 78);
 sprite_change_offset("uspecial2", 32, 78);
 sprite_change_offset("dspecial", 40, 78);

@@ -275,17 +275,19 @@ if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)
 if(grabbedid != noone && !grabbed_solid){
 	with(grabbedid)
 	{
-		ungrab++;
-		if(ungrab == 2){
-			//grabbedid.visible = true; //Feel free to remove this line if the grab does not make the opponent invisible.
-			//grabbedid.invincible = false; //Feel free to remove this line if the grab does not make the opponent invincible.
-			state = PS_TUMBLE;
-			ungrab = 0;
-			other.grabbedid = noone;
-			other.grabbedProj = noone;
-			
-			
-		}
+
+			ungrab++;
+			if(ungrab == 2){
+				//grabbedid.visible = true; //Feel free to remove this line if the grab does not make the opponent invisible.
+				//grabbedid.invincible = false; //Feel free to remove this line if the grab does not make the opponent invincible.
+				state = PS_TUMBLE;
+				ungrab = 0;
+				other.grabbedid = noone;
+				other.grabbedProj = noone;
+				
+				
+			}
+		
 	}
 }
 
@@ -400,6 +402,12 @@ with(oPlayer)
 }
 
 
+// Command grab stuff
+if (state_cat == SC_HITSTUN) {
+    // Remove Grab ID when in hitstun
+    grabbedid = 0;
+}
+
 
 
 //print_debug(string(grabbedProj) + " " + string(grabbedid));
@@ -480,17 +488,19 @@ with(pHitBox){
 
 			var canlowhit = v2 * v2 * v2 * v2 - g * ((g * xdiff * xdiff) + (2 * ydiff * v2 * v2));
 			// Set vector components
-			if(abs(vsp) > abs(hsp) || canlowhit < 0){
-				vsp = v * -dsin(Ohigh);
-				hsp = v * dcos(Ohigh);
+			// if(abs(vsp) > abs(hsp) || canlowhit < 0){
+			// 	vsp = v * -dsin(Ohigh);
+			// 	hsp = v * dcos(Ohigh);
 				
-				// Compensate for friction
-				hsp += sign(hsp) * point_distance(x,y,tx,ty)/150;
-			} else {
-				vsp = v2 * -dsin(Olow);
-				hsp = v2 * dcos(Olow);
-			}
-	
+			// 	// Compensate for friction
+			// 	hsp += sign(hsp) * point_distance(x,y,tx,ty)/150;
+			// } else {
+			// 	vsp = v2 * -dsin(Olow);
+			// 	hsp = v2 * dcos(Olow);
+			// }
+			
+			vsp = v2 * -dsin(Olow);
+			hsp = v2 * dcos(Olow);
 	
 			
         	reset = true;
@@ -546,7 +556,7 @@ with(pHitBox){
         // Outside stage
         if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN)
 		{
-			if(hitbox_timer >= 10)
+			if(hitbox_timer >= 30)
 			{
 		    	hitbox_timer = other.fc_lifetime-1;
 			}
@@ -561,7 +571,7 @@ with(pHitBox){
          //hitbox_timer = bounced ? other.fc_lifetime-1 : other.fc_lifetime - other.fc_bounce_timer;
          
          //hitbox_timer = bounced == 2 ? other.fc_lifetime-1 : hitbox_timer;
-         
+
          // Increment bounce counter
          bounced++;
          if(!is_spin) hitbox_timer = min(other.fc_lifetime-1,hitbox_timer+10); // Subtract from lifetime
@@ -571,7 +581,7 @@ with(pHitBox){
          
          if(is_spin)
          {
-         	hsp = -4 * sign(hsp);
+         	hsp = -3 * sign(hsp);
          }
          
          // Transition to backspin
@@ -580,12 +590,11 @@ with(pHitBox){
          	hsp *= 0.8;
          	img_spd = 0.4;
          	is_spin = true;
-         	sprite_index = sprite_index == sprite_get("firecracker_single") ? sprite_get("firecracker_single_spin") : sprite_index == sprite_get("firecracker_double") ? sprite_get("firecracker_double_spin") : sprite_get("firecracker_triple_spin");
+
+			if(!transcendent) sprite_index = num_fc == 1 ? sprite_get("firecracker_single_spin_nooutline") : num_fc == 2 ? sprite_get("firecracker_double_spin_nooutline") : sprite_get("firecracker_triple_spin_nooutline");
+			else sprite_index = num_fc == 1 ? sprite_get("firecracker_single_spin") : num_fc == 2 ? sprite_get("firecracker_double_spin") : sprite_get("firecracker_triple_spin");
          }
          
-         
-         // Explode if bunt
-         //if(is_bunt) hitbox_timer = other.fc_lifetime-1;
      }
      
 	if(attack == AT_EXTRA_3)

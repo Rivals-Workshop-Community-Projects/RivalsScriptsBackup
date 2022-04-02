@@ -168,9 +168,9 @@ if window == 2 && window_timer % 3 = 0 {
 	
     if window == 1 && window_timer == 1 {
     	
-    		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
+    		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 ).pause = 4
     		halodeact.depth = 1
-    		
+    		halodeact.pause = 6
     		if get_player_color(player) == 5 && sakura == 1 {
 			 spawn_hit_fx( x - 10 * spr_dir, y - 30, shit5 )
                  	}   
@@ -178,7 +178,8 @@ if window == 2 && window_timer % 3 = 0 {
     }
 	
 	if window == 3 && !has_hit {
-    spawn_hit_fx(x,y-30,302)
+    fx = spawn_hit_fx(x,y-30,302)
+    fx.pause = 4
     shake_camera(2,4)
     sound_play(asset_get("sfx_spin"));
     hsp /= 3
@@ -256,7 +257,7 @@ if attack == AT_EXTRA_2 {
     		shake_camera(6,6)
     		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
     		halodeact.depth = 1
-    	
+    	    halodeact.pause = 5
     }
     
     
@@ -284,11 +285,12 @@ if attack == AT_EXTRA_3 {
 		sound_play(asset_get("sfx_abyss_explosion"))
 		var rekk = spawn_hit_fx( x - (8 * spr_dir) , y - 50 , 305 )
     		rekk.depth = -1000
-    		
+    		rekk.pause = 5
     		
     	    halob = 0
     		var rek = spawn_hit_fx( x - (8 * spr_dir) , y - 50 , 306 )
     		rek.depth = 1000
+    		rek.pause = 6
     	shake_camera(6,6)
     }
     init_shader();
@@ -508,6 +510,7 @@ if attack == AT_DSPECIAL {
 	if window == 2 && window_timer == 1 && !hitstop {
        var stab = spawn_hit_fx( x + (5 * spr_dir) , y - 20 , 303 )
     		stab.depth = -1000
+    		stab.pause = 4
    	   	take_damage( player, -1 , 6 + (4 * stabt))
    	   		shake_camera(6,6)
    	   	if get_player_damage( player) > 150 {
@@ -574,8 +577,9 @@ if window_timer == 1 && window == 1 {
     
 	if window == 1 && halo >= 6{
 		sound_play(sound_get("SpaceCutB"));
-		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
+		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 ).pause = 4
     		halodeact.depth = 1
+    		halodeact.pause = 5
 		window = 3
 		halob = 0    	
 			shake_camera(6,6)

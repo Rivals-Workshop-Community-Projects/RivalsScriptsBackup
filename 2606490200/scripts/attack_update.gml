@@ -798,7 +798,8 @@ with (asset_get("new_dust_fx_obj")) {
           }
           
           if window_timer == 90 {
-              spawn_hit_fx(x,y-50,306)
+             fx = spawn_hit_fx(x,y-50,306)
+             fx.pause = 6
             sound_play(asset_get("sfx_ori_stomp_hit"),false,noone,1,1)
             sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1)
             sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,1)

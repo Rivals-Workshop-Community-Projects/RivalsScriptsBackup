@@ -33,7 +33,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 set_num_palettes( 32 );
 
 // Blue
-set_color_profile_slot( 1, 0, 167, 208, 232 ); //Scarf
+set_color_profile_slot( 1, 0, 168, 208, 232 ); //Scarf
 set_color_profile_slot( 1, 1, 76, 69, 196 ); //Fur tone
 set_color_profile_slot( 1, 2, 189, 194, 217 ); //Fur tone2
 set_color_profile_slot( 1, 3, 85, 106, 217 ); //Eye
@@ -95,14 +95,14 @@ set_color_profile_slot( 7, 4, 255, 255, 255 ); //Eye2
 set_color_profile_slot( 7, 5, 255, 255, 255 ); //Limbs
 set_color_profile_slot( 7, 6, 175, 188, 210 ); //Limbs2
 
-// Riptide
-set_color_profile_slot( 8, 0, 254, 184, 0 ); //Scarf
-set_color_profile_slot( 8, 1, 0, 199, 218 ); //Fur tone
-set_color_profile_slot( 8, 2, 242, 228, 214 ); //Fur tone2
-set_color_profile_slot( 8, 3, 218, 93, 0 ); //Eye
-set_color_profile_slot( 8, 4, 254, 184, 0 ); //Eye2
-set_color_profile_slot( 8, 5, 50, 77, 120 ); //Limbs
-set_color_profile_slot( 8, 6, 12, 25, 58 ); //Limbs2
+// Paint
+set_color_profile_slot( 8, 0, 255, 255, 128 ); //Scarf
+set_color_profile_slot( 8, 1, 64, 68, 77 ); //Fur tone
+set_color_profile_slot( 8, 2, 127, 130, 135 ); //Fur tone2
+set_color_profile_slot( 8, 3, 200, 60, 200 ); //Eye
+set_color_profile_slot( 8, 4, 255, 128, 255 ); //Eye2
+set_color_profile_slot( 8, 5, 128, 255, 255 ); //Limbs
+set_color_profile_slot( 8, 6, 60, 200, 200 ); //Limbs2
 
 // Roaring Beast
 set_color_profile_slot( 9, 0, 186, 66, 45 ); //Scarf
@@ -302,14 +302,14 @@ set_color_profile_slot( 30, 4, 79, 61, 92 ); //Eye2
 set_color_profile_slot( 30, 5, 66, 27, 94 ); //Limbs
 set_color_profile_slot( 30, 6, 36, 16, 53 ); //Limbs2
 
-// Paint
-set_color_profile_slot( 31, 0, 255, 255, 128 ); //Scarf
-set_color_profile_slot( 31, 1, 64, 68, 77 ); //Fur tone
-set_color_profile_slot( 31, 2, 127, 130, 135 ); //Fur tone2
-set_color_profile_slot( 31, 3, 200, 60, 200 ); //Eye
-set_color_profile_slot( 31, 4, 255, 128, 255 ); //Eye2
-set_color_profile_slot( 31, 5, 128, 255, 255 ); //Limbs
-set_color_profile_slot( 31, 6, 60, 200, 200 ); //Limbs2
+// Riptide
+set_color_profile_slot( 31, 0, 254, 184, 0 ); //Scarf
+set_color_profile_slot( 31, 1, 0, 199, 218 ); //Fur tone
+set_color_profile_slot( 31, 2, 242, 228, 214 ); //Fur tone2
+set_color_profile_slot( 31, 3, 218, 93, 0 ); //Eye
+set_color_profile_slot( 31, 4, 254, 184, 0 ); //Eye2
+set_color_profile_slot( 31, 5, 50, 77, 120 ); //Limbs
+set_color_profile_slot( 31, 6, 12, 25, 58 ); //Limbs2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

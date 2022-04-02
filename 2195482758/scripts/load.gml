@@ -111,6 +111,16 @@ sprite_change_offset("explosion_double", 124, 118);
 sprite_change_offset("explosion_triple", 124, 118);
 sprite_change_offset("multiexplosion", 68, 64);
 
+sprite_change_offset("firecracker_single_nooutline", 68, 64);
+sprite_change_offset("firecracker_single_spin_nooutline", 68, 64);
+sprite_change_offset("firecracker_single_bunt_nooutline", 68, 64);
+sprite_change_offset("firecracker_double_nooutline", 68, 64);
+sprite_change_offset("firecracker_double_spin_nooutline", 68, 64);
+sprite_change_offset("firecracker_double_bunt_nooutline", 68, 64);
+sprite_change_offset("firecracker_triple_nooutline", 68, 64);
+sprite_change_offset("firecracker_triple_spin_nooutline", 68, 64);
+sprite_change_offset("firecracker_triple_bunt_nooutline", 68, 64);
+
 //Hitboxes
 sprite_change_offset("ftilt_hurt", 64, 126);
 sprite_change_offset("jab_hurt", 96, 126);

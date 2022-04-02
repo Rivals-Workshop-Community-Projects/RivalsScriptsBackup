@@ -6,8 +6,8 @@
 //vfx
 hfx_smaller = hit_fx_create(sprite_get("hfx_smaller"),12);
 hfx_small = hit_fx_create(sprite_get("hfx_small"),16);
-hfx_medium = hit_fx_create(sprite_get("hfx_medium"),16);
-hfx_big = hit_fx_create(sprite_get("hfx_big"),16);
+hfx_medium = hit_fx_create(sprite_get("hfx_medium"),18);
+hfx_big = hit_fx_create(sprite_get("hfx_big"),20);
 
 hue_offset=0; //rainbow alt stuff
 hue_speed=2; //change this to change the speed of the hueshift
@@ -55,6 +55,7 @@ hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
+	 set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
 
 char_height = 52;
 idle_anim_speed = .15;

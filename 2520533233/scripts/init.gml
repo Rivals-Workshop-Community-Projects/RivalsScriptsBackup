@@ -1,6 +1,6 @@
 // Hinanawi Tenshi
 // Custom Init -----------------------------------------------------------------
-
+set_victory_bg( sprite_get( "bg" ));
 //hit_fx
 fspec_ground = hit_fx_create(sprite_get("fspecial_groundfx"), 15);
 fspec_dash = hit_fx_create(sprite_get("fspecial_dashfx"), 15);

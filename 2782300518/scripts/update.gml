@@ -26,11 +26,11 @@ if (move_cooldown[AT_NSPECIAL] == 0 && kickTime > 0)
 if (multikick_energy == 200)
 {
 	feline_power = true;
-	meterShine++;
+	/*meterShine++;
 	if (meterShine == 174)
 	{
 		meterShine = 0;
-	}
+	}*/
 }
 
 //Carol's Doulbe jump is a pounce, so if she double jumps there should be no additional vsp
@@ -50,7 +50,7 @@ if (state==PS_DOUBLE_JUMP && motorbike == false){
 }
 
 //multiple Wall jumps, so that you can bounce up the same wall over and over again, just like Carol's gameplay in Freedom Planet!
-if ((can_wall_jump == false || has_walljump == false) && walljump_number < walljump_limit)
+if ((can_wall_jump == false || has_walljump == false) && walljump_number < walljump_limit && motorbike == false)
 {
     can_wall_jump = true;
     has_walljump = true;
@@ -74,6 +74,11 @@ if (!free)
 	walljump_number = 0;
 	move_cooldown[AT_USPECIAL] = 0;
 	move_cooldown[AT_DAIR] = 0;
+	move_cooldown[AT_DSPECIAL] = 0;
+}
+else
+{
+	move_cooldown[AT_DSPECIAL] = 200;
 }
 
 if (walljump_number == 5 && motorbike == false)
@@ -82,7 +87,7 @@ if (walljump_number == 5 && motorbike == false)
 }
 
 //Bike can cling to walls, check for this
-can_wall_cling = (motorbike = true && y > SD_Y_POS + 150? true : false );
+can_wall_cling = ((motorbike = true && y > SD_Y_POS + 150)? true : false );
 
 //Enables the ability to ride up walls
 if (clinging == true)
@@ -302,12 +307,6 @@ if (state == PS_IDLE && motorbike == true && fuel > 0)
 	}
 }
 
-//End cooldown of FAIR while on the bike and hitting the ground
-if (!free && motorbike == true)
-{
-	move_cooldown[43] = 0;
-}
-
 //Sound effects while on the bike
 if ((state == PS_WALK || state = PS_DASH_START || state=PS_DASH) && motorbike == true && fuel > 0)
 {
@@ -472,6 +471,43 @@ if (tsprite_index!=-1){
 
 if (bsprite_index!=-1){
 	bimage_index=(bimage_index+bimage_speed)%bimage_number;
+}
+
+if (state == PS_LANDING_LAG && attack == 43)
+{
+	attack_end(43);
+	destroy_hitboxes();
+}
+
+//Since Move Cooldowon doesn't work on extra indexes here's some code to make it work
+
+if (move_cooldown[3] > 0)
+{
+	move_cooldown[3] = move_cooldown[3] - 1;
+}
+
+if (move_cooldown[43] > 0)
+{
+	move_cooldown[43] = move_cooldown[43] - 1;
+}
+
+if (move_cooldown[45] > 0)
+{
+	move_cooldown[45] = move_cooldown[45] - 1;
+}
+
+if (move_cooldown[46] > 0)
+{
+	move_cooldown[46] = move_cooldown[46] - 1;
+}
+
+if (move_cooldown[47] > 0)
+{
+	move_cooldown[47] = move_cooldown[47] - 1;
+}
+if (move_cooldown[48] > 0)
+{
+	move_cooldown[48] = move_cooldown[48] - 1;
 }
 
 //Check for Practicse mode

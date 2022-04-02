@@ -1,4 +1,28 @@
 
+var brawl = 1;
+
+if (brawl = 1){ 
+    
+if (get_color_profile_slot_b(0, 0) == 56) {
+    sound_play(sound_get("r"), false, 0, 2.75);
+        brawl_flash_opacity = 0.9;
+    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
+}
+
+if variable_instance_exists(self, "brawl_flash_opacity"){
+    brawl_flash_opacity = brawl_flash_opacity - 0.05;
+draw_sprite_ext(sprite_get("brawl_flash"), 0, x+7, y+8, 1, 1, 0, c_white, brawl_flash_opacity);    
+}
+
+
+draw_sprite(sprite_get("charselectg"),0,x+7,y+8);  
+draw_sprite(sprite_get("brawl_nameplate"),0,x+7,y+8);  
+
+
+
+} 
+
+
 //--- ---
 //
 // hyuponia's "ae" css code
@@ -14,6 +38,7 @@
 // and just in case, this code goes into css_draw.gml.
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
+
 //--- ---
 var qe_b = "Padoru"
 // ! you can now scroll down until you reach "the primary part you should change."

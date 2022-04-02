@@ -1,13 +1,21 @@
 if (sprite_index == sprite_get("bighurt")){
     shader_start();
-    draw_sprite_ext(sprite_get("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"), 0, x, y - 29, spr_dir, 1, state_timer * 15 * spr_dir, c_white, 1);
+    if (get_player_color(player) == alt_garcello){
+        draw_sprite_ext(sprite_get("bighurt_fading"), 0, x, y - 29, spr_dir, 1, state_timer * 15 * spr_dir, c_white, 1);
+    } else {
+        draw_sprite_ext(sprite_get("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"), 0, x, y - 29, spr_dir, 1, state_timer * 15 * spr_dir, c_white, 1);
+    }
     shader_end();
     draw_sprite_ext(sprite_get("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA_outline"), 0, x, y - 29, spr_dir, 1, state_timer * 15 * spr_dir, make_colour_rgb(outline_color[0], outline_color[1], outline_color[2]), 1);
 }
 
 if (sprite_index == sprite_get("pratfall")){
     shader_start();
-    draw_sprite_ext(sprite_get("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"), 0, x, y - 29, spr_dir, 1, state_timer * -15 * spr_dir, c_gray, 1);
+    if (get_player_color(player) == alt_garcello){
+        draw_sprite_ext(sprite_get("bighurt_fading"), 0, x, y - 29, spr_dir, 1, state_timer * -15 * spr_dir, c_gray, 1);
+    } else {
+        draw_sprite_ext(sprite_get("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"), 0, x, y - 29, spr_dir, 1, state_timer * -15 * spr_dir, c_gray, 1);
+    }
     shader_end();
     draw_sprite_ext(sprite_get("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA_outline"), 0, x, y - 29, spr_dir, 1, state_timer * -15 * spr_dir, make_colour_rgb(outline_color[0], outline_color[1], outline_color[2]), 1);
     draw_sprite_ext(sprite_get("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA_outline"), 0, x, y - 29, spr_dir, 1, state_timer * -15 * spr_dir, c_black, 0.5);
@@ -37,6 +45,18 @@ if (infamoustaunt_spray_fade > 0){
 
 if (turned_into_a_goomba){
     draw_sprite_ext(sprite_get("goomba_mask"), 0, x - spr_dir * 4, y - 36, spr_dir * 2, 2, spr_angle, c_white, 1);
+}
+
+if (state == PS_ATTACK_AIR && attack == AT_FAIR && window == 1 && window_timer > 10){
+    infamous_spray_color = make_colour_rgb(get_color_profile_slot_r(get_player_color(player), 0), get_color_profile_slot_g(get_player_color(player), 0), get_color_profile_slot_b(get_player_color(player), 0));
+    gpu_set_alphatestenable(true);
+    gpu_set_fog(1, c_yellow, 0, 1);
+    draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, spr_angle, c_white, 1 - ((window_timer - 10) / 10)); //fancy gpu drawing stuff by Muno
+    gpu_set_fog(0, c_white, 0, 0);
+    gpu_set_alphatestenable(false);
+    shader_start();
+    draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, spr_angle, infamous_spray_color, infamoustaunt_spray_fade / 240);
+    shader_end();
 }
 
 if phone_cheats[cheat_funny_bird]{

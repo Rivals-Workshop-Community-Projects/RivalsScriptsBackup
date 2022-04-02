@@ -26,7 +26,6 @@ if ("practice" in self)
 				AddText("Lore / Story");
 				AddText("Spawn Star");
 				AddText("Final Smash");
-				AddText("Make a wish");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -413,9 +412,25 @@ if ("practice" in self)
 						AddText("Added Paint alt");
 						break;
 					case 22:
-						AddText("v1.21 - 4 Feb 2021");
+						AddText("v1.21 - 4 Feb 2022");
 						AddText("");
 						AddText("Fixed Rollback temp_level bug");
+						break;
+					case 23:
+						AddText("v1.22 - 25 Mar 2022");
+						AddText("");
+						AddText("DAir is now Angle Flipper 10 - Hits same the direction as velocity");
+						AddText("USpecial now requires Special to be held down to use multiple blinks");
+						AddText("");
+						AddText("Added Galaxy Fox mode (Input is Shield and Taunt)");
+						AddText("");
+						AddText("Removed a wish since Dan patched the exploit");
+						AddText("");
+						AddText("Swapped alt position of Riptide and Paint");
+						AddText("");
+						AddText("v1.22.1 - 31 Mar 2022");
+						AddText("");
+						AddText("Added CSS sound effect");
 						break;
 				}
 				DrawTutorialBlock();

@@ -62,7 +62,7 @@ if (attack == AT_TAUNT && get_player_color(player) == alt_gold){
     attack = 43;
 }
 
-if (attack == AT_TAUNT) && (get_player_color(player) == alt_goose || get_player_color(player) == alt_wario || get_player_color(player) == alt_waluigi || bird_luigi_2_taunt){
+if (attack == AT_TAUNT) && (get_player_color(player) == alt_goose || get_player_color(player) == alt_wario || get_player_color(player) == alt_waluigi || get_player_color(player) == alt_garcello || bird_luigi_2_taunt){
     attack = 44;
 }
 
@@ -105,4 +105,8 @@ if (attack == AT_DATTACK){
     if (down_down){
         attack = AT_DTILT;
     }
+}
+
+if (attack == AT_TAUNT && get_player_color(player) == alt_starwalker){
+    starwalker_taunt = false;
 }

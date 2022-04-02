@@ -140,11 +140,9 @@ if(attack == AT_EXTRA_1){
 
 if (attack == AT_USPECIAL){
 	if(!free){
-
-		if (window == 2 && window_timer == 3 and !instance_exists(waterBomb)){
+		if (window == 2 && window_timer == 3 && !instance_exists(waterBomb) && !hitpause){
 			waterBomb = instance_create(x + (spr_dir*25),y - 65,"obj_article2");
 		}
-
 	if(window == 2 && window_timer == 2){
 			if(instance_exists(waterBomb)){
 				sound_play(asset_get("sfx_waterhit_weak"))
@@ -164,8 +162,10 @@ if(attack == AT_USPECIAL_2){
 		uspecVar = 0
 	}
 
-	if(window == 2 && window_timer == 1 && !forceNoWater){
-        waterBomb = instance_create(x - (10 * spr_dir),y - 30,"obj_article2");
+	if(window == 2 && window_timer == 1 && !forceNoWater && !hitpause){
+		if(!instance_exists(waterBomb)){
+        	waterBomb = instance_create(x - (10 * spr_dir),y - 30,"obj_article2");
+		}
 	}
 	if(window == 1){
 		if(!forceNoWater){

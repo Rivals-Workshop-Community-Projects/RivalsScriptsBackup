@@ -353,11 +353,20 @@ max_rocket_fuel = rocket_seconds * 60 * fuel_consumption_rate;
 fuel_consumption_rate = double_rocket_time ? fuel_consumption_rate / 2 : fuel_consumption_rate;
 pity_fuel_amount = max_rocket_fuel / 4;//8;
 rocket_fuel = max_rocket_fuel;
+rocket_fuel_prev = rocket_fuel;
 //uspecial sound
 rocket_sound = sound_get("rocket_effect");
 current_rocket_sound = 0;
+// Manage the meter tracking energy
 meter_sprite = sprite_get("meter");
 meter_fill_sprite = sprite_get("meter_fill");
+white_flash_duration = 8;
+recharge_twinkle = hit_fx_create(sprite_get("recharge_twinkle"), 9);
+fill_fraction = rocket_fuel / max_rocket_fuel;
+//meter_sprite_x = temp_x + 7;
+//meter_sprite_y = temp_y + 3;
+//meter_fill_sprite_x = temp_x + 9;
+//meter_fill_sprite_y = temp_y + 1;
 
 // fspecial charges
 fspecial_leap_hsp = 9;//11;
@@ -370,6 +379,10 @@ booster_rush_cost = max_rocket_fuel * booster_rush_cost_percent;
 indicator_offset = 10 + (188 * booster_rush_cost_percent);
 charge_indicator_sprite = sprite_get("meter_marker");
 charge_button_sprite = sprite_get("charge_button");
+//charge_indicator_sprite_x = temp_x + indicator_offset;
+//charge_indicator_sprite_y = temp_y + 1;
+//charge_button_sprite_x = temp_x + indicator_offset;
+//charge_button_sprite_x = temp_y - 9;
 
 // nspecial grab
 holding_someone = false;
@@ -385,9 +398,19 @@ dthrow_sound_effect = codename_mischeif_active ? sound_get("marina_hooah") : sou
 engine_revving_up_sound = sound_get("engine_revving");
 driving_dash_sound = sound_get("engine_dash");
 armor_available = false;
+dspecial_grounded = false;
+dspecial_charged_speed = 14; // 14
+dspecial_uncharged_speed = 10.5; // 10.5
+dspecial_descent_angle = -60;
+dspecial_charged_angled_x = lengthdir_x(dspecial_charged_speed, dspecial_descent_angle);
+dspecial_charged_angled_y = lengthdir_y(dspecial_charged_speed, dspecial_descent_angle);
+dspecial_uncharged_angled_x = lengthdir_x(dspecial_uncharged_speed, dspecial_descent_angle);
+dspecial_uncharged_angled_y = lengthdir_y(dspecial_uncharged_speed, dspecial_descent_angle);
 driving_dash_duration = 18;
 driving_dash_stored = false;
 change_hurtbox_sprite_to_crouch_next_frame = false;
+dspecial_twinkle = hit_fx_create(sprite_get("dspecial_twinkle"), 20);
+dspecial_dust_deployed = false;
 
 // Afterimages
 //num_afterimages_max = 11;
@@ -471,7 +494,7 @@ switch (selected_player_color) {
 */
 
 // Can use different images for special taunt
-trransformed_taunt_sprite = codename_wireframe_active ? sprite_get("taunt_filling_hologram") : sprite_get("taunt_filling");
+transformed_taunt_sprite = codename_wireframe_active ? sprite_get("taunt_filling_hologram") : sprite_get("taunt_filling");
 highest_random_transformation_option = codename_ugh_number;
 specific_taunt_transformation_required = (selected_player_color > codename_default_number) && (selected_player_color <= codename_ugh_number);
 selected_taunt_transformation = 0;
@@ -485,9 +508,6 @@ if (codename_default_active) { // Default win/loss portraits are miscolored, rep
     set_victory_portrait(sprite_get("portrait_hologram"));
     set_victory_sidebar(sprite_get("result_small_hologram"));
     fs_char_portrait_override = sprite_get("portrait_hologram");
-} else if (codename_mettaton_active) {
-    set_victory_portrait(sprite_get("portrait_mettaton"));
-    set_victory_sidebar(sprite_get("result_small_mettaton"));
 } else if (codename_queen_active) {
     set_victory_portrait(sprite_get("portrait_queen"));
     set_victory_sidebar(sprite_get("result_small_queen"));
@@ -560,5 +580,8 @@ pkmn_stadium_name_override = "Retroblst";
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 
+// Only do most Munophone stuff if we're in training mode
+enable_munophone = (get_training_cpu_action() != CPU_FIGHT);
+// Still need to initialize it though
 muno_event_type = 0;
 user_event(14);

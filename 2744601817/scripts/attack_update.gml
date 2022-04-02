@@ -26,18 +26,20 @@ if (attack == AT_FSTRONG_2){
 if (attack == AT_FTILT || attack == AT_JAB || attack == AT_DTILT || attack == AT_NAIR || attack == AT_FSTRONG
 || attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_UTILT || attack == AT_FAIR || attack == AT_BAIR
 || attack == AT_BAIR || attack == AT_UAIR || attack == AT_DATTACK){
-	if (down_down && special_pressed && has_hit){
-		destroy_hitboxes();
-		attack_end();
-		if (!red_mode){
-			attack = AT_DSPECIAL;
+	if (down_down && special_pressed && has_hit) {
+		if (move_cooldown[AT_DSPECIAL] == 0 || move_cooldown[AT_DSPECIAL_2] == 0){
+			destroy_hitboxes();
+			attack_end();
+			if (!red_mode){
+				attack = AT_DSPECIAL;
+			}
+			else{
+				attack = AT_DSPECIAL_2;
+			}
+			CorrectHurtboxes();
+			window = 1;
+			window_timer = 0;
 		}
-		else{
-			attack = AT_DSPECIAL_2;
-		}
-		CorrectHurtboxes();
-		window = 1;
-		window_timer = 0;
 	}
 }
 
@@ -1234,6 +1236,8 @@ switch(attack){
 						var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
 						grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
 						grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
+						
+						
 					}
 					if (window == 3) {
 						
@@ -1259,20 +1263,45 @@ switch(attack){
 						
 						//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
 						var pull_to_x = 0 * spr_dir;
-						var pull_to_y = -10;
+						var pull_to_y = 40;
 						
 						//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
-						var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-						grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
-						grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
+						var window_length = window_timer;
+						grabbed_player_obj.x = x //+ ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
+						grabbed_player_obj.y = y + 20 //+ ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
+						
 						if (!free){
 							spawn_hit_fx(x,y,fx_slam);
 							sound_play(sound_get("blow"))
 							window = 4;
 							window_timer = 0;
 						}
-					} else {
-						max_fall = max_fall_default;
+					} 
+					if (window == 3 && window_timer == ruair_timer_max) {
+						sound_play(asset_get("sfx_burnend"));
+						ruair_glow = true;
+						
+						grabbed_player_obj.old_vsp = -6;
+						grabbed_player_obj.old_hsp = -4*spr_dir;
+						
+						var air_cd = 15;
+						move_cooldown[AT_UAIR] = air_cd;
+						move_cooldown[AT_BAIR] = air_cd;
+						move_cooldown[AT_FAIR] = air_cd;
+						move_cooldown[AT_NAIR] = air_cd;
+						move_cooldown[AT_DAIR] = air_cd;
+						move_cooldown[AT_USPECIAL_2] = air_cd;
+						move_cooldown[AT_DSPECIAL_2] = air_cd;
+						move_cooldown[AT_FSPECIAL_2] = air_cd;
+						move_cooldown[AT_NSPECIAL_2] = air_cd;
+						state = PS_IDLE_AIR;
+						hitpause = true;
+						hitstun = 10;
+						old_vsp = -6;
+						old_hsp = -2*spr_dir;
+					}
+					else {
+						//max_fall = max_fall_default;
 					}
 					//the above block can be copied for as many windows as necessary.
 					//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.

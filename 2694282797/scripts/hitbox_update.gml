@@ -38,14 +38,17 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
     if !being_held {
         proj_angle += 5 * spr_dir;
         hit_priority = 4;
+        proj_break = 0;
         if !free {
             if player == orig_player {
                 var spawntree = instance_create(x,y+22,"obj_article1");
                 spawntree.state = 2;
                 player_id.tree_id = spawntree;
+                destroyed = true;
+            } else {
+                player_id.move_cooldown[AT_DSPECIAL] = 120;
+                destroyed = true;
             }
-            //
-            destroyed = true;
         }
         transcendent = false;
         visible = true;
@@ -53,6 +56,7 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
         player = orig_player;
         proj_angle = 0;
         hit_priority = 0; //when picked up reset can_hit stuff so it can hit when thrown again
+        proj_break = 1; //so it doesn't destroy projectiles while held
         for(var i=0;i<5;i++) {
             can_hit[i] = true;
         }

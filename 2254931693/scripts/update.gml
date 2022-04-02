@@ -1,7 +1,6 @@
 //update
 
 
-
 with (asset_get("pHitBox")) //references all hitbox objects
 {
 	//checks if the hitbox is a melee one that we own

@@ -123,6 +123,7 @@ sprite_change_offset("rkunai_grounded", 50, 60);
 sprite_change_offset("bkunai_grounded", 50, 62);
 
 //Other
+sprite_change_offset("_fx_gib", 17, 15);
 sprite_change_offset("plat", 66/2, 54/2);
 sprite_change_offset("kart", 0, 20);
 set_victory_theme(sound_get("win"));

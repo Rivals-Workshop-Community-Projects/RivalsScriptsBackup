@@ -28,6 +28,7 @@ fireballtogglecooldown_full = 25;
 
 //Egg Hit
 has_hit_luigi_egg = false;
+has_hit_ron = false;
 
 //misc.
 has_daired = false;
@@ -99,8 +100,8 @@ plushForAmber = sprite_get("amber_plush");
 steve_death_message = "Steve was fireballed by Bird Luigi using [Egg]";
 steve_death_message_orig = steve_death_message;
 steve_death_message_egg = "Steve was egged by Bird Luigi";
-steve_death_message_fire = "Steve died to a fair and balanced Damage-Over-Time gimmick."
-steve_death_message_otto = "death.attack.sting.item"
+steve_death_message_fire = "Steve died to a fair and balanced Damage-Over-Time gimmick.";
+steve_death_message_otto = "death.attack.sting.item";
 feri_costume = sprite_get("feri_costume");
 assistAttack = AT_NSPECIAL; //The attack to use as the assist
 assistOffsetX = -46; //The horizontal distance they spawn from the player
@@ -109,7 +110,7 @@ assistGroundOnly = false; //Whether or not they are forced to the ground
 assistFloat = true; //Whether or not they stay in place vertically
 tcoart = sprite_get("tcosketch");
 guiltySprite = sprite_get("trialgrounds");
-resort_portrait = sprite_get("lastresort")
+resort_portrait = sprite_get("lastresort");
 toonlink_photo = sprite_get("TL");
 toonlink_photo2 = 7;
 pkmn_stadium_front_img = sprite_get("pkmnstadium_front");
@@ -133,10 +134,16 @@ fs_char_chosen_trigger = "ori";
 fs_cutscene_length = 60;
 fs_cutscene_time = 0;
 fs_target_id = noone;
-nname = "Bird Guy?"
-ncode1 = "Bird guy lookin kinda different, has he always had that hat?"
-ncode2 = "and what about the fire?"
-ncode3 = "Maybe its the way hes dressed."
+nname = "Bird Guy?";
+ncode1 = "Bird guy lookin kinda different, has he always had that hat?";
+ncode2 = "and what about the fire?";
+ncode3 = "Maybe its the way hes dressed.";
+parkan_lose_spr = sprite_get("taunt");
+parkan_lose_anim_speed = 0;
+parkan_lose_yoffset = 40;
+diag_portrait = get_char_info(player, INFO_PORTRAIT);
+spam_ad = sprite_get("spam_ad_eg");
+starwalker_taunt = false;
 
 //dspecial fire effect variables
 birdluigifire = false;
@@ -192,7 +199,8 @@ alt_archen = 19;
 alt_pride1 = 20;
 alt_loudbird = 21;
 alt_negative = 22;
-alt_garcello = 23
+alt_garcello = 23;
+alt_starwalker = 24;
 
 //custom alt
 playtesting_mode = false;

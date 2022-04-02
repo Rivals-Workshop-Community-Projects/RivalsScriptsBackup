@@ -131,7 +131,9 @@ beegstar_effect = hit_fx_create(sprite_get("bighit"), 16);
 // transcend
 transcounter = 0;
 
-// hue
+// aura
+aura = false;
+auraMeter = 0;
 hue = 0;
 
 // USpec
@@ -190,4 +192,3 @@ fs_char_portrait_y = 96;
 fs_portrait_x = 96;
 //kirbyability = 16;
 //swallowed = 0;
-gpu_set_alphatestfunc(0);

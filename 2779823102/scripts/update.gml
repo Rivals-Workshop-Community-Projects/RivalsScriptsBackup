@@ -451,7 +451,7 @@ if oattack == 10 {
 //Chao Control
 if oattack == 11 {
     oattack = 0 
-    move_cooldown[AT_NSPECIAL_2] = 500
+    move_cooldown[AT_NSPECIAL_2] = 600
     move_cooldown[AT_DSPECIAL] = 220
     move_cooldown[AT_USPECIAL] = 220
     move_cooldown[AT_DTILT] = 160 

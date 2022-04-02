@@ -237,6 +237,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.12", "1 April, 2022");
+
+initHeader("April Fools!");
+
+//
 initPatch("1.11", "4 March, 2022");
 
 initHeader("Buffs:");

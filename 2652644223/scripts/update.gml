@@ -157,7 +157,7 @@ with(hit_fx_obj)
 
 if(bullets < 1)
 {
-    if(special_pressed && !up_down && !attack_pressed  && outline_timer == 0 && state != PS_ATTACK_AIR  && state != PS_ATTACK_GROUND)
+    if(special_pressed && !up_down && !attack_pressed  && outline_timer == 0  && state != PS_PARRY && state != PS_ATTACK_AIR  && state != PS_ATTACK_GROUND)
     {
         if(bullets != 0 && down_down || bullets == 0)
             reload_check();

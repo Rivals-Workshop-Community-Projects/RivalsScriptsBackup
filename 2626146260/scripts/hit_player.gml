@@ -20,9 +20,11 @@ inactive = 120
  		sound_play(sound_get("bnoise1"),false,noone,2)
  		   sound_play(asset_get("sfx_blow_medium2"))
  		    sound_play(asset_get("sfx_kragg_rock_pillar"))
- 		    shake_camera(2,6)
- 		    spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 193)
- 		    spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 192)
+ 		    //shake_camera(2,6)
+ 		   fx1 = spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 193)
+ 		   fx1.pause = 9
+ 		   fx2 = spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 192)
+ 		   fx2.pause = 9
  }
  
   if  (my_hitboxID.attack == AT_EXTRA_1) {

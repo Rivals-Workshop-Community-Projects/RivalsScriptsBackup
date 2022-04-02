@@ -5,6 +5,7 @@ switch(attack){
 	case AT_DSPECIAL:
 	case AT_USPECIAL:
 	case AT_USPECIAL_2:
+	case AT_EXTRA_1:
 	case AT_DSPECIAL_2:
 	case AT_FSPECIAL_2:
 		trigger_b_reverse();
@@ -19,13 +20,13 @@ switch(attack){
 	
 	// give your moves some "pop" by spawning dust during them!
 	case AT_FTILT:
-			if window == 1 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x +spr_dir * 50, y, "dash_start", -spr_dir]);
+			if window == 1 && window_timer == get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH)-1{
+			spawn_base_dust(x + spr_dir * 50, y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_DATTACK:
-		if window == 3 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x + spr_dir * 50, y, "dash_start", -spr_dir]);
+		if window == 3 && window_timer == get_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH)-1{
+			spawn_base_dust(x + spr_dir * 50, y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_USTRONG:
@@ -34,41 +35,47 @@ switch(attack){
 	}
 	case AT_USTRONG_2:
 		if window == 2 && window_timer == 2{
-			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x + spr_dir * 70, y, "dash_start", -spr_dir);
 
 		}
 		break;
 	case AT_DSTRONG_2:
 		if window == 2 && window_timer == 2{
-			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x + spr_dir * 70, y, "dash_start", -spr_dir);
 
 		}if window == 2 && window_timer == 8{
-			array_push(phone_dust_query, [x + spr_dir * -70, y, "dash_start", spr_dir]);
+			spawn_base_dust(x + spr_dir * -70, y, "dash_start", spr_dir);
 
 		}
 		break;
 	case AT_DSTRONG:
 		if window == 2 && window_timer == 3{
-			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x + spr_dir * 70, y, "dash_start", -spr_dir);
 			sound_play(asset_get("sfx_orcane_fspecial"));
 		}if window == 2 && window_timer == 11{
-			array_push(phone_dust_query, [x + spr_dir * -70, y, "dash_start", spr_dir]);
+			spawn_base_dust(x + spr_dir * -70, y, "dash_start", spr_dir);
 			sound_play(asset_get("sfx_orcane_fspecial"));
 		}
 		break;
 }
 
 if(attack == AT_FTILT){
-if(window == 1 && window_timer == phone_window_end){
+if(window == 1 && window_timer == get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH)-1){
 	vfx = spawn_hit_fx(x + spr_dir * 140, y - 35, spice_effect);
 	vfx.depth = -10;
 }
 }
 
 if(attack == AT_JAB){
-	if(window == 1 && window_timer = phone_window_end){
+	if(window == 1 && window_timer = get_window_value(AT_JAB, 1, AG_WINDOW_LENGTH)-1){
 		sound_play(sound_get("sfx_snap"));
 		vfx = spawn_hit_fx(x + spr_dir * 60, y - 55, spark_effect);
+	}
+}
+
+if(attack == AT_DTILT){
+	if(window == 1 && window_timer = get_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH)-1){
+		sound_play(asset_get("sfx_orcane_fspecial"));
 	}
 }
 
@@ -142,21 +149,31 @@ if(attack == AT_NSPECIAL){
 }
 
 if(attack == AT_FSPECIAL){
-	if(window == 1 && window_timer = phone_window_end){
+	if(window == 1 && window_timer = get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH)-1){
 		move_cooldown[AT_FSPECIAL] = 240;
 		move_cooldown[AT_FSPECIAL_2] = 30;
 		has_shrimp = false;
 	}
 }
 if(attack == AT_FSPECIAL_2){
-	if(window == 1 && window_timer = phone_window_end){
+	if(window == 1 && window_timer = get_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH)-1){
 		move_cooldown[AT_FSPECIAL_2] = 120;
+	}
+}
+
+if(attack == AT_FAIR){
+	if(window == 1 && window_timer = get_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH)-1){
+		sound_play(asset_get("sfx_swipe_medium2"), false, noone, 1, 0.9);
+	}
+}if(attack == AT_UAIR){
+	if(window == 1 && window_timer = get_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH)-1){
+		sound_play(asset_get("sfx_swipe_heavy1"), false, noone, 1, 1.05);
 	}
 }
 
 if(attack == AT_USPECIAL_2){
 	can_fast_fall = false;
-	if(window == 1 && window_timer = phone_window_end){
+	if(window == 1 && window_timer = get_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH)-1){
 		sound_play(asset_get("sfx_ori_dtilt_perform"));
 		spawn_hit_fx(x + spr_dir * -10 , y - 60, uspec_effect);
 		vsp = 0;
@@ -164,6 +181,21 @@ if(attack == AT_USPECIAL_2){
 		set_state(PS_PRATFALL);
 	}if(window == 3 || window == 4){
 		can_wall_jump = true;
+	}
+}if(attack == AT_EXTRA_1){
+	can_fast_fall = false;
+	if(window == 1 && window_timer = get_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH)-1){
+		sound_play(asset_get("sfx_ori_dtilt_perform"));
+		spawn_hit_fx(x + spr_dir * -10 , y - 60, uspec_effect);
+		vsp = 0;
+	}if(window == 3 && !free){
+		set_state(PS_PRATFALL);
+	}if(window == 3 || window == 4){
+		can_wall_jump = true;
+	}if(window == 2 || window == 3){
+		if(window_timer % 2 == 0){
+		spawn_hit_fx(x + spr_dir, y, uspec_after_effect);	
+		}
 	}
 }
 
@@ -174,21 +206,21 @@ if(attack == AT_DSPECIAL){
 		can_move = false;
 	}if(window == 2){
 		can_move = true;
-		}if(window == 1 && window_timer = phone_window_end){
+		}if(window == 1 && window_timer = get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH)-1){
 		spawn_hit_fx(x + spr_dir * 10 , y, 150);
 		vsp = 0;
-	}if(window == 3 && window_timer = phone_window_end){
+	}if(window == 3 && window_timer = get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH)-1){
 		sound_play(asset_get("sfx_waterwarp"));
 	}if(window == 4){
-		if(window_timer % 2 == 0){
-		spawn_hit_fx(x , y - 45, dspec_effect);	
+		if(window_timer % 3 == 0){
+		spawn_hit_fx(x + spr_dir * 10, y - 45, dspec_effect);	
 		}
 	}
 if(window == 2 && window_timer = 2){
 	move_cooldown[AT_DSPECIAL] = 99999;
 	move_cooldown[AT_DSPECIAL_2] = 99999;
 	}
-	if(window == 2 && window_timer = phone_window_end){
+	if(window == 2 && window_timer = get_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH)-1){
 		if(left_down || left_pressed){
 			spr_dir = -1;
 		}	if(right_down || right_pressed){
@@ -218,7 +250,7 @@ if(window == 1 && window_timer = 1){
 	}
 	if(has_hit){
 		set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_TYPE, 1);
-	}if(window == 3 && window_timer = phone_window_end){
+	}if(window == 3 && window_timer = get_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH)-1){
 	move_cooldown[AT_DSPECIAL] = 99999;
 	move_cooldown[AT_DSPECIAL_2] = 99999;
 	}
@@ -231,7 +263,7 @@ if(attack == AT_FSTRONG){
 	}
 }
 if(attack == AT_TAUNT){
-	if(window == 2 && window_timer = phone_window_end){
+	if(window == 2 && window_timer = get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH)-1){
 		if(taunt_down){
 	window_timer = 0;
 		}
@@ -273,7 +305,7 @@ if(attack == AT_TAUNT){
 	}
 	}
 	if(window == 1 && window_timer = 6){
-		sound_play(asset_get("mfx_flashy_shing"), false, noone, 7);
+		sound_play(asset_get("mfx_flashy_shing"), false, noone, 9);
 	}
 }
 
@@ -286,10 +318,8 @@ if(attack == AT_DAIR){
 }if(attack == AT_USTRONG_2 || attack == AT_USTRONG){
 	hud_offset = 70;
 }
-	
-	
-	
-#define spawn_base_dust // written by supersonic
+
+#define spawn_base_dust
 /// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
@@ -302,25 +332,22 @@ var x = argument[0], y = argument[1], name = argument[2];
 var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
-	default: 
-	case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-	case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-	case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-	case "doublejump": 
-	case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-	case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-	case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-	case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-	case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-	case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
-if newdust == noone return noone;
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
-
-

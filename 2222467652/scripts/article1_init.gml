@@ -91,7 +91,7 @@ if (get_player_color(player_id.player) == player_id.alt_gb){
 if (get_player_color(player_id.player) == player_id.alt_gold){
     phone_offscr_sprite = sprite_get("_pho_offscreen_egg_gold");
 }
-if (current_month == 4 && current_day == 1){
+if (current_month == 4 && (current_day == 1 || current_day == 2)){
     phone_offscr_sprite = sprite_get("_pho_offscreen_egg_trol");
 }
 if (get_player_color(player_id.player) == player_id.alt_wario){

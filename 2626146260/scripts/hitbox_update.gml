@@ -155,7 +155,7 @@ if attack == AT_DSPECIAL && hbox_num == 3 {
 
 if attack == AT_DSPECIAL && hbox_num == 2 {
 	
-	  player_id.move_cooldown[AT_DSPECIAL] = 60
+	  player_id.move_cooldown[AT_DSPECIAL] = 30
 	  
 	if  hitbox_timer > 15  && hitbox_timer < 45 {
 		if hitbox_timer % 3 == 0 {
@@ -172,7 +172,7 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
     	}
 	  }
 		 sound_play(sound_get("SpaceCutB"),false,noone,0.4) 	
-	create_hitbox(AT_DSPECIAL,1,x + 70 - random_func(1,140,true),y)
+	create_hitbox(AT_DSPECIAL,1,x + 80 - random_func(1,161,true),y)
 	}
 }
 

@@ -2,12 +2,25 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "15";
+patch_day = "27";
 patch_month = "MAR";
  
 var num_alts = 23;
 var alt_cur = get_player_color(player);
+var alt = get_player_color(player);
  
+ 
+if ("prev_alt" not in self){
+drawtime = 0
+drawing = 0
+}
+    
+if ("prev_alt" in self && prev_alt != alt){
+     drawtime = 0
+}
+
+drawtime += 1
+prev_alt = alt;
  
  
 //Alt name init. var doesn't work with arrays lol
@@ -31,6 +44,19 @@ alt_name[15]  = "Odor Blocker";
 alt_name[16]  = "We need to cook"; 
 alt_name[17]  = "The OG Wobblers"; 
 alt_name[18]  = "It's a reference"; 
+alt_name[19]  = "Seasoned Veterans"; 
+alt_name[20]  = "Fresh off the Grill"; 
+alt_name[21]  = "From Mud to Sludge"; 
+alt_name[22]  = "Leakage"; 
+
+if (get_player_color(player)==22){
+        draw_sprite(sprite_get("drip_charselect"),0,x+8,y+8);
+}
+if (get_player_color(player)==22){
+    if (drawtime == 1){
+    sound_play(sound_get("drip"))
+    }
+}
  
 //Patch
  
@@ -49,11 +75,11 @@ if (get_player_color(player)==13){
 if (get_player_color(player)==14){
         draw_sprite(sprite_get("special_icon"),0,x+10,y+56);
     }
+    */
 //Special Icon
-if (get_player_color(player)== 18){
+if (get_player_color(player)== 22){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
- */
  
 //Alt
  

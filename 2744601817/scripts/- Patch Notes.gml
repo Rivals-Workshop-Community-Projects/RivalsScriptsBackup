@@ -1,5 +1,21 @@
 /*
--- Beta V1.1 --
+-- V1.2 --
+
+Gameplay Changes:
+- Red Fspecial no longer goes as far but is faster during active frames
+
+- Blue Uair now has only set knockback
+(The point of this move was pretty much only to setup into combos)
+
+- Red Uair now has more set knockback (9->1.1)
+- The length of Red Uair is now determined by opponent percentage
+- When Red Uair fails you're boosted up slightly
+- Red Uair should now properly kill off-stage assuming it doesn't fail
+
+Bug Fixes:
+- Can no longer cancel into Dspecial if it is on cooldown
+
+-- V1.1 --
 
 Gameplay Changes:
 - Nair's first two hits are now untechable

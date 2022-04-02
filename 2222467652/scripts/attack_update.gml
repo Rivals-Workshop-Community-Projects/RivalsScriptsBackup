@@ -3,6 +3,23 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if (attack == AT_FAIR){
+    if (window == 1 && window_timer == 10 && !hitpause) && (!attack_down && !strong_down){
+        sound_play(get_window_value(attack, window, AG_WINDOW_SFX));
+        window += 1;
+        window_timer = 1;
+    }
+    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1 && !hitpause && vsp >= -5){
+        vsp -= 3.5;
+    }
+    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 8 && !hitpause && vsp >= -5){
+        sound_play(asset_get("sfx_may_arc_cointoss"));
+    }
+    if (window == 2 && window_timer <= 2 && !hitpause && vsp >= -5){
+        vsp -= 2.5;
+    }
+}
+
 if (attack == 47){
     if (window == 2){
         window_timer = 0;
@@ -84,7 +101,7 @@ if (attack == 45){
 }
 
 if (attack == AT_DTILT){
-    if (window == 3) && (has_hit || has_hit_luigi_egg){
+    if (window == 3) && (has_hit || has_hit_luigi_egg || has_hit_ron){
         can_attack = true;
         can_jump = true;
         if (move_cooldown[AT_DTILT] < 5){
@@ -93,7 +110,7 @@ if (attack == AT_DTILT){
     }
 }
 
-if (attack == AT_UAIR){
+if (attack == AT_UAIR) || (attack == AT_FAIR && (has_hit || has_hit_luigi_egg || has_hit_ron)){
     vsp -= 0.1;
     if (window == 2 && vsp > -6 && !hitpause && !uair_boost){
         vsp = -6;
@@ -345,29 +362,29 @@ if (attack == AT_NTHROW){
 }
 
 if (attack == AT_BAIR){
-    if (has_hit || has_hit_luigi_egg) && (flutterjump < flutterjump_max){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (flutterjump < flutterjump_max){
         vsp *= 0.95;
         hsp *= 0.95;
     }
-    if (has_hit || has_hit_luigi_egg) && (vsp < -1.5 && flutterjump < flutterjump_max){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (vsp < -1.5 && flutterjump < flutterjump_max){
         vsp += 0.5;
     }
-    if (has_hit || has_hit_luigi_egg) && (vsp > 0 && flutterjump < flutterjump_max){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (vsp > 0 && flutterjump < flutterjump_max){
         vsp -= 1;
     }
-    if (has_hit || has_hit_luigi_egg) && (vsp > 3 && flutterjump < flutterjump_max){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (vsp > 3 && flutterjump < flutterjump_max){
         vsp -= 1;
     }
-    if (has_hit || has_hit_luigi_egg) && (vsp > 4 && flutterjump < flutterjump_max){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (vsp > 4 && flutterjump < flutterjump_max){
         vsp -= 1;
     }
-    if (has_hit || has_hit_luigi_egg) && (vsp > 5 && flutterjump < flutterjump_max){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (vsp > 5 && flutterjump < flutterjump_max){
         vsp -= 1;
     }
-    if (has_hit || has_hit_luigi_egg) && (vsp > 5 && flutterjump < flutterjump_max){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (vsp > 5 && flutterjump < flutterjump_max){
         vsp -= 1;
     }
-    if (has_hit || has_hit_luigi_egg) && (vsp > 7 && flutterjump < flutterjump_max){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (vsp > 7 && flutterjump < flutterjump_max){
         vsp -= 1;
     }
 }
@@ -421,7 +438,7 @@ if (attack == AT_FSTRONG){
         super_armor = false;
     }
     if (window == 4 && window_timer > 11 && free){
-        if (has_hit || has_hit_luigi_egg){
+        if (has_hit || has_hit_luigi_egg || has_hit_ron){
             set_state(PS_IDLE_AIR);
         } else {
             hsp *= 0.98;
@@ -479,6 +496,17 @@ if (attack == AT_TAUNT){
         if (mario_taunt_big){
             mario_taunt_big = false;
             sound_play(sound_get("power_down"));
+        }
+    }
+    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 2 && !hitpause && get_player_color(player) == alt_loudbird){
+        create_hitbox(AT_NSPECIAL_2, 3, x, y - 40);
+        sound_play(asset_get("sfx_gus_land"));
+    }
+    if (get_player_color(player) == alt_starwalker){
+        hud_offset = round(52 * 1.05) - char_height;
+        if (!starwalker_taunt){
+            starwalker_taunt = true;
+            sound_play(sound_get("the_original__starwalker"));
         }
     }
 }
@@ -755,7 +783,7 @@ if (attack == AT_JAB){
         old_vsp = 0;
         x -= hsp;
     }
-    if (window == 3 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) * 1.5 - 1 && !has_hit && !has_hit_luigi_egg && attack_down){
+    if (window == 3 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) * 1.5 - 1 && !has_hit && !has_hit_luigi_egg && !has_hit_ron && attack_down){
         window = 1;
         window_timer = 0;
     }
@@ -773,7 +801,7 @@ if (attack == AT_DAIR){
             if (window_timer == 1 && !hitpause){
                 sound_play(asset_get("sfx_ell_arc_taunt_end"));
             }
-            if (!has_hit && !has_hit_luigi_egg && !hitpause){
+            if (!has_hit && !has_hit_luigi_egg && !has_hit_ron && !hitpause){
                 vsp = 15;
                 hsp *= 0.9;
             }
@@ -789,6 +817,7 @@ if (attack == AT_DAIR){
     }
 }
 
+/*
 if (attack == AT_FAIR){
     if (window == 2 && window_timer == 4 && !hitpause){
         if (vsp > -4){
@@ -796,6 +825,7 @@ if (attack == AT_FAIR){
         }
     }
 }
+*/
 
 if (attack == AT_DATTACK){
     dattack_timer = 5;
@@ -820,7 +850,7 @@ if (attack == AT_DATTACK){
             window_timer = 28;
         }
     }
-    if (has_hit || has_hit_luigi_egg) && (!hitpause){
+    if (has_hit || has_hit_luigi_egg || has_hit_ron) && (!hitpause){
         can_jump = true;
         can_attack = true;
     }
@@ -855,12 +885,12 @@ if (attack == AT_TAUNT){
             old_vsp = vsp;
         }
     }
-    if (window == 2 && !playtesting_mode && window_timer == 3 && taunt_down && !codecactive && codecdisabledtimer < 1 && get_training_cpu_action() != CPU_FIGHT) || (window == 2 && !playtesting_mode && window_timer == 28 && !codecactive && taunttimer > 245 && get_training_cpu_action() == CPU_FIGHT && codecdisabledtimer < 1){
+    /* if (window == 2 && !playtesting_mode && window_timer == 3 && taunt_down && !codecactive && codecdisabledtimer < 1 && get_training_cpu_action() != CPU_FIGHT) || (window == 2 && !playtesting_mode && window_timer == 28 && !codecactive && taunttimer > 245 && get_training_cpu_action() == CPU_FIGHT && codecdisabledtimer < 1){
         codecboxopentimer = 0;
         codecactive = true;
         codecpage = 0;
         sound_play(asset_get("mfx_confirm"));
-    }
+    } */ //i actually dont remember writing any of this code please tell me if something breaks after i commented it out
     if (window == 2 && window_timer >= 25 && taunt_down && taunttimer < 251){
         window_timer = 25;
         taunttimer += 1;

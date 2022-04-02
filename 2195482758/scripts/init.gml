@@ -261,6 +261,12 @@ last_last_color = 0;
 // Muno jank
 trainingMode = 0
 
+// Command grabbery
+GrabStartX = 0;
+GrabStartY = 0;
+GrabEasingTimer = 0;
+GrabbedId = 0;
+
 
 
 user_event(14);

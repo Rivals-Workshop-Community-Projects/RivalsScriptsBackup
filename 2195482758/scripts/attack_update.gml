@@ -35,13 +35,13 @@ if (attack == AT_NSPECIAL){
 			switch(fc_count)
 		    {
 		    	case 1:
-		    	fc_zdrop.sprite_index = sprite_get("firecracker_single_bunt");
+		    	fc_zdrop.sprite_index = sprite_get("firecracker_single_bunt_nooutline");
 		    	break;
 		    	case 2:
-				fc_zdrop.sprite_index = sprite_get("firecracker_double_bunt");
+				fc_zdrop.sprite_index = sprite_get("firecracker_double_bunt_nooutline");
 		    	break;
 		    	case 3:
-		    	fc_zdrop.sprite_index = sprite_get("firecracker_triple_bunt");
+		    	fc_zdrop.sprite_index = sprite_get("firecracker_triple_bunt_nooutline");
 		    	break;
 		    }
 		    
@@ -272,15 +272,15 @@ if (attack == AT_NSPECIAL){
 		switch(fc_count)
 	    {
 	    	case 1:
-	    	fc_string = "firecracker_single_bunt";
+	    	fc_string = "firecracker_single_bunt_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 16);
 	    	break;
 	    	case 2:
-	    	fc_string = "firecracker_double_bunt";
+	    	fc_string = "firecracker_double_bunt_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 26);
 	    	break;
 	    	case 3:
-	    	fc_string = "firecracker_triple_bunt";
+	    	fc_string = "firecracker_triple_bunt_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 36);
 	    	break;
 	    }	
@@ -290,15 +290,15 @@ if (attack == AT_NSPECIAL){
 	    switch(fc_count)
 	    {
 	    	case 1:
-	    	fc_string = "firecracker_single";
+	    	fc_string = "firecracker_single_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 16);
 	    	break;
 	    	case 2:
-	    	fc_string = "firecracker_double";
+	    	fc_string = "firecracker_double_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 26);
 	    	break;
 	    	case 3:
-	    	fc_string = "firecracker_triple";
+	    	fc_string = "firecracker_triple_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 36);
 	    	break;
 	    }
@@ -310,15 +310,15 @@ if (attack == AT_NSPECIAL){
 		switch(fc_count)
 	    {
 	    	case 1:
-	    	fc_string = "firecracker_single_spin";
+	    	fc_string = "firecracker_single_spin_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 16);
 	    	break;
 	    	case 2:
-	    	fc_string = "firecracker_double_spin";
+	    	fc_string = "firecracker_double_spin_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 26);
 	    	break;
 	    	case 3:
-	    	fc_string = "firecracker_triple_spin";
+	    	fc_string = "firecracker_triple_spin_nooutline";
 	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 36);
 	    	break;
 	    }
@@ -521,7 +521,7 @@ if (attack == AT_FSPECIAL){
 		if(tempProj.player_id.is_tenru)
 		{
 			if(!tempProj.transcendent) tempProj.bounced = false;
-			tempProj.transcendent = true;
+			tempProj.set_transcendent = true;
 		}
 		
 	}
@@ -550,7 +550,7 @@ if (attack == AT_FSPECIAL){
 						has_hsp = get_hitbox_value( other.attack, other.hbox_num, HG_PROJECTILE_HSPEED);
 					}
 					
-					transcendent = true;
+					set_transcendent = true;
 					hitbox_timer = 0;
 		
 					// Toon link jank
@@ -594,8 +594,8 @@ if (attack == AT_FSPECIAL){
 						}
 						player = other.player;
 						
-						can_hit_self = true;
-						can_hit[other.player] = false;
+						//can_hit_self = true;
+						//can_hit[other.player] = false;
 			
 						hsp = 0;
 						vsp = 0;
@@ -616,8 +616,8 @@ if (attack == AT_FSPECIAL){
 						{
 							if(player_id.url == CH_ELLIANA)
 							{
-				                can_hit_self = true;
-			                    can_hit[other.player] = false;
+				                //can_hit_self = true;
+			                    //can_hit[other.player] = false;
 				                if (attack == 16) {
 			                        owner = other.id
 			                    }
@@ -861,12 +861,12 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		{
 			with(grabbedProj)
 			{
-				transcendent = true;
+				set_transcendent = true;
 				vsp = 0;
 				hsp = 0;
 				is_spin = false;
 				img_spd = 1;
-				sprite_index = sprite_index == sprite_get("firecracker_single_spin") ? sprite_get("firecracker_single") : sprite_index == sprite_get("firecracker_double_spin") ? sprite_get("firecracker_double") : sprite_index == sprite_get("firecracker_triple_spin") ? sprite_get("firecracker_triple") : sprite_index;
+				sprite_index = num_fc == 1 ? sprite_get("firecracker_single") : num_fc == 2 ? sprite_get("firecracker_double") : sprite_get("firecracker_triple");
 				
 				if("player_id" in self) if(player_id.url == 1905208125)
 				{
@@ -1038,7 +1038,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	        		with(grabbedid)
 	        		{
 	        			x-=22*other.spr_dir;
-	        	 		y-=6;
+	        	 		y-=5;
 	        		}
 	        	}
 	        	if(window_timer == 11)
@@ -1061,7 +1061,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         				with(grabbedid)
         				{
         				hsp = new_hsp;
-        				vsp -= grav * vertical_strength;
+        				vsp -= grav * vertical_strength * 0.7;
         				spawn_hit_fx( x, y, 301 );
         				}
 	        		}
@@ -1117,7 +1117,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         				
         				
         				hsp = new_hsp;
-        				vsp -= grav * vertical_strength;
+        				vsp -= grav * vertical_strength * 0.9;
         				spawn_hit_fx( x, y, 301 );
         				}			
 
@@ -1391,13 +1391,13 @@ if (attack == AT_USPECIAL){
     // }
     
     // Grabbing projectile
-	if(grabbedProj == noone && (window < 7 && window > 2) && !special_down)
+	if(grabbedProj == noone && (window < 7 && window > 2))
 	{
 	// First, get nearby hitboxes
 	var tempProj = collision_circle(
 	x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir),
 	y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)), 
-	70, 
+	100, 
 	pHitBox, 
 	true,
 	true );
@@ -1428,7 +1428,7 @@ if (attack == AT_USPECIAL){
 			// If its my own firecracker
 			if(tempProj.player_id.is_tenru)
 			{
-				tempProj.transcendent = true;
+				tempProj.set_transcendent = true;
 			}
 		}
 		
@@ -1453,7 +1453,7 @@ if (attack == AT_USPECIAL){
 						has_hsp = get_hitbox_value( other.attack, other.hbox_num, HG_PROJECTILE_HSPEED);
 					}
 					
-					transcendent = true;
+					set_transcendent = true;
 					hitbox_timer = 0;
 					
 					// Toon link jank
@@ -1494,8 +1494,8 @@ if (attack == AT_USPECIAL){
 					}
 					player = other.player;
 					
-					can_hit_self = true;
-					can_hit[other.player] = false;
+					//can_hit_self = true;
+					//can_hit[other.player] = false;
 		
 					hsp = 0;
 					vsp = 0;
@@ -1513,8 +1513,8 @@ if (attack == AT_USPECIAL){
 					{
 						if(player_id.url == CH_ELLIANA)
 						{
-			                can_hit_self = true;
-		                    can_hit[other.player] = false;
+			                //can_hit_self = true;
+		                    //can_hit[other.player] = false;
 			                if (attack == 16) {
 		                        owner = other.id
 		                    }
@@ -1567,7 +1567,7 @@ if (attack == AT_USPECIAL){
 		x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir) - (extension_x + get_hitbox_value(AT_USPECIAL, window-2, HG_WIDTH)/2),
 		y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y) - (extension_y + get_hitbox_value(AT_USPECIAL, window-2, HG_HEIGHT)/2)), 
 		x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir) + (extension_x + get_hitbox_value(AT_USPECIAL, window-2, HG_WIDTH)/2), 
-		y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)) + (extension_y + get_hitbox_value(AT_USPECIAL, window-2, HG_HEIGHT)/2),
+		y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)) + (extension_y + get_hitbox_value(AT_USPECIAL, window-2, HG_HEIGHT)),
 		asset_get("par_jumpthrough"), 
 		true,
 		true );
@@ -1576,7 +1576,7 @@ if (attack == AT_USPECIAL){
 		x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir) - (extension_x + get_hitbox_value(AT_USPECIAL, window-2, HG_WIDTH)/2),
 		y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y) - (extension_y + get_hitbox_value(AT_USPECIAL, window-2, HG_HEIGHT)/2)), 
 		x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir) + (extension_x + get_hitbox_value(AT_USPECIAL, window-2, HG_WIDTH)/2), 
-		y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)) + (extension_y + get_hitbox_value(AT_USPECIAL, window-2, HG_HEIGHT)/2),
+		y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)) + (extension_y + get_hitbox_value(AT_USPECIAL, window-2, HG_HEIGHT)),
 		asset_get("par_block"), 
 		true,
 		true );
@@ -1671,6 +1671,8 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     	can_move = false;
     	can_air_dspecial = true;
     	var proj_strength = 1.5;
+    	
+    	
 
     	
     	set_window_value(AT_USPECIAL, 8, AG_WINDOW_HAS_WHIFFLAG, 0);
@@ -1692,14 +1694,14 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		{
 			with(grabbedProj)
 			{
-				transcendent = true;
+				set_transcendent = true;
 				if(in_hitpause)
 				{
 					vsp = 0;
 					hsp = 0;
 					is_spin = false;
 					img_spd = 1;
-					sprite_index = sprite_index == sprite_get("firecracker_single_spin") ? sprite_get("firecracker_single") : sprite_index == sprite_get("firecracker_double_spin") ? sprite_get("firecracker_double") : sprite_index == sprite_get("firecracker_triple_spin") ? sprite_get("firecracker_triple") : sprite_index;
+					sprite_index = num_fc == 1 ? sprite_get("firecracker_single") : num_fc == 2 ? sprite_get("firecracker_double") : sprite_get("firecracker_triple");
 				
 					
 					if("player_id" in self) if(player_id.url == 1905208125)
@@ -1725,13 +1727,15 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     	if(window_timer == 2 && window == 7)
     		sound_play(asset_get("sfx_may_whip2"));
      
-    	if(((window == 7 && window_timer == 1) || window < 7) && hitpause == false)
+    	if(((window == 7 && window_timer == 1) || (window < 7 && window > 3)) && hitpause == false)
     		{
     			window = 7;
     			window_timer = 1;
     			vsp = -14;
     			hsp = 2.2*spr_dir;
     		}
+    	
+    	if(window == 3 && grabbedProj == noone) break_grab = true;
     	
     	// Window stuff for grab
     	set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 1);
@@ -1759,38 +1763,54 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     	with(grabbedid)
     	{
         	
-        	
-        	
-    		x += -other.hsp;
-        	y += -other.vsp;
-        	
-        	
-        	// Super weird jankfest invisible grab meme fix
-        	x = floor(x);
-        	if(x > room_width + 100)
+        	if(other.grabbedProj == noone ? !other.hitpause : !hitpause)
         	{
-        		x = room_width + 100;
-        	}
-        	if(x < -100)
-        	{
-        		x = -100;
-        	}
-        	
-        	y = floor(y);
-        	if(y > room_height + 100)
-        	{
-        		y = room_height + 100;
-        	}
-        	if(y < -100)
-        	{
-        		y = -100;
+	    		//x += -other.hsp;
+	        	//y += -other.vsp;
+	        	
+	        	var xoff = other.window >= 7 ? -30 : 15;
+				var yoff = other.window >= 7 ? 86 : -86;
+				
+				var easetime = other.window >= 7 ? 1*60 : 5;
+
+
+	            // Uses an easing function to move them over a period of frames. Set this to whatever looks good.
+	            x = ease_cubeOut( round(x), round(other.x + (xoff * other.spr_dir)), other.GrabEasingTimer, easetime ); // Changes the hit player's x location over time
+	            y = ease_cubeOut( round(y), round(other.y + yoff), other.GrabEasingTimer, easetime ); // Changes the hit player's y location over time
+	            other.GrabEasingTimer += 1; // Timer
+
+		        // No movement so that the changes in position don't become jank
+		        hsp = 0; 
+		        vsp = 0;
+	        	
+	        	
+	        	// Super weird jankfest invisible grab meme fix
+	        	x = floor(x);
+	        	if(x > room_width + 100)
+	        	{
+	        		x = room_width + 100;
+	        	}
+	        	if(x < -100)
+	        	{
+	        		x = -100;
+	        	}
+	        	
+	        	y = floor(y);
+	        	if(y > room_height + 100)
+	        	{
+	        		y = room_height + 100;
+	        	}
+	        	if(y < -100)
+	        	{
+	        		y = -100;
+	        	}
         	}
         	
         	spr_dir = -other.spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
         	wrap_time = 6000;
         	state = PS_WRAPPED;
     	}
-        if(break_grab){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
+        if(break_grab && !grabbed_solid){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
         	with(grabbedid)
         	{
 	            state = PS_TUMBLE;
@@ -1826,6 +1846,8 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 if (attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 10;
 	
+	
+	from_dspecial = true;
 	//can_move = true;
 	
 	// Drifting
@@ -1906,8 +1928,6 @@ if (attack == AT_DSPECIAL){
 	{
 		window = 4;
 		window_timer = 99;
-		
-		from_dspecial = true;
 	}
 	if((window > 2 || (window == 2 && window_timer > 8)) && jump_pressed)
 	{
@@ -2095,9 +2115,9 @@ if (attack == AT_AIR_DSPECIAL){
 		
 	// First, get nearby hitboxes
 	var tempProj = collision_circle(
-	x+(get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X)*spr_dir),
-	y+(get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y)), 
-	30, 
+	x+((get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X)+30)*spr_dir),
+	y+(get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y)-30), 
+	70, 
 	pHitBox, 
 	true,
 	true );
@@ -2116,7 +2136,7 @@ if (attack == AT_AIR_DSPECIAL){
 			// If its my own firecracker
 			if(tempProj.player_id.is_tenru)
 			{
-				tempProj.transcendent = true;
+				tempProj.set_transcendent = true;
 			}
 		}
 		
@@ -2142,7 +2162,7 @@ if (attack == AT_AIR_DSPECIAL){
 						has_hsp = get_hitbox_value( other.attack, other.hbox_num, HG_PROJECTILE_HSPEED);
 					}
 					
-					transcendent = true;
+					set_transcendent = true;
 					hitbox_timer = 0;
 					
 					// Toon link jank
@@ -2180,8 +2200,8 @@ if (attack == AT_AIR_DSPECIAL){
 					}
 					player = other.player;
 					
-					can_hit_self = true;
-					can_hit[other.player] = false;
+					//can_hit_self = true;
+					//can_hit[other.player] = false;
 		
 					hsp = 0;
 					vsp = 0;
@@ -2199,8 +2219,8 @@ if (attack == AT_AIR_DSPECIAL){
 					{
 						if(player_id.url == CH_ELLIANA)
 						{
-			                can_hit_self = true;
-		                    can_hit[other.player] = false;
+			                //can_hit_self = true;
+		                    //can_hit[other.player] = false;
 			                if (attack == 16) {
 		                        owner = other.id
 		                    }
@@ -2307,12 +2327,12 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
 		{
 			with(grabbedProj)
 			{
-				transcendent = true;
+				set_transcendent = true;
 				hsp = 0;
 				vsp = 0;
 				is_spin = false;
 				img_spd = 1;
-				sprite_index = sprite_index == sprite_get("firecracker_single_spin") ? sprite_get("firecracker_single") : sprite_index == sprite_get("firecracker_double_spin") ? sprite_get("firecracker_double") : sprite_index == sprite_get("firecracker_triple_spin") ? sprite_get("firecracker_triple") : sprite_index;
+				sprite_index = num_fc == 1 ? sprite_get("firecracker_single") : num_fc == 2 ? sprite_get("firecracker_double") : sprite_get("firecracker_triple");
 				
 				
 				if("player_id" in self) if(player_id.url == 1905208125)
@@ -2758,6 +2778,8 @@ if(attack == AT_UTILT){
 //Dair code
 if(attack == AT_DAIR){
 
+	fall_through = from_dspecial;
+
 	if(window == 1)
 		bounce = 1;
 	
@@ -2795,6 +2817,8 @@ if(attack == AT_USTRONG){
 #region Uair
 //Uair code
 if(attack == AT_UAIR){
+	fall_through = from_dspecial && window < 5;
+	
 	// Wall jump
 	can_wall_jump = window == 5 || window == 3;
 	
@@ -2811,6 +2835,8 @@ if(attack == AT_UAIR){
 //Bair code
 if(attack == AT_BAIR){
 
+	fall_through = from_dspecial && window < 7;
+
 	can_wall_jump = window == 3 || window == 5 || window == 7;
 	
 	// Landing lag
@@ -2818,6 +2844,26 @@ if(attack == AT_BAIR){
 	else reset_attack_value(AT_BAIR, AG_LANDING_LAG);
 }
 #endregion
+
+#region Nair
+
+if(attack == AT_NAIR)
+{
+	fall_through = from_dspecial && window < 5;
+}
+
+#endregion
+
+#region Fair
+
+if(attack == AT_FAIR)
+{
+	fall_through = from_dspecial && window < 4;
+}
+
+#endregion
+
+
 
 #region Ftilt
 //Ftilt code

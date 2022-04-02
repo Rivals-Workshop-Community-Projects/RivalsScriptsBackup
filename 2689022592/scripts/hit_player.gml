@@ -203,9 +203,14 @@ if boi == true && move_cooldown[AT_EXTRA_1] == 0 {
     
     
 }
+with hit_player_obj {
+   if "Tengia_pain_time" in self {
+    if Tengia_pain_time > 0 {
+    	Tengia_pain_time = 180
+    }
+   }
 
-
-
+}
 //// Rune stuffs
 
 if has_rune("K") {

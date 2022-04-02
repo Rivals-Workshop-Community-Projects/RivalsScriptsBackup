@@ -393,6 +393,14 @@ switch (hitbox){
 				if (new_grab_distance < old_grab_distance) { grabbed_player_obj = hit_player_obj; }
 			}
 			old_grabbed_player_obj = grabbed_player_obj;
+			
+			ruair_dmg = get_player_damage(grabbed_player_obj.player);
+			var ruair_formula = round(ruair_dmg / 4)
+			
+			ruair_timer_max = 15 + (ruair_formula);
+			set_window_value(AT_EXTRA_2, 3, AG_WINDOW_LENGTH, ruair_timer_max);
+			
+			print_debug(ruair_timer_max);
 		}
 	break;
 	case(AT_BAIR):

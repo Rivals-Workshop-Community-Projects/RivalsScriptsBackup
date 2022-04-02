@@ -1,4 +1,3 @@
-//Destroy Bike upon contact with ground
 if (attack == 40 && !free)
 {
     destroyed = true;
@@ -15,6 +14,8 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	
 	if (hsp == 0 && hitbox_timer >0)
 	{
+		player_id.Fspecial_positionX = x;
+		player_id.Fspecial_positionY = y;
 		destroyed = false;
 	}
 }
@@ -22,38 +23,34 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 //This code governs the movement of the jump disc
 if (attack == AT_FSPECIAL && hbox_num == 1 && hitbox_timer == 12)
 {
+	player_id.Fspecial_positionX = x;
+	player_id.Fspecial_positionY = y;
 	hsp = 0;
 }
-if (attack == AT_FSPECIAL && hbox_num == 1 && hitbox_timer == 28 && player_id.moveDisc == true)
-{
-	hsp = player_id.x > x ? 16: -16;
-	vsp = player_id.y = y? 0: player_id.vsp;
-}
+
+	if (attack == AT_FSPECIAL && hbox_num == 1 && hitbox_timer == 28 && player_id.moveDisc == true)
+	{
+		var disc_direction = point_direction(x, y, player_id.x, player_id.y);
+		var disc_distance = point_distance(x, y, player_id.x, player_id.y);
+	
+		hsp = lengthdir_x(disc_distance, disc_direction) / 14;
+		vsp = lengthdir_y(disc_distance, disc_direction) / 14;
+	}
+
 
 if (player_id.moveDisc == false)
 {
 	length = 70;
 }
-	
-if (attack == AT_FSPECIAL && hbox_num == 1 && hitbox_timer >= 54)
+
+if (attack == AT_FSPECIAL && hbox_num == 1 && hitbox_timer == 64)
 {
-	if (player_id.x > x)
-	{
-		hsp = player_id.hsp + 3;
-	}
-	else if (player_id.x < x)
-	{
-		hsp = player_id.hsp - 3;
-	}
-	if (player_id.y < y)
-	{
-		vsp = player_id.vsp - 8;
-	}
-	else if (player_id.y > y)
-	{
-		vsp = player_id.vsp + 2;
-	}
 	
+	var disc_direction2 = point_direction(x, y, player_id.x, player_id.y);
+	var disc_distance2 = point_distance(x, y, player_id.x, player_id.y);
+	
+	hsp = lengthdir_x (disc_distance2, disc_direction2) /6;
+	vsp = lengthdir_y(disc_distance2, disc_direction2) /6;
 }
 
 if (attack == 43 && hbox_num == 1){
@@ -65,9 +62,13 @@ if (attack == 43 && hbox_num == 1){
 		}
 	}
 	
-	if (hsp == 0 && hitbox_timer >0)
+	if (hsp == 0 && hitbox_timer >0 && hitbox_timer <30)
 	{
 		destroyed = false;
+	}
+	if (player_id.state == PS_LANDING_LAG)
+	{
+		destroyed = true;
 	}
 }
 if (attack == 43 && hbox_num == 1 && hitbox_timer == 2)
@@ -80,5 +81,3 @@ if (attack == 43 && hbox_num == 1 && hitbox_timer == 28)
 	hsp = player_id.x > x ? 10: -10;
 	vsp = player_id.y = y? 0: player_id.vsp;
 }
-
-

@@ -56,7 +56,7 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_ADVANTAGE:
-			ai_attack_time = 4;
+			ai_attack_time = aura?0:4;
 			break;
 		case AS_RECOVER:
 			ai_attack_time = 40;
@@ -93,6 +93,7 @@ SetAttack();
 				var stage_x = get_stage_data( SD_X_POS );
 				var stage_y = get_stage_data( SD_Y_POS );
 				
+				special_down = ai_state == AS_RECOVER;
 				if (state_timer < 20)
 				{
 					up_down = true;
@@ -172,10 +173,10 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_RECOVER:
-			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack)
+			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && !aura)
 			{
 				var stage_y = get_stage_data( SD_Y_POS );
-				if (y < ((stage_y >= 800)?topcustom:stage_y)+20)
+				if (y < ((stage_y >= 800)?topcustom:stage_y)+10)
 				{
 					DoAttack(AT_FSPECIAL);
 					move_cooldown[AT_USPECIAL] = max(2, move_cooldown[AT_USPECIAL]);
@@ -191,8 +192,9 @@ SetAttack();
 		case AS_ADVANTAGE:
 			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && get_training_cpu_action() == CPU_FIGHT)
 			{
-				var xdist = abs((ai_target.x+ai_target.hsp*4)-x);
-				var ydist = abs((ai_target.y+ai_target.vsp*4)-y);
+				var frameOffset = aura?1:5;
+				var xdist = abs((ai_target.x+ai_target.hsp*frameOffset)-x);
+				var ydist = abs((ai_target.y+ai_target.vsp*frameOffset)-y);
 				var dist = point_distance(0, 0, xdist, ydist);
 				if (upThrow > 70 && move_cooldown[AT_DSPECIAL] == 0)
 					DoAttack(AT_DSPECIAL);

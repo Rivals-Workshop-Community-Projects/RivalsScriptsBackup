@@ -2,8 +2,7 @@
 var temp_player = hit_player_obj.player;
 
 if(my_hitboxID.attack == AT_FSPECIAL) with my_hitboxID{
-	hitbox_timer = 59;
-	create_hitbox(AT_FSPECIAL, 2, x, y + 10);
+	hitbox_timer = 0;
 }
 
 if(my_hitboxID.attack == AT_FSPECIAL_2) with my_hitboxID{
@@ -20,4 +19,11 @@ if(my_hitboxID.attack == AT_FSPECIAL_2) with my_hitboxID{
 			kb_angle += 90;
 		}
 	}
+}
+
+if(other_is_scalding && hit_player_obj.other_scalding = true && hit_player_obj.other_scalding_timer != 0){
+	sound_play(asset_get("sfx_hod_steam_level1"));
+	hit_player_obj.other_scalding = false;
+	hit_player_obj.other_scalding_timer = 0;
+	other_is_scalding = false;
 }

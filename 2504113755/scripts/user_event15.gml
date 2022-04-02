@@ -516,6 +516,13 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+	initPatch("2.5", "1 April, 2022");
+		
+			initPatchWords_ext("It is right that the good should be happy, 
+			that the wicked and the impious, on the other hand, 
+			should be miserable; that is a truth, 
+			I believe, which no one will gainsay.", fa_center, c_white, 0, 0);
+	
 	
 			initPatch("2.4", "24 October, 2021");
 		

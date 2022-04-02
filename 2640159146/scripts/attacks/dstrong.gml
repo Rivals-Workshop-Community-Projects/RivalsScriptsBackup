@@ -29,7 +29,7 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 13);
 
@@ -37,7 +37,7 @@ set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 16);
 
-set_window_value(AT_DSTRONG, 7, AG_WINDOW_LENGTH, 19);
+set_window_value(AT_DSTRONG, 7, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSTRONG, 7, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DSTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_DSTRONG, 7, AG_WINDOW_HAS_SFX, 1);

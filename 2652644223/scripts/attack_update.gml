@@ -55,7 +55,7 @@ if(state_timer == 1)
     }
 }
 
-if(state_timer <= 3 && !free && bullets != 6 && attack_pressed && special_pressed && attack != AT_TAUNT_2)
+if(state_timer <= 3 && !free && bullets != 6 && attack_pressed && special_pressed && attack != AT_TAUNT_2 && state != PS_PARRY)
 {
     tac_reload = true;
     attack = AT_TAUNT_2;

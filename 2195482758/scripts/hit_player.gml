@@ -119,16 +119,21 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 // Uspecial grab
 if (my_hitboxID.attack == AT_USPECIAL){
 	if(hit_player_obj.state_cat == SC_HITSTUN)
-    if ((window == 3 || window == 4 || window == 5 || window == 6 || window == 7) && grabbedid == noone){
+    if ((window == 2 || window == 3 || window == 4 || window == 5 || window == 6 || window == 7) && grabbedid == noone){
         hit_player_obj.grabbed = 1;
         grabbedid = hit_player_obj;
         last_grabbedid = grabbedid;
 	    grabbedid.ungrab = 0;
 	    
-	    sound_play(sound_get("tenru_grab"));
-	    window_timer = 1;
-	    grabbedid.x = my_hitboxID.x;
-	    grabbedid.y = my_hitboxID.y;
+	    if(window > 2)
+	    {
+		    sound_play(sound_get("tenru_grab"));
+		    window_timer = 1;
+		    grabbedid.x = my_hitboxID.x;
+		    grabbedid.y = my_hitboxID.y;
+		}
+		
+	    GrabEasingTimer = 0;
 	    
 	    var max_moves = 30;
 	    with(grabbedid) while(collision_line(x + (5*other.spr_dir),y,x + (5*other.spr_dir),y+30,asset_get("par_block"),false,true) && max_moves > 0){
@@ -137,6 +142,7 @@ if (my_hitboxID.attack == AT_USPECIAL){
 	    }
     }
 }
+
 
 // Dspecial "grab"
 if (my_hitboxID.attack == AT_AIR_DSPECIAL){

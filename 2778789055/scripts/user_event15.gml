@@ -90,7 +90,7 @@ phone.dont_fast = false;
 // If you don't intend to use any of those bonus features in your character,
 // you should set this to true since it saves a bit of performance.
 // (it's false by default since Phone Sandbert uses some of those features)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -245,6 +245,62 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.12", "27 March, 2022");
+
+initHeader("Buffs:");
+initSection("+ Dstrong hitboxes made a little further away from Gumbo, matches visual a little bit better
++ Ustrong's kb scaling was increased, 1 -> 1.1, 0.9 -> 1
++ All shrimpless Dstrong hitboxes were made bigger
++ When deployed, the pot slows down quicker so that it can be hit faster
++ When scalding, Shrimpless Uspecial is powered up
+");
+
+initHeader("Nerfs:");
+initSection("- Shrinkwrapped Ustrong's hitboxes a bit
+- The pot can no longer be hit to make it move when an enemy is trapped inside of it
+- Fspecial is now reflected on parry
+- Shrimpless Fspecial's projectiles have a little less hsp
+- If reflected Fspecial hits Gumbo, he will be scalded and able to be trapped in his own pot
+- Getting parried removes an opponent's scalding
+");
+
+initHeader("Changes:");
+initSection("= Jab 1 has more hitpause and a little less lag so that it can actually confirm into dtilt
+= Adjusted Utilt's hitboxes again, current utilt wouldn't scoop up Ori and other smaller characters well
+= Added 4 alts
+= Lowered Uair hitpause a little
+= Lightweighted Gumbo's munophone. No texting on the job!
+(Anyone who lags off of P&G still let me know if they lag in matches)
+= Fixed yet another pot bug, screw you Seija!!!
+");
+
+//
+initPatch("1.11", "15 March, 2022");
+
+initHeader("Changes:");
+initSection("= Hopefully fixed the issue with pot interacting with projectiles for the last time (probably not, still ping me if it breaks lol)
+= The Pot explosion bar is now brighter
+");
+
+//
+initPatch("1.1", "15 March, 2022");
+
+initHeader("Buffs:");
+initSection("+ Dspecial lasts longer, 10 -> 15
+");
+
+initHeader("Nerfs:");
+initSection("- Nair 2 was made smaller
+- Utilt 2 & 3 were made smaller
+");
+
+initHeader("Changes:");
+initSection("= Opponents are trapped in the pot for less time to not disrupt gameplay for as long, 65 frames to 35
+= Dspecial's animation was modified to better communicate when the hitbox is gone
+= The pot is no longer hit by 0 hitpause projectiles/ 0 priority hitboxes
+= Added 2 alts
+");
 
 //
 initPatch("1.0", "14 March, 2022");

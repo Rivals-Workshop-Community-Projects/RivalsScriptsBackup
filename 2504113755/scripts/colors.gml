@@ -227,14 +227,14 @@ set_color_profile_slot( 19, 6, 58, 59, 59 ); //fur (s)
 set_color_profile_slot( 19, 7, 102, 102, 102 ); //fur
 
 // bayo
-set_color_profile_slot( 20, 0, 179, 2, 53 ); //Sword
-set_color_profile_slot( 20, 1, 219, 101, 157 ); //Sword 2
-set_color_profile_slot( 20, 2, 249, 137, 168 ); //line
-set_color_profile_slot( 20, 3, 158, 64, 130 ); //line (s)
-set_color_profile_slot( 20, 4, 27, 45, 77 ); //cloak
-set_color_profile_slot( 20, 5, 9, 18, 43 ); //cloak (s)
-set_color_profile_slot( 20, 6, 196, 94, 148 ); //fur (s)
-set_color_profile_slot( 20, 7, 253, 215, 224 ); //fur
+set_color_profile_slot( 20, 0, 51, 42, 42 ); //Sword
+set_color_profile_slot( 20, 1, 224, 199, 199 ); //Sword 2
+set_color_profile_slot( 20, 2, 255, 57, 8 ); //line
+set_color_profile_slot( 20, 3, 163, 23, 5 ); //line (s)
+set_color_profile_slot( 20, 4, 161, 11, 12 ); //cloak
+set_color_profile_slot( 20, 5, 112, 8, 25 ); //cloak (s)
+set_color_profile_slot( 20, 6, 159, 165, 189 ); //fur (s)
+set_color_profile_slot( 20, 7, 255, 255, 255 ); //fur
 
 // bearf b+w
 set_color_profile_slot( 21, 0, 30, 30, 30 ); //Sword

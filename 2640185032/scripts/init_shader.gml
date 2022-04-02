@@ -1,4 +1,11 @@
 //init shhhhhhhhhhhhhhhhhhhh
+if  (get_player_color(player) == 16) {
+    set_character_color_slot( 6, 232, 0, 0, 0.2);
+    set_article_color_slot( 6, 232, 0, 0, 0.2);
+    set_character_color_slot( 7, 158, 0, 0, 0.2);
+    set_article_color_slot( 7, 158, 0, 0, 0.2);
+
+}
 
 if("alt_select" in self && alt_select > -1){
     

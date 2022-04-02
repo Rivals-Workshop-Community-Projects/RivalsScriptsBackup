@@ -17,8 +17,8 @@ inactive = 120
  
   if  (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
  		rankm += 60
- 		    sound_play(sound_get("SpaceCut"))
- 		    shake_camera(2,6)
+ 		    //sound_play(sound_get("SpaceCut"))
+ 		    //shake_camera(2,6)
  }
  
   if  (my_hitboxID.attack == AT_EXTRA_1) {

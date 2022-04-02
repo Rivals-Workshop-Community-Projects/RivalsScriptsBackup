@@ -226,6 +226,9 @@ switch attack {
 	can_move = false
 	can_fast_fall = false 
 	fall_through = true
+	if window != 4 {
+	can_wall_jump = true
+	}
 	  if window == 1 {
 	  	    
 	  	if window_timer == 1 && !hitpause {
@@ -251,11 +254,11 @@ switch attack {
 	  	}
 	  	vsp /= 1.1
 	  	hsp /= 1.1
-	  	if abs(vsp) < 6 {
-	  		vsp -= ((up_down - down_down)/(2+abs(right_down - left_down)/2))
+	  	if abs(vsp) < 8 {
+	  		vsp -= ((up_down - down_down)/(2+abs(right_down - left_down)/1.5))
 	  	}
-	  	if abs(hsp) < 6 {
-	  		hsp += ((right_down - left_down)/(2+abs(up_down - down_down)/2))
+	  	if abs(hsp) < 8 {
+	  		hsp += ((right_down - left_down)/(2+abs(up_down - down_down)/1.5))
 	  	}
 	  }
 	  

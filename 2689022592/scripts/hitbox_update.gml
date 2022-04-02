@@ -8,6 +8,11 @@ switch attack {
         hitbox_timer = 999
         spawn_hit_fx(x,y+10,14)
 	  	sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .6, 1.5)
+	  	with player_id {
+	  		set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, 0 );
+            set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, -3 );
+	  	}
+     		create_hitbox(AT_DSPECIAL,2,x,y - 20)
       }
       
       if hitbox_timer < 90 {
@@ -31,7 +36,7 @@ switch attack {
     spawn_hit_fx(x + 10 - random_func(1,21,true) - hsp , y + 10 - random_func(1,21,true) - vsp, droplet  )
     }
     
-     }
+    }
       
   break;    
   

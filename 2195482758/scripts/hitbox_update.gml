@@ -16,6 +16,100 @@ if(was_parried)
     // }
 }
 
+
+if(set_transcendent)
+{
+    set_transcendent = false;
+    
+    transcendent = true;
+    
+    if(sprite_index == sprite_get("firecracker_single_nooutline")) sprite_index = sprite_get("firecracker_single");
+    if(sprite_index == sprite_get("firecracker_double_nooutline")) sprite_index = sprite_get("firecracker_double");
+    if(sprite_index == sprite_get("firecracker_triple_nooutline")) sprite_index = sprite_get("firecracker_triple");
+    
+    if(sprite_index == sprite_get("firecracker_single_spin_nooutline")) sprite_index = sprite_get("firecracker_single_spin");
+    if(sprite_index == sprite_get("firecracker_double_spin_nooutline")) sprite_index = sprite_get("firecracker_double_spin");
+    if(sprite_index == sprite_get("firecracker_triple_spin_nooutline")) sprite_index = sprite_get("firecracker_triple_spin");
+    
+    if(sprite_index == sprite_get("firecracker_single_bunt_nooutline")) sprite_index = sprite_get("firecracker_single_bunt");
+    if(sprite_index == sprite_get("firecracker_double_bunt_nooutline")) sprite_index = sprite_get("firecracker_double_bunt");
+    if(sprite_index == sprite_get("firecracker_triple_bunt_nooutline")) sprite_index = sprite_get("firecracker_triple_bunt");
+}
+
+if(transcendent && hitbox_timer >= player_id.fc_lifetime*0.5)
+{
+    transcendent = false;
+    
+    if(sprite_index == sprite_get("firecracker_single")) sprite_index = sprite_get("firecracker_single_nooutline");
+    if(sprite_index == sprite_get("firecracker_double")) sprite_index = sprite_get("firecracker_double_nooutline");
+    if(sprite_index == sprite_get("firecracker_triple")) sprite_index = sprite_get("firecracker_triple_nooutline");
+    
+    if(sprite_index == sprite_get("firecracker_single_spin")) sprite_index = sprite_get("firecracker_single_spin_nooutline");
+    if(sprite_index == sprite_get("firecracker_double_spin")) sprite_index = sprite_get("firecracker_double_spin_nooutline");
+    if(sprite_index == sprite_get("firecracker_triple_spin")) sprite_index = sprite_get("firecracker_triple_spin_nooutline");
+    
+    if(sprite_index == sprite_get("firecracker_single_bunt")) sprite_index = sprite_get("firecracker_single_bunt_nooutline");
+    if(sprite_index == sprite_get("firecracker_double_bunt")) sprite_index = sprite_get("firecracker_double_bunt_nooutline");
+    if(sprite_index == sprite_get("firecracker_triple_bunt")) sprite_index = sprite_get("firecracker_triple_bunt_nooutline");
+}
+
+// var enemybox = noone;
+
+// enemybox = collision_circle(x,y,40,pHitBox,false,true)
+
+// if(enemybox != noone && !bouncereflect)
+// {
+//     if(enemybox.player_id != player_id)
+//     {
+//         bouncereflect = true;
+//         is_spin = false;
+        
+//         hitbox_timer = 0;
+        
+//         sprite_index = num_fc == 1 ? sprite_get("firecracker_single_bunt") :  num_fc == 2 ? sprite_get("firecracker_double_bunt") : sprite_get("firecracker_triple_bunt");
+
+ 
+        
+//         image_xscale = 0;
+//         image_yscale = 0;
+        
+//         hitboxresettimer = 20;
+        
+//         parrybox = create_hitbox(AT_NSPECIAL,3,floor(x),floor(y));
+//         parrybox.transcendent = true;
+    
+
+//         enemybox.player_id.hitstop = 3;
+//         enemybox.player_id.hitpause = true;
+//         enemybox.player_id.old_vsp = enemybox.player_id.vsp;
+//         enemybox.player_id.old_hsp = enemybox.player_id.hsp;
+        
+//         with(player_id) { spawn_hit_fx(other.x,other.y,19); sound_play( sound_get( "tenru_fc_bunt" ) );}
+//     }
+// }
+
+// if(hitboxresettimer > 0)
+// {
+//     hitboxresettimer--;
+    
+//     if(hitboxresettimer == 0)
+//     {
+//         image_xscale = 40/200;
+//         image_yscale = 40/200;
+//     }
+    
+//     if(hitboxresettimer == 16)
+//     {
+//         hsp = sign(x-enemybox.player_id.x) * -3;
+//         vsp = -11;
+//     }
+//     else if(hitboxresettimer > 16)
+//     {
+//         hsp = 0;
+//         vsp = 0;
+//     }
+// }
+
 // Bunt stuff
 // if(is_bunt){
 //     if(abs(hsp) + abs(vsp) > 8){
@@ -26,7 +120,7 @@ if(was_parried)
 
 
 // Parrybox [disabled]
-// if(attack == AT_NSPECIAL && hbox_num == 1)
+// if(attack == AT_NSPECIAL && hbox_num == 1 && bouncereflect)
 // {
 //     if(instance_exists(parrybox))
 //     {

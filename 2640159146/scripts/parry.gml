@@ -1,10 +1,6 @@
 
 
-
-if burststop > 0 {
-		burststop += 60;
-}
-
 if burst = 1 {
-	burststop += 60;
+	burststop += 270;
+	cooldownstart = true;
 }

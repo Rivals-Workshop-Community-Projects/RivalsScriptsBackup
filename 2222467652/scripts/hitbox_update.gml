@@ -120,3 +120,18 @@ if (attack == AT_DSPECIAL && hbox_num == 2){
         y = birdluigi_dspecial_grabbed_id.y - 10;
     }
 }
+
+if (attack == AT_NSPECIAL_2 && hbox_num == 3){
+    if (hitbox_timer > 60){
+        hsp = 0;
+        vsp = 0;
+        if !("bl_loudbird_die_value" in self){
+            bl_loudbird_die_value = random_func(2, 5, true) + 1;
+            sprite_index = asset_get("empty_sprite");
+            sound_play(asset_get("sfx_gem_collect"));
+        }
+        if (hitbox_timer < 80){
+            y -= (20 - (hitbox_timer - 60)) / 10;
+        }
+    }
+}

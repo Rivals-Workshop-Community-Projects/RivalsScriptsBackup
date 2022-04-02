@@ -1,3 +1,10 @@
+with(asset_get("pHitBox")){
+    if (attack == AT_NSPECIAL_2 && hbox_num == 3 && "bl_loudbird_die_value" in self){
+        draw_sprite_ext(sprite_get("die"), get_gameplay_time() / 5, round(x - view_get_xview()), round(y - view_get_yview()), 1, 1, proj_angle, c_black, 0.5);
+        draw_debug_text(round(x - 3 - view_get_xview()), round(y - 5 - view_get_yview()), string(bl_loudbird_die_value));
+    }
+}
+
 draw_sprite_ext(sprite_get("flutter_meter_bar_backlayer"), 0, temp_x + 80, temp_y - 16, 2, 2, 0, c_white, 1);
 
 var flutterjump_meter_fill = flutterjump_max - flutterjump_draw;
@@ -152,6 +159,10 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == 50 && win
         draw_text_color(bird_text_offset_x, bird_text_offset_y, bird_text_string, c_white, c_white, c_white, c_white, 1);
         draw_text_color(bird_text_offset_x, bird_text_offset_y, bird_text_string, bird_text_color, bird_text_color, bird_text_color, bird_text_color, 0.25);
     }
+}
+
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack == AT_TAUNT && get_player_color(player) == alt_starwalker){
+    draw_sprite_ext(sprite_get("starwalker"), 0, temp_x + 49, temp_y + 64, 1, 1, 0, c_white, 1);
 }
 
 //make_colour_rgb(round(get_color_profile_slot_r(get_player_color(player), 0)), round(get_color_profile_slot_g(get_player_color(player), 0)), round(get_color_profile_slot_b(get_player_color(player), 0)))

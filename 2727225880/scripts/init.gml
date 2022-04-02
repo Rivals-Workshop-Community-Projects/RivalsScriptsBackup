@@ -167,7 +167,7 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 	 
 	 
 	 
-	 set_victory_bg(CH_KRAGG); // victory_background.png
+	 set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
 set_victory_theme(CH_KRAGG); // victory_theme.ogg
 
 	

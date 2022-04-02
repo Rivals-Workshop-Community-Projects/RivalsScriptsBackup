@@ -58,3 +58,35 @@ if(end_dragon_install){
     end_dragon_install = !end_dragon_install;
 }
 }
+animate_portrait();
+#define animate_portrait()
+if (object_index == asset_get("draw_result_screen"))
+{
+    ///PARAMETERS:
+    //SpriteName - [string] the name of the sprite
+    //StartUp - the frames before the animation starts
+    //AnimSpeed - frames per second the animation will go at
+    //IdleSpriteName - [string] the name of the idle animation sprite
+    //IdleStartUp - the frames before the animation transitions 
+    //IdleSpeed - frames per second the idle animation will go at
+    
+    //initializing variables
+    if !("victory_time" in self)
+    {
+        victory_time = 0;
+        hue_offset = 0;
+        hue_spd = 1;
+    } else {
+        victory_time++;
+        hue_offset += hue_spd;
+        hue_offset = hue_offset % 255;
+        var color_rgb = make_color_rgb(255, 0, 0);
+        var hue = (color_get_hue(color_rgb) + hue_offset) mod 255;
+        var color_hsv = make_color_hsv(hue, color_get_saturation(color_rgb), 
+                                        color_get_value(color_rgb));
+        set_character_color_slot(7, color_get_red(color_hsv), 
+                                color_get_green(color_hsv), color_get_blue(color_hsv));
+    }
+    
+
+}

@@ -91,6 +91,8 @@ dspec_effect = hit_fx_create(sprite_get("dspec_afterimage"), 15);
 steam_effect = hit_fx_create(sprite_get("steam_vfx"), 27);
 dust_effect = hit_fx_create(sprite_get("we_do_a_little_trolling"), 16);
 eat_up_effect = hit_fx_create(sprite_get("eat_up"), 72);
+uspec_after_effect = hit_fx_create(sprite_get("uspec_afterimage"), 15);
+dtilt_hfx = hit_fx_create(sprite_get("dtilt_hfx"), 21);
 
 // Animation Info
 
@@ -181,6 +183,7 @@ has_pot = true;
 shrimp_in_pot = false;
 pot_trap = false;
 food_id = 0;
+//dspecial_spr_var = false;
 
 bubpop_pitch = 0;
 uspec_angle = 0;
@@ -189,9 +192,19 @@ other_is_scalding = false;
 avocado = false;
 michigan = false;
 
-grabbed_player_obj = noone;    //the player object currently being grabbed.
-grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
-grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
+gumbo_is_scalding = false;
+gumbo_scalding = false;
+gumbo_scalding_timer = 0;
+
+is_scalding = false;
+gumbo_ditto = false;
+
+alt = get_player_color(player);
+set_victory_portrait(sprite_get("portrait"));
+if(alt == 22){ //drip
+set_victory_theme(sound_get("drip_victory"));
+set_victory_portrait(sprite_get("drip_portrait"));
+}
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

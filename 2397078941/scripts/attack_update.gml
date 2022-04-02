@@ -81,7 +81,8 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.7);
 		window_timer = 2
 		sound_play(asset_get("sfx_blow_medium2"));
 		shake_camera(3,4)
-		spawn_hit_fx (x,y,302)
+		fx = spawn_hit_fx (x,y,302)
+		fx.pause = 6
 		window_timer = 0
 		hsp = -5 *spr_dir
 		vsp = -18
@@ -226,7 +227,8 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 	}
 	
 	if window == 2 && ((!free or (place_meeting(x+hsp, y, asset_get("par_block")))) or (has_hit_player && y > room_height/2 + 380)){
-		spawn_hit_fx(x + 30*spr_dir,y,302)
+		fx = spawn_hit_fx(x + 30*spr_dir,y,302)
+		fx.pause = 6
 		hsp = 0
 		shake_camera(4,4)
 		window = 3
@@ -426,7 +428,8 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 		    			sound_play(asset_get("sfx_swipe_heavy2"))
 		    			sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,1.5)
 		    			spr_dir = -1
-		    			spawn_hit_fx(x - 20*spr_dir,y - 50, 305)
+		    			fx = spawn_hit_fx(x - 20*spr_dir,y - 50, 305)
+		    			fx.pause = 6
 		    			window = 5
 		    			window_timer = 0
 		    	}
@@ -438,7 +441,8 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 		    			sound_play(asset_get("sfx_swipe_heavy2"))
 		    			sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,1.5)
 		    			spr_dir = 1
-		    			spawn_hit_fx(x - 20*spr_dir,y - 50, 305)
+		    			fx = spawn_hit_fx(x - 20*spr_dir,y - 50, 305)
+		    			fx.pause = 6
 		    			window = 5
 		    			window_timer = 0
 		    	}
@@ -829,7 +833,8 @@ if attack == AT_DTILT{
 	
 	if window == 2 && window_timer == 1 && !hitpause && supply >= 2 && attack_down{
 		supply -= 2
-		spawn_hit_fx ( x + (42 * spr_dir) , y - 4, 305)
+		fx = spawn_hit_fx ( x + (42 * spr_dir) , y - 4, 305)
+		fx.pause = 6
 		create_hitbox(AT_DTILT , 2 , x + (42 * spr_dir) , y - 4 );
 		
 	}

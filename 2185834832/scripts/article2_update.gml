@@ -96,7 +96,8 @@ with (asset_get("pHitBox")){
 				    other.vsp = ( lengthdir_y(kb_distance, kb_angle) );
 		            image_index = 0
 		            sound_play(sound_effect)
-		            spawn_hit_fx(x, y, hit_effect)
+		            var vis_effect = spawn_hit_fx(x, y, hit_effect)
+		            vis_effect.pause = 8.58
 		            player_id.old_hsp = player_id.hsp;
 					player_id.old_vsp = player_id.vsp;
 		            player_id.hitpause = true

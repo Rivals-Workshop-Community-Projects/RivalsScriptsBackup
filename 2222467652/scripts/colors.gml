@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 12, 4, 52 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 26 );
 
 // Bird Guy
 set_color_profile_slot( 1, 0, 97, 75, 148 ); //Feathers (Head) + Hat
@@ -186,9 +186,9 @@ set_color_profile_slot( 17, 5, 245, 252, 255 ); //Hat Logo
 set_color_profile_slot( 17, 6, 99, 162, 255 ); //Egg
 
 // Gold
-set_color_profile_slot( 18, 0, 252, 213, 53 ); //Feathers (Head) + Hat
+set_color_profile_slot( 18, 0, 255, 255, 224 ); //Feathers (Head) + Hat
 set_color_profile_slot( 18, 1, 205, 174, 46 ); //Feathers (Body)
-set_color_profile_slot( 18, 2, 252, 213, 53 ); //Legs
+set_color_profile_slot( 18, 2, 255, 255, 224 ); //Legs
 set_color_profile_slot( 18, 3, 252, 213, 53 ); //Beak
 set_color_profile_slot( 18, 4, 117, 92, 0 ); //Shoes
 set_color_profile_slot( 18, 5, 255, 255, 224 ); //Hat Logo
@@ -238,6 +238,25 @@ set_color_profile_slot( 23, 3, 221, 221, 170 ); //Beak
 set_color_profile_slot( 23, 4, 133, 120, 101 ); //Shoes
 set_color_profile_slot( 23, 5, 133, 120, 101 ); //Hat Logo
 set_color_profile_slot( 23, 6, 0, 255, 150 ); //Egg
+
+// star walker
+set_color_profile_slot( 24, 0, 252, 244, 3 ); //Feathers (Head) + Hat
+set_color_profile_slot( 24, 1, 252, 244, 3 ); //Feathers (Body)
+set_color_profile_slot( 24, 2, 252, 244, 3 ); //Legs
+set_color_profile_slot( 24, 3, 252, 244, 3 ); //Beak
+set_color_profile_slot( 24, 4, 252, 244, 3 ); //Shoes
+set_color_profile_slot( 24, 5, 252, 244, 3 ); //Hat Logo
+set_color_profile_slot( 24, 6, 246, 238, 88 ); //Egg
+
+// Falco
+set_color_profile_slot( 25, 0, 72, 74, 185 ); //Feathers (Head) + Hat
+set_color_profile_slot( 25, 1, 247, 254, 156 ); //Feathers (Body)
+set_color_profile_slot( 25, 2, 165, 67, 27 ); //Legs
+set_color_profile_slot( 25, 3, 254, 227, 95 ); //Beak
+set_color_profile_slot( 25, 4, 175, 174, 167 ); //Shoes
+set_color_profile_slot( 25, 5, 247, 12, 12 ); //Hat Logo
+set_color_profile_slot( 25, 6, 135, 184, 253 ); //Egg
+
 
 switch (get_match_setting(SET_SEASON)){
     case 1: // valentines

@@ -6,8 +6,9 @@ set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_orcane_fspecial"));
-set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 5);
+//set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_orcane_fspecial"));
+set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_hod_fspecial_spirit"));
+set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 1);
 
 //attack
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 9);
@@ -36,8 +37,8 @@ set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .35);
-set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 150);
-set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
+set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, dtilt_hfx);
+set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 2);
 
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
@@ -55,8 +56,8 @@ set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DTILT, 2, HG_HITPAUSE_SCALING, .35);
-set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 150);
-set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
+set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, dtilt_hfx);
+set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_DTILT, 2, HG_SHAPE, 2);
 
 set_hitbox_value(AT_DTILT, 3, HG_HITBOX_TYPE, 1);
@@ -74,6 +75,6 @@ set_hitbox_value(AT_DTILT, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DTILT, 3, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DTILT, 3, HG_HITPAUSE_SCALING, .35);
-set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT, 150);
-set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
+set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT, dtilt_hfx);
+set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_DTILT, 3, HG_SHAPE, 2);

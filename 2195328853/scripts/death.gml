@@ -1,1 +1,1 @@
-// called when the character gets KO'd
+upb = false;uairboost = 1;

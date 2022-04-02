@@ -43,6 +43,8 @@ strong_charge = 0;
 
 kill_sfx = 0;
 
+implode_timer = 0;
+
 kunai = noone;
 
 new_has_hit_player = false;
@@ -66,6 +68,11 @@ recoverytick = 0;
 indicator_color = get_player_hud_color( player );
 
 trailer_mode = false;
+
+ruair_timer = 20;
+ruair_glow_count = 0;
+ruair_glow = false;
+rauir_dmg = 0;
 
 //Grab
 old_grabbed_player_obj = noone;
@@ -263,3 +270,152 @@ kart_engine_sound = sound_get("engine")
 kart_frames = 0
 
 //#endregion
+
+//------------------------------------------------------------------------------
+//#region Blu's Particle System ------------------------------------------------
+
+bps_pre_active_parts = ds_list_create()
+bps_post_active_parts = ds_list_create()
+bps_groups = ds_map_create()
+bps_game_paused = false
+bps_prev_gameplay_time = 0
+
+// ENUMS "BPS_AT"
+BPS_STILL = -1
+BPS_FOLLOW = 0
+BPS_AT_SPIN = 1
+
+// ENUMS "BPS_PT_AT"
+BPS_SPIN_SPEED = 0
+
+particle = bps_make("particle_group", sprite_get("_fx_gib"))
+
+bps_set_particle_value(particle, "amount", 1)
+bps_set_particle_value(particle, "weight", .3)
+bps_set_particle_value(particle, "min_angle", 85)
+bps_set_particle_value(particle, "max_angle", 95)
+bps_set_particle_value(particle, "max_speed", 5)
+bps_set_particle_value(particle, "angle_type", 1)
+
+
+
+//// [ 💧 BLU PARTICLE SYSTEM 💧 ] ////
+
+#define bps_make(_group, _sprite)
+	temp_group = ds_list_create()
+	if (ds_map_exists(bps_groups, _group)) {
+		ds_list_destroy(temp_group)
+		temp_group = bps_groups[? _group]
+	} else {
+		ds_map_set(bps_groups, _group, temp_group)
+	}
+
+	var temp_part = ds_map_create()
+	ds_map_set(temp_part, "sprite", _sprite)
+	ds_map_set(temp_part, "weight", 0.1)
+	ds_map_set(temp_part, "amount", 1)
+	ds_map_set(temp_part, "min_angle", -45)
+	ds_map_set(temp_part, "max_angle", 45)
+	ds_map_set(temp_part, "min_speed", 4)
+	ds_map_set(temp_part, "max_speed", 8)
+	ds_map_set(temp_part, "lifetime", 100)
+	ds_map_set(temp_part, "angle_type", 0)
+	ds_map_set(temp_part, "shader", true)
+
+	ds_list_add(temp_group, temp_part)
+
+	to_return = {"group": _group, "index": (ds_list_size(temp_group)-1)}
+
+	return to_return
+
+#define bps_spawn(_group, _x, _y, _front, _dir)
+	if (ds_map_exists(bps_groups, _group)) {
+		temp_group = bps_groups[? _group]
+		i = 0
+		repeat(ds_list_size(temp_group)) {
+			temp_part = temp_group[| i]
+			print(temp_part[? "weight"])
+			repeat (temp_part[? "amount"]) {
+				if (_front) {
+					ds_list_add(bps_post_active_parts, {
+						"sprite": temp_part[? "sprite"],
+						"weight": temp_part[? "weight"],
+						"min_angle": temp_part[? "min_angle"],
+						"max_angle": temp_part[? "max_angle"],
+						"min_speed": temp_part[? "min_speed"],
+						"max_speed": temp_part[? "max_speed"],
+						"lifetime": temp_part[? "lifetime"],
+						"angle_type": temp_part[? "angle_type"],
+						"shader": temp_part[? "shader"],
+						"init": false,
+						"life": 0,
+						"gravity": 0,
+						"speed": 0,
+						"x": _x,
+						"y": _y,
+						"dir": _dir
+					})
+				} else {
+					ds_list_add(bps_pre_active_parts, {
+						"sprite": temp_part[? "sprite"],
+						"weight": temp_part[? "weight"],
+						"min_angle": temp_part[? "min_angle"],
+						"max_angle": temp_part[? "max_angle"],
+						"min_speed": temp_part[? "min_speed"],
+						"max_speed": temp_part[? "max_speed"],
+						"lifetime": temp_part[? "lifetime"],
+						"angle_type": temp_part[? "angle_type"],
+						"shader": temp_part[? "shader"],
+						"init": false,
+						"life": 0,
+						"gravity": 0,
+						"speed": 0,
+						"x": _x,
+						"y": _y,
+						"dir": _dir
+					})
+				}
+			}
+			i += 1
+		}
+	} else {
+		print(`[ BluParticleSystem ] ERR => '${_group}' not a registered group`)
+	}
+
+#define bps_set_particle_value(_part, _pt_index, _value)
+	_group = _part.group
+	_index = _part.index
+	temp_group = bps_groups[? _group]
+	temp_part = temp_group[| _index]
+	temp_part[? _pt_index] = _value
+	temp_group[| _index] = temp_part
+
+#define bps_get_particle_value(_part, _pt_index)
+	_group = _part.group
+	_index = _part.index
+	temp_group = bps_groups[? _group]
+	temp_part = temp_group[| _part.index]
+	return temp_part[? _pt_index]
+
+#define bps_remove_group(_group)
+	if (ds_map_exists(bps_groups, _group)) {
+		ds_map_delete(bps_groups, _group)
+	} else {
+		print(`[ BluParticleSystem ] ERR => '${_group}' not a registered group`)
+	}
+
+#define bps_remove_particle(_part)
+	_group = _part.group
+	_index = _part.index
+	if (ds_map_exists(bps_groups, _group)) {
+		temp_group = bps_groups[? _group]
+		if ( _index < (ds_list_size(temp_group)-1) ) {
+			ds_list_delete(temp_group, _index)
+		} else {
+			print(`[ BluParticleSystem ] ERR => '${_index}' is not a valid index on '${_group}'`)
+		}
+	} else {
+		print(`[ BluParticleSystem ] ERR => '${_group}' not a registered group`)
+	}
+
+/////////////////////////////////

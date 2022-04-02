@@ -1,14 +1,39 @@
+/*
 if (get_color_profile_slot_r(1, 0) == 255) {
     sound_play(sound_get("dusterbass_1-1"), false, 0, 2.5);
     set_color_profile_slot( 1, 0, 256, 186, 140 );
 }
+*/
+var brawl = 1;
+
+if (brawl = 1){ 
+    
+if (get_color_profile_slot_b(0, 0) == 242) {
+    sound_play(sound_get("r"), false, 0, 2.75);
+        brawl_flash_opacity = 0.9;
+    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
+}
+
+if variable_instance_exists(self, "brawl_flash_opacity"){
+    brawl_flash_opacity = brawl_flash_opacity - 0.05;
+draw_sprite_ext(sprite_get("brawl_flash"), 0, x+7, y+8, 1, 1, 0, c_white, brawl_flash_opacity);    
+}
+
+draw_sprite(sprite_get("charselectg"),0,x+7,y+8);  
+draw_sprite(sprite_get("brawl_nameplate"),0,x+7,y+8);  
+
+
+
+} 
+
+
 
 var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.11";
-patch_day = "4";
-patch_month = "MAR";
+patch_day = "31";
+patch_month = "JAN";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);

@@ -1,32 +1,34 @@
 // MunoPhone Touch code - don't touch
 // should be at TOP of file
 
-muno_event_type = 1;
-user_event(14);
+if (enable_munophone) {
+	muno_event_type = 1;
+	user_event(14);
 
-if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
-
-//rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100) : make_color_rgb(
-rainbow_activate = phone_cheats[cheat_skittles];
-if (rainbow_activate) {
-	rainbow_color = make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255);
+	if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
+	
+	//rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100) : make_color_rgb(
+	rainbow_activate = phone_cheats[cheat_skittles];
+	if (rainbow_activate) {
+		rainbow_color = make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255);
+		set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color))
+	}
+	/*
+	rainbow_color
+	    = rainbow_activate ? make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255)
+	                       : make_color_rgb(get_color_profile_slot_r(get_player_color(player), 0),
+											get_color_profile_slot_g(get_player_color(player), 0),
+											get_color_profile_slot_b(get_player_color(player), 0));
 	set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color))
+	*/
+	
+	max_djumps = phone_cheats[cheat_more_djumps];
+	
+	if (spr_dir == 0) spr_dir = 1;
+	spr_dir = phone_cheats[cheat_widebert] * sign(spr_dir);
+	
+	if phone_cheats[cheat_recoil] with pHitBox if player_id == other can_hit_self = 1;
 }
-/*
-rainbow_color
-    = rainbow_activate ? make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255)
-                       : make_color_rgb(get_color_profile_slot_r(get_player_color(player), 0),
-										get_color_profile_slot_g(get_player_color(player), 0),
-										get_color_profile_slot_b(get_player_color(player), 0));
-set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color))
-*/
-
-max_djumps = phone_cheats[cheat_more_djumps];
-
-if (spr_dir == 0) spr_dir = 1;
-spr_dir = phone_cheats[cheat_widebert] * sign(spr_dir);
-
-if phone_cheats[cheat_recoil] with pHitBox if player_id == other can_hit_self = 1;
 // End of Muno code
 
 if phone_cheats[cheat_perma_final_smash] fs_charge = 200;
@@ -116,6 +118,34 @@ if (fuel_recovery_active) {
 }
 rocket_fuel = (rocket_fuel > max_rocket_fuel) ? max_rocket_fuel : rocket_fuel;
 
+// Play cue(s) if fuel crossed the fspecial threshold
+if ((rocket_fuel_prev < booster_rush_cost)
+	&& (rocket_fuel >= booster_rush_cost))
+{
+	white_flash_timer = white_flash_duration;
+	//current_recharge_twinkle = spawn_hit_fx(x, y, recharge_twinkle);
+	if (crouching) {
+		spawn_hit_fx(x + (spr_dir * 10), y + 20, recharge_twinkle);
+	} else {
+		spawn_hit_fx(x + (spr_dir * 6), y - 6, recharge_twinkle);
+	}
+	//current_recharge_twinkle.follow_id = current_recharge_twinkle.player_id;
+	sound_play(asset_get("sfx_boss_shine"), false, noone, 0.8, 1.3);
+}
+/*if (instance_exists(current_recharge_twinkle)) {
+	print(string(variable_instance_get_names(current_recharge_twinkle)));
+	if (crouching) {
+		current_recharge_twinkle.x = x + (spr_dir * 10);
+		current_recharge_twinkle.y = y + 20;
+	} else {
+		current_recharge_twinkle.x = x + (spr_dir * 6);
+		current_recharge_twinkle.y = y - 6;
+	}
+}*/
+
+// Update tracking
+rocket_fuel_prev = rocket_fuel;
+
 // Prevent usage of moves with no charges
 /*
 if (booster_rush_charges <= 0){
@@ -200,7 +230,7 @@ if (state == PS_CROUCH) {
 	} else {
 		driving_dust_timer = 0;
 	}
-} else if (((attack == AT_DTILT) || (attack == AT_DSPECIAL) || (attack == AT_DSTRONG)) && (state == PS_ATTACK_GROUND)) {
+} else if (((attack == AT_DTILT) || (attack == AT_DSPECIAL) || (attack == AT_DSTRONG)) && ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR))) {
 	// Play the engine idling sound throughout
 	if (engine_idle_time == 0) {
 		sound_play(engine_idling_sound);
@@ -223,6 +253,21 @@ if (state == PS_CROUCH) {
 	driving = false;
 	sound_stop(engine_idling_sound);
 	engine_idle_time = 0;
+}
+
+if ((attack == AT_DSPECIAL)
+	&& ((state == PS_ATTACK_AIR) || (state == PS_ATTACK_GROUND)))
+{
+	// Audio/visual play one frame later, set everything this frame
+	//if ((window == 3) && (window_timer == (get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)))
+	if ((window == 4) && (window_timer == 0)) {
+		// Reached full charge
+		armor_available = true;
+		// Play sound
+		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+		// Display visual
+		spawn_hit_fx(x, y, dspecial_twinkle);
+	}
 }
 
 /*

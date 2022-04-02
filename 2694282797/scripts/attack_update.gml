@@ -50,6 +50,12 @@ if attack == AT_DSPECIAL {
     }
 }
 
+if attack == AT_FSPECIAL {
+    if window == 3 && window_timer == window_length-1 {
+        move_cooldown[AT_FSPECIAL] = 25;
+    }
+}
+
 if attack == AT_TAUNT {
     if window == 1 && window_timer == 1 {
         sound_play(sfx_padoru_short);

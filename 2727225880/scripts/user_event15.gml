@@ -292,6 +292,11 @@ in a Patch.
 
 #define CORE_patches
 
+	initPatch("1.5", "1 April, 2022");
+		
+			initHeader("Get ready to brawl!");
+
+
 initPatch("1.4", "17 March, 2022");
 initHeader("Patch? WHAT");
 initSection("zoom launching angles have been adjusted slightly

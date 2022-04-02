@@ -19,3 +19,8 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+
+
+if (get_player_color(player) == alt_starwalker){
+    set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("starwalker"));
+}

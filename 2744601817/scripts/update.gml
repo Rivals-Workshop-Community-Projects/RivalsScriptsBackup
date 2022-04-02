@@ -13,7 +13,24 @@
 muno_event_type = 1;
 user_event(14);
 */
+
+//Ignore dis--------------------------------------------------------------------
+
 init_shader();
+if (attack_pressed && implode_timer == 0){
+    implode_timer = 10;
+}
+
+if (implode_timer >= 1){
+    implode_timer--;
+}
+
+if (implode_timer == 9){
+    var temp_x = x
+    var temp_y = y
+    //bps_spawn("particle_group", temp_x, temp_y-40, false, spr_dir)
+    //create_deathbox(x, y, 10, 10, player, true, 1, 1, 1);
+}
 
 //Combo SFX---------------------------------------------------------------------
 
@@ -274,6 +291,17 @@ if (trailer_mode){
 	}
 }
 
+//Ruair Stuff-------------------------------------------------------------------
+if (ruair_glow == true){
+	ruair_glow = false
+	ruair_glow_count = 10;
+}
+
+
+if (ruair_glow_count > 0){
+	ruair_glow_count -= 1;
+}
+
 #define spawnPixels(count, xsp, ysp)
 
 for (var i = 0; i < count; i++){
@@ -315,3 +343,59 @@ return hfx;
     	b.draw_angle = (random_func(i+1,360,true));
 	}
 }
+
+
+
+#define bps_spawn(_group, _x, _y, _front, _dir)
+	if (ds_map_exists(bps_groups, _group)) {
+		temp_group = bps_groups[? _group]
+		i = 0
+		repeat(ds_list_size(temp_group)) {
+			temp_part = temp_group[| i]
+			print(temp_part[? "weight"])
+			repeat (temp_part[? "amount"]) {
+				if (_front) {
+					ds_list_add(bps_post_active_parts, {
+						"sprite": temp_part[? "sprite"],
+						"weight": temp_part[? "weight"],
+						"min_angle": temp_part[? "min_angle"],
+						"max_angle": temp_part[? "max_angle"],
+						"min_speed": temp_part[? "min_speed"],
+						"max_speed": temp_part[? "max_speed"],
+						"lifetime": temp_part[? "lifetime"],
+						"angle_type": temp_part[? "angle_type"],
+						"shader": temp_part[? "shader"],
+						"init": false,
+						"life": 0,
+						"gravity": 0,
+						"speed": 0,
+						"x": _x,
+						"y": _y,
+						"dir": _dir
+					})
+				} else {
+					ds_list_add(bps_pre_active_parts, {
+						"sprite": temp_part[? "sprite"],
+						"weight": temp_part[? "weight"],
+						"min_angle": temp_part[? "min_angle"],
+						"max_angle": temp_part[? "max_angle"],
+						"min_speed": temp_part[? "min_speed"],
+						"max_speed": temp_part[? "max_speed"],
+						"lifetime": temp_part[? "lifetime"],
+						"angle_type": temp_part[? "angle_type"],
+						"shader": temp_part[? "shader"],
+						"init": false,
+						"life": 0,
+						"gravity": 0,
+						"speed": 0,
+						"x": _x,
+						"y": _y,
+						"dir": _dir
+					})
+				}
+			}
+			i += 1
+		}
+	} else {
+		print(`[ BluParticleSystem ] ERR => '${_group}' not a registered group`)
+	}

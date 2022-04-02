@@ -189,6 +189,12 @@ if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19)
 	    move_cooldown[AT_DSPECIAL_AIR] = 60;
 }
 
+if (burstmeter == 0 and free == false and blooddie = 0 and (state_cat != SC_GROUND_COMMITTED and state_cat != SC_HITSTUN || state == PS_ATTACK_GROUND && state_timer == 1))
+{
+    blooddie = 1;
+    set_attack(AT_EXTRA_1);
+}
+
 if (burstmeter == 0 and free == false and blooddie = 0 and state_cat != SC_GROUND_COMMITTED and state_cat != SC_HITSTUN)
 {
 	blooddie = 1;

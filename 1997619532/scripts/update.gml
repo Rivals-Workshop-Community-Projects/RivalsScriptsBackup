@@ -579,8 +579,10 @@ if (state_cat == SC_HITSTUN or overt >= 999) and !hitpause {
 	   create_hitbox(AT_NSPECIAL , 4 , x , y - 30);	
 
 	stabt = 0
-	spawn_hit_fx( x , y - 40 , 306 )
-	spawn_hit_fx( x , y - 40 , 305 )
+	ex = spawn_hit_fx( x , y - 40 , 306 )
+	ex2 = spawn_hit_fx( x , y - 40 , 305 )
+	ex.pause = 6
+	ex.pause = 6
 	spawn_hit_fx( x - (5 * spr_dir) , y - 40 , SC )
 	spawn_hit_fx( x - 30 - (5 * spr_dir) , y - 40 , SC )
 	spawn_hit_fx( x + 30 - (5 * spr_dir) , y - 40 , SC )
@@ -660,7 +662,7 @@ if halo >= 6 {
 
 		var haloact = spawn_hit_fx( x - (5 * spr_dir) , y - 40 , 306 )
     		haloact.depth = 0
-    		
+    		haloact.pause = 12
 		sound_play(sound_get("RI"));
 		sound_play(asset_get("sfx_frog_fspecial_charge_full"),false,noone,1,1.2)
 	    haloann = 1
@@ -670,38 +672,36 @@ if halo >= 6 {
 }
 
 if halo > 0 and hit_player_obj.state_cat != SC_HITSTUN && halo < 6 {
-    if halotimer > 60 {	
+    if halotimer > 90 {	
     halotimer -= 1;
     }
-    else {
+    else if halotimer > 60{
+    	halotimer -= 0.75;
+    } else {
     	halotimer -= 0.5;
     }
 }
 
 if halo == 6 {
-	halotimer -= 1;
-}
-
-if halo == 6 {
-halotimer += 0.5;
+   halotimer -= 0.5;
 }
 
 if halotimer > 180 {
 halotimer = 180;
 }
 
-if halotimer < 1 {
-	var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
+if halotimer <= 1 {
+	var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 302 )
     		halodeact.depth = 1
-    		
+    		halodeact.pause = 5
     		
     halotimer = 90;		
     if halo < 6 {
-	halo -= 1;
+	halob -= 1;
     } else {
-    	halo = 0
+    	halob = 0
     }
-	sound_play(asset_get("sfx_bird_sidespecial_start"));
+	sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,1.4);
 }
 
 if halo < 6 && 

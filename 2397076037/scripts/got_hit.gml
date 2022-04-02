@@ -37,6 +37,5 @@ rankm -= enemy_hitboxID.damage * 15
 
 
   if  (triggered &&  move_cooldown[AT_TAUNT_2] = 0) {
-  	DT -= 1
   	move_cooldown[AT_TAUNT_2] = 30
   }	

@@ -9,6 +9,8 @@ switch (attack)
         break;
 }
 
+if (aura) was_parried = false;
+
 switch (attack)
 {
     case AT_TAUNT:
@@ -18,6 +20,9 @@ switch (attack)
             hsp = 0;
             vsp = 0;
         }
+        if (state_timer == 1) auraMeter = 0;
+		if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
+		else if (state_timer == 68 && auraMeter == 67) ActivateAura();
         if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
         break;
 
@@ -85,6 +90,70 @@ switch (attack)
                 break;
         }
         break;
+
+    case AT_JAB:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(4, 5);
+            SkipWindow(7, 8);
+            SkipWindow(9, 10);
+            if (!attack_pressed)
+            {
+                SkipWindow(3, 10);
+                SkipWindow(6, 10);
+            }
+        }
+        break;
+        
+        
+    case AT_UAIR:
+        ConstellationBonus(attack, 1);
+        ConstellationBonus(attack, 2);
+    case AT_FTILT:
+    case AT_DTILT:
+    case AT_UTILT:
+    case AT_FAIR:
+    case AT_BAIR:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+            clear_button_buffer(PC_ATTACK_PRESSED);
+            clear_button_buffer(PC_DOWN_STICK_PRESSED);
+            clear_button_buffer(PC_LEFT_STICK_PRESSED);
+            clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+            clear_button_buffer(PC_UP_STICK_PRESSED);
+            clear_button_buffer(PC_DOWN_STRONG_PRESSED);
+            clear_button_buffer(PC_LEFT_STRONG_PRESSED);
+            clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
+            clear_button_buffer(PC_UP_STRONG_PRESSED);
+            clear_button_buffer(PC_STRONG_PRESSED);
+        }
+        break;
+
+    case AT_NAIR:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            iasa_script();
+            if (state_timer == 1)
+            {
+                clear_button_buffer(PC_ATTACK_PRESSED);
+                clear_button_buffer(PC_JUMP_PRESSED);
+            }
+            move_cooldown[AT_NAIR] = 2;
+        }
+        break;
+
+    case AT_DATTACK:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+            SkipWindow(5, 6);
+        }
+        break;
         
     case AT_NSPECIAL:
         switch (window)
@@ -131,9 +200,19 @@ switch (attack)
         }
         can_jump = ((window == 3 && window_timer > 2) || window >= 4) && !was_parried;
         if (can_jump && nspecJC) jump_pressed = true;
+        if (aura)
+        {
+            SkipWindow(1, 3);
+            SkipWindow(4, 6);
+        }
         break;
 
     case AT_FSPECIAL:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(4, 5);
+        }
         can_fast_fall = false;
         set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, free&&!has_hit_player?7:1);
         switch (window)
@@ -230,7 +309,7 @@ switch (attack)
                 {
                     var tempUspecDir = uspecDir;
                     uspecDir = USpecDir();
-                    if (uspecDir != -1 && (tempUspecDir != uspecDir || has_rune("J")) && uspecTimes < (has_rune("J")?3:2))
+                    if (special_down && uspecDir != -1 && (tempUspecDir != uspecDir || has_rune("J") || aura) && (uspecTimes < (has_rune("J")?3:2) || aura))
                     {
                         window = 2;
                         window_timer = 0;
@@ -248,12 +327,16 @@ switch (attack)
                 }
                 break;
         }
+        if (aura)
+        {
+            SkipWindow(4, 6);
+        }
         break;
 
     case AT_DSPECIAL:
         fast_falling = false;
         do_a_fast_fall = false;
-        move_cooldown[attack] = 2;
+        if (!aura) move_cooldown[attack] = 2;
         if (window_timer == 1)
         {
             with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && point_distance(x, y, other.x, other.y-floor(other.char_height/2)) < other.dspecRadius+32)
@@ -296,22 +379,37 @@ switch (attack)
                 || window == 3 && window_timer == 8)
     	    	sound_play(asset_get("sfx_swipe_medium1"));
         }
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(4, 6);
+        }
         break;
         
     case AT_FSTRONG:
+        if (aura)
+        {
+            SkipWindow(1, 3);
+            SkipWindow(4, 5);
+        }
         ConstellationBonus(attack, 1);
         break;
         
     case AT_DSTRONG:
+        if (aura)
+        {
+            SkipWindow(1, 3);
+            SkipWindow(4, 5);
+        }
         ConstellationBonus(attack, 1);
         break;
         
     case AT_USTRONG:
-        ConstellationBonus(attack, 1);
-        ConstellationBonus(attack, 2);
-        break;
-        
-    case AT_UAIR:
+        if (aura)
+        {
+            SkipWindow(1, 3);
+            SkipWindow(4, 5);
+        }
         ConstellationBonus(attack, 1);
         ConstellationBonus(attack, 2);
         break;
@@ -444,4 +542,26 @@ switch (attack)
         break;
     }
     return success;
+}
+
+#define ActivateAura()
+{
+    aura = !aura;
+    gpu_set_alphatestfunc(aura);
+    if (aura)
+    {
+    	sound_play(asset_get("sfx_absa_uair"));
+    	shake_camera(8, 6);
+        spawn_hit_fx(x, y-42, 157);
+    }
+}
+
+#define SkipWindow(_before, _after)
+{
+    if (window == _before)
+    {
+        for (var i = _before; i < _after; ++i) if (get_window_value(attack, i, AG_WINDOW_HAS_SFX) && (_before != i || window_timer <= get_window_value(attack, i, AG_WINDOW_SFX_FRAME))) sound_play(get_window_value(attack, i, AG_WINDOW_SFX));
+	    window = _after;
+	    window_timer = 0;
+    }
 }

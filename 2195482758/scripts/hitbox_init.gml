@@ -10,25 +10,30 @@ bounced = 0;
 grabbed = 0;
 is_bunt = player_id.fc_bunt;
 grounds = 2;
+set_transcendent = false;
 
 // walls = 2;
 // grounds = 2;
 
  // Figure out what sprite I am
-if(sprite_index == sprite_get("firecracker_single") || sprite_index == sprite_get("firecracker_single_spin") || sprite_index == sprite_get("firecracker_single_bunt"))
+if( sprite_index == sprite_get("firecracker_single") || sprite_index == sprite_get("firecracker_single_spin") || sprite_index == sprite_get("firecracker_single_bunt") ||
+sprite_index == sprite_get("firecracker_single_nooutline") || sprite_index == sprite_get("firecracker_single_spin_nooutline") || sprite_index == sprite_get("firecracker_single_bunt_nooutline"))
 {
     num_fc = 1;
 }
-else if(sprite_index == sprite_get("firecracker_double") || sprite_index == sprite_get("firecracker_double_spin") || sprite_index == sprite_get("firecracker_double_bunt"))
+else if(sprite_index == sprite_get("firecracker_double") || sprite_index == sprite_get("firecracker_double_spin") || sprite_index == sprite_get("firecracker_double_bunt") ||
+sprite_index == sprite_get("firecracker_double_nooutline") || sprite_index == sprite_get("firecracker_double_spin_nooutline") || sprite_index == sprite_get("firecracker_double_bunt_nooutline"))
 {
     num_fc = 2;
 }
-else if(sprite_index == sprite_get("firecracker_triple") || sprite_index == sprite_get("firecracker_triple_spin") || sprite_index == sprite_get("firecracker_triple_bunt"))
+else if(sprite_index == sprite_get("firecracker_triple") || sprite_index == sprite_get("firecracker_triple_spin") || sprite_index == sprite_get("firecracker_triple_bunt") ||
+sprite_index == sprite_get("firecracker_triple_nooutline") || sprite_index == sprite_get("firecracker_triple_spin_nooutline") || sprite_index == sprite_get("firecracker_triple_bunt_nooutline"))
 {
     num_fc = 3;
 }
 
-if(sprite_index == sprite_get("firecracker_single_spin") || sprite_index == sprite_get("firecracker_double_spin") || sprite_index == sprite_get("firecracker_triple_spin"))
+if(sprite_index == sprite_get("firecracker_single_spin") || sprite_index == sprite_get("firecracker_double_spin") || sprite_index == sprite_get("firecracker_triple_spin") ||
+sprite_index == sprite_get("firecracker_single_spin_nooutline") || sprite_index == sprite_get("firecracker_double_spin_nooutline") || sprite_index == sprite_get("firecracker_triple_spin_nooutline"))
 {
     is_spin = true;
     with(player_id) sound_play( sound_get( "tenru_fc_spin" ) );

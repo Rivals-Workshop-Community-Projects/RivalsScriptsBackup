@@ -1,21 +1,7 @@
-if (object_index == asset_get("draw_result_screen"))
-{
-    if (results_timer == 1 && gpu_get_alphatestfunc())
-    {
-        coins_earned = 999999 - coins_started;
-        coininc_earned = coins_earned;
-        winner_name = "Your wish came true!";
-    }
-}
-
 switch (get_player_color(player))
 {
-    //champion
-    case 29:
-	    AltColourAlpha(2, 0.4);
-        break;
     //paint
-    case 31:
+    case 8:
         if ("hue" in self)
         {
             var color_rgb=make_color_rgb(255, 0, 255);
@@ -26,6 +12,15 @@ switch (get_player_color(player))
             AltColour(6, make_color_hsv((color_get_hue(color_rgb)+hue+256/3)%255,color_get_saturation(color_rgb)*0.7,color_get_value(color_rgb)*0.7));
         }
         break;
+    //champion
+    case 29:
+	    AltColourAlpha(2, 0.4);
+        break;
+}
+
+if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
+{
+    winner_name = "Galaxy Fox Lukastar wins!";
 }
 
 #define AltColourAlpha(_index, _alpha)

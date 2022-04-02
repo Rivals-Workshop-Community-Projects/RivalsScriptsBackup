@@ -52,6 +52,7 @@ sprite_change_offset("fspecial2", 28, 47, true);//
 sprite_change_offset("uspecial", 28, 63, true);//
 sprite_change_offset("uspecial2", 28, 49, true);//
 sprite_change_offset("dspecial", 28, 47, true);//
+sprite_change_offset("dspecial_var", 28, 47, true);//
 sprite_change_offset("dspecial2", 28, 47, true);//
 sprite_change_offset("taunt", 28, 47, true);//
 sprite_change_offset("phone_open", 28, 47, true);//
@@ -72,6 +73,8 @@ sprite_change_offset("shrim_jumpscare", 30, 34);//
 sprite_change_offset("dspec_afterimage", 70, 50);//
 sprite_change_offset("steam_vfx", 40, 40);//
 sprite_change_offset("eat_up", 88, 28);//
+sprite_change_offset("uspec_afterimage", 56, 98);//
+sprite_change_offset("dtilt_hfx", 68, 70);//
 
 sprite_change_offset("pot_idle", 30, 50);//
 sprite_change_offset("pot_hurtbox", 40, 86);//

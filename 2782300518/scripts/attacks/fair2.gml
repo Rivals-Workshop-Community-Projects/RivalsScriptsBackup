@@ -9,15 +9,12 @@ set_window_value(43, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(43, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(43, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(43, 1, AG_WINDOW_HSPEED, 0);
-set_window_value(43, 1, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(43, 1, AG_WINDOW_VSPEED, 0);
 
 set_window_value(43, 2, AG_WINDOW_LENGTH, 30);
 set_window_value(43, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(43, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(43, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(43, 2, AG_WINDOW_HSPEED, 0);
-set_window_value(43, 2, AG_WINDOW_VSPEED, 5);
 set_window_value(43, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(43, 2, AG_WINDOW_SFX, sound_get("motorbike_spin"));
 

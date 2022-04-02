@@ -1,4 +1,4 @@
-// code for kamehameha
+// 
 
 if(my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3){
 	sound_play(asset_get("sfx_ell_steam_hit"));
@@ -20,9 +20,16 @@ if(my_hitboxID.attack == AT_TAUNT && my_hitboxID.hbox_num == 1){
 
 if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 	if(was_parried == false && hit_player_obj.clone == false){
+		if(hit_player_obj != self){
 		hit_player_obj.other_scalding = true;
 		hit_player_obj.other_scalding_timer = 360;
 		other_is_scalding = true;
+		}if(hit_player_obj = self){
+			gumbo_scalding = true;
+			gumbo_scalding_timer = 360;
+			gumbo_is_scalding = true;
+			hit_player_obj.gumbo_scalding = true;
+		}
 		sound_play(asset_get("sfx_hod_steamhit1"));
 	}
 }
@@ -37,7 +44,6 @@ if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
 if(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1){
 	if(was_parried == false && hit_player_obj.clone == false){
 		hit_player_obj.other_scalding = true;
-		hit_player_obj.other_scalding_timer = 360;
 		other_is_scalding = true;
 		sound_play(asset_get("sfx_hod_steamhit3"));
 	}
@@ -52,9 +58,16 @@ if(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1){
 }
 if(my_hitboxID.attack == AT_USPECIAL){
 	if(was_parried == false && hit_player_obj.clone == false){
+		if(hit_player_obj != self){
 		hit_player_obj.other_scalding = true;
 		hit_player_obj.other_scalding_timer = 360;
 		other_is_scalding = true;
+		}if(hit_player_obj = self){
+			gumbo_scalding = true;
+			gumbo_scalding_timer = 360;
+			gumbo_is_scalding = true;
+			hit_player_obj.gumbo_scalding = true;
+		}
 		sound_play(asset_get("sfx_hod_steamhit1"));
 	}
 }

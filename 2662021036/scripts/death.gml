@@ -13,3 +13,7 @@ instance_destroy(leechseed);
 sound_play(asset_get("sfx_syl_dspecial_plantaway"));
   leechseed = 0;
 }
+
+sound_stop(asset_get("sfx_death1"));
+sound_stop(asset_get("sfx_death2"));
+sound_play( sound_get( "brawl_death" ) );

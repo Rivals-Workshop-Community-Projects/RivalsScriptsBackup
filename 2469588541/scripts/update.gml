@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 23;
+	var noOfPatches = 24;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -26,7 +26,7 @@ if (practice)
 			break;
 		case 1: // main menu
 			Invince();
-			MenuNav(8, 0, MainMenuNext());
+			MenuNav(7, 0, MainMenuNext());
 			break;
 		case 2: // Basic Tut Menu
 			Invince();
@@ -80,7 +80,24 @@ if (free && state != PS_WALL_JUMP && state_cat != SC_HITSTUN && move_cooldown[AT
 else move_cooldown[AT_DSPECIAL] = 0;
 
 // intro
-if (state == PS_SPAWN && state_timer == 50) sound_play(sound_get("fspec"));
+if (state == PS_SPAWN)
+{
+	if (state_timer == 50) sound_play(sound_get("fspec"));
+	if (state_timer == 68)
+	{
+		aura = ("temp_level" in self && temp_level == 1) || aura || auraMeter >= 67 || get_match_setting(SET_TURBO);
+		gpu_set_alphatestfunc(aura);
+		if (aura)
+		{
+			sound_play(asset_get("sfx_absa_uair"));
+			shake_camera(8, 6);
+	        spawn_hit_fx(x, y-42, 157);
+		}
+	}
+	else if (state_timer < 68 && auraMeter != -1) auraMeter = taunt_down?auraMeter+1:-1;
+	else if (state_timer == 1) auraMeter = 0;
+}
+else if (state == PS_LANDING_LAG && aura) set_state(PS_IDLE);
 
 // afterimage
 if (afterImageTimer > 0)
@@ -173,14 +190,6 @@ init_shader();
 			if (attack_down && !attack_counter)
 			{
 				set_attack(49);
-				menuStateBuffer = 0;
-			}
-			break;
-		case 7:
-			if (attack_down && !attack_counter)
-			{
-				gpu_set_alphatestfunc(1);
-				end_match(player);
 				menuStateBuffer = 0;
 			}
 			break;

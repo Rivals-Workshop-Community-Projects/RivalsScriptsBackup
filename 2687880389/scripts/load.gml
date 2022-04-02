@@ -67,6 +67,7 @@ sprite_change_offset("dthrow", 85, 151);
 sprite_change_offset("fspecial", 116, 111);
 sprite_change_offset("uspecial", 65, 111);
 sprite_change_offset("dspecial", 85, 111);
+sprite_change_offset("dspecial_twinkle", 85, 111);
 sprite_change_offset("taunt", 65, 111);
 sprite_change_offset("taunt_glasses", 7, 7);
 sprite_change_offset("taunt_change", 65, 111);
@@ -85,5 +86,6 @@ sprite_change_offset("shield_icon", 19, 19);
 sprite_change_offset("charge_button", 11, 31);
 sprite_change_offset("meter", 0, 31);
 sprite_change_offset("meter_fill", 2, 29);
+sprite_change_offset("recharge_twinkle", 65, 111);
 
 sprite_change_offset("plat", 101, 168);

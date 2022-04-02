@@ -212,6 +212,59 @@ if (get_stage_data(SD_ID) == 06021 || get_stage_data(SD_ID) == 75518){
     }
 }
 
+//Dialogue Buddy support
+if(variable_instance_exists(id,"diag")){
+    diagchoice = [
+        "bird up",
+        "bird down",
+        "Luigi, Luigi. Oh yeah, oh yeah!",
+        "just the  hat",
+        "Pardon, but have you noticed any comically eerie mansions nearby?",
+        "She sells seashells on a seashore, but the value of these shells will fall. Due to the laws of supply and demand, no one wants to buy shells, 'cause there's loads on the sand. Step 1; You must create a sense of scarcity. Shells will sell much better if the people think they’re rare, you see. Bare with me, take as many shells as you can find and hide 'em on an island. Stockpile 'em high until they’re rarer than a diamond. Step 2; you gotta make the people think that they want 'em. Really want 'em, really f***in want 'em. Hit 'em like Bronson. Influencers, product placement, featured prime time entertainment, if you haven’t got a shell then you're just a f***ing waste, man. Three; It's monopoly, invest inside some property. Start a corporation, make a logo, do it properly. 'Shells must sell', that will be your new philosophy. Swallow all your morals, they're a poor man's quality. Four; Expand, expand, expand. Clear forest, make land. Fresh blood, on hand. Five; Why just shells? Why limit yourself? She sells seashells? Sell oil as well! Six; Guns, sell stocks, sell diamonds, sell rocks, sell water to a fish, sell the time to a clock, Seven; press on the gas, take your foot off the brakes. Run to be the president of the United States. Eight; Big smile mate, big wave that's great. Now the truth is overrated, tell lies out the gate. Nine; Polarise the people, controversy is the game. It don't matter if they hate you, if they all say your name. Ten; The world is yours, step out on a stage to a round of applause. You're a liar, a cheat, a devil, a fraud. And you sell seashells on the seashore.",
+        "Luigi 
+From Wikipedia, the free encyclopedia 
+This article is about the Nintendo character. For other people named Luigi, see Luigi (name). 
+For other uses, see Luigi (disambiguation). 
+Luigi Mario character Luigi 
+Luigi, as depicted in promotional artwork of New Super Mario Bros. U Deluxe 
+Created by Shigeru Miyamoto Portrayed by Danny Wells (The Super Mario Bros. Super Show!) John Leguizamo (Super Mario Bros.) Voiced by  English Japanese In-universe information Full name Luigi Mario Occupation Plumber Family Mario (twin brother) Origin Mushroom Kingdom Nationality Italian  Luigi (Japanese: ルイージ, Hepburn: Ruīji, pronounced [ɾɯ.iːʑi]; English: /luˈiːdʒi/ loo-EE-jee, Italian: [luˈiːdʒi]) is a fictional character featured in video games and related media released by Nintendo. Created by designer Shigeru Miyamoto, Luigi is portrayed as the younger fraternal twin brother of Nintendo's mascot Mario. Luigi appears in many games throughout the Mario franchise, often as a sidekick to his older twin brother."]
+    if(otherUrl == "1962084547" || otherUrl == "2094681709" || otherUrl == "2230601893" || otherUrl == "2202612329" || otherUrl == "1926836320") && (diag != ""){
+        diag = "Bird...
+up?";
+    }
+    if(otherUrl == url || otherUrl == "2285110741"){
+        with(pet_obj){
+            if(variable_instance_exists(id,"diag_text")){
+                diag_nrs_p1 = other.player;
+                diag_nrs = true;
+                diag_nrs_diag = [
+                "What are you doing here, you hat-stealing imposter?",
+                "haha
+imposter",
+                "I-
+Pardon?"]
+            }
+        }
+    }
+    if(otherUrl == "2504886110"){
+        with(pet_obj){
+            if(variable_instance_exists(id,"diag_text")){
+                diag_nrs_p1 = other.otherPlayer;
+                diag_nrs = true;
+                diag_nrs_diag = [
+                "It seems that I overestimated that man's standards for selecting people to invite to this strange tournament.",
+                "You're just jealous that you weren't the first selection.",
+                "That-
+That worm evidently had no clue what he was talking about anyway."]
+            }
+        }
+    }
+    if(otherUrl == "2217843818") && (diag != ""){
+        diag = "What a fine looking fellow.
+Surely he isn't here to commit acts of deception or cause any harm to others."
+    }
+}
+
 flutterjumping = false;
 flutterjump_alert = false;
 
@@ -761,7 +814,7 @@ if (carhorn_timer <= 0) && (get_stage_data(SD_ID) != 53463 && get_stage_data(SD_
     carhorn = true;
 }
 
-if (carhorn) && (get_stage_data(SD_ID) != 53463 && get_stage_data(SD_ID) != 06021 && get_stage_data(SD_ID) != 75518){
+if (carhorn) && (get_stage_data(SD_ID) != 53463 && get_stage_data(SD_ID) != 06021 && get_stage_data(SD_ID) != 75518) && !("in_adventure" in self && in_adventure){ //the horn used to play during cutscenes in adventure mode which is SO annoying so its disabled during adventures
     if (!carhorn_prev){
         //sound_play(sound_get("horn_start_cw"));
     }
@@ -952,6 +1005,12 @@ if (get_player_color(player) == alt_wario){
 if (get_player_color(player) == alt_waluigi){
     set_window_value(44, 2, AG_WINDOW_SFX, sound_get("sfx_wah"));
 }
+if (get_player_color(player) == alt_garcello){
+    set_window_value(44, 2, AG_WINDOW_SFX, sound_get("sfx_cough"));
+    if (get_gameplay_time()%10 == 0){
+        set_window_value(44, 2, AG_WINDOW_SFX, sound_get("sfx_COUGH_AAAAA"));
+    }
+}
 
 if (get_player_color(player) == alt_infamous){
     if (!place_meeting(infamoustaunt_spray_text_x, infamoustaunt_spray_text_y + 2, asset_get("solid_32_obj")) && !place_meeting(infamoustaunt_spray_text_x, infamoustaunt_spray_text_y + 2, asset_get("jumpthrough_32_obj"))){
@@ -1030,6 +1089,10 @@ if (instance_exists(asset_get("oTestPlayer"))){
     playtesting_mode = true;
 } else {
     playtesting_mode = false;
+}
+
+if (get_player_color(player) == alt_starwalker) && ((state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) || (attack != AT_TAUNT)){
+    sound_stop(sound_get("the_original__starwalker"));
 }
 
 if (colorselectmenu){

@@ -18,7 +18,8 @@ switch(attack)
         {
             destroyed = true;
             
-            spawn_hit_fx( x, y, 195 )
+            var hit = spawn_hit_fx( x, y, 195 );
+            hit.pause = 9;
             sound_play(asset_get("sfx_waterhit_heavy2"))
             
             y = 5000;

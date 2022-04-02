@@ -1,6 +1,14 @@
 if ("practice" in self)
 {
 	var tempColour = GetColourPlayer(3);
+	
+	// aura meter
+	if ((state == PS_SPAWN || (state == PS_ATTACK_GROUND && attack == AT_TAUNT && !aura)) && auraMeter != -1 && state_timer < 68)
+	{
+	    draw_rectangle_color(x - 104, y - 124, x + 104, y - 96, c_black, c_black, c_black, c_black, false);
+	    draw_rectangle_color(x - 100, y - 120, x - 100 + 200*(auraMeter/67), y - 100, c_white, c_white, c_white, c_white, false);
+		draw_debug_text(x - 60, y - 114, "Galaxy Fox Mode");
+	}
 
 	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 	{
@@ -87,15 +95,15 @@ if ("practice" in self)
 			break;
 
 		// aura
-		//default:
-		//	if (aura)
-		//	{
-		//		var color_rgb=make_color_rgb(255, 0, 255);
-		//		var color_hsv=make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb),color_get_value(color_rgb));
-		//		FlagPart(color_hsv, 1, 0);
-		//		gpu_set_fog(0, c_white, 0, 0);
-		//	}
-		//	break;
+		default:
+			if (aura)
+			{
+				var color_rgb=make_color_rgb(255, 0, 255);
+				var color_hsv=make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb),color_get_value(color_rgb));
+				FlagPart(color_hsv, 1, 0);
+				gpu_set_fog(0, c_white, 0, 0);
+			}
+			break;
 	}
 }
 

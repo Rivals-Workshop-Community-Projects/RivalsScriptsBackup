@@ -91,7 +91,8 @@ if attack == AT_NSPECIAL {
         create_hitbox(AT_NSPECIAL,1,x,y)
         shake_camera(4,10)
         spawn_hit_fx(x,y,lighten)
-        spawn_hit_fx(x,y - 46,306)
+        fx = spawn_hit_fx(x,y - 46,306)
+        fx.pause = 6
         spawn_hit_fx(x,y - 40,triggerfx)
         sound_play(sound_get("vtaunt2"))
         sound_play(sound_get("RI"))
@@ -125,7 +126,8 @@ if attack == AT_EXTRA_2 {
     }
     
     if (window == 2 or window == 3) && window_timer == 1 {
-        spawn_hit_fx(x+30*spr_dir,y-20,302)
+        fx = spawn_hit_fx(x+30*spr_dir,y-20,302)
+         fx.pause = 5
         sound_play(asset_get("sfx_bird_nspecial"))
         hsp = -4*spr_dir
         if free {
@@ -160,7 +162,8 @@ if attack == AT_EXTRA_3 {
     
     if (window == 2 or window == 3) && window_timer == 1 {
         shake_camera(4,2)
-        spawn_hit_fx(x+10*spr_dir,y-10,303)
+        fx = spawn_hit_fx(x+10*spr_dir,y-10,303)
+        fx.pause = 4
          sound_play(asset_get("sfx_bird_downspecial"))
     }
     
@@ -168,7 +171,8 @@ if attack == AT_EXTRA_3 {
     if window == 3 && window_timer > 20 && special_down {
         window = 4
         window_timer = 1
-         spawn_hit_fx(x-10*spr_dir,y-40,302)
+        fx = spawn_hit_fx(x-10*spr_dir,y-40,302)
+         fx.pause = 5
         if !free  && triggered == 0 {
           sound_play(sound_get("cnoise4"))
         }
@@ -188,7 +192,8 @@ if attack == AT_EXTRA_3 {
 
         if window_timer == 33 {
                  hsp = -6*spr_dir    
-        spawn_hit_fx(x+10*spr_dir,y-10,303)
+        fx = spawn_hit_fx(x+10*spr_dir,y-10,303)
+        fx.pause = 4
          sound_play(sound_get("counterhit"))
           create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
           create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
@@ -229,7 +234,8 @@ weapon = 0
 	spawn_hit_fx( x + 200*spr_dir, y - 40, slashc)
 	
         jc = 1
-         spawn_hit_fx(x-10*spr_dir,y-50,305)
+        fx = spawn_hit_fx(x-10*spr_dir,y-50,305)
+        fx.pause = 5
         if !free  && triggered == 0 {
           sound_play(sound_get("cnoise4"))
         }
@@ -266,7 +272,8 @@ weapon = 0
             vsp = -4
         }
         jc += 1
-        spawn_hit_fx(x-10*spr_dir,y-50,305)
+        fx = spawn_hit_fx(x-10*spr_dir,y-50,305)
+        fx.pause = 5
         create_hitbox(AT_EXTRA_1, 1, x-10*spr_dir, y)
     }
     
@@ -280,7 +287,8 @@ weapon = 0
             vsp = -4
         }
         jc += 1
-        spawn_hit_fx(x-10*spr_dir,y-50,305)
+        fx = spawn_hit_fx(x-10*spr_dir,y-50,305)
+        fx.pause = 5
         create_hitbox(AT_EXTRA_1, 1, x -10*spr_dir, y)
     }
 }
@@ -465,7 +473,8 @@ if attack == AT_DATTACK {
     }
     
     if window == 4 && window_timer == 20 && has_hit_player {
-        spawn_hit_fx (x+20*spr_dir,y-40, 305)
+        fx = spawn_hit_fx (x+20*spr_dir,y-40, 305)
+        fx.pause = 5
         sound_play(sound_get("vdattackhit"),false,noone,1.2)  
         sound_play(sound_get("RI"))  
         spawn_hit_fx (x+20*spr_dir,y-40, lighten)
@@ -518,7 +527,8 @@ if attack == AT_DAIR {
        y += 10
        sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.6)
        sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.6)
-       spawn_hit_fx(x + 44*spr_dir,y - 10, 302)
+       fx = spawn_hit_fx(x + 44*spr_dir,y - 10, 302)
+        fx.pause = 5
    }
    
     weapon = 1
@@ -553,8 +563,10 @@ if attack == AT_DAIR {
         set_attack_value(AT_DAIR, AG_CATEGORY, 1);
        sound_play(asset_get("sfx_ori_energyhit_medium"))
        sound_play(asset_get("sfx_blow_heavy2"))
-       spawn_hit_fx(x + 44*spr_dir,y - 10, 302)
-       spawn_hit_fx(x + 54*spr_dir,y - 10, 303)
+       fx2 = spawn_hit_fx(x + 44*spr_dir,y - 10, 302)
+       fx2.pause = 6
+       fx = spawn_hit_fx(x + 54*spr_dir,y - 10, 303)
+       fx.pause = 6
 
     }
     
@@ -796,7 +808,8 @@ if attack == AT_USPECIAL{
 		}
 		
         shake_camera(2,4)
-        spawn_hit_fx(x-20*spr_dir,y - 60,305)
+        fx = spawn_hit_fx(x-20*spr_dir,y - 60,305)
+        fx.pause = 5
         sound_play(asset_get("sfx_ori_bash_hit"))
         sound_play(sound_get("SpaceCut"),false,noone,0.4)
     

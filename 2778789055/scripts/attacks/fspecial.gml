@@ -49,7 +49,6 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 150);
 
-set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "VFX");
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 120);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 3);

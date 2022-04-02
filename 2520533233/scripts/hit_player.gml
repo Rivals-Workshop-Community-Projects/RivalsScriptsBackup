@@ -25,6 +25,10 @@ if(my_hitboxID.attack == AT_EXTRA_3 or my_hitboxID.attack == AT_FSPECIAL_2){
     grabbed_player = hit_player_obj;
 }
 
+if(my_hitboxID.attack == AT_JAB and my_hitboxID.hbox_num > 2){
+    hit_player_obj.y +=2;
+}
+
 if(dragon_install){
     if(my_hitboxID.attack == AT_FAIR and my_hitboxID.hbox_num < 7  and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
             hit_player_obj.x = lerp(floor(hit_player_obj.x), x+60*spr_dir+hsp*3, .4);

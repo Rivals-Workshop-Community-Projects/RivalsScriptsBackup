@@ -60,7 +60,8 @@ switch(state)
         switch(state_timer)
         {
             case 0:
-                spawn_hit_fx( x, y, 195 )
+                var hit = spawn_hit_fx( x, y, 195 );
+                hit.pause = 12; 
                 sound_play(asset_get("sfx_swish_medium"))
                 sound_play(asset_get("sfx_watergun_splash"))
                 
@@ -70,7 +71,9 @@ switch(state)
                 y -= 20;
             break;
             case 6:
-                spawn_hit_fx( x, y, 195 )
+                var hit = spawn_hit_fx( x, y, 195 );
+                hit.pause = 12; 
+                
                 sound_play(asset_get("sfx_swish_medium"))
                 
                 create_hitbox( AT_NSPECIAL, 2, x, y )

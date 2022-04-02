@@ -37,7 +37,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 set_num_palettes( 27 );
 
 // Blue
-set_color_profile_slot( 1, 0, 118, 116, 232 ); //Snow1
+set_color_profile_slot( 1, 0, 119, 116, 232 ); //Snow1
 set_color_profile_slot( 1, 1, 94, 51, 196 ); //Snow2
 set_color_profile_slot( 1, 2, 216, 136, 219 ); //Cloak1
 set_color_profile_slot( 1, 3, 115, 85, 163 ); //Cloak2

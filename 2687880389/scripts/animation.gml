@@ -248,16 +248,38 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 	        }
 	    }
 	} else if (attack == AT_DSPECIAL) {
-		if ((window == 3)
+		if (!free) {
+			dspecial_grounded = true;
+		}
+
+		/*if ((window == 3)
 			&& (window_timer == (get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)))
 		{
-			sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
-			spawn_hit_fx(x - (3 * spr_dir), y - 20, 302);
-		} else if (window == 5) {
-			if (armor_available) {
-				hsp = spr_dir * 14;
+			//sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+			//spawn_hit_fx(x - (3 * spr_dir), y - 20, 302);
+		} else*/ if (window == 5) {
+			if (dspecial_grounded) {
+				// Deploy dust effect if we haven't yet
+				if (!dspecial_dust_deployed) {
+					spawn_base_dust(x - (spr_dir * 2), y, "dash_start");
+					dspecial_dust_deployed = true;
+				}
+				vsp = 0;
+				if (armor_available) {
+					hsp = spr_dir * dspecial_charged_speed;
+				} else {
+					hsp = spr_dir * dspecial_uncharged_speed;
+				}
 			} else {
-				hsp = spr_dir * 10.5;
+				//vsp = 10;
+				//hsp = spr_dir * 7;
+				if (armor_available) {
+					hsp = spr_dir * dspecial_charged_angled_x;
+					vsp = dspecial_charged_angled_y;
+				} else {
+					hsp = spr_dir * dspecial_uncharged_angled_x;
+					vsp = dspecial_uncharged_angled_y;
+				}
 			}
 		}
 	}

@@ -230,6 +230,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.71", "31st March 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed bug where recovery options wouldn't reset on death, forcing you to land first");
+
 initPatch("1.70", "21st March 2022");
 initHeader("Buffs");
 initSection("- FAir has more range,,,");
@@ -247,6 +251,8 @@ initSection("- DAttack endlag can now be cancelled on hit");
 initHeader("Fixes / Other Changes");
 initSection("- Lowered ground friction (0.5->0.25)");
 initSection("- Improved FAir animation, giving it a bit more weight and smoother endlag");
+initSection("- Added a trail effect to UStrong");
+initSection("- Fixed an sfx issue on jab");
 
 initPatch("1.69", "24th November, 2021");
 initHeader("Buffs");

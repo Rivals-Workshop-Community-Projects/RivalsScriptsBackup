@@ -3,8 +3,10 @@ trotation=0;
 tsprite_index=-1;
 tsx=1;
 tsy=1;
-bsprite_index=-1;
-
+if (attack !=43)
+{
+	bsprite_index=-1;
+}
 //This code lets Carol get on the bike if fuel is full
 if (attack == AT_DSPECIAL && motorbike == false)
 {

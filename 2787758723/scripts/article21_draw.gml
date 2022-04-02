@@ -1,0 +1,1 @@
+draw_sprite(sprite_get("flagpole_flag"), 0, x + 16, y + 32 + flag_spr_y)

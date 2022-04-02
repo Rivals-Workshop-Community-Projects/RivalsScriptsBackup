@@ -216,6 +216,11 @@ if ("practice" in self)
 						AddText("");
 						AddText("Fixed Rollback temp_level bug");
 						break;
+					case 11:
+						AddText("v1.10 - 1 Apr 2022");
+						AddText("");
+						AddText("Added CSS sound effect");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

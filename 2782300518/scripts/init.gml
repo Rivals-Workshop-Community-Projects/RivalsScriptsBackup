@@ -144,6 +144,9 @@ feline_power = true;
 comboCounter = 0;
 moveDisc = true;
 cancelMomentum = false;
+Fspecial_positionX = 0;
+Fspecial_positionY = 0;
+vsp_tracker = 0;
 
 //Debug Variable
 debugCheck = false;
@@ -175,6 +178,8 @@ jump_disc=hit_fx_create(sprite_get("jump_disc"), 40);
 multikick_energy = 200;
 kickTime=0;
 meterShine = 0;
+pounceChange = false;
+returnBike = false;
 
 voice = 0;
 voice_toggle = get_player_color(player);

@@ -177,7 +177,7 @@ air_hurtbox_spr     = -1; // -1 = use hurtbox_spr
 hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 
 // Victory
-set_victory_bg(sprite_get("vileplume_victorybackground")); // victory_background.png
+set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
 set_victory_theme(sound_get("vileplume_victory")); // victory_theme.ogg
 
 // Movement SFX
@@ -227,9 +227,5 @@ pkmn_stadium_back_img = sprite_get("pokemonstadium2");
 
 miiverse_post = sprite_get("miiverse_post");
 
-if ("superTrue" in self){
-    set_hitbox_value(49, 1, HG_DAMAGE, 2);    
-    set_hitbox_value(49, 2, HG_DAMAGE, 45);
-}
 
 
