@@ -15,14 +15,14 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_JAB, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_FRAME, 1);
 
 set_window_value(AT_JAB, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_JAB, 4, AG_WINDOW_HAS_SFX, 1);
@@ -31,7 +31,7 @@ set_window_value(AT_JAB, 4, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_JAB, 4, AG_WINDOW_HAS_WHIFFLAG, 0); //NOTE: if you make it a multi-hit jab, remove whifflag, since Rivals multi-step jabs do not have whifflag. single-hits like sandbert, elli, etc DO have whifflag
 
 set_window_value(AT_JAB, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_JAB, 5, AG_WINDOW_HAS_WHIFFLAG, 0); //NOTE: if you make it a multi-hit jab, remove whifflag, since Rivals multi-step jabs do not have whifflag. single-hits like sandbert, elli, etc DO have whifflag
@@ -102,7 +102,7 @@ set_hitbox_value(AT_JAB, 3, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_JAB, 2, HG_WINDOW_CREATION_FRAME, 5);
+set_hitbox_value(AT_JAB, 2, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_X, 35);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_Y, -20);

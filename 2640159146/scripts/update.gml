@@ -188,7 +188,7 @@ if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19)
 	    move_cooldown[AT_DSPECIAL] = 60;
 	    move_cooldown[AT_DSPECIAL_AIR] = 60;
 }
-
+//blooddie bug fix
 if (burstmeter == 0 and free == false and blooddie = 0 and (state_cat != SC_GROUND_COMMITTED and state_cat != SC_HITSTUN || state == PS_ATTACK_GROUND && state_timer == 1))
 {
     blooddie = 1;
