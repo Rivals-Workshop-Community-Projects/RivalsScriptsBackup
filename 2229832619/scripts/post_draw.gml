@@ -96,3 +96,7 @@ draw_sprite_ext( na_sp_i[sprite_index], image_index, goin_h-round(na_hsp_h[2]), 
 draw_debug_text( x, y+20, "waddup");
 */
 //}
+
+
+
+

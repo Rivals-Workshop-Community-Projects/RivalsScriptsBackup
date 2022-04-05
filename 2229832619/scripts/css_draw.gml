@@ -18,6 +18,9 @@ switch(get_player_color( player )){
 	case 18:
 	draw_sprite_ext(sprite_get("na_css_icons"),1,x+icon_x,y+icon_y,2,2,0,-1,1);
 	break;
+	case 19:
+	draw_sprite_ext(sprite_get("na_css_icons"),4,x+icon_x,y+icon_y,2,2,0,-1,1);
+	break;
     default: break;
 }
 
@@ -76,7 +79,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ie = 0;
 	ye = false;
 	
-	col_max = 18; //max colors
+	col_max = 19; //max colors
 	ce[0,0] = make_color_rgb(71, 49, 87)
 	ce[0,1] = "Void Melanoid"
 	ce[1,0] = make_color_rgb(58, 154, 228)
@@ -115,6 +118,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[17,1] = "True Blue"
 	ce[18,0] = make_color_rgb(252, 196, 30)
 	ce[18,1] = "Ranked Gold"
+	ce[19,0] = make_color_rgb(87, 10, 33)
+	ce[19,1] = "Genesis"
 }
 
 if (ae == "ae"){

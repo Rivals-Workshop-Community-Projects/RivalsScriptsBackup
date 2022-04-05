@@ -26,7 +26,8 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
-set_num_hitboxes(AT_FSTRONG, 1);
+set_num_hitboxes(AT_FSTRONG, 0);
+set_attack_value(AT_FSTRONG, AG_NUM_HITBOXES_BLADED, 1);
 
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
@@ -96,6 +97,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FSTRONG, 3, HG_SPIN_COST, 8);
 set_hitbox_value(AT_FSTRONG, 3, HG_SPIN_DAMAGE_BONUS, 4.2);
+set_hitbox_value(AT_FSTRONG, 3, HG_SPIN_KNOCKBACK_SCALING_BONUS, 0.2);
 set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, sound_get("sfx_ssbu_slash3"));
 set_hitbox_value(AT_FSTRONG, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));

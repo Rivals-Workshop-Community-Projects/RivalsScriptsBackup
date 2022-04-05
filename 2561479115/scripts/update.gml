@@ -23,8 +23,35 @@ if (state == PS_FIRST_JUMP && prev_state == PS_JUMPSQUAT) {
         played_hit_fx = true;
     }
 } else if state == PS_DOUBLE_JUMP && state_timer == 1 {
+    //sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
+}
+
+if (djumps == max_djumps && !djumped) {
+    r_djump_timer = 0;
+    djumped = true;
     sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
 }
+djumping = false;
+if r_djump_timer == clamp(r_djump_timer,0,r_djump_accel_end_time-1)  {
+    if vsp == fast_fall {
+        djumps = 0; 
+        djumped = false;
+    }
+    fast_falling = false;
+    do_a_fast_fall = false;
+    if state == clamp(state, 5, 6) && !jump_down {
+        r_djump_timer = r_djump_accel_end_time
+        print("djump cancel");
+    }
+    if r_djump_timer == clamp(r_djump_timer, r_djump_accel_start_time+1, r_djump_accel_end_time-1) {
+        vsp += r_djump_accel;
+    }
+    r_djump_timer++;
+    djumping = true;
+    //print(vsp);
+}
+if djumps == 0 djumped = false;
+
 //#endregion
 
 //#region Airdodge FX
@@ -70,11 +97,16 @@ if (bullets < bullets_max) {
 //#endregion
 
 //#region Gravity Jumping
+/* deprecated code due to jump rewrite.
 if (roke_grav_jump) {
     roke_grav_jump = 0;
-    if (fast_falling) djumps = 0;
+    if (fast_falling) {
+        djumps = 0;
+        djumped = false;
+    }
 }
-if (state == PS_DOUBLE_JUMP && fast_falling && state_timer > 5 && djumps > 0) roke_grav_jump = 1;
+//if (djumping && fast_falling && state_timer > 5 && djumps > 0) roke_grav_jump = 1;
+*/
 //#endregion
 
 //#region Bullet Landing Lag

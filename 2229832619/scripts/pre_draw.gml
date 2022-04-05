@@ -141,3 +141,5 @@ shader_end()
 		draw_sprite_ext( sprite_get("na_bubble_ol"), image_index, x, y, spr_dir, 1, image_angle, hud_col, 0.5 )
 	}
 }*/
+
+

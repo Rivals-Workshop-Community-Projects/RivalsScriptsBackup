@@ -6,6 +6,11 @@
 if (init == 0){
     init = 1;
     
+	if (get_player_color( player_id.player ) == 19||get_player_color( player_id.player ) == 11){
+		sprite_index = sprite_get("na_bubble_g");
+		uses_shader = true;
+	}
+	
 	if (tier == 1){
 		with (asset_get("obj_article1")){
 			if (id != other.id && player_id == other.player_id){
@@ -336,9 +341,9 @@ if (state == 1){
 					tmp_id.hitpause = true;
 				}
 				//note: this is player exploding
-				tmp_id.hitstop = 6;//14
-				tmp_id.hitstop_full = 6;//14
-				hitstop = 6;//14
+				tmp_id.hitstop = tmp_id.hitpause;//14
+				tmp_id.hitstop_full = tmp_id.hitpause;//14
+				hitstop = tmp_id.hitpause;//14
 				if(mode==0){
 					state = 3;
 					state_timer = 0;

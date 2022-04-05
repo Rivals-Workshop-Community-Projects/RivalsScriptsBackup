@@ -38,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 19 );
+set_num_palettes( 20 );
 
 // water
 set_color_profile_slot( 1, 0, 59, 73, 135 ); //main
@@ -220,10 +220,19 @@ set_color_profile_slot( 18, 5, 252, 196, 30 ); //abyss_eye
 set_color_profile_slot( 18, 6, 247, 157, 0 ); //blade
 set_color_profile_slot( 18, 7, 227, 114, 0 ); //blade.2
 
+// genesis
+set_color_profile_slot( 19, 0, 43, 43, 43 ); //main
+set_color_profile_slot( 19, 1, 66, 26, 38 ); //main.2
+set_color_profile_slot( 19, 2, 87, 10, 33 ); //main.3
+set_color_profile_slot( 19, 3, 224, 40, 40 ); //purple
+set_color_profile_slot( 19, 4, 224, 40, 40 ); //white_eye
+set_color_profile_slot( 19, 5, 222, 222, 222 ); //abyss_eye
+set_color_profile_slot( 19, 6, 222, 222, 222 ); //blade
+set_color_profile_slot( 19, 7, 171, 107, 107 ); //blade.2
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"main","colors":[{"r":71,"g":49,"b":87,"main":true}]},{"name":"main.2","colors":[{"r":49,"g":33,"b":64,"main":true}]},{"name":"main.3","colors":[{"r":30,"g":19,"b":43,"main":true}]},{"name":"purple","colors":[{"r":119,"g":43,"b":197,"main":true},{"r":88,"g":22,"b":183},{"r":50,"g":17,"b":111},{"r":217,"g":113,"b":255}]},{"name":"white_eye","colors":[{"r":222,"g":232,"b":236,"main":true}]},{"name":"abyss_eye","colors":[{"r":255,"g":238,"b":109},{"r":255,"g":180,"b":0,"main":true},{"r":203,"g":98,"b":4}]},{"name":"blade","colors":[{"r":140,"g":145,"b":183,"main":true}]},{"name":"blade.2","colors":[{"r":99,"g":101,"b":149,"main":true}]}]}
 === END JSON PALETTE ===
 */
-

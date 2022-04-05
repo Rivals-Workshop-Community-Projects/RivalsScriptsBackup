@@ -49,9 +49,20 @@ jump_start_time = 5;
 jump_speed = 10.99;
 short_hop_speed = 6;
 djump_speed = -2; //Initial speed of double jump (Negative is down here.)
-djump_accel = -1.4; //The upwards acceleration of double jump (Negative is up here.)
-djump_accel_start_time = 2; //The frame after starting double jump to start accelerating.
-djump_accel_end_time = 17;//The frame after starting double jump to stop accelerating.
+
+//old djump code
+//djump_accel = -1.4; //The upwards acceleration of double jump (Negative is up here.)
+//djump_accel_start_time = 2; //The frame after starting double jump to start accelerating.
+//djump_accel_end_time = 17;//The frame after starting double jump to stop accelerating.
+//new djump code
+r_djump_accel = -1.4; //The upwards acceleration of double jump (Negative is up here.)
+r_djump_accel_start_time = 2; //The frame after starting double jump to start accelerating.
+r_djump_accel_end_time = 17;//The frame after starting double jump to stop accelerating.
+r_djump_timer = -1;
+djumped = false;
+djumping = false;
+
+
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state

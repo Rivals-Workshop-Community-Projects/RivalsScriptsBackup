@@ -131,43 +131,59 @@ if (state == 1){
 	var disp_2 = 36;
 	var hbtx = 0;
 	var hbty = 0;
-	var hbid = create_hitbox( AT_NSPECIAL_AIR, 1, x+hbtx, y+hbty );
-	hbid.owner_article=id;
-	hbid.spr_dir = tmpdir;
+	var hbidA = create_hitbox( AT_NSPECIAL_AIR, 1, x+hbtx, y+hbty );
+	hbidA.owner_article=id;
+	hbidA.spr_dir = tmpdir;
+	hbidA.leaderhb = hbidA;
+	hbidA.idbox = [0,0,0,0,0]
+	hbidA.idbox[0] = hbidA
 	if (parried_player!=-4){
-		hbid.player = parried_player
+		hbidA.player = parried_player
+		hbidA.was_parried = true;
 	}
 	hbtx = round(disp_1 * cos(angle_1));
 	hbty = round(disp_1 * sin(angle_1));
 	var hbid = create_hitbox( AT_NSPECIAL_AIR, 1, x+hbtx, y+hbty );
 	hbid.owner_article=id;
 	hbid.spr_dir = tmpdir;
+	hbid.leaderhb = hbidA;
+	hbidA.idbox[1] = hbid
 	if (parried_player!=-4){
 		hbid.player = parried_player
+		hbid.was_parried = true;
 	}
 	hbtx = round(disp_1 * cos(angle_2));
 	hbty = round(disp_1 * sin(angle_2));
 	var hbid = create_hitbox( AT_NSPECIAL_AIR, 1, x+hbtx, y+hbty );
 	hbid.owner_article=id;
 	hbid.spr_dir = tmpdir;
+	hbid.leaderhb = hbidA;
+	hbidA.idbox[2] = hbid
 	if (parried_player!=-4){
 		hbid.player = parried_player
+		hbid.was_parried = true;
 	}
 	hbtx = round(disp_2 * cos(angle_1));
 	hbty = round(disp_2 * sin(angle_1));
 	var hbid = create_hitbox( AT_NSPECIAL_AIR, 1, x+hbtx, y+hbty );
 	hbid.owner_article=id;
 	hbid.spr_dir = tmpdir;
+	hbid.leaderhb = hbidA;
+	hbidA.idbox[3] = hbid
 	if (parried_player!=-4){
 		hbid.player = parried_player
+		hbid.was_parried = true;
 	}
 	hbtx = round(disp_2 * cos(angle_2));
 	hbty = round(disp_2 * sin(angle_2));
 	var hbid = create_hitbox( AT_NSPECIAL_AIR, 1, x+hbtx, y+hbty );
 	hbid.owner_article=id;
 	hbid.spr_dir = tmpdir;
+	hbid.leaderhb = hbidA;
+	hbidA.idbox[4] = hbid
 	if (parried_player!=-4){
 		hbid.player = parried_player
+		hbid.was_parried = true;
 	}
 	}//else{
 		//print_debug( "spawn successfully prevented" )

@@ -56,7 +56,7 @@ if (attack==AT_DAIR){
 		vsp = vsptemp;
 	}
 	if ((window==3||window==4) && !hitpause){
-		if (!free){
+		if ( !free || place_meeting(x+(50*spr_dir), y-18, asset_get("par_block")) ){
 			window = 5;
 			window_timer = 0;
 			sound_stop(sound_get("swing2"));
@@ -842,9 +842,9 @@ if (attack==AT_TAUNT&&window==5){
 			sound_play(sound_get( "scream4" ));
 		}else if (get_player_color(player)==10){//astral
 			sound_play(sound_get( "scream5" ));
-		}else if (get_player_color(player)==11){//doomsday
-			sound_play(sound_get( "scream2" ));
-			sound_play(sound_get( "scream2" ));
+		//}else if (get_player_color(player)==11){//doomsday
+		//	sound_play(sound_get( "scream2" ));
+		//	sound_play(sound_get( "scream2" ));
 		}else{
 			sound_play(sound_get( "scream" ));
 			sound_play(sound_get( "scream" ));

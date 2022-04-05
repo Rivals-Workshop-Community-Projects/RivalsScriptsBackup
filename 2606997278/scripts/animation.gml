@@ -123,11 +123,14 @@ switch (state)
     } break;
     case PS_AIR_DODGE:
     {
-        if (window == 0)
+        if (window == 0) //beginning of dodge
         {
-            //beginning of dodge
             uhc_anim_last_dodge.posx = x;
             uhc_anim_last_dodge.posy = y;
+        }
+        else if (window == 1) //dodge active
+        {
+            spawn_twinkle(vfx_glitch, x, y - (char_height/2), 15);
         }
     } break;
     case PS_WALL_JUMP:
@@ -310,10 +313,31 @@ switch (state)
                         if (uhc_taunt_buffering_timer == 0 && uhc_taunt_is_opening)
                         {
                             sound_play(uhc_taunt_current_video.song, true, noone, 1, 1);
+                            //==============================================================
+                            // RUNE: Rickroll earrape
+                            // I'm almost sorry
+                            if (uhc_rune_flags.deadly_rickroll) && (uhc_taunt_current_video.special == 2)
+                            {
+                                sound_play(uhc_taunt_current_video.song, true, noone, 1, 1);
+                                sound_play(uhc_taunt_current_video.song, true, noone, 1, 1);
+                                sound_play(uhc_taunt_current_video.song, true, noone, 1, 1);
+                            }
+                            //==============================================================
+
                         }
                     }
                     else
-                    { uhc_taunt_timer++; }
+                    { 
+                        uhc_taunt_timer++;
+                        //==============================================================
+                        // RUNE: Rickroll
+                        if (uhc_rune_flags.deadly_rickroll) && (uhc_taunt_current_video.special == 2)
+                        && (uhc_taunt_timer % 31 == 1)
+                        {
+                            shake_camera(8, 12);
+                        }
+                        //==============================================================
+                    }
                 }
 
                 if (window == 1) && (window_timer == 12) //startup: shuffle
@@ -409,6 +433,7 @@ switch (state)
             else
             {
                 uhc_current_cd.cd_anim_blade_spin = 0;
+                draw_indicator = false;
             }
         }
     }break;
@@ -579,6 +604,7 @@ if (uhc_taunt_collect_videos && state == PS_ATTACK_GROUND && attack == AT_TAUNT)
         case CH_ZETTERBURN:
         case CH_FORSBURN:
         case CH_CLAIREN:
+        case CH_MOLLO:
            sprite_change_offset("video_sparta", 11, 8);
            videos[0] = { sprite:sprite_get("video_sparta"),   
                          song:sound_get("video_sparta"),   
@@ -587,6 +613,7 @@ if (uhc_taunt_collect_videos && state == PS_ATTACK_GROUND && attack == AT_TAUNT)
         case CH_WRASTOR:
         case CH_ABSA:
         case CH_ELLIANA:
+        case CH_POMME:
            sprite_change_offset("video_numa", 11, 8);
            videos[0] = { sprite:sprite_get("video_numa"),   
                          song:sound_get("video_numa"),   
@@ -601,6 +628,7 @@ if (uhc_taunt_collect_videos && state == PS_ATTACK_GROUND && attack == AT_TAUNT)
         case CH_ETALUS: 
         case CH_RANNO:
         case CH_ORCANE:
+        case CH_HODAN:
            sprite_change_offset("video_lime", 11, 8);
            videos[0] = { sprite:sprite_get("video_lime"),   
                          song:sound_get("video_lime"),   
@@ -609,6 +637,7 @@ if (uhc_taunt_collect_videos && state == PS_ATTACK_GROUND && attack == AT_TAUNT)
         case CH_KRAGG: 
         case CH_MAYPUL:
         case CH_SYLVANOS:
+        case CH_OLYMPIA:
            sprite_change_offset("video_darude", 11, 8);
            videos[0] = { sprite:sprite_get("video_darude"),   
                          song:sound_get("video_darude"),   

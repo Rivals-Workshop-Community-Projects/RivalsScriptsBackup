@@ -22,6 +22,23 @@ if (get_player_color( player ) == 7){ //towerofheaven
 	}
 }
 
+if (was_reloaded){
+	sound_play(sound_get("altsel"))
+	was_reloaded = false;
+}
+
+if (get_player_color( player ) == 19||get_player_color( player ) == 11) { //genesis
+	if ((state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR)&&attack==AT_DSPECIAL&&window==3){
+		giy_speed = clamp(giy_speed+giy_tr_speed, giy_speed_n, giy_speed_f)
+	}else{
+		giy_speed = clamp(giy_speed-giy_tr_speed, giy_speed_n, giy_speed_f)
+	}
+	giy_timer = giy_timer+giy_speed;
+	if (giy_timer>giy_max){
+		giy_timer = giy_timer-giy_max;
+	}
+}
+
 if (state == PS_AIR_DODGE && attack == AT_USPECIAL){
 	sound_stop(sound_get("dimensional"));
 }
@@ -814,6 +831,334 @@ if (trummelcodec_id!=-4){
 }
 //print_debug( "---" )
 //print_debug( "---" )
+
+
+//ducky dialogue
+if(variable_instance_exists(id,"diag"))
+{
+    diag_name = "N/A"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "Chaos beckons. Engage.",
+    "Night is longest when day does not exist. Engage.",
+    "An unwelcome visitant. Engage.",
+    "Would molydeux grant you fortune? Engage.",
+    "Go, then. Reap what it has sown.",
+    "Your time is drawing near... Nothingness. Engage."]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == "1894194148" && diag != "") //Change the url into a specific character's
+    {//A.R.
+        diag = "False manusya on an escapade. What good is there to delay inevitability? Engage.";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == "2108895293" && diag != "")
+    {//Lumina
+        diag = "Chaos. Black within white. Light within dusk. A concept as old as history. Continue it. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2226596831" && diag != "")
+    {//Reckless
+        diag = "A silhouette seeking physical chaos. Destruction shall beget decay. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2229832619" && diag != "")
+    {//N/A (mirror match)
+        diag = "Multiples. An echo. What must we seek in ourselves? It naught matter. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2343479756" && diag != "")
+    {//Natsumi
+        diag = "Oblation to what is long lost. A purgatorial apparition, perhaps. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2415092274" && diag != "")
+    {//Ao
+        diag = "Constellations ever-radiant. Loneliness, too, are a driving force. Engage.";
+        diag_index = 0;
+    }
+	
+    if(otherUrl == "2605462884" && diag != "")
+    {//EXPLORER
+        diag = "Seeker. Explorer of the endless. It has been enough. Engage.";
+        diag_index = 0;
+    }
+	
+    if(otherUrl == "1877715009" && diag != "")
+    {//Hikaru
+        diag = "Light. Dawn. We've no reason to encourage you any longer. Engage.";
+       // diag = "Light. Dawn. You have strengths you might not expect. You can be more confident in yourself. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2396735388" && diag != "")
+    {//Zephrie
+        diag = "Befriender of the wind. Controlled, but no powerful than a storm. Engage.";
+        //diag = "Befriender of the wind. Controlled, no powerful as a storm. More impressive than pure, wild energy. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2006712792" && diag != "")
+    {//Feri
+        diag = "Voices. Or is it the end of your hubris? Engage.";
+        //diag = "Voices. Perhaps you're not confident enough. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1993599340" && diag != "")
+    {//LSD
+        diag = "Ablation of subconscious. To read without reading. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1917856427" && diag != "")
+    {//Liz
+        diag = "A heart beats, however inconsistent. Rhythms you must keep going. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2322322191" && diag != "")
+    {//Frisk
+        diag = "To determine a path, you must accept its consequences. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2300438860" && diag != "")
+    {//Chara
+        diag = "One end of a path, perhaps. Soon there will be no more of you to move on to another. Engage.";
+        //diag = "One end of a path, perhaps. Soon there will be no more of you to move on to the next. Engage.";
+        diag_index = 0;
+    }
+    if((otherUrl == "2100204665"||otherUrl == "1873681040") && diag != "")
+    {//Papyrus
+        diag = "Unconditional trust... Futility. Engage.";
+        //diag = "Unconditional trust... What drives you hopeful? Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1869814191" && diag != "")
+    {//sand
+        diag = "The end of all things awaits. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1867608473" && diag != "")
+    {//Kris
+        diag = "Control lies in one's willpower. Take yours, else it is lost. Engage.";
+        //diag = "Control lies in your willpower. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2534202008" && diag != "")
+    {//Kinunosu
+        diag = "A nest of silk. Restrictment is a stratagem, however would be nothing to us of many. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2504062893" && diag != "")
+    {//Sciros
+        diag = "Reanimation. Free spirits confined once again. Serve your purpose, then. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2201608216" && diag != "")
+    {//Blake
+        diag = "A soul echt, but an abandoned artifice nonetheless. Engage.";
+        //diag = "Seemingly a scrap, however with a soul echt. Perhaps incorporeal in nature. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2502590772" && diag != "")
+    {//Minun Plusle
+        diag = "One, or two, or many more, mean naught against our division none. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2546990424" && diag != "")
+    {//Maverick
+        diag = "Wind... Aimless it is not. Directions, a destination. Engage.";
+        //diag = "Fierce fist, yet a whirlwind. However seems amplified with experience. Respectable effort. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2504113755" && diag != "")
+    {//Nova
+        diag = "Tangible illusions. Time dissonance. Engage.";
+        //diag = "Tangible illusions. Arcane or artificial, we wonder. Conclusions would not be needed. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2396961482" && diag != "")
+    {//Anglara
+        diag = "Light of the depths. The ocean darkness has much to offer - however our differences are clear. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2504123533" && diag != "")
+    {//Visselle
+        diag = "Controlled alchemy. Perhaps the ocean darkness has developed differently. Conjure your path, then. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2453146011" && diag != "")
+    {//Monarch
+        diag = "Our spatial comprehension is beyond what you can attain. Think. Engage.";
+        //diag = "Our spatial comprehension is beyond what you can attain. Think with them. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2217843818" && diag != "")
+    {//Among
+        diag = "Deception. Mean naught with many eyes to prove its falsehood. Engage.";
+        //diag = "Deception would be a powerful stratagem, however mean naught with many eyes to prove its falsehood. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2265876548" && diag != "")
+    {//Matthew Favson
+        diag = "That is what you wish to believe. Let us see how much further can you keep such beliefs. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2775288890" && diag != "")
+    {//Sol
+        diag = "Such hubris. One day, thou shalt face true consequence. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2502476068" && diag != "")
+    {//Matt
+        diag = "Manusya of the folklores. A powerful fighter, though not absolute. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1962084547" && diag != "")
+    {//Bird Guy
+        diag = "Your driving force... beyond our comprehension. Perhaps it is clear? Engage.";
+        //diag = "Your intentions we find unable to decipher... Cruelty. Fury. Compassion. Justice? Seem to be none of what we think it is. Intruguing one. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2267598408" && diag != "")
+    {//Cantaloupe
+        diag = "Void is a concept nonsingular. What you serve casts different motives, however we naught mean end to what may overlap with what we are. We only intend to purge what is against us. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2787737701" && diag != "")
+    {//Sinker
+        diag = "...This artifice... observing us. If what thou seek is us, then leave thouself to the flow. Engage.";
+        //diag = "...This artifice... observing us. If what thou seek is us, then leave thouself in the flow. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "nyi" && diag != "")
+    {//Sumo
+        diag = "A manusya seemingly unproportionate - however naught mean disadvantage. One's power is of its experience and fighting arts. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2102497760" && diag != "")
+    {//Aei Ou
+        diag = "Forgotten to time... We admit this to be an emotion we, too, have felt closely. Sorrowful. Must we engage?";
+        diag_index = 0;
+    }
+    if(otherUrl == "1968068304" && diag != "")
+    {//Epinel
+        diag = "Formidable one... However no extent of durable stones mean unbreakable. It shalt be done. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1913517643" && diag != "")
+    {//Pomme
+        diag = "Hymns, songs, we had long forgotten these concepts. Such is time fleeting. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1866016173" && diag != "")
+    {//Guadua
+        diag = "Misunderstood. You were made to be on par, now compared to the subpar. Engage.";
+        diag_index = 0;
+    }
+    if(otherUrl == "1865940669" && diag != "")
+    {//Sandbert
+        diag = "Primeval being. Divine, demonic, all the same. All that lives must die, passing through nature to eternity. Engage.";
+        diag_index = 0;
+    }
+	/*
+    if(otherUrl == "" && diag != "") //Change the url into a specific character's
+    {
+        diag = "Hey, I know you! I will beat you up.";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+	*/
+    
+	
+//  NRS/3-Part dialogue
+    if(otherUrl == "1968648848") //Change the url into a specific character's
+    {//Hime Abyss
+        with(pet_obj) {
+        diag_nrs_p1 = player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+        diag_nrs = true; //Sets the 3-Part dialogue to happen.
+        diag_nrs_diag = [
+        "Yeeel, Was yea ra weal yorr toe titilia mahin en jambea won mea. Infel, yorr memora? Wharn wis dor sos yora spitze - Was nyasri ga nozess en kil yora.",
+        "...",
+        "Den dest phantasmagoria en rhaplanca ides, Mea wis rooshellan, noini roon en endia vale. Coall inna mea."]
+
+        //If your portrait has multiple sprite indexes. You can change them during the interaction!
+		/*
+        switch(diag_nrs_state)
+        {
+            case 0: //First Message
+                other.diag_index = 1;
+                break;
+            case 1: //Second Message
+                other.diag_index = 1;
+                break;
+            case 2: //Last Message
+                other.diag_index = 2;
+                break;
+        }
+		*/
+		}
+    }
+    if(otherUrl == "2254931693") //Change the url into a specific character's
+    {//bagelboy bonby
+        with(pet_obj) {
+        diag_nrs_p1 = (otherPlayer); //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+        diag_nrs = true; //Sets the 3-Part dialogue to happen.
+        diag_nrs_diag = [
+        "(axolotl)",
+        "A manusya beyond reality rules. We are curious to see what you perform. Engage.",
+        "(  )"]
+
+        //If your portrait has multiple sprite indexes. You can change them during the interaction!
+		
+        switch(diag_nrs_state)
+        {
+            case 0: //First Message
+                other.diag_index = 0;
+                break;
+            case 1: //Second Message
+                other.diag_index = 0;
+                break;
+            case 2: //Last Message
+                other.diag_index = 4;
+                break;
+        }
+		}
+    }
+    if(otherUrl == "2520247938") //Change the url into a specific character's
+    {//mariohead
+        with(pet_obj) {
+        diag_nrs_p1 = player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+        diag_nrs = true; //Sets the 3-Part dialogue to happen.
+        diag_nrs_diag = [
+        "Ooh, axolotl of doom. Very scary!",
+        "Severed manusya head with sentience. A flight with no end, away from whence you came. Its path shall be cut short. Engage.",
+        "Get ready to move your fingers, it's-a time for you to type!"]
+
+        //If your portrait has multiple sprite indexes. You can change them during the interaction!
+		/*
+        switch(diag_nrs_state)
+        {
+            case 0: //First Message
+                other.diag_index = 0;
+                break;
+            case 1: //Second Message
+                other.diag_index = 1;
+                break;
+            case 2: //Last Message
+                other.diag_index = 4;
+                break;
+        }
+		*/
+		}
+    }
+	
+}
+
+
+
+
+
+
 
 if (nadev){
 	if (down_stick_down && shield_down){

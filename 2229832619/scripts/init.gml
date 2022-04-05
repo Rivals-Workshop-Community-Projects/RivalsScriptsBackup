@@ -177,10 +177,18 @@ dairvsp = -12;
 dair_mark = false;
 usp_ls_cooldown = 0;
 
+usp_land = false;
+
 col_timer = 0;
 col_timer_max = 30;
 col_phase = 0;
 ea_init = 0;
+giy_timer = 0;
+giy_max = 192;
+giy_speed = 0.3;
+giy_speed_n = 0.3;
+giy_speed_f = 3;
+giy_tr_speed = 0.06;
 
 trummelcodecneeded = false;
 trummelcodec_id = -4;
@@ -211,6 +219,8 @@ na_bh = false;
 v_fstrong = false;
 
 practice = false;
+
+
 
 
 
