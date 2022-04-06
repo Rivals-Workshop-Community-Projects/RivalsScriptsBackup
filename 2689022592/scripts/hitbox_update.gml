@@ -7,7 +7,8 @@ switch attack {
       if (place_meeting(x, y , asset_get("par_block"))) or hitbox_timer >= 119{
         hitbox_timer = 999
         spawn_hit_fx(x,y+10,14)
-	  	sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .6, 1.5)
+	  	//sound_play(asset_get("sfx_shovel_hit_med1"),false, noone, .6, 1.5)
+	  	sound_play(asset_get("sfx_waterhit_medium"),false, noone, 1, 1.2)
 	  	with player_id {
 	  		set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, 0 );
             set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, -3 );

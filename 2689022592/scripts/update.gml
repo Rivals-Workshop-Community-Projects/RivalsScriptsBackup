@@ -15,7 +15,8 @@ if state == PS_RESPAWN
   }
   
   if state_timer == 90 {
-      spawn_hit_fx(x,y-40,306)
+      vfx = spawn_hit_fx(x,y-40,306)
+      vfx.pause = 8
       sound_play(asset_get("sfx_kragg_rock_shatter"),false,noone,1,.8)
   }
 }
@@ -27,7 +28,8 @@ if get_gameplay_time() < 3 {
     sound_stop(asset_get("sfx_kragg_rock_pillar"))
     sound_play(asset_get("sfx_kragg_rock_pillar"),false,noone,1,.8)
 } else if get_gameplay_time() == 30 {
-    spawn_hit_fx(x,y-40,306)
+    vfx = spawn_hit_fx(x,y-40,306)
+      vfx.pause = 8
     sound_stop(asset_get("sfx_kragg_rock_shatter"))
     sound_play(asset_get("sfx_kragg_rock_shatter"),false,noone,1,.8)
 }
@@ -102,7 +104,7 @@ with asset_get("oPlayer") {
            with other {
            fx_s = hit_fx_create( sprite_get( "fx_snap" ), 20 );       
            spawn_hit_fx(other.x,other.y - 120, fx_s)
-           take_damage(player,-1,floor(other.Tengia_pain*-0.33)) 
+           take_damage(player,-1,floor(other.Tengia_pain*-0.35)) 
            fxds = spawn_hit_fx(x, y - 20, fx_ds)
            fxds.depth = -15
            set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, 0 );
@@ -110,7 +112,8 @@ with asset_get("oPlayer") {
            create_hitbox(AT_DSPECIAL,2,floor(x),floor(y) - 20)
            
            if has_rune("O") == true {
-               spawn_hit_fx(floor(other.x),floor(other.y),306)
+               vfx = spawn_hit_fx(floor(other.x),floor(other.y),306)
+               vfx.pause = 8
              with other { if get_player_damage(player) >= 66 { set_player_damage(player,666) y = room_height + 666} }
            }
            

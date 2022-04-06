@@ -181,6 +181,7 @@ switch attack {
 	         }
 	     }
 	     if window == 4 {
+	     	if free y += 2
 	     	djumps = 0
 	     	vsp = 0
 	     	hsp /= 1.2
@@ -320,7 +321,8 @@ switch attack {
 	   	  	take_damage(player,-1,-2)
 	   	  	window = 2
 	   	  	window_timer = 2
-	   	  	spawn_hit_fx(x+28*spr_dir,y - 28,305)
+	   	  	vfx = spawn_hit_fx(x+28*spr_dir,y - 28,305)
+	   	  	vfx.pause = 5
 	   	  	create_hitbox(AT_DSPECIAL,1,x,y)
 	   	  } else if window_timer == 8 && state_timer > 50 {
                 
