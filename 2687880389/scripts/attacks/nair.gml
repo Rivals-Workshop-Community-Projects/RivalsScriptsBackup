@@ -48,8 +48,9 @@ set_window_value(AT_NAIR, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_NAIR, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 7, AG_WINDOW_ANIM_FRAME_START, 7);
 
-set_num_hitboxes(AT_NAIR, 3);
+set_num_hitboxes(AT_NAIR, 4);
 
+// First hit
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
@@ -66,6 +67,7 @@ set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 2.5);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
+// Second hit
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 5);
@@ -83,14 +85,15 @@ set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 6.7);
 set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
+// Lingering front
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 6);
 set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, nair_kick_duration);
-set_hitbox_value(AT_NAIR, 3, HG_HITBOX_X, -1);
-set_hitbox_value(AT_NAIR, 3, HG_HITBOX_Y, -49);
-set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 136); // 150
-set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 56); // 65
+set_hitbox_value(AT_NAIR, 3, HG_HITBOX_X, 37); // -1
+set_hitbox_value(AT_NAIR, 3, HG_HITBOX_Y, -49); // -49
+set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 56); // 136 150
+set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 38); // 56 65
 set_hitbox_value(AT_NAIR, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 3);
 set_hitbox_value(AT_NAIR, 3, HG_ANGLE, 65);
@@ -99,6 +102,46 @@ set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 6.0);
 set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+
+// Lingering rear
+set_hitbox_value(AT_NAIR, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NAIR, 4, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 6);
+set_hitbox_value(AT_NAIR, 4, HG_LIFETIME, nair_kick_duration);
+set_hitbox_value(AT_NAIR, 4, HG_HITBOX_X, -39); // -1
+set_hitbox_value(AT_NAIR, 4, HG_HITBOX_Y, -49); // -49
+set_hitbox_value(AT_NAIR, 4, HG_WIDTH, 56); // 136 150
+set_hitbox_value(AT_NAIR, 4, HG_HEIGHT, 38); // 56 65
+set_hitbox_value(AT_NAIR, 4, HG_PRIORITY, 1);
+set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, 3);
+set_hitbox_value(AT_NAIR, 4, HG_ANGLE, 65);
+set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 6.0);
+set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 6.0);
+set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+
+// Lingering rectangle (currently excluded)
+/*
+set_hitbox_value(AT_NAIR, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NAIR, 5, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_NAIR, 5, HG_WINDOW, 6);
+set_hitbox_value(AT_NAIR, 5, HG_LIFETIME, nair_kick_duration);
+set_hitbox_value(AT_NAIR, 5, HG_SHAPE, 1);
+set_hitbox_value(AT_NAIR, 5, HG_HITBOX_X, -1);
+set_hitbox_value(AT_NAIR, 5, HG_HITBOX_Y, -49);
+set_hitbox_value(AT_NAIR, 5, HG_WIDTH, 76);
+set_hitbox_value(AT_NAIR, 5, HG_HEIGHT, 38);
+set_hitbox_value(AT_NAIR, 5, HG_PRIORITY, 1);
+set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 3);
+set_hitbox_value(AT_NAIR, 5, HG_ANGLE, 65);
+set_hitbox_value(AT_NAIR, 5, HG_BASE_KNOCKBACK, 6.0);
+set_hitbox_value(AT_NAIR, 5, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_NAIR, 5, HG_BASE_HITPAUSE, 6.0);
+set_hitbox_value(AT_NAIR, 5, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+*/
+
 
 /*
 set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 4);

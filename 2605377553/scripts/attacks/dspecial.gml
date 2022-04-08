@@ -44,7 +44,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.55);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 5.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, midsmoke);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_seinhit_medium"));

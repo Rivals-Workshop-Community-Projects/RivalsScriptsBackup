@@ -1,19 +1,23 @@
 // Alt-specific things
 // Have macros representing which alt is which for switch statements
-#macro codename_default_number     0
-#macro codename_mega_number        7
-#macro codename_metroid_number     8
-#macro codename_halo_number        9
-#macro codename_dva_number        10
-#macro codename_rob_number        11
-#macro codename_emerl_number      12
-#macro codename_aperture_number   13
-#macro codename_ironman_number    14
-#macro codename_cyborg_number     15
-#macro codename_mischeif_number   16
-#macro codename_ugh_number        17
-#macro codename_ea_number         20
-#macro codename_wireframe_number  21
+#macro codename_default_number      0
+#macro codename_mega_number         7
+#macro codename_metroid_number      8
+#macro codename_halo_number         9
+#macro codename_dva_number          10
+#macro codename_rob_number          11
+#macro codename_emerl_number        12
+#macro codename_aperture_number     13
+#macro codename_ironman_number      14
+#macro codename_cyborg_number       15
+#macro codename_mischeif_number     16
+#macro codename_ugh_number          17
+#macro codename_ea_number           20
+#macro codename_wireframe_number    21
+#macro codename_mettaton_number     22
+#macro codename_queen_number        23
+#macro codename_cabinet_number      24
+#macro codename_rotom_number        25
 
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
@@ -840,6 +844,18 @@ if (attack == AT_TAUNT_2) {
 		        break;
 		    case codename_ugh_number :
 		        taunt_sound = sound_get("horn_ugh");
+		        break;
+		    case codename_mettaton_number :
+		        taunt_sound = sound_get("horn_mettaton");
+		        break;
+		    case codename_queen_number :
+		        taunt_sound = sound_get("horn_queen");
+		        break;
+		    case codename_cabinet_number :
+		        // Play part of the song
+		        break;
+		    case codename_rotom_number :
+		        taunt_sound = sound_get("horn_rotom");
 		        break;
 			default :
 				break;

@@ -44,8 +44,9 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 11);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_DSTRONG, 1, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 4);
@@ -65,7 +66,6 @@ set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 11);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_IGNORES_PROJECTILES, 1);
 
 if has_rune ("O")

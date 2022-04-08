@@ -89,9 +89,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, driving_dash_duration);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 10);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 2); // 10
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -16);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 80);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 64); // 80
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 39);
 set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);

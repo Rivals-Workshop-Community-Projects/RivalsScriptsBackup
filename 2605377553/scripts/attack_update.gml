@@ -1,3 +1,14 @@
+//taunt
+if attack == AT_TAUNT
+{
+	if window == 2 && window_timer == 2 && extra_col != 2 {
+		sound_play(asset_get("mfx_unstar"))
+	}
+	if window == 1 && window_timer == 5 && extra_col == 2 {
+		sound_play(sound_get("nuzl_cough"))
+	}
+}
+
 //hud offsets
 if attack == AT_USTRONG
 {

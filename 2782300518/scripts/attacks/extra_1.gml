@@ -31,6 +31,7 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 0.5);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE_FLIPPER, 6);
 
 if has_rune ("O")
 {

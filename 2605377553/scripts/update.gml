@@ -23,6 +23,11 @@ with (oPlayer) {
 		sickAfterGrace--;
 }
 
+//Mariiii
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 9 && get_gameplay_time() == 5){
+	sound_play(sound_get("mari"));
+}
+
 //secret colors
 //Sun (clown)
 if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) != 2 && get_player_color( player ) != 5 ){

@@ -15,6 +15,9 @@ switch (selected_color) {
 	case 23 :
 		draw_sprite_ext(sprite_get("charselect_queen"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
 		break;
+	case 25 :
+		draw_sprite_ext(sprite_get("charselect_rotom"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		break;
 	default :
 		draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
 		break;
@@ -125,7 +128,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 24; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 25; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(111, 0, 255) // "color preview square" color. can be any color!
@@ -203,9 +206,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[24,0] = make_color_rgb(0, 122, 94)
 	ce[24,1] = "Cabinet Man"
 	ce[24,2] = "This must be what love would have felt like..."
-//	ce[25,0] = make_color_rgb(243, 130, 88)
-//	ce[25,1] = "Rotom"
-//	ce[25,2] = "Its body is composed of plasma. It is known to infiltrate electronic devices and wreak havoc."
+	ce[25,0] = make_color_rgb(243, 130, 88)
+	ce[25,1] = "Rotom"
+	ce[25,2] = "It likes to wreak havoc in electronic devices."
 //	ce[25,0] = make_color_rgb(255, 0, 0)
 //	ce[25,1] = "Robot"
 //	ce[25,2] = "Hey look, it's me! :)"

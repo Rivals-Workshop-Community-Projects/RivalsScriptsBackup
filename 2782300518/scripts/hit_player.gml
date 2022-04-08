@@ -40,7 +40,7 @@ switch (hit_player_obj.url)
 }
 
 //If Carol is hit by her own bike, get back on the bike
-if (fuel > 0 && hit_player == player && my_hitboxID.attack == 43 && my_hitboxID.hbox_num == 1 && my_hitboxID.hitbox_timer > 25)
+if (fuel > 0 && hit_player == player && my_hitboxID.attack == 43 && my_hitboxID.hbox_num == 1 && my_hitboxID.can_hit_self == true)
 {
 	if (my_hitboxID.orig_player == player)
 	{
@@ -52,7 +52,6 @@ if (fuel > 0 && hit_player == player && my_hitboxID.attack == 43 && my_hitboxID.
     	hit_player_obj.hitstop_full = 0;
     	hit_player_obj.hsp = 0;
     	hit_player_obj.vsp = 0;
-    	hit_player_obj.spr_dir = -hit_player_obj.spr_dir;
     	take_damage( hit_player, -1, -2 )
     	my_hitboxID.destroyed = true;
 		bsprite_index = sprite_get("bike_assembly");

@@ -1,6 +1,37 @@
 
-// TODO - Draw Rotom's blue aura here
-
+// Draw Rotom's aura if applicable
+if (codename_rotom_active) {
+	//shader_start();
+	//gpu_set_blendmode_ext(bm_src_color, bm_dest_color);
+	gpu_set_fog(true, aura_color, 0, 1);
+	draw_sprite_ext(sprite_index, image_index,
+					x, y+2, spr_dir, 1, 0,
+					c_white, 1);
+	draw_sprite_ext(sprite_index, image_index,
+					x, y-2, spr_dir, 1, 0,
+					c_white, 1);
+	draw_sprite_ext(sprite_index, image_index,
+					x+2, y, spr_dir, 1, 0,
+					c_white, 1);
+	draw_sprite_ext(sprite_index, image_index,
+					x-2, y, spr_dir, 1, 0,
+					c_white, 1);
+	draw_sprite_ext(sprite_index, image_index,
+					x+2, y+2, spr_dir, 1, 0,
+					c_white, 1);
+	draw_sprite_ext(sprite_index, image_index,
+					x+2, y-2, spr_dir, 1, 0,
+					c_white, 1);
+	draw_sprite_ext(sprite_index, image_index,
+					x-2, y+2, spr_dir, 1, 0,
+					c_white, 1);
+	draw_sprite_ext(sprite_index, image_index,
+					x-2, y-2, spr_dir, 1, 0,
+					c_white, 1);
+	gpu_set_fog(false, c_white, 0, 1);
+	//gpu_set_blendmode(bm_normal);
+	//shader_end();
+}
 
 // Draw afterimages
 if (afterimage_countdown > 0) {

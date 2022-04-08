@@ -30,7 +30,7 @@ set_num_hitboxes(40, 1);
 set_hitbox_value(40, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(40, 1, HG_WINDOW, 2);
 set_hitbox_value(40, 1, HG_SHAPE, 0);
-set_hitbox_value(40, 1, HG_LIFETIME, 40);
+set_hitbox_value(40, 1, HG_LIFETIME, 400);
 set_hitbox_value(40, 1, HG_HITBOX_X, 0);
 set_hitbox_value(40, 1, HG_HITBOX_Y, 20);
 set_hitbox_value(40, 1, HG_PRIORITY, 9);
@@ -38,6 +38,7 @@ set_hitbox_value(40, 1, HG_DAMAGE, 7);
 set_hitbox_value(40, 1, HG_TECHABLE, 2);
 set_hitbox_value(40, 1, HG_EFFECT, 1);
 set_hitbox_value(40, 1, HG_VISUAL_EFFECT, 148);
+set_hitbox_value(40, 1, HG_HIT_SFX, sound_get("xplode2"));
 
 set_hitbox_value(40, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(40, 1, HG_KNOCKBACK_SCALING, 0.3);

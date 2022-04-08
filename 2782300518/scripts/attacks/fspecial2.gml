@@ -9,10 +9,6 @@ set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_AIR_SPRITE, sprite_get("fspecial2_hur
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_TYPE, 2);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_HSPEED_TYPE, 0);
-set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_HSPEED, 8);
-set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_VSPEED, 0.2);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("motorbike_wheelie"));
 
@@ -20,8 +16,6 @@ set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_TYPE, 2);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_LENGTH, 27);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_VSPEED, 0.8);
 
 
 set_num_hitboxes(AT_FSPECIAL_2, 1);

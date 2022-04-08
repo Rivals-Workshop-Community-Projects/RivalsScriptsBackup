@@ -93,5 +93,5 @@ sprite_change_offset("nothing", 55, 80);
 sprite_change_offset("chain_link",0,11);
 
 //hehe
-set_victory_bg( sprite_get( "brawl_victory" ));
+set_victory_bg( sprite_get( "mal_victorybg" ));
 set_victory_theme( sound_get( "mal_victory" ));

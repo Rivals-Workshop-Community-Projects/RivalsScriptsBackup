@@ -3,13 +3,6 @@
 //This code enables voice lines for the rest of the character
 voice = (voice_toggle > 14);
 
-//multikick Recharge meter
-if (kickTime > 0)
-{
-	multikick_energy = 200 - (kickTime * 2.9);
-	remainingCharge = multikick_energy;
-}
-
 //Charge the meter
 if (feline_power = false)
 {
@@ -26,46 +19,175 @@ if (move_cooldown[AT_NSPECIAL] == 0 && kickTime > 0)
 if (multikick_energy == 200)
 {
 	feline_power = true;
-	/*meterShine++;
+	meterShine++;
 	if (meterShine == 174)
 	{
 		meterShine = 0;
-	}*/
+	}
 }
 
-//Carol's Doulbe jump is a pounce, so if she double jumps there should be no additional vsp
-if (state==PS_DOUBLE_JUMP && motorbike == false){
-	feline_power = false;
-	set_state(PS_ATTACK_AIR);
-	attack=AT_EXTRA_2;
-   	tsprite_index = sprite_get("tail_walk");
-	timage_index=0;
-	timage_number=7;
-	tfront=false;
-	tx=-45*spr_dir;
-	ty=-70;
-	tsx=1;
-	tsy=1;
-	bsprite_index=-1;
-}
 
-//multiple Wall jumps, so that you can bounce up the same wall over and over again, just like Carol's gameplay in Freedom Planet!
-if ((can_wall_jump == false || has_walljump == false) && walljump_number < walljump_limit && motorbike == false)
+if (motorbike == false)
 {
-    can_wall_jump = true;
-    has_walljump = true;
-    if (state = PS_WALL_JUMP)
-    {
-    	if (state_timer = 1)
+	//Carol's Double jump is a pounce, so if she double jumps there should be no additional vsp
+	if (state==PS_DOUBLE_JUMP && motorbike == false){
+		if ((left_pressed || left_down) && spr_dir == 1 && !pounceChange)
+		{
+			spr_dir = -1;
+			pounceChange = true;
+		}
+		if ((right_pressed || right_down) && spr_dir == -1 && !pounceChange)
+		{
+			spr_dir = 1;
+			pounceChange = true;
+		}
+		set_state(PS_ATTACK_AIR);
+		attack=AT_EXTRA_2;
+   		tsprite_index = sprite_get("tail_walk");
+		timage_index=0;
+		timage_number=7;
+		tfront=false;
+		tx=-45*spr_dir;
+		ty=-70;
+		tsx=1;
+		tsy=1;
+		bsprite_index=-1;
+	}
+	
+	//multiple Wall jumps, so that you can bounce up the same wall over and over again, just like Carol's gameplay in Freedom Planet!
+	if ((can_wall_jump == false || has_walljump == false) && walljump_number < walljump_limit)
+	{
+    	can_wall_jump = true;
+    	has_walljump = true;
+    	if (state = PS_WALL_JUMP)
     	{
-    		if (voice == 1 && motorbike == false)
+    		if (state_timer = 1)
     		{
-    			sound_stop(sound_get ("carol_walljump"));
-				sound_play(sound_get ("carol_walljump"));
+    			if (voice == 1)
+    			{
+    				sound_stop(sound_get ("carol_walljump"));
+					sound_play(sound_get ("carol_walljump"));
+    			}
+		    	walljump_number++;
     		}
-		    walljump_number++;
     	}
-    }
+	}
+	if (walljump_number == 5)
+	{
+		move_cooldown[AT_FSPECIAL] = 40;
+	}
+	
+	//This code animated the tail and adds an effect to Parry depending on state
+if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == false){
+	comboCounter = 0;
+    switch (state){
+     	case PS_PARRY:
+     	tsprite_index=sprite_get("tail_idle");
+		trotation=0;
+		timage_number=12;
+		timage_speed=0.25;
+		tfront=false;
+		tx=-45*spr_dir;
+		ty=-66;
+		tsx=1;
+		tsy=1;
+    	bsprite_index=sprite_get("energy_shield");
+		brotation=0;
+			bimage_number=4;
+			bimage_speed=0.25;
+			bfront=true;
+			bx=0;
+			by=0;
+			bsx=1;
+			bsy=1;
+			break;
+			case PS_WALK:
+			case PS_WALK_TURN:
+    		tsprite_index=sprite_get("tail_walk");
+			trotation=0;
+			timage_number=7;
+			timage_speed=0.25;
+			tfront=false;
+			tx=-45*spr_dir;
+			ty=-76;
+			tsx=1;
+			tsy=1;
+			bsprite_index=-1;
+			case PS_DASH_START:
+			case PS_DASH:
+    		tsprite_index=sprite_get("tail_walk");
+			trotation=0;
+			timage_number=7;
+			timage_speed=0.25;
+			tfront=false;
+			tx=-40*spr_dir;
+			ty=-78;
+			tsx=1;
+			tsy=1;
+			bsprite_index=-1;
+    		break;
+    		case PS_DASH_STOP:
+			case PS_DASH_TURN:
+    	    tsprite_index=sprite_get("tail_walk");
+			trotation=0;
+			timage_number=7;
+			timage_speed=0.25;
+			tfront=false;
+			tx=-50*spr_dir;
+			ty=-70;
+			tsx=1;
+			tsy=1;
+			bsprite_index=-1;
+    		break;
+    		case PS_FIRST_JUMP:
+    		case PS_WALL_JUMP:
+    		case PS_IDLE_AIR:
+    		tsprite_index=sprite_get("tail_jump");
+			trotation=0;
+			timage_number=6;
+			timage_speed=0.17;
+			tfront=false;
+			tx=-45*spr_dir;
+			ty=-66;
+			tsx=1;
+			tsy=1;
+			bsprite_index=-1;
+    		break;
+    		case PS_DOUBLE_JUMP:
+		 	tsprite_index = sprite_get("tail_walk");
+			timage_index=0;
+			timage_number=7;
+			tfront=false;
+			tx=-45*spr_dir;
+			ty=-70;
+			tsx=1;
+			tsy=1;
+			bsprite_index=-1;    
+			break;
+    		case PS_CROUCH:
+    		tsprite_index=sprite_get("tail_walk");
+			trotation=0;
+			timage_number=7;
+			timage_speed=0.25;
+			tfront=false;
+			tx=-45*spr_dir;
+			ty=-70;
+			tsx=1;
+			tsy=1;
+			bsprite_index=-1;
+			break;
+		default:
+			tsprite_index=-1;
+			trotation=0;
+			tfront=0;
+			tx=0;
+			ty=0;
+			tsx=1;
+			tsy=1;
+			bsprite_index=-1;
+		break;
+    	}
+	}
 }
 
 //Reset Wall jumps and certain cooldowns
@@ -79,11 +201,6 @@ if (!free)
 else
 {
 	move_cooldown[AT_DSPECIAL] = 200;
-}
-
-if (walljump_number == 5 && motorbike == false)
-{
-	move_cooldown[AT_FSPECIAL] = 40;
 }
 
 //Bike can cling to walls, check for this
@@ -102,117 +219,6 @@ if (clinging == true)
 	}
 }
 
-//This code animated the tail and adds an effect to Parry depending on state
-if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == false){
-	comboCounter = 0;
-    switch (state){
-     	case PS_PARRY:
-     	tsprite_index=sprite_get("tail_idle");
-		trotation=0;
-		timage_number=12;
-		timage_speed=0.25;
-		tfront=false;
-		tx=-45*spr_dir;
-		ty=-66;
-		tsx=1;
-		tsy=1;
-    	bsprite_index=sprite_get("energy_shield");
-		brotation=0;
-		bimage_number=4;
-		bimage_speed=0.25;
-		bfront=true;
-		bx=0;
-		by=0;
-		bsx=1;
-		bsy=1;
-		break;
-		case PS_WALK:
-		case PS_WALK_TURN:
-        tsprite_index=sprite_get("tail_walk");
-		trotation=0;
-		timage_number=7;
-		timage_speed=0.25;
-		tfront=false;
-		tx=-45*spr_dir;
-		ty=-76;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-		case PS_DASH_START:
-		case PS_DASH:
-        tsprite_index=sprite_get("tail_walk");
-		trotation=0;
-		timage_number=7;
-		timage_speed=0.25;
-		tfront=false;
-		tx=-40*spr_dir;
-		ty=-78;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-    	break;
-    	case PS_DASH_STOP:
-		case PS_DASH_TURN:
-        tsprite_index=sprite_get("tail_walk");
-		trotation=0;
-		timage_number=7;
-		timage_speed=0.25;
-		tfront=false;
-		tx=-50*spr_dir;
-		ty=-70;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-    	break;
-    	case PS_FIRST_JUMP:
-    	case PS_WALL_JUMP:
-    	case PS_IDLE_AIR:
-        tsprite_index=sprite_get("tail_jump");
-		trotation=0;
-		timage_number=6;
-		timage_speed=0.17;
-		tfront=false;
-		tx=-45*spr_dir;
-		ty=-66;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-    	break;
-    	case PS_DOUBLE_JUMP:
-    	tsprite_index = sprite_get("tail_walk");
-		timage_index=0;
-		timage_number=7;
-		tfront=false;
-		tx=-45*spr_dir;
-		ty=-70;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;    
-		break;
-    	case PS_CROUCH:
-        tsprite_index=sprite_get("tail_walk");
-		trotation=0;
-		timage_number=7;
-		timage_speed=0.25;
-		tfront=false;
-		tx=-45*spr_dir;
-		ty=-70;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-		break;
-	default:
-		tsprite_index=-1;
-		trotation=0;
-		tfront=0;
-		tx=0;
-		ty=0;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-	break;
-    }
-}
 
 if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == true)
 {
@@ -450,17 +456,20 @@ if (bike_hit == true)
 //Make Carol get off the bike if fuel runs out
 if (fuel <= 0 && motorbike == true)
 {
-	sound_stop(sound_get("motorbike_move"));
-	sound_stop(sound_get("motorbike_idle"));
-	sound_stop(sound_get("motorbike_stop"));
-	sound_play(sound_get("motorbike_stop"));
-	if (voice == 1)
-	{
-		sound_stop(sound_get ("crap"));
-		sound_play(sound_get ("crap"));
-	}
 	fuel = 0;
-	set_attack(AT_DSPECIAL_2);
+	if (state != PS_HITSTUN && state != PS_WALL_JUMP)
+	{
+		sound_stop(sound_get("motorbike_move"));
+		sound_stop(sound_get("motorbike_idle"));
+		sound_stop(sound_get("motorbike_stop"));
+		sound_play(sound_get("motorbike_stop"));
+		if (voice == 1)
+		{
+			sound_stop(sound_get ("crap"));
+			sound_play(sound_get ("crap"));
+		}
+		set_attack(AT_DSPECIAL_2);
+	}
 }
 
 //Sprite Index animations for tail and bike
@@ -511,16 +520,9 @@ if (move_cooldown[48] > 0)
 }
 
 //Check for Practicse mode
-if (get_gameplay_time() >= 140)
+if (get_match_setting(SET_PRACTICE) == true)
 {
-	timer2 = get_game_timer();
-	if (timer1 == timer2 && timer1 != 0 && !practice)
-   	{
-   		practice = true;
-   	}
-}
-if (practice)
-{
+	practice = true;
 	practice_hud_clearance++;
 }
 
@@ -865,10 +867,13 @@ with (oPlayer) if (carol_handler_id = other)
 		else if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 	             && attack == AT_EXTRA_3)
 		{
-			super_armor=true;
 			can_move=false;
 			// *sigh* unfortunately you can't put cancels on Kirby abilities so he will have to go without them
 			can_fast_fall=false;
+			if (window == 2)
+			{
+				super_armor=true;
+			}
 			if (window == 2 && window_timer == 79)
 			{
 				move_cooldown[AT_EXTRA_3]= 200;

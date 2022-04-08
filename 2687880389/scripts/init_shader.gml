@@ -13,6 +13,12 @@ if ((state != PS_PARRY)
         // Queen alt's feet need to be recolored
         set_character_color_slot( 7, 51, 51, 51, 1 ); //feet
         set_article_color_slot( 7, 51, 51, 51, 1 ); //feet
+    } else if (codename_rotom_active) {
+        // Rotom alt's feet and energy need to be recolored
+        set_character_color_slot( 0, 255, 221, 0, 1 ); //energy
+        set_article_color_slot( 0, 255, 221, 0, 1 ); //energy
+        set_character_color_slot( 7, 243, 130, 88, 1 ); //feet
+        set_article_color_slot( 7, 243, 130, 88, 1 ); //feet
     }
     if (codename_default_active) {
         set_character_color_slot( 0, 255, 106, 0, 1 ); //energy

@@ -16,6 +16,7 @@ if (my_hitboxID == grab_hitbox) {
         }*/
         if (rocket_fuel < max_rocket_fuel) {
             rocket_fuel = max_rocket_fuel;
+	        pity_available = true;
         }
     }
 }

@@ -70,14 +70,18 @@ if (state == PS_RESPAWN) {
 //copy and paste this anywhere in the file, BUT make sure the code past "#define" is at the end of the file. 
 //Also, make sure to use "shader_end();" before you start the code, and "shader_start(); if you want to put more code after.
 
-if (get_player_color(player) == 9) {
-    maskHeader();
-    draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, 1*spr_dir, 1, spr_angle, c_white, 1);
-    maskMidder();
-    draw_sprite_tiled_ext(sprite_get("omorispace"), 1, draw_x, draw_y, 1, 1, c_white, 1)
-    maskFooter();
-
-}
+//if (get_player_color(player) == 9) {
+//    if object_index != asset_get("oTestPlayer") {
+//      maskHeader();
+//      draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_white, 1);
+//      with pHitBox if player_id == other && type == 2 {
+//        draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, 1, c_white, 1);
+//    }
+//    maskMidder();
+//    draw_sprite_tiled_ext(sprite_get("omorispace"), 1, x, y, 1, 1, c_white, 1)
+//    maskFooter();
+//    }
+//}
 
 
 //================================================================================

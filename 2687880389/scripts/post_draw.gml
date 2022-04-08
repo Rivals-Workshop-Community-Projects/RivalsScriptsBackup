@@ -17,12 +17,44 @@ shader_start();
 if ((state == PS_ATTACK_AIR) || (state == PS_ATTACK_GROUND)) {
 	if (attack == AT_FSTRONG) {
 		if (codename_wireframe_active) {
-			draw_sprite_ext(sprite_get("fstrong_legs_wireframe"), image_index,
-							x, y, spr_dir, 1, 0, c_white, 1);
+			fstrong_leg_sprite = sprite_get("fstrong_legs_wireframe");
 		} else {
-			draw_sprite_ext(sprite_get("fstrong_legs"), image_index,
-							x, y, spr_dir, 1, 0, c_white, 1);
+			fstrong_leg_sprite = sprite_get("fstrong_legs");
 		}
+		// Draw Rotom's aura if applicable
+		if (codename_rotom_active) {
+			shader_end();
+			gpu_set_fog(true, aura_color, 0, 1);
+			draw_sprite_ext(fstrong_leg_sprite, image_index,
+							x, y+2, spr_dir, 1, 0,
+							c_white, 1);
+			draw_sprite_ext(fstrong_leg_sprite, image_index,
+							x, y-2, spr_dir, 1, 0,
+							c_white, 1);
+			draw_sprite_ext(fstrong_leg_sprite, image_index,
+							x+2, y, spr_dir, 1, 0,
+							c_white, 1);
+			draw_sprite_ext(fstrong_leg_sprite, image_index,
+							x-2, y, spr_dir, 1, 0,
+							c_white, 1);
+			draw_sprite_ext(fstrong_leg_sprite, image_index,
+							x+2, y+2, spr_dir, 1, 0,
+							c_white, 1);
+			draw_sprite_ext(fstrong_leg_sprite, image_index,
+							x+2, y-2, spr_dir, 1, 0,
+							c_white, 1);
+			draw_sprite_ext(fstrong_leg_sprite, image_index,
+							x-2, y+2, spr_dir, 1, 0,
+							c_white, 1);
+			draw_sprite_ext(fstrong_leg_sprite, image_index,
+							x-2, y-2, spr_dir, 1, 0,
+							c_white, 1);
+			gpu_set_fog(false, c_white, 0, 1);
+			shader_start();
+		}
+		// Draw the legs themselves
+		draw_sprite_ext(fstrong_leg_sprite, image_index,
+						x, y, spr_dir, 1, 0, c_white, 1);
 		// Don't draw the muzzle flash overlay if flat shading is not selected
 		if (!flat_shading_selected) {
 			draw_sprite_ext(sprite_get("fstrong_legs_flash"), image_index,
@@ -48,12 +80,44 @@ if ((state == PS_ATTACK_AIR) || (state == PS_ATTACK_GROUND)) {
 			draw_angle = 0;
 		}
 		if (codename_wireframe_active) {
-			draw_sprite_ext(sprite_get("fstrong_torso_wireframe"), image_index,
-							x - (4 * spr_dir), y - 38, spr_dir, 1, draw_angle, c_white, 1);
+			fstrong_torso_sprite = sprite_get("fstrong_torso_wireframe");
 		} else {
-			draw_sprite_ext(sprite_get("fstrong_torso"), image_index,
-							x - (4 * spr_dir), y - 38, spr_dir, 1, draw_angle, c_white, 1);
+			fstrong_torso_sprite = sprite_get("fstrong_torso");
 		}
+		// Draw Rotom's aura if applicable
+		if (codename_rotom_active) {
+			shader_end();
+			gpu_set_fog(true, aura_color, 0, 1);
+			draw_sprite_ext(fstrong_torso_sprite, image_index,
+							x - (4 * spr_dir), y+2 - 38, spr_dir, 1, draw_angle,
+							c_white, 1);
+			draw_sprite_ext(fstrong_torso_sprite, image_index,
+							x - (4 * spr_dir), y-2 - 38, spr_dir, 1, draw_angle,
+							c_white, 1);
+			draw_sprite_ext(fstrong_torso_sprite, image_index,
+							x+2 - (4 * spr_dir), y - 38, spr_dir, 1, draw_angle,
+							c_white, 1);
+			draw_sprite_ext(fstrong_torso_sprite, image_index,
+							x-2 - (4 * spr_dir), y - 38, spr_dir, 1, draw_angle,
+							c_white, 1);
+			draw_sprite_ext(fstrong_torso_sprite, image_index,
+							x+2 - (4 * spr_dir), y+2 - 38, spr_dir, 1, draw_angle,
+							c_white, 1);
+			draw_sprite_ext(fstrong_torso_sprite, image_index,
+							x-2 - (4 * spr_dir), y-2 - 38, spr_dir, 1, draw_angle,
+							c_white, 1);
+			draw_sprite_ext(fstrong_torso_sprite, image_index,
+							x+2 - (4 * spr_dir), y+2 - 38, spr_dir, 1, draw_angle,
+							c_white, 1);
+			draw_sprite_ext(fstrong_torso_sprite, image_index,
+							x-2 - (4 * spr_dir), y-2 - 38, spr_dir, 1, draw_angle,
+							c_white, 1);
+			gpu_set_fog(false, c_white, 0, 1);
+			shader_start();
+		}
+		// Draw the torso itself
+		draw_sprite_ext(fstrong_torso_sprite, image_index,
+				x - (4 * spr_dir), y - 38, spr_dir, 1, draw_angle, c_white, 1);
 		// Don't draw the muzzle flash overlay if flat shading is not selected
 		if (!flat_shading_selected) {
 			draw_sprite_ext(sprite_get("fstrong_torso_flash"), image_index,

@@ -50,7 +50,7 @@ if (ai_recovering && motorbike == false)
 	if (djumps == max_djumps && special_down == false)
 	{
 		special_down = true;
-		if (can_wall_jump && has_walljump)
+		if (can_wall_jump && has_walljump && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
 		{
 			jump_down = true;
 		}

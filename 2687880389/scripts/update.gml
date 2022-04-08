@@ -85,7 +85,10 @@ if (state == PS_WALL_JUMP) {
 		}
 		*/
 		fuel_recovery_active = true;
-		rocket_fuel += pity_fuel_amount;
+		if (pity_available) {
+			rocket_fuel += pity_fuel_amount;
+			pity_available = false;
+		}
 		rocket_fuel = (rocket_fuel > max_rocket_fuel) ? max_rocket_fuel : rocket_fuel;
 		/*
 		if (rocket_fuel < max_rocket_fuel) {
@@ -108,6 +111,7 @@ if (!free) {
 	//booster_rush_charges = max_booster_rush_charges;
 	//rocket_fuel = max_rocket_fuel;
 	fuel_recovery_active = true;
+	pity_available = true;
 }
 if (fuel_recovery_active) {
 	if (free) {

@@ -42,7 +42,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 
 // Grab whiff
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 16); // 10
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 20); // 16 10
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.2);

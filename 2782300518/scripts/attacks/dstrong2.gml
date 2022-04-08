@@ -36,6 +36,7 @@ set_hitbox_value(AT_DSTRONG_2, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_VISUAL_EFFECT, 11);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG_2, 1, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_ANGLE_FLIPPER, 3);
 
 if has_rune ("O")
 {

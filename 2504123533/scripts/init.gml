@@ -56,7 +56,7 @@ prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
-set_victory_bg( sprite_get("brawl_victory") )
+
 //crouch animation frames
 crouch_startup_frames = 0;
 crouch_active_frames = 4;

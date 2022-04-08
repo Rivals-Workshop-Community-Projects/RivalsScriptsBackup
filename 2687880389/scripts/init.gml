@@ -26,23 +26,24 @@ targeting_enabled = has_rune("O");
 
 // Alt-specific things
 // Have macros representing which alt is which for switch statements
-#macro codename_default_number     0
-#macro codename_mega_number        7
-#macro codename_metroid_number     8
-#macro codename_halo_number        9
-#macro codename_dva_number        10
-#macro codename_rob_number        11
-#macro codename_emerl_number      12
-#macro codename_aperture_number   13
-#macro codename_ironman_number    14
-#macro codename_cyborg_number     15
-#macro codename_mischeif_number   16
-#macro codename_ugh_number        17
-#macro codename_ea_number         20
-#macro codename_wireframe_number  21
-#macro codename_mettaton_number   22
-#macro codename_queen_number      23
-#macro codename_cabinet_number    24
+#macro codename_default_number      0
+#macro codename_mega_number         7
+#macro codename_metroid_number      8
+#macro codename_halo_number         9
+#macro codename_dva_number          10
+#macro codename_rob_number          11
+#macro codename_emerl_number        12
+#macro codename_aperture_number     13
+#macro codename_ironman_number      14
+#macro codename_cyborg_number       15
+#macro codename_mischeif_number     16
+#macro codename_ugh_number          17
+#macro codename_ea_number           20
+#macro codename_wireframe_number    21
+#macro codename_mettaton_number     22
+#macro codename_queen_number        23
+#macro codename_cabinet_number      24
+#macro codename_rotom_number        25
 // Have a bool that can be queried for each alt
 codename_default_active    = false;
 codename_mega_active       = false;
@@ -61,6 +62,7 @@ codename_wireframe_active  = false;
 codename_mettaton_active   = false;
 codename_queen_active      = false;
 codename_cabinet_active    = false;
+codename_rotom_active      = false;
 
 selected_player_color = get_player_color(player);
 switch (selected_player_color) {
@@ -114,6 +116,9 @@ switch (selected_player_color) {
         break;
     case codename_cabinet_number :
         codename_cabinet_active = true;
+        break;
+    case codename_rotom_number :
+        codename_rotom_active = true;
         break;
     default :
         break;
@@ -342,16 +347,17 @@ energy_b = get_color_profile_slot_b(energy_color_slot, 0);
 // uspecial fuel
 //var rocket_seconds = remap_specials ? 3 : 0.6;
 //var rocket_seconds = 1.0;
-var rocket_seconds = 1.2;
-max_rocket_rising_speed = -5.5; //-6
+var rocket_seconds = 1.1; // 1.2
+max_rocket_rising_speed = -5.5; // -6
 //rocket_seconds *= double_rocket_time ? 2 : 1;
-fuel_consumption_rate = 4; // keep this as a multiple of 2
-airborne_fuel_recovery_rate = 1.2;//2;
-grounded_fuel_recovery_rate = 3.2//3;
+fuel_consumption_rate = 4;
+airborne_fuel_recovery_rate = 1.2; // 2
+grounded_fuel_recovery_rate = 3.2; // 3
 fuel_recovery_active = true;
 max_rocket_fuel = rocket_seconds * 60 * fuel_consumption_rate;
 fuel_consumption_rate = double_rocket_time ? fuel_consumption_rate / 2 : fuel_consumption_rate;
-pity_fuel_amount = max_rocket_fuel / 4;//8;
+pity_fuel_amount = max_rocket_fuel / 5; // 4 8
+pity_available = true; // Only give pity energy once per airtime
 rocket_fuel = max_rocket_fuel;
 rocket_fuel_prev = rocket_fuel;
 //uspecial sound
@@ -512,9 +518,13 @@ if (codename_default_active) { // Default win/loss portraits are miscolored, rep
     set_victory_portrait(sprite_get("portrait_queen"));
     set_victory_sidebar(sprite_get("result_small_queen"));
     fs_char_portrait_override = sprite_get("portrait_queen_clean");
-} else if (codename_cabinet_active) {
-    set_victory_portrait(sprite_get("portrait_cabinet"));
-    set_victory_sidebar(sprite_get("result_small_cabinet"));
+} else if (codename_rotom_active) {
+    set_victory_portrait(sprite_get("portrait_rotom"));
+    set_victory_sidebar(sprite_get("result_small_rotom"));
+    var rotom_recolor_slot = 0;
+    aura_color = make_color_rgb(get_color_profile_slot_r(codename_rotom_number, rotom_recolor_slot),
+                                get_color_profile_slot_g(codename_rotom_number, rotom_recolor_slot),
+                                get_color_profile_slot_b(codename_rotom_number, rotom_recolor_slot));
 } else {
     set_victory_portrait(sprite_get("portrait"));
     set_victory_sidebar(sprite_get("result_small"));

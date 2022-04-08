@@ -16,9 +16,23 @@ if (attack == AT_TAUNT_2 && motorbike == true){
 }
 
 //Add Cooldown to Dash Attack at end
-if (attack == AT_DATTACK && window == 3 && window_timer == 9)
+if (attack == AT_DATTACK)
 {
-	move_cooldownp[AT_DATTACK] = 10;
+	if (window == 3 && window_timer == 9)
+	{
+		move_cooldown[AT_DATTACK] = 30;
+	}
+}
+
+//If use the dash attack, remove the hitbox on the front of the bike while moving and also add cooldown to Dash
+if (attack == 3 && motorbike == true)
+{
+	attack_end(AT_EXTRA_1);
+	bike_hit = false;
+	if (window == 3 && window_timer == 9)
+	{
+		move_cooldown[3] = 30;
+	}
 }
 
 //Code for bounce move
@@ -66,6 +80,7 @@ if (attack==40 && motorbike == true)
 	//Voice clip
 	if (window == 1 && window_timer == 1)
 	{
+		move_cooldown[AT_DAIR] = 15;
 		if (voice == 1)
 		{
 			sound_stop(sound_get ("look_up"));
@@ -362,11 +377,25 @@ if ((attack=AT_NSPECIAL && motorbike == false) || (attack=AT_NSPECIAL_2 && motor
 		}
 	}
 	//Move has super armour, restricts movement, prevents fast falling but is shield and jump cancellable
-	super_armor=true;
 	can_move=false;
-	can_shield=true;
 	can_fast_fall=false;
-	can_jump=true;
+
+	//Increase Kick Time to make the meter drain during the attack
+	if (window == 2 && !hitpause)
+	{
+		can_shield=true;
+		super_armor=true;
+		can_jump=true;
+		kickTime++;
+		//multikick Recharge meter
+		if (kickTime > 0)
+		{
+			multikick_energy = 200 - (kickTime * 2.5);
+			remainingCharge = multikick_energy;
+		}
+	}
+
+
 	//Set Cooldown if cancelled by jump and also trigger meter
 	if (jump_pressed && can_jump)
 	{
@@ -384,11 +413,6 @@ if ((attack=AT_NSPECIAL && motorbike == false) || (attack=AT_NSPECIAL_2 && motor
 		sound_stop(sound_get ("wild_kick"));
 	}
 	
-	//Increase Kick Time to make the meter drain during the attack
-	if (window == 2)
-	{
-		kickTime++;
-	}
 	
 	//Set Cooldown and allow meter to refill
 	if (window == 2 && window_timer == 80)
@@ -407,31 +431,51 @@ if ((attack=AT_NSPECIAL && motorbike == false) || (attack=AT_NSPECIAL_2 && motor
 //Jump Disc
 if (attack == AT_FSPECIAL && motorbike == false)
 {
-	//Shield cancellable
-	can_shield = true;
 	can_fast_fall = false;
 	//Since this move provides great recovery, the ability to wall jump should be restricted
 	walljump_number= 4;
 	//Voice line
+	
+		//Clamp Speed
+	if (window < 3)
+	{
+		vsp = clamp(vsp, -2, 2);
+	}
+	
+	if (window > 1 || (window == 1 && window_timer > 7))
+	{
+		//Shield cancellable
+		can_shield = true;
+	}
+	
 	if (window == 1 && window_timer == 1)
 	{
-		clamp(vsp, -0.5, 2)
 		if (voice == 1)
 		{
 			sound_stop(sound_get ("go2"));
 			sound_play(sound_get ("go2"));
 		}
 	}
+	
 	//You can throw the disc normally, or hold down Special to zoom towards it
 	if (window == 2 && window_timer == 1 && special_down)
 	{
 		window = 3;
+	}
+	
+	if (window == 2 && window_timer > 1 && window_timer < 24)
+	{
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 	}
 	//If you simply throw the disc without zooming towards it, this attack ends the move and prevents it moving to window 3	
 	if (window == 2 && window_timer == 24)
 	{
 		moveDisc = true;
 		move_cooldown[AT_FSPECIAL] = 60;
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 45);
 		destroy_hitboxes();
 		attack_end();
 		set_state(free?PS_IDLE_AIR:PS_IDLE);
@@ -468,7 +512,14 @@ if (attack == AT_FSPECIAL && motorbike == false)
 		var disc_distance = point_distance(x, y, Fspecial_positionX, Fspecial_positionY);
 		hsp = lengthdir_x (disc_distance, disc_direction) / 25;
 		vsp = lengthdir_y(disc_distance, disc_direction) / 25;
+		
+		if (!free && y < Fspecial_positionY)
+		{
+			destroy_hitboxes();
+			attack_end();
+		}
 	}
+	
 	
 	if (window == 3)
 	{
@@ -489,7 +540,7 @@ if (attack == AT_FSPECIAL && motorbike == false)
 		can_move = true;
 	}
 	//Set Cooldown at the very end of the move
-	if (window = 4 && window_timer == 32)
+	if (window == 4 && window_timer == 32)
 	{
 		moveDisc = true;
 		move_cooldown[AT_FSPECIAL] = 60;
@@ -507,26 +558,47 @@ if (attack==AT_EXTRA_2 && motorbike == false)
 			sound_play(sound_get ("carol_pounce_voice"));
 		}
 	}
-	
-	if (left_pressed && !pounceChange)
+	if (window == 1)
 	{
-		spr_dir = -1;
-		tx=-45*spr_dir;
-		hsp = 0;
-		hsp = -6;
-		destroy_hitboxes();
-		create_hitbox( AT_EXTRA_2, 1, x + 20, y-21);
-		pounceChange = true;
+		if (left_pressed || left_down && spr_dir == 1 && !pounceChange)
+		{
+			spr_dir = -1;
+			tx=-45*spr_dir;
+			hsp = 0;
+			hsp = -6;
+			destroy_hitboxes();
+			create_hitbox( AT_EXTRA_2, 1, x + 20, y-21);
+			pounceChange = true;
+		}
+		if (right_pressed || right_down && spr_dir == -1 && !pounceChange)
+		{
+			spr_dir = 1;
+			tx=-45*spr_dir;
+			hsp = 0;
+			hsp = 6;
+			destroy_hitboxes();
+			create_hitbox( AT_EXTRA_2, 1, x + 20, y-21);
+			pounceChange = true;
+		}
 	}
-	if (right_pressed && !pounceChange)
+	if (window == 2 && window_timer >= 2)
 	{
-		spr_dir = 1;
-		tx=-45*spr_dir;
-		hsp = 0;
-		hsp = 6;
-		destroy_hitboxes();
-		create_hitbox( AT_EXTRA_2, 1, x + 20, y-21);
-		pounceChange = true;
+		can_attack = true;
+		can_special = true;
+		can_shield = true;
+		can_strong = true;
+		can_wall_jump = true;
+		has_walljump = true;
+	}
+	if (hsp == 0 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
+	{
+		if (can_wall_jump && has_walljump && jump_down)
+		{
+			spr_dir = -spr_dir;
+			has_walljump = false;
+			pounceChange = false;
+			set_state(PS_WALL_JUMP);
+		}
 	}
 	if (window == 2 && window_timer == 25)
 	{
@@ -541,23 +613,55 @@ if (attack==AT_FSPECIAL_2 && motorbike == true)
 	//Voice
 	if (window == 1 && window_timer == 1)
 	{
+		//Set Cooldown
+		move_cooldown[AT_FSPECIAL_2] = 300;
 		if (voice == 1)
 		{
 			sound_stop(sound_get ("go2"));
 			sound_play(sound_get ("go2"));
 		}
 		//Nitro effect at start of move
+		if (hsp > - 11 && hsp < 11)
+		{
+			hsp = 8 * spr_dir;
+		}
 		var nitro = spawn_hit_fx(x - 40 * spr_dir, y -32, nitro_boost);
 		nitro.depth = -100;
 	}
-	//Effects to enhance move
-	var smallspark = spawn_hit_fx(x - 40 * spr_dir, y-32 , smallsparkle);
-	smallspark.depth = -100;
-	//Set Cooldown
-	if (window == 2 && window_timer == 27)
+	if (window <= 2 && window_timer < 5) 
 	{
-		move_cooldown[AT_FSPECIAL_2] = 40;
+		hsp = spr_dir * 0.5 + (hsp * 1.1);
 	}
+
+	if (window == 2)
+	{
+		vsp = clamp(vsp, -2, 4);
+		if (!hitpause)
+		{
+			can_attack = true;
+			can_shield = true;
+			can_strong = true;
+			can_jump = true;
+		}
+		can_wall_jump = true;
+		has_walljump = true;
+		if (floor(window_timer/3) == window_timer /3)
+		{
+			var smallspark = spawn_hit_fx(x - 40 * spr_dir, y-32 , smallsparkle);
+			smallspark.depth = -100;
+		}
+		if (hsp == 0 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
+		{
+			if (can_wall_jump && has_walljump && jump_down)
+			{
+				spr_dir = -spr_dir;
+				has_walljump = false;
+				set_state(PS_WALL_JUMP);
+			}
+		}
+	}
+	//Effects to enhance mov
+	
 }
 
 //Rising Wild Claw
@@ -571,6 +675,10 @@ if (attack==AT_USPECIAL && motorbike == false)
 			sound_stop(sound_get ("carol_up_special"));
 			sound_play(sound_get ("carol_up_special"));
 		}
+	}
+	if (window == 3 || (window == 2 && window_timer >= 4))
+	{
+		can_wall_jump = true;
 	}
 	//Set cooldown
 	move_cooldown[AT_USPECIAL]=120;
@@ -587,6 +695,10 @@ if (attack==AT_USPECIAL_2 && motorbike == false)
 			sound_stop(sound_get ("carol_up_special"));
 			sound_play(sound_get ("carol_up_special"));
 		}
+	}
+	if (window == 3 || (window == 2 && window_timer >= 4))
+	{
+		can_wall_jump = true;
 	}
 	//Set cooldown
 	move_cooldown[AT_USPECIAL_2]=120;
@@ -612,7 +724,7 @@ if (attack==AT_DSPECIAL && motorbike == false) {
     	//Abyss Runes, charge fuel faster if rune C is selected
     	if has_rune ("C")
     	{
-    		if (fuel_charge > 15)
+    		if (fuel_charge > 7)
     		{
     			fuel = fuel + 1;
     			fuel_charge = 0;
@@ -621,22 +733,13 @@ if (attack==AT_DSPECIAL && motorbike == false) {
     	else
     	{
     		//Increase the fuel when the amount of time is reached
-		 	if (fuel_charge > 30)
+		 	if (fuel_charge > 15)
 	    	{
 	    		fuel = fuel + 1;
 	    		fuel_charge = 0;
 	    	}
     	}
     	//Move requires you to hold down special, releasing special moves to window 2 which leaves you vulnerable
-    	
-    	if (get_gameplay_time() >= 140)
-    	{
-			timer2 = get_game_timer();
-    		if (timer1 == timer2 && timer1 != 0 && !practice)
-	    	{
-        		practice = true;
-	    	}
-    	}
     	
     	if (practice)
     	{
@@ -705,7 +808,7 @@ if (attack==AT_EXTRA_1)
 		motorbike = true;
 		walk_speed = 6;
 		initial_dash_speed = 10;
-		dash_speed = 11;
+		dash_speed = 10;
 		dash_stop_time = 12;
 		djump_speed = 10;
 		hurtbox_spr = sprite_get("bike_hurtbox");
@@ -764,6 +867,16 @@ if (attack==AT_DSPECIAL_2)
 		jump_sound = sound_get("jump");
 		djump_sound = asset_get("sfx_jumpair");
 		
+		//This code resolves a glitch whereby the meter gets stuck when you do a Wild Kick while running out of fuel
+		
+	if (multikick_energy < 200)
+	{
+		feline_power = false;
+		move_cooldown[AT_NSPECIAL]= 200;
+		move_cooldown[AT_NSPECIAL_2]= 200;
+		sound_stop(sound_get ("wild_kick"));
+	}
+		
 		//Abyss Runes reset, just in case!
 		if has_rune("B"){
     		walk_accel = 0.3;
@@ -794,25 +907,63 @@ if (attack==AT_DSPECIAL_2)
 //Prevent the spam of Forward Air on bike and prevent the use of horizontal recovery during the move
 if (attack == 43)
 {
+	vsp = clamp(vsp, -2, 2);
+	hsp = 0;
 	if (window == 1 && window_timer == 1)
 	{
-		clamp(vsp, -0.5, 2)
+		if (position_meeting(x, y+10,asset_get("par_block")) || position_meeting(x, y+10,asset_get("par_jumpthrough")))
+		{
+			destroy_hitboxes();
+			attack_end();
+		}
 	}
-	hsp = 0;
+	if (window == 2 && !free)
+	{
+		//Reset values back to default
+		motorbike = false;
+		set_hitbox_value(43, 1, HG_ANGLE, 45);
+		move_cooldown[43] = 120;
+		bikeReady = 0;
+		walk_speed = 3.25;
+		initial_dash_speed = 7;
+		dash_speed = 7;
+		dash_stop_time = 4;
+		short_hop_speed = 5;
+		jump_speed = 12;
+		djump_speed = 5;
+		hurtbox_spr = asset_get("ex_guy_hurt_box");
+		crouchbox_spr = asset_get("ex_guy_crouch_box");
+		jump_sound = sound_get("jump");
+		djump_sound = asset_get("sfx_jumpair");
+		
+		//Abyss Runes reset, just in case!
+		if has_rune("B"){
+    		walk_accel = 0.3;
+    		walk_turn_time = 5;
+    		initial_dash_time = 8;
+    		initial_dash_speed = 7.75;
+			dash_turn_time = 8;
+			dash_turn_accel = 1.5;
+		}
+		
+		if has_rune("I")
+		{
+			jump_speed = 15;
+		}
+		
+		if has_rune("O")
+		{
+		   	jump_speed = 16;
+			walk_accel = 0.8;
+	 	initial_dash_time = 9;
+			initial_dash_speed = 8;
+	 	dash_turn_time = 8;
+	 	dash_turn_accel = 1.5;
+		}	
+	}
 	if (window == 3 && window_timer == 14)
 	{
+		set_hitbox_value(43, 1, HG_ANGLE, 45);
 		move_cooldown[43] = 120;
-	}
-}
-
-
-//If use the dash attack, remove the hitbox on the front of the bike while moving and also add cooldown to Dash
-if (attack == 3 && motorbike == true)
-{
-	attack_end(AT_EXTRA_1);
-	bike_hit = false;
-	if (window == 3 && window_timer == 9)
-	{
-		move_cooldown[3] = 10;
 	}
 }

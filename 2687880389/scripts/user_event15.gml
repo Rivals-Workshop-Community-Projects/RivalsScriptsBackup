@@ -448,6 +448,35 @@ initHeader("Compatible with");
 initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
+initPatch("1.15", "7 Apr, 2022");
+initWords("Is it balanced yet? How about now?");
+initHeader("Balance:");
+initSection("- Wall-kick now only grants its 20% meter refill bonus once per airtime or on a successful grab (Thanks to Succ for the suggestion)
+			- nspecial grab whifflag increased (16->20)");
+initHeader("Presentation:");
+initSection("- Updated Rotom's eye to be lighter + aura color to be less gray-looking");
+
+initPatch("1.14", "6 Apr, 2022");
+initWords("Moore's Law - technology is shrinking!");
+initHeader("Balance:");
+initSection("- dspecial hitbox shrunk to expose the very front of the car's hurtbox to allow it to be challenged by melee attacks
+			- uair hitbox adjusted - less disjoint, more coverage on the body
+			- bair/dair sweetspot hitbox shrunk closer to the feet, visual adjusted appropriately
+			- secondary taunt hitbox size increased
+			- crouching hurtbox is 2 pixels taller
+			- nair's lingering hitbox is now split into two smaller hitboxes focused on the hand and foot");
+initWords("Thanks to Nuzl and Rioku for suggestions");
+initHeader("Presentation:");
+initSection("- New Rotom Alt (slightly more shader intensive)");
+
+initPatch("1.13", "3 Apr, 2022");
+initWords("Quick nerf to recovery, fix mising portrait");
+initHeader("Balance:");
+initSection("- Reduced full energy meter uspecial flight time (1.2s -> 1.1s)
+			- Energy recovered from wall kick reduced (1/4 meter -> 1/5 meter)");
+initHeader("Presentation:");
+initSection("- Fixed missing game-end portraits for Cabinet Man alt");
+
 initPatch("1.12", "1 Apr, 2022");
 initWords("Not a joke, this is just when the patch was ready.");
 initHeader("Balance");

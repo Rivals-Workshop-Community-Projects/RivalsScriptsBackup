@@ -112,4 +112,5 @@ sprite_change_offset("hudEnd2",0,2);
 sprite_change_offset("hudBubble",5,5);
 
 //hehehe
+set_victory_bg( sprite_get( "visselle_victorybg" ));
 set_victory_theme( sound_get( "victory_visselle" ));

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 11, 81, 81 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 26 );
 
 // Optimum Primer
 set_color_profile_slot( 1, 0, 0, 255, 247 ); //energy
@@ -277,14 +277,14 @@ set_color_profile_slot( 24, 6, 0, 122, 94 ); //connectors
 set_color_profile_slot( 24, 7, 235, 26, 119 ); //feet
 
 // Rotom
-set_color_profile_slot( 25, 0, 255, 221, 0 ); //energy
+set_color_profile_slot( 25, 0, 69, 215, 208 ); //energy
 set_color_profile_slot( 25, 1, 243, 130, 88 ); //helmet
-set_color_profile_slot( 25, 2, 45, 109, 173 ); //visor
+set_color_profile_slot( 25, 2, 43, 131, 222 ); //visor
 set_color_profile_slot( 25, 3, 243, 130, 88 ); //flesh
 set_color_profile_slot( 25, 4, 243, 130, 88 ); //torso
 set_color_profile_slot( 25, 5, 243, 130, 88 ); //hands
 set_color_profile_slot( 25, 6, 122, 122, 122 ); //connectors
-set_color_profile_slot( 25, 7, 153, 215, 212 ); //feet
+set_color_profile_slot( 25, 7, 255, 221, 0 ); //feet
 
 // Retroblast
 set_color_profile_slot( 26, 0, 255, 106, 0 ); //energy
