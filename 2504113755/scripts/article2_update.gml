@@ -10,7 +10,7 @@ state_timer += 1
 
 if (state == 0) {
 
-			if (get_player_color( player ) != 20) {
+			if (get_player_color( player ) != 28) {
 	sprite_index = sprite_get("dspec_hold") }
 	
 else {

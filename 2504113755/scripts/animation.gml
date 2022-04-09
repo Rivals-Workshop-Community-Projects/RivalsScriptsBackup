@@ -10,7 +10,19 @@ if (get_gameplay_time() <= intro_time + 7) {
          draw_indicator = false
 	
 }
+if (get_gameplay_time() >= intro_time + 7 and  get_gameplay_time() < intro_time + 11 ) {
+	
 
+	if (sword_start_variant = 1) {
+		
+		sprite_index = sprite_get("two_land");
+	} else {
+		
+		sprite_index = sprite_get("land");
+	}
+
+
+}
 
 
 	if (blink_state_timer >= blink_start_frame && blink_state_timer < (blink_start_frame + 7)) {

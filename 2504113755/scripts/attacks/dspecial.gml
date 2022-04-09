@@ -80,7 +80,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1 );
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR,1 );
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1 );
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true );
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, -1)
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, 1)
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1)
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true)
 

@@ -184,6 +184,7 @@ snap = hit_fx_create(sprite_get("hit_fx_snap"), 20);
 achTrophy = hit_fx_create(sprite_get("achievement"), 60);
 sparkle = hit_fx_create(sprite_get("sparkle"), 14);
 smokeXP = hit_fx_create(sprite_get("smokeXP"), 20);
+buyFX = hit_fx_create(sprite_get("hit_fx_buy"), 16);
 
 
 //Katie vfx used with permission from Sydery

@@ -3,13 +3,41 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+
+
+
+
+ if (state_timer == 1 or (window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
+     if attack == AT_NSPECIAL {
+     		sound_stop(sound_get("counterhit"))
+	 sound_play(sound_get("counterhit"),false,noone,1,1.5)
+     }
+     if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+           sound_play(asset_get("sfx_absa_dashup"),false,noone, .8 ,
+       max( 0.9, .5 + get_window_value(attack, 1, AG_WINDOW_LENGTH)/10) - (random_func(1,10,true))/100 )
+       
+     }   
+
+   //    sound_play(asset_get("sfx_clairen_swing_mega_instant"),false,noone, .6 ,
+    //   max( 0.9, .5 + get_window_value(attack, 1, AG_WINDOW_LENGTH)/10) - (random_func(1,20,true))/100 )
+       
+       sound_play(asset_get("sfx_bird_sidespecial"),false,noone, .5 ,
+       max( 0.9, .5 + get_window_value(attack, 1, AG_WINDOW_LENGTH)/10) - (random_func(1,10,true))/100 )
+ }  
+
+
 #region blink
 //if blinking, ends current attack early
- if (blink_state_timer == blink_start_frame) {
+ if (blink_state_timer == (blink_start_frame)) {
      
      window = get_attack_value( attack, AG_NUM_WINDOWS)
      window_timer = get_window_value( attack, window, AG_WINDOW_LENGTH )
  }
+ if (blink_state_timer < (blink_start_frame)) {
+     
+    window_timer = window_timer_to_use_for_blink
+ }
+
 
 
  
@@ -53,15 +81,22 @@ transition_to_jab_one = false
 }
 
 
-if (window == 3 && attack_pressed) {
+if (window == 3 && attack_pressed && window_timer > 6) {
 	transition_to_jab_two = true
-	
+//	if window_timer < 15 {
+///		window_timer = 15
+   
+      
+//	}
 }
-if (joy_pad_idle && (transition_to_jab_two && window == 3) && ((has_hit_player && window_timer > 6) || (!has_hit_player && window_timer > 11))) {
+
+if (joy_pad_idle && (transition_to_jab_two && window == 3 && window_timer > 6) && ((has_hit_player && window_timer > 6) || (!has_hit_player && window_timer > 11))) {
 	
 			set_attack_value(AT_JAB, AG_NUM_WINDOWS, 6);
 window = 4
 window_timer = 0
+   sound_play(asset_get("sfx_clairen_swing_mega_instant"),false,noone, .6 ,
+       max( 0.9, .8 + get_window_value(attack, 1, AG_WINDOW_LENGTH)/10) - (random_func(1,20,true))/100 )
 	
 }
 
@@ -199,11 +234,11 @@ if (attack == AT_DATTACK) {
 	
 	        if ((window == 2 || (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) && !hitpause) {
 
-hsp = 7*spr_dir
+hsp = 8*spr_dir
 
 	        } else if (window == 3 && window_timer == 1) {
 	        	
-	        hsp = 3*spr_dir	
+	    //    hsp = 3*spr_dir	
 	        }
 	
 }
@@ -647,6 +682,8 @@ nair_spike = false
         
         window = 4
         window_timer = 0
+        has_hit = false
+        has_hit_player = false
     }
     if ((window == 4 || window == 5) && window_timer == 5) {
         window += 1

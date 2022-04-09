@@ -134,6 +134,9 @@ crouch_startup_frames   = 1;
 crouch_active_frames    = 6;
 crouch_recovery_frames  = 0;
 
+
+window_timer_to_use_for_blink = 0
+
 /*
 
 Muno's Words of Wisdom: Due to a Certified Dan Moment, you must duplicate the
@@ -156,7 +159,7 @@ air_hurtbox_spr     = -1; // -1 = use hurtbox_spr
 hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 
 // Victory
-	 set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
+set_victory_bg(CH_CLAIREN); // victory_background.png
 set_victory_theme(CH_CLAIREN); // victory_theme.ogg
 
 // Movement SFX
@@ -202,7 +205,7 @@ blink_start_frame = 5 //sorry suckers!
 wavebounced_downspec = false
 
 
-intro_time = 30 + random_func(current_second+current_minute + player, 50, true)
+intro_time = 30 + random_func(player, 50, true)
 sword_start_variant = random_func(current_second + player, 2, true)
 
 
@@ -222,6 +225,7 @@ plasma_circle_big = hit_fx_create( sprite_get( "plasma_circle" ), 20 );
 
 mcfly_remove = hit_fx_create( sprite_get( "mcfly_remove" ), 30 );
 
+sprite_change_offset("smallfunnyslashfx", 200, 3);
 
 trainingMode = 0
 

@@ -82,25 +82,30 @@ if (attack == AT_TAUNT && window == 2 && window_timer == 1) {
 }
 
 		if  (get_gameplay_time() = (intro_time - 1)) {
-	
+	            sound_play(sound_get("counterhit"),false,noone,1,1.5)
 				sound_play(asset_get("sfx_clairen_nspecial_grab_success"))
-				
-			prev_spr_dir = spr_dir
+				sound_play(asset_get("sfx_absa_dashdown"),false,noone,1,0.6)
+				sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,0.6)
 		}
 	
 if (get_gameplay_time() == intro_time + 7) {
 
-	set_state(PS_LAND)
+//	set_state(PS_LAND)
 
-spr_dir = prev_spr_dir
+              spawn_base_dust(x ,y , "land" ,spr_dir)
+              
+
+
 
 } else if (get_gameplay_time() == intro_time + 7 + 4){
 	
-	spr_dir = prev_spr_dir
 
 	set_state(PS_SPAWN)
 	state_timer = intro_time + 7 + 4
 }
+
+
+
 
 
 
@@ -490,10 +495,14 @@ if (blink_state_timer <= (blink_start_frame + 7)) {
 	if (blink_state_timer < blink_start_frame) {
 		
 	if (blink_state_timer == 0) {
+		window_timer_to_use_for_blink = window_timer;
 		blink_hsp = 0
 	blink_vsp = 0
 return_airdodge = false
 	}
+	
+	
+	
 	
 	if (abs(blink_hsp) < abs(hsp)) {
 		
@@ -502,6 +511,7 @@ return_airdodge = false
 	if (abs(blink_vsp) < abs(vsp)) {
 		
 			blink_vsp = clamp(vsp, -10, 10)
+			
 			if state == PS_WALL_JUMP {
 				
 							blink_vsp = clamp(vsp, -7, 10)
@@ -512,20 +522,25 @@ return_airdodge = false
 			
 			
 	}
-		
-		
-		
-			if (hitpause) {
+	
+		if (hitpause) {
 	
 		blink_hsp = old_hsp
 		blink_vsp = old_vsp
 	
 			}
 			
+		blink_vsp = clamp(vsp, -10, 10)
+	//	blink_hsp = clamp(hsp, -6.5, 6.5)
+		
+		
+			
 			
 			
 
 		if (blink_state_timer == (blink_start_frame - 1)) {
+				sound_stop(sound_get("counterhit"))
+	            sound_play(sound_get("counterhit"),false,noone,1,1.5)
 			sound_play(asset_get("sfx_clairen_nspecial_grab_success"))
 				//		sound_play(asset_get("sfx_absa_singlezap1"))
 
@@ -545,7 +560,14 @@ state_timer -= 1
 			return_airdodge = true
 		}
 		if (blink_state_timer < (blink_start_frame + 7)) {
+			
+			
+			
 		hsp = blink_hsp*3
+		
+		if (!free) {
+			hsp = blink_hsp*3 + 0.9*sign(blink_hsp)
+		}
 		vsp = blink_vsp*3 }
 		can_move = false
 	//	can_jump = false
@@ -610,7 +632,18 @@ state_timer -= 1
 	}
 
 
-
+if move_cooldown[AT_NSPECIAL_2] == 0 {
+with oPlayer if (activated_kill_effect) {
+	
+  if hit_player_obj == other {
+             with other {
+             	 sound_play(sound_get("counterhit"),false,noone,1,.7)	
+               sound_play(sound_get("counterhit"),false,noone,1.4,.5)	
+               move_cooldown[AT_NSPECIAL_2] = 120
+             }
+   }
+}
+}
 
 #define set_skin(skin)
 ///Sets the active skin. You can supply a name or an index.
@@ -635,4 +668,40 @@ with obj {
 }
 
 
+
+#define spawn_base_dust(x, y, name, dir)
+var dlen;
+var dfx;
+var dfg;
+var dust_color = 0;
+
+switch (name) {
+    default:
+    case "dash_start":
+        dlen = 21;
+        dfx = 3;
+        dfg = 2626;
+    break;
+    case "dash":
+        dlen = 16;
+        dfx = 4;
+        dfg = 2656;
+    break;
+    case "jump":
+        dlen = 12;
+        dfx = 11;
+        dfg = 2646;
+    break;
+    case "doublejump":
+    case "djump":
+        dlen = 21;
+        dfx = 2;
+        dfg = 2624;
+    break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx;
+if dfg != -1 newdust.fg_sprite = dfg;
+newdust.dust_color = dust_color;
+newdust.spr_dir = dir;
 

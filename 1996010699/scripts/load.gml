@@ -71,8 +71,8 @@ sprite_change_offset("nspecial1", 22, 64);
 sprite_change_offset("fspecial", 48, 94);
 sprite_change_offset("uspecial", 22, 90);
 sprite_change_offset("uspecial1", 22, 90);
-sprite_change_offset("dspecial", 20, 52);
-sprite_change_offset("dspecial1", 26, 56);
+sprite_change_offset("dspecial", 48, 162);
+sprite_change_offset("dspecial1", 48, 162);
 sprite_change_offset("taunt", 22, 52);
 sprite_change_offset("taunt1", 26, 52);
 sprite_change_offset("taunt2", 26, 54);
@@ -180,6 +180,7 @@ sprite_change_offset("hit_fx_taxiDir", 39, 42);
 sprite_change_offset("hit_fx_snap", 57, 134);
 sprite_change_offset("sparkle", 7, 7); 
 sprite_change_offset("smokeXP", 7, 9); 
+sprite_change_offset("hit_fx_buy", 48, 162);
 
 //Katie Hit FX & VFX - Used with permission from Sydery
 sprite_change_offset("smokeKT1", 32, 32);

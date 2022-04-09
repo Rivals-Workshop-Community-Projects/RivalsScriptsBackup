@@ -10,6 +10,29 @@ if (my_hitboxID.attack == AT_DATTACK) {
 	
 } */
 
+	smallfunnyslashfx = hit_fx_create( sprite_get( "smallfunnyslashfx" ), floor(6 + min(10, hitstop )) )
+    actualworkdamn = spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - 40, smallfunnyslashfx )
+    actualworkdamn.draw_angle = random_func(9,360,true) + my_hitboxID.x*4
+    
+     sound_play(sound_get("counterhit"),false,noone,.6 + my_hitboxID.damage/20 , 2.4 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/150 , 1.2) - (random_func(1,10,true))/100 )
+
+    if my_hitboxID.kb_scale >= .7 {
+    	
+    		smallfunnyslashfx = hit_fx_create( sprite_get( "smallfunnyslashfx" ), floor(6 + min(10, hitstop )) );
+            actualworkdamn = spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - 40, smallfunnyslashfx )
+            actualworkdamn.draw_angle = random_func(9,360,true) + my_hitboxID.x*4 + 90
+		 	sound_play(asset_get("sfx_absa_kickhit"),false,noone,.6 + my_hitboxID.damage/20 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/120 , 1.2) )
+		 
+    	
+    } else {
+    	
+		    sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.6 + my_hitboxID.damage/20 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/150 , 1.2) )
+		 
+    	
+    }
+		 
+
+
 if (my_hitboxID.attack == AT_DAIR) {
 	var lerpam
 	lerpam = [0.25, 0.25]

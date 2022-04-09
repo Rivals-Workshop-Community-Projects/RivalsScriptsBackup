@@ -14,6 +14,7 @@ move_cooldown[attack] = 1; }
 //LOL i forgot i did the above lmao
 
 if (attack == AT_NSPECIAL) {
+
     move_cooldown[AT_NSPECIAL] = 1
     if (can_blink == true && blink_countdown <= 0)
     blink_state_timer = 0

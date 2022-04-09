@@ -15,6 +15,7 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
 set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 //set_window_value(AT_JAB, 3, AG_WINDOW_HAS_WHIFFLAG, 1); //NOTE: if you make it a multi-hit jab, remove whifflag, since Rivals multi-step jabs do not have whifflag. single-hits like sandbert, elli, etc DO have whifflag
 //set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
@@ -63,7 +64,7 @@ set_hitbox_value(AT_JAB, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
 set_hitbox_value(AT_JAB, 1, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, plasma_line );
-set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, 1);
 
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
@@ -85,4 +86,4 @@ set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_JAB, 2, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, plasma_x );
-set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);

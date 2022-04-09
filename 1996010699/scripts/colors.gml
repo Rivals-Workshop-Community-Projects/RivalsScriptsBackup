@@ -22,20 +22,20 @@ set_color_profile_slot_range( 4, 2, 30, 37 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 21 );
 
-// Blue
-set_color_profile_slot( 1, 0, 38, 120, 228 ); //CASE
-set_color_profile_slot( 1, 1, 2, 47, 107 ); //SHADOW
-set_color_profile_slot( 1, 2, 210, 111, 180 ); //WHEELS
-set_color_profile_slot( 1, 3, 251, 247, 251 ); //CHEST
+// borc
+set_color_profile_slot( 1, 0, 59, 73, 135 ); //CASE
+set_color_profile_slot( 1, 1, 16, 21, 71 ); //SHADOW
+set_color_profile_slot( 1, 2, 168, 212, 218 ); //WHEELS
+set_color_profile_slot( 1, 3, 205, 247, 247 ); //CHEST
 set_color_profile_slot( 1, 4, 58, 210, 228 ); //CRYSTAL
 
-// Leather
-set_color_profile_slot( 2, 0, 142, 76, 54 ); //CASE
-set_color_profile_slot( 2, 1, 61, 35, 28 ); //SHADOW
-set_color_profile_slot( 2, 2, 102, 115, 204 ); //WHEELS
-set_color_profile_slot( 2, 3, 203, 178, 146 ); //CHEST
+// carg
+set_color_profile_slot( 2, 0, 137, 105, 93 ); //CASE
+set_color_profile_slot( 2, 1, 60, 36, 36 ); //SHADOW
+set_color_profile_slot( 2, 2, 121, 173, 100 ); //WHEELS
+set_color_profile_slot( 2, 3, 213, 216, 221 ); //CHEST
 set_color_profile_slot( 2, 4, 58, 210, 228 ); //CRYSTAL
 
 // 117
@@ -156,3 +156,10 @@ set_color_profile_slot( 19, 1, 129, 100, 168 ); //SHADOW
 set_color_profile_slot( 19, 2, 67, 68, 87 ); //WHEELS
 set_color_profile_slot( 19, 3, 122, 204, 196 ); //CHEST
 set_color_profile_slot( 19, 4, 122, 196, 204 ); //CRYSTAL
+
+// unexpected cargo
+set_color_profile_slot( 20, 0, 196, 105, 62 ); //CASE
+set_color_profile_slot( 20, 1, 113, 48, 21 ); //SHADOW
+set_color_profile_slot( 20, 2, 150, 156, 145 ); //WHEELS
+set_color_profile_slot( 20, 3, 200, 207, 192 ); //CHEST
+set_color_profile_slot( 20, 4, 58, 210, 228 ); //CRYSTAL

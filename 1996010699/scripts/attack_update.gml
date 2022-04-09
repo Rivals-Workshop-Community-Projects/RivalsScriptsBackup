@@ -528,6 +528,7 @@ if (attack == AT_DSPECIAL){
 					} else {
 						window = 3;
 						window_timer = 0;
+						spawn_hit_fx( x , y , buyFX);
 						item[ID_chosen, 3] = 1;
 						item[ID_chosen, 7] = false;
 						itemCredits--;

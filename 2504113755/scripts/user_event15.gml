@@ -516,13 +516,24 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
-	initPatch("2.5", "1 April, 2022");
-		
-			initPatchWords_ext("It is right that the good should be happy, 
-			that the wicked and the impious, on the other hand, 
-			should be miserable; that is a truth, 
-			I believe, which no one will gainsay.", fa_center, c_white, 0, 0);
 	
+initPatch("2.6", "8 April, 2022");
+
+initPatchWords_ext("new sfx by sai! thank you
+nair landing hit will now have extra lag if you didnt hit the landing hit or spike specifically
+dattack is multihit again! (you can sdi it now dont worry)
+nair spike initial hit damage 5-4
+nair spike falling hit damage 4-3
+nair landing hitbox damage 6-4
+
+fixed intro desync (hopefully)
+reverted april fools patch", fa_center, c_white, 0, 0);
+
+initPatch("2.5", "1 April, 2022");
+
+initPatchWords_ext("april fools!
+
+", fa_center, c_white, 0, 0);
 	
 			initPatch("2.4", "24 October, 2021");
 		

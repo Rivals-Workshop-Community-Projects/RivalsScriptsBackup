@@ -93,7 +93,7 @@ set_hitbox_value(AT_DAIR, 5, HG_WINDOW_CREATION_FRAME, 12);
 set_hitbox_value(AT_DAIR, 5, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 5, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DAIR, 5, HG_HITBOX_Y, 3);
-set_hitbox_value(AT_DAIR, 5, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DAIR, 5, HG_HITBOX_GROUP, 5);
 set_hitbox_value(AT_DAIR, 5, HG_WIDTH, 100);
 set_hitbox_value(AT_DAIR, 5, HG_HEIGHT, 50);
 set_hitbox_value(AT_DAIR, 5, HG_SHAPE, 1);
@@ -108,7 +108,6 @@ set_hitbox_value(AT_DAIR, 5, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 //set_hitbox_value(AT_DAIR, 5, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_DAIR, 5, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_DAIR, 5, HG_VISUAL_EFFECT, plasma_x_big);
-set_hitbox_value(AT_DAIR, 5, HG_HITBOX_GROUP, -1);
 
 
 
