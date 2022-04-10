@@ -17,28 +17,6 @@
 
 
 
-var brawl = 1;
-
-if (brawl = 1){ 
-    
-if (get_color_profile_slot_b(0, 0) == 244) {
-    sound_play(sound_get("r"), false, 0, 2.75);
-        brawl_flash_opacity = 0.9;
-    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
-}
-
-if variable_instance_exists(self, "brawl_flash_opacity"){
-    brawl_flash_opacity = brawl_flash_opacity - 0.05;
-draw_sprite_ext(sprite_get("brawl_flash"), 0, x+7, y+8, 1, 1, 0, c_white, brawl_flash_opacity);    
-}
-
-draw_sprite(sprite_get("charselectg"),0,x+7,y+8);  
-draw_sprite(sprite_get("brawl_nameplate"),0,x+7,y+8);  
-
-
-
-} 
-
 
 
 /*
@@ -118,7 +96,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 23; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 24; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(225, 119, 38 ) // "color preview square" color. can be any color!
@@ -196,6 +174,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[24,0] = make_color_rgb( 218, 251, 255)
 	ce[24,1] = "The Golden Fur"
 	ce[24,2] = ""
+	ce[25,0] = make_color_rgb( 182, 255, 255)
+	ce[25,1] = "Snow Knight"
+	ce[25,2] = ""
 
 
 	

@@ -1,31 +1,31 @@
 if (!has_hit_already) {
 	if (attack == AT_FSTRONG) {
 		
-		torren_speedforce += 60
+		torren_speedforce += 75
 		
 	}
 	else if (attack == AT_USTRONG) {
 		
-		torren_speedforce += 60
+		torren_speedforce += 75
 		
 	}
 	else if (attack == AT_DSTRONG) {
 		
-		torren_speedforce += 60
+		torren_speedforce += 75
 		
 	}
 	else if (attack == AT_FSPECIAL) {
 		
-		torren_speedforce += 90
+		torren_speedforce += 100
 		
 	}
 	else if (attack == AT_DSPECIAL) {
 		if my_hitboxID.hbox_num == 1 {
-			torren_speedforce += 60 }
+			torren_speedforce += 75 }
 		if my_hitboxID.hbox_num == 2 {
-			torren_speedforce += 120 }
+			torren_speedforce += 130 }
 		if my_hitboxID.hbox_num == 3 {
-			torren_speedforce += 160 }	
+			torren_speedforce += 200 }	
 			
 	} else if (torren_speedforce > 0) {
 		
@@ -165,6 +165,12 @@ if(has_hit_player && my_hitboxID.attack != AT_NSPECIAL){
 	//
 //	free = true
 speedmultiplier = hit_player_obj.orig_knock
+
+if (attack == AT_DSTRONG) {
+	
+	speedmultiplier = hit_player_obj.orig_knock * 2;
+
+}
 
 speedopponenthitstungravity = hit_player_obj.hitstun_grav
 

@@ -27,7 +27,7 @@ set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.01);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
 
 
 //endlag
@@ -36,6 +36,8 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
 
 set_num_hitboxes(AT_DSTRONG,3);
 

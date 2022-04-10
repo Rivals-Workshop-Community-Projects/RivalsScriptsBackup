@@ -112,7 +112,15 @@ if (torren_speedforce >  0 && tauntvar%2== 0 && !hitpause){
 	torren_speedforce -= 1;
 }
 
-
+if (torren_speedforce > 0) {
+	
+	leave_ground_max = 300; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 300;
+} else {
+	
+		leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6;
+}
 
 
 

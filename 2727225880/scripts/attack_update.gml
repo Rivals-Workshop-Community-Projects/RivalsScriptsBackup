@@ -261,6 +261,28 @@ if (attack == AT_FTHROW) { //HAHAHAHAHHAAHHAHAHAHAHHAHAHA
 //I HAVE SO MUCH POWER
 //AAAAAAAAAAAAAAAAAAAAAA
 
+
+if (window == 6 && window_timer > 6) {
+	
+	iasa_script();
+}
+
+if (window == 1 && window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+	
+	if (spr_dir == 1 && right_down || right_pressed) {
+		
+		spr_dir *= -1;
+		grabbed_player_obj.spr_dir *= -1;
+	}
+	else if (spr_dir == -1 && left_down || left_pressed) {
+		
+			spr_dir *= -1;
+		grabbed_player_obj.spr_dir *= -1;
+	}
+	
+	
+}
+
 //WINDOW ONE BABY
 if (window == 1 && window_timer < 6){ 
 		if (grabbed_player_obj.this_is_a_player) {
@@ -782,6 +804,12 @@ if ((spr_dir ==  -1 && shouldreverse != 5 )|| (spr_dir = 1 && shouldreverse = 5)
 					
 				vsp = clamp(-1.1*zoom_multiplier*(speedmultiplier)*dsin(zoomangle), -20, 20) - speedopponenthitstungravity/2 }
 				hsp = clamp(-1.05*zoom_multiplier*(speedmultiplier)*dcos(zoomangle), -10, 10)
+				
+				if (attack == AT_DSTRONG) {
+					
+					hsp = clamp(-1.05*zoom_multiplier*(speedmultiplier)*dcos(zoomangle), -12, 12)
+
+				}
 					
 					if (attack == AT_NAIR) {
 						
@@ -851,6 +879,12 @@ if ((spr_dir ==  -1 && shouldreverse != 5 )|| (spr_dir = 1 && shouldreverse = 5)
 					if (attack != AT_DSTRONG) {
 				vsp = clamp(-1.1*(speedmultiplier)*dsin(zoomangle), -20, 20) - speedopponenthitstungravity/2 }
 				hsp = clamp(1.05*zoom_multiplier*(speedmultiplier)*dcos(zoomangle), -10, 10)
+				
+				if (attack == AT_DSTRONG) {
+					
+					hsp = clamp(1.05*zoom_multiplier*(speedmultiplier)*dcos(zoomangle), -12, 12)
+
+				}
 				
 					if (attack == AT_NAIR) {
 						
@@ -997,6 +1031,11 @@ if (attack == AT_DSTRONG && window = 4 && window_timer = 4) {
 	
 }
 
+if (attack == AT_DSTRONG && window == 4 && has_hit && window_timer > 10) {
+	
+	can_jump = true;
+}
+
 #endregion
 
 
@@ -1089,7 +1128,7 @@ if (!hitpause) {
  if (!joy_pad_idle){
  	
  	hsp_added = lengthdir_x(3 , joy_dir)
- 	vsp_added = lengthdir_y(3, joy_dir);
+ 	vsp_added = lengthdir_y(2.5, joy_dir);
  	
   // * dcos(window_timer*45/4)
  	
@@ -1104,7 +1143,7 @@ if (!hitpause) {
  
  //higher # next to window_timer, speed decays fa
  	hsp = 3*spr_dir * dcos(uspecial_timer*1.5) + hsp_added * dcos(uspecial_timer*1.5)
- 	vsp = -4* dcos(uspecial_timer*1.5) + vsp_added * dcos(uspecial_timer*1.5)
+ 	vsp = -3* dcos(uspecial_timer*1.5) + vsp_added * dcos(uspecial_timer*1.5)
  
  
  
@@ -1135,6 +1174,19 @@ if (window == 8 && window_timer == 1) {
 #region dspecial
 
 if (attack == AT_DSPECIAL) {
+	
+	
+	
+if (has_hit and shield_pressed and (window == 7 || window == 8)) {
+	if ((spr_dir == 1 && (left_pressed || left_down)) || (spr_dir == -1 && (right_pressed || right_down))) {
+		
+		window = 12;
+		window_timer = 0;
+					
+	
+} else { window = 9 
+	window_timer = 0;
+} }
 	
 	if free {
 		

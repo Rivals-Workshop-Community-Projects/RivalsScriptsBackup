@@ -27,8 +27,8 @@ jump_start_time = 5;
 jump_speed = 11; //11
 short_hop_speed = 7.4; //7.4
 djump_speed = 12;
-leave_ground_max = 300; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 300; //the maximum hsp you can have when jumping from the ground
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
@@ -167,7 +167,7 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 	 
 	 
 	 
-	 set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
+	 set_victory_bg(CH_KRAGG); // victory_background.png
 set_victory_theme(CH_KRAGG); // victory_theme.ogg
 
 	

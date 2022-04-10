@@ -24,8 +24,8 @@ if place_meeting(x, y, asset_get("plasma_field_obj")) {
                     other.player_id.move_cooldown[AT_NSPECIAL] = 900;
                     
                     
-                   spawn_hit_fx( other.x, other.y, torren_rock_small )
-                    
+                   my_fx = spawn_hit_fx( other.x, other.y, torren_rock_small )
+                    my_fx.pause = 11
                 }}    
         
        
@@ -201,9 +201,10 @@ if (state == 0){
 
             fuck = spawn_hit_fx(other.x, other.y, 305)
             fuck.depth = depth + 1
+            fuck.pause = 11
            other.state = 4;
             sound_play( asset_get( "mfx_coin" ) );
-           other.player_id.torren_speedforce += 90;
+           other.player_id.torren_speedforce += 120;
         
         }
         } }
@@ -226,6 +227,12 @@ if (state == 1) {
     sprite_index = sprite_get("discus_rotation");
     fun_amazing_number += spin_image_speed*0.1
     image_index = fun_amazing_number
+    
+    
+    if "discushitboxone" in self {
+        if instance_exists(discushitboxone) {
+        instance_destroy(discushitboxone)
+        } }
     
    // hsp *= 0.99
     
@@ -276,7 +283,7 @@ if (state_timer > 20) {
 
                 fuck = spawn_hit_fx(other.x, other.y, 305)
             fuck.depth = depth + 1
-
+            fuck.pause = 11
            other.state = 4;
             sound_play( asset_get( "mfx_coin" ) );
             other.player_id.torren_speedforce += 90;
@@ -327,6 +334,14 @@ if (state == 4) {
         if instance_exists(discushitboxone) {
             instance_destroy(discushitboxone)
             } }
+            
+    with(oPlayer) {
+    
+    if (id = other.player_id) {     nspecial_access_timer = 0
+                    other.player_id.you_have_a_fucking_chakram_out = false;
+                   other.player_id.move_cooldown[AT_NSPECIAL] = 40;
+
+}}
     instance_destroy();
     exit;
 

@@ -210,7 +210,7 @@ if attack == AT_FSTRONG {
      if window == 4 {
      	
      	
-         prat_land_time = 24;
+         prat_land_time = 30;
          if window_timer == 1 {
         spawn_hit_fx( x, y, shotgun2 )
         if !hitpause && casing == 1{

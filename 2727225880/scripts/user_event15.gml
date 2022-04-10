@@ -292,10 +292,30 @@ in a Patch.
 
 #define CORE_patches
 
-	initPatch("1.5", "1 April, 2022");
-		
-			initHeader("Get ready to brawl!");
+initPatch("1.6", "8 April, 2022");
+initHeader("Undid April Fools patch");
+initSection("-leave ground max is no longer 300 when not in zoom. 
+-uspecial goes not as high vertically
+~fixed nspecial glitches
++holding forward during dattack turns u around
+~fixed fair whiff sound
+~fixed bair turnaround
+-bair endlag 11-12 frames
++dstrong endlag 15-13 frames
 
++increased the amount of speed time u get from attacks/grabbing nspec
+-fspecial startup +2 frames
++can jump cancel dstrong 5 frames earlier than when the endlag ends
++dstrong on hit goes farther
++can now dash cancel dspecial on hit
+new alt!
+
+
+");
+
+initPatch("1.5", "1 April, 2022");
+initHeader("April Fools!");
+initSection("");
 
 initPatch("1.4", "17 March, 2022");
 initHeader("Patch? WHAT");

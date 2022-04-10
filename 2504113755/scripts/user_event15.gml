@@ -517,7 +517,11 @@ with phone{
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
 	
-initPatch("2.6", "8 April, 2022");
+initPatch("2.6", "9 April, 2022");
+
+initPatchWords_ext("Removed new slash vfx for epilepsy reasons"", fa_center, c_white, 0, 0);
+	
+initPatch("2.5", "8 April, 2022");
 
 initPatchWords_ext("new sfx by sai! thank you
 nair landing hit will now have extra lag if you didnt hit the landing hit or spike specifically
