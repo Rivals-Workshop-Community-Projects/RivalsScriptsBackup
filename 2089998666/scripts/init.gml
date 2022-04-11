@@ -169,4 +169,9 @@ ncode1 = "An organism from the Mushroom World. Enjoys Yoshi Cookies."
 ncode2 = ""
 ncode3 = "404"
 
-user_event(14);
+//adventure
+pronouns = ["he","him","his","is"];
+am_is_verbal = false;
+am_is_noob = true;
+am_is_big = true; 
+am_is_clothed = false;

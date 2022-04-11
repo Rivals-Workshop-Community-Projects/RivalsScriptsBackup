@@ -4,5 +4,3 @@ if attack == AT_TAUNT && down_down {
 	window = 1;
 	window_timer = 0;
 }
-
-user_event(13);

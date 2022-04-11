@@ -47,8 +47,6 @@ textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
  
-user_event(12);
- 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));

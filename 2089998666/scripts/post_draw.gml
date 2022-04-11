@@ -68,5 +68,3 @@ draw_sprite_part(sprite_get("bosshud2"), 0, 0, 0, bsta * 2.4, 100 , x - 130, y +
          draw_debug_text(x + 60 ,y - 20, "Taunt when ready");
 	}
 shader_end();
-
-user_event(12);

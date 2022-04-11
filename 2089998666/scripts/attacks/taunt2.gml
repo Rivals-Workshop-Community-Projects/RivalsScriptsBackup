@@ -42,5 +42,3 @@ set_window_value(AT_TAUNT_2, 7, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT_2, 7, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_TAUNT_2, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_TAUNT_2, 7, AG_WINDOW_ANIM_FRAME_START, 9);
-
-set_attack_value(AT_TAUNT_2, AG_MUNO_ATTACK_EXCLUDE, 1);

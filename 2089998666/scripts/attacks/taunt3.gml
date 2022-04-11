@@ -31,5 +31,3 @@ set_window_value(AT_EXTRA_2, 5, AG_WINDOW_TYPE, 3);
 set_window_value(AT_EXTRA_2, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_EXTRA_2, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_2, 5, AG_WINDOW_ANIM_FRAME_START, 5);
-
-set_attack_value(AT_EXTRA_2, AG_MUNO_ATTACK_EXCLUDE, 1);

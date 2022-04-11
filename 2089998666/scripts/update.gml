@@ -1,6 +1,4 @@
 //update
-user_event(14);
-
 var balltorture = taunt_down;
 
 if (state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP) and (state_timer == 2) {

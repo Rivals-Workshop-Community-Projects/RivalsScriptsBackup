@@ -103,4 +103,3 @@ set_hitbox_value(AT_NSPECIAL, 20, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 20, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 20, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 20, HG_PROJECTILE_IS_TRANSCENDENT, true );
-set_hitbox_value(AT_NSPECIAL, 20, HG_MUNO_ATTACK_EXCLUDE, 1);

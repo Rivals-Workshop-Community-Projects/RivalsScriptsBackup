@@ -151,7 +151,6 @@ set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 9, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_VSPEED, -8 )
 set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_HSPEED, 8 )
-set_hitbox_value(AT_FSPECIAL, 9, HG_MUNO_ATTACK_EXCLUDE, 1);
 
 set_hitbox_value(AT_FSPECIAL, 8, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 8, HG_WINDOW, 99);
@@ -192,7 +191,6 @@ set_hitbox_value(AT_FSPECIAL, 8, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 8, HG_HIT_LOCKOUT, 30);
 set_hitbox_value(AT_FSPECIAL, 8, HG_PROJECTILE_VSPEED, -8 )
 set_hitbox_value(AT_FSPECIAL, 8, HG_PROJECTILE_HSPEED, 8 )
-set_hitbox_value(AT_FSPECIAL, 8, HG_MUNO_ATTACK_EXCLUDE, 1);
 
 
 set_hitbox_value(AT_FSPECIAL, 10, HG_HITBOX_TYPE, 2);
@@ -232,7 +230,6 @@ set_hitbox_value(AT_FSPECIAL, 10, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 10, HG_PROJECTILE_DESTROY_EFFECT, 306);
 set_hitbox_value(AT_FSPECIAL, 10, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 10, HG_PROJECTILE_VSPEED, 0 )
-set_hitbox_value(AT_FSPECIAL, 10, HG_MUNO_ATTACK_EXCLUDE, 1);
 
 set_hitbox_value(AT_FSPECIAL, 11, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 11, HG_WINDOW, 99);
@@ -311,7 +308,7 @@ set_hitbox_value(AT_FSPECIAL, 11, HG_PROJECTILE_DESTROY_EFFECT, 306);
 set_hitbox_value(AT_FSPECIAL, 11, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 11, HG_HIT_LOCKOUT, 0);
 set_hitbox_value(AT_FSPECIAL, 11, HG_PROJECTILE_VSPEED, 0 )
-set_hitbox_value(AT_FSPECIAL, 11, HG_MUNO_ATTACK_EXCLUDE, 1);
+
 
 set_hitbox_value(AT_FSPECIAL, 19, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 19, HG_WINDOW, 99);
@@ -352,7 +349,7 @@ set_hitbox_value(AT_FSPECIAL, 19, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 19, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_FSPECIAL, 19, HG_PROJECTILE_VSPEED, -6 )
 set_hitbox_value(AT_FSPECIAL, 19, HG_PROJECTILE_HSPEED, -8 )
-set_hitbox_value(AT_FSPECIAL, 19, HG_MUNO_ATTACK_EXCLUDE, 1);
+
 
 set_hitbox_value(AT_FSPECIAL, 18, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 18, HG_WINDOW, 99);
@@ -393,4 +390,3 @@ set_hitbox_value(AT_FSPECIAL, 18, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 18, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_FSPECIAL, 18, HG_PROJECTILE_VSPEED, -8 )
 set_hitbox_value(AT_FSPECIAL, 18, HG_PROJECTILE_HSPEED, 8 )
-set_hitbox_value(AT_FSPECIAL, 18, HG_MUNO_ATTACK_EXCLUDE, 1);

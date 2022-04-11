@@ -44,10 +44,78 @@ switch attack {
 	 	if window_timer == 1 {
 	 		set_hitbox_value(AT_TAUNT, 2, HG_WIDTH, 30);
             set_hitbox_value(AT_TAUNT, 2, HG_HEIGHT, 60);
-	 	 cur_sound = sound_play(sound_get("v_dowitdabear"),false,noone,.8,1.05 - random_func(1,10,true)/100)
+	 	 cur_sound = sound_play(sound_get("v_dowitdabear"),false,noone,.9,1.05 - random_func(1,10,true)/100)
 	 	}
 	 }
 	 
+	 if window == 5 && window_timer == 9*6 && !hitpause{
+	 	window = 6
+	 	window_timer = 1
+	 }
+	  if window == 6 && window_timer == 4*5 && !hitpause{
+	    sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1.1)
+	 	shake_camera(5,5)
+	  }
+	 
+	 if window == 6 && window_timer == 12*5 && !hitpause{
+	    sound_play(asset_get("sfx_forsburn_cape_hit"),false,noone,.8,1.15)
+	  }
+	  
+	  if ((window == 7 && window_timer == 30) or (window == 6 && window_timer == 11*5)) && taunt_down {
+	  	window_timer -= 1
+	  }
+	  
+	  if window == 7 && window_timer == 13 && !hitpause{
+	    sound_play(sound_get("swingm3"),false,noone,0.6,.7)
+	  }
+	  
+	  if window == 7 && window_timer > 13 && window_timer < 29 {
+         invincible = true 
+         invince_time = 2
+         
+         nearbyhitbox = collision_circle( x, y - 30, 69, asset_get("pHitBox"), true, true ) 
+	               if nearbyhitbox != noone{
+	               	if nearbyhitbox.player_id != self && nearbyhitbox.hit_priority > 0  {
+	               		heehee = spawn_hit_fx(x,y,dsp)
+	               		heehee.depth = -6
+	               		move_cooldown[AT_DSPECIAL] = 0
+	               		attack = AT_DSPECIAL
+	               			 window = 4 
+	               			 window_timer = 1 
+	               			 hit_player_obj = nearbyhitbox.player_id
+	               			 sound_play(sound_get("swingh3"),false,noone,0.7,.7)
+	               			 sound_stop(cur_sound)
+	               			 cur_sound = sound_play(sound_get("v_heehee"),false,noone,.9,1.05 - random_func(1,10,true)/100)
+	               			 hit_player_obj.hitpause = true 
+	               			 hit_player_obj.hitstop = max(20, min(40,nearbyhitbox.hitpause*4))
+	               			 hit_player_obj.old_hsp = hit_player_obj.hsp 
+	               			 hit_player_obj.old_vsp = hit_player_obj.vsp
+	               			 if hit_player_obj.hatstate == 0 { 
+	               			 	hit_player_obj.hatstate = player*player  
+	               			     sound_play(sound_get("shing"),false,noone,0.5,.7)
+	               			     h3x = spawn_hit_fx(floor(hit_player_obj.x), floor(hit_player_obj.y - hit_player_obj.char_height-10), h3)
+                                 h3x.depth = -6
+	               			 }
+	               	            if hit_player_obj.x > x {
+	               		        	target = 46
+	               		        } else {
+	               		        	target = -46
+	               		        }
+	               		
+	               			 with hit_player_obj {
+	               			 	with (asset_get("pHitBox")) {
+                                      if(player_id == other.id && type == 1) {
+                                      	destroyed = true 
+                                      }
+	               			 	}
+	               			 }
+	               }
+	               }
+	               
+	  } else {
+	  	
+	  }
+	  
 	 if has_hit_player {
 	 	set_hitbox_value(AT_TAUNT, 2, HG_WIDTH, 130);
         set_hitbox_value(AT_TAUNT, 2, HG_HEIGHT, 160);

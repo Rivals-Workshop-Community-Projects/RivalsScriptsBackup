@@ -5,7 +5,6 @@ set_attack_value(AT_EXTRA_1, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("beegguy_hurt"));
 set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_EXTRA_1, AG_USES_CUSTOM_GRAVITY, 1);
-set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_EXCLUDE, 1);
 
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 7);
@@ -14,7 +13,6 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, sound_get("yoshi_flutter_loop"));
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_CUSTOM_GRAVITY, .25);
 
-set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_NAME, "Flutter Kick");
 set_num_hitboxes(AT_EXTRA_1,0);
 
 
@@ -77,7 +75,6 @@ set_hitbox_value(AT_EXTRA_1, 3, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_EXTRA_1, 3, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITSTUN_MULTIPLIER, 0.6);
-set_hitbox_value(AT_EXTRA_1, 3, HG_MUNO_ATTACK_EXCLUDE, 1);
 
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_1, 4, HG_WINDOW, 99);

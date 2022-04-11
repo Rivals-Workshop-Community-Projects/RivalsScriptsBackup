@@ -1632,7 +1632,8 @@ if move_cooldown[AT_UAIR] > 20 {
 	}
 	
 	if move_cooldown[AT_UAIR] % 8 == 0 && !hitpause {
-		spawn_hit_fx(x,y - 30,305)
+		fx = spawn_hit_fx(x,y - 30,305)
+		fx.pause = 6
 		x = hit_player_obj.x
 		y = hit_player_obj.y 
 	create_hitbox(AT_NSPECIAL,2,x,y)

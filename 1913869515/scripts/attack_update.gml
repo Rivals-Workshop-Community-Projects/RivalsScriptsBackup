@@ -142,7 +142,8 @@ if attack == AT_FSPECIAL {
 		if halo > 0 && zbayo != 5 {
 			 zbayo = 5
 			 halo -= 1
-			 spawn_hit_fx(x - 20*spr_dir ,y - 35, 305)
+			 fx = spawn_hit_fx(x - 20*spr_dir ,y - 35, 305)
+			 fx.pause = 6
 			 sound_play(sound_get("SpaceCut"),false,noone,1,1);
 		}
 		hsp /= 1.5
@@ -772,8 +773,8 @@ if (attack == AT_DSPECIAL){
      if window == 5 && halo >= 1 && offense = 1{
         set_attack (AT_EXTRA_1)
         window = 7
-        spawn_hit_fx ( x  , y - 20 , 304 );
-        
+        fx = spawn_hit_fx ( x  , y - 20 , 304 );
+        fx.pause = 6
 
 			x += 200 * spr_dir
 			spr_dir *= -1
@@ -1122,7 +1123,8 @@ if (attack == AT_JAB){
         if (special_down) && !hitpause && halo > 0 {
         	halo -= 1
         	shake_camera(4,2)
-        	spawn_hit_fx(x,y - 35,305)
+        	fx = spawn_hit_fx(x,y - 35,305)
+        	fx.pause = 6
         	sound_play(sound_get("SpaceCut"),false,noone,1,1.2);
             set_attack(AT_FSTRONG)
             set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 1);
