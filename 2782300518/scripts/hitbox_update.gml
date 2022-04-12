@@ -48,10 +48,24 @@ if (player_id.moveDisc == false)
 if (attack == AT_FSPECIAL && hbox_num == 1 && hitbox_timer >= 64)
 {
 	hit_flipper = 0;
+	
+	var predictPosX = player_id.x;
+	if (player_id.right_down == true)
+	{
+		predictPosX = player_id.x + 80;
+	}
+	else if (player_id.left_down == true)
+	{
+		predictPosX = player_id.x - 80;		
+	}
+	else
+	{
+		predictPosX = player_id.x;
+	}
 	var predictPosY = player_id.y - 200;
 	
-	var disc_direction2 = point_direction(x, y, player_id.x, predictPosY);
-	var disc_distance2 = point_distance(x, y, player_id.x, predictPosY);
+	var disc_direction2 = point_direction(x, y, predictPosX, predictPosY);
+	var disc_distance2 = point_distance(x, y, predictPosX, predictPosY);
 	
 	hsp = lengthdir_x (disc_distance2, disc_direction2) /6;
 	vsp = lengthdir_y(disc_distance2, disc_direction2) /6;
@@ -62,6 +76,8 @@ if (attack == AT_FSPECIAL && hbox_num == 1 && hitbox_timer == 70)
 }
 
 if (attack == 43 && hbox_num == 1){
+	player_id.move_cooldown[AT_FSPECIAL] = 60;
+	player_id.move_cooldown[AT_DSPECIAL] = 60;
 	for (var p = 0; p < array_length(can_hit); p++)
 	{ 
 		if (hitbox_timer % 5 == 0 && hitbox_timer !=0)
@@ -80,22 +96,26 @@ if (attack == 43 && hbox_num == 1 && hitbox_timer >= 33)
 {
 	hit_flipper = 0;
 	kb_angle = 135;
-	var predictPosX = player_id.x - (200 * spr_dir);
-	var bike_direction = point_direction(x, y, predictPosX, player_id.y);
-	var bike_distance = point_distance(x, y, predictPosX, player_id.y);
+	var predictPosX = player_id.x - (50 * spr_dir);
+	var actualPosY = player_id.y - 40;
+	var bike_direction = point_direction(x, y, predictPosX, actualPosY);
+	var bike_distance = point_distance(x, y, predictPosX, actualPosY);
 
 	hsp = lengthdir_x(bike_distance, bike_direction) / 14;
 	vsp = lengthdir_y(bike_distance, bike_direction) / 14;
+	
+	if (x <= player_id.x + 140 && x >= player_id.x - 140 && y <= player_id.y + 160 && y >= player_id.y - 160)
+	{
+		player_id.hitpause = false;
+		player_id.hitstun = false;
+		player_id.hitstop = 0;
+    	player_id.hitstop_full = 0;
+		kb_angle = 45;
+		can_hit_self = true;
+	}
 }
 
-if (attack == 43 && hbox_num == 1 && hitbox_timer >= 46 && player_id.motorbike == false)
+if (attack == 43 && hbox_num == 1 && hitbox_timer >= 47 && player_id.returnBike)
 {
-	kb_angle = 45;
-	can_hit_self = true;
-}
-
-
-if (attack == 43 && hbox_num == 1 && hitbox_timer == 47)
-{
-	destroyed = true;
+	length = 47;
 }

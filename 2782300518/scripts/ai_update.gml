@@ -333,6 +333,18 @@ if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16){
 	{
 		do_not_attack = false;
 	}
+	
+	if (motorbike == false)
+	{
+		if (attack == AT_DAIR && !do_not_attack && !ai_recovering)
+		{
+			if (has_hit)
+			{
+				up_pressed = true;
+				special_pressed = true;
+			}
+		}
+	}
 }
 
 #define predictloc

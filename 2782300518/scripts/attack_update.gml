@@ -92,47 +92,10 @@ if (attack==40 && motorbike == true)
 	motorbike = false;
 	bikeReady = 0;
 	fuel = 0;
-	walk_speed = 3;
-	initial_dash_speed = 5;
-	dash_speed = 7;
-	dash_stop_time = 4;
-	short_hop_speed = 5;
-	jump_speed = 12;
-	max_djumps = 1;
-	hurtbox_spr = asset_get("ex_guy_hurt_box");
-	crouchbox_spr = asset_get("ex_guy_crouch_box");
-	jump_sound = sound_get("jump");
-	djump_sound = asset_get("sfx_jumpair");
-	
-	//Abyss Runes reset, just in case!
-	if has_rune("B"){
-    	walk_accel = 0.3;
-    	walk_turn_time = 5;
-    	initial_dash_time = 8;
-    	initial_dash_speed = 7.75;
-    	dash_turn_time = 8;
-    	dash_turn_accel = 1.5;
-	}
-	
-	if has_rune("I")
-	{
-	    jump_speed = 15;
-	}
-	
-	if has_rune("O")
-	{
-	   	jump_speed = 16;
-		walk_accel = 0.8;
-    	initial_dash_time = 9;
-		initial_dash_speed = 8;
-    	dash_turn_time = 8;
-    	dash_turn_accel = 1.5;
-	}
 }
 
 //Jab and Tilt Combo cancels
-if (((attack==AT_JAB || attack==AT_FTILT || attack=AT_UTILT || attack=AT_DTILT) && motorbike == false)
-	|| ((attack >= 45 && attack <= 48) && motorbike == true))
+if (attack==AT_JAB || attack==AT_FTILT || attack=AT_UTILT || attack=AT_DTILT || attack == 45 || attack == 46 || attack == 47 || attack == 48)
 {
 	//Mix up jab quotes so that it doesn't get tired
 	var	 choose_quote = random_func(16, 15, 1);
@@ -179,10 +142,41 @@ if (((attack==AT_JAB || attack==AT_FTILT || attack=AT_UTILT || attack=AT_DTILT) 
 			}			
 		}
 	}
+	switch (window)
+	{
+		case 3:
+		if (window_timer >= 3 && attack_pressed)
+		{
+			window = 4;
+			window_timer = 0;
+		}
+		else if (window_timer == 17)
+		{
+			set_state(PS_IDLE);
+			attack_end();
+		}
+		break;
+		case 5:
+		if (window_timer >= 3 && attack_pressed)
+		{
+			window = 6;
+			window_timer = 0;
+		}
+		if (window == 5 && window_timer == 17)
+		{
+			set_state(PS_IDLE);
+			attack_end();
+		}
+		break;
+		default:
+		break;
+	}
+
+
 	//In order to prevent infinite combos, a counter is used to limit the amount of times you can change the current jab
 	if (comboCounter < 2 )
 	{
-		if ((window == 3 || window == 5 || window == 7) && window_timer == 1)
+		if ((window == 3 || window == 5) && window_timer == 1)
 		{
 			//If a direction is pressed when attacking, cancel to the specificed jab
 			if (attack == AT_JAB || attack == 48)
@@ -202,124 +196,186 @@ if (((attack==AT_JAB || attack==AT_FTILT || attack=AT_UTILT || attack=AT_DTILT) 
 				can_attack=(has_hit && !down_pressed && !down_down);			
 			}
 			//This code is here to help cancel the multi hit tilts into each other for comboing
-			if (attack == AT_FTILT && can_attack)
+			if (attack == AT_JAB && can_attack)
 			{
 				if ((up_pressed || up_down) && attack_pressed )
 				{
+					comboCounter++;
 					set_attack(AT_UTILT);
 				}
 				else if ((down_pressed || down_down ) && attack_pressed )
 				{
+					comboCounter++;
 					set_attack(AT_DTILT);
 				}
-				else if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-				&& !up_down && !down_pressed && !down_down)
+				else if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
 				{
-					set_attack(AT_JAB);
-				}
-			}
-			if (attack == AT_UTILT && can_attack)
-			{
-				if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
-				{
+					comboCounter++;
 					set_attack(AT_FTILT);
 				}
 				else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
 				{
+					comboCounter++;
+					set_attack(AT_FTILT);
+				}
+			}
+			else if (attack == AT_FTILT && can_attack)
+			{
+				if ((up_pressed || up_down) && attack_pressed )
+				{
+					comboCounter++;
+					set_attack(AT_UTILT);
+				}
+				else if ((down_pressed || down_down ) && attack_pressed )
+				{
+					comboCounter++;
+					set_attack(AT_DTILT);
+				}
+				else if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
+				&& !up_down && !down_pressed && !down_down && attack_pressed)
+				{
+					comboCounter++;
+					set_attack(AT_JAB);
+				}
+			}
+			else if (attack == AT_UTILT && can_attack)
+			{
+				if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
+				{
+					comboCounter++;
+					set_attack(AT_FTILT);
+				}
+				else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
+				{
+					comboCounter++;
 					set_attack(AT_FTILT);
 				}			
 				else if ((down_pressed || down_down) && attack_pressed )
 				{
+					comboCounter++;
 					set_attack(AT_DTILT);
 				}
 				else if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-				&& !up_down && !down_pressed && !down_down)
+				&& !up_down && !down_pressed && !down_down && attack_pressed)
 				{
+					comboCounter++;
 					set_attack(AT_JAB);
 				}
 			}
-			if (attack == AT_DTILT && can_attack)
+			else if (attack == AT_DTILT && can_attack)
 			{
 				if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
 				{
-				set_attack(AT_FTILT);
+					comboCounter++;
+					set_attack(AT_FTILT);
 				}
 				else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
 				{
+					comboCounter++;
 					set_attack(AT_FTILT);
 				}			
 				else if ((up_pressed || up_down) && attack_pressed )
 				{
+					comboCounter++;
 					set_attack(AT_UTILT);
 				}
 				else if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-				&& !up_down && !down_pressed && !down_down)
+				&& !up_down && !down_pressed && !down_down && attack_pressed)
 				{
+					comboCounter++;
 					set_attack(AT_JAB);
 				}
 			}
-			if (attack == 47 && can_attack)
+			else if (attack == 48 && can_attack)
 			{
 				if ((up_pressed || up_down) && attack_pressed )
 				{
+					comboCounter++;
 					set_attack(46);
 				}
 				else if ((down_pressed || down_down ) && attack_pressed )
 				{
+					comboCounter++;
 					set_attack(45);
 				}
-				else if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-				&& !up_down && !down_pressed && !down_down)
+				else if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
 				{
-					set_attack(48);
-				}
-			}
-			if (attack == 46 && can_attack)
-			{
-				if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
-				{
+					comboCounter++;
 					set_attack(47);
 				}
 				else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
 				{
+					comboCounter++;
 					set_attack(47);
-				}			
-				else if ((down_pressed || down_down) && attack_pressed )
+				}
+			}
+			else if (attack == 47 && can_attack)
+			{
+				if ((up_pressed || up_down) && attack_pressed )
 				{
+					comboCounter++;
+					set_attack(46);
+				}
+				else if ((down_pressed || down_down ) && attack_pressed )
+				{
+					comboCounter++;
 					set_attack(45);
 				}
 				else if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-				&& !up_down && !down_pressed && !down_down)
+				&& !up_down && !down_pressed && !down_down && attack_pressed)
 				{
+					comboCounter++;
 					set_attack(48);
 				}
 			}
-			if (attack == 45 && can_attack)
+			else if (attack == 46 && can_attack)
 			{
 				if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
 				{
+					comboCounter++;
 					set_attack(47);
 				}
 				else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
 				{
+					comboCounter++;
 					set_attack(47);
 				}			
 				else if ((down_pressed || down_down) && attack_pressed )
 				{
+					comboCounter++;
+					set_attack(45);
+				}
+				else if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
+				&& !up_down && !down_pressed && !down_down && attack_pressed)
+				{
+					comboCounter++;
+					set_attack(48);
+				}
+			}
+			else if (attack == 45 && can_attack)
+			{
+				if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
+				{
+					comboCounter++;
+					set_attack(47);
+				}
+				else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
+				{
+					comboCounter++;
+					set_attack(47);
+				}			
+				else if ((down_pressed || down_down) && attack_pressed )
+				{
+					comboCounter++;
 					set_attack(46);
 				}
 				else if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-				&& !up_down && !down_pressed && !down_down)
+				&& !up_down && !down_pressed && !down_down && attack_pressed)
 				{
-				set_attack(48);
+					comboCounter++;
+					set_attack(48);
 				}
 			}
-		}
-		
-		//Increment counter if cancel into a different attack
-		if (can_attack && attack_pressed)
-		{
-			comboCounter++;
 		}
 	}
 	//Add small cooldown if attack plays out fully, for balancing reasons
@@ -327,14 +383,15 @@ if (((attack==AT_JAB || attack==AT_FTILT || attack=AT_UTILT || attack=AT_DTILT) 
 	{
 		if (window == 7 && window_timer == 1)
 		{
+			print_debug(string("Full Combo"));
 			move_cooldown[AT_JAB] = 10;
 			move_cooldown[AT_FTILT] = 10;
 			move_cooldown[AT_UTILT] = 10;
 			move_cooldown[AT_DTILT] = 10;
-			move_cooldown[45] = 20;
-			move_cooldown[46] = 20;
-			move_cooldown[47] = 20;
-			move_cooldown[48] = 20;
+			move_cooldown[45] = 10;
+			move_cooldown[46] = 10;
+			move_cooldown[47] = 10;
+			move_cooldown[48] = 10;
 		}
 	}
 }
@@ -581,18 +638,18 @@ if (attack==AT_EXTRA_2 && motorbike == false)
 			pounceChange = true;
 		}
 	}
-	if (window == 2 && window_timer >= 2)
+	can_attack = true;
+	can_special = true;
+	can_shield = true;
+	can_strong = true;
+	if (walljump_number < walljump_limit)
 	{
-		can_attack = true;
-		can_special = true;
-		can_shield = true;
-		can_strong = true;
 		can_wall_jump = true;
 		has_walljump = true;
 	}
 	if (hsp == 0 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
 	{
-		if (can_wall_jump && has_walljump && jump_down)
+		if (can_wall_jump && has_walljump && jump_down && walljump_number < walljump_limit)
 		{
 			spr_dir = -spr_dir;
 			has_walljump = false;
@@ -602,6 +659,7 @@ if (attack==AT_EXTRA_2 && motorbike == false)
 	}
 	if (window == 2 && window_timer == 25)
 	{
+		pounce = false;
 		pounceChange = false;
 		destroy_hitboxes();
 	}
@@ -643,8 +701,11 @@ if (attack==AT_FSPECIAL_2 && motorbike == true)
 			can_strong = true;
 			can_jump = true;
 		}
-		can_wall_jump = true;
-		has_walljump = true;
+		if (walljump_number < walljump_limit)
+		{
+			can_wall_jump = true;
+			has_walljump = true;
+		}
 		if (floor(window_timer/3) == window_timer /3)
 		{
 			var smallspark = spawn_hit_fx(x - 40 * spr_dir, y-32 , smallsparkle);
@@ -652,12 +713,17 @@ if (attack==AT_FSPECIAL_2 && motorbike == true)
 		}
 		if (hsp == 0 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
 		{
-			if (can_wall_jump && has_walljump && jump_down)
+			if (can_wall_jump && has_walljump && jump_down && walljump_number < walljump_limit)
 			{
 				spr_dir = -spr_dir;
 				has_walljump = false;
 				set_state(PS_WALL_JUMP);
 			}
+		}
+		if (!free && window_timer == 27)
+		{
+			set_state(PS_DASH);
+			attack_end();
 		}
 	}
 	//Effects to enhance mov
@@ -748,27 +814,28 @@ if (attack==AT_DSPECIAL && motorbike == false) {
         		fuel = 40;
         		fuel_charge = 0;
         	   	window = 2;
-    	    	window_timer = 1;
+    	    	window_timer = 0;
 	    		bsprite_index = -1
         	}
     	}
     	
     	if (!special_down){
         	window = 2;
-        	window_timer = 1;
+        	window_timer = 0;
     		bsprite_index = -1
     	}
     	//If fuel reaches full capacity, automatically end move
     	if (fuel >=40)
     	{
     		window = 2;
-        	window_timer = 1;
+        	window_timer = 0;
     		bsprite_index = -1
     		fuel = 40;
     	}
     	//This code makes sure the conformation sound plays, but only once
-    	if (window == 2 && window_timer == 1 && fuel >=40 && bikeReady == 0)
+    	if (window == 2 && window_timer == 0 && fuel >=40 && bikeReady == 0)
     	{
+    		print_debug(string("I'm here"));
     		sound_stop(sound_get ("motorbike_idle"));
     		bikeReady = 1;
     	}
@@ -780,55 +847,42 @@ if (attack==AT_EXTRA_1)
 {
 	if (window == 1 && window_timer == 1)
 	{
+		//Spinning bike in the startup of the animation
+		tsprite_index = -1;
+		bsprite_index = sprite_get("bike_assembly");
+		brotation=0;
+		bimage_number=8;
+		bimage_speed=0.5;
+		bfront=true;
+		bx=-40*spr_dir;
+		by=-80;
+		bsx=1;
+		bsy=1;
+		returnBike = false;
+		if (move_cooldown[AT_NSPECIAL] > 0)
+		{
+			feline_power = false;
+			move_cooldown[AT_NSPECIAL]= 200;
+			move_cooldown[AT_NSPECIAL_2]= 200;
+		}
 		//Voice line
 		if (voice == 1)
 		{
 			sound_stop(sound_get ("go"));
 			sound_play(sound_get ("go"));
 		}
-		//Spinning bike in the startup of the animation
-		tsprite_index = -1;
-		bsprite_index = sprite_get("bike_assembly");
-		brotation=0;
-		bimage_number=8;
-		bimage_speed=05.;
-		bfront=true;
-		bx=-40*spr_dir;
-		by=-80;
-		bsx=1;
-		bsy=1;
 	}
-	if (window == 2)
-	{		
+	if (window == 1 && window_timer == 16)
+	{
 		//Remove the spinning bike
 		tsprite_index = -1;
 		bsprite_index = -1;
-		
+	}
+
+	if (window == 2)
+	{
 		//Carol's attributes change on the bike, the following code ensures the bike handles properly
 		motorbike = true;
-		walk_speed = 6;
-		initial_dash_speed = 10;
-		dash_speed = 10;
-		dash_stop_time = 12;
-		djump_speed = 10;
-		hurtbox_spr = sprite_get("bike_hurtbox");
-		crouchbox_spr = sprite_get("bike_crouch_hurtbox");
-		jump_sound = sound_get("motorbike_wheelie");
-		djump_sound = sound_get("motorbike_spin");
-		
-		if has_rune("I")
-		{
-	    	jump_speed = 15;
-		}
-	
-		if has_rune("O")
-		{
-		   	jump_speed = 16;
-			walk_accel = 0.8;
-		 	initial_dash_time = 9;
-			initial_dash_speed = 11;
-	 		dash_turn_time = 12;
-		}
 	}
 }
 
@@ -855,17 +909,6 @@ if (attack==AT_DSPECIAL_2)
 		//Reset values back to default
 		motorbike = false;
 		bikeReady = 0;
-		walk_speed = 3.25;
-		initial_dash_speed = 7;
-		dash_speed = 7;
-		dash_stop_time = 4;
-		short_hop_speed = 5;
-		jump_speed = 12;
-		djump_speed = 5;
-		hurtbox_spr = asset_get("ex_guy_hurt_box");
-		crouchbox_spr = asset_get("ex_guy_crouch_box");
-		jump_sound = sound_get("jump");
-		djump_sound = asset_get("sfx_jumpair");
 		
 		//This code resolves a glitch whereby the meter gets stuck when you do a Wild Kick while running out of fuel
 		
@@ -908,61 +951,31 @@ if (attack==AT_DSPECIAL_2)
 if (attack == 43)
 {
 	vsp = clamp(vsp, -2, 2);
-	hsp = 0;
+	hsp = clamp(hsp, -2, 2);
 	if (window == 1 && window_timer == 1)
 	{
-		if (position_meeting(x, y+10,asset_get("par_block")) || position_meeting(x, y+10,asset_get("par_jumpthrough")))
-		{
-			destroy_hitboxes();
-			attack_end();
-		}
+		returnBike = false;
 	}
-	if (window == 2 && !free)
+	if (window == 2)
 	{
 		//Reset values back to default
 		motorbike = false;
-		set_hitbox_value(43, 1, HG_ANGLE, 45);
-		move_cooldown[43] = 120;
 		bikeReady = 0;
-		walk_speed = 3.25;
-		initial_dash_speed = 7;
-		dash_speed = 7;
-		dash_stop_time = 4;
-		short_hop_speed = 5;
-		jump_speed = 12;
-		djump_speed = 5;
-		hurtbox_spr = asset_get("ex_guy_hurt_box");
-		crouchbox_spr = asset_get("ex_guy_crouch_box");
-		jump_sound = sound_get("jump");
-		djump_sound = asset_get("sfx_jumpair");
-		
-		//Abyss Runes reset, just in case!
-		if has_rune("B"){
-    		walk_accel = 0.3;
-    		walk_turn_time = 5;
-    		initial_dash_time = 8;
-    		initial_dash_speed = 7.75;
-			dash_turn_time = 8;
-			dash_turn_accel = 1.5;
-		}
-		
-		if has_rune("I")
+		if (!free)
 		{
-			jump_speed = 15;
+			set_hitbox_value(43, 1, HG_ANGLE, 45);
+			move_cooldown[43] = 120;
 		}
-		
-		if has_rune("O")
-		{
-		   	jump_speed = 16;
-			walk_accel = 0.8;
-	 	initial_dash_time = 9;
-			initial_dash_speed = 8;
-	 	dash_turn_time = 8;
-	 	dash_turn_accel = 1.5;
-		}	
 	}
+	if (window == 3 && window_timer == 1)
+	{
+		returnBike = true;
+		motorbike = true;
+	}
+
 	if (window == 3 && window_timer == 14)
 	{
+		returnBike = false;
 		set_hitbox_value(43, 1, HG_ANGLE, 45);
 		move_cooldown[43] = 120;
 	}

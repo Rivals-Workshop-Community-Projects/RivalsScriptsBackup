@@ -85,7 +85,9 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 9);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("lv1shothit"));
 //Midcharged
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 2);

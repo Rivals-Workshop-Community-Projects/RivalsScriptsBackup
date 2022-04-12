@@ -8,6 +8,13 @@ destroy_hitboxes();
 
 fuel = 0;
 
+if (kickTime > 0)
+{
+	feline_power = false;
+	move_cooldown[AT_NSPECIAL]= 200;
+	move_cooldown[AT_NSPECIAL_2]= 200;
+}
+
 //Reset Carol's motorbike and fuel to 0 upon death
 if (motorbike == true)
 {

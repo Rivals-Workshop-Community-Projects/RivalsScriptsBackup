@@ -33,7 +33,7 @@ set_hitbox_value(AT_FSTRONG_2, 1, HG_HITBOX_Y, -68);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fstrong_2_proj"));
 set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_MASK, sprite_get("fstrong_2_proj"));
 set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
-set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_HSPEED, 8);
+set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_HSPEED, 7);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_GRAVITY, 0.3);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);

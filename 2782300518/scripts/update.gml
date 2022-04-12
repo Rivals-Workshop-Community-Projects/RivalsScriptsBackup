@@ -29,8 +29,48 @@ if (multikick_energy == 200)
 
 if (motorbike == false)
 {
+	//Reset values back to default if coming from the bike
+	walk_speed = 3.25;
+	initial_dash_speed = 7;
+	dash_speed = 7;
+	dash_stop_time = 4;
+	short_hop_speed = 5;
+	jump_speed = 11.5;
+	djump_speed = 3;
+	hurtbox_spr = asset_get("ex_guy_hurt_box");
+	crouchbox_spr = asset_get("ex_guy_crouch_box");
+	jump_sound = sound_get("jump");
+	djump_sound = asset_get("sfx_jumpair");
+		
+	//Abyss Runes reset, just in case!
+	if has_rune("B"){
+    	walk_accel = 0.3;
+    	walk_turn_time = 5;
+    	initial_dash_time = 8;
+    	initial_dash_speed = 7.75;
+		dash_turn_time = 8;
+		dash_turn_accel = 1.5;
+	}
+	
+	if has_rune("I")
+	{
+		jump_speed = 15;
+	}
+	
+	if has_rune("O")
+	{
+	   	jump_speed = 16;
+		walk_accel = 0.8;
+		initial_dash_time = 9;
+		initial_dash_speed = 8;
+		dash_turn_time = 8;
+	 	dash_turn_accel = 1.5;
+	}
+
 	//Carol's Double jump is a pounce, so if she double jumps there should be no additional vsp
-	if (state==PS_DOUBLE_JUMP && motorbike == false){
+	if (state == PS_DOUBLE_JUMP)
+	{
+		pounce = true;
 		if ((left_pressed || left_down) && spr_dir == 1 && !pounceChange)
 		{
 			spr_dir = -1;
@@ -54,6 +94,11 @@ if (motorbike == false)
 		bsprite_index=-1;
 	}
 	
+	if (free==false){
+		pounce = false;
+	}
+
+	
 	//multiple Wall jumps, so that you can bounce up the same wall over and over again, just like Carol's gameplay in Freedom Planet!
 	if ((can_wall_jump == false || has_walljump == false) && walljump_number < walljump_limit)
 	{
@@ -72,27 +117,27 @@ if (motorbike == false)
     		}
     	}
 	}
-	if (walljump_number == 5)
+	if (walljump_number >= 2)
 	{
 		move_cooldown[AT_FSPECIAL] = 40;
 	}
 	
 	//This code animated the tail and adds an effect to Parry depending on state
-if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == false){
-	comboCounter = 0;
-    switch (state){
-     	case PS_PARRY:
-     	tsprite_index=sprite_get("tail_idle");
-		trotation=0;
-		timage_number=12;
-		timage_speed=0.25;
-		tfront=false;
-		tx=-45*spr_dir;
-		ty=-66;
-		tsx=1;
-		tsy=1;
-    	bsprite_index=sprite_get("energy_shield");
-		brotation=0;
+	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND){
+		comboCounter = 0;
+		switch (state){
+	  		case PS_PARRY:
+     		tsprite_index=sprite_get("tail_idle");
+			trotation=0;
+			timage_number=12;
+			timage_speed=0.25;
+			tfront=false;
+			tx=-45*spr_dir;
+			ty=-66;
+			tsx=1;
+			tsy=1;
+    		bsprite_index=sprite_get("energy_shield");
+			brotation=0;
 			bimage_number=4;
 			bimage_speed=0.25;
 			bfront=true;
@@ -154,6 +199,10 @@ if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == false){
 			bsprite_index=-1;
     		break;
     		case PS_DOUBLE_JUMP:
+			can_attack = false;
+			can_special = false;
+			can_shield = false;
+			can_strong = false;
 		 	tsprite_index = sprite_get("tail_walk");
 			timage_index=0;
 			timage_number=7;
@@ -219,12 +268,6 @@ if (clinging == true)
 	}
 }
 
-
-if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == true)
-{
-	comboCounter = 0;
-}
-
 //Counts the dodges for a voice line
 
 if (state = PS_AIR_DODGE || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD)
@@ -280,6 +323,30 @@ with (oPlayer) {
 //While riding the motorbike, fuel is consumed
 if (motorbike == true)
 {
+	walk_speed = 6;
+	initial_dash_speed = 10;
+	dash_speed = 10;
+	dash_stop_time = 12;
+	djump_speed = 10;
+	hurtbox_spr = sprite_get("bike_hurtbox");
+	crouchbox_spr = sprite_get("bike_crouch_hurtbox");
+	jump_sound = sound_get("motorbike_wheelie");
+	djump_sound = sound_get("motorbike_spin");
+	
+	if has_rune("I")
+	{
+    	jump_speed = 15;
+	}
+
+	if has_rune("O")
+	{
+	   	jump_speed = 16;
+		walk_accel = 0.8;
+	 	initial_dash_time = 9;
+		initial_dash_speed = 11;
+ 		dash_turn_time = 12;
+	}
+	
 	fuel_burn++;
 	{
 		if (fuel_burn > 50)
@@ -288,157 +355,175 @@ if (motorbike == true)
     		fuel_burn = 0;
     	}
 	}
-}
+	//The following code creates bike sounds
+	if (state == PS_IDLE && fuel > 0)
+	{
+		bike_state_timer++;
+		if (state_timer = 1)
+		{
+			sound_play(sound_get("motorbike_idle"));
+			sound_stop(sound_get("motorbike_move"));
+			bike_state_timer = 1;
+		}
+		if (bike_state_timer = 1)
+		{	
+			sound_play(sound_get("motorbike_idle"));
+			sound_stop(sound_get("motorbike_move"));
+		}
+		else if (bike_state_timer = 100)
+		{
+			sound_stop(sound_get("motorbike_idle"));
+			sound_play(sound_get("motorbike_idle"));
+			bike_state_timer = 0;
+		}
+	}
 
-//The following code creates bike sounds
-if (state == PS_IDLE && motorbike == true && fuel > 0)
-{
-	bike_state_timer++;
-	if (state_timer = 1)
+	//Sound effects while on the bike
+	if ((state == PS_WALK || state = PS_DASH_START || state=PS_DASH) && fuel > 0)
 	{
-		sound_play(sound_get("motorbike_idle"));
-		sound_stop(sound_get("motorbike_move"));
-		bike_state_timer = 1;
+		//You would get hurt if you got hit by a bike... so here's a hitbox for moving on the bike
+		if ((state == PS_WALK && state_timer > 100 || state == PS_DASH && state_timer > 10))
+		{
+			create_hitbox( AT_EXTRA_1, 1, x, y);
+		}
+		else
+		{
+			destroy_hitboxes();
+		}
+		bike_state_timer++;
+		if (state_timer = 1)
+		{
+			bike_state_timer = 1;
+			sound_play(sound_get("motorbike_move"));
+			sound_stop(sound_get("motorbike_idle"));
+		}
+		if (bike_state_timer = 1)
+		{
+			sound_play(sound_get("motorbike_move"));
+			sound_stop(sound_get("motorbike_idle"));
+		}
+		else if (bike_state_timer = 100)
+		{
+			sound_stop(sound_get("motorbike_move"));
+			sound_play(sound_get("motorbike_move"));		
+		}
 	}
-	if (bike_state_timer = 1)
-	{	
-		sound_play(sound_get("motorbike_idle"));
-		sound_stop(sound_get("motorbike_move"));
-	}
-	else if (bike_state_timer = 100)
-	{
-		sound_stop(sound_get("motorbike_idle"));
-		sound_play(sound_get("motorbike_idle"));
-		bike_state_timer = 0;
-	}
-}
 
-//Sound effects while on the bike
-if ((state == PS_WALK || state = PS_DASH_START || state=PS_DASH) && motorbike == true && fuel > 0)
-{
-	//You would get hurt if you got hit by a bike... so here's a hitbox for moving on the bike
-	if ((state == PS_WALK && state_timer > 100 || state == PS_DASH && state_timer > 10))
+	//Sound effects while stopping with the bike
+	if (state == PS_DASH_STOP || state = PS_DASH_TURN)
 	{
-		create_hitbox( AT_EXTRA_1, 1, x, y);
+		if (state_timer == 1)
+		{
+			sound_stop(sound_get("motorbike_move"));
+			sound_stop(sound_get("motorbike_idle"));
+			sound_stop(sound_get("motorbike_stop"));
+			sound_play(sound_get("motorbike_stop"));
+		}
 	}
-	else
-	{
-		destroy_hitboxes();
-	}
-	bike_state_timer++;
-	if (state_timer = 1)
-	{
-		bike_state_timer = 1;
-		sound_play(sound_get("motorbike_move"));
-		sound_stop(sound_get("motorbike_idle"));
-	}
-	if (bike_state_timer = 1)
-	{
-		sound_play(sound_get("motorbike_move"));
-		sound_stop(sound_get("motorbike_idle"));
-	}
-	else if (bike_state_timer = 100)
-	{
-		sound_stop(sound_get("motorbike_move"));
-		sound_play(sound_get("motorbike_move"));		
-	}
-}
-
-//Sound effects while stopping with the bike
-if ((state == PS_DASH_STOP || state = PS_DASH_TURN) && motorbike == true)
-{
-	if (state_timer == 1)
+	//sound effects when jumping with the bike
+	if (state == PS_JUMPSQUAT)
 	{
 		sound_stop(sound_get("motorbike_move"));
 		sound_stop(sound_get("motorbike_idle"));
 		sound_stop(sound_get("motorbike_stop"));
-		sound_play(sound_get("motorbike_stop"));
-
+	}
+	if (fuel > 0)
+	{
+		//Create the smoke effects that come out from the bike as well as the sparkles from movement
+		smokeCounter++;
+		if (smokeCounter == 6)
+		{
+			if (state == PS_WALK)
+			{
+			var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
+				smallspark.depth = -100;			
+			}
+			if (state == PS_DASH)
+			{
+				var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
+				smallspark.depth = -100;
+			}
+			if (state == PS_FIRST_JUMP || state == PS_IDLE_AIR)
+			{	
+				var smallspark = spawn_hit_fx (x - 60 * spr_dir, y - 14, smallsparkle);
+				smallspark.depth = -100;
+			}
+		}
+		if (smokeCounter >=12)
+		{
+			switch state
+			{
+				case PS_IDLE:
+				case PS_WALK:
+				case PS_CROUCH:
+					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 32, bike_smokeH);
+					bikeSmoke.depth = -100;
+				break;
+				case PS_WALK_TURN:
+				case PS_DASH_START:
+				case PS_DASH:
+				case PS_DASH_STOP:
+				case PS_DASH_TURN:
+					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 32, bike_smokeH);
+					bikeSmoke.depth = -100;
+				break;
+				case PS_JUMPSQUAT:
+				case PS_LAND:
+				case PS_LANDING_LAG:
+					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 18, 13);
+					bikeSmoke.depth = -100;
+				break;
+				case PS_FIRST_JUMP:
+				case PS_IDLE_AIR:
+					var bikeSmoke = spawn_hit_fx (x - 60 * spr_dir, y - 14, bike_smokeD);
+					bikeSmoke.depth = -100;
+				break;
+				case PS_WALL_JUMP:
+					var bikeSmoke = spawn_hit_fx (x - 10 * spr_dir, y, bike_smokeV);
+					bikeSmoke.depth = -100;
+				break;
+				default:
+				
+				break;
+			}
+			smokeCounter = 0;
+		}
+	}
+	//Make Carol get off the bike if fuel runs out
+	if (fuel <= 0)
+	{
+		fuel = 0;
+		if (state != PS_HITSTUN && state != PS_WALL_JUMP)
+		{
+			sound_stop(sound_get("motorbike_move"));
+			sound_stop(sound_get("motorbike_idle"));
+			sound_stop(sound_get("motorbike_stop"));
+			sound_play(sound_get("motorbike_stop"));
+			if (voice == 1)
+			{
+				sound_stop(sound_get ("crap"));
+				sound_play(sound_get ("crap"));
+			}
+			set_attack(AT_DSPECIAL_2);
+		}
+	}
+	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == true)
+	{
+		comboCounter = 0;
 	}
 }
-//sound effects when jumping with the bike
-if (state == PS_JUMPSQUAT && motorbike == true)
-{
-	sound_stop(sound_get("motorbike_move"));
-	sound_stop(sound_get("motorbike_idle"));
-	sound_stop(sound_get("motorbike_stop"));
 
-}
 //The bike ready sounds should only play once.
 if (bikeReady == 1)
 {
 	sound_stop(sound_get ("motorbike_extra"));
 	sound_play(sound_get ("motorbike_extra"));    		
-   	if (voice == 1)
+	if (voice == 1)
 	{
 		sound_stop(sound_get ("aw_yeah"));
 		sound_play(sound_get ("aw_yeah"));
 	}
 	bikeReady = 2;
-}
-
-if (motorbike == true && fuel > 0)
-{
-	//Create the smoke effects that come out from the bike as well as the sparkles from movement
-	smokeCounter++;
-	if (smokeCounter == 6)
-	{
-		if (state == PS_WALK)
-		{
-			var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
-			smallspark.depth = -100;			
-		}
-		if (state == PS_DASH)
-		{
-			var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
-			smallspark.depth = -100;
-		}
-		if (state == PS_FIRST_JUMP || state == PS_IDLE_AIR)
-		{	
-			var smallspark = spawn_hit_fx (x - 60 * spr_dir, y - 14, smallsparkle);
-			smallspark.depth = -100;
-		}
-		
-	}
-	if (smokeCounter >=12)
-	{
-		switch state
-		{
-			case PS_IDLE:
-			case PS_WALK:
-			case PS_CROUCH:
-				var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 32, bike_smokeH);
-				bikeSmoke.depth = -100;
-			break;
-			case PS_WALK_TURN:
-			case PS_DASH_START:
-			case PS_DASH:
-			case PS_DASH_STOP:
-			case PS_DASH_TURN:
-				var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 32, bike_smokeH);
-				bikeSmoke.depth = -100;
-			break;
-			case PS_JUMPSQUAT:
-			case PS_LAND:
-			case PS_LANDING_LAG:
-				var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 18, 13);
-				bikeSmoke.depth = -100;
-			break;
-			case PS_FIRST_JUMP:
-			case PS_IDLE_AIR:
-				var bikeSmoke = spawn_hit_fx (x - 60 * spr_dir, y - 14, bike_smokeD);
-				bikeSmoke.depth = -100;
-			break;
-			case PS_WALL_JUMP:
-				var bikeSmoke = spawn_hit_fx (x - 10 * spr_dir, y, bike_smokeV);
-				bikeSmoke.depth = -100;
-			break;
-			default:
-			
-			break;
-		}
-		smokeCounter = 0;
-	}
 }
 
 
@@ -453,25 +538,6 @@ if (bike_hit == true)
 	}
 }
 
-//Make Carol get off the bike if fuel runs out
-if (fuel <= 0 && motorbike == true)
-{
-	fuel = 0;
-	if (state != PS_HITSTUN && state != PS_WALL_JUMP)
-	{
-		sound_stop(sound_get("motorbike_move"));
-		sound_stop(sound_get("motorbike_idle"));
-		sound_stop(sound_get("motorbike_stop"));
-		sound_play(sound_get("motorbike_stop"));
-		if (voice == 1)
-		{
-			sound_stop(sound_get ("crap"));
-			sound_play(sound_get ("crap"));
-		}
-		set_attack(AT_DSPECIAL_2);
-	}
-}
-
 //Sprite Index animations for tail and bike
 
 if (tsprite_index!=-1){
@@ -480,12 +546,6 @@ if (tsprite_index!=-1){
 
 if (bsprite_index!=-1){
 	bimage_index=(bimage_index+bimage_speed)%bimage_number;
-}
-
-if (state == PS_LANDING_LAG && attack == 43)
-{
-	attack_end(43);
-	destroy_hitboxes();
 }
 
 //Since Move Cooldowon doesn't work on extra indexes here's some code to make it work

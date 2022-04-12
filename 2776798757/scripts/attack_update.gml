@@ -18,6 +18,23 @@ if (attack == AT_USPECIAL) {
    can_fast_fall = false;
 }
 
+if (attack == AT_DTILT){
+	if (window == 3 && has_hit){
+		iasa_script();
+	}
+}
+
+if (attack == AT_NAIR){
+	if (window == 5 && has_hit){
+		iasa_script();
+	}
+}
+
+if (attack == AT_USTRONG_2){
+	if (window == 4 && has_hit){
+		iasa_script();
+	}
+}
 
 if (attack == AT_NSPECIAL){
 	can_fast_fall = false;
@@ -147,14 +164,14 @@ if (attack == AT_FSPECIAL){
 }
 
 if (attack == AT_FSPECIAL_2){
-	move_cooldown[AT_FSPECIAL] = 60;
-	move_cooldown[AT_FSPECIAL_2] = 60;
-	move_cooldown[AT_DSPECIAL_2] = 60;
-	move_cooldown[AT_NSPECIAL_2] = 60;
-	move_cooldown[AT_FSTRONG_2] = 60;
-	move_cooldown[AT_DSTRONG_2] = 60;
-	move_cooldown[AT_USTRONG_2] = 60;
-	move_cooldown[AT_EXTRA_1] = 60;
+	move_cooldown[AT_FSPECIAL] = 120;
+	move_cooldown[AT_FSPECIAL_2] = 120;
+	move_cooldown[AT_DSPECIAL_2] = 120;
+	move_cooldown[AT_NSPECIAL_2] = 120;
+	move_cooldown[AT_FSTRONG_2] = 120;
+	move_cooldown[AT_DSTRONG_2] = 120;
+	move_cooldown[AT_USTRONG_2] = 120;
+	move_cooldown[AT_EXTRA_1] = 120;
 }
 
 if (attack == AT_DSPECIAL_2){
@@ -169,25 +186,25 @@ if (attack == AT_DSPECIAL_2){
 }
 
 if (attack == AT_NSPECIAL_2){
-	move_cooldown[AT_FSPECIAL] = 50;
-	move_cooldown[AT_FSPECIAL_2] = 50;
-	move_cooldown[AT_DSPECIAL_2] = 50;
-	move_cooldown[AT_NSPECIAL_2] = 50;
-	move_cooldown[AT_FSTRONG_2] = 50;
-	move_cooldown[AT_DSTRONG_2] = 50;
-	move_cooldown[AT_USTRONG_2] = 50;
-	move_cooldown[AT_EXTRA_1] = 50;
+	move_cooldown[AT_FSPECIAL] = 140;
+	move_cooldown[AT_FSPECIAL_2] = 140;
+	move_cooldown[AT_DSPECIAL_2] = 140;
+	move_cooldown[AT_NSPECIAL_2] = 140;
+	move_cooldown[AT_FSTRONG_2] = 140;
+	move_cooldown[AT_DSTRONG_2] = 140;
+	move_cooldown[AT_USTRONG_2] = 140;
+	move_cooldown[AT_EXTRA_1] = 140;
 }
 
 if (attack == AT_FSTRONG_2){
-	move_cooldown[AT_FSPECIAL] = 20;
-	move_cooldown[AT_FSPECIAL_2] = 20;
-	move_cooldown[AT_DSPECIAL_2] = 20;
-	move_cooldown[AT_NSPECIAL_2] = 20;
-	move_cooldown[AT_FSTRONG_2] = 20;
-	move_cooldown[AT_DSTRONG_2] = 20;
-	move_cooldown[AT_USTRONG_2] = 20;
-	move_cooldown[AT_EXTRA_1] = 20;
+	move_cooldown[AT_FSPECIAL] = 30;
+	move_cooldown[AT_FSPECIAL_2] = 30;
+	move_cooldown[AT_DSPECIAL_2] = 30;
+	move_cooldown[AT_NSPECIAL_2] = 30;
+	move_cooldown[AT_FSTRONG_2] = 30;
+	move_cooldown[AT_DSTRONG_2] = 30;
+	move_cooldown[AT_USTRONG_2] = 30;
+	move_cooldown[AT_EXTRA_1] = 30;
 }
 
 if (attack == AT_DSTRONG_2){
@@ -202,25 +219,25 @@ if (attack == AT_DSTRONG_2){
 }
 
 if (attack == AT_USTRONG_2){
-	move_cooldown[AT_FSPECIAL] = 5;
-	move_cooldown[AT_FSPECIAL_2] = 5;
-	move_cooldown[AT_DSPECIAL_2] = 5;
-	move_cooldown[AT_NSPECIAL_2] = 5;
-	move_cooldown[AT_FSTRONG_2] = 5;
-	move_cooldown[AT_DSTRONG_2] = 5;
-	move_cooldown[AT_USTRONG_2] = 5;
-	move_cooldown[AT_EXTRA_1] = 5;
+	move_cooldown[AT_FSPECIAL] = 400;
+	move_cooldown[AT_FSPECIAL_2] = 400;
+	move_cooldown[AT_DSPECIAL_2] = 400;
+	move_cooldown[AT_NSPECIAL_2] = 400;
+	move_cooldown[AT_FSTRONG_2] = 400;
+	move_cooldown[AT_DSTRONG_2] = 400;
+	move_cooldown[AT_USTRONG_2] = 400;
+	move_cooldown[AT_EXTRA_1] = 400;
 }
 
 if (attack == AT_EXTRA_1){
-	move_cooldown[AT_FSPECIAL] = 300;
-	move_cooldown[AT_FSPECIAL_2] = 300;
-	move_cooldown[AT_DSPECIAL_2] = 300;
-	move_cooldown[AT_NSPECIAL_2] = 300;
-	move_cooldown[AT_FSTRONG_2] = 300;
-	move_cooldown[AT_DSTRONG_2] = 300;
-	move_cooldown[AT_USTRONG_2] = 300;
-	move_cooldown[AT_EXTRA_1] = 300;
+	move_cooldown[AT_FSPECIAL] = 555;
+	move_cooldown[AT_FSPECIAL_2] = 555;
+	move_cooldown[AT_DSPECIAL_2] = 555;
+	move_cooldown[AT_NSPECIAL_2] = 555;
+	move_cooldown[AT_FSTRONG_2] = 555;
+	move_cooldown[AT_DSTRONG_2] = 555;
+	move_cooldown[AT_USTRONG_2] = 555;
+	move_cooldown[AT_EXTRA_1] = 555;
 }
 
 if (attack == AT_DSTRONG){
@@ -264,7 +281,6 @@ if (attack == AT_EXTRA_2){
 	}
 }
 
-
 if (attack == AT_EXTRA_2) {
     if (window == 2 && has_hit_player == true && hitpause == false) {
         window = 4;
@@ -275,6 +291,12 @@ if (attack == AT_EXTRA_2) {
         iasa_script();
         set_state(PS_IDLE);
     }
+}
+
+if (attack == AT_DSTRONG_2) {
+	if (window == 2 && window_timer == 1){
+		instance_destroy( x, y, "obj_article1" );
+	}
 }
 
 if has_rune("L") {

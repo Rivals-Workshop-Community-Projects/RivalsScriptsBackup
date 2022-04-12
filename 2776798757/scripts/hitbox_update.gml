@@ -31,7 +31,7 @@ if (attack == AT_NSPECIAL_2){
 	if spr_dir = 1 {
        		if hitbox_timer = 60 {
 		var hbox = create_hitbox(AT_NSPECIAL_2, 2, x-24, y-26);
-		hbox.hsp = 3;
+		hbox.hsp = 4;
 		hbox.vsp = 3;
 		}
 	}
@@ -45,7 +45,7 @@ if (attack == AT_NSPECIAL_2){
 	if spr_dir = -1 {
        		if hitbox_timer = 60 {
 		var hbox = create_hitbox(AT_NSPECIAL_2, 2, x+24, y-26);
-		hbox.hsp = -3;
+		hbox.hsp = -4;
 		hbox.vsp = 3;
 		}
 	}
@@ -93,8 +93,9 @@ if (attack == AT_DSPECIAL_2){
 	}
 }
 
-if (attack == AT_DSTRONG_2){
-	if hitbox_timer > 15 {
-	hsp = (0);
+if attack == AT_NSPECIAL_2 && hbox_num == 2{
+	if free = false
+	{
+	destroyed = true
 	}
 }

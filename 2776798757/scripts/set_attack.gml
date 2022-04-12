@@ -27,7 +27,7 @@ if(attack == AT_FSPECIAL && current_weapon == 5){
     attack = AT_DSTRONG_2;
 }
 
-//tslasher
+//sburner
 if(attack == AT_FSPECIAL && current_weapon == 6){
     attack = AT_USTRONG_2;
 }

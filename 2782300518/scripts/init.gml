@@ -20,13 +20,13 @@ dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .5;
+ground_friction = .35;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 12;
 short_hop_speed = 5;
-djump_speed = 5;
+djump_speed = -1;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -35,7 +35,7 @@ air_accel = .3;
 prat_fall_accel = .4; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;
-double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
+double_jump_time = 31; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 3;
 walljump_vsp = 11;
 walljump_time = 16;
@@ -74,9 +74,9 @@ techroll_recovery_frames = 14;
 techroll_speed = 10;
 
 //airdodge animation frames
-air_dodge_startup_frames = 2;
+air_dodge_startup_frames = 1;
 air_dodge_active_frames = 2;
-air_dodge_recovery_frames = 3;
+air_dodge_recovery_frames = 1;
 air_dodge_speed = 7.5;
 
 //roll animation frames
@@ -178,6 +178,7 @@ jump_disc=hit_fx_create(sprite_get("jump_disc"), 40);
 multikick_energy = 200;
 kickTime=0;
 meterShine = 0;
+pounce = false;
 pounceChange = false;
 returnBike = false;
 

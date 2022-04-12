@@ -106,5 +106,39 @@ dairbounce = 0;
 bustercharge = 0;
 isInAir = true;
 
-
 //uspecial ground
+
+//Dracula
+dracula_portrait = sprite_get("dracula");
+dracula_portrait2 = asset_get("empty_sprite")
+var page = 0;
+
+//Page 0
+dracula_speaker[page] = 0;
+dracula_text[page] = "And just who do we have here?";
+page++;
+
+//Page 1
+dracula_speaker[page] = 1;
+dracula_text[page] = "X, maverick hunter. Your curse has reduced this land to rot.";
+page++;
+
+//Page 2
+dracula_speaker[page] = 0;
+dracula_text[page] = "And you're here to stop me?";
+page++;
+
+//Page 3
+dracula_speaker[page] = 1;
+dracula_text[page] = "If you understand, then do us both a favor and surrender now!";
+page++;
+
+//Page 4
+dracula_speaker[page] = 0;
+dracula_text[page] = "Ha! [glass] As if there's any need for that.";
+page++;
+
+//Page 5
+dracula_speaker[page] = 0;
+dracula_text[page] = "Now, have at you!";
+page++;

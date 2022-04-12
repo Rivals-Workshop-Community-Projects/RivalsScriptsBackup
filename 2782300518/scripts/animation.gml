@@ -122,7 +122,7 @@ if (motorbike == true) //Change all the sprites used if Carol is on the bike
 	}
 }
 
-//The following code is a template for being buried, flashed or Crystalized off the bike, will change it later
+//The following code is a template for being buried, flashed or Crystalized off the bike, the code was originally developed by DynamicLemons will change it later
 if (state == PS_BURIED && motorbike == false)
 {
 	sprite_index=(sprite_get("hurt"));
@@ -134,5 +134,5 @@ if (state == PS_FLASHED && motorbike == false)
 
 if ((("crystalized_damage_remaining" in self && crystalized_damage_remaining !=0) || state == PS_CRYSTALIZED) && motorbike == false)
 {
-	sprite_index=(motorbike? (sprite_get("hurt")): (sprite_get("hurt_bike")));
+	sprite_index=(sprite_get("hurt"));
 }

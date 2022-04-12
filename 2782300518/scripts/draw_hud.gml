@@ -19,7 +19,7 @@ draw_sprite_ext(sprite_get("fuel_meter"), 0, temp_x-16, temp_y-32, 2, 2, 0, col,
 draw_sprite_ext(sprite_get("fuel_canister"), 0, temp_x+84, temp_y-32, 2, 2, 0, col, 1);
 
 //Draw the amount of fuel in the meter
-draw_sprite_ext(sprite_get("fuel"), 0, (temp_x -4) , temp_y-28, 2 * (fuel * 1.02), 2, 0, col, 1);
+draw_sprite_ext(sprite_get("fuel"), 0, (temp_x -4) , temp_y-28, 2 * fuel, 2, 0, col, 1);
 
 if (motorbike == false)
 {
