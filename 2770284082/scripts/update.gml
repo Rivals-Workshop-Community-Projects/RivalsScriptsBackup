@@ -112,6 +112,7 @@ with (asset_get("oPlayer")) {
   			set_attack(PS_IDLE)
   			hatstate = 0
   			with other {
+  				move_cooldown[AT_EXTRA_1] = 30
   			    sound_play(sound_get("hatoff1"),false, noone, .5, 0.8);
   			    h3x = spawn_hit_fx(floor(hit_player_obj.x), floor(hit_player_obj.y - hit_player_obj.char_height-10), h3)
                 h3x.depth = -6
@@ -129,3 +130,16 @@ with (asset_get("oPlayer")) {
 	
 }
 
+if move_cooldown[AT_EXTRA_1] > 0 {
+	with (asset_get("pHitBox")) { 
+		  if(player_id == other.id) && type == 1 {
+		  	if effect == 0 {
+		  		effect = 12 
+		  		image_xscale += 0.15
+		  		image_yscale += 0.15
+		  		no_other_hit = 2
+		  	}
+		  }
+	}
+	
+}

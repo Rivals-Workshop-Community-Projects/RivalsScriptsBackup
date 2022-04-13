@@ -139,7 +139,6 @@ sprite_change_offset("lighten", 1000, 1000);
 npsp = hit_fx_create( sprite_get( "nipplespike" ), 10);
 sprite_change_offset("nipplespike", 102, 154);
 
-set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
 set_victory_theme(sound_get("theme"));
 
 nf1 = hit_fx_create( sprite_get( "nfade1" ), 10);

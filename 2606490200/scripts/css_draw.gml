@@ -3,30 +3,15 @@ var temp_x = floor(x+10);
 var temp_y = floor(y+10);
 var buildtag = "indev";
 var alt = get_player_color(player);
-var brawl = 1;
+var charuuid = string(sprite_get("idle"));
 
-if (brawl = 1){ 
-    
-if (get_color_profile_slot_b(0, 0) == 242) {
-    sound_play(sound_get("r"), false, 0, 2.75);
-        brawl_flash_opacity = 0.9;
-    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
+if ("css_char" not in self || css_char != charuuid) {
+drawtime = 0
+drawing = 1
+text = 0
+    css_char = charuuid;
+    sound_play(sound_get("gigachad"),false,noone,1,1)
 }
-
-if variable_instance_exists(self, "brawl_flash_opacity"){
-    brawl_flash_opacity = brawl_flash_opacity - 0.05;
-draw_sprite_ext(sprite_get("brawl_flash"), 0, x+7, y+8, 1, 1, 0, c_white, brawl_flash_opacity);    
-}
-
-
-draw_sprite(sprite_get("charselectg"),0,x+7,y+8);  
-draw_sprite(sprite_get("brawl_nameplate"),0,x+7,y+8);  
-
-
-
-} 
-
-
 
 
 if ("prev_alt" not in self){
@@ -36,6 +21,8 @@ drawing = 0
     
 if ("prev_alt" in self && prev_alt != alt){
      drawtime = 0
+     text += 1
+     sound_stop(sound_get("gigachad"))
 }
 
 
@@ -44,6 +31,8 @@ drawtime += 1
 
 
 prev_alt = alt;
+
+
 
 
 if drawtime < 15 {
@@ -73,6 +62,12 @@ if alt == 11 {
     }
 
 }
+if alt == 15 {
+    if drawtime == 1 {
+    sound_play(sound_get("nanomachine"))
+    }
+
+}
 
 
 //define the palette names
@@ -93,10 +88,14 @@ var palette_names = [
   "Chad Angry",
   "Chad Dorf",
   "Chad Jojo",
+  "Chad Senator",
 ];
 
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
+if text == 0 draw_sprite_ext(sprite_get("brawlfg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+if text != 0 {
+    
 if drawtime < 120 {
 draw_sprite_ext(sprite_get("extra_1"),23,temp_x-10,temp_y+24 - floor(drawtime/2),1,1,0,-1,2 - drawtime/60);
 draw_debug_text(floor(x)+18,floor(y)+140 - floor(drawtime/2),string(palette_names[alt]));
@@ -107,6 +106,7 @@ draw_debug_text(floor(x)+18,floor(y)+140 - floor(drawtime/2),string(palette_name
 }
 
 sprite_change_offset("extra_1", 0, 0);
+}
 
 if drawtime < 15 {
     draw_sprite_ext(sprite_get("charselectflash"),0,temp_x-2,temp_y-2,2,2,0,-1,1);

@@ -14,7 +14,7 @@ if left_pressed and right_pressed and attack_pressed and special_pressed  {
 	Genocide = 0 	
 	}
 }
-*/
+
 
 if (state == PS_DASH
    	or state == PS_IDLE
@@ -43,3 +43,4 @@ if (state == PS_DASH
 } else {
 	
 }
+*/

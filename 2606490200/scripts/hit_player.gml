@@ -79,14 +79,14 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7{
     fxlup = spawn_hit_fx(hit_player_obj.x,y - 120,lup)
     fxlup.depth = -100
     sound_play(asset_get("sfx_coin_collect"))
-    ltrain += 10
+    ltrain += 100
 }
 
 } else {
     
     if my_hitboxID.attack == AT_DAIR or my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_DSPECIAL or my_hitboxID.attack == AT_DSTRONG {
   
-    if my_hitboxID.kb_scale >= .7 {
+    if my_hitboxID.kb_scale >= .7 or my_hitboxID.attack == AT_DAIR  {
 		 sound_play(asset_get("sfx_kragg_rock_shatter"),false,noone,.5 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )
     } else {
 		 sound_play(asset_get("sfx_kragg_rock_land"),false,noone,.4 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )

@@ -371,7 +371,17 @@ switch attack {
     break;
     
     case AT_DSPECIAL :
-    
+        var step_up_height = 30;
+         
+         if place_meeting(x+hsp,y+vsp,asset_get("par_block")) {
+             for (var i = 0; i < step_up_height; i += 2) {
+                 if !place_meeting(x+hsp,y+vsp-i,asset_get("par_block")) {
+                     x = x+hsp; 
+                     y = y+vsp-i;
+                     break;
+                 }
+             }
+         }
     //print(move_cooldown[AT_DSPECIAL])
         can_move = false
         can_fast_fall = false

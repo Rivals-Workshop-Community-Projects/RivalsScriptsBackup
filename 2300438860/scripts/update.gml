@@ -1,6 +1,20 @@
 ///
 
-
+with oPlayer {
+	if "rollcount" not in self {
+		rollcount = 0
+	}
+    if state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD {
+    	if state_timer == 1 rollcount ++ 
+    	if rollcount == 4 {
+    		//y = 999999
+    	}
+    }
+    
+    if free {
+    	rollcount = 0
+    }
+}
 
 if state_cat == SC_HITSTUN && gudhit == 1 && !hitpause {
 	vsp = -15
@@ -213,11 +227,11 @@ if state_timer == 1 {
 	 	if state_timer % 7 == 0 {
 	 	sound_play(sound_get("click"));	
 	 	}
-	     hsp = -0.5 * spr_dir
+	     hsp = -2 * spr_dir
 	 }
 	 
 	 if state_timer >= 13 and state_timer < 15 {
-	     hsp = -50 * spr_dir
+	     hsp = (-20)* spr_dir
 	 }
 	 if state_timer >= 4 and state_timer < 18 {
 	 }

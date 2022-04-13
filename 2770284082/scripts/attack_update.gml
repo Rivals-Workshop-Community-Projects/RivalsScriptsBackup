@@ -231,8 +231,8 @@ switch attack {
 	 if window == 2 && !hitpause {
 	 	if window_timer == 7 { 
 	 		if has_hit_player {
-	 			set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 96);
-                set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 66);
+	 			set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 106);
+                set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 76);
 	 		}
 	 		sound_play(sound_get("swingm2"),false,noone,0.6,1.3)
 	 	}

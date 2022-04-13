@@ -73,9 +73,9 @@ if attack == AT_USPECIAL {
         	
         	if !special_down {
         		prat_land_time = 16;
-        		fx1 = spawn_hit_fx(x,y - 10,305)
-        		fx2 = spawn_hit_fx(x,y - 40,305)
-        		fx3 = spawn_hit_fx(x,y - 70,305)
+        		fx1 = spawn_hit_fx(x,y - 30,305)
+        		fx2 = spawn_hit_fx(x,y - 55,305)
+        		fx3 = spawn_hit_fx(x,y - 80,305)
         		fx1.pause = 6
         		fx2.pause = 6
         		fx3.pause = 6

@@ -39,6 +39,17 @@ if (get_player_color(player) == 11) {
     
 }
 
+
+
+if (get_player_color(player) == 15) {
+    if uped >= 4 {
+        set_character_color_slot(1, 88, 60, 64);
+        set_character_color_slot(2, 48, 34, 29);
+    }
+}
+
+
+
 if (get_player_color(player) == 1) {
     
     set_character_color_shading(4, 4)

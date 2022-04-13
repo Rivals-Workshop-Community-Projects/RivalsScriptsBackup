@@ -46,6 +46,21 @@ if uped == 4 {
 
 }
 
+if (get_player_color(player) == 15) {
+	
+if uped == 4 {
+	sound_play(sound_get("nanomachine"))
+	sound_play(sound_get("nanomachine"))
+	uped = 5
+}
+
+if hitpause or state_cat == SC_HITSTUN {
+	 move_cooldown[AT_USPECIAL_GROUND] = 20
+}
+
+}
+
+
 if hitpause {
    if move_cooldown[AT_DSPECIAL] > 0 {
    	move_cooldown[AT_DSPECIAL] += 1

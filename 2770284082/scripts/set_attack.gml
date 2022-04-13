@@ -6,14 +6,14 @@ if attack == AT_TAUNT {
         sound_stop(cur_sound)
         window = 5
         sound_play(asset_get("sfx_gem_collect"));
-         cur_sound = sound_play(sound_get("v_endofyourlife"),false,noone,.8,1.05 - random_func(1,10,true)/100)
+         cur_sound = sound_play(sound_get("v_endofyourlife"),false,noone,.95,1.05 - random_func(1,10,true)/100)
     }
     
     if down_down {
         window = 7
         sound_stop(cur_sound)
         sound_play(asset_get("sfx_gem_collect"));
-         cur_sound = sound_play(sound_get("v_areyouok"),false,noone,.8,1.05 - random_func(1,10,true)/100)
+         cur_sound = sound_play(sound_get("v_areyouok"),false,noone,.85,1.05 - random_func(1,10,true)/100)
     }
 }
 if attack == AT_UTILT or attack == AT_DTILT  {

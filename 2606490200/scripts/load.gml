@@ -80,7 +80,7 @@ sprite_change_offset("nfade2", 102, 154);
 sprite_change_offset("nfade3", 102, 154);
 sprite_change_offset("nfade4", 102, 154);
 
-set_victory_bg( sprite_get( "brawl_victory" ));
+set_victory_bg( sprite_get( "custom" ));
 
 //load.gml
 sprite_change_offset("gigaHud", 23, 23);

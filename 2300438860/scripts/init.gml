@@ -3,6 +3,8 @@ crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = sprite_get("air_box");
 hitstun_hurtbox_spr = sprite_get("air_box");
 
+pitch = 0
+rollcount = 0
 
 fs_char_chosen_final_smash = "custom"
 fs_char_portrait_y = 60
