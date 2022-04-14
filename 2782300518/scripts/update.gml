@@ -238,6 +238,212 @@ if (motorbike == false)
     	}
 	}
 }
+//While riding the motorbike, fuel is consumed
+else if (motorbike == true)
+{
+	walk_speed = 6;
+	initial_dash_speed = 10;
+	dash_speed = 10;
+	dash_stop_time = 12;
+	djump_speed = 10;
+	hurtbox_spr = sprite_get("bike_hurtbox");
+	crouchbox_spr = sprite_get("bike_crouch_hurtbox");
+	jump_sound = sound_get("motorbike_wheelie");
+	djump_sound = sound_get("motorbike_spin");
+	
+	if has_rune("I")
+	{
+    	jump_speed = 15;
+	}
+
+	if has_rune("O")
+	{
+	   	jump_speed = 16;
+		walk_accel = 0.8;
+	 	initial_dash_time = 9;
+		initial_dash_speed = 11;
+ 		dash_turn_time = 12;
+	}
+	
+	fuel_burn++;
+	{
+		if (fuel_burn > 50)
+    	{
+    		fuel = fuel - 1;
+    		fuel_burn = 0;
+    	}
+	}
+	//The following code creates bike sounds
+	switch (state)
+	{
+		case PS_IDLE:
+		if (fuel > 0)
+		{
+			bike_state_timer++;
+			if (state_timer = 1)
+			{
+				sound_play(sound_get("motorbike_idle"));
+				sound_stop(sound_get("motorbike_move"));
+				bike_state_timer = 1;
+			}
+			switch (bike_state_timer)
+			{
+				case 1:
+				sound_play(sound_get("motorbike_idle"));
+				sound_stop(sound_get("motorbike_move"));
+				break;
+				case 100:
+				sound_stop(sound_get("motorbike_idle"));
+				sound_play(sound_get("motorbike_idle"));
+				bike_state_timer = 0;
+				break;
+				default:
+				break;
+			}
+		}
+		break;
+		//Sound effects while on the bike
+		case PS_WALK:
+		case PS_DASH_START:
+		case PS_DASH:
+			if (fuel > 0)
+			{
+				//You would get hurt if you got hit by a bike... so here's a hitbox for moving on the bike
+				if ((state == PS_WALK && state_timer > 100 || state == PS_DASH && state_timer > 10))
+				{
+					create_hitbox( AT_EXTRA_1, 1, x, y);
+				}
+				else
+				{
+					destroy_hitboxes();
+				}
+				bike_state_timer++;
+				if (state_timer = 1)
+				{
+					bike_state_timer = 1;
+					sound_play(sound_get("motorbike_move"));
+					sound_stop(sound_get("motorbike_idle"));
+				}
+				switch (bike_state_timer)
+				{
+					case 1:
+					sound_play(sound_get("motorbike_move"));
+					sound_stop(sound_get("motorbike_idle"));
+					break;
+					case 100:
+					sound_stop(sound_get("motorbike_move"));
+					sound_play(sound_get("motorbike_move"));
+					break;
+				}
+			}
+		break;
+		//Sound effects while stopping with the bike
+		case PS_DASH_STOP:
+		case PS_DASH_TURN:
+			if (state_timer == 1)
+			{
+				sound_stop(sound_get("motorbike_move"));
+				sound_stop(sound_get("motorbike_idle"));
+				sound_stop(sound_get("motorbike_stop"));
+				sound_play(sound_get("motorbike_stop"));
+			}
+		break;
+		//sound effects when jumping with the bike
+		case PS_JUMPSQUAT:
+			sound_stop(sound_get("motorbike_move"));
+			sound_stop(sound_get("motorbike_idle"));
+			sound_stop(sound_get("motorbike_stop"));
+			break;
+		default:
+		break;
+	}
+	if (fuel > 0)
+	{
+		//Create the smoke effects that come out from the bike as well as the sparkles from movement
+		smokeCounter++;
+		if (smokeCounter == 6)
+		{
+			switch (state)
+			{
+				case PS_WALK:
+				var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
+					smallspark.depth = -100;			
+				break;
+				case PS_DASH:
+					var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
+					smallspark.depth = -100;
+				break;
+				case PS_FIRST_JUMP:
+				case PS_IDLE_AIR:
+					var smallspark = spawn_hit_fx (x - 60 * spr_dir, y - 14, smallsparkle);
+					smallspark.depth = -100;
+				break;
+				default:
+				break;
+			}
+		}
+		if (smokeCounter >=12)
+		{
+			switch state
+			{
+				case PS_IDLE:
+				case PS_WALK:
+				case PS_CROUCH:
+					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 32, bike_smokeH);
+					bikeSmoke.depth = -100;
+				break;
+				case PS_WALK_TURN:
+				case PS_DASH_START:
+				case PS_DASH:
+				case PS_DASH_STOP:
+				case PS_DASH_TURN:
+					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 32, bike_smokeH);
+					bikeSmoke.depth = -100;
+				break;
+				case PS_JUMPSQUAT:
+				case PS_LAND:
+				case PS_LANDING_LAG:
+					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 18, 13);
+					bikeSmoke.depth = -100;
+				break;
+				case PS_FIRST_JUMP:
+				case PS_IDLE_AIR:
+					var bikeSmoke = spawn_hit_fx (x - 60 * spr_dir, y - 14, bike_smokeD);
+					bikeSmoke.depth = -100;
+				break;
+				case PS_WALL_JUMP:
+					var bikeSmoke = spawn_hit_fx (x - 10 * spr_dir, y, bike_smokeV);
+					bikeSmoke.depth = -100;
+				break;
+				default:
+				break;
+			}
+			smokeCounter = 0;
+		}
+	}
+	//Make Carol get off the bike if fuel runs out
+	if (fuel <= 0)
+	{
+		fuel = 0;
+		if (state != PS_HITSTUN && state != PS_WALL_JUMP)
+		{
+			sound_stop(sound_get("motorbike_move"));
+			sound_stop(sound_get("motorbike_idle"));
+			sound_stop(sound_get("motorbike_stop"));
+			sound_play(sound_get("motorbike_stop"));
+			if (voice == 1)
+			{
+				sound_stop(sound_get ("crap"));
+				sound_play(sound_get ("crap"));
+			}
+			set_attack(AT_DSPECIAL_2);
+		}
+	}
+	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == true)
+	{
+		comboCounter = 0;
+	}
+}
 
 //Reset Wall jumps and certain cooldowns
 if (!free)
@@ -317,199 +523,6 @@ with (oPlayer) {
 		 		break;
 		 	}
 		}
-	}
-}
-
-//While riding the motorbike, fuel is consumed
-if (motorbike == true)
-{
-	walk_speed = 6;
-	initial_dash_speed = 10;
-	dash_speed = 10;
-	dash_stop_time = 12;
-	djump_speed = 10;
-	hurtbox_spr = sprite_get("bike_hurtbox");
-	crouchbox_spr = sprite_get("bike_crouch_hurtbox");
-	jump_sound = sound_get("motorbike_wheelie");
-	djump_sound = sound_get("motorbike_spin");
-	
-	if has_rune("I")
-	{
-    	jump_speed = 15;
-	}
-
-	if has_rune("O")
-	{
-	   	jump_speed = 16;
-		walk_accel = 0.8;
-	 	initial_dash_time = 9;
-		initial_dash_speed = 11;
- 		dash_turn_time = 12;
-	}
-	
-	fuel_burn++;
-	{
-		if (fuel_burn > 50)
-    	{
-    		fuel = fuel - 1;
-    		fuel_burn = 0;
-    	}
-	}
-	//The following code creates bike sounds
-	if (state == PS_IDLE && fuel > 0)
-	{
-		bike_state_timer++;
-		if (state_timer = 1)
-		{
-			sound_play(sound_get("motorbike_idle"));
-			sound_stop(sound_get("motorbike_move"));
-			bike_state_timer = 1;
-		}
-		if (bike_state_timer = 1)
-		{	
-			sound_play(sound_get("motorbike_idle"));
-			sound_stop(sound_get("motorbike_move"));
-		}
-		else if (bike_state_timer = 100)
-		{
-			sound_stop(sound_get("motorbike_idle"));
-			sound_play(sound_get("motorbike_idle"));
-			bike_state_timer = 0;
-		}
-	}
-
-	//Sound effects while on the bike
-	if ((state == PS_WALK || state = PS_DASH_START || state=PS_DASH) && fuel > 0)
-	{
-		//You would get hurt if you got hit by a bike... so here's a hitbox for moving on the bike
-		if ((state == PS_WALK && state_timer > 100 || state == PS_DASH && state_timer > 10))
-		{
-			create_hitbox( AT_EXTRA_1, 1, x, y);
-		}
-		else
-		{
-			destroy_hitboxes();
-		}
-		bike_state_timer++;
-		if (state_timer = 1)
-		{
-			bike_state_timer = 1;
-			sound_play(sound_get("motorbike_move"));
-			sound_stop(sound_get("motorbike_idle"));
-		}
-		if (bike_state_timer = 1)
-		{
-			sound_play(sound_get("motorbike_move"));
-			sound_stop(sound_get("motorbike_idle"));
-		}
-		else if (bike_state_timer = 100)
-		{
-			sound_stop(sound_get("motorbike_move"));
-			sound_play(sound_get("motorbike_move"));		
-		}
-	}
-
-	//Sound effects while stopping with the bike
-	if (state == PS_DASH_STOP || state = PS_DASH_TURN)
-	{
-		if (state_timer == 1)
-		{
-			sound_stop(sound_get("motorbike_move"));
-			sound_stop(sound_get("motorbike_idle"));
-			sound_stop(sound_get("motorbike_stop"));
-			sound_play(sound_get("motorbike_stop"));
-		}
-	}
-	//sound effects when jumping with the bike
-	if (state == PS_JUMPSQUAT)
-	{
-		sound_stop(sound_get("motorbike_move"));
-		sound_stop(sound_get("motorbike_idle"));
-		sound_stop(sound_get("motorbike_stop"));
-	}
-	if (fuel > 0)
-	{
-		//Create the smoke effects that come out from the bike as well as the sparkles from movement
-		smokeCounter++;
-		if (smokeCounter == 6)
-		{
-			if (state == PS_WALK)
-			{
-			var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
-				smallspark.depth = -100;			
-			}
-			if (state == PS_DASH)
-			{
-				var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
-				smallspark.depth = -100;
-			}
-			if (state == PS_FIRST_JUMP || state == PS_IDLE_AIR)
-			{	
-				var smallspark = spawn_hit_fx (x - 60 * spr_dir, y - 14, smallsparkle);
-				smallspark.depth = -100;
-			}
-		}
-		if (smokeCounter >=12)
-		{
-			switch state
-			{
-				case PS_IDLE:
-				case PS_WALK:
-				case PS_CROUCH:
-					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 32, bike_smokeH);
-					bikeSmoke.depth = -100;
-				break;
-				case PS_WALK_TURN:
-				case PS_DASH_START:
-				case PS_DASH:
-				case PS_DASH_STOP:
-				case PS_DASH_TURN:
-					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 32, bike_smokeH);
-					bikeSmoke.depth = -100;
-				break;
-				case PS_JUMPSQUAT:
-				case PS_LAND:
-				case PS_LANDING_LAG:
-					var bikeSmoke = spawn_hit_fx (x - 80 * spr_dir, y - 18, 13);
-					bikeSmoke.depth = -100;
-				break;
-				case PS_FIRST_JUMP:
-				case PS_IDLE_AIR:
-					var bikeSmoke = spawn_hit_fx (x - 60 * spr_dir, y - 14, bike_smokeD);
-					bikeSmoke.depth = -100;
-				break;
-				case PS_WALL_JUMP:
-					var bikeSmoke = spawn_hit_fx (x - 10 * spr_dir, y, bike_smokeV);
-					bikeSmoke.depth = -100;
-				break;
-				default:
-				
-				break;
-			}
-			smokeCounter = 0;
-		}
-	}
-	//Make Carol get off the bike if fuel runs out
-	if (fuel <= 0)
-	{
-		fuel = 0;
-		if (state != PS_HITSTUN && state != PS_WALL_JUMP)
-		{
-			sound_stop(sound_get("motorbike_move"));
-			sound_stop(sound_get("motorbike_idle"));
-			sound_stop(sound_get("motorbike_stop"));
-			sound_play(sound_get("motorbike_stop"));
-			if (voice == 1)
-			{
-				sound_stop(sound_get ("crap"));
-				sound_play(sound_get ("crap"));
-			}
-			set_attack(AT_DSPECIAL_2);
-		}
-	}
-	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND && motorbike == true)
-	{
-		comboCounter = 0;
 	}
 }
 

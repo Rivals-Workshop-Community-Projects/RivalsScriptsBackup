@@ -36,10 +36,16 @@ if (free && !ai_recovering && motorbike == false)
 //Carol's recovery is more unique that other characters, this code helps her recover
 if (ai_recovering && motorbike == false)
 {
+	if (x<get_stage_data( SD_X_POS)) {
+		distX=get_stage_data( SD_X_POS)-x;
+	} else {
+		distX = x-(get_stage_data( SD_X_POS)+get_stage_data( SD_WIDTH));
+	}
 	up_down=false;
 	right_down=false;
 	left_down=false;
-	
+	special_down = (state == PS_ATTACK_AIR && attack == AT_FSPECIAL);
+
 	if (x<get_stage_data( SD_X_POS)) {
 		right_down=true;
 		left_down=false;
@@ -47,12 +53,37 @@ if (ai_recovering && motorbike == false)
 		left_down=true;
 		right_down=false;
 	}
-	if (djumps == max_djumps && special_down == false)
+	if (djumps == max_djumps && special_down == false && distX > 40)
 	{
 		special_down = true;
-		if (can_wall_jump && has_walljump && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
+	}
+	if (can_wall_jump && has_walljump && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
+	{
+		jump_down = true;
+	}
+	else if (can_wall_jump && has_walljump && !place_meeting(x + 80 * spr_dir, y, asset_get("par_block")) 
+	&& place_meeting(x + 80 * spr_dir, y + 80, asset_get("par_block")))
+	{
+		if (x<get_stage_data( SD_X_POS)) {
+			right_down=true;
+			left_down=false;
+		} else{
+			left_down=true;
+			right_down=false;
+		}
+		attack_pressed = true;
+	}
+	else if (walljump_number == 5 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
+	{
+		jumo_down = false;
+		up_down = true;
+		if (has_airdodge)
 		{
-			jump_down = true;
+			shield_down = true;
+		}
+		else
+		{
+			special_down = true;
 		}
 	}
 }
@@ -72,7 +103,7 @@ if (fuel == 40 && !ai_recovering && motorbike == false && !free)
 }
 
 //Attempt to either wall jump or ride up the walls when near a wall (I don't know if this works or not!)
-if (can_wall_jump && (position_meeting(x + 20, y-50,asset_get("par_block"))) || position_meeting(x - 20, 
+if (can_wall_jump && (place_meeting(x + 20, y-50,asset_get("par_block"))) || place_meeting(x - 20, 
 y-50,asset_get("par_block")) && !ai_recovering && y > get_stage_data( SD_Y_POS))
 {
 	if (motorbike == true)
@@ -90,53 +121,142 @@ y-50,asset_get("par_block")) && !ai_recovering && y > get_stage_data( SD_Y_POS))
 //Only attack with Strongs if the opponent can be KO'd
 if (get_player_damage(ai_target.player) >= strongPercent)
 {
-	joy_pad_idle = false;
-	attack_down = false;
-	if (!ai_recovering)
+	if (temp_level < 7)
 	{
-		special_down = false;
+		joy_pad_idle = false;
+		attack_down = false;
+		if (!ai_recovering)
+		{
+			special_down = false;
+		}
+		strong_pressed = true;
 	}
-	strong_pressed = true;
+	else
+	{
+		//Call the hitbox selection function, it stores the value in chosenAttack
+       	hitboxloc("strongs");
+       	
+       	switch (chosenAttack)
+       	{
+   			//UStrong
+    		case AT_USTRONG:
+    		case AT_USTRONG_2:
+	    		if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		{
+		        	clear_button_buffer( PC_ATTACK_PRESSED );
+			        joy_pad_idle = true;
+        			up_down = false;
+        			down_down = false;
+					left_down = false;
+					right_down = false;
+					special_pressed = false;
+					attack_pressed = false;
+					up_strong_pressed = true;
+	    		}
+        	break;
+	        //FStrong
+			case AT_FSTRONG:
+			case AT_FSTRONG_2:
+	    		if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		{
+	    			clear_button_buffer( PC_ATTACK_PRESSED );
+		            joy_pad_idle = true;
+				    up_down = false;
+        			down_down = false;
+				    left_down = false;
+				    right_down = false;
+				    special_pressed = false;
+				    attack_pressed = false;
+					if x > ai_target.x{
+		        		left_strong_pressed = true;
+		    		} else {
+		        		right_strong_pressed = true;
+		    		}
+	    		}
+	   	    break;
+       		//DStrong
+       		case AT_DSTRONG:
+       		case AT_DSTRONG_2:
+	    		if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		{
+	    			clear_button_buffer( PC_ATTACK_PRESSED );
+			   	    joy_pad_idle = true;
+				    up_down = false;
+    		    	down_down = false;
+					left_down = false;
+					right_down = false;
+					special_pressed = false;
+					attack_pressed = false;
+					down_strong_pressed = true;
+	    		}
+		    break;
+		    case AT_USPECIAL:
+		    case AT_USPECIAL_2:
+	    		if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		{
+	    			clear_button_buffer( PC_ATTACK_PRESSED );
+			   	    joy_pad_idle = false;
+				    up_down = true;
+    		    	down_down = false;
+					left_down = false;
+					right_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+	    		}
+		    break;
+		    default:
+		    break;
+       	}
+	}
 }
 
 
-//combo logic to ensure jabs go through
-if (state == PS_ATTACK_GROUND && (attack == AT_JAB || attack == AT_FTILT || attack == AT_DTILT || attack == AT_UTILT 
-|| attack == 45 || attack == 46 || attack == 47 || attack == 48))
+switch (attack)
 {
+	//combo logic to ensure jabs go through
+	case AT_JAB:
+	case AT_FTILT:
+	case AT_UTILT:
+	case AT_DTILT:
+	case 45:
+	case 46:
+	case 47:
+	case 48:
 	if (window = 1 && window_timer == 1)
 	{
-		var random_direction = random_func(9, 4, 1);
+		random_direction = random_func(9, 4, 1);
 	}
 	if (random_direction > 0)
 	{
 		if ((window == 3 || window == 5) && window_timer == 1 && has_hit_player)
 		{
-			if (random_direction == 1)
+			switch (random_direction)
 			{
-				joy_pad_idle = false;
-				if (spr_dir == 1)
-				{
-					right_down = true;
-				}
-				else
-				{
-					left_down = true;
-				}
-				attack_pressed = true;
+				case 1:
+					joy_pad_idle = false;
+					if (spr_dir == 1)
+					{
+						right_down = true;
+					}
+					else
+					{
+						left_down = true;
+					}
+					attack_pressed = true;
+				break;
+				case 2:
+					joy_pad_idle = false;
+					up_down = true;
+					attack_pressed = true;
+				break;
+				case 3:
+					joy_pad_idle = false;
+					up_down = true;
+					attack_pressed = true;
+				break;
+				default:
+				break;
 			}
-			else if (random_direction == 2)
-			{
-				joy_pad_idle = false;
-				up_down = true;
-				attack_pressed = true;
-			}
-			else if (random_direction == 3)
-			{
-				joy_pad_idle = false;
-				up_down = true;
-				attack_pressed = true;
-			}		
 		}
 	}
 	else if (random_direction == 0)
@@ -146,6 +266,79 @@ if (state == PS_ATTACK_GROUND && (attack == AT_JAB || attack == AT_FTILT || atta
 			joy_pad_idle = false;
 			attack_pressed = true;
 		}
+	}
+	break;
+	case AT_DAIR:
+		if (temp_level >= 7 && !do_not_attack && !ai_recovering && !offstage && has_hit)
+		{
+			up_down = true;
+			special_pressed = true;
+		}
+	break;
+	case AT_EXTRA_2:
+		if (temp_level >= 7 && !do_not_attack && !ai_recovering && !offstage && has_hit)
+		{
+			if (x<ai_target.x) {
+				right_down=true;
+				left_down=false;
+			} else{
+				left_down=true;
+				right_down=false;
+			}
+			special_pressed = true;
+		}
+	break;
+	case AT_NSPECIAL:
+	case AT_NSPECIAL_2:
+		if (!has_hit_player)
+		{
+			if (x<get_stage_data( SD_X_POS)) {
+				right_down=true;
+				left_down=false;
+			} else{
+				left_down=true;
+				right_down=false;
+			}
+			down_down = true;
+			shield_pressed = true;
+		}
+		else if (has_hit && (window == 2 && window_timer >= 79))
+		{
+			jump_down = true;
+			attack_down = true;
+		}
+	case AT_DATTACK:
+		if (temp_level >= 7 && !do_not_attack && !ai_recovering && offstage && has_hit)
+		{
+			if (has_hit)
+			{
+				jump_pressed = true;
+			}
+			else if (window >= 3)
+			{
+				shield_down = true;
+			}
+		}		
+	break;
+	default:
+	break;
+}
+
+//Code for using Nitro Boost on the bike
+if (get_player_damage(ai_target.player) >= strongPercent && move_cooldown[AT_FSPECIAL] = 0 && !ai_recovering 
+&& ((x >= stagex +16 && x <= (room_width - stagex) - 600 && spr_dir = 1)|| (x <= (room_width - stagex) - 16 
+&& x >= stagex +600 && spr_dir = -1)) && motorbike == true)
+{
+	if (ai_target.y == y && (ai_target.x >= stagex && ai_target.x <= (room_width - stagex))) 
+	{
+		if (spr_dir == 1) {
+			right_down=true;
+			left_down=false;
+		} else {
+			right_down=false;
+			left_down=true;
+		}
+    	special_pressed=true;
 	}
 }
 
@@ -182,7 +375,7 @@ if (get_training_cpu_action() == CPU_STAND && !ai_recovering){
 }
 
 //Advanced Level Ai Stuff, mostly taken from The Knight.
-if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16){
+if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16 && !ai_recovering){
 	
 	//Check the width of the hurtbox
     if (ai_target.player != old_ai_target or target_init == true or hurtboxWidth = 0){
@@ -295,7 +488,10 @@ if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16){
 	}
     
     //valueReset
-    resetPredict();
+    if ((state !=PS_ATTACK_AIR || state !=PS_ATTACK_GROUND) && !ai_recovering)
+    {
+	    resetPredict();
+    }
     cancel_jab = false;
 	facing = false;
 	chasing = 0;
@@ -305,6 +501,35 @@ if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16){
 	targetdamage = get_player_damage( ai_target.player );
     var offstage = (x > room_width - stagex || x < stagex);
     var ai_target_offstage = (ai_target.x - hurtboxWidth > room_width - stagex || ai_target.x + hurtboxWidth < stagex);
+    
+    //Hitstun breakers
+    if (prev_state == PS_HITSTUN)
+    {
+    	var juggle_break = random_func(1, 1, 1);
+   		if (juggle_break == 0 || y > (stagey - 300) || !has_airdodge)
+    	{
+			clear_button_buffer( PC_ATTACK_PRESSED );
+   			joy_pad_idle = false;
+			up_down = false;
+    		down_down = false;
+			left_down = false;
+			right_down = false;
+			special_pressed = true;
+			attack_pressed = false;
+	   	}
+	   	else if (juggle_break == 1 && y <= (stagey - 300) && has_airdodge)
+	   	{
+	   		clear_button_buffer( PC_ATTACK_PRESSED );
+	       	joy_pad_idle = true;
+		   	left_down = false;
+    	   	right_down = false;
+    	   	up_down = false;
+    	   	down_down = true;
+    	   	special_pressed = false;
+    	   	attack_pressed = true;
+	   	}
+    }
+    
     //Sit near edge when AI target is offstage
     if (ai_target_offstage)
     {
@@ -318,7 +543,7 @@ if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16){
 		}
 	}
 	//Don't attack when the opponent is attacking
-    if (ai_target.state = PS_ATTACK_GROUND || ai_target.state = PS_ATTACK_AIR)
+    if ((ai_target.state = PS_ATTACK_GROUND || ai_target.state = PS_ATTACK_AIR) && !ai_target_offstage)
     {
     	joy_pad_idle = false;
 		attack_down = false;
@@ -334,35 +559,299 @@ if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16){
 		do_not_attack = false;
 	}
 	
-	if (motorbike == false)
+	if (!do_not_attack && get_player_damage(ai_target.player) < strongPercent)
 	{
-		if (attack == AT_DAIR && !do_not_attack && !ai_recovering)
+		if (!free)
 		{
-			if (has_hit)
-			{
-				up_pressed = true;
-				special_pressed = true;
-			}
+			hitboxloc("tilts"); //Project all attacks and returns which is in range and it is based on a set of conditions or random otherwise
+           
+        	switch (chosenAttack)
+        	{
+        		case AT_DATTACK:
+        		case 3:
+    			//Dattack
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+	    		    	clear_button_buffer( PC_ATTACK_PRESSED );
+    					if ai_target.x > x{
+    						right_hard_pressed = true;
+    					} 
+    					else {
+    						left_hard_pressed = true;
+    					}
+    					joy_pad_idle = true;
+    					left_down = false;
+    					right_down = false;
+    					up_down = false;
+    					down_down = false;
+    					special_pressed = false;
+    					attack_pressed = true;
+    					rangedtimer = 300;
+		    		}
+        		break;
+	    		//Jab
+	    		case AT_JAB:
+	    		case 48:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+	    				clear_button_buffer( PC_ATTACK_PRESSED );
+	 					joy_pad_idle = true;
+    					left_down = false;
+    					right_down = false;
+    					up_down = false;
+    					down_down = false;
+		 				special_pressed = false;
+						attack_pressed = true;
+	    				rangedtimer = 300;
+	    			}
+				break;
+			   //FTilt
+				case AT_FTILT:
+				case 47:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+	    				clear_button_buffer( PC_ATTACK_PRESSED );
+		 				joy_pad_idle = true;
+		     			if x > ai_target.x{
+		     				left_down = true;
+    		 				right_down = false;
+				 	  	} else {
+        			    	left_down = false;
+        				 	right_down = true;
+    					}
+        				up_down = false;
+        				down_down = false;
+        				special_pressed = false;
+    					attack_pressed = true;
+    					rangedtimer = 300;
+	    			}
+				break;
+				//Utilt
+				case AT_UTILT:
+				case 46:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+		    			clear_button_buffer( PC_ATTACK_PRESSED );
+		 				joy_pad_idle = true;
+		     			left_down = false;
+			     		right_down = false;
+					    up_down = true;
+			 		    down_down = false;
+					    special_pressed = false;
+				    	attack_pressed = true;
+						rangedtimer = 300;
+	    			}
+				break;
+				//DTilt
+				case AT_DTILT:
+				case 45:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+	        			clear_button_buffer( PC_ATTACK_PRESSED );
+		     			joy_pad_idle = true;
+    		 			left_down = false;
+        				right_down = false;
+        				up_down = false;
+        				down_down = true;
+    			 		special_pressed = false;
+    					attack_pressed = true;
+						rangedtimer = 300;
+	    			}
+				break;
+				//Up Special
+			    case AT_USPECIAL:
+			    case AT_USPECIAL_2:
+		 			if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		{
+	    			clear_button_buffer( PC_ATTACK_PRESSED );
+			   	    joy_pad_idle = false;
+				    up_down = true;
+    		    	down_down = false;
+					left_down = false;
+					right_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+	    			}
+			    break;
+			    case AT_NSPECIAL:
+   			    case AT_NSPECIAL_2:
+		 			if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		{
+	    				clear_button_buffer( PC_ATTACK_PRESSED );
+			   			joy_pad_idle = false;
+						up_down = false;
+    		    		down_down = false;
+						left_down = false;
+						right_down = false;
+						special_pressed = true;
+						attack_pressed = false;
+	    			}
+				default:
+				break;
+        	}
 		}
+        //Aerials    
+    	else{
+        	hitboxloc("aerials");
+        	
+        	switch (chosenAttack)
+        	{
+        		case AT_DAIR:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL && has_airdodge)
+	    		    {
+	    				clear_button_buffer( PC_ATTACK_PRESSED );
+	    		    	joy_pad_idle = true;
+		 		    	left_down = false;
+    			      	right_down = false;
+    			    	up_down = false;
+    			    	down_down = true;
+    			       	special_pressed = false;
+    			       	attack_pressed = true;
+	    			}
+	    		break;
+        		case 40:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+	    				clear_button_buffer( PC_ATTACK_PRESSED );
+	    		    	joy_pad_idle = true;
+		 		    	left_down = false;
+    			      	right_down = false;
+    			    	up_down = false;
+    			    	down_down = true;
+    			       	special_pressed = false;
+    			       	attack_pressed = true;
+	    			}
+    		    break;
+    		    case AT_NAIR:
+				case 44:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+           				clear_button_buffer( PC_ATTACK_PRESSED );
+    	       			joy_pad_idle = true;
+    	       			left_down = false;
+    	       			right_down = false;
+    	    			up_down = false;
+    			    	down_down = false;
+		    	       	special_pressed = false;
+    			       	attack_pressed = true;
+	    			}
+	    		break;
+	    		case AT_UAIR:
+				case 42:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+    	    			clear_button_buffer( PC_ATTACK_PRESSED );
+    	        		joy_pad_idle = true;
+    	        		left_down = false;
+    	        		right_down = false;
+    	        		up_down = true;
+    	        		down_down = false;
+    	        		special_pressed = false;
+    	        		attack_pressed = true;
+	           		}
+				break;
+				case AT_FAIR:
+				case 43:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+    		        	clear_button_buffer( PC_ATTACK_PRESSED );
+    			       	joy_pad_idle = true;
+    			       	if ai_target.x < x{
+    			           	left_down = true;
+    			           	right_down = false;
+    			       	} else {
+    			           	left_down = false;
+    			           	right_down = true;
+    			       	}
+    			       	up_down = false;
+				       	down_down = false;
+				       	special_pressed = false;
+	    		       	attack_pressed = true;
+	    			}
+	    		break;
+	    		case AT_BAIR:
+	    		case 39:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+		               	clear_button_buffer( PC_ATTACK_PRESSED );
+    		       		joy_pad_idle = true;
+    		    		if ai_target.x < x{
+    		        		left_down = true;
+    		       			right_down = false;
+    		       		} else {
+    		           		left_down = false;
+    		        		right_down = true;
+    		       		}
+    		   			up_down = false;
+    		   			down_down = false;
+    		       		special_pressed = false;
+    		       		attack_pressed = true;
+	    			}
+	    		break;
+	    		case AT_USPECIAL:
+	    		case AT_USPECIAL_2:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+	    		    {
+    	    			clear_button_buffer( PC_ATTACK_PRESSED );
+    	        		joy_pad_idle = true;
+    	        		left_down = false;
+    	        		right_down = false;
+    	        		up_down = false;
+    	        		down_down = false;
+	   	        		attack_pressed = false;
+    	        		if (special_down = true)
+    	        		{
+    	        			jump_pressed = true;
+	    	        		special_pressed = false;
+    	        		}
+    	        		else
+    	        		{
+    	        			jump_pressed = false;
+	    	        		special_pressed = true;    	        			
+    	        		}
+	    			}
+	    		break;
+	    		case AT_EXTRA_2:
+	    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL && djumps == 0)
+	    		    {
+    	    			clear_button_buffer( PC_ATTACK_PRESSED );
+    	        		joy_pad_idle = true;
+    	        		left_down = false;
+    	        		right_down = false;
+    	        		up_down = false;
+    	        		down_down = false;
+	   	        		attack_pressed = false;
+	   	        		if (!ai_recovering)
+	   	        		{
+				    	   special_pressed = false; 
+	   	        		}
+    	        		jump_pressed = true;
+	    			}
+	    		break;
+				default:
+				break;
+	       	}
+    	}
 	}
+
 }
 
-#define predictloc
+#define predictlocTarget
 
 fprediction = argument[0];
 
-if(!free and hsp == 0){
-	new_x = prediction_array[@0][@ 0];
-	new_y = prediction_array[@0][@ 1];
+if(!ai_target.free and ai_target.hsp == 0){
+	xtrag = prediction_array_target[@0][@ 0];
+	ytrag = prediction_array_target[@0][@ 1];
 	return;
 }
 
-if fprediction >= stopped_at and stopped_at != -1{
-	xtrag = prediction_array[@stopped_at - 1][@ 0];
-	ytrag = prediction_array[@stopped_at - 1][@ 1];
+if fprediction >= stopped_at_target and stopped_at_target != -1{
+	xtrag = prediction_array_target[@stopped_at_target - 1][@ 0];
+	ytrag = prediction_array_target[@stopped_at_target - 1][@ 1];
 	return;
 }
-//print_debug("hi")
+
 var plat = 0;
 var stage = 0;
 
@@ -371,107 +860,321 @@ var new_y_c = 0;
 var new_vsp = 0;
 var new_hsp = 0;
 
-if fprediction > current_prediction{
+if fprediction > current_prediction_target{
 	
 	var collide = false;
-	for (var i = current_prediction; i < fprediction; i++){
-		
-		//Get values from current loop
-		new_x_c = prediction_array[@current_prediction][@ 0];
-		new_y_c = prediction_array[@current_prediction][@ 1];
-		new_vsp = prediction_array[@current_prediction][@ 2];
-		new_hsp = prediction_array[@current_prediction][@ 3];
-		current_prediction++;
-		//print_debug(string(fprediction) + " " + string(current_prediction) + " " + string(stopped_at));
-		var project_y = new_vsp + grav;
-		
-		if project_y > max_fall{
-			project_y = max_fall;
+	new_x_c = prediction_array_target[@current_prediction_target][@ 0];
+	new_y_c = prediction_array_target[@current_prediction_target][@ 1];
+	new_vsp = prediction_array_target[@current_prediction_target][@ 2];
+	new_hsp = prediction_array_target[@current_prediction_target][@ 3];
+	current_prediction_target++;
+
+	var project_y = new_vsp + grav;
+	
+	if project_y > ai_target.max_fall{
+		project_y = ai_target.max_fall;
+	}
+	if ai_target.fast_falling{
+		if project_y > ai_target.fast_fall{
+			project_y = ai_target.fast_fall;
 		}
-		if fast_falling{
-			if project_y > fast_fall{
-				project_y = fast_fall;
-			}
-		}
-		
-		stage = position_meeting(new_x_c, new_y_c + project_y, solid_asset);
-		plat = position_meeting(new_x_c, new_y_c + project_y, plat_asset);
-		if (stage or (plat and project_y > 0)){
-			new_vsp = 0;
-			collide = true;
-		}else{
-			new_vsp = project_y;
-			new_y_c += new_vsp;
-		}
-		
-		//X manipulation, apply friction, if it would change polarity it makes it equal to 0. 
-		if new_vsp == 0 and collide{
-			if new_hsp > 0{
-				var project_x = new_hsp - ground_friction;
-				//If it's touching the ground and velocity equals 0 stop predicting and stores previous prediction frame
-				if project_x < 0{
-					project_x = 0;
-					new_x = prediction_array[@current_prediction - 1][@ 0];
-					new_y = prediction_array[@current_prediction - 1][@ 1];
-					stopped_at = current_prediction;
-					return;
-				}
-			}else{
-				var project_x = new_hsp + ground_friction;
-				if project_x > 0{
-					//If it's touching the ground and velocity equals 0 stop predicting and stores previous prediction frame
-					project_x = 0;
-					new_x = prediction_array[@current_prediction - 1][@ 0];
-					new_y = prediction_array[@current_prediction - 1][@ 1];
-					stopped_at = current_prediction;
-					return;
-				}
-			}
-		}else{
-			//In the air, if it would change polarity it makes it equal to 0. 
-			if new_hsp > 0{
-				var project_x = new_hsp - air_frict;
-				if project_x < 0{
-					project_x = 0;
-				}
-			}else if new_hsp < 0{
-				var project_x = new_hsp + air_frict;
-				if project_x > 0{
-					project_x = 0;
-				}
-			}
-			
-		}
-		
-		//Test to see if X manipualtion makes it collide with walls
-		stage = position_meeting(new_x_c + project_x, new_y_c - 2, solid_asset);
-		plat = position_meeting(new_x_c + project_x, new_y_c - 2, plat_asset);
-		if stage or plat{
-			new_hsp = 0;
-			
-		}else{
-			new_hsp = project_x;
-			new_x_c = new_x_c + new_hsp;
-		}
-		
-		//Store values in the array
-		prediction_array[@current_prediction][@ 0] = new_x_c;
-		prediction_array[@current_prediction][@ 1] = new_y_c;
-		prediction_array[@current_prediction][@ 2] = new_vsp;
-		prediction_array[@current_prediction][@ 3] = new_hsp;
 	}
 	
-	new_x = prediction_array[@fprediction][@ 0];
-	new_y = prediction_array[@fprediction][@ 1];
+	stage = position_meeting(new_x_c, new_y_c + project_y, solid_asset);
+	plat = position_meeting(new_x_c, new_y_c + project_y, plat_asset);
+	if stage or (plat and project_y > 0){
+		new_vsp = 0;
+		collide = true;
+	}else{
+		new_vsp = project_y;
+		new_y_c += new_vsp;
+	}
+	
+	//X manipulation, apply friction, if it would change polarity it makes it equal to 0. 
+	if new_vsp == 0 and collide{
+		if new_hsp > 0{
+			var project_x = new_hsp - ai_target.ground_friction;
+			if project_x < 0{
+				project_x = 0;
+				//If it's touching the ground and velocity equals 0 stop predicting and stores previous prediction frame
+				xtrag = prediction_array_target[@current_prediction_target - 1][@ 0];
+				ytrag = prediction_array_target[@current_prediction_target - 1][@ 1];
+				stopped_at_target = current_prediction_target;
+				return;
+			}
+		}else{
+			var project_x = new_hsp + ai_target.ground_friction;
+			if project_x > 0{
+				project_x = 0;
+				//If it's touching the ground and velocity equals 0 stop predicting and stores previous prediction frame
+				xtrag = prediction_array_target[@current_prediction_target - 1][@ 0];
+				ytrag = prediction_array_target[@current_prediction_target - 1][@ 1];
+				stopped_at_target = current_prediction_target;
+				return;
+		}
+		}
+	}else{
+		//In the air, if it would change polarity it makes it equal to 0. 
+		if new_hsp > 0{
+			var project_x = new_hsp - ai_target.air_frict;
+			if project_x < 0{
+				project_x = 0;
+			}
+		}else if new_hsp < 0{
+			var project_x = new_hsp + ai_target.air_frict;
+			if project_x > 0{
+				project_x = 0;
+			}
+		}
+		
+	}
+	
+	//Test to see if X manipualtion makes it collide with walls
+	stage = position_meeting(new_x_c + project_x, new_y_c - 2, solid_asset);
+	plat = position_meeting(new_x_c + project_x, new_y_c - 2, plat_asset);
+	if stage or plat{
+		new_hsp = 0;
+		
+	}else{
+		new_hsp = project_x;
+		new_x_c = new_x_c + new_hsp;
+	}
+	
+	//Store values in the array
+	prediction_array_target[@current_prediction_target][@ 0] = new_x_c;
+	prediction_array_target[@current_prediction_target][@ 1] = new_y_c;
+	prediction_array_target[@current_prediction_target][@ 2] = new_vsp;
+	prediction_array_target[@current_prediction_target][@ 3] = new_hsp;
+
+	xtrag = prediction_array_target[@fprediction][@ 0];
+	ytrag = prediction_array_target[@fprediction][@ 1];
 	
 }else{
-	new_x = prediction_array[@fprediction][@ 0];
-	new_y = prediction_array[@fprediction][@ 1];
-	//print_debug("frame:" + string(fprediction) + " new_x:" + string(new_x) + " new_y:" + string(new_y) + " new_vsp:" + string(prediction_array[fprediction][@ 2]) + " new_hsp:" + string(prediction_array[fprediction][@ 3]));
+	xtrag = prediction_array_target[@fprediction][@ 0];
+	ytrag = prediction_array_target[@fprediction][@ 1];
 }
+
+#define predictlocSimple
+
+fprediction = argument[0];
+xtrag = ai_target.x + (ai_target.hsp * fprediction);
+ytrag = ai_target.y + (ai_target.vsp * fprediction);
+
+new_x = x + (hsp * fprediction);
+new_y = y + (vsp * fprediction);
+
+if !(x > room_width - stagex || x < stagex)
+{
+	if !(ai_target.x > room_width - stagex || ai_target.x < stagex){
+		if ytrag >= stagey{
+			ytrag = stagey;
+		}
+		if !ai_target.free{
+			ytrag = ai_target.y;
+		}
+	}
+}
+
+
+if !(x > room_width - stagex || x < stagex){
+	if new_y >= stagey{
+		new_y = stagey;
+	}
+	if !free{
+		new_y = y;
+	}
+}
+
 #define checkHurtboxWidth
 
 hurtboxWidth = ai_target.bbox_right - ai_target.x;
+
+#define hitboxloc
+
+if (motorbike == true)
+{
+	switch(argument[0]){
+		case "tilts":
+			var attacke = [48, 47, 46, 45, 3, AT_USPECIAL_2, AT_NSPECIAL_2];
+			break;
+			
+		case "aerials":
+			var attacke = [44, 43, 42, 40, 39, AT_USPECIAL_2];
+			break;
+			
+		case "strongs":
+			var attacke = [AT_DSTRONG_2, AT_USTRONG_2, AT_FSTRONG_2];
+			break;
+	}
+}
+else
+{
+	switch(argument[0]){
+		case "tilts":
+			var attacke = [AT_JAB, AT_DTILT, AT_FTILT, AT_UTILT, AT_DATTACK, AT_USPECIAL, AT_NSPECIAL];
+			break;
+			
+		case "aerials":
+			var attacke = [AT_NAIR, AT_DAIR, AT_FAIR, AT_UAIR, AT_BAIR, AT_USPECIAL, AT_EXTRA_2];
+			break;
+			
+		case "strongs":
+			var attacke = [AT_DSTRONG, AT_USTRONG, AT_FSTRONG, AT_USPECIAL];
+			break;
+	}
+}
+
+var len = array_length_1d(attacke);
+
+var listAtk = [];
+var j = 0;
+var distadd_x = 0;
+var distadd_y = 0;
+
+//Distance from the predicted location
+xdist = abs(xtrag - x);
+ydist = abs(y - ytrag);
+
+//Project the attack
+var i = random_func(5, len, 1);
+//Special condition of range of the attack (if the character moves for example)
+if(attacke[i] == AT_DATTACK){
+	distadd_x = 150;
+	distadd_y = 0;
+}
+	
+//Get information of the first hitbox of the attack in the array
+
+//Special cases
+switch(attacke[i]){
+	default:
+		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
+		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
+		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
+		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
+		//Calculate when the hitbox will come out
+		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH);
+		break;
+	case 39:
+		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
+		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
+		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
+		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
+		//Calculate when the hitbox will come out
+		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 3;
+		break;
+	case 40:
+		var ai_bike_dist = point_distance(x, y, ai_target.x, ai_target.y);
+		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
+		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
+		atkwidth = 80 div 2;
+		atkheight = 80 div 2;
+		//Calculate when the hitbox will come out
+		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + (lengthdir_y(ai_bike_dist, 270)/ 9);
+		break;
+	case 43:
+		var ai_bike_dist = point_distance(x, y, ai_target.x, ai_target.y);
+		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
+		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
+		atkwidth = 80 div 2;
+		atkheight = 80 div 2;
+		//Calculate when the hitbox will come out
+		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + (lengthdir_x(ai_bike_dist, 0)/ 16);
+		break;
+	case AT_DATTACK:
+	case 3:
+	case AT_NAIR:
+		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
+		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
+		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
+		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
+		//Calculate when the hitbox will come out
+		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 1;
+		break;
+	case AT_DAIR:
+		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
+		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
+		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
+		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
+		//Calculate when the hitbox will come out
+		var frame = 6;
+		break;
+	case AT_USTRONG:
+		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
+		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
+		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
+		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
+		//Calculate when the hitbox will come out
+		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 2;
+		break;	
+	case AT_FSTRONG_2:
+	case AT_USTRONG_2:
+		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
+		ypos = get_hitbox_value( attacke[i], 1, HG_HITBOX_Y ) + distadd_y;
+		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
+		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
+		//Calculate when the hitbox will come out
+		var frame = get_window_value(attacke[i], 1, AG_WINDOW_LENGTH) + 5;
+		break;
+}
+
+predictlocSimple(frame);
+predictlocTarget(frame);
+		
+	//Long condition to set the boundaries of the attack (this always calcules the boundaries in rectangles for performance, if the hitbox is an ellipse it might not hit)
+	//Test if the predicted location falls inside the boundaries/range
+if (xtrag < new_x + xpos + atkwidth or xtrag - hurtboxWidth < new_x + xpos + atkwidth) and (xtrag > new_x + xpos - atkwidth or xtrag + hurtboxWidth > new_x + xpos - atkwidth){
+	if (ypos + atkheight + new_y < ytrag or ypos - atkheight + new_y < ytrag) and (ypos + atkheight + new_y > ytrag - ai_target.char_height or ypos - atkheight + new_y > ytrag - ai_target.char_height){
+		
+		//Add the attack in range to a new array
+		listAtk[j] = attacke[i];
+		j++;
+	}
+}
+
+var reroll = false;
+len = array_length_1d(listAtk);
+iterations = 0;
+
+//Chooses from the new array based on a set of conditions randomly, test are done to reroll for a new attack if a condition is not met
+if len != 0{
+	while(!reroll and iterations < 5){
+		
+		iterations++;
+		
+		chosenAttack = listAtk[random_func(2, j, true)];
+		
+		//If there is only one attack do not reroll
+		
+		if(chosenAttack == AT_DATTACK){
+			if attack == AT_DATTACK{
+				if random_func(6, 100, true) < 95{
+					chosenAttack = noone;
+					reroll = false;
+					break;
+				}
+			}
+		}
+		
+		
+		if(len == 1){
+			reroll = false;
+			break;
+		}
+		
+		//Any other attack not testing do not reroll
+		if !(chosenAttack == AT_JAB or chosenAttack == AT_FTILT){
+			reroll = false;
+			break;
+		}
+		
+	}
+	
+}else{
+	chosenAttack = noone;
+}
+
+
 
 #define resetPredict
 
