@@ -14,17 +14,17 @@ if my_hitboxID.attack == AT_FSPECIAL && move_cooldown [AT_BAIR] > 0 {
 }
 
 
-if ltrain < 98 {
-    ltrain += my_hitboxID.damage/8
+if ltrain < 95 {
+    ltrain += my_hitboxID.damage/5
 }
-if btrain < 98 {
+if btrain < 95 {
     btrain += my_hitboxID.damage/10
 }
-if atrain < 98 {
-    atrain += my_hitboxID.damage/8
+if atrain < 95 {
+    atrain += my_hitboxID.damage/5
 }
-if htrain < 98 {
-    htrain += my_hitboxID.damage/8
+if htrain < 95 {
+    htrain += my_hitboxID.damage/5
 }
 
 if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num > 1 {
@@ -79,7 +79,7 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7{
     fxlup = spawn_hit_fx(hit_player_obj.x,y - 120,lup)
     fxlup.depth = -100
     sound_play(asset_get("sfx_coin_collect"))
-    ltrain += 100
+    ltrain += 12
 }
 
 } else {

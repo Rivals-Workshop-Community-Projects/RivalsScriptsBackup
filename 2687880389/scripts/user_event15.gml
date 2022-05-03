@@ -176,8 +176,8 @@ initImage_ext(sprite_get("crouchmoving"), -5, fa_center, 1, 1, true, c_white, 5,
 
 initTip("The Energy Meter");
 initWords("fspecial costs " + string(booster_rush_cost_percent * 100) + " percent of the energy meter - the circle needs to be filled in to use it.");
-initWords("uspecial slowly consumes energy while in use.");
-initWords("Energy begins to recharge when you touch the ground, wall, or get hit.");
+initWords("uspecial slowly consumes energy while in use, but can still be used when the meter is empty for a last-ditch-effort boost ending in pratfall.");
+initWords("Energy begins to recharge when you touch the ground.");
 initWords("Energy recharges faster while grounded, but don't feel stuck to the ground!");
 initWords("Energy will constantly recharge until you use a move that spends it!");
 initImage_ext(sprite_get("fspecial"), 3, fa_left, 1, 1, true, c_white, 5, true, noone, noone, noone, noone);
@@ -448,6 +448,42 @@ initHeader("Compatible with");
 initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
+initPatch("1.17", "27 Apr, 2022");
+initWords("Rebalance ustrong, add some missing alt gimmicks");
+initHeader("Balance:");
+initSection("- Shrunk ftilt's hitbox to cover less of the body
+			- Changed uair kb angle (80->90)");
+initHeader("Ustrong Balance: Thanks to LessTime for the suggestions");
+initSection("- Can no longer fastfall during ustrong
+			- Adjusted ustrong bkb (10->9) and skb (0.9->1)
+			- Corrected tiny hitbox at base of feet to now match bkb (9.8->9) and skb (0.9->1)
+			- Increased endlag (13->20 on hit, 20->25 on whiff)
+			- Changed kb angle (80->90)
+			- Moved 2 cycles from after releasing button to before/during charge frame (unchanged 22 frames of total startup)
+			- Decreased lateral movement multiplier (effectively damping movement) during endlag (0.85>0.8)");
+initHeader("Presentation:");
+initSection("- Added Greenwood Town compatibility
+			- Added down-taunt transformations for the Mettaton, Queen, Cabinet Man, and Rotom alts
+			- Added missing gimmicks for Mettaton and Cabinet Man alt down-taunts");
+
+initPatch("1.16", "18 Apr, 2022");
+initWords("Try to make recovery merely good, no longer guaranteed");
+initHeader("Balance:");
+initSection("- Energy now only starts recovering on contact with the ground, no longer from getting hit or wall-jumping
+			- To compensate, using uspecial while empty will do a last-ditch-effort burst, granting some height, but entering pratfall (Thanks to LessTime for the suggestion)
+			- Reduced fspecial horizontal speed (9 -> 8.5)
+			- Reduced fspecial vertical speed (7.5 -> 6.5)
+			- Reduced total uspecial flight time (1.1s -> 0.7s)
+			- Increased aerial energy recovery time (~3.66s -> 4.5s) (Also reworked the calculation for these)
+			- Increased grounded energy recovery time (~1.375s -> 1.5s)
+			- Reduced dair bounce speed (-7 -> -6)
+			- Increased bair endlag to match dair (17->21, 21->27 with whifflag)
+			- Decreased fair's visual and hitbox size (slightly)");
+initHeader("Presentation:");
+initSection("- Added audio cue when energy runs out during uspecial
+			- Added embers falling during uspecial
+			- Updated munophone with the uspecial change");
+
 initPatch("1.15", "7 Apr, 2022");
 initWords("Is it balanced yet? How about now?");
 initHeader("Balance:");

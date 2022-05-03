@@ -303,6 +303,7 @@ if (attack == AT_FSPECIAL) {
 }
 
 if (attack == AT_USPECIAL) {
+	can_fast_fall = false;
 	/*
 	if (remap_specials) {
 	    // Freely flip
@@ -327,6 +328,7 @@ if (attack == AT_USPECIAL) {
             if (vsp > 0) {
                 vsp *= 0.4;
             }
+            uspecial_ember_countdown = uspecial_ember_countdown_max;
         }
         
         // rocket state should be cancellable by almost anything
@@ -355,6 +357,11 @@ if (attack == AT_USPECIAL) {
 	                	rocket_fuel -= fuel_consumption_rate;
 	            	} else {
 	            		rocket_fuel = 0;
+	            	}
+	            	
+	            	// Play a funny sound if we run  out of fuel
+	            	if (rocket_fuel == 0) {
+	            		sound_play(sound_get("gasp"), false, noone, 1, 1.1);
 	            	}
             	}
                 if (special_down) {
@@ -395,6 +402,8 @@ if (attack == AT_USPECIAL) {
                 	}
                 }
             }
+            /// Occasionally drop embers
+			create_embers();
         }
     }
 }
@@ -488,6 +497,28 @@ if (attack == AT_USPECIAL){
     }
 }
 */
+
+
+if (attack == AT_USPECIAL_2) {
+	can_fast_fall = false;
+	
+	if (window > 1) {
+        can_wall_jump = true;
+    }
+	
+	if (window == 1) {
+        /// Occasionally drop embers
+		create_embers();
+		if (vsp > 0) {
+			vsp *= 0.7;
+		}
+	}
+	
+	// Create smoke effect
+	if ((window == 2) && (window_timer == 1)) {
+		var smoke = spawn_hit_fx(x, y, uspecial_smoke_effect);
+	}
+}
 
 if (attack == AT_DSPECIAL) {
 	//move_cooldown[AT_DSPECIAL] = 2;
@@ -776,6 +807,8 @@ if (attack == AT_FSTRONG) {
 }
 
 if (attack == AT_USTRONG) {
+	can_fast_fall = false;
+	
 	if (accellerated_jump_kick)
 		&& ((window > 1)
 		&& (window < 4))
@@ -783,7 +816,7 @@ if (attack == AT_USTRONG) {
 		sliding_speed += (spr_dir * sliding_speed_accel);
 		hsp = sliding_speed;
 	} else if (window >= 5) { // dampen movement during endlag
-		hsp *= 0.85;
+		hsp *= 0.8; // 0.85
 	} else {
 		sliding_speed = hsp;
 	}
@@ -804,8 +837,14 @@ if (attack == AT_TAUNT_2) {
 	if (window == 1) && (window_timer == 1) {
 		if (specific_taunt_transformation_required) {
 			selected_taunt_transformation = selected_player_color;
+			if (selected_taunt_transformation == codename_mettaton_number) {
+				roll_mettaton();
+			}
 		} else {
-			selected_taunt_transformation = random_func(0, highest_random_transformation_option - 1, true) + 1;
+			selected_taunt_transformation = random_func(0, highest_random_transformation_option - color_select_skip_count, true) + 1;
+			if (selected_taunt_transformation >= color_select_skip_begin) {
+				selected_taunt_transformation += color_select_skip_count;
+			}
 		}
 	} else if ((window == 2)
 			   && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
@@ -853,6 +892,9 @@ if (attack == AT_TAUNT_2) {
 		        break;
 		    case codename_cabinet_number :
 		        // Play part of the song
+		        cabinet_song_clip_current++;
+		        cabinet_song_clip_current %= cabinet_song_clip_max;
+		        taunt_sound = sound_get("cabinet_song_clip" + string(cabinet_song_clip_current));
 		        break;
 		    case codename_rotom_number :
 		        taunt_sound = sound_get("horn_rotom");
@@ -860,10 +902,26 @@ if (attack == AT_TAUNT_2) {
 			default :
 				break;
 		}
-		sound_play(taunt_sound);
+		sound_stop(horn_current);
+		horn_current = sound_play(taunt_sound);
 	} else if ((window == 5) && (!taunt_down)) {
 		window = 6;
 		window_timer = 0;
+	}
+	
+	if ((window >= 3) || (window <= 6)) {
+		// Cabinet's screen flickers
+		cabinet_flicker_version_current++;
+		cabinet_flicker_version_current %= 2 * cabinet_flicker_duration;
+		
+		// Mettaton moves in an oval
+		var cycle_progress_x = sin(2 * pi * (get_gameplay_time() % mettaton_cycle_max_x) / mettaton_cycle_max_x);
+		var cycle_progress_y = sin(2 * pi * (get_gameplay_time() % mettaton_cycle_max_y) / mettaton_cycle_max_y);
+		if (cycle_progress_x = 0) {
+			roll_mettaton();
+		}
+		current_mettaton_x_offset = spr_dir * ((mettaton_x_variance * cycle_progress_x) - (mettaton_x_variance / 2));
+		current_mettaton_y_offset = mettaton_y_variance * cycle_progress_y - mettaton_y_variance;
 	}
 }
 
@@ -913,6 +971,69 @@ with (oPlayer) {
     }
 }
 holding_someone = false;
+
+#define roll_mettaton
+// Pick Mettaton body part values
+var rand_index = 0;
+var mettaton_left_arm_prev = mettaton_left_arm;
+mettaton_left_arm = random_func_2(rand_index++, mettaton_max_arm_index, true);
+if (mettaton_left_arm >= mettaton_left_arm_prev) mettaton_left_arm++;
+var mettaton_right_arm_prev = mettaton_right_arm;
+mettaton_right_arm = random_func_2(rand_index++, mettaton_max_arm_index, true);
+if (mettaton_right_arm >= mettaton_right_arm_prev) mettaton_right_arm++;
+var mettaton_left_leg_prev = mettaton_left_leg;
+mettaton_left_leg = random_func_2(rand_index++, mettaton_max_leg_index, true);
+if (mettaton_left_leg >= mettaton_left_leg_prev) mettaton_left_leg++;
+var mettaton_right_leg_prev = mettaton_right_leg;
+mettaton_right_leg = random_func_2(rand_index++, mettaton_max_leg_index, true);
+if (mettaton_right_leg >= mettaton_right_leg_prev) mettaton_right_leg++;
+var mettaton_mouth_prev = mettaton_mouth;
+mettaton_mouth = random_func_2(rand_index++, mettaton_max_mouth_index, true);
+if (mettaton_mouth >= mettaton_mouth_prev) mettaton_mouth++;
+var mettaton_eye_prev = mettaton_eye;
+mettaton_eye = random_func_2(rand_index++, mettaton_max_eye_index, true);
+if (mettaton_eye >= mettaton_eye_prev) mettaton_eye++;
+// TODO try not to choose the same parts twice in a row
+
+// Function to randomly spawn embers during uspecial
+#define create_embers
+uspecial_ember_countdown--;
+if (uspecial_ember_countdown == 0) {
+	// Pick a foot, 0 = front, 1 = rear (closer to camera)
+	var rand_index = 0;
+	/*
+	switch (random_func(rand_index++, 2, true)) {
+		case 0 :
+			// Spawn randomly, but with a gap in the middle
+			var ember_offset_x = random_func(rand_index++, 20, true) + 6;
+			var ember_offset_y = -random_func(rand_index++, 16, true);
+			current_ember = spawn_hit_fx(x + ember_offset_x, y + ember_offset_y, ember_effect);
+			// Randomly flip
+			current_ember.spr_dir *= ((2 * random_func(rand_index++, 1, true)) - 1) ;
+			break;
+		case 1 :
+			// Spawn randomly, but with a gap in the middle
+			var ember_offset_x = -random_func(rand_index++, 24, true) - 4;
+			var ember_offset_y = -random_func(rand_index++, 16, true);
+			current_ember = spawn_hit_fx(x + ember_offset_x, y + ember_offset_y, ember_effect);
+			// Randomly flip
+			current_ember.spr_dir *= ((2 * random_func(rand_index++, 1, true)) - 1) ;
+			break;
+		default :
+			break;
+	}
+	*/
+	// Spawn randomly, but with a gap in the middle
+	var ember_offset_x = (random_func(rand_index++, 20, true) + 6) * ((2 * random_func(rand_index++, 2, true)) - 1);
+	var ember_offset_y = -random_func(rand_index++, 16, true) - 4;
+	current_ember = spawn_hit_fx(x + ember_offset_x, y + ember_offset_y, ember_effect);
+	// Randomly flip
+	//current_ember.spr_dir *= ((2 * random_func(rand_index++, 2, true)) - 1);
+}
+// Reset the countdown
+if (uspecial_ember_countdown <= 0) {
+	uspecial_ember_countdown = uspecial_ember_countdown_max + random_func(rand_index++, uspecial_ember_countdown_variance, true);
+}
 
 // Function to spawn built-in dust effects, courtesy of SupersonicNK
 #define spawn_base_dust

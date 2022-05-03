@@ -73,11 +73,55 @@ if type == 0
 				var kb = kb_value;
 				
 				//send at angle
-				if flipper == 0
+				if flipper == 0 && player_id.attack != AT_BAIR &&
+				player_id.attack != AT_FSTRONG && 
+				player_id.attack != AT_USTRONG &&
+				player_id.attack != AT_DSTRONG &&
+				player_id.attack != AT_FAIR &&
+				player_id.attack != AT_NSPECIAL &&
+				player_id.attack != AT_DAIR 
 				{
 					if player_id.image_xscale < 0
 						angle = -angle+180;
 					kb *= other.kbMultiplier;
+					other.spd = kb;
+					other.dir = angle;
+				}
+				if flipper == 0 && player_id.attack == AT_BAIR
+				{
+					if player_id.image_xscale < 0
+						angle = -angle+180;
+					kb *= other.kbMultiplier*4;
+					other.spd = kb;
+					other.dir = angle;
+				}
+				
+				if flipper == 0 && player_id.attack == AT_FSTRONG ||
+				flipper == 0 && player_id.attack == AT_DSTRONG ||
+				flipper == 0 && player_id.attack == AT_USTRONG ||
+				flipper == 0 && player_id.attack == AT_NSPECIAL ||
+				flipper == 0 && player_id.attack == AT_DAIR
+				{
+					if player_id.image_xscale < 0
+						angle = -angle+180;
+					kb *= other.kbMultiplier*3.5;
+					other.spd = kb;
+					other.dir = angle;
+				}
+				if flipper == 6 && player_id.attack == AT_FAIR
+				{
+					if player_id.image_xscale < 0
+						angle = -angle+180;
+					kb *= other.kbMultiplier*1;
+					other.spd = kb;
+					other.dir = angle;
+				}
+				
+				if flipper == 4 && player_id.attack == AT_DSTRONG
+				{
+					if player_id.image_xscale < 0
+						angle = -angle+180;
+					kb *= other.kbMultiplier*3.5;
 					other.spd = kb;
 					other.dir = angle;
 				}

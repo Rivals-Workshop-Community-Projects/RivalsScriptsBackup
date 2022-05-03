@@ -18,21 +18,23 @@ if should_debug {
     }
 }
 
+if fuck_intro && get_gameplay_time() >= 30 && get_gameplay_time() <= 140 {
+    draw_debug_text(x - 30,y-100,"nah lmao")
+}
 
-
-shader_end();
-
-if object_index != asset_get("oTestPlayer") {
-shader_start();
-maskHeader();
-draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_white, 1);
-with pHitBox if player_id == other && type == 2 {
-        draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 1, c_white, 1);
+if get_player_color(player) == 19 {
+    if object_index != asset_get("oTestPlayer") {
+    shader_start();
+    maskHeader();
+    draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_white, 1);
+    //with pHitBox if player_id == other && type == 2 {
+    //        draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 1, c_white, 1);
+    //    }
+    maskMidder();
+    draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_gray, .5);
+    maskFooter();
+    shader_end();
     }
-maskMidder();
-draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_gray, .5);
-maskFooter();
-shader_end();
 }
 //================================================================================
 #define maskHeader

@@ -168,3 +168,8 @@ if (get_training_cpu_action() != CPU_FIGHT)
         }
     }
 }
+//Carco never die
+else if (temp_level != 0)
+{
+     parasiteTimer = 60*(30*(2)+1);
+}

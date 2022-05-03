@@ -30,7 +30,7 @@ if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 9 && get_
 
 //secret colors
 //Sun (clown)
-if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) != 2 && get_player_color( player ) != 5 ){
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 13 ){
 	if (taunt_down&&down_down){
 		extra_col = 1
 		white_flash_timer = 18;
@@ -59,6 +59,40 @@ if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 5){
 	}
 }
 
+//Nuzl (weeb shit)
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 20){
+	if (taunt_down&&down_down){
+		extra_col = 4
+		white_flash_timer = 18;
+		sound_play(sound_get("nuzl_oj"));
+		init_shader();
+	}
+}
+
+//TAG
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 3){
+	if (taunt_down&&down_down){
+		extra_col = 5
+		white_flash_timer = 18;
+		sound_play(sound_get("jerma"));
+		init_shader();
+	}
+}
+
+//OMORI
+if (extra_col == 0 && get_player_color( player ) == 9){
+	if down_down {
+	move_cooldown[AT_TAUNT] = 10
+	}
+	
+	if (taunt_down&&down_down){
+		extra_col = 6
+		white_flash_timer = 35;
+		sound_play(sound_get("something"));
+		init_shader();
+	}
+}
+
 //smoke consume (airdog)
 if state == PS_AIR_DODGE
 {
@@ -67,20 +101,21 @@ if state == PS_AIR_DODGE
     	uspeccancel = false
 		var consumed = consumeSmokeCloud();
     	
-        if consumed
+        if consumed{
             air_dodge_speed = 12;
-        else
-            air_dodge_speed = 7.5;
-			
-        if consumed
             wave_land_adj = 1.2;
-        else
-            awave_land_adj = 1.35;   
+            }
+        else{
+            air_dodge_speed = 7.5;
+            awave_land_adj = 1.35; 
+        }	
 			
         if consumed
 			sound_play(sound_get("airdodgeboost"));                
     }
 }
+
+
 
 //celeste from hit game celeste
 if has_airdodge = false && get_player_color(player) == 8 {
@@ -94,7 +129,7 @@ if state == PS_LAND && get_player_color(player) == 8 {
 //alt portrait
 if (get_player_color(player) == 3 || get_player_color(player) == 4 || 
 	get_player_color(player) == 6 || get_player_color(player) == 8 || get_player_color(player) == 15 ||
-	get_player_color(player) == 20){
+	get_player_color(player) == 20 || get_player_color(player) == 12){
 set_victory_portrait( sprite_get( "portrait_alt" ));
 init_shader();
 }

@@ -22,7 +22,7 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED, -7);
+set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED, -6); // -7
 
 // Cooling down
 set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 9);

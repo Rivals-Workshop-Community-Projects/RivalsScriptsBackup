@@ -48,3 +48,4 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_DSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1.5);

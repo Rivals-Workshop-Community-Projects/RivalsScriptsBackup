@@ -193,21 +193,28 @@ initWords("All of Gumbo's specials and strongs are changed in a way when he does
 initImage_ext(sprite_get("fspecial"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("FSpecial: Interacting with the Pot");
-initWords("If Po is thrown into the pot, he'll start a timer until the pot bursts. When the pot is in this mode, it can't be hit by opponents and doesn't have a hitbox when pushed around to easily transport closer to enemies.");
+initWords("If Po is thrown into the pot, he'll start a timer until the pot can be exploded. Gumbo can press Nspecial again when the timer is done to detonate the pot. When the pot is in this mode, it can't be hit by opponents while it is charging and doesn't have a hitbox when pushed around to easily transport closer to enemies.");
 initWords("Fspecial without Po can easily increase the pot's spice level in this state. If all 3 projectiles hit the pot, they will increase the spice level by 3.");
 initImage_ext(sprite_get("_pho_shrimpstir"), -6, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("USpecial: Bubble Beam / Gator Roll");
 initWords("Uspecial with Po is a fairly good recovery move with no kill power. You can angle the direction it flies with the joy stick.");
 initWords("Uspecial without Po doesn't travel as far but is good at killing off the top.");
+initWords("If you press Shield in the starting frames of Uspecial with Po, it will be the version without Po.");
 initImage_ext(sprite_get("uspecial"), -5, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("DSpecial: Chef's Dropkick / Chef's foot");
+initTip("DSpecial: Chef's Dropkick / Chef's Kiss");
 initWords("Dspecial with Po is an attack that travels far but can be difficult to hit. During the startup of the attack, Gumbo can turn around or even airdodge out of the attack. If Dspecial hits the pot, Po will enter it.");
 initWords("Dspecial without Po is similar but worse. You can't airdodge or turn around without Po.");
 initImage_ext(sprite_get("dspecial"), -5, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
-
+initTip("Secret Alts");
+initWords("These secret alts can be activated at the beginning of the round if you press Attack + Taunt. They're pretty much reserved for players who have gotten top 8 with P&G, or notable players who use them.");
+initWords("The secret alts are on the following alts:
+Fishing Trout Lads - Avocado, snappystunner
+Something Something Flordia Alligator - Old TAG color scheme
+Odor Blocker - BLW Champ, Jordan
+Leakage - Best in the World, BendyJW");
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -246,6 +253,95 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.17", "25 April, 2022");
+
+initHeader("Nerfs:");
+initSection("- Air friction was lowered, 0.05 -> 0.04
+");
+
+initHeader("Changes:");
+initSection("= Ftilt's spice vfx is bigger and easier to see
+= Secret alts now properly show up on the victory screen
+");
+
+//
+initPatch("1.16", "25 April, 2022");
+
+initHeader("Nerfs:");
+initSection("- Dtilt's overall active frames was lowered, 9 -> 6
+- Dattack's sweet hitbox's lifetime was decreased, 6 -> 4, overall active frames, 12 -> 10
+");
+
+initHeader("Changes:");
+initSection("= Fair's kb was adjusted, 7 * .6 -> 6 * .7
+= Updated TAG alt's color-scheme
+= Added 3 new secret alts, check Pumbo's new munophone section for more information
+= Changed yet another pot bug regarding Gumbo's projectiles
+");
+
+//
+initPatch("1.15", "21 April, 2022");
+
+initHeader("Buffs:");
+initSection("+ Bair comes out 2 frames faster, F16 -> F14
++ Dspecial comes out 4 frames faster, F28 -> F24
++ If Gumbo has no stocks left, and his pot has Po on the field, he can press special while dead to detonate it
++ All aerials except for Fair have 1 less landing lag
+");
+
+initHeader("Nerfs:");
+initSection("- Fair's smear now has a hurtbox
+- Bair's hitbox was made smaller
+- Fstrong's bkb was reduced, 9 -> 8
+- Shrimpless Dspecial now has a late weaker hitbox
+- The pot (with Po) can now be hit by opponents if it's done charging for detonation
+");
+
+initHeader("Changes:");
+initSection("= Fixed possible bug caused by the Scalding effect
+= Dstrong's kb was adjusted, 8 * 1, 7 * 1.15
+= Shrimpless Fstrong's kb was adjusted, 9 * 1 -> 8 * 1.15
+= Shrimpless Fspecial now correctly resets it's lifetime when parried
+= FINALLY FIXED THE ANTIGRAVITY POT BUG (HOPEFULLY!)
+= Added custom dishes for the Walter White and Kaiman alts, detonate the pot to see!
+= Fixed bug where when in a ditto match, pots would act weird if they were hit by each other
+  I dub that tech clinking, rip clinking lol
+");
+
+//
+initPatch("1.145", "9 April, 2022");
+
+initHeader("Changes:");
+initSection("= Quick Bug Fix, Oops!
+");
+
+//
+initPatch("1.14", "9 April, 2022");
+
+initHeader("Buffs:");
+initSection("+ Dspecial now regains double jump on hit
++ Uspecial 2 can be used outside of shrimpless if shield is pressed during it's beginning frames
+");
+
+initHeader("Nerfs:");
+initSection("- turned off april fools mode lol
+- Uspecial 2's bkb was reduced, 9 -> 8
+- Empowered Uspecial 2's bkb was reduced, 10 -> 9
+");
+
+initHeader("Changes:");
+initSection("= Fstrong has an additional late hitbox to match visuals better
+= Shrimpsplosion Rework:
+  No longer works as a time bomb, but has a remote detonation. After 3 seconds of charging,
+  press Nspecial to detonate.
+");
+
+//
+initPatch("1.13", "1 April, 2022");
+
+initHeader("April Fools!");
+
+//
 initPatch("1.12", "27 March, 2022");
 
 initHeader("Buffs:");

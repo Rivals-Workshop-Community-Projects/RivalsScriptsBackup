@@ -66,8 +66,8 @@ sprite_change_offset("hfx_big", 280, 280);
 
 //misc
 set_victory_theme(sound_get("sfx_padoru"));
-
-
-
+if get_player_color(player) == 19 {
+    set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
+}
 
 

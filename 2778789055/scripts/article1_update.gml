@@ -51,24 +51,83 @@ else if (type == 1){
 }
 }
 
-if(has_shrimp && explode_timer != 300){
+if(has_shrimp && explode_timer != 180){
 	explode_timer++;
 }
-if(explode_timer = 299){
+if(clink_cooldown != 0){
+	clink_cooldown--;
+}
+if(explode_timer = 179){
+/*
 	if(pot_hitbox_active){
 	pot_hitbox.length = 0;
 	pot_hitbox_active = false;
 	}
 	state = 6;
 	state_timer = 0;
+	*/
+	sound_play(sound_get("se_younglink_special_N04"));
+	var hitfx = spawn_hit_fx(x, y - 40, 19);
+    hitfx.pause = 10;
+	player_id.shrimpsplosion = true;
 }
 
-if(has_shrimp){
+if(has_shrimp && explode_timer != 180){
 	can_opponent_hit = false;
+}if(has_shrimp && explode_timer == 180){
+	can_opponent_hit = true;
 }if(!has_shrimp){
 	can_opponent_hit = true;
 }
 
+if(explode_timer = 180){
+	if(player_id.attack == AT_NSPECIAL_2){
+		if(player_id.window == 1 && player_id.window_timer = 6 && player_id.hitpause = false){
+			if(state != 6){
+			state = 6;
+			state_timer = 0;
+			}
+		}
+	}
+}
+
+with (player_id){
+	if(other.has_shrimp && other.explode_timer == 180){	
+		if(other.state != 6){
+	if (get_player_stocks( player ) == 0) {
+		if(special_pressed){
+		other.state = 6;
+		other.state_timer = 0;
+				}
+			}
+		}	
+	}
+}
+
+if(explode_timer = 180){
+    if(get_gameplay_time() % 20 == 0){
+        snd_rng = random_func(0, 9, true);
+        if (snd_rng == 0) {
+        spawn_hit_fx(x , y - 75, player_id.steam_effect);	
+        }if (snd_rng == 1) {
+        spawn_hit_fx(x + 20, y - 70, player_id.steam_effect);	
+        }if (snd_rng == 2) {
+        spawn_hit_fx(x + 10, y - 90, player_id.steam_effect);	
+        }if (snd_rng == 3) {
+        spawn_hit_fx(x + 25, y - 50, player_id.steam_effect);	
+        }if (snd_rng == 4) {
+        spawn_hit_fx(x + -25, y - 70, player_id.steam_effect);	
+        }if (snd_rng == 5) {
+        spawn_hit_fx(x + -20, y - 65, player_id.steam_effect);	
+        }if (snd_rng == 6) {
+        spawn_hit_fx(x + -5, y - 85, player_id.steam_effect);	
+        }if (snd_rng == 7) {
+        spawn_hit_fx(x + 10, y - 80, player_id.steam_effect);	
+        }if (snd_rng == 8) {
+        spawn_hit_fx(x + -15, y - 45, player_id.steam_effect);	
+        }	
+    }
+}
 
 	//Get hurt by opponents' hitbox (NOTE: does not work properly with maxarticles > 1)
 if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit) { //makes the pot hittable when can_get_hit is true
@@ -76,15 +135,17 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
     		if (player != other.player_id.player){
     			if (place_meeting(x, y, other)){
     				other.hitbox_hit = self;
+    				if(type != 2){
     				player_id.hitpause = true;
                     player_id.hitstop = hitpause;
+    				}
                     other.hitstop = hitpause;
                     other.pot_owner = player;
     			}
     		}
     	}
     	if (hitbox_hit != noone){
-    		if(hitbox_hit.hitpause != 0 && hitbox_hit.hit_priority != 0){
+    		if(hitbox_hit.hitpause > 0 && hitbox_hit.hit_priority > 0){
     			with (hitbox_hit){
         			sound_play(sound_effect);
         			var hitfx = spawn_hit_fx(floor(x), floor(y), hit_effect);
@@ -98,44 +159,51 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
     			hitbox_hit.player_id.has_hit = true;
     			hitstop = hitbox_hit.hitpause;
     			hitby = hitbox_hit.player_id;
-    			}if(hitbox_hit.type == 2){
-    			hitbox_hit.player_id.hitpause = false;
-    			hitbox_hit.player_id.hitstop = 0;
-    			hitbox_hit.player_id.hsp = hitbox_hit.player_id.hsp
-    			hitbox_hit.player_id.vsp = hitbox_hit.player_id.vsp
     			}
+    			no_hitbox = false;
     		    can_be_hit = false;
     			state = 2;
     			state_timer = 0;
-    			}
-
     			if(hitbox_hit.player_id.attack != AT_BAIR){
-				        if(hitbox_hit.player_id.spr_dir == 1){
+				        if(hitbox_hit.spr_dir == 1){
         	hsp_var = hitbox_hit.kb_value;
-        }else if(hitbox_hit.player_id.spr_dir == -1){
+        }else if(hitbox_hit.spr_dir == -1){
         	hsp_var = hitbox_hit.kb_value * -1;
         }
     			}  if(hitbox_hit.player_id.attack == AT_BAIR){
-				        if(hitbox_hit.player_id.spr_dir == 1){
+				        if(hitbox_hit.spr_dir == 1){
         	hsp_var = hitbox_hit.kb_value * -1;
-        }else if(hitbox_hit.player_id.spr_dir == -1){
+        }else if(hitbox_hit.spr_dir == -1){
         	hsp_var = hitbox_hit.kb_value;
         }
     			}
+    	if(hitbox_hit.player_id.url == "2778789055"){
+    		if(hitbox_hit.player_id.attack == AT_NSPECIAL){
+    		if(hitbox_hit.hbox_num == 1){
+    			if(clink_cooldown == 0){
+    				no_hitbox = true;
+    				clink_cooldown = 60;
+    				}
+    			}
+    		}
+        }
+    	}
     			
     		}
     }
     else{
     	hitbox_hit = noone;
     }
-
+    
 if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot hittable when can_get_hit is true
     	with (pHitBox){
     		if (player == other.player_id.player){
     			if (place_meeting(x, y, other)){
     				other.hitbox_hit = self;
+    				if(type != 2){
     				player_id.hitpause = true;
                     player_id.hitstop = hitpause;
+    				}
                     other.hitstop = hitpause;
                     other.pot_owner = player;
     			}
@@ -143,7 +211,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     	}
     	if (hitbox_hit != noone){
     		if(hitbox_hit.player_id.attack != AT_NSPECIAL){
-    			if(hitbox_hit.hitpause != 0 && hitbox_hit.hit_priority != 0){
+    			if(hitbox_hit.hitpause > 0 && hitbox_hit.hit_priority > 0){
     			with (hitbox_hit){
         			sound_play(sound_effect);
         			var hitfx = spawn_hit_fx(floor(x), floor(y), hit_effect);
@@ -157,10 +225,8 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     			hitbox_hit.player_id.has_hit = true;
     			hitstop = hitbox_hit.hitpause;
     			hitby = hitbox_hit.player_id;
-    			}if(hitbox_hit.type == 2){
-    			player_id.hitpause = false;
-    			player_id.hitstop = 0;
     			}
+    			no_hitbox = false;
     		    can_be_hit = false;
     			state = 2;
     			state_timer = 0;
@@ -212,7 +278,6 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     else{
     	hitbox_hit = noone;
     }
-
 
 
 //State 0: Spawn
@@ -310,6 +375,7 @@ if (state == 2){
 		}
 		hsp = hsp_var * 0.9;
 		if(!has_shrimp){
+			if(!no_hitbox){
 		pot_hitbox = create_hitbox(AT_NSPECIAL, 1, x + spr_dir, y - 30);
 		pot_hitbox.player = pot_owner;
 		pot_hitbox_active = true;
@@ -317,6 +383,7 @@ if (state == 2){
 			pot_hitbox.kb_angle = 50;
 		}		if(hsp < 0){
 			pot_hitbox.kb_angle = 130;
+		}
 		}
 		}
 	}
@@ -622,6 +689,9 @@ if (state == 6){
 	}
 if(state_timer = 1){
 	sound_play(asset_get("sfx_ell_fspecial_charge"));
+	if(has_shrimp){
+	player_id.shrimpsplosion = false;
+	}
 }if(state_timer = 16){
 	sound_play(asset_get("sfx_orcane_dsmash"));
 	finisher_hitbox = create_hitbox(AT_NSPECIAL, 3, x, y - 70);
@@ -654,7 +724,13 @@ if(state_timer = 1){
 	if(has_shrimp){
 	create_hitbox(AT_FSPECIAL, 2, x, y - 60);	
 	if(has_shrimp = true){
+		if(player_id.custom_food == 0){
 		food_id = 4;
+		}if(player_id.custom_food == 1){
+		food_id = 5;
+		}if(player_id.custom_food == 2){
+		food_id = 6;
+		}
 	with (player_id){
 	move_cooldown[AT_FSPECIAL] = 240;
 	shrimp_in_pot = false;	
@@ -705,7 +781,7 @@ if(!free){
 	}
 }
 
-//State 7: Explosion
+//State 7: Vfx
 
 if (state == 7){
 can_be_hit = false;	
@@ -819,6 +895,7 @@ if (y > room_height){
 	pot_hitbox_active = false;
 	}if(has_shrimp = true){
 	with (player_id){
+	shrimpsplosion = false;
 	move_cooldown[AT_FSPECIAL] = 240;
 	shrimp_in_pot = false;	
 		}
@@ -839,6 +916,7 @@ if (x < 0 || x > room_width){
 	pot_hitbox_active = false;
 	}if(has_shrimp = true){
 	with (player_id){
+	shrimpsplosion = false;
 	move_cooldown[AT_FSPECIAL] = 240;
 	shrimp_in_pot = false;	
 		}

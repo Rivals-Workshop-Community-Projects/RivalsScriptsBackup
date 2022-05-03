@@ -138,7 +138,8 @@ if(state_timer == 1){
 //#region Color Selector
 if(state == PS_SPAWN){
 	if(get_player_color(player) == 30){
-		color_picker_alt_index = attack_down + special_down*2 + strong_down*4 + jump_down*8 + shield_down*16 + taunt_down*32;
+		var strong_stick_down = left_strong_down || right_strong_down || up_strong_down || down_strong_down || strong_down;
+		color_picker_alt_index = attack_down + special_down*2 + (strong_stick_down)*4 + jump_down*8 + shield_down*16 + taunt_down*32;
 		//print(state_timer)
 		//print(alt_index);
 		if(state_timer <= 80){Color_Select(get_player_color(player),color_picker_alt_index);}
@@ -355,25 +356,6 @@ if(variable_instance_exists(id,"diag"))
 			break;
 			
 		case 2: // SP
-			color_select_alt_name = "Roekoko"
-			// Roekoko
-			set_color_profile_slot( current_alt, 0, 230, 230, 230 ); //fur
-			set_color_profile_slot( current_alt, 1, 230, 230, 230 ); //fur tip
-			set_color_profile_slot( current_alt, 2, 64, 64, 64 ); //hair
-			set_color_profile_slot( current_alt, 3, 255, 0, 0 ); //horns + accents
-			set_color_profile_slot( current_alt, 4, 230, 230, 230 ); //kimono top
-			set_color_profile_slot( current_alt, 5, 230, 230, 230 ); //kimono wave
-			set_color_profile_slot( current_alt, 6, 230, 230, 230 ); //kimono bottom
-			set_color_profile_slot( current_alt, 7, 255, 0, 0 ); //kimono accents
-			set_article_color_slot( 0, 230, 230, 230 ); //fur
-			set_article_color_slot( 1, 230, 230, 230 ); //fur tip
-			set_article_color_slot( 2, 64, 64, 64 ); //hair
-			set_article_color_slot( 3, 255, 0, 0 ); //horns + accents
-			set_article_color_slot( 4, 230, 230, 230 ); //kimono top
-			set_article_color_slot( 230, 230, 230 ); //kimono wave
-			set_article_color_slot( 6, 230, 230, 230 ); //kimono bottom
-			set_article_color_slot( 7, 255, 0, 0 ); //kimono accents
-			break;
 			
 		case 3: // AT + SP
 			color_select_alt_name = "Tzukiyo"
@@ -661,6 +643,25 @@ if(variable_instance_exists(id,"diag"))
 			break;
 			
 		case 20: // SD16 + STR4
+			color_select_alt_name = "Dazzling"
+			// Dazzling
+			set_color_profile_slot( current_alt, 0, 132, 81, 47 ); //fur
+			set_color_profile_slot( current_alt, 1, 212, 212, 212 ); //fur tip
+			set_color_profile_slot( current_alt, 2, 211, 31, 81 ); //hair
+			set_color_profile_slot( current_alt, 3, 26, 122, 62 ); //horns + accents
+			set_color_profile_slot( current_alt, 4, 199, 1, 18 ); //kimono top
+			set_color_profile_slot( current_alt, 5, 240, 242, 244 ); //kimono wave
+			set_color_profile_slot( current_alt, 6, 65, 54, 80 ); //kimono bottom
+			set_color_profile_slot( current_alt, 7, 240, 242, 244 ); //kimono accents
+			set_article_color_slot( 0, 132, 81, 47 ); //fur
+			set_article_color_slot( 1, 212, 212, 212 ); //fur tip
+			set_article_color_slot( 2, 211, 31, 81 ); //hair
+			set_article_color_slot( 3, 26, 122, 62 ); //horns + accents
+			set_article_color_slot( 4, 199, 1, 18 ); //kimono top
+			set_article_color_slot( 5, 240, 242, 244 ); //kimono wave
+			set_article_color_slot( 6, 65, 54, 80 ); //kimono bottom
+			set_article_color_slot( 7, 240, 242, 244 ); //kimono accents
+			break;
 		case 21: // SD16 + STR4 + ATK1
 		case 22: // SD16 + STR4 + SP2
 		case 23: // SD16 + STR4 + SP2 + ATK 1
@@ -770,6 +771,24 @@ if(variable_instance_exists(id,"diag"))
 			break;
 			
 		case 29: // SD16 + JP8 + STR4 + ATK1
+			color_select_alt_name = "Ikazuchi"
+		// Ikazuchi
+			set_color_profile_slot( 30, 0, 236, 185, 154 ); //fur
+			set_color_profile_slot( 30, 1, 254, 249, 243 ); //fur tip
+			set_color_profile_slot( 30, 2, 7, 1, 3 ); //hair
+			set_color_profile_slot( 30, 3, 255, 255, 255 ); //horns + accents
+			set_color_profile_slot( 30, 4, 135, 181, 215 ); //kimono top
+			set_color_profile_slot( 30, 5, 209, 216, 234 ); //kimono wave
+			set_color_profile_slot( 30, 6, 237, 96, 97 ); //kimono bottom
+			set_color_profile_slot( 30, 7, 220, 238, 242 ); //kimono accents
+			set_article_color_slot( 0, 236, 185, 154 ); //fur
+			set_article_color_slot( 1, 254, 249, 243 ); //fur tip
+			set_article_color_slot( 2, 7, 1, 3 ); //hair
+			set_article_color_slot( 3, 255, 255, 255 ); //horns + accents
+			set_article_color_slot( 4, 135, 181, 215 ); //kimono top
+			set_article_color_slot( 5, 209, 216, 234 ); //kimono wave
+			set_article_color_slot( 6, 237, 96, 97 ); //kimono bottom
+			set_article_color_slot( 7, 220, 238, 242 ); //kimono accents
 		case 30: // SD16 + JP8 + STR4 + SP2
 		case 31: // SD16 + JP8 + STR4 + SP2 + ATK1
 		case 32: // TNT32

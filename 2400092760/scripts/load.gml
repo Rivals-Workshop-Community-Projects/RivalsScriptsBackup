@@ -7,7 +7,7 @@ sprite_change_offset("downhurt", 34, 90);
 sprite_change_offset("bouncehurt", 40, 50);
 sprite_change_offset("spinhurt", 40, 80);
 sprite_change_offset("crouch", 32, 88);
-sprite_change_offset("walk", 32, 88);
+sprite_change_offset("walk", 40, 88);
 sprite_change_offset("walkturn", 44, 88);
 sprite_change_offset("dash", 50, 88);
 sprite_change_offset("dashstart", 50, 88);

@@ -8,7 +8,7 @@ set_attack_value(AT_NTHROW, AG_MUNO_ATTACK_NAME, "NSpecial: Throwables");
 
 
 set_window_value(AT_NTHROW, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_NTHROW, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NTHROW, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NTHROW, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 set_window_value(AT_NTHROW, 2, AG_WINDOW_TYPE, 0);

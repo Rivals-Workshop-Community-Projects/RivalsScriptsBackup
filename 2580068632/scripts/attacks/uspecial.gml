@@ -26,7 +26,7 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 4);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -26);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -30);
 
 //Loop 1
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
@@ -36,7 +36,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -12);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -24);
 
 //Loop 2
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
@@ -46,7 +46,7 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, -3);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -9);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -12);
 
 //Loop 3
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
@@ -56,7 +56,7 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED, -12);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_VSPEED, -2);
 
 //Loop 4
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
@@ -66,7 +66,7 @@ set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_HSPEED, -6);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 6, AG_WINDOW_VSPEED, 12);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_VSPEED, 8);
 
 //Loop 5
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 1);

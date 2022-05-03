@@ -1,193 +1,140 @@
-// [5] CHASM BURSTER
-atk = AT_EXTRA_1;
+// [5] POWER SMASH
+var atk = AT_FSPECIAL_2;
 
 set_attack_value(atk, AG_CATEGORY, 2);
-set_attack_value(atk, AG_SPRITE, sprite_get("chasmburster"));
-set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("chasmburster_hurt"));
-set_attack_value(atk, AG_AIR_SPRITE, sprite_get("chasmburster_air"));
-set_attack_value(atk, AG_HURTBOX_AIR_SPRITE, sprite_get("chasmburster_air_hurt"));
-set_attack_value(atk, AG_NUM_WINDOWS, 8);
+set_attack_value(atk, AG_SPRITE, sprite_get("skill5"));
+set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("skill5_hurt"));
+set_attack_value(atk, AG_NUM_WINDOWS, 7);
+set_attack_value(atk, AG_OFF_LEDGE, 1);
+set_attack_value(atk, AG_USES_CUSTOM_GRAVITY, 0);
 
-windowNum = 1; //windup 1
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 8); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2")); //only activates in midair
+var window_num = 1; //windup 1
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4); //controls speed
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
+set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 
-windowNum ++; //windup 2
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 6); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 2); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, windowNum, AG_WINDOW_SFX_FRAME, 2);
-set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+window_num ++; //windup 2
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4); //controls speed
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2); //starting frame. starts from 0
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 
-windowNum ++; //pre-attack frame (falling)
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 10);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 2); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 3); //starting frame. starts from 0
+window_num ++; //jump before attack
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2); //controls speed
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3); //starting frame. starts from 0
+set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
+set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
+set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[5].mp_cost1);
 
-windowNum ++; //attack
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 2); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 4); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_kragg_spike"));
+window_num ++; //attack
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 24); //controls speed
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4); //frames amount on strip
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4); //starting frame. starts from 0
+set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(atk, window_num, AG_WINDOW_VSPEED, -10);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED, 6);
 
-windowNum ++; //bursts window
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 20); //controls speed //16
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 5); //starting frame. starts from 0
+window_num ++; //still falling
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 10);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 1); //controls speed
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8); //starting frame. starts from 0
+set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 0);
+set_window_value(atk, window_num, AG_WINDOW_VSPEED, 0.5);
 
-windowNum ++; //endlag 2
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 10); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 3); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 7); //starting frame. starts from 0
+window_num ++; //sfx frame
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 1); //controls speed
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8); //starting frame. starts from 0
+set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
+set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_kragg_rock_shatter"));
+set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[5].mp_cost2);
 
-windowNum ++; //attack - burning fury buffed
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 2); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 4); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, windowNum, AG_WINDOW_SFX_FRAME, 2);
-set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_kragg_spike"));
+window_num ++; //endlag
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20); //controls speed
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5); //frames amount on strip
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 9); //starting frame. starts from 0
+set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED, 0);
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-windowNum ++; //endlag - burning fury buffed
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 16); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 5); //starting frame. starts from 0
+set_num_hitboxes(atk, 4)
 
-set_num_hitboxes(atk, 5);
+var hitbox_num = 1; //drag hitbox when falling
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 5);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 1);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 8);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -40);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 320);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.1);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.4);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(atk, hitbox_num, HG_TECHABLE, 3);
 
-hitboxNum = 1; //initial attack
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 5); //at which window from the above the attack is created
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 4); //hitbox duration in frames
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 12);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -16);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 56);
-set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 40);
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 5);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 7); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
+hitbox_num ++; //ground collision - sweetspot
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 7);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 0);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -16); //-8
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 60);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 32); //46
+set_hitbox_value(atk, hitbox_num, HG_SHAPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 4);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 8);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 55);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[1]);
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 2);
 
-hitboxNum ++; //chasms bursting
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //this window doesn't actually exist on purpose
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2)
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 14); //18
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 6);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 56);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -48);
-set_hitbox_value(atk, hitboxNum, HG_SHAPE, 1);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 38);
-set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 90);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 80);
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 4);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.7);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_chasmburster_placeholder"));
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnapplied"));
-set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0.5);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
-set_hitbox_value(atk, hitboxNum, HG_HIT_LOCKOUT, 8);
-
-hitboxNum ++; //initial attack - burning fury ver
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 8); //at which window from the above the attack is created
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 4); //hitbox duration in frames
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 12);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -16);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 56);
-set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 40);
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 7);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 7); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);
-set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnapplied"));
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
-
-hitboxNum ++; //chasms bursting - burning fury ver
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //this window doesn't actually exist on purpose
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2)
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 14); //18
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 6);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 32);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -40);
-set_hitbox_value(atk, hitboxNum, HG_SHAPE, 1);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 38);
-set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 90);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 80);
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 6);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 13);
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 1.2);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_chasmburster"));
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow2);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
-set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0.5);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
-set_hitbox_value(atk, hitboxNum, HG_HIT_LOCKOUT, 4);
-
-hitboxNum ++; //soft spike stomp
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //at which window from the above the attack is created
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 12); //hitbox duration in frames
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -14);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 48);
-set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 32);
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 3);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 300);
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 7); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
-
-
-//munophone
-if (!get_match_setting(SET_PRACTICE)) exit;
-set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "30 MP (5 MP to activate, 25 MP to attack)
-Can be jump canceled
-Burning Fury shoots out 2 more fire pillars, increases damage and knockback");
+hitbox_num ++; //ground collision - sourspot
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 7);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 6);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 0);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -24); //-8
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 144); //168
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 48); //62
+set_hitbox_value(atk, hitbox_num, HG_SHAPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 5);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 80);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 2);

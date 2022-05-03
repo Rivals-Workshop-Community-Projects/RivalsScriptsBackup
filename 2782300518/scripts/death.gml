@@ -6,7 +6,9 @@ if (voice = 1)
 //destroy projectiles on death
 destroy_hitboxes();
 
-fuel = 0;
+chargeUpVoiceLine = true;
+
+fuel = fuel / 2;
 
 if (kickTime > 0)
 {
@@ -25,7 +27,6 @@ if (motorbike == true)
 	//The following code is resetting values back to default as declared in init.
 	motorbike = false;
 	bikeReady = 0;
-	fuel = 0;
 	walk_speed = 3;
 	initial_dash_speed = 5;
 	dash_speed = 7;

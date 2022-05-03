@@ -172,10 +172,8 @@ if (attack == AT_FTHROW && instance_exists(grabbed_player_obj)) {
 */
 
 //Dstrong + Dthrow - Slide kick into hug -----------------------------------------------------------------------------------------
-if(attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR){
-	// Old charging code. 
-	//var Dstrong_charge_bonus_speed = (strong_charge / 10);
-	//set_window_value(AT_DSTRONG,4,AG_WINDOW_HSPEED, 7+ Dstrong_charge_bonus_speed);
+if(attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_NTHROW || attack == AT_EXTRA_3){ // Dspecial + Nspecial Air
+
 	//Dspecial Jump Reset
 	if(djump_given_back_flag == false){
 		djumps = 0;
@@ -183,7 +181,6 @@ if(attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR){
 	}
 	can_fast_fall = false;
 	can_wall_jump = true;
-
 }
 if (attack == AT_DTHROW) {
 	can_fast_fall = false;
@@ -926,7 +923,6 @@ if(attack == AT_DSPECIAL_AIR && !free && window != 7){
 	window_timer = 0;
 	set_attack_value(AT_DSPECIAL_AIR,AG_NUM_WINDOWS,7);
 	destroy_hitboxes();
-			
 }
 
 //Dspecial If weak hitbox hits, transition to next window code

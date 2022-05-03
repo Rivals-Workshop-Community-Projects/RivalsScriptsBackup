@@ -19,6 +19,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, .3)
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 25);
@@ -69,6 +70,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);

@@ -36,6 +36,7 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 //Up Special: Super Jump Punch
 if (my_hitboxID.attack == AT_USPECIAL){
 	if (window == 2){
+		/*
 		//Linking Hitbox 1
 		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 24);
 		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -62);
@@ -60,6 +61,10 @@ if (my_hitboxID.attack == AT_USPECIAL){
 		set_hitbox_value(AT_USPECIAL, 5, HG_WIDTH, 125);
 		set_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT, 125);
 		
-		//Note to self: These reset during endlag.
+		*/
+	}
+	if (my_hitboxID.hbox_num != 1 && my_hitboxID.hbox_num != 5){
+		hit_player_obj.x = x + 14 * spr_dir
+		hit_player_obj.y = y - 48
 	}
 }

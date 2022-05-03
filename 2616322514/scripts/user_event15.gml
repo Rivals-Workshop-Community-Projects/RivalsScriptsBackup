@@ -319,6 +319,9 @@ initWords("+ Jab Endlag 8 -> 6");
 initWords("~ UTilt has a slightly updated animation");
 initWords("- DJump Speed 10 -> 8");
 
+initPatch("1.8", "16 April, 2022");
+initWords("~ Added Kirby Fighters Buddy & Agent N support");
+
 initPatch("About Tapu Koko", "");
 initHeader("Created by");
 initSection("TheSmashWaffle");

@@ -397,7 +397,11 @@ switch (my_hitboxID.attack) {
 		}
 		//pull the player to epinel's height during multihits
 		if (my_hitboxID.hbox_num <= 5 && hit_player_obj.state == PS_HITSTUN && hit_player_obj.hitpause) {
+			hit_player_obj.x += round((my_hitboxID.x + spr_dir * 20 - hit_player_obj.x) * 0.25);
+			hit_player_obj.y += round((my_hitboxID.y + 30 - hit_player_obj.y) * 0.25);
+			
 			scr_move_opponent_in_epinel_inertia_direction_if_currently_in_inertia();
+			
 			hit_player_obj.old_vsp += clamp((y - hit_player_obj.y) / 5, -5, 5);
 			//if on a platform, slow it down
 			if (instance_exists(epinel_other_standing_on_platform_id)) {

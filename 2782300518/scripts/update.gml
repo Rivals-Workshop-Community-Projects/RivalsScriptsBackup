@@ -145,6 +145,11 @@ if (motorbike == false)
 			by=0;
 			bsx=1;
 			bsy=1;
+			if (thrownBike != noone && state_timer = 0)
+			{
+				set_state(PS_IDLE);
+			}
+			
 			break;
 			case PS_WALK:
 			case PS_WALK_TURN:
@@ -250,6 +255,7 @@ else if (motorbike == true)
 	crouchbox_spr = sprite_get("bike_crouch_hurtbox");
 	jump_sound = sound_get("motorbike_wheelie");
 	djump_sound = sound_get("motorbike_spin");
+	fuel_remaining = fuel;
 	
 	if has_rune("I")
 	{
@@ -354,6 +360,12 @@ else if (motorbike == true)
 			sound_stop(sound_get("motorbike_idle"));
 			sound_stop(sound_get("motorbike_stop"));
 			break;
+		case PS_HITSTUN:
+			if (prev_state == PS_WALL_JUMP && state_timer == 0)
+			{
+				vsp = 0;
+			}
+		break;
 		default:
 		break;
 	}
@@ -459,15 +471,15 @@ else
 }
 
 //Bike can cling to walls, check for this
-can_wall_cling = ((motorbike = true && y > SD_Y_POS + 150)? true : false );
+can_wall_cling = ((motorbike = true && y > SD_Y_POS + 150 && hitpause == false)? true : false );
 
 //Enables the ability to ride up walls
-if (clinging == true)
+if (clinging == true && hitpause == false)
 {
 	sound_stop(sound_get("motorbike_move"));
 	sound_play(sound_get("motorbike_move"));
 	sound_stop(sound_get("motorbike_idle"));
-	vsp = -8;
+	vsp = -7;
 	if (clinging == false)
 	{
 		vsp = 0;
@@ -520,6 +532,14 @@ with (oPlayer) {
 		 		}
 		 		break;
 		 		default:
+		 		with (other)
+		 		{
+					if (voice == 1)
+					{
+						sound_stop(sound_get ("did_you_see_that"));
+						sound_play(sound_get ("did_you_see_that"));
+					}
+		 		}
 		 		break;
 		 	}
 		}
@@ -958,4 +978,114 @@ with (oPlayer) if (carol_handler_id = other)
 			}
 		}
 	}
+}
+
+//Dialogue Buddy
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Carol"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+                "You're no match for this Kung-Fu Kitty",
+                "Me and my bike are going to destroy you",
+                "You wanna fight? Come and get it!"];
+
+	if (diag == "You're no match for this Kung-Fu Kitty")
+	{
+		diag_index = 0;
+	}
+	if  (diag == "Me and my bike are going to destroy you")
+	{
+		diag_index = 1;
+	}
+	
+	if  (diag == "You wanna fight? Come and get it!")
+	{
+		diag_index = 2;
+	}
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == "2697174282" && diag != "") //Change the url into a specific character's
+    {
+        diag = "Can't you be Little Miss Heropants some other time?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+
+    if(otherUrl == "1870616155" && diag != "") //Change the url into a specific character's
+    {
+        diag = "Can't you be Little Miss Heropants some other time?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+
+    if(otherUrl == "1897152603" && diag != "") //Change the url into a specific character's
+    {
+        diag = "Can't you be Little Miss Heropants some other time?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    
+    if(otherUrl == "2229887722" && diag != "")
+    {
+        diag = "Look... I don't want to fight you as much as you don't want to fight me!";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!    	
+    }
+    
+    if(otherUrl == "2787919458" && diag != "")
+    {
+        diag = "Uhhhh... what exactly am i fighting right now?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!    	
+    }
+    
+    if(otherUrl == "2283018206" && diag != "")
+    {
+        diag = "You have a bike too! let's see which one of us has the better bike!";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!    	
+    }
+    
+    if (otherUrl == "2109435121" && diag != "")
+    {
+        diag = "I guess Lilac isn't the only dragon left after all huh?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!    	
+    }
+   
+	if (otherUrl == "2780876151" && diag != "")
+	{
+        diag = "I guess Lilac isn't the only dragon left after all huh?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!    	   	
+	}
+	
+	if (otherUrl == "2022171690" && diag != "")
+	{
+        diag = "I guess Lilac isn't the only dragon left after all huh?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction! 		
+	}
+	
+	if (otherUrl == CH_ELLIANA && diag != "")
+	{
+        diag = "A snake in a machine huh? That reminds me of someone...";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction! 		
+	}
+   
+//  NRS/3-Part dialogue
+    if(otherUrl == url) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "Cory? What are you doing here and why do you look different?",
+                "Hey look Lilac it's my identical twin sister!",
+                "Didn't know Pangu's holograms could be this realistic!"]
+            }
+            
+			diag_index = 0;
+        }
+    }
 }

@@ -5,4 +5,3 @@
 //    set_attack(AT_NSPECIAL)
 //}
 
-ncharge = 20

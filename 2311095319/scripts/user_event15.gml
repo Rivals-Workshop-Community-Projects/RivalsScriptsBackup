@@ -606,6 +606,25 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.18", "April 23, 2022");
+	initPatchWords("Neutral Air
+	~ Late hitbox hit effect adjusted.");
+	initPatchWords("Up Air
+	- Adjusted hitbox sizes to better match the animation.");
+	initPatchWords("Forward Strong
+	- Adjusted hitbox size to better match the animation.
+	+ Normal Hitbox Knockback Scaling: 0.95 -> 1
+	- Endlag: 16 -> 18
+	- Spike Hitbox Damage: 12 -> 8
+	- Spike Hitbox Base Knockback: 5 -> 4
+	- Spike Hitbox Knockback Scaling: 0.6 -> 0.4");
+	initPatchWords("Up Strong
+	- Endlag: 15 -> 17");
+	initPatchWords("Down Strong
+	+ Knockback Scaling: .8 -> .9");
+	initPatchWords("Up Special (Super Jump Punch)
+	~ Should connect much better now.");
+	
 	initPatch("1.17", "July 9, 2021");
 	initPatchWords("General
 	~ Adjusted Steam Preview picture.");

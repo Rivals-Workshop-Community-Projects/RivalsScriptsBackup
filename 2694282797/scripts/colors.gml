@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 20, 26, 7 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 19 );
+set_num_palettes( 21 );
 
 // King
 set_color_profile_slot( 1, 0, 48, 113, 242 ); //red1
@@ -216,6 +216,25 @@ set_color_profile_slot( 18, 5, 255, 226, 112 ); //yellow
 set_color_profile_slot( 18, 6, 123, 227, 242 ); //white
 set_color_profile_slot( 18, 7, 255, 180, 61 ); //blue
 
+// Brawl
+set_color_profile_slot( 19, 0, 245, 56, 56 ); //red1
+set_color_profile_slot( 19, 1, 166, 23, 59 ); //red2
+set_color_profile_slot( 19, 2, 255, 229, 196 ); //skin1
+set_color_profile_slot( 19, 3, 252, 151, 126 ); //skin2
+set_color_profile_slot( 19, 4, 91, 240, 89 ); //green
+set_color_profile_slot( 19, 5, 252, 238, 83 ); //yellow
+set_color_profile_slot( 19, 6, 242, 248, 255 ); //white
+set_color_profile_slot( 19, 7, 150, 208, 250 ); //blue
+
+// Sweetheart
+set_color_profile_slot( 20, 0, 240, 82, 129 ); //red1
+set_color_profile_slot( 20, 1, 171, 26, 101 ); //red2
+set_color_profile_slot( 20, 2, 248, 188, 171 ); //skin1
+set_color_profile_slot( 20, 3, 224, 125, 103 ); //skin2
+set_color_profile_slot( 20, 4, 242, 67, 189 ); //green
+set_color_profile_slot( 20, 5, 255, 105, 163 ); //yellow
+set_color_profile_slot( 20, 6, 237, 216, 232 ); //white
+set_color_profile_slot( 20, 7, 255, 20, 130 ); //blue
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
@@ -223,3 +242,5 @@ set_color_profile_slot( 18, 7, 255, 180, 61 ); //blue
 {"formatversion":1,"data":[{"name":"red1","colors":[{"r":245,"g":56,"b":56,"main":true}]},{"name":"red2","colors":[{"r":166,"g":23,"b":59,"main":true}]},{"name":"skin1","colors":[{"r":255,"g":229,"b":196,"main":true}]},{"name":"skin2","colors":[{"r":252,"g":151,"b":126,"main":true}]},{"name":"green","colors":[{"r":91,"g":240,"b":89,"main":true},{"r":37,"g":204,"b":87}]},{"name":"yellow","colors":[{"r":252,"g":238,"b":83,"main":true},{"r":235,"g":185,"b":38}]},{"name":"white","colors":[{"r":242,"g":248,"b":255,"main":true},{"r":163,"g":164,"b":191}]},{"name":"blue","colors":[{"r":150,"g":208,"b":250,"main":true},{"r":82,"g":123,"b":235}]}]}
 === END JSON PALETTE ===
 */
+
+

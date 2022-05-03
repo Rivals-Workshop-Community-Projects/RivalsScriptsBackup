@@ -65,5 +65,5 @@ set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("sfx-tape-2"));
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 0);

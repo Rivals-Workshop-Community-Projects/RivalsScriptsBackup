@@ -6,13 +6,13 @@ set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 1);
-set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 10);
+set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 12);
+set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 5);
@@ -24,7 +24,7 @@ set_num_hitboxes(AT_FAIR, 1);
 
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 12);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 19);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 80);

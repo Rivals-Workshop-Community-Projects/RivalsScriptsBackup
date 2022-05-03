@@ -84,11 +84,13 @@ if (state == PS_WALL_JUMP) {
 			booster_rush_charges++;
 		}
 		*/
-		fuel_recovery_active = true;
-		if (pity_available) {
-			rocket_fuel += pity_fuel_amount;
-			pity_available = false;
-		}
+		//fuel_recovery_active = !uspecial_rework;
+		/*if (!uspecial_rework) {
+			if (pity_available) {
+				rocket_fuel += pity_fuel_amount;
+				pity_available = false;
+			}
+		}*/
 		rocket_fuel = (rocket_fuel > max_rocket_fuel) ? max_rocket_fuel : rocket_fuel;
 		/*
 		if (rocket_fuel < max_rocket_fuel) {
@@ -156,9 +158,11 @@ if (booster_rush_charges <= 0){
 	move_cooldown[AT_FSPECIAL] = 2;
 }
 */
-if (rocket_fuel <= 0) {
-	move_cooldown[AT_USPECIAL] = 2;
-}
+/*if (!uspecial_rework) {
+	if (rocket_fuel <= 0) {
+		move_cooldown[AT_USPECIAL] = 2;
+	}
+}*/
 if (rocket_fuel < booster_rush_cost) {
 	move_cooldown[AT_FSPECIAL] = 2;
 }

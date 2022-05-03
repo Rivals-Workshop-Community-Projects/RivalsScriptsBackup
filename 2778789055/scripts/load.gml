@@ -56,6 +56,7 @@ sprite_change_offset("dspecial_var", 28, 47, true);//
 sprite_change_offset("dspecial2", 28, 47, true);//
 sprite_change_offset("taunt", 28, 47, true);//
 sprite_change_offset("phone_open", 28, 47, true);//
+sprite_change_offset("pot_activation", 28, 47, true);//
 
 sprite_change_offset("spice_vfx", 70, 60);//
 sprite_change_offset("corn1", 15, 8);//

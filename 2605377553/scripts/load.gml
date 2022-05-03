@@ -39,8 +39,8 @@ sprite_change_offset("dattack", 64, 94);
 sprite_change_offset("dattack2", 64, 94);
 sprite_change_offset("ftilt", 96, 126);
 sprite_change_offset("dtilt", 96, 94);
-sprite_change_offset("utilt", 72, 102);
-sprite_change_offset("nair", 64, 94);
+sprite_change_offset("utilt", 96, 126);
+sprite_change_offset("nair", 112, 94);
 sprite_change_offset("fair", 96, 126);
 sprite_change_offset("bair", 200, 95);
 sprite_change_offset("uair", 96, 126);
@@ -86,7 +86,7 @@ sprite_change_offset("idle_clown", 64, 94);
 sprite_change_offset("hfx_sword", 40, 80);
 sprite_change_offset("hfx_smokeball", 40, 0);
 sprite_change_offset("hfx_midsmoke", 35, 40);
-sprite_change_offset("hfx_bigsmoke", 55, 80);
+sprite_change_offset("hfx_bigsmoke", 85, 80);
 
 sprite_change_offset("nothing", 55, 80);
 

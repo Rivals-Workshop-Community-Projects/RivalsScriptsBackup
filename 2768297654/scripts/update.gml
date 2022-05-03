@@ -4,36 +4,47 @@ muno_event_type = 1;
 user_event(14);
 
 if(combo_num == 15){
+	print("lol")
 	outline_color = [ 255, 204, 0 ];
 	init_shader();
     activate_crit();
 }
+
 if(combo_cooldown == 600){
     outline_color = [ 0, 0, 0 ];
 	init_shader();
     deactivate_crit();
 }
+
 if(combo_cooldown > 0){
     combo_cooldown--;
     hud_combo_cooldown++;
 }
 
-if(combo_timer > 0){
-		if(!combo_respawnpause){
-    combo_timer--;
+combo_timer = max(combo_timer-!combo_respawnpause,0)
+//update
+for(var i=0; i < instance_number(oPlayer); i++)
+{
+  var p = instance_find(oPlayer,i);
+  if p != self
+  {
+  	if (combo_timer == 1)
+	{
+	    combo_num = 0;
+	    hud_combo_num = 0;
+	    
+	    if (!hitpause)
+	    {
+	    	sound_play(sound_get("dusterbass_miss"), false, noone, 1.5);
+	    }
+	    
+	    outline_color = [ 0, 0, 0 ];
+	    p.other_combo_num = 0;
+	    p.other_combo_marked = false;
+		init_shader();
+		deactivate_crit();
 	}
-}
-if(combo_timer == 1){
-    combo_num = 0;
-    hud_combo_num = 0;
-    if(!hitpause){
-    sound_play(sound_get("dusterbass_miss"), false, noone, 1.5);
-    }
-    outline_color = [ 0, 0, 0 ];
-    hit_player_obj.other_combo_num = 0;
-    hit_player_obj.other_combo_marked = false;
-	init_shader();
-	deactivate_crit();
+  }
 }
 
 if(combo_cooldown == 1){
@@ -54,7 +65,7 @@ if(bomb_timer == 1){
 	instance_create(x, y-38, ("obj_article1"));
 	bomb_timer = 0;
 	bomb_state = false;
-	move_cooldown[AT_DSPECIAL] = 300;
+	move_cooldown[AT_DSPECIAL] = 360;
 }
 }
 
@@ -207,125 +218,113 @@ set_hitbox_value(AT_UTILT, 1, HG_HIT_LOCKOUT, 45);
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 16);
 
 #define deactivate_crit()
+reset_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_BAIR, 1, HG_DAMAGE);
 
-set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.8);
-set_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT, 10);
-set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 9);
+reset_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_DAIR, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_DAIR, 1, HG_DAMAGE);
+reset_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_DAIR, 2, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_DAIR, 2, HG_DAMAGE);
+reset_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_DAIR, 3, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_DAIR, 3, HG_DAMAGE);
 
-set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_DAIR, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_DAIR, 1, HG_SDI_MULTIPLIER, 0.2);
-set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 3);
-set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 4.5);
-set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_DAIR, 2, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_DAIR, 2, HG_SDI_MULTIPLIER, 0.2);
-set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 3);
-set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(AT_DAIR, 3, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 4);
+reset_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_DATTACK, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_DATTACK, 1, HG_DAMAGE);
+reset_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE);
 
-set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.6);
-set_hitbox_value(AT_DATTACK, 1, HG_HIT_LOCKOUT, 10);
-set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 8);
+reset_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_DTILT, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_DTILT, 1, HG_DAMAGE);
 
-set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 10);
-set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 12);
-set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 10);
-set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 12);
+reset_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_FAIR, 1, HG_DAMAGE);
+reset_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_FAIR, 2, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_FAIR, 2, HG_DAMAGE);
 
-set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.2);
-set_hitbox_value(AT_DTILT, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 6);
+reset_hitbox_value(AT_FSPECIAL, 1, HG_DRIFT_MULTIPLIER);
+reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE);
+reset_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER);
 
-set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_FAIR, 1, HG_SDI_MULTIPLIER, 0.5);
-set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 3);
-set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0.4);
-set_hitbox_value(AT_FAIR, 2, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 4);
 
-set_hitbox_value(AT_FSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
-set_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER, 0.2);
+reset_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE);
 
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
-set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 10);
-set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 10);
+reset_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_FTILT, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_FTILT, 1, HG_DAMAGE);
 
-set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.6);
-set_hitbox_value(AT_FTILT, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 7);
+reset_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_JAB, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_JAB, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH);
+reset_hitbox_value(AT_JAB, 1, HG_DAMAGE);
+reset_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_JAB, 2, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_JAB, 2, HG_FORCE_FLINCH);
+reset_hitbox_value(AT_JAB, 2, HG_DAMAGE);
+reset_hitbox_value(AT_JAB, 3, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_JAB, 3, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_JAB, 3, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_JAB, 3, HG_DAMAGE);
+reset_hitbox_value(AT_JAB, 4, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_JAB, 4, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_JAB, 4, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_JAB, 4, HG_DAMAGE);
+reset_hitbox_value(AT_JAB, 5, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_JAB, 5, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_JAB, 5, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_JAB, 5, HG_DAMAGE);
 
-set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_JAB, 1, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_JAB, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_JAB, 1, HG_SDI_MULTIPLIER, 0.2);
-set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_JAB, 2, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_JAB, 2, HG_SDI_MULTIPLIER, 0.2);
-set_hitbox_value(AT_JAB, 2, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
-set_hitbox_value(AT_JAB, 3, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_JAB, 3, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_JAB, 3, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_JAB, 3, HG_SDI_MULTIPLIER, 0.2);
-set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 2);
-set_hitbox_value(AT_JAB, 4, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_JAB, 4, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_JAB, 4, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_JAB, 4, HG_SDI_MULTIPLIER, 0.2);
-set_hitbox_value(AT_JAB, 4, HG_DAMAGE, 2);
-set_hitbox_value(AT_JAB, 5, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_JAB, 5, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(AT_JAB, 5, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_JAB, 5, HG_DAMAGE, 4);
+reset_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_NAIR, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_NAIR, 1, HG_DAMAGE);
+reset_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_NAIR, 2, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_NAIR, 2, HG_DAMAGE);
 
-set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 0.4);
-set_hitbox_value(AT_NAIR, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 6);
-set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.2);
-set_hitbox_value(AT_NAIR, 2, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 3);
+reset_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_UAIR, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_UAIR, 1, HG_DAMAGE);
 
-set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.2);
-set_hitbox_value(AT_UAIR, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 6);
+reset_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_USPECIAL, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE);
 
-set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(AT_USPECIAL, 1, HG_HIT_LOCKOUT, 10);
-set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 8);
+reset_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_USTRONG, 1, HG_DAMAGE);
 
-set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
-set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 10);
-set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 10);
-
-set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0.2);
-set_hitbox_value(AT_UTILT, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 6);
+reset_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_UTILT, 1, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_UTILT, 1, HG_DAMAGE);

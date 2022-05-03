@@ -1,2 +1,2 @@
-nspecSpeed = 0.1;
-nspecSpeedMax = 7.2;
+nspecSpeed = 0.4;
+nspecSpeedMax = 7.8;

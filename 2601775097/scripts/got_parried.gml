@@ -1,68 +1,34 @@
-//got_parried.gml
+//got_parried
 
-if (holyburning) holyburning = false;
+window_loops = 0;
+bar_grabbed_id = noone;
 
-reset_window_value(AT_SKILL4, 4, AG_WINDOW_HSPEED);
-reset_window_value(AT_SKILL4, 4, AG_WINDOW_VSPEED);
-accelblitz_active = false;
-accelblitz_active_timer = false;
+burnbuff_active = false;
 
-burst_pos = 56;
-burst_count = 0;
-
-flashbanged_id = noone;
-
-if (holyburn_mechanic_active) other.outline_color = [0, 0, 0];
-
-
-//gtting parried sets lightstun_parried to true
-if (lightstun_mechanic_active)
+if (instance_exists(hook_chain_artc))
 {
-	//moves that use the mechanic
-	switch (attack)
-	{
-		//photon blast, accel blitz, polaris and theikos U-strong all apply the mechanic
-		case AT_DTHROW: case AT_NSPECIAL_2: case AT_USPECIAL_2: case AT_USTRONG_2:
-			ParriedLight();
-			break;
-		//normal burning U-strong doesn't use it
-		case AT_USTRONG:
-			if (!burningfury_active && pHitBox.hbox_num < 4) ParriedLight();
-			break;
-		//only applies to the light attack Fstrong rune
-		case AT_FSTRONG:
-			if (has_rune("C") && !burningfury_active) ParriedLight();
-			break;
-
-        //burning light dagger doesn't use it
-		case AT_NTHROW: case AT_NSPECIAL_AIR:
-			if (pHitBox.hbox_num < 3) lightstun_parried = true;
-			break;    
-        //burning light hookshot also doesn't
-		case AT_EXTRA_2:
-			if (pHitBox.hbox_num == 1) lightstun_parried = true;
-			break;
-	}
+    with (obj_article1) if (player_id == other.id && state == "hook_chain")
+    {
+        window = 3;
+        window_timer = 0;
+    }
 }
 
-//if bar parries his own lightstun the lightstun parry becomes false
-if (my_hitboxID.attack == 48 && my_hitboxID.hbox_num == 1 && my_hitboxID.player_id == id) lightstun_parried = false;
 
-#define ParriedLight()
+if (lightstun_active)
 {
-    lightstun_parried = true;
+    if (my_hitboxID.attack != 48 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[2] &&
+    get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_TYPE) != 2)
+    {
+        if (lightstun_type == 0) lightstun_timer = lightstun_pre_set;
+        else if (lightstun_type == 1) lightstun_timer = lightstun_active_set;
 
-	if (!lightstun && !lightstun_pre_stun)
-	{
-		lightstun_timer = 300;
-		lightstun_pre_stun = true;
-	}
-	else if (lightstun_pre_stun)
-	{
-		lightstun_timer = 0;
-	}
-	else if (lightstun)
-	{
-		lightstun_timer += 0;
-	}
+        if (lightstun_type < 2) lightstun_type ++;
+    }
+}
+
+//AI STUFF
+if ("cpu_fight_time" in self && cpu_fight_time > 0)
+{
+    //if (my_hitboxID.attack == skill[0].skill_attack || my_hitboxID.attack == skill[0].skill_attack_air) daggers_used = 3;
 }

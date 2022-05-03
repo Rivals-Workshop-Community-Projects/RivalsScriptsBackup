@@ -48,10 +48,10 @@ max_fall = 13; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .60;
 hitstun_grav = .50;
-knockback_adj = 1.08; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier//1.09
+knockback_adj = 1.07; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier//1.08
 
 land_time = 4; //normal landing frames
-prat_land_time = 15;
+prat_land_time = 17; //15
 wave_land_time = 8;
 wave_land_adj = 1.36; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding

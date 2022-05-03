@@ -5,7 +5,7 @@ set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
 
 set_window_value(AT_DATTACK, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 6); //4
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 0);

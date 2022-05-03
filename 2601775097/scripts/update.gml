@@ -1,2469 +1,1513 @@
-//update.gml
+//update
+#macro PS_GLIDE         50 // glide state
 
-//munophone
-muno_event_type = 1;
-user_event(14);
+//////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
-if (get_match_setting(SET_PRACTICE)) if (up_down && taunt_down) msg_menu = false;
+//gameplay time -- "so you don't have to run this function so many times" - nart
+got_gameplay_time = get_gameplay_time();
 
-//AI stuff
-if (!AI_vs && is_AI) show_player_info = false;
-//if bar is a CPU, then he won't show the following:
-//1: equiped skills
-//2: mini mana gauge
+//attack/dodge check
+is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
+is_dodging = (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODGE);
 
-//intro
-if (intro_timer >= 4 && intro_timer < 5) intro_timer += 1/7; //initial land
-else if (intro_timer >= 16 && intro_timer < 17) intro_timer += 1/10; //final pose
-else intro_timer += 1/5;
-// the 4 in 1/4 decides the speed it will go
-
-//intro effectwork
-//theikos activation is also depending on the animation
-if (!testing && "kart_inside" not in self)
+if (is_attacking)
 {
-    if (sprite_index == sprite_get("intro") && !allow_bibical)
-    {
-        //light sound
-        if (intro_timer == -3)
-        {
-            sound_play(sound_get("sfx_introlight"));
-        }
-        //blast effect
-        if (intro_timer == 13)
-        {
-            var intro_fireblast = spawn_hit_fx(x-16*spr_dir, y-34, fx_fireblow1);
-            intro_fireblast.depth = -7;
-            sound_play(asset_get("sfx_burnapplied"));
-            shake_camera(3, 4); //power, time
-        }
-        //light particles
-        if (intro_timer < 10)
-        {
-            if (get_gameplay_time() % 2 == 0)
-            {
-                var light_randomX = random_func(4, 80,true);
-                var light_randomY = random_func(5, 32,true)*4;
-                var introlight = instance_create(x + (20*spr_dir) - (light_randomX * spr_dir), y - (72*4 + light_randomY), "obj_article1");
-                    introlight.state = 3;
-                    introlight.player = player;
-                    introlight.depth = -7;
-                    introlight.vsp = 8;
-
-                if (intro_timer > 4) introlight.depth = 2;
-
-                //var light_randomAngle = random_func(6, 80,true)+5;    
-                //var introlight = instance_create(x - 72, y - 128, "obj_article1");    
-                //introlight.image_angle = light_randomAngle;
-            }
-        }
-        //light beam
-        if (intro_timer <= 10) intro_alpha = 0.5;
-        else intro_alpha -= 0.05;
-        intro_pillar_fx_frame += intro_pillar_fx_speed;
-        //hitspark spawn
-        if (intro_timer == -3)
-        {
-            spawn_hit_fx(x-24*spr_dir, y-128+64, fx_lightblow2);
-        }
-
-        //theikos stuff
-        if (theikos)
-        {
-            //activating theikos (it needs to be earlier so it can register the effects' colors)
-            if (intro_timer > 12)
-            {
-                theikos_active = true;
-            }
-            //activation effects part 1 (ft. the anti-cheapie code from the theia evlogia transformation in attack_update)
-            if (intro_timer == 13)
-            {
-                sound_play(sound_get("sfx_lordpunishment"));
-                shake_camera(10, 15); //power, time
-
-                if (fuck_you_cheapies)
-                {
-                    mp_max = 999999999;
-                    mp_current = mp_max;
-
-                    set_player_stocks(player, 9999);
-
-                    with (oPlayer)
-                    {
-                        if (player != other.player)
-                        {
-                            set_player_stocks(player, 10); //they get 10 stocks
-                            damage_scaling = 2; //... but they gain double damage
-                            knockback_adj = 3; //... and are a lot lighter
-                        }
-                    }
-                }
-            }
-            //activation effects part 2
-            if (intro_timer >= 13 && intro_timer <= 15 && get_gameplay_time() % 5 == 0)
-            {
-                var shockwave = instance_create(x, y-32, "obj_article1");
-                shockwave.state = 6;
-            }
-        }
-    }
-    else if (allow_bibical && theikos)
-    {
-        //activating theikos (it needs to be earlier so it can register the effects' colors)
-        if (intro_timer > 12)
-        {
-            theikos_active = true;
-        }
-        //activation effects
-        if (intro_timer == 13)
-        {
-            spawn_hit_fx(x-2*spr_dir, y-40, fx_lightblow3);
-            sound_play(sound_get("sfx_lordpunishment"));
-            shake_camera(10, 15); //power, time
-        }
-    }
-}
-
-if (intro_timer < 13 && !was_reloaded) draw_indicator = false;
-else draw_indicator = true;
-//this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
-
-
-//check if game is paused
-if (!start_down) game_paused = false;
-if (game_paused) start_down = false;
-if (start_down) game_paused = true;
-
-//window end logic stolen from munophone so i don't need to use munophone when i don't need it
-if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
-{
+    //set window_end and last_window all the time
     window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
-    last_window = get_attack_value(attack, AG_NUM_WINDOWS);
-}
-
-//////////////////////////////////////////////////MOVEMENT MECHANICS SECTION//////////////////////////////////////////////////
-
-//midair turning - free version
-/*
-if (state != PS_ATTACK_AIR && state_cat != SC_HITSTUN && free)
-{
-    if (left_down) spr_dir = -1;
-    else if (right_down) spr_dir = 1;
-
-    if (state == PS_WALL_JUMP) //to make sure walljumps work the same way as they always have
-    {
-        if (left_down) spr_dir = 1;
-        else if (right_down) spr_dir = -1;
-    }
-}
-*/
-
-//midair turning - kirby version
-if (state_timer == 5 && (state == PS_DOUBLE_JUMP || state == PS_FIRST_JUMP) && (prev_djumps != djumps))
-{
-    if (right_down && -spr_dir) {
-        spr_dir = 1;
-        prev_djump = djumps;
-        
-    } else if (left_down && spr_dir) {
-        spr_dir = -1;
-        prev_djumps = djumps;
-    }
-}
-
-//thanks supersonic!
-if (hovering && state != PS_ATTACK_AIR && state == PS_IDLE_AIR)
-{
-    if (abs(hsp) >= air_max_speed) spr_dir = sign(hsp);
-    //if the absolute value of hsp is greater than or equal to air_max_speed - set the direction to the sign of hsp.
-
-    //NOTE: normally this would be.. very unsafe as sign() returns a value of -1, 0, or 1.
-    //however, since we're already guaranteeing that hsp is never 0 when this runs,
-    //this is fine.
-}
-
-//gliding - credit to Jill Katze
-if (can_hover)
-{
-    if (state_cat == SC_AIR_NEUTRAL && state != PS_FIRST_JUMP && vsp > 1 && jump_down) //vsp > 0 means the hovering only works from the apex of the jump
-    {
-        hovering = true;
-
-        //constant vsp ver
-        vsp = 1.5;
-        if (fast_falling) vsp = fast_fall/1.6;
-
-        if (!theikos_active)
-        {
-            show_glide_ui = true;
-
-            if (godpower) glide_time -= 0.5;
-            else glide_time --;
-
-            if (glide_time <= 0)
-            {
-                glide_time = 0;
-                can_hover = false;
-            }
-        }
-        
-        //gravity based ver
-        //gravity_speed = true_gravity_speed * hover_gravity_multiplier;
-        //max_fall = true_max_fall * hover_gravity_multiplier;
-    }
-    else
-    {
-        hovering = false;
-        gravity_speed = true_gravity_speed;
-        max_fall = true_max_fall;
-    }
+    window_last = get_attack_value(attack, AG_NUM_WINDOWS);
+    window_cancel_time = get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME);
 }
 else
 {
-    hovering = false;
-}
+    //variable resets when bar isn't attacking
+    if (window_loops != 0) window_loops = 0;
+    if (bar_grabbed_id != noone) bar_grabbed_id = noone;
 
-if (!free) //landing fully restores gliding
-{
-    can_hover = true;
-    glide_time = glide_time_max;
-    show_glide_ui = false;
-}
-else if (state == PS_WALL_JUMP || state == PS_WALL_TECH) //wall jumping or teching gives bar +50 extra frames to glide for
-{
-    if (state_timer == 1)
-    {
-        glide_time += glide_time_restore; //add 50 to the glide time
-        if (glide_time > glide_time_max) glide_time = glide_time_max; //if glide time is over 50 and it gives over 100, give 100
-        if (!can_hover)
-        {
-            glide_time = glide_time_restore;
-            can_hover = true; //if bar couldn't hover, let him
-        }
-    }
-}
-else if (state == PS_PRATFALL) //pratfall and hitstun hide the gliding UI
-{
-    show_glide_ui = false;
-}
-
-//lower double jumps
-if (!theikos_active) //theikos bar doesn't have this limit
-{
-    if (jump_pressed && state == PS_DOUBLE_JUMP)
-    {
-        //rune B stuff
-        if (has_rune("B")) djump_speed = djump_speed / 1.02;
-        else if (has_rune("F")) djump_speed = djump_speed / 1.02;
-        else djump_speed = djump_speed / 1.04;
-    }
-    else if (!free)
-    {
-        djump_speed = djump_speed_reset;
-    }
-}
-
-
-//up tilt momentum boost
-//if (state == PS_DASH_START || state == PS_DASH) set_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED_TYPE, 0);
-//else if (state != PS_DASH_START && state != PS_DASH && state != PS_ATTACK_GROUND) reset_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED_TYPE);
-
-//////////////////////////////////////////////////MANA SECTION//////////////////////////////////////////////////
-
-//natural mana regen mechanic
-if (mp_current < mp_max && mpGainable)
-{
-    mp_fc_num += mp_fc_rate;
-    
-    if (mp_fc_num >= mp_fc_maxNum)
-    {
-        mp_current ++;
-        mp_fc_num = 0;
-    }
-    if (mp_current >= mp_max)
-    {
-        mp_current = mp_max;
-        mpGainable = false;
-    }
-}
-if (mp_current < 0) //prevents mp_current from going under 0
-{
-    mpBelowZero = true;
-
-    if (mpBelowZero)
-    {
-        mp_current = 0;
-    }
-}
-else mpBelowZero = false;
-
-//disable MP gain if it's on the taunt
-if (attack == AT_TAUNT) mpGainable = false;
-else mpGainable = true;
-
-
-//on cooldown message
-if (cd_error_active)
-{
-    cd_errorcool --;
-    if (cd_errorcool == 19)
-    {
-        sound_play(sound_get("mfx_notice"), 0, 0);
-        if (spr_dir == 1)
-        {
-            cd_message1edit = spawn_hit_fx(x-44, y-78, cd_message1);
-            cd_message1edit.depth = depth - 10;
-        }
-        else
-        {
-            cd_message2edit = spawn_hit_fx(x+44, y-78, cd_message2);
-            cd_message2edit.depth = depth - 10;
-        }
-    }
-    if (cd_errorcool <= 0)
-    {
-        cd_error_active = false;
-        cd_errorcool = 20;
-    }
-}
-
-
-//low MP message
-if (mp_error_active)
-{
-    show_miniMP = true;
-	miniMP_time = miniMP_noMP;
-	miniMP_alpha = 1;
-
-    mp_errorcool --;
-    if (mp_errorcool == 19)
-    {
-        sound_play(sound_get("mfx_notice"), 0, 0);
-        if (spr_dir == 1)
-        {
-            mp_message1edit = spawn_hit_fx(x-32, y-78, mp_message1);
-            mp_message1edit.depth = depth - 10;
-        }
-        else
-        {
-            mp_message2edit = spawn_hit_fx(x+32, y-78, mp_message2);
-            mp_message2edit.depth = depth - 10;
-        }
-    }
-    if (mp_errorcool <= 0)
-    {
-        mp_error_active = false;
-        mp_errorcool = 20;
-    }
-}
-//mini MP gauge animation
-if (show_miniMP)
-{
-    miniMP_time ++;
-    if (miniMP_time >= miniMP_time_limit-20)
-    {
-        miniMP_alpha -= 0.05;
-    }
-    if (miniMP_time == miniMP_time_limit)
-    {
-        show_miniMP = false;
-        miniMP_time = 0;
-    }
-}
-
-//MP burn logic for burning fury and guard aura
-//if the skill select menu is up, MP gain/burn will pause
-if (!menu_open && (burningfury_active || polaris_active))
-{
-    //activating buffs will burn mana over time and disable mp gaining
-    mpGainable = false;
-    if (burningfury_active || polaris_active) mp_fc_rate = buff_overtime_cost;
-    if (burningfury_active && polaris_active) mp_fc_rate = buff_overtime_cost*2;
-
-    mp_fc_num += mp_fc_rate;
-
-    if (mp_fc_num >= mp_fc_maxNum)
-    {
-        if ("phone_cheats" in self && phone_cheats[CHEAT_MPDRAIN] == 1 || has_rune("K") && theikos_active) mp_current -= 0;
-        else mp_current --;
-        mp_fc_num = 0;
-    }
-    if (mp_current <= 0)
-    {
-        mp_current = 0;
-        sound_play(asset_get("sfx_abyss_despawn"), 0, 0, 2);
-        burningfury_active = false;
-        polaris_active = false; //if you reach 0 mp, it will just deactivate the skill without any counter attack
-    }
-}
-else mpGainable = true;
-
-//natural mana regen speeds
-if (theikos_active && !burningfury_active && !polaris_active) mp_fc_rate = 100;
-else if (menu_open) mp_fc_rate = 0; //skill select menu
-else if (!burningfury_active && !polaris_active) mp_fc_rate = mp_rate_default;
-
-//////////////////////////////////////////////////SKILLS AND STRONGS SECTION//////////////////////////////////////////////////
-
-//D-strong effect stuff
-//attack update doesn't let me put stuff on window timer 0
-if (attack == AT_DSTRONG && (window == 4 || window == 6) && window_timer == 0 && !hitpause)
-{
-    var flameblast = spawn_hit_fx(x, y, fx_dstrong_fireblast);
-    flameblast.depth = -6;
-    sound_play(asset_get("sfx_burnapplied"));
-}
-
-//burning fury
-if (burningfury_active) 
-{
-    if (get_gameplay_time() % 5 == 0 && !hitpause) fire_charge(x, y); //burning fury embers effect
-
-    //strongs deactivate burning fury's buff only on hit
-    switch (attack)
-    {
-        case AT_FSTRONG: case AT_DSTRONG:
-			if (has_hit_player && (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)) burningfury_active = false;
-			break;
-		case AT_USTRONG:
-			if (has_hit_player && (state != PS_ATTACK_GROUND || state != PS_ATTACK_AIR) && window < 5) burningfury_active = false;
-			break;
-    }
-}
-
-//reset burning fury's target so there won't be any jank
-if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND || attack != AT_SKILL1 && attack != AT_SKILL1_AIR) burningfury_target = noone;
-
-//photon blast stored charge prevention
-//also make it so if bar is hitting someone with photonblast he won't go into pratfall
-if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_SKILL3)
-{
-    if (window < 5) photon_charge = true;
-    else if (window >= 5) photon_charge = false;
-
-    if (has_hit_player || theikos_active) set_window_value(AT_SKILL3, 6, AG_WINDOW_TYPE, 0);
-}
-else
-{
-    photon_charge = false;
-    photon_cycle = 0;
-    blast_power = 0;
-    reset_window_value(AT_SKILL3, 6, AG_WINDOW_TYPE);
-}
-if (!free) photon_used = false;
-
-
-//accel blitz logic (tis a long one chief)
-if (accelblitz_active) //accel blitz's motion blur after bar's teleport
-{
-    //color logic
-    if (user_event_1_active) var blend_color = make_colour_rgb(237, 207, 97);
-    else
-    {
-        var blend_r = get_color_profile_slot_r(alt_cur, 6);
-        var blend_g = get_color_profile_slot_g(alt_cur, 6);
-        var blend_b = get_color_profile_slot_b(alt_cur, 6);
-        var blend_color = make_colour_rgb(blend_r, blend_g, blend_b);
-    }
-
-    //blur logic from the joke motion blur character
-    for(var i = array_length_1d(blur) - 1; i > 0; i--) blur[@ i] = blur[i - 1];
-    blur[@ i] = [sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, blend_color, image_alpha];
-}
-else blur[@ i] = [sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, blend_color, image_alpha];
-
-//this timer will allow bar to act out of accel blitz
-if (accelblitz_active_timer)
-{
-    accelblitz_post_timer ++;
-    //visual stuff
-    if (accelblitz_post_timer % 5 == 0 && accelblitz_post_timer != 20 && !runeG_blitzjump)
-    {
-        if (hitpause_flash) hitpause_flash = false;
-        else hitpause_flash = true;
-    }
-
-    //disable everything
-    if (accelblitz_post_timer >= 20)
-    {
-        //if bar:
-        //- didn't hit
-        //- is in midair
-        //- isn't theikos bar
-        //- isn't dodging
-        //- the move was used already
-        if (!has_hit && free && !theikos_active && !pHurtBox.dodging && accelblitz_done_once) set_state(PS_PRATFALL);
-
-        accelblitz_active = false;
-        accelblitz_active_timer = false;
-        blur_array_length = 2;
-    }
-}
-else if (!accelblitz_active_timer && attack != AT_SKILL4) accelblitz_active = false; //stops motion blur
-
-//reset variables on landing
-if (!free || state == PS_WALL_JUMP || state == PS_WALL_TECH)
-{
-    if (accelblitz_post_timer > 1 && accelblitz_post_timer < 20) state = PS_PRATLAND;
-
-    accelblitz_active = false;
-    accelblitz_active_timer = false;
-    accelblitz_done_once = false;
-    accelblitz_post_timer = 0;
-}
-
-//fuck you dan
-if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_SKILL4 && window == 3 && window_timer == 0)
-{
-    hsp = 0;
-    vsp = 0;
-}
-
-//getting hit while blitzing will stun bar heavily
-if (accel_vulnerability && (state == PS_HITSTUN || state == PS_HITSTUN_LAND))
-{
-    if (accel_hit_time > 0) accel_hit_time --;
-    hitstop = accel_hit_time;
-}
-
-
-//chasm burster (air) logic
-if (free)
-{
-    set_window_value(AT_SKILL5, 1, AG_WINDOW_VSPEED_TYPE, 2);
-    set_window_value(AT_SKILL5, 1, AG_WINDOW_VSPEED, -7.5);
-    set_window_value(AT_SKILL5, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-    set_window_value(AT_SKILL5, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
-    set_window_value(AT_SKILL5, 1, AG_WINDOW_HAS_SFX, 1);
-
-    set_window_value(AT_SKILL5, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-    set_window_value(AT_SKILL5, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
-    set_window_value(AT_SKILL5, 2, AG_WINDOW_HAS_SFX, 0);
-
-    set_window_value(AT_SKILL5, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-    set_window_value(AT_SKILL5, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
-}
-else
-{
-    reset_window_value(AT_SKILL5, 1, AG_WINDOW_VSPEED_TYPE);
-    reset_window_value(AT_SKILL5, 1, AG_WINDOW_VSPEED);
-    reset_window_value(AT_SKILL5, 1, AG_WINDOW_HAS_CUSTOM_FRICTION);
-    reset_window_value(AT_SKILL5, 1, AG_WINDOW_CUSTOM_AIR_FRICTION);
-    reset_window_value(AT_SKILL5, 1, AG_WINDOW_HAS_SFX);
-
-    reset_window_value(AT_SKILL5, 2, AG_WINDOW_HAS_CUSTOM_FRICTION);
-    reset_window_value(AT_SKILL5, 2, AG_WINDOW_CUSTOM_AIR_FRICTION);
-    reset_window_value(AT_SKILL5, 2, AG_WINDOW_HAS_SFX);
-
-    reset_window_value(AT_SKILL5, 3, AG_WINDOW_HAS_CUSTOM_FRICTION);
-    reset_window_value(AT_SKILL5, 3, AG_WINDOW_CUSTOM_AIR_FRICTION);
-}
-//prevents chasm burster from overshooting
-if (reached_max_bursts)
-{
-    burst_cool ++;
-    if (burst_cool >= 18)
-    {
-        reached_max_bursts = false;
-        burst_cool = 0;
-        burst_count = 0;
-    }
-}
-//chasm effect spawning
-if (spawn_earth_shatter)
-{
-    var burst_projectile = spawn_hit_fx(x+burst_pos*spr_dir-46*spr_dir, y-42, fx_chasmburster);
-    burst_projectile = -4;
-
-    var earth_shatter = spawn_hit_fx(x+burst_pos*spr_dir-46*spr_dir, y, fx_earthshatter);
-    earth_shatter.depth = -5;
-
-    sound_play(asset_get("sfx_burnapplied"), 0, 0, 0.7);
-    spawn_earth_shatter = false;
-}
-//allows bar to spawn bursts even if he isn't in the attack itself
-// check if i like it seperated like this or if it feels too strong
-if (burst_count_start && !hitpause) 
-{
-    burst_count ++;
-    if (chasm_burningfury_was_active) max_burst_count = 29;
-    else max_burst_count = 19;
-
-    if (!hitpause && !reached_max_bursts)
-    {
-        if (burst_count % 5 == 0)
-        {
-            var chasmburst = create_hitbox(AT_SKILL5, 2, x+burst_pos*spr_dir, y-42);
-            chasmburst.fx_particles = 2;
-            if (user_event_1_active) chasmburst.fx_particles = 6;
-            burst_pos += 40;
-        }
-    }
-
-    if (burst_count >= max_burst_count)
-    {
-        burst_count_start = false;
-        burst_count = -1;
-        if (chasm_burningfury_was_active) chasm_burningfury_was_active = false;
-    }
-}
-
-//polaris logic
-if (polaris_active)
-{
-    if (get_gameplay_time() % 6 == 0) light_charge(x, y-96, 180);
-
-    if (homing_cooldown >= 0) homing_cooldown--; //internal cooldown
-    if (already_shot) already_shot = false;
-
-    //making sure the multihitters don't spawn more than 1 projectile (there's probably a better way to check this)
-    //if (already_shot && (attack != AT_SKILL1 || attack == AT_SKILL1 && window <= 7) && (attack != AT_SKILL1_AIR || attack == AT_SKILL1_AIR && window <= 7)
-    //&& attack != AT_SKILL3 && (attack != AT_SKILL5 || attack == AT_SKILL5 && window <= 5 && window_timer <= 2) && attack != AT_SKILL10
-    //&& (attack != AT_SKILL6 || attack == AT_SKILL6 && window <= 5) && attack != AT_DSTRONG && attack != AT_DATTACK
-    //|| window == get_attack_value(attack, AG_NUM_WINDOWS) || state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
-    //{
-    //    already_shot = false;
-    //}
-
-    //these multi hitting moves move bar around so i don't want the hitpause to mess with the combo
-    if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
-    {
-        if (attack == AT_SKILL1 || attack == AT_SKILL1_AIR || attack == AT_SKILL10
-        || attack == AT_DATTACK && window < 4 || attack == AT_JAB && window < 10)
-        {
-            set_hitbox_value(AT_SKILL7, 1, HG_BASE_KNOCKBACK, 0);
-            set_hitbox_value(AT_SKILL7, 1, HG_KNOCKBACK_SCALING, 0);
-            set_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE, 0);
-            set_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING, 0);
-        }
-        else
-        {
-            reset_hitbox_value(AT_SKILL7, 1, HG_BASE_KNOCKBACK);
-            reset_hitbox_value(AT_SKILL7, 1, HG_KNOCKBACK_SCALING);
-            reset_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE);
-            reset_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING);
-        }
-    }
-    
-    
-    if (down_down && special_pressed && state_cat != SC_HITSTUN)
-    {
-        if (polaris_active)
-        {
-            homing_post_buffer_counting = true;
-            homing_post_buffer = 10;
-            sound_play(asset_get("sfx_abyss_despawn"));
-            polaris_active = false;
-        }
-    }
-
-    //outline logic
-    if (!is_8bit)
-    {
-        if (homing_outline_alpha >= 0.8) homing_outline_increase = false;
-        else if (homing_outline_alpha <= 0.1) homing_outline_increase = true;
-
-        if (homing_outline_increase) homing_outline_alpha += homing_outline_alpha_rate;
-        else if (!homing_outline_increase) homing_outline_alpha -= homing_outline_alpha_rate;
-    }
-
-    //if bar is on an 8bit alt change the projectile to the one with the outline
-    if (is_8bit) set_hitbox_value(AT_SKILL7, 1, HG_PROJECTILE_SPRITE, sprite_get("fx_homing_proj_8bit"));
-}
-else
-{
-    homing_outline_increase = true;
-    if (is_8bit) homing_outline_alpha = 1;
-    else homing_outline_alpha = 0.1;
-    homing_cooldown = -1;
-}
-if (homing_post_buffer_counting)
-{
-    clear_button_buffer( PC_SPECIAL_PRESSED );
-    homing_post_buffer--;
-    if (homing_post_buffer == 9 && mp_current > 0) spawn_hit_fx(x, y-32, fx_lightblow2);
-    if (homing_post_buffer <= -1)
-    {
-        homing_post_buffer_counting = false;
-    }
-}
-
-//ember fist
-/*
-if (ember_fury_time_active)
-{
-    ember_fury_time --;
-
-    if (ember_fury_time <= 0)
-    {
-        ember_fury_time_active = false;
-        ember_fury_time = ember_fury_time_max;
-    }
-}
-
-if (ember_fury_time % ember_fury_time_rate == 0 && ember_fury_time != 0 && ember_fury_time != ember_fury_time_max)
-{
-    var rapid_hitbox = create_hitbox(attack, 5, ember_x+64*ember_spr_dir, ember_y-32);
-    var random_x = (random_func(765, 5, true)-2)*8;
-    var random_y = (random_func(245, 5, true)-2)*8;
-    var rapid_blast = spawn_hit_fx(rapid_hitbox.x+random_x*ember_spr_dir, rapid_hitbox.y+random_y, fx_fireblow1);
-    rapid_blast.depth = -8;
-}
-*/
-
-
-//light hookshot
-//differences between the air version and the ground version
-if (free)
-{
-    set_window_value(AT_SKILL9, 3, AG_WINDOW_VSPEED_TYPE, 2);
-    set_window_value(AT_SKILL9, 3, AG_WINDOW_VSPEED, -2);
-    set_window_value(AT_SKILL9, 3, AG_WINDOW_HSPEED_TYPE, 2);
-    set_window_value(AT_SKILL9, 3, AG_WINDOW_HSPEED, -4);
-
-    set_window_value(AT_SKILL9, 4, AG_WINDOW_VSPEED, -0.1);
-    set_window_value(AT_SKILL9, 4, AG_WINDOW_HSPEED, -0.1);
-}
-else
-{
-    reset_window_value(AT_SKILL9, 3, AG_WINDOW_VSPEED_TYPE);
-    reset_window_value(AT_SKILL9, 3, AG_WINDOW_VSPEED);
-    reset_window_value(AT_SKILL9, 3, AG_WINDOW_HSPEED_TYPE);
-    reset_window_value(AT_SKILL9, 3, AG_WINDOW_HSPEED);
-
-    reset_window_value(AT_SKILL9, 4, AG_WINDOW_VSPEED);
-    reset_window_value(AT_SKILL9, 4, AG_WINDOW_HSPEED);
-}
-//pulling
-//bar should pull if it hits anything: wall, player, article
-//when bar gets parried at a certain distance the game gets confused
-if (hookshot_speedboost)
-{
-    window = 5;
-    window_timer = 0;
-    hsp += hookshot_chargetime/2.5*spr_dir+13*spr_dir; //min: 13 || max: 17
-    vsp -= hookshot_chargetime/3+5; //min: 5 || max: 8.33
-    hookshot_speedboost = false;
-}
-
-//searing descent cancel
-if (descent_timer <= 0 && state != PS_ATTACK_AIR || !free)
-{
-    descent_timer = descent_timer_reset;
-    if (attack == AT_SKILL10 && free) burningfury_active = false;
-}
-
-//reset flashbangs's target too so there won't be any jank
-if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND || attack != AT_SKILL11) flashbanged_id = noone;
-
-
-//prat_land_time changing
-if (ustrong2_cast) prat_land_time = 24; //theikos U-strong
-else if (theikos_active) prat_land_time = 2; //theikos in general
-else prat_land_time = normal_prat_land_time; //used for force leap and accel blitz, searing descent forces bar into the ground anyways
-
-//it also needs to check if it's currently pratlanding and has that variable active
-if (prev_state == PS_PRATLAND && ustrong2_cast) ustrong2_cast = false;
-
-
-// SKILL COOLDOWNS (based off Jill Katze's sakuya)
-
-// u-strong
-move_cooldown[AT_USTRONG] = 1 + ceil(strong_cost - mp_current);
-
-// d-strong
-move_cooldown[AT_DSTRONG] = 1 + ceil(strong_cost - mp_current);
-
-// [0] light dagger
-move_cooldown[AT_SKILL0] = 1 + ceil(lightdagger_cost - mp_current);
-move_cooldown[AT_SKILL0_AIR] = 1 + ceil(lightdagger_cost - mp_current);
-
-// [1] burning fury
-move_cooldown[AT_SKILL1] = 1 + ceil(buff_total_cost - mp_current);
-move_cooldown[AT_SKILL1_AIR] = 1 + ceil(buff_total_cost - mp_current);
-if (burningfury_active)
-{
-    move_cooldown[AT_SKILL1] = 1 + ceil(burningfury_attack_cost - mp_current);
-    move_cooldown[AT_SKILL1_AIR] = 1 + ceil(burningfury_attack_cost - mp_current);
-}
-
-// [2] force leap
-move_cooldown[AT_SKILL2] = 1 + ceil(forceleap_activate_cost - mp_current);
-
-// [3] photon blast
-move_cooldown[AT_SKILL3] = 1 + ceil(photonblast_cost - mp_current); 
-if (photon_used) move_cooldown[AT_SKILL3] = 2; 
-
-// [4] accel blitz
-move_cooldown[AT_SKILL4] = 1 + ceil(accelblitz_cost - mp_current);
-
-// [5] chasm burster
-move_cooldown[AT_SKILL5] = 1 + ceil(chasmburster_total_cost - mp_current);
-
-// [6] power smash
-move_cooldown[AT_SKILL6] = 1 + ceil(powersmash_total_cost - mp_current);
-
-// [7] polaris
-move_cooldown[AT_SKILL7] = 1 + ceil(buff_total_cost - mp_current);
-if (homing_post_buffer_counting || polaris_active) move_cooldown[AT_SKILL7] = 2;
-
-// [8] ember fist
-move_cooldown[AT_SKILL8] = 1 + ceil(emberfist_cost - mp_current);
-
-// [9] light hookshot
-move_cooldown[AT_SKILL9] = 1 + ceil(lighthookshot_total_cost - mp_current);
-
-// [10] searing descent
-move_cooldown[AT_SKILL10] = 1 + ceil(searingdescent_activate_cost - mp_current);
-
-// [11] flashbag
-move_cooldown[AT_SKILL11] = 1 + ceil(flashbang_total_cost - mp_current);
-
-// theikos u-strong
-move_cooldown[AT_USTRONG_2] = 1 + ceil(strong_cost*2 - mp_current);
-
-// theikos d-strong
-move_cooldown[AT_DSTRONG_2] = 1 + ceil(strong_cost*2 - mp_current);
-
-
-//////////////////////////////////////////////////SKILL SELECT SECTION//////////////////////////////////////////////////
-
-//untill there's a skill select, these are bar's skills
-//selected_nspec: 0,5,8
-//selected_fspec: 1,6,9
-//selected_uspec: 2,4,10
-//selected_uspec: 3,7,11
-
-//if (jump_pressed && jump_counter == 1) sound_play(asset_get("mfx_back")); //cancel sfx
-//sound_play(asset_get("mfx_confirm")); // confirm sfx
-
-//how it works:
-// - pressing a direction (up, left/right, down) will select the skill in that row
-// - pressing jump will go back one skill to re-select another
-// - pressing jump on the neutral special selection will give bar the default skillset
-
-if (get_match_setting(SET_PRACTICE) || testing)
-{
-    if (taunt_down && up_down && menu_timer == -1)
-    {
-        menu_timer = 126;
-        menu_open = true;
-    }
-}
-
-//special menu timer
-if(menu_timer >= 0)
-{
-    menu_open = true;
-
-    barPause();
-    if (menu_timer >= 120 || menu_timer <= 20) menu_timer--;
-}
-else menu_open = false;
-
-if (close_timer >= 0) close_timer--;
-
-//menu selection
-if(menu_open)
-{
-    //invincibility timer when using the skill select (5 secs)
-    menu_armor_time --;
-    if (menu_armor_time > 0 || active_col == -1) attack_invince = true;
-    else attack_invince = false;
-    
-    //cancel any invincibility bar might have
-    if (menu_armor_time > 60)
-    {
-        invincible = false;
-        invince_time = 0;
-    }
-    //makes bar flash when he has 1 second left
-    if (menu_armor_time <= 60 && menu_armor_time % 4 == 0 && menu_armor_time > 0) invincible = true;
-
-    menu_close = true;
-    //controls
-    if(up_pressed)
-    {
-        menu_dir = 0;
-        arrow_frame = 0;
-        if (active_col < 4)
-        {
-            arrow_anim_up = true;
-            arrow_anim_side = false;
-            arrow_anim_down = false;
-        }
-    }
-    else if(down_pressed)
-    {
-        menu_dir = 2;
-        arrow_frame = 0;
-        if (active_col < 4)
-        {
-            arrow_anim_up = false;
-            arrow_anim_side = false;
-            arrow_anim_down = true;
-        }
-    }
-    else if(right_pressed) 
-    {
-        menu_dir = 1;
-        arrow_frame = 0;
-        if (active_col < 4)
-        {
-            arrow_anim_up = false;
-            arrow_anim_side = true;
-            arrow_anim_down = false;
-        }
-    }
-    else if(jump_pressed) menu_dir = -2; //jump cancel
-    else menu_dir = -1;
-
-    if (menu_timer == 120) sound_play(asset_get("mfx_forward")); //open menu sound
-
-    //skill select logic
-    if (active_col < 4)
-    {
-        if (menu_dir != -1 && menu_dir != prev_dir)
-        {
-			if (menu_dir == -2) //go back
-            {
-                //get_gameplay_time works as a sort of limiter
-                //because the thing is it goes to active_col = -1 as soon as the match starts
-                if (get_gameplay_time() > 1 && active_col >= 0) active_col--;
-
-				if (active_col == -1) //cancel skill select entirely
-                {
-                    menu_timer = 20;
-					specialnums = [0,0,0,0];
-                    for (var i = 0; i < 4; i++)
-                    {
-                        specs_chosen[i, 1] = false;
-                        specs_chosen[i, 2] = false;
-                    }
-                    sound_play(asset_get("mfx_back"));
-				}
-                else //just go back one
-                {
-					sound_play(asset_get("mfx_back"));
-					for (var i = 0; i < 3; i++) specs_chosen[active_col, i] = true;
-				}
-			}
-            else //confirm
-            {
-				specialnums[active_col] = menu_dir;
-				sound_play(asset_get("mfx_confirm"));
-				for(var i = 0; i < 3; i++)
-                {
-					if(i != menu_dir) specs_chosen[active_col, i] = false;
-				}
-				active_col ++;
-        	}
-        }
-        prev_dir = menu_dir;
-    }
-    if (menu_confirm && active_col >= 4) //ending selection
-    {
-        menu_timer = 20;
-        menu_confirm = false;
-    }
-    
-    //cursor animation
-    cursor_timer ++;
-    if(cursor_timer >= 24) cursor_timer = 0;
-}
-
-//resets menu variables when closed
-if(menu_close && !menu_open)
-{
-    barUnpause();
-    menu_armor_time = menu_armor_time_reset;
-
-    menu_close = false; 
-    if (!is_AI || is_AI && AI_vs) sound_play(asset_get("mfx_back"));
-    close_timer = 4;
-    menu_dir = -1;
-    prev_dir = -1;
-    active_col = 0;
-    menu_confirm = true;
-    cursor_timer = 0;
-    
-    for(var i = 0; i <= 3; i++)
-    {
-        for(var j = 0; j <= 2; j++) specs_chosen[i, j] = true;
-    }
-}
-
-if (arrow_anim_up || arrow_anim_side || arrow_anim_down)
-{
-    arrow_frame += 0.5;
-    if (arrow_frame >= 4)
-    {
-        arrow_anim_up = false;
-        arrow_anim_side = false;
-        arrow_anim_down = false;
-    }
-}
-
-//////////////////////////////////////////////////VISUALS SECTION//////////////////////////////////////////////////
-
-//credit to delta parallax for the custom hitbox colors code
-//& nackles
-with (pHitBox) //references all hitbox objects
-{
-    if (player_id == other)
-    {
-        if (type == 1) //this code doesn't like projectiles, so the projectiles are on hitbox_init.gml
-        {
-            hitbox_shape1 = -1;
-            hitbox_shape2 = -1;
-            hitbox_shape3 = -1;
-
-            with (other) //define which HG_HITBOX_COLOR is which, and apply it using the shape (weird flex but ok)
-            {
-                if (get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR) == 1) other.hitbox_shape1 = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE);
-                else if (get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR) == 2) other.hitbox_shape2 = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE);
-                else if (get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR) == 3) other.hitbox_shape3 = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE);
-            }
-
-            //after defining with HG_HITBOX_COLOR the matching number, define the actual sprite_index replacements
-            switch (hitbox_shape1) //sweetspots
-            {
-                case 0:
-                    sprite_index = other.hb_sweet_0;
-                    break;
-                case 1:
-                    sprite_index = other.hb_sweet_1;
-                    break;
-                case 2:
-                    sprite_index = other.hb_sweet_2;
-                    break;
-            }
-
-            switch (hitbox_shape2) //holy burning
-            {
-                case 0:
-                    sprite_index = other.hb_burn_0;
-                    break;
-                case 1:
-                    sprite_index = other.hb_burn_1;
-                    break;
-                case 2:
-                    sprite_index = other.hb_burn_2;
-                    break;
-            }
-
-            switch (hitbox_shape3) //lightstun
-            {
-                case 0:
-                    sprite_index = other.hb_light_0;
-                    break;
-                case 1:
-                    sprite_index = other.hb_light_1;
-                    break;
-                case 2:
-                    sprite_index = other.hb_light_2;
-                    break;
-            }
-        }
-    }
-}
-
-//credit to supersonic for the tutorial
-/*
-with (hit_fx_obj)
-{
-    if (player == other.player)
-    {
-        depth = -3;
-    }
-}
-*/
-
-//respawn platform
-//controls the theikos platform glow
-if (state == PS_RESPAWN || attack == AT_TAUNT && state == PS_ATTACK_GROUND && free == true) plat_frame += plat_animspeed;
-
-//special charge effects
-if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
-{
-    switch (attack)
-    {
-        case AT_USTRONG:
-            if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0 && !burningfury_active) light_charge(x, y-32, -1);
-
-            if (window == 2 && strong_charge == 0 && !burningfury_active) sound_play(sfx_charge);
-            else if (!smash_charging) sound_stop(sfx_charge);
-            break;
-        case AT_DTHROW: //photon blast
-            if (window >= 2 && window <= 4 && photon_charge)
-            {
-                if (get_gameplay_time() % (4-photon_cycle) == 0)
-                {
-                    light_charge(x, y-40, -1);
-                }
-            }
-
-            if (window == 2 && window_timer == 1) sound_play(sfx_charge);
-            else if (!photon_charge) sound_stop(sfx_charge);
-            break;
-        case AT_EXTRA_2: //light hookshot
-            if (window == 2 && get_gameplay_time() % (4-floor(hookshot_chargetime/5)) == 0 && hookshot_chargetime != 0 && !burningfury_active)
-            {
-                light_charge(x-16*spr_dir, y-40, -1);
-            }
-            if (window == 2 && window_timer == 1 && hookshot_chargetime == 0 && !burningfury_active) sound_play(sfx_charge);
-            else if (window != 2) sound_stop(sfx_charge);
-            break;
-        case AT_USTRONG_2: //theikos Ustrong
-            if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0) light_charge(x, y-32, -1);
-
-            if (window == 2 && strong_charge == 0) sound_play(sfx_charge);
-            else if (!smash_charging) sound_stop(sfx_charge);
-            break;
-        case AT_DSTRONG:
-            if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0) fire_charge(x, y+16);
-            break;
-        case AT_DSTRONG_2:
-            if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0) fire_charge(x, y);
-            break;
-        case AT_FSTRONG: //uses the light charge effect only with rune C
-            if (has_rune("C"))
-            {
-                if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0 && !burningfury_active) light_charge(x, y-32, -1);
-
-                if (window == 2 && strong_charge == 0 && !burningfury_active) sound_play(sfx_charge);
-                else if (!smash_charging) sound_stop(sfx_charge);
-            }
-            break;
-    }
-
-    if (attack == AT_THEIKOS)
-    {
-        if (window == 2 && get_gameplay_time() % (6-floor(window_timer/20)) == 0) light_charge(x, y-32, -1);
-    }
-
-    if (burningfury_active)
-    {
-        switch (attack)
-        {
-            case AT_USTRONG:
-                if (window == 2 && strong_charge == 1) sound_play(asset_get("sfx_zetter_fireball_fire"));
-                else if (!smash_charging) sound_stop(asset_get("sfx_zetter_fireball_fire"));
-                break;
-            case AT_EXTRA_2: //light hookshot
-                if (window == 2 && window_timer == 1 && hookshot_chargetime == 0) sound_play(asset_get("sfx_zetter_fireball_fire"));
-                else if (window != 2) sound_stop(asset_get("sfx_zetter_fireball_fire"));
-                break;
-            case AT_FSTRONG:
-                if (window == 2 && strong_charge == 1) sound_play(asset_get("sfx_zetter_fireball_fire"));
-                else if (!smash_charging) sound_stop(asset_get("sfx_zetter_fireball_fire"));
-                break;
-        }
-    }
-}
-else
-{
     sound_stop(sfx_charge);
 }
 
-//victory screen stuff
-if (!theikos_active)
+//play intro
+if (got_gameplay_time == 4 && !bibical && attack != AT_INTRO)
 {
-    switch (alt_cur)
-    {
-        case 14: //Gameboy
-            set_victory_portrait(sprite_get("portrait_extra1"));
-	        set_victory_sidebar(sprite_get("result_small_extra1"));
-            set_victory_theme(sound_get("mus_victory_demake"));
-            break;
-        case 15: //NES
-            set_victory_portrait(sprite_get("portrait_extra2"));
-	        set_victory_sidebar(sprite_get("result_small_extra2"));
-            set_victory_theme(sound_get("mus_victory_demake"));
-            break;
-        case 25: //Helel
-            set_victory_portrait(sprite_get("portrait_extra3"));
-	        set_victory_sidebar(sprite_get("result_small_extra3"));
-            break;
-        case 26: //Theikos alt
-            set_victory_portrait(sprite_get("portrait_extra4"));
-	        set_victory_sidebar(sprite_get("result_small_extra4"));
-            break;
-        default:
-            set_victory_portrait(sprite_get("portrait"));
-	        set_victory_sidebar(sprite_get("result_small"));
-            set_victory_theme(sound_get("mus_victory"));
+    set_attack(has_theikos ? AT_THEIKOS : AT_INTRO);
+    exit;
+}
+
+
+
+//renders effects in front of you
+//credit to supersonic for the help
+//effects default depth when they spawn is 3, so this will make it so it won't overwrite values if i add them manually
+//with (hit_fx_obj) if (player == other.player && depth == 3) depth = player_id.depth-2;
+
+//this custom setup will let me control any hitbox i want
+if (instance_exists(bar_hitbox))
+{
+    //hitbox particle setup because fuck you
+    bar_hitbox.fx_particles = get_hitbox_value(pHitBox.attack, pHitBox.hbox_num, HG_HIT_PARTICLE_NUM);
+}
+
+
+//////////////////////////////////////////////////////////// BAR MECHANICS /////////////////////////////////////////////////////////////
+
+// RESET VARIABLES ON THE GROUND
+if (!free)
+{
+    glide_stamina = glide_stamina_max;
+    
+    accel_act_time = 0;
+    accel_used = false;
+
+    if was_free { // this check is so that you only reset things the moment you land
+        //gliding
+        glide_ui = false;
+        can_glide = true;
+        
+        //exit glide
+        if (state == PS_GLIDE) set_state(PS_LAND);
+    
+        //double jump height
+        djump_speed = normal_djump_speed;
+    
+        //skill stuff
+        start_skill_cancel = false;
+    
+        leap_used = false;
+        blast_used = false;
+    
+        if (accel_used && (state == PS_LAND || state == PS_LANDING_LAG) && (prev_state == PS_ATTACK_AIR || prev_state == PS_IDLE_AIR) && !has_hit) state = PS_PRATLAND;
     }
+}
+// DO STUFF IN THE AIR
+else { // free
+    if (can_glide) //check if bar can glide
+    {
+        if (state_cat == SC_AIR_NEUTRAL && state != PS_FIRST_JUMP && state != PS_GLIDE && vsp > 1 && jump_down) set_state(PS_GLIDE);
+    }
+    
+    switch (state)
+    {
+        // RESET VARIABLES ON WALLJUMP
+        case PS_WALL_JUMP:
+            if (state_timer == 1)
+            {
+                //this used to also be restored on wall tech but... come on
+                glide_stamina += glide_stamina_restore; //+50
+                if (glide_stamina >= glide_stamina_max) glide_stamina = glide_stamina_max; //limit stamina to max
+                if (!can_glide) can_glide = true; //rstores gliding
+            }
+        
+            leap_used = false;
+            blast_used = false;
+            accel_used = false;
+            apply_motion_trail = false;
+            break;
+            
+        // GLIDE MECHANIC
+        case PS_GLIDE: // this is a macro, see top of file
+            //technical stuff
+            vsp = glide_vsp;
+            if (fast_falling) vsp = glide_fastfall_vsp;
+        
+            glide_stamina --;
+            if (glide_stamina <= 0) //if stamina reaches 0 stop gliding
+            {
+                can_glide = false;
+                set_state(PS_IDLE_AIR);
+            }
+            if (abs(hsp) >= air_max_speed) spr_dir = sign(hsp); //turn bar around if he goes fast enough
+        
+            //anim stuff
+            sprite_index = sprite_get("glide");
+            image_index += glide_anim_speed;
+            
+            //show glide ui
+            glide_ui = true;
+        
+            //exit glide
+            if (!jump_down) set_state(PS_IDLE_AIR);
+            
+            break;
+        
+        // DOUBLE JUMP MECHANICS
+        case PS_DOUBLE_JUMP:
+            //reduce height on each double jump bar does
+            if (state_timer == 1 && theikos_type == 0) djump_speed = (has_rune("B")) ? djump_speed / 1.22 : djump_speed / 1.56;
+        
+            //midair turning
+            var turn_timeframe = 5; //decides how much time bar has to turn around
+            if (state_timer == 0) djump_turn = false;
+            if (state_timer <= turn_timeframe && prev_djumps != djumps && !djump_turn)
+            {
+                if (right_down && -spr_dir)
+                {
+                    spr_dir = 1;
+                    djump_turn = true;
+                }
+                else if (left_down && spr_dir)
+                {
+                    spr_dir = -1;
+                    djump_turn = true;
+                }
+                if (state_timer > turn_timeframe) prev_djumps = djumps;
+            }
+            break;
+                
+    
+    }
+}
+
+//GLIDE UI
+if (glide_stamina < glide_stamina_max && state != PS_PRATFALL && theikos_type == 0) glide_ui = true; //show glide UI
+
+
+//MP MECHANIC
+//thanks delta parallax
+if (mp_current < 100 && mp_gainable) mp_current = mp_current + (mp_gain_rate/60); //clamp(mp_current + (mp_gain_rate/60), 0, mp_max);
+else if (mp_current >= mp_max) mp_current = mp_max;
+else if (mp_current <= 0) mp_current = 0;
+
+//mana gain conditions
+if (burnbuff_active || lightbuff_active || mp_current >= mp_max) mp_gainable = false;
+else mp_gainable = true;
+
+//mana overcharge anim
+if (mp_current > 100) mp_color_ex = (got_gameplay_time % 20 >= 15) ? c_white : $FFFF00;
+
+//mana notice
+if (notice_time > -1)
+{
+    if (notice_time == notice_time_max)
+    {
+        sound_play(sound_get("mfx_notice"), 0, 0);
+        msg = spawn_hit_fx(x-notice[notice_type][0], y-notice[notice_type][1]-char_height+64, notice[notice_type][2]);
+        msg.spr_dir = 1;
+        msg.depth = -10;
+    }
+    
+    if (instance_exists(msg)) {
+        msg.y = msg.y-notice_time/(notice_time_max/2);
+    }
+    notice_time --;
+}
+
+//mana mini gauge appear logic
+if (mp_mini_timer > 0) mp_mini_timer --;
+
+
+//HOLY BURNING MECHANIC
+if (holyburn_active)
+{
+    with (oPlayer)
+    {
+        if (holyburning && holyburner_id == other)
+        {
+            if (!hitpause || hitpause && lightstun_type == 2) //only damage if the player isn't in hitpause
+            {
+                holyburn_timer --;
+
+                if (holyburn_timer % 30 == 0) take_damage(player, other.player, 1); //DoT
+                if (holyburn_timer <= 0 && lightstun_type != 2 || state == PS_DEAD || state == PS_RESPAWN) holyburning = false;
+
+                //extra mp gain from mechanics
+                if (holyburn_timer % 15 == 0) with (other) if (mp_current < mp_max && has_rune("J")) mp_current += 1;
+            }
+
+            with (holyburner_id) //graphic stuff
+            {
+                var random_x = (random_func(28, 9, true)-4)*8;
+                var random_y = random_func(25, 9, true)*(other.char_height/8);
+
+                //if possible, change to the generate_particles() function
+                var fx_fire = spawn_hit_fx(other.x+random_x, other.y-random_y-8, fx_burn);
+                fx_fire.spr_dir = other.spr_dir;
+
+                other.outline_color = [line_color[0], line_color[1], line_color[2]];
+                init_shader();
+            }
+        }
+        else if ("url" in self && url != other.url && !holyburning && !burned)
+        {
+            outline_color = [0, 0, 0];
+            init_shader();
+        }
+    }
+}
+if (!burned && !activate_outline && !holyburning)
+{
+    outline_color = no_effect_line_color;
+    init_shader();
+}
+
+//LIGHT STUNNING MECHANIC
+if (lightstun_active)
+{
+    with (oPlayer)
+    {
+        if (lightstun_timer > -1) lightstun_timer --;
+        if (lightstun_timer <= -1 || state == PS_DEAD || state == PS_RESPAWN)
+        {
+            lightstun_type = 0;
+            lightstun_timer = -1;
+        }
+
+        switch (lightstun_type)
+        {
+            case 0:
+                lightstun_timer = 0;
+                break;
+            case 1: //pre-timer
+
+                //vfx
+                if (lightstun_timer % 3 == 0) with (other) //sparkles effect
+                {
+                    var fx_sparkles = spawn_hit_fx(other.x, other.y-other.char_height/2, fx_part_light);
+                    fx_sparkles.hsp = (random_func(751, 5, true)-2)*2;
+                    fx_sparkles.vsp = (random_func(752, 5, true)-2)*2;
+                }
+                if (lightstun_timer % 60 == 0) //indicator
+                {
+                    sound_play(asset_get("sfx_frog_fspecial_cancel"));
+                    with (other) spawn_hit_fx(other.x, other.y-24, fx_lightblow[0]);
+                }
+
+
+                //spawn the funny freeze hitbox
+                if (lightstun_timer == 0) with (other)
+                {
+                    var lightstunner = create_hitbox(48, 1, other.x, other.y-char_height/2);
+                    lightstunner.fx_particles = 1;
+                }
+                break;
+            case 2: //frozen
+                hitpause = true;
+                hitstop = 2;
+                set_state(PS_HITSTUN);
+                break;
+        }
+
+        //extra mp gain from mechanics
+        if (lightstun_type > 0 && lightstun_timer % 15 == 0) with (other) if (mp_current < mp_max && has_rune("J")) mp_current += 1;
+
+        with (other) if (lightstun_last_attack > 0)
+        {
+            lightstun_last_attack_timer --;
+            if (lightstun_last_attack_timer <= 0) lightstun_last_attack = 0;
+        }
+    }
+}
+
+//OUTLINE COLORING
+//should only be active if any mechanic that uses an outline should use it
+if (activate_outline)
+{
+    if (outline_time_up) outline_time ++;
+    else outline_time --;
+
+    if (outline_time >= 30 || outline_time <= 0) outline_time_up = !outline_time_up;
+
+    for (var o = 0; o <= 2; ++o)
+    {
+        lerp_array[o] = floor(merge_color(no_effect_line_color[o], line_color[o], outline_time/30));
+        outline_color = [lerp_array[0], lerp_array[1], lerp_array[2]];
+        init_shader();
+    }    
 }
 else
 {
-    switch (alt_cur)
-    {
-        case 14: //Gameboy
-            set_victory_portrait(sprite_get("portrait_extra5"));
-	        set_victory_sidebar(sprite_get("result_small_extra5"));
-            set_victory_theme(sound_get("mus_victory_demake"));
-            break;
-        case 15: //NES
-            set_victory_portrait(sprite_get("portrait_extra6"));
-	        set_victory_sidebar(sprite_get("result_small_extra6"));
-            set_victory_theme(sound_get("mus_victory_demake"));
-            break;
-        default:
-            set_victory_portrait(sprite_get("portrait_extra4"));
-	        set_victory_sidebar(sprite_get("result_small_extra4"));
-            set_victory_theme(sound_get("mus_victory"));
-    }
+    outline_time = 0;
+    outline_time_up = true;
 }
+//all mechanics that activate the outline go here
+activate_outline = burnbuff_active;
 
-//some effects require constant updating
-if (user_event_1_active || theikos_alt)
+////////////////////////////////////////////////////////// SKILLS SECTION //////////////////////////////////////////////////////////////
+
+//the menu itself
+if (menu_active)
 {
-    if (burningfury_active)
+    //menu logic
+    menu_timer --;
+    if (menu_timer <= menu_timer_stop) //it has a few secs extra because of versus mode restart jank
     {
-        fx_ustrong_lightaxe_sprite = sprite_get("theikos_fx_ustrong_b_lightaxeburn");
-        fx_lightdagger = sprite_get("theikos_fx_lightdaggerburn");
-        fx_lightdagger_air = sprite_get("theikos_fx_lightdaggerburn_air");
-        fx_lighthookshot = sprite_get("theikos_fx_lighthookshotburn");
+        //if bar is in the middle of selecting, freeze him
+        //otherwise, start the unfreeze timer
+        if (cur_select > -1 && cur_select < 4) 
+        {
+            if (menu_timer < menu_timer_stop) menu_timer = menu_timer_stop;
+            menu_controls(true);
+            bar_pause(true);
+        }
+        else
+        {
+            menu_controls(false); //disable the menu controls
+            state_timer ++; //this animates the spawn state
+
+            //skill slots saving
+            if (menu_timer == menu_timer_stop-1)
+            {
+                if (cur_select >= 4) for (var i = 0; i <= 3; ++i) prev_skills[i] = cur_skills[i];       //save skills
+                else if (cur_select <= -1) for (var i = 0; i <= 3; ++i) cur_skills[i] = prev_skills[i]; //revert changes
+            }
+            if (menu_timer <= 0)
+            {
+                bar_pause(false);
+                menu_active = false;
+                cur_skill_info = 0;
+            }
+        }
+
+        //picks skills / hover over them on info mode
+        if (!info_mode_menu)
+        {
+            switch (menu_dir)
+            {
+                case 1: case 2: case 3: //selections
+                    cur_skills[cur_select] = cur_select+4*(menu_dir-1);
+                    sound_play(asset_get("mfx_confirm"));
+                    cur_select ++;
+                    break;
+                case -1: //cancel select
+                    sound_play(asset_get("mfx_back"));
+                    cur_select --;
+                    break;
+                case -2:
+                    if (is_practice_menu && !playtesting)
+                    {
+                        info_mode_menu = true;
+                        sound_play(asset_get("mfx_confirm"));
+                    }
+                    else menu_dir = 0;
+                    break;
+            }
+        }
+        else
+        {
+            switch (menu_dir)
+            {
+                case 1: //up
+                    if (cur_skill_info - 4 >= 0) cur_skill_info -= 4;
+                    sound_play(asset_get("mfx_move_cursor"));
+                    break;
+                case 2: //right
+                    if (cur_skill_info + 1 <= 4 *skill[cur_skill_info].skill_pos_y + 3) cur_skill_info += 1;
+                    sound_play(asset_get("mfx_move_cursor"));
+                    break;
+                case 3: //down
+                    if (cur_skill_info + 4 <= 11) cur_skill_info += 4;
+                    sound_play(asset_get("mfx_move_cursor"));
+                    break;
+                case 4: //left
+                    if (cur_skill_info - 1 >= 4 * skill[cur_skill_info].skill_pos_y) cur_skill_info -= 1;;
+                    sound_play(asset_get("mfx_move_cursor"));
+                    break;
+                case -1: //go back to skill select
+                    sound_play(asset_get("mfx_back"));
+                    info_mode_menu = false;
+                    break;
+                case -2: //allow bar to move with skill descriptions
+                    //cur_skill_info needs to be equiped
+                    for (var g = 0; g <= 3; ++g)
+                    {
+                        if (skill[cur_skills[g]].skill_id != skill[cur_skill_info].skill_id
+                        && skill[cur_skills[g]].skill_pos_x == skill[cur_skill_info].skill_pos_x)
+                        {
+                            replaced_skill_temp = cur_skills[g]
+                            cur_skills[g] = cur_skill_info;
+                        }
+                    }
+
+                    //gives bar the MP to use the skill too
+                    if (mp_current < skill[cur_skill_info].mp_use_cost) mp_current = skill[cur_skill_info].mp_use_cost;
+
+                    menu_active = false;
+                    menu_controls(false);
+                    bar_pause(false);
+                    sound_play(asset_get("mfx_option"));
+                    break;
+            }
+        }
     }
-    else
+
+    //animation shenanigans
+    if (is_attacking) //this part allows bar to still have some animations when he's frozen
     {
-        fx_ustrong_lightaxe_sprite = sprite_get("theikos_fx_ustrong_b_lightaxe");
-        fx_lightdagger = sprite_get("theikos_fx_lightdagger");
-        fx_lightdagger_air = sprite_get("theikos_fx_lightdagger_air");
-        fx_lighthookshot = sprite_get("theikos_fx_lighthookshot");
+        switch (attack)
+        {
+            case 2: case 47: //intro + theikos transformation
+                window_timer ++;
+                break;
+            case 3: //skill select animation
+                if (window != 2) window_timer ++;
+                break;
+        }
     }
+    //cursor animation
+    menu_cursor_timer ++;
+
+    //invincibility logic
+    if (menu_invince > 0)
+    {
+        if (!training && !is_practice_menu && !is_cpu) menu_invince --;
+
+        //makes bar flash when he has 1 second left
+        if (menu_invince <= 60 && menu_invince % 4 == 0 && menu_invince > 0) invincible = true;
+        else attack_invince = true;
+    }
+
+    burnbuff_active = false;
+    lightbuff_active = false;
 }
-else
+
+//general
+//grab stuff
+if (bar_grabbed_id != noone || rune_H_drag_id != noone)
 {
-    if (burningfury_active)
-    {
-        fx_ustrong_lightaxe_sprite = sprite_get("fx_ustrong_lightaxeburn");
-        fx_lightdagger = sprite_get("fx_lightdaggerburn");
-        fx_lightdagger_air = sprite_get("fx_lightdaggerburn_air");
-        fx_lighthookshot = sprite_get("fx_lighthookshotburn");
+    bar_grab_time ++;
+    with (bar_grabbed_id || rune_H_drag_id)
+    {   
+        if (state != PS_DEAD && state != PS_RESPAWN && state != PS_HITSTUN) state = PS_HITSTUN;
+        else if (state == PS_DEAD || state == PS_RESPAWN)
+        {
+            other.bar_grabbed_id = noone;
+            other.rune_H_drag_id = noone;
+        }
+        free = true;
+        hurt_img = 1;
     }
-    else
+}
+else bar_grab_time = 0;
+
+//allows bar to act out of certain skills
+if (skill_cancel_timer <= 0) start_skill_cancel = false;
+else if (start_skill_cancel && !hitpause) skill_cancel_timer --;
+
+//skill/strongs cost (special cooldowns are done inside the skills themselves)
+for (var skill_slot = 0; skill_slot <= 3; ++skill_slot)
+{
+    move_cooldown[skill[cur_skills[skill_slot]].skill_attack] = 1 + ceil(skill[cur_skills[skill_slot]].mp_use_cost - mp_current);
+    
+    if (skill[cur_skills[skill_slot]].skill_attack_air != -1) //air ver check
     {
-        fx_ustrong_lightaxe_sprite = sprite_get("empty");
-        fx_lightdagger = sprite_get("empty");
-        fx_lightdagger_air = sprite_get("empty");
-        fx_lighthookshot = sprite_get("empty");
+        move_cooldown[skill[cur_skills[skill_slot]].skill_attack_air] = 1 + ceil(skill[cur_skills[skill_slot]].mp_use_cost - mp_current);
+    }
+}
+move_cooldown[AT_USTRONG] = 1 + ceil(mp_cost_strongs - mp_current);
+move_cooldown[AT_DSTRONG] = 1 + ceil(mp_cost_strongs - mp_current);
+
+
+//skill specific logic
+//n-spec
+switch (skill[cur_skills[0]].skill_id)
+{
+    case 8: //ember fist
+        if (fury_ember_timer > 0) fury_ember_timer --;
+
+        if (fury_ember_timer != 0)
+        {
+            if (fury_ember_timer % 8 == 0) //hitbox spawn
+            {
+                bar_hitbox = create_hitbox(skill[8].skill_attack, 4, fury_ember_x, fury_ember_y);
+                bar_hitbox.fx_particles = get_hitbox_value(skill[8].skill_attack, 4, HG_HIT_PARTICLE_NUM);
+            }
+            if (fury_ember_timer % 4 == 0) //effect work
+            {
+                var random_x = (random_func(765, 5, true)-2)*8;
+                var random_y = (random_func(245, 5, true)-2)*8;
+                var fury_ember = spawn_hit_fx(fury_ember_x + random_x, fury_ember_y + random_y, fx_fireblow[0]);
+                fury_ember.depth = depth-1;
+            }
+        }
+        break;
+}
+
+//f-spec
+switch (skill[cur_skills[1]].skill_id)
+{
+    case 1: //burning fury
+        //check if burning fury is active and change the mana costs accordingly
+        if (burnbuff_active) skill[1].mp_use_cost = skill[1].mp_cost2;
+        else skill[1].mp_use_cost = fury_norm_cost;
+
+        if (burnbuff_active)
+        {
+            if (!infinite_mp_mode) mp_current -= mp_cost_const_rate/60;
+            if (mp_current <= 0) burnbuff_active = false;
+
+            //visual stuff
+            if (got_gameplay_time % 5 == 0) generate_particles(fx_part_fire, x, y-48, 0, depth-1, 11, 11, 0, -1);
+        }
+
+        if (is_attacking) switch (attack)
+        {
+            //burning fury buff on normals
+            case AT_JAB: case AT_UTILT: case AT_FAIR: case AT_DAIR: case AT_USTRONG: case AT_FSTRONG:  case AT_DSTRONG:  case AT_TAUNT: case AT_FSTRONG_2:  case AT_DSTRONG_2:
+                if (window == 1 && window_timer == 0) burnbuff_apply();
+                break;
+        }
+        break;
+    case 9: //light hookshot
+        if (hook_grab > 0)
+        {
+            hsp += hook_charge/2.5*spr_dir+13*spr_dir; //min: 13 || max: 17
+
+            if (hook_grab == 1 && !rune_G_active) vsp -= hook_charge/3+5; //min: 5 || max: 8.33
+            else  vsp -= hook_charge/3+5.75; //min: 5 || max: 9.0833
+            
+            hook_grab = 0;
+        }
+        break;
+}
+
+//u-spec
+switch (skill[cur_skills[2]].skill_id)
+{
+    case 2: //force leap
+        if (leap_used) move_cooldown[skill[2].skill_attack] = 1 + leap_used;
+        break;
+    case 6: //accel blitz
+        if (accel_used) move_cooldown[skill[6].skill_attack] = 1 + accel_used;
+
+        //flash vulnerability
+        if (state_cat == SC_HITSTUN)
+        {
+            if (accel_vulnerable)
+            {
+                hitstop = accel_flashed_time;
+                accel_vulnerable = false;
+            }
+            if (accel_flashed_time > 0) accel_flashed_time --;
+        }
+        
+        //gives bar time to act out of the attack, only if he isn't on the theikos state
+        if (accel_act_time > 0)
+        {
+            if (attack == skill[6].skill_attack) has_hit = false;
+            accel_act_time --;
+            //add motion blur and flash effect stuff here
+            if (accel_act_time % 3 == 0) charge_color = !charge_color;
+        }
+        else
+        {
+            if (state == PS_PRATFALL || state == PS_PRATLAND
+            || !free && alt_cur != 25 && (!is_attacking || is_attacking && attack != skill[6].skill_attack))
+            {
+                apply_motion_trail = false;
+            }
+
+            if (accel_used && !has_hit && free && !hurtboxID.dodging && state != PS_PRATFALL && !is_attacking) set_state(PS_PRATFALL);
+        }
+        break;
+}
+
+//d-spec
+switch (skill[cur_skills[3]].skill_id)
+{
+    case 3: //photon blast
+        //cooldown
+        if (blast_used) move_cooldown[skill[3].skill_attack] = 1 + blast_used;
+        break;
+    case 7: //polaris
+        if (lightbuff_active)
+        {
+            //mp burning
+            if (!infinite_mp_mode) mp_current -= mp_cost_const_rate/60;
+            if (mp_current <= 0) lightbuff_active = false;
+
+            //internal cooldown stuff
+            if (polaris_shot) polaris_shot = false;
+            if (homing_cooldown >= 0) homing_cooldown --;
+
+            //these multi hitting moves move bar around so i don't want the hitpause to mess with the combo
+            if (is_attacking)
+            {
+                if (attack == skill[1].skill_attack || attack == skill[1].skill_attack_air || attack == skill[10].skill_attack
+                || attack == AT_DATTACK && window < 4 || attack == AT_JAB && window < 10)
+                {
+                    set_hitbox_value(skill[7].skill_attack, 1, HG_BASE_KNOCKBACK, 0);
+                    set_hitbox_value(skill[7].skill_attack, 1, HG_KNOCKBACK_SCALING, 0);
+                    set_hitbox_value(skill[7].skill_attack, 1, HG_BASE_HITPAUSE, 0);
+                    set_hitbox_value(skill[7].skill_attack, 1, HG_HITPAUSE_SCALING, 0);
+                }
+                else
+                {
+                    reset_hitbox_value(skill[7].skill_attack, 1, HG_BASE_KNOCKBACK);
+                    reset_hitbox_value(skill[7].skill_attack, 1, HG_KNOCKBACK_SCALING);
+                    reset_hitbox_value(skill[7].skill_attack, 1, HG_BASE_HITPAUSE);
+                    reset_hitbox_value(skill[7].skill_attack, 1, HG_HITPAUSE_SCALING);
+                }
+            }
+
+            //needs to not do the attack
+            if (down_down && special_pressed && state_cat != SC_HITSTUN)
+            {
+                clear_button_buffer(PC_SPECIAL_PRESSED);
+
+                set_state(free ? PS_IDLE_AIR : PS_IDLE);
+
+                spawn_hit_fx(x, y-32, fx_lightblow[1]);
+                sound_play(asset_get("sfx_abyss_despawn"));
+
+                lightbuff_active = false;
+            }
+
+            //visual stuff
+            if (got_gameplay_time % 6 == 0) generate_particles(fx_intro, x, y, 180, depth-1, 11, 9, 0, 0);
+
+            if (lightbuff_increase) lightbuff_alpha += lightbuff_rate;
+            else lightbuff_alpha -= lightbuff_rate;
+            if (lightbuff_alpha >= 0.8 || lightbuff_alpha <= 0) lightbuff_increase = !lightbuff_increase;
+        }
+        else
+        {
+            if (polaris_deactive_cd > 0) polaris_deactive_cd = 0;
+        }
+        break;
+    case 11: //chasm burster
+        set_window_value(skill[11].skill_attack, 1, AG_WINDOW_HAS_SFX, free ? 1 : 0);
+        set_window_value(skill[11].skill_attack, 2, AG_WINDOW_HAS_SFX, free ? 0 : 1);
+
+        if (chasm_burst_timer > 0) chasm_burst_timer --;
+
+        if (chasm_burst_timer != 0)
+        {
+            //hitbox spawn
+            if (chasm_burst_timer % 5 == 0)
+            {
+                bar_hitbox = create_hitbox(skill[11].skill_attack, 2 + burnbuff_active*2, chasm_x[chasm_count], chasm_y-40);
+                bar_hitbox.fx_particles = get_hitbox_value(skill[11].skill_attack, 2 + burnbuff_active*2, HG_HIT_PARTICLE_NUM);
+
+                spawn_hit_fx(chasm_x[chasm_count], chasm_y, fx_skill11_burst);
+                var chasm = spawn_hit_fx(chasm_x[chasm_count], chasm_y, fx_skill11_chasm);
+                chasm.depth = depth-1;
+
+                sound_play(asset_get("sfx_burnapplied"), 0, 0, 0.7);
+
+                chasm_count ++;
+            }
+            else if (chasm_count >= chasm_limit) chasm_burst_timer = 0;
+        }
+        break;
+}
+
+//theikos strongs
+if (theikos_type > 0 || has_rune("K") || od_cast == 2)
+{
+    //u-strong 2 light pillar animation
+    if (ustrong2_pillar_end_timer < 10 && (attack != AT_USTRONG_2 || attack == AT_USTRONG_2 && window == 5 || !is_attacking) && !hitpause) ustrong2_pillar_end_timer ++;
+    move_cooldown[AT_USTRONG_2] = 1 + ceil(mp_cost_strongs - mp_current);
+
+    if (dstrong2_active && !instance_exists(theikos_fire_artc))
+    {
+        theikos_fire_artc = instance_create(dstrong2_startpos[0], dstrong2_startpos[1], "obj_article1");
+        theikos_fire_artc.state = "theikos_fire";
+    }
+    move_cooldown[AT_DSTRONG_2] = 1 + ceil(mp_cost_strongs - mp_current);
+}
+
+/////////////////////////////////////////////////////////// RUNES SECTION //////////////////////////////////////////////////////////////
+
+if (rune_A_active) //airdash
+{
+    if (rune_A_cd > 0) rune_A_cd --;
+
+    if ((right_hard_pressed || left_hard_pressed) && state != PS_AIRDASH && state_cat == SC_AIR_NEUTRAL && rune_A_cd == 0)
+    {
+        if (right_down) spr_dir = 1;
+        else if (left_down) spr_dir = -1;
+        set_state(PS_AIRDASH);
+    }
+
+    if (state == PS_AIRDASH)
+    {
+        hsp = rune_A_airdash_speed*spr_dir;
+        vsp = -1;
+        can_jump = 0;
+        can_djump = 0;
+
+        sprite_index = sprite_get((theikos_type > 0) ? "theikos_dash" : "dashstart");
+        image_index = lerp(0, 3, state_timer/initial_dash_time);
+
+        //effect work
+        if (free)
+        {
+            if (state_timer == 1) sound_play(sound_get("sfx_forceleap_jump"));
+            if (state_timer == 3)
+            {
+                var newdust = spawn_dust_fx(x-64*spr_dir, y, sprite_get("fx_skill2"), 10);
+                newdust.dust_color = 0;
+                newdust.draw_angle = 5*spr_dir;
+            }
+        }
+
+        if (state_timer > initial_dash_time)
+        {
+            rune_A_cd = 20;
+            set_state(PS_IDLE_AIR);
+        }
+    }
+}
+if (rune_G_active) //warp spears
+{
+    if (rune_G_warp_lag > 0)
+    {
+        rune_G_warp_lag --;
+        state = PS_IDLE_AIR;
+        if (shield_pressed) rune_G_warp_lag = 0;
+    }
+}
+if (theikos_type != 2)
+{
+    if (has_rune("E")) //slippery bar
+    {
+        initial_dash_speed = 10;
+        dash_turn_time = 20;
+        dash_turn_accel = 1.8;
+        dash_stop_percent = .8; //the value to multiply your hsp by when going into idle from dash or dashstop
+        ground_friction = .3;
+        moonwalk_accel = 1.8;
+        wave_land_adj = 1.5; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+        wave_friction = .2; //grounded deceleration when wavelanding
+
+        if (state_timer == 1)
+        {
+            if (state == PS_WAVELAND || state == PS_DASH_START) spawn_hit_fx(x, y, 6);
+            if (state == PS_DASH_STOP || state == PS_DASH_TURN) spawn_hit_fx(x, y, 9);
+        }
+    }
+    if (has_rune("F")) //heavy bar
+    {
+        jump_speed = 15;
+        short_hop_speed = 9;
+        fast_fall = 22; //fast fall speed
+        knockback_adj = 0.8;
+        djump_speed = 8;
+
+        if (state != PS_GLIDE || state != PS_ATTACK_AIR)
+        {
+            max_fall = 17; //maximum fall speed without fastfalling
+            gravity_speed = 1;
+        }
     }
 }
 
-//helel alt rainbow color
-//the outline is with the other outlines
-if (helel_alt || theikos_alt) user_event(2);
+if (get_match_setting(SET_RUNES))
+{
+    //check for needed runes here
+    if (has_rune("C")) //light fstrong (also applies to theikos f-strong)
+    {
+        if (!burnbuff_active && od_cast != 3)
+        {
+            set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE, 25 + strong_charge/2);
+            set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, fx_lightblow[2]);
+            set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_COLOR, hb_color[2]);
+            set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+            set_hitbox_value(AT_FSTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
 
-//seriously don't be afraid, stupid mortal (also give me my outline)
+            set_hitbox_value(AT_FSTRONG_2, 1, HG_EXTRA_HITPAUSE, 10 + strong_charge/4);
+            set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, fx_lightblow[0]);
+            set_hitbox_value(AT_FSTRONG_2, 1, HG_HITBOX_COLOR, hb_color[2]);
+            set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_SFX, asset_get("sfx_abyss_hex_hit"));
+            set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_PARTICLE_NUM, 1);
+
+            set_hitbox_value(AT_FSTRONG_2, 2, HG_EXTRA_HITPAUSE, 10 + strong_charge/4);
+            set_hitbox_value(AT_FSTRONG_2, 2, HG_VISUAL_EFFECT, fx_lightblow[0]);
+            set_hitbox_value(AT_FSTRONG_2, 2, HG_HITBOX_COLOR, hb_color[2]);
+            set_hitbox_value(AT_FSTRONG_2, 2, HG_HIT_SFX, asset_get("sfx_abyss_hex_hit"));
+            set_hitbox_value(AT_FSTRONG_2, 2, HG_HIT_PARTICLE_NUM, 1);
+
+            set_hitbox_value(AT_FSTRONG_2, 3, HG_EXTRA_HITPAUSE, 25 + strong_charge/2);
+            set_hitbox_value(AT_FSTRONG_2, 3, HG_VISUAL_EFFECT, fx_lightblow[2]);
+            set_hitbox_value(AT_FSTRONG_2, 3, HG_HITBOX_COLOR, hb_color[2]);
+            set_hitbox_value(AT_FSTRONG_2, 3, HG_HIT_PARTICLE_NUM, 1);
+        }
+    }
+    if (has_rune("H")) //hookshot ustrong
+    {
+        if (instance_exists(bar_hitbox) && attack == AT_USTRONG)
+        {
+            hook_proj[0] = bar_hitbox.x;
+            hook_proj[1] = bar_hitbox.y;
+
+            if (!instance_exists(hook_chain_artc)) //chain effect
+            {
+                hook_chain_artc = instance_create(hook_proj[0], hook_proj[1], "obj_article1");
+                hook_chain_artc.state = "hook_chain";
+            }
+            if (bar_hitbox.hitbox_timer % 2 == 0) hook_chain_amount ++;
+
+            if (bar_hitbox.hitbox_timer >= bar_hitbox.length - 1)
+            {
+                with (obj_article1) if (player_id == other.id && state == "hook_chain")
+                {
+                    window = 3;
+                    window_timer = 0;
+                }
+            }
+        }
+        
+        if (rune_H_drag_id != noone)
+        {
+            /*
+            for (var line_length = 0; line_length < 10496; line_length += 128)
+            {
+                var _angle = point_direction(hook_proj[0], hook_proj[1], hook_bar_pos[0], hook_bar_pos[1]);
+                var _x = hook_proj[0] + lengthdir_x(line_length, _angle);
+                var _y = hook_proj[1] + lengthdir_y(line_length, _angle);
+
+                if (!place_meeting(_x, _y, asset_get("solid_32_obj"))) draw_circle_color(_x, _y, 5, c_red, c_red, false);
+                else
+                {
+                    rune_H_collision_pos[0] = _x;
+                    rune_H_collision_pos[1] = _y;
+                    break;
+                }
+            }
+            */
+
+            with (rune_H_drag_id)
+            {
+                if (!freemd)
+                {
+                    fall_through = true;
+                    set_state(PS_HITSTUN);
+                    if (other.bar_grab_time == 1) hitpause = false;
+
+                    if (place_meeting(x-10*spr_dir, y, asset_get("solid_32_obj"))) other.rune_H_drag_id = noone; //wall stops drag
+
+                    if (other.rune_H_target_was_free) //if the foe is on the ground, bounce them
+                    {
+                        vsp = -10;
+                        hsp = -other.ustrong_dir[0]/4;
+                        other.rune_H_target_was_free = false;
+                        other.rune_H_drag_id = noone;
+                    }
+                    else if (hitpause) other.rune_H_drag_id = noone; //hitting the dragged foe will undrag them
+                    else //drag trajectory
+                    {
+                        hsp = -other.ustrong_dir[0];
+    		            vsp = -other.ustrong_dir[1];
+                    }
+                }
+                else other.rune_H_target_was_free = true;
+            }
+        }
+    }
+}
+
+//lord's punishment
+if ("fs_char_initialized" in self || "superTrue" in self || can_overdrive)
+{
+    if ("fs_char_initialized" in self)
+    {
+        fs_using_final_smash = (od_cast == 2);
+        fs_charge = od_current*2;
+
+        //colorful meter
+        fs_meter_color ++;
+        if (fs_meter_color >= 255) fs_meter_color = 0;
+        var fs_meter_color_rgb = make_color_rgb(255, 0, 0);
+        var fs_hue = (color_get_hue(fs_meter_color_rgb)+fs_meter_color) % 255;
+        var fs_hsv = make_color_hsv(fs_hue, color_get_saturation(fs_meter_color_rgb), color_get_value(fs_meter_color_rgb));
+
+        od_color_const = fs_hsv;
+    }
+
+    switch (od_cast)
+    {
+        case 0: //not ready yet
+            //if it reaches the max, change to ready state
+            if (od_current >= od_max)
+            {
+                od_cast ++;
+                sound_play(sound_get("sfx_od_ready"));
+            }
+
+            //visual stuff
+            if (od_color_time > 0) od_color_time --;
+            od_color = merge_color(od_color_const, $FFFFFF, od_color_time/10);
+            break;
+        case 1: //ready but not cast
+
+            //on input, change to the casting state
+            if (!menu_active && !free && special_down && attack_down)
+            {
+                if ("fs_char_initialized" in self) fs_force_fs = true;
+                else set_attack(AT_OVERDRIVE);
+            }
+
+            //visual stuff
+            if (od_color_time > 0) od_color_time = 0;
+            od_gauge_flash();
+
+            break;
+        case 2: //currently casting
+            //he has attack invince using this move
+            attack_invince = true;
+            if ("superTrue" in self)
+            {
+                superTrue = 0;
+                hit_player_obj.canUseCounterTimer = 5;
+            }
+
+            //visual stuff
+            od_gauge_flash();
+            if (od_rect_alpha > 0) od_rect_alpha -= 0.05;
+            if (od_slash_alpha > 0) od_slash_alpha -= 0.1;
+
+            if ((window > 14 || window == 14 && window_timer > 0) && state_timer < 290)
+            {
+                for (var i = 0; i <= 2; ++i)
+                {
+                    var dist = point_distance(od_sword_pos[0][0], od_sword_pos[0][1], od_sword_pos[1][0], od_sword_pos[1][1]);
+                    var angle = point_direction(od_sword_pos[0][0], od_sword_pos[0][1], od_sword_pos[1][0], od_sword_pos[1][1]);
+                    var dir_x = od_sword_pos[0][0] + lengthdir_x(dist*i/2, angle);
+                    var dir_y = od_sword_pos[0][1] + lengthdir_y(dist*i/2, angle);
+
+                    generate_particles(fx_burn, dir_x, dir_y - 32, spr_dir ? 45 : 315, depth+1, window == 17 ? 15 : 11, window == 17 ? 9 : 15 , 0, 0, spr_dir);
+                    //fx_theikos_fire
+                }
+            }
+            break;
+        case 3: //divine blessing buff
+            //timer
+            //od_current -= 100/60/od_buff_time_max;
+            od_buff_time --;
+            od_current = od_buff_time/9;
+            
+            if (od_buff_time <= 0) od_cast = 0;
+
+            //divine blessing
+            godpower(true);
+
+            //visual stuff
+            od_gauge_flash();
+            break;
+    }
+
+    od_current = floor(clamp(od_current, 0, od_max));
+    
+    //this locks the effects to a single frame
+    if (prev_od_cast != od_cast) {
+        if (prev_od_cast == 3) godpower(false);
+        prev_od_cast = od_cast;
+    }
+}
+
+//theia evlogia
+if (has_theikos && (was_reloaded || theikos_type == 0 && got_gameplay_time > 100))
+{
+    theikos_type = 1 + found_cheapie;
+    exit;
+}
+
+if (theikos_type > 0)
+{
+    user_event(0);
+    generate_particles(fx_theikos_aura, x, y-32, 0, depth+1, 11, 11, (random_func(75, 5, true)-2)/4, -1);
+    if (got_gameplay_time % 2 == 0) generate_particles(fx_theikos_aura, x, y-40, 0, depth+1, 7, 9, (random_func(75, 5, true)-2)/4, -1.5);
+
+    if (theikos_type == 2) godpower(true);
+}
+
+///////////////////////////////////////////////////////////////// MISC ////////////////////////////////////////////////////////////////
+
+//halloween alt costume
 if (bibical)
 {
-    if (state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE)
+    if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE)
     {
         bibical = false;
         var newfx = spawn_hit_fx(x, y, hit_fx_create(sprite_get("bibical_death"), 40));
         newfx.depth = depth-1;
     }
 }
-else if (allow_bibical && !bibical)
+
+//motion trail effect
+//thanks frtoud and mr. nart!
+if (apply_motion_trail && trail_draw_size < trail_total_size) trail_draw_size ++;
+else if (!apply_motion_trail && trail_draw_size > 1) trail_draw_size --;
+
+if (apply_motion_trail)
 {
-    if (state == PS_RESPAWN or state == PS_SPAWN) bibical = true;
-}
-//prevents the bibically accurate bar from spawning over the birthday alt
-if (birthboy) {
-    allow_bibical = false;
-    bibical = false;
-}
-
-//glowing outlines for different states
-if (theikos_active || burningfury_active || godpower || theikos_alt) //only start and end working if any of these are true
-{
-    if (increase) color_timer ++;
-    else if (!increase) color_timer --;
-
-    if (!is_8bit)
+    if (!is_accel_trail)
     {
-        if (color_timer >= color_time_max) increase = false;
-        else if (color_timer <= 0) increase = true;
+        trail_pos[trail_cur_num].sprite = sprite_index;
+        trail_pos[trail_cur_num].subimg = image_index;
+        trail_pos[trail_cur_num].xscale = image_xscale*2;
     }
-    else if (is_8bit)
+    else //for accel blitz specifically, since bar is invsible
     {
-        if (color_timer >= 5) increase = false;
-        else if (color_timer <= 0) increase = true;
-    }
-}
-else
-{
-    increase = true;
-    color_timer = 0;
-}
+        trail_pos[trail_cur_num].sprite = sprite_get("fx_skill6_afterimage");
+        trail_pos[trail_cur_num].subimg = accel_goto/90+0.5;
 
-if (!is_8bit) //color choices
-{
-    if (!theikos_active)
-    {
-        if (burningfury_active) //burning fury
-        {
-            color_r = 1 + color_timer*2;
-            color_g = 23 + color_timer*1.7;
-            color_b = 130 + color_timer*2.3;
-        }
-        else if (theikos_alt)
-        {
-            color_r = 77 + color_timer*3; //168
-            color_g = 31 + color_timer*2.1; //95
-            color_b = 6 + color_timer*0.1; //8
-        }
-        else if (allow_bibical) //bibical alt outline
-        {
-            color_r = 75;
-            color_g = 43;
-            color_b = 43;
-        }
-        else if (helel_alt) //helel alt outline
-        {
-            color_r = 52;
-            color_g = 52;
-            color_b = 52;
-        }
-        else //reset color
-        {
-            color_r = 0;
-            color_g = 0;
-            color_b = 0;
-        }
-    }
-    else if (theikos_active) //theikos alt
-    {
-        color_r = 77 + color_timer*3; //168
-        color_g = 31 + color_timer*2.1; //95
-        color_b = 6 + color_timer*0.1; //8
-    }
-}
-else if (is_8bit)
-{
-    if (burningfury_active && !theikos_active)
-    {
-        switch (alt_cur)
-        {
-            case 14: //GAMEBOY
-                if (increase) {
-                    color_r = 167;
-                    color_g = 186;
-                    color_b = 74;
-                }
-                else if (!increase) {
-                    color_r = 83;
-                    color_g = 122;
-                    color_b = 62;
-                }
-                break;
-        
-            case 15: //NES
-                if (increase) {
-                    color_r = 65;
-                    color_g = 65;
-                    color_b = 255;
-                }
-                else if (!increase) {
-                    color_r = 32;
-                    color_g = 0;
-                    color_b = 178;
-                }
-                break;
-        }
-    }
-    else if (theikos_active)
-    {
-        switch (alt_cur)
-        {
-            case 14: //GAMEBOY
-                if (increase) {
-                    color_r = 167;
-                    color_g = 186;
-                    color_b = 74;
-                }
-                else if (!increase) {
-                    color_r = 83;
-                    color_g = 122;
-                    color_b = 62;
-                }
-                break;
-        
-            case 15: //NES
-                if (increase) {
-                    color_r = 162;
-                    color_g = 48;
-                    color_b = 0;
-                    set_color_profile_slot(alt_cur, alt_col_white, 255, 219, 162); //CLOTHWHITE
-                    set_color_profile_slot(alt_cur, alt_col_hair, 255, 121, 48); //HAIR
-                    set_color_profile_slot(alt_cur, alt_col_skin, 255, 219, 162); //SKIN
-                    set_color_profile_slot(alt_cur, alt_col_lblue, 255, 121, 48); //CLOTHLIGHTBLUE
-                    set_color_profile_slot(alt_cur, alt_col_dblue, color_r, color_g, color_b); //CLOTHDARKBLUE
-                    set_color_profile_slot(alt_cur, alt_col_black, color_r, color_g, color_b); //CLOTHBLACK
-                }
-                else if (!increase) {
-                    color_r = 121;
-                    color_g = 65;
-                    color_b = 0;
-                    set_color_profile_slot(alt_cur, alt_col_white, 255, 203, 186); //CLOTHWHITE
-                    set_color_profile_slot(alt_cur, alt_col_hair, 227, 81, 0); //HAIR
-                    set_color_profile_slot(alt_cur, alt_col_skin, 255, 203, 186); //SKIN
-                    set_color_profile_slot(alt_cur, alt_col_lblue, 227, 81, 0); //CLOTHLIGHTBLUE
-                    set_color_profile_slot(alt_cur, alt_col_dblue, color_r, color_g, color_b); //CLOTHDARKBLUE
-                    set_color_profile_slot(alt_cur, alt_col_black, color_r, color_g, color_b); //CLOTHBLACK
-                }
-                break;
-        }
-    }
-    else //reset color
-    {
-        switch (alt_cur)
-        {
-            case 14: //GAMEBOY
-                color_r = 15;
-                color_g = 56;
-                color_b = 15;
-                break;
+        var convert_to_spr_dir = spr_dir;
 
-            case 15: //NES
-                color_r = 32;
-                color_g = 0;
-                color_b = 178;
-                break;
-        }
-    }
-}
-
-if (godpower)
-{
-    color_r = 77 + color_timer*3; //168
-    color_g = 31 + color_timer*2.1; //95
-    color_b = 6 + color_timer*0.1; //8
-
-    if (is_8bit)
-    {
-        switch (alt_cur)
-        {
-            case 14: //GAMEBOY
-                if (increase) {
-                    color_r = 221;
-                    color_g = 226;
-                    color_b = 154;
-                    set_color_profile_slot(alt_cur, alt_col_white, 83, 122, 62); //CLOTHWHITE
-                    set_color_profile_slot(alt_cur, alt_col_skin, 83, 122, 62); //SKIN
-                    set_color_profile_slot(alt_cur, alt_col_dblue, 211, 226, 154); //CLOTHDARKBLUE
-                    set_color_profile_slot(alt_cur, alt_col_black, 211, 226, 154); //CLOTHBLACK
-
-                }
-                else if (!increase) {
-                    color_r = 83;
-                    color_g = 122;
-                    color_b = 62;
-                    set_color_profile_slot(alt_cur, alt_col_white, 211, 226, 154); //CLOTHWHITE
-                    set_color_profile_slot(alt_cur, alt_col_skin, 211, 226, 154); //SKIN
-                    set_color_profile_slot(alt_cur, alt_col_dblue, 83, 122, 62); //CLOTHDARKBLUE
-                    set_color_profile_slot(alt_cur, alt_col_black, 83, 122, 62); //CLOTHBLACK
-                }
-                break;
-        
-            case 15: //NES
-                if (increase) {
-                    color_r = 195;
-                    color_g = 113;
-                    color_b = 0;
-                    set_color_profile_slot(alt_cur, alt_col_dblue, color_r, color_g, color_b); //CLOTHDARKBLUE
-                    set_color_profile_slot(alt_cur, alt_col_black, color_r, color_g, color_b); //CLOTHBLACK
-                }
-                else if (!increase) {
-                    color_r = 121;
-                    color_g = 65;
-                    color_b = 0;
-                    set_color_profile_slot(alt_cur, alt_col_dblue, color_r, color_g, color_b); //CLOTHDARKBLUE
-                    set_color_profile_slot(alt_cur, alt_col_black, color_r, color_g, color_b); //CLOTHBLACK
-                }
-                break;
-        }
-    }
-}
-else if (!godpower && is_8bit && !theikos_active)//reset the colors
-{
-    switch (alt_cur)
-    {
-        case 14: //GAMEBOY
-            set_color_profile_slot(alt_cur, alt_col_white, 211, 226, 154); //CLOTHWHITE
-            set_color_profile_slot(alt_cur, alt_col_skin, 211, 226, 154); //SKIN
-            set_color_profile_slot(alt_cur, alt_col_dblue, 83, 122, 62); //CLOTHDARKBLUE
-            set_color_profile_slot(alt_cur, alt_col_black, 83, 122, 62); //CLOTHBLACK
-            break;
-
-        case 15: //NES
-            set_color_profile_slot(alt_cur, alt_col_white, 255, 203, 186); //CLOTHWHITE
-            set_color_profile_slot(alt_cur, alt_col_hair, 227, 81, 0); //HAIR
-            set_color_profile_slot(alt_cur, alt_col_skin, 255, 203, 186); //SKIN
-            set_color_profile_slot(alt_cur, alt_col_lblue, 227, 81, 0); //CLOTHLIGHTBLUE
-            set_color_profile_slot(alt_cur, alt_col_dblue, 32, 0, 178); //CLOTHDARKBLUE
-            set_color_profile_slot(alt_cur, alt_col_black, 32, 0, 178); //CLOTHBLACK
-            break;
-    }
-}
-
-outline_color = [color_r, color_g, color_b];
-init_shader();
-
-//////////////////////////////////////////////////MECHANICS STUFF//////////////////////////////////////////////////
-
-if (!has_rune("N"))
-{
-    if ("phone_cheats" in self) switch (phone_cheats[CHEAT_TECHTOGGLE])
-    {
-        case 1: //burninng only
-            holyburn_mechanic_active = true;
-            lightstun_mechanic_active = false;
-            break;
-        case 2: //lightstun only
-            holyburn_mechanic_active = false;
-            lightstun_mechanic_active = true;
-            break;
-        case 3: //both
-            holyburn_mechanic_active = true;
-            lightstun_mechanic_active = true;
-            break;
-        case 0: //none
-            holyburn_mechanic_active = false;
-            lightstun_mechanic_active = false;
-            break;
-    }
-
-    if (fuck_you_cheapies && theikos_active)
-    {
-        holyburn_mechanic_active = true;
-        lightstun_mechanic_active = true;
-    }
-}
-else
-{
-    holyburn_mechanic_active = true;
-    lightstun_mechanic_active = true;
-}
-
-if (lightstun_mechanic_active) //holy light mechanic
-{
-    with (oPlayer)
-    {
-        if (lightstun_timer > 0) lightstun_timer --;
-        
-        //when the timer ends
-        if (lightstun_timer == 0)
-        {
-            lightstun_timer = -1;
-            if (lightstun_pre_stun) with (other)
-            {
-                var lightstunner = create_hitbox(48, 10, other.x, other.y-char_height/2);
-                lightstun_hit.fx_particles = 1;
-                if (user_event_1_active) lightstun_hit.fx_particles = 5;
-            }
-            lightstun_pre_stun = false;
-        }
-
-        //effect work + rune J
-        if (lightstun_pre_stun)
-        {
-            if (lightstun_timer % 3 == 0) with (other) //spawn sparkles particles
-            {
-                var sparks = instance_create(other.x - 16*other.spr_dir, other.y - 32, "obj_article1");
-                    sparks.spr_dir = other.spr_dir;
-                    sparks.state = 5;
-                    sparks.vsp = random_func(0, 5, true)-2;
-                    sparks.hsp = random_func(1, 5, true)-2;
-            }
-            
-            if (lightstun_timer % 60 == 0) //indicator
-            {
-                sound_play(asset_get("sfx_frog_fspecial_cancel"), 0);
-                with (other) spawn_hit_fx(other.x, other.y-24, fx_lightblow1);
-            }
-
-            //rune J gives bar mana once per 15 frames
-            if (lightstun_timer % 15 == 0) with (other)
-            {
-                if (has_rune("J") && (!has_rune("K") && mp_current < mp_max) || has_rune("K") && mp_current < runeK_mp_max) mp_current += 1;
-                else if (fuck_you_cheapies && theikos_active && mp_current < mp_max) mp_current += 2;
-            }
-        }
-        
-        //the lightstun itself
-        if (lightstun)
-        {
-            lightstun_pre_stun = false;
-
-            hitpause = true;
-            hitstop = 2;
-            set_state(PS_HITSTUN);
-
-            //stun aura animation work
-            fx_lightstunned_frame += fx_lightstunned_speed;
-            fx_lightstunned_rot += fx_lightstunned_speed*20;
-
-            if (fx_lightstunned_alpha >= 1) fx_lightstunned_alphaincrease = false;
-            else if (fx_lightstunned_alpha <= 0.25) fx_lightstunned_alphaincrease = true;
-            if (fx_lightstunned_alphaincrease) fx_lightstunned_alpha += 0.05;
-            else if (!fx_lightstunned_alphaincrease) fx_lightstunned_alpha -= 0.05;
-
-            if (lightstun_timer == 119) //visual cue work
-            {
-                with (other)
-                {
-                    var lightstun_hit = spawn_hit_fx(other.x-2, other.y-(char_height/1.8), fx_lightblow3);
-                    lightstun_hit.depth = -7;
-                }
-                sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"), false, 0);
-            }
-            if (lightstun_timer <= 0) //timer cue to stop
-            {
-                lightstun = false;
-                fx_lightstunned_frame = 0;
-                fx_lightstunned_rot = 0;
-                fx_lightstunned_alpha = 1;
-            }
-        }
-
-        //if they die before the lightstun reset the variables
-        if (state == PS_DEAD || state == PS_RESPAWN)
-        {
-            lightstun_timer = -1;
-            lightstun = false;
-            lightstun_pre_stun = false;
-        }
-    }
-
-    //if bar manages to dodge his own lightstun
-    if (lightstun_parried)
-    {
-        if (lightstun_timer == -1)
-        {
-            lightstun_parried_timer --;
-
-            if (lightstun_parried_timer == 0)
-            {
-                lightstun_parried = false;
-                lightstun_parried_timer = -1;
-            }
-        }
-        else
-        {
-            lightstun_parried_timer = 10;
-        }
-    }
-
-    if (lightstun_has_hit && (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)) lightstun_has_hit = false;
-}
-else
-{
-    with (oPlayer) if (other != self)
-    {
-        lightstun_timer = -1;
-        lightstun = false;
-        lightstun_pre_stun = false;
-    }
-}
-
-
-if (holyburn_mechanic_active) //holy burn mechanic
-{
-    //thanks lukaru!
-    with (asset_get("oPlayer")) if (holyburning == other.player)
-    {
-        if (!hitpause || hitpause && lightstun)
-        {
-            holyburn_counter += 1;
-            var randomX = random_func(1, 8,true)*8;
-            var randomY = random_func(2, 8,true);
-        
-            if (holyburn_counter % 30 == 0) take_damage(player, other.player, 1); //every 20 frames hurt foe (CHANGE THIS TO 30)
-
-            if (holyburn_counter % 3 == 0) with (other) //spawn fire particles
-            {
-                var holyburneffect = instance_create(other.x - (48*other.spr_dir) + (randomX*other.spr_dir), other.y - (80 + randomY), "obj_article1");
-                holyburneffect.spr_dir = other.spr_dir;
-                holyburneffect.state = 0;
-            }
-
-            if (holyburn_counter >= holyburn_maxcount && !lightstun) 
-            {
-                holyburning = false;
-
-                if (!holyburning)
-                {
-                    holyburn_counter = 0;
-                    outline_color = [0, 0, 0];
-                    sound_play(asset_get("sfx_burnend"), 0, 0);
-                }
-            }
-
-            if (state == PS_DEAD || state == PS_RESPAWN)
-            {
-                holyburning = false;
-                outline_color = [0, 0, 0];
-            }
-
-            //rune J gives bar mana once per 15 frames
-            if (holyburn_counter % 15 == 0) with (other)
-            {
-                if (has_rune("J") && (!has_rune("K") && mp_current < mp_max) || has_rune("K") && mp_current < runeK_mp_max) mp_current += 1;
-            }
-            init_shader();
-        }
-    }
-}
-else
-{
-    with (oPlayer) if (other != self)
-    {
-        holyburning = noone;
-        holyburn_counter = 0;
-    }
-}
-
-//////////////////////////////////////////////////THEIKOS SECTION//////////////////////////////////////////////////
-
-if (has_rune("L") && was_reloaded) //theikos reload check
-{
-    theikos = true;
-    theikos_active = true;
-}
-
-if (theikos_active) user_event(0); //theikos perks
-
-//i stole this from muno's goku ehe~
-//this is the anti-cheapie section which is a mix of theikos bar, a few very useful runes for the occasion and the lord's blessing buff
-var found = false;
-with (oPlayer) if (self != other && "url" in self) switch (url)
-{
-	case "2273636433":
-	case "1870768156":
-	case "1869351026":
-	case "2443363942":
-	case "2159023588":
-	case "1980469422":
-		break;
-	default:
-		if (
-			check_string_for_name(player, "nald") || 
-			check_string_for_name(player, "%") || 
-			check_string_for_name(player, "sand") || 
-			check_string_for_name(player, "psy") || 
-			check_string_for_name(player, "ultra") || 
-			check_string_for_name(player, "god") || 
-			check_string_for_name(player, "boss") || 
-			check_string_for_name(player, "ui ") || 
-			check_string_for_name(player, "ssg") || 
-			check_string_for_name(player, "melee") || 
-			check_string_for_name(player, "accurate")
-			) found = true;
-		break;
-}
-if (found) fuck_you_cheapies = true;
-
-if (fuck_you_cheapies && (state != PS_SPAWN && state != PS_DEAD && state != PS_RESPAWN) ) //activation
-{
-    if (attack_down && special_down)
-    {
-        if (!theikos_active) set_attack(AT_THEIKOS);
-        else if (od_current >= od_max && !theikos_active) set_attack(AT_THEIKOS);
-        else if (od_current >= od_max && theikos_active && !od_already_active) set_attack(AT_OVERDRIVE);
-    }
-
-    if (theikos_active && fuck_you_cheapies) soft_armor = 999999999;
-}
-// list of things the anti-cheapie mode does:
-// BAR:
-// - 999 stocks                                                                                 [attack_update]
-// - 999,999,999 mp (but has a passive mana gain rate of 1 per sec)                             [attack_update]
-// - 999,999,999 constant soft armor                                                            [update]
-// - theikos (and all it brings to the table)                                                   [attack_update]
-// - lord's blessing buff (longer light attack stunning, longer burning time)                   [attack_update]
-// - rune A (airdashing)                                                                        [update, animation, post_draw]
-// - rune D (earthquake D-air)                                                                  [attack_update]
-// - rune G (warping to spear projectiles)                                                      [update, hit_player, hitbox_update]
-// - rune J (mana gain from burning/pre-lightstunning) (twice as effective)                     [update]
-// - rune N (adding the lightstunning mechanic)                                                 [update]
-// CHEAPIE/ANYONE ELSE:
-// - 10 stocks                                                                                  [update (intro), attack_update]
-// - double damage dealt on them                                                                [update (intro), attack_update]
-// - knockback adjustment doubled                                                               [update (intro), attack_update]
-
-if (turbo_time)
-{
-    //by default, give all the moves a shitton of cooldown
-    if (window == 1 && window_timer == 1) move_cooldown[attack] = 99999;
-    //if bar isn't attack, let him attack
-    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) move_cooldown[attack] = 0;
-    //if the attack isn't the previous attack put no cooldown
-    if (previous_attack != attack || attack == AT_NAIR) move_cooldown[previous_attack] = 0;
-}
-previous_attack = attack;
-
-//flame aura
-if (theikos_active || godpower)
-{
-    aura_frame += aura_speed;
-    if (hsp == 0) aura_speed = base_aura_speed;
-    else if (hsp > 0) aura_speed = base_aura_speed + hsp / 16;
-    else if (hsp < 0) aura_speed = base_aura_speed + hsp / 16 * spr_dir;
-}
-
-with (oTestPlayer) if ("theikos" in self && theikos) theikos_active = true; //making sure theikos bar is active in the playtest mode
-
-//////////////////////////////////////////////////ABYSS RUNES SECTION//////////////////////////////////////////////////
-
-if (has_rune("A") || fuck_you_cheapies && theikos_active) //airdash
-{
-    //initial activation
-    if (free && state != PS_HITSTUN && state != PS_PRATFALL && state != PS_ATTACK_AIR && runeA_dash_timer >= runeA_dash_time_max && (runeA_dash_cooldown >= runeA_dash_cooldown_max || theikos))
-    {
-        //if bar faces away from the direction pressed he will turn in midair and dash the other way
-        if (left_hard_pressed && spr_dir || right_hard_pressed && -spr_dir) spr_dir = -spr_dir;
-
-        //dash activated
-        if (left_hard_pressed && -spr_dir || right_hard_pressed && spr_dir)
-        {
-            runeA_dash_dir = spr_dir;
-            runeA_dash_timer = 0;
-            runeA_dash = true;
-        }
-    }
-
-    //dash properties
-    if (runeA_dash)
-    {
-        //state = PS_DASH_START;
-        runeA_dash_timer ++;
-        vsp = 0;
-        if (!theikos_active) hsp = initial_dash_speed*1.2*runeA_dash_dir;
-        else hsp = initial_dash_speed*0.8*runeA_dash_dir;
-    }
-
-    //activate cooldown
-    if (runeA_dash && runeA_dash_timer >= runeA_dash_time_max)
-    {
-        runeA_dash = false;
-        if (!theikos_active) runeA_dash_cool_active = true;
+        if (accel_goto > 90 && accel_goto < 270) convert_to_spr_dir = -1;
+        else convert_to_spr_dir = 1;
+        trail_pos[trail_cur_num].xscale = convert_to_spr_dir*2;
     }
     
-    //dash cooldown (does not apply to theikos bar)
-    if (runeA_dash_cool_active)
+    trail_pos[trail_cur_num].x = x;
+    trail_pos[trail_cur_num].y = y;
+    trail_pos[trail_cur_num].yscale = image_yscale*2;
+    trail_pos[trail_cur_num].rot = image_angle;
+    trail_pos[trail_cur_num].col = image_blend;
+
+    trail_cur_num --;
+    if (trail_cur_num < 0) trail_cur_num = trail_total_size - 1;
+}
+
+//trail effects
+if (alt_cur == 25) 
+{
+    switch (state)
     {
-        runeA_dash_cooldown --;
-        if (runeA_dash_cooldown <= 0)
+        case PS_DOUBLE_JUMP:
+            apply_motion_trail = (vsp < 0 || fast_falling);
+            break;
+        case PS_IDLE_AIR: case PS_FIRST_JUMP:
+            apply_motion_trail = (fast_falling || accel_act_time > 0);
+            break;
+        case PS_DASH_START: case PS_WAVELAND: case PS_ROLL_BACKWARD: case PS_ROLL_FORWARD: case PS_TECH_BACKWARD: case PS_TECH_FORWARD: case PS_AIR_DODGE:
+            apply_motion_trail = true;
+            break;
+        case PS_ATTACK_AIR: case PS_ATTACK_GROUND:
+            switch (attack)
+            {
+                default:
+                    apply_motion_trail = false;
+                    break;
+                case AT_DATTACK: case AT_EXTRA_3: //dash attack / searing descent
+                    apply_motion_trail = (window <= 3);
+                    break;
+                case AT_FTHROW: case AT_FSPECIAL_AIR: //burning fury
+                    apply_motion_trail = (window == 9);
+                    break;
+                case AT_UTHROW: //force leap
+                    apply_motion_trail = (window == 4 || window == 5);
+                    break;
+                case AT_FSPECIAL_2: //power smash
+                    apply_motion_trail = (window < 6 && window > 3);
+                    break;
+                case AT_EXTRA_2: //light hookshot
+                    apply_motion_trail = (window == 5 || window == 6);
+                    break;
+            }
+            break;
+        default:
+            apply_motion_trail = false;
+            break;
+    }
+}
+
+////////////////////////////////////////////////////////// VALUE STORAGE /////////////////////////////////////////////////////////////////
+was_free = free;
+
+//Custom Hitbox Colors System (by @SupersonicNK)
+//Put this above all the #defines in your script
+prep_hitboxes();
+
+//bar MP consumption on the attack grid
+custom_attack_grid();
+
+//this is the anti-cheapie section which is a mix of theikos bar, a few very useful runes for the occasion and the lord's blessing buff
+if (!found_cheapie && cur_game_time > got_gameplay_time-1 || found_cheapie && theikos_type == 0) check_cheapie();
+
+//////////////////////////////////////////////////////// WORKSHOP COMPATIBILITIES ///////////////////////////////////////////////////////
+
+//dracula boss dialouge
+user_event(6);
+
+//steve death messages / pit codec
+user_event(7);
+
+
+//RC car removing platforms and stuff
+if ("kart_inside" in self && kart_inside)
+{
+    //close_timer = -1;
+    //menu_timer = -1;
+    //msg_menu = false;
+    //plat_pre_sprite = asset_get("empty_sprite");
+    //plat_post_sprite = asset_get("empty_sprite");
+}
+
+//////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
+
+#define prep_hitboxes
+{
+    //Applies the hitbox sprites and prepares them to be drawn (with color!)
+    with (pHitBox) if (player_id == other)
+    {
+        if ("col" not in self)
         {
-            runeA_dash_cool_active = false;
-            runeA_dash_cooldown = runeA_dash_cooldown_max;
+            with (other)
+            {
+                other.col = get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR);
+                if (other.col == 0) other.col = c_red;
+                other.shape = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE)
+                other.draw_colored = true;
+
+                if (other.type == 1) other.sprite_index = __hb_hd_spr[other.shape];
+                else if (get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MASK) == -1) other.mask_index = __hb_hd_spr[other.shape];
+                else other.draw_colored = false;
+                    
+                other.draw_spr = __hb_draw_spr;
+            }
         }
     }
 }
-
-if (has_rune("B")) //the djump speed change is on the double jump code above
+#define custom_attack_grid
 {
-    glide_time_max = runeB_glide_time_max;
-    max_djumps = 5;
+    //looping window for X times
+    var window_loop_value;
+    window_loop_value = get_window_value(attack, window, AG_WINDOW_LOOP_TIMES);
+
+    //MP mechanic
+    var mp_amount;
+    var mp_time;
+    var mp_type;
+    mp_amount = get_window_value(attack, window, AG_WINDOW_MP_CONSUME);
+    mp_time = get_window_value(attack, window, AG_WINDOW_MP_CONSUME_TIME);
+    mp_type = get_window_value(attack, window, AG_WINDOW_MP_CONSUME_TYPE);
+
+    if (!hitpause || attack == AT_THEIKOS)
+    {
+        //loop window
+        if (get_window_value(attack, window, AG_WINDOW_TYPE) == 9)
+        {
+            if (window_timer == window_end-1)
+            {
+                attack_end(attack); //reset hitboxes
+                if (window_loops <= window_loop_value) window_timer = 0; //window_timer is -1 so window_timer 0 can spawn hitboxes
+            }
+
+            if (window_loop_value > 0)
+            {
+                if (window_timer == 0) window_loops ++; //at the start of the window
+
+                if (window_loops > window_loop_value)
+                {
+                    destroy_hitboxes();
+                    window += 1;
+                    window_timer = 0;
+                    window_loops = 0;
+                }
+            }
+        }
+
+        //MP mechanic
+        if (mp_amount != 0 && is_attacking && !infinite_mp_mode)
+        {
+            switch (mp_type)
+            {
+                case 0:
+                    if (window_timer == mp_time) mp_current -= floor(mp_amount);
+                    break;
+                case 1:
+                    if (state_timer % mp_time == 0) mp_current -= floor(mp_amount);
+                    break;
+            }
+        }
+    } 
 }
-
-if (has_rune("E")) //slippery bar
+#define bar_pause(enable)
 {
-    initial_dash_speed = 10;
-    dash_turn_time = 20;
-    dash_turn_accel = 1.8;
-    dash_stop_percent = .8; //the value to multiply your hsp by when going into idle from dash or dashstop
-    ground_friction = .3;
-    moonwalk_accel = 1.8;
-    wave_land_adj = 1.5; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-    wave_friction = .2; //grounded deceleration when wavelanding
-
-    if (state_timer == 1)
+    if (enable)
     {
-        if (state == PS_WAVELAND || state == PS_DASH_START) spawn_hit_fx(x, y, 6);
-        if (state == PS_DASH_STOP || state == PS_DASH_TURN) spawn_hit_fx(x, y, 9);
-    }
-}
+        hurtboxID.sprite_index = hurtbox_spr;
+        destroy_hitboxes();
+        can_move = false;
+        can_attack = false;
+        can_jump = false;
+        can_strong = false;
+        can_ustrong = false;
+        can_special = false;
+        can_shield = false;
+        can_fast_fall = false;
+        hitpause = true;
+        hitstop = 999999;
+        hitstop_full = 999999;
 
-if (has_rune("F")) //heavy bar
-{
-    jump_speed = 15;
-    short_hop_speed = 9;
-    fast_fall = 22; //fast fall speed
-    knockback_adj = 0.8;
-    djump_speed_reset = 8;
-
-    if (!can_hover || !hovering || state != PS_ATTACK_AIR)
-    {
-        max_fall = 17; //maximum fall speed without fastfalling
-        gravity_speed = 1;
-    }
-}
-
-if (has_rune("G") || fuck_you_cheapies && theikos_active) //teleporting to spears
-{
-    if (window == 3)
-    {
-        if (attack == AT_SKILL0 || attack == AT_SKILL0_AIR || attack == AT_USTRONG || attack == AT_SKILL9) runeG_blitzjump = false;
-    }
-
-    if (runeG_blitzjump)
-    {
-        accelblitz_active = false;
-        accelblitz_done_once = false;
-        set_window_value(AT_SKILL4, 5, AG_WINDOW_LENGTH, 6);
-        set_window_value(AT_SKILL4, 5, AG_WINDOW_HSPEED_TYPE, 0);
-        set_window_value(AT_SKILL4, 5, AG_WINDOW_VSPEED_TYPE, 0);
-        set_window_value(AT_SKILL4, 5, AG_WINDOW_VSPEED, -runeG_attack_kb_y);
+        if (state == PS_SPAWN)
+        {
+            state_timer ++;
+            if (state_timer % (idle_anim_speed*600) == 0) state_timer = 0;
+        }
+        if (was_reloaded && state != PS_SPAWN && attack != AT_INTRO && attack != AT_SELECT && attack != AT_THEIKOS) state = PS_SPAWN;
+        mp_gainable = false;
     }
     else
     {
-        reset_window_value(AT_SKILL4, 5, AG_WINDOW_LENGTH);
-        reset_window_value(AT_SKILL4, 5, AG_WINDOW_HSPEED_TYPE);
-        reset_window_value(AT_SKILL4, 5, AG_WINDOW_VSPEED_TYPE);
-        reset_window_value(AT_SKILL4, 5, AG_WINDOW_VSPEED);
+        can_move = true;
+        can_attack = true;
+        can_jump = true;
+        can_strong = true;
+        can_ustrong = true;
+        can_special = true;
+        can_shield = true;
+        can_fast_fall = true;
+        hitpause = false;
+        hitstop = 0;
+        hitstop_full = 0;
+        state_timer = got_gameplay_time;
+
+        mp_gainable = true;
     }
 }
-
-if (has_rune("H")) //hookshot u-strong
+#define menu_controls(enable)
 {
-    var atk = AT_USTRONG;
-    var hitboxNum = 4;
-    set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 1);
-    set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 1);
-    set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-    set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 2);
-
-    if (runeH_target != noone)
+    //menu controls
+    //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = jump | -2 = attack/special
+    if (enable)
     {
-        if (runeH_target.state == PS_DEAD || runeH_target.state == PS_RESPAWN) runeH_target = noone;
+        if (menu_dir != 0) menu_dir = 0; //this will always force the input back to 0, so it's active for 1 frame
+        if (up_pressed) menu_dir = 1;
+        if (right_pressed) menu_dir = 2;
+        if (down_pressed) menu_dir = 3;
+        if (left_pressed) menu_dir = 4;
+        if (jump_pressed && jump_counter == 0) menu_dir = -1;
+        if (special_pressed && special_counter == 0) menu_dir = -2;
+    }
+    else menu_dir = 0;
+}
 
-		with (runeH_target)
-		{
-			if (!freemd)
-			{
-				free = true;
-				set_state(PS_HITSTUN);
 
-				hsp = -other.runeH_pullx;
-        		vsp = -other.runeH_pully;
+#define burnbuff_apply()
+{
+    var hb_num_total = get_num_hitboxes(attack);
+    for (var hb_num = 1; hb_num <= hb_num_total; ++hb_num)
+    {
+        reset_hitbox_value(attack, hb_num, HG_DAMAGE);
+        reset_hitbox_value(attack, hb_num, HG_HITBOX_COLOR);
+        reset_hitbox_value(attack, hb_num, HG_VISUAL_EFFECT);
+        reset_hitbox_value(attack, hb_num, HG_HIT_SFX);
+        reset_hitbox_value(attack, hb_num, HG_HIT_PARTICLE_NUM);
 
-                can_wall_jump = false;
-                can_wall_tech = false;
-			}
-            else if (!free) other.runeH_target = noone;
-		}
-
-        if (runeH_target && !hitpause)
+        if (burnbuff_active)
         {
-            with (obj_article1)
-		    {
-			    particletime = 41;
-		    }
+            if ( (attack != AT_JAB || attack == AT_JAB && hb_num == 2) && (attack != AT_USTRONG || attack == AT_USTRONG && hb_num <= 3) &&
+            (attack != AT_DSTRONG || attack == AT_DSTRONG && hb_num <= 3)) //half exepctions
+            {
+                //damage
+                if (attack == AT_FSTRONG) set_hitbox_value(attack, hb_num, HG_DAMAGE, 16);
+                else set_hitbox_value(attack, hb_num, HG_DAMAGE, floor(get_hitbox_value(attack, hb_num, HG_DAMAGE) * fury_mult));
+
+                set_hitbox_value(attack, hb_num, HG_HITBOX_COLOR, hb_color[3]); //apply fire and change hitbox color
+
+                //effect work
+                if (attack == AT_DSTRONG && hb_num == 2) set_hitbox_value(attack, hb_num, HG_VISUAL_EFFECT, fx_fireblow[1]);
+                else if (attack == AT_FSTRONG || attack == AT_DSTRONG && hb_num == 3 || attack == AT_FSTRONG_2 && hb_num == 3)
+                {
+                    set_hitbox_value(attack, hb_num, HG_VISUAL_EFFECT, fx_fireblow[2]);
+                }
+                else set_hitbox_value(attack, hb_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
+
+                //burning sfx
+                if (attack == AT_JAB || attack == AT_UTILT && hb_num == 2 || attack == AT_FAIR && hb_num == 3
+                || attack == AT_DAIR && hb_num == 2 || attack == AT_DSTRONG && hb_num == 2)
+                {
+                    set_hitbox_value(attack, hb_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
+                }
+                else if (attack == AT_FSTRONG_2 && hb_num == 3) reset_hitbox_value(attack, hb_num, HG_HIT_SFX);
+                else set_hitbox_value(attack, hb_num, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
+
+                set_hitbox_value(attack, hb_num, HG_HIT_PARTICLE_NUM, 2);
+            }
         }
     }
 }
-
-if (has_rune("K") || fuck_you_cheapies && theikos_active) //overcharged mana - flashing gauge (the mana stuff itself is with the mana debug cheat)
+//usage: generate_particles(hit_fx_name, x, y, angle, depth, random_spread_x, random_spread_y, hsp, vsp, dir)
+#define generate_particles
+/// generate_particles(fx_name, fx_x, fx_y, fx_angle = 0, fx_depth = -1, fx_spread_x = 0, fx_spread_y = 0, fx_hsp = 0, fx_vsp = 0, fx_dir = 0)
 {
-    if (get_gameplay_time() % 20 == 0) gauge_EX_timer_active = true;
+    var fx_name = argument[0], fx_x = argument[1], fx_y = argument[2];
+var fx_angle = argument_count > 3 ? argument[3] : 0;
+var fx_depth = argument_count > 4 ? argument[4] : -1;
+var fx_spread_x = argument_count > 5 ? argument[5] : 0;
+var fx_spread_y = argument_count > 6 ? argument[6] : 0;
+var fx_hsp = argument_count > 7 ? argument[7] : 0;
+var fx_vsp = argument_count > 8 ? argument[8] : 0;
+var fx_dir = argument_count > 9 ? argument[9] : 0;
 
-    if (gauge_EX_timer_active)
+    var part_x = (random_func(24, floor(fx_spread_x/2), true)-floor(fx_spread_x/4))*fx_spread_x;
+    var part_y = (random_func(25, floor(fx_spread_y/2), true)-floor(fx_spread_y/4))*fx_spread_y;
+    var random_fx = random_func(26, 3, true);
+
+    fx_name = spawn_hit_fx(fx_x+part_x, fx_y+part_y, fx_name);
+    fx_name.spr_dir = -spr_dir;
+    if (depth != 0) fx_name.depth = fx_depth;
+    else fx_name.depth = 3;
+    if (fx_angle == -1)
     {
-        gauge_EX_color = c_white;
-        gauge_EX_timer ++;
-
-        if (gauge_EX_timer >= 5)
-        {
-            gauge_EX_timer_active = false;
-            gauge_EX_timer = 0;
-        }
+        var random_angle = random_func(6, 360,true);
+        fx_name.draw_angle = random_angle;
     }
-    else gauge_EX_color = gauge_EX_color_return;
+    else if (fx_angle >= 0) fx_name.draw_angle = fx_angle;
+    fx_name.hsp = fx_hsp;
+    fx_name.vsp = fx_vsp;
+    if (fx_dir == 0)
+    {
+        var random_dir = random_func(7, 2, true);
+        if (random_dir == 0) random_dir = -1;
+
+        fx_name.spr_dir = random_dir;
+    }
+    else fx_name.spr_dir = fx_dir;
+    
 }
 
-if (has_rune("O")) //overdrive meter
+
+#define od_gauge_flash()
 {
-    if (od_current <= 0) od_current = 0; //no ngative numbers
-
-    if (frac(od_current) > 0) od_current -= frac(od_current); //death splits OD into a fraction, so just delete the fraction
-
-    //OD ready
-    if (od_current >= 100 && !od_ready)
+    if (can_overdrive)
     {
-        sound_play(sound_get("sfx_od_ready"));
-        od_ready = true;
+        if (got_gameplay_time % 6 == 0) od_color_flash = !od_color_flash;
+        od_color = od_color_flash ? $FFFFFF : od_color_const;
     }
-
-    if (get_gameplay_time() % 10 == 0 && (godpower || od_current >= od_max)) gauge_OD_timer_active = true;
-
-    if (gauge_OD_timer_active)
+    else if ("fs_char_initialized" in self)
     {
-        gauge_OD_color = c_white;
-        gauge_OD_timer ++;
-
-        if (gauge_OD_timer >= 5)
-        {
-            gauge_OD_timer_active = false;
-            gauge_OD_timer = 0;
-        }
-    }
-    else gauge_OD_color = gauge_OD_color_return;
-}
-//LORD'S PUNISHMENT - activation methods
-if (has_rune("O") && od_current >= od_max && !od_already_active && (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND)) //rune version
-{
-    if (attack_pressed && special_pressed)
-    {
-        if (!free && !fuck_you_cheapies && !theikos_active) set_attack(AT_OVERDRIVE);
+        if (od_color_time > 0) od_color_time --;
+        od_color = merge_color(od_color_const, $FFFFFF, od_color_time/10);
     }
 }
-else if ("fs_charge" in self && fs_charge >= 200 && (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND)
-&& "fs_char_initialized" in self && fs_char_initialized) //final smash version
+#define godstun(enable)
 {
-    if (special_pressed && !up_down && !down_down && !left_down && !right_down && !free && attack != AT_USTRONG) fs_force_fs = true;
-}
-
-//turbo mode shenanigans
-//using it in the rivals of fighters stage will still mess with the timestop but i can't do much about it
-if (get_match_setting(SET_TURBO))
-{
-    if (attack != AT_OVERDRIVE && od_already_active && !godpower && od_current >= od_max) godpower = true;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//FINAL SMASH/OVERDRIVE POST ATTACK EFFECT: LORD'S BLESSING
-
-//resetting variables for the overdrive
-if (attack == AT_OVERDRIVE && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL))
-{
-    OD_stop_timer = OD_stop_timer_max;
-}
-
-if (godpower)
-{
-    od_prepare_godpower = false;
-    if (od_already_active) //this part is also on attack update, it's just to REALLY failsafe this
+    var hb_num_total = get_num_hitboxes(attack);
+    for (var hb_num = 1; hb_num <= hb_num_total; ++hb_num)
     {
-        od_already_active = false;
-        OD_stop_timer = OD_stop_timer_max;
-    }
-    //timer work
-    if (theikos_active && fuck_you_cheapies) god_time = god_time_reset;
-    else god_time --;
-
-    od_current = god_time/9;
-
-    if (theikos_active && !fuck_you_cheapies) od_current = (god_time/9)/2;
-
-    if (god_time == god_time_reset-1)
-    {
-        sound_play(sound_get("sfx_lordpunishment"));
-        od_ready = false;
-    }
-
-    if (god_time == 0)
-    {
-        godpower = false;
-        god_time = god_time_reset;
-        sound_play(asset_get("sfx_abyss_despawn"), 0, 0, 2);
-    }
-
-    //extra burning
-    with (oPlayer) holyburn_maxcount = god_burn_time;
-}
-else if (!godpower && !od_already_active) // for some reason this doesn't wanna work with theia evlogia
-{
-    od_cooldown ++;
-    if (od_cooldown < 5) user_event(1); //disable effects cuz godpower is no longer on
-    if (od_cooldown == 5) od_gainable = true;
-    if (od_gainable) od_cooldown = 0;
-
-    with (asset_get("oPlayer"))
-    {
-        if (!other.theikos_active) holyburn_maxcount = holyburn_default_maxcount;
-    }
-}
-
-//aura logic
-if (!theikos_active)
-{
-    if (godpower)
-    {
-        if (is_8bit && !theikos_active)
-        {
-            if (god_time > 120) aura_alpha = 1;
-            if (god_time <= 120) aura_alpha = increase;
-        }
-        else if (!theikos_active)
-        {
-            if (god_time > 120) aura_alpha = 0.3;
-            else if (god_time <= 120) aura_alpha = god_time/400;
-        }
-    }
-}
-else if (theikos_active)
-{
-    //aura gone
-    if (is_8bit && !theikos_active)
-    {
-        if (god_time > 120) aura_alpha = 1;
-        if (god_time <= 120) aura_alpha = increase;
-    }
-    else if (!theikos_active)
-    {
-        if (god_time > 120) aura_alpha = 0.3;
-        else if (god_time <= 120) aura_alpha = god_time/400;
-    }
-}
-
-//////////////////////////////////////////////////WORKSHOP INTERRACTION SECTION//////////////////////////////////////////////////
-
-//Final Smash stuff
-charge_color = make_color_hsv(get_gameplay_time() % 255, 255, 255); //custom color for the charge gauge
-if ("fs_char_initialized" in self) if (fs_char_initialized && has_rune("O")) fs_charge = 0; //make sure it doesn't work with the OD rune
-
-switch (alt_cur) //fs portrait changer
-{
-    case 14: //Gameboy
-        fs_char_portrait_override = sprite_get("fs_portrait2");
-        break;
-    case 15: //NES
-        fs_char_portrait_override = sprite_get("fs_portrait3");
-        break;
-    default:
-        fs_char_portrait_override = sprite_get("fs_portrait1");
-        break;
-}
-
-//Phone cheats
-//Mana Debug
-if (has_rune("K"))
-{
-    if (!theikos_active)
-    {
-        if (mp_current < 100)
-        {
-            if (has_rune("O") && godpower) mp_fc_rate = god_mp_rate;
-            else mp_fc_rate = runeK_mana_regen;
-        }
-        else mp_fc_rate = 0;
-    }
-    else if (theikos_active && !fuck_you_cheapies) //theikos
-	{
-        mp_current = 100;
-        gauge_color = gauge_EX_color;
+        reset_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE);
         
-        freeSkills();
-    }
-}
-else
-{
-    if (!theikos_active && !menu_open)
-    {
-        if ("phone_cheats" in self)
+        var ex_pause = 20*enable;
+        switch (attack)
         {
-            if (phone_cheats[CHEAT_MANADEBUG] > 0) manaDebug = true;
-
-            if (phone_cheats[CHEAT_MANADEBUG] == 1) mp_fc_rate = mp_rate_default;
-            else if (phone_cheats[CHEAT_MANADEBUG] == 2) mp_fc_rate = 5;
-            else if (phone_cheats[CHEAT_MANADEBUG] == 3) mp_fc_rate = 10;
-            else if (phone_cheats[CHEAT_MANADEBUG] == 4) mp_fc_rate = 20;
-            else if (phone_cheats[CHEAT_MANADEBUG] == 5) mp_fc_rate = 50;
-            else if (phone_cheats[CHEAT_MANADEBUG] == 6) mp_fc_rate = 100;
-            else mp_fc_rate = 0;
+            case AT_USTRONG:
+                if (hb_num < 5 && !burnbuff_active) set_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE, get_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE) + ex_pause);
+                break;
+            case AT_FSTRONG: case AT_FSTRONG_2:
+                if (has_rune("C") && !burnbuff_active) set_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE, get_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE) + ex_pause);
+                break;
+            case AT_NTHROW: case AT_NSPECIAL_AIR:
+                if (hb_num < 2) set_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE, get_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE) + ex_pause);
+                break;
+            case 39:
+                if (hb_num == 2) set_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE, get_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE) + ex_pause);
+                break;
+            case AT_DTHROW: case AT_NSPECIAL_2: case AT_USPECIAL_2: case AT_EXTRA_2: case AT_USTRONG_2:
+                set_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE, get_hitbox_value(attack, hb_num, HG_EXTRA_HITPAUSE) + ex_pause);
+                break;
         }
-    }
-    else if (theikos_active && !fuck_you_cheapies) mp_fc_rate = 100;
-    else if (menu_open) mp_fc_rate = 0;
-    else if (fuck_you_cheapies && theikos_active)
-    {
-        mp_fc_rate = 1;
-        if (mp_current <= 200) mp_current = mp_max;
+        ex_pause = 0;
     }
 }
-
-//no mana drain
-if ("phone_cheats" in self && phone_cheats[CHEAT_MPDRAIN] == 1) freeSkills();
-else unFreeSkills();
-
-// Dracula intro dialogue
-dracula_portrait = sprite_get("dracula_portrait1");
-dracula_portrait2 = sprite_get("dracula_portrait2");
-dracula_portrait3 = asset_get("empty_sprite");
-var page = 0;
-
-//Page 0
-dracula_speaker[page] = 1;
-dracula_text[page] = "...So you must be Count Dracula.";
-page++;
-
-//Page 1
-dracula_speaker[page] = 0;
-dracula_text[page] = "And you must be the infamous 'Guardian Angel of the Elements'.";
-page++;
-
-//Page 2
-dracula_speaker[page] = 0;
-dracula_text[page] = "You are but a puny child, and you think it's a good idea to simply waltz into my castle?"
-page++;
-
-//Page 3
-dracula_speaker[page] = 1;
-dracula_text[page] = "It's my job to put a stop to your reign of terror. Please give up, and we can end this peacefully. I've defeat all your minions already!";
-page++;
-
-//Page 4
-dracula_speaker[page] = 0;
-dracula_text[page] = "I see... I must admit I am far from impressed by you angels, sending a mere child to defeat me.";
-page++;
-
-//Page 5
-dracula_speaker[page] = 0;
-dracula_text[page] = "You must have a death wish.[glass] Very well then, I will give you...";
-page++;
-
-//Page 6
-dracula_speaker[page] = 0;
-dracula_text[page] = "[shake]Despair and death!";
-page++;
-
-//Page 7
-dracula_speaker[page] = 0;
-dracula_text[page] = "Have at you, guardian!";
-page++;
-
-//Page 8
-dracula_speaker[page] = 2;
-dracula_text[page] = "I guess there's no other choice, then..";
-
-if (theikos)
+#define godpower(enable)
 {
-    dracula_portrait = sprite_get("dracula_theikos_portrait1");
-    dracula_portrait2 = sprite_get("dracula_theikos_portrait2");
-    dracula_portrait3 = asset_get("empty_sprite");
-    var page = 0;
+    //  gliding stamina                 (+ 100  -  stacks with rune B)
+    //  overall damage increase         (x 1.5  -  stacks with theikos) (on user_event13)
+    //  accelerated passive mana gain   (2 -> 15  -  overwrites rune M)
+    //  burn time doubled               (2 secs -> 4 secs) (stacks with theikos)
+    //  lightstun duration doubled      (2 secs -> 4 secs) (stacks with theikos)
+    //  light has extra hitpause        (+ 20 extra hitpause)
 
-    //Page 0
-    dracula_speaker[page] = 1;
-    dracula_text[page] = "You must be Count Dracula.";
-    page++;
-
-    //Page 1
-    dracula_speaker[page] = 0;
-    dracula_text[page] = "And you must be the infamous 'Guardian Angel of the Elements'.";
-    page++;
-
-    //Page 2
-    dracula_speaker[page] = 0;
-    dracula_text[page] = "You are but a puny child, and yet your aura tells another story, how curious."
-    page++;
-
-    //Page 3
-    dracula_speaker[page] = 1;
-    dracula_text[page] = "It's my job to put a stop to your reign of terror. Give up, and we can end this peacefully. I've destroyed your entire army, there's no escape.";
-    page++;
-
-    //Page 4
-    dracula_speaker[page] = 0;
-    dracula_text[page] = "I see... So this the Theïkós state, as they call it.";
-    page++;
-
-    //Page 5
-    dracula_speaker[page] = 0; 
-    dracula_text[page] = "Your aura is strong, child,[glass] However I will not fall to your little handycap.";
-    page++;
-
-    //Page 6
-    dracula_speaker[page] = 0;
-    dracula_text[page] = "It will not be enough to save you from Count Dracula Tepes!";
-    page++;
-
-    //Page 7
-    dracula_speaker[page] = 0;
-    dracula_text[page] = "[shake] Have at you, guardian!";
-    page++;
-
-    //Page 8
-    dracula_speaker[page] = 2;
-    dracula_text[page] = "You'll regret this, Dracula.";
-}
-
-//Steve Death Messages
-//because steve only actually allows for 1 on munophone
-
-//steve_death1 = normal death message
-//steve_death2 = death from an attack that uses bar's gauntlet
-//steve_death3 = death from light based attacks
-//steve_death4 = death from an attack that inflicts holy burning, but i also want it to be done as long as steve burns
-//steve_death5 = death from bar's taunt
-if ("steve_death_message" in self) switch (attack)
-{
-    case AT_JAB: case AT_FTILT: case AT_DTILT: case AT_NAIR: case AT_UAIR: case AT_BAIR: case AT_UTHROW:
-        steve_death_message = steve_death1;
-        break;
-
-    case AT_UTILT: case AT_FAIR: case AT_DAIR: case AT_FSTRONG:
-        steve_death_message = steve_death2;
-        break;
-
-    case AT_USTRONG: case AT_NTHROW: case AT_NSPECIAL_AIR: case AT_DTHROW: case AT_NSPECIAL_2: case AT_USPECIAL_2: case AT_EXTRA_2:
-        steve_death_message = steve_death3;
-        break;
-
-    case AT_DSTRONG: case AT_FTHROW: case AT_FSPECIAL_AIR: case AT_EXTRA_1: case AT_FSPECIAL_2: case AT_DSPECIAL_2:
-        steve_death_message = steve_death4;
-        break;
-            
-    case AT_TAUNT:
-        steve_death_message = steve_death5;
-        break;
-}
-
-//car bar mechanic destroyer
-//erase platform from existance (not really, just render something else)
-if ("kart_inside" in self && kart_inside)
-{
-    close_timer = -1;
-    menu_timer = -1;
-    msg_menu = false;
-    plat_pre_sprite = sprite_get("empty");
-    plat_post_sprite = sprite_get("empty");
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//menu pausing everything define
-
-//just stop bar, and nobody else, while making him invincible
-#define barPause {
-    hurtboxID.sprite_index = hurtbox_spr;
-    destroy_hitboxes();
-    can_move = false;
-    can_attack = false;
-    can_jump = false;
-    can_strong = false;
-    can_ustrong = false;
-    can_special = false;
-    can_shield = false;
-    can_fast_fall = false;
-    hitpause = true;
-    hitstop = 999999;
-    hitstop_full = 999999;
-    state = PS_SPAWN;
-}
-//a special unpause for bar
-#define barUnpause {
-    can_move = true;
-    can_attack = true;
-    can_jump = true;
-    can_strong = true;
-    can_ustrong = true;
-    can_special = true;
-    can_shield = true;
-    can_fast_fall = true;
-    hitpause = false;
-    hitstop = 0;
-    hitstop_full = 0;
-
-    if (get_gameplay_time() >= 125) state = PS_IDLE;
-    else state_timer = get_gameplay_time();
-}
-//charging effects
-//light
-#define light_charge(x, y, angle_type)
-{
-    sprite_change_offset("fx_introlight", 16, 96);
-    sprite_change_offset("theikos_fx_introlight", 16, 96);
-
-    var x = argument[0], y = argument[1];
-    var angle_type = argument_count > 2 ? argument[2] : -1;
-
-    var light_randomAngle = random_func(6, 360,true);
-    var light = instance_create(x, y, "obj_article1");
-        light.state = 3;
-        light.player = player;
-        light.depth = -7;
-        light.image_angle = angle_type;
-
-    if (angle_type == -1) light.image_angle = light_randomAngle;
-    else if (angle_type >= 0)
+    if (enable)
     {
-        var light_randomX = (random_func(32, 9,true)-5)*5;
-        var light_randomY = (random_func(23, 9,true)-5)*5;
-        light.image_angle = angle_type;
-        light.x = light_randomX + x;
-        light.y = light_randomY + y;
-    } 
-}
-//fire
-#define fire_charge
-/// fire_charge(x, y, ...)
-{
-    var x = argument[0], y = argument[1];
+        //visual stuff
+        if (theikos_type != 2)
+        {
+            generate_particles(fx_theikos_aura, x, y-32, 0, depth+1, 11, 11, (random_func(75, 5, true)-2)/4, -1);
+            generate_particles(fx_theikos_aura, x, y-40, 0, depth+1, 7, 9, (random_func(75, 5, true)-2)/4, -1.5);
+        }
 
-    var random = random_func(9, 8,true)*4;
-    var random_dir = random_func(10, 2,true);
-    if (random_dir == 0) random_dir = -1;
-        
-    var embers = instance_create(x - (16*spr_dir) + (random*spr_dir), y - (40 + random), "obj_article1");
-        embers.spr_dir = random_dir;
-        embers.state = 4;
-        embers.depth = -random/2;
-}
-#define freeSkills
-{
-    strong_cost = 0;
+        //only runs once
+        if (prev_od_cast != od_cast)
+        {
+            no_effect_line_color = [97, 45, 2];
 
-    lightdagger_cost = 0;
-    buff_total_cost = 0; //"buffs" include burning fury and polaris
-    buff_overtime_cost = 0;
-    buff_activation_cost = 0;
-    burningfury_attack_cost = 0;
-    forceleap_activate_cost = 0;
-    forceleap_attack_cost = 0;
-    photonblast_cost = 0;
-    accelblitz_cost = 0;
-    chasmburster_activate_cost = 0;
-    chasmburster_attack_cost = 0;
-    powersmash_activate_cost = 0;
-    powersmash_attack_cost = 0;
-    emberfist_cost = 0;
-    lighthookshot_activate_cost = 0;
-    lighthookshot_attack_cost = 0;
-    searingdescent_activate_cost = 0;
-    searingdescent_attack_cost = 0;
-    flashbang_activate_cost = 0;
-    flashbang_attack_cost = 0;
-}
-#define unFreeSkills
-{
-    strong_cost = 5;
-    lightdagger_cost = 5;
-    buff_total_cost = 50; //"buffs" include burning fury and polaris
-    buff_overtime_cost = 5;
-    buff_activation_cost = 10;
-    burningfury_attack_cost = 10;
-    forceleap_activate_cost = 10;
-    forceleap_attack_cost = 10;
-    photonblast_cost = 40;
-    accelblitz_cost = 10;
-    chasmburster_activate_cost = 5;
-    chasmburster_attack_cost = 25;
-    powersmash_activate_cost = 5;
-    powersmash_attack_cost = 25;
-    emberfist_cost = 20;
-    lighthookshot_activate_cost = 5;
-    lighthookshot_attack_cost = 15;
-    searingdescent_activate_cost = 10;
-    searingdescent_attack_cost = 10;
-    flashbang_activate_cost = 0;
-    flashbang_attack_cost = 10;
+            //stat changes
+            holyburn_timer_set = holyburn_timer_set * godbuff_mult;
+            lightstun_active_set = lightstun_active_set * godbuff_mult;
+
+            glide_stamina_max = has_rune("B") ? 250 : 200;
+            mp_gain_rate = 15;
+        }
+
+        godstun(enable);
+    }
+    else
+    {
+        if (prev_od_cast != od_cast)
+        {
+            //visual stuff
+            switch (alt_cur)
+            {
+                default:
+                    no_effect_line_color = [0, 0, 0];
+                    break;
+                case 14: //gameboy
+                    no_effect_line_color = [15, 56, 15];
+                    break;
+                case 15: //NES
+                    no_effect_line_color = [32, 0, 178];    
+                    break;
+                case 16: //seasonal-halloween
+                    if (bibical) no_effect_line_color = [75, 43, 43];    
+                    break;    
+                case 25: //helel
+                    no_effect_line_color = [52, 52, 52];    
+                    break;
+                case 26: //theikos
+                    no_effect_line_color = [97, 45, 2];
+                    break;
+            }
+
+            //stat changes
+            glide_stamina_max = has_rune("B") ? 150 : 100;
+            if (state == PS_GLIDE && glide_stamina > glide_stamina_max) glide_stamina = glide_stamina_max;
+            mp_gain_rate = 2 + 5 * has_rune("M");
+
+            holyburn_timer_set = holyburn_timer_set * theikos_mult;
+            lightstun_active_set = lightstun_active_set * theikos_mult;
+        }
+
+        godstun(enable);
+    }
 }
 
-//stolen from muno too (it allows me to see the character names)
 #define check_string_for_name(player, string)
-return string_count(string, string_lower(get_char_info(player, INFO_STR_NAME)))
+{
+    return string_count(string, string_lower(get_char_info(player, INFO_STR_NAME)))
+}
+#define check_cheapie
+{
+    //i stole this from muno's goku ehe~
+    var cheap = false;
+    with (oPlayer) if (self != other && "url" in self) switch (url)
+    {
+    	case "2273636433":
+    	case "1870768156":
+    	case "1869351026":
+    	case "2443363942":
+    	case "2159023588":
+    	case "1980469422":
+    		break;
+    	default:
+    		if (
+    			check_string_for_name(player, "nald") || 
+    			check_string_for_name(player, "%") || 
+    			check_string_for_name(player, "sand") || 
+    			check_string_for_name(player, "psy") || 
+    			check_string_for_name(player, "ultra") || 
+    			check_string_for_name(player, "god") || 
+    			check_string_for_name(player, "boss") || 
+    			check_string_for_name(player, "ui ") || 
+    			check_string_for_name(player, "ssg") || 
+    			check_string_for_name(player, "melee") || 
+    			check_string_for_name(player, "accurate")
+    			) cheap = true;
+    		break;
+    }
+    found_cheapie = cheap;
+    
+    if (found_cheapie && !menu_active && theikos_type == 0 && attack_down && special_down) attack = AT_THEIKOS;
+}

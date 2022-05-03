@@ -1,4 +1,4 @@
-atk = AT_FAIR;
+var atk = AT_FAIR;
 
 set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("fair"));
@@ -7,7 +7,7 @@ set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
 set_attack_value(atk, AG_LANDING_LAG, 5); //9
 set_attack_value(atk, AG_NUM_WINDOWS, 3);
 
-windowNum = 1; //windup
+var windowNum = 1; //windup
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 12); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 3); //frames amount on strip
@@ -31,7 +31,7 @@ set_window_value(atk, windowNum, AG_WINDOW_HAS_WHIFFLAG, 1); //if the attack mis
 set_num_hitboxes(atk, 3);
 
 //sweet spot
-hitboxNum = 1;
+var hitboxNum = 1;
 set_hitbox_value(atk, hitboxNum, HG_PARENT_HITBOX, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 2); //at which window from the above the attack is created
@@ -55,7 +55,7 @@ set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
+set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, hb_color[1]);
 
 //sourspot
 hitboxNum ++;
@@ -106,8 +106,3 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
-
-
-//munophone
-if (!get_match_setting(SET_PRACTICE)) exit;
-set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Affected by Burning Fury's buff");

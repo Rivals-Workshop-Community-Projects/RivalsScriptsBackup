@@ -1,51 +1,22 @@
-// called when the character gets KO'd
+//death
 
-mp_current = mp_spawn;
+glide_stamina = glide_stamina_max;
+glide_ui = false;
 
-glide_time = glide_time_max;
+apply_motion_trail = false;
+is_accel_trail = false;
 
-burningfury_active = false;
-burningfury_target = noone;
+if (theikos_type != 2) mp_current = 100;
+window_loops = 0;
+bar_grabbed_id = noone;
+skill_cancel_timer = 0;
 
-//DONE IN UPDATE.GML
-accelblitz_active = false;
-accelblitz_active_timer = false;
-accelblitz_done_once = false;
-accelblitz_post_timer = 0;
-if (accel_vulnerability) accel_vulnerability = false;
-if (instance_exists(artc_accel_indicator)) instance_destroy(artc_accel_indicator);
+burnbuff_active = false;
+leap_used = false;
+blast_used = false;
+accel_used = false;
+lightbuff_active = false;
 
-burst_count_start = false;
-burst_count = -1;
-
-powersmash_afterburn = false;
-powersmash_aftertime = 0;
-
-polaris_active = false;
-
-hookshot_speedboost = false;
-hookshot_launch = false;
-
-searingdescent_id = noone;
-
-runeG_blitzjump = false;
-
-with (oPlayer)
-{
-    lightstun_timer = -1;
-    lightstun = false;
-    lightstun_pre_stun = false;
-}
-lightstun_parried = false;
-
-//air dash
-runeA_dash = false;
-runeA_dash_timer = runeA_dash_time_max;
-runeA_dash_cool_active = false;
-runeA_dash_cooldown = runeA_dash_cooldown_max;
-
-god_time = god_time_reset;
-godpower = false;
-od_current /= 2;
-od_gainable = true;
-od_already_active = false;
+if (od_cast <= 1) od_current /= 2;
+else od_current = 0;
+od_cast = 0;

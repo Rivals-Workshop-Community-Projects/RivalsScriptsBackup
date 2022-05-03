@@ -26,6 +26,10 @@ if(my_hitboxID.attack == AT_DSPECIAL)
 }
 
 
+if (my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num <= 5)
+{
+	vsp -= 3;
+}
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
 {
@@ -76,10 +80,13 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
 		    	expl.fc_timer = 0;
 			}
 		    
+		    expl.fc_timer = 0;
 		    expl.explosions_to_do = num_fc;
 		    expl.img_ind = image_index;
 		    expl.sprite_index = sprite_index;
         	expl.image_index = image_index;
+        	expl.player = player;
+        	expl.was_parried = was_parried;
     	}
     }
 }

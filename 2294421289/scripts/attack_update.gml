@@ -39,30 +39,32 @@ if (attack == AT_DAIR)
 
 if (attack == AT_FSPECIAL)
 {
+ can_wall_jump = true;
  if (window == 1) and (window_timer == 1)
  {
      sound_play( asset_get( "sfx_swipe_medium2" ) );
  }
- if was_parried = false
+ if (was_parried = false)
  {
- 
- if (has_hit)
+  if (has_hit)
 	{
      can_attack = true;
      old_vsp = 1;
-      if window = 1
+     can_fast_fall = true;
+     destroy_hitboxes();
+	}
+	else
+	{
+	  if window == 1
       {
        can_fast_fall = false;
       }
-      if window = 2
+      if window = 5
       {
        can_fast_fall = true;
       }
 	}
-
-	can_wall_jump = true;
 	old_vsp = -7;
-
  }
 
   if ((window == 2 || window == 3 || window == 4 || window == 5) && !free)  && (was_parried = false)
@@ -83,32 +85,37 @@ if (attack == AT_USTRONG)
 
 if (attack == AT_USPECIAL)
 { 
-  move_cooldown[AT_USPECIAL] = 25;	
- 
+  if (window == 1)
+  {
+  	if (window_timer == 21)
+  	{
+  		sound_play( asset_get( "sfx_swipe_medium1" ) );
+  	}
+  	if (window_timer < 20) and (window_timer > 10)
+  	{
+  		can_shield = true;
+  	}
+  }
   if (was_parried = false)
   {
 	can_wall_jump = true;
   if ((window == 2 ) && (!free) && (window_timer > 5))
   {
     set_state( PS_LANDING_LAG );
-    landing_lag_time = 15;//13
-    hsp = hsp / 2;
+    landing_lag_time = 17; //15
+    hsp = hsp / 3;
   }
  }
   if (window = 1 || window = 2)
   {
    can_fast_fall = 0;
   }
-  if (window = 3)
-  {
-   can_fast_fall = 1;
-  }
 
   if (window == 1) and (window_timer < 11)
   {
    upb_dir = joy_dir; 
-   set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, (22 * cos(degtorad(upb_dir)) ) * spr_dir);
-   set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, (-22 * sin(degtorad(upb_dir)) ));
+   set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, (24 * cos(degtorad(upb_dir)) ) * spr_dir);
+   set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, (-24 * sin(degtorad(upb_dir)) ));
    if (joy_pad_idle = true)
    {
     upb_dir = 90;
@@ -119,23 +126,35 @@ if (attack == AT_USPECIAL)
 
   if (window == 3)
   { 
-   set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, (7 * cos(degtorad(upb_dir)) ) * spr_dir);
-   set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, (-7 * sin(degtorad(upb_dir)) ));
+   set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, (3 * cos(degtorad(upb_dir)) ) * spr_dir);
+   set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, (-3 * sin(degtorad(upb_dir)) ));
   }
 
   if (window == 4)
-  { 
-   set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, (4 * cos(degtorad(upb_dir)) ) * spr_dir);
-   set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, (-4 * sin(degtorad(upb_dir)) ));
+  {
+   if (has_hit)
+   {
+    destroy_hitboxes();
+    if (has_hit_player)
+    {
+      old_vsp = (old_vsp / 2.1) - 5; // 2.1 - 5.5
+      old_hsp = (old_hsp / 1.2); //1.2
+    }
+    else
+    {
+      old_vsp = (old_vsp / 2.1) - 5; 
+      old_hsp = (old_hsp / 1.7); 
+    }
+   }
   }
 
   if (has_hit)
   {
-   set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+    window = 4;
   }
   else
   {
-   set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+    set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
   }
 
   if (special_down = true)
@@ -216,6 +235,8 @@ if (attack == AT_NSPECIAL)
       set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, spindash_timer);
       set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, spindash_timer);
       set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, spindash_timer);
+      set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, clamp(spindash_timer/1.5, 3, 10))
+      set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, clamp(spindash_timer/1.5, 1, 10));
     }
   }
 
@@ -243,9 +264,17 @@ if (attack == AT_FSPECIAL)
 
 if (attack == AT_USPECIAL)
 {
-  if (window == 2) or (window == 3)
+  if (window == 2)
   {
     if(state_timer % 3 == 0)
+    {
+      trail = instance_create(x, y, "obj_article1");
+      trail.image_index = image_index;
+    }
+  }
+  if (window == 3)
+  {
+    if(state_timer % 7 == 0)
     {
       trail = instance_create(x, y, "obj_article1");
       trail.image_index = image_index;
@@ -295,7 +324,7 @@ if (attack == AT_DSPECIAL)
     if (window_timer == 4)
     {
       move_cooldown[AT_DSPECIAL] = 160;
-      var ring = instance_create(x+(spr_dir * 30), y-80, "obj_article2");
+      var ring = instance_create(x+(spr_dir * 38), y-62, "obj_article2");
       ring.player_id = id;
       ring.player = player;
       ring.spr_dir = spr_dir;

@@ -6,7 +6,7 @@ set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_COOLDOWN, bow_cooldown_max);
 set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_CD_SPECIAL, 1);
 
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
@@ -89,6 +89,7 @@ repeat(3){
 	set_hitbox_value(_atk, i, HG_PROJECTILE_MASK, -1);
 	set_hitbox_value(_atk, i, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 	set_hitbox_value(_atk, i, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+	set_hitbox_value(_atk, i, HG_PROJECTILE_IS_TRANSCENDENT, 1 - (_atk == AT_DAIR));
 	// set_hitbox_value(_atk, i, HG_EXTENDED_PARRY_STUN, 1);
 	// set_hitbox_value(_atk, i, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 	// set_hitbox_value(_atk, i, HG_PROJECTILE_PARRY_STUN, 1);
@@ -97,6 +98,7 @@ repeat(3){
 	
 	if (i == 4){
 		_atk = AT_DAIR;
+	
 		i = 2;
 	}
 	

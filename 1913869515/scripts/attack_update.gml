@@ -165,9 +165,22 @@ if attack == AT_FSPECIAL {
 		
 
 		if window_timer == 20 && !hitpause {
+			
  	        hsp = 240*spr_dir
 			spr_dir *= -1
 			shake_camera(4,2)
+			
+			var step_up_height = 60;
+            
+            if place_meeting(x+hsp,y+vsp,asset_get("par_block")) {
+                for (var i = 0; i < step_up_height; i += 2) {
+                    if !place_meeting(x+hsp,y+vsp-i,asset_get("par_block")) {
+                        y = y+vsp-i;
+                        break;
+                    }
+                }
+            }
+            
 			sound_play(sound_get("counterhit"),false,noone,1,1.4);
 		}
 	}

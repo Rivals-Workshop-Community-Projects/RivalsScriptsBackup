@@ -147,15 +147,15 @@ set_color_profile_slot( 11, 5, 73, 79, 84 ); //Eyes/Socks
 set_color_profile_slot( 11, 6, 149, 211, 210 ); //Smog
 set_color_profile_slot( 11, 7, 34, 56, 79 ); //Smog Outline
 
-// susie
-set_color_profile_slot( 12, 0, 132, 63, 158 ); //Hoodie Pink
-set_color_profile_slot( 12, 1, 229, 128, 200 ); //Skin
-set_color_profile_slot( 12, 2, 133, 36, 107 ); //Hair
-set_color_profile_slot( 12, 3, 54, 51, 51 ); //Hoodie Purp
-set_color_profile_slot( 12, 4, 133, 36, 107 ); //Skirt
-set_color_profile_slot( 12, 5, 54, 51, 51 ); //Eyes/Socks
-set_color_profile_slot( 12, 6, 194, 50, 85 ); //Smog
-set_color_profile_slot( 12, 7, 231, 168, 65 ); //Smog Outline
+// amity
+set_color_profile_slot( 12, 0, 65, 68, 74 ); //Hoodie Pink
+set_color_profile_slot( 12, 1, 254, 231, 218 ); //Skin
+set_color_profile_slot( 12, 2, 184, 149, 224 ); //Hair
+set_color_profile_slot( 12, 3, 65, 68, 74 ); //Hoodie Purp
+set_color_profile_slot( 12, 4, 158, 88, 87 ); //Skirt
+set_color_profile_slot( 12, 5, 201, 170, 94 ); //Eyes/Socks
+set_color_profile_slot( 12, 6, 146, 108, 177 ); //Smog
+set_color_profile_slot( 12, 7, 45, 35, 66 ); //Smog Outline
 
 // macka
 set_color_profile_slot( 13, 0, 252, 238, 161 ); //Hoodie Pink
@@ -246,6 +246,16 @@ set_color_profile_slot( 21, 4, 252, 253, 255 ); //Skirt
 set_color_profile_slot( 21, 5, 255, 0, 0 ); //Eyes/Socks
 set_color_profile_slot( 21, 6, 255, 255, 255 ); //Smog
 set_color_profile_slot( 21, 7, 255, 0, 0 ); //Smog Outline
+
+//// mexico
+//set_color_profile_slot( 22, 0, 215, 34, 40 ); //Hoodie Pink
+//set_color_profile_slot( 22, 1, 214, 152, 109 ); //Skin
+//set_color_profile_slot( 22, 2, 94, 49, 43 ); //Hair
+//set_color_profile_slot( 22, 3, 14, 105, 75 ); //Hoodie Purp
+//set_color_profile_slot( 22, 4, 80, 79, 89 ); //Skirt
+//set_color_profile_slot( 22, 5, 14, 105, 75 ); //Eyes/Socks
+//set_color_profile_slot( 22, 6, 18, 133, 56 ); //Smog
+//set_color_profile_slot( 22, 7, 143, 17, 21 ); //Smog Outline
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

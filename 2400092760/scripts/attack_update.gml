@@ -400,7 +400,7 @@ if(attack == AT_DSTRONG && window == 5){
 }
     
 if(attack == AT_DSTRONG && window == 6){
-    if(window_timer == 1){
+    if(window_timer == 1 && !hit_pause){
         var lifesteal = create_hitbox(AT_DSTRONG, 3, x +42, y -50)
             lifesteal.damage = 10 * (1 + strong_charge/100)
             sound_play(asset_get("sfx_burnconsume"))
@@ -480,18 +480,24 @@ if(attack == AT_FSTRONG){
             fstr_tp = true;
         }
     }
-    if(window == 3 && !hitpause){
-        with(oPlayer){
-            if(id != other.id){
-                if(!position_meeting(other.x + 25*other.spr_dir,other.y - 20, player)){
-                   other.hsp = 10*other.spr_dir;
-                }
-                else{
-                    other.hsp = 0;
-                }
-            }
-        }
+    
+    if (window == 3 and window_timer == 1 and !hitpause)
+    {
+    	hsp = spr_dir*8;	
     }
+    
+    // if(window == 3 && !hitpause){
+    //     with(oPlayer){
+    //         if(id != other.id){
+    //             if(!position_meeting(other.x + 25*other.spr_dir,other.y - 20, player)){
+    //               other.hsp = 10*other.spr_dir;
+    //             }
+    //             else{
+    //                 other.hsp = 0;
+    //             }
+    //         }
+    //     }
+    // }
 }
     
     

@@ -343,6 +343,10 @@ initWords("~ FSpecial no longer affects invincible targets");
 initPatch("1.3.5", "March 29, 2022");
 initWords("+ Raised FStrong hitstun multiplier to .95 (.85 for sourspot)");
 
+initPatch("1.4", "April 16, 2022");
+initWords("~ DStrong now shakes the screen");
+initWords("~ Added Kirby Fighters Buddy & Agent N support");
+
 initPatch("About Magolor", "");
 initWords("Magolor and the Kirby franchise belong to Nintendo and HAL Laboratories.");
 initHeader("Spriting and Presentation");

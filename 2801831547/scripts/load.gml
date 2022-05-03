@@ -1,0 +1,77 @@
+sprite_change_offset("idle", 74, 75);
+sprite_change_offset("hurt", 74, 73);
+sprite_change_offset("hurtground", 74, 73);
+sprite_change_offset("bighurt", 74, 73);
+sprite_change_offset("spinhurt", 74, 73);
+sprite_change_offset("uphurt", 74, 73);
+sprite_change_offset("downhurt", 74, 73);
+sprite_change_offset("bouncehurt", 74, 73)
+sprite_change_offset("crouch", 74, 73);
+sprite_change_offset("crouch_2", 74, 73);
+sprite_change_offset("crouch_lick", 74, 73);
+sprite_change_offset("crouch_walk", 74, 73);
+sprite_change_offset("crouch_sleep", 74, 73);
+sprite_change_offset("walk", 74, 77);
+sprite_change_offset("walkturn", 60, 75);
+sprite_change_offset("dash", 74, 75);
+sprite_change_offset("dashstart", 74, 75);
+sprite_change_offset("dashstop", 76, 75);
+sprite_change_offset("dashturn", 74, 75);
+
+sprite_change_offset("jumpstart", 74, 73);
+sprite_change_offset("jump", 74, 73);
+sprite_change_offset("doublejump", 74, 73);
+sprite_change_offset("walljump", 74, 73);
+sprite_change_offset("pratfall", 74, 73);
+sprite_change_offset("land", 74, 73);
+sprite_change_offset("landinglag", 74, 73);
+
+sprite_change_offset("parry", 74, 73);
+sprite_change_offset("roll_forward", 74, 73);
+sprite_change_offset("roll_backward", 74, 73);
+sprite_change_offset("airdodge", 74, 73);
+sprite_change_offset("airdodge_back", 74, 73);
+sprite_change_offset("airdodge_downback", 74, 73);
+sprite_change_offset("airdodge_upback", 74, 73);
+sprite_change_offset("waveland", 74, 73);
+sprite_change_offset("tech", 74, 73);
+
+sprite_change_offset("jab", 74, 73, 1);
+sprite_change_offset("dattack", 74, 75, 1);
+sprite_change_offset("ftilt", 74, 75, 1);
+sprite_change_offset("dtilt", 74, 73, 1);
+sprite_change_offset("utilt", 74, 75, 1);
+sprite_change_offset("nair", 74, 73, 1);
+sprite_change_offset("fair", 74, 73, 1);
+sprite_change_offset("bair", 74, 73, 1);
+sprite_change_offset("uair", 74, 73, 1);
+sprite_change_offset("dair", 74, 73, 1);
+sprite_change_offset("fstrong", 74, 77, 1);
+sprite_change_offset("ustrong", 74, 88, 1);
+sprite_change_offset("dstrong", 74, 73, 1);
+sprite_change_offset("nspecial", 74, 75, 1);
+sprite_change_offset("fspecial", 74, 73, 1);
+sprite_change_offset("fspecialup", 74, 73, 1);
+sprite_change_offset("fspecialdown", 74, 73, 1);
+sprite_change_offset("fspecial_hit", 74, 73, 1);
+sprite_change_offset("fspecialcancel", 74, 73);
+sprite_change_offset("uspecial", 74, 73, 1);
+sprite_change_offset("dspecial", 74, 73, 1);
+sprite_change_offset("taunt", 74, 75);
+
+sprite_change_offset("extra2", 74, 73, 1);
+
+sprite_change_offset("dspecial_proj", 128, 100);
+sprite_change_offset("wisp", 64, 84);
+sprite_change_offset("wisp_spawn", 64, 84);
+sprite_change_offset("wisp_mask", 44, 64);
+sprite_change_offset("plat", 67, 73);
+sprite_change_offset("crouch_overlay", 150, 147);
+sprite_change_offset("hfx_rin_small", 64, 64);
+sprite_change_offset("hfx_rin_slash", 128, 128);
+sprite_change_offset("dair_effect", 256, 256);
+sprite_change_offset("hfx_rin_slash_front", 128, 128);
+//sprite_change_offset("hfx_part_wisp", 31, 31);
+sprite_change_offset("nspecial_proj", 64, 94);
+sprite_change_offset("hurtbox", 31, 80);
+sprite_change_offset("crouchbox", 31, 80);

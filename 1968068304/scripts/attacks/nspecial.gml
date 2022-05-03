@@ -108,7 +108,7 @@ set_window_value(AT_NSPECIAL, 8, AG_WINDOW_HAS_WHIFFLAG, 0); //changes depending
 
 //hit 3 recovery
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 9, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 9, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 23);
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_HAS_WHIFFLAG, 0); //changes depending on if epinel is in the air

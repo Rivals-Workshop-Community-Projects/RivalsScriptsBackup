@@ -16,6 +16,17 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
+
+var regselect = 1;
+if (regselect = 1)
+{  
+	if (get_color_profile_slot_b(0, 0) == 246) 
+	{
+		sound_play(sound_get("ARC_BTL_GBR_Sword_Furi"), false, 0, 2.45);
+		set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
+	}
+}
+
 var qe_b = "Regor"
 // ! you can now scroll down until you reach "the primary part you should change."
 

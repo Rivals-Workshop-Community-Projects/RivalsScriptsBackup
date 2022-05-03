@@ -59,7 +59,7 @@ if (state == 1){
         tmp_id.has_hit = true;
         with player_id
         {
-         if (free) and (has_hit)
+         if (free) and (has_hit) and (!shield_down)
           {
             if (attack == AT_NSPECIAL)
             {
@@ -74,7 +74,7 @@ if (state == 1){
              old_vsp = -12;
             }
           }
-          if (!free) and (has_hit)
+          if (!free) and (has_hit) and (!shield_down)
           {
            if (attack == AT_FTILT) || (attack == AT_DTILT) || (attack == AT_FSTRONG) || (attack == AT_DSTRONG) || (attack == AT_NSPECIAL)
            {

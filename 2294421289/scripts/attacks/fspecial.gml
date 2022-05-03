@@ -5,7 +5,7 @@ set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);//11
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);//13
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("dash1"));
@@ -44,8 +44,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 30);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -20);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 65);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 35);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 65); //55
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 35); //25
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 65);

@@ -26,32 +26,46 @@ if (state == PS_FIRST_JUMP && prev_state == PS_JUMPSQUAT) {
     //sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
 }
 
-if (djumps == max_djumps && !djumped) {
+//Soup accel jump (because the base game accel jump is broken.)
+
+//archived due to not being necessary anymore.
+
+//this is the jump detection, in retrospect it should have tracked what the djumps variable was the previous frame
+//then if it was less the previous frame, run the code, then set the prev frame djumps variable afterwards
+/*if (djumps > fix_old_djumps && !djumped) { 
     r_djump_timer = 0;
     djumped = true;
     sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
 }
-djumping = false;
+djumping = false; //set djumping to false, as by default you're not double jumping.
+if !free r_djump_timer = -1
 if r_djump_timer == clamp(r_djump_timer,0,r_djump_accel_end_time-1)  {
+    //gravity jump. you can just reset it directly since the criteria is just "did you fast fall on the first frame"
     if vsp == fast_fall {
         djumps = 0; 
         djumped = false;
     }
+    
     fast_falling = false;
     do_a_fast_fall = false;
+    free = true;
+    can_land = false;
+    //double jump cancel
     if state == clamp(state, 5, 6) && !jump_down {
         r_djump_timer = r_djump_accel_end_time
         print("djump cancel");
     }
+    //apply accel. for some reason having the +1 and -1 makes it more accurate? i won't question it.
     if r_djump_timer == clamp(r_djump_timer, r_djump_accel_start_time+1, r_djump_accel_end_time-1) {
         vsp += r_djump_accel;
     }
-    r_djump_timer++;
-    djumping = true;
+    r_djump_timer++; //increment timer
+    djumping = true; //yes i am double jumping.
     //print(vsp);
 }
-if djumps == 0 djumped = false;
-
+if djumps == 0 djumped = false; //reset djumped variable.
+fix_old_djumps = djumps;
+*/
 //#endregion
 
 //#region Airdodge FX
@@ -97,7 +111,17 @@ if (bullets < bullets_max) {
 //#endregion
 
 //#region Gravity Jumping
-/* deprecated code due to jump rewrite.
+//deprecated code due to jump rewrite. 
+
+if (djumps > old_djumps && !djumping) {
+    djumping = true;
+    djump_track_timer = 0;
+} else if djumping {
+    djump_track_timer++
+    if djump_track_timer >= djump_accel_end_time djumping = false;
+    if state_cat != SC_AIR_COMMITTED && state_cat != SC_AIR_NEUTRAL djumping = false;
+}
+old_djumps = djumps;
 if (roke_grav_jump) {
     roke_grav_jump = 0;
     if (fast_falling) {
@@ -105,8 +129,8 @@ if (roke_grav_jump) {
         djumped = false;
     }
 }
-//if (djumping && fast_falling && state_timer > 5 && djumps > 0) roke_grav_jump = 1;
-*/
+if (djump_track_timer == 0 && vsp == fast_fall && fast_falling && djumps > 0) roke_grav_jump = 1;
+//
 //#endregion
 
 //#region Bullet Landing Lag

@@ -52,7 +52,8 @@ switch state {
     }
     if state_timer >= 40 {
         destroy = true
-        spawn_hit_fx(x, y-35, 301)
+        var fx = spawn_hit_fx(x, y-35, 301)
+            fx.pause = 10
     }
     break;
 }
@@ -93,7 +94,8 @@ if destroy {
 
 //Default hit stuff
 sound_play(hbox.sound_effect);
-spawn_hit_fx(x+hbox.hit_effect_x,y+hbox.hit_effect_y-35,hbox.hit_effect);
+var fx = spawn_hit_fx(x+hbox.hit_effect_x,y+hbox.hit_effect_y-35,hbox.hit_effect);
+    fx.pause = 10
 
 hit_player_obj = hbox.player_id;
 hit_player_num = hbox.player;

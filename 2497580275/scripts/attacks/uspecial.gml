@@ -58,6 +58,8 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, sound_get("dagger_stab3"));
 //set_hitbox_value(AT_USPECIAL, 1, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USPECIAL, 1, HG_TECHABLE, 1);
+
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 2);
@@ -77,6 +79,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, sound_get("dagger_stab3"));
 //set_hitbox_value(AT_USPECIAL, 2, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USPECIAL, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -87,6 +90,7 @@ set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 5);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USPECIAL, 3, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_USPECIAL, 4, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 1);
@@ -97,6 +101,7 @@ set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X, 5);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_GROUP, -1);
 //set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USPECIAL, 4, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_WINDOW, 3);
@@ -116,3 +121,5 @@ set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, fspecSmallHit);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sound_get("dagger_stab2"));
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_LOCKOUT, 15);
+set_hitbox_value(AT_USPECIAL, 5, HG_TECHABLE, 1);
+set_hitbox_value(AT_USPECIAL, 6, HG_TECHABLE, 1);

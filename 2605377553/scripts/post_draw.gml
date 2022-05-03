@@ -55,6 +55,20 @@ if (state == PS_ATTACK_GROUND && attack == AT_NSPECIAL || state == PS_ATTACK_AIR
     draw_sprite_ext(sprite_get("chains_front"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
 }
 
+if (state == PS_ATTACK_AIR && attack == AT_NAIR )
+{
+    var a = 1;
+    if window == 1
+    a = window_timer < 10 ? window_timer/10 : 1;
+    else if window == (4)
+     a = window_timer > get_window_value(AT_FSTRONG, window, AG_WINDOW_LENGTH)-20 ? (1-(window_timer/10)) : 0;
+  
+    draw_sprite_ext(sprite_get("chains_front"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
+}
+
+
+
+
 //no.
 if (get_gameplay_time() == 3 && nothanks = true) {
     print("This is LITERALLY none of your business.");

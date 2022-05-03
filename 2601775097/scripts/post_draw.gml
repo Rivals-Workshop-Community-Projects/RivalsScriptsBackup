@@ -1,207 +1,218 @@
 //post-draw
 
-//munophone
-muno_event_type = 4;
-user_event(14);
-
-
-shader_start();
-if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
+//gliding UI
+if (glide_ui)
 {
-    //Ustrong effect
-    if (attack == AT_USTRONG) draw_sprite_ext(fx_ustrong_lightaxe_sprite, image_index, x, y, 1*spr_dir, 1, 0, c_white, 1);
-
-    //light dagger spawning effects
-    if (attack == AT_SKILL0) draw_sprite_ext(fx_lightdagger, image_index, x-64*spr_dir, y-94, 1*spr_dir, 1, 0, c_white, 1);
-    if (attack == AT_SKILL0_AIR) draw_sprite_ext(fx_lightdagger_air, image_index, x-(64*spr_dir), y-94, 1*spr_dir, 1, 0, c_white, 1);
-
-    //light hookshot effect
-    if (attack == AT_SKILL9)
-    {
-        if (free) draw_sprite_ext(fx_lighthookshot, image_index, x, y-2, 1*spr_dir, 1, 0, c_white, 1);
-        else draw_sprite_ext(fx_lighthookshot, image_index, x, y, 1*spr_dir, 1, 0, c_white, 1);
-    }
-
-    //overdrive attack background
-    if (attack == AT_OVERDRIVE)
-    {
-        if (is_8bit)
-        {
-            draw_sprite_ext(sprite_get("fx_lordpunishment_firehand"), image_index, x, y, 2*spr_dir, 2, 0, c_white, 1);
-
-            if (window >= 12 && window <= 18 && OD_sword_image <= 24) draw_sprite_ext(sprite_get("fx_lordpunishment_greatsword_8bit"), OD_sword_image, x, y, 2*spr_dir, 2, 0, c_white, 1);
-            if (window == 17) draw_sprite_ext(sprite_get("fx_lordpunishment_slash_8bit"), 0, x, y, 2*spr_dir, 2, 0, c_white, OD_slash_alpha);
-        }
-        else
-        {
-            if (window >= 12 && window <= 18 && OD_sword_image <= 24) draw_sprite_ext(sprite_get("fx_lordpunishment_greatsword"), OD_sword_image, x, y, 2*spr_dir, 2, 0, c_white, 1);
-            if (window == 17) draw_sprite_ext(sprite_get("fx_lordpunishment_slash"), 0, x, y, 2*spr_dir, 2, 0, c_white, OD_slash_alpha);
-        }
-
-        if (OD_stop_timer > 0) draw_sprite_ext(sprite_get("fx_screen"), 0, view_get_xview(), view_get_yview(), 1, 1, 0, c_white, 1);
-    }
+    draw_sprite_stretched_ext(spr_pixel, 0, floor(x-37), floor(y-char_height-32), 69, 6, c_black, 1); //outline
+    draw_sprite_stretched_ext(spr_pixel, 0, floor(x-35), floor(y-char_height-30), 65, 2, $316f09, 1); //empty
+    draw_sprite_stretched_ext(spr_pixel, 0, floor(x-35), floor(y-char_height-30), ceil(glide_stamina/(1.53*(glide_stamina_max/100))), 2, $78ff5f, 1); //full
 }
 
-//platform post draw
-if (state == PS_RESPAWN || attack == AT_TAUNT && state == PS_ATTACK_GROUND && free == true) draw_sprite(plat_post_sprite, plat_frame, x, y);
-shader_end();
-
-//dust effects
 if (!hitstop)
 {
-    if (attack == AT_FTILT && window == 3 && window_timer == 0) spawn_base_dust(x+(48*spr_dir), y, "dash_start", -1*spr_dir);
-    if (attack == AT_UTILT && window == 3 && window_timer == 0 && state != PS_AIR_DODGE) spawn_base_dust(x, y+10, "jump");
-    if (attack == AT_FSTRONG && window == 3 && window_timer == 1) spawn_base_dust(x-(16*spr_dir), y, "dash_start");
-    if (attack == AT_SKILL2 && window == 4 && window_timer == 0) spawn_base_dust(x, y-28, "djump", 0, leap_angle);
-    if (attack == AT_SKILL5 && window == 4 && window_timer == 0) spawn_base_dust(x-(16*spr_dir), y, "dash_start");
-    if (attack == AT_SKILL5 && window == 1 && window_timer == 0 && free) spawn_base_dust(x, y, "djump");
-    if (attack == AT_SKILL9 && window == 5 && window_timer == 0) spawn_base_dust(x, y-28, "djump", 0, -80*spr_dir);
-    if ((has_rune("A") || fuck_you_cheapies && theikos_active) && runeA_dash && runeA_dash_timer == 2 && free) spawn_base_dust(x-32*spr_dir, y-28, "djump", 0, -90*spr_dir);
-    if (attack == AT_FSTRONG_2 && (window == 3 && window_timer == 0 || window == 7 && window_timer == 4) && !free) spawn_base_dust(x, y, "dash_start");
-}
-
-//why are you afraid?
-if (bibical) draw_sprite_ext(sprite_get("bibical_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
-//add "else" here
-
-//theikos U-strong effect
-gpu_set_blendmode(bm_add);
-if (attack == AT_USTRONG_2 && (window == 4 || window == 5))
-{
-	shader_start();
-    draw_sprite_ext(fx_lightpillar, lightpillar_frame, x, view_get_yview(), lightpillar_xscale*2, 4, 0, c_white, lightpillar_alpha);
-    shader_end();
-}
-gpu_set_blendmode(bm_normal);
-
-//small MP guage
-if (show_miniMP && !fuck_you_cheapies)
-{
-    draw_sprite_ext(sprite_get("hud_mp_small"), 0, x-30, y-6, 2, 2, 0, c_white, miniMP_alpha);
-
-    //layering gauge
-    draw_sprite_ext(sprite_get("hud_mp_gauge_small"), floor(mp_current/4), x-24, y+8, 2, 2, 0, gauge_color, miniMP_alpha);
-    if (mp_current > 100)
+    //dust effects
+    if (is_attacking)
     {
-        draw_sprite_ext(sprite_get("hud_mp_gauge_small"), 25, x-24, y+8, 2, 2, 0, gauge_color, miniMP_alpha);
-        draw_sprite_ext(sprite_get("hud_mp_gauge_small"), floor(mp_current/4)+1, x-24, y+8, 2, 2, 0, gauge_EX_color, miniMP_alpha); //the cooler mana
-    }
-
-    if (miniMP_time < miniMP_time_limit-10) draw_debug_text(x-32,y-2,string(floor(mp_current)));
-}
-
-//no MP message's flashing arrow
-if (mp_error_active) draw_sprite_ext(sprite_get("no_mp"), mp_error_frame, x, y-(char_height+23), 1, 1, 0, c_white, 1);
-
-
-//gliding stamina stuff
-if (show_glide_ui)
-{
-    rectDraw(x-37, y-char_height-32, x+34, y-char_height-32+5, c_black); //outline
-    rectDraw(x-35, y-char_height-32+2, x+32, y-char_height-32+3, $316f09); //empty
-    rectDraw(x-35, y-char_height-32+2, x+floor(glide_time/(1.45*(glide_time_max/100)))-36, y-char_height-32+3, $78ff5f); //full
-}
-
-
-//when testing, the skill select can be brought up with up+taunt
-var temp_x = x-104;
-var temp_y = y+16;
-
-if (x < 100) temp_x = 100-104;
-if (x > 860) temp_x = 860-104;
-
-if (y > 466) temp_y = 466+16;
-if (y < 148) temp_y = 148+16;
-
-with (oTestPlayer) if ("menu_open" in self)
-{
-    draw_debug_text(temp_x + 16, temp_y + 32, "UP + TAUNT = Skill Select");
-    
-    //select script
-    if (menu_open)
-    {
-        if(menu_timer <= 120)
+        switch (attack)
         {
-            draw_sprite_ext(sprite_get("hud_menu_bg_playtest"), 0, temp_x + 4, temp_y - 116 , 2, 2, 0, c_white, 1);
-            var menuy = -124;
-            var i;
-            var k = 0;
-            for(var menux = 38; menux <= 178; menux += 38){
-                menuy = -130;
-                switch (menux){
-                    case 38:
-                        i = 0;
-                        break;
-
-                    case 76:
-                        i = 1;
-                        break;
-
-                    case 114:
-                        i = 2;
-                        break;
-
-                    case 152:
-                        i = 3;
-                        break;
-                }
-                for(var j = 0; j < 3; j ++){
-                    if(specs_chosen[i, j] == true){
-                        draw_sprite_ext(sprite_get("skillicons"), i + (j*4), temp_x + menux, temp_y + 46 + menuy, 2, 2, 0, c_white, 1);
-                    }else{
-                        draw_sprite_ext(sprite_get("skillicons_disabled"), i + (j*4), temp_x + menux, temp_y + 46 + menuy, 2, 2, 0, c_white, 1);
+            case AT_UTILT:
+                if (window == 3 && window_timer == 0) spawn_base_dust(x, y+10, "jump");
+                break;
+            case AT_FTILT:
+                if (window == 3 && window_timer == 0) spawn_base_dust(x+(48*spr_dir), y, "dash_start", -1*spr_dir);
+                break;
+            case AT_FSTRONG:
+                if (window == 3 && window_timer == 1) spawn_base_dust(x-(16*spr_dir), y, "dash_start");
+                break;
+            case AT_UTHROW: //force leap
+                if (window == 4 && window_timer == 0) spawn_base_dust(x, y-28, "djump", 0, angle_saved-90);
+                break;
+            case AT_EXTRA_2: //light hookshot
+                if (window == 5 && window_timer == 0) spawn_base_dust(x, y-28, "djump", 0, -80*spr_dir);
+                break;
+            case AT_EXTRA_1: //chasm burster
+                if (window_timer == 0)
+                {
+                    switch (window)
+                    {
+                        case 1:
+                            if (free) spawn_base_dust(x, y, "djump");
+                            break;
+                        case 4:
+                            spawn_base_dust(x-(16*spr_dir), y, "dash_start");
+                            break;
                     }
-                    menuy += 32;
                 }
-            }
-
-            if (arrow_anim_up) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x, temp_y - 52, 2, 2, 90, c_white, 1);
-            if (arrow_anim_side) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x + 2, temp_y - 52, 2, 2, 0, c_white, 1);
-            if (arrow_anim_down) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x + 34, temp_y - 18, 2, 2, 270, c_white, 1);
-
-            if(active_col >= 0 && active_col < 4){
-                draw_sprite_ext(sprite_get("skillselect_cursor"), (cursor_timer/3), temp_x + (38 * (active_col + 1)), temp_y - 84, 2, 2, 0, c_white, 1);
-            }
-
-            switch (active_col)
-            {
-                case -1:
-                    draw_debug_text(temp_x + 36, temp_y - 100, "Skill Select Cancelled");
-                    break;
-                case 0:
-                    draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "N-SPECIAL");
-                    break;
-                case 1:
-                    draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "F-SPECIAL");
-                    break;
-                case 2:
-                    draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "U-SPECIAL");
-                    break;
-                case 3:
-                    draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "D-SPECIAL");
-                    break;
-                case 4:
-                    draw_debug_text(temp_x + 42, temp_y - 100, "Selection Complete");
-                    break;
-            }
+                break;
+            case AT_FSTRONG_2:
+                if ((window == 3 && window_timer == 0 || window == 7 && window_timer == 4) && !free) spawn_base_dust(x, y, "dash_start");
+                break;
         }
     }
+
+    //accel blitz effect
+    if (accel_act_time > 0)
+    {
+        if (charge_color)
+        {
+            gpu_set_blendmode(bm_add);
+            gpu_set_fog(1, light_col, 0, 1);
+            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, light_col, 0.5);
+            gpu_set_fog(0, c_white, 0, 0);
+            gpu_set_blendmode(bm_normal);
+        }
+    }
+
+    //rune A airdash dust
+    if (rune_A_active && state == PS_AIRDASH && state_timer == 1) spawn_base_dust(x-32*spr_dir, y-28, "djump", 0, -85*spr_dir);
 }
 
+shader_start();
+//attack stuff that needs to be drawn regardless of hitpause
+if (is_attacking) switch (attack)
+{
+    case AT_USTRONG:
+        draw_sprite_ext(sprite_get("fx_ustrong"), image_index+24*burnbuff_active, x, y, 2*spr_dir, 2, 0, c_white, 1);
+        break;
+    case AT_NTHROW: case AT_NSPECIAL_AIR:
+        draw_sprite_ext(sprite_get("fx_skill0"), image_index+(20/(1+burnbuff_active)*free)+(40*burnbuff_active), x, y, 2*spr_dir, 2, 0, c_white, 1);
+        break;
+    case AT_DTHROW: case AT_EXTRA_2: //photon blast | light hookshot
+        if (charge_color)
+        {
+            gpu_set_blendmode(bm_add);
+            gpu_set_fog(1, light_col, 0, 1);
+            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, light_col, light_alpha);
+            gpu_set_fog(0, c_white, 0, 0);
+            gpu_set_blendmode(bm_normal);
+        }
+        break;
+    case AT_EXTRA_3:
+        if (window == 6 || window == 7) draw_sprite_ext(sprite_get("fx_skill10"), state_timer*0.4, x, y, 2, 2, 0, c_white, 1);
+        break;
+    case AT_USTRONG_2:
+        gpu_set_blendmode(bm_add);
+        if (window > 3)
+        {
+            //ustrong2_pillar_timer
+            draw_sprite_ext(
+                sprite_get("fx_ustrong2"),
+                get_gameplay_time(),
+                x,
+                view_get_yview(),
+                get_hitbox_value(attack, 2, HG_WIDTH)/100+ustrong2_pillar_end_timer/10,
+                4,
+                0,
+                c_white,
+                0.8-ustrong2_pillar_end_timer/10);
+        }
+        gpu_set_blendmode(bm_normal);
+        break;
+    case 49: //lord's punishment
+        //background work
+        gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_get("fx_od_fg"), floor(get_gameplay_time()*0.2), view_get_xview()+view_get_wview()/2, view_get_yview(), 2, 2, 0, c_white, (0.4+od_color_flash*0.05)*od_bg_alpha);
+        draw_sprite_ext(sprite_get("fx_od_fg"), floor(get_gameplay_time()*0.2), view_get_xview()+view_get_wview()/2, view_get_yview(), -2, 2, 0, c_white, (0.4+od_color_flash*0.05)*od_bg_alpha);
+        draw_sprite_ext(sprite_get("fx_od_bg"), 0, view_get_xview()+view_get_wview()/2, view_get_yview(), -2, 2, 0, c_white, (0.1+!od_color_flash*0.1)*od_bg_alpha);
 
+        draw_sprite_stretched_ext(spr_pixel, 0, view_get_xview(), view_get_yview(), view_get_wview()+1, view_get_hview()+1, light_col, od_rect_alpha);
+        gpu_set_blendmode(bm_normal);
 
+        //sword
+        if (window >= 12 && window <= 18) draw_sprite_ext(sprite_get("fx_od_sword"), od_sword_image, x, y, 2*spr_dir, 2, 0, c_white, 1);
+        if (window == 17) draw_sprite_ext(sprite_get("fx_od_slash"), 0, x, y, 2*spr_dir, 2, 0, c_white, od_slash_alpha);
+        break;
+}
+shader_end();
 
-#define spawn_base_dust {
-    /// spawn_base_dust(x, y, name, dir = 0)
-    ///spawn_base_dust(x, y, name, ?dir)
+//halloween costume
+if (bibical) draw_sprite_ext(sprite_get("bibical_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+
+//small MP guage
+if (mp_mini_timer > 0)
+{
+    var mp_x = floor(x) - 24;
+    var mp_y = floor(y) + 16;
+
+    //MP gauge
+    var alpha = mp_mini_timer/20;
+    if (mp_current <= 100) //normal version
+    {
+        draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 2, mp_y - 4, 52, 4, $8b1733, alpha); // background
+        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 0 + i * 2, mp_y - 2 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, alpha); // fill
+    }
+    else if (mp_current > 100) //double mana version
+    {
+        draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 2, mp_y - 4, 52, 4, $e9973e, alpha); // background
+        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, mp_x + 0 + i * 2, mp_y - 2 - i * 2, floor(mp_current)/2 + 2, 2, mp_color_ex, alpha); // fill
+    }
+    draw_sprite_ext(sprite_get("hud_mp_small"), 0, mp_x - 4, mp_y - 18, 2, 2, 0, c_white, alpha); //frame
+    draw_set_alpha(alpha);
+    draw_debug_text(mp_x - 2, mp_y - 14, string(floor(mp_current))); //text
+    draw_set_alpha(1);
+}
+
+//skill select (playtest mode)
+if (playtesting)
+{
+    menu_x = floor(x)-104;
+    menu_y = floor(y)+16;
+
+    if (x < 100) menu_x = 100-104;
+    if (x > 860) menu_x = 860-104;
+    if (y > 466) menu_y = 466+16;
+    if (y < 148) menu_y = 148+16;
+
+    if (menu_active) user_event(1);
+    else
+    {
+        draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 14, menu_y - 104, 52, 4, $8b1733, 1); // background
+        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 12 + i * 2, menu_y - 102 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, 1); // fill
+        draw_sprite_ext(sprite_get("hud_mp_small"), 0, menu_x + 8, menu_y - 118, 2, 2, 0, c_white, 1); //frame
+        draw_debug_text(menu_x + 12, menu_y - 90, "MP: " + string(floor(mp_current))); //text
+
+        draw_debug_text(menu_x + 16, menu_y + 32, "UP + TAUNT = Skill Select");
+    }
+}
+
+#define textDraw
+/// textDraw(x, y, string, color = c_white, font = "fname", align = fa_center, outline = false, alpha = 1)
+{
+    //textDraw(x, y, string, color, font, align, outline, alpha)
+    var x = argument[0], y = argument[1], string = argument[2];
+var color = argument_count > 3 ? argument[3] : c_white;
+var font = argument_count > 4 ? argument[4] : "fname";
+var align = argument_count > 5 ? argument[5] : fa_center;
+var outline = argument_count > 6 ? argument[6] : false;
+var alpha = argument_count > 7 ? argument[7] : 1;
+
+    draw_set_font(asset_get(font));
+    draw_set_halign(align);
+
+    if (outline)
+    {
+        for (var i_x = -1; i_x < 2; ++i_x) for (var i_y = -1; i_y < 2; ++i_y)
+        {
+            draw_text_color(x + i_x * 2, y + i_y * 2, string, c_black, c_black, c_black, c_black, alpha);
+        }
+    }
+    if (alpha != 1) alpha = alpha;
+
+    draw_text_color(x, y, string, color, color, color, color, alpha);
+}
+#define spawn_base_dust
+{
+    /// spawn_base_dust(x, y, name, dir = 0, angle = 0)
+    ///spawn_base_dust(x, y, name, ?dir, ?angle)
+
     //This function spawns base cast dusts. Names can be found below.
     var dlen; //dust_length value
     var dfx; //dust_fx value
     var dfg; //fg_sprite value
     var dust_color = 0;
     var x = argument[0], y = argument[1], name = argument[2];
-    var dir = argument_count > 3 ? argument[3] : 0;
-    var angle = argument_count > 4 ? argument[4] : 0;
+var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
 
     switch (name) {
         default: 
@@ -215,19 +226,11 @@ with (oTestPlayer) if ("menu_open" in self)
         case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
         case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
     }
-    var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+    var newdust = spawn_dust_fx(floor(x),floor(y),asset_get("empty_sprite"),dlen);
     newdust.dust_fx = dfx; //set the fx id
     if (dfg != -1) newdust.fg_sprite = dfg; //set the foreground sprite
     newdust.dust_color = dust_color; //set the dust color
     if (dir != 0) newdust.spr_dir = dir; //set the spr_dir
     newdust.draw_angle = angle; //sets the angle of the dust sprite
     return newdust;
-}
-
-#define rectDraw(x1, y1, x2, y2, color) {
-    draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
-
-    //according to the positive axis
-    //x1 / y1 = top left
-    //x2 / y2 = bottom right
 }

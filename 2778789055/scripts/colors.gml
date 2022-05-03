@@ -166,15 +166,15 @@ set_color_profile_slot( 13, 5, 255, 200, 0 ); //Po Skin 1
 set_color_profile_slot( 13, 6, 158, 158, 158 ); //Po Skin 2
 set_color_profile_slot( 13, 7, 49, 222, 198 ); //Apron
 
-// TAG
-set_color_profile_slot( 14, 0, 0, 158, 76 ); //Gumbo Skin 1
-set_color_profile_slot( 14, 1, 214, 171, 26 ); //Gumb Skin 2
-set_color_profile_slot( 14, 2, 84, 84, 84 ); //Jeans
-set_color_profile_slot( 14, 3, 110, 81, 60 ); //Hoodie
+// New TAG
+set_color_profile_slot( 14, 0, 149, 202, 116 ); //Gumbo Skin 1
+set_color_profile_slot( 14, 1, 192, 227, 165 ); //Gumb Skin 2
+set_color_profile_slot( 14, 2, 96, 158, 155 ); //Jeans
+set_color_profile_slot( 14, 3, 255, 147, 94 ); //Hoodie
 set_color_profile_slot( 14, 4, 255, 223, 112 ); //Eyes
-set_color_profile_slot( 14, 5, 0, 158, 76 ); //Po Skin 1
-set_color_profile_slot( 14, 6, 214, 171, 26 ); //Po Skin 2
-set_color_profile_slot( 14, 7, 234, 224, 255 ); //Apron
+set_color_profile_slot( 14, 5, 129, 235, 230 ); //Po Skin 1
+set_color_profile_slot( 14, 6, 220, 66, 83 ); //Po Skin 2
+set_color_profile_slot( 14, 7, 248, 229, 151 ); //Apron
 
 // Terry Crews
 set_color_profile_slot( 15, 0, 130, 90, 49 ); //Gumbo Skin 1

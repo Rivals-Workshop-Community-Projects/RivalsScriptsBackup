@@ -121,11 +121,13 @@ bikeReady = false;
 fuel = 0;
 fuel_charge = 0;
 fuel_burn = 0;
+fuel_remaining = 0;
 bike_hit = false;
 bike_hit_timer=0;
 damageCheck=false;
 smokeCounter = 0;
 bike_state_timer = 0;
+thrownBike = noone;
 
 //Practice mode
 practice = false;      //Whether you're in Practice Mode or not.
@@ -147,6 +149,7 @@ cancelMomentum = false;
 Fspecial_positionX = 0;
 Fspecial_positionY = 0;
 vsp_tracker = 0;
+chargeUpVoiceLine = true;
 
 //Debug Variable
 debugCheck = false;
@@ -160,6 +163,9 @@ arena_title = "The Kung-Fu Kitty";
 arena_short_name = "Carol";
 battle_text = "The Red Scarved Ninja Cat";
 miiverse_post = sprite_get("miiverse_post");
+uhc_victory_quote = "chek ot mai deviantart oc do not steel";
+kf_hud_offset = -34;
+copy_ability_id = 12;
 
 kirbyability=16;
 swallowed=false;

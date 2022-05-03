@@ -53,8 +53,8 @@ switch attack {
 	 	window_timer = 1
 	 }
 	  if window == 6 && window_timer == 4*5 && !hitpause{
-	    sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1.1)
-	 	shake_camera(5,5)
+	    sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.2)
+	    sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,0.8,1.2)
 	  }
 	 
 	 if window == 6 && window_timer == 12*5 && !hitpause{
@@ -198,7 +198,6 @@ switch attack {
 	  	sound_play(sound_get("swingm3"),false,noone,0.7,.8)
 	 	}
 	 	if window_timer == 15 { 
-	 		shake_camera(6,6)
 	 	 sound_play(asset_get("sfx_blow_medium3"),false,noone,0.7,1.2)	
 	 	 sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,0.7,1.1)
 	 	}
@@ -469,7 +468,6 @@ switch attack {
 	 	 cur_sound = sound_play(sound_get("v_hoo"),false,noone,.8,1.05 - random_func(1,10,true)/100)
 	 	}
         if window_timer == 12 { 
-        	shake_camera(4,4)
 	 		sound_play(sound_get("swingm3"),false,noone,0.7,1.2)
 	 		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.1)
 	 	}
@@ -598,6 +596,19 @@ switch attack {
         
         hsp = (5 + state_timer/4)*spr_dir
         vsp = 0
+        
+        
+        var step_up_height = 30;
+         
+         if place_meeting(x+hsp,y+vsp,asset_get("par_block")) {
+             for (var i = 0; i < step_up_height; i += 2) {
+                 if !place_meeting(x+hsp,y+vsp-i,asset_get("par_block")) {
+                     x = x+hsp; 
+                     y = y+vsp-i;
+                     break;
+                 }
+             }
+         }
 	 }
       if window == 3 && hitpause{
       	hsp = 2*spr_dir
@@ -790,8 +801,6 @@ if attack == AT_USPECIAL{
     if window == 3 && window_timer == 1 && !hitpause {
     	sound_play(asset_get("sfx_forsburn_reappear"));
     	sound_play(asset_get("sfx_abyss_explosion"),false,noone,0.5,1.2);
-    	shake_camera(2,4)
-
     	
     }
     

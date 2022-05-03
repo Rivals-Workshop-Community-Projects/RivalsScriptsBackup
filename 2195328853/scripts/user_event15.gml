@@ -42,8 +42,8 @@ alt_ui_recolor = 0;
 // The list of names for the alts, if enabled.
 alt_names = [
 	"Default",
-	"Red",
-	"Purple",
+	"Pastel Paste",
+	"Purple Putty",
 	"B&W",
 	"Matt",
 	"Aria",
@@ -59,16 +59,20 @@ alt_names = [
 	"Prince of Pufftop",
 	"Lad",
 	"G Devil",
-	"Ceele",
+	"Jigglypuff",
 	"Green Goo",
 	"Orange Slime",
 	"Sky",
-	"Prober",
+	"Neon Nova",
 	"King Blob",
 	"KoB",
 	"Mr Oarly",
 	"Blue Ball",
-	"Box God"
+	"Box God",
+	"Mudkip",
+	"Galacta Knight",
+	"Navy Nectar",
+	"Silver Sludge"
 	];
 
 
@@ -229,6 +233,12 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.72", "22nd April 2022");
+initHeader("Buffs");
+initSection("- Blob Ball now explodes when going off-screen, making it more reliable in certain ways");
+initHeader("Fixes / Other Changes");
+initSection("- Replaced a bunch of alts, and added the rest of his alts");
 
 initPatch("1.71", "31st March 2022");
 initHeader("Fixes / Other Changes");

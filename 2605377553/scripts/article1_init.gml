@@ -19,7 +19,7 @@ image_yscale = 0;
 growSpeed = 0.05;
 
 //interactions with hitboxes
-kbMultiplier = 0.2;//how much we multiply the knockback of the player
+kbMultiplier = 0.3;//how much we multiply the knockback of the player
 breakDamage = 4;//amount of damage from a move needed to break it
 isShrinking = false;//dont edit. determines if this cloud is already shrinking to prevent it from interacting
 

@@ -34,7 +34,7 @@ set_hitbox_value(40, 1, HG_LIFETIME, 400);
 set_hitbox_value(40, 1, HG_HITBOX_X, 0);
 set_hitbox_value(40, 1, HG_HITBOX_Y, 20);
 set_hitbox_value(40, 1, HG_PRIORITY, 9);
-set_hitbox_value(40, 1, HG_DAMAGE, 7);
+set_hitbox_value(40, 1, HG_DAMAGE, fuel_remaining / 2);
 set_hitbox_value(40, 1, HG_TECHABLE, 2);
 set_hitbox_value(40, 1, HG_EFFECT, 1);
 set_hitbox_value(40, 1, HG_VISUAL_EFFECT, 148);
@@ -43,6 +43,7 @@ set_hitbox_value(40, 1, HG_HIT_SFX, sound_get("xplode2"));
 set_hitbox_value(40, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(40, 1, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(40, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(40, 1, HG_HITPAUSE_SCALING, .5)
 set_hitbox_value(40, 1, HG_ANGLE, 270);
 set_hitbox_value(40, 1, HG_HITSTUN_MULTIPLIER, 0);
 set_hitbox_value(40, 1, HG_IGNORES_PROJECTILES, true);

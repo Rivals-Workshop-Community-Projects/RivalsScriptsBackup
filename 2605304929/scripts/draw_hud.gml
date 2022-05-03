@@ -18,10 +18,11 @@ if(state == PS_SPAWN){
     var current_alt = get_player_color(player);
     if(current_alt == 30){
         var attack_button, special_button, strong_button, jump_button, shield_button, taunt_button;
-        var alt_index = attack_down + special_down*2 + strong_down*4 + jump_down*8 + shield_down*16 + taunt_down*32;
+        var strong_stick_down = left_strong_down || right_strong_down || up_strong_down || down_strong_down || strong_down;
+        var alt_index = attack_down + special_down*2 + strong_stick_down*4 + jump_down*8 + shield_down*16 + taunt_down*32;
         if(attack_down){draw_debug_text(temp_x + 0, temp_y - 40,"AT:1");}
         if(special_down){draw_debug_text( temp_x + 33, temp_y - 40,"SP:2");}
-        if(strong_down){draw_debug_text( temp_x + 66, temp_y - 40,"ST:4");}
+        if(strong_stick_down){draw_debug_text( temp_x + 66, temp_y - 40,"ST:4");}
         if(jump_down){draw_debug_text( temp_x + 99, temp_y - 40,"JP:8");}
         if(shield_down){draw_debug_text( temp_x + 131, temp_y - 40,"SH:16");}
         if(taunt_down){draw_debug_text( temp_x + 170, temp_y - 40,"TA:32");}

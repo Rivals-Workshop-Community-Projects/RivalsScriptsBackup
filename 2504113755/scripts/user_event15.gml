@@ -517,9 +517,14 @@ with phone{
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
 	
+initPatch("2.7", "9 April, 2022");
+
+initPatchWords_ext("Fixed munophone being broken
+removed halloween skin", fa_center, c_white, 0, 0);
+
 initPatch("2.6", "9 April, 2022");
 
-initPatchWords_ext("Removed new slash vfx for epilepsy reasons"", fa_center, c_white, 0, 0);
+initPatchWords_ext("Removed new slash vfx for epilepsy reasons", fa_center, c_white, 0, 0);
 	
 initPatch("2.5", "8 April, 2022");
 

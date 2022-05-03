@@ -11,7 +11,7 @@ var SPK_DPIT = 3    //Dark Pit
 
 initCodecPage(SPK_PIT,	3,	5,	"Awww its a cute kitty cat");
 initCodecPage(SPK_PALU,	0,	0,	"Focus Pit, looks can be deceiving.");
-initCodecPage(SPK_PALU,	0,	3,	"That's Carol the Wildcat. She is a former member of the Red Scarves, a notorious band of theives");
+initCodecPage(SPK_PALU,	0,	3,	"That's Carol the Wildcat. She is a former member of the Red Scarves, a notorious band of thieves");
 initCodecPage(SPK_PIT,	6,	6,	"Really? Wasn't that her identical twin sister?");
 initCodecPage(SPK_PALU,	0,	3,	"Carol left the Red Scarves after their leader, Spade, killed someone, which she deemed to have crossed the line");
 initCodecPage(SPK_PALU,	0,	1,	"She's an extremely capable fighter, but perhaps a bit reluctant to actually do the whole saving the world thing");

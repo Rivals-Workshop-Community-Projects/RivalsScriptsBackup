@@ -1,6 +1,16 @@
 //hit_player.gml
 //dattack2
 
+//sfx layering
+switch(my_hitboxID.attack){
+	
+	case AT_NAIR:
+		if (my_hitboxID.hbox_num == 3){ 
+				sound_play(asset_get("sfx_ice_back_air"), 0, noone, 1, 0.85)
+		}
+	
+}
+
 var hitFSTRONG = my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1;
 var hitUSTRONG = my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1;
 var hitDSTRONG = my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 6);
@@ -35,6 +45,16 @@ if (my_hitboxID.attack == AT_USPECIAL) {
 	&& hit_player_obj.clone == false) {
 	    uspeccancel = true;
 	}
+}
+
+//dspec poison
+if (my_hitboxID.attack == AT_DSPECIAL) or (my_hitboxID.attack == AT_DTILT) {
+	if !hit_player_obj.malsick {
+            sound_play(sound_get("sick"));
+    } 
+	hit_player_obj.malsick = true;
+	hit_player_obj.sickOwner = id;
+	hit_player_obj.sickTimer = 60*5;
 }
 
 

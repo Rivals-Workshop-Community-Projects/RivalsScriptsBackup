@@ -1,27 +1,27 @@
-
-var brawl = 1;
-
-if (brawl = 1){ 
+if get_player_color(player) == 19 {
+    var brawl = 1;
     
-if (get_color_profile_slot_b(0, 0) == 56) {
-    sound_play(sound_get("r"), false, 0, 2.75);
-        brawl_flash_opacity = 0.9;
-    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
+    if (brawl = 1){ 
+        
+    if (get_color_profile_slot_b(0, 0) == 56) {
+        sound_play(sound_get("r"), false, 0, 2.75);
+            brawl_flash_opacity = 0.9;
+        set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
+    }
+    
+    if variable_instance_exists(self, "brawl_flash_opacity"){
+        brawl_flash_opacity = brawl_flash_opacity - 0.05;
+    draw_sprite_ext(sprite_get("brawl_flash"), 0, x+7, y+8, 1, 1, 0, c_white, brawl_flash_opacity);    
+    }
+    
+    
+    draw_sprite(sprite_get("charselectg"),0,x+7,y+8);  
+    draw_sprite(sprite_get("brawl_nameplate"),0,x+7,y+8);  
+    
+    
+    
+    } 
 }
-
-if variable_instance_exists(self, "brawl_flash_opacity"){
-    brawl_flash_opacity = brawl_flash_opacity - 0.05;
-draw_sprite_ext(sprite_get("brawl_flash"), 0, x+7, y+8, 1, 1, 0, c_white, brawl_flash_opacity);    
-}
-
-
-draw_sprite(sprite_get("charselectg"),0,x+7,y+8);  
-draw_sprite(sprite_get("brawl_nameplate"),0,x+7,y+8);  
-
-
-
-} 
-
 
 //--- ---
 //
@@ -38,7 +38,6 @@ draw_sprite(sprite_get("brawl_nameplate"),0,x+7,y+8);
 // and just in case, this code goes into css_draw.gml.
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
-
 //--- ---
 var qe_b = "Padoru"
 // ! you can now scroll down until you reach "the primary part you should change."
@@ -92,7 +91,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = sound_get("sfx_other_bell3"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 18; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 20; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(245, 56, 56) // "color preview square" color. can be any color!
@@ -152,6 +151,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[18,0] = make_color_rgb(255, 226, 112)
     ce[18,1] = "Wish"
     ce[18,2] = ""
+    ce[19,0] = make_color_rgb(245, 56, 56)
+    ce[19,1] = ""
+    ce[19,2] = ""
+    ce[20,0] = make_color_rgb(240, 82, 129)
+    ce[20,1] = "Heart"
+    ce[20,2] = ""
     
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
@@ -243,6 +248,8 @@ if (color_desc_activate){
  
 //ae code end
  
+ 
+
  
  
 //--- ---

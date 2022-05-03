@@ -61,7 +61,7 @@ switch(attack){
 
 if(attack == AT_FTILT){
 if(window == 1 && window_timer == get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH)-1){
-	vfx = spawn_hit_fx(x + spr_dir * 140, y - 35, spice_effect);
+	vfx = spawn_hit_fx(x + spr_dir * 140, y - 40, spice_effect);
 	vfx.depth = -10;
 }
 }
@@ -319,6 +319,28 @@ if(attack == AT_DAIR){
 	hud_offset = 70;
 }
 
+
+if(attack == AT_USPECIAL && window == 1 && window_timer <= 4){
+    if(shield_pressed || shield_down){
+    	if(!is_scalding){
+    	destroy_hitboxes();
+		set_attack(AT_USPECIAL_2);
+		window = 1;
+		window_timer = 0;
+    	}if(is_scalding){
+    	destroy_hitboxes();
+		set_attack(AT_EXTRA_1);
+		window = 1;
+		window_timer = 0;
+    	}
+    }
+}
+
+if(attack == AT_NSPECIAL_2){
+	if(window == 1 && window_timer = 1){
+		sound_play(asset_get("sfx_forsburn_cape_swipe"));
+	}
+}
 #define spawn_base_dust
 /// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)

@@ -88,6 +88,15 @@ switch(state)
                     introText = "Come on, old-timer, if you still got it!";
                 if (string_count("astra", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "I’m the only one who determines my future!";
+		if (string_count("amarelle", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+		{
+                    introText = "You're not the only one who";
+		    introText2 = "can bring the heat!";
+		}
+		if (string_count("rykenburn", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Well! You're a big boy, aren't you?!";
+		if (string_count("iroh", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "Show me your ruthless aggression!";
                 if (string_count("kyort", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "Bring it on, weenie king!";
                 if (string_count("tenru", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
@@ -206,6 +215,11 @@ switch(state)
                 }
                 if (string_count("pomme", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0  || enemyObj.url == 18)
                     introText = "I am the star of this duet, little miss diva!";
+	        if (string_count("hikaru", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                {
+		    introText = "I'll show you everything you need";
+		    introText2 = "to know about pro wrestling!";
+		}
                 if (string_count("olympia", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 || enemyObj.url == 19)
                 {
 		    introText = "When I beat you, you will be";
@@ -221,8 +235,13 @@ switch(state)
                     introText = "You should be honored that you will get no mercy!";
                 if (string_count("forsburn", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "You're only smoke and mirrors to me!";
+		if (string_count("shovel knight", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "I will take that shovel and BURY YOU!";
                 if (string_count("clairen", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "Cute sword but my toys are better!";
+		if (string_count("ori", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+                    introText = "I'm going to slam you back to your forest!";
+		
                     
                 //default
                 if(introText == "")

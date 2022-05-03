@@ -416,19 +416,19 @@ if (attack == AT_USPECIAL){
 		if (left_down && spr_dir == 1 || right_down && spr_dir == -1){
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 0.5);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -15.2);
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -16);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 		//Downward Input
 		} else if (right_down && spr_dir == 1 || left_down && spr_dir == -1){
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 2);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11.2);
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -12);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 		//No Input
 		} else {
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 1);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -13.6);
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -14.2);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 		}
 	}

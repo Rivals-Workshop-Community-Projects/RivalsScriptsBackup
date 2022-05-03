@@ -12,7 +12,7 @@ set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("boule"));
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 3);                              
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 5);                              
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 6);

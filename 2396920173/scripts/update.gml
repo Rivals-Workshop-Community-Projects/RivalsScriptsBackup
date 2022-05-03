@@ -97,6 +97,7 @@ switch piece {
 	break;
     
     case "N":
+    case "U":
     knockback_adj = 1.05;
     char_height = 50;
     if has_rune("J") max_djumps = 4; //Knight has 2 extra jumps, and King retains FSPECIAL super armour on FSTRONG and DSTRONG.

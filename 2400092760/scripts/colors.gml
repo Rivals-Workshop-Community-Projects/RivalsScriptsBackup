@@ -336,15 +336,15 @@ set_color_profile_slot( 30, 5, 123, 37, 201 ); //BANDAGES
 set_color_profile_slot( 30, 6, 238, 220, 0 ); //HIGHLIGHTS
 set_color_profile_slot( 30, 7, 221, 45, 80 ); //BLOOD
 
-// Cackling Hyena (31)
-set_color_profile_slot( 31, 0, 79, 59, 64 ); //SKIN
-set_color_profile_slot( 31, 1, 215, 84, 74 ); //HAIR
-set_color_profile_slot( 31, 2, 215, 84, 74 ); //SHIRT
-set_color_profile_slot( 31, 3, 65, 54, 80 ); //COAT
-set_color_profile_slot( 31, 4, 244, 251, 251 ); //FUR
-set_color_profile_slot( 31, 5, 215, 84, 74 ); //BANDAGES
-set_color_profile_slot( 31, 6, 255, 162, 29 ); //HIGHLIGHTS
-set_color_profile_slot( 31, 7, 255, 162, 29 ); //BLOOD
+// GENISIS
+set_color_profile_slot( 31, 0, 244, 208, 182 ); //SKIN
+set_color_profile_slot( 31, 1, 110, 110, 110 ); //HAIR
+set_color_profile_slot( 31, 2, 107, 108, 110 ); //SHIRT
+set_color_profile_slot( 31, 3, 50, 51, 51 ); //COAT
+set_color_profile_slot( 31, 4, 255, 56, 69 ); //FUR
+set_color_profile_slot( 31, 5, 195, 177, 177 ); //BANDAGES
+set_color_profile_slot( 31, 6, 255, 235, 235 ); //HIGHLIGHTS
+set_color_profile_slot( 31, 7, 255, 0, 17 ); //BLOOD
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

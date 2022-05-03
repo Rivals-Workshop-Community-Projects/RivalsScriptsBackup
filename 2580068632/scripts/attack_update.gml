@@ -43,6 +43,7 @@ if (attack == AT_JAB){
 		if (dattack_land_var == 1){
 			spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
 			sound_play(landing_lag_sound);
+			did_swap_inputs = false;
 		}
 	} else {
 		dattack_land_var = 0;
@@ -107,64 +108,58 @@ if (attack == AT_FTILT){
 	}	
 	if (window == 3){
 		if (window_timer > 5){
-			if ((up_stick_down) && (!down_stick_down)){
+			if (left_stick_down || right_stick_down){
+				window++;
+				window_timer = 0;
+			}
+			if ((((up_pressed || up_down) && attack_pressed) || up_stick_down) && (((!down_pressed || !down_down)) || !down_stick_down)){
 				set_attack( AT_UTILT );
 				hsp = 6 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
-			} else if ((!up_stick_down) && (down_stick_down)){
+			} else if ((((!up_pressed || !up_down)) || !up_stick_down) && (((down_pressed || down_down) && attack_pressed) || down_stick_down)){
 				set_attack( AT_DTILT );
 				hsp = 3 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
-			} else if (left_stick_down || right_stick_down){
-				window++;
-				window_timer = 0;
 			}
 		}
 	}
 	if (window == 4){
 		if (window_timer == 2){
-			if ((up_pressed || up_down || up_stick_down) && (!down_pressed || !down_down || !down_stick_down)){
-				set_attack( AT_UTILT );
-				hsp = 6 * spr_dir
-				sound_stop(sfx_krtd_sword_swipe2);
-			} else if ((!up_pressed || !up_down || !up_stick_down) && (down_pressed || down_down || down_stick_down)){
-				set_attack( AT_DTILT );
-				hsp = 3 * spr_dir
-				sound_stop(sfx_krtd_sword_swipe2);
-			}
+			//
 		}
 	}
 	if (window == 6){
 		if (window_timer > 4){
-			can_attack = true;
-			if ((up_stick_down) && (!down_stick_down)){
+			if (left_stick_down || right_stick_down){
+				window++;
+				window_timer = 0;
+			}
+			if ((((up_pressed || up_down) && attack_pressed) || up_stick_down) && (((!down_pressed || !down_down)) || !down_stick_down)){
 				set_attack( AT_UTILT );
 				hsp = 6 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
-			} else if ((!up_stick_down) && (down_stick_down)){
+			} else if ((((!up_pressed || !up_down)) || !up_stick_down) && (((down_pressed || down_down) && attack_pressed) || down_stick_down)){
 				set_attack( AT_DTILT );
 				hsp = 3 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
-			} else if (left_stick_down || right_stick_down){
-				window++;
-				window_timer = 0;
 			}
 		}
 	}
 	if (window == 7){
-		if ((up_pressed || up_down || up_stick_down) && (!down_pressed || !down_down || !down_stick_down)){
-				set_attack( AT_UTILT );
-				hsp = 6 * spr_dir
-				sound_stop(sfx_krtd_sword_swipe2);
-			} else if ((!up_pressed || !up_down || !up_stick_down) && (down_pressed || down_down || down_stick_down)){
-				set_attack( AT_DTILT );
-				hsp = 3 * spr_dir
-				sound_stop(sfx_krtd_sword_swipe2);
-			}
+		//
 		if (window_timer == 4){
 			sound_play(asset_get("sfx_jumpground"));
 			hsp += 6 * spr_dir
 		}
+	}
+	if (window == 3 || window == 6 || window == 9){
+		if (did_swap_inputs == true){
+			did_swap_inputs = false;
+		}
+	}
+	
+	if (window < 9){//>
+		was_parried = false;
 	}
 }
 
@@ -822,7 +817,7 @@ if (attack == AT_USPECIAL){
 		if (place_meeting(x + 6 * spr_dir, y, asset_get("par_block"))){
 			sound_play(landing_lag_sound);
 			set_state(PS_IDLE_AIR);
-			spawn_base_dust(x+(26*spr_dir), y, "walljump", spr_dir * -1);
+			spawn_base_dust(x+(24*spr_dir), y, "walljump", spr_dir * -1);
 			move_cooldown[AT_USPECIAL] = 9999999;
 			hsp = -4 * spr_dir
 			vsp = -8

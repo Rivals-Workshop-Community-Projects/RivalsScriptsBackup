@@ -1,393 +1,212 @@
-//user event 13 - hit player but for stages
+//user_event 13
 
-////////////////////////////////////////////////////////MANA MECHANIC SECTION////////////////////////////////////////////////////////
 
-if (mpGainable)
+//mana
+if (mp_gainable)
 {
-	if (my_hitboxID.damage * 0.6 >= 1) mp_current += round(my_hitboxID.damage * 0.6);
-	else if (my_hitboxID.damage * 0.6 < 1) mp_current += 1;
-	else if (attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_USTRONG) mp_current += round(my_hitboxID.damage * 0.75);
-
-	if (mp_current >= mp_max && !has_rune("K")) mp_current = mp_max;
-	else if (mp_current >= runeK_mp_max && has_rune("K")) mp_current = runeK_mp_max;
-	
-	mp_gain_hit = round(my_hitboxID.damage * 0.6); //stat debug thing
+    mp_current += (my_hitboxID.damage * 0.6 < 1) ? 1 : round(my_hitboxID.damage * 0.6);
+    if (!playtesting && my_hitboxID.damage > 0) mp_mini_timer = mp_mini_timer_set;
 }
 
-//show mini MP gauge
-if ((mpGainable || burningfury_active) && show_player_info)
+//hit mechanics
+if (holyburn_active) HolyBurn();
+if (lightstun_active)
 {
-	show_miniMP = true;
-	miniMP_time = miniMP_attack;
-	miniMP_alpha = 1;
-}
-
-////////////////////////////////////////////////////////HOLY BURNING SECTION////////////////////////////////////////////////////////
-
-//NORMALS don't disable burning fury, and they take down mana when hitting with it on
-//STRONGS, like specials do disable it
-//SKILLS disable burning fury
-if (burningfury_active) //these moves apply holy burning only if burning fury is active
-{
-	switch (my_hitboxID.attack)
-	{
-		case AT_JAB:
-			if (my_hitboxID.hbox_num == 2)
-			{
-				ManaBurn();
-				HolyBurn();
-			}
-			break;
-
-		case AT_UTILT: case AT_FAIR: case AT_DAIR:
-			ManaBurn();
-			HolyBurn();
-			break;
-
-		case AT_TAUNT:
-			HolyBurn();
-			break;
-
-		case AT_FSTRONG:
-			ManaBurn();
-			HolyBurn();
-			break;
-
-		case AT_USTRONG:
-			if (my_hitboxID.hbox_num != 4)
-			{
-				ManaBurn();
-				HolyBurn();
-			}
-			break;
-
-		case AT_EXTRA_1: //chasm burster (punch)
-			if (my_hitboxID.hbox_num == 3)
-			{
-				ManaBurn();
-				HolyBurn();
-			}
-			break;
-		case 39: //flashbang
-			if (my_hitboxID.hbox_num == 2) HolyBurn();
-			break;
-		case AT_FSTRONG_2: //theikos F-strong
-			HolyBurn();
-			break;
-	}
-}
-switch (my_hitboxID.attack) //these moves apply holy burn regardless if burning fury is on or not
-{
-	case AT_DSTRONG:
-		if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3)
-		{
-			ManaBurn();
-			HolyBurn();
-		}
-		break;
-
-	case AT_NTHROW: case AT_NSPECIAL_AIR: //light dagger
-		if (my_hitboxID.hbox_num == 3) HolyBurn();
-		break;
-	case AT_FTHROW: case AT_FSPECIAL_AIR: //burning fury
-		if (my_hitboxID.hbox_num < 4) HolyBurn();
-		break;
-
-	case AT_UTHROW: //force leap
-		if (my_hitboxID.hbox_num > 1) HolyBurn();
-		break;
-
-	case AT_EXTRA_1: //chasm burster
-		if (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 4) HolyBurn();
-		break;
-
-	case AT_FSPECIAL_2: //power smash
-		if (my_hitboxID.hbox_num > 1 && my_hitboxID.hbox_num != 4) HolyBurn();
-		break;
-
-	case AT_DSPECIAL_2: //ember fist
-		if (my_hitboxID.hbox_num < 4) HolyBurn();
-		break;
-
-	case AT_EXTRA_2: //light hookshot
-		if (my_hitboxID.hbox_num == 2) HolyBurn();
-		break;
-	case AT_EXTRA_3: //searing descent
-		HolyBurn();
-		break;
-	case AT_DSTRONG_2:
-		HolyBurn();
-		break;
-}
-
-//strongs deactivate burning fury's buff only on hit
-//it's done on update.gml
-
-////////////////////////////////////////////////////////RUNES SECTION////////////////////////////////////////////////////////
-
-if ((has_rune("G") || fuck_you_cheapies && theikos_active) && state_cat != SC_HITSTUN) //warping light spears
-{
-	last_attack_hit = attack;
-	
-	switch (attack)
+    if (lightstun_last_attack != my_hitboxID.attack) LightStun();
+    else if (my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_USTRONG_2) //exceptions
     {
-		case AT_USTRONG:
-			if (my_hitboxID.hbox_num == 4 && !has_rune("H"))
-			{
-				AccelBlitzEffect();
-				
-				x = my_hitboxID.proj_x;
-				y = my_hitboxID.proj_y;
-				runeG_blitzjump = true;
+        if (lightstun_last_hbox != my_hitboxID.hbox_num) LightStun();
+    }
 
-				state = PS_ATTACK_AIR;
-				attack = AT_SKILL4;
-				window = 4;
-				window_timer = 0;
-			}
-			break;	
-		case AT_NTHROW: case AT_NSPECIAL_AIR:
-			if (my_hitboxID.hbox_num < 3)
-			{
-				AccelBlitzEffect();
-				
-				x = my_hitboxID.proj_x;
-				y = my_hitboxID.proj_y;
-				runeG_blitzjump = true;
-
-				state = PS_ATTACK_AIR;
-				attack = AT_SKILL4;
-				window = 4;
-				window_timer = 0;
-			}
-			break;
-		case AT_EXTRA_2:
-			if (my_hitboxID.hbox_num == 1)
-			{
-				AccelBlitzEffect();
-
-				x = my_hitboxID.proj_x;
-				y = my_hitboxID.proj_y;
-				runeG_blitzjump = true;
-
-				state = PS_ATTACK_AIR;
-				attack = AT_SKILL4;
-				window = 4;
-				window_timer = 0;
-
-				with (obj_article1)
-            	{
-                	particletime = 41;
-            	}
-			}
-			break;
-	}
+    lightstun_last_attack = my_hitboxID.attack;
+    lightstun_last_hbox = my_hitboxID.hbox_num;
+    lightstun_last_attack_timer = 120;
 }
 
-if (has_rune("H")) //U-strong hookshot
+//burning fury buff
+if (burnbuff_active)
 {
-	if (attack == AT_USTRONG && my_hitboxID.hbox_num == 4)
-	{
-		runeH_target = hit_player_obj;
-	}
-}
-
-if (lightstun_mechanic_active) //light spark
-{
-	//moves that use the mechanic
-	switch (my_hitboxID.attack)
-	{
-		//burning light dagger doesn't use it
-		case AT_NTHROW: case AT_NSPECIAL_AIR:
-			if (my_hitboxID.hbox_num < 3) ApplySpark();
-			break;
-		//photon blast, accel blitz, guard aura and theikos U-strong all apply the mechanic
-		case AT_DTHROW: case AT_NSPECIAL_2: case AT_USPECIAL_2: case AT_USTRONG_2:
-			ApplySpark();
-			break;
-
-		//normal burning U-strong doesn't use it
-		case AT_USTRONG:
-			if (!burningfury_active && my_hitboxID.hbox_num < 5) ApplySpark();
-			break;
-
-		//burning light hookshot also doesn't
-		case AT_EXTRA_2:
-			if (my_hitboxID.hbox_num == 1) ApplySpark();
-			break;
-		//flashbang applies a spark on a successful grab only
-		case 39:
-			if (my_hitboxID.hbox_num == 2 && !burningfury_active) ApplySpark();
-			break;
-		//only applies to the light attack Fstrong rune
-		case AT_FSTRONG:
-			if (has_rune("C") && !burningfury_active) ApplySpark();
-			break;
-	}
-
-	//lightstunner hit
-	if (my_hitboxID.attack == 48)
-	{
-		hit_player_obj.lightstun_timer = 120;
-        hit_player_obj.lightstun = true;
-
-		if (hit_player_obj == self) lightstun_parried = false; //getting hit by it will disable the lightstun_parried
-	}
-
-	//light stun cancelling
-	if (hit_player_obj.lightstun)
-	{
-		switch (my_hitboxID.attack)
-		{
-			//light cancelling attacks
-			//if anyone is hit while being lightstunned it takes them out of lightstun, and resets the stun timer
-			//unlike holy burning, the timer for a spark doesn't reset
-			case AT_JAB: case AT_DATTACK: case AT_UTILT: case AT_FTILT: case AT_DTILT: case AT_NAIR: case AT_UAIR: case AT_FAIR: case AT_DAIR: case AT_BAIR:
-			case AT_FSTRONG_2: case AT_DSTRONG: case AT_DSTRONG_2: case AT_FTHROW: case AT_FSPECIAL_AIR: case AT_UTHROW:
-			case AT_EXTRA_1: case AT_FSPECIAL_2: case AT_DSPECIAL_2: case AT_EXTRA_3:
-				LightstunCancel();
-				break;
-			case AT_NTHROW: case AT_NSPECIAL_AIR:
-				if (my_hitboxID.hbox_num == 3) LightstunCancel();
-				break;
-			case AT_USTRONG: 
-				if (burningfury_active || my_hitboxID.hbox_num == 5) LightstunCancel();
-				break;
-			case AT_EXTRA_2: //the burning version cancels lightstunning
-				if (my_hitboxID.hbox_num == 2) LightstunCancel();
-				break;
-			case 39: //flashbang cancels lightstunning if it's the burning fury version
-				if (my_hitboxID.hbox_num == 2 && burningfury_active) LightstunCancel();
-				break;
-			case AT_FSTRONG:
-				if (!has_rune("C") || burningfury_active) LightstunCancel();
-				break;
-		}
-	}
-}
-
-if (has_rune("O")) //OVERDRIVE attack
-{
-	if (od_gainable) 
-	{
-		if (my_hitboxID.damage * 0.4 >= 1) od_current += round(my_hitboxID.damage * 0.4);
-		else if (my_hitboxID.damage * 0.4 < 1) od_current += 1;
-	}
-
-	if (od_current >= od_max) od_current = od_max;
-	else if (od_current < od_max && !godpower) gauge_OD_timer_active = true;
-}
-
-////////////////////////////////////////////////////////MISC SECTION////////////////////////////////////////////////////////
-
-//lord's blessing buff damage increase
-if (godpower) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * god_damage));
-if (theikos_active) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * theikosAttack));
-
-//ustrong targeting
-if(attack == AT_USTRONG and window < 7)
-{
-	tracking_target = hit_player_obj; //sets tracking for ustrong proj
-}
-
-if (my_hitboxID.attack == AT_DSTRONG_2) //when the fireball of theikos D-strong hits a player
-{
-	if (my_hitboxID.hbox_num == 1)
+    switch (attack)
     {
-        var hit_collision = create_hitbox(AT_DSTRONG_2, 2, hit_player_obj.x, hit_player_obj.y-32);
-		hit_collision.fx_particles = 2;
-        if (user_event_1_active) hit_collision.fx_particles = 6;
-		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-32, fx_fireblow3);
-        sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
+        case AT_JAB:
+            if (my_hitboxID.hbox_num == 2) ManaBurn();
+            break;
+        case AT_UTILT: case AT_FAIR: case AT_DAIR: case AT_USTRONG: case AT_FSTRONG:  case AT_DSTRONG:  case AT_TAUNT:
+            ManaBurn();
+            break;
     }
 }
 
-//burning fury, searing descent and flashbang all have grab properties
-//make sure the opponent is actually grabable by making sure they are in hitstun
-if (hit_player_obj.state_cat == SC_HITSTUN)
+//other hitbox logic
+switch (my_hitboxID.attack)
 {
-	if ((attack == AT_SKILL1 || attack == AT_SKILL1_AIR) && my_hitboxID.hbox_num == 2) burningfury_target = hit_player_obj;
-	if (attack == AT_SKILL10 && my_hitboxID.hbox_num < 4) searingdescent_id = hit_player_obj;
-	if (attack == AT_SKILL11 && my_hitboxID.hbox_num == 1) flashbanged_id = hit_player_obj;
+    case AT_USTRONG:
+        if (my_hitboxID.hbox_num <= 3) //bar_tracking_id setup
+        {
+            bar_tracking_id = hit_player_obj;
+        }
+        if (my_hitboxID.hbox_num == 4)
+        {
+            do_rune_warp(); //rune warp
+            if (has_rune("H"))
+            {
+                rune_H_drag_id = hit_player_obj;
+                bar_grab_time = 0;
+                hook_proj[0] = rune_H_drag_id.x;
+                hook_proj[1] = rune_H_drag_id.y;
+
+                with (obj_article1) if (player_id == other.id && state == "hook_chain")
+                {
+                    window = 3;
+                    window_timer = 0;
+                }
+            }
+        }
+        break;
+    case AT_NTHROW: case AT_NSPECIAL_AIR: case AT_EXTRA_2:
+        if (my_hitboxID.hbox_num == 1) do_rune_warp(); //rune warp
+        break;
+    //bar_grabbed_id setup
+    case AT_FTHROW: case AT_FSPECIAL_AIR:
+        if (my_hitboxID.hbox_num == 2) 
+        {
+            bar_grabbed_id = hit_player_obj;
+            bar_grab_time = 0;
+        }
+        break;
+    case AT_EXTRA_3:
+        if (my_hitboxID.hbox_num < 4)
+        {
+            bar_grabbed_id = hit_player_obj;
+            bar_grab_time = 0;
+        }
+        break;
+    case 39:
+        if (my_hitboxID.hbox_num == 1)
+        {
+            bar_grabbed_id = hit_player_obj;
+            bar_grab_time = 0;
+        }
+        break;
+    /////////////
+    case AT_DSTRONG_2:
+        if (my_hitboxID.hbox_num == 1)
+        {
+            var hit_collision = create_hitbox(AT_DSTRONG_2, 2, hit_player_obj.x, hit_player_obj.y-32);
+		    hit_collision.fx_particles = 2;
+
+		    spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-32, fx_fireblow[2]);
+            sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
+        }
+        break;
 }
 
-
-if (polaris_active && !was_parried && homing_cooldown <= -1)
+//polaris logic
+if (lightbuff_active && !was_parried && homing_cooldown <= -1)
 {
-	if (my_hitboxID.attack == AT_SKILL7 && my_hitboxID.hbox_num == 1) homing_target_id = noone;
-	else homing_target_id = hit_player_obj;
+    //who to track
+	if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1) polaris_id = noone;
+	else polaris_id = hit_player_obj;
 	
-	//prevents it from spawning on some attacks
-	if (my_hitboxID.attack != AT_SKILL7 && my_hitboxID.attack != 48
-	&& (attack != AT_SKILL11 || attack == AT_SKILL11 && my_hitboxID.hbox_num != 1)
-	&& !already_shot && homing_target_id != self)
+	//prevents it from spawning on some attacks and conditions
+	if (my_hitboxID.attack != skill[7].skill_attack && my_hitboxID.attack != 48
+	&& (attack != skill[11].skill_attack || attack == skill[11].skill_attack && my_hitboxID.hbox_num != 1)
+	&& !polaris_shot && polaris_id != self)
 	{
-		already_shot = true;
+		polaris_shot = true;
 		homing_cooldown = 20; //internal cooldown
-		if (x > hit_player_obj.x) create_hitbox(AT_SKILL7, 1, x+64, y-48);
-		else create_hitbox(AT_SKILL7, 1, x-64, y-48);
+		if (x > hit_player_obj.x) create_hitbox(skill[7].skill_attack, 1, x+64, y-48);
+		else create_hitbox(skill[7].skill_attack, 1, x-64, y-48);
 		ManaBurn();
 	}
 }
-if (my_hitboxID.attack == AT_SKILL7 && my_hitboxID.hbox_num == 1) sound_play(asset_get("sfx_holy_lightning"));
+if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1) sound_play(asset_get("sfx_holy_lightning"));
 
 
-//reset bar's accel blitz if he hits someone with a move
-//not including accel blitz itself
-if (attack != AT_SKILL4)
+//overdrive
+if (can_overdrive && od_cast == 0) || ("fs_char_initialized" in self && fs_char_initialized)
 {
-	accelblitz_active = false;
-    accelblitz_active_timer = false;
-    accelblitz_done_once = false;
-    accelblitz_post_timer = 0;
+    od_color_time = 10;
+    od_current += (my_hitboxID.damage * 0.4 < 1) ? 1 : floor(my_hitboxID.damage * 0.4);
 }
 
-//if bar hits an enemy he will pull
-//but he won't get a free pull if it's himself
-if (my_hitboxID.attack == AT_SKILL9 && my_hitboxID.hbox_num == 1 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
-&& hit_player_obj != self && !has_rune("G") && (!fuck_you_cheapies || fuck_you_cheapies && !theikos_active)) hookshot_speedboost = true;
+if (od_cast == 3) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * (godbuff_mult-1) ));
+if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * (theikos_mult+theikos_type-1)));
 
 
-
-#define ManaBurn()
+#define ManaBurn
 {
-	if (!has_rune("K") && !theikos_active && "phone_cheats" in self && phone_cheats[CHEAT_MPDRAIN] == 0) mp_current -= round(my_hitboxID.damage / 2);
+	//if (!has_rune("K") && !theikos_active) mp_current -= round(my_hitboxID.damage / 2);
+    if (!infinite_mp_mode) mp_current -= round(my_hitboxID.damage / 2);
 }
-#define HolyBurn()
+#define HolyBurn
 {
-	hit_player_obj.holyburning = player; // unique burning id to know who burnt the opponent
-	hit_player_obj.holyburn_counter = 0;
-	hit_player_obj.holy_burned_by = self;
-}
-#define ApplySpark()
-{
-	with (hit_player_obj)
+	if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[3]) with (hit_player_obj)
 	{
-		if (!lightstun_pre_stun && !lightstun)
-		{
-			lightstun_pre_stun = true;
-			lightstun_timer = 300;
-			with (other) if (attack != AT_USTRONG) lightstun_has_hit = true;
-		}
-		else if (lightstun_pre_stun && !lightstun && !other.lightstun_has_hit)
-		{
-			lightstun = true;
-			lightstun_timer = 120;
-		}
+		holyburning = true;
+        holyburner_id = other;
+		holyburn_timer = other.holyburn_timer_set;
+        outline_color = other.line_color;
 	}
 }
-#define LightstunCancel()
+#define LightStun
 {
-	with (hit_player_obj)
-	{
-		lightstun = false;
-		lightstun_timer = 0;
-	}
+    if (lightstun_active)
+    {
+        //check light based hitboxes
+        if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[2])
+        {
+            with (hit_player_obj)
+            {
+                //timers setup
+                //the lightstunner hit will always make the foe freeze
+                if (lightstun_type == 0) lightstun_timer = other.lightstun_pre_set;
+                else if (lightstun_type == 1 || other.my_hitboxID.attack == 48)
+                {
+                    lightstun_timer = other.lightstun_active_set;
+                    with (other)
+                    {
+                        var hitfx = spawn_hit_fx(other.x, other.y-other.char_height/2-4, fx_lightblow[2]);
+                        hitfx.depth = other.depth-1;
+                    }
+                    sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+                }
+
+                //change the type on hit, but only after it updates the timer
+                if (lightstun_type < 2) lightstun_type ++;
+            }
+        }
+        else
+        {
+            //on the frozen state, using any hitbox that isn't the light based hitboxes will kick the enemy out of the frozen state
+            if (hit_player_obj.lightstun_type == 2)
+            {
+                hit_player_obj.lightstun_type = 0;
+                hit_player_obj.lightstun_timer = 0;
+            }
+        }
+    }
 }
-#define AccelBlitzEffect()
+
+#define do_rune_warp
 {
-	var fx_accelbitz_blast = spawn_hit_fx(x, y-32, fx_accelblitz);
-    fx_accelbitz_blast.depth = -6;
-    var random_angle = random_func(18, 60, true)-30;
-    fx_accelbitz_blast.draw_angle = random_angle;
+    if (rune_G_active && !burnbuff_active)
+    {
+        if (instance_exists(hook_chain_artc)) instance_destroy(hook_chain_artc);
+
+        var fx_warp = spawn_hit_fx(x, y-32, fx_skill6);
+        fx_warp.draw_angle = random_func(18, 60, true)-30;
+        fx_warp.depth = depth-1;
+
+        x = my_hitboxID.x;
+        y = my_hitboxID.y;
+
+        fx_warp = spawn_hit_fx(x, y-32, fx_skill6);
+        fx_warp.draw_angle = random_func(19, 60, true)-30;
+        fx_warp.depth = depth-1;
+
+        vsp = -9;
+        rune_G_warp_lag = 10;
+        set_state(PS_IDLE_AIR);
+    }
 }

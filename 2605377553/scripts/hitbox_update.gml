@@ -6,6 +6,9 @@ if attack == AT_NSPECIAL
 {
 	if hbox_num == 1
 	{
+		//particools
+		fx_particles = 3;
+		
 		//Adjust Radius
 		var detectRadius = 100;
 	
@@ -17,8 +20,8 @@ if attack == AT_NSPECIAL
 		
 		//hit fx
 		var leeway = 4;
-		var mx = -leeway + random_func_2((x+y)%200,leeway*2,true);
-		var my = -leeway + random_func_2((x*y)%200,leeway*2,true);
+		var mx = -leeway + random_func_2(abs((x+y)%200),leeway*2,true);
+		var my = -leeway + random_func_2(abs((x*y)%200),leeway*2,true);
 		spawn_hit_fx( x+mx, y+my, player_id.nspecEffect);
 		
 		//calculate trajectory
@@ -74,6 +77,9 @@ if attack == AT_NSPECIAL
 	}
 	else if hbox_num == 2
 	{
+		//particools
+		fx_particles = 1;
+		
 		image_index += 0.2;
 		if image_index > image_number-1
 			destroyed = true;

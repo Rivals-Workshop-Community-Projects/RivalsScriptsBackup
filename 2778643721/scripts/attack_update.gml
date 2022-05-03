@@ -448,6 +448,7 @@ if (attack == AT_DSTRONG){
 		if (window_timer == 18){
 			sound_play(sound_get("sfx_hammer"));
 			sound_play(asset_get("sfx_shovel_hit_heavy2"));
+			shake_camera( 16, 16 );
 		}
 	}
 	if (window == 3 && window_timer == 1){

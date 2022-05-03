@@ -1,3 +1,10 @@
+//CSS SFX
+var charuuid = string(sprite_get("idle"));
+	if ("css_char" not in self || css_char != charuuid) {
+        css_char = charuuid;
+        sound_play(sound_get("bite"));
+    }
+    
 // Lukaru's css_draw
 
 var temp_x = x + 8;

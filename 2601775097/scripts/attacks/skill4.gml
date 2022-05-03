@@ -1,98 +1,126 @@
-// [4] ACCEL BLITZ
-atk = AT_NSPECIAL_2;
+// [4] FLASHBANG
+var atk = 39;
 
 set_attack_value(atk, AG_CATEGORY, 2);
-set_attack_value(atk, AG_OFF_LEDGE, 1);
-set_attack_value(atk, AG_SPRITE, sprite_get("accelblitz"));
-set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("accelblitz_hurt"));
-set_attack_value(atk, AG_NUM_WINDOWS, 5); //teleport = 5 windows
-set_attack_value(atk, AG_USES_CUSTOM_GRAVITY, 1);
+set_attack_value(atk, AG_SPRITE, sprite_get("skill4"));
+set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("skill4_hurt"));
+set_attack_value(atk, AG_AIR_SPRITE, sprite_get("skill4_air"));
+set_attack_value(atk, AG_HURTBOX_AIR_SPRITE, sprite_get("skill4_air_hurt"));
+set_attack_value(atk, AG_NUM_WINDOWS, 7);
 
-windowNum = 1; //windup
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 8); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED, 0);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
+var quit_atk = get_attack_value(atk, AG_NUM_WINDOWS) + 1;
 
-windowNum ++; //hold
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 20); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 1); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 0.25);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
+var window_num = 1; //windup 1
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
+set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 8);
 
-windowNum ++; //movement buffer (3)
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 5); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 2); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 2);
-//set_window_value(atk, windowNum, AG_WINDOW_VSPEED, 0);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 2);
-//set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
+window_num ++; //grab
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 
-windowNum ++; //casting
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 2); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 2); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED, 0);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
+window_num ++; //grab fail
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12); //i'm counting the whifflag here too cuz this is whiffed anyways
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(atk, window_num, AG_WINDOW_GOTO, quit_atk);
 
-windowNum ++; //casting end
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1); // teleport = 7
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 10); //controls speed
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
-set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 3); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_HAS_WHIFFLAG, 1);
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED, 0);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
+//GRAB SUCCESS (windows 4 - 7)
 
-set_num_hitboxes(atk, 2)
+window_num ++; //rotation
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
 
-hitboxNum = 1; //accel blitz activate
-set_hitbox_value(atk, hitboxNum, HG_PARENT_HITBOX, 1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 3); //teleport = window 3
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 1); //hitbox duration in frames
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -32);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 60);
-set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 60);
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 4); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 4);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.1);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.8);
-set_hitbox_value(atk, hitboxNum, HG_EXTRA_HITPAUSE, 5);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_lightblow1);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_holy_lightning"));
-set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 3);
+window_num ++; //windup
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 5);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 
-hitboxNum ++; //accel blitz deactivate
-set_hitbox_value(atk, hitboxNum, HG_PARENT_HITBOX, 1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 4);
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 1); //hitbox duration in frames
-//set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -32);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 3);
+window_num ++; //flash
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[4].mp_cost1);
 
+window_num ++; //endlag - knockback
+set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 13);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(atk, window_num, AG_WINDOW_VSPEED, -10);
 
-//munophone
-if (!get_match_setting(SET_PRACTICE)) exit;
-set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "10 MP
-Getting hit while Bar is moving will stun him for 30 frames");
+set_num_hitboxes(atk, 2);
+
+var hitbox_num = 1; //grab
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 36);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -34);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 40);//40
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40); //40
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 361);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 0.1);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(atk, hitbox_num, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+
+hitbox_num ++; //flashbang
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 0);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1)
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 6);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -32);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -16);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 64);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 260);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 3);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.7);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_lightblow[1]);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 32);
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
+
+hitbox_num ++; //flashbang - burning ver
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, hitbox_num);
+set_hitbox_value(atk, hitbox_num, HG_WINDOW, 0);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1)
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4);
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 6);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -32);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -16);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 64);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 230);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 6);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5.5);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[1]);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 32);
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);

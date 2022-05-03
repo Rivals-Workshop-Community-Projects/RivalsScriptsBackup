@@ -1,5 +1,6 @@
 //
-if(avocado){
+if(get_player_color(player) = 13){
+    if(avocado){
     snd_rng = random_func(0, 3, true);
     if(snd_rng = 0){
         sound_play(sound_get("sfx_death1"));
@@ -7,6 +8,7 @@ if(avocado){
         sound_play(sound_get("sfx_death2"));
     }if(snd_rng = 2){
         sound_play(sound_get("sfx_death3"));
+        }
     }
 }
 

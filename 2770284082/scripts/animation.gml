@@ -14,7 +14,6 @@ if state == PS_RESPAWN {
     }
     
       if state_timer == 90 - 15*6 + 9*6 {
-      shake_camera(6,6)
       sound_stop(asset_get("sfx_ori_energyhit_medium"))
       sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,.6)
       }
@@ -48,7 +47,6 @@ if get_gameplay_time() < 15*6 {
     }
     
     if get_gameplay_time() == 9*6 {
-        shake_camera(6,6)
         sound_stop(asset_get("sfx_ori_energyhit_medium"))
         sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,.6)
     }

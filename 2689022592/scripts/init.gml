@@ -22,6 +22,7 @@ jabgrab = false
 boi = false
 reset = false 
 targeting = false 
+jrefund = 0
 
 char_height = 50.69;
 idle_anim_speed = .15;
@@ -53,17 +54,17 @@ air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .6; //multiplier of air_accel while in pratfall
-air_friction = .02;
+air_friction = .04;
 max_djumps = 1;
 double_jump_time = 40; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
-walljump_vsp = 8;
+walljump_vsp = 10;
 walljump_time = 20;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .6;
 hitstun_grav = .5;
-knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 18;

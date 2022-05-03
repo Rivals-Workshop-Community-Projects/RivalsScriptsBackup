@@ -49,6 +49,7 @@ draw_debug_text(temp_x + 200, temp_y - 32, string(gumbo_scalding));
 draw_debug_text(temp_x + 100, temp_y - 32, string(gumbo_scalding_timer));
 draw_debug_text(temp_x + 200, temp_y - 52, string(gumbo_is_scalding));
 draw_debug_text(temp_x + 100, temp_y - 52, string(is_scalding));
+draw_debug_text(temp_x + 100, temp_y - 52, string(hit_player_obj.other_scalding_timer));
 */
 
 // MunoPhone Touch code - don't touch

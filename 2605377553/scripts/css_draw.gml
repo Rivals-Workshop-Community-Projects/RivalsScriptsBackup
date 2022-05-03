@@ -113,9 +113,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[11,0] = make_color_rgb(133, 205, 194)
     ce[11,1] = "World is Yours"
     ce[11,2] = "Based on the vocaloid Hatsune Miku. "    
-    ce[12,0] = make_color_rgb(133, 36, 107)
-    ce[12,1] = "Dark Knight"
-    ce[12,2] = "The power of mean girls. Based on Susie from DELTARUNE."
+    ce[12,0] = make_color_rgb(184, 149, 224)
+    ce[12,1] = "Blight"
+    ce[12,2] = "gay people install. Based on Amity from The Owl House."
     ce[13,0] = make_color_rgb(108, 239, 179)
     ce[13,1] = "Go Fish"
     ce[13,2] = "Based on Macka, original character by Sunfished."
@@ -140,9 +140,10 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[20,0] = make_color_rgb(252, 255, 255)
     ce[20,1] = "Ghost"
     ce[20,2] = "An original color. A white spectre."  
-    ce[21,0] = make_color_rgb(255, 13, 241)
+    ce[21,0] = make_color_rgb(255, 0, 0)
     ce[21,1] = "Canada??"
-    ce[21,2] = "Thought it would be kinda funny. Mal is canadian."      
+    ce[21,2] = "Thought it would be kinda funny. Mal is canadian."    
+
 
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

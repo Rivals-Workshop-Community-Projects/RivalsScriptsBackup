@@ -1,5 +1,8 @@
 debug = 0;
 
+inputs_swapped_toggle = false;
+did_swap_inputs = false;
+
 voiced = 0
 voiced_in_vs = false
 normal_voiced_toggle = 0
@@ -10,7 +13,7 @@ dtilt_swipe_fx = hit_fx_create(sprite_get("dtilt_swipe_fx"), 12);
 
 land_index_thingy = 0;
 
-wings_out = false
+wings_out = false;
 wing_jump_timer = 0
 
 mach_tornado_max_loops = 5;

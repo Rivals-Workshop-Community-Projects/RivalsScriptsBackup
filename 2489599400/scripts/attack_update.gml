@@ -10,6 +10,7 @@ if(attack == AT_JAB && was_parried){
     was_parried = false;
 }
 
+/*
 //dtilt stuff
 if attack == AT_DTILT {
 	if window == 1 && window_timer == 5 && special_down && 5 > tapes && tapecool == 0 {
@@ -37,6 +38,7 @@ if attack == AT_DTILT {
 		}
 	}
 }
+*/
 
 //Taunt stuff
 if(attack == AT_TAUNT){

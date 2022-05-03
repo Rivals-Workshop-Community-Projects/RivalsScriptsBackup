@@ -1,286 +1,133 @@
 //draw_hud
 
 // skill select menu
-if !("menu_open" in self) exit;
+if !("char_height" in self) exit;
 
-if (menu_open && (!is_AI || is_AI && AI_vs))
+
+if (menu_active)                    //skill select
 {
-    //The Menu(tm)
-    if(menu_timer <= 120){
-        draw_sprite_ext(hud_menu, 0, temp_x - 8, temp_y - 128, 2, 2, 0, c_white, 1);
-
-        if (menu_armor_time >= 0 && active_col >= 0)
-        {
-            var timer_x_offset = temp_x + 36;
-            draw_debug_text(timer_x_offset, temp_y - 140, "Invince Time = " + string(menu_armor_time/60));
-            if (menu_armor_time % 60 == 0) draw_debug_text(timer_x_offset + 118, temp_y - 140, ".00"); //yeah. i'm drawing it seperately.
-        }
-
-        var menuy = -124;
-        var i;
-        var k = 0;
-        for(var menux = 38; menux <= 178; menux += 38){
-            menuy = -130;
-            switch (menux)
-            {
-                case 38:
-                    i = 0;
-                    break;
-                case 76:
-                    i = 1;
-                    break;
-                case 114:
-                    i = 2;
-                    break;
-                case 152:
-                    i = 3;
-                    break;
-            }
-            for (var j = 0; j < 3; j ++)
-            {
-                if (specs_chosen[i, j] == true)
-                {
-                    draw_sprite_ext(sprite_get("skillicons"), i + (j*4), temp_x + menux, temp_y + 46 + menuy, 2, 2, 0, c_white, 1);
-                }
-                else
-                {
-                    draw_sprite_ext(sprite_get("skillicons_disabled"), i + (j*4), temp_x + menux, temp_y + 46 + menuy, 2, 2, 0, c_white, 1);
-                }
-                menuy += 32;
-            }
-        }
-
-        //indicator arrows
-        if (arrow_anim_up) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x, temp_y - 52, 2, 2, 90, c_white, 1);
-        if (arrow_anim_side) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x + 2, temp_y - 52, 2, 2, 0, c_white, 1);
-        if (arrow_anim_down) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x + 34, temp_y - 18, 2, 2, 270, c_white, 1);
-
-        //cursor placement
-        if(active_col >= 0 && active_col < 4)
-        {
-            draw_sprite_ext(sprite_get("skillselect_cursor"), (cursor_timer/3), temp_x + (38 * (active_col + 1)), temp_y - 84, 2, 2, 0, c_white, 1);
-        }
-
-        //text
-        switch (active_col)
-        {
-            case -1:
-                draw_debug_text(temp_x + 36, temp_y - 100, "Skill Select Cancelled");
-                break;
-            case 0:
-                draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "N-SPECIAL");
-                break;
-            case 1:
-                draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "F-SPECIAL");
-                break;
-            case 2:
-                draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "U-SPECIAL");
-                break;
-            case 3:
-                draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "D-SPECIAL");
-                break;
-            case 4:
-                draw_debug_text(temp_x + 42, temp_y - 100, "Selection Complete");
-                break;
-        }
-    }
+    menu_x = temp_x;
+    menu_y = temp_y;
+    user_event(1);
 }
-else if (!menu_open && "kart_inside" not in self)
+else                                //regular gameplay UI
 {
-    //MP gauge back
-    draw_sprite_ext(sprite_get("hud_mp"), 0, temp_x - 24, temp_y - 20, 2, 2, 0, c_white, 1);
-
-    //the actual MP gauge
-    if (mp_current > 0 && mp_current < 50) draw_sprite_ext(sprite_get("hud_mp_gauge"), floor(mp_current/1)-1, temp_x + 2, temp_y - 6, 2, 2, 0, gauge_color, 1);
-    else if (mp_current == 50) draw_sprite_ext(sprite_get("hud_mp_gauge"), 49, temp_x + 2, temp_y - 6, 2, 2, 0, gauge_color, 1);
-    else if (mp_current > 50 && mp_current < 100)
+    //MP gauge
+    if (mp_current <= 100) //normal version
     {
-        draw_sprite_ext(sprite_get("hud_mp_gauge"), 49, temp_x + 2, temp_y - 6, 2, 2, 0, gauge_color, 1); //part 1
-        draw_sprite_ext(sprite_get("hud_mp_gauge"), floor(mp_current/1)-1, temp_x + 102, temp_y - 6, 2, 2, 0, gauge_color, 1); //part 2
+        draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 2, temp_y - 6, 204, 6, $8b1733, 1); // background
+        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 0 + i*2, temp_y - 2 - i*2, floor(mp_current)*2 + 2, 2, mp_color, 1); // fill
     }
-    else if (mp_current >= 100)
+    else if (mp_current > 100) //double mana version
     {
-        draw_sprite_ext(sprite_get("hud_mp_gauge"), 49, temp_x + 2, temp_y - 6, 2, 2, 0, gauge_color, 1); //part 1
-        draw_sprite_ext(sprite_get("hud_mp_gauge"), 49, temp_x + 102, temp_y - 6, 2, 2, 0, gauge_color, 1); //part 2
+        draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 2, temp_y - 6, 204, 6, $e9973e, 1); // background
+        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, temp_x + 0 + i*2, temp_y - 2 - i*2, floor(mp_current-100)*2 + 2, 2, mp_color_ex, 1); // fill
     }
+    draw_sprite_ext(sprite_get("hud_mp"), 0, temp_x - 24, temp_y - 20, 2, 2, 0, c_white, 1); //frame
+    draw_debug_text(temp_x - 0, temp_y - 20, "MP " + (theikos_type == 2 ? "999999999" : string(floor(mp_current)) + "/100") ); //text
 
-    //layering gauge
-    if (mp_current > 100)
+    //skill info
+    for (var skill_slot = 0; skill_slot <= 3; ++skill_slot)
     {
-        if (mp_current > 100 && mp_current < 150) draw_sprite_ext(sprite_get("hud_mp_gauge"), floor(mp_current/1)-1, temp_x + 2, temp_y - 6, 2, 2, 0, gauge_EX_color, 1);
-        else if (mp_current == 150) draw_sprite_ext(sprite_get("hud_mp_gauge"), 49, temp_x + 2, temp_y - 6, 2, 2, 0, gauge_EX_color, 1);
-        else if (mp_current > 150 && mp_current < 200)
+        if (skill[cur_skills[skill_slot]].mp_use_cost <= mp_current)
         {
-            draw_sprite_ext(sprite_get("hud_mp_gauge"), 49, temp_x + 2, temp_y - 6, 2, 2, 0, gauge_EX_color, 1); //part 1
-            draw_sprite_ext(sprite_get("hud_mp_gauge"), floor(mp_current/1)-1, temp_x + 102, temp_y - 6, 2, 2, 0, gauge_EX_color, 1); //part 2
+            draw_sprite_ext(sprite_get("hud_skills"),
+            skill[cur_skills[skill_slot]].skill_id,
+            temp_x + skill[cur_skills[skill_slot]].skill_pos_x * 30 + 98,
+            temp_y - 40,
+            2, 2, 0, c_white, 1);
         }
-        else if (mp_current >= 200)
+        else
         {
-            draw_sprite_ext(sprite_get("hud_mp_gauge"), 49, temp_x + 2, temp_y - 6, 2, 2, 0, gauge_EX_color, 1); //part 1
-            draw_sprite_ext(sprite_get("hud_mp_gauge"), 49, temp_x + 102, temp_y - 6, 2, 2, 0, gauge_EX_color, 1); //part 2
+            draw_sprite_ext(sprite_get("hud_skills_disabled"),
+            skill[cur_skills[skill_slot]].skill_id,
+            temp_x + skill[cur_skills[skill_slot]].skill_pos_x * 30 + 98,
+            temp_y - 40,
+            2, 2, 0, c_white, 1);
         }
     }
+    draw_sprite_ext(sprite_get("hud_skills_inputs"), 0, temp_x + 96, temp_y - 20, 2, 2, 0, c_white, 1);
 
-    draw_debug_text(temp_x - 0, temp_y - 20, "MP " + string(floor(mp_current)) + "/100"); // + string(mp_max)
-
-    if (show_player_info) //for any instance that bar shouldn't see his skills and a buncha debug stuff
+    //overdrive gauge
+    if (can_overdrive || "fs_char_initialized" in self)
     {
-        //SKILL ICONS - MATCH
-        //this section is to show when the skill is able to be used
+        if ("fs_char_initialized" in self) var use_fs_hud = true;
 
-        //SKILL SLOT POSITIONS: (could be a switch statement?)
-        var nspecial = temp_x + 98
-        var fspecial = temp_x + 128
-        var uspecial = temp_x + 158
-        var dspecial = temp_x + 188
+        draw_sprite_ext(sprite_get(use_fs_hud ? "hud_fs" : "hud_od"), 0, temp_x-18+2*use_fs_hud, temp_y-14-4*use_fs_hud, 2, 2, 0, c_white, 1);
+        draw_sprite_stretched_ext(spr_pixel, 0, temp_x - 4, temp_y + 4, floor(od_current*1.96), 2, od_color, 1);
+        //rectDraw(temp_x - 4, temp_y + 4, floor(od_current*1.96)-1, 1, od_color);
 
-        /* 
-        THIS IS AN EXAMPLE CODE, IT NEEDS TO BE DONE FOR ALL 10 SKILLS! everything in [] is something that needs to be replaced
-        if ([AT_SKILLNAME]) {
-            if (mp_current < [skill_cost_to_initiate]) draw_sprite_ext(sprite_get("skillicons_disabled"), [skill number], [slot position X], temp_y - 40, 2, 2, 0, c_white, 1);
-            else if (mp_current >= [skill_cost_to_initiate]) draw_sprite_ext(sprite_get("skillicons"), [skill number], [slot position X], temp_y - 40, 2, 2, 0, c_white, 1);
-        }
-        */
-
-        //nspec hud
-        switch(specialnums[0]){
-            
-            //lightning dagger
-            case 0:
-                if (mp_current < lightdagger_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 0, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= lightdagger_cost) draw_sprite_ext(sprite_get("skillicons"), 0, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-            //flashbang
-            case 1:
-                if (mp_current < flashbang_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 4, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= flashbang_total_cost) draw_sprite_ext(sprite_get("skillicons"), 4, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-            //ember fist
-            case 2:
-                if (mp_current < emberfist_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 8, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= emberfist_cost) draw_sprite_ext(sprite_get("skillicons"), 8, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-        }
-        
-        //fspec hud
-        switch(specialnums[1]){
-            
-            //burning fury
-            case 0:
-                if (mp_current < buff_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 1, fspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= buff_total_cost) draw_sprite_ext(sprite_get("skillicons"), 1, fspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                if (burningfury_active)
-                {
-                    if (mp_current < burningfury_attack_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 1, fspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                    else if (mp_current >= burningfury_attack_cost) draw_sprite_ext(sprite_get("skillicons"), 1, fspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                }
-                break;
-            
-            //power smash
-            case 1:
-                if (mp_current < powersmash_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 5, fspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= powersmash_total_cost) draw_sprite_ext(sprite_get("skillicons"), 5, fspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-            //light hookshot
-            case 2:
-                if (mp_current < lighthookshot_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 9, fspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= lighthookshot_total_cost) draw_sprite_ext(sprite_get("skillicons"), 9, fspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-        }
-
-        //uspec hud
-        switch(specialnums[2]){
-            
-            //force leap
-            case 0:
-                if (mp_current < forceleap_activate_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 2, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= forceleap_activate_cost) draw_sprite_ext(sprite_get("skillicons"), 2, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-            //accel blitz
-            case 1:
-                if (mp_current < accelblitz_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 6, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= accelblitz_cost) draw_sprite_ext(sprite_get("skillicons"), 6, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-            //searing descent
-            case 2:
-                if (mp_current < searingdescent_activate_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 10, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= searingdescent_activate_cost) draw_sprite_ext(sprite_get("skillicons"), 10, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-        }
-        
-        //dspec hud
-        switch(specialnums[3]){
-            
-            //photon blast
-            case 0:
-                if (mp_current < photonblast_cost || photon_used) draw_sprite_ext(sprite_get("skillicons_disabled"), 3, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= photonblast_cost) draw_sprite_ext(sprite_get("skillicons"), 3, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-            //polaris
-            case 1:
-                if (mp_current < buff_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 7, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= buff_total_cost) draw_sprite_ext(sprite_get("skillicons"), 7, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                if (polaris_active)
-                {
-                    draw_sprite_ext(sprite_get("skillicons"), 7, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                }
-                break;
-            
-            //chasm burster
-            case 2:
-                if (mp_current < chasmburster_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 11, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= chasmburster_total_cost) draw_sprite_ext(sprite_get("skillicons"), 11, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                break;
-            
-        }
-
-        //this just draws the inputs for each skill
-        draw_sprite_ext(sprite_get("skillicons_inputs"), 0, temp_x + 96, temp_y - 20, 2, 2, 0, c_white, 1);
+        if (od_cast >= 1) draw_sprite_ext(sprite_get(use_fs_hud ? "hud_fs_ball" : "hud_od_star"), 0, temp_x+194+8*use_fs_hud, temp_y-10-8*use_fs_hud, 2, 2, 0, od_color, 1);
     }
 
-    if (get_match_setting(SET_PRACTICE)) if (msg_menu) draw_debug_text(temp_x + 14, temp_y - 56, "UP + TAUNT = Skill Select");
-
-    if (fuck_you_cheapies && theikos_active) draw_debug_text(temp_x - 10, temp_y - 96, "
+    if (theikos_type == 2) draw_debug_text(temp_x-10, temp_y-96-36*training, "
     You're gonna have to try
     a little harder than THAT.");
+}
 
-    //OD gauge
-    if (has_rune("O"))
+if (training)                       //training mode messages
+{
+    if (!menu_active && !is_cpu)
     {
-        draw_sprite_ext(sprite_get("hud_od"), 0, temp_x - 18, temp_y - 14, 2, 2, 0, c_white, 1);
-
-        if (has_rune("L") && godpower) rectDraw(temp_x - 4, temp_y + 6, temp_x + ceil((od_current)*1.96)-5, temp_y + 3, gauge_OD_color)
-        else rectDraw(temp_x - 4, temp_y + 6, temp_x + ceil(od_current*1.96)-5, temp_y + 3, gauge_OD_color)
-
-        if (godpower || od_current >= od_max) draw_sprite_ext(sprite_get("hud_od_star"), 0, temp_x + 194, temp_y - 10, 2, 2, 0, gauge_OD_color, 1);
-    }
-    else if ("fs_char_initialized" in self && fs_char_initialized && !has_rune("O"))
-    {
-        draw_sprite_ext(sprite_get("hud_fs"), 0, temp_x - 16, temp_y - 18, 2, 2, 0, c_white, 1);
-        
-        rectDraw(temp_x + 2, temp_y + 6, temp_x + ceil((fs_charge/2)*1.96)+1, temp_y + 3, charge_color);
-
-        if (fs_charge >= 200) draw_sprite_ext(sprite_get("hud_fs_ball"), 0, temp_x + 202, temp_y - 18, 2, 2, 0, charge_color, 1);
+        if (!is_practice_menu) draw_debug_text(temp_x + 14, temp_y - 72, "UP + TAUNT = Skill Select");
+        draw_debug_text(temp_x + 14 - 28 * !infinite_mp_mode, temp_y - 56, infinite_mp_mode ? "Infinite MP Mode is active" : "DOWN + TAUNT = Infinite MP Mode");
     }
 }
 
-//munophone
-muno_event_type = 5;
-user_event(14);
+if (info_mode_menu)                 //skill info mode
+{
+    //over the skill select
+    if (menu_active)
+    {
+        //cursor
+        draw_sprite_ext(
+            sprite_get("hud_menu_cursor_info"),
+            menu_cursor_timer*menu_cursor_speed,
+            temp_x + skill[cur_skill_info].skill_pos_x * 38 + 38,
+            temp_y + skill[cur_skill_info].skill_pos_y * 32 - 84,
+            2, 2, 0, c_white, 1);
 
-#define rectDraw(x1, y1, x2, y2, color) {
-    draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
+        //skill that is hovered on
+        textDraw(temp_x + 108, temp_y - 100, "Selected: " + string(skill[cur_skill_info].skill_name), $ffbc52, "fName", fa_center, false, 1);
+    }
 
-    //according to the positive axis
-    //x1 / y1 = top left
-    //x2 / y2 = bottom right
+    //center screen stuff
+    var _x = view_get_wview() - room_width/2 - 16;
+    var _y = menu_active ? view_get_hview() - room_height/2 + 80 : view_get_hview() - room_height/2 + 180;
+
+    draw_sprite_stretched_ext(spr_pixel, 0, _x - 12, _y - 8, 387, 112, c_black, 0.5); // background
+
+    draw_sprite_stretched_ext(spr_pixel, 0, _x + 30, _y + 28, 321, 2, c_white, 1); // white underline
+    draw_sprite_ext(sprite_get("hud_skills"), skill[cur_skill_info].skill_id, _x-4, _y, 2, 2, 0, c_white, 1);
+
+    draw_debug_text(_x + 48, _y + 10, string(skill[cur_skill_info].skill_name));
+    draw_debug_text(_x + 264, _y + 10, string("cost: " + string(skill[cur_skill_info].mp_use_cost) + " MP"));
+    draw_debug_text(_x - 28, _y + 24, skill_desc[cur_skill_info]);
+}
+
+
+#define textDraw
+/// textDraw(x, y, string, color = c_white, font = "fname", align = fa_center, outline = false, alpha = 1)
+{
+    //textDraw(x, y, string, color, font, align, outline, alpha)
+    var x = argument[0], y = argument[1], string = argument[2];
+    var color = argument_count > 3 ? argument[3] : c_white;
+    var font = argument_count > 4 ? argument[4] : "fname";
+    var align = argument_count > 5 ? argument[5] : fa_center;
+    var outline = argument_count > 6 ? argument[6] : false;
+    var alpha = argument_count > 7 ? argument[7] : 1;
+
+    draw_set_font(asset_get(font));
+    draw_set_halign(align);
+
+    if (outline)
+    {
+        for (var i_x = -1; i_x < 2; ++i_x) for (var i_y = -1; i_y < 2; ++i_y)
+        {
+            draw_text_color(x + i_x * 2, y + i_y * 2, string, c_black, c_black, c_black, c_black, alpha);
+        }
+    }
+    if (alpha != 1) alpha = alpha;
+
+    draw_text_color(x, y, string, color, color, color, color, alpha);
 }

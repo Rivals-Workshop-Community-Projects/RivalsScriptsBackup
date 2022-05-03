@@ -308,7 +308,8 @@ switch attack {
     move_cooldown[AT_DSPECIAL] = 60
     if state_timer == 6 {
         sound_play(asset_get("mfx_star"))
-        spawn_hit_fx(x-50*spr_dir,y-30,301)
+        var fx = spawn_hit_fx(x-50*spr_dir,y-30,301)
+            fx.pause = 10
     }
     if state_timer == 2 {
         if doll_id != noone && instance_exists(doll_id) {

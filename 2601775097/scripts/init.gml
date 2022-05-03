@@ -1,129 +1,160 @@
-hurtbox_spr = asset_get("ex_guy_hurt_box");
-crouchbox_spr = asset_get("ex_guy_crouch_box");
-air_hurtbox_spr = -1;
-hitstun_hurtbox_spr = -1;
+//init
 
-//These variables are used to reference Bar's default movement stats for modification.
-normal_dash_anim_speed = .3;
+////////////////////////////////////////////////////// CHARACTER GENERAL VARIABLES //////////////////////////////////////////////////////
 
-normal_walk_speed = 2.75;
-normal_walk_accel = 0.2;
-normal_walk_turn_time = 8;
-normal_initial_dash_time = 10;
-normal_initial_dash_speed = 7.5; 
-normal_dash_speed = 7; 
-normal_dash_turn_time = 14;
-normal_moonwalk_accel = 1.2;
+/*
+ * The stats below are taken from Zetterburn, replacing Sandbert's overpowered
+ * movement stats. The ATTACKS are still in their overpowered form in this
+ * template, so be sure to make the ones for your character weaker.
+ * 
+ * Base Cast Frame Data:
+ * docs.google.com/spreadsheets/d/19UtK7xG2c-ehxdlhCFKMpM4_IHSG-EXFgXLJaunE79I
+ */
 
-normal_leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-normal_max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
-normal_air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
-normal_air_accel = .3;
-normal_prat_fall_accel = .85;
-normal_air_friction = .05;
+// STAT NAME				VALUE       BASECAST RANGE   	NOTES
 
-normal_max_djumps = 3;
+// Physical size
+char_height					= 56;       //                  not zetterburn's. this is just cosmetic anyway
+normal_knockback_adj		= 1.15;		// 0.9  -  1.2
 
-normal_fast_fall = 15; //fast fall speed
-normal_knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
-
-normal_prat_land_time = 12;
-normal_wave_land_time = 8;
-normal_wave_land_adj = 1.35;
-normal_wave_friction = .4; //grounded deceleration when wavelanding
+knockback_adj 				= normal_knockback_adj;
 
 
+// Ground movement
+normal_walk_speed 			= 2.75;		// 3    -  4.5
+normal_walk_accel 			= 0.2;		// 0.2  -  0.5
+normal_walk_turn_time 		= 8;		// 6
+normal_initial_dash_time 	= 10;		// 8    -  16       zetterburn's is 14
+normal_initial_dash_speed 	= 7.5; 		// 4    -  9
+normal_dash_speed 			= 7; 		// 5    -  9
+normal_dash_turn_time 		= 14;		// 8    -  20
+dash_turn_accel     		= 1.2;		// 0.1  -  2
+dash_stop_time      		= 6;		// 4    -  6        zetterburn's is 4
+dash_stop_percent   		= 0.4;		// 0.25 -  0.5
+ground_friction     		= 0.6;		// 0.3  -  1
+normal_moonwalk_accel 		= 1.2;		// 1.2  -  1.4
 
-char_height = 56;
-idle_anim_speed = .2;
-crouch_anim_speed = .1;
-walk_anim_speed = .2;
-dash_anim_speed = normal_dash_anim_speed;
-pratfall_anim_speed = .25;
+walk_speed          		= normal_walk_speed;
+walk_accel          		= normal_walk_accel;
+walk_turn_time      		= normal_walk_turn_time;
+initial_dash_time   		= normal_initial_dash_time;
+initial_dash_speed  		= normal_initial_dash_speed;
+dash_speed          		= normal_dash_speed;
+dash_turn_time      		= normal_dash_turn_time;
+moonwalk_accel      		= normal_moonwalk_accel;
 
-walk_speed = normal_walk_speed;
-walk_accel = normal_walk_accel;
-walk_turn_time = normal_walk_turn_time;
-initial_dash_time = normal_initial_dash_time;
-initial_dash_speed = normal_initial_dash_speed;
-dash_speed = normal_dash_speed;
-dash_turn_time = normal_dash_turn_time;
-dash_turn_accel = 1.2;
-dash_stop_time = 6;
-dash_stop_percent = .4; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .6;
-moonwalk_accel = normal_moonwalk_accel;
 
-jump_start_time = 5;
-jump_speed = 11.5;
-short_hop_speed = 7;
-leave_ground_max = normal_leave_ground_max; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = normal_max_jump_hsp; //the maximum hsp you can have when jumping from the ground
-air_max_speed = normal_air_max_speed; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = normal_air_accel;
-prat_fall_accel = normal_prat_fall_accel; //multiplier of air_accel while in pratfall
-air_friction = normal_air_friction;
+// Air movement
+normal_leave_ground_max 	= 7;		// 4    -  8
+normal_max_jump_hsp 		= 7;		// 4    -  8
+normal_air_max_speed 		= 6;  		// 3    -  7
+jump_change         		= 3;		// 3
+normal_air_accel        	= 0.3;		// 0.2  -  0.4
+normal_prat_fall_accel 		= 0.85;		// 0.25 -  1.5
+normal_air_friction        	= 0.05;		// 0.02 -  0.07
+max_fall            		= 10;		// 6    -  11
+normal_fast_fall        	= 15;		// 11   -  16
+gravity_speed       		= 0.65;		// 0.3  -  0.6
+hitstun_grav        		= 0.5;		// 0.45 -  0.53
 
-djump_speed = 5;
-djump_accel = -1;
-djump_accel_start_time = 0;
-djump_accel_end_time = 10;
-max_djumps = normal_max_djumps;
-double_jump_time = 33; //the number of frames to play the djump animation. Can't be less than 31.
+leave_ground_max 			= normal_leave_ground_max;
+max_jump_hsp 				= normal_max_jump_hsp;
+air_max_speed 				= normal_air_max_speed;
+air_accel 					= normal_air_accel;
+prat_fall_accel 			= normal_prat_fall_accel;
+air_friction 				= normal_air_friction;
+fast_fall 					= normal_fast_fall;
 
-walljump_hsp = 5;
-walljump_vsp = 11;
-walljump_time = 32;
-wall_frames = 2;
-max_fall = 10; //maximum fall speed without fastfalling
-fast_fall = normal_fast_fall; //fast fall speed //12
-gravity_speed = .65;
-hitstun_grav = .5;
-knockback_adj = normal_knockback_adj; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-land_time = 4; //normal landing frames
-prat_land_time = normal_prat_land_time;
-wave_land_time = normal_wave_land_time;
-wave_land_adj = normal_wave_land_adj; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = normal_wave_friction; //grounded deceleration when wavelanding
+// Jumps
+jump_start_time     		= 5;		                // 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
+jump_speed 					= 11.5;		                // 7.6  -  12       okay, zetter's is actually 10.99 but... come on
+short_hop_speed     		= 7;		                // 4    -  7.4
+normal_djump_speed 			= 5;		                // 6    -  12       absa's is -1 because of her floaty djump
+djump_accel         		= -1;		                // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
+djump_accel_end_time		= 10;		                //                  the amount of time that   djump_accel   is applied for
+normal_max_djumps 			= 3 + 2 * has_rune("B");    // 0    -  3        the 0 is elliana because she has hover instead
+walljump_hsp        		= 5;		                // 4    -  7
+walljump_vsp        		= 11;		                // 7    -  10
+land_time           		= 4;		                // 4    -  6
+normal_prat_land_time		= 12;		                // 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
-//crouch animation frames
-crouch_startup_frames = 2;
-crouch_active_frames = 1;
-crouch_recovery_frames = 1;
+djump_speed                 = normal_djump_speed;
+max_djumps 					= normal_max_djumps;
+prat_land_time				= normal_prat_land_time;
 
-//parry animation frames
-dodge_startup_frames = 1;
-dodge_active_frames = 1;
-dodge_recovery_frames = 4;
+// Shield-button actions
+normal_wave_friction 		= 0.4;		// 0    -  0.15
+roll_forward_max    		= 9;		// 9    -  11
+roll_backward_max   		= 9;		// 9    -  11       always the same as forward
+normal_wave_land_time		= 8;		// 6    -  12
+normal_wave_land_adj 		= 1.35;		// 1.2  -  1.5      idk what zetterburn's is
+air_dodge_speed     		= 7.5;		// 7.5  -  8
+techroll_speed      		= 10;		// 8    -  11
 
-//tech animation frames
-tech_active_frames = 3;
-tech_recovery_frames = 1;
+wave_friction 				= normal_wave_friction;
+wave_land_time 				= normal_wave_land_time;
+wave_land_adj 				= normal_wave_land_adj;
 
-//tech roll animation frames
-techroll_startup_frames = 2
-techroll_active_frames = 2;
-techroll_recovery_frames = 2;
-techroll_speed = 10;
 
-//airdodge animation frames
-air_dodge_startup_frames = 2;
-air_dodge_active_frames = 3;
-air_dodge_recovery_frames = 3;
-air_dodge_speed = 7.5;
+// Animation Info
 
-//roll animation frames
+// Misc. animation speeds
+idle_anim_speed     		= 0.2;
+crouch_anim_speed   		= 0.1;
+walk_anim_speed     		= 0.2;
+normal_dash_anim_speed  	= 0.3;
+pratfall_anim_speed 		= 0.2;
+
+dash_anim_speed 			= normal_dash_anim_speed;
+
+
+// Jumps
+double_jump_time    		= 33;		// 24   -  40
+walljump_time       		= 32;		// 18   -  32
+wall_frames         		= 2;		// may or may not actually work... dan pls
+
+// Parry
+dodge_startup_frames    	= 1;
+dodge_active_frames     	= 1;
+dodge_recovery_frames   	= 3;
+
+// Tech
+tech_active_frames      	= 3;
+tech_recovery_frames    	= 1;
+
+// Roll
 roll_forward_startup_frames = 2;
-roll_forward_active_frames = 4;
-roll_forward_recovery_frames = 3;
-roll_back_startup_frames = 2;
-roll_back_active_frames = 4;
-roll_back_recovery_frames = 3;
-roll_forward_max = 9; //roll speed
-roll_backward_max = 9;
+roll_forward_active_frames  = 4;
+roll_forward_recovery_frames= 3;
+roll_back_startup_frames    = roll_forward_startup_frames;
+roll_back_active_frames     = roll_forward_active_frames;
+roll_back_recovery_frames   = roll_forward_recovery_frames;
 
+// Tech roll
+techroll_startup_frames     = 2;
+techroll_active_frames      = 2;
+techroll_recovery_frames    = 2;
+
+// Airdodge
+air_dodge_startup_frames    = 2;
+air_dodge_active_frames     = 3;
+air_dodge_recovery_frames   = 3;
+
+// Crouch
+crouch_startup_frames 		= 2;
+crouch_active_frames 		= 1;
+crouch_recovery_frames 		= 1;
+
+
+
+// Hurtbox sprites
+hurtbox_spr         = asset_get("ex_guy_hurt_box");
+crouchbox_spr       = asset_get("ex_guy_crouch_box");
+air_hurtbox_spr     = -1; // -1 = use hurtbox_spr
+hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
+
+// Movement SFX
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
 waveland_sound = asset_get("sfx_waveland_zet");
@@ -135,524 +166,43 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-msg_menu = false;
 
-//test player detection
-testing = false;
-with (oTestPlayer)
-{
-	testing = true;
-	msg_menu = true;
-}
+//////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
-//practice mode check
-if (get_match_setting(SET_PRACTICE)) msg_menu = true;
+// "literally a white pixel" - nart
+spr_pixel = sprite_get("white_pixel");
 
-//Hovering
-true_gravity_speed = gravity_speed;
-true_max_fall = max_fall;
-hover_gravity_multiplier = 0.1;
-hover_anim_speed = 0.25;
+//for attacks
+window_end = 0; //the last frame (including whifflag if it's there)
+window_last = 0; //AG_NUM_WINDOWS
+window_cancel_time = 0; //AG_WINDOW_CANCEL_FRAME
 
-hovering = false;
-can_hover = true;
-glide_time_max = 100;
-glide_time_restore = 50;
-glide_time = glide_time_max;
-show_glide_ui = false;
-
-//Double Jumps
-prev_djumps = 0; //used for double jump turnarounds in update.gml
-djump_speed_reset = djump_speed;
-jump_total = max_djumps + 1; //unused
-
-//platform
-plat_frame = 0;
-plat_animspeed = 0.25;
-plat_strip_length = 16; //not sure i even used this lmfao
-plat_pre_sprite = sprite_get("plat_pre");
-plat_post_sprite = sprite_get("plat_post");
-
+//various detections
 alt_cur = get_player_color(player);
-alt_col_dblue = 0;
-alt_col_white = 1;
-alt_col_hair = 2;
-alt_col_skin = 3;
-alt_col_lblue = 4;
-alt_col_black = 5;
-alt_col_light = 6;
-alt_col_fire = 7;
-
-//Custom Hitboxes
-hb_sweet_0 = sprite_get("hb_sweet_0");
-hb_sweet_1 = sprite_get("hb_sweet_1");
-hb_sweet_2 = sprite_get("hb_sweet_2");
-hb_burn_0 = sprite_get("hb_burn_0");
-hb_burn_1 = sprite_get("hb_burn_1");
-hb_burn_2 = sprite_get("hb_burn_2");
-hb_light_0 = sprite_get("hb_light_0");
-hb_light_1 = sprite_get("hb_light_1");
-hb_light_2 = sprite_get("hb_light_2");
-hitbox_shape1 = -1; //sweetspots
-hitbox_shape2 = -1; //holy burning
-hitbox_shape3 = -1; //lightstun (unused for now)
-
-HG_HITBOX_COLOR = -1;
-//HG_HITBOX_COLOR is a new custom variable that changes the color of the hitboxes
-//0 = default
-//1 = sweetspots(yellow), only when there's at least 1 sour spot and 1 sweetspot these will appear
-//2 = holy burn(cyan), when using any move that inflicts holy burn
-//3 = lightstun(white), will only show if the sparks of light rune is active, on moves that inflict a spark of light
-
-//heh, stole from munophone so i can still use it
-window_end = 0;
-last_window = 0;
-
-//////////////////////////////////////////////////MANA MECHANIC SECTION//////////////////////////////////////////////////
-
-mpGainable = true; //disables mp gain from attacks
-mpBelowZero = false;
-
-//No MP Message
-mp_error_active = false;
-mp_error_frame = 0;
-mp_error_speed = 0.25;
-mp_errorcool = 20;
-mp_message1 = hit_fx_create(sprite_get("no_mp2"), 32);
-mp_message2 = hit_fx_create(sprite_get("no_mp2-"), 32);
-
-//MP color
-gauge_color = $E9973E;
-
-//Mini MP Gauge
-show_miniMP = false;
-miniMP_time = 0;
-miniMP_time_limit = 180;
-miniMP_alpha = 1;
-
-miniMP_attack = 100; //amount of time it shows the mini gauge when attacking/getting hit/parrying
-miniMP_MPdebug = 120; //amount of time it shows the mini gauge when going into "mana debug mode"
-miniMP_noMP = 160; //amount of time it shows the mini gauge when you have no MP
-//it's easier to set numbers on the same spot lol
-
-//Mana Debug Mode
-manaDebug = false;
-manaDebug_cooldown = 0;
-manaDebug_cd_active = false;
-
-//Fast Count
-mp_fc_maxNum = 60; //60 = 60 frames
-mp_fc_num = 0;
-mp_fc_rate = 2; //the rate at which the MP goes up, no negative numbers
-mp_rate_default = mp_fc_rate;
-
-//MP gain
-mp_spawn = 100; //this MP value will decide how much bar MP has when spawning and respawning, aswell as training mode reset
-mp_current = mp_spawn;
-mp_max = 100;
-
-//skill cooldown
-cool_start = false;
-cool_reset = 120;
-cooldown = cool_reset;
-cd_error_active = false;
-cd_error_frame = 0;
-cd_error_speed = 0.25;
-cd_errorcool = 20;
-cd_message1 = hit_fx_create(sprite_get("cooldown"), 32);
-cd_message2 = hit_fx_create(sprite_get("cooldown-"), 32);
-
-//Strongs Cost
-strong_cost = 5;
-
-//Skill Cost
-lightdagger_cost = 5;
-buff_total_cost = 50; //"buffs" include burning fury and guard aura
-buff_overtime_cost = 5;
-buff_activation_cost = 10;
-burningfury_attack_cost = 10;
-forceleap_activate_cost = 10;
-forceleap_attack_cost = 10;
-forceleap_total_cost = forceleap_activate_cost + forceleap_attack_cost;
-photonblast_cost = 40;
-accelblitz_cost = 10; //rip za warudo
-chasmburster_activate_cost = 5;
-chasmburster_attack_cost = 25;
-chasmburster_total_cost = chasmburster_activate_cost + chasmburster_attack_cost;
-powersmash_activate_cost = 5;
-powersmash_attack_cost = 25;
-powersmash_total_cost = powersmash_activate_cost + powersmash_attack_cost;
-emberfist_cost = 20;
-lighthookshot_activate_cost = 5;
-lighthookshot_attack_cost = 15;
-lighthookshot_total_cost = lighthookshot_activate_cost + lighthookshot_attack_cost;
-searingdescent_activate_cost = 10;
-searingdescent_attack_cost = 10;
-searingdescent_total_cost = searingdescent_activate_cost + searingdescent_attack_cost;
-flashbang_activate_cost = 0;
-flashbang_attack_cost = 10;
-flashbang_total_cost = flashbang_activate_cost + flashbang_attack_cost;
-
-//skills menu stuff
-//is_training_menu = false; //this just redirects the command from unfreezing everyone to just unfreezing bar
-
-//skill refferences
-AT_SKILL0 = AT_NTHROW; // [0] light dagger
-AT_SKILL0_AIR = AT_NSPECIAL_AIR; // [0] light dagger (air)
-AT_SKILL1 = AT_FTHROW; // [1] burning fury
-AT_SKILL1_AIR = AT_FSPECIAL_AIR; // [1] burning fury (air)
-AT_SKILL2 = AT_UTHROW; // [2] force leap
-AT_SKILL3 = AT_DTHROW; // [3] photon blast
-AT_SKILL4 = AT_NSPECIAL_2; // [4] accel blitz
-AT_SKILL5 = AT_EXTRA_1; // [5] chasm burster
-AT_SKILL6 = AT_FSPECIAL_2; // [6] power smash
-AT_SKILL7 = AT_USPECIAL_2; // [7] guard aura
-AT_SKILL8 = AT_DSPECIAL_2; // [8] ember fist
-AT_SKILL9 = AT_EXTRA_2; // [9] light hookshot
-AT_SKILL10 = AT_EXTRA_3; // [10] searing dscent
-AT_SKILL11 = 39; // [11] flashbang
-
-//jpeg menu---------------------------------------------------------------------
-
-//you can change the sprite per-alt or for other reasons if you wish by changing which sprite this variable uses
-hud_menu = sprite_get("hud_menu_bg");
-
-//menu variables
-specialnums = [0, 0, 0, 0];         //add 1 to each number for the special number, i.e. 0211 = specs 1322
-menu_open = false;
-menu_confirm = true;
-menu_close = false;                 //used to reset all variables at once when the menu is closed
-close_timer = -1;                   //used for menu vfx when closing					
-if (!testing) menu_timer = 120;		//menu closes when this equals -1
-else menu_timer = -1; 
-menu_dir = -1;                      //returns 0 for up, 1 for right, 2 for down, and -1 for left and idle
-prev_dir = -1;                      //used for input lockout so you pressing a direction once doesn't register every frame
-active_col = 0;                     //used for player selection
-for(var i = 0; i <= 3; i++){
-    for(var j = 0; j <= 2; j++){
-        specs_chosen[i, j] = true;  //determines what icons are drawn on the menu
-    }
-}
-cursor_timer = 0;					//used for the cursor blinking
-arrow_frame = 0;
-arrow_anim_up = false;
-arrow_anim_side = false;
-arrow_anim_down = false;
-menu_armor_time_reset = 60*4;
-menu_armor_time = menu_armor_time_reset;
-
-//jpeg menu end-----------------------------------------------------------------
-
-//if more are needed, i'll just use other inputs
-//or if i can't use the default specials like that cuz they will be overwritten idk
-
-//holy light
-lightstun_timer = -1; //it counts down twice, once for the pre timer and again for the stun itself
-lightstun = false;
-lightstun_pre_stun = false;
-lightstun_parried = false;
-lightstun_parried_timer = -1;
-lightstun_has_hit = false;
-
-fx_lightstunned = sprite_get("fx_lightstunned");
-fx_lightstunned_frame = 0;
-fx_lightstunned_rot = 0;
-fx_lightstunned_alpha = 1;
-fx_lightstunned_speed = 0.25;
-fx_lightstunned_alphaincrease = false;
-
-//holy burn
-holyburning = false;
-holyburn_counter = 0;
-holyburn_maxcount = 120;
-holyburn_default_maxcount = 120;
-burn_outline = [255, 255, 255];
-holy_burned_by = noone;
-
-//skill graphic variables
-fx_empty = hit_fx_create(sprite_get("empty"), 1); //this just allows me to deny hitsparks from existance
-
-fx_introlight = sprite_get("fx_introlight_back");
-fx_boost = hit_fx_create(sprite_get("fx_speedboost"), 14);
-
-fx_ustrong_lightaxe_sprite = sprite_get("empty");
-fx_lightdagger = sprite_get("empty");
-fx_lightdagger_air = sprite_get("empty");
-fx_accel_indicator = sprite_get("accelblitz_indicator");
-fx_lighthookshot = sprite_get("empty");
-fx_armorbreak = hit_fx_create(sprite_get("theikos_fx_fstrong_armorbreak"), 20);
-fx_lightpillar = sprite_get("theikos_fx_ustrong_lightpillar");
-
-//normal ver
-fx_b_lightblow1 = hit_fx_create(sprite_get("fx_lightblow1"), 15);
-fx_b_lightslash = hit_fx_create(sprite_get("fx_lightslash"), 15);
-fx_b_lightblow2 = hit_fx_create(sprite_get("fx_lightblow2"), 25);
-fx_b_lightblow3 = hit_fx_create(sprite_get("fx_lightblow3"), 30);
-fx_b_fireblow1 = hit_fx_create(sprite_get("fx_fireblow1"), 20);
-fx_b_fireblow2 = hit_fx_create(sprite_get("fx_fireblow2"), 30);
-fx_b_fireblow3 = hit_fx_create(sprite_get("fx_fireblow3"), 40);
-
-fx_b_dstrong_fireblast = hit_fx_create(sprite_get("fx_dstrong_fireblast"), 40);
-fx_b_rockblow = hit_fx_create(sprite_get("fx_rockblow"), 27);
-fx_b_photonblast = hit_fx_create(sprite_get("fx_photonblast"), 21);
-fx_b_accelblitz = hit_fx_create(sprite_get("fx_accelblitz"), 18);
-fx_b_chasmburster = hit_fx_create(sprite_get("fx_chasmburster"), 18);
-fx_b_earthshatter = hit_fx_create(sprite_get("fx_chasmshatter"), 180);
-fx_b_homing_afterimage = hit_fx_create(sprite_get("fx_homing_afterimage"), 16);
-fx_b_emberfist = hit_fx_create(sprite_get("fx_emberfist"), 30);
-fx_b_flashbang_lightsmear = hit_fx_create(sprite_get("fx_flashbang_lightsmear"), 9);
-fx_b_flashbang_firesmear = hit_fx_create(sprite_get("fx_flashbang_firesmear"), 15);
-fx_b_firesmear = hit_fx_create(sprite_get("fx_dstrong_t_firesmear"), 20);
-fx_b_fireground = hit_fx_create(sprite_get("fx_dstrong_t_fireground"), 90);
-
-//theikos ver
-fx_t_lightblow1 = hit_fx_create(sprite_get("theikos_fx_lightblow1"), 15);
-fx_t_lightslash = hit_fx_create(sprite_get("theikos_fx_lightslash"), 15);
-fx_t_lightblow2 = hit_fx_create(sprite_get("theikos_fx_lightblow2"), 25);
-fx_t_lightblow3 = hit_fx_create(sprite_get("theikos_fx_lightblow3"), 30);
-fx_t_fireblow1 = hit_fx_create(sprite_get("theikos_fx_fireblow1"), 20);
-fx_t_fireblow2 = hit_fx_create(sprite_get("theikos_fx_fireblow2"), 30);
-fx_t_fireblow3 = hit_fx_create(sprite_get("theikos_fx_fireblow3"), 40);
-
-fx_t_dstrong_fireblast = hit_fx_create(sprite_get("theikos_fx_dstrong_b_fireblast"), 40);
-fx_t_rockblow = hit_fx_create(sprite_get("theikos_fx_rockblow"), 27);
-fx_t_photonblast = hit_fx_create(sprite_get("theikos_fx_photonblast"), 21);
-fx_t_accelblitz = hit_fx_create(sprite_get("theikos_fx_accelblitz"), 18);
-fx_t_chasmburster = hit_fx_create(sprite_get("theikos_fx_chasmburster"), 18);
-fx_t_earthshatter = hit_fx_create(sprite_get("theikos_fx_chasmshatter"), 180);
-fx_t_homing_afterimage = hit_fx_create(sprite_get("theikos_fx_homing_afterimage"), 16);
-fx_t_emberfist = hit_fx_create(sprite_get("theikos_fx_emberfist"), 30);
-fx_t_flashbang_lightsmear = hit_fx_create(sprite_get("theikos_fx_flashbang_lightsmear"), 9);
-fx_t_flashbang_firesmear = hit_fx_create(sprite_get("theikos_fx_flashbang_firesmear"), 15);
-fx_t_firesmear = hit_fx_create(sprite_get("theikos_fx_dstrong_firesmear"), 20);
-fx_t_fireground = hit_fx_create(sprite_get("theikos_fx_dstrong_fireground"), 90);
-
-//effect hit_fx_create setup
-fx_lightblow1 = fx_b_lightblow1;
-fx_lightslash = fx_b_lightslash;
-fx_lightblow2 = fx_b_lightblow2;
-fx_lightblow3 = fx_b_lightblow3;
-fx_fireblow1 = 	fx_b_fireblow1;
-fx_fireblow2 = 	fx_b_fireblow2;
-fx_fireblow3 = 	fx_b_fireblow3;
-
-fx_dstrong_fireblast = 		fx_b_dstrong_fireblast;
-fx_rockblow = 				fx_b_rockblow;
-fx_photonblast = 			fx_b_photonblast;
-fx_accelblitz = 			fx_b_accelblitz;
-fx_chasmburster = 			fx_b_chasmburster;
-fx_earthshatter = 			fx_b_earthshatter;
-fx_homing_afterimage = 		fx_b_homing_afterimage;
-fx_emberfist = 				fx_b_emberfist;
-fx_flashbang_lightsmear = 	fx_b_flashbang_lightsmear;
-fx_flashbang_firesmear = 	fx_b_flashbang_firesmear;
-fx_firesmear = 				fx_b_firesmear;
-fx_fireground = 			fx_b_fireground;
-
-//particles
-set_hit_particle_sprite(1, sprite_get("fx_lightparticle"));
-set_hit_particle_sprite(2, sprite_get("fx_fireparticle"));
-
-set_hit_particle_sprite(5, sprite_get("theikos_fx_lightparticle"));
-set_hit_particle_sprite(6, sprite_get("theikos_fx_fireparticle"));
-
-
-//technical variables
-did_i_turn = false; //for f-strong
-turn_timer_value = 12;
-turn_timer = turn_timer_value;
-start_turn_count = false;
-turn_left = false;
-turn_right = false;
-
-sfx_charge = sound_get("sfx_charge");
-
-hitbox_cooldown_max = 10; //for d-strong
-hitbox_cooldown = hitbox_cooldown_max;
-
-tracking_target = noone; //for u-strong
-
-burningfury_active = false;
-mp_burn = 2;
-fury_damage = 1.5;
-fury_cycle = 0; //the number here doesn't matter
-burningfury_target = noone;
-
-forceleap_up = false;
-forceleap_down = false;
-leap_angle = 0;
-leap_xpos = 0;
-leap_ypos = 0;
-
-photon_charge = false;
-photon_cycle = 0; //counts the amount of attacks
-blast_power = 0; //calculate the damage
-max_charge_time = 40; //window length of the winged up charging
-photon_used = false;
-
-accelblitz_active = false;
-accelblitz_done_once = false;
-accelblitz_active_timer = false;
-accelblitz_post_timer = 0;
-tp_angle = 90; //the angle of the joystick, the default is 90 (up)
-tp_dist = 0; //distance that the indicator will go per frame
-dist_x = 0; //the direction bar goes (X)
-dist_y = 0; //the direction bar goes (Y)
-accel_temp_x = 0; //records the indicator's
-accel_temp_y = 0; //current position
-artc_accel_indicator = noone;
-accel_vulnerability = false;
-accel_hit_time_reset = 50;
-accel_hit_time = accel_hit_time_reset;
-//afterimage stuff
-last_dir = 1;
-cur_dir = 1;
-cur_sprite = -4;
-cur_image = -4;
-
-blur_array_length = 2;
-blur = array_create(blur_array_length);
-
-burst_pos = 56;
-burst_count = -1;
-max_burst_count = 20;
-burst_count_start = false;
-spawn_earth_shatter = false;
-reached_max_bursts = false;
-burst_cool = 0;
-chasm_burningfury_was_active = false;
-
-sfx_fire = sound_get("sfx_constantfire");
-artc_powersmash_chasm = noone;
-power_jump_cancel_time = 0;
-
-polaris_active = false;
-homing_target_id = noone;
-already_shot = false;
-homing_cooldown = -1; //30 frames cooldown
-homing_post_buffer = -1;
-homing_post_buffer_counting = false;
-homing_outline_alpha = 0.1;
-homing_outline_alpha_rate = 0.02;
-homing_outline_increase = true;
-
-emberfist_up = false;
-emberfist_down = false;
-ember_fury_time_active = false;
-ember_fury_time = 0;
-ember_fury_time_max = 48;
-ember_fury_time_rate = 8;
-ember_spr_dir = 1;
-ember_x = 0;
-ember_y = 0;
-
-hookshot = -1; //placeholder for the hitbox
-hookshot_speedboost = false; //used for flinging bar
-hookshot_lag_count = 0; //throw window time
-hookshot_chargetime = 0; //how strong is bar's charge
-hookshot_launch = false; //used for the animation
-hookshot_skip = false;
-hookshot_retract = false; //these were ment for the article to know if bar caught anything
-hookshot_retract_timer = 0;
-
-descent_timer_reset = 20;
-descent_timer = descent_timer_reset; //checks untill bar can jump/airdodge out out the move
-searingdescent_id = noone;
-
-flashbanged_id = noone;
-
-//////////////////////////////////////////////////MISC. SECTION//////////////////////////////////////////////////
-
-is_AI = false;
-AI_vs = false; //bypasses the "i can't see the AI's skills cuz he can choose whatever he wants now"
-AI_fighting_time = 0;
-show_player_info = true;
-is_bar_ditto = false;
-
-//bar URLs just in case
-is_bar = 2601775097; //full ver
-is_bar_test = 2560739972; //test build
-is_bar_old = 2429376422; //old ver- why do you even have this
-
-//small_sprites = 1;
-
-game_paused = false;
-
-last_attack_hit = 0;
-previous_attack = AT_JAB;
-
-//intro - credit to nackles42 for the tutorial!
-intro_timer = -4; //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening.
-intro_alpha = 0;
-intro_pillar_fx_frame = 0;
-intro_pillar_fx_speed = 0.25;
-intro_blur = array_create(5);
-
-//fall animation
-switch_spr = false;
-
-//is this an 8-bit alt? (used to give it different outline effects)
-is_8bit = false;
-if (get_player_color(player) == 14 || get_player_color(player) == 15) is_8bit = true;
-else is_8bit = false;
-
-helel_alt = false;
-if (get_player_color(player) == 25) helel_alt = true;
-else helel_alt = false;
-
-theikos_alt = false;
-if (get_player_color(player) == 26) theikos_alt = true;
-else theikos_alt = false;
-
-
-//outline coloring
-color_r = 0;
-color_g = 0;
-color_b = 0;
-increase = true;
-color_timer = 0;
-color_time_max = 30;
-
-//B E   A F R A I D   N O T
-allow_bibical = false;
-bibical = false;
-
-if (get_player_color(player) == 19)
-{
-    switch(get_match_setting(SET_SEASON))
-    {
-        case 1: //vday
-            allow_bibical = false;
-            break;
-
-        case 2: //summer
-            allow_bibical = false;
-            break;
-
-        case 3: //halloween
-            allow_bibical = true;
-            break;
-
-        case 4: //xmas
-            allow_bibical = false;
-            break;
-    }
-}
-if (allow_bibical) bibical = true;
-
-//helel skin stuff
-color_rate = 0;
-helel_blur = array_create(2);
-
-//classic skin stuff
-//the actual date stuff is set in: init_shader.gml | css_draw.gml
-myday = 25;
-mymonth = 10;
-birthboy = false;
-if (current_day == myday && current_month == mymonth) birthboy = true;
-
-//move names for the stat debug thing
-move_names = [
+training = (get_match_setting(SET_PRACTICE));
+is_cpu = false;
+playtesting = (object_index == oTestPlayer);
+cur_game_time = get_gameplay_time(); //allows me to run stuff for 1 frame after bar is loaded/reloaded
+got_gameplay_time = get_gameplay_time();
+
+is_dodging = false;
+is_attacking = false;
+
+//hurt spin rotation
+cur_sprite_rot = 0;
+should_rotate = false;
+rotate_time = -1;
+
+//intro animation shenanigans
+AT_INTRO = 2;
+
+//custom window loop time (modify window type 9 for this)
+AG_WINDOW_LOOP_TIMES = 37;          //attack grid index, the number you put next to it is the amount to loop
+window_loops = 0;                   //decides the amount of times to loop
+
+/*
+//attack names
+attack_index = [
 	"???",
 	"AT_JAB",
 	"???",
@@ -705,207 +255,510 @@ move_names = [
 	"AT_L_PUNISHMENT",
 	"???"
 ];
+*/
 
-//////////////////////////////////////////////////ABYSS RUNES SECTION//////////////////////////////////////////////////
+//object classification so i can mess around with it (might need to add more slots to it but oh well)
+bar_hitbox = noone;
+bar_hit_fx = noone;
+bar_hit_fx_pause = false;         //setting this to true makes the hit effect hitpause
 
-//rune A
-runeA_dash = false;
-runeA_dash_dir = spr_dir;
-runeA_dash_time_max = 8;
-runeA_dash_timer = runeA_dash_time_max;
-runeA_dash_cool_active = false;
-runeA_dash_cooldown_max = 20;
-runeA_dash_cooldown = runeA_dash_cooldown_max;
 
-//rune B
-runeB_glide_time_max = 150;
 
-//rune J
-runeJ_multiplyer = 0.2;
+//special alt stuff
+my_day = 25;
+my_month = 10;
+birthboy = (current_day == my_day && current_month = my_month);
+bibical = (get_match_setting(SET_SEASON) == 3 && !birthboy);
 
-//rune G
-runeG_blitzjump = false;
-runeG_was_free = false;
-runeG_attack_kb_y = 0;
+//flash color
+light_col = make_colour_rgb(get_color_profile_slot_r(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6));
+light_alpha = 0;
 
-//rune H
-runeH_target = noone;
-runeH_pullx = 0;
-runeH_pully = 0;
-runeH_angle = 0;
+//Outline color setup
+outline_time = 0;
+outline_time_up = true;
+default_line_color = [61, 113, 224];
+lerp_array = [0, 0, 0]; //lerps around
+activate_outline = false;
 
-//rune K
-runeK_mana_regen = 10;
-runeK_mp_max = 200;
-gauge_EX_color = $FAF328;
-gauge_EX_color_return = gauge_EX_color;
-gauge_EX_timer = 5;
-gauge_EX_timer_active = false;
+if (alt_cur != 0 && !birthboy) line_color = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)];
+else line_color = default_line_color;
 
-//E9973E = light blue
-//E9C23E = light blue 2
-//FAF328 = light blue 3
-//43E9FF = yellow
-//2EC7FF = yellow 2
-//3BE1FF = yellow 3
-//486BFF = red
+no_effect_line_color = [0, 0, 0];
+switch (alt_cur)
+{
+    case 14: //gameboy
+        no_effect_line_color = [15, 56, 15];
+        break;
+    case 15: //NES
+        no_effect_line_color = [32, 0, 178];    
+        break;
+    case 16: //seasonal-halloween
+        if (bibical) no_effect_line_color = [75, 43, 43];    
+        break;    
+    case 25: //helel
+        no_effect_line_color = [52, 52, 52];    
+        break;
+    case 26: //theikos
+        no_effect_line_color = [97, 45, 2];
+        break;
+}
 
-//rune N
-holyburn_mechanic_active = true;
-lightstun_mechanic_active = false;
+fire_col = make_colour_rgb(line_color[0], line_color[1], line_color[2]);
 
-//rune O
+//trail code
+apply_motion_trail = false;
+
+trail_cur_num = 0;      //rotates between the array values to update them
+trail_total_size = 10;  //the total size of the trail array
+trail_draw_size = 1;    //what size does it actually draw it on
+
+is_accel_trail = false;
+
+trail_pos = [0];
+t = 0;
+repeat (trail_total_size)   //fills array
+{
+    trail_pos[t] = {
+            sprite: sprite_index,
+            subimg: image_index,
+            x: x,
+            y: y,
+            xscale: image_xscale,
+            yscale: image_yscale,
+            rot: image_angle,
+            col: image_blend,
+        };
+    t ++;
+}
+
+
+///////////////////////////////////////////////////CUSTOM HITBOX COLOR SYSTEM/////////////////////////////////////////////////
+
+//Custom Hitbox Colors System (by @SupersonicNK)
+// USAGE: set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, $FFFFFF) the colors are in BGR sadly
+
+HG_HITBOX_COLOR = 79; //This can be any number above 57 and below 100. It is recommended that you put this number below Munophone's starting_hg_index value, to prevent conflicts.
+
+//Sprite Setup
+//knockback arrow sprite
+__kb_arrow_spr = asset_get("knock_back_arrow_spr")
+//actual hitbox sprites
+var w = 100
+__hb_circle_t = sprite_get("hitbox_circle_trans");
+    sprite_change_offset("hitbox_circle_trans",w,w);
+    sprite_change_collision_mask("hitbox_circle_trans",false,0,0,0,0,0,0);
+__hb_rect_t = sprite_get("hitbox_square_trans");
+    sprite_change_offset("hitbox_square_trans",w,w);
+    sprite_change_collision_mask("hitbox_square_trans",false,0,0,0,0,0,0);
+__hb_r_rect_t = sprite_get("hitbox_rounded_rectangle_trans");
+    sprite_change_offset("hitbox_rounded_rectangle_trans",w,w);
+    sprite_change_collision_mask("hitbox_rounded_rectangle_trans",false,0,0,0,0,0,0);
+__hb_hd_spr = [__hb_circle_t, __hb_rect_t, __hb_r_rect_t];
+//drawn hitbox sprite
+__hb_draw_spr = sprite_get("hitbox_shapes");
+    sprite_change_offset("hitbox_shapes",w,w);
+//color array
+hb_color[0] = 0;        //nothing
+hb_color[1] = $00FFFF;  //sweetspot
+hb_color[2] = $FFFFFF;  //holy light
+hb_color[3] = $FFFF00;  //holy fire
+
+
+////////////////////////////////////////////////////// CHARACTER SPECIFIC VARIABLES //////////////////////////////////////////////////////
+
+//Intro
+intro_alpha = 0;
+intro_pillar_fx_frame = 0;
+intro_pillar_fx_speed = 0.25;
+
+//Glide
+//PS_GLIDE = 50; //custom state - "replaced with a macro in update.gml" - nart
+glide_vsp = 1.5; //the speed in which bar will slowly fall, it's a constant speed
+glide_fastfall_vsp = 10;
+glide_anim_speed = 0.2; //increase image_index by this value
+can_glide = true;
+
+glide_stamina_max = has_rune("B") ? 150 : 100;
+glide_stamina = glide_stamina_max;
+glide_stamina_restore = 50;
+glide_ui = false;
+
+//Double jump stuff
+prev_djumps = 0;
+djump_turn = false;
+
+//MP mechanic
+mp_current = 100;
+mp_max = 100 + 100 * has_rune("M");
+mp_gainable = true;
+mp_gain_rate = 2 + 5 * has_rune("M");
+
+infinite_mp_mode = false;
+
+mp_mini_timer = 0;
+mp_mini_timer_set = 180;
+
+mp_color = $e9973e;
+mp_color_ex = $FFFF00;
+
+//other mp costs
+mp_cost_strongs = 5;    //strongs
+mp_cost_const_rate = 5; //for burning fury and polaris' buffed states
+
+//skill setup
+skill = [0]; //this array checks all the attacks
+a = 0; //array start
+
+//value storage
+was_free = free;
+
+//set_skill(name, id, slot_x, slot_y, atk, air_atk, cost, cost_ex, cost_min)
+
+AT_SKILL0  = set_skill("Light Dagger", 0, 0, 0, AT_NTHROW, AT_NSPECIAL_AIR, 5, 5, 5);
+AT_SKILL1  = set_skill("Burning Fury", 1, 1, 0, AT_FTHROW, AT_FSPECIAL_AIR, 10, 10, 50);
+AT_SKILL2  = set_skill("Force Leap", 2, 2, 0, AT_UTHROW, -1, 10, 10, 10);
+AT_SKILL3  = set_skill("Photon Blast", 3, 3, 0, AT_DTHROW, -1, 40, 0, 40);
+
+AT_SKILL4  = set_skill("Flashbang", 4, 0, 1, 39, -1, 0, 10, 10);
+AT_SKILL5  = set_skill("Power Smash", 5, 1, 1, AT_FSPECIAL_2, -1, 5, 25, 30);
+AT_SKILL6  = set_skill("Accel Blitz", 6, 2, 1, AT_NSPECIAL_2, -1, 10, 0, 10);
+AT_SKILL7  = set_skill("Polaris", 7, 3, 1, AT_USPECIAL_2, -1, 10, 0, 50);
+
+AT_SKILL8  = set_skill("Ember Fist", 8, 0, 2, AT_DSPECIAL_2, -1, 20, 0, 20);
+AT_SKILL9  = set_skill("Light Hookshot", 9, 1, 2, AT_EXTRA_2, -1, 5, 15, 20);
+AT_SKILL10 = set_skill("Searing Descent", 10, 2, 2, AT_EXTRA_3, -1, 10, 10, 10);
+AT_SKILL11 = set_skill("Chasm Burster", 11, 3, 2, AT_EXTRA_1, -1, 5, 25, 30);
+
+//skill select menu
+cur_skills = [0, 1, 2, 3];          //sets the current skills to use
+prev_skills = [0, 1, 2, 3];         //sets the previous selected skills
+cur_select = 0;                     //-1 = cancel | 0-3 = specials | 4 = overwrite prev selection with new one
+menu_dir = 0;                       //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = jump | -2 = attack/special
+
+menu_active = !playtesting;         //whenever the menu is active, this is true
+is_practice_menu = false;           //will activate with the taunt input in training mode to allow skill info mode
+info_mode_menu = false;             //will activate when the skill descriptions are active, also adds inputs
+
+menu_timer_stop = 20                //decides how long bar will stand still before being free
+menu_timer = menu_timer_stop + 4;   //with added menu delay so the game won't accidentally register inputs
+menu_invince = 60*4;                //might not be needed
+
+menu_cursor_timer = 0;              //for the selection curstors
+menu_cursor_speed = 0.2             //animation speed
+
+AT_SELECT = 3;                      //select attack
+
+AG_WINDOW_MP_CONSUME        = 34;   //mana amount to consume
+AG_WINDOW_MP_CONSUME_TIME   = 35;   //the frame to consume mana (0 = window start - default | +1 = window_timer frame | if type one - changes to increments)
+AG_WINDOW_MP_CONSUME_TYPE   = 36;   //type of mana consumption (0 = when pointed out | 1 = rapid consumption throughout the window)
+
+cur_skill_info = 0; //similar to cur_skills but for a single skill
+replaced_skill_temp = 0;
+
+current_skill_sprite = 0;
+menu_x = 0;
+menu_y = 0;
+
+//skill descriptions, will show on the UI when info_mode_menu is true
+skill_desc[0] = string("
+    Throws a light spear's head either forward or
+    diagnally. Burning fury modifies it's damage and
+    knockback, but will no longer pierce.
+    ");
+skill_desc[1] = string("
+    Charges up holy fire, press the input again to
+    do a firey dash attack. Press ATTACK before the
+    last hit to stun foes in place.
+    ");
+skill_desc[2] = string("
+    Leaps diagnally up, can be aimed up or forward.
+    Press SPECIAL to do a powerful blast that spikes.
+    Burning Fury prevents pratfalling
+    ");
+skill_desc[3] = string("
+    Charges up holy light by holding down SPECIAL.
+    releasing the SPECIAL button will unleash up to
+    3 light waves.
+    ");
+skill_desc[4] = string("
+    A command grab, if a foe is grabbed they will be
+    blasted aside. Burning Fury pushes Bar and foes
+    away from the blast.
+    ");
+skill_desc[5] = string("
+    Jumps down into the ground and creates a crater
+    filled with holy fire. Can be cancelled in midair
+    with a jump.
+    ");
+skill_desc[6] = string("
+    Aim around by moving and holding SPECIAL. releasing
+    it will make Bar fly to it in lightspeed. Hitting
+    foes while flashing will prevent pratfall.
+    ");
+skill_desc[7] = string("
+    Releases holy light to activate a special buff.
+    Whenever Bar hits a foe, a small spark of light
+    will shoot out. Input again to cancel.
+    ");
+skill_desc[8] = string("
+    Punches out a stream of holy fire that can be
+    aimed around. Burning Fury alters the attack into
+    a multihit blast instead.
+    ");
+skill_desc[9] = string("
+    Throws a light spear tied to a light chain that
+    when hits a foe or wall, Bar will throw himself
+    forward. Charging makes Bar go further.
+    ");
+skill_desc[10] = string("
+    Leaps high up into the air with a burning hand.
+    holding SPECIAL will make Bar crash down.
+    Burning Fury makes the initial leap higher
+    ");
+skill_desc[11] = string("
+    Punches down the ground to unleash bursts of
+    holy fire. can be cancelled midair with a jump.
+    Burning Fury increases bursts amount to 6.
+    ");
+//////////////
+
+
+//Holy Burning Mechanic
+holyburn_active = true;     //check if the mechanic is active
+holyburning = false;        //becomes true if they are burning
+holyburner_id = 0;          //keeps track of who is burning, to set the pallete correctly
+holyburn_timer = 0;
+holyburn_timer_set = 120;
+
+//Lightstun Mechanic
+lightstun_active = has_rune("L");
+lightstun_type = 0; //0 = not lightstunned | 1 = pre-lightstun timer | 2 = frozen
+lightstun_timer = 0;
+lightstun_pre_set = 300; //timer pre-sets
+lightstun_active_set = 120;
+
+lightstun_last_attack = 0;
+lightstun_last_hbox = 0;
+lightstun_last_attack_timer = 0;
+
+////////////////////////////////////////////////////////////// VFX SETUP //////////////////////////////////////////////////////////////
+
+fx_empty = hit_fx_create(asset_get("empty_sprite"), 1);
+
+//notice messages
+notice_type = 0;
+notice[0] = [32, 78, hit_fx_create(sprite_get("notice_mp"), 32)];
+notice[1] = [44, 78, hit_fx_create(sprite_get("notice_cd"), 32)];
+notice_time = -1;
+notice_time_max = 20;
+msg = noone;
+
+//particles
+set_hit_particle_sprite(1, sprite_get("fx_part_light"));
+set_hit_particle_sprite(2, sprite_get("fx_part_fire"));
+fx_part_light = hit_fx_create(sprite_get("fx_part_light"), 16);
+fx_part_fire = hit_fx_create(sprite_get("fx_part_fire"), 16);
+
+fx_light_follow = hit_fx_create(sprite_get("fx_light_follow"), 9);
+fx_burn = hit_fx_create(sprite_get("fx_burn"), 18);
+
+fx_lightblow = [
+    hit_fx_create(sprite_get("fx_lightblow1"), 15),
+    hit_fx_create(sprite_get("fx_lightblow2"), 25),
+    hit_fx_create(sprite_get("fx_lightblow3"), 30)];
+
+fx_fireblow = [
+    hit_fx_create(sprite_get("fx_fireblow1"), 30),
+    hit_fx_create(sprite_get("fx_fireblow2"), 40),
+    hit_fx_create(sprite_get("fx_fireblow3"), 50)];
+
+fx_lightslash = hit_fx_create(sprite_get("fx_lightslash"), 15);
+
+fx_intro_back = sprite_get("fx_introlight_back");
+fx_intro = hit_fx_create(sprite_get("fx_intro"), 22);
+//fx_ustrong_lightaxe_sprite = asset_get("empty_sprite");
+//fx_lightdagger = asset_get("empty_sprite");
+//fx_lightdagger_air = asset_get("empty_sprite");
+//fx_lighthookshot = asset_get("empty_sprite");
+
+fx_dstrong_blast = hit_fx_create(sprite_get("fx_dstrong_blast"), 40);
+fx_dstrong_quake = hit_fx_create(sprite_get("fx_dstrong_quake"), 27);
+
+fx_skill3 = hit_fx_create(sprite_get("fx_skill3"), 20);
+
+fx_skill4_smear = hit_fx_create(sprite_get("fx_skill4_smear"), 20);
+fx_skill4_smear_burn = hit_fx_create(sprite_get("fx_skill4_smear_burn"), 15);
+
+fx_skill6 = hit_fx_create(sprite_get("fx_skill6"), 18);
+fx_skill7_afterimage = hit_fx_create(sprite_get("fx_skill7_afterimage"), 16);
+fx_skill8 = hit_fx_create(sprite_get("fx_skill8"), 30);
+fx_skill11_burst = hit_fx_create(sprite_get("fx_skill11_burst"), 18);
+fx_skill11_chasm = hit_fx_create(sprite_get("fx_skill11_chasm"), 180);
+
+fx_fstrong2 = hit_fx_create(sprite_get("fx_fstrong2"), 20);
+fx_dstrong2_smear = hit_fx_create(sprite_get("fx_dstrong2_smear"), 20);
+//fx_dstrong2_groundfire = hit_fx_create(sprite_get("fx_dstrong2_groundfire"), 90);
+
+sfx_charge = sound_get("sfx_charge");
+
+fx_theikos_aura = hit_fx_create(sprite_get("fx_theikos_aura"), 24);
+
+
+//////////////////////////////////////////////////////////// ATTACK SPECIFIC ////////////////////////////////////////////////////////////
+
+//general
+bar_grabbed_id = noone;
+bar_grab_time = 0;
+
+bar_tracking_id = noone;
+angle_saved = 0;
+
+start_skill_cancel = false;
+skill_cancel_timer = 20;
+
+charge_color = false;
+
+//taunt
+taunt_react_time = 0;
+
+//u-strong
+ustrong_dir = [0, 0];
+
+//burning fury
+burnbuff_active = false;
+fury_norm_cost = skill[1].mp_use_cost;
+fury_mult = 1.5;
+
+//force leap
+leap_used = false;
+leap_move_x = 0;
+leap_move_y = 0;
+
+//photon blast
+blast_used = false;
+blast_charge_level = 0;
+
+//power smash
+power_crater_artc = noone;
+
+//accel blitz
+accel_pos = [0, 0];
+accel_mark_spd = 0;
+accel_marker_artc = noone;
+accel_vulnerable = false;
+accel_goto = 0;
+accel_used = false;
+accel_act_time = 0;
+accel_flashed_time = 0;
+
+//polaris
+lightbuff_active = false;
+polaris_shot = false;
+polaris_id = noone;
+polaris_deactive_cd = 0; //just prevents the low mp message from popping
+homing_cooldown = -1; //30 frames cooldown
+
+lightbuff_alpha = 0.1;
+lightbuff_rate = 0.02;
+lightbuff_increase = true;
+
+//ember fist
+ember_alter_anim_start = 0;
+ember_alter_anim_end = 0;
+fury_ember_timer = 0;
+fury_ember_x = 0
+fury_ember_y = 0;
+
+//light hookshot
+hook_charge = 0;
+hook_grab = 0; //0 = nothing | 1 = player grab | 2 = terrain grab
+hook_fling_anim = false;
+hook_chain_amount = 0;
+hook_chain_artc = noone;
+
+dist = [];
+hook_proj = [0, 0];
+hook_bar_pos = [0, 0];
+
+//chasm burster
+chasm_range = 48;
+chasm_limit = 0;
+chasm_count = 0;
+chasm_far_x = -10000; //there has to be a better way than to spawn all the bursts
+chasm_x = [];
+chasm_y = [];
+chasm_burst_timer = 0;
+
+//theikos strongs
+strong2_charge = 0;
+ustrong2_pillar_end_timer = 0;
+
+dstrong2_fire_count = 3;
+dstrong2_active = false;
+dstrong2_startpos = [0, 0];
+dstrong2_was_freemd = false;
+theikos_fire_artc = noone;
+
+///////////////////////////////////////////////////////// ABYSS RUNES SECTION ///////////////////////////////////////////////////////////
+
+//rune A - airdash
+rune_A_active = has_rune("A");
+PS_AIRDASH = 51; //custom state
+rune_A_cd = 0; //20
+rune_A_attack_boost = false;
+rune_A_airdash_speed = 11;
+
+rune_D_active = has_rune("D");
+
+rune_G_active = has_rune("G");
+rune_G_warp_lag = 0; //replicates the lag that used to be a thing cuz bar was inside accel blitz's animation instead
+
+rune_H_drag_id = noone;
+rune_H_target_was_free = false;
+rune_H_collision_pos = [0, 0];
+
+//OVERDRIVE - LORD'S PUNISHMENT
+AT_OVERDRIVE = 49;
+can_overdrive = has_rune("N");
 od_current = 0;
 od_max = 100;
-od_already_active = false;
-od_fire_timer = 0;
-od_ready = false;
-od_gainable = true; //it's just stopping it for a few frames so the variables can reset properly
-od_cooldown = 0; //this prevents bar from keeping the godpower mode on
-//od_prepare_godpower = false;
+od_cast = 0; //0 = not cast | 1 = ready but still not cast | 2 = casting | 3 = post-OD buffs
+prev_od_cast = 0; //this locks some of the effects so they don't multiply forever
 
-gauge_OD_color = $3BE1FF;
-gauge_OD_color_return = gauge_OD_color;
-gauge_OD_timer = 5;
-gauge_OD_timer_active = false;
-AT_OVERDRIVE = 49;
-od_fallthrough_y = 0; //if bar is on the ground he should fall_through untill he reach
-OD_stop_timer_max = 145;
-OD_stop_timer = OD_stop_timer_max;
-OD_sword_image = 0;
-OD_slash_alpha = 1;
-od_fx_fireblow2 = hit_fx_create(sprite_get("theikos_fx_fireblow2"), 30);
-od_fx_fireblow3 = hit_fx_create(sprite_get("theikos_fx_fireblow3"), 40);
-if (is_8bit)
-{
-	od_fx_fireblow2 = fx_fireblow2;
-	od_fx_fireblow3 = fx_fireblow3;
-}
+od_buff_time_max = 900; //it's actually in seconds. not frames
+od_buff_time = 0;
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+godbuff_mult = 1.5;
 
-//FINAL SMASH/OVERDRIVE POST ATTACK EFFECT: LORD'S BLESSING
-//buffs his natural mana regen, damage output (and by extention mana gain from hitting), doubles the holy burn time and extends light attack hitstuns
-//the buff only starts after the entire attack is finished
-//lord's punishment will grant bar golden eyes (in post_draw.gml), will also make all his effects golden like the theikos alt
+od_fallthrough_y = 0; //checks when bar should stop going through platforms
 
-godpower = false;
-god_damage = 0.5;
-god_mp_rate = 10;
-god_time_reset = 900; //15 secs
-god_time = god_time_reset;
-god_burn_time = 240;
+od_color_const = $3BE1FF;
+od_color = od_color_const;
+od_color_time = 0;
+od_color_flash = false;
+od_sword_image = 0;
+od_slash_alpha = 0;
+od_sword_pos = [[0, 0], [0, 0]];
+sword_timer = 0;
 
-if (has_rune("L"))
-{
-	god_time_reset = 1800; //30 secs
-	god_time = god_time_reset;
-}
+od_bg_alpha = 0;
+od_rect_alpha = 0;
 
-//////////////////////////////////////////////////THEIKOS BAR SECTION//////////////////////////////////////////////////
-
-theikos = false; //this is used to load up all the theikos stuff
-if (has_rune("L")) theikos = true;
-else theikos = false;
-
-theikos_active = false; //this is used so i can delay the transformation
-fuck_you_cheapies = false;
+//THEIKOS
+has_theikos = has_rune("O");
 AT_THEIKOS = 47;
-trans_stall_max = 120;
-trans_stall = 0;
+theikos_event_runtime = 0;
+theikos_type = 0; //0 = no theikos | 1 = regular mode | 2 = anti-cheapie mode
+theikos_mult = 1.75;
+found_cheapie = false;
+prev_attack = 0;
+theikos_music = false;
 
-aura_frame = 0;
-base_aura_speed = 0.25;
-aura_speed = base_aura_speed;
-aura_alpha = 0.3;
-aura_color = $45B6F5;
-text_time = 0; //used for the text particles
-text_maxTime = 5; //controls the rate of holy text particles spawning
-text_alpha = 1; //alpha animation
+/////////////////////////////////////////////////////////// WORKSHOP SECTION ////////////////////////////////////////////////////////////
 
-//i don't need healing but thanks
-heal_count = 0
-heal_count_max = 60; //decides how long it takes to heal 1 unit of "damage_heal"
-heal_me_now = -1; //the amount of health bar heals after 1 cycle
-damage_heal = 0;
-
-//why do i hear boss music?
-bossMusic_start = false;
-bossMusic_count = 0;
-bossMusic_playing = false;
-theikos_music_toggle = true;
-
-//Theikos Skin Hair Glow
-theikos_color_increase = true;
-
-theikos_color_maxTime = 60; //60 = 60 frames
-theikos_color_rate = 2; //the rate at which the time goes up
-theikos_color_alpha = 0; //the "if" statements use this for the time
-
-theikos_redrate = 0.9;
-theikos_red = 70;
-theikos_greenrate = 1.5;
-theikos_green = 129;
-theikos_bluerate = 0.8;
-theikos_blue = 195;
-
-//the calculation i did for these goes like this:
-//1: take the brightest color and darkest color you want it to fade between
-//2: lightest color - darkest color = value
-//3: value / 255 = rate
-//4: tweak the numbers till they fit your liking
-
-heavy_land = false;
-heavy_land_start_count = false;
-heavy_land_count = 0;
-
-//Attacking
-theikosAttack = 0.5; //this is used for the theikos attack multiplyer
-
-turbo_time = false;
-
-//rapid punches Fstrong
-fstrong_canceled = false;
-fstrong_loops_remaining = 0;
-fstrong_countup = 0;
-
-//rapid going up Ustrong (i might not need some of these variables and just merge them with the Fstrong stuff)
-ustrong_canceled = false;
-ustrong_loops_remaining = 0;
-ustrong_countup = 0;
-lightpillar_frame = 0;
-lightpillar_xscale = 0.3;
-lightpillar_alpha = 0.8;
-ustrong2_cast = false;
-
-//fire ground logic for Dstrong
-groundfire_count = 3;
-fire_proj_vspeed = 0; //changes automatically in attack_update.gml
-groundfire_offset = 40;
-dstrong2_active = false;
-dstrong2_active_count = 80; //the same value as AT_DSTRONG_2's 3rd hitbox HG_LIFETIME value
-dstrong2_fire_x = x;
-dstrong2_fire_y = y;
-
-//theikos Fstrong sound effect array
-sfx_armorbreak[0] = sound_get("sfx_armorbreak1");
-sfx_armorbreak[1] = sound_get("sfx_armorbreak2");
-sfx_armorbreak[2] = sound_get("sfx_armorbreak3");
-
-if (theikos_alt) user_event(1); //should activate the effects without needing anything else, he can't turn back from this lol
-user_event_1_active = false;
-
-user_event_0_was_active = false;
-
-//////////////////////////////////////////////////WORKSHOP INTERRACTION SECTION//////////////////////////////////////////////////
-
-//stat debug stuff
-mp_gain_hit = 0; //updates on hit/getting hit/parry
-
-mp_gain_word = "";
-fastfall_word = "";
-theikos_word = "";
-od_gain_word = "";
+//greenwood stage compatibility
+greenwood_cheer = 1;
 
 //green flower zone
 gfzsignspr = sprite_get("GFZ_signpost");
@@ -918,29 +771,59 @@ pkmn_stadium_front_img = sprite_get("pokemon_front");
 pkmn_stadium_back_img = sprite_get("pokemon_back");
 pkmn_stadium_name_override = "bar";
 
-//steve death message
-steve_death0 = "Steve was denied from Shamaeem by Bar_Rey using [Mage's Gauntlet]"; //message to appear when there's no other message
-steve_death1 = "Steve was slain by Bar_Rey"; //normal death message
-steve_death2 = "Steve was slain by Bar_Rey using [Mage's Gauntlet]"; //death from an attack that uses bar's gauntlet
-steve_death3 = "Steve was flashed to death Bar_Rey"; //death from light based attacks
-steve_death4 = "Steve was burnt to a crisp whilst fighting Bar_Rey using [Mage's Gauntlet]"; //dying while holyburning = true;
-steve_death5 = "Death.attack.AT_TAUNT"; //dying if bar killed steve with his taunt
-
-steve_death_message = steve_death0;
-
-//moonchild
-childsupport = 1;
-
 //the last resort
 resort_portrait = sprite_get("last_resort");
 
-//the chosen one art
-if (theikos) tcoart = sprite_get("tcoart2");
-else tcoart = sprite_get("tcoart1");
-
 //soulbound conflict
-if (theikos) battle_text = "* The guardian's true face revealed.";
-else battle_text = "* Bar braces himself!";
+battle_text = (theikos_type > 0) ? "* The guardian's true face revealed." : "* Bar braces himself!";
+
+//dracula portrait
+dracula_portrait = (theikos_type > 0) ? sprite_get("dracula_theikos_portrait1") : sprite_get("dracula_portrait1");
+dracula_portrait2 = (theikos_type > 0) ? sprite_get("dracula_theikos_portrait2") : sprite_get("dracula_portrait2");
+
+//RC car
+kart_sprite = sprite_get("car");
+kart_frames = 4;
+kart_anim_speed = 0.1;
+kart_anim_speed_scaling = 0.3;
+kart_engine_sound = 3;
+kart_drift_spr = 3;
+
+//adventure mode hit_player redirect
+hit_player_event = 13;
+
+//pit - palutena's guidance
+user_event(7);
+
+//callie - date
+user_event(8);
+
+//the chosen one - art
+tcoart = sprite_get("tcoart1");
+if (alt_cur == 26) tcoart = sprite_get("tcoart2");
+
+//moonchild - music
+childsupport = 1;
+
+//neptendo - music
+hasnepusupport = 1;
+nepusong = sound_get("mus_nepu");
+
+//link - spear
+link_spear_drop = 8;
+
+//otto - bobblehead (i also included the old one)
+otto_bobblehead_sprite = sprite_get("otto_bobble_head");
+
+//steve death messeges
+steve_death0 = "Steve was denied from Shamaeem by Bar_Rey using [Mage's Gauntlet]"; //message to appear when there's no other message
+steve_death1 = "Steve was slain by Bar_Rey"; //normal death message
+steve_death2 = "Steve was slain by Bar_Rey using [Mage's Gauntlet]"; //death from an attack that uses bar's gauntlet
+steve_death3 = "Steve was flashed to death by Bar_Rey"; //death from light based attacks
+steve_death4 = "Steve was burnt to a crisp whilst fighting Bar_Rey using [Mage's Gauntlet]"; //dying while holyburning = true;
+steve_death5 = "Death.attack.AT_TAUNT"; //dying if bar killed steve with his taunt
+steve_death_message = steve_death0;
+
 
 //assist buddy
 assistAttack = AT_FAIR; //The attack to use as the assist
@@ -952,43 +835,72 @@ assistGroundOnly = false; //Whether or not they are forced to the ground
 assistFloat = false; //Whether or not they stay in place vertically
 assistCool = 120; //The time it takes for the assist to recharge
 
-hasnepusupport = 1;
-nepusong = sound_get("mus_nepu");
-
 //final smash buddy
 fs_meter_color = 0; //a custom variable for the gauge color
 
-fs_portrait_x = 246;
-fs_char_portrait_y = 50;
-fs_char_portrait_override = sprite_get("fs_portrait1");
+fs_portrait_x = 150;
+fs_char_portrait_y = 100;
+fs_char_portrait_override = get_char_info(player, INFO_PORTRAIT);
 fs_char_chosen_final_smash = "custom";
-fs_char_chosen_trigger = "custom"; //put [fs_force_fs = true;] when bar should activate AT_OVERDRIVE in attack_update.gml
+fs_char_chosen_trigger = "custom";
 fs_char_attack_index = AT_OVERDRIVE;
-//fs_meter_x = 0;
-//fs_meter_y = 0;
 fs_hide_meter = true; //so i can make it use the OD gauge instead
+fs_charge_mult = 0;
+
 //put [fs_charge] in hit_player.gml and parry.gml so it will work like the rune version
 //put [fs_charge_mult] to decide the charge rate if it doesn't suit me fancy
 //use [fs_ai_attempt_use] to make a CPU use the final smash
 
-//rivals of fighters stage
-//superMove = AT_OVERDRIVE;
+//////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 
-//callie compatibility
-user_event(12);
+//checks the skills themselves
+#define set_skill(name, id, slot_x, slot_y, atk, air_atk, cost, cost_ex, cost_min)
+{
+    //  name            = the name of the skill in question
+    //  id              = the sprite to display from the icon strip on the UI above the MP gauge (0-11)
+    //  slot_x          = which skill slot is it for (0-3)
+    //  slot_y          = which skill is it between the 3 choices (0-2)
+    //  atk             = the ground attack index to use
+    //  air_atk         = the air attack index to use (-1 makes it use the same one as the ground version)
+    //  cost            = initial cost when activating the skill (for flashbang it's 0)
+    //  cost_ex         = secoundary skill cost like when light hookshot is fired or bar lands with power smash
+    //  cost_min        = what move_cooldown will see to check if we have enough MP to use the skill in the firs place
+    //  cost_min2       = specific for some very certain moves if they need another cooldown limiter
+    
+    skill[a] = {
+        skill_name: name,
+        skill_id: id,
+        skill_pos_x: slot_x,
+        skill_pos_y: slot_y,
+        skill_attack: atk,
+        skill_attack_air: air_atk,
+        mp_cost1: cost,
+        mp_cost2: cost_ex,
+        mp_use_cost: cost_min,
+    };
+    
+    a ++;
+    return a-1;
+    
+    //explanations
+    /*
+        //"name"/"skill_name" i don't REALLY need but i guess it's nice to have
+        //generally, it's based off muno's steve items
+        //on his items these names come up on nspec's tables
 
-//car bar
-if (get_player_color(player) != 31 && !theikos) kart_sprite = sprite_get("car");
-else kart_sprite = sprite_get("car_theikos");
-kart_frames = 4;
-kart_anim_speed = 0.1;
-kart_anim_speed_scaling = 0.3;
-kart_engine_sound = 3;
-kart_drift_spr = 3;
+        //draw_hud.gml - rethink this - it will only display one icon at a certain spot
+        //  draw_sprite_ext(hud_skills, skill_id, temp_x + skill_pos_x * 30 + 98, temp_y - 40, 2, 2, 0, c_white, 1);
+        //  hud_skills = sprite_get("hud_skills"); //this will also use the disabled skill icons, it swiches around, will need testing
 
-//so bar can gain mana in adventure mode and other various stage objects
-hit_player_event = 13;
+        //set_attack.gml
+        //  if (specialnums[0] == 0) attack = free ? skill_attack : skill_attack_air;
+        //  if (skill_attack_air == -1) skill_attack_air = skill_attack;
 
-//munophone
-muno_event_type = 0;
-user_event(14);
+        //attack_update.gml
+        //  if (window_timer == 1 && window == 2) mp_current -= mp_cost1; //initial cost
+        //  if (window_timer == 1 && window == 5) mp_current -= mp_cost2; //extra cost
+
+        //update.gml
+        //  move_cooldown[skill name] = 1 + ceil(mp_use_cost - mp_current);
+    */
+}

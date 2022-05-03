@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 30 );
 
 // Apple Watch A
 set_color_profile_slot( 1, 0, 32, 85, 120 ); //Sword

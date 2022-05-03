@@ -46,6 +46,11 @@ else if (alt == 13){
     draw_sprite_ext(sprite_get("charselecthearts2"),drawtime / 2,x+8,y+8,2,2,0,-1,1);
     draw_sprite_ext(sprite_get("_charselect_kawaii"),0,x+8,y+8,2,2,0,c_white,1)
     draw_sprite_ext(sprite_get("charselecthearts"),drawtime / 2,x+8,y+8,2,2,0,-1,1);
+}
+
+if (alt == 15){
+    draw_sprite_ext(cssico,0,x+8,y+8,2,2,0,c_white,1)
+    draw_sprite_ext(sprite_get("_cssico11"),0,x+8,y+8,2,2,0,c_white,1)
 } 
 //Normal
 else {

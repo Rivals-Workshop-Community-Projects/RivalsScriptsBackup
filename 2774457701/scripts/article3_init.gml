@@ -7,4 +7,3 @@ free = false;
 hsp = 0;
 vsp = -7;
 grav = 0.3;
-despawntimer = 0;

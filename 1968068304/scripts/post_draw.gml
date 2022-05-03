@@ -10,6 +10,7 @@ if (epinel_heavy_state) {
 if ((attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) && window == 3 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) {
 	var focusdist_x;
 	var focusdist_y;
+	//var draw_charge_timer = max(epinel_charge_timer, 14);
 	if (attack == AT_FSPECIAL_AIR) {
 		focusdist_x = (epinel_charge_timer * 9 + 30) / 2;
 		focusdist_y = focusdist_x - 32;
@@ -52,11 +53,12 @@ with (obj_article_platform)
 }
 
 shader_end();
+
 /*
 draw_debug_text(x, y-100, "upb cooldown: " + string(move_cooldown[AT_USPECIAL]));
 draw_debug_text(x, y-120, "epinel_heavy_state: " + string(epinel_heavy_state));
 draw_debug_text(x, y-140, "state: " + get_state_name(state));
-draw_debug_text(x, y-160, "prev_state: " + get_state_name(prev_state));
+
 draw_debug_text(x, y-180, "attack: " + string(attack));
 draw_debug_text(x, y-200, "hitpause: " + string(hitpause));
 draw_debug_text(x, y-220, "was_parried: " + string(was_parried));

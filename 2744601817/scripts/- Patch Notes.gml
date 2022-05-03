@@ -1,4 +1,19 @@
 /*
+-- V1.3 --
+
+Gameplay Changes:
+- Nspecial now stalls you ever so slightly.
+This makes it easier to go straight into uspecial to bounce off it
+
+- Nair has an aditional hit upon landing on the ground.
+This is to prevent an infinite.
+
+Cosmetic Changes:
+- The switch skin now has an icon in the CSS
+
+Other Changes:
+- DE has been removed from the name
+
 -- V1.2 --
 
 Gameplay Changes:

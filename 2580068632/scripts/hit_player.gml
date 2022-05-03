@@ -33,6 +33,14 @@ if (my_hitboxID.attack == AT_BAIR){
 	}
 }
 
+if (my_hitboxID.attack == AT_FAIR
+|| my_hitboxID.attack == AT_UAIR
+|| my_hitboxID.attack == AT_DAIR
+|| my_hitboxID.attack == AT_NAIR
+|| my_hitboxID.attack == AT_BAIR) {
+	attacking_out_of_shuttle_loop = false;
+}
+
 
 if (my_hitboxID.attack == AT_FAIR) {
 	if (window > 5){

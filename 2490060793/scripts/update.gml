@@ -290,6 +290,27 @@ if timer == 1 && get_player_color(player) == 26 {
 	set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, b_vfx);
 }
 
+
+//flipper 10 debug stuff 
+/*
+if timer mod 2 == 0 create_hitbox(AT_NSPECIAL, 9, x, y)
+
+if taunt_down {
+	hsp = spr_dir*10*dcos(75)
+	vsp = -10*dsin(75)
+}
+
+with oPlayer if id != other.id {
+	if other.taunt_down {
+		gravity_speed = 0
+		hitstun_grav = 0
+	} else {
+		gravity_speed = 1
+		hitstun_grav = 1
+	}
+}
+*/
+
 #define spawn_base_dust(x, y, name, dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value

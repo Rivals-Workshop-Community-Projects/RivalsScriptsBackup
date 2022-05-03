@@ -7,6 +7,7 @@ sprite_change_offset("ai", 46, 92);
 sprite_change_offset("dash", 46, 92);
 
 
+
 sprite_change_offset("dashstart", 46, 92);
 sprite_change_offset("dashstop", 46, 92);;
 sprite_change_offset("dashturn", 46, 92);;

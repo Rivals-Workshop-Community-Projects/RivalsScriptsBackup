@@ -293,16 +293,30 @@ if attack == AT_FSPECIAL {
 		if window_timer == 20 {
 			sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,.8)
 		}
+		if window_timer == 24 {
+			hsp = 200*spr_dir
+			var step_up_height = 60;
+            
+            if place_meeting(x+hsp,y+vsp,asset_get("par_block")) {
+                for (var i = 0; i < step_up_height; i += 2) {
+                    if !place_meeting(x+hsp,y+vsp-i,asset_get("par_block")) {
+                        y = y+vsp-i;
+                        break;
+                    }
+                }
+            }
+		}
 	}
+	
 	if window == 3 && window_timer == 1 && !hitpause && free {
 			vsp = -3
 	}
 	
-
-	
-	if window == 1 && window_timer > 23 && !hitpause {
-		spawn_hit_fx(x , y - 36, 302)
-		spawn_hit_fx(x , y - 36, 303)
+	if window == 1 && window_timer == 23 && !hitpause {
+		fx = spawn_hit_fx(x , y - 36, 302)
+		fx.pause = 6
+		fx2 = spawn_hit_fx(x , y - 36, 303)
+		fx2.pause = 6
 		spawn_hit_fx(x + 30 * spr_dir, y , ai)
 		spawn_hit_fx(x + 120 * spr_dir, y , ai)
 		spawn_hit_fx(x + 200 * spr_dir, y , ai)
@@ -490,8 +504,8 @@ if attack == AT_USPECIAL {
 	
 	
 	if window == 1 && window_timer > 23 && !hitpause {
-		spawn_hit_fx(x , y - 36, 302)
-		//spawn_hit_fx(x , y - 36, 304)
+		fx = spawn_hit_fx(x , y - 36, 302)
+		fx.pause = 6
 		spawn_hit_fx(x , y - 30 , ai)
 		spawn_hit_fx(x , y - 90 , ai)
 		spawn_hit_fx(x , y - 150 , ai)

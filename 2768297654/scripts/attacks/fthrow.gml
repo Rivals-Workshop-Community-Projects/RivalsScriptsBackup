@@ -51,6 +51,6 @@ set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_HSPEED, 13);
+set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_HSPEED, 12);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_VSPEED, -4);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_GRAVITY, 0.4);

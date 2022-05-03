@@ -149,10 +149,10 @@ DSPA_grab = false;
 
 //Fsepcial
 fspec_jump = false;
-
+fspecial_ledgeforgiven = false;
 
 //dair 
-    Dpuddle = false;
+Dpuddle = false;
 
 //intro crap
 introTimer = -2;

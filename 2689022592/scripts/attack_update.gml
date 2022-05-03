@@ -182,7 +182,12 @@ switch attack {
 	     }
 	     if window == 4 {
 	     	if free y += 2
-	     	djumps = 0
+	     	
+	     	if djumps == 1 && jrefund == 0 {
+	     		djumps = 0
+	     		jrefund = 1
+	     	}
+	     	
 	     	vsp = 0
 	     	hsp /= 1.2
 	     	if window_timer < 4 {
@@ -255,11 +260,11 @@ switch attack {
 	  	}
 	  	vsp /= 1.1
 	  	hsp /= 1.1
-	  	if abs(vsp) < 8 {
-	  		vsp -= ((up_down - down_down)/(2+abs(right_down - left_down)/1.5))
+	  	if abs(vsp) < 10 {
+	  		vsp -= ((up_down - down_down)/(2+abs(right_down - left_down)))*1.2
 	  	}
-	  	if abs(hsp) < 8 {
-	  		hsp += ((right_down - left_down)/(2+abs(up_down - down_down)/1.5))
+	  	if abs(hsp) < 10 {
+	  		hsp += ((right_down - left_down)/(2+abs(up_down - down_down)))*1.2
 	  	}
 	  }
 	  

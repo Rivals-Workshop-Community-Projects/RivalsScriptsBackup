@@ -2,7 +2,7 @@
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 27;
+var numAlts = 32;
 
 // patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -32,32 +32,32 @@ alt_name[3]  = "Fiery";
 alt_name[4]  = "Forest";
 alt_name[5]  = "Magenta";
 alt_name[6]  = "Sunlight";
-alt_name[7]  = "Valentine's Massacre";
-alt_name[8]  = "Akira Taue";
-alt_name[9]  = "Toshiaki Kawada";//
-alt_name[10] = "Kenta Kobashi";
-alt_name[11] = "Mitsuharu Misawa";
-alt_name[12] = "Sting";
-alt_name[13] = "Undertaker";//
-alt_name[14] = "Tizoc (D Palette)";
-alt_name[15] = "Beowulf";
-alt_name[16] = "Terryman";
-alt_name[17] = "Fernet";
+alt_name[7]  = "Night Sky";
+alt_name[8]  = "Springatito";
+alt_name[9]  = "Akira Taue";
+alt_name[10] = "Toshiaki Kawada";
+alt_name[11] = "Kenta Kobashi";
+alt_name[12] = "Mitsuharu Misawa";
+alt_name[13] = "Sting";
+alt_name[14] = "Undertaker";
+alt_name[15] = "Bret Hart";
+alt_name[16] = "Tizoc (D Palette)";
+alt_name[17] = "Beowulf";
 alt_name[18] = "Goldust";
-alt_name[19] = "Chris Hayabusa";
-alt_name[20] = "Olympia";
-alt_name[21] = "TuQiu";
-alt_name[22] = "Incineroar";
-alt_name[23] = "Snow";
-alt_name[24] = "Cheetara";
-alt_name[25] = "She-Hulk";
-alt_name[26] = "R. Mika";
-alt_name[27] = "Orochi Shermie";
-alt_name[28] = "Abyss";
-alt_name[29] = "";
-alt_name[30] = "";
-alt_name[31] = "";
-//alt_name[31] = "";
+alt_name[19] = "Terryman";
+alt_name[20] = "Chris Hayabusa";
+alt_name[21] = "Anglara";
+alt_name[22] = "Olympia";
+alt_name[23] = "Fernet";
+alt_name[24] = "TuQiu";
+alt_name[25] = "Incineroar";
+alt_name[26] = "Snow";
+alt_name[27] = "Cheetara";
+alt_name[28] = "She-Hulk";
+alt_name[29] = "R. Mika";
+alt_name[30] = "Orochi Shermie";
+alt_name[31] = "Abyss";
+//
 
 draw_set_halign(fa_right);
 // textDraw(temp_x + 198, temp_y + 106, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

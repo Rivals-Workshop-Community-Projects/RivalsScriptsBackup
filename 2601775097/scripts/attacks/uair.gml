@@ -1,4 +1,4 @@
-atk = AT_UAIR;
+var atk = AT_UAIR;
 
 set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("uair"));
@@ -7,7 +7,7 @@ set_attack_value(atk, AG_LANDING_LAG, 4); //8
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 4);
 
-windowNum = 1; //windup
+var windowNum = 1; //windup
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 6); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 3); //frames amount on strip
@@ -37,7 +37,7 @@ set_window_value(atk, windowNum, AG_WINDOW_HAS_WHIFFLAG, 1); //if the attack mis
 //amount of hitboxes
 set_num_hitboxes(atk, 1);
 
-hitboxNum = 1;
+var hitboxNum = 1;
 set_hitbox_value(atk, hitboxNum, HG_PARENT_HITBOX, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 2); //at which window from the above the attack is created

@@ -1,4 +1,4 @@
-set_num_palettes(28);
+set_num_palettes(32);
 
 //DEFAULT COLOR (R,G,B)
 set_color_profile_slot(0, 0, 29, 167, 231); //BODY
@@ -16,13 +16,21 @@ set_color_profile_slot_range(3, 2, 34, 37); //EYES SHINE
 set_color_profile_slot_range(4, 2, 11, 12); //EYES SHINE 2
 set_color_profile_slot_range(5, 2, 2, 2); //ATTACK TRAIL
 
-//Red Color
+//Pastel Paste Color
+set_color_profile_slot(1, 0, 198, 186, 255); //BODY
+set_color_profile_slot(1, 1, 249, 225, 94); //CHEEKS
+set_color_profile_slot(1, 2, 0, 143, 109); //EYES
+set_color_profile_slot(1, 3, 79, 228, 125); //EYES SHINE
+set_color_profile_slot(1, 4, 0, 103, 112); //EYES SHINE 2
+set_color_profile_slot(1, 5, 249, 225, 94); //ATTACK TRAIL
+
+/*//Red Color
 set_color_profile_slot(1, 0, 210, 56, 40); //BODY
 set_color_profile_slot(1, 1, 60, 63, 109); //CHEEKS
 set_color_profile_slot(1, 2, 64, 11, 27); //EYES
 set_color_profile_slot(1, 3, 255, 122, 69); //EYES SHINE
 set_color_profile_slot(1, 4, 142, 41, 100); //EYES SHINE 2
-set_color_profile_slot(1, 5, 255, 126, 0); //ATTACK TRAIL
+set_color_profile_slot(1, 5, 255, 126, 0); //ATTACK TRAIL*/
 
 //Purple Color
 set_color_profile_slot(2, 0, 172, 99, 234); //BODY
@@ -152,13 +160,21 @@ set_color_profile_slot(17, 3, 180, 1, 1); //EYES SHINE
 set_color_profile_slot(17, 4, 180, 1, 1); //EYES SHINE 2
 set_color_profile_slot(17, 5, 180, 1, 1); //ATTACK TRAIL
 
-//Ceele Color
+//Jigglypuff Color
+set_color_profile_slot(18, 0, 241, 205, 213); //BODY
+set_color_profile_slot(18, 1, 55, 61, 77); //CHEEKS
+set_color_profile_slot(18, 2, 0, 108, 134); //EYES
+set_color_profile_slot(18, 3, 248, 250, 251); //EYES SHINE
+set_color_profile_slot(18, 4, 88, 172, 186); //EYES SHINE 2
+set_color_profile_slot(18, 5, 88, 172, 186); //ATTACK TRAIL
+
+/*//Ceele Color
 set_color_profile_slot(18, 0, 246, 218, 248); //BODY
 set_color_profile_slot(18, 1, 192, 124, 212); //CHEEKS
 set_color_profile_slot(18, 2, 30, 97, 84); //EYES
 set_color_profile_slot(18, 3, 165, 245, 228); //EYES SHINE
 set_color_profile_slot(18, 4, 165, 245, 228); //EYES SHINE 2
-set_color_profile_slot(18, 5, 247, 127, 255); //ATTACK TRAIL
+set_color_profile_slot(18, 5, 247, 127, 255); //ATTACK TRAIL*/
 
 //Green Goo Color
 set_color_profile_slot(19, 0, 88, 248, 74); //BODY
@@ -184,13 +200,21 @@ set_color_profile_slot(21, 3, 0, 135, 233); //EYES SHINE
 set_color_profile_slot(21, 4, 0, 135, 233); //EYES SHINE 2
 set_color_profile_slot(21, 5, 0, 135, 233); //ATTACK TRAIL
 
-//Prober Color
+//Neon Nova Color
+set_color_profile_slot(22, 0, 255, 17, 128); //BODY
+set_color_profile_slot(22, 1, 255, 17, 128); //CHEEKS
+set_color_profile_slot(22, 2, 136, 36, 109); //EYES
+set_color_profile_slot(22, 3, 253, 33, 193); //EYES SHINE
+set_color_profile_slot(22, 4, 90, 36, 75); //EYES SHINE 2
+set_color_profile_slot(22, 5, 253, 33, 193); //ATTACK TRAIL
+
+/*//Prober Color
 set_color_profile_slot(22, 0, 252, 99, 3); //BODY
 set_color_profile_slot(22, 1, 66, 134, 0); //CHEEKS
 set_color_profile_slot(22, 2, 64, 12, 25); //EYES
 set_color_profile_slot(22, 3, 80, 155, 0); //EYES SHINE
 set_color_profile_slot(22, 4, 56, 90, 20); //EYES SHINE 2
-set_color_profile_slot(22, 5, 80, 155, 0); //ATTACK TRAIL
+set_color_profile_slot(22, 5, 80, 155, 0); //ATTACK TRAIL*/
 
 //King Blob
 set_color_profile_slot(23, 0, 107, 134, 225); //BODY
@@ -231,3 +255,35 @@ set_color_profile_slot(27, 2, 65, 38, 39); //EYES
 set_color_profile_slot(27, 3, 191, 136, 146); //EYES SHINE
 set_color_profile_slot(27, 4, 113, 73, 74); //EYES SHINE 2
 set_color_profile_slot(27, 5, 255, 228, 209); //ATTACK TRAIL
+
+//Mudkip
+set_color_profile_slot(28, 0, 42, 133, 218); //BODY
+set_color_profile_slot(28, 1, 244, 163, 76); //CHEEKS
+set_color_profile_slot(28, 2, 15, 20, 47); //EYES
+set_color_profile_slot(28, 3, 168, 180, 248); //EYES SHINE
+set_color_profile_slot(28, 4, 45, 58, 124); //EYES SHINE 2
+set_color_profile_slot(28, 5, 135, 211, 255); //ATTACK TRAIL
+
+//Galacta Knight
+set_color_profile_slot(29, 0, 224, 62, 218); //BODY
+set_color_profile_slot(29, 1, 255, 225, 71); //CHEEKS
+set_color_profile_slot(29, 2, 255, 0, 214); //EYES
+set_color_profile_slot(29, 3, 255, 109, 231); //EYES SHINE
+set_color_profile_slot(29, 4, 255, 109, 231); //EYES SHINE 2
+set_color_profile_slot(29, 5, 244, 153, 255); //ATTACK TRAIL
+
+//Navy Nectar
+set_color_profile_slot(30, 0, 0, 103, 112); //BODY
+set_color_profile_slot(30, 1, 0, 103, 112); //CHEEKS
+set_color_profile_slot(30, 2, 27, 13, 65); //EYES
+set_color_profile_slot(30, 3, 145, 127, 241); //EYES SHINE
+set_color_profile_slot(30, 4, 27, 13, 65); //EYES SHINE 2
+set_color_profile_slot(30, 5, 145, 127, 241); //ATTACK TRAIL
+
+//Silver Sludge
+set_color_profile_slot(31, 0, 218, 218, 218); //BODY
+set_color_profile_slot(31, 1, 255, 174, 142); //CHEEKS
+set_color_profile_slot(31, 2, 255, 149, 104); //EYES
+set_color_profile_slot(31, 3, 255, 193, 166); //EYES SHINE
+set_color_profile_slot(31, 4, 153, 82, 52); //EYES SHINE 2
+set_color_profile_slot(31, 5, 255, 149, 104); //ATTACK TRAIL

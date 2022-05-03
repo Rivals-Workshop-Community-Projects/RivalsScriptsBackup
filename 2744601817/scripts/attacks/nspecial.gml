@@ -13,6 +13,10 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, sound_get("bswish_light1"));
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.7);
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);

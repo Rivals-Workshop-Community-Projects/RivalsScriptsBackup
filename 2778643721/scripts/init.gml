@@ -214,7 +214,8 @@ laugh_cancel = false;
 zetter_hit = hit_fx_create( sprite_get( "zetter_hit1" ), 25 );
 
 intro_toggle = true;
-
+kf_custom_icon = sprite_get("kf_icon");
+kf_hud_offset = -20;
 superMove = 14;
 
 if (get_player_color( player ) == 8 or get_player_color( player ) == 5 or get_player_color( player ) == 6){
@@ -231,3 +232,8 @@ lor = noone;
 introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;
+nname = "Magolor";
+
+ncode1 = "Guilty of stealing the Lor Starcutter and once";
+ncode2 = "tried to control a universe. Approach carefully,";
+ncode3 = "for he wields abilities greater than most.";

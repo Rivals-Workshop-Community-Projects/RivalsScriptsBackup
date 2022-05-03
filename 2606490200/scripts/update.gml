@@ -402,11 +402,11 @@ if state_timer == 1 {
 
 	 
 	 if state_timer < 9{
-	     hsp = -0.5 * spr_dir
+	     hsp = -5 * spr_dir
 	 }
 	 
 	 if state_timer >= 9 and state_timer < 12 {
-	     hsp = -50 * spr_dir
+	     hsp = -30 * spr_dir
 	 }
 	 if state_timer >= 4 and state_timer < 12 {
 	     draw_indicator = false

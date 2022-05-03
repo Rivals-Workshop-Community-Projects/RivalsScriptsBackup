@@ -1,290 +1,188 @@
 //hitbox_update
 
-//light spear slight rotation on whiff, also disable burning fury if it's active and it hit
-if (attack == AT_USTRONG)
+switch (attack)
 {
-    if (hbox_num == 4 || hbox_num == 5)
-    {
-        if (!free) destroyed = true;
-    } 
-}
-
-//destroy light daggers when they hit the ground, and rotate them
-if (attack == player_id.AT_SKILL0_AIR)
-{
-    if (hbox_num == 1 || hbox_num == 2 || hbox_num == 3)
-    {
-        proj_angle = -45 * spr_dir;
-
-        if (!free) destroyed = true;
-
-        if (was_parried) proj_angle = 45 * spr_dir;
-    }
-}
-//light daggers/spears dissolve effects
-if (attack == AT_USTRONG) {
-    if (hbox_num == 4 && hitbox_timer == length - 1) {
-        spawn_hit_fx(x, y, player_id.fx_lightblow1);
-        sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
-    }
-    if (hbox_num == 5 && hitbox_timer == length - 1) {
-        spawn_hit_fx(x, y, player_id.fx_fireblow2);
-        sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
-    }
-}
-if (attack == player_id.AT_SKILL0 && (hbox_num == 1 || hbox_num == 2) && hitbox_timer == length - 1) {
-    spawn_hit_fx(x, y, player_id.fx_lightblow1);
-    sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
-}
-if (attack == player_id.AT_SKILL0_AIR && (hbox_num == 1 || hbox_num == 2) && hitbox_timer == length - 1) {
-    spawn_hit_fx(x, y, player_id.fx_lightblow1);
-    sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
-}
-
-//light dagger/spears spawn explosion for burning fury
-if (attack == player_id.AT_SKILL0 && hbox_num == 3 && hitbox_timer == length - 1) {
-    spawn_hit_fx(x, y, player_id.fx_fireblow1);
-    sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
-}
-if (attack == player_id.AT_SKILL0_AIR && hbox_num == 3 && hitbox_timer == length - 1) {
-    spawn_hit_fx(x, y, player_id.fx_fireblow1);
-    sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
-}
-
-//preventing chasm burster from spawning projectiles in the air
-if (attack == player_id.AT_SKILL5 && (hbox_num == 2 || hbox_num == 4))
-{
-    if (free && hitbox_timer == 1) //it should also be destroyed if it's inside clairen's field
-    {
-        destroyed = true;
-        player_id.reached_max_bursts = true;
-    }
-    else if (!free && !player_id.reached_max_bursts)
-    {
-        if (place_meeting(x, y, asset_get("plasma_field_obj"))) destroyed = true;
-        if (hitbox_timer == 2) player_id.spawn_earth_shatter = true;
-    }
-}
-
-if (player_id.theikos) //light daggers dissolve effect but theikos
-{
-    if (attack == AT_USTRONG && hbox_num == 5 && hitbox_timer == length - 1) {
-    spawn_hit_fx(x, y, player_id.fx_lightblow1);
-    sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
-    }
-    if (attack == player_id.AT_SKILL0 && (hbox_num == 1 || hbox_num == 2) && hitbox_timer == length - 1) {
-    spawn_hit_fx(x, y, player_id.fx_lightblow1);
-    sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
-    }
-    if (attack == player_id.AT_SKILL0_AIR && (hbox_num == 1 || hbox_num == 2) && hitbox_timer == length - 1) {
-    spawn_hit_fx(x, y, player_id.fx_lightblow1);
-    sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
-    }
-}
-
-//theikos D-strong
-if (attack == AT_DSTRONG_2 && hbox_num == 1)
-{
-    if (hitbox_timer > 1) grounds = 0; //makes it so it only passes through the first platform
-
-    if (freemd || !free && hitbox_timer > 1 || hitbox_timer == length - 1) //spawn explosion
-    {
-        destroyed = true;
-
-        //initial ground hit stuff
-        var hit_collision = create_hitbox(AT_DSTRONG_2, 2, x, y);
-        hit_collision.fx_particles = 2;
-        if (player_id.user_event_1_active) hit_collision.fx_particles = 6;
-        
-        var fx_collision = spawn_hit_fx(x, y, player_id.fx_fireblow3);
-        fx_collision.depth = -7;
-        sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
-        
-        if (freemd || !free && hitbox_timer > 1) dstrong2_active = true;
-    }
-    if (dstrong2_active) //spawn ground fire
-    {
-        if (!instance_exists(firespread_article) && !in_hitpause)
-        {
-            for (var count = -player_id.groundfire_count; count <= player_id.groundfire_count; count ++)
-            {
-                var firespread = instance_create(x + groundfire_offset * count, y, "obj_article2");
-                firespread.state = 12;
-            }
-        }
-    }
-}
-
-//polaris projectile
-if (attack == player_id.AT_SKILL7)
-{
-    var proj_speed = 0;
-    var hit_sound_played = false;
-
-    //hit particles
-    fx_particles = 1;
-    if (player_id.user_event_1_active) fx_particles = 5;
-
-    //afterimage effect
-    if (hitbox_timer % 4 == 0) spawn_hit_fx(x, y, player_id.fx_homing_afterimage);
-
-    //always follow the target
-    if (!was_parried) player_id.homing_target_id = player_id.hit_player_obj;
-    else player_id.homing_target_id = player_id;
+    case AT_USTRONG:
+        generate_particles(hbox_num-4); //particles
+        if (hbox_num == 5) if (instance_exists(fx)) fx.draw_angle = proj_angle+45*spr_dir;
+        break;
+    //light dagger
+    case AT_NTHROW: case AT_NSPECIAL_AIR:
+        generate_particles(hbox_num-1); //particles
     
-    //print("homing_target_id = " + string(player_id.homing_target_id));
+        if (place_meeting(x, y, asset_get("par_block"))) destroyed = true;
 
-    //if bar isn't in certain animations, allow the move to hitstun and knockback
-    //if (kb_value == 0 && hitpause == 0 && hitpause_growth == 0)
-    //{
-    //    if ((player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND) || player_id.attack != player_id.AT_SKILL1
-    //    && player_id.attack != player_id.AT_SKILL1_AIR && player_id.attack != player_id.AT_SKILL10
-    //    && (player_id.attack != AT_DATTACK || player_id.attack == AT_DATTACK && window >= 4) && player_id.attack != AT_JAB)
-    //    {
-    //        kb_value = 7;
-    //        hitpause = 5;
-    //        hitpause_growth = 0.4;
-    //    }
-    //}
-
-    //hit detection
-    for(var i = array_length(can_hit); i > -1; i--;)
-    {
-        if (i != player_id.homing_target_id.player) can_hit[i] = false;
-        else can_hit[i] = true;
-    }
-    
-    //homing
-    if (player_id.homing_target_id != noone && !was_parried)
-    {
-        if (hitbox_timer < 30) proj_speed = -10 + hitbox_timer;
-        else proj_speed = 20;
-
-	    var angle = point_direction(x, y, player_id.homing_target_id.x, player_id.homing_target_id.y-player_id.homing_target_id.char_height+16);
-	    hsp = lengthdir_x(proj_speed, angle);
-	    vsp = lengthdir_y(proj_speed, angle);
-
-        if (hitbox_timer == length)
+        if (hitbox_timer == length - 1 || destroyed) //disappear effect
         {
-            sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
-            spawn_hit_fx(x, y, player_id.fx_lightblow1);
-        }
-
-        //if the target is dead kill this hitbox
-        if (player_id.homing_target_id.state == PS_RESPAWN || player_id.homing_target_id.state == PS_DEAD) length = 0;
-    }
-
-    //if the projectile was parried
-    if (was_parried)
-    {
-        length = 300;
-        proj_speed = 10;
-        kb_angle = 70;
-        kb_value = 8;
-        hitpause = 20;
-
-        if (hitbox_timer == 0)
-        {
-            angle = point_direction(x, y, player_id.x, player_id.char_height+16);
-	        hsp = lengthdir_x(proj_speed, angle);
-	        vsp = lengthdir_y(proj_speed, angle);
-        }
-    }
-}
-
-//if bar hits an enemy he will pull
-if (attack == player_id.AT_SKILL9)
-{
-    if (hbox_num == 1)
-    {
-        if (hitbox_timer % 2 == 0)
-        {
-            var chain = instance_create(x, y, "obj_article1");
-            chain.state = 1;
+            switch (hbox_num)
+            {
+                case 1:
+                    spawn_hit_fx(x, y, player_id.fx_lightblow[0]);
+                    sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
+                    break;
+                case 2:
+                    spawn_hit_fx(x, y, player_id.fx_fireblow[0]);
+                    sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
+                    break;
+            }
         }
         
-        //this just adds more vertical momentum for recovery
-        if (destroyed && (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) && attack == player_id.AT_SKILL9) 
+        if (attack == AT_NSPECIAL_AIR)
         {
-            player_id.hookshot_speedboost = true;
-            sound_play(asset_get("sfx_ori_energyhit_medium"));
-            if (player_id.hookshot_speedboost) player_id.vsp -= (player_id.hookshot_chargetime/5+2.5)/4;
+            proj_angle = -45 * spr_dir;
+            if (was_parried) proj_angle = 45 * spr_dir;
+        }
+        break;
+    //light hookshot
+    case AT_EXTRA_2:
+        generate_particles(hbox_num-1); //particles
+        if (hbox_num == 1 && player_id.is_attacking)
+        {
+            if (player_id.hook_grab == 0)
+            {
+                if (has_hit && player != other) player_id.hook_grab = 1; //players
+                else if (place_meeting(x, y, asset_get("solid_32_obj"))) player_id.hook_grab = 2; //the ground and walls
+            }
+            if (player_id.hook_grab > 0) destroyed = true;
+        }
+        break;
+    //polaris
+    case AT_USPECIAL_2:
+        var proj_speed = 0;
+        var hit_sound_played = false;
+        
+        //hit particles
+        fx_particles = 1;
+
+        //afterimage effect
+        if (hitbox_timer % 4 == 0) spawn_hit_fx(x, y, player_id.fx_skill7_afterimage);
+
+        //always follow the target
+        if (!was_parried) player_id.polaris_id = player_id.hit_player_obj;
+        else player_id.polaris_id = player_id;
+
+        //hit detection
+        for(var i = array_length(can_hit); i > -1; i--;)
+        {
+            if (i != player_id.polaris_id.player) can_hit[i] = false;
+            else can_hit[i] = true;
+        }
+        
+        //homing
+        if (player_id.polaris_id != noone && !was_parried)
+        {
+            if (hitbox_timer < 30) proj_speed = -10 + hitbox_timer;
+            else proj_speed = 20;
+
+            var angle = point_direction(x, y, player_id.polaris_id.x, player_id.polaris_id.y-player_id.polaris_id.char_height+16);
+            hsp = lengthdir_x(proj_speed, angle);
+            vsp = lengthdir_y(proj_speed, angle);
+
+            if (hitbox_timer == length)
+            {
+                sound_play(asset_get("sfx_ori_energyhit_weak"), 0, 0);
+                spawn_hit_fx(x, y, player_id.fx_lightblow[0]);
+            }
+
+            //if the target is dead kill this hitbox
+            if (player_id.polaris_id.state == PS_RESPAWN || player_id.polaris_id.state == PS_DEAD) length = 0;
         }
 
-        //kinda consistent
-        //this code will make the light spear get destroyed from melee attacks only
-        with(pHitBox)
+        //if the projectile was parried, return to sender
+        if (was_parried)
         {
-            if(place_meeting(x, y, other) && player != other.player && hit_priority > 0 && type == 1)
+            length = 300;
+            proj_speed = 10;
+            kb_angle = 70;
+            kb_value = 8;
+            hitpause = 20;
+
+            if (hitbox_timer == 0)
             {
-                other.player_id.hookshot_skip = true;
-                other.destroyed = true;
-                sound_play(asset_get("sfx_ori_energyhit_medium"));
+                angle = point_direction(x, y, player_id.x, player_id.char_height+16);
+                hsp = lengthdir_x(proj_speed, angle);
+                vsp = lengthdir_y(proj_speed, angle);
             }
         }
-    }
-
-    //destroy effects
-    if (pHitBox.hbox_num == 1 && hitbox_timer == length - 1)
-    {
-        spawn_hit_fx(x+32*spr_dir, y, player_id.fx_lightblow2);
-        sound_play(asset_get("sfx_ori_energyhit_medium"), 0, 0);
-    }
-    if (pHitBox.hbox_num == 2 && hitbox_timer == length - 1)
-    {
-        spawn_hit_fx(x+32*spr_dir, y, player_id.fx_fireblow2);
-        sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
-    }
-}
-
-if (has_rune("G") || player_id.fuck_you_cheapies && player_id.theikos_active) //spear warp
-{
-    switch (attack)
-    {
-        case AT_USTRONG:
-            proj_x = x;
-            proj_y = y;
-            player_id.runeG_attack_kb_y = 7;
-            break;
-        case AT_NTHROW: case AT_NSPECIAL_AIR:
-            proj_x = x;
-            proj_y = y;
-            player_id.runeG_attack_kb_y = 4;
-            break;
-        case AT_EXTRA_2:
-            proj_x = x;
-            proj_y = y;
-            player_id.runeG_attack_kb_y = 5;
-            break;
-    }
-}
-
-if (has_rune("H")) //U-strong hookshot
-{
-    if (attack == AT_USTRONG && pHitBox.hbox_num == 4)
-    {
-        if (hitbox_timer % 2 == 0)
+        break;
+    //theikos D-strong
+    case AT_DSTRONG_2:
+        switch (hbox_num)
         {
-            var chain = instance_create(x, y, "obj_article1");
-            chain.state = 1;
-            chain.image_angle = player_id.runeH_angle+90;
+            case 1:
+                grounds = (hitbox_timer < 3 && !player_id.dstrong2_was_freemd && player_id.strong_charge > 0); //makes it so it only passes through the first platform
 
-            if (hitbox_timer > 29)
-            {
-                with (obj_article1) particletime = 41;
-            }
+                if ((freemd || !free && hitbox_timer > 1 || hitbox_timer == length - 1) && grounds == 0)
+                {
+                    destroyed = true;
+                    var hit_collision = create_hitbox(attack, 2, x, y);
+                    hit_collision.fx_particles = 2;
+
+                    dstrong2_fire_spread();
+                }
+
+                if (player_id.theikos_type > 0)
+                {
+                    length = 9999999;
+                    projectile_parry_stun = 0;
+                    transcendent = 1;
+                }
+                break;
+            case 2: case 3:
+                if (player_id.theikos_type > 0)
+                {
+                    projectile_parry_stun = 0;
+                    if (transcendent == 0) transcendent = 1;
+                }
+                break;
         }
+        break;
+    //rune I debris projectile
+    case AT_DSTRONG:
+        if (hbox_num == 5 && hitbox_timer == length-1) spawn_hit_fx(x, y, 301); //change to a custom hit effect of a rock breaking maybe?
+        break;
+    //lightstun hitbox
+    case 48:
+        //it needs to hit only 1 person, the one affected by the lightstun countdown
+        can_hit_self = true;
+
+        for (var i = 0; i < 20; ++i) can_hit[i] = 0;
+        with (oPlayer) if (lightstun_type == 1) other.can_hit[player] = 1;
+        break;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+#define generate_particles(type)
+{
+    var random_x = (random_func(24, 5, true)-2)*4;
+    var random_y = (random_func(25, 5, true)-2)*4;
+    var random_fx = random_func(26, 3, true);
+
+    switch (type)
+    {
+        case 0: //light particles
+            type = player_id.fx_light_follow;
+            break;
+        case 1: //fire particles
+            type = player_id.fx_burn;
+            break;
     }
-}
 
-//rune I rock vanish effect
-if (attack == AT_DSTRONG && hbox_num == 5 && hitbox_timer == length - 1)
-{
-    spawn_hit_fx(x, y, 301);
+    fx = spawn_hit_fx(floor(x+random_x), floor(y+random_y), type);
+    fx.spr_dir = -spr_dir;
 }
-
-//light stun hitbox will backfire on bar if he got parried
-if (attack == 48 && player_id.lightstun_parried)
+#define dstrong2_fire_spread
 {
-    can_hit_self = true;
+    var fx_collision = spawn_hit_fx(x, y, player_id.fx_fireblow[2]);
+    fx_collision.depth = -7;
+    sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
+
+    if (!player_id.dstrong2_active && hbox_num == 1 && (freemd || !free && hitbox_timer > 1))
+    {
+        player_id.dstrong2_active = true;
+        player_id.dstrong2_startpos = [x, y];
+    }
 }

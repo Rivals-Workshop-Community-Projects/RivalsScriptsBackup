@@ -44,6 +44,12 @@ switch (state){
 			sound_play(asset_get("mfx_star"));
 			sound_play(vc_mk_taunt_1);
 		}
+		
+		//Input Swap Toggle
+		if (state == PS_SPAWN && state_timer <= 100 && inputs_swapped_toggle == false && (up_strong_pressed||down_strong_pressed||left_strong_pressed||right_strong_pressed)){
+			inputs_swapped_toggle = true;
+			sound_play(asset_get("mfx_star"));
+		}
 		break;
 	case PS_IDLE:
 		//
@@ -113,6 +119,13 @@ switch (state){
 		move_cooldown[AT_USTRONG] = 3;
 		move_cooldown[AT_DSTRONG] = 3;
 		
+		//a
+		if (airdodging_out_of_shuttle_loop){
+			if (window == 2 && window_timer == 11){
+				set_state(PS_PRATFALL);
+			}
+		}
+		
 		break;
 	case PS_WAVELAND:
 		if (state_timer == 0){
@@ -156,6 +169,8 @@ if (!free){
 	if (state != PS_WAVELAND){
 		airdodging_out_of_shuttle_loop = false;
 	}
+	
+	wings_out = false;
 }
 
 if (state != PS_PRATLAND){

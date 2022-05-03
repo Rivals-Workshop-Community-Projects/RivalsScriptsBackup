@@ -21,6 +21,13 @@ if (state == PS_SPAWN && state_timer <= 100 && voiced == 0){
 		draw_debug_text( temp_x + 50, temp_y - 20, string( "Taunt: Voiced" ));
 		voiced_in_vs = true
 	}
+	if (!inputs_swapped_toggle){
+	draw_debug_text( temp_x + 8, temp_y - 60, string( "Input Strong to swap Jab
+	     and Ftilt inputs." ));
+	} else if (inputs_swapped_toggle){
+	draw_debug_text( temp_x + 42, temp_y - 60, string( " Jab and Ftilt
+	inputs swapped!" ));
+	}
 }
 
 //Munophone

@@ -44,7 +44,7 @@ air_max_speed       = 4.75;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
-air_friction        = 0.05;		// 0.02 -  0.07
+air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 10;		// 6    -  11
 fast_fall           = 14;		// 11   -  16
 gravity_speed       = 0.52;		// 0.3  -  0.6
@@ -83,7 +83,7 @@ spr_example = sprite_get("example"); // sprites/example_stripX.png
 // SFX
 
 // VFX
-spice_effect = hit_fx_create(sprite_get("spice_vfx"), 12);
+spice_effect = hit_fx_create(sprite_get("spice_vfx"), 20);
 spark_effect = hit_fx_create(sprite_get("we_do_a_little_trolling_3"), 14);
 bubblepop = hit_fx_create(sprite_get("bubblepop"), 6);
 uspec_effect = hit_fx_create(sprite_get("uspecial_fx"), 18);
@@ -183,6 +183,7 @@ has_pot = true;
 shrimp_in_pot = false;
 pot_trap = false;
 food_id = 0;
+shrimpsplosion = false;
 //dspecial_spr_var = false;
 
 bubpop_pitch = 0;
@@ -198,12 +199,55 @@ gumbo_scalding_timer = 0;
 
 is_scalding = false;
 gumbo_ditto = false;
+custom_food = 0;
 
 alt = get_player_color(player);
 set_victory_portrait(sprite_get("portrait"));
 if(alt == 22){ //drip
 set_victory_theme(sound_get("drip_victory"));
 set_victory_portrait(sprite_get("drip_portrait"));
+}if(alt == 16){ //WW
+custom_food = 1;
+}if(alt == 21){ //Kaiman
+custom_food = 2;
+}
+
+if(get_player_color(player) == 22){
+set_color_profile_slot( 22, 0, 88, 80, 63 ); //Gumbo Skin 1
+set_color_profile_slot( 22, 1, 200, 189, 158 ); //Gumb Skin 2
+set_color_profile_slot( 22, 2, 92, 92, 92 ); //Jeans
+set_color_profile_slot( 22, 3, 89, 89, 89 ); //Hoodie
+set_color_profile_slot( 22, 4, 255, 210, 77 ); //Eyes
+set_color_profile_slot( 22, 5, 242, 207, 207 ); //Po Skin 1
+set_color_profile_slot( 22, 6, 211, 120, 120 ); //Po Skin 2
+set_color_profile_slot( 22, 7, 255, 255, 255 ); //Apron  
+}if(get_player_color(player) == 15){
+set_color_profile_slot( 15, 0, 130, 90, 49 ); //Gumbo Skin 1
+set_color_profile_slot( 15, 1, 107, 107, 107 ); //Gumb Skin 2
+set_color_profile_slot( 15, 2, 212, 78, 78 ); //Jeans
+set_color_profile_slot( 15, 3, 115, 79, 43 ); //Hoodie
+set_color_profile_slot( 15, 4, 245, 254, 255 ); //Eyes
+set_color_profile_slot( 15, 5, 207, 23, 23 ); //Po Skin 1
+set_color_profile_slot( 15, 6, 255, 214, 214 ); //Po Skin 2
+set_color_profile_slot( 15, 7, 255, 255, 255 ); //Apron    
+}if(get_player_color(player) == 14){
+set_color_profile_slot( 14, 0, 149, 202, 116 ); //Gumbo Skin 1
+set_color_profile_slot( 14, 1, 192, 227, 165 ); //Gumb Skin 2
+set_color_profile_slot( 14, 2, 96, 158, 155 ); //Jeans
+set_color_profile_slot( 14, 3, 255, 147, 94 ); //Hoodie
+set_color_profile_slot( 14, 4, 255, 223, 112 ); //Eyes
+set_color_profile_slot( 14, 5, 129, 235, 230 ); //Po Skin 1
+set_color_profile_slot( 14, 6, 220, 66, 83 ); //Po Skin 2
+set_color_profile_slot( 14, 7, 248, 229, 151 ); //Apron
+}if(get_player_color(player) == 13){
+set_color_profile_slot( 13, 0, 48, 161, 201 ); //Gumbo Skin 1
+set_color_profile_slot( 13, 1, 255, 203, 31 ); //Gumb Skin 2
+set_color_profile_slot( 13, 2, 134, 130, 143 ); //Jeans
+set_color_profile_slot( 13, 3, 110, 110, 110 ); //Hoodie
+set_color_profile_slot( 13, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 13, 5, 255, 200, 0 ); //Po Skin 1
+set_color_profile_slot( 13, 6, 158, 158, 158 ); //Po Skin 2
+set_color_profile_slot( 13, 7, 49, 222, 198 ); //Apron
 }
 
 // MunoPhone Touch code - don't touch

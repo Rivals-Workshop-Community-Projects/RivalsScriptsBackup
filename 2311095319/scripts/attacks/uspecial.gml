@@ -27,7 +27,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -13.6);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -14.2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 //psst check attack update
 

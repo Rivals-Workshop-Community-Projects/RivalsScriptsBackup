@@ -1,4 +1,4 @@
-atk = AT_BAIR;
+var atk = AT_BAIR;
 
 set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("bair"));
@@ -7,7 +7,7 @@ set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
 set_attack_value(atk, AG_LANDING_LAG, 5); //10
 set_attack_value(atk, AG_NUM_WINDOWS, 5);
 
-windowNum = 1; //startup
+var windowNum = 1; //startup
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 4); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
@@ -43,7 +43,7 @@ set_window_value(atk, windowNum, AG_WINDOW_HAS_WHIFFLAG, 1); //if the attack mis
 //amount of hitboxes
 set_num_hitboxes(atk, 2);
 
-hitboxNum = 1; //lingering hitbox
+var hitboxNum = 1; //lingering hitbox
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 3); //at which window from the above the attack is created
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 10); //hitbox duration in frames
@@ -88,4 +88,4 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 5); //reversed, because this is a back air
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
+set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, hb_color[1]);

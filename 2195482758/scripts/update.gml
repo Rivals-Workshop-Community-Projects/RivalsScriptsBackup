@@ -261,8 +261,11 @@ if(attack == AT_TAUNT)
 // set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 3 - (shorterhop_penalty/3));
 // set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 5 - shorterhop_penalty);
 
+
 if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)
 {
+	if(grabbedProj) grabbedProj.destroyed = true;
+	
 	grabbedid = noone;
 	grabbedProj = noone;
 	from_dspecial = false;
@@ -275,21 +278,22 @@ if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)
 if(grabbedid != noone && !grabbed_solid){
 	with(grabbedid)
 	{
-
-			ungrab++;
-			if(ungrab == 2){
-				//grabbedid.visible = true; //Feel free to remove this line if the grab does not make the opponent invisible.
-				//grabbedid.invincible = false; //Feel free to remove this line if the grab does not make the opponent invincible.
-				state = PS_TUMBLE;
-				ungrab = 0;
-				other.grabbedid = noone;
-				other.grabbedProj = noone;
-				
-				
-			}
+		ungrab++;
+		if(ungrab == 2){
+			//grabbedid.visible = true; //Feel free to remove this line if the grab does not make the opponent invisible.
+			//grabbedid.invincible = false; //Feel free to remove this line if the grab does not make the opponent invincible.
+			state = PS_TUMBLE;
+			ungrab = 0;
+			other.grabbedid = noone;
+			other.grabbedProj = noone;
+			
+			
+		}
 		
 	}
 }
+
+
 
 // Grab release backup
 if(last_grabbedid != noone && (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)){
@@ -435,7 +439,7 @@ with(pHitBox){
 		with(player_id){
 			move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL],2);
 		}
-
+		
         // Variables
         id_assigned = 0;
         my_slot = 0;
@@ -648,6 +652,7 @@ with(pHitBox){
          expl.sprite_index = sprite_index;
          expl.img_ind = image_index;
          expl.image_index = image_index;
+         expl.was_parried = was_parried;
          
          //instance_destroy(parrybox);
          
@@ -655,6 +660,7 @@ with(pHitBox){
          {
          	expl.parried = 0;
          }	
+        
 		if(is_kirby == 1) expl.kirby = other.enemykirby;
          
         // Reset slot

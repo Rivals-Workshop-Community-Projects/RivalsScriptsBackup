@@ -44,6 +44,9 @@ if(dragon_install){
     var other_DI = false;
     var other_tenko = noone;
     var other_tenko_di_time = 9999999999999;
+    var phoenix_install_time = 0;
+    var phoenix = noone;
+    install_time = 0;
 	with(oPlayer){
 	    if("dragon_install" in self){
 	        if(dragon_install and other != self){
@@ -52,9 +55,25 @@ if(dragon_install){
 	                other_tenko_di_time = install_time;
 	                other_tenko = self;
 	            }
-	        }
-	    }
+	        } 
+	    } else if (url == 2357967710){
+        	if(turnabout and other.playing_install_theme) {
+        		if(bout_timer > phoenix_install_time){
+        			phoenix_install_time = bout_timer;
+        			phoenix = self;
+        		}
+        	}
+        }
 	}
+	if(phoenix_install_time > 0 and (other_tenko == noone or phoenix_install_time > other_tenko.tenshi_magic - other_tenko_di_time)){
+		other_tenko = noone;
+		print("PHEONIX PLAY YOUR DAMN THEME")
+		with(phoenix){
+			sound_play(sound_get("pursuit"));
+			playing_install_theme = true;
+		}
+	}
+	playing_install_theme = false;
 	if(other_tenko != noone and other_DI){
 	    if(other_tenko_di_time > install_time){
 	        other_tenko.play_theme = true;

@@ -33,7 +33,7 @@ set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
 // Hold that pose
-set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 8); // 4
 set_window_value(AT_BAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAME_START, 8);

@@ -191,4 +191,5 @@ set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 6, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_FSPECIAL, 6, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 1.6);
 set_hitbox_value(AT_FSPECIAL, 6, HG_TECHABLE, 1);

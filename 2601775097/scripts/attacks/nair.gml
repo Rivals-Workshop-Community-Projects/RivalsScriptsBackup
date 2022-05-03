@@ -1,4 +1,4 @@
-atk = AT_NAIR;
+var atk = AT_NAIR;
 
 set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("nair"));
@@ -7,7 +7,7 @@ set_attack_value(atk, AG_LANDING_LAG, 5);
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 5);
 
-windowNum = 1; //windup
+var windowNum = 1; //windup
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 2); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
@@ -42,7 +42,7 @@ set_window_value(atk, windowNum, AG_WINDOW_HAS_WHIFFLAG, 1); //if the attack mis
 //amount of hitboxes
 set_num_hitboxes(atk, 2);
 
-hitboxNum = 1; //strong hit
+var hitboxNum = 1; //strong hit
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 3); //at which window from the above the attack is created
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 2); //hitbox duration in frames //24
@@ -62,7 +62,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
+set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, hb_color[1]);
 
 hitboxNum ++; //late hit
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
@@ -85,8 +85,3 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
-
-
-//munophone
-if (!get_match_setting(SET_PRACTICE)) exit;
-set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Hitting anything with the attack will force it to go to the endlag");

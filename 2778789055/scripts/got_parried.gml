@@ -3,10 +3,12 @@ var temp_player = hit_player_obj.player;
 
 if(my_hitboxID.attack == AT_FSPECIAL) with my_hitboxID{
 	hitbox_timer = 0;
+	hsp = hsp * 1.5;
 }
 
 if(my_hitboxID.attack == AT_FSPECIAL_2) with my_hitboxID{
 	spr_dir *= -1;
+	hitbox_timer = 0;
 	with pHitBox if attack == other.attack && player_id == other.player_id{
 		player = temp_player;
 		hsp = other.hsp;

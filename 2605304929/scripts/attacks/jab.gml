@@ -89,8 +89,8 @@ window_num++;
 
 // Window #8 / Frame(s) # 23- / Jab 3 Active Hitbox
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 23);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 1);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
@@ -100,8 +100,8 @@ window_num++;
 // Window #9 / Frame(s) # 24-29 / Jab 3 Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 14);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 24);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 26);
 set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 1);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);

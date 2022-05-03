@@ -5,7 +5,7 @@ kirbyability = 16
 coin_effect = hit_fx_create(sprite_get("coineffect"),33);
 
 //Debug
-debug = 0
+debug = 0;
 
 //Undershirt Stuff
 isundershirtunfixed = false

@@ -44,8 +44,8 @@ sprite_change_offset("fspecial", 50, 74);
 sprite_change_offset("uspecial", 48, 72); 
 sprite_change_offset("dspecial", 60, 76); 
 sprite_change_offset("taunt", 56, 93);
-sprite_change_offset("ring", 0, 0);
-sprite_change_offset("ringmask", 17, 17);
+sprite_change_offset("ring", 17, 17);
+sprite_change_offset("ringmask", 34, 34); //17, 17
 
 sprite_change_offset("plat", 73, 112);
 

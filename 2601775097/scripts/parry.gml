@@ -1,22 +1,8 @@
-//parry.gml
+//parry
 
-if (enemy_hitboxID.type == 1 || enemy_hitboxID.type == 2)
-{
-	mp_current += 25;
+if (pHitBox.orig_player == player) exit;
 
-	if (has_rune("O")) od_current += 10;
+if (mp_current < 100) mp_current += 25;
+mp_mini_timer = mp_mini_timer_set;
 
-	mp_gain_hit = 25;
-
-	if (show_player_info)
-	{
-		show_miniMP = true;
-		miniMP_time = miniMP_attack;
-		miniMP_alpha = 1;
-	}
-		
-	if (mp_current >= mp_max && !has_rune("K")) mp_current = mp_max;
-	else if (mp_current >= runeK_mp_max && has_rune("K")) mp_current = runeK_mp_max;
-}
-
-if (theikos && mp_current == mp_max) take_damage(player, player, -50);
+if (can_overdrive && od_cast == 0) od_current += 10;

@@ -216,7 +216,8 @@ if (hitbox != noone && !invincible) {
                 if hitboxVfx == 0 hitboxVfx = 301
                 var hitboxVfxX = get_hitbox_value(hitbox.attack, hboxNum, HG_VISUAL_EFFECT_X_OFFSET);
                 var hitboxVfxY = get_hitbox_value(hitbox.attack, hboxNum, HG_VISUAL_EFFECT_Y_OFFSET);
-                spawn_hit_fx(other.x, other.y - 30, hitboxVfx);
+                var fx = spawn_hit_fx(other.x, other.y - 30, hitboxVfx);
+                	fx.pause = 10
                 if (hitboxCat != 2) && !superarmour {
                     hitpause = true;
                     hitstop_full = _hitpause;
@@ -652,7 +653,8 @@ if hp <= 0 {
 	if (die_timer > 50) || (has_rune("F") && die_timer > 20) { //Piece self destruct explosion countdown time reduced.
 		create_hitbox(AT_FTHROW, 2, x, y-30)
 		sound_play(asset_get("sfx_ell_fist_explode"))
-		spawn_hit_fx(x, y-30, 3)
+		var fx = spawn_hit_fx(x, y-30, 3)
+			fx.pause = 10
 		player_id.piece_id = undefined;
 		instance_destroy();
 		exit;

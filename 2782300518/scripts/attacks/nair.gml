@@ -36,8 +36,9 @@ set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, 1.5);
 set_hitbox_value(AT_NAIR, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 11);
+set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
@@ -54,7 +55,8 @@ set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 11);
+set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, 1.5);
+set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NAIR, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
@@ -72,7 +74,8 @@ set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 1);
 set_hitbox_value(AT_NAIR, 3, HG_ANGLE, 80);
 set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, 11);
+set_hitbox_value(AT_NAIR, 3, HG_HITSTUN_MULTIPLIER, 1.5);
+set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NAIR, 3, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
@@ -92,7 +95,7 @@ set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, .2);
-set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, 11);
+set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NAIR, 4, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 

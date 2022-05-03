@@ -51,6 +51,56 @@ if get_player_color(player) == 14 { //marisa alt rainbow ice
     init_shader();
 }
 
+// ------------------- a --------------------------------
+//later add to doomkin beryl minior
+if fuck_intro {
+    if get_gameplay_time() == 6 {
+        sound_play(sfx_vineboom)   
+    }
+    /*
+    if get_gameplay_time() == 40 {
+        with msai {
+            create_hitbox(AT_UTHROW, other.player, x,y + 60 - other.player*40)
+        }
+    }
+    if get_gameplay_time() == 56 {
+        state = PS_PARRY_START;
+    }
+    //reflect
+    if get_gameplay_time() == 60 {
+        sound_play(sfx_vineboom)   
+        sound_play(asset_get("sfx_parry_success"))
+        with(msai) {
+            set_hitbox_value(AT_UTHROW,player,HG_WIDTH,50);
+            set_hitbox_value(AT_UTHROW,player,HG_HEIGHT,50);
+            set_hitbox_value(AT_UTHROW,player,HG_BASE_KNOCKBACK,0);
+            set_hitbox_value(AT_UTHROW,player,HG_KNOCKBACK_SCALING,0);
+            other.no_u = create_hitbox(AT_UTHROW,player,other.x,other.y-35);
+        }
+        no_u.player = player;
+        no_u.hit_priority = 1;
+        no_u.alt_timer = 0;
+        //no_u.vsp = 0;
+        //no_u.hsp = 0;
+    }
+    
+    if instance_exists(no_u) {
+        no_u.hitbox_timer = 0;
+        no_u.vsp -= 0.9;
+        //no_u.target = msai;
+        //no_u.hsp = 0;
+        //no_u.vsp = 0;
+        no_u.x = floor(lerp(no_u.x,msai.x,0.1));
+        no_u.y = floor(lerp(no_u.y,msai.y - 20,0.1));
+        no_u.alt_timer += 1;
+        if no_u.alt_timer == 28 {
+            no_u.destroyed = true;
+        }
+        
+    }
+    */
+}
+
 
 
 #define do_a_glide_toss

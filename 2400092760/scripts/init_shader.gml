@@ -2623,7 +2623,7 @@ if ("ColorLocked" in self && ColorLocked){
 	//Hopeful Night (31 Taunt)
 	set_character_color_slot( 0, 143, 99, 65 ); //SKIN
 	set_character_color_slot( 1, 41, 42, 51 ); //HAIR
-	set_character_color_slot( 2, 255, 200, 0 ); //SHIRT
+	set_character_color_slot( 2, 250, 255, 255 ); //SHIRT
 	set_character_color_slot( 3, 41, 42, 51 ); //COAT
 	set_character_color_slot( 4, 255, 200, 0 ); //FUR
 	set_character_color_slot( 5, 41, 42, 51 ); //BANDAGES
@@ -2632,7 +2632,7 @@ if ("ColorLocked" in self && ColorLocked){
 	
 	set_article_color_slot( 0, 143, 99, 65 ); //SKIN
 	set_article_color_slot( 1, 41, 42, 51 ); //HAIR
-	set_article_color_slot( 2, 255, 200, 0 ); //SHIRT
+	set_article_color_slot( 2, 250, 255, 255 ); //SHIRT
 	set_article_color_slot( 3, 41, 42, 51 ); //COAT
 	set_article_color_slot( 4, 255, 200, 0 ); //FUR
 	set_article_color_slot( 5, 41, 42, 51 ); //BANDAGES

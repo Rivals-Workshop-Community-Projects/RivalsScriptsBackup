@@ -44,6 +44,7 @@ if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
 if(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1){
 	if(was_parried == false && hit_player_obj.clone == false){
 		hit_player_obj.other_scalding = true;
+		hit_player_obj.other_scalding_timer = 360;
 		other_is_scalding = true;
 		sound_play(asset_get("sfx_hod_steamhit3"));
 	}
@@ -78,4 +79,10 @@ if(my_hitboxID.attack == AT_DSTRONG){
 		other_is_scalding = true;
 		sound_play(asset_get("sfx_hod_steamhit3"));
 	}
+}
+
+if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
+	djumps = 0;
+}if(my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 1){
+	djumps = 0;
 }

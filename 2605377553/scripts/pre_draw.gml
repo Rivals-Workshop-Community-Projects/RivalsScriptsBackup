@@ -55,6 +55,18 @@ if (state == PS_ATTACK_GROUND && attack == AT_NSPECIAL || state == PS_ATTACK_AIR
     draw_sprite_ext(sprite_get("chains_back"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
 }
 
+if (state == PS_ATTACK_AIR && attack == AT_NAIR )
+{
+    var a = 1;
+    if window == 1
+    a = window_timer < 10 ? window_timer/10 : 1;
+    else if window == (4)
+     a = window_timer > get_window_value(AT_FSTRONG, window, AG_WINDOW_LENGTH)-20 ? (1-(window_timer/10)) : 0;
+  
+    draw_sprite_ext(sprite_get("chains_back"), get_gameplay_time()/10, x, y, -spr_dir, 1, 0, c_white, a);
+}
+
+
 
 
 //respawn plat
@@ -66,25 +78,20 @@ if (state == PS_RESPAWN) {
 
 
 
-//pattern test
-//copy and paste this anywhere in the file, BUT make sure the code past "#define" is at the end of the file. 
-//Also, make sure to use "shader_end();" before you start the code, and "shader_start(); if you want to put more code after.
 
-//if (get_player_color(player) == 9) {
-//    if object_index != asset_get("oTestPlayer") {
-//      maskHeader();
-//      draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_white, 1);
-//      with pHitBox if player_id == other && type == 2 {
-//        draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, 1, c_white, 1);
-//    }
-//    maskMidder();
-//    draw_sprite_tiled_ext(sprite_get("omorispace"), 1, x, y, 1, 1, c_white, 1)
-//    maskFooter();
-//    }
-//}
+if  (get_player_color(player) == 22) {
+//crash prevention line
+shader_end();
+maskHeader();
+    draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 0, c_white, 1); //change the 2*spr_dir and 2 to 1 if the character doesnt use small_sprites
 
+maskMidder();
+    draw_sprite_tiled_ext(sprite_get("mexicoshirt"), 0, x-12, y-5, 1, 1, c_white, 1)
+maskFooter();
+}
 
 //================================================================================
+
 #define maskHeader
 // Mask renderer utility: disables Normal draw.
 // Draw shapes or sprites to be used as the stencil(s) by maskMidder.
@@ -116,3 +123,4 @@ if (state == PS_RESPAWN) {
     gpu_set_blendmode(bm_normal);
     draw_set_alpha(1);
 }
+

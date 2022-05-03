@@ -20,7 +20,8 @@ exist_timer = 0;
 
 //Breaking
 break_timer = 0;
-break_timer_max = 90;
+break_timer_max = 90; // old
+break_timer_max = min(y, get_stage_data(SD_Y_POS)) / 4;
 break_stage = 0;
 break_stage_max = 3;
 stood_on = false;

@@ -64,6 +64,13 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(128, 0, 12);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Roekoko";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Roekoko is a pupil like no other. She will one day surpass me.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(123, 37, 201);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Iroh";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Somebody told me I look like one of my ancestors with a wig...";sub_element_slot++;
@@ -82,13 +89,6 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = "Zerra";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "A true marvel to behold the grace of an ice skater. I aspire for such grace.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(128, 0, 12);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Dazzling";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Using magic to entertain people may be a novel use of such destructive power.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by JustJerome";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
@@ -186,14 +186,14 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Nakiri Ayame";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "I get a lot of questions about the horns. I am not an Oni, I am half dragon.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Vtuber Palette by Zerks";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Palette by Zerks";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Ouro Kronii";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "The slow cruel hands of time has taken their toll on me.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Vtuber Palette for Jmillions";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Palette for Jmillions";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 

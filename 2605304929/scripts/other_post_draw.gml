@@ -14,6 +14,7 @@ var fx_image_index = get_gameplay_time() / 6;
 var temp_x = x;
 var temp_y = y;
 var temp_char_height = char_height;
+
 // Water
 if(status_effect_water == true){
     if(status_effect_water == true){
@@ -23,9 +24,10 @@ if(status_effect_water == true){
             shader_end();
         }
     }
-                
+    
+
     gpu_set_fog(true,c_blue,0,0);
-    draw_sprite_ext(sprite_index, image_index, x, y, (spr_dir + small_sprites) * 1, 1 + small_sprites, image_angle, 1, .33);
+    draw_sprite_ext(sprite_index, image_index, x, y, (spr_dir) * (1 + small_sprites), 1 + small_sprites, image_angle, 1, .33);
     gpu_set_fog(false,c_blue,0,0);
     /*
     // set the character's outline color to red:

@@ -76,6 +76,10 @@ if (attack == AT_FSPECIAL && hbox_num == 1 && hitbox_timer == 70)
 }
 
 if (attack == 43 && hbox_num == 1){
+	if !(instance_exists(player_id.thrownBike))
+	{
+		player_id.thrownBike = self;
+	}
 	player_id.move_cooldown[AT_FSPECIAL] = 60;
 	player_id.move_cooldown[AT_DSPECIAL] = 60;
 	for (var p = 0; p < array_length(can_hit); p++)
@@ -85,6 +89,10 @@ if (attack == 43 && hbox_num == 1){
 	    	can_hit[p] = true;
 		}
 	}
+	if (hitbox_timer >= 2)
+	{
+		can_hit_self = true;
+	}
 }
 if (attack == 43 && hbox_num == 1 && hitbox_timer == 12)
 {
@@ -92,30 +100,25 @@ if (attack == 43 && hbox_num == 1 && hitbox_timer == 12)
 	hsp = 0;
 }
 
-if (attack == 43 && hbox_num == 1 && hitbox_timer >= 33)
+if (attack == 43 && hbox_num == 1 && hitbox_timer >= 16)
 {
 	hit_flipper = 0;
 	kb_angle = 135;
-	var predictPosX = player_id.x - (50 * spr_dir);
-	var actualPosY = player_id.y - 40;
+	var predictPosX = player_id.x - (40 * spr_dir);
+	var actualPosY = player_id.y - 20;
 	var bike_direction = point_direction(x, y, predictPosX, actualPosY);
 	var bike_distance = point_distance(x, y, predictPosX, actualPosY);
 
-	hsp = lengthdir_x(bike_distance, bike_direction) / 14;
-	vsp = lengthdir_y(bike_distance, bike_direction) / 14;
+	hsp = lengthdir_x(bike_distance, bike_direction) / 12;
+	vsp = lengthdir_y(bike_distance, bike_direction) / 12;
 	
 	if (x <= player_id.x + 140 && x >= player_id.x - 140 && y <= player_id.y + 160 && y >= player_id.y - 160)
 	{
-		player_id.hitpause = false;
-		player_id.hitstun = false;
-		player_id.hitstop = 0;
-    	player_id.hitstop_full = 0;
 		kb_angle = 45;
-		can_hit_self = true;
 	}
 }
 
-if (attack == 43 && hbox_num == 1 && hitbox_timer >= 47 && player_id.returnBike)
+if (attack == 43 && hbox_num == 1 && hitbox_timer >= 30 && player_id.returnBike)
 {
-	length = 47;
+	length = 30;
 }

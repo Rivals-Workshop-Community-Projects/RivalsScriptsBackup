@@ -1,3 +1,7 @@
+if !free && jrefund != 0{
+    jrefund = 0
+}
+
 if state == PS_RESPAWN
 {
   if state_timer > 90 {    

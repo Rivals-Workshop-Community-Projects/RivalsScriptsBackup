@@ -61,8 +61,17 @@ if (codename_emerl_active) {
     }*/
 //}
 
+//if (uspecial_rework) {
+if (attack == AT_USPECIAL) {
+	if (rocket_fuel <= 0) {
+		attack = AT_USPECIAL_2;
+	}
+}
+//}
+
 // Halt fuel recovery after uspecial/fspecial is used
 if (((attack == AT_USPECIAL) && (move_cooldown[AT_USPECIAL] == 0))
+	|| ((attack == AT_USPECIAL_2) && (move_cooldown[AT_USPECIAL_2] == 0))
     || ((attack == AT_FSPECIAL) && (move_cooldown[AT_FSPECIAL] == 0)))
 {
     fuel_recovery_active = false;

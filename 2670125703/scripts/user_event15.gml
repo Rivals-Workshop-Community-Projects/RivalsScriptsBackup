@@ -571,13 +571,12 @@ Spear IDs:
 // List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
 
 initCodecPit();
-initCodecPage(SPK_PIT,	4,	6,	"What the...?");
-initCodecPage(SPK_PALU,	3,	1,	"What's wrong, Pit?");
-initCodecPage(SPK_DPIT,	0,	1,	"Another warrior that knows how to get things done.");
-initCodecPage(SPK_PIT,	6,	7,	"Man, what's with these deities possessing Sonic Corpses?");
-initCodecPage(SPK_PALU,	1,	2,	"They must be hiding something.");
-initCodecPage(SPK_DPIT,	0,	1,	"Who cares? They look like they're having fun.");
-
+initCodecPagePit(SPK_PIT,	4,	6,	"What the...?");
+initCodecPagePit(SPK_PALU,	3,	1,	"What's wrong, Pit?");
+initCodecPagePit(SPK_DPIT,	0,	1,	"Another warrior that knows how to get things done.");
+initCodecPagePit(SPK_PIT,	6,	7,	"Man, what's with these deities possessing Sonic Corpses?");
+initCodecPagePit(SPK_PALU,	1,	2,	"They must be hiding something.");
+initCodecPagePit(SPK_DPIT,	0,	1,	"Who cares? They look like they're having fun.");
 
 
 /*

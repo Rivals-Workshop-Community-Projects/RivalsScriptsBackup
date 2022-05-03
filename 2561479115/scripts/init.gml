@@ -51,14 +51,23 @@ short_hop_speed = 6;
 djump_speed = -2; //Initial speed of double jump (Negative is down here.)
 
 //old djump code
-//djump_accel = -1.4; //The upwards acceleration of double jump (Negative is up here.)
-//djump_accel_start_time = 2; //The frame after starting double jump to start accelerating.
-//djump_accel_end_time = 17;//The frame after starting double jump to stop accelerating.
+djump_accel = -1.4; //The upwards acceleration of double jump (Negative is up here.)
+djump_accel_start_time = 2; //The frame after starting double jump to start accelerating.
+djump_accel_end_time = 17;//The frame after starting double jump to stop accelerating.
+/*
+//init.gml
+fix_djump_counter = 0; //added to 'fix' the broken doublejumps
+fix_djump_accel = djump_accel;
+djump_accel = 0; //set the original djump_accel value to 0, in case it gets an official patch later
+fix_old_djumps = 0;
+grav_jump_djumps = 0;
 //new djump code
 r_djump_accel = -1.4; //The upwards acceleration of double jump (Negative is up here.)
 r_djump_accel_start_time = 2; //The frame after starting double jump to start accelerating.
 r_djump_accel_end_time = 17;//The frame after starting double jump to stop accelerating.
-r_djump_timer = -1;
+r_djump_timer = -1;*/
+old_djumps = 0;
+djump_track_timer = 0;
 djumped = false;
 djumping = false;
 

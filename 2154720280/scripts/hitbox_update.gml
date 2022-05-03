@@ -1,5 +1,5 @@
 ///
-if y > (room_height/2 + 400) {
+if y > (room_height) {
 		destroyed = 1
 }
 	

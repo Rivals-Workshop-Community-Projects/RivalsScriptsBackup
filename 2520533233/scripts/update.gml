@@ -402,11 +402,13 @@ if(di_input_buffer == 0){
 #define end_install()
 {
     //this passes on ownership of install assets to the tenshi with the most
-    //time left in dragon install so we don't bake potatoes
+    //time left in dragon install
     var other_DI = false;
     var other_tenko = noone;
     var other_tenko_di_time = 9999999999999;
-    //look for the tenshi with the most time left in install
+    var phoenix_install_time = 0;
+    var phoenix = noone;
+    install_time = 0;
 	with(oPlayer){
 	    if("dragon_install" in self){
 	        if(dragon_install and other != self){
@@ -415,17 +417,30 @@ if(di_input_buffer == 0){
 	                other_tenko_di_time = install_time;
 	                other_tenko = self;
 	            }
-	        }
-	    }
+	        } 
+	    } else if (url == 2357967710){
+        	if(turnabout and other.playing_install_theme) {
+        		if(bout_timer > phoenix_install_time){
+        			phoenix_install_time = bout_timer;
+        			phoenix = self;
+        		}
+        	}
+        }
 	}
-	//check if we found another tenshi that is using install, it'll be the most time
-	//left in install if we found one
+
+	if(phoenix_install_time > 0 and (other_tenko == noone or phoenix_install_time > other_tenko.tenshi_magic - other_tenko_di_time)){
+		other_tenko = noone;
+		print("PHEONIX PLAY YOUR DAMN THEME")
+		with(phoenix){
+			sound_play(sound_get("pursuit"));
+			playing_install_theme = true;
+		}
+	}
+	playing_install_theme = false;
 	if(other_tenko != noone and other_DI){
-		//pass theme
 	    if(other_tenko_di_time > install_time){
 	        other_tenko.play_theme = true;
 	    }
-	    //pass ownership of install assets if we own them
 	    with(obj_article2){
 	        if ("tenshi" in self){
 	            if(tenshi == other and fx_type == FX.install_cloud or fx_type == FX.install_bg){
@@ -435,20 +450,22 @@ if(di_input_buffer == 0){
 	    }
     }
     //reset dragon install values
+    if(dragon_install){
+    	tenshi_magic = 0;
+    }
     dragon_install = false;
-    tenshi_magic = 0;
 	sound_stop(sound_get("install" + string(install_theme)));
     initial_dash_speed = base_initial_dash_speed;
     dash_speed = base_dash_speed;
     moonwalk_accel = base_moonwalk_accel;
     max_djumps = base_max_djumps;
     fast_fall = base_fast_fall;
-    air_max_speed = base_air_max_speed;
-	max_jump_hsp = base_max_jump_hsp;
     wave_land_adj = base_wave_land_adj; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 	wave_friction = base_wave_friction;
+	air_max_speed = base_air_max_speed;
+	max_jump_hsp = base_max_jump_hsp;
+	
 	end_dragon_install = true;
-	soft_armor = 0;
 }
 
 #define deactivate_install()

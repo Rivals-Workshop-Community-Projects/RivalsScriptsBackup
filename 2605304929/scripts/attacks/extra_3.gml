@@ -73,7 +73,7 @@ window_num++;
 
 // Window #5 / Frame(s) # 11-14 / Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 14);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, -3);
@@ -157,12 +157,13 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 8);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90); // This is changed in attack update if this move is used in air.
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 110); // This is changed in attack update if this move is used in air.
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
-    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
+    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .25);
     set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 20);
     set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
+    set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 10);
+    set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.2);
     //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hitfx_large_elec); // 157 - lightning extra large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

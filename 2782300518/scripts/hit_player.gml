@@ -53,9 +53,9 @@ if (fuel > 0 && hit_player_obj.player == player && my_hitboxID.attack == 43 && m
     	hit_player_obj.hitstop_full = 0;
     	hit_player_obj.hsp = 0;
     	hit_player_obj.vsp = 0;
-    	take_damage( hit_player, -1, -2 )
+    	take_damage( hit_player, -1, -1 )
     	hit_player_obj.tsprite_index = -1;
-
+		thrownBike = noone;
     	set_attack(AT_EXTRA_1);
 	}
 }

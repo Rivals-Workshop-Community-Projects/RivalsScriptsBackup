@@ -410,9 +410,12 @@ switch(attack){
 	            			if(lightweight){
 	            				temp_lw = lightweight;
 	            			}
+	            		} else if (url == 2357967710){
+	            			sound_stop(sound_get("pursuit"));
+	            			playing_install_theme = false;
 	            		}
 	            	}
-	            	
+	            	playing_install_theme = true;
             		sound_play(sound_get("install" + string(install_theme)), true, 0, min(volume*2, 1), 1);
             		
 	            	if(!other_DI and !temp_lw){
@@ -1256,6 +1259,9 @@ switch(attack){
     var other_DI = false;
     var other_tenko = noone;
     var other_tenko_di_time = 9999999999999;
+    var phoenix_install_time = 0;
+    var phoenix = noone;
+    install_time = 0;
 	with(oPlayer){
 	    if("dragon_install" in self){
 	        if(dragon_install and other != self){
@@ -1264,9 +1270,27 @@ switch(attack){
 	                other_tenko_di_time = install_time;
 	                other_tenko = self;
 	            }
-	        }
-	    }
+	        } 
+	    } else if (url == 2357967710){
+        	if(turnabout and other.playing_install_theme) {
+        		if(bout_timer > phoenix_install_time){
+        			phoenix_install_time = bout_timer;
+        			phoenix = self;
+        		}
+        	}
+        }
 	}
+	if(phoenix_install_time > 0 and (other_tenko == noone or phoenix_install_time > other_tenko.tenshi_magic - other_tenko_di_time)){
+		other_tenko = noone;
+		print("PHEONIX PLAY YOUR DAMN THEME")
+		with(phoenix){
+			if(!playing_install_theme){
+				sound_play(sound_get("pursuit"));
+				playing_install_theme = true;
+			}
+		}
+	}
+	playing_install_theme = false;
 	if(other_tenko != noone and other_DI){
 	    if(other_tenko_di_time > install_time){
 	        other_tenko.play_theme = true;
@@ -1280,6 +1304,9 @@ switch(attack){
 	    }
     }
     //reset dragon install values
+    if(dragon_install){
+    	tenshi_magic = 0;
+    }
     dragon_install = false;
 	sound_stop(sound_get("install" + string(install_theme)));
     initial_dash_speed = base_initial_dash_speed;

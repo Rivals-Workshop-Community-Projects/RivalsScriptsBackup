@@ -4,7 +4,8 @@ if attack == AT_TAUNT
 	if window == 2 && window_timer == 2 && extra_col != 2 {
 		sound_play(asset_get("mfx_unstar"))
 	}
-	if window == 1 && window_timer == 5 && extra_col == 2 {
+	if window == 1 && window_timer == 5 && extra_col == 2 or 
+	window == 1 && window_timer == 5 && extra_col == 4{
 		sound_play(sound_get("nuzl_cough"))
 	}
 }
@@ -19,6 +20,8 @@ if attack == AT_USTRONG
 		hud_offset = 64;}
 }
 
+
+//cloud pushers
 
 
 
@@ -138,6 +141,8 @@ if (attack == AT_NTHROW && instance_exists(grabbed_player_obj)) {
 }
 
 
+
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
@@ -220,9 +225,21 @@ if (attack == AT_USPECIAL){
     }
 	}
 
+//nspec
+if attack == AT_NSPECIAL
+{
+	if window <= 3{
+		vsp = clamp(vsp, -4, 4)
+		hsp = clamp(hsp, -0.1, 0)
+	}
+}
+
+
 //Smoke
 if attack == AT_DSPECIAL
 {
+	vsp = clamp(vsp, -3, 3)
+	
 	move_cooldown[AT_DSPECIAL] = 30;
 	if window == 3 && window_timer == 1
 	{
@@ -316,6 +333,26 @@ if attack == AT_USPECIAL
 			
 		}
 	}
+}
+
+//sounds
+if (attack == AT_NAIR) {
+
+    if (window == 2 && window_timer == 9) { 
+    	sound_play(sound_get("heavyswing"), 0, noone, 0.8, 0.8)
+    }
+	
+}
+
+if (attack == AT_UTILT) {
+
+    if (window == 1 && window_timer == 3 && !hitpause) { 
+    	sound_play(asset_get("sfx_ell_steam_hit"), 0, noone, 0.5, 0.75)
+    }
+    if (window == 2 && window_timer == 2 && !hitpause) { 
+    	sound_play(asset_get("sfx_ell_steam_hit"), 0, noone, 0.3, 0.9)
+    }
+	
 }
 
 

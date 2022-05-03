@@ -4,6 +4,7 @@ if (motorbike == true) //Change all the sprites used if Carol is on the bike
 	bsprite_index=-1;
 	switch (state){
 		case PS_IDLE:
+		case PS_SPAWN:
 		case PS_RESPAWN:
 		sprite_index=sprite_get("idle2");
 		image_index=state_timer * idle_anim_speed;
@@ -101,6 +102,9 @@ if (motorbike == true) //Change all the sprites used if Carol is on the bike
 		case PS_BURIED:
 		case PS_FLASHED:
 		case PS_CRYSTALIZED:
+		case PS_WRAPPED:
+		case PS_FROZEN:
+		case PS_DEAD:
 		if (damageCheck = true)
 		{
 			sprite_index=sprite_get("bighurt_bike");

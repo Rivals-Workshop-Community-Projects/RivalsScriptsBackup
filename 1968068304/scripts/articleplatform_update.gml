@@ -405,7 +405,11 @@ if (hp <= 0) {
 		
 		var xx = x;
 		var yy = y;
-		
+		var spacing = round(38 * image_xscale);
+
+		//var chk = spawn_hit_fx( xx-spacing, yy, 193);//.pause = 10;//.image_xscale = image_xscale;
+		//print(chk);
+		//spawn_hit_fx( xx+spacing, yy, 193).pause = 10;//.image_xscale = image_xscale;
 		
 		with (oPlayer) {
 			//stop standing on this platform
@@ -452,15 +456,16 @@ if (hp <= 0) {
 			}
 
 			//spawn_hit_fx( other.x, other.y, 192); //rock large
-			spawn_hit_fx( xx-spacing, yy, 193).image_xscale = image_xscale;
-			spawn_hit_fx( xx+spacing, yy, 193).image_xscale = image_xscale;
+			spawn_hit_fx( xx-spacing, yy, 301).pause = 5;//image_xscale = image_xscale;
+			spawn_hit_fx( xx+spacing, yy, 301).pause = 5;//image_xscale = image_xscale;
 			
 			if (other.hp > -1) {
-				spawn_hit_fx( other.x, other.y, 193).image_xscale = image_xscale;
+				spawn_hit_fx( other.x, other.y, 301).pause = 10;//image_xscale = image_xscale; //193
 			}
 			else {
 				//inertia hitbox
 				create_hitbox(AT_USPECIAL, 2, other.x, other.y + 10);
+				spawn_hit_fx( other.x, other.y, 302).pause = 10;
 				spawn_hit_fx(xx, yy+10, epinel_fx_absorb);
 				spawn_hit_fx(xx, yy+10, epinel_fx_inertia_medium);
 			}

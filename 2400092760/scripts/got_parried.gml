@@ -31,4 +31,3 @@ if(attack == AT_FSPECIAL){
     }
 }
 
-    

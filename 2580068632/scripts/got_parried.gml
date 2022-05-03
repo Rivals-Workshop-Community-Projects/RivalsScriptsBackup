@@ -1,5 +1,7 @@
 //got_parried.gml
 
+did_swap_inputs = false;
+
 switch (my_hitboxID.attack){
 	case AT_JAB:
 		if (window < 6){

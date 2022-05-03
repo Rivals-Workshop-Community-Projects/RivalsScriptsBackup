@@ -424,6 +424,25 @@ if(x > room_width || x < 0 || y >= room_height+65 || y <= -200 /*|| ball_timer >
     	instance_destroy(ballhitbox);
     	ballhitbox = noone;
     }
+    if(ballmode == 0){
+				    create_hitbox(AT_NSPECIAL,3,x,y);
+				    	spawn_hit_fx(x+20,y+20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y+20, player_id.fx_blob_ball_explosion);
+				    	spawn_hit_fx(x+20,y-20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y-20, player_id.fx_blob_ball_explosion);
+				    sound_play(asset_get("sfx_waterhit_heavy"));
+				}else if(ballmode == 1){ //ice
+				    create_hitbox(AT_NSPECIAL,4,x,y);
+				    spawn_hit_fx(x,y, 199);
+				    sound_play(asset_get("sfx_ice_back_air"));
+				}else if(ballmode == 2){ //steam
+				    create_hitbox(AT_NSPECIAL,5,x,y);
+				    spawn_hit_fx(x+20,y-20, 144);spawn_hit_fx(x-20,y-20, 144);spawn_hit_fx(x+20,y+20, 144);spawn_hit_fx(x-20,y+20, 144);
+					sound_play(asset_get("sfx_ell_steam_release"));
+				}else if(ballmode == 3){ //whirlpool
+				    create_hitbox(AT_NSPECIAL,6,x,y);
+				    spawn_hit_fx(x,y, 196);
+				    sound_play(asset_get("sfx_waterhit_heavy"));
+				}
+    
     instance_destroy();
     exit;
 }

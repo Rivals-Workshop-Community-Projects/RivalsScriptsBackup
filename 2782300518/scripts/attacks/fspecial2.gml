@@ -36,7 +36,8 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_FSPECIAL_2, 1, HG_EFFECT, 303);
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, .55);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 

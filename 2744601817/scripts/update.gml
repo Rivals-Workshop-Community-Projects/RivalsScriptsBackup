@@ -302,6 +302,7 @@ if (ruair_glow_count > 0){
 	ruair_glow_count -= 1;
 }
 
+
 #define spawnPixels(count, xsp, ysp)
 
 for (var i = 0; i < count; i++){

@@ -29,3 +29,8 @@ with asset_get("oPlayer") {
        
    }
 }
+
+if my_hitboxID.attack == AT_NSPECIAL {
+    set_state(PS_IDLE)
+    parry_lag = 0
+}

@@ -5,6 +5,5 @@ can_be_grounded = true;
 ignores_walls = true;
 free = false;
 hsp = 0;
-vsp = 5;
+vsp = 0;
 _grav = 0;
-despawntimer = 300;

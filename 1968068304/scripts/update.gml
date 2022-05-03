@@ -7,8 +7,62 @@ with (oPlayer) {
 	epinel_other_update_performed = false;
 }
 
+
+
+
+//djump fix
+switch (state) {
+	case PS_FIRST_JUMP:
+	case PS_IDLE_AIR:
+	case PS_DOUBLE_JUMP:
+	case PS_ATTACK_AIR:
+		if (fix_old_djumps < djumps) { fix_djump_counter = djump_accel_end_time; }
+	    if (state == PS_ATTACK_AIR && !jump_down) { fix_djump_counter = 0; }
+	    else if (fix_djump_counter > 0 && !hitpause) {
+	        fix_djump_counter--;
+	        if (fix_djump_counter < djump_accel_end_time - djump_accel_start_time - 1) {
+	            vsp += fix_djump_accel;
+	        }
+	    }
+	break;
+	
+	default:
+		fix_djump_counter = 0;
+	break;
+}
+fix_old_djumps = djumps;
+
+
+/*
+if ((state_cat == SC_AIR_NEUTRAL && state != PS_JUMPSQUAT) || state == PS_ATTACK_AIR) {
+	if (fix_old_djumps < djumps && fix_djump_counter == 0) { 
+        fix_djump_counter = djump_accel_end_time;
+        print("jump trigger - " + string(fix_old_djumps) + string(djumps) + get_state_name(state))
+    }
+    if (state == PS_ATTACK_AIR && !jump_down) {
+        fix_djump_counter = 0;
+    }
+    else if (fix_djump_counter > 0 && !hitpause) {
+        fix_djump_counter--;
+        if (fix_djump_counter < djump_accel_end_time - djump_accel_start_time - 1) {
+            vsp += fix_djump_accel;
+        }
+    }
+	fix_old_djumps = djumps;
+}
+else {
+	epinel_djump_accel_fix_counter = 0;
+	fix_old_djumps = djumps;
+}
+*/
+
+
 if (free) 
 {	
+	
+
+	
+	
 	var grav_accel_factor = 2 / max(gravity_speed,0.01);
 	
 	//var heavy_falling = (move_cooldown[AT_USPECIAL] > 0);
@@ -95,6 +149,9 @@ if (free)
 }
 else //if not free
 {
+	
+
+	
 	var is_attacking = false;
     //increase dash speed over time.
     switch (state) {

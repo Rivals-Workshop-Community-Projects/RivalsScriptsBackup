@@ -9,6 +9,8 @@ afterimage_countdown = 0;
 sound_stop(engine_revving_up_sound);
 sound_stop(current_effect_sound);
 sound_stop(current_rocket_sound);
+sound_stop(horn_current);
+cabinet_song_clip_current = cabinet_song_clip_max - 1; // reset value
 
 // Release anyone we may have grabbed
 with (asset_get("oPlayer")) {

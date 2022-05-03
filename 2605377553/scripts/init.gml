@@ -55,9 +55,9 @@ leave_ground_max = 7; //the maximum hsp you can have when you go from grounded t
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .25;
+air_accel = .30;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
-air_friction = .1;
+air_friction = .05;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
@@ -157,3 +157,4 @@ sickAfterGrace = 0;//How many frames the opponent is invincible from getting sic
 bairused = false;
 
 nothanks =  false;
+

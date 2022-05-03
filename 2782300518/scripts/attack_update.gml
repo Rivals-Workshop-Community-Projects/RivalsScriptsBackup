@@ -58,6 +58,7 @@ if (motorbike == false)
 			sound_play(sound_get ("carol_up_special"));
 		}
 		break;
+		
 		//Jump Disc
 		case AT_FSPECIAL:
 		can_fast_fall = false;
@@ -173,6 +174,7 @@ if (motorbike == false)
 			move_cooldown[AT_FSPECIAL] = 60;
 		}
 		break;
+		
 		//Rising Wild Claw
 		case AT_USPECIAL:
 		//Voice clip
@@ -191,8 +193,19 @@ if (motorbike == false)
 		//Set cooldown
 		move_cooldown[AT_USPECIAL]=120;
 		break;
+		
 		//Charge Up code
 		case AT_DSPECIAL:
+		if (state_timer == 1 && chargeUpVoiceLine == true)
+		{
+			if (voice == 1)
+			{
+				sound_stop(sound_get ("charge_up"));
+				sound_play(sound_get ("charge_up"));
+			}
+			chargeUpVoiceLine = false;
+		}
+		
 		//Bike behind Carol
     	if (window == 1)
     	{
@@ -211,7 +224,7 @@ if (motorbike == false)
     		//Abyss Runes, charge fuel faster if rune C is selected
 		 	if has_rune ("C")
     		{
-    		if (fuel_charge > 7)
+    		if (fuel_charge > 6)
     			{
     				fuel = fuel + 1;
     				fuel_charge = 0;
@@ -220,7 +233,7 @@ if (motorbike == false)
     		else
     		{
     			//Increase the fuel when the amount of time is reached
-				if (fuel_charge > 15)
+				if (fuel_charge > 12)
 	    		{
 	    			fuel = fuel + 1;
 	    			fuel_charge = 0;
@@ -261,6 +274,7 @@ if (motorbike == false)
 			bikeReady = 1;
 	   	}
 		break;
+		
 		//Getting on the bike
 		case AT_EXTRA_1:
 		if (window == 1 && window_timer == 1)
@@ -295,6 +309,7 @@ if (motorbike == false)
 			//Remove the spinning bike
 			tsprite_index = -1;
 			bsprite_index = -1;
+			move_cooldown[43] = 240;
 		}
 
 		if (window == 2)
@@ -303,7 +318,8 @@ if (motorbike == false)
 			motorbike = true;
 		}
 		break;
-		//Pounce voice line
+		
+		//Pounce
 		case AT_EXTRA_2:
 		if (window == 1 && window_timer == 1)
 		{
@@ -378,6 +394,8 @@ else if (motorbike == true)
 			sound_play(sound_get ("feel_my_power"));
 	   	}
 		break;
+
+
 		//Nitro Boost
 		case AT_FSPECIAL_2:
 		//Voice
@@ -440,6 +458,8 @@ else if (motorbike == true)
 		}
 		//Effects to enhance mov	
 		break;
+
+
 		case AT_USPECIAL_2:
 		//Voice clip
 		if (window == 1 && window_timer == 1)
@@ -457,6 +477,8 @@ else if (motorbike == true)
 		//Set cooldown
 		move_cooldown[AT_USPECIAL_2]=120;
 		break;
+
+
 		//This code handles getting off the bike
 		case AT_DSPECIAL_2:
 		if (window == 1)
@@ -515,8 +537,11 @@ else if (motorbike == true)
 			}
 		}
 		break;
-		//If use the dash attack, remove the hitbox on the front of the bike while moving and also add cooldown to Dash
+
+
+		//Dattack2
 		case 3:
+		//If use the dash attack, remove the hitbox on the front of the bike while moving and also add cooldown to Dash
 		attack_end(AT_EXTRA_1);
 		bike_hit = false;
 		if (window == 3 && window_timer == 9)
@@ -524,11 +549,14 @@ else if (motorbike == true)
 			move_cooldown[3] = 30;
 		}
 		break;
+
+		//Dair2
 		case 40:
 		//We're dropping the bike from midair, so should reset values back to default
 		sound_stop(sound_get("motorbike_move"));
 		sound_stop(sound_get("motorbike_idle"));
 		sound_stop(sound_get("motorbike_stop"));
+		set_hitbox_value(40, 1, HG_DAMAGE, fuel_remaining / 2);
 		//Voice clip
 		if (window == 1 && window_timer == 1)
 		{
@@ -545,36 +573,51 @@ else if (motorbike == true)
 		bikeReady = 0;
 		fuel = 0;
 		break;
-		//Prevent the spam of Forward Air on bike and clamp speed
+
+		//Fair2
 		case 43:
+		//Prevent the spam of Forward Air on bike and clamp speed
 		vsp = clamp(vsp, -2, 2);
 		hsp = clamp(hsp, -2, 2);
+		can_shield = false;
 		if (window == 1 && window_timer == 1)
 		{
 			returnBike = false;
+			if (instance_exists(thrownBike))
+			{
+				thrownBike.destroyed = true;
+			}
 		}
-		if (window == 2)
+		if (window == 1 && window_timer == 6)
 		{
 			//Reset values back to default
 			motorbike = false;
 			bikeReady = 0;
+		}
+		if (window == 2)
+		{
+
 			if (!free)
 			{
 				set_hitbox_value(43, 1, HG_ANGLE, 45);
-				move_cooldown[43] = 120;
+				move_cooldown[43] = 240;
 			}
 		}
-		if (window == 3 && window_timer == 1)
+		if (window == 2 && window_timer == 30)
 		{
 			returnBike = true;
 			motorbike = true;
+			if (instance_exists(thrownBike))
+			{
+				thrownBike.destroyed = true;
+			}
 		}
 
 		if (window == 3 && window_timer == 14)
 		{
 			returnBike = false;
 			set_hitbox_value(43, 1, HG_ANGLE, 45);
-			move_cooldown[43] = 120;
+			move_cooldown[43] = 240;
 		}
 		break;
 		default:
@@ -778,6 +821,11 @@ switch (attack)
 	{
 		if (window == 7 && window_timer == 1)
 		{
+			if (voice == 1)
+			{
+				sound_stop(sound_get ("pow_pow"));
+				sound_play(sound_get ("pow_pow"));
+			}
 			move_cooldown[AT_JAB] = 10;
 			move_cooldown[AT_FTILT] = 10;
 			move_cooldown[AT_UTILT] = 10;
@@ -801,8 +849,21 @@ switch (attack)
 		var make_quote = random_func(15, 12, 1);
 		if (voice == 1)
 		{
-			sound_stop(make_quote <6? sound_get ("carol_attack_voice1") : sound_get ("carol_attack_voice3"));
-			sound_play(make_quote <6? sound_get ("carol_attack_voice1") : sound_get ("carol_attack_voice3"));
+			if (make_quote < 4)
+			{
+				sound_stop(sound_get("carol_attack_voice1"));
+				sound_play(sound_get("carol_attack_voice1"));
+			}
+			else if (make_quote > 3 && make_quote < 8)
+			{
+				sound_stop(sound_get("carol_attack_voice3"));
+				sound_play(sound_get("carol_attack_voice3"));				
+			}
+			else if (make_quote > 7)
+			{
+				sound_stop(sound_get("carol_attack_voice4"));
+				sound_play(sound_get("carol_attack_voice4"));				
+			}
 		}
 	}
 	break;
@@ -826,9 +887,9 @@ switch (attack)
 	//Increase Kick Time to make the meter drain during the attack
 	if (window == 2 && !hitpause)
 	{
-		can_shield=true;
+		can_shield=(window < 3);
 		super_armor=true;
-		can_jump=true;
+		can_jump=(has_hit_player && window < 3);
 		kickTime++;
 		//multikick Recharge meter
 		if (kickTime > 0)

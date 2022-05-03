@@ -1,5 +1,6 @@
 
 if  (get_player_color(player) == 22) {
+    if(!avocado){
 //crash prevention line
 shader_end();
 maskHeader();
@@ -8,6 +9,7 @@ maskHeader();
 maskMidder();
     draw_sprite_tiled_ext(sprite_get("unknown"), 0, x, y, 1, 1, c_white, 1)
 maskFooter();
+    }
 }
 
 //================================================================================

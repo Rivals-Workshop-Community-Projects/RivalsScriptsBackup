@@ -1,218 +1,365 @@
-// ai_update
-// called every frame for a CPU version of the character
-// Use ai_target to reference the player object the CPU is currently targeting
-// Use ai_recovering to check if the CPU is recovering or not
-// Use temp_level to reference the CPU’s difficulty level (1-9)
-
-//VAR LIST
-temp_level = 9;
-xrange = abs(ai_target.x - x); //absolute value of the range (no negatives)
-yrange = abs(y - ai_target.y);
-xdist = (ai_target.x - x); //specific value of the range (with negatives)
-ydist = (y - ai_target.y);
-damage = get_player_damage(ai_target.player);
-facing = false; //facing the foe check
-offstage = true;
-edgeguard = true;
-targetbusy = false;
-stage_x = get_stage_data(SD_X_POS);
-blastzone = get_stage_data(SD_SIDE_BLASTZONE);
-
-//AI fight timer
-//i use this for the skill select
-//whenever [get_training_cpu_action() == CPU_FIGHT] is active, the timer goes up
-if (AI_vs) AI_fighting_time ++;
-else AI_fighting_time = 0;
-
-//burning fury auto turnoff
-if (burningfury_active)
-{
-	burning_runtime ++;
-	if (burning_runtime > 500)
-	{
-		burningfury_active = false;
-		burning_runtime = 0;
-	}
-}
+//ai_update
 
 if (get_training_cpu_action() == CPU_FIGHT)
 {
-	AI_vs = true;
+    //get bar to te menu select instantly
+    if (cpu_fight_time == 0)
+    {
+        menu_active = true;
+        set_state(PS_SPAWN);
+    }
 
-	//selecting skills
-	if (AI_fighting_time == 0) menu_timer = 124;
-	if (menu_open)
-	{
-		jump_pressed = false;
-		left_pressed = false;
-		special_pressed = false;
-		attack_pressed = false;
-		shield_pressed = false;
-		var select_time = 50;
-		//bar chooses random directions every X frames if he has the menu open
-		//0 = upper row
-		//1 = mid row
-		//2 = low row
-		var random_select = random_func(35, 2, true);
-		if (AI_fighting_time % select_time == 0)
+    cpu_fight_time ++;
+    
+    //skill select right off the bat
+    if (menu_active)
+    {
+        var random_select = random_func(current_second, 3, true);
+		if (cpu_fight_time % cpu_select_time == 0)
 		{
 			switch (random_select)
 			{
-				case 0:
-					up_pressed = true;
-					break;
-				case 1:
-					right_pressed = true;
-					break;
-				case 2:
-					down_pressed = true;
-					break;
+				case 0: up_pressed = true; break;
+				case 1: right_pressed = true; break;
+				case 2: down_pressed = true; break;
 			}
 		}
-	}
-	
-	if (menu_timer > -1) //if the menu is def not open
-	{
-		//CHECK VARIABLES SECTION
-
-		//check if the target is dead
-		if (ai_target.state == PS_DEAD || ai_target.state == PS_RESPAWN) targetbusy = true;
-		else targetbusy = false;
-
-		//facing target check
-		if (ai_target.spr_dir && ai_target.x < x && -spr_dir || -ai_target.spr_dir && ai_target.x > x && spr_dir) facing_target = true;
-		else facing_target = false;
-
-		//offstage check
-		if ((x > stage_x + 100 && x < (room_width - stage_x) - 100) && y > ai_target.y) offstage = false;
-		else offstage = true;
-
-		//edgeguard check
-		if (targetbusy || ai_target.free == false || xdist < 100 || (ai_target.x > (stage_x - blastzone) + 200) &&
-		(ai_target.x < ((room_width - stage_x) + blastzone) - 200)) edgeguard = false;
-		else edgeguard = true;
-
-
-		//chasing down the foe
-		if (!free && ((ai_target.state != PS_ATTACK_AIR || ai_target.state != PS_ATTACK_GROUND) && (state == PS_DASH_START || state == PS_DASH || state == PS_DASH_TURN)
-		|| (!ai_recovering || edgeguard) && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL) && !targetbusy && xrange > 100))
-		{
-			if (ai_target.x > x) right_hard_pressed = true;
-		    else left_hard_pressed  = true;
-		}
-
-		//parry logic
-		if (xrange <= 30 && yrange <= 30 && (ai_target.state == PS_ATTACK_AIR || ai_target.state == PS_ATTACK_GROUND) && ai_target.attack != AT_TAUNT && !free)
-		{
-			shield_pressed = true;
-			left_down = false;
-			right_down = false;
-		}
-
-		//ATTACKS
-		//the arrays change dynamically depending on the amount of mana bar has
-		if (mp_current > 10) far_side_attacks[0] = AT_NSPECIAL;
-
-		far_down_attacks[0] = AT_FAIR;
-		far_down_attacks[1] = AT_DAIR;
-		if (mp_current > 10) far_down_attacks[3] = AT_NSPECIAL;
-
-		mid_side_attacks[0] = AT_NSPECIAL;
-		if (mp_current > 60 && !burningfury_active || mp_current > 10 && burningfury_active) mid_side_attacks[1] = AT_FSPECIAL;
-
-		close_up_attacks[0] = AT_UTILT;
-		close_up_attacks[1] = AT_UAIR;
-		if (mp_current > 10) close_up_attacks[2] = AT_USTRONG;
-
-		close_side_attacks[0] = AT_JAB;
-		close_side_attacks[1] = AT_DTILT;
-		close_side_attacks[2] = AT_UTILT;
-		close_side_attacks[3] = AT_FTILT;
-		close_side_attacks[4] = AT_NAIR;
-		close_side_attacks[5] = AT_UAIR;
-		close_side_attacks[6] = AT_FSTRONG;
-		if (mp_current > 10)
-		{
-			close_side_attacks[7] = AT_USTRONG;
-			close_side_attacks[8] = AT_DSTRONG;
-			close_side_attacks[9] = AT_USPECIAL;
-		}
-		if (mp_current > 50) close_side_attacks[10] = AT_DSPECIAL;
-
-		close_down_attacks[0] = AT_DTILT;
-		close_down_attacks[1] = AT_NAIR;
-		close_down_attacks[2] = AT_DAIR;
-		if (mp_current > 10) close_down_attacks[3] = AT_DSTRONG;
-		if (mp_current > 50) close_side_attacks[4] = AT_DSPECIAL;
-
-		neutral_attacks[0] = AT_NAIR;
-		neutral_attacks[1] = AT_DTILT;
-		if (mp_current > 60 && !burningfury_active || mp_current > 10 && burningfury_active) neutral_attacks[2] = AT_FSPECIAL;
-
-
-
-		//SKILL STUFF
-		/*
-		//light dagger
-		if (xrange <= 150 && xrange > 100 && yrange < 20 && facing_target && mp_current > 10 && !free)
-		{
-			special_pressed = true;
-			right_down = false;
-			left_down = false;
-		}
-		else if (xrange <= 150 && xrange > 100 && y < ai_target.y && facing_target && mp_current > 10 && free) //air ver
-		{
-			special_pressed = true;
-			right_down = false;
-			left_down = false;
-		}
-		else if (!facing_target) special_pressed = false;
-
-		//burning fury
-		if (!burningfury_active && xrange <= 100 && mp_current > 70) //activation
-		{
-			if (-spr_dir && facing_target || spr_dir && !facing_target) 
-			{
-				left_down = true;
-				right_down = false;
-			}
-			else if (spr_dir && facing_target || -spr_dir && !facing_target)
-			{
-				left_down = false;
-				right_down = true;
-			}
-			special_pressed = true;
-		}
-		else if (burningfury_active && xrange <= 50 && mp_current > 20 && facing_target)
-		{
-			if (-spr_dir) left_down = true;
-			else right_down = true;
-
-			special_pressed = true;
-		}
-
-		//force leap
-		//should make bar calculate how close he is to the floor level and recover accordingly
-		//force leap has 3 trajectories after all
-		//if bar hits someone with force leap, force bar to use the blast attack too
-
-		//photon blast
-		if (mp_current > 60 && xrange <= 110 && yrange <= 50) //it should force bar to charge the photon blast untill the foe is in the attack state
-		{
-			down_down = true;
-			special_pressed = true;
-		}
-		*/
-	}
-	
+    }
 }
-else if (get_training_cpu_action() != CPU_FIGHT)
+else cpu_fight_time = 0;
+
+if (ai_recovering)
 {
-	AI_vs = false;
-	if (menu_open)
-	{
-		active_col = 4;
-		close_timer = -1;
-		menu_timer = -1;
-	}
+    switch (cpu_cur_skill)
+    {
+        case 2: //force leap
+            joy_pad_idle = false;
+            if (x < surface_left) joy_dir = 45-(surface_top - y)/4;
+            if (x > surface_right) joy_dir = 135+(surface_top - y)/4;
+            break;
+        case 6: //accel blitz
+            joy_pad_idle = false;
+            if (window <= 2) special_down = true;
+
+            joy_dir = point_direction(x, y, spr_dir ? surface_left-32 : surface_right-32, surface_top - 32);
+            break;
+    }
+}
+
+if (cpu_fight_time > 0)
+{
+    //general stuff
+    skill_check();
+    input = random_func(floor(cpu_fight_time/10), 2, true);
+    if (!ai_recovering && jump_down) jump_down = false;
+
+    target_dist = point_distance(x, y, ai_target.x, ai_target.y);
+    facing_target = (x > ai_target.x && -spr_dir || x < ai_target.x && spr_dir);
+
+    //normal attack logic
+    //bar knows some specific ways to use certain attacks like jab combo strings
+    if (is_attacking) switch (attack)
+    {
+        case AT_JAB:
+            if (has_hit_player && window_timer > window_cancel_time)
+            {
+                switch (window)
+                {
+                    case 3:
+                        switch (input)
+                        {
+                            case 0: //continiue jab
+                                up_down = false;
+                                down_down = false;
+                                left_down = false;
+                                right_down = false;
+                                has_hit_player = false;
+                                break;
+                            case 1: //jab -> up tilt
+                                up_down = true;
+                                down_down = false;
+                                left_down = false;
+                                right_down = false;
+                                has_hit_player = false;
+                                break;
+                            case 2: //jab -> down tilt
+                                down_down = true;
+                                up_down = false;
+                                left_down = false;
+                                right_down = false;
+                                has_hit_player = false;
+                                break;
+                        }
+                        attack_pressed = true;
+                        break;
+                    case 6:
+                        switch (input)
+                        {
+                            case 0: //continiue jab
+                                up_down = false;
+                                down_down = false;
+                                left_down = false;
+                                right_down = false;
+                                break;
+                            case 1: //jab -> forward tilt
+                                if (spr_dir) right_down = true;
+                                else left_down = true;
+                                up_down = false;
+                                down_down = false;
+                                break;
+                            case 2: //jab -> down tilt
+                                down_down = true;
+                                up_down = false;
+                                left_down = false;
+                                right_down = false;
+                                break;
+                        }
+                        attack_pressed = true;
+                        break;
+                    case 9:
+                        switch (input)
+                        {
+                            case 0: //continiue jab
+                                up_down = false;
+                                down_down = false;
+                                left_down = false;
+                                right_down = false;
+                                break;
+                            case 1: //jab -> up tilt
+                                up_down = true;
+                                down_down = false;
+                                left_down = false;
+                                right_down = false;
+                                break;
+                            case 2: //jab -> down tilt
+                                down_down = true;
+                                up_down = false;
+                                left_down = false;
+                                right_down = false;
+                                break;
+                        }
+                        attack_pressed = true;
+                        break;
+                }
+            }
+            break;
+        case AT_DTILT:
+            if (has_hit_player && window == window_last && window_timer > window_cancel_time)
+            {
+                switch (input)
+                {
+                    case 0: //do nothing
+                        up_down = false;
+                        down_down = false;
+                        left_down = false;
+                        right_down = false;
+                        has_hit_player = false;
+                        break;
+                    case 1: //dtilt -> jump
+                        up_down = false;
+                        down_down = false;
+                        left_down = false;
+                        right_down = false;
+                        has_hit_player = false;
+                        break;
+                    case 2: //dtilt -> utilt
+                        up_down = true;
+                        down_down = false;
+                        left_down = false;
+                        right_down = false;
+                        has_hit_player = false;
+                        break;
+                }
+                attack_pressed = true;
+            }
+            break;
+        case AT_NAIR: case AT_FAIR: case AT_UAIR: case AT_DAIR: case AT_BAIR:
+            if (has_hit_player && can_fast_fall && x > surface_left && x < surface_right && !fast_falling) do_a_fast_fall = true;
+            break;
+        case AT_USTRONG:
+            switch (window)
+            {
+                case 5: //throw spear if bar is below the ai_target
+                    if (ai_target.y < y && ai_target.x < x + 100 && ai_target.x > x - 100) special_pressed = true;
+                    break;
+                case 7: //aim towards ai_target
+                    joy_pad_idle = false;
+                    joy_dir = point_direction(x, y, ai_target.x, ai_target.y-32);
+                    break;
+            }
+            break
+        case AT_DSTRONG:
+            //if bar manages to catch someone or they are the ai_target is relatively close he will charge more
+            strong_down = ((strong_charge < 15 || has_hit_player || target_dist > 50 && target_dist < 150 && strong_charge <= 30) && window == 2);
+            break;
+    }
+
+    //skill usage manual for dummies
+    switch (skill[cur_skills[0]].skill_id)
+    {
+        case 0: //light dagger
+            if (cpu_fight_time % 500 == 0 && daggers_used > 2) daggers_used = 0; //allows him to use light dagger again
+            if (mp_current >= skill[0].mp_use_cost && facing_target && (y == ai_target.y && !free || y < ai_target.y && free) && daggers_used <= 2)
+            {
+                if ((target_dist < 350 || target_dist < 500 && burnbuff_active) && target_dist > 160)
+                {
+                    if (cpu_cur_skill == 0 && (window == 1 || window == 4) && window_timer == 0) daggers_used ++;
+                    use_skill(0);
+                }
+            }
+            break;
+        case 4: //flashbang
+            if (mp_current >= skill[4].mp_use_cost && target_dist <= 40 && facing_target) use_skill(0);
+            break;
+        case 8: //ember fist
+            if (mp_current >= skill[8].mp_use_cost && target_dist < 120 && (ai_target.y > y + 32 || ai_target.y < y - 32) && facing_target)
+            {
+                joy_pad_idle = false;
+                joy_dir = point_direction(x, y, ai_target.x, ai_target.y-16);
+                use_skill(0);
+            }
+            break;
+    }
+    switch (skill[cur_skills[1]].skill_id)
+    {
+        case 1: //burning fury
+            if (!burnbuff_active && !lightbuff_active)
+            {
+                burnbuff_time = 0;
+                burnbuff_end_time = random_func(924, 120, true);
+
+                //the input keeps going back to nspec because i'm forcing it out of fspec, overwriting the code above
+                if (mp_current >= skill[1].mp_use_cost && target_dist < 250) use_skill(1);
+            }
+            else
+            {
+                burnbuff_time ++;
+                if (burnbuff_time >= burnbuff_end_time)
+                {
+                    if (mp_current >= skill[1].mp_cost2 && facing_target && (y == ai_target.y && !free || y < ai_target.y && free))
+                    {
+                        if (target_dist < 200) use_skill(1);
+                    }
+                }
+            }
+        case 5: //power smash
+            if (mp_current >= skill[5].mp_use_cost && target_dist < 180 && facing_target) use_skill(1);
+            break;
+        case 9: //light hookshot
+            if (mp_current >= skill[9].mp_use_cost && target_dist < 600 && target_dist > 300 && (ai_target.y > y + 32 || ai_target.y < y - 32))
+            {
+                use_skill(1);
+                if (attack == skill[9].skill_attack && window == 2)
+                {
+                    if (hook_charge < target_dist/100 && facing_target) special_down = true;
+                    else if (!facing_target && !ai_recovering) shield_pressed = true;
+                }
+            }
+    }
+    switch (skill[cur_skills[2]].skill_id)
+    {
+        case 2: //force leap
+            break;
+        case 6: //accel blitz
+            if (mp_current >= skill[6].mp_use_cost && target_dist < 320 && !burnbuff_active && !ai_recovering)
+            {
+                joy_pad_idle = false;
+                if (window <= 2) special_down = true;
+
+                joy_dir = point_direction(x, y, ai_target.x, ai_target.y+16);
+            }
+        case 10: //searing descent
+            if (mp_current >= skill[10].mp_use_cost && ai_target.y - 64 < y && (ai_target.x > x + 60 || ai_target.x < x - 60)) use_skill(2);
+            if (mp_current >= skill[10].mp_cost2 && ai_target.y + 64 > y && (ai_target.x > x + 60 || ai_target.x < x - 60) && (window == 3 || window == 4) && !ai_recovering)
+            {
+                special_down = true;
+            }
+            break;
+    }
+    switch (skill[cur_skills[3]].skill_id)
+    {
+        case 3: //photon blast
+            if (mp_current >= skill[3].mp_use_cost && target_dist < 140 && !burnbuff_active) use_skill(3);
+            break;
+        case 7: //polaris
+            if (!lightbuff_active && !burnbuff_active)
+            {
+                lightbuff_time = 0;
+                if (mp_current >= skill[7].mp_use_cost && target_dist < 1000)
+                {
+                    use_skill(3);
+                }
+            }
+            else
+            {
+                lightbuff_time ++;
+                if (lightbuff_time > lightbuff_end_time)
+                {
+                    down_pressed = true;
+                    special_pressed = true;
+                }
+            }
+            break;
+        case 11: //chasm burster
+            if (mp_current >= skill[11].mp_use_cost && target_dist < 200 && (ai_target.y > y + 32 || ai_target.y < y - 32) && facing_target) use_skill(3);
+            break;
+    }
+
+    if (target_dist < 200 && !free && od_cast == 1)
+    {
+        if (can_overdrive)
+        {
+            special_down = true;
+            attack_down = true;
+            
+            jump_down = false;
+            up_down = false;
+            left_down = false;
+            right_down = false;
+            down_down = false;
+        }
+        else if ("fs_char_initialized" in self) fs_ai_attempt_use = true;
+        //couldn't figure out how to use the super in the fighters thing
+    }
+}
+
+/////////////////////////////////////////////////////////////// #DEFINE SECTION ///////////////////////////////////////////////////////////////
+
+#define skill_check
+{
+    if (is_attacking)
+    {
+        switch (attack)
+        {
+            default: cpu_cur_skill = -1; break;
+            case AT_NTHROW: case AT_NSPECIAL_AIR: cpu_cur_skill = 0; break;
+            case AT_FTHROW: case AT_FSPECIAL_AIR: cpu_cur_skill = 1; break;
+            case AT_UTHROW: cpu_cur_skill = 2; break;
+            case AT_DTHROW: cpu_cur_skill = 3; break;
+            case 39: cpu_cur_skill = 4; break;
+            case AT_FSPECIAL_2: cpu_cur_skill = 5; break;
+            case AT_NSPECIAL_2: cpu_cur_skill = 6; break;
+            case AT_USPECIAL_2: cpu_cur_skill = 7; break;
+            case AT_DSPECIAL_2: cpu_cur_skill = 8; break;
+            case AT_EXTRA_2: cpu_cur_skill = 9; break;
+            case AT_EXTRA_3: cpu_cur_skill = 10; break;
+            case AT_EXTRA_1: cpu_cur_skill = 11; break;
+        }
+    }
+    else cpu_cur_skill = -1;
+}
+#define use_skill(input)
+{
+    var maybe_use_skill = random_func(35, 100, true);
+    if (state_cat != SC_GROUND_COMMITTED && state_cat != SC_AIR_COMMITTED && state_cat != SC_HITSTUN && maybe_use_skill == input
+    && ai_target.state != PS_DEAD && ai_target.state != PS_RESPAWN)
+    {
+        switch (input)
+        {
+            case 0: set_attack(AT_NSPECIAL); break;
+            case 1: set_attack(AT_FSPECIAL); break;
+            case 2: set_attack(AT_USPECIAL); break;
+            case 3: set_attack(AT_DSPECIAL); break;
+        }
+    }
 }

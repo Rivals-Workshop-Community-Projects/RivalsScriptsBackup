@@ -9,7 +9,6 @@ crouch_anim_speed = .1;
 walk_anim_speed = .15;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
-	 set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
 
 walk_speed = 4;
 walk_accel = 0.3;

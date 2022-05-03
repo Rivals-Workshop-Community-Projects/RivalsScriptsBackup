@@ -40,6 +40,6 @@ set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 0.25);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.7);
+set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, hit_sprites[0]);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

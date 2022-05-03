@@ -100,7 +100,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-set_victory_bg( sprite_get( "brawl_victory" ));
+set_victory_bg( sprite_get( "bonbyvictorybackground" ));
 set_victory_theme(sound_get("bonby_victory"));
 
 frog_exists = 0;

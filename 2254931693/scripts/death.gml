@@ -12,6 +12,3 @@ if (frog_deathtimer > -1){
     frog_deathtimer = 1;
 }
 
-sound_stop(asset_get("sfx_death1"));
-sound_stop(asset_get("sfx_death2"));
-sound_play( sound_get( "brawl_death" ) );

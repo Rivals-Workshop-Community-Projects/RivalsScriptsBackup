@@ -10,6 +10,8 @@ lightweight = false;
 dragon_install = false;
 install_theme = 0;
 install_time = 0;
+playing_install_theme = false;
+
 end_dragon_install = false;
 play_theme = false;
 install_armor = 5;

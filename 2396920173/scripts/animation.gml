@@ -52,6 +52,15 @@ if piece != "P" {
         sprite_index = sprite_get(piece + "doublejump")
         image_index = floor((state_timer mod (frames * frame_dur))/frame_dur) 
         break;
+        /*
+        case PS_ATTACK_GROUND:
+        switch attack {
+            case AT_FTILT:
+            sprite_index = sprite_get("Uftilt") break;
+            break;
+        }
+        break;
+        */
     }
 } else {
     switch (state){

@@ -46,6 +46,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("table"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("table"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, -0.1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);

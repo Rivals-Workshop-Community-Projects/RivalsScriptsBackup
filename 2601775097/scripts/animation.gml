@@ -1,226 +1,149 @@
-switch (state){
-    case PS_IDLE:
-        //code here can change the sprite_index and image_index while in the idle state
-    break;
-    
-    default: break;
-}
+//animation
 
-//intro
-if (state == PS_SPAWN && !was_reloaded && !allow_bibical && !testing)
+////////////////////////////////////////////////////////////// SETUP STUFF //////////////////////////////////////////////////////////////
+
+// fix weird jittering that can happen when it tries to return to 0
+if (abs(hud_offset) < 1) hud_offset = 0;
+
+//theikos state specific animations
+if (theikos_type > 0)
 {
-    if (intro_timer < 19 && intro_timer >= 0)
-    {
-        sprite_index = sprite_get("intro");
-        image_index = intro_timer;
-    }
-    else if (intro_timer < 0)
-    {
-        sprite_index = sprite_get("intro");
-        image_index = 0;
-    }
-    else
-    {
-        sprite_index = sprite_get("idle");
-    }
+	if (sprite_index == sprite_get("idle"))
+	{
+		sprite_index = sprite_get("theikos_idle");
+		image_index = state_timer * idle_anim_speed;
+	}
+	if (sprite_index == sprite_get("dash"))
+	{
+		sprite_index = sprite_get("theikos_dash");
+		image_index = state_timer * dash_anim_speed;
+	}
 }
 
-//if bar is in his falling animation, make the animation loop
-if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP && state_timer >= 26)
-{
-    if (state_timer % 4 == 0) //4: anim speed || 4 = 0.25
-    {
-        if (switch_spr) switch_spr = false;
-        else switch_spr = true;
-    }
+////////////////////////////////////////////////////////// ANIMATE //////////////////////////////////////////////////////////
 
-    if (switch_spr) image_index = 6;
-    else image_index = 5;
+switch (state) {
+	// ATTACK ANIMATIONS
+	case PS_ATTACK_AIR: case PS_ATTACK_GROUND:
+		switch (attack)
+		{
+			case AT_DSTRONG: case AT_DSTRONG_2:
+				if (smash_charging)
+				{
+					image_index = 2 + (strong_charge / 3) % 4;
+	                //image_index = 2: starting frame
+	                //(strong_charge/3): animation speed
+	                //% 4: amount of frames
+				}
+	            break;
+			case AT_USTRONG_2:
+				if (smash_charging) image_index = 1 + (strong_charge / 3) % 2;
+	            break;
+			case AT_DSPECIAL_2: //ember fist
+				if (image_index >= 4) image_index = image_index + ember_alter_anim_start;
+				if (window == window_last) image_index = 8;
+				break;
+			case 49: //lord's punishment
+				hurtboxID.sprite_index = hurtbox_spr;
+	
+				//sword animation
+	            switch (window)
+	            {
+	                default:
+	                    od_sword_image = 0;
+	                    break;
+	                case 12: case 13:
+	                    od_sword_image = image_index-19;
+	                    break;
+	                case 14: case 15: case 16: case 17:
+						if (od_sword_image < 13)
+						{
+							sword_timer = state_timer-202;
+							od_sword_image += 0.4;
+							od_sword_pos[0] = [x-24*spr_dir, y-112];
+							od_sword_pos[1] = [ease_cubeInOut(x-24*spr_dir, x-80*spr_dir, sword_timer, 17), ease_cubeInOut(y-112, y-256, sword_timer, 17)];
+						}
+						if (od_sword_image >= 13) od_sword_image = image_index-13;
+	
+						if (state_timer >= 240 && state_timer < 255)
+						{
+							sword_timer = state_timer-240;
+							od_sword_pos[0] = [ease_cubeOut(x-24*spr_dir, x+8*spr_dir, sword_timer, 10), ease_cubeOut(y-112, y-88, sword_timer, 15)];
+							od_sword_pos[1] = [ease_cubeOut(x-80*spr_dir, x+80*spr_dir, sword_timer, 10), ease_cubeOut(y-256, y-244, sword_timer, 15)];
+						}
+	
+						if (window == 17)
+						{
+							if (window_timer == 0) od_slash_alpha = 1;
+							od_sword_pos[0] = [x-64*spr_dir, y-48];
+							od_sword_pos[1] = [x-264*spr_dir, y-96];
+						}
+	                    break;
+	                case 18: case 19:
+						sword_timer = state_timer-272;
+	                    od_sword_image += 0.2;
+						od_sword_pos[0] = [ease_cubeInOut(x-64*spr_dir, x-264*spr_dir, sword_timer, 17), ease_cubeInOut(y-48, y-96, sword_timer, 25)];
+	                    break;
+	            }
+				break;
+		}
+		spr_angle = 0;
+		draw_y = 0;
+		break;
+	// POINTLESS SHORTCUTS
+	case PS_PRATLAND:
+		image_index = lerp(0, 2, state_timer/clamp((4/45.0) * parry_distance + (160.0/3.0), 60, 100));
+		break;
+	case PS_ROLL_BACKWARD: case PS_ROLL_FORWARD: case PS_TECH_BACKWARD: case PS_TECH_FORWARD:
+		sprite_index = sprite_get("roll");
+		break;
+	case PS_TECH_GROUND:
+		sprite_index = sprite_get("crouch");
+		image_index = floor(lerp(1, 5, state_timer/18));	
+		break;
+	case PS_HITSTUN: case PS_TUMBLE:
+		image_index = hurt_img;
+		
+		if (state == PS_TUMBLE) hurt_img = 5;
+		
+		if (hurt_img == 5) 
+		{
+			//spiphurt spinning cuz i don't wanna make a long strip
+			//thanks Muno and Frtoud
+			sprite_index = sprite_get("hurt_tumble"); //tf is a spinhurt
+		
+			rotate_time ++;
+			if (rotate_time == 0)
+			{
+				spr_angle = 0;
+				cur_sprite_rot = 0;
+				should_rotate = false;
+			}
+			else if (rotate_time % 10 == 0) should_rotate = true;
+			else should_rotate = false;
+			if (should_rotate)
+			{
+				cur_sprite_rot += 90*spr_dir;
+				if (abs(cur_sprite_rot) >= 360) cur_sprite_rot = 0;
+			}
+		
+			spr_angle = cur_sprite_rot; 
+			draw_y = -40;
+		}
+		break;
+	case PS_HITSTUN_LAND:
+		image_index = 5;
+		break;
+	case PS_FLASHED:
+		sprite_index = sprite_get("hurt");
+		image_index = 1;
+		break;
+	case PS_BURIED:
+		sprite_index = sprite_get("hurt");
+		image_index = 2;
+		break;
+	default:
+		spr_angle = 0;
+		draw_y = 0;
+		break;
 }
-
-//force leap bar draw angle changer
-if (attack == AT_SKILL2)
-{
-    if (window == 4)
-    {
-        if (forceleap_up)
-        {
-            if (spr_dir) spr_angle = 10;
-            else spr_angle = -10;
-        }
-        else if (forceleap_down)
-        {
-            if (spr_dir) spr_angle = -10;
-            else spr_angle = 10;
-        }
-    }
-    else if (window > 4) spr_angle = 0;
-}
-
-//accel blitz makes bar invisible when he goes lightspeed but he can still be hit
-if (attack == AT_SKILL4 && (window >= 3 && window <= 4 || window == 5 && window_timer < 2)) sprite_index = sprite_get("empty");
-
-//ember fist draw logic
-if (attack == AT_SKILL8)
-{
-    switch (window)
-    {
-        case 3:
-            if (window_timer <= 1)
-            {
-                if (emberfist_up) image_index = 9;
-                if (emberfist_down) image_index = 14;
-            }
-            else if (window_timer > 1)
-            {
-                if (emberfist_up) image_index = 10;
-                if (emberfist_down) image_index = 15;
-            }
-            break;
-        
-        case 4:
-            if (window_timer <= 5)
-            {
-                if (emberfist_up) image_index = 11;
-                if (emberfist_down) image_index = 16;
-            }
-            else if (window_timer > 5 && window_timer <= 10)
-            {
-                if (emberfist_up) image_index = 12;
-                if (emberfist_down) image_index = 17;
-            }
-            else if (window_timer > 10)
-            {
-                if (emberfist_up) image_index = 13;
-                if (emberfist_down) image_index = 18;
-            }
-            break;
-    }
-}
-
-//light hookshot special launch air idle
-if (attack == AT_SKILL9 && window == 5) hookshot_launch = true;
-else if (!free || jump_pressed || attack_pressed || special_pressed || shield_pressed) hookshot_launch = false;
-
-if (hookshot_launch && state == PS_IDLE_AIR)
-{
-    sprite_index = sprite_get("lighthookshot");
-    image_index = 12 + state_timer/8;
-
-    if (image_index >= 15.85 || image_index == 0) hookshot_launch = false;
-}
-
-// hover animation loop
-if (hovering)
-{
-    sprite_index = sprite_get("hover");
-    image_index = 0 + ((state_timer * hover_anim_speed) % 4);
-}
-
-// strongs loops
-if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
-{
-    if (attack == AT_DSTRONG && window == 2 && window_timer == 8) //normal D-strong
-    {
-        image_index = 2 + (strong_charge / 3) % 4;
-        //image_index = 2: starting frame
-        //(strong_charge/3): animation speed
-        //% 4: amount of frames
-    }
-    if (attack == AT_USTRONG_2 && window == 2 && window_timer == 3) //theikos U-strong
-    {
-        image_index = 1 + (strong_charge / 4) % 2;
-    }
-    if (attack == AT_DSTRONG_2 && window == 2 && window_timer == 8) //theikos U-strong
-    {
-        image_index = 2 + (strong_charge / 3) % 4;
-    }
-}
-
-//taunt attack stuff
-if (attack == AT_TAUNT)
-{
-    if (has_hit_player)
-    {
-        if (window == 7) suppress_stage_music(0, 5);
-
-        if (window == 9) set_window_value(AT_TAUNT, 9, AG_WINDOW_LENGTH, 10);
-
-        if (window == 10) window = 10;
-    }
-    else if (!has_hit_player)
-    {
-        if (window == 10) window = 13;
-    }
-
-    //change the hurtbox to ex_guy_hurt_box if you are trying to use mana debug or the skill select
-    if (get_match_setting(SET_PRACTICE))
-    {
-        if (up_down || down_down) set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
-        else if (!up_down && !down_down) reset_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE);
-    }
-}
-
-//doing inputs on phone
-if ("AT_PHONE" in self && attack == AT_PHONE)
-{
-    if (image_index == 4)
-    {
-        if (special_down || attack_down)
-        {
-            image_index = 5;
-        }
-    }
-}
-
-//air dash rune
-if (has_rune("A") || fuck_you_cheapies && theikos_active)
-{
-    if (runeA_dash && free)
-    {
-        sprite_index = sprite_get("dashstart");
-        image_index = runeA_dash_timer/2;
-
-        if (runeA_dash_timer == 2) sound_play(sound_get("sfx_forceleap_jump"));
-        if (runeA_dash_timer == 3)
-        {   
-            var boost = spawn_hit_fx(x+16*spr_dir, y-12, fx_boost);
-            boost.depth = -6;
-            boost.draw_angle = -90*spr_dir;
-        }
-    }
-}
-
-//OVERDRIVE greatsword
-if (attack == AT_OVERDRIVE)
-{
-    if (window >= 12 && window < 14)
-    {
-        OD_sword_image = image_index-19;
-    }
-    else if (window == 14)
-    {
-        if (window_timer == 0) OD_sword_image = 7;
-        else
-        {
-            OD_sword_image += 0.4;
-            if (OD_sword_image >= 13) OD_sword_image = 13;
-        }
-        
-    }
-    else if (window == 15)
-    {
-        if (window_timer < 3) OD_sword_image = 14;
-        else OD_sword_image = 15;
-    }
-    else if (window == 16) OD_sword_image = 16;
-    else if (window == 17 && window_timer == 0) OD_sword_image = 17;
-    else if (window >= 17 && window < 19) OD_sword_image += 0.2;
-    else OD_sword_image = 0;
-
-    //slash
-    if (window == 17 && window_timer > 0) OD_slash_alpha -= 0.1;
-    else OD_slash_alpha = 1;
-}
-// theikos music
-if (bossMusic_count > 0) suppress_stage_music(0, 100);

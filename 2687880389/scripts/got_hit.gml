@@ -1,13 +1,14 @@
 // Restore some recovery options on hit
 //booster_rush_charges = max_booster_rush_charges;
 //rocket_fuel = max_rocket_fuel;
-fuel_recovery_active = true;
+//fuel_recovery_active = !uspecial_rework;
 //rocket_fuel += pity_fuel_amount;
 //rocket_fuel = (rocket_fuel > max_rocket_fuel) ? max_rocket_fuel : rocket_fuel;
 
 afterimage_countdown = 0;
 
 sound_stop(current_rocket_sound);
+sound_stop(horn_current);
 
 // Release anyone we may have grabbed
 with (asset_get("oPlayer")) {

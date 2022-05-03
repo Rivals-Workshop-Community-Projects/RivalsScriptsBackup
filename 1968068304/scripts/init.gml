@@ -139,6 +139,16 @@ epinel_air_dspecial_max_fall_speed = 0;
 epinel_has_airdodge_during_aerial_attack = true;
 epinel_heavy_state = 0;
 
+
+
+fix_djump_counter = 0; //added to 'fix' the broken doublejumps
+fix_djump_accel = djump_accel;
+djump_accel = 0; //set the original djump_accel value to 0, in case it gets an official patch later
+fix_old_djumps = 0; //added to accurately check when the player has double jumped. Thanks Supersonic
+
+
+
+
 //epinel's "other" custom variables.
 epinel_other_weightless_inflicted = false;
 epinel_other_update_performed = false;

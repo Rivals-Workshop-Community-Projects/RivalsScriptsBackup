@@ -120,8 +120,8 @@ roll_forward_recovery_frames = 3;
 roll_back_startup_frames = 1;
 roll_back_active_frames = 1;
 roll_back_recovery_frames = 3;
-roll_forward_max = 9.00; //roll speed
-roll_backward_max = 9.00;
+roll_forward_max = 7.00; //roll speed
+roll_backward_max = 7.00;
 
 land_sound = asset_get("sfx_land_heavy");
 landing_lag_sound = asset_get("sfx_land_heavy");

@@ -3,7 +3,9 @@
 if(has_shrimp && state != 4){
     var fx_image_index = get_gameplay_time() / 8
         draw_sprite_ext(sprite_get("pot_shrimp_stir"),fx_image_index,x,y + 2,1,1,0,c_white,1);
-
+    if(!can_opponent_hit){
+      draw_sprite_ext(sprite_get("pot_shrimp_stir"),fx_image_index,x,y + 2,1,1,0,c_gray,1);  
+    }
 }
 //food
 
@@ -19,5 +21,9 @@ if(state = 7){
       draw_debug_text(x-37, y - 85,string("Jambolaya"));
   }if(food_id = 4){
       draw_debug_text(x-55, y - 85,string("Shrimp Po-boy"));
+  }if(food_id = 5){
+      draw_debug_text(x-30, y - 85,string("Blue Sky"));
+  }if(food_id = 6){
+      draw_debug_text(x-46, y - 85,string("Set of Gyoza"));
   }
 }

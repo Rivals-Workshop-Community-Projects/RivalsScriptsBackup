@@ -99,6 +99,7 @@ if (attack == AT_FSPECIAL){
 
 if (attack == AT_USPECIAL){
     can_wall_jump = true;
+    can_fast_fall = false;
     if(!free)
     {
         move_cooldown[AT_USPECIAL] = 30;

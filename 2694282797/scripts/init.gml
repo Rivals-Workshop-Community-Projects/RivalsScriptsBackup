@@ -39,6 +39,8 @@ sfx_spiral_sword3 = sound_get("sfx_spiral_sword_03");
 sfx_padoru = sound_get("sfx_padoru")
 sfx_padoru_short = sound_get("sfx_padoru_short")
 
+//containtment level 6
+sfx_vineboom = sound_get("sfx_vineboom");
 
 
 //funny
@@ -49,13 +51,14 @@ tree_id = noone;
 //other
 should_debug = false;
 debugtimer = 1;
+fuck_intro = false;
+no_u = noone;
 
 /// ----------------- bb ---------------------///
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
-	 set_victory_bg(sprite_get("brawl_victory")); // victory_background.png
 
 char_height = 52;
 idle_anim_speed = .15;

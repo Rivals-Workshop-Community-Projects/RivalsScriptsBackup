@@ -7,6 +7,5 @@ free = true;
 hsp = -0.5;
 vsp = -0.1;
 _grav = 0;
-despawntimer = 300;
 
 drip = 20

@@ -15,18 +15,18 @@ var no_hp = !hitpause;
 if(state_timer == 1) 
 {
 	fx = -4;
-	if(get_player_color(player) == 4 || alt2_secret == 3)
-	{
-		sound_stop(sound_get("win_shoryu"))
-		sound_stop(sound_get("win_hado"))
-		sound_stop(sound_get("win_tatsu"))
-		switch(attack)
-		{
-			case AT_FSPECIAL: sound_play(sound_get("win_tatsu"),false,noone,1.7,1.1) break;
-			case AT_USPECIAL: sound_play(sound_get("win_shoryu"),false,noone,1.7,1.1) break;
-			case AT_USPECIAL_2: case AT_NSPECIAL: sound_play(sound_get("win_hado"),false,noone,1.7,1.1) break;
-		}
-	}
+	// if(get_player_color(player) == 4 || alt2_secret == 3)
+	// {
+	// 	sound_stop(sound_get("win_shoryu"))
+	// 	sound_stop(sound_get("win_hado"))
+	// 	sound_stop(sound_get("win_tatsu"))
+	// 	switch(attack)
+	// 	{
+	// 		case AT_FSPECIAL: sound_play(sound_get("win_tatsu"),false,noone,1.7,1.1) break;
+	// 		case AT_USPECIAL: sound_play(sound_get("win_shoryu"),false,noone,1.7,1.1) break;
+	// 		case AT_USPECIAL_2: case AT_NSPECIAL: sound_play(sound_get("win_hado"),false,noone,1.7,1.1) break;
+	// 	}
+	// }
 }
 switch (attack)
 {
@@ -206,15 +206,6 @@ switch (attack)
 		break;
 		
 		case 2:
-		    if (attack_pressed && !was_parried && lure_timer == 0)
-			{
-			    lure_timer = 180;
-			    destroy_hitboxes();
-			    attack_end();
-			    set_attack(AT_FSPECIAL_2);
-			    can_fast_fall = false;
-			    can_move = false;
-			}
 			
 			if (special_pressed && !was_parried)
 			{
@@ -225,10 +216,17 @@ switch (attack)
 			    can_fast_fall = false;
 			    can_move = false;
 			}
+		    if (attack_pressed && !was_parried && lure_timer == 0)
+			{
+			    lure_timer = 180;
+			    destroy_hitboxes();
+			    attack_end();
+			    set_attack(AT_FSPECIAL_2);
+			    can_fast_fall = false;
+			    can_move = false;
+			}
 		break;
 	}
-    case AT_FSPECIAL_AIR:
-    
 	break;
 	case AT_FSPECIAL_2:
 		if (window == 2 && window_timer == 1) instance_create(x+0*spr_dir,y-30,"obj_article1");
@@ -246,8 +244,6 @@ switch (attack)
         can_fast_fall = false;
         can_move = false;
     }
-	
-	
 	if (get_gameplay_time() mod 4 == 0 and window > 1)
 	{
 		var posx = round(random_func(4, 8, true)) - 4
@@ -267,7 +263,6 @@ switch (attack)
 		vsp = -13
 		hsp = 4*spr_dir
 	}
-	
     if (attack_pressed && hitpause && has_hit_player && lure_timer == 0 && (window == 2) and !hit_player_obj.activated_kill_effect and instance_exists(shoryu_obj) and shoryu_obj.state != PS_RESPAWN)
     {
         lure_timer = 180;
@@ -285,7 +280,6 @@ switch (attack)
         set_attack(AT_USPECIAL_2);
         can_fast_fall = false;
         can_move = false;
-        
     }
 	break;
 	case AT_USPECIAL_2:

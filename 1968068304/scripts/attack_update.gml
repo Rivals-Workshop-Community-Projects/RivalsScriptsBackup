@@ -35,6 +35,7 @@ if (was_parried && hitpause && free && old_vsp == 0) {
 	old_vsp = 1;
 }
 
+
 switch (attack) { //open switch(attack)
 	
 	case AT_USTRONG:
@@ -1208,7 +1209,7 @@ switch (attack) { //open switch(attack)
 			case 8:
 			case 9:
 				//clamp hsp. allow minimal movement.
-				hsp = clamp(hsp + (0.25 + runeA / 5) * (right_down - left_down), -(3.5 + runeA), 3.5 + runeA);
+				hsp = clamp(hsp + (0.225 + runeA / 5) * (right_down - left_down), -(3.5 + runeA), 3.5 + runeA); //0.25
 				
 				//fall faster than normal.
 				if (vsp > -2) vsp = min(vsp * 1.04 + (epinel_air_dspecial_platform_hits * 0.02) + (epinel_heavy_state > 0) * 0.04,  20 + epinel_heavy_state * 5);

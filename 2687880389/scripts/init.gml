@@ -15,7 +15,8 @@ lightweight = has_rune("E");
 // tier 2
 accellerated_jump_kick = has_rune("G");
 can_store_dspecial_charge = has_rune("H");
-remap_specials = false; //has_rune("I"); // Remove
+//uspecial_rework = true; //has_rune("I"); // Remove
+//remap_specials = false; //has_rune("I"); // Remove
 //rune I desc="Old experimental tweaks to specials, will remove"
 //rune I type="A"
 // tier 3
@@ -347,14 +348,16 @@ energy_b = get_color_profile_slot_b(energy_color_slot, 0);
 // uspecial fuel
 //var rocket_seconds = remap_specials ? 3 : 0.6;
 //var rocket_seconds = 1.0;
-var rocket_seconds = 1.1; // 1.2
+var rocket_seconds = 0.7; // 1.1 1.2
 max_rocket_rising_speed = -5.5; // -6
 //rocket_seconds *= double_rocket_time ? 2 : 1;
-fuel_consumption_rate = 4;
-airborne_fuel_recovery_rate = 1.2; // 2
-grounded_fuel_recovery_rate = 3.2; // 3
-fuel_recovery_active = true;
+fuel_consumption_rate = 10; // 4 (doesn't matter since everything scales off of this)
 max_rocket_fuel = rocket_seconds * 60 * fuel_consumption_rate;
+var airborne_recovery_seconds = 4.5; // 3+(2/3);
+var grounded_recovery_seconds = 1.5; // 1+(3/8);
+airborne_fuel_recovery_rate = max_rocket_fuel / (airborne_recovery_seconds * 60); //1.2 2
+grounded_fuel_recovery_rate = max_rocket_fuel / (grounded_recovery_seconds * 60); //3.2 3
+fuel_recovery_active = true;
 fuel_consumption_rate = double_rocket_time ? fuel_consumption_rate / 2 : fuel_consumption_rate;
 pity_fuel_amount = max_rocket_fuel / 5; // 4 8
 pity_available = true; // Only give pity energy once per airtime
@@ -373,10 +376,15 @@ fill_fraction = rocket_fuel / max_rocket_fuel;
 //meter_sprite_y = temp_y + 3;
 //meter_fill_sprite_x = temp_x + 9;
 //meter_fill_sprite_y = temp_y + 1;
+ember_effect = hit_fx_create(sprite_get("uspecial_ember"), 18);
+uspecial_smoke_effect = hit_fx_create(sprite_get("uspecial_finale_smoke"), 12);
+uspecial_ember_countdown = 0;
+uspecial_ember_countdown_max = 3;
+uspecial_ember_countdown_variance = 2;
 
 // fspecial charges
-fspecial_leap_hsp = 9;//11;
-fspecial_leap_vsp = -7.5;
+fspecial_leap_hsp = 8.5; // 9 11;
+fspecial_leap_vsp = -6.5; // -7.5
 //max_booster_rush_charges = increased_charges ? 2 : 1;
 //booster_rush_charges = max_booster_rush_charges;
 //fspecial_damping = 1;
@@ -500,10 +508,40 @@ switch (selected_player_color) {
 */
 
 // Can use different images for special taunt
-transformed_taunt_sprite = codename_wireframe_active ? sprite_get("taunt_filling_hologram") : sprite_get("taunt_filling");
-highest_random_transformation_option = codename_ugh_number;
-specific_taunt_transformation_required = (selected_player_color > codename_default_number) && (selected_player_color <= codename_ugh_number);
+transformed_taunt_sprite = codename_rotom_active ? sprite_get("taunt_filling_rotom") :
+                           codename_wireframe_active ? sprite_get("taunt_filling_hologram") : sprite_get("taunt_filling");
+mettaton_arm_sprite = codename_wireframe_active ? sprite_get("taunt_filling_mettaton_arm_hologram") : sprite_get("taunt_filling_mettaton_arm");
+mettaton_leg_sprite = codename_wireframe_active ? sprite_get("taunt_filling_mettaton_leg_hologram") : sprite_get("taunt_filling_mettaton_leg");
+mettaton_torso_sprite = codename_wireframe_active ? sprite_get("taunt_filling_mettaton_torso_hologram") : sprite_get("taunt_filling_mettaton_torso");
+cabinet_sprite = codename_wireframe_active ? sprite_get("taunt_filling_cabinet_hologram") : sprite_get("taunt_filling_cabinet");
+highest_random_transformation_option = codename_rotom_number;
+specific_taunt_transformation_required = ((selected_player_color > codename_default_number) && (selected_player_color <= codename_ugh_number))
+                                            || ((selected_player_color >= codename_mettaton_number) && (selected_player_color <= codename_rotom_number));
+color_select_skip_begin = codename_ugh_number + 1;
+color_select_skip_count = 4;
 selected_taunt_transformation = 0;
+// Randomly selected parts for Mettaton transformation
+mettaton_max_arm_index = 6;
+mettaton_left_arm = 0;
+mettaton_right_arm = 0;
+mettaton_max_leg_index = 4;
+mettaton_left_leg = 0;
+mettaton_right_leg = 0;
+mettaton_max_mouth_index = 7;
+mettaton_mouth = 0;
+mettaton_max_eye_index = 7;
+mettaton_eye = 0;
+// Mettaton moves around a bit, re-roll random parts every cycle
+mettaton_cycle_max_y = 39; // wanted to use 40, but would get into a loop of the same 15 poses because the random numbers loop every 10 seconds
+mettaton_cycle_max_x = mettaton_cycle_max_y * 2;
+mettaton_x_variance = 4;
+mettaton_y_variance = 8;
+// Track audio clips for Cabinet Man song
+cabinet_song_clip_max = 8;
+cabinet_song_clip_current = cabinet_song_clip_max - 1; // increments before displaying
+cabinet_flicker_version_current = 0; // Alternate between 0 and 1 slower than default frame rate
+cabinet_flicker_duration = 4;
+horn_current = noone;
 
 // Set different victory/loss portraits depending on alt selected
 fs_char_portrait_override = sprite_get("portrait");
@@ -583,7 +621,8 @@ guiltySprite = sprite_get("trial_grounds");
 pkmn_stadium_front_img = sprite_get("pkmn_front");
 pkmn_stadium_back_img = sprite_get("pkmn_back");
 pkmn_stadium_name_override = "Retroblst";
-
+// Greenwood Town
+greenwood_cheer = 3;
 
 
 // Muno template: (don't change)

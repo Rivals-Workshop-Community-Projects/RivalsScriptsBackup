@@ -1,10 +1,10 @@
-atk = AT_JAB;
+var atk = AT_JAB;
 
 set_attack_value(atk, AG_SPRITE, sprite_get("jab"));
 set_attack_value(atk, AG_NUM_WINDOWS, 12);
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 
-windowNum = 0;
+var windowNum = 0;
 // [JAB 1] windows 1-3
 
 windowNum ++; //windup
@@ -118,7 +118,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 24);
 //amount of hitboxes
 set_num_hitboxes(atk, 4);
 
-hitboxNum = 1; // [JAB 1] - hitbox data
+var hitboxNum = 1; // [JAB 1] - hitbox data
 set_hitbox_value(atk, hitboxNum, HG_PARENT_HITBOX, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 2); //at which window from the above the attack is created
@@ -206,8 +206,3 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 4);
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
-
-
-//munophone stuff
-if (!get_match_setting(SET_PRACTICE)) exit;
-set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Jab 2 is Affected by Burning Fury's buff");

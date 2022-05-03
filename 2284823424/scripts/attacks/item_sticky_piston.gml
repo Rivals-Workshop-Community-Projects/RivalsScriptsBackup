@@ -7,7 +7,7 @@ set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_NAME, "NSpecial: Sticky Piston");
 
 //Startup
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, sfx_minecraft_piston_out);

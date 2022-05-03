@@ -1,35 +1,47 @@
 // Explosion article
 
+
 // Get sprite
 if(fc_timer <= 0)
 {
-switch(explosions_to_do)
-{
-    case 1:
-    sprite_index = sprite_get("explosion_single");
-    break;
-    case 2:
-    sprite_index = sprite_get("explosion_double");
-    break;
-    case 3:
-    sprite_index = sprite_get("explosion_triple");
-    break;
-}
-}
-else
-{
+    with(player_id)
+    {
+        var single_explosion = sprite_get("explosion_single");
+        var double_explosion = sprite_get("explosion_double");
+        var triple_explosion = sprite_get("explosion_triple");
+         
+        var single_firecracker = sprite_get("firecracker_single");
+        var double_firecracker = sprite_get("firecracker_double");
+        var triple_firecracker = sprite_get("firecracker_triple");
+    }
+    
     switch(explosions_to_do)
-{
-    case 1:
-    sprite_index = sprite_get("firecracker_single");
-    break;
-    case 2:
-    sprite_index = sprite_get("firecracker_double");
-    break;
-    case 3:
-    sprite_index = sprite_get("firecracker_triple");
-    break;
-}
+    {
+        case 1:
+        sprite_index = single_explosion;
+        break;
+        case 2:
+        sprite_index = double_explosion;
+        break;
+        case 3:
+        sprite_index = triple_explosion;
+        break;
+    }
+    }
+    else
+    {
+    switch(explosions_to_do)
+    {
+        case 1:
+        sprite_index = single_firecracker;
+        break;
+        case 2:
+        sprite_index = double_firecracker;
+        break;
+        case 3:
+        sprite_index = triple_firecracker;
+        break;
+    }
 
  image_index = img_ind;
 }
@@ -75,7 +87,7 @@ switch(ceil(image_index))
     case 2:
     if(fc_hitbox[0] == noone)
     {
-        sound_play(sound_get("tenru_firecracker"));
+        with(player_id) sound_play(sound_get("tenru_firecracker"));
         
         if(explosions_to_do == 1)
         {
@@ -88,31 +100,31 @@ switch(ceil(image_index))
             if(kirby != noone) fc_hitbox[0].can_hit[kirby.player] = false;
         }
         
-        if(parried == 0)
-            fc_hitbox[0].player = parried;
+        fc_hitbox[0].player = player;
+        fc_hitbox[0].can_hit[player] = false;
     }
     break;
     case 4:
     if(fc_hitbox[1] == noone && explosions_to_do > 1)
     {
-        sound_play(sound_get("tenru_firecracker"));
+        with(player_id) sound_play(sound_get("tenru_firecracker"));
         fc_hitbox[1] = create_hitbox(AT_NSPECIAL, 2, x-24*(-spr_dir), y-14);
         if(kirby != noone) fc_hitbox[1].can_hit[kirby.player] = false;
         
-        if(parried == 0)
-            fc_hitbox[1].player = parried;
+        fc_hitbox[1].player = player;
+        fc_hitbox[1].can_hit[player] = false;
     }
     break;
     case 6:
     if(fc_hitbox[2] == noone && explosions_to_do > 2)
     {
-        sound_play(sound_get("tenru_firecracker"));
+        with(player_id) sound_play(sound_get("tenru_firecracker"));
         
         fc_hitbox[2] = create_hitbox(AT_NSPECIAL, 2, x, y+4);
         if(kirby != noone) fc_hitbox[2].can_hit[kirby.player] = false;
        
-        if(parried == 0)
-            fc_hitbox[2].player = parried;
+        fc_hitbox[2].player = player;
+        fc_hitbox[2].can_hit[player] = false;
     }
     break;
 

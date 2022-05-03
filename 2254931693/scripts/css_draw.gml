@@ -6,32 +6,6 @@ var temp_y = y + 9;
  
  
 
-var brawl = 1;
-
- 
-if (brawl = 1){ 
-
-
-if (get_color_profile_slot_b(0, 0) == 111) {
-    sound_play(sound_get("brawl_bonby"), false, 0);
-        brawl_flash_opacity = 0.9;
-    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
-}
-
-
-if variable_instance_exists(self, "brawl_flash_opacity"){
-    brawl_flash_opacity = brawl_flash_opacity - 0.05;
-draw_sprite_ext(sprite_get("brawl_flash"), 0, x+7, y+8, 1, 1, 0, c_white, brawl_flash_opacity);    
-}
-
-
-
-draw_sprite(sprite_get("brawl_nameplate"),0,x+7,y+8);  
-
-
-} 
- 
-if (brawl = 0){ 
 
 
 if (get_color_profile_slot_b(0, 6) == 29) {
@@ -39,7 +13,6 @@ if (get_color_profile_slot_b(0, 6) == 29) {
     set_color_profile_slot(0, 6, get_color_profile_slot_r(0, 6)+1, get_color_profile_slot_g(0, 6)+1, get_color_profile_slot_b(0, 6)+1);
 } 
 
-}
  
 if get_player_color(player) == 7 {
 set_character_color_shading( 0, 0 );

@@ -237,6 +237,25 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.13", "6 April, 2022");
+
+initHeader("Nerfs:");
+initSection("- turned off april fools mode lol
+- Fstrong has lowered kb scaling, 1.1 -> 0.9
+- Uspecial's kb was lowered, 9 * .8 -> 8 * .7
+- Forward thrown Smoke bomb has a little less HSP
+- Dspecial's hitboxes have a drift mult of 1.5
+");
+
+initHeader("Changes:");
+initSection("= Uair's kb was adjusted, 7 * .2 -> 6 * .5
+= Uspecial's base hitpause was lowered, 10 -> 8
+= Various attacks that had kb scaling lowered were reverted
+(I don't remember the specifics and didn't write them down anywhere oops)
+");
+
+
+//
 initPatch("1.12", "1 April, 2022");
 
 initHeader("April Fools!");

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 17 );
+set_num_palettes( 16 );
 
 // burnt
 set_color_profile_slot( 1, 0, 250, 77, 77 ); //ice main
@@ -185,16 +185,6 @@ set_color_profile_slot( 15, 4, 230, 239, 242 ); //body main
 set_color_profile_slot( 15, 5, 157, 192, 199 ); //body dark
 set_color_profile_slot( 15, 6, 204, 59, 83 ); //scarf main
 set_color_profile_slot( 15, 7, 150, 26, 71 ); //scarf dark
-
-// genesis
-set_color_profile_slot( 16, 0, 255, 194, 194 ); //ice main
-set_color_profile_slot( 16, 1, 255, 255, 255 ); //ice light
-set_color_profile_slot( 16, 2, 217, 89, 89 ); //ice dark
-set_color_profile_slot( 16, 3, 133, 0, 0 ); //ice darkest
-set_color_profile_slot( 16, 4, 71, 51, 51 ); //body main
-set_color_profile_slot( 16, 5, 23, 23, 23 ); //body dark
-set_color_profile_slot( 16, 6, 232, 0, 0 ); //scarf main
-set_color_profile_slot( 16, 7, 158, 0, 0 ); //scarf dark
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -25,6 +25,7 @@ switch attack {
     case AT_FAIR:
     case AT_FTILT:
     piece = "N";
+    //piece = "U";
     break;
     
     case AT_BAIR:

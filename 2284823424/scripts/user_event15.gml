@@ -165,8 +165,9 @@ so that things like page breaks can work properly.
 initTip("USpecial: Block Parkour");
 initWords("Your USpecial can only place so many blocks. To refill your stock, pick up the dropped item - or wait for it to come to you. Blocks that fall offstage take ten seconds to appear back in your inventory.");
 initImage_ext(sprite_get("uspecial"), -5, fa_center, 1, 1, true, c_white, 1, false, 100, 100, 100, 2);
-initImage_ext(sprite_get("blocks"), player - 1, fa_center, 1, 1, true, c_white, 1, true, 100, 100, 2, 50);
+initImage_ext(sprite_get("blocks"), player - 1, fa_center, 1, 1, true, c_white, 1, false, 100, 100, 2, 50);
 initWords("Placing a block has a hitbox, and you can wavedash instantly after placing. Separately, note that blocks aren't fully solid; they act like platforms.");
+initWords("Also, blocks placed at high altitude break more quickly.");
 
 // initTip("Block Parkour");
 // initWords("While standing on a block, your movement speed is increased. Use this to leap off a block at high speed!");
@@ -401,6 +402,81 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("2.4", "07 March, 2022");
+initWords("Community Patch: Dakota");
+initHeader("NSpecial Items - Nerfs, Buffs");
+initSection("Sticky Piston startup 9 --> 13.
+Throwable item startup 8 --> 10.
+Crossbow arrow is now transcendent.");
+initHeader("USpecial - Reworks");
+initSection("Block lifetime is now based on the height it's placed at.
+High-altitude blocks break very quickly, but low-altitude blocks last longer than before.");
+initHeader("DTilt - Nerfs");
+initSection("Startup 4 --> 6.
+Knockback scaling 0.2 --> 0.3.");
+initHeader("NAir - Nerfs");
+initSection("Startup after block window 4 --> 6.");
+initHeader("FAir - Nerfs");
+initSection("Hitbox size reduced, position adjusted.");
+initHeader("UAir - Adjustments, Nerfs");
+initSection("Hitbox 1 angle 80 --> 90.
+Hitbox 1 upward range reduced.");
+initHeader("FStrong - Buffs");
+initSection("Startup 19 --> 16.
+Arrow is now transcendent.");
+initHeader("UStrong - Nerfs, Adjustments");
+initSection("Endlag 15 --> 18.
+Angle 80 --> 90.");
+
+/*
+
+Down Tilt:
+
+Startup increased (4 -> 6)
+Knockback scaling increased (0.2 -> 0.3)
+
+
+Neutral Air:
+
+Startup after blocking increased (4 -> 6)
+
+
+Forward Air:
+
+Hitbox moved outward (28 -> 30)
+Hitbox width decreased (80 -> 70)
+Hitbox height decreased (100 -> 90)
+
+
+Up Air:
+
+Hitbox 1:
+
+Angle changed (80 -> 90)
+Height decreased (80 -> 50)
+Hitbox moved downward (-40 -> -30)
+
+
+Forward Strong:
+
+Startup decreased by 3 frames
+Is now transcendent
+
+
+Up Strong:
+
+Endlag increased (15 -> 18)
+Angle changed (80 -> 90)
+
+
+Neutral Special:
+
+Crossbow is now transcendent
+Sticky Piston startup increased (9 -> 13)
+All throwables startup increased (8 -> 10)
+
+*/
 
 initPatch("2.3", "18 January, 2022");
 initHeader("DTilt - Bugfixes");

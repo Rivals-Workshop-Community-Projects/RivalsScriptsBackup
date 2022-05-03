@@ -1,7 +1,7 @@
 // I'll recode this
 
 //16 hit combo jank
-if(my_hitboxID.dumb_di_mult = 1){
+if(my_hitboxID.dumb_di_mult > 0){
 	if(my_hitboxID.attack != AT_DSPECIAL){
 	if(combo_cooldown == 0){
 stop_instrum = true;

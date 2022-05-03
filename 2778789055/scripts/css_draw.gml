@@ -2,13 +2,12 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "27";
-patch_month = "MAR";
+patch_day = "30";
+patch_month = "APR";
  
 var num_alts = 23;
 var alt_cur = get_player_color(player);
 var alt = get_player_color(player);
- 
  
 if ("prev_alt" not in self){
 drawtime = 0
@@ -77,7 +76,7 @@ if (get_player_color(player)==14){
     }
     */
 //Special Icon
-if (get_player_color(player)== 22){
+if (get_player_color(player)== 22 || get_player_color(player)== 23){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
  

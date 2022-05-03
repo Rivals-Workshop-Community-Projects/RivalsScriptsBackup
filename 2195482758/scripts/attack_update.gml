@@ -97,22 +97,12 @@ if (attack == AT_NSPECIAL){
 			if(other.player == player && !other.free) sprite_index = sprite_get("nspecial_hurt");
 			else if(other.player == player && other.free) sprite_index = sprite_get("nspecial_hurt_air");
 	}
-	
+
 	if(!joy_pad_idle)
 	{
-		// if(window == 1 && window_timer <= 2)
-		// {
-		// 	if(joy_dir > 90 && joy_dir < 270)
-		// 	{
-		// 		spr_dir = -1;
-		// 	}
-		// 	else
-		// 	{
-		// 		spr_dir = 1;
-		// 	}
-		// }
-		
 		// Set angle to joystick
+		if(window < 2)
+		{
 		firecracker_angle = joy_dir;
 	   
 	   // Manage facing left and pulling back
@@ -148,14 +138,12 @@ if (attack == AT_NSPECIAL){
 			}
 		}
 		
-
-
-		
 		if(spr_dir = -1)
 		{
 
 			if(firecracker_angle > 90 && firecracker_angle < -90)
 				firecracker_angle = 90;
+		}
 		}
 	}
 	else
@@ -356,20 +344,20 @@ if (attack == AT_NSPECIAL){
 		// Set firecracker spawn loc
 		
 		// Prevent throw spawn location from being beyond the hand's throw arc
-		if(spr_dir == 1)
-		{
-			if(firecracker_angle > 200)
-			{
-				firecracker_angle = 0;
-			}
-		}
-		else
-		{
-			if(firecracker_angle < 0)
-			{
-				firecracker_angle = 0;
-			}
-		}
+		// if(spr_dir == 1)
+		// {
+		// 	if(firecracker_angle > 200)
+		// 	{
+		// 		firecracker_angle = 0;
+		// 	}
+		// }
+		// else
+		// {
+		// 	if(firecracker_angle < 0)
+		// 	{
+		// 		firecracker_angle = 0;
+		// 	}
+		// }
 		
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, fc_base_x + dcos(firecracker_angle)*40);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, fc_base_y + -dsin(firecracker_angle)*35 - 8);
@@ -403,7 +391,7 @@ if (attack == AT_FSPECIAL){
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_up"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));
-			fspec_yoff = -24;
+			fspec_yoff = -34;
 			fspec_xoff = 0;
 		}
 		else
@@ -995,6 +983,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         			{
         			vsp = new_vsp/1.5;
         			hsp = other.spr_dir * 3;
+        			
+        			through_platforms = other.fc_lifetime * 0.1;
         			//vsp += grav * vertical_strength/2;
         			spawn_hit_fx( x, y, 301 );
         			}
@@ -1258,6 +1248,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             		grabbedProj.vsp = -6;
             		vsp = -7.5;
             		hsp = 12*spr_dir;
+            		grabbedProj = noone;
             	}
             		
             	sound_play(asset_get("sfx_may_whip2"));
@@ -1694,6 +1685,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		{
 			with(grabbedProj)
 			{
+				through_platforms = other.fc_lifetime * 0.1;
 				set_transcendent = true;
 				if(in_hitpause)
 				{
@@ -1829,6 +1821,11 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             	}
             	grabbedProj = noone;
             }
+            else
+            {
+            	// Cooldown to prevent infinite laddering
+            	move_cooldown[AT_USPECIAL] = 10;
+            }
         }
 
 	}
@@ -1924,17 +1921,17 @@ if (attack == AT_DSPECIAL){
 	}
 	
 	// Switch to air dspecial
-	if((window > 2 || (window == 2 && window_timer > 8)) && special_pressed)
+	if((window > 2 || (window == 2 && window_timer > 6)) && special_pressed)
 	{
 		window = 4;
 		window_timer = 99;
 	}
-	if((window > 2 || (window == 2 && window_timer > 8)) && jump_pressed)
+	if((window > 2 || (window == 2 && window_timer > 6)) && jump_pressed)
 	{
 		window = 4;
 		window_timer = 99;
 	}
-	if((window > 2 || (window == 2 && window_timer > 8)) && ((shield_pressed && has_airdodge) || attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down))
+	if((window > 2 || (window == 2 && window_timer > 6)) && ((shield_pressed && has_airdodge) || attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down))
 	{
 		window = 4;
 		window_timer = 99;

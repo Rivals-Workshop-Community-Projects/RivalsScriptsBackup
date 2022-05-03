@@ -175,7 +175,9 @@ initImage_ext(spr_fspecial_muno, -5, fa_center, 1, 1, true, c_white, 1, true, no
 initTip("Uspecial: Shuttle Loop");
 initWords("A flying loop, then transitions into a glide. Hold up to fly up but lose some speed, and down to fly down and gain more speed.
 Flying for too long or bumping into a wall will cancel the glide.
-Can be canceled with an airdodge, aerial or Dspecial. If you try canceling into Up Special, you'll go into air idle.");
+Can be canceled with an airdodge, aerial or Dspecial.
+Canceling into an aerial and whiffing the move will put you into special fall.
+Airdodging out of the move will also put you into special fall, even if you waveland with it, so be careful.");
 initImage_ext(spr_uspecial_muno, -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Dspecial: Meta Condor Dive");
@@ -188,7 +190,7 @@ initWords("You can repeatedly use Rapid Jab by holding the attack button. Let it
 initImage_ext(spr_jab_muno, -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Meta Knight's Wings");
-initWords("When Meta Knight uses his doublejump, does USpecial or Dspecial, Meta Knight's cape turns into wings. This is purely cosmetic and doesn't affect gameplay, I just thought this was cool.");
+initWords("When Meta Knight uses his doublejump, does USpecial or Dspecial, Meta Knight's cape turns into wings, which actually is reflected in some of his animations! This is purely cosmetic and doesn't affect gameplay, I just thought this was cool.");
 initImage_ext(spr_jump_muno, -5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(spr_jump_wings_muno, -5, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
@@ -228,6 +230,19 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.10", "18 April, 2022");
+initHeader("General");
+initSection("~ There is now a toggle for if you want to swap the inputs for Jab and Ftilt.
+~ Fixed a visual bug where Meta Knight’s wings would appear when falling despite him not taking them out.");
+initHeader("Forward Tilt");
+initSection("+ The first and second hits shouldn’t put Meta Knight into parry stun anymore to finally give Meta Knight a move that is parry-stun safe, since he did not have a move that did this prior to this patch.
+~ Cleaned up some code handling tilt canceling with this move.");
+initHeader("Up Special (Shuttle Loop)");
+initSection("~ There was a bug where when attacking and landing an aerial out of Uspecial, then doing another aerial and whiffing, it would put you into pratfall. This has now been fixed.
+~ Corrected information about this move in the MunoPhone.
++ Using the move grants additional vertical distance to make this move more of a vertical recovery tool.
+- Airdodging out of the move puts you in pratfall to prevent usage of other specials.");
 
 initPatch("1.9", "9 January, 2022");
 initHeader("General");

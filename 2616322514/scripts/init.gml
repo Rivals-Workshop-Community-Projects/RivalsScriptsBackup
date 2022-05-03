@@ -193,4 +193,14 @@ uspecial_frame = 0;
 
 // Muno template: (don't change)
 muno_event_type = 0;
+
+kf_custom_icon = sprite_get("kf_icon");
+kf_hud_offset = -24;
+
+nname = "Tapu Koko";
+
+ncode1 = "A guardian deity from the Alola region";
+ncode2 = "who unexpectedly went missing. Approach";
+ncode3 = "with caution and return it to its homeland.";
+
 user_event(14); // General init

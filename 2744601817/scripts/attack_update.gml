@@ -327,6 +327,27 @@ switch(attack){
                     nair2.fx_particles = 1;
             }
         }
+        
+        //Land Attack
+        if (!red_mode){
+			if (window == 2 && !free){
+				destroy_hitboxes();
+				window_timer = 0;
+				window = 4;
+				create_hitbox(AT_NAIR, 5, x, y);
+			} else if (window != 4 && !free){
+				destroy_hitboxes();
+				window = 4;
+				window_timer = 8;
+			}
+        } else {
+        	if (window != 4 && !free && !hitstop && !hitpause){
+				destroy_hitboxes();
+				window = 4;
+				window_timer = 8;
+			}
+        }
+        
         break;
 		case(AT_FSPECIAL):
 		case(AT_FSPECIAL_2):

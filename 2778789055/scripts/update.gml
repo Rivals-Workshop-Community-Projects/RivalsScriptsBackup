@@ -33,9 +33,16 @@ if(other_is_scalding && hit_player_obj.other_scalding_timer == 1 && hit_player_o
     hit_player_obj.other_scalding = false;
     other_is_scalding = false;
 }
-if(other_is_scalding && hit_player_obj.state = PS_RESPAWN && hit_player_obj.other_scalding = true){
+if(other_is_scalding && hit_player_obj.other_scalding_timer == 0 && hit_player_obj.other_scalding = true){
+    sound_play(asset_get("sfx_hod_steam_level1"));
     hit_player_obj.other_scalding = false;
     other_is_scalding = false;
+}
+if(other_is_scalding && hit_player_obj.other_scalding = true){
+	if(hit_player_obj.state = PS_DEAD || hit_player_obj.state = PS_RESPAWN){
+    hit_player_obj.other_scalding = false;
+    other_is_scalding = false;
+	}
 }
 
 if(other_is_scalding && hit_player_obj.other_scalding = true && hit_player_obj.other_scalding_timer != 0){
@@ -65,10 +72,79 @@ if(other_is_scalding && hit_player_obj.other_scalding = true && hit_player_obj.o
 
 if (get_gameplay_time() < 120){
 		if(get_player_color(player) = 13){
+			//Avocado
 		if(michigan == false){
 			if(attack_down && taunt_down){
+		white_flash_timer = 18;
 		sound_play(asset_get("mfx_levelup"));
 		sound_play(sound_get("sfx_michigan"), false, noone, 1.5, 1);
+    set_color_profile_slot( 13, 0, 226, 189, 166 );
+    set_color_profile_slot( 13, 1, 208, 153, 137 );
+    set_color_profile_slot( 13, 2, 92, 92, 92 );
+    set_color_profile_slot( 13, 3, 204, 30, 30 ); 
+    set_color_profile_slot( 13, 4, 255, 255, 255 );
+    set_color_profile_slot( 13, 5, 145, 85, 59 );
+    set_color_profile_slot( 13, 6, 145, 85, 59 );
+    set_color_profile_slot( 13, 7, 212, 40, 40 ); 
+		avocado = true;
+		init_shader();
+		michigan = true;
+			}
+		}
+	}		if(get_player_color(player) = 14){
+		//TAG
+		if(michigan == false){
+			if(attack_down && taunt_down){
+		white_flash_timer = 18;
+		sound_play(asset_get("mfx_levelup"));
+    set_color_profile_slot( 14, 0, 0, 158, 76 ); //Gumbo Skin 1
+    set_color_profile_slot( 14, 1, 214, 171, 26 ); //Gumb Skin 2
+    set_color_profile_slot( 14, 2, 84, 84, 84 ); //Jeans
+    set_color_profile_slot( 14, 3, 110, 81, 60 ); //Hoodie
+    set_color_profile_slot( 14, 4, 255, 223, 112 ); //Eyes
+    set_color_profile_slot( 14, 5, 0, 158, 76 ); //Po Skin 1
+    set_color_profile_slot( 14, 6, 214, 171, 26 ); //Po Skin 2
+    set_color_profile_slot( 14, 7, 234, 224, 255 ); //Apron
+		avocado = true;
+		init_shader();
+		michigan = true;
+			}
+		}
+	}		if(get_player_color(player) = 22){
+		//MC-Zom-B
+		if(michigan == false){
+			if(attack_down && taunt_down){
+		white_flash_timer = 18;
+		sound_play(asset_get("mfx_levelup"));
+		sound_play(sound_get("sfx_record"), false, noone, 1.5, 1);
+		set_victory_portrait(sprite_get("portrait"));
+            set_color_profile_slot( 22, 0, 119, 145, 121 ); //Gumbo Skin 1
+            set_color_profile_slot( 22, 1, 102, 93, 73 ); //Gumb Skin 2
+            set_color_profile_slot( 22, 2, 54, 58, 122 ); //Jeans
+            set_color_profile_slot( 22, 3, 51, 58, 171 ); //Hoodie
+            set_color_profile_slot( 22, 4, 255, 238, 181 ); //Eyes
+            set_color_profile_slot( 22, 5, 101, 100, 112 ); //Po Skin 1
+            set_color_profile_slot( 22, 6, 64, 61, 92 ); //Po Skin 2
+            set_color_profile_slot( 22, 7, 255, 255, 255 ); //Apron
+		avocado = true;
+		init_shader();
+		michigan = true;
+			}
+		}
+	}		if(get_player_color(player) = 15){
+		//BLW Champ
+		if(michigan == false){
+			if(attack_down && taunt_down){
+		white_flash_timer = 18;
+		sound_play(asset_get("mfx_levelup"));
+    set_color_profile_slot( 15, 0, 133, 70, 171 ); //Gumbo Skin 1
+    set_color_profile_slot( 15, 1, 77, 77, 77 ); //Gumb Skin 2
+    set_color_profile_slot( 15, 2, 77, 77, 77 ); //Jeans
+    set_color_profile_slot( 15, 3, 153, 153, 153 ); //Hoodie
+    set_color_profile_slot( 15, 4, 122, 255, 122 ); //Eyes
+    set_color_profile_slot( 15, 5, 74, 74, 74 ); //Po Skin 1
+    set_color_profile_slot( 15, 6, 230, 182, 52 ); //Po Skin 2
+    set_color_profile_slot( 15, 7, 255, 219, 245 ); //Apron
 		avocado = true;
 		init_shader();
 		michigan = true;

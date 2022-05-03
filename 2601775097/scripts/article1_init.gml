@@ -1,24 +1,26 @@
 //article1_init
 
-//particle generation
 can_be_grounded = false;
 ignores_walls = true;
-free = true;
 uses_shader = true;
-hitstop = 2;
 
 state = 0;
-sub_state = 0;
+state_timer = 0;
 
-//theikos check
-golden = false;
-if ((player_id.theikos_active || player_id.theikos_alt || player_id.od_already_active || player_id.godpower)  && !player_id.is_8bit) golden = true;
-else golden = false;
+window = 1;
+window_timer = 0;
 
-//particle stuff
-particletime = 0;
-anim_speed = 0.22;
-vsp = 0;
-hsp = 0;
+window_frame_start = 0;
+window_frames = 0;
+window_length = 0;
+window_looping = false;
+last_window = 0;        //if last_window is 0, it will not use the window animation system
 
-text_letter = random_func(3, 15, true);
+mask_color = c_black;
+
+alt_cur = get_player_color(player);
+
+rec_fire_count = 3;
+fire_offset = 48;
+
+artc_image_index = 0; //regular image index kinda gets fucked in pause

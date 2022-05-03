@@ -63,7 +63,7 @@ SetAttack();
 			//if (state_cat != SC_HITSTUN) HoldTowardsStage();
 			break;
 		case AS_NEUTRAL:
-			ai_attack_time = 30;
+			ai_attack_time = 20;//40
 			FallThrough();
 			break;
 	}
@@ -96,8 +96,10 @@ SetAttack();
 						if (!free && ewgf_timer > 0 && dist < 40 && !was_parried) switch(ewgf_input)
 						{
 							case 0: joy_pad_idle = true; break;
-							case 1: case 2: HoldSprDir(); down_down = true; break;
-							case 3: attack_pressed = true; attack_down = true; HoldTowardsTarget(); break;
+							case 1: down_down = true; break;
+							case 2: down_down = true; HoldSprDir(); if(random_func( 0, 10, true) >= 9-temp_level) attack_pressed = true; attack_down = true;  break;
+							case 3: attack_pressed = true; attack_down = true;  HoldTowardsTarget();
+							break;
 						}
 						else {special_pressed = true; HoldTowardsTargetOffset(spr_dir*10)}
 					}
@@ -115,7 +117,7 @@ SetAttack();
 				{
 					HoldTowardsTarget();
 					if (has_hit_player && get_player_damage(hit_player_obj.player) < 120) attack_pressed = true;
-					else {special_pressed = true; down_down = true;}
+					else {special_pressed = true; down_down = true; DoAttack(AT_FSPECIAL);}
 				}
 				else HoldTowardsStage();
 				break;
@@ -128,7 +130,7 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_RECOVER:
-			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
+			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && state != PS_WALL_JUMP)
 			{
 				if (move_cooldown[AT_FSPECIAL] == 0 && (abs(room_width/2-x)>400 || y > room_height/3*2)) DoAttack(AT_FSPECIAL);
 			}

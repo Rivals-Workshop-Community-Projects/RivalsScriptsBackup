@@ -4,8 +4,6 @@ distX=0;
 distY=0;
 posX=0;
 posY=0;
-dragx=0;
-dragy=0;
 isAI=true;
 
 if (temp_level < 7)
