@@ -2,7 +2,7 @@ set_attack_value(AT_NSPECIAL_AIR, AG_CATEGORY, 1);
 set_attack_value(AT_NSPECIAL_AIR, AG_SPRITE, sprite_get("nair_boneless"));
 set_attack_value(AT_NSPECIAL_AIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_NSPECIAL_AIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_NSPECIAL_AIR, AG_LANDING_LAG, 4);
+set_attack_value(AT_NSPECIAL_AIR, AG_LANDING_LAG, 5);
 set_attack_value(AT_NSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("nair_boneless_hurt"));
 
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 5);

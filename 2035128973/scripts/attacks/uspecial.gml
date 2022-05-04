@@ -36,6 +36,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, .45);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("boneProj"));
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("boneProj_mask"));
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_GRAVITY, .25);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);

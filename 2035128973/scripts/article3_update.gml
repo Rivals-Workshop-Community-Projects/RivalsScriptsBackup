@@ -5,6 +5,9 @@
 if (player_id.boneObj != id) newState = AS_GROUNDDESPAWN;
 if (newState != state) SetArticleState(newState);
 
+image_angle += angle_difference(0, image_angle)*0.1;
+if (ignores_walls && !free && abs(angle_difference(0, image_angle)) < 1) ignores_walls = false;
+
 switch (state)
 {
     case AS_MARK:

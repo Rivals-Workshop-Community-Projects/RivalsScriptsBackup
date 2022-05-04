@@ -3,7 +3,7 @@ set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_ori_energyhit_weak"));

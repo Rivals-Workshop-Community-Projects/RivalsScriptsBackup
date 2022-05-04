@@ -93,6 +93,7 @@ switch (attack)
 					}
 					else if (window_timer == 10)
 					{
+						with (pHitBox) if (player_id == other.id && attack == AT_USPECIAL && hbox_num == 1) destroyed = true;
 						if (boneObj != noone)
 						{
 							boneObj.newState = 2;

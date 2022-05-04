@@ -2,7 +2,7 @@
 
 if (practice)
 {
-	var noOfPatches = 8;
+	var noOfPatches = 9;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -81,7 +81,7 @@ if (!hitpause)
 {
     if (afterImageTimer > 0)
     {
-        afterImage[afterImageTimer-1]={sprite_index:sprite_index,image_index:image_index,x:x+draw_x,y:y+draw_y,spr_dir:spr_dir,alpha:10,angle:spr_angle};
+        if (afterImageTimer % 2 == 0) afterImage[afterImageTimer-1]={sprite_index:sprite_index,image_index:image_index,x:x+draw_x,y:y+draw_y,spr_dir:spr_dir,alpha:10,angle:spr_angle};
         afterImageTimer--;
     }
     for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0) afterImage[i].alpha--;

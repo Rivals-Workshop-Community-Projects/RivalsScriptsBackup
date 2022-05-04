@@ -83,7 +83,7 @@ else if (costumeIndex>=0)
 	{
 		shader_start();
 		gpu_set_blendmode(bm_add);
-		draw_sprite_ext(sprite_get(_name), image_index-_start, x, y, 2*spr_dir, 2, 0, c_white, 0.8);
+		draw_sprite_ext(sprite_get(_name), image_index-_start, x, y, 2*spr_dir, 2, 0, c_white, 0.9);
 		gpu_set_blendmode(bm_normal);
 		shader_end();
 	}

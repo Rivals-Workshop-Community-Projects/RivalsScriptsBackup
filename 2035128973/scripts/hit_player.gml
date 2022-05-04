@@ -23,6 +23,10 @@ if (my_hitboxID.player == player) switch (my_hitboxID.attack)
 		else
 			sound_play(asset_get("sfx_blow_medium1"));
 		break;
+	case AT_DSPECIAL_AIR:
+		if (my_hitboxID.hbox_num == 2)
+			sound_play(asset_get("sfx_blow_heavy1"));
+		break;
 	case AT_FTHROW:
 		if (my_hitboxID.hbox_num == 1)
 			sound_play(asset_get("sfx_blow_heavy1"));

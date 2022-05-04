@@ -10,7 +10,7 @@ state_timer = 0;
 animSpeed = 4;
 
 can_be_grounded = true;
-ignores_walls = false;
+ignores_walls = true;
 
 dieTime = 10;
 

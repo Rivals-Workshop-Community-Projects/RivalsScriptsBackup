@@ -178,6 +178,32 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Fastfall can now be used while in pratfall");
 						break;
+					case 8:
+						AddText("v2.7 - 3 May 2022");
+						AddText("");
+						AddText("Prat Land Time 20 -> 22");
+						AddText("");
+						AddText("Polished Bone article");
+						AddText("Boneless DSpec now despawns Bone (USpec) projectile");
+						AddText("");
+						AddText("FStrong Startup 14 -> 16");
+						AddText("UStrong Startup 14 -> 16");
+						AddText("DStrong Startup 16 -> 18");
+						AddText("DStrong Angle 40 -> 45");
+						AddText("DStrong Reduced range");
+						AddText("");
+						AddText("Force Palm Grabbox Lifetime 9 -> 3");
+						AddText("");
+						AddText("Boneless NAir Landing Lag 4 -> 5");
+						AddText("Bone NAir 2 Angle 10 -> 20");
+						AddText("Boneless DAir Increased hitpause");
+						AddText("Bone FAir New smear sprites");
+						AddText("Reworked Bone FAir to kill on tipper");
+						AddText("Reworked Boneless FAir to be faster and more similar to Fors FAir");
+						AddText("Slightly improved BAir sprites");
+						AddText("");
+						AddText("Aura glow opacity 0.8 -> 0.9");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
