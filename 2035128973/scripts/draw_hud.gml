@@ -204,6 +204,26 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Aura glow opacity 0.8 -> 0.9");
 						break;
+					case 9:
+						AddText("v2.8 - 4 May 2022");
+						AddText("");
+						AddText("Lucario now uses Small Sprites");
+						AddText("Removed Bone alt");
+						AddText("Slightly altered Star Fox alt");
+						AddText("Renamed some alts");
+						AddText("");
+						AddText("Reworked UAir to be a combo move rather than a kill move");
+						AddText("");
+						AddText("USpecial projectile KB 5+0.45 -> 5+0.2");
+						AddText("");
+						AddText("Extreme Speed now has Force Flinch");
+						AddText("Extreme Speed Hitstun Multiplier 1 -> 0.7");
+						AddText("Extreme Speed Drift Multiplier 1 -> 1.1");
+						AddText("");
+						AddText("Slightly improved Bone FTilt sprites");
+						AddText("Slightly improved Bone NAir sprites");
+						AddText("Slightly improved Bone DAir sprites");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -289,7 +309,7 @@ if ("rollArray" in self)
 				AddText("Join the Shrine of Light Discord!");
 				AddText("");
 				AddText("Chat with the developer of Lonin and Hikaru");
-				AddText("discord.gg/Kn5ttGx");
+				AddText("discord.gg/w4xqqtrXf8");
 				AddText("");
 				AddText("");
 				AddText("");
@@ -297,7 +317,7 @@ if ("rollArray" in self)
 				DrawTutorialBlock();
 				DrawTutorialText();
 				draw_sprite_ext(sprite_get("discord"), 0, 16, temp_y-76+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
-				draw_sprite_ext(sprite_get("hikaru"), state_timer/(43/16), 64, temp_y-96+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
+				draw_sprite_ext(sprite_get("HYPEkaru"), state_timer/(43/16), 192, temp_y-98+floor(tutAlpha*4)*2-8, 1, 1, 0, c_white, tutAlpha);
 				break;
 		}
 		draw_set_alpha(1);

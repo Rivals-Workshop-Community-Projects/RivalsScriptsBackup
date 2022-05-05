@@ -25,7 +25,7 @@ if (attack == AT_USPECIAL)
   
     if (!free) // floor
     {
-        BoneArticleInit(instance_create(x+floor(hsp*2), y+8, "obj_article3"), false);
+        BoneArticleInit(instance_create(x+floor(hsp*1), y+8, "obj_article3"), false);
         instance_destroy();
         exit;
     }
@@ -42,6 +42,7 @@ if (attack == AT_USPECIAL)
     {
         other.hsp = hsp*0.7;
         other.vsp = -5;
+        other.hitbox_timer = 0;
         //sound_play(asset_get("sfx_ori_energyhit_weak"));
         player_id.boneObj = noone;
         player_id.tutDone[6] = 1;

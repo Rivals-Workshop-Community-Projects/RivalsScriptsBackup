@@ -15,7 +15,7 @@ switch(wall){
         break;
         case PS_DASH_START:
         sprite_index = sprite_get(string(plate_state) + "_dash_start");
-        image_index = state_timer * 0.5;
+        image_index = state_timer/14 * 6;
         break;
         case PS_DASH_STOP:
         sprite_index = sprite_get(string(plate_state) + "_dash_stop");
@@ -157,6 +157,12 @@ switch(wall){
             break;
         }
         break;
+        case PS_WRAPPED:
+        sprite_index = sprite_get(string(plate_state) + "_hurt");
+        break;
+        case PS_FROZEN:
+        sprite_index = sprite_get(string(plate_state) + "_hurt");
+        break;
         case PS_PARRY_START:
         sprite_index = sprite_get(string(plate_state) + "_parry");
         break;
@@ -175,7 +181,7 @@ switch(wall){
             sprite_change_offset("0_climb1", 125, 85);
             sprite_index = sprite_get(string(plate_state) + "_climb1");
             image_index = state_timer * 0.2;
-            spr_angle = -90;
+            spr_angle = -90 * spr_dir;
         }else{
             sprite_index = sprite_get(string(plate_state) + "_idle");
             image_index = state_timer * 0.2;
@@ -184,6 +190,9 @@ switch(wall){
         case PS_RESPAWN:
         sprite_index = sprite_get(string(plate_state) + "_idle");
         image_index = state_timer * 0.2;
+        break;
+        case PS_WALL_TECH:
+        sprite_index = sprite_get(string(plate_state) + "_wall_tech");
         break;
     }
     break;
@@ -242,6 +251,3 @@ switch(wall){
 
 /*
 PS_WALL_TECH
-
-PS_WRAPPED
-PS_FROZEN

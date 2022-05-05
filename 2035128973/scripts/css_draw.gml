@@ -55,21 +55,19 @@ alt_name[18]  = "Snowblind";
 alt_name[19]  = "Drunken";
 alt_name[20]  = ".net";
 alt_name[21]  = "Lemongrass";
-alt_name[22]  = "Shine Bright";
-alt_name[23]  = "R U N";
-alt_name[24]  = "Can't Kill";
+alt_name[22]  = "Amethyst Fist";
+alt_name[23]  = "Logical Jetstream";
+alt_name[24]  = "The Lightning Gladiator";
 alt_name[25]  = "Photon Edge";
 alt_name[26]  = "Nova Visionary";
 alt_name[27]  = "Paint";
 alt_name[28]  = "God of Death";
 alt_name[29]  = "Mewmew";
-alt_name[30]  = "Bunny";
-alt_name[31]  = "Bone";
+alt_name[30]  = "Bnuuy";
 
 var num_alts = array_length_1d(alt_name);
 
-if (max((eyeShine/6)-6, 0) < 9)
-	draw_sprite_ext(sprite_get("eyeshine"),max((eyeShine/6)-6, 0),temp_x,temp_y-1,2,2,0,c_white,1);
+if (max((eyeShine/6)-6, 0) < 9) draw_sprite_ext(sprite_get("eyeshine"),max((eyeShine/6)-6, 0),temp_x,temp_y-1,2,2,0,c_white,1);
 shader_end();
 
 //draw_sprite_ext(sprite_get("charselect"),1,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);

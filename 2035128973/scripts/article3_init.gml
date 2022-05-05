@@ -3,6 +3,8 @@ image_index = 0;
 spr_dir = 1;
 uses_shader = true;
 depth = -10;
+image_xscale = 2;
+image_yscale = 2;
 
 state = 0;
 newState = 0;

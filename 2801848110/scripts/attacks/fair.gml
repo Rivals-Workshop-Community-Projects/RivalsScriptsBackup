@@ -40,7 +40,7 @@ set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FAIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6.5);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);

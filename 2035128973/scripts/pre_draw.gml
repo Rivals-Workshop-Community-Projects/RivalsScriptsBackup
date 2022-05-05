@@ -9,7 +9,7 @@ if ("rollArray" in self)
 	for (var i = 0; i < 3; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0)
 	{
 		gpu_set_fog(1, tempColour, 0, 1);
-		draw_sprite_ext(rollSpr, i, rollArray[i].rollX, rollArray[i].rollY, rollArray[i].rollDir, 1, 0, tempColour, rollArray[i].rollAlpha/10);
+		draw_sprite_ext(rollSpr, i, rollArray[i].rollX, rollArray[i].rollY, rollArray[i].rollDir*2, 2, 0, tempColour, rollArray[i].rollAlpha/10);
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 
@@ -18,12 +18,12 @@ if ("rollArray" in self)
 	{
 	    shader_start();
 	    gpu_set_blendmode(bm_add);
-	    draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir, 1, afterImage[i].angle, tempColour, afterImage[i].alpha/20);
+	    draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir*2, 2, afterImage[i].angle, tempColour, afterImage[i].alpha/20);
 	    gpu_set_blendmode(bm_normal);
 	    shader_end();
 	}
 
-	//if (object_index!=oTestPlayer&&(get_char_info(player,INFO_STR_NAME)!="L"+/*mao you thought*/"on"+/*ion sk*/"in"||url!="2"+/*420*/"30"+/*69*/"267"+/*621*/"5649"||get_char_info(player,INFO_STR_DESCRIPTION)!="@"/*hikaru_the_kitsune*/+"Fak"/*badword*/+"ieAc"/*why are you still here*/+"idToe"))get_string("D"+"o no"+"t plag"+"iar"+"ise.","");
+	if (object_index!=oTestPlayer&&(get_char_info(player,INFO_STR_NAME)!="Lucario"||url!="2035128973"||get_char_info(player,INFO_STR_DESCRIPTION)!="@FakieAcidToe"))get_string("Do not plagiarise.","");
 
 	// attack
 	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)

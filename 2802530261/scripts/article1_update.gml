@@ -76,8 +76,8 @@ if(attack == AT_DSPECIAL){
     }else if(bomb_type = 1){
         hsp = 0;
         vsp = 0;
-        image_yscale = (image_index < 5? 2: (bomb_timer - 25) / 2);
-        image_xscale = (image_index < 5? 2: (bomb_timer - 25) / 2);
+        image_yscale = (image_index < 5? 2: (bomb_timer - 25) / 7);
+        image_xscale = (image_index < 5? 2: (bomb_timer - 25) / 7);
         sprite_index = sprite_get("power_bomb");
         image_index = (image_index < 5? bomb_timer / 6: 5);
         image_alpha = (bomb_timer >= 66? 1 - ((bomb_timer - 66) / 10): 1);
@@ -95,7 +95,7 @@ if(attack == AT_DSPECIAL){
             sound_play(sound_get("power_explode3"));
             sound_play(sound_get("power_explode4"));
         }
-        if(image_index == 5 && bomb_timer % 2 == 1){
+        if(image_index == 5 && bomb_timer % 3 == 1){
             create_hitbox(AT_DSPECIAL, 2, x, y);
         }
         if(bomb_timer >= 76){

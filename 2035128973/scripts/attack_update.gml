@@ -1,9 +1,4 @@
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == 49) trigger_b_reverse();
-//has_rune("H")
-//1- object mod
-//2- ranged mod
-//3 - hit mod
-//4 - ability boost
 switch (attack)
 {
     case AT_TAUNT:

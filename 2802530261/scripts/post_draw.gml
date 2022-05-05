@@ -1,8 +1,14 @@
 //post-draw
-draw_point_color(x, y, c_purple);
-
 if(attack == AT_NSPECIAL && window == 2 && charge >= 20){
-    draw_sprite_ext(sprite_get(string(beam_sprite) + "_charging"), (charge = 90? ((state_timer) / 90 * 20) % 2 + 18: (charge / 90) * 20), x + (spr_dir = 1? 24: -62), y - (spr_dir = 1? 62: 64), 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get(string(beam_sprite) + "_charging"), (charge = 90? ((state_timer) / 90 * 20) % 2 + 18: (charge / 90) * 17), x + (spr_dir = 1? 24: -62), y - (spr_dir = 1? 62: 64), 2, 2, 0, c_white, 1);
+}
+
+if(attack == AT_NSPECIAL && window == 2 && charge >= 90){
+    gpu_set_fog(true, c_yellow, true, false);
+    draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, (state_timer % 6 <= 2? 0.4: 0));
+    gpu_set_fog(false, c_yellow, false, true);
+}else{
+    gpu_set_fog(false, c_yellow, false, true);
 }
 
 if(attack == AT_FSTRONG && window == 1 && window_timer >= 17){
@@ -27,7 +33,7 @@ if((state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DOD
     dodgendy = y;
 }
 
-if(attack == AT_BAIR && state == PS_ATTACK_AIR && missile_amount > 1){
+if(attack == AT_BAIR && state == PS_ATTACK_AIR){
     switch(window){
         case 2:
         draw_sprite_ext(sprite_get("0_missile_hit"), window_timer / 8 * 5, x + (spr_dir = 1? -60: 28), y - 72, 2, 2, 0, c_white, 1);

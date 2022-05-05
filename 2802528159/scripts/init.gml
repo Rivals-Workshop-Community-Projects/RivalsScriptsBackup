@@ -17,7 +17,7 @@ knockback_adj       = 0.7;		// 0.9  -  1.2
 walk_speed          = 3.25;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 30;		// 6
-initial_dash_time   = 12;		// 8    -  16       zetterburn's is 14
+initial_dash_time   = 14;		// 8    -  16       zetterburn's is 14
 initial_dash_speed  = 6;		// 4    -  9
 dash_speed          = 6.5;		// 5    -  9
 dash_turn_time      = 30;		// 8    -  20
@@ -166,7 +166,13 @@ prevprev_dir = 0;
 crawling = false;
 
 //sound variables
-sound_effect = get_color_profile_slot_r(27, 0);
+sound_effect = 0;
+sound_text = [
+"[EMMI]",
+"[TURRET]",
+"[MUTE]"
+];
+sound_select = 0;
 radar_sound = 0;
 beep_sound = 0;
 beep_timer = 0;

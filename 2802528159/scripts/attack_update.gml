@@ -28,12 +28,12 @@ switch(attack){
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 	}else if((attack_pressed || special_pressed) && window > 3 && window < 6 && timing == false){
 		timing = true;
-		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 15 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 11 + (2 * anger_state));
 		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	}else if(timing == false){
-		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 15 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 11 + (2 * anger_state));
 		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
@@ -75,7 +75,7 @@ switch(attack){
     }
 	break;
 	case AT_NSPECIAL_AIR:
-	set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_DAMAGE, 4 + (2 * anger_state));
+	set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_DAMAGE, 4);
 	grab_x = x + (40 * spr_dir);
     grab_y = y;
 	
@@ -115,12 +115,12 @@ switch(attack){
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 	}else if((attack_pressed || special_pressed) && window > 3 && window < 6 && timing == false){
 		timing = true;
-		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 12 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 11 + (2 * anger_state));
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	}else if(timing == false){
-		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 12 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 11 + (2 * anger_state));
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
@@ -152,8 +152,8 @@ switch(attack){
 		move_cooldown[AT_FSTRONG] = 40;
 	}
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8 + (anger_state * 2));
-	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10 + (anger_state * 2));
-	set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 12 + (anger_state * 2));
+	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 9 + (anger_state * 2));
+	set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 10 + (anger_state * 2));
 	break;
 	case AT_USTRONG:
 	if(ustrong_whiff == true){
@@ -166,32 +166,32 @@ switch(attack){
 		x += 4 * spr_dir;
 	}
 	move_cooldown[AT_USTRONG] = 20;
-	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 7 + (anger_state * 2));
-	set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 7 + (anger_state * 2));
-	set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 7 + (anger_state * 2));
-	set_hitbox_value(AT_USTRONG, 4, HG_DAMAGE, 7 + (anger_state * 2));
-	set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 7 + (anger_state * 2));
+	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_USTRONG, 4, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 6 + (anger_state * 2));
 	break;
 	case AT_FSPECIAL:
 	if(window == 3 && window_timer == 9){
 		move_cooldown[AT_FSPECIAL] = 150;
 	}
-	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6 + (anger_state * 2));
-	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6 + (anger_state * 2));
-	set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 4 + (anger_state * 2));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 4 + (anger_state * 2));
+	set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 4 + (anger_state * 2));
 	break;
 	case AT_FSPECIAL_AIR:
 	set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_DAMAGE, 4 + (plate_state * 2));
-	set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_DAMAGE, 6 + (plate_state * 2));
-	set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_DAMAGE, 6 + (plate_state * 2));
-	set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_DAMAGE, 6 + (plate_state * 2));
+	set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_DAMAGE, 4 + (plate_state * 2));
+	set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_DAMAGE, 4 + (plate_state * 2));
+	set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_DAMAGE, 4 + (plate_state * 2));
 	if(!free){
 		state = PS_LAND;
 		state_timer = 0;
 	}
 	break;
 	case AT_DSPECIAL_AIR:
-	set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 4 + (anger_state * 2));
 	if(!free){
 		state = PS_LAND;
 		state_timer = 0;
@@ -251,7 +251,7 @@ switch(attack){
 			set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -42);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 50);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 50);
-			set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 6 + (anger_state * 2));
+			set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 5 + (anger_state * 2));
 			set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, hit_med);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hit_med);
 			break;
@@ -267,7 +267,7 @@ switch(attack){
 			set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -42);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 60);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 60);
-			set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 8 + (anger_state * 2));
+			set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 6 + (anger_state * 2));
 			set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, hit_big);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hit_big);
 			break;
@@ -328,15 +328,15 @@ switch(attack){
 	}
 	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 4 + (anger_state * 2));
 	set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 4 + (anger_state * 2));
-	set_hitbox_value(AT_FTILT, 3, HG_DAMAGE, 6 + (anger_state * 2));
-	set_hitbox_value(AT_FTILT, 4, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_FTILT, 3, HG_DAMAGE, 5 + (anger_state * 2));
+	set_hitbox_value(AT_FTILT, 4, HG_DAMAGE, 5 + (anger_state * 2));
 	break;
 	
 	case AT_USPECIAL:
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, (6 + (anger_state * 2)) * (stored_spark = true? 2: 1));
-	set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, (8 + (anger_state * 2)) * (stored_spark = true? 2: 1));
-	set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, (8 + (anger_state * 2)) * (stored_spark = true? 2: 1));
-	set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, (8 + (anger_state * 2)) * (stored_spark = true? 2: 1));
+	set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, (6 + (anger_state * 2)) * (stored_spark = true? 2: 1));
+	set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, (6 + (anger_state * 2)) * (stored_spark = true? 2: 1));
+	set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, (6 + (anger_state * 2)) * (stored_spark = true? 2: 1));
 	set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, (stored_spark = true? 15: 12));
 	if(free && window < 4){
 		set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get(string(plate_state) + "_air_uspecial"));
@@ -470,9 +470,9 @@ switch(attack){
 	if(special_pressed && wall = 0 && window >= 2){
 		set_attack(AT_NSPECIAL);
 	}
-	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 8 + (anger_state * 2));
-	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 8 + (anger_state * 2));
-	set_hitbox_value(AT_DATTACK, 3, HG_DAMAGE, 8 + (anger_state * 2));
+	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_DATTACK, 3, HG_DAMAGE, 6 + (anger_state * 2));
 	if(attack_down && window == 2 && window_timer == 17){
 		window_timer = 0;
 		window = 2;
@@ -535,9 +535,9 @@ switch(attack){
 		set_attack(AT_NSPECIAL);
 	}
 	set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 3 + (anger_state * 2));
-	set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 6 + (anger_state * 2));
-	set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 6 + (anger_state * 2));
-	set_hitbox_value(AT_UTILT, 4, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 5 + (anger_state * 2));
+	set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 5 + (anger_state * 2));
+	set_hitbox_value(AT_UTILT, 4, HG_DAMAGE, 5 + (anger_state * 2));
 	break;
 	
 	case AT_DTILT:
@@ -557,24 +557,24 @@ switch(attack){
 	set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 2 + (anger_state * 2));
 	set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 2 + (anger_state * 2));
 	set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 2 + (anger_state * 2));
-	set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, 4 + (anger_state * 2));
+	set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, 3 + (anger_state * 2));
 	break;
 	
 	case AT_BAIR:
-	set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 5 + (anger_state * 2));
 	set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 4 + (anger_state * 2));
 	break;
 	
 	case AT_DAIR:
 	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 4 + (anger_state * 2));
 	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 4 + (anger_state * 2));
-	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 6 + (anger_state * 2));
-	set_hitbox_value(AT_DAIR, 4, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 5 + (anger_state * 2));
+	set_hitbox_value(AT_DAIR, 4, HG_DAMAGE, 5 + (anger_state * 2));
 	break;
 	
 	case AT_FAIR:
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4 + (anger_state * 2));
-	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 10 + (anger_state * 2));
+	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 7 + (anger_state * 2));
 	set_hitbox_value(AT_FAIR, 5, HG_DAMAGE, 1 + (anger_state * 2));
 	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 1 + (anger_state * 2));
 	set_hitbox_value(AT_FAIR, 4, HG_DAMAGE, 1 + (anger_state * 2));
@@ -584,11 +584,11 @@ switch(attack){
 	break;
 	
 	case AT_UAIR:
-	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 5 + (anger_state * 2));
 	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 4 + (anger_state * 2));
-	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 5 + (anger_state * 2));
 	set_hitbox_value(AT_UAIR, 4, HG_DAMAGE, 4 + (anger_state * 2));
-	set_hitbox_value(AT_UAIR, 5, HG_DAMAGE, 6 + (anger_state * 2));
+	set_hitbox_value(AT_UAIR, 5, HG_DAMAGE, 5 + (anger_state * 2));
 	set_hitbox_value(AT_UAIR, 6, HG_DAMAGE, 4 + (anger_state * 2));
 	break;
 	

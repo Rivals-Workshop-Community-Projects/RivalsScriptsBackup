@@ -188,7 +188,7 @@ if state == PS_PARRY  {
      	vsp = old_vsp 
      	hsp = old_hsp
      	pausing = true
-     	timeflow -= 2
+     	timeflow -= 3
      	}
      }
      

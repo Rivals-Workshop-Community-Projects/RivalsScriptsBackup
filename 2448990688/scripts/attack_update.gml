@@ -14,19 +14,33 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 //Cooldowns
 if (attack == AT_FSPECIAL){
-        move_cooldown[AT_FSPECIAL] = 30;
+        move_cooldown[AT_FSPECIAL] = 45;
+        can_move = true;
+        can_wall_jump = true;
     }
-    
+if (attack == AT_USPECIAL){
+        can_wall_jump = true;
+    }
 if (attack == AT_NSPECIAL){
         move_cooldown[AT_NSPECIAL] = 25;
     }
 
 //Can Move and Jump
-if (attack == AT_FSPECIAL && window == 2){
-        can_move = true;
+if (attack == AT_FSPECIAL && window > 2 && special_down){
+        vsp = -2;
+        
     }
+//LMAO
+/*
+if (attack == AT_FSPECIAL && window > 2 && special_down && down_down){
+        set_attack(AT_DSPECIAL);
+        destroy_hitboxes();
+        
+    }
+*/
 if (attack == AT_DSPECIAL && window == 2){
         can_shield = true;
+        
     }
 
 //if (attack == AT_NAIR && has_hit){//jump cancel nairs

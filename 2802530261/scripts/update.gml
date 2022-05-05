@@ -198,7 +198,7 @@ if(state != PS_ATTACK_GROUND && attack == AT_DATTACK){
 }
 
 //nair
-if(attack == AT_NAIR && state != PS_ATTACK_AIR){
+if(state != PS_ATTACK_AIR){
     sound_stop(sound_get("screw_loop"));
 }
 

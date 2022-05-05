@@ -249,8 +249,8 @@ menu_version = 0;
 menu_v_select = 0;
 
 //resource values
-missile_amount = 60;
-power_bomb_amount = 4;
+missile_amount = 50;
+power_bomb_amount = 2;
 aeion = 1000;
 aeion_sfx = 0;
 
@@ -267,6 +267,7 @@ freee = free;
 cross = noone;
 cross_timer = 0;
 ball_hsp = 0;
+dtap_morph = 0;
 
 //nspecial
 beam_sprite = 0; //0 base, 1 plasma, 2 wave, 3 plasma + wave

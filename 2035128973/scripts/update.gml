@@ -2,7 +2,7 @@
 
 if (practice)
 {
-	var noOfPatches = 9;
+	var noOfPatches = 10;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{

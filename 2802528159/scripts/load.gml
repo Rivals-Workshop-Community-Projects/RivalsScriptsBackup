@@ -162,6 +162,9 @@ sprite_change_offset("0_got_parried", 77, 150);
 sprite_change_offset("1_got_parried", 77, 150);
 sprite_change_offset("got_parried_hurt", 154, 300);
 
+sprite_change_offset("0_wall_tech", 105, 123);
+sprite_change_offset("1_wall_tech", 105, 123);
+
 //hurt sprites
 sprite_change_offset("0_hurt", 90, 152);
 sprite_change_offset("1_hurt", 90, 152);

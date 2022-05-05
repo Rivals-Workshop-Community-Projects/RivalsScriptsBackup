@@ -73,7 +73,7 @@ switch (attack){
         }
         items_select[item_id] = 1;
     }else if(menu_version == 1){
-        if(attack_pressed){
+        if(left_pressed){
             item_id = 0;
             if(hud_beam_cooldown == 0 && items_select[0] == 0){
                 instance_create(x - 10, y - 90, "obj_article1");
@@ -82,7 +82,7 @@ switch (attack){
                 window_timer = 0;
                 items_select[item_id] = 1;
             }
-        }else if(special_pressed){
+        }else if(up_pressed){
             item_id = 1;
             if(hud_beam_cooldown == 0 && items_select[1] == 0){
                 instance_create(x - 10, y - 90, "obj_article1");
@@ -100,7 +100,7 @@ switch (attack){
                 window_timer = 0;
                 items_select[item_id] = 1;
             }
-        }else if(up_pressed){
+        }else if(attack_pressed){
             item_id = 3;
             if(hud_missile_cooldown == 0 && items_select[3] == 0){
                 instance_create(x - 10, y - 90, "obj_article1");
@@ -109,7 +109,7 @@ switch (attack){
                 window_timer = 0;
                 items_select[item_id] = 1;
             }
-        }else if(left_pressed){
+        }else if(special_pressed){
             item_id = 4;
             if(hud_missile_cooldown == 0 && items_select[4] == 0){
                 instance_create(x - 10, y - 90, "obj_article1");
@@ -450,11 +450,11 @@ switch (attack){
         set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 1.2);
         set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 12);
         set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, 2);
-        set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 18);
-        set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 18);
-        set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18);
-        set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 18);
-        set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 18);
+        set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 15);
+        set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 15);
+        set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 15);
+        set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 15);
+        set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 15);
         set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 12);
         set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 16);
     }
@@ -619,13 +619,6 @@ switch (attack){
         set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
         set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.7);
         set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
-        if(window == 2 && window_timer >= 6) && special_pressed{
-            set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 21);
-            window = 1;
-            window_timer = 0;
-        }else if(window == 3){
-            set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 9);
-        }
     }else if(missile_sprite == 2){
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("ice_shot"));
         set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
@@ -702,7 +695,6 @@ switch (attack){
         if(window_timer == 9 && missile_amount > 0){
             set_num_hitboxes(AT_BAIR, 1);
             sound_play(sound_get("missile_hit"));
-            missile_amount -= 1;
         }else if(missile_amount == 0){
             set_num_hitboxes(AT_BAIR, 0);
         }
@@ -711,7 +703,6 @@ switch (attack){
         if(window_timer == 8 && missile_amount > 0){
             set_num_hitboxes(AT_BAIR, 2);
             sound_play(sound_get("missile_hit"));
-            missile_amount -= 1;
         }else if(missile_amount == 0){
             set_num_hitboxes(AT_BAIR, 0);
         }
@@ -720,7 +711,6 @@ switch (attack){
         if(window_timer == 8 && missile_amount > 0){
             set_num_hitboxes(AT_BAIR, 3);
             sound_play(sound_get("missile_hit"));
-            missile_amount -= 1;
         }else if(missile_amount == 0){
             set_num_hitboxes(AT_BAIR, 0);
         }

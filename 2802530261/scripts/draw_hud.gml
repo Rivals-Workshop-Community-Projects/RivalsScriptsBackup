@@ -56,11 +56,11 @@ if(menu_y < -12){
         moving_text = 0;
     }
     draw_sprite_part_ext(sprite_get("hud_" + string(item_id) + "_text"), 0, 0, 0, 60 * ((moving_text/(item_id > 2? (item_id = 3? 2: (item_id = 4? 2.2: 2.5)): 4.5))/name_xval[item_id]), 6, temp_x - moving_text + 214, temp_y + 12 + menu_y, 2, 2, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 0, temp_x + 24, temp_y - 22 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 1, temp_x, temp_y - 22 + menu_y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_quick"), 0, temp_x + 96, temp_y - 22 + menu_y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_quick"), 1, temp_x + 72, temp_y - 22 + menu_y, 2, 2, 0, c_white, 1);
     draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 48, temp_y - 22 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 72, temp_y - 3 + menu_y, 2, 2, 90, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 116, temp_y - 3 + menu_y, 2, 2, 180, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 24, temp_y - 2 + menu_y, 2, 2, 90, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 20, temp_y - 2 + menu_y, 2, 2, 180, c_white, 1);
     draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 136, temp_y - 22 + menu_y, 2, 2, 270, c_white, 1);
 }
 draw_sprite_ext(sprite_get("hud2"), 0, temp_x - 10, temp_y + menu_y, 2, 2, 0, c_white, 1);
@@ -88,17 +88,17 @@ draw_sprite_ext(sprite_get("hud_LED"), (hud_missile_cooldown = 0? 3: (hud_missil
 draw_sprite_ext(sprite_get("hud_LED"), (hud_flash_shift_cooldown = 0? 6: (hud_flash_shift_cooldown > 300? 7: 8)), temp_x + 94, temp_y + 2, 4, 4, 0, c_white, 1);
 draw_sprite_ext(sprite_get("power_bomb_overlay"), 0, temp_x + 178, temp_y - 4, 2, 2, 0, c_white, (power_cooldown = 0? 0: 1));
 if(state == PS_SPAWN){
-    draw_text_color(temp_x + 2, temp_y - 30, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
-    draw_text_color(temp_x - 2, temp_y - 30, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
-    draw_text_color(temp_x, temp_y - 30 + 2, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
-    draw_text_color(temp_x, temp_y - 30 - 2, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
-    draw_text_color(temp_x, temp_y - 30, "taunt: menu version", c_white, c_white, c_white, c_white, 1);
+    draw_text_color(temp_x + 2 + 72, temp_y - 30, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x - 2 + 72, temp_y - 30, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 72, temp_y - 30 + 2, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 72, temp_y - 30 - 2, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 72, temp_y - 30, "taunt: menu version", c_white, c_white, c_white, c_white, 1);
     
-    draw_text_color(temp_x + 148 + 2, temp_y - 30, (menu_version = 0? "[CLASSIC]": "[QUICK]"), c_black, c_black, c_black, c_black, 1);
-    draw_text_color(temp_x + 148 - 2, temp_y - 30, (menu_version = 0? "[CLASSIC]": "[QUICK]"), c_black, c_black, c_black, c_black, 1);
-    draw_text_color(temp_x + 148, temp_y - 30 + 2, (menu_version = 0? "[CLASSIC]": "[QUICK]"), c_black, c_black, c_black, c_black, 1);
-    draw_text_color(temp_x + 148, temp_y - 30 - 2, (menu_version = 0? "[CLASSIC]": "[QUICK]"), c_black, c_black, c_black, c_black, 1);
-    draw_text_color(temp_x + 148, temp_y - 30, (menu_version = 0? "[CLASSIC]": "[QUICK]"), (menu_version = 0? c_aqua: c_orange), (menu_version = 0? c_aqua: c_orange), (menu_version = 0? c_aqua: c_orange), (menu_version = 0? c_aqua: c_orange), 1);
+    draw_text_color(temp_x + 184 + 2, temp_y - 30, (menu_version = 0? "[CLASSIC]": "[QUICK]"), c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 184 - 2, temp_y - 30, (menu_version = 0? "[CLASSIC]": "[QUICK]"), c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 184, temp_y - 30 + 2, (menu_version = 0? "[CLASSIC]": "[QUICK]"), c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 184, temp_y - 30 - 2, (menu_version = 0? "[CLASSIC]": "[QUICK]"), c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 184, temp_y - 30, (menu_version = 0? "[CLASSIC]": "[QUICK]"), (menu_version = 0? c_aqua: c_orange), (menu_version = 0? c_aqua: c_orange), (menu_version = 0? c_aqua: c_orange), (menu_version = 0? c_aqua: c_orange), 1);
 }
 
 //%

@@ -59,7 +59,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 			if (window <=2)
 			{
 				gpu_set_fog(1, c_white, 0, 1);
-				draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, c_white, sin(state_timer/3)/2);
+				draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*2, 2, 0, c_white, sin(state_timer/3)/2);
 				gpu_set_fog(0, c_white, 0, 0);
 			}
 			break;

@@ -77,45 +77,12 @@ alt_name_desc[26] = "Seasonal";
 
 draw_set_halign(fa_left);
 
-//sound stuff
-sound_set[0] = "sound ON";
-sound_set[1] = "turret ON";
-sound_set[2] = "sound OFF";
-
-if "alpher" not in self {
-       alpher = 1;
-}
-
 if "alpher_alt" not in self {
        alpher_alt = 0;
 }
 
-if "sound" not in self {
-       sound = 0;
-}
-
-if(alpher > 0){
-    alpher -= 0.05;
-}
-
 if(alpher_alt > 0){
     alpher_alt -= 0.05;
-}
-
-if(alt_cur == 0 && prev_alt == 26){
-    alpher = 2;
-    if(sound < 2){
-        sound++;
-    }else{
-        sound = 0;
-    }
-}else if(alt_cur == 26 && prev_alt == 0){
-    alpher = 2;
-    if(sound > 0){
-        sound--;
-    }else{
-        sound = 2;
-    }
 }
 
 if(alt_cur != prev_alt){
@@ -126,11 +93,6 @@ set_color_profile_slot(27, 0, sound, 0, 0);
 
 draw_sprite_ext(sprite_get("sound"), sound, temp_x + 12, temp_y + 42, 2, 2, 0, c_white, alpher);
 draw_set_font(asset_get("fName"));
-draw_text_ext_color(temp_x + 42, temp_y + 46, sound_set[sound], 1, 100000000000, c_black, c_black, c_black, c_black, alpher);
-draw_text_ext_color(temp_x + 38, temp_y + 46, sound_set[sound], 1, 100000000000, c_black, c_black, c_black, c_black, alpher);
-draw_text_ext_color(temp_x + 40, temp_y + 48, sound_set[sound], 1, 100000000000, c_black, c_black, c_black, c_black, alpher);
-draw_text_ext_color(temp_x + 40, temp_y + 44, sound_set[sound], 1, 100000000000, c_black, c_black, c_black, c_black, alpher);
-draw_text_ext_color(temp_x + 40, temp_y + 46, sound_set[sound], 1, 100000000000, c_white, c_white, c_white, c_white, alpher);
 
 prev_alt = alt_cur;
 

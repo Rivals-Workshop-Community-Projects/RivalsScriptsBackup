@@ -1,3 +1,3 @@
 // called when the character gets KO'd
-missile_amount += 60;
-power_bomb_amount += 4;
+missile_amount += 30;
+power_bomb_amount = 2;

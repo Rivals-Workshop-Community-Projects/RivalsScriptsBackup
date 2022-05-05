@@ -33,6 +33,24 @@ draw_sprite_ext(sprite_get("dspecial_led"), 0, temp_x + 126, temp_y - 50, 2, 2, 
 draw_sprite_ext(sprite_get("uspecial_led"), 0, temp_x + 112, temp_y - 50, 2, 2, 0, c_white, (move_cooldown[AT_USPECIAL] = 0? 1: 0));
 draw_sprite_stretched_ext(sprite_get("hud_bar_1"), 0, temp_x + 56, temp_y - 12, (wall_gauge / 1000) * 92, 2, c_white, 1);
 
+if(state == PS_SPAWN){
+    draw_get_halign();
+    draw_set_font(asset_get("fName"));
+    draw_text_color(temp_x + 2 + 72, temp_y - 68, "taunt: sound mode", c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x - 2 + 72, temp_y - 68, "taunt: sound mode", c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 72, temp_y - 68 + 2, "taunt: sound mode", c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 72, temp_y - 68 - 2, "taunt: sound mode", c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 72, temp_y - 68, "taunt: sound mode", c_white, c_white, c_white, c_white, 1);
+    
+    draw_text_color(temp_x + 172 + 2, temp_y - 68, sound_text[sound_effect], c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 172 - 2, temp_y - 68, sound_text[sound_effect], c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 172, temp_y - 68 + 2, sound_text[sound_effect], c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 172, temp_y - 68 - 2, sound_text[sound_effect], c_black, c_black, c_black, c_black, 1);
+    draw_text_color(temp_x + 172, temp_y - 68, sound_text[sound_effect], (sound_effect = 0? c_red: (sound_effect = 1? c_yellow: c_aqua)), (sound_effect = 0? c_red: (sound_effect = 1? c_yellow: c_aqua)), (sound_effect = 0? c_red: (sound_effect = 1? c_yellow: c_aqua)), (sound_effect = 0? c_red: (sound_effect = 1? c_yellow: c_aqua)), 1);
+    
+    draw_sprite_ext(sprite_get("sound"), sound_effect, temp_x + 200, temp_y - 74, 2, 2, 0, c_white, 1);
+}
+
 /*debug utility
 draw_debug_text( 200, 10, "state : " + get_state_name(state));
 draw_debug_text( 200, 25, "state timer : " + string(state_timer));

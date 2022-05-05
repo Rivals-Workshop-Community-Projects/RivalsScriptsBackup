@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 32 );
+set_num_palettes( 31 );
 
 // blue
 set_color_profile_slot( 1, 0, 139, 171, 192 ); //Fur1
@@ -197,12 +197,12 @@ set_color_profile_slot( 16, 6, 235, 51, 31 ); //Eye
 set_color_profile_slot( 16, 7, 86, 74, 151 ); //Spike
 
 // star fox
-set_color_profile_slot( 17, 0, 117, 67, 247 ); //Fur1
-set_color_profile_slot( 17, 1, 85, 50, 178 ); //Fur2
+set_color_profile_slot( 17, 0, 129, 94, 219 ); //Fur1
+set_color_profile_slot( 17, 1, 73, 58, 176 ); //Fur2
 set_color_profile_slot( 17, 2, 228, 225, 173 ); //AltFur1
-set_color_profile_slot( 17, 3, 182, 179, 109 ); //AltFur2
+set_color_profile_slot( 17, 3, 181, 154, 116 ); //AltFur2
 set_color_profile_slot( 17, 4, 50, 51, 62 ); //Mask1
-set_color_profile_slot( 17, 5, 50, 51, 62 ); //Mask2
+set_color_profile_slot( 17, 5, 24, 28, 33 ); //Mask2
 set_color_profile_slot( 17, 6, 58, 210, 228 ); //Eye
 set_color_profile_slot( 17, 7, 58, 210, 228 ); //Spike
 
@@ -296,7 +296,7 @@ set_color_profile_slot( 26, 5, 112, 112, 156 ); //Mask2
 set_color_profile_slot( 26, 6, 255, 234, 115 ); //Eye
 set_color_profile_slot( 26, 7, 120, 204, 205 ); //Spike
 
-// hue
+// paint
 set_color_profile_slot( 27, 0, 223, 215, 228 ); //Fur1
 set_color_profile_slot( 27, 1, 179, 173, 202 ); //Fur2
 set_color_profile_slot( 27, 2, 99, 100, 104 ); //AltFur1
@@ -326,7 +326,7 @@ set_color_profile_slot( 29, 5, 179, 173, 202 ); //Mask2
 set_color_profile_slot( 29, 6, 150, 66, 191 ); //Eye
 set_color_profile_slot( 29, 7, 160, 141, 193 ); //Spike
 
-// korone
+// bunny
 set_color_profile_slot( 30, 0, 155, 99, 68 ); //Fur1
 set_color_profile_slot( 30, 1, 121, 67, 29 ); //Fur2
 set_color_profile_slot( 30, 2, 219, 231, 238 ); //AltFur1
@@ -335,16 +335,6 @@ set_color_profile_slot( 30, 4, 241, 227, 126 ); //Mask1
 set_color_profile_slot( 30, 5, 195, 151, 62 ); //Mask2
 set_color_profile_slot( 30, 6, 121, 67, 29 ); //Eye
 set_color_profile_slot( 30, 7, 147, 196, 227 ); //Spike
-
-// sans
-set_color_profile_slot( 31, 0, 254, 254, 254 ); //Fur1
-set_color_profile_slot( 31, 1, 191, 194, 201 ); //Fur2
-set_color_profile_slot( 31, 2, 32, 149, 242 ); //AltFur1
-set_color_profile_slot( 31, 3, 20, 91, 148 ); //AltFur2
-set_color_profile_slot( 31, 4, 61, 61, 61 ); //Mask1
-set_color_profile_slot( 31, 5, 38, 38, 38 ); //Mask2
-set_color_profile_slot( 31, 6, 32, 149, 242 ); //Eye
-set_color_profile_slot( 31, 7, 191, 194, 201 ); //Spike
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

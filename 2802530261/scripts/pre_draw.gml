@@ -13,8 +13,9 @@ if(spark_timer > 0){
     gpu_set_fog(true, c_teal, false, true);
 }
 gpu_set_fog(false, c_teal, false, false);
-
+shader_start();
 if(state == PS_ATTACK_GROUND && attack == AT_DATTACK){
     draw_sprite_ext(sprite_index, image_index, x - spr_distance * spr_dir, y + draw_y, 2 * spr_dir, 2, 0, c_white, 0.6);
     draw_sprite_ext(sprite_index, image_index, x - spr_distance * spr_dir * 2, y + draw_y, 2 * spr_dir, 2, 0, c_white, 0.3);
 }
+shader_end();
