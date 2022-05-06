@@ -14,21 +14,23 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_PRIORITY, 10);
 set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, -1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_EXTRA_1, 1, HG_SHAPE, 1);
-set_hitbox_value(AT_EXTRA_1, 1, HG_FORCE_FLINCH, 1)
-set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, .1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_FORCE_FLINCH, 0)
+set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_EXTRA_1, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_1, 1, HG_VISUAL_EFFECT, 19);
+set_hitbox_value(AT_EXTRA_1, 1, HG_VISUAL_EFFECT, heal_fx);
+set_hitbox_value(AT_EXTRA_1, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, asset_get("sfx_orca_crunch"));
 
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_TYPE, 2) //onion
-set_hitbox_value(AT_EXTRA_1, 2, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 2, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 2, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PRIORITY, 10);
@@ -48,7 +50,7 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_HIT_SFX, asset_get("sfx_obstacle_hit"));
 
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITBOX_TYPE, 2) //torch
-set_hitbox_value(AT_EXTRA_1, 3, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 3, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 3, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 3, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 3, HG_PRIORITY, 10);
@@ -69,7 +71,7 @@ set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 3, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITBOX_TYPE, 2) //bomb
-set_hitbox_value(AT_EXTRA_1, 4, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 4, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 4, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 4, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 4, HG_PRIORITY, 10);
@@ -77,20 +79,21 @@ set_hitbox_value(AT_EXTRA_1, 4, HG_DAMAGE, 20);
 set_hitbox_value(AT_EXTRA_1, 4, HG_ANGLE, 46);
 set_hitbox_value(AT_EXTRA_1, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_EXTRA_1, 4, HG_EFFECT, 0);
-set_hitbox_value(AT_EXTRA_1, 4, HG_BASE_KNOCKBACK, 15);
+set_hitbox_value(AT_EXTRA_1, 4, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_EXTRA_1, 4, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_EXTRA_1, 4, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_EXTRA_1, 4, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_1, 4, HG_VISUAL_EFFECT, 143);
+set_hitbox_value(AT_EXTRA_1, 4, HG_VISUAL_EFFECT, 263);
 set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
 set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 4, HG_HIT_SFX, asset_get("sfx_ell_explosion_medium"));
 
 set_hitbox_value(AT_EXTRA_1, 5, HG_HITBOX_TYPE, 2) //8ball
-set_hitbox_value(AT_EXTRA_1, 5, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 5, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 5, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 5, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 5, HG_PRIORITY, 10);
@@ -112,7 +115,7 @@ set_hitbox_value(AT_EXTRA_1, 5, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 5, HG_HIT_SFX, asset_get("sfx_fish_collect"));
 
 set_hitbox_value(AT_EXTRA_1, 6, HG_HITBOX_TYPE, 2) //glue
-set_hitbox_value(AT_EXTRA_1, 6, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 6, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 6, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 6, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 6, HG_PRIORITY, 10);
@@ -134,7 +137,7 @@ set_hitbox_value(AT_EXTRA_1, 6, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 6, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 
 set_hitbox_value(AT_EXTRA_1, 7, HG_HITBOX_TYPE, 2) //dart
-set_hitbox_value(AT_EXTRA_1, 7, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 7, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 7, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 7, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 7, HG_PRIORITY, 10);
@@ -156,7 +159,7 @@ set_hitbox_value(AT_EXTRA_1, 7, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 7, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 
 set_hitbox_value(AT_EXTRA_1, 8, HG_HITBOX_TYPE, 2) //turron
-set_hitbox_value(AT_EXTRA_1, 8, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 8, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 8, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 8, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 8, HG_PRIORITY, 10);
@@ -178,7 +181,7 @@ set_hitbox_value(AT_EXTRA_1, 8, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 8, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 
 set_hitbox_value(AT_EXTRA_1, 9, HG_HITBOX_TYPE, 2) //balloon
-set_hitbox_value(AT_EXTRA_1, 9, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 9, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 9, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 9, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 9, HG_PRIORITY, 10);
@@ -200,7 +203,7 @@ set_hitbox_value(AT_EXTRA_1, 9, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 9, HG_HIT_SFX, asset_get("sfx_orca_absorb"));
 
 set_hitbox_value(AT_EXTRA_1, 10, HG_HITBOX_TYPE, 2) //heart
-set_hitbox_value(AT_EXTRA_1, 10, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 10, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 10, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 10, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 10, HG_PRIORITY, 10);
@@ -221,14 +224,14 @@ set_hitbox_value(AT_EXTRA_1, 10, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten")
 set_hitbox_value(AT_EXTRA_1, 10, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 10, HG_HIT_SFX, asset_get("sfx_coin_capture"));
 
-set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_TYPE, 1) //GUN
-set_hitbox_value(AT_EXTRA_1, 11, HG_LIFETIME, 100);
-set_hitbox_value(AT_EXTRA_1, 11, HG_WIDTH, 1080);
-set_hitbox_value(AT_EXTRA_1, 11, HG_HEIGHT, 8);
-set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_X, 540);
-set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_Y, -46);
+set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_TYPE, 2) //GUN
+set_hitbox_value(AT_EXTRA_1, 11, HG_LIFETIME, 1);
+set_hitbox_value(AT_EXTRA_1, 11, HG_WIDTH, 24);
+set_hitbox_value(AT_EXTRA_1, 11, HG_HEIGHT, 12);
+//set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_X, 540);
+//set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_Y, -46);
 set_hitbox_value(AT_EXTRA_1, 11, HG_PRIORITY, 10);
-set_hitbox_value(AT_EXTRA_1, 11, HG_DAMAGE, 5);
+set_hitbox_value(AT_EXTRA_1, 11, HG_DAMAGE, 20);
 set_hitbox_value(AT_EXTRA_1, 11, HG_ANGLE, 40);
 set_hitbox_value(AT_EXTRA_1, 11, HG_SHAPE, 2);
 set_hitbox_value(AT_EXTRA_1, 11, HG_EFFECT, 0);
@@ -245,7 +248,7 @@ set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 11, HG_HIT_SFX, asset_get("sfx_dust_knuckle"));
 
 set_hitbox_value(AT_EXTRA_1, 12, HG_HITBOX_TYPE, 2) //NUKE
-set_hitbox_value(AT_EXTRA_1, 12, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 12, HG_LIFETIME, 2);
 set_hitbox_value(AT_EXTRA_1, 12, HG_WIDTH, 1920);
 set_hitbox_value(AT_EXTRA_1, 12, HG_HEIGHT, 1080);
 set_hitbox_value(AT_EXTRA_1, 12, HG_PRIORITY, 10);
@@ -267,7 +270,7 @@ set_hitbox_value(AT_EXTRA_1, 12, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 12, HG_HIT_SFX, asset_get("sfx_ell_uspecial_explode"));
 
 set_hitbox_value(AT_EXTRA_1, 13, HG_HITBOX_TYPE, 2) //egg
-set_hitbox_value(AT_EXTRA_1, 13, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 13, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 13, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 13, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 13, HG_PRIORITY, 10);
@@ -288,7 +291,7 @@ set_hitbox_value(AT_EXTRA_1, 13, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 13, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
 
 set_hitbox_value(AT_EXTRA_1, 14, HG_HITBOX_TYPE, 2) //dumbell
-set_hitbox_value(AT_EXTRA_1, 14, HG_LIFETIME, 100);
+set_hitbox_value(AT_EXTRA_1, 14, HG_LIFETIME, 1);
 set_hitbox_value(AT_EXTRA_1, 14, HG_WIDTH, 50);
 set_hitbox_value(AT_EXTRA_1, 14, HG_HEIGHT, 50);
 set_hitbox_value(AT_EXTRA_1, 14, HG_PRIORITY, 10);
@@ -331,15 +334,15 @@ set_hitbox_value(AT_EXTRA_1, 15, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten")
 set_hitbox_value(AT_EXTRA_1, 15, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 15, HG_HIT_SFX, asset_get("sfx_ell_explosion_medium"));
 
-set_hitbox_value(AT_EXTRA_1, 16, HG_HITBOX_TYPE, 1) //BGUN
+set_hitbox_value(AT_EXTRA_1, 16, HG_HITBOX_TYPE, 2) //BGUN
 set_hitbox_value(AT_EXTRA_1, 16, HG_WINDOW, 1)
-set_hitbox_value(AT_EXTRA_1, 16, HG_LIFETIME, 100);
-set_hitbox_value(AT_EXTRA_1, 16, HG_WIDTH, 1080);
-set_hitbox_value(AT_EXTRA_1, 16, HG_HEIGHT, 8);
-set_hitbox_value(AT_EXTRA_1, 16, HG_HITBOX_X, -540);
-set_hitbox_value(AT_EXTRA_1, 16, HG_HITBOX_Y, -46);
+set_hitbox_value(AT_EXTRA_1, 16, HG_LIFETIME, 1);
+set_hitbox_value(AT_EXTRA_1, 16, HG_WIDTH, 24);
+set_hitbox_value(AT_EXTRA_1, 16, HG_HEIGHT, 16);
+//set_hitbox_value(AT_EXTRA_1, 16, HG_HITBOX_X, -540);
+//set_hitbox_value(AT_EXTRA_1, 16, HG_HITBOX_Y, -46);
 set_hitbox_value(AT_EXTRA_1, 16, HG_PRIORITY, 10);
-set_hitbox_value(AT_EXTRA_1, 16, HG_DAMAGE, 5);
+set_hitbox_value(AT_EXTRA_1, 16, HG_DAMAGE, 20);
 set_hitbox_value(AT_EXTRA_1, 16, HG_ANGLE, 130);
 set_hitbox_value(AT_EXTRA_1, 16, HG_SHAPE, 2);
 set_hitbox_value(AT_EXTRA_1, 16, HG_EFFECT, 0);
@@ -378,3 +381,120 @@ set_hitbox_value(AT_EXTRA_1, 17, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 17, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
 set_hitbox_value(AT_EXTRA_1, 17, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_EXTRA_1, 17, HG_HIT_SFX, asset_get("sfx_crunch"));
+
+set_hitbox_value(AT_EXTRA_1, 18, HG_HITBOX_TYPE, 2) //crystal
+set_hitbox_value(AT_EXTRA_1, 18, HG_LIFETIME, 1);
+set_hitbox_value(AT_EXTRA_1, 18, HG_WIDTH, 50);
+set_hitbox_value(AT_EXTRA_1, 18, HG_HEIGHT, 50);
+set_hitbox_value(AT_EXTRA_1, 18, HG_PRIORITY, 10);
+set_hitbox_value(AT_EXTRA_1, 18, HG_DAMAGE, 5);
+set_hitbox_value(AT_EXTRA_1, 18, HG_ANGLE, 60);
+set_hitbox_value(AT_EXTRA_1, 18, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_1, 18, HG_EFFECT, 14);
+set_hitbox_value(AT_EXTRA_1, 18, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_EXTRA_1, 18, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_EXTRA_1, 18, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_EXTRA_1, 18, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_1, 18, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 18, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_EXTRA_1, 18, HG_VISUAL_EFFECT, 313);
+set_hitbox_value(AT_EXTRA_1, 18, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_1, 18, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
+set_hitbox_value(AT_EXTRA_1, 18, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_1, 18, HG_HIT_SFX, asset_get("sfx_oly_dspecial_armorhit"));
+
+set_hitbox_value(AT_EXTRA_1, 19, HG_HITBOX_TYPE, 2) //towel
+set_hitbox_value(AT_EXTRA_1, 19, HG_LIFETIME, 1);
+set_hitbox_value(AT_EXTRA_1, 19, HG_WIDTH, 50);
+set_hitbox_value(AT_EXTRA_1, 19, HG_HEIGHT, 50);
+set_hitbox_value(AT_EXTRA_1, 19, HG_PRIORITY, 10);
+set_hitbox_value(AT_EXTRA_1, 19, HG_DAMAGE, 5);
+set_hitbox_value(AT_EXTRA_1, 19, HG_ANGLE, 270);
+set_hitbox_value(AT_EXTRA_1, 19, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_1, 19, HG_EFFECT, 15);
+set_hitbox_value(AT_EXTRA_1, 19, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_EXTRA_1, 19, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_EXTRA_1, 19, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_EXTRA_1, 19, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_1, 19, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 19, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_EXTRA_1, 19, HG_VISUAL_EFFECT, 292);
+set_hitbox_value(AT_EXTRA_1, 19, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_1, 19, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
+set_hitbox_value(AT_EXTRA_1, 19, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_1, 19, HG_HIT_SFX, asset_get("sfx_kragg_rock_shatter"));
+
+set_hitbox_value(AT_EXTRA_1, 20, HG_HITBOX_TYPE, 2) //Note
+set_hitbox_value(AT_EXTRA_1, 20, HG_LIFETIME, 18);
+set_hitbox_value(AT_EXTRA_1, 20, HG_WIDTH, 50);
+set_hitbox_value(AT_EXTRA_1, 20, HG_HEIGHT, 50);
+set_hitbox_value(AT_EXTRA_1, 20, HG_PRIORITY, 10);
+set_hitbox_value(AT_EXTRA_1, 20, HG_DAMAGE, 5);
+set_hitbox_value(AT_EXTRA_1, 20, HG_ANGLE, 40);
+set_hitbox_value(AT_EXTRA_1, 20, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_1, 20, HG_EFFECT, 0);
+set_hitbox_value(AT_EXTRA_1, 20, HG_BASE_KNOCKBACK, 3);
+set_hitbox_value(AT_EXTRA_1, 20, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_EXTRA_1, 20, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_EXTRA_1, 20, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_EXTRA_1, 20, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 20, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_EXTRA_1, 20, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_1, 20, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 20, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 20, HG_VISUAL_EFFECT, 321);
+set_hitbox_value(AT_EXTRA_1, 20, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_1, 20, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
+set_hitbox_value(AT_EXTRA_1, 20, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_1, 20, HG_HIT_SFX, asset_get("sfx_war_horn"));
+
+set_hitbox_value(AT_EXTRA_1, 21, HG_HITBOX_TYPE, 2) //Bumper
+set_hitbox_value(AT_EXTRA_1, 21, HG_LIFETIME, 18);
+set_hitbox_value(AT_EXTRA_1, 21, HG_WIDTH, 50);
+set_hitbox_value(AT_EXTRA_1, 21, HG_HEIGHT, 50);
+set_hitbox_value(AT_EXTRA_1, 21, HG_PRIORITY, 10);
+set_hitbox_value(AT_EXTRA_1, 21, HG_DAMAGE, 1);
+set_hitbox_value(AT_EXTRA_1, 21, HG_ANGLE, 40);
+set_hitbox_value(AT_EXTRA_1, 21, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_1, 21, HG_EFFECT, 0);
+set_hitbox_value(AT_EXTRA_1, 21, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_EXTRA_1, 21, HG_KNOCKBACK_SCALING, .2);
+set_hitbox_value(AT_EXTRA_1, 21, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_EXTRA_1, 21, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_EXTRA_1, 21, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 21, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_EXTRA_1, 21, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_1, 21, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 21, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 21, HG_VISUAL_EFFECT, 196);
+set_hitbox_value(AT_EXTRA_1, 21, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_1, 21, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
+set_hitbox_value(AT_EXTRA_1, 21, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_1, 21, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_EXTRA_1, 21, HG_HIT_SFX, asset_get("sfx_springgo"));
+set_hitbox_value(AT_EXTRA_1, 21, HG_ANGLE_FLIPPER, 8);
+
+set_hitbox_value(AT_EXTRA_1, 22, HG_HITBOX_TYPE, 2) //Soap
+set_hitbox_value(AT_EXTRA_1, 22, HG_LIFETIME, 2);
+set_hitbox_value(AT_EXTRA_1, 22, HG_WIDTH, 10);
+set_hitbox_value(AT_EXTRA_1, 22, HG_HEIGHT, 10);
+set_hitbox_value(AT_EXTRA_1, 22, HG_PRIORITY, 10);
+set_hitbox_value(AT_EXTRA_1, 22, HG_DAMAGE, 5);
+set_hitbox_value(AT_EXTRA_1, 22, HG_ANGLE, 90);
+set_hitbox_value(AT_EXTRA_1, 22, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_1, 22, HG_EFFECT, 10);
+set_hitbox_value(AT_EXTRA_1, 22, HG_BASE_KNOCKBACK, .1);
+set_hitbox_value(AT_EXTRA_1, 22, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_EXTRA_1, 22, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_EXTRA_1, 22, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_EXTRA_1, 22, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 22, HG_IGNORES_PROJECTILES, 0);
+set_hitbox_value(AT_EXTRA_1, 22, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_1, 22, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 22, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+//set_hitbox_value(AT_EXTRA_1, 22, HG_VISUAL_EFFECT, 120);
+set_hitbox_value(AT_EXTRA_1, 22, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_1, 22, HG_PROJECTILE_SPRITE, sprite_get("candy_eaten"));
+set_hitbox_value(AT_EXTRA_1, 22, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_1, 22, HG_HIT_LOCKOUT, 0);
+//set_hitbox_value(AT_EXTRA_1, 22, HG_HIT_SFX, asset_get("sfx_frog_dspecial_spit"));

@@ -29,6 +29,8 @@ happy_birthday = 0;
 beffect_timer = 0;
 que_count = 0;
 que_timer = 0;
+armor_part = 0;
+wrap_sprite = sprite_get("candy_eaten")
 //fcountdown = random_func( 0, 14, true );
 camera_obj = asset_get("camera_obj");
 confetti = hit_fx_create( sprite_get( "confetti" ), 60 );
@@ -36,6 +38,8 @@ confetti_side = hit_fx_create( sprite_get( "confetti_launch_horizontal" ), 60 );
 confetti_diag = hit_fx_create( sprite_get( "confetti_launch_diagonal" ), 60 );
 gunshot = hit_fx_create( sprite_get( "gun_shot" ), 60 );
 beffect = hit_fx_create(sprite_get("walk_bugingi_fade"), 30);
+heal_fx = hit_fx_create( sprite_get( "heal" ), 30 );
+foodrng = 0;
 //dance_timer = noone;
 //dance_timer_innitd = 0;
 

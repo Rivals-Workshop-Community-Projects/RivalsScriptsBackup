@@ -105,3 +105,5 @@ bubble_y = 8;
 
 toxic = hit_fx_create( sprite_get( "toxicdestroy" ), 18 );
 balls = hit_fx_create( sprite_get( "balls" ), 20 );
+key = hit_fx_create( sprite_get( "key" ), 28 );
+ron = hit_fx_create( sprite_get( "greengoblin" ), 35 );

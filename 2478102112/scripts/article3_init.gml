@@ -55,6 +55,9 @@ cam_y = 0;
 anim_time = 0;
 ammo = 6;
 fired_gun = 0;
+note_has_hit = false
+foodnum = 0;
+foodrng = player_id.foodrng;
 
 /* README - Basic Article Usage
 

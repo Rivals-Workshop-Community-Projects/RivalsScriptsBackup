@@ -41,7 +41,7 @@ set_num_hitboxes(AT_UTILT, 7);
 
 var _dmg = 11;
 var _kb = 9;       // 12 when non-lethal victores are implemented
-var _kbscale = 1.0; // 0.38 when non-lethal victories are implemented
+var _kbscale = 0.7; // 0.38 when non-lethal victories are implemented
 var _hitpause = 7;
 var _hpscale = 0.6; // 0.5 when non-lethal victories are implemented
 var _ang = 90;

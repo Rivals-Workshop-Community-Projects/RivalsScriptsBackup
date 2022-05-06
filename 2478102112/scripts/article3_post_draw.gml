@@ -1,6 +1,5 @@
-
 if nuke_out == 1{
-    draw_sprite_ext( sprite_get( "nuke_explosion" ), anim_time/3, floor(cam_x)-128, floor(cam_y)-128, 3.2, 3.2, 0, c_white, 1 );
+    draw_sprite_ext( sprite_get( "nuke_explosion" ), anim_time/3, floor(cam_x)+780, floor(cam_y)+432, 3.5, 3.5, 0, c_white, 1 );
     print("woof");
     print(cam_x);
     print(cam_y);

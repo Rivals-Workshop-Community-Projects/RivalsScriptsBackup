@@ -15,7 +15,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("ufo_start"));
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 40);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 25);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -4);

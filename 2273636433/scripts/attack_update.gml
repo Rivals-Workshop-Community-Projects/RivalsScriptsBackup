@@ -268,7 +268,7 @@ if (attack == AT_FSPECIAL && window == 2 ) {
 						//Movement For Articles
 						if hit_check != noone {							//Reflect Article
 							if hit_check.player == player{				//The article is from the same player as the hitbox
-								hit_check.hsp *= -1.5;	
+								hit_check.hsp *= -1;	
 								hit_check.spr_dir *= -1;
 								hit_check = noone;
 								other.done_reflecting = 1;										//Player gets notified

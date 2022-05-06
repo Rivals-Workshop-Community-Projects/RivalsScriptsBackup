@@ -30,16 +30,18 @@ alt_name[22] = "BLMario";
 alt_name[23] = "Vaporwave";
 alt_name[24] = "TSMSB"; 
 alt_name[25] = "Nauseon Line";
+alt_name[26] = "Dr. Weird"; 
+alt_name[27] = "Dr. Pepper";
 
-num_alts = 25;
+num_alts = 28;
 //Alt
 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
 
 for(i = 0; i < num_alts; i++){
 	var draw_color = (i == alt_cur) ? c_white : c_gray;
-	var draw_x = temp_x + 2 + 8 * i;
-	rectDraw(draw_x, temp_y + 137, draw_x + 5, temp_y + 140, draw_color);
+	var draw_x = temp_x + 2 + 6 * i;
+	rectDraw(draw_x, temp_y + 137, draw_x + 3, temp_y + 140, draw_color);
 }
 
 draw_set_halign(fa_left);

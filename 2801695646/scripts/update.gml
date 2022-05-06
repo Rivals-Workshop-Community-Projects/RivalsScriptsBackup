@@ -134,10 +134,28 @@ if (is_init)
 }
 
 
-//----------------------------------------------
-// DELETEME: More platform test stuff
-//----------------------------------------------
-//go_through = true; // DELETEME
+
+//=========================================================
+// DIALOGUE BUDDY COMPATIBILITY
+//=========================================================
+
+if(variable_instance_exists(id,"diag")) {
+    diag_name = "Snake";
+
+    diagchoice = [
+    "Hands over your head! Now!"];
+    
+
+	// Specific Character Interactions
+
+	// Clairen
+    if(otherUrl == CH_CLAIREN && diag != "") //Change the url into a specific character's
+    {
+        diag = "You're that Ninja...";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    
+}
 
 
 

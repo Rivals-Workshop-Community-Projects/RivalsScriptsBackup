@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 2, 4, 24 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 28 );
 
 // Pink
 set_color_profile_slot( 1, 0, 255, 135, 135 ); //Lab Coat
@@ -257,9 +257,28 @@ set_color_profile_slot( 25, 4, 227, 175, 227 ); //Skin
 set_color_profile_slot( 25, 5, 106, 0, 255 ); //Tie / Eyes
 set_color_profile_slot( 25, 6, 207, 207, 207 ); //HeadBand
 
+// Dr. Weird
+set_color_profile_slot( 26, 0, 132, 92, 139 ); //Lab Coat
+set_color_profile_slot( 26, 1, 187, 186, 56 ); //Pants
+set_color_profile_slot( 26, 2, 247, 243, 240 ); //Hair / Shoes
+set_color_profile_slot( 26, 3, 192, 194, 58 ); //Gloves
+set_color_profile_slot( 26, 4, 255, 237, 217 ); //Skin
+set_color_profile_slot( 26, 5, 207, 129, 79 ); //Tie / Eyes
+set_color_profile_slot( 26, 6, 117, 117, 117 ); //HeadBand
+
+// Dr. Pepper
+set_color_profile_slot( 27, 0, 148, 47, 64 ); //Lab Coat
+set_color_profile_slot( 27, 1, 207, 160, 79 ); //Pants
+set_color_profile_slot( 27, 2, 148, 40, 58 ); //Hair / Shoes
+set_color_profile_slot( 27, 3, 233, 234, 203 ); //Gloves
+set_color_profile_slot( 27, 4, 143, 143, 143 ); //Skin
+set_color_profile_slot( 27, 5, 207, 160, 79 ); //Tie / Eyes
+set_color_profile_slot( 27, 6, 249, 249, 249 ); //HeadBand
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Lab Coat","colors":[{"r":249,"g":249,"b":249,"main":true},{"r":212,"g":212,"b":212},{"r":174,"g":174,"b":174}]},{"name":"Pants","colors":[{"r":69,"g":69,"b":69,"main":true},{"r":32,"g":32,"b":32},{"r":50,"g":50,"b":50}]},{"name":"Hair / Shoes","colors":[{"r":213,"g":98,"b":16},{"r":180,"g":81,"b":0},{"r":111,"g":57,"b":9,"main":true},{"r":62,"g":32,"b":5},{"r":99,"g":42,"b":3},{"r":139,"g":56,"b":0},{"r":74,"g":24,"b":0},{"r":138,"g":71,"b":25}]},{"name":"Gloves","colors":[{"r":202,"g":229,"b":255,"main":true},{"r":157,"g":197,"b":229},{"r":109,"g":149,"b":181},{"r":58,"g":104,"b":147}]},{"name":"Skin","colors":[{"r":188,"g":97,"b":40},{"r":220,"g":141,"b":96},{"r":226,"g":160,"b":120},{"r":233,"g":183,"b":152,"main":true},{"r":155,"g":79,"b":33},{"r":255,"g":164,"b":95},{"r":255,"g":227,"b":147}]},{"name":"Tie / Eyes","colors":[{"r":25,"g":62,"b":182,"main":true},{"r":16,"g":43,"b":120}]},{"name":"HeadBand","colors":[{"r":71,"g":49,"b":46},{"r":130,"g":87,"b":80,"main":true}]}]}
 === END JSON PALETTE ===
 */
+

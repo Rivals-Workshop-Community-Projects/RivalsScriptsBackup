@@ -38,7 +38,7 @@ set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_VSPEED, 1.6);
 
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 16);
 
@@ -170,15 +170,15 @@ set_hitbox_value(AT_USPECIAL_2, 8, HG_HEIGHT, 146);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HITBOX_X, 18);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HITBOX_Y, -106);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_PRIORITY, 6);
-set_hitbox_value(AT_USPECIAL_2, 8, HG_DAMAGE, 3);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_DAMAGE, 4);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_ANGLE, 85);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USPECIAL_2, 8, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HIT_SFX, sound_get("plux_glide"));
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HITBOX_GROUP, -1);
-
+//Glide
 set_hitbox_value(AT_USPECIAL_2, 9, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL_2, 9, HG_WINDOW, 4);
 set_hitbox_value(AT_USPECIAL_2, 9, HG_WINDOW_CREATION_FRAME, 14);
@@ -190,8 +190,8 @@ set_hitbox_value(AT_USPECIAL_2, 9, HG_HITBOX_Y, -110);
 set_hitbox_value(AT_USPECIAL_2, 9, HG_PRIORITY, 2);
 set_hitbox_value(AT_USPECIAL_2, 9, HG_DAMAGE, 1);
 set_hitbox_value(AT_USPECIAL_2, 9, HG_ANGLE, 90);
-set_hitbox_value(AT_USPECIAL_2, 9, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_USPECIAL_2, 9, HG_KNOCKBACK_SCALING, 0.3);
+set_hitbox_value(AT_USPECIAL_2, 9, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_USPECIAL_2, 9, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_USPECIAL_2, 9, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_USPECIAL_2, 9, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_USPECIAL_2, 9, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

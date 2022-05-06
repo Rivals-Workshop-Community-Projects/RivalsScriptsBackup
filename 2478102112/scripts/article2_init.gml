@@ -32,7 +32,7 @@ new_sprite = sprite_get("candy_idle");             //This is another part of the
 
 //Limit on number of articles
 replacedcount = 0;                                  //This gets incremented whenever a new article is created. If this reaches maxarticles, the article is destroyed
-maxarticles = 10;                                    //The maximum number of this article that should exist at once.
+maxarticles = 5;                                    //The maximum number of this article that should exist at once.
 
 with(asset_get("obj_article2")){
     if (player_id == other.player_id){

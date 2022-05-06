@@ -84,7 +84,6 @@ if (buffertimer < 20){
 }
 
 
-
 //State 0: Freshly spawned
 
 if (state == 0){
@@ -94,18 +93,23 @@ if (state == 0){
 	//var nuke_hit = 0
 	if player_id.que_timer <= 0{
 		if state_timer == 0 and obj_article1.stability == 0{
-			print("mew")
-			itemnum = random_func( 0, 10, true );//10
+			//print("mew")
+			foodnum = foodrng//random_func( 0, 10, true)
+			itemnum = 19//random_func( 0, 16, true )//
+			print(foodnum)
+			print(itemnum)
 		}
 		if state_timer == 0 and obj_article1.stability == 1{
-			itemnum = random_func( 0, 17, true );//17
-			print("mew")
+			foodnum = foodrng
+			itemnum = random_func( 0, 23, true );//17
+			
+		//	print("mew")
 		}
 	}
 	if player_id.que_timer > 0{
 		if state_timer == 0{
-			print("bark")
-			itemnum = random_func( 0, 17, true );//17
+		//	print("bark")
+			itemnum = random_func( 0, 22, true );//17
 		}
 	}
 	
@@ -113,7 +117,7 @@ if (state == 0){
     //fly  out when spawned
     if free == true{
     	vsp = (5 + (state_timer/4));
-    	if itemnum != 16{
+    	if itemnum != 21{
     		hsp = 0;
     	}
     }
@@ -124,17 +128,17 @@ if (state == 0){
     }
     
     //Go to idle after 40 frames
-    if free = false and (itemnum < 11 or itemnum == 12 or itemnum == 14 or itemnum == 15){
+    if free = false and (itemnum < 16 or itemnum == 17 or itemnum == 19 or itemnum == 20 or itemnum == 22){
         state = 1;
         state_timer = 0;
     }
-    if free = false and itemnum == 13{
+    if free = false and itemnum == 18{
     	state = 6;
     	state_timer = 0;
-        //hbox = create_hitbox(AT_EXTRA_1, 9, x+16, y-24);
-        //nuke_hit += 1
+        hbox = create_hitbox(AT_EXTRA_1, 12, x+16, y-24);
+        // nuke_hit += 1
     }
-    if free = false and itemnum == 16{
+    if free = false and itemnum == 21{
     	state = 8
     	state_timer = 0
     }
@@ -148,10 +152,10 @@ if (state == 0){
     }
     pick_timer = 10;
     nuke_out = 0;
-    if (itemnum == 10 or itemnum == 11 or itemnum == 14){
+    if (itemnum == 10 or itemnum == 16 or itemnum == 19){
 		spr_dir = 1;
 	}
-	if itemnum == 16{
+	if itemnum == 21{
 		if !instance_exists(hbox) {
     	hbox = create_hitbox(AT_EXTRA_1, 17, x, y);
 	    }
@@ -198,7 +202,7 @@ if (state == 1){
     	state = 0;
     	state_timer = 0;
     }
-    if itemnum == 16{
+    if itemnum == 21 or itemnum == 13{
     	state = 8;
     	state_timer = 0;
     }
@@ -206,7 +210,7 @@ if (state == 1){
     
     if state_timer = 0{
     	if !instance_exists(hbox) {
-	    	if itemnum == 14 {
+	    	if itemnum == 19 {
 	    		hbox = create_hitbox(AT_EXTRA_1, 15, x, y);
 	    		//print("monke")
 	    	}
@@ -257,8 +261,64 @@ if (state == 3){
 		state = 4;
 		state_timer = 0;
 	}
-	if (itemnum != 10 and itemnum != 11 and itemnum != 14){
+	if (itemnum != 10 and itemnum != 16 and itemnum != 21){
 		spr_dir = owner.spr_dir;
+	}
+	if itemnum == 15{
+		if foodnum >= 0{
+			take_damage( owner.player, -1, -2 );
+		}
+		if foodnum == 1{
+			take_damage( owner.player, -1, -4 );
+		}
+		if foodnum == 2{
+			take_damage( owner.player, -1, -5 );
+		}
+		if foodnum == 3{
+			take_damage( owner.player, -1, -7 );
+		}
+		if foodnum == 4{
+			take_damage( owner.player, -1, -9 );
+		}
+		if foodnum == 5{
+			take_damage( owner.player, -1, -10 );
+		}
+		if foodnum == 6{
+			take_damage( owner.player, -1, -12 );
+		}
+		if foodnum == 7{
+			take_damage( owner.player, -1, -15 );
+		}
+		if foodnum == 8{
+			take_damage( owner.player, -1, -17 );
+		}
+		if foodnum == 9{
+			take_damage( owner.player, -1, -18 );
+		}
+		state = 2
+		state_timer = 0
+		sound_play(asset_get("mfx_hp_spawn"))
+		spawn_hit_fx( x, y-8, player_id.heal_fx );
+	}
+	if itemnum == 22{
+		// take_damage( owner.player, -1, 20 );
+		if !instance_exists(hbox){
+			hbox = create_hitbox(AT_EXTRA_1, 22, owner.player.x, owner.player.y);
+			hbox.can_hit_self = true
+			if (owner != player_id){
+				hbox.player = owner.player;
+			}
+	    }
+	    if state_timer = 0{
+	    	sound_play(asset_get("sfx_orca_crunch"))
+			spawn_hit_fx( x, y-8, 118 );
+	    }
+		if state_timer = 3{
+			sound_play(asset_get("sfx_frog_dspecial_spit"))
+			state = 2
+			state_timer = 0
+		}
+		
 	}
 }
 
@@ -277,21 +337,33 @@ if (state == 4){
 			var throw_dir = owner.right_down - owner.left_down;
 		}
 		if throw_dir == -owner.spr_dir{
-			if itemnum != 8{
+			if itemnum != 8 and itemnum != 17 and itemnum != 20{
 				hsp = 15*throw_dir;
 			}
 			if itemnum == 8{
 				hsp = 4*throw_dir;
 			}
+			if itemnum == 17{
+				hsp = 50*throw_dir;
+			}
+			if itemnum == 20{
+				hsp = -50*throw_dir;
+			}
 			owner.spr_dir = throw_dir;
 			owner.attack = AT_FAIR;
 		}
 		else{
-			if itemnum != 8{
+			if itemnum != 8 and itemnum != 17 and itemnum != 20{
 				hsp = 15*owner.spr_dir;	
 			}
-			if itemnum == 8{
+			if itemnum == 8 {
 				hsp = 4*owner.spr_dir;	
+			}
+			if itemnum == 17 {
+				hsp = 50*owner.spr_dir;	
+			}
+			if itemnum == 20 {
+				hsp = -50*owner.spr_dir;	
 			}
 		}
 		
@@ -299,7 +371,7 @@ if (state == 4){
 			vsp = -12;
 			hsp = 4*owner.spr_dir;
 		}
-		if itemnum != 8{
+		if itemnum != 8 and itemnum != 17 and itemnum != 20{
 			vsp = -3;
 			hsp = 15*owner.spr_dir;
 		}
@@ -307,12 +379,19 @@ if (state == 4){
 		pick_timer = 0;
 		picked_up = false;
 		if ((owner.down_down) or (owner.down_stick_pressed)) and !owner.left_stick_pressed and !owner.right_stick_pressed{
-			hsp = 0;
-			vsp = 15;
+			if itemnum != 17 and itemnum != 20{
+				hsp = 0;
+				vsp = 15;
+			}
+			if itemnum == 17 or itemnum == 20{
+				zdrop = true
+			}
 		}
 		if ((owner.up_down) or (owner.up_stick_pressed)) and !owner.left_stick_pressed and !owner.right_stick_pressed{
-			hsp = 0;
-			vsp = -15;
+			if itemnum != 17 and itemnum != 20{
+				hsp = 0;
+				vsp = -15;
+			}
 		}
 		if (owner.state_cat == SC_AIR_NEUTRAL and owner.joy_pad_idle){
 			hsp = 0;
@@ -323,8 +402,10 @@ if (state == 4){
 		fake_vsp = vsp;
 	}
 	
-	fake_vsp += .5;
-	vsp = fake_vsp;
+	if itemnum != 17 and itemnum != 20{
+		fake_vsp += .5;
+		vsp = fake_vsp;
+	}
 	pick_timer++;
 	if pick_timer < 10{
 		can_be_grounded = false;
@@ -378,39 +459,68 @@ if (state == 4){
     	if itemnum == 10 {
     		hbox = create_hitbox(AT_EXTRA_1, 10, x+(16 * spr_dir), y-24);
     	}
+    	if itemnum == 11 {
+    		hbox = create_hitbox(AT_EXTRA_1, 18, x+(16 * spr_dir), y-24);//crystal
+    	}
+    	if itemnum == 12 {
+    		hbox = create_hitbox(AT_EXTRA_1, 19, x+(16 * spr_dir), y-24);//towel
+    	}
+    	if itemnum == 13 {
+    		hbox = create_hitbox(AT_EXTRA_1, 20, x+(16 * spr_dir), y+24);//note
+    	}
     	if itemnum == 14 {
+    		hbox = create_hitbox(AT_EXTRA_1, 21, x+(16 * spr_dir), y+24);//bumper
+    	}
+    	if itemnum == 17 {//start of bad items
+    		hbox = create_hitbox(AT_EXTRA_1, 11, x+(16 * spr_dir), y-24);
+    	}
+    	if itemnum == 20 {
+    		hbox = create_hitbox(AT_EXTRA_1, 16, x+(16 * spr_dir), y-24);
+    		hbox.can_hit_self = true
+    	}
+    	if itemnum == 19 {
     		hbox = create_hitbox(AT_EXTRA_1, 15, x, y);
     	}
-    	if itemnum == 16 {
+    	if itemnum == 21 {
     		hbox = create_hitbox(AT_EXTRA_1, 17, x, y);
     	}
-    	if itemnum == 12 or itemnum == 15{
-    		if zdrop = false{
-    			state = 6;
-    			state_timer = 0;
-    		}
-    		if zdrop = true{
-    			state = 0;
-    			state_timer = 0
-    		}
-    	}
-    	if itemnum == 13{
-    		state = 6;
-    		state_timer = 0;
-    	}
-    	//hbox = create_hitbox(AT_EXTRA_1, 2, x+16, y-24);
-    	if (owner != player_id){
+		if (owner != player_id){
 			hbox.player = owner.player;
 		}
+    	//if /*itemnum == 12 or*/ itemnum == 15{
+		// if zdrop = false{
+		// 	state = 6;
+		// 	state_timer = 0;
+		// }
+		if zdrop = true{
+			state = 0;
+			state_timer = 0
+		}
+    	//}
+    	if itemnum == 18{
+    		state = 6;
+    		state_timer = 0;
+    		
+    	}
+    	if itemnum == 14 and state_timer == 10{
+    		state = 9;
+    		state_timer = 0;
+    		
+    	}
+    	//hbox = create_hitbox(AT_EXTRA_1, 2, x+16, y-24);
+  //  	if (owner != player_id){
+		// 	hbox.player = owner.player;
+		// }
+		//hbox.player = owner.player;
     }
-    if instance_exists(hbox) {
+    if instance_exists(hbox){
         hbox.y = y-24
         hbox.x = x+16*spr_dir
         hbox.length++;
         hbox.item_ins = id;
     }
     
-	if free == false and (itemnum != 11 and itemnum != 14 and itemnum != 15 and itemnum != 16){
+	if free == false and (itemnum != 13 and itemnum != 16 and itemnum != 19 and itemnum != 21 and itemnum != 14){
 		if itemnum == 7{
 			owner.x = x
 			owner.y = y
@@ -418,13 +528,26 @@ if (state == 4){
 		state = 2;
 		state_timer = 0;
 	}
-	if free == false and (itemnum == 11 or itemnum == 14){
+	if free == false and (itemnum == 16 or itemnum == 19){
 		state = 1;
 		state_timer = 0;
+		print(asdmsod)
 	}
-	if free == false and itemnum == 16{
+	if free == false and (itemnum == 21 or itemnum == 13){
 		state = 8;
 		state_timer = 0;
+	}
+	
+	if itemnum == 14{
+		if free == false or state_timer >= 10{
+			state = 9;
+			state_timer = 9
+		}
+	}
+	
+	if hsp == 0 and (itemnum == 17 or itemnum == 20){//bullets break on walls
+		state = 2
+		state_timer= 0
 	}
 	
 	if picked_up{
@@ -437,6 +560,10 @@ if (state == 4){
     	state = 2;
     	state_timer = 0
 	}
+	// if itemnum == 12 and state_timer == 2{
+	// 	state = 2
+	// 	state_timer = 2
+	// }
 }
 
 
@@ -472,52 +599,7 @@ if (state == 5){
 //State 6 (gun or nuke/instant trigger)
 
 if (state == 6){
-	if itemnum == 12{//gun
-		shake_camera( 8, 6 );
-		if state_timer = 0{
-			if !instance_exists(hbox) {
-				hbox = create_hitbox(AT_EXTRA_1, 11, x+(556 * spr_dir), y-24);
-				if (owner != player_id){
-					hbox.player = owner.player;
-				}
-			}
-			if ammo > 0{
-				state = 3;
-				state_timer = 0;
-				ammo -= 1;
-				sound_play(asset_get("sfx_ell_uspecial_explode"));
-				fired_gun = 1;
-			}
-			if ammo = 0{
-				state = 2
-				state_timer = 0;
-			}
-		}	
-	}
-	if itemnum == 15{//backwards gun
-		shake_camera( 8, 6 );
-		if state_timer = 0{
-			if !instance_exists(hbox) {
-				hbox = create_hitbox(AT_EXTRA_1, 16, x+(556 * spr_dir), y-24);
-				hbox.can_hit_self = true
-				if (owner != player_id){
-					hbox.player = owner.player;
-				}
-			}
-			if ammo > 0{
-				state = 3;
-				state_timer = 0;
-				ammo -= 1;
-				sound_play(asset_get("sfx_ell_uspecial_explode"));
-				fired_gun = 1;
-			}
-			if ammo = 0{
-				state = 2
-				state_timer = 0;
-			}
-		}	
-	}
-	if itemnum == 13{//nuke
+	if itemnum == 18{//nuke
 		shake_camera( 80, 60 );
 		nuke_out = 1;
 		if state_timer = 0{
@@ -531,8 +613,24 @@ if (state == 6){
 			state_timer = 0;
 		}	
 	}
-	
 }
+// 	if itemnum == 13{//nuke
+// 		shake_camera( 80, 60 );
+// 		nuke_out = 1;
+// 		if state_timer = 0{
+// 			// if !instance_exists(hbox) {
+// 			// 	hbox = create_hitbox(AT_EXTRA_1, 12, x+(16 * spr_dir), y-24);
+// 			// 	if (owner != player_id){
+// 			// 		hbox.player = owner.player;
+// 			// 	}
+// 			state = 7;
+// 			state_timer = 0;
+// 			hbox = create_hitbox(AT_EXTRA_1, 12, x+(16 * spr_dir), y-24);
+// 		}
+// 	}
+// }
+
+
 
 
 
@@ -559,6 +657,34 @@ if (state == 8){
 	}
 	hsp = 4*spr_dir
 	if free == false{
+		if itemnum == 13{
+			var note_play = 0
+			note_play = random_func(0, 8, true)
+			if note_play = 0{
+				sound_play(sound_get("NoteA"))
+			}
+			if note_play = 1{
+				sound_play(sound_get("NoteB"))
+			}
+			if note_play = 2{
+				sound_play(sound_get("NoteC"))
+			}
+			if note_play = 3{
+				sound_play(sound_get("NoteD"))
+			}
+			if note_play = 4{
+				sound_play(sound_get("NoteE"))
+			}
+			if note_play = 5{
+				sound_play(sound_get("NoteF"))
+			}
+			if note_play = 6{
+				sound_play(sound_get("NoteG"))
+			}
+			if note_play = 7{
+				sound_play(sound_get("NoteH"))
+			}
+		}
 		vsp -= 4
 	}
 	if free == true{
@@ -572,11 +698,23 @@ if (state == 8){
 		state_timer = 0
 	}
 	if !instance_exists(hbox) and free = false{
-    	hbox = create_hitbox(AT_EXTRA_1, 17, x, y);
+		if itemnum == 21{
+			hbox = create_hitbox(AT_EXTRA_1, 17, x, y);
+		}
+		if itemnum == 13{
+			hbox = create_hitbox(AT_EXTRA_1, 20, x+(16 * spr_dir), y);
+		}
     }
     if instance_exists(hbox){
-    	hbox.x = x+(4*spr_dir)
-    	hbox.y = y-40
+    	if itemnum == 21{
+    		hbox.x = x+(4*spr_dir)
+    		hbox.y = y-40
+    	}
+    	if itemnum == 13{
+    		hbox.x = x+(4*spr_dir)
+    		hbox.y = y-20
+    	}
+    	
     }
     if picked_up{
         state = 3;
@@ -585,33 +723,31 @@ if (state == 8){
     if state_timer == 0{
     	pick_timer = 10;
 	}
+	if note_has_hit == true{
+		state = 2
+		state_timer = 0
+	}
 }
 
 
 
-//State 9: Throw Projectile
+//State 9: bumper
 
 if (state == 9){
-    
-    //play the funi sound
-    
-   /* with(candy_pos){
-    	if (state_timer == 1){
-		    state = 2;
-		    state_timer = 0;
-		    create_hitbox(AT_EXTRA_1, 1, x, y);
-    	}
+    vsp = 0
+    hsp = 0
+    if !instance_exists(hbox){
+		hbox = create_hitbox(AT_EXTRA_1, 21, x, y-22);
+		hbox.can_hit_self = true
+		if (owner != player_id){
+			hbox.player = owner.player;
+		}
     }
-    
-    //Die after 28 frames (article is used up)
-    if (state_timer == 28){
-	    player_id.killarticles = false;
-        instance_destroy();
-        exit;
+    if state_timer = 1200{
+    	state = 2
+    	state_timer = 0
     }
-}*/
 }
-
 
 //NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)
 
@@ -667,27 +803,90 @@ switch(state){
         	animation_type = 0;
     	}
     	if itemnum == 11{
-    		new_sprite = sprite_get("ñ_idle");
+    		new_sprite = sprite_get("crystal_free");
         	animation_type = 0;
     	}
     	if itemnum == 12{
-    		new_sprite = sprite_get("gun_free");
+    		new_sprite = sprite_get("towel_free");
         	animation_type = 0;
     	}
     	if itemnum == 13{
-    		new_sprite = sprite_get("nuke_idle");
+    		new_sprite = sprite_get("note_idle");
         	animation_type = 0;
     	}
     	if itemnum == 14{
-    		new_sprite = sprite_get("nofun_idle");
+    		new_sprite = sprite_get("bumper_free");
         	animation_type = 0;
     	}
     	if itemnum == 15{
+    		if foodnum == 0{
+    			new_sprite = sprite_get("food1");
+        		animation_type = 0;
+    		}
+    		if foodnum == 1{
+    			new_sprite = sprite_get("food2");
+        		animation_type = 0;
+    		}
+    		if foodnum == 2{
+    			new_sprite = sprite_get("food3");
+        		animation_type = 0;
+    		}
+    		if foodnum == 3{
+    			new_sprite = sprite_get("food4");
+        		animation_type = 0;
+    		}
+    		if foodnum == 4{
+    			new_sprite = sprite_get("food5");
+        		animation_type = 0;
+    		}
+    		if foodnum == 5{
+    			new_sprite = sprite_get("food6");
+        		animation_type = 0;
+    		}
+    		if foodnum == 6{
+    			new_sprite = sprite_get("food7");
+        		animation_type = 0;
+    		}
+    		if foodnum == 7{
+    			new_sprite = sprite_get("food8");
+        		animation_type = 0;
+    		}
+    		if foodnum == 8{
+    			new_sprite = sprite_get("food9");
+        		animation_type = 0;
+    		}
+    		if foodnum == 9{
+    			new_sprite = sprite_get("food10");
+        		animation_type = 0;
+    		}
+    	}
+    	if itemnum == 16{
+    		new_sprite = sprite_get("ñ_idle");
+        	animation_type = 0;
+    	}
+    	
+    	if itemnum == 17{
+    		new_sprite = sprite_get("gun_free");
+        	animation_type = 0;
+    	}
+    	if itemnum == 18{
+    		new_sprite = sprite_get("nuke_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 19{
+    		new_sprite = sprite_get("nofun_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 20{
     		new_sprite = sprite_get("bgun_free");
         	animation_type = 0;
     	}
-    	if itemnum == 16{
+    	if itemnum == 21{
     		new_sprite = sprite_get("masti_drop");
+        	animation_type = 0;
+    	}
+    	if itemnum == 22{
+    		new_sprite = sprite_get("food11");
         	animation_type = 0;
     	}
         break;
@@ -737,27 +936,89 @@ switch(state){
         	animation_type = 0;
     	}
     	if itemnum == 11{
-    		new_sprite = sprite_get("ñ_idle");
-        	animation_type = 0;
+    		new_sprite = sprite_get("crystal_idle");
+        	animation_type = 1;
     	}
     	if itemnum == 12{
-    		new_sprite = sprite_get("gun_idle");
+    		new_sprite = sprite_get("towel_idle");
         	animation_type = 0;
     	}
     	if itemnum == 13{
-    		new_sprite = sprite_get("nuke_idle");
+    		new_sprite = sprite_get("note_idle");
         	animation_type = 0;
     	}
     	if itemnum == 14{
-    		new_sprite = sprite_get("nofun_idle");
+    		new_sprite = sprite_get("bumper_idle");
         	animation_type = 0;
     	}
     	if itemnum == 15{
+    		if foodnum == 0{
+    			new_sprite = sprite_get("food1");
+        		animation_type = 0;
+    		}
+    		if foodnum == 1{
+    			new_sprite = sprite_get("food2");
+        		animation_type = 0;
+    		}
+    		if foodnum == 2{
+    			new_sprite = sprite_get("food3");
+        		animation_type = 0;
+    		}
+    		if foodnum == 3{
+    			new_sprite = sprite_get("food4");
+        		animation_type = 0;
+    		}
+    		if foodnum == 4{
+    			new_sprite = sprite_get("food5");
+        		animation_type = 0;
+    		}
+    		if foodnum == 5{
+    			new_sprite = sprite_get("food6");
+        		animation_type = 0;
+    		}
+    		if foodnum == 6{
+    			new_sprite = sprite_get("food7");
+        		animation_type = 0;
+    		}
+    		if foodnum == 7{
+    			new_sprite = sprite_get("food8");
+        		animation_type = 0;
+    		}
+    		if foodnum == 8{
+    			new_sprite = sprite_get("food9");
+        		animation_type = 0;
+    		}
+    		if foodnum == 9{
+    			new_sprite = sprite_get("food10");
+        		animation_type = 0;
+    		}
+    	}
+    	if itemnum == 16{
+    		new_sprite = sprite_get("ñ_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 17{
+    		new_sprite = sprite_get("gun_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 18{
+    		new_sprite = sprite_get("nuke_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 19{
+    		new_sprite = sprite_get("nofun_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 20{
     		new_sprite = sprite_get("bgun_idle");
         	animation_type = 0;
     	}
-    	if itemnum == 16{
+    	if itemnum == 21{
     		new_sprite = sprite_get("masti_free");
+        	animation_type = 0;
+    	}
+    	if itemnum == 22{
+    		new_sprite = sprite_get("food11");
         	animation_type = 0;
     	}
         break;
@@ -808,30 +1069,92 @@ switch(state){
     	}
     	if itemnum == 10{
     		new_sprite = sprite_get("heart_idle");
-        	animation_tye = 0;
+        	animation_type = 0;
     	}
     	if itemnum == 11{
-    		new_sprite = sprite_get("ñ_idle");
-        	animation_tye = 0;
+    		new_sprite = sprite_get("crystal_idle");
+        	animation_type = 1;
     	}
     	if itemnum == 12{
-    		new_sprite = sprite_get("gun_idle");
-        	animation_tye = 0;
+    		new_sprite = sprite_get("towel_idle");
+        	animation_type = 0;
     	}
     	if itemnum == 13{
-    		new_sprite = sprite_get("nuke_idle");
+    		new_sprite = sprite_get("note_idle");
         	animation_type = 0;
     	}
     	if itemnum == 14{
-    		new_sprite = sprite_get("nofun_idle");
+    		new_sprite = sprite_get("bumper_idle");
         	animation_type = 0;
     	}
     	if itemnum == 15{
+    		if foodnum == 0{
+    			new_sprite = sprite_get("food1");
+        		animation_type = 0;
+    		}
+    		if foodnum == 1{
+    			new_sprite = sprite_get("food2");
+        		animation_type = 0;
+    		}
+    		if foodnum == 2{
+    			new_sprite = sprite_get("food3");
+        		animation_type = 0;
+    		}
+    		if foodnum == 3{
+    			new_sprite = sprite_get("food4");
+        		animation_type = 0;
+    		}
+    		if foodnum == 4{
+    			new_sprite = sprite_get("food5");
+        		animation_type = 0;
+    		}
+    		if foodnum == 5{
+    			new_sprite = sprite_get("food6");
+        		animation_type = 0;
+    		}
+    		if foodnum == 6{
+    			new_sprite = sprite_get("food7");
+        		animation_type = 0;
+    		}
+    		if foodnum == 7{
+    			new_sprite = sprite_get("food8");
+        		animation_type = 0;
+    		}
+    		if foodnum == 8{
+    			new_sprite = sprite_get("food9");
+        		animation_type = 0;
+    		}
+    		if foodnum == 9{
+    			new_sprite = sprite_get("food10");
+        		animation_type = 0;
+    		}
+    	}
+    	if itemnum == 16{
+    		new_sprite = sprite_get("ñ_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 17{
+    		new_sprite = sprite_get("gun_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 18{
+    		new_sprite = sprite_get("nuke_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 19{
+    		new_sprite = sprite_get("nofun_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 20{
     		new_sprite = sprite_get("bgun_idle");
         	animation_type = 0;
     	}
-    	if itemnum == 16{
+    	if itemnum == 21{
     		new_sprite = sprite_get("masti_free");
+        	animation_type = 0;
+    	}
+    	if itemnum == 22{
+    		new_sprite = sprite_get("food11");
         	animation_type = 0;
     	}
         break;
@@ -881,26 +1204,42 @@ switch(state){
         	animation_type = 0;
     	}
     	if itemnum == 11{
-    		new_sprite = sprite_get("ñ_idle");
+    		new_sprite = sprite_get("crystal_free");
         	animation_type = 0;
     	}
     	if itemnum == 12{
-    		new_sprite = sprite_get("gun_free");
+    		new_sprite = sprite_get("towel_free");
         	animation_type = 0;
     	}
     	if itemnum == 13{
-    		new_sprite = sprite_get("nuke_idle");
+    		new_sprite = sprite_get("note_free");
         	animation_type = 0;
     	}
     	if itemnum == 14{
-    		new_sprite = sprite_get("nofun_idle");
-        	animation_type = 0;
-    	}
-    	if itemnum == 15{
-    		new_sprite = sprite_get("bgun_free");
+    		new_sprite = sprite_get("bumper_free");
         	animation_type = 0;
     	}
     	if itemnum == 16{
+    		new_sprite = sprite_get("ñ_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 17{
+    		new_sprite = sprite_get("bullet");
+        	animation_type = 0;
+    	}
+    	if itemnum == 18{
+    		new_sprite = sprite_get("nuke_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 19{
+    		new_sprite = sprite_get("nofun_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 20{
+    		new_sprite = sprite_get("bullet2");
+        	animation_type = 0;
+    	}
+    	if itemnum == 21{
     		new_sprite = sprite_get("masti_free");
         	animation_type = 0;
     	}
@@ -951,38 +1290,62 @@ switch(state){
         	animation_type = 0;
     	}
     	if itemnum == 11{
-    		new_sprite = sprite_get("ñ_idle");
+    		new_sprite = sprite_get("crystal_free");
         	animation_type = 0;
     	}
     	if itemnum == 12{
-    		new_sprite = sprite_get("gun_free");
+    		new_sprite = sprite_get("towel_free");
         	animation_type = 0;
     	}
     	if itemnum == 13{
-    		new_sprite = sprite_get("nuke_idle");
+    		new_sprite = sprite_get("note_free");
         	animation_type = 0;
     	}
     	if itemnum == 14{
-    		new_sprite = sprite_get("nofun_idle");
-        	animation_type = 0;
-    	}
-    	if itemnum == 15{
-    		new_sprite = sprite_get("bgun_free");
+    		new_sprite = sprite_get("bumper_free");
         	animation_type = 0;
     	}
     	if itemnum == 16{
+    		new_sprite = sprite_get("ñ_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 17{
+    		new_sprite = sprite_get("gun_free");
+        	animation_type = 0;
+    	}
+    	if itemnum == 18{
+    		new_sprite = sprite_get("nuke_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 19{
+    		new_sprite = sprite_get("nofun_idle");
+        	animation_type = 0;
+    	}
+    	if itemnum == 20{
+    		new_sprite = sprite_get("bgun_free");
+        	animation_type = 0;
+    	}
+    	if itemnum == 21{
     		new_sprite = sprite_get("masti_free");
         	animation_type = 0;
     	}
     	break;
-    case 6: //stop their execution, they'll all default
+    case 6:
     case 7: //to state 9's behavior. Read up on those
     case 8:
-    	if itemnum == 16{
+    	if itemnum == 13{
+    		new_sprite = sprite_get("note_free");
+        	animation_type = 0;
+    	}
+    	if itemnum == 21{
     		new_sprite = sprite_get("masti_free");
         	animation_type = 2;
     	}
     case 9:
+    	if itemnum == 14{
+    		new_sprite = sprite_get("bumper_active");
+        	animation_type = 0;
+    	}
         break;
 }
 

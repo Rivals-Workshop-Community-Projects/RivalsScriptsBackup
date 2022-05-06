@@ -142,3 +142,7 @@ if superTrue == 1 {
 if attack == AT_NSPECIAL_2 and window == 3{
 	que_count = 0
 }
+foodrng++
+if foodrng >= 10{
+	foodrng = 0
+}

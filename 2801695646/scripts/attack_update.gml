@@ -526,6 +526,7 @@ switch (attack) {
 					// Create and Parent the Bounce Hitbox
 					sna_held_entity.child_hitbox = create_hitbox(AT_NSPECIAL, 1, sna_held_entity.x, sna_held_entity.y - 8);	// Create the player bounce hitbox for the entity.
 					sna_held_entity.depth = 1;									// Reset the entity's depth.
+					sna_held_entity.ent_released_time = _gameplay_time;			// Reset the entity's depth.
 					
 					// Unlink the held entity.
 					sna_held_entity = noone;									// Unlink the entity.

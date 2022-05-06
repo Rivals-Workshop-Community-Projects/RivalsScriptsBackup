@@ -18,7 +18,7 @@ if "item_ins" in my_hitboxID{
             item_ins.owner.x = item_ins.x
             item_ins.owner.y = item_ins.y
         }
-        if item_ins.itemnum == 16 {//masti
+        if item_ins.itemnum == 21 {//masti
             item_ins.state = 8;
             item_ins.state_timer = 0;
         }
@@ -28,8 +28,20 @@ if "item_ins" in my_hitboxID{
             instance_destroy();
             exit; 
         }
-        
+        if item_ins.itemnum == 13{//note
+            note_has_hit = true
+            item_ins.state = 2;
+            item_ins.state_timer = 0;
+            print("boink")
+            instance_destroy();
+            exit; 
+        }
     }
+}
+
+if my_hitboxID.attack == AT_EXTRA_1 and my_hitboxID.hbox_num == 20{
+    obj_article3.state = 2
+    obj_article3.state_timer = 0
 }
 
 if has_hit and attack == AT_FSPECIAL and window == 3 and hit_player_obj.super_armor == false{
@@ -59,6 +71,11 @@ if my_hitboxID.attack == AT_EXTRA_1 and my_hitboxID.hbox_num == 6{
     hit_player_obj.freeze_timer = 150;
 }
 
+if my_hitboxID.attack == AT_DSPECIAL and my_hitboxID.hbox_num == 3{
+    hit_player_obj.crystalized_damage_remaining = 0;
+}
+
+hit_player_obj.poison_ids[poison] = id;
 //never uncomment this
 /*if my_hitboxID.hbox_num == 8 and my_hitboxID.attack == AT_EXTRA_1{
    hit_player_obj.dance_timer = 150;

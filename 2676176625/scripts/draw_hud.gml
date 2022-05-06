@@ -1,5 +1,3 @@
-
-
 if (weapom_switch = 0){
 	draw_sprite(sprite_get("weaposn"), 0, temp_x - 10, temp_y - 70);
 }
@@ -12,4 +10,6 @@ if (weapom_switch = 75){
 if (weapom_switch >= 80){
 	draw_sprite(sprite_get("weaposn"), 3, temp_x - 10, temp_y - 70);
 }
+
+
 

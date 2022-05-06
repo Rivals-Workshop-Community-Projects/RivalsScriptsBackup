@@ -218,7 +218,7 @@ if attack == AT_NSPECIAL{
 					roll = -1;
 				}
 				if pill_state != 2{			//FSTRONG
-					length =120;
+					length =150;
 					hitbox_timer =0;
 					player_id.pilleffect=5;
 					prev_hsp = hsp;

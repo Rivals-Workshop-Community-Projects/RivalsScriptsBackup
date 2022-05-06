@@ -46,8 +46,12 @@ sprite_change_offset("dair", 65, 95);
 sprite_change_offset("fstrong", 65, 121);
 sprite_change_offset("ustrong", 67, 189);
 sprite_change_offset("dstrong", 103, 101);
-sprite_change_offset("nspecial", 65, 135);
-sprite_change_offset("nspecialair", 65, 135);
+sprite_change_offset("nspecial", 65, 95);
+sprite_change_offset("nspecialair", 65, 95);
+sprite_change_offset("nspecial2", 65, 95);
+sprite_change_offset("nspecial2air", 65, 95);
+sprite_change_offset("nspecial3", 65, 95);
+sprite_change_offset("nspecial3air", 65, 95);
 sprite_change_offset("fspecial", 65, 95);
 sprite_change_offset("uspecial", 65, 129);
 sprite_change_offset("dspecial", 65, 95);
@@ -66,6 +70,8 @@ sprite_change_offset("ball2", 32, 32);
 sprite_change_offset("balls", 32, 32);
 sprite_change_offset("bubble", 64, 64);
 sprite_change_offset("fire", 64, 64);
+sprite_change_offset("key", 65, 95);
+sprite_change_offset("greengoblin", 65, 95);
 
 //effects
 sprite_change_offset("poof", 100, 100);

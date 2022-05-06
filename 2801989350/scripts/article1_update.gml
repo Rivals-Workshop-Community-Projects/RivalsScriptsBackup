@@ -100,13 +100,21 @@ if (state == 1){
 	}
 	with (oPlayer) {
         if (place_meeting(x, y, other) && other.player_id != id) {
-			with (other) {
-				create_hitbox(AT_NSPECIAL_2, 3, other.x + 5 * spr_dir, other.y - 10);
+			if (invincible == false && !(state == PS_PARRY && state_timer > 0 && state_timer < 9) 
+        		&& !( (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && state_timer > 2 && state_timer < 17) 
+        		&& !( (state == PS_TECH_GROUND || state == PS_WALL_TECH) && state_timer < 17) 
+        		&& !( (state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD) && state_timer < 19) && state != PS_RESPAWN) {
+				with (other) {
+					create_hitbox(AT_NSPECIAL_2, 3, other.x + 5 * spr_dir, other.y - 10);
+				}
 			}
 			if (state == PS_PARRY && state_timer > 0 && state_timer < 9) {
 				other.state = 18;
 				other.state_timer = 0;
-			} else {
+			} else if (invincible == false && !(state == PS_PARRY && state_timer > 0 && state_timer < 9) 
+        				&& !( (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && state_timer > 2 && state_timer < 17) 
+        				&& !( (state == PS_TECH_GROUND || state == PS_WALL_TECH) && state_timer < 17) 
+        				&& !( (state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD) && state_timer < 19) && state != PS_RESPAWN) {
 				other.plux_hitID = player;
 				other.state = 12;
 				other.state_timer = 0;

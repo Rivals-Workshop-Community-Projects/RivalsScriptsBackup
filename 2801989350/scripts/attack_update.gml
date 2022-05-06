@@ -23,7 +23,7 @@ if (attack == AT_NSPECIAL) {
 //Dtilt Jump Cancel
 
 if (attack == AT_DTILT) {
-    if (window == 2 && window_timer < 7) {
+    if (window == 2 && window_timer < 7 && !was_parried) {
         can_jump = true;
     } else {
         can_jump = false;
@@ -172,9 +172,6 @@ if (attack == AT_FSPECIAL) {
 if (attack == AT_FSPECIAL_AIR) {
     if (window == 1 && window_timer < 8) {
         clear_button_buffer( PC_SPECIAL_PRESSED );
-        can_jump = true;
-    } else {
-        can_jump = false;
     }
     if (window == 4 && window_time_is(5) ) {
         window = 5;

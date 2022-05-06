@@ -201,6 +201,7 @@ if (state == 9){
 		    state = 2;
 		    state_timer = 0;
 		    create_hitbox(AT_EXTRA_1, 1, x, y);
+		    sound_play(asset_get("sfx_orca_crunch"))
     	}
     }
     

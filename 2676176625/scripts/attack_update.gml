@@ -3,7 +3,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-
 if attack==AT_FSPECIAL{
     if window==1{
         if special_input >= get_window_value(attack,window,AG_WINDOW_LENGTH) {
