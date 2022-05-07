@@ -19,9 +19,9 @@ switch(attack){
 		was_parried = false; // easy method for single-hit jabs
 		break;
 	case AT_FSTRONG:
-		if window == 2 && window_timer == phone_window_end{
+		if window == 2 && window_timer == get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH)-1{
 			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
-		}		if window == 4 && window_timer == phone_window_end{
+		}		if window == 4 && window_timer == get_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH)-1{
 			array_push(phone_dust_query, [x + spr_dir * 90, y, "dash_start", -spr_dir]);
 		}
 		break;
@@ -65,7 +65,7 @@ if(attack == AT_DATTACK){
     	afterimage.depth = 1;
        }
 	}if(window == 2){
-		if(window_timer = phone_window_end){
+		if(window_timer = get_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH)-1){
 			spawn_hit_fx(x,y -20, 21 );
 		}
 	}if(hatch_amount < 3000){
@@ -77,7 +77,7 @@ if(hsp > 2 || hsp < -2){
 
 if(attack == AT_NAIR){
 	hud_offset = 30;
-	if(window == 1 && window_timer == phone_window_end){
+	if(window == 1 && window_timer == get_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH)-1){
 		spawn_hit_fx(x,y -20, 139);
 	}
 }
@@ -99,7 +99,7 @@ if(attack == AT_DAIR){
 			window_timer = 0;
 		}
 	}if(window == 6){
-		if(window_timer == phone_window_end){
+		if(window_timer == get_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH)-1){
 			window = 7;
 			window_timer = 0;
 		}
@@ -129,9 +129,9 @@ if(attack == AT_DSTRONG){
 			window_timer = 0;
 			sound_play(sound_get("grab_fail"));
 		}
-	}if(window == 6 && window_timer = phone_window_end && !was_parried){
+	}if(window == 6 && window_timer = get_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH)-1 && !was_parried){
 		set_state(PS_IDLE);
-	}if(window == 6 && window_timer = phone_window_end && was_parried){
+	}if(window == 6 && window_timer = get_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH)-1 && was_parried){
 		set_state(PS_PRATLAND);
 	}     
 	if(window > 3 && instance_exists(grabbed_player_obj)){
@@ -242,7 +242,7 @@ if(attack == AT_USTRONG){
 			sound_play(sound_get("grab_fail"));
 		}
 	}if(window == 6){
-		if(window_timer = phone_window_end && !free){
+		if(window_timer = get_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH)-1 && !free){
 			set_state(PS_IDLE);
 		}
 	}if(window == 6 && window_timer > 6){
@@ -266,7 +266,7 @@ if(attack == AT_NSPECIAL){
 		hsp_type = 0;
 		}
 	}
-	if(window == 4 && window_timer = phone_window_end && !hitpause){
+	if(window == 4 && window_timer = get_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH)-1 && !hitpause){
 		instance_create(x + spr_dir * 60, y, ("obj_article2"));
 		move_cooldown[AT_NSPECIAL] = 240;
 	}
@@ -382,9 +382,9 @@ if(window == 1){
 			window_timer = 0;
 			sound_play(sound_get("grab_fail"));
 		}
-	}if(window = 3 && window_timer = phone_window_end && !was_parried){
+	}if(window = 3 && window_timer = get_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_LENGTH)-1 && !was_parried){
 			set_state(PS_IDLE);
-		}if(window = 3 && window_timer = phone_window_end && was_parried){
+		}if(window = 3 && window_timer = get_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_LENGTH)-1 && was_parried){
 			set_state(PS_PRATLAND);
 		}if(hatch_amount < 3000){
 if(hsp > 2 || hsp < -2){
@@ -397,23 +397,23 @@ if (attack == AT_FSPECIAL_2) {
 	if(window == 4){
 		can_fast_fall = false;
 		can_move = false;
-		if(window_timer = phone_window_end){
+		if(window_timer = get_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_LENGTH)-1){
 			window = 5;
 			window_timer = 0;
 		}
 	}
 	//windows being cancelled moment
-	if(window = 3 && window_timer = phone_window_end && !was_parried){
+	if(window = 3 && window_timer = get_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_LENGTH)-1 && !was_parried){
 			set_state(PS_IDLE);
-		}if(window = 3 && window_timer = phone_window_end && was_parried){
+		}if(window = 3 && window_timer = get_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_LENGTH)-1 && was_parried){
 			set_state(PS_PRATLAND);
-		}if(window = 5 && window_timer = phone_window_end && !was_parried){
+		}if(window = 5 && window_timer = get_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_LENGTH)-1 && !was_parried){
 			set_state(PS_IDLE);
-		}if(window = 5 && window_timer = phone_window_end && was_parried){
+		}if(window = 5 && window_timer = get_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_LENGTH)-1 && was_parried){
 			set_state(PS_PRATLAND);
-		}if(window = 7 && window_timer = phone_window_end && !was_parried){
+		}if(window = 7 && window_timer = get_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_LENGTH)-1 && !was_parried){
 			set_state(PS_IDLE);
-		}if(window = 7 && window_timer = phone_window_end && was_parried){
+		}if(window = 7 && window_timer = get_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_LENGTH)-1 && was_parried){
 			set_state(PS_PRATLAND);
 		}
 		
@@ -471,7 +471,7 @@ if(attack == AT_USPECIAL){
 			sound_stop(asset_get("sfx_ori_charged_flame_charge2"));
 			vsp_type = 2;
 			vsp = -4;
-		}if(window_timer = phone_window_end && was_parried){
+		}if(window_timer = get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH)-1 && was_parried){
 			set_state(PS_PRATLAND);
 		}
 	}
@@ -723,7 +723,7 @@ if(hatch_amount >= 3000){
 		}
 	}
 }
-#define spawn_base_dust // written by supersonic
+#define spawn_base_dust
 /// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
@@ -736,20 +736,19 @@ var x = argument[0], y = argument[1], name = argument[2];
 var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
-	default: 
-	case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-	case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-	case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-	case "doublejump": 
-	case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-	case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-	case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-	case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-	case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-	case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
-if newdust == noone return noone;
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color

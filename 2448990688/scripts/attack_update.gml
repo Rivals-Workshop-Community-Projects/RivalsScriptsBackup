@@ -1,5 +1,5 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -22,6 +22,22 @@ if (attack == AT_USPECIAL){
         can_wall_jump = true;
     }
 if (attack == AT_NSPECIAL){
+    
+    if (window == 1){
+        if (up_down || (spr_dir == 1 && left_down) || (spr_dir == -1 && right_down)){
+            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, -2);
+            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -12);
+        }
+        if (joy_pad_idle){
+            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
+            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -10);
+        }
+        if (down_down || (spr_dir == -1 && left_down) || (spr_dir == 1 && right_down)){
+            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 9);
+            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -5);
+        }
+    }
+    
         move_cooldown[AT_NSPECIAL] = 25;
     }
 

@@ -88,6 +88,7 @@ draw_sprite_ext(sprite_get("hud_LED"), (hud_missile_cooldown = 0? 3: (hud_missil
 draw_sprite_ext(sprite_get("hud_LED"), (hud_flash_shift_cooldown = 0? 6: (hud_flash_shift_cooldown > 300? 7: 8)), temp_x + 94, temp_y + 2, 4, 4, 0, c_white, 1);
 draw_sprite_ext(sprite_get("power_bomb_overlay"), 0, temp_x + 178, temp_y - 4, 2, 2, 0, c_white, (power_cooldown = 0? 0: 1));
 if(state == PS_SPAWN){
+    draw_set_halign(fa_center)
     draw_text_color(temp_x + 2 + 72, temp_y - 30, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
     draw_text_color(temp_x - 2 + 72, temp_y - 30, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
     draw_text_color(temp_x + 72, temp_y - 30 + 2, "taunt: menu version", c_black, c_black, c_black, c_black, 1);
@@ -117,14 +118,14 @@ draw_sprite_ext(sprite_get("hud_numbers"), floor((power_bomb_amount % 100) * 0.1
 
 //bars
 if(hud_beam_cooldown > 300 || hud_beam_cooldown == 0){
-    draw_rectangle_color(temp_x + 2, temp_y + 4 + menu_y, temp_x + 3 + (hud_beam_cooldown = 0? 62: (hud_beam_cooldown - 300) / 500 * 62), temp_y + 5 + menu_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
+    draw_rectangle_color(temp_x + 2, temp_y + 4 + menu_y, temp_x + 3 + (hud_beam_cooldown = 0? 62: (hud_beam_cooldown - 300) / 600 * 62), temp_y + 5 + menu_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
 }else if(hud_beam_cooldown <= 300 || hud_beam_cooldown > 0){
     draw_set_alpha(0.6);
     draw_rectangle_color(temp_x + 2, temp_y + 4 + menu_y, temp_x + 3 + (hud_beam_cooldown = 0? 62: 62 - hud_beam_cooldown / 300 * 62), temp_y + 5 + menu_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
     draw_set_alpha(1);
 }
 if(hud_missile_cooldown > 300 || hud_missile_cooldown == 0){
-    draw_rectangle_color(temp_x + 74, temp_y + 4 + menu_y, temp_x + 75 + (hud_missile_cooldown = 0? 56: (hud_missile_cooldown - 300) / 500 * 56), temp_y + 5 + menu_y, c_red, c_red, c_red, c_red, false);
+    draw_rectangle_color(temp_x + 74, temp_y + 4 + menu_y, temp_x + 75 + (hud_missile_cooldown = 0? 56: (hud_missile_cooldown - 300) / 600 * 56), temp_y + 5 + menu_y, c_red, c_red, c_red, c_red, false);
 }else if(hud_missile_cooldown <= 300 || hud_missile_cooldown > 0){
     draw_set_alpha(0.6);
     draw_rectangle_color(temp_x + 74, temp_y + 4 + menu_y, temp_x + 75 + (hud_missile_cooldown = 0? 56: 56 - hud_missile_cooldown / 300 * 56), temp_y + 5 + menu_y, c_red, c_red, c_red, c_red, false);

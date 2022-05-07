@@ -59,7 +59,6 @@ set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_num_hitboxes(AT_DSPECIAL_2, 2);
 
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_MUNO_HITBOX_NAME, "Grab Activation");
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW_CREATION_FRAME, 4);
@@ -77,7 +76,6 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, sound_get("kss_grab_activate"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_GROUP, 1);
 
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_MUNO_HITBOX_NAME, "Counter Throw");
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW_CREATION_FRAME, 4);

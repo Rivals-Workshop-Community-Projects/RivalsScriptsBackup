@@ -59,7 +59,6 @@ set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_num_hitboxes(AT_FSPECIAL_2, 3);
 
-set_hitbox_value(AT_FSPECIAL_2, 1, HG_MUNO_HITBOX_NAME, "Landing Throw");
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_WINDOW_CREATION_FRAME, 1);
@@ -71,8 +70,8 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_DAMAGE, 8); 
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_ANGLE, 70);
-set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 9); 
-set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 1); 
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 7.5); 
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 1.1); 
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_EXTRA_HITPAUSE, 5);
@@ -82,7 +81,6 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_SDI_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FSPECIAL_2, 2, HG_MUNO_HITBOX_NAME, "Ballin'");
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_WINDOW_CREATION_FRAME, 1);
@@ -105,7 +103,6 @@ set_hitbox_value(AT_FSPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_SDI_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FSPECIAL_2, 3, HG_MUNO_HITBOX_NAME, "Cargo Throw");
 set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL_2, 3, HG_WINDOW, 6);
 set_hitbox_value(AT_FSPECIAL_2, 3, HG_WINDOW_CREATION_FRAME, 3);

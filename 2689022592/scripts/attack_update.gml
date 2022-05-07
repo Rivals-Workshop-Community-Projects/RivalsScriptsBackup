@@ -214,7 +214,7 @@ switch attack {
 	    	if window_timer == 1 && !hitpause {
 	        	sound_play(asset_get("sfx_orcane_fspecial"),false,noone,1,1.4)
 	         }
-	         if window_timer % 4 == 0 && !hitpause && window_timer <= 12{
+	         if window_timer % 5 == 0 && !hitpause && window_timer <= 12{
 	           	take_damage(player,-1,1)
 	         }
 	         if window_timer%4 < 2 {

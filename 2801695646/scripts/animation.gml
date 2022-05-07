@@ -21,7 +21,13 @@ if (state == PS_SPAWN) {
         sprite_index = sprite_get("intro");
         image_index = 0;
     } else {
+        var num_frames = image_number / num_sprite_sets;                                // Divides the sprite animation length by the number of alt costumes.
+		var offset = num_frames * current_sprite_set;                                   // The animation starting frame offset.
+		
+		var img_looped = image_index % num_frames + offset;                             // For looped animations
+        
         sprite_index = sprite_get("idle");
+        image_index = img_looped;
     }
 }
 
@@ -637,6 +643,7 @@ else {
 				
 				// looping anims
 				case "intro":
+				case "idle":
 				case "idle_pistol":
 				case "walk_pistol":
 				case "dash_pistol":
@@ -737,6 +744,7 @@ else {
 				
 				// looping anims
 				case "intro":
+				case "idle":
 				case "idle_rifle":
 				case "walk_rifle":
 				case "dash_rifle":

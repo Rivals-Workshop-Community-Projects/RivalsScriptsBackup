@@ -182,7 +182,7 @@ if(attack == AT_DSPECIAL){
     can_fast_fall = false;
     can_move = true;
     can_wall_jump = true;
-    hsp = clamp(hsp,-4,4);
+    hsp = clamp(hsp,-6,6);
     if(window = 1 && window_timer = 1 && !hitpause){
         hsp = 0;
         vsp = 0;

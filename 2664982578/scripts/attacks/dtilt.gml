@@ -19,7 +19,6 @@ set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DTILT, 2);
 
-set_hitbox_value(AT_DTILT, 1, HG_MUNO_HITBOX_NAME, "Sweet Spot");
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 2);
@@ -40,7 +39,6 @@ set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_leafy_hit2"));
 set_hitbox_value(AT_DTILT, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER, 1);
 
-set_hitbox_value(AT_DTILT, 2, HG_MUNO_HITBOX_NAME, "Sour Spot");
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 2);

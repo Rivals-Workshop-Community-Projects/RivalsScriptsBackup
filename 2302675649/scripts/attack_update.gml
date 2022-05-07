@@ -17,7 +17,16 @@ switch (attack)
     case AT_TAUNT:
         if (practice&&object_index!=oTestPlayer)
         {
-            if (state_timer == 1 && menuState == 0) menuStateBuffer = 1;
+            if (state_timer == 1)
+            {
+                if (menuState == 0 && !shield_down)
+                    menuStateBuffer = 1;
+                else
+                {
+                    tutDone[tutPrevMenu] = 1;
+                    tutDoneAdv[tutPrevMenu] = 1;
+                }
+            }
             hsp = 0;
             vsp = 0;
         }
@@ -125,7 +134,6 @@ switch (attack)
         if (window == 1 && window_timer == 2) sound_play(asset_get("sfx_spin"));
         break;
     case AT_DAIR:
-        can_move = false;
         can_jump = has_rune("B");
         if (aura)
         {
@@ -138,10 +146,11 @@ switch (attack)
         switch (window)
         {
             case 1:
+                fall_through = true;
                 hsp/=1.2;
                 break;
             case 2:
-                if (window_timer < 6 && (!has_hit_player || hit_player_obj.y > y)) fall_through = true;
+                if (state_timer < 6+get_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH) && (!has_hit_player || hit_player_obj.y > y)) fall_through = true;
                 if (window_timer == 1) jsTimer = 10;
                 if (state_timer >= (aura?dairCancel/2:dairCancel))
                 {
@@ -168,6 +177,8 @@ switch (attack)
                 if (window_timer == 0 && !hitpause)
                 {
                     sound_play(sound_get("slash1"));
+					sound_play(asset_get("sfx_ori_stomp_hit"));
+					shake_camera(4, 3);
                     spawn_base_dust(x+6*spr_dir, y, "dair", spr_dir);
                     destroy_hitboxes();
                 }
@@ -239,6 +250,7 @@ switch (attack)
         switch (window)
         {
             case 1:
+                if (window_timer == 1) with (asset_get("obj_article1")) if (player_id == other.id && replacedCount == 2) isDespawn = true;
                 if (jsCStick)
                 {
                     if (left_stick_down || right_stick_down || up_stick_down || down_stick_down)
@@ -261,7 +273,7 @@ switch (attack)
                     set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_X, floor(lengthdir_x(60, strongAng)*spr_dir));
                     set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_Y, floor(lengthdir_y(60, strongAng))-32);
                     set_hitbox_value(AT_NTHROW, 1, HG_ANGLE_FLIPPER, spr_dir==1?0:5);
-                    set_window_value(AT_NTHROW, 3, AG_WINDOW_HSPEED, floor(lengthdir_x(10, strongAng))*spr_dir);
+                    set_window_value(AT_NTHROW, 3, AG_WINDOW_HSPEED, floor(lengthdir_x(8, strongAng))*spr_dir);
                     set_window_value(AT_NTHROW, 3, AG_WINDOW_VSPEED, floor(lengthdir_y(8, strongAng)));
                     var hitAng = 0;
                     if (has_rune("M"))                          hitAng = strongAng;
@@ -280,7 +292,7 @@ switch (attack)
                 break;
             case 4:
                 can_wall_jump = !was_parried;
-                can_jump = !was_parried;
+                can_jump = !was_parried && has_hit;
                 break;
         }
         if (has_hit_player && up_down && special_pressed && !hitpause)

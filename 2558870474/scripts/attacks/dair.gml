@@ -100,7 +100,7 @@ set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 1);
 //set_hitbox_value(AT_DAIR, 2, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 2);
+set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_DAIR, 2, HG_TIPPER, 1);
 

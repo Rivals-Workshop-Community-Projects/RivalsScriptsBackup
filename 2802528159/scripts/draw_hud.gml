@@ -34,7 +34,7 @@ draw_sprite_ext(sprite_get("uspecial_led"), 0, temp_x + 112, temp_y - 50, 2, 2, 
 draw_sprite_stretched_ext(sprite_get("hud_bar_1"), 0, temp_x + 56, temp_y - 12, (wall_gauge / 1000) * 92, 2, c_white, 1);
 
 if(state == PS_SPAWN){
-    draw_get_halign();
+    draw_set_halign(fa_center);
     draw_set_font(asset_get("fName"));
     draw_text_color(temp_x + 2 + 72, temp_y - 68, "taunt: sound mode", c_black, c_black, c_black, c_black, 1);
     draw_text_color(temp_x - 2 + 72, temp_y - 68, "taunt: sound mode", c_black, c_black, c_black, c_black, 1);

@@ -157,6 +157,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[20,0] = make_color_rgb(240, 82, 129)
     ce[20,1] = "Heart"
     ce[20,2] = ""
+    ce[21,0] = make_color_rgb(153, 185, 255)
+    ce[21,1] = "Comet"
+    ce[21,2] = ""
     
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

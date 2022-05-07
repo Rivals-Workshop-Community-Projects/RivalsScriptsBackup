@@ -88,7 +88,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -246,6 +246,26 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.18", "2 May, 2022");
+
+initHeader("Buffs:");
+initSection("+ Ustrong's hitbox is a little wider
++ Fair comes out 2 frames faster, F18 -> F16
++ Bair comes out 1 frame faster, F15 -> F14
+");
+
+initHeader("Nerfs:");
+initSection("- Egg is no longer a Swordie
+   Ustrong, Utilt, Uair, Nair, Magic Burst, Fair have increased hitboxes
+");
+
+initHeader("Changes:");
+initSection("= Munophone was lightweighted
+= Strong, Fspecial overall kb was adjusted
+");
+
+//
 
 initPatch("1.17", "19 February, 2022");
 

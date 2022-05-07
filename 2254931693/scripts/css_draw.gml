@@ -172,7 +172,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[22,0] = make_color_rgb(125, 83, 65)
     ce[22,1] = "Winning"
     ce[22,2] = ""    
-    ce[23,0] = make_color_rgb(61, 181, 85)
+    ce[23,0] = make_color_rgb(37, 125, 87)
     ce[23,1] = "Almost Good"
     ce[23,2] = "" 
     ce[24,0] = make_color_rgb(255, 131, 66)

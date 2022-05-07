@@ -10,7 +10,7 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, has_rune("I")?3:14);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("slash6"));
-set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, has_rune("I")?1:11);
 
 set_window_value(AT_FAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, has_rune("I")?4:6);
@@ -40,7 +40,7 @@ set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .8);
-set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("hit2"));
 
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 2);

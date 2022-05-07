@@ -450,7 +450,7 @@ switch(attack) {
 					if (naruto_spawned_clone_reference == noone) cap_maximum_clones(1);
 				}
 				
-				else if (window_timer == window_length - 1) {
+				else if (window_timer == window_length) {
 					//attack starts - spawn a naruto clone if there is not one nearby
 					if (!instance_exists(naruto_spawned_clone_reference)) naruto_spawned_clone_reference = spawn_clone(x, y);
 					//if there was already a clone, tell this clone to use the powered-up version of the attack
@@ -479,8 +479,8 @@ switch(attack) {
 						
 						with (naruto_spawned_clone_reference) {
 							safely_set_attack(AT_FSPECIAL);
-							window = 2;
-							window_timer = 2;
+							window = 3;
+							window_timer = 0;
 							sprite_index = other.sprite_index;
 							image_index = other.image_index;
 							vsp = other.vsp;
@@ -532,8 +532,8 @@ switch(attack) {
 				//if the referenced unit is using fspecial, teleport into the right place.
 				if (instance_exists(tele_reference) && tele_reference.attack == AT_FSPECIAL && (tele_reference.state == PS_ATTACK_GROUND || tele_reference.state == PS_ATTACK_AIR)) {
 					spr_dir = tele_reference.spr_dir;
-					x = tele_reference.x - 10 * spr_dir;
-					y = tele_reference.y - 20;
+					x = tele_reference.x - 30 * spr_dir;
+					y = tele_reference.y - 30;
 					depth = tele_reference.depth + 0.5;
 					vsp = -6 * (!(tele_reference.free));
 				}
@@ -541,9 +541,31 @@ switch(attack) {
 				else {
 					set_state(PS_PRATFALL);
 				}
+				if (window_timer >= 6) {
+					if (window_timer < 12) {
+						if (instance_exists(tele_reference) && tele_reference.attack == AT_FSPECIAL && (tele_reference.state == PS_ATTACK_GROUND || tele_reference.state == PS_ATTACK_AIR)) {
+							spr_dir = tele_reference.spr_dir;
+							x = tele_reference.x - 10 * spr_dir;
+							y = tele_reference.y - 70;
+							depth = tele_reference.depth + 0.5;
+							vsp = -6 * (!(tele_reference.free));
+						}
+					}
+				}
+				if (window_timer == 12) {
+						if (instance_exists(tele_reference) && tele_reference.attack == AT_FSPECIAL && (tele_reference.state == PS_ATTACK_GROUND || tele_reference.state == PS_ATTACK_AIR)) {
+						spr_dir = tele_reference.spr_dir;
+						x = tele_reference.x - -10 * spr_dir;
+						y = tele_reference.y - 10;
+						depth = tele_reference.depth + 0.5;
+						vsp = -6 * (!(tele_reference.free));
+					}
+
+				}
 			break;
 			
 			case 2:
+			
 
 			case 3:
 				//the real naruto can cancel this attack after 30 frames. he can also cancel it on hit.

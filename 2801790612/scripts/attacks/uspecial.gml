@@ -15,7 +15,7 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -13);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -15);
 
 // post-burst
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 6);

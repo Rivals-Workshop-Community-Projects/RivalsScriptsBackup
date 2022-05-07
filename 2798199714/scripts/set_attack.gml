@@ -87,6 +87,13 @@ if (attack == AT_USTRONG){
 	reset_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH);
 	if(!free){
 		vsp -= 4;
+		reset_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK);reset_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK);reset_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK);reset_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING);
+	}else{
+		set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 8);set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.0);
+		set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 7);set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
+		set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 7);set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, .85);
 	}spawnlightning = false;
 }
 

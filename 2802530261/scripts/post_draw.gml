@@ -5,7 +5,7 @@ if(attack == AT_NSPECIAL && window == 2 && charge >= 20){
 
 if(attack == AT_NSPECIAL && window == 2 && charge >= 90){
     gpu_set_fog(true, c_yellow, true, false);
-    draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, (state_timer % 6 <= 2? 0.4: 0));
+    draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, (state_timer % 6 <= 2? 0.4: 0));
     gpu_set_fog(false, c_yellow, false, true);
 }else{
     gpu_set_fog(false, c_yellow, false, true);
@@ -44,6 +44,20 @@ if(attack == AT_BAIR && state == PS_ATTACK_AIR){
         case 4:
         draw_sprite_ext(sprite_get("0_missile_hit"), window_timer / 8 * 5, x + (spr_dir = 1? -56: 24), y - 6, 2, 2, 0, c_white, 1);
         break;
+    }
+}
+
+if(attack == AT_USPECIAL && window == 1){
+    if(joy_dir >= -22.5 && joy_dir < 22.5) || (joy_dir >= 157.5 && joy_dir < 202.5){
+        draw_sprite_ext(sprite_get("uspecial_arrow"), get_player_team(player - 1), x + 40 * spr_dir - 4, y - 40, 2, 2, (spr_dir = 1? 0: 180), c_white, 1);
+    }else if(joy_dir >= 22.5 && joy_dir < 67.5) || (joy_dir >= 112.5 && joy_dir < 157.5){
+        draw_sprite_ext(sprite_get("uspecial_arrow"), get_player_team(player) - 1, x + 28 * spr_dir - 4, y - 28 - 40, 2, 2, (spr_dir = 1? 45: 135), c_white, 1);
+    }else if(joy_dir >= 67.5 && joy_dir < 112.5){
+        draw_sprite_ext(sprite_get("uspecial_arrow"), get_player_team(player) - 1, x - 4, y - 40 - 40, 2, 2, 90, c_white, 1);
+    }else if(joy_dir >= 247.5 && joy_dir <292.5){
+        draw_sprite_ext(sprite_get("uspecial_arrow"), get_player_team(player) - 1, x - 4, y + 40 - 40, 2, 2, -90, c_white, 1);
+    }else if(joy_dir >= 292.5 && joy_dir < 337.5) || (joy_dir >= 202.5 && joy_dir < 247.5){
+        draw_sprite_ext(sprite_get("uspecial_arrow"), get_player_team(player) - 1, x + 28 * spr_dir - 4, y + 28 - 40, 2, 2, (spr_dir = 1? -45: -135), c_white, 1);
     }
 }
 

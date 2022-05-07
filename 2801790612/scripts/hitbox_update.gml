@@ -38,7 +38,7 @@ if (attack == AT_USTRONG && hbox_num == 2) {
 		}
 	}
 	if (player_id.rand_garbage != noone && instance_exists(player_id.rand_garbage)) {
-		if (vsp < 0) {
+		if (vsp < 2) {
 			kb_angle = 75;
 		}
 		else {

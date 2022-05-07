@@ -291,8 +291,8 @@ if (attack == AT_NSPECIAL){
         sound_play(sound_get("Hydro Pump"));
         with(pHitBox){
 	    	if(type == 2 && "amMudkip" in player_id && attack == AT_DSPECIAL){
-	        	var dist = point_distance(other.x+70*other.spr_dir, other.y-10, x, y); //distance
-	        	if(dist <= 60){
+	        	var dist = point_distance(other.x+50*other.spr_dir, other.y-10, x, y); //distance
+	        	if(dist <= 80){
 	                with(other){
 		                var mud = create_hitbox(AT_DTILT, 4, x+25*spr_dir, y-20);mud.hsp = (10+(strong_charge/10))*spr_dir;mud.vsp -= 2;
 		                mud = create_hitbox(AT_DTILT, 4, x+35*spr_dir, y-20);mud.hsp += (strong_charge/10)*spr_dir;

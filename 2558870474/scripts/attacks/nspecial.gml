@@ -95,6 +95,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 1);
@@ -130,6 +131,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 11); //0
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 8);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .7);
 
 // Charge 2, Arcthunder
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
@@ -222,6 +224,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_HITPAUSE, 7);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITSTUN_MULTIPLIER, .8);
 
 // Full Charge, Thoron
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_TYPE, 2);

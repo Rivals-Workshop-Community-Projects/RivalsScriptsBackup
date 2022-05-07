@@ -174,7 +174,7 @@ switch(attack){
 	break;
 	case AT_FSPECIAL:
 	if(window == 3 && window_timer == 9){
-		move_cooldown[AT_FSPECIAL] = 150;
+		move_cooldown[AT_FSPECIAL] = 180;
 	}
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 4 + (anger_state * 2));
 	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 4 + (anger_state * 2));

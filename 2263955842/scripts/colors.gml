@@ -209,12 +209,12 @@ set_color_profile_slot( 17, 7, 217, 173, 114 ); //PINK
 
 // BLM
 set_color_profile_slot( 18, 0, 23, 23, 23 ); //Dress + Sleeves
-set_color_profile_slot( 18, 1, 255, 217, 0 ); //Bow
+set_color_profile_slot( 18, 1, 255, 183, 0 ); //Bow
 set_color_profile_slot( 18, 2, 38, 38, 38 ); //Hair
 set_color_profile_slot( 18, 3, 115, 65, 0 ); //Skin
-set_color_profile_slot( 18, 4, 255, 200, 0 ); //Eyes
-set_color_profile_slot( 18, 5, 255, 208, 0 ); //Belt
-set_color_profile_slot( 18, 6, 255, 217, 0 ); //Little Yellow Bow
+set_color_profile_slot( 18, 4, 255, 157, 0 ); //Eyes
+set_color_profile_slot( 18, 5, 255, 187, 0 ); //Belt
+set_color_profile_slot( 18, 6, 255, 208, 0 ); //Little Yellow Bow
 set_color_profile_slot( 18, 7, 255, 231, 166 ); //Pink
 
 

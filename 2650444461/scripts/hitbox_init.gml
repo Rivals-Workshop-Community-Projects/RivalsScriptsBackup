@@ -21,6 +21,13 @@ if (attack == AT_DSPECIAL){
     }
 }
 
+if (attack == AT_DTILT){
+    if(hbox_num == 4){
+        MattCanGrab = true;
+        MorshuCanGrab = true;
+    }
+}
+
 taunt_rain_Y = 0;
 if (attack == AT_TAUNT){
     taunt_rain_Y = player_id.y;

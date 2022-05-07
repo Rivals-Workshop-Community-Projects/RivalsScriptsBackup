@@ -8,6 +8,7 @@ short_hop_speed = 4;
 air_accel = 0.35;
 air_friction = 0.04;
 walljump_vsp = 8;
+small_sprites = 0;
 
 
 // Ori

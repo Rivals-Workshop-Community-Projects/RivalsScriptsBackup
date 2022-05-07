@@ -132,8 +132,8 @@ uspecWalljump = true;
 
 // FSpec hookshot
 fspecPos = {x: 0, y: 0};		// final pos
-fspecPosHigh = {x: 44, y: 47};	// High
-fspecPosLow = {x: 56, y: 25};	// gun crouch
+fspecPosHigh = {x: 40, y: 47};	// High
+fspecPosLow = {x: 52, y: 25};	// gun crouch
 fspecPosX = {a: 0, b: 0};
 fspecX = 0; // distance
 fspecX2 = 0; // distancePortal
@@ -147,7 +147,7 @@ nspecCharge = 0;
 
 // DSpec effect
 dspecImage = -1;
-dspecCoolMax = has_rune("K")?0:110;
+dspecCoolMax = has_rune("K")?0:120;
 
 // strong angle
 strongAng = 0;

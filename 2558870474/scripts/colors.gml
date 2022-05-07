@@ -39,12 +39,12 @@ set_num_palettes( 30 );
 // Blue (Everest)
 set_color_profile_slot( 1, 0, 236, 206, 178 ); //Fur
 set_color_profile_slot( 1, 1, 236, 206, 178 ); //Hair/Tail
-set_color_profile_slot( 1, 2, 236, 206, 178 ); //Floof
-set_color_profile_slot( 1, 3, 163, 185, 196 ); //Jacket
+set_color_profile_slot( 1, 2, 250, 248, 245 ); //Floof
+set_color_profile_slot( 1, 3, 76, 81, 92 ); //Jacket
 set_color_profile_slot( 1, 4, 29, 40, 92 ); //Skirt
 set_color_profile_slot( 1, 5, 59, 59, 59 ); //Boots
-set_color_profile_slot( 1, 6, 162, 162, 162 ); //Umbrella
-set_color_profile_slot( 1, 7, 102, 217, 255 ); //IceIceBaby
+set_color_profile_slot( 1, 6, 94, 94, 122 ); //Umbrella
+set_color_profile_slot( 1, 7, 120, 158, 230 ); //IceIceBaby
 
 // Persona 4 (Red)
 set_color_profile_slot( 2, 0, 255, 237, 223 ); //Fur
@@ -106,48 +106,15 @@ set_color_profile_slot( 7, 5, 86, 84, 146 ); //Boots
 set_color_profile_slot( 7, 6, 79, 61, 94 ); //Umbrella
 set_color_profile_slot( 7, 7, 166, 172, 214 ); //IceIceBaby
 
-switch (get_match_setting(SET_SEASON)) {
-  case 1: // valentines
-    set_color_profile_slot( 8, 0, 255, 238, 247 ); //Fur
-    set_color_profile_slot( 8, 1, 255, 238, 247 ); //Hair/Tail
-    set_color_profile_slot( 8, 2, 255, 238, 247 ); //Floof
-    set_color_profile_slot( 8, 3, 255, 168, 214 ); //Jacket
-    set_color_profile_slot( 8, 4, 225, 73, 73 ); //Skirt
-    set_color_profile_slot( 8, 5, 231, 3, 142 ); //Boots
-    set_color_profile_slot( 8, 6, 225, 73, 73 ); //Umbrella
-    set_color_profile_slot( 8, 7, 254, 176, 255 ); //IceIceBaby
-    break;
-  case 2: // summer
-    set_color_profile_slot( 8, 0, 255, 246, 140 ); //Fur
-    set_color_profile_slot( 8, 1, 255, 166, 40 ); //Hair/Tail
-    set_color_profile_slot( 8, 2, 255, 166, 40 ); //Floof
-    set_color_profile_slot( 8, 3, 89, 204, 233 ); //Jacket
-    set_color_profile_slot( 8, 4, 89, 204, 233 ); //Skirt
-    set_color_profile_slot( 8, 5, 69, 146, 114 ); //Boots
-    set_color_profile_slot( 8, 6, 255, 253, 229 ); //Umbrella
-    set_color_profile_slot( 8, 7, 89, 204, 233 ); //IceIceBaby
-    break;
-  case 3: // halloween
-    set_color_profile_slot( 8, 0, 255, 238, 247 ); //Fur
-    set_color_profile_slot( 8, 1, 255, 154, 13 ); //Hair/Tail
-    set_color_profile_slot( 8, 2, 59, 51, 47 ); //Floof
-    set_color_profile_slot( 8, 3, 115, 63, 171 ); //Jacket
-    set_color_profile_slot( 8, 4, 115, 63, 171 ); //Skirt
-    set_color_profile_slot( 8, 5, 59, 51, 47 ); //Boots
-    set_color_profile_slot( 8, 6, 148, 0, 0 ); //Umbrella
-    set_color_profile_slot( 8, 7, 255, 154, 13 ); //IceIceBaby
-    break;
-  case 4: // christmas
-    set_color_profile_slot( 8, 0, 255, 252, 252 ); //Fur
-    set_color_profile_slot( 8, 1, 255, 252, 252 ); //Hair/Tail
-    set_color_profile_slot( 8, 2, 255, 252, 252 ); //Floof
-    set_color_profile_slot( 8, 3, 109, 194, 83 ); //Jacket
-    set_color_profile_slot( 8, 4, 109, 194, 83 ); //Skirt
-    set_color_profile_slot( 8, 5, 37, 37, 37 ); //Boots
-    set_color_profile_slot( 8, 6, 255, 72, 72 ); //Umbrella
-    set_color_profile_slot( 8, 7, 109, 194, 83 ); //IceIceBaby
-    break;
-}
+// Seasonal
+set_color_profile_slot( 8, 0, 255, 238, 247 ); //Fur
+set_color_profile_slot( 8, 1, 255, 238, 247 ); //Hair/Tail
+set_color_profile_slot( 8, 2, 255, 238, 247 ); //Floof
+set_color_profile_slot( 8, 3, 255, 168, 214 ); //Jacket
+set_color_profile_slot( 8, 4, 225, 73, 73 ); //Skirt
+set_color_profile_slot( 8, 5, 231, 3, 142 ); //Boots
+set_color_profile_slot( 8, 6, 225, 73, 73 ); //Umbrella
+set_color_profile_slot( 8, 7, 254, 176, 255 ); //IceIceBaby
 
 // One of Many
 set_color_profile_slot( 9, 0, 255, 225, 205 ); //Fur
@@ -358,6 +325,7 @@ set_color_profile_slot( 29, 4, 0, 143, 0 ); //Skirt
 set_color_profile_slot( 29, 5, 0, 143, 0 ); //Boots
 set_color_profile_slot( 29, 6, 217, 190, 37 ); //Umbrella
 set_color_profile_slot( 29, 7, 255, 217, 79 ); //IceIceBaby
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

@@ -41,6 +41,7 @@ switch (my_hitboxID.attack)
 		{
 			hit_player_obj.x = x + get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X)*spr_dir;
 			hit_player_obj.y = y + get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y) + floor(hit_player_obj.char_height/2);
+			djumps = 0;
 		}
 		sound_play(sound_get("hitsfx2"));
 		break;

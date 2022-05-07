@@ -43,7 +43,7 @@ with (pHitBox) {
      }
      
 
-    hitcollide = collision_circle( x, y , 44, other, true, true ) 
+    hitcollide = collision_circle( x, y , 50, other, true, true ) 
 
     if hitcollide != noone && type == 1 && player_id.char_height = 66.66 && attack == AT_FSPECIAL && other.type == 2 && other.attack != AT_FSPECIAL && other.hbox_num != 3 && other.hbox_num != 5 {
     
@@ -80,7 +80,6 @@ with (pHitBox) {
             fx2.draw_angle = 180
             sound_play(asset_get("sfx_ice_shatter_big"))
             sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.6,1.4)
-            sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,.4)
             sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,.4)
             destroyed = true
     	}
@@ -263,8 +262,17 @@ switch attack {
       image_index = 4 + (hitbox_timer/(2))%8
       
       if hitbox_timer%4 == 0 && !pausing {
-                create_hitbox(AT_NSPECIAL,5,floor(x),floor(y))
-        }
+      	with player_id {
+      		if hit_player_obj == -4 {
+      			hit_player_obj = self
+      		}
+      	}
+      	  if player_id.hit_player_obj.state_cat == SC_HITSTUN {
+             create_hitbox(AT_NSPECIAL,6,floor(x),floor(y))
+      	  } else {
+      	  	create_hitbox(AT_NSPECIAL,5,floor(x),floor(y))
+      	  }
+      }
   }
   
   break;     

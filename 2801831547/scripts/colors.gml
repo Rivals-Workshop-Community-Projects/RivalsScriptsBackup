@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 32 );
 
 // Alice
 set_color_profile_slot( 1, 0, 232, 172, 80 ); //unnamed color row
@@ -56,15 +56,15 @@ set_color_profile_slot( 2, 5, 58, 86, 181 ); //unnamed color row
 set_color_profile_slot( 2, 6, 221, 231, 243 ); //unnamed color row
 set_color_profile_slot( 2, 7, 221, 233, 245 ); //unnamed color row
 
-// Clownpiece
-set_color_profile_slot( 3, 0, 242, 185, 104 ); //unnamed color row
-set_color_profile_slot( 3, 1, 255, 227, 197 ); //unnamed color row
-set_color_profile_slot( 3, 2, 28, 159, 211 ); //unnamed color row
-set_color_profile_slot( 3, 3, 147, 40, 106 ); //unnamed color row
+// BLM
+set_color_profile_slot( 3, 0, 46, 45, 43 ); //unnamed color row
+set_color_profile_slot( 3, 1, 135, 78, 57 ); //unnamed color row
+set_color_profile_slot( 3, 2, 54, 54, 54 ); //unnamed color row
+set_color_profile_slot( 3, 3, 253, 250, 255 ); //unnamed color row
 set_color_profile_slot( 3, 4, 253, 250, 255 ); //unnamed color row
-set_color_profile_slot( 3, 5, 218, 62, 50 ); //unnamed color row
-set_color_profile_slot( 3, 6, 147, 40, 106 ); //unnamed color row
-set_color_profile_slot( 3, 7, 147, 40, 106 ); //unnamed color row
+set_color_profile_slot( 3, 5, 255, 174, 52 ); //unnamed color row
+set_color_profile_slot( 3, 6, 255, 174, 52 ); //unnamed color row
+set_color_profile_slot( 3, 7, 255, 174, 52 ); //unnamed color row
 
 // Flandre
 set_color_profile_slot( 4, 0, 243, 213, 103 ); //unnamed color row
@@ -76,15 +76,15 @@ set_color_profile_slot( 4, 5, 205, 46, 33 ); //unnamed color row
 set_color_profile_slot( 4, 6, 148, 32, 56 ); //unnamed color row
 set_color_profile_slot( 4, 7, 1, 74, 157 ); //unnamed color row
 
-// Futo
-set_color_profile_slot( 5, 0, 224, 224, 240 ); //unnamed color row
-set_color_profile_slot( 5, 1, 255, 240, 218 ); //unnamed color row
-set_color_profile_slot( 5, 2, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 5, 3, 79, 73, 113 ); //unnamed color row
-set_color_profile_slot( 5, 4, 108, 155, 103 ); //unnamed color row
-set_color_profile_slot( 5, 5, 54, 13, 59 ); //unnamed color row
-set_color_profile_slot( 5, 6, 47, 43, 94 ); //unnamed color row
-set_color_profile_slot( 5, 7, 47, 43, 94 ); //unnamed color row
+// Go Lakers!!!
+set_color_profile_slot( 5, 0, 73, 71, 86 ); //unnamed color row
+set_color_profile_slot( 5, 1, 169, 98, 71 ); //unnamed color row
+set_color_profile_slot( 5, 2, 190, 104, 255 ); //unnamed color row
+set_color_profile_slot( 5, 3, 255, 236, 59 ); //unnamed color row
+set_color_profile_slot( 5, 4, 255, 235, 56 ); //unnamed color row
+set_color_profile_slot( 5, 5, 0, 0, 0 ); //unnamed color row
+set_color_profile_slot( 5, 6, 73, 71, 86 ); //unnamed color row
+set_color_profile_slot( 5, 7, 255, 235, 51 ); //unnamed color row
 
 // Hina
 set_color_profile_slot( 6, 0, 84, 222, 158 ); //unnamed color row
@@ -146,15 +146,15 @@ set_color_profile_slot( 11, 5, 179, 61, 128 ); //unnamed color row
 set_color_profile_slot( 11, 6, 60, 51, 40 ); //unnamed color row
 set_color_profile_slot( 11, 7, 60, 51, 40 ); //unnamed color row
 
-// Merlin
-set_color_profile_slot( 12, 0, 166, 158, 255 ); //unnamed color row
-set_color_profile_slot( 12, 1, 255, 214, 191 ); //unnamed color row
-set_color_profile_slot( 12, 2, 255, 234, 231 ); //unnamed color row
-set_color_profile_slot( 12, 3, 174, 167, 253 ); //unnamed color row
-set_color_profile_slot( 12, 4, 174, 167, 253 ); //unnamed color row
-set_color_profile_slot( 12, 5, 160, 133, 213 ); //unnamed color row
-set_color_profile_slot( 12, 6, 240, 217, 121 ); //unnamed color row
-set_color_profile_slot( 12, 7, 240, 217, 121 ); //unnamed color row
+// Miku
+set_color_profile_slot( 12, 0, 89, 239, 255 ); //unnamed color row
+set_color_profile_slot( 12, 1, 243, 201, 195 ); //unnamed color row
+set_color_profile_slot( 12, 2, 66, 66, 66 ); //unnamed color row
+set_color_profile_slot( 12, 3, 255, 98, 157 ); //unnamed color row
+set_color_profile_slot( 12, 4, 255, 135, 211 ); //unnamed color row
+set_color_profile_slot( 12, 5, 85, 209, 208 ); //unnamed color row
+set_color_profile_slot( 12, 6, 255, 98, 157 ); //unnamed color row
+set_color_profile_slot( 12, 7, 255, 98, 157 ); //unnamed color row
 
 // Momiji
 set_color_profile_slot( 13, 0, 252, 232, 229 ); //unnamed color row
@@ -335,6 +335,16 @@ set_color_profile_slot( 30, 4, 164, 127, 171 ); //unnamed color row
 set_color_profile_slot( 30, 5, 102, 56, 44 ); //unnamed color row
 set_color_profile_slot( 30, 6, 59, 68, 69 ); //unnamed color row
 set_color_profile_slot( 30, 7, 59, 68, 69 ); //unnamed color row
+
+// Bubblegum
+set_color_profile_slot( 31, 0, 237, 104, 155 ); //unnamed color row
+set_color_profile_slot( 31, 1, 189, 100, 49 ); //unnamed color row
+set_color_profile_slot( 31, 2, 255, 227, 238 ); //unnamed color row
+set_color_profile_slot( 31, 3, 178, 8, 4 ); //unnamed color row
+set_color_profile_slot( 31, 4, 255, 0, 47 ); //unnamed color row
+set_color_profile_slot( 31, 5, 168, 93, 72 ); //unnamed color row
+set_color_profile_slot( 31, 6, 194, 85, 127 ); //unnamed color row
+set_color_profile_slot( 31, 7, 217, 95, 142 ); //unnamed color row
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

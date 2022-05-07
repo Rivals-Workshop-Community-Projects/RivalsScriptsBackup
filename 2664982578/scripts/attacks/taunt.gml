@@ -28,9 +28,3 @@ set_window_value(AT_TAUNT, 4, AG_WINDOW_SFX, sound_get("vineboom"));
 set_window_value(AT_TAUNT, 5, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_TAUNT, 5, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_TAUNT, 5, AG_WINDOW_ANIM_FRAME_START, 7);
-
-
-
-set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_MISC, "im scared
-
-- trummel");

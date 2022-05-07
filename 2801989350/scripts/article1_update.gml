@@ -100,8 +100,7 @@ if (state == 1){
 	}
 	with (oPlayer) {
         if (place_meeting(x, y, other) && other.player_id != id) {
-			if (invincible == false && !(state == PS_PARRY && state_timer > 0 && state_timer < 9) 
-        		&& !( (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && state_timer > 2 && state_timer < 17) 
+			if (invincible == false && !( (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && state_timer > 2 && state_timer < 17) 
         		&& !( (state == PS_TECH_GROUND || state == PS_WALL_TECH) && state_timer < 17) 
         		&& !( (state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD) && state_timer < 19) && state != PS_RESPAWN) {
 				with (other) {

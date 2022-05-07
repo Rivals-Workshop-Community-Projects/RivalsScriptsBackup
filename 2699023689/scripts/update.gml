@@ -20,6 +20,45 @@ if (state == PS_HITSTUN){
     grav = 0.45;
 }
 
+
+small_sprites = 0;
+
+if (not free && attack = AT_NSPECIAL && state = PS_ATTACK_GROUND){
+    small_sprites = 1;
+}
+if (not free && attack = AT_JAB && state = PS_ATTACK_GROUND){
+    small_sprites = 1;
+}
+if (not free && attack = AT_JAB && state = PS_ATTACK_GROUND){
+    small_sprites = 1;
+}
+if (not free && attack = AT_UTILT && state = PS_ATTACK_GROUND){
+    small_sprites = 1;
+}
+if (not free && attack = AT_FSPECIAL && state = PS_ATTACK_GROUND){
+    small_sprites = 1;
+}
+if (not free && attack = AT_USTRONG && state = PS_ATTACK_GROUND){
+    small_sprites = 1;
+}
+if (not free && attack = AT_DSTRONG && state = PS_ATTACK_GROUND){
+    small_sprites = 1;
+}
+if (free && state = PS_ATTACK_AIR){
+    small_sprites = 1;
+}
+if (attack = AT_DSPECIAL_AIR){
+    small_sprites = 0;
+}
+if ((state = PS_ATTACK_AIR || state = PS_ATTACK_GROUND) && attack = AT_USPECIAL){
+    small_sprites = 1;
+}
+
+
+
+
+
+
 //if (slip_lifetime > 0 and abs((slip_y+10) - y) < 50){
 //    max_air_speed = 7;
 //    air_accel = 0.6;

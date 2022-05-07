@@ -95,7 +95,7 @@ if (state == 0){
 		if state_timer == 0 and obj_article1.stability == 0{
 			//print("mew")
 			foodnum = foodrng//random_func( 0, 10, true)
-			itemnum = 19//random_func( 0, 16, true )//
+			itemnum = random_func( 0, 16, true )//
 			print(foodnum)
 			print(itemnum)
 		}

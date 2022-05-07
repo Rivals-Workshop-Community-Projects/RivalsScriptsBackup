@@ -158,6 +158,7 @@ if (attack == AT_DSPECIAL){
 }
 
 if (attack == AT_DSPECIAL_AIR){
+    small_sprites = 0;
     can_fast_fall = false;
     if ((not free) and was_free){
         window = 4;

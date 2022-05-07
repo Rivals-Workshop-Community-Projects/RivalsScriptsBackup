@@ -49,12 +49,11 @@ set_window_value(AT_USTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_num_hitboxes(AT_USTRONG,2);
 
-set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_NAME, "Grab Activation");
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 7);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -60);
-set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 70);
+set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 80);
 set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 100);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 3);
@@ -65,7 +64,6 @@ set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("kss_grab_activate"));
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
 
-set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_NAME, "Landing Throw");
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 6);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 4);
@@ -76,8 +74,8 @@ set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 70);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 8); 
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
-set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 10); 
-set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, .85); 
+set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 7); 
+set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.15); 
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_EXTRA_HITPAUSE, 10);

@@ -77,7 +77,7 @@ switch(attack){
 		//		rand_garbage = noone;
 		//	}
 		//}
-		if (window == 3 && window_timer == 1) {
+		if (window == 3 && window_timer == 1  && !hitstop && !hitpause) {
 			if (!instance_exists(rand_garbage)) {
 				var rand_roll = random_func( 10, 4, true );
 				switch (rand_roll) {
@@ -104,7 +104,8 @@ switch(attack){
 		break;
 	
 	
-	
+	// WARNING: Tom wrote some baaaaaad spaghett here
+	// Rework later, maybe
 	case AT_NSPECIAL:
 		can_move = false;
 		can_fast_fall = false;
@@ -118,6 +119,10 @@ switch(attack){
 		else if (window == 2) {
 			// Press special - go to blue punch
 			if (special_pressed) {
+				if (right_down && spr_dir == -1 || left_down && spr_dir == 1) {
+					if (spr_dir == -1) spr_dir = 1;
+					else spr_dir = -1;
+				}
 				window = 6;
 				window_timer = 0;
 			}
@@ -131,6 +136,10 @@ switch(attack){
 		else if (window == 3) {
 			// Press special - go to White Punch
 			if (special_pressed) {
+				if (right_down && spr_dir == -1 || left_down && spr_dir == 1) {
+					if (spr_dir == -1) spr_dir = 1;
+					else spr_dir = -1;
+				}
 				window = 7;
 				window_timer = 0;
 			}
@@ -144,11 +153,19 @@ switch(attack){
 		else if (window == 4) {
 			// Press special - go to Red Punch
 			if (special_pressed) {
+				if (right_down && spr_dir == -1 || left_down && spr_dir == 1) {
+					if (spr_dir == -1) spr_dir = 1;
+					else spr_dir = -1;
+				}
 				window = 8;
 				window_timer = 0;
 			}
 			// When window ends, proceed to Red Punch
 			if (window_timer == get_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH)) {
+				if (right_down && spr_dir == -1 || left_down && spr_dir == 1) {
+					if (spr_dir == -1) spr_dir = 1;
+					else spr_dir = -1;
+				}
 				window = 8;
 				window_timer = 0;
 			}

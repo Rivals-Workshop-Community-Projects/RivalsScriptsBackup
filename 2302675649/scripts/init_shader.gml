@@ -60,22 +60,9 @@ switch (get_player_color(player))
     //champion
     case 28:
     {
-	    var temp_a = 0.6;
-	    var temp_r = get_color_profile_slot_r(28, 0);
-	    var temp_g = get_color_profile_slot_g(28, 0);
-	    var temp_b = get_color_profile_slot_b(28, 0);
-	    set_character_color_slot(0, temp_r, temp_g, temp_b, temp_a);
-	    set_article_color_slot(0, temp_r, temp_g, temp_b, temp_a);
-	    temp_r = get_color_profile_slot_r(28, 5);
-	    temp_g = get_color_profile_slot_g(28, 5);
-	    temp_b = get_color_profile_slot_b(28, 5);
-	    set_character_color_slot(5, temp_r, temp_g, temp_b, temp_a);
-	    set_article_color_slot(5, temp_r, temp_g, temp_b, temp_a);
-	    temp_r = get_color_profile_slot_r(28, 6);
-	    temp_g = get_color_profile_slot_g(28, 6);
-	    temp_b = get_color_profile_slot_b(28, 6);
-	    set_character_color_slot(6, temp_r, temp_g, temp_b, temp_a);
-	    set_article_color_slot(6, temp_r, temp_g, temp_b, temp_a);
+        AltOpacity(0, 0.6);
+        AltOpacity(5, 0.6);
+        AltOpacity(6, 0.6);
     }
     break;
 }
@@ -109,4 +96,14 @@ if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
 	var temp_b = color_get_blue(_colour);
 	set_character_color_slot(_index, temp_r, temp_g, temp_b, 1);
 	set_article_color_slot(_index, temp_r, temp_g, temp_b, 1);
+}
+
+#define AltOpacity(_index, _opacity)
+{ 
+    var currentAlt = get_player_color(player);
+    var temp_r = get_color_profile_slot_r(currentAlt, _index);
+    var temp_g = get_color_profile_slot_g(currentAlt, _index);
+    var temp_b = get_color_profile_slot_b(currentAlt, _index);
+    set_character_color_slot(_index, temp_r, temp_g, temp_b, _opacity);
+    set_article_color_slot(_index, temp_r, temp_g, temp_b, _opacity);
 }

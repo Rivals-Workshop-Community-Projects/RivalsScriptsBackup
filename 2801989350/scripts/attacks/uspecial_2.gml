@@ -173,7 +173,7 @@ set_hitbox_value(AT_USPECIAL_2, 8, HG_PRIORITY, 6);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_DAMAGE, 4);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_ANGLE, 85);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USPECIAL_2, 8, HG_KNOCKBACK_SCALING, .3);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HIT_SFX, sound_get("plux_glide"));

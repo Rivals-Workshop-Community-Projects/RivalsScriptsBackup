@@ -17,7 +17,7 @@ c_naruto_maximum_clones = 2;
 c_naruto_clone_auto_despawn_when_using_specials = true;
 
 //amount of time, in frames, that naruto's clones linger for after performing an attack that summons them. 60 frames = 1 second.
-c_naruto_clone_active_time = 80;
+c_naruto_clone_active_time = 100;
 
 //amount of time, in frames, that naruto's dspecial clones stay active for. 
 c_naruto_dspecial_clone_active_time = 1000;
@@ -75,7 +75,7 @@ c_naruto_nspecial_multihit_magnet_strength = 10;
 //====================
 
 //fspecial cooldown
-c_naruto_fspecial_cooldown = 20;
+c_naruto_fspecial_cooldown = 40;
 
 //amount by which naruto's horizontal speed is altered while rising with uspecial.
 c_naruto_uspecial_hspeed_multiplier = 1.5;

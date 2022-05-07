@@ -259,6 +259,15 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.10", "5th May, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Mud balls can now be grabbed by other characters");
+
+initPatch("1.9", "4th May, 2022");
+initHeader("Buffs");
+initSection("- Increased wavedash distance when wavedashing from the mud puddle");
+initSection("- Mud balls now spike when moving fast enough downward");
+
 initPatch("1.8", "31st March, 2022");
 initHeader("Fixes / Other Changes");
 initSection("- Fixed bug where recovery options wouldn't reset on death, forcing you to land first");

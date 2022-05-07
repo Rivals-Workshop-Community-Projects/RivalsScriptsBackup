@@ -255,6 +255,12 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.5", "4th May, 2022");
+initHeader("Nerfs");
+initSection("- FAir sweetspot now pushes Galacta Knight a bit backwards from the hit, and the sourspot has a more vertical angle (361->65)");
+initSection("- UStrong has a bit less knockback when used in the air, compared to the grouned (ground stats are the same as before)");
+initSection("- DStrong landing lag increased (+10f), and reduced the size of the landing hitbox a bit");
+
 initPatch("1.4", "27th April, 2022");
 initHeader("Nerfs");
 initSection("- DSpecial rift now disappears if Galacta Knight takes 25% or more damage while it's out");

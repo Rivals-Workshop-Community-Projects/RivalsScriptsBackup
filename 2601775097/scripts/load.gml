@@ -30,47 +30,47 @@ sprite_change_offset("hurt", 16, 39);
 sprite_change_offset("hurt_tumble", 20, 20);
 
 //normals
-sprite_change_offset("jab", 19, 47);
-sprite_change_offset("ftilt", 23, 47);
-sprite_change_offset("dtilt", 21, 47);
-sprite_change_offset("utilt", 23, 47);
-sprite_change_offset("nair", 23, 47);
-sprite_change_offset("fair", 23, 47);
-sprite_change_offset("uair", 23, 47);
-sprite_change_offset("dair", 23, 47);
-sprite_change_offset("bair", 23, 47);
-sprite_change_offset("ustrong", 40, 59);
-sprite_change_offset("fstrong", 32, 47);
-sprite_change_offset("dstrong", 32, 47);
-sprite_change_offset("dattack", 32, 47);
+sprite_change_offset("jab", 19, 47, true);
+sprite_change_offset("ftilt", 23, 47, true);
+sprite_change_offset("dtilt", 21, 47, true);
+sprite_change_offset("utilt", 23, 47, true);
+sprite_change_offset("nair", 23, 47, true);
+sprite_change_offset("fair", 23, 47, true);
+sprite_change_offset("uair", 23, 47, true);
+sprite_change_offset("dair", 23, 47, true);
+sprite_change_offset("bair", 23, 47, true);
+sprite_change_offset("ustrong", 40, 59, true);
+sprite_change_offset("fstrong", 32, 47, true);
+sprite_change_offset("dstrong", 32, 47, true);
+sprite_change_offset("dattack", 32, 47, true);
 
 //skills
-sprite_change_offset("skill0", 22, 47);     //light dagger
-sprite_change_offset("skill0_air", 22, 47);
-sprite_change_offset("skill1", 23, 47);     //burning fury
-sprite_change_offset("skill1_air", 23, 46);
-sprite_change_offset("skill2", 23, 47);     //force leap
-sprite_change_offset("skill3", 24, 47);     //photon blast
-sprite_change_offset("skill4", 20, 47);     //flashbang
-sprite_change_offset("skill4_air", 20, 47);
-sprite_change_offset("skill5", 24, 47);     //power smash
-sprite_change_offset("skill6", 24, 47);     //accel blitz
-sprite_change_offset("skill7", 23, 47);     //polaris
-sprite_change_offset("skill7_air", 23, 47);
-sprite_change_offset("skill8", 19, 47);     //ember fist
-sprite_change_offset("skill8_air", 19, 45);
-sprite_change_offset("skill9", 35, 47);     //light hookshot
-sprite_change_offset("skill9_air", 35, 47);
-sprite_change_offset("skill10", 31, 47);    //searing descent
-sprite_change_offset("skill11", 23, 47);    //chasm burster
-sprite_change_offset("skill11_air", 23, 47);
+sprite_change_offset("skill0", 22, 47, true);     //light dagger
+sprite_change_offset("skill0_air", 22, 47, true);
+sprite_change_offset("skill1", 23, 47, true);     //burning fury
+sprite_change_offset("skill1_air", 23, 46, true);
+sprite_change_offset("skill2", 23, 47, true);     //force leap
+sprite_change_offset("skill3", 24, 47, true);     //photon blast
+sprite_change_offset("skill4", 20, 47, true);     //flashbang
+sprite_change_offset("skill4_air", 20, 47, true);
+sprite_change_offset("skill5", 24, 47, true);     //power smash
+sprite_change_offset("skill6", 24, 47, true);     //accel blitz
+sprite_change_offset("skill7", 23, 47, true);     //polaris
+sprite_change_offset("skill7_air", 23, 47, true);
+sprite_change_offset("skill8", 19, 47, true);     //ember fist
+sprite_change_offset("skill8_air", 19, 45, true);
+sprite_change_offset("skill9", 35, 47, true);     //light hookshot
+sprite_change_offset("skill9_air", 35, 47, true);
+sprite_change_offset("skill10", 31, 47, true);    //searing descent
+sprite_change_offset("skill11", 23, 47, true);    //chasm burster
+sprite_change_offset("skill11_air", 23, 47, true);
 
 sprite_change_offset("overdrive", 23, 47);
 
 //theikos strongs
-sprite_change_offset("fstrong2", 20, 48);
-sprite_change_offset("ustrong2", 24, 48);
-sprite_change_offset("dstrong2", 24, 64);
+sprite_change_offset("fstrong2", 20, 48, true);
+sprite_change_offset("ustrong2", 24, 48, true);
+sprite_change_offset("dstrong2", 24, 64, true);
 
 //effects
 sprite_change_offset("fx_intro", 16, 0);
@@ -139,7 +139,7 @@ sprite_change_offset("fx_dstrong2_proj", 16, 48);
 sprite_change_offset("fx_dstrong2_groundfire", 16, 40);
 
 //misc
-sprite_change_offset("taunt", 15, 39);
+sprite_change_offset("taunt", 15, 39, true);
 sprite_change_offset("intro", 32, 63);
 sprite_change_offset("select", 16, 39);
 sprite_change_offset("plat", 32, 47);

@@ -63,6 +63,7 @@ if (debug_text) {
     draw_debug_text(col_one_lbl, line_y, "HAS_HIT:");
     draw_debug_text(col_one_val, line_y, string(has_hit));
 }
+shader_start();
 if (pepsi_meter >= 25) draw_sprite(spr_pepsi_meter, 25, temp_x + 4, temp_y - 30);
 else draw_sprite(spr_pepsi_meter, pepsi_meter, temp_x + 4, temp_y - 30);
 
@@ -77,7 +78,7 @@ else draw_sprite(spr_pepsi_meter, pepsi_meter - 50, temp_x + 4 + 96, temp_y - 30
 if (pepsi_meter < 76) draw_sprite(spr_pepsi_meter, 0, temp_x + 4 + 144, temp_y - 30);
 else if (pepsi_meter >= 100) draw_sprite(spr_pepsi_meter, 25, temp_x + 4 + 144, temp_y - 30);
 else draw_sprite(spr_pepsi_meter, pepsi_meter - 75, temp_x + 4 + 144, temp_y - 30);
-
+shader_end();
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 muno_event_type = 5;

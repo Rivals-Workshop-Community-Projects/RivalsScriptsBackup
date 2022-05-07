@@ -8,6 +8,10 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 40);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 2);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 0);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("spark_charge"));
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 13);
@@ -83,6 +87,7 @@ set_window_value(AT_USPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 49);
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_SFX, sound_get("spark_hit"));
 
+set_window_value(AT_USPECIAL, 10, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 10, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 10, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 54);

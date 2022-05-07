@@ -56,7 +56,7 @@ if (color <= 16){
     	image_alpha = 1; //Set to 3 to make it take a long time for the text to fade
     	sound_stop(asset_get("mfx_change_color"));
     	sound_stop(sound_get("CSS_select"));
-    	sound_play(sound_get("CSS_select"));
+    	sound_play(sound_get("CSS_select"), false, 0);
     	soundtime++;
     }
 }
@@ -66,13 +66,13 @@ if (color >= 17){
     	image_alpha = 1; //Set to 3 to make it take a long time for the text to fade
     	sound_stop(asset_get("mfx_change_color"));
     	sound_stop(sound_get("CSS_select"));
-    	sound_play(sound_get("CSS_select"));
+    	sound_play(sound_get("CSS_select"), false, 0);
     	soundtime++
     }
     if color == 24 and soundtime == 1{
     	sound_stop(sound_get("CSS_select"));
     	sound_stop(sound_get("timestop"));
-    	sound_play(sound_get("timestop"));
+    	sound_play(sound_get("timestop"), false, 0);
     }
 }
 

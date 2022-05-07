@@ -59,7 +59,7 @@ if (state == PS_IDLE){
 }
 
 if (state == PS_IDLE){
-    var A = random_func(3, 400,true)
+    var A = random_func(3, 350,true)
         if A == 1{
             spawn_hit_fx( x, y, ZZ4);
     print("2");

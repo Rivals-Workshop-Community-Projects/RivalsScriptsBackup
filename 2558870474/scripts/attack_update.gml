@@ -649,6 +649,7 @@ if proposed_balance{
                         break;
                     case 3:
                         //stuff
+                        move_cooldown[AT_DSPECIAL] = 45;
                         break;
                 }
             break;

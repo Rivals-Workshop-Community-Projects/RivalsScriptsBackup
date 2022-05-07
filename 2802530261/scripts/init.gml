@@ -249,7 +249,7 @@ menu_version = 0;
 menu_v_select = 0;
 
 //resource values
-missile_amount = 50;
+missile_amount = 35;
 power_bomb_amount = 2;
 aeion = 1000;
 aeion_sfx = 0;

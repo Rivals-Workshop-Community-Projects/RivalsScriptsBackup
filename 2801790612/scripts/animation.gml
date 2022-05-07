@@ -1,3 +1,8 @@
+// make the nametag go higher while ustrong's fist is raised
+if phone_attacking && attack == AT_TAUNT{
+	hud_offset = lerp(hud_offset, 90, 0.5);
+}
+
 switch (state){
     case PS_IDLE:
     case PS_RESPAWN:

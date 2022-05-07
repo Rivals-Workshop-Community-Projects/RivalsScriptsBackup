@@ -76,7 +76,7 @@ if(attack == AT_TAUNT){
 	}
 }
 
-if(phone_landing == true){
+if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESPAWN){
 	move_cooldown[AT_FSPECIAL] = 0;
 }
 

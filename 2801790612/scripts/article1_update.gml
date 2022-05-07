@@ -31,7 +31,7 @@ switch(state) {
 }
 
 if (free) {
-    if (air_time < 15) {
+    if (air_time < 6) {
         if (!instance_exists(sbox)) {
             with (player_id)
                 other.sbox = create_hitbox(AT_DSPECIAL, 5, other.x, other.y + 5);
@@ -95,6 +95,7 @@ if (launch) {
     var new_instance = create_hitbox(AT_DSPECIAL, 1, x, y);
     player_id.bounce_count = 0;
     new_instance.spr_dir = player_id.spr_dir;
+    player_id.hsp -= 3 * player_id.spr_dir;
     destroy = true;
 }
 

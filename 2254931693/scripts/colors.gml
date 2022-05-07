@@ -246,7 +246,7 @@ set_color_profile_slot( 21, 5, 20, 73, 110 ); //Pants
 set_color_profile_slot( 21, 6, 97, 160, 207 ); //Shoes
 set_color_profile_slot( 21, 7, 179, 207, 227 ); //Frog
 
-// Win
+// Winning
 set_color_profile_slot( 22, 0, 245, 205, 61 ); //ClothesRim
 set_color_profile_slot( 22, 1, 125, 83, 65 ); //Skin
 set_color_profile_slot( 22, 2, 46, 46, 46 ); //Clothes
@@ -256,15 +256,15 @@ set_color_profile_slot( 22, 5, 23, 22, 17 ); //Pants
 set_color_profile_slot( 22, 6, 18, 16, 5 ); //Shoes
 set_color_profile_slot( 22, 7, 71, 71, 71 ); //Frog
 
-// Tag
-set_color_profile_slot( 23, 0, 255, 217, 0 ); //ClothesRim
+// Almost Good
+set_color_profile_slot( 23, 0, 37, 125, 87 ); //ClothesRim
 set_color_profile_slot( 23, 1, 255, 230, 158 ); //Skin
-set_color_profile_slot( 23, 2, 61, 181, 85 ); //Clothes
-set_color_profile_slot( 23, 3, 41, 122, 54 ); //ClothesShade
-set_color_profile_slot( 23, 4, 255, 221, 71 ); //Hair
-set_color_profile_slot( 23, 5, 30, 66, 36 ); //Pants
-set_color_profile_slot( 23, 6, 61, 181, 85 ); //Shoes
-set_color_profile_slot( 23, 7, 61, 181, 85 ); //Frog
+set_color_profile_slot( 23, 2, 157, 206, 116 ); //Clothes
+set_color_profile_slot( 23, 3, 70, 166, 104 ); //ClothesShade
+set_color_profile_slot( 23, 4, 248, 216, 82 ); //Hair
+set_color_profile_slot( 23, 5, 25, 72, 52 ); //Pants
+set_color_profile_slot( 23, 6, 37, 125, 87 ); //Shoes
+set_color_profile_slot( 23, 7, 255, 140, 81 ); //Frog
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

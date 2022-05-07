@@ -45,6 +45,12 @@ if(my_hitboxID.attack == AT_NAIR){
 	}
 }
 
+if(my_hitboxID.attack == AT_FAIR){
+	if(my_hitboxID.hbox_num == 1){
+		old_hsp = -3*spr_dir;
+	}
+}
+
 if(my_hitboxID.attack == AT_UAIR){
 	if(my_hitboxID.hbox_num == 2){
 		hit_player_obj.should_make_shockwave = false;

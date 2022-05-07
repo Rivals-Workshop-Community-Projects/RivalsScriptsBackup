@@ -1,6 +1,6 @@
-if(my_hitboxID.attack == AT_FSPECIAL && missile_sprite == 2 && hit_player_obj.frozen_level < 2){
+if(my_hitboxID.attack == AT_FSPECIAL && missile_sprite == 2 && hit_player_obj.frozen_level < 2 && hit_player_obj.frozen == 0){
     hit_player_obj.frozen_level++;
-}else if(my_hitboxID.attack == AT_FSPECIAL && missile_sprite == 2){
+}else if(my_hitboxID.attack == AT_FSPECIAL && missile_sprite == 2 && hit_player_obj.frozen == 0){
     hit_player_obj.frozen_level = 0;
     hit_player_obj.frozen = 1;
     hit_player_obj.frozen_timer = 160;

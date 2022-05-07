@@ -646,6 +646,70 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Added CSS sound effect");
 						break;
+					case 43:
+						AddText("v1.43 - 5 May 2022");
+						AddText("");
+						AddText("JStrong HSpeed boost 10 -> 8");
+						AddText("");
+						AddText("NSpecial KB (8+0.9 - 11+1.5) -> (8+0.2 - 11+1.5)");
+						AddText("");
+						AddText("UTilt New smear sprites");
+						AddText("UTilt Active window 12 -> 9 (Hitboxes less active)");
+						AddText("UTilt Endlag 7 -> 8 (Before whifflag multiplier)");
+						AddText("UTilt Removed all Extra Hitpause on all hitboxes");
+						AddText("");
+						AddText("FAir New smear sprites");
+						AddText("FAir Adjusted whiff sfx timing");
+						AddText("");
+						AddText("UAir Final Base Hitpause 30 -> 10");
+						AddText("UAir Multihit Hitsun Multiplier 0.3 -> 0.65");
+						AddText("");
+						AddText("DAir Falling Hitstun Multiplier 0.4 -> 0.6");
+						AddText("DAir Landing Base Hitpause 10 -> 13");
+						AddText("DAir Landing Extra Hitpause 0 -> -3");
+						AddText("");
+						AddText("BAir KB 7+0.9 -> 7+0.8");
+						AddText("");
+						AddText("Removed Riptide Alt");
+						break;
+					case 44:
+						AddText("v1.44 - 6 May 2022");
+						AddText("");
+						AddText("Slightly tweaked Landing sprites");
+						AddText("Changed UTilt hit sfx");
+						AddText("");
+						AddText("FTilt New smear sprites");
+						AddText("");
+						AddText("FSpecial Angle 0 -> 30");
+						AddText("");
+						AddText("NSpecial KB (8+0.2 - 11+1.5) -> (8+0.5 - 11+1.5) Oops");
+						AddText("Added NSpecial Air sprites");
+						AddText("");
+						AddText("NAir 2 Angle 10 -> 20");
+						AddText("");
+						AddText("Changed FAir hitfx");
+						AddText("");
+						AddText("BAir Damage 7 -> 9");
+						AddText("");
+						AddText("Fixed DAir platform fall_through code");
+						AddText("DAir now can drift while falling");
+						break;
+					case 45:
+						AddText("v1.45 - 7 May 2022");
+						AddText("");
+						AddText("Using Jump Strongs will now despawn the 2nd (older) portal");
+						AddText("JStrong now has sfx on frame 1");
+						AddText("JStrong Startup 12 -> 14");
+						AddText("JStrong Endlag 8 -> 12 (Before whifflag multiplier)");
+						AddText("JStrong Endlag is now only jump cancellable on hit");
+						AddText("JStrong Base Hitpause 30 -> 20");
+						AddText("");
+						AddText("Hitting FSpecial now resets midair jumps");
+						AddText("");
+						AddText("DSpec Move cooldown 110 frames -> 120 frames");
+						AddText("");
+						AddText("Landing with DAir now has impact");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -728,7 +792,7 @@ if ("rollArray" in self)
 				AddText("Join the Shrine of Light Discord!");
 				AddText("");
 				AddText("Chat with the developer of Lonin and Hikaru");
-				AddText("discord.gg/Kn5ttGx");
+				AddText("discord.gg/w4xqqtrXf8");
 				AddText("");
 				AddText("");
 				AddText("");
@@ -736,7 +800,7 @@ if ("rollArray" in self)
 				DrawTutorialBlock();
 				DrawTutorialText();
 				draw_sprite_ext(sprite_get("discord"), 0, 16, temp_y-76+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
-				draw_sprite_ext(sprite_get("hikaru"), state_timer/(43/16), 64, temp_y-96+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
+				draw_sprite_ext(sprite_get("HYPEkaru"), state_timer/(43/16), 192, temp_y-98+floor(tutAlpha*4)*2-8, 1, 1, 0, c_white, tutAlpha);
 				break;
 			case 8:
 				AddText("Thank you for participating in the ARG");

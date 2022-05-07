@@ -214,7 +214,7 @@ switch attack {
 	
 	case AT_DSPECIAL:
        
-       move_cooldown[AT_DSPECIAL] = 30
+       move_cooldown[AT_DSPECIAL] = 10
        
 	break;
 	

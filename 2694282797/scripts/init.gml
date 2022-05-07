@@ -4,10 +4,10 @@
 
 
 //vfx
-hfx_smaller = hit_fx_create(sprite_get("hfx_smaller"),12);
-hfx_small = hit_fx_create(sprite_get("hfx_small"),16);
-hfx_medium = hit_fx_create(sprite_get("hfx_medium"),18);
-hfx_big = hit_fx_create(sprite_get("hfx_big"),20);
+hfx_smaller = hit_fx_create(sprite_get("hfx_smaller"),14);
+hfx_small = hit_fx_create(sprite_get("hfx_small"),20);
+hfx_medium = hit_fx_create(sprite_get("hfx_medium"),24);
+hfx_big = hit_fx_create(sprite_get("hfx_big"),28);
 
 hue_offset=0; //rainbow alt stuff
 hue_speed=2; //change this to change the speed of the hueshift

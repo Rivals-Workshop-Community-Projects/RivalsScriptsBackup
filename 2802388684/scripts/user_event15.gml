@@ -279,8 +279,37 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.1", "5 May, 2022"); 
+initHeader("General");
+initSection("Shadowclones from non Dspecial moves stay out longer: 80 --> 100 frames");
+initSection("Next patch: v1.2 added the Sexy reverse jutsu sprites so not yet but you can still use the code for it so its ready when its done");
+initHeader("UTilt - Nerfs");
+initSection("startup: 8 --> 10 frames");
+initSection("endlag: 18 --> 20 frames");
+initSection("knockback scaling: 1.125 --> 1");
+initHeader("FStrong - Nerfs, Buffs");
+initSection("startup: 8 --> 10 frames");
+initSection("endlag: 17 --> 20 frames");
+initSection("damage: 10% --> 11%");
+initSection("knockback scaling: 1.125 --> 0.8");
+initHeader("Dstrong - Nerfs");
+initSection("startup: 6 --> 8 frames");
+initSection("endlag: 14 --> 19 frames");
+initHeader("N-Air - Fixes, Nerfs");
+initSection("fixed N-air hitboxes at the end of the attack to match removing of the hitbox when the kick ends");
+initSection("landing lag: 4 --> 5 frames");
+initHeader("F-Air - Nerfs");
+initSection("Startup: 6 --> 8 frames");
+initSection("endlag: 23 --> 28 frames");
+initSection("landing lag: 6 --> 8 frames");
+initHeader("B-air - Nerfs, Buffs");
+initSection("base knockback: 8 --> 9");
+initSection("knockback scaling: 0.8 --> 0.6");
+initHeader("FSpecial - Fixes, Nerfs:");
+initSection("the Throw animation now matches abit better with when thrown clone spawns");
+initSection("cooldown: 20 --> 40 frames");
 
-initPatch("1.0", "30 April, 2022");
+initPatch("1.0", "1 May, 2022");
 initWords_ext("(Changes from Naruto Uzumaki)", fa_center, c_white, 0, false);
 initHeader("General");
 initSection("Released");
@@ -291,7 +320,7 @@ initSection("Released");
 
 // other patches go here...
 
-initPatch("1.0", "42 Shmebruary, 2021"); // (replace the date lol)
+initPatch("1.0", "1 May, 2022"); // (replace the date lol)
 initHeader("General");
 initSection("The character was released.");
 

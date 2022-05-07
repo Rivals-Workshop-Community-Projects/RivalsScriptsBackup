@@ -33,13 +33,13 @@ switch (attack){
         window = 4;
         window_timer = 0;
         if(items_select[0] == 1 || items_select[1] == 1 || items_select[2] == 1) && hud_beam_cooldown == 0{
-            hud_beam_cooldown = 800;
+            hud_beam_cooldown = 900;
             power_ups[0] = items_select[0];
             power_ups[1] = items_select[1];
             power_ups[2] = items_select[2];
         }
         if(items_select[3] == 1 || items_select[4] == 1) && hud_missile_cooldown == 0{
-            hud_missile_cooldown = 800;
+            hud_missile_cooldown = 900;
             power_ups[3] = items_select[3];
             power_ups[4] = items_select[4];
         }
@@ -480,6 +480,7 @@ switch (attack){
         set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 8);
     }
     if(window == 1){
+        char_height = lerp(char_height, 80, 0.6);
         if(right_down){
             spr_dir = 1;
         }else if(left_down){
@@ -511,6 +512,8 @@ switch (attack){
             set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 60);
             set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 60);
         }
+    }else{
+        char_height = lerp(char_height, 60, 0.6);
     }
     if(collision_point(x + 24, y - 20, asset_get("solid_32_obj"), false, true) || collision_point(x - 24, y - 20, asset_get("solid_32_obj"), false, true)) && (window == 3 || window == 4 || window == 5){
         set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 8);
@@ -596,7 +599,6 @@ switch (attack){
         if(missile_amount > 0){
             missile_amount--;
         }
-        move_cooldown[AT_FSPECIAL] = 30;
     }
     if(missile_amount == 0){
         set_num_hitboxes(AT_FSPECIAL, 0);
@@ -611,6 +613,7 @@ switch (attack){
         set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 50);
         set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
         set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
+        move_cooldown[AT_FSPECIAL] = 30;
     }else if(missile_sprite == 0){
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("missile_shot"));
         set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
@@ -619,14 +622,15 @@ switch (attack){
         set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
         set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.7);
         set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
+        move_cooldown[AT_FSPECIAL] = 30;
     }else if(missile_sprite == 2){
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("ice_shot"));
         set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
         set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-        set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 26);
         set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
         set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.7);
         set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
+        move_cooldown[AT_FSPECIAL] = 20;
     }
     break;
     

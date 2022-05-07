@@ -68,7 +68,6 @@ set_window_value(AT_DAIR, 8, AG_WINDOW_SFX, sound_get("nsmbwiiGroundPound3"));
 
 set_num_hitboxes(AT_DAIR,3);
 
-set_hitbox_value(AT_DAIR, 1, HG_MUNO_HITBOX_NAME, "Early Spike Hitbox");
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 4);
@@ -88,7 +87,6 @@ set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("nsmbwiiGroundPound2"));
 set_hitbox_value(AT_DAIR, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_DAIR, 1, HG_SDI_MULTIPLIER, 1);
 
-set_hitbox_value(AT_DAIR, 2, HG_MUNO_HITBOX_NAME, "Bounce Up Hitbox");
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW_CREATION_FRAME, 4);
@@ -107,7 +105,6 @@ set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("nsmbwiiGroundPound2"));
 set_hitbox_value(AT_DAIR, 2, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_DAIR, 2, HG_SDI_MULTIPLIER, 0.1);
 
-set_hitbox_value(AT_DAIR, 3, HG_MUNO_HITBOX_NAME, "Landing Hitbox");
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 3, HG_WINDOW, 8);
 set_hitbox_value(AT_DAIR, 3, HG_LIFETIME, 6);

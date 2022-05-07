@@ -25,7 +25,7 @@ if (attack == AT_DSPECIAL){
     		    if((!free || other.destroyed)){
     			    var dist = point_distance(other.x, other.y-10, x, y); //distance
     			    if(dist <= 40 && !other.destroyed){
-    			        ground_friction = 0.05;wave_friction = 0;wave_land_adj = 1.55;
+    			        ground_friction = 0.05;wave_friction = 0;wave_land_adj = 2.0;
     			    }else{
     			        //ground_friction = 0.3;wave_friction = 0.1;wave_land_adj = 1.15;
     			    }
@@ -54,6 +54,11 @@ if (attack == AT_FAIR){
 if (attack == AT_DTILT){
     if(hbox_num == 4){
         hsp *= 0.99;
+        if(vsp < 6){
+			kb_angle = 45;kb_scale = 0.7;kb_value = 6;
+		}else{
+			kb_angle = 270;kb_scale = 0.5;kb_value = 5;
+		}
         if(!free){
             destroyed = true;
         }

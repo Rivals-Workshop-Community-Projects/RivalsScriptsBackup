@@ -108,7 +108,7 @@ with asset_get("oPlayer") {
            with other {
            fx_s = hit_fx_create( sprite_get( "fx_snap" ), 20 );       
            spawn_hit_fx(other.x,other.y - 120, fx_s)
-           take_damage(player,-1,floor(other.Tengia_pain*-0.35)) 
+           take_damage(player,-1,floor(other.Tengia_pain*-0.4)) 
            fxds = spawn_hit_fx(x, y - 20, fx_ds)
            fxds.depth = -15
            set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, 0 );
