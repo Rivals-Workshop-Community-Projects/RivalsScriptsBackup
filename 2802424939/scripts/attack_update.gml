@@ -196,7 +196,10 @@ switch(attack)
                         set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 20);
                         x = stopwatch.x + 2;
                         y = stopwatch.y + 36;
+                        x = stopwatch2.x + 2;
+                        y = stopwatch2.y + 36;                        
                         instance_destroy(stopwatch);
+                        instance_destroy(stopwatch2);                        
                         with(pHitBox)
                         {
                             if (player == other.player)
@@ -239,11 +242,14 @@ switch(attack)
             if (!instance_exists(stopwatch))
             {
                 stopwatch = instance_create(x, y + 20, "obj_article1");
+                stopwatch2 = instance_create(x, y + 20, "obj_article2");
             }
             else if (instance_exists(stopwatch))
             {
                 stopwatch.x = x;
                 stopwatch.y = y+20;
+                stopwatch2.x = x;
+                stopwatch2.y = y+20;
             }
         }
         else if (window == 3 and window_timer == get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH))

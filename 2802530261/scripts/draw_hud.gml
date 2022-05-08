@@ -32,12 +32,12 @@ if(menu_y < -12){
 }
 draw_sprite_ext(sprite_get("hud2"), 0, temp_x - 10, temp_y + menu_y, 2, 2, 0, c_white, 1);
 if(menu_y < -12){
-    draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 0: 1), temp_x, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 2: 3), temp_x + 24, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 4: 5), temp_x + 48, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_items"), (hud_missile_cooldown = 0? 6: 7), temp_x + 72, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_items"), (hud_missile_cooldown = 0? 8: 9), temp_x + 96, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_items"), (hud_flash_shift_cooldown = 0? 10: 11), temp_x + 116, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 0: (has_rune("N")? 0: 1)), temp_x, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 2: (has_rune("N")? 2: 3)), temp_x + 24, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 4: (has_rune("N")? 4: 5)), temp_x + 48, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_items"), (hud_missile_cooldown = 0? 6: (has_rune("N")? 6: 7)), temp_x + 72, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_items"), (hud_missile_cooldown = 0? 8: (has_rune("N")? 8: 9)), temp_x + 96, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_items"), (hud_flash_shift_cooldown = 0? 10: (has_rune("N")? 10: 11)), temp_x + 116, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
     if(menu_alpha < 1){
         menu_alpha += 0.04;
     }else{
@@ -118,14 +118,14 @@ draw_sprite_ext(sprite_get("hud_numbers"), floor((power_bomb_amount % 100) * 0.1
 
 //bars
 if(hud_beam_cooldown > 300 || hud_beam_cooldown == 0){
-    draw_rectangle_color(temp_x + 2, temp_y + 4 + menu_y, temp_x + 3 + (hud_beam_cooldown = 0? 62: (hud_beam_cooldown - 300) / 600 * 62), temp_y + 5 + menu_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
+    draw_rectangle_color(temp_x + 2, temp_y + 4 + menu_y, temp_x + 3 + (hud_beam_cooldown = 0? 62: (hud_beam_cooldown - 300) / (has_rune("A")? 1200: 600) * 62), temp_y + 5 + menu_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
 }else if(hud_beam_cooldown <= 300 || hud_beam_cooldown > 0){
     draw_set_alpha(0.6);
     draw_rectangle_color(temp_x + 2, temp_y + 4 + menu_y, temp_x + 3 + (hud_beam_cooldown = 0? 62: 62 - hud_beam_cooldown / 300 * 62), temp_y + 5 + menu_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
     draw_set_alpha(1);
 }
 if(hud_missile_cooldown > 300 || hud_missile_cooldown == 0){
-    draw_rectangle_color(temp_x + 74, temp_y + 4 + menu_y, temp_x + 75 + (hud_missile_cooldown = 0? 56: (hud_missile_cooldown - 300) / 600 * 56), temp_y + 5 + menu_y, c_red, c_red, c_red, c_red, false);
+    draw_rectangle_color(temp_x + 74, temp_y + 4 + menu_y, temp_x + 75 + (hud_missile_cooldown = 0? 56: (hud_missile_cooldown - 300) / (has_rune("A")? 1200: 600) * 56), temp_y + 5 + menu_y, c_red, c_red, c_red, c_red, false);
 }else if(hud_missile_cooldown <= 300 || hud_missile_cooldown > 0){
     draw_set_alpha(0.6);
     draw_rectangle_color(temp_x + 74, temp_y + 4 + menu_y, temp_x + 75 + (hud_missile_cooldown = 0? 56: 56 - hud_missile_cooldown / 300 * 56), temp_y + 5 + menu_y, c_red, c_red, c_red, c_red, false);

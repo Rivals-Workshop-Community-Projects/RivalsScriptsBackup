@@ -150,6 +150,26 @@ if (get_gameplay_time() < 120){
 		michigan = true;
 			}
 		}
+	}  if(get_player_color(player) = 21){
+		//Kazuya Mishima
+		if(michigan == false){
+			if(attack_down && taunt_down){
+		white_flash_timer = 18;
+		sound_play(asset_get("mfx_levelup"));  
+		sound_play(sound_get("SmashLeakInnerRealVineBoomPoo"), false, noone, 3.5, 1);
+	set_color_profile_slot( 21, 0, 166, 121, 181 ); //Gumbo Skin 1
+    set_color_profile_slot( 21, 1, 73, 42, 82 ); //Gumb Skin 2
+    set_color_profile_slot( 21, 2, 232, 232, 232 ); //Jeans
+    set_color_profile_slot( 21, 3, 232, 232, 232 ); //Hoodie
+    set_color_profile_slot( 21, 4, 255, 87, 87 ); //Eyes
+    set_color_profile_slot( 21, 5, 212, 212, 212 ); //Po Skin 1
+    set_color_profile_slot( 21, 6, 135, 135, 135 ); //Po Skin 2
+    set_color_profile_slot( 21, 7, 199, 74, 52 ); //Apron
+		avocado = true;
+		init_shader();
+		michigan = true;
+			}
+		}
 	}
 }
 

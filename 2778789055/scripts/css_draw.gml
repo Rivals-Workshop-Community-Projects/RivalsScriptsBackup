@@ -2,8 +2,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "30";
-patch_month = "APR";
+patch_day = "7";
+patch_month = "MAY";
  
 var num_alts = 23;
 var alt_cur = get_player_color(player);
@@ -18,7 +18,9 @@ if ("prev_alt" in self && prev_alt != alt){
      drawtime = 0
 }
 
+if(drawtime < 5){
 drawtime += 1
+}
 prev_alt = alt;
  
  

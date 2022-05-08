@@ -93,4 +93,26 @@ if(get_player_color(player) = 15){
     }
 }
 
+if(get_player_color(player) = 21){
+    if(avocado = true){
+        //Kazuya Mishima
+    set_character_color_slot( 0, 166, 121, 181 ); //Gumbo Skin 1
+    set_character_color_slot( 1, 73, 42, 82 ); //Gumb Skin 2
+    set_character_color_slot( 2, 232, 232, 232 ); //Jeans
+    set_character_color_slot( 3, 232, 232, 232 ); //Hoodie
+    set_character_color_slot( 4, 255, 87, 87 ); //Eyes
+    set_character_color_slot( 5, 212, 212, 212 ); //Po Skin 1
+    set_character_color_slot( 6, 135, 135, 135 ); //Po Skin 2
+    set_character_color_slot( 7, 199, 74, 52 ); //Apron
+    set_article_color_slot( 0, 166, 121, 181 ); //Gumbo Skin 1
+    set_article_color_slot( 1, 73, 42, 82 ); //Gumb Skin 2
+    set_article_color_slot( 2, 232, 232, 232 ); //Jeans
+    set_article_color_slot( 3, 232, 232, 232 ); //Hoodie
+    set_article_color_slot( 4, 255, 87, 87 ); //Eyes
+    set_article_color_slot( 5, 212, 212, 212 ); //Po Skin 1
+    set_article_color_slot( 6, 135, 135, 135 ); //Po Skin 2
+    set_article_color_slot( 7, 199, 74, 52 ); //Apron
+    }
+}
+
 

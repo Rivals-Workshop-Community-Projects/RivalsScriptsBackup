@@ -81,7 +81,7 @@ set_window_value(AT_USPECIAL, 8, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 8, AG_WINDOW_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
 
 //Aerial End
-set_window_value(AT_USPECIAL, 9, AG_WINDOW_TYPE, 7);
+set_window_value(AT_USPECIAL, 9, AG_WINDOW_TYPE, (has_rune("F")? 0: 7));
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 41);

@@ -151,7 +151,7 @@ if(attack == AT_NSPECIAL){
 if(attack == AT_FSPECIAL){
 	if(window == 1 && window_timer = get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH)-1){
 		move_cooldown[AT_FSPECIAL] = 240;
-		move_cooldown[AT_FSPECIAL_2] = 30;
+		move_cooldown[AT_FSPECIAL_2] = 60;
 		has_shrimp = false;
 	}
 }

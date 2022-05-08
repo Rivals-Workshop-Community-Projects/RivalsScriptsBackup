@@ -248,6 +248,15 @@ set_color_profile_slot( 13, 4, 255, 255, 255 ); //Eyes
 set_color_profile_slot( 13, 5, 255, 200, 0 ); //Po Skin 1
 set_color_profile_slot( 13, 6, 158, 158, 158 ); //Po Skin 2
 set_color_profile_slot( 13, 7, 49, 222, 198 ); //Apron
+}if(get_player_color(player) == 21){
+set_color_profile_slot( 21, 0, 129, 143, 83 ); //Gumbo Skin 1
+set_color_profile_slot( 21, 1, 227, 231, 187 ); //Gumb Skin 2
+set_color_profile_slot( 21, 2, 82, 86, 69 ); //Jeans
+set_color_profile_slot( 21, 3, 35, 32, 54 ); //Hoodie
+set_color_profile_slot( 21, 4, 163, 46, 39 ); //Eyes
+set_color_profile_slot( 21, 5, 79, 150, 156 ); //Po Skin 1
+set_color_profile_slot( 21, 6, 206, 193, 130 ); //Po Skin 2
+set_color_profile_slot( 21, 7, 63, 83, 110 ); //Apron
 }
 
 // MunoPhone Touch code - don't touch

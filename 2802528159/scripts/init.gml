@@ -14,12 +14,12 @@ char_height         = 100;       //                  not zetterburn's. this is j
 knockback_adj       = 0.7;		// 0.9  -  1.2
 
 // Ground movement
-walk_speed          = 3.25;		// 3    -  4.5
+walk_speed          = (has_rune("D")? 7.5: 3.25);		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 30;		// 6
 initial_dash_time   = 14;		// 8    -  16       zetterburn's is 14
-initial_dash_speed  = 6;		// 4    -  9
-dash_speed          = 6.5;		// 5    -  9
+initial_dash_speed  = (has_rune("D")? 10: 6);		// 4    -  9
+dash_speed          = (has_rune("D")? 10.5: 6.5);		// 5    -  9
 dash_turn_time      = 30;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 12;		// 4    -  6        zetterburn's is 4
@@ -215,6 +215,9 @@ hit_med = hit_fx_create(sprite_get("orb_hit_med"), 14);
 hit_big = hit_fx_create(sprite_get("orb_hit_big"), 20);
 shock_victim = noone;
 emmi_shock_timer = 0;
+best_target = noone;
+ae=0;
+enemy_dir = 0;
 
 //uspecial variables
 head_rot = 0;
@@ -244,22 +247,6 @@ set_hit_particle_sprite(2, sprite_get("empty"));
 //turn
 turned = 0;
 
-/*empty attack list
-AT_NSPECIAL_2
-AT_NSPECIAL_AIR
-AT_FSPECIAL_2
-AT_FSPECIAL_AIR
-AT_USPECIAL_2
-AT_DSPECIAL_2
-AT_FSTRONG_2
-AT_USTRONG_2
-AT_DSTRONG_2  used particle_effects.gml
-AT_FTHROW
-AT_UTHROW
-AT_DTHROW  used ceilingjump.gml
-AT_NTHROW  used walljump.gml
-AT_TAUNT_2
-AT_EXTRA_1 used climb_1.gml
-AT_EXTRA_2 used climb_2.gml
-AT_EXTRA_3
-*/
+/*
+EMMI
+3-scanner bar doesn't drain

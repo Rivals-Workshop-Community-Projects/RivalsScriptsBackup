@@ -66,22 +66,22 @@ if(attack == AT_TAUNT && menu_y < -12 && menu_version == 0){
     draw_sprite_ext(sprite_get("hud_item_cursor"), 0, x - 12, y - 92, 2, 2, 0, c_white, abs(menu_alpha));
     switch(item_id){
         case 0:
-            draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 0: 1), x - 10, y - 90, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 0: (has_rune("N")? 0: 1)), x - 10, y - 90, 2, 2, 0, c_white, 1);
         break;
         case 1:
-            draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 2: 3), x - 10, y - 90, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 2: (has_rune("N")? 2: 3)), x - 10, y - 90, 2, 2, 0, c_white, 1);
         break;
         case 2:
-            draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 4: 5), x - 10, y - 90, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 4: (has_rune("N")? 4: 5)), x - 10, y - 90, 2, 2, 0, c_white, 1);
         break;
         case 3:
-            draw_sprite_ext(sprite_get("hud_items"), (hud_missile_cooldown = 0? 6: 7), x - 10, y - 90, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_items"), (hud_missile_cooldown = 0? 6: (has_rune("N")? 6: 7)), x - 10, y - 90, 2, 2, 0, c_white, 1);
         break;
         case 4:
-            draw_sprite_ext(sprite_get("hud_items"), (hud_missile_cooldown = 0? 8: 9), x - 10, y - 90, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_items"), (hud_missile_cooldown = 0? 8: (has_rune("N")? 8: 9)), x - 10, y - 90, 2, 2, 0, c_white, 1);
         break;
         case 5:
-            draw_sprite_ext(sprite_get("hud_items"), (hud_flash_shift_cooldown = 0? 10: 11), x - 10, y - 90, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_items"), (hud_flash_shift_cooldown = 0? 10: (has_rune("N")? 10: 11)), x - 10, y - 90, 2, 2, 0, c_white, 1);
         break;
     }
 }

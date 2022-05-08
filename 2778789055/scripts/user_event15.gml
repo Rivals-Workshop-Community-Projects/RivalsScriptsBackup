@@ -214,7 +214,8 @@ initWords("The secret alts are on the following alts:
 Fishing Trout Lads - Avocado, snappystunner
 Something Something Flordia Alligator - Old TAG color scheme
 Odor Blocker - BLW Champ, Jordan
-Leakage - Best in the World, BendyJW");
+Leakage - Best in the World, BendyJW
+From Mud to Sludge - Kazuya Mishima, Jay/InnerOtaku");
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -253,6 +254,25 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.18", "7 May, 2022");
+
+initHeader("Nerfs:");
+initSection("- Jab 2 is no longer untechable
+- Dtilt's hitboxes are a little smaller now
+- Bair angle changed, 145 -> 135
+- Dair's kbscaling was reduced, 0.7 -> 0.6
+- Fspecial's projectile now has a 0.65 hitstun mult
+- Fspecial now has 4 more frames of endlag
+- Fspecial now puts Shrimpless Fspecial into cooldown for longer after it's use
+- Shrimpless Fspecial's projectiles now have a 0.5 hitstun mult
+- Shrimpless Fspecial now has 4 more frames of endlag
+");
+
+initHeader("Changes:");
+initSection("= Added one more secret alt
+");
+
+//
 initPatch("1.17", "25 April, 2022");
 
 initHeader("Nerfs:");

@@ -42,7 +42,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.2);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.35);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

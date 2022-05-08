@@ -207,7 +207,7 @@ if attack == AT_USTRONG{
 	
 	
 	if window == 2 && window_timer == 6 && !hitpause{
-		vsp = -12
+		vsp = -10
 		hsp = 2*spr_dir
 		spawn_hit_fx(x + 20*spr_dir ,y - 60,fc)
 	}
@@ -229,7 +229,8 @@ if attack == AT_USTRONG{
 
 if attack == AT_FSTRONG{
 
-
+    
+  
    if has_hit_player {
    	window_timer += 0.3
    }

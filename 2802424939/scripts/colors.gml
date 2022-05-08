@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 2, 34, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Rumia
 set_color_profile_slot( 1, 0, 59, 59, 59 ); //Dress
@@ -146,45 +146,55 @@ set_color_profile_slot( 11, 5, 34, 32, 37 ); //Shoe
 set_color_profile_slot( 11, 6, 230, 54, 56 ); //Tie
 set_color_profile_slot( 11, 7, 88, 227, 159 ); //White
 
-// Sakuya Belmont
-set_color_profile_slot( 12, 0, 61, 61, 61 ); //Dress
-set_color_profile_slot( 12, 1, 107, 107, 107 ); //Eyes
-set_color_profile_slot( 12, 2, 251, 253, 255 ); //Hair
-set_color_profile_slot( 12, 3, 248, 224, 208 ); //Skin
-set_color_profile_slot( 12, 4, 253, 239, 101 ); //Ribbon
-set_color_profile_slot( 12, 5, 36, 36, 36 ); //Shoe
-set_color_profile_slot( 12, 6, 253, 239, 101 ); //Tie
-set_color_profile_slot( 12, 7, 251, 253, 255 ); //White
+// Kasen
+set_color_profile_slot( 12, 0, 163, 200, 97 ); //Dress
+set_color_profile_slot( 12, 1, 164, 19, 36 ); //Eyes
+set_color_profile_slot( 12, 2, 255, 163, 192 ); //Hair
+set_color_profile_slot( 12, 3, 255, 215, 198 ); //Skin
+set_color_profile_slot( 12, 4, 202, 74, 90 ); //Ribbon
+set_color_profile_slot( 12, 5, 223, 48, 34 ); //Shoe
+set_color_profile_slot( 12, 6, 202, 74, 90 ); //Tie
+set_color_profile_slot( 12, 7, 255, 229, 224 ); //White
 
-// Hisui
-set_color_profile_slot( 13, 0, 126, 78, 85 ); //Dress
-set_color_profile_slot( 13, 1, 113, 113, 176 ); //Eyes
-set_color_profile_slot( 13, 2, 238, 99, 126 ); //Hair
+// Sakuya Belmont
+set_color_profile_slot( 13, 0, 61, 61, 61 ); //Dress
+set_color_profile_slot( 13, 1, 107, 107, 107 ); //Eyes
+set_color_profile_slot( 13, 2, 251, 253, 255 ); //Hair
 set_color_profile_slot( 13, 3, 248, 224, 208 ); //Skin
-set_color_profile_slot( 13, 4, 187, 41, 71 ); //Ribbon
-set_color_profile_slot( 13, 5, 23, 23, 20 ); //Shoe
-set_color_profile_slot( 13, 6, 235, 0, 0 ); //Tie
+set_color_profile_slot( 13, 4, 253, 239, 101 ); //Ribbon
+set_color_profile_slot( 13, 5, 36, 36, 36 ); //Shoe
+set_color_profile_slot( 13, 6, 253, 239, 101 ); //Tie
 set_color_profile_slot( 13, 7, 251, 253, 255 ); //White
 
-// Kronii
-set_color_profile_slot( 14, 0, 71, 71, 71 ); //Dress
-set_color_profile_slot( 14, 1, 99, 160, 230 ); //Eyes
-set_color_profile_slot( 14, 2, 83, 82, 135 ); //Hair
-set_color_profile_slot( 14, 3, 255, 234, 228 ); //Skin
-set_color_profile_slot( 14, 4, 50, 71, 166 ); //Ribbon
-set_color_profile_slot( 14, 5, 50, 71, 166 ); //Shoe
-set_color_profile_slot( 14, 6, 122, 217, 210 ); //Tie
+// Hisui
+set_color_profile_slot( 14, 0, 126, 78, 85 ); //Dress
+set_color_profile_slot( 14, 1, 113, 113, 176 ); //Eyes
+set_color_profile_slot( 14, 2, 238, 99, 126 ); //Hair
+set_color_profile_slot( 14, 3, 248, 224, 208 ); //Skin
+set_color_profile_slot( 14, 4, 187, 41, 71 ); //Ribbon
+set_color_profile_slot( 14, 5, 23, 23, 20 ); //Shoe
+set_color_profile_slot( 14, 6, 235, 0, 0 ); //Tie
 set_color_profile_slot( 14, 7, 251, 253, 255 ); //White
 
+// Kronii
+set_color_profile_slot( 15, 0, 71, 71, 71 ); //Dress
+set_color_profile_slot( 15, 1, 99, 160, 230 ); //Eyes
+set_color_profile_slot( 15, 2, 83, 82, 135 ); //Hair
+set_color_profile_slot( 15, 3, 255, 234, 228 ); //Skin
+set_color_profile_slot( 15, 4, 50, 71, 166 ); //Ribbon
+set_color_profile_slot( 15, 5, 50, 71, 166 ); //Shoe
+set_color_profile_slot( 15, 6, 122, 217, 210 ); //Tie
+set_color_profile_slot( 15, 7, 251, 253, 255 ); //White
+
 // Dio
-set_color_profile_slot( 15, 0, 244, 194, 52 ); //Dress
-set_color_profile_slot( 15, 1, 240, 61, 46 ); //Eyes
-set_color_profile_slot( 15, 2, 230, 206, 97 ); //Hair
-set_color_profile_slot( 15, 3, 247, 220, 183 ); //Skin
-set_color_profile_slot( 15, 4, 100, 162, 100 ); //Ribbon
-set_color_profile_slot( 15, 5, 244, 194, 52 ); //Shoe
-set_color_profile_slot( 15, 6, 100, 162, 100 ); //Tie
-set_color_profile_slot( 15, 7, 71, 71, 71 ); //White
+set_color_profile_slot( 16, 0, 244, 191, 68 ); //Dress
+set_color_profile_slot( 16, 1, 240, 61, 46 ); //Eyes
+set_color_profile_slot( 16, 2, 230, 206, 97 ); //Hair
+set_color_profile_slot( 16, 3, 255, 225, 212 ); //Skin
+set_color_profile_slot( 16, 4, 100, 162, 100 ); //Ribbon
+set_color_profile_slot( 16, 5, 244, 194, 52 ); //Shoe
+set_color_profile_slot( 16, 6, 100, 162, 100 ); //Tie
+set_color_profile_slot( 16, 7, 92, 92, 92 ); //White
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

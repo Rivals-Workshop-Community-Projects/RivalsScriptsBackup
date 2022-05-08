@@ -3,7 +3,7 @@ switch(attack)
 	case AT_BAIR:
 		if (instance_exists(player_id.stopwatch))
 		{
-			if (place_meeting(x,y,player_id.stopwatch) and freeze_lockout != 2)
+			if (place_meeting(x,y,player_id.stopwatch) and freeze_lockout != 2 and player_id.player == player)
 			{
 				stored_hsp = hsp;
 				frozen = 0;
@@ -48,7 +48,7 @@ switch(attack)
 	case AT_NSPECIAL:
 		if (instance_exists(player_id.stopwatch))
 		{
-			if (place_meeting(x,y,player_id.stopwatch) and freeze_lockout != 2)
+			if (place_meeting(x,y,player_id.stopwatch) and freeze_lockout != 2 and player_id.player == player)
 			{
 				stored_hsp = hsp;
 				frozen = 0;
@@ -97,7 +97,7 @@ switch(attack)
 		}
 		if (instance_exists(player_id.stopwatch))
 		{
-			if (place_meeting(x,y,player_id.stopwatch) and freeze_lockout != 2)
+			if (place_meeting(x,y,player_id.stopwatch) and freeze_lockout != 2 and player_id.player == player)
 			{
 				stored_hsp = hsp;
 				stored_vsp = vsp;

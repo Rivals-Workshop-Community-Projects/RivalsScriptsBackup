@@ -48,6 +48,7 @@ sprite_change_offset("dspecial", 108, 146);
 sprite_change_offset("stopwatch", 64, 64);
 sprite_change_offset("stopwatch_field", 64, 64);
 sprite_change_offset("stopwatch_mask", 64, 64);
+sprite_change_offset("stopwatch_mask2", 64, 64);
 sprite_change_offset("uspecial_fx", 64, 100);
 sprite_change_offset("card", 108, 146);
 sprite_change_offset("knife", 108, 118);

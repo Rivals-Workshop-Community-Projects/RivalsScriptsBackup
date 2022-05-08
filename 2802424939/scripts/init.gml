@@ -105,6 +105,7 @@ cooldown = 0;
 
 //stopwatch & knives
 stopwatch = noone;
+stopwatch2 = noone;
 knife_hsp = 0;
 
 airborne = 0;

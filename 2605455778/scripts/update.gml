@@ -240,12 +240,19 @@ with(asset_get("oPlayer")){
     }
 }
 if(state == PS_PARRY_START && prev_state == PS_CROUCH && !parry_cooldown){
+    hurtboxID.sprite_index = sprite_get("hurtBoxYerry");
     super_armor = true;
-    state = PS_ATTACK_GROUND;
     attack = AT_FTILT;
     window = 4;
     window_timer = 0;
+    state = PS_ATTACK_GROUND;
     //print_debug("Yoshi Parry");
+}
+if(attack == AT_FTILT && window == 4 && window_timer >= 6){
+    hurtboxID.sprite_index = sprite_get("hurtBox");
+}
+if(hurtboxID.sprite_index == sprite_get("hurtBoxYerry") && state != PS_ATTACK_GROUND){
+    hurtboxID.sprite_index = sprite_get("hurtBox");
 }
 if(attack == AT_FTILT && window == 4){
     if(window_timer <= 2){

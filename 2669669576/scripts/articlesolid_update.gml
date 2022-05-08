@@ -12,6 +12,10 @@ if(state == 1){
 } else if(state == 2){
     ignores_walls = false;
     can_be_grounded = true;
+    vsp = 0;
+    if(life > 60){
+    	vsp = 1;
+    }
     var proj_size = 0;
     var proj_y = 0;
     with(pHitBox){
@@ -25,7 +29,6 @@ if(state == 1){
             proj_size = hbox_num;
             proj_y = y;
             destroyed = true;
-            
         }
     }
     if(proj_size != 0){
@@ -39,7 +42,7 @@ if(state == 1){
         }
     }
     
-    vsp = 0;
+    
     if(free){
         with oPlayer{
             if(place_meeting(x, y+4, other) and other.y >= y){
@@ -54,6 +57,9 @@ if(state == 1){
         sprite_index = sprite_get("wall_despawn");
     }
     hit_detection();
+    
+    if(y > room_height+120) instance_destroy(self);
+    
 } else if (state == 3){
     sprite_index = sprite_get("wall_break");
     if(hitstop <= 0){

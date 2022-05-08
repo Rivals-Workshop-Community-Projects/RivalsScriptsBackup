@@ -2,12 +2,16 @@ if (get_gameplay_time() mod 12 = 0)
 {
     image_index += 1;
 }
-with (pHurtBox) {
-    if (place_meeting(x, y, other)) {
-        if ((playerID.state == PS_HITSTUN || playerID.state == PS_HITSTUN_LAND || playerID.state == PS_TUMBLE) and (playerID.hitpause = false) and (playerID.state_cat != SC_GROUND_COMMITTED and playerID.state_cat != SC_GROUND_NEUTRAL and playerID.invincible == false) and player != other.player)
+
+with(pHitBox)
+{
+    if (place_meeting(x, y, other))
+    {
+        if (player_id != other.player_id)
         {
-            other.unfreeze = 1;
-        }
+            if (type == 1)
+            other.player_id.stopwatch.destroy = 1;
+        }  
     }
 }
 

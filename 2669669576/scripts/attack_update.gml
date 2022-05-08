@@ -395,7 +395,7 @@ switch(attack){
 			if(window > 4){
 				can_wall_jump = true;
 			}
-			if(window == 3) and !free {
+			if(window == 3) and !free and !was_parried {
 				hsp = clamp(hsp, -8, 8); 
 				vsp = clamp(vsp, -9, 9);
 				sound_stop(sound_get("teleport_start"));
@@ -406,7 +406,7 @@ switch(attack){
 				vsp = clamp(vsp, -3, 4);
 				hsp = clamp(hsp, -4, 4);
 			}
-			if(window == 5 and window_timer == get_window_value(attack, 5, AG_WINDOW_LENGTH)){
+			if(window == 5 and !was_parried and window_timer == get_window_value(attack, 5, AG_WINDOW_LENGTH)){
 				if(!free){
 					set_state( PS_LANDING_LAG );
 					landing_lag_time = 8;

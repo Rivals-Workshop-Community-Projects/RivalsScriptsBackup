@@ -11,6 +11,7 @@ shader_start();
 draw_sprite_ext(sprite_get("shrimp_hud"), 0, temp_x+0, temp_y-34, 2, 2, 0, temp_color, 1);
 shader_end();
 
+//article icon
 with obj_article1 if player_id == other{
 	var leeway = 0;
 	var z = y - 20;
@@ -50,9 +51,31 @@ draw_debug_text(temp_x + 100, temp_y - 32, string(gumbo_scalding_timer));
 draw_debug_text(temp_x + 200, temp_y - 52, string(gumbo_is_scalding));
 draw_debug_text(temp_x + 100, temp_y - 52, string(is_scalding));
 draw_debug_text(temp_x + 100, temp_y - 52, string(hit_player_obj.other_scalding_timer));
-*/
 
+draw_sprite(sprite_get("speech_hud"), 0, temp_x + -86, temp_y + -78);
+	temp_x = temp_x;
+	temp_y = temp_y;
+	var box_w = 206;
+	textDraw(temp_x + 8, temp_y - 66, "fName", c_white, 16, box_w, fa_left, 1, false, 1, textbox_text);
+*/
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 muno_event_type = 5;
 user_event(14);
+
+#define textDraw(x1, y1, font, color, lineb, linew, align, scale, outline, alpha, text)
+
+draw_set_font(asset_get(font));
+draw_set_halign(align);
+
+if outline{
+    for (i = -1; i < 2; i++){
+        for (j = -1; j < 2; j++){
+            draw_text_ext_transformed_color(x1 + i * 2, y1 + j * 2, text, lineb, linew, scale, scale, 0, c_black, c_black, c_black, c_black, alpha);
+        }
+    }
+}
+
+if alpha draw_text_ext_transformed_color(x1, y1, text, lineb, linew, scale, scale, 0, color, color, color, color, alpha);
+
+return [string_width_ext(text, lineb, linew), string_height_ext(text, lineb, linew)];

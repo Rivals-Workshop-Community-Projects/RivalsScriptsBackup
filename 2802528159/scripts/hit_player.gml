@@ -60,13 +60,13 @@ if(my_hitboxID.attack == AT_DSPECIAL){
     hit_player_obj.emmi_shocked = true;
     switch(orb_level){
         case 0:
-        emmi_shock_timer = 70;
+        emmi_shock_timer = (has_rune("N")? 100: 70);
         break;
         case 1:
-        emmi_shock_timer = 120;
+        emmi_shock_timer = (has_rune("N")? 150: 120);
         break;
         case 2:
-        emmi_shock_timer = 150;
+        emmi_shock_timer = (has_rune("N")? 180: 150);
         break;
     }
 }else if(my_hitboxID.attack == AT_DSPECIAL_AIR){

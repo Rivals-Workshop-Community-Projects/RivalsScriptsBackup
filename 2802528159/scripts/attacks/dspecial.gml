@@ -44,7 +44,7 @@ set_num_hitboxes(AT_DSPECIAL, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 16);
-set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 120);
+set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 200);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("orb_small"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);

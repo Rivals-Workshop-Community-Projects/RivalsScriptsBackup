@@ -757,10 +757,10 @@ if(state == PS_CROUCH){
 set_victory_portrait(sprite_get(string(plate_state) + "_portrait"));
 set_victory_sidebar(sprite_get(string(plate_state) + "_result_small"));
 
-if(get_player_damage(player) > 30 && plate_state == 0 && !free){
+if(get_player_damage(player) > (has_rune("H")? 80: 40) && plate_state == 0 && !free){
 	set_attack(AT_TAUNT_2);
     plate_state = 1;
-}else if(get_player_damage(player) <= 30 && plate_state == 1){
+}else if(get_player_damage(player) <= (has_rune("H")? 80: 40) && plate_state == 1){
     plate_state = 0;
 }
 
@@ -771,7 +771,7 @@ if(state == PS_ATTACK_GROUND && attack == AT_TAUNT_2){
 }
 
 if(plate_state == 0){
-    soft_armor = 9999999999999999;
+    soft_armor = 8;
     walk_speed          = 3.25;
     initial_dash_speed  = 6;
     dash_speed          = 6.5;	
@@ -788,7 +788,7 @@ if(state == PS_JUMPSQUAT){
 
 //anger value stuff
 if(anger_value > 0 && anger_state == 2){
-    anger_value--;
+    anger_value -= (has_rune("O")? 0: 1);
 }
 
 if(anger_value < 500 && anger_state != 2){
@@ -839,7 +839,7 @@ if(instance_exists(ice_victim) && ice_victim.emmi_frozen == true){
     ice_victim.state = PS_HITSTUN;
     ice_victim.state_timer = 0;
     if(ice_size == false){
-        ice_victim.hitstop = 80;
+        ice_victim.hitstop = (has_rune("N")? 120: 70);
         ice_size = true;
         ice_victim.y -= 0.1;
     }
@@ -894,7 +894,7 @@ if(!free){
 }
 
 //climb gauge
-if(wall != 0 && wall_gauge > 0){
+if(wall != 0 && wall_gauge > 0 && !has_rune("G")){
 	wall_gauge -= (wall == 3? 4: 2);
 }else if(wall_gauge < 1000){
 	wall_gauge += 5;
@@ -969,8 +969,8 @@ switch(state){
 	radar_hbox_y = -32;
 	break;
 }
-if(radar_state == 1 && radar_img >= 5 && anger_state != 2 && (collision_circle(x + radar_hbox_x * spr_dir, y + radar_hbox_y, 30, oPlayer, false, true) || collision_line(x + 40 * spr_dir, y - 40, x + radar_hbox_x * spr_dir, y + radar_hbox_y, oPlayer, false, true)) && anger_value < 1000){
-	anger_value += 6;
+if(radar_state == 1 && radar_img >= 5 && anger_state != 2 && (collision_circle(x + radar_hbox_x * spr_dir, y + radar_hbox_y, 30 + (has_rune("B")? 20: 0), oPlayer, false, true) || collision_line(x + 40 * spr_dir, y - 40, x + radar_hbox_x * spr_dir, y + radar_hbox_y, oPlayer, false, true)) && anger_value < 1000){
+	anger_value += (has_rune("I")? 12: 6);
 	if(radar_sound == 0){
 		radar_sound = 1;
 		if(sound_effect == 0){
@@ -1031,7 +1031,10 @@ if(state == PS_SPAWN){
 		sound_play(sound_get("hud_select"));
 	}
 }
-
+//rune C
+if(has_rune("C") && wall == 0 && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+	create_hitbox(AT_TAUNT_2, 1, x, y);
+}
 
 //constant variables
 visible = true;

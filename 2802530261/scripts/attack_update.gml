@@ -32,38 +32,38 @@ switch (attack){
         openmenu = false;
         window = 4;
         window_timer = 0;
-        if(items_select[0] == 1 || items_select[1] == 1 || items_select[2] == 1) && hud_beam_cooldown == 0{
-            hud_beam_cooldown = 900;
+        if(items_select[0] == 1 || items_select[1] == 1 || items_select[2] == 1) && (has_rune("N")? hud_beam_cooldown >= 0: hud_beam_cooldown == 0){
+            hud_beam_cooldown = (has_rune("A")? 1500: 900);
             power_ups[0] = items_select[0];
             power_ups[1] = items_select[1];
             power_ups[2] = items_select[2];
         }
-        if(items_select[3] == 1 || items_select[4] == 1) && hud_missile_cooldown == 0{
-            hud_missile_cooldown = 900;
+        if(items_select[3] == 1 || items_select[4] == 1) && (has_rune("N")? hud_missile_cooldown >= 0: hud_missile_cooldown == 0){
+            hud_missile_cooldown = (has_rune("A")? 1500: 900);
             power_ups[3] = items_select[3];
             power_ups[4] = items_select[4];
         }
-        if(items_select[5] == 1) && hud_flash_shift_cooldown == 0{
-            hud_flash_shift_cooldown = 800;
+        if(items_select[5] == 1) && (has_rune("N")? hud_flash_shift_cooldown >= 0: hud_flash_shift_cooldown == 0){
+            hud_flash_shift_cooldown = (has_rune("A")? 1300: 800);
             power_ups[5] = items_select[5];
         }
     }
     if(attack_pressed && menu_version == 0){
-        if(item_id < 3 && hud_beam_cooldown == 0){
+        if(item_id < 3 && (has_rune("N")? hud_beam_cooldown >= 0: hud_beam_cooldown == 0)){
             if(items_select[0] == 0 && item_id == 0) || (items_select[1] == 0 && item_id == 1) || (items_select[2] == 0 && item_id == 2){
                 instance_create(x - 10, y - 90, "obj_article1");
                 sound_play(sound_get("hud_select"));
                 window = 3;
                 window_timer = 0;
             }
-        }else if(item_id > 2 && item_id < 5 && hud_missile_cooldown == 0){
+        }else if(item_id > 2 && item_id < 5 && (has_rune("N")? hud_missile_cooldown >= 0: hud_missile_cooldown == 0)){
             if(items_select[3] == 0 && item_id == 3) || (items_select[4] == 0 && item_id == 4){
                 instance_create(x - 10, y - 90, "obj_article1");
                 sound_play(sound_get("hud_select"));
                 window = 3;
                 window_timer = 0;
             }
-        }else if(item_id == 5 && hud_flash_shift_cooldown == 0){
+        }else if(item_id == 5 && (has_rune("N")? hud_flash_shift_cooldown >= 0: hud_flash_shift_cooldown == 0)){
             if(items_select[5] == 0 && item_id == 5){
                 instance_create(x - 10, y - 90, "obj_article1");
                 sound_play(sound_get("hud_select"));
@@ -135,7 +135,7 @@ switch (attack){
     can_fast_fall = false;
     set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get(string(spr_dir) + "_ball"));
     set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_ball_hurt"));
-    if(down_down && special_pressed && window == 2){
+    if((special_pressed || shield_pressed || taunt_pressed) && window == 2){
         window = 3;
         window_timer = 0;
         ball_angle = 0;
@@ -199,11 +199,18 @@ switch (attack){
     }
     //attacks
     if(window == 2 && attack_pressed && bomb_timer == 0){
-        bomb_type = 0;
-        instance_create(x, y - 10, "obj_article1");
-        bomb_timer = 12;
-        sound_play(sound_get("bomb_deploy1"), false, false, 0.6);
-        sound_play(sound_get("bomb_deploy2"), false, false, 0.6);
+        if(has_rune("L")){
+            bomb_timer = 30;
+            bomb_type = 1;
+            boom = instance_create(x, y - 10, "obj_article1");
+            sound_play(sound_get("power_deploy"));
+        }else{
+            bomb_type = 0;
+            instance_create(x, y - 10, "obj_article1");
+            bomb_timer = 12;
+            sound_play(sound_get("bomb_deploy1"), false, false, 0.6);
+            sound_play(sound_get("bomb_deploy2"), false, false, 0.6);
+        }
     }
     if(window == 2){
         spr_angle = ball_angle;
@@ -230,11 +237,11 @@ switch (attack){
     }
     
     //cross
-    if(up_strong_pressed ||  left_strong_pressed || right_strong_pressed ||  down_strong_pressed) && !instance_exists(cross) && cross_timer = 0{
+    if(up_strong_pressed ||  left_strong_pressed || right_strong_pressed ||  down_strong_pressed) && cross_timer = 0{
         cross = instance_create(x, y - 14, "obj_article1");
         cross.attack = AT_DSTRONG;
         cross.quick = true;
-        cross_timer = 100;
+        cross_timer = (has_rune("B")? 10: 100);
     }
     break;
     
@@ -249,34 +256,34 @@ switch (attack){
     set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, (power_ups[1] = 1? 1: 0));
     set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, (power_ups[1] = 1? 11: 0));
     set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, (power_ups[2]?1: 0));
-    set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, (charge = 90? 36: 26));
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, (charge = 90? 30: 20));
-    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, (charge = 90? 7: (power_ups[1] = 1? 1: 0)));
-    set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, (charge = 90? 1: 0));
-    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, (charge = 90? 8: (power_ups[1] = 1? 7: 0)));
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, (charge = 90? 3: 0));
+    set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, (charge = 90 || has_rune("M")? 36: 26));
+    set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, (charge = 90 || has_rune("M")? 30: 20));
+    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, (charge = 90 || has_rune("M")? 7: (power_ups[1] = 1? (has_rune("J")? 8: 1): (has_rune("J")? 8: 0))));
+    set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, (charge = 90 || has_rune("M")? 1: 0));
+    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, (charge = 90 || has_rune("M")? 8: (power_ups[1] = 1? 7: 0)));
+    set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, (charge = 90 || has_rune("M")? 3: 0));
     set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, (power_ups[2] = 1? 1: 0));
     set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, (power_ups[2] = 1? 1: 0));
     set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, (power_ups[1] = 1? 1: 0));
     set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, (power_ups[1] = 1? 11: 0));
     set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, (power_ups[2]?1: 0));
-    set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, (charge = 90? 36: 26));
-    set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, (charge = 90? 30: 20));
-    set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, (charge = 90? 7: (power_ups[1] = 1? 1: 0)));
-    set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, (charge = 90? 1: 0));
-    set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, (charge = 90? 8: (power_ups[1] = 1? 7: 0)));
-    set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, (charge = 90? 3: 0));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, (charge = 90 || has_rune("M")? 36: 26));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, (charge = 90 || has_rune("M")? 30: 20));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, (charge = 90 || has_rune("M")? 7: (power_ups[1] = 1? (has_rune("J")? 8: 1): (has_rune("J")? 8: 0))));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, (charge = 90 || has_rune("M")? 1: 0));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, (charge = 90 || has_rune("M")? 8: (power_ups[1] = 1? 7: 0)));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, (charge = 90 || has_rune("M")? 3: 0));
     set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, (power_ups[2] = 1? 1: 0));
     set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, (power_ups[2] = 1? 1: 0));
     set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, (power_ups[1] = 1? 1: 0));
     set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, (power_ups[1] = 1? 11: 0));
     set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, (power_ups[2]?1: 0));
-    set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, (charge = 90? 36: 26));
-    set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, (charge = 90? 30: 20));
-    set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, (charge = 90? 7: (power_ups[1] = 1? 1: 0)));
-    set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, (charge = 90? 1: 0));
-    set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, (charge = 90? 8: (power_ups[1] = 1? 7: 0)));
-    set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, (charge = 90? 3: 0));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, (charge = 90 || has_rune("M")? 36: 26));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, (charge = 90 || has_rune("M")? 30: 20));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, (charge = 90 || has_rune("M")? 7: (power_ups[1] = 1? (has_rune("J")? 8: 1): (has_rune("J")? 8: 0))));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, (charge = 90 || has_rune("M")? 1: 0));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, (charge = 90 || has_rune("M")? 8: (power_ups[1] = 1? 7: 0)));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, (charge = 90 || has_rune("M")? 3: 0));
     if(!special_down && window == 2 && window_timer >= 5){
         window = (beam_sprite = 0? 3: (beam_sprite = 1? 4: 5));
         window_timer = 0;
@@ -332,37 +339,37 @@ switch (attack){
             set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_normal_chargeshot"): sound_get("beam_normal_shot")));
         }
         set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, hit_0);
         set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hit_0);
         set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 3);
-        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, hit_0);
         set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, hit_0);
         set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 3);
-        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hit_0);
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, hit_0);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90? 8: 1));
-        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90? 8: 1));
-        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90? 8: 1));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
         break;
         case 1:
         set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 4);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, hit_1);
         set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hit_1);
         set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 4);
-        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, hit_1);
         set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, hit_1);
         set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 4);
-        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hit_1);
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, hit_1);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90? 9: 2));
-        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90? 9: 2));
-        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90? 9: 2));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
         set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_plasma_chargeshot"): sound_get("beam_plasma_shot")));
         if(charge == 24){
             sound_play(sound_get("beam_plasma_charging"));
@@ -373,20 +380,20 @@ switch (attack){
         break;
         case 2:
         set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 5);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, hit_2);
         set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hit_2);
         set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 5);
-        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, hit_2);
         set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, hit_2);
         set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 5);
-        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hit_2);
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, hit_2);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90? 9: 2));
-        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90? 9: 2));
-        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90? 9: 2));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
         set_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_wave_chargeshot"): sound_get("beam_wave_shot")));
         if(charge == 24){
             sound_play(sound_get("beam_wave_charging"));
@@ -397,20 +404,20 @@ switch (attack){
         break;
         case 3:
         set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 5);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, hit_3);
         set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hit_3);
         set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 5);
-        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, hit_3);
         set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, hit_3);
         set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 5);
-        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90? "_charge": "_shot")));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hit_3);
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, hit_3);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90? 10: 3));
-        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90? 10: 3));
-        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90? 10: 3));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 10: 3));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 10: 3));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 10: 3));
         set_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_wave_chargeshot"): sound_get("beam_wave_shot")));
         if(charge == 24){
             sound_play(sound_get("beam_wave_charging"));
@@ -421,7 +428,7 @@ switch (attack){
         break;
     }
     set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, (power_ups[1]? 15: 6));
-    if(window >= 3 && window < 6 && special_down && window_timer >= 4 && !power_ups[1]){
+    if(window >= 3 && window < 6 && special_down && window_timer >= 4 && (has_rune("O")? special_down: !power_ups[1])){
         window = 2;
         window_timer = 0;
     }
@@ -605,6 +612,10 @@ switch (attack){
     }else{
         set_num_hitboxes(AT_FSPECIAL, 1);
     }
+    if(has_rune("I") && window >= 2 && window_timer >= 4 && special_pressed){
+        window = 1;
+        window_timer = 0;
+    }
     if(missile_sprite == 1){
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("super_shot"));
         set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 8);
@@ -653,7 +664,7 @@ switch (attack){
     break;
     
     case AT_UTILT:
-    if(window == 3){
+    if(window == 3 || (has_rune("D") && window >= 2 && window <= 3)){
         soft_armor = 9999999;
     }else{
         soft_armor = 0;
@@ -661,7 +672,7 @@ switch (attack){
     break;
     
     case AT_FAIR:
-    if(window == 2){
+    if(window == 2 || (has_rune("D") && window >= 1 && window <= 2)){
         soft_armor = 9999999;
     }else{
         soft_armor = 0;

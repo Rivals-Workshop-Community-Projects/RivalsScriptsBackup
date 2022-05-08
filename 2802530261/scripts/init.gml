@@ -249,8 +249,8 @@ menu_version = 0;
 menu_v_select = 0;
 
 //resource values
-missile_amount = 35;
-power_bomb_amount = 2;
+missile_amount = (has_rune("H")? 275: 35);
+power_bomb_amount = (has_rune("H")? 20: 2);
 aeion = 1000;
 aeion_sfx = 0;
 
@@ -295,3 +295,39 @@ dodgex = x;
 dodgey = y;
 dodgendx = x;
 dodgendy = y;
+
+//rune F
+if(has_rune("F")){
+    set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 88);
+    set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 100);
+    
+    set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 60);
+    set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 60);
+    set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 110);
+    set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 100);
+    
+    set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 60);
+    set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 80);
+    set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 60);
+    set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 70);
+    set_hitbox_value(AT_BAIR, 3, HG_WIDTH, 60);
+    set_hitbox_value(AT_BAIR, 3, HG_HEIGHT, 80);
+    
+    set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 80);
+    set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 80);
+    set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 80);
+    set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 80);
+    set_hitbox_value(AT_NAIR, 3, HG_WIDTH, 80);
+    set_hitbox_value(AT_NAIR, 3, HG_HEIGHT, 80);
+    
+    set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 80);
+    set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 60);
+    set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 60);
+    set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 60);
+}
+
+//rune k
+damage_counter = 0;
+
+/*
+3-spammable plasma
