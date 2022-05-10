@@ -55,5 +55,6 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, wwisp_charge);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Wind projectiles are created every frame during Window 2. Wind lingers and inflicts curse.");

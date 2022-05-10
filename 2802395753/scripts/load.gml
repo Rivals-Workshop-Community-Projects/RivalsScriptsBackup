@@ -51,6 +51,7 @@ sprite_change_offset("dspecial", 50, 96);
 sprite_change_offset("taunt", 50, 96);
 sprite_change_offset("chedda", 50, 96);
 sprite_change_offset("bumbum", 50, 96);
+sprite_change_offset("gordon", 50, 96);
 sprite_change_offset("phone_open", 50, 96);
 
 sprite_change_offset("plat", 64, 94);

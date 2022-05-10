@@ -86,6 +86,7 @@ sprite_change_offset("fspecial_slam_fx", 40, 80);
 sprite_change_offset("wwisp_proj", 32, 32);
 sprite_change_offset("wwisp_proj_col", 32, 32);
 sprite_change_offset("uspecial_wind", 40, 47);
+sprite_change_offset("uspecial_boost", 34, 116);
 sprite_change_offset("dspecial_eye", 68, 120);
 sprite_change_offset("dspecial_eye_r", 76, 120);
 

@@ -21,3 +21,4 @@ ai_state = 0;
 task_state = 0;
 task = 0;
 temp_level = 9;
+cheatTracker = array_create(20, {isCheater:false, nextParry: false});

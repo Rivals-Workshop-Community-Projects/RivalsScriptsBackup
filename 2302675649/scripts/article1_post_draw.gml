@@ -24,7 +24,7 @@ if (state != 4 && articleInit && player_id.object_index != oTestPlayer) with (pl
                 draw_set_alpha(0);
                 draw_rectangle_color(0,0,room_width,room_height,c_white,c_white,c_white,c_white,false);
                 draw_set_alpha(1);
-		        draw_sprite_ext(mask,maskIndex,other.x,other.y,1,1,0,c_white,1);
+		        draw_sprite_ext(mask,maskIndex,other.x,other.y,2,2,0,c_white,1);
             // end mask
         gpu_set_colorwriteenable(true,true,true,true);
         gpu_set_blendenable(true);
@@ -38,7 +38,7 @@ if (state != 4 && articleInit && player_id.object_index != oTestPlayer) with (pl
                 if (shine)
 		            draw_sprite_ext(sprite_get("shine"),0,x+floor((other.y-y)/4),other.y,2,2,0,c_white,0);
                 else
-		            draw_sprite_ext(sprite_index,image_index,x-other.otherPortal.x+other.x,y-other.otherPortal.y+other.y,spr_dir,1,0,c_gray,0);
+		            draw_sprite_ext(sprite_index,image_index,x-other.otherPortal.x+other.x,y-other.otherPortal.y+other.y,spr_dir*2,2,0,c_gray,0);
 		        shader_end();
             // end draw
         gpu_set_alphatestenable(false);

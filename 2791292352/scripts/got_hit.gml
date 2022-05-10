@@ -1,3 +1,5 @@
+sound_stop(sound_get("spookydance"));
+
 if hit_player_obj.cofa_mummy == true && enemy_hitboxID.type == 1{
 hit_player_obj.cofa_mummy = 0;
 hit_player_obj.cofa_mummy_timer = 0;

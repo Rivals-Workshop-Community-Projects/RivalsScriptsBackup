@@ -15,7 +15,7 @@ if ("rollArray" in self)
 				var yPos = floor(window==1?lerp(24, 30, lerpAmount):window==4?lerp(30, 24, lerpAmount):30);
 				var rot = floor(window==1?lerp(0, FlipRotDir(strongAng), lerpAmount):window==4?lerp(FlipRotDir(strongAng), 0, lerpAmount):FlipRotDir(strongAng));
 				var offset = window<=2?lerp(0, -30, strong_charge/60):window==3?lerp(20, 0, window_timer/get_window_value(AT_NTHROW, window, AG_WINDOW_LENGTH)):0;
-				draw_sprite_ext(sprite_get("strongSword"), spriteIndex, x+xPos*spr_dir+lengthdir_x(offset, FlipRotDir(rot)), y-yPos+lengthdir_y(offset, FlipRotDir(rot)), spr_dir, 1, rot, c_white, 1);
+				draw_sprite_ext(sprite_get("strongSword"), spriteIndex, x+xPos*spr_dir+lengthdir_x(offset, FlipRotDir(rot)), y-yPos+lengthdir_y(offset, FlipRotDir(rot)), spr_dir*2, 2, rot, c_white, 1);
 				shader_end();
 				break;
 			case 49:

@@ -176,14 +176,14 @@ set_color_profile_slot( 16, 4, 247, 222, 190 ); //Glow2
 set_color_profile_slot( 16, 5, 247, 222, 190 ); //Screen2
 set_color_profile_slot( 16, 6, 247, 222, 190 ); //Screen3
 
-// Virtual bot
+// Gordon Bot
 set_color_profile_slot( 17, 0, 209, 22, 0 ); //Screen1
-set_color_profile_slot( 17, 1, 97, 97, 97 ); //Computer1
-set_color_profile_slot( 17, 2, 209, 22, 0 ); //Tie1
-set_color_profile_slot( 17, 3, 97, 97, 97 ); //Note1
-set_color_profile_slot( 17, 4, 255, 188, 181 ); //Glow2
+set_color_profile_slot( 17, 1, 186, 186, 186 ); //Computer1
+set_color_profile_slot( 17, 2, 117, 117, 113 ); //Tie1
+set_color_profile_slot( 17, 3, 117, 117, 113 ); //Note1
+set_color_profile_slot( 17, 4, 190, 242, 253 ); //Glow2
 set_color_profile_slot( 17, 5, 255, 27, 0 ); //Screen2
-set_color_profile_slot( 17, 6, 255, 27, 0 ); //Screen3
+set_color_profile_slot( 17, 6, 255, 89, 71 ); //Screen3
 
 // Gold Bot
 set_color_profile_slot( 18, 0, 224, 171, 0 ); //Screen1

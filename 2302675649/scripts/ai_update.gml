@@ -7,6 +7,7 @@
 #macro TSK_STRONG 1
 #macro TSK_GUNREC 2
 
+DetectCheaters();
 ChangeStates();
 CheckRecover();
 AttackUpdate();
@@ -244,15 +245,15 @@ SetAttack();
 						{
 							DoAttack(AT_FSPECIAL);
 						}
-						else if (!free && xdist < 70 && ydist < 10)
+						else if (!free && xdist < 80 && ydist < 10)
 						{
 							DoAttack(AT_JAB);
 						}
-						else if (!free && xdist < 90 && ydist < 10)
+						else if (!free && xdist < 100 && ydist < 10)
 						{
 							DoAttack(AT_DTILT);
 						}
-						else if (NumOfPortals() < 1 || dist < 80)
+						else if (NumOfPortals() < 1 || dist < 100)
 						{
 							SetTask(TSK_STRONG);
 						}
@@ -434,12 +435,13 @@ SetAttack();
 			{
 				if (player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 				{
-					for (var i = 1; i <= get_num_hitboxes(attack); ++i)
+					var numWindows = get_num_hitboxes(attack);
+					for (var i = 1; i <= numWindows; ++i)
 					{
 						if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
 						{
 							var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
-							if (firstwindow > 0)
+							if (firstwindow == clamp(firstwindow, 1, numWindows))
 							{
 								var prevwindowlen = get_window_value(attack, firstwindow-1, AG_WINDOW_LENGTH);
 								var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);
@@ -497,4 +499,26 @@ SetAttack();
 #define ForceSprDir()
 {
 	if (left_down^^right_down) spr_dir = right_down-left_down;
+}
+
+#define DetectCheaters()
+{
+	if (aura) return;
+	{
+		with (oPlayer) if (id != other && temp_level!=0)
+		{
+			if (other.cheatTracker[player].isCheater)
+				other.aura = true;
+			else if (state == PS_PARRY)
+			{
+				if (state_timer > 0 && !(other.cheatTracker[player].nextParry || get_training_cpu_action() == CPU_PARRY))
+				{
+					other.cheatTracker[player].isCheater = true;
+					other.aura = true;
+				}
+			}
+			else
+				other.cheatTracker[player].nextParry = state == PS_PARRY_START;
+		}
+	}
 }

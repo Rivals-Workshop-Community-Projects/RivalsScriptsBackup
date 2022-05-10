@@ -2,6 +2,8 @@ sprite_index = sprite_get("portalSpawn");
 image_index = 0;
 spr_dir = 1;
 uses_shader = true;
+image_xscale = 2;
+image_yscale = 2;
 if !("in_adventure" in player_id && player_id.in_adventure) depth = 10;
 
 state = 0;

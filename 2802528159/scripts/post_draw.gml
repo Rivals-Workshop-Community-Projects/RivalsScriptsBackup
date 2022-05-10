@@ -37,6 +37,5 @@ if(get_stage_data(SD_ID) == "383980\2802531022"){
     }else{
         grain_timer = 0;
     }
-    grain = draw_sprite_ext(sprite_get("static"), grain_timer % 4, 0, 0, 2, 2, 0, c_white, 1);
-    grain.depth = depth - 10;
+    draw_sprite_ext(sprite_get("static"), grain_timer % 4, 0, 0, 2, 2, 0, c_white, 1);
 }

@@ -193,12 +193,17 @@ battle_text2 = "*Job bot's lust to work frightens you"
 sna_interrogated_line_01 = "I Can give You a [PROMOTION]!";
 sna_interrogated_line_02 = "I Can switch jobs at any time, which buffs some of the moves I have!";
 resort_portrait = sprite_get("tlr")
+copy_ability_id = 37
 
 switch (get_player_color(player))
 {
 case 4:
 	set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("chedda"));
 	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("chedda"));
+	break;
+case 17:
+	set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("insult"));
+	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("gordon"));
 	break;
 case 29:
 	set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("PING"));

@@ -222,7 +222,7 @@ if (cofa_mummy){
 //OTHER PLAYER CURSE CODE
 with (oPlayer) {
 	if player != other.player {	
-		if (cofa_mummy_id == other.id && cofa_mummy){
+		if (cofa_mummy){
 		//transfer to non-cofa players
 
 
@@ -234,7 +234,7 @@ with (oPlayer) {
 			}
 			else{ // no
 				if (!hitpause){
-					// bunch of checks
+    				// bunch of checks
 					if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 						cofa_mummy_atktimer = 2;
 					if (get_num_hitboxes(attack) == 0 || attack == AT_TAUNT || attack == AT_TAUNT_2) // not taunt or has no hitboxes in attack

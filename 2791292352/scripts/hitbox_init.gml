@@ -7,4 +7,7 @@ switch(attack){
 			trailfx_2 = hit_fx_create(sprite_get("wwisp_fx2"), 3*4);
 		}
 	break;
+	case AT_USPECIAL:
+	    proj_angle += -player_id.hsp * 10;
+	break;
 }

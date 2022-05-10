@@ -12,8 +12,3 @@ draw_sprite_ext(sprite_get("secret"), window_timer / 3, 0, 0, 1, 1, 0, c_white, 
 
 }
 
-
-// prevents draw_hud from running a frame too early and spitting an error
-if "phone" not in self exit;
-
-

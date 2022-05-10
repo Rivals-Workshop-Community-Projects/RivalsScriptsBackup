@@ -40,8 +40,9 @@ switch(attack){
 		    } else {
 		    reset_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX);
 		    }
-		if window == 2 && window_timer == phone_window_end{
+		if window == 2 && window_timer == phone_window_end && !hitpause{
 			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
+			sound_play(asset_get("sfx_swipe_medium2"));
 		}
 		break;
 	
@@ -59,11 +60,10 @@ switch(attack){
 	
 	case AT_NSPECIAL:
 		if (!hitpause){
-		
 			//print(wow_chrg);
 			// 36 max add
 			var charge_state = (wow_chrg >= wow_chrg_max ? 2 : wow_chrg >= floor(wow_chrg_max/2) ? 1 : 0);
-			var hbox_funnytime = 30 + (charge_state == 2 ? 36*3 : charge_state == 1 ? 36 : 0);
+			var hbox_funnytime = 24 * (charge_state + 1);
 			
 			switch(window){
 				case 1:
@@ -86,7 +86,7 @@ switch(attack){
 								//print("chrg = " + string(wow_chrg) + ", state = " + string(charge_state) + ", lifetime = " + string(hbox_funnytime));
 								wow_chrg++;
 								charge_state = (wow_chrg >= wow_chrg_max ? 2 : wow_chrg >= floor(wow_chrg_max/2) ? 1 : 0);
-								hbox_funnytime = 30 + (charge_state == 2 ? 36*3 : charge_state == 1 ? 36 : 0);
+								hbox_funnytime = 24 * (charge_state + 1);
 								set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, hbox_funnytime);
 								if wow_chrg == floor(wow_chrg_max/2){
 									sound_play(sound_get("wwisp_charge1"));
@@ -302,6 +302,9 @@ switch(attack){
 	case AT_USPECIAL:
 		if window == 2 && !hitpause{
 	    create_hitbox(AT_USPECIAL, 1, x, y);
+		    if window_timer = 1 {
+			spawn_hit_fx (x, y, uspecial_boost);
+			}
 		}
 	break;
 	
@@ -317,7 +320,7 @@ switch(attack){
 		break;
 		
 	case AT_TAUNT_2:
-	    if state_timer == 1{
+	    if state_timer == 1 && !hitpause{
 		sound_play( sound_get( "spookydance" ), true, noone, 1, 1);    
 		}
 		if window == 2{
@@ -328,10 +331,6 @@ switch(attack){
 		   }
 		}
 		break;
-}
-
-if (attack != AT_TAUNT_2 && state != PS_ATTACK_GROUND){
-sound_stop( sound_get( "spookydance" ));
 }
 
 #define spawn_base_dust // written by supersonic

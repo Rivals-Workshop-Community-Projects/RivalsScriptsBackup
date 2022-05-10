@@ -63,6 +63,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 7);
+set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 45); //this is a low angle for an aerial, you usually want to be above 45
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 //set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .3);

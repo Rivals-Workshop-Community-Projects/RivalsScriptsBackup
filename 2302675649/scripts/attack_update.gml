@@ -67,6 +67,7 @@ switch (attack)
             hud_offset = 84;
             if (state_timer == 1)
             {
+                jsTimer = 10;
                 spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir);
                 sound_play(asset_get("sfx_ghost_glove"));
                 spawn_base_dust(floor(x), floor(y), "drip", spr_dir);
@@ -682,19 +683,6 @@ switch (attack)
 }
 
 #define range_finder(x,y,dir,range,object,prec,notme)
-//
-//  Returns the exact distance to the nearest instance of an object in a
-//  given direction from a given point, or noone if no instance is found.
-//  The solution is found in log2(range) collision checks.
-//
-//      x,y         position in room, real
-//      dir         direction to look in degrees, real
-//      range       the greatest distance to look in pixels, real
-//      object      which objects to look for (or all), real
-//      prec        true to use precise collision checking, bool
-//      notme       true to ignore the calling instance, bool
-//
-/// GMLscripts.com/license
 {
     var ox,oy,dir,range,object,prec,notme,dx,dy,sx,sy,distance;
     ox = argument0;

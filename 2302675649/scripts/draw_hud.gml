@@ -710,6 +710,16 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Landing with DAir now has impact");
 						break;
+					case 46:
+						AddText("v1.46 - 9 May 2022");
+						AddText("");
+						AddText("Lonin now uses small_sprites");
+						AddText("Drip Taunt now has afterimages");
+						AddText("");
+						AddText("Updated stage whitelist for Genesis Taunt");
+						AddText("");
+						AddText("Fixed AI parry bug");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -822,11 +832,6 @@ if ("rollArray" in self)
 	}
 	else if (aura)
 		draw_debug_text(temp_x + 128, temp_y - 10, "Void Dragon");
-	//else if ("ai_state" in self)
-	//{
-	//	draw_debug_text(temp_x + 128, temp_y - 10, AIStateToString(ai_state));
-	//	draw_debug_text(temp_x + 128, temp_y + 4, TaskToString(task));
-	//}
 }
 
 #define AIStateToString(_state)

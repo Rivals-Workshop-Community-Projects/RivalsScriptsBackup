@@ -58,7 +58,7 @@ alt_names = [
 	"Monita Bot",
 	"You are an idiot",
 	"Megabot",
-	"Virtual bot",
+	"Gordon Bot",
 	"Gold Bot",
 	"Nico Nico Bot",
 	"Amazon Bot",

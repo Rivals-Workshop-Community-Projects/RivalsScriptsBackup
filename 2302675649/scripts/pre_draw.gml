@@ -13,7 +13,7 @@ if ("rollArray" in self)
 	for (var i = 0; i < 6; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0)
 	{
 		gpu_set_fog(1, tempColour, 0, 1);
-		draw_sprite_ext(sprite_get("roll_forward"), i, rollArray[i].rollX, rollArray[i].rollY, rollArray[i].rollDir, 1, 0, tempColour, rollArray[i].rollAlpha/30);
+		draw_sprite_ext(sprite_get("roll_forward"), i, rollArray[i].rollX, rollArray[i].rollY, rollArray[i].rollDir*2, 2, 0, tempColour, rollArray[i].rollAlpha/30);
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 
@@ -22,7 +22,7 @@ if ("rollArray" in self)
 	{
 		shader_start();
 		gpu_set_blendmode(bm_add);
-		draw_sprite_ext(jsArray[i].jsSprite, jsArray[i].jsImage, jsArray[i].jsX, jsArray[i].jsY, jsArray[i].jsDir, 1, 0, tempColour, jsArray[i].jsAlpha/20);
+		draw_sprite_ext(jsArray[i].jsSprite, jsArray[i].jsImage, jsArray[i].jsX, jsArray[i].jsY, jsArray[i].jsDir*2, 2, 0, tempColour, jsArray[i].jsAlpha/20);
 		gpu_set_blendmode(bm_normal);
 		shader_end();
 	}
@@ -32,9 +32,9 @@ if ("rollArray" in self)
 	{
 		shader_start();
 		if (state_timer < 15)
-			draw_sprite_ext(sprite_index, image_index, airdodgeStart.x, airdodgeStart.y, spr_dir, 1, 0, c_white, (15-state_timer)/15);
+			draw_sprite_ext(sprite_index, image_index, airdodgeStart.x, airdodgeStart.y, spr_dir*2, 2, 0, c_white, (15-state_timer)/15);
 		else
-			draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, c_white, (state_timer-15)/10);
+			draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*2, 2, 0, c_white, (state_timer-15)/10);
 		shader_end();
 	}
 
@@ -50,7 +50,7 @@ if ("rollArray" in self)
 	for (var i = 0; i < 10; ++i) if (uspecArray[i] != -1 && uspecArray[i].uspecAlpha > 0)
 	{
 		gpu_set_fog(1, get_player_color(player)==7?c_aqua:tempColour, 0, 1);
-		draw_sprite_ext(get_attack_value(AT_USPECIAL, AG_SPRITE), get_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START), uspecArray[i].uspecX, uspecArray[i].uspecY, uspecArray[i].uspecDir, 1, 0, get_player_color(player)==7?c_aqua:tempColour, uspecArray[i].uspecAlpha/15);
+		draw_sprite_ext(get_attack_value(AT_USPECIAL, AG_SPRITE), get_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START), uspecArray[i].uspecX, uspecArray[i].uspecY, uspecArray[i].uspecDir*2, 2, 0, get_player_color(player)==7?c_aqua:tempColour, uspecArray[i].uspecAlpha/15);
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 
@@ -58,7 +58,7 @@ if ("rollArray" in self)
 	if (dspecImage != -1 && dspecImage.alpha > 0)
 	{
 		gpu_set_fog(1, tempColour, 0, 1);
-		draw_sprite_ext(dspecImage.sprite, dspecImage.image, dspecImage.x, dspecImage.y, dspecImage.spr_dir, 1, 0, tempColour, dspecImage.alpha/10);
+		draw_sprite_ext(dspecImage.sprite, dspecImage.image, dspecImage.x, dspecImage.y, dspecImage.spr_dir*2, 2, 0, tempColour, dspecImage.alpha/10);
 		gpu_set_fog(0, c_white, 0, 0);
 
 		draw_set_alpha(dspecImage.alpha/25);
@@ -84,11 +84,11 @@ if ("rollArray" in self)
 					shader_start();
 					with (asset_get("obj_article1")) if (player_id == other.id && !isDespawn && replacedCount == 1)
 					{
-						draw_sprite_ext(sprite_index, image_index, x+random_func(0,3,1)*2, y+random_func(2,3,1)*2, 1, 1, 0, c_fuchsia, 1);
-						draw_sprite_ext(sprite_index, image_index, x-random_func(1,3,1)*2, y+random_func(3,3,1)*2, 1, 1, 0, c_aqua, 1);
+						draw_sprite_ext(sprite_index, image_index, x+random_func(0,3,1)*2, y+random_func(2,3,1)*2, 2, 2, 0, c_fuchsia, 1);
+						draw_sprite_ext(sprite_index, image_index, x-random_func(1,3,1)*2, y+random_func(3,3,1)*2, 2, 2, 0, c_aqua, 1);
 					}
-					draw_sprite_ext(sprite_index, image_index, x+nspecCharge/16+random_func(4,3,1), y+random_func(6,3,1)-1, spr_dir, 1, 0, c_fuchsia, 1);
-					draw_sprite_ext(sprite_index, image_index, x-nspecCharge/16-random_func(5,3,1), y+random_func(7,3,1)-1, spr_dir, 1, 0, c_aqua, 1);
+					draw_sprite_ext(sprite_index, image_index, x+nspecCharge/16+random_func(4,3,1), y+random_func(6,3,1)-1, spr_dir*2, 2, 0, c_fuchsia, 1);
+					draw_sprite_ext(sprite_index, image_index, x-nspecCharge/16-random_func(5,3,1), y+random_func(7,3,1)-1, spr_dir*2, 2, 0, c_aqua, 1);
 					shader_end();
 					gpu_set_blendmode(bm_normal);
 					if (nspecCharge == nspecMax)
@@ -301,19 +301,6 @@ if ("rollArray" in self)
 }
 
 #define range_finder(x,y,dir,range,object,prec,notme)
-//
-//  Returns the exact distance to the farthest instance of an object in a
-//  given direction from a given point, or noone if no instance is found.
-//  The solution is found in log2(range) collision checks.
-//
-//      x,y         position in room, real
-//      dir         direction to look in degrees, real
-//      range       the greatest distance to look in pixels, real
-//      object      which objects to look for (or all), real
-//      prec        true to use precise collision checking, bool
-//      notme       true to ignore the calling instance, bool
-//
-/// GMLscripts.com/license
 {
     var ox,oy,dir,range,object,prec,notme,dx,dy,sx,sy,distance,ox2,oy2;
     ox = argument0;
@@ -382,6 +369,10 @@ if ("rollArray" in self)
 		case 25://"Nihil Redux";
 		case 27://"The Earthen Division (Main Event Ver.)";
 		case 29://"Tetherball Versus";
+		case 32://"Embers of a Burning Dystopia";
+		case 33://"The King of Onsen";
+		case 34://"Dazzling Dark Future";
+		case 35://"Luminous Impactor";
 		case 36://"Tactical Evolution EX ~ Creatures Medley";
 			return false;
 	}

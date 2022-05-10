@@ -178,4 +178,5 @@ sprite_change_offset("0_hurtground", 90, 152);
 sprite_change_offset("1_hurtground", 90, 152);
 sprite_change_offset("0_uphurt", 90, 152);
 sprite_change_offset("1_uphurt", 90, 152);
+sprite_change_offset("0_spinhurt", 90, 152);
 sprite_change_offset("1_spinhurt", 90, 152);

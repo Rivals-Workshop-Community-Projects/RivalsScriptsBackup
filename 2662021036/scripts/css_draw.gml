@@ -9,7 +9,7 @@ var temp_y = y + 9;
 
 if (get_color_profile_slot_b(0, 0) == 78) {
     sound_play(sound_get("vileplume_leechseed_fire"), false, 0);
-    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 5)+1, get_color_profile_slot_g(0, 5)+1, get_color_profile_slot_b(0, 5)+1);
+    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
 }
 
  

@@ -757,21 +757,34 @@ if(state == PS_CROUCH){
 set_victory_portrait(sprite_get(string(plate_state) + "_portrait"));
 set_victory_sidebar(sprite_get(string(plate_state) + "_result_small"));
 
-if(get_player_damage(player) > (has_rune("H")? 80: 40) && plate_state == 0 && !free){
+plate_damage += get_player_damage(player) - prev_damage;
+prev_damage = get_player_damage(player);
+if(plate_damage < 0){
+	plate_damage = 0;
+}
+
+if(plate_timer == 10 && plate_damage < 25){
+	plate_timer = 0;
+	plate_damage -= (plate_damage > 0? 1: 0);
+}else if(plate_damage < 25){
+	plate_timer++;
+}
+
+if(plate_damage > (has_rune("H")? 40: 25) && plate_state == 0 && !free){
 	set_attack(AT_TAUNT_2);
     plate_state = 1;
-}else if(get_player_damage(player) <= (has_rune("H")? 80: 40) && plate_state == 1){
+}else if(plate_damage <= (has_rune("H")? 40: 25) && plate_state == 1){
     plate_state = 0;
 }
 
 if(state == PS_ATTACK_GROUND && attack == AT_TAUNT_2){
-	soft_armor = 99999999999999;
+	soft_armor = 999999999999;
 }else{
 	soft_armor = 0;
 }
 
 if(plate_state == 0){
-    soft_armor = 8;
+    soft_armor = 7;
     walk_speed          = 3.25;
     initial_dash_speed  = 6;
     dash_speed          = 6.5;	

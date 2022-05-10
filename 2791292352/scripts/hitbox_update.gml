@@ -27,5 +27,9 @@ switch(attack){
 				//print(can_hit);
 			}
 		}
+		with(oPlayer){
+            if (perfect_dodging)
+            other.can_hit[player] = false;
+        }
 	break;
 }

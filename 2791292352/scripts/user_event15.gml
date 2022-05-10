@@ -276,6 +276,30 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.3", "May 8th, 2022");
+initHeader("i forgot the munophone");
+initSection("-they forgot the munophone");
+
+initPatch("1.2", "May 8th, 2022");
+initHeader("Aesthetic");
+initSection("-Offscreen icon now appears properly
+-Highlights on offscreen icon and platform now recolour with alts
+-First colour slot changed from yellow to purple (This affects dust and default hit effects)
+-USpecial wind now rotates to match Cofa's trajectory
+-USpecial now has an extra tornado effect when starting the upward boost
+-FStrong now has swipe sound effect");
+
+initHeader("Balance");
+initSection("-NSpecial projectile liftimes changed from 30-56-128 to 24-48-72 (Lifetimes now evenly use the same liftime multiplied by the projectile count)
+-FSpecial now only grabs opponents who have been inflicted with Mummy for more than one frame (This prevents a Cofagrigus with Mummy from landing FSpecial, applying the curse, and immediately allowing the grab to connect)
+-USpecial wind is no longer able to be parried
+-USpecial wind is no longer able to be reflected");
+
+initHeader("Bugs");
+initSection("-DTaunt music is now stopped when hitting Cofagrigus
+-Added !hitpause to DTaunt music
+-Mummy code now runs on opponents regardless of if Cofagrigus is the inflictor (should prevent stuff like dying not removing the effect)");
+
 initPatch("1.1", "April 8th, 2022");
 initHeader("Aesthetic");
 initSection("-Updated Munophone to reflect new Mummy mechanics

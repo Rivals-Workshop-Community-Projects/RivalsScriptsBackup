@@ -1,3 +1,4 @@
+small_sprites = true;
 switch(state)
 {
     case PS_SPAWN:
@@ -37,6 +38,9 @@ switch(state)
 	case PS_ATTACK_AIR:
 			switch (attack)
 			{
+				case AT_EXTRA_1:
+					small_sprites = false;
+					break;
 				case AT_USPECIAL:
 					if (window == 1 && window_timer > uspecStartup/2)
 					{

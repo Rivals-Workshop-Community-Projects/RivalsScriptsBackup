@@ -149,6 +149,9 @@ bubble_y = 8;
 //emmi variables 
 plate_state = 0;
 grain_timer = 0;
+plate_damage = 0;
+prev_damage = get_player_damage(player);
+plate_timer = 0;
 
 wall = 0; //0 = ground, 1 = right wall, 2 = left wall, 3 = ceiling
 special_anim_timer = 0;
@@ -172,7 +175,7 @@ sound_text = [
 "[TURRET]",
 "[MUTE]"
 ];
-sound_select = 0;
+sound_select = 2;
 radar_sound = 0;
 beep_sound = 0;
 beep_timer = 0;

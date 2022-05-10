@@ -77,6 +77,7 @@ bair_cross1 = hit_fx_create(sprite_get("bair_hfx_1"), 14);
 bair_cross2 = hit_fx_create(sprite_get("bair_hfx_2"), 14);
 fspecial_fx = hit_fx_create(sprite_get("fspecial_fx"), 16);
 fspecial_slam = hit_fx_create(sprite_get("fspecial_slam_fx"), 15);
+uspecial_boost = hit_fx_create(sprite_get("uspecial_boost"), 10);
 
 // Variables
 
