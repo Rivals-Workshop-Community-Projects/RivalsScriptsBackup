@@ -69,6 +69,7 @@ if (destroy_timer >= 10)
 {
     sound_play(asset_get("sfx_ori_spirit_flame_1"));
     instance_destroy();
+    exit;
 }
 
 if(hit_lockout <= 0)

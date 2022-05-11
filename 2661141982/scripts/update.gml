@@ -15,6 +15,8 @@ else
 if(state != PS_ATTACK_AIR && attack != AT_USPECIAL)
     shoryu_obj = -1;
 
+if (aura) lure_timer = 0;
+
 if(lure_timer != 0)
 {    lure_timer -= (has_rune("H") ? 2 : 1); lure_fade = 1; hud_offset = 24;}
 else
@@ -27,9 +29,23 @@ if(lure_timer == 1)
     sound_play(sound_get("lightready2"));
     white_flash_timer = 8;
 }
-//Secret Alts
-if(state == PS_SPAWN)
+// Secret Alts
+if (state == PS_SPAWN)
 {
+	if (state_timer == 68)
+	{
+		aura = ("temp_level" in self && temp_level == 1) || aura || auraMeter >= 67 || get_match_setting(SET_TURBO);
+		gpu_set_alphatestfunc(aura);
+		if (aura)
+		{
+			sound_play(asset_get("sfx_absa_uair"));
+			shake_camera(8, 6);
+	        spawn_hit_fx(x, y-42, 157);
+		}
+	}
+	else if (state_timer < 68 && auraMeter != -1) auraMeter = taunt_down?auraMeter+1:-1;
+	else if (state_timer == 1) auraMeter = 0;
+
 	if(get_player_color(player) == 2)
 	{
 		if(shield_down && attack_down && jump_down)
@@ -91,6 +107,11 @@ if(state == PS_SPAWN)
 		}
 	}
 }
+else if (state == PS_LANDING_LAG && aura) set_state(PS_IDLE);
+
+// hue
+++hue;
+hue%=255;
 
 if(taunt_down && shield_down)
 	set_victory_portrait(sprite_get("passivefishe"));

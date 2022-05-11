@@ -5,6 +5,8 @@ if (attack == AT_NSPECIAL || attack == AT_JAB || attack == AT_UTILT ||attack == 
     can_fast_fall = false;
 }
 
+if (aura) was_parried = false;
+
 //cancel anim (make ithis a rune)
 //if (attack == AT_NSPECIAL_2 && window == 2 || attack == AT_NSPECIAL_2 && window == 3){
 //    can_move = true;
@@ -124,6 +126,51 @@ switch (attack)
 				create_hitbox(49,8,x,y);
 		}
 	break;
+	case AT_JAB:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(4, 5);
+            SkipWindow(7, 8);
+            if (!attack_pressed)
+            {
+                SkipWindow(3, 10);
+                SkipWindow(6, 10);
+            }
+        }
+		break;
+	case AT_FTILT:
+        if (aura)
+        {
+            SkipWindow(3, 4);
+            SkipWindow(5, 6);
+        }
+		break;
+	case AT_UTILT:
+        if (aura)
+        {
+			if (has_hit) vsp = -6;
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+        }
+		break;
+	case AT_NAIR:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+            SkipWindow(5, 6);
+        }
+		break;
+	case AT_DTILT:
+	case AT_BAIR:
+	case AT_FAIR:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+        }
+		break;
 	case AT_FSTRONG:
 		if(window == 2 && window_timer <= 1)
 		{
@@ -132,11 +179,29 @@ switch (attack)
 				fx = spawn_hit_fx(x+50*spr_dir,y-25,splash_dair);
 			fx.depth = -999;
 		}
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+        }
 		break;
 	case AT_USTRONG:
 		can_move = false;
 	    can_fast_fall = false;
-	break;
+        if (aura)
+        {
+            SkipWindow(1, 3);
+            SkipWindow(4, 5);
+        }
+		break;
+	case AT_DSTRONG:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(4, 5);
+            SkipWindow(6, 7);
+        }
+		break;
 	case AT_DAIR:
 		if (window != 2) 
 			can_fast_fall = false;//makes it so that you can hitfall this move
@@ -150,13 +215,24 @@ switch (attack)
 				fx.depth = -999;
 			}
 		}
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+        }
         if (window == 1)
         {
             if (window_timer == 1) move_cooldown[AT_DAIR] = 40;
         }
-	break;
+		break;
 	case AT_NSPECIAL:
-		move_cooldown[AT_NSPECIAL] = 35;
+        if (aura)
+        {
+            if (!attack_pressed) SkipWindow(1, 2);
+            SkipWindow(3, 5);
+        }
+		else
+			move_cooldown[AT_NSPECIAL] = 35;
 	    can_wall_jump  = true;
 	
 		if(attack_pressed && lure_timer == 0 && (window == 1 && window_timer > 1))
@@ -177,20 +253,35 @@ switch (attack)
 			var posy = round(random_func(4, 36, true)) - 18
 			spawn_hit_fx(x,y+vsp+posy-24,star)
 		}
-	break;
+        if (aura)
+        {
+			if (state_timer == 1) hsp = 10*spr_dir;
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+        }
+		break;
 	
 	case AT_NSPECIAL_2:
-	
-	if(window == 2 && free)
-    vsp *= .9;
-    
+		if (aura)
+		{
+		    SkipWindow(1, 2);
+		    SkipWindow(3, 4);
+		}
+		if (window == 2 && free) vsp *= .9;
 		if (window == 2 && window_timer == 1) 
 			instance_create(x+20*spr_dir,y-30,"obj_article1");
-	break;
+		break;
 	
 	case AT_FSPECIAL:
-	
-	move_cooldown[AT_FSPECIAL] = 30;
+	if (aura)
+	{
+		if (state_timer == 1) clear_button_buffer(PC_SPECIAL_PRESSED);
+	    SkipWindow(1, 2);
+	    SkipWindow(3, 4);
+	    SkipWindow(5, 9);
+	    SkipWindow(8, 9);
+	}
+	else move_cooldown[AT_FSPECIAL] = 30;
     can_wall_jump  = true;
     
 	if (get_gameplay_time() mod 4 == 0 and window > 1 and !hitpause)
@@ -230,58 +321,70 @@ switch (attack)
 	break;
 	case AT_FSPECIAL_2:
 		if (window == 2 && window_timer == 1) instance_create(x+0*spr_dir,y-30,"obj_article1");
-	break;
+		if (aura) SkipWindow(2, 4);
+		break;
 	case AT_UAIR:
 		if (window > 1) hud_offset = round(lerp(hud_offset, 130,0.16))
-	break;
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+        }
+		break;
 	case AT_USPECIAL:
-
-    if (window == 3 && down_down && special_pressed){
-        set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 6);
-        window = 4;
-        window_timer = 0;
-        vsp = -5;
-        can_fast_fall = false;
-        can_move = false;
-    }
-	if (get_gameplay_time() mod 4 == 0 and window > 1)
-	{
-		var posx = round(random_func(4, 8, true)) - 4
-        spawn_hit_fx(x + posx+hsp,y-12+vsp,star)
-	}
-	
-	can_move = false;
-	
-	if window == 1
-	{
-		set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 3);
-		vsp *= 0.9
-		hsp *= 0.9
-	}
-	else if (window_timer == 1 and window == 2 and !hitpause)
-	{
-		vsp = -13
-		hsp = 4*spr_dir
-	}
-    if (attack_pressed && hitpause && has_hit_player && lure_timer == 0 && (window == 2) and !hit_player_obj.activated_kill_effect and instance_exists(shoryu_obj) and shoryu_obj.state != PS_RESPAWN)
-    {
-        lure_timer = 180;
-        afterImageTimer = 4
-        shoryu_obj.hitstop = 30;
-        shoryu_obj.hitpause = true;
-        x = shoryu_obj.x + shoryu_obj.hsp;
-        y = shoryu_obj.y + shoryu_obj.vsp - (shoryu_obj.char_height);
-        // hsp = 0
-        // vsp = 0
-        shoryu_obj = -1;
-        hitstop = 1;
-        destroy_hitboxes();
-        attack_end();
-        set_attack(AT_USPECIAL_2);
-        can_fast_fall = false;
-        can_move = false;
-    }
-	break;
+		if (window == 3 && down_down && special_pressed){
+		    set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 6);
+		    window = 4;
+		    window_timer = 0;
+		    vsp = -5;
+		    can_fast_fall = false;
+		    can_move = false;
+		}
+		if (get_gameplay_time() mod 4 == 0 and window > 1)
+		{
+			var posx = round(random_func(4, 8, true)) - 4
+		    spawn_hit_fx(x + posx+hsp,y-12+vsp,star)
+		}
+		
+		can_move = false;
+		
+		if window == 1
+		{
+			set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 3);
+			vsp *= 0.9
+			hsp *= 0.9
+		}
+		else if (window_timer == 1 and window == 2 and !hitpause)
+		{
+			vsp = -13
+			hsp = 4*spr_dir
+		}
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, down_down?5:7);
+            SkipWindow(4, 5);
+            SkipWindow(6, 7);
+        }
+		if (attack_pressed && hitpause && has_hit_player && lure_timer == 0 && (window == 2) and !hit_player_obj.activated_kill_effect and instance_exists(shoryu_obj) and shoryu_obj.state != PS_RESPAWN)
+		{
+		    lure_timer = 180;
+		    afterImageTimer = 4
+		    shoryu_obj.hitstop = 30;
+		    shoryu_obj.hitpause = true;
+		    x = shoryu_obj.x + shoryu_obj.hsp;
+		    y = shoryu_obj.y + shoryu_obj.vsp - (shoryu_obj.char_height);
+		    // hsp = 0
+		    // vsp = 0
+		    shoryu_obj = -1;
+		    hitstop = 1;
+		    destroy_hitboxes();
+		    attack_end();
+		    set_attack(AT_USPECIAL_2);
+		    can_fast_fall = false;
+		    can_move = false;
+		}
+		break;
 	case AT_USPECIAL_2:
 	
 	can_move = false;
@@ -312,10 +415,16 @@ switch (attack)
     	hsp = abs(hsp) > 1 ? hsp*0.9 : 0;
     }
 	
+	if (aura) SkipWindow(3, 4);
 	break;
 	
 	case AT_DSPECIAL:
-	move_cooldown[AT_DSPECIAL] = 15;
+	if (aura)
+	{
+	    SkipWindow(1, 2);
+	    SkipWindow(3, 7);
+	}
+	else move_cooldown[AT_DSPECIAL] = 15;
 	var dir = right_down - left_down;
 	var dir_correspond = (spr_dir == dir);
 	
@@ -338,9 +447,9 @@ switch (attack)
                 }
             break;
             case 2:
-                if(down_down && (dir_correspond && dir != 0))
+                if ((down_down && (dir_correspond && dir != 0)) || aura)
                 {
-                	ewgf_input++;
+                	if (!aura) ewgf_input++;
                 	ewgf_timer = 10;
                     reset_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE);
 					if(attack_pressed && !free)
@@ -423,15 +532,22 @@ switch (attack)
 		if (window_timer <= 1)
 		{
 			ewgf_timer = 20;
-			ewgf_input = 0;
+			ewgf_input = aura?2:0;
 		}
 		break;
 	}
-
 	break;
+
+	case AT_DSPECIAL_2:
+		if (aura)
+		{
+			SkipWindow(1, 2);
+			SkipWindow(3, 4);
+		}
+		break;
 	
 	case AT_EXTRA_1:
-	    if(special_pressed && (left_pressed xor right_pressed) && window == 3 && has_hit)
+	    if (special_pressed && (left_pressed xor right_pressed) && ((window == 3 && has_hit) || aura))
 		{
 		    var d = right_down - left_down;
 		    spr_dir = d;
@@ -442,11 +558,16 @@ switch (attack)
 			ewgf_timer = 20;
 			ewgf_input = 0;
 		}
+		if (aura)
+		{
+		    SkipWindow(1, 2);
+		    SkipWindow(3, 4);
+		}
 	break;
 	case AT_TAUNT:
 		if(get_player_color(player) == 11 || down_down && state_timer == 1)
 			set_attack(AT_TAUNT_2);
-	break;	
+		break;
 	case AT_TAUNT_2:
 		if(get_player_color(player) == 11)
 		{
@@ -454,16 +575,27 @@ switch (attack)
 			set_window_value(AT_TAUNT_2, 2, AG_WINDOW_HAS_SFX, 1);
 			hud_offset = 20;
 		}
-		if(window == 2 && window_timer == 1)
+		if(window == 2)
 		{
-			sound_play(asset_get("sfx_blow_medium2"),false, noone, 1, 0.8)
-			sound_play(asset_get("sfx_abyss_seed_explode"),false, noone, 1.2, 0.9)
-			shake_camera(10,10)
+			if (window_timer == 1)
+			{
+				sound_play(asset_get("sfx_blow_medium2"),false, noone, 1, 0.8)
+				sound_play(asset_get("sfx_abyss_seed_explode"),false, noone, 1.2, 0.9)
+				shake_camera(10,10)
+			}
+			else if (taunt_down && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1)
+			{
+				--window_timer;
+			}
 		}
 		if(window != 3)
 			draw_x = -10*spr_dir;
 		else
 			draw_x = 0;
+
+        if (state_timer <= 2) auraMeter = 0;
+		if (state_timer < 69 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
+		else if (state_timer == 69 && auraMeter == 67) ActivateAura();
 }
 /*
 if (attack == AT_DSPECIAL){
@@ -630,3 +762,25 @@ if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 return newdust;
+
+#define ActivateAura()
+{
+    aura = !aura;
+    gpu_set_alphatestfunc(aura);
+    if (aura)
+    {
+    	sound_play(asset_get("sfx_absa_uair"));
+    	shake_camera(8, 6);
+        spawn_hit_fx(x, y-42, 157);
+    }
+}
+
+#define SkipWindow(_before, _after)
+{
+    if (window == _before)
+    {
+        for (var i = _before; i < _after; ++i) if (get_window_value(attack, i, AG_WINDOW_HAS_SFX) && (_before != i || window_timer <= get_window_value(attack, i, AG_WINDOW_SFX_FRAME))) sound_play(get_window_value(attack, i, AG_WINDOW_SFX));
+	    window = _after;
+	    window_timer = 0;
+    }
+}

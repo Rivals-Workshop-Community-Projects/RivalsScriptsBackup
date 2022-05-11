@@ -24,7 +24,6 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_SFX, asset_get("sfx_swish_medium"));
 set_window_value(AT_FTILT, 3, AG_WINDOW_SFX_FRAME, 5);
 
-
 set_window_value(AT_FTILT, 4, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FTILT, 4, AG_WINDOW_VSPEED, -5);

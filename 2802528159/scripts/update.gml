@@ -258,8 +258,8 @@ switch(wall){
 			spr_angle = (spr_dir = 1? 225: 135);
 			break;
 		}
-		set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, cos(degtorad(spr_angle - 90)) * 40 * spr_dir * -1);
-		set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, sin(degtorad(spr_angle - 90)) * 40);
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, cos(degtorad(45 * head_rot)) * 40);
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, sin(degtorad(45 * head_rot)) * 40 * -1);
 		gravity_speed = 0;
 		if(window_timer == 1){
 			y -= 20;
@@ -763,17 +763,17 @@ if(plate_damage < 0){
 	plate_damage = 0;
 }
 
-if(plate_timer == 10 && plate_damage < 25){
+if(plate_timer == 18 && plate_damage < 30){
 	plate_timer = 0;
 	plate_damage -= (plate_damage > 0? 1: 0);
-}else if(plate_damage < 25){
+}else if(plate_damage < 30){
 	plate_timer++;
 }
 
-if(plate_damage > (has_rune("H")? 40: 25) && plate_state == 0 && !free){
+if(plate_damage > (has_rune("H")? 40: 30) && plate_state == 0 && !free){
 	set_attack(AT_TAUNT_2);
     plate_state = 1;
-}else if(plate_damage <= (has_rune("H")? 40: 25) && plate_state == 1){
+}else if(plate_damage <= (has_rune("H")? 40: 30) && plate_state == 1){
     plate_state = 0;
 }
 
@@ -784,7 +784,7 @@ if(state == PS_ATTACK_GROUND && attack == AT_TAUNT_2){
 }
 
 if(plate_state == 0){
-    soft_armor = 7;
+    soft_armor = 7.5;
     walk_speed          = 3.25;
     initial_dash_speed  = 6;
     dash_speed          = 6.5;	

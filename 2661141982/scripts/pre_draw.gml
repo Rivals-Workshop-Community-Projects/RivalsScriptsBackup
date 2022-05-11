@@ -12,7 +12,22 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
     shader_end();
 }
 
-if(get_player_color(player) == 31)
+// aura meter
+if ((state == PS_SPAWN || (state == PS_ATTACK_GROUND && attack == AT_TAUNT_2 && !aura)) && auraMeter != -1 && state_timer < 68 && state_timer > 1)
+{
+    draw_rectangle_color(x - 104, y - 124, x + 104, y - 96, c_black, c_black, c_black, c_black, false);
+    draw_rectangle_color(x - 100, y - 120, x - 100 + 200*(auraMeter/67), y - 100, c_white, c_white, c_white, c_white, false);
+	draw_debug_text(x - 60, y - 114, "LE FISHE MODE!!!!!");
+}
+
+if (aura)
+{
+	var color_rgb=make_color_rgb(255, 0, 255);
+	var color_hsv=make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb),color_get_value(color_rgb));
+	FlagPart(color_hsv, 1, 0);
+	gpu_set_fog(0, c_white, 0, 0);
+}
+else if(get_player_color(player) == 31)
 {
     FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
     FlagPart(make_colour_rgb(247, 168, 223), 3/10, 3/8); // pink

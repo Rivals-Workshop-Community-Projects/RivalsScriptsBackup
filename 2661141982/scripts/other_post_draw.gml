@@ -1,5 +1,5 @@
 //ZOOM BITCH
-if(other_player_id.attack == 49 && other_player_id.window >= 6 && other_player_id.window <= 9 && other_player_id.fs_cinematic)
+if (instance_exists(other_player_id) && other_player_id.attack == 49 && other_player_id.window >= 6 && other_player_id.window <= 9 && other_player_id.fs_cinematic)
 {
     hud_offset = 999;
     if(!variable_instance_exists(id,"rescale"))

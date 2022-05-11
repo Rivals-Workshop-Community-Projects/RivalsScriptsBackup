@@ -397,26 +397,37 @@ switch(attack){
 		hsp = 0;
 		vsp = 0;
 		if(joy_dir >= -22.5 && joy_dir < 22.5){
+			spr_dir = 1;
 			head_rot = (spr_dir = 1? 0: 4);
 		}else if(joy_dir >= 22.5 && joy_dir < 67.5){
+			spr_dir = 1;
 			head_rot = (spr_dir = 1? 1: 3);
 		}else if(joy_dir >= 67.5 && joy_dir < 112.5){
+			if(right_down){
+				spr_dir = 1;
+			}else if(left_down){
+				spr_dir = -1;
+			}
 			head_rot = 2
 		}else if(joy_dir >= 112.5 && joy_dir < 157.5){
+			spr_dir = -1;
 			head_rot = (spr_dir = 1? 3: 1);
 		}else if(joy_dir >= 157.5 && joy_dir < 202.5){
+			spr_dir = -1;
 			head_rot = (spr_dir = 1? 4: 0);
 		}else if(joy_dir >= 202.5 && joy_dir < 247.5){
+			spr_dir = -1;
 			head_rot = (spr_dir = 1? 5: 7);
 		}else if(joy_dir >= 247.5 && joy_dir < 292.5){
 			head_rot = 6;
+			if(right_down){
+				spr_dir = 1;
+			}else if(left_down){
+				spr_dir = -1;
+			}
 		}else if(joy_dir >= 292.5 && joy_dir < 337.5){
-			head_rot = (spr_dir = 1? 7: 5);
-		}
-		if(right_down){
 			spr_dir = 1;
-		}else if(left_down){
-			spr_dir = -1;
+			head_rot = (spr_dir = 1? 7: 5);
 		}
 		stored_head = head_rot;
 	}

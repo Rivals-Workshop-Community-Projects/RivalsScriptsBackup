@@ -35,6 +35,11 @@ inputUSpec = 0;
 inputTimer = 0;
 goalpha = 1;
 
+// aura
+aura = false;
+auraMeter = 0;
+hue = 0;
+
 // intro
 introTimer = -4;
 
