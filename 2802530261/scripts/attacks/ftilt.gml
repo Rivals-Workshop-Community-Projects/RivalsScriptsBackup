@@ -35,4 +35,4 @@ set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, 0.6);
-set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

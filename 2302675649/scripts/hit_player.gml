@@ -16,7 +16,7 @@ switch (my_hitboxID.attack)
 	case AT_NSPECIAL:
 		sound_play(sound_get("hitsfx2"));
 		sound_play(asset_get("sfx_blow_heavy2"));
-		if (aura && get_player_damage(hit_player_obj.player) >= 150)
+		//if (aura && get_player_damage(hit_player_obj.player) >= 150)
 		{
 			hit_player_obj.hitstop = 60;
 			set_attack(49);

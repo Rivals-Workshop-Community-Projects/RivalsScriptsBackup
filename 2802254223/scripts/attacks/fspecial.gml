@@ -43,8 +43,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_war_horn"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, club_explosion);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
-set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
+//set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
+//set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
@@ -112,7 +112,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_HITPAUSE_SCALING, .3);
 //set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_icehit_weak2"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, true);
-set_hitbox_value(AT_FSPECIAL, 4, HG_EXTENDED_PARRY_STUN, true);
+//set_hitbox_value(AT_FSPECIAL, 4, HG_EXTENDED_PARRY_STUN, true);
 
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_GROUP, -1);
@@ -140,7 +140,7 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_HITPAUSE_SCALING, .3);
 //set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, true);
-set_hitbox_value(AT_FSPECIAL, 5, HG_EXTENDED_PARRY_STUN, true);
+//set_hitbox_value(AT_FSPECIAL, 5, HG_EXTENDED_PARRY_STUN, true);
 
 set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 6, HG_WINDOW, 2);

@@ -505,7 +505,7 @@ switch (my_hitboxID.attack) {
 				hitstun += 15;
 				if (!hitpause) vsp -= 1;
 			}
-		
+			if (other.object_index != oTestPlayer)
 			spawn_hit_fx(x, round(y - char_height/2), other.epinel_fx_inertia);
 		}
 	break;

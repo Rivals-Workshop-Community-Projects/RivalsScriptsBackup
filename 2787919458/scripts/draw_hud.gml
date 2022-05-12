@@ -35,7 +35,7 @@ if(killcam_timer > 0){
 
 if(get_gameplay_time() <= 120){
 	if(!trigger_warning){
-		draw_debug_text(temp_x-10, temp_y - 20, "Taunt to disable flashy effects.");
+		draw_debug_text(temp_x-10, temp_y - 20, "Taunt to disable flashy effects and screams");
 	}
 	if(taunt_pressed && !trigger_warning){
         trigger_warning = true;

@@ -6,7 +6,7 @@ if("should_make_shockwave" in hit_player_obj && hit_player_obj.should_make_shock
     sound_play(sound_get("killcam"))
 }
 if(my_hitboxID.attack == AT_BAIR){
-    if(my_hitboxID.hbox_num == 1){
+    if(my_hitboxID.hbox_num == 1 && !instance_exists(grab_target) && hit_player_obj.hitstun > 0){
         set_attack_value(AT_BAIR,AG_CATEGORY,2)
         destroy_hitboxes();
         window = 4;
@@ -27,7 +27,7 @@ if(my_hitboxID.attack == AT_NSPECIAL){
     }
 }
 if(my_hitboxID.attack == AT_DSPECIAL){
-    if(my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 1){
+    if(my_hitboxID.hbox_num == 1){
         sound_play(sound_get("hit_marker"));
         var fx = spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-30,fx_marker)fx.depth = depth -4;
         var fx2 = spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-30,304)fx2.pause = 8.58   
@@ -37,6 +37,8 @@ if(my_hitboxID.attack == AT_DSPECIAL){
         }else{
             dspecial_hits+=1;
         }
+        hitpause = true;hitstop = my_hitboxID.hitpause;
+        old_hsp = hsp;old_vsp = vsp;        
     }
 }else{
     dspecial_hits = 0;

@@ -7,7 +7,7 @@ set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("stand_box"));
 set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

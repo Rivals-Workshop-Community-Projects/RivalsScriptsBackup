@@ -2,14 +2,14 @@ set_attack_value(AT_DAIR, AG_CATEGORY, 1);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
+set_attack_value(AT_DAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 
-set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 7);
 
 set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
@@ -19,7 +19,7 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
-set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -30,6 +30,7 @@ var x1 = 6;
 var y1 = -20;
 var x2 = 10;
 var y2 = 2;
+
 
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
@@ -66,6 +67,7 @@ set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 0.58);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 0);
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 10);
+
 
 set_hitbox_value(AT_DAIR, 3, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DAIR, 3, HG_WINDOW, 2);

@@ -129,7 +129,7 @@ if (state == 2){
 	    sound_play(asset_get("sfx_zetter_fireball_fire"));
 		spawn_hit_fx(x,y - 30,3)
 	}
-    if (state_timer == 120){
+    if (state_timer == 60){
 		spawn_hit_fx(x,y - 30,13)
 	    instance_destroy();
         exit;

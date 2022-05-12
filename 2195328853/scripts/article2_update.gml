@@ -32,6 +32,9 @@ with(asset_get("pHitBox")){
         if(place_meeting(x,y,other)){
         	if(damage > 0 && kb_value > 0){
 	        		//if(other != ballhitbox /*&& place_meeting(x,y,other)*/ && player != other.player){
+	        		if(player_id == other.player_id){
+	        			other.current_player = other.orig_player;
+	        		}
 	                other.hitlockout = 20;
 	                other.hitlockout2 = 60;
 	        		other.spr_dir = spr_dir;

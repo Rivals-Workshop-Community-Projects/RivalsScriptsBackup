@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 12;
+num_alts = 15;
 
 // Whether or not to display a name for each alt.
 use_alt_names = true;
@@ -66,7 +66,8 @@ alt_names = [
 	"Sephiroth",
 	"Zagreus",
 	"Phosphora",
-	"Fleet"
+	"Fleet",
+	"Dev"
 	];
 
 
@@ -210,7 +211,7 @@ initWords_ext("Controlling the Arrows", fa_center, $e32fa3, 0, false);
 initWords("You can aim arrows freely after they are fired, even during hitstun. Dark Pit's arrows are stronger than Pit's arrows, but are slower to curve.");
 
 initTip("FSpecial Properties");
-initWords("While Pit uses a blade, Dark Pit uses his signature Dark Pit Staff. Just like Pit, tap special to perform a powerful Charge shot, or hold special to perform continuous fire.");
+initWords("While Pit uses a blade, Dark Pit uses his signature Dark Pit Staff. Just like Pit, use off cooldown to shoot a powerful Charge shot, or use while on cooldown to perform continuous fire.");
 initImage_ext(sprite_get("fspecial_roll"),					4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("fspecial_vfx_large"), 			4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("fspecial_proj_strong_trail_2"),	4, fa_right, 1, 1, true, c_white, 1, true, 30, 400, 60, 50);
@@ -219,13 +220,13 @@ initImage_ext(sprite_get("fspecial_proj_strong"),			0, fa_right, 1, 1, true, c_w
 initImage_ext(sprite_get("fspecial"),						3, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("fspecial_proj_weak"),				0, fa_right, 1, 1, true, c_white, 1, true, 80, 370, 64, 50);
 initImage_ext(sprite_get("fspecial_proj_weak"),				0, fa_right, 1, 1, true, c_white, 1, false, 80, 200, 64, 50);
-initWords_ext("Differences fro Pit FSpecial", fa_center, $e32fa3, 0, false);
+initWords_ext("Differences from Pit FSpecial", fa_center, $e32fa3, 0, false);
 //initWords("Dark Pit's FSpecial can be angled slightly more than Pit's, and Charge Shot has slightly more recoil. However, Charge Shot has slightly more startup, and the rate of contunious fire is also reduced.");
 //initWords_ext("Charge Shot Power Scaling", fa_center, $e32fa3, 0, false);
 initWords("While Pit's Charge Shot is consistent in power, Dark Pit's Charge Shot gets stronger the further it travels. Snipe opponents from afar to get maximum reward!");
 
 initTip("Guardian Orbitars");
-initWords("Dark Pit's DSpecial using the guardian Orbitars is identical to Pit's.");
+initWords("Dark Pit's DSpecial using the Guardian Orbitars is identical to Pit's.");
 initImage_ext(sprite_get("indicator"), 0, fa_center, 1, 1, true, c_red, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("orbitars_attack"), 4, fa_center, 1, 1, true, c_white, 1, true, 39, 39, 33, 20);
 initImage_ext(sprite_get("orbitars_shield"),			-3, fa_center, 1, 1, true, c_white, 0.9, true,	250, 180, 40, 35);
@@ -291,6 +292,39 @@ initSection("")
 initHeader("Other");
 initSection("");
 */
+initPatch("1.12", "11 April, 2022");
+initHeader("Both");
+initSection("- Fspecial recoil distance decreased
+- Fspecial back hitbox size decreased
+- Fspecial rapidfire attack no longer can be performed if move is not on cooldown (ie: Charge shot will always be performed off cooldown regardless of tap or hold).
+- Fspecial base projectile lifetime decreased slightly (both variations)
+- Nair landing lag decreased: 10 -> 8
+- Fair landing lag decreased: 10 -> 8
+- Fair hitstun multiplier decreased: 0.85 -> 0.8
+- Jab startup increased: 5 -> 6
+- Jab 1/2/3 endlag increased: 8 -> 12, 8 -> 12, 10 -> 16
+- Bair sweetspot hitstun multiplier increased: 0.85 -> 1
+- Nspecial endlag increased: 24 -> 30
+- Orbitar hitbox collision hitstop reduced (-3f per hit)
+- Dair hitstun multiplier decreased: 1 -> 0.85");
+initHeader("Pit");
+initSection("- Fstrong angle decreased: 50 -> 45
+- Fstrong base hitpause decreased: 16 -> 10
+- Ustrong launcher kbg decreased: 1.1 -> 1.0");
+initHeader("Dark Pit");
+initSection("- Fstrong base hitpause decreased: 16 -> 12
+- Fstrong kbg increased: 0.9 -> 1.1
+- Ustrong sourspot removed (entire launcher hitbox now has sweetspot stats)
+- Dstrong sweetspot range increased
+- Dstrong sourspot range decreased
+- Dstrong sweetspot angle increased: 85 -> 90");
+initHeader("Bug Fixes");
+initSection("- Utilt 1 correctly inflicts parrystun when parried
+- Pit/Dpit correctly reflects off their own orbitars");
+initHeader("Other");
+initSection("- Added vfx for when Fspecial charge shot projectile expires naturally
+- Added 1 new alt to each
+- Pit's Palutena's Guidance added compatibility with the new Workshop 4 characters");
 
 initPatch("1.11", "7 October, 2021");
 initHeader("Both");

@@ -128,7 +128,6 @@ if (attack == AT_USPECIAL){
     
 }
 
-
 if (attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 10;
 	if (window == 1){

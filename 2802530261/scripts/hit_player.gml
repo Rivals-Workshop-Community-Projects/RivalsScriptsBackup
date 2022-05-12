@@ -37,7 +37,7 @@ if(has_rune("K")){
     damage_counter += my_hitboxID.damage;
     if(damage_counter >= 100){
         damage_counter -= 100;
-        missile_amount += (has_rune("H")? 50: 25);
-        power_bomb_amount = (power_bomb_amount > 2? (has_rune("H")? power_bomb_amount + 5: power_bomb_amount): 2);
+        missile_amount += (has_rune("H")? (missile_amount > 225? 275 - missile_amount: 50): 25);
+        power_bomb_amount = (power_bomb_amount > 2? (has_rune("H")? (power_bomb_amount > 10? power_bomb_amount + 15 - power_bomb_amount: power_bomb_amount + 5): power_bomb_amount): 2);
     }
 }

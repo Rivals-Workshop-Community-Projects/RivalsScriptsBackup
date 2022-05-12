@@ -59,6 +59,6 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_EXTENDED_PARRY_STUN, 1);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_FORCE_FLINCH, 1);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_EFFECT, 12);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_DRIFT_MULTIPLIER, 1.1);

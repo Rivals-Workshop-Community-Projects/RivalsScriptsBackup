@@ -317,14 +317,14 @@ if (attack == AT_NSPECIAL){
         if(window_timer == 8){
 	        window = 5;window_timer = 0;
 	        if(free){
-	        	vsp *= 0.25;hsp *= 0.25;
+	        	vsp = -3;//hsp *= 0.25;
 	        }else{
-	        	vsp = -2;hsp = 0;
+	        	vsp = -3;hsp = 0;
 	        }
 	    }
     }else if(window == 5){
         can_fast_fall = false;
-        if(special_down && free && upbtimer < 120 && !has_rune("L")){
+        if(special_down && free && upbtimer < 300 && !has_rune("L")){
 	    	can_move = false;
 	    	if(right_down && hsp <= 2.5){
 	        	hsp += .2;
@@ -332,14 +332,15 @@ if (attack == AT_NSPECIAL){
 	        	hsp -= .2;
 	        }
         	window_timer = 0;
-        	if(vsp > 1){
-        		vsp = 1;
+        	if(vsp > 0.5){
+        		vsp = 0.5;
         	}
         	upbtimer += 1;
         }else{
         	destroy_hitboxes();
         	window = 6;window_timer = 0;
         }
+        cancelattack();
     }
 }else if (attack == AT_DSPECIAL){
     can_fast_fall = false;

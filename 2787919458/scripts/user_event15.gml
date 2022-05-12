@@ -296,11 +296,33 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.8", "9th May, 2022");
+initHeader("Buffs");
+initSection("- Made DSpecial's multihits angle 30 so it'll connect more reliably
+- Added 3 new screams");
+
+initHeader("Nerfs");
+initSection("- DAir boost hitbox bkb 10 > 8
+- Made USpecials clouds less active
+- USpecial's cloud initial hit bkb 5 > 4
+- USpecial's vsp -10 > -9
+- USpecial limits your horizontal more speed making it more punishable
+- Gave USpecial anti stall by capping how high you can go before the boost is worse
+- DAttack connecting hit kbs .8 > .4
+- Sniper: Reduced it to one hitbox so it won't get weaker as you get further, as a result it's now weaker
+- Sniper will also no longer extend its lifetime when hitting someone else");
+
+initHeader("Fixes / Other Changes");
+initSection("- Fixed DAttack and gave it parry stun (because of rivals the spring will have it but not the melee)
+- Fixed an issue with BAir grabbing through armor
+- Made BAir be unable to switch who/what it's grabbing after it already has someone/something stuck
+- Made taunting at the beginning of a match also disable screams");
+
 initPatch("1.7", "28th April, 2022");
 initHeader("Nerfs");
 initSection("- Lowered the volume of one of the screams");
-initPatch("1.6", "27th April, 2022");
 
+initPatch("1.6", "27th April, 2022");
 initHeader("Buffs");
 initSection("- Jab 3 KB scale (.4 > .6)");
 

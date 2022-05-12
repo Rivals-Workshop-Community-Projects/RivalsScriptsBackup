@@ -31,7 +31,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_USTRONG, 3);
+set_num_hitboxes(AT_USTRONG, 2);
 
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 2);
@@ -60,10 +60,10 @@ set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 5);
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -100);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -115);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 0);
-set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 60);
-set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 90);
+set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 80);
+set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 130);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 6);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 11);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
@@ -76,6 +76,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_exp
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 143);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);
 
+/*
 //sourspot
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_WINDOW, 4);
@@ -97,3 +98,4 @@ set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_ell_fist_explode"));
 set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 141);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, 2);
+*/

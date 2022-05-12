@@ -67,7 +67,8 @@ alt_names = [
 	"NES",
 	"Wrastor",
 	"Mollo",
-	"Acid Rainbows"
+	"Acid Rainbows",
+	"Dev"
 	];
 
 
@@ -197,14 +198,14 @@ initWords_ext("Controlling the Arrows", fa_center, $1e82f2, 0, false);
 initWords("You can aim arrows freely after they are fired, even during hitstun. Arrows are like Brawl arrows and last for a very long time. With good aim they can be used to extend your combos from offstage.");
 
 initTip("FSpecial Variants");
-initWords("FSpecial makes Pit shoot using a Blade. Tap special to perform a powerful Charge shot, or hold special to perform continuous fire.");
-initWords_ext("Tap: Charge Shot", fa_center, $1e82f2, 0, false);
+initWords("FSpecial makes Pit shoot using a Blade. There are 2 variants depending whether it is on cooldown or not.");
+initWords_ext("Off cooldown: Charge Shot", fa_center, $1e82f2, 0, false);
 initWords_ext("Charge shot can be angled upwards or downwards by holding in a direction. Pit also has a hitbox on his back while traveling backwards.", fa_center, c_white, 0, true);
 initImage_ext(sprite_get("fspecial_roll"),					4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("fspecial_vfx_large"), 			4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("fspecial_proj_strong_trail_2"),	4, fa_right, 1, 1, true, c_white, 1, true, 30, 400, 70, 50);
 initImage_ext(sprite_get("fspecial_proj_strong"),			0, fa_right, 1, 1, true, c_white, 1, false, 60, 170, 70, 50);
-initWords_ext("Hold: Continuous Fire", fa_center, $1e82f2, 0, false);
+initWords_ext("On cooldown: Continuous Fire", fa_center, $1e82f2, 0, false);
 initWords_ext("Continuous fire can be canceled into a roll, parry or airdodge. Deals no knockback unless it hits an opponent in hitstun or is reflected (see 'Throwing the Orbitars' tip).", fa_center, c_white, 0, true);
 initImage_ext(sprite_get("fspecial"),						3, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("fspecial_proj_weak"),				0, fa_right, 1, 1, true, c_white, 1, true, 80, 370, 64, 50);
@@ -298,6 +299,39 @@ initSection("")
 initHeader("Other");
 initSection("");
 */
+initPatch("1.12", "11 April, 2022");
+initHeader("Both");
+initSection("- Fspecial recoil distance decreased
+- Fspecial back hitbox size decreased
+- Fspecial rapidfire attack no longer can be performed if move is not on cooldown (ie: Charge shot will always be performed off cooldown regardless of tap or hold).
+- Fspecial base projectile lifetime decreased slightly (both variations)
+- Nair landing lag decreased: 10 -> 8
+- Fair landing lag decreased: 10 -> 8
+- Fair hitstun multiplier decreased: 0.85 -> 0.8
+- Jab startup increased: 5 -> 6
+- Jab 1/2/3 endlag increased: 8 -> 12, 8 -> 12, 10 -> 16
+- Bair sweetspot hitstun multiplier increased: 0.85 -> 1
+- Nspecial endlag increased: 24 -> 30
+- Orbitar hitbox collision hitstop reduced (-3f per hit)
+- Dair hitstun multiplier decreased: 1 -> 0.85");
+initHeader("Pit");
+initSection("- Fstrong angle decreased: 50 -> 45
+- Fstrong base hitpause decreased: 16 -> 10
+- Ustrong launcher kbg decreased: 1.1 -> 1.0");
+initHeader("Dark Pit");
+initSection("- Fstrong base hitpause decreased: 16 -> 12
+- Fstrong kbg increased: 0.9 -> 1.1
+- Ustrong sourspot removed (entire launcher hitbox now has sweetspot stats)
+- Dstrong sweetspot range increased
+- Dstrong sourspot range decreased
+- Dstrong sweetspot angle increased: 85 -> 90");
+initHeader("Bug Fixes");
+initSection("- Utilt 1 correctly inflicts parrystun when parried
+- Pit/Dpit correctly reflects off their own orbitars");
+initHeader("Other");
+initSection("- Added vfx for when Fspecial charge shot projectile expires naturally
+- Added 1 new alt to each
+- Pit's Palutena's Guidance added compatibility with the new Workshop 4 characters");
 
 initPatch("1.11", "7 October, 2021");
 initHeader("Both");

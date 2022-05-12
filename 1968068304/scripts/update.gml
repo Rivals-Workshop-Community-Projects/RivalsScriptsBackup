@@ -10,7 +10,8 @@ with (oPlayer) {
 
 
 
-//djump fix
+//djump fix - no longer needed since it's fixed officially
+/*
 switch (state) {
 	case PS_FIRST_JUMP:
 	case PS_IDLE_AIR:
@@ -31,7 +32,7 @@ switch (state) {
 	break;
 }
 fix_old_djumps = djumps;
-
+*/
 
 /*
 if ((state_cat == SC_AIR_NEUTRAL && state != PS_JUMPSQUAT) || state == PS_ATTACK_AIR) {

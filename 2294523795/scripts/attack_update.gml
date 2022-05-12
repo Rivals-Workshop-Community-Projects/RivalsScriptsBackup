@@ -55,6 +55,15 @@ if attack == AT_DTILT {
 
 }
 
+if attack == AT_DATTACK {
+	
+    
+    if window == 1 && window_timer == 1 && !hitpause {
+       sound_play(asset_get("sfx_clairen_spin")) 
+    }
+
+}
+
 
 
 if attack == AT_EXTRA_3 {
@@ -204,10 +213,10 @@ if attack == AT_FSPECIAL {
     if window == 1 && window_timer == 1 {
         set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 0);
         if free {
-            vsp = -10
-            hsp = -16*spr_dir
+            vsp = -8
+            hsp = -12*spr_dir
         } else {
-            hsp = -20*spr_dir
+            hsp = -14*spr_dir
         }
     }
     

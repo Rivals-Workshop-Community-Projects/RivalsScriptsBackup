@@ -224,6 +224,24 @@ if ("rollArray" in self)
 						AddText("Slightly improved Bone NAir sprites");
 						AddText("Slightly improved Bone DAir sprites");
 						break;
+					case 10:
+						AddText("v2.9 - 10 May 2022");
+						AddText("");
+						AddText("Fixed CSS error messages");
+						AddText("");
+						AddText("Parried Aura Spheres are no longer polite");
+						AddText("");
+						AddText("DAir startup 10 -> 12");
+						AddText("DAir Sweetspot KB 5+0.5 -> 6+0.8");
+						AddText("DAir Sourspots shrinked hitbox sizes slightly");
+						AddText("");
+						AddText("Added Bone UAir - A slow but huge attack");
+						AddText("");
+						AddText("FAir Sweetspot KB 7+0.8 -> 7.5+0.8");
+						AddText("");
+						AddText("Extreme Speed no longer has Force Flinch");
+						AddText("Extreme Speed now can be Crouch Cancelled");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

@@ -44,7 +44,7 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 14);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("blade_hit_heavy"));
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 306);
-set_hitbox_value(AT_BAIR, 1, HG_HITSTUN_MULTIPLIER, 0.85);
+set_hitbox_value(AT_BAIR, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
 
 //sourspot

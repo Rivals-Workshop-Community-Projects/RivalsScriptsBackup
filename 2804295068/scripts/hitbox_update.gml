@@ -14,12 +14,16 @@ if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num =
 		length = torch_length_mult
 		hsp = torch_hsp_mult
 		vsp = torch_vsp_mult
-		if (has_rune("G")){
-		    extra_hitpause = 12
-		}
 		if was_parried{
 			instance_destroy();
 			exit;
+		}
+	}
+}
+if (has_rune("G")){
+	if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL){
+		if torched{
+			extra_hitpause = 12
 		}
 	}
 }

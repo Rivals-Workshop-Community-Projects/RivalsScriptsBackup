@@ -158,7 +158,7 @@ if (attack == AT_NSPECIAL){
 	    }
 	}
 	if (window == 1){
-		if (window_timer == 9){
+		if (window_timer == 6){
 			move_cooldown[AT_NSPECIAL] = 60
 			//stored charges
 			if (nspecial_charge == 1){

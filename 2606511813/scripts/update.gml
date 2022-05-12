@@ -164,7 +164,7 @@ for (var i = 0; i < max_fspec; i++) {
 }
 
 //dspecial fake hitpause stuff
-with oPlayer if id != other.id {
+with oPlayer if !(id != other.id && ("is_pit" in self) && is_pit) {
     if state != PS_HITSTUN fake_hitstop = 0;
     if fake_hitpause {
         if fake_hitstop > 0 {
@@ -189,7 +189,7 @@ with hit_fx_obj {
 }
 
 //stop nair sound
-if !free sound_stop(sfx_nair);
+if state == PS_LAND || state == PS_LANDING_LAG sound_stop(sfx_nair);
 
 //fspecial cooldown done
 if move_cooldown[AT_FTHROW] == 4 {

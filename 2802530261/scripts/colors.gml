@@ -29,12 +29,12 @@ set_color_profile_slot( 0, 6, 129, 82, 255 );
 set_color_profile_slot_range( 6, 1, 33, 51 );
 
 // gunship
-set_color_profile_slot( 0, 7, 246, 117, 122 );
+set_color_profile_slot( 0, 7, 246, 117, 121 );
 set_color_profile_slot_range( 7, 64, 5, 55 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 32 );
 
 // Varia Suit
 set_color_profile_slot( 1, 0, 228, 59, 68 ); //helmet
@@ -58,20 +58,20 @@ set_color_profile_slot( 2, 7, 246, 117, 122 ); //gunship
 
 // Super Power Suit
 set_color_profile_slot( 3, 0, 181, 38, 53 ); //helmet
-set_color_profile_slot( 3, 1, 255, 149, 0 ); //limbs
+set_color_profile_slot( 3, 1, 201, 151, 0 ); //limbs
 set_color_profile_slot( 3, 2, 255, 191, 0 ); //body
 set_color_profile_slot( 3, 3, 25, 60, 62 ); //gun
-set_color_profile_slot( 3, 4, 25, 60, 62 ); //gun lights
+set_color_profile_slot( 3, 4, 99, 199, 77 ); //gun lights
 set_color_profile_slot( 3, 5, 99, 199, 77 ); //visor
 set_color_profile_slot( 3, 6, 254, 174, 52 ); //shinespark
 set_color_profile_slot( 3, 7, 254, 231, 97 ); //gunship
 
 // Super Varia Suit
 set_color_profile_slot( 4, 0, 181, 38, 53 ); //helmet
-set_color_profile_slot( 4, 1, 255, 85, 0 ); //limbs
+set_color_profile_slot( 4, 1, 208, 105, 0 ); //limbs
 set_color_profile_slot( 4, 2, 255, 191, 0 ); //body
 set_color_profile_slot( 4, 3, 25, 60, 62 ); //gun
-set_color_profile_slot( 4, 4, 25, 60, 62 ); //gun lights
+set_color_profile_slot( 4, 4, 99, 199, 77 ); //gun lights
 set_color_profile_slot( 4, 5, 99, 199, 77 ); //visor
 set_color_profile_slot( 4, 6, 254, 174, 52 ); //shinespark
 set_color_profile_slot( 4, 7, 254, 231, 97 ); //gunship
@@ -81,14 +81,14 @@ set_color_profile_slot( 5, 0, 181, 38, 53 ); //helmet
 set_color_profile_slot( 5, 1, 191, 56, 186 ); //limbs
 set_color_profile_slot( 5, 2, 255, 191, 0 ); //body
 set_color_profile_slot( 5, 3, 25, 60, 62 ); //gun
-set_color_profile_slot( 5, 4, 25, 60, 62 ); //gun lights
+set_color_profile_slot( 5, 4, 0, 149, 233 ); //gun lights
 set_color_profile_slot( 5, 5, 0, 149, 233 ); //visor
 set_color_profile_slot( 5, 6, 254, 174, 52 ); //shinespark
 set_color_profile_slot( 5, 7, 254, 231, 97 ); //gunship
 
 // Fusion Power Suit
 set_color_profile_slot( 6, 0, 228, 59, 104 ); //helmet
-set_color_profile_slot( 6, 1, 43, 106, 255 ); //limbs
+set_color_profile_slot( 6, 1, 15, 129, 191 ); //limbs
 set_color_profile_slot( 6, 2, 255, 191, 0 ); //body
 set_color_profile_slot( 6, 3, 14, 64, 31 ); //gun
 set_color_profile_slot( 6, 4, 139, 166, 152 ); //gun lights
@@ -176,95 +176,175 @@ set_color_profile_slot( 14, 5, 140, 213, 255 ); //visor
 set_color_profile_slot( 14, 6, 129, 82, 255 ); //shinespark
 set_color_profile_slot( 14, 7, 45, 247, 234 ); //gunship
 
-// The Mandalorian
-set_color_profile_slot( 15, 0, 204, 204, 204 ); //helmet
-set_color_profile_slot( 15, 1, 107, 51, 31 ); //limbs
-set_color_profile_slot( 15, 2, 79, 58, 50 ); //body
-set_color_profile_slot( 15, 3, 0, 0, 0 ); //gun
-set_color_profile_slot( 15, 4, 107, 51, 31 ); //gun lights
-set_color_profile_slot( 15, 5, 0, 0, 0 ); //visor
-set_color_profile_slot( 15, 6, 181, 38, 53 ); //shinespark
-set_color_profile_slot( 15, 7, 204, 204, 204 ); //gunship
-
-// Phazon Suit
-set_color_profile_slot( 16, 0, 140, 140, 140 ); //helmet
-set_color_profile_slot( 16, 1, 66, 66, 66 ); //limbs
-set_color_profile_slot( 16, 2, 140, 140, 140 ); //body
-set_color_profile_slot( 16, 3, 0, 70, 79 ); //gun
-set_color_profile_slot( 16, 4, 0, 149, 233 ); //gun lights
-set_color_profile_slot( 16, 5, 181, 38, 53 ); //visor
-set_color_profile_slot( 16, 6, 45, 247, 234 ); //shinespark
-set_color_profile_slot( 16, 7, 254, 231, 97 ); //gunship
-
 // Ridley
-set_color_profile_slot( 17, 0, 107, 98, 140 ); //helmet
-set_color_profile_slot( 17, 1, 131, 104, 140 ); //limbs
-set_color_profile_slot( 17, 2, 107, 98, 140 ); //body
-set_color_profile_slot( 17, 3, 107, 98, 140 ); //gun
-set_color_profile_slot( 17, 4, 140, 83, 124 ); //gun lights
-set_color_profile_slot( 17, 5, 194, 179, 96 ); //visor
-set_color_profile_slot( 17, 6, 228, 59, 68 ); //shinespark
-set_color_profile_slot( 17, 7, 140, 83, 124 ); //gunship
+set_color_profile_slot( 15, 0, 107, 98, 140 ); //helmet
+set_color_profile_slot( 15, 1, 131, 104, 140 ); //limbs
+set_color_profile_slot( 15, 2, 107, 98, 140 ); //body
+set_color_profile_slot( 15, 3, 107, 98, 140 ); //gun
+set_color_profile_slot( 15, 4, 140, 83, 124 ); //gun lights
+set_color_profile_slot( 15, 5, 194, 179, 96 ); //visor
+set_color_profile_slot( 15, 6, 228, 59, 68 ); //shinespark
+set_color_profile_slot( 15, 7, 140, 83, 124 ); //gunship
+
+// SA-X
+set_color_profile_slot( 16, 0, 171, 0, 140 ); //helmet
+set_color_profile_slot( 16, 1, 199, 84, 0 ); //limbs
+set_color_profile_slot( 16, 2, 255, 191, 0 ); //body
+set_color_profile_slot( 16, 3, 14, 64, 31 ); //gun
+set_color_profile_slot( 16, 4, 127, 250, 116 ); //gun lights
+set_color_profile_slot( 16, 5, 99, 199, 77 ); //visor
+set_color_profile_slot( 16, 6, 255, 160, 218 ); //shinespark
+set_color_profile_slot( 16, 7, 246, 117, 122 ); //gunship
 
 // Dark Samus
-set_color_profile_slot( 18, 0, 38, 43, 68 ); //helmet
-set_color_profile_slot( 18, 1, 38, 43, 68 ); //limbs
-set_color_profile_slot( 18, 2, 38, 43, 68 ); //body
-set_color_profile_slot( 18, 3, 20, 23, 36 ); //gun
-set_color_profile_slot( 18, 4, 0, 149, 233 ); //gun lights
-set_color_profile_slot( 18, 5, 0, 149, 233 ); //visor
-set_color_profile_slot( 18, 6, 0, 149, 233 ); //shinespark
-set_color_profile_slot( 18, 7, 38, 43, 68 ); //gunship
+set_color_profile_slot( 17, 0, 38, 43, 68 ); //helmet
+set_color_profile_slot( 17, 1, 38, 43, 68 ); //limbs
+set_color_profile_slot( 17, 2, 38, 43, 68 ); //body
+set_color_profile_slot( 17, 3, 20, 23, 36 ); //gun
+set_color_profile_slot( 17, 4, 0, 149, 233 ); //gun lights
+set_color_profile_slot( 17, 5, 0, 149, 233 ); //visor
+set_color_profile_slot( 17, 6, 0, 149, 233 ); //shinespark
+set_color_profile_slot( 17, 7, 38, 43, 68 ); //gunship
+
+// Justin Bailey
+set_color_profile_slot( 18, 0, 67, 122, 28 ); //helmet
+set_color_profile_slot( 18, 1, 168, 38, 112 ); //limbs
+set_color_profile_slot( 18, 2, 255, 255, 255 ); //body
+set_color_profile_slot( 18, 3, 25, 60, 62 ); //gun
+set_color_profile_slot( 18, 4, 255, 255, 255 ); //gun lights
+set_color_profile_slot( 18, 5, 255, 255, 255 ); //visor
+set_color_profile_slot( 18, 6, 168, 38, 112 ); //shinespark
+set_color_profile_slot( 18, 7, 254, 231, 97 ); //gunship
+
+// Zero Suit
+set_color_profile_slot( 19, 0, 36, 49, 145 ); //helmet
+set_color_profile_slot( 19, 1, 36, 49, 145 ); //limbs
+set_color_profile_slot( 19, 2, 102, 187, 217 ); //body
+set_color_profile_slot( 19, 3, 179, 185, 202 ); //gun
+set_color_profile_slot( 19, 4, 102, 99, 100 ); //gun lights
+set_color_profile_slot( 19, 5, 245, 242, 17 ); //visor
+set_color_profile_slot( 19, 6, 254, 174, 52 ); //shinespark
+set_color_profile_slot( 19, 7, 254, 231, 97 ); //gunship
 
 // Metroid Suit
-set_color_profile_slot( 19, 0, 92, 163, 54 ); //helmet
-set_color_profile_slot( 19, 1, 92, 163, 54 ); //limbs
-set_color_profile_slot( 19, 2, 105, 93, 93 ); //body
-set_color_profile_slot( 19, 3, 68, 120, 40 ); //gun
-set_color_profile_slot( 19, 4, 228, 59, 68 ); //gun lights
-set_color_profile_slot( 19, 5, 228, 59, 68 ); //visor
-set_color_profile_slot( 19, 6, 129, 82, 255 ); //shinespark
-set_color_profile_slot( 19, 7, 246, 117, 122 ); //gunship
+set_color_profile_slot( 20, 0, 92, 163, 54 ); //helmet
+set_color_profile_slot( 20, 1, 92, 163, 54 ); //limbs
+set_color_profile_slot( 20, 2, 105, 93, 93 ); //body
+set_color_profile_slot( 20, 3, 68, 120, 40 ); //gun
+set_color_profile_slot( 20, 4, 228, 59, 68 ); //gun lights
+set_color_profile_slot( 20, 5, 228, 59, 68 ); //visor
+set_color_profile_slot( 20, 6, 129, 82, 255 ); //shinespark
+set_color_profile_slot( 20, 7, 246, 117, 122 ); //gunship
+
+// Sketch Suit
+set_color_profile_slot( 21, 0, 156, 7, 1 ); //helmet
+set_color_profile_slot( 21, 1, 234, 234, 234 ); //limbs
+set_color_profile_slot( 21, 2, 91, 91, 91 ); //body
+set_color_profile_slot( 21, 3, 25, 60, 62 ); //gun
+set_color_profile_slot( 21, 4, 254, 230, 1 ); //gun lights
+set_color_profile_slot( 21, 5, 254, 230, 1 ); //visor
+set_color_profile_slot( 21, 6, 254, 174, 52 ); //shinespark
+set_color_profile_slot( 21, 7, 254, 231, 97 ); //gunship
+
+// Phazon Suit
+set_color_profile_slot( 22, 0, 140, 140, 140 ); //helmet
+set_color_profile_slot( 22, 1, 66, 66, 66 ); //limbs
+set_color_profile_slot( 22, 2, 140, 140, 140 ); //body
+set_color_profile_slot( 22, 3, 0, 70, 79 ); //gun
+set_color_profile_slot( 22, 4, 0, 149, 233 ); //gun lights
+set_color_profile_slot( 22, 5, 181, 38, 53 ); //visor
+set_color_profile_slot( 22, 6, 45, 247, 234 ); //shinespark
+set_color_profile_slot( 22, 7, 254, 231, 97 ); //gunship
+
+// Dark Suit
+set_color_profile_slot( 23, 0, 100, 57, 56 ); //helmet
+set_color_profile_slot( 23, 1, 100, 57, 56 ); //limbs
+set_color_profile_slot( 23, 2, 203, 201, 199 ); //body
+set_color_profile_slot( 23, 3, 25, 60, 62 ); //gun
+set_color_profile_slot( 23, 4, 255, 145, 0 ); //gun lights
+set_color_profile_slot( 23, 5, 255, 145, 0 ); //visor
+set_color_profile_slot( 23, 6, 129, 82, 255 ); //shinespark
+set_color_profile_slot( 23, 7, 254, 231, 97 ); //gunship
+
+// PED Suit
+set_color_profile_slot( 24, 0, 199, 30, 34 ); //helmet
+set_color_profile_slot( 24, 1, 223, 136, 77 ); //limbs
+set_color_profile_slot( 24, 2, 144, 147, 154 ); //body
+set_color_profile_slot( 24, 3, 25, 60, 62 ); //gun
+set_color_profile_slot( 24, 4, 8, 251, 250 ); //gun lights
+set_color_profile_slot( 24, 5, 99, 199, 77 ); //visor
+set_color_profile_slot( 24, 6, 38, 150, 204 ); //shinespark
+set_color_profile_slot( 24, 7, 254, 231, 97 ); //gunship
+
+// The Mandalorian
+set_color_profile_slot( 25, 0, 204, 204, 204 ); //helmet
+set_color_profile_slot( 25, 1, 140, 67, 41 ); //limbs
+set_color_profile_slot( 25, 2, 79, 58, 50 ); //body
+set_color_profile_slot( 25, 3, 36, 36, 36 ); //gun
+set_color_profile_slot( 25, 4, 107, 51, 31 ); //gun lights
+set_color_profile_slot( 25, 5, 0, 0, 0 ); //visor
+set_color_profile_slot( 25, 6, 181, 38, 53 ); //shinespark
+set_color_profile_slot( 25, 7, 204, 204, 204 ); //gunship
+
+// Rainbow
+set_color_profile_slot( 26, 0, 0, 255, 0 ); //helmet
+set_color_profile_slot( 26, 1, 0, 255, 0 ); //limbs
+set_color_profile_slot( 26, 2, 0, 255, 0 ); //body
+set_color_profile_slot( 26, 3, 0, 255, 0 ); //gun
+set_color_profile_slot( 26, 4, 0, 255, 0 ); //gun lights
+set_color_profile_slot( 26, 5, 0, 255, 0 ); //visor
+set_color_profile_slot( 26, 6, 0, 255, 0 ); //shinespark
+set_color_profile_slot( 26, 7, 0, 255, 0 ); //gunship
 
 // NES
-set_color_profile_slot( 20, 0, 225, 40, 0 ); //helmet
-set_color_profile_slot( 20, 1, 252, 146, 46 ); //limbs
-set_color_profile_slot( 20, 2, 252, 146, 46 ); //body
-set_color_profile_slot( 20, 3, 61, 147, 0 ); //gun
-set_color_profile_slot( 20, 4, 252, 146, 46 ); //gun lights
-set_color_profile_slot( 20, 5, 61, 147, 0 ); //visor
-set_color_profile_slot( 20, 6, 252, 146, 46 ); //shinespark
-set_color_profile_slot( 20, 7, 225, 40, 0 ); //gunship
+set_color_profile_slot( 27, 0, 225, 40, 0 ); //helmet
+set_color_profile_slot( 27, 1, 252, 146, 46 ); //limbs
+set_color_profile_slot( 27, 2, 252, 146, 46 ); //body
+set_color_profile_slot( 27, 3, 61, 147, 0 ); //gun
+set_color_profile_slot( 27, 4, 252, 146, 46 ); //gun lights
+set_color_profile_slot( 27, 5, 61, 147, 0 ); //visor
+set_color_profile_slot( 27, 6, 252, 146, 46 ); //shinespark
+set_color_profile_slot( 27, 7, 225, 40, 0 ); //gunship
 
 // Metroid II
-set_color_profile_slot( 21, 0, 165, 165, 165 ); //helmet
-set_color_profile_slot( 21, 1, 82, 82, 82 ); //limbs
-set_color_profile_slot( 21, 2, 255, 255, 255 ); //body
-set_color_profile_slot( 21, 3, 82, 82, 82 ); //gun
-set_color_profile_slot( 21, 4, 165, 165, 165 ); //gun lights
-set_color_profile_slot( 21, 5, 255, 255, 255 ); //visor
-set_color_profile_slot( 21, 6, 165, 165, 165 ); //shinespark
-set_color_profile_slot( 21, 7, 255, 255, 255 ); //gunship
+set_color_profile_slot( 28, 0, 165, 165, 165 ); //helmet
+set_color_profile_slot( 28, 1, 82, 82, 82 ); //limbs
+set_color_profile_slot( 28, 2, 255, 255, 255 ); //body
+set_color_profile_slot( 28, 3, 82, 82, 82 ); //gun
+set_color_profile_slot( 28, 4, 165, 165, 165 ); //gun lights
+set_color_profile_slot( 28, 5, 255, 255, 255 ); //visor
+set_color_profile_slot( 28, 6, 165, 165, 165 ); //shinespark
+set_color_profile_slot( 28, 7, 255, 255, 255 ); //gunship
+
+// Super Gameboy Palette
+set_color_profile_slot( 29, 0, 189, 33, 91 ); //helmet
+set_color_profile_slot( 29, 1, 181, 231, 25 ); //limbs
+set_color_profile_slot( 29, 2, 181, 231, 25 ); //body
+set_color_profile_slot( 29, 3, 189, 33, 91 ); //gun
+set_color_profile_slot( 29, 4, 181, 231, 25 ); //gun lights
+set_color_profile_slot( 29, 5, 181, 231, 25 ); //visor
+set_color_profile_slot( 29, 6, 181, 231, 25 ); //shinespark
+set_color_profile_slot( 29, 7, 189, 33, 91 ); //gunship
 
 // Early Access
-set_color_profile_slot( 22, 0, 83, 122, 62 ); //helmet
-set_color_profile_slot( 22, 1, 35, 67, 49 ); //limbs
-set_color_profile_slot( 22, 2, 211, 226, 154 ); //body
-set_color_profile_slot( 22, 3, 35, 67, 49 ); //gun
-set_color_profile_slot( 22, 4, 83, 122, 62 ); //gun lights
-set_color_profile_slot( 22, 5, 211, 226, 154 ); //visor
-set_color_profile_slot( 22, 6, 211, 226, 154 ); //shinespark
-set_color_profile_slot( 22, 7, 167, 186, 74 ); //gunship
+set_color_profile_slot( 30, 0, 83, 122, 62 ); //helmet
+set_color_profile_slot( 30, 1, 35, 67, 49 ); //limbs
+set_color_profile_slot( 30, 2, 211, 226, 154 ); //body
+set_color_profile_slot( 30, 3, 35, 67, 49 ); //gun
+set_color_profile_slot( 30, 4, 83, 122, 62 ); //gun lights
+set_color_profile_slot( 30, 5, 211, 226, 154 ); //visor
+set_color_profile_slot( 30, 6, 211, 226, 154 ); //shinespark
+set_color_profile_slot( 30, 7, 167, 186, 74 ); //gunship
 
 // Abyss
-set_color_profile_slot( 23, 0, 86, 84, 146 ); //helmet
-set_color_profile_slot( 23, 1, 79, 61, 94 ); //limbs
-set_color_profile_slot( 23, 2, 166, 172, 214 ); //body
-set_color_profile_slot( 23, 3, 79, 61, 94 ); //gun
-set_color_profile_slot( 23, 4, 220, 113, 255 ); //gun lights
-set_color_profile_slot( 23, 5, 220, 113, 255 ); //visor
-set_color_profile_slot( 23, 6, 220, 113, 255 ); //shinespark
-set_color_profile_slot( 23, 7, 86, 84, 146 ); //gunship
+set_color_profile_slot( 31, 0, 86, 84, 146 ); //helmet
+set_color_profile_slot( 31, 1, 79, 61, 94 ); //limbs
+set_color_profile_slot( 31, 2, 166, 172, 214 ); //body
+set_color_profile_slot( 31, 3, 79, 61, 94 ); //gun
+set_color_profile_slot( 31, 4, 220, 113, 255 ); //gun lights
+set_color_profile_slot( 31, 5, 220, 113, 255 ); //visor
+set_color_profile_slot( 31, 6, 220, 113, 255 ); //shinespark
+set_color_profile_slot( 31, 7, 86, 84, 146 ); //gunship
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

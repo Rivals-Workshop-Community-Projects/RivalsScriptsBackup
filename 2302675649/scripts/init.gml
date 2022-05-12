@@ -122,6 +122,10 @@ jsCStick = false;
 // vfx slice
 vfxSlice = {sliceAng:0,sliceX:0,sliceY:0,sliceTimer:0};
 
+// idle anims
+idleList = ["idle2", "idle3"];
+idleIndex = 0;
+
 // USpec
 uspecArray = array_create(10, -1);
 uspecStart = {x:0, y:0};

@@ -25,6 +25,9 @@ switch (attack)
 	case AT_DAIR:
 		if (!hasBone) attack = AT_DSPECIAL_AIR;
 		break;
+	case AT_UAIR:
+		if (!hasBone) attack = AT_USPECIAL_GROUND;
+		break;
 	case AT_TAUNT:
 		if (down_down || up_down) attack = AT_EXTRA_1;
 		break;

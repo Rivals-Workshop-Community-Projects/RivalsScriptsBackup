@@ -3,7 +3,17 @@ shader_end();
 // Checks if the seventh slot of the first skins blue shade is 255 (it is),
 // then plays the noise and sets the colour to 256. 256 rounds down to 255
 // in game automatically so there is no penalty to alts for using this method.
-
+if (get_color_profile_slot_r(1, 0) == 0 ) {
+	falconsfx = random_func( 0, 2, true );
+	if falconsfx == 1{
+		sound_play(sound_get("uspecial"));
+        set_color_profile_slot( 1, 0, 1, 173, 0 );
+	}
+    else{
+    	sound_play(sound_get("Final taunt"));
+        set_color_profile_slot( 1, 0, 1, 173, 0 );
+    }
+}
 
 
 //Fancy CSS template by Muno
@@ -12,7 +22,7 @@ shader_end();
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.4";
+patch_ver = "1.3";
 patch_day = "6";
 patch_month = "March";
  

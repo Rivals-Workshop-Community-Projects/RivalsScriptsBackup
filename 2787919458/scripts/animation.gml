@@ -10,10 +10,10 @@ if(state == PS_CROUCH){
 }else if(state == PS_AIR_DODGE || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_JUMPSQUAT || state == PS_LAND || state == PS_LANDING_LAG){
 	hud_offset = lerp(hud_offset,-60,.5)
 }else if(state == PS_HITSTUN){
-	if(state_timer == 1 && !just_played_scream){
+	if(state_timer == 1 && !just_played_scream && !trigger_warning){
 		sound_stop(stupid_sound_shit)
 		if(sprite_index == sprite_get("bighurt")){
-			random_scream = random_func(1,25,true);
+			random_scream = random_func(1,28,true);
 			switch(random_scream){
 				case 0:
 					stupid_sound_shit = sound_play(sound_get("scream"))
@@ -89,6 +89,15 @@ if(state == PS_CROUCH){
 				break;
 				case 24:
 					stupid_sound_shit = sound_play(sound_get("wario_2"))
+				break;
+				case 25:
+					stupid_sound_shit = sound_play(sound_get("gunga_scream"))
+				break;	
+				case 26:
+					stupid_sound_shit = sound_play(sound_get("blyat"))
+				break;
+				case 27:
+					stupid_sound_shit = sound_play(sound_get("train_horn"))
 				break;				
 			}
 		}else if(sprite_index == sprite_get("uphurt") || sprite_index == sprite_get("bouncehurt")){

@@ -31,6 +31,7 @@ hitplayertimer = 0;
 
 MattCanGrab = true;
 MorshuCanGrab = true;
+CalCanSnack = 2;
 
 spr_dir = player_id.spr_dir;
 

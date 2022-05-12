@@ -12,36 +12,44 @@ if "sound_played" not in self {
 }
 
 // Intro Sound
-if(sound_played == 0){
-    sound_play(sound_get("css_sound"), false, false, 1.5);
-    sound_played = 1;
+if (get_color_profile_slot_b(0, 7) == 121) {
+    sound_play(sound_get("css_sound"), false, false, 1.5);                                // Play Snake's CSS sound effect.
+    set_color_profile_slot(0, 7, get_color_profile_slot_r(0, 7), get_color_profile_slot_g(0, 7), get_color_profile_slot_b(0, 7) + 1);
 }
 
 //alt names
 alt_name[0] = "Power Suit";
 alt_name[1] = "Varia Suit";
 alt_name[2] = "Gravity Suit";
-alt_name[3] = "SM Power Suit";
-alt_name[4] = "SM Varia Suit";
-alt_name[5] = "SM Gravity Suit";
+alt_name[3] = "Super Power Suit";
+alt_name[4] = "Super Varia Suit";
+alt_name[5] = "Super Gravity Suit";
 alt_name[6] = "Fusion Power Suit";
 alt_name[7] = "Fusion Varia Suit";
 alt_name[8] = "Fusion Gravity Suit";
-alt_name[9] = "White E.M.M.I.";
-alt_name[10] = "Yellow E.M.M.I.";
-alt_name[11] = "Blue E.M.M.I.";
-alt_name[12] = "Green E.M.M.I.";
-alt_name[13] = "Red E.M.M.I.";
-alt_name[14] = "Cyan E.M.M.I.";
-alt_name[15] = "The Mandalorian";
-alt_name[16] = "Phazon Suit";
-alt_name[17] = "Ridley";
-alt_name[18] = "Dark Samus";
-alt_name[19] = "Metroid Suit";
-alt_name[20] = "NES";
-alt_name[21] = "Metroid II";
-alt_name[22] = "Early Access";
-alt_name[23] = "Abyss";
+alt_name[9] = "White EMMI";
+alt_name[10] = "Yellow EMMI";
+alt_name[11] = "Blue EMMI";
+alt_name[12] = "Green EMMI";
+alt_name[13] = "Red EMMI";
+alt_name[14] = "Cyan EMMI";
+alt_name[15] = "Ridley";
+alt_name[16] = "SA-X";
+alt_name[17] = "Dark Samus";
+alt_name[18] = "Justin Bailey";
+alt_name[19] = "Zero Suit";
+alt_name[20] = "Metroid Suit";
+alt_name[21] = "Sketch Suit";
+alt_name[22] = "Phazon Suit";
+alt_name[23] = "Dark Suit";
+alt_name[24] = "PED Suit";
+alt_name[25] = "The Mandalorian";
+alt_name[26] = "Hyper beam";
+alt_name[27] = "NES";
+alt_name[28] = "Metroid II";
+alt_name[29] = "Super Gameboy";
+alt_name[30] = "Early Access";
+alt_name[31] = "Abyss";
 
 draw_set_halign(fa_left);
 
@@ -68,9 +76,9 @@ if(alt_cur != prev_alt){
 prev_alt = alt_cur;
 
 //extra icons
-if(alt_cur == 22){
+if(alt_cur == 30){
     draw_sprite_ext(sprite_get("ccs_icons"), 3, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
-}else if(alt_cur == 23){
+}else if(alt_cur == 31){
     draw_sprite_ext(sprite_get("ccs_icons"), 1, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
 }
 
@@ -85,6 +93,7 @@ textDraw(temp_x + 48, temp_y + 141, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 48, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 48, temp_y + 139, "fName", c_white, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 
+init_shader();
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 
 draw_set_font(asset_get(argument[2]));

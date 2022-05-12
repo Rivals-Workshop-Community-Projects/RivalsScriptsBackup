@@ -38,6 +38,6 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 1.2);//0.9
-set_hitbox_value(AT_FSPECIAL_2, 1, HG_DRIFT_MULTIPLIER, 0.045);
-//set_hitbox_value(AT_FSPECIAL_2, 1, HG_DRIFT_MULTIPLIER, has_rune("B")?0.01:0.45);
+//set_hitbox_value(AT_FSPECIAL_2, 1, HG_DRIFT_MULTIPLIER, 0.045);
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_DRIFT_MULTIPLIER, has_rune("B")?0.01:0.20);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, bigstar_effect);

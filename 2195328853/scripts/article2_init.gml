@@ -17,13 +17,16 @@ ignores_walls = true;
 hit_wall = false;
 uses_shader = true;
 steamhitbox = noone;
-steamlifetime = 60;
+steamlifetime = 720;
 
 lasthitbox = noone;
 hitlockout = 0;
 hitlockout2 = 0;
 
+MattCanGrab = true;
+MorshuCanGrab = true;
+CalCanSnack = 2;
+
 spr_dir = player_id.spr_dir;
 
-steamlifetime = 480;
 hsp = 7*spr_dir;

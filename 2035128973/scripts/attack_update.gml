@@ -398,6 +398,10 @@ switch (attack)
         move_cooldown[attack] = 1;
 		break;
 
+    case AT_UAIR:
+		if (state_timer == 1) sound_play(asset_get("sfx_charge_blade_ready"),0,-4,1,1.5);
+		break;
+
     case AT_USTRONG:
         if (window > 1) hud_offset = 120;
 		if (window == 3  && window_timer < 2 && has_hit_player && hit_player_obj.hitpause) Grab(0, -100, 0, 5);

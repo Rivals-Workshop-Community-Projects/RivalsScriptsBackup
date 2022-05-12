@@ -1,5 +1,6 @@
 sprite_change_offset("idle", 13, 30);
 sprite_change_offset("idle2", 11, 33);
+sprite_change_offset("idle3", 11, 33);
 sprite_change_offset("bighurt", 12, 27);
 sprite_change_offset("bouncehurt", 18, 26);
 sprite_change_offset("downhurt", 10, 39);
@@ -64,7 +65,7 @@ sprite_change_offset("monkey", 28, 68);
 sprite_change_offset("thonk", 24, 19);
 sprite_change_offset("fspecParticle", 56, 20);
 sprite_change_offset("battery", 8, -4);
-sprite_change_offset("plat", 48, 0);
+sprite_change_offset("plat", 24, 0);
 sprite_change_offset("dragonhit", 80, 80);
 sprite_change_offset("sawhit", 80, 80);
 sprite_change_offset("chunhit", 80, 80);

@@ -188,34 +188,66 @@ switch(get_player_color(player)){
     sound_play(sound_get("intro"));
     break;
     case 16:
-    set_victory_theme(sound_get("victory"));
-    sound_play(sound_get("intro"));
+    set_victory_theme(sound_get("fusion_victory"));
+    sound_play(sound_get("fusion_intro"));
     break;
     case 17:
-    set_victory_theme(sound_get("victory"));
-    sound_play(sound_get("intro"));
+    set_victory_theme(sound_get("prime_victory"));
+    sound_play(sound_get("prime_intro"));
     break;
     case 18:
-    set_victory_theme(sound_get("victory"));
-    sound_play(sound_get("intro"));
-    break;
-    case 19:
-    set_victory_theme(sound_get("victory"));
-    sound_play(sound_get("intro"));
-    break;
-    case 20:
     set_victory_theme(sound_get("m1_victory"));
     sound_play(sound_get("m1_intro"));
     break;
-    case 21:
-    set_victory_theme(sound_get("m2_victory"));
-    sound_play(sound_get("m2_intro"));
+    case 19:
+    set_victory_theme(sound_get("m1_victory"));
+    sound_play(sound_get("m1_intro"));
     break;
-    case 22:
+    case 20:
     set_victory_theme(sound_get("victory"));
     sound_play(sound_get("intro"));
     break;
+    case 21:
+    set_victory_theme(sound_get("victory"));
+    sound_play(sound_get("intro"));
+    break;
+    case 22:
+    set_victory_theme(sound_get("prime_victory"));
+    sound_play(sound_get("prime_intro"));
+    break;
     case 23:
+    set_victory_theme(sound_get("prime_victory"));
+    sound_play(sound_get("prime_intro"));
+    break;
+    case 24:
+    set_victory_theme(sound_get("prime_victory"));
+    sound_play(sound_get("prime_intro"));
+    break;
+    case 25:
+    set_victory_theme(sound_get("mando_victory"));
+    sound_play(sound_get("mando_intro"));
+    break;
+    case 26:
+    set_victory_theme(sound_get("victory"));
+    sound_play(sound_get("intro"));
+    break;
+    case 27:
+    set_victory_theme(sound_get("m1_victory"));
+    sound_play(sound_get("m1_intro"));
+    break;
+    case 28:
+    set_victory_theme(sound_get("m2_victory"));
+    sound_play(sound_get("m2_intro"));
+    break;
+    case 29:
+    set_victory_theme(sound_get("m2_victory"));
+    sound_play(sound_get("m2_intro"));
+    break;
+    case 30:
+    set_victory_theme(sound_get("victory"));
+    sound_play(sound_get("intro"));
+    break;
+    case 31:
     set_victory_theme(sound_get("victory"));
     sound_play(sound_get("intro"));
     break;
@@ -245,12 +277,13 @@ power_ups = [0, 0, 0, 0, 0, 0];
 select_timer = 0;
 sound_timer = 0;
 prev_dameg = get_player_damage(player);
-menu_version = 0;
+menu_version = 1;
 menu_v_select = 0;
+hologram_y = 0;
 
 //resource values
 missile_amount = (has_rune("H")? 275: 35);
-power_bomb_amount = (has_rune("H")? 20: 2);
+power_bomb_amount = (has_rune("H")? 15: 2);
 aeion = 1000;
 aeion_sfx = 0;
 

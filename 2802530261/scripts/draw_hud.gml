@@ -30,6 +30,7 @@ if(menu_y < -12){
     }
     draw_sprite_part_ext(sprite_get("hud_" + string(item_id) + "_text"), 0, 0, 0, 60 * ((moving_text/(item_id > 2? (item_id = 3? 2: (item_id = 4? 2.2: 2.5)): 4.5))/name_xval[item_id]), 6, temp_x - moving_text + 214, temp_y + 12 + menu_y, 2, 2, c_white, 1);
 }
+draw_sprite_ext(sprite_get("hud_projector"), 0, temp_x + 138, temp_y + menu_y, 2, 2, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud2"), 0, temp_x - 10, temp_y + menu_y, 2, 2, 0, c_white, 1);
 if(menu_y < -12){
     draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 0: (has_rune("N")? 0: 1)), temp_x, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);
@@ -56,13 +57,17 @@ if(menu_y < -12){
         moving_text = 0;
     }
     draw_sprite_part_ext(sprite_get("hud_" + string(item_id) + "_text"), 0, 0, 0, 60 * ((moving_text/(item_id > 2? (item_id = 3? 2: (item_id = 4? 2.2: 2.5)): 4.5))/name_xval[item_id]), 6, temp_x - moving_text + 214, temp_y + 12 + menu_y, 2, 2, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 0, temp_x + 96, temp_y - 22 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 1, temp_x + 72, temp_y - 22 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 48, temp_y - 22 + menu_y, 2, 2, 0, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 24, temp_y - 2 + menu_y, 2, 2, 90, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 20, temp_y - 2 + menu_y, 2, 2, 180, c_white, 1);
-    draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 136, temp_y - 22 + menu_y, 2, 2, 270, c_white, 1);
+    if(hologram_y == -24){
+        draw_sprite_ext(sprite_get("hud_projector_light"), 0, temp_x + 112, temp_y - 24 + menu_y, 2, 2, 0, c_white, random_func_2(100, 15, false) / 100 + 0.7);
+        draw_sprite_ext(sprite_get("hud_quick"), 0, temp_x + 96, temp_y - 22 + menu_y, 2, 2, 0, c_white, random_func_2(101, 15, false) / 100 + 0.7);
+        draw_sprite_ext(sprite_get("hud_quick"), 1, temp_x + 72, temp_y - 22 + menu_y, 2, 2, 0, c_white, random_func_2(102, 15, false) / 100 + 0.7);
+        draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 48, temp_y - 20 + menu_y, 2, 2, 0, c_white, random_func_2(103, 15, false) / 100 + 0.7);
+        draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 24, temp_y - 2 + menu_y, 2, 2, 90, c_white, random_func_2(104, 15, false) / 100 + 0.7);
+        draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 20, temp_y - 2 + menu_y, 2, 2, 180, c_white, random_func_2(105, 15, false) / 100 + 0.7);
+        draw_sprite_ext(sprite_get("hud_quick"), 2, temp_x + 136, temp_y - 22 + menu_y, 2, 2, 270, c_white, random_func_2(106, 15, false) / 100 + 0.7);
+    }
 }
+draw_sprite_ext(sprite_get("hud_projector"), 0, temp_x + 138, temp_y + menu_y + hologram_y, 2, 2, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud2"), 0, temp_x - 10, temp_y + menu_y, 2, 2, 0, c_white, 1);
 if(menu_y < -12){
     draw_sprite_ext(sprite_get("hud_items"), (hud_beam_cooldown = 0? 0: 1), temp_x, temp_y + 12 + menu_y, 2, 2, 0, c_white, 1);

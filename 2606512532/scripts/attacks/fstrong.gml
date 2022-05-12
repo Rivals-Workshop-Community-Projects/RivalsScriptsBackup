@@ -55,7 +55,7 @@ set_window_value(AT_FSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSTRONG, 3);
 
-//late hit
+//swing hit
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 4);
@@ -68,8 +68,8 @@ set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 16);
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("electric_hit_heavy"));
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 157);

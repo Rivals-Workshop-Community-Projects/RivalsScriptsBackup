@@ -1,12 +1,12 @@
 /// my_hitboxID.attack
 
-
+if attack == AT_NSPECIAL && hbox_num < 5 {
 with (pHitBox) {
     
     with player_id {
     	if state == PS_ATTACK_AIR {
 		   upbcollide = collision_circle( x-12, y-12, 40 ,other, true, true ) 
-	       if 	upbcollide != noone && other.type == 2 && attack == AT_USPECIAL && window > 2 && window_timer > 14 && other.hbox_num != 3 && other.hbox_num != 5 {
+	       if 	upbcollide != noone && other.type == 2 && attack == AT_USPECIAL && window == 3 && window_timer > 14 && other.hbox_num != 3 && other.hbox_num != 5 {
 	           shake_camera(2,4)
 	           old_vsp = 0
 	           old_hsp = 0
@@ -53,7 +53,7 @@ with (pHitBox) {
     		state_timer = 105
     		hitstop = 10
     		hitpause = true 
-    		take_damage(player,-1,-10)
+    		take_damage(player,-1,-8)
     	}
     	
     	with other {
@@ -78,15 +78,22 @@ with (pHitBox) {
     	    spawn_hit_fx(x,y + 60,fx_ustrong)
             fx2 = spawn_hit_fx(x,y - 60,fx_ustrong)
             fx2.draw_angle = 180
+            
+            sound_stop(asset_get("sfx_ice_shatter_big"))
+            sound_stop(asset_get("sfx_ori_energyhit_medium"))
+            sound_stop(asset_get("sfx_boss_vortex_end"))
+            
             sound_play(asset_get("sfx_ice_shatter_big"))
             sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.6,1.4)
             sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,.4)
+            
             destroyed = true
     	}
     	
     }
     
     
+}
 }
     
 switch attack {
@@ -97,6 +104,7 @@ switch attack {
     if hitbox_timer < 10 {
     	hsp = 0.1*spr_dir 
     } else if hitbox_timer == 10 {
+    	sound_stop(asset_get("sfx_forsburn_consume_full"))
     	sound_play(asset_get("sfx_forsburn_consume_full"),false,noone,1,1)
     	hsp = 13*spr_dir
     }
@@ -148,7 +156,7 @@ switch attack {
      with player_id {
 		gotballback = collision_circle( x-12, y-12, 5 ,other, true, true ) 
 	    if gotballback != noone && move_cooldown[AT_EXTRA_2] == 0 {
-	        take_damage(player,-1,-10)
+	        take_damage(player,-1,-8)
 	        sound_play(asset_get("sfx_ice_shatter_big"))
 	        other.destroyed = true 
 	    }

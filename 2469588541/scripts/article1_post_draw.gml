@@ -7,7 +7,7 @@ if ("state" in self)
 		DrawStarLine(GetClosestStar(1))
 		if (randomIndex == 0) DrawStarLine(GetFartestStar())
 		with (asset_get("obj_article1")) if (player_id == other.player_id)
-			draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, c_white, 1);
+			draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*2, 2, 0, c_white, 1);
 	}
 }
 

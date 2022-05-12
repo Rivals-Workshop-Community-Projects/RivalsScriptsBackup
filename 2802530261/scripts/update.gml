@@ -22,6 +22,11 @@ if(openmenu == true && menu_y > -42 ){
     menu_y++;
     menu_y++;
 }
+if(menu_y == -42 && hologram_y > -24){
+    hologram_y -= 4;
+}else if(menu_y != -42 && hologram_y < 0){
+    hologram_y += 4;
+}
 
 if(state == PS_IDLE_AIR){
     if(idle_air_index < 2){
@@ -194,7 +199,7 @@ if(state != PS_ATTACK_GROUND && attack == AT_DATTACK){
 }
 
 //rune E
-if(state != PS_WALL_JUMP){
+if(has_rune("E") && state != PS_WALL_JUMP){
     has_walljump = 1;
     can_wall_jump = 1;
 }
@@ -214,5 +219,8 @@ if(get_player_damage(player) - prev_dameg <= 3 && sound_timer <= 0){
 }else if(get_player_damage(player) - prev_dameg > 10){
     sound_play(sound_get("hit_hard"));
 }
+}
+if(get_player_color(player) == 26){
+    shader_start();
 }
 prev_dameg = get_player_damage(player);

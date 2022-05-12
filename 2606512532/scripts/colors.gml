@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 19, 19, 56 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 15 );
 
 // Blue
 set_color_profile_slot( 1, 0, 180, 180, 192 ); //Blade silver
@@ -165,6 +165,16 @@ set_color_profile_slot( 13, 4, 79, 77, 82 ); //Blade blues
 set_color_profile_slot( 13, 5, 158, 145, 96 ); //Yellows
 set_color_profile_slot( 13, 6, 72, 65, 82 ); //Wings
 set_color_profile_slot( 13, 7, 75, 70, 84 ); //Tunic
+
+// Wagoaboagaoa
+set_color_profile_slot( 14, 0, 138, 58, 189 ); //Blade silver
+set_color_profile_slot( 14, 1, 50, 50, 64 ); //Hair/blacks
+set_color_profile_slot( 14, 2, 255, 210, 183 ); //Skin
+set_color_profile_slot( 14, 3, 114, 74, 178 ); //Eyes/purples
+set_color_profile_slot( 14, 4, 245, 237, 255 ); //Blade blues
+set_color_profile_slot( 14, 5, 158, 50, 191 ); //Yellows
+set_color_profile_slot( 14, 6, 198, 155, 239 ); //Wings
+set_color_profile_slot( 14, 7, 248, 242, 255 ); //Tunic
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

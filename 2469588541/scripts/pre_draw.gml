@@ -3,7 +3,7 @@ if ("practice" in self)
 	var tempColour = GetColourPlayer(3);
 	
 	// aura meter
-	if ((state == PS_SPAWN || (state == PS_ATTACK_GROUND && attack == AT_TAUNT && !aura)) && auraMeter != -1 && state_timer < 68)
+	if ((state == PS_SPAWN || (state == PS_ATTACK_GROUND && attack == AT_TAUNT && !aura)) && auraMeter != -1 && state_timer < 68 && state_timer > 1)
 	{
 	    draw_rectangle_color(x - 104, y - 124, x + 104, y - 96, c_black, c_black, c_black, c_black, false);
 	    draw_rectangle_color(x - 100, y - 120, x - 100 + 200*(auraMeter/67), y - 100, c_white, c_white, c_white, c_white, false);
@@ -65,7 +65,7 @@ if ("practice" in self)
 	for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0 && draw_indicator)
 	{
 		gpu_set_fog(1, tempColour, 0, 1);
-	    draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir, 1, 0, c_white, afterImage[i].alpha/10);
+	    draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir*2, 2, 0, c_white, afterImage[i].alpha/10);
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 

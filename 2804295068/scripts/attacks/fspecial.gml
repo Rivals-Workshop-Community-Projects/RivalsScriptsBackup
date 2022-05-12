@@ -50,7 +50,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 5);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, -24);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 180);
@@ -62,7 +62,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.7);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 5);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("vanquish"));
@@ -74,5 +74,5 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 270);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, -1)

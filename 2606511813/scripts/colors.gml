@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 19, 19, 56 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Blue
 set_color_profile_slot( 1, 0, 226, 170, 0 ); //Yellows
@@ -185,6 +185,16 @@ set_color_profile_slot( 15, 4, 59, 11, 11 ); //Blade/grey blues
 set_color_profile_slot( 15, 5, 122, 23, 23 ); //Reds
 set_color_profile_slot( 15, 6, 64, 65, 82 ); //Wings
 set_color_profile_slot( 15, 7, 37, 219, 95 ); //Whites
+
+// Gay Supitman
+set_color_profile_slot( 16, 0, 240, 34, 34 ); //Yellows
+set_color_profile_slot( 16, 1, 130, 80, 70 ); //Browns
+set_color_profile_slot( 16, 2, 255, 210, 183 ); //Skin
+set_color_profile_slot( 16, 3, 83, 178, 74 ); //Eye blues
+set_color_profile_slot( 16, 4, 53, 84, 150 ); //Blade/grey blues
+set_color_profile_slot( 16, 5, 219, 219, 219 ); //Reds
+set_color_profile_slot( 16, 6, 255, 255, 255 ); //Wings
+set_color_profile_slot( 16, 7, 51, 68, 166 ); //Whites
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -8,7 +8,7 @@ torchwood_recharge++;
 //bean
 if (boom == true){
 	create_hitbox( AT_FSPECIAL, 2, bean_x, bean_y, );
-	spawn_hit_fx(bean_x,bean_y,145)
+	spawn_hit_fx(bean_x,bean_y,263)
 	sound_play(sound_get("bean_explode"));
 	sound_stop (sound_get ("bean_voice"));
 	boom = false;

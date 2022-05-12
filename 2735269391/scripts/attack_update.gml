@@ -39,7 +39,7 @@ switch attack {
 	
 	case AT_USPECIAL:
 	can_fast_fall = false
-	
+	can_wall_jump = true 
 	if state_timer >= 200 && window != 4 && !hitpause{
 		vsp = -6
 		window = 4
@@ -132,8 +132,9 @@ switch attack {
 		if vsp > 0 && y > room_height/2 + 250 && (shield_down or jump_down) {
 			set_state(PS_PRATFALL)
 			spawn_hit_fx(x,y,14)
-			vsp = -7
+			vsp = -8
 			sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,1)
+			djumps = 0
 		}
 		
 		can_move = false 
@@ -172,6 +173,9 @@ switch attack {
 	
 	
 	case AT_FSPECIAL:
+	
+	
+	can_wall_jump = true 
 	
 	if window == 1 && window_timer < 8 {
 		invincible = true 
@@ -390,7 +394,7 @@ switch attack {
        	sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3)		
        	}
        }
-       if window == 2 && window_timer == 3 && !hitpause {
+       if window == 2 && window_timer == 4 && !hitpause {
        	fx_ustrong = hit_fx_create( sprite_get( "fx_ustrong" ),10);
        	  fxf = spawn_hit_fx(x,y,fx_ustrong)
        	  fxf.depth = -10
@@ -421,12 +425,12 @@ switch attack {
        	if move_cooldown[AT_EXTRA_1] == 0 {
        		
        	if state_timer < 100 {
-       		take_damage(player,-1,10)
+       		take_damage(player,-1,8)
        		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.2)
        		create_hitbox(AT_NSPECIAL,1,x + 10*spr_dir,y - 30)
        		
        	} else {
-       		take_damage(player,-1,10)
+       		take_damage(player,-1,8)
        		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.1)
        		create_hitbox(AT_NSPECIAL,2,x + 10*spr_dir,y - 30)
        	}

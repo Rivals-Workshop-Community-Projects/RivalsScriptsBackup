@@ -27,7 +27,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_GOTO, 2);
 
 //release
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
@@ -47,7 +47,7 @@ set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_GOTO, 7);
 
 //release up
-set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 20);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_HAS_SFX, 1);

@@ -287,12 +287,19 @@ switch attack {
 	break;
 	
 	case AT_DSPECIAL :
+	    if window >= 2  {
 	    vsp /= 1.05
 	  	hsp /= 1.4
-	  	can_fast_fall = false
 	  	if vsp > 0 {
 	  		vsp /= 1.6
 	  	}
+	    } else {
+	     vsp /= 1.02
+	   	 hsp /= 1.05	
+	    }
+	    
+	  	can_fast_fall = false
+	  	
 	   if window == 1 && window_timer == 1 && !hitpause {
 	   	  sound_play(asset_get("sfx_orcane_fspecial_pud"),false,noone,1,1.2)
 	   }

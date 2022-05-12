@@ -49,7 +49,7 @@ set_window_value(AT_FSTRONG, 6, AG_WINDOW_SFX, asset_get("sfx_ell_utilt_cannon")
 set_window_value(AT_FSTRONG, 6, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_FSTRONG, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 7, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_FSTRONG, 7, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_FSTRONG, 7, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_FSTRONG, 7, AG_WINDOW_HAS_WHIFFLAG, 10);
@@ -70,12 +70,11 @@ set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ell_utilt_hit"));
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("pea"));
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_MASK, sprite_get("pea"));
-set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 18);
+set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 20);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, -1);
 
@@ -113,6 +112,6 @@ set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_ell_utilt_hit"));
 set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_SPRITE, sprite_get("pea"));
 set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_MASK, sprite_get("pea"));
-set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_HSPEED, 18);
+set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_HSPEED, 20);
 set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_GROUP, -1);

@@ -38,6 +38,12 @@ if((state == PS_RESPAWN || attack == AT_TAUNT) && respawnplat == 1){
 	shader_end();
 }
 
+with(pHitBox){
+    if(player_id == other && type == 2 && attack == AT_DSPECIAL && hbox_num == 1){
+        draw_sprite_ext(sprite_get("dspecial_bullet"), 0, x, y, image_xscale*2.6, 1, 0, c_white, 1);
+    }
+}
+
 #define rectDraw(x1, y1, width, height, color)
 
 draw_rectangle_color(x1, y1, x1 + width, y1 + height, color, color, color, color, false);

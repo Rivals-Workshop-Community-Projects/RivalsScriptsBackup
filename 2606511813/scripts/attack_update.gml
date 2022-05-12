@@ -15,7 +15,8 @@ if attack == AT_UTILT {
     else can_move = false;
     
     if window > 1 && !free {
-        if has_hit set_state(PS_LAND)
+    	if was_parried set_state(PS_PRATLAND)
+    	else if has_hit set_state(PS_LAND)
         else {
             set_state(PS_LANDING_LAG)
             state_timer = 2;
@@ -208,7 +209,7 @@ if echo {
 }
 
 if attack == AT_FSPECIAL {
-    if window == 1 && !special_down && move_cooldown[AT_FTHROW] == 0 {
+    if window == 1 /*&& !special_down*/ && move_cooldown[AT_FTHROW] == 0 {
         attack = AT_FTHROW;
         was_reflected = false;
         hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
@@ -318,7 +319,7 @@ if attack == AT_NSPECIAL {
     }
     
     if window == 4 || window == 7 {
-        move_cooldown[AT_NSPECIAL] = 18;
+        move_cooldown[AT_NSPECIAL] = 12;
     }
 }
 

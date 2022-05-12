@@ -719,6 +719,18 @@ if ("rollArray" in self)
 						AddText("Updated stage whitelist for Genesis Taunt");
 						AddText("");
 						AddText("Fixed AI parry bug");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.46.1 - 10 May 2022");
+						AddText("");
+						AddText("Updated Idle anims");
+						AddText("");
+						AddText("Changed Plat to small_sprites");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.46.2 - 12 May 2022");
+						AddText("");
+						AddText("Fixed Final Smash Plat scaling");
 						break;
 				}
 				DrawTutorialBlock();

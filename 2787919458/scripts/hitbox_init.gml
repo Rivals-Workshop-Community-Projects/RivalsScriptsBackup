@@ -169,3 +169,12 @@ if(attack == AT_DATTACK){
 	can_hit_self = true;
 	UnReflectable = true;
 }
+if(attack == AT_DSPECIAL){
+	if(hbox_num == 1){
+		UnReflectable = true;
+		CalCanSnack = false;
+		MattCanGrab = false;
+		MorshuCanGrab = false;	
+		image_xscale = 8;
+	}
+}

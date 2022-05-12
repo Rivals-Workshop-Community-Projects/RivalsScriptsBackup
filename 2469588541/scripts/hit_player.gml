@@ -20,7 +20,7 @@ if (my_hitboxID.attack != AT_USPECIAL && uspecHit > 0) tutDoneAdv[3] = true;
 switch (my_hitboxID.attack)
 {
 	case AT_UAIR:
-		old_vsp = -3;
+		//old_vsp = -3;
 		break;
 	case AT_DAIR:
 		dairTimes++;

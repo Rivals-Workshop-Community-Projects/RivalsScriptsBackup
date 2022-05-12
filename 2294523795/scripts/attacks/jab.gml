@@ -64,7 +64,7 @@ set_window_value(AT_JAB, 9, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 9, AG_WINDOW_SFX, asset_get("sfx_clairen_poke_med"));
 set_window_value(AT_JAB, 9, AG_WINDOW_SFX_FRAME, 5);
 
-set_window_value(AT_JAB, 10, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_JAB, 10, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_JAB, 10, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_JAB, 10, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB, 10, AG_WINDOW_ANIM_FRAME_START, 7);

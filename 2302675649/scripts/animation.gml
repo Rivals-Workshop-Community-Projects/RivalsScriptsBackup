@@ -11,7 +11,8 @@ switch(state)
     case PS_RESPAWN:
 		if (floor(state_timer*idle_anim_speed/6)%6 == 5)
 		{
-			sprite_index = sprite_get("idle2");
+			if (floor(state_timer%(6/idle_anim_speed)) == 0) idleIndex = random_func(0, array_length_1d(idleList), 1);
+			sprite_index = sprite_get(idleList[idleIndex]);
 			image_index = floor(image_number*state_timer/(image_number/idle_anim_speed));
 		}
 		break;

@@ -18,6 +18,16 @@ if(attack == AT_NSPECIAL){
 		    	        			other.hitstop = other.hitpausehit;
 		    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 		                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+		    	        		}else{
+		    	        			if("sanic_uspec_count" in player_id && attack == AT_DSPECIAL && hbox_num == 1){
+			    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+			    	        			if(other.hitpausehit <= 0){
+			    	        				other.hitpausehit = 5;
+			    	        			}
+			    	        			other.hitstop = other.hitpausehit;
+			    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+			                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;		    	        			
+		    	        			}
 		    	        		}
 		            			knockback_angle = kb_angle;
 		    	        		other.knockback_power = kb_value;
@@ -381,9 +391,9 @@ if(attack == AT_NSPECIAL){
     if(vsp > 0){
     	vsp *= 0.9;
     }
-    if(hitbox_timer > 35){
+    if(hitbox_timer > 25){
     	image_xscale = 0;image_yscale = 0;vsp -= 0.01;
-    }else if(hitbox_timer > 23){
+    }else if(hitbox_timer > 14){
     	kb_value = 5;kb_scale = .2;
     	damage = 3;kb_angle = 90;
     	image_xscale = .2;image_yscale = .2;
@@ -396,4 +406,13 @@ if(attack == AT_NSPECIAL){
     if(hitbox_timer == length - 1){
     	destroyed = true;
     }
+}else if(attack == AT_DSPECIAL){
+	if(hbox_num == 1){
+		x = player_id.x+875*spr_dir;
+		y = player_id.y-45;
+	}/*else if(hbox_num == 2){
+		x = player_id.x+775*player_id.spr_dir;
+		y = player_id.y-45;	
+	}
+	*/
 }

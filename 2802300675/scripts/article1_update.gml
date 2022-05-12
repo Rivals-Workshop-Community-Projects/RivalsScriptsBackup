@@ -429,7 +429,7 @@ with (asset_get("pHitBox")){
 	}
 		
 		//Become Vunerable
-		if(state_timer = 120){
+		if(state_timer = 90){
 			sound_play(asset_get("sfx_hod_steam_sfx2_03"));
 			spawn_hit_fx(x + spr_dir * 0, y - 10, player_id.hitsmoke);
 			state = 1;

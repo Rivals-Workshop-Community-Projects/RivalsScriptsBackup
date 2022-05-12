@@ -149,9 +149,9 @@ with oPlayer {
 	
 if pausing == true {
 	with oPlayer {
-		if state_cat == SC_HITSTUN && hit_player_obj = other && get_gameplay_time()%3 != 0 {
+		if state_cat == SC_HITSTUN && hit_player_obj = other && get_gameplay_time()%3 != 0 && free{
 			state_timer -= 1
-			x = eld_x 
+			x = eld_x - left_down*4 + right_down*4 
 			y = eld_y
 			hsp = eld_hsp
 			vsp = eld_vsp
@@ -214,16 +214,16 @@ with oPlayer {
             sound_play(asset_get("sfx_orca_crunch"),false,noone,1,.6)
             hsp = 2*spr_dir
         set_state (PS_LAND)
-        state_timer = -60
-        crippled = 62
+        state_timer = -40
+        crippled = 42
         }
         if crippled > 2 {
         	crippled --
         	if state == PS_JUMPSQUAT {
         		set_state (PS_LAND)
-                state_timer = -60
+                state_timer = -40
         	}
-        	if free && crippled < 40 {
+        	if free && crippled < 20 {
         		crippled = false 
         	}
         }

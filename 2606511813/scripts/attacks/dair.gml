@@ -69,6 +69,7 @@ set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("blade_hit_medium"));
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 0.85);
 
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 3, HG_WINDOW, 2);
@@ -90,6 +91,7 @@ set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, sound_get("blade_hit_medium"));
 set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DAIR, 3, HG_HITSTUN_MULTIPLIER, 0.85);
 
 //sourspot late
 set_hitbox_value(AT_DAIR, 4, HG_HITBOX_TYPE, 1);
@@ -112,3 +114,4 @@ set_hitbox_value(AT_DAIR, 4, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 4, HG_HIT_SFX, sound_get("blade_hit_medium"));
 set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_DAIR, 4, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DAIR, 4, HG_HITSTUN_MULTIPLIER, 0.85);

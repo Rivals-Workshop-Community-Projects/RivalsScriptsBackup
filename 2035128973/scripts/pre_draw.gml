@@ -58,7 +58,6 @@ if ("rollArray" in self)
 			case AT_BAIR:
 			case AT_DATTACK:
 			case AT_JAB:
-			case AT_UAIR:
 			case AT_UTILT:
 			case AT_TAUNT:
 			case AT_FSTRONG:

@@ -64,6 +64,8 @@ sprite_change_offset("fair_hurt", 30, 68);
 sprite_change_offset("fair_boneless", 16, 34, 1);
 sprite_change_offset("bair", 32, 33, 1);
 sprite_change_offset("bair_extra", 44, 32);
+sprite_change_offset("uair", 42, 60);
+sprite_change_offset("uair_hurt", 36, 74);
 sprite_change_offset("uair_boneless", 18, 45);
 sprite_change_offset("uair_boneless_hurt", 36, 86);
 sprite_change_offset("dair", 34, 37);

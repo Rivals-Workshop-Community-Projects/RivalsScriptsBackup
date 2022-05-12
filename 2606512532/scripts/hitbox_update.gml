@@ -172,9 +172,9 @@ if attack == AT_DTHROW && hbox_num == 2 {
             
             if (!has_rune("C") && !other.player_id.phone_cheats[other.player_id.CHEAT_STRONG_SHIELD]) other.owner.hp -= damage; //Thrown DSPECIAL can never be broken.
             
-            other.owner.hitstop = hitpause + 4;
+            other.owner.hitstop = hitpause+1;
             player_id.hitpause = true;
-            player_id.hitstop_full = hitpause + 4;
+            player_id.hitstop_full = hitpause+1;
             player_id.hitstop = player_id.hitstop_full;
             player_id.old_vsp = player_id.vsp;
             player_id.old_hsp = player_id.hsp;
@@ -240,7 +240,10 @@ if attack == AT_FTHROW && hbox_num == 1 {
     
     kb_value = clamp(kb_value, 0, 12)
     
+    if hitbox_timer == 24 spawn_hit_fx(x, y, player_id.echo ? 111 : 109)
+    
     if destroyed sound_play(asset_get("sfx_ori_energyhit_medium"))
+    
     
     //trail location code
     var drawAngle = darctan2(-vsp*spr_dir, hsp * spr_dir);

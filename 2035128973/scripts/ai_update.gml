@@ -332,12 +332,13 @@ SetAttack();
 			{
 				if (player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 				{
-					for (var i = 1; i <= get_num_hitboxes(attack); ++i)
+					var numWindows = get_num_hitboxes(attack);
+					for (var i = 1; i <= numWindows; ++i)
 					{
 						if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
 						{
 							var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
-							if (firstwindow > 0)
+							if (firstwindow == clamp(firstwindow, 1, numWindows))
 							{
 								var prevwindowlen = get_window_value(attack, firstwindow-1, AG_WINDOW_LENGTH);
 								var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);

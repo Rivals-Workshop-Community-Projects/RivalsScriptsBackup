@@ -38,7 +38,7 @@ if ("rollArray" in self)
 						if (window_timer > 50 && window_timer <= 100)
 						{
 							for (var i = 0; i < 9; ++i)
-								draw_sprite_ext(sprite_get("plat"), 0, i*192-(window_timer*8)%64*spr_dir, room_height/2+64, 2, 2, 0, c_white, (window_timer-50)/20);
+								draw_sprite_ext(sprite_get("plat"), 0, i*192-(window_timer*8)%64*spr_dir, room_height/2+64, 4, 4, 0, c_white, (window_timer-50)/20);
 							draw_rectangle_color(0,room_height/2+128,room_width,room_height,c_black,c_black,c_black,c_black,false);
 							with (hit_player_obj)
 							{
@@ -52,7 +52,7 @@ if ("rollArray" in self)
 						else if (window_timer > 100)
 						{
 							for (var i = 0; i < 9; ++i)
-								draw_sprite_ext(sprite_get("plat"), 0, i*192+24, room_height/2+64, 2, 2, 0, c_white, 1);
+								draw_sprite_ext(sprite_get("plat"), 0, i*192+24, room_height/2+64, 4, 4, 0, c_white, 1);
 							draw_rectangle_color(0,room_height/2+128,room_width,room_height,c_black,c_black,c_black,c_black,false);
 							if (window_timer < 120)
 							{

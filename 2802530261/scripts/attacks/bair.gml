@@ -42,7 +42,7 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 10);
-set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("missile_hit"));
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, -1);
@@ -59,7 +59,7 @@ set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 10);
-set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("missile_hit"));
 
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_GROUP, -1);
@@ -76,4 +76,4 @@ set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 3, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_BAIR, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 3, HG_HITPAUSE_SCALING, 0.6);
-set_hitbox_value(AT_BAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_BAIR, 3, HG_HIT_SFX, sound_get("missile_hit"));

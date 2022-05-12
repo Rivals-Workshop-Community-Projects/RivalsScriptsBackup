@@ -9,7 +9,7 @@ if ("hue" in self && get_player_color(player) == 27)
     set_article_color_slot(7,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
 }
 
-if ("outline_color" in self)
+if ("outline_color" in self && "asCharge" in self)
 {
     var outline_colour = [  0,   0,  0  ];
     if (asCharge == asChargeMax && ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || attack != AT_NSPECIAL))

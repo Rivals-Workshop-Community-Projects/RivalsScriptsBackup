@@ -234,6 +234,15 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.73", "10th May 2022");
+initHeader("Buffs");
+initSection("- USpecial now gives BB more of an upwards boost, doesn't halt his horizontal momentum as much, and it can also be held much longer");
+initSection("- USpecial sweetspot is more powerful and the sourspot lasts way longer (90->180). If hit, the move can also be cancelled into other things");
+initSection("- FSpecial steam cloud stays longer (480->720)");
+initHeader("Fixes / Other Changes");
+initSection("- Blob Ball and FSpecial cloud are now snaccable for Matty");
+initSection("- FSpecial cloud can now also be grabbed by all characters (ownership returns to Blue Blob if he hits the cloud however)");
+
 initPatch("1.72", "22nd April 2022");
 initHeader("Buffs");
 initSection("- Blob Ball now explodes when going off-screen, making it more reliable in certain ways");

@@ -66,8 +66,8 @@ if (((window == 1) && (((special_down or move_cooldown[AT_DTHROW] >= 7)) or (str
      		move_cooldown[AT_EXTRA_2] = 30
      		can_fast_fall = false
      	if !projecting {
-     	if abs(old_vsp) > 8 old_vsp/= 1.1
-     	if abs(old_hsp) > 8 old_hsp/= 1.1
+     	if abs(old_vsp) > 7 old_vsp/= 1.15
+     	if abs(old_hsp) > 7 old_hsp/= 1.15
      	}
      	hitpause = true  
      	hitstop = 2
@@ -187,14 +187,24 @@ switch attack {
             hit_player_obj.clone = false
         }
         
+        if window > 2 {
         hsp /= 1.1
         vsp /= 1.1
+        if free {
+        	hsp /= 1.02
+        	vsp /= 1.05
+        }
+        }
+        
+        can_fast_fall = false 
         
         if (window == 2 && window_timer > 4) or (window == 3 && window_timer < 6) {
         	vsp = 0
         	hsp = 0
         }
+        
 	    if window == 1 && window_timer == 1 && !hitpause {
+	    	move_cooldown[AT_DSPECIAL] = 60
 	    	vfx = spawn_hit_fx(x + 6*spr_dir,y - 32,305)
         	vfx.pause = 4
         	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.9,1.2)
@@ -207,10 +217,7 @@ switch attack {
         }
 
         
-        if free {
-        	hsp /= 1.02
-        	vsp /= 1.05
-        }
+        
         
 	break;
 	
@@ -358,7 +365,7 @@ switch attack {
 	case AT_USPECIAL:
      
 	    can_move = false 
-
+        can_fast_fall = false 
 	    if !hitpause {
 	    	hsp /= 1.12
 	    	vsp /= 1.12
@@ -384,12 +391,8 @@ switch attack {
         
         if window == 1 && window_timer == 12 && !hitpause {
   	         spawn_hit_fx(x,y,RC)
-        	if (joy_pad_idle){
-	        } else {
-	        var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
-	        		vsp = (8 * sin(angle));
-	        		hsp = (8 * cos(angle));
-	        }
+        	hsp*=4
+        	vsp*=4
         }
         
         if window = 2 && has_hit && window_timer > 10 {

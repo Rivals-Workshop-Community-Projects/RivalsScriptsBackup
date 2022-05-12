@@ -16,8 +16,8 @@ switch(attack){
 
 switch(attack){
 	case AT_USPECIAL:
+		hsp *= .96;
 	    if(window == 1){
-	    	hsp = clamp(hsp,-5,5)
 	        if(sanic_uspec_count >= 2){
 	            move_cooldown[AT_USPECIAL] = 9999;
 	        }
@@ -25,13 +25,12 @@ switch(attack){
 	    if(window == 2 && window_timer == 1){
 	        sanic_uspec_count+=1;
 	        sound_play(sound_get("cough"))
-	    }/*
-	    if(window == 3){
-	        if(sanic_uspec_count >= 3){
-	            sanic_uspec_count=0;
+	        if (y < 60){
+	        	vsp = -4;
+	        }else{
+	        	vsp = -9;
 	        }
 	    }
-	    */
 	break;
 	case AT_NSPECIAL:
 		if(window == 1){
@@ -119,10 +118,12 @@ switch(attack){
 						spr_dir = horizontal;
 					}				
 				}
+				if(window_timer == phone_window_end-2){
+					spawn_hit_fx(x+110*spr_dir,y+10,fx_sound_wave)
+				}
 				if(window_timer == phone_window_end){
 					sound_play(sound_get("gun"));
-					spawn_hit_fx(x+80*spr_dir,y,fx_sound_wave)
-					bullet_fx = spawn_hit_fx(x+45*spr_dir,y+2,fx_bullet)
+					//bullet_fx = spawn_hit_fx(x+45*spr_dir,y+2,fx_bullet)
 					need_to_reload = true;
 				}
 			}
@@ -399,9 +400,10 @@ switch(attack){
 		if(window == 1){
 			if(window_timer == 1){
 				reset_attack_value(AT_BAIR,AG_CATEGORY);
+				grab_target = noone;
 			}
 		}
-		if(window == 2 && window_timer <= 4){
+		if(window == 2 && window_timer <= 4 && !instance_exists(grab_target)){
 			with(pHitBox){
 				if(type == 2 && self != other && string_length(string(player_id.url)) > 0 && orig_player != 5){
 					var playerurl = real(player_id.url);
@@ -617,7 +619,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
 	default: 

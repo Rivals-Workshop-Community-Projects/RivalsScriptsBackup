@@ -155,7 +155,7 @@ with pit_codec_handler{
 	
 	initCodec(CH_RANNO);
 	initCodecPage(SPK_PIT,	6,	6,	"'" + "Poisonous Pacifist" + "'" + ", what is that supposed to mean?");
-	initCodecPage(SPK_PALU,	4,	2,	"Some of Ranno's moves inflict a poison stasus effect. While poisoned, you'll take damage every time you input an attack!");
+	initCodecPage(SPK_PALU,	4,	2,	"Some of Ranno's moves inflict a poison status effect. While poisoned, you'll take damage every time you input an attack!");
 	initCodecPage(SPK_VIR,	1,	1,	"Or he can trap you in a poison bubble and hit you until it pops.");
 	initCodecPage(SPK_PIT,	7,	8,	"Doesn't sound very pacifist to me...");
 	
@@ -225,7 +225,40 @@ with pit_codec_handler{
 	initCodecPage(SPK_PIT,	3,	0,	"He must be glad to be represented well over here.");
 	initCodecPage(SPK_VIR,	1,	9,	"I don't know about that, pretty sure all he wants is to steal your money.");
 	
+	initCodec(CH_MOLLO);
+	initCodecPage(SPK_VIR,	2,	8,	"Just how many bombs does this moth have!?");
+	initCodecPage(SPK_PIT,	2,	3,	"More than enough to blow me to smithereens!");
+	initCodecPage(SPK_PALU,	4,	1,	"Mollo creates his own arsenal of bombs, each one tailored for a specific purpose.");
+	initCodecPage(SPK_PALU,	2,	-1,	"However, his own bombs can hurt Mollo too, try to use this to your advantage!");
+	initCodecPage(SPK_VIR,	0,	4,	"You know, while I would say moths are an intrinsic aspect of nature and many ecosytems...");
+	initCodecPage(SPK_VIR,	4,	2,	"This one has NO RIGHT fighting with EXPLOSIVES of all things! Does he realise the damage he's doing to the environment!?");
+	initCodecPage(SPK_PALU,	1,	0,	"I'm pretty sure Mollo has higher priorities than environmental sustainability right now.");
+	initCodecPage(SPK_PIT,	10,	5,	"Yeah, like fighting me.");
 	
+	initCodec(CH_HODAN);
+	initCodecPage(SPK_PIT,	6,	7,	"Donkey Kong's looking a little different. Did he get his fur bleached?");
+	initCodecPage(SPK_VIR,	6,	5,	"That's not DK you dimwit, thats Hodan! Master of the 4 elements! I've heard he even has his own dojo.");
+	initCodecPage(SPK_PALU,	2,	3,	"Hodan has a unique property that he builds up steam when holding down. He can use this steam to enhance his next attack!");
+	initCodecPage(SPK_VIR,	1,	1,	"Uh, I'm pretty sure thats sweat, not steam.");
+	initCodecPage(SPK_PIT,	2,	1,	"Ew, gross! This guy should take a bath or something.");
+	initCodecPage(SPK_PALU,	1,	2,	"Well I have seen him relaxing in a hotspring after a battle.");
+	initCodecPage(SPK_PIT,	4,	9,	"...did you say hotsprings?");
+	initCodecPage(SPK_VIR,	3,	3,	"AFTER the battle, Pit. For now, focus on the fight at hand!");
+	
+	initCodec(CH_POMME);
+	initCodecPage(SPK_VIR,	6,	4,	"Ah Pomme, the Superstar Songstress. She sure lives up to her title.");
+	initCodecPage(SPK_PIT,	6,	7,	"This mouse sings while fighting? Consider me impressed.");
+	initCodecPage(SPK_PALU,	2,	5,	"Pomme utilises her control over sound waves for attacks and even movement, like floating through the air!");
+	initCodecPage(SPK_PIT,	3,	0,	"I wonder if she has any albums?");
+	initCodecPage(SPK_VIR,	6,	1,	"Don't worry Pit, I've already purchased all 3 of her vinyls.");
+	
+	initCodec(CH_OLYMPIA);
+	initCodecPage(SPK_PIT,	7,	8,	"Those gem gauntlets sure look shiny.");
+	initCodecPage(SPK_VIR,	6,	4,	"Ah, Olympia. I've been keeping tabs on this mouse. She's spent years training to perfect her art and technique.");
+	initCodecPage(SPK_PALU,	1,	2,	"Olympia utilises her gauntlets along with her mastery of martial arts to deliver powerful strings of attacks.");
+	initCodecPage(SPK_VIR,	2,	8,	"She even can stun opponents in a ball of crystals to keep her combos going for even longer!");
+	initCodecPage(SPK_PIT,	9,	4,	"Yeowch, wouldn't want those touching my skin, those gems look like they would hurt.");
+	initCodecPage(SPK_PALU,	2,	5,	"Olympia may not have too much reach on her attacks, but once she closes in, you in for one heck of a beating.");
 	 
 	initCodec(1865940669); // Sandbert
 	initCodecPage(SPK_PIT,	4,	6,	"Who's THIS guy?");

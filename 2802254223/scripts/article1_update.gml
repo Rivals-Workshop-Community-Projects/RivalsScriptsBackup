@@ -1,7 +1,7 @@
 //Make the sprite move.
 state_timer ++;
 bomb_timer ++;
-player_id.move_cooldown[AT_DSPECIAL] = 30;
+player_id.move_cooldown[AT_DSPECIAL] = 2;
 
 if (place_meeting(x, y, asset_get("plasma_field_obj"))) {
     sound_play(asset_get("sfx_clairen_hit_med"));

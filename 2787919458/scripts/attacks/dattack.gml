@@ -2,7 +2,6 @@ set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 2);
 set_attack_value(AT_DATTACK, AG_OFF_LEDGE, true);
 set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
-set_attack_value(AT_DATTACK, AG_NO_PARRY_STUN, true);
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 
 set_window_value(AT_DATTACK, 1, AG_WINDOW_TYPE, 1);
@@ -56,7 +55,7 @@ set_hitbox_value(AT_DATTACK, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 45);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
