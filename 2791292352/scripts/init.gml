@@ -86,7 +86,7 @@ uspecial_boost = hit_fx_create(sprite_get("uspecial_boost"), 10);
 // Misc. animation speeds
 idle_anim_speed     = 0.15;
 crouch_anim_speed   = 0.1;
-walk_anim_speed     = 0.2;
+walk_anim_speed     = 0.4;
 dash_anim_speed     = 0.2;
 pratfall_anim_speed = 0.25;
 

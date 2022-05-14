@@ -80,6 +80,8 @@ if (state == 0){ //growing
 		state_timer = 0;
 	}
 	
+	hsp = 0;
+	
 	//that's:
 	//starting animation frame +
 	//current time *
@@ -273,6 +275,7 @@ if (state == 3){ //charging
 		//stop the chargey sound
 		sound_stop( asset_get( "sfx_shop_close" ) );
 		//then make new sound
+		sound_play( sound_get( "boom" ) );
 		sound_play( asset_get( "sfx_clairen_arc_lose" ) );
 		
 		//the explosion hitbox is defined in jab
@@ -336,6 +339,8 @@ if (state == 4){ //explosion
 			exit;
 		}
     }
+    
+    image_angle = 0;
     
     indicator_anyway = false;
 }
@@ -439,6 +444,82 @@ if (state == 7){
 	}
 	
 	
+	//HIT DETECTION STUFF ---------------------------
+	
+	if (knockback_ease == true && hitstop = 0){
+		
+	if (hit_timer == 0){
+		
+		image_xscale = 3.5
+		image_yscale = .35
+		
+	} else {
+	
+		image_xscale = 1.6
+		image_yscale = .8
+	
+	}
+	
+	//Angles
+	if (vsp_old < -4 && hsp >= 1){
+		image_angle = 35;
+	}
+	if (vsp_old < -4 && hsp <= 1){
+		image_angle = -35;
+	}
+	
+	if (vsp_old < -9 && hsp >= 1){
+		image_angle = 90;
+	}
+	if (vsp_old < -9 && hsp <= 1){
+		image_angle = -90;
+	}
+	
+	if (vsp_old < -9 && hsp >= 1){
+		image_angle = 90;
+	}
+	if (vsp_old < -9 && hsp <= 1){
+		image_angle = -90;
+	}
+	
+	hsp = ease_quartOut(floor(hsp_old*3), floor(hsp_old-1), hit_timer, 10);
+	//vsp = ease_quartOut(floor(vsp_old*2), floor(vsp_old), hit_timer, 10);
+	
+	hit_timer++;
+	
+	if (hit_timer == 10) {
+		image_angle = 0;
+		image_xscale = 1;
+		image_yscale = 1;
+		knockback_ease = false;
+		hit_timer = 0;
+	}
+	
+	}
+	
+	if (hitstop >= 2){
+		hsp_old = hsp
+		vsp_old = vsp
+	}
+	
+	if (hitstop >= 1){
+		if (!red_mode){
+			image_index = 32
+		}  else {
+			image_index = 36
+		}
+		image_xscale = .6
+		image_yscale = 1.6
+	}
+	
+	if (hitstop == 1){
+		knockback_ease = true;
+	}
+	
+	print_debug(vsp_old);
+	
+	//----------------------------------
+
     if (state_timer == air_time){
         state_timer = 0; //reset timer manually
         if (!red_mode){
@@ -516,6 +597,12 @@ if (state == 8){
     }
 }
 
+if (state != 7){
+	//image_angle = 0;
+	image_xscale = 1;
+	image_yscale = 1;
+}
+
 //Supersonic's Hit Detection----------------------------------------------------
 
 #define on_hit(hbox)
@@ -531,6 +618,8 @@ if (player_id.attack == AT_FSPECIAL && player_id.window >= 5 ||
 		
 } else {
 	
+k_grav = 0.22
+	
 if (state == 1){
 	wobble = 10;
 	hsp = 0;
@@ -538,13 +627,13 @@ if (state == 1){
 	state = 1;
 	state_timer = 0;
 } else if (state == 7) {
-	//state = 8;
-	//create_hitbox(AT_NSPECIAL,1,x,y);
+	//image_xscale = 0.8;
+	//image_yscale = 1.6;
 }
 
 //Default hit stuff
 sound_play(hbox.sound_effect);
-sound_play(asset_get("sfx_clairen_tip_med"));
+sound_play(sound_get("dink"));
 
 spawn_hit_fx(x+hbox.hit_effect_x,y+hbox.hit_effect_y,hbox.hit_effect);
 if (stance == 0){
@@ -565,9 +654,9 @@ player_id.dattack_jump = true;
 //You probably want this stuff because it makes the hit feel good.
 if hbox.type == 1 {
 	if (state != 1){
-    	var desired_hitstop = clamp(hbox.hitpause + hbox.damage * hbox.hitpause_growth * 0.05, 0, 20);
+    	var desired_hitstop = clamp(hbox.hitpause + hbox.damage * hbox.hitpause_growth * 0.09, 0, 20);
 	} else {
-    	var desired_hitstop = clamp(hbox.hitpause + hbox.damage * hbox.hitpause_growth * 0.05, 0, 8);
+    	var desired_hitstop = clamp(hbox.hitpause + hbox.damage * hbox.hitpause_growth * 0.09, 0, 8);
 	}
     with hit_player_obj {
         if !hitpause {
@@ -604,7 +693,7 @@ if (state != 1){
 if hbox.force_flinch orig_knock = 0.3; //comment out this line for grounded articles.
 else orig_knock = hbox.kb_value + hbox.damage * hbox.kb_scale * 0.12 * kb_adj;
 kb_dir = get_hitbox_angle(hbox);
- 
+
 hsp = lengthdir_x(orig_knock * 1.4, kb_dir);
 vsp = lengthdir_y(orig_knock * 1.1, kb_dir);
 

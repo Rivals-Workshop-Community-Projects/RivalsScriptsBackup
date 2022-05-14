@@ -276,6 +276,12 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.4", "May 13th, 2022");
+initHeader("Aesthetic");
+initSection("-Walking animation now has more animnation frames (as a treat <:)");
+initHeader("Bugs");
+initSection("-Shader code wasn't updated to reflect new shader slot order, resulting in some weird issues");
+
 initPatch("1.3", "May 8th, 2022");
 initHeader("i forgot the munophone");
 initSection("-they forgot the munophone");

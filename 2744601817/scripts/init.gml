@@ -74,6 +74,8 @@ ruair_glow_count = 0;
 ruair_glow = false;
 rauir_dmg = 0;
 
+jab_combo = false;
+
 //Grab
 old_grabbed_player_obj = noone;
 grabbed_player_obj = noone;    //the player object currently being grabbed.

@@ -15,6 +15,10 @@ idle_cycle = 0;
 use_left = 1;
 red_mode = 0;
 k_grav = 0.2;
+hit_timer = 0;
+hsp_old = 0;
+vsp_old = 0;
+knockback_ease = false;
 
 log_kunai = true;
 

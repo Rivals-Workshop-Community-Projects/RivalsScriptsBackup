@@ -51,6 +51,14 @@ switch(attack){
 			if (window == 1 && window_timer == 6){
 				spawn_base_dust(x+60*spr_dir,y+2,"dash_start", 0 - spr_dir)
 			}
+		
+		//Purple
+		} else if (red_mode = 2) {
+			if (window == 2 && window_timer = 6){
+				vsp = -10;
+				state = PS_ATTACK_AIR;
+				attack = AT_FAIR;
+			}
 		} else {
 			if (window == 1 && window_timer == 10){
 				spawn_base_dust(x+60*spr_dir,y+2,"dash_start", 0 - spr_dir)
@@ -931,7 +939,7 @@ switch(attack){
 						} else {
 							kunai.stance = 1;
 						}
-						kunai.vsp = -3.5
+						kunai.vsp = -2.5
 						kunai.hsp = 2 *spr_dir
 						//kunai.gravity = 0.1
 						kunai_target = (asset_get("obj_article1"));
@@ -1377,11 +1385,11 @@ switch(attack){
 			}
 			if(window_timer % 4 == 1){
 					if (!red_mode) {
-						var h = spawn_hit_fx(x + 4 * spr_dir, y - 24, fx_slash);
+						//var h = spawn_hit_fx(x + 4 * spr_dir, y - 24, fx_slash);
 					} else {
-						var h = spawn_hit_fx(x + 4 * spr_dir, y - 24, fx_rslash);
+						//var h = spawn_hit_fx(x + 4 * spr_dir, y - 24, fx_rslash);
 					}
-					h.draw_angle = 270 * spr_dir;
+					//h.draw_angle = 270 * spr_dir;
 			}
 		}
 		
@@ -1444,8 +1452,23 @@ switch(attack){
 			}
 			break;
 	case(AT_JAB):
-	    was_parried = false;
-	    break;
+		was_parried = false;
+		
+		//Purple
+		if (red_mode == 2 && jab_combo = 1){
+			if (window = 3 && window_timer = 1){
+				set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 3);
+				set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0);
+			}
+			destroy_hitboxes();
+			if (window = 4 && !hitpause){
+				jab_combo = 1;
+				attack = AT_FTILT;
+				window = 1;
+				window_timer = 5; 
+			}
+		}
+		break;
 }//Attack Switch case
 
 //Other ------------------------------------------------------------------------

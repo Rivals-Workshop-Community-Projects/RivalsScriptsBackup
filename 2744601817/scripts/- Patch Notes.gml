@@ -1,4 +1,14 @@
 /*
+-- V1.4 --
+
+Gameplay Changes:
+- Nspecial gamefeel is much better (also easier to hit)
+- Nair landing hitbox is bigger
+- Blue Ustrong startup has been reduced significantly
+
+Cosmetic Changes:
+- Changed preview art
+
 -- V1.3 --
 
 Gameplay Changes:

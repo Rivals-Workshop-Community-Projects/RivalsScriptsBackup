@@ -413,8 +413,14 @@ switch (hitbox){
 			old_vsp = -9;
 			special_jump = true;
 			set_state( PS_IDLE_AIR );
-	    }
-    	break;
+		}
+		break;
+	case(AT_JAB):
+		//Purple
+		if (red_mode == 2){
+			jab_combo = 1;
+		}
+		break;
 }
 
 

@@ -285,7 +285,7 @@ switch (attack){
         }
         break;
     case(AT_JAB):
-        if (red_mode){
+        if (red_mode == 1){
             set_window_value(AT_JAB, 1, AG_WINDOW_TYPE, 1);
             set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 6);
             set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAME_START, 8);
@@ -319,7 +319,12 @@ switch (attack){
             set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, fx_rhit);
             set_hitbox_value(AT_JAB, 2, HG_HIT_PARTICLE_NUM, 2);
         }
-        else if (!red_mode) {
+        else if (red_mode == 2){
+            set_window_value(AT_JAB, 2, AG_WINDOW_LENGTH, 3);
+            set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 1);
+            set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 3);
+        } 
+        else {
             reset_window_value(AT_JAB, 1, AG_WINDOW_TYPE);
             reset_window_value(AT_JAB, 1, AG_WINDOW_LENGTH);
             reset_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAME_START);
@@ -388,7 +393,7 @@ switch (attack){
         }
         break;
     case(AT_FTILT):
-        if(red_mode){
+        if(red_mode == 1){
             set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, sound_get("rswish_med1"));
             set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 10);
             set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 13);
@@ -405,6 +410,13 @@ switch (attack){
             set_hitbox_value(AT_FTILT, 1, HG_HIT_PARTICLE_NUM, 2);
             set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 9);
             set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .8);
+            
+        }else if (red_mode == 2){
+            attack = AT_FSTRONG;
+            set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 6);
+            set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 6);
+            set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 4);
+            set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 8);
         } else {   
         	
             reset_window_value(AT_FTILT, 1, AG_WINDOW_SFX);
