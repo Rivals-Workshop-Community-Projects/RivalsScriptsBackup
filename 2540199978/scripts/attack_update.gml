@@ -159,6 +159,7 @@ switch (attack)
         if (window == 4)
         {
             can_wall_jump = true;
+            can_jump = has_hit&&!was_parried;
             tutDone[2] = true;
         }
         break;
@@ -245,13 +246,19 @@ switch (attack)
         break;
 
     case AT_USTRONG:
-        if (state_timer == 1) ustrongLoop = 0;
+        if (state_timer == 1)
+        {
+            reset_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START);
+            ustrongLoop = 0;
+        }
         if (window == 2 || window == 3) draw_indicator = false;
+        if (window == 4 && window_timer == 1) sound_play(asset_get("sfx_blow_heavy1"),0,-4,0.3);
         if (window == 3 && window_timer == get_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH)-1)
         {
             ++ustrongLoop;
             window_timer = 0;
-            if (ustrongLoop > 3) window = 4;
+            if (ustrongLoop == 3) set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+            else if (ustrongLoop > 3) window = 4;
         }
         break;
 

@@ -335,8 +335,8 @@ switch attack {
 	  	  }
 	  	  if window_timer == 1 && !hitpause {
 	  	  	create_hitbox(AT_USPECIAL,3,x,y - 30)
-	  	  x += upbhsp*15
-	  	  y += upbvsp*15
+	  	  x += upbhsp*18
+	  	  y += upbvsp*18
 	  	  sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.9,1.2)
 	  	  hsp = upbhsp 
 	  	  vsp = upbvsp 
@@ -391,8 +391,8 @@ switch attack {
         
         if window == 1 && window_timer == 12 && !hitpause {
   	         spawn_hit_fx(x,y,RC)
-        	hsp*=4
-        	vsp*=4
+        	hsp*=3.5
+        	vsp*=3.5
         }
         
         if window = 2 && has_hit && window_timer > 10 {
@@ -508,6 +508,10 @@ switch attack {
         	set_attack_value(attack, AG_CATEGORY, 1);
         	set_attack_value(attack, AG_OFF_LEDGE, 0);
         } 
+        
+        if window == 2 && !hitpause{
+    	x += 3*spr_dir
+        }
         
 	break;
 	

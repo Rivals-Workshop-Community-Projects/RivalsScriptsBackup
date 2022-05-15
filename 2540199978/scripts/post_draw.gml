@@ -9,7 +9,7 @@ if ("rollArray" in self)
 				if (window == 2 && window_timer <= 4)
 				{
 					gpu_set_fog(1, c_white, 0, 1);
-					draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_white, 1);
+					draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir*2, 2, spr_angle, c_white, 1);
 					gpu_set_fog(0, c_white, 0, 0);
 				}
 				break;

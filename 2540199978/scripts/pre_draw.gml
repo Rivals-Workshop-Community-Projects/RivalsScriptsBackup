@@ -14,7 +14,7 @@ if ("rollArray" in self)
 	for (var i = 0; i < 3; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0)
 	{
 		gpu_set_fog(1, tempColour, 0, 1);
-		draw_sprite_ext(rollSpr, i, rollArray[i].rollX, rollArray[i].rollY, rollArray[i].rollDir, 1, 0, tempColour, rollArray[i].rollAlpha/10);
+		draw_sprite_ext(rollSpr, i, rollArray[i].rollX, rollArray[i].rollY, rollArray[i].rollDir*2, 2, 0, tempColour, rollArray[i].rollAlpha/10);
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 
@@ -27,7 +27,7 @@ if ("rollArray" in self)
 		{
 			case AT_USPECIAL:
 				if (window == 3)
-					draw_sprite_ext(sprite_index, image_index, x+draw_x-hsp, y+draw_y-vsp, spr_dir, 1, spr_angle, c_white, 0.5);
+					draw_sprite_ext(sprite_index, image_index, x+draw_x-hsp, y+draw_y-vsp, spr_dir*2, 2, spr_angle, c_white, 0.5);
 				break;
 		}
 	}
@@ -35,7 +35,7 @@ if ("rollArray" in self)
 	if (fspecActive)
 	{
 		gpu_set_fog(1, tempColour, 0, 1);
-		draw_sprite_ext(sprite_index, image_index, x+fspecDist, y, spr_dir, 1, 0, c_white, 0.8);
+		draw_sprite_ext(sprite_index, image_index, x+fspecDist, y, spr_dir*2, 2, 0, c_white, 0.8);
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 

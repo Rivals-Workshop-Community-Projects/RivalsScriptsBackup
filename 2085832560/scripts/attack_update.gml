@@ -192,12 +192,12 @@ if attack == AT_FAIR {
     	hsp = 14*spr_dir
     }
     
-    if window == 3 {
-    	if !down_down{
-        vsp /= 2
-    	}
-        hsp /= 1.5
-    }
+    //if window == 3 {
+    //	if !down_down{
+    //    vsp /= 2
+    //	}
+    //    hsp /= 1.5
+    //}
     
    
 }
@@ -254,7 +254,7 @@ if attack == AT_DATTACK {
         hsp += 0.4 * spr_dir
         
         if window_timer > 6 or (has_hit_player && window_timer > 1 ){
-        if has_hit_player or (hsp < 5 and hsp > -5) {
+        if has_hit_player {
         set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 165);
     	set_hitbox_value(AT_DATTACK, 3, HG_WIDTH, 165);
     	set_hitbox_value(AT_DATTACK, 4, HG_WIDTH, 175);

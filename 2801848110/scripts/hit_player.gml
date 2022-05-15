@@ -34,6 +34,10 @@ if my_hitboxID.attack == AT_USPECIAL &&  my_hitboxID.hbox_num == 9 {
 }
 
 
+if esave > 1 or my_hitboxID.attack == AT_DSPECIAL {
+	hit_player_obj.pausedtime = 20
+}
+
 if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1 && hit_player_obj.state_cat == SC_HITSTUN {
     hit_player_obj.x += floor((x + hsp - hit_player_obj.x)/3)
     hit_player_obj.y += floor((y + vsp + 60 - hit_player_obj.y)/3)

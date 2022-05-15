@@ -221,6 +221,18 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added CSS sound effect");
 						break;
+					case 12:
+						AddText("v1.11 - 14 May 2022");
+						AddText("");
+						AddText("Flake now uses small_sprites");
+						AddText("");
+						AddText("UStrong now has new Endlag animation");
+						AddText("");
+						AddText("FSpec Grab Hitbox size is now wider");
+						AddText("FSpec Kick Angle 60 -> 80");
+						AddText("FSpec Kick KB 8+0.8 -> 8+0.4");
+						AddText("FSpec can now be jump cancelled on hit in endlag");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -281,7 +293,7 @@ if ("practice" in self)
 				AddText("Join the Shrine of Light Discord!");
 				AddText("");
 				AddText("Chat with the developer of Lonin and Hikaru");
-				AddText("discord.gg/Kn5ttGx");
+				AddText("discord.gg/w4xqqtrXf8");
 				AddText("");
 				AddText("");
 				AddText("");
@@ -289,7 +301,7 @@ if ("practice" in self)
 				DrawTutorialBlock();
 				DrawTutorialText();
 				draw_sprite_ext(sprite_get("discord"), 0, 16, temp_y-76+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
-				draw_sprite_ext(sprite_get("hikaru"), state_timer/(43/16), 64, temp_y-96+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
+				draw_sprite_ext(sprite_get("HYPEkaru"), state_timer/(43/16), 192, temp_y-98+floor(tutAlpha*4)*2-8, 1, 1, 0, c_white, tutAlpha);
 				break;
 		}
 		draw_set_alpha(1);

@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 12;
+	var noOfPatches = 13;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -158,7 +158,7 @@ else
 }
 
 // snowflake
-with (obj_article1) if (player_id == other && returning && player_id.move_cooldown[AT_DSPECIAL] < 2)
+if (move_cooldown[AT_DSPECIAL] < 2) with (obj_article1) if (player_id == other && returning)
 	player_id.move_cooldown[AT_DSPECIAL] = 2;
 if (!visible)
 {

@@ -29,6 +29,7 @@ shader_end();
 
 
 if "col" in self {
+	
 	if pausing {
  	gpu_set_fog(1, col, 0, 1);
     draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,image_angle,c_white,.6);
@@ -63,7 +64,7 @@ if "col" in self {
 	
 	with oPlayer {
 		if "beingpaused" in self  {
-			if beingpaused == true  {
+			if beingpaused == true  && pausedtime > 0 {
 			with other {
                 trifx = spawn_hit_fx(other.x - 10 + random_func(2,21,true),other.y - 20 - 10 + random_func(3,21,true),tri)
                 trifx.draw_angle = random_func(1,361,true)

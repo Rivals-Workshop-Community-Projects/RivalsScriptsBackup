@@ -109,6 +109,7 @@ if esave == 2 {
 	saveid.x = esavex
 	saveid.y = esavey
 	esave = 0
+	saveid.pausedtime = 0
 }
 
 if state == PS_AIR_DODGE {
@@ -128,7 +129,10 @@ if state == PS_WAVELAND {
 if attack != AT_USPECIAL {
 	
 with oPlayer {
-		if state_cat == SC_HITSTUN && !hitpause && hit_player_obj = other && (other.pausing = false or get_gameplay_time()%3 == 0){
+	if "pausedtime" in self {
+		if pausedtime > 0 {
+			
+		if state_cat == SC_HITSTUN && !hitpause && hit_player_obj = other && get_gameplay_time()%3 == 0 {
 			beingpaused = false 
 			eld_hsp = hsp
 			eld_vsp = vsp
@@ -136,7 +140,7 @@ with oPlayer {
 			eld_y = y
 		}
 		
-		if other.pausing == false or hit_player_obj != other or state_cat != SC_HITSTUN {
+		if hit_player_obj != other or state_cat != SC_HITSTUN or pausedtime = 20 {
 			beingpaused = false 
 			if hit_player_obj == other {
 			eld_x = x
@@ -144,25 +148,31 @@ with oPlayer {
 			eld_hsp = hsp
 			eld_vsp = vsp
 			}
+			pausedtime --
 		}
-}
-	
-if pausing == true {
-	with oPlayer {
-		if state_cat == SC_HITSTUN && hit_player_obj = other && get_gameplay_time()%3 != 0 && free{
-			state_timer -= 1
-			x = eld_x - left_down*4 + right_down*4 
-			y = eld_y
-			hsp = eld_hsp
-			vsp = eld_vsp
-			old_hsp = eld_hsp
-			old_vsp = eld_vsp
-			beingpaused = true 
+     
+        	
+        if state_cat == SC_HITSTUN && hit_player_obj = other && get_gameplay_time()%3 != 0 && free && !hitpause{
+        			state_timer -= 1
+        			x = eld_x - left_down*2 + right_down*2 
+        			y = eld_y
+        			hsp = eld_hsp
+        			vsp = eld_vsp
+        			old_hsp = eld_hsp
+        			old_vsp = eld_vsp
+        			beingpaused = true 
+        			pausedtime --
+        }
+        
+        
 		}
-	}
+        
+       }
+
 }
 
 }
+
 //
 
 if state == PS_PARRY  {
