@@ -70,7 +70,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -9000); //Don't worry about this.
 set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 110);
-set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 20);
+set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 35);
 set_hitbox_value(AT_FSTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
@@ -82,7 +82,6 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, whomp_hit1);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 25);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
@@ -105,7 +104,6 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, whomp_hit2);
 set_hitbox_value(AT_FSTRONG, 3, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT_Y_OFFSET, -1);
-set_hitbox_value(AT_FSTRONG, 3, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 

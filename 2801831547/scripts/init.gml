@@ -13,6 +13,9 @@ set_extra = false;
 
 can_wall_cling = true;
 
+rainbow_color = c_white;
+rainbow_color2 = c_white;
+
 dodge_trail_size = 8;
 dodge_trail_color = make_color_rgb(get_color_profile_slot_r(get_player_color(player), 0), get_color_profile_slot_g(get_player_color(player), 0), get_color_profile_slot_b(get_player_color(player), 0));
 for(var i = 0; i < dodge_trail_size; i++){

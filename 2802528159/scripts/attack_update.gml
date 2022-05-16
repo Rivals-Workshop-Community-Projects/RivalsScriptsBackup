@@ -650,6 +650,51 @@ switch(attack){
 	set_hitbox_value(AT_UAIR, 6, HG_DAMAGE, 4 + (anger_state * (has_rune("J")? 3: 2)));
 	break;
 	
+	case AT_TAUNT:
+	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get(string(plate_state) + "_taunt"));
+	mask_index = sprite_get("taunt_box");
+	char_height = lerp(char_height, 140, 0.6);
+	if(window == 2){
+		if(right_down && spr_dir == 1){
+			window = 3;
+			window_timer = 0;
+		}else if(left_down && spr_dir == 1){
+			window = 4;
+			window_timer = 0;
+		}else if(right_down && spr_dir == -1){
+			window = 4;
+			window_timer = 0;
+		}else if(left_down && spr_dir == -1){
+			window = 3;
+			window_timer = 0;
+		}
+	}else if(window == 3){
+		if(window_timer <= 12 || (window_timer >= 24 && window_timer <= 48) || window_timer >= 57){
+			hsp = 3 * spr_dir;
+		}
+		if(spr_dir == 1 && !right_down) || (spr_dir == -1 && !left_down){
+			window = 2;
+			window_timer = 0;
+		}
+	}else if(window == 4 && window_timer == 25){
+		x -= 110 * spr_dir;
+		spr_dir *= -1;
+		window = 2;
+		window_timer = 0;
+	}else if(window == 5 && window_timer == 20){
+		set_attack(AT_NSPECIAL);
+		window = 2;
+	}
+	if(window == 2 || window == 3) && special_pressed{
+		window = 5;
+		window_timer = 0;
+	}
+	if(window == 2 || window == 3) && taunt_pressed{
+		window = 6;
+		window_timer = 0;
+	}
+	break;
+	
 }
 
 //sprite changes

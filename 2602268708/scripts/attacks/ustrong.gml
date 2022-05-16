@@ -20,7 +20,7 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, sound_get("star"));
 set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_USTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);

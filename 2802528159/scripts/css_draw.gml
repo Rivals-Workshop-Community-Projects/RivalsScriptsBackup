@@ -89,9 +89,6 @@ if(alt_cur != prev_alt){
     alpher_alt = 2
 }
 
-set_color_profile_slot(27, 0, sound, 0, 0);
-
-draw_sprite_ext(sprite_get("sound"), sound, temp_x + 12, temp_y + 42, 2, 2, 0, c_white, alpher);
 draw_set_font(asset_get("fName"));
 
 prev_alt = alt_cur;
@@ -116,15 +113,15 @@ textDraw(temp_x + 58, temp_y + 141, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 58, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 58, temp_y + 139, "fName", c_white, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 
-textDraw(temp_x + 60, temp_y + 126, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 60, temp_y + 124, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 60, temp_y + 122, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
-textDraw(temp_x + 56, temp_y + 126, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
+textDraw(temp_x + 60, temp_y + 120, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 56, temp_y + 124, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 56, temp_y + 122, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
-textDraw(temp_x + 58, temp_y + 126, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
-textDraw(temp_x + 58, temp_y + 122, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
-textDraw(temp_x + 58, temp_y + 124, "fName", c_white, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
+textDraw(temp_x + 56, temp_y + 120, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
+textDraw(temp_x + 58, temp_y + 124, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
+textDraw(temp_x + 58, temp_y + 120, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
+textDraw(temp_x + 58, temp_y + 122, "fName", c_white, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 

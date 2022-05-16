@@ -1,8 +1,8 @@
 user_event(14);
 
-if(get_player_color( player ) == 8) || (get_player_color( player ) == 27) || (get_player_color( player ) == 28) || (get_player_color( player ) == 29){
-bits = 1;
-}
+//if(get_player_color( player ) == 8) || (get_player_color( player ) == 27) || (get_player_color( player ) == 28) || (get_player_color( player ) == 29){
+//bits = 1;
+//}
 
 if nspecial_grabbed_player != noone
 {
@@ -76,7 +76,7 @@ if nspecial_grabbed_player != noone
 				hitstop = 2;
 				hitstop_full = 2;
 			}
-			if nspecial_grab_timer == 0 || y > get_stage_data(SD_Y_POS) + 96 || state == PS_PARRY_START || state == PS_AIR_DODGE || state == PS_WALL_JUMP || state == PS_HITSTUN || state == PS_HITSTUN_LAND
+			if nspecial_grab_timer == 0 || (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y) - 256) || state == PS_PARRY_START || state == PS_AIR_DODGE || state == PS_WALL_JUMP || state == PS_HITSTUN || state == PS_HITSTUN_LAND
 			{
 			    if !((attack == AT_FTHROW) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 				    nspecial_grabbed_player = noone
@@ -152,7 +152,7 @@ switch (state)
 	
 	break;
 	case PS_PARRY:
-	    if (state_timer == 1){ sound_play(sound_get("sm64_clink")); }
+	    if (state_timer == 1) && !hitpause{ sound_play(sound_get("sm64_clink")); }
 	break;
 }
 

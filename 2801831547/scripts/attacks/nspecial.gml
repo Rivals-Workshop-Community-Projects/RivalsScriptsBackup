@@ -63,7 +63,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 20);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -46);
-set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 60);
+set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 40);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 32);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 2);
@@ -77,7 +77,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -93,14 +93,16 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 5);
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 40);
-set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .65);
-set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .65);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);

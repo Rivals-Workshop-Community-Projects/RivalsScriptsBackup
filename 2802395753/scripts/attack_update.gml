@@ -47,7 +47,7 @@ switch(attack){
 			set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 10);
 			set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .35);
 			set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, .85);
-			set_hitbox_value(AT_DTILT, 1, HG_DRIFT_MULTIPLIER, 1.7);
+			set_hitbox_value(AT_DTILT, 1, HG_DRIFT_MULTIPLIER, 1.5);
 		} else {
 			reset_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK);
 			reset_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING);
@@ -62,16 +62,17 @@ switch(attack){
 		}
 		if(window == 1 && window_timer == 1){
 			if(job == "chef"){
-				set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 7);
+				set_num_hitboxes(AT_UTILT, 5);
 				set_hitbox_value(AT_UTILT, 3, HG_ANGLE, 85);
 				set_hitbox_value(AT_UTILT, 3, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_UTILT, 3, HG_HITSTUN_MULTIPLIER, 1.2);
+				set_hitbox_value(AT_UTILT, 3, HG_HITSTUN_MULTIPLIER, 1.25);
 				set_hitbox_value(AT_UTILT, 3, HG_TECHABLE, 2);
 			} else {
-				reset_hitbox_value(AT_UTILT, 3, HG_DAMAGE);
 				reset_hitbox_value(AT_UTILT, 3, HG_ANGLE);
 				reset_hitbox_value(AT_UTILT, 3, HG_BASE_KNOCKBACK);
 				reset_hitbox_value(AT_UTILT, 3, HG_HITSTUN_MULTIPLIER);
+				reset_hitbox_value(AT_UTILT, 3, HG_TECHABLE);
+				set_num_hitboxes(AT_UTILT, 3);
 			}
 		}
 		break;
@@ -109,22 +110,20 @@ switch(attack){
 	case AT_NAIR:
 		if(window == 1 && window_timer == 1){
 			if(job == "clerk"){
-				set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 40);
+				set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 35);
+				set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 5);
 			} else {
 				reset_hitbox_value(AT_NAIR, 1, HG_ANGLE);
+				reset_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK);
 			}
 		}
 		
 	case AT_FAIR:
 		if(window == 1 && window_timer == 1){
 			if(job == "chef"){
-				set_num_hitboxes(AT_FAIR, 3);
-				set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0.7);
-				set_window_value(AT_FAIR, 3, AG_WINDOW_HSPEED, -8);
+				set_num_hitboxes(AT_FAIR, 4);
 			} else {
-				set_num_hitboxes(AT_FAIR, 2);
-				reset_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING);
-				reset_window_value(AT_FAIR, 3, AG_WINDOW_HSPEED);
+				set_num_hitboxes(AT_FAIR, 3);
 			}
 		}
 	case AT_UAIR:
@@ -139,9 +138,19 @@ switch(attack){
 		
 	case AT_BAIR:
 		if(job == "mechanic"){
-			set_num_hitboxes(AT_BAIR, 2);
+			set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .9);
+			set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 3);
+			set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, -45);
+			set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -27);
+			set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 40);
+			set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 40);
 		} else {
-			set_num_hitboxes(AT_BAIR, 1);
+			reset_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING);
+			reset_hitbox_value(AT_BAIR, 2, HG_LIFETIME);
+			reset_hitbox_value(AT_BAIR, 2, HG_HITBOX_X);
+			reset_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y);
+			reset_hitbox_value(AT_BAIR, 2, HG_WIDTH);
+			reset_hitbox_value(AT_BAIR, 2, HG_HEIGHT);
 		}
 		break;
 		
@@ -161,9 +170,9 @@ switch(attack){
 	case AT_FSTRONG:
 		//projectile goes farther by charging
 		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 7 + strong_charge/10);
-		if(job == "office"){
-			set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 13);
-		}
+		// if(job == "office"){
+		// 	set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 13);
+		// }
 		move_cooldown[AT_FSTRONG] = 30;
 		if window == 2 && window_timer == phone_window_end{
 			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
@@ -234,14 +243,16 @@ switch(attack){
 			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -42);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 60);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 50);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 60);
 		} else {
 			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 103);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -42);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 20);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 10);
+			reset_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE);
 		}
 		
-		move_cooldown[AT_FSPECIAL] = 260;//500
+		move_cooldown[AT_FSPECIAL] = 200;//500
 		can_move = false;
 		can_fast_fall = false;
 		switch(window){
@@ -320,16 +331,26 @@ switch(attack){
 			case 3: // atk startup
 			case 4: // atk active
 			case 5: // endlag
-				hsp = 0;
-				vsp = 0;
+				// hsp = 0;
+				// vsp = 0;
 				break;
 				
 		}
 		
 		if(job == "clerk"){
-			set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -12);
+			set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW_CREATION_FRAME, 17);
+			set_hitbox_value(AT_USPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 7);
+			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+			set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, .85);
+			set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 3);
+			set_num_hitboxes(AT_USPECIAL, 6);
 		} else {
-			reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED);
+			reset_hitbox_value(AT_USPECIAL, 1, HG_WINDOW_CREATION_FRAME);
+			reset_hitbox_value(AT_USPECIAL, 1, HG_FINAL_BASE_KNOCKBACK);
+			reset_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK);
+			reset_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME);
+			reset_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING);
+			set_num_hitboxes(AT_USPECIAL, 2);
 		}
 		break;
 		
@@ -387,7 +408,7 @@ switch(attack){
 						}
 						set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, trig_hbox.kb_angle);
 						var temp_flipper = trig_hbox.hit_flipper;
-						if(temp_flipper == 6 || temp_flipper == 3){
+						if(temp_flipper == 6 || temp_flipper == 3 || temp_flipper == 10){
 							temp_flipper = 0;
 						}
 						if(temp_flipper == 7 || temp_flipper == 4){
@@ -433,10 +454,10 @@ switch(attack){
 				hsp = 0;
 			}
 		if(window == 2 && window_timer == phone_window_end){
-			move_cooldown[AT_DSPECIAL] = 60;//500
+			move_cooldown[AT_DSPECIAL] = 30;//500
 		}
 		if(window == 4 && window_timer == phone_window_end){
-			move_cooldown[AT_DSPECIAL] = 180;//500
+			move_cooldown[AT_DSPECIAL] = 60;//500
 		}
 		break;
 

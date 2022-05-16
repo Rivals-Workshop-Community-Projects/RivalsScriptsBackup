@@ -25,10 +25,18 @@ switch(attack){
         break;
     case AT_NSPECIAL:
         nspecial_has_wisp = false;
+        reset_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK);
+        reset_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING);
+        reset_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX);
+        reset_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT);
+        reset_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE);
+        reset_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT);
+        nspecial_sound = asset_get("sfx_ori_energyhit_weak");
         break;
     case AT_UAIR:
         reset_hitbox_value(AT_UAIR, 2, HG_WIDTH);
         reset_hitbox_value(AT_UAIR, 2, HG_HEIGHT);
+        reset_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y);
         break;
 }
 
@@ -37,3 +45,4 @@ if(uspecial_pratfall_go_brr){
     hsp = clamp(hsp*.95, -3, 3); //9//8
     vsp = clamp(vsp*.95, -3, 4);
 }
+dspecial_cancel_buffered = false;

@@ -248,6 +248,3 @@ switch(wall){
     }
     break;
 }
-
-/*
-PS_WALL_TECH

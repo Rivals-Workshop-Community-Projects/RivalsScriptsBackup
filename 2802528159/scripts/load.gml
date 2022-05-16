@@ -130,7 +130,10 @@ sprite_change_offset("orb_hit_med", 59, 67);
 sprite_change_offset("orb_big", 79, 88);
 sprite_change_offset("orb_hit_big", 79, 88);
 
-sprite_change_offset("taunt", 64, 94);
+sprite_change_offset("0_taunt", 77, 150);
+sprite_change_offset("1_taunt", 77, 150);
+sprite_change_offset("taunt_hurt", 154, 300);
+sprite_change_offset("taunt_box", 94, 126);
 
 sprite_change_offset("plat", 64, 94);
 

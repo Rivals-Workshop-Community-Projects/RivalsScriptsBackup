@@ -14,7 +14,7 @@ switch(attack){
     opp_timing = false;
 	opp_timed = false;
 	set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 0);
-    /*switch(random_timing){
+    switch(random_timing){
         case 0:
         set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 4);
         
@@ -54,7 +54,7 @@ switch(attack){
         
         set_window_value(AT_NSPECIAL_AIR, 6, AG_WINDOW_LENGTH, 6);
         break;
-    }*/
+    }
     break;
     
     case AT_DSTRONG:
@@ -687,7 +687,7 @@ switch(attack){
 	break;
 	
 	case AT_TAUNT:
-	state = PS_IDLE;
+	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get(string(plate_state) + "_taunt"));
 	break;
 }
 

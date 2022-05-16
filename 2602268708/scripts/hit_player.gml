@@ -84,6 +84,12 @@ switch (my_hitboxID.attack)
 			}
 		}
 	 break;
+	 
+	 case AT_FSTRONG:
+	     if my_hitboxID.hbox_num = 3{
+		 whomp_hashit = true;
+		 }
+	 break;
 }
 /*
 if (attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) // I guess

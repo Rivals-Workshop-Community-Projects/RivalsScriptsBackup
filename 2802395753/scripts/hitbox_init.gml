@@ -4,6 +4,7 @@ if(attack == AT_FSTRONG && hbox_num == 1){
         var mag = get_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED);
     }
     magnitude = mag * player_id.spr_dir;
+    strong_charged = player_id.strong_charge;
     if(player_id.strong_charge == 60 || player_id.job == "office"){
         loop = true;
         length *= 2;

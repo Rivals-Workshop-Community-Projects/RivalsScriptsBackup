@@ -34,7 +34,7 @@ set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6.5);
-set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 1.05);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 7); //this is good hitpause for a very strong kill move
 set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 304);

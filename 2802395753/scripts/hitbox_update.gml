@@ -2,6 +2,12 @@ if(attack == AT_FSTRONG && hbox_num == 1){
     if(was_parried){
         destroyed = true;
     }
+    if(strong_charged != 60 && ((!loop && hitbox_timer > 15) || (loop && hitbox_timer > 70)) && kb_value > 2){
+        kb_value -= .2 + strong_charged/400;
+        if(kb_value < 2){
+            kb_value = 2;
+        }
+    }
     if(loop){
         if(hitbox_timer > 10 && hitbox_timer < 53){
             move_angle -= .15 * spr_dir;

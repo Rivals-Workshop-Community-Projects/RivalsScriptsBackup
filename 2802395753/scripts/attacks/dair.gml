@@ -36,14 +36,14 @@ set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 45);
 set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 45);
+set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 55);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_bubblepop"));
-set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 0);
 
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 2);

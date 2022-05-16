@@ -228,7 +228,11 @@ switch(wall){
         hurtboxID.image_index = 10 / window_timer;
         hurtboxID.image_angle = 0;
     }
-    mask_index = sprite_get("hurtboxxy_wall");
+    if(state == PS_ATTACK_GROUND && attack == AT_TAUNT){
+    	mask_index = sprite_get("taunt_box");
+    }else{
+   	    mask_index = sprite_get("hurtboxxy_wall");
+    }
     if(attack == AT_USPECIAL && window == 4){
         mask_index = sprite_get("hurtboxxy_uspecial");
         hurtboxID.sprite_index = sprite_get("hurtboxxy_uspecial");
@@ -340,7 +344,11 @@ switch(wall){
         hurtboxID.image_angle = 90;
         hurtboxID.image_index = 9 / window_timer;
     }
-    mask_index = sprite_get("hurtboxxy_wall_diag");
+    if(state == PS_ATTACK_GROUND && attack == AT_TAUNT){
+    	mask_index = sprite_get("taunt_box");
+    }else{
+   	    mask_index = sprite_get("hurtboxxy_wall_diag");
+    }
     spr_angle = 90;
     sprite_change_offset("0_climb1", 84, 141);
     sprite_change_offset("1_climb1", 84, 141);
@@ -395,21 +403,21 @@ switch(wall){
         wall = 0;
     }
     if(up_down){
-        if(place_meeting(x, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK)){
+        if(place_meeting(x, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
             set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
             set_attack(AT_EXTRA_1);
             climbing = true;
-        }else if !collision_point(x + 30, y - 80, asset_get("solid_32_obj"), false, true) && position_meeting(x + 60, y - 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK){
+        }else if !collision_point(x + 30, y - 80, asset_get("solid_32_obj"), false, true) && position_meeting(x + 60, y - 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
             set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
             set_attack(AT_EXTRA_2);
             climbing = true;
         }
     }else if(down_down){
-        if(place_meeting(x, y + 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK)){
+        if(place_meeting(x, y + 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
             set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
             set_attack(AT_EXTRA_1);
             climbing = true;
-        }else if !collision_point(x + 30, y + 80, asset_get("solid_32_obj"), false, true) && position_meeting(x + 60, y + 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK){
+        }else if !collision_point(x + 30, y + 80, asset_get("solid_32_obj"), false, true) && position_meeting(x + 60, y + 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
             set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
             set_attack(AT_EXTRA_2);
             climbing = true;
@@ -425,6 +433,12 @@ switch(wall){
             }else if(up_down || down_down || strong_down){
                 set_attack(AT_FSTRONG);
             }
+        }else if(left_strong_pressed){
+        	set_attack(AT_USTRONG);
+        }else if(right_strong_pressed){
+            set_attack(AT_DSTRONG);
+        }else if(up_strong_pressed || down_strong_pressed){
+        	set_attack(AT_FSTRONG);
         }
     }
     if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
@@ -471,7 +485,11 @@ switch(wall){
         hurtboxID.image_index = 9 / window_timer;
         hurtboxID.image_angle = 270;
     }
-    mask_index = sprite_get("hurtboxxy_wall_diag");
+    if(state == PS_ATTACK_GROUND && attack == AT_TAUNT){
+    	mask_index = sprite_get("taunt_box");
+    }else{
+   	    mask_index = sprite_get("hurtboxxy_wall_diag");
+    }
     spr_angle = 270;
     sprite_change_offset("0_climb1", 84, 141);
     sprite_change_offset("1_climb1", 84, 141);
@@ -526,21 +544,21 @@ switch(wall){
         wall = 0;
     }
     if(up_down){
-        if(place_meeting(x, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK)){
+        if(place_meeting(x, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
             set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
             set_attack(AT_EXTRA_1);
             climbing = true;
-        }else if !collision_point(x - 30, y - 80, asset_get("solid_32_obj"), false, true) && position_meeting(x - 60, y - 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK){
+        }else if !collision_point(x - 30, y - 80, asset_get("solid_32_obj"), false, true) && position_meeting(x - 60, y - 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
             set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
             set_attack(AT_EXTRA_2);
             climbing = true;
         }
     }else if(down_down){
-        if(place_meeting(x, y + 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK)){
+        if(place_meeting(x, y + 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
             set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
             set_attack(AT_EXTRA_1);
             climbing = true;
-        }else if !collision_point(x - 30, y + 80, asset_get("solid_32_obj"), false, true) && position_meeting(x - 60, y + 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK){
+        }else if !collision_point(x - 30, y + 80, asset_get("solid_32_obj"), false, true) && position_meeting(x - 60, y + 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
             set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
             set_attack(AT_EXTRA_2);
             climbing = true;
@@ -556,6 +574,12 @@ switch(wall){
             }else if(up_down || down_down || strong_down){
                 set_attack(AT_FSTRONG);
             }
+        }else if(left_strong_pressed){
+        	set_attack(AT_DSTRONG);
+        }else if(right_strong_pressed){
+        	set_attack(AT_USTRONG);
+        }else if(up_strong_pressed || down_strong_pressed){
+        	set_attack(AT_FSTRONG);
         }
     }
     if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
@@ -596,7 +620,11 @@ switch(wall){
         hurtboxID.image_index = 9 / window_timer;
         hurtboxID.image_angle = 180;
     }
-    mask_index = sprite_get("hurtboxxy_wall");
+    if(state == PS_ATTACK_GROUND && attack == AT_TAUNT){
+    	mask_index = sprite_get("taunt_box");
+    }else{
+   	    mask_index = sprite_get("hurtboxxy_wall");
+    }
     spr_angle = 180;
     sprite_change_offset("0_climb1", 84, 151);
     sprite_change_offset("1_climb1", 84, 151);
@@ -651,21 +679,21 @@ switch(wall){
         wall = 0;
     }
     if(right_down){
-        if(place_meeting(x + 2, y, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK)){
+        if(place_meeting(x + 2, y, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
             set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
             set_attack(AT_EXTRA_1);
             climbing = true;
-        }else if !collision_point(x + 80, y - 30, asset_get("solid_32_obj"), false, true) && position_meeting(x + 70, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK){
+        }else if !collision_point(x + 80, y - 30, asset_get("solid_32_obj"), false, true) && position_meeting(x + 70, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
             set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
             set_attack(AT_EXTRA_2);
             climbing = true;
         }
     }else if(left_down){
-        if(place_meeting(x - 2, y, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK)){
+        if(place_meeting(x - 2, y, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
             set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
             set_attack(AT_EXTRA_1);
             climbing = true;
-        }else if !collision_point(x - 80, y - 30, asset_get("solid_32_obj"), false, true) && position_meeting(x - 70, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK){
+        }else if !collision_point(x - 80, y - 30, asset_get("solid_32_obj"), false, true) && position_meeting(x - 70, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
             set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
             set_attack(AT_EXTRA_2);
             climbing = true;
@@ -681,6 +709,12 @@ switch(wall){
             }else if(left_down || right_down || strong_down){
                 set_attack(AT_FSTRONG);
             }
+        }else if(down_strong_pressed){
+        	set_attack(AT_USTRONG);
+        }else if(up_strong_pressed){
+        	set_attack(AT_DSTRONG);
+        }else if(left_strong_pressed || right_strong_pressed){
+        	set_attack(AT_FSTRONG);
         }
     }
     if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
@@ -784,11 +818,12 @@ if(state == PS_ATTACK_GROUND && attack == AT_TAUNT_2){
 }
 
 if(plate_state == 0){
-    soft_armor = 7.5;
+    soft_armor = (attack = AT_TAUNT && state = PS_ATTACK_GROUND? 8.5: 7.5);
     walk_speed          = 3.25;
     initial_dash_speed  = 6;
     dash_speed          = 6.5;	
 }else if(plate_state == 1){
+	soft_armor = ((attack = AT_EXTRA_1 || attack = AT_EXTRA_2 || attack = AT_EXTRA_3) && (state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR)? 9999999999999: 0);
     walk_speed          = 2.25;
     initial_dash_speed  = 5;
     dash_speed          = 5.5;	

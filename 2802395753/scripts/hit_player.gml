@@ -50,3 +50,8 @@ if(my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 1 && job == "mechan
 if(my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 1 && job == "mechanic"){
 	grabbed_id = hit_player_obj;
 }
+
+if(my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num >= 3 && job == "clerk"){
+	hit_player_obj.x = x;
+	hit_player_obj.y = y;
+}

@@ -269,12 +269,12 @@ switch(attack){
 			         
 			        var fly_dir = point_direction(0,0,hsp,vsp);
 			        var fly_dist = point_distance(0,0,hsp,vsp);
-			        var max_speed = 6.25;
+			        var max_speed = 4.5;
 			        if (fly_dist > max_speed){
 			            hsp = lengthdir_x(max_speed, fly_dir);
 			            vsp = lengthdir_y(max_speed, fly_dir);
 			        }
-			        vsp = clamp(vsp, -6, 7);
+			        vsp = clamp(vsp, -4, 7);
         		} else {
         			hsp *= .95;
         			vsp *= .95;
@@ -287,7 +287,7 @@ switch(attack){
         	if(window == 3){
         		if(!free and !was_parried){
         			set_state(PS_LANDING_LAG);
-        			landing_lag_time = 8;
+        			landing_lag_time = 10;
         		}
         	}
         	
@@ -396,8 +396,9 @@ switch(attack){
     		break;
     	case AT_UAIR:
     		if(has_hit){
-    			set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 70);
-    			set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 70);
+    			set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 65);
+    			set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 80);
+    			set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, -64);
     		}
     		/*
     	case AT_FAIR:
@@ -434,11 +435,15 @@ switch(attack){
 
 if(has_hit and attack != AT_DSPECIAL and !uspecial_pratfall_go_brr and !nspecial_used){
 	
-	if(down_down and special_pressed){
-		hitpause = 0;
-		attack_end();
-		destroy_hitboxes();
-		set_attack(AT_DSPECIAL);
+	if(down_down and special_pressed or dspecial_cancel_buffered){
+		if(hitpause > 0){
+			dspecial_cancel_buffered = true;
+		} else {
+			hitpause = 0;
+			attack_end();
+			destroy_hitboxes();
+			set_attack(AT_DSPECIAL);
+		}
 	}
 }
 

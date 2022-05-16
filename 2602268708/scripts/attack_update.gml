@@ -58,7 +58,7 @@ switch (attack)
 					new_dir = clamp(cannon_dir + (dir*2), -80, 80);
 					//new_dir = cannon_dir + (dir*2);
 					
-					if dir != 0 and get_gameplay_time() mod 16 == 0 and cannon_dir != new_dir cannon_move_sound = sound_play( bits ? sound_get("8bit_cannon_move") : sound_get("cannon_move"))
+					if dir != 0 and get_gameplay_time() mod 16 == 0 and cannon_dir != new_dir && !hitpause cannon_move_sound = sound_play(sound_get("cannon_move"))
 						cannon_dir = new_dir;
 				}
 				if window_timer > 5 and !cannon_button_down
@@ -73,13 +73,9 @@ switch (attack)
 				super_armor = false;
 					var article = instance_create(x,y,"obj_article3");
 					//print("charge = " + string(cannon_charge));
-					if(bits = 1){
-						sound_play(sound_get("8bit_blast"));
-						sound_stop(sound_get("8bit_cannon_move"));
-					}else{
-						sound_play(sound_get("cannon_fire"));
-						sound_stop(sound_get("cannon_move")); 
-					}
+					sound_play(sound_get("cannon_fire"));
+					sound_stop(sound_get("cannon_move")); 
+					
 					var spd = 12+floor(cannon_charge/8.5);
 					
 					// im capping this because holy SHIT
@@ -111,12 +107,17 @@ switch (attack)
 		}
 		if window == 2 && window_timer = 1{
 		dashcount = dashcount+1; }
+		
+		if window = 4 && has_hit{
+		can_attack = true;
+		}
 
 	break;
 	case AT_DAIR:
 		if window == 1 vsp *= 0.9;
 	break;
 	case AT_DSTRONG:
+	    can_fast_fall = false;
 	    if (window == 2 && window_timer == 4 && free) {
 		vsp = -5;
 		}
@@ -135,13 +136,9 @@ switch (attack)
 		if window > 1 
 		{
 			hud_offset = floor(lerp(hud_offset, 140, .2));
-			if window == 3 and window_timer == 9 and !hitpause
+			if window == 3 and window_timer == 13 and !hitpause
 			{
-			    if(bits == 1){
-				sound_play(sound_get("8bit_break"));
-				} else {
-				sound_play(sound_get("sm64_shatter"));
-				}
+			sound_play(sound_get("sm64_shatter"));
 			}
 		}
 	break;
@@ -154,44 +151,50 @@ switch (attack)
 	break;
 }
 
-//8BIT MODE
-if(bits = 1){
-    if (attack == AT_FSPECIAL){
-	set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("8bit_throw"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("8bit_blast")); }
-	if (attack == AT_USTRONG){
-	set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, sound_get("8bit_star")); }
-	if (attack == AT_DSPECIAL){
-	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, sound_get("8bit_throw")); }
-}	
-
 //SPECIAL TAUNTS
 //WARP TAUNTS
 if !(respawn_taunt){
 if (get_player_color( player ) == 8){
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt_gb"));
-set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_gb")); }
-if (get_player_color(player) == 26){
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("8bit_warp"));
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_gb"));
+set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("8bit_warp"));
+}
+else if (get_player_color(player) == 26){
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("funny_sans_move"));
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt_sans"));
-set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_megalo")); }
-if (get_player_color( player ) == 27){
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_megalo"));
+} 
+else if (get_player_color( player ) == 27){
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt_smb1"));
-set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_smb1")); }
-if (get_player_color( player ) == 28){
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("8bit_warp"));
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_smb1"));
+set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("8bit_warp"));
+}
+else if (get_player_color( player ) == 28){
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt_smb2"));
-set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_smb2")); }
-if (get_player_color( player ) == 29){
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("8bit_warp"));
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_smb2"));
+set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("8bit_warp"));
+}
+else if (get_player_color( player ) == 29){
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt_smb3"));
-set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_smb3")); }
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("8bit_warp"));
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("chuckyanoise_smb3"));
+set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("8bit_warp"));
+} else {
+reset_attack_value(AT_TAUNT, AG_SPRITE);
+reset_window_value(AT_TAUNT, 1, AG_WINDOW_SFX);
+reset_window_value(AT_TAUNT, 2, AG_WINDOW_SFX);
+reset_window_value(AT_TAUNT, 3, AG_WINDOW_SFX);
+reset_hitbox_value(AT_DAIR, 1, HG_HIT_SFX);
+}
 }
 
 //FLAG TAUNTS
-if !(respawn_taunt){
 if attack == AT_TAUNT_2 && window == 2 && window_timer == 39 && taunt_down {
 	window = 2;
 	window_timer = 2;
-}
 }
 
 if (attack == AT_TAUNT_2){
@@ -208,7 +211,7 @@ set_hitbox_value(AT_TAUNT_2, 1, HG_PROJECTILE_SPRITE, sprite_get("taunt_pridefla
 
 if (attack == AT_TAUNT_2 && window == 2) {
 	    	suppress_stage_music(0, 0.02);
-if (window_timer == 1){
+if (window_timer == 1) && !hitpause{
         if (get_player_color( player ) == 25){
         sound_play( sound_get( "trans_rights" ), true, noone, 1, 1); }
 		if (get_player_color( player ) == 24){
@@ -218,7 +221,7 @@ if (window_timer == 1){
 }
 }
 
-if (attack == AT_TAUNT_2 && window != 2) || (state == PS_HITSTUN || attack != AT_TAUNT_2) {
+if (attack == AT_TAUNT_2 && window != 2){
     sound_stop( sound_get( "trans_rights" ));    
 	sound_stop( sound_get( "numerous_bees" ));
 	sound_stop( sound_get( "the_big_homo" ));    
@@ -231,7 +234,7 @@ create_hitbox(AT_TAUNT_2, 2, x, y - 64);
 
 if (attack == 49){
 if (window == 1){
-if (window_timer == 2){
+if (window_timer == 2) && !hitpause{
 sound_play(sound_get("final_spiral"));
 }
 }

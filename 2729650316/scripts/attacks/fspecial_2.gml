@@ -3,7 +3,7 @@ set_attack_value(AT_FSPECIAL_2, AG_SPRITE, sprite_get("fspecial_grab"));
 set_attack_value(AT_FSPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL_2, AG_NUM_WINDOWS, 2);
 set_attack_value(AT_FSPECIAL_2, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_FSPECIAL_2, AG_LANDING_LAG, 6);
+set_attack_value(AT_FSPECIAL_2, AG_LANDING_LAG, 10);//6
 set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecial_grab"));
 set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 

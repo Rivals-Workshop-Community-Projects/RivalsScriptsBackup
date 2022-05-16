@@ -1,3 +1,11 @@
+if(get_player_color(player) == 22){
+	init_shader();
+	var cur_time = get_gameplay_time();
+	rainbow_color = make_colour_hsv((cur_time/12)%255, 185, 125); //default rainbow
+	rainbow_color2 = make_colour_hsv(((cur_time/12))%255, 185, 205); //default shifed halfway through cycle
+	rainbow_color3 = make_colour_hsv(((cur_time/12))%255, 185, 50); //default shifed halfway through cycle
+	dodge_trail_color = rainbow_color;
+}
 
 if(!free){
     uspecial_pratfall_go_brr = false;

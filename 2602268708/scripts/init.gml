@@ -23,6 +23,7 @@ cling = 0;
 wallanim = 0;
 idleState = 0;
 thitground = false;
+whomp_hashit = false;
 
 introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
@@ -130,6 +131,7 @@ cannon_base = hit_fx_create( sprite_get( "uspecial_base_strip1" ), 1 );
 launchblast = hit_fx_create( sprite_get( "uspecial_blast_fx" ), 22 );
 cannonball = hit_fx_create( sprite_get( "cannonball_hfx" ), 18 );
 funnyhit = hit_fx_create( sprite_get( "dair_sweetspotfx" ), 24 );
+empty_fx = hit_fx_create( asset_get( "empty_sprite" ), 1 );
 
 set_hit_particle_sprite( 1, sprite_get( "hit_particle1" ) );
 

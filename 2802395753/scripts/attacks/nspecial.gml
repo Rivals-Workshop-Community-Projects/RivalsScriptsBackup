@@ -9,20 +9,20 @@ set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_COOLDOWN, 0);
 // set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_CD_SPECIAL, 1);
 set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "The number of multi-hits, as well as the final hit's power, will change depending on A) the charge of the move and B) the distance from the opponent.");
 
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, sound_get("print"));
 
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
@@ -33,3 +33,6 @@ set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 13);
 
 set_num_hitboxes(AT_NSPECIAL, 0);
+
+//62 FAF (old)
+//

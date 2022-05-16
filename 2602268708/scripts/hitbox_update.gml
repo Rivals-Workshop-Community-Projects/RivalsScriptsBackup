@@ -1,10 +1,12 @@
 //Updating hitboxes
 
 if (attack == AT_FSTRONG){
+if hbox_num = 1{
+
     if (hitbox_timer = 1){
 	vsp = -1; hsp = 1 * spr_dir;
-	    if(player_id.bits == 1){
-		    sound_play(sound_get("chuckyanoise_smb2")); } else { sound_play(sound_get("whomp")); }
+	sound_play(sound_get("whomp"));
+	player_id.whomp_hashit = false;
 	player_id.move_cooldown[AT_FSTRONG] = 30; }
 	
 	if (hitbox_timer = 7){ vsp = 0; }
@@ -13,35 +15,36 @@ if (attack == AT_FSTRONG){
 	create_hitbox(AT_FSTRONG, 4, x+50 * spr_dir, y+70); grav = 0.9;
 	create_hitbox(AT_FSTRONG, 5, x+50 * spr_dir, y+70); grav = 0.9;
 	}
-	if (hitbox_timer == 20) && free{ player_id.move_cooldown[AT_FSTRONG] = 40; } 
+	if (hitbox_timer == 20) && free{ player_id.move_cooldown[AT_FSTRONG] = 40; }
+	
     if (hitbox_timer < 20){
 	if (destroyed){ destroyed = false; }
 	}
 	if (hitbox_timer > 20){
 	if (free){
 	image_index = 4;
-	create_hitbox(AT_FSTRONG, 3, x+50 * spr_dir, y+80);
+	if !player_id.whomp_hashit {
+	create_hitbox(AT_FSTRONG, 3, x+50 * spr_dir, y+80); grav = 0.9;
+	}
 	} else if !(free){
-	image_index = 5; destroyed = true; }
+	     image_index = 5;
+	     destroyed = true;
+	}
 	}
 	if (destroyed){
-		if(player_id.bits == 1)
-			sound_play(sound_get("8bit_break")); 
-		else 
-			sound_play(sound_get("sm64_break"));
-		
+		sound_play(sound_get("sm64_break"));
 		create_hitbox(AT_FSTRONG, 2, x+50 * spr_dir, y+80);
 		var fxlol = spawn_hit_fx( x, y, player_id.whomp_explode );
 		fxlol.spr_dir = spr_dir;
 		//print("whomp spr_dir = " + string(spr_dir) + " fx spr_dir = " + string(fxlol.spr_dir) + " player spr_dir = " + string(player_id.spr_dir))
 	}
 }
+}
 
 if (attack == AT_DSTRONG){
     if (hbox_num == 3){
         if (hitbox_timer == 1){
-		if(player_id.bits == 1){
-		sound_play(sound_get("chuckyanoise_smb2")); } else { sound_play(sound_get("thwomp")); }
+		sound_play(sound_get("thwomp"));
 		}
         if (free) && (thitground == false){
 		create_hitbox(AT_DSTRONG, 1, x, y+40);
@@ -54,8 +57,7 @@ if (attack == AT_DSTRONG){
 		if (image_index >= 2.7){destroyed = true; }
         if (destroyed == true){ 
 		create_hitbox(AT_DSTRONG, 4, x, y+60);
-		if(player_id.bits == 1){
-		sound_play(sound_get("8bit_break")); } else { sound_play(sound_get("sm64_break")); }
+		sound_play(sound_get("sm64_break"));
 		}
     }
 }
@@ -123,9 +125,6 @@ if (attack == AT_FSPECIAL)
 			else{
 				bounced = true; vsp = -5; hsp = 4 * spr_dir;
 				spawn_hit_fx( x, y, player_id.bomb_bounce );
-				if(player_id.bits == 1)
-				with player_id sound_play(sound_get("8bit_bounce"));
-				else 
 				with player_id sound_play(sound_get("sm64_stomp"));
 			}
 			if (destroyed == true) {
@@ -151,8 +150,11 @@ if (attack == AT_FSPECIAL)
 
 if (attack == AT_TAUNT_2 && hbox_num == 1) {
 	depth = player_id.depth + 1;
-	if (hitbox_timer == 50 && the_variable_to_check_if_you_need_to_stop_existing == false){
+	if (hitbox_timer == 50){
 		hitbox_timer = 1;
+	}
+	if player_id.attack == AT_TAUNT_2 && player_id.state == PS_ATTACK_GROUND && player_id.state_timer = 0{
+	destroyed = true;
 	}
 }
 
@@ -164,8 +166,7 @@ y = obj_article1.y - 24;
 if (attack == AT_TAUNT_2 && hbox_num == 2){
 if (free == false){
 destroyed = true;
-if(player_id.bits == 1){
-sound_play(sound_get("8bit_break")); } else { sound_play(sound_get("sm64_break")); }
+sound_play(sound_get("sm64_break"));
 }
 }
 

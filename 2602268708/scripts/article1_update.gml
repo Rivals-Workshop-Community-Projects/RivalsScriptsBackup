@@ -98,7 +98,7 @@ switch (state)
 			
 			with (oPlayer)
 			{
-				if place_meeting(x,y,other) and self != other.player_id
+				if place_meeting(x,y,other) and self != other.player_id && !(invincible || hitpause)
 				{
 					with other
 					{
@@ -165,7 +165,7 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state 
 	shouldDestroy = true;
 }
 
-if (y > get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS)) || shouldDestroy
+if (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y)) || shouldDestroy
 {
     sound_stop(whir);
     with player_id move_cooldown[AT_DSPECIAL] = 5
