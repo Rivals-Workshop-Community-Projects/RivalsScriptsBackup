@@ -124,6 +124,7 @@ var palette_names = [
    "PlasDinos",  
    "Flickering Spark",  
    "TAG",  
+   "Mer",  
 ];
 
 var alt = get_player_color(player);
