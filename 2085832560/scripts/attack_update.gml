@@ -1639,7 +1639,7 @@ set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_ANIM_SPEED, 0.6 + ((random_func(3,
 		}
 		
 		
-		if window == 4 && window_timer == 16 {
+		if window == 4 && window_timer == 16 && !hitpause{
 			gunname = 0 user_event(1) user_event(1)
 			oop = spawn_hit_fx(x,y - 40, 302)
 			oop.depth = depth + 1
@@ -1690,7 +1690,7 @@ if window == 8 {
    	             		
         }
         
-		if window == 8 && window_timer == 20 {
+		if window == 8 && window_timer == 20 && !hitpause{
 			faces = 0
 			drops = 0
 			gunname = 0 user_event(1) user_event(1)
@@ -1739,7 +1739,7 @@ if window == 9 {
 			spawn_hit_fx( x + (30 * spr_dir)  , y - 40 , 306 )
         }
         
-		if window == 12 && window_timer == 20 {
+		if window == 12 && window_timer == 20 && !hitpause {
 			gunname = 0 user_event(1) user_event(1)
 			oop = spawn_hit_fx(x,y - 40, 302)
 			oop.depth = depth + 1
@@ -1785,7 +1785,7 @@ if window == 13 {
 			sound_play (sound_get("warning"));
         }
         
-		if window == 14 && window_timer == 20 {
+		if window == 14 && window_timer == 20 && !hitpause {
 			gunname = 0 user_event(1) user_event(1) 
 			oop = spawn_hit_fx(x,y - 40, 302)
 			oop.depth = depth + 1
@@ -1862,7 +1862,7 @@ if window == 13 {
 				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 20 );
         }
         
-		if window == 17 && window_timer == 1 {
+		if window == 17 && window_timer == 1 && !hitpause {
 			spawn_hit_fx( x + 10 * spr_dir , y - 20 , exp1 )
 			spawn_hit_fx( x + 10 * spr_dir, y - 20 , 304 )
 			 spawn_hit_fx( x, y, shotgun2 )
@@ -1937,7 +1937,7 @@ if window == 13 {
 			soft_armor = 999
 			
 			
-			if lmtime <= 0 {
+			if lmtime <= 0 && !hitpause {
 			gunname = 0 user_event(1) user_event(1) 
 			oop = spawn_hit_fx(x,y - 40, 302)
 			oop.depth = depth + 1
