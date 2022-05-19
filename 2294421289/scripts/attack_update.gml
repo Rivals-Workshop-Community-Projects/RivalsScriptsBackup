@@ -196,9 +196,17 @@ if (attack == AT_NSPECIAL)
     spindash_timer = spindash_limit;
   }
 
-  if (has_hit == true) and (window == 3)
+  if (has_hit == true)
   {
-    can_jump = 1;
+    can_fast_fall = true;
+    if (window == 3)
+    {
+      can_jump = 1;
+    }
+  }
+  else
+  {
+    can_fast_fall = false;
   }
 
   if (shield_down == true)
@@ -232,11 +240,19 @@ if (attack == AT_NSPECIAL)
     else
     {
       set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
-      set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, spindash_timer);
       set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, spindash_timer);
       set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, spindash_timer);
       set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, clamp(spindash_timer/1.5, 3, 10))
-      set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, clamp(spindash_timer/1.5, 1, 10));
+      set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, clamp(spindash_timer/1.5, 1, 7));
+
+      if (free)
+      {
+      	set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, spindash_timer / 1.27);
+      }
+      else
+      {
+      	set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, spindash_timer);
+      }
     }
   }
 

@@ -498,8 +498,18 @@ if (state == 7){
 	}
 	
 	if (hitstop >= 2){
+		
+		if (player_id.attack == AT_DATTACK && player_id.window != 6){
+			
+		hsp_old = 4*player_id.spr_dir
+		vsp = -2
+			
+		} else {
+		
 		hsp_old = hsp
 		vsp_old = vsp
+		
+		}
 	}
 	
 	if (hitstop >= 1){

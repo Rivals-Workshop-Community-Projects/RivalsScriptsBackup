@@ -1,9 +1,13 @@
 //user_event5.gml
 //handles destroying or deactivating a clone.
 
+//if called in the main player, updates whether the player currently has dspecial clones active.
+
 
 
 if (!custom_clone) { 
+	//if this is the main player, just update the clone count.
+	update_dspecial_cooldown();
     //print("Error - tried to deactivate the main instance instead of a clone");
     exit;
 }
@@ -104,7 +108,7 @@ with (oPlayer) {
 //if dspecial clones still exist, update the master player to reflect this
 with (master_player_id) {
 	naruto_currently_has_dspecial_clone_active = still_clones_active;
-	if (!naruto_currently_has_dspecial_clone_active) move_cooldown[AT_DSPECIAL] = c_naruto_dspecial_cooldown_time;
+	if (master_player_id != other.id && !naruto_currently_has_dspecial_clone_active) move_cooldown[AT_DSPECIAL] = c_naruto_dspecial_cooldown_time;
 }
 	
 //}

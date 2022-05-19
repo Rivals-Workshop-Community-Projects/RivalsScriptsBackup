@@ -565,7 +565,6 @@ switch(attack) {
 			break;
 			
 			case 2:
-			
 
 			case 3:
 				//the real naruto can cancel this attack after 30 frames. he can also cancel it on hit.
@@ -710,8 +709,11 @@ switch(attack) {
 				if (window_timer != 1 || !is_master_player) break;
 				//attack starts - spawn a naruto clone if there is not one nearby
 				if (!instance_exists(naruto_spawned_clone_reference)) {
-					naruto_spawned_clone_reference = spawn_clone(x, y);
+					naruto_spawned_clone_reference = spawn_clone(x, y - 1);
 					if (naruto_spawned_clone_reference > 0) spawn_hit_fx_2x(x, y, vfx_clone_smoke).depth = depth+1;
+				}
+				else {
+					naruto_spawned_clone_reference.y -= 1;
 				}
 				
 				if (instance_exists(naruto_spawned_clone_reference)) {
@@ -784,6 +786,11 @@ switch(attack) {
 		}
 		
 		switch (window) {
+			case 1:
+				if (window_timer != 1) break;
+				user_event(5);
+			break;
+				
 			case 2:
 				if (window_timer == 1 && !naruto_currently_has_dspecial_clone_active) { //get_window_value(attack, window, AG_WINDOW_LENGTH) - 2) {
 					cap_maximum_clones(1);

@@ -1,4 +1,16 @@
 /*
+-- V1.5 --
+
+Gameplay Changes:
+- Dattack now juggles the kunai instead of launching it forward
+- Blue damage has been lowered slightly
+- Blue Ustrong startup and endlag increased
+- Dattack is now techable (DI is less effective to compensate)
+- Charged Fspecial now puts you into parrystun
+
+Other Changes:
+- Fixed displaying the wrong verison number
+
 -- V1.4 --
 
 Gameplay Changes:

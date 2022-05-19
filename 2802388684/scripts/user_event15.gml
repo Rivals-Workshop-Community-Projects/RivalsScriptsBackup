@@ -234,6 +234,7 @@ initWords("if 2 clones is out Cant use this move with a shadowclone it will only
 
 initTip("Down+Taunt: Sexy Jutsu");
 initWords("there is mod compatibility on this for normal Sexy jutsu(bikini girl) or Reverse Sexy jutsu(anime boy) if mod creator dont wanna do custom sprite or custom transformion jutsu if they wanna do custom sprite for this mod compat taunt");
+initWords("it be not be the femboy anime boy for reverse sexy jutsu for this like Naruto used vs. kaguya but a gigachad body like anime boy for reverse sexy jutsu instead looked cooler anyway");
 initWords("if Clones is out they gonna do the taunt with you so it can become Sexy harem jutsu, Sexy Reverse harem jutsu or whatever the custom transformion jutsu is");
 initWords("variables/code to put inside init.gml of yours character: https://pastebin.com/Ze4TTB9r or the link on naruto´s workshop page");
 
@@ -279,6 +280,16 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.2", "18 May, 2022"); 
+initHeader("Dash Attack - Fixes");
+initSection("both hits connects better now");
+initHeader("FStrong - Buffs");
+initSection("knockback scaling: 0.8 --> 0.85");
+initHeader("Dspecial - Fixes");
+initSection("Hopefully Fixed that rare glitch where Dspecial cooldown wont go back to 0");
+initHeader("Down-Taunt - Fixes");
+initSection("added Sexy Reverse justu sprite to the mod compatibility now naruto_sexyjutsu_gender = 2; works fully");
+initSection("it be not be the femboy anime boy for reverse sexy jutsu for this like Naruto used vs. kaguya but a gigachad body like anime boy for reverse sexy jutsu instead looked cooler anyway");
 initPatch("1.1", "5 May, 2022"); 
 initHeader("General");
 initSection("Shadowclones from non Dspecial moves stay out longer: 80 --> 100 frames");

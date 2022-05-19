@@ -67,7 +67,7 @@ switch (url_real) {
         set_compatibility_gender(1);
     break;
 	case 16: // Mollo
-        set_compatibility_gender(2);
+        set_compatibility_gender(1);
     break;
 	case 17: // Hodan
         set_compatibility_gender(1);

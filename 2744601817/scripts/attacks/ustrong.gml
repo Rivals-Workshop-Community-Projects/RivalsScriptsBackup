@@ -13,7 +13,7 @@ set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //startup air
 set_window_value(AT_USTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HSPEED_TYPE, 1);
@@ -42,7 +42,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //Dive
 set_window_value(AT_USTRONG, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_SFX, 1);
@@ -81,7 +81,7 @@ set_window_value(AT_USTRONG, 8, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //Dive Up 2
 set_window_value(AT_USTRONG, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 9, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_USTRONG, 9, AG_WINDOW_LENGTH, 19);
 set_window_value(AT_USTRONG, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 9, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_USTRONG, 9, AG_WINDOW_VSPEED_TYPE, 2);

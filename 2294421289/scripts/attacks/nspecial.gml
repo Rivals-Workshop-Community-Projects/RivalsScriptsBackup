@@ -34,6 +34,9 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 38);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);  
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 1)
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1)
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.7)
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.7)
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, sound_get("brake"));
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX_FRAME, 7);
@@ -71,7 +74,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 20);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 1); //2
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 55); //60
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6); //6
-set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.55); //0.4
+set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.4); //0.55
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 3.5); //4
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.2); //.35
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

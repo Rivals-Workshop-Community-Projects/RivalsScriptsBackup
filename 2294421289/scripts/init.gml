@@ -48,7 +48,7 @@ max_fall = 13; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .60;
 hitstun_grav = .50;
-knockback_adj = 1.07; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier//1.08
+knockback_adj = 1.055; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier//1.08
 
 land_time = 4; //normal landing frames
 prat_land_time = 17; //15
@@ -107,8 +107,8 @@ bubble_y = 8;
 spindash_timer = 0;
 
 spindash_timer_start = 5;
-spindash_force = 0.318;
-spindash_limit = 18;
+spindash_force = 0.33; //0.318
+spindash_limit = 18; //18
 
 //Dstrong jump cancel
 dstrong_cancel = 0;
