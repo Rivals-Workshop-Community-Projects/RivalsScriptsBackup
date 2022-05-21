@@ -7,7 +7,7 @@ respawnPlatAnimStripLength = 30;
 respawnPlatAnimTimer = 0;
 respawnPlatAnimSpeed = 17;
 
-char_height = 52;
+char_height = 94;
 idle_anim_speed = .15;
 crouch_anim_speed = .1;
 walk_anim_speed = 0.30;
@@ -116,6 +116,31 @@ ZZ5 = hit_fx_create( sprite_get( "ZZ5" ), 66 );
 ZZ6 = hit_fx_create( sprite_get( "ZZ6" ), 66 );
 ZZ7 = hit_fx_create( sprite_get( "ZZ7" ), 66 );
 
+//--------Fait-FX---------
+z_Fair0 = hit_fx_create( sprite_get( "z_Fair0" ), 2 );
+z_Fair1 = hit_fx_create( sprite_get( "z_Fair1" ), 5 );
+z_Fair2 = hit_fx_create( sprite_get( "z_Fair2" ), 5 );
+z_Fair3 = hit_fx_create( sprite_get( "z_Fair3" ), 5 );
+z_Fair4 = hit_fx_create( sprite_get( "z_Fair4" ), 5 );
+z_Fair5 = hit_fx_create( sprite_get( "z_Fair5" ), 5 );
+z_Fair6 = hit_fx_create( sprite_get( "z_Fair6" ), 5 );
+
+
+//--------TP-FX---------
+z_after1 = hit_fx_create( sprite_get( "z_after1" ), 1 );
+z_after2 = hit_fx_create( sprite_get( "z_after2" ), 1 );
+z_after3 = hit_fx_create( sprite_get( "z_after3" ), 1 );
+z_after4 = hit_fx_create( sprite_get( "z_after4" ), 1 );
+z_after5 = hit_fx_create( sprite_get( "z_after5" ), 1 );
+z_after6 = hit_fx_create( sprite_get( "z_after6" ), 1 );
+/*
+z_TP1 = hit_fx_create( sprite_get( "z_TP1" ), 1 );
+z_TP2 = hit_fx_create( sprite_get( "z_TP2" ), 1 );
+z_TP3 = hit_fx_create( sprite_get( "z_TP3" ), 1 );
+z_TP4 = hit_fx_create( sprite_get( "z_TP4" ), 1 );
+z_TP5 = hit_fx_create( sprite_get( "z_TP5" ), 1 );
+z_TP6 = hit_fx_create( sprite_get( "z_TP6" ), 1 );
+*/
 
 // Active FX
 ZZZ1 = hit_fx_create( sprite_get( "ZZZ1" ), 36);

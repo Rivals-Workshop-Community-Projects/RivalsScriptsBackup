@@ -55,10 +55,11 @@ set_hitbox_value(AT_DAIR, 1, HG_EXTRA_HITPAUSE, -2);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("hit3"));
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, .6);
+set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, .4);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_DAIR, 1, HG_EXTRA_CAMERA_SHAKE, -1);
+set_hitbox_value(AT_DAIR, 1, HG_SDI_MULTIPLIER, 1.2);
 
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);

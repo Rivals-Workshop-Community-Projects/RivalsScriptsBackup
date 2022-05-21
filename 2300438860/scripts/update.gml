@@ -1,4 +1,28 @@
 ///
+with (pHitBox) {
+	if player_id == other.id {
+        hit_effect = 301
+	}
+}
+sound_stop(asset_get("sfx_ice_shieldup"))
+sound_stop(asset_get("sfx_ice_on_player"))
+sound_stop(asset_get("sfx_shovel_swing_heavy1"))
+sound_stop(asset_get("sfx_shovel_swing_heavy2"))
+sound_stop(asset_get("sfx_shovel_swing_med1"))
+sound_stop(asset_get("sfx_shovel_swing_med2"))
+sound_stop(sound_get("slice"))
+sound_stop(sound_get("slicel"))
+sound_stop(sound_get("hweak"))
+sound_stop(sound_get("hmed"))
+sound_stop(sound_get("hstrong"))
+sound_stop(sound_get("hextra"))
+sound_stop(sound_get("hcine"))
+sound_stop(sound_get("fstrong2"))
+sound_stop(sound_get("fspec1"))
+sound_stop(sound_get("fspec2"))
+sound_stop(sound_get("fspec3"))
+sound_stop(sound_get("uspec"))
+
 
 with oPlayer {
 	if "rollcount" not in self {
@@ -360,6 +384,8 @@ if get_gameplay_time() <= 120 && cosmetic == 1 {
 	
 }
 
+/*
+
 if instance_number(oPlayer) == 2 {
 
 
@@ -429,6 +455,7 @@ if finisher = 20 {
 
 
 }
+
 
 
 if cosmetic = 0{
@@ -610,3 +637,5 @@ if neointro > 0 {
 		neointro = -1
 	}
 }
+
+*/

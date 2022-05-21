@@ -603,7 +603,7 @@ switch (attack) {
 			case 1: // Ready
 				fall_through = ((free && down_down) || (!free && down_hard_pressed));	// Allow falling through platforms. (Not on window 1, to prevent accidental falling through.)
 				
-				if ((attack_pressed || strong_pressed)) {											// If attack is pressed...
+				if ((attack_pressed || strong_pressed) && dict_equipment[inv_plantable].ammo_total > 0) {			// If attack is pressed, and you have ammo for this plantable...
 					set_attack_window(3);										// Go to plant window.
 				}
 				

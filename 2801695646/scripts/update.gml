@@ -1546,7 +1546,8 @@ if (sna_prime) {																	// If we're the "prime" Snake...
 					case SC_HITSTUN: sna_sns_sght_can_see = false;
 					break; 																	// Opponents can NOT see when in histun.
 					default:
-						if !(was_parried) sna_sns_sght_can_see = true;							// Opponents can NOT see when parried.
+						if (was_parried || sna_psyche_depleted) sna_sns_sght_can_see = false;			// Opponents can NOT see when parried.
+						else sna_sns_sght_can_see = true;
 					break;
 				}
 			}

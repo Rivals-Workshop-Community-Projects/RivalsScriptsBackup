@@ -1,4 +1,5 @@
 sprite_index = sprite_get("portalSpawn");
+mask_index = sprite_get("portalCol");
 image_index = 0;
 spr_dir = 1;
 uses_shader = true;
@@ -12,7 +13,7 @@ state_timer = 0;
 animSpeed = 4;
 
 can_be_grounded = false;
-ignores_walls = true;
+ignores_walls = false;
 
 replacedCount = 0;
 maxArticles = 2;

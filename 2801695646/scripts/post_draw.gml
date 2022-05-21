@@ -549,6 +549,7 @@ if (is_attacking) {
 				case 8:
 				case 10:
 					
+					//gpu_push_state();
 					// Draw the mask
 					maskHeader();
 					draw_sprite_ext(sprite_get("ui_mask_pattern1"), 0, view_get_xview(), view_get_yview(), 2, 2, 0, c_white, 1);
@@ -604,6 +605,7 @@ if (is_attacking) {
 					
 					// Reset the shaders
 					maskFooter();
+					//gpu_pop_state();
 					
 				break;
 			}

@@ -622,7 +622,7 @@ switch (attack)
 				}
 				break;
 			case 3:
-				if (window_timer == get_window_value(AT_UTHROW, 3, AG_WINDOW_LENGTH) && has_hit_player)
+				if (has_hit_player)
 				{
 					Grab(40, -1, 1, 1);
 					hit_player_obj.spr_dir = -spr_dir;

@@ -732,6 +732,22 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Fixed Final Smash Plat scaling");
 						break;
+					case 47:
+						AddText("v1.47 - 20 May 2022");
+						AddText("");
+						AddText("Added Shattered Shrine to Song List");
+						AddText("");
+						AddText("Reduced size of JStrong hitbox 64 -> 48");
+						AddText("Portal Knockback 12 -> 14 (Can be hit farther by opponents)");
+						AddText("Portal Spawn time 12 -> 10");
+						AddText("Tweaked Portal Spawn code to prevent sinking bugs");
+						AddText("Cleaned up alpha channels for new sprites (For portal rendering)");
+						AddText("");
+						AddText("DAir Falling Hitstun Multiplier 0.6 -> 0.4");
+						AddText("DAir SDI Multiplier 1 -> 1.2");
+						AddText("");
+						AddText("Updated Kirby swallow NSpecial with Lonin's new NSpecial stats");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -964,7 +980,7 @@ if ("rollArray" in self)
 		case 36:
 			return "Tactical Evolution EX ~ Creatures Medley";
 		default:
-			if (CheckStageUrl("2061009621"))		return "Derek Fiechter - Night at the Castle";
+			if (CheckStageUrl(2061009621))		return "Derek Fiechter - Night at the Castle";
 			else if (CheckStageUrl(2298935492))	return "Loeder - Miitopia Boss Battle 1 8-BIT";
 			else if (CheckStageUrl(2082867100))	return "Evan King - [KARLSONVIBE]";
 			else if (CheckStageUrl(2210984773))	return "Porter Robinson - Shelter";
@@ -974,6 +990,7 @@ if ("rollArray" in self)
 			else if (CheckStageUrl(2498298211))	return "Pokemon Masters EX - Lillie Battle Theme";
 			else if (CheckStageUrl(2598328548))	return "No Straight Roads - Vs. Sayu";
 			else if (CheckStageUrl(2669189302))	return "Hyper Potions - Waterfall";
+			else if (CheckStageUrl(2809646591))	return "Christa Lee - Celestial Resort (Good Karma Mix)";
 			return "Darude - Sandstorm";
 	}
 }

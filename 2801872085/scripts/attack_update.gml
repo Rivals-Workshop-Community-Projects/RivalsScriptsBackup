@@ -115,34 +115,45 @@ if (attack == AT_DAIR){
 // (Dev-info; Maybe add Damagescaling on a chargemove)
 if (attack == AT_FAIR){
     can_fast_fall = 0; //Prevent the player from accidentally fast falling during the move.
-    if (window = 1 && window_timer = 12){
-        if (attack_down){
-        window = 4;
-        window_timer = 1;
+
+    if (window = 1 && window_timer == 12){
+        spawn_hit_fx( x, y, z_Fair0);
         }
-    }
-    if (window = 4){
-        if (attack_down == false){
-        window = 2;
-        window_timer = 1;
-        sound_play(asset_get("sfx_swipe_weak2"));  
+
+    if (window == 2){
+        var FD = random_func_2(8,25,true);
+            if(FD == 1){
+            spawn_hit_fx( x, y, z_Fair1);
+            }
+            else if(FD == 2){
+            spawn_hit_fx( x, y, z_Fair2);
+            sound_play(sound_get("Glich3.1"));
+            }
+            else if(FD == 3){
+            spawn_hit_fx( x, y, z_Fair3);
+            }
+            else if(FD == 4){
+            spawn_hit_fx( x, y, z_Fair4);
+            sound_play(sound_get("Glich3.2"));
+            }
+            else if(FD == 5){
+            spawn_hit_fx( x, y, z_Fair5);
+            }
+            else if(FD == 6){
+            spawn_hit_fx( x, y, z_Fair6);
+            }
         }
-    }
-    if (window = 4 && window_timer = 12){
-        sound_play(sound_get("Glich3.2"));
-    }
-    if (window = 4 && window_timer = 23){
-        window = 5;
-        window_timer = 1;
-        sound_play(asset_get("sfx_swipe_heavy1"));  
-    }
-    
-    if (window = 5 && window_timer == 8){
-        window = 3;
-        window_timer = 1;
-    }
-    
-    if (window = 3 && window_timer == 8){
+        
+    if (window = 2 && window_timer == 1){
+        spawn_hit_fx( x, y, z_Fair0);
+        }
+
+    if (window = 3){
+        if (window_timer == 1 || window_timer == 3)
+        spawn_hit_fx( x, y, z_Fair0);
+        }
+
+    if (window = 4 && window_timer == 8){
     move_cooldown[AT_USPECIAL] = 30;
     move_cooldown[AT_DSPECIAL] = 30;
     move_cooldown[AT_FSPECIAL] = 30;

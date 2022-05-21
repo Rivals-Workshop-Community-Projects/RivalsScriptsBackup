@@ -56,7 +56,6 @@ sprite_change_offset("dspecial", 40, 98);
 //---------------------------------------------------------------------------------------------------------
 //______________________________________________________________________________Projectile
 
-sprite_change_offset("plat", 64, 94);
 sprite_change_offset("nspecial_proj", 40, 98);
 sprite_change_offset("nspecial_proj_hit", 16, 60);
 
@@ -71,6 +70,7 @@ sprite_change_offset("ZZ5", 220, 80);
 sprite_change_offset("ZZ6", 40, 98);
 sprite_change_offset("ZZ7", 40, 90);
 
+sprite_change_offset("plat", 75, 116);
 
 //______________________________________________________________________________Active-FX
 
@@ -78,3 +78,26 @@ sprite_change_offset("ZZZ1", 160, 160);
 
 //---------------------------------------------------------------------------------------------------------
 set_victory_bg( sprite_get("victory_bg"));
+
+sprite_change_offset("z_Fair0", 80, 98);
+sprite_change_offset("z_Fair1", 80, 98);
+sprite_change_offset("z_Fair2", 80, 98);
+sprite_change_offset("z_Fair3", 80, 98);
+sprite_change_offset("z_Fair4", 80, 98);
+sprite_change_offset("z_Fair5", 80, 98);
+sprite_change_offset("z_Fair6", 80, 98);
+
+sprite_change_offset("z_after1", 27, 120);
+sprite_change_offset("z_after2", 27, 120);
+sprite_change_offset("z_after3", 27, 120);
+sprite_change_offset("z_after4", 27, 120);
+sprite_change_offset("z_after5", 27, 120);
+sprite_change_offset("z_after6", 27, 120);
+/*
+sprite_change_offset("z_TP1", 39, 130);
+sprite_change_offset("z_TP2", 39, 130);
+sprite_change_offset("z_TP3", 39, 130);
+sprite_change_offset("z_TP4", 39, 130);
+sprite_change_offset("z_TP5", 39, 130);
+sprite_change_offset("z_TP6", 39, 130);
+*/

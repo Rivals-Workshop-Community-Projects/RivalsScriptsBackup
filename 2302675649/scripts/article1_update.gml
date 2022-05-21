@@ -42,16 +42,15 @@ else
     switch (state)
     {
         case AS_SPAWN:
-    	    //Go to idle after 10 frames
             if (isDespawn)
     	    {
                 SetArticleState(AS_DESPAWN);
             }
-            else if (state_timer >= 12)
+            else if (state_timer >= 10)
     	    {
+                ignores_walls = true;
     	        SetArticleState(AS_IDLE);
     	    }
-            
             break;
     
         case AS_IDLE:
@@ -171,7 +170,7 @@ else
         case AS_SPAWN:
             sprite_index = sprite_get("portalSpawn");
             break;
-            animSpeed = 12;
+            animSpeed = 10;
             break;
         case AS_DESPAWN:
             sprite_index = sprite_get("portalDespawn");
@@ -326,7 +325,7 @@ else
         		&& player != other.player_id.player
                 && !player_id.hitpause)
         	{
-                var hitAdj = 12;
+                var hitAdj = 14;
                 other.old_hsp = lengthdir_x(hitAdj, kb_angle)*spr_dir;
                 other.old_vsp = lengthdir_y(hitAdj, kb_angle);
                 other.moveAngle = kb_angle;

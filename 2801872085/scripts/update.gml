@@ -4,6 +4,7 @@ if (state == PS_HITSTUN or state == PS_RESPAWN or state == PS_WALL_TECH or state
     move_cooldown[AT_FSPECIAL] = 0; 
 }
 
+
 //______________________________________________________________________________Passive-FX
 
 if (state == PS_WALK){
@@ -12,6 +13,8 @@ if (state == PS_WALK){
             spawn_hit_fx( x, y, ZZ1);
         }
 }
+
+
 
 if (state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP or state == PS_DOUBLE_JUMP or state == PS_IDLE_AIR){
     var C = random_func(1,300,true)
@@ -54,7 +57,6 @@ if (state == PS_IDLE){
     var C = random_func(1, 400,true)
         if C == 1{
             spawn_hit_fx( x, y, ZZ5);
-    print("this message should only appear once.");
         }
 }
 
@@ -62,6 +64,55 @@ if (state == PS_IDLE){
     var A = random_func(3, 350,true)
         if A == 1{
             spawn_hit_fx( x, y, ZZ4);
-    print("2");
         }
 }
+
+//------------------------------------------------------------------------------
+if (move_cooldown[AT_NSPECIAL] > 1 && move_cooldown[AT_FSPECIAL] != 60){
+    var TP = random_func(2, 100,true)
+    
+            if(TP < 44){
+            spawn_hit_fx( x, y, z_after1);
+            }
+            else if(TP < 89){
+            spawn_hit_fx( x, y, z_after2);
+            }
+            else if(TP < 90){
+            spawn_hit_fx( x, y, z_after3);
+            }
+            else if(TP < 93){
+            spawn_hit_fx( x, y, z_after4);
+            }
+            else if(TP < 96){
+            spawn_hit_fx( x, y, z_after5);
+            }
+            else if(TP < 99){
+            spawn_hit_fx( x, y, z_after6);
+            }
+}
+
+/*
+//------------------------------------------------------------------------------Maybe Later
+if (move_cooldown[AT_FSPECIAL] > 1 && move_cooldown[AT_FSPECIAL] != 60){
+    var TP = random_func(2, 100,true)
+    
+            if(TP < 44){
+            spawn_hit_fx( x, y, z_TP1);
+            }
+            else if(TP < 89){
+            spawn_hit_fx( x, y, z_TP2);
+            }
+            else if(TP < 90){
+            spawn_hit_fx( x, y, z_TP3);
+            }
+            else if(TP < 93){
+            spawn_hit_fx( x, y, z_TP4);
+            }
+            else if(TP < 96){
+            spawn_hit_fx( x, y, z_TP5);
+            }
+            else if(TP < 99){
+            spawn_hit_fx( x, y, z_TP6);
+            }
+}
+*/

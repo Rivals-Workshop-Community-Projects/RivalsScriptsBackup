@@ -46,7 +46,7 @@ with (oPlayer) {
 	var _spr_pattern = noone;
 	with (other) { _spr_pattern = sprite_get("ui_mask_pattern1"); };
 	
-	gpu_push_state();
+	//gpu_push_state();
 	maskHeader();
 	draw_sprite_ext(_spr_pattern, 0, 0, 0, 2, 2, 0, c_white, 1);
 	maskMidder();
@@ -55,7 +55,7 @@ with (oPlayer) {
 	draw_sprite_ext(_emote_window.spr_idx, _img_idx, _x_true, _y_true - char_height - 20, 2, 2, 0, _col, 1 );
 	
 	maskFooter();
-	gpu_pop_state();
+	//gpu_pop_state();
 	draw_sprite_ext(_emote_window.spr_idx, _img_idx, _x_true, _y_true - char_height - 20, 2, 2, 0, _col, 0.3 );
 	
 	//draw_debug_text(_x_true, _y_true + 20, string(sna_emote_window));

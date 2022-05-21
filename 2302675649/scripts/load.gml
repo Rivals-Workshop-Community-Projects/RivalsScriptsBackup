@@ -48,6 +48,8 @@ sprite_change_offset("uspecial", 31, 36, 1);
 sprite_change_offset("uspecial_border", 100, 100);
 sprite_change_offset("shine", 32, 32);
 sprite_change_offset("portal", 32, 32);
+sprite_change_offset("portalCol", 24, 24);
+sprite_change_collision_mask("portalCol", true, 0, 0, 0, 0, 0, 0);
 sprite_change_offset("portalLight", 32, 32);
 sprite_change_offset("portalDark", 32, 32);
 sprite_change_offset("portalMed", 32, 32);

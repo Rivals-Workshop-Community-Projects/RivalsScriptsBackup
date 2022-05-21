@@ -762,6 +762,7 @@ else {
 				case "jumpstart_rifle":
 				case "jump_rifle":
 				case "doublejump":
+				case "land":
 				case "land_rifle":
 				case "landinglag":
 					image_index = img_set_duration;

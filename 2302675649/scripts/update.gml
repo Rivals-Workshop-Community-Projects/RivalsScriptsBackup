@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 47;
+	var noOfPatches = 48;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -227,7 +227,7 @@ if (swallowed)
 		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 		
 		set_num_hitboxes(AT_EXTRA_3, 1);
-		
+
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 4);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 4);
@@ -237,11 +237,11 @@ if (swallowed)
 		set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 80);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 40);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 2);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 8);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 40);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 8);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.9);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 9);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, hit2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 306);
@@ -273,10 +273,10 @@ if ("enemykirby" in self && enemykirby != undefined) with (oPlayer) if ((state =
 	        {
 	            ++window;
 	            window_timer = 0;
-	            set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK,		lerp(8,  11, (nspecCharge-6)/(nspecMax-6)));
-	            set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING,	lerp(.9, 1.5,(nspecCharge-6)/(nspecMax-6)));
-	            set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE,		lerp(5,  60, (nspecCharge-6)/(nspecMax-6)));
-	            set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE,				lerp(4,  18, (nspecCharge-6)/(nspecMax-6)));
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK,     lerp(8,   11,  (nspecCharge-6)/(nspecMax-6)));
+                set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING,  lerp(0.5, 1.5, (nspecCharge-6)/(nspecMax-6)));
+                set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE,      lerp(9,   60,  (nspecCharge-6)/(nspecMax-6)));
+                set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE,             lerp(8,   18,  (nspecCharge-6)/(nspecMax-6)));
 	        }
 	        break;
 	    case 3:
