@@ -201,10 +201,11 @@ initImage_ext(sprite_get("_pho_dspecial"), -4, fa_center, 2, 2, true, c_white, 1
 
 initTip("NSpecial: Interactions with Specials");
 initWords("Nspecial: The Adrenaline Orb, can be used in multiple ways with Egg's specials.");
-initWords("With Fspecial, Egg can grab the Orb like an opponent, and slam it down. If this hits and opponent, it will increase Egg's hatch rate by 100.");
+initWords("With Fspecial, Egg can grab the Orb like an opponent, and slam it down. If this hits and opponent, it will increase Egg's hatch rate by 200.");
 initWords("If Egg already has grabbed an opponent with Fspecial, it can bounce off of the Adrenaline orb, which creates a Basketball hoop in front of it. Egg can use the hoop to slam dunk the opponent it has. Hitting this attack increases the hatch rate by 200.");
-initWords("If hit by Uspecial, the Adrenaline Orb will switch places with Egg and create an explosion. If this hits and opponent, it will increase Egg's hatch rate by 100.");
-initWords("Adrenaline Orb can also be grabbed with Dspecial. Egg throws the orb as a projectile if this happens. If this hits and opponent, it will increase Egg's hatch rate by 100.");
+initWords("If hit by Uspecial, the Adrenaline Orb will switch places with Egg and create an explosion. If this hits and opponent, it will increase Egg's hatch rate by 200.");
+initWords("Uspecial can also initially grab the orb during it's startup, causing it to move with Uspecial's Mark. If you hit the opponent, it will detonate after switching places and increase Egg's hatch rate by 200.");
+initWords("Adrenaline Orb can also be grabbed with Dspecial. Egg throws the orb as a projectile if this happens. If this hits and opponent, it will increase Egg's hatch rate by 200.");
 initWords("Keep in mind that the amount of hatch increase hitting these attacks gives doubles if Egg's shiny charm is active.");
 initImage_ext(sprite_get("_pho_fspecial2"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
@@ -247,6 +248,30 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.19", "21 May, 2022");
+
+initHeader("Buffs:");
+initSection("+ Bair damage increased, 7 -> 10
++ Dair now bounces off of Orb
++ Uspecial Mark travel speed increased a little bit
++ During Uspecial's startup, Egg can absorb it's orb to move it with it's Mark and detonate upon teleport
++ Dspecial's counter grab hitbox was made to hit more behind Egg
+");
+
+initHeader("Nerfs:");
+initSection("- Bair angle changed, 145 -> 140
+- Bair lifetime decreased, 4 -> 2
+- Uspecial idle timer reduced, 70 frames to 60
+- Uspecial's teleport hitbox has a hitstun mult, 0.75
+- Grabbed Orb thrown as a projectile has a hitstun mult, 0.65
+");
+
+initHeader("Changes:");
+initSection("= Added 1 new alt!
+= Updated SFX on Nothing There alt
+");
+
+//
 initPatch("1.18", "2 May, 2022");
 
 initHeader("Buffs:");

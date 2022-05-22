@@ -2,11 +2,27 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "0.0";
-patch_day = "2";
+patch_day = "21";
 patch_month = "MAY";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);
+var alt = get_player_color(player);
+ 
+if ("prev_alt" not in self){
+drawtime = 0
+drawing = 0
+}
+    
+if ("prev_alt" in self && prev_alt != alt){
+     drawtime = 0
+}
+
+if(drawtime < 5){
+drawtime += 1
+}
+prev_alt = alt;
+ 
  
 //Alt name init. var doesn't work with arrays lol
  
@@ -35,7 +51,19 @@ alt_name[21]  = "What matters is on the inside";
 alt_name[22]  = "Balanced Breakfast"; 
 alt_name[23]  = ":Eggdog:"; 
 alt_name[24]  = "What the fuck is that"; 
+alt_name[25]  = "Ḙ̵̢̩̙̿̕ģ̵̘̻̀̾͂̎ģ̶̱̦͚̱͆̚ ̶̙͉͐̌̄ͅM̷̙̑̓̒͝a̸͚͂͛̎̃̚c̶͓͆̉͊̀͝h̸̺̟̆͊ȋ̷̛̠̰̘̂̚͝ǹ̸͇̮̥̲́̓͒̓e̶̡̹̮͉̓̓͆̈́̕ ̴̱̹͙̥̘̃̀͝Ḇ̸̖̠̪̮̊̉͠r̴̗̗̼̈́̀̈́̚̚͜o̷̢͂̑̅͝ͅk̴̛͎͇̜e̸͎͍̰͊̑̐̊̀"; 
  
+ 
+if (get_player_color(player)==24){
+    if (drawtime == 1){
+    sound_play(sound_get("NullThing_ver1_Escape01"), false, 0, .8);
+    }
+}
+if (get_player_color(player)==23 || get_player_color(player)==25){
+    if (drawtime == 1){
+    sound_stop(sound_get("NullThing_ver1_Escape01"));
+    }
+}
 //Patch
  
 draw_set_halign(fa_left);
@@ -86,7 +114,7 @@ if (get_player_color(player)==19){
     }
   */  
 //Special Icon
-if (get_player_color(player)== 14 || get_player_color(player)== 15 || get_player_color(player)== 16 || get_player_color(player)== 17 || get_player_color(player)== 18 || get_player_color(player)== 23 || get_player_color(player)== 24){
+if (get_player_color(player)== 18 || get_player_color(player)== 23 || get_player_color(player)== 24 || get_player_color(player)== 25){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
     

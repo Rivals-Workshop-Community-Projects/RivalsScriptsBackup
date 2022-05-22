@@ -15,7 +15,7 @@ if(attack == AT_DSPECIAL){
 	if(hbox_num == 1){
 		if(hitbox_timer == 59){
 	   create_hitbox(AT_NSPECIAL, 2, x, y);
-	   sound_play(sound_get("classic_hurt"));
+	   sound_play(player_id.ball_hurt);
       }
 	}
 }

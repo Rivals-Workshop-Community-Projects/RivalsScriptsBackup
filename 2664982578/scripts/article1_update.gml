@@ -36,8 +36,8 @@ if (state == 0){
     	if(attack == AT_USPECIAL){
     		if(window == 2){
     	if(!joy_pad_idle){
-            other.hsp = (lengthdir_x(1, joy_dir)*5.4);
-            other.vsp = (lengthdir_y(1, joy_dir)*5.4);
+            other.hsp = (lengthdir_x(1, joy_dir)*6);
+            other.vsp = (lengthdir_y(1, joy_dir)*6);
     	}else {
             other.hsp *= 0;
             other.vsp *= 0;
@@ -80,6 +80,11 @@ if (state == 1){
 		player_id.teleport_outline = false;
 		sound_play(asset_get("sfx_ori_bash_launch"));
 		spawn_hit_fx(x - spr_dir, y, 66);
+		if(player_id.bomb_teleport = true){
+    	spawn_hit_fx(player_id.x - spr_dir, player_id.y, 139);
+    	teleport_hitbox = create_hitbox(AT_NSPECIAL, 1, player_id.x, player_id.y);
+    	sound_play(asset_get("sfx_ell_fist_explode"));			
+		}
 		player_id.x = x;
 		player_id.y = y;
 		    instance_destroy();

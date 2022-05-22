@@ -11,6 +11,7 @@
 - 6 FUCKING BALLING
 - 7 bALLING VICTORY
 - 8 GRABBED HOOP!?!?!?!?
+- 9 Dair'd
 
 
 */
@@ -66,6 +67,14 @@ if (state == 0){
     		window_timer = 0;
     		}
     	}
+    }	if(attack == AT_USPECIAL){
+    	if(window == 1){
+    		if(window_timer > 4){
+    		other.state = 5
+    		other.state_timer = 0;
+    		bomb_teleport = true;
+    		}
+    	}
     }
 	}
 	    }
@@ -73,6 +82,11 @@ if (state == 0){
 with (pHitBox){
     if (place_meeting(x,y,other.id) and player_id == other.player_id and attack == AT_FSPECIAL and hbox_num == 1){
         other.state = 2;
+        other.state_timer = 0;
+    }
+}with (asset_get("pHitBox")){
+    if (place_meeting(x,y,other.id) and player_id == other.player_id and attack == AT_DAIR and hbox_num != 3){
+        other.state = 9;
         other.state_timer = 0;
     }
 }
@@ -304,6 +318,26 @@ if (state == 8){
 
 }
 
+//State 9: Dair'd
+
+if (state == 9){
+	if(state_timer = 1){
+       with (player_id){
+        if(state == PS_ATTACK_AIR){
+		destroy_hitboxes();
+		window = 6;
+		window_timer = 0;
+        	    }
+        }
+       spawn_hit_fx(x , y, 112);
+       sound_play(asset_get("sfx_ori_energyhit_heavy"));
+       create_hitbox(AT_NSPECIAL, 1, x , y);
+        instance_destroy();
+          exit;
+	}
+
+}
+
 
 //NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)
 
@@ -312,10 +346,9 @@ if (state == 8){
 //Sprite and animation handling
 
 //Assign each state both a sprite it should have and a way it should animate
-if(player_id.eggdog_skin == false){
 switch(state){
     case 0:
-        new_sprite = sprite_get("orb_idle");
+        new_sprite = player_id.orb_idle;
         animation_type = 1;
         break;
     case 1:
@@ -323,19 +356,19 @@ switch(state){
         animation_type = 1;
         break;
     case 2:
-        new_sprite = sprite_get("orb_idle");
+        new_sprite = player_id.orb_idle;
         animation_type = 1;
         break;
     case 3:
-        new_sprite = sprite_get("orb_idle");
+        new_sprite = player_id.orb_idle;
         animation_type = 1;
         break;
     case 4:
-        new_sprite = sprite_get("orb_idle");
+        new_sprite = player_id.orb_idle;
         animation_type = 1;
         break;
     case 5:
-        new_sprite = sprite_get("orb_idle");
+        new_sprite = player_id.orb_idle;
         animation_type = 1;
         break;
     case 6:
@@ -351,43 +384,10 @@ switch(state){
         new_sprite = sprite_get("we_cock_dick_ballin");
         animation_type = 1;
         break;
-}
-}if(player_id.eggdog_skin == true){
-switch(state){
-    case 0:
-        new_sprite = sprite_get("eggdog_orb_idle");
+    case 9:
+        new_sprite = player_id.orb_idle;
         animation_type = 1;
         break;
-    case 1:
-        new_sprite = sprite_get("blank_sheet");
-        animation_type = 1;
-        break;
-    case 2:
-        new_sprite = sprite_get("eggdog_orb_idle");
-        animation_type = 1;
-        break;
-    case 3:
-        new_sprite = sprite_get("eggdog_orb_idle");
-        animation_type = 1;
-        break;
-    case 4:
-        new_sprite = sprite_get("eggdog_orb_idle");
-        animation_type = 1;
-        break;
-    case 5:
-        new_sprite = sprite_get("eggdog_orb_idle");
-        animation_type = 1;
-        break;
-    case 6:
-        new_sprite = sprite_get("we_cock_dick_ballin");
-        mask_index = sprite_get("we_cock_dick_ballin");
-        animation_type = 1;
-        break;
-    case 7:
-        new_sprite = sprite_get("we_cock_dick_ballin");
-        animation_type = 1;
-        break;
-}
 }
 
 //Increment image_index based on the animation type assigned, above, to the state

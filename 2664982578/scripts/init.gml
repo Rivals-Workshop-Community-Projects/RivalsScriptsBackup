@@ -102,6 +102,10 @@ enemy_knockback = 0;
 enemy_knockback_scaling = 0;
 counter_drop = 0;
 
+bomb_teleport = false;
+
+orb_idle = sprite_get("orb_idle");
+
 eggdog_skin = false;
 trans_outline = false;
 bbout_egg = false;
@@ -201,17 +205,22 @@ trans_outline = false;
 bbout_egg = false;
 champ_skin = false;
 set_victory_portrait(sprite_get("portrait"));
+hatch_startup = sound_get("hatch_startup");
+ball_hurt = sound_get("classic_hurt");
 if(alt == 14 || alt == 15 || alt == 16 || alt == 17 || alt == 18 || alt == 23){ 
 	eggdog_skin = true;
 	set_victory_portrait(sprite_get("eggdog_portrait"));
+	orb_idle = sprite_get("eggdog_orb_idle");
 }if(alt == 20){ 
 	trans_outline = true;
 }if(alt == 22){ 
 	bbout_egg = true;
-}if(alt == 18 || alt == 23 || alt == 24){ 
+}if(alt == 18 || alt == 23 || alt == 24 || alt == 25){ 
 	champ_skin = true;
 }if(alt == 24){ 
 	set_victory_portrait(sprite_get("nothingthere_portrait"));
+	hatch_startup = sound_get("Nullthing_Skill3_Cast");
+	ball_hurt = sound_get("Nullthing_Skill1_Ching");
 }
 
 

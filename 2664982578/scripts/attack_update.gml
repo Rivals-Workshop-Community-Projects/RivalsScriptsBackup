@@ -20,27 +20,27 @@ switch(attack){
 		break;
 	case AT_FSTRONG:
 		if window == 2 && window_timer == get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH)-1{
-			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x + spr_dir * 70, y, "dash_start", -spr_dir);
 		}		if window == 4 && window_timer == get_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH)-1{
-			array_push(phone_dust_query, [x + spr_dir * 90, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x + spr_dir * 90, y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_USTRONG:
 		if window == 2 && window_timer == 1 && !hitpause{
-			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
-			array_push(phone_dust_query, [x, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x, y, "dash_start", spr_dir);
+			spawn_base_dust(x, y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_DAIR:
 		if window == 8 && window_timer == 2{
-			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
-			array_push(phone_dust_query, [x, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x, y, "dash_start", spr_dir);
+			spawn_base_dust(x, y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_DSTRONG:
 		if window == 5 && window_timer == 1{
-			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
-			array_push(phone_dust_query, [x, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x, y, "dash_start", spr_dir);
+			spawn_base_dust(x, y, "dash_start", -spr_dir);
 		}
 		break;
 }
@@ -176,13 +176,13 @@ if(attack == AT_FSTRONG){
 	if(window == 3){
 		if(window_timer = 3 && !hitpause){
 			sound_play(asset_get("sfx_swipe_medium2"));
-			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x + spr_dir * 70, y, "dash_start", -spr_dir);
 		}		if(window_timer = 7 && !hitpause){
 			sound_play(asset_get("sfx_swipe_medium2"));
-			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x + spr_dir * 70, y, "dash_start", -spr_dir);
 		}		if(window_timer = 11 && !hitpause){
 			sound_play(asset_get("sfx_swipe_medium2"));
-			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
+			spawn_base_dust(x + spr_dir * 70, y, "dash_start", -spr_dir);
 		}
 	}
 }
@@ -449,6 +449,7 @@ if (attack == AT_FSPECIAL_2) {
 }
 if(attack == AT_USPECIAL){
 	if(window == 1 && window_timer = 4){
+	bomb_teleport = false;
 	sound_play(asset_get("sfx_ori_charged_flame_charge2"));	
 	}
 	if(window == 2){
@@ -457,7 +458,7 @@ if(attack == AT_USPECIAL){
 		teleport_outline = true;
 		if(window_timer = 1){
 			instance_create(x, y-10, ("obj_article1"));
-		}if(window_timer = 70 || special_pressed){
+		}if(window_timer = 60 || special_pressed){
 			teleport = true;
 			window = 3;
 			window_timer = 0;
@@ -507,6 +508,9 @@ if(attack == AT_DSPECIAL){
     }if(window == 4 && window_timer = 15){
     	window = 5;
     	window_timer = 0;
+    	if(get_player_color(player)== 24){
+    		sound_play(sound_get("Nullthing_Skill1_casting"), false, noone, 0.35);
+    	}
     }
 }
 if(attack == AT_DSPECIAL_2){

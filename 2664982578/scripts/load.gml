@@ -61,7 +61,7 @@ sprite_change_offset("fspecial_whiff_vfx", 20, 20);//
 sprite_change_offset("fspecial_whiff_vfx2", 20, 20);//
 
 sprite_change_offset("hatch", 25, 37, true);//
-sprite_change_offset("shiny_hatched", 50, 74);//
+sprite_change_offset("shiny_hatched", 25, 37);//
 sprite_change_offset("magic_burst", 210, 210);//
 sprite_change_offset("magic_burst_loop", 210, 210);//
 sprite_change_offset("magic_burst_finish", 210, 210);//
