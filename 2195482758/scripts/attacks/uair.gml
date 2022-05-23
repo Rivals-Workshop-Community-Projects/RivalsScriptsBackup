@@ -35,7 +35,7 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_UAIR, 4, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
-set_window_value(AT_UAIR, 4, AG_WINDOW_VSPEED, -2);
+set_window_value(AT_UAIR, 4, AG_WINDOW_VSPEED, -5);
 
 
 set_window_value(AT_UAIR, 5, AG_WINDOW_TYPE, 1);

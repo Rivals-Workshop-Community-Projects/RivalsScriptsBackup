@@ -27,7 +27,7 @@ if (attack == AT_NSPECIAL){
 			// Make zdrop firecracker
 			var fc_zdrop = create_hitbox(AT_NSPECIAL,1,x,y-(char_height * 0.5));
 			
-			fc_zdrop.vsp = -3;
+			fc_zdrop.vsp = -7;
 			fc_zdrop.hsp = 0;
 			
 			fc_zdrop.grav *= 0.68;
@@ -380,14 +380,14 @@ if (attack == AT_FSPECIAL){
 	{
 		fspec_yoff = 0;
 		fspec_xoff = 10;
-		if((joy_dir < 350 && joy_dir > 200 && spr_dir == 1) || (joy_dir > 210 && joy_dir < 300 && spr_dir == -1) || down_stick_down)
+		if((joy_dir < 345 && joy_dir > 195 && spr_dir == 1) || (joy_dir > 195 && joy_dir < 345 && spr_dir == -1) || down_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_down"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_down_air"));
 			fspec_yoff = 45;
 			fspec_xoff = 0;
 		}
-		else if((joy_dir > 30 && joy_dir < 200 && spr_dir == 1) || (joy_dir < 150 && joy_dir > 0 && spr_dir == -1) || up_stick_down)
+		else if((joy_dir > 15 && joy_dir < 165 && spr_dir == 1) || (joy_dir < 165 && joy_dir > 15 && spr_dir == -1) || up_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_up"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));
@@ -471,7 +471,7 @@ if (attack == AT_FSPECIAL){
 
 
 	// Grabbing projectile
-	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4))
+	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4) && !grabbed_solid)
 	{
 		
 	// First, get nearby hitboxes
@@ -1824,7 +1824,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             else
             {
             	// Cooldown to prevent infinite laddering
-            	move_cooldown[AT_USPECIAL] = 10;
+            	move_cooldown[AT_USPECIAL] = 20;
             }
         }
 
@@ -1846,6 +1846,15 @@ if (attack == AT_DSPECIAL){
 	
 	from_dspecial = true;
 	//can_move = true;
+	
+	var normal_height = -12;
+	var big_height = -18;
+	
+	if(window_timer == 1 && window == 1)
+	{
+		set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,normal_height);
+		dspec_big_flip = 0;
+	}
 	
 	// Drifting
 	if(window < 3 && dspec_big_flip > 0 && window_timer == 1)
@@ -1889,8 +1898,8 @@ if (attack == AT_DSPECIAL){
 		land_dust_timer = 24;
 		whiffspin = false;
 		
-		if(dspec_big_flip == 1){ set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-16); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_bash_projectile")); dspec_big_flip = 2;}
-		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-13); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
+		if(dspec_big_flip == 1){ set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,big_height); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_bash_projectile")); dspec_big_flip = 2;}
+		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,normal_height); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
 		
 	}
 	
@@ -2716,7 +2725,7 @@ if(attack == AT_UTILT){
 	if(uptilt_loop && has_hit)
 	{
 		uptilt_loop = false;
-		window = 10;
+		window = 6;
 		window_timer = 0;
 	}
 	
@@ -2921,13 +2930,13 @@ if(attack == AT_FSTRONG){
 	// Basic hsp boost
 	if(window == 3 && window_timer == 1) hsp = max(abs(hsp),12) * spr_dir;
 
-	if( (window == 3 || window == 4) && !was_parried)
-	{
-	if(left_down && spr_dir == 1)
-		hsp -= 1;
-	if(right_down && spr_dir == -1)
-		hsp += 1;
-	}
+	// if( (window == 3 || window == 4) && !was_parried)
+	// {
+	// if(left_down && spr_dir == 1)
+	// 	hsp -= 1;
+	// if(right_down && spr_dir == -1)
+	// 	hsp += 1;
+	// }
 	
 	// Endlag movement
 	if(((window == 5 && window_timer > 10) || window > 5))

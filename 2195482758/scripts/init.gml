@@ -33,10 +33,10 @@ jump_queue = 0;
 is_tenru = true;
 
 jump_start_time = 5;
-max_jump_speed = 10.5;
-jump_speed = 10.5;
+max_jump_speed = 11.5;
+jump_speed = 11.5;
 short_hop_speed = 7;
-djump_speed = 11.5;
+djump_speed = 13.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -53,7 +53,7 @@ walljump_vsp = 10;
 walljump_time = 32;
 max_fall = 8; //10 //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
-gravity_speed = .50;
+gravity_speed = .60;
 hitstun_grav = .5;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 

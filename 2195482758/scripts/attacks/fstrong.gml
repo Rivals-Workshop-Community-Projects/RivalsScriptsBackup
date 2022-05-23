@@ -76,12 +76,11 @@ set_window_value(AT_FSTRONG, 6, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 
 
-set_num_hitboxes(AT_FSTRONG,1);
+set_num_hitboxes(AT_FSTRONG,2);
 
-set_hitbox_value(AT_FSTRONG, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 4);
-set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 68);
@@ -97,4 +96,25 @@ set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 20);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_CAMERA_SHAKE, 9);
+set_hitbox_value(AT_FSTRONG, 1, HG_EXTENDED_PARRY_STUN, 1);
+
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 4);
+set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 14);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 60);
+set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 35);
+set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 3);
+set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 6);
+set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 361);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, .8);
+set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 20);
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FSTRONG, 2, HG_EXTENDED_PARRY_STUN, 1);
