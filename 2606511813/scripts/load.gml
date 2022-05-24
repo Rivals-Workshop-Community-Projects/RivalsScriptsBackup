@@ -75,6 +75,7 @@ sprite_change_offset("reticle", 15, 15);
 sprite_change_offset("reticle_arm", 15, 15);
 
 sprite_change_offset("orbitars_spawn", 39, 39);
+sprite_change_offset("orbitars_spawn_white", 39, 39);
 sprite_change_offset("orbitars_idle", 39, 39);
 sprite_change_offset("orbitars_attack", 39, 39);
 sprite_change_offset("orbitars_shield", 39, 39);

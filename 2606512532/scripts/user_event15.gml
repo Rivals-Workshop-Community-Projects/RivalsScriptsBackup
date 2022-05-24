@@ -292,7 +292,37 @@ initSection("")
 initHeader("Other");
 initSection("");
 */
-initPatch("1.12", "11 April, 2022");
+initPatch("1.14", "24 May, 2022");
+initHeader("Both");
+initSection("- Fspecial charge shot back hitbox removed
+- Fspecial charge shot hitbox size decreased
+- Fspecial charge shot blindspot hitbox has correct hitstun multiplier and angle
+- Dtilt hitbox size decreased
+- Pratland time increased: 10 -> 16
+- Uspecial vsp decreased slightly
+- Fstrong startup increased (+2f)");
+initHeader("Pit");
+initSection("- Uspecial late hit hitbox lifetime reduced: 12 -> 6
+- Fspecial charge shot startup increased (+4f)");
+initHeader("Dark Pit");
+initSection("- Fspecial charge shot startup increased (+2f)");
+
+initPatch("1.13", "20 May, 2022");
+initHeader("Both");
+initSection("- Fspecial charge shot hitstun multiplier decreased: 1 -> 0.7
+- Dspecial orbitar throw hitbox lifetime decreased: 18 -> 12
+- Dspecial orbitar throw endlag increased (+8f)
+- Dspecial orbitar throw hitstun multiplier decreased: 1 -> 0.5
+- Dspecial orbotar throw hitbox size decreased
+- Dspecial orbitar throw angle decreased: 50 -> 45
+- Dspecial orbitar throw has orbitars slow down slightly earlier
+- Dspecial orbitar throw base hitpause decreased: 8 -> 6");
+initHeader("Pit");
+initSection("- Fspecial charge shot angle decreased: 50 -> 45");
+initHeader("Other");
+initSection("- DSpecial orbitar throw has white outline when throw hitbox is active");
+
+initPatch("1.12", "11 May, 2022");
 initHeader("Both");
 initSection("- Fspecial recoil distance decreased
 - Fspecial back hitbox size decreased

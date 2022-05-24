@@ -18,12 +18,12 @@ set_window_value(AT_FTHROW, 1, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 //ready
-set_window_value(AT_FTHROW, 2, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FTHROW, 2, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_SFX, sound_get("gun_shoot_strong"));
-set_window_value(AT_FTHROW, 2, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_FTHROW, 2, AG_WINDOW_SFX_FRAME, 12);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 
 //shoot/roll
@@ -64,11 +64,11 @@ set_hitbox_value(AT_FTHROW, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_LIFETIME, 24);
 set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_X, 90);
 set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_Y, -29);
-set_hitbox_value(AT_FTHROW, 1, HG_WIDTH, 80);
-set_hitbox_value(AT_FTHROW, 1, HG_HEIGHT, 30);
+set_hitbox_value(AT_FTHROW, 1, HG_WIDTH, 50);
+set_hitbox_value(AT_FTHROW, 1, HG_HEIGHT, 25);
 set_hitbox_value(AT_FTHROW, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_FTHROW, 1, HG_DAMAGE, 9);
-set_hitbox_value(AT_FTHROW, 1, HG_ANGLE, 50);
+set_hitbox_value(AT_FTHROW, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FTHROW, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_FORCE_FLINCH, 0);
@@ -81,6 +81,7 @@ set_hitbox_value(AT_FTHROW, 1, HG_EFFECT, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
 set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, vfx_reticle_large);
 set_hitbox_value(AT_FTHROW, 1, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(AT_FTHROW, 1, HG_HITSTUN_MULTIPLIER, 0.7);
 
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_strong"));
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_MASK, -1);
@@ -93,6 +94,7 @@ set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_DESTROY_EFFECT, vfx_reticle_large);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
 
 //super smash bros melee
+/*
 set_hitbox_value(AT_FTHROW, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTHROW, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_FTHROW, 2, HG_WINDOW_CREATION_FRAME, 0);
@@ -115,6 +117,7 @@ set_hitbox_value(AT_FTHROW, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FTHROW, 2, HG_EFFECT, 0);
 set_hitbox_value(AT_FTHROW, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FTHROW, 2, HG_VISUAL_EFFECT, 0);
+*/
 
 //blindspot cover
 set_hitbox_value(AT_FTHROW, 3, HG_HITBOX_TYPE, 2);
@@ -127,7 +130,7 @@ set_hitbox_value(AT_FTHROW, 3, HG_WIDTH, 60);
 set_hitbox_value(AT_FTHROW, 3, HG_HEIGHT, 35);
 set_hitbox_value(AT_FTHROW, 3, HG_PRIORITY, 4);
 set_hitbox_value(AT_FTHROW, 3, HG_DAMAGE, 9);
-set_hitbox_value(AT_FTHROW, 3, HG_ANGLE, 50);
+set_hitbox_value(AT_FTHROW, 3, HG_ANGLE, 45);
 set_hitbox_value(AT_FTHROW, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FTHROW, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_FTHROW, 3, HG_FORCE_FLINCH, 0);
@@ -140,6 +143,7 @@ set_hitbox_value(AT_FTHROW, 3, HG_EFFECT, 0);
 set_hitbox_value(AT_FTHROW, 3, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
 set_hitbox_value(AT_FTHROW, 3, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FTHROW, 3, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(AT_FTHROW, 3, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(AT_FTHROW, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FTHROW, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FTHROW, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

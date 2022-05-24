@@ -18,7 +18,7 @@ draw_indicator('orb', 0, state == PS_ATTACK_AIR);
 if onscreen(x,y) {
 	switch state {
 	    case PS_SPAWN:
-	    draw_sprite_ext(spr_spawn, floor(state_timer/2), drawx, drawy, spr_dir, 1, 0, c_white, 1);
+	    draw_sprite_ext(state_timer < 12 ? spr_spawn_white : spr_spawn, floor(state_timer/2), drawx, drawy, spr_dir, 1, 0, c_white, 1);
 	    break;
 	    
 	    case PS_IDLE:

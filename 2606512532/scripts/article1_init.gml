@@ -30,6 +30,7 @@ hp = base_hp;
 
 spr_indicator = sprite_get("indicator")
 spr_spawn = sprite_get("orbitars_spawn")
+spr_spawn_white = sprite_get("orbitars_spawn_white")
 spr_idle = sprite_get("orbitars_idle")
 spr_attack = sprite_get("orbitars_attack")
 spr_shield = sprite_get("orbitars_shield")

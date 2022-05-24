@@ -37,7 +37,7 @@ switch state {
         vsp *= 0.95;
     }
     
-    if timer > 20 {
+    if timer > 16 {
         hsp = clamp(hsp, -4, 4)
         vsp = clamp(vsp, -4, 4)
     }

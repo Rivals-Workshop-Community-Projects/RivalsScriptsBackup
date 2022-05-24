@@ -5,7 +5,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 5);
 
 //startup
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED, -3);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED_TYPE, 0);

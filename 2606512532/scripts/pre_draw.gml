@@ -17,7 +17,7 @@ for (var i = 0; i < array_length_1d(fspec_id_array); i++) {
                 //draw_circle_color(_x, _y, 10, c_white, c_white, false)
                 if onscreen(_x,_y) {
                     var _index = (trail_length-1+j-trail_index) mod 20;
-                    if (j < (array_length_1d(fspec_array)-1) || !echo) draw_sprite_general(sprite_get("fspecial_proj_strong_trail_2"), floor((timer mod 16)/2), _index*15*(20/trail_length), 0, 15*(20/trail_length), 62, _x, _y, _spr_dir * _speed/15, 1, _angle, c_white, c_white, c_white, c_white, 1);
+                    if _index > 1 draw_sprite_general(sprite_get("fspecial_proj_strong_trail_2"), floor((timer mod 16)/2), _index*15*(20/trail_length), 0, 15*(20/trail_length), 62, _x, _y, _spr_dir * _speed/15, 1, _angle, c_white, c_white, c_white, c_white, 1);
                     //draw_text_transformed(_x, _y - 30, _index, 1, 1, 0)
                 }
             }
