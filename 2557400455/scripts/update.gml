@@ -45,7 +45,7 @@ if wjcap > 0 {
 
 if state == PS_CROUCH && state_timer == 1 {
 	//sound_stop(sound_get("squeaky_short"))
-	//sound_play(sound_get("squeaky_short"),false,noone,0.7,0.9)
+	//sound_play(sound_get("squeaky_short"),false,noone,0.7,0.9+ (random_func(1,10,true)/100) )
 }
 
 if ((state == PS_DASH_START or state == PS_DASH or state == PS_DASH_STOP or state == PS_DASH_TURN) && taunt_pressed) or (visible && free && !attacking && can_attack && taunt_pressed) {
@@ -55,8 +55,8 @@ if ((state == PS_DASH_START or state == PS_DASH or state == PS_DASH_STOP or stat
 if redP > 300 && redP < 600{
 	redP = 600
 	sound_play(sound_get("charge2"),false,noone,1,1.3)
-	sound_play(sound_get("gunload"),false,noone,1,1)
-	spawn_hit_fx(x,y - 30,305)
+	sound_play(sound_get("shot1"),false,noone,.4,.8)
+	spawn_hit_fx(x - 4*spr_dir,y - 30,305)
 }
 
 if !hitpause {

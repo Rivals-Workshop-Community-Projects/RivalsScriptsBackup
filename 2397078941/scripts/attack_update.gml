@@ -695,7 +695,7 @@ if attack == AT_DAIR {
     can_wall_jump = true
     }
 
-    if (y > room_height/2 + 300){
+    if (y > room_height/2 + 300) && !hitpause{
     	if jump_pressed or shield_pressed {
     		set_state(PS_PRATFALL)
     		state_timer = 0

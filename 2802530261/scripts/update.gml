@@ -209,6 +209,20 @@ if(state != PS_ATTACK_AIR){
     sound_stop(sound_get("screw_loop"));
 }
 
+//sfx fix
+if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+    sound_stop(sound_get("beam_wide_charging"));
+    sound_stop(sound_get("beam_wide_charged"));
+    sound_stop(sound_get("beam_normal_charging"));
+    sound_stop(sound_get("beam_normal_charged"));
+    sound_stop(sound_get("beam_plasma_charging"));
+    sound_stop(sound_get("beam_plasma_charged"));
+    sound_stop(sound_get("beam_wave_charging"));
+    sound_stop(sound_get("beam_wave_charged"));
+    sound_stop(sound_get("beam_wave_charging"));
+    sound_stop(sound_get("beam_wave_charged"));
+}
+
 //got hit sound
 if(get_player_damage(player) - prev_dameg > 0){
 if(get_player_damage(player) - prev_dameg <= 3 && sound_timer <= 0){

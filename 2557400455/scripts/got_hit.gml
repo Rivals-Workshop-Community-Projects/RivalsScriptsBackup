@@ -15,3 +15,7 @@ if crossout == 1 {
     crossx = -1
     crossy = -1
 }
+
+if abs(old_hsp) > 8 or abs(old_vsp) > 8  {
+    //sound_play(sound_get("squeaky_short"),false,noone,1,0.9+ (random_func(1,10,true)/100) )
+}

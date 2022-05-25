@@ -33,7 +33,7 @@ air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
 air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 10;		// 6    -  11
-fast_fall           = 16;		// 11   -  16
+fast_fall           = 12;		// 11   -  16
 gravity_speed       = 0.3;		// 0.3  -  0.6
 hitstun_grav        = 0.5;		// 0.45 -  0.53
 

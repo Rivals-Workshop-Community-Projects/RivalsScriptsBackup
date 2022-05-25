@@ -49,3 +49,7 @@ for (var hnum = -6; hnum < 7; hnum++) {
 	set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_EXTRA_CAMERA_SHAKE, 15 - abs(hnum));
 	set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_BASE_HITPAUSE, 15 - abs(hnum));
 }
+set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 20);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 20);
+set_hitbox_value(AT_DSPECIAL, 11, HG_WIDTH, 20);
+set_hitbox_value(AT_DSPECIAL, 11, HG_HEIGHT, 20);

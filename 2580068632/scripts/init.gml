@@ -287,6 +287,7 @@ if (get_player_color( player ) != 0){
 	spr_uspecial_muno = sprite_get("uspecial");
 	spr_dspecial_muno = sprite_get("dspecial");
 	spr_jab_muno = sprite_get("jab");
+	spr_ftilt_muno = sprite_get("ftilt");
 	spr_jump_muno = sprite_get("jump");
 	spr_jump_wings_muno = sprite_get("jump_wings");
 }
@@ -383,6 +384,7 @@ spr_fspecial_muno = sprite_get("fspecial_muno");
 spr_uspecial_muno = sprite_get("uspecial_muno");
 spr_dspecial_muno = sprite_get("dspecial_muno");
 spr_jab_muno = sprite_get("jab_muno");
+spr_ftilt_muno = sprite_get("ftilt_muno");
 spr_jump_muno = sprite_get("jump_muno");
 spr_jump_wings_muno = sprite_get("jump_wings_muno");
 

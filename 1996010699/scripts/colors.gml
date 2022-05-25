@@ -66,12 +66,12 @@ set_color_profile_slot( 6, 2, 178, 189, 200 ); //WHEELS
 set_color_profile_slot( 6, 3, 178, 255, 208 ); //CHEST
 set_color_profile_slot( 6, 4, 58, 210, 228 ); //CRYSTAL
 
-// Abyss
-set_color_profile_slot( 7, 0, 86, 84, 146 ); //CASE
-set_color_profile_slot( 7, 1, 27, 25, 56 ); //SHADOW
-set_color_profile_slot( 7, 2, 220, 113, 255 ); //WHEELS
-set_color_profile_slot( 7, 3, 166, 172, 214 ); //CHEST
-set_color_profile_slot( 7, 4, 58, 210, 228 ); //CRYSTAL
+// Arizona
+set_color_profile_slot( 7, 0, 186, 28, 11 ); //CASE
+set_color_profile_slot( 7, 1, 91, 0, 41 ); //SHADOW
+set_color_profile_slot( 7, 2, 255, 225, 49 ); //WHEELS
+set_color_profile_slot( 7, 3, 32, 96, 173 ); //CHEST
+set_color_profile_slot( 7, 4, 229, 113, 45 ); //CRYSTAL
 
 // EA GameBoy
 set_color_profile_slot( 8, 0, 83, 122, 62 ); //CASE
@@ -108,12 +108,12 @@ set_color_profile_slot( 12, 2, 178, 34, 52 ); //WHEELS
 set_color_profile_slot( 12, 3, 255, 255, 255 ); //CHEST
 set_color_profile_slot( 12, 4, 58, 210, 228 ); //CRYSTAL
 
-// Seasonal - Hot Wave
-set_color_profile_slot( 13, 0, 186, 28, 11 ); //CASE
-set_color_profile_slot( 13, 1, 91, 0, 41 ); //SHADOW
-set_color_profile_slot( 13, 2, 255, 225, 49 ); //WHEELS
-set_color_profile_slot( 13, 3, 32, 96, 173 ); //CHEST
-set_color_profile_slot( 13, 4, 229, 113, 45 ); //CRYSTAL
+// Abyss Death FX Slot 13
+set_color_profile_slot( 13, 0, 86, 84, 146 ); //CASE
+set_color_profile_slot( 13, 1, 27, 25, 56 ); //SHADOW
+set_color_profile_slot( 13, 2, 220, 113, 255 ); //WHEELS
+set_color_profile_slot( 13, 3, 166, 172, 214 ); //CHEST
+set_color_profile_slot( 13, 4, 58, 210, 228 ); //CRYSTAL
 
 // Spooky
 set_color_profile_slot( 14, 0, 214, 98, 0 ); //CASE

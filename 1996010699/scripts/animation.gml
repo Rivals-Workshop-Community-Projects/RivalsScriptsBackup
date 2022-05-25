@@ -83,6 +83,9 @@ if(sprite_index == sprite_get("dstrong")){
 }
 
 if(sprite_index == sprite_get("ftilt")){
+	if(item[27, 3] == 1){
+		sprite_index = sprite_get("ftilt1");
+	}	
 	if(window > 4){
 		sprite_index = sprite_get("ftiltKT");
 	}
@@ -91,6 +94,12 @@ if(sprite_index == sprite_get("ftilt")){
 if(item[14, 3] == 1){
 	if (sprite_index == sprite_get("dspecial")){
 		sprite_index = sprite_get("dspecial1");
+	}
+}
+
+if(item[15, 3] == 1){
+	if (sprite_index == sprite_get("crouch")){
+		sprite_index = sprite_get("crouchKT");
 	}
 }
 

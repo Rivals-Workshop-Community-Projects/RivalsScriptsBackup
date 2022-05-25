@@ -14,7 +14,7 @@ if ("rollArray" in self)
 				}
 				break;
 			case AT_NSPECIAL:
-				for (var i = 0; i < 5; ++i)
+				for (var i = 0; i < nspecIcicles; ++i)
 				{
 					var opacity = window==3?1-window_timer/get_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH):min(GetNeedleCharge(i), state_timer)/30;
 					var angle = GetNeedleCharge(i)*7.2;
@@ -255,7 +255,7 @@ if ("rollArray" in self)
 
 #define GetNeedleCharge(i)
 {
-	return max(nspecCharge - nspecChargeMax/5*i, 0);
+	return max(nspecCharge - nspecChargeMax/nspecIcicles*i, 0);
 }
 
 

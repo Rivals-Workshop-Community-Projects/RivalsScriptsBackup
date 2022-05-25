@@ -1,5 +1,6 @@
 //Idle, Walk, Dash
 sprite_change_offset("idle", 54, 68);
+sprite_change_offset("intro", 242, 178);
 sprite_change_offset("crouch", 54, 68);
 sprite_change_offset("walk", 56, 70);
 sprite_change_offset("walkturn", 54, 68);

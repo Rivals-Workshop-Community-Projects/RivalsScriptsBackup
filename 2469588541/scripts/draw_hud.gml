@@ -461,6 +461,34 @@ if ("practice" in self)
 						AddText("FSpecial UThrow Drift Multiplier 0.45 -> 0.20");
 						AddText("FSpecial HSpeed 15 -> 18");
 						break;
+					case 25:
+						AddText("v1.24 - 12 May 2022");
+						AddText("");
+						AddText("Jab 1&2 Angle 50 -> 361");
+						AddText("");
+						AddText("FSpecial UThrow Drift Multiplier 0.2 -> 1.2");
+						AddText("FSpecial UThrow KB 12+0 -> 13+0");
+						AddText("FSpecial UThrow Hitpause 6 -> 0 (Can't DI)");
+						AddText("FSpecial UThrow Endlag 6 -> 8");
+						AddText("FSpecial Startup 12 -> 18");
+						AddText("FSpecial Endlag 8 -> 12");
+						AddText("FSpecial No longer moves back in endlag");
+						AddText("FSpecial Reduced hitpause on first hit");
+						AddText("");
+						AddText("Slightly changed afterimages frequency");
+						break;
+					case 26:
+						AddText("v1.25 - 17 May 2022");
+						AddText("");
+						AddText("FSpecial UThrow Drift Multiplier 1.2 -> 0.35");
+						AddText("FSpecial UThrow Hitpause 0 -> 6 (Can DI again)");
+						AddText("FSpecial UThrow now spawns 2 stars on hit (for a total of 3)");
+						AddText("");
+						AddText("FSpecial can no longer be jump cancelled on hit");
+						AddText("");
+						AddText("When spawning stars over the max star count limit, the farthest star from the player despawns");
+						AddText("instead of the new star being spawned.");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -571,6 +599,8 @@ if ("practice" in self)
 		}
 		draw_set_alpha(1);
 	}
+	else if (aura)
+		draw_debug_text(temp_x + 128, temp_y - 10, "Galaxy Fox");
 }
 
 #define DrawText(x, y, font, color, lineb, linew, scale, outline, alpha, string)

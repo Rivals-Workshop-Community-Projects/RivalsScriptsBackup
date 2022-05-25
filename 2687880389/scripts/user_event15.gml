@@ -448,6 +448,21 @@ initHeader("Compatible with");
 initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
+initPatch("1.18", "15 May, 2022");
+initWords("Tiny nerf time, plus a rune to test");
+initHeader("Balance:");
+initSection("- Increased startup of dattack (5->8)
+			- Can now fastfall after last-ditch uspecial
+			- Increased time to fully recharge energy while grounded (1.5->2.0)
+			- Reduced speed boost on bair (8->7.5)");
+initHeader("Presentation:");
+initSection("- dattack now does a tiny hop during startup");
+initHeader("New Rune:");
+initSection("- Residual Charge: Immediately restore energy up to the 30% mark on contact with ground/wallkick/taking damage, but reduces the normal passive recharge rate proportionally (time to reach full is unchanged).
+			- This rune is being looked at as a possible baseline addition");
+initHeader("AI:");
+initSection("- dspecial may now be selected to target opponents below Retroblast");
+
 initPatch("1.17", "27 Apr, 2022");
 initWords("Rebalance ustrong, add some missing alt gimmicks");
 initHeader("Balance:");

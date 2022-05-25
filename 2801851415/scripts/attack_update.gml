@@ -5,7 +5,12 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 switch(attack){
 	case AT_USPECIAL:
-	can_fast_fall = false;
+		if(window < 3)
+			can_fast_fall = false;
+		else
+			can_fast_fall = true;
+		if(window > 1)
+		can_wall_jump = true;
 	break;
 	
 	case AT_FSPECIAL:
@@ -70,7 +75,7 @@ switch(attack){
 	//forward air code goes here
 	case AT_NSPECIAL:
 		trigger_wavebounce();
-		move_cooldown[AT_NSPECIAL] = 20;
+		move_cooldown[AT_NSPECIAL] = 25;
 		if (window == 1)
 		{
 			if(window_timer == 1)
@@ -169,9 +174,11 @@ switch(attack){
 	break;
 }
 
-
 //gnome layering stuff 
 switch (attack) {
+	case AT_DTILT:
+	if(window == 1 && window_timer == 8) sound_play(asset_get("sfx_ice_nspecial_hit_ground"), false, noone, 0.5, 1.2)
+	break;
 	case AT_USTRONG:
 	if window == 3 && window_timer == 10 {
 		sound_play(asset_get("sfx_swipe_medium2"))

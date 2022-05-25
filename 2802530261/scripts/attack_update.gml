@@ -316,8 +316,12 @@ switch (attack){
         sound_stop(sound_get("beam_wave_charging"));
         sound_stop(sound_get("beam_wave_charged"));
     }
-    if(jump_pressed && window == 2){
-        set_state(PS_JUMPSQUAT);
+    if(jump_pressed && window == 2 && djumps < max_djumps){
+        if(free){
+            set_state(PS_DOUBLE_JUMP);
+        }else{
+            set_state(PS_JUMPSQUAT);
+        }
     }
     switch(beam_sprite){
         case 0:

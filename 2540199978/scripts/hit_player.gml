@@ -1,3 +1,5 @@
+if (has_rune("H")) IciclesHomeIn();
+
 switch (my_hitboxID.attack)
 {
 	case AT_FSPECIAL:
@@ -13,15 +15,7 @@ switch (my_hitboxID.attack)
 				grabDjump = false;
 			}
 		}
-		else if (my_hitboxID.hbox_num == 2)
-		{
-			with (obj_article1) if (player_id == other.id && state == 1 && returning)
-			{
-			    fspecReturn = true;
-			    newState = 2;
-				other.tutDoneAdv[2] = true;
-			}
-		}
+		else if (my_hitboxID.hbox_num == 2) IciclesHomeIn();
 		break;
 
 	case AT_USPECIAL:
@@ -56,4 +50,14 @@ switch (my_hitboxID.attack)
 	case AT_DSPECIAL:
 		sound_play(sound_get("flakeIce"),0,-4,2);
 		break;
+}
+
+#define IciclesHomeIn()
+{
+	with (obj_article1) if (player_id == other.id && state == 1 && returning)
+	{
+	    fspecReturn = true;
+	    newState = 2;
+		other.tutDoneAdv[2] = true;
+	}
 }

@@ -317,14 +317,14 @@ set_color_profile_slot( 28, 6, 254, 215, 0 ); //Umbrella
 set_color_profile_slot( 28, 7, 191, 10, 48 ); //IceIceBaby
 
 // Totally, Awesome, Gorgeous (TAG)
-set_color_profile_slot( 29, 0, 228, 236, 247 ); //Fur
-set_color_profile_slot( 29, 1, 255, 223, 82 ); //Hair/Tail
+set_color_profile_slot( 29, 0, 186, 149, 123 ); //Fur
+set_color_profile_slot( 29, 1, 192, 227, 165 ); //Hair/Tail
 set_color_profile_slot( 29, 2, 255, 249, 128 ); //Floof
-set_color_profile_slot( 29, 3, 20, 120, 0 ); //Jacket
-set_color_profile_slot( 29, 4, 0, 143, 0 ); //Skirt
-set_color_profile_slot( 29, 5, 0, 143, 0 ); //Boots
-set_color_profile_slot( 29, 6, 217, 190, 37 ); //Umbrella
-set_color_profile_slot( 29, 7, 255, 217, 79 ); //IceIceBaby
+set_color_profile_slot( 29, 3, 220, 66, 83 ); //Jacket
+set_color_profile_slot( 29, 4, 220, 66, 83 ); //Skirt
+set_color_profile_slot( 29, 5, 96, 158, 155 ); //Boots
+set_color_profile_slot( 29, 6, 255, 147, 94 ); //Umbrella
+set_color_profile_slot( 29, 7, 255, 249, 128 ); //IceIceBaby
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

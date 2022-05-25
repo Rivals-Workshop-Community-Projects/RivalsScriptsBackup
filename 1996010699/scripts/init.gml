@@ -32,6 +32,10 @@ sayoTimer = 0;
 //eatingTidepods = false;
 foodVoided = false;
 bagelEaten = false;
+nspecIsFireball = false;
+numSuds = 5;
+sudsCooldown = 20;
+airCounter = 0;
 
 //pool party vars
 nairbounceTryUnlock = false;
@@ -185,9 +189,11 @@ achTrophy = hit_fx_create(sprite_get("achievement"), 60);
 sparkle = hit_fx_create(sprite_get("sparkle"), 14);
 smokeXP = hit_fx_create(sprite_get("smokeXP"), 20);
 buyFX = hit_fx_create(sprite_get("hit_fx_buy"), 16);
+bubblpop = hit_fx_create(sprite_get("hit_fx_bubblpop"), 4);
+spit = hit_fx_create(sprite_get("hit_fx_spit"), 12);
+abyssbomb = hit_fx_create(sprite_get("hit_fx_abyssbomb"), 48);
 
-
-//Katie vfx used with permission from Sydery
+//Katie vfx used with permission from SAI
 smokeKT1 = hit_fx_create(sprite_get("smokeKT1"), 20);
 smokeKT2 = hit_fx_create(sprite_get("smokeKT2"), 20);
 smokeKT3 = hit_fx_create(sprite_get("smokeKT3"), 20);
@@ -196,6 +202,7 @@ exp1KT = hit_fx_create( sprite_get( "exp1KT" ), 42 );
 exp2KT = hit_fx_create( sprite_get( "exp2KT" ), 42 );
 blast1KT  = hit_fx_create( sprite_get( "blast1KT" ), 9 );
 blast2KT  = hit_fx_create( sprite_get( "blast2KT" ), 9 );
+
 
 //intro 
 introTimer = -2;
@@ -294,6 +301,7 @@ sandStage = 0;
 //Registration Tracker
 regTracker = 0;
 regBonusDmg = 2;
+regKBMod = 0;
 //Breakfast
 breakfastCount = 2;
 breakfastVar = 0;
@@ -320,7 +328,7 @@ suit_grabbed_player_x_offset = 0;
 suit_grabbed_player_y_offset = 0;
 suit_grabbed_player_suplex_distance = 30;
 
-items_length = 27;
+items_length = 28;
 IDs_available[items_length] = 0;
 numItemsAvailable = items_length - 1;
 r = random_func(0, numItemsAvailable, true);
@@ -338,10 +346,10 @@ item[0, 2] = sprite_get("item_prizepurse");
 item[0, 3] = 0; //0 = unowned, 1 = owned, 2 = voided
 item[0, 4] = sprite_get("mini_prizepurse");
 item[0, 5] = 0;
-item[0, 6] = "MAX XP UP, SHARDS UP";
+item[0, 6] = "COINS COINS COINS";
 item[0, 7] = false; //allowed to spawn?
-item[0, 8] = sprite_get("hud_shop");
-item[0, 9] = $b2eaff;
+item[0, 8] = sprite_get("hud_shop4");
+item[0, 9] = $ff71d9;
 //McDouble, ID 1
 item[1, 0] = "BONUS BURGER";
 item[1, 1] = "Double Trouble";
@@ -360,10 +368,10 @@ item[2, 2] = sprite_get("item_poolparty");
 item[2, 3] = 0;	//owned
 item[2, 4] = sprite_get("mini_poolparty");
 item[2, 5] = 2;
-item[2, 6] = "BOUNCY NAIR";
+item[2, 6] = "BOUNCY SPLASHY NAIR";
 item[2, 7] = true;
-item[2, 8] = sprite_get("hud_shop"); //sprite_get("hud_shop1");
-item[2, 9] = $d5a5b5; //$b2eaff;
+item[2, 8] = sprite_get("hud_shop"); //vault
+item[2, 9] = $d5a5b5;
 //Mark of the Creator, ID 3
 item[3, 0] = "CREATOR'S CURSE";
 item[3, 1] = "You forgot something!";
@@ -409,16 +417,16 @@ item[6, 7] = false;
 item[6, 8] = sprite_get("hud_shop3");
 item[6, 9] = $5ede8c;
 //Pocket Cactus, ID 7
-item[7, 0] = "POCKET CACTUS";
-item[7, 1] = "Lil Heat Wave!";
-item[7, 2] = sprite_get("item_pocketcactus");
+item[7, 0] = "GOTEHORN";
+item[7, 1] = "PRECISION BAIR";
+item[7, 2] = sprite_get("item_horn");
 item[7, 3] = 0;
-item[7, 4] = sprite_get("mini_pocketcactus");
+item[7, 4] = sprite_get("mini_horn");
 item[7, 5] = 7; // ID #
-item[7, 6] = "BAIR UP";
+item[7, 6] = "PRECISION BAIR";
 item[7, 7] = false;
-item[7, 8] = sprite_get("hud_shop");
-item[7, 9] = $d5a5b5;
+item[7, 8] = sprite_get("hud_shop1");
+item[7, 9] = $b2eaff;
 //Graduation Cap, ID 8
 item[8, 0] = "ACADEMIC CAP";
 item[8, 1] = "Happy Graduation!";
@@ -447,10 +455,10 @@ item[10, 2] = sprite_get("item_zetplush");
 item[10, 3] = 0;
 item[10, 4] = sprite_get("mini_zetplush");
 item[10, 5] = 10; // ID #
-item[10, 6] = "ORNATE NSPECIAL"; // ID #
+item[10, 6] = "FIREBALL NSPECIAL"; // ID #
 item[10, 7] = false;
-item[10, 8] = sprite_get("hud_shop1");
-item[10, 9] = $b2eaff;
+item[10, 8] = sprite_get("hud_shop4");
+item[10, 9] = $ff71d9;
 //Infinity Handle, ID 11
 item[11, 0] = "GODHEAD";
 item[11, 1] = "Ready to snap..."
@@ -503,7 +511,7 @@ item[15, 3] = 0;
 item[15, 4] = sprite_get("mini_pandora");
 item[15, 5] = 15;
 item[15, 6] = "CROUCH AMPS STRONGS";
-item[15, 7] = false; //disabled pending rework
+item[15, 7] = false;
 item[15, 8] = sprite_get("hud_shop2");
 item[15, 9] = $1818f9;
 // Mint Toothpaste, ID 16
@@ -515,8 +523,8 @@ item[16, 4] = sprite_get("mini_toothpaste");
 item[16, 5] = 16;
 item[16, 6] = "FROSTY UPTILT";
 item[16, 7] = false; //disabled pending rework
-item[16, 8] = sprite_get("hud_shop1");
-item[16, 9] = $b2eaff;
+item[16, 8] = sprite_get("hud_shop4");
+item[16, 9] = $ff71d9;
 // GotE Aldor Plushie, ID 17
 item[17, 0] = "ALDOR PLUSHIE";
 item[17, 1] = "Gamer on the edge!";
@@ -548,8 +556,8 @@ item[19, 4] = sprite_get("mini_buuuurger");
 item[19, 5] = 19;
 item[19, 6] = "BREAKFAST BURGERS";
 item[19, 7] = false; //disabled pending rework
-item[19, 8] = sprite_get("hud_shop1");
-item[19, 9] = $b2eaff;
+item[19, 8] = sprite_get("hud_shop4");
+item[19, 9] = $ff71d9;
 //Letterman Jacket, ID 20
 item[20, 0] = "LETTERMAN JACKET";
 item[20, 1] = "Aether High Class of '19"
@@ -581,8 +589,8 @@ item[22, 4] = sprite_get("mini_key");
 item[22, 5] = 22;
 item[22, 6] = "FSPECIAL AERIAL SLAM";
 item[22, 7] = false; //disabled pending rework
-item[22, 8] = sprite_get("hud_shop1");
-item[22, 9] = $b2eaff;
+item[22, 8] = sprite_get("hud_shop4");
+item[22, 9] = $ff71d9;
 //Nintendo Switch, ID 23
 item[23, 0] = "DEFINITIVE ADDITION";
 item[23, 1] = "On the go!"
@@ -613,9 +621,9 @@ item[25, 3] = 0;
 item[25, 4] = sprite_get("mini_enternt");
 item[25, 5] = 25;
 item[25, 6] = "MULTIHIT BAIR";
-item[25, 7] = true;
-item[25, 8] = sprite_get("hud_shop");
-item[25, 9] = $d5a5b5;
+item[25, 7] = false;
+item[25, 8] = sprite_get("hud_shop4");
+item[25, 9] = $ff71d9;
 // F for Fornace, ID 26
 item[26, 0] = "Game made by Dan Fornace"
 item[26, 1] = "OK";
@@ -625,5 +633,16 @@ item[26, 4] = sprite_get("mini_f");
 item[26, 5] = 26;
 item[26, 6] = "OK";
 item[26, 7] = false;
-item[26, 8] = sprite_get("hud_shop1");
-item[26, 9] = $b2eaff;
+item[26, 8] = sprite_get("hud_shop4");
+item[26, 9] = $ff71d9;
+// smasher soap, ID 27
+item[27, 0] = "SMASHING SOAP"
+item[27, 1] = "(Inedible)";
+item[27, 2] = sprite_get("item_soap");
+item[27, 3] = 0;
+item[27, 4] = sprite_get("mini_soap");
+item[27, 5] = 27;
+item[27, 6] = "BUBBLY FTILT";
+item[27, 7] = true; //false
+item[27, 8] = sprite_get("hud_shop"); //4
+item[27, 9] = $d5a5b5; //$ff71d9;

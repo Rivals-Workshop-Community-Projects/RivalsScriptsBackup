@@ -10,7 +10,7 @@ if (attack == AT_DSPECIAL){
 		item[6, 1] = "AMICUS MEUS";
 		item[6, 2] = sprite_get("item_food2");
 		item[6, 6] = "yNLYeLR4K20";
-	} else if(lordBagel && !tidePods && !bagelEaten){
+	} else if(lordBagel && !tidePods && !bagelEaten && has_rune("I")){
 		breakfastVar = 3;
 		item[6, 0] = "CURSED BAGEL";
 		item[6, 1] = "It's unlucky!";

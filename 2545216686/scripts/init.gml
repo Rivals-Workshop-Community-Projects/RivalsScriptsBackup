@@ -14,6 +14,11 @@ entereddashstop = false //This checks to see if Tails entered Dash Stop so this 
 
 didwavedash = 0 //Checks to see if Tails wavedashed.
 
+//Intro stuff
+introTimer = -4;
+//setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
+introTimer2 = -8;
+
 //Dash Attack
 
 tailsdattackvar = 0

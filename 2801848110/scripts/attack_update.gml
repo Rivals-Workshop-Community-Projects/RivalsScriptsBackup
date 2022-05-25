@@ -22,6 +22,7 @@ if (!attack_down and !ihatecstick) or window != 1 {
 }
 
 if has_hit_player && (hitpause) && timeflow >= 100 && special_pressed && RCing == 0 && !projecting{
+	move_cooldown[AT_UTHROW] = 15
 	djumps = 0
 	move_cooldown[AT_NSPECIAL_2] = 10
 	move_cooldown[AT_EXTRA_2] = 30
@@ -152,6 +153,7 @@ switch attack {
 
 	    if window == 1 && window_timer == 1 && !hitpause {
 	    	timeflow -= 100
+	    	move_cooldown[AT_UTHROW] = 15
         	sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.2)
         	sound_play(asset_get("sfx_forsburn_split"),false,noone,1,1)
         	
@@ -159,7 +161,6 @@ switch attack {
         
         if window == 1 && window_timer == 15 && !hitpause {
         	y -= 5
-        	move_cooldown[AT_UTHROW] = 15
         	hsp = 10*spr_dir
         	sound_play(asset_get("sfx_clairen_dspecial_counter_success"),false,noone,1,.8)
         	projectx = x - 10*spr_dir
@@ -307,6 +308,7 @@ switch attack {
 	break;
 	
 	case AT_NSPECIAL_2:
+	can_fast_fall = false 
 	  if window == 1 && window_timer == 1 && !hitpause {
 	      sound_play(asset_get("sfx_absa_concentrate"),false,noone,1,1.4)
 	      sound_play(asset_get("sfx_bird_downspecial"),false,noone,.9,1.2)
@@ -335,8 +337,8 @@ switch attack {
 	  	  }
 	  	  if window_timer == 1 && !hitpause {
 	  	  	create_hitbox(AT_USPECIAL,3,x,y - 30)
-	  	  x += upbhsp*18
-	  	  y += upbvsp*18
+	  	  x += upbhsp*15
+	  	  y += upbvsp*15
 	  	  sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.9,1.2)
 	  	  hsp = upbhsp 
 	  	  vsp = upbvsp 

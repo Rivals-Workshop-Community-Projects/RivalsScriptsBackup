@@ -4,7 +4,7 @@ set_attack_value(AT_BAIR, AG_AIR_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 set_attack_value(AT_BAIR, AG_HURTBOX_AIR_SPRITE, sprite_get("bair_hurt"));
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 7);
 
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 3);
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);//10

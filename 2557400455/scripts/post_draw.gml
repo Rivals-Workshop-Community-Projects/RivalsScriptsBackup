@@ -3,10 +3,10 @@ shader_start();
 if crossout = 1 {    
     
    
-        draw_sprite_ext(sprite_get("crosshair"),  1 , crossx + 2 - random_func(3,4,true), crossy - 2 + random_func(8,4,true), 1 + (state_timer/200), 1 + (state_timer/200), state_timer*1.84, -1, 0.5)
+        draw_sprite_ext(sprite_get("crosshair"),  1 , crossx + 2 - random_func(3,4,true), crossy - 2 + random_func(8,4,true), 1 + (state_timer/180), 1 + (state_timer/180), state_timer*1.74, -1, 0.5)
    
-    draw_sprite_ext(sprite_get("crosshair"),  1 , crossx + 2 - random_func(3,4,true), crossy - 2 + random_func(8,4,true), 1 - (state_timer/300), 1 - (state_timer/300), state_timer*-2.76, -1, 0.5)
-    draw_sprite_ext(sprite_get("crosshair"),  (state_timer - 8)/(90/20) , crossx, crossy, 1, 1, 0, -1, state_timer/30 )
+    draw_sprite_ext(sprite_get("crosshair"),  1 , crossx + 2 - random_func(3,4,true), crossy - 2 + random_func(8,4,true), 1 - (state_timer/300), 1 - (state_timer/300), state_timer*-2.8, -1, 0.5)
+    draw_sprite_ext(sprite_get("crosshair"),  (state_timer - 8)/(70/20) , crossx, crossy, 1, 1, 0, -1, state_timer/30 )
 
 }
 

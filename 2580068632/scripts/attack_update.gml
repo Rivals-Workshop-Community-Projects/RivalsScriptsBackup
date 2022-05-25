@@ -1,16 +1,25 @@
 //Jab
 if (attack == AT_JAB){
+
+	if (inputs_swapped_toggle == false){
+		var buttonLetGo = (!attack_down);
+		var buttonHold = (attack_down);
+	} else if (inputs_swapped_toggle == true){
+		var buttonLetGo = (((!left_stick_down && spr_dir == -1)||(!right_stick_down && spr_dir == 1))||(!attack_down));
+		var buttonHold = (((left_stick_down && spr_dir == -1)||(right_stick_down && spr_dir == 1))||(attack_down));
+	}
+
 	if ((window < 6) && !hitpause && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
 	}
-	if (attack_down && window > 1 && window < 6){
+	if (buttonHold && window > 1 && window < 6){
 		if (window == 5){
 			if (window_timer == 5){
 				window = 2
 				window_timer = 0
 			}
 		}
-	} else if (!attack_down && window > 1 && window < 5){
+	} else if (buttonLetGo && window > 1 && window < 5){
 		window = 6
 		window_timer = 0
 		destroy_hitboxes();

@@ -101,7 +101,7 @@ if attack == AT_TAUNT {
 	    	with other {
 	    	hitbox_timer = -60	
             sound_stop(sound_get("RI")); 
-            sound_play(sound_get("RI")); 
+            sound_play(sound_get("RI"),false,noone,.75); 
             sound_play(sound_get("shot1"));
             shake_camera(4, 6)
             

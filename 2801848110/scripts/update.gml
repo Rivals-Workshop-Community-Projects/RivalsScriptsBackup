@@ -126,6 +126,7 @@ if state == PS_WAVELAND {
 
 
 //pause handle
+/*
 if attack != AT_USPECIAL {
 	
 with oPlayer {
@@ -172,7 +173,46 @@ with oPlayer {
 }
 
 }
+*/
+if attack != AT_USPECIAL {
+	
+with oPlayer {
+		if state_cat == SC_HITSTUN && !hitpause && hit_player_obj = other && (other.pausing = false or get_gameplay_time()%3 != 0){
+			beingpaused = false 
+			eld_hsp = hsp
+			eld_vsp = vsp
+			eld_x = x
+			eld_y = y
+		}
+		
+		if other.pausing == false or hit_player_obj != other or state_cat != SC_HITSTUN {
+			beingpaused = false 
+			if hit_player_obj == other {
+			eld_x = x
+			eld_y = y
+			eld_hsp = hsp
+			eld_vsp = vsp
+			}
+		}
+}
+	
+if pausing == true {
+	with oPlayer {
+		if state_cat == SC_HITSTUN && hit_player_obj = other && get_gameplay_time()%3 == 0 && free{
+			state_timer -= 1
+			x = eld_x - left_down*3 + right_down*3 
+			y = eld_y
+			hsp = eld_hsp
+			vsp = eld_vsp
+			old_hsp = eld_hsp
+			old_vsp = eld_vsp
+			beingpaused = true 
+		}
+	}
+}
 
+}
+//
 //
 
 if state == PS_PARRY  {

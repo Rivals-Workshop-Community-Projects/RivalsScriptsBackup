@@ -1187,8 +1187,14 @@ switch(attack){
 						}
 						if (window == 2) {
 							//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
+							
+							if (window_timer <= 2){
+							var pull_to_x = -10 * spr_dir;
+							var pull_to_y = 0;
+							} else {
 							var pull_to_x = -30 * spr_dir;
-							var pull_to_y = +10;
+							var pull_to_y = -10;
+							}
 							
 							//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
 							var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);

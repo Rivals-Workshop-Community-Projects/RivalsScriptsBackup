@@ -533,6 +533,8 @@ switch (attack) {
     	
     	SpamNeoGrabbedId = 0;
     	move_cooldown[AT_FSTRONG] = 90;
+    	move_cooldown[AT_DSTRONG] = 15;
+    	move_cooldown[AT_USTRONG] = 15;
     	
     	break;
     	

@@ -243,6 +243,13 @@ if(item[15, 3] == 1 && state == PS_CROUCH && crouchCounter < 100){
 	}
 }
 
+if(item[7, 3] == 0 && state == PS_DOUBLE_JUMP && state_timer == 1 && airCounter < 7){
+	airCounter++;
+}
+if(item[7, 3] == 0 && item[7, 7] == false && airCounter >= 7){
+	achieveUnlock(7);
+}
+
 if (crouchCounter > 90 && crouchCounter < 100){
 	spawn_hit_fx( x , y - 30 , 13 );
 	sound_play(asset_get("sfx_shovel_hit_med2"));
@@ -292,8 +299,8 @@ if(((state_cat == SC_AIR_NEUTRAL && prev_state == PS_PRATLAND) || (state_cat == 
 if((state_cat == SC_AIR_NEUTRAL && prev_state == PS_PRATLAND) && item[17, 3] == 0 && item[17, 7] == false){
 	achieveUnlock(17);
 }
-/*
-if(octaneTryUnlock){
+
+if(octaneTryUnlock && has_rune("I")){
 	if(octaneUnlockTimer > 0){
 		octaneUnlockTimer--;
 		if(state == PS_DOUBLE_JUMP){
@@ -305,7 +312,6 @@ if(octaneTryUnlock){
 		octaneUnlockTimer = 0;
 	}
 }
-*/
 
 if(state_cat == SC_AIR_NEUTRAL && prev_state == PS_ATTACK_GROUND && attack == AT_TAUNT && item[3, 3] == 1 && item[3, 7] == false && suitcaseLevel >= 9 && sandStage == 0){
 	achieveUnlock(3);
@@ -322,7 +328,7 @@ if(PS_SPAWN){
 			other.name = get_char_info(player, INFO_STR_NAME);
 		}
 	}
-	if (string_count("sai", string_lower(name)) > 0 && item[15, 3] == 0 && item[15, 7] == false ) {
+	if ((string_count("katie", string_lower(name)) > 0 || string_count("sai", string_lower(name))) > 0 && item[15, 3] == 0 && item[15, 7] == false ) {
 		if(state_timer == 1){
 			pandoraIntro = true;
 		} else if (state_timer == 88){
@@ -334,11 +340,11 @@ if(PS_SPAWN){
 
 //intro stuff
 if(get_player_color(player) == 7){
-	abyssIntro = true;
+	arizonaIntro = true;
 } else if(get_player_color(player) == 8){
 	gameboyIntro = true;
 } else if(get_player_color(player) == 13){
-	arizonaIntro = true;
+	abyssIntro = true;
 } else if(get_player_color(player) == 14){
 	halloweenIntro = true;
 } else if (get_player_color(player) == 15){
@@ -447,6 +453,18 @@ if(abyssIntro){
 
 if(state == PS_SPAWN && state_timer == 8){
 	keyboard_string = "";
+	if has_rune("I"){
+		item[0, 7] = true;
+		item[10, 7] = true;
+		item[16, 7] = true;
+		//item[22, 7] = true;
+		item[25, 7] = true;
+		
+	}
+	if has_rune("F"){
+		item[26, 7] = true;
+	}
+		
 	switch(get_player_color(player)){
 		case 6:
 			achTrophy = hit_fx_create(sprite_get("achievement1"), 60);
@@ -461,25 +479,6 @@ if(state == PS_SPAWN && state_timer == 8){
 			set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 4);
 			set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 			break;
-		/*case 13:
-			if(item[16, 3] == 0){
-				item[16, 3] = 1;
-				item[16, 7] = false;
-				applyItem(16);
-				updateItempool();
-				suitcaseLevel++;
-			}
-			break;
-		case 14:
-			if(item[3, 3] == 0){
-				item[3, 3] = 1;
-				item[3, 7] = false;
-				applyItem(3);
-				updateItempool();
-				suitcaseLevel++;
-			}
-			break;
-		*/
 		case 15:
 			introTimer = -4;
 			if(!item[10, 7]){
@@ -596,21 +595,23 @@ if(!practice && get_match_setting(SET_STOCKS) != 0 && (item[11, 3] == 0) && (ite
 }
 */
 
-if (instance_exists(crysProj_id) && crysProj_id != noone){
-    if (crysProj_timer == 0){
-        var inst = create_hitbox( AT_NSPECIAL, 1, crysProj_id.x, crysProj_id.y );
-        inst.hitbox_timer = crysProj_id.hitbox_timer;
-		inst.vsp = crysProj_id.vsp;
-		inst.spr_dir = crysProj_id.spr_dir;
-		inst.img_spd = crysProj_id.img_spd;
-        inst.hsp = crysProj_id.hsp;
+if(nspecIsFireball == false){
+	if (instance_exists(crysProj_id) && crysProj_id != noone){
+		if (crysProj_timer == 0){
+			var inst = create_hitbox( AT_NSPECIAL, 1, crysProj_id.x, crysProj_id.y );
+			inst.hitbox_timer = crysProj_id.hitbox_timer;
+			inst.vsp = crysProj_id.vsp;
+			inst.spr_dir = crysProj_id.spr_dir;
+			inst.img_spd = crysProj_id.img_spd;
+			inst.hsp = crysProj_id.hsp;
 
-        crysProj_id.destroyed = true;
-        
-        crysProj_id = noone;
-    } else {
-        crysProj_timer -= 1;
-    }
+			crysProj_id.destroyed = true;
+			
+			crysProj_id = noone;
+		} else {
+			crysProj_timer -= 1;
+		}
+	}
 }
 
 if (faucetShards == true){

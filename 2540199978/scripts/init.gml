@@ -126,7 +126,8 @@ tutDoneAdv = array_create(1, 0);
 transcounter = 0;
 
 // nspec charge
-nspecChargeMax = 100;
+nspecIcicles = has_rune("G")?10:5;
+nspecChargeMax = nspecIcicles*20;
 nspecCharge = 0;
 nspecFree = false;
 nspecFiring = 0;

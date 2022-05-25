@@ -202,6 +202,10 @@ switch (state){
     sprite_index = sprite_get(string(spr_dir) + "_bighurt");
     break;
     
+    case PS_FROZEN:
+    sprite_index = sprite_get(string(spr_dir) + "_bighurt");
+    break;
+    
     default:
     break;
 }

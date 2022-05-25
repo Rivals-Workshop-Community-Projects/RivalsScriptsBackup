@@ -64,7 +64,7 @@ if "col" in self {
 	
 	with oPlayer {
 		if "beingpaused" in self  {
-			if beingpaused == true  && pausedtime > 0 {
+			if beingpaused == true {
 			with other {
                 trifx = spawn_hit_fx(other.x - 10 + random_func(2,21,true),other.y - 20 - 10 + random_func(3,21,true),tri)
                 trifx.draw_angle = random_func(1,361,true)

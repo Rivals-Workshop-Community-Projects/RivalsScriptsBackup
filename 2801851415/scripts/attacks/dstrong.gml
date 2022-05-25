@@ -14,7 +14,7 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_ice_nspecial_hit_ground"));
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
@@ -48,5 +48,5 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, frost_fx);
-set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ice_nspecial_hit_ground"));
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_icehit_heavy2"));
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 6);

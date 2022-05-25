@@ -22,12 +22,22 @@ if(attack == AT_UTILT){
 	
 	if (window <= 4){
 		if(item[23, 3] == 1){
+			var joyconDriftMod = 0;
+
+			if(joy_pad_idle == false){
+				if(joy_dir <= 225 && joy_dir >= 135){
+					joyconDriftMod = -0.25;
+				} else if(joy_dir <= 45 || joy_dir >= 315){
+					joyconDriftMod = 0.25;
+				}
+			}
+
 			set_attack_value(AT_UTILT, AG_OFF_LEDGE, 1);
-			if(!free && abs(hsp) < 5){
-				hsp += (spr_dir * -0.5);
+			if(!free && abs(hsp) < 6){
+				hsp += (spr_dir * -0.5) + joyconDriftMod;
 			}
 			//if uptilt continues off ledge due to joycon drift, increase drift speed
-			if(free && abs(hsp) < 5){
+			if(free && abs(hsp) < 6){
 				hsp = hsp - spr_dir;
 			}
 		} else {
@@ -123,10 +133,51 @@ if(attack == AT_DSTRONG){
 }
 
 if(attack == AT_FTILT){
-	if(window == 1 && window_timer == 4 && crouchCounter >= 100){
-		window = 5;
-		window_timer = 0;
+	if(window == 1 && window_timer == 4){
+		if(crouchCounter >= 100){
+			window = 5;
+			window_timer = 0;
+		} else if (item[27, 3] == 1){
+			for(var b = 5; b < (5 + numSuds); b++){
+				set_num_hitboxes(AT_FTILT, b);
+				var randBub = random_func(0, b, true);
+
+				set_hitbox_value(AT_FTILT, b, HG_HITBOX_TYPE, 2);
+				set_hitbox_value(AT_FTILT, b, HG_WINDOW, 4);
+				set_hitbox_value(AT_FTILT, b, HG_WINDOW_CREATION_FRAME, 1 + (b - 5));
+				set_hitbox_value(AT_FTILT, b, HG_LIFETIME, 45 + random_func(1, 15, true));
+				set_hitbox_value(AT_FTILT, b, HG_HITBOX_X, 30 + (randBub));
+				set_hitbox_value(AT_FTILT, b, HG_HITBOX_Y, -32 + randBub - 5);
+				set_hitbox_value(AT_FTILT, b, HG_WIDTH, 32);
+				set_hitbox_value(AT_FTILT, b, HG_HEIGHT, 32);
+				set_hitbox_value(AT_FTILT, b, HG_PRIORITY, 1);
+				set_hitbox_value(AT_FTILT, b, HG_DAMAGE, 1);
+				set_hitbox_value(AT_FTILT, b, HG_ANGLE, 90);
+				//set_hitbox_value(AT_FTILT, b, HG_ANGLE_FLIPPER, 5);
+				set_hitbox_value(AT_FTILT, b, HG_BASE_KNOCKBACK, 3);
+				set_hitbox_value(AT_FTILT, b, HG_HIT_LOCKOUT, 2);
+				set_hitbox_value(AT_FTILT, b, HG_HIT_SFX, asset_get("sfx_bubblepop"));
+				set_hitbox_value(AT_FTILT, b, HG_VISUAL_EFFECT, bubblpop);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_SPRITE, sprite_get("proj_bubbl"));
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_MASK, sprite_get("proj_bubbl"));
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_ANIM_SPEED, .14);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_HSPEED, (b / 2) + (random_func(2, 6, true) / 3));
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_VSPEED, -1.5);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_GRAVITY, 0);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_AIR_FRICTION, 0.15 + (randBub / 100));
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_DESTROY_EFFECT, bubblpop);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_PARRY_STUN, 1);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+			}
+		}
 	}
+	
+	if (window == 4 && item[27, 3] == 1){
+		move_cooldown[AT_FTILT] = sudsCooldown;
+	}
+	
 	if (window == 5){
 		if (window_timer == 8 && !hitpause){
 			sound_play(asset_get("sfx_ori_energyhit_heavy"));
@@ -152,7 +203,7 @@ if(attack == AT_FTILT){
 if(attack == AT_NAIR){
 	if(item[2, 3] == 1){
 	
-		if(window == 2 && (window_timer < get_window_value(AT_NAIR,2,AG_WINDOW_LENGTH)) || (window == 1 && window_timer > 4)){
+		if(window == 2 && (window_timer < get_window_value(AT_NAIR,2,AG_WINDOW_LENGTH))){
 			nairbounce = true;
 		} else {
 			nairbounce = false;
@@ -164,10 +215,13 @@ if(attack == AT_NAIR){
 			set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 		}
 			
-		if(!free && window == 2){
+		if(window == 2 && !free){
+			thingDo = false;
 			has_airdodge = nairbounceDodgeCheck;
 			djumps = nairbounceJumpCheck;
 			vsp -= nairbounceSpeed;
+			spawn_hit_fx( x , y , spit);
+			create_hitbox(AT_NAIR, 5, x, y);
 			sound_play(asset_get("sfx_swish_medium"));
 			if(has_hit_player && nairbounceHitCheck == false){
 				can_fast_fall = false;
@@ -181,6 +235,12 @@ if(attack == AT_NAIR){
 		}
 	}
 }
+
+if(attack == AT_BAIR && has_rune("N") && item[7, 3] == 1 && item[9, 3] == 1 && item[25, 3] == 1 && item[26, 3] == 1){
+	set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, sound_get("YEP_COCK"));
+	set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT, abyssbomb);
+	set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT_Y_OFFSET, -30);
+}
 	
 if (attack == AT_FSTRONG){
 	can_fast_fall = false;
@@ -188,6 +248,8 @@ if (attack == AT_FSTRONG){
 }
 
 if (attack == AT_NSPECIAL){
+
+	var fireballKB = 5;
 
 	if (window == 1){
 		if(window_timer == 1){
@@ -199,6 +261,9 @@ if (attack == AT_NSPECIAL){
     if (window == 2){
 		crystalHold++;
 		if(crystalHold % 20 == 0){
+			if(nspecIsFireball){
+				fireballKB++;
+			}
 			crysProj_tickDelay -= 2;
 			crysProj_shotSpeedBonus += 2;
 			spawn_hit_fx(x + (36 * spr_dir), y - 34, crysSmall);
@@ -206,6 +271,9 @@ if (attack == AT_NSPECIAL){
 		
         if (crystalHold == 40 || (!special_down && window_timer >= 4)){
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, crysProj_shotSpeedBase + crysProj_shotSpeedBonus);
+			if(nspecIsFireball){
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, fireballKB);
+			}
 			window = 3;
 			window_timer = 0;
 			crystalHold = 0;
@@ -528,7 +596,6 @@ if (attack == AT_DSPECIAL){
 					} else {
 						window = 3;
 						window_timer = 0;
-						spawn_hit_fx( x , y , buyFX);
 						item[ID_chosen, 3] = 1;
 						item[ID_chosen, 7] = false;
 						itemCredits--;
@@ -731,6 +798,10 @@ switch(attack){
 			shardVal++;
 			xp_mod = 1;
 			sound_play(asset_get("mfx_mm_coin_win"));
+			
+			itemsDisplayed[displaySlot] = item[0, 5];
+			burgerHUD = displaySlot;
+			displaySlot++;
 			break;
 		case 1:	//burger
 			set_num_hitboxes(AT_NSPECIAL, 2);
@@ -825,7 +896,7 @@ switch(attack){
 			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, poolparty);
 			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -5);
 			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -30);
-			set_hitbox_value(AT_NAIR, 1, HG_HIT_LOCKOUT, 5);
+			set_hitbox_value(AT_NAIR, 1, HG_HIT_LOCKOUT, 0);
 			set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 3);
 			set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 3);
 			set_hitbox_value(AT_NAIR, 2, HG_WINDOW_CREATION_FRAME, 3);
@@ -833,6 +904,26 @@ switch(attack){
 			set_hitbox_value(AT_NAIR, 3, HG_WINDOW_CREATION_FRAME, 6);
 			//set_hitbox_value(AT_NAIR, 4, HG_LIFETIME, 3);
 			//set_hitbox_value(AT_NAIR, 4, HG_WINDOW_CREATION_FRAME, 9);
+			
+			// hodan
+			set_num_hitboxes(AT_NAIR, 5);
+			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_TYPE, 1);
+			set_hitbox_value(AT_NAIR, 5, HG_LIFETIME, 1);
+			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_X, 0);
+			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_Y, -20);
+			set_hitbox_value(AT_NAIR, 5, HG_WIDTH, 120);
+			set_hitbox_value(AT_NAIR, 5, HG_HEIGHT, 60);
+			set_hitbox_value(AT_NAIR, 5, HG_SHAPE, 2);
+			set_hitbox_value(AT_NAIR, 5, HG_PRIORITY, 1);
+			set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 1);
+			set_hitbox_value(AT_NAIR, 5, HG_ANGLE, 361);
+			set_hitbox_value(AT_NAIR, 5, HG_BASE_KNOCKBACK, 4);
+			set_hitbox_value(AT_NAIR, 5, HG_BASE_HITPAUSE, 2);
+			set_hitbox_value(AT_NAIR, 5, HG_HITSTUN_MULTIPLIER, 1.5);
+			set_hitbox_value(AT_NAIR, 5, HG_TECHABLE, 1);
+			set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT, 6);
+			set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_hod_steamhit1"));
+			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_GROUP, 2);
 			
 			itemsDisplayed[displaySlot] = item[2, 5];
 			displaySlot++;
@@ -895,27 +986,40 @@ switch(attack){
 			break;
 		case 5:		//reg. badge
 			set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, (regBonusDmg + get_hitbox_value(AT_FTILT, 2, HG_DAMAGE)));
+			set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, regKBMod + get_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING));
 			set_hitbox_value(AT_FTILT, 4, HG_DAMAGE, (regBonusDmg + get_hitbox_value(AT_FTILT, 4, HG_DAMAGE)));
+			set_hitbox_value(AT_FTILT, 4, HG_KNOCKBACK_SCALING, regKBMod + get_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING));
 			set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, tada);
 			set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 304);
 			set_hitbox_value(AT_FTILT, 2, HG_EXTRA_CAMERA_SHAKE, 1);
 			
 			switch (regTracker){
 				case 0:
+					set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, (get_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME) - 2));
 					set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH) - 2));
 					GAUGE_EXP_CURRENT = GAUGE_EXP_CURRENT + 25;
+					numSuds = 3;
+					sudsCooldown = 10;
 					break;
 				case 1:
+					numSuds = 5;
+					sudsCooldown = 15;
 					break;
 				case 2:
+					set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, (get_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME) + 2));
 					set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH) + 2));
 					set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH) + 2));
 					set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH) + 2));
+					numSuds = 7;
+					sudsCooldown = 30;
 					break;
 				case 3:
+					set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, (get_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME) - 1));
 					set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH) - 1));
 					set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH) - 1));
 					set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH) - 1));
+					numSuds = 10;
+					sudsCooldown = 15;
 					break;
 			}
 			itemsDisplayed[displaySlot] = item[5, 5];
@@ -934,9 +1038,9 @@ switch(attack){
             outline_color = [ 0, 127, 0 ];
             init_shader();
             outline_color = [ 0, 0, 0 ]; //change outline color back to black in case the move gets interrupted
-			/*breakfastCount++;
+			breakfastCount++;
 			spitWindow = spitWindow + 3;
-			if((item[1, 3] == 1) && (item[19, 3] == 0) && (item[19, 7] == false)){
+			if((has_rune("I") && item[1, 3] == 1) && (item[19, 3] == 0) && (item[19, 7] == false)){
 				achieveUnlock(19);
 			}
 			if(item[19, 3] == 1 && breakfastCount < 10){
@@ -952,23 +1056,77 @@ switch(attack){
 				set_hitbox_value(AT_NSPECIAL, breakfastCount, HG_HITBOX_Y, -10);
 				set_hitbox_value(AT_NSPECIAL, breakfastCount, HG_HITBOX_GROUP, -1);
 			}
-			*/
 			break;
-		case 7:		//cactus
-			initial_dash_speed += 0.10;
-			if(item[25,3] == 1){
-				bairHSP--;
+		case 7:		//absa bair			
+			if(item[25, 3] == 1){
+				set_hitbox_value(AT_BAIR, 5, HG_PARENT_HITBOX, 5);
+				set_hitbox_value(AT_BAIR, 5, HG_HITBOX_TYPE, 1);
+				set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 2);
+				set_hitbox_value(AT_BAIR, 5, HG_WINDOW_CREATION_FRAME, 16);
+				set_hitbox_value(AT_BAIR, 5, HG_LIFETIME, 2);
+				set_hitbox_value(AT_BAIR, 5, HG_WIDTH, 88);
+				set_hitbox_value(AT_BAIR, 5, HG_HEIGHT, 46);
+				set_hitbox_value(AT_BAIR, 5, HG_PRIORITY, 8);
+				set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 8);
+				set_hitbox_value(AT_BAIR, 5, HG_ANGLE, 145);
+				set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 6.5);
+				set_hitbox_value(AT_BAIR, 5, HG_KNOCKBACK_SCALING, 0.75);
+				set_hitbox_value(AT_BAIR, 5, HG_BASE_HITPAUSE, 9.5);
+				set_hitbox_value(AT_BAIR, 5, HG_HITPAUSE_SCALING, 0.6);
+				set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT, 197);
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT_X_OFFSET, 32);
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT_Y_OFFSET, -32);
+				set_hitbox_value(AT_BAIR, 5, HG_ANGLE_FLIPPER, 0);
+				set_hitbox_value(AT_BAIR, 5, HG_HITBOX_GROUP, 2);
 			} else {
-				bairHSP++;
+				set_attack_value(AT_BAIR, AG_LANDING_LAG, 4);
+				
+				set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
+				set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED, -1);
+				set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 10);
+				
+				set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 4);
+				set_window_value(AT_BAIR, 2, AG_WINDOW_INVINCIBILITY, 0);
+				
+				set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 13);
+				
+				set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair1"));
+				
+				set_num_hitboxes(AT_BAIR, 2);
+
+				set_hitbox_value(AT_BAIR, 1, HG_WINDOW_CREATION_FRAME, 1);
+				set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 6);
+				set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 361);
+				set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
+				set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.4);
+				set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 5);
+				set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0);
+				set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
+				set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 0);
+				
+				set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 2);
+				set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
+				set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
+				set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 2);
+				set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, -62);
+				set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -28);
+				set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 10);
+				set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 10);
+				set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 8);
+				set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 12);
+				set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 145);
+				set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
+				set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 1);
+				set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 12);
+				set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 1);
+				set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+				set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 197);
+				set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
+				set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
+				set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 0);
+				set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, 0);
 			}
-			bairVSP--;
-			
-			set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 7);
-			set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 3);
-			set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 7);
-			set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .8);
-			set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .1 + get_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING));
-			
 			itemsDisplayed[displaySlot] = item[7, 5];
 			displaySlot++;
 			break;
@@ -984,9 +1142,28 @@ switch(attack){
 			displaySlot++;
 			break;
 		case 10:	//zet plush
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial3_proj"));
-			set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, symbiote);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, symbiote);
+			if(item[21, 3] != 1){
+				nspecIsFireball = true;
+				set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 60); // 27
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 1);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.1);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .5);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 3);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 16);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial3_proj"));
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 8);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
+			} else {
+				set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 1);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial3_proj"));
+			}
 			
 			itemsDisplayed[displaySlot] = item[10, 5];
 			displaySlot++;
@@ -1044,6 +1221,11 @@ switch(attack){
 			displaySlot++;
 			break;
 		case 14:	//down special
+			set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 0);
+			set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 0);
+			set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -26);
+			set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 72);
+			set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 68);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, shine);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -32);
 			set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zetter_shine"));
@@ -1115,10 +1297,25 @@ switch(attack){
 			break;
 			
 		case 21:	//sunny's collar
+		
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
-			
+			if(nspecIsFireball){
+				nspecIsFireball = false;
+				set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 150); // 27
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 2);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 3);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+				//set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, symbiote);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, .2);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+			}
+
 			itemsDisplayed[displaySlot] = item[21, 5];
 			displaySlot++;
 			break;
@@ -1134,16 +1331,20 @@ switch(attack){
 			
 		case 23:	//nintendo switch
 			set_attack_value(AT_UTILT, AG_CATEGORY, 2);
-			set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 4 + get_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH));
+			set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 6 + get_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH));
 			// set_window_value(AT_UTILT, 4, AG_WINDOW_SFX, sound_get("switch")); RCS no copyright
-			set_window_value(AT_UTILT, 4, AG_WINDOW_SFX_FRAME, 4 + get_window_value(AT_UTILT, 4, AG_WINDOW_SFX_FRAME));
+			set_window_value(AT_UTILT, 4, AG_WINDOW_SFX_FRAME, 6 + get_window_value(AT_UTILT, 4, AG_WINDOW_SFX_FRAME));
 			
 			set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 105);
-			set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, 3 + get_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME));
-			set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);
-			set_hitbox_value(AT_UTILT, 3, HG_WINDOW_CREATION_FRAME, 3 + get_hitbox_value(AT_UTILT, 3, HG_WINDOW_CREATION_FRAME));
-			set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, 3);
-
+			set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, 5 + get_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME));
+			set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 2);
+			set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, 0.1 + get_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING));
+			set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 1 + get_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE));
+			set_hitbox_value(AT_UTILT, 3, HG_WINDOW_CREATION_FRAME, 5 + get_hitbox_value(AT_UTILT, 3, HG_WINDOW_CREATION_FRAME));
+			set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, 2);
+			set_hitbox_value(AT_UTILT, 3, HG_KNOCKBACK_SCALING, 0.1 + get_hitbox_value(AT_UTILT, 3, HG_KNOCKBACK_SCALING));
+			set_hitbox_value(AT_UTILT, 3, HG_BASE_HITPAUSE, 1 + get_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE));
+			
 			itemsDisplayed[displaySlot] = item[23, 5];
 			displaySlot++;
 			break;
@@ -1218,28 +1419,52 @@ switch(attack){
 			set_hitbox_value(AT_BAIR, 4, HG_HITBOX_Y, -20);
 			set_hitbox_value(AT_BAIR, 4, HG_HITBOX_GROUP, -1);
 
-			set_hitbox_value(AT_BAIR, 5, HG_PARENT_HITBOX, 5);
-			set_hitbox_value(AT_BAIR, 5, HG_HITBOX_TYPE, 1);
-			set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 2);
-			set_hitbox_value(AT_BAIR, 5, HG_WINDOW_CREATION_FRAME, 16);
-			set_hitbox_value(AT_BAIR, 5, HG_LIFETIME, 2);
-			set_hitbox_value(AT_BAIR, 5, HG_HITBOX_X, -18);
-			set_hitbox_value(AT_BAIR, 5, HG_HITBOX_Y, -20);
-			set_hitbox_value(AT_BAIR, 5, HG_WIDTH, 88);
-			set_hitbox_value(AT_BAIR, 5, HG_HEIGHT, 46);
-			set_hitbox_value(AT_BAIR, 5, HG_PRIORITY, 1);
-			set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 9);
-			set_hitbox_value(AT_BAIR, 5, HG_ANGLE, 70);
-			set_hitbox_value(AT_BAIR, 5, HG_ANGLE_FLIPPER, 3);
-			set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 7);
-			set_hitbox_value(AT_BAIR, 5, HG_KNOCKBACK_SCALING, 0.5);
-			set_hitbox_value(AT_BAIR, 5, HG_BASE_HITPAUSE, 7);
-			set_hitbox_value(AT_BAIR, 5, HG_HITPAUSE_SCALING, 0.2);
-			set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, asset_get("sfx_icehit_medium2rev"));
-			set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT, symbioterev);
-			set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT_X_OFFSET, -32);
-			set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT_Y_OFFSET, -24);
-			set_hitbox_value(AT_BAIR, 5, HG_HITBOX_GROUP, 2);
+			if(item[7, 3] == 1){
+				set_hitbox_value(AT_BAIR, 5, HG_PARENT_HITBOX, 5);
+				set_hitbox_value(AT_BAIR, 5, HG_HITBOX_TYPE, 1);
+				set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 2);
+				set_hitbox_value(AT_BAIR, 5, HG_WINDOW_CREATION_FRAME, 16);
+				set_hitbox_value(AT_BAIR, 5, HG_LIFETIME, 2);
+				set_hitbox_value(AT_BAIR, 5, HG_WIDTH, 88);
+				set_hitbox_value(AT_BAIR, 5, HG_HEIGHT, 46);
+				set_hitbox_value(AT_BAIR, 5, HG_PRIORITY, 8);
+				set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 8);
+				set_hitbox_value(AT_BAIR, 5, HG_ANGLE, 145);
+				set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 6.5);
+				set_hitbox_value(AT_BAIR, 5, HG_KNOCKBACK_SCALING, 0.75);
+				set_hitbox_value(AT_BAIR, 5, HG_BASE_HITPAUSE, 9.5);
+				set_hitbox_value(AT_BAIR, 5, HG_HITPAUSE_SCALING, 0.6);
+				set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT, 197);
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT_X_OFFSET, 32);
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT_Y_OFFSET, -32);
+				set_hitbox_value(AT_BAIR, 5, HG_ANGLE_FLIPPER, 0);
+				set_hitbox_value(AT_BAIR, 5, HG_HITBOX_GROUP, 2);
+			} else {
+				set_hitbox_value(AT_BAIR, 5, HG_PARENT_HITBOX, 5);
+				set_hitbox_value(AT_BAIR, 5, HG_HITBOX_TYPE, 1);
+				set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 2);
+				set_hitbox_value(AT_BAIR, 5, HG_WINDOW_CREATION_FRAME, 16);
+				set_hitbox_value(AT_BAIR, 5, HG_LIFETIME, 2);
+				//set_hitbox_value(AT_BAIR, 5, HG_HITBOX_X, -18);
+				//set_hitbox_value(AT_BAIR, 5, HG_HITBOX_Y, -20);
+				set_hitbox_value(AT_BAIR, 5, HG_WIDTH, 88);
+				set_hitbox_value(AT_BAIR, 5, HG_HEIGHT, 46);
+				set_hitbox_value(AT_BAIR, 5, HG_PRIORITY, 1);
+				set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 9);
+				set_hitbox_value(AT_BAIR, 5, HG_ANGLE, 70);
+				set_hitbox_value(AT_BAIR, 5, HG_ANGLE_FLIPPER, 3);
+				set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 7);
+				set_hitbox_value(AT_BAIR, 5, HG_KNOCKBACK_SCALING, 0.5);
+				set_hitbox_value(AT_BAIR, 5, HG_BASE_HITPAUSE, 7);
+				set_hitbox_value(AT_BAIR, 5, HG_HITPAUSE_SCALING, 0.2);
+				set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, asset_get("sfx_icehit_medium2rev"));
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT, symbioterev);
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT_X_OFFSET, -32);
+				set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT_Y_OFFSET, -24);
+				set_hitbox_value(AT_BAIR, 5, HG_HITBOX_GROUP, 2);
+			}
+			
 
 
 			itemsDisplayed[displaySlot] = item[25, 5];
@@ -1248,6 +1473,16 @@ switch(attack){
 			
 		case 26:	//f key
 			itemsDisplayed[displaySlot] = item[26, 5];
+			displaySlot++;
+			break;
+		
+		case 27:	//gamer soap
+			set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 8);
+			set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 8);
+			set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_bubblespray"));
+			
+			itemsDisplayed[displaySlot] = item[27, 5];
+			burgerHUD = displaySlot;
 			displaySlot++;
 			break;
 		}
@@ -1271,7 +1506,7 @@ switch(attack){
 		//foodVoided = false;
 		/*breakfastCount++;
 		spitWindow = spitWindow + 3;
-		if((item[1, 3] == 1) && (item[19, 3] == 0) && (item[19, 7] == false)){
+		if((has_rune("I") && item[1, 3] == 1) && (item[19, 3] == 0) && (item[19, 7] == false)){
 			achieveUnlock(19);
 		}
 		if(item[19, 3] == 1 && breakfastCount < 10){
@@ -1318,7 +1553,8 @@ switch(attack){
 	if(item[5, 3] == 0){
 		if(numItemsAvailable <= 1){
 			regTracker = 3;
-			regBonusDmg = 3;
+			regBonusDmg = 4;
+			regKBMod = 0.15;
 			item[5, 0] = "EMERGENCY REG.";
 			item[5, 1] = "Tada! Barely made it!";
 			item[5, 2] = sprite_get("item_badge3");
@@ -1329,13 +1565,15 @@ switch(attack){
 			if(displaySlot <= 1){
 				regTracker = 0;
 				regBonusDmg = -2;
+				regKBMod = -0.05;
 				item[5, 0] = "EARLY REG. BADGE";
 				item[5, 1] = "Tada! Discount!";
 				item[5, 2] = sprite_get("item_badge0");
 				item[5, 4] = sprite_get("mini_badge0");
 			} else if (displaySlot >= 2 && displaySlot <= 4){
 				regTracker = 1;
-				regBonusDmg = 2;
+				regBonusDmg = 1;
+				regKBMod = 0.05;
 				item[5, 0] = "REGISTRATION BADGE";
 				item[5, 1] = "Tada!";
 				item[5, 2] = sprite_get("item_badge1");
@@ -1343,6 +1581,7 @@ switch(attack){
 			} else {
 				regTracker = 2;
 				regBonusDmg = 3;
+				regKBMod = 0.1;
 				item[5, 0] = "LATE REG. BADGE";
 				item[5, 1] = "Tada! Kept 'em waiting!";
 				item[5, 2] = sprite_get("item_badge2");

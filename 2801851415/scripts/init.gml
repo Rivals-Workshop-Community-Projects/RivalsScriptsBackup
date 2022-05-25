@@ -103,6 +103,7 @@ set_victory_theme(sound_get("Frostine_Victory_Theme"));
 debuff_fx = hit_fx_create(sprite_get("ice_debuff"), 20)
 frost_fx = hit_fx_create(sprite_get("icefx"), 30);
 shatter = hit_fx_create(sprite_get("shatterfx"), 25)
+delta_fx = hit_fx_create(sprite_get("icehfx"), 25)
 //Sfx
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");

@@ -82,7 +82,7 @@ if(my_hitboxID.attack==AT_DAIR){
 
 // XP shard
 
-var article_times = my_hitboxID.damage;
+var article_times = my_hitboxID.damage + xp_mod;
 var spawnsShards = false;
 xp_test = 0;
 

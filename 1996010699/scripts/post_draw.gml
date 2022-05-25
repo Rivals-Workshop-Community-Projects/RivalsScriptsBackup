@@ -19,14 +19,14 @@ if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_DSPECIA
 		textDraw(x - 36 , y - 150, "fName", c_lime, 0, 1000, 1, true, 1, "Attack: Buy");
 		textDraw(x - 36 , y - 130, "fName", c_red, 0, 1000, 1, true, 1, "Special: Void");
 		//draw_debug_text(x - 50, y - 95, string(item[ID_chosen, 0]));
-		//draw_debug_text(x - 86, y - 65, string(item[ID_chosen, 6]));
-		textDraw(x - 86, y - 65, "fName", c_silver, 0, 1000, 1, true, 1, item[ID_chosen, 6]);
+		//draw_debug_text(x - 86, y - 65, string(item[ID_chosen, 6]));	
+		textDraw(x - 86, y - 65, "fName", c_silver, 0, 1000, 1, true, 1, item[ID_chosen, 6]); // ,6]
 	} else if(window == 3){
 		draw_sprite(itemSprite, 0, x - 55 , y - 75);
 		textDraw(x - 50, y - 96, "fName", itemFontColor, 0, 1000, 1, true, 1, item[ID_chosen, 0]);
 		textDraw(x , y - 112, "fName", c_orange, 0, 1000, 1, true, 1, string(itemCredits));
 		//draw_debug_text(x - 50, y - 95, string(item[ID_chosen, 0]));
-		textDraw(x - 86, y - 65, "fName", $b2ffc9, 0, 1000, 1, true, 1, item[ID_chosen, 6]);
+		textDraw(x - 86, y - 65, "fName", $b2ffc9, 0, 1000, 1, true, 1, (has_rune("I") ? item[ID_chosen, 1] : item[ID_chosen, 6]));
 		//draw_debug_text(x - 86, y - 65, string(item[ID_chosen, 6]));		//flavor text is x, 1... description is x,6
 	}
 }

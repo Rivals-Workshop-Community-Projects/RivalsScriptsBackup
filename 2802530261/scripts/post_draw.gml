@@ -1,9 +1,9 @@
 //post-draw
-if(attack == AT_NSPECIAL && window == 2 && charge >= 20){
+if(attack == AT_NSPECIAL && window == 2 && charge >= 20 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
     draw_sprite_ext(sprite_get(string(beam_sprite) + "_charging"), (charge = 90? ((state_timer) / 90 * 20) % 2 + 18: (charge / 90) * 17), x + (spr_dir = 1? 24: -62), y - (spr_dir = 1? 62: 64), 2, 2, 0, c_white, 1);
 }
 
-if(attack == AT_NSPECIAL && window == 2 && charge >= 90){
+if(attack == AT_NSPECIAL && window == 2 && charge >= 90 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
     gpu_set_fog(true, c_yellow, true, false);
     draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, (state_timer % 6 <= 2? 0.4: 0));
     gpu_set_fog(false, c_yellow, false, true);
@@ -11,15 +11,15 @@ if(attack == AT_NSPECIAL && window == 2 && charge >= 90){
     gpu_set_fog(false, c_yellow, false, true);
 }
 
-if(attack == AT_FSTRONG && window == 1 && window_timer >= 17){
+if(attack == AT_FSTRONG && window == 1 && window_timer >= 17 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
     draw_sprite_ext(sprite_get("2_charging"), (state_timer - 27) * 0.3, x + (spr_dir = 1? 22: -54), y - 50, 2, 2, 0, c_white, 1);
 }
 
-if(attack == AT_USTRONG && window == 1 && window_timer >= 11){
+if(attack == AT_USTRONG && window == 1 && window_timer >= 11 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
     draw_sprite_ext(sprite_get("2_charging"), (state_timer - 11) * 0.3, x + (spr_dir = 1? -22: -18), y - 104, 2, 2, 0, c_white, 1);
 }
 
-if(power_charge > 20 && attack == AT_DSPECIAL && window == 2){
+if(power_charge > 20 && attack == AT_DSPECIAL && window == 2 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
     draw_sprite_ext(sprite_get("power_charge"), (power_charge <= 100? ((power_charge - 20) / 80) * 13: (state_timer / 10) % 2 + 13), x, y + draw_y, 2, 2, 0, c_white, 1);
 }
 
@@ -47,7 +47,7 @@ if(attack == AT_BAIR && state == PS_ATTACK_AIR){
     }
 }
 
-if(attack == AT_USPECIAL && window == 1){
+if(attack == AT_USPECIAL && window == 1 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
     if(joy_dir >= -22.5 && joy_dir < 22.5) || (joy_dir >= 157.5 && joy_dir < 202.5){
         draw_sprite_ext(sprite_get("uspecial_arrow"), get_player_team(player - 1), x + 40 * spr_dir - 4, y - 40, 2, 2, (spr_dir = 1? 0: 180), c_white, 1);
     }else if(joy_dir >= 22.5 && joy_dir < 67.5) || (joy_dir >= 112.5 && joy_dir < 157.5){

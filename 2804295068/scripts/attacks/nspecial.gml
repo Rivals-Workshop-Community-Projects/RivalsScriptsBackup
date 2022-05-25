@@ -105,7 +105,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 75);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("splat3"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 1);

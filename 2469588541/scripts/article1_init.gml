@@ -45,7 +45,7 @@ if (!has_rune("M"))
     var i = 0;
     var noOfStars = _noOfStars;
     var deletedSmth = false;
-    with (asset_get("obj_article1")) if (player_id == other.player_id && !isDespawn && state != 2)
+    with (GetFarthestStar())
     {
         i += isBig+1;
 	    replacedCount = i;
@@ -64,4 +64,20 @@ if (!has_rune("M"))
     var i = 0;
     with (asset_get("obj_article1")) if (player_id == other.player_id && !isDespawn && state != 2) i += isBig+1;
     return i;
+}
+
+#define GetFarthestStar()
+{
+	var star = noone;
+	var starDist = -1;
+	with (asset_get("obj_article1")) if (player_id == other.player_id && state == 1 && !isDespawn)
+	{
+		var len = point_distance(x, y, player_id.x, player_id.y-floor(player_id.char_height/2));
+		if (star == noone || starDist < len)
+		{
+			star = self;
+			starDist = len;
+		}
+	}
+	return star;
 }

@@ -8,7 +8,10 @@ switch(get_player_color(player)){
 		draw_sprite_ext(sprite_get("css_premium"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
 		break;
 	case 7:
-		draw_sprite_ext(sprite_get("css_abyss"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
+		//textDraw(temp_x + 4, temp_y + 130, "fName", c_gray, 0, 1000, 1, true, 1, "Starting Item Disabled ");
+		shader_end();
+		draw_sprite_ext(sprite_get("css_rcs"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
+		//draw_sprite_ext(sprite_get("css_toothpaste"), 0, temp_x + 6, temp_y + 99, 1, 1, 0, c_gray, 0.69);
 		break;
 	case 8:
 		draw_sprite_ext(sprite_get("css_gb"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
@@ -20,10 +23,7 @@ switch(get_player_color(player)){
 		draw_sprite_ext(sprite_get("css_premium"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
 		break;
 	case 13:
-		//textDraw(temp_x + 4, temp_y + 130, "fName", c_gray, 0, 1000, 1, true, 1, "Starting Item Disabled ");
-		shader_end();
-		draw_sprite_ext(sprite_get("css_rcs"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
-		//draw_sprite_ext(sprite_get("css_toothpaste"), 0, temp_x + 6, temp_y + 99, 1, 1, 0, c_gray, 0.69);
+		draw_sprite_ext(sprite_get("css_abyss"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
 		break;
 	case 14:
 		draw_sprite(sprite_get("css_halloween"), 0, temp_x + 0, temp_y - 1 );
@@ -34,8 +34,10 @@ switch(get_player_color(player)){
 		draw_sprite_ext(sprite_get("css_seasonal"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
 		break;
 	case 15:
-		draw_sprite_ext(sprite_get("css_premium"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
 		draw_sprite(sprite_get("css_golden"), 0, temp_x + 0, temp_y - 1 );
+		shader_end();
+		draw_set_halign(fa_left);
+		draw_sprite_ext(sprite_get("css_premium"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
 		break;
 	case 18:
 		draw_sprite_ext(sprite_get("css_ranked"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);

@@ -2,7 +2,7 @@ set_attack_value(AT_UTILT, AG_CATEGORY, 2);
 set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("dtilt"));
 set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 12);
 set_attack_value(AT_UTILT, AG_OFF_LEDGE, 1);
-set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
+set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 
 //1
 set_window_value(AT_UTILT, 1, AG_WINDOW_TYPE, 1);

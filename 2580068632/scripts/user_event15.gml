@@ -181,13 +181,19 @@ Airdodging out of the move will also put you into special fall, even if you wave
 initImage_ext(spr_uspecial_muno, -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Dspecial: Meta Condor Dive");
-initWords("A dive downward. Has a shockwave hitbox when landing.
+initWords("A sharp dive downward. Has a shockwave hitbox when landing.
 The move can be canceled with a wall jump at any time and a doublejump/airdodge after diving for a bit.");
 initImage_ext(spr_dspecial_muno, -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Jab");
-initWords("You can repeatedly use Rapid Jab by holding the attack button. Let it go to do the Jab finisher.");
+initWords("Meta Knight will rapidly slash in front of him with his sword indefinitely if the attack button is held.
+If let go, Meta Knight will perform a finishing slash.");
 initImage_ext(spr_jab_muno, -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+
+initTip("Forward Tilt");
+initWords("In contrast to Meta Knight having a more... unique Jab, his Forward Tilt has functions similar to a Jab. Its a three-hit combo that is similar to his Overhead Slash and Meta Triple Slash techniques from his moveset in the Kirby games.
+In the event that you would feel more comfortable with having this as Jab, input Strong during the countdown to swap the inputs of Jab and Forward Tilt.");
+initImage_ext(spr_ftilt_muno, -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Meta Knight's Wings");
 initWords("When Meta Knight uses his doublejump, does USpecial or Dspecial, Meta Knight's cape turns into wings, which actually is reflected in some of his animations! This is purely cosmetic and doesn't affect gameplay, I just thought this was cool.");
@@ -230,6 +236,12 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.11", "20 May, 2022");
+initHeader("General");
+initSection("General
+~ Fixed the Jab and Forward Tilt input swap toggles not working with Tilt Stick.
+~ Added a tip for Forward Tilt in the MunoPhone. This tip also tells you that you can toggle swapping the inputs for Jab and Forward Tilt.");
 
 initPatch("1.10", "18 April, 2022");
 initHeader("General");

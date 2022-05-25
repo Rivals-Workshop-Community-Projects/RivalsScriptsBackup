@@ -23,7 +23,7 @@ if (currently_attacking
     }
 }
 
-// Charge dstrong if opponent is far
+// Charge dspecial if opponent is far
 if (currently_attacking
     && (attack == AT_DSPECIAL)
     && ((window == 2) || (window == 3)))

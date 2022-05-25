@@ -53,3 +53,10 @@ if attack != AT_TAUNT_2 && (state != 5 || state != 6) && window != 6{
     draw_sprite_ext(sprite_get("arrow"), 0, x, y - char_height - 22, 1, 1, 0, col_arrow, 1);
     draw_sprite_ext(sprite_get("chargemeter"), charge, x - 22, y - char_height - 30, 2, 2, 0, c_white, 1);
 }
+
+// Hat
+if get_player_color(player) == 29{
+    if wearing_hat && sprite_index == sprite_get("idle"){
+      draw_sprite_ext(sprite_get("crown"), image_index, x, y, 2 * spr_dir, 2, 0, -1, 1);
+    }
+}

@@ -1,14 +1,14 @@
 if ("practice" in self)
 {
-	if (menuState == 0 || !practice) for (var i = 4; i >= 0; --i)
+	if (menuState == 0 || !practice) for (var i = nspecIcicles-1; i >= 0; --i)
 	{
 		shader_start();
-		draw_sprite_ext(sprite_get("nspecialCharge"), 0, temp_x + 174 + i*6, temp_y - (((nspecCharge-10) > nspecChargeMax/5*(i+1))?8:4) + floor(tutAlpha*4)*2-8, 2, 2, 0, ((nspecCharge-10) > nspecChargeMax/5*(i+1))?IcicleColour(i):c_gray, tutAlpha);
+		draw_sprite_ext(sprite_get("nspecialCharge"), 0, temp_x + 204 + (i-nspecIcicles)*6, temp_y - (((nspecCharge-10) > nspecChargeMax/nspecIcicles*(i+1))?8:4) + floor(tutAlpha*4)*2-8, 2, 2, 0, ((nspecCharge-10) > nspecChargeMax/nspecIcicles*(i+1))?IcicleColour(i):c_gray, tutAlpha);
 		var article = noone;
 		with (obj_article1) if (player_id == other && returning && state != 3 && index == i+1) {article = self; break;}
 		var height = article==noone?0:article.state==0?1:article.state==1?article.state_timer/(article.idleTime-article.offsetTimer):0;
 		height = floor(height*12)/12;
-		if (height > 0) draw_sprite_part_ext(sprite_get("nspecialCharge"), 0, 0, 12*height, 8, 14,temp_x + 174 + i*6-3*2, temp_y - (((nspecCharge-10) > nspecChargeMax/5*(i+1))?8:4) + floor(tutAlpha*4)*2-8-7*2+(12*height*2), 2, 2, IcicleColour(i), tutAlpha);
+		if (height > 0) draw_sprite_part_ext(sprite_get("nspecialCharge"), 0, 0, 12*height, 8, 14,temp_x + 204 + (i-nspecIcicles)*6-3*2, temp_y - (((nspecCharge-10) > nspecChargeMax/nspecIcicles*(i+1))?8:4) + floor(tutAlpha*4)*2-8-7*2+(12*height*2), 2, 2, IcicleColour(i), tutAlpha);
 		shader_end();
 	}
 
@@ -20,7 +20,7 @@ if ("practice" in self)
 		switch (menuState)
 		{
 			default:
-				draw_debug_text(temp_x + 118, temp_y - 10 + floor(tutAlpha*4)*2-8, "Taunt~");
+				draw_debug_text(temp_x + 148 - nspecIcicles*6, temp_y - 10 + floor(tutAlpha*4)*2-8, "Taunt~");
 				break;
 			case 1:
 				AddText("Basic Tutorials");
@@ -232,6 +232,11 @@ if ("practice" in self)
 						AddText("FSpec Kick Angle 60 -> 80");
 						AddText("FSpec Kick KB 8+0.8 -> 8+0.4");
 						AddText("FSpec can now be jump cancelled on hit in endlag");
+						AddText("");
+						AddText("---------------------------");
+						AddText("v1.11.1 - 17 May 2022");
+						AddText("");
+						AddText("Added 4 runes");
 						break;
 				}
 				DrawTutorialBlock();

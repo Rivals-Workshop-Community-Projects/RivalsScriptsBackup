@@ -74,6 +74,8 @@ sprite_change_offset("uspecial_air",63, 79, true);      // Finished
 sprite_change_offset("dspecial",63, 79, true);          // Finished, Needs Air Anim
 sprite_change_offset("taunt",   63, 79, true);          // Finished
 
+sprite_change_offset("crown", 63, 79);
+
 sprite_change_offset("plat", 32, 47);                   // Finished
 
 sprite_change_offset("snowball_proj", 128, 128);
@@ -107,6 +109,8 @@ sprite_change_offset("vfx_small3", 126, 126);
 sprite_change_offset("vfx_med1", 126, 126);
 
 sprite_change_offset("vfx_large1", 126, 126);
+
+sprite_change_offset("vfx_crown", 126, 158);
 
 sprite_change_offset("ice_proj", 128, 186);
 

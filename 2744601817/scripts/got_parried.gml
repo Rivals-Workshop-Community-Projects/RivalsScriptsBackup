@@ -20,3 +20,7 @@ if (attack == AT_FSPECIAL && window >= 5
     vsp = 0;
     hsp = 0;
 }
+
+if (attack == AT_DATTACK){
+    dattack_jump = false;
+}

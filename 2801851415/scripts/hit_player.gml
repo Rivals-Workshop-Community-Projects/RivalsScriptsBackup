@@ -61,16 +61,16 @@ if(hit_player_obj.frostineFreeze)
     if(my_hitboxID.type != 2)
         hitstop += 2;
     hit_player_obj.hitstop += 2;
-    take_damage(hit_player_obj.player, player, ceil(get_hitbox_value(atk, hbox, HG_DAMAGE)*0.2));
+    take_damage(hit_player_obj.player, player, ceil(get_hitbox_value(atk, hbox, HG_DAMAGE)*0.5));
     spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-30, 29)
 }
-if(atk == AT_NSPECIAL && hbox == 2 || atk == AT_DSPECIAL_2 || atk == AT_DSPECIAL || atk == AT_USTRONG && hbox == 2) 
+if(atk == AT_NSPECIAL && hbox == 2 || atk == AT_DSPECIAL_2 || atk == AT_DSPECIAL || atk == AT_FSPECIAL && hbox == 2 || atk == AT_USTRONG && hbox == 2) 
 {
     if(!hit_player_obj.frostineFreeze)
     {
         sound_play(asset_get("sfx_infinidagger"), 0, noone, 2, 1)
-        fx = spawn_hit_fx(hit_player_obj.x,floor(hit_player_obj.y-char_height/2), frost_fx);
-        fx.depth = depth - 99;
+        fx = spawn_hit_fx(hit_player_obj.x,floor(hit_player_obj.y-char_height/2), delta_fx);
+        // fx.depth = depth - 99;
     }
     hit_player_obj.frostineTimerStart = get_gameplay_time();
     hit_player_obj.frostineFreeze = true;
@@ -86,6 +86,9 @@ switch (atk) {
     break;
     case AT_NAIR: 
         sound_play(asset_get("sfx_icehit_heavy1"), 0, noone, .7, 1.2)
+    break;
+      case AT_DAIR: 
+        sound_play(asset_get("sfx_blow_heavy1"), 0, noone, .7, 1.2)
     break;
     case AT_DTILT: 
         //sound_play(asset_get("sfx_s"))
@@ -103,4 +106,12 @@ switch (atk) {
             sound_play(asset_get("sfx_infinidagger"), 0, noone, .7, 1)
         }
     break;
+	case AT_FSPECIAL:
+	case AT_USPECIAL:
+        if(hbox == 1)
+		    sound_play(asset_get("sfx_blow_heavy1"))
+	break;
+	case AT_FSTRONG:
+		    sound_play(asset_get("sfx_blow_heavy1"))
+	break;
 }

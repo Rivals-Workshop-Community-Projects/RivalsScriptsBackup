@@ -1,10 +1,9 @@
 far_up_attacks[0] = AT_UAIR;
 
 mid_side_attacks[0] = AT_DATTACK;
-mid_side_attacks[1] = AT_FSTRONG;
 
-close_up_attacks[0] = AT_USTRONG;
-close_up_attacks[1] = AT_UTILT;
+close_up_attacks[0] = AT_UTILT;
+close_up_attacks[1] = AT_DTILT;
 
 close_down_attacks[0] = AT_DSTRONG;
 close_down_attacks[1] = AT_DAIR;
@@ -16,7 +15,9 @@ close_side_attacks[2] = AT_FTILT;
 
 neutral_attacks[0] = AT_JAB;
 neutral_attacks[1] = AT_NAIR;
+neutral_attacks[2] = AT_NSPECIAL;
 
 ai_state = 0;
 waveshine = 0;
 topcustom = 0;
+cheatTracker = array_create(20, {isCheater:false, nextParry: false});

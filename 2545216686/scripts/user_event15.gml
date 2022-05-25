@@ -246,7 +246,17 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.6", "?? November, 2021");
+initPatch("1.7", "20 May, 2022");
+initHeader("General");
+initSection("~ Tails now has an intro animation.
+~ Added Palutena’s Guidance codec. For some reason, he had Sleep Kirby’s codec when I was porting over the MunoPhone Touch to him and I just forgot to change the codec. Oops.
+~ Certain attacks now move the hud arrow above him.");
+initHeader("Neutral Special (Energy Shot)");
+initSection("+ Can now be B Reversed in the air.");
+initHeader("Up Special (Flight)");
+initSection("~ Fixed Tilt Stick now allowing you to attack out of Up Special.");
+
+initPatch("1.6", "25 November, 2021");
 initHeader("General");
 initSection("~ Upgraded the MunoPhone to the MunoPhone Touch.
 + Max Air Speed: 5 -> 5.5
@@ -670,17 +680,16 @@ Spear IDs:
 // List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
 
 initCodecPit();
-initCodecPagePit(SPK_PIT,	3,	0,	"What's up with Kirby? Did you invite him over for a sleepover, Palutena?");
-initCodecPagePit(SPK_DPIT,	0,	0,	"Oh please. Next thing youll say is that youre already in your jammies.");
-initCodecPagePit(SPK_PIT,	7,	0,	"Very funny.");
-initCodecPagePit(SPK_PALU,	1,	0,	"Get it together, Pit.");
-initCodecPagePit(SPK_VIR,	5,	1,	"Sleep Kirby may look harmless, but he can still fight: and fight well, at that.");
-initCodecPagePit(SPK_PIT,	3,	0,	"Pssh, when did he ever do that in his games?");
-initCodecPagePit(SPK_VIR,	2,	6,	"Well, actually, Pit - believe it or not, the Sleep Ability actually has a moveset - too bad its relegated to a spin-off.");
-initCodecPagePit(SPK_PALU,	4,	1,	"Watch out for his Copy Essence or Nightcap: if he lands either of those, its lights out for you.");
-initCodecPagePit(SPK_PALU,	6,	5,	"Luckily, you can knock his star back at him with one of your melee attacks. And the nightcap only puts you to sleep when youre grounded, so stay in the air and you should be fine.");
-initCodecPagePit(SPK_DPIT,	0,	2,	"Am I gonna have to come over here and tuck you in for an early bedtime while I take care of this guy myself?");
-initCodecPagePit(SPK_PIT,	8,	2,	"I'll be the one to do that to you, right after I beat Kirby!");
+initCodecPagePit(SPK_PIT,	3,	0,	"Hey, look! It's Tails!");
+initCodecPagePit(SPK_VIR,	1,	1,	"Seems like Sonic's little Player 2 has finally gotten his way here.");
+initCodecPagePit(SPK_PIT,	0,	0,	"Since we both can fly, this'll be an interesting fight.");
+initCodecPagePit(SPK_PALU,	0,	2,	"You might be right on that. You're both packed to the brim for this battle.");
+initCodecPagePit(SPK_PALU,	0,	1,	"Tails can naturally fly, as you know, and also has a whopping IQ of 300, and he puts it to good use in making inventions.");
+initCodecPagePit(SPK_PALU,	0,	1,	"He can use a magical boxing glove, an explosive Ring Box, an electric arm cannon... and much more than that.");
+initCodecPagePit(SPK_PALU,	4,	1,	"Be careful of his Remote Robot. Let it get too close and youll get an explosion to the face. Slice it to pieces with normals!");
+initCodecPagePit(SPK_DPIT,	0,	0,	"The little brat also can fly after you with aerials one after the other. Seems like his kinda thing to do.");
+initCodecPagePit(SPK_DPIT,	0,	0,	"Hopefully he'll take you up to the skies with that grab of his and finish you off there.");
+initCodecPagePit(SPK_PALU,	1,	0,	"...just focus on hitting Tails with your melee attacks and you'll be fine.");
 
 /*
 EXPRESSIONS

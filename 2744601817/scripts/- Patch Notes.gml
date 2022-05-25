@@ -1,11 +1,24 @@
 /*
+-- V1.6 --
+
+Gameplay Changes:
+- Red Dattack startup reduced (12->10)
+- Blue Uair throw angle adjusted (90->100)
+
+Cosmetic Changes:
+- Blue Uair animation tweaked
+
+Bug Fixes:
+- Fixed being able to jump cancel dattack if you got parried
+
+
 -- V1.5 --
 
 Gameplay Changes:
 - Dattack now juggles the kunai instead of launching it forward
 - Blue damage has been lowered slightly
 - Blue Ustrong startup and endlag increased
-- Dattack is now techable (DI is less effective to compensate)
+- Dattack is now techable (DI is less effective to compensate and angles have been adjusted)
 - Charged Fspecial now puts you into parrystun
 
 Other Changes:

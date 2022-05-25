@@ -86,7 +86,7 @@ image_index = color;
 				case 0:
 			name = " 1: Eirlys";
 			var position = 0;
-			ColorPrev = make_color_rgb(20, 120, 0 );
+			ColorPrev = make_color_rgb(220, 66, 83 );
 			ColorNext = make_color_rgb(163, 185, 196 );
 			ColorNextNext = make_color_rgb(222, 44, 29);
 			if (path_position == 0 && path_scale == 0){
@@ -385,7 +385,7 @@ image_index = color;
 			var position = 27;
 			ColorPrev = make_color_rgb(235, 201, 201);
 			ColorNext = make_color_rgb(191, 10, 48 );
-			ColorNextNext = make_color_rgb(20, 120, 0);
+			ColorNextNext = make_color_rgb(220, 66, 83);
 			if (path_position == 20 && path_scale == 0){
 				path_position = 21;
 			}
@@ -395,7 +395,7 @@ image_index = color;
 			name = " 29: Heatwave";
 			var position = 28;
 			ColorPrev = make_color_rgb(180, 34, 36);
-			ColorNext = make_color_rgb(20, 120, 0 );
+			ColorNext = make_color_rgb(220, 66, 83 );
 			ColorNextNext = make_color_rgb(53, 58, 157);
 			if (path_position == 28 && path_scale == 0){
 				path_position = 0;

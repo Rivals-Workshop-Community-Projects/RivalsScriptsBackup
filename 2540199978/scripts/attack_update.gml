@@ -31,8 +31,8 @@ switch (attack)
         break;
 
     case AT_NSPECIAL:
-        ++nspecCharge;
-        if (nspecCharge%(15*nspecChargeMax/75)==0 && window < 3) sound_play(asset_get("sfx_ice_on_player"));
+        nspecCharge += has_rune("A")+1;
+        if (nspecCharge%(nspecChargeMax/nspecIcicles)==0 && window < 3) sound_play(asset_get("sfx_ice_on_player"));
         fall_through = down_down;
 		if (down_down && !freemd && !free) free = true;
         switch (window)
@@ -80,6 +80,7 @@ switch (attack)
                 nspecLeaderObj = noone;
                 break;
             case 2:
+                set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, max(nspecFiring*2,10));
                 if (window_timer == 1) nspecCharge = 0;
                 var angle = (window_timer-2)*7;
                 if (spr_dir == -1) angle = 180 - angle;
@@ -232,7 +233,7 @@ switch (attack)
                 break;
             case 3:
                 if (window_timer == 1 && has_hit_player)
-                    GiveCharge(2);
+                    GiveCharge(has_rune("B")?nspecIcicles:2);
                 if (flake.isOut && is_special_pressed(DIR_DOWN))
                 {
                     sound_play(asset_get("sfx_orca_snow_evaporate"));
@@ -428,7 +429,7 @@ switch (attack)
 {
 	var icicle = instance_create(_x, _y, "obj_article1");
 	icicle.angle = _angle;
-    icicle.returning = _nspecFiring==5;
+    icicle.returning = _nspecFiring>=5;
     icicle.offsetTimer = window_timer;
     if (nspecLeaderObj == noone) nspecLeaderObj = icicle;
     icicle.leaderObj = nspecLeaderObj;
@@ -464,7 +465,7 @@ switch (attack)
 
 #define GetNoOfIcicles()
 {
-    return clamp(floor((nspecCharge-10)/(nspecChargeMax/5)), 0, 5);
+    return clamp(floor((nspecCharge-10)/(nspecChargeMax/nspecIcicles)), 0, nspecIcicles);
 }
 
 #define Grab(xpos, ypos, xsmooth, ysmooth)
@@ -488,7 +489,7 @@ switch (attack)
     repeat(_stacks)
     {
         nspecCharge = max(nspecCharge, 11);
-        nspecCharge += nspecChargeMax/5;
+        nspecCharge += nspecChargeMax/nspecIcicles;
     }
 }
 

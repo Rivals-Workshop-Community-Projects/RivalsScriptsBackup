@@ -3,6 +3,9 @@ set_victory_theme( sound_get( "sonic" ));
 can_throw_bell = 0;
 chadRealLife = 0;
 
+ssl_debug_enabled = true; //togles template debug messages.
+ssl_advanced_debug_enabled = false; //togles advanced debug messages, only enable if you really want to know whats going on.
+
 fx_ringhit1 = hit_fx_create(sprite_get("ringexplode"), 10);
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");

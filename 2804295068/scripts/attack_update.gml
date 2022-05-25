@@ -78,7 +78,7 @@ if (attack == AT_DAIR){
         can_fast_fall = true
     }else{
 	    can_fast_fall = false
-		hsp = clamp(hsp, -3, 3);
+		hsp = clamp(hsp, -3.5, 3.5);
 	}
 	if (window == 3){
         can_wall_jump = true
@@ -159,7 +159,6 @@ if (attack == AT_NSPECIAL){
 	}
 	if (window == 1){
 		if (window_timer == 6){
-			move_cooldown[AT_NSPECIAL] = 60
 			//stored charges
 			if (nspecial_charge == 1){
 				window = 2
@@ -189,6 +188,7 @@ if (attack == AT_NSPECIAL){
 	    if (window_timer == 4){
 	        create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-15 );
 			sound_play (sound_get ("throw"));
+			move_cooldown[AT_NSPECIAL] = 60
 		}
 	    if (window_timer == 8){
             window = 13
@@ -204,6 +204,7 @@ if (attack == AT_NSPECIAL){
 	    if (window_timer == 3){
 		    create_hitbox( AT_NSPECIAL, 1, x-1*spr_dir, y-23 );
 			sound_play (sound_get ("throw"));
+			move_cooldown[AT_NSPECIAL] = 60
 		}
 	    if (window_timer == 4){
 	        create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-15 );
@@ -222,6 +223,7 @@ if (attack == AT_NSPECIAL){
 	    if (window_timer == 5){
 		    create_hitbox( AT_NSPECIAL, 1, x+35*spr_dir, y-19 );
 			sound_play (sound_get ("throw"));
+			move_cooldown[AT_NSPECIAL] = 60
 		}
 		if (window_timer == 3){
 		    create_hitbox( AT_NSPECIAL, 1, x-1*spr_dir, y-23 );
@@ -244,6 +246,7 @@ if (attack == AT_NSPECIAL){
 	    if (window_timer == 2){
 	    	create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-33 );
 			sound_play (sound_get ("throw"));
+			move_cooldown[AT_NSPECIAL] = 60
 		}
 		if (window_timer == 5){
 		    create_hitbox( AT_NSPECIAL, 1, x+35*spr_dir, y-19 );
@@ -269,6 +272,7 @@ if (attack == AT_NSPECIAL){
 	    if (window_timer == 1){
 		    create_hitbox( AT_NSPECIAL, 1, x+19*spr_dir, y-51 );
 			sound_play (sound_get ("throw"));
+			move_cooldown[AT_NSPECIAL] = 60
 		}
 		if (window_timer == 2){
 	    	create_hitbox( AT_NSPECIAL, 1, x+15*spr_dir, y-33 );
@@ -306,11 +310,11 @@ if (attack == AT_FSPECIAL){
 			vsp = min(vsp, 5);
 		}
 	    if (window_timer == 1){
-            if (bean_bomb_recharge >= 1800){
+            if (bean_bomb_recharge >= 900){
                 create_hitbox( AT_FSPECIAL, 1, x+20*spr_dir, y-36 );
 				sound_play (sound_get("bean_fire"));
 		        bean_bomb_recharge = 0
-	        } else if (bean_bomb_recharge < 1800){
+	        } else if (bean_bomb_recharge < 900){
 	        	sound_play (sound_get ("buzzer"));
 			}
         }
@@ -370,7 +374,7 @@ if (attack == AT_DSPECIAL){
 		}
         if (window_timer == 1){
             if (!exists){
-			    if (torchwood_recharge >= 1800){
+			    if (torchwood_recharge >= 900){
 				    if (!free){
                         instance_create(x + (spr_dir*60),y - 0,"obj_article1");
 					} else if (free){
@@ -378,7 +382,7 @@ if (attack == AT_DSPECIAL){
 					}
 					sound_play (sound_get ("plant"));
 				    torchwood_recharge = 0
-				} else if (torchwood_recharge < 1800){
+				} else if (torchwood_recharge < 900){
 				    sound_play (sound_get ("buzzer"));
 				}
 	    	} else {

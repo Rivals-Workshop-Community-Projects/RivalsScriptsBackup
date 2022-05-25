@@ -102,9 +102,13 @@ boom = false;
 bean_x = 0;
 bean_y = 0;
 bean_bomb_recharge = 0;
-torchwood_recharge = 900;
+torchwood_recharge = 0;
 timer = 0;
-
+kirbyability = 16
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 110;
 used_fs = false;
+
+//practice mode detector
+playtest = (object_index == oTestPlayer);
+practice_mode = false;

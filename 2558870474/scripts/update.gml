@@ -1,5 +1,23 @@
 //update
 // Online/Versus Mode Testing
+if get_player_color(player) == 29{
+	if wearing_hat == 1 {
+		if state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE {
+			wearing_hat = -1;
+			if get_player_color(player) == 29{
+				var newfx = spawn_hit_fx(x, y, fx_sprites[5]);
+			} else {
+				var newfx = spawn_hit_fx(x, y, fx_sprites[0]);
+			}
+			newfx.depth = depth-1;
+		}
+	} else if wearing_hat == -1 {
+		if state == PS_RESPAWN or state == PS_SPAWN {
+			wearing_hat = 1;
+		}
+	}
+}
+
 if get_gameplay_time() < 120 and futurechanges{
 	if jump_pressed{
 		clear_button_buffer(PC_JUMP_PRESSED);

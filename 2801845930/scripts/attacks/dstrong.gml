@@ -6,7 +6,7 @@ set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
 // Startup
 
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, sound_get("phone_pickedup"));

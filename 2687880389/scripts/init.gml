@@ -18,6 +18,7 @@ can_store_dspecial_charge = has_rune("H");
 //uspecial_rework = true; //has_rune("I"); // Remove
 //remap_specials = false; //has_rune("I"); // Remove
 //rune I desc="Old experimental tweaks to specials, will remove"
+energy_floor = has_rune("I");
 //rune I type="A"
 // tier 3
 hi_jump_kick = has_rune("L");
@@ -353,14 +354,15 @@ max_rocket_rising_speed = -5.5; // -6
 //rocket_seconds *= double_rocket_time ? 2 : 1;
 fuel_consumption_rate = 10; // 4 (doesn't matter since everything scales off of this)
 max_rocket_fuel = rocket_seconds * 60 * fuel_consumption_rate;
-var airborne_recovery_seconds = 4.5; // 3+(2/3);
-var grounded_recovery_seconds = 1.5; // 1+(3/8);
+pity_ratio = 0.3; // 1/5 1/4 1/8
+var airborne_recovery_seconds = energy_floor ? 4.5 * (1 + pity_ratio) : 4.5; // 3+(2/3);
+var grounded_recovery_seconds = energy_floor ? 2.0 * (1 + pity_ratio) : 2.0; // 1.5 1+(3/8);
 airborne_fuel_recovery_rate = max_rocket_fuel / (airborne_recovery_seconds * 60); //1.2 2
 grounded_fuel_recovery_rate = max_rocket_fuel / (grounded_recovery_seconds * 60); //3.2 3
 fuel_recovery_active = true;
 fuel_consumption_rate = double_rocket_time ? fuel_consumption_rate / 2 : fuel_consumption_rate;
-pity_fuel_amount = max_rocket_fuel / 5; // 4 8
-pity_available = true; // Only give pity energy once per airtime
+pity_fuel_amount = max_rocket_fuel * pity_ratio;
+//pity_available = true; // Only give pity energy once per airtime
 rocket_fuel = max_rocket_fuel;
 rocket_fuel_prev = rocket_fuel;
 //uspecial sound

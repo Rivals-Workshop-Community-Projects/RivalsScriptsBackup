@@ -1,4 +1,5 @@
 far_down_attacks[0] = AT_DAIR;
+far_down_attacks[1] = AT_DSPECIAL;
 
 far_side_attacks[0] = AT_DSPECIAL;
 //far_side_attacks[0] = AT_FSPECIAL;
@@ -21,6 +22,7 @@ close_down_attacks[0] = AT_DSTRONG;
 close_down_attacks[1] = AT_DAIR;
 close_down_attacks[2] = AT_DTILT;
 close_down_attacks[3] = AT_FSTRONG;
+close_down_attacks[4] = AT_DSPECIAL;
 
 close_side_attacks[0] = AT_FSTRONG;
 close_side_attacks[1] = AT_FAIR;

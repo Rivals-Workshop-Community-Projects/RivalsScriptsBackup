@@ -500,7 +500,7 @@ if (attack == AT_USPECIAL){
 
 
 if (attack == AT_USPECIAL_2) {
-	can_fast_fall = false;
+	can_fast_fall = true;
 	
 	if (window > 1) {
         can_wall_jump = true;

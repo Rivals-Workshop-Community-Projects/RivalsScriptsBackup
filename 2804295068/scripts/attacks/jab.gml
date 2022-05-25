@@ -78,7 +78,7 @@ set_hitbox_value(AT_JAB, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 2);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sound_get("splat2"));
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 303);

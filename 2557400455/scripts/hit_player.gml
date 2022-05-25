@@ -7,6 +7,36 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_HSPEED, 6 - random_func(1,12,true
 		move_cooldown[AT_EXTRA_2] = 15
 }
 
+if my_hitboxID.type == 1 && attack != AT_NSPECIAL {
+	if gun != 0 && move_cooldown[AT_FSPECIAL_2] = 0 {
+		
+		if gun == 1 {
+			bulletnum += 2
+			bulletnum = clamp(bulletnum,0,6)
+			sound_play(sound_get("gunload"),false,noone,.7,0.9)
+			load = spawn_hit_fx(x - 40*spr_dir,y - 56,302)
+			load.pause = 5
+		} 
+		
+		if gun == 2 {
+			bulletnum += 5
+			bulletnum = clamp(bulletnum,0,15)
+			sound_play(sound_get("gunload"),false,noone,.7,0.9)
+			load = spawn_hit_fx(x - 40*spr_dir,y - 56,302)
+			load.pause = 5
+		} 
+		
+		if gun == 3 {
+			bulletnum += 1
+			bulletnum = clamp(bulletnum,0,3)
+			sound_play(sound_get("gunload"),false,noone,.7,0.9)
+			load = spawn_hit_fx(x - 40*spr_dir,y - 56,302)
+			load.pause = 5
+		} 
+		
+		move_cooldown[AT_FSPECIAL_2] = 20
+	}
+}
 if my_hitboxID.attack == AT_FAIR {
     move_cooldown[AT_EXTRA_1] = 10
 }
@@ -25,7 +55,7 @@ if my_hitboxID.attack == AT_FSPECIAL{
     }
 
     if my_hitboxID.hbox_num == 4 {
-     sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone,1.2,0.8)
+     sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,1)
      move_cooldown[AT_EXTRA_3] = 16
     }
     
@@ -58,10 +88,14 @@ if my_hitboxID.type == 1 && my_hitboxID.sound_effect != asset_get("sfx_ori_energ
 	
 	
 	if my_hitboxID.attack == AT_EXTRA_1 {
-		move_cooldown[AT_EXTRA_1] = 5
+		move_cooldown[AT_EXTRA_1] = 2
 		set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_HSPEED, 6 - random_func(1,12,true));
         set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_VSPEED, 3 - random_func(2,12,true));
+	
+	if gun == 0 {
 		create_hitbox(AT_DSPECIAL,3,hit_player_obj.x, hit_player_obj.y - 20)
+	}
+	
 		sound_play(asset_get("sfx_leafy_hit1"))
 	}
 	

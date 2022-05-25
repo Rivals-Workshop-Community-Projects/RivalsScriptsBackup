@@ -12,7 +12,7 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 0);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 10);//12
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, has_rune("B") ? 15 : 7);

@@ -10,16 +10,16 @@ if(attack == AT_NSPECIAL){
 		}
 		player_id.move_cooldown[AT_NSPECIAL] = 10;
 		img_spd += (hitbox_timer / 50000);
-		if(hitbox_timer % 30 = 0){
+		if(hitbox_timer % 20 = 0){
 			makeShards(1);
 		}
-		if(free & hitbox_timer > 35){
+		if(free & hitbox_timer > 35 && player_id.nspecIsFireball == false){
 			img_spd += (hitbox_timer / 50000);
 			grav += (hitbox_timer / 2000);
 		}
 		if(!free){
 			if(player_id.item[21,3] == 1 && player_id.canCrystalBounce = true){
-				makeShards(2);
+				makeShards(3 + player_id.xp_mod);
 				grav = .2;
 				vsp = -4;
 				hsp /= 1.5;
@@ -29,7 +29,7 @@ if(attack == AT_NSPECIAL){
 				walls = 0;
 				player_id.canCrystalBounce = false;
 			} else {  
-				makeShards(2);
+				makeShards(2 + player_id.xp_mod);
 				player_id.faucetShards = true;
 				player_id.faucetShardx = x;
 				player_id.faucetShardy = y;
@@ -46,6 +46,25 @@ if(attack == AT_NSPECIAL){
 		if(!free){
 			destroyed = true;
 		}
+	}
+}
+
+if(attack == AT_FTILT && hbox_num >= 5){
+	if(player_id.joy_pad_idle == false && hitbox_timer % 1 == 0){
+		if(player_id.joy_dir <= 315 && player_id.joy_dir >= 225){
+			y++;
+		} else if(player_id.joy_dir <= 135 && player_id.joy_dir >= 45){
+			y--;
+		}
+		if(player_id.joy_dir <= 225 && player_id.joy_dir >= 135){
+			x--;
+		} else if(player_id.joy_dir <= 45 || player_id.joy_dir >= 315){
+			x++;
+		}
+	}
+	
+	if(hitbox_timer == length-1){
+		destroyed = true;
 	}
 }
 

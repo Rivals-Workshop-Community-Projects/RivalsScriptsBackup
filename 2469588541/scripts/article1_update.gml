@@ -56,11 +56,16 @@ switch (state)
         }
         else
         {
-            with (asset_get("obj_article1")) if (player_id == other.player_id && other != self && point_distance(x,y,other.x,other.y) < (isBig?32:16) && state == AS_IDLE)
+            with (asset_get("obj_article1")) if (player_id == other.player_id && other != self && state == AS_IDLE)
             {
-                var ang = point_direction(x,y,other.x,other.y);
-                other.hsp += lengthdir_x(0.5, ang);
-                other.vsp += lengthdir_y(0.5, ang);
+                var tempDist = point_distance(x,y,other.x,other.y);
+                if (tempDist < (isBig?32:16))
+                {
+                    var ang = point_direction(x,y,other.x,other.y);
+                    if (tempDist == 0 && other>id) ang+=180;
+                    other.hsp += lengthdir_x(0.5, ang);
+                    other.vsp += lengthdir_y(0.5, ang);
+                }
             }
         }
         break;

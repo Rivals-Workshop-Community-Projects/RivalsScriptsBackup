@@ -39,10 +39,21 @@ if ((my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1) || (my_hitbo
             SpamNeoGrabStartX = hit_player_obj.x;
             SpamNeoGrabStartY = hit_player_obj.y;
             SpamNeoGrabbedId = hit_player_obj.id;
-            SpamNeoGrabAngle = my_hitboxID.kb_angle;
+            
             SpamNeoGrabDmg = hit_player_obj.SpamNeoEnmDamage;
             SpamNeoGrabScaling = my_hitboxID.kb_scale;
-            SpamNeoGrabKB = my_hitboxID.kb_value;
+            if (my_hitboxID.attack == AT_DAIR) {
+                
+                SpamNeoGrabKB = my_hitboxID.kb_value * 1.2;
+                SpamNeoGrabAngle = 40;
+                
+            } else {
+                
+                SpamNeoGrabKB = my_hitboxID.kb_value;
+                SpamNeoGrabAngle = my_hitboxID.kb_angle;
+                
+            }
+            
             
             hit_player_obj.should_make_shockwave = false;
         }

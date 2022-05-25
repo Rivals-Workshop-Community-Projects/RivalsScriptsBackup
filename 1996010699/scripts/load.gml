@@ -44,7 +44,8 @@ sprite_change_offset("tech", 27, 52);
 
 sprite_change_offset("jab", 54, 100);
 sprite_change_offset("dattack", 32, 56);
-sprite_change_offset("ftilt", 24, 58);
+sprite_change_offset("ftilt", 49, 116);
+sprite_change_offset("ftilt1", 49, 116);
 sprite_change_offset("ftiltKT", 24, 58);
 sprite_change_offset("dtilt", 62, 104);
 sprite_change_offset("dtiltKT", 42, 42);
@@ -57,7 +58,7 @@ sprite_change_offset("fair", 24, 74);
 sprite_change_offset("bair", 84, 60);
 sprite_change_offset("bair1", 84, 60);
 sprite_change_offset("bair2", 84, 60);
-sprite_change_offset("uair", 46, 136);
+sprite_change_offset("uair", 46, 138);
 sprite_change_offset("dair", 26, 56);
 sprite_change_offset("fstrong", 77, 110);
 sprite_change_offset("ustrong", 26, 102);
@@ -83,6 +84,7 @@ sprite_change_offset("plat", 100, 138);
 sprite_change_offset("nspecial_proj", 18, 18);
 sprite_change_offset("nspecial2_proj", 28, 22);
 sprite_change_offset("nspecial3_proj", 18, 18);
+sprite_change_offset("proj_bubbl", 8, 8);
 sprite_change_offset("xpshards", 14, 14);
 sprite_change_offset("xpshards1", 14, 14);
 sprite_change_offset("xpshards2", 14, 14);
@@ -94,6 +96,7 @@ sprite_change_offset("hud_shop", 200, 80);
 sprite_change_offset("hud_shop1", 200, 80);
 sprite_change_offset("hud_shop2", 200, 80);
 sprite_change_offset("hud_shop3", 200, 80);
+sprite_change_offset("hud_shop4", 200, 80);
 sprite_change_offset("achievement", 9, 32);
 sprite_change_offset("achievement1", 9, 32);
 sprite_change_offset("item_mcdouble", 32, 32);
@@ -110,7 +113,7 @@ sprite_change_offset("item_carrot", 42, 32);
 sprite_change_offset("item_bamboo", 38, 32);
 sprite_change_offset("item_food2", 32, 32);
 sprite_change_offset("item_lordbagel", 36, 32);
-sprite_change_offset("item_pocketcactus", 32, 32);
+sprite_change_offset("item_horn", 32, 34);
 sprite_change_offset("item_gradcap", 32, 32);
 sprite_change_offset("item_glitch", 32, 32);
 sprite_change_offset("item_glitchm", 32, 32);
@@ -130,11 +133,12 @@ sprite_change_offset("item_faucet", 32, 32);
 sprite_change_offset("item_key", 34, 32);
 sprite_change_offset("item_switch", 32, 32);
 sprite_change_offset("item_enternt", 32, 32);
+sprite_change_offset("item_soap", 34, 34);
 
 //Item HUD
 sprite_change_offset("mini_gradcap", 16, 16);
 sprite_change_offset("mini_prizepurse", 16, 16);
-sprite_change_offset("mini_pocketcactus", 16, 16);
+sprite_change_offset("mini_horn", 16, 16);
 sprite_change_offset("mini_glitch", 16, 16);
 sprite_change_offset("mini_glitchm", 16, 16);
 sprite_change_offset("mini_badge0", 16, 16);
@@ -164,6 +168,7 @@ sprite_change_offset("mini_switch", 16, 16);
 sprite_change_offset("mini_faucet", 16, 16);
 sprite_change_offset("mini_enternt", 16, 16);
 sprite_change_offset("mini_f", 16, 16);
+sprite_change_offset("mini_soap", 16, 16);
 
 //Hit FX
 
@@ -178,11 +183,13 @@ sprite_change_offset("hit_fx_shine", 18, 27);
 sprite_change_offset("hit_fx_wheelspin", 47, 49);
 sprite_change_offset("hit_fx_taxiDir", 39, 42); 
 sprite_change_offset("hit_fx_snap", 57, 134);
+sprite_change_offset("hit_fx_bubbl", 8, 8);
 sprite_change_offset("sparkle", 7, 7); 
 sprite_change_offset("smokeXP", 7, 9); 
-sprite_change_offset("hit_fx_buy", 48, 162);
+sprite_change_offset("hit_fx_spit", 95, 58);
+sprite_change_offset("hit_fx_abyssbomb", 64, 64);
 
-//Katie Hit FX & VFX - Used with permission from Sydery
+//Katie Hit FX & VFX - Used with permission from SAI
 sprite_change_offset("smokeKT1", 32, 32);
 sprite_change_offset("smokeKT2", 16, 16);
 sprite_change_offset("smokeKT3", 16, 16);

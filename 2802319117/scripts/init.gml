@@ -17,7 +17,7 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 
 // Physical size
 char_height         = 52;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1;		// 0.9  -  1.2
+knockback_adj       = .9;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 2.25;		// 3    -  4.5

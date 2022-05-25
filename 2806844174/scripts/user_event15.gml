@@ -249,6 +249,10 @@ in a Patch.
 
 // other patches go here...
 
+initPatch("1.1", "May 22, 2022"); // (replace the date lol)
+initSection("Dspecial slash length reduced a bit.");
+initSection("Dspecial hitboxes on the two sides of the slash made smaller.");
+
 initPatch("1.0", "Today, 2022"); // (replace the date lol)
 initHeader("Existence");
 initSection("Existence has begun.");

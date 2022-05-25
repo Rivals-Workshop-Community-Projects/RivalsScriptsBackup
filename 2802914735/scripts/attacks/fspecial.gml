@@ -59,6 +59,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("greyaxe"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 12.5);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

@@ -3,6 +3,7 @@
 #macro AS_ADVANTAGE 1
 #macro AS_RECOVER 2
 
+DetectCheaters();
 ChangeStates();
 CheckRecover();
 AttackUpdate();
@@ -57,13 +58,14 @@ SetAttack();
 	{
 		case AS_ADVANTAGE:
 			ai_attack_time = aura?0:4;
+			if (upThrow > 0) HoldTowardsTarget();
 			break;
 		case AS_RECOVER:
 			ai_attack_time = 40;
 			if (state_cat != SC_HITSTUN) HoldTowardsStage();
 			break;
 		case AS_NEUTRAL:
-			ai_attack_time = 30;
+			ai_attack_time = 24;
 			break;
 	}
 
@@ -71,6 +73,10 @@ SetAttack();
 	{
 		switch (attack)
 		{
+			case 49:
+				right_down = sign(angle_difference(point_direction(x,y,ai_target.x,ai_target.y), fSmashAngle))==1;
+				left_down = !right_down;
+				break;
 			case AT_FTILT:
 			case AT_DATTACK:
 			case AT_FSPECIAL:
@@ -160,7 +166,7 @@ SetAttack();
 			{
 				joy_dir = ai_target.x>x?0:180;
 				HoldTowardsTarget();
-				if (waveshine==1) ReverseHold();
+				if (waveshine==1&&(ai_state==AS_ADVANTAGE||random_func(0,2,1))) ReverseHold();
 				joy_pad_idle = false;
 				if (!free) waveshine = 0;
 			}
@@ -173,10 +179,10 @@ SetAttack();
 	switch (ai_state)
 	{
 		case AS_RECOVER:
-			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && !aura)
+			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && !aura && abs(x-room_width/2)>300)
 			{
 				var stage_y = get_stage_data( SD_Y_POS );
-				if (y < ((stage_y >= 800)?topcustom:stage_y)+10)
+				if (y < ((stage_y >= 800)?topcustom:stage_y)+6)
 				{
 					DoAttack(AT_FSPECIAL);
 					move_cooldown[AT_USPECIAL] = max(2, move_cooldown[AT_USPECIAL]);
@@ -198,12 +204,16 @@ SetAttack();
 				var dist = point_distance(0, 0, xdist, ydist);
 				if (upThrow > 70 && move_cooldown[AT_DSPECIAL] == 0)
 					DoAttack(AT_DSPECIAL);
-				else if (upThrow > 40 && attack != AT_FSPECIAL_2)
-					DoAttack(AT_FSPECIAL);
+				else if (upThrow > 40)
+					DoAttack(StarCount()>=4?AT_UAIR:AT_FSPECIAL);
 				else if (ai_target.state_cat == SC_HITSTUN && dist < 300 && CloseToAStar())
 					DoAttack(AT_NSPECIAL);
-				else if (dist < 50 && state != PS_FIRST_JUMP && !ai_target.was_parried)
+				else if (dist < 70 && state != PS_FIRST_JUMP && !ai_target.was_parried)
 					DoAttack(AT_NSPECIAL);
+				else if (ai_state==AS_NEUTRAL && dist < 100 && !free && state != PS_FIRST_JUMP && !ai_target.was_parried)
+					DoAttack(AT_NSPECIAL);
+				else if (!free && ydist < 10 && xdist < 40)
+					DoAttack(AT_DSTRONG);
 				else if (ydist < 20 && xdist < 50)
 					DoAttack(AT_FSPECIAL);
 				else if (ydist < 40)
@@ -213,6 +223,8 @@ SetAttack();
 					else if (xdist < 90)
 						DoAttack(free?AT_FSPECIAL:AT_DATTACK);
 				}
+				else if (free && ydist < 60 && xdist < 40)
+					DoAttack(AT_UAIR);
 				else if (ydist < 80)
 					if (xdist < 20 && !free) DoAttack(AT_USTRONG);
 			}
@@ -367,12 +379,13 @@ SetAttack();
 			{
 				if (player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 				{
-					for (var i = 1; i <= get_num_hitboxes(attack); ++i)
+					var numWindows = get_num_hitboxes(attack);
+					for (var i = 1; i <= numWindows; ++i)
 					{
 						if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
 						{
 							var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
-							if (firstwindow > 0)
+							if (firstwindow == clamp(firstwindow, 1, numWindows))
 							{
 								var prevwindowlen = get_window_value(attack, firstwindow-1, AG_WINDOW_LENGTH);
 								var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);
@@ -415,4 +428,36 @@ SetAttack();
 #define GroundBelow()
 {
 	return collision_line(x,y,x,room_height,asset_get("par_block"),0,1) > 0;
+}
+
+#define DetectCheaters()
+{
+	if (aura) return;
+	{
+		with (oPlayer) if (id != other && temp_level!=0)
+		{
+			if (other.cheatTracker[player].isCheater)
+				other.aura = true;
+			else if (state == PS_PARRY)
+			{
+				if (state_timer > 0 && !(other.cheatTracker[player].nextParry || get_training_cpu_action() == CPU_PARRY))
+				{
+					other.cheatTracker[player].isCheater = true;
+					other.aura = true;
+				}
+			}
+			else
+				other.cheatTracker[player].nextParry = state == PS_PARRY_START;
+		}
+	}
+}
+
+#define StarCount()
+{
+    var noOfStars = 0;
+    with(asset_get("obj_article1")) if (player_id == other.id && state == 1)
+    {
+    	noOfStars += isBig+1;
+    }
+    return noOfStars;
 }

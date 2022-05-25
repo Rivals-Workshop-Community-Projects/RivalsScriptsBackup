@@ -8,16 +8,16 @@ can_wall_jump = true;
 }
 
 if (attack == AT_NSPECIAL){
-    move_cooldown[AT_NSPECIAL] = 35
+    move_cooldown[AT_NSPECIAL] = 30;
         }
     
 if (attack == AT_FSPECIAL){
-    move_cooldown[AT_FSPECIAL] = 45
+    move_cooldown[AT_FSPECIAL] = 45;
     can_fast_fall = false;
         }
         
 if (attack == AT_DSPECIAL){
-    move_cooldown[AT_DSPECIAL] = 20
+    move_cooldown[AT_DSPECIAL] = 20;
     can_fast_fall = false;
         }
 if (attack == AT_FSPECIAL && window == 3){
@@ -30,9 +30,11 @@ if (attack == AT_FSPECIAL && window == 3){
 if (attack == AT_DAIR && window == 3){
     can_shield = true;
     can_jump = true;
+
         }
         
-
+   if (attack == AT_DAIR && has_hit)
+   {move_cooldown[AT_DAIR] = 15;}
 
 
 

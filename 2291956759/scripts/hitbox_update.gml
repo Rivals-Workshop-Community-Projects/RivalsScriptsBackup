@@ -27,8 +27,8 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 	hsp /= 1.1
 	
 	if hitbox_timer == 1 {
-		vsp = player_id.hit_player_obj.vsp -3 + random_func(1, 6, true) 
-		hsp = player_id.hit_player_obj.hsp -3 + random_func(2, 6, true)
+		vsp = floor(player_id.hit_player_obj.vsp -3 + random_func(1, 6, true))
+		hsp = floor(player_id.hit_player_obj.hsp -3 + random_func(2, 6, true))
 	}
 	
 	
@@ -48,8 +48,8 @@ if attack == AT_NSPECIAL && hbox_num == 8{
    
    if player_id.attacking &&  player_id.attack == AT_NSPECIAL && window < 2{
    	hitbox_timer = 16
-   	x += (player_id.x - x) / 60
-	y += (player_id.y - 40 - y) / 60
+   	x += floor((player_id.x - x) / 60)
+	y += floor((player_id.y - 40 - y) / 60)
 	fall_through = true
 	if player_id.x - x < 0 {
 		hsp -= 0.6
@@ -65,8 +65,8 @@ if attack == AT_NSPECIAL && hbox_num == 8{
    }
    
    if player_id.inkshield > 0 {
-    x += (player_id.x - x) / 60
-	y += (player_id.y - y) / 60
+    x += floor((player_id.x - x) / 60)
+	y += floor((player_id.y - y) / 60)
 	fall_through = true
 	if player_id.x - x < 0 {
 		hsp -= 0.2

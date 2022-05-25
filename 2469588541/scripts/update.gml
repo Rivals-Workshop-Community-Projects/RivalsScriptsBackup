@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 25;
+	var noOfPatches = 27;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -102,7 +102,7 @@ else if (state == PS_LANDING_LAG && aura) set_state(PS_IDLE);
 // afterimage
 if (afterImageTimer > 0)
 {
-    afterImage[afterImageTimer-1]={sprite_index:sprite_index,image_index:image_index,x:x,y:y,spr_dir:spr_dir,alpha:10};
+    if (afterImageTimer % 2 == 0) afterImage[afterImageTimer-1]={sprite_index:sprite_index,image_index:image_index,x:x,y:y,spr_dir:spr_dir,alpha:10};
     afterImageTimer--;
 }
 for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0) afterImage[i].alpha--;

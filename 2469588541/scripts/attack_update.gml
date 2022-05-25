@@ -262,12 +262,12 @@ switch (attack)
             case 3:
                 if (window_timer <= 6)
                     vsp = 0;
+                LedgeSnap();
                 break;
 
             case 4:
-                if (window_timer == 8 && !free) hsp = -8*spr_dir;
-                can_jump = has_hit && !was_parried;
                 can_wall_jump = true;
+                LedgeSnap();
                 break;
         }
         break;

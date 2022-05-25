@@ -11,7 +11,7 @@ if (enable_munophone) {
 	rainbow_activate = phone_cheats[cheat_skittles];
 	if (rainbow_activate) {
 		rainbow_color = make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255);
-		set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color))
+		set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));
 	}
 	/*
 	rainbow_color
@@ -85,6 +85,9 @@ if (state == PS_WALL_JUMP) {
 		}
 		*/
 		//fuel_recovery_active = !uspecial_rework;
+		if (energy_floor) && (rocket_fuel < pity_fuel_amount) {
+			rocket_fuel = pity_fuel_amount;
+		}
 		/*if (!uspecial_rework) {
 			if (pity_available) {
 				rocket_fuel += pity_fuel_amount;
@@ -113,7 +116,10 @@ if (!free) {
 	//booster_rush_charges = max_booster_rush_charges;
 	//rocket_fuel = max_rocket_fuel;
 	fuel_recovery_active = true;
-	pity_available = true;
+	if (energy_floor) && (rocket_fuel < pity_fuel_amount) {
+		rocket_fuel = pity_fuel_amount;
+	}
+	//pity_available = true;
 }
 if (fuel_recovery_active) {
 	if (free) {

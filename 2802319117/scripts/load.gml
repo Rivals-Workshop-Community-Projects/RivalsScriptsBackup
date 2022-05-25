@@ -49,7 +49,6 @@ sprite_change_offset("phanto", 128, 174);
 
 sprite_change_offset("plat", 128, 174);
 
-set_victory_bg(sprite_get( "victorybg" ));
 
 sprite_change_offset("nspecial_proj", 128, 174);
 sprite_change_offset("big_hitfx", 128, 128);

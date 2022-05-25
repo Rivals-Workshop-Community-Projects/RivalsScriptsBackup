@@ -310,7 +310,7 @@ switch attack {
                crossy -= 5
            }
            
-           if state_timer < 98 && special_pressed {
+           if state_timer < 78 && special_pressed {
                crossout = 3
                spawn_hit_fx(crossx,crossy,13)
                spawn_hit_fx(crossx,crossy,15)
@@ -321,12 +321,12 @@ switch attack {
                sound_play(sound_get("shot1"),false,noone,0.7,.8)
            }
            
-           if state_timer > 98 {
+           if state_timer > 78 {
                sound_play(sound_get("shot1"),false,noone,0.6,0.7)
                sound_play(sound_get("gun3"),false,noone,1,0.8)
                
                create_hitbox(AT_DSPECIAL,2,crossx,crossy)
-               crossout = 3
+               crossout = 0
                shake_camera(6,6)
                spawn_hit_fx(crossx,crossy,chfx)
                spawn_hit_fx(x,y,lighten)

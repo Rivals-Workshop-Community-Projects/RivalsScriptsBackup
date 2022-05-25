@@ -2,6 +2,14 @@
 // Thank you Kirbo
 // OHOHOHOHOHO
 
+if get_player_color(player) == 29{
+	wearing_hat = 1;
+}
+
+//wearing_hat = (get_player_color(player) == 6 && get_match_setting(SET_SEASON) == 3);
+fx_sprites[5] = hit_fx_create(sprite_get("vfx_crown"), 30)	// Costume Toss
+
+
 // Adventure Mode
 am_is_water = true;
 am_is_verbal = true;

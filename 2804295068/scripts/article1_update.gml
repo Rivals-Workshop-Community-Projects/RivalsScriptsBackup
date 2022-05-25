@@ -202,7 +202,7 @@ if (x < -64 || x > (room_width + 64)){
 }
 
 //delete if 1 minute passes
-if (state_timer >= 3600){
+if (state_timer >= 1800){
 	state = 2
 	state_timer = 0
 }

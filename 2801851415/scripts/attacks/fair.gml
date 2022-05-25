@@ -60,7 +60,7 @@ set_window_value(AT_FAIR, 7, AG_WINDOW_ANIM_FRAME_START, 12);
 
 //recovery window, these should have whifflag if the move is a melee hitbox
 set_window_value(AT_FAIR, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FAIR, 8, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FAIR, 8, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FAIR, 8, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 8, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_FAIR, 8, AG_WINDOW_HAS_WHIFFLAG, true);
@@ -81,7 +81,8 @@ set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 270);//this is angle 45 hitting behind
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 4); //this is high knockback for an aerial
 //set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .2); //this is high scaling for an aerial
-set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 3); //4
+set_hitbox_value(AT_FAIR, 1, HG_EXTRA_HITPAUSE, 2); //4
+set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 2); //4
 // set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .3); //note: multihits should usually never have hitpause scaling
 //set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, hfx_explode);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 9); //2
@@ -103,7 +104,8 @@ set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 270);//this is angle 45 hitting behind
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 4); //this is high knockback for an aerial
 //set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .2); //this is high scaling for an aerial
-set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 3); //4
+set_hitbox_value(AT_FAIR, 2, HG_EXTRA_HITPAUSE, 2); //4
+set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 2); //4
 //set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .3); //note: multihits should usually never have hitpause scaling
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE_FLIPPER, 9); //2
 //set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, hfx_explode);

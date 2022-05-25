@@ -394,15 +394,15 @@ switch(attack){
 			var h_y = (-420*sin(degtorad(bubble_angle)))/12;
 			dfx.draw_angle = bubble_angle;
 			shake_camera(9, 10);
-			for (var hnum = -6; hnum < 7; hnum++) {
-				set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_HITBOX_X, spr_dir*round(slash_x - x + hnum*(h_x)));
-				set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_HITBOX_Y, round(slash_y - y + hnum*(h_y)));
-				//set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_PRIORITY, 10 - abs(hnum));
-				//set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_DAMAGE, 14 - abs(hnum));
-				//set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_KNOCKBACK_SCALING, 1.2 - abs(hnum)/12);
-				//set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_EXTRA_CAMERA_SHAKE, 15 - abs(hnum));
-				//set_hitbox_value(AT_DSPECIAL, hnum + 7, HG_BASE_HITPAUSE, 15 - abs(hnum));
-				create_hitbox(AT_DSPECIAL, hnum + 7, x, y);
+			for (var hnum = -5; hnum < 6; hnum++) {
+				set_hitbox_value(AT_DSPECIAL, hnum + 6, HG_HITBOX_X, spr_dir*round(slash_x - x + hnum*(h_x)));
+				set_hitbox_value(AT_DSPECIAL, hnum + 6, HG_HITBOX_Y, round(slash_y - y + hnum*(h_y)));
+				//set_hitbox_value(AT_DSPECIAL, hnum + 6, HG_PRIORITY, 10 - abs(hnum));
+				//set_hitbox_value(AT_DSPECIAL, hnum + 6, HG_DAMAGE, 14 - abs(hnum));
+				//set_hitbox_value(AT_DSPECIAL, hnum + 6, HG_KNOCKBACK_SCALING, 1.2 - abs(hnum)/12);
+				//set_hitbox_value(AT_DSPECIAL, hnum + 6, HG_EXTRA_CAMERA_SHAKE, 15 - abs(hnum));
+				//set_hitbox_value(AT_DSPECIAL, hnum + 6, HG_BASE_HITPAUSE, 15 - abs(hnum));
+				create_hitbox(AT_DSPECIAL, hnum + 6, x, y);
 			}
 		}
 		break;

@@ -50,7 +50,6 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .5)//this is normal hitpau
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 //set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 6); //combo aerial moves often have flipper 6, kill moves should not have this
 
-
 set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 2); //use this line to make follow up hitboxes share values with this one, remove it if it should be different
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
@@ -63,9 +62,9 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 7);
-set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 45); //this is a low angle for an aerial, you usually want to be above 45
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
+// set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 50); //this is a low angle for an aerial, you usually want to be above 45
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 //set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 8);//this is normal hitpause for a combo move
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .5)//this is normal hitpause scaling for a combo move

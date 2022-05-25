@@ -41,8 +41,8 @@ if (place_meeting( x, y, player_id )){
     if (player_id.xp_mod == 1){
         sound_stop( asset_get ("mfx_coin") );
         sound_play( asset_get ("mfx_coin") );
+		player_id.GAUGE_EXP_CURRENT++;
     }
-
     instance_destroy();
 	exit;
 }

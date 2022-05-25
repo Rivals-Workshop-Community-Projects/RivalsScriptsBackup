@@ -38,7 +38,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, 2);//32
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 90);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 60);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 3);
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .7);
@@ -53,7 +53,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 0.1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, shatter);
-//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hfx_explode); //make sure you give projectiles this line, it stops the destroy effect from appearing. Replace 1 with a variable for a hit effect if you'd rather use a hit effect.
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 29); //make sure you give projectiles this line, it stops the destroy effect from appearing. Replace 1 with a variable for a hit effect if you'd rather use a hit effect.
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2); //setting this to 2 makes it a projectile
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
@@ -63,9 +63,9 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, 2);//32
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 90);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 60);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 3);
+set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 45);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, .35);
@@ -77,5 +77,5 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("nspecial2_proj"
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 0.1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, shatter);
-//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hfx_explode); //make sure you give projectiles this line, it stops the destroy effect from appearing. Replace 1 with a variable for a hit effect if you'd rather use a hit effect.
+set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, shatter);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 29); //make sure you give projectiles this line, it stops the destroy effect from appearing. Replace 1 with a variable for a hit effect if you'd rather use a hit effect.

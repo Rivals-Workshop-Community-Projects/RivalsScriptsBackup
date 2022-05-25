@@ -15,13 +15,13 @@ if my_hitboxID.attack == AT_DSTRONG {
 	sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1.1)
 }
 if my_hitboxID.attack == AT_NAIR && !isyellow{
-hit_player_obj.x += ((x + (35 * spr_dir)) - hit_player_obj.x) / 2
-		hit_player_obj.y += ((y + 10) - hit_player_obj.y) / 2
+hit_player_obj.x += floor(((x + (35 * spr_dir)) - hit_player_obj.x) / 4)
+		hit_player_obj.y += floor(((y + 10) - hit_player_obj.y) / 4)
 }
 
 if my_hitboxID.attack == AT_DTILT && !isyellow{
-hit_player_obj.x += ((x + (60 * spr_dir)) - hit_player_obj.x) / 2
-		hit_player_obj.y += ((y + 10) - hit_player_obj.y) / 2
+hit_player_obj.x += floor(((x + (60 * spr_dir)) - hit_player_obj.x) / 2)
+		hit_player_obj.y += floor(((y + 10) - hit_player_obj.y) / 2)
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && !isyellow{

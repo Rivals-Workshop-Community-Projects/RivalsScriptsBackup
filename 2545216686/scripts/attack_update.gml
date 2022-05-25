@@ -1,5 +1,5 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR || attack == AT_FSPECIAL || attack == AT_DSPECIAL){
     trigger_b_reverse();
 }
 
@@ -67,6 +67,10 @@ if (attack == AT_UTILT){
 			spawn_base_dust( x - (20 * spr_dir), y, "dash", spr_dir)
 		}
 	}
+	
+	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 7)){//>
+		hud_offset = 90;
+	}
 }
 
 //Down Tilt: Slide
@@ -95,6 +99,15 @@ if (attack == AT_DTILT){
 	}
 	if (was_parried == true){
 		hsp = 0
+	}
+}
+
+//Up Air
+if (attack == AT_UAIR){
+	if ((window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))
+	|| (window > 3 && window < 5)
+	|| (window == 5 && image_index < 11)){//>
+		hud_offset = 68;
 	}
 }
 
@@ -378,7 +391,7 @@ if (attack == AT_USPECIAL){
 		if (right_down){
 			hsp = hsp + 0.2
 		}
-		if (attack_pressed || up_strong_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed){
+		if ((attack_pressed||(up_stick_pressed || left_stick_pressed || right_stick_pressed || down_stick_pressed)) || up_strong_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed){
 			sound_stop(sfx_flight)
 			sound_stop(sfx_flight_cheat)
 			flightloop--;

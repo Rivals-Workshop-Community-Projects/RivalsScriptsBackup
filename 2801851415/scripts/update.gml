@@ -5,12 +5,11 @@ with(oPlayer)
     {
         if(frostineFreeze)
         {
-                    
             outline_color = [100,200,200];
             init_shader();
+            outline_color = [0,0,0];    
             if(frostineTimerStart+300 < get_gameplay_time() || state == PS_RESPAWN)
             {
-                outline_color = [0,0,0];
                 frostineFreeze = false;
                 init_shader();
             }
@@ -18,4 +17,10 @@ with(oPlayer)
                 frostineTimerStart++;
         }
     }
+}
+if(nspecCount == 2)
+{
+    outline_color = [abs(ceil(sin(get_gameplay_time()/20)*50)),abs(ceil(sin(get_gameplay_time()/20)*100)),abs(ceil(sin(get_gameplay_time()/20)*100))];
+    init_shader();
+    outline_color = [0,0,0];  
 }

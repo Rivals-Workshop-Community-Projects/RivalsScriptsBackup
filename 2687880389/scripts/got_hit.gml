@@ -4,6 +4,9 @@
 //fuel_recovery_active = !uspecial_rework;
 //rocket_fuel += pity_fuel_amount;
 //rocket_fuel = (rocket_fuel > max_rocket_fuel) ? max_rocket_fuel : rocket_fuel;
+if (energy_floor) && (rocket_fuel < pity_fuel_amount) {
+	rocket_fuel = pity_fuel_amount;
+}
 
 afterimage_countdown = 0;
 
