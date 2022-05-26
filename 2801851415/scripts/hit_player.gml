@@ -1,7 +1,12 @@
 var atk  = my_hitboxID.attack
 var hbox = my_hitboxID.hbox_num
 
+if (my_hitboxID.attack == AT_FAIR and my_hitboxID.hbox_num == 1) {
+	old_vsp = -1;
+}
 
+
+	
 if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
     if(my_hitboxID.attack == AT_FSPECIAL and my_hitboxID.hbox_num == 2){
         //print("ora")
