@@ -134,19 +134,53 @@ if (attack == AT_NSPECIAL){
 		
 //UAir momentum stuff
 if (attack == AT_UAIR && !hitpause) {
+	if has_hit {
+	can_fast_fall = true;
+	} else {
+	can_fast_fall = false;	
+	}
 	if window == 2 {
-		if window_timer == 4 && 11 > vsp {
-			vsp = clamp(vsp, -100, -2);
+		if window_timer == 4 {
+			vsp = clamp(vsp, -100, -1);
 		}
 	}
-	if window == 3 || window == 4 && 5 > window_timer {
-		if attack_down || strong_down || up_strong_down {
-			can_fast_fall = false;
-			vsp = clamp(vsp, -100, 1.5);
+	if window >= 3 && 5 >= window && (attack_down || strong_down || up_strong_down) {
+		vsp -= .25;
+	}
+	if window == 5 && window_timer >= 4 && (attack_down || strong_down || up_strong_down) {
+		vsp = clamp(vsp, -3, .5);
+		if window_timer == 10 {
+			window = 7;
+			window_timer = 0;
+		}
+	}
+	if window == 7 {
+		if window_timer mod 18 == 0 {
+			create_hitbox(AT_UAIR, 4, x-8, y-102);
+		}
+		if (attack_down || strong_down || up_strong_down) && 4 > vsp {
+		hsp = clamp(hsp, -3, 3);
+		vsp -= .43;
+			if window_timer >= 22 {
+				can_shield = true;			
+			}
+			if window_timer == 54 {
+				window = 7;
+				window_timer = 6;
+			}
+		if djumps == 0 && jump_pressed {
+			sound_play(asset_get("sfx_jumpair"));
+			spawn_base_dust(x, y, "djump");
+			vsp = -2.5;
+			djumps = 1;
+		}
 		} else {
-		can_fast_fall = true;
+			destroy_hitboxes();			
+			window = 6;
+			window_timer = 0;
+			move_cooldown[AT_UAIR] = 20;
 		}
-	}
+	} 
 }
 
 //Ustrong grab stuff
@@ -220,11 +254,11 @@ if wblastcharge >= 45 {
 		wblastcharge -= 45;
 	}
 	//BAir2
-	if (attack == AT_EXTRA_2) and (window == 3) and (window_timer == 1) {
+	if (attack == AT_EXTRA_2) and (window == 2) and (window_timer == 6) {
 		wblastcharge -= 45;
 	}
 	//DTilt2
-	if (attack == AT_EXTRA_3) and (window == 4) and (window_timer == 1) {
+	if (attack == AT_EXTRA_3) and (window == 3) and (window_timer == 2) {
 		wblastcharge -= 45;
 	}
 	//FSpecial2

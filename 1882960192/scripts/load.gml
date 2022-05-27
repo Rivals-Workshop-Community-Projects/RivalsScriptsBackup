@@ -16,7 +16,7 @@ sprite_change_offset("dashturn", 32, 68);
 sprite_change_offset("kirby", 54, 114);
 
 sprite_change_offset("jumpstart", 32, 68);
-sprite_change_offset("jump", 32, 66);
+sprite_change_offset("jump", 32, 72);
 sprite_change_offset("doublejump", 32, 66);
 sprite_change_offset("walljump", 32, 66);
 sprite_change_offset("pratfall", 28, 66);
@@ -42,7 +42,7 @@ sprite_change_offset("utilt", 60, 102);
 sprite_change_offset("nair", 32, 66);
 sprite_change_offset("fair", 54, 108);
 sprite_change_offset("bair", 82, 98);
-sprite_change_offset("uair", 64, 124);
+sprite_change_offset("uair", 64, 142);
 sprite_change_offset("dair", 64, 70);
 sprite_change_offset("fstrong", 70, 94);
 sprite_change_offset("ustrong", 60, 126);

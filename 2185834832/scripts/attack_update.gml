@@ -26,24 +26,6 @@ if (attack == AT_DSTRONG && state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR 
     }
 }
 
-if (attack == AT_FAIR && state == PS_ATTACK_AIR){
-    if (window > 1 && grabbedid != noone){
-		grabbedid.ungrab = 0;
-        //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
-        if(window == 3 && window_timer < 9){
-	        grabbedid.x = lerp(grabbedid.x, x + 50*spr_dir, 0.3); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
-			grabbedid.y = lerp(grabbedid.y, y - 20, 0.1); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
-        }
-        grabbedid.wrap_time = 6000;
-        grabbedid.state = PS_WRAPPED;
-        if(window == 3 && window_timer > 8 || window == 4){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
-            grabbedid.ungrab = 1
-            grabbedid.state = PS_TUMBLE;
-            grabbedid = noone;
-        }
-    }
-}
-
 if (attack == AT_DAIR){
 	if (window == 3 && window_timer == 15){
 		set_state( PS_IDLE_AIR );
@@ -318,11 +300,24 @@ if(attack == AT_FSPECIAL){
 				set_state(PS_PRATFALL)
 			}
 		}
-	}else if(window == 10 && window_timer == 16 ||
-	window == 11 && window_timer == 16 ||
-	window == 12 && window_timer == 28){
+	}else if(window == 10 && window_timer == 15 ||
+	window == 11 && window_timer == 12 ||
+	window == 12 && window_timer == 27){
 		window = 13
 		window_timer = 0
+	}
+	
+	if(window == 13){
+		if(has_hit && !was_parried){
+			can_attack = true
+			can_jump = true
+			can_special = true
+			can_ustrong = true
+			can_strong = true
+			if(left_down || right_down || left_pressed || right_pressed){
+				set_state(PS_IDLE)
+			}
+		}
 	}
 	
 	/*if(window == 8 || window == 12){

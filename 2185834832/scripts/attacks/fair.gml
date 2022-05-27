@@ -51,6 +51,7 @@ set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4);
+set_hitbox_value(AT_FAIR, 1, HG_SDI_MULTIPLIER, 0.5);
 set_hitbox_value(AT_FAIR, 1, HG_SHAPE, 1);
 
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 0);
@@ -73,6 +74,7 @@ set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_SHAPE, 0);
+set_hitbox_value(AT_FAIR, 2, HG_SDI_MULTIPLIER, 0.5);
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, vfx_waterhit_small);
 
 set_hitbox_value(AT_FAIR, 3, HG_PARENT_HITBOX, 0);
@@ -95,6 +97,7 @@ set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_FAIR, 3, HG_SDI_MULTIPLIER, 0.5);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, vfx_waterhit_small);
 
 set_hitbox_value(AT_FAIR, 4, HG_PARENT_HITBOX, 0);
@@ -117,6 +120,7 @@ set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 4, HG_DAMAGE, 1);
 set_hitbox_value(AT_FAIR, 4, HG_SHAPE, 0);
+set_hitbox_value(AT_FAIR, 4, HG_SDI_MULTIPLIER, 0.5);
 set_hitbox_value(AT_FAIR, 4, HG_VISUAL_EFFECT, vfx_waterhit_small);
 
 set_hitbox_value(AT_FAIR, 5, HG_PARENT_HITBOX, 0);
@@ -138,4 +142,5 @@ set_hitbox_value(AT_FAIR, 5, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_FAIR, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 5, HG_DAMAGE, 4);
 set_hitbox_value(AT_FAIR, 5, HG_SHAPE, 0);
+set_hitbox_value(AT_FAIR, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FAIR, 5, HG_VISUAL_EFFECT, vfx_waterhit_big);

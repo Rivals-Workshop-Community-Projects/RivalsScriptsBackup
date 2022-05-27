@@ -116,6 +116,7 @@ set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_JAB, 3, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_JAB, 3, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_JAB, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 3, HG_SHAPE, 0)
 
 set_hitbox_value(AT_JAB, 4, HG_PARENT_HITBOX, 0);
@@ -136,6 +137,7 @@ set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_JAB, 4, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_JAB, 4, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_JAB, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 4, HG_SHAPE, 0)
 
 set_hitbox_value(AT_JAB, 5, HG_PARENT_HITBOX, 0);
@@ -154,6 +156,7 @@ set_hitbox_value(AT_JAB, 5, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_JAB, 5, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_JAB, 5, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_JAB, 5, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 5, HG_SHAPE, 0)
 
 set_hitbox_value(AT_JAB, 6, HG_PARENT_HITBOX, 0);
@@ -173,6 +176,7 @@ set_hitbox_value(AT_JAB, 6, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_JAB, 6, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 6, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_JAB, 6, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_JAB, 6, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 6, HG_SHAPE, 0)
 
 set_hitbox_value(AT_JAB, 7, HG_PARENT_HITBOX, 0);
@@ -187,8 +191,8 @@ set_hitbox_value(AT_JAB, 7, HG_HEIGHT, 85);
 set_hitbox_value(AT_JAB, 7, HG_PRIORITY, 1);
 set_hitbox_value(AT_JAB, 7, HG_DAMAGE, 6);
 set_hitbox_value(AT_JAB, 7, HG_ANGLE, 90);
-set_hitbox_value(AT_JAB, 7, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_JAB, 7, HG_KNOCKBACK_SCALING, 0.85);
+set_hitbox_value(AT_JAB, 7, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_JAB, 7, HG_KNOCKBACK_SCALING, 0.75);
 set_hitbox_value(AT_JAB, 7, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_JAB, 7, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_JAB, 7, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
