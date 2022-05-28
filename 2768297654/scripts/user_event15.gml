@@ -88,7 +88,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -192,9 +192,9 @@ initTip("Gimmick: 16-Hit Combos");
 initWords("Duster's gimmick comes from his source material. Mother 3 is an RPG which has a battle system based on the music playing in the battle. If you can time button presses with the beat of the song, you can hit an enemy up to 16 times.");
 initWords("In Rivals, if Duster hits an opponent, it will start a combo chain. He has a 7 second period to hit the opponent again to raise his combo, which is reset each time he does. If he doesn't hit an enemy within these 6 seconds, his combo is reset. This timer can be reset by activating a parry. Hit an enemy 16 times to unleash a very powerful attack!");
 initWords("Every 16th hit is boosted damage-wise and knockback-wise. All attacks do 16 percent and the knockback buffs are listed below:
-Grounded normals are raised to 9 knockback
-Aerials and Specials are raised to 8 knockback
-Strongs are raised to 11.5 knockback
+Grounded normals are raised to 6 * 1.1
+Aerials and Specials are raised to 7 * 1.15
+Strongs are raised to 8 * 1.2
 All attacks boosted have a knockback scaling of 1.1");
 initWords("Once Duster hits a 16-hit combo, his meter will go on cooldown for 10 seconds. The same applies if he is parried during his combo, but the cooldown is only 5 seconds. The cooldown created by getting parried can be removed by Duster parrying an attack.");
 initImage_ext(sprite_get("_pho_16hit"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
@@ -237,6 +237,44 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.14", "25th May, 2022");
+
+initHeader("Buffs:");
+initSection("+ Dtilt angle changed from 70 -> 90
++ Extended Fstrong's hitbox to match it's visual again
++ Fstrong comes out 2 frames faster, F16 -> F14
++ Uair now has a late tipman hitbox
+");
+
+initHeader("Nerfs:");
+initSection("- Dash speed lowered, 7.5 -> 7
+- Initial Dash speed lowered, 8.5 -> 8
+- Bair's angle was changed, 145 -> 135
+- Bair's bkb was lowered, 7 -> 6
+- Extended Fstrong's hurtbox
+- Fstrong's angle was changed, 40 -> 50
+- Nspecial's startup was increased, F8 -> F10
+- Bomb throw startup was increased, F9 -> F11
+");
+
+initHeader("Changes:");
+initSection("= Fstrong kb adjusted, 8 * .9 -> 6 * 1.05
+= Ustrong kb adjusted, 9 * 1.1 -> 7 * 1.2
+= Dstrong kb adjusted, 11 * .9 -> 7 * 1.2
+= 16 Hit crit kb adjusted
+    = Aerial, 8 * 1 -> 6 * 1.1
+    = Grounded, 9 * 1 -> 7 * 1.15
+    = Strong, 11.5 * 1 -> 8 * 1.2
+= Uair has a new smear! Thank you Delta!
+= Uair, Utilt, Ustrong, and Fspecial now have hurtboxes on smears
+= Parry now correctly resets Combo Timer
+= Updated the TAG alt's color scheme
+= Cleaned up most smears
+= Lightweighted munophone
+");
+
+
+//
 initPatch("1.13", "6 April, 2022");
 
 initHeader("Nerfs:");

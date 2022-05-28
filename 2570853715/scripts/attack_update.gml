@@ -166,11 +166,11 @@ case AT_FSTRONG:
 case AT_USTRONG:
     if(window == 2 and window_timer == 5){
     	if(left_down){
-    	
-    			x-= 80;
+    		if(place_meeting(x-60, y+2, asset_get("par_block")) or place_meeting(x-60, y+2, asset_get("par_block_jumpthrough")) )
+    			x-= 60;
     	} else if (right_down){
-
-    			x+= 80;
+    		if(place_meeting(x+60, y+2, asset_get("par_block")) or place_meeting(x+60, y+2, asset_get("par_block_jumpthrough")) )
+    			x+= 60;
     	}
     }else if (window == 4 and window_timer = 1){
     	//sound_play(asset_get("sfx_swipe_heavy2"));
@@ -195,14 +195,14 @@ case AT_DATTACK:
 		if(jump_down or jump_pressed){
 			dattack_jump_buffer = true;
 		}
-	}
+	}/*
 	if(has_hit and (window == 3 or window == 2)){
 		if(jump_pressed or dattack_jump_buffer){
 			state_timer = 0;
 			set_state(PS_JUMPSQUAT);
 		}
 		can_jump = true;
-	}
+	}*/
 	break;
 
 case AT_UTILT:
@@ -212,7 +212,7 @@ case AT_UTILT:
 	if(window == 4 and window_timer == 3){
 		sound_stop(sound_get("utilt_loop"));
 	}
-	if(has_hit and window == 4 and window_timer > 3){
+	if(has_hit and window == 4 and window_timer > 9){
 		can_attack = true;
 		can_special = true;
 		can_jump = true;

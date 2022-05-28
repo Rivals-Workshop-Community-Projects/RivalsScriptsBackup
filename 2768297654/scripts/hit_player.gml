@@ -111,11 +111,8 @@ if(combo_num == 16){
 	vfx2.spr_dir = 1;
 	vfx2.depth = -10;
 	sound_play(sound_get("sfx_smash"), false, noone, 1);
-	if(get_player_color(player) != 20){
-	 sound_play(sound_get("sfx_16hit"), false, noone, 2.5);
-	}
+	sound_play(crit_sfx, false, noone, 2.5);
 	 if(get_player_color(player) = 20){
-	 sound_play(sound_get("sfx_NOW"), false, noone, 2.7);	
 	 sound_play(asset_get("sfx_holy_lightning"));
 	 sound_play(asset_get("sfx_absa_boltcloud"));
 	 sound_play(asset_get("sfx_absa_uair"));
@@ -129,7 +126,7 @@ if(combo_num == 16){
     hud_combo_cooldown = 0;
     hud_cooldown_mult = 2;
     combo_timer = 0;
-	}
+}
 }
 
 }

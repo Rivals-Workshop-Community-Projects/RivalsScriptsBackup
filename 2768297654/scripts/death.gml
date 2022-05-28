@@ -111,6 +111,10 @@ reset_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK);
 reset_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING);
 reset_hitbox_value(AT_UAIR, 1, HG_HIT_LOCKOUT);
 reset_hitbox_value(AT_UAIR, 1, HG_DAMAGE);
+reset_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK);
+reset_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING);
+reset_hitbox_value(AT_UAIR, 2, HG_HIT_LOCKOUT);
+reset_hitbox_value(AT_UAIR, 2, HG_DAMAGE);
 
 reset_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK);
 reset_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING);

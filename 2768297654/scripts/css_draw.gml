@@ -6,9 +6,9 @@ if (get_color_profile_slot_r(1, 0) == 255) {
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.11";
-patch_day = "6";
-patch_month = "APR";
+patch_ver = "1.14";
+patch_day = "25";
+patch_month = "MAY";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);

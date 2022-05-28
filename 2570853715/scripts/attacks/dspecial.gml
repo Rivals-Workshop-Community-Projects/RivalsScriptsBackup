@@ -41,14 +41,13 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .7);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 20);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("knife_stun"));
-set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);
 
 set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Cannot be used while knives are on screen. Has 40f move cooldown after initial use even if knives connect.");
 

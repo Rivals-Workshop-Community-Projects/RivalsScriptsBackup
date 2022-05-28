@@ -7,51 +7,48 @@ switch(attack){
 		trigger_b_reverse();
 		break;
 }
-
-
-
 // per-attack logic
 
 switch(attack){
 	
 	// give your moves some "pop" by spawning dust during them!
 	case AT_DTILT:
-		if window == 1 && window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-			array_push(phone_dust_query, [x + spr_dir * 50 , y, "dash_start", -spr_dir]);
+		if window == 1 && window_timer == get_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH)-1{ 
+		spawn_base_dust(x + spr_dir * 50 , y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_DATTACK:
-	if window == 1 && window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-			array_push(phone_dust_query, [x + spr_dir * -10 , y, "dash_start", spr_dir]);
-		}		if window == 3 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x + spr_dir * 50 , y, "dash_start", -spr_dir]);
+	if window == 1 && window_timer == get_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH)-1{ 
+		spawn_base_dust(x + spr_dir * -10 , y, "dash_start", spr_dir);
+		}		if window == 3 && window_timer == get_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH)-1{
+		spawn_base_dust(x + spr_dir * 50 , y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_UTILT:
-		if window == 1 && window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
-			array_push(phone_dust_query, [x, y, "dash", -spr_dir]);
+		if window == 1 && window_timer == get_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH)-1{ 
+		spawn_base_dust(x, y, "dash", spr_dir);
+		spawn_base_dust(x, y, "dash", -spr_dir);
 		}
 		break;
 	case AT_FSTRONG:
-		if window == 2 && window_timer == 2{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-			array_push(phone_dust_query, [x + spr_dir * -10, y, "dash_start", spr_dir]);
+		if window == 2 && window_timer == 2{ 
+		spawn_base_dust(x + spr_dir * -10, y, "dash_start", spr_dir);
 		}
 		break;
 	case AT_DSTRONG:
-		if window == 2 && window_timer == 2{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-			array_push(phone_dust_query, [x + spr_dir * -20, y, "dash_start", spr_dir]);
-			array_push(phone_dust_query, [x + spr_dir * 20, y, "dash_start", -spr_dir]);
+		if window == 2 && window_timer == 2{ 
+		spawn_base_dust(x + spr_dir * -20, y, "dash_start", spr_dir);
+		spawn_base_dust(x + spr_dir * 20, y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_FTILT:
-		if window == 1 && window_timer == phone_window_end{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-			array_push(phone_dust_query, [x + spr_dir * 80 , y, "dash_start", -spr_dir]);
+		if window == 1 && window_timer == get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH)-1{ 
+		spawn_base_dust(x + spr_dir * 80 , y, "dash_start", -spr_dir);
 		}
 		break;
 	case AT_USTRONG:
-		if window == 2 && window_timer == 2{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-			array_push(phone_dust_query, [x + spr_dir * 20, y, "dash_start", -spr_dir]);
+		if window == 2 && window_timer == 2{ 
+		spawn_base_dust(x + spr_dir * 20, y, "dash_start", -spr_dir);
 		}
 }
 
@@ -66,7 +63,7 @@ if(attack == AT_DATTACK){
 }
 
 if(attack == AT_FSTRONG){
-	if(window == 2 && window_timer = 2){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	if(window == 2 && window_timer = 2){ 
 		sound_play(asset_get("sfx_forsburn_consume_full"));
 	}
 }
@@ -78,7 +75,7 @@ if(attack == AT_DSTRONG){
 }
 
 if(attack == AT_BAIR){
-	if(window == 1 && window_timer = 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	if(window == 1 && window_timer = 1){ 
 		sound_play(asset_get("sfx_forsburn_cape_swipe"));
 	}
 }
@@ -89,7 +86,7 @@ if(attack == AT_UAIR){
 }
 
 if(attack == AT_NSPECIAL){
-	if(window == 1 && window_timer = phone_window_end){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	if(window == 1 && window_timer = get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH)-1){ 
 		move_cooldown[AT_NSPECIAL] = 180;
 	}
 }
@@ -106,10 +103,10 @@ if(attack == AT_FSPECIAL){
 	}
 	if(window == 1 && window_timer = 1 && !hitpause){
 		sound_play(sound_get("sfx_fspecialstart"), false, noone, 2.5);
-	}if(window == 1 && window_timer = phone_window_end){
+	}if(window == 1 && window_timer = get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH)-1){
 		sound_play(asset_get("sfx_swipe_medium2"));
 	}if(window == 3){
-		if(window_timer = phone_window_end && !has_hit_player){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+		if(window_timer = get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH)-1 && !has_hit_player){ 
 		set_state(PS_PRATFALL);
 		}
 	}if(window == 2){
@@ -119,7 +116,7 @@ if(attack == AT_FSPECIAL){
 		}
 	}
 	//ledge cancel
-	if(window == 1 && window_timer = 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	if(window == 1 && window_timer = 1){ 
 		fspecial_ledge_cancel = 0;
 		moved_up = false;
 	}if(window == 2 && !free && !has_hit && !was_parried){
@@ -145,16 +142,16 @@ if(attack == AT_USPECIAL){
 	hud_offset = 110;
 	can_fast_fall = false;
 	can_wall_jump = true;
-	if(window == 1 && window_timer = 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	if(window == 1 && window_timer = 1){ 
 		fly_length = 100;
 	}
 	if(window > 3 && window != 7){
 		fly_length--;
-	}if(window == 4 && window_timer = phone_window_end){
+	}if(window == 4 && window_timer = get_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH)-1){
 		if(fly_length > 70){
 			window_timer = 0;
 		}
-	}if(window == 6 && window_timer = phone_window_end){
+	}if(window == 6 && window_timer = get_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH)-1){
 			if(fly_length > 1){
 			window_timer = 0;	
 			}
@@ -181,12 +178,12 @@ if(attack == AT_USPECIAL){
 }
 
 if(attack == AT_DSPECIAL){
-	if(window = 1 && window_timer = 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	if(window = 1 && window_timer = 1){ 
 	if(bomb_state = true){
 		set_state(PS_IDLE);
 		}
 	}
-	if(window == 2 && window_timer = 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+	if(window == 2 && window_timer = 1){ 
 		bomb_state = false;
 		bomb_missfire = false;
 		if(!hitpause){
@@ -200,18 +197,36 @@ if(attack == AT_DSPECIAL){
 	}
 }
 
-if(attack == AT_FTHROW || attack == AT_DTHROW || attack == AT_UTHROW){
-	if(window == 1 && window_timer = phone_window_end && !hitpause){
+if(attack == AT_FTHROW){
+	if(window == 1 && window_timer = get_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH)-1 && !hitpause){
 		sound_play(sound_get("se_item_item_throw"));
 		sound_play(asset_get("sfx_swipe_medium2"));
-	}if(window == 1 && window_timer = phone_window_end){
+	}if(window == 1 && window_timer = get_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH)-1){
+		bomb_timer = 0;
+		bomb_state = false;
+		move_cooldown[AT_DSPECIAL] = 300;
+	}
+}if(attack == AT_DTHROW){
+	if(window == 1 && window_timer = get_window_value(AT_DTHROW, 1, AG_WINDOW_LENGTH)-1 && !hitpause){
+		sound_play(sound_get("se_item_item_throw"));
+		sound_play(asset_get("sfx_swipe_medium2"));
+	}if(window == 1 && window_timer = get_window_value(AT_DTHROW, 1, AG_WINDOW_LENGTH)-1){
+		bomb_timer = 0;
+		bomb_state = false;
+		move_cooldown[AT_DSPECIAL] = 300;
+	}
+}if(attack == AT_UTHROW){
+	if(window == 1 && window_timer = get_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH)-1 && !hitpause){
+		sound_play(sound_get("se_item_item_throw"));
+		sound_play(asset_get("sfx_swipe_medium2"));
+	}if(window == 1 && window_timer = get_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH)-1){
 		bomb_timer = 0;
 		bomb_state = false;
 		move_cooldown[AT_DSPECIAL] = 300;
 	}
 }if(attack == AT_DSPECIAL_2){
 	can_fast_fall = false;
-	if(window == 1 && window_timer = phone_window_end){
+	if(window == 1 && window_timer = get_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH)-1){
 		bomb_timer = 0;
 		bomb_state = false;
 		move_cooldown[AT_DSPECIAL] = 300;		
@@ -234,7 +249,7 @@ if (attack == AT_TAUNT_2){
   	}
 }
 
-#define spawn_base_dust // written by supersonic
+#define spawn_base_dust
 /// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
@@ -247,32 +262,22 @@ var x = argument[0], y = argument[1], name = argument[2];
 var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
-	default: 
-	case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-	case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-	case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-	case "doublejump": 
-	case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-	case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-	case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-	case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-	case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-	case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
-if newdust == noone return noone;
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
-
-// #region vvv LIBRARY DEFINES AND MACROS vvv
-// DANGER File below this point will be overwritten! Generated defines and macros below.
-// Write NO-INJECT in a comment above this area to disable injection.
-#define window_time_is(frame) // Version 0
-    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
-    return window_timer == frame and !hitpause
-// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
-// #endregion

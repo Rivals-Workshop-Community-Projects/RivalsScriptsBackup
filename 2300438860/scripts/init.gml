@@ -38,7 +38,7 @@ finisherinc = 0
 
 Genocide = false 
 
-cosmetic = 0
+cosmetic = 1
 
 heartbroke = 0
 

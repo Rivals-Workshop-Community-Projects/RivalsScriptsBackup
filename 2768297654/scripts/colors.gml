@@ -222,13 +222,13 @@ set_color_profile_slot( 21, 5, 255, 203, 31 ); //Shoes
 set_color_profile_slot( 21, 6, 255, 203, 31 ); //Shirt Stripe
 
 // TAG
-set_color_profile_slot( 22, 0, 66, 135, 86 ); //Shirt
-set_color_profile_slot( 22, 1, 248, 199, 170 ); //Skin
-set_color_profile_slot( 22, 2, 159, 97, 61 ); //Hair1
-set_color_profile_slot( 22, 3, 119, 73, 29 ); //Hair2
-set_color_profile_slot( 22, 4, 224, 179, 27 ); //Pants
-set_color_profile_slot( 22, 5, 119, 73, 29 ); //Shoes
-set_color_profile_slot( 22, 6, 255, 203, 31 ); //Shirt Stripe
+set_color_profile_slot( 22, 0, 255, 147, 94 ); //Shirt
+set_color_profile_slot( 22, 1, 217, 146, 105 ); //Skin
+set_color_profile_slot( 22, 2, 89, 62, 43 ); //Hair1
+set_color_profile_slot( 22, 3, 89, 62, 43 ); //Hair2
+set_color_profile_slot( 22, 4, 96, 158, 155 ); //Pants
+set_color_profile_slot( 22, 5, 149, 202, 116 ); //Shoes
+set_color_profile_slot( 22, 6, 248, 219, 94 ); //Shirt Stripe
 
 // Pastel
 set_color_profile_slot( 23, 0, 255, 168, 239 ); //Shirt

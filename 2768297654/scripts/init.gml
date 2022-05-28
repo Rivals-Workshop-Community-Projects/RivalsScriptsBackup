@@ -19,8 +19,8 @@ walk_speed          = 3;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
 initial_dash_time   = 8;		// 8    -  16       zetterburn's is 14
-initial_dash_speed  = 8.5;		// 4    -  9
-dash_speed          = 7.5;		// 5    -  9
+initial_dash_speed  = 8;		// 4    -  9
+dash_speed          = 7;		// 5    -  9
 dash_turn_time      = 10;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 6;		// 4    -  6        zetterburn's is 4
@@ -81,8 +81,9 @@ sixteen_combo_vfx = hit_fx_create(sprite_get("16combo_vfx"), 48);
 fspecial_afterfx = hit_fx_create(sprite_get("fspecial_afterfx"), 15);
 spark_effect = hit_fx_create(sprite_get("we_do_a_little_trolling_3"), 14);
 smokebomb_fx = hit_fx_create(sprite_get("smokebomb_fx"), 16);
-wallstaple_fx = hit_fx_create(sprite_get("wall_staple_vfx"), 12);
+wallstaple_fx = hit_fx_create(sprite_get("wall_staple_vfx"), 9);
 
+crit_sfx = sound_get("sfx_16hit");
 
 // Animation Info
 
@@ -191,16 +192,31 @@ fly_length = 120;
 
 fspecial_ledge_cancel = 0;
 
+secret_alt_on = false;
+seinfeld = false;
+
 beta_voice_mode = false;
 alt = get_player_color(player);
 if(alt == 11){
   beta_voice_mode = true;  
+}if(alt == 20){
+  crit_sfx = sound_get("sfx_NOW");  
 }
 
 guiltySprite = sprite_get("trialgrounds");
 battle_text = "*Duster attacks with blinding speed!";
 arena_title = "The Thief of Tazmily";
 fail_text = "Don't tell me you thought the Noble Spittoon was ACTUALLY the treasure.";
+
+if(get_player_color(player) == 22){ // TAG
+set_color_profile_slot( 22, 0, 255, 147, 94 ); //Shirt
+set_color_profile_slot( 22, 1, 217, 146, 105 ); //Skin
+set_color_profile_slot( 22, 2, 89, 62, 43 ); //Hair1
+set_color_profile_slot( 22, 3, 89, 62, 43 ); //Hair2
+set_color_profile_slot( 22, 4, 96, 158, 155 ); //Pants
+set_color_profile_slot( 22, 5, 149, 202, 116 ); //Shoes
+set_color_profile_slot( 22, 6, 248, 219, 94 ); //Shirt Stripe
+}
 
 
 // MunoPhone Touch code - don't touch

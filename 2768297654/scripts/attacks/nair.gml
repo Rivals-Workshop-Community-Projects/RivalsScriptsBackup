@@ -49,7 +49,7 @@ set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_NAIR, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NAIR, 1, HG_DRIFT_MULTIPLIER, 1);
 
