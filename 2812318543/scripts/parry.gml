@@ -1,0 +1,1 @@
+if(in_affinity) pandoria.affinity += 30;
