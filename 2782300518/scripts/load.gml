@@ -35,7 +35,7 @@ sprite_change_offset("pratfall2", 40, 78);
 sprite_change_offset("land", 40, 78);
 sprite_change_offset("land2", 40, 78);
 sprite_change_offset("landinglag", 40, 78);
-sprite_change_offset("landinglag2", 40, 78);
+sprite_change_offset("landinglag2", 40, 82);
 sprite_change_offset("bike_idle_air", 40, 80);
 
 sprite_change_offset("parry", 40, 78);

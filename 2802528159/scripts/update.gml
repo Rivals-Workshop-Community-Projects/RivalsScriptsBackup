@@ -797,14 +797,14 @@ if(plate_damage < 0){
 	plate_damage = 0;
 }
 
-if(plate_timer == 18 && plate_damage < 30){
+if(plate_timer == 40 && plate_damage < 30){
 	plate_timer = 0;
 	plate_damage -= (plate_damage > 0? 1: 0);
 }else if(plate_damage < 30){
 	plate_timer++;
 }
 
-if(plate_damage > (has_rune("H")? 40: 30) && plate_state == 0 && !free){
+if(plate_damage >= (has_rune("H")? 40: 30) && plate_state == 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 	set_attack(AT_TAUNT_2);
     plate_state = 1;
 }else if(plate_damage <= (has_rune("H")? 40: 30) && plate_state == 1){
@@ -883,7 +883,7 @@ if(attack == AT_FSPECIAL && free && wall == 0 && state == PS_ATTACK_GROUND){
     hurtboxID.sprite_index = sprite_get("fspecial_air_hurt");
 }
 if(instance_exists(ice_victim) && ice_victim.emmi_frozen == true){
-    move_cooldown[AT_FSPECIAL] = 150;
+    move_cooldown[AT_FSPECIAL] = 420;
     ice_victim.state = PS_HITSTUN;
     ice_victim.state_timer = 0;
     if(ice_size == false){
@@ -907,7 +907,7 @@ if(attack == AT_DSPECIAL && free && wall == 0){
     hurtboxID.sprite_index = sprite_get("dspecial_air_hurt");
 }
 if(instance_exists(shock_victim) && shock_victim.emmi_shocked == true){
-    move_cooldown[AT_DSPECIAL] = 150;
+    move_cooldown[AT_DSPECIAL] = 420;
     shock_victim.state_timer = 0;
     shock_victim.hitstun = true;
     emmi_shock_timer--;
@@ -945,7 +945,7 @@ if(!free){
 if(wall != 0 && wall_gauge > 0 && !has_rune("G")){
 	wall_gauge -= (wall == 3? 4: 2);
 }else if(wall_gauge < 1000){
-	wall_gauge += 5;
+	wall_gauge += (free? 1: (wall_gauge <= 995? 5: 1000 - wall_gauge));
 }
 
 if(wall_gauge == 0){
@@ -1082,6 +1082,14 @@ if(state == PS_SPAWN){
 //rune C
 if(has_rune("C") && wall == 0 && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 	create_hitbox(AT_TAUNT_2, 1, x, y);
+}
+//airdodge fix
+has_airdodge = airdodge_cooldown;
+if(state == PS_AIR_DODGE){
+	airdodge_cooldown = 0;
+}
+if(!free && wall == 0){
+	airdodge_cooldown = 1;
 }
 
 //constant variables

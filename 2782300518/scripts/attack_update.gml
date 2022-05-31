@@ -21,8 +21,75 @@ if (motorbike == false)
 		//Allow for move cancelling through special or shield
 		can_shield = true;
 		can_special = true;
-		var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect);
-		after_effect.depth = +10;
+		switch (image_index)
+		{
+			case 0:
+			case 8:
+			case 16:
+			case 24:
+			case 32:
+				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect0);
+				after_effect.depth = +10;
+			break;
+			case 1:
+			case 9:
+			case 17:
+			case 25:
+			case 33:
+				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect1);
+				after_effect.depth = +10;
+			break;
+			case 2:
+			case 10:
+			case 18:
+			case 26:
+			case 34:
+				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect2);
+				after_effect.depth = +10;
+			break;
+			case 3:
+			case 11:
+			case 19:
+			case 27:
+			case 35:
+				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect3);
+				after_effect.depth = +10;
+			break;
+			case 4:
+			case 12:
+			case 20:
+			case 28:
+			case 36:
+				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect4);
+				after_effect.depth = +10;
+			break;
+			case 5:
+			case 13:
+			case 21:
+			case 29:
+			case 37:
+				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect5);
+				after_effect.depth = +10;
+			break;
+			case 6:
+			case 14:
+			case 22:
+			case 30:
+			case 38:
+				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect6);
+				after_effect.depth = +10;
+			break;
+			case 7:
+			case 15:
+			case 23:
+			case 31:
+			case 39:
+				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect7);
+				after_effect.depth = +10;
+			break;
+			default:
+			break;
+		}
 		//Check if bounce is in effect
 		if (vsp == 18)
 		{

@@ -457,6 +457,13 @@ else if (motorbike == true)
 	}
 }
 
+if (bikeExplosion == true)
+{
+	sound_stop(sound_get("xplode2"));
+	sound_play(sound_get("xplode2"));
+	bikeExplosion = false;
+}
+
 //Reset Wall jumps and certain cooldowns
 if (!free)
 {

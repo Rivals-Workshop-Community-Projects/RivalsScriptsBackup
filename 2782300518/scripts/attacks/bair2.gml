@@ -15,7 +15,7 @@ set_window_value(39, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(39, 2, AG_WINDOW_SFX, sound_get("motorbike_spin"));
 
 set_window_value(39, 3, AG_WINDOW_LENGTH, 17);
-set_window_value(39, 3, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(39, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(39, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_num_hitboxes(39, 1);

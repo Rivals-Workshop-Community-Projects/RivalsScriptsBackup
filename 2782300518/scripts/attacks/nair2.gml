@@ -11,20 +11,20 @@ set_window_value(44, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(44, 1, AG_WINDOW_SFX, sound_get("motorbike_extra"));
 set_window_value(44, 1, AG_WINDOW_SFX_FRAME, 3);
 
-set_window_value(44, 2, AG_WINDOW_LENGTH, 6);
-set_window_value(44, 2, AG_WINDOW_ANIM_FRAMES, 8);
+set_window_value(44, 2, AG_WINDOW_LENGTH, 10);
+set_window_value(44, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(44, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_window_value(44, 3, AG_WINDOW_LENGTH, 10);
-set_window_value(44, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(44, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(44, 3, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(44, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(44, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(44, 1);
 
 set_hitbox_value(44, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(44, 1, HG_WINDOW, 2);
-set_hitbox_value(44, 1, HG_LIFETIME, 6);
+set_hitbox_value(44, 1, HG_LIFETIME, 10);
 set_hitbox_value(44, 1, HG_HITBOX_X, 0);
 set_hitbox_value(44, 1, HG_HITBOX_Y, -59);
 set_hitbox_value(44, 1, HG_WIDTH, 118);

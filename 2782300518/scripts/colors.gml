@@ -8,7 +8,7 @@ set_color_profile_slot(0, 5, 29, 51, 21);//Eyes
 
 //COLOR RANGE (H,S,V)
 set_color_profile_slot_range(0, 5, 40, 28);
-set_color_profile_slot_range(1, 1, 1, 1);
+set_color_profile_slot_range(1, 2, 1, 25);
 set_color_profile_slot_range(2, 10, 2, 22);
 set_color_profile_slot_range(3, 1, 1, 23);
 set_color_profile_slot_range(4, 4, 5, 12);
@@ -52,7 +52,7 @@ set_color_profile_slot(4, 5, 64, 124, 48);
 
 //Corazon
 set_color_profile_slot(5, 0, 64, 124, 48);
-set_color_profile_slot(5, 1, 125, 0, 0);
+set_color_profile_slot(5, 1, 37, 37, 37);
 set_color_profile_slot(5, 2, 216, 184, 0);
 set_color_profile_slot(5, 3, 125, 0, 0);
 set_color_profile_slot(5, 4, 160, 184, 56);
@@ -76,7 +76,7 @@ set_color_profile_slot(7, 5, 24, 104, 8);
 
 //Mayor Zhao
 set_color_profile_slot(8, 0, 192, 80, 0);
-set_color_profile_slot(8, 1, 255, 0, 0);
+set_color_profile_slot(8, 1, 122, 0, 0);
 set_color_profile_slot(8, 2, 216, 184, 0);
 set_color_profile_slot(8, 3, 255, 0, 0);
 set_color_profile_slot(8, 4, 255, 255, 255);

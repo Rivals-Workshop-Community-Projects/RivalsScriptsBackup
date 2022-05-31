@@ -37,21 +37,50 @@ if (custom_clone) {
 	
 	//Multihit Bug fix
 	switch(attack) {
-		case AT_UTILT:
-			attack = AT_UTHROW;
+		//Neutrals
+		case AT_JAB:
+			attack = AT_NSPECIAL_2;
 		break;
+		case AT_DATTACK:
+			attack = AT_NSPECIAL_AIR;
+		break;
+		//Aerials
 		case AT_NAIR:
 			attack = AT_NTHROW;
 		break;
+		case AT_DAIR:
+			attack = AT_DSPECIAL_AIR;
+		break;
+		case AT_FAIR:
+			attack = AT_FSPECIAL_AIR;
+		break;
+		case AT_UAIR:
+			attack = AT_USPECIAL_GROUND;
+		break;
+		case AT_BAIR:
+			attack = AT_FSTRONG_2;
+		break;
+		//Strongs
 		case AT_FSTRONG:
 			attack = AT_FTHROW;
 		break;
 		case AT_DSTRONG:
 			attack = AT_DSTRONG_2;
 		break;
-		case AT_DAIR:
-			attack = AT_DSPECIAL_AIR;
+		case AT_USTRONG:
+			attack = AT_USTRONG_2;
 		break;
+		//Tilts
+		case AT_UTILT:
+			attack = AT_UTHROW;
+		break;
+		case AT_DTILT:
+			attack = AT_DSPECIAL_2;
+		break;
+		case AT_FTILT:
+			attack = AT_FSPECIAL_2;
+		break;
+
 	}
 	
 	//Aerial Moves fix
@@ -107,3 +136,5 @@ if (attack == AT_TAUNT) {
 		attack = AT_TAUNT_2;
 	}
 }
+
+print(attack)

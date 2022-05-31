@@ -13,7 +13,7 @@ set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_SFX, sound_get("motorbike_spin"));
 
 set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_LENGTH, 15);
-set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_ANIM_FRAME_START, 12);
 
 set_num_hitboxes(AT_DSTRONG_2, 1);

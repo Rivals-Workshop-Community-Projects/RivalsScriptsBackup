@@ -89,6 +89,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 45);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 1.25);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, radar_hit);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_PARTICLE_NUM, 2);

@@ -1,5 +1,8 @@
 if (attack == 40 && !free)
 {
+    player_id.bikeExplosion = true;
+    var bikeExplode = spawn_hit_fx(x, y , 271);
+    bikeExplode.depth = -100;
     destroyed = true;
 }
 //Makes Jump Disc multi hit

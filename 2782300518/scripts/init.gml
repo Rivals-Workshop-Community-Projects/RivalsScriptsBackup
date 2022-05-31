@@ -166,6 +166,8 @@ miiverse_post = sprite_get("miiverse_post");
 uhc_victory_quote = "chek ot mai deviantart oc do not steel";
 kf_hud_offset = -34;
 copy_ability_id = 12;
+sna_interrogated_line_01 = "I'll tell ya... for the right price!"; // Snake interrogation line 1.
+sna_interrogated_line_02 = "I have some nice cookies if you let me go!"; // Snake interrogation line 2.
 
 kirbyability=16;
 swallowed=false;
@@ -178,6 +180,14 @@ bike_smokeH=hit_fx_create(sprite_get("bike_smokeH"), 12);
 bike_smokeD=hit_fx_create(sprite_get("bike_smokeD"), 12);
 bike_smokeV=hit_fx_create(sprite_get("bike_smokeD"), 12);
 dair_aftereffect=hit_fx_create(sprite_get("dair_after_effect"), 20);
+dair_aftereffect0=hit_fx_create(sprite_get("dair_after_effect0"), 20);
+dair_aftereffect1=hit_fx_create(sprite_get("dair_after_effect1"), 20);
+dair_aftereffect2=hit_fx_create(sprite_get("dair_after_effect2"), 20);
+dair_aftereffect3=hit_fx_create(sprite_get("dair_after_effect3"), 20);
+dair_aftereffect4=hit_fx_create(sprite_get("dair_after_effect4"), 20);
+dair_aftereffect5=hit_fx_create(sprite_get("dair_after_effect5"), 20);
+dair_aftereffect6=hit_fx_create(sprite_get("dair_after_effect6"), 20);
+dair_aftereffect7=hit_fx_create(sprite_get("dair_after_effect7"), 20);
 nitro_boost=hit_fx_create(sprite_get("nitro_boost"), 7);
 jump_disc=hit_fx_create(sprite_get("jump_disc"), 40);
 
@@ -187,6 +197,7 @@ meterShine = 0;
 pounce = false;
 pounceChange = false;
 returnBike = false;
+bikeExplosion = false;
 
 voice = 0;
 voice_toggle = get_player_color(player);

@@ -1,4 +1,7 @@
 if (custom_clone) {
+	//command grab protection
+	soft_armor = 999;
+	//Inputs
 	attack_pressed = 0;
 	attack_down = 0;
 	special_pressed = 0;

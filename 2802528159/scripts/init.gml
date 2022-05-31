@@ -51,7 +51,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 6;		// 4    -  6
-prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 20;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -158,6 +158,7 @@ special_anim_timer = 0;
 climbing = false;
 climb_timer = 0;
 wall_gauge = 1000;
+airdodge_cooldown = 1;
 
 anger_state = 0; //0 = blue light, 1 = yellow light, 2 = red light
 anger_value = 0; //max 100

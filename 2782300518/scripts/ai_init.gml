@@ -86,3 +86,6 @@ inactive = 0;
 plat_asset = asset_get("jumpthrough_32_obj");
 solid_asset = asset_get("par_block");
 fs_ai_attempt_use = false;
+
+DACUS_timer = 0
+can_DACUS = false;

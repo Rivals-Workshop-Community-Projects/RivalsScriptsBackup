@@ -1,8 +1,8 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "1.0";
-patch_day = "23";
+patch_ver = "1.1";
+patch_day = "30";
 patch_month = "May";
 
 var num_alts = 29;

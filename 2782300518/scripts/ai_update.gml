@@ -1,21 +1,80 @@
 //Strong Percent determiner
 strongPercent = (2 - ai_target.knockback_adj) * 90;
-//------------------ Wait time
+
+//DACUS
+DACUSpercent = (2 - ai_target.knockback_adj) * 100;
+
 if (get_training_cpu_action() == CPU_STAND && !ai_recovering){
 	joy_pad_idle = true;
 }
 else
 {
-	if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
-  		attacking = true;
-		if wait_time == 0{
-			
-			wait_time = -1;
-		}
-	}else{
-		attacking = false;
+	switch (state)
+	{
+		case PS_ATTACK_GROUND:
+		case PS_ATTACK_AIR:
+			attacking = true;
+			if wait_time == 0{
+				
+				wait_time = -1;
+			}
+		break;
+		
+		//Wavedash towards opponent
+		case PS_WAVELAND:
+			attacking = false;
+			if (temp_level >=7)
+			{
+			 	if chasing{
+			 		if x < ai_target.x{
+						left_down = false;
+						right_down = true;
+					} 	else {
+						left_down = true;
+						right_down = false;
+					}
+			 	}
+			}
+		break;
+		case PS_AIR_DODGE:
+			attacking = false;
+			//Start wavedashing
+			if (temp_level >=7 && position_meeting(x, y+6, plat_asset))
+			{
+		   		if chasing{
+		   			if x < ai_target.x{
+						left_down = false;
+						right_down = true;
+						joy_pad_idle = false;
+						joy_dir = 350;
+					}else {
+						left_down = true;
+						right_down = false;
+						joy_pad_idle = false;
+						joy_dir = 190;
+					}
+		   		}else{
+		   			if x > ai_target.x{
+						left_down = false;
+						right_down = true;
+						joy_pad_idle = false;
+						joy_dir = 350;
+					}else {
+						left_down = true;
+						right_down = false;
+						joy_pad_idle = false;
+						joy_dir = 190;
+					}
+		   		}
+		   		wavelanding = false;
+			}
+		break;
+		default:
+			attacking = false;
+		break;
 	}
 
+	//------------------ Wait time
 	//AI difficulty affects wait time, higher difficulties will see a more aggressive Carol   
 	if(wait_time == -1 and !attacking){
 		wait_time = 72 - (temp_level * 8);
@@ -24,9 +83,15 @@ else
 		wait_time--;
 	}
 
-	if (ai_target.state == PS_DEAD or ai_target.state == PS_RESPAWN){
-		targetbusy = true;
-	rangedtimer = 100;
+	switch (ai_target.state)
+	{
+		case PS_DEAD:
+		case PS_RESPAWN:
+			targetbusy = true;
+			rangedtimer = 100;
+		break;
+		default:
+		break;
 	}
 
 	if (free && !ai_recovering && motorbike == false)
@@ -62,12 +127,7 @@ else
 		{
 			special_down = true;
 		}
-		if (can_wall_jump && has_walljump && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
-		{
-			jump_down = true;
-		}
-		else if (can_wall_jump && has_walljump && !place_meeting(x + 80 * spr_dir, y, asset_get("par_block")) 
-		&& place_meeting(x + 80 * spr_dir, y + 80, asset_get("par_block")))
+		if (place_meeting(x + (10 * hsp), y + (10 * vsp), ai_target))
 		{
 			if (x<get_stage_data( SD_X_POS)) {
 				right_down=true;
@@ -78,13 +138,21 @@ else
 			}
 			attack_pressed = true;
 		}
+		else if (can_wall_jump && has_walljump && place_meeting(x + 80 * spr_dir, y - 40, asset_get("par_block")))
+		{
+			jump_down = true;
+		}
 		else if (walljump_number == 5 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
 		{
-			jumo_down = false;
+			jump_down = false;
 			up_down = true;
 			if (has_airdodge)
 			{
 				shield_down = true;
+				if (temp_level >= 7 && !free)
+				{
+					let_parry = true;
+				}
 			}
 			else
 			{
@@ -146,7 +214,7 @@ else
 	   			//UStrong
 	    		case AT_USTRONG:
 	    		case AT_USTRONG_2:
-		    		if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		{
 			        	clear_button_buffer( PC_ATTACK_PRESSED );
 				        joy_pad_idle = true;
@@ -162,7 +230,7 @@ else
 		        //FStrong
 				case AT_FSTRONG:
 				case AT_FSTRONG_2:
-		    		if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		{
 		    			clear_button_buffer( PC_ATTACK_PRESSED );
 			            joy_pad_idle = true;
@@ -182,7 +250,7 @@ else
 	       		//DStrong
 	       		case AT_DSTRONG:
 	       		case AT_DSTRONG_2:
-		    		if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		{
 		    			clear_button_buffer( PC_ATTACK_PRESSED );
 				   	    joy_pad_idle = true;
@@ -197,7 +265,7 @@ else
 			    break;
 			    case AT_USPECIAL:
 			    case AT_USPECIAL_2:
-		    		if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		{
 		    			clear_button_buffer( PC_ATTACK_PRESSED );
 				   	    joy_pad_idle = false;
@@ -227,53 +295,72 @@ else
 		case 46:
 		case 47:
 		case 48:
-		if (window = 1 && window_timer == 1)
-		{
-			random_direction = random_func(9, 4, 1);
-		}
-		if (random_direction > 0)
-		{
-			if ((window == 3 || window == 5) && window_timer == 1 && has_hit_player)
+			can_DACUS = false;
+			if (window = 1 && window_timer == 1)
 			{
-				switch (random_direction)
+				random_direction = random_func(9, 4, 1);
+			}
+			if (random_direction > 0)
+			{
+				if ((window == 3 || window == 5) && window_timer == 1 && has_hit_player)
 				{
-					case 1:
-						joy_pad_idle = false;
-						if (spr_dir == 1)
-						{
-							right_down = true;
-						}
-						else
-						{
-							left_down = true;
-						}
-						attack_pressed = true;
-					break;
-					case 2:
-						joy_pad_idle = false;
-						up_down = true;
-						attack_pressed = true;
-					break;
-					case 3:
-						joy_pad_idle = false;
-						up_down = true;
-						attack_pressed = true;
-					break;
-					default:
-					break;
+					switch (random_direction)
+					{
+						case 1:
+							joy_pad_idle = false;
+							if (spr_dir == 1)
+							{
+								right_down = true;
+							}
+							else
+							{
+								left_down = true;
+							}
+							attack_pressed = true;
+							break;
+						case 2:
+							joy_pad_idle = false;
+							up_down = true;
+							attack_pressed = true;
+						break;
+						case 3:
+							joy_pad_idle = false;
+							up_down = true;
+							attack_pressed = true;
+						break;
+						default:
+						break;
+					}
 				}
 			}
-		}
-		else if (random_direction == 0)
-		{
-			if ((window == 3 || window == 5) && window_timer == 6 && has_hit_player)
+			else if (random_direction == 0)
 			{
-				joy_pad_idle = false;
-				attack_pressed = true;
+				if ((window == 3 || window == 5) && window_timer == 6 && has_hit_player)
+				{
+					joy_pad_idle = false;
+					attack_pressed = true;
+				}
 			}
-		}
-		break;
+			if (window > 5 && temp_level >=7 and has_hit and DACUSpercent < targetdamage and targetdamage < DACUSpercent * 1.30 
+		    && !ai_recovering){
+		    	switch (attack)
+		    	{
+		    		case AT_UTILT:
+		    		case 46:
+		    			can_DACUS = true;
+		    		break;
+		    		default:
+		    			can_DACUS = false;
+		    		break;
+		    	}
+		    }
+		    else
+		    {
+		    	can_DACUS = false;
+		    }
+			break;
 		case AT_DAIR:
+			can_DACUS = false;
 			if (temp_level >= 7 && !do_not_attack && !ai_recovering && !offstage && has_hit)
 			{
 				up_down = true;
@@ -281,6 +368,7 @@ else
 			}
 		break;
 		case AT_EXTRA_2:
+			can_DACUS = false;
 			if (temp_level >= 7 && !do_not_attack && !ai_recovering && !offstage && has_hit)
 			{
 				if (x<ai_target.x) {
@@ -292,29 +380,39 @@ else
 				}
 				special_pressed = true;
 			}
-		break;
+			break;
 		case AT_NSPECIAL:
 		case AT_NSPECIAL_2:
-			if (!has_hit_player)
+			can_DACUS = false;
+			switch (state)
 			{
-				if (x<get_stage_data( SD_X_POS)) {
-					right_down=true;
-					left_down=false;
-				} else{
-					left_down=true;
-					right_down=false;
-				}
-				down_down = true;
-				shield_pressed = true;
-			}
-			else if (has_hit && (window == 2 && window_timer >= 79))
-			{
-				jump_down = true;
-				attack_down = true;
+				case PS_ATTACK_GROUND:
+				case PS_ATTACK_AIR:
+					if (!has_hit_player)
+					{
+						shield_pressed = true;
+					}
+					else if (has_hit && (window == 2 && window_timer >= 79))
+					{
+						jump_down = true;
+						attack_down = true;
+					}
+				break;
+				default:
+				break;
 			}
 		case AT_DATTACK:
+		case 3:
 			if (temp_level >= 7 && !do_not_attack && !ai_recovering && offstage && has_hit)
 			{
+				if (DACUSpercent < targetdamage and targetdamage < DACUSpercent * 1.30)
+				{
+					can_DACUS = true;
+				}
+				else
+				{
+					can_DACUS = false;
+				}
 				if (has_hit)
 				{
 					jump_pressed = true;
@@ -322,10 +420,15 @@ else
 				else if (window >= 3)
 				{
 					shield_down = true;
+					if (temp_level >= 7 && !free)
+					{
+						let_parry = true;
+					}
 				}
 			}		
 		break;
 		default:
+			can_DACUS = false;
 		break;
 	}
 	
@@ -378,7 +481,74 @@ else
 	
 	
 	//Advanced Level Ai Stuff, mostly taken from The Knight.
-	if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16 && !ai_recovering){
+	if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16 && !ai_recovering)
+	{
+			if(can_DACUS && !ai_recovering && !dragonDashing && !dragonKO && !dragonFlight){
+    		faceopponent();
+    		DACUS_timer++;
+    		if can_attack and !free{
+   				switch (attack)
+   				{
+   					case AT_DTILT:
+   					case 45:
+	   					clear_button_buffer( PC_ATTACK_PRESSED );
+						clear_button_buffer( PC_JUMP_PRESSED );
+						if ai_target.x > x{
+							right_hard_pressed = true;
+						} 
+						else {
+							left_hard_pressed = true;
+						}
+				        joy_pad_idle = true;
+				        left_down = false;
+				        right_down = false;
+   				        up_down = false;
+   				        down_down = false;
+   				        special_pressed = false;
+   				        attack_pressed = true;
+   				    break;
+   				    default:
+   				    break;
+		 		}
+		 	}
+		
+			switch (attack)
+			{
+				case AT_DATTACK:
+				case 3:
+					if ((window == 2 and window_timer < 2))
+									predictloc(12);
+				predictlocTarget(12);
+				hitboxloc("DACUS");
+			
+				if (chosenAttack == AT_USTRONG) {
+					clear_button_buffer( PC_ATTACK_PRESSED );
+					clear_button_buffer( PC_STRONG_PRESSED );
+					clear_button_buffer( PC_UP_STRONG_PRESSED );
+					joy_pad_idle = true;
+				    up_down = true;
+				    special_pressed = false;
+				    attack_pressed = false;
+				    up_strong_pressed = true;
+				}
+				break;
+				case AT_USTRONG:
+				case AT_USTRONG_2:
+					DACUS_timer = 0;
+					can_DACUS = false;	
+				break;
+				default:
+				break;
+			}
+			if ((window == 2 and window_timer < 2)) and attack == AT_DATTACK{
+
+			
+			}
+				
+			if attack == AT_USTRONG{
+			}
+		}
+
 		
 		//Check the width of the hurtbox
 	    if (ai_target.player != old_ai_target or target_init == true or hurtboxWidth = 0){
@@ -412,64 +582,65 @@ else
 		    		special_down = false;
 			     	special_pressed = false;
 	    		}
-				if state == PS_DASH {
-					right_down = true;
-				}
+	    		switch (state)
+	    		{
+	    			case PS_DASH:
+						right_down = true;
+	    			break;
+	    			default:
+	    			break;
+	    		}
 	    	} else {
+	    		if (!ai_recovering)
+	    		{
+		    		special_down = false;
+			     	special_pressed = false;
+	    		}
 	        	left_hard_pressed = true;
-				if state == PS_DASH {
-					left_down = true;
-				}
+	    		switch (state)
+	    		{
+	    			case PS_DASH:
+						left_down = true;
+	    			break;
+	    			default:
+	    			break;
+	    		}
 	    	}
 	    	chasing = 1
 		}
-	
-		//Wavedash towards opponent
-		if state == PS_WAVELAND{
-		 	if chasing{
-		 		if x < ai_target.x{
-					left_down = false;
-					right_down = true;
-				} 	else {
-					left_down = true;
-					right_down = false;
-				}
-		 	}
+		
+		//Chase - Combos
+		if(ai_target.state_cat == SC_HITSTUN and state != PS_PRATFALL and state_cat != SC_HITSTUN 
+		and !((attack == AT_USPECIAL or attack == AT_FSPECIAL or attack == AT_USPECIAL_2 or attack == AT_USPECIAL_2)
+		and state == PS_ATTACK_AIR) and !ai_target_offstage and !offstage and !can_DACUS and !ai_recovering and !wait_time > 0){
+			if ai_target.x > x{
+	    	    right_hard_pressed = true;
+	    		switch (state)
+	    		{
+	    			case PS_DASH:
+						right_down = true;
+	    			break;
+	    			default:
+	    			break;
+	    		}
+	    	} else {
+	    	 left_hard_pressed = true;
+	    		switch (state)
+	    		{
+	    			case PS_DASH:
+						left_down = true;
+	    			break;
+	    			default:
+	    			break;
+	    		}
+	    	}
+		    chasing = 1;
 		}
-		//Start wavedashing
-	    if (state == PS_AIR_DODGE and position_meeting(x, y+6, plat_asset)){
-	   		if chasing{
-	   			if x < ai_target.x{
-					left_down = false;
-					right_down = true;
-					joy_pad_idle = false;
-					joy_dir = 350;
-				}else {
-					left_down = true;
-					right_down = false;
-					joy_pad_idle = false;
-					joy_dir = 190;
-				}
-	   		}else{
-	   			if x > ai_target.x{
-					left_down = false;
-					right_down = true;
-					joy_pad_idle = false;
-					joy_dir = 350;
-				}else {
-					left_down = true;
-					right_down = false;
-					joy_pad_idle = false;
-					joy_dir = 190;
-				}
-	   		}
-	   		wavelanding = false;
-	    }
 	    
+	    //Parry Projectiles
 	    with (asset_get("pHitBox")){
 			if player != other.player and type == 2 and (other.state_cat == SC_GROUND_NEUTRAL or other.state_cat == SC_AIR_NEUTRAL){
-	    		//print_debug("help");
-	    		if position_meeting(x + (10 * hsp), y + (10 * vsp), other){
+	    		if (position_meeting(x + (10 * hsp), y + (10 * vsp), other) && !other.ai_recovering){
 	    			other.shield_pressed = true;
 		   			if !other.free{
 		   				other.let_parry = true;
@@ -479,11 +650,19 @@ else
 			}
 	    }
 	    //Allows Parry to carry through
-	    if(let_parry and state = PS_PARRY_START){
-	    	joy_pad_idle = true;
-	    	left_down = false;
-	    	right_down = false;
-	    	let_parry = false;
+	    if(let_parry)
+	    {
+	    	switch (state)
+	    	{
+	    		case PS_PARRY_START:
+			    	joy_pad_idle = true;
+			    	left_down = false;
+					right_down = false;
+		    		let_parry = false;
+	    		break;
+	    		default:
+	    		break;
+	    	}
 	    }
 	    //Prevento from attacking if should wait and target is invincible
 	    if(wait_time > 0 or ai_target.invince_time > 10){
@@ -506,33 +685,37 @@ else
 	    var ai_target_offstage = (ai_target.x - hurtboxWidth > room_width - stagex || ai_target.x + hurtboxWidth < stagex);
 	    
 	    //Hitstun breakers
-	    if (prev_state == PS_HITSTUN)
+	    switch (prev_state)
 	    {
-	    	var juggle_break = random_func(1, 1, 1);
-	   		if (juggle_break == 0 || y > (stagey - 300) || !has_airdodge)
-	    	{
-				clear_button_buffer( PC_ATTACK_PRESSED );
-	   			joy_pad_idle = false;
-				up_down = false;
-	    		down_down = false;
-				left_down = false;
-				right_down = false;
-				special_pressed = true;
-				attack_pressed = false;
-		   	}
-		   	else if (juggle_break == 1 && y <= (stagey - 300) && has_airdodge)
-		   	{
-		   		clear_button_buffer( PC_ATTACK_PRESSED );
-		       	joy_pad_idle = true;
-			   	left_down = false;
-	    	   	right_down = false;
-	    	   	up_down = false;
-	    	   	down_down = true;
-	    	   	special_pressed = false;
-	    	   	attack_pressed = true;
-		   	}
+	    	case PS_HITSTUN:
+		    	var juggle_break = random_func(1, 1, 1);
+		   		if (juggle_break == 0 || y > (stagey - 300) || !has_airdodge)
+		    	{
+					clear_button_buffer( PC_ATTACK_PRESSED );
+		   			joy_pad_idle = false;
+					up_down = false;
+		    		down_down = false;
+					left_down = false;
+					right_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+			   	}
+			   	else if (juggle_break == 1 && y <= (stagey - 300) && has_airdodge)
+			   	{
+			   		clear_button_buffer( PC_ATTACK_PRESSED );
+			       	joy_pad_idle = true;
+				   	left_down = false;
+		    	   	right_down = false;
+		    	   	up_down = false;
+		    	   	down_down = true;
+		    	   	special_pressed = false;
+		    	   	attack_pressed = true;
+			   	}
+	    	break;
+	    	default:
+	    	break;
 	    }
-	    
+
 	    //Sit near edge when AI target is offstage
 	    if (ai_target_offstage)
 	    {
@@ -544,22 +727,6 @@ else
 			{
 				new_x = stagex + 16;
 			}
-		}
-		//Don't attack when the opponent is attacking
-	    if ((ai_target.state = PS_ATTACK_GROUND || ai_target.state = PS_ATTACK_AIR) && !ai_target_offstage && ai_target.x < x + 16 && ai_target.x > x - 16 && y == ai_target.y)
-	    {
-	    	joy_pad_idle = false;
-			attack_down = false;
-			if (!ai_recovering)
-			{
-				special_down = false;
-			}
-			shield_down = true;
-			do_not_attack = true;
-	    }
-	    else
-		{
-			do_not_attack = false;
 		}
 		
 		if (!do_not_attack && get_player_damage(ai_target.player) < strongPercent)
@@ -573,7 +740,7 @@ else
 	        		case AT_DATTACK:
 	        		case 3:
 	    			//Dattack
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 		    		    	clear_button_buffer( PC_ATTACK_PRESSED );
 	    					if ai_target.x > x{
@@ -595,7 +762,7 @@ else
 		    		//Jab
 		    		case AT_JAB:
 		    		case 48:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 		    				clear_button_buffer( PC_ATTACK_PRESSED );
 		 					joy_pad_idle = true;
@@ -611,7 +778,7 @@ else
 				   //FTilt
 					case AT_FTILT:
 					case 47:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 		    				clear_button_buffer( PC_ATTACK_PRESSED );
 			 				joy_pad_idle = true;
@@ -632,7 +799,7 @@ else
 					//Utilt
 					case AT_UTILT:
 					case 46:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 			    			clear_button_buffer( PC_ATTACK_PRESSED );
 			 				joy_pad_idle = true;
@@ -648,7 +815,7 @@ else
 					//DTilt
 					case AT_DTILT:
 					case 45:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 		        			clear_button_buffer( PC_ATTACK_PRESSED );
 			     			joy_pad_idle = true;
@@ -664,7 +831,7 @@ else
 					//Up Special
 				    case AT_USPECIAL:
 				    case AT_USPECIAL_2:
-			 			if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+			 			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 			    		{
 		    			clear_button_buffer( PC_ATTACK_PRESSED );
 				   	    joy_pad_idle = false;
@@ -678,7 +845,7 @@ else
 				    break;
 				    case AT_NSPECIAL:
 	   			    case AT_NSPECIAL_2:
-			 			if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+			 			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 			    		{
 		    				clear_button_buffer( PC_ATTACK_PRESSED );
 				   			joy_pad_idle = false;
@@ -700,7 +867,7 @@ else
 	        	switch (chosenAttack)
 	        	{
 	        		case AT_DAIR:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL && has_airdodge)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && has_airdodge)
 		    		    {
 		    				clear_button_buffer( PC_ATTACK_PRESSED );
 		    		    	joy_pad_idle = true;
@@ -713,7 +880,7 @@ else
 		    			}
 		    		break;
 	        		case 40:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 		    				clear_button_buffer( PC_ATTACK_PRESSED );
 		    		    	joy_pad_idle = true;
@@ -727,7 +894,7 @@ else
 	    		    break;
 	    		    case AT_NAIR:
 					case 44:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 	           				clear_button_buffer( PC_ATTACK_PRESSED );
 	    	       			joy_pad_idle = true;
@@ -741,7 +908,7 @@ else
 		    		break;
 		    		case AT_UAIR:
 					case 42:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 	    	    			clear_button_buffer( PC_ATTACK_PRESSED );
 	    	        		joy_pad_idle = true;
@@ -755,7 +922,7 @@ else
 					break;
 					case AT_FAIR:
 					case 43:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 	    		        	clear_button_buffer( PC_ATTACK_PRESSED );
 	    			       	joy_pad_idle = true;
@@ -774,7 +941,7 @@ else
 		    		break;
 		    		case AT_BAIR:
 		    		case 39:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 			               	clear_button_buffer( PC_ATTACK_PRESSED );
 	    		       		joy_pad_idle = true;
@@ -793,7 +960,7 @@ else
 		    		break;
 		    		case AT_USPECIAL:
 		    		case AT_USPECIAL_2:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 		    		    {
 	    	    			clear_button_buffer( PC_ATTACK_PRESSED );
 	    	        		joy_pad_idle = true;
@@ -815,7 +982,7 @@ else
 		    			}
 		    		break;
 		    		case AT_EXTRA_2:
-		    		    if (state != PS_ATTACK_AIR && attack != AT_FSPECIAL && djumps == 0)
+		    		    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && djumps == 0)
 		    		    {
 	    	    			clear_button_buffer( PC_ATTACK_PRESSED );
 	    	        		joy_pad_idle = true;
@@ -836,8 +1003,128 @@ else
 		       	}
 	    	}
 		}
-	
 	}
+}
+
+#define predictloc
+
+fprediction = argument[0];
+
+if(!free and hsp == 0){
+	new_x = prediction_array[@0][@ 0];
+	new_y = prediction_array[@0][@ 1];
+	return;
+}
+
+if fprediction >= stopped_at and stopped_at != -1{
+	xtrag = prediction_array[@stopped_at - 1][@ 0];
+	ytrag = prediction_array[@stopped_at - 1][@ 1];
+	return;
+}
+//print_debug("hi")
+var plat = 0;
+var stage = 0;
+
+var new_x_c = 0;
+var new_y_c = 0;
+var new_vsp = 0;
+var new_hsp = 0;
+
+if fprediction > current_prediction{
+
+	var collide = false;
+	//Get values from current loop
+	new_x_c = prediction_array[@current_prediction][@ 0];
+	new_y_c = prediction_array[@current_prediction][@ 1];
+	new_vsp = prediction_array[@current_prediction][@ 2];
+	new_hsp = prediction_array[@current_prediction][@ 3];
+	current_prediction++;
+	//print_debug(string(fprediction) + " " + string(current_prediction) + " " + string(stopped_at));
+	var project_y = new_vsp + grav;
+	
+	if project_y > max_fall{
+		project_y = max_fall;
+	}
+	if fast_falling{
+		if project_y > fast_fall{
+			project_y = fast_fall;
+		}
+	}
+	
+	stage = position_meeting(new_x_c, new_y_c + project_y, solid_asset);
+	plat = position_meeting(new_x_c, new_y_c + project_y, plat_asset);
+	if (stage or (plat and project_y > 0)){
+		new_vsp = 0;
+		collide = true;
+	}else{
+		new_vsp = project_y;
+		new_y_c += new_vsp;
+	}
+	
+	//X manipulation, apply friction, if it would change polarity it makes it equal to 0. 
+	if new_vsp == 0 and collide{
+		if new_hsp > 0{
+			var project_x = new_hsp - ground_friction;
+			//If it's touching the ground and velocity equals 0 stop predicting and stores previous prediction frame
+			if project_x < 0{
+				project_x = 0;
+				new_x = prediction_array[@current_prediction - 1][@ 0];
+				new_y = prediction_array[@current_prediction - 1][@ 1];
+				stopped_at = current_prediction;
+				return;
+			}
+		}else{
+			var project_x = new_hsp + ground_friction;
+			if project_x > 0{
+				//If it's touching the ground and velocity equals 0 stop predicting and stores previous prediction frame
+				project_x = 0;
+				new_x = prediction_array[@current_prediction - 1][@ 0];
+				new_y = prediction_array[@current_prediction - 1][@ 1];
+				stopped_at = current_prediction;
+				return;
+			}
+		}
+	}else{
+		//In the air, if it would change polarity it makes it equal to 0. 
+		if new_hsp > 0{
+			var project_x = new_hsp - air_frict;
+			if project_x < 0{
+				project_x = 0;
+			}
+		}else if new_hsp < 0{
+			var project_x = new_hsp + air_frict;
+			if project_x > 0{
+				project_x = 0;
+			}
+		}
+		
+	}
+	
+	//Test to see if X manipualtion makes it collide with walls
+	stage = position_meeting(new_x_c + project_x, new_y_c - 2, solid_asset);
+	plat = position_meeting(new_x_c + project_x, new_y_c - 2, plat_asset);
+	if stage or plat{
+		new_hsp = 0;
+		
+	}else{
+		new_hsp = project_x;
+		new_x_c = new_x_c + new_hsp;
+	}
+	
+	//Store values in the array
+	prediction_array[@current_prediction][@ 0] = new_x_c;
+	prediction_array[@current_prediction][@ 1] = new_y_c;
+	prediction_array[@current_prediction][@ 2] = new_vsp;
+	prediction_array[@current_prediction][@ 3] = new_hsp;
+
+	
+	new_x = prediction_array[@fprediction][@ 0];
+	new_y = prediction_array[@fprediction][@ 1];
+	
+}else{
+	new_x = prediction_array[@fprediction][@ 0];
+	new_y = prediction_array[@fprediction][@ 1];
+	//print_debug("frame:" + string(fprediction) + " new_x:" + string(new_x) + " new_y:" + string(new_y) + " new_vsp:" + string(prediction_array[fprediction][@ 2]) + " new_hsp:" + string(prediction_array[fprediction][@ 3]));
 }
 
 #define predictlocTarget
@@ -1009,6 +1296,9 @@ if (motorbike == true)
 		case "strongs":
 			var attacke = [AT_DSTRONG_2, AT_USTRONG_2, AT_FSTRONG_2];
 			break;
+		case "DACUS":
+		var attacke = [AT_USTRONG_2];
+		break;
 	}
 }
 else
@@ -1025,6 +1315,9 @@ else
 		case "strongs":
 			var attacke = [AT_DSTRONG, AT_USTRONG, AT_FSTRONG, AT_USPECIAL];
 			break;
+		case "DACUS":
+		var attacke = [AT_USTRONG];
+		break;
 	}
 }
 
@@ -1101,7 +1394,7 @@ switch(attacke[i]){
 		atkwidth = get_hitbox_value( attacke[i], 1, HG_WIDTH ) div 2;
 		atkheight = get_hitbox_value( attacke[i], 1, HG_HEIGHT ) div 2;
 		//Calculate when the hitbox will come out
-		var frame = 6;
+		var frame = 4;
 		break;
 	case AT_USTRONG:
 		xpos = (get_hitbox_value( attacke[i], 1, HG_HITBOX_X ) + distadd_x)* spr_dir;
@@ -1122,7 +1415,7 @@ switch(attacke[i]){
 		break;
 }
 
-predictlocSimple(frame);
+predictloc(frame);
 predictlocTarget(frame);
 		
 	//Long condition to set the boundaries of the attack (this always calcules the boundaries in rectangles for performance, if the hitbox is an ellipse it might not hit)
@@ -1150,16 +1443,27 @@ if len != 0{
 		
 		//If there is only one attack do not reroll
 		
-		if(chosenAttack == AT_DATTACK){
-			if attack == AT_DATTACK{
-				if random_func(6, 100, true) < 95{
-					chosenAttack = noone;
-					reroll = false;
+		switch (chosenAttack)
+		{
+			case AT_DATTACK:
+			case 3:
+				switch (attack)
+				{
+					case AT_DATTACK:
+					case 3:
+						if random_func(6, 100, true) < 95{
+							chosenAttack = noone;
+							reroll = false;
+							break;
+						}
+					break;
+					default:
 					break;
 				}
-			}
+			break;
+			default:
+			break;
 		}
-		
 		
 		if(len == 1){
 			reroll = false;
@@ -1167,7 +1471,7 @@ if len != 0{
 		}
 		
 		//Any other attack not testing do not reroll
-		if !(chosenAttack == AT_JAB or chosenAttack == AT_FTILT){
+		if !(chosenAttack == AT_JAB or chosenAttack == AT_FTILT or chosenAttack == 47){
 			reroll = false;
 			break;
 		}
@@ -1178,7 +1482,14 @@ if len != 0{
 	chosenAttack = noone;
 }
 
-
+#define faceopponent
+if x > ai_target.x{
+    left_down = true;
+    right_down = false;
+} else {
+    left_down = false;
+    right_down = true;
+}
 
 #define resetPredict
 

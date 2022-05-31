@@ -35,7 +35,8 @@ if (!custom_clone) {
 	}
 	#endregion
 	
-	if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
+	//if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
+	if (!free || state == PS_WALL_JUMP) {
 		move_cooldown[AT_FSPECIAL] = 0;
 	}	
 
@@ -230,6 +231,7 @@ if (!custom_clone) {
 	}
 } else { //Clone Stuff
 	//have_collision = false;
+	soft_armor = 999;
 	force_depth = true;
 	depth = 0;
 	free = false;

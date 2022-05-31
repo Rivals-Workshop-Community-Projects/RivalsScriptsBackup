@@ -69,6 +69,7 @@ switch(attack){
     		hit_player_obj.y += 10;
     		hit_player_obj.free = false;
     		hit_player_obj.state = PS_PARRY;
+    		hit_player_obj.perfect_dodging = true;
     		hit_player_obj.state_timer = 0;
     	}
     	hit_player_obj.grabbed = false;
@@ -188,7 +189,7 @@ switch(attack){
 	break;
 	case AT_FSPECIAL:
 	if(window == 3 && window_timer == 9){
-		move_cooldown[AT_FSPECIAL] = (has_rune("M")? 0: 180);
+		move_cooldown[AT_FSPECIAL] = (has_rune("M")? 0: 300);
 	}
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 4 + (anger_state * (has_rune("J")? 3: 2)));
 	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 4 + (anger_state * (has_rune("J")? 3: 2)));
@@ -213,7 +214,7 @@ switch(attack){
 	break;
 	case AT_DSPECIAL:
 	if(window == 4 && window_timer >= 17){
-		move_cooldown[AT_DSPECIAL] = (has_rune("M")? 0: 120);
+		move_cooldown[AT_DSPECIAL] = (has_rune("M")? 0: 300);
 	}
 	if(!special_down && (window == 2 || window == 3) && (window == 2? window_timer >= 30 : window_timer >= 0)){
 		window = 5;
@@ -692,6 +693,14 @@ switch(attack){
 	if(window == 2 || window == 3) && taunt_pressed{
 		window = 6;
 		window_timer = 0;
+	}
+	//sfx
+	if(window == 3 && window_timer == 12) || (window == 3 && window_timer == 48){
+		sound_play(sound_get(string(random_func_2(floor(x % 200), 6, true)) + "_step"));
+	}
+	if(window == 6 && window_timer == 12){
+		sound_play(sound_get(string(random_func_2(floor(x % 200), 6, true)) + "_step"));
+		sound_play(sound_get(string(random_func_2(floor((x % 199) + 1), 6, true)) + "_step"));
 	}
 	break;
 	
