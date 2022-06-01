@@ -309,8 +309,13 @@ hit_0 = hit_fx_create(sprite_get("0_hit"), 4);
 hit_1 = hit_fx_create(sprite_get("1_hit"), 4);
 hit_2 = hit_fx_create(sprite_get("2_hit"), 4);
 hit_3 = hit_fx_create(sprite_get("3_hit"), 4);
-diffusion1 = hit_fx_create(sprite_get("diffusion"), 14);
-diffusion2 = hit_fx_create(sprite_get("diffusion"), 10);
+diffusion_sprite = 0;
+diffusion1 = hit_fx_create(sprite_get("diffusion_" + string(diffusion_sprite)), 14);
+diffusion2 = hit_fx_create(sprite_get("diffusion_" + string(diffusion_sprite)), 10);
+spread = [];
+spreadvsp = [-6, -5.5, -5, -5.5, -6];
+spreadhsp = [-2, -1, 0, 1, 2];
+spreading = 0;
 
 //fspecial
 missile_sprite = 0; //0 base, 1 sups, 2 ice
@@ -328,6 +333,7 @@ dodgex = x;
 dodgey = y;
 dodgendx = x;
 dodgendy = y;
+dodge_amount = 3;
 
 //rune F
 if(has_rune("F")){

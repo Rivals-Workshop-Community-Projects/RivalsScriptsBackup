@@ -38,3 +38,9 @@ if(attack == AT_FSTRONG && hbox_num == 1){
         }
     }
 }
+
+if(attack == AT_DAIR && hbox_num == 2){
+    if(hitbox_timer > 25){
+        hitstun_factor = .55;
+    }
+}

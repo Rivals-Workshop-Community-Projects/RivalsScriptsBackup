@@ -381,7 +381,7 @@ switch (attack) {
         
         case 2:
         
-        soft_armor = 15;
+        soft_armor = 12;
         
         if ( vsp > -1) {
     	    grav = 0.07;

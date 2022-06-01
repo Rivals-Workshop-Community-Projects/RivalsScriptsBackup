@@ -1,6 +1,10 @@
 ///
 shader_start();
 
+if move_cooldown[AT_DTHROW] > 0 {
+	draw_sprite_ext(currspr, currimg, currx, curry, currsprdir, 1, 0, -1, move_cooldown[AT_DTHROW]/20)
+}
+
 if get_player_color(player) == 6 {
 	
 	spawn_hit_fx( x + 20 - random_func(5, 40, true) - (20*spr_dir), y - random_func(4, 80, true) , apar )
@@ -84,7 +88,7 @@ if attacking && attack = AT_NSPECIAL {
 
 }
 
-if attacking && (attack == AT_FSPECIAL or attack == AT_USPECIAL) && window = 3 {
+if attacking && (attack == AT_FSPECIAL or attack == AT_USPECIAL) && (window = 3 or hitpause)  {
 		 draw_sprite_ext(sprite_index, image_index, x - shsp*2 , y - svsp *2, spr_dir, 1, 0 , -1 , 0.4);
 	 	draw_sprite_ext(sprite_index, image_index, x - shsp*3.5 , y - svsp *3.5, spr_dir, 1, 0 , -1 , 0.3);
 	draw_sprite_ext(sprite_index, image_index, x - shsp*4.5 , y - svsp *4.5, spr_dir, 1, 0 , -1 , 0.2);

@@ -137,8 +137,8 @@ walljump_time       = 32;		// 18   -  32
 wall_frames         = 2;		// may or may not actually work... dan pls
 
 // Parry
-dodge_startup_frames    = 2;
-dodge_active_frames     = 2;
+dodge_startup_frames    = 1;
+dodge_active_frames     = 3;
 dodge_recovery_frames   = 2;
 
 // Tech

@@ -54,7 +54,7 @@ wave_friction = .15;
 //crouch animation frames
 crouch_startup_frames = 2;
 crouch_active_frames = 1;
-crouch_recovery_frames = 1;
+crouch_recovery_frames = 0;
 
 //parry animation frames
 dodge_startup_frames = 1;
@@ -123,7 +123,7 @@ jsCStick = false;
 vfxSlice = {sliceAng:0,sliceX:0,sliceY:0,sliceTimer:0};
 
 // idle anims
-idleList = ["idle2", "idle3"];
+idleList = [sprite_get("idle2"), sprite_get("idle3")];
 idleIndex = 0;
 
 // USpec
@@ -214,3 +214,7 @@ aura = false;
 auraClone = noone;
 auraMeter = 0;
 hue = 0;
+
+// Mio
+var alt = get_player_color(player);
+isFurry = alt==2||alt==3||alt==15||alt==20||alt==22||alt==27;

@@ -59,6 +59,7 @@ if ("rollArray" in self)
 				AddText("DAir cancel");
 				AddText("FSpec into Spike");
 				AddText("Lonin Drip");
+				AddText("Swap Lonin/Mio");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -748,6 +749,23 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Updated Kirby swallow NSpecial with Lonin's new NSpecial stats");
 						break;
+					case 48:
+						AddText("v1.48 - 30 May 2022");
+						AddText("");
+						AddText("Added Mio skin (Attack + Taunt)");
+						AddText("");
+						AddText("Fixed DSpec hurtbox offset");
+						AddText("Fixed Crouch recovery frames");
+						AddText("Fixed small_sprites portal rendering");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.48.1 - 31 May 2022");
+						AddText("");
+						AddText("Changed Fatal Aikijutsu alt to Mallow Sky alt");
+						AddText("");
+						AddText("Mio swapping can now be done on intro");
+						AddText("Mio swapping input is now during taunt, instead of beginning");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -820,6 +838,10 @@ if ("rollArray" in self)
 						case 7:
 							AddText("Down + Taunt, or Up + Taunt");
 							AddText("Lol!");
+							break;
+						case 8:
+							AddText("Press Attack + Taunt to swap between Lonin and Mio");
+							AddText("Lol furry Lonin!");
 							break;
 					}
 				}

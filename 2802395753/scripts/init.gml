@@ -225,3 +225,5 @@ sdi_mult = 0.01; //office jab sdi multiplier
 grabbed_id = noone;
 previous_job = 1;
 job_timer = 0;
+naired_id = noone;
+nair_timer = 0;

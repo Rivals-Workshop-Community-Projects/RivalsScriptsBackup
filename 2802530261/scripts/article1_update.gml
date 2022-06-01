@@ -54,11 +54,33 @@ if(attack == AT_DSPECIAL){
     depth = player_id.depth - 2;
     bomb_timer++;
     if(bomb_type = 0){
-        hsp = 0;
-        vsp = 0;
+        if(spread = 1){
+            spread_timer++;
+            vsp += 0.4;
+            can_be_grounded = 1;
+            through_platforms = false;
+            ignores_walls = false;
+            if(!free){
+                hsp = 0;
+            }else if(free && spread_timer < 60){
+                bomb_timer = 1;
+            }
+            if(bomb_timer == 16 && loop > 0){
+                loop--;
+                bomb_timer = random_func_2(floor(x % 200), 17, true);
+            }
+            if(bomb_timer >= 21){
+                hsp = 0;
+                vsp = 0;
+            }
+        }else{
+            hsp = 0;
+            vsp = 0;
+        }
         image_yscale = 2;
         image_xscale = 2;
         sprite_index = sprite_get("bomb");
+        mask_index = sprite_get("bomb_mask");
         image_index = (bomb_timer / 35) * 12;
         if(bomb_timer == 21){
             sound_play(sound_get("bomb_explode"), false, false, 0.6);

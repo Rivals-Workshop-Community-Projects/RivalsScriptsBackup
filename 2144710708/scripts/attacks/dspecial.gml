@@ -58,6 +58,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_FRICTION, 0.7);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("oldboot_collision"));
 //set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 
 
 

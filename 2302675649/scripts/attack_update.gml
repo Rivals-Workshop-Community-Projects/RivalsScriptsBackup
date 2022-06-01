@@ -21,7 +21,7 @@ switch (attack)
             {
                 if (menuState == 0 && !shield_down)
                     menuStateBuffer = 1;
-                else
+                else if (menuState != 6 || (tutPrevMenu != 4 && tutPrevMenu != 7 && tutPrevMenu != 8))
                 {
                     tutDone[tutPrevMenu] = 1;
                     tutDoneAdv[tutPrevMenu] = 1;
@@ -30,6 +30,7 @@ switch (attack)
             hsp = 0;
             vsp = 0;
         }
+        MioSwap();
         if (!attack_invince && special_down && !special_counter && window == 2)
         {
             sound_play(sound_get("ping"), 0, 0, 6.9);
@@ -38,7 +39,6 @@ switch (attack)
         }
         if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
         if (window == 1 && window_timer == 13) spawn_base_dust(x+44*spr_dir, y, "walk", -spr_dir);
-
         if (state_timer == 1) auraMeter = 0;
 		if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
 		else if (state_timer == 68 && auraMeter == 67) ActivateAura();
@@ -54,6 +54,7 @@ switch (attack)
             sound_play(sound_get("ping"), 0, 0, 6.9);
             thonkObj = {x:x, y:y-100, alpha:16};
         }
+        MioSwap();
         if (state_timer == 1) auraMeter = 0;
 		if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
 		else if (state_timer == 68 && auraMeter == 67) ActivateAura();
@@ -820,5 +821,18 @@ switch (attack)
         hit_player_obj.y += ((y + ypos) - hit_player_obj.y)/ysmooth;
         hit_player_obj.vsp = 0;
         hit_player_obj.old_vsp = 0;
+    }
+}
+
+#define MioSwap()
+{
+    if (!attack_invince && attack_pressed && window == 2)
+    {
+		isFurry = !isFurry;
+		sound_play(asset_get("sfx_ori_grenade_hit_ground"));
+		shake_camera(4, 6);
+		tutDoneAdv[8] = true;
+		spawn_hit_fx(x, y-40, 115);
+    	clear_button_buffer(PC_ATTACK_PRESSED);
     }
 }

@@ -67,6 +67,7 @@ if (attack == AT_NSPECIAL_AIR) {
 
 // Charge up nspecial while the button is held
 if (attack == AT_NSPECIAL) {
+	move_cooldown[AT_NSPECIAL] = 90
 	if (window == 2) {
 		if ((special_down) && (fs_charge < fs_charge_max)) {
 			            var fs_charge_prev = fs_charge; //Helps prevent playing the sound every cycle
@@ -103,6 +104,7 @@ if (attack == AT_NSPECIAL) {
 }
 
 if (attack == AT_NSPECIAL_2) {	
+	move_cooldown[AT_NSPECIAL_2] = 90
 	// Manually detonate future sight
 	if ((window == 2) && (window_timer == 1)) {
 		with (asset_get("obj_article1")) {

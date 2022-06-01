@@ -1,5 +1,10 @@
 // called when the character gets KO'd
 
-sound_play(sound_get("cry"));
+if (get_player_color( player ) == 9) {
+    sound_play(sound_get("cry_sheep"));
+}
+    else{
+    sound_play(sound_get("cry"));
+}
 
 stealth_rock = 0;

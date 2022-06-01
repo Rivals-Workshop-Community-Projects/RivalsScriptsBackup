@@ -68,3 +68,6 @@ sprite_change_offset("officehud", 90, 30);
 sprite_change_offset("chefhud", 90, 30);
 sprite_change_offset("clerkhud", 90, 30);
 sprite_change_offset("mechhud", 90, 30);
+
+sprite_change_offset("projuair", 66, 85);
+sprite_change_offset("projdair", 66, 85);

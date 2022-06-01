@@ -351,19 +351,33 @@ if (attack == AT_DSPECIAL) {
 							
 							other.kb_value = kb_value * abyssmult;
 							other.kb_angle = kb_angle;
-							other.kb_scale = (kb_scale + ((player_id.strong_charge/60) * 0.35)) * abyssmult;
-							//other.kb_scale = (kb_scale) * abyssmult;
+							//other.kb_scale = (kb_scale + ((player_id.strong_charge/60) * 0.35)) * abyssmult;
+
 							
 							other.extra_hitpause = extra_hitpause;
-							other.damage = round((damage + (damage * (player_id.strong_charge/60) * 0.6)) * abyssmult);
-							//other.damage = round((damage) * abyssmult);
+							//other.damage = round((damage + (damage * (player_id.strong_charge/60) * 0.6)) * abyssmult);
+							if (abyssmult > 1) {
+								other.kb_scale = (kb_scale + ((player_id.strong_charge/60) * 0.35)) * abyssmult;
+								other.damage = round((damage + (damage * (player_id.strong_charge/60) * 0.6)) * abyssmult);
+							}
+							else {
+								other.kb_scale = (kb_scale) * abyssmult;
+								other.damage = round((damage) * abyssmult);
+							}
 							other.effect = effect;
 							other.hitpause = hitpause * abyssmult;
 							other.hitpause_growth = hitpause_growth * abyssmult;
 							other.hit_effect = hit_effect;
 							other.extra_hitpause = extra_hitpause;
 							other.camera_shake = camera_shake;
-							other.hitstun_factor = hitstun_factor;
+							//other.hitstun_factor = hitstun_factor;
+							if (hitstun_factor == 0 && abyssmult < 1.25) {
+								other.hitstun_factor = 0.6;
+							}
+							else {
+								other.hitstun_factor = hitstun_factor;
+								
+							}
 							other.dumb_di_mult = dumb_di_mult;
 							other.can_tech = can_tech;
 							other.force_flinch = force_flinch;
@@ -565,19 +579,34 @@ if (attack == AT_DSPECIAL) {
 							
 							other.kb_value = kb_value * abyssmult;
 							other.kb_angle = kb_angle;
-							//other.kb_scale = (kb_scale) * abyssmult;
-							other.kb_scale = (kb_scale + ((player_id.strong_charge/60) * 0.35)) * abyssmult;
+							other.kb_scale = (kb_scale) * abyssmult;
+							//other.kb_scale = (kb_scale + ((player_id.strong_charge/60) * 0.35)) * abyssmult;
 							
 							other.extra_hitpause = extra_hitpause;
-							//other.damage = round((damage) * abyssmult);
-							other.damage = round((damage + (damage * (player_id.strong_charge/60) * 0.6)) * abyssmult);
+							
+							if (abyssmult > 1) {
+								other.kb_scale = (kb_scale + ((player_id.strong_charge/60) * 0.35)) * abyssmult;
+								other.damage = round((damage + (damage * (player_id.strong_charge/60) * 0.6)) * abyssmult);
+							}
+							else {
+								other.kb_scale = (kb_scale) * abyssmult;
+								other.damage = round((damage) * abyssmult);
+							}
+							//other.damage = round((damage + (damage * (player_id.strong_charge/60) * 0.6)) * abyssmult);
 							other.effect = effect;
 							other.hitpause = hitpause * abyssmult;
 							other.hitpause_growth = hitpause_growth * abyssmult;
 							other.hit_effect = hit_effect;
 							other.extra_hitpause = extra_hitpause;
 							other.camera_shake = camera_shake;
-							other.hitstun_factor = hitstun_factor;
+							//other.hitstun_factor = hitstun_factor;
+							if (hitstun_factor == 0 && abyssmult < 1.25) {
+								other.hitstun_factor = 0.6;
+							}
+							else {
+								other.hitstun_factor = hitstun_factor;
+								
+							}
 							other.dumb_di_mult = dumb_di_mult;
 							other.can_tech = can_tech;
 							other.force_flinch = force_flinch;

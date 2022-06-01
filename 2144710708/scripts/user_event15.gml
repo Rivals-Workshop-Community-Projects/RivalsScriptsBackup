@@ -63,7 +63,7 @@ alt_names = [
 "Becker", // epic cat oc from waloogi
 "Sunny", // r cat oc
 "Based Cast", // clairen
-"Dapper Shorts", // fancy pants
+"Undefined", // non binary flag color scheme
 "Sand Cat", // sand cat from kemono friends
 "NES", // nes color pallete, used to be slashe workshop charactr.
 "Mogu Mogu", // nekomata okayu by zerks
@@ -210,6 +210,7 @@ initWords("Upon coming into contact with a hitbox, the boot gets launched and al
 initWords("Boot copies over enemy hitboxes as well, and changes owner.");
 initWords("The arrow above the boot on hit is info about the hitbox. A darker color means more base knockback, a longer arrow means more knockback scaling. The number is the hitbox's damage. The angle should be obvious.");
 initWords("When not moving, the boot only hits players in hitstun and has a bigger hitbox.");	
+initWords("Hitting the boot with x1 hitstun moves gives it x0.6 hitstun.");
 initImage_ext(sprite_get("oldboot"), 0, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("DSpecial: Misc");
@@ -235,15 +236,14 @@ initTip("Dair: Stuff");
 initWords("When this move hits, you bounce upwards in the air.");
 initWords("It also has much less endlag on hit.");
 initWords("You can pogo off the boot!");
-initImage_ext(sprite_get("dair"), 5, fa_center, 3, 1, false, c_white, 1, false, noone, noone, noone, noone);
-//initWords("Yes, this sprite is very stretched. Adapt.");
+initImage_ext(sprite_get("dair"), 5, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("NSpecial: Not obvious things");
 initWords("You can aim up and down.");
 initWords("If used midair, you get pushed back exponentially.");
 initWords("The move can be jump cancelled.");
 initWords("Reload by pressing attack during the move.");
-initWords("You'll stop midair during reloading, and you can jump cancel the frame you finished reloading.")
+initWords("You'll (vertically) stop midair during reloading, and you can jump cancel the frame you finished reloading.")
 initImage_ext(sprite_get("nspecial"), 2, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("Uspecial: Tips");
@@ -423,7 +423,7 @@ cheat_vibrate			= initCheat("Vibrate profusely", [0, 1, 2, 5, 50], ["Off", "Slig
 cheat_boot_selfdamage	= initCheat("Boot self damage", [0, 1], ["Off", "On"], "No one is safe from the boot.");
 cheat_boot_active		= initCheat("Always Active boot", [0, 1], ["Off", "On"], "Makes the boot not lame.");
 cheat_air_strongs		= initCheat("Air Strongs", [0, 1], ["Off", "On"], "becom rastor");
-cheat_fair_buff			= initCheat("kirbsoup owen patch", [0, 1], ["Off", "On"], "Makes forward air cover the entire screen.");
+//cheat_fair_buff			= initCheat("... owen patch", [0, 1], ["Off", "On"], "Makes forward air cover the entire screen.");
 
 
 /*

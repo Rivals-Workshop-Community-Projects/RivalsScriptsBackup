@@ -145,6 +145,15 @@ if(bomb_timer > 0){
 
 //flash shift
 if(power_ups[5] == 1){
+    if(!free){
+        dodge_amount = 3;
+    }
+    if(state == PS_AIR_DODGE && dodge_amount > 0){
+        has_airdodge = 1;
+        if(state_timer == 0){
+            dodge_amount--;
+        }
+    }
     aeion -= (has_rune("N")? 0: (has_rune("A")? 1: 2));
     if(state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODGE) && state_timer = 0{
         sound_play(sound_get("flash_trail"), false, false, 0.6);

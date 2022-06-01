@@ -13,7 +13,7 @@ if ("rollArray" in self)
 	for (var i = 0; i < 6; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0)
 	{
 		gpu_set_fog(1, tempColour, 0, 1);
-		draw_sprite_ext(sprite_get("roll_forward"), i, rollArray[i].rollX, rollArray[i].rollY, rollArray[i].rollDir*2, 2, 0, tempColour, rollArray[i].rollAlpha/30);
+		draw_sprite_ext(sprite_get(isFurry?"rollFur":"roll_forward"), i, rollArray[i].rollX, rollArray[i].rollY, rollArray[i].rollDir*2, 2, 0, tempColour, rollArray[i].rollAlpha/30);
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 
@@ -50,7 +50,7 @@ if ("rollArray" in self)
 	for (var i = 0; i < 10; ++i) if (uspecArray[i] != -1 && uspecArray[i].uspecAlpha > 0)
 	{
 		gpu_set_fog(1, get_player_color(player)==7?c_aqua:tempColour, 0, 1);
-		draw_sprite_ext(get_attack_value(AT_USPECIAL, AG_SPRITE), get_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START), uspecArray[i].uspecX, uspecArray[i].uspecY, uspecArray[i].uspecDir*2, 2, 0, get_player_color(player)==7?c_aqua:tempColour, uspecArray[i].uspecAlpha/15);
+		draw_sprite_ext(isFurry?sprite_get("uspecialFur"):get_attack_value(AT_USPECIAL, AG_SPRITE), get_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START), uspecArray[i].uspecX, uspecArray[i].uspecY, uspecArray[i].uspecDir*2, 2, 0, get_player_color(player)==7?c_aqua:tempColour, uspecArray[i].uspecAlpha/15);
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 

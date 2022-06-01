@@ -60,7 +60,7 @@ if move_cooldown[AT_EXTRA_3] > 0 && smark == 3{
         	angledraw + 90 , -1 , move_cooldown[AT_EXTRA_3]/maxdraw + 0.2);
 
 }
-
+/*
 if smark = 0{
     if get_gameplay_time()%200 < 100 {
     draw_sprite_ext(sprite_get("smarkv"), 0, x  , y + 20,
@@ -110,7 +110,7 @@ if smark = 0{
     
     
 }
-
+*/
 
 if attacking && attack = AT_DSPECIAL && window = 2 {
 	draw_sprite_ext(sprite_index, image_index, ogx - (x - ogx) , y, spr_dir, 1, 0 , -1 , 1);

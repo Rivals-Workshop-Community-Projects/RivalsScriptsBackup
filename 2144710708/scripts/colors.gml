@@ -55,7 +55,7 @@ set_color_profile_slot( 3, 5, 255, 200, 0 ); //crowbar edges
 set_color_profile_slot( 4, 0, 255, 212, 133 ); //body
 set_color_profile_slot( 4, 1, 229, 189, 142 ); //hair
 set_color_profile_slot( 4, 2, 255, 255, 255 ); //shirt
-set_color_profile_slot( 4, 3, 255, 232, 239 ); //shorts
+set_color_profile_slot( 4, 3, 255, 216, 228 ); //shorts
 set_color_profile_slot( 4, 4, 205, 78, 94 ); //crowbar
 set_color_profile_slot( 4, 5, 255, 232, 130 ); //crowbar edges
 
@@ -124,7 +124,7 @@ set_color_profile_slot( 12, 4, 55, 55, 55 ); //crowbar
 set_color_profile_slot( 12, 5, 255, 121, 255 ); //crowbar edges
 
 // abyss palette
-set_color_profile_slot( 13, 0, 166, 172, 214 ); //body
+set_color_profile_slot( 13, 0, 196, 173, 216 ); //body
 set_color_profile_slot( 13, 1, 144, 59, 206 ); //hair
 set_color_profile_slot( 13, 2, 220, 113, 255 ); //shirt
 set_color_profile_slot( 13, 3, 79, 61, 94 ); //shorts
@@ -192,7 +192,7 @@ set_color_profile_slot( 16, 4, 245, 169, 184 ); //crowbar
 set_color_profile_slot( 16, 5, 91, 206, 250 ); //crowbar edges
 
 // becker
-set_color_profile_slot( 17, 0, 191, 158, 141 ); //body
+set_color_profile_slot( 17, 0, 201, 173, 159 ); //body
 set_color_profile_slot( 17, 1, 160, 102, 72 ); //hair
 set_color_profile_slot( 17, 2, 226, 226, 226 ); //shirt
 set_color_profile_slot( 17, 3, 84, 105, 168 ); //shorts
@@ -216,12 +216,23 @@ set_color_profile_slot(19, 4, 255, 13, 106); // crowbar
 set_color_profile_slot(19, 5, 0, 255, 247); // crowbar edges
 
 // fancy pants
+/*
 set_color_profile_slot(20, 0, 255, 255, 255); // body
 set_color_profile_slot(20, 1, 255, 255, 255); // hair
 set_color_profile_slot(20, 2, 79, 79, 79); // shirt
 set_color_profile_slot(20, 3, 255, 152, 0); // shorts
 set_color_profile_slot(20, 4, 255, 152, 0); // crowbar
 set_color_profile_slot(20, 5, 153, 91, 0); // crowbar edges
+*/
+
+// nb
+set_color_profile_slot( 20, 0, 252, 252, 252 ); //body
+set_color_profile_slot( 20, 1, 156, 89, 209 ); //hair
+set_color_profile_slot( 20, 2, 156, 89, 209 ); //shirt
+set_color_profile_slot( 20, 3, 44, 44, 44 ); //shorts
+set_color_profile_slot( 20, 4, 252, 244, 52 ); //crowbar
+set_color_profile_slot( 20, 5, 44, 44, 44 ); //crowbar edges
+
 
 // sand cat
 set_color_profile_slot(21, 0, 255, 235, 198); // body
@@ -259,11 +270,11 @@ set_color_profile_slot( 23, 4, 76, 73, 79 ); //crowbar
 set_color_profile_slot( 23, 5, 232, 87, 235 ); //crowbar edges
 
 // bob from animal crossing (fanmade alt from custom alts buddy)
-set_color_profile_slot( 24, 0, 234, 124, 255 ); //body
+set_color_profile_slot( 24, 0, 238, 163, 255 ); //body
 set_color_profile_slot( 24, 1, 216, 37, 255 ); //hair
 set_color_profile_slot( 24, 2, 255, 70, 120 ); //shirt
 set_color_profile_slot( 24, 3, 255, 70, 120 ); //shorts
-set_color_profile_slot( 24, 4, 255, 165, 25 ); //crowbar
+set_color_profile_slot( 24, 4, 255, 165, 25 ); //crowbars
 set_color_profile_slot( 24, 5, 250, 237, 237 ); //crowbar edges
 
 // return of the cane king
@@ -299,7 +310,7 @@ set_color_profile_slot( 25, 5, 230, 217, 227 ); //crowbar edges
 // beginning of Waloogi686869 alts
 
 // mae borowski
-set_color_profile_slot( 26, 0, 75, 85, 95 ); //body
+set_color_profile_slot( 26, 0, 79, 83, 107 ); //body
 set_color_profile_slot( 26, 1, 85, 75, 95 ); //hair
 set_color_profile_slot( 26, 2, 177, 124, 79 ); //shirt
 set_color_profile_slot( 26, 3, 139, 86, 61 ); //shorts

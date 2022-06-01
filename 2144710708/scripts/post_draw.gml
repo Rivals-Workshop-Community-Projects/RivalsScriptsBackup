@@ -33,6 +33,13 @@ if (nspecial_active == true) {
 
 }
 
+if (nothanks == true) {
+
+	if (get_gameplay_time() < 127) {
+		draw_sprite_ext(sprite_get("undo"), 1, x-2-(get_gameplay_time()), y+10, 1, 1, 0, c_white, (bababooey/120));
+	}
+}
+
 // festive hat p1 of 3 post draw
 if wearing_hat {
 	//colors.gml OR init_shader.gml:
@@ -253,12 +260,12 @@ with (asset_get("pHitBox"))
 			
 			// phone mode
 			if (phone_boot_data != 0) {
-				draw_debug_text(x+arrow_offsetX+80,y+arrow_offsetY-100, "Angle: " + string(kb_angle));
-				draw_debug_text(x+arrow_offsetX+80,y+arrow_offsetY-85, "Base Knockback: " + string(kb_value));
-				draw_debug_text(x+arrow_offsetX+80,y+arrow_offsetY-70, "Knockback Scaling: " + string(kb_scale));
-				draw_debug_text(x+arrow_offsetX+80,y+arrow_offsetY-55, "Effect: " + string(effect));
-				draw_debug_text(x+arrow_offsetX+80,y+arrow_offsetY-40, "Base Hitpause: " + string(hitpause));
-				draw_debug_text(x+arrow_offsetX+80,y+arrow_offsetY-25, "Hitpause Scaling: " + string(hitpause_growth));
+				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-100, "Angle: " + string(kb_angle));
+				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-85, "Base Knockback: " + string(kb_value));
+				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-70, "Knockback Scaling: " + string(kb_scale));
+				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-55, "Effect: " + string(effect));
+				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-40, "Base Hitpause: " + string(hitpause));
+				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-25, "Hitpause Scaling: " + string(hitpause_growth));
 				//draw_debug_text(x+arrow_offsetX+80,y+arrow_offsetY-10, "Angle Flipper: " + string(hit_flipper));
 				
 			}

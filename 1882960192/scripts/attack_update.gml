@@ -244,7 +244,7 @@ if wblastcharge >= 25 {
 	}
 }
 //3 bars
-if wblastcharge >= 45 {
+if wblastcharge > 0 {
 	//DSpecial2
 	if (attack == AT_DSPECIAL_2) and (window == 2) and (window_timer == 3) {
 		wblastcharge -= 45;
@@ -318,7 +318,7 @@ if (attack == AT_USTRONG && wblastcharge >= 25) {
 		}
 	}
 
-if (attack == AT_BAIR && window == 2 && window_timer == 2 && (attack_down || strong_down || left_strong_down || right_strong_down) && wblastcharge >= 35) {
+if (attack == AT_BAIR && window == 2 && window_timer == 2 && (attack_down || strong_down || left_strong_down || right_strong_down) && wblastcharge >= 45) {
 	attack = AT_EXTRA_2;
 	window = 2;
 	window_timer = 0;

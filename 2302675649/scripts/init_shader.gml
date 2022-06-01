@@ -72,6 +72,7 @@ switch (get_player_color(player))
 {
     case 3:  outline_colour = [60,   0,   60]; break;
     case 5:  outline_colour = [35,   67,  49]; break;
+    case 15: outline_colour = [40,   0,   40]; break;
     case 21: outline_colour = [90,   31,   7]; break;
 }
 

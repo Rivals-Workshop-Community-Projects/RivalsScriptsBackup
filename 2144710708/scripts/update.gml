@@ -1,5 +1,6 @@
 // the dreaded... UPDATE AHHHH
 
+
 // sleep kirby support
 //Sleep Kirby Hat Offsets
 if (free){
@@ -24,12 +25,20 @@ if (get_gameplay_time() == 2) {
 
 if (nothanks == true) {
 	
-	if (get_gameplay_time() == 4) {
+	if (get_gameplay_time() < 7) {
 		set_attack(AT_NTHROW);
+
 	}
 	
 	if (get_gameplay_time() < 127) {
+		bababooey = bababooey - 1;
 		can_move = false;
+		hsp = 0;
+		vsp = 0;
+		move_cooldown[AT_DSPECIAL] = 2;
+		move_cooldown[AT_NSPECIAL] = 2;
+		move_cooldown[AT_FSPECIAL] = 2;
+		move_cooldown[AT_USPECIAL] = 2;
 	}
 }
 
@@ -141,13 +150,14 @@ if(variable_instance_exists(id,"diag"))
 }
 
 // afk timer thing
+/*
 if (state_timer > afk_timer) && (state == PS_IDLE) {
 	is_afk = true;
 }
 else {
 	is_afk = false;
 }
-
+*/
 
 
 // special taunt for specific alts
@@ -248,11 +258,6 @@ with (asset_get("pHitBox"))
 }
 
 // air strongs cheat
-		
-		// aeiral strongs if i ever decide to try that one day
-		/*
-
-		*/
 if (phone_cheats[cheat_air_strongs] != 0) {
 	set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
 	set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
@@ -437,6 +442,8 @@ if (ll_stage) {
 	move_cooldown[AT_DSPECIAL] = 99999;
 	
 }
+
+// preface: this is all to prevent the boot parryback bug where owen becomes invincible
 
 // checks how long user has been in the parry state.
 // if it has been too long, the idle state is entered.
@@ -676,8 +683,8 @@ if (runeG == true) {
 	set_hitbox_value(AT_NAIR, 5, HG_HEIGHT, 144);
 	
 	// more damage
-	set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 3);
-	set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 8);
+	set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 2);
+	set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 4);
 	
 	// more knockbask scaling on final hit
 	set_hitbox_value(AT_NAIR, 5, HG_KNOCKBACK_SCALING, .4);
@@ -708,8 +715,8 @@ if (runeH == true) {
 	set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 	set_window_value(AT_DAIR, 3, AG_WINDOW_TYPE, 1);
-	set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 10);
-	set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
+	set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 8);
+	set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 	set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 	set_window_value(AT_DAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
 
@@ -738,7 +745,7 @@ if (runeH == true) {
 
 }
 
-// Rune I - FSPECIAL deals Clairen stun.
+// Rune I - FSPECIAL deals Clairen stun and is bigger
 if (runeI == true) {
 	set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 11);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 5);
@@ -748,10 +755,12 @@ if (runeI == true) {
 	
 	// clairen stun color
 	fspecial_color = $F7FF00; // blue/green/red hexidecimal format 
+
 }
 
-// Rune J - FSPECIAL sourspot bigger
+// Rune J - big radius
 if (runeJ == true) {
+	
 	// bigg radius
 	set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 200);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 200);
@@ -785,6 +794,7 @@ if (runeM == true) {
 }
 
 // Rune N - parry stun :D
+// (this did not help)
 if (runeN == true) {
 	set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
@@ -889,7 +899,7 @@ if trummelcodecneeded{
     trummelcodecspeaker[page] = 3; // Owen
     trummelcodecexpression[page] = 0; // default
 
-    trummelcodecline[page,1] = "actually im a gi-";
+    trummelcodecline[page,1] = "actually im-";
     trummelcodecline[page,2] = "";
     trummelcodecline[page,3] = "";
     trummelcodecline[page,4] = "";

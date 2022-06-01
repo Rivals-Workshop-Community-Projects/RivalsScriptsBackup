@@ -20,6 +20,10 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) and wblastcharge > 0 an
 	}
 }
 
+/*
+draw_debug_text( x, y + 60, string(wblastcharge));
+*/
+
 shader_start();
 if state == PS_ATTACK_GROUND && attack == AT_TAUNT {
 	if (window == 4 && window_timer > 4 || window == 5 || window == 6) {

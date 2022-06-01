@@ -31,6 +31,7 @@ if (phone_cheats[cheat_hit_jumps] != 0) {
 
 // fair buffffff...........
 // (munophone cheat)
+/*
 if (attack == AT_FAIR) {
 	if (phone_cheats[cheat_fair_buff] == 1) {
 		set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 20000);
@@ -42,6 +43,7 @@ if (attack == AT_FAIR) {
 		set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 84);
 	}
 }
+*/
 
 // for abyss rune M meter
 // when meter is active, make aerials jump and attack cancellable
@@ -279,7 +281,13 @@ if (attack == AT_DAIR){
     if (has_hit == true){
 		
 		if(hitpause == false){
-			window = 5; // instantly switch to the last window
+			// instantly switch to the last window
+			if (!runeH) {
+				window = 5; 
+			}
+			else {
+				window = 3;
+			}
 			destroy_hitboxes();	// prevent lingering hitboxes	 
 		}
 		
@@ -314,13 +322,43 @@ if (attack == AT_DAIR){
 
 if (attack == AT_USPECIAL){
 
-	
+	// cancel uspecial with walljump anytime
+	if (window > 2) {
+		can_wall_jump = true;
+	}
+		
 	if (window == 2) {
 		if (window_timer == 5 && hitpause == false && !free) {
 			spawn_dust_fx( x, y-2, sprite_get("uspecial_dust"), 10 );
 			
 		}
 		
+	}
+	
+	if (window == 4) {
+		
+		if (has_hit || runeC) {
+			// "autocancel"
+			if (window_timer == 3) {
+				window_timer = 18;
+			}
+		}
+		
+		if (window_timer == 3) {
+			//spawn_dust_fx( x-(4*spr_dir), y, sprite_get("uspecial_effect"), 10 );
+		}
+		
+		if (window_timer == 7) {
+			//spawn_dust_fx( x-(4*spr_dir), y, sprite_get("uspecial_effect"), 10 );
+			
+		}
+
+	}
+	
+	if (window == 3) {
+		if (window_timer == 2) {
+			spawn_dust_fx( x-(19*spr_dir), y-16, sprite_get("uspecial_aftersmear"), 10 );
+		}
 	}
 	
 	/*
@@ -380,7 +418,14 @@ if (attack == AT_USPECIAL){
 		sound_play(sound_get("tau_overcharge"));
 		
 		can_fast_fall = true;
-		set_state( PS_PRATFALL );
+		if (!runeC) {
+			set_state( PS_PRATFALL );
+		}
+		else {
+			set_state( PS_IDLE_AIR );
+			// found this by chance in the manual. bless u whoever added it
+			clear_button_buffer( PC_SHIELD_PRESSED );
+		}
 
 	}
 	

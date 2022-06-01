@@ -1,6 +1,6 @@
 //post-draw
 if(attack == AT_NSPECIAL && window == 2 && charge >= 20 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
-    draw_sprite_ext(sprite_get(string(beam_sprite) + "_charging"), (charge = 90? ((state_timer) / 90 * 20) % 2 + 18: (charge / 90) * 17), x + (spr_dir = 1? 24: -62), y - (spr_dir = 1? 62: 64), 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get(string(beam_sprite) + "_charging"), (charge = 90? ((state_timer) / 90 * 20) % 2 + 18: (charge / 90) * 17), x + (spr_dir = 1? (free? 16: 24): (free? -54: -62)), y - (spr_dir = 1? 62: 64), 2, 2, 0, c_white, 1);
 }
 
 if(attack == AT_NSPECIAL && window == 2 && charge >= 90 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
@@ -33,16 +33,16 @@ if((state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DOD
     dodgendy = y;
 }
 
-if(attack == AT_BAIR && state == PS_ATTACK_AIR){
+if(attack == AT_BAIR && state == PS_ATTACK_AIR && missile_amount >= 1){
     switch(window){
         case 2:
-        draw_sprite_ext(sprite_get("0_missile_hit"), window_timer / 8 * 5, x + (spr_dir = 1? -60: 28), y - 72, 2, 2, 0, c_white, 1);
+        draw_sprite_ext(sprite_get(string(missile_sprite) + "_missile_hit"), window_timer / 8 * 5, x + (spr_dir = 1? -60: 28), y - 72, 2, 2, 0, c_white, 1);
         break;
         case 3:
-        draw_sprite_ext(sprite_get("0_missile_hit"), window_timer / 8 * 5, x + (spr_dir = 1? -68: 36), y - 34, 2, 2, 0, c_white, 1);
+        draw_sprite_ext(sprite_get(string(missile_sprite) + "_missile_hit"), window_timer / 8 * 5, x + (spr_dir = 1? -68: 36), y - 34, 2, 2, 0, c_white, 1);
         break;
         case 4:
-        draw_sprite_ext(sprite_get("0_missile_hit"), window_timer / 8 * 5, x + (spr_dir = 1? -56: 24), y - 6, 2, 2, 0, c_white, 1);
+        draw_sprite_ext(sprite_get(string(missile_sprite) + "_missile_hit"), window_timer / 8 * 5, x + (spr_dir = 1? -56: 24), y - 6, 2, 2, 0, c_white, 1);
         break;
     }
 }

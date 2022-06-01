@@ -11,6 +11,12 @@ ncode1 = "The personification of [REDACTED]"
 ncode2 = "Unknown abilities."
 ncode3 = "Unknown motives."
 
+currspr = 0
+currimg = 0
+currx = 0
+curry = 0
+currsprdir = 0
+
 fspechit = 0
 fspechit2 = 0
 AClone = noone

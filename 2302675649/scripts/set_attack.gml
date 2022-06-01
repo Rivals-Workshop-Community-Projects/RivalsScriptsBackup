@@ -21,12 +21,15 @@ switch (attack)
 	case AT_TAUNT:
 		if (down_down || up_down)
 			attack = AT_EXTRA_1;
-		else if (get_player_color(player) == 12 && !practice)
-			attack = AT_TAUNT_2;
-		else if (get_player_color(player) == 19 && !practice)
+		else
 		{
-			sound_play(sound_get("tts"),0,-4,4);
-			attack = AT_EXTRA_2;
+			if (get_player_color(player) == 12 && !practice && !isFurry)
+				attack = AT_TAUNT_2;
+			else if (get_player_color(player) == 19 && !practice && !isFurry)
+			{
+				sound_play(sound_get("tts"),0,-4,4);
+				attack = AT_EXTRA_2;
+			}
 		}
 		break;
 	case AT_DSPECIAL:

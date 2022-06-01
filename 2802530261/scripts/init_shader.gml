@@ -1,4 +1,4 @@
-if(get_player_color(player) == 27 || get_player_color(player) == 28 || get_player_color(player) == 29){
+if(get_player_color(player) == 27 || get_player_color(player) == 28 || get_player_color(player) == 29 || get_player_color(player) == 30){
     set_character_color_shading(0, 0);
     set_character_color_shading(1, 0);
     set_character_color_shading(2, 0);

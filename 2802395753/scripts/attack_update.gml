@@ -60,18 +60,25 @@ switch(attack){
 			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
 			array_push(phone_dust_query, [x, y, "dash", -spr_dir]);
 		}
+		if(job == "chef"){
+			if(has_hit){
+				set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 6);
+			} else {
+				reset_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH);
+			}
+		}
 		if(window == 1 && window_timer == 1){
 			if(job == "chef"){
 				set_num_hitboxes(AT_UTILT, 5);
 				set_hitbox_value(AT_UTILT, 3, HG_ANGLE, 85);
-				set_hitbox_value(AT_UTILT, 3, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_UTILT, 3, HG_HITSTUN_MULTIPLIER, 1.25);
 				set_hitbox_value(AT_UTILT, 3, HG_TECHABLE, 2);
+				set_hitbox_value(AT_UTILT, 3, HG_KNOCKBACK_SCALING, 0.4);
 			} else {
 				reset_hitbox_value(AT_UTILT, 3, HG_ANGLE);
-				reset_hitbox_value(AT_UTILT, 3, HG_BASE_KNOCKBACK);
+				reset_hitbox_value(AT_UTILT, 3, HG_KNOCKBACK_SCALING);
 				reset_hitbox_value(AT_UTILT, 3, HG_HITSTUN_MULTIPLIER);
 				reset_hitbox_value(AT_UTILT, 3, HG_TECHABLE);
+				reset_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH);
 				set_num_hitboxes(AT_UTILT, 3);
 			}
 		}
@@ -82,10 +89,17 @@ switch(attack){
 				attack_end();
 			}
 			if(job == "mechanic"){
-				set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 35);
-				set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 7);
-				set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .7);
-				set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+				if(has_hit){
+					can_attack = true;
+					can_strong = true;
+					can_jump = true;
+				}
+				set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 55);
+				set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 5);
+				set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .4);
+				// set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 7);
+				// set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .7);
+				// set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 				if(has_hit_player && up_strong_pressed){
 					attack = AT_USTRONG;
 					window = 2;
@@ -110,11 +124,7 @@ switch(attack){
 	case AT_NAIR:
 		if(window == 1 && window_timer == 1){
 			if(job == "clerk"){
-				set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 35);
-				set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 5);
 			} else {
-				reset_hitbox_value(AT_NAIR, 1, HG_ANGLE);
-				reset_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK);
 			}
 		}
 		
@@ -158,7 +168,7 @@ switch(attack){
 		if(window == 1 && window_timer == 1){
 			if(job == "chef"){
 				set_hitbox_value(AT_DAIR, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
-				set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 7);
+				set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 2);
 				set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 180);
 			} else {
 				reset_hitbox_value(AT_DAIR, 2, HG_PROJECTILE_GROUND_BEHAVIOR);
@@ -170,9 +180,11 @@ switch(attack){
 	case AT_FSTRONG:
 		//projectile goes farther by charging
 		set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 7 + strong_charge/10);
-		// if(job == "office"){
-		// 	set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 13);
-		// }
+		if(job == "office"){
+			set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
+		} else {
+			reset_hitbox_value(AT_FSTRONG, 1, HG_ANGLE);
+		}
 		move_cooldown[AT_FSTRONG] = 30;
 		if window == 2 && window_timer == phone_window_end{
 			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
@@ -199,6 +211,15 @@ switch(attack){
 		}
 		break;
 	case AT_DSTRONG:
+		if(window == 1 && window_timer == phone_window_end){
+			soft_armor = 8;
+		}
+		if(window == 1 && window_timer == phone_window_end - 1){
+			soft_armor += .05;
+		}
+		if(window == 3 && window_timer == 3){
+			soft_armor = 0;
+		}
 		if(job == "clerk"){
 			set_num_hitboxes(AT_DSTRONG, 3);
 			if(window == 2 && window_timer == phone_window_end){
@@ -209,6 +230,12 @@ switch(attack){
 			set_num_hitboxes(AT_DSTRONG, 2);
 		}
 		break;
+	case AT_TAUNT:
+	move_cooldown[AT_TAUNT] = 2;
+	if(window_timer > 55){
+		iasa_script();
+	}
+	break;
 
 // if (attack == AT_FSTRONG)
 // {
@@ -239,20 +266,22 @@ switch(attack){
 	
 	case AT_FSPECIAL:
 		if(job == "mechanic"){
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 103);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -42);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 60);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 50);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 60);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .02);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.2);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_TECHABLE, 1);
 		} else {
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 103);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -42);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 20);
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 10);
-			reset_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE);
+			reset_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK);
+			reset_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING);
+			reset_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
+			reset_hitbox_value(AT_FSPECIAL, 1, HG_TECHABLE);
+			reset_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH);
+			reset_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT);
 		}
 		
-		move_cooldown[AT_FSPECIAL] = 200;//500
+		move_cooldown[AT_FSPECIAL] = 120;//500
 		can_move = false;
 		can_fast_fall = false;
 		switch(window){
@@ -339,8 +368,8 @@ switch(attack){
 		
 		if(job == "clerk"){
 			set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW_CREATION_FRAME, 17);
-			set_hitbox_value(AT_USPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 7);
-			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+			set_hitbox_value(AT_USPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 6);
+			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 			set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, .85);
 			set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 3);
 			set_num_hitboxes(AT_USPECIAL, 6);

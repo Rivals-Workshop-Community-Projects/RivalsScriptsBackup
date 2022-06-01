@@ -14,4 +14,7 @@ if(attack == AT_DSPECIAL){
     bomb_type = player_id.bomb_type;
     bomb_timer = 0;
     player_id.bomb_amount++;
+    spread = 0;
+    loop = 0;
+    spread_timer = 0;
 }

@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 48;
+	var noOfPatches = 49;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -34,7 +34,7 @@ if (practice)
 			break;
 		case 3: // Adv Tut Menu
 			Invince();
-			MenuNav(8, 1, 6);
+			MenuNav(9, 1, 6);
 			break;
 		case 4: // Change Notes
 			Invince();
@@ -145,10 +145,16 @@ else
 hue+=3;
 hue%=255;
 
-// sounds
 switch (state)
 {
 	case PS_SPAWN:
+		if (attack_pressed)
+		{
+			isFurry = !isFurry;
+			sound_play(asset_get("sfx_ori_grenade_hit_ground"),0,-4,0.3);
+		    spawn_hit_fx(x, y-40, 115);
+			clear_button_buffer(PC_ATTACK_PRESSED);
+		}
 		if (state_timer == 68)
 		{
 			sound_play(sound_get("button"));

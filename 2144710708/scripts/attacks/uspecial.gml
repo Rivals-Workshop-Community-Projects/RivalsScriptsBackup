@@ -32,8 +32,8 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -14);
 
 // endlag
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 
 set_num_hitboxes(AT_USPECIAL, 3);

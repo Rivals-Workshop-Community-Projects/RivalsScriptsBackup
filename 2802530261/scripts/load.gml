@@ -181,21 +181,27 @@ sprite_change_offset("power_charge", 24, 32);
 sprite_change_offset("ball_collision", 16, 32);
 
 sprite_change_offset("0_shot", 20, 17);
-sprite_change_offset("0_charge", 20, 17);
+sprite_change_offset("0_charge", 41, 31);
 sprite_change_offset("0_hit", 8, 8);
 sprite_change_offset("1_shot", 20, 17);
-sprite_change_offset("1_charge", 20, 17);
+sprite_change_offset("1_charge", 41, 31);
 sprite_change_offset("1_hit", 8, 8);
 sprite_change_offset("2_shot", 20, 17);
-sprite_change_offset("2_charge", 20, 17);
+sprite_change_offset("2_charge", 41, 31);
 sprite_change_offset("2_hit", 8, 8);
 sprite_change_offset("3_shot", 20, 17);
-sprite_change_offset("3_charge", 20, 17);
+sprite_change_offset("3_charge", 41, 31);
 sprite_change_offset("3_hit", 8, 8);
 
 sprite_change_offset("cross_bomb", 98, 98);
 sprite_change_offset("bomb", 24, 24);
+sprite_change_offset("bomb_mask", 4, 4);
 sprite_change_offset("power_bomb", 30, 24);
 
 sprite_change_offset("idle_hbox", 23, 66);
 sprite_change_offset("crouchbox", 23, 50);
+
+sprite_change_offset("diffusion_0", 0, 0);
+sprite_change_offset("diffusion_1", 4, 4);
+sprite_change_offset("diffusion_2", 4, 4);
+sprite_change_offset("diffusion_3", 4, 4);

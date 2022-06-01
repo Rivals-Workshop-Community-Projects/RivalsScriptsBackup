@@ -7,7 +7,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("strong_hurt"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ice_on_player"));
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("throw"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 0);
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 12);

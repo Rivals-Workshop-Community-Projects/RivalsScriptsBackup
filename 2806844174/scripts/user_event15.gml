@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 11;
+num_alts = 12;
 
 // Whether or not to display a name for each alt.
 use_alt_names = false;
@@ -51,7 +51,8 @@ alt_names = [
 	"Stone",
 	"Venom",
 	"Spicy",
-	"i ran out of alt name ideas"
+	"i ran out of alt name ideas",
+	"Time to Morb"
 	];
 
 
@@ -248,6 +249,26 @@ in a Patch.
 
 
 // other patches go here...
+
+initPatch("1.2", "May 28, 2022"); // (replace the date lol)
+initSection("All Strong startup increased by 2 frames
+Dstrong KBS 1.0 -> .9
+Dstrong endlag 13 -> 15
+Ustrong sourspot damage 8 -> 5
+Ustrong sourspot KBS .9 -> .5
+Ustrong endlag 15 -> 16
+Ustrong sweetspot doesn't reach as low to the ground
+Fstrong endlag 14 -> 17
+Fstrong KBS 1.1 -> 1.0
+Dspecial endlag 15 -> 18
+
+Ftilt startup 7 -> 6
+Uair startup 9 -> 8
+Uair hitbox 1 size increased
+Uair hitbox 2 size increased");
+
+initHeader("Buffs:");
+initSection("Added Morbius alt");
 
 initPatch("1.1", "May 22, 2022"); // (replace the date lol)
 initSection("Dspecial slash length reduced a bit.");

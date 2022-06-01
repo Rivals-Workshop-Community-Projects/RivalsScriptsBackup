@@ -14,10 +14,10 @@
 // 	sound_play(sfx_dbfz_hit_broken);
 // }
 
-if (my_hitboxID.attack == AT_NAIR) {
-	old_vsp = -7;
-	old_hsp = 0 * spr_dir;
-}
+// if (my_hitboxID.attack == AT_NAIR) {
+// 	old_vsp = -7;
+// 	old_hsp = 0 * spr_dir;
+// }
 
 if(my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2){
 	sound_play(asset_get("sfx_bird_nspecial"))
@@ -30,11 +30,11 @@ if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
 if(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 3){
 	set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 135);
 	set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.25);
+	set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.15);
 	
 	set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 135);
 	set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.25);
+	set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.15);
 }
 
 get_hitbox_value(AT_JAB, 1, HG_SDI_MULTIPLIER) 
@@ -51,7 +51,13 @@ if(my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 1 && job == "mech
 	grabbed_id = hit_player_obj;
 }
 
+if(my_hitboxID.attack == AT_NAIR && my_hitboxID.hbox_num == 1 && job == "clerk"){
+	naired_id = hit_player_obj;
+	nair_timer = 20;
+}
+
 if(my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num >= 3 && job == "clerk"){
 	hit_player_obj.x = x;
 	hit_player_obj.y = y;
+	hit_player_obj.should_make_shockwave = false;
 }

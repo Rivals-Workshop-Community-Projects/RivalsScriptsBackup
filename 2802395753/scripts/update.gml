@@ -62,6 +62,16 @@ if(grabbed_id != noone){
     }
 }
 
+if(naired_id != noone){
+    if(naired_id.hitpause == false){
+        nair_timer--;
+    }
+    if(nair_timer < 1){
+        create_hitbox(AT_NAIR, 2, naired_id.x, naired_id.y - 30);
+        naired_id = noone;
+    }
+}
+
 //jobs
 // job = 0;
 

@@ -4,10 +4,17 @@ if !instance_exists(hit_player_obj) {
 	hit_player_obj = self
 }
 
+
 if visible && free && !attacking && state_cat != SC_HITSTUN && state != PS_AIR_DODGE && move_cooldown[AT_TAUNT] == 0 && taunt_down {
 	    		set_attack(AT_TAUNT)
 	    		window = 1
 	    		window_timer = 0
+}
+
+if state == PS_DASH_STOP {
+	if attack_pressed && !attacking {
+		state = PS_IDLE
+	}
 }
 
 if get_gameplay_time() < 60 {
@@ -17,7 +24,7 @@ draw_indicator = false
 if get_gameplay_time() > 60 &&  get_gameplay_time() < 120 && get_gameplay_time() %2 == 0 {
 draw_indicator = false	
 }
-
+	
 
     	
     	
@@ -42,10 +49,12 @@ if !instance_exists(AClone) {
 	cloneout = 0
 	} else if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
 	create_hitbox(AT_DSPECIAL, 1, x, y - 40)
+	move_cooldown[AT_FSPECIAL_2]= 30 + hitstop	
      	cloneout = 1	
 	}
 } else {
 	cloneout = 1
+	move_cooldown[AT_FSPECIAL_2]= 30 + hitstop	
 }
 
 
@@ -204,7 +213,7 @@ if state == PS_IDLE_AIR or state == PS_IDLE or state == PS_FIRST_JUMP or state =
   	           no_other_hit = 1
   		   } else {
   		   	   extra_hitpause = 0
-  		   	   kb_scale = hitpause/18 
+  		   	   kb_scale = hitpause/12 
   		   }
   		}
   	}

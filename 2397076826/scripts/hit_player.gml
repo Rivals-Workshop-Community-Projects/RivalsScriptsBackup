@@ -30,9 +30,9 @@ or my_hitboxID.sound_effect == asset_get("sfx_blow_heavy1"){
 }
 
 
-if my_hitboxID.damage > 2 {
-smark += 1
-}
+//if my_hitboxID.damage > 2 {
+//smark += 1
+//}
    	if get_player_color(player) == 9 && my_hitboxID.attack != AT_NSPECIAL{
    		sound_play(sound_get("stinghit"),false,noone, my_hitboxID.damage/8)
    	}

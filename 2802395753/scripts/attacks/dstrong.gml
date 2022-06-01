@@ -4,7 +4,7 @@ set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 24);//30
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 20);//30
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_kragg_rock_pull"));
@@ -37,8 +37,8 @@ set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 4);
 set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 14);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 290);
-set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 0.75);
+set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 304);

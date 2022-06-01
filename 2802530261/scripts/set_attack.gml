@@ -34,10 +34,64 @@ switch(attack){
     case AT_FSTRONG:
     set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get(string(spr_dir) + "_fstrong"));
     set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_fstrong_hurt"));
+    set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 14);
+    if(power_ups[0]){
+        set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 100);
+        set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 110);
+        set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, get_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE) + 1);
+        diffusion_sprite = 1;
+    }else{
+        set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 80);
+        set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 90);
+    }
+    if(power_ups[1]){
+        set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 11);
+        set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, get_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE) + 1);
+        diffusion_sprite = 2;
+    }else{
+        set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
+    }
+    if(power_ups[2]){
+        set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE, 7);
+        set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, get_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE) + 1);
+        diffusion_sprite = 3;
+    }else{
+        set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE, 0);
+    }
+    if(!power_ups[0] && !power_ups[1] && !power_ups[2]){
+        diffusion_sprite = 0;
+    }
     break;
     case AT_USTRONG:
     set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get(string(spr_dir) + "_ustrong"));
     set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_ustrong_hurt"));
+    set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 11);
+    if(power_ups[0]){
+        set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 100);
+        set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 130);
+        set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, get_hitbox_value(AT_USTRONG, 1, HG_DAMAGE) + 1);
+        diffusion_sprite = 1;
+    }else{
+        set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 90);
+        set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 120);
+    }
+    if(power_ups[1]){
+        set_hitbox_value(AT_USTRONG, 1, HG_EFFECT, 11);
+        set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, get_hitbox_value(AT_USTRONG, 1, HG_DAMAGE) + 1);
+        diffusion_sprite = 2;
+    }else{
+        set_hitbox_value(AT_USTRONG, 1, HG_EFFECT, 0);
+    }
+    if(power_ups[2]){
+        set_hitbox_value(AT_USTRONG, 1, HG_EXTRA_HITPAUSE, 7);
+        set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, get_hitbox_value(AT_USTRONG, 1, HG_DAMAGE) + 1);
+        diffusion_sprite = 3;
+    }else{
+        set_hitbox_value(AT_USTRONG, 1, HG_EXTRA_HITPAUSE, 0);
+    }
+    if(!power_ups[0] && !power_ups[1] && !power_ups[2]){
+        diffusion_sprite = 0;
+    }
     break;
     case AT_DSTRONG:
     set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get(string(spr_dir) + "_dstrong"));
@@ -76,6 +130,46 @@ switch(attack){
     case AT_DAIR:
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get(string(spr_dir) + "_dair"));
     set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_dair_hurt"));
+    //
+    set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 10);
+    set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 8);
+    if(power_ups[0]){
+        set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 60);
+        set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 60);
+        set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 100);
+        set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 90);
+        set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, get_hitbox_value(AT_DAIR, 2, HG_DAMAGE) + 1);
+        set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, get_hitbox_value(AT_DAIR, 2, HG_DAMAGE) + 1);
+        diffusion_sprite = 1;
+    }else{
+        set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 40);
+        set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 40);
+        set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 90);
+        set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 80);
+    }
+    if(power_ups[1]){
+        set_hitbox_value(AT_DAIR, 1, HG_EFFECT, 11);
+        set_hitbox_value(AT_DAIR, 2, HG_EFFECT, 11);
+        set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, get_hitbox_value(AT_DAIR, 2, HG_DAMAGE) + 1);
+        set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, get_hitbox_value(AT_DAIR, 2, HG_DAMAGE) + 1);
+        diffusion_sprite = 2;
+    }else{
+        set_hitbox_value(AT_DAIR, 1, HG_EFFECT, 0);
+        set_hitbox_value(AT_DAIR, 2, HG_EFFECT, 0);
+    }
+    if(power_ups[2]){
+        set_hitbox_value(AT_DAIR, 1, HG_EXTRA_HITPAUSE, 7);
+        set_hitbox_value(AT_DAIR, 2, HG_EXTRA_HITPAUSE, 7);
+        set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, get_hitbox_value(AT_DAIR, 2, HG_DAMAGE) + 1);
+        set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, get_hitbox_value(AT_DAIR, 2, HG_DAMAGE) + 1);
+        diffusion_sprite = 3;
+    }else{
+        set_hitbox_value(AT_DAIR, 1, HG_EXTRA_HITPAUSE, 0);
+        set_hitbox_value(AT_DAIR, 2, HG_EXTRA_HITPAUSE, 0);
+    }
+    if(!power_ups[0] && !power_ups[1] && !power_ups[2]){
+        diffusion_sprite = 0;
+    }
     break;
     case AT_BAIR:
     set_attack_value(AT_BAIR, AG_SPRITE, sprite_get(string(spr_dir) + "_bair"));
@@ -100,3 +194,5 @@ switch(attack){
     set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_jab_hurt"));
     break;
 }
+diffusion1 = hit_fx_create(sprite_get("diffusion_" + string(diffusion_sprite)), 14);
+diffusion2 = hit_fx_create(sprite_get("diffusion_" + string(diffusion_sprite)), 10);

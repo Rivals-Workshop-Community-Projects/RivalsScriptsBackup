@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 11 );
+set_num_palettes( 12 );
 
 // pogerres
 set_color_profile_slot( 1, 0, 130, 130, 130 ); //yellow energy
@@ -107,6 +107,14 @@ set_color_profile_slot( 10, 2, 229, 0, 153 ); //body(s)
 set_color_profile_slot( 10, 3, 244, 147, 12 ); //horn
 set_color_profile_slot( 10, 4, 175, 103, 8 ); //horn(s)
 set_color_profile_slot( 10, 5, 149, 87, 255 ); //eye
+
+// im gonna morb
+set_color_profile_slot( 11, 0, 200, 0, 0 ); //yellow energy
+set_color_profile_slot( 11, 1, 20, 206, 181 ); //body
+set_color_profile_slot( 11, 2, 13, 130, 124 ); //body(s)
+set_color_profile_slot( 11, 3, 229, 91, 105 ); //horn
+set_color_profile_slot( 11, 4, 158, 63, 74 ); //horn(s)
+set_color_profile_slot( 11, 5, 255, 0, 0 ); //eye
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

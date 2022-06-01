@@ -151,19 +151,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $0052CE, $0052CE);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $3b99c4, $3b99c4);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $0B4762, $0B4762);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $398e90, $398e90);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $0052CE, $0052CE);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $3b99c4, $3b99c4);
 				
 			}
 			
@@ -178,19 +178,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $DC0B9A, $DC0B9A);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $dcf2ab, $dcf2ab);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $700B6F, $700B6F);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $85866e, $85866e);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $DC0B9A, $DC0B9A);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $dcf2ab, $dcf2ab);
 				
 			}
 			
@@ -205,19 +205,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $C42060, $C42060);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $618de5, $618de5);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $8C1946, $8C1946);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $416379, $416379);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $C42060, $C42060);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $618de5, $618de5);
 				
 			}
 			
@@ -232,19 +232,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $DCF2AB, $DCF2AB);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $ccdb62, $ccdb62);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $85866E, $85866E);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $6f673e, $6f673e);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $DCF2AB, $DCF2AB);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $ccdb62, $ccdb62);
 				
 			}
 			
@@ -259,19 +259,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $55BF55, $55BF55);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $f06178, $f06178);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $39532E, $39532E);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $844461, $844461);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $55BF55, $55BF55);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $f06178, $f06178);
 				
 			}
 			
@@ -286,19 +286,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $F06178, $F06178);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $dee2fc, $dee2fc);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $844461, $844461);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $8f8f90, $8f8f90);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $F06178, $F06178);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $dee2fc, $dee2fc);
 				
 			}
 			
@@ -313,19 +313,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $054FAD, $054FAD);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $3131e3, $3131e3);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $093241, $093241);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $273e77, $273e77);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $054FAD, $054FAD);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $3131e3, $3131e3);
 				
 			}
 			
@@ -340,19 +340,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $2A67B0, $2A67B0);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $4bfee1, $4bfee1);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $183944, $183944);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $48b294, $48b294);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $2A67B0, $2A67B0);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $4bfee1, $4bfee1);
 				
 			}
 			
@@ -367,19 +367,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $3131E3, $3131E3);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $b2874f, $b2874f);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $2727AB, $2727AB);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $463027, $463027);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $3131E3, $3131E3);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $b2874f, $b2874f);
 				
 			}
 			
@@ -394,19 +394,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $E3B433, $E3B433);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $2c6fe8, $2c6fe8);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $774B28, $774B28);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $255d7c, $255d7c);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $E3B433, $E3B433);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $2c6fe8, $2c6fe8);
 				
 			}
 			
@@ -421,19 +421,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $E042B0, $E042B0);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $ffcb49, $ffcb49);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $742F73, $742F73);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $a26a40, $a26a40);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $E042B0, $E042B0);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $ffcb49, $ffcb49);
 				
 			}
 			
@@ -448,19 +448,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $CCDB62, $CCDB62);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $a5ffaf, $a5ffaf);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $6F673E, $6F673E);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $769470, $769470);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $CCDB62, $CCDB62);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $a5ffaf, $a5ffaf);
 				
 			}
 			
@@ -475,19 +475,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $B2874F, $B2874F);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $136aff, $136aff);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $7A5D38, $7A5D38);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $1e75a2, $1e75a2);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $B2874F, $B2874F);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $136aff, $136aff);
 				
 			}
 			
@@ -529,19 +529,19 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $DB8D08, $DB8D08);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $6aefff, $6aefff);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $26F3110, $26F3110);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $57a597, $57a597);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $DB8D08, $DB8D08);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $6aefff, $6aefff);
 				
 			}
 		    
@@ -556,19 +556,316 @@ if (SpamNeoPlayerCount <= 2) {
 				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
 			
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $7F104E, $7F104E);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $ffdad2, $ffdad2);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $470A2C, $470A2C);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $9d9394, $9d9394);
 				
 				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
 				
 				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
 				
-				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $7F104E, $7F104E);
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $ffdad2, $ffdad2);
+				
+			}
+		    
+		    break;
+		    
+		    case 21:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $3a29c3, $3a29c3);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $1c2657, $1c2657);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $3a29c3, $3a29c3);
+				
+			}
+		    
+		    break;
+		    
+		    case 22:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $26d5ff, $26d5ff);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $2ba59a, $2ba59a);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $26d5ff, $26d5ff);
+				
+			}
+		    
+		    break;
+		    
+		    case 23:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $054fad, $054fad);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $093241, $093241);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $054fad, $054fad);
+				
+			}
+		    
+		    break;
+		    
+		    case 24:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $2a67b0, $2a67b0);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $183944, $183944);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $2a67b0, $2a67b0);
+				
+			}
+		    
+		    break;
+		    
+		    case 25:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $55bf55, $55bf55);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $39532e, $39532e);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $55bf55, $55bf55);
+				
+			}
+		    
+		    break;
+		    
+		    case 26:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $fff65b, $fff65b);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $9b7f49, $9b7f49);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $fff65b, $fff65b);
+				
+			}
+		    
+		    break;
+		    
+		    case 27:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $0000ff, $0000ff);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $0e3493, $0e3493);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $0000ff, $0000ff);
+				
+			}
+		    
+		    break;
+		    
+		    case 28:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $db8d08, $db8d08);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $6f3110, $6f3110);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $db8d08, $db8d08);
+				
+			}
+		    
+		    break;
+		    
+		    case 29:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $00bfff, $00bfff);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $0f9893, $0f9893);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $00bfff, $00bfff);
+				
+			}
+		    
+		    break;
+		   
+			case 30:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $7f104e, $7f104e);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $130511, $130511);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $7f104e, $7f104e);
+				
+			}
+		    
+		    break;
+		    
+		    case 31:
+		    
+		    for (var i = 0; i < 32; i++) {
+			    SpamNeoStringPosYi = SpamNeoStringStartY + SpamNeoStringLineVsp * (i) - 0.5 * 0.3 * power((i), 2);
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i);
+				
+				SpamNeoStringPosYf = SpamNeoStringStartY + SpamNeoStringLineVsp * (i + 1) - 0.5 * 0.3 * power((i + 1), 2);
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp1 * (i + 1);
+			
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $8aabed, $8aabed);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp2 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $5a7281, $5a7281);
+				
+				SpamNeoStringPosXi = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i);
+				
+				SpamNeoStringPosXf = SpamNeoStringStartX + SpamNeoStringLineHsp3 * (i + 1);
+				
+				draw_line_width_colour(SpamNeoStringPosXi, SpamNeoStringPosYi, SpamNeoStringPosXf, SpamNeoStringPosYf, 4, $8aabed, $8aabed);
 				
 			}
 		    

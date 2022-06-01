@@ -13,7 +13,7 @@ rankm -= enemy_hitboxID.damage * 15
  	droptime = 40
     if attack == AT_NAIR  or attack == AT_UAIR or attack == AT_DTILT or attack == AT_FTILT and window < 5{
         sound_play(sound_get("exp1"));
-        take_damage(player, -1, 4)
+        //take_damage(player, -1, 4)
 		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
 		spawn_hit_fx( x , y - 40 , 304 )
 		
@@ -21,14 +21,14 @@ rankm -= enemy_hitboxID.damage * 15
     
      if attack == AT_FSTRONG or attack == AT_USTRONG or attack == AT_DSTRONG {
         sound_play(sound_get("exp1"));
-        take_damage(player, -1, 5)
+        //take_damage(player, -1, 5)
 		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
 		spawn_hit_fx( x , y - 40 , 306 )
     }
     
     if attack == AT_FSPECIAL or attack == AT_USPECIAL {
         sound_play(sound_get("exp2"));
-        take_damage(player, -1, 6)
+        //take_damage(player, -1, 6)
 		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
 		spawn_hit_fx( x , y - 40 , exp1 )
     }
@@ -37,7 +37,7 @@ rankm -= enemy_hitboxID.damage * 15
     if attack == AT_EXTRA_1 or attack == AT_EXTRA_2 {
         sound_play(sound_get("QSGF"));
         sound_play(sound_get("exp2"));
-        take_damage(player, -1, 8)
+        //take_damage(player, -1, 8)
 		var exp2 = hit_fx_create( sprite_get( "exp2" ), 32 );
 		spawn_hit_fx( x , y - 60 , exp2 )
     }

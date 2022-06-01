@@ -19,8 +19,8 @@ if my_hitboxID.type == 1 && attack != AT_NSPECIAL {
 		} 
 		
 		if gun == 2 {
-			bulletnum += 5
-			bulletnum = clamp(bulletnum,0,15)
+			bulletnum += 4
+			bulletnum = clamp(bulletnum,0,12)
 			sound_play(sound_get("gunload"),false,noone,.7,0.9)
 			load = spawn_hit_fx(x - 40*spr_dir,y - 56,302)
 			load.pause = 5

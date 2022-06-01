@@ -264,7 +264,7 @@ abyssMods[@ runes.G] = [2, "Big NAIR."];
 abyssMods[@ runes.H] = [2, "Sandbert DAIR."];
 abyssMods[@ runes.I] = [2, "FSPECIAL deals Clairen stun."];
 abyssMods[@ runes.J] = [2, "FSPECIAL is bigger."];
-abyssMods[@ runes.K] = [0, "DSPECIAL makes attacks 25% stronger."];
+abyssMods[@ runes.K] = [0, "DSPECIAL 25% stronger, deals x1 hitstun, charged by strongs."];
 abyssMods[@ runes.L] = [1, "USPECIAL is a strong vertical beam."];
 abyssMods[@ runes.M] = [3, "Meter (down taunt) that adds 5 air jumps, turbo aerials, and heavier weight."];
 abyssMods[@ runes.N] = [1, "Shield during NSPECIAL firing to fire a bomb. Limited ammo."];
@@ -951,3 +951,15 @@ kinniku_behind = sprite_get("owen_kinniku_behind");
 
 // "support"
 nothanks = false;
+bababooey = 120;
+
+// snake interrogation support
+sna_interrogated_line_01 = "type 'quit smoking' in console";
+sna_interrogated_line_02 = "failrp";
+sna_interrogated_line_03 = "heul";
+
+// kirby fighters support
+copy_ability_id = 5;
+
+// bar stage support
+greenwood_cheer = 1;

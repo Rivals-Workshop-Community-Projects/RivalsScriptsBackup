@@ -176,15 +176,15 @@ set_color_profile_slot( 14, 5, 221, 200, 191 ); //skin
 set_color_profile_slot( 14, 6, 173, 126, 143 ); //skin2
 set_color_profile_slot( 14, 7, 64, 68, 115 ); //hair
 
-// Geese Howard
-set_color_profile_slot( 15, 0, 46, 28, 24 ); //sword
-set_color_profile_slot( 15, 1, 239, 232, 228 ); //shirt
-set_color_profile_slot( 15, 2, 183, 155, 135 ); //shirt2
-set_color_profile_slot( 15, 3, 126, 13, 13 ); //pants
-set_color_profile_slot( 15, 4, 90, 8, 10 ); //pants2
-set_color_profile_slot( 15, 5, 240, 192, 144 ); //skin
-set_color_profile_slot( 15, 6, 217, 126, 71 ); //skin2
-set_color_profile_slot( 15, 7, 245, 211, 111 ); //hair
+// Mallow Sky
+set_color_profile_slot( 15, 0, 184, 255, 255 ); //sword
+set_color_profile_slot( 15, 1, 89, 51, 105 ); //shirt
+set_color_profile_slot( 15, 2, 48, 30, 82 ); //shirt2
+set_color_profile_slot( 15, 3, 126, 13, 85 ); //pants
+set_color_profile_slot( 15, 4, 90, 8, 67 ); //pants2
+set_color_profile_slot( 15, 5, 189, 144, 240 ); //skin
+set_color_profile_slot( 15, 6, 103, 82, 179 ); //skin2
+set_color_profile_slot( 15, 7, 55, 61, 107 ); //hair
 
 // Saikyo Jyanshi
 set_color_profile_slot( 16, 0, 252, 214, 113 ); //sword

@@ -24,6 +24,13 @@ if (hitmove = AT_DAIR) {
 }
 */
 
+if (runeL) {
+	if (hitmove == AT_USPECIAL) {
+		// hitting a player with uspec beam doesn't assign "has hit" for some reason
+		has_hit = true;
+	}
+}
+
 
 if (hitmove == AT_NSPECIAL) {
 	sound_play(asset_get("sfx_blow_weak2"));
