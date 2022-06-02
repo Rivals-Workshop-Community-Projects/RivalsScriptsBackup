@@ -8,6 +8,8 @@ switch(attack)
 				stored_hsp = hsp;
 				frozen = 0;
 				freeze_lockout = 0;
+				knife_set = 1;
+				player_id.stopwatch.trigger = 1;
 				player_id.stopwatch.sound = 1;
 				if (frozen == 0)
 				{
@@ -34,7 +36,7 @@ switch(attack)
 				hsp = stored_hsp;
 				image_xscale = 0.2;
 				image_yscale = 0.2;
-									sprite_index = sprite_get("knife_r");
+				sprite_index = sprite_get("knife_r");
 			}
 			
 			if (player_id.stopwatch.unfreeze == 1)
@@ -53,6 +55,8 @@ switch(attack)
 				stored_hsp = hsp;
 				frozen = 0;
 				freeze_lockout = 0;
+				knife_set = 1;
+				player_id.stopwatch.trigger = 1;
 				player_id.stopwatch.sound = 1;
 				if (frozen == 0)
 				{
@@ -103,6 +107,8 @@ switch(attack)
 				stored_vsp = vsp;
 				frozen = 0;
 				freeze_lockout = 0;
+				knife_set = 1;
+				player_id.stopwatch.trigger = 1;
 				player_id.stopwatch.sound = 1;
 				if (frozen == 0)
 				{

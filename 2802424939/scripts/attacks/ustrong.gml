@@ -1,7 +1,8 @@
 set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
 set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
 set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 6);
-set_attack_value(AT_USTRONG, AG_HAS_LANDING_LAG, 3);
+set_attack_value(AT_USTRONG, AG_HAS_LANDING_LAG, 1);
+set_attack_value(AT_USTRONG, AG_LANDING_LAG, 6);
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
@@ -47,7 +48,7 @@ set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_USTRONG, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -60,7 +60,7 @@ wave_land_adj       = 1.3;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;      // 7.5  -  8
 techroll_speed      = 10;       // 8    -  11
 
-can_wall_cling = true;
+// can_wall_cling = true;
 
 // Character-specific assets init
 

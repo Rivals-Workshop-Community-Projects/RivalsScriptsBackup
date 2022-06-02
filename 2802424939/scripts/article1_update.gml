@@ -10,7 +10,25 @@ with (pHurtBox) {
         }
     }
 }
-
+if (trigger == 1)
+{
+    with(pHitBox)
+    {
+        if (player == other.player)
+        {
+            if (attack == AT_BAIR or attack == AT_FSPECIAL or attack == AT_NSPECIAL)
+            {
+                if (knife_set == 2)
+                {
+                    frozen = 2;
+                    if (freeze_lockout == 1)
+                    freeze_lockout += 1;
+                }
+            }
+        }
+    }
+    trigger = 0;
+}
 if (destroy == 1)
 {
     if (sound = 1)

@@ -26,13 +26,27 @@ switch(attack)
             {
                 if (instance_exists(stopwatch))
                 stopwatch.unfreeze = 0;
-                with(pHitBox)
+                if (!attack_down)
                 {
-                    if (player = other.player)
+                    with(pHitBox)
                     {
-                        frozen = 2;
-                        if (freeze_lockout == 1)
-                        freeze_lockout += 1;
+                        if (player = other.player)
+                        {
+                            frozen = 2;
+                            if (freeze_lockout == 1)
+                            freeze_lockout += 1;
+                        }
+                    }                    
+                }
+                else if (attack_down)
+                {
+                    with(pHitBox)
+                    {
+                        if (player = other.player)
+                        {
+                            if (knife_set == 1)
+                            knife_set += 1;
+                        }
                     }
                 }
             } 
@@ -55,13 +69,27 @@ switch(attack)
             {
                 if (instance_exists(stopwatch))
                 stopwatch.unfreeze = 0;
-                with(pHitBox)
+                if (!special_down)
                 {
-                    if (player = other.player)
+                    with(pHitBox)
                     {
-                        frozen = 2;
-                        if (freeze_lockout == 1)
-                        freeze_lockout += 1;
+                        if (player = other.player)
+                        {
+                            frozen = 2;
+                            if (freeze_lockout == 1)
+                            freeze_lockout += 1;
+                        }
+                    }                    
+                }
+                else if (special_down)
+                {
+                    with(pHitBox)
+                    {
+                        if (player = other.player)
+                        {
+                            if (knife_set == 1)
+                            knife_set += 1;
+                        }
                     }
                 }
             }
@@ -104,13 +132,27 @@ switch(attack)
             {
                 if (instance_exists(stopwatch))
                 stopwatch.unfreeze = 0;
-                with(pHitBox)
+                if (!special_down)
                 {
-                    if (player = other.player)
+                    with(pHitBox)
                     {
-                        frozen = 2;
-                        if (freeze_lockout == 1)
-                        freeze_lockout += 1;
+                        if (player = other.player)
+                        {
+                            frozen = 2;
+                            if (freeze_lockout == 1)
+                            freeze_lockout += 1;
+                        }
+                    }                    
+                }
+                else if (special_down)
+                {
+                    with(pHitBox)
+                    {
+                        if (player = other.player)
+                        {
+                            if (knife_set == 1)
+                            knife_set += 1;
+                        }
                     }
                 }
             }
@@ -262,6 +304,10 @@ switch(attack)
         if (window < 5)
         {
             can_move = false;
+        }
+        else if (window >= 5)
+        {
+            set_attack_value(AT_USTRONG, AG_CATEGORY, 1);
         }
         break;
 }

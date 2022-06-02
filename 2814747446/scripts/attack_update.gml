@@ -248,13 +248,18 @@ if(attack == AT_NSPECIAL_AIR){
 				window = 5;
 				window_timer = 0;
 			}
-			can_jump = true;
+			if(!was_parried) can_jump = true;
 		}
 		off_edge = true;
 		if(free) window = 29;
 	}
 	if(window == 5){
-		iasa_script()
+		if(was_parried){
+			window = 29
+		}else{
+			iasa_script()
+		}
+		
 	}
 }
 

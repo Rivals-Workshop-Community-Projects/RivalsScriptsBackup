@@ -6,3 +6,4 @@ unfreeze = 0;
 clear = 0;
 destroy = 0;
 sound = 0;
+trigger = 0;

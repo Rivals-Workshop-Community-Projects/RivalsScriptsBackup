@@ -75,22 +75,29 @@ spawn_dust_fx( x, y, sprite_get("hfx_dirt"), 26 );
 
 if(state != PS_WALL_JUMP){
 
-	can_cling = has_walljump and !(attack == AT_EXTRA_1 and window > 0);
+	
 	
 }else{
-  if(can_cling and jump_down){
+  if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
      doCling()
   }
 }
 
+can_cling = can_wall_jump and has_walljump and !(attack == AT_EXTRA_1 and window > 0);
+
 if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
-	if(can_wall_jump and has_walljump and can_cling and jump_down){
-		if(place_meeting(x + hsp, y, solids)){
+	if(can_wall_jump and has_walljump and (jump_down or (can_tap_jump() and tap_jump_pressed))){
+		if(place_meeting(x, y, solids)){
 			spr_dir = sign(-hsp)
-			doCling()
+			has_walljump = false;
+			can_cling = false;
+			set_state(PS_WALL_JUMP);
 		}
 	}
 }
+
+
+
 // var ls = ds_list_create()
 // variable_instance_get_names(id,ls)
 // var s = 9
