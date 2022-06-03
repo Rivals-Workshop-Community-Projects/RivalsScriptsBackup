@@ -4,6 +4,7 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 Hikaru_Title = "Unfaded Will"
+can_cancel = 0
 
 nname = "Saji Sakamoto"
 ncode1 = "The voidfox warrior from folk tale."
@@ -50,7 +51,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 13;
-short_hop_speed = 7;
+short_hop_speed = 8;
 djump_speed = 13;
 leave_ground_max = 4.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground

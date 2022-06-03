@@ -4,24 +4,16 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_USPECIAL) {
-    if (window == 4 && window_timer > 4 && window_timer < 30) {
-        if(spr_dir == -1 && left_down) {
-            hsp -= .25;
-            vsp += .12;
+    if (window == 2) {
+        if (placed < 9999) {
+             instance_create(x - 20, y + 5,"obj_article_solid")
+             sound_play(sound_get("lv1shot"));
+             placed++;
         }
-        else if(spr_dir == 1 && right_down) {
-            hsp += .25;
-            vsp += .12;
+        if (placed > 9999) {
+            window = 4;
         }
     }
-   can_move = false;
-   can_fast_fall = false;
-}
-
-if (attack == AT_DTILT){
-	if (window == 3 && has_hit){
-		iasa_script();
-	}
 }
 
 if (attack == AT_NAIR){
@@ -36,10 +28,24 @@ if (attack == AT_USTRONG_2){
 	}
 }
 
+if attack == AT_UTILT {
+	if((attack_down) && (1 = window ) && window_timer == 5){ 
+	attack = AT_EXTRA_3;
+	}
+}
+
 if (attack == AT_NSPECIAL){
 	can_fast_fall = false;
 	
 	if ((shield_pressed) and (3 > window )){ //SHIELD CANCEL
+		window = 7;
+		window_timer = 0;
+	}
+	if ((attack_pressed) and (3 > window )){ // CANCEL
+		window = 7;
+		window_timer = 0;
+	}
+	if ((jump_pressed) and (3 > window )){ // CANCEL
 		window = 7;
 		window_timer = 0;
 	}
@@ -106,51 +112,26 @@ if (attack == AT_FSPECIAL){
 		sound_play( sound_get( "lv1shot" ) );
 		move_cooldown[AT_FSPECIAL] = 50;
 			}
-	if (window == 2 && window_timer == 1 && current_weapon == 4){ //frost shield
-		sound_play( sound_get( "lv1shot" ) );
-		move_cooldown[AT_FSPECIAL] = 30;
-			}
-	if (window == 2 && window_timer == 1 && current_weapon == 5){ //ground hunter
-		sound_play( sound_get( "lv1shot" ) );
-		move_cooldown[AT_FSPECIAL] = 30;
-			}
-	if (window == 2 && window_timer == 1 && current_weapon == 6){ //spike ball
-		sound_play( sound_get( "lv1shot" ) );
-		move_cooldown[AT_FSPECIAL] = 30;
-			}
-	if (window == 2 && window_timer == 1 && current_weapon == 7){ //meteor rain
-		sound_play( sound_get( "lv1shot" ) );
-		move_cooldown[AT_FSPECIAL] = 30;
-			}
-	if (window == 2 && window_timer == 1 && current_weapon == 8){ //electric spark
-		sound_play( sound_get( "lv1shot" ) );
-		move_cooldown[AT_FSPECIAL] = 30;
-			}
 		}
 
 //Down Special - Special Weapon Swap
 if (attack == AT_DSPECIAL){
 	can_fast_fall = false;
-	move_cooldown[AT_DSPECIAL] = 3;
-		if (window == 2 && right_pressed){
-			sound_play( sound_get( "menucursor" ) );
+	move_cooldown[AT_DSPECIAL] = 1;
+		if (window == 2){
 			current_weapon = (current_weapon+1)% 8;
 				}
-		if (window == 2 && special_pressed){
-			window = 3;
-			window_timer = 0;
-			destroy_hitboxes();
-			}
-		if (window == 2 && left_pressed){
-			sound_play( sound_get( "menucursor" ) );
-			current_weapon = (current_weapon-1)% 8;
-		if (current_weapon == -1){
-			current_weapon = (current_weapon+8)% 8;
-			}
-	can_fast_fall = true;
+	can_fast_fall = false;
 	destroy_hitboxes();
-		}
-	}
+}
+
+if (attack == AT_USPECIAL){
+	move_cooldown[AT_USPECIAL] = 300;
+}
+
+if (attack == AT_UAIR){
+	move_cooldown[AT_UAIR] = 10;
+}
 
 if (attack == AT_FSPECIAL){
 	move_cooldown[AT_FSPECIAL] = 120;
@@ -197,14 +178,14 @@ if (attack == AT_NSPECIAL_2){
 }
 
 if (attack == AT_FSTRONG_2){
-	move_cooldown[AT_FSPECIAL] = 30;
-	move_cooldown[AT_FSPECIAL_2] = 30;
-	move_cooldown[AT_DSPECIAL_2] = 30;
-	move_cooldown[AT_NSPECIAL_2] = 30;
-	move_cooldown[AT_FSTRONG_2] = 30;
-	move_cooldown[AT_DSTRONG_2] = 30;
-	move_cooldown[AT_USTRONG_2] = 30;
-	move_cooldown[AT_EXTRA_1] = 30;
+	move_cooldown[AT_FSPECIAL] = 120;
+	move_cooldown[AT_FSPECIAL_2] = 120;
+	move_cooldown[AT_DSPECIAL_2] = 120;
+	move_cooldown[AT_NSPECIAL_2] = 120;
+	move_cooldown[AT_FSTRONG_2] = 120;
+	move_cooldown[AT_DSTRONG_2] = 120;
+	move_cooldown[AT_USTRONG_2] = 120;
+	move_cooldown[AT_EXTRA_1] = 120;
 }
 
 if (attack == AT_DSTRONG_2){
@@ -240,6 +221,10 @@ if (attack == AT_EXTRA_1){
 	move_cooldown[AT_EXTRA_1] = 555;
 }
 
+if (attack == AT_NSPECIAL){
+	move_cooldown[AT_NSPECIAL] = 20;
+}
+
 if (attack == AT_DSTRONG){
 	if (window == 2 && window_timer == 1) {
 		sound_play(asset_get( "sfx_bird_nspecial" ));
@@ -253,6 +238,74 @@ if (attack == AT_DSTRONG){
 		Loops = 8;
 	}
 }
+
+if (attack == AT_FTILT){
+	//vertical boost
+	if window == 1 && window_timer == get_window_value(AT_FTILT,1,AG_WINDOW_LENGTH)-2 && free {
+		if vsp > -6 {
+			vsp = -6;
+               
+		}
+	}
+	//wallgrab
+	if !has_hit_player && !hitpause && (
+		collision_rectangle(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,asset_get("par_block"),false,true) || 
+		collision_rectangle(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,asset_get("par_jumpthrough"),false,true)) 
+		&& !was_parried {
+			
+        if window == 2 {
+            vsp = 0;
+            hsp = 0;
+            if window_timer >= 3 {
+            	window = 5
+            	window_timer = 0;
+            }
+        }
+    }
+    if window == 5{
+    	hsp = 10 * spr_dir;
+    	vsp = 0;
+    	if window_timer > 3 can_jump = true;
+    	can_fast_fall = false;
+    	if window_timer == 1 {
+    		sound_play(asset_get("sfx_blow_weak1"))
+			sound_play(asset_get("sfx_plant_eat"))
+    	}
+    	move_cooldown[AT_FTILT] = 20; //no more wallgrab spamming vineboom
+    }
+    //grab
+    if instance_exists(grabbed_player_obj){
+	    if (window >= 5) { grabbed_player_obj = noone; }
+		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+	
+		else {
+			//keep the grabbed player in hitstop until the grab is complete.
+			grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitpause = true;
+			
+			//if this is the first frame of a window, store the grabbed player's relative position.
+			if (window_timer <= 1) {
+				grabbed_player_relative_x = grabbed_player_obj.x - x;
+				grabbed_player_relative_y = grabbed_player_obj.y - y;
+			}
+			 
+			//on the first window, pull the opponent into the grab.
+			if (window == 4) { 
+				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
+				var pull_to_x = 30 * spr_dir;
+				var pull_to_y = 0;
+				
+				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
+				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+				grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
+				grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
+			}
+			//the above block can be copied for as many windows as necessary.
+			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
+		}
+    }
+}
+
 
 if (is_laststock()) {
 	if (get_player_damage( player ) >= 100) {
@@ -278,6 +331,12 @@ if (is_laststock()) {
 if (attack == AT_EXTRA_2){
 	if (window == 5 && window_timer == 15) {
 		sound_play(sound_get( "taunt" ));
+	}
+}
+
+if (attack == AT_EXTRA_3){
+	if (window == 1 && window_timer == 5) {
+		sound_play(sound_get( "rock_upper" ));
 	}
 }
 

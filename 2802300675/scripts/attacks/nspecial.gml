@@ -108,7 +108,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, bigsmoke);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 4);
+set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 125);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 125);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("blank_sheet"));

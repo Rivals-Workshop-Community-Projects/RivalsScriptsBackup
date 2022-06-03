@@ -62,7 +62,7 @@ switch(attack){
         victim = noone;
     }
     
-    if(window == 7){
+    if(window == 7 || (window == 6 && window_timer == 4)){
     	if(opp_timed){
     		hit_player_obj.hitstop = 0;
     		hit_player_obj.hitpause = 0;
@@ -203,6 +203,10 @@ switch(attack){
 	if(!free){
 		state = PS_LAND;
 		state_timer = 0;
+		attack_end();
+	}
+	if(window == 1 && window_timer == 17){
+		move_cooldown[AT_FSPECIAL] = 240;
 	}
 	break;
 	case AT_DSPECIAL_AIR:
@@ -210,6 +214,10 @@ switch(attack){
 	if(!free){
 		state = PS_LAND;
 		state_timer = 0;
+		attack_end();
+	}
+	if(window == 1 && window_timer == 17){
+		move_cooldown[AT_DSPECIAL] = 240;
 	}
 	break;
 	case AT_DSPECIAL:
@@ -324,7 +332,8 @@ switch(attack){
 	break;
 	case AT_JAB:
 	
-	if(special_pressed && wall = 0 && window >= 2){
+	if(special_pressed && wall = 0 && cancel == 1){
+		cancel = 0;
 		set_attack(AT_NSPECIAL);
 	}
 	
@@ -363,7 +372,8 @@ switch(attack){
 	break;
 	
 	case AT_FTILT:
-	if(special_pressed && wall = 0 && window >= 2){
+	if(special_pressed && wall = 0 && cancel == 1){
+		cancel = 0;
 		set_attack(AT_NSPECIAL);
 	}
 	if(window == 2 && ftilt_cancel == 0 && attack_pressed){
@@ -385,7 +395,7 @@ switch(attack){
 	set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, (6 + (anger_state * (has_rune("J")? 3: 2))) * (stored_spark = true? 2: 1));
 	set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, (6 + (anger_state * (has_rune("J")? 3: 2))) * (stored_spark = true? 2: 1));
 	set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, (6 + (anger_state * (has_rune("J")? 3: 2))) * (stored_spark = true? 2: 1));
-	set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, (stored_spark = true? 15: 12));
+	set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, (stored_spark = true? 18: 10));
 	if(free && window < 4){
 		set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get(string(plate_state) + "_air_uspecial"));
 	}else{
@@ -433,22 +443,22 @@ switch(attack){
 		stored_head = head_rot;
 	}
 	if(window == 4){
-		if(collision_point(x + 21, y, asset_get("solid_32_obj"), false, true) && (spr_dir = 1? (head_rot == 1 || head_rot == 0 || head_rot == 7): (head_rot == 3 || head_rot == 4 || head_rot == 5))){
+		if((collision_point(x + 21, y - 25, asset_get("solid_32_obj"), false, true) || collision_point(x + 21, y + 25, asset_get("solid_32_obj"), false, true)) && (spr_dir = 1? (head_rot == 1 || head_rot == 0 || head_rot == 7): (head_rot == 3 || head_rot == 4 || head_rot == 5))){
 			window = 7;
 			window_timer = 0;
 			temp_wall = 1;
 			wall = temp_wall;
-		}else if(collision_point(x, y - 33, asset_get("solid_32_obj"), false, true) && (head_rot == 1 || head_rot == 2 || head_rot == 3)){
+		}else if((collision_point(x - 17, y - 33, asset_get("solid_32_obj"), false, true) || collision_point(x + 17, y - 33, asset_get("solid_32_obj"), false, true)) && (head_rot == 1 || head_rot == 2 || head_rot == 3)){
 			window = 8;
 			window_timer = 0;
 			temp_wall = 3;
 			wall = temp_wall;
-		}else if(collision_point(x - 21, y, asset_get("solid_32_obj"), false, true) && (spr_dir = 1? (head_rot == 3 || head_rot == 4 || head_rot == 5): (head_rot == 1 || head_rot == 0 || head_rot == 7))){
+		}else if((collision_point(x - 21, y - 25, asset_get("solid_32_obj"), false, true) || collision_point(x - 21, y + 25, asset_get("solid_32_obj"), false, true)) && (spr_dir = 1? (head_rot == 3 || head_rot == 4 || head_rot == 5): (head_rot == 1 || head_rot == 0 || head_rot == 7))){
 			window = 7;
 			window_timer = 0;
 			temp_wall = 2;
 			wall = temp_wall;
-		}else if(collision_point(x, y + 33, asset_get("solid_32_obj"), false, true) && (head_rot == 5 || head_rot == 6 || head_rot == 7)){
+		}else if((collision_point(x - 17, y + 33, asset_get("solid_32_obj"), false, true) || collision_point(x + 17, y + 33, asset_get("solid_32_obj"), false, true)) && (head_rot == 5 || head_rot == 6 || head_rot == 7)){
 			window = 8;
 			window_timer = 0;
 			temp_wall = 0;
@@ -526,7 +536,8 @@ switch(attack){
 	break;
 	
 	case AT_DATTACK:
-	if(special_pressed && wall = 0 && window >= 2){
+	if(special_pressed && wall = 0 && cancel == 1){
+		cancel = 0;
 		set_attack(AT_NSPECIAL);
 	}
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 6 + (anger_state * (has_rune("J")? 3: 2)));
@@ -590,7 +601,8 @@ switch(attack){
 	break;
 	
 	case AT_UTILT:
-	if(special_pressed && wall = 0 && window >= 2){
+	if(special_pressed && wall = 0 && cancel == 1){
+		cancel = 0;
 		set_attack(AT_NSPECIAL);
 	}
 	set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 3 + (anger_state * (has_rune("J")? 3: 2)));
@@ -600,7 +612,8 @@ switch(attack){
 	break;
 	
 	case AT_DTILT:
-	if(special_pressed && wall = 0 && window >= 2){
+	if(special_pressed && wall = 0 && cancel == 1){
+		cancel = 0;
 		set_attack(AT_NSPECIAL);
 	}
 	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 3 + (anger_state * (has_rune("J")? 3: 2)));

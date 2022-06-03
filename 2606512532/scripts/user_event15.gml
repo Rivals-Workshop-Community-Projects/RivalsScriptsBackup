@@ -292,6 +292,33 @@ initSection("")
 initHeader("Other");
 initSection("");
 */
+
+initPatch("1.15", "1 June, 2022");
+initHeader("Both");
+initSection("- Fstrong delay time right before swing increased (+2f)
+- Dstrong whifflag increased (+9f) (regular endlag unchanged)
+- You can no longer drift during Uspecial
+- Dair spike bkb decreased: 8 -> 6
+- Dair sour bkb decreased: 8 -> 6
+- Dair sour hitstun multiplier decreased: 0.85 -> 0.8
+- Fair grounded multihit hitbox removed (old aerial hitbox now hits both grounded and aerial)
+- Fair multihit hitstun multiplier decreased: 1 -> 0.5
+- Fair multihit angle flipper removed
+- Fspecial recoil drift amount reduced");
+initHeader("Pit");
+initSection("- Fstrong bkb decreased: 9 -> 8
+- Fstrong kbg decreased: 1.1 -> 1.0
+- Dstrong startup increased (+3f)
+- Dstrong 1/2 hitbox size decreased
+- Dstrong 2 comes out later (+2f)
+- Uspecial strong hitbox size decreased
+- Uspecial late hitbox size decreased
+- Uspecial strong hitbox lifetime decreased: 3 -> 2");
+initHeader("Dark Pit");
+initSection("- Fstrong bkb decreased: 8 -> 7
+- Fstrong kbg decreased: 1.1 -> 1.0
+- Ustrong sourspot re-added");
+
 initPatch("1.14", "24 May, 2022");
 initHeader("Both");
 initSection("- Fspecial charge shot back hitbox removed

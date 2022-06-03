@@ -53,13 +53,13 @@ sprite_change_offset("dattack", 124, 200);
 sprite_change_offset("dattack2", 124, 200);
 sprite_change_offset("ftilt", 84, 116);
 sprite_change_offset("ftilt2", 84, 116);
-sprite_change_offset("dtilt", 58, 102);
+sprite_change_offset("dtilt", 58, 98);
 sprite_change_offset("dtilt2", 58, 102);
-sprite_change_offset("utilt", 114, 178);
+sprite_change_offset("utilt", 100, 158);
 sprite_change_offset("utilt2", 114, 178);
 sprite_change_offset("nair", 64, 94);
 sprite_change_offset("nair2", 64, 94);
-sprite_change_offset("fair", 80, 124);
+sprite_change_offset("fair", 86, 132);
 sprite_change_offset("fair2", 80, 124);
 sprite_change_offset("bair", 90, 104);
 sprite_change_offset("bair2", 90, 104);
@@ -92,6 +92,7 @@ sprite_change_offset("taunt2", 72, 116);
 
 sprite_change_offset("plat", 64, 94);
 
+sprite_change_offset("extra_3", 114, 178);
 sprite_change_offset("ftilt_proj", 70, 106);
 sprite_change_offset("bair_proj", 64, 10);
 sprite_change_offset("fair_proj", 64, 10);
@@ -114,5 +115,10 @@ sprite_change_offset("fstrong_2_proj", 64, 10);
 sprite_change_offset("dstrong_2_proj", 52, 56);
 sprite_change_offset("extra_1_proj", 64, 10);
 sprite_change_offset("extra_2", 108, 150);
+sprite_change_offset("web", 68, 100);
+sprite_change_offset("web_mask", 68, 100);
+sprite_change_offset("dtilt_proj", 68, 100);
+sprite_change_offset("trail_fx2", 64, 10);
+sprite_change_offset("trail_fx1", 64, 10);
 
 set_victory_theme( sound_get("X_victory"));

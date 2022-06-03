@@ -31,8 +31,8 @@ if (attack == AT_NSPECIAL_2){
 	if spr_dir = 1 {
        		if hitbox_timer = 60 {
 		var hbox = create_hitbox(AT_NSPECIAL_2, 2, x-24, y-26);
-		hbox.hsp = 4;
-		hbox.vsp = 3;
+		hbox.hsp = 7;
+		hbox.vsp = 6;
 		}
 	}
 }
@@ -45,8 +45,8 @@ if (attack == AT_NSPECIAL_2){
 	if spr_dir = -1 {
        		if hitbox_timer = 60 {
 		var hbox = create_hitbox(AT_NSPECIAL_2, 2, x+24, y-26);
-		hbox.hsp = -4;
-		hbox.vsp = 3;
+		hbox.hsp = -7;
+		hbox.vsp = 6;
 		}
 	}
 }

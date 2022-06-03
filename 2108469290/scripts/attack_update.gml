@@ -6,11 +6,23 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL ){
     trigger_b_reverse();
 }
 
- 
-
-if attack == AT_BAIR && window == 1 && window_timer == 1 {
-	set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 49);
+if window == 1 {
+	
+	can_cancel = 0
 }
+
+if has_hit_player {
+	if hitpause {
+	} else {
+		can_cancel ++
+	}
+}
+ 
+if lockon == 1 && has_hit_player && !hit_pause && down_down && special_down && can_cancel > 10 {
+	set_state(PS_IDLE)
+	can_cancel = 0
+}
+
 if attack == AT_FSTRONG {
      
      if has_hit_player && window < 5 && hit_player_obj.state_cat == SC_HITSTUN{
@@ -59,14 +71,24 @@ if attack == AT_FSTRONG {
     }
 }
 
-if attack == AT_DTILT && has_hit {
-    
-    window_timer += 1
-    hsp /= 1.1
+if attack == AT_DTILT && !hitpause {
+    if window == 1 && window_timer == 1 && !hitpause {
+            sound_play(asset_get("sfx_ice_shieldup"));
+    }
+   
+   if window < 2  {
+   	  hsp += 2*spr_dir 
+   } else {
+   	hsp /= 1.2
+   }
     
 }
 
 if attack == AT_DAIR {
+    
+    if !free && has_hit_player {
+    	create_hitbox(AT_DAIR,18,x,y)
+    }
     
     if window == 3 {
         can_wall_jump = true
@@ -168,9 +190,7 @@ if attack == AT_USTRONG {
         ustronghit = 0
     }
     
-    if window == 5 && has_hit_player && lockon == 1 {
-    hhalo = 240
-	lockon = 0
+    if window == 5 && has_hit_player && window_timer == 1 {
 	spawn_hit_fx(x - 10*spr_dir,y - 30, 306)
     }
     if window == 1 && window_timer > 10{
@@ -292,25 +312,40 @@ hhalo = 0
     
 	
 }
+
+if attack == AT_UAIR {
+	if window == 1 && window_timer == 1 && !hitpause {
+		sound_play(asset_get("sfx_swipe_heavy2"));
+	}
+}
 if attack == AT_FSPECIAL {
-	
+	vsp /= 4
 	if hhalo > 0 && state_timer == 1{
 		set_attack(AT_EXTRA_3)
 	}
 	
-	if has_hit_player  && !hitpause {
+	if !has_hit_player && window == 3 && window_timer == 10 && free {
+		set_state(PS_PRATFALL)
+	}
+	
+	if has_hit_player && !hitpause {
 		if !free {
-		hsp = 0
+			spawn_hit_fx ( x + hsp , y - 46 + random_func(1,6,true), ai4 );
+		x = hit_player_obj.x - 20*spr_dir	
+		hsp = 4*spr_dir
 			set_attack(AT_UTILT)
 			window = 2
 			window_timer = 0
 		}
+		
 		if free {
-		hsp = 0
+		spawn_hit_fx ( x + hsp , y - 46 + random_func(1,6,true), ai4 );
+		x = hit_player_obj.x 	
+		hsp = 6*spr_dir
 		vsp = -6
 			set_attack(AT_UAIR)
 			window = 2
-			window_timer = 0
+			window_timer = 1
 		}
 		
 	}
@@ -327,7 +362,7 @@ if attack == AT_FSPECIAL {
 	 }
 	 
     if window == 3 && hsp = 0 && !hitpause {
-        vsp = -100
+        vsp = -10
         hsp = -4 * spr_dir
         set_attack (AT_NAIR)
         window = 4
@@ -336,7 +371,7 @@ if attack == AT_FSPECIAL {
     }
     
     if free {
-    move_cooldown[AT_FSPECIAL] = 999 	
+    move_cooldown[AT_FSPECIAL] = 40
     }
     if !free {
     move_cooldown[AT_FSPECIAL] = 0	
@@ -344,7 +379,7 @@ if attack == AT_FSPECIAL {
     
     can_move = false 
     can_fast_fall = false
-    vsp /= 10
+    
     if free {
         hsp /= 1.1
     }
@@ -450,7 +485,10 @@ if attack == AT_DSPECIAL {
         
         
 			
-			
+		if down_down && lockon == 0 { 
+            vsp = 150
+            
+        }	
         
          if left_down && lockon == 0 {
             x -= 100
@@ -462,26 +500,25 @@ if attack == AT_DSPECIAL {
         
         
         if lockon == 1 &&  move_cooldown[AT_TAUNT_2] == 0 {
-        	move_cooldown[AT_TAUNT_2] = 180
+        	move_cooldown[AT_TAUNT_2] = 120
+        	create_hitbox(AT_DAIR,12,x,y)
         	sound_play(asset_get("sfx_bird_downspecial"));
         	shake_camera(2,6)
         	if x > lockplayer.x {
-            x = lockplayer.x - 40 + lockplayer.hsp*3
+            x = lockplayer.x - 40 
+            spr_dir = 1
         	}  else {
-            x = lockplayer.x + 40 + lockplayer.hsp*3
+            x = lockplayer.x + 40
+            spr_dir = -1
         	}
-            y = lockplayer.y + floor(lockplayer.vsp/2)
-            spr_dir *= -1
+            y = lockplayer.y 
+            vsp = 0
             lockontime = 180
+            lockon = 0
      
-            
-           
         }
         
-        if down_down && lockon == 0 { 
-            vsp = 150
-            
-        }
+        
     }
     
     if window == 2 && window_timer == 2{
@@ -641,15 +678,7 @@ if attack == AT_USPECIAL {
     }
     
     if window == 4 && free {
-    	if down_down && vsp > -4{
-    	if vsp < 10 {
-    	 	spawn_hit_fx(x,y - 30,27)
-    	 }
-    	 sound_play(asset_get("sfx_bird_sidespecial_start"));
-    	 set_state(PS_PRATFALL)
-    	 vsp = 20
 
-    	}
     	
     	if down_down {
     		fall_through = true

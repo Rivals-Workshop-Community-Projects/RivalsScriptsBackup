@@ -236,6 +236,28 @@ switch(attack) {
     
     case AT_JAB :
        
+      if has_hit_player && window == 2{
+	    djumps = 0
+		with hit_player_obj {
+			state_timer -= 1
+   	    vsp = 0
+   	    hsp = 0
+   	    x += floor( (other.x  + 60*other.spr_dir - x)/10 )
+   	    y += floor( (other.y + 30 - y)/10 )
+    	
+       } 
+        if !hitpause { 
+        	hsp = 6*spr_dir
+            attack_end()
+        	attack = AT_DAIR
+        	window = 5
+     		window_timer = 1
+     		state_timer = 20
+     	} else {
+     	    x += 1*spr_dir
+     	}
+	}
+	
        if free && window < 6 && window > 3{
            vsp = -5
            hsp = 2*spr_dir
@@ -644,7 +666,6 @@ if window == 5 && window_timer < 12{
 		
 		if state_timer < 35 {
 		window_timer = 1
-		y -= 4
 		x += 4*spr_dir
 		}
 		

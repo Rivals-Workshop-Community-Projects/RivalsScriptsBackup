@@ -266,6 +266,15 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.10", "02 June, 2022");
+initHeader("DAir - Nerfs");
+initSection("The spike at the start of the move is now a sweetspot (near the tip of his feet) instead of the entire hitbox.");
+initHeader("FStrong - Nerfs");
+initSection("Hitbox size reduced, position adjusted.
+Knockback growth (non-SSJ) 1.05 --> 1.0.");
+initHeader("UStrong - Nerfs");
+initSection("Endlag 15 --> 20.");
+
 initPatch("1.9", "10 March, 2022");
 initHeader("DTilt - Buffs");
 initSection("SSJ only: startup 8 --> 6.");

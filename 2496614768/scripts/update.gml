@@ -1,5 +1,12 @@
 /// intro 
 
+with oPlayer {
+	if "ex_mode" in self {
+		ex_mode = 0
+	}
+}
+
+
 if canceltime > 1 {
 	
 	if attack == AT_FSPECIAL {

@@ -39,10 +39,8 @@ if(my_hitboxID.attack == AT_USTRONG){
 }
 
 if(my_hitboxID.attack == AT_USPECIAL){
-    if(my_hitboxID.hbox_num == 1){
     	if(my_hitboxID.hit_priority == 4){
     	smog_cloud = instance_create(other.x, other.y-30, ("obj_article1"));
 		destroyed = true;
-    	}
     }
 }

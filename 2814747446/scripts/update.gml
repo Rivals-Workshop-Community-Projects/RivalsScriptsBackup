@@ -96,7 +96,7 @@ if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
 	}
 }
 
-
+set_victory_theme( sound_get( "Viledriver" ) );
 
 // var ls = ds_list_create()
 // variable_instance_get_names(id,ls)

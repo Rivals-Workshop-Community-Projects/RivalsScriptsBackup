@@ -1,4 +1,11 @@
 ///
+
+with oPlayer {
+	if "ex_mode" in self {
+		ex_mode = 0
+	}
+}
+
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self

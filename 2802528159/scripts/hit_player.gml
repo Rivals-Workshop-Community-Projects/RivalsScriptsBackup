@@ -79,3 +79,4 @@ if(my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_NSPECIAL_AIR) &
     fog_alpha = 40;
 }
 
+cancel = 1;

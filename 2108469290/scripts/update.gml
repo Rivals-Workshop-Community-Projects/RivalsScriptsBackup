@@ -4,6 +4,38 @@ if get_gameplay_time() < 120 {
 	move_cooldown[AT_NSPECIAL] = 5
 }
 
+if move_cooldown[AT_TAUNT_2] > 0 {
+	lockon = 0
+}
+
+
+if state == PS_WALK && special_down &&  move_cooldown[AT_TAUNT_2] == 0{
+	if get_gameplay_time()%30 == 0 {
+		sound_play(asset_get("sfx_ice_shieldup"));
+		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
+		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
+    }
+    
+    if get_gameplay_time()%30 == 10{
+    		sound_play(asset_get("sfx_ice_shieldup"));
+    		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
+    		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
+    }
+    
+    if get_gameplay_time()%30 == 20{
+    		sound_play(asset_get("sfx_ice_shieldup"));
+    		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
+    		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
+    }
+}
+
+if state == PS_LANDING_LAG && attack == AT_DAIR {
+    
+    if !free && has_hit_player && state_timer == 2 {
+    	create_hitbox(AT_DAIR,18,x,y)
+    }
+    
+}
 
 if !instance_exists(hit_player_obj){
 

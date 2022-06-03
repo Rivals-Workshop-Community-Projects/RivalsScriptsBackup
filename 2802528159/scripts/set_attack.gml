@@ -690,5 +690,5 @@ switch(attack){
 	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get(string(plate_state) + "_taunt"));
 	break;
 }
-
+cancel = 0;
 

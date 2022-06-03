@@ -5,6 +5,15 @@ can_wall_tech = false;
 clear_button_buffer(PC_SHIELD_PRESSED);
 parry_cooldown = 5;
 
+if Drak_icecream == 1 {
+    Drak_icecream = 0 
+    move_cooldown[AT_EXTRA_1] = 0
+    set_attack(AT_EXTRA_1)
+    window = 2
+    window_timer = 10
+    take_damage(player,-1,-30)
+}
+
 
 //print(ragemode)
 

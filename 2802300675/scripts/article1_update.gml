@@ -99,8 +99,8 @@ if (state == 1){
     }
     
     //destroy if too close to prevent projectile bugs
-with (asset_get("pHitBox")){
-    if (place_meeting(x,y,other.id) and player_id == other.player_id and attack == AT_NSPECIAL and hbox_num = 4){
+with (pHitBox){
+    if (place_meeting(x,y,other.id) and player_id == other.player_id and attack == AT_NSPECIAL and hbox_num == 4){
         other.state = 2;
         other.state_timer = 0;
     }
@@ -340,8 +340,8 @@ if (state == 3){
     }
     
     //destroy if too close to prevent projectile bugs
-with (asset_get("pHitBox")){
-    if (place_meeting(x,y,other.id) and player_id == other.player_id and attack == AT_NSPECIAL and hbox_num = 4){
+with (pHitBox){
+    if (place_meeting(x,y,other.id) and player_id == other.player_id and attack == AT_NSPECIAL and hbox_num == 4){
         other.state = 2;
         other.state_timer = 0;
     }

@@ -9,6 +9,9 @@ switch(attack){
 }
 
 if(attack == AT_FSTRONG){
+	if(window == 1 && window_timer = 1){
+		destroy_smog = false;
+	}
 	if(window == 2 && window_timer = 2 && !hitpause){ 
 		sound_play(asset_get("sfx_forsburn_consume_full"));
 	}if(window == 2 && window_timer = 7 && !hitpause){
@@ -20,6 +23,9 @@ if(attack == AT_FSTRONG){
 }
 
 if(attack == AT_USTRONG){
+	if(window == 1 && window_timer = 1){
+		destroy_smog = false;
+	}
 	if(window == 2 && window_timer = 2 && !hitpause){ 
 		sound_play(asset_get("sfx_forsburn_consume_full"));
 	}if(window == 2 && window_timer = 8 && !hitpause){
@@ -186,6 +192,7 @@ if(attack == AT_DSPECIAL){
     if(window = 1 && window_timer = 1 && !hitpause){
         hsp = 0;
         vsp = 0;
+		destroy_smog = false;
         if(free){
             window = 2;
             window_timer = 0;
@@ -226,6 +233,7 @@ if(attack == AT_DSPECIAL_2){
     if(window = 1 && window_timer = 1 && !hitpause){
         hsp = 0;
         vsp = 0;
+		destroy_smog = false;
         if(free){
             window = 2;
             window_timer = 0;
@@ -272,6 +280,7 @@ if(attack == AT_USPECIAL){
 	sound_play(asset_get("sfx_swipe_medium2"));	
 	}
 	if(window == 1 && window_timer = 1){
+		destroy_smog = false;
 		shortened_usp = false;
 		uspec_dir = 0;
 		if(!free){

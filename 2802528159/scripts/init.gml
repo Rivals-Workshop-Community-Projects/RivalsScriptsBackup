@@ -11,7 +11,7 @@
 
 // Physical size
 char_height         = 100;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 0.86;		// 0.9  -  1.2
+knockback_adj       = 0.899;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = (has_rune("D")? 7.5: 3.25);		// 3    -  4.5
@@ -164,6 +164,10 @@ anger_state = 0; //0 = blue light, 1 = yellow light, 2 = red light
 anger_value = 0; //max 100
 hud_timer = 0;
 bar_glow = 1;
+hud_alpha = 1;
+hud_transparent = 1;
+player_obj = self;
+hud_x = 0;
 
 prev_dir = spr_dir;
 prevprev_dir = 0;
@@ -200,6 +204,7 @@ fog_alpha = 0;
 opp_timing = 0;
 opp_timed = 0;
 pratcancel = 1;
+cancel = 0;
 
 //fspecial variables
 ice_victim = noone;

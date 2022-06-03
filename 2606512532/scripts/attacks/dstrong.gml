@@ -24,13 +24,13 @@ set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX, sound_get("claw_swipe2"));
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX_FRAME, 7);
 
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSTRONG, 4);

@@ -12,11 +12,11 @@ if attack == AT_NSPECIAL{
 	hsp /= 1.3
 	}
 	
-	if hitbox_timer > 15 {
-	hsp += 1 * spr_dir
+	if hitbox_timer > 10 {
+	hsp = 20*spr_dir
 	}
 	
-	if hitbox_timer > 15 && hitbox_timer % 2 == 0 {
+	if hitbox_timer > 10 && hitbox_timer % 2 == 0 {
 		var esp = hit_fx_create( sprite_get( "esp" ), 9 );
 			spawn_hit_fx( x + 8 - random_func(2, 16, true) , y + 4 - random_func(3, 8, true) , esp )
 	}

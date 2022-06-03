@@ -1,6 +1,12 @@
 //hit_player.gml
 
 switch (my_hitboxID.attack){
+	case AT_DATTACK:
+		//sound_play(asset_get("sfx_blow_weak1"));
+		break;
+	case AT_UTILT:
+		//sound_play(asset_get("sfx_gem_collect"), false, noone, 0.7, 1.1);
+		break;
 	case AT_UAIR:
 		if (window == 4){
 			window = 5
@@ -13,6 +19,9 @@ switch (my_hitboxID.attack){
 			sound_play(asset_get("mfx_ring_bell"));
 			//spawn_hit_fx( hit_player_obj.x + (12*hit_player_obj.spr_dir), hit_player_obj.y - 20, 251);
 		}
+		break;
+	case AT_DSTRONG:
+		//sound_play(asset_get("sfx_gem_collect"), false, noone, 0.9, 0.7);
 		break;
 	case AT_FSPECIAL_AIR:
 		my_hitboxID.RemoteRobotThrownWithFspecHitSomeone = true

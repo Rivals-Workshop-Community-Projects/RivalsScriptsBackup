@@ -29,11 +29,9 @@ with (my_hitboxID) {
 
 with (my_hitboxID) {
 	if(attack == AT_USPECIAL){
-		if(hbox_num = 1){
 	spawn_hit_fx(x, y + 20, player_id.hitsmoke); 
 	hitbox_timer = 0;
 	hit_priority = 5;
-		}
 	}
 }
 

@@ -43,7 +43,7 @@ set_window_value(AT_NAIR, 7, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_NAIR, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_NAIR, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 8, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NAIR, 8, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_NAIR, 8, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 8, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_NAIR, 8, AG_WINDOW_GOTO, 4);

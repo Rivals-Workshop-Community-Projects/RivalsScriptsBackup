@@ -70,5 +70,6 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 
                       

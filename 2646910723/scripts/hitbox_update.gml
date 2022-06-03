@@ -4,12 +4,12 @@ plasma_safe = true
 
 if attack == AT_USPECIAL {
     
-  if hitbox_timer % 6 == 0 {     
-   spawn_hit_fx(x + 8 - random_func(1,17,true), y - 8 - random_func(1,17,true), bd1)   
+  if hitbox_timer % 4 == 0 {     
+   spawn_hit_fx(x + 8 - random_func(1,17,true), y - 8 - random_func(2,17,true), bd2)   
   }
   
-  if hitbox_timer % 6 == 3 { 
-     spawn_hit_fx(x + 8 - random_func(1,17,true), y - 8 - random_func(1,17,true), bd2)  
+  if hitbox_timer % 18 == 3 { 
+     spawn_hit_fx(x + 8 - random_func(1,17,true), y - 8 - random_func(2,17,true), bd1)  
   }
   
   if hitbox_timer < 30 {
@@ -134,7 +134,11 @@ if attack == AT_NSPECIAL {
 
 	    	
 	    	with other {
-	    	    
+	    		with player_id {
+	    		 set_hitbox_value(AT_USPECIAL, 9, HG_PROJECTILE_HSPEED, -8 + random_func(6,17,true));
+                 set_hitbox_value(AT_USPECIAL, 9, HG_PROJECTILE_VSPEED, -8 + random_func(5,17,true));
+	    		}
+	    	    create_hitbox(AT_USPECIAL,9,other.x,other.y - 40 )
 	    	sound_stop(sound_get("tauntflash")); 
             sound_stop(sound_get("slice")); 
             
@@ -146,20 +150,12 @@ if attack == AT_NSPECIAL {
 	    	
             spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
 	    	
-			hsp *= -1
-			vsp *= -1
-			vsp -= 6
-			spr_dir *= -1
-			grav = 0.2 + abs(nearbyhitbox.hsp/40)
-			hitbox_timer = 1
-			
-			image_xscale += 0.15
-            image_yscale += 0.15
+			destroyed = true
 			
 			//nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
 	       	//nearbyhitbox.hitbox_timer = 1
 			//nearbyhitbox.hit_priority = 0
-			///nearbyhitbox.destroyed = true
+			nearbyhitbox.destroyed = true
 
 	    }
 	    

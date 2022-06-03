@@ -41,7 +41,7 @@ set_color_profile_slot( 1, 0, 0, 68, 240 ); //blues
 set_color_profile_slot( 1, 1, 255, 255, 255 ); //cyans
 set_color_profile_slot( 1, 2, 255, 255, 255 ); //skin
 set_color_profile_slot( 1, 3, 255, 255, 255 ); //reds
-set_color_profile_slot( 1, 4, 0, 73, 255 ); //chest
+set_color_profile_slot( 1, 4, 0, 68, 240 ); //chest
 set_color_profile_slot( 1, 5, 255, 255, 255 ); //gloves/ankles
 set_color_profile_slot( 1, 6, 255, 255, 255 ); //gold
 set_color_profile_slot( 1, 7, 255, 255, 255 ); //cm chest
@@ -66,113 +66,113 @@ set_color_profile_slot( 3, 5, 184, 160, 200 ); //gloves/ankles
 set_color_profile_slot( 3, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 3, 7, 113, 80, 160 ); //cm chest
 
-// MMZ
-set_color_profile_slot( 4, 0, 48, 160, 200 ); //blues
-set_color_profile_slot( 4, 1, 152, 176, 104 ); //cyans
+// iX
+set_color_profile_slot( 4, 0, 4, 113, 62 ); //blues
+set_color_profile_slot( 4, 1, 101, 140, 158 ); //cyans
 set_color_profile_slot( 4, 2, 204, 116, 96 ); //skin
-set_color_profile_slot( 4, 3, 184, 64, 48 ); //reds
-set_color_profile_slot( 4, 4, 40, 104, 152 ); //chest
-set_color_profile_slot( 4, 5, 179, 214, 232 ); //gloves/ankles
+set_color_profile_slot( 4, 3, 122, 33, 76 ); //reds
+set_color_profile_slot( 4, 4, 2, 75, 53 ); //chest
+set_color_profile_slot( 4, 5, 150, 52, 150 ); //gloves/ankles
 set_color_profile_slot( 4, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 4, 7, 113, 80, 160 ); //cm chest
 
-// iX
-set_color_profile_slot( 5, 0, 4, 113, 62 ); //blues
-set_color_profile_slot( 5, 1, 101, 140, 158 ); //cyans
+// PSX
+set_color_profile_slot( 5, 0, 60, 124, 220 ); //blues
+set_color_profile_slot( 5, 1, 28, 164, 132 ); //cyans
 set_color_profile_slot( 5, 2, 204, 116, 96 ); //skin
-set_color_profile_slot( 5, 3, 122, 33, 76 ); //reds
-set_color_profile_slot( 5, 4, 2, 75, 53 ); //chest
-set_color_profile_slot( 5, 5, 219, 147, 219 ); //gloves/ankles
+set_color_profile_slot( 5, 3, 143, 35, 35 ); //reds
+set_color_profile_slot( 5, 4, 36, 76, 180 ); //chest
+set_color_profile_slot( 5, 5, 28, 161, 129 ); //gloves/ankles
 set_color_profile_slot( 5, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 5, 7, 113, 80, 160 ); //cm chest
 
-// Ult. Armor (X6)
-set_color_profile_slot( 6, 0, 48, 48, 76 ); //blues
-set_color_profile_slot( 6, 1, 130, 173, 177 ); //cyans
+// Ult. Armor (X4)
+set_color_profile_slot( 6, 0, 60, 124, 220 ); //blues
+set_color_profile_slot( 6, 1, 136, 88, 184 ); //cyans
 set_color_profile_slot( 6, 2, 204, 116, 96 ); //skin
-set_color_profile_slot( 6, 3, 122, 33, 76 ); //reds
-set_color_profile_slot( 6, 4, 35, 35, 56 ); //chest
-set_color_profile_slot( 6, 5, 205, 247, 247 ); //gloves/ankles
-set_color_profile_slot( 6, 6, 194, 163, 224 ); //gold
-set_color_profile_slot( 6, 7, 130, 173, 177 ); //cm chest
+set_color_profile_slot( 6, 3, 143, 35, 35 ); //reds
+set_color_profile_slot( 6, 4, 36, 76, 180 ); //chest
+set_color_profile_slot( 6, 5, 150, 98, 201 ); //gloves/ankles
+set_color_profile_slot( 6, 6, 232, 136, 64 ); //gold
+set_color_profile_slot( 6, 7, 136, 88, 184 ); //cm chest
+
+// Ult. Armor (X6)
+set_color_profile_slot( 7, 0, 48, 48, 76 ); //blues
+set_color_profile_slot( 7, 1, 130, 173, 177 ); //cyans
+set_color_profile_slot( 7, 2, 204, 116, 96 ); //skin
+set_color_profile_slot( 7, 3, 122, 33, 76 ); //reds
+set_color_profile_slot( 7, 4, 35, 35, 56 ); //chest
+set_color_profile_slot( 7, 5, 205, 247, 247 ); //gloves/ankles
+set_color_profile_slot( 7, 6, 194, 163, 224 ); //gold
+set_color_profile_slot( 7, 7, 130, 173, 177 ); //cm chest
 
 // X-Kai
-set_color_profile_slot( 7, 0, 77, 77, 77 ); //blues
-set_color_profile_slot( 7, 1, 96, 96, 96 ); //cyans
-set_color_profile_slot( 7, 2, 204, 116, 96 ); //skin
-set_color_profile_slot( 7, 3, 135, 35, 129 ); //reds
-set_color_profile_slot( 7, 4, 29, 29, 45 ); //chest
-set_color_profile_slot( 7, 5, 248, 232, 136 ); //gloves/ankles
-set_color_profile_slot( 7, 6, 232, 136, 64 ); //gold
-set_color_profile_slot( 7, 7, 113, 80, 160 ); //cm chest
-
-// Storm Tornado
-set_color_profile_slot( 8, 0, 152, 88, 144 ); //blues
-set_color_profile_slot( 8, 1, 224, 144, 192 ); //cyans
+set_color_profile_slot( 8, 0, 77, 77, 77 ); //blues
+set_color_profile_slot( 8, 1, 96, 96, 96 ); //cyans
 set_color_profile_slot( 8, 2, 204, 116, 96 ); //skin
-set_color_profile_slot( 8, 3, 113, 29, 54 ); //reds
-set_color_profile_slot( 8, 4, 112, 48, 120 ); //chest
-set_color_profile_slot( 8, 5, 247, 207, 232 ); //gloves/ankles
+set_color_profile_slot( 8, 3, 135, 35, 129 ); //reds
+set_color_profile_slot( 8, 4, 29, 29, 45 ); //chest
+set_color_profile_slot( 8, 5, 248, 232, 136 ); //gloves/ankles
 set_color_profile_slot( 8, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 8, 7, 113, 80, 160 ); //cm chest
 
-// Sonic Slicer
-set_color_profile_slot( 9, 0, 67, 79, 165 ); //blues
-set_color_profile_slot( 9, 1, 194, 162, 0 ); //cyans
+// Storm Tornado
+set_color_profile_slot( 9, 0, 152, 88, 144 ); //blues
+set_color_profile_slot( 9, 1, 224, 144, 192 ); //cyans
 set_color_profile_slot( 9, 2, 204, 116, 96 ); //skin
 set_color_profile_slot( 9, 3, 113, 29, 54 ); //reds
-set_color_profile_slot( 9, 4, 46, 53, 112 ); //chest
-set_color_profile_slot( 9, 5, 207, 190, 110 ); //gloves/ankles
+set_color_profile_slot( 9, 4, 112, 48, 120 ); //chest
+set_color_profile_slot( 9, 5, 247, 207, 232 ); //gloves/ankles
 set_color_profile_slot( 9, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 9, 7, 113, 80, 160 ); //cm chest
 
-// Triad Thunder
-set_color_profile_slot( 10, 0, 102, 64, 206 ); //blues
-set_color_profile_slot( 10, 1, 34, 165, 115 ); //cyans
+// Sonic Slicer
+set_color_profile_slot( 10, 0, 67, 79, 165 ); //blues
+set_color_profile_slot( 10, 1, 194, 162, 0 ); //cyans
 set_color_profile_slot( 10, 2, 204, 116, 96 ); //skin
 set_color_profile_slot( 10, 3, 113, 29, 54 ); //reds
-set_color_profile_slot( 10, 4, 81, 51, 165 ); //chest
-set_color_profile_slot( 10, 5, 176, 235, 213 ); //gloves/ankles
+set_color_profile_slot( 10, 4, 46, 53, 112 ); //chest
+set_color_profile_slot( 10, 5, 207, 190, 110 ); //gloves/ankles
 set_color_profile_slot( 10, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 10, 7, 113, 80, 160 ); //cm chest
 
-// Rising Fire
-set_color_profile_slot( 11, 0, 224, 48, 48 ); //blues
-set_color_profile_slot( 11, 1, 160, 160, 160 ); //cyans
+// Triad Thunder
+set_color_profile_slot( 11, 0, 102, 64, 206 ); //blues
+set_color_profile_slot( 11, 1, 34, 165, 115 ); //cyans
 set_color_profile_slot( 11, 2, 204, 116, 96 ); //skin
 set_color_profile_slot( 11, 3, 113, 29, 54 ); //reds
-set_color_profile_slot( 11, 4, 160, 0, 8 ); //chest
-set_color_profile_slot( 11, 5, 201, 201, 201 ); //gloves/ankles
+set_color_profile_slot( 11, 4, 81, 51, 165 ); //chest
+set_color_profile_slot( 11, 5, 176, 235, 213 ); //gloves/ankles
 set_color_profile_slot( 11, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 11, 7, 113, 80, 160 ); //cm chest
 
-// Ground Hunter
-set_color_profile_slot( 12, 0, 206, 107, 143 ); //blues
-set_color_profile_slot( 12, 1, 82, 109, 175 ); //cyans
+// Rising Fire
+set_color_profile_slot( 12, 0, 224, 48, 48 ); //blues
+set_color_profile_slot( 12, 1, 160, 160, 160 ); //cyans
 set_color_profile_slot( 12, 2, 204, 116, 96 ); //skin
 set_color_profile_slot( 12, 3, 113, 29, 54 ); //reds
-set_color_profile_slot( 12, 4, 153, 56, 91 ); //chest
-set_color_profile_slot( 12, 5, 201, 199, 255 ); //gloves/ankles
+set_color_profile_slot( 12, 4, 160, 0, 8 ); //chest
+set_color_profile_slot( 12, 5, 201, 201, 201 ); //gloves/ankles
 set_color_profile_slot( 12, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 12, 7, 113, 80, 160 ); //cm chest
 
-// Goo Shaver
-set_color_profile_slot( 13, 0, 45, 45, 127 ); //blues
-set_color_profile_slot( 13, 1, 176, 73, 32 ); //cyans
+// Ground Hunter
+set_color_profile_slot( 13, 0, 206, 107, 143 ); //blues
+set_color_profile_slot( 13, 1, 82, 109, 175 ); //cyans
 set_color_profile_slot( 13, 2, 204, 116, 96 ); //skin
 set_color_profile_slot( 13, 3, 113, 29, 54 ); //reds
-set_color_profile_slot( 13, 4, 33, 33, 91 ); //chest
-set_color_profile_slot( 13, 5, 232, 116, 68 ); //gloves/ankles
+set_color_profile_slot( 13, 4, 153, 56, 91 ); //chest
+set_color_profile_slot( 13, 5, 201, 199, 255 ); //gloves/ankles
 set_color_profile_slot( 13, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 13, 7, 113, 80, 160 ); //cm chest
 
-// Ice Burst
-set_color_profile_slot( 14, 0, 64, 168, 224 ); //blues
-set_color_profile_slot( 14, 1, 88, 88, 160 ); //cyans
+// Goo Shaver
+set_color_profile_slot( 14, 0, 45, 45, 127 ); //blues
+set_color_profile_slot( 14, 1, 176, 73, 32 ); //cyans
 set_color_profile_slot( 14, 2, 204, 116, 96 ); //skin
 set_color_profile_slot( 14, 3, 113, 29, 54 ); //reds
-set_color_profile_slot( 14, 4, 48, 112, 176 ); //chest
-set_color_profile_slot( 14, 5, 128, 128, 227 ); //gloves/ankles
+set_color_profile_slot( 14, 4, 33, 33, 91 ); //chest
+set_color_profile_slot( 14, 5, 232, 116, 68 ); //gloves/ankles
 set_color_profile_slot( 14, 6, 232, 136, 64 ); //gold
 set_color_profile_slot( 14, 7, 113, 80, 160 ); //cm chest
 

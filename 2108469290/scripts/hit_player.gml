@@ -7,22 +7,22 @@ if lockon == 0 {
 	lockplayer = hit_player_obj
 }
 
+/*
 if lockon == 1 && my_hitboxID.type == 1 && move_cooldown[AT_FSPECIAL_2] == 0 && lockplayer = hit_player_obj {
-	shake_camera(4,10)
 	hitstop += 4
 	hit_player_obj.hitstop += 4
 	sound_stop(sound_get("RI"));
 	sound_play(sound_get("RI"));
-	sound_play(sound_get("SpaceCut"));
-	hhalo = 300
+	//hhalo = 300
 	lockon = 0
-	spawn_hit_fx(x - 10*spr_dir,y - 30, 306)
+	spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 30, 306)
 var halodmg = floor(my_hitboxID.damage/3)
 with hit_player_obj {
-		take_damage( player, -1 , floor(halodmg))
+		take_damage( player, -1 , 3 + halodmg)
 }	
 
 }
+*/
 
 if my_hitboxID.type == 1 && hit_player_obj == lockplayer {
 move_cooldown[AT_FSPECIAL_2] = 40
@@ -88,12 +88,12 @@ if my_hitboxID.attack == AT_EXTRA_1 {
     lockon = 1
 }
 
-if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_BAIR {
-   lockon = 1
+if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_BAIR or my_hitboxID.attack == AT_DTILT {
+   //lockon = 1
 }
 
 if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num != 2 {
-    lockon = 1
+    //lockon = 1
 } 
 
 if my_hitboxID.attack == AT_EXTRA_3 {

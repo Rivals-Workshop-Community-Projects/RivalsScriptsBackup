@@ -181,33 +181,6 @@ if attack == AT_USTRONG {
     else height_timer = 0;
 }
 
-if echo {
-	if attack == AT_USPECIAL {
-	    can_fast_fall = false;
-	    can_wall_jump = true;
-	    if window >= 2 height_timer++;
-	    else height_timer = 0;
-	    if window == 1 {
-	        reset_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE);
-	        reset_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH);
-	        reset_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES);
-	        cancel_pratfall = false;
-	        if window_timer == 5 && !hitpause {
-	            sound_play(sound_get("uspec_start"))
-	        }
-	        if window_timer == 8 && !hitpause {
-	            //sound_play(sound_get("uspec_move"))
-	        }
-	    }
-	    
-	    if cancel_pratfall {
-	        set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 0);
-	        set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 8);
-	        set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
-	    }
-	}
-}
-
 if attack == AT_FSPECIAL {
     if window == 1 /*&& !special_down*/ && move_cooldown[AT_FTHROW] == 0 {
         attack = AT_FTHROW;
@@ -388,17 +361,17 @@ if attack == AT_FSTRONG {
     }
 }
 
-
-
 if attack == AT_USPECIAL {
     can_fast_fall = false;
     can_wall_jump = true;
+    can_move = false
     if window >= 2 height_timer++;
     else height_timer = 0;
+    var _window = echo ? 3 : 4
     if window == 1 {
-        reset_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE);
-        reset_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH);
-        reset_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES);
+        reset_window_value(AT_USPECIAL, _window, AG_WINDOW_TYPE);
+        reset_window_value(AT_USPECIAL, _window, AG_WINDOW_LENGTH);
+        reset_window_value(AT_USPECIAL, _window, AG_WINDOW_ANIM_FRAMES);
         cancel_pratfall = false;
         if window_timer == 5 && !hitpause {
             sound_play(sound_get("uspec_start"))
@@ -406,14 +379,16 @@ if attack == AT_USPECIAL {
     }
     
     if cancel_pratfall {
-        set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 0);
-        set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 8);
-        set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
+        set_window_value(AT_USPECIAL, _window, AG_WINDOW_TYPE, 0);
+        set_window_value(AT_USPECIAL, _window, AG_WINDOW_LENGTH, 8);
+        set_window_value(AT_USPECIAL, _window, AG_WINDOW_ANIM_FRAMES, 2);
     }
 }
 
 
 if attack == AT_FTHROW {
+	can_move = window > 3 || (window == 3 && window_timer > 8)
+	
     if window == 1 {
         reset_window_value(AT_FTHROW, 3, AG_WINDOW_CUSTOM_GRAVITY);
         reset_window_value(AT_FTHROW, 4, AG_WINDOW_CUSTOM_GRAVITY);

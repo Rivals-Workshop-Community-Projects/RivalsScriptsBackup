@@ -169,7 +169,7 @@ if(attack == AT_EXTRA_1 && climb_timer == get_window_value(AT_EXTRA_1, 1, AG_WIN
 }
 
 //climbing timer
-if(climbing == true){
+if(climbing == true) || (state == PS_ATTACK_GROUND && attack == AT_TAUNT_2){
     move_cooldown[AT_JAB] = 10;
     move_cooldown[AT_DATTACK] = 10;
     move_cooldown[AT_NSPECIAL] = 10;
@@ -797,17 +797,17 @@ if(plate_damage < 0){
 	plate_damage = 0;
 }
 
-if(plate_timer == 40 && plate_damage < 30){
+if(plate_timer == 40 && plate_damage < (has_rune("H")? 40: 30)){
 	plate_timer = 0;
 	plate_damage -= (plate_damage > 0? 1: 0);
-}else if(plate_damage < 30){
+}else if(plate_damage < (has_rune("H")? 40: 30)){
 	plate_timer++;
 }
 
 if(plate_damage >= (has_rune("H")? 40: 30) && plate_state == 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 	set_attack(AT_TAUNT_2);
     plate_state = 1;
-}else if(plate_damage <= (has_rune("H")? 40: 30) && plate_state == 1){
+}else if(plate_damage < (has_rune("H")? 40: 30) && plate_state == 1){
     plate_state = 0;
 }
 
@@ -911,6 +911,9 @@ if(instance_exists(shock_victim) && shock_victim.emmi_shocked == true){
     shock_victim.state_timer = 0;
     shock_victim.hitstun = true;
     emmi_shock_timer--;
+    if(shock_victim.y > room_height){
+    	emmi_shock_timer = 0;
+    }
     if(emmi_shock_timer == 0){
         shock_victim.emmi_shocked = false;
         shock_victim.sprite_xoffset = 0;

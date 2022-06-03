@@ -30,7 +30,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("upperdash_move"));
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 0);
 
 //swing early
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 6);
@@ -69,8 +69,8 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 11);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("punch_hit_heavy"));

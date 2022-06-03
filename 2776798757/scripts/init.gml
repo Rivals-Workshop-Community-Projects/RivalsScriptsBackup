@@ -105,6 +105,7 @@ current_weapon = 0;
 dairbounce = 0;
 bustercharge = 0;
 isInAir = true;
+placed = 0;
 
 //uspecial ground
 

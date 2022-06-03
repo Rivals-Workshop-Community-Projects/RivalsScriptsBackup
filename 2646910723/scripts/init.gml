@@ -2,6 +2,8 @@ set_victory_bg( sprite_get( "bg" ));
 set_victory_theme( sound_get( "victory" ));
 shieldBreak = 0
 
+Drak_icecream = 0
+
 pre_tech_vsp = 0
 pre_tech_hsp = 0
 

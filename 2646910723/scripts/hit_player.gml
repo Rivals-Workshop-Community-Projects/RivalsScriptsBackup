@@ -55,7 +55,7 @@ if my_hitboxID.hit_priority == 9  {
         with hit_player_obj {
              take_damage(player, -1, dmdamge)
          }
-    sound_play(sound_get("slap"),false,noone,.9, 2 - min((hitstop*hitstop)/100 , 1.5)  )
+    sound_play(sound_get("slap"),false,noone,.5, 2 - min((hitstop*hitstop)/100 , 1.5)  )
     }
     
     sound_play(sound_get("slap"),false,noone,.7, 1)

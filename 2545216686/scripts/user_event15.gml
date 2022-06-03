@@ -246,6 +246,25 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.8", "1 June, 2022");
+initHeader("Jab");
+initSection("~ All 3 hitboxes of this move should now better match the animation.");
+initHeader("Dash Attack");
+initSection("~ Adjusted hitbox size to better match the animation.
+~ Knockback Scaling: .6 -> .4
+~ Hitpause: 6 -> 7
+~ Hitpause Scaling: None -> 0.3
+~ Adjusted hit sfx.
+~ Adjusted hit fx horizontal offset.");
+initHeader("Up Tilt");
+initSection("~ Adjusted hitbox sizes to better match the animation.
+~ Adjusted animation timing of endlag.");
+initHeader("Down Tilt");
+initSection("~ Adjusted hitbox size to better match the animation.
+~ Adjusted animation timing of active frames and endlag.
+~ Adjusted hit sfx.");
+
+
 initPatch("1.7", "20 May, 2022");
 initHeader("General");
 initSection("~ Tails now has an intro animation.

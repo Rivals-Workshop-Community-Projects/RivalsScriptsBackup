@@ -2,7 +2,7 @@ set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 4);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 12);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 1);
@@ -56,13 +56,16 @@ set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 10);
-set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 9);
-set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 150);
-set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 13);
+set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 130);
+set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("lv1shothit"));
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 112);
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 40);
 
 if !has_rune("D") exit;
 
