@@ -11,7 +11,7 @@ set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HSPEED, -2);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_jumnpground"));
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 0);
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 12);

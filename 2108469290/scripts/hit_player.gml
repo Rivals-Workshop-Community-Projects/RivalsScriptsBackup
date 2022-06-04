@@ -1,5 +1,8 @@
 ///
 
+if move_cooldown[AT_TAUNT_2] < 115 && my_hitboxID.type == 1{
+	move_cooldown[AT_TAUNT_2] = 0
+}
 //intro = 1
 lockontime = 180
 

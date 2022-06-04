@@ -3,13 +3,11 @@ if (attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_EXTRA_1 || at
     trigger_b_reverse();
 }
 
-
+if !has_hit_player  move_cooldown[AT_FTHROW] = 3
 
 var last_window = get_attack_value(attack, AG_NUM_WINDOWS);
 
-if (window == last_window) && attack != AT_EXTRA_1{
-  invitimer = 0
-}
+
 
 
 if attack == AT_NAIR && has_hit && hitpause{
@@ -488,6 +486,9 @@ if !hitpause {
      	
              
      }
+     if window == 4 && window_timer > 5 && free {
+     	set_state(PS_PRATFALL)
+     }
      
      if has_hit_player && window < 4 {
      	
@@ -614,7 +615,8 @@ if !hitpause {
         if window == 4 {
         	    if has_hit {
                  fancyfx();
-                if window_timer == 19 {
+                if window_timer == 6 {
+                	  	spawn_hit_fx(x  , y, dsx) 
                 	attack_end();
              sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
     	     sound_play(sound_get("steath"),false,noone,1)
@@ -647,7 +649,7 @@ if !hitpause {
         if window == 3 {
         	
         if window_timer == 1 {
-       	sound_play(sound_get("Uspec1"),false,noone,0.6); 
+       	sound_play(sound_get("Uspec1"),false,noone,1); 
         }
         
         	       		//mask_index = asset_get("empty_sprite");
@@ -660,7 +662,7 @@ if !hitpause {
         
         }
         
-        if window == 3 && window_timer == 15 {
+        if window == 3 && window_timer == 21 {
         	  	 sound_play(sound_get("swingw2"));  
                   spawn_hit_fx(x  , y - 40, shit5)  
                   

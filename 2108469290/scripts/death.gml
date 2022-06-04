@@ -8,3 +8,5 @@ if(player_id == other.id) {
 }
 
 hhalo = 0
+  	lockon = 0
+  	lockontime = 180

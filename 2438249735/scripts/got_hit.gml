@@ -21,7 +21,6 @@ invitimer = 0
                   spawn_hit_fx(x - 30  , y - 30, lpar4)              
                   spawn_hit_fx(x + 30  , y - 30, lpar4)   
                   spawn_hit_fx(x  , y - 40, shit5)  
-                  spawn_hit_fx(x  , y - 30, lighten)  
     move_cooldown[AT_NSPECIAL_2] = 40
     sound_play(sound_get("tstrong"),false,noone,1)
 }

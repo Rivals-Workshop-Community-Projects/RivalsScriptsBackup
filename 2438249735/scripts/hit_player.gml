@@ -1,6 +1,7 @@
 ///
 finishercd = 0
 
+invis = true
 
 if my_hitboxID.type == 1 {
 	with (asset_get("pHitBox")) {
@@ -24,7 +25,7 @@ if my_hitboxID.type == 1 {
 
 if invitimer > 0 && 
 (my_hitboxID.attack != AT_JAB && my_hitboxID.attack != AT_FSPECIAL
-&& my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_USPECIAL && my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT) {
+&& my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_USPECIAL && my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT ) {
 	
         hitstop += 15
 
@@ -57,7 +58,9 @@ spawn_hit_fx(x,y -40, shit1)
     
 
 
-
+//if my_hitboxID.type == 1 {
+//	 move_cooldown[AT_USTRONG_2] = floor(my_hitboxID.damage/3)
+//}
 
 
 

@@ -61,7 +61,7 @@ set_hitbox_value(AT_DAIR, 18, HG_HITBOX_Y, -22);
 set_hitbox_value(AT_DAIR, 18, HG_WIDTH, 65);
 set_hitbox_value(AT_DAIR, 18, HG_HEIGHT, 46);
 set_hitbox_value(AT_DAIR, 18, HG_PRIORITY, 5);
-set_hitbox_value(AT_DAIR, 18, HG_DAMAGE, 1);
+set_hitbox_value(AT_DAIR, 18, HG_DAMAGE, 4);
 set_hitbox_value(AT_DAIR, 18, HG_ANGLE, 90);
 set_hitbox_value(AT_DAIR, 18, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DAIR, 18, HG_KNOCKBACK_SCALING, 0.1);
@@ -84,7 +84,7 @@ set_hitbox_value(AT_DAIR, 1, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_DAIR, 1, HG_WIDTH, 44);
 set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 75);
 set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 9);
-set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 2);
+set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 276); // wa ????
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0);

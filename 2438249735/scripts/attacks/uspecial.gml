@@ -25,7 +25,7 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 	
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_boss_vortex_end"));
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX_FRAME, 0);

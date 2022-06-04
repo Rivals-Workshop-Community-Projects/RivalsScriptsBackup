@@ -7,6 +7,9 @@ hit_player_obj = self
 
 
 
+
+
+
 if move_cooldown[AT_USPECIAL_2] == 9 {
 	spawn_hit_fx(x  , y - 40, shit5)  
 	       	    spawn_hit_fx(x   , y - 30 , shit1)   
@@ -87,9 +90,25 @@ if !hitpause {
     svsp = (svsp + vsp)/2
 }
 
-if state == PS_LANDING_LAG or state == PS_PRATLAND or state == PS_PRATFALL {
+if state == PS_PRATLAND or state == PS_PRATFALL {
 	  invitimer = 0
 }
+
+if move_cooldown[AT_FTHROW] = 1 {
+  if invitimer != 0 {
+  	sound_stop(sound_get("steath"))
+	sound_play(sound_get("steath"),false,noone,.8)
+  	invitimer = 1
+  	invis = true
+  	spawn_hit_fx(x  , y, dsx) 
+
+  }
+  
+  if has_hit_player {
+  	invitimer = 0
+  }
+}
+
 
 if move_cooldown[AT_NSPECIAL_2] > 0 {
 	if move_cooldown[AT_NSPECIAL_2] % 2 == 0 {

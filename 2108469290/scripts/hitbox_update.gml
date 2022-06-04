@@ -13,6 +13,7 @@ if attack == AT_NSPECIAL{
 	}
 	
 	if hitbox_timer > 10 {
+		hit_priority = 9
 	hsp = 20*spr_dir
 	}
 	

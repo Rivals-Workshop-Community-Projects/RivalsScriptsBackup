@@ -160,6 +160,7 @@ sprite_change_offset("seed", 20, 20);
 sprite_change_offset("grasscv", 30, 30);
 
 ds = hit_fx_create( sprite_get( "ds" ), 25 );
+dsx = hit_fx_create( sprite_get( "ds" ), 20 );
 
 
 

@@ -7,18 +7,20 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL ){
 }
 
 if window == 1 {
-	
 	can_cancel = 0
 }
 
 if has_hit_player {
 	if hitpause {
+		if attack == AT_FTILT {
+			can_cancel = 0
+		}
 	} else {
 		can_cancel ++
 	}
 }
  
-if lockon == 1 && has_hit_player && !hit_pause && down_down && special_down && can_cancel > 10 {
+if lockon == 1 && has_hit_player && !hit_pause && !left_down && !up_down && !right_down && special_down && can_cancel > 10 && attack != AT_USTRONG && attack != AT_FSTRONG && attack != AT_DSTRONG {
 	set_state(PS_IDLE)
 	can_cancel = 0
 }
@@ -324,8 +326,9 @@ if attack == AT_FSPECIAL {
 		set_attack(AT_EXTRA_3)
 	}
 	
-	if !has_hit_player && window == 3 && window_timer == 10 && free {
+	if !has_hit_player && window == 3 && window_timer == 12 && free {
 		set_state(PS_PRATFALL)
+		vsp = -5
 	}
 	
 	if has_hit_player && !hitpause {
@@ -341,6 +344,7 @@ if attack == AT_FSPECIAL {
 		if free {
 		spawn_hit_fx ( x + hsp , y - 46 + random_func(1,6,true), ai4 );
 		x = hit_player_obj.x 	
+		if y - 20 < hit_player_obj.y y += 20
 		hsp = 6*spr_dir
 		vsp = -6
 			set_attack(AT_UAIR)
@@ -506,10 +510,8 @@ if attack == AT_DSPECIAL {
         	shake_camera(2,6)
         	if x > lockplayer.x {
             x = lockplayer.x - 40 
-            spr_dir = 1
         	}  else {
             x = lockplayer.x + 40
-            spr_dir = -1
         	}
             y = lockplayer.y 
             vsp = 0
@@ -646,8 +648,8 @@ if attack == AT_USPECIAL {
     }
     
     if has_hit && !hitpause {
-    	vsp = -11
-    	set_state (PS_DOUBLE_JUMP)
+    	vsp = -6
+    	set_state (PS_IDLE_AIR)
     	state_timer = 0
     	move_cooldown[AT_USPECIAL] = 20
     }
@@ -710,8 +712,8 @@ if attack == AT_USPECIAL {
 
 if attack == AT_NSPECIAL {
 	
-	if state_timer == 1 && hhalo == 0 {
-		move_cooldown[AT_NSPECIAL] = 40
+	if state_timer == 1 {
+		move_cooldown[AT_NSPECIAL] = 35
 	}
 	
 	if hhalo > 0 {
