@@ -138,8 +138,8 @@ guitar = instance_create(x,y,"obj_article1");
 nspecHeld = 0;
 
 // Bury
-buryFrames = 60;
-maybeBuryFrames = 20;
+buryFrames = 80;
+maybeBuryFrames = 40;
 
 // Support
 Hikaru_Title = "Shadow Hatter";

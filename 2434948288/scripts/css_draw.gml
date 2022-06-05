@@ -22,6 +22,7 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 
+alt_name = 0;
 alt_name[0]  = "The Shadow Hatter";
 alt_name[1]  = "Blue";
 alt_name[2]  = "Orange";

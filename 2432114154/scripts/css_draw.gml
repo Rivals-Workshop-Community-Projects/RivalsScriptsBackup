@@ -51,7 +51,7 @@ var palette_names = [
   "Chopper of Crystal",
   "Drawer of Motivation",
   "Gimmick is Stun",
-  "Melee Sai",
+  "Void Sai",
   "Paint Tool Sai",
   "Osu Dab",
   "Spacies",

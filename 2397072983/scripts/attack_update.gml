@@ -190,21 +190,19 @@ if attack == AT_TAUNT && window == 2 && window_timer > 5 && taunt_down {
 }
 
 if attack == AT_TAUNT {
-		if down_down {
+	
+	if down_down {
 		move_cooldown[AT_DSPECIAL_2] = 2
 	}
 	
-		if move_cooldown[AT_DSPECIAL_2] > 0 {
+	if move_cooldown[AT_DSPECIAL_2] > 0 {
 		move_cooldown[AT_DSPECIAL_2] = 2
 	}
+	
 }
 
 if attack == AT_TAUNT && window == 3 {
 	
-
-	
-	
-
 	
 	if taunted > 10 {
 		y += 100000
@@ -582,7 +580,7 @@ if attack == AT_NSPECIAL {
 	
 }
 
-	if window_timer == 10 && special_down {
+	if window_timer == 10 && special_down && has_rune("L"){
 		set_attack(AT_EXTRA_2)
 		window = 1 
 		window_timer = 0
@@ -633,16 +631,16 @@ if attack == AT_USPECIAL {
 	if window = 1 {
 	vsp = 0
 	}
-		   if state_timer % 6 == 0 && state_timer < 15{
-	   spawn_hit_fx(x,y,idles)
-		   }
+	
+	
 	if window = 2 {
-		
+	if has_rune("M")  {  
 			nearbyhitbox = collision_circle( x, y, 50, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone && move_cooldown[AT_EXTRA_1] = 0{
 					dplayer = nearbyhitbox.player_id
 	    	hit_player_obj = nearbyhitbox.player_id
 			move_cooldown[AT_EXTRA_1] = 20
+	}
 	}
 	
 		y -= 6

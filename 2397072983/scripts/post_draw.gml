@@ -139,10 +139,9 @@ if move_cooldown[AT_NSPECIAL_2] > 2 {
   
 }
 
-
-
+if has_rune("M")  {  
 if get_gameplay_time() % 60 < 30 && LA >= 1000 && (adap != 1 or raged != 1 or para != 1 or unte != 1 or disc != 1 or gun != 1){
    draw_debug_text(shopx - 38,shopy + 15,"Taunt here")
 }
-
+}
 

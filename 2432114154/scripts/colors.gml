@@ -97,7 +97,7 @@ set_color_profile_slot( 6, 6, 217, 188, 130 ); //Fur
 set_color_profile_slot( 6, 7, 189, 147, 91 ); //Fur shading
 
 // Melee Sai
-set_color_profile_slot( 7, 0, 228, 255, 77 ); //Energy
+set_color_profile_slot( 7, 0, 0, 241, 255  ); //Energy
 set_color_profile_slot( 7, 1, 26, 36, 22 ); //Top shading
 set_color_profile_slot( 7, 2, 39, 59, 32 ); //Top
 set_color_profile_slot( 7, 3, 116, 173, 36 ); //Pattern1

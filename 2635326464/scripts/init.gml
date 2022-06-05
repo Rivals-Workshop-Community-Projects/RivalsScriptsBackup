@@ -175,7 +175,7 @@ land_sound          = asset_get("sfx_land_light");
 landing_lag_sound   = asset_get("sfx_land_med");
 waveland_sound      = asset_get("sfx_waveland_ran"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
 jump_sound          = asset_get("sfx_jumpground");
-djump_sound         = sound_get("Feather");
+djump_sound         = asset_get("sfx_bird_sidespecial_start");
 air_dodge_sound     = sound_get("Boo");
 
 // Visual offsets for when you're in Ranno's bubble

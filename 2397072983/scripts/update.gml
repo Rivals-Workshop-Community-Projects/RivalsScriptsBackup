@@ -21,8 +21,10 @@ if raged && raged != 3 {
 
 if get_gameplay_time() == 4 {
 		spawn_hit_fx(x,y-30,304)
-  sound_play(sound_get("respawn"),false,noone,1.3)
-  sound_play(sound_get("pdodge"),false,noone,1.3)
+  sound_stop(sound_get("respawn"))
+  sound_play(sound_get("respawn"),false,noone,.8)
+  sound_stop(sound_get("pdodge"))
+  sound_play(sound_get("pdodge"),false,noone,.8)
   
   
   with oPlayer {
@@ -312,11 +314,6 @@ if state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWAR
 	   spawn_hit_fx(x,y,idles)
 	}
 	
-	if !free and unte {
-		if state_timer > 15 {
-			window_timer -= 0.5
-		}
-	}
 	
 }
 
@@ -334,6 +331,8 @@ if !hitpause {
 }
 
 
+if has_rune("M")  {  
+
 	nearbyhitbox = collision_circle( x, y, 50, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone && nearbyhitbox.hit_priority > 0{
 		
@@ -350,7 +349,7 @@ if !hitpause {
 			
 			 
 	}
-	
+}
 	
 	
 ///MANTRA 
@@ -1683,9 +1682,6 @@ if style == 2 or style == 4 {
                 	}
                     init_shader();	 
                     
-                    if get_gameplay_time() % 60 == 0 {
-                    	take_damage(player,-1,1)
-          }
 	      }
 }
 
@@ -1693,6 +1689,7 @@ if hit_player_obj.state == PS_RESPAWN && hit_player_obj != self && hit_player_ob
 	LA += 250
 }
 
+if has_rune("M")  {  
 with (asset_get("oPlayer")){
 if "shopx" in self{
 	if x < other.shopx + 40 and x > other.shopx - 40 and y < other.shopy + 60 and  y > other.shopy - 60 {
@@ -1708,7 +1705,9 @@ if "shopx" in self{
    }
 }
 }
+}
 
+if has_rune("M")  {  
 if move_cooldown[AT_USPECIAL_GROUND] != 0 && visible && attacking && attack == AT_TAUNT{
 	    move_cooldown[AT_DSPECIAL] = 0
 		set_attack(AT_DSPECIAL)
@@ -1717,6 +1716,7 @@ if move_cooldown[AT_USPECIAL_GROUND] != 0 && visible && attacking && attack == A
 		sound_play(sound_get("shopo"),false,noone,1)
 		shoping = 1
 		move_cooldown[AT_USPECIAL_GROUND] = 180
+}
 }
 
 if move_cooldown[AT_USPECIAL_GROUND] != 0 {
@@ -1745,23 +1745,57 @@ if move_cooldown[AT_TAUNT_2] > 200 && move_cooldown[AT_TAUNT_2] < 320 {
 if move_cooldown[AT_TAUNT_2] == 200 {
 	
 
-		    
-	        state_timer = 99
-  		    invincible = 0
-		    window_timer = 99
-	sound_play(sound_get("strongexp"),false,noone,1)
-	sound_play(sound_get("death"),false,noone,1)	
 	sound_play(sound_get("tstrong"),false,noone,1)
 	style = style1
 	spawn_hit_fx(x,y-40,305)
 	spawn_hit_fx(x,y-40,304)
 	spawn_hit_fx(x,y-40,306)
-	create_hitbox(AT_EXTRA_1, 3, x, y - 40 )
-	take_damage(player,-1,1)
-	charge = 0
+	
+move_cooldown[AT_TAUNT_2] = 4
 
 }
-if move_cooldown[AT_TAUNT_2] == 199 {
-	hitstop = 60
-	move_cooldown[AT_TAUNT_2] = 31
+
+if style == 4 {
+	with asset_get("pHitBox") {
+	
+		nearbyhitbox = collision_circle( x-12, y+12, 64,other, true, true ) 
+	
+	    
+	    if nearbyhitbox != noone && player_id != other && type == 2 && hit_priority != 0 && can_hit_self == false{
+	    	
+	    	damage += 5
+	    	
+	    	other.invincible = true 
+	    	other.invince_time = 10
+	    	transcendent = true
+	    	hitbox_timer = 0
+	    	can_hit_self = true
+	    	
+
+	    	
+	    	with other {
+	    		
+            sound_stop(sound_get("parry")); 
+            sound_play(sound_get("parry")); 
+            shake_camera(4, 6)
+	    		
+	    	}
+	    	
+            fx = spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
+	    	fx.pause = 6 
+			hsp = (player_id.x - x)/12
+			vsp = (player_id.y - 30 - y)/12
+			spr_dir *= -1
+			
+			
+			//nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
+	       	//nearbyhitbox.hitbox_timer = 1
+			//nearbyhitbox.hit_priority = 0
+			///nearbyhitbox.destroyed = true
+
+	    }
+	    
+	}  
 }
+
+

@@ -3,9 +3,10 @@ if(attack == AT_NSPECIAL && window == 2 && charge >= 20 && (state == PS_ATTACK_G
     draw_sprite_ext(sprite_get(string(beam_sprite) + "_charging"), (charge = 90? ((state_timer) / 90 * 20) % 2 + 18: (charge / 90) * 17), x + (spr_dir = 1? (free? 16: 24): (free? -54: -62)), y - (spr_dir = 1? 62: 64), 2, 2, 0, c_white, 1);
 }
 
-if(attack == AT_NSPECIAL && window == 2 && charge >= 90 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
+blink_timer += (blink_timer < 40? 1: -40);
+if((attack == AT_NSPECIAL && window == 2 && charge >= 90) || charge >= 90){
     gpu_set_fog(true, c_yellow, true, false);
-    draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, (state_timer % 6 <= 2? 0.4: 0));
+    draw_sprite_ext(sprite_index, image_index, x, y + draw_y, 2 * spr_dir, 2, 0, c_white, (state_timer % ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_NSPECIAL && window == 2? 6: 35) <= 1? 0.4: 0));
     gpu_set_fog(false, c_yellow, false, true);
 }else{
     gpu_set_fog(false, c_yellow, false, true);

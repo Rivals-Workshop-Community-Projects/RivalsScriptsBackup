@@ -74,30 +74,30 @@ switch (state)
         break;
     case AS_FSPEC:
         vsp = 0;
-        if (state_timer < 20)
+        if (state_timer < 10)
         {
             if (state_timer == 0) spr_dir = player_id.spr_dir;
             hsp = -1 * spr_dir;
         }
         else if (state_timer < 40)
         {
-            if (state_timer == 20) sound_play(asset_get("sfx_spin"));
+            if (state_timer == 10) sound_play(asset_get("sfx_spin"));
             hsp = 6 * spr_dir;
             create_hitbox(AT_FSPECIAL, 1, x+hsp*2, y);
             if (image_index == 9) image_index = 7;
             animSpeed = 3;
         }
-        else if (state_timer < 70)
+        else if (state_timer < 60)
         {
             if (state_timer == 40)
             {
-                animSpeed = 6;
+                animSpeed = 4;
                 image_index = 10;
                 var owo = create_hitbox(AT_FSPECIAL, 2, x+hsp*2, y); owo.spr_dir = spr_dir;
             }
             hsp /= 1.1;
         }
-        else if (state_timer == 70)
+        else if (state_timer == 60)
         {
             SetArticleState(AS_OUT);
         }
@@ -117,17 +117,17 @@ switch (state)
             if (image_index == 9) image_index = 7;
             animSpeed = 2;
         }
-        else if (state_timer < 50)
+        else if (state_timer < 40)
         {
             if (state_timer == 20)
             {
-                animSpeed = 6;
+                animSpeed = 4;
                 image_index = 10;
                 create_hitbox(AT_FSPECIAL, 2, x, y);
             }
             vsp /= 1.1;
         }
-        else if (state_timer == 50)
+        else if (state_timer == 40)
         {
             SetArticleState(AS_OUT);
         }
@@ -169,8 +169,8 @@ switch (state)
         }
         else if (state_timer == 6)
         {
-			hsp = player_id.joy_pad_idle?0:lengthdir_x(3, player_id.joy_dir);
-			vsp = player_id.joy_pad_idle?0:lengthdir_y(3, player_id.joy_dir);
+			hsp = player_id.joy_pad_idle?0:lengthdir_x(5, player_id.joy_dir);
+			vsp = player_id.joy_pad_idle?0:lengthdir_y(5, player_id.joy_dir);
             player_id.tutDoneAdv[4] = !player_id.joy_pad_idle;
             create_hitbox(AT_NSPECIAL, 1, x, y);
         }
@@ -203,7 +203,7 @@ if (state_timer % animSpeed == 0 && state_timer != 0)
     {
         case AS_FSPEC:
             sprite_index = sprite_get("fspecGuitar");
-            animSpeed = 4;
+            animSpeed = 2;
             break;
         case AS_DAIR:
             sprite_index = sprite_get("fspecGuitar");

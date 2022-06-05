@@ -88,6 +88,12 @@ if (attack == AT_FAIR && prev_state == PS_ATTACK_AIR && state == PS_LANDING_LAG 
 		}
 	}
 
+//Other jump sfx 
+
+	if (state == PS_DOUBLE_JUMP && state_timer == 1){
+		sound_play (sound_get("ItemBoxHit"));
+	}
+
 //Idle sfx 
 
 	if (state == PS_IDLE){

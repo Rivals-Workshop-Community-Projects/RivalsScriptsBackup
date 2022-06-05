@@ -9,7 +9,7 @@ set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("Trick"));
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("Feather"));
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 12);

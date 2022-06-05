@@ -228,7 +228,7 @@ switch (attack){
             spread[i].vsp = spreadvsp[i];;
             spread[i].spread = 1;
             spread[i].hsp = spreadhsp[i];
-            spread[i].loop = random_func_2(floor(x % 200), 3, true) + 1;
+            spread[i].loop = random_func_2(floor(x % 200), 2, true) + 1;
         }
     }
     //power
@@ -359,7 +359,8 @@ switch (attack){
             if(charge == 24){
                 sound_play(sound_get("beam_wide_charging"));
             }
-            if(charge == 76){
+            if(charge == 76 || charge == 90) && c_sound == 0{
+                c_sound = 1;
                 sound_play(sound_get("beam_wide_charged"), true);
             }
             set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_wide_chargeshot"): sound_get("beam_wide_shot")));
@@ -367,7 +368,8 @@ switch (attack){
             if(charge == 24){
                 sound_play(sound_get("beam_normal_charging"));
             }
-            if(charge == 76){
+            if(charge == 76 || charge == 90) && c_sound == 0{
+                c_sound = 1;
                 sound_play(sound_get("beam_normal_charged"), true);
             }
             set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_normal_chargeshot"): sound_get("beam_normal_shot")));
@@ -408,7 +410,8 @@ switch (attack){
         if(charge == 24){
             sound_play(sound_get("beam_plasma_charging"));
         }
-        if(charge == 76){
+        if(charge == 76 || charge == 90) && c_sound == 0{
+            c_sound = 1;
             sound_play(sound_get("beam_plasma_charged"), true);
         }
         break;
@@ -432,7 +435,8 @@ switch (attack){
         if(charge == 24){
             sound_play(sound_get("beam_wave_charging"));
         }
-        if(charge == 76){
+        if(charge == 76 || charge == 90) && c_sound == 0{
+            c_sound = 1;
             sound_play(sound_get("beam_wave_charged"), true);
         }
         break;
@@ -456,7 +460,8 @@ switch (attack){
         if(charge == 24){
             sound_play(sound_get("beam_wave_charging"));
         }
-        if(charge == 76){
+        if(charge == 76 || charge == 90) && c_sound == 0{
+            c_sound = 1;
             sound_play(sound_get("beam_wave_charged"), true);
         }
         break;

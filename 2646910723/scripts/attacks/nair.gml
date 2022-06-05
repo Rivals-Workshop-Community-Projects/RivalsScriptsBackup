@@ -45,7 +45,7 @@ set_window_value(AT_NAIR, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_NAIR, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 8, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_NAIR, 8, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_NAIR, 8, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(AT_NAIR, 8, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_NAIR, 8, AG_WINDOW_GOTO, 4);
 
 set_num_hitboxes(AT_NAIR, 1);
@@ -84,7 +84,7 @@ set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 65);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 2);
-set_hitbox_value(AT_NAIR, 2, HG_EXTRA_HITPAUSE, 4);
+set_hitbox_value(AT_NAIR, 2, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, sound_get("punch"));
 set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, 1);

@@ -24,7 +24,7 @@ if ragemode {
                aafx.depth = 1    }
     
     if (attack == AT_JAB or attack == AT_NAIR) && window < 3 {
-    	
+    	move_cooldown[AT_NSPECIAL] = 5
     	//move_cooldown[AT_NSPECIAL] = 5
      
         sound_play(sound_get("fspec3"),false,noone,.8,1)
@@ -33,7 +33,7 @@ if ragemode {
         
 
         window = 8
-        window_timer = 1
+        window_timer = 4
 
         
         shake_camera(2,2)
@@ -247,6 +247,7 @@ switch(attack) {
     	
        } 
         if !hitpause { 
+        	set_attack_value(AT_DAIR, AG_CATEGORY, 2);
         	hsp = 6*spr_dir
             attack_end()
         	attack = AT_DAIR
@@ -276,8 +277,8 @@ switch(attack) {
            move_cooldown[AT_EXTRA_2] = 5
            set_attack_value(AT_JAB, AG_NUM_WINDOWS, 7);
            set_attack_value(AT_JAB, AG_OFF_LEDGE, 1);
-           window = 5
-           window_timer = 1
+           window = 8
+           window_timer = 4
        }
        
        if window > 3 {
@@ -421,8 +422,8 @@ switch(attack) {
            move_cooldown[AT_EXTRA_2] = 5
            set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 7);
            set_attack_value(AT_NAIR, AG_LANDING_LAG, 12);
-           window = 5
-           window_timer = 1
+           window = 8
+           window_timer = 6
            destroy_hitboxes();
        }
        

@@ -70,6 +70,7 @@ var palette_names = [
   "Rage Sthiccman",
   "Florida",
   "California",
+  "Voir",
 ];
 
 var alt = get_player_color(player);

@@ -1,5 +1,47 @@
 ///
 
+if has_rune("G") {
+	
+	with hit_player_obj {
+		take_damage(player,-1,floor(other.my_hitboxID.damage/2))
+	}
+} 
+
+if has_rune("H") {
+	
+	with hit_player_obj {
+		take_damage(player,-1,floor(other.my_hitboxID.damage/2))
+	}
+}
+
+if has_rune("I") {
+	
+	with hit_player_obj {
+		take_damage(player,-1,floor(other.my_hitboxID.damage/2))
+	}
+}
+
+if has_rune("K") {
+	
+	with hit_player_obj {
+		take_damage(player,-1,floor(other.my_hitboxID.damage/2))
+	}
+}
+
+if has_rune("N") {
+	
+	with hit_player_obj {
+		take_damage(player,-1,floor(other.my_hitboxID.damage))
+	}
+}
+
+if has_rune("O") {
+	
+	with hit_player_obj {
+		take_damage(player,-1,floor(other.my_hitboxID.damage))
+	}
+}
+
 if raged{
 	if raged == 3 {
 		shake_camera(floor(hdamage/2),4 + floor(hdamage/2))

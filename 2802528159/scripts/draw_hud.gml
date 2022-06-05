@@ -67,7 +67,7 @@ if(state == PS_SPAWN){
     draw_sprite_ext(sprite_get("sound"), sound_effect, temp_x + 200, temp_y - 74, 2, 2, 0, c_white, 1);
 }
 
-//debug utility
+/*debug utility
 //draw_debug_text( 200, 10, "state : " + get_state_name(state));
 //draw_debug_text( 200, 25, "state timer : " + string(state_timer));
 draw_debug_text( 200, 40, "attack : " + string(attack));

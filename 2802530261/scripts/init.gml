@@ -316,6 +316,8 @@ spread = [];
 spreadvsp = [-6, -5.5, -5, -5.5, -6];
 spreadhsp = [-2, -1, 0, 1, 2];
 spreading = 0;
+blink_timer = 0;
+c_sound = 0;
 
 //fspecial
 missile_sprite = 0; //0 base, 1 sups, 2 ice

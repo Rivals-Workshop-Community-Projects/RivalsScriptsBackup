@@ -15,6 +15,10 @@ switch(attack){
     items_select[5] = 0;
     break;
     case AT_DSPECIAL:
+    if(charge == 90){
+        spreading = 1;
+        charge = 0;
+    }
     ball_stop = true;
     set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get(string(spr_dir) + "_ball"));
     set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_ball_hurt"));
@@ -184,6 +188,7 @@ switch(attack){
     set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_uair_hurt"));
     break;
     case AT_NSPECIAL:
+    c_sound = 0;
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get(string(spr_dir) + "_nspecial"));
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get(string(spr_dir) + "_nspecial_air"));
     set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_nspecial_hurt"));
