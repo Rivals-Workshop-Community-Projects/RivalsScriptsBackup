@@ -23,19 +23,17 @@ if attack == AT_NAIR && has_hit && hitpause{
 
 if attack != AT_NAIR && hitpause && invitimer == -1{
 	if has_hit_player {
-		
 		if get_gameplay_time() % 2 == 0 {
 		target.x -= 4
 		} else {
 		target.x += 4	
 		}
 	}
-
 }
+
 
 if attack == AT_BAIR && window == 1 && window_timer == 1{
 	spr_dir *= -1
-     	   
 }
 
 if !hitpause {
@@ -226,7 +224,7 @@ if !hitpause {
                 sound_play(asset_get("sfx_swipe_heavy2"))
                                   sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
                 hsp = -4*spr_dir
-                vsp = -6
+                vsp = -8
                 window = 4
                 window_timer = 0
             spawn_hit_fx(x  , y, ds) 
@@ -379,6 +377,7 @@ if !hitpause {
      	if window_timer == 2 or window_timer == 4 {
      		    	  sound_play(asset_get("sfx_ice_shieldup"),false,noone,1.4)
      	}
+     	
      	
      	   if window_timer < 8 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
                 	hit_player_obj.x += (x + 60*spr_dir - hit_player_obj.x) / 3

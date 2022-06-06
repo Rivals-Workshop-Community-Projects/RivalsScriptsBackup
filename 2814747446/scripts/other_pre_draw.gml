@@ -1,10 +1,4 @@
-if instance_exists(other_player_id)  && other_player_id.attack == AT_FSPECIAL && isAttacking() && instance_exists(other_player_id.grabbed_player_obj){
-	//change angle
-	if(other_player_id.spr_dir == 1){
-	    spr_dir = -1;
-	}else if(other_player_id.spr_dir == -1){
-	    spr_dir = 1;
-	}
+if other_player_id.attack == AT_FSPECIAL && isAttacking() && other_player_id.grabbed_player_obj == self{
 	if(other_player_id.window >= 5 && other_player_id.window_timer >= 23) || other_player_id.window == 6{
 	    spr_angle = 90 * spr_dir;
 	}

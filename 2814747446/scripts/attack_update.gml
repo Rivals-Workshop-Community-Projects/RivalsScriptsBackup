@@ -27,34 +27,28 @@ if(attack == AT_USPECIAL){
 if(attack == AT_JAB){
 
 		if(attack_down){
-			set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 2);
-			set_hitbox_value(AT_JAB, 1, HG_ANGLE, 70);
+			// set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 4);
+			set_hitbox_value(AT_JAB, 1, HG_ANGLE, 80);
 			set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 4);
 			set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 6);
-			
-			set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 2);
-			set_hitbox_value(AT_JAB, 2, HG_ANGLE, 70);
-			set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 4);
-			set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 6);
-			set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0);
-			
 			
 			if(window == 6 && window_timer == 4){
 				window = 1;
 				window_timer = 0;
 			}
-			if(window == 3 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH )){
+			if(window == 3 and window_timer >= get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME)){
 				window = 4;
 				window_timer = 0;
 			}
 		}else{
-			set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 4);
+			// set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 4);
 			set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, -1);
-			set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
-			set_hitbox_value(AT_JAB, 2, HG_ANGLE, 50);
-			set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, -1);
-			set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 5);
-			set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.6);
+			// set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
+			// set_hitbox_value(AT_JAB, 2, HG_ANGLE, 50);
+			// set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, -1);
+			// set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 5);
+			// set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.6);
+			
 		}
 	
 	
@@ -64,7 +58,7 @@ if(attack == AT_JAB){
 }
 
 if(attack == AT_DTILT){
-	if(attack_down or attack_pressed){
+	if(attack_pressed){
 		if(window == 3 and window_timer > 3){ window++; window_timer = 0; }
 		if(window == 5 and window_timer > 5){ window = 1; window_timer = 0; }
 	}else{
@@ -232,32 +226,37 @@ if(attack == AT_NSPECIAL_AIR){
 	if(window == 2){
 		move_cooldown[attack] = 25
 		if(!free){
+			destroy_hitboxes()
 			window = 4;
 			window_timer = 0;
 			set_attack_value(attack, AG_NUM_WINDOWS, 5);
 		}
 	}
 	if(window == 4){
-
+		
 		if (window_timer == 1){
 			shake_camera(5,5)
 		}
 
-		if(window_timer > 14){
+		if(window_timer > 7){
 			if (attack_down or special_down or strong_down or shield_down){
+				destroy_hitboxes()
 				window = 5;
 				window_timer = 0;
 			}
 			if(!was_parried) can_jump = true;
 		}
 		off_edge = true;
-		if(free) window = 29;
+		if(free){
+			move_cooldown[attack] = 0
+			window = 29;
+		}
 	}
 	if(window == 5){
 		if(was_parried){
 			window = 29
 		}else{
-			iasa_script()
+			// iasa_script()
 		}
 		
 	}
@@ -465,7 +464,11 @@ if (attack == AT_FSPECIAL && instance_exists(grabbed_player_obj)) {
 				}
 			}
 		}
-		
+		if(window >= 5 && window_timer >= 23) || window == 6{
+			// print("im trying")
+			// grabbed_player_obj.spr_dir = -spr_dir
+	    grabbed_player_obj.spr_angle = 90 * grabbed_player_obj.spr_dir;
+		}
 		if(window == 6 or (window == 7 and window_timer < 2)){ //Let them below the belly please
 			var pull_to_x = 0 * spr_dir;
 			var pull_to_y = 20;

@@ -91,5 +91,6 @@ sprite_change_offset("electric_effect",       31, 25);
 sprite_change_offset("electric_effect_pull",  31, 25);
 sprite_change_offset("nspecial_magnet",       13, 20);
 sprite_change_offset("magnetism_trail",       17, 6);
+sprite_change_offset("ball_offscreen",        8, 9);
 
 victory_theme = set_victory_theme(sound_get("Gentle Giant"))

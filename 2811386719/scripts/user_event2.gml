@@ -103,13 +103,13 @@ with pHitBox{
         break;
     }
     
-    other.pull_dir_x = other.x + pull_to_x*other.spr_dir;
-    other.pull_dir_y = other.y + pull_to_y;
+    pull_dir_x = other.x + pull_to_x*other.spr_dir;
+    pull_dir_y = other.y + pull_to_y;
     
-    var dir = point_direction(x, y, other.pull_dir_x, other.pull_dir_y);
-    var dist = point_distance(x, y, other.pull_dir_x, other.pull_dir_y);
+    var dir = point_direction(x, y, pull_dir_x, pull_dir_y);
+    var dist = point_distance(x, y, pull_dir_x, pull_dir_y);
     
-    var max_range = 900;
+    var max_range = 2000;
     dist = clamp(dist, 0, max_range);
     var limits = (dist+1)/max_range;
     

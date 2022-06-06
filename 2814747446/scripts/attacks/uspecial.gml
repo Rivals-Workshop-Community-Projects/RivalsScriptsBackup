@@ -48,16 +48,16 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 10);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 9);
 // set_window_value(AT_USPECIAL, 4, AG_WINDOW_GOTO, 5);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 11);
 // set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, 2);
 // set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 5);
 
 
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_GOTO, 29);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_VSPEED_TYPE, 1);
 
@@ -123,8 +123,8 @@ set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 125);
 set_hitbox_value(AT_USPECIAL, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 15);
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 1.25);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 155);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_kragg_rock_pillar"));

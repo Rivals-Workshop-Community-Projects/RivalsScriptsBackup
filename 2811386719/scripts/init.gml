@@ -136,6 +136,11 @@ orb_lifetime_checker = noone;
 right_bubble = noone;
 left_bubble = noone;
 
+ball_idc_lup = [[1,2,3],
+                [0,0,4],
+                [7,6,5]]
+ball_offscreen_spr = sprite_get("ball_offscreen")
+
 game_time = 0;
 
 //Static

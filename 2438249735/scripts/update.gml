@@ -268,10 +268,26 @@ move_cooldown[AT_USPECIAL] = 0
 move_cooldown[AT_FSPECIAL] = 0
 }
 
+if state == PS_PARRY {
+	if state_timer == 1 { 	
+		invitimer = 0
+    	invis = true
+    }
+}
+
+if state == PS_AIR_DODGE {
+	if state_timer == 15 { 	
+		invitimer = 0
+    	invis = true
+    }
+}
+
 if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD){
 
 if state_timer == 1 {
     	sound_play(asset_get("sfx_quick_dodge"));
+    	invitimer = 0
+    	invis = true
 }
 	 
 	 if state_timer < 13{

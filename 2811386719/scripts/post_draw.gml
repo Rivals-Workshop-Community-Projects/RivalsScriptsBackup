@@ -41,6 +41,8 @@ if(instance_exists(lightning_hbox)){
     draw_sprite_ext(lightning_spr, lightning_hbox.image_index, lightning_hbox.x, lightning_hbox.y, lightning_hbox.image_xscale, lightning_hbox.image_yscale, lightning_hbox.image_angle, c_white, 1)
 }
 
+
+
 // if(ds_list_valid(ai_draw)){
 //     var len = ds_list_size(ai_draw);
 //     for(var i = 0; i < len; i++){

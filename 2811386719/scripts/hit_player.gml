@@ -41,7 +41,7 @@ if (my_hitboxID.attack == AT_NSPECIAL or (my_hitboxID.attack == AT_USPECIAL_GROU
 	}
 }
 
-if(my_hitboxID.attack == AT_JAB and my_hitboxID.hbox_num == 4){
+if(my_hitboxID.attack == AT_JAB and my_hitboxID.hbox_num == 5){
 	if(hit_player_obj.static_pull) StaticConsume(hit_player_obj)
 }
 

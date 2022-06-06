@@ -38,10 +38,10 @@ if(attack == AT_DSPECIAL){
 //
 
 if(attack == AT_EXTRA_1){
+  
   clear_button_buffer(PC_JUMP_PRESSED);
   can_let_go_jump = false;
   walljump_charge = -1;
-  has_hit_player = false;
   hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 }
 

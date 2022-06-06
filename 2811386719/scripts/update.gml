@@ -24,7 +24,7 @@ if(state != PS_WALL_JUMP){
 	
 }else{
   if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
-     doCling()
+    doCling()
   }
 }
 
@@ -32,10 +32,13 @@ can_cling = can_wall_jump and has_walljump and !(attack == AT_EXTRA_1 and window
 
 if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
 	if(can_wall_jump and has_walljump and (jump_down or (can_tap_jump() and tap_jump_pressed))){
-		if(place_meeting(x, y, solids)){
-			spr_dir = sign(-hsp)
+		if(place_meeting(x + 1, y, solids)){
+			spr_dir = sign(-1)
 			has_walljump = false;
-			can_cling = false;
+			set_state(PS_WALL_JUMP);
+		}else if(place_meeting(x - 1, y, solids)){
+			spr_dir = sign(1)
+			has_walljump = false;
 			set_state(PS_WALL_JUMP);
 		}
 	}
@@ -83,7 +86,7 @@ if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
 	// for (var i = 0; i < ds_list_size(ls); i += s){
 	//   	var strings = "";
 	//   	for(var j = 0; j < s; j++){
-	//   		if(ls[| i + j] == undefined or string_pos("hud", ls[| i + j]) == 0) continue;
+	//   		if(ls[| i + j] == undefined or string_pos("inv", ls[| i + j]) == 0) continue;
 	//   		strings += ls[| i + j] + " ";
 	//   	}
 	//   	if(strings != "")print(strings);
@@ -242,14 +245,17 @@ jet_update()
 old_static = static;
 #define gain_static()
 switch(state){
+	case PS_JUMPSQUAT:
+        static += (abs(hsp) > 1)*0.8;
+        break;
     case PS_WAVELAND:
-        static += (abs(hsp) > 1)*1.6;
+        static += (abs(hsp) > 1)*0.8;
         break;
     case PS_DASH_START:
-        static += 0.6;
+        static += 0.7;
         break;
     case PS_DASH:
-        static += 0.6;
+        static += 0.7;
         break;
     case PS_ATTACK_GROUND:
         if(attack == AT_FSPECIAL){

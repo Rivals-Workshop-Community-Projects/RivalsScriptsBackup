@@ -21,6 +21,7 @@ if(get_gameplay_time()%60 == 0) lowest_fps = fps_real;
 // saved_id = ida;
 shader_start()
 draw_hud_bar()
+draw_ball_offstage_indicator()
 shader_end()
 #define draw_hud_bar
 
@@ -30,3 +31,40 @@ var back_wid = 66;
 var back_img_indx = fore_img_indx - 1;
 
 draw_sprite_ext(static_bar_spr, fore_img_indx, temp_x-2, temp_y, fore_wid, 2, 0, c_white, 1)
+
+#define draw_ball_offstage_indicator()
+
+with(right_bubble){
+  var n_of = 32
+	var view_x = view_get_xview()
+	var view_y = view_get_yview()
+	var view_w = view_get_wview()
+	var view_h = view_get_hview()
+	var corrected_x = x - view_x
+	var corrected_y = y - view_y
+	
+	xMag = clamp(corrected_x, 0, view_w)
+	yMag = clamp(corrected_y, 0, view_h)
+	var offscreen = xMag != corrected_x or yMag !=  corrected_y
+
+	if(offscreen){
+  	var view_snap_x = clamp(corrected_x, 0+n_of, view_w - n_of)
+    var view_snap_y = clamp(corrected_y, 0+n_of, other.temp_y - n_of)
+  	
+  	var offset_dir_x = (corrected_x>view_w) - (corrected_x<0)
+  	var offset_dir_y = (corrected_y>view_h) - (corrected_y<0)
+  	var i = offset_dir_x +1
+  	var j = offset_dir_y +1
+  	
+  	var offset_x = n_of*-offset_dir_x
+  	var offset_y = n_of*-offset_dir_y
+  	
+  	var subImg = other.ball_idc_lup[@ j][@ i]
+  	
+  // 	xMag = view_get_xview() + 36;
+              // subMag = 4;
+              // offscreen = true;
+    draw_sprite_ext(asset_get("offscreen_cloud_bg_spr"), subImg, view_snap_x, view_snap_y, 1, 1, 0, get_player_hud_color( player ), offscreen);
+    draw_sprite_ext(other.ball_offscreen_spr, 0, view_snap_x, view_snap_y, 2, 2, 0, c_white, offscreen);
+	}
+}

@@ -30,7 +30,6 @@ if (!attack_data_obtained) obtain_attack_data();
 
 // // ai_inputs = 0;
 // // MAIN LOOP DO NOT TOUCH
-// ds_list_clear(ai_draw);
 
 // // repeat(6000) {}
 
@@ -42,7 +41,7 @@ if (!attack_data_obtained) obtain_attack_data();
 // //   ds_map_clear(ai_fn_cache);
 // // }
 
-main()
+if(get_training_cpu_action() == CPU_FIGHT ) main()
 // print(ai_attack_data)
 // // process_inputs();
 // ai_script_execution_frame ++;
@@ -78,8 +77,13 @@ targetdamage = get_player_damage( ai_target.player );
 
 if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
   switch(attack){
-    case AT_NSPECIAL:
-    	
+  	case AT_NSPECIAL:
+  		hold_towards_target()
+  	break;
+    case AT_DSPECIAL:
+    	if(place_meeting(x +50*spr_dir, y - 20, oPlayer)){
+    		press_special()
+    	}
       break;
     case AT_USPECIAL:
     	if(vsp > 0 and collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, solid_asset, false, true)){
@@ -112,11 +116,13 @@ if(can_attack or state == PS_DASH_START or state == PS_DASH){
 	if(!free){
 		strongPercent = (2 - ai_target.knockback_adj) * 70 < targetdamage;
 		
-		if can_strong{
-			hitboxloc("strongs")
-		}
+	
 		
 		hitboxloc("tilts")
+		
+		if get_gameplay_time()%2 and can_strong{
+			hitboxloc("strongs")
+		}
 		
 		if(can_special){
 		  
@@ -131,7 +137,7 @@ if(can_attack or state == PS_DASH_START or state == PS_DASH){
 if(chosenAttack != noone){
 	clear_ai_inputs();
 	perform_attack(chosenAttack); 
-	print(get_attack_name(chosenAttack));
+	// print(get_attack_name(chosenAttack));
 }
   // if (self.player == 2) {
   //   var of = get_floor_from(mouse_x, mouse_y);
@@ -189,11 +195,11 @@ switch(argument[0]){
 		break;
 		
 	case "aerials":
-		var attacke = [AT_NAIR, AT_DAIR, AT_FAIR, AT_UAIR, AT_BAIR];
+		var attacke = [AT_NAIR, AT_DAIR, AT_FAIR, AT_UAIR, AT_BAIR, AT_FSPECIAL, AT_NSPECIAL_AIR];
 		break;
 		
 	case "strongs":
-		var attacke = [AT_DSTRONG, AT_USTRONG, AT_FSTRONG];
+		var attacke = [AT_DSTRONG, AT_USTRONG];
 		break;
 	case "specials":
 		var attacke = [AT_USPECIAL, AT_FSPECIAL];
@@ -225,18 +231,18 @@ for(var i = 0; i < len; i++){
   	distadd_x = 100;
   }
   if(attacke[i] == AT_USPECIAL){
-  	distadd_x = 200;
-  	distadd_y = 200;
+  	distadd_x = 100;
+  	distadd_y = -100;
   }
   
-  var attack_bbox = [lastPos[@ 1] + cad[@ AD_CY] - cad[@ AD_HEIGHT] / 2,
-    lastPos[@ 1] + cad[@ AD_CY] + cad[@ AD_HEIGHT] / 2,
-    lastPos[@ 0] + (cad[@ AD_CX] + distadd_x) * spr_dir - cad[@ AD_WIDTH] / 2,
-    lastPos[@ 0] + (cad[@ AD_CX] + distadd_x) * spr_dir + cad[@ AD_WIDTH] / 2];
+  var attack_bbox =  [lastPos[@ 1] + (cad[@ AD_CY] + distadd_y) - cad[@ AD_HEIGHT] / 2,
+									    lastPos[@ 1] + (cad[@ AD_CY] + distadd_y) + cad[@ AD_HEIGHT] / 2,
+									    lastPos[@ 0] + (cad[@ AD_CX] + distadd_x) * spr_dir - cad[@ AD_WIDTH] / 2,
+									    lastPos[@ 0] + (cad[@ AD_CX] + distadd_x) * spr_dir + cad[@ AD_WIDTH] / 2];
     
-  var ov = amount_of_rectangle_overlap(estOPos[@ 0] - thw / 2, estOPos[@ 1] + thh, estOPos[@ 0] + thw / 2, estOPos[@ 1], 
-        lastPos[@ 0] + (cad[@ AD_CX] + distadd_x) * spr_dir - cad[@ AD_WIDTH] / 2, lastPos[@ 1] + cad[@ AD_CY] - cad[@ AD_HEIGHT] / 2, lastPos[@ 0] + (cad[@ AD_CX] + distadd_x) * spr_dir + cad[@ AD_WIDTH] / 2, lastPos[@ 1] + cad[@ AD_CY] + cad[@ AD_HEIGHT] / 2)
-  // if(true) make_rect_outline(ai_target_hurtbox_bbox[@ BBOX_LEFT], ai_target_hurtbox_bbox[@ BBOX_TOP], ai_target_hurtbox_bbox[@ BBOX_RIGHT], ai_target_hurtbox_bbox[@ BBOX_BOTTOM], $880088);
+  var ov = amount_of_rectangle_overlap(ai_target_hurtbox_bbox[@ BBOX_LEFT], ai_target_hurtbox_bbox[@ BBOX_TOP], ai_target_hurtbox_bbox[@ BBOX_RIGHT], ai_target_hurtbox_bbox[@ BBOX_BOTTOM], 
+        attack_bbox[@ BBOX_LEFT], attack_bbox[@ BBOX_TOP], attack_bbox[@ BBOX_RIGHT], attack_bbox[@ BBOX_BOTTOM])
+  if(attacke[i] == AT_USTRONG) make_rect_outline(attack_bbox[@ BBOX_LEFT], attack_bbox[@ BBOX_TOP], attack_bbox[@ BBOX_RIGHT], attack_bbox[@ BBOX_BOTTOM], $880088);
   if(ov){
   	listAtk[j] = attacke[i];
 		j++;
@@ -253,9 +259,16 @@ iterations = 0;
 
 //Chooses from the new array based on a set of conditions randomly, test are done to reroll for a new attack if a condition is not met
 if len != 0{
+	var ss = "";
+	for(var i = 0; i < len; i++){
+		ss += get_attack_name(listAtk[i]) + " "
+		
+	}
+	if(ss != "")print(ss)
 	while(reroll and iterations < 5){
 		
 		iterations++;
+		reroll = false;
 		
 		chosenAttack = listAtk[random_func(2, j, true)];
 		
@@ -263,8 +276,10 @@ if len != 0{
 			if(state != PS_DASH_START or state != PS_DASH){
 				reroll = true;
 			}
+		}else{
+			
 		}
-		reroll = false;
+		
 	}
 	
 }
@@ -609,6 +624,7 @@ if len != 0{
 			press_attack()
 		break
 		case AT_NSPECIAL:
+		case AT_NSPECIAL_AIR:
 			hold_neutral()
 			press_special()
 		break
@@ -639,12 +655,11 @@ if len != 0{
 		break;
 		case AT_USTRONG:
 			press_up()
-			hold_towards_target()
+			// hold_towards_target()
 			press_strong()
 		break
 		case AT_DSTRONG:
 			press_down()
-			hold_towards_target()
 			press_strong()
 		break
 		case AT_FTILT:

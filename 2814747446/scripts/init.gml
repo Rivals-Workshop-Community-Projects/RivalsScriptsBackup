@@ -145,7 +145,7 @@ of the standing-up animation. Dan Moment
 
 */
 
-
+set_victory_theme( sound_get( "Viledriver" ) );
 
 // Hurtbox sprites
 hurtbox_spr         = sprite_get("Peat_hurt_box");

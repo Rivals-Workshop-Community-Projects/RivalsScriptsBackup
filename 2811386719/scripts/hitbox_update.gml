@@ -320,6 +320,10 @@ if(bubble){
   hsp += acc_x
   vsp += acc_y
   
+  if(point_distance(x, y, owner.x, owner.y - 50) > 1500){
+  	destroyed = true
+  }
+  
   old_hsp = hsp;
   old_vsp = vsp;
   

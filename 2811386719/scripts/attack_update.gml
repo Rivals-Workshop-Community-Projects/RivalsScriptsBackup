@@ -35,7 +35,7 @@ if(attack == AT_JAB){
 	}
 	if(window == 8){
 		if(window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			set_num_hitboxes(attack, 3 + attack_down);
+			set_num_hitboxes(attack, 4 + attack_down);
 			
 		}
 	}
@@ -490,7 +490,7 @@ if (attack == AT_DSPECIAL){
 		}
   }
   if(window == 4){
-		if(!wave_summoned){
+		if(!wave_summoned and !free){
 			var hleft = create_hitbox(AT_DSPECIAL, (static >= 100) + 3, x, y+4);
   		hleft.hsp = -21;
   		var hright = create_hitbox(AT_DSPECIAL, (static >= 100) + 3, x, y+4);
@@ -582,10 +582,13 @@ if(attack == AT_EXTRA_1){
 			}else{
 				vsp = 0;
 				var vel = 3;
-				var temp_vsp = (up_down* -(vel)* col_above + down_down* (vel)* col_below);
+				if(window <= 1){
+					var temp_vsp = (up_down* -(vel)* col_above + down_down* (vel)* col_below);
 				
-				var _col_above = position_meeting(spr_dir < 0 ? hurtboxID.bbox_right+4 : hurtboxID.bbox_left-4, hurtboxID.bbox_top + temp_vsp + vsp, solids);
-				if(_col_above) vsp = temp_vsp;
+					var _col_above = position_meeting(spr_dir < 0 ? hurtboxID.bbox_right+4 : hurtboxID.bbox_left-4, hurtboxID.bbox_top + temp_vsp + vsp, solids);
+					if(_col_above) vsp = temp_vsp;
+				}
+				
 				
 				hsp = 0;
 				wallcrawl_image_index = ((vsp != 0)*(wallcrawl_image_index + wallcrawl_anim_speed*sign(vsp)*-1) + 8 ) % 8;
@@ -613,6 +616,7 @@ if(attack == AT_EXTRA_1){
 		if(jump_down and stored_window_timer < get_window_value(attack, 1, AG_WINDOW_LENGTH)){
 			window = 1;
 			window_timer = stored_window_timer;
+			attack_end()
 			has_hit_player = false;
 			reset_window_value(AT_EXTRA_1, 3, AG_WINDOW_GOTO);
 			reset_window_value(AT_EXTRA_1, 5, AG_WINDOW_TYPE);
@@ -802,139 +806,126 @@ if(attack == AT_NSPECIAL){
 	}
 }
 
-if (attack == AT_NTHROW && instance_exists(grabbed_player_obj)) {
+if (attack == AT_NTHROW){
 	can_fast_fall = false;
 	move_cooldown[AT_NSPECIAL] = 1;
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
-	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
-	else {
-		//keep the grabbed player in hitstop until the grab is complete.
-		grabbed_player_obj.hitstop = 2;
-		grabbed_player_obj.hitpause = true;
-		
-		//if this is the first frame of a window, store the grabbed player's relative position.
-		if (window_timer <= 1) {
-			grabbed_player_relative_x = grabbed_player_obj.x - x;
-			grabbed_player_relative_y = grabbed_player_obj.y - y;
-		}
-		 
-		//on the first window, pull the opponent into the grab.
-		if (window == 1) {
-			can_move = false;
-			if (window_timer <= 1) { reset_window_value(attack, 5, AG_WINDOW_GOTO) }
+	if(instance_exists(grabbed_player_obj)){
+		if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
+		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+		else {
+			//keep the grabbed player in hitstop until the grab is complete.
+			grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitpause = true;
 			
-			//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
-			var pull_to_x = 50 * spr_dir;
-			var pull_to_y = 0;
-			
-			//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
-			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-		
-			grabbed_player_obj.x = x + floor(ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length));
-			grabbed_player_obj.y = y + floor(ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length));
-			
-			// Look, I coded this once and now I have no clue how to translate it, this basically sums teh windows and does math to make an arc in which the character should follow, I had to plot this in demos to visualize it
-			// Anyway, look away please
-			if(window_timer == window_length){ 
+			//if this is the first frame of a window, store the grabbed player's relative position.
+			if (window_timer <= 1) {
+				grabbed_player_relative_x = grabbed_player_obj.x - x;
+				grabbed_player_relative_y = grabbed_player_obj.y - y;
+			}
+			 
+			//on the first window, pull the opponent into the grab.
+			if (window == 1) {
+				can_move = false;
+				if (window_timer <= 1) { reset_window_value(attack, 5, AG_WINDOW_GOTO) }
 				
-				starting_x = grabbed_player_obj.x;
-				starting_y = grabbed_player_obj.y;
-				relative_dest_x = 10*2;
-				relative_dest_y = -(120*2);
-				count = 1;
-				x2 = 0;
+				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
+				var pull_to_x = 50 * spr_dir;
+				var pull_to_y = 0;
 				
-				drive_grabbed()
+				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
+				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+			
+				grabbed_player_obj.x = x + floor(ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length));
+				grabbed_player_obj.y = y + floor(ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length));
+				
+				// Look, I coded this once and now I have no clue how to translate it, this basically sums teh windows and does math to make an arc in which the character should follow, I had to plot this in demos to visualize it
+				// Anyway, look away please
+				if(window_timer == window_length){ 
+					
+					starting_x = grabbed_player_obj.x;
+					starting_y = grabbed_player_obj.y;
+					relative_dest_x = 10*2;
+					relative_dest_y = -(120*2);
+					count = 1;
+					x2 = 0;
+					
+					drive_grabbed()
+				}
+				
 			}
 			
-		}
+			if(window == 2){
+				can_move = false;
+				var window_length = get_window_value(attack, 2, AG_WINDOW_LENGTH);
+				drive_grabbed();
 		
-		if(window == 2){
-			can_move = false;
-			var window_length = get_window_value(attack, 2, AG_WINDOW_LENGTH);
-			drive_grabbed();
-
-			if(window_timer == window_length){ 
-				var t = 17;
-				var s = x + ((relative_dest_x + 160) * spr_dir);
-				var so = x;
-				hsp = (s - so)/t;
-				
-				var s = y + relative_dest_y + 10;
-				var so = y;
-				vsp = sqrt(abs(2 * (grav *0.5) * abs(s - so))) * sign(s - so) ;
-			}else{
-				hsp = 0;
-				vsp = 0;
-			}
-		}
-		
-		var geyser_length = 20;
-		if (window == 3) { // Spawn Geyser
-			if(window_timer == 1){
-				geyser_dfx = spawn_hit_fx(x, y, nspecial_water_geyser_hfx)
-				geyser_dfx.depth = depth -1;
-			}
-			drive_grabbed();
-			
-		}
-		
-		if(instance_exists(geyser_dfx)){
-			// print(geyser_dfx.step_timer)
-			if(geyser_dfx.step_timer >= (geyser_length - 1)){
-				// print("Tried to spawn")
-				var t = 20;
-				var v = -2.8;
-				var grav_mult = get_window_value(attack, window, AG_WINDOW_CUSTOM_GRAVITY);
-				indicador_x = x + hsp*t;
-				
-				indicador_y = y + v*t + 0.5*grav*grav_mult*t*t;
-				hoop_dfx = spawn_hit_fx(indicador_x, indicador_y, nspecial_water_hoop_hfx);
-				hoop_dfx.depth = depth -1;
-			}
-			
-		}
-		
-		if(instance_exists(hoop_dfx)){ // Correct hoop position
-			// print(hoop_dfx.step_timer)
-			var t = 4;
-			var v = -2.8;
-			var grav_mult = get_window_value(attack, window, AG_WINDOW_CUSTOM_GRAVITY);
-			indicador_x = x + hsp*t;
-			
-			//indicador_y = y + v*t + 0.5*grav*grav_mult*t*t;
-			hoop_dfx.x = lerp(hoop_dfx.x, indicador_x, 0.07) ;
-		}
-		
-		if(window == 4){
-			
-			grabbed_player_obj.x = x + 0 * spr_dir;
-			grabbed_player_obj.y = y - 92;
-		}
-		if(window == 5){
-			grabbed_player_obj.x = x + 1 * spr_dir;
-			grabbed_player_obj.y = lerp(grabbed_player_obj.y, y - 30, 0.6);
-			//fall_through = true;
-			
-			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-				if(free){
-					window = 8;
-					window_timer = 0;
-					hsp = -4*spr_dir;
-					vsp = -3.5;
+				if(window_timer == window_length){ 
+					var t = 17;
+					var s = x + ((relative_dest_x + 160) * spr_dir);
+					var so = x;
+					hsp = (s - so)/t;
+					
+					var s = y + relative_dest_y + 10;
+					var so = y;
+					vsp = sqrt(abs(2 * (grav *0.5) * abs(s - so))) * sign(s - so) ;
+				}else{
+					hsp = 0;
+					vsp = 0;
 				}
 			}
-		}
-		if(window == 6){
-			if(window_timer <= 0 and !hitpause){
-				var hsr = spawn_hit_fx(x, y, nspecial_water_explosion_hfx)
-				hsr.depth = depth - 1;
-			}
-			grabbed_player_obj.x = x + 1 * spr_dir;
-			grabbed_player_obj.y = y;
 			
+			
+			if (window == 3) { // Spawn Geyser
+				can_move = false;
+				var h_dir = left_down*-1 + right_down;
+				if(window_timer == 1){
+					geyser_dfx = spawn_hit_fx(x, y, nspecial_water_geyser_hfx)
+					geyser_dfx.depth = depth -1;
+				}
+				drive_grabbed();
+			}
+			
+			effects_nthrow()
+			
+			if(window == 4){
+				can_move = false;
+				custom_forward_air_drift(0.5)
+				
+				grabbed_player_obj.x = x + 0 * spr_dir;
+				grabbed_player_obj.y = y - 92;
+			}
+			if(window == 5){
+				can_move = false
+				custom_forward_air_drift(0.5)
+				grabbed_player_obj.x = x + 1 * spr_dir;
+				grabbed_player_obj.y = lerp(grabbed_player_obj.y, y - 30, 0.6);
+				//fall_through = true;
+				
+				if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+					if(free){
+						window = 8;
+						window_timer = 0;
+						hsp = -4*spr_dir;
+						vsp = -3.5;
+					}
+				}
+			}
+			if(window == 6){
+				if(window_timer <= 0 and !hitpause){
+					var hsr = spawn_hit_fx(x, y, nspecial_water_explosion_hfx)
+					hsr.depth = depth - 1;
+				}
+				grabbed_player_obj.x = x + 1 * spr_dir;
+				grabbed_player_obj.y = y;
+				
+			}
 		}
+	}
+	
+	if(window == 8){
+		can_move = false;
+		custom_forward_air_drift(0.2)
 	}
 }
 
@@ -1178,6 +1169,40 @@ if (attack == AT_USPECIAL && instance_exists(grabbed_player_obj)) {
 	}
 }
 
+#define custom_forward_air_drift(modifier)
+modifier = 1 - modifier
+
+var dir_val = (-left_down*air_accel*1) + (right_down*air_accel*1);
+dir_val = clamp(dir_val+hsp, -air_max_speed, air_max_speed) - hsp
+hsp += dir_val - (dir_val*spr_dir > 0)*modifier*dir_val
+
+#define effects_nthrow()
+var geyser_length = 20;
+if(instance_exists(geyser_dfx)){
+	// print(geyser_dfx.step_timer)
+	if(geyser_dfx.step_timer >= (geyser_length - 1)){
+		// print("Tried to spawn")
+		var t = 20;
+		var v = -2.8;
+		var grav_mult = get_window_value(attack, window, AG_WINDOW_CUSTOM_GRAVITY);
+		indicador_x = x + hsp*t;
+		
+		indicador_y = y + v*t + 0.5*grav*grav_mult*t*t;
+		hoop_dfx = spawn_hit_fx(indicador_x, indicador_y, nspecial_water_hoop_hfx);
+		hoop_dfx.depth = depth -1;
+	}
+	
+}
+if(instance_exists(hoop_dfx)){ // Correct hoop position
+	// print(hoop_dfx.step_timer)
+	var t = 4;
+	var v = -2.8;
+	var grav_mult = get_window_value(attack, window, AG_WINDOW_CUSTOM_GRAVITY);
+	indicador_x = x + hsp*t;
+	
+	//indicador_y = y + v*t + 0.5*grav*grav_mult*t*t;
+	hoop_dfx.x = lerp(hoop_dfx.x, indicador_x, 0.07) ;
+}
 
 #define drive_grabbed()
 

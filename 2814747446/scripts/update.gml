@@ -73,6 +73,11 @@ if (attack == AT_DSTRONG && window == 2 && window_timer == 11) {
 spawn_dust_fx( x, y, sprite_get("hfx_dirt"), 26 );
 }
 
+if (attack == AT_BAIR && window == 4 && window_timer == 1) {
+spawn_dust_fx( x - spr_dir*60, y, sprite_get("hfx_dirt"), 26 );
+}
+
+
 if(state != PS_WALL_JUMP){
 
 	

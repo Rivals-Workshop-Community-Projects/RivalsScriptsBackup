@@ -73,6 +73,6 @@ spawn_hit_fx(x,y -40, shit1)
     
     
     if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) {
-    move_cooldown[AT_USTRONG_2] = 3
+    move_cooldown[AT_USTRONG_2] = 6
     }
     

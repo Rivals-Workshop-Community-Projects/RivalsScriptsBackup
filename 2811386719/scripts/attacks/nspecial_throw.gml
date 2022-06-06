@@ -57,6 +57,8 @@ set_window_value(AT_NTHROW, 5, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_VSPEED, 4);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_CUSTOM_GRAVITY, 2);
+// set_window_value(AT_NTHROW, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+// set_window_value(AT_NTHROW, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 1.1);
 
 //active
 set_window_value(AT_NTHROW, 6, AG_WINDOW_LENGTH, 5);
