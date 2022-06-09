@@ -24,11 +24,11 @@ if(my_hitboxID.attack == AT_DAIR){
     old_vsp = -5;
 }
 
-// heals damage to self:
-if (attack == AT_DSPECIAL && window == 4) {
-    set_player_damage( player, clamp(get_player_damage(player)-50, 0 , 999) ); 
+if(my_hitboxID.attack == AT_FAIR){
+    old_vsp = -5;
+    old_hsp = 0;
+}
 
-    }
 
 
 if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
@@ -36,4 +36,9 @@ if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
         //print("ora")
         hit_player_obj.y = lerp(floor(hit_player_obj.y), y-90, .35);
     }
+}
+
+/* heals damage to self:
+if(my_hitboxID.attack == AT_DSPECIAL){
+    set_player_damage( player, clamp(get_player_damage(player)-50, 0 , 999) ); 
 }

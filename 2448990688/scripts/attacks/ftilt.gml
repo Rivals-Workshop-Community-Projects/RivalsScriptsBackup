@@ -66,5 +66,3 @@ set_hitbox_value(AT_FTILT, 2, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_UNBASHABLE, 1);
-
-set_attack_value(AT_ftilt, AG_MUNO_ATTACK_MISC_ADD, "Does NOT ignore parry stun. (fix this if you make your own character)");

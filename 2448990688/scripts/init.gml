@@ -11,16 +11,16 @@
 
 // Physical size
 char_height         = 52;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1;		// 0.9  -  1.2
+knockback_adj       = 1.1;//1.0		// 0.9  -  1.2
 
 // Ground movement
-walk_speed          = 3;		// 3    -  4.5
+walk_speed          = 2;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;	    // 6
 initial_dash_time   = 14;		// 8    -  16
 initial_dash_speed  = 8.5;		// 4    -  9
-dash_speed          = 8;		// 5    -  9
-dash_turn_time      = 10;		// 8    -  20
+dash_speed          = 6;		// 5    -  9
+dash_turn_time      = 20;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 4;		// 4    -  6
 dash_stop_percent   = 0.5;		// 0.25 -  0.5
@@ -57,7 +57,7 @@ prat_land_time      = 8;		// 3    -  24       zetterburn's is 3, but that's ONLY
 wave_friction       = 0.03;		// 0    -  0.15
 roll_forward_max    = 9;        // 9    -  11
 roll_backward_max   = 9;        // 9    -  11       always the same as forward
-wave_land_time      = 12;		// 6    -  12
+wave_land_time      = 8;		// 6    -  12
 wave_land_adj       = 1.8;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;      // 7.5  -  8
 techroll_speed      = 10;       // 8    -  11
@@ -164,12 +164,6 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 // Visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
-
-
-
-// Muno template: (don't change)
-
-user_event(14); // General init
 
 //Compat
 feri_costume = sprite_get("feri_costume_scoville");

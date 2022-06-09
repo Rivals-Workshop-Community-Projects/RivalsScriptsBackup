@@ -158,5 +158,3 @@ set_hitbox_value(AT_FSPECIAL, 6, HG_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL, 6, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSPECIAL, 6, HG_VISUAL_EFFECT, 148);
-
-set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Shorten during frames " + string(get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH) + 1) + "-" + string(get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH) + get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)) + ", skipping to endlag and destroying hitbox.");

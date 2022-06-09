@@ -48,5 +48,3 @@ set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_UNBASHABLE, 1);
 
-set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Jump Cancel off this!");
-

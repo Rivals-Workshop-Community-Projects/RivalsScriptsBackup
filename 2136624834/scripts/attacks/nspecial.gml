@@ -399,7 +399,7 @@ set_hitbox_value(AT_NSPECIAL, 11, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_SPRITE, sprite_get("empty"));
+set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_AIR_FRICTION, 0.00);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_VSPEED, 0);

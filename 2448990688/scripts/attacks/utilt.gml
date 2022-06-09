@@ -41,7 +41,3 @@ set_hitbox_value(AT_UTILT, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_UTILT, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_UTILT, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_UTILT, 1, HG_PROJECTILE_UNBASHABLE, 1);
-
-
-
-set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_MISC_ADD, "In the original release of Sandbert, this hitbox never appears because its height is set to 0.");

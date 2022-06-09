@@ -1,4 +1,4 @@
-set_attack_value(AT_TAUNT_2, AG_MUNO_ATTACK_NAME, "the funny yell (taunt)");
+
 
 set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("taunt2"));
 set_attack_value(AT_TAUNT_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
@@ -23,8 +23,3 @@ set_window_value(AT_TAUNT_2, 4, AG_WINDOW_LENGTH, 25);
 set_window_value(AT_TAUNT_2, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT_2, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
-
-
-set_attack_value(AT_TAUNT_2, AG_MUNO_ATTACK_MISC, "im scared
-
-- trummel");

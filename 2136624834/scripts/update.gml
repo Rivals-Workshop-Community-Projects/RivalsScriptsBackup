@@ -95,7 +95,7 @@ with (asset_get("oPlayer")) {
   	
   		if forze = -2 {
   			hitpause = true 
-  			hitstop = 15
+  			hitstop = 10
   			old_hsp = 0
   			old_vsp = -7.5
   			forze = 0

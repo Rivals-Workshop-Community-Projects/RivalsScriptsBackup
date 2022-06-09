@@ -88,11 +88,7 @@ if (attack == AT_USTRONG && window == 1 && window_timer == 17){
         sound_play( asset_get( "sfx_forsburn_consume" ) );
     }    
     
-// Deals damage to self:
-if (attack == AT_DSPECIAL && window == 4 && window_timer == 1 && !has_hit) {
-    set_player_damage( player, clamp(get_player_damage(player)+25, 0 , 999) ); 
 
-    }
 
 //Ledge Snap    
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 3){
@@ -117,3 +113,9 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 3){
         }
 }
 }
+
+/* Deals damage to self:
+if (attack == AT_DSPECIAL && window == 4 && window_timer == 1 && !has_hit) {
+    set_player_damage( player, clamp(get_player_damage(player)+25, 0 , 999) ); 
+
+    }
