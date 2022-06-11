@@ -126,6 +126,8 @@ sprite_change_offset("festivehat_ha_idle", 80, 110);
 sprite_change_offset("festivehat_ha_toss", 32, 62);
 sprite_change_offset("festivehat_ch_idle", 80, 110);
 sprite_change_offset("festivehat_ch_toss", 32, 62);
+//sprite_change_offset("festivehat_blu_idle", 40, 70);
+//sprite_change_offset("festivehat_blu_toss", 32, 62);
 
 // dspecial stuff
 sprite_change_offset("is_player",16,0);

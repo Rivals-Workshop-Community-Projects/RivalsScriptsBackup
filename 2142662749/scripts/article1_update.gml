@@ -223,10 +223,11 @@ if (hitbox != noone) && (state != PS_SPAWN) && (state != PS_RESPAWN) && (state !
             
             with hitbox.player_id {
                 sound_play(get_hitbox_value(hitbox.attack, hboxNum, HG_HIT_SFX));
-                var hitboxVfx = get_hitbox_value(hitbox.attack, hboxNum, HG_VISUAL_EFFECT);
-                var hitboxVfxX = get_hitbox_value(hitbox.attack, hboxNum, HG_VISUAL_EFFECT_X_OFFSET);
-                var hitboxVfxY = get_hitbox_value(hitbox.attack, hboxNum, HG_VISUAL_EFFECT_Y_OFFSET);
-                spawn_hit_fx(other.x, other.y, hitboxVfx);
+                var hitboxVfx = hitbox.hit_effect
+                var hitboxVfxX = hitbox.hit_effect_x
+                var hitboxVfxY = hitbox.hit_effect_y
+                var fx = spawn_hit_fx(other.x, other.y - 30, hitboxVfx);
+                	fx.pause = 10
                 if (hitboxCat != 2) && !superarmour {
                     hitpause = true;
                     hitstop_full = _hitpause;
@@ -1024,7 +1025,8 @@ switch state {
     
     if (state_timer == explodeFrame) {
         sound_play(asset_get("sfx_ell_fist_explode"));
-        spawn_hit_fx(x, y - 20, 143);
+        var fx = spawn_hit_fx(x, y - 20, 143);
+        	fx.pause = 10
         create_hitbox(AT_EXTRA_1, 1, x, y - 20);
         instance_destroy();
         exit;
@@ -1576,7 +1578,8 @@ if (state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR) {
         }
         if (window == 2) {
             if (window_timer == 0) {
-                spawn_hit_fx(player_id.x, player_id.y - 18, 256);
+                var fx = spawn_hit_fx(player_id.x, player_id.y - 18, 256);
+                	fx.pause = 10
             }
             player_id.hsp = 0;
             player_id.vsp = 0;
@@ -1610,11 +1613,13 @@ if (state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR) {
                 if !(player_id.up_down || player_id.left_down || player_id.right_down || player_id.down_down) {
                     player_id.x = x;
                     player_id.y = y;
-                    spawn_hit_fx(x, y - 18, 256);
+                    var fx = spawn_hit_fx(x, y - 18, 256);
+                    	fx.pause = 10
                 } else {
                     player_id.x = x + spr_dir*130*dcos(turretAngle);
                     player_id.y = y - spr_dir*130*dsin(turretAngle);
-                    spawn_hit_fx(x + spr_dir*130*dcos(turretAngle), y - spr_dir*130*dsin(turretAngle) - 18, 256);
+                    var fx = spawn_hit_fx(x + spr_dir*130*dcos(turretAngle), y - spr_dir*130*dsin(turretAngle) - 18, 256);
+                    	fx.pause = 10
                     drawLightning = true;
                 }
             }

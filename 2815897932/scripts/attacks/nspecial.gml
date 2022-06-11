@@ -59,10 +59,10 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("se_common_cliff_catch"))
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 28);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 36);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 56);
+set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 78);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 56);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);

@@ -8,11 +8,15 @@ scroll_x = 0;
 dust_timer = 0;
 recovery_timer = 0;
 sandbag_idle = 0;
+bot_match = false;
+articles_cleared = false;
+
+// room measurements (because the stage changes size and buggers it all up)
 orig_room_width = room_width;
 stage_left = get_stage_data(SD_X_POS);
 stage_right = get_stage_data(SD_X_POS) + get_stage_data(SD_WIDTH);
 ruler_start = stage_right + 128;
-bot_match = false;
+blast_side = stage_right + get_stage_data(SD_SIDE_BLASTZONE) - room_width;
 
 // HUD
 stat_time = 0;

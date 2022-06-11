@@ -15,7 +15,20 @@ if anim_timer > 60{
 	pick*=-1;
 }
 
+//--------------------------------------------INTRO ANIMATION-----------------------------------------------
+if (timer_intro_2 < 3) {
+    timer_intro_2++;
+} else {
+    timer_intro_2 = 0;
+    timer_intro++;
+}
 
+
+//Create mailbox for intro
+if(timer_intro==11)&&(intro_done==0)&& !was_reloaded{
+	instance_create( x, y-5, "obj_article1");			//PRUEBA
+	intro_done=1;
+}
 
 
 //animation

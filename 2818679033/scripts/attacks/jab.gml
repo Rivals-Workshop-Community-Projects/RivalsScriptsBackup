@@ -10,8 +10,9 @@ easy_window("active",
 )
 
 easy_window("recovery",
-    AG_WINDOW_LENGTH, 2,
+    AG_WINDOW_LENGTH, 5,
 )
+
 
 easy_hitbox(1,
     HG_LIFETIME, 5,
@@ -26,13 +27,15 @@ easy_hitbox(1,
     HG_VISUAL_EFFECT_X_OFFSET, 32,
     HG_VISUAL_EFFECT_Y_OFFSET, -10,
     HG_HIT_SFX, asset_get(SFX_BLOW_WEAK2),
-    HG_ANGLE_FLIPPER, 6,
+    HG_ANGLE_FLIPPER, HITBOX_ANGLE_FLIPPER_HORIZONTAL_AWAY_FROM_ATTACKER,
 )
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
 // Write NO-INJECT in a comment above this area to disable injection.
 #macro WINDOW_SPEED_TYPE_SET_ONCE 2
+
+#macro HITBOX_ANGLE_FLIPPER_HORIZONTAL_AWAY_FROM_ATTACKER 6
 
 #define easy_hitbox // Version 0
     // / easy_hitbox(_hitbox_index, ...)
@@ -70,6 +73,7 @@ easy_hitbox(1,
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {

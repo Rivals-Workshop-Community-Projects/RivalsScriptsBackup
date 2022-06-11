@@ -18,11 +18,12 @@ if (gimmick_activated == true) {
 	}
 }
 
-/*
+
 if (hitmove = AT_DAIR) {
-	sound_play(asset_get("sfx_blow_heavy2"));
+	sound_play(asset_get("sfx_blow_heavy2"), false, noone, 0.75, 1);
+	//sound_play(asset_get("sfx_blow_heavy2"));
 }
-*/
+
 
 if (runeL) {
 	if (hitmove == AT_USPECIAL) {

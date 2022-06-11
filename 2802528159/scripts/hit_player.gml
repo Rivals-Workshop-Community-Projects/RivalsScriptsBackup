@@ -72,7 +72,17 @@ if(my_hitboxID.attack == AT_DSPECIAL){
 }else if(my_hitboxID.attack == AT_DSPECIAL_AIR){
     shock_victim = hit_player_obj;
     hit_player_obj.emmi_shocked = true;
-    emmi_shock_timer = 40;
+    switch(orb_level){
+        case 0:
+        emmi_shock_timer = (has_rune("N")? 70: 40);
+        break;
+        case 1:
+        emmi_shock_timer = (has_rune("N")? 120: 90);
+        break;
+        case 2:
+        emmi_shock_timer = (has_rune("N")? 150: 120);
+        break;
+    }
 }
 if(my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_NSPECIAL_AIR) && my_hitboxID.hbox_num == 2{
     hit_player_obj.x += 50 * spr_dir;

@@ -174,15 +174,9 @@ if ("practice" in self)
 						AddText("Added Greed alt");
 						break;
 					case 10:
-						AddText("v1.10 - 4 Feb 2022");
+						AddText("v1.10 - 4 Feb 2021");
 						AddText("");
 						AddText("Fixed Rollback temp_level bug");
-						break;
-					case 11:
-						AddText("v1.11 - 20 Mar 2022");
-						AddText("");
-						AddText("Test changes - Private build");
-						AddText("I'm not putting patch notes for private builds");
 						break;
 				}
 				DrawTutorialBlock();

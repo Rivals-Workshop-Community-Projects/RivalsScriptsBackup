@@ -42,8 +42,8 @@ jump_start_time     = 5;		// 5                this stat is automatically decreas
 jump_speed          = 9;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed     = 6;		// 4    -  7.4
 djump_speed         = -1;		// 6    -  12       absa's is -1 because of her floaty djump
-djump_accel         = -1;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel reund on your char's gravity
-djump_accel_end_time= 14;        //                  the amount of time that   djump_accel   is applied for
+djump_accel         = -1.2;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel reund on your char's gravity
+djump_accel_end_time= 12;        //                  the amount of time that   djump_accel   is applied for
 max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
@@ -137,7 +137,7 @@ walljump_time       = 32;		// 18   -  32
 wall_frames         = 2;		// may or may not actually work... dan pls
 
 // Parry
-dodge_startup_frames    = 1;
+dodge_startup_frames    = 2;
 dodge_active_frames     = 3;
 dodge_recovery_frames   = 2;
 

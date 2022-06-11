@@ -37,6 +37,7 @@ if (attack==AT_NSPECIAL && hbox_num==11){
 }
 
 if (attack==AT_FSPECIAL && hbox_num==1){
+				//print("run")
 		if (hitbox_timer % 4 == 0){
 			var dsp_particle_rand = random_func( 0, 1, true )
 			if (dsp_particle_rand == 0){
@@ -57,13 +58,33 @@ if (attack==AT_FSPECIAL && hbox_num==1){
 		destroyed = true;
 		sound_play(sound_get("click"));
 	}
-	if (vsp > 0){
-	vsp = vsp * (0.98);
-	}else if (vsp < 0){
-	vsp = vsp * (0.98);   //+ 0.04;
-	}
-	hsp = clamp( hsp + (0.4 * spr_dir), -10, 10 );
-	if (sign(hsp) == spr_dir){
-		hit_priority = 1;
+	if (gather){
+		if (variable_instance_exists(id, "hsp_str")){
+			hsp = hsp-hsp_str;
+			vsp = vsp-vsp_str;
+			if ( sign(hsp)==sign(hsp_str*-1) ){
+				hit_priority = 1;
+				//print("true")
+			}//else{print(string(sign(hsp))+", "+string(sign(hsp_str)))}
+		}else{
+			hsp_str = sign(hsp)/2;
+			vsp_str = sign(vsp)/2;
+			print(string(hsp_str)+", "+string(vsp_str));
+			x = x + sign(player_id.x - follow.x)
+			y = y + sign(player_id.y - follow.y)
+		}
+	}else{
+		if (vsp > 0){
+		vsp = vsp * (0.98);
+		}else if (vsp < 0){
+		vsp = vsp * (0.98);   //+ 0.04;
+		}
+		hsp = clamp( hsp + (0.4 * spr_dir), -10, 10 );
+		if (sign(hsp) == spr_dir){
+			hit_priority = 1;
+		}
 	}
 }
+
+
+

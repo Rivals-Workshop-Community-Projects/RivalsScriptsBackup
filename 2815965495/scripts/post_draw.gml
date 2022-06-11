@@ -2,7 +2,7 @@
 
 
 //Draws Smoke
-if state != PS_HITSTUN && state != PS_PRATFALL{
+if state != PS_HITSTUN && state != PS_PRATFALL && state != PS_SPAWN{
 
 if !((state== PS_ATTACK_AIR || state == PS_ATTACK_GROUND )&& (attack ==AT_NSPECIAL && (window!=3 && window !=6))){
 	shader_start();
@@ -64,6 +64,19 @@ if state == PS_ATTACK_AIR || state ==PS_ATTACK_GROUND{
 }
 
 
+//Show Ownership projectiles
+if smoke_counter>0{
+	with pHitBox {
+	//draw_debug_text( x + 60, y - 40, string(kb_scale));
+		if attack == AT_NSPECIAL && hbox_num ==1 && state ==1 && player == orig_player &&(player_id.url == other.url){
+				draw_sprite(sprite_get("owner"), player , x, y-34);			
+		}
+	}
+}
+
+
+
+//Draws detonation
 shader_start();
 with pHitBox {
 		if   player_id.url == other.url {

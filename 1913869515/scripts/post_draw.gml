@@ -95,7 +95,7 @@ gpu_set_fog(1, c_white, 0, 1);
 draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
 (galx + room_width/2)/2 - (galx - hit_player_obj.x)*2 - (finisher)*hit_player_obj.spr_dir + 10 - random_func(1,20,true) + 10 - random_func(2,20,true) ,
 (galy + room_height/2)/2 - (galy - hit_player_obj.y)*2 + 70, 
-hit_player_obj.spr_dir*2 * (2*hit_player_obj.small_sprites),2 *(2*hit_player_obj.small_sprites),image_angle,c_white,0.6);
+hit_player_obj.spr_dir*2 * (1+(hit_player_obj.small_sprites)),2 *(1+(hit_player_obj.small_sprites)),image_angle,c_white,0.6);
 
 
 
@@ -103,27 +103,27 @@ hit_player_obj.spr_dir*2 * (2*hit_player_obj.small_sprites),2 *(2*hit_player_obj
 draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
 (galx + room_width/2)/2 - (galx - hit_player_obj.x)*2 + (finisher)*hit_player_obj.spr_dir + 10 - random_func(2,20,true) + 10 - random_func(1,20,true) ,
 (galy + room_height/2)/2 - (galy - hit_player_obj.y)*2 + 70, 
-hit_player_obj.spr_dir*2 * (2*hit_player_obj.small_sprites),2 *(2*hit_player_obj.small_sprites),image_angle,c_white,0.6);
+hit_player_obj.spr_dir*2 * (1+(hit_player_obj.small_sprites)),2 *(1+(hit_player_obj.small_sprites)),image_angle,c_white,0.6);
 
 draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
 (galx + room_width/2)/2 - (galx - hit_player_obj.x)*2 + 10 - random_func(13,20,true) + 10 - random_func(4,20,true) - 4,
 (galy + room_height/2)/2 - (galy - hit_player_obj.y)*2 + 70, 
-hit_player_obj.spr_dir*2 * (2*hit_player_obj.small_sprites),2 *(2*hit_player_obj.small_sprites),image_angle,c_white,1);
+hit_player_obj.spr_dir*2 * (1+(hit_player_obj.small_sprites)),2 *(1+(hit_player_obj.small_sprites)),image_angle,c_white,1);
 
 draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
 (galx + room_width/2)/2 - (galx - hit_player_obj.x)*2 + 10 - random_func(13,20,true) + 10 - random_func(4,20,true) + 4,
 (galy + room_height/2)/2 - (galy - hit_player_obj.y)*2 + 70, 
-hit_player_obj.spr_dir*2 * (2*hit_player_obj.small_sprites),2 *(2*hit_player_obj.small_sprites),image_angle,c_white,1);
+hit_player_obj.spr_dir*2 * (1+(hit_player_obj.small_sprites)),2 *(1+(hit_player_obj.small_sprites)),image_angle,c_white,1);
 
 draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
 (galx + room_width/2)/2 - (galx - hit_player_obj.x)*2 + 10 - random_func(13,20,true) + 10 - random_func(4,20,true) ,
 (galy + room_height/2)/2 - (galy - hit_player_obj.y)*2 + 70 - 4, 
-hit_player_obj.spr_dir*2 * (2*hit_player_obj.small_sprites),2 *(2*hit_player_obj.small_sprites),image_angle,c_white,1);
+hit_player_obj.spr_dir*2 * (1+(hit_player_obj.small_sprites)),2 *(1+(hit_player_obj.small_sprites)),image_angle,c_white,1);
 
 draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
 (galx + room_width/2)/2 - (galx - hit_player_obj.x)*2 + 10 - random_func(13,20,true) + 10 - random_func(4,20,true) ,
 (galy + room_height/2)/2 - (galy - hit_player_obj.y)*2 + 70 + 4, 
-hit_player_obj.spr_dir*2 * (2*hit_player_obj.small_sprites),2 *(2*hit_player_obj.small_sprites),image_angle,c_white,1);
+hit_player_obj.spr_dir*2 * (1+(hit_player_obj.small_sprites)),2 *(1+(hit_player_obj.small_sprites)),image_angle,c_white,1);
 
 gpu_set_fog(0, c_white, 0, 0);
 
@@ -144,7 +144,7 @@ gpu_set_fog(1, c_black, 0, 1);
 draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
 (galx + room_width/2)/2 - (galx - hit_player_obj.x)*2 + 10 - random_func(13,20,true) + 10 - random_func(4,20,true) ,
 (galy + room_height/2)/2 - (galy - hit_player_obj.y)*2 + 70, 
-hit_player_obj.spr_dir*2 * (2*hit_player_obj.small_sprites),2 *(2*hit_player_obj.small_sprites),image_angle,c_white,1);
+hit_player_obj.spr_dir*2 * (1+(hit_player_obj.small_sprites)),2 *(1+(hit_player_obj.small_sprites)),image_angle,c_white,1);
 gpu_set_fog(0, c_black, 0, 0);
 
 

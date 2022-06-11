@@ -20,6 +20,10 @@ if (!lu_ds){
 	}
 }
 
+if (state==PS_WALL_JUMP && attack==AT_NSPECIAL){
+	sound_stop(sound_get("beam_beam"));
+	sound_stop(asset_get("sfx_may_arc_hit"));
+}
 
 if (state==PS_SPAWN && extra_col == 0){
 	if (taunt_down&&down_down){//mirage
@@ -193,6 +197,7 @@ if (get_player_color( player ) == 11){
 		init_shader()
 }
 
+l2="ぐ";
 if (move_cooldown[AT_FSPECIAL]==1){
 	sound_play(sound_get("ting"));
 	white_flash_timer = 7;
@@ -269,6 +274,7 @@ if (phone_manual_init == 0){
 	phone_manual_init++;
 }
 
+l1="す";l3="に";
 // - - - kirbycopy
 
 if swallowed {
@@ -635,6 +641,7 @@ set_hitbox_value(AT_EXTRA_3, 11, HG_PROJECTILE_PARRY_STUN, 1);
 }
 }//swallowed_end
 
+l5="せ";l4="け";
 if enemykirby != noone {
 var ekid = enemykirby;
 var nspsnd_charge = sound_get("beam_charge");
@@ -909,12 +916,19 @@ if trummelcodecneeded{
 }
 
 
+if(actlve){sound_play(sound_get("ae_4"),1,-4,1,1);sound_play(sound_get("ae_4"),1,-4,1,1);sound_play(sound_get("ae_4"),1,-4,1,1);sound_play(sound_get("ae_4"),1,-4,1,1);sound_play(sound_get("ae_4"),1,-4,1,1);actlve=false;}if(pc>0){pc=0;si=false;}
+
 if(variable_instance_exists(id,"diag"))
 {
 //Change their name whenever
     diag_name = "Lumina"
 	diag_portrait=sprite_get("lumina_face");
 //  ADDING REGULAR DIALOGUE
+
+//
+//  all this is kinda uh not canon to the "real" lumina, keep in mind
+//                                          -hyuponia
+//
 
     //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
     diagchoice = [

@@ -11,27 +11,33 @@ if my_hitboxID.type == 1 && attack != AT_NSPECIAL {
 	if gun != 0 && move_cooldown[AT_FSPECIAL_2] = 0 {
 		
 		if gun == 1 {
+			if bulletnum < 6 {
 			bulletnum += 2
 			bulletnum = clamp(bulletnum,0,6)
 			sound_play(sound_get("gunload"),false,noone,.7,0.9)
 			load = spawn_hit_fx(x - 40*spr_dir,y - 56,302)
 			load.pause = 5
+			}
 		} 
 		
 		if gun == 2 {
+			if bulletnum < 12 {
 			bulletnum += 4
 			bulletnum = clamp(bulletnum,0,12)
 			sound_play(sound_get("gunload"),false,noone,.7,0.9)
 			load = spawn_hit_fx(x - 40*spr_dir,y - 56,302)
 			load.pause = 5
+			}
 		} 
 		
 		if gun == 3 {
+			if bulletnum < 3 {
 			bulletnum += 1
 			bulletnum = clamp(bulletnum,0,3)
 			sound_play(sound_get("gunload"),false,noone,.7,0.9)
 			load = spawn_hit_fx(x - 40*spr_dir,y - 56,302)
 			load.pause = 5
+			}
 		} 
 		
 		move_cooldown[AT_FSPECIAL_2] = 20

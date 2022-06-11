@@ -149,6 +149,19 @@ sprite_change_offset("hurtbox_nspec", 11, 70);
 sprite_change_offset("hurtbox_uspec", 16, 48);
 sprite_change_offset("hb_arrow", 0, 8);
 
+//rune stuff
+sprite_change_offset("runeE_part", 8, 8);
+sprite_change_offset("runeE_orb", 16, 16);
+sprite_change_offset("runeK_stamina", 40, 24);
+sprite_change_offset("runeK_glider", 40, 16);
+sprite_change_offset("runeO_line", 24, 24);
+sprite_change_offset("runeO_main", 24, 24);
+
+sprite_change_offset("fx_runeE_afterimage", 8, 8);
+sprite_change_offset("fx_runeK_glider_spawn", 80, 32);
+sprite_change_offset("fx_runeK_glider_despawn", 80, 32);
+sprite_change_offset("fx_runeO_disable", 16, 16);
+
 //temporary stuff
 sprite_change_offset("taunt2_wip", 40, 94);
 sprite_change_offset("hud_lyre", 4, 48);

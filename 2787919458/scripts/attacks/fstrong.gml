@@ -49,7 +49,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("shrek_door"));
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_uair"));
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
@@ -57,6 +57,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_GRAVITY, .8);
+set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_CAMERA_SHAKE, 6);
 
 //Door slam
 set_hitbox_value(AT_FSTRONG, 2, HG_PARENT_HITBOX, 2);

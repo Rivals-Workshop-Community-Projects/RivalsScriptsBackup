@@ -210,6 +210,7 @@ switch(attack){
 	}
 	break;
 	case AT_DSPECIAL_AIR:
+	fire = 0;
 	set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 2 + (anger_state * (has_rune("J")? 4: 2)));
 	if(!free){
 		state = PS_LAND;

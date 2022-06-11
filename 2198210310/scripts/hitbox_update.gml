@@ -113,7 +113,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
             if willExplode && explodeTimer < explodeThreshhold {
                 sound_play(asset_get("sfx_ell_fist_explode"));
                 with player_id {
-                    spawn_hit_fx(other.x, other.y - 15, 141);
+                    var fx = spawn_hit_fx(other.x, other.y - 15, 141);
+                    fx.pause = 10
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                     boom.can_hit_self = false;
@@ -197,7 +198,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                 hitbox.destroyed = true;
                 sound_play(asset_get("sfx_ell_fist_explode"));
                 with player_id {
-                    spawn_hit_fx(other.x, other.y - 20, 143);
+                    var fx = spawn_hit_fx(other.x, other.y - 20, 143);
+                    fx.pause = 10
                 }
                 var explosion = create_hitbox(AT_NSPECIAL, 3, x, y - 20);
                     explosion.spr_dir = hitbox.spr_dir;
@@ -220,7 +222,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
             } else if (variable_instance_exists(hitbox.player_id, "isWalle") && hitbox.attack == AT_FTILT) { //ftilt explosion
                 sound_play(asset_get("sfx_ell_fist_explode"));
                 with player_id {
-                    spawn_hit_fx(other.x, other.y - 15, 141);
+                    var fx = spawn_hit_fx(other.x, other.y - 15, 141);
+                    fx.pause = 10
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                     boom.can_hit_self = false;
@@ -275,10 +278,11 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                         if hitstop <= 0 {
                             hitstop = 8;
                             hitstop_full = 8;
-                            sound_play(get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_HIT_SFX));
-                            var hitfx = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_VISUAL_EFFECT);
+                            sound_play(hitbox.sound_effect);
+                            var hitfx = hitbox.hit_effect;
                             if hitfx == 0 hitfx = 301;
-                            spawn_hit_fx(other.x, other.y, hitfx);
+                            var fx = spawn_hit_fx(other.x, other.y, hitfx);
+                            fx.pause = 10
                             
                             other.prevHitbox = hitbox;
                         }
@@ -339,7 +343,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
     if place_meeting(x, y, asset_get("plasma_field_obj")) {
         sound_play(asset_get("sfx_ell_fist_explode"));
         with player_id {
-            spawn_hit_fx(other.x, other.y - 15, 141);
+            var fx = spawn_hit_fx(other.x, other.y - 15, 141);
+            fx.pause = 10
         }
         var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
             boom.can_hit_self = false;

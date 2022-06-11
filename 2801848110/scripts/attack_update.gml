@@ -93,7 +93,7 @@ if window_timer == 1 && window == 1 && attack != AT_USPECIAL && attack != AT_NSP
 	}
 }
 
-if pausing == true && hitpause && drifttime < 30 && attack != AT_DSTRONG{
+if pausing == true && hitpause && drifttime < 10 && attack != AT_DSTRONG{
 	set_attack_value(attack, AG_CATEGORY, 2);
 	set_attack_value(attack, AG_OFF_LEDGE, 1);
 	
@@ -141,6 +141,11 @@ switch attack {
 	
 	case AT_FSPECIAL:
         var step_up_height = 40;
+        
+        if has_hit_player && !hitpause {
+        	hit_player_obj.x += floor((x - hit_player_obj.x)/4)
+        	hit_player_obj.y += floor((y - hit_player_obj.y)/4)
+        }
 
         if place_meeting(x+hsp,y+vsp,asset_get("par_block")) {
             for (var i = 0; i < step_up_height; i += 2) {

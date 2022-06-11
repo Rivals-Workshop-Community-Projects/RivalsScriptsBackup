@@ -198,13 +198,15 @@ switch attack {
              if window == 1 && window_timer <= 6 && special_down  {
                  if state_timer == 20 {
                      spawn_hit_fx(x,y - 20,305)
-                     sound_play(sound_get("shot1"),false,noone,0.7,1.2)
+                     sound_play(sound_get("shot1"),false,noone,0.5,1.4)
                      set_num_hitboxes(AT_USPECIAL, 2);
+                     vsp -= 2
                  }
                  if state_timer == 40 {
                      spawn_hit_fx(x,y - 20,305)
-                     sound_play(sound_get("shot1"),false,noone,0.7,1.2)
+                     sound_play(sound_get("shot1"),false,noone,0.5,1.4)
                      set_num_hitboxes(AT_USPECIAL, 3);
+                     vsp -= 2
                  }
              }
              

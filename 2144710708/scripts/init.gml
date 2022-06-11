@@ -135,6 +135,7 @@ hue = 0;
 
 // festive hat init
 wearing_hat = get_player_color(player) == 15;
+//wearing_hat_blu = get_player_color(player) == 3;
 
 // variables for abyss rune meter balance
 hype_max_multiplier = 1;

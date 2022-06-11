@@ -3,7 +3,7 @@ easy_window("startup",
 )
 
 easy_window("charge",
-    AG_WINDOW_LENGTH, 1,
+    AG_WINDOW_LENGTH, 9,
 )
 
 easy_window("active_front",
@@ -13,11 +13,11 @@ easy_window("active_front",
 
 easy_hitbox(1,
     HG_WINDOW, get_window_index("active_front"),
-    HG_LIFETIME, 2,
+    HG_LIFETIME, 7,
     HG_HITBOX_X, 30,
     HG_HITBOX_Y, -10,
     HG_HEIGHT, 50,
-    HG_WIDTH, 80,
+    HG_WIDTH, 80, 
     
     HG_DAMAGE, 10,
     HG_ANGLE, 90,
@@ -34,11 +34,11 @@ easy_window("active_back",
 
 easy_hitbox(2,
     HG_WINDOW, get_window_index("active_back"),
-    HG_LIFETIME, 2,
-    HG_HITBOX_X, -35,
+    HG_LIFETIME, 5,
+    HG_HITBOX_X, -10, //-35,
     HG_HITBOX_Y, -10,
     HG_HEIGHT, 50,
-    HG_WIDTH, 80,
+    HG_WIDTH, 150,
     
     HG_DAMAGE, 14,
     HG_ANGLE, 90,
@@ -149,6 +149,7 @@ easy_window("recovery",
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {

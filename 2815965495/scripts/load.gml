@@ -3,8 +3,8 @@ sprite_change_offset("hurt", 21, 54);
 sprite_change_offset("spinhurt", 21, 54);
 sprite_change_offset("uphurt", 21, 54);
 sprite_change_offset("crouch", 22, 78);
-sprite_change_offset("Koffing_hurt", 21, 58);
-sprite_change_offset("Koffing_hurt_air", 21, 58);
+sprite_change_offset("Koffing_hurt", 22, 60);
+sprite_change_offset("Koffing_hurt_air", 22, 56);
 
 //Get updated
 sprite_change_offset("walk", 32, 62);
@@ -29,6 +29,7 @@ sprite_change_offset("roll_backward", 28, 82);
 sprite_change_offset("parry", 31, 68);
 
 sprite_change_offset("nspecial_smoke", 30, 30);
+sprite_change_offset("nspecial_smoke2", 30, 30);
 sprite_change_offset("nspecial_smoke_detonate", 30, 30);
 
 sprite_change_offset("ustrong", 22, 150);
@@ -54,9 +55,12 @@ sprite_change_offset("ftilt", 22, 68);
 sprite_change_offset("utilt", 40, 107);
 sprite_change_offset("uair", 40, 78);
 
-
+sprite_change_offset("intro", 43, 538);
+sprite_change_offset("intro2", 42, 62);
+sprite_change_offset("intro_proj", 22, 27);
 sprite_change_offset("plat", 48, 8);
 sprite_change_offset("Fcancel", 12, 11);
+sprite_change_offset("owner", 7, 14);	
 
 sprite_change_offset("nspecial_proj", 64, 94);
 

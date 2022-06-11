@@ -173,6 +173,9 @@ if (attack == AT_NSPECIAL){
 			window_timer = 0;
 		}
 	}
+	if (window == 4 || window == 5 || window == 6){
+		can_wall_jump = true;
+	}
 	if (window == 8 && window_timer == 1){
 		spawn_hit_fx( x+(48*spr_dir), y-30, 109 );
 		if (free){
@@ -570,6 +573,13 @@ if (attack == AT_USTRONG){
 		}
 	}
 }
+/*if (attack == AT_FSTRONG){
+	if (window == 1 && window_timer == 1){
+		set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 3);
+		set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_FSTRONG, 5, AG_WINDOW_SFX_FRAME, 7);
+	}
+}*/
 
 if (attack == AT_DAIR){
 	if (window == 2 && window_timer == 1 && vsp > -4){
@@ -577,9 +587,10 @@ if (attack == AT_DAIR){
     }
 	if (window == 3 && window_timer == 8){
 		vsp = vsp-2;
-		if (((right_down && spr_dir == -1) || (left_down && spr_dir == 1))&&(attack_down||down_stick_down)){
+		//turnaround code. locked away forever
+		/*if (((right_down && spr_dir == -1) || (left_down && spr_dir == 1))&&(attack_down||down_stick_down)){
 			spr_dir = spr_dir*-1
-		}
+		}*/
 	}
 	if (window == 4){
 		dair_timer++;

@@ -198,7 +198,7 @@ if get_player_color(player) = 2 {
 	init_shader();
 }
 
-if(!instance_exists(dorito_hb) && move_cooldown[AT_NSPECIAL] != 0){
+if(!instance_exists(dorito_hb) && move_cooldown[AT_NSPECIAL] > 65){
 	move_cooldown[AT_NSPECIAL] = 0;
 }
 if(!instance_exists(shrek_door) && move_cooldown[AT_FSTRONG] != 0){

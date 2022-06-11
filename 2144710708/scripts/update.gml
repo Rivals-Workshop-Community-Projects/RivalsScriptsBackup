@@ -572,6 +572,23 @@ if (get_gameplay_time() > 130){
 			wearing_hat = 1;
 		}
 	}
+	/*
+	if wearing_hat_blu == 1 {
+		if state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE {
+			wearing_hat_blu = -1;
+
+			var newfx = spawn_hit_fx(x, y, hit_fx_create(sprite_get("festivehat_blu_toss"), 20));
+			
+			
+			newfx.depth = depth-1;
+		}
+	} else if wearing_hat_blu == -1 {
+		if state == PS_RESPAWN or state == PS_SPAWN {
+			wearing_hat_blu = 1;
+		}
+	}
+	*/
+	
 }
 
 // reset cooldown of upsecial if wall teched, wall jumped, or commited to landing

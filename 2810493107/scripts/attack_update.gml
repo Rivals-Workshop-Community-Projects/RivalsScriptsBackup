@@ -292,7 +292,6 @@ if (attack == AT_FSPECIAL) {
 		can_shield = true;
 	}
 }
-
 if(attack == AT_DAIR) {
 	hud_offset = 85
 }

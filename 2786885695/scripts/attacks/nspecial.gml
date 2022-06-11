@@ -56,17 +56,17 @@ hitbox_num = 1; //explosion (spawns with article1_update)
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 8);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 160); //180
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 160); //180
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 160);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 160);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 3);
-set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2); //10
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 3); //6
-//set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.5); //0.5
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 9); //9 / 39
-set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.7); //0.7 / 1.6
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 3);
+//set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 15); //9
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 1); //0.7
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, empty);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
@@ -75,13 +75,14 @@ set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_elec2);
 set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+//set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
+set_hitbox_value(atk, hitbox_num, HG_EFFECT, 12);
 
 hitbox_num ++; //projectile (spawns with attack_update)
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);

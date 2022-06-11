@@ -456,7 +456,7 @@ if(state == PS_SPAWN && state_timer == 8){
 	if has_rune("I"){
 		item[0, 7] = true;
 		item[10, 7] = true;
-		item[16, 7] = true;
+		//item[16, 7] = true;
 		//item[22, 7] = true;
 		item[25, 7] = true;
 		

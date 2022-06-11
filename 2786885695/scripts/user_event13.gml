@@ -5,6 +5,8 @@ if (my_hitboxID.orig_player_id != self) exit;
 turbo_attack_hit = attack;
 turbo_attack_window = window;
 
+if (my_hitboxID.type == 2) has_hit_player = true;
+
 //jab allow continiueation of the combo
 if (attack == AT_JAB && my_hitboxID.hbox_num <= 3) can_jab4 = true;
 
@@ -84,6 +86,25 @@ switch (my_hitboxID.attack)
         break;
 }
 
+if (has_rune("G")) switch (my_hitboxID.attack)
+{
+    case AT_NSPECIAL: case AT_NSPECIAL_2: case AT_USPECIAL: case AT_FSPECIAL: case AT_DSPECIAL:
+        spawn_blast_attack = true;
+        break;
+    case 48:
+        with (hit_player_obj)
+        { 
+            if (!hitpause) 
+            { 
+                old_hsp = hsp*0.7; 
+                old_vsp = vsp*0.7; 
+                hitpause = true; 
+            }
+            hitstop = 15;
+        }
+        break;
+}
+
 //this applies the electro infused effect on any attack with a purple hitbox
 //it does... nothing! it just looks cool
 //but maybe one day it will do something beyond looking cool
@@ -102,8 +123,19 @@ if (nspec_cancel) nspec_cancel_timer = 15;
 if (instance_exists(artc_marker) && artc_marker.state == 1 && my_hitboxID.attack != AT_NSPECIAL) artc_marker.active_time -= 30;
 
 
+
 //knockback formula cuz why not
 //my_hitboxID.kb_value + (my_hitboxID.kb_scale * hit_player_obj.knockback_adj * get_player_damage(hit_player_obj.player) * 0.12);
+
+//crits
+if (has_rune("I") && crit_val >= crit_rate)
+{
+    my_hitboxID.damage = my_hitboxID.damage*crit_damage;
+    my_hitboxID.kb_value = my_hitboxID.kb_value*crit_damage;
+    my_hitboxID.kb_scale = my_hitboxID.kb_scale*crit_damage;
+    my_hitboxID.hitpause = my_hitboxID.hitpause*crit_damage;
+    my_hitboxID.hitpause_growth = my_hitboxID.hitpause_growth*crit_damage;
+}
 
 //damage text
 //credit to SAI for this code, it's pretty much the same code as chara's damage numbers
@@ -121,5 +153,33 @@ if (display_damage_numbers)
             else artc_damage.color = artc_damage.elec_col;
         }
         else artc_damage.color = c_white;
+
+        if ((has_rune("I") && crit_val >= crit_rate)) artc_damage.is_crit = true;
     }
+}
+
+//elemental burst stuff (without final smash)
+if (("fs_char_initialized" not in self && has_burst || has_resolve_mechanic && !vhd_effect)
+&& particle_cd == 0 && my_hitboxID.damage > 0 && my_hitboxID.attack != AT_BURST)
+{
+    //should spawn elemental particles (article), which fly into keqing and fill up her burst meter
+    //there's 2 types of particles: small particles and big orbs
+    //big orbs are done through special moves, and small particles are done through normals
+    //they fly into keqing as long as she isn't dead and she is close enough to them, otherwise they sit in place
+    //the amount of particles will either be 1 per attack or 1 per 1%
+
+    var fly_power = 2.5;
+    repeat ((my_hitboxID.damage >= 10) ? 1 : 3)
+    {
+        particle_amount ++;
+
+        artc_part = instance_create(hit_player_obj.x, hit_player_obj.y-hit_player_obj.char_height/2, "obj_article3");
+        artc_part.state = 1;
+        if (my_hitboxID.damage >= 10) artc_part.is_orb = true;
+        artc_part.hsp = lengthdir_x((random_func(particle_amount, 4, true) - 4) * fly_power, get_hitbox_angle(my_hitboxID))*-1;
+        artc_part.vsp = lengthdir_y((random_func(particle_amount, 5, true)) * fly_power, get_hitbox_angle(my_hitboxID));
+        artc_part.part_angle = get_hitbox_angle(my_hitboxID);
+    }
+
+    particle_cd = 40;
 }

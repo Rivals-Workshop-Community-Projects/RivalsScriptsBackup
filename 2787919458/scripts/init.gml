@@ -217,6 +217,7 @@ grab_target = noone;
 respawnplat = 0;
 is_Sanic = true;
 grabbed_Proj = false;
+grabbed_article = false;
 random_dash = 0;
 dash_turn_hsp = hsp;
 dash_hsp = 0;
@@ -231,6 +232,8 @@ dtilt_mash = 0;
 spin_sound = noone;
 fs_char_portrait_y = 94;
 fs_char_chosen_final_smash = "custom";
+// intro
+introTimer = -2;
     
 //Credit to Bar-Kun, Frtoud, and Mr. Nart!
 trail_cur_num = 0;

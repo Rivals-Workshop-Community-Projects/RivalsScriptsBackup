@@ -5,6 +5,7 @@
 if timeflow < 100 {
 	move_cooldown[AT_FSPECIAL] = 5
 }
+
 if projecting == true {
 
 	
@@ -174,6 +175,7 @@ with oPlayer {
 
 }
 */
+/*
 if attack != AT_USPECIAL {
 	
 with oPlayer {
@@ -214,12 +216,15 @@ if pausing == true {
 }
 //
 //
+*/
 
 if state == PS_PARRY  {
-    
+     if state_timer == 1 {
+     	parrylagging = 0
+     }
     if (window_timer == 5 && window == 1) && timeflow > 10 && special_down  {
      	if !hitpause {
-     		if timeflow > 30 {
+     	 if timeflow > 30 {
      		ps = spawn_hit_fx(x,y,pause)
      		ps.depth = -6
      		sound_play(asset_get("sfx_spin"),false,noone,.65,0.8)
@@ -239,6 +244,7 @@ if state == PS_PARRY  {
      	hsp = old_hsp
      	pausing = true
      	timeflow -= 3
+     	parrylagging += 1
      	}
      }
      
@@ -250,6 +256,14 @@ if state == PS_PARRY  {
      	sound_play(asset_get("sfx_clairen_spin"),false,noone,1,1.6)
      	sound_play(asset_get("sfx_waveland_abs"),false,noone,1,1)
      	pausing = false
+     }
+     
+     if window_timer == 12 && parrylagging > 0 {
+     	parrylagging --
+     	window_timer -- 
+     	if parrylagging > 20 {
+     		set_state(PS_PRATFALL)
+     	}
      }
     
 }

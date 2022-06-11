@@ -33,9 +33,9 @@ max_jump_hsp        = 5;		// 4    -  8
 air_max_speed       = 6;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.2;		// 0.2  -  0.4
-prat_fall_accel     = 0.75;		// 0.25 -  1.5
+prat_fall_accel     = 0.7;		// 0.25 -  1.5
 air_friction        = 0.03;		// 0.02 -  0.07
-max_fall            = 7;		// 6    -  11
+max_fall            = 8;		// 6    -  11
 fast_fall           = 12;		// 11   -  16
 gravity_speed       = 0.3;		// 0.3  -  0.6
 hitstun_grav        = 0.45;		// 0.45 -  0.53
@@ -137,6 +137,11 @@ of the standing-up animation. Dan Moment
 
 */
 
+//Timer variables
+timer_intro=-4;
+timer_intro_2=0;
+intro_done=0;
+
 
 
 // Hurtbox sprites
@@ -183,16 +188,16 @@ Hikaru_Title = "Dogars lover";
 arena_title = "The Poison Gas Pokemon";
 battle_text = "*A wild Koffing has appeared!";
 
-//guiltySprite = sprite_get("Monokuma")
-//sprite_change_offset("Monokuma", 31, 0);
+guiltySprite = sprite_get("Monokuma")
+sprite_change_offset("Monokuma", 31, 0);
 
 //resort_portrait = sprite_get("Last_Resort");
 //sprite_change_offset("Last_Resort", 27, 39);
 
-//wily_robotmaster_img = sprite_get("Wily_Castle_DMM");
+wily_robotmaster_img = sprite_get("Wily_Castle");
 
-//miiverse_post = sprite_get("Miiverse");
-//sprite_change_offset("Miiverse", 60, 30);
+miiverse_post = sprite_get("miiverse");
+sprite_change_offset("miiverse", 60, 30);
 
 steve_death_message = "Steve fainted! Send next figther?";
 ///codec

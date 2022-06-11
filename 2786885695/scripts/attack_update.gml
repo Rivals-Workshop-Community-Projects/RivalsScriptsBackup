@@ -1,32 +1,48 @@
 //attack_update
 
-//B - Reversals
+
 switch(attack)
 {
+	//B - Reversals
 	case AT_NSPECIAL: case AT_FSPECIAL: case AT_DSPECIAL: case AT_USPECIAL:
 		trigger_b_reverse();
 		break;
-}
-
-//charge attack mechanic - holding down attack will allow keqing to use chargeless strongs out of tilts
-switch(attack)
-{
+	//charge attack mechanic + some other specific stuff for some of those moves
 	case AT_JAB:
+		if (get_match_setting(SET_TURBO) && window == 1) clear_button_buffer(PC_ATTACK_PRESSED);
+		if (window >= 10 && window <= 13) can_fast_fall = false; //no hitfalling jab 4
+
 		switch (window) //check for all endlag windows for jab (seperated like this cuz it's more comfterable to edit)
 		{
-			//charge attack mechanic
-			case 3: //jab 1
-			case 6: //jab 2
-			case 9: //jab 3
-			case 12: //jab 4
-			case 16: //jab 5
+			case 9: //jab 3 (it has the whole "ooo can i use jab 4" stuff)
+				if (window_timer >= window_cancel_time)
+				{
+					//continiue the jab if jab 4 is allowed
+					if (attack_pressed && can_jab4)
+					{
+						if (up_down) set_attack(AT_UTILT);
+						else if (down_down) set_attack(AT_DTILT);
+						else if (right_down || left_down) set_attack(AT_FTILT);
+						else
+						{
+							window = 10;
+							window_timer = 0;
+							can_jab4 = false;
+						}
+					}
+					else if (window_timer == window_end) //if you reach the end of the window just go to idle
+					{
+						set_state(PS_IDLE);
+						can_jab4 = false;
+					}
+				}
+			case 3: case 6: case 12: case 16: //jabs 1, 2, 4 and 5
 				if (attack_down_counter >= 10 && attack_down && window_timer >= window_cancel_time && !was_parried)
 				{
 					if (window == 12 && free) window_timer = 5; //jab 4 is airborne but keqing shouldn't use F-strong in midair
 					else use_charge_attack();
 				}
 				break;
-			//
 			//jab 5 startup
 			case 13: 
 				vsp = 60; //needs to be set up here manually or there will be jank with air canceling
@@ -36,7 +52,12 @@ switch(attack)
 	case AT_FTILT: case AT_DTILT: case AT_UTILT: //should skip endlag
 		if (attack_down_counter >= 10 && attack_down && window == window_last && window_timer >= window_end-5 && !was_parried) use_charge_attack();
 		break;
-	case AT_FSTRONG: case AT_DSTRONG: case AT_USTRONG:
+	case AT_FSTRONG: //the effect work for the strongs is on update.gml instead, i can't put window_timer = 0 here
+		if (window == 4 && window_timer == 4) fstrong_hitbox = create_hitbox(attack, 1, slash_pos_x+16*spr_dir, slash_pos_y);
+		if (window == 5 && window_timer == 3) fstrong_hitbox = create_hitbox(attack, 2, slash_pos_x+16*spr_dir, slash_pos_y);
+
+		if (instance_exists(fstrong_hitbox) && fstrong_hitbox != noone) fstrong_hitbox.fx_particles = 1;
+	case AT_DSTRONG: case AT_USTRONG:
 		//makes sure keqing is actually using the charge attack
 		//if she does, disable the ability to charge her strongs and skip window 2 to make the move faster (since she isn't charging)
 		if (!charge_attack) reset_attack_value(attack, AG_STRONG_CHARGE_WINDOW);
@@ -55,137 +76,67 @@ switch(attack)
 
 		//end charge attack
 		if (window == window_last && window_timer == window_end) charge_attack = false;
-		break;
-}
 
-//using different strongs/hitting with F-spec's wave slash will send the enemy in different directions
-switch (attack)
-{
-	case AT_USTRONG: //sends up
-		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 80);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
-		break;
-	case AT_DSTRONG: //sends down
-		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 290);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.3);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
-		break;
-	case AT_FSTRONG: default: //sends in the opposite direction keqing is facing
-		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
-		if (instance_exists(artc_marker))
-		{
-			if (spr_dir) set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
-			else set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 130); //180-50
-		}
-		break;
-}
 
-//other normals stuff
-switch(attack)
-{
-	case AT_JAB:
-		if (get_match_setting(SET_TURBO) && window == 1) clear_button_buffer(PC_ATTACK_PRESSED);
-		if (window == 9)
+
+		//using different strongs/hitting with F-spec's wave slash will send the enemy in different directions
+		switch (attack)
 		{
-			if (window_timer >= get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME))
-			{
-				//continiue the jab if jab 4 is allowed
-				if (attack_pressed && can_jab4)
+			case AT_USTRONG: //sends up
+				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 80);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
+				break;
+			case AT_DSTRONG: //sends down
+				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 290);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.3);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
+				break;
+			case AT_FSTRONG: default: //sends in the opposite direction keqing is facing
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
+				if (instance_exists(artc_marker))
 				{
-					if (up_down) set_attack(AT_UTILT);
-					else if (down_down) set_attack(AT_DTILT);
-					else if (right_down || left_down) set_attack(AT_FTILT);
-					else
-					{
-						window = 10;
-						window_timer = 0;
-						can_jab4 = false;
-					}
+					if (spr_dir) set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
+					else set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 130); //180-50
 				}
-				else if (window_timer == window_end) //if you reach the end of the window just go to idle
-				{
-					set_state(PS_IDLE);
-					can_jab4 = false;
-				}
-			}
+				break;
 		}
-		if (window >= 10 && window <= 13) can_fast_fall = false; //no hitfalling on jab 4
-		break;
-	case AT_FSTRONG: //the effect work for the strongs is on update.gml instead, i can't put window_timer = 0 here
-		if (window == 4 && window_timer == 4) fstrong_hitbox = create_hitbox(attack, 1, slash_pos_x+16*spr_dir, slash_pos_y);
-		if (window == 5 && window_timer == 3) fstrong_hitbox = create_hitbox(attack, 2, slash_pos_x+16*spr_dir, slash_pos_y);
-		
-		if (instance_exists(fstrong_hitbox) && fstrong_hitbox != noone) fstrong_hitbox.fx_particles = 1;
 		break;
 	case AT_DAIR:
-		if (window == 1 && window_timer > 1)
+		switch (window)
 		{
-			dair_time = 0;
-			if (!free)
-			{
-				window = 3;
-				window_timer = 0;
-			}
+			case 1:
+				if (window_timer > 1)
+				{
+					dair_time = 0;
+					if (!free)
+					{
+						window = 3;
+						window_timer = 0;
+					}
+				}
+				break;
+			case 2:
+				can_wall_jump = true;
+				if (!hitpause) dair_time ++;
+				if (dair_time >= dair_cancel_time) can_shield = true;
+				break;
+			case 3:
+				if (window_timer == 0 && !hitpause) spawn_hit_fx(x+0*spr_dir, y, fx_dair_aoe); //placeholder effect
+				destroy_hitboxes();
+				break;
 		}
-		if (window == 2)
-		{
-			can_wall_jump = true;
-			if (!hitpause) dair_time ++;
-			if (dair_time >= dair_cancel_time) can_shield = true;
-		}
-		if (window == 3 && window_timer == 0 && !hitpause) spawn_hit_fx(x+0*spr_dir, y, fx_dair_aoe); //placeholder effect
+		can_fast_fall = false;
 		break;
 	case AT_DATTACK:
 		var prev_hsp = hsp;
 		if (down_down && !free && !hitpause && !was_parried) hsp = 8*spr_dir;
 		break;
-}
-
-
-//if there's an enemy with a stilleto, allow nspec cancel
-//although this only actually activates according to hit_player
-if (stilleto_id != noone && attack != AT_BURST) nspec_cancel = true;
-else nspec_cancel = false;
-
-if (nspec_cancel_timer > 0 && nspec_cancel && special_pressed && joy_pad_idle)
-{
-	if (instance_exists(artc_marker) && artc_marker.state == 1)
-	{
-		destroy_hitboxes();
-		attack_end(attack);
-		nspec_cancel_aim = true;
-
-		if (attack == AT_USPECIAL) uspec_to_nspec_cancel = true;
-
-		set_attack(AT_NSPECIAL_2);
-    	window = 2;
-		window_timer = window_end;
-
-		nspec_cancel = false;
-		nspec_cancel_timer = 0;
-	}
-}
-if (nspec_cancel_aim)
-{
-	temp_marker_x = stilleto_id.x;
-	temp_marker_y = stilleto_id.y;
-}
-if (attack == AT_NSPECIAL_2 && window == 3 && window_timer == 1)
-{
-	nspec_cancel_aim = false;
-	stilleto_id = noone;
-	if (instance_exists(artc_marker)) instance_destroy(artc_marker);
-}
-
-
-//specials
-switch(attack)
-{
+	//specials
 	case AT_NSPECIAL: //stilleto spawn
 		can_move = false;
 		can_fast_fall = false;
@@ -282,6 +233,7 @@ switch(attack)
 					nspec_proj = create_hitbox(AT_NSPECIAL, 2, x, y-32);
 					nspec_proj_speed = 40; //40
 					nspec_proj.fx_particles = 2;
+					nspec_proj.unbashable = true;
 
 					if (marker_aim_timer > 0) //hold version
 					{
@@ -345,6 +297,7 @@ switch(attack)
 						}
 						*/
 					}
+					
 				}
 				break;
 		}
@@ -356,14 +309,33 @@ switch(attack)
 			vsp = clamp (vsp, -12, 12);
 		}
 
-		if (window <= 2 && vsp > 2) vsp = 2;
-		if (window == 2) do_electro_particles(2, 1, 1);
-		if (window == 3)
+		switch (window)
 		{
-			x = temp_marker_x;
-			y = temp_marker_y;
+			case 1:
+				vsp = clamp(vsp, vsp, 2);
+			case 2:
+				do_electro_particles(2, 1, 1);
+				break;
+			case 3:
+				if (!counter_success) //no beidou counter lmao
+				{
+					x = temp_marker_x;
+					y = temp_marker_y;
+				}
+				break;
+			case 6: //pratfall keqing if she doesn't land the hit (i probably don't need this cuz the move has a cooldown anyways)
+				if (window_timer == window_end && !has_hit_player && free) set_state(PS_PRATFALL);
+				if (has_rune("H"))
+				{
+					counter_success = false;
+					reset_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE);
+				}
+				break;
+			case 4:
+				if (window_timer == 1 && !has_rune("H")) spawn_hit_fx(x, y-32, fx_nspec_warpend);
+				break;
+
 		}
-		if (window == 4 && window_timer == 1) spawn_hit_fx(x, y-32, fx_nspec_warpend);
 
 		if (window >= 4 || window == window_last && window_timer <= 4)
 		{
@@ -374,11 +346,6 @@ switch(attack)
 			x = x;
 			y = y;
 		}
-
-		//pratfall keqing if she doesn't land the hit (i probably don't need this cuz the move has a cooldown anyways)
-		if (window == window_last && window_timer == window_end && !has_hit_player && free) set_state(PS_PRATFALL);
-
-
 
 		//just making the visual effect appear if the attack has no cooldown (with the cheat)
 		if (debug_keqing)
@@ -443,16 +410,24 @@ switch(attack)
 		fall_through = true;
 
 		//makes keqing jump on the first uspec only
-		//just experimenting
-		//if (window == 1 && window_timer == 1) vsp = -6;
+		if (window == 1 || window == 2)
+		{
+			hsp = clamp(hsp, -4, 4);
+			vsp = min(vsp, 2);
+		}
+
+		//other test changes include:
+		//1. special isn't neccesary to be held down to continiue the attack, just a direction (window 4)
+		//2. prev_joy_dir is reset to -1 (window 1, window 3)
 
 		switch (window)
 		{
 			case 1: //check if the uspec started on the ground or not to see if it should pratfall
 				if (window_timer == 1)
 				{
-					if (free) uspec_started_grounded = false;
-					else uspec_started_grounded = true;
+					uspec_started_grounded = !free
+
+					prev_joy_dir = -1;
 				}
 				break;
 			case 2: //quick slash start effect
@@ -468,7 +443,7 @@ switch(attack)
 					fall_through = true;
 
 					//quick slash aim logic
-					if (joy_pad_idle) joy_dir = 90;
+					if (joy_pad_idle && prev_joy_dir = -1) joy_dir = 90;
 					hsp = lengthdir_x(uspec_travel_dist, joy_dir);
 					vsp = lengthdir_y(uspec_travel_dist, joy_dir);
 					prev_joy_dir = joy_dir;
@@ -507,7 +482,7 @@ switch(attack)
 					//&& joy_dir != prev_joy_dir
 					//this commented code makes it so she can't do the same direction twice
 					//the code below will make her do another up B if the special button is held down
-					if (uspec_count < uspec_max && special_down && !joy_pad_idle && !was_parried)
+					if (uspec_count < uspec_max && !joy_pad_idle && !was_parried) // && special_down
 					{
 						attack_end();
 						uspec_count ++;
@@ -533,7 +508,7 @@ switch(attack)
 		
 		if (window == 3)
 		{
-			if (window_timer == 2 && afterimage_amount < 2) //limit the amount of afterimage articles that can spawn
+			if (window_timer == 2 && afterimage_amount < 1 + has_rune("B")) //limit the amount of afterimage articles that can spawn
 			{
 				//dspec coordinate recordings are done in update.gml cuz dan moment
 				artc_afterimage = instance_create(dspec_rec_x, dspec_rec_y-34, "obj_article2");
@@ -555,6 +530,8 @@ switch(attack)
 			//electric particles
 			do_electro_particles(6, 0, 0);
 		}
+
+		move_cooldown[attack] = 40;
 		break;
 	//////////////////////////////////////////////
 	case 49: //final smash - starward sword
@@ -570,7 +547,10 @@ switch(attack)
 				fs_afterimage_pos[0] = [x+160*spr_dir, x-96*spr_dir, x+120*spr_dir, x-120*spr_dir, x];
 				fs_afterimage_pos[1] = [y, y-96, y-114, y+8, y-160];
 
+				if (has_resolve_mechanic && burst_charge > 0) resolve_cur += 60; //bursts add to keqing's resolve automatically
+
 				if ("fs_char_initialized" in self && fs_char_initialized) fs_force_fs = false;
+				else burst_charge = 0;
 				break;
 			case 2: //vanish effect
 				if (window_timer == window_end)
@@ -652,13 +632,46 @@ switch(attack)
 			}
 		}
 		break;
-}
+	//////////////////////////////////////////////
+	case AT_DSPECIAL_2: //beidou parry
+		if (window == 1)
+		{
+			counter_uptime = counter_uptime_reset;
+			if (window_timer == 1)
+			{
+				var flash_fx = spawn_hit_fx(x, y-32, fx_nspec_warpend);
+				flash_fx.depth = depth+1;
+			}
+		}
+		if (window == 2)
+		{
+			if (shield_down && counter_uptime > 0)
+			{
+				super_armor = true;
+				window_timer = 0;
+				counter_uptime --;
 
-//taunts
-switch(attack)
-{
-	case AT_TAUNT: //to be the weapon select pose
+				do_electro_particles(3, 2, 0)
+			}
+			else
+			{
+				window ++;
+				window_timer = 0;
+
+				if (counter_success)
+				{
+					set_attack(AT_NSPECIAL_2);
+					set_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE, counter_damage);
+				}
+			}
+		}
+		else
+		{
+			super_armor = false;
+		}
+		move_cooldown[AT_DSPECIAL_2] = parry_lag;
 		break;
+	//////////////////////////////////////////////
 	case AT_TAUNT_2: //to be the lyre
 		/*
 		var lyre_sound = sound_get("_lyre");
@@ -770,62 +783,102 @@ switch(attack)
 			if (key_held_time == 1) sound_play(lyre_sound, 0, 0, 1, (note_id*lyre_inc_value)+1);
 		}
 		*/
+
+
+
+		//KEQING JUMP GLITCH (19/3/2021 - 9/6/2021, was patched in genshin impact v1.6)
+		// - step 1: put up a lightning stilleto
+		// - step 2: use keqing's lyre taunt
+		// - step 3: durring the startup, press special to teleport to the stilleto
+		// - step 4: depending on the angle and distance keqing is from the stilleto, she will do a massive leap
+		//THIS ONLY WORKS IN TRAINING MODE! (maybe it should be a cheat instead lol)
+
+		if (get_match_setting(SET_PRACTICE))
+		{
+			//timing
+			if (window < 2)
+			{
+				//input
+				if (special_pressed && instance_exists(artc_marker) && artc_marker.state == 1)
+				{
+					//logic
+
+					spawn_hit_fx(x, y-32, fx_nspec_warpstart); //teleport start effect
+					spawn_hit_fx(temp_marker_x, temp_marker_y, fx_nspec_marker_despawn); //stilleto despawn
+
+					var fly_speed = 0;
+					var go_to = 0;
+					allow_glitch_warp = true;
+					if (allow_glitch_warp)
+					{
+						if (stilleto_id == noone)
+						{
+							fly_speed = point_distance(x, y, artc_marker.x, artc_marker.y+32);
+							go_to = point_direction(x, y, artc_marker.x, artc_marker.y+32);
+						}
+						else if (stilleto_id != noone)
+						{
+							fly_speed = point_distance(x, y, stilleto_id.x, stilleto_id.y);
+							go_to = point_direction(x, y, stilleto_id.x, stilleto_id.y);
+						}
+
+						hsp = lengthdir_x(fly_speed/4, go_to);
+						vsp = lengthdir_y(fly_speed/4, go_to);
+
+						stilleto_id = noone;
+						marker_dist_x = 0;
+						marker_dist_y = 0;
+						instance_destroy(artc_marker);
+
+						allow_glitch_warp = false;
+						clear_button_buffer(PC_SPECIAL_PRESSED);
+						clear_button_buffer(PC_TAUNT_PRESSED);
+
+						set_state(PS_IDLE_AIR);
+					}
+				}
+			}
+		}
 		break;
 }
 
-//KEQING JUMP GLITCH (19/3/2021 - 9/6/2021, was patched in genshin impact v1.6)
-// - step 1: put up a lightning stilleto
-// - step 2: use keqing's lyre taunt
-// - step 3: durring the startup, press special to teleport to the stilleto
-// - step 4: depending on the angle and distance keqing is from the stilleto, she will do a massive leap
-//THIS ONLY WORKS IN TRAINING MODE! (maybe it should be a cheat instead lol)
 
-if (attack == AT_TAUNT_2 && get_match_setting(SET_PRACTICE))
+//if there's an enemy with a stilleto, allow nspec cancel
+//although this only actually activates according to hit_player
+if (stilleto_id != noone && attack != AT_BURST) nspec_cancel = true;
+else nspec_cancel = false;
+
+if (nspec_cancel_timer > 0 && nspec_cancel && special_pressed && joy_pad_idle)
 {
-	//timing
-	if (window < 2)
+	if (instance_exists(artc_marker) && artc_marker.state == 1)
 	{
-		//input
-		if (special_pressed && instance_exists(artc_marker) && artc_marker.state == 1)
-		{
-			//logic
+		destroy_hitboxes();
+		attack_end(attack);
+		nspec_cancel_aim = true;
 
-			spawn_hit_fx(x, y-32, fx_nspec_warpstart); //teleport start effect
-			spawn_hit_fx(temp_marker_x, temp_marker_y, fx_nspec_marker_despawn); //stilleto despawn
+		if (attack == AT_USPECIAL) uspec_to_nspec_cancel = true;
 
-			var fly_speed = 0;
-			var go_to = 0;
-			allow_glitch_warp = true;
-			if (allow_glitch_warp)
-			{
-				if (stilleto_id == noone)
-				{
-					fly_speed = point_distance(x, y, artc_marker.x, artc_marker.y+32);
-					go_to = point_direction(x, y, artc_marker.x, artc_marker.y+32);
-				}
-				else if (stilleto_id != noone)
-				{
-					fly_speed = point_distance(x, y, stilleto_id.x, stilleto_id.y);
-					go_to = point_direction(x, y, stilleto_id.x, stilleto_id.y);
-				}
+		set_attack(AT_NSPECIAL_2);
+    	window = 2;
+		window_timer = window_end;
 
-				hsp = lengthdir_x(fly_speed/4, go_to);
-				vsp = lengthdir_y(fly_speed/4, go_to);
-
-				stilleto_id = noone;
-				marker_dist_x = 0;
-				marker_dist_y = 0;
-				instance_destroy(artc_marker);
-
-				allow_glitch_warp = false;
-				clear_button_buffer(PC_SPECIAL_PRESSED);
-				clear_button_buffer(PC_TAUNT_PRESSED);
-
-				set_state(PS_IDLE_AIR);
-			}
-		}
+		nspec_cancel = false;
+		nspec_cancel_timer = 0;
 	}
 }
+if (nspec_cancel_aim)
+{
+	temp_marker_x = stilleto_id.x;
+	temp_marker_y = stilleto_id.y;
+}
+if (attack == AT_NSPECIAL_2 && window == 3 && window_timer == 1)
+{
+	nspec_cancel_aim = false;
+	stilleto_id = noone;
+	if (instance_exists(artc_marker)) instance_destroy(artc_marker);
+}
+
+
 
 
 //CHARGE ATTACK TELEPORT GLITCH (it was pretty early on in the game)

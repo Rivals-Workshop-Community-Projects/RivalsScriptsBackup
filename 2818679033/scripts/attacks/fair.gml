@@ -17,7 +17,7 @@ easy_hitbox(1,
     HG_WIDTH, 55,
     HG_HEIGHT, 55,
     HG_HIT_SFX, asset_get(SFX_BLOW_MEDIUM1),
-    HG_BASE_HITPAUSE, 6,
+    HG_BASE_HITPAUSE, 6, 
 )
 
 //back
@@ -72,6 +72,7 @@ easy_window("recovery",
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {

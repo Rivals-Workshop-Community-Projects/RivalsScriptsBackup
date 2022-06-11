@@ -18,6 +18,23 @@ draw_set_alpha(1);
 draw_text_ext_transformed_colour(temp_x+10, temp_y-16, "Lumina Beta v.D", 30, 400, 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 0.5);
 */
 
+//kart time disclaimer thingy
+/*if (variable_instance_exists(obj_stage_main, "item_leader_time_height")){
+	draw_set_font(asset_get("fName"));
+	var cla = c_white
+	var clb = c_orange
+	draw_text_ext_transformed_colour(temp_x+200, temp_y-38, "*", 1, 400, 1, 1, 0, cla, cla, clb, clb, 1);
+}*/
+
+if (variable_instance_exists(id,"active")){if(active){
+	sound_stop(sound_get("sfx_321"));draw_set_alpha(1);draw_rectangle_colour(-100,-100,25600,25600,0,0,0,0,false);
+	if (true){for(var z=0;z<12;z+=1){
+		for(var zz=0;zz<=5;zz+=1){tt=tt+((zz==0)?l1:(zz==1)?l2:(zz==2)?l3:(zz==3)?l4:(zz==4)?l5:" ");print(tt);}
+	draw_set_halign(fa_left);
+	}repeat(5000){}tc++}else{sound_stop(sound_get("ae_4"));active=true;print("")};set_view_position( 0, 0 )
+	draw_set_font(asset_get("fName"));draw_text_ext_transformed_colour(14,0,tt,14,view_get_wview(),1,1,0,255,255,255,255,1);draw_set_alpha(0);suppress_stage_music(false,true);
+	pc++;if((pc>2&&pd==0)||tc>=100){si=true;for(var ll=0;ll==0;ll=0){ll=0}pc=0;pd=1;}if(pd==1){pc=0;}
+}}
 
 //abyss gui code
 ab_hud_x = temp_x;

@@ -313,7 +313,7 @@ if lockouttimer < 0 {
 
         
     nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
-	if nearbyhitbox != noone && (lockouttimer == 0 or player != nearbyhitbox.player) {
+	if nearbyhitbox != noone && (lockouttimer == 0 or player != nearbyhitbox.player) && player_id.hitpause == false  {
 		hit_priority = 9 
 		
 		if player_id == nearbyhitbox.player_id {

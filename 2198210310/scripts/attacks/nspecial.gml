@@ -52,7 +52,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, 0);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("block"));

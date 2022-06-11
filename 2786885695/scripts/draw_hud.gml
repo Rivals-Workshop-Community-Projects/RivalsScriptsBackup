@@ -76,14 +76,10 @@ if (playing_lyre_timer == 0)
         gpu_set_colorwriteenable(true, true, true, true);
         gpu_set_blendenable(true);
 
-        
-
         //mask fill (this is where i set up the meter itself)
         gpu_set_blendmode_ext(bm_dest_alpha, bm_inv_dest_alpha);
         gpu_set_alphatestenable(true);
-
         rectDraw(hud_x+28, hud_y+16, 49, floor(-burst_charge/3.92), blend_color); //burst fill
-
         gpu_set_alphatestenable(false);
         gpu_set_blendmode(bm_normal);
 
@@ -102,7 +98,7 @@ else
 }
 
 
-
+//lyre shenanigans
 if (lyre_hud_fade < 10)
 {
     draw_sprite_ext(sprite_get("hud_lyre"), 0, temp_x, temp_y, 2, 2, 0, c_white, lerp(0, 1*lyre_hud_play_fade, lyre_hud_fade/10*lyre_hud_play_fade));
@@ -117,10 +113,11 @@ else //lyre menu is active
 }
 
 
-
-
-if (display_numbers_timer < 120 && display_damage_numbers && !is_cpu) draw_debug_text(temp_x - 16, hud_y - 32, "TAUNT to disable damage numbers.");
-
+//message prompts
+if (!is_cpu)
+{
+    if (keqing_exist_time < 120 && display_damage_numbers) draw_debug_text(temp_x - 16, hud_y - 32, "TAUNT to disable damage numbers.");
+}
 
 //debug stuff
 if (debug_keqing)

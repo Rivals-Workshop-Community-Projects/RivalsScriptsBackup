@@ -18,6 +18,7 @@ if(!variable_instance_exists(id,"timerSelect")) //init variables.
 {
     timerSelect = 0;
     altSelected = 0;
+    sound_play(sound_get("revolver_ricochet"));
 }
 
 timerSelect ++;

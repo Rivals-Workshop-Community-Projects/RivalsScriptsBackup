@@ -105,6 +105,7 @@ if (is_attacking) switch (attack)
 if (qiqi_hat) draw_sprite_ext(sprite_get("qiqi_idle"), image_index, x+1*spr_dir, y-66, 2*spr_dir, 2, 0, c_white, 1);
 shader_end();
 
+
 //if (is_attacking && attack == AT_TAUNT_2 && window == 2)
 //{
 //    if (playing_lyre_timer < 60*3)
@@ -116,8 +117,9 @@ shader_end();
 //    
 //}
 
-var hud_x = floor(x)+48;
+var hud_x = (has_rune("K")) ? floor(x)-48 : floor(x)+48;
 var hud_y = floor(y)-char_height-24;
+
 //timer, only shows when the icon is the normal icon
 if (!debug_keqing)
 {
@@ -147,6 +149,55 @@ if (!debug_keqing)
         draw_sprite_ext(sprite_get("hud_skill_flash"), 0, hud_x, hud_y, hud_anim_timer/2/5+1, hud_anim_timer/2/5+1, 0, c_white, 1-hud_anim_timer/10);
         gpu_set_blendmode(bm_normal);
     }
+}
+
+//stamina gauge rune
+if (has_rune("D") && genshin_stamina_alpha > 0)
+{
+    var _x = floor(x)+48;
+    var _y = floor(y)-char_height/2-8;
+
+    //backdrop
+    if (cur_stamina < max_stamina) draw_sprite_ext(sprite_get("runeK_stamina"), 1, _x, _y, 2, 2, 0, $143980, genshin_stamina_alpha*0.8);
+
+    //mask
+    gpu_set_blendenable(false);
+    gpu_set_colorwriteenable(false, false, false, true);
+    draw_sprite_ext(sprite_get("runeK_stamina"), 1, _x, _y, 2, 2, 0, c_white, genshin_stamina_alpha);
+    gpu_set_colorwriteenable(true, true, true, true);
+    gpu_set_blendenable(true);
+
+    //mask fill (this is where i set up the meter itself)
+    var _radius = 64;
+    var i, len, tx, ty, val;
+    var num_sections = 60;
+    var size_sections = 85/num_sections;
+    val = (cur_stamina/max_stamina) * num_sections;
+    
+    gpu_set_blendmode_ext(bm_dest_alpha, bm_inv_dest_alpha);
+    gpu_set_alphatestenable(true);
+
+    draw_set_color(cur_stamina > 50 ? $09c8ff : $6266ff);
+    draw_set_alpha(genshin_stamina_alpha);
+    if (val > 1)
+    {
+        draw_primitive_begin(pr_trianglefan);
+        draw_vertex(_x - 64, _y); //vertex towards keqing
+        for (var i = 0; i < val; ++i)
+        {
+                    len = (i*size_sections-40);
+                    tx = lengthdir_x(_radius, len);
+                    ty = lengthdir_y(_radius, len);
+                    draw_vertex(_x + tx - 48, _y + ty + 3); //vertex far from keqing
+        }
+        draw_primitive_end();
+    }
+    gpu_set_alphatestenable(false);
+    gpu_set_blendmode(bm_normal);
+    draw_set_alpha(1);
+
+    //outline
+    draw_sprite_ext(sprite_get("runeK_stamina"), 0, _x, _y, 2, 2, 0, c_white, genshin_stamina_alpha*0.1);
 }
 
 

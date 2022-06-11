@@ -51,5 +51,5 @@ set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 7); // civic wanted this
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy2"));
-set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 305); // vfx
+set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 306); // vfx
 set_hitbox_value(AT_DAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);

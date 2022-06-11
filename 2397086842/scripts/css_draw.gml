@@ -49,36 +49,36 @@ switch introtime/4 {
      sound_play(asset_get("sfx_absa_boltcloud"),false,noone,1,1)
      sound_play(asset_get("sfx_absa_kickhit"),false,noone,1,1)
      sound_play(sound_get("bathit"),false,noone,1,.8)
-     sound_play(sound_get("b3"),false,noone,1,1)
+     sound_play(sound_get("b3"),false,noone,.7,1)
      break; 
      
      case 17 :
       sound_play(asset_get("sfx_absa_dashup"),false,noone,1,1.2)
-      sound_play(sound_get("b1"),false,noone,1,1)
+      sound_play(sound_get("b1"),false,noone,.6,1)
      break; 
      
      case 19 :
       sound_play(asset_get("sfx_absa_dashdown"),false,noone,1,1.2)
-      sound_play(sound_get("b2"),false,noone,1,1)
+      sound_play(sound_get("b2"),false,noone,.6,1)
      break; 
      
      case 21 :
       sound_play(asset_get("sfx_absa_dashup"),false,noone,1,1.2)
-      sound_play(sound_get("b1"),false,noone,1,1)
+      sound_play(sound_get("b1"),false,noone,.6,1)
      break; 
      
      case 22 :
       sound_play(asset_get("sfx_absa_dashdown"),false,noone,1,1.2)
       sound_play(asset_get("sfx_spin"),false,noone,1,0.8)
-      sound_play(sound_get("b2"),false,noone,1,1)
+      sound_play(sound_get("b2"),false,noone,.6,1)
      break; 
      
      case 27 :
-       sound_play(sound_get("sage"),false,noone,1,1)
+       sound_play(sound_get("sage"),false,noone,.7,1)
      break; 
      
       case 28 :
-       sound_play(sound_get("shockready"),false,noone,1,1)
+       sound_play(sound_get("shockready"),false,noone,.6,1)
      break; 
      
      case 37 :

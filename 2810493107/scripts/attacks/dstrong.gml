@@ -35,7 +35,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .9);
-set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 110);
+set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, hit_fx_create( sprite_get("psyfx"), 20));
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 6);

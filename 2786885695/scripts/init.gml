@@ -10,24 +10,22 @@
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
 
 // Physical size
-normal_char_height = 62;
-
-char_height         = normal_char_height;       //                  not zetterburn's. this is just cosmetic anyway
+char_height         = 62+has_rune("L")*16;       //                  not zetterburn's. this is just cosmetic anyway
 knockback_adj       = 1.0;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 4;		// 3    -  4.5
 walk_accel          = 0.4;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
-initial_dash_time   = 8;		// 8    -  16       zetterburn's is 14
+initial_dash_time   = 8-has_rune("F")*4;		// 8    -  16       zetterburn's is 14
 initial_dash_speed  = 9;		// 4    -  9
-dash_speed          = 8;		// 5    -  9
+dash_speed          = 8+has_rune("F")*2;		// 5    -  9
 dash_turn_time      = 8;		// 8    -  20
 dash_turn_accel     = 1.75;		// 0.1  -  2
 dash_stop_time      = 10;		// 4    -  6        zetterburn's is 4
 dash_stop_percent   = 0.3;		// 0.25 -  0.5
 ground_friction     = 0.4;		// 0.3  -  1
-moonwalk_accel      = 7;		// 1.2  -  1.4
+moonwalk_accel      = 1.4;		// 1.2  -  1.4
     
 // Air movement
 leave_ground_max    = 7;		// 4    -  8
@@ -139,7 +137,7 @@ set_victory_theme(sound_get("victory_theme")); // victory_theme.ogg
 // Movement SFX
 land_sound          = asset_get("sfx_land_light");
 landing_lag_sound   = asset_get("sfx_land_med");
-waveland_sound      = asset_get("sfx_waveland_ran"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
+waveland_sound      = asset_get("sfx_waveland_oly"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
 jump_sound          = sound_get("sfx_jump");
 djump_sound         = asset_get("sfx_jumpair");
 air_dodge_sound     = asset_get("sfx_quick_dodge");
@@ -158,11 +156,12 @@ empty = asset_get("empty_sprite");
 fx_empty = hit_fx_create(empty, 1);
 ai_fight_time = 0;
 
+keqing_exist_time = 0;
+
 has_intro = true;
 AT_INTRO = 2;
 
-playtest_active = false;
-with (oTestPlayer) playtest_active = true;
+playtest_active = (object_index == oTestPlayer);
 is_cpu = false;
 
 AT_BURST = 49;
@@ -173,7 +172,6 @@ artc_damage = noone;
 damage_gap = 0;
 prev_damage = 0;
 display_damage_numbers = true;
-display_numbers_timer = 0;
 
 if (get_match_setting(SET_PRACTICE)) respawn_time_appear = 0;
 else respawn_time_appear = 90;
@@ -249,6 +247,7 @@ nspec_angle = 0;
 
 color_outline_timer = 0; //outline work when she teleports
 color_outline_timer_max = 30;
+color_outline_rise = false;
 
 //U-special limiter
 uspec_count = 0;
@@ -280,6 +279,7 @@ blend_b = get_color_profile_slot_b(alt_cur, 0);
 blend_color = make_colour_rgb(blend_r, blend_g, blend_b);
 
 //starward sword
+has_burst = false;
 allow_burst_UI = false;
 burst_ready = false;
 burst_charge = 0;
@@ -477,9 +477,65 @@ attack_index = [
 ];
 
 //voice clips
-voice_active = false; //should be false by default
-lang = 0; //0 = japanese | 1 = english
+lang = 0;
 reached_100_damage = false;
+stopped_sounds = [];
+cur_voiceclip = [noone, noone];
+
+
+//abyss runes
+rune_active = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"];
+
+//rune A
+prev_pos = [0, 0];
+
+
+//rune C (old = E)
+artc_part = noone;
+particle_amount = 0;
+particle_cd = 0;
+fx_runeE_afterimage = hit_fx_create(sprite_get("fx_runeE_afterimage"), 12);
+
+//rune E (ayaka/mona dash) (old = F)
+runeE_special_dash = false;
+
+//rune G (lisa)
+spawn_blast_attack = false;
+
+//rune H (beidou) (old = J)
+counter_success = false;
+counter_uptime_reset = 40;
+counter_uptime = counter_uptime_reset; //can be held down for this amount of frames
+counter_damage = 0;
+
+//rune D (genshin stamina) (old = K)
+max_stamina = 240;
+cur_stamina = max_stamina;
+wind_glider_toggle = false;
+wind_glider_delay_open = false;
+fx_glider_spawn = hit_fx_create(sprite_get("fx_runeK_glider_spawn"), 20);
+fx_glider_despawn = hit_fx_create(sprite_get("fx_runeK_glider_despawn"), 20);
+genshin_stamina_alpha = 0;
+windglider_open_time = 0;
+
+
+//rune I (crits) (old = L)
+crit_rate = 50; //she has a 50% chance to do a crit
+crit_val = 0; //scrolls between numbers, if it's higher than crit_rate it will be a crit
+crit_damage = 1.5; //it actually also increases knockback and hitpause
+
+//rune L (vision hunt decree) (old = O)
+has_resolve_mechanic = has_rune("L");
+resolve_max = 600;
+resolve_cur = 0;
+vhd_attack = false; //applies attack invince to taunt
+vhd_effect = false;
+vhd_effect_time_max = 60*8;
+vhd_effect_time = 0;
+
+vhd_alpha = 1; //it's for the effect behind her
+
+
 
 //lyre
 playing_lyre_timer = 0;

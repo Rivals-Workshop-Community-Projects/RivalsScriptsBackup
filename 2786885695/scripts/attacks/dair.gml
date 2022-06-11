@@ -41,14 +41,14 @@ set_window_value(atk, window_num, AG_WINDOW_SFX, sfx_plunge_end);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num ++; //landing
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14); //18
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12); //15
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -72,7 +72,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.2);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, sfx_swordhit_heavy1);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 6);
@@ -91,8 +91,8 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10); //8
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 40);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6); //5
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.9); //0.6
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_hit_phys3);

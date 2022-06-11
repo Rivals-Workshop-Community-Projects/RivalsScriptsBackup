@@ -38,17 +38,20 @@ easy_window("land",
     AG_WINDOW_SFX, asset_get(SFX_BLOW_HEAVY1),
 )
 
-easy_window("sit",
-    AG_WINDOW_LENGTH, 6,
+easy_window("sit", // Cut off to idle in attack_update
+    AG_WINDOW_LENGTH, 15, //6
+    AG_WINDOW_SFX, asset_get(SFX_KRAGG_ROCK_PULL),
+    AG_WINDOW_SFX_FRAME, 6,
+    AG_WINDOW_TYPE, WINDOW_TYPE_PRATFALL,
 )
 
 easy_window("bounce",
-    AG_WINDOW_LENGTH, 4,
+    AG_WINDOW_LENGTH, 7,
     AG_WINDOW_SFX, asset_get(SFX_KRAGG_ROCK_PULL),
 )
 
 easy_window("bounce_air",
-    AG_WINDOW_LENGTH, 9,
+    AG_WINDOW_LENGTH, 12,
     AG_WINDOW_VSPEED, -6,
 )
 
@@ -76,6 +79,8 @@ easy_hitbox(1,
 // DANGER File below this point will be overwritten! Generated defines and macros below.
 // Write NO-INJECT in a comment above this area to disable injection.
 #macro ATTACK_CATEGORY_GROUND_OR_AIR 2
+
+#macro WINDOW_TYPE_PRATFALL 7
 
 #macro WINDOW_TYPE_SKIP_ON_GROUND 8
 
@@ -117,6 +122,7 @@ easy_hitbox(1,
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {

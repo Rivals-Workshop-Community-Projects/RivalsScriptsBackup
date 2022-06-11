@@ -42,7 +42,7 @@ alt_name[19] = "Power of the Aegis";
 alt_name[20] = "Superstar Idol 01";
 alt_name[21] = "Unlimited Mage Works";
 alt_name[22] = "Elemental Guardian";
-alt_name[23] = "Baleful Stormrider";
+alt_name[23] = "Baleful Stormstrider";
 
 //ICONS
 var icon_x_pos = x + 174;

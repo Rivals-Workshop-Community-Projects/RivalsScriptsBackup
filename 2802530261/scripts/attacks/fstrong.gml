@@ -14,7 +14,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("diffusion_shot"));
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -312,11 +312,8 @@ switch attack {
     }
     
     if has_hit_player && window < 5 && hitpause && hit_player_obj.state_cat == SC_HITSTUN{
-        if hitpause {
-            window_timer += 1
-        }
-        hit_player_obj.x += floor((x + 10*spr_dir - hit_player_obj.x)/8) 
-        hit_player_obj.y += floor((y + 30 - hit_player_obj.y)/8) 
+        hit_player_obj.x += floor((x + 10*spr_dir - hit_player_obj.x)/12) 
+        hit_player_obj.y += floor((y + 30 - hit_player_obj.y)/12) 
         if old_vsp > 0 {
         old_vsp -= 3
         }

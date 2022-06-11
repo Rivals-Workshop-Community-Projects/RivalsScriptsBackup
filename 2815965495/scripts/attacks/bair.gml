@@ -19,7 +19,7 @@ set_window_value(AT_BAIR, 2, AG_WINDOW_HAS_SFX, 1);
 
 set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, 7);
 set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_BAIR, 2, AG_WINDOW_VSPEED, 1.25);
+set_window_value(AT_BAIR, 2, AG_WINDOW_VSPEED, 1);
 
 
 set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 14); // 7

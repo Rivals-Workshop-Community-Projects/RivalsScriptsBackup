@@ -440,6 +440,21 @@ if (attack == AT_USPECIAL){
 
 }
 
+// fx for fstrong
+if (attack == AT_FSTRONG) {
+	
+	//if ( place_meeting(x+(50*spr_dir), y+1, asset_get("par_block")) || place_meeting(x+(50*spr_dir), y+1, asset_get("par_jumpthrough")) ){}
+
+
+	if (window == 3) {
+		if (window_timer = 3) {
+			spawn_dust_fx( x+(25*spr_dir), y-52, sprite_get("fstrong_effect"), 10 );
+			//sound_play(sound_get("crowbar_hit2"));
+			sound_play(sound_get("crowbar_hit2"), false, noone, 0.5, 1);
+		}
+	}
+}
+
 // if the attack button and joystick up is pressed or held
 // during dash attack on window 3, do second part of attack
 if(attack==AT_DATTACK){

@@ -2,7 +2,9 @@ Fcancel=0;
 
 if attack == AT_USPECIAL{
 	contador = 0;
-	arrow = 2;
+	arrow =2;
+	set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
+	set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -4.5);
 	reset_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK);
 	reset_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK);
 	absorb = 0;

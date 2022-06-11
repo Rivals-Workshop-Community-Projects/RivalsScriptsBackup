@@ -10,7 +10,7 @@ if(attack == AT_NSPECIAL){
 		            		other.current_player = player;other.player = player;
 		    	                other.hitplayertimer -= 10;
 		    	                other.hitlockout = 6;other.hitlockout2 = 10;
-		    	        		if(type <= 1){
+		    	        		if(type <= 1 || "sanic_uspec_count" in player_id && attack == AT_DSPECIAL && hbox_num == 1){
 		    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
 		    	        			if(other.hitpausehit <= 0){
 		    	        				other.hitpausehit = 5;
@@ -18,16 +18,6 @@ if(attack == AT_NSPECIAL){
 		    	        			other.hitstop = other.hitpausehit;
 		    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
 		                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-		    	        		}else{
-		    	        			if("sanic_uspec_count" in player_id && attack == AT_DSPECIAL && hbox_num == 1){
-			    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-			    	        			if(other.hitpausehit <= 0){
-			    	        				other.hitpausehit = 5;
-			    	        			}
-			    	        			other.hitstop = other.hitpausehit;
-			    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
-			                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;		    	        			
-		    	        			}
 		    	        		}
 		            			knockback_angle = kb_angle;
 		    	        		other.knockback_power = kb_value;
@@ -75,18 +65,20 @@ if(attack == AT_NSPECIAL){
     	proj_angle -=(hsp);
         if(vsp < 6){
             kb_angle = 45;
+            kb_value = 5;
             if(kb_scale <= .7){
             	kb_scale = .7;
             }
         }else{
             kb_angle = 315;
+            kb_value = 4;
             if(kb_scale == .7 || kb_scale <= .55){
             	kb_scale = .55;
             }
         }
         //I don't fucking know what to do here. Platforms won't allow it to hit even when
         //I use par_jumpthrough so I gave up after 30 mins of troubleshooting
-        if(!free || place_meeting(x,y+20,asset_get("par_block"))){
+        if(hit_priority != 0 && (!free || place_meeting(x,y+20,asset_get("par_block")))){
             if(!just_landed){
                 dorito_hp-=1;
                 just_landed = true;
@@ -112,6 +104,7 @@ if(attack == AT_NSPECIAL){
         if(dorito_hp <= 0 && !destroyed){
             destroyed = true;
             theplanet.destroyed = true;
+            player_id.move_cooldown[AT_NSPECIAL] = 65;
 			var shard1 = create_hitbox(AT_NSPECIAL,2,x+0*spr_dir,y);shard1.player = player;
 			var shard2 = create_hitbox(AT_NSPECIAL,3,x+0*spr_dir,y);shard2.player = player;
 			var shard3 = create_hitbox(AT_NSPECIAL,4,x+0*spr_dir,y);shard3.player = player;
@@ -146,7 +139,7 @@ if(attack == AT_NSPECIAL){
 			image_xscale = 0;image_yscale = 0;
 		}
 		if(free){
-			image_xscale = .5;image_yscale = .2;
+			image_xscale = .3;image_yscale = .1;
 		}
     	if(x > room_width+200 || x < -200 || y >= room_height+300){
         	destroyed = true;
@@ -180,7 +173,7 @@ if(attack == AT_NSPECIAL){
 			image_xscale = 0;image_yscale = 0;
 		}
 		if(free){
-			image_xscale = .3;image_yscale = .1;
+			image_xscale = .2;image_yscale = .1;
 		}
     	if(x > room_width+200 || x < -200 || y >= room_height+300){
         	destroyed = true;
@@ -197,7 +190,7 @@ if(attack == AT_NSPECIAL){
 			}
 		}
 	}else if(hbox_num == 2){
-		if(!player_id.was_parried){
+		if(!player_id.was_parried && abs(hsp) < 8){
 			if(!player_id.charged_summon){
 				hsp = 4*spr_dir;
 			}else{
@@ -208,7 +201,7 @@ if(attack == AT_NSPECIAL){
 		if(hitbox_timer == length - 1){
 			destroyed = true;
 		}
-		var refresh_time = 28;
+		var refresh_time = 32;
 		if (hitbox_timer % refresh_time == 0) for (var i = 0; i < 20; i++){
 			can_hit[i] = 1;
 		}		
@@ -293,83 +286,71 @@ if(attack == AT_NSPECIAL){
 			vsp = 0;
 			hsp = 0;
 		}
-	    //Active reflector
-	    hit_check = noone;
-		//So now it checks for hitbox
-		var ishitbox = false;		
-	    if hit_check == noone {
-	        hit_check = instance_place(x,y,pHitBox);
-	    }if hit_check == noone {
-	        hit_check = instance_place(x,y,obj_article1);
-	    }else{
-	    	ishitbox = true;
-	    }if hit_check == noone {
-	        hit_check = instance_place(x,y,obj_article2);
-	    }if hit_check == noone {
-	        hit_check = instance_place(x,y,obj_article3);
-	    }if hit_check == noone {
-	        hit_check = instance_place(x,y,obj_article_solid);
-	    }if hit_check == noone {
-	        hit_check = instance_place(x,y,obj_article_platform);
-	    }	
+	    //NEW REFLECT CODE
+	    reflect_target = noone;
+	    reflect_type = 0;
 	    
-	    //distance to  object
-	    if hit_check != noone {
-	        hit_dist = distance_to_object(hit_check);
+	    if(!instance_exists(reflect_target)){
+	    	with(pHitBox){
+		    	if(place_meeting(x,y,other) && type == 2 && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    		other.reflect_target = self;
+		    	}
+	    	}
+	    }if(!instance_exists(reflect_target)){
+	    	with(obj_article1){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    		other.reflect_target = self;
+		    	}
+	    	}
+	    }if(!instance_exists(reflect_target)){
+	    	with(obj_article2){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    		other.reflect_target = self;
+		    	}
+	    	}
+	    }if(!instance_exists(reflect_target)){
+	    	with(obj_article3){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    		other.reflect_target = self;
+		    	}
+	    	}
+	    }if(!instance_exists(reflect_target)){
+	    	with(obj_article_solid){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    		other.reflect_target = self;
+		    	}
+	    	}
+	    }if(!instance_exists(reflect_target)){
+	    	with(obj_article_platform){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    		other.reflect_target = self;
+		    	}
+	    	}
 	    }
-	    
-		//Conditions for Reflector to be active
-	    if (hit_check != noone  && (!ishitbox || (ishitbox && hit_check.type == 2)) && "reflect" in self && reflect != hit_check  /*&& !has_hit_player*/ && ("UnReflectable" in hit_check && !hit_check.UnReflectable || "UnReflectable" not in hit_check)) {
-	        reflect = hit_check;						//Object
-			invincible = 1;
-			invince_time = 10;
-			hit_fx_create( 194, 6 );
-			var fx = spawn_hit_fx( x +15*spr_dir, y-0, 305 );fx.pause = 8.58;
-			launched = 30;
-	        img_spd = .3;
-	        sound_play(sound_get("spring"));
-			//UPDATE: IF the projectile is not static ( or has a really small movement speed) it reflects
-			if abs(reflect.hsp) >  0.5 {								//Minimal Horizontal speed
-				if variable_instance_exists(reflect, "sprdir") {
-					reflect.image_xscale = 0.01;
-					if spr_dir *reflect.sprdir == -1 {				//REFLECTS 
-						reflect.hsp *= -1					
-						reflect.sprdir *= -1;
-					}
-				} else {
-					if spr_dir *reflect.spr_dir == -1 {				//REFLECTS 
-						reflect.hsp *= -1					
-						reflect.spr_dir *= -1;
-					}
+	    if(instance_exists(reflect_target)){
+	    	with(reflect_target){
+	    		player = other.player;
+	    		//if(abs(hsp) > 0.25){ //checks for minimum speed (unused lol!)
+	            		//spr_dir *= -1; //flips it regardless of its direction, wave doesnt use this one
+	            spr_dir = other.spr_dir; //forces it to go where wave is facing lol
+				hsp = 10*other.spr_dir;
+				vsp = -10;
+	            image_angle = 0+(45*(spr_dir+1));
+	    		//}
+	    		if("was_parried" in self){
+			    	was_parried = true;
+				}if("hitbox_timer" in self){
+			    	hitbox_timer = 0;
+				}if("damage" in self){
+			    	damage *= 1.5;
+				}if("kb_value" in self){
+			    	kb_value *= 1.25;
+				}if("hit_priority" in self && hit_priority <= 0){
+					hit_priority = 1;
 				}
-			} else {												//When the projectile is static
-				if variable_instance_exists(reflect, "sprdir") {
-					reflect.image_xscale = 0.01;
-					reflect.sprdir = spr_dir;
-				} else {
-					reflect.spr_dir = spr_dir;
-				}
-			}
-			
-	        if hit_check.object_index != oPlayer {
-	            hit_check.was_parried = true;
-				hit_check.hitbox_timer = 0;
-	            //hit_check.can_hit_self = true;
-				reflect.image_angle = 0+(45*(spr_dir+1));				//REFLECTS 
-				reflect.hsp = 10*spr_dir;
-				reflect.vsp = -10;
-	        }
-	        /*
-	        if variable_instance_exists(hit_check, "damage") {
-	           hit_check.damage *= 1.25;
-	        }
-	        if variable_instance_exists(hit_check, "kb_value") {
-	            hit_check.kb_value *= 1.25;
-	        }
-	        */
-	    }
-	    if hit_check == noone {
-	        reflect = 0;
+	    	}
+	    	spawn_hit_fx(reflect_target.x, reflect_target.y, 194);
+	    	sound_play(sound_get("spring"));
 	    }	    
 		if(hitbox_timer == length - 1){
 			destroyed = true;

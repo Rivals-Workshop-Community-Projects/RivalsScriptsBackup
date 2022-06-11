@@ -19,7 +19,7 @@ switch (my_hitboxID.attack)
 			old_vsp = -6;
 			window = 5;
 			window_timer = 0;
-			move_cooldown[AT_DAIR] = 20;
+			move_cooldown[AT_DAIR] = 30;
 		}
 		break;
 

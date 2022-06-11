@@ -34,7 +34,10 @@ if((state == PS_RESPAWN || attack == AT_TAUNT) && respawnplat == 1){
 		draw_sprite_ext(sprite_get("weegee_face_overlay"), 0, x, y, 2*spr_dir, 2, 0, -1, .5);	
 	}
 	draw_sprite_ext(sprite_get("plat"), 0, x, y, 2*spr_dir, 2, 0, -1, 1)
-	draw_sprite_ext(sprite_get("plat_feet"), 0, x, y, 2*spr_dir, 2, 0, -1, .5)
+	if(attack != AT_TAUNT || attack != AT_TAUNT_2 || attack != 43 || attack != AT_EXTRA_2){
+		draw_sprite_ext(sprite_get("plat_feet"), 0, x, y, 2*spr_dir, 2, 0, -1, 1)
+		draw_sprite_ext(sprite_get("plat_feet"), 1, x, y, 2*spr_dir, 2, 0, -1, .5)
+	}
 	shader_end();
 }
 

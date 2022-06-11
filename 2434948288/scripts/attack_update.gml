@@ -96,9 +96,9 @@ switch (attack)
         break
 
     case AT_DAIR:
-        can_jump = state_timer >= 20;
-        can_shield = state_timer >= 20 && free;
-        if (state_timer >= 20 && is_special_pressed(DIR_UP))
+        can_jump = state_timer >= 30;
+        can_shield = state_timer >= 30 && free;
+        if (state_timer >= 30 && is_special_pressed(DIR_UP))
             set_attack(AT_USPECIAL);
         if (window == 4 && window_timer == 1)
             spawn_base_dust(x+6*spr_dir, y, "dair", spr_dir);
@@ -108,7 +108,7 @@ switch (attack)
 
     case AT_FAIR:
         if (was_parried) window = 12;
-        else if (window < 10 && has_hit_player) Grab(50, 0, 7, 7);
+        else if (window < 8 && has_hit_player && hitpause) Grab(40, 0, 2, 2);
         if (down_down) vsp += 0.2;
         hsp = min(3, hsp);
         can_fast_fall = false;
@@ -163,7 +163,7 @@ switch (attack)
         switch (window)
         {
             case 1:
-                //DivideSpeed(1.2);
+                DivideSpeed(1.2);
                 if (window_timer == 4 && guitar.state == 0) guitar.newState = 6;
                 break;
             case 2:
@@ -185,9 +185,9 @@ switch (attack)
             case 3:
                 can_shield = true;
                 if (shield_pressed && has_airdodge) tutDoneAdv[3] = true;
-                //DivideSpeed(1.5);
+                DivideSpeed(1.5);
                 fall_through = down_down;
-                if (!hitpause && window_timer == 20) {var owo = spawn_hit_fx(x, y, dspec); owo.depth = -10;}
+                if (!hitpause && window_timer == 24) {var owo = spawn_hit_fx(x, y, dspec); owo.depth = -10;}
                 break;
             case 4:
                 fall_through = down_down;
@@ -316,6 +316,6 @@ switch (attack)
 
 #define StallCooldown()
 {
-    move_cooldown[AT_FSPECIAL] = attack==AT_FSPECIAL?38:10;
-    move_cooldown[AT_UAIR] = 10;
+    move_cooldown[AT_FSPECIAL] = attack==AT_FSPECIAL?40:15;
+    move_cooldown[AT_UAIR] = 15;
 }

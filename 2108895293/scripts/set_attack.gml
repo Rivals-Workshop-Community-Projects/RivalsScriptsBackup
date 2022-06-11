@@ -6,6 +6,15 @@ if (!phone_disable){
 	}
 }
 
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSTRONG, 5, AG_WINDOW_SFX_FRAME, 7);
+
+
+//set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 3);
+
+
+
 if (attack==AT_DSPECIAL && free){
 	attack=AT_DSPECIAL_AIR
 }

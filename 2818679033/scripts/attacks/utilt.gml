@@ -6,7 +6,6 @@ easy_window("startup",
 
 easy_window("active",
     AG_WINDOW_LENGTH, 10,
-    AG_WINDOW_HSPEED, -2,
 )
 
 easy_window("recovery",
@@ -25,25 +24,6 @@ easy_hitbox(1,
     HG_BASE_KNOCKBACK, 6,
     HG_KNOCKBACK_SCALING, .25,
 )
-
-// set_num_hitboxes(AT_UTILT,2);
-
-// set_hitbox_value(AT_UTILT, 1, HG_PARENT_HITBOX, 1);
-// set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
-// set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
-// set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 2);
-// set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, -1);
-// set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -40);
-// set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 60);
-// set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 88);
-// set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 2);
-// set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 5);
-// set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 75);
-// set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 6);
-// set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .25);
-// set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 5);
-// set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .35);
-// set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
@@ -84,6 +64,7 @@ easy_hitbox(1,
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {
@@ -212,10 +193,16 @@ easy_hitbox(1,
     var attack_index = variable_instance_get(attack_names_to_indices, attack_name)
     return attack_index
 
-#define get_window_index(window_name) // Version 0
-    var window_names = get_window_names(get_attack_index_from_filename())
-    var index_of_window_name = array_find_index(window_names.a, window_name)
-    return index_of_window_name
+#define get_window_index // Version 0
+    // / get_window_index(window_name, attack_index = attack;)
+        var window_name = argument[0];
+    var attack_index = argument_count > 1 ? argument[1] : attack;;
+        if attack_index == 0 || attack_index == undefined {
+            attack_index = get_attack_index_from_filename()
+        }
+        var window_names = get_window_names(attack_index)
+        var index_of_window_name = array_find_index(window_names.a, window_name)
+        return index_of_window_name
 
 #define get_window_names // Version 0
     // / get_window_names(_attack = attack)
@@ -277,7 +264,9 @@ easy_hitbox(1,
 
 
     // If named charge, set as the default charge window.
-    if _window_name == "charge" {
+    if _window_name == "charge"
+        and string_pos("special", get_script_name()) == 0
+    {
         if get_attack_value(_attack_index, AG_STRONG_CHARGE_WINDOW) == 0 {
             set_attack_value(_attack_index, AG_STRONG_CHARGE_WINDOW, _window_index)
         }
@@ -369,7 +358,6 @@ easy_hitbox(1,
         [AG_LANDING_LAG, 4],
         [AG_HAS_LANDING_LAG, true],
     ]
-
     // Add sprite defaults to special defaults if the default exists
     var sprite_defaults = [
         [AG_SPRITE, get_script_name()],
@@ -495,6 +483,7 @@ easy_hitbox(1,
     }
 
 #define get_ag_window_name_from_index(index) // Version 0
+    // / get_ag_window_name_from_index(window_name, ?attack_index = undefined)
     var index_to_name = array_create(70)
     index_to_name[AG_WINDOW_TYPE] = "AG_WINDOW_TYPE"
     index_to_name[AG_WINDOW_LENGTH] = "AG_WINDOW_LENGTH"

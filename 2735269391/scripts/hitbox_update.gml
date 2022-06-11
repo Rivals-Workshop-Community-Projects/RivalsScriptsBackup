@@ -16,6 +16,7 @@ with (pHitBox) {
 	           window_timer = 0 
 	           vfx = spawn_hit_fx(other.x,other.y,302)
 	           vfx.pause = 6
+	           sound_stop(asset_get("sfx_ice_shatter_big"))
 	           sound_play(asset_get("sfx_ice_shatter_big"))
 	           other.vsp = 4
 	           other.hitbox_timer = 1
@@ -48,12 +49,12 @@ with (pHitBox) {
     if hitcollide != noone && type == 1 && player_id.char_height = 66.66 && attack == AT_FSPECIAL && other.type == 2 && other.attack != AT_FSPECIAL && other.hbox_num != 3 && other.hbox_num != 5 {
     
     	with player_id {
+    		move_cooldown[AT_DTHROW] = 180
     		move_cooldown[AT_NSPECIAL] = 60
     		old_hsp = hsp
     		state_timer = 105
     		hitstop = 10
     		hitpause = true 
-    		take_damage(player,-1,-8)
     	}
     	
     	with other {
@@ -63,7 +64,9 @@ with (pHitBox) {
     	    spawn_hit_fx(x,y + 60,fx_ustrong)
             fx2 = spawn_hit_fx(x,y - 60,fx_ustrong)
             fx2.draw_angle = 180
+            sound_stop(asset_get("sfx_ice_shatter_big"))
             sound_play(asset_get("sfx_ice_shatter_big"))
+            sound_stop(asset_get("sfx_ori_energyhit_medium"))
             sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.4)
             destroyed = true
     	}
@@ -131,6 +134,7 @@ switch attack {
             spawn_hit_fx(x,y + 60,fx_ustrong)
             fx2 = spawn_hit_fx(x,y - 60,fx_ustrong)
             fx2.draw_angle = 180
+            sound_stop(asset_get("sfx_ice_shatter_big"))
             sound_play(asset_get("sfx_ice_shatter_big"))
             hitbox_timer = 999 
      }
@@ -156,7 +160,7 @@ switch attack {
      with player_id {
 		gotballback = collision_circle( x-12, y-12, 5 ,other, true, true ) 
 	    if gotballback != noone && move_cooldown[AT_EXTRA_2] == 0 {
-	        take_damage(player,-1,-8)
+	        sound_stop(asset_get("sfx_ice_shatter_big"))
 	        sound_play(asset_get("sfx_ice_shatter_big"))
 	        other.destroyed = true 
 	    }
@@ -186,7 +190,7 @@ switch attack {
            
             hsp = lengthdir_x(10, angle)
             vsp = lengthdir_y(10, angle)
-      
+            sound_stop(asset_get("sfx_ice_shatter_big"))
             sound_play(asset_get("sfx_ice_shatter_big"))
             
         if hsp > 0 {
@@ -204,6 +208,7 @@ switch attack {
             fx2 = spawn_hit_fx(x,y - 60,fx_ustrong)
             fx2.draw_angle = 180
   destroyed = true 
+  sound_stop(asset_get("sfx_ice_shatter_big"))
    sound_play(asset_get("sfx_ice_shatter_big"))
             sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.2)
   }
@@ -227,6 +232,7 @@ switch attack {
             spawn_hit_fx(x,y + 60,fx_ustrong)
             fx2 = spawn_hit_fx(x,y - 60,fx_ustrong)
             fx2.draw_angle = 180
+            sound_stop(asset_get("sfx_ice_shatter_big"))
             sound_play(asset_get("sfx_ice_shatter_big"))
             hitbox_timer = 999 
         }
@@ -262,7 +268,9 @@ switch attack {
         
         if y > room_height or y < 10 or x > room_width or x < 10 {
             destroyed = true 
+   sound_stop(asset_get("sfx_ice_shatter_big"))         
    sound_play(asset_get("sfx_ice_shatter_big"))
+            sound_stop(asset_get("sfx_ori_energyhit_medium"))
             sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.2)
             
         }

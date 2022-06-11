@@ -51,10 +51,10 @@ set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 0.7);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 304); // shut up gnome
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
-set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy1"));
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy2"));
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 4);
@@ -70,7 +70,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 45);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 9); 
-set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 0.7); 
+set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 0.8); 
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 304); // shut up gnome
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);
-set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy1"));
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy2"));

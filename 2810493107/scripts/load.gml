@@ -30,7 +30,7 @@ sprite_change_offset("pratfall", 200, 225);
 sprite_change_offset("land", 72, 88);//
 sprite_change_offset("landinglag", 72, 88);//
 
-sprite_change_offset("parry", 102, 88);//
+sprite_change_offset("parry", 75, 110);//
 sprite_change_offset("roll_forward", 92, 88);
 sprite_change_offset("roll_backward", 92, 88);
 sprite_change_offset("airdodge", 92, 88);
@@ -77,4 +77,8 @@ sprite_change_offset("s-nsp-a", 205, 190);
 sprite_change_offset("indicator-s", 74, 78);
 sprite_change_offset("indicator-m", 75, 77);
 sprite_change_offset("indicator-l", 76, 74);
+sprite_change_offset("starfx", 50, 70);
+sprite_change_offset("psyfx", 50, 70);
+sprite_change_offset("ghostweakfx", 50, 70);
+sprite_change_offset("ghostfx", 50, 70);
 sprite_change_offset("chevron", 7, 10);

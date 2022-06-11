@@ -89,6 +89,33 @@ if (player_count == 1) {
 	best_player = turn;
 }
 
+// Destroy character articles for players whose turn it isn't
+with (obj_article1) {
+	if (other.turn != get_player_team(player)) {
+		remove_article();
+	}
+}
+with (obj_article2) {
+	if (other.turn != get_player_team(player)) {
+		remove_article();
+	}
+}
+with (obj_article3) {
+	if (other.turn != get_player_team(player)) {
+		remove_article();
+	}
+}
+with (obj_article_solid) {
+	if (other.turn != get_player_team(player)) {
+		remove_article();
+	}
+}
+with (obj_article_platform) {
+	if (other.turn != get_player_team(player)) {
+		remove_article();
+	}
+}
+
 // Use your rival as the sandbag
 for (var i = 1; i <= 5; i++) {
 	if ((i == 5 || is_player_on(i)) && turn != get_player_team(i)) {
@@ -109,6 +136,7 @@ sandbag_idle = 0;
 round_over = false;
 new_record = false;
 distance_tick = 0;
+articles_cleared = false;
 
 // This resets the music so it can play again. music_stop() does not.
 music_play_file("");
@@ -131,32 +159,21 @@ with (pHitBox) {
 	}
 }
 
-// Delete character articles (as safely as possible)
-var blastzone = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) + 1;
+// Destroy character articles
 with (obj_article1) {
-	if (can_be_grounded) {
-		y = blastzone;
-	}
+	remove_article();
 }
 with (obj_article2) {
-	if (can_be_grounded) {
-		y = blastzone;
-	}
+	remove_article();
 }
 with (obj_article3) {
-	if (can_be_grounded) {
-		y = blastzone;
-	}
+	remove_article();
 }
 with (obj_article_solid) {
-	if (can_be_grounded) {
-		y = blastzone;
-	}
+	remove_article();
 }
 with (obj_article_platform) {
-	if (can_be_grounded) {
-		y = blastzone;
-	}
+	remove_article();
 }
 
 // Spawn the player whose turn it is.
@@ -184,6 +201,7 @@ with (oPlayer) {
 	// Reset the player the best we can.
 	clear_status();
 	initial_invince = true;
+	//invince_time = 120;
 	visible = true;
 	set_state(PS_SPAWN);
 
@@ -195,6 +213,8 @@ with (oPlayer) {
 		y = get_marker_y(3);
 		spr_dir = 1;
 	}
+
+	spawn_hacks();
 }
 
 // Spawn a new sandbag
@@ -453,14 +473,14 @@ if (sandbag) {
 
 #define initialize_sandbag
 obj_stage_main.sandbag = self;
-custom_clone = true;
+custom_clone = true; // HACK. Tricks the game into disabling CPU and player control, but we'll have to mitigate other nasty side effects.
 ai_disabled = true;
 x = get_marker_x(1);
 y = get_marker_y(1);
 spr_dir = -1;
 orig_ground_friction = ground_friction;
 clear_buttons();
-enemy_hitboxID = noone;
+last_hbox_num = 0;
 
 
 #define update_sandbag
@@ -485,7 +505,7 @@ with (sandbag) {
 	}
 
 	// Find a kill-smash and amplify it.
-	if (enemy_hitboxID) {
+	if (last_hbox_num) {
 		if (orig_knock >= 15 && get_hitbox_angle(enemy_hitboxID) < 70) {
 			orig_knock *= 3;
 			ground_friction = orig_ground_friction * 0.3333;
@@ -507,12 +527,12 @@ with (sandbag) {
 				hitstop_full += 20;
 			}
 		}
-		enemy_hitboxID = noone;
+		last_hbox_num = 0;
 	}
 
 	// Check the side blast zones.
 	// If they're somehow out here before the barrier's even broken, tough luck.
-	if (x < 0 || x > room_width) {
+	if (x < -other.blast_side || x > room_width + other.blast_side) {
 		if (player != 5) {
 			custom_clone = false;
 		}
@@ -626,9 +646,15 @@ with (sandbag) {
 			} else if (obj_stage_main.recovery_timer++ < 45) {
 				state_timer = -1;
 			} else {
-				// get up and taunt.
+				// All done!
 				ground_friction = orig_ground_friction;
-				set_state(PS_TECH_GROUND);
+				if (player == 5) {
+					// Our sandbert needs to get up first.
+					set_state(PS_TECH_GROUND);
+				} else {
+					// Everyone else go straight into taunt / idle
+					set_state(PS_IDLE);
+				}
 			}
 		} else if (state == PS_IDLE && !taunt_down) {
 			set_attack(AT_TAUNT);
@@ -646,6 +672,35 @@ with (sandbag) {
 // Recalculate current distance
 full_distance = max((sandbag.x - ruler_start + scroll_x) / 32, 0);
 stat_distance = min(full_distance, 9999.9);
+
+if (!articles_cleared && full_distance > 0) {
+	articles_cleared = true;
+	with (obj_article1) {
+		if (remove_while_measuring()) {
+			remove_article();
+		}
+	}
+	with (obj_article2) {
+		if (remove_while_measuring()) {
+			remove_article();
+		}
+	}
+	with (obj_article3) {
+		if (remove_while_measuring()) {
+			remove_article();
+		}
+	}
+	with (obj_article_solid) {
+		if (remove_while_measuring()) {
+			remove_article();
+		}
+	}
+	with (obj_article_platform) {
+		if (remove_while_measuring()) {
+			remove_article();
+		}
+	}
+}
 
 // Play tick sound for distance
 if (full_distance - distance_tick >= 1.0) {
@@ -805,4 +860,51 @@ x = get_marker_x(3 + team_p);
 y = get_marker_y(3 + team_p);
 spr_dir = (team_p > 2 ? -1 : 1);
 
+
+#define spawn_hacks
+// Character-specific spawning support
+switch (url)
+{
+	case "2142662749": // Ru & Zo
+		spawnZo = true;
+		break;
+}
+
+
+#define remove_while_measuring
+// Character-specific articles that need to be removed while measuring
+if (instance_exists(player_id) && player_id.object_index == oPlayer) {
+	switch (player_id.url)
+	{
+		case "2142662749": // Ru & Zo
+			if ("isZo" in self) {
+				return true;
+			}
+			break;
+	}
+}
+return false;
+
+
+#define remove_article
+// Character-specific article support
+if (instance_exists(player_id) && player_id.object_index == oPlayer) {
+	switch (player_id.url)
+	{
+		case "2142662749": // Ru & Zo
+			if ("isZo" in self) {
+				player_id.zoID = undefined;
+				instance_destroy(id);
+				return;
+			}
+			break;
+	}
+}
+
+// Remove character articles (as safely as possible)
+if (can_be_grounded) {
+	y = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) + 1;
+} else if ("state" in self && state == 1) {
+	state = 2;
+}
 

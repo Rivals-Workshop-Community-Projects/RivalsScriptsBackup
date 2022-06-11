@@ -146,7 +146,7 @@ switch(attack){
 
 
 			//MAX CHARGE
-			if state_timer >= 40 && window_timer <=4 {	
+			if state_timer >= 36 && window_timer <=4 {	
 				set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 5);
 				window = 4;
 				window_timer = 0;
@@ -185,7 +185,7 @@ switch(attack){
 			if window_timer ==get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)/2-3{
 				create_hitbox( AT_NSPECIAL, 1, x -40 , y +4);					
 			}
-			move_cooldown[AT_NSPECIAL] = 16;
+			move_cooldown[AT_NSPECIAL] = 18;
 		}
 	
 	break;
@@ -297,27 +297,27 @@ switch(attack){
 					if arrow_cooldown >0 {
 						arrow_cooldown-=1;
 					}
-					if special_down && window_timer ==8 && state_timer <=18{
+					if special_down && window_timer ==8 && state_timer <=14{
 						window_timer =7;
 					}
 				} 
 
-				if absorb == 2 {
+				if absorb == 3 {
 					spawn_hit_fx(x,y-32, 154 );
 					sound_play(asset_get("sfx_forsburn_consume"));
 					set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 9.5);
 					set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 9.5);
-					absorb = 1;
+					absorb = 2;
 				}
 
 				break;
 			case 2: // Movement
 
-					if absorb ==1 {
-						set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED)*1.40); 
-						set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED)*1.40); 
+					if absorb ==2 {
+						set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED)*1.45); 
+						set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED)*1.45); 
 
-						absorb = 0;
+						absorb = 1;
 					}
 				
 				if window_timer == get_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH)-1{
@@ -599,7 +599,7 @@ if attack == AT_NSPECIAL  && window ==2 && window_timer == 5 && !hitpause {
 	spawn_hit_fx(x,y-32, 154 );
 }
 
-if attack == AT_NSPECIAL  && window ==5 && window_timer == 6 && !hitpause {
+if attack == AT_NSPECIAL  && window ==5 && window_timer == 5 && !hitpause {
 	spawn_hit_fx(x,y-32, 154 );
 }
 

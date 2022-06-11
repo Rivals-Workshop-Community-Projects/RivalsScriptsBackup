@@ -261,6 +261,25 @@ with phone{
 	/*initPatch("1.9 [WIP]", "2020-?-? (YMD)");
 	initPatchWords("this patch is wip... copypaste changelog later...");*/
 	
+	//
+	
+	
+	initPatch("2.3", "2022-06-10 (YMD)");
+	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
+	initPatchWords("- hitting the strongs within the fspecial field now shatters the field in a new way, with the field shatter bullets all hitting the opponent. it does 16 extra damage!
+- you can now walljump-cancel uncharged nspecial. idk how much difference this makes, but here it is anyway");
+	
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- removed turnaround thing from dair.")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("are you proud of me muno im still updating munophone changelog
+	open for inputs!");
+	
+	
+	//
+	
+	
 	initPatch("2.2", "2021-10-16 (YMD)");
 	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
 	initPatchWords("- rivals RC support... with custom AIR RIDE controls!?");

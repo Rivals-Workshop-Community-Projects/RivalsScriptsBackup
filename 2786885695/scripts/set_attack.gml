@@ -1,6 +1,6 @@
 //set_attack
 
-if (attack == AT_NSPECIAL && burst_charge < 200)
+if (attack == AT_NSPECIAL && burst_charge < 200 || burst_charge >= 200 && free)
 {
     //teleport check
 	if (instance_exists(artc_marker) && artc_marker.state == 1)
@@ -29,12 +29,24 @@ if (attack == AT_NSPECIAL && burst_charge < 200)
 }
 
 //final smash compatibility
-if ("fs_char_initialized" in self && fs_char_initialized)
+if (burst_charge >= 200 && special_pressed && joy_pad_idle && !free)
 {
-    if (fs_charge >= 200 && special_pressed && joy_pad_idle && !free) fs_force_fs = true;
+	attack = AT_BURST;
+    if ("fs_char_initialized" in self && fs_char_initialized) fs_force_fs = true;
+}
+
+//special dash attack
+if (has_rune("F") && attack == AT_DATTACK)
+{
+	window = 2;
+	window_timer = window_end;
+}
+
+if (attack == AT_TAUNT && vhd_attack)
+{
+	resolve_cur = 0;
+	vhd_effect_time = 0;
 }
 
 //lyre taunt
 //if (taunt_pressed && down_down) attack = AT_TAUNT_2;
-
-//if (taunt_pressed && down_down) attack = AT_BURST;

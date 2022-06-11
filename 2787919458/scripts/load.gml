@@ -1,4 +1,5 @@
 sprite_change_offset("idle", 132/2, 162/2);
+sprite_change_offset("intro", 132/2, 162/2);
 sprite_change_offset("weegee_face", 132/2, 162/2);
 sprite_change_offset("weegee_face_overlay", 132/2, 162/2);
 sprite_change_offset("bighurt", 132/2, 162/2);
@@ -79,11 +80,11 @@ sprite_change_offset("bullet_hud", 16, 16);
 sprite_change_offset("dorito", 90, 100);
 sprite_change_offset("shard", 95, 100);
 
-sprite_change_offset("shrek_door", 132, 162);
-sprite_change_offset("shrek_door_alts", 132, 162);
-sprite_change_offset("shrek", 132, 162);
-sprite_change_offset("shrek_alts", 132, 162);
-sprite_change_offset("shrek_weegee", 132, 162);
+sprite_change_offset("shrek_door", 132, 156);
+sprite_change_offset("shrek_door_alts", 132, 156);
+sprite_change_offset("shrek", 132, 156);
+sprite_change_offset("shrek_alts", 132, 156);
+sprite_change_offset("shrek_weegee", 132, 156);
 sprite_change_offset("datboi_idle", 132, 152);
 sprite_change_offset("datboi_ride", 132, 132);
 sprite_change_offset("datboi_ride_charged", 132, 132);

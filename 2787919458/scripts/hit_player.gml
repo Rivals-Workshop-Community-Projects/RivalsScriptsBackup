@@ -82,6 +82,12 @@ if(my_hitboxID.attack == AT_DATTACK){
         }
     }
 }
+if(my_hitboxID.attack == AT_FSTRONG){
+    if(my_hitboxID.hbox_num == 1){
+        sound_play(asset_get("sfx_blow_heavy2"));
+        shake_camera(6,8)
+    }
+}
 if("should_make_shockwave" in hit_player_obj && hit_player_obj.should_make_shockwave){
     sound_play(sound_get("hit_marker"));
     var fx = spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-30,fx_marker)fx.depth = depth -4;

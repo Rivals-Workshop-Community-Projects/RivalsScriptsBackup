@@ -37,7 +37,7 @@ switch(attack){
 			if(window_timer == 8){
 				airhorn_sfx = sound_play(sound_get("dorito_bag"));
 			}
-			if(window_timer >= 4 && window_timer <= 9){
+			if(window_timer >= 4 && window_timer <= 14){
 				var horizontal = right_down - left_down;
 				if(horizontal != 0){
 					spr_dir = horizontal;
@@ -112,7 +112,7 @@ switch(attack){
 				if(!dspec_stall && window_timer == 1){
 					vsp = -4;
 				}
-				if(window_timer >= 4 && window_timer <= 9){
+				if(window_timer >= 4 && window_timer <= 14){
 					var horizontal = right_down - left_down;
 					if(horizontal != 0){
 						spr_dir = horizontal;
@@ -289,7 +289,7 @@ switch(attack){
 			if(window_timer == phone_window_end && !was_parried){
 				if(!instance_exists(shrek_door)){
 					charged_summon = strong_charge >= 30;
-					shrek_door = create_hitbox(AT_FSTRONG, 1, x+54*spr_dir, y);
+					shrek_door = create_hitbox(AT_FSTRONG, 1, x+54*spr_dir, y-6);
 				}				
 			}
 		}
@@ -436,7 +436,7 @@ switch(attack){
 	            Grab(-90,0,3,3,grab_target,grabbed_Proj)  
 	        }
 	        vsp = min(vsp,1)
-			if(window_timer >= 6 && window_timer < 9){
+			if(window_timer >= 6 && window_timer < 14){
 				var horizontal = right_down - left_down;
 				if(horizontal != 0){
 					spr_dir = horizontal;

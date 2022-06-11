@@ -13,7 +13,7 @@ easy_window("active",
     AG_WINDOW_LENGTH, 8,
 )
 easy_window("recovery",
-    AG_WINDOW_LENGTH, 13,
+    AG_WINDOW_LENGTH, 13, 
 )
 
 easy_hitbox(1,
@@ -77,6 +77,7 @@ easy_hitbox(1,
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {

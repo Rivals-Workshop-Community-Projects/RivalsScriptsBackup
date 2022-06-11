@@ -2,6 +2,11 @@
 
 //draw_debug_text(x, y, "variable = " + string(variable));
 
+//draw_debug_text(x, y, "stamina = " + string(cur_stamina) + " / " + string(max_stamina));
+//draw_debug_text(x, y+16, "wind_glider_toggle = " + string(wind_glider_toggle));
+//draw_debug_text(x, y+32, "wind_glider_delay_open = " + string(wind_glider_delay_open));
+
+
 //var surface_left = get_stage_data(SD_X_POS);
 //var surface_right = room_width - get_stage_data(SD_X_POS);
 //var surface_top = get_stage_data(SD_Y_POS);
@@ -117,6 +122,28 @@
     //    draw_debug_text(x, y+32, "offscreen (x,y) = " + string(artc_marker.offscreen_x_pos) + "," + string(artc_marker.offscreen_y_pos));
     //}
 
+}
+
+
+
+//vision hunt decree
+if (vhd_effect)
+{
+    draw_debug_text(
+        floor(view_get_xview()+144-get_match_setting(SET_TEAMS)*16),
+        floor(view_get_yview()+80),
+        get_match_setting(SET_TEAMS) ?
+        "The Vision Hunt Decree is in force. Exept for Player " + string(player) + "'s team, characters cannot use special moves..." :
+        "The Vision Hunt Decree is in force. Exept for Player " + string(player) + ", characters cannot use special moves..."
+    );
+    //it's supposed to put up the player's tagname, so people know who is immune, but i can't do that
+
+    with (oPlayer) if (player != other.player && get_player_team(other.player) != get_player_team(player)) with (other)
+    {
+        shader_start();
+        draw_sprite_ext(sprite_get("fx_runeO_disable"), get_gameplay_time()*0.2, other.x, other.y - other.char_height - 72, 2, 2, 0, c_white, 1);
+        shader_end();
+    }
 }
 
 

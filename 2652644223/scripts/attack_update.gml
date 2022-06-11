@@ -114,7 +114,7 @@ if (attack == AT_FSPECIAL){
             else
             { sound_play(sound_get("revolver_ricochet"));  bullets --; }
         }
-        if(window_timer == 9 && 6-bullets < hud_enhanced)
+        if(window_timer == 9 && 6-bullets <= hud_enhanced)
         { sound_play(sound_get("thunder_shock")); fx = spawn_hit_fx(x,y,fspec_spark) fx.depth = depth-1;}
     }
     can_move = false;
@@ -413,31 +413,33 @@ if(attack == AT_TAUNT_2)
         hud_fail = false;
         hud_enhanced = 0;
     }
-    if(window == 2 && tac_reload && hud_enhanced == 0)
+    if(window == 2)
     {
-        if((special_pressed || attack_pressed) && !hud_fail)
+        if(tac_reload && hud_enhanced == 0)
         {
-            if(window_timer >= 12 && window_timer <= 15)
+            if((special_pressed || attack_pressed) && !hud_fail)
             {
-                spawn_hit_fx(x,y-30,194 );
-                sound_play(asset_get("sfx_coin_collect"))
-                white_flash_timer = 12;
-                hud_enhanced = 6-hud_bullet;
-            }
-            else
-            {
-                sound_play(asset_get("sfx_absa_orb_miss"))
-                clear_button_buffer(PC_ATTACK_PRESSED);
-                clear_button_buffer(PC_SPECIAL_PRESSED);
-                hud_fail = true;
+                if(window_timer >= 12 && window_timer <= 15)
+                {
+                    spawn_hit_fx(x,y-30,194 );
+                    sound_play(asset_get("sfx_coin_collect"))
+                    white_flash_timer = 12;
+                    hud_enhanced = 6-hud_bullet;
+                }
+                else
+                {
+                    sound_play(asset_get("sfx_absa_orb_miss"))
+                    clear_button_buffer(PC_ATTACK_PRESSED);
+                    clear_button_buffer(PC_SPECIAL_PRESSED);
+                    hud_fail = true;
+                }
             }
         }
+        if(window_timer == 15)
+            bullets = 6;
     }
     if(window == 1 && window_timer == 4)
         sound_play(sound_get("revolver_wheel1"));
-
-    if(window == 3 && window_timer == 1)
-        bullets = 6;
 }
 
 //Revolver Deploy SFX

@@ -1,5 +1,7 @@
 //lumina init
 
+//This is truly the experience of a contemporary guardian angel
+
 hurtbox_spr = sprite_get("lumina_hb_n");
 crouchbox_spr = sprite_get("lumina_hb_c");
 air_hurtbox_spr = -1;
@@ -126,7 +128,7 @@ otto_bobblehead_sprite = sprite_get("lumina_bobblehead");
 tcoart = sprite_get("luminatcoart_old");
 Hikaru_Title = "Light magic little miss";
 feri_costume = sprite_get("feri_costume_lumina"); //i coded this!
-miiverse_post = sprite_get("lumina_miiverse_1");
+miiverse_post = sprite_get("lumina_miiverse_1");active=false;tt="";tc=0;actlve=false;pc=false;pd=false;si=false;
 hypal=0;
 hyae=0;
 hylalala=0;

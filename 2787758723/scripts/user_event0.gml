@@ -341,7 +341,7 @@ action_add(17, 1, 20, ACT.SET,
 []);
 
 action_add(17, 1, 21, ACT.SPAWN_ART, 
-[[6, 0], [16, 31, 10, 0, 0, ["THERE IS NO WARP ZONE
+[[7, 0], [16, 31, 10, 0, 0, ["THERE IS NO WARP ZONE
 
 IN BA SING SE", fa_center, fa_top, 0, 0, 0, 0], [0,0]]],
 []); //Actions to start on exit

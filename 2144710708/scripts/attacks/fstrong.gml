@@ -1,6 +1,6 @@
 set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 set_attack_value(AT_FSTRONG, AG_CATEGORY, 0);
-set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 7);
+set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FSTRONG, AG_OFF_LEDGE, 0);
 set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
@@ -29,20 +29,11 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 // endlag
-set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 3);
-set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 21);
+set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1); // mmm
 
-set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_FSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
-
-set_window_value(AT_FSTRONG, 7, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FSTRONG, 7, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_FSTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_FSTRONG, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSTRONG,1);
 

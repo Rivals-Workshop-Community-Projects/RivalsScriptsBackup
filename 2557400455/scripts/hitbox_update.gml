@@ -55,7 +55,9 @@ if attack == AT_USPECIAL{
 		shake_camera (4,8)
 	   spawn_hit_fx (x , y - 10 , 253)
 	    spawn_hit_fx (x , y - 10 , 204)
+	    sound_stop(sound_get("exp1")); 
 	    sound_play(sound_get("exp1")); 
+	   sound_stop(asset_get("sfx_abyss_explosion")); 
 	   sound_play(asset_get("sfx_abyss_explosion")); 
 	    player_id.move_cooldown[AT_USPECIAL] = 999
 	    vsp = -4

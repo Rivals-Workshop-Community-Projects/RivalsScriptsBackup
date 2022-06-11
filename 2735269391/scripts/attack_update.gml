@@ -182,18 +182,19 @@ switch attack {
 		invince_time = 1 
 	}
 	
+
 	if (has_hit or state_timer >= 100) && state_cat != SC_HITSTUN && !hitpause && window != 4{
 		move_cooldown[AT_FSPECIAL] = 30
 		destroy_hitboxes();
 		djumps = 0
 	if state_timer < 100 {	
-	hsp = 9*spr_dir	
-    vsp = -6
+	hsp = 3*spr_dir	
+    vsp = -4
     window = 4
     window_timer = 1 
 	} else {
 	hsp = 3*spr_dir	
-    vsp = -6
+    vsp = -4
     window = 4
     window_timer = 1 	
 	}
@@ -425,12 +426,10 @@ switch attack {
        	if move_cooldown[AT_EXTRA_1] == 0 {
        		
        	if state_timer < 100 {
-       		take_damage(player,-1,8)
        		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.2)
        		create_hitbox(AT_NSPECIAL,1,x + 10*spr_dir,y - 30)
        		
        	} else {
-       		take_damage(player,-1,8)
        		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.1)
        		create_hitbox(AT_NSPECIAL,2,x + 10*spr_dir,y - 30)
        	}

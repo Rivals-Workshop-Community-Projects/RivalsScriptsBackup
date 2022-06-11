@@ -10,7 +10,6 @@ if (attack == AT_DTILT && hbox_num == 2){
     }
 }
 if (attack == AT_NSPECIAL){
-	CalCanSnack = true;
 	MattCanGrab = true;
 	MorshuCanGrab = true;
 	just_landed = false;
@@ -31,6 +30,9 @@ if (attack == AT_NSPECIAL){
 	just_hit = false;
 	if(hbox_num != 1){
 		spr_dir = -1;
+		CalCanSnack = true;
+	}else{
+		CalCanSnack = 2;
 	}
 	with(asset_get("pHitBox")){
 		if(place_meeting(x,y,other)){
@@ -128,6 +130,7 @@ if(attack == AT_DSTRONG){
 			damage = 11;
 			kb_scale = 1;
 		}
+		CalCanSnack = 2;
 		MattCanGrab = true;
 		MorshuCanGrab = true;		
 		switch(get_player_color(player)){
@@ -168,11 +171,13 @@ if(attack == AT_DATTACK){
 	launched = 0;
 	can_hit_self = true;
 	UnReflectable = true;
+	reflect_type = 0;
+	reflect_target = noone;	
 }
 if(attack == AT_DSPECIAL){
 	if(hbox_num == 1){
 		UnReflectable = true;
-		CalCanSnack = false;
+		CalCanSnack = true;
 		MattCanGrab = false;
 		MorshuCanGrab = false;	
 		image_xscale = 8;

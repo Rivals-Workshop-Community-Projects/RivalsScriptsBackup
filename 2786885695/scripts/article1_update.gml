@@ -1,6 +1,6 @@
 //article1_update - lightning stilleto
 
-depth = player_id.depth-2;
+depth = (player_id.stilleto_id != noone) ? player_id.stilleto_id.depth-2 : player_id.depth-2;
 state_timer ++;
 mask_index = sprite_get("artc_nspec_mask");
 
@@ -16,7 +16,7 @@ switch (state)
         if (state_timer == 2)
         {
             var electro_timer = spawn_hit_fx(x-1*-player_id.spr_dir+1, y, player_id.fx_nspec_cursorspawn);
-            electro_timer.depth = -10;
+            electro_timer.depth = depth-1;
         }
 
         if (player_id.shield_pressed || player_id.state_cat == SC_HITSTUN ||
@@ -34,7 +34,7 @@ switch (state)
             if (artc_marker.state_timer == 2) if (stilleto_id == noone)
             {
                 var fx_spawn = spawn_hit_fx(artc_marker.x-1*-spr_dir+1, artc_marker.y, fx_nspec_marker_spawn);
-                fx_spawn.depth = -10;
+                fx_spawn.depth = other.depth-1;
             }
 
             //cooldown
@@ -73,7 +73,7 @@ switch (state)
     	    var aura = spawn_hit_fx(x, y, player_id.fx_electro_aura);
     	    aura.draw_angle = aura_angle;
     	    aura.spr_dir = aura_dir;
-            aura.depth = -5;
+            aura.depth = depth+1;
         }
 
         if (play_anim)
@@ -88,13 +88,13 @@ switch (state)
         }
 
         //if keqing hits the article with F-spec, she makes the marker explode and bounces off it
-        if (instance_place(x, y, pHitBox))
+        if (place_meeting(x, y, pHitBox))
         {
             with (pHitBox)
             {
-                if (attack == AT_FSPECIAL) if (variable_instance_exists(player_id, "artc_marker"))
+                if (player_id.attack == AT_FSPECIAL) if (variable_instance_exists(player_id, "artc_marker"))
                 {
-                    if (instance_place(x, y, player_id.artc_marker) && player_id.artc_marker.state == 1 && player_id.stilleto_id == noone)
+                    if (place_meeting(x, y, other) && player_id.artc_marker.state == 1 && player_id.stilleto_id == noone)
                     {
                         player_id.artc_marker.state = 2;
                         player_id.artc_marker.state_timer = 0;
@@ -115,7 +115,7 @@ switch (state)
 
             //despawn spark
             var fx_nspec_marker_despawn = spawn_hit_fx(x, y, player_id.fx_nspec_marker_despawn);
-            fx_nspec_marker_despawn.depth = -9;
+            fx_nspec_marker_despawn.depth = depth-1;
             sound_play(asset_get("sfx_absa_jab1"));
 
             instance_destroy();

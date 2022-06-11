@@ -4,7 +4,7 @@ set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("nair"));
 set_attack_value(atk, AG_NUM_WINDOWS, 5);
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
-set_attack_value(atk, AG_LANDING_LAG, 10); //5
+set_attack_value(atk, AG_LANDING_LAG, 6); //10
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 window_num = 1; //windup

@@ -296,6 +296,37 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.9", "23rd May, 2022");
+initHeader("Buffs");
+initSection("- Added 6 new screams
+- Gave NSpecial, DSpecial and BAir 5 more frames where you can turn around
+- Made Sniper properly last for 2 frames");
+
+initHeader("Nerfs");
+initSection("- Made jab 1 and 2 have more endlag
+- Made Dorito have less bkb when falling 5 > 4
+- Made Dat Boi's refresh timer for hitting slower so he chains less
+- Gave Dorito a slight cooldown when it breaks
+- BAir slam hitbox kbs .7 > .6
+- Made Shrek and Dat Boi's falling hitboxes way smaller and more accurate to visual");
+
+initHeader("Fixes / Other Changes");
+initSection("- Made sniper unbashable by Ori
+- Made sniper unreflectable
+- Made sniper transcendent
+- Made sniper ignore Clairen's shield
+- Made sniper have proper parry stun
+- Dat Boi can now be snacced by Matty
+- Sniper can now be snacced by Matty
+- Dorito will now be launched when snacced by Matty
+- Fixed an issue where Dorito would sometimes lose health when grabbed/bouncing
+- Made the feet on platform not draw if Sanic is taunting
+- Boosted the volume of the gunga and train horn hurt sounds
+- Slightly cleaned up some code here and there
+- Fixed some issues with sniper and players/walls/ground
+- Shrek's falling hitbox now has extra shake and better hit sfx to add more impact
+- Updated Springs reflect code to hopefully reduce desyncs online");
+
 initPatch("1.8", "9th May, 2022");
 initHeader("Buffs");
 initSection("- Made DSpecial's multihits angle 30 so it'll connect more reliably

@@ -19,15 +19,15 @@ easy_window("recovery",
 easy_hitbox(1,
     HG_LIFETIME, 6, 
     HG_HITBOX_X, 0,
-    HG_HITBOX_Y, -40,
+    HG_HITBOX_Y, -45,
     HG_WIDTH, 85,
-    HG_HEIGHT, 120,
+    HG_HEIGHT, 100,
     HG_DAMAGE, 11,
     HG_ANGLE, 90,
     HG_BASE_KNOCKBACK, 6,
     HG_KNOCKBACK_SCALING, 1.25,
     HG_BASE_HITPAUSE, 8,
-    HG_HIT_SFX, asset_get(SFX_BLOW_HEAVY2),
+    HG_HIT_SFX, asset_get(SFX_BLOW_HEAVY2), 
 )
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
@@ -69,6 +69,7 @@ easy_hitbox(1,
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {
@@ -198,9 +199,12 @@ easy_hitbox(1,
     return attack_index
 
 #define get_window_index // Version 0
-    // / get_window_index(window_name, attack_index = get_attack_index_from_filename()))
+    // / get_window_index(window_name, attack_index = attack;)
         var window_name = argument[0];
-    var attack_index = argument_count > 1 ? argument[1] : get_attack_index_from_filename();
+    var attack_index = argument_count > 1 ? argument[1] : attack;;
+        if attack_index == 0 || attack_index == undefined {
+            attack_index = get_attack_index_from_filename()
+        }
         var window_names = get_window_names(attack_index)
         var index_of_window_name = array_find_index(window_names.a, window_name)
         return index_of_window_name

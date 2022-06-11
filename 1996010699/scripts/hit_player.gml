@@ -47,11 +47,17 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 }
 
 //toothpaste unlock
-/*
-if(item[16, 3] == 0 && item[16, 7] == false && my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num >= 2 && (get_player_damage(hit_player_obj.player) - (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_DAMAGE)) <= 32)){
+
+if(has_rune("I") && item[16, 3] == 0 && item[16, 7] == false && my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num >= 2 && (get_player_damage(hit_player_obj.player) - (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_DAMAGE)) <= 32)){
 	achieveUnlock(16);
 }
-*/
+
+if(my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num == 4){
+	if(y == hit_player_obj.y){
+		can_hit = false;
+	}
+}
+
 
 if(item[11,3] == 1){
 	if(my_hitboxID.attack==AT_UTILT && my_hitboxID.hbox_num < 4 && my_hitboxID.hbox_num > 1){

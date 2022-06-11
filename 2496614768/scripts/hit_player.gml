@@ -3,6 +3,16 @@
 canceltime = 0
 
 
+if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 4 && !down_down {
+	old_vsp = -10
+	set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 8);
+	move_cooldown[AT_DAIR] = 20 + floor(hitstop)
+}
+
+if my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num == 1 && !down_down {
+	old_vsp -= 2
+}
+
 if !timebreak {
 if my_hitboxID.damage >= 2 {
 shock += 1

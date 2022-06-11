@@ -7,7 +7,7 @@ easy_window("startup",
     AG_WINDOW_VSPEED, -2,
     AG_WINDOW_SFX,  asset_get("sfx_swipe_heavy1"),
     AG_WINDOW_SFX_FRAME, 8,
-)
+) 
 
 easy_window("active", 
     AG_WINDOW_LENGTH, 8,
@@ -96,6 +96,7 @@ easy_hitbox(2,
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {

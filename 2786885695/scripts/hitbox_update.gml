@@ -19,7 +19,7 @@ if (attack == AT_NSPECIAL && hbox_num == 2)
     }
 
     //if the projectile didn't hit, spawn the stilleto
-    if (hitbox_timer == length || length == -1)
+    if (hitbox_timer == length || length == -1 || self == oPlayer.bashed_proj)
     {
         if (!instance_exists(player_id.artc_marker))
         {

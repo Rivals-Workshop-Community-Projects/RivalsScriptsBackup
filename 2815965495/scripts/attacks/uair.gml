@@ -36,7 +36,7 @@ set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 4); // 5
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6.5);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .4); // 2
-set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 ;

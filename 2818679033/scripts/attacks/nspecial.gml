@@ -24,7 +24,7 @@ easy_hitbox(1,
     HG_LIFETIME, 360,
     HG_PROJECTILE_HSPEED, 0, //manually overriden in attack update
     HG_HITBOX_X, 32,
-    HG_WIDTH, 37,
+    HG_WIDTH, 37, 
     HG_HEIGHT, 37,
     HG_PRIORITY, 3,
     HG_DAMAGE, 3,
@@ -85,6 +85,7 @@ easy_hitbox(1,
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {

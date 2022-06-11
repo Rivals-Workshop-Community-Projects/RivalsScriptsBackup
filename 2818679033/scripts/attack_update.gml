@@ -52,7 +52,7 @@ if (attack == AT_FSPECIAL){
             vsp = -8
             fspec_hitbox = create_hitbox(attack, 1, x, y)
         }
-        var FULL_CHARGE = 60
+        var FULL_CHARGE = 50
         hsp = spr_dir * floor(ease_linear(2, 16, window_timer, FULL_CHARGE))
         if(instance_exists(fspec_hitbox)) {
             fspec_hitbox.damage = floor(ease_linear(4, 16, window_timer, FULL_CHARGE))
@@ -61,7 +61,7 @@ if (attack == AT_FSPECIAL){
             fspec_hitbox.hitpause = floor(ease_linear(3, 10, window_timer, FULL_CHARGE))
             if window_timer < 15 {
                 fspec_hitbox.sound_effect = asset_get(SFX_BLOW_WEAK2)
-            } else if window_timer < 35 {
+            } else if window_timer < 30 {
                 fspec_hitbox.sound_effect = asset_get(SFX_BLOW_MEDIUM2)
             } else {
                 fspec_hitbox.sound_effect = asset_get(SFX_BLOW_HEAVY2)
@@ -163,13 +163,19 @@ if (attack == AT_DSPECIAL){
             }
         }
     }
-    if spawn_lots_of_stars and  window == get_window_index("land") {
+    if spawn_lots_of_stars and window == get_window_index("land") {
         if window_time_is(1) {
             var projectile = create_hitbox(AT_NSPECIAL, 1, x, y-10)
             projectile.hsp = 0
             projectile.vsp = -1.5;
         }
     }
+    if window == get_window_index("sit") {
+        if window_timer >= 14 {
+            state = PS_IDLE
+        }
+    }
+    
     if (window >= get_window_index("land")){
         move_cooldown[AT_DSPECIAL] = 30;
     }

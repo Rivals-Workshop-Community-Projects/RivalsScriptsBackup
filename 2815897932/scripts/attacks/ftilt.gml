@@ -68,7 +68,7 @@ set_window_value(AT_FTILT, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FTILT, 6, AG_WINDOW_CUSTOM_AIR_FRICTION, .2);
 set_window_value(AT_FTILT, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, .2);
 set_window_value(AT_FTILT, 6, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(AT_FTILT, 6, AG_WINDOW_CANCEL_FRAME, 1);
+set_window_value(AT_FTILT, 6, AG_WINDOW_CANCEL_FRAME, 3);
 
 set_window_value(AT_FTILT, 7, AG_WINDOW_TYPE, 3);
 set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, 6);

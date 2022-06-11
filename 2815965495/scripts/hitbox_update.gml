@@ -12,10 +12,12 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			image_index=0;
 		}
 	}
-	if hitbox_timer <=30{
+	if hitbox_timer <=45{
 		transcendent=true;
+		sprite_index = sprite_get("nspecial_smoke2");
 	} else{
 		transcendent = false;
+		sprite_index = sprite_get("nspecial_smoke");
 	}
 	//proj_angle = 90*smoke_num;
 
@@ -35,8 +37,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 					if attack == AT_USPECIAL  && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window == 1 && special_down{
 						if abs(x - (other.x ))<=52{
 							if abs(other.y - (y - 32))<=52{
-								if absorb == 0 {absorb = 2; }
-								other.destroyed = true;								
+								if absorb == 0 {absorb = 3; other.destroyed = true;}							
 							}
 						}
 					}

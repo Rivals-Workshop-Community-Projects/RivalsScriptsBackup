@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 2, 30, 37 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 21 );
+set_num_palettes( 22 );
 
 // borc
 set_color_profile_slot( 1, 0, 59, 73, 135 ); //CASE
@@ -163,3 +163,10 @@ set_color_profile_slot( 20, 1, 113, 48, 21 ); //SHADOW
 set_color_profile_slot( 20, 2, 150, 156, 145 ); //WHEELS
 set_color_profile_slot( 20, 3, 200, 207, 192 ); //CHEST
 set_color_profile_slot( 20, 4, 58, 210, 228 ); //CRYSTAL
+
+// pepto
+set_color_profile_slot( 21, 0, 255, 147, 240 ); //CASE
+set_color_profile_slot( 21, 1, 129, 74, 181 ); //SHADOW
+set_color_profile_slot( 21, 2, 160, 223, 255 ); //WHEELS
+set_color_profile_slot( 21, 3, 255, 255, 255 ); //CHEST
+set_color_profile_slot( 21, 4, 58, 210, 228 ); //CRYSTAL

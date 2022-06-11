@@ -62,7 +62,11 @@ if wearing_hat {
 		break;
 	}
 }
-
+/*
+if wearing_hat_blu {
+	draw_sprite_ext(sprite_get("festivehat_blu_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+}
+*/
 // fspecial outer circle code
 if (attack == AT_FSPECIAL) {
 	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {

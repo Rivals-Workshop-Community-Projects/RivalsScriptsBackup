@@ -4,7 +4,7 @@ easy_attack(
 )
 
 easy_window("startup",
-    AG_WINDOW_LENGTH, 3,
+    AG_WINDOW_LENGTH, 3, 
 )
 
 easy_window("active",
@@ -157,6 +157,7 @@ easy_window("recovery",
         [HG_KNOCKBACK_SCALING, 0.35],
         [HG_BASE_HITPAUSE, 6],
         [HG_HITPAUSE_SCALING, 0.25],
+        [HG_SDI_MULTIPLIER, 1], // Because manually setting to 0 reroutes to -1 internally. Jeez.
     ]
 
     if assignments[HG_PROJECTILE_SPRITE] != undefined {
@@ -286,9 +287,12 @@ easy_window("recovery",
     return attack_index
 
 #define get_window_index // Version 0
-    // / get_window_index(window_name, attack_index = get_attack_index_from_filename())))
+    // / get_window_index(window_name, attack_index = attack;)
         var window_name = argument[0];
-    var attack_index = argument_count > 1 ? argument[1] : get_attack_index_from_filename();
+    var attack_index = argument_count > 1 ? argument[1] : attack;;
+        if attack_index == 0 || attack_index == undefined {
+            attack_index = get_attack_index_from_filename()
+        }
         var window_names = get_window_names(attack_index)
         var index_of_window_name = array_find_index(window_names.a, window_name)
         return index_of_window_name
