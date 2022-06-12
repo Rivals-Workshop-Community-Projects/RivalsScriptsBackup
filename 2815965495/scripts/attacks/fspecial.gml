@@ -49,7 +49,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
-//set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 0.8);
+set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 1.2);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
@@ -69,7 +69,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 2);
-//set_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER, 0.8);
+set_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER, 1.2);
 
 
 

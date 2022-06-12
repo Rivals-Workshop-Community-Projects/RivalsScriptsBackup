@@ -222,13 +222,13 @@ switch(attack){
 				}		
 				//Movement
 				if (!joy_pad_idle){
-					hsp += lengthdir_x(1.25, joy_dir);
-					vsp += lengthdir_y(1.25, joy_dir);
+					hsp += lengthdir_x(1.2, joy_dir);
+					vsp += lengthdir_y(1.2, joy_dir);
 				} else {
 					hsp *= .8;
 					vsp *= .6;
 				}
-				hsp = clamp(hsp, -3.25,3.25);
+				hsp = clamp(hsp, -3.2,3.2);
 				vsp = clamp(vsp, -2,2);
 				//Snap to ledge
 				if (place_meeting(x + hsp, y , asset_get("par_block")) && free){
