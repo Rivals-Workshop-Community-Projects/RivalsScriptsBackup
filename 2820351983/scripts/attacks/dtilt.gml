@@ -1,90 +1,108 @@
-easy_attack(
-    AG_CATEGORY, ATTACK_CATEGORY_GROUND_OR_AIR,
-    AG_OFF_LEDGE, true,
-)
-
-easy_window("jump",
-    AG_WINDOW_TYPE, WINDOW_TYPE_SKIP_ON_GROUND,
-    AG_WINDOW_LENGTH, 1,
-    AG_WINDOW_VSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK,
-    AG_WINDOW_VSPEED, -12,
-    AG_WINDOW_SFX, asset_get(SFX_KRAGG_ROLL_END),
-)
-
-
-
 easy_window("startup",
-    AG_WINDOW_LENGTH, 9,
+    AG_WINDOW_LENGTH, 4,
 )
 
-
-easy_window("freeze",
-    AG_WINDOW_LENGTH, 8,
-    AG_WINDOW_VSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK,
-    // AG_WINDOW_HSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK,
-    AG_WINDOW_SFX, asset_get(SFX_SWIPE_HEAVY2),
-    AG_WINDOW_SFX_FRAME, 6,
-)
 
 easy_window("active",
-    AG_WINDOW_LENGTH, 120,
-    AG_WINDOW_VSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK,
-    AG_WINDOW_VSPEED, 19,
-    // AG_WINDOW_HSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK
-)
+    AG_WINDOW_LENGTH, 4,
+    AG_WINDOW_SFX, asset_get(SFX_SWIPE_WEAK1),
+) 
 
-easy_window("land",
-    AG_WINDOW_LENGTH, 11,
-    AG_WINDOW_SFX, asset_get(SFX_BLOW_HEAVY1),
-)
+easy_hitbox(1,
+    HG_HITBOX_Y, -10,
+    HG_HITBOX_X, 50,
+    HG_HEIGHT, 20,
+    HG_WIDTH, 70,
 
-easy_window("sit", // Cut off to idle in attack_update
-    AG_WINDOW_LENGTH, 11, 
-    AG_WINDOW_SFX, asset_get(SFX_KRAGG_ROCK_PULL),
-    AG_WINDOW_SFX_FRAME, 6,
-    AG_WINDOW_TYPE, WINDOW_TYPE_PRATFALL,
-)
-
-easy_window("bounce",
-    AG_WINDOW_LENGTH, 7,
-    AG_WINDOW_SFX, asset_get(SFX_KRAGG_ROCK_PULL),
-)
-
-easy_window("bounce_air",
-    AG_WINDOW_LENGTH, 12,
-    AG_WINDOW_VSPEED, -6,
-)
-
-
-easy_hitbox(1, 
-    HG_LIFETIME, 120,
-    HG_HITBOX_X, 1,
-    HG_HITBOX_Y, -21,
-    HG_WIDTH, 52,
-    HG_HEIGHT, 35,
+    HG_DAMAGE, 12,
+    HG_ANGLE, 90, 
+    HG_BASE_KNOCKBACK, 8,
+    HG_KNOCKBACK_SCALING, 0,
+    // HG_TECHABLE, HITBOX_TECHABLE_NO_TECH,
+    HG_HIT_SFX, asset_get(SFX_WAR_HORN),  
     
-    HG_DAMAGE, 9,
-    HG_ANGLE, 90,
-    HG_BASE_KNOCKBACK, 8, 
-    HG_KNOCKBACK_SCALING, .95,
-    HG_BASE_HITPAUSE, 7,
-    HG_HITPAUSE_SCALING, .65,
-    HG_EXTRA_HITPAUSE, 4,
-    HG_VISUAL_EFFECT, 192,
-    HG_HIT_SFX, asset_get(SFX_BLOW_HEAVY2),
-    HG_HIT_LOCKOUT, 10,
 )
+
+easy_window("recovery",
+    AG_WINDOW_LENGTH, 20,
+)
+
+// set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt"));
+// set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 4);
+// set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
+
+// set_window_value(AT_DTILT, 1, AG_WINDOW_TYPE, 1);
+// set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
+// set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
+// set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
+// set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("thanks_anguish"));
+// set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 5);
+// set_window_value(AT_DTILT, 1, AG_WINDOW_HSPEED, -4);
+
+// set_window_value(AT_DTILT, 2, AG_WINDOW_TYPE, 1);
+// set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 3);
+// set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
+// set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+// set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED, 7);
+// set_window_value(AT_DTILT, 2, AG_WINDOW_HSPEED_TYPE, 1);
+
+// set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 1);
+// set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 9);
+// set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
+// set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+// set_window_value(AT_DTILT, 3, AG_WINDOW_HSPEED, 6);
+// set_window_value(AT_DTILT, 3, AG_WINDOW_HSPEED_TYPE, 1);
+
+// set_window_value(AT_DTILT, 4, AG_WINDOW_TYPE, 1);
+// set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 10);
+// set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
+// set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
+// set_window_value(AT_DTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 6);
+
+// set_num_hitboxes(AT_DTILT,2);
+
+// set_hitbox_value(AT_DTILT, 1, HG_HITBOX_TYPE, 1);
+// set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
+// set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 3);
+// set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 23);
+// set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, -9);
+// set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 62);
+// set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 20);
+// set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 1);
+// set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 1);
+// set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 6);
+// set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 65); 
+// set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 7);
+// set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .3);
+// set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 7);
+// set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .3);
+// set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 20);
+// set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 15);
+// set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+
+// set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
+// set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 3);
+// set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 9);
+// set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, 20);
+// set_hitbox_value(AT_DTILT, 2, HG_HITBOX_Y, -8);
+// set_hitbox_value(AT_DTILT, 2, HG_WIDTH, 52);
+// set_hitbox_value(AT_DTILT, 2, HG_HEIGHT, 20);
+// set_hitbox_value(AT_DTILT, 2, HG_SHAPE, 1);
+// set_hitbox_value(AT_DTILT, 2, HG_PRIORITY, 1);
+// set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 4);
+// set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 65);
+// set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 6);
+// set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, .2);
+// set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 6);
+// set_hitbox_value(AT_DTILT, 2, HG_HITPAUSE_SCALING, .2);
+// set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 20);
+// set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, 15);
+// set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
 // Write NO-INJECT in a comment above this area to disable injection.
-#macro ATTACK_CATEGORY_GROUND_OR_AIR 2
-
-#macro WINDOW_TYPE_PRATFALL 7
-
-#macro WINDOW_TYPE_SKIP_ON_GROUND 8
-
-#macro WINDOW_SPEED_TYPE_LOCK 1
+#macro HITBOX_TECHABLE_NO_TECH 1
 
 #define easy_hitbox // Version 0
     // / easy_hitbox(_hitbox_index, ...)
@@ -290,73 +308,6 @@ easy_hitbox(1,
     }
     prints("ERROR: Couldn't find an owning player for object with index", object_index)
 
-#define easy_attack // Version 0
-    // This is called automatically by easy_window if it hadn't been already.
-    var _attack_index = get_attack_index_from_filename()
-    variable_instance_set(self, "easy_attack_called_"+get_script_name(), true)
-
-    var assignments = array_create(100, undefined)
-    for(var i=0; i<=argument_count-1; i+=2) {
-        var _var_index = argument[i]
-        var _value = argument[i+1]
-        assignments[_var_index] = _value
-    }
-
-    // Special Defaults
-    var special_defaults = [
-        [AG_CATEGORY, get_default_ag_category()],
-        [AG_LANDING_LAG, 4],
-        [AG_HAS_LANDING_LAG, true],
-    ]
-    // Add sprite defaults to special defaults if the default exists
-    var sprite_defaults = [
-        [AG_SPRITE, get_script_name()],
-        [AG_HURTBOX_SPRITE, get_script_name()+"_hurt"],
-        [AG_AIR_SPRITE, get_script_name()+"_air"],
-        [AG_HURTBOX_AIR_SPRITE, get_script_name()+"_air_hurt"],
-    ]
-    var SPRITE_NOT_FOUND = sprite_get("kljgalksjglkvoaiwemnfnoiuaganio");
-    for (var default_i=0; default_i<array_length(sprite_defaults); default_i++) {
-        var index = sprite_defaults[default_i][0]
-        var default_sprite_name = sprite_defaults[default_i][1]
-        var sprite = sprite_get(default_sprite_name)
-
-        if sprite != SPRITE_NOT_FOUND {
-            array_push(special_defaults, [index, sprite])
-        }
-    }
-
-
-    var default_array = array_create(100, 0)
-    for (var default_i=0; default_i<array_length(special_defaults); default_i++) {
-        var index = special_defaults[default_i][0]
-        var default_value = special_defaults[default_i][1]
-        default_array[index] = default_value
-    }
-    for (var i=0; i<array_length(assignments); i++) {
-        if assignments[i] == undefined {
-            set_attack_value(_attack_index, i, default_array[i])
-        } else {
-            set_attack_value(_attack_index, i, assignments[i])
-        }
-    }
-
-#define get_default_ag_category // Version 0
-    if is_air_attack_script() {
-        return ATTACK_CATEGORY_AIR;
-    } else {
-        return ATTACK_CATEGORY_GROUND;
-    }
-
-#macro ATTACK_CATEGORY_GROUND 0
-
-#macro ATTACK_CATEGORY_AIR 1
-
-#define is_air_attack_script // Version 0
-    var script_name = get_script_name()
-    var air_string_position = string_pos("air", script_name)
-    return air_string_position == 2 // Where air is in nair, dair, fair, etc
-
 #define easy_window // Version 0
     if not variable_instance_exists(self, "easy_attack_called_"+get_script_name()) {
         easy_attack()
@@ -465,6 +416,73 @@ easy_hitbox(1,
         }
     }
 
+#define easy_attack // Version 0
+    // This is called automatically by easy_window if it hadn't been already.
+    var _attack_index = get_attack_index_from_filename()
+    variable_instance_set(self, "easy_attack_called_"+get_script_name(), true)
+
+    var assignments = array_create(100, undefined)
+    for(var i=0; i<=argument_count-1; i+=2) {
+        var _var_index = argument[i]
+        var _value = argument[i+1]
+        assignments[_var_index] = _value
+    }
+
+    // Special Defaults
+    var special_defaults = [
+        [AG_CATEGORY, get_default_ag_category()],
+        [AG_LANDING_LAG, 4],
+        [AG_HAS_LANDING_LAG, true],
+    ]
+    // Add sprite defaults to special defaults if the default exists
+    var sprite_defaults = [
+        [AG_SPRITE, get_script_name()],
+        [AG_HURTBOX_SPRITE, get_script_name()+"_hurt"],
+        [AG_AIR_SPRITE, get_script_name()+"_air"],
+        [AG_HURTBOX_AIR_SPRITE, get_script_name()+"_air_hurt"],
+    ]
+    var SPRITE_NOT_FOUND = sprite_get("kljgalksjglkvoaiwemnfnoiuaganio");
+    for (var default_i=0; default_i<array_length(sprite_defaults); default_i++) {
+        var index = sprite_defaults[default_i][0]
+        var default_sprite_name = sprite_defaults[default_i][1]
+        var sprite = sprite_get(default_sprite_name)
+
+        if sprite != SPRITE_NOT_FOUND {
+            array_push(special_defaults, [index, sprite])
+        }
+    }
+
+
+    var default_array = array_create(100, 0)
+    for (var default_i=0; default_i<array_length(special_defaults); default_i++) {
+        var index = special_defaults[default_i][0]
+        var default_value = special_defaults[default_i][1]
+        default_array[index] = default_value
+    }
+    for (var i=0; i<array_length(assignments); i++) {
+        if assignments[i] == undefined {
+            set_attack_value(_attack_index, i, default_array[i])
+        } else {
+            set_attack_value(_attack_index, i, assignments[i])
+        }
+    }
+
+#define get_default_ag_category // Version 0
+    if is_air_attack_script() {
+        return ATTACK_CATEGORY_AIR;
+    } else {
+        return ATTACK_CATEGORY_GROUND;
+    }
+
+#macro ATTACK_CATEGORY_GROUND 0
+
+#macro ATTACK_CATEGORY_AIR 1
+
+#define is_air_attack_script // Version 0
+    var script_name = get_script_name()
+    var air_string_position = string_pos("air", script_name)
+    return air_string_position == 2 // Where air is in nair, dair, fair, etc
+
 #define _get_next_open_window_index(_attack_index) // Version 0
     // Look at each window in the attack until you find one with a lifetime of 0. I think its safe to assume no window will have a lifetime of 0?
     var current_window = 1
@@ -571,70 +589,29 @@ easy_hitbox(1,
     var script_index = script_get_index(script_name)
     return script_index >= 0
 
-#macro SFX_BLOW_HEAVY1 "sfx_blow_heavy1"
+#macro SFX_SWIPE_WEAK1 "sfx_swipe_weak1"
 
-#macro SFX_BLOW_HEAVY2 "sfx_blow_heavy2"
+#macro SFX_WAR_HORN "sfx_war_horn"
 
-#macro SFX_KRAGG_ROCK_PULL "sfx_kragg_rock_pull"
-
-#macro SFX_KRAGG_ROLL_END "sfx_kragg_roll_end"
-
-#macro SFX_SWIPE_HEAVY2 "sfx_swipe_heavy2"
-
-#macro JUMP_FRAMES 1
-#define _get_jump_frames()
-    return JUMP_FRAMES
-#macro JUMP_FRAME_START 0
-#define _get_jump_frame_start()
-    return JUMP_FRAME_START
-
-#macro STARTUP_FRAMES 1
+#macro STARTUP_FRAMES 2
 #define _get_startup_frames()
     return STARTUP_FRAMES
-#macro STARTUP_FRAME_START 1
+#macro STARTUP_FRAME_START 0
 #define _get_startup_frame_start()
     return STARTUP_FRAME_START
 
-#macro FREEZE_FRAMES 1
-#define _get_freeze_frames()
-    return FREEZE_FRAMES
-#macro FREEZE_FRAME_START 2
-#define _get_freeze_frame_start()
-    return FREEZE_FRAME_START
-
-#macro ACTIVE_FRAMES 1
+#macro ACTIVE_FRAMES 2
 #define _get_active_frames()
     return ACTIVE_FRAMES
-#macro ACTIVE_FRAME_START 3
+#macro ACTIVE_FRAME_START 2
 #define _get_active_frame_start()
     return ACTIVE_FRAME_START
 
-#macro LAND_FRAMES 3
-#define _get_land_frames()
-    return LAND_FRAMES
-#macro LAND_FRAME_START 4
-#define _get_land_frame_start()
-    return LAND_FRAME_START
-
-#macro SIT_FRAMES 1
-#define _get_sit_frames()
-    return SIT_FRAMES
-#macro SIT_FRAME_START 7
-#define _get_sit_frame_start()
-    return SIT_FRAME_START
-
-#macro BOUNCE_FRAMES 1
-#define _get_bounce_frames()
-    return BOUNCE_FRAMES
-#macro BOUNCE_FRAME_START 8
-#define _get_bounce_frame_start()
-    return BOUNCE_FRAME_START
-
-#macro BOUNCE_AIR_FRAMES 1
-#define _get_bounce_air_frames()
-    return BOUNCE_AIR_FRAMES
-#macro BOUNCE_AIR_FRAME_START 8
-#define _get_bounce_air_frame_start()
-    return BOUNCE_AIR_FRAME_START
+#macro RECOVERY_FRAMES 2
+#define _get_recovery_frames()
+    return RECOVERY_FRAMES
+#macro RECOVERY_FRAME_START 4
+#define _get_recovery_frame_start()
+    return RECOVERY_FRAME_START
 // DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
 // #endregion

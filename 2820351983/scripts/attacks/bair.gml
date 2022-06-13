@@ -1,78 +1,37 @@
 easy_attack(
     AG_CATEGORY, ATTACK_CATEGORY_GROUND_OR_AIR,
-    AG_OFF_LEDGE, true,
+    AG_LANDING_LAG, 7,
 )
-
-easy_window("jump",
-    AG_WINDOW_TYPE, WINDOW_TYPE_SKIP_ON_GROUND,
-    AG_WINDOW_LENGTH, 1,
-    AG_WINDOW_VSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK,
-    AG_WINDOW_VSPEED, -12,
-    AG_WINDOW_SFX, asset_get(SFX_KRAGG_ROLL_END),
-)
-
-
 
 easy_window("startup",
-    AG_WINDOW_LENGTH, 9,
+    AG_WINDOW_LENGTH, 10,
+    AG_WINDOW_VSPEED, -1.5,
+    AG_WINDOW_SFX, asset_get(SFX_SWIPE_HEAVY1),
+    AG_WINDOW_SFX_FRAME, 7,
 )
-
-
-easy_window("freeze",
-    AG_WINDOW_LENGTH, 8,
-    AG_WINDOW_VSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK,
-    // AG_WINDOW_HSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK,
-    AG_WINDOW_SFX, asset_get(SFX_SWIPE_HEAVY2),
-    AG_WINDOW_SFX_FRAME, 6,
-)
-
 easy_window("active",
-    AG_WINDOW_LENGTH, 120,
-    AG_WINDOW_VSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK,
-    AG_WINDOW_VSPEED, 19,
-    // AG_WINDOW_HSPEED_TYPE, WINDOW_SPEED_TYPE_LOCK
+    AG_WINDOW_LENGTH, 8,
+)
+easy_window("recovery",
+    AG_WINDOW_LENGTH, 13, 
 )
 
-easy_window("land",
-    AG_WINDOW_LENGTH, 11,
-    AG_WINDOW_SFX, asset_get(SFX_BLOW_HEAVY1),
-)
-
-easy_window("sit", // Cut off to idle in attack_update
-    AG_WINDOW_LENGTH, 11, 
-    AG_WINDOW_SFX, asset_get(SFX_KRAGG_ROCK_PULL),
-    AG_WINDOW_SFX_FRAME, 6,
-    AG_WINDOW_TYPE, WINDOW_TYPE_PRATFALL,
-)
-
-easy_window("bounce",
-    AG_WINDOW_LENGTH, 7,
-    AG_WINDOW_SFX, asset_get(SFX_KRAGG_ROCK_PULL),
-)
-
-easy_window("bounce_air",
-    AG_WINDOW_LENGTH, 12,
-    AG_WINDOW_VSPEED, -6,
-)
-
-
-easy_hitbox(1, 
-    HG_LIFETIME, 120,
-    HG_HITBOX_X, 1,
-    HG_HITBOX_Y, -21,
-    HG_WIDTH, 52,
-    HG_HEIGHT, 35,
-    
-    HG_DAMAGE, 9,
-    HG_ANGLE, 90,
-    HG_BASE_KNOCKBACK, 8, 
-    HG_KNOCKBACK_SCALING, .95,
-    HG_BASE_HITPAUSE, 7,
-    HG_HITPAUSE_SCALING, .65,
-    HG_EXTRA_HITPAUSE, 4,
-    HG_VISUAL_EFFECT, 192,
-    HG_HIT_SFX, asset_get(SFX_BLOW_HEAVY2),
-    HG_HIT_LOCKOUT, 10,
+easy_hitbox(1,
+    HG_LIFETIME, 8,
+    HG_HITBOX_X, -16,
+    HG_HITBOX_Y, -8,
+    HG_WIDTH, 65,
+    HG_HEIGHT, 40,
+    HG_DAMAGE, 6,
+    HG_ANGLE, 50,
+    HG_BASE_KNOCKBACK, 9,
+    HG_KNOCKBACK_SCALING, .25,
+    HG_BASE_HITPAUSE, 8,
+    HG_HITPAUSE_SCALING, .5,
+    HG_VISUAL_EFFECT_X_OFFSET, -10,
+    HG_VISUAL_EFFECT, HG_VISUAL_EFFECT_BASIC_LARGE,
+    HG_HIT_SFX, asset_get(SFX_BLOW_HEAVY1),
+    HG_ANGLE_FLIPPER, HITBOX_ANGLE_FLIPPER_HORIZONTAL_REVERSED,
 )
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv
@@ -80,11 +39,7 @@ easy_hitbox(1,
 // Write NO-INJECT in a comment above this area to disable injection.
 #macro ATTACK_CATEGORY_GROUND_OR_AIR 2
 
-#macro WINDOW_TYPE_PRATFALL 7
-
-#macro WINDOW_TYPE_SKIP_ON_GROUND 8
-
-#macro WINDOW_SPEED_TYPE_LOCK 1
+#macro HITBOX_ANGLE_FLIPPER_HORIZONTAL_REVERSED 5
 
 #define easy_hitbox // Version 0
     // / easy_hitbox(_hitbox_index, ...)
@@ -573,68 +528,29 @@ easy_hitbox(1,
 
 #macro SFX_BLOW_HEAVY1 "sfx_blow_heavy1"
 
-#macro SFX_BLOW_HEAVY2 "sfx_blow_heavy2"
+#macro SFX_SWIPE_HEAVY1 "sfx_swipe_heavy1"
 
-#macro SFX_KRAGG_ROCK_PULL "sfx_kragg_rock_pull"
-
-#macro SFX_KRAGG_ROLL_END "sfx_kragg_roll_end"
-
-#macro SFX_SWIPE_HEAVY2 "sfx_swipe_heavy2"
-
-#macro JUMP_FRAMES 1
-#define _get_jump_frames()
-    return JUMP_FRAMES
-#macro JUMP_FRAME_START 0
-#define _get_jump_frame_start()
-    return JUMP_FRAME_START
+#macro HG_VISUAL_EFFECT_BASIC_LARGE 304
 
 #macro STARTUP_FRAMES 1
 #define _get_startup_frames()
     return STARTUP_FRAMES
-#macro STARTUP_FRAME_START 1
+#macro STARTUP_FRAME_START 0
 #define _get_startup_frame_start()
     return STARTUP_FRAME_START
-
-#macro FREEZE_FRAMES 1
-#define _get_freeze_frames()
-    return FREEZE_FRAMES
-#macro FREEZE_FRAME_START 2
-#define _get_freeze_frame_start()
-    return FREEZE_FRAME_START
 
 #macro ACTIVE_FRAMES 1
 #define _get_active_frames()
     return ACTIVE_FRAMES
-#macro ACTIVE_FRAME_START 3
+#macro ACTIVE_FRAME_START 1
 #define _get_active_frame_start()
     return ACTIVE_FRAME_START
 
-#macro LAND_FRAMES 3
-#define _get_land_frames()
-    return LAND_FRAMES
-#macro LAND_FRAME_START 4
-#define _get_land_frame_start()
-    return LAND_FRAME_START
-
-#macro SIT_FRAMES 1
-#define _get_sit_frames()
-    return SIT_FRAMES
-#macro SIT_FRAME_START 7
-#define _get_sit_frame_start()
-    return SIT_FRAME_START
-
-#macro BOUNCE_FRAMES 1
-#define _get_bounce_frames()
-    return BOUNCE_FRAMES
-#macro BOUNCE_FRAME_START 8
-#define _get_bounce_frame_start()
-    return BOUNCE_FRAME_START
-
-#macro BOUNCE_AIR_FRAMES 1
-#define _get_bounce_air_frames()
-    return BOUNCE_AIR_FRAMES
-#macro BOUNCE_AIR_FRAME_START 8
-#define _get_bounce_air_frame_start()
-    return BOUNCE_AIR_FRAME_START
+#macro RECOVERY_FRAMES 1
+#define _get_recovery_frames()
+    return RECOVERY_FRAMES
+#macro RECOVERY_FRAME_START 2
+#define _get_recovery_frame_start()
+    return RECOVERY_FRAME_START
 // DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
 // #endregion
