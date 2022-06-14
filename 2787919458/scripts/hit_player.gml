@@ -46,7 +46,7 @@ if(my_hitboxID.attack == AT_DSPECIAL){
 if(my_hitboxID.attack == AT_DATTACK){
     if(my_hitboxID.hbox_num == 1){
         sound_play (sound_get("spring"))
-        spring.img_spd = .3;
+        spring.img_spd = .35;
         spring.launched = 30;
         var fx = spawn_hit_fx( spring.x +15*spr_dir, spring.y-0, 305 );fx.pause = 8.58;
         with(hit_player_obj){

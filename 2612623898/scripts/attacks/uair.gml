@@ -51,3 +51,4 @@ set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("zap"));
 set_hitbox_value(AT_UAIR, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_UAIR, 1, HG_HIT_PARTICLE_NUM, 1);

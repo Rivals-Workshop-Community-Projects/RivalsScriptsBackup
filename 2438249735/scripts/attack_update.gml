@@ -9,6 +9,8 @@ var last_window = get_attack_value(attack, AG_NUM_WINDOWS);
 
 
 
+move_cooldown[AT_FSPECIAL_2] ++
+move_cooldown[AT_FSPECIAL_2] ++
 
 if attack == AT_NAIR && has_hit && hitpause{
 	//window_timer += 0.5
@@ -485,7 +487,8 @@ if !hitpause {
      	
              
      }
-     if window == 4 && window_timer > 5 && free {
+     
+     if window == 4 && window_timer > 18 && free {
      	set_state(PS_PRATFALL)
      }
      
@@ -536,18 +539,18 @@ if !hitpause {
                   spawn_hit_fx(x + 30  , y - 30, lpar4)   
                   spawn_hit_fx(x  , y - 30, shit1)  
                   
-      	 	vsp = -30
+      	 	vsp = -24
       	 	
       	 	if left_down && !right_down {
-      	 		hsp = -20 
+      	 		hsp = -15
       	 	}
       	 	
       	 	if !left_down && right_down {
-      	 		hsp = 20 
+      	 		hsp = 15
       	 	}
       	 	
       	 } else {
-      	 	vsp = -20
+      	 	vsp = -15
       	    if left_down && !right_down {
       	 		hsp = -10 
       	 	}
@@ -578,7 +581,7 @@ if !hitpause {
             
             
         	fancyfx();
-        	vsp = 18
+        	vsp = 16
         	
         if !has_hit_player {	
         if (y > room_height/2 + 300){
@@ -741,7 +744,7 @@ if !hitpause {
         
        if window == 1 {
        	
-       	prat_land_time = 12;
+       	prat_land_time = 16;
        	
        	if window_timer == 1 {
        	choosen_dirx = x
@@ -811,7 +814,7 @@ if !hitpause {
      	  
      	 vsp = -4
      	 
-     	 prat_land_time = 12
+     	 prat_land_time = 16
      	 
      	      if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) {
                  set_state (PS_PRATFALL)

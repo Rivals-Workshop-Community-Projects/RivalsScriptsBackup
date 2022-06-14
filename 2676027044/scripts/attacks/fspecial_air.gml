@@ -143,3 +143,5 @@ set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL_AIR, 6, HG_HITBOX_GROUP, -1);
+
+set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_HIT_LOCKOUT, 10);

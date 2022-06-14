@@ -48,3 +48,9 @@ sprite_change_offset("proj_smoke", 32, 32);
 sprite_change_offset("explode", 128, 128);
 sprite_change_offset("ryk_hurtbox", 48, 128);
 sprite_change_offset("ryk_crouchbox", 48, 128);
+
+sprite_change_offset("hfx_smaller", 64, 64);
+sprite_change_offset("hfx_small", 64, 64);
+sprite_change_offset("hfx_medium", 96, 96);
+sprite_change_offset("hfx_big", 96, 96);
+sprite_change_offset("hfx_bigger", 128, 128);

@@ -6,7 +6,7 @@ hit_player_obj = self
 }
 
 
-
+print(move_cooldown[AT_FSPECIAL_2])
 
 
 
@@ -94,13 +94,20 @@ if state == PS_PRATLAND or state == PS_PRATFALL {
 	  invitimer = 0
 }
 
+if move_cooldown[AT_FTHROW] > 1 && (state == PS_LAND or state == PS_LANDING_LAG) {
+	move_cooldown[AT_FTHROW] ++
+	move_cooldown[AT_FSPECIAL_2] = 20
+}
+
 if move_cooldown[AT_FTHROW] = 1 {
   if invitimer != 0 {
   	sound_stop(sound_get("steath"))
 	sound_play(sound_get("steath"),false,noone,.8)
   	invitimer = 1
   	invis = true
-  	spawn_hit_fx(x  , y, dsx) 
+  	fx = spawn_hit_fx(x  , y, dsx) 
+  	fx.depth = 2
+  	move_cooldown[AT_FSPECIAL_2] = 20
 
   }
   

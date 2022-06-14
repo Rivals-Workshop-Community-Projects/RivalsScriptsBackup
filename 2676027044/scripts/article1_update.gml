@@ -298,6 +298,8 @@ switch(active){
 				&& state != PS_SPAWN
 				&& state != PS_RESPAWN){
 */
+				// Polite Variant
+				if (state_cat == SC_HITSTUN && !hitpause){
 					if (place_meeting(x, y, other)){ // If any player is aligned with the wisp
 						with(other){
 							if (other != player_id){ // If any player but the wisp owner is aligned with wisp
@@ -308,7 +310,7 @@ switch(active){
 						}
 					}
 				}
-//			}
+			}
 		
 			if (!instance_exists(wisp_hitbox) && wisp_hitbox != noone){
 				player_id.mim_wisp.active = false;

@@ -52,6 +52,11 @@ if(spr_dir = -1){
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt2"));
 }
 
+if (state == PS_IDLE_AIR && PS_IDLE)
+{
+    knockback_adj = 1.2;
+    
+}
 
 if (state == PS_PRATFALL && state_timer = 1)
 {

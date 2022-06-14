@@ -6,7 +6,7 @@ set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 set_window_value(AT_USTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 
 set_window_value(AT_USTRONG, 2, AG_WINDOW_TYPE, 1);
@@ -71,5 +71,8 @@ set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, sound_get("sharp3"));
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, hfx_mimibig);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 304);
 
-set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_USTRONG, 2, HG_HIT_LOCKOUT, 5);
+
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);

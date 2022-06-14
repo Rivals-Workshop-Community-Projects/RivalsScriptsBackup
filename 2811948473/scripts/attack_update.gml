@@ -105,8 +105,16 @@ if (attack == AT_DAIR){
         destroy_hitboxes();
       	spawn_base_dust(x, y, "land");
     }
-    if (window == 4 && window_timer = 4){
+    if (window == 4 && window_timer = 4 && spr_dir = 1 ){
     	sound_play(sound_get("spring"));
+        spawn_hit_fx( x+0, y-0, boing);
+        destroy_hitboxes();
+        window = 5;
+        vsp = -10;
+        }
+    if (window == 4 && window_timer = 4 && spr_dir = -1 ){
+    	sound_play(sound_get("spring"));
+        spawn_hit_fx( x+0, y-0, boing2);
         destroy_hitboxes();
         window = 5;
         vsp = -10;
@@ -315,6 +323,16 @@ if (attack == AT_DSTRONG && spr_dir = -1 ){
 }
 
 if (attack == AT_DSTRONG){
+	if (window == 1)
+	{
+	
+	super_armor = true
+	}
+	if (window == 3)
+	{
+	super_armor = false
+	knockback_adj = 0.5;
+	}
 	if (window == 1 && window_timer == 1)
 	{
 	sound_play(sound_get("swipe2"));
@@ -342,6 +360,15 @@ if (attack == AT_DATTACK){
 	{
 	sound_play(sound_get("hit_bonk"));
     }
+}
+
+if (attack == AT_DATTACK && window_timer == 2 && spr_dir = 1 ){
+	if (window == 1)
+        spawn_hit_fx( x, y-80, zoom);
+}
+if (attack == AT_DATTACK && window_timer == 2 && spr_dir = -1 ){
+	if (window == 1)
+        spawn_hit_fx( x, y-80, zoom2);
 }
 
 if (attack == AT_TAUNT && window == 1 && down_down){

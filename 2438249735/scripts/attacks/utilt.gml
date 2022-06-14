@@ -11,8 +11,6 @@ set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED, -3);
-set_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_UTILT, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_UTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);

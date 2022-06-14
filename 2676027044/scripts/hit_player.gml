@@ -155,6 +155,12 @@ switch(my_hitboxID.attack){
 	
 	case AT_FSPECIAL:
 		if (my_hitboxID.orig_player == player){
+			if (hit_player_obj.has_hit_player && hit_player_obj.hit_player_obj == self){
+				hit_player_obj.hitpause = false;
+				hit_player_obj.hitstop = 0;
+				exit;
+			}
+		
 			hit_player_obj.can_wall_tech = false;
 			if (my_hitboxID.hbox_num == 1 && my_hitboxID.orig_player == player){
 				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);

@@ -341,7 +341,12 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 with(oPlayer){
 	if (hitpause && isCandy){
 		shader_start();
-			draw_sprite_ext(sprite_index, 1, x, y, spr_dir, 1, 0, c_white, 1);
+			if (small_sprites){
+				draw_sprite_ext(sprite_index, 1, x, y, spr_dir * 2, 2, 0, c_white, 1);			
+			}
+			else {
+				draw_sprite_ext(sprite_index, 1, x, y, spr_dir, 1, 0, c_white, 1);
+			}
 		shader_end();
 	}
 }

@@ -88,3 +88,5 @@ sprite_change_offset("psifreezeparticle", 32, 32);
 sprite_change_offset("psithunderparticle", 32, 32);
 sprite_change_offset("booom", 110, 134);
 sprite_change_offset("booom2", 110, 134);
+sprite_change_offset("boing", 55, 44);
+sprite_change_offset("boing2", 55, 44);

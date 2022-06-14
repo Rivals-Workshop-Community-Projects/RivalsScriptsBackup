@@ -296,7 +296,24 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.9", "23rd May, 2022");
+initPatch("1.10", "13th June, 2022");
+initHeader("Buffs");
+initSection("- Added 1 new scream
+- Made DAir slow you down on hit so it connects better");
+
+initHeader("Nerfs");
+initSection("- Gave NSpecial and BAir less time to turn around");
+
+initHeader("Fixes / Other Changes");
+initSection("- Fixed a bug with the new reflector code where Sanic's projectiles wouldn't be bounced
+- Made the springs animation happen faster
+- Sanic's dorito will no longer take damage if a teammate hits it
+- Optimized the scream code to make adding new screams easier
+- Removed the placeholder intro animation
+- Fixed the date on the last patch
+- Made some alts have white gloves instead of gray");
+
+initPatch("1.9", "9th June, 2022");
 initHeader("Buffs");
 initSection("- Added 6 new screams
 - Gave NSpecial, DSpecial and BAir 5 more frames where you can turn around

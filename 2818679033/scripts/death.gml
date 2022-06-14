@@ -1,1 +1,0 @@
-hit_player_obj.wrap_time = 0;

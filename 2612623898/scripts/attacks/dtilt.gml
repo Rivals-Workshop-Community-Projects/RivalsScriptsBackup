@@ -35,7 +35,7 @@ set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DTILT, 1, HG_ANGLE_FLIPPER, 7);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sound_get("tinyslam"));
-
+set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, hfx_ssl_medium);
+set_hitbox_value(AT_DTILT, 1, HG_HIT_PARTICLE_NUM, 1);

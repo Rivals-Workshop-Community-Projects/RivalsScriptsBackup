@@ -232,6 +232,45 @@ dtilt_mash = 0;
 spin_sound = noone;
 fs_char_portrait_y = 94;
 fs_char_chosen_final_smash = "custom";
+
+//screams
+screamList = [
+    "scream",
+    "waaa",
+    "JumpScare",
+    "mlg_scream",
+    "AHHH",
+    "werehog",
+    "tom",
+    "mickey",
+    "meen_screem",
+    "marks",
+    "sr_pelo_1",
+    "monopoly_scream",
+    "YODADEATH",
+    "willhelm",
+    "brawl_sonic",
+    "goofy",
+    "g_when_25",
+    "ree",
+    "wario",
+    "power_ring",
+    "lupay_dies",
+    "sammy_scream",
+    "king_oh",
+    "snake",
+    "wario_2",
+    "gunga_scream",
+    "blyat",
+    "train_horn",
+    "tl_die",
+    "sadness",
+    "amy_scream",
+    "snore",
+    "telegram help",
+    "monke",
+    "BWAA"
+    ];
 // intro
 introTimer = -2;
     

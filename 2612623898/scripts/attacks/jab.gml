@@ -47,8 +47,9 @@ set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_JAB, 1, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("bigpunch"));
 set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 3);
-set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, fx_expl);
 set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 0.7);
+set_hitbox_value(AT_JAB, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 999);
@@ -72,5 +73,6 @@ set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, fx_expl);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sound_get("punch"));
+set_hitbox_value(AT_JAB, 2, HG_HIT_PARTICLE_NUM, 1);

@@ -42,7 +42,7 @@ set_color_profile_slot( 1, 1, 219, 151, 23 ); //Fur S
 set_color_profile_slot( 1, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 1, 3, 33, 27, 28 ); //Iris
 set_color_profile_slot( 1, 4, 239, 229, 175 ); //Skin
-set_color_profile_slot( 1, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 1, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 1, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 1, 7, 254, 216, 27 ); //Smears
 
@@ -52,7 +52,7 @@ set_color_profile_slot( 2, 1, 147, 159, 204 ); //Fur S
 set_color_profile_slot( 2, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 2, 3, 237, 29, 38 ); //Iris
 set_color_profile_slot( 2, 4, 239, 229, 175 ); //Skin
-set_color_profile_slot( 2, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 2, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 2, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 2, 7, 63, 71, 203 ); //Smears
 
@@ -72,7 +72,7 @@ set_color_profile_slot( 4, 1, 23, 21, 31 ); //Fur S
 set_color_profile_slot( 4, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 4, 3, 247, 247, 253 ); //Iris
 set_color_profile_slot( 4, 4, 39, 38, 46 ); //Skin
-set_color_profile_slot( 4, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 4, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 4, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 4, 7, 39, 38, 46 ); //Smears
 
@@ -82,7 +82,7 @@ set_color_profile_slot( 5, 1, 150, 16, 47 ); //Fur S
 set_color_profile_slot( 5, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 5, 3, 143, 81, 49 ); //Iris
 set_color_profile_slot( 5, 4, 239, 229, 175 ); //Skin
-set_color_profile_slot( 5, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 5, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 5, 6, 239, 27, 40 ); //Shoes
 set_color_profile_slot( 5, 7, 239, 27, 40 ); //Smears
 
@@ -92,7 +92,7 @@ set_color_profile_slot( 6, 1, 0, 76, 191 ); //Fur S
 set_color_profile_slot( 6, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 6, 3, 133, 203, 233 ); //Iris
 set_color_profile_slot( 6, 4, 239, 229, 175 ); //Skin
-set_color_profile_slot( 6, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 6, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 6, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 6, 7, 133, 203, 233 ); //Smears
 
@@ -102,7 +102,7 @@ set_color_profile_slot( 7, 1, 5, 0, 59 ); //Fur S
 set_color_profile_slot( 7, 2, 0, 0, 0 ); //Eyes
 set_color_profile_slot( 7, 3, 237, 29, 38 ); //Iris
 set_color_profile_slot( 7, 4, 239, 229, 175 ); //Skin
-set_color_profile_slot( 7, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 7, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 7, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 7, 7, 237, 29, 38 ); //Smears
 
@@ -112,7 +112,7 @@ set_color_profile_slot( 8, 1, 209, 100, 12 ); //Fur S
 set_color_profile_slot( 8, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 8, 3, 33, 27, 28 ); //Iris
 set_color_profile_slot( 8, 4, 247, 247, 253 ); //Skin
-set_color_profile_slot( 8, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 8, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 8, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 8, 7, 237, 29, 38 ); //Smears
 
@@ -122,7 +122,7 @@ set_color_profile_slot( 9, 1, 130, 18, 25 ); //Fur S
 set_color_profile_slot( 9, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 9, 3, 33, 27, 28 ); //Iris
 set_color_profile_slot( 9, 4, 240, 234, 188 ); //Skin
-set_color_profile_slot( 9, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 9, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 9, 6, 76, 126, 103 ); //Shoes
 set_color_profile_slot( 9, 7, 255, 201, 14 ); //Smears
 
@@ -132,7 +132,7 @@ set_color_profile_slot( 10, 1, 140, 19, 20 ); //Fur S
 set_color_profile_slot( 10, 2, 99, 157, 255 ); //Eyes
 set_color_profile_slot( 10, 3, 99, 157, 255 ); //Iris
 set_color_profile_slot( 10, 4, 195, 147, 122 ); //Skin
-set_color_profile_slot( 10, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 10, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 10, 6, 33, 27, 28 ); //Shoes
 set_color_profile_slot( 10, 7, 99, 157, 255 ); //Smears
 
@@ -142,7 +142,7 @@ set_color_profile_slot( 11, 1, 26, 15, 15 ); //Fur S
 set_color_profile_slot( 11, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 11, 3, 237, 29, 38 ); //Iris
 set_color_profile_slot( 11, 4, 230, 189, 120 ); //Skin
-set_color_profile_slot( 11, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 11, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 11, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 11, 7, 237, 29, 38 ); //Smears
 
@@ -152,7 +152,7 @@ set_color_profile_slot( 12, 1, 177, 78, 199 ); //Fur S
 set_color_profile_slot( 12, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 12, 3, 0, 194, 0 ); //Iris
 set_color_profile_slot( 12, 4, 239, 229, 175 ); //Skin
-set_color_profile_slot( 12, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 12, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 12, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 12, 7, 255, 201, 14 ); //Smears
 
@@ -182,7 +182,7 @@ set_color_profile_slot( 15, 1, 50, 82, 75 ); //Fur S
 set_color_profile_slot( 15, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 15, 3, 109, 110, 214 ); //Iris
 set_color_profile_slot( 15, 4, 255, 237, 223 ); //Skin
-set_color_profile_slot( 15, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 15, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 15, 6, 150, 104, 76 ); //Shoes
 set_color_profile_slot( 15, 7, 249, 221, 77 ); //Smears
 
@@ -272,7 +272,7 @@ set_color_profile_slot( 24, 1, 101, 91, 115 ); //Fur S
 set_color_profile_slot( 24, 2, 247, 247, 253 ); //Eyes
 set_color_profile_slot( 24, 3, 98, 100, 237 ); //Iris
 set_color_profile_slot( 24, 4, 243, 225, 203 ); //Skin
-set_color_profile_slot( 24, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 24, 5, 255, 254, 254 ); //Gloves
 set_color_profile_slot( 24, 6, 237, 29, 38 ); //Shoes
 set_color_profile_slot( 24, 7, 98, 100, 237 ); //Smears
 

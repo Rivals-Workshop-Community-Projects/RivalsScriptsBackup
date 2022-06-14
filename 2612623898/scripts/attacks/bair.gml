@@ -37,7 +37,8 @@ set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.75);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("slam2"));
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, hfx_ssl_big);
+set_hitbox_value(AT_BAIR, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
@@ -54,4 +55,5 @@ set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 0.75);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("slam1"));
-set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, hfx_ssl_medium);
+set_hitbox_value(AT_BAIR, 2, HG_HIT_PARTICLE_NUM, 1);

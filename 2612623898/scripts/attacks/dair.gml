@@ -80,3 +80,4 @@ set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, fx_expl);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("bigpunch"));
+set_hitbox_value(AT_DAIR, 1, HG_HIT_PARTICLE_NUM, 1);

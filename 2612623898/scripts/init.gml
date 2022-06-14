@@ -12,7 +12,7 @@ grab_timer = 0;
 grabbed_player_obj = noone; 
 grabbed_player_relative_x = 0;
 grabbed_player_relative_y = 0;
-set_victory_theme(CH_ZETTERBURN);
+set_victory_theme(sound_get("victory_theme"));
 set_victory_bg(sprite_get("victory_bg"));
 
 //Smash Land Values-------------------------------------------------------------
@@ -43,6 +43,13 @@ ssl_death_sound = sound_get("ssl_death");
 *  You will need to change the sprite offsets of your hit effect sprites in load.gml
 */
 fx_expl = hit_fx_create(sprite_get("explode"), 16);
+hfx_ssl_smaller = hit_fx_create(sprite_get("hfx_smaller"), 14);
+hfx_ssl_small = hit_fx_create(sprite_get("hfx_small"), 14);
+hfx_ssl_medium = hit_fx_create(sprite_get("hfx_medium"), 16);
+hfx_ssl_big = hit_fx_create(sprite_get("hfx_big"), 18);
+hfx_ssl_bigger = hit_fx_create(sprite_get("hfx_bigger"), 18);
+
+set_hit_particle_sprite(1, sprite_get("hit_particle"));
 //#endregion--------------------------------------------------------------------
 
 

@@ -20,111 +20,8 @@ switch(state){
 		if(state_timer == 1 && !just_played_scream && !trigger_warning){
 			sound_stop(stupid_sound_shit)
 			if(sprite_index == sprite_get("bighurt")){
-				random_scream = random_func(1,34,true);
-				switch(random_scream){
-					case 0:
-						stupid_sound_shit = sound_play(sound_get("scream"))
-					break;
-					case 1:
-						stupid_sound_shit = sound_play(sound_get("waaa"))
-					break;
-					case 2:
-						stupid_sound_shit = sound_play(sound_get("JumpScare"))
-					break;
-					case 3:
-						stupid_sound_shit = sound_play(sound_get("mlg_scream"))
-					break;
-					case 4:
-						stupid_sound_shit = sound_play(sound_get("AHHH"))
-					break;
-					case 5:
-						stupid_sound_shit = sound_play(sound_get("werehog"))
-					break;
-					case 6:
-						stupid_sound_shit = sound_play(sound_get("tom"))
-					break;
-					case 7:
-						stupid_sound_shit = sound_play(sound_get("mickey"))
-					break;	
-					case 8:
-						stupid_sound_shit = sound_play(sound_get("meen_screem"))
-					break;
-					case 9:
-						stupid_sound_shit = sound_play(sound_get("marks"))
-					break;
-					case 10:
-						stupid_sound_shit = sound_play(sound_get("sr_pelo_1"))
-					break;
-					case 11:
-						stupid_sound_shit = sound_play(sound_get("monopoly_scream"))
-					break;
-					case 12:
-						stupid_sound_shit = sound_play(sound_get("YODADEATH"))
-					break;
-					case 13:
-						stupid_sound_shit = sound_play(sound_get("willhelm"))
-					break;
-					case 14:
-						stupid_sound_shit = sound_play(sound_get("brawl_sonic"))
-					break;
-					case 15:
-						stupid_sound_shit = sound_play(sound_get("goofy"))
-					break;
-					case 16:
-						stupid_sound_shit = sound_play(sound_get("g_when_25"))
-					break;
-					case 17:
-						stupid_sound_shit = sound_play(sound_get("ree"))
-					break;
-					case 18:
-						stupid_sound_shit = sound_play(sound_get("wario"))
-					break;
-					case 19:
-						stupid_sound_shit = sound_play(sound_get("power_ring"))
-					break;
-					case 20:
-						stupid_sound_shit = sound_play(sound_get("lupay_dies"))
-					break;	
-					case 21:
-						stupid_sound_shit = sound_play(sound_get("sammy_scream"))
-					break;
-					case 22:
-						stupid_sound_shit = sound_play(sound_get("king_oh"))
-					break;
-					case 23:
-						stupid_sound_shit = sound_play(sound_get("snake"))
-					break;
-					case 24:
-						stupid_sound_shit = sound_play(sound_get("wario_2"))
-					break;
-					case 25:
-						stupid_sound_shit = sound_play(sound_get("gunga_scream"))
-					break;	
-					case 26:
-						stupid_sound_shit = sound_play(sound_get("blyat"))
-					break;
-					case 27:
-						stupid_sound_shit = sound_play(sound_get("train_horn"))
-					break;
-					case 28:
-						stupid_sound_shit = sound_play(sound_get("tl_die"))
-					break;	
-					case 29:
-						stupid_sound_shit = sound_play(sound_get("sadness"))
-					break;
-					case 30:
-						stupid_sound_shit = sound_play(sound_get("amy_scream"))
-					break;
-					case 31:
-						stupid_sound_shit = sound_play(sound_get("snore"))
-					break;	
-					case 32:
-						stupid_sound_shit = sound_play(sound_get("telegram help"))
-					break;
-					case 33:
-						stupid_sound_shit = sound_play(sound_get("monke"))
-					break;				
-				}
+				random_scream = random_func(1,array_length(screamList),true);
+				stupid_sound_shit = sound_play(sound_get(screamList[random_scream]));
 			}else if(sprite_index == sprite_get("uphurt") || sprite_index == sprite_get("bouncehurt")){
 				random_scream = random_func(1,3,true);
 				switch(random_scream){
@@ -182,6 +79,7 @@ switch(state){
 			break;		
 		}	
 	break;
+	/*
     case PS_SPAWN:
         var length = 17; // num of anim frames
         var spd = 4; // in game frames per anim frame
@@ -189,7 +87,8 @@ switch(state){
         sprite_index = sprite_get(introTimer<length&&introTimer>=0?"intro":"idle");
         if (introTimer < 0) image_index = 0;
         else if (introTimer < length) image_index = introTimer;
-    break;	
+    break;
+    */
 }
 if(phone_attacking){
 	switch(attack){

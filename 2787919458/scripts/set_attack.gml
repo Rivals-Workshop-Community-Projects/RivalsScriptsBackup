@@ -63,6 +63,7 @@ if(up_down && attack == AT_TAUNT){
 if(right_down && attack == AT_TAUNT && get_player_color(player) == 7){
 	attack = 43;
 }
+
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 muno_event_type = 2;

@@ -59,7 +59,7 @@ set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 3);
 set_hitbox_value(AT_UTILT, 2, HG_ANGLE, 70); 
 set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, .1); 
-set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 6); 
+set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 5); 
 set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_UTILT, 2, HG_ANGLE_FLIPPER, 0);
 

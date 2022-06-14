@@ -46,7 +46,7 @@ max_fall = 4; //maximum fall speed without fastfalling
 fast_fall = 8.4; //fast fall speed
 gravity_speed = .40;
 hitstun_grav = .5;
-knockback_adj = 1.3; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 9;
@@ -126,3 +126,7 @@ shocky = hit_fx_create( sprite_get("psithunderparticle"), 10);
 burn = hit_fx_create( sprite_get("psifireparticle"), 40);
 booom = hit_fx_create( sprite_get( "booom" ), 35 );
 booom2 = hit_fx_create( sprite_get( "booom2" ), 35 );
+boing = hit_fx_create( sprite_get( "boing" ), 35 );;
+boing2 = hit_fx_create( sprite_get( "boing2" ), 35 );
+zoom = hit_fx_create( sprite_get( "zoom" ), 35 );;
+zoom2 = hit_fx_create( sprite_get( "zoom2" ), 35 );

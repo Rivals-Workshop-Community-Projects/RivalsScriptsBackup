@@ -37,7 +37,7 @@ switch(attack){
 			if(window_timer == 8){
 				airhorn_sfx = sound_play(sound_get("dorito_bag"));
 			}
-			if(window_timer >= 4 && window_timer <= 14){
+			if(window_timer >= 8 && window_timer <= 12){
 				var horizontal = right_down - left_down;
 				if(horizontal != 0){
 					spr_dir = horizontal;
@@ -221,6 +221,10 @@ switch(attack){
 			}else{
 				hsp *= .98;
 			}
+		}
+		if(has_hit && !fast_falling && window != 4){
+			vsp *= .9;
+			hsp *= .95;
 		}
 	break;
 	case AT_NAIR:
@@ -436,7 +440,7 @@ switch(attack){
 	            Grab(-90,0,3,3,grab_target,grabbed_Proj)  
 	        }
 	        vsp = min(vsp,1)
-			if(window_timer >= 6 && window_timer < 14){
+			if(window_timer >= 6 && window_timer < 9){
 				var horizontal = right_down - left_down;
 				if(horizontal != 0){
 					spr_dir = horizontal;

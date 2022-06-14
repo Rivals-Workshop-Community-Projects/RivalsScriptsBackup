@@ -91,6 +91,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_THROWS_ROCK, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, -1);
+set_hitbox_value(AT_USPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
@@ -101,6 +102,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 36);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -64);
 set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 32);
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 32);
+set_hitbox_value(AT_USPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -111,6 +113,7 @@ set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 32);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -64);
 set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 32);
 set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 32);
+set_hitbox_value(AT_USPECIAL, 3, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_USPECIAL, 4, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 1);
@@ -121,6 +124,7 @@ set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X, 32);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y, -72);
 set_hitbox_value(AT_USPECIAL, 4, HG_WIDTH, 32);
 set_hitbox_value(AT_USPECIAL, 4, HG_HEIGHT, 32);
+set_hitbox_value(AT_USPECIAL, 4, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_WINDOW, 5);
@@ -138,6 +142,7 @@ set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, fx_expl);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sound_get("thud"));
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 5, HG_EXTRA_CAMERA_SHAKE, -1);
+set_hitbox_value(AT_USPECIAL, 5, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_WINDOW, 6);
@@ -157,3 +162,4 @@ set_hitbox_value(AT_USPECIAL, 6, HG_VISUAL_EFFECT, fx_expl);
 set_hitbox_value(AT_USPECIAL, 6, HG_HIT_SFX, sound_get("smoke"));
 set_hitbox_value(AT_USPECIAL, 6, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_USPECIAL, 6, HG_HIT_PARTICLE_NUM, 1);

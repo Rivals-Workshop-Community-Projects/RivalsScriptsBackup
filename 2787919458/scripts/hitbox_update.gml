@@ -32,7 +32,7 @@ if(attack == AT_NSPECIAL){
 		    		            }else{
 		    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
 		    		            }
-		    		            if player_id != other.player_id {other.dorito_hp -= 1;sound_play(asset_get("sfx_leafy_hit3"))sound_play(asset_get("sfx_leafy_hit1"))}
+		    		            if player_id != other.player_id && get_player_team(player_id.player) != get_player_team(other.player_id.player){other.dorito_hp -= 1;sound_play(asset_get("sfx_leafy_hit3"))sound_play(asset_get("sfx_leafy_hit1"))}
 		    	                spawn_hit_fx(other.x, other.y, hit_effect);
 		    					sound_play(sound_effect);
 		    	                other.lasthitbox = id;other.hitbox_timer = 0;
@@ -292,37 +292,37 @@ if(attack == AT_NSPECIAL){
 	    
 	    if(!instance_exists(reflect_target)){
 	    	with(pHitBox){
-		    	if(place_meeting(x,y,other) && type == 2 && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    	if(place_meeting(x,y,other) && type == 2 && other.reflect_target != self && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
 		    		other.reflect_target = self;
 		    	}
 	    	}
 	    }if(!instance_exists(reflect_target)){
 	    	with(obj_article1){
-		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
 		    		other.reflect_target = self;
 		    	}
 	    	}
 	    }if(!instance_exists(reflect_target)){
 	    	with(obj_article2){
-		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
 		    		other.reflect_target = self;
 		    	}
 	    	}
 	    }if(!instance_exists(reflect_target)){
 	    	with(obj_article3){
-		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
 		    		other.reflect_target = self;
 		    	}
 	    	}
 	    }if(!instance_exists(reflect_target)){
 	    	with(obj_article_solid){
-		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
 		    		other.reflect_target = self;
 		    	}
 	    	}
 	    }if(!instance_exists(reflect_target)){
 	    	with(obj_article_platform){
-		    	if(place_meeting(x,y,other) && other.reflect_target != self && other.player != player && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
+		    	if(place_meeting(x,y,other) && other.reflect_target != self && ("UnReflectable" in self && !UnReflectable || "UnReflectable" not in self)){
 		    		other.reflect_target = self;
 		    	}
 	    	}
@@ -336,6 +336,8 @@ if(attack == AT_NSPECIAL){
 				hsp = 10*other.spr_dir;
 				vsp = -10;
 	            image_angle = 0+(45*(spr_dir+1));
+		        other.img_spd = .35;
+		        other.launched = 30;	            
 	    		//}
 	    		if("was_parried" in self){
 			    	was_parried = true;
@@ -349,7 +351,7 @@ if(attack == AT_NSPECIAL){
 					hit_priority = 1;
 				}
 	    	}
-	    	spawn_hit_fx(reflect_target.x, reflect_target.y, 194);
+	    	spawn_hit_fx(reflect_target.x, reflect_target.y, 305);
 	    	sound_play(sound_get("spring"));
 	    }	    
 		if(hitbox_timer == length - 1){

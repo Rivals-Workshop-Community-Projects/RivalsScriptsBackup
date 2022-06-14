@@ -174,12 +174,18 @@ if (attack == AT_DSPECIAL){
 			
 			dash_cancel_counter += .5;
 			
-			nspecial_hitpause = 27 + (LoveStorage/12);
-			
-			// Callie is +6 with no meter 
-			// Callie is +15 with 100 meter
-			// Callie is +22 with 200 meter
-			// Every 20 meter is + 2 frame of advantage
+			nspecial_hitpause = 30 + (LoveStorage/9); // Post June 14th 2022 Frame Advantage
+
+			// Callie is +9 with no meter 
+			// Callie is +21 with 100 meter
+			// Callie is +30 with 200 meter
+			// Every 20 meter is + 2.5 frame of advantage
+
+							// nspecial_hitpause = 27 + (LoveStorage/12); // Pre June 14th 2022 Frame Advantage
+							// Callie is +6 with no meter 
+							// Callie is +15 with 100 meter
+							// Callie is +22 with 200 meter
+							// Every 20 meter is + 2 frame of advantage
 			
 			set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, nspecial_hitpause);
 			nspecial_damage += 1;
