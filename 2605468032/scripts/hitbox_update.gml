@@ -30,3 +30,12 @@ if (attack == AT_USTRONG)
         }
     }
 }
+
+if (attack == AT_NSPECIAL)
+{
+    if (!position_meeting(x + 15 * spr_dir, y, asset_get("par_block")) and !position_meeting(x + 15 * spr_dir, y, asset_get("par_jumpthrough")))
+    {
+        destroyed = 1
+    }
+    player_id.move_cooldown[AT_NSPECIAL] = 2;
+}

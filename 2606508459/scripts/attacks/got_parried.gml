@@ -1,7 +1,5 @@
 move_cooldown[AT_NSPECIAL] = 60;
 
-if ("my_hitboxID" not in self){exit;}
-
 switch (my_hitboxID.attack)
 {
     case AT_NSPECIAL:
@@ -45,3 +43,4 @@ switch (my_hitboxID.attack)
         move_cooldown[43] = 0;
         my_hitboxID.hitbox_timer = 0;
 }
+

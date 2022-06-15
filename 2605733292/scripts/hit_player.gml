@@ -185,21 +185,22 @@ switch (my_hitboxID.attack){ //lol switch statement
 		break;
 }
 
-if((my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) || my_hitboxID.attack == AT_DSPECIAL){
-	with(hit_player_obj){
-		if (url == 2284823424){
-			bed_x = x;
-			bed_y = y;
-			bed_spawn = true;
-			with chat_owner{
-				ds_list_add(chat_txt, "Respawn point set");
-				ds_list_add(chat_tmr, chat_tmr_max);
-				ds_list_add(chat_col, c_white);
+if(has_runes_equipped){
+	if((my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) || my_hitboxID.attack == AT_DSPECIAL){
+		with(hit_player_obj){
+			if (url == 2284823424){
+				bed_x = x;
+				bed_y = y;
+				bed_spawn = true;
+				with chat_owner{
+					ds_list_add(chat_txt, "Respawn point set");
+					ds_list_add(chat_tmr, chat_tmr_max);
+					ds_list_add(chat_col, c_white);
+				}
 			}
 		}
 	}
 }
-
 if (my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT_DSPECIAL){
 	if (hit_player_obj.NotSleepKirby_IsSleeping == true){
 		hit_player_obj.NotSleepKirby_IsSleeping = false

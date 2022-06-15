@@ -1,4 +1,5 @@
 //hit_player
+/*
 if (instance_exists(bubbleg))
 {
     if (instance_exists(bubbleg.bubbled_playerid))
@@ -45,10 +46,14 @@ if (!instance_exists(bubbleg))
             hit_player_obj.wet += 1;
             break;
         }
+}*/
+
+if (attack == AT_NSPECIAL)
+{
+    power_wave = 0;
 }
-
-
+/*
 if (my_hitboxID.type = 1 and wet > 0)
 {
     wet -= 1;
-}
+}*/

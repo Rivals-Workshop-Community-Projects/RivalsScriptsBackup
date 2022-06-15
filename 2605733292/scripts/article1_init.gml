@@ -58,6 +58,10 @@ spawned_by_rune_o = false
 
 hud_color = get_player_hud_color(player_id.player);
 
+hitbox_exists = false;
+
+star_existance_timer = 0;
+
 hud_y_var_thing = 80
 
 ayo_the_pizza_here = false;
@@ -81,6 +85,8 @@ bounce_lockout = 0;
 gaming_timing_variable_that_i_should_have_named_better = 0;
 
 copy_essence_belongs_to_sleep_kirby = true;
+
+is_hitbox_active = false;
 
 //HITBOX STUFF aaaa (thank u to tdude for letting me reuse some code)
 can_get_hit = true;

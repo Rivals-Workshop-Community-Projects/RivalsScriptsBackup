@@ -158,3 +158,5 @@ bairused = false;
 
 nothanks =  false;
 
+galaxy_timer = 0;
+

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 23 );
 
 // blue
 set_color_profile_slot( 1, 0, 223, 239, 242 ); //Hoodie Pink
@@ -247,15 +247,15 @@ set_color_profile_slot( 21, 5, 255, 0, 0 ); //Eyes/Socks
 set_color_profile_slot( 21, 6, 255, 255, 255 ); //Smog
 set_color_profile_slot( 21, 7, 255, 0, 0 ); //Smog Outline
 
-//// mexico
-//set_color_profile_slot( 22, 0, 215, 34, 40 ); //Hoodie Pink
-//set_color_profile_slot( 22, 1, 214, 152, 109 ); //Skin
-//set_color_profile_slot( 22, 2, 94, 49, 43 ); //Hair
-//set_color_profile_slot( 22, 3, 14, 105, 75 ); //Hoodie Purp
-//set_color_profile_slot( 22, 4, 80, 79, 89 ); //Skirt
-//set_color_profile_slot( 22, 5, 14, 105, 75 ); //Eyes/Socks
-//set_color_profile_slot( 22, 6, 18, 133, 56 ); //Smog
-//set_color_profile_slot( 22, 7, 143, 17, 21 ); //Smog Outline
+// derby 3
+set_color_profile_slot( 22, 0, 244, 248, 136 ); //Hoodie Pink
+set_color_profile_slot( 22, 1, 255, 228, 184 ); //Skin
+set_color_profile_slot( 22, 2, 122, 71, 79 ); //Hair
+set_color_profile_slot( 22, 3, 244, 248, 136 ); //Hoodie Purp
+set_color_profile_slot( 22, 4, 180, 225, 128 ); //Skirt
+set_color_profile_slot( 22, 5, 244, 248, 136 ); //Eyes/Socks
+set_color_profile_slot( 22, 6, 153, 196, 173 ); //Smog
+set_color_profile_slot( 22, 7, 244, 248, 136 ); //Smog Outline
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

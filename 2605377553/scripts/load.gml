@@ -95,3 +95,5 @@ sprite_change_offset("chain_link",0,11);
 //hehe
 set_victory_bg( sprite_get( "mal_victorybg" ));
 set_victory_theme( sound_get( "mal_victory" ));
+
+sprite_change_offset("los_pronouns_hormones",0,0);

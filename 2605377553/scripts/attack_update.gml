@@ -5,7 +5,7 @@ if attack == AT_TAUNT
 		sound_play(asset_get("mfx_unstar"))
 	}
 	if window == 1 && window_timer == 5 && extra_col == 2 or 
-	window == 1 && window_timer == 5 && extra_col == 4{
+	window == 1 && window_timer == 5 && extra_col == 4 or window == 1 && window_timer == 5 && get_player_color( player ) == 22{
 		sound_play(sound_get("nuzl_cough"))
 	}
 }

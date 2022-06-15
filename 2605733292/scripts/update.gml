@@ -498,3 +498,24 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 			*/
 		}
 	}
+//
+
+if(has_rune("A")
+|| has_rune("B")
+|| has_rune("C")
+|| has_rune("D")
+|| has_rune("E")
+|| has_rune("F")
+|| has_rune("G")
+|| has_rune("H")
+|| has_rune("I")
+|| has_rune("J")
+|| has_rune("K")
+|| has_rune("L")
+|| has_rune("M")
+|| has_rune("N")
+|| has_rune("O")){
+	has_runes_equipped = true;
+} else {
+	has_runes_equipped = false;
+}

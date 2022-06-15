@@ -25,7 +25,7 @@ ig++;
 
 //Up Strong Hit
 set_window_value(AT_USTRONG, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, ig, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_USTRONG, ig, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_HSPEED_TYPE, 0);
@@ -35,7 +35,7 @@ ig++;
 
 //Up Strong End
 set_window_value(AT_USTRONG, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, ig, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USTRONG, ig, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -44,7 +44,7 @@ ig++;
 
 //Up Strong Back Jump
 set_window_value(AT_USTRONG, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, ig, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_USTRONG, ig, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -69,7 +69,7 @@ set_hitbox_value(AT_USTRONG, ig, HG_DAMAGE, 5);
 set_hitbox_value(AT_USTRONG, ig, HG_ANGLE, 55);
 set_hitbox_value(AT_USTRONG, ig, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USTRONG, ig, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_USTRONG, ig, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_USTRONG, ig, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_USTRONG, ig, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USTRONG, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_USTRONG, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
@@ -82,7 +82,7 @@ ig++;
 set_hitbox_value(AT_USTRONG, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, ig, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_USTRONG, ig, HG_WINDOW, 3);
-set_hitbox_value(AT_USTRONG, ig, HG_LIFETIME, 6);
+set_hitbox_value(AT_USTRONG, ig, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, ig, HG_HITBOX_X, 23);
 set_hitbox_value(AT_USTRONG, ig, HG_HITBOX_Y, -67);
 set_hitbox_value(AT_USTRONG, ig, HG_WIDTH, 46);

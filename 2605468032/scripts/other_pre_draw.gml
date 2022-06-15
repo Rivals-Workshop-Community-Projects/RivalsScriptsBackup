@@ -1,5 +1,5 @@
 //other_post_draw
-with (oPlayer)
+/*with (oPlayer)
 {
     if (get_char_info( player, INFO_STR_NAME) == "Gawr Gura")
     {   if (get_player_color(player) == 7)

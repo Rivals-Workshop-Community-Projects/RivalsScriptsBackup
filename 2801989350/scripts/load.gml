@@ -86,6 +86,7 @@ sprite_change_offset("pluxspawn", 67, 89);
 sprite_change_offset("pluxdespawn", 73, 69);
 sprite_change_offset("pluxbounce", 67, 94);
 sprite_change_offset("pluxspin", 62, 86);
+sprite_change_offset("pluxhud", 5, 4);
 
 sprite_change_offset("bubbleattack", 63, 96);
 sprite_change_offset("bubbleidle", 63, 96);

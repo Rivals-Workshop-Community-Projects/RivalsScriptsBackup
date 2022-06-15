@@ -63,6 +63,14 @@ if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND)
     pop = 0;
     shrimp = shrimp_set;
     nspec_charge = 0;
+    if (free == false)
+    {
+        stall = 0;
+        reset_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_VSPEED)
+        reset_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE)
+        reset_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_VSPEED)
+        reset_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE)
+    }
 }
 
 if (free == false)

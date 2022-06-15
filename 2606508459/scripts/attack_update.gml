@@ -326,6 +326,12 @@ if (attack_down &&
 
 if (attack == 43)
 {
+    if (window == 1 && window_timer == 1 && !hitpause)
+    {
+        sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"), false, noone, 1, 2);
+        spawn_hit_fx(x + 10 * spr_dir, y - 20, 311)
+    }
+    
     //Charge move: Reset to the charging animation if B is still being held at the end of it
     if ((window == 2 || window == 3 || window == 4) && 
         /*special_down*/ false)
@@ -394,7 +400,9 @@ if (attack == 43)
     
     //Shoot
     if (window == 8 && window_timer == 1 && move_cooldown[AT_EXTRA_1] <= 0)
-    {        
+    {      
+        sound_play(asset_get("sfx_clairen_swing_strong"), false, noone, 1, 2);
+        
         flag_breverse = false;
         spawnFireBall(            
             x + (nspecial_offsetX * image_xscale),            

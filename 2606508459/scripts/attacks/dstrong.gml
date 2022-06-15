@@ -8,7 +8,7 @@ var ig = 1;
 
 //Down Strong Start
 set_window_value(AT_DSTRONG, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, ig, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSTRONG, ig, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSTRONG, ig, AG_WINDOW_ANIM_FRAMES, 7);
 
 ig++;
@@ -46,7 +46,7 @@ set_hitbox_value(AT_DSTRONG, ig, HG_HEIGHT, 73);
 set_hitbox_value(AT_DSTRONG, ig, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG, ig, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSTRONG, ig, HG_TECHABLE, 2);
-set_hitbox_value(AT_DSTRONG, ig, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSTRONG, ig, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSTRONG, ig, HG_ANGLE, -90);
 set_hitbox_value(AT_DSTRONG, ig, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_DSTRONG, ig, HG_KNOCKBACK_SCALING, .5);
@@ -71,7 +71,7 @@ set_hitbox_value(AT_DSTRONG, ig, HG_WIDTH, 59);
 set_hitbox_value(AT_DSTRONG, ig, HG_HEIGHT, 35);
 set_hitbox_value(AT_DSTRONG, ig, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, ig, HG_PRIORITY, 3);
-set_hitbox_value(AT_DSTRONG, ig, HG_DAMAGE, 7);
+set_hitbox_value(AT_DSTRONG, ig, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSTRONG, ig, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, ig, HG_ANGLE, -90);
 set_hitbox_value(AT_DSTRONG, ig, HG_BASE_KNOCKBACK, 9);
@@ -98,7 +98,7 @@ set_hitbox_value(AT_DSTRONG, ig, HG_WIDTH, 54);
 set_hitbox_value(AT_DSTRONG, ig, HG_HEIGHT, 20);
 set_hitbox_value(AT_DSTRONG, ig, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, ig, HG_PRIORITY, 3);
-set_hitbox_value(AT_DSTRONG, ig, HG_DAMAGE, 7);
+set_hitbox_value(AT_DSTRONG, ig, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSTRONG, ig, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, ig, HG_ANGLE, 70);
 set_hitbox_value(AT_DSTRONG, ig, HG_BASE_KNOCKBACK, 9);// was at 12 and killed at  31 percent it was insane ("my fault btw" from zonyx)

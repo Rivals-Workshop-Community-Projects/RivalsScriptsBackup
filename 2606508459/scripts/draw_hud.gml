@@ -1,5 +1,7 @@
 //Draw HUD
 
+if ("dip_MP" not in self){exit;}
+
 if (dip_MP)
 {
     //====> MP Numbers ###########################################

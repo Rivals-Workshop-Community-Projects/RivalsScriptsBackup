@@ -67,8 +67,8 @@ set_window_value(43, ig, AG_WINDOW_TYPE, 1);
 set_window_value(43, ig, AG_WINDOW_LENGTH, 2);
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAME_START, 33);
-set_window_value(43, ig, AG_WINDOW_HAS_SFX, 1);
-set_window_value(43, ig, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_strong"));
+//set_window_value(43, ig, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(43, ig, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_strong"));
 
 ig++;
 

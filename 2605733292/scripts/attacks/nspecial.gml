@@ -75,7 +75,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sfx_canvas_curse_balloon_pop);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_bubble"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_bubble"));

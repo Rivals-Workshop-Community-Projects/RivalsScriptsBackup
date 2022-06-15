@@ -143,6 +143,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[21,0] = make_color_rgb(255, 0, 0)
     ce[21,1] = "Canada??"
     ce[21,2] = "Thought it would be kinda funny. Mal is canadian."    
+    ce[22,0] = make_color_rgb(180, 225, 128)
+    ce[22,1] = "Summer Derby"
+    ce[22,2] = "Go get 'em Nuzl! Includes a custom Galaxy."    
 
 
     // you can add more, by copypasting and changing the first index of the array accordingly.

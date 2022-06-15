@@ -10,259 +10,169 @@ switch(attack)
     case AT_JAB:
         was_parried = false;
         break;
-    case AT_NSPECIAL:
-        can_move = false;
-        if (nspec_charge == 30)
-        {
-            sound_play(asset_get("mfx_star"))
-            spawn_hit_fx(x, y - 20, 301);
-            set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 4.5)
-            set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7)
-            set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.7)
-            set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7)
-            set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.7)
-            set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9)
-            set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.9)
-            set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 9)
-            set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 1)
-            set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 9)
-            set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 14)
-        }
+    case AT_NSPECIAL_2:
         if (window == 1)
         {
-            reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED)
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK)
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING)
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE)
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING)
-            reset_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK)
-            reset_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING)
-            reset_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE)
-            reset_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING)
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE)
-            reset_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE)
-        }
-        else if (window == 2)
-        {
-            if (special_down and nspec_charge < 90)
+            if (window_timer == 1)
             {
-                nspec_charge++;
-                if window_timer = 19
-                window_timer = 0;
-            }
-            if (!special_down)
-            {
-                window_timer = 20;
-            }
-            if (window_timer == 20)
-            {
-                nspec_charge = 0;
+                stall += 1;
             }
         }
-        else if (window == 3)
+        if (stall >= 2)
         {
-            if (window_timer == 2)
-            sound_play(asset_get("sfx_charge_blade_swing"));
-            if (instance_exists(bubbleg))
-            {
-                if (bubbleg.bubbled_playerid == noone and has_hit_player)
-                {
-                    bubbleg.sfx = 1;
-                }
-            }
+            set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE, 0)
+            set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_VSPEED, 0)
+            set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 0)
+            set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_VSPEED, 0)
         }
         break;
     case AT_FSPECIAL:
         if (window == 1)
         {
-            boost = 1;
-            if (fspec_use < 2)
-            vsp = 0;
             if (window_timer == 1)
             {
-                fspec_use += 1;
+                reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
+                sound_play(asset_get("sfx_frog_uspecial_cast"), 0, noone, 0.8, 0.85)
+            }
+            else if (window_timer == 6)
+            {
+                sound_play(asset_get("sfx_swipe_medium2"), 0, noone, 0.6, 0.9)
+            }
+            else if (window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH))
+            {
+                if (special_down)
+                {
+                    set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 12);
+                }
             }
         }
-        else if (window == 2)
+        if (window == 2)
         {
-            if (boost == 1 and free == true)
+            if (window_timer == 2)
             {
-                vsp -= 6;
-                boost = 0;
-            }
-        }
-        else if (window == 3)
-        {
-            if (window_timer == 1)
-            {
-                move_cooldown[AT_FSPECIAL] = 45;
+                sound_play(asset_get("sfx_swish_medium"), 0, noone, 0.5, 1);
+                sound_play(asset_get("sfx_shovel_swing_heavy2"), 0, noone, 0.5, 1);
             }
         }
         break;
-    case AT_DSPECIAL:
+    case AT_FSPECIAL_AIR:
         can_fast_fall = false;
         if (window == 1)
         {
-            bubble_effect = 1;
-            follow = 1;
-            can_move = false;
-            can_fast_fall = false;
-            move_cooldown[AT_DSPECIAL] = 180
-            switch(window_timer)
+            if (window_timer == 1)
             {
-                case 6:
-                    bubble_frame = 1;
-                    break;
-                case 11:
-                    bubble_frame = 2;
-                    break;
-                case 14:
-                    if (!instance_exists(bubbleg))
-                    {
-                        bubbleg = instance_create(x - (4 * spr_dir), y + 5, "obj_article1");
-                        bubbleg.state = 5;
-                        bubbleg.col = get_player_hud_color(player);
-                        bubbleg.gura_owner = player;
-                    }
-                    break;
-                case 15: 
-                    bubble_effect = 0;
-                    bubble_frame = 0;
-                    if (instance_exists(bubbleg))
-                    {
-                        bubbleg.outline = 1;
-                    }
-                    break;
+                reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
+                sound_play(asset_get("sfx_frog_uspecial_cast"), 0, noone, 0.8, 0.85)
+            }
+            else if (window_timer == 6)
+            {
+                sound_play(asset_get("sfx_swipe_medium2"), 0, noone, 0.6, 0.9)
+            }
+            else if (window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH))
+            {
+                if (special_down)
+                {
+                    set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 12);
+                }
             }
         }
-        else if (window == 2)
+        if (window == 2)
         {
-            can_move = false;
-            can_fast_fall = false;
+            if (window_timer == 2)
+            {
+                sound_play(asset_get("sfx_swish_medium"), 0, noone, 0.5, 1);
+                sound_play(asset_get("sfx_shovel_swing_heavy2"), 0, noone, 0.5, 1);
+            }
         }
-        if (window == 3)
+        if (window == 1)
         {
-            if (free)
+            if (window_timer == 1)
             {
-                follow = 0;
-            }
-            if (follow == 0 and free == false)
-            {
-                set_state(PS_LANDING_LAG)
-            }
-            if (window_timer < 4)
-            {
-                if (left_down)
-                {
-                    x_dir = -1;
-                }
-                else if (right_down)
-                {
-                    x_dir = 1;
-                }
-                else if (!left_down and !right_down)
-                {
-                    x_dir = spr_dir;
-                }
-            }
-            else if (window_timer == 4)
-            {
-                spr_dir = x_dir;
-                bubbleg.x_dir = spr_dir;
-            }
-            else if (window_timer == 12)
-            {
-                bubbleg.depth = 0;
-                if free
-                {
-                    window = 5;
-                    bubbleg.move = 0;
-                }
+                if (free == true)
+                set_attack_value(AT_FSPECIAL_AIR, AG_CATEGORY, 1)
                 else
                 {
-                    follow = 0;
-                    bubbleg.move = 1;
+                    set_attack_value(AT_FSPECIAL_AIR, AG_CATEGORY, 2)
                 }
             }
         }
         else if (window == 3)
         {
-            follow = 0;
-        }
-        break;
-    case AT_DSPECIAL_2:
-        if (window == 1)
-        {
-            can_move = false
-            reset_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_GOTO);
-            vsp = 0;
-            float = 0;
-        }
-        else if (window == 2)
-        {
-            can_move = false
-            if (special_down)
+            if (window_timer == 1)
             {
-                vsp = float;
-                float += 0.05
-                if (instance_exists(bubbleg))
+                if (vsp > 0)
                 {
-                    if (bubbleg.bubbled_playerid == noone)
-                    {
-                        set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_GOTO, 2);
-                        if (up_down or down_down)
-                        bubbleg.drag = 1;
-                        else
-                        bubbleg.drag_y = 0;
-                        
-                        if (right_down or left_down)
-                        bubbleg.drag = 1;
-                        else
-                        bubbleg.drag_x = 0;
-                        
-                        switch(up_down)
-                        {
-                            case true:
-                                bubbleg.drag_y = -1;
-                                break;
-                        }
-                        switch(down_down)
-                        {
-                            case true:
-                                bubbleg.drag_y = 1;
-                                break;
-                        }
-                        switch(right_down)
-                        {
-                            case true:
-                                bubbleg.drag_x = 1;
-                                break;
-                        }
-                        switch(left_down)
-                        {
-                            case true:
-                                bubbleg.drag_x = -1;
-                                break;
-                        }
-                    }
-                    if (bubbleg.state == 9)
-                    {
-                        bubbleg.drag = 0;
-                        bubbleg.drag_y = 0;
-                        bubbleg.drag_x = 0;
-                        set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_GOTO, 3)
-                    }
+                    vsp = 0;
                 }
             }
-            else if (!special_down)
+        }
+        else if (window == 4)
+        {
+            can_move = true;
+        }
+        else if (window < 4)
+        {
+            can_move = false;
+        }
+        break;
+    case AT_FSTRONG:
+        if (window == 1)
+        {
+            if (window_timer == 1)
             {
-                if (instance_exists(bubbleg))
-                {
-                    bubbleg.drag = 0;
-                    bubbleg.drag_y = 0;
-                    bubbleg.drag_x = 0;
-                }
-                set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_GOTO, 3)
+                reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
+                sound_play(asset_get("sfx_frog_uspecial_cast"), 0, noone, 0.8, 0.85)
+            }
+            else if (window_timer == 6)
+            {
+                sound_play(asset_get("sfx_swipe_medium2"), 0, noone, 0.6, 0.9)
+            }
+        }
+        if (window == 2)
+        {
+            if (window_timer == 2)
+            {
+                sound_play(asset_get("sfx_swish_weak"), 0, noone, 0.4, 1);
+                sound_play(asset_get("sfx_shovel_swing_heavy1"), 0, noone, 0.5, 1);
+            }
+        }
+    case AT_DSPECIAL:
+        can_move = false;
+        can_fast_fall = false;
+        can_wall_jump = true;
+        if(window == 1)
+        {
+            if (window_timer == get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH))
+            {
+                spawn_base_dust(x, y, "dash_start", spr_dir)
+            }
+        }
+        break;
+        break;
+    case AT_DSPECIAL_2:
+        can_move = false;
+        can_fast_fall = false;
+        can_wall_jump = true;
+        if(window >= 1 && window <= 3 && !free){
+            if(window == 2){
+                destroy_hitboxes();
+                set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 5);
+                window = 4;
+                window_timer = 0;
+                sound_play(asset_get("sfx_blow_heavy2"));
+            }else{
+                set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 6);
+                destroy_hitboxes();
+                window = 6;
+                window_timer = 0;
+                sound_play(asset_get("sfx_med2"));
+            }
+        }
+        if (window == 3)
+        {
+            if (window_timer == get_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH))
+            {
+                window = 7; 
             }
         }
         break;
@@ -270,6 +180,7 @@ switch(attack)
         can_fast_fall = false;
         if (window == 3)
         can_wall_jump = true;
+        
         break;
     case AT_USTRONG:
         if (strong_charge == 30 and boost2 == 0)
@@ -411,3 +322,34 @@ switch(attack)
         }
         break;
 }
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

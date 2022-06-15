@@ -18,7 +18,7 @@ set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_UAIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -36,7 +36,7 @@ set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 100);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, light_effect);

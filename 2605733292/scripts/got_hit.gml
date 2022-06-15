@@ -15,8 +15,10 @@ if (has_rune("O")){
 		if (essences_in_use !=  essences_max_limit){
 			sound_play(sfx_ability_drop);
 			spawn_hit_fx( x, y - 70, 304 );
-			var star = instance_create(x + 0 * spr_dir, y - 70, "obj_article1");
-			star.state = 5
+			var abilityStar = instance_create(x + 0 * spr_dir, y - 70, "obj_article1");
+			abilityStar.state = 5
+			abilityStar.should_spawn_hitbox = true;
+			abilityStar.hitbox_exists = true;
 			create_hitbox(AT_EXTRA_2, 1, x, y - 70);
 			with (star) {
 				if (player_id != other.id) continue; //skip this article if the ids do not match.

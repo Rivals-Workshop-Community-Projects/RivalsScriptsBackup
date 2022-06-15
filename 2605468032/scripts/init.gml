@@ -130,8 +130,11 @@ projectile = noone;
 shrimp_set = 0;
 shrimp = 0;
 fish = 0;
+power_wave = 0;
 
 y_offset = 0;
+
+stall = 0;
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

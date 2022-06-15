@@ -1,7 +1,6 @@
 set_attack_value(AT_USPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecial_2"));
 set_attack_value(AT_USPECIAL_2, AG_NUM_WINDOWS, 5);
-set_attack_value(AT_USPECIAL_2, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_USPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_USPECIAL_2, AG_AIR_SPRITE, sprite_get("uspecial_2"));
 set_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("uspecial_2_hurt"));
@@ -18,7 +17,7 @@ set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_HSPEED, 2);
-set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -10);
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -8);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 1);
 
@@ -173,8 +172,8 @@ set_hitbox_value(AT_USPECIAL_2, 8, HG_HITBOX_Y, -106);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_PRIORITY, 6);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_DAMAGE, 4);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_ANGLE, 85);
-set_hitbox_value(AT_USPECIAL_2, 8, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USPECIAL_2, 8, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_USPECIAL_2, 8, HG_HIT_SFX, sound_get("plux_glide"));

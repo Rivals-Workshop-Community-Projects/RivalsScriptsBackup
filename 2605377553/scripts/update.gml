@@ -79,7 +79,7 @@ if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 3){
 	}
 }
 
-//OMORI
+//Something
 if (extra_col == 0 && get_player_color( player ) == 9){
 	if down_down {
 	move_cooldown[AT_TAUNT] = 10
@@ -173,6 +173,17 @@ bairused = false;
 }
 
 //whether the player is inside smoke, and consumes it. returns true if smoke was consumed
+
+
+if (galaxy_timer == 0 and instance_exists(hit_player_obj) and hit_player_obj.activated_kill_effect)
+{
+	if (get_player_color( player ) == 22 or extra_col == 2 or extra_col == 4){
+    galaxy_timer = 90;
+	}
+}
+galaxy_timer = max(galaxy_timer-1,0)
+
+
 #define consumeSmokeCloud()
 {
 	var consumed = false;

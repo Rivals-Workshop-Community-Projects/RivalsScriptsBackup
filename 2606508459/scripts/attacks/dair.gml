@@ -1,6 +1,7 @@
 set_attack_value(AT_DAIR, AG_CATEGORY, 1);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
+set_attack_value(AT_DAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 3);
 
@@ -54,6 +55,7 @@ set_hitbox_value(AT_DAIR, ig, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, ig, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_DAIR, ig, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DAIR, ig, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_DAIR, ig, HG_HITSTUN_MULTIPLIER, .85);
 //set_hitbox_value(AT_DAIR, ig, HG_HIT_LOCKOUT, 6); // commented out lock out
 set_hitbox_value(AT_DAIR, ig, HG_VISUAL_EFFECT, 303);
 //set_hitbox_value(AT_DAIR, ig, HG_VISUAL_EFFECT_X_OFFSET, 27);
@@ -81,6 +83,7 @@ set_hitbox_value(AT_DAIR, ig, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, ig, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_DAIR, ig, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DAIR, ig, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_DAIR, ig, HG_HITSTUN_MULTIPLIER, .85);
 //set_hitbox_value(AT_DAIR, ig, HG_HIT_LOCKOUT, 6); // commented out lock out
 set_hitbox_value(AT_DAIR, ig, HG_VISUAL_EFFECT, 303);
 //set_hitbox_value(AT_DAIR, ig, HG_VISUAL_EFFECT_X_OFFSET, 27);

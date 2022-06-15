@@ -265,6 +265,7 @@ if (_currHB != noone)
     with (_currHB)
     {
         var o = other.c_owner;
+        if (!o.free) { other._bounceControl = 0; }
         
         /*
         print_debug("HP: " + string(o.hitpause))
@@ -542,7 +543,19 @@ if (_currHB != noone)
                             case 2:
                                 o.old_vsp = o.vsp < 0 ? -o.vsp : o.vsp; break;*/
                             case 1:
-                                o.old_vsp = -8; break;
+                                print_debug(string(other._bounceControl));
+                                
+                                if (other._bounceControl > 3)
+                                {
+                                    o.old_vsp = other._bounceControl - 8;
+                                }
+                                else
+                                {
+                                    o.old_vsp = -8;
+                                }
+                                
+                                other._bounceControl++;
+                                break;
                             case 2:
                                 o.old_vsp = 8; break;
                         }

@@ -52,6 +52,7 @@ fx_hardway_duration = 30;
 fx_hardway = hit_fx_create( sprite_get( "hardway" ), fx_hardway_duration );
 fx_hardway_x = -20; //-34;
 fx_hardway_y = -156;
+//fx_catooken = hit_fx_create( 311, 30 );
 
 fx_gado_duration = 20;
 fx_gado_End = hit_fx_create( sprite_get("ball_formC_End"), fx_gado_duration );

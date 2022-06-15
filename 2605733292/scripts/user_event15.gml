@@ -180,12 +180,12 @@ initWords("
 
 
 
-Now for Fspecial: Nightly Nightcap.
+Now for Forward Special: Nightly Nightcap.
 Fspecial has high startup and endlag with mediocre range, but landing the move forces the opponent to sleep.
 Also, landing the move on airborne opponents will not put the status on them: they will be dunked instead.");
 
 
-initTip("Nspecial: Burst Bubble");
+initTip("Neutral Special: Burst Bubble");
 initWords("A chargeable projectile. The projectile will only work when it is fully charged. You can even move while charging!
 The projectile itself is fairly slow, but deals big damage. Could be useful for stage control.
 Press parry when the bubble is fully charged to store the charge. Press NSpecial again to release it!
@@ -197,7 +197,7 @@ If the bubble touches either one of your Sleep Copy Essences or the Ability Star
 initImage_ext(sprite_get("nspecial"), -6, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("nspecial_bubble"), -5, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("Dspecial: Sleep Copy Essence");
+initTip("Down Special: Sleep Copy Essence");
 initWords("Dspecial places a Sleep Copy Essence on the stage. After the star materializes, you can hit it around with any of your normals!
 Having the star hit someone puts the sleep status on them, so this is a fairly versatile option. The star only lasts for 4 seconds after being hit by something (and refreshes after being hit by anything), so keep this in mind.
 Be careful: the opponent can also hit it, which could lead to you falling victim to your own status! Note: Opponents can't hit it back with a projectile.
@@ -209,16 +209,16 @@ initWords("This is fairly a basic 3 hit jab at a first glance: but after Jab 3 i
 Lying down for a while lets Kirby activate Sweet Dreams.");
 initImage_ext(sprite_get("jab"), -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("Dtilt");
+initTip("Down Tilt: Slide");
 initWords("A slide. Hitting an opponent bounces both of you upward. Can be ledge canceled.");
 initImage_ext(sprite_get("dtilt"), -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("Nair");
+initTip("Neutral Air: Spinning Pillow Dive");
 initWords("A full 360 degree swing around Sleep Kirby. Landing during the move's active frames autocancels into Jab 3.
 If you land and cancel into Jab 3, it becomes a deadly kill option. Use this to catch your opponent off guard!");
 initImage_ext(sprite_get("nair"), -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("Fstrong");
+initTip("Forward Strong: Smash Kick");
 initWords("Kirby's Fsmash from Smash Bros. You'll go a little bit farther if you charge it.");
 initImage_ext(sprite_get("fstrong"), -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
@@ -258,6 +258,15 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.10", "14 June, 2022");
+initHeader("General");
+initSection("~ Adjusted Muno Steve interaction to be runes only.");
+initHeader("Neutral Special (Burst Bubble)");
+initSection("- Projectile Hitstun Multiplier: 1 -> 0.8
+- Sleep Kirby now loses his Burst Bubble charge when he is parried.");
+initHeader("Down Special (Sleep Copy Essence)");
+initSection("~ Adjusted how hitpause is calculated on it.");
 
 initPatch("1.9", "29 November, 2021");
 initHeader("General");

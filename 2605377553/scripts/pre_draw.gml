@@ -1,3 +1,9 @@
+if galaxy_timer > 0 {
+	
+	draw_sprite_ext(sprite_get("los_pronouns_hormones"),0, view_get_xview(), view_get_yview(), 2 , 2 ,0, c_white, (galaxy_timer/2)/60 );
+	
+}
+
 //chains
 //do stuff for every attack with the chains, to customize chain placement and also cuz they have different windows and window lengths
 if (state == PS_ATTACK_GROUND && attack == AT_FSTRONG)
@@ -86,7 +92,7 @@ maskHeader();
     draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 0, c_white, 1); //change the 2*spr_dir and 2 to 1 if the character doesnt use small_sprites
 
 maskMidder();
-    draw_sprite_tiled_ext(sprite_get("mexicoshirt"), 0, x-12, y-5, 1, 1, c_white, 1)
+    draw_sprite_tiled_ext(sprite_get("derbyskirt"), 0, x * spr_dir, y, 1, 1, c_white, 1)
 maskFooter();
 }
 

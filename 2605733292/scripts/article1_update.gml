@@ -165,7 +165,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_get_hit) {
 		    if (hitbox_hit.type == 1){
 
 			     hitpause = true;
-			     hitstop = hitbox_hit.hitpause;
+			     hitstop = round(hitbox_hit.hitpause);
 			     
 			     if (!hitpause){
 			        old_hsp = hsp;
@@ -320,6 +320,9 @@ if (state == 3){ //Got Hit???
 
 if (state == 4){
 	//create_hitbox(AT_DSPECIAL, 1, x, y - 24);
+	
+	//friendly reminder to myself that i should recode how the hitbox works on this move
+	//maybe port over how it works on aiai?
 	
 	if (gaming_timing_variable_that_i_should_have_named_better == 3){
 		cur_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y + 4);

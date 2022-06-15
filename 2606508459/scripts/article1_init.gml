@@ -135,6 +135,7 @@ pf_x = 0;
 pf_y = [0, 0, 0, 0, 0];
 _ballHitpause = false;
 _parryMode = false;
+_bounceControl = 0;
 
 //Hitbox State
 _hit = 0;

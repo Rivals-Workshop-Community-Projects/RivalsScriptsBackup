@@ -41,8 +41,7 @@ outline_color=[0, 0, 0]
 }    
 
 if  (get_player_color(player) == 22) { //change # to the color you wanna change
-    set_character_color_slot( 0, 0, 0, 0, 0); //change # to the slot you wanna change
-    set_character_color_slot( 3, 0, 0, 0, 0); //change # to the slot you wanna change
+    set_character_color_slot( 4, 0, 0, 0, 0); //change # to the slot you wanna change
 }
 
 

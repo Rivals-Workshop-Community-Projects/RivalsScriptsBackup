@@ -31,3 +31,8 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 if (my_hitboxID.attack != AT_NAIR && my_hitboxID.attack != AT_NSPECIAL){
 	prat_land_time = 10;
 }
+
+if (burst_bubble_is_charged == true){
+	burst_bubble_is_charged = false;
+	sound_play(sfx_canvas_curse_balloon_pop);
+}
