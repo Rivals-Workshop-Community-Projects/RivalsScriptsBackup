@@ -10,7 +10,7 @@ if attack == AT_NSPECIAL
 		fx_particles = 3;
 		
 		//Adjust Radius
-		var detectRadius = 100;
+		var detectRadius = 1000;
 	
 		//animate
 		if image_index + 0.3 >= 3

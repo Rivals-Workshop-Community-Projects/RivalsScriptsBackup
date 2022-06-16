@@ -64,11 +64,12 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 //boom
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("nspec_star_mask"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 50);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 60*10);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 30);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -25);
-set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 62);
+set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 50);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 50);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 12);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 60);

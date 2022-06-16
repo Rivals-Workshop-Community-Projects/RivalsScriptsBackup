@@ -436,6 +436,8 @@ if (attack == AT_USPECIAL){
 			set_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH, 12);
 			set_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH, 20);
 			set_window_value(AT_USPECIAL, 9, AG_WINDOW_LENGTH, 8);
+			set_window_value(AT_USPECIAL, 9, AG_WINDOW_TYPE, 0);
+			usp_real_cd = true;
 		}
 		if (!special_down){
 			usp_release_once = true;

@@ -244,6 +244,6 @@ if(get_player_damage(player) - prev_dameg <= 3 && sound_timer <= 0){
 }
 }
 if(get_player_color(player) == 26){
-    shader_start();
+    init_shader();
 }
 prev_dameg = get_player_damage(player);

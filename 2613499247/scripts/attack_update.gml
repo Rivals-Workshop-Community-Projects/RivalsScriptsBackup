@@ -105,3 +105,14 @@ if(attack == AT_NAIR)
     }
 }
 
+
+#define trigger_wavebounce() 
+{
+	if ((left_down and state_timer <= 5 and spr_dir == 1) or (right_down and state_timer <= 5 and spr_dir == -1) and (b_reversed == false)) {
+    	hsp *= -1;
+    	spr_dir *= -1;
+    	b_reversed = true;
+	} else if (state_timer == 6) {
+    	b_reversed = false;
+	}
+}

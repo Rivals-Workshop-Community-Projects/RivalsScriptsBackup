@@ -3,7 +3,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.04";
-patch_day = "10";
+patch_day = "11";
 patch_month = "JUN";
  
 var num_alts = 25;

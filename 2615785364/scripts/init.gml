@@ -20,12 +20,12 @@ walk_anim_speed = .125;
 dash_anim_speed = .125;
 pratfall_anim_speed = .25;
 
-walk_speed = 8;
+walk_speed = 7.5;
 walk_accel = 5;
 walk_turn_time = 1;
 initial_dash_time = 1;
 initial_dash_speed = 1;
-dash_speed = 8;
+dash_speed = 7.5;
 dash_turn_time = 1;
 dash_turn_accel = 1;
 dash_stop_time = 10;

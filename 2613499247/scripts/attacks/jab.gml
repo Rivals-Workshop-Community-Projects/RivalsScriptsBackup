@@ -10,7 +10,7 @@ set_attack_value(AT_JAB, AG_AIR_SPRITE, sprite_get("jab"));
 set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 
 //set_window_value(AT_JAB, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 6);//6
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 1, AG_WINDOW_HSPEED, 8);
 set_window_value(AT_JAB, 1, AG_WINDOW_VSPEED, -1);

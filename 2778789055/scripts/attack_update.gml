@@ -153,6 +153,8 @@ if(attack == AT_FSPECIAL){
 		move_cooldown[AT_FSPECIAL] = 240;
 		move_cooldown[AT_FSPECIAL_2] = 60;
 		has_shrimp = false;
+	}if(window == 2 && window_timer = 1){
+		shrimp_proj = create_hitbox(AT_FSPECIAL, 1, x + spr_dir * 35, y - 38);
 	}
 }
 if(attack == AT_FSPECIAL_2){

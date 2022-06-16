@@ -182,11 +182,11 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = "Palette by Shen";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot zerk
+	//Slot waste
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Nakiri Ayame";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I get a lot of questions about the horns. I am not an Oni, I am half dragon.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette by Zerks";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Stormy Night";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "I love a stormy night.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "WasteofaName Alt";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 

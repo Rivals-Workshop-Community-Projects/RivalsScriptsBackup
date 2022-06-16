@@ -9,3 +9,6 @@ if (attack==AT_NSPECIAL&&free){
 	reset_window_value(AT_NSPECIAL_AIR, 4, AG_WINDOW_LENGTH);
 	reset_window_value(AT_NSPECIAL_AIR, 4, AG_WINDOW_SFX_FRAME);
 }
+if (attack==AT_USPECIAL){
+	set_window_value(AT_USPECIAL, 9, AG_WINDOW_TYPE, 7);
+}

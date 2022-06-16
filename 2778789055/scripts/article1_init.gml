@@ -64,7 +64,9 @@ pot_has_trapped = false;
 pot_trapped_gumbo = false;
 clink_cooldown = 0;
 no_hitbox = false;
+player_near_pot = false;
 
+effect_radius = 60;
 food_id = 0;
 
 

@@ -662,7 +662,27 @@ if(variable_instance_exists(id,"diag"))
 			set_article_color_slot( 6, 65, 54, 80 ); //kimono bottom
 			set_article_color_slot( 7, 240, 242, 244 ); //kimono accents
 			break;
+			
 		case 21: // SD16 + STR4 + ATK1
+			color_select_alt_name = "Astra"
+			set_color_profile_slot( current_alt, 0, 213, 199, 242 ); //fur
+			set_color_profile_slot( current_alt, 1, 252, 244, 198 ); //fur tip
+			set_color_profile_slot( current_alt, 2, 100, 100, 139 ); //hair
+			set_color_profile_slot( current_alt, 3, 240, 188, 84 ); //horns + accents
+			set_color_profile_slot( current_alt, 4, 175, 207, 249 ); //kimono top
+			set_color_profile_slot( current_alt, 5, 134, 228, 230 ); //kimono wave
+			set_color_profile_slot( current_alt, 6, 127, 148, 217 ); //kimono bottom
+			set_color_profile_slot( current_alt, 7, 255, 234, 115 ); //kimono accents
+			set_article_color_slot( 0, 213, 199, 242 ); //fur
+			set_article_color_slot( 1, 252, 244, 198 ); //fur tip
+			set_article_color_slot( 2, 100, 100, 139 ); //hair
+			set_article_color_slot( 3, 240, 188, 84 ); //horns + accents
+			set_article_color_slot( 4, 175, 207, 249 ); //kimono top
+			set_article_color_slot( 5, 134, 228, 230 ); //kimono wave
+			set_article_color_slot( 6, 127, 148, 217 ); //kimono bottom
+			set_article_color_slot( 7, 255, 234, 115 ); //kimono accents
+			break;
+			
 		case 22: // SD16 + STR4 + SP2
 		case 23: // SD16 + STR4 + SP2 + ATK 1
 		case 24: // SD16 + JP8
@@ -708,24 +728,24 @@ if(variable_instance_exists(id,"diag"))
 			break;
 			
 		case 26: // SD16 + JP8 + SP2
-			color_select_alt_name = "Shiny Emboar"
-			// Shiny Emboar
-			set_color_profile_slot( current_alt, 0, 255, 146, 51 ); //fur
-			set_color_profile_slot( current_alt, 1, 185, 227, 242 ); //fur tip
-			set_color_profile_slot( current_alt, 2, 170, 194, 242 ); //hair
-			set_color_profile_slot( current_alt, 3, 229, 230, 235 ); //horns + accents
-			set_color_profile_slot( current_alt, 4, 76, 72, 76 ); //kimono top
-			set_color_profile_slot( current_alt, 5, 86, 185, 243 ); //kimono wave
-			set_color_profile_slot( current_alt, 6, 27, 137, 222 ); //kimono bottom
-			set_color_profile_slot( current_alt, 7, 76, 72, 76 ); //kimono accents
-			set_article_color_slot( 0, 255, 146, 51 ); //fur
-			set_article_color_slot( 1, 185, 227, 242 ); //fur tip
-			set_article_color_slot( 2, 170, 194, 242 ); //hair
-			set_article_color_slot( 3, 229, 230, 235 ); //horns + accents
-			set_article_color_slot( 4, 76, 72, 76 ); //kimono top
-			set_article_color_slot( 5, 86, 185, 243 ); //kimono wave
-			set_article_color_slot( 6, 27, 137, 222 ); //kimono bottom
-			set_article_color_slot( 7, 76, 72, 76 ); //kimono accents
+			color_select_alt_name = "Keiki"
+			// Keiki
+			set_color_profile_slot( current_alt, 0, 209, 166, 128 ); //fur
+			set_color_profile_slot( current_alt, 1, 246, 218, 188 ); //fur tip
+			set_color_profile_slot( current_alt, 2, 47, 171, 255 ); //hair
+			set_color_profile_slot( current_alt, 3, 131, 244, 40 ); //horns + accents
+			set_color_profile_slot( current_alt, 4, 38, 123, 122 ); //kimono top
+			set_color_profile_slot( current_alt, 5, 131, 240, 53 ); //kimono wave
+			set_color_profile_slot( current_alt, 6, 232, 215, 2 ); //kimono bottom
+			set_color_profile_slot( current_alt, 7, 222, 142, 4 ); //kimono accents			
+			set_article_color_slot( 0, 209, 166, 128 ); //fur
+			set_article_color_slot( 1, 246, 218, 188 ); //fur tip
+			set_article_color_slot( 2, 47, 171, 255 ); //hair
+			set_article_color_slot( 3, 131, 244, 40 ); //horns + accents
+			set_article_color_slot( 4, 38, 123, 122 ); //kimono top
+			set_article_color_slot( 5, 131, 240, 53 ); //kimono wave
+			set_article_color_slot( 6, 232, 215, 2 ); //kimono bottom
+			set_article_color_slot( 7, 222, 142, 4 ); //kimono accents
 			break;
 			
 		case 27: // SD16 + JP8 + SP2 + ATK1
@@ -773,14 +793,14 @@ if(variable_instance_exists(id,"diag"))
 		case 29: // SD16 + JP8 + STR4 + ATK1
 			color_select_alt_name = "Ikazuchi"
 		// Ikazuchi
-			set_color_profile_slot( 30, 0, 236, 185, 154 ); //fur
-			set_color_profile_slot( 30, 1, 254, 249, 243 ); //fur tip
-			set_color_profile_slot( 30, 2, 7, 1, 3 ); //hair
-			set_color_profile_slot( 30, 3, 255, 255, 255 ); //horns + accents
-			set_color_profile_slot( 30, 4, 135, 181, 215 ); //kimono top
-			set_color_profile_slot( 30, 5, 209, 216, 234 ); //kimono wave
-			set_color_profile_slot( 30, 6, 237, 96, 97 ); //kimono bottom
-			set_color_profile_slot( 30, 7, 220, 238, 242 ); //kimono accents
+			set_color_profile_slot( current_alt, 0, 236, 185, 154 ); //fur
+			set_color_profile_slot( current_alt, 1, 254, 249, 243 ); //fur tip
+			set_color_profile_slot( current_alt, 2, 7, 1, 3 ); //hair
+			set_color_profile_slot( current_alt, 3, 255, 255, 255 ); //horns + accents
+			set_color_profile_slot( current_alt, 4, 135, 181, 215 ); //kimono top
+			set_color_profile_slot( current_alt, 5, 209, 216, 234 ); //kimono wave
+			set_color_profile_slot( current_alt, 6, 237, 96, 97 ); //kimono bottom
+			set_color_profile_slot( current_alt, 7, 220, 238, 242 ); //kimono accents
 			set_article_color_slot( 0, 236, 185, 154 ); //fur
 			set_article_color_slot( 1, 254, 249, 243 ); //fur tip
 			set_article_color_slot( 2, 7, 1, 3 ); //hair
@@ -789,7 +809,27 @@ if(variable_instance_exists(id,"diag"))
 			set_article_color_slot( 5, 209, 216, 234 ); //kimono wave
 			set_article_color_slot( 6, 237, 96, 97 ); //kimono bottom
 			set_article_color_slot( 7, 220, 238, 242 ); //kimono accents
+			break;
 		case 30: // SD16 + JP8 + STR4 + SP2
+			color_select_alt_name = "Nakiri Ayame"
+			// Nakiri Ayame
+			set_color_profile_slot( current_alt, 0, 216, 81, 114 ); //fur
+			set_color_profile_slot( current_alt, 1, 247, 214, 210 ); //fur tip
+			set_color_profile_slot( current_alt, 2, 243, 237, 241 ); //hair
+			set_color_profile_slot( current_alt, 3, 234, 182, 188 ); //horns + accents
+			set_color_profile_slot( current_alt, 4, 39, 37, 50 ); //kimono top
+			set_color_profile_slot( current_alt, 5, 219, 199, 89 ); //kimono wave
+			set_color_profile_slot( current_alt, 6, 39, 37, 50 ); //kimono bottom
+			set_color_profile_slot( current_alt, 7, 181, 33, 49 ); //kimono accents
+			set_article_color_slot( 0, 216, 81, 114 ); //fur
+			set_article_color_slot( 1, 247, 214, 210 ); //fur tip
+			set_article_color_slot( 2, 243, 237, 241 ); //hair
+			set_article_color_slot( 3, 234, 182, 188 ); //horns + accents
+			set_article_color_slot( 4, 39, 37, 50 ); //kimono top
+			set_article_color_slot( 5, 219, 199, 89 ); //kimono wave
+			set_article_color_slot( 6, 39, 37, 50 ); //kimono bottom
+			set_article_color_slot( 7, 181, 33, 49 ); //kimono accents
+			break;
 		case 31: // SD16 + JP8 + STR4 + SP2 + ATK1
 		case 32: // TNT32
 			break;

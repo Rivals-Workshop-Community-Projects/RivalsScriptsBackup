@@ -182,7 +182,7 @@ if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amatera
 // Compatibility Stuff -----------------------------------------------
 Hikaru_Title = "Dance in the rain with me";
 arena_title = "The Eye of the Storm";
-battle_text = "*They took everything from me."; // Opening line of "Lost at Birth" by Public Enemy
+battle_text = "*They took everything from me."; 
 
 //Dialogue Buddy by Ducky! get it at https://steamcommunity.com/workshop/filedetails/discussion/2557293251/3062995463267073852/
 diag_portrait=sprite_get("dialogue_buddy"); // This will allow you to put any custom portrait onto the dialogue buddy!

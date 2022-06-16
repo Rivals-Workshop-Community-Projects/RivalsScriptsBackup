@@ -75,6 +75,7 @@ sprite_change_offset("smokesolo", 112/2, 106/2);
 
 sprite_change_offset("bairburst", 0, 94);
 sprite_change_offset("nspec_star", 144/2, 144/2);
+sprite_change_offset("nspec_star_mask", 144/2, 144/2);
 sprite_change_offset("particle_2",20,20);
 nspecEffect = hit_fx_create( sprite_get("particle_2"), 10);
 

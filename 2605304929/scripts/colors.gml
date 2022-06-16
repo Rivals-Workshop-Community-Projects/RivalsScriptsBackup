@@ -226,15 +226,15 @@ set_color_profile_slot( 19, 5, 26, 206, 255 ); //kimono wave
 set_color_profile_slot( 19, 6, 82, 72, 140 ); //kimono bottom
 set_color_profile_slot( 19, 7, 163, 1, 5 ); //kimono accents
 
-// Nakiri Ayame
-set_color_profile_slot( 20, 0, 216, 81, 114 ); //fur
-set_color_profile_slot( 20, 1, 247, 214, 210 ); //fur tip
-set_color_profile_slot( 20, 2, 243, 237, 241 ); //hair
-set_color_profile_slot( 20, 3, 234, 182, 188 ); //horns + accents
-set_color_profile_slot( 20, 4, 39, 37, 50 ); //kimono top
-set_color_profile_slot( 20, 5, 219, 199, 89 ); //kimono wave
-set_color_profile_slot( 20, 6, 39, 37, 50 ); //kimono bottom
-set_color_profile_slot( 20, 7, 181, 33, 49 ); //kimono accents
+//Stormy Night (Waste's)
+set_color_profile_slot( 20, 0, 51, 62, 133 ); //fur
+set_color_profile_slot( 20, 1, 51, 62, 133 ); //fur tip
+set_color_profile_slot( 20, 2, 67, 27, 78 ); //hair
+set_color_profile_slot( 20, 3, 255, 217, 85 ); //horns + accents
+set_color_profile_slot( 20, 4, 31, 42, 92 ); //kimono top
+set_color_profile_slot( 20, 5, 183, 183, 207 ); //kimono wave
+set_color_profile_slot( 20, 6, 5, 17, 67 ); //kimono bottom
+set_color_profile_slot( 20, 7, 255, 217, 85 ); //kimono accents
 
 // Ouro Kronii
 set_color_profile_slot( 21, 0, 29, 51, 139 ); //fur

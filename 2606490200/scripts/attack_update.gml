@@ -60,6 +60,7 @@ switch attack {
         if !hitpause {
             
         if window == 1 && window_timer == 6 {
+        	//create_hitbox(AT_FSPECIAL_2,1,x,y - 50)
             sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)
         }
         
@@ -788,9 +789,25 @@ with (asset_get("new_dust_fx_obj")) {
                	create_hitbox(AT_EXTRA_1, 10 ,x,y)
                }
                }
+               
+         	
          	}
+         	   
+         	  if hitpause && free {
+         		window_timer += .7
+         		hit_player_obj.x += hit_player_obj.old_hsp
+         		hit_player_obj.y += hit_player_obj.old_vsp
+         	  }
+         	  
          }
          
+         if window == 8 {
+         	 if hitpause && free {
+         		window_timer += .7
+         		hit_player_obj.x += hit_player_obj.old_hsp
+         		hit_player_obj.y += hit_player_obj.old_vsp
+         	  }
+         }
      break ;
      
           case AT_EXTRA_3 :

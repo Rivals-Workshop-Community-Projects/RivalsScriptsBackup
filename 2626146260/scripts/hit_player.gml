@@ -68,7 +68,6 @@ angledraw = random_func(1,360,true)
 
 if move_cooldown[AT_DAIR] = 0 && my_hitboxID.attack == AT_DAIR && (my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 3){
     sound_play(sound_get("vef2"))
- spawn_hit_fx (x+20*spr_dir,y-40, lighten)    
  move_cooldown[AT_DAIR] = 20
 }
 
@@ -78,11 +77,11 @@ if triggered == 1 or rank >= 4{
 	
 	if triggered == 1 &&  my_hitboxID.damage > 1 {   
 		
-	smallfunnyslashfx = hit_fx_create( sprite_get( "smallfunnyslashfx" ), floor(5 + min(20, hitstop )) );
+	//smallfunnyslashfx = hit_fx_create( sprite_get( "smallfunnyslashfx" ), floor(5 + min(20, hitstop )) );
 
-    actualworkdamn = spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - 40, smallfunnyslashfx )
+    //actualworkdamn = spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - 40, smallfunnyslashfx )
 
-    actualworkdamn.draw_angle = random_func(9,360,true) + my_hitboxID.x*4
+    //actualworkdamn.draw_angle = random_func(9,360,true) + my_hitboxID.x*4
     
 
 
@@ -112,11 +111,9 @@ if triggered == 1 or rank >= 4{
 	}
 	
 	if  rank >= 4 && my_hitboxID.damage > 1 {
-		
 		  slashn = hit_fx_create( sprite_get( "slashc" ), floor(8 + hitstop) );
 		 spawn_hit_fx (hit_player_obj.x  + (random_func(1, 36, true))*spr_dir, hit_player_obj.y - 10 - random_func(2, 66, true) , slashn)
  	    	 sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20, 2.2 - min((hitstop*hitstop)/100,1.5) )
-
 
    }
    

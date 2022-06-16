@@ -41,3 +41,6 @@ if (my_hitboxID.attack==AT_NSPECIAL_AIR){
 if (my_hitboxID.attack==AT_FSPECIAL){
 	my_hitboxID.owner_article.idle_cycle = my_hitboxID.owner_article.idle_cycle + 15;
 }
+if (my_hitboxID.attack==AT_USPECIAL){
+	yo_dummy_your_up_b_got_PARRIED = true;
+}

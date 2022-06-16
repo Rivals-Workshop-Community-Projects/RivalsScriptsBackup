@@ -211,6 +211,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     	}
     	if (hitbox_hit != noone){
     		if(hitbox_hit.player_id.attack != AT_NSPECIAL){
+    			if(!player_near_pot && hitbox_hit.player_id.attack != AT_FSPECIAL){
     			if(hitbox_hit.hitpause > 0 && hitbox_hit.hit_priority > 0){
     			with (hitbox_hit){
         			sound_play(sound_effect);
@@ -246,6 +247,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
         }
     			}
 					}
+    		}
 				if(hitbox_hit.hitpause != 0 && hitbox_hit.hit_priority != 0){	
     			if(spice_cooldown == 0){
     				if(spice_level < 3){
@@ -255,11 +257,20 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     					}
     				}	
     			}
-    		if(hitbox_hit.player_id.attack == AT_FSPECIAL && hitbox_hit.hbox_num == 1){	
+    		if(!player_near_pot){
+    		if(hitbox_hit.player_id.attack == AT_FSPECIAL && hitbox_hit.hbox_num == 1){
+    			if(hitbox_hit == player_id.shrimp_proj){
+    		        			with (hitbox_hit){
+        			sound_play(sound_effect);
+        			var hitfx = spawn_hit_fx(floor(x), floor(y), hit_effect);
+        			hitfx.pause = 10;
+    			}
     		    state = 4;
     			state_timer = 0;
     			hitbox_hit.destroyed = true;
-    		}if(hitbox_hit.player_id.attack == AT_DSPECIAL && hitbox_hit.hbox_num == 1){
+    			}
+    		}
+    		}if(hitbox_hit.player_id.attack == AT_DSPECIAL && hitbox_hit.hbox_num == 1 && hitbox_hit.type == 1){
     			//hitbox_hit.player_id.dspecial_spr_var = true;
     		    state = 4;
     			state_timer = 0;
@@ -305,6 +316,7 @@ if (state == 0){
 				hsp = 0;
 				}
 	}
+
 }
 
 
@@ -361,6 +373,17 @@ with (oPlayer){
 		}
 	}
 }
+
+	player_near_pot = false;
+	with (asset_get("oPlayer")) {
+		if(other.state = 1){
+	if (player != other.player && state != PS_RESPAWN){
+			if(collision_circle( other.x, other.y - 40, other.effect_radius, self, true, false)){
+			other.player_near_pot = true;
+			}
+	}
+		}
+	}
 	
 }
 
@@ -726,10 +749,8 @@ if(state_timer = 1){
 	if(has_shrimp = true){
 		if(player_id.custom_food == 0){
 		food_id = 4;
-		}if(player_id.custom_food == 1){
-		food_id = 5;
-		}if(player_id.custom_food == 2){
-		food_id = 6;
+		}if(player_id.custom_food > 0){
+		food_id = player_id.custom_food + 4;
 		}
 	with (player_id){
 	move_cooldown[AT_FSPECIAL] = 240;

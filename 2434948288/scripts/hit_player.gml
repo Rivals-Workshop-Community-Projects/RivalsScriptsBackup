@@ -28,4 +28,13 @@ switch (my_hitboxID.attack)
 		{
 			hit_player_obj.maybeBury = maybeBuryFrames+hit_player_obj.hitpause;
 		}
+		break;
+
+	case AT_DATTACK:
+		if (my_hitboxID.hbox_num == 1 && !hit_player_obj.super_armor)
+		{
+			window = 3;
+			window_timer = 0;
+		}
+		break;
 }

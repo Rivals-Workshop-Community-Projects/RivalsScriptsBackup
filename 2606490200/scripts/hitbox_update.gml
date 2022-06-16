@@ -1,4 +1,138 @@
 ///
+if attack == AT_FSPECIAL_2 && hbox_num == 2  {
+   hit_effect_x = 20 - random_func(1,41,true)
+   hit_effect_y = 20 - random_func(2,41,true)
+   
+   if hitbox_timer == 1 {
+   with player_id.hit_player_obj {
+   x += 5 - random_func(1,11,true)
+   y += 5 - random_func(2,11,true)
+   }
+   hit_priority = 9
+   }
+}
+
+if attack == AT_FSPECIAL_2 && hbox_num == 1  {
+	image_index = hitbox_timer/4
+	if free {
+		hitbox_timer = 1
+	} else {
+		hsp = 0
+	}
+	
+	if hitbox_timer = 3 {
+		spawn_hit_fx(x,y+40,306)
+		shake_camera(2,2)
+		 sound_play(asset_get("sfx_kragg_rock_pillar"),false,noone,1,1)
+		 sound_play(asset_get("sfx_frog_fspecial_charge_full"),false,noone,1,.8)
+		 sound_play(asset_get("sfx_absa_kickhit"),false,noone,1,1)
+	}
+	
+	if player_id.hit_player_obj.hitpause == true && hitbox_timer%4 == 2 {
+		hitbox_timer -= 1 
+	}
+	
+	if hitbox_timer/4 < 50 && player_id.hit_player_obj != player_id && player_id.hit_player_obj.hitpause == false {
+		with player_id.hit_player_obj {
+			x += floor((other.x + (other.spr_dir * 60) - x)/4)
+			y += floor((other.y + 150 - y)/4)
+		}
+	}
+	if hitbox_timer/4 == 6 {
+		spawn_hit_fx(x,y+40,304)
+				 sound_play(sound_get("sfx_regicry"),false,noone,1,1)
+				 shake_camera(2,12)
+	}
+	
+	if hitbox_timer/4 == 15 {
+		 sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,1)
+	}
+	
+    if hitbox_timer/4 == 16 {
+    	create_hitbox(AT_FSPECIAL_2,2,x,y + 40)
+    }
+    
+    if hitbox_timer/4 == 17 {
+		 sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,1)
+	}
+	
+    if hitbox_timer/4 == 18 {
+    	create_hitbox(AT_FSPECIAL_2,2,x,y + 40)
+    }
+    
+    if hitbox_timer/4 == 20 {
+		 sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,1)
+	}
+	
+    if hitbox_timer/4 == 21 {
+    	create_hitbox(AT_FSPECIAL_2,2,x,y + 40)
+    }
+    
+    if hitbox_timer/4 == 22 {
+		 sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,1)
+	}   
+	
+    if hitbox_timer/4 == 23 {
+    	create_hitbox(AT_FSPECIAL_2,2,x,y + 40)
+    }
+ 
+    if hitbox_timer/4 == 24 {
+       sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)	
+    }
+    
+     if hitbox_timer/4 == 27 {
+       sound_play(asset_get("sfx_kragg_spike"),false,noone,1,1)
+       create_hitbox(AT_FSPECIAL_2,2,x,y + 40)	
+    }
+    
+    if hitbox_timer/4 == 29 {
+       sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)	
+    }
+    
+     if hitbox_timer/4 == 31 {
+       sound_play(asset_get("sfx_kragg_spike"),false,noone,1,1)
+       create_hitbox(AT_FSPECIAL_2,2,x,y + 40)	
+    }   
+    
+    if hitbox_timer/4 == 33 {
+       sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)	
+    }
+    
+     if hitbox_timer/4 == 35 {
+       sound_play(asset_get("sfx_kragg_spike"),false,noone,1,1)
+       create_hitbox(AT_FSPECIAL_2,2,x,y + 40)	
+    }
+
+    if hitbox_timer/4 == 37 {
+       sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)	
+    }
+    
+     if hitbox_timer/4 == 39 {
+       sound_play(asset_get("sfx_kragg_spike"),false,noone,1,1)
+       create_hitbox(AT_FSPECIAL_2,2,x,y + 40)	
+    }
+    
+     if hitbox_timer/4 == 40 {
+       sound_play(asset_get("sfx_spin"),false,noone,1,1)
+    }
+    
+     if hitbox_timer/4 == 42 or hitbox_timer/4 == 44 or hitbox_timer/4 == 46 or hitbox_timer/4 == 48 or hitbox_timer/4 == 50 {
+       sound_play(asset_get("sfx_spin"),false,noone,1,1)
+       create_hitbox(AT_FSPECIAL_2,2,x,y + 40)	
+    }
+    
+     if hitbox_timer/4 == 48  {
+      sound_play(asset_get("sfx_kragg_rock_pillar"),false,noone,1,1)
+    }
+    
+    if hitbox_timer/4 == 56  {
+      		spawn_hit_fx(x,y+40,304)
+				 sound_play(sound_get("sfx_regicry"),false,noone,1,1)
+				 shake_camera(2,12)
+    }
+    
+}
+
 
 if attack == AT_USPECIAL {
     
@@ -149,8 +283,8 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	    	
             fx = spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
 	    	fx.pause = 6 
-			hsp = (player_id.x - x)/10
-			vsp = (player_id.y - 30 - y)/10
+			hsp = (player_id.x - x)/35
+			vsp = (player_id.y - 30 - y)/35
 			spr_dir *= -1
 			
 			

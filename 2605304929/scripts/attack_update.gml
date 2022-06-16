@@ -64,8 +64,8 @@ if (attack == AT_UTHROW && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_shield = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
@@ -110,8 +110,8 @@ if (attack == AT_FTHROW && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
@@ -202,8 +202,8 @@ if (attack == AT_DTHROW && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
@@ -256,8 +256,8 @@ if (attack == AT_NTHROW && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_tech = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
@@ -306,8 +306,8 @@ if (attack == AT_NSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_tech = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
@@ -386,8 +386,8 @@ if (attack == AT_USPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_tech = false;
 		grabbed_player_obj.can_wall_tech = false;
 		//print(grabbed_player_obj.can_wall_jump);
@@ -469,8 +469,8 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_tech = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
@@ -532,8 +532,8 @@ if (attack == AT_DSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_tech = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
@@ -582,8 +582,8 @@ if (attack == AT_EXTRA_2 && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_tech = false;
 		grabbed_player_obj.can_wall_tech = false;
 		//print(window);
@@ -647,7 +647,7 @@ if (attack == AT_EXTRA_2 && instance_exists(grabbed_player_obj)) {
 		if (window == 6) {
 			//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
 			var pull_to_x = floor((grabbed_player_obj.char_height * .70)) * spr_dir;
-			var pull_to_y = 1 * floor(opponent_hurtbox_width * .50);
+			var pull_to_y = -1 * floor(opponent_hurtbox_width * .50);
 			//var pull_to_y = ;
 			//grabbed_player_obj.draw_y = grabbed_player_obj.y + 10;
 		    if(spr_dir = 1){grabbed_player_obj_spr_angle=270;Resolve_Draw_Offsets(grabbed_player_obj,spr_dir,grabbed_player_obj_spr_angle);} // Draws in other_pre_draw.gml
@@ -710,8 +710,8 @@ if (attack == AT_EXTRA_3 && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_tech = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
@@ -769,8 +769,8 @@ if (attack == AT_FINAL_SMASH_THROW && instance_exists(grabbed_player_obj)) {
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
 		grabbed_player_obj.can_shield = false;
-		grabbed_player_obj.can_wall_jump = false;
-		grabbed_player_obj.can_wall_cling = false;
+		//grabbed_player_obj.can_wall_jump = false;
+		//grabbed_player_obj.can_wall_cling = false;
 		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.

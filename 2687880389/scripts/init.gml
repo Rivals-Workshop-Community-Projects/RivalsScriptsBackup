@@ -18,8 +18,7 @@ can_store_dspecial_charge = has_rune("H");
 //uspecial_rework = true; //has_rune("I"); // Remove
 //remap_specials = false; //has_rune("I"); // Remove
 //rune I desc="Old experimental tweaks to specials, will remove"
-energy_floor = has_rune("I");
-//rune I type="A"
+energy_floor_on_hit_enemy = has_rune("I");
 // tier 3
 hi_jump_kick = has_rune("L");
 titanium_ally = has_rune("M");
@@ -355,6 +354,7 @@ max_rocket_rising_speed = -5.5; // -6
 fuel_consumption_rate = 10; // 4 (doesn't matter since everything scales off of this)
 max_rocket_fuel = rocket_seconds * 60 * fuel_consumption_rate;
 pity_ratio = 0.3; // 1/5 1/4 1/8
+energy_floor = true;
 var airborne_recovery_seconds = energy_floor ? 4.5 * (1 + pity_ratio) : 4.5; // 3+(2/3);
 var grounded_recovery_seconds = energy_floor ? 2.0 * (1 + pity_ratio) : 2.0; // 1.5 1+(3/8);
 airborne_fuel_recovery_rate = max_rocket_fuel / (airborne_recovery_seconds * 60); //1.2 2
@@ -584,8 +584,6 @@ if (codename_wireframe_active) {
 // Rune-specific
 titanium_armor_value = 20;
 shield_icon = sprite_get("shield_icon");
-// Track if anyone is currently performing a garb on this player
-RETROBLAST_HOLDER_ID = noone;
 // Track if this character is being targetted, share stacks
 RETROBLAST_TARGETTING_ME = noone;
 RETROBLAST_TARGET_STACKS = 0;

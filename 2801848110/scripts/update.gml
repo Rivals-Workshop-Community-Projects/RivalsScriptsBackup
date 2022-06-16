@@ -262,7 +262,8 @@ if state == PS_PARRY  {
      	parrylagging --
      	window_timer -- 
      	if parrylagging > 20 {
-     		set_state(PS_PRATFALL)
+     		set_state(PS_PRATLAND)
+     		state_timer = 0 - parrylagging
      	}
      }
     

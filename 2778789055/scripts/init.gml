@@ -184,6 +184,7 @@ shrimp_in_pot = false;
 pot_trap = false;
 food_id = 0;
 shrimpsplosion = false;
+shrimp_proj = 0;
 //dspecial_spr_var = false;
 
 bubpop_pitch = 0;
@@ -210,6 +211,12 @@ set_victory_portrait(sprite_get("drip_portrait"));
 custom_food = 1;
 }if(alt == 21){ //Kaiman
 custom_food = 2;
+}if(alt == 9){ //Kawasaki
+custom_food = 3;
+}if(alt == 18){ //Vector
+custom_food = 4;
+}if(alt == 14){ //TAG
+custom_food = 5;
 }
 
 if(get_player_color(player) == 22){

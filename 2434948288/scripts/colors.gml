@@ -37,7 +37,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 set_num_palettes( 22 );
 
 // blue
-set_color_profile_slot( 1, 0, 79, 101, 189 ); //Hat1
+set_color_profile_slot( 1, 0, 78, 101, 189 ); //Hat1
 set_color_profile_slot( 1, 1, 69, 40, 161 ); //Hat2
 set_color_profile_slot( 1, 2, 70, 170, 196 ); //Pants1
 set_color_profile_slot( 1, 3, 47, 96, 181 ); //Pants2

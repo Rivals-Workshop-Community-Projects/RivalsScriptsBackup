@@ -13,9 +13,9 @@ pratfall_anim_speed = .25;
 walk_speed = 3.0;
 walk_accel = 0.2;
 walk_turn_time = 6;
-initial_dash_time = 16;
-initial_dash_speed = 7;
-dash_speed = 6.5;
+initial_dash_time = 8;
+initial_dash_speed = 6.5;
+dash_speed = 6;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -43,7 +43,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
-knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;

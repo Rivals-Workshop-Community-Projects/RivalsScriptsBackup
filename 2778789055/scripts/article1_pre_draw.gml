@@ -10,6 +10,7 @@ if(has_shrimp && state != 4){
 //food
 
 if(state = 7){
+    shader_end();
   draw_sprite_ext(sprite_get("food"), food_id, x - 30, y - 66, 2, 2, 0, c_white, 1); 
   if(food_id = 0){
       draw_debug_text(x-98, y - 85,string("New Orleans-Style Beignets"));
@@ -25,5 +26,11 @@ if(state = 7){
       draw_debug_text(x-30, y - 85,string("Blue Sky"));
   }if(food_id = 6){
       draw_debug_text(x-46, y - 85,string("Set of Gyoza"));
+  }if(food_id = 7){
+      draw_debug_text(x-51, y - 85,string("Maxim Tomato"));
+  }if(food_id = 8){
+      draw_debug_text(x-50, y - 85,string("Chili Dog Plate"));
+  }if(food_id = 9){
+      draw_debug_text(x-65, y - 85,string("Orange Dreamsicle"));
   }
 }

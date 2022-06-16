@@ -386,9 +386,9 @@ switch (attack){
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hit_0);
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, hit_0);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 13: 1));
-        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 13: 1));
-        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 13: 1));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 11: 1));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 7: 1));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 7: 1));
         break;
         case 1:
         set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 4);
@@ -403,9 +403,9 @@ switch (attack){
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hit_1);
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, hit_1);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 14: 2));
-        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 14: 2));
-        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 14: 2));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 12: 2));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
         set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_plasma_chargeshot"): sound_get("beam_plasma_shot")));
         if(charge == 24){
             sound_play(sound_get("beam_plasma_charging"));
@@ -428,9 +428,9 @@ switch (attack){
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hit_2);
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, hit_2);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 14: 2));
-        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 14: 2));
-        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 14: 2));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 12: 2));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
         set_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_wave_chargeshot"): sound_get("beam_wave_shot")));
         if(charge == 24){
             sound_play(sound_get("beam_wave_charging"));
@@ -453,9 +453,9 @@ switch (attack){
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get(string(beam_sprite) + (charge = 90 || has_rune("M")? "_charge": "_shot")));
         set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hit_3);
         set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, hit_3);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 15: 3));
-        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 15: 3));
-        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 15: 3));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, (charge = 90 || has_rune("M")? 13: 3));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
         set_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_wave_chargeshot"): sound_get("beam_wave_shot")));
         if(charge == 24){
             sound_play(sound_get("beam_wave_charging"));
@@ -661,7 +661,7 @@ switch (attack){
         set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
         set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 143);
         set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 50);
-        set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1.1);
+        set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
         set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
         move_cooldown[AT_FSPECIAL] = 50;
     }else if(missile_sprite == 0){

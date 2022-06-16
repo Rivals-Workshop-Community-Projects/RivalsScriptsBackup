@@ -1,6 +1,6 @@
 // Pre draw for other players
 if (SpamNeoStringPlayerId == other_player_id.id) {
-    if (SpamNeoPlayerMany == false) {
+    //if (SpamNeoPlayerMany == false) {
         switch (SpamNeoColorGet) {
             
             case 0:
@@ -1523,6 +1523,6 @@ if (SpamNeoStringPlayerId == other_player_id.id) {
             break;
             
         }
-    }
+    //}
 }
 

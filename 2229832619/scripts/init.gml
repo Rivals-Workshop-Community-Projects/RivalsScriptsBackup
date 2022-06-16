@@ -55,6 +55,8 @@ air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 3.8; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
 prat_fall_accel = .5; //multiplier of air_accel while in pratfall
+//prat_fall_accel_normal = .5; //
+//prat_fall_accel_reduce = .3; //
 //air_friction_orig = 0.017;
 air_friction = 0.03;//0.017
 //air_friction_hitstun = 0.04;
@@ -176,6 +178,8 @@ dairvsp_orig = -12;
 dairvsp = -12;
 dair_mark = false;
 usp_ls_cooldown = 0;
+usp_real_cd = false;
+yo_dummy_your_up_b_got_PARRIED = false;
 
 usp_land = false;
 

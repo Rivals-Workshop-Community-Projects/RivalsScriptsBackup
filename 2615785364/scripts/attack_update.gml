@@ -86,3 +86,7 @@ if(attack == AT_EXTRA_1) {
 if (attack == AT_DAIR){
 	can_wall_jump = true;
 }
+
+if (attack == AT_DAIR && djumps == 0){
+	can_jump = true;
+}

@@ -174,9 +174,22 @@ if ("practice" in self)
 						AddText("Added Greed alt");
 						break;
 					case 10:
-						AddText("v1.10 - 4 Feb 2021");
+						AddText("v1.10 - 4 Feb 2022");
 						AddText("");
 						AddText("Fixed Rollback temp_level bug");
+						break;
+					case 11:
+						AddText("v1.11 - 16 Jun 2022");
+						AddText("");
+						AddText("Initial Dash Speed 7 -> 6.5");
+						AddText("Dash Speed 6.5 -> 6");
+						AddText("");
+						AddText("Mildly changed UTilt and FTilt sprites");
+						AddText("Moved UTilt Final hitbox upwards to match new sprites");
+						AddText("");
+						AddText("DAttack now goes into endlag on hit immediately");
+						AddText("");
+						AddText("Updated to new AI system");
 						break;
 				}
 				DrawTutorialBlock();
@@ -252,7 +265,7 @@ if ("practice" in self)
 				AddText("Join the Shrine of Light Discord!");
 				AddText("");
 				AddText("Chat with the developer of Lonin and Hikaru");
-				AddText("discord.gg/Kn5ttGx");
+				AddText("discord.gg/w4xqqtrXf8");
 				AddText("");
 				AddText("");
 				AddText("");
@@ -260,7 +273,7 @@ if ("practice" in self)
 				DrawTutorialBlock();
 				DrawTutorialText();
 				draw_sprite_ext(sprite_get("discord"), 0, 16, temp_y-76+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
-				draw_sprite_ext(sprite_get("hikaru"), state_timer/(43/16), 64, temp_y-96+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
+				draw_sprite_ext(sprite_get("HYPEkaru"), state_timer/(43/16), 192, temp_y-98+floor(tutAlpha*4)*2-8, 1, 1, 0, c_white, tutAlpha);
 				break;
 			case 8:
 				AddText("Domenica is a character commissioned by TheShadowHatter!");

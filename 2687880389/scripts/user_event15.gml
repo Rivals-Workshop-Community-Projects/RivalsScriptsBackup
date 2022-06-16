@@ -448,6 +448,18 @@ initHeader("Compatible with");
 initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
+initPatch("1.19", "6 Jun, 2022");
+initWords("Keepin' it light with just a few changes, just to smooth things out.");
+initHeader("Balance:");
+initSection("- back throw cycles before throw increased (12->21)
+			- back throw cycles after throw increased (16->17)
+			- Increased back throw hitpause (6.1->7) and hitpause scaling (1.05->1.2)
+			- Former rune I has been made baseline: Energy immediately recharges back up to the 30% mark on contact with ground, wallkick, or taking damage (things that would normally restore uspecial for most characters)");
+initHeader("Runes");
+initSection("- Rune I has been repurposed - it now grants the same energy bonus on hit.");
+initHeader("Bug fixes:");
+initSection("- Fixed a bug where trading hits during nspecial would incorrectly cause opponents to be teleported into the next grab");
+
 initPatch("1.18", "15 May, 2022");
 initWords("Tiny nerf time, plus a rune to test");
 initHeader("Balance:");

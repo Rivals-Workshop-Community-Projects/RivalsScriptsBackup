@@ -43,11 +43,28 @@ if (state == PS_AIR_DODGE && attack == AT_USPECIAL){
 	sound_stop(sound_get("dimensional"));
 }
 
+if (yo_dummy_your_up_b_got_PARRIED){
+		//prat_fall_accel = prat_fall_accel_reduce;
+		hsp = clamp(hsp, -3, 3)
+	if (!free){
+		yo_dummy_your_up_b_got_PARRIED = false;
+		//prat_fall_accel = prat_fall_accel_normal;
+	}
+}
+
 if ((get_gameplay_time() == 2 && get_training_cpu_action() != CPU_FIGHT) || was_reloaded){
 	practice = true;
 }
 if (practice && down_down && taunt_down && shield_down){
 	nadev = true;
+}
+
+if (usp_real_cd){
+	move_cooldown[AT_USPECIAL] = 2;
+	if (!free||state==PS_WALL_JUMP||state==PS_HITSTUN||state==PS_HITSTUN_LAND){
+		usp_real_cd = false;
+		move_cooldown[AT_USPECIAL] = 0;
+	}
 }
 
 if (dairvsp != dairvsp_orig){

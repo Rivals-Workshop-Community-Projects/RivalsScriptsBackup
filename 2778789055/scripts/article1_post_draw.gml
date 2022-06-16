@@ -18,7 +18,7 @@ if(!can_be_hit){
     }
 }
 }
-//draw_debug_text(x-7, y + -100,string(hsp));
+//draw_debug_text(x-7, y + -100,string(player_near_pot));
 draw_debug_text(x-12, y + 15,string(spice_level));
 draw_sprite_ext(sprite_get("spice_icon"), 0, x - 7, y +5, 1, 1, 0, c_white, 1);
 if(spice_cooldown > 0){

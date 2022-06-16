@@ -2,39 +2,51 @@ var temp_x = x + 8;
 var temp_y = y + 9;
 
 patch_ver = "";
-patch_day = "Daughter of";
-patch_month = "Hallownest";
+patch_day = "Hornet";
+patch_month = "";
 
-var num_alts = 23;
+var num_alts = 30;
 var alt_cur = get_player_color(player);
 
-// Intro Sound
-//sound_play(sound_get("oh"));
+//CSS SFX
+var charuuid = string(sprite_get("idle"));
+	if ("css_char" not in self || css_char != charuuid) {
+        css_char = charuuid;
+        sound_play(sound_get("yell"));
+    }
+    
 //Alt name init. var doesn't work with arrays lol
 
 alt_name[0]  = "Default";
 alt_name[1]  = "Blue";
 alt_name[2]  = "Red";
 alt_name[3]  = "Green";
-alt_name[4]  = "Hornet";
+alt_name[4]  = "White";
 alt_name[5]  = "Purple";
-alt_name[6]  = "The Knight";
-alt_name[7]  = "Infamous";
-alt_name[8]  = "Pretty in Pink";
-alt_name[9]  = "Cyan";
-alt_name[10]  = "Lime";
-alt_name[11]  = "Edge Red";
-alt_name[12]  = "Edge Blue";
-alt_name[13]  = "Man's of Teal";
-alt_name[14]  = "Primary";
-alt_name[15]  = "Secondary";
+alt_name[6]  = "Hornet";
+alt_name[7]  = "Knight";
+alt_name[8]  = "Infamous";
+alt_name[9]  = "Pretty in Pink";
+alt_name[10]  = "Yellow";
+alt_name[11]  = "Lime";
+alt_name[12]  = "Cyan";
+alt_name[13]  = "Rogue";
+alt_name[14]  = "Edge Red";
+alt_name[15]  = "Edge Blue";
 alt_name[16]  = "Bronze";
 alt_name[17]  = "Silver";
 alt_name[18]  = "Gold";
-alt_name[19]  = "Dark";
-alt_name[20]  = "Darker";
-alt_name[21]  = "Light";
-alt_name[22]  = "Coal";
+alt_name[19]  = "Coal";
+alt_name[20]  = "Primary";
+alt_name[21]  = "Secondary";
+alt_name[22]  = "Colorful";
+alt_name[23]  = "Monstrous";
+alt_name[24]  = "Superb";
+alt_name[25]  = "Pocket";
+alt_name[26]  = "Inverted";
+alt_name[27]  = "Dark";
+alt_name[28]  = "Darkest";
+alt_name[29]  = "Light";
 
 
 

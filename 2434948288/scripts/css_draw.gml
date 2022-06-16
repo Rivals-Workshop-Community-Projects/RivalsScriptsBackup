@@ -2,6 +2,12 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
+if (get_color_profile_slot_r(1, 0) == 78)
+{
+    sound_play(sound_get("guitar"),0,-4,2);
+	set_color_profile_slot( 1, 0, 79, 101, 189 );
+}
+
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(max(get_char_info(player, INFO_VER_MINOR)-1, 0));
 image_alpha = max(image_alpha-0.02, 0);
 
@@ -22,6 +28,7 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 
+alt_name = 0;
 alt_name[0]  = "The Shadow Hatter";
 alt_name[1]  = "Blue";
 alt_name[2]  = "Orange";

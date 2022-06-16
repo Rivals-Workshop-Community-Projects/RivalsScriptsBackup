@@ -1,5 +1,8 @@
 ///
 
+
+
+
 if my_hitboxID.attack == AT_FSPECIAL && move_cooldown [AT_NAIR] > 0 {
     move_cooldown [AT_NAIR] = 0
     move_cooldown [AT_BAIR] = 105

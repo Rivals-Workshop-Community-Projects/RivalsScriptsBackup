@@ -6,9 +6,13 @@ if (SpamNeoPlaytest) {
         hit_player_obj.SpamNeoString = true;
         hit_player_obj.SpamNeoStringApplyCooldown = 20;
         hit_player_obj.SpamNeoStringPlayerId = id;
-        if (hit_player_obj.SpamNeoStringCharge < 5) {
-            hit_player_obj.SpamNeoStringCharge += 1;
-        }
+        
+        // Code For Removed Meter
+        //if (hit_player_obj.SpamNeoStringCharge < 5) {
+        //    hit_player_obj.SpamNeoStringCharge += 1;
+        //}
+        
+        hit_player_obj.SpamNeoStringCharge = 1;
     }
 }
 

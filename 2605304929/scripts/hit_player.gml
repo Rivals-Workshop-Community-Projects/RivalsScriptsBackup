@@ -31,7 +31,7 @@ if((hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAN
 
 
 // Uspecial Command Grab
-if (my_hitboxID.attack == AT_USPECIAL) {
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.type == 1) {
 
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
@@ -79,7 +79,7 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 }
 
 //DSpecial Command Grab
-if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && (my_hitboxID.hbox_num == 3)) {
+if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && (my_hitboxID.hbox_num == 3) && my_hitboxID.type == 1) {
 
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
@@ -103,7 +103,7 @@ if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR)
 }
 
 // Nspecial Air Command Grab
-if (my_hitboxID.attack == AT_NSPECIAL_AIR) {
+if (my_hitboxID.attack == AT_NSPECIAL_AIR && my_hitboxID.type == 1) {
 
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
@@ -127,7 +127,7 @@ if (my_hitboxID.attack == AT_NSPECIAL_AIR) {
 }
 
 // A+B Input Grounded Command Grab
-if (my_hitboxID.attack == AT_NSPECIAL) {
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 1) {
 
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)

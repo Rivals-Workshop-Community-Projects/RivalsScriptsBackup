@@ -74,6 +74,7 @@ sprite_change_offset("dspecial", 102, 154);
 sprite_change_offset("uspecproj", 30, 30);
 
 sprite_change_offset("plat", 64, 4);
+sprite_change_offset("regi", 150, 180);
 
 sprite_change_offset("nfade1", 102, 154);
 sprite_change_offset("nfade2", 102, 154);

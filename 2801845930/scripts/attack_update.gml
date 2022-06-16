@@ -173,6 +173,7 @@ switch (attack) {
 	    		// No movement so that the changes in position don't become jank
 	    		SpamNeoGrabbedId.hsp = 0; 
 	    		SpamNeoGrabbedId.vsp = 0;
+	    		SpamNeoGrabbedId.state = PS_HITSTUN;
         	} else {
         		// If they die remove them from the attack
         		SpamNeoGrabbedId = 0;
@@ -227,6 +228,7 @@ switch (attack) {
 	    		// No movement so that the changes in position don't become jank
 	    		SpamNeoGrabbedId.hsp = 0; 
 	    		SpamNeoGrabbedId.vsp = 0;
+	    		SpamNeoGrabbedId.state = PS_HITSTUN;
         	} else {
         		// If they die remove them from the attack
         		SpamNeoGrabbedId = 0;
@@ -291,6 +293,7 @@ switch (attack) {
 	    		// No movement so that the changes in position don't become jank
 	    		SpamNeoGrabbedId.hsp = 0; 
 	    		SpamNeoGrabbedId.vsp = 0;
+	    		SpamNeoGrabbedId.state = PS_HITSTUN;
         	} else {
         		// If they die remove them from the attack
         		SpamNeoGrabbedId = 0;
@@ -314,6 +317,7 @@ switch (attack) {
 	    		// No movement so that the changes in position don't become jank
 	    		SpamNeoGrabbedId.hsp = 0; 
 	    		SpamNeoGrabbedId.vsp = 0;
+	    		SpamNeoGrabbedId.state = PS_HITSTUN;
         	} else {
         		// If they die remove them from the attack
         		SpamNeoGrabbedId = 0;
@@ -393,9 +397,24 @@ switch (attack) {
     		hsp = -3;
     	}
         
-        if (attack_down == false || SpamNeoNairTimer > 60) {
+        if (attack_down == false && SpamNeoNairTimer <= 60) {
         	window = 3;
         	window_timer = 0;
+        }
+        
+        if (SpamNeoNairTimer > 60) {
+        	
+        	move_cooldown[AT_NAIR] = 30;
+        	
+        	if (SpamNeoUSpcPrat == true) {
+		    	set_state(PS_PRATFALL);
+		    	SpamNeoUSpcPrat = false;
+		    } else {
+		    	
+		    	set_state(PS_IDLE_AIR);
+		    	
+		    }
+        	
         }
         
         SpamNeoNairTimer += 1;
@@ -454,6 +473,8 @@ switch (attack) {
 	    		// No movement so that the changes in position don't become jank
 	    		SpamNeoGrabbedId.hsp = 0; 
 	    		SpamNeoGrabbedId.vsp = 0;
+	    		
+	    		SpamNeoGrabbedId.state = PS_HITSTUN;
         	} else {
         		// If they die remove them from the attack
         		SpamNeoGrabbedId = 0;
@@ -487,6 +508,7 @@ switch (attack) {
 	    		SpamNeoGrabbedId.hsp = 0; 
 	    		SpamNeoGrabbedId.vsp = 0;
 	    		SpamNeoGrabEasingTimer = 0;
+	    		SpamNeoGrabbedId.state = PS_HITSTUN;
         	} else {
         		// If they die remove them from the attack
         		SpamNeoGrabbedId = 0;
@@ -519,6 +541,7 @@ switch (attack) {
 	    		// No movement so that the changes in position don't become jank
 	    		SpamNeoGrabbedId.hsp = 0; 
 	    		SpamNeoGrabbedId.vsp = 0;
+	    		SpamNeoGrabbedId.state = PS_HITSTUN;
         	} else {
         		// If they die remove them from the attack
         		SpamNeoGrabbedId = 0;
@@ -659,10 +682,10 @@ switch (attack) {
     	with (oPlayer) {
     		if (id != other.id) {
 	    		if (SpamNeoString == true) {
-	    			if (state_cat != SC_HITSTUN) {
+	    			if (state_cat != SC_HITSTUN) { // Disabled >:)
 	    				// Cut String
 	    				
-	    				SpamNeoSnap = true;
+	    				/*SpamNeoSnap = true;
 						SpamNeoSnapAnim = true;
 						SpamNeoSnapTimer = 30;
 						
@@ -676,7 +699,7 @@ switch (attack) {
 						// String
 						SpamNeoStringCharge = 0;
 						SpamNeoString = false;
-						SpamNeoStringStartTimer = 0;
+						SpamNeoStringStartTimer = 0;*/
 	    			} else {
 	    				// Pull the String
 	    				

@@ -254,6 +254,19 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.19", "11 June, 2022");
+
+initHeader("Buffs:");
+initSection("+ Fstrong comes out 2 frames faster, F21 -> F19
+");
+
+initHeader("Changes:");
+initSection("= Parried projectiles from opponents can no longer put Po into the pot
+= If an opponent is overlapping with the pot, Fspecial will prioritize the opponent
+  = 3 more alts have custom dishes made by Pot Detonation (Kawasaki, Vector, and TAG)
+");
+
+//
 initPatch("1.18", "7 May, 2022");
 
 initHeader("Nerfs:");
