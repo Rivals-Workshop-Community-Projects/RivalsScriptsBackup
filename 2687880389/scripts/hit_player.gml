@@ -21,10 +21,6 @@ if (my_hitboxID == grab_hitbox) {
     }
 }
 
-// Reward agressive gameplay
-if (energy_floor_on_hit_enemy) && (rocket_fuel < pity_fuel_amount) {
-	rocket_fuel = pity_fuel_amount;
-}
 
 // Consume marks if blast attack was used
 var blast_attack = false;

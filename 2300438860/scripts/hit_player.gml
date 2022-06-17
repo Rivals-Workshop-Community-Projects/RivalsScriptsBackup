@@ -237,7 +237,7 @@ dy1 = hit_player_obj.y
 if my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_USPECIAL and  my_hitboxID.attack != AT_FSPECIAL and  my_hitboxID.attack != AT_DSPECIAL 
 && attackbar != 0 {
     attackbar = 1
-        spawn_hit_fx (x,y,lighten3)
+        //spawn_hit_fx (x,y,lighten3)
         
         hitstop += my_hitboxID.hitpause/2
         hit_player_obj.hitstop += my_hitboxID.hitpause/2

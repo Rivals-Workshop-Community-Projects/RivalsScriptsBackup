@@ -56,11 +56,6 @@ if ((attack == AT_NSPECIAL)
 		                    spr_dir *= -1;
 		                }
 		            }
-		            
-		            // reset held player state
-		            if (window_timer == 1) {
-		            	let_everyone_go();
-		            }
 		        	break;
 	        	case 2 :
 		    		if ((window_timer == 4) && !created_grab_hitbox) {
@@ -127,7 +122,12 @@ if ((attack == AT_NSPECIAL)
 		            } else {
 		                // If hold expired, drop 'em ya butterfingers
 		                if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-		                    let_everyone_go();
+		                    with (asset_get("oPlayer")) {
+		                        if (RETROBLAST_HOLDER_ID == other.id) {
+		                            RETROBLAST_HOLDER_ID = noone;
+		                        }
+		                    }
+		                    holding_someone = false;
 		                    window = 7;
 		                    window_timer = 0;
 		                }

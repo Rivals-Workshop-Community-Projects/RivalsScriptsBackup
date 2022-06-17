@@ -32,7 +32,7 @@ if attack == 49 {
 	  window = 2 
 	  window_timer = 1
 	  spr_dir *= -1
-	  sound_play(asset_get("sfx_ice_on_player"),false,noone,1,.6)
+	  sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,.6)
 	  sound_play(sound_get("dspec2"))
 	  
 	}
@@ -62,7 +62,7 @@ if attack == 49 {
             fx.pause = 5
         }
         if window == 1 && window_timer == 11 && !hitpause{
-            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.95)
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,0.95)
         }
         
         super_armor = false 
@@ -114,7 +114,7 @@ if !hitpause {
             sound_play(asset_get("sfx_ice_shieldup"))
         }
         if window == 1 && window_timer == 11{
-            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.95)
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,0.95)
         }
     }
     
@@ -229,13 +229,13 @@ if !hitpause {
             sound_play(asset_get("sfx_ice_shieldup"))
         }
         if window == 2 && window_timer == 1{
-            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.8)
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,0.8)
         }
     }
     
     if attack == AT_FTILT {
         if window == 1 && window_timer == 5{
-            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.1)
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,1.1)
         }
     }
     
@@ -276,7 +276,7 @@ if !hitpause {
                 sound_play(asset_get("sfx_swipe_medium2"))
         }
         if window == 1 && window_timer == 6 {
-              sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
+              sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,0.9)
         }
 	
     }
@@ -291,7 +291,7 @@ if !hitpause {
     
     if attack == AT_BAIR {
         if window == 1 && window_timer == 6 {
-              sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.1)
+              sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,1.1)
         }
          if window == 1 && window_timer == 8 {
               sound_play(asset_get("sfx_swipe_medium1"))
@@ -301,7 +301,7 @@ if !hitpause {
     
     if attack == AT_FAIR {
         if window == 2 && window_timer == 1 {
-              sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
+              sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,0.9)
               sound_play(asset_get("sfx_bird_sidespecial_start"))
               x += 30*spr_dir
         }
@@ -664,7 +664,7 @@ if attack == AT_NAIR {
            	if window_timer == 11 {
            		shake_camera(6,10)
            		sound_play(sound_get("slice"))
-           	 sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
+           	 sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,0.9)
               sound_play(asset_get("sfx_bird_sidespecial_start"))
            		sound_play(sound_get("dspec2"))
            		fx = spawn_hit_fx (x + 30*spr_dir,y - 46, 304)

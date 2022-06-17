@@ -283,8 +283,10 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	    	
             fx = spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
 	    	fx.pause = 6 
-			hsp = (player_id.x - x)/35
-			vsp = (player_id.y - 30 - y)/35
+			//hsp = (player_id.x - x)/35
+			//vsp = (player_id.y - 30 - y)/35
+			hsp = (player_id.x - x)/10
+			vsp = (player_id.y - 30 - y)/10
 			spr_dir *= -1
 			
 			
