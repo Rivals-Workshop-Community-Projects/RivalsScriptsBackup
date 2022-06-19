@@ -45,7 +45,7 @@ alt_name[22] = "E.M.M.I.-20FG";
 alt_name[23] = "E.M.M.I.-21ΩS";
 alt_name[24] = "E.M.M.I.-22EA";
 alt_name[25] = "E.M.M.I.-23AB";
-alt_name[26] = "E.M.M.I.-24SN";
+alt_name[26] = "E.M.M.I.-24VAE";
 
 alt_name_desc[0] = "Spider Magnet";
 alt_name_desc[1] = "Prototype";
@@ -73,7 +73,7 @@ alt_name_desc[22] = "Fusion Gravity";
 alt_name_desc[23] = "Omega Suit";
 alt_name_desc[24] = "Early Access";
 alt_name_desc[25] = "Abyss";
-alt_name_desc[26] = "Seasonal";
+alt_name_desc[26] = "Villains Of Aether";
 
 draw_set_halign(fa_left);
 
@@ -98,8 +98,6 @@ if(alt_cur == 24){
     draw_sprite_ext(sprite_get("ccs_icons"), 3, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
 }else if(alt_cur == 25){
     draw_sprite_ext(sprite_get("ccs_icons"), 1, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
-}else if(alt_cur == 26){
-    draw_sprite_ext(sprite_get("ccs_icons"), 2, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
 }
 
 //alt name

@@ -168,6 +168,11 @@ kf_hud_offset = -34;
 copy_ability_id = 12;
 sna_interrogated_line_01 = "I'll tell ya... for the right price!"; // Snake interrogation line 1.
 sna_interrogated_line_02 = "I have some nice cookies if you let me go!"; // Snake interrogation line 2.
+plushForAmber = sprite_get("amber_plush");
+nname = "Carol the Wildcat"
+ncode1 = "An incredibly athletic kitty with ninja like reflexes and a focus on combat"
+ncode2 = "Can mount a motorbike in order to augment her speed and change her moveset"
+ncode3 = "Meow"
 
 kirbyability=16;
 swallowed=false;

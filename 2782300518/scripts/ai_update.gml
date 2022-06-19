@@ -684,6 +684,23 @@ else
 	    var offstage = (x > room_width - stagex || x < stagex);
 	    var ai_target_offstage = (ai_target.x - hurtboxWidth > room_width - stagex || ai_target.x + hurtboxWidth < stagex);
 	    
+	    //----------------------------------------------------
+		//Combos logic
+		//----------------------------------------------------
+	
+	
+		// //Shorthop combos
+		if ai_target.y < y-60 and can_jump and ai_target.state_cat == SC_HITSTUN and state_cat == SC_GROUND_NEUTRAL{
+	    	 jump_pressed = true;
+    	}
+    
+		if(free and has_hit and state == PS_ATTACK_AIR and !offstage){
+		
+			if ((y > stagey - char_height and y < stagey) or collision_point(x, y+char_height, plat_asset, false, true)){
+				down_hard_pressed = true;
+			}
+		}
+	    
 	    //Hitstun breakers
 	    switch (prev_state)
 	    {
@@ -717,16 +734,8 @@ else
 	    }
 
 	    //Sit near edge when AI target is offstage
-	    if (ai_target_offstage)
-	    {
-			if (x< (room_width - stagex)/2)
-			{
-				new_x = (room_width - stagex) - 16;
-			}
-			if (x> (room_width - stagex)/2)
-			{
-				new_x = stagex + 16;
-			}
+		if (xdist > 200 and ai_target_offstage){
+			jump_down = false;	
 		}
 		
 		if (!do_not_attack && get_player_damage(ai_target.player) < strongPercent)

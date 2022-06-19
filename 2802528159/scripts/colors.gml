@@ -257,12 +257,12 @@ set_color_profile_slot( 25, 4, 41, 37, 52 ); //limbs 2
 set_color_profile_slot( 25, 5, 145, 60, 207 ); //eye 1
 set_color_profile_slot( 25, 6, 220, 113, 251 ); //eye 2
 
-// E.M.M.I.-24SL
-set_color_profile_slot( 26, 0, 255, 50, 46 ); //plating 1
-set_color_profile_slot( 26, 1, 225, 0, 0 ); //plating 2
-set_color_profile_slot( 26, 2, 166, 49, 94 ); //plating 3
-set_color_profile_slot( 26, 3, 0, 255, 30 ); //limbs 1
-set_color_profile_slot( 26, 4, 12, 170, 0 ); //limbs 2
+// E.M.M.I.-24VAE
+set_color_profile_slot( 26, 0, 217, 31, 63 ); //plating 1
+set_color_profile_slot( 26, 1, 171, 0, 163 ); //plating 2
+set_color_profile_slot( 26, 2, 82, 0, 77 ); //plating 3
+set_color_profile_slot( 26, 3, 54, 35, 101 ); //limbs 1
+set_color_profile_slot( 26, 4, 41, 23, 41 ); //limbs 2
 set_color_profile_slot( 26, 5, 199, 199, 199 ); //eye 1
 set_color_profile_slot( 26, 6, 255, 255, 255 ); //eye 2
 
