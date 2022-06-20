@@ -112,9 +112,9 @@ set_color_profile_slot( 15, 3, 0, 255, 0 ); //Light 1
 
 // Bronze
 set_color_profile_slot( 16, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 16, 1, 140, 115, 0 ); //Dark 1
-set_color_profile_slot( 16, 2, 163, 139, 26 ); //Light 2
-set_color_profile_slot( 16, 3, 181, 157, 43 ); //Light 1
+set_color_profile_slot( 16, 1, 140, 63, 0 ); //Dark 1
+set_color_profile_slot( 16, 2, 163, 106, 26 ); //Light 2
+set_color_profile_slot( 16, 3, 212, 184, 50 ); //Light 1
 
 // Silver
 set_color_profile_slot( 17, 0, 0, 0, 0 ); //Dark 2
@@ -123,10 +123,10 @@ set_color_profile_slot( 17, 2, 199, 199, 199 ); //Light 2
 set_color_profile_slot( 17, 3, 230, 230, 230 ); //Light 1
 
 // Golden
-set_color_profile_slot( 18, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 18, 1, 181, 155, 36 ); //Dark 1
-set_color_profile_slot( 18, 2, 242, 216, 95 ); //Light 2
-set_color_profile_slot( 18, 3, 255, 231, 125 ); //Light 1
+set_color_profile_slot( 18, 0, 61, 31, 13 ); //Dark 2
+set_color_profile_slot( 18, 1, 181, 101, 36 ); //Dark 1
+set_color_profile_slot( 18, 2, 242, 159, 58 ); //Light 2
+set_color_profile_slot( 18, 3, 255, 226, 94 ); //Light 1
 
 // Master
 set_color_profile_slot( 19, 0, 0, 0, 206 ); //Dark 2
