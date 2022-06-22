@@ -81,7 +81,7 @@ set_color_profile_slot_range( 5, 11, 28, 20 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 19 );
 
 // Pause ahead
 set_color_profile_slot( 1, 0, 255, 102, 0 ); //main
@@ -156,12 +156,12 @@ set_color_profile_slot( 9, 4, 219, 182, 227 ); //god body
 set_color_profile_slot( 9, 5, 62, 53, 66 ); //block
 
 // gold
-set_color_profile_slot( 10, 0, 230, 180, 0 ); //main
-set_color_profile_slot( 10, 1, 110, 86, 0 ); //shading
-set_color_profile_slot( 10, 2, 118, 140, 179 ); //eyes
-set_color_profile_slot( 10, 3, 84, 110, 156 ); //eyes shading
-set_color_profile_slot( 10, 4, 191, 203, 222 ); //god body
-set_color_profile_slot( 10, 5, 191, 203, 222 ); //block
+set_color_profile_slot( 18, 0, 230, 180, 0 ); //main
+set_color_profile_slot( 18, 1, 110, 86, 0 ); //shading
+set_color_profile_slot( 18, 2, 118, 140, 179 ); //eyes
+set_color_profile_slot( 18, 3, 84, 110, 156 ); //eyes shading
+set_color_profile_slot( 18, 4, 191, 203, 222 ); //god body
+set_color_profile_slot( 18, 5, 191, 203, 222 ); //block
 
 // infamous
 set_color_profile_slot( 11, 0, 218, 87, 255 ); //main
@@ -218,6 +218,21 @@ set_color_profile_slot( 17, 2, 78, 61, 124 ); //eyes
 set_color_profile_slot( 17, 3, 44, 24, 97 ); //eyes shading
 set_color_profile_slot( 17, 4, 203, 21, 0 ); //god body
 set_color_profile_slot( 17, 5, 178, 142, 214 ); //block
+
+// overcharge
+set_color_profile_slot( 10, 0, 0, 30, 225); //main
+set_color_profile_slot( 10, 1, 0, 10, 125 ); //shading
+set_color_profile_slot( 10, 2, 0, 132, 255 ); //eyes
+set_color_profile_slot( 10, 3, 0, 90, 210 ); //eyes shading
+set_color_profile_slot( 10, 4, 0, 20, 180); //god body
+set_color_profile_slot( 10, 5, 50, 50, 60); //block
+
+// set_color_profile_slot( 19, 0, 50, 50, 60 ); //main
+// set_color_profile_slot( 19, 1, 30, 30, 40 ); //shading
+// set_color_profile_slot( 19, 2, 0, 30, 225 ); //eyes
+// set_color_profile_slot( 19, 3, 0, 10, 155 ); //eyes shading
+// set_color_profile_slot( 19, 4, 0, 132, 255); //god body
+// set_color_profile_slot( 19, 5, 50, 50, 60); //block
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

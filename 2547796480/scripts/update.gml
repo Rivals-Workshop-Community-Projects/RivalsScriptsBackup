@@ -8,6 +8,8 @@ hit_player_obj = self
 }
 
 
+set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_HSPEED, 6 - random_func(4, 14, true) );
+set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_VSPEED, -1 - random_func(3, 6, true) );
 
 
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
@@ -50,11 +52,9 @@ if cheapmode = 1 && (state == PS_DEAD or inloop = 1 or (state != PS_ATTACK_GROUN
 	}
 	
 	if looptime > 5 {
-	create_hitbox(AT_DSPECIAL , 6 , floor(hit_player_obj.x - 40 + random_func(6, 80, true)) ,  floor(hit_player_obj.y - 20 - 40 + random_func(7, 80, true)));
 
-		
+		create_hitbox(AT_DSPECIAL , 6 , floor(hit_player_obj.x - 40 + random_func(6, 80, true)) ,  floor(hit_player_obj.y - 20 - 40 + random_func(7, 80, true)));
 
-		
 		
 		hit_player_obj.state = PS_DEAD 
 			with (asset_get("oPlayer")) {

@@ -8,9 +8,9 @@
 //draw_debug_text(x ,y+20, string(previo[0]));
 //draw_debug_text(x , y-80 , string(valido));
 
-//with pHitBox{
-	//draw_debug_text(x + 10 , y , string(hit_priority));
-//}
+/*with pHitBox{ //i was here
+	draw_debug_text(x + 10 , y , string(kb_value));
+}*/
 
 //DRAWING PILL FOR NSPECIAL - IF FRAME DATA IS CHANGED THIS MUST BE UPDATED
 

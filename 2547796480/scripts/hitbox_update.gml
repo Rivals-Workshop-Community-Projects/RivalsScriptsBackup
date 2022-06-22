@@ -1,4 +1,21 @@
 ///
+if attack == AT_DSPECIAL && hbox_num == 6 && !free {
+	 create_hitbox(AT_DSPECIAL , 5 , x  , y - 16 );
+	 destroyed = 1
+}
+
+if attack == AT_DSPECIAL && hbox_num == 5 {
+
+if hitbox_timer == 1 && free {
+	destroyed = true
+}
+
+if hitbox_timer == 1 && !free{
+	y += 8 
+	hitbox_timer = 2
+}
+
+}
 
 if attack == AT_FSPECIAL && hbox_num == 5 { 
 	

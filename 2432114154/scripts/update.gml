@@ -1203,6 +1203,14 @@ with oPlayer if (activated_kill_effect) {
 }
 
 if triggercutscene != 0 {
+	
+	if triggercutscene > 390 {
+		voidfx = spawn_hit_fx(x,y,thevoid)
+		voidfx.depth = -99999
+		voidfx.image_xscale = 5
+		voidfx.image_yscale = 5
+	}
+	
 	hitpause = true 
     hitstop = 999 
 	if y > room_height/2 + 300 {
@@ -1214,6 +1222,12 @@ if triggercutscene != 0 {
 	if x > room_width/2 + 300 {
 		x -= 1
 	}
+	
+		if triggercutscene > 100 {
+			x = room_width/2
+			y = room_height/2 - 100
+		}
+		
 	if triggercutscene < 341 {
 	with oPlayer {
 		if taunt_down {
@@ -1227,6 +1241,7 @@ if triggercutscene != 0 {
 	}
 		
 	if triggercutscene == 1 {
+		instance_create(x,y,"obj_article1")
 		sound_play(sound_get("counterhit"),false,noone,1)
 		sound_play(asset_get("sfx_orca_absorb"),false,noone,1,0.6)
 		sound_play(sound_get("RI"),false,noone,.8)

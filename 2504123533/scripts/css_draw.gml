@@ -31,7 +31,7 @@ alt_name[19] = "Fashionista";
 alt_name[20] = "Tusspells";
 alt_name[21] = "Slime Girl";
 alt_name[22] = "Killer Queen";
-alt_name[23] = "Derby Champion";
+alt_name[23] = "Summer Derby";
 
 //Alt
  

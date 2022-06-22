@@ -403,6 +403,10 @@ Dair, and Dash attack can be jump canceled
 
 :) 
 
+
+
+edit: LIES >:(
+
 ")
 initTipImage(player_id.spr_dair, -5, fa_center, 1, c_white, 0);
 

@@ -22,7 +22,7 @@ if (block_ammo >= 3){
 	move_cooldown[AT_NSPECIAL] = 2;
 }
 
-if (place_meeting(x, y, block1) || place_meeting(x, y, block2) | place_meeting(x, y, block3)){
+if (place_meeting(x, y, block1) || place_meeting(x, y, block2) || place_meeting(x, y, block3)){
 	not_on_block = false;
 }
 
@@ -32,25 +32,31 @@ if (!place_meeting(x, y, block1) && !place_meeting(x, y, block2) && !place_meeti
 
 //Makes so the timer ticks down faster on the blocks where you're either standing on them or they're
 //close to the top blastzone (feel free to change the values of the 'state_timer += x' to change the timing)
-{
+
 if (instance_exists(block1)){
-	if ((place_meeting(x, y, block1) || block1.y < get_stage_data(SD_Y_POS) - 350) && block1.state_timer < 180){
-		block1.state_timer += 3.5;
+	if (((place_meeting(x, y, block1) && block1.y == y && !free) || block1.y < get_stage_data(SD_Y_POS) - 350)){
+		if(block1.state_timer < 180){
+			block1.state_timer += 3.5;
+		}
 	}
 }
 
 if (instance_exists(block2)){
-	if ((place_meeting(x, y, block2) || block2.y < get_stage_data(SD_Y_POS) - 350) && block2.state_timer < 180){
-		block2.state_timer += 3.5;
+	if (((place_meeting(x, y, block2) && block2.y == y && !free) || block2.y < get_stage_data(SD_Y_POS) - 350)){
+		if(block2.state_timer < 180){
+			block2.state_timer += 3.5;
+		}
 	}
 }
 
 if (instance_exists(block3)){
-	if ((place_meeting(x, y, block3) || block3.y < get_stage_data(SD_Y_POS) - 350) && block3.state_timer < 180){
-		block3.state_timer += 3.5;
+	if (((place_meeting(x, y, block3) && block3.y == y && !free) || block3.y < get_stage_data(SD_Y_POS) - 350)){
+		if(block3.state_timer < 180){
+			block3.state_timer += 3.5;
+		}
 	}
 }
-}
+
 
 if (block_ammo_full >= 3){
 	block_ammo_full = 2.9
@@ -64,10 +70,18 @@ if (block_ammo_full > 0 && block_ammo_full < 3.1 && block_despawn == true){
 }
 
 
-
-
 block_ammo = round(block_ammo_full);
 
+//blocks hit yourself
+if(hit_player_obj == self){
+	set_hitbox_value(AT_DSPECIAL, 6, HG_DAMAGE, 7);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_HITSTUN_MULTIPLIER, .8);
+} else {
+	reset_hitbox_value(AT_DSPECIAL, 6, HG_DAMAGE);
+	reset_hitbox_value(AT_DSPECIAL, 6, HG_KNOCKBACK_SCALING);
+	reset_hitbox_value(AT_DSPECIAL, 6, HG_HITSTUN_MULTIPLIER);
+}
 
 //Moves the opponent to the center of the lighting hitbox bit by bit 
 //(you can try changing the 0.3 values to make it faster/slower)

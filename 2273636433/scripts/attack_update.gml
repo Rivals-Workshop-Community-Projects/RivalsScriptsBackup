@@ -58,9 +58,13 @@ if attack == AT_USPECIAL{
         grabbedid.y = y + dispy;					//Y displacement
         grabbedid.spr_dir = -spr_dir;		//Turns Around
         grabbedid.wrap_time = 15;
-        grabbedid.state = PS_WRAPPED;
+        grabbedid.state = PS_WRAPPED; 
 	}	
-	
+	if window == 4 {
+		if has_hit and window_timer==1 {
+		spawn_hit_fx( x +10*spr_dir, y-64, 3 );	
+		}
+	}
 	if (window == 5) {
 		can_move=true;
 		if has_hit{
@@ -261,7 +265,7 @@ if (attack == AT_FSPECIAL && window == 2 ) {
 						}
 						//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
 						if variable_instance_exists(self, "C_knock") {
-						   C_knock += 2;
+						   C_knock += 1;
 						   forced = 1;
 						   extra_hitpause +=2;
 						}
@@ -306,6 +310,10 @@ if (has_rune("D")){
 	set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 2);
 	set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 2);
 	set_hitbox_value(AT_UTILT, 3, HG_HITSTUN_MULTIPLIER, 2);
+	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 2);
+	if attack==AT_UTILT{
+		invincible=true
+	}
 }
 
 
@@ -403,6 +411,14 @@ if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) 
 	set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 	
 	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 40);
+	
+	set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 1);
+	
+	set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 1);
+	
+	if attack == AT_USPECIAL && window==1{
+		invincible=1
+	}
 }
 
 

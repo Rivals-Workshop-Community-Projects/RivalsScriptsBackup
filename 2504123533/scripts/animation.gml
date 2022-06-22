@@ -4,8 +4,8 @@ if (state == PS_SPAWN) {
 		sound_play(sound_get("waternairintro"));
 	}
     
-	if (state_timer = 7) {
-		sound_play(sound_get("queenlaugh"));
+	if (state_timer = 40 && get_player_color( player ) == 23) {
+		sound_play(sound_get("nuzl_cough"));
 	}
     if (introTimer < 15 && introTimer >= 0) {
         sprite_index = sprite_get("intro");

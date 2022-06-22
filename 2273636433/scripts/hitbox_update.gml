@@ -10,12 +10,12 @@ if attack == AT_NSPECIAL{
 
 	//DAMAGE AND KNOCKBACK RESTRICTIONS
 	if limit == 1{																				//For RUNE K
-		if damage >18 { damage = 18; C_dam =7;}
-		if kb_value >18 {  kb_value = 18; C_knock =7;}
+		if damage >14 { damage = 14; C_dam =6;}
+		if kb_value >13.5 {  kb_value = 13.5; C_knock =6;}
 		if extra_hitpause >20 {  extra_hitpause =20;}
 	}
-	if C_dam > 7 { C_dam = 7;}
-	if C_knock > 7 {C_knock = 7;}
+	if C_dam > 6 { C_dam = 6;}
+	if C_knock > 6 {C_knock = 6;}
 	if damage >=8 {
 		effect = 0;
 	}

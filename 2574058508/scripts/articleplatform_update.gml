@@ -6,14 +6,11 @@
 
 //Get hurt by opponents' hitbox (NOTE: does not work properly with maxarticles > 1)
 
-
-
-
 //Make time progress
 
 state_timer++;
 
-if (player_id.lighting == true && state < 3){	//If DSpecial, goes to the state 3 (activate hazard)
+if (player_id.lighting == true && state < 3 && state_timer < 180){	//If DSpecial, goes to the state 3 (activate hazard)
 	state_timer = 0;
 	image_index = 0;
 	state = 3;
@@ -47,6 +44,7 @@ if (state == 1 && state_timer >=150){
 		image_index = 1
 	}
 		if (state_timer >=180){
+		mask_index = asset_get("empty_sprite");
 		sprite_index = sprite_get("block_break")
 		image_index += 0;
 		if (state_timer >=185){
@@ -109,6 +107,7 @@ if (state == 3){						//Hazard is active
 	if (state_timer >= 180){		//Back to idle
 		state = 5;
 		image_index = 11;
+		state_timer = 0;
 	}
 }
 
@@ -119,8 +118,8 @@ if (state == 4){							//Spawns the lighting
 	image_index += .2;
 	hsp = 0;
 	vsp = 0;
-	if (image_index == 1){						//Creates the Hitbox
-		create_hitbox(AT_DSPECIAL, 5, x, y);
+	if (image_index == 1){
+		create_hitbox(AT_DSPECIAL, 6, x, y - 17);	//Creates the Hitbox
 	}
 	if (image_index > 8){						//Destroys the block
 		player_id.block_despawn = true;
@@ -138,7 +137,9 @@ if (state == 5){				//From hazard to idle, just transitioning
 	hsp = 0;
 	vsp = 0;
 	if (image_index >= 17){
+		sprite_index = sprite_get("block_crack");
+		image_index = 2;
 		state = 1;
-		image_index = 0;
+		state_timer = 180;
 	}
 }

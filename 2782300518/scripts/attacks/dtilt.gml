@@ -69,7 +69,7 @@ set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_DTILT, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 1.5);
+set_hitbox_value(AT_DTILT, 2, HG_HITSTUN_MULTIPLIER, 1.5);
 set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
 set_hitbox_value(AT_DTILT, 3, HG_HITBOX_TYPE, 1);

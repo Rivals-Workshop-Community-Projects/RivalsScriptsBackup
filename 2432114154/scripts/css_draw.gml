@@ -111,3 +111,4 @@ if drawtime < 15 {
 
 
 draw_sprite_ext(sprite_get("style"),1,temp_x-2,temp_y+30,2,2,0,-1,1-(drawtime/60) );
+init_shader();

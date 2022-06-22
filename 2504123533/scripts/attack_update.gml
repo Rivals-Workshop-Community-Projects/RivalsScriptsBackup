@@ -380,7 +380,7 @@ if (attack == AT_FSPECIAL){
 			window = 3;
 			window_timer = 0;
 			FSpecBounce = true;
-			FSpecBounceHeight = -9;
+			FSpecBounceHeight = -10;
 		}
 	}
 	
@@ -435,11 +435,11 @@ if (attack == AT_USPECIAL){
 		if window_timer >= get_window_value( attack, window, AG_WINDOW_LENGTH )
 			window_timer = 1;
 		if vsp > 1
-			vsp = 1;
-		hsp = clamp(hsp,-1,1);
+			vsp = 0.5;
+		hsp = clamp(hsp,-0.5,0.5);
 		if barPoints < barAmount
 		{
-			barPoints += barRecharge*2;
+			barPoints += barRecharge*3.5;
 		}
 		else
 		{
@@ -458,6 +458,9 @@ if (attack == AT_DSPECIAL)
 {
     if (window == 2)
 	{
+		if vsp > 1.5
+			vsp = 1.5;
+		hsp = 0
 		var pType = potionType;
 		if(down_down)
 		{

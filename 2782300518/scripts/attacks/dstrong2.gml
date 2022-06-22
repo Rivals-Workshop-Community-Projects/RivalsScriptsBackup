@@ -15,6 +15,7 @@ set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_SFX, sound_get("motorbike_spin"));
 set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSTRONG_2, 1);
 
@@ -30,7 +31,7 @@ set_hitbox_value(AT_DSTRONG_2, 1, HG_PRIORITY, 7);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_DSTRONG_2, 1, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_VISUAL_EFFECT, 304);

@@ -29,7 +29,7 @@ set_color_profile_slot( 0, 6, 129, 82, 255 );
 set_color_profile_slot_range( 6, 1, 33, 51 );
 
 // gunship
-set_color_profile_slot( 0, 7, 246, 117, 121 );
+set_color_profile_slot( 0, 7, 246, 117, 122 );
 set_color_profile_slot_range( 7, 64, 5, 55 );
 
 
@@ -326,25 +326,25 @@ set_color_profile_slot( 29, 5, 181, 231, 25 ); //visor
 set_color_profile_slot( 29, 6, 181, 231, 25 ); //shinespark
 set_color_profile_slot( 29, 7, 189, 33, 91 ); //gunship
 
-// Early Access
-set_color_profile_slot( 30, 0, 83, 122, 62 ); //helmet
-set_color_profile_slot( 30, 1, 35, 67, 49 ); //limbs
-set_color_profile_slot( 30, 2, 211, 226, 154 ); //body
-set_color_profile_slot( 30, 3, 35, 67, 49 ); //gun
-set_color_profile_slot( 30, 4, 83, 122, 62 ); //gun lights
-set_color_profile_slot( 30, 5, 211, 226, 154 ); //visor
-set_color_profile_slot( 30, 6, 211, 226, 154 ); //shinespark
-set_color_profile_slot( 30, 7, 167, 186, 74 ); //gunship
-
 // Abyss
-set_color_profile_slot( 31, 0, 86, 84, 146 ); //helmet
-set_color_profile_slot( 31, 1, 79, 61, 94 ); //limbs
-set_color_profile_slot( 31, 2, 166, 172, 214 ); //body
-set_color_profile_slot( 31, 3, 79, 61, 94 ); //gun
-set_color_profile_slot( 31, 4, 220, 113, 255 ); //gun lights
-set_color_profile_slot( 31, 5, 220, 113, 255 ); //visor
-set_color_profile_slot( 31, 6, 220, 113, 255 ); //shinespark
-set_color_profile_slot( 31, 7, 86, 84, 146 ); //gunship
+set_color_profile_slot( 30, 0, 86, 84, 146 ); //helmet
+set_color_profile_slot( 30, 1, 79, 61, 94 ); //limbs
+set_color_profile_slot( 30, 2, 166, 172, 214 ); //body
+set_color_profile_slot( 30, 3, 79, 61, 94 ); //gun
+set_color_profile_slot( 30, 4, 220, 113, 255 ); //gun lights
+set_color_profile_slot( 30, 5, 220, 113, 255 ); //visor
+set_color_profile_slot( 30, 6, 220, 113, 255 ); //shinespark
+set_color_profile_slot( 30, 7, 86, 84, 146 ); //gunship
+
+// VAE
+set_color_profile_slot( 31, 0, 218, 31, 63 ); //helmet
+set_color_profile_slot( 31, 1, 218, 31, 63 ); //limbs
+set_color_profile_slot( 31, 2, 36, 14, 36 ); //body
+set_color_profile_slot( 31, 3, 49, 28, 99 ); //gun
+set_color_profile_slot( 31, 4, 253, 253, 253 ); //gun lights
+set_color_profile_slot( 31, 5, 253, 253, 253 ); //visor
+set_color_profile_slot( 31, 6, 253, 253, 253 ); //shinespark
+set_color_profile_slot( 31, 7, 49, 28, 99 ); //gunship
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

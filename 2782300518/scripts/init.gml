@@ -48,7 +48,7 @@ hitstun_grav = .5;
 knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 5;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -161,13 +161,14 @@ btt_get_data = "false";
 hikaru_title = "The Kung-Fu Kitty";
 arena_title = "The Kung-Fu Kitty";
 arena_short_name = "Carol";
-battle_text = "The Red Scarved Ninja Cat";
+battle_text = "You want to pretend to pee really badly";
 miiverse_post = sprite_get("miiverse_post");
 uhc_victory_quote = "chek ot mai deviantart oc do not steel";
 kf_hud_offset = -34;
 copy_ability_id = 12;
 sna_interrogated_line_01 = "I'll tell ya... for the right price!"; // Snake interrogation line 1.
 sna_interrogated_line_02 = "I have some nice cookies if you let me go!"; // Snake interrogation line 2.
+sna_interrogated_line_03 = "I REALLY need to pee right now!"; // Snake interrogation line 2.
 plushForAmber = sprite_get("amber_plush");
 nname = "Carol the Wildcat"
 ncode1 = "An incredibly athletic kitty with ninja like reflexes and a focus on combat"

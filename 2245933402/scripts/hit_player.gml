@@ -1,10 +1,10 @@
 ///
 move_cooldown[AT_NSPECIAL_2] = 0
-if (my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_FSPECIAL) && my_hitboxID.hbox_num == 2 {
-	hit_player_obj.x += floor(hit_player_obj.hitstop*spr_dir)
-    hit_player_obj.grenadehit = floor(hit_player_obj.hitstop) 
-       
-}
+//if (my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_FSPECIAL) && my_hitboxID.hbox_num == 2 {
+//	hit_player_obj.x += floor(hit_player_obj.hitstop*spr_dir)
+//    hit_player_obj.grenadehit = floor(hit_player_obj.hitstop) 
+//       
+//}
 
 if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 3 {
             	sound_play(asset_get("sfx_absa_kickhit"));

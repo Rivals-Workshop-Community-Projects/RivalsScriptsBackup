@@ -21,8 +21,8 @@ set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_swish_heavy2"));
 set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX_FRAME, 8);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
+//set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+//set_window_value(AT_USTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 
 set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);

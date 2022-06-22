@@ -329,7 +329,6 @@ if(attack == AT_NSPECIAL){
 	    }
 	    if(instance_exists(reflect_target)){
 	    	with(reflect_target){
-	    		player = other.player;
 	    		//if(abs(hsp) > 0.25){ //checks for minimum speed (unused lol!)
 	            		//spr_dir *= -1; //flips it regardless of its direction, wave doesnt use this one
 	            spr_dir = other.spr_dir; //forces it to go where wave is facing lol

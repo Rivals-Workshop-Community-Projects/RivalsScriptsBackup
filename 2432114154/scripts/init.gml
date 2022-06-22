@@ -176,6 +176,9 @@ sh2 = hit_fx_create( sprite_get( "sh2" ), 30);
 sh3 = hit_fx_create( sprite_get( "sh3" ), 30);
 sh4 = hit_fx_create( sprite_get( "sh4" ), 30)
 
+thevoid = hit_fx_create( sprite_get( "thevoid" ), 2)
+sprite_change_offset("thevoid", 250, 250);
+
 sprite_change_offset("sh1", 102, 94);
 sprite_change_offset("sh2", 102, 94);
 sprite_change_offset("sh3", 102, 94);

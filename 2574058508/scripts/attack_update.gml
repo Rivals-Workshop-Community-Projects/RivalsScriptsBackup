@@ -4,7 +4,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_NSPECIAL){
-    if (window == 2 && window_timer == 1 && block_ammo < 3){        //Creates a block for each different slot
+    if (window == 2 && window_timer == 1 && block_ammo < 3 && !hitpause){        //Creates a block for each different slot
         lighting = false;
         if (block_ammo == 0){
             block_despawn = false;
@@ -26,11 +26,14 @@ if (attack == AT_NSPECIAL){
 }
 
 if (attack == AT_FSPECIAL){
-    if (window == 1 && window_timer == 1 && free){  //If in the air, jump up a bit
+    move_cooldown[AT_FSPECIAL] = 15;
+    if (window == 1 && window_timer == 1 && free && !hitpause && vsp >= 0){  //If in the air, jump up a bit
         vsp = -6;
     }
-    if (window == 1 && window_timer == 1 && butterfly_alive == true){   //Destroys the previous butterfly
+    if (window == 1 && window_timer == 1 && butterfly != noone){   //Destroys the previous butterfly
         butterfly.state = 9;
+        butterfly.state_timer = 0;
+        butterfly = noone;
     }
     if (window == 2 && window_timer == 1){      //Creates the butterfly
         lighting = false;
@@ -43,10 +46,11 @@ if (attack == AT_USPECIAL){
     if (window == 1 && window_timer == 1 && free){      //Jumps up when in the air
         vsp = -9;
     }
-    if (window == 2 && window_timer == 1 && butterfly_alive == false){  //Spawns the butterfly
+    if (window == 2 && window_timer == 1 && butterfly == noone && !hitpause){  //Spawns the butterfly
         lighting = false;
         butterfly = instance_create(x, y-30, "obj_article1");
         butterfly.state = 1;
+        butterfly.state_timer = 0;
     }
 
 }
@@ -114,26 +118,33 @@ if (attack == AT_NSPECIAL){
 }
 
 
-if (attack == AT_FSTRONG){
-    if (window == 3)
+// if (attack == AT_FSTRONG){
+//     if (window == 3)
 
- off_ledge = false;}
+//  off_ledge = false;
+    
+// }
 
 
 
 //dair bounce
 if (attack == AT_DAIR){
     if (window == 2){
-        if  has_hit{
+        if  has_hit && hitpause && !fast_falling{
             can_move = true;
-             vsp = -2;
+            old_vsp = -4;
         }
         
     }
 }
 
 
-
+//bair hitfall hit 1 prevention
+if(attack == AT_BAIR){
+    if(window == 2 && hitpause){
+        can_fast_fall = false;
+    }
+}
 
 
 ////dattack jump cancel
@@ -150,16 +161,54 @@ if (attack == AT_DAIR){
 //}
 
 
-
 //dair jump cancel
-if (window == 2 && has_hit_player && attack = AT_DAIR) {
-    can_jump = true;
-}
-if (attack == AT_DAIR){
-    if (window == 2){
-        
+// if (window == 2 && has_hit_player && attack == AT_DAIR) {
+//     can_jump = true;
+// }
+// if (attack == AT_DAIR){
+//     can_fast_fall = true;
+// }
+
+if(attack == AT_FSTRONG){
+    can_wall_jump = false;
+    if(free){
+        set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 5);
+        set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 18);
+    } else {
+        set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 6);
+        set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 6);
     }
-    can_fast_fall = true;
+    if(window == 1 || window > 4){
+        set_attack_value(AT_FSTRONG, AG_CATEGORY, 0);
+        set_attack_value(AT_FSTRONG, AG_OFF_LEDGE, 0);
+    }
+    if(window == 2){
+        set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
+        set_attack_value(AT_FSTRONG, AG_OFF_LEDGE, 0);
+    }
+    if(window > 2 && window < 5){
+        set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
+        set_attack_value(AT_FSTRONG, AG_OFF_LEDGE, 1);
+    }
+    if(window == 5){
+        can_fast_fall = true;
+        if(window_timer == 1){
+            if(free){
+                set_num_hitboxes(AT_FSTRONG, 4);
+            } else {
+                set_num_hitboxes(AT_FSTRONG, 2);
+            }
+        }
+        if(!free && window_timer > 6){
+            destroy_hitboxes();
+        }
+        if(hitpause){
+            has_hit = false;
+            has_hit_player = false;
+        }
+    } else {
+        can_fast_fall = false;
+    }
 }
 
 if (attack == AT_TAUNT)

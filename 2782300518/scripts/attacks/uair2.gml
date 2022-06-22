@@ -17,6 +17,7 @@ set_window_value(42, 2, AG_WINDOW_SFX, sound_get("claw2"));
 set_window_value(42, 3, AG_WINDOW_LENGTH, 17);
 set_window_value(42, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(42, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(42, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(42, 1);
 

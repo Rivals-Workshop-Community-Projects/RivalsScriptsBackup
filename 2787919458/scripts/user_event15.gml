@@ -296,6 +296,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.11", "20th June, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed Spring changing ownership");
+
 initPatch("1.10", "13th June, 2022");
 initHeader("Buffs");
 initSection("- Added 1 new scream

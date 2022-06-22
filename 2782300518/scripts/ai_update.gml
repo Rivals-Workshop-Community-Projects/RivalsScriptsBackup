@@ -175,7 +175,7 @@ else
 		}
 	}
 	
-	//Attempt to either wall jump or ride up the walls when near a wall (I don't know if this works or not!)
+	//Attempt to either wall jump or ride up the walls when near a wall
 	if (can_wall_jump && (place_meeting(x + 20, y-50,asset_get("par_block"))) || place_meeting(x - 20, 
 	y-50,asset_get("par_block")) && !ai_recovering && y > get_stage_data( SD_Y_POS))
 	{
@@ -472,7 +472,7 @@ else
 	}
 	
 	
-	//Make Carol chas opponent
+	//Make Carol chase opponent
 	if (get_training_cpu_action() == CPU_EVADE){
 		chasing = true;
 		
@@ -483,7 +483,7 @@ else
 	//Advanced Level Ai Stuff, mostly taken from The Knight.
 	if (temp_level >=7 && x >= stagex +16 && x <= (room_width - stagex) - 16 && !ai_recovering)
 	{
-			if(can_DACUS && !ai_recovering && !dragonDashing && !dragonKO && !dragonFlight){
+			if(can_DACUS && !ai_recovering){
     		faceopponent();
     		DACUS_timer++;
     		if can_attack and !free{
@@ -517,20 +517,20 @@ else
 				case AT_DATTACK:
 				case 3:
 					if ((window == 2 and window_timer < 2))
-									predictloc(12);
-				predictlocTarget(12);
-				hitboxloc("DACUS");
+						predictloc(12);
+						predictlocTarget(12);
+						hitboxloc("DACUS");
 			
-				if (chosenAttack == AT_USTRONG) {
-					clear_button_buffer( PC_ATTACK_PRESSED );
-					clear_button_buffer( PC_STRONG_PRESSED );
-					clear_button_buffer( PC_UP_STRONG_PRESSED );
-					joy_pad_idle = true;
-				    up_down = true;
-				    special_pressed = false;
-				    attack_pressed = false;
-				    up_strong_pressed = true;
-				}
+					if (chosenAttack == AT_USTRONG) {
+						clear_button_buffer( PC_ATTACK_PRESSED );
+						clear_button_buffer( PC_STRONG_PRESSED );
+						clear_button_buffer( PC_UP_STRONG_PRESSED );
+						joy_pad_idle = true;
+					    up_down = true;
+					    special_pressed = false;
+					    attack_pressed = false;
+					    up_strong_pressed = true;
+					}
 				break;
 				case AT_USTRONG:
 				case AT_USTRONG_2:
@@ -539,13 +539,6 @@ else
 				break;
 				default:
 				break;
-			}
-			if ((window == 2 and window_timer < 2)) and attack == AT_DATTACK{
-
-			
-			}
-				
-			if attack == AT_USTRONG{
 			}
 		}
 
@@ -1493,11 +1486,17 @@ if len != 0{
 
 #define faceopponent
 if x > ai_target.x{
-    left_down = true;
-    right_down = false;
+	if (!ai_recovering)
+	{
+		left_down = true;
+	    right_down = false;
+	}
 } else {
-    left_down = false;
-    right_down = true;
+	if (!ai_recovering)
+	{
+		left_down = false;
+	    right_down = true;
+	}
 }
 
 #define resetPredict

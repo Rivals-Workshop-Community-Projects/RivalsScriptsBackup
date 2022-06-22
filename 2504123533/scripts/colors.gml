@@ -18,15 +18,15 @@ set_color_profile_slot_range( 3, 36, 40, 66 );
 
 // Green Tips
 set_color_profile_slot( 0, 4, 79, 255, 0 );
-set_color_profile_slot_range( 4, 10, 8, 33 );
+set_color_profile_slot_range( 4, 10, 48, 52 );
 
 // Broom Tip
 set_color_profile_slot( 0, 5, 248, 79, 255 );
-set_color_profile_slot_range( 5, 1, 8, 23 );
+set_color_profile_slot_range( 5, 1, 23, 45 );
 
 // Broom
 set_color_profile_slot( 0, 6, 253, 236, 255 );
-set_color_profile_slot_range( 6, 1, 10, 23 );
+set_color_profile_slot_range( 6, 2, 29, 50 );
 
 // Eye
 set_color_profile_slot( 0, 7, 231, 197, 224 );
@@ -256,18 +256,19 @@ set_color_profile_slot( 22, 5, 111, 209, 255 ); //Broom Tip
 set_color_profile_slot( 22, 6, 87, 110, 207 ); //Broom
 set_color_profile_slot( 22, 7, 0, 0, 0 ); //Eye
 
-//doge derby
-set_color_profile_slot( 23, 0, 130, 255, 251 ); //Skin
-set_color_profile_slot( 23, 1, 255, 245, 191 ); //Hat Light Blue
-set_color_profile_slot( 23, 2, 255, 79, 245 ); //Body Light Blue
-set_color_profile_slot( 23, 3, 255, 87, 251 ); //Hat Green
-set_color_profile_slot( 23, 4, 255, 102, 247 ); //Green Tips
-set_color_profile_slot( 23, 5, 255, 69, 227 ); //Broom Tip
-set_color_profile_slot( 23, 6, 0, 238, 255 ); //Broom
-set_color_profile_slot( 23, 7, 255, 241, 171 ); //Eye
+// dev derby 3
+set_color_profile_slot( 23, 0, 147, 126, 220 ); //Skin
+set_color_profile_slot( 23, 1, 196, 166, 206 ); //Hat Light Blue
+set_color_profile_slot( 23, 2, 218, 129, 142 ); //Body Light Blue
+set_color_profile_slot( 23, 3, 207, 254, 112 ); //Hat Green
+set_color_profile_slot( 23, 4, 207, 254, 112 ); //Green Tips
+set_color_profile_slot( 23, 5, 218, 129, 142 ); //Broom Tip
+set_color_profile_slot( 23, 6, 182, 218, 190 ); //Broom
+set_color_profile_slot( 23, 7, 226, 255, 167 ); //Eye
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Skin","colors":[{"r":108,"g":87,"b":231,"main":true},{"r":64,"g":51,"b":145},{"r":25,"g":16,"b":82},{"r":178,"g":143,"b":243}]},{"name":"Hat Light Blue","colors":[{"r":188,"g":177,"b":255,"main":true},{"r":224,"g":219,"b":255},{"r":146,"g":135,"b":212},{"r":92,"g":80,"b":165}]},{"name":"Body Light Blue","colors":[{"r":255,"g":177,"b":186,"main":true},{"r":212,"g":135,"b":144},{"r":255,"g":219,"b":223}]},{"name":"Hat Green","colors":[{"r":156,"g":255,"b":127,"main":true},{"r":86,"g":212,"b":92},{"r":220,"g":255,"b":183},{"r":29,"g":149,"b":35},{"r":63,"g":177,"b":103},{"r":10,"g":88,"b":37}]},{"name":"Green Tips","colors":[{"r":79,"g":255,"b":0,"main":true},{"r":40,"g":173,"b":12}]},{"name":"Broom Tip","colors":[{"r":248,"g":79,"b":255,"main":true},{"r":194,"g":49,"b":200}]},{"name":"Broom","colors":[{"r":253,"g":236,"b":255,"main":true},{"r":195,"g":166,"b":198}]},{"name":"Eye","colors":[{"r":231,"g":197,"b":224,"main":true},{"r":196,"g":134,"b":174}]}]}
+{"formatversion":1,"data":[{"name":"Skin","colors":[{"r":108,"g":87,"b":231,"main":true},{"r":64,"g":51,"b":145},{"r":25,"g":16,"b":82},{"r":178,"g":143,"b":243}]},{"name":"Hat Light Blue","colors":[{"r":188,"g":177,"b":255,"main":true},{"r":224,"g":219,"b":255},{"r":146,"g":135,"b":212},{"r":92,"g":80,"b":165}]},{"name":"Body Light Blue","colors":[{"r":255,"g":177,"b":186,"main":true},{"r":212,"g":135,"b":144},{"r":255,"g":219,"b":223}]},{"name":"Hat Green","colors":[{"r":156,"g":255,"b":127,"main":true},{"r":86,"g":212,"b":92},{"r":220,"g":255,"b":183},{"r":29,"g":149,"b":35},{"r":63,"g":177,"b":103},{"r":10,"g":88,"b":37}]},{"name":"Green Tips","colors":[{"r":79,"g":255,"b":0,"main":true},{"r":40,"g":173,"b":12},{"r":22,"g":125,"b":0},{"r":163,"g":255,"b":121}]},{"name":"Broom Tip","colors":[{"r":248,"g":79,"b":255,"main":true},{"r":194,"g":49,"b":200},{"r":137,"g":13,"b":142}]},{"name":"Broom","colors":[{"r":253,"g":236,"b":255,"main":true},{"r":195,"g":166,"b":198},{"r":125,"g":84,"b":130}]},{"name":"Eye","colors":[{"r":231,"g":197,"b":224,"main":true},{"r":196,"g":134,"b":174}]}]}
 === END JSON PALETTE ===
 */

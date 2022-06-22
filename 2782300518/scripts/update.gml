@@ -37,6 +37,7 @@ if (motorbike == false)
 	short_hop_speed = 5;
 	jump_speed = 11.5;
 	djump_speed = 3;
+	ground_friction= .35;
 	hurtbox_spr = asset_get("ex_guy_hurt_box");
 	crouchbox_spr = asset_get("ex_guy_crouch_box");
 	jump_sound = sound_get("jump");
@@ -251,6 +252,7 @@ else if (motorbike == true)
 	dash_speed = 10;
 	dash_stop_time = 12;
 	djump_speed = 10;
+	ground_friction = 1;
 	hurtbox_spr = sprite_get("bike_hurtbox");
 	crouchbox_spr = sprite_get("bike_crouch_hurtbox");
 	jump_sound = sound_get("motorbike_wheelie");

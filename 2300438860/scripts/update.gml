@@ -386,7 +386,7 @@ if get_gameplay_time() <= 120 && cosmetic == 1 {
 	
 }
 
-/*
+
 
 if instance_number(oPlayer) == 2 {
 
@@ -640,4 +640,3 @@ if neointro > 0 {
 	}
 }
 
-*/

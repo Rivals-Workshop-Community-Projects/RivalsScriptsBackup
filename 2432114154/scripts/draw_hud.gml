@@ -18,7 +18,7 @@ with oPlayer {
 shake_camera(2,20)
 
 shader_start();   
-print(triggercutscene)
+
   draw_sprite_ext(sprite_get("cutscene"),0,(room_width/2 - 200), room_height/2 ,4,5,0,-1,triggercutscene/100)
   draw_sprite_ext(sprite_get("cutscene"),0,min( (room_width/2 - 200), (room_width/2 - 200) - (2200-triggercutscene*(triggercutscene/2))), room_height/2 ,4,4,0,-1,1)
  draw_sprite_ext(sprite_get("cutscene"),1,min( (room_width/2 + 600), (room_width/2 - 200) - (1200-triggercutscene*(triggercutscene/2))), room_height/2 - 60 + triggercutscene*3  ,2,2,0,-1,1)

@@ -938,6 +938,7 @@ switch (attack)
 	//Following code governs Wild Kick
 	case AT_NSPECIAL:
 	case AT_NSPECIAL_2:
+	trigger_b_reverse();
 	//Voice line
 	if (window == 1 && window_timer == 1)
 	{

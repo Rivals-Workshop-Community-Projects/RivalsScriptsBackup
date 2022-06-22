@@ -48,8 +48,8 @@ alt_name[26] = "Hyper beam";
 alt_name[27] = "NES";
 alt_name[28] = "Metroid II";
 alt_name[29] = "Super Gameboy";
-alt_name[30] = "Early Access";
-alt_name[31] = "Abyss";
+alt_name[30] = "Abyss";
+alt_name[31] = "Villains Of Aether";
 
 draw_set_halign(fa_left);
 
@@ -77,8 +77,6 @@ prev_alt = alt_cur;
 
 //extra icons
 if(alt_cur == 30){
-    draw_sprite_ext(sprite_get("ccs_icons"), 3, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
-}else if(alt_cur == 31){
     draw_sprite_ext(sprite_get("ccs_icons"), 1, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
 }
 

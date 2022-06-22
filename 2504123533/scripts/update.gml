@@ -1,3 +1,10 @@
+//nuzl's galaxy (will delete later)
+if (galaxy_timer == 0 && instance_exists(hit_player_obj) && hit_player_obj.activated_kill_effect && get_player_color( player ) == 23)
+{
+    galaxy_timer = 90;
+}
+galaxy_timer = max(galaxy_timer-1,0)
+
 //auto-recharge
 //also handles point clamping
 if PotionHeldDown

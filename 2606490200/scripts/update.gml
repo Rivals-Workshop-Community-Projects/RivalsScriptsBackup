@@ -137,7 +137,7 @@ if atrain >= 100 && atrain < 300 {
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 9);
-	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 16);
+	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 18);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 6);
 	set_hitbox_value(AT_FAIR, 4, HG_DAMAGE, 6);
@@ -212,8 +212,8 @@ if ltrain >= 100 && ltrain < 300 {
 	
 	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 12);
 	set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4);
-	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 10);
-	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 10);
+	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 12);
+	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 12);
 	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 9);
 	set_hitbox_value(AT_EXTRA_1, 7, HG_DAMAGE, 3);
 	
