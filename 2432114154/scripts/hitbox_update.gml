@@ -126,10 +126,7 @@ if attack == AT_NSPECIAL {
 	    	}
 	    	
 	    	spawn_hit_fx(x,y,302)
-	    	vsp = (abs(hsp) + abs(vsp))*-1
-	    	hsp *= 0.5
-	    	gravity = (abs(hsp) + abs(vsp))/15
-			hit_priority = 0
+	    	destroyed = true 
 			
 			
 	    }

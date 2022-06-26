@@ -1201,7 +1201,7 @@ with oPlayer if (activated_kill_effect) {
    }
 }
 }
-
+if(get_match_setting(SET_PRACTICE)) == false {
 if triggercutscene != 0 {
 	
 	if triggercutscene > 390 {
@@ -1314,6 +1314,7 @@ with oPlayer {
   }
 }
 
+}
 }
 
 /* codes archived, Auto parry in neutral state
