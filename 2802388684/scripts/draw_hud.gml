@@ -1,4 +1,7 @@
 //draw_hud.gml
+//update script 
+
+
 if (is_master_player) {
 // prevents draw_hud from running a frame too early and spitting an error
 if "phone" not in self exit;

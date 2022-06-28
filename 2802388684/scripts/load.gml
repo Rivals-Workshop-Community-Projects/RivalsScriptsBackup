@@ -94,3 +94,26 @@ sprite_change_offset("kunai", 50, 70);
 sprite_change_offset("vfx_log", 50, 70);
 sprite_change_offset("vfx_smoke", 50, 70);
 sprite_change_offset("ustrong_clone_vfx", 50, 70);
+
+sprite_change_offset("hud_default_hud", 0, -2);
+sprite_change_offset("hud_alt1_hud", 0, -2);
+sprite_change_offset("hud_default_hurt", 0, -2);
+sprite_change_offset("hud_alt1_hurt", 0, -2);
+sprite_change_offset("hud_default_offscreen", 16, 18);
+sprite_change_offset("hud_alt1_offscreen", 16, 18);
+var alt_clr = get_player_color("online_css" in self ? 0 : player);
+if get_player_color(player) == 0 {
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_default_hud"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_default_hurt"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("hud_default_offscreen"));
+	set_ui_element(UI_CHARSELECT, sprite_get("hud_default_charselect"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_default_result_small"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_default_portrait"));
+}else{
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_alt1_hud"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_alt1_hurt"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("hud_alt1_offscreen"));
+	set_ui_element(UI_CHARSELECT, sprite_get("hud_alt1_charselect"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_alt1_result_small"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_portrait"));
+}

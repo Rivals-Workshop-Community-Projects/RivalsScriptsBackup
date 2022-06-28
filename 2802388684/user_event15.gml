@@ -51,7 +51,7 @@ alt_names = [
 	"Boruto",
 	"Madara",
 	"Trans Jutsu",
-	"GameBoy",
+	"GameBoy"
 	];
 
 
@@ -260,10 +260,6 @@ in a Patch.
 */
 
 #define CORE_patches
-initPatch("1.3", "28 June, 2022"); 
-initHeader("QoL Change:");
-initSection("Added the Purple Voice Toggle Button at the Character Select Screen under Naruto Press it to toggle the Voice to English > Japanese > Mute again");
-initSection("No longer this is needed to be Over alt. recolors so now there is room for more costumes that coming next patch");
 initPatch("1.2", "18 May, 2022"); 
 initHeader("Dash Attack - Fixes");
 initSection("both hits connects better now");

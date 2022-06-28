@@ -165,6 +165,15 @@ else {
 //for both: 
 //set voice constants in user_event_11.gml.
 user_event(11);
+if (get_synced_var( player ) == 0) {
+	voice = VC_NONE;
+}
+if (get_synced_var( player ) == 1) {
+	voice = VC_EN;
+}
+if (get_synced_var( player ) == 2) {
+	voice = VC_JP;
+}
 
 
 //I think these stats need to be here.

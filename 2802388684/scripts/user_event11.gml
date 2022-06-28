@@ -8,15 +8,24 @@ voice_playing_sound = noone;
 VC_NONE = 0;
 VC_EN = 1;
 VC_JP = 2;
-var alt_cur = get_player_color(player);
+//var alt_cur = get_player_color(player);
 
 
 //default voice
-voice = VC_NONE;
+//voice = VC_NONE;
+if (get_synced_var( player ) == 0) {
+	voice = VC_NONE;
+}
+if (get_synced_var( player ) == 1) {
+	voice = VC_EN;
+}
+if (get_synced_var( player ) == 2) {
+	voice = VC_JP;
+}
 
 //alter these to have languages based on voice selection
-	 if alt_cur >= 11 && alt_cur <= 20 voice = VC_EN; //english voice: palette 11-20
-else if alt_cur >= 21 && alt_cur <= 30 voice = VC_JP; //japanese voice: palette 21-30
+//	 if alt_cur >= 11 && alt_cur <= 20 voice = VC_EN; //english voice: palette 11-20
+// else if alt_cur >= 21 && alt_cur <= 30 voice = VC_JP; //japanese voice: palette 21-30
 
 //alter these if you used a different prefix for your filenames
 vc_prefix_string = [ 

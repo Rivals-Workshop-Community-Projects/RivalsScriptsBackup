@@ -565,7 +565,6 @@ shader_end();
 // obsoleted by patch lol
 // textDraw(x + 220, y + 210, "fName", c_white, 100, 1000, fa_right, 1, false, 0.25, "char ver. " + string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)), false);
 
-
 // Alt costume
 
 var alt_cur = get_player_color(player);

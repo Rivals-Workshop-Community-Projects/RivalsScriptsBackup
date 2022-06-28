@@ -1,26 +1,3 @@
-muno_event_type = 6;
-user_event(14);
-if get_player_color(player) == 0 {
-	set_ui_element(UI_HUD_ICON, sprite_get("hud_default_hud"));
-	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_default_hurt"));
-	set_ui_element(UI_OFFSCREEN, sprite_get("hud_default_offscreen"));
-	set_ui_element(UI_CHARSELECT, sprite_get("hud_default_charselect"));
-	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_default_result_small"));
-	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_default_portrait"));
-}else{
-	set_ui_element(UI_HUD_ICON, sprite_get("hud_alt1_hud"));
-	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_alt1_hurt"));
-	set_ui_element(UI_OFFSCREEN, sprite_get("hud_alt1_offscreen"));
-	set_ui_element(UI_CHARSELECT, sprite_get("hud_alt1_charselect"));
-	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_alt1_result_small"));
-	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_portrait"));
-}
-
-var alt_cur = get_player_color(player);
-var draw_index;
-
-
-
 // Button Code
 	if get_player_hud_color(player) == 8421504{
 		var tmp_cur = 0;
@@ -111,13 +88,15 @@ if voicebutton == 2 || voicebutton == 5 || voicebutton == 8 {
 		voicebuttoncurrent = voicebutton;
 	}
 }
-if (tmp_x[tmp_pt]>tmp_xl1 && tmp_x[tmp_pt]<tmp_xl2 && tmp_y[tmp_pt]>tmp_yl1 && tmp_y[tmp_pt]<tmp_yl2){ 	
+if (tmp_x[tmp_pt]>tmp_xl1 && tmp_x[tmp_pt]<tmp_xl2 && tmp_y[tmp_pt]>tmp_yl1 && tmp_y[tmp_pt]<tmp_yl2){ 
+	suppress_cursor = true;
 	if voicebutton == voicebuttoncurrent {
 		if voicebutton == 0 || voicebutton == 3 || voicebutton == 6 {
 			voicebutton += 1;
 		}
 	}
 }else{
+	suppress_cursor = false;
 	if voicebutton == 1 || voicebutton == 4 || voicebutton == 7 {
 		voicebutton -= 1;
 	}
@@ -129,5 +108,3 @@ if voicebutton == 1 || voicebutton == 4 || voicebutton == 7 {
 		voicebuttoncurrent = voicebutton;
 	}	
 }
-set_synced_var( player, voiced)
-draw_sprite_ext(sprite_get("cssvoice_button"), 0+voicebutton, x + tmp_xl, y + tmp_yl, 1, 1, 0, c_white, 1);
