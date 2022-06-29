@@ -200,4 +200,4 @@ if(variable_instance_exists(id,"diag"))
 
 //intro anim
 var intro_time = get_gameplay_time();
-if intro_time == (5) sound_play(sound_get("intro_nyoom"))
+if (intro_time == (5)  && (!variable_instance_exists(id,"diag"))) sound_play(sound_get("intro_nyoom"))

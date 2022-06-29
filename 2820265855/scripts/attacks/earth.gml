@@ -24,7 +24,7 @@ set_num_hitboxes(AT_NSPECIAL_2, 0);
 
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_LIFETIME, 90);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_LIFETIME, 60 + has_rune("F") * 10);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_X, 60);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_Y, -66);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_WIDTH, 80);

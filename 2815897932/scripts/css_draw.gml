@@ -79,7 +79,6 @@ if use_alt_names{
 if (get_color_profile_slot_r(0, 0) == 247)
 {
     set_color_profile_slot( 0, 0, 248, 238, 150 );
-    sound_play(sound_get("Announcer_NamesPaprika1"), false, 0);
 }
 
 #define rectDraw(x1, y1, width, height, color)

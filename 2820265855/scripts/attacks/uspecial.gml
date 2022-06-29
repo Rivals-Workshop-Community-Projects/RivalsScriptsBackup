@@ -16,7 +16,7 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -6);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -5 + has_rune("I") * -2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
@@ -24,9 +24,9 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -7);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -7 + has_rune("I") * -2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -35,8 +35,8 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial_
 
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 10);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 24);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 set_window_value(AT_USPECIAL, 4, AG_USES_CUSTOM_GRAVITY, 1);
 

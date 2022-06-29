@@ -323,6 +323,25 @@ if(attack == AT_NSPECIAL_2){
     }
 }
 
+//runes
+if has_rune("L"){
+    if (attack == AT_FSTRONG){
+        super_armor = true
+    }
+}
+
+if has_rune("L"){
+    if (attack == AT_USTRONG){
+        super_armor = true
+    }
+}
+
+if has_rune("L"){
+    if (attack == AT_DSTRONG){
+        super_armor = true
+    }
+}
+
 
 #define range_finder(ox,oy,dir,range,object,prec,notme)
 //

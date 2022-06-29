@@ -231,6 +231,11 @@ if (!custom_clone) {
 	}
 } else { //Clone Stuff
 	//have_collision = false;
+	if (clone_owner.clone_attack_hold) { //Has Attack or not
+		outline_color = [100, 100, 100];
+	} else {
+		outline_color = [0, 0, 0];
+	}
 	soft_armor = 999;
 	force_depth = true;
 	depth = 0;

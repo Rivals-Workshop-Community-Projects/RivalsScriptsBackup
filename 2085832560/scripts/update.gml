@@ -2,7 +2,9 @@
 
 
 if bursted != 0 && down_down {
+	 clear_button_buffer( PC_SPECIAL_PRESSED );
 	move_cooldown[AT_DSPECIAL] = 5
+	move_cooldown[AT_NSPECIAL] = 5
 }
 
 

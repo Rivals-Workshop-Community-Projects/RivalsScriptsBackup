@@ -61,7 +61,7 @@ if !hitpause {
             vsp = -12
             if window_timer = 1 {
                 spawn_hit_fx(x,y,304)
-                 sound_play(sound_get("fspec"),false,noone,0.8)
+                 sound_play(sound_get("fspec"),false,noone,0.6)
             }
         }
         
@@ -393,8 +393,8 @@ if !hitpause {
             }
         if window == 1 {
             if window_timer == 1 {
-                     sound_play(asset_get("sfx_absa_whip"),false,noone,1)
-                                      sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
+                     sound_play(asset_get("sfx_absa_whip"),false,noone,.8)
+                     sound_play(asset_get("sfx_absa_whip3"),false,noone,.8)
             }
             
              if window_timer == 10 && voiced == 1{
@@ -423,12 +423,12 @@ if !hitpause {
         if window == 2 && window_timer == 1 {
             hsp /= 2
             
-            move_cooldown[AT_DSPECIAL] = 60
+            move_cooldown[AT_DSPECIAL] = 90
             //spawn_hit_fx(x,y-15,sw)
             spawn_hit_fx(x,y-15,sw2)
                             //create_hitbox(AT_DSPECIAL,11, x + 10 * spr_dir , y - 36)
-               sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1.2)
-               sound_play(asset_get("sfx_absa_whip3"),false,noone,1.2)
+               sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1)
+               sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
                 sound_play(asset_get("sfx_swipe_weak1"))
         }   
            

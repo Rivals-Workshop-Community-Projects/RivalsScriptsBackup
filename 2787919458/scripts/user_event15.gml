@@ -296,6 +296,19 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.12", "28th June, 2022");
+
+initHeader("Nerfs");
+initSection("- Made FSpecial's weak hitbox active for less time (8>4)");
+
+initHeader("Fixes / Other Changes");
+initSection("- Added a CSS button to toggle MLG effects/voices
+- Due to the above the hud text for disabling sfx has been removed
+- Added chilidog, stupid bitch hurt sound, fspecial sound and death airhorn to the mute list
+- Dorito now has a colored outline to show who owns it.
+- Fixed some offset issues with the Dorito.
+- Due to the above Dorito's hitbox is now centered");
+
 initPatch("1.11", "20th June, 2022");
 initHeader("Fixes / Other Changes");
 initSection("- Fixed Spring changing ownership");

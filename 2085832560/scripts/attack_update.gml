@@ -743,10 +743,14 @@ if attack == AT_NSPECIAL {
 
 if attack == AT_DSPECIAL {
 
-if window == 1 && window_timer == 1{
+if window == 1 && window_timer == 1 && bursted == 0{
 	gunname = 0
 	  sound_stop(asset_get("sfx_frog_fspecial_charge_gained_1"));
 	  sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
+}
+
+if window == 1 && bursted != 0 {
+	set_state(PS_IDLE)
 }
 
     lmtime = 360
@@ -1029,9 +1033,10 @@ if window == 1 && window_timer == 1{
 			}
 			
 			if gunname >= 8 {
-				bursted = 1
+				//bursted = 1
 				shake_camera(5,5)
 		sound_play(sound_get("exp1"));
+		take_damage(player,-1,15)
 		spawn_hit_fx( x , y - 22 , exp1 )
 		create_hitbox(AT_EXTRA_3 , 7 ,x   , y - 22 );
 		gone = spawn_hit_fx(x + 30*spr_dir ,y - 40,burst)

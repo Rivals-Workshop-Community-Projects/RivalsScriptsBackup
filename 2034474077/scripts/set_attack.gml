@@ -28,7 +28,7 @@ switch (attack){
 
     case AT_DSPECIAL:
         if(specialnums[3] == 0){
-            attack = AT_DSPECIAL_1 //changes Down B To Head-On Assault
+            attack = AT_DSPECIAL_1 //changes Down B To Headache Maker
         }else if(specialnums[3] == 2){
             attack = AT_DSPECIAL_3 //changes Down B to Counter Throw
         }

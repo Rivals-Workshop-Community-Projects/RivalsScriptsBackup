@@ -254,11 +254,11 @@ with oPlayer if (activated_kill_effect) {
   		
   		if voiced == 1 {
                sound_play(sound_get("bat2"),false,noone,1)	
-               sound_play(sound_get("finish"),false,noone,2)
+               sound_play(sound_get("finish"),false,noone,1)
             } else {
             	sound_play(asset_get("sfx_bird_nspecial"),false,noone,1)
                 sound_play(asset_get("sfx_spin"),false,noone,2,0.6)	
-                sound_play(sound_get("finishm"),false,noone,1.4)
+                sound_play(sound_get("finishm"),false,noone,.8)
             }
   		  	
   			

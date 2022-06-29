@@ -178,7 +178,7 @@ set_hitbox_value(AT_DSTRONG, 7, HG_WIDTH, 80);
 set_hitbox_value(AT_DSTRONG, 7, HG_HEIGHT, 90);
 set_hitbox_value(AT_DSTRONG, 7, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG, 7, HG_PRIORITY, 2);
-set_hitbox_value(AT_DSTRONG, 7, HG_DAMAGE, 2);
+set_hitbox_value(AT_DSTRONG, 7, HG_DAMAGE, 2 + has_rune("L") * 2);
 set_hitbox_value(AT_DSTRONG, 7, HG_ANGLE, 65);
 set_hitbox_value(AT_DSTRONG, 7, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSTRONG, 7, HG_KNOCKBACK_SCALING, 1.3);

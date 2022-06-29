@@ -6,7 +6,8 @@ if (attack == AT_DTILT && hbox_num == 2){
     
     if(random_func_2(1,4,true) == 2){
     	sprite_index = sprite_get("chilidog")
-    	sound_play(sound_get("Chilidog"))
+    	if(!player_id.trigger_warning)
+    		sound_play(sound_get("Chilidog"))
     }
 }
 if (attack == AT_NSPECIAL){
@@ -34,6 +35,7 @@ if (attack == AT_NSPECIAL){
 	}else{
 		CalCanSnack = 2;
 	}
+	init_spr_dir = spr_dir;
 	with(asset_get("pHitBox")){
 		if(place_meeting(x,y,other)){
 			if(attack == AT_NSPECIAL && player == other.player && hitbox_timer <= 2 && other != self && hbox_num == 1){

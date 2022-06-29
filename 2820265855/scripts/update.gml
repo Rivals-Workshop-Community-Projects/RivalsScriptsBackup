@@ -37,7 +37,7 @@ if (dspecial_sfx <= 0){
 
 if (powerpoints <= 63){
   powerpoints_regen++;
-  if (powerpoints_regen == 30){
+  if (powerpoints_regen == 30 + has_rune ("O") * -15){
     powerpoints_regen = 0;
     powerpoints += 1;
   }

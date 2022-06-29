@@ -80,7 +80,7 @@ switch(my_hitboxID.attack){
 		}
 		break;
 
-	//Head-On-Assault
+	/*//Head-On-Assault
 	case AT_DSPECIAL_AIR:
 		if(window < 5){
 			if(hit_player_obj.clone == false && hit_player_obj.super_armor == false){
@@ -89,7 +89,7 @@ switch(my_hitboxID.attack){
 				multihit.hsp = 2 * spr_dir;
 			}
 		}
-		break;
+		break;*/
 
 	//Counter Throw
 	case AT_DSPECIAL_2:

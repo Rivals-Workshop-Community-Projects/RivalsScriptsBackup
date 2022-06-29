@@ -23,6 +23,17 @@ if(trail_draw_size > 1)
     gpu_set_blendmode(bm_normal);
 }
 
+with(pHitBox){
+    if(player_id == other && attack == AT_NSPECIAL && hbox_num == 1 && hit_priority > 0){
+        gpu_set_fog(1, get_player_hud_color(player), 0, 1);
+    	draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir, 1, proj_angle, c_white, 1);
+    	draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir, 1, proj_angle, c_white, 1);
+    	draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir, 1, proj_angle, c_white, 1);
+    	draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir, 1, proj_angle, c_white, 1);
+    	gpu_set_fog(false, c_white, 1, 1);
+    }
+}
+
 // input the shade slot index
 // outputs the colour of the shade slot of the current alt
 #define GetColourPlayer(_index)

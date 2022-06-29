@@ -519,7 +519,7 @@ if lockouttimer < 0 {
                  	}
               
               sound_play(asset_get("sfx_ori_energyhit_medium"))
-         	 sound_play(asset_get("sfx_absa_whip"),false,noone,1.2) 
+         	 sound_play(asset_get("sfx_absa_whip"),false,noone,1) 
          	  
          	  switch hbox_num {
                case 1 :
@@ -547,7 +547,8 @@ if lockouttimer < 0 {
          	}
          	
          if nearbyhitbox.attack == AT_FSPECIAL && (hitbox_timer > 30 or vsp > 0) {
-         	   sound_play(sound_get("strongb"),false,noone,1.2)
+         	   sound_play(sound_get("strongb"),false,noone,.6
+         	   )
          	   shake_camera(5,8)
          	   spawn_hit_fx(x,y ,305)
          	   
@@ -613,7 +614,7 @@ if lockouttimer < 0 {
                         sagefx5 = x
                         sagefy5 = y
                 
-                sound_play(sound_get("sage"),false,noone,1.2)
+                sound_play(sound_get("sage"),false,noone,.6)
 
                  	if get_player_color(player) == 21 {
                  	 sound_play(sound_get("Lycasage"),false,noone,1)
@@ -668,7 +669,8 @@ if lockouttimer < 0 {
                 shake_camera(2,2)
          		bouncing = true
          		bouncenum = 1
-         		sound_play(sound_get("shockready"),false,noone,.8,0.8)
+         		sound_stop(sound_get("shockready"))
+         		sound_play(sound_get("shockready"),false,noone,.5,0.8)
          		hsp = 2*player_id.spr_dir
          		}
          		
@@ -679,8 +681,8 @@ if lockouttimer < 0 {
       	        	x += floor(nearbyhitbox.x - x)/2
 		        	y += floor(nearbyhitbox.y - y)/2
 		        	destroyed = 1
-                     	 sound_play(asset_get("sfx_absa_whip"),false,noone,1.2) 
-                     	sound_play(asset_get("sfx_blow_heavy2"),false,noone,1.2)
+                     	 sound_play(asset_get("sfx_absa_whip"),false,noone,1) 
+                     	sound_play(asset_get("sfx_blow_heavy2"),false,noone,1)
                      	
                        switch hbox_num {
                        case 1 :

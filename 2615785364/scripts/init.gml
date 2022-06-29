@@ -1,12 +1,17 @@
 set_victory_bg( sprite_get( "bg" ));
 set_victory_theme( sound_get( "sonic" ));
+fx_ringhit1 = hit_fx_create(sprite_get("ringexplode"), 10);
+sonicSpinSpeed = 0;
+
+wait_time = 300;
+wait_length = 350;
+wait_sprite = sprite_get("wait");
+
 can_throw_bell = 0;
 chadRealLife = 0;
 
 ssl_debug_enabled = true; //togles template debug messages.
 ssl_advanced_debug_enabled = false; //togles advanced debug messages, only enable if you really want to know whats going on.
-
-fx_ringhit1 = hit_fx_create(sprite_get("ringexplode"), 10);
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
@@ -114,8 +119,6 @@ old_djumps = 0;
 dj_state_timer = 0;
 is_double_jump = false;
 is_jumpsquat = false;
-
-sonicSpinSpeed = 0;
 
 //Strong buffer stuff so you can have a neutral strong press
 strong_buffer = 0;

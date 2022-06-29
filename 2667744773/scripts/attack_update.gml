@@ -211,6 +211,8 @@ if (attack == AT_NSPECIAL){
     		if(window_timer == 1){
     			flutterTimer -= 20;	
     			set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, .2);
+    			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
+				set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
     		}
     	}else{
     		set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 1);
@@ -224,6 +226,8 @@ if (attack == AT_NSPECIAL){
         	}else{
     			NspecialCount = 0;
     			PinMissile = false;
+    			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_strong"));
+				set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_strong_air"));
         		
         	}
     	}

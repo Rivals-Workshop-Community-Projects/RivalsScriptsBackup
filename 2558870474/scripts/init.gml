@@ -241,14 +241,14 @@ roll_back_recovery_frames       = 1;
 // Projectile
 spr_nspecial_proj = sprite_get("nspecial_proj");
 
-spr_clone_spawn 	= sprite_get("clone_initdash");
-spr_clone_dash  	= sprite_get("clone_dash");
-spr_clone_startup	= sprite_get("clone_startup");
-spr_clone_active	= sprite_get("clone_active");
-spr_clone_endlag	= sprite_get("clone_endlag");
-spr_clone_die		= sprite_get("roll_clone");
+spr_clone_spawn 		= sprite_get("clone_initdash");
+spr_clone_dash  		= sprite_get("clone_dash");
+spr_clone_startup		= sprite_get("clone_startup");
+spr_clone_active		= sprite_get("clone_active");
+spr_clone_endlag		= sprite_get("clone_endlag");
+spr_clone_die			= sprite_get("roll_clone");
 spr_smallclone_die		= sprite_get("roll_smallclone");
-spr_clone_die_dash	= sprite_get("vfx_clonedashing_vanish");
+spr_clone_die_dash		= sprite_get("vfx_clonedashing_vanish");
 spr_smallclone_die_dash	= sprite_get("vfx_smallclonedashing_vanish");
 
 col_arrow = get_player_hud_color(player);

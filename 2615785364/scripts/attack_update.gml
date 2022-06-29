@@ -11,7 +11,7 @@ if window == 3 {
 }
 break;
 case AT_JAB:
-move_cooldown[AT_JAB] = 20
+move_cooldown[AT_JAB] = 75;
 break;
 
 
@@ -89,4 +89,10 @@ if (attack == AT_DAIR){
 
 if (attack == AT_DAIR && djumps == 0){
 	can_jump = true;
+}
+
+if (attack == AT_FAIR){
+	if (window == 2 && window_timer == 1 || window == 2 && window_timer == 4 || window == 3 && window_timer == 0){
+	create_hitbox( AT_FAIR, 2, x, y);
+	}
 }

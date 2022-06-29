@@ -145,7 +145,13 @@ switch(attack){
                 break;
         }
         break;
-    
+    case AT_JAB:
+        if has_hit{
+            if back_down and attack_pressed{
+                trigger_b_reverse();
+            }
+        }
+        break;
     case AT_DTILT:
         if window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2{
             sound_play(asset_get("sfx_watergun_splash"));

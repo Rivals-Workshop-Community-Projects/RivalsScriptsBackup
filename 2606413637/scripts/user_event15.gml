@@ -266,6 +266,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.11", "27 June, 2022");
+initHeader("User Interface");
+initSection("The language switch option is now its own button instead of being tied to cycling through the alts.
+The HUD sprite now updates to reflect the current SSJ form.");
+
 initPatch("1.10", "02 June, 2022");
 initHeader("DAir - Nerfs");
 initSection("The spike at the start of the move is now a sweetspot (near the tip of his feet) instead of the entire hitbox.");

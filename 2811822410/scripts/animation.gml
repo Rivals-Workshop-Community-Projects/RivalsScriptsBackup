@@ -25,3 +25,7 @@ if (custom_clone) {
 	hurtboxID.x = x;
 	hurtboxID.y = y;
 }
+
+
+
+

@@ -1,3 +1,20 @@
+if ssj == 0 || ssj == 3 || ssj == 5 {
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_base"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_base"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_base"));
+}
+if ssj == 1 || ssj == 4 || ssj == 6 {
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_SSJ1"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_SSJ1"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_SSJ1"));
+	
+}
+if ssj == 2{
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_SSJ3"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_SSJ3"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_SSJ3"));	
+}
+
 if "ki" not in self exit;
 
 if !phone_cheats[CHEAT_TRAILER]{

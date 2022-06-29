@@ -1,4 +1,4 @@
-if (attack == AT_NSPECIAL_2 && hbox_num == 1 && hitbox_timer == 89) destroyed = 1;
+if (attack == AT_NSPECIAL_2 && hbox_num == 1 && hitbox_timer == 59) destroyed = 1;
 
 
 //zap

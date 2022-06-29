@@ -1,5 +1,6 @@
 sound_stop(airhorn_sfx)
-sound_play(sound_get("sad_airhorn"))
+if(!trigger_warning)
+    sound_play(sound_get("sad_airhorn"))
 
 if(get_player_stocks(player) != 1){
     if(instance_exists(doge)){

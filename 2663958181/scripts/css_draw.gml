@@ -22,7 +22,6 @@ var qe_b = "Bubbles"
 var charuuid = string(sprite_get("idle"));
 if ("css_char" not in self || css_char != charuuid) {
     css_char = charuuid;
-    sound_play(sound_get("sfx_fspecial_start"));
 }
 
 

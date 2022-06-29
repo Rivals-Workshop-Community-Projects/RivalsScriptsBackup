@@ -77,7 +77,7 @@ sprite_change_offset("hit_marker", 26, 26);
 sprite_change_offset("sound_wave", 40, 90);
 sprite_change_offset("dspecial_bullet", 38, 5);
 sprite_change_offset("bullet_hud", 16, 16);
-sprite_change_offset("dorito", 90, 100);
+sprite_change_offset("dorito", 44, 52);
 sprite_change_offset("shard", 95, 100);
 
 sprite_change_offset("shrek_door", 132, 156);

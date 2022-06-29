@@ -123,3 +123,33 @@ hue_offset=0;
 hue_speed=1; //change this to change the speed of the hueshift
 
  set_victory_theme(sound_get("Victory!"));
+
+ //Runes
+ if has_rune("C") {
+dash_speed = 10;
+} else {
+dash_speed = 7;
+}
+
+ if has_rune("E") {
+jump_speed = 13;
+} else {
+jump_speed = 11;
+}
+
+//runes
+if has_rune("D"){
+land_time = 4
+prat_land_time = 5;
+wave_land_time = 4;
+} else {
+land_time = 8
+prat_land_time = 10;
+wave_land_time = 8;
+}
+
+ if has_rune("K") {
+max_djumps = 2;
+} else {
+max_djumps = 1;
+}

@@ -155,13 +155,6 @@ if (runesUpdated || runesBuiltIn){
     }else{
         max_fall = 10;
     }
-    if(runeE){
-        set_hitbox_value(AT_DSPECIAL_1, 2, HG_DAMAGE, 2);
-        set_hitbox_value(AT_DSPECIAL_1, 2, HG_KNOCKBACK_SCALING, 0);
-    }else{
-        reset_hitbox_value(AT_DSPECIAL_1, 2, HG_DAMAGE);
-        reset_hitbox_value(AT_DSPECIAL_1, 2, HG_KNOCKBACK_SCALING);
-    }
     if(runeF){
         set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 42);
         set_hitbox_value(AT_NAIR, 2, HG_TECHABLE, 1);

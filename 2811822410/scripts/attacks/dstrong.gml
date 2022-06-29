@@ -55,10 +55,10 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_WINDOW, 3);
 	set_hitbox_value(curr_attack, 1, HG_SHAPE, 2);
 	set_hitbox_value(curr_attack, 1, HG_LIFETIME, 3);
-	set_hitbox_value(curr_attack, 1, HG_HITBOX_Y, -20);
+	set_hitbox_value(curr_attack, 1, HG_HITBOX_Y, -10);
 	set_hitbox_value(curr_attack, 1, HG_HITBOX_X, 55);
 	set_hitbox_value(curr_attack, 1, HG_WIDTH, 100);
-	set_hitbox_value(curr_attack, 1, HG_HEIGHT, 40);
+	set_hitbox_value(curr_attack, 1, HG_HEIGHT, 20);
 	set_hitbox_value(curr_attack, 1, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 10);
 	set_hitbox_value(curr_attack, 1, HG_ANGLE,  70);
@@ -75,10 +75,10 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 2, HG_WINDOW, 5);
 	set_hitbox_value(curr_attack, 2, HG_SHAPE, 2);
 	set_hitbox_value(curr_attack, 2, HG_LIFETIME, 3);
-	set_hitbox_value(curr_attack, 2, HG_HITBOX_Y, -20);
+	set_hitbox_value(curr_attack, 2, HG_HITBOX_Y, -10);
 	set_hitbox_value(curr_attack, 2, HG_HITBOX_X, -50);
 	set_hitbox_value(curr_attack, 2, HG_WIDTH, 100);
-	set_hitbox_value(curr_attack, 2, HG_HEIGHT, 40);
+	set_hitbox_value(curr_attack, 2, HG_HEIGHT, 20);
 	set_hitbox_value(curr_attack, 2, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 2, HG_DAMAGE, 10);
 	set_hitbox_value(curr_attack, 2, HG_ANGLE,  110);

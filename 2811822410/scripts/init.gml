@@ -73,20 +73,20 @@ dash_turn_accel = 2;
 dash_stop_time = 6;
 dash_stop_percent = .30; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .75;
-moonwalk_accel = 3;
+moonwalk_accel = 1.4;
 
 //MIKU IS LACKING JUMP STATS RIGHT NOW--------------------------------------
 
 jump_start_time = 5;
-jump_speed = 10.5; //10.5
+jump_speed = 10; //10.5
 short_hop_speed = 5.5;
-djump_speed = 10.5; //10.5
+djump_speed = 9.5; //10.5
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .4; //.25
-prat_fall_accel = .2; //multiplier of air_accel while in pratfall
+prat_fall_accel = .3; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
@@ -95,8 +95,8 @@ walljump_vsp = 9;
 walljump_time = 32;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
-gravity_speed = .5; //5
-hitstun_grav = .5;
+gravity_speed = .45; //5
+hitstun_grav = .5; //5
 knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, 1> = heavier
 
 land_time = 4; //normal landing frames

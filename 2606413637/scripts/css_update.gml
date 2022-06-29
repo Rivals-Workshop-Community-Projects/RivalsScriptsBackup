@@ -1,18 +1,3 @@
-muno_event_type = 6;
-user_event(14);
-
-var alt_cur = get_player_color(player);
-var num_alts = 12;
-var offset = 0;
-for(i = 0; i < num_alts; i++){
-    var draw_color = (i == alt_cur - offset) ? c_white : c_gray * 0.5;
-    var draw_x = x + 78 + 8 * i;
-    rectDraw(draw_x, y + 10, 5, 3, draw_color);
-}
-sprite_change_offset("hud_base", 0, -2);
-set_ui_element(UI_HUD_ICON, sprite_get("hud_base"));
-set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_base"));
-set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_base"));
 // Button Code
 	if get_player_hud_color(player) == 8421504{
 		var tmp_cur = 0;
@@ -103,13 +88,15 @@ if voicebutton == 2 || voicebutton == 5 || voicebutton == 8 {
 		voicebuttoncurrent = voicebutton;
 	}
 }
-if (tmp_x[tmp_pt]>tmp_xl1 && tmp_x[tmp_pt]<tmp_xl2 && tmp_y[tmp_pt]>tmp_yl1 && tmp_y[tmp_pt]<tmp_yl2){ 	
+if (tmp_x[tmp_pt]>tmp_xl1 && tmp_x[tmp_pt]<tmp_xl2 && tmp_y[tmp_pt]>tmp_yl1 && tmp_y[tmp_pt]<tmp_yl2){ 
+	suppress_cursor = true;
 	if voicebutton == voicebuttoncurrent {
 		if voicebutton == 0 || voicebutton == 3 || voicebutton == 6 {
 			voicebutton += 1;
 		}
 	}
 }else{
+	suppress_cursor = false;
 	if voicebutton == 1 || voicebutton == 4 || voicebutton == 7 {
 		voicebutton -= 1;
 	}
@@ -121,8 +108,3 @@ if voicebutton == 1 || voicebutton == 4 || voicebutton == 7 {
 		voicebuttoncurrent = voicebutton;
 	}	
 }
-set_synced_var( player, voiced)
-draw_sprite_ext(sprite_get("cssvoice_button"), 0+voicebutton, x + tmp_xl, y + tmp_yl, 1, 1, 0, c_white, 1);
-
-#define rectDraw(x1, y1, width, height, color)
-draw_rectangle_color(x1, y1, x1 + width, y1 + height, color, color, color, color, false);

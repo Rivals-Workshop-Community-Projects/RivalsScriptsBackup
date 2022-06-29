@@ -1,9 +1,28 @@
-has_airdodge = false;
-can_shield = false;
-can_tech = false;
-can_wall_tech = false;
-clear_button_buffer(PC_SHIELD_PRESSED);
-parry_cooldown = 5;
+
+
+ with oPlayer {
+     has_airdodge = false;
+     can_shield = false;
+     can_tech = false;
+     can_wall_tech = false;
+     clear_button_buffer(PC_SHIELD_PRESSED);
+     parry_cooldown = 5;
+     
+     if(state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD)
+      {
+          set_state(PS_IDLE);
+          sound_stop(asset_get("sfx_roll"));
+      }
+      
+      if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
+          set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
+      }
+      
+ }    
+
+
+
+
 
 if Drak_icecream == 1 {
     Drak_icecream = 0 

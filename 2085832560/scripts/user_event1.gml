@@ -18,14 +18,14 @@ dash_speed = 6
 */
 
 knockback_adj += 0.04
-wave_land_adj += 0.02
-max_jump_hsp += 0.5
-air_max_speed += 0.25
-jump_change += 0.1 
+wave_land_adj += 0.015
+max_jump_hsp += 0.13
+air_max_speed += 0.15
+jump_change += 0.1
 air_accel += 0.01
-initial_dash_speed += 0.25
-dash_speed += 0.25
-prat_fall_accel /= 1.1;
+initial_dash_speed += 0.15
+dash_speed += 0.15
+prat_fall_accel /= 1.05;
 
 knockback_adj = clamp(knockback_adj,.9,1.3)
 

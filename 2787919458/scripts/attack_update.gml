@@ -94,7 +94,8 @@ switch(attack){
 					vsp = -6;
 				}
 				hsp = 16*spr_dir;
-				airhorn_sfx = sound_play(sound_get("fspec_dash"))
+				if(!trigger_warning)
+					airhorn_sfx = sound_play(sound_get("fspec_dash"))
 				move_cooldown[AT_FSPECIAL] = 999;
 			}
 		}

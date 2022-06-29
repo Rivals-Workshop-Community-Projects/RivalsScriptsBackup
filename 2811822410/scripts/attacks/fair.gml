@@ -38,8 +38,8 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_WINDOW, 2);
 	set_hitbox_value(curr_attack, 1, HG_LIFETIME, 3);
 	set_hitbox_value(curr_attack, 1, HG_HITBOX_Y, -45);
-	set_hitbox_value(curr_attack, 1, HG_HITBOX_X, 35);
-	set_hitbox_value(curr_attack, 1, HG_WIDTH, 90);
+	set_hitbox_value(curr_attack, 1, HG_HITBOX_X, 40);
+	set_hitbox_value(curr_attack, 1, HG_WIDTH, 70);
 	set_hitbox_value(curr_attack, 1, HG_HEIGHT, 90);
 	set_hitbox_value(curr_attack, 1, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 9);

@@ -190,8 +190,15 @@ VC_JP = 2;
 
 voice = VC_NONE;
 
-if alt_cur > 11 voice = VC_EN;
-if alt_cur > 21 voice = VC_JP;
+if (get_synced_var( player ) == 0) {
+	voice = VC_NONE;
+}
+if (get_synced_var( player ) == 1) {
+	voice = VC_EN;
+}
+if (get_synced_var( player ) == 2) {
+	voice = VC_JP;
+}
 
 checked_sprite_names = [
     "idle", 

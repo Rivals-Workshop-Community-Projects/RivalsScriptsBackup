@@ -1,4 +1,5 @@
 sprite_change_offset("idle", 38, 72);
+sprite_change_offset("wait", 38, 72);
 
 sprite_change_offset("hurt", 38, 72);
 sprite_change_offset("crouch", 38, 72);

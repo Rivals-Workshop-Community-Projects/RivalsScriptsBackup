@@ -32,7 +32,7 @@ if(killcam_timer > 0){
     killcam_timer--;
     draw_sprite_ext(sprite_get("killcam"),abs(killcam_timer),-60,0,2,2,0,-1,.5)
 }
-
+/*
 if(get_gameplay_time() <= 120){
 	if(!trigger_warning){
 		draw_debug_text(temp_x-10, temp_y - 20, "Taunt to disable distractions");
@@ -42,6 +42,7 @@ if(get_gameplay_time() <= 120){
         sound_play(sound_get("sad_airhorn"))
 	}
 }
+*/
 if(sanic_uspec_count != 0){
 	draw_sprite_ext(sprite_get("hud_joint"),sanic_uspec_count-1,temp_x+180,temp_y,2,2,0,sanic_uspec_count==3?c_gray:-1,1)
 }

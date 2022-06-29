@@ -47,7 +47,6 @@ if "something" not in self and color == 0{
 var charuuid = string(sprite_get("idle"));
 if ("css_char" not in self || css_char != charuuid) {
     css_char = charuuid;
-    sound_play(sound_get("sfx_charge1"));
 }
 
 // Updating image_alpha when a new color is selected

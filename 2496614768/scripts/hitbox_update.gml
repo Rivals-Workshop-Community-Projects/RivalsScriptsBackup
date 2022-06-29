@@ -90,7 +90,35 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
 		        soft_armor = false
 		     }
 		     
-		   
+		   if  id != other.player_id && (state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD 
+                	or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD or invince_time > 0  or state == PS_TECH_GROUND) {
+                		if "fakeinvi" in self {
+                			if fakeinvi > 0 {
+                				
+                			} else {
+            		            invincible = 0
+            		            invince_time = 0
+            		            state_timer = 999
+            		            window_timer = 999
+            		            visible = true 
+            		            print("inevitable")
+            		            with other.player_id {
+            		             create_hitbox(AT_NSPECIAL,2,x,y)
+            		            }
+                			}
+                		} else {
+            		    invincible = 0
+            		    invince_time = 0
+            		    state_timer = 999
+            		    window_timer = 999
+            		    visible = true
+            		    print("inevitable")
+            		    with other.player_id {
+            		            create_hitbox(AT_NSPECIAL,2,x,y)
+            		     }
+                		}
+                   }
+                    
 		   with other {
 		       create_hitbox(AT_NSPECIAL,2,x,y)
 		       destroyed = true

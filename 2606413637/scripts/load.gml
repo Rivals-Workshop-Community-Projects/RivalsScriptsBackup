@@ -81,3 +81,13 @@ sprite_change_offset("kirby", 100, 140);
 sprite_change_offset("kirby_icon", 10, 10);
 
 sprite_change_offset("nspecial_proj", 64, 94);
+
+sprite_change_offset("hud_base", 0, -2);
+sprite_change_offset("hud_SSJ1", 0, -2);
+sprite_change_offset("hud_SSJ3", 0, -2);
+sprite_change_offset("hudhurt_base", 0, -2);
+sprite_change_offset("hudhurt_SSJ1", 0, -2);
+sprite_change_offset("hudhurt_SSJ3", 0, -2);
+sprite_change_offset("offscreen_base", 16, 18);
+sprite_change_offset("offscreen_SSJ1", 16, 18);
+sprite_change_offset("offscreen_SSJ3", 16, 18);

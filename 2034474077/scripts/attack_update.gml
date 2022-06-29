@@ -242,7 +242,6 @@ switch (attack){
     //Burning Dropkick
     case AT_FSPECIAL_2:
         can_fast_fall = false;
-        can_move = false;
         can_wall_jump = true;
         if(window == 1){
             if(window_timer == 1){
@@ -252,7 +251,7 @@ switch (attack){
                 reset_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED);
                 //reset_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE);
             }
-            if(window_timer < 5 && (dir_held == spr_dir * -1) && can_b_reverse){
+            if(window_timer <= 5 && (dir_held == spr_dir * -1) && can_b_reverse){
                 spr_dir *= -1;
                 hsp *= -1;
                 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HSPEED, 8);
@@ -280,7 +279,7 @@ switch (attack){
             window = 5;
             window_timer = 0;
             can_move = true;
-            hsp = -1 * spr_dir; //was -4 * spr_dir
+            hsp = -0.5 * spr_dir; //was -4 * spr_dir
             vsp = -7; //was -6
             multihit = noone;
         }
@@ -493,7 +492,7 @@ switch (attack){
         }
         break;
 
-    //Head-On-Assault
+    /*Head-On-Assault
     case AT_DSPECIAL_AIR:
         can_fast_fall = false;
         if(window == 1 && window_timer == 1){
@@ -546,6 +545,32 @@ switch (attack){
         }
         if(window == 5){
             multihit = noone;
+        }
+        break;
+        */
+    
+    //Headache Maker
+    case AT_DSPECIAL_AIR:
+        can_fast_fall = false;
+        can_wall_jump = true;
+        if(window == 1){
+            hsp = clamp(hsp, -4, 4);
+            vsp = 0;
+            clear_button_buffer(PC_SPECIAL_PRESSED);
+            set_attack_value(AT_DSPECIAL_1, AG_NUM_WINDOWS, 5);
+        }else if(window == 2 && window_timer > 6 && special_pressed){
+            window_timer = 0;
+            window++;
+        }
+        //land
+        if(((window >= 2 && window <= 4) || window == 5 && window_timer <= 10) && !free){
+            sound_play(asset_get("sfx_land_heavy"), false, noone, 1.3, 1.0);
+            sound_play(asset_get("sfx_zetter_downb"), false, noone, 1.0, 1.1);
+            destroy_hitboxes();
+            create_hitbox( AT_DSPECIAL_AIR, 3, x, y );
+            window_timer = 0;
+            window = 6;
+            set_attack_value(AT_DSPECIAL_1, AG_NUM_WINDOWS, 7);
         }
         break;
 

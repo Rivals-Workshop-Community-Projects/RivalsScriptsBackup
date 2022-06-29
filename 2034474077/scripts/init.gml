@@ -145,9 +145,7 @@ menu_open = false;
 menu_confirm = true;
 menu_close = false;                 //used to reset all variables at once when the menu is closed
 close_timer = -1;                   //used for menu vfx when closing
-if(!practice && !classic){
-    menu_timer = 126;               //menu closes when this equals -1
-}else{
+if(practice){
     menu_timer = -1;
 }
 menu_dir = -1;                      //returns 0 for up, 1 for right, 2 for down, and -1 for left and idle
@@ -159,6 +157,16 @@ for(var i = 0; i <= 3; i++){
     }
 }
 
+//SPECIAL SYNCED_VAR CODE BY SUPERSONIC-----------------------------------------
+var tmp_specials = get_synced_var(player);
+//read specials from synced var
+for (var i = 0; i <= 3; i++) {
+    var shift = (i*2);
+    //print(`${i} = ${tmp_specials >> shift & 3}`); //whee debug print
+    specialnums[i] = tmp_specials >> shift & 3;
+    specialnums[i]--;
+}
+//------------------------------------------------------------------------------
 //making special names nicer
 AT_NSPECIAL_3 = AT_NSPECIAL_AIR;
 AT_FSPECIAL_1 = AT_FSPECIAL_AIR;
@@ -198,7 +206,6 @@ abyssMods[@ runes.A] = [3, "TAUNT can acess the special menu outside of training
 abyssMods[@ runes.B] = [2, "ONSLAUGHT has knockback that scales with your percent."];
 abyssMods[@ runes.C] = [1, "SHOTPUT has more hitpause and less ending lag."];
 abyssMods[@ runes.D] = [3, "fishy Mar 25 @ 3:09pm  Make him fall faster"];
-abyssMods[@ runes.E] = [2, "HEAD-ON-ASSAULT has a multihit drop."];
 abyssMods[@ runes.F] = [2, "Makes late hit of NAIR untechable."];
 abyssMods[@ runes.G] = [3, "Triple Jump."];
 abyssMods[@ runes.H] = [2, "Hitting with the first part of SOARING AXE KICK will not put you in pratfall."];
