@@ -5,6 +5,13 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1{
 		sound_stop(asset_get("sfx_frog_jab"));
         sound_play(asset_get("sfx_frog_jab"));
 		spawn_hit_fx( hit_player_obj.x , hit_player_obj.y-32, 144 );
+		if runeO && hit_player_obj.burned == 1{
+			my_hitboxID.state = 2;
+			sound_stop(asset_get("sfx_forsburn_reappear"));
+			sound_play(asset_get("sfx_forsburn_reappear"));
+			sound_stop(sound_get("jingle"));
+			sound_play(sound_get("jingle"));
+		}
     }
     if my_hitboxID.hbox_num == 3 {
        // sound_play(asset_get("sfx_blow_heavy2"))

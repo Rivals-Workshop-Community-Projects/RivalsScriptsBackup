@@ -21,7 +21,7 @@ alt_name[13] = "Charjing";
 alt_name[14] = "Uranium";
 alt_name[15] = "Fools Gold";
 alt_name[16] = "S.D. Parade";
-alt_name[17] = "Ironic";
+alt_name[17] = "Second Hand";
 alt_name[18] = "Movement";
 alt_name[19] = "Retro";
 

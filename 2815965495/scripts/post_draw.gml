@@ -1,5 +1,5 @@
 //draw_debug_text( x +80 , y - 20, string(joy_dir));
-
+//draw_debug_text( x +80 , y - 20, string(prat_land_time));
 
 //Draws Smoke
 if state != PS_HITSTUN && state != PS_PRATFALL && state != PS_SPAWN{

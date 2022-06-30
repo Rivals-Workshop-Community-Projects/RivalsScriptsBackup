@@ -34,8 +34,10 @@ sprite_change_offset("nspecial_smoke_detonate", 30, 30);
 
 sprite_change_offset("ustrong", 22, 150);
 sprite_change_offset("uspecial", 30, 64);
+sprite_change_offset("uspecial_charged", 30, 64);
 sprite_change_offset("dspecial", 28, 64);
 sprite_change_offset("fspecial", 40, 92);
+sprite_change_offset("fspecial_charged", 40, 92);
 sprite_change_offset("nspecial", 30, 67);
 sprite_change_offset("dtilt", 24, 78);
 sprite_change_offset("fair", 30,62);
@@ -57,7 +59,9 @@ sprite_change_offset("uair", 40, 78);
 
 sprite_change_offset("intro", 43, 538);
 sprite_change_offset("intro2", 42, 62);
+sprite_change_offset("intro3", 30, 120);
 sprite_change_offset("intro_proj", 22, 27);
+sprite_change_offset("intro2_proj", 23, 23);
 sprite_change_offset("plat", 48, 8);
 sprite_change_offset("Fcancel", 12, 11);
 sprite_change_offset("owner", 7, 14);	

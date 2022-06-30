@@ -13,7 +13,7 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("Heat Wave"));
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 9);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //ACTIVE FLAMES
@@ -49,7 +49,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 1.2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 1.25);
+set_hitbox_value(AT_FSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1.25);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
@@ -69,7 +70,8 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER, 1.2);
+set_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER, 1.25);
+set_hitbox_value(AT_FSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1.25);
 
 
 
@@ -84,7 +86,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 82);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 4);
 set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 3); // 6
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 45);
-set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 7.5);
 set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, 0.6);

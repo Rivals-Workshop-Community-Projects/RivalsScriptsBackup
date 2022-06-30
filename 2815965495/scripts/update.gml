@@ -6,6 +6,7 @@ if !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){dust_pos3 = -69; Fcanc
 //Variable Resets
 if state == PS_WALL_JUMP || state == PS_HITSTUN || state == PS_RESPAWN || !free{
 	set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED,-5);
+	move_cooldown[AT_USPECIAL]= 0;
 }
 
 //LEVITATE EFFECT
@@ -14,6 +15,28 @@ if anim_timer > 60{
 	anim_timer = 0;
 	pick*=-1;
 }
+// ----------------------------------------RUNES PART 1------------------------------
+
+if runeC {
+	damage_scaling = 0.75;
+} else{
+	damage_scaling = 1;
+}
+if runeB {
+	djump_speed = -1;
+	djump_accel = -1.1;
+	djump_start_time = 4;
+	djump_accel_end_time = 15;
+} 
+
+if runeN{
+	if ( get_gameplay_time() %120 == 0) { 
+		create_hitbox(AT_NSPECIAL, 1, x, y-32);
+		spawn_hit_fx(x,y-32, 154 );
+		sound_play(sound_get("Smokescreen"));
+	}
+}
+
 
 //--------------------------------------------INTRO ANIMATION-----------------------------------------------
 if (timer_intro_2 < 3) {
@@ -25,9 +48,9 @@ if (timer_intro_2 < 3) {
 
 
 //Create mailbox for intro
-if(timer_intro==11)&&(intro_done==0)&& !was_reloaded{
+if(timer_intro==11)&&(intro_done==1) && !was_reloaded{
 	instance_create( x, y-5, "obj_article1");			//PRUEBA
-	intro_done=1;
+	intro_done=2;
 }
 
 

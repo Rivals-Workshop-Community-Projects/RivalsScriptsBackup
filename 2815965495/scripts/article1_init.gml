@@ -1,6 +1,8 @@
 //article1_init
 
-sprite_index = sprite_get("intro_proj");
+
+if (get_player_color(player) == 17 || get_player_color(player) ==13 ||get_player_color(player) == 15){sprite_index = sprite_get("intro_proj");}
+else{sprite_index = sprite_get("intro2_proj");}
 
 gravity = 0.4;
 

@@ -91,6 +91,10 @@ switch(attack){
 				window=3;
 				window_timer=0;
 				spawn_hit_fx(x,y-56, 154 );
+				if runeI {
+					create_hitbox(AT_NSPECIAL, 1, x,y-60);
+					sound_play(sound_get("Smokescreen"));
+				}
 			}
 		}
 		break;
@@ -115,6 +119,18 @@ switch(attack){
 		if window == 4 && free {
 			move_cooldown[AT_USTRONG]= 12;
 		}
+
+		if window == 3 && window_timer == 1 && runeI && !hitpause {
+			create_hitbox(AT_NSPECIAL, 1, x, y-144);
+			spawn_hit_fx(x,y-144, 154 );
+			sound_play(sound_get("Smokescreen"));
+		}
+
+		if window< 4{
+			can_fast_fall=false;
+		} else{
+			can_fast_fall=true;		
+		}
 		break;
 	
 	case AT_NSPECIAL:
@@ -135,8 +151,8 @@ switch(attack){
 			}
 			//Movement
 			if (!joy_pad_idle){
-				hsp += lengthdir_x(1.25, joy_dir);
-				vsp += lengthdir_y(1.25, joy_dir);
+				hsp += lengthdir_x(1.2, joy_dir);
+				vsp += lengthdir_y(1.2, joy_dir);
 			} else {
 				hsp *= .6;
 				vsp *= .6;
@@ -146,7 +162,7 @@ switch(attack){
 
 
 			//MAX CHARGE
-			if state_timer >= 36 && window_timer <=4 {	
+			if (state_timer >= 36 && window_timer <=4) || runeF{	
 				set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 5);
 				window = 4;
 				window_timer = 0;
@@ -155,7 +171,7 @@ switch(attack){
 		if window == 3{
 			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 			move_cooldown[AT_NSPECIAL] = 12;
-			if window_timer == 1 {set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, get_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED)+0.5);}
+			if window_timer == 1 {set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, get_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED)+1);}
 		}
 		if window == 4{
 			can_fast_fall = false;
@@ -185,7 +201,7 @@ switch(attack){
 			if window_timer ==get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)/2-3{
 				create_hitbox( AT_NSPECIAL, 1, x -40 , y +4);					
 			}
-			move_cooldown[AT_NSPECIAL] = 18;
+			move_cooldown[AT_NSPECIAL] = 24;
 		}
 	
 	break;
@@ -200,6 +216,24 @@ switch(attack){
 				if window_timer == 14{
 					vsp =0;
 				}
+				if window_timer == 6 && !hitpause{
+				sound_play(asset_get("sfx_forsburn_cape_swipe"));
+				}
+
+				if special_down && window_timer ==8 {
+					window_timer =7;
+					hsp *= .9;
+					if vsp >0 {vsp *= .9;}
+				}
+				//MAX CHARGE
+				if (state_timer >= 35 && window_timer <=8)  {	
+
+					window_timer=9;
+					max_charge=2;
+					set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_charged"));
+					set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_charged"));
+				}
+				
 				break;
 			case 2:
 				can_jump = (Fcancel==1);
@@ -210,8 +244,8 @@ switch(attack){
 					attack_end();
 					//can_shield = true;
 				}
-				if contador >3 {set_num_hitboxes(AT_FSPECIAL, 3);}
-				if contador >4 || was_parried{
+				if contador >1+max_charge {set_num_hitboxes(AT_FSPECIAL, 3);}
+				if contador >2+max_charge || was_parried{
 					contador = 0;
 					sound_stop(sound_get("Heat Wave"));
 					window = 3;
@@ -221,14 +255,14 @@ switch(attack){
 					//sound_play(asset_get("mfx_timertick2"));
 				}		
 				//Movement
-				if (!joy_pad_idle){
-					hsp += lengthdir_x(1.2, joy_dir);
-					vsp += lengthdir_y(1.2, joy_dir);
+				if (!joy_pad_idle) && (!hitpause){
+					hsp += lengthdir_x(1, joy_dir);
+					vsp += lengthdir_y(1, joy_dir);
 				} else {
 					hsp *= .8;
 					vsp *= .6;
 				}
-				hsp = clamp(hsp, -3.2,3.2);
+				hsp = clamp(hsp, -3,3);
 				vsp = clamp(vsp, -2,2);
 				//Snap to ledge
 				if (place_meeting(x + hsp, y , asset_get("par_block")) && free){
@@ -260,36 +294,36 @@ switch(attack){
 						if arrow_cooldown == 0{
 							if (joy_dir >345 && joy_dir <=360)|| (joy_dir >=0 && joy_dir <=15){
 								arrow =0;
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 4.25*spr_dir);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 4.3*spr_dir);
 								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 0);
 							} else if   joy_dir >15 && joy_dir <= 75{
 								arrow =1;
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 3.8*spr_dir);
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -3.8);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 3.9*spr_dir);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -3.9);
 							} else if   joy_dir >75 && joy_dir <= 105{
 								arrow =2;
 								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -4.5);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -4.6);
 							} else if   joy_dir >105 && joy_dir <= 165{
 								arrow =3;
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, -3.8*spr_dir);
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -3.8);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, -3.9*spr_dir);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -3.9);
 							} else if   joy_dir >165 && joy_dir <= 195{
 								arrow =4;
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, -4.25*spr_dir);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, -4.3*spr_dir);
 								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 0);
 							} else if   joy_dir >195 && joy_dir <= 255{
 								arrow =5;
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, -3.8*spr_dir);
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 3.8);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, -3.9*spr_dir);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 3.9);
 							} else if   joy_dir >255 && joy_dir <= 285{
 								arrow =6;
 								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 4.25);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 4.3);
 							} else if   joy_dir >285 && joy_dir <= 345{
 								arrow =7;
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 3.8*spr_dir);
-								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 3.8);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 3.9*spr_dir);
+								set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 3.9);
 							}
 							arrow_cooldown= 4;
 						}
@@ -302,13 +336,16 @@ switch(attack){
 					}
 				} 
 
-				if absorb == 3 {
-					spawn_hit_fx(x,y-32, 154 );
-					sound_play(asset_get("sfx_forsburn_consume"));
+				if absorb == 3 || runeD {							//RUNE
+					if !runeD {spawn_hit_fx(x,y-32, 154 );}
+					if !runeD {sound_play(asset_get("sfx_forsburn_consume"));}
+					set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial_charged"));
+					set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_charged"));
 					set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 9.5);
 					set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 9.5);
 					absorb = 2;
 				}
+
 
 				break;
 			case 2: // Movement
@@ -342,6 +379,11 @@ switch(attack){
 					window_timer = 0;
 				}
 				break;
+			case 3:
+				if runeG {
+					move_cooldown[AT_USPECIAL]= 9999;
+				}
+
 		}
 		break;
 	
@@ -421,17 +463,18 @@ switch(attack){
 			
 		}
 		if window == 4{
-			soft_armor=0;
 			if has_hit {
 				destroy_hitboxes();
 			}
 		}
-		/*
-		if window>=4{
-			can_jump = (Fcancel==1);
-			can_shield = (Fcancel==1);
+		
+		if window<4{
+			if runeA { super_armor=1;}						// RUNE
+		} else{
+			//can_jump = (Fcancel==1);
+			//can_shield = (Fcancel==1);
 		}
-		*/
+		
 		can_fast_fall = false;
 		can_move = true;
 		break;
@@ -585,14 +628,26 @@ if attack == AT_BAIR && window== 1 && window_timer == 12{
 //smoke dissappears
 if (attack == AT_BAIR)  && window ==2 && window_timer == 5 && !hitpause  {
 	spawn_hit_fx(x-52*spr_dir,y-36, 154 );
+	if runeI {
+		create_hitbox(AT_NSPECIAL, 1, x-52*spr_dir,y-36);
+		sound_play(sound_get("Smokescreen"));
+	}
 }
 
 if (attack == AT_DATTACK)  && window ==2 && window_timer == 9 && !hitpause  {
 	spawn_hit_fx(x+52*spr_dir,y-30, 154 );
+	if runeI {
+		create_hitbox(AT_NSPECIAL, 1, x+52*spr_dir,y-30);
+		sound_play(sound_get("Smokescreen"));
+	}
 }
 
 if (attack == AT_JAB)  && window ==2 && window_timer == 8 && !hitpause  {
 	spawn_hit_fx(x+48*spr_dir,y-32, 154 );
+	if runeI {
+		create_hitbox(AT_NSPECIAL, 1, x+48*spr_dir,y-36);
+		sound_play(sound_get("Smokescreen"));
+	}
 }
 
 if attack == AT_NSPECIAL  && window ==2 && window_timer == 5 && !hitpause {
@@ -614,3 +669,60 @@ hud_offset = 24;
 if (attack == AT_DSPECIAL)|| attack == AT_NSPECIAL   {
 hud_offset = 44;
 }
+
+//----------------------------------------------------RUNE LOGIC PART 2----------------------------------------------
+
+	//BETTER PROYECTILE: READY
+	if runeE { //trigger the attribute change
+		set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 15);
+	} else{
+		reset_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED);
+	}
+	if runeO{
+		set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT,1);
+		set_hitbox_value(AT_FSPECIAL, 2, HG_EFFECT,1);
+		set_hitbox_value(AT_FSPECIAL, 3, HG_EFFECT,1);
+		set_hitbox_value(AT_DSTRONG, 1, HG_EFFECT,1);
+		set_hitbox_value(AT_DSTRONG_2, 1, HG_EFFECT,1);
+		set_hitbox_value(AT_DSPECIAL, 1, HG_EFFECT,1);
+		set_hitbox_value(AT_NAIR, 1, HG_EFFECT,1);
+		set_hitbox_value(AT_NAIR, 2, HG_EFFECT,1);
+		set_hitbox_value(AT_NAIR, 3, HG_EFFECT,1);
+		set_hitbox_value(AT_NAIR, 4, HG_EFFECT,1);
+		set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT,1);
+		set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT,1);
+		set_hitbox_value(AT_NSPECIAL, 4, HG_EFFECT,1);
+	} else {
+		reset_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT);
+		reset_hitbox_value(AT_FSPECIAL, 2, HG_EFFECT);
+		reset_hitbox_value(AT_FSPECIAL, 3, HG_EFFECT);
+		reset_hitbox_value(AT_DSTRONG, 1, HG_EFFECT);
+		reset_hitbox_value(AT_DSTRONG_2, 1, HG_EFFECT);
+		reset_hitbox_value(AT_DSPECIAL, 1, HG_EFFECT);
+		reset_hitbox_value(AT_NAIR, 1, HG_EFFECT);
+		reset_hitbox_value(AT_NAIR, 2, HG_EFFECT);
+		reset_hitbox_value(AT_NAIR, 3, HG_EFFECT);
+		reset_hitbox_value(AT_NAIR, 4, HG_EFFECT);
+		reset_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT);
+		reset_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT);
+		reset_hitbox_value(AT_NSPECIAL, 4, HG_EFFECT);
+	}
+
+	if runeG{
+		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 1);
+	}else{
+		reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE);
+		reset_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE);
+		reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE);
+	}
+
+	if runeL {
+		if attack == AT_FSPECIAL{
+			 max_charge=3;
+			 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_charged"));
+			 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_charged"));
+		}
+	
+	}

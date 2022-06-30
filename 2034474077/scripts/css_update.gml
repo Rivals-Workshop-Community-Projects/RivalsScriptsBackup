@@ -1,28 +1,9 @@
 
 if("css_open" not in self) exit;
 
-//Hyuponia CSS cursor detection-------------------------------------------------
-//this part does defining and debug display
-var tmp_cur = 0;
-var tmp_i = [0, 0, 0, 0, 0];
-var tmp_x = [0, 0, 0, 0, 0];
-var tmp_y = [0, 0, 0, 0, 0];
-with(asset_get("cs_playercursor_obj")){
-    tmp_cur = (!tmp_i[0])?0:(!tmp_i[1])?1:(!tmp_i[2])?2:(!tmp_i[3])?3:4 //here i try to make it so that the number occupies the first possible empty slot
-    tmp_i[tmp_cur] = 1
-    tmp_x[tmp_cur] = get_instance_x( self )
-    tmp_y[tmp_cur] = get_instance_y( self )
-    //print_debug(string(get_instance_player( self ))) //this didnt work iirc
-}
-var tmp_pt = abs(player-5)-1 //basically, the order of the player cursor loaded is kinda weird. iirc it loads from the last player to the first. so in here i try to reverse the order, then use it to compare against the player number. what i mean by that, is that player 4 is loaded first, then player 3 is loaded second, etc.
-//textDraw(temp_x + 2, temp_y - 100, "fName", c_red, 0, 1000, 1, true, 1, string(player));
-//textDraw(temp_x + 2, temp_y - 80, "fName", c_white, 0, 1000, 1, true, 1, string(tmp_x[tmp_pt])+" "+string(tmp_y[tmp_pt]));
 
-//------------------------------------------------------------------------------
 
-var temp_x = 22;
-var temp_y = 325.1;
-if(css_open == false && (tmp_x[tmp_pt] >= temp_x + 122 && tmp_x[tmp_pt] <= temp_x + 204) && (tmp_y[tmp_pt] >= temp_y + 107 && tmp_y[tmp_pt] <= temp_y + 135)){
+if(css_open == false && (get_instance_x(cursor_id) >= x + 128 && get_instance_x(cursor_id) <= x + 212) && (get_instance_y(cursor_id) >= y + 113 && get_instance_y(cursor_id) <= y + 141)){
     suppress_cursor = true;
     if(menu_a_pressed){
         css_open = true;

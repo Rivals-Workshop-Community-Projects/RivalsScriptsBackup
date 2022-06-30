@@ -51,7 +51,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 6;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 6;		// 4    -  6
-prat_land_time      = 13;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 12;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -167,7 +167,7 @@ bubble_x = 0;
 bubble_y = 8;
 
 
-anim_timer= 0;
+anim_timer= 0 +player*15;
 crouch_offset =0;
 pick = 1;
 pick2 = 1;
@@ -179,6 +179,8 @@ boost_timer = 0;
 prat_alt = 0;
 arrow_cooldown = 0;
 Fcancel=0;
+
+kirbyability = 6;
 
 pkmn_stadium_front_img = sprite_get("PSF");
 pkmn_stadium_back_img = sprite_get("PSB");
@@ -209,3 +211,21 @@ ncode3 = "Can set up to 6 flammable gas clouds."
 //HIT EFFECTS
 sprite_change_offset("will_hit", 47, 45);
 will_effect = hit_fx_create( sprite_get( "will_hit" ), 21 );
+
+//OFFICIAL RUNES WTF
+
+runeA = has_rune("A");
+runeB = has_rune("B");
+runeC = has_rune("C");
+runeD = has_rune("D");
+runeE = has_rune("E");
+runeF = has_rune("F");
+runeG = has_rune("G");
+runeH = has_rune("H");
+runeI = has_rune("I");
+runeJ = has_rune("J");
+runeK = has_rune("K");
+runeL = has_rune("L");
+runeM = has_rune("M");
+runeN = has_rune("N");
+runeO = has_rune("O");

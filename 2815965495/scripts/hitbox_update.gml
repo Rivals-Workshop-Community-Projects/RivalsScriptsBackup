@@ -12,13 +12,15 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			image_index=0;
 		}
 	}
-	if hitbox_timer <=45{
+	if hitbox_timer <=45 && !player_id.runeJ{
 		transcendent=true;
 		sprite_index = sprite_get("nspecial_smoke2");
 	} else{
 		transcendent = false;
 		sprite_index = sprite_get("nspecial_smoke");
 	}
+
+	if player_id.runeJ { transcendent=true; }
 	//proj_angle = 90*smoke_num;
 
 	if state == 1{							//SMOKE IDLE
@@ -33,9 +35,9 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		//PLAYER DETECTION USPECIAL
 		with oPlayer {
 			if url == other.player_url{
-				if other.attack == AT_NSPECIAL && other.hbox_num == 1 {
+				if other.attack == AT_NSPECIAL && other.hbox_num == 1 && !runeD {
 					if attack == AT_USPECIAL  && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window == 1 && special_down{
-						if abs(x - (other.x ))<=52{
+						if abs(x - (other.x ))<=52 {
 							if abs(other.y - (y - 32))<=52{
 								if absorb == 0 {absorb = 3; other.destroyed = true;}							
 							}
@@ -45,7 +47,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			}
 		}
 
-
+		
 		//NAIR DETECTION
 		if ( player_id.attack == AT_NAIR) && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2 {			//WILL O WISP
 			if abs(x - (player_id.x ))<=72{
@@ -121,8 +123,6 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			if abs(x - (player_id.x ))<=128{
 				if abs(y - (player_id.y - 32))<=128{
 					state = 4;
-					player_id.hitstop = 2;
-					player_id.hitpause = true;
 					sound_stop(asset_get("sfx_forsburn_reappear"));
 					sound_play(asset_get("sfx_forsburn_reappear"));
 					//player_id.Fcancel = 4;
@@ -144,6 +144,21 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 		}
 
 
+		//RUNE DETECTION
+		if (player_id.runeK && player_id.state== PS_ATTACK_GROUND && player_id.attack ==AT_TAUNT && player_id.window ==2 ){
+			state = 2;
+			sound_stop(asset_get("sfx_forsburn_reappear"));
+			sound_play(asset_get("sfx_forsburn_reappear"));
+			sound_stop(sound_get("jingle"));
+			sound_play(sound_get("jingle"));
+		}
+
+		//RUNE EXPLOSION
+
+		if state >1 && player_id.runeM{
+			state =4;
+		}
+
 		/*			//No funciona :'v
 		//Preventing overlap
 		with pHitBox{				//From the perspective of the hitbox
@@ -159,7 +174,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 
 		//NUMBER OF SMOKES LIMIT
 
-		if player_id.smoke_counter ==7{
+		if player_id.smoke_counter == (7 +player_id.runeH*6){
 			if smoke_num ==1 {
 				destroyed=true;
 			}
