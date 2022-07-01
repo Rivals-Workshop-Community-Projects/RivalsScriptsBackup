@@ -1,3 +1,4 @@
+if (get_synced_var(player)) exit;
 switch (attack)
 {
 	case AT_DSPECIAL:

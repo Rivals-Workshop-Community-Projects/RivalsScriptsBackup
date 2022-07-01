@@ -1,4 +1,4 @@
-if ("other_player_id" in self && "boneMark" in other_player_id && draw_indicator)
+if ("other_player_id" in self && instance_exists(other_player_id) && !get_synced_var(other_player_id.player) && "boneMark" in other_player_id && draw_indicator)
 {
 	if (instance_exists(other_player_id.boneMark) && other_player_id.boneMark == id) with (other_player_id.boneObj) if (state == 1)
 	{

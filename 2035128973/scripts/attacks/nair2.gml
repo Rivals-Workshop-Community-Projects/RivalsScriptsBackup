@@ -1,3 +1,4 @@
+if (get_synced_var(player)) exit;
 set_attack_value(AT_NSPECIAL_AIR, AG_CATEGORY, 1);
 set_attack_value(AT_NSPECIAL_AIR, AG_SPRITE, sprite_get("nair_boneless"));
 set_attack_value(AT_NSPECIAL_AIR, AG_NUM_WINDOWS, 5);

@@ -1,3 +1,4 @@
+if (get_synced_var(player)) exit;
 // states
 #macro AS_NEUTRAL 0
 #macro AS_ADVANTAGE 1

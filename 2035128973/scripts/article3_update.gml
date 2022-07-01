@@ -51,6 +51,11 @@ switch (state)
             }
             else
             {
+                with (oPlayer) if (place_meeting(x, y, other))
+                {
+                    other.image_angle -= hsp/10;
+                    other.image_angle += vsp/15*other.spr_dir;
+                }
                 with (pHitBox) if (player_id == other.player_id && !was_parried && attack == AT_NSPECIAL && hbox_num == 2 && sprite_index == asset_get("empty_sprite") && place_meeting(x, y, other))
                 {
                     var owo = create_hitbox(AT_USPECIAL, 1, x, floor(y));

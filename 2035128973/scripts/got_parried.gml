@@ -1,3 +1,5 @@
+if (get_synced_var(player)) exit;
+
 asCharge = 0;
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 && my_hitboxID.sprite_index == asset_get("empty_sprite"))

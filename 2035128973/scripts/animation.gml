@@ -1,26 +1,30 @@
-if (!hasBone) BoneSprites();
-
-switch(state)
+if (get_synced_var(player)) AccurateSprites();
+else
 {
-    case PS_SPAWN:
-		draw_indicator = 0;
-        var length = 12; // num of anim frames
-        var spd = 6; // in game frames per anim frame
-        if (state_timer % spd == 0) introTimer++;
-        sprite_index = sprite_get(introTimer<length?"intro":"idle");
-        if (introTimer < 0) image_index = 0;
-        else if (introTimer < length) image_index = introTimer;
-        break;
-	case PS_AIR_DODGE:
-		if (!free) break;
-	case PS_ROLL_BACKWARD:
-	case PS_ROLL_FORWARD:
-		rollSpr = sprite_index;
-		if (image_index<3) rollArray[image_index]={rollX:x,rollY:y,rollDir:spr_dir,rollAlpha:16};
-		break;
-	case PS_PRATFALL:
-        image_index = lerp(0, image_number - 1, (vsp + fast_fall) / (fast_fall * 2));
-		break;
+	if (!hasBone) BoneSprites();
+	
+	switch(state)
+	{
+	    case PS_SPAWN:
+			draw_indicator = 0;
+	        var length = 12; // num of anim frames
+	        var spd = 6; // in game frames per anim frame
+	        if (state_timer % spd == 0) introTimer++;
+	        sprite_index = sprite_get(introTimer<length?"intro":"idle");
+	        if (introTimer < 0) image_index = 0;
+	        else if (introTimer < length) image_index = introTimer;
+	        break;
+		case PS_AIR_DODGE:
+			if (!free) break;
+		case PS_ROLL_BACKWARD:
+		case PS_ROLL_FORWARD:
+			rollSpr = sprite_index;
+			if (image_index<3) rollArray[image_index]={rollX:x,rollY:y,rollDir:spr_dir,rollAlpha:16};
+			break;
+		case PS_PRATFALL:
+	        image_index = lerp(0, image_number - 1, (vsp + fast_fall) / (fast_fall * 2));
+			break;
+	}
 }
 
 #define BoneSprites()
@@ -98,6 +102,85 @@ switch(state)
 	    case PS_ATTACK_GROUND:
 	    case PS_ATTACK_AIR:
 			if (attack == AT_FSPECIAL_2) sprite_index = sprite_get("fspecial_extra");
+			break;
+	}
+}
+
+#define AccurateSprites()
+{
+	small_sprites = true;
+	switch(state)
+	{
+	    case PS_SPAWN:
+	    case PS_IDLE:
+	    case PS_RESPAWN:
+			sprite_index = sprite_get("idleAcc");
+			image_index = floor(image_number*state_timer/(image_number/idle_anim_speed));
+			break;
+	    case PS_CROUCH:
+	    case PS_TECH_GROUND:
+		case PS_LANDING_LAG:
+		case PS_LAND:
+		case PS_PRATLAND:
+		case PS_WAVELAND:
+		case PS_JUMPSQUAT:
+			sprite_index = sprite_get("crouchAcc");
+			break;
+	    case PS_WALK:
+			sprite_index = sprite_get("walkAcc");
+			image_index = state_timer*walk_anim_speed;
+			break;
+		case PS_DASH_START:
+		case PS_DASH_STOP:
+			sprite_index = sprite_get("walkAcc");
+			break;
+	    case PS_WALK_TURN:
+	    case PS_DASH_TURN:
+			sprite_index = sprite_get("walkturnAcc");
+			break;
+		case PS_DASH:
+			sprite_index = sprite_get("dashAcc");
+			image_index = state_timer*dash_anim_speed;
+			break;
+		case PS_ROLL_BACKWARD:
+		case PS_ROLL_FORWARD:
+	    case PS_TECH_BACKWARD:
+	    case PS_TECH_FORWARD:
+			sprite_index = sprite_get("pratfallAcc");
+			break;
+		case PS_PARRY_START:
+			if (!can_shield)
+			{
+				sprite_index = sprite_get("idleAcc");
+			    image_index = 0;
+				break;
+			}
+		case PS_PARRY:
+			sprite_index = sprite_get("parryAcc");
+			break;
+		case PS_PRATFALL:
+			sprite_index = sprite_get("pratfallAcc");
+	        image_index = lerp(0, image_number - 1, (vsp + fast_fall) / (fast_fall * 2));
+			break;
+		case PS_FIRST_JUMP:
+		case PS_IDLE_AIR:
+	    case PS_DOUBLE_JUMP:
+		case PS_WALL_JUMP:
+			sprite_index = sprite_get("jumpAcc");
+			break;
+		case PS_AIR_DODGE:
+		case PS_TUMBLE:
+			sprite_index = sprite_get("pratfallAcc");
+			break;
+		case PS_HITSTUN_LAND:
+		case PS_HITSTUN:
+		case PS_WRAPPED:
+		case PS_FROZEN:
+			sprite_index = sprite_get("hurtAcc");
+			break;
+	    case PS_ATTACK_GROUND:
+	    case PS_ATTACK_AIR:
+			if (attack == AT_TAUNT) small_sprites = false;
 			break;
 	}
 }

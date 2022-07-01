@@ -1,3 +1,4 @@
+if (get_synced_var(player)) exit;
 if ("rollArray" in self)
 {
 	if (killCard.timer > 0 && killCard.attackPlayer != -4 && killCard.deadPlayer != -4)
@@ -242,6 +243,36 @@ if ("rollArray" in self)
 						AddText("Extreme Speed no longer has Force Flinch");
 						AddText("Extreme Speed now can be Crouch Cancelled");
 						break;
+					case 11:
+						AddText("v3.0 - 29 Jun 2022");
+						AddText("");
+						AddText("Readded 100% Accurate Lucario");
+						AddText("Slightly polished 100% Accurate mode");
+						AddText("");
+						AddText("Bone article now slightly sways when a player moves past it");
+						AddText("");
+						AddText("Bone UAir Startup 18 -> 14");
+						AddText("Bone UAir Landing Lag 7 -> 8");
+						AddText("Bone UAir Sour Damage 7 -> 6");
+						AddText("");
+						AddText("Bone DAir Landing Lag 9 -> 6");
+						AddText("");
+						AddText("Boneless DAir Removed momentum");
+						AddText("");
+						AddText("DSpecial now gives midair jumps back only once per airtime");
+						AddText("");
+						AddText("Aura Sphere Charge can no longer break projectiles");
+						AddText("");
+						AddText("Reworked Force Palm to be weaker without grabbing the opponent");
+						AddText("Force Palm Startup 26 -> 20");
+						AddText("Force Palm Endlag 12 -> 16 (Before whifflag multiplier)");
+						AddText("Force Palm Damage 10 -> 8");
+						AddText("Force Palm KB 9+0.9 -> 7+0.7");
+						AddText("Critical Force Palm KB 10+1.05 -> 10+1.1");
+						AddText("Critical Force Palm Damage 14 -> 16");
+						AddText("");
+						AddText("UStrong Link hitbox width 40 -> 50");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -272,6 +303,7 @@ if ("rollArray" in self)
 							break;
 						case 3:
 							AddText("Without the bone, FSpecial will perform Force Palm.");
+							AddText("- Hitting the opponent with the Grab hitbox will make the move stronger.");
 							AddText("- Hitting an impaled opponent with the Grab hitbox will retrieve the bone and cause a critical hit.");
 							AddText("- Tapping Special when perfroming Force Palm while near a planted bone will retrieve it, and end the attack.");
 							AddText("Try retrieving the bone with Force Palm!");

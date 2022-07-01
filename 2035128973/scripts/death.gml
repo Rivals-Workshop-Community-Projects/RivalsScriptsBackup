@@ -1,3 +1,4 @@
+if (get_synced_var(player)) exit;
 asCharge = 0;
 spr_dir = 1;
 

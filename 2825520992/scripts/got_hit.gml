@@ -1,0 +1,1 @@
+parasol_hit = false;

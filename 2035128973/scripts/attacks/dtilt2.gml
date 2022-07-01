@@ -1,3 +1,4 @@
+if (get_synced_var(player)) exit;
 set_attack_value(AT_DTHROW, AG_SPRITE, sprite_get("dtilt_boneless"));
 set_attack_value(AT_DTHROW, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DTHROW, AG_HURTBOX_SPRITE, sprite_get("dtilt_boneless_hurt"));

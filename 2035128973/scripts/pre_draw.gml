@@ -1,3 +1,4 @@
+if (get_synced_var(player)) exit;
 if ("rollArray" in self)
 {
 	var tempColour = GetColourPlayer(0);
@@ -23,7 +24,7 @@ if ("rollArray" in self)
 	    shader_end();
 	}
 
-	if (object_index!=oTestPlayer&&(get_char_info(player,INFO_STR_NAME)!="Lucario"||url!="2035128973"||get_char_info(player,INFO_STR_DESCRIPTION)!="@FakieAcidToe"))get_string("Do not plagiarise.","");
+	if (object_index!=oTestPlayer&&(get_char_info(player,INFO_STR_NAME)!="Lucario"||(url!="2035128973"&&url!="2573811981")||get_char_info(player,INFO_STR_DESCRIPTION)!="@FakieAcidToe"))get_string("Do not plagiarise.","");
 
 	// attack
 	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
@@ -63,6 +64,13 @@ if ("rollArray" in self)
 			case AT_FSTRONG:
 			case AT_DSTRONG:
 			case AT_USTRONG:
+			case AT_FSPECIAL:
+			case AT_FSPECIAL_AIR:
+			case AT_NSPECIAL_AIR:
+			case AT_USPECIAL_GROUND:
+			case AT_DSPECIAL_AIR:
+			case AT_DTHROW:
+			case AT_FTHROW:
 				if (hasBone)
 				{
 					shader_start();
