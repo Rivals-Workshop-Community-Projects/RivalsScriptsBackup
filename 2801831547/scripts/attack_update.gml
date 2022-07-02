@@ -17,6 +17,8 @@ switch(attack){
     break;
     
     case AT_FSPECIAL:
+    	
+    
     	var step_up_height = 40;
 
 		if place_meeting(x+hsp,y+vsp,asset_get("par_block")) {
@@ -116,15 +118,17 @@ switch(attack){
             }
         }
         if(window > 2){
-        	if(fspecial_direction == 2 and !free and !was_parried and !hitpause){
-        		if(hsp > 4 or hsp < -4)
-        			hsp = spr_dir*10;
-        		vsp = 0;
+        	if(fspecial_direction == 2){
+    			set_attack_value(attack, AG_OFF_LEDGE, true);
+  
         		//y+=2;
-        		attack_end();
-        		destroy_hitboxes();	
-        		landing_lag_time = 4;
-        		set_state(PS_LANDING_LAG);
+        		if(prev_fspecial_free == false and free){
+        			attack_end();
+        			destroy_hitboxes();
+        			set_state(PS_IDLE_AIR);
+        			hsp = clamp(hsp, -8, 8);
+        			vsp = 0;
+        		}
         		
         	}
         }
@@ -148,6 +152,9 @@ switch(attack){
             attack_end();
             set_state(PS_PRATFALL);
         }
+        
+        prev_fspecial_free = free;
+        
         break;
     case AT_FSPECIAL_2:
         can_fast_fall = true;
@@ -435,15 +442,12 @@ switch(attack){
 
 if(has_hit and attack != AT_DSPECIAL and !uspecial_pratfall_go_brr and !nspecial_used){
 	
-	if(down_down and special_pressed or dspecial_cancel_buffered){
-		if(hitpause > 0){
-			dspecial_cancel_buffered = true;
-		} else {
+	if(down_down and special_pressed){
 			hitpause = 0;
 			attack_end();
 			destroy_hitboxes();
 			set_attack(AT_DSPECIAL);
-		}
+		
 	}
 }
 

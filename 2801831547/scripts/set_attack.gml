@@ -46,3 +46,4 @@ if(uspecial_pratfall_go_brr){
     vsp = clamp(vsp*.95, -3, 4);
 }
 dspecial_cancel_buffered = false;
+prev_fspecial_free = free;

@@ -27,8 +27,6 @@ switch(my_hitboxID.attack){
         break:
         */
     case AT_NAIR:
-        hit_player_obj.x = floor(lerp(floor(hit_player_obj.x), x, .15));
-        hit_player_obj.y = floor(lerp(floor(hit_player_obj.y), y-32, .15));
         break;
     case AT_BAIR:
         hit_player_obj.x = floor(lerp(floor(hit_player_obj.x), floor(my_hitboxID.x), .25));
@@ -61,6 +59,10 @@ switch(my_hitboxID.attack){
         //wisp.hsp = hsp;
         //wisp.vsp = vsp;
         break;
+    case AT_DSTRONG:
+        sound_play(asset_get("sfx_syl_ustrong_part3"), 0, noone, .4, .9);
+        break;
+    
     
     
 }
