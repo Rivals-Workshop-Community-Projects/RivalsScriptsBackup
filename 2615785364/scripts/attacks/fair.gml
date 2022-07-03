@@ -55,7 +55,9 @@ set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("slam2"));
-set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, hfx_medium);
+set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 12);
+set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -6);
 
 //set_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
@@ -76,4 +78,6 @@ set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("hit1"));
-set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, hfx_small);
+set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 12);
+set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -6);

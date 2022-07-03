@@ -18,8 +18,8 @@ set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 9);
 set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 
-set_num_hitboxes(AT_DTILT, 1);
-
+set_num_hitboxes(AT_DTILT, 0);
+/*
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
@@ -38,5 +38,6 @@ set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
+set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 12);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sound_get("slam1"));
-set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, hfx_small);

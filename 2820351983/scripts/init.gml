@@ -9,7 +9,7 @@ fspec_hitbox = noone;
 
 dattack_loop = 0;
 
-max_stars = 3;
+max_stars = 2;
 stars = array_create(max_stars, undefined)
 
 cancelled = false;

@@ -3,6 +3,7 @@ leak_proj = -4;
 miku_clone = -4;
 clone_attack_hold = false;
 clone_attack_hold_type = 0;
+fspecial_reset = 0; //Clone Throw Rune
 
 //Rioku's Neutral Strong code
 //Strong buffer stuff so you can have a neutral strong press
@@ -75,8 +76,6 @@ dash_stop_percent = .30; //the value to multiply your hsp by when going into idl
 ground_friction = .75;
 moonwalk_accel = 1.4;
 
-//MIKU IS LACKING JUMP STATS RIGHT NOW--------------------------------------
-
 jump_start_time = 5;
 jump_speed = 10; //10.5
 short_hop_speed = 5.5;
@@ -86,7 +85,7 @@ max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .4; //.25
-prat_fall_accel = .3; //multiplier of air_accel while in pratfall
+prat_fall_accel = .5; //multiplier of air_accel while in pratfall // .3
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.

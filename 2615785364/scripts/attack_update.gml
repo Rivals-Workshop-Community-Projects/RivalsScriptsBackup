@@ -49,7 +49,7 @@ if (attack == AT_DTILT && window == 1 && window_timer == 1){
 	clear_button_buffer( PC_SPECIAL_PRESSED );
 }
 
-if (attack == AT_DTILT && window == 3 && attack_pressed || attack == AT_DTILT && window == 3 && special_pressed){
+if (attack == AT_DTILT && window == 3 && attack_pressed || attack == AT_DTILT && window == 3 && special_pressed || attack == AT_DTILT && window == 3 && strong_pressed){
 	window = 2;
 	window_timer = 0;
 	clear_button_buffer( PC_ATTACK_PRESSED );
@@ -60,21 +60,30 @@ if (attack == AT_DTILT && window == 2 && window_timer == 1){
 	sonicSpinSpeed = sonicSpinSpeed+2;
 }
 
+if (attack == AT_DAIR && window == 1 && window_timer == 1){
+	clear_button_buffer( PC_JUMP_PRESSED );
+}
+
 if (attack == AT_DAIR && window == 2 && window_timer == 2){
 	sonicSpinSpeed = sonicSpinSpeed+1.5;
 }
 
-if (attack == AT_DTILT && jump_pressed || attack == AT_UTILT && jump_pressed || attack == AT_EXTRA_1 && window >= 2 && jump_pressed){
+if (attack == AT_EXTRA_1 && jump_pressed){
+	//state = PS_FIRST_JUMP;
+	clear_button_buffer( PC_JUMP_PRESSED );
+	sound_play( sound_get( "sonicjump" ) );
+	vsp = -10;
+}
+
+if (attack == AT_UTILT && jump_pressed || attack == AT_EXTRA_1 && window >= 2 && jump_pressed){
 	state = PS_FIRST_JUMP;
+	vsp = -7;
+	clear_button_buffer( PC_JUMP_PRESSED );
+	sound_play( sound_get( "sonicjump" ) );
 }
 
 if (attack == AT_EXTRA_1 && window == 1){
 	hsp = (3+(sonicSpinSpeed))*spr_dir;
-}
-
-if (attack == AT_EXTRA_1 && window == 3 && hsp == 0){
-	state = PS_IDLE;
-	state_timer = 0;
 }
 
 if(attack == AT_EXTRA_1) {
@@ -94,5 +103,30 @@ if (attack == AT_DAIR && djumps == 0){
 if (attack == AT_FAIR){
 	if (window == 2 && window_timer == 1 || window == 2 && window_timer == 4 || window == 3 && window_timer == 0){
 	create_hitbox( AT_FAIR, 2, x, y);
+	}
+}
+
+switch(attack){
+	case AT_JAB:
+		trigger_wavebounce();
+		trigger_b_reverse();
+		break;
+	case AT_UAIR:
+		trigger_b_reverse(); //put this on any attacks you would like to b reverse
+		//remove the above it you dont want it, most recovery moves have this though!
+		//up air code goes here
+		break;
+}
+
+//This code lets you add a smash 4 styled wavebouce to your attacks
+//Just write "trigger_wavebounce();" under the case statement for the attack you want to wavebounce
+#define trigger_wavebounce() 
+{
+	if ((left_down and state_timer <= 5 and spr_dir == 1) or (right_down and state_timer <= 5 and spr_dir == -1) and (b_reversed == false)) {
+    	hsp *= -1;
+    	spr_dir *= -1;
+    	b_reversed = true;
+	} else if (state_timer == 6) {
+    	b_reversed = false;
 	}
 }

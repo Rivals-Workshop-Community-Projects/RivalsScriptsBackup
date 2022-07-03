@@ -1,7 +1,15 @@
 set_victory_bg( sprite_get( "bg" ));
 set_victory_theme( sound_get( "sonic" ));
+
 fx_ringhit1 = hit_fx_create(sprite_get("ringexplode"), 10);
-sonicSpinSpeed = 0;
+
+//these are the provided sample SSL hit effects
+hfx_explode = hit_fx_create(sprite_get("explode"), 16);
+hfx_smaller = hit_fx_create(sprite_get("hfx_smaller"), 24);
+hfx_small = hit_fx_create(sprite_get("hfx_small"), 24);
+hfx_medium = hit_fx_create(sprite_get("hfx_medium"), 24);
+hfx_big = hit_fx_create(sprite_get("hfx_big"), 24);
+hfx_bigger = hit_fx_create(sprite_get("hfx_bigger"), 24);
 
 wait_time = 300;
 wait_length = 350;
@@ -9,9 +17,11 @@ wait_sprite = sprite_get("wait");
 
 can_throw_bell = 0;
 chadRealLife = 0;
+sonicSpinSpeed = 0;
 
 ssl_debug_enabled = true; //togles template debug messages.
 ssl_advanced_debug_enabled = false; //togles advanced debug messages, only enable if you really want to know whats going on.
+tap_jump_protection_enabled = true; //set this to false if your character should not get double jump back if you canceled it into air up attack.
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
@@ -61,16 +71,74 @@ hitstun_grav = .5;
 knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 defense_modifier = 1;
 
-land_time = 4; //normal landing frames
-prat_land_time = 10;
-wave_land_time = 8;
+//sleep animation (only use if you want to have sleep support)
+ssl_sleep_enabled = false; //set to true if your character has a sleep animation
+ssl_sleep_anim_speed = .1; //sleep animation speed, similar to walk anim speed
+ssl_sleep_anim_frames = 2; //number of frames in your sleep strip
+
+//Landind Stats------------------------------------------
+land_time = 4; //normal landing frames, only change if you have a reason
+prat_land_time = 12; // Normal range is 10-15, more if your character rarely enters pratfall or has alternate recovery tools
+
+//#endregion--------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+//Template Debug Messages Toggles-----------------------------------------------
+ssl_debug_enabled = true; //togles template debug messages.
+ssl_advanced_debug_enabled = false; //togles advanced debug messages, only enable if you really want to know whats going on.
+
+
+
+/*
+*
+*
+*
+*
+*       Don't change the stuff below unless you know what your are doing.
+*
+*
+*
+*
+*
+*
+*/
+//------------------------------------------------------------------------------
+//#region  Do not Change for Smash Land ----------------------------------------
+
+//------------------------------------------------------------------------------
+//#region Secret Alts-----------------------------------------------------------
+//These variables are used for the secret alt code.
+SecretColor = 0; //Current secret color
+ColorLock = 0;
+ColorLocked = false;
+
+//#endregion--------------------------------------------------------------------
+
+
+//rivals sfx
+waveland_sound = sound_get("nothing");
+air_dodge_sound = sound_get("nothing");
+
+//movement stats that you shouldn't change for smash land but can if you want
+walk_accel = 1; //only change if you want a walk and run which smash land shouldnt have
+walk_turn_time = 1;
+initial_dash_time = 1;
+initial_dash_speed = 1;
+
+dash_turn_time = 1;
+dash_turn_accel = 1;
+dash_stop_time = 1;
+dash_stop_percent = 0; //the value to multiply your hsp by when going into idle from dash or dashstop
+jump_start_time = 5; //standard 5 frames, universal rivals mechanic
+jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
+moonwalk_accel = 1.4;
+
+//wavedash
+wave_land_time = 8; 
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
 
-//crouch animation frames
-crouch_startup_frames = 1;
-crouch_active_frames = 1;
-crouch_recovery_frames = 1;
 
 //parry animation frames
 dodge_startup_frames = 1;
@@ -103,18 +171,7 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
-waveland_sound = sound_get("nothing");
-air_dodge_sound = sound_get("nothing");
-
-//visual offsets for when you're in Ranno's bubble
-bubble_x = 0;
-bubble_y = 8;
-
-//CHANGED STUFF------------------- -Rioku
-
 //Tap Jump Protection System by @Danilo-PJ#3122
-tap_jump_protection_enabled = true; //set this to false if your character should not get double jump back if you canceled it into air up attack.
-
 old_djumps = 0;
 dj_state_timer = 0;
 is_double_jump = false;
@@ -124,6 +181,12 @@ is_jumpsquat = false;
 strong_buffer = 0;
 strong_pressed = false;
 strong_was_pressed = false;
+
+//pokemon template values
+display_level = 0;
+pokemon = 0;
+
+//#endregion
 
 dash_sound = sound_get("dash");
 land_sound = sound_get("land");

@@ -38,8 +38,9 @@ if (custom_clone) {
 	//Multihit Bug fix
 	switch(attack) {
 		//Neutrals
-		case AT_JAB:
+		case AT_JAB:		
 			attack = AT_NSPECIAL_2;
+			set_hitbox_value(attack, 1, HG_FORCE_FLINCH, 0);
 		break;
 		case AT_DATTACK:
 			attack = AT_NSPECIAL_AIR;
@@ -138,3 +139,9 @@ if (attack == AT_TAUNT) {
 }
 
 print(attack)
+
+//Variable Resets
+if attack == AT_FSPECIAL {
+	fspecial_reset = 0; //Clone Throw Rune
+}
+

@@ -10,7 +10,7 @@ set_color_profile_slot_range( 1, 8, 9, 14 );
 
 // feet
 set_color_profile_slot( 0, 2, 252, 237, 86 );
-set_color_profile_slot_range( 2, 18, 12, 18 );
+set_color_profile_slot_range( 2, 19, 12, 20 );
 
 // eye white
 set_color_profile_slot( 0, 3, 255, 255, 255 );
@@ -118,6 +118,6 @@ set_color_profile_slot( 13, 4, 0, 0, 0 ); //eye blue
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"hat","colors":[{"r":19,"g":164,"b":55,"main":true},{"r":0,"g":116,"b":29},{"r":254,"g":255,"b":255}]},{"name":"rock","colors":[{"r":186,"g":91,"b":40,"main":true},{"r":153,"g":57,"b":21},{"r":159,"g":56,"b":25}]},{"name":"feet","colors":[{"r":252,"g":237,"b":86,"main":true},{"r":209,"g":150,"b":48}]},{"name":"eye white","colors":[{"r":255,"g":255,"b":255,"main":true}]},{"name":"eye blue","colors":[{"r":19,"g":11,"b":109,"main":true},{"r":32,"g":17,"b":103}]}]}
+{"formatversion":1,"data":[{"name":"hat","colors":[{"r":19,"g":164,"b":55,"main":true},{"r":0,"g":116,"b":29},{"r":254,"g":255,"b":255}]},{"name":"rock","colors":[{"r":186,"g":91,"b":40,"main":true},{"r":153,"g":57,"b":21},{"r":159,"g":56,"b":25}]},{"name":"feet","colors":[{"r":252,"g":237,"b":86,"main":true},{"r":209,"g":150,"b":48},{"r":203,"g":152,"b":71}]},{"name":"eye white","colors":[{"r":255,"g":255,"b":255,"main":true}]},{"name":"eye blue","colors":[{"r":19,"g":11,"b":109,"main":true},{"r":32,"g":17,"b":103}]}]}
 === END JSON PALETTE ===
 */

@@ -34,7 +34,7 @@ easy_window("active",
 )
 
 easy_window("land",
-    AG_WINDOW_LENGTH, 11,
+    AG_WINDOW_LENGTH, 13,
     AG_WINDOW_SFX, asset_get(SFX_BLOW_HEAVY1),
 )
 

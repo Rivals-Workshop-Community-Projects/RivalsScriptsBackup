@@ -1,5 +1,5 @@
 easy_window("startup",
-    AG_WINDOW_LENGTH, 6,
+    AG_WINDOW_LENGTH, 7,
     AG_WINDOW_SFX, asset_get(SFX_SWIPE_WEAK2),
     AG_WINDOW_VSPEED, -1,
 )
@@ -12,7 +12,7 @@ easy_hitbox(1,
     HG_WINDOW, get_window_index("active_early"),
     HG_LIFETIME, 2,
     HG_DAMAGE, 7,
-    HG_BASE_KNOCKBACK, 5,
+    HG_BASE_KNOCKBACK, 6,
     HG_KNOCKBACK_SCALING, 0.8,
     HG_HITBOX_X, -5,
     HG_HITBOX_Y, -62,
@@ -41,7 +41,7 @@ easy_hitbox(2,
 )
 
 easy_window("recovery",
-    AG_WINDOW_LENGTH, 12,
+    AG_WINDOW_LENGTH, 15,
 )
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

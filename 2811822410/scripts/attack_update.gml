@@ -17,6 +17,16 @@ switch(attack) {
 	case AT_FSPECIAL:
 		if (instance_exists(miku_clone)) {
 			miku_clone.spr_dir = spr_dir;
+			if (place_meeting(x, y, miku_clone) && window == 2 && !fspecial_reset && has_rune("A")) {
+				djumps = 0;
+				vsp = -12;
+				hsp = spr_dir * 16;
+				fspecial_reset = 3;
+				move_cooldown[AT_FSPECIAL] = 9999;
+				window = 10;
+				sound_play(asset_get("sfx_shop_buy"))
+				spawn_hit_fx( x, y - 24, HFX_ORI_BLUE_SMALL );
+			}
 		}
 		move_cooldown[AT_FSPECIAL] = 9999;
 		if (window == 2) {
@@ -40,18 +50,30 @@ switch(attack) {
 		}
 	break;
 	case AT_NSPECIAL:
-		if (window == 1 && window_timer <= 6 && !b_reversed_nspecial) {
-			if ((spr_dir == 1 && left_pressed) || (spr_dir == -1 && right_pressed)) {
-				b_reversed_nspecial = true;
-				hsp *= -1;
-				spr_dir *= -1;
+		if (!custom_clone) {
+			if (window == 1 && window_timer <= 6 && !b_reversed_nspecial) {
+				if ((spr_dir == 1 && left_pressed) || (spr_dir == -1 && right_pressed)) {
+					b_reversed_nspecial = true;
+					hsp *= -1;
+					spr_dir *= -1;
+				}
 			}
-		}
-		if (window == 2) {
-			if (!instance_exists(leak_proj)) {
-				leak_proj = create_hitbox(AT_NSPECIAL, 2, x + (spr_dir * 24), y - 24);
-				leak_proj.leak_state = 0;
-				leak_proj.leak_state_timer = 0;
+			if (window == 2 && window_timer == 1) {
+				if (!instance_exists(leak_proj)) {
+					leak_proj = create_hitbox(AT_NSPECIAL, 2, x + (spr_dir * 24), y - 24);
+					leak_proj.leak_state = 0;
+					leak_proj.leak_state_timer = 0;
+				}
+			}
+		} else {
+			if (window == 2 && window_timer == 1) {
+				//clone_owner.leak_proj = create_hitbox(AT_NSPECIAL, 2, x + (spr_dir * 24), y - 24);
+				clone_owner.leak_proj.x = x + (spr_dir * 24);
+				clone_owner.leak_proj.y = y - 24;
+				clone_owner.leak_proj.leak_state = 0;
+				clone_owner.leak_proj.leak_state_timer = 0;
+				clone_owner.leak_proj.spr_dir = spr_dir
+				clone_owner.leak_proj.hsp = spr_dir * 12
 			}
 		}
 	break;	

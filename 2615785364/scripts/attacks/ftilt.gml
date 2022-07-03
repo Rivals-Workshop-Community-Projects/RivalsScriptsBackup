@@ -47,4 +47,4 @@ set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("slam1"));
-set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, hfx_medium);

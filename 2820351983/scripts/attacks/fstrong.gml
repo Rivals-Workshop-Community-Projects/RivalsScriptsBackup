@@ -1,6 +1,7 @@
 easy_window("startup",
     AG_WINDOW_LENGTH, 6,
-    AG_WINDOW_CUSTOM_GROUND_FRICTION, .1
+    AG_WINDOW_CUSTOM_GROUND_FRICTION, .1,
+    AG_WINDOW_HSPEED, 3,
 )
 
 easy_window("charge",
@@ -20,9 +21,9 @@ easy_window("recovery",
 
 easy_hitbox(1,
     HG_LIFETIME, 2,
-    HG_HITBOX_X, 50,
+    HG_HITBOX_X, 40,
     HG_HITBOX_Y, -10,
-    HG_WIDTH, 85,
+    HG_WIDTH, 115,
     HG_HEIGHT, 35,
     HG_DAMAGE, 13,
     HG_ANGLE, 55, 

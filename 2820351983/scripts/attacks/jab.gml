@@ -5,7 +5,7 @@ easy_window("startup",
 
 easy_window("active",
     AG_WINDOW_LENGTH, 4,
-    AG_WINDOW_HSPEED, 4,
+    AG_WINDOW_HSPEED, 5,
     AG_WINDOW_HSPEED_TYPE, WINDOW_SPEED_TYPE_SET_ONCE,
 )
 

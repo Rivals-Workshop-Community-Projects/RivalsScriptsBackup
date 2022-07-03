@@ -1,6 +1,7 @@
 easy_attack(
     AG_CATEGORY, ATTACK_CATEGORY_GROUND_OR_AIR,
     AG_LANDING_LAG, 7,
+    AG_OFF_LEDGE, 1,
 )
 
 easy_window("startup",

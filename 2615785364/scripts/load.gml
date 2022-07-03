@@ -50,3 +50,12 @@ sprite_change_offset("plat", 62, 88);
 
 sprite_change_offset("spring", 38, 72);
 sprite_change_offset("ring", 24, 46);
+
+sprite_change_offset("sleepstatus", 128, 128); //sleep status
+
+sprite_change_offset("hfx_smaller", 64, 64);
+sprite_change_offset("hfx_small", 64, 64);
+sprite_change_offset("hfx_medium", 100, 100);
+sprite_change_offset("hfx_big", 100, 100);
+sprite_change_offset("hfx_bigger", 128, 128);
+sprite_change_offset("hfx_bigger", 128, 128);

@@ -105,3 +105,142 @@ with(oPlayer){
     }
 }
 #endregion
+
+//#region Secret alt color code //////////
+
+/* if (state == PS_PARRY && state_timer < 6){ // Turns off secret color during parry
+	ColorLocked = false;
+}
+else {
+	if (!ColorLocked && ColorLock = 1){
+		ColorLocked = true;
+	}
+} */
+
+if (!ColorLocked && ColorLock = 1){
+	ColorLocked = true;
+}
+
+if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice mode reload
+	if (spawn_timer < 100 && ColorLock == 0){
+
+		if (get_player_color(player) == 22){ // Colorful Secret Alt
+
+			// Brown - Alt Color Up + Taunt
+			if (up_down && !down_down && !left_down && !right_down && !jump_down && !attack_down && !special_down){
+				SecretColor = 1;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}			
+		    
+			// Pastel - Alt color Down + Taunt
+			if (!up_down && down_down && !left_down && !right_down && !jump_down && !attack_down && !special_down){
+				SecretColor = 2;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}			
+			
+			// Blue - Alt color Left + Taunt
+			if (!up_down && !down_down && left_down && !right_down && !jump_down && !attack_down && !special_down){
+				SecretColor = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Green & Red - Alt color Right + Taunt
+			if (!up_down && !down_down && !left_down && right_down && !jump_down && !attack_down && !special_down){
+				SecretColor = 4;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Red - Alt Color Up + Taunt + Jump
+			if (up_down && !down_down && !left_down && !right_down && jump_down && !attack_down && !special_down){
+				SecretColor = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Yellow & Red - Alt Color Down + Taunt + Jump
+			if (!up_down && down_down && !left_down && !right_down && jump_down && !attack_down && !special_down){
+				SecretColor = 6;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Dark Blue - Alt Color Left + Taunt + Jump
+			if (!up_down && !down_down && left_down && !right_down && jump_down && !attack_down && !special_down){
+				SecretColor = 7;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Green & Blue - Alt Color Right + Taunt + Jump
+			if (!up_down && !down_down && !left_down && right_down && jump_down && !attack_down && !special_down){
+				SecretColor = 8;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Sepia - Alt Color Up + Taunt + Attack
+			if (up_down && !down_down && !left_down && !right_down && !jump_down && (attack_down || special_down)){
+				SecretColor = 9;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Yellow & Brown - Alt Color Down + Taunt + Attack
+			if (!up_down && down_down && !left_down && !right_down && !jump_down && (attack_down || special_down)){
+				SecretColor = 10;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Grayscale - Alt Color Left + Taunt + Attack
+			if (!up_down && !down_down && left_down && !right_down && !jump_down && (attack_down || special_down)){
+				SecretColor = 11;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			
+			// Inverted - Alt Color Right + Taunt + Attack
+			if (!up_down && !down_down && !left_down && right_down && !jump_down && (attack_down || special_down)){
+				SecretColor = 12;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}		
+		
+		if (ColorLocked){
+			sound_play(asset_get("mfx_confirm"));
+		}
+	}
+}//#endregion
+
+//#region Pokemon
+if(pokemon){
+	var level = sound_get("level_up");
+	with(oPlayer){
+		if(state == PS_RESPAWN and state_timer == 2 and last_player == other.player){
+			sound_play(level);
+			other.display_level = 60;
+		}
+	}
+	if(display_level > 0){
+		display_level--;
+	}
+}
+
+//#endregion

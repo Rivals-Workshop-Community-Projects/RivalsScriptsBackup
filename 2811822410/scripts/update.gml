@@ -34,10 +34,13 @@ if (!custom_clone) {
 		}
 	}
 	#endregion
-	
 	//if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
 	if (!free || state == PS_WALL_JUMP) {
-		move_cooldown[AT_FSPECIAL] = 0;
+		if !fspecial_reset {
+			move_cooldown[AT_FSPECIAL] = 0;
+		} else {
+			fspecial_reset -= 1
+		}
 	}	
 
 	//Dspecial
@@ -149,6 +152,12 @@ if (!custom_clone) {
 							can_hit[i] = 1;
 						}
 					}
+					//Regrab Leek
+					if (abs(hsp) <= 8 && place_meeting(x, y, other)) {
+						sound_play(asset_get("sfx_diamond_small_collect"))
+						spawn_hit_fx( x, y, HFX_MAY_LEAF_BIG );
+						instance_destroy(self);
+					}
 				break;
 				case 1: //Constant
 					if (other.special_down) {
@@ -170,6 +179,12 @@ if (!custom_clone) {
 						leak_state_timer = 0;
 						image_xscale = 0.01;
 						image_yscale =  0.01;
+					}
+					//Regrab Leek
+					if place_meeting(x, y, other) {
+						sound_play(asset_get("sfx_diamond_small_collect"))
+						spawn_hit_fx( x, y, HFX_MAY_LEAF_BIG );
+						instance_destroy(self);
 					}
 				break;
 				case 2: //Swing
@@ -220,6 +235,8 @@ if (!custom_clone) {
 					x = lerp(x, other.x, .2)
 					y = lerp(y, other.y - (other.char_height / 2), .2)
 					if (place_meeting(x, y, other)) {
+						sound_play(asset_get("sfx_diamond_small_collect"))
+						spawn_hit_fx( x, y, HFX_MAY_LEAF_BIG );
 						print("Leak Died")
 						hitbox_timer = length;
 					}
@@ -231,6 +248,12 @@ if (!custom_clone) {
 	}
 } else { //Clone Stuff
 	//have_collision = false;
+	//Leek Throw Clone
+	if (has_rune("B") && instance_exists(clone_owner.leak_proj) && place_meeting(x, y, clone_owner.leak_proj) && (clone_owner.leak_proj.leak_state == 1 || clone_owner.leak_proj.leak_state == 0)  && attack != AT_NSPECIAL && !clone_owner.clone_attack_hold && !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) {
+		//instance_destroy(clone_owner.leak_proj)
+		clone_owner.leak_proj.y += 2000;
+		set_attack(AT_NSPECIAL)
+	}
 	if (clone_owner.clone_attack_hold) { //Has Attack or not
 		outline_color = [100, 100, 100];
 	} else {
@@ -321,4 +344,18 @@ if (get_gameplay_time() % color_timer == 0) {
 	}
 }
 //print(string(color_r) + ", " + string(color_g) + ", " + string(color_b))
+#endregion
+
+
+#region Cosmetic Stuff
+with oPlayer {
+	if (player != other.player) {
+		if (get_player_name(player) == "NOARMS") {
+			with (other) {
+				set_victory_theme( sound_get( "victory2" ));
+				//end_match();
+			}
+		}
+	}
+}
 #endregion
