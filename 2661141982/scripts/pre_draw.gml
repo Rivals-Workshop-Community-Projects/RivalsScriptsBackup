@@ -27,13 +27,13 @@ if (aura)
 	FlagPart(color_hsv, 1, 0);
 	gpu_set_fog(0, c_white, 0, 0);
 }
-else if(get_player_color(player) == 31)
-{
-    FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
-    FlagPart(make_colour_rgb(247, 168, 223), 3/10, 3/8); // pink
-    FlagPart(c_white, 1/8, 4/8);
-    gpu_set_fog(0, c_white, 0, 0);
-}
+// else if(get_player_color(player) == 31)
+// {
+//     FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
+//     FlagPart(make_colour_rgb(247, 168, 223), 3/10, 3/8); // pink
+//     FlagPart(c_white, 1/8, 4/8);
+//     gpu_set_fog(0, c_white, 0, 0);
+// }
 
 #define FlagPart(_colour, _heightRatio, _xOffsetRatio)
 {

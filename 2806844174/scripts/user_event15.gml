@@ -250,6 +250,10 @@ in a Patch.
 
 // other patches go here...
 
+initPatch("1.3", "July 3, 2022"); // (replace the date lol)
+initSection("Opponents can now hit the bubble to destroy it after like a second after it spawns");
+initSection("Bubble now disappears if stuck in terrain for too long");
+
 initPatch("1.2", "May 28, 2022"); // (replace the date lol)
 initSection("All Strong startup increased by 2 frames
 Dstrong KBS 1.0 -> .9

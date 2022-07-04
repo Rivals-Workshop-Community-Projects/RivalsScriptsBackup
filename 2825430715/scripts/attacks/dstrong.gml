@@ -54,6 +54,8 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_SDI_MULTIPLIER, 0.6);
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
+set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 3);
@@ -77,6 +79,8 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_SDI_MULTIPLIER, 0.6);
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
+set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 3);
@@ -90,7 +94,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_EXTRA_HITPAUSE, 6);

@@ -37,7 +37,7 @@ set_color_profile_slot_range( 7, 22, 7, 11 );
 set_num_palettes( 31 );
 
 // Transcend
-set_color_profile_slot( 1, 0, 254, 255, 255 ); //sword
+set_color_profile_slot( 1, 0, 255, 255, 255 ); //sword
 set_color_profile_slot( 1, 1, 247, 168, 184 ); //shirt
 set_color_profile_slot( 1, 2, 230, 97, 172 ); //shirt2
 set_color_profile_slot( 1, 3, 85, 205, 252 ); //pants

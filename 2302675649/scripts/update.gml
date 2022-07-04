@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 49;
+	var noOfPatches = 50;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -148,13 +148,6 @@ hue%=255;
 switch (state)
 {
 	case PS_SPAWN:
-		if (attack_pressed)
-		{
-			isFurry = !isFurry;
-			sound_play(asset_get("sfx_ori_grenade_hit_ground"),0,-4,0.3);
-		    spawn_hit_fx(x, y-40, 115);
-			clear_button_buffer(PC_ATTACK_PRESSED);
-		}
 		if (state_timer == 68)
 		{
 			sound_play(sound_get("button"));

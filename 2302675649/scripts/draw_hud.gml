@@ -766,6 +766,32 @@ if ("rollArray" in self)
 						AddText("Mio swapping can now be done on intro");
 						AddText("Mio swapping input is now during taunt, instead of beginning");
 						break;
+					case 49:
+						AddText("v1.49 - 28 Jun 2022");
+						AddText("");
+						AddText("Removed Mio swapping in intro");
+						AddText("Added HUD sprites for Mio skin");
+						AddText("Added Mio button on the CSS");
+						AddText("");
+						AddText("DAir Falling Spawns every 6 frames instead of 4");
+						AddText("DAir Startup 9 -> 11");
+						AddText("DAir Startup VSpeed -6 -> -5");
+						AddText("DAir Endlag 12 -> 14");
+						AddText("");
+						AddText("USpec Sweetspot KB 7.5+1.05 -> 9+1.05");
+						AddText("");
+						AddText("FAir Normal KB 6+0.9 -> 7+0.8");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.49.1 - 2 Jul 2022");
+						AddText("");
+						AddText("Bugfix for AI");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.49.2 - 4 Jul 2022");
+						AddText("");
+						AddText("New Mio CSS and Portrait - Thanks Sai!");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -1003,7 +1029,7 @@ if ("rollArray" in self)
 			return "Tactical Evolution EX ~ Creatures Medley";
 		default:
 			if (CheckStageUrl(2061009621))		return "Derek Fiechter - Night at the Castle";
-			else if (CheckStageUrl(2298935492))	return "Loeder - Miitopia Boss Battle 1 8-BIT";
+			//else if (CheckStageUrl(2298935492))	return "Loeder - Miitopia Boss Battle 1 8-BIT";
 			else if (CheckStageUrl(2082867100))	return "Evan King - [KARLSONVIBE]";
 			else if (CheckStageUrl(2210984773))	return "Porter Robinson - Shelter";
 			else if (CheckStageUrl(2158754801))	return "Bill Kiley - You Will Never Know";
@@ -1013,6 +1039,7 @@ if ("rollArray" in self)
 			else if (CheckStageUrl(2598328548))	return "No Straight Roads - Vs. Sayu";
 			else if (CheckStageUrl(2669189302))	return "Hyper Potions - Waterfall";
 			else if (CheckStageUrl(2809646591))	return "Christa Lee - Celestial Resort (Good Karma Mix)";
+			else if (CheckStageUrl(2823202747))	return "SSBM - Final Destination (GSV Remix)";
 			return "Darude - Sandstorm";
 	}
 }

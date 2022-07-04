@@ -85,9 +85,10 @@ if ("teleFlash" in self && teleFlash > 0)
 }
 else outline_color = outline_colour;
 
-if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
+if (object_index == asset_get("draw_result_screen"))
 {
-    winner_name = "Void Dragon Lonin wins!";
+    winner_name = (get_synced_var(player)?"Mio":"Lonin") + " wins!";
+    if (gpu_get_alphatestfunc()) winner_name = "Void Dragon " + winner_name;
 }
 
 #define AltColour(_index, _colour)

@@ -42,4 +42,4 @@ set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 6);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_UTILT, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_PARTICLE_NUM, 1);
-set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, small);

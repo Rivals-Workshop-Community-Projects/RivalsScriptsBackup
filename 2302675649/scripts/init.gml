@@ -216,5 +216,5 @@ auraMeter = 0;
 hue = 0;
 
 // Mio
-var alt = get_player_color(player);
-isFurry = alt==2||alt==3||alt==15||alt==20||alt==22||alt==27;
+isFurry = get_synced_var(player);
+user_event(0);

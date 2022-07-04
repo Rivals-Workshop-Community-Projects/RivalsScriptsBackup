@@ -1,13 +1,8 @@
+if ("syncUID" not in id || syncUID != 25005) exit;
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-if (get_color_profile_slot_r(1, 0) == 254)
-{
-    sound_play(sound_get("roll"),0,-4,2);
-	set_color_profile_slot( 1, 0, 255, 255, 255 );
-}
-
-patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR));
+//patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR));
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);
@@ -30,7 +25,7 @@ else if (alt_new != currAlt)
 }
 
 alt_name = 0;
-alt_name[0]  = "Lonin";
+alt_name[0]  = "The Lone Ronin";
 alt_name[1]  = "Transcend";
 alt_name[2]  = "Kitsune of Light";
 alt_name[3]  = "Vaporwave";
@@ -64,13 +59,16 @@ alt_name[30] = "Ace";
 var num_alts = array_length_1d(alt_name);
 shader_end();
 
-draw_sprite_ext(sprite_get("charselect"),1,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
+draw_sprite_ext(sprite_get("charselectOutline"),get_synced_var(player),x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
 
-draw_set_halign(fa_right);
-textDraw(temp_x + 198, temp_y + 70,	"fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-textDraw(temp_x + 200, temp_y + 72, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
+//draw_set_halign(fa_right);
+//textDraw(temp_x + 198, temp_y + 70,	"fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
+//textDraw(temp_x + 200, temp_y + 72, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
 
 draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,2,2,0,c_white,1);
+
+draw_sprite_ext(sprite_get("mioButton"), buttonInfo.hover?1+menu_a_down:0, temp_x + buttonInfo.x, temp_y + buttonInfo.y, 2, 2, 0, c_white, 1);
+draw_sprite_ext(sprite_get("mioIcon"), isFurry, temp_x + buttonInfo.x + 6, temp_y + buttonInfo.y + 4, 2, 2, 0, c_white, 1);
 
 draw_set_halign(fa_left);
 
@@ -90,24 +88,12 @@ init_shader();
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 {
-	draw_set_font(asset_get(argument[2]));
-	
-	if (argument[7]) // outline. doesn't work
-	{
-	    for (i = -1; i < 2; i++)
-		{
-	        for (j = -1; j < 2; j++)
-			{
-				if (argument[8] > 0)
-					draw_text_ext_transformed_color(argument[0] + i * 2, argument[1] + j * 2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, c_black, c_black, c_black, c_black, argument[8]);
-	        }
-	    }
-	}
-	
-	if (argument[8] > 0)
-		draw_text_ext_transformed_color(argument[0], argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[3], argument[3], argument[3], argument[3], argument[8]);
-	
-	return string_width_ext(argument[9], argument[4], argument[5]);
+	draw_set_font(asset_get(font));
+	if (outline) for (i = -1; i < 2; i++) for (j = -1; j < 2; j++) if (alpha > 0)
+		draw_text_ext_transformed_color(x + i * 2, y + j * 2, string, lineb, linew, scale, scale, 0, c_black, c_black, c_black, c_black, alpha);
+	if (alpha > 0)
+		draw_text_ext_transformed_color(x, y, string, lineb, linew, scale, scale, 0, color, color, color, color, alpha);
+	return string_width_ext(string, lineb, linew);
 }
 
 #define RectDraw(x1, y1, x2, y2, color, alpha)

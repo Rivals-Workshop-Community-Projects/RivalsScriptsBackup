@@ -42,6 +42,103 @@ if free {
 }
 
 switch attack {
+	
+     case AT_FSPECIAL_2:
+     can_move = false
+      hitpause = false 
+      if window == 1 {
+      	
+      	if window_timer == 1 {
+          state_timer = 0
+          sound_play(asset_get("sfx_boss_vortex_end"),false,noone,.8,.8)
+          sound_play(asset_get("sfx_boss_vortex_end"),false,noone,.8,.4)
+          sound_play(asset_get("sfx_spin"),false,noone,1,.4)
+          sound_play(sound_get("SpaceCut"),false,noone,.8,.6)
+        }
+        
+        if window_timer == 10*5 {
+          sound_play(asset_get("sfx_boss_vortex_end"),false,noone,.8,.8)
+          sound_play(asset_get("sfx_spin"),false,noone,1,.6)
+          sound_play(sound_get("Fstrong"),false,noone,.8,.6)
+        }
+        
+         if window_timer == 12*5 {
+          sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.1)
+          sound_play(asset_get("sfx_spin"),false,noone,1,.6)
+          sound_play(sound_get("Fstrong"),false,noone,1,.8)
+        }
+        
+        if window_timer == 13*5 {
+               sound_play(sound_get("RZ"),false,noone,1,.6)
+        }
+        
+      	if window_timer < 10*5 {
+	    	suppress_stage_music( 0.5, 60 );	
+     	} else {
+     		suppress_stage_music( 0.8, 60 );	
+     	}
+	
+         galaxplayer.state = PS_PRATFALL
+      	 hsp = floor((room_width/2 - x)/6)
+      	 y -= 20
+      	 galaxplayer.x += floor((x -  galaxplayer.x)/4)
+         galaxplayer.y += floor((y - 30 - galaxplayer.y)/4)
+         if window_timer > 7*5 {
+         	state_timer -= .25
+         }
+         if window_timer > 8*5 {
+         	state_timer -= .25
+         }
+         if window_timer > 9*5 {
+         	state_timer -= .25
+         }
+         if window_timer > 10*5 {
+         	state_timer -= .5
+         }
+         if window_timer > 11*5 {
+         	state_timer -= .5
+         }
+         if window_timer > 12*5 {
+         	state_timer -= .5
+         }
+      }
+      
+      if window == 2 {
+      	state_timer -= 3
+      	fall_through = true 
+      	x = room_width/2 
+      	vsp = 50
+      	galaxplayer.x = x
+        galaxplayer.y = y - 30
+        
+        if !free or state_timer > 300{
+        	window = 3 
+        	window_timer = 0
+        	sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,1)
+        	sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,.6)
+         	sound_play(asset_get("sfx_kragg_rock_pillar"),false,noone,1,1)
+         	sound_play(asset_get("sfx_kragg_rock_pillar"),false,noone,1,.6)
+         	create_hitbox(AT_UTHROW,2,x,y)
+         	spawn_base_dust(x - 20,y + 2,"dash_start",1)
+	    	spawn_base_dust(x + 20,y + 2,"dash_start",-1)
+        }
+      }
+      
+      if window == 3 {
+      	state_timer = 0
+      		x = room_width/2 
+      		if window_timer%4 == 0 {
+      	      spawn_base_dust(x - 10*window_timer,y + 2,"dash_start",1)
+	          spawn_base_dust(x + 10*window_timer,y + 2,"dash_start",-1)
+      		}
+      		if window_timer%4 == 2 {
+	          spawn_base_dust(x - 14*window_timer,y + 2,"dash",1)
+	          spawn_base_dust(x + 14*window_timer,y + 2,"dash",-1)
+      		}
+      }
+     break;
+		
+		
 	case AT_TAUNT:
 	
 	invince_time = 0
@@ -132,7 +229,7 @@ switch attack {
         	if y > room_height/2 + 200 {
         		sound_play(sound_get("SpaceCut"),false,noone,1,1.2);
                      spawn_hit_fx(x,y,SC)
-                     y = room_height/2 - 200
+                     y = room_height/2 - 300
                      x = room_width/2
                      hit_player_obj.x = x
                     hit_player_obj.y = y
@@ -310,7 +407,7 @@ switch attack {
         	if y > room_height/2 + 300 {
         		sound_play(sound_get("SpaceCut"),false,noone,1,1.2);
                      spawn_hit_fx(x,y,SC)
-                     y = room_height/2 - 200
+                     y = room_height/2 - 300
                      x = room_width/2
                      hit_player_obj.x = x
                     hit_player_obj.y = y
@@ -366,9 +463,21 @@ switch attack {
           
         	if window_timer == 10 {
         		sound_play(asset_get("sfx_blow_medium3"),false,noone,1,1)
-        		spawn_hit_fx(galaxplayer.x,galaxplayer.y - 40,302)
+        		
         		vsp = -6
-        		hsp = 6*spr_dir
+        		hsp = 4*spr_dir
+        		
+        		
+        		if  get_player_stocks(galaxplayer.player) == 1 && instance_number(oPlayer) == 2 {
+        			potbuster = 1
+        			set_attack(AT_FSPECIAL_2)
+        			window = 1
+        			window_timer = 0
+        			state_timer = 0
+        		} else {
+        			grabfx = spawn_hit_fx(galaxplayer.x,galaxplayer.y - 40,302)
+        			grabfx.pause = 4
+        		}
         	}
         	
          if window_timer == 9*4 && free {
@@ -460,6 +569,8 @@ switch attack {
 	case AT_DSTRONG:
 	   
 	   if window == 1 {
+	   	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 6 + floor(strong_charge/10));
+	   	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 6 + floor(strong_charge/10));
 	   	hsp /= 1.06
 	   	if window_timer == 1 && !hitpause {
 	   		sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)
@@ -682,10 +793,10 @@ switch attack {
 	 	hit_player_obj.hitstop = 5
 	 	
 	 	if window_timer == 36 {
-	 		if (spr_dir = 1 && right_down - left_down = -1) or (spr_dir = -1 && right_down - left_down = 1) {
-	 			window = 4
-	 			window_timer = 0
-	 		}
+	 		//if (spr_dir = 1 && right_down - left_down = -1) or (spr_dir = -1 && right_down - left_down = 1) {
+	 		//	window = 4
+	 		//	window_timer = 0
+	 		//}
 	 	}
 	 	
 	 	if window_timer > 32 {
@@ -769,7 +880,10 @@ switch attack {
 	
   case AT_FSTRONG:
    if window == 1 {
-   	
+   	if window_timer == 1 {
+   		set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
+   	}
+   	 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 6 + round(strong_charge/6));
    	 if hitpause && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
    	 	 hit_player_obj.x += floor((x - 10*spr_dir -  hit_player_obj.x)/8)
          hit_player_obj.y += floor((y - 30 - hit_player_obj.y)/8)
@@ -800,10 +914,13 @@ switch attack {
    }
    
    if has_hit_player && !hitpause && hit_player_obj.state_cat == SC_HITSTUN {
+   	strong_charge = 0
    	    if move_cooldown[AT_FSTRONG] == 0 {
          	  sound_play(asset_get("sfx_blow_medium3"))
          	  move_cooldown[AT_FSTRONG] = 60
          }
+         attack_end()
+       move_cooldown[AT_FTHROW] = 0
    	  set_attack(AT_FTHROW)
    	  window = 1
    	  window_timer = 0
@@ -838,6 +955,27 @@ switch attack {
    	 }
    	 
    }
+   
+   
+   if !hitpause && instance_number(oPlayer) == 2 && get_player_stocks(hit_player_obj.player) == 1 {
+        	with oPlayer if (activated_kill_effect) {
+                 if hit_player_obj == other {
+                            with other {
+                            	y -= 10
+                               sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,1)
+                               hsp = 6*spr_dir 
+                               vsp = -30
+                            	galaxplayer = hit_player_obj 
+                                set_attack(AT_UTHROW)
+                                window = 1
+                                window_timer = 0
+                                state_timer = 0
+                            }
+                  }
+               }
+    }
+        
+   
    
  break; 
  
@@ -1112,7 +1250,7 @@ if attack == AT_FSPECIAL && !hitpause{
                      sound_play(sound_get("SpaceCut"));
                      spawn_hit_fx(x,y,SC)
                      x = room_width/2 
-                     y = room_height/2 - 100
+                     y = room_height/2 - 300
                      hit_player_obj.x = x
                     hit_player_obj.y = y
                      spawn_hit_fx(x,y,SC)

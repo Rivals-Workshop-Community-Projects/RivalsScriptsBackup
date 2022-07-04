@@ -1,15 +1,22 @@
 // article_init is used when the article object is created.
 
+is_hittable = false;
+hittable_hitpause_mult = .6;
+terrain_timer = 120;
+
 frozen = false;
 
 draw_circle = 0;
+draw_circle2 = 0;
 circle_x = x;
-circle_y = y
+circle_y = y;
+circle_x2 = x;
+circle_y2 = y;
 should_draw = false;
 
 sprite_index = sprite_get("bubble");
 image_index = 0;
-image_alpha = 1;
+image_alpha = .6;
 
 holy_bubble = true
 

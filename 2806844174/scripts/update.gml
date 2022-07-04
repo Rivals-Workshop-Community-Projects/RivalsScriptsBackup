@@ -16,6 +16,15 @@ if state == PS_SPAWN && state_timer < 53 offset = ease_cubeIn(-40, 0, state_time
 wing_x = lerp(wing_x, x, .35);
 wing_y = lerp(wing_y, y + offset, .35);
 
+with oPlayer if "bubble_hitpause_timer" in self && bubble_hitpause_timer == 1 {
+	bubble_hitpause_timer = 0;
+	if state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND {
+		//hitpause = false;
+		hitstop = 0;
+		hitstop_full = 0;
+	}
+}
+
 // "poggers" alt
 if (poggers_alt) {
     colorSet(get_player_color(player), 0, make_color_hsv(get_gameplay_time() % 256, 255, 255));

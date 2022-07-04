@@ -15,6 +15,8 @@ sprite_change_offset("dashstart", 46, 94);
 sprite_change_offset("dashstop", 46, 94);;
 sprite_change_offset("dashturn", 46, 94);;
 
+sprite_change_offset("tone2", 500, 300);;
+sprite_change_offset("potbuster", 102, 124);
 
 sprite_change_offset("jumpstart", 46, 94);
 sprite_change_offset("jump", 46, 94);

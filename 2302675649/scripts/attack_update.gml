@@ -829,6 +829,9 @@ switch (attack)
     if (!attack_invince && attack_pressed && window == 2)
     {
 		isFurry = !isFurry;
+        var syncUID = 25005;
+        set_synced_var(player, isFurry?syncUID:0);
+        user_event(0);
 		sound_play(asset_get("sfx_ori_grenade_hit_ground"));
 		shake_camera(4, 6);
 		tutDoneAdv[8] = true;

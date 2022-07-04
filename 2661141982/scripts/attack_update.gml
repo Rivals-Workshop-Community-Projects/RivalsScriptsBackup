@@ -1,5 +1,5 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_JAB || attack == AT_UTILT ||attack == AT_NSPECIAL_2 || attack == AT_USPECIAL_2|| attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_DSPECIAL_2 ||attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_JAB && has_rune("O") || attack == AT_UTILT ||attack == AT_NSPECIAL_2 || attack == AT_USPECIAL_2|| attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_DSPECIAL_2 ||attack == AT_USPECIAL){
     if(shotoTurnBuffer <= 0 )
 		trigger_b_reverse();
     can_fast_fall = false;
@@ -246,6 +246,7 @@ switch (attack)
 		}
 	break;
 	case AT_DATTACK:
+		can_fast_fall = false;
 		if(has_hit && has_rune("F"))
 			can_jump = true;
 		if (get_gameplay_time() mod 4 == 0 and window < 4 and !hitpause)
@@ -259,6 +260,15 @@ switch (attack)
             SkipWindow(1, 2);
             SkipWindow(3, 4);
         }
+		if(has_hit && attack_down && window == 3)
+			set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 5);
+		if(get_attack_value(AT_DATTACK, AG_NUM_WINDOWS) == 5 && window == 3 && window_timer == 10)
+		{
+			sound_play(asset_get("sfx_swish_weak"))
+			window = 4; window_timer = 0;
+		}
+		if(window = 1) 
+			reset_attack_value(AT_DATTACK, AG_NUM_WINDOWS);
 		break;
 	
 	case AT_NSPECIAL_2:
@@ -427,9 +437,18 @@ switch (attack)
 	else move_cooldown[AT_DSPECIAL] = 15;
 	var dir = right_down - left_down;
 	var dir_correspond = (spr_dir == dir);
-	
 	if(ewgf_timer > 0)
     {
+		//EZGF	
+		if(window_timer >= 5 && (up_strong_pressed || up_stick_pressed) && lure_timer == 0)
+		{
+			lure_timer = 180;
+			sound_play(asset_get("sfx_absa_singlezap1"));
+			white_flash_timer = 10;
+			set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 20);
+			set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("pewgf"));
+			set_attack(AT_EXTRA_1);
+		}
         switch(ewgf_input)
         {
             case 0:
@@ -452,11 +471,13 @@ switch (attack)
                 	if (!aura) ewgf_input++;
                 	ewgf_timer = 10;
                     reset_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE);
+					reset_attack_value(AT_EXTRA_1, AG_SPRITE);
 					if(attack_pressed && !free)
 					{
                         sound_play(asset_get("sfx_absa_singlezap1"));
                         white_flash_timer = 10;
                         set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 20);
+						set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("pewgf"));
                     	set_attack(AT_EXTRA_1);
 					}
                 }
@@ -464,6 +485,7 @@ switch (attack)
             case 3:
                 if(attack_pressed && !free)
                 {
+					reset_attack_value(AT_EXTRA_1, AG_SPRITE);
 					reset_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE);
                     set_attack(AT_EXTRA_1);
                 }
@@ -622,8 +644,9 @@ if (no_hp)
 			s_frame = 2;
 		break;
 		case AT_USTRONG:
-			play_sound = asset_get( "sfx_swipe_heavy1");
-			s_window = 3;
+			play_sound = asset_get( "sfx_swipe_medium1");
+			s_window = 2;
+			s_frame = 14;
 		break;
 		case AT_DAIR:
 			play_sound = asset_get( "sfx_orcane_dsmash" );
@@ -694,6 +717,8 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 2){
 if (attack == AT_FSPECIAL && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "dash_start");}
 if (attack == AT_FSPECIAL_2 && window_timer == 1 && window == 2){
+    spawn_base_dust(x, y, "jump");}
+if (attack == AT_USTRONG && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "jump");}
 if (attack == AT_DSPECIAL_2 && window_timer == 3 && window == 1 ){
     spawn_base_dust(x, y, "dash_start");}

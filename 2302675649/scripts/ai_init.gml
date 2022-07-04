@@ -21,4 +21,5 @@ ai_state = 0;
 task_state = 0;
 task = 0;
 temp_level = 9;
-cheatTracker = array_create(20, {isCheater:false, nextParry: false});
+cheatTracker = 0;
+for (var i = 0; i < 20; ++i) cheatTracker[i] = {isCheater:false, nextParry: false};

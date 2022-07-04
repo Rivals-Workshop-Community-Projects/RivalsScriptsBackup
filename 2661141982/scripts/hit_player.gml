@@ -16,6 +16,16 @@ else if my_hitboxID.attack == AT_FSPECIAL and my_hitboxID.hbox_num < 5 and !hit_
     hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*10),0.2)
     hit_player_obj.y = lerp(hit_player_obj.y,y,0.3)
 }
+else if my_hitboxID.attack == AT_USTRONG and my_hitboxID.hbox_num < 3 and !hit_player_obj.clone
+{
+    hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*30),0.6)
+    hit_player_obj.y = lerp(hit_player_obj.y,y-50+vsp,0.4)
+}
+else if my_hitboxID.attack == AT_DATTACK and my_hitboxID.hbox_num == 2 and !hit_player_obj.clone
+{
+    hit_player_obj.x = lerp(hit_player_obj.x,x,0.6)
+    hit_player_obj.y = lerp(hit_player_obj.y+50,y,0.6)
+}
 else if (my_hitboxID.attack == AT_FAIR and my_hitboxID.hbox_num == 2)
 {
     sound_play(sound_get("fairspike"))
@@ -68,9 +78,8 @@ else if my_hitboxID.attack == 49 and !hit_player_obj.clone
     }
 }
 
-
 var spawn = false;
-var spawn_list = [AT_DAIR, AT_FSTRONG, AT_DSTRONG, AT_NSPECIAL]
+var spawn_list = [AT_DAIR, AT_FSTRONG, AT_USTRONG, AT_DSTRONG, AT_NSPECIAL]
 
 spawn = array_find_index(spawn_list,my_hitboxID.attack) != -1
 var offx = lerp(my_hitboxID.x, hit_player_obj.x, 0.5);
@@ -84,10 +93,8 @@ if (my_hitboxID.attack == AT_FAIR and my_hitboxID.hbox_num == 2)
     exit;
 }
 
-if (my_hitboxID.attack == AT_USTRONG and my_hitboxID.hbox_num mod 2 == 0)
-{
+if (my_hitboxID.attack == AT_USTRONG and my_hitboxID.hbox_num < 3)
     spawn = true;
-}
 
 if (my_hitboxID.attack == AT_USPECIAL and my_hitboxID.hbox_num < 3) or my_hitboxID.attack == AT_DSPECIAL or my_hitboxID.attack == AT_USPECIAL_2 or my_hitboxID.attack == AT_NSPECIAL_2 exit;
 

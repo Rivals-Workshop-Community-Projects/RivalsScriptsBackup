@@ -37,7 +37,7 @@ if !hitpause {
 
 
 if(get_match_setting(SET_PRACTICE)) == false {
-if triggercutscene != 0 {
+if triggercutscene != 0 && potbuster == 0 {
 	
 	
 	hitpause = true 
@@ -97,11 +97,12 @@ if triggercutscene != 0 {
 
 if instance_number(oPlayer) == 2 {
 
+
 with oPlayer {
   if player != other.player {
   	 
   	
-  	if get_player_stocks(player) == 1 {
+  	if get_player_stocks(player) == 1 && other.potbuster == 0{
   		if other.alreadydead == 0 { 
   		other.alreadydead = 1
   		}
@@ -117,7 +118,7 @@ with oPlayer {
   		
   	}
   	
-  	if other.alreadydead = 1 {
+  	if other.alreadydead = 1  && other.potbuster == 0 {
   		if x + hsp > room_width/2 + 600 or x - hsp < room_width/2 - 600 or y - vsp < room_height/2 - 350 or y + vsp > room_height/2 + 350 {
   			set_player_stocks(player, 2)
   			other.move_cooldown[AT_USPECIAL_GROUND] = 999
@@ -306,7 +307,6 @@ if !hitpause && (state == PS_DASH or state == PS_DASH_START) {
 	
 	
 	if (state_timer%18 == 12 and state == PS_DASH) or (state == PS_DASH_START && state_timer == 4){
-		shake_camera(2, 2)
 		sound_play(asset_get("sfx_land_heavy"));
 	}
 	

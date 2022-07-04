@@ -41,7 +41,11 @@ if my_hitboxID.attack == AT_FSTRONG {
        sound_stop(sound_get("RI"))
       sound_play(sound_get("RI"),false,noone,.7,1)
    }
-      
+   
+   if my_hitboxID.hbox_num == 3 && hit_player_obj.state_cat == SC_HITSTUN {
+      set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 0);
+   }
+   
 }
 
 

@@ -33,7 +33,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 //set_window_value(AT_USPECIAL, 3, AG_WINDOW_CANCEL_TYPE, 2);
 //set_window_value(AT_USPECIAL, 3, AG_WINDOW_CANCEL_FRAME, 1);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1.2);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //Rekka (need help making this work on special press)
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
@@ -55,7 +55,7 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 7);
-set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, 1);
@@ -71,10 +71,10 @@ set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 52);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 83);
 set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 10);
-set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 14);
+set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);//80
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 1.08);
+set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_USPECIAL, 1, HG_EXTRA_HITPAUSE, 5);	
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, 1.2);
@@ -96,10 +96,10 @@ set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 44);//50
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 59);
 set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 8);
-set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 12);
+set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 10);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 90);//80
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, .9);
+set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_EXTRA_CAMERA_SHAKE, 1);

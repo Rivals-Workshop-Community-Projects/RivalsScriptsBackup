@@ -47,7 +47,6 @@ set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .6);//.25
 // set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 20)
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));//sfx_infinidagger
 //set_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT, 6);
-set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 1);
 
 
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
@@ -67,9 +66,11 @@ set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .7);
 //set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, lanternfx);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 1);
 //set_hitbox_value(AT_FAIR, 2, HG_HIT_LOCKOUT, 6);
 set_hitbox_value(AT_FAIR, 2, HG_GROUNDEDNESS, 2);
-set_hitbox_value(AT_FAIR, 1, HG_HIT_PARTICLE_NUM, 1);
-set_hitbox_value(AT_FAIR, 2, HG_HIT_PARTICLE_NUM, 1);
 // set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 10)
+
+set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, small);
+set_hitbox_value(AT_FAIR, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, small);
+set_hitbox_value(AT_FAIR, 2, HG_HIT_PARTICLE_NUM, 1);

@@ -94,7 +94,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, small);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_TECHABLE, 1);
 
@@ -120,7 +120,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, small);
 //set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
 
@@ -139,7 +139,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 2);
-set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 6);
+set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, small);
 //set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 5);
 set_hitbox_value(AT_FSPECIAL, 3, HG_TECHABLE, 1);
 
@@ -160,7 +160,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT, 150);
+set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT, splashfx);
 
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 1);//rekka
 set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 7);
@@ -178,12 +178,12 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT, 150);
+set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT, small);
 
 var i = 1;
 repeat 5
 {
-    set_hitbox_value(AT_FSPECIAL, i, HG_VISUAL_EFFECT, 1);
+    set_hitbox_value(AT_FSPECIAL, i, HG_VISUAL_EFFECT, small);
     set_hitbox_value(AT_FSPECIAL, i, HG_HIT_PARTICLE_NUM, 1);
     i++;
 }

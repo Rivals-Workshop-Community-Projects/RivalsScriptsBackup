@@ -116,7 +116,7 @@ hitstun_grav = .5;
 knockback_adj = (has_rune("K") ? 1.2 : 1.05); //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 15;
 wave_land_time = 9;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .07; //grounded deceleration when wavelanding
@@ -157,6 +157,10 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
+wait_time = 280;
+wait_length = 100;
+wait_sprite = sprite_get("wait");
+
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
 waveland_sound = asset_get("sfx_waveland_orc");
@@ -169,6 +173,7 @@ splash_dair = hit_fx_create( sprite_get( "bubble_proj" ), 20 );
 sweet = hit_fx_create( sprite_get( "sweet" ), 15 );
 small = hit_fx_create( sprite_get( "smallhit" ), 15 );
 set_hit_particle_sprite(1, sprite_get("particles"))
+ewgf_fx = hit_fx_create(sprite_get("ewgfhit"), 30);
 
 star = hit_fx_create( sprite_get( "star" ), 15 );
 
