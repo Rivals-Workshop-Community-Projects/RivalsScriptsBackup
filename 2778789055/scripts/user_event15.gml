@@ -254,6 +254,19 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.20", "5 July, 2022");
+
+initHeader("Buffs:");
+initSection("+ Uair now has a smaller 2nd hitbox to cover opponents in front of Gumbo
++ Shrimpless Dstrong comes out 2 frames faster, F14 -> F12
+");
+
+initHeader("Changes:");
+initSection("= If an opponent is in the range of the pot, hitting the pot with tilts will now again increase the spice level
+= Pot can no longer save opponents from galaxies, instead it will always kill with a custom galaxy
+");
+
+//
 initPatch("1.19", "11 June, 2022");
 
 initHeader("Buffs:");

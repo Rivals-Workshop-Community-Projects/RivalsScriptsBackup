@@ -109,7 +109,7 @@ set_window_value(AT_FSPECIAL, 10, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"))
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_HAS_SFX, 1);
 
 set_window_value(AT_FSPECIAL, 11, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 11, AG_WINDOW_LENGTH, 8 + has_rune("H") * -4);
+set_window_value(AT_FSPECIAL, 11, AG_WINDOW_LENGTH, 12 + has_rune("H") * -4);
 set_window_value(AT_FSPECIAL, 11, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 11, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_FSPECIAL, 11, AG_WINDOW_HAS_WHIFFLAG, 1);

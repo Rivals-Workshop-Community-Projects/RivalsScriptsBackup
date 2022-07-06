@@ -20,4 +20,5 @@ neutral_attacks[2] = AT_NSPECIAL;
 ai_state = 0;
 waveshine = 0;
 topcustom = 0;
-cheatTracker = array_create(20, {isCheater:false, nextParry: false});
+cheatTracker = 0;
+for (var i = 0; i < 20; ++i) cheatTracker[i] = {isCheater:false, nextParry: false};

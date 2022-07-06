@@ -1,5 +1,5 @@
 
-if(init){
+if(get_synced_var(player) < 85){
     initialized = 0;
     initialized_loop = 2;
     specials = [0, 0, 0, 0];

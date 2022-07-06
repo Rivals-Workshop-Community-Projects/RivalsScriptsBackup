@@ -2,6 +2,7 @@
 
 if attack == AT_USPECIAL{
 	set_num_hitboxes(AT_USPECIAL, 2);
+	show_flames = 0;
 }
 
 if attack == AT_USTRONG{
@@ -25,6 +26,14 @@ if attack == AT_FSPECIAL{
 	}
 	play_sound=0;
 	done_reflecting = 0;
+	//Array Iniciate
+	num3 = 0
+	repeat(1000)
+	   {
+	   done_reflecting_hitbox[num3] = 0;			//Chooses a pill;
+	   num3 += 1;
+	   }
+	done_reflecting_article = 0;
 }
 
 

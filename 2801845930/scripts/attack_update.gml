@@ -162,13 +162,13 @@ switch (attack) {
     	
     	if (SpamNeoGrabbedId != 0 && hitpause == false) { // Checks for a hit and that the hit player isn't in hitpause
         	if (SpamNeoGrabbedId.state != PS_DEAD && SpamNeoGrabbedId.state != PS_RESPAWN && SpamNeoGrabbedId.state != PS_TECH_GROUND && SpamNeoGrabbedId.state != PS_TECH_FORWARD && SpamNeoGrabbedId.state != PS_TECH_BACKWARD && SpamNeoGrabbedId.state != PS_WALL_TECH) { // Checks to see if the player hit died or teched during the attack
-	    		if (SpamNeoGrabEasingTimer < 15) {
-	    			SpamNeoGrabbedId.x = ease_cubeOut( round(SpamNeoGrabStartX), round(x + (80 * spr_dir)), SpamNeoGrabEasingTimer, 15 ); // Changes the hit player's x location over time
-	    			SpamNeoGrabbedId.y = ease_cubeOut( round(SpamNeoGrabStartY), round(y - 40), SpamNeoGrabEasingTimer, 15 ); // Changes the hit player's y location over time
+	    		if (SpamNeoGrabEasingTimer < 10) {
+	    			SpamNeoGrabbedId.x = ease_cubeOut( round(SpamNeoGrabStartX), round(x + (50 * spr_dir)), SpamNeoGrabEasingTimer, 10 ); // Changes the hit player's x location over time
+	    			SpamNeoGrabbedId.y = ease_cubeOut( round(SpamNeoGrabStartY), round(y - 35), SpamNeoGrabEasingTimer, 10 ); // Changes the hit player's y location over time
 	    			SpamNeoGrabEasingTimer += 1; // Timer
 	    		} else {
-	    			SpamNeoGrabbedId.x = x + (80 * spr_dir); // Makes sure they stay at the desired x position
-	    			SpamNeoGrabbedId.y = y - 40; // Makes sure they stay at the desired y position
+	    			SpamNeoGrabbedId.x = x + (50 * spr_dir); // Makes sure they stay at the desired x position
+	    			SpamNeoGrabbedId.y = y - 35; // Makes sure they stay at the desired y position
 	    		}
 	    		// No movement so that the changes in position don't become jank
 	    		SpamNeoGrabbedId.hsp = 0; 
@@ -179,6 +179,15 @@ switch (attack) {
         		SpamNeoGrabbedId = 0;
         	}
     	}
+		
+		if (free == false) {
+			
+			//create_hitbox(AT_FAIR, 4, x + 20 * spr_dir, y - 50);
+			
+			window = 3;
+			window_timer = 0;
+			
+		}
 		
 		break;
 		
@@ -678,11 +687,11 @@ switch (attack) {
     
     if (window == 2 && window_timer == 1) {
     	sound_play(asset_get("sfx_ell_utilt_retract"));
-
+		
     	with (oPlayer) {
     		if (id != other.id) {
 	    		if (SpamNeoString == true) {
-	    			if (state_cat != SC_HITSTUN) { // Disabled >:)
+	    			//if (state_cat != SC_HITSTUN) { // Disabled >:)
 	    				// Cut String
 	    				
 	    				/*SpamNeoSnap = true;
@@ -700,7 +709,7 @@ switch (attack) {
 						SpamNeoStringCharge = 0;
 						SpamNeoString = false;
 						SpamNeoStringStartTimer = 0;*/
-	    			} else {
+	    			//} else {
 	    				// Pull the String
 	    				
 	    				other.SpamNeoPullON = true;
@@ -716,7 +725,7 @@ switch (attack) {
 		                SpamNeoStringCharge = 0;
 		                SpamNeoString = false;
 		                SpamNeoStringStartTimer = 0;
-	    			}
+	    			//}
 	    		}
 	    	}
     	}
@@ -779,10 +788,19 @@ switch (attack) {
     		SpamNeoTauntTime += 1;
     		SpamNeoTauntActive = true;
     		
+    		if (SpamNeoTauntTime == 105) {
+    			
+    			sound_play(asset_get("sfx_forsburn_cape_swipe"));
+    			
+    		}
+    		
     	} else {
     		SpamNeoTauntActive = false;
     		window = 3;
     		window_timer = 0;
+    		
+    		
+    		
     		if (special_down == false || attack_down == false) {
     			sound_stop(sound_get("bigshit"));
     			SpamNeoTauntSound = false;

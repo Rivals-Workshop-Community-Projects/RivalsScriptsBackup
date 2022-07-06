@@ -39,10 +39,10 @@ if (attack == AT_USPECIAL)
     lastHsp = hsp;
     lastVsp = vsp;
     
-    with (pHitBox) if (player_id == other.player_id && !was_parried && attack == AT_NSPECIAL && hbox_num == 2 && sprite_index == asset_get("empty_sprite") && place_meeting(x, y, other))
+    if (hitbox_timer > 60) with (pHitBox) if (player_id == other.player_id && !was_parried && attack == AT_NSPECIAL && hbox_num == 2 && sprite_index == asset_get("empty_sprite") && place_meeting(x, y, other))
     {
         other.hsp = hsp*0.7;
-        other.vsp = -5;
+        other.vsp = -abs(hsp)*0.4-2;
         other.hitbox_timer = 0;
         //sound_play(asset_get("sfx_ori_energyhit_weak"));
         player_id.boneObj = noone;

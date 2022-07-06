@@ -1,4 +1,6 @@
-
+   
+    
+    
 if  (get_player_color(player) == 22) {
     if(!avocado){
 //crash prevention line
@@ -13,6 +15,13 @@ maskFooter();
 }
 
 //================================================================================
+
+shader_end();
+if galaxy_timer > 0 {
+        
+        draw_sprite_ext(sprite_get("mmm"),0, view_get_xview(), view_get_yview(), 2 , 2 ,0, c_white, (galaxy_timer/2.5)/60 );
+        
+    }
 
 #define maskHeader
 // Mask renderer utility: disables Normal draw.

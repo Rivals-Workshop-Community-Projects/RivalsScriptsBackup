@@ -1,6 +1,5 @@
 //user_event 13
 
-
 //mana
 if (mp_gainable)
 {
@@ -68,21 +67,21 @@ switch (my_hitboxID.attack)
         break;
     //bar_grabbed_id setup
     case AT_FTHROW: case AT_FSPECIAL_AIR:
-        if (my_hitboxID.hbox_num == 2) 
+        if (my_hitboxID.hbox_num == 2 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)) 
         {
             bar_grabbed_id = hit_player_obj;
             bar_grab_time = 0;
         }
         break;
     case AT_EXTRA_3:
-        if (my_hitboxID.hbox_num < 4)
+        if (my_hitboxID.hbox_num < 4 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND))
         {
             bar_grabbed_id = hit_player_obj;
             bar_grab_time = 0;
         }
         break;
     case 39:
-        if (my_hitboxID.hbox_num == 1)
+        if (my_hitboxID.hbox_num == 1 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND))
         {
             bar_grabbed_id = hit_player_obj;
             bar_grab_time = 0;

@@ -3,16 +3,25 @@
 if (SpamNeoPlaytest) {
 } else {
     if (hit_player_obj.SpamNeoSnap == false && hit_player_obj.SpamNeoStringApplyCooldown <= 0 && ((my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 2) || (my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num == 3) || (my_hitboxID.attack == AT_FSPECIAL) || (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 4) || (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 1))) {
-        hit_player_obj.SpamNeoString = true;
         hit_player_obj.SpamNeoStringApplyCooldown = 20;
         hit_player_obj.SpamNeoStringPlayerId = id;
         
-        // Code For Removed Meter
-        //if (hit_player_obj.SpamNeoStringCharge < 5) {
-        //    hit_player_obj.SpamNeoStringCharge += 1;
-        //}
+        // Code For Meter
+        if (hit_player_obj.SpamNeoStringCharge < 2) {
+            
+            hit_player_obj.SpamNeoStringCharge += 1;
+            
+        } else if (hit_player_obj.SpamNeoString == false) {
+            
+            hit_player_obj.SpamNeoString = true;
+            hit_player_obj.SpamNeoStringCharge = 3;
+            
+            hit_player_obj.SpamNeoStringStartTimer = 0;
+            
+            sound_play(sound_get("string_apply"));
+            
+        }
         
-        hit_player_obj.SpamNeoStringCharge = 1;
     }
 }
 
@@ -46,17 +55,11 @@ if ((my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1) || (my_hitbo
             
             SpamNeoGrabDmg = hit_player_obj.SpamNeoEnmDamage;
             SpamNeoGrabScaling = my_hitboxID.kb_scale;
-            if (my_hitboxID.attack == AT_DAIR) {
-                
-                SpamNeoGrabKB = my_hitboxID.kb_value * 1.2;
-                SpamNeoGrabAngle = 40;
-                
-            } else {
-                
-                SpamNeoGrabKB = my_hitboxID.kb_value;
-                SpamNeoGrabAngle = my_hitboxID.kb_angle;
-                
-            }
+            
+            SpamNeoGrabHBDmg = my_hitboxID.damage;
+            
+            SpamNeoGrabKB = my_hitboxID.kb_value;
+            SpamNeoGrabAngle = get_hitbox_angle( my_hitboxID );
             
             
             hit_player_obj.should_make_shockwave = false;

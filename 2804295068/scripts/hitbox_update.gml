@@ -32,7 +32,7 @@ if (attack == 49 && hbox_num == 2){
 	if torched{
 		sprite_index = sprite_get("firepea_big");
 		collision = sprite_get("pea_big");
-		hit_effect = 4
+		hit_effect = 148
 		sound_effect = asset_get("sfx_burnconsume");
 		damage = torch_damage_mult
 		length = torch_length_mult
@@ -60,12 +60,15 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	    hsp = (player_id.hsp/2.5)+(2.5*spr_dir)
 		sound_play (sound_get ("bean_voice"));
 	}
+	if (hitbox_timer == 60){
+		sound_play (sound_get ("bean_voice2"));
+	}
+	if (hitbox_timer >= 120){
+	    sprite_index = sprite_get("bean_bomb_flashing");
+	}
 	if (!free){
 	    hsp *= .97
 	    proj_angle += (hsp*-2)
-	}
-	if (hitbox_timer >= 90){
-	    sprite_index = sprite_get("bean_bomb_flashing");
 	}
 	if (hitbox_timer == length){
 	    player_id.boom = true;

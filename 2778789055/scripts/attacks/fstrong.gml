@@ -46,6 +46,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.2);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 195);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 2);
 
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 2);

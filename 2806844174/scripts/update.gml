@@ -18,7 +18,7 @@ wing_y = lerp(wing_y, y + offset, .35);
 
 with oPlayer if "bubble_hitpause_timer" in self && bubble_hitpause_timer == 1 {
 	bubble_hitpause_timer = 0;
-	if state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND {
+	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && !attack_hit {
 		//hitpause = false;
 		hitstop = 0;
 		hitstop_full = 0;

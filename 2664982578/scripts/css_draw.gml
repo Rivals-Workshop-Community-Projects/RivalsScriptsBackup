@@ -2,8 +2,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "0.0";
-patch_day = "21";
-patch_month = "MAY";
+patch_day = "5";
+patch_month = "JUL";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);
@@ -52,7 +52,7 @@ alt_name[22]  = "Balanced Breakfast";
 alt_name[23]  = ":Eggdog:"; 
 alt_name[24]  = "What the fuck is that"; 
 alt_name[25]  = "Ḙ̵̢̩̙̿̕ģ̵̘̻̀̾͂̎ģ̶̱̦͚̱͆̚ ̶̙͉͐̌̄ͅM̷̙̑̓̒͝a̸͚͂͛̎̃̚c̶͓͆̉͊̀͝h̸̺̟̆͊ȋ̷̛̠̰̘̂̚͝ǹ̸͇̮̥̲́̓͒̓e̶̡̹̮͉̓̓͆̈́̕ ̴̱̹͙̥̘̃̀͝Ḇ̸̖̠̪̮̊̉͠r̴̗̗̼̈́̀̈́̚̚͜o̷̢͂̑̅͝ͅk̴̛͎͇̜e̸͎͍̰͊̑̐̊̀"; 
- 
+alt_name[26]  = "Cosmic Dog";  
  
 if (get_player_color(player)==24){
     if (drawtime == 1){
@@ -74,6 +74,10 @@ draw_sprite(sprite_get("stockicon"),0,x+173,y+34);
 
 if (get_player_color(player)==14 || get_player_color(player)==15 || get_player_color(player)== 16 || get_player_color(player)== 17 || get_player_color(player)== 18 || get_player_color(player)== 23){
         draw_sprite(sprite_get("eggdog_charselect"),0,x+8,y+8);
+}
+if (get_player_color(player)==26){
+        draw_sprite(sprite_get("pluto_eggdog_charselect"),0,x+8,y+8);
+        draw_sprite(sprite_get("pluto_outline"),0,x+8,y+8);
 }
 if (get_player_color(player)==24){
         draw_sprite(sprite_get("nothingthere_charselect"),0,x+8,y+8);

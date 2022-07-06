@@ -16,23 +16,6 @@ else {
 	air_max_speed = air_max_speed_def;
 }
 
-//Makes sure that grabbed opponents don't stay grabbed.
-if(grabbedid != noone){
-	grabbedid.ungrab++;
-	if(grabbedid.ungrab == 4){
-		grabbedid.state = PS_TUMBLE;
-		grabbedid.ungrab = 0;
-		grabbedid = noone;
-	}
-	else {
-        grabbedid.hitstop = 2;
-        grabbedid.hitpause = true;
-        grabbedid.state = PS_HITSTUN;
-        grabbedid.hsp = 0;
-        grabbedid.vsp = 0;
-	}
-}
-
 if !(attack == AT_NSPECIAL_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 {
     rounds_left = 12;

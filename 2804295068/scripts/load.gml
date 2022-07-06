@@ -65,5 +65,7 @@ sprite_change_offset("firepea_big", 64, 64);
 
 sprite_change_offset("peashooter_hurtbox", 64, 94);
 sprite_change_offset("crouchbox", 64, 94);
+sprite_change_offset("wait", 64, 94);
+sprite_change_offset("wait2", 64, 94);
 
 sprite_change_offset("jab_kirby", 32, 62);

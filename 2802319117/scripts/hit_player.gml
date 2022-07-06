@@ -66,7 +66,7 @@ if (my_hitboxID.attack == AT_DSPECIAL)
 }
 
 //Charizard6903 code
-if (attack == AT_DAIR){
+if (my_hitboxID.attack == AT_DAIR){
     window = 4;
     dairbounce = false;
 }

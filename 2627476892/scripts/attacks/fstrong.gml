@@ -5,7 +5,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
 //startup
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 10); 
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 8); 
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 
 //attack
@@ -28,15 +28,15 @@ set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_MISC, "When charged for long enough,
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 6);
+set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 18);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -36);
-set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 90);
+set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 80);
 set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
@@ -46,7 +46,6 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSTRONG, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_DRIFT_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Explosion");
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 12);
 set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 80);
@@ -54,9 +53,9 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 80);
 set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 50);
-set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 148);
 set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_SPRITE, sprite_get("blank_sheet"));
@@ -75,7 +74,6 @@ set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_DRIFT_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FSTRONG, 4, HG_MUNO_HITBOX_NAME, "Glass VFX");
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSTRONG, 4, HG_WINDOW, 0);
 set_hitbox_value(AT_FSTRONG, 4, HG_LIFETIME, 30);
@@ -99,7 +97,6 @@ set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FSTRONG, 4, HG_PROJECTILE_UNBASHABLE, 1);
 
-set_hitbox_value(AT_FSTRONG, 5, HG_MUNO_HITBOX_NAME, "Glass VFX");
 set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSTRONG, 5, HG_WINDOW, 0);
 set_hitbox_value(AT_FSTRONG, 5, HG_LIFETIME, 30);
@@ -123,7 +120,6 @@ set_hitbox_value(AT_FSTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_FSTRONG, 5, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FSTRONG, 5, HG_PROJECTILE_UNBASHABLE, 1);
 
-set_hitbox_value(AT_FSTRONG, 6, HG_MUNO_HITBOX_NAME, "Glass VFX");
 set_hitbox_value(AT_FSTRONG, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSTRONG, 6, HG_WINDOW, 0);
 set_hitbox_value(AT_FSTRONG, 6, HG_LIFETIME, 30);

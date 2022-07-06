@@ -56,7 +56,7 @@ set_hitbox_value(AT_EXTRA_1, 3, HG_HEIGHT, 48);
 set_hitbox_value(AT_EXTRA_1, 3, HG_DAMAGE, 3);
 set_hitbox_value(AT_EXTRA_1, 3, HG_ANGLE, 361);
 set_hitbox_value(AT_EXTRA_1, 3, HG_PRIORITY, 1);
-set_hitbox_value(AT_EXTRA_1, 3, HG_BASE_KNOCKBACK, 5 + has_rune("G") * 2);
+set_hitbox_value(AT_EXTRA_1, 3, HG_BASE_KNOCKBACK, 6.5 + has_rune("G") * 2);
 set_hitbox_value(AT_EXTRA_1, 3, HG_BASE_HITPAUSE, 6 + has_rune("G") * 2);
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITSTUN_MULTIPLIER, 0.3);
 set_hitbox_value(AT_EXTRA_1, 3, HG_SDI_MULTIPLIER, 0.2);

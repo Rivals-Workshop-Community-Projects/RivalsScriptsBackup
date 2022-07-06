@@ -5,7 +5,7 @@ set_attack_value(AT_DSTRONG_2, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG_2, AG_HURTBOX_SPRITE, sprite_get("dstrong2_hurt"));
 
 //startup
-set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_cape_swipe"));

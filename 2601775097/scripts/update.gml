@@ -10,6 +10,8 @@ got_gameplay_time = get_gameplay_time();
 is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
 is_dodging = (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODGE);
 
+strong_pressed = (up_strong_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed)
+
 if (is_attacking)
 {
     //set window_end and last_window all the time
@@ -32,7 +34,6 @@ if (got_gameplay_time == 4 && !bibical && attack != AT_INTRO)
     set_attack(has_theikos ? AT_THEIKOS : AT_INTRO);
     exit;
 }
-
 
 
 //renders effects in front of you
@@ -58,7 +59,7 @@ if (!free)
     accel_act_time = 0;
     accel_used = false;
 
-    if was_free { // this check is so that you only reset things the moment you land
+    if (was_free) { // this check is so that you only reset things the moment you land
         //gliding
         glide_ui = false;
         can_glide = true;
@@ -323,141 +324,9 @@ activate_outline = burnbuff_active;
 
 ////////////////////////////////////////////////////////// SKILLS SECTION //////////////////////////////////////////////////////////////
 
-//the menu itself
-if (menu_active)
-{
-    //menu logic
-    menu_timer --;
-    if (menu_timer <= menu_timer_stop) //it has a few secs extra because of versus mode restart jank
-    {
-        //if bar is in the middle of selecting, freeze him
-        //otherwise, start the unfreeze timer
-        if (cur_select > -1 && cur_select < 4) 
-        {
-            if (menu_timer < menu_timer_stop) menu_timer = menu_timer_stop;
-            menu_controls(true);
-            bar_pause(true);
-        }
-        else
-        {
-            menu_controls(false); //disable the menu controls
-            state_timer ++; //this animates the spawn state
-
-            //skill slots saving
-            if (menu_timer == menu_timer_stop-1)
-            {
-                if (cur_select >= 4) for (var i = 0; i <= 3; ++i) prev_skills[i] = cur_skills[i];       //save skills
-                else if (cur_select <= -1) for (var i = 0; i <= 3; ++i) cur_skills[i] = prev_skills[i]; //revert changes
-            }
-            if (menu_timer <= 0)
-            {
-                bar_pause(false);
-                menu_active = false;
-                cur_skill_info = 0;
-            }
-        }
-
-        //picks skills / hover over them on info mode
-        if (!info_mode_menu)
-        {
-            switch (menu_dir)
-            {
-                case 1: case 2: case 3: //selections
-                    cur_skills[cur_select] = cur_select+4*(menu_dir-1);
-                    sound_play(asset_get("mfx_confirm"));
-                    cur_select ++;
-                    break;
-                case -1: //cancel select
-                    sound_play(asset_get("mfx_back"));
-                    cur_select --;
-                    break;
-                case -2:
-                    if (is_practice_menu && !playtesting)
-                    {
-                        info_mode_menu = true;
-                        sound_play(asset_get("mfx_confirm"));
-                    }
-                    else menu_dir = 0;
-                    break;
-            }
-        }
-        else
-        {
-            switch (menu_dir)
-            {
-                case 1: //up
-                    if (cur_skill_info - 4 >= 0) cur_skill_info -= 4;
-                    sound_play(asset_get("mfx_move_cursor"));
-                    break;
-                case 2: //right
-                    if (cur_skill_info + 1 <= 4 *skill[cur_skill_info].skill_pos_y + 3) cur_skill_info += 1;
-                    sound_play(asset_get("mfx_move_cursor"));
-                    break;
-                case 3: //down
-                    if (cur_skill_info + 4 <= 11) cur_skill_info += 4;
-                    sound_play(asset_get("mfx_move_cursor"));
-                    break;
-                case 4: //left
-                    if (cur_skill_info - 1 >= 4 * skill[cur_skill_info].skill_pos_y) cur_skill_info -= 1;;
-                    sound_play(asset_get("mfx_move_cursor"));
-                    break;
-                case -1: //go back to skill select
-                    sound_play(asset_get("mfx_back"));
-                    info_mode_menu = false;
-                    break;
-                case -2: //allow bar to move with skill descriptions
-                    //cur_skill_info needs to be equiped
-                    for (var g = 0; g <= 3; ++g)
-                    {
-                        if (skill[cur_skills[g]].skill_id != skill[cur_skill_info].skill_id
-                        && skill[cur_skills[g]].skill_pos_x == skill[cur_skill_info].skill_pos_x)
-                        {
-                            replaced_skill_temp = cur_skills[g]
-                            cur_skills[g] = cur_skill_info;
-                        }
-                    }
-
-                    //gives bar the MP to use the skill too
-                    if (mp_current < skill[cur_skill_info].mp_use_cost) mp_current = skill[cur_skill_info].mp_use_cost;
-
-                    menu_active = false;
-                    menu_controls(false);
-                    bar_pause(false);
-                    sound_play(asset_get("mfx_option"));
-                    break;
-            }
-        }
-    }
-
-    //animation shenanigans
-    if (is_attacking) //this part allows bar to still have some animations when he's frozen
-    {
-        switch (attack)
-        {
-            case 2: case 47: //intro + theikos transformation
-                window_timer ++;
-                break;
-            case 3: //skill select animation
-                if (window != 2) window_timer ++;
-                break;
-        }
-    }
-    //cursor animation
-    menu_cursor_timer ++;
-
-    //invincibility logic
-    if (menu_invince > 0)
-    {
-        if (!training && !is_practice_menu && !is_cpu) menu_invince --;
-
-        //makes bar flash when he has 1 second left
-        if (menu_invince <= 60 && menu_invince % 4 == 0 && menu_invince > 0) invincible = true;
-        else attack_invince = true;
-    }
-
-    burnbuff_active = false;
-    lightbuff_active = false;
-}
+//skill select
+skill_script_type = 1;
+user_event(2);
 
 //general
 //grab stuff

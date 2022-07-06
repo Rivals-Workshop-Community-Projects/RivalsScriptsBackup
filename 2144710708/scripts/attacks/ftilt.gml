@@ -39,4 +39,4 @@ set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_med1"));
 set_window_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 301);
-set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 0.9);
+//set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 0.9); why was this here

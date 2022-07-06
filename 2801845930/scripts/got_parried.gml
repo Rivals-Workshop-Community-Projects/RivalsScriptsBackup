@@ -30,7 +30,7 @@ hit_player_obj.SpamNeoSPoisonOutlineFix = false;
 hit_player_obj.SpamNeoSnap = false;
 hit_player_obj.SpamNeoSnapCount = 0; // So that time runs ever 2 frames
 hit_player_obj.SpamNeoSnapTimer = 0;
-hit_player_obj.SpamNeoSnapAnim = false;
+hit_player_obj.SpamNeoSnapAnim = true;
 hit_player_obj.SpamNeoSnapAnimEnd = false;
 hit_player_obj.SpamNeoSnapPratTime = 0; // Value 1-5
 hit_player_obj.SpamNeoSnapPratFrames = 0; // Remaining time in Pratfall (starts when free == false)

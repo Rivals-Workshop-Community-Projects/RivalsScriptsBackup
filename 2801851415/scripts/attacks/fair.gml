@@ -78,13 +78,13 @@ set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 52);//70
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 270);//this is angle 45 hitting behind
+set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);//this is angle 45 hitting behind
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 4); //this is high knockback for an aerial
 //set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .2); //this is high scaling for an aerial
 //set_hitbox_value(AT_FAIR, 1, HG_EXTRA_HITPAUSE, 2); //4
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 2); //4
 // set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .3); //note: multihits should usually never have hitpause scaling
-//set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, hfx_explode);
+//set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, shatter);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 9); //2
 //set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -32);
 //set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
@@ -107,8 +107,8 @@ set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 4); //this is high knockback for
 //set_hitbox_value(AT_FAIR, 2, HG_EXTRA_HITPAUSE, 2); //4
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 2); //4
 //set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .3); //note: multihits should usually never have hitpause scaling
-set_hitbox_value(AT_FAIR, 2, HG_ANGLE_FLIPPER, 9); //2
-//set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, hfx_explode);
+//set_hitbox_value(AT_FAIR, 2, HG_ANGLE_FLIPPER, 10); //2
+//set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, shatter);
 //set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -32);
 //set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 //set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium1")); //hitplayer.gml
@@ -133,4 +133,4 @@ set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, .8);
 //set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_X_OFFSET, -32);
 //set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_icehit_medium1")); //sfx_icehit_heavy1
-set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, frost_fx);

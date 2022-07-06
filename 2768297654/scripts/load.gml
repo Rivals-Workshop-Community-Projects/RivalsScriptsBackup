@@ -11,7 +11,7 @@ sprite_change_offset("crouch", 25, 45);//
 sprite_change_offset("walk", 25, 45);//
 sprite_change_offset("walkturn", 24, 45);//
 sprite_change_offset("dash", 25, 45);//
-sprite_change_offset("dashstart", 26, 45);//
+sprite_change_offset("dashstart", 24, 45);//
 sprite_change_offset("dashstop", 24, 45);//
 sprite_change_offset("dashturn", 24, 45);//
 

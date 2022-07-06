@@ -29,9 +29,15 @@ if (my_hitboxID.attack == AT_UTHROW && my_hitboxID.hbox_num == 2|| my_hitboxID.a
 //Throws
 if (my_hitboxID.attack == AT_UAIR && attack == AT_UAIR){
     if (my_hitboxID.hbox_num == 1 && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-	    grabbedid.ungrab = 0;
+        	//if this attack hasn't grabbed a player yet, grab the player we just hit.
+		if (!instance_exists(grabbedid)) { grabbedid = hit_player_obj; }
+		
+		//if this attack has already grabbed a different opponent, prioritize grabbing the closest opponent.
+		else {
+			var old_grab_distance = point_distance(x, y, grabbedid.x, grabbedid.y);
+			var new_grab_distance = point_distance(x, y,     hit_player_obj.x,     hit_player_obj.y);
+			if (new_grab_distance < old_grab_distance) { grabbedid = hit_player_obj; }
+		}
 	    window = 4;
         window_timer = 0;
         destroy_hitboxes();
@@ -40,9 +46,17 @@ if (my_hitboxID.attack == AT_UAIR && attack == AT_UAIR){
 
 if (my_hitboxID.attack == AT_NSPECIAL && attack == AT_NSPECIAL){
     if (my_hitboxID.hbox_num == 1 && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-	    grabbedid.ungrab = 0;
+        	
+		//if this attack hasn't grabbed a player yet, grab the player we just hit.
+		if (!instance_exists(grabbedid)) { grabbedid = hit_player_obj; }
+		
+		//if this attack has already grabbed a different opponent, prioritize grabbing the closest opponent.
+		else {
+			var old_grab_distance = point_distance(x, y, grabbedid.x, grabbedid.y);
+			var new_grab_distance = point_distance(x, y,     hit_player_obj.x,     hit_player_obj.y);
+			if (new_grab_distance < old_grab_distance) { grabbedid = hit_player_obj; }
+		}
+		
 	    window = 4;
         window_timer = 0;
         destroy_hitboxes();
@@ -51,9 +65,15 @@ if (my_hitboxID.attack == AT_NSPECIAL && attack == AT_NSPECIAL){
 
 if (my_hitboxID.attack == AT_FSPECIAL && attack == AT_FSPECIAL){
     if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2) && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-	    grabbedid.ungrab = 0;
+        	//if this attack hasn't grabbed a player yet, grab the player we just hit.
+		if (!instance_exists(grabbedid)) { grabbedid = hit_player_obj; }
+		
+		//if this attack has already grabbed a different opponent, prioritize grabbing the closest opponent.
+		else {
+			var old_grab_distance = point_distance(x, y, grabbedid.x, grabbedid.y);
+			var new_grab_distance = point_distance(x, y,     hit_player_obj.x,     hit_player_obj.y);
+			if (new_grab_distance < old_grab_distance) { grabbedid = hit_player_obj; }
+		}
 	    window = 4;
         window_timer = 0;
         destroy_hitboxes();
@@ -63,9 +83,15 @@ if (my_hitboxID.attack == AT_FSPECIAL && attack == AT_FSPECIAL){
 
 if (my_hitboxID.attack == AT_USPECIAL && attack == AT_USPECIAL){
     if ((my_hitboxID.hbox_num >= 1 && my_hitboxID.hbox_num <= 3) && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
-        hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
-	    grabbedid.ungrab = 0;
+       	//if this attack hasn't grabbed a player yet, grab the player we just hit.
+		if (!instance_exists(grabbedid)) { grabbedid = hit_player_obj; }
+		
+		//if this attack has already grabbed a different opponent, prioritize grabbing the closest opponent.
+		else {
+			var old_grab_distance = point_distance(x, y, grabbedid.x, grabbedid.y);
+			var new_grab_distance = point_distance(x, y,     hit_player_obj.x,     hit_player_obj.y);
+			if (new_grab_distance < old_grab_distance) { grabbedid = hit_player_obj; }
+		}
 	    window = 5;
         window_timer = 0;
         destroy_hitboxes();

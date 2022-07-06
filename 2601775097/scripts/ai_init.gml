@@ -4,6 +4,7 @@ is_cpu = true;
 cpu_fight_time = 0;
 
 menu_active = false;
+menu_type = 1;
 cpu_select_time = 30; //50
 
 input = 0; //will decide bar's combo strings

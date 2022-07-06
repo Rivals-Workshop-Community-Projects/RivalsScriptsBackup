@@ -6,7 +6,7 @@ set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
 // Startup
 
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, sound_get("phone_pickedup"));
@@ -19,7 +19,7 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 
 // Prep Hit
 
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
@@ -40,19 +40,19 @@ set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 // Hitboxes
 
-set_num_hitboxes(AT_DSTRONG, 2);
+set_num_hitboxes(AT_DSTRONG, 3);
 
 // Call Hit
 
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 4);
-set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 2);
+set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 6);
-set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 10);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 60);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -45);
-set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 205);
-set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 90);
+set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 90);
+set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 50);
@@ -62,7 +62,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sound_get("snap_hit"));
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, stringhfx);
-set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 3);
 
 // Snap Hit
 
@@ -93,3 +92,24 @@ set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 10);
+
+// Call Hit back
+
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 4);
+set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 0);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 6);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, -40);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -45);
+set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 90);
+set_hitbox_value(AT_DSTRONG, 3, HG_HEIGHT, 80);
+set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 10);
+set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 130);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, sound_get("snap_hit"));
+set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, stringhfx);

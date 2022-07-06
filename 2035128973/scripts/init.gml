@@ -274,7 +274,6 @@ else
 	hasBone = true;
 	boneObj = noone;
 	boneMark = noone;
-	boneMarkDir = noone;
 	
 	// uspec
 	//uspecBan = false;

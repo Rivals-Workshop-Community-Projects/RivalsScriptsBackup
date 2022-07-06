@@ -3,7 +3,7 @@
 //draw_debug_text(x, y - 20, string(spin_hit));
 //draw_debug_text(x-90, y - 20, string(confetti_L));
 //draw_debug_text(x+90, y - 20, string(confetti_R));
-//draw_debug_text(x, y - 20, string(propeller_rats));
+draw_debug_text(x, y - 20, string(rat_timer));
 
 if (state == PS_AIR_DODGE ){
 	draw_sprite_ext(sprite_get("airdodge_bubble_neutral_front"), -1, x, y, spr_dir, 1, 0, c_white, 1);

@@ -202,7 +202,7 @@ initImage_ext(sprite_get("_pho_dspecial"), -4, fa_center, 2, 2, true, c_white, 1
 initTip("NSpecial: Interactions with Specials");
 initWords("Nspecial: The Adrenaline Orb, can be used in multiple ways with Egg's specials.");
 initWords("With Fspecial, Egg can grab the Orb like an opponent, and slam it down. If this hits and opponent, it will increase Egg's hatch rate by 200.");
-initWords("If Egg already has grabbed an opponent with Fspecial, it can bounce off of the Adrenaline orb, which creates a Basketball hoop in front of it. Egg can use the hoop to slam dunk the opponent it has. Hitting this attack increases the hatch rate by 200.");
+initWords("If Egg already has grabbed an opponent with Fspecial or Ustrong, it can bounce off of the Adrenaline orb, which creates a Basketball hoop in front of it. Egg can use the hoop to slam dunk the opponent it has. Hitting this attack increases the hatch rate by 200.");
 initWords("If hit by Uspecial, the Adrenaline Orb will switch places with Egg and create an explosion. If this hits and opponent, it will increase Egg's hatch rate by 200.");
 initWords("Uspecial can also initially grab the orb during it's startup, causing it to move with Uspecial's Mark. If you hit the opponent, it will detonate after switching places and increase Egg's hatch rate by 200.");
 initWords("Adrenaline Orb can also be grabbed with Dspecial. Egg throws the orb as a projectile if this happens. If this hits and opponent, it will increase Egg's hatch rate by 200.");
@@ -248,6 +248,30 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.20", "5 July, 2022");
+
+initHeader("Buffs:");
+initSection("+ Bair comes out 2 frames faster, F15 -> F13
++ Ballin's kbscaling was increased, 0.6 -> 0.65
++ Ballin's damage was increased, 8 -> 14
++ Hoop lasts for a longer time, 150 -> 180
++ Ustrong can now bounce off of orb (will transition to Ballin')
++ Fspecial's grab hitbox lasts longer, 6 -> 8 (to better match the animation)
++ Added one new alt
+");
+
+initHeader("Nerfs:");
+initSection("- Weight decreased, 1.03 -> 1.05
+- Dash speed decreased, 6 -> 5.5
+- Pratland time increased, 12 -> 16
+- Ustrong comes out 2 frames later, F13 -> F15
+- Fspecial goes into pratfall on whiff in the air
+- Uair, Ustrong, have more endlag
+- Orb now dies after 10 seconds
+- Orb now dies if Egg is parried or dies
+");
+
+//
 initPatch("1.19", "21 May, 2022");
 
 initHeader("Buffs:");

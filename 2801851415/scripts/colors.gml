@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 12, 23 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 21 );
+set_num_palettes( 27 );
 
 // Blue
 set_color_profile_slot( 1, 0, 0, 156, 132 ); //Blue
@@ -211,6 +211,60 @@ set_color_profile_slot( 20, 3, 255, 255, 207 ); //Pink
 set_color_profile_slot( 20, 4, 69, 69, 69 ); //Belt
 set_color_profile_slot( 20, 5, 255, 189, 46 ); //Eyes
 set_color_profile_slot( 20, 6, 89, 84, 83 ); //ice
+
+// Crimson Cold
+set_color_profile_slot( 21, 0, 212, 193, 212 ); //Blue
+set_color_profile_slot( 21, 1, 212, 193, 212 ); //Fur
+set_color_profile_slot( 21, 2, 255, 166, 0 ); //Gold
+set_color_profile_slot( 21, 3, 255, 0, 115 ); //Pink
+set_color_profile_slot( 21, 4, 255, 0, 51 ); //Belt
+set_color_profile_slot( 21, 5, 255, 0, 0 ); //Eyes
+set_color_profile_slot( 21, 6, 179, 189, 255 ); //ice
+
+// Freedom
+set_color_profile_slot( 22, 0, 255, 92, 192 ); //Blue
+set_color_profile_slot( 22, 1, 138, 255, 247 ); //Fur
+set_color_profile_slot( 22, 2, 255, 102, 176 ); //Gold
+set_color_profile_slot( 22, 3, 255, 161, 161 ); //Pink
+set_color_profile_slot( 22, 4, 255, 255, 255 ); //Belt
+set_color_profile_slot( 22, 5, 255, 168, 168 ); //Eyes
+set_color_profile_slot( 22, 6, 97, 221, 255 ); //ice
+
+// Vocaloid
+set_color_profile_slot( 23, 0, 0, 224, 209 ); //Blue
+set_color_profile_slot( 23, 1, 147, 173, 165 ); //Fur
+set_color_profile_slot( 23, 2, 255, 28, 111 ); //Gold
+set_color_profile_slot( 23, 3, 255, 206, 186 ); //Pink
+set_color_profile_slot( 23, 4, 56, 77, 55 ); //Belt
+set_color_profile_slot( 23, 5, 77, 160, 255 ); //Eyes
+set_color_profile_slot( 23, 6, 148, 255, 128 ); //ice
+
+// Guilty
+set_color_profile_slot( 24, 0, 255, 241, 107 ); //Blue
+set_color_profile_slot( 24, 1, 217, 203, 162 ); //Fur
+set_color_profile_slot( 24, 2, 0, 132, 255 ); //Gold
+set_color_profile_slot( 24, 3, 89, 183, 255 ); //Pink
+set_color_profile_slot( 24, 4, 0, 68, 255 ); //Belt
+set_color_profile_slot( 24, 5, 0, 234, 255 ); //Eyes
+set_color_profile_slot( 24, 6, 99, 203, 255 ); //ice
+
+// Pastel
+set_color_profile_slot( 25, 0, 156, 255, 191 ); //Blue
+set_color_profile_slot( 25, 1, 255, 125, 214 ); //Fur
+set_color_profile_slot( 25, 2, 128, 130, 255 ); //Gold
+set_color_profile_slot( 25, 3, 110, 255, 139 ); //Pink
+set_color_profile_slot( 25, 4, 0, 255, 0 ); //Belt
+set_color_profile_slot( 25, 5, 0, 255, 170 ); //Eyes
+set_color_profile_slot( 25, 6, 128, 130, 255 ); //ice
+
+// Energy Drink
+set_color_profile_slot( 26, 0, 82, 69, 97 ); //Blue
+set_color_profile_slot( 26, 1, 82, 69, 97 ); //Fur
+set_color_profile_slot( 26, 2, 0, 255, 0 ); //Gold
+set_color_profile_slot( 26, 3, 0, 255, 0 ); //Pink
+set_color_profile_slot( 26, 4, 0, 255, 0 ); //Belt
+set_color_profile_slot( 26, 5, 0, 255, 0 ); //Eyes
+set_color_profile_slot( 26, 6, 0, 255, 0 ); //ice
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

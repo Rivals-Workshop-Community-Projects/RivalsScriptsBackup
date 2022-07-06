@@ -6,7 +6,7 @@ set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
 
 //startup
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_cape_swipe"));
@@ -43,7 +43,7 @@ set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 10);
 
 //grab miss
-set_window_value(AT_USTRONG, 7, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_USTRONG, 7, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_USTRONG, 7, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 6);
 

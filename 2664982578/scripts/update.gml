@@ -21,12 +21,15 @@ if (state == PS_DASH_START) {
     }
 }
 
+if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+if(attack == AT_USPECIAL){
 if(teleport_outline == true){
 				outline_color = [ 0, 242, 255 ];
 	        init_shader();
 }if(teleport_outline == false){
 				outline_color = [ 0, 0, 0 ];
-	        init_shader();
+}
+}
 }
 
 if(hatch_amount < 3000){

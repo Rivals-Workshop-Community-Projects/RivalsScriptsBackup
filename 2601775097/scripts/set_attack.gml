@@ -30,19 +30,18 @@ switch (attack)
         break;
     //practice mode shenanigans
     case AT_TAUNT:
-        if (training)
+        if (training && !playtesting)
         {
             if (up_down) //skill select
             {
                 attack = AT_SELECT;
                 menu_active = true;
-                is_practice_menu = true;
-                menu_timer = menu_timer_stop + 4;
+                if (menu_type == 0) menu_type = 1;
 
-                if (!info_mode_menu) cur_select = 0;
+                if (menu_type != 2) cur_select = 0;
 
                 //revert changes from the single skill trying mode
-                if (info_mode_menu && menu_active) for (var g = 0; g <= 3; ++g) cur_skills[g] = prev_skills[g];
+                if (menu_type == 2 && menu_active) for (var g = 0; g <= 3; ++g) cur_skills[g] = prev_skills[g];
             }
             if (down_down) //infinite mana mode
             {

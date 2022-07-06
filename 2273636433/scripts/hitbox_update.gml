@@ -11,8 +11,8 @@ if attack == AT_NSPECIAL{
 	//DAMAGE AND KNOCKBACK RESTRICTIONS
 	if limit == 1{																				//For RUNE K
 		if damage >14 { damage = 14; C_dam =6;}
-		if kb_value >13.5 {  kb_value = 13.5; C_knock =6;}
-		if extra_hitpause >20 {  extra_hitpause =20;}
+		if kb_value >13.5 {  kb_value = 14; C_knock =6;}
+		if extra_hitpause >18 {  extra_hitpause =18;}
 	}
 	if C_dam > 6 { C_dam = 6;}
 	if C_knock > 6 {C_knock = 6;}
@@ -24,7 +24,7 @@ if attack == AT_NSPECIAL{
 	if hsp !=0  {proj_angle = (hitbox_timer*(abs(hsp)+1))*-spr_dir;}
 	else if hsp ==0{ proj_angle = (hitbox_timer*2)*-spr_dir; }
 	//BOUNCE
-	if !free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0) {
+	if pill_state != 5 &&(!free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0) ){
 		floor_pos = y;
 		 if length == 99999{
 			destroyed = true;
@@ -41,8 +41,8 @@ if attack == AT_NSPECIAL{
 	//MOVE INTERACTIONS
 	//CHECK IF INTERACTS WITH FSPECIAL
 	if hitbox_timer > 6  && player_id.attack == AT_FSPECIAL && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 4{
-		if abs(x - (player_id.x + 44*player_id.spr_dir))<55{
-				if abs(y - (player_id.y - 34))<55{
+		if abs(x - (player_id.x + 44*player_id.spr_dir))<56{
+				if abs(y - (player_id.y - 34))<56{
 
 					//Check each Pill State
 
@@ -56,21 +56,27 @@ if attack == AT_NSPECIAL{
 						hsp = 4.5*player_id.spr_dir; 
 						length = 120;
 						pill_state =0;
-					}else if (pill_state == 4){				//Dstrong1 // No Gravity
-						vsp = 0;
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
-						else{ hsp = hsp*-1.5; }
+					}else if (pill_state == 4){				//Dstrong // air
+						 vsp = -5;
+						 length = length* 3/4;
+						if abs(hsp) <= 3.33{hsp =5*player_id.spr_dir;}
+						else{hsp = abs(hsp)*1.5*player_id.spr_dir; }
+						spr_dir = player_id.spr_dir;
 						pill_state = 4;
-					}else if (pill_state == 5){				//Dstrong2 // No Gravity
+					}else if (pill_state == 5){				//Dstrong // rolling
 						vsp = 0;
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
-						else{ hsp = hsp*-1.5; }
+						length = length* 3/4;
+						if abs(hsp) <= 3.33 { hsp = 5*player_id.spr_dir; }
+						else{ hsp = abs(hsp)*1.5*player_id.spr_dir;}
+						spr_dir = player_id.spr_dir;
 						pill_state = 5;
 					}
+
+
 					else {
 						vsp = -abs(vsp);		
 						length = length* 3/4;
-						if abs(hsp) <= 1 { hsp = 4.5*player_id.spr_dir; }
+						if abs(hsp) <= 2.5 { hsp = 4.5*player_id.spr_dir; }
 						else{
 							hsp = abs(hsp)*1.75*player_id.spr_dir; 
 						}
@@ -83,7 +89,7 @@ if attack == AT_NSPECIAL{
 					hitbox_timer = 0;
 					player_id.pilleffect=2;
 					spr_dir = player_id.spr_dir;		//Can Turn Around
-					kb_value = kb_value*1.5;
+					kb_value = kb_value*1.55;
 					C_knock += 2;
 					extra_hitpause+=2;
 					show = 1;
@@ -93,8 +99,8 @@ if attack == AT_NSPECIAL{
 
 	//CHECK IF INTERACTS WITH DSPECIAL ( TORNADO)
 	if player_id.attack == AT_DSPECIAL  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2 {
-		if abs(x - player_id.x)<50{
-			if abs(y - (player_id.y - 36))<50{
+		if abs(x - player_id.x)<52{
+			if abs(y - (player_id.y - 36))<52{
 				hsp = 0;
 				vsp = 0;
 				length = hitbox_timer + 19;			//NiceNice
@@ -108,8 +114,8 @@ if attack == AT_NSPECIAL{
 
 	//CHECK IF INTERACTS WITH USPECIAL (RECOVERY)
 	if (hitbox_timer > 6)  && player_id.attack == AT_USPECIAL  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 2 {
-		if abs(x -( player_id.x +30*player_id.spr_dir))<45{
-			if abs(y - (player_id.y - 25))<40{
+		if abs(x -( player_id.x +30*player_id.spr_dir))<52{
+			if abs(y - (player_id.y - 25))<48{
 				x = player_id.x +26*player_id.spr_dir;
 				y = player_id.y - 26;
 				vsp = -15;
@@ -119,24 +125,25 @@ if attack == AT_NSPECIAL{
 				if grav!= 0 {grav = 0.5;}
 				else { grav = 0.25;}
 				player_id.pilleffect=1;
-				damage = damage*1.5;
+				damage = damage*1.55;
 				C_dam  += 2;
-				extra_hitpause+=2;
+				extra_hitpause+=4;
 				pill_state =0;
 				spr_dir = player_id.spr_dir;		//Can Turn Around
 				show = 1;
 				player_id.has_hit = true;
+				player_id.show_flames = true;
 			}
 		}
 	}
 
 
 	//CHECK IF INTERACTS WITH USTRong (MEME LAUNCHER) -NUMERO 1
-	if (hitbox_timer > 12)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 2{
-		if abs(x - (player_id.x-37*player_id.spr_dir))<45{
-			if abs(y - (player_id.y - 58))<45{
+	if (hitbox_timer > 8)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 2{
+		if abs(x - (player_id.x-37*player_id.spr_dir))<48{
+			if abs(y - (player_id.y - 58))<48{
 				grav = 0.42;
-				vsp = - 28 - player_id.strong_charge/6;
+				vsp = - 26 - player_id.strong_charge/6;
 				hsp = hsp/4;
 				through_platforms =16;
 				y = player_id.y - 58;
@@ -145,7 +152,7 @@ if attack == AT_NSPECIAL{
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=8;
-				kb_value = kb_value*1.5;
+				kb_value = kb_value*1.55;
 				C_knock += 2;
 				extra_hitpause+=2;
 				show = 1;
@@ -154,11 +161,11 @@ if attack == AT_NSPECIAL{
 	}
 
 	//CHECK IF INTERACTS WITH USTRong (MEME LAUNCHER) -NUMERO 2
-	if (hitbox_timer > 12)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 4 && player_id.window_timer > 1{
-		if abs(x - (player_id.x+2*player_id.spr_dir))<45{
-			if abs(y - (player_id.y - 70))<45{
+	if (hitbox_timer > 8)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 4 && player_id.window_timer > 1{
+		if abs(x - (player_id.x+2*player_id.spr_dir))<48{
+			if abs(y - (player_id.y - 70))<48{
 				grav = 0.42;
-				vsp = - 25 - player_id.strong_charge/6;
+				vsp = - 26 - player_id.strong_charge/6;
 				hsp = hsp/6;
 				y = player_id.y - 62;
 				hitbox_timer =0;
@@ -166,7 +173,7 @@ if attack == AT_NSPECIAL{
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=4;
-				kb_value = kb_value*1.5;
+				kb_value = kb_value*1.55;
 				C_knock += 2;
 				extra_hitpause+=2;
 				show = 1;
@@ -175,11 +182,11 @@ if attack == AT_NSPECIAL{
 	}
 
 	//CHECK IF INTERACTS WITH USTRong (MEME LAUNCHER) -NUMERO 3
-	if (hitbox_timer > 12)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 6 && player_id.window_timer > 3{
-		if abs(x - (player_id.x+35*player_id.spr_dir))<45{
-			if abs(y - (player_id.y - 52))<45{
+	if (hitbox_timer > 8)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 6 && player_id.window_timer > 3{
+		if abs(x - (player_id.x+35*player_id.spr_dir))<48{
+			if abs(y - (player_id.y - 52))<48{
 				grav = 0.42;
-				vsp = - 25 - player_id.strong_charge/6;
+				vsp = - 26 - player_id.strong_charge/6;
 				hsp = hsp/8;
 				y = player_id.y - 54;
 				hitbox_timer =0;
@@ -187,7 +194,7 @@ if attack == AT_NSPECIAL{
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=9;
-				kb_value = kb_value*1.5;
+				kb_value = kb_value*1.55;
 				C_knock += 2;
 				extra_hitpause+=2;
 				show = 1;
@@ -198,9 +205,9 @@ if attack == AT_NSPECIAL{
 
 
 	//CHECK IF INTERACTS WITH fSTRong (STUNNER) 
-	if (hitbox_timer > 12)  && player_id.attack == AT_FSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3 {
-		if abs(x - (player_id.x+72*player_id.spr_dir))<40{
-			if abs(y - (player_id.y - 38))<40{
+	if (hitbox_timer > 8)  && player_id.attack == AT_FSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3 {
+		if abs(x - (player_id.x+72*player_id.spr_dir))<44{
+			if abs(y - (player_id.y - 38))<44{
 				
 				coord_x = player_id.x + 64*player_id.spr_dir;
 				coord_y = player_id.y - 38;
@@ -243,7 +250,7 @@ if attack == AT_NSPECIAL{
 	}
 
 	//CHECK IF INTERACTS WITH DSPECIAL ( LAUNCHER)
-	if (hitbox_timer > 12)  && player_id.attack == AT_DSPECIAL  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer > 5{
+	if (hitbox_timer > 8)  && player_id.attack == AT_DSPECIAL  && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer > 5{
 		if abs(x - player_id.x)<56{
 			if abs(y - (player_id.y - 36))<56{
 				grav = 0.56;
@@ -267,40 +274,46 @@ if attack == AT_NSPECIAL{
 	}
 
 	//CHECK IF INTERACTS WITH DSTRONG (ROLLING) - HITBOX 1
-	if (hitbox_timer > 12)  && player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer <3{
-		if abs(x - (player_id.x+40*player_id.spr_dir))<45{
-			if abs(y - (player_id.y - 20))<45{
-				length = 119 + player_id.strong_charge;
+	if (hitbox_timer > 8)  && player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer <3{
+		if abs(x - (player_id.x+40*player_id.spr_dir))<48{
+			if abs(y - (player_id.y - 26))<56{
+				grav = 0.56;
+				length = 110;
 				hitbox_timer =0;
 				player_id.pilleffect=6;
-				pill_state = 4;
-				damage = damage*1.5;
+				damage = damage*1.55;
 				C_dam  += 2;
 				extra_hitpause+=2;
 				show = 1;
-				vsp = -abs(vsp/2);
-				if abs(hsp) < 1{hsp = player_id.spr_dir*(5+ player_id.strong_charge/10);}
-				else{hsp = player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}
+				vsp =  -11-player_id.strong_charge/20;
+				if pill_state == 4 || pill_state == 5  { hsp = player_id.spr_dir*(abs(hsp*1.25)+player_id.strong_charge/20);}
+				else {hsp = player_id.spr_dir*(2.25+ player_id.strong_charge/20);}
+				frict = -0.15;
+				pill_state = 4;
 				spr_dir = player_id.spr_dir;
 			}
 		}
 	}
 
 	//CHECK IF INTERACTS WITH DSTRONG (ROLLING) - HITBOX 2
-	if (hitbox_timer > 12)  && player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer >5{
-		if abs(x - (player_id.x-34*player_id.spr_dir))<45{
-			if abs(y - (player_id.y - 20))<45{
-				length = 119 + player_id.strong_charge;
+	if (hitbox_timer > 8)  && player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer >5{
+		if abs(x - (player_id.x-34*player_id.spr_dir))<48{
+			if abs(y - (player_id.y - 26))<56{
+				
+				grav = 0.56;
+				length = 110;
 				hitbox_timer =0;
 				player_id.pilleffect=7;
-				pill_state = 5;
-				damage = damage*1.5;
+				damage = damage*1.55;
 				C_dam  += 2;
 				extra_hitpause+=2;
 				show = 1;
-				vsp = -abs(vsp/2);
-				if (hsp ==0){hsp = -player_id.spr_dir*(5+ player_id.strong_charge/10); }
-				else{hsp = -player_id.spr_dir*(abs(hsp*2.5)+ player_id.strong_charge/10);}
+				vsp = -11-player_id.strong_charge/20;
+				if pill_state == 4 || pill_state == 5  { hsp = -player_id.spr_dir*(abs(hsp*1.25)+player_id.strong_charge/20);}
+				else{hsp = -player_id.spr_dir*(2.5+ player_id.strong_charge/20);}
+				frict = -0.15;
+				pill_state = 4;
+
 				spr_dir = -player_id.spr_dir;
 			}
 		}
@@ -309,8 +322,7 @@ if attack == AT_NSPECIAL{
 
 
 	//RETURNING PILLS TO NORMAL BEHAVIOR
-	if pill_state == 1 && !free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0) { destroyed = true;}
-
+	if (pill_state == 1 && !free && hitbox_timer != 0 )|| (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0 && hitbox_timer != 0 ) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0 && hitbox_timer != 0) { destroyed = true;}
 	if  pill_state ==2{
 		if ( hitbox_timer >89 + charge) {
 			
@@ -337,16 +349,18 @@ if attack == AT_NSPECIAL{
 		}
 	}
 
-	if pill_state ==4||pill_state ==5{
-		if !free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0) {
+	if pill_state ==4{
+		proj_angle = (hitbox_timer*(abs(hsp)+10))*-spr_dir;
+		if hitbox_timer >8 && (!free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0)) {
 			vsp = 0;
-			proj_angle = (hitbox_timer*(abs(hsp)+10))*-spr_dir;
-			grav = 0;
-		}else{
-			grav = 0.56;
-			proj_angle = (hitbox_timer*(abs(hsp)+10))*-spr_dir;
+			pill_state = 5;
 		}
+	}
 
+	if pill_state ==5 {
+		proj_angle = (hitbox_timer*(abs(hsp)+10))*-spr_dir;
+		if hsp >=16 {hsp = 15}
+		if hsp <=-16 {hsp = -15}
 	}
 	
 	//Lag prevention

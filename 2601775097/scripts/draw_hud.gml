@@ -3,12 +3,12 @@
 // skill select menu
 if !("char_height" in self) exit;
 
-
 if (menu_active)                    //skill select
 {
     menu_x = temp_x;
     menu_y = temp_y;
-    user_event(1);
+    skill_script_type = 2;
+    user_event(2);
 }
 else                                //regular gameplay UI
 {
@@ -69,12 +69,12 @@ if (training)                       //training mode messages
 {
     if (!menu_active && !is_cpu)
     {
-        if (!is_practice_menu) draw_debug_text(temp_x + 14, temp_y - 72, "UP + TAUNT = Skill Select");
+        if (menu_type != 1) draw_debug_text(temp_x + 14, temp_y - 72, "UP + TAUNT = Skill Select");
         draw_debug_text(temp_x + 14 - 28 * !infinite_mp_mode, temp_y - 56, infinite_mp_mode ? "Infinite MP Mode is active" : "DOWN + TAUNT = Infinite MP Mode");
     }
 }
 
-if (info_mode_menu)                 //skill info mode
+if (menu_type == 2)                 //skill info mode
 {
     //over the skill select
     if (menu_active)
@@ -82,7 +82,7 @@ if (info_mode_menu)                 //skill info mode
         //cursor
         draw_sprite_ext(
             sprite_get("hud_menu_cursor_info"),
-            menu_cursor_timer*menu_cursor_speed,
+            menu_active_time * menu_cursor_speed,
             temp_x + skill[cur_skill_info].skill_pos_x * 38 + 38,
             temp_y + skill[cur_skill_info].skill_pos_y * 32 - 84,
             2, 2, 0, c_white, 1);

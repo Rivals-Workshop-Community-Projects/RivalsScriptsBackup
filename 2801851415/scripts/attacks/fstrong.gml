@@ -7,7 +7,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_LANDING_LAG, 8);//4
 set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 4);
 
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 2);

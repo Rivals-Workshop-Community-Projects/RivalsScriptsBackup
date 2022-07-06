@@ -9,11 +9,11 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 //startup window
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ice_fspecial_hit_ground"));
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 12);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 11);
 
 //active window
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);

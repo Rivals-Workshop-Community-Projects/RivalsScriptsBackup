@@ -1,8 +1,9 @@
-#macro AS_GROUNDIDLE    0
-#macro AS_MARK          1
-#macro AS_GROUNDDESPAWN 2
+#macro AS_GROUNDIDLE     0
+#macro AS_MARK           1
+#macro AS_GROUNDDESPAWN  2
+#macro AS_INSTANTDESPAWN 3
 
-if (player_id.boneObj != id) newState = AS_GROUNDDESPAWN;
+if (player_id.boneObj != id) newState = state==AS_MARK?AS_INSTANTDESPAWN:AS_GROUNDDESPAWN;
 if (newState != state) SetArticleState(newState);
 
 image_angle += angle_difference(0, image_angle)*0.1;
@@ -60,7 +61,7 @@ switch (state)
                 {
                     var owo = create_hitbox(AT_USPECIAL, 1, x, floor(y));
                     owo.hsp = hsp*0.7;
-                    owo.vsp = -5;
+                    owo.vsp = -abs(hsp)*0.4-2;
 	    	        sound_play(asset_get("sfx_ori_energyhit_weak"));
                     player_id.boneObj = noone;
                     player_id.tutDone[6] = 1;
@@ -76,6 +77,10 @@ switch (state)
             instance_destroy();
             exit;
         }
+        break;
+    case AS_INSTANTDESPAWN:
+        instance_destroy();
+        exit;
         break;
 }
 
@@ -110,6 +115,7 @@ if (state_timer % animSpeed == 0 && state_timer != 0)
             animSpeed = 3;
             break;
         case AS_MARK:
+        case AS_INSTANTDESPAWN:
             sprite_index = asset_get("empty_sprite");
             animSpeed = 1;
             break;

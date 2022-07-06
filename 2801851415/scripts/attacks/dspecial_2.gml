@@ -53,5 +53,6 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 7);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -5);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_GRAVITY, 0.3);
+
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, shatter);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, shatter);

@@ -2,8 +2,10 @@
 if("css_open" not in self) exit;
 
 
+x = floor(x);
+y = floor(y);
 
-if(css_open == false && (get_instance_x(cursor_id) >= x + 128 && get_instance_x(cursor_id) <= x + 212) && (get_instance_y(cursor_id) >= y + 113 && get_instance_y(cursor_id) <= y + 141)){
+if(css_open == false && (get_instance_x(cursor_id) >= x + 128 && get_instance_x(cursor_id) <= x + 212) && (get_instance_y(cursor_id) >= y + 113 && get_instance_y(cursor_id) <= y + 143)){
     suppress_cursor = true;
     if(menu_a_pressed){
         css_open = true;

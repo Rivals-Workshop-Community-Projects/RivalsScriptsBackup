@@ -6,6 +6,9 @@ Dialogue Buddy is a really easy buddy to work with, all you have to do is write 
 INIT.GML
 --------------------------------
 diag_portrait=sprite_get(""); // This will allow you to put any custom portrait onto the dialogue buddy!
+//Adjust positioning of the portraits accordingly! Useful if the characters face is way too low
+diag_portrait_x = 0; // +: Backwards -:Forwards
+diag_portrait_y = 0; // +: Downwards -:Upwards
 
 UPDATE.GML
 --------------------------------

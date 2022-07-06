@@ -2,6 +2,7 @@
 
 bounces = 0;
 dfx = noone;
+attack_hit = false;
 
 sound_stop(sound_get("boom"));
 

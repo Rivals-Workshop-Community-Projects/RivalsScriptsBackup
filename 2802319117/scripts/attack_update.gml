@@ -6,10 +6,13 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 if (attack == AT_FSPECIAL && window == 2 || attack == AT_DAIR && window == 2 || attack == AT_USPECIAL && window == 2){
 can_wall_jump = true;
 }
-
 if (attack == AT_NSPECIAL){
     move_cooldown[AT_NSPECIAL] = 30;
         }
+        
+if (attack == AT_FSTRONG && window == 2 && window_timer == 1 && !has_hit){
+    sound_play(asset_get("sfx_may_whip2"),false,noone,0.6, 1);
+       }
     
 if (attack == AT_FSPECIAL){
     move_cooldown[AT_FSPECIAL] = 45;
@@ -20,11 +23,10 @@ if (attack == AT_DSPECIAL){
     move_cooldown[AT_DSPECIAL] = 20;
     can_fast_fall = false;
         }
-if (attack == AT_FSPECIAL && window == 3){
-     if (special_pressed){
-        set_attack( AT_DAIR );
-        destroy_hitboxes();
-        }
+if (attack == AT_FSPECIAL && window > 1){
+	can_attack = true;
+	can_jump = true;
+	can_special = true;
         }
 
 if (attack == AT_DAIR && window == 3){

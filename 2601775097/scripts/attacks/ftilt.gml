@@ -60,8 +60,9 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 9);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 40);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 11); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1.1);
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 10); //11
+set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.8);
+//set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1.1);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
@@ -85,8 +86,9 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 7);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 60);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.4);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 8); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1.1);
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 7); //7
+set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.6);
+//set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1.1);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);

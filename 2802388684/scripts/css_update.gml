@@ -88,8 +88,12 @@ if voicebutton == 2 || voicebutton == 5 || voicebutton == 8 {
 		voicebuttoncurrent = voicebutton;
 	}
 }
-if (tmp_x[tmp_pt]>tmp_xl1 && tmp_x[tmp_pt]<tmp_xl2 && tmp_y[tmp_pt]>tmp_yl1 && tmp_y[tmp_pt]<tmp_yl2){ 
-	suppress_cursor = true;
+var x_temp = get_instance_x(cursor_id);
+var y_temp = get_instance_y(cursor_id);
+if (x_temp>tmp_xl1 && x_temp<tmp_xl2 && y_temp>tmp_yl1 && y_temp<tmp_yl2){ 	 
+	if player == 0{ // player online
+		suppress_cursor = true;
+	}
 	if voicebutton == voicebuttoncurrent {
 		if voicebutton == 0 || voicebutton == 3 || voicebutton == 6 {
 			voicebutton += 1;
@@ -108,3 +112,4 @@ if voicebutton == 1 || voicebutton == 4 || voicebutton == 7 {
 		voicebuttoncurrent = voicebutton;
 	}	
 }
+set_synced_var( player, voiced)

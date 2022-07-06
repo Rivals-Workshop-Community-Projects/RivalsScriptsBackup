@@ -19,39 +19,6 @@ if get_player_color(player) == 0 {
 var alt_cur = get_player_color(player);
 var draw_index;
 
-
-
-// Button Code
-	if get_player_hud_color(player) == 8421504{
-		var tmp_cur = 0;
-		var tmp_i = [0, 0, 0, 0, 0];
-		var tmp_x = [0, 0, 0, 0, 0];
-		var tmp_y = [0, 0, 0, 0, 0];
-		with(asset_get("cs_playercursor_obj")){
-			tmp_cur = (!tmp_i[0])?0:(!tmp_i[1])?1:(!tmp_i[2])?2:(!tmp_i[3])?3:4
-			tmp_i[tmp_cur] = 1
-			tmp_x[tmp_cur] = get_instance_x( self );
-			tmp_y[tmp_cur] = get_instance_y( self );
-		}
-		var tmp_pt = abs(player-5)-1
-		var temp_x = x + 8;
-		var temp_y = y + 9;
-	}else{
-		var tmp_cur = 0;
-		var tmp_i = [0, 0, 0, 0, 0];
-		var tmp_x = [0, 0, 0, 0, 0];
-		var tmp_y = [0, 0, 0, 0, 0];
-		with(asset_get("cs_playercursor_obj")){
-			tmp_cur = (!tmp_i[0])?0:(!tmp_i[1])?1:(!tmp_i[2])?2:(!tmp_i[3])?3:4
-			tmp_i[tmp_cur] = 1
-			tmp_x[tmp_cur] = get_instance_x( self );
-			tmp_y[tmp_cur] = get_instance_y( self );
-		}
-		var tmp_pt = abs(player-5)-1
-		var temp_x = x + 8;
-		var temp_y = y + 9;
-	}
-
 //Button Location
 if player == 0{ // player online
 	var tmp_xl = 16
@@ -111,7 +78,9 @@ if voicebutton == 2 || voicebutton == 5 || voicebutton == 8 {
 		voicebuttoncurrent = voicebutton;
 	}
 }
-if (tmp_x[tmp_pt]>tmp_xl1 && tmp_x[tmp_pt]<tmp_xl2 && tmp_y[tmp_pt]>tmp_yl1 && tmp_y[tmp_pt]<tmp_yl2){ 	
+var x_temp = get_instance_x(cursor_id);
+var y_temp = get_instance_y(cursor_id);
+if (x_temp>tmp_xl1 && x_temp<tmp_xl2 && y_temp>tmp_yl1 && y_temp<tmp_yl2){ 	
 	if voicebutton == voicebuttoncurrent {
 		if voicebutton == 0 || voicebutton == 3 || voicebutton == 6 {
 			voicebutton += 1;

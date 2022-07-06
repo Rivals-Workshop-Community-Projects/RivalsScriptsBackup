@@ -57,6 +57,13 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 
+//whiff ground
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 27);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 18);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
+
 set_num_hitboxes(AT_FSPECIAL, 2);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
@@ -77,6 +84,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 0.2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 5);

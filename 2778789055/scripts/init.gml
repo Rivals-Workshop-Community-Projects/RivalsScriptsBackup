@@ -202,6 +202,9 @@ is_scalding = false;
 gumbo_ditto = false;
 custom_food = 0;
 
+galaxy_timer = 0;
+pot_explode_owner = noone;
+
 alt = get_player_color(player);
 set_victory_portrait(sprite_get("portrait"));
 if(alt == 22){ //drip

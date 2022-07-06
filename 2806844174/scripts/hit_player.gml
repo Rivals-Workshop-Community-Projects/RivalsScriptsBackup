@@ -4,6 +4,8 @@ var hatk = my_hitboxID.attack;
 var hnum = my_hitboxID.hbox_num;
 var hdam = get_hitbox_value(hatk, hnum, HG_DAMAGE);
 
+if attack != AT_FSPECIAL attack_hit = true;
+
 switch (hatk) {
 	case AT_JAB:
 		switch (hnum) {

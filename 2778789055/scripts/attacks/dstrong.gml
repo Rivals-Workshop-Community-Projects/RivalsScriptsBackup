@@ -43,6 +43,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 195);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 2);
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 2);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 2);
@@ -62,3 +63,4 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 195);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 2);
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 2);

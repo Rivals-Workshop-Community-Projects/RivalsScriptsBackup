@@ -237,7 +237,20 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.14", "25th May, 2022");
+initPatch("1.15", "5 July, 2022");
+
+initHeader("Buffs:");
+initSection("+ Nspecial cooldown lowered, 180 -> 120
++ Fspecial no longer goes into pratfall on the ground
+");
+
+initHeader("Nerfs:");
+initSection("- Nspecial has more startup, F10 -> F12
+- Fspecial no longer destroys projectiles
+");
+
+//
+initPatch("1.14", "25 May, 2022");
 
 initHeader("Buffs:");
 initSection("+ Dtilt angle changed from 70 -> 90

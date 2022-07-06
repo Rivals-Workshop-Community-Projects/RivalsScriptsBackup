@@ -27,7 +27,7 @@ if (attack == AT_EXTRA_1 && hsp == 0){
 	window_timer = 7;
 }
 
-if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 2){
+if (sonicSpinSpeed == 2){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 1);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 90);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 3);
@@ -35,7 +35,7 @@ if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 2){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_LOCKOUT, 4);
 }
 
-if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 6){
+if (sonicSpinSpeed == 6){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 2);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 80);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 5);
@@ -43,7 +43,7 @@ if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 6){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_LOCKOUT, 4);
 }
 
-if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 8){
+if (sonicSpinSpeed == 8){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 2);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 75);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 6);
@@ -51,7 +51,7 @@ if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 8){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_LOCKOUT, 3);
 }
 
-if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 10){
+if (sonicSpinSpeed == 10){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 3);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 70);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 7);
@@ -59,7 +59,7 @@ if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 10){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_LOCKOUT, 3);
 }
 
-if (attack == AT_EXTRA_1 && sonicSpinSpeed >= 12){
+if (sonicSpinSpeed == 12){
 	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 5);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 60);
 	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 8);

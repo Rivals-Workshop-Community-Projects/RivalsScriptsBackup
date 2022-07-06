@@ -410,7 +410,7 @@ if timefreeze <= 0 {
 	set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 	set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 	
-	set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
+
 	move_cooldown[AT_FSTRONG] = 0
 	
 leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
@@ -459,7 +459,7 @@ if timefreeze > 2 {
 	soft_armor = 9999
 	set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 90);
 	set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 90);
-	set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 0);
+
 	
 
 	

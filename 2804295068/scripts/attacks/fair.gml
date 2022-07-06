@@ -37,7 +37,7 @@ set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.2); 
+set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.4); 
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("splat2"));

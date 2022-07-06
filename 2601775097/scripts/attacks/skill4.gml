@@ -50,7 +50,7 @@ set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[4].mp_cost1);
+set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[4].mp_cost2);
 
 window_num ++; //endlag - knockback
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);

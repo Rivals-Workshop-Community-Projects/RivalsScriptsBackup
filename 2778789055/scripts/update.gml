@@ -3,6 +3,8 @@
 muno_event_type = 1;
 user_event(14);
 
+galaxy_timer = max(galaxy_timer-1,0)
+
 if(move_cooldown[AT_FSPECIAL] == 1){
     if(shrimp_in_pot = false){
         has_shrimp = true;

@@ -1,5 +1,7 @@
 //update
 //user_event(14);
+
+
 //--------------------------------------------INTRO ANIMATION-----------------------------------------------
 if (timer_intro_2 < 3) {
     timer_intro_2++;
@@ -25,6 +27,23 @@ if doc_ditto == 0 {
 	}
 }
 
+//---------------------------------------------------REFLECT STUFF-----------------------
+with (asset_get("pHitBox")){					//From the perspective of the hitbox
+	if was_parried{
+		can_hit[other.player] = true;
+		//was_parried = false;
+	}
+}
+
+//Voice Line on Kill
+if(checker!=9)&&(golpeado!=0){
+	if(checker> get_player_stocks( golpeado)){	
+		message=0;
+		golpeado=0;
+		checker=9;
+	}
+}
+
 
 //-------------------------------------------------PILL RNG CODE----------------------------------------------
 
@@ -32,6 +51,7 @@ pill_counter = 0;
 if 	(move_cooldown[AT_NSPECIAL] == 0 ) && (move_cooldown[AT_TAUNT] == 0 )  && (next_group == 1) { 
 	sound_play(sound_get("pill_next"));
 	next_group = 0;
+	message = 0;
 }
 if pill>6 { 
 	pill = 1;
@@ -96,7 +116,7 @@ switch(order[pill]){
 		case 4 :		//RED BLUE
 			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4_pringles"));}
 			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4"));}
-			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 60);	
+			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);	
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
 			break;

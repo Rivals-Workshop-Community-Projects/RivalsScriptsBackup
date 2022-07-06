@@ -285,11 +285,12 @@ if (attack == AT_FSPECIAL){
 		}
 		//can_jump = 1;
 		can_wall_jump = 1;
-		var stick_dir = right_stick_pressed or down_stick_pressed or left_stick_pressed or up_stick_pressed
+		var stick_dir = right_stick_pressed or down_stick_pressed or left_stick_pressed or up_stick_pressed;
+		move_cooldown[AT_DSPECIAL_AIR] = 10;
 		//Stick inputs should also be possible
 		if (spin_hit == true){
 			//var player_input = attack_stick;
-			if (special_pressed == true){
+			if (special_pressed == true && down_down == false){
 			state = PS_IDLE;
 			can_special = true;
 			move_cooldown[AT_FSPECIAL] = 0;

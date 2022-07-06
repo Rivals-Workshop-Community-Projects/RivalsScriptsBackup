@@ -11,7 +11,7 @@
 
 // Physical size
 char_height         = 28;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1.03;		// 0.9  -  1.2
+knockback_adj       = 1.05;		// 0.9  -  1.2
 small_sprites = 1;
 
 // Ground movement
@@ -20,7 +20,7 @@ walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
 initial_dash_time   = 8;		// 8    -  16       zetterburn's is 14
 initial_dash_speed  = 7;		// 4    -  9
-dash_speed          = 6;		// 5    -  9
+dash_speed          = 5.5;		// 5    -  9
 dash_turn_time      = 20;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 6;		// 4    -  6        zetterburn's is 4
@@ -52,7 +52,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 6;		// 4    -  6
-prat_land_time      = 12;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 16;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -101,6 +101,7 @@ enemy_damage = 0;
 enemy_knockback = 0;
 enemy_knockback_scaling = 0;
 counter_drop = 0;
+destroy_orb = false;
 
 bomb_teleport = false;
 
@@ -215,12 +216,16 @@ if(alt == 14 || alt == 15 || alt == 16 || alt == 17 || alt == 18 || alt == 23){
 	trans_outline = true;
 }if(alt == 22){ 
 	bbout_egg = true;
-}if(alt == 18 || alt == 23 || alt == 24 || alt == 25){ 
+}if(alt == 18 || alt == 23 || alt == 24 || alt == 25 || alt == 26){ 
 	champ_skin = true;
 }if(alt == 24){ 
 	set_victory_portrait(sprite_get("nothingthere_portrait"));
 	hatch_startup = sound_get("Nullthing_Skill3_Cast");
 	ball_hurt = sound_get("Nullthing_Skill1_Ching");
+}if(alt == 26){ 
+	eggdog_skin = true;
+	set_victory_portrait(sprite_get("pluto_portrait"));
+	orb_idle = sprite_get("eggdog_orb_idle");
 }
 
 

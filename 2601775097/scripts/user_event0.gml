@@ -48,7 +48,9 @@ if (theikos_event_runtime == 0)
     wave_land_time 				= 2;        //8
     wave_land_adj 				= 2.25;     //1.35
 
-    dash_anim_speed             = 0.2       //0.3
+    dash_anim_speed             = 0.2;      //0.3
+
+    wait_time                   = 0; //theikos bar has no wait animation
 
     mp_gain_rate = 100;
     holyburn_timer_set = holyburn_timer_set * (theikos_mult+theikos_type);

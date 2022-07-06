@@ -11,6 +11,7 @@ if (boom == true){
 	spawn_hit_fx(bean_x,bean_y,263)
 	sound_play(sound_get("bean_explode"));
 	sound_stop (sound_get ("bean_voice"));
+	sound_stop (sound_get ("bean_voice2"));
 	boom = false;
 }
 
@@ -328,3 +329,5 @@ if enemykirby != undefined { //if kirby is in a match & swallowed
         }
     }
 }
+
+//wait animations

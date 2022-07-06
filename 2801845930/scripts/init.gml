@@ -25,7 +25,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 11;
-short_hop_speed = 5;
+short_hop_speed = 6;
 djump_speed = 9;
 leave_ground_max = 4; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 4.3; //the maximum hsp you can have when jumping from the ground
@@ -48,7 +48,7 @@ knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lig
 land_time = 4; //normal landing frames
 prat_land_time = 12;
 wave_land_time = 10;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -200,6 +200,7 @@ SpamNeoGrabAngle = 0;
 SpamNeoGrabKB = 0;
 SpamNeoGrabScaling = 0;
 SpamNeoGrabDmg = 0;
+SpamNeoGrabHBDmg = 0;
 
 SpamNeoStringStartX = 0;
 SpamNeoStringStartY = 0;

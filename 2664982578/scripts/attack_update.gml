@@ -257,6 +257,7 @@ if(attack == AT_NSPECIAL){
 	hsp = clamp(hsp,-2.5,2.5);
 	if(window == 1){ 
 	if(window_timer = 4){
+		destroy_orb = false;
 		vsp_type = 1;
 		vsp = 0;
 		hsp_type = 1;
@@ -280,6 +281,9 @@ if(attack == AT_FSPECIAL){
     	grabbed_player_relative_x = 0;
     	grabbed_player_relative_y = 0;
     	move_cooldown[AT_FSPECIAL] = 99999;
+    }if(window == 4 && free && window_timer = get_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH)-1){
+    	window = 10;
+    	set_state(PS_PRATFALL);
     }
 	if(window == 4){
 		hud_offset = 45;
@@ -679,12 +683,14 @@ if(hatch_amount >= 3000){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						hurtboxID.sprite_index = sprite_get("hatch_hurt");
 						window = 1;
 						window_timer = 0;
 			}if(taunt_pressed || taunt_down){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						hurtboxID.sprite_index = sprite_get("hatch_hurt");
 						window = 1;
 						window_timer = 0;
 			}
@@ -695,12 +701,14 @@ if(hatch_amount >= 3000){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						hurtboxID.sprite_index = sprite_get("hatch_hurt");
 						window = 1;
 						window_timer = 0;
 			}if(taunt_pressed || taunt_down){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						hurtboxID.sprite_index = sprite_get("hatch_hurt");
 						window = 1;
 						window_timer = 0;
 			}
@@ -711,6 +719,7 @@ if(hatch_amount >= 3000){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						hurtboxID.sprite_index = sprite_get("hatch_hurt");
 						window = 1;
 						window_timer = 0;
 			}
@@ -721,6 +730,7 @@ if(hatch_amount >= 3000){
 						destroy_hitboxes();
 		                attack_end();
 						set_attack(AT_EXTRA_1);
+						hurtboxID.sprite_index = sprite_get("hatch_hurt");
 						window = 1;
 						window_timer = 0;
 			}

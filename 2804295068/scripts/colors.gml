@@ -137,11 +137,11 @@ set_color_profile_slot( 10, 6, 255, 95, 97 ); //flame 2
 set_color_profile_slot( 10, 7, 255, 184, 135 ); //flame 3
 
 // Electric Blueberry
-set_color_profile_slot( 11, 0, 0, 185, 240 ); //head and peas
-set_color_profile_slot( 11, 1, 2, 134, 245 ); //head and peas 2
-set_color_profile_slot( 11, 2, 0, 91, 211 ); //head and peas 3
-set_color_profile_slot( 11, 3, 15, 162, 107 ); //body and leaves
-set_color_profile_slot( 11, 4, 11, 114, 97 ); //body and leaves 2
+set_color_profile_slot( 11, 0, 156, 222, 248 ); //head and peas
+set_color_profile_slot( 11, 1, 58, 186, 247 ); //head and peas 2
+set_color_profile_slot( 11, 2, 0, 114, 221 ); //head and peas 3
+set_color_profile_slot( 11, 3, 14, 174, 128 ); //body and leaves
+set_color_profile_slot( 11, 4, 20, 114, 122 ); //body and leaves 2
 set_color_profile_slot( 11, 5, 64, 64, 65 ); //flame
 set_color_profile_slot( 11, 6, 131, 133, 136 ); //flame 2
 set_color_profile_slot( 11, 7, 213, 214, 217 ); //flame 3
@@ -167,14 +167,14 @@ set_color_profile_slot( 13, 6, 0, 182, 122 ); //flame 2
 set_color_profile_slot( 13, 7, 0, 231, 178 ); //flame 3
 
 // Luminescent
-set_color_profile_slot( 14, 0, 53, 63, 55); //head and peas
-set_color_profile_slot( 14, 1, 33, 40, 35 ); //head and peas 2
-set_color_profile_slot( 14, 2, 28, 71, 67 ); //head and peas 3
-set_color_profile_slot( 14, 3, 31, 206, 189  ); //body and leaves
-set_color_profile_slot( 14, 4, 33, 40, 35 ); //body and leaves 2
-set_color_profile_slot( 14, 5, 28, 71, 67 ); //flame
-set_color_profile_slot( 14, 6, 31, 206, 189 ); //flame 2
-set_color_profile_slot( 14, 7, 28, 71, 67 ); //flame 3
+set_color_profile_slot( 14, 0, 69, 69, 69); //head and peas
+set_color_profile_slot( 14, 1, 0, 0, 0 ); //head and peas 2
+set_color_profile_slot( 14, 2, 0, 69, 62 ); //head and peas 3
+set_color_profile_slot( 14, 3, 41, 255, 234  ); //body and leaves
+set_color_profile_slot( 14, 4, 0, 0, 0 ); //body and leaves 2
+set_color_profile_slot( 14, 5, 41, 255, 234 ); //flame
+set_color_profile_slot( 14, 6, 0, 0, 0 ); //flame 2
+set_color_profile_slot( 14, 7, 0, 69, 62 ); //flame 3
 
 // Vampire
 set_color_profile_slot( 15, 0, 255, 255, 255 ); //head and peas

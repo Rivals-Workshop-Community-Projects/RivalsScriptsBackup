@@ -256,7 +256,7 @@ if ("practice" in self)
 						AddText("");
 						AddText("Replaced Ori alt with Riptide alt");
 						AddText("");
-						AddText("---------------------");
+						LineBreak();
 						AddText("v1.14.1 - 29 Jul 2021");
 						AddText("");
 						AddText("Slightly changed CSS art");
@@ -284,7 +284,7 @@ if ("practice" in self)
 						AddText("");
 						AddText("Hitting Lukastar now despawns (not crack) 2 stars instead of 1");
 						AddText("");
-						AddText("---------------------");
+						LineBreak();
 						AddText("v1.15.1 - 3 Aug 2021");
 						AddText("");
 						AddText("FAir sfx frame 6 -> 2");
@@ -322,7 +322,7 @@ if ("practice" in self)
 						AddText("");
 						AddText("UAir Startup 9 -> 11");
 						AddText("");
-						AddText("---------------------");
+						LineBreak();
 						AddText("v1.17.1 - 6 Sep 2021");
 						AddText("");
 						AddText("Fixed typo for FAir 2 Damage value (0 -> 6)");
@@ -488,6 +488,11 @@ if ("practice" in self)
 						AddText("");
 						AddText("When spawning stars over the max star count limit, the farthest star from the player despawns");
 						AddText("instead of the new star being spawned.");
+						AddText("");
+						LineBreak();
+						AddText("v1.25.1 - 2 Jul 2022");
+						AddText("");
+						AddText("Bugfix for AI");
 						break;
 				}
 				DrawTutorialBlock();

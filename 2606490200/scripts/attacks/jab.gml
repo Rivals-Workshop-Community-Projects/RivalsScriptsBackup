@@ -12,10 +12,9 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
 
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_JAB, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 set_num_hitboxes(AT_JAB, 3);
@@ -32,7 +31,7 @@ set_hitbox_value(AT_JAB, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_JAB, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_JAB, 1, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));

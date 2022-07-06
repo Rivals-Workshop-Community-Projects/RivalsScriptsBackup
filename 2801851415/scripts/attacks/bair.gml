@@ -44,5 +44,5 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 9);//10
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.85);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_BAIR, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, frost_fx);
 //set_hitbox_value(AT_BAIR, 1, HG_HIT_PARTICLE_NUM, 1);

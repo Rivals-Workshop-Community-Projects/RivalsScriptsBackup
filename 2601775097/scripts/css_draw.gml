@@ -1,8 +1,5 @@
 //css_draw
 
-var alt_total = 27;
-var alt_cur = get_player_color(player);
-
 //PORTRAITS OVERLAY
 switch (alt_cur)
 {
@@ -20,68 +17,47 @@ switch (alt_cur)
         break;
 }
 
-//ALT NAMES
-//seasonal alt names
-season_name[1] = "I Like Chocolate";
-season_name[2] = "Beach Episode";
-season_name[3] = "BE AFRAID NOT";
-season_name[4] = "Festive Angel";
-
-//alt names
-alt_name[0] = "Elemental Guardian";
-alt_name[1] = "Inverted";
-alt_name[2] = "The Cupid Heroine";
-alt_name[3] = "Spark of Lightning";
-alt_name[4] = "Scientific Prodigy";
-alt_name[5] = "Umbra Princess";
-alt_name[6] = "Chief Demon Hunter";
-alt_name[7] = "The Previous Guardian";
-alt_name[8] = "Ultimate Lifeform";
-alt_name[9] = "REANIMATION"; //alt name: smoking savage.
-alt_name[10] = "Nuclear Raven";
-alt_name[11] = "Lofty";
-alt_name[12] = "11th Fatui Harbinger";
-alt_name[13] = "Endless Abyss";
-alt_name[14] = "Early Access";
-alt_name[15] = "Demake";
-alt_name[16] = season_name[get_match_setting(SET_SEASON)];
-alt_name[17] = "Infamous";
-alt_name[18] = "Ranked Gold";
-alt_name[19] = "Son of the Omega";
-alt_name[20] = "Crimson Eclipse";
-alt_name[21] = "Stellar Traveller";
-alt_name[22] = "Sun God";
-alt_name[23] = "Fiery Racing Spirit";
-alt_name[24] = "Ultraviolet";
-alt_name[25] = "Broken Prism";
-alt_name[26] = "Theía Evlogía";
-
-
-var myday = 25;
-var mymonth = 10;
-if (current_day = myday && current_month == mymonth)
+//animation - character
+if (css_anim_time < 140)
 {
-    alt_name[19] = "Reminiscence";
-    set_color_profile_slot(11, 0, 206, 216, 227); //CLOTHWHITE
-    set_color_profile_slot(11, 1, 182, 88, 61); //HAIR
-    set_color_profile_slot(11, 2, 245, 181, 150); //SKIN
-    set_color_profile_slot(11, 3, 43, 60, 140); //CLOTHLIGHTBLUE
-    set_color_profile_slot(11, 4, 43, 60, 140); //CLOTHDARKBLUE
-    set_color_profile_slot(11, 5, 43, 60, 140); //CLOTHBLACK
-	set_color_profile_slot(11, 6, 159, 241, 255); //LIGHT
-	set_color_profile_slot(11, 7, 76, 133, 233); //FIRE
+    //idle
+    draw_sprite_ext(
+        preview_idle,
+        css_anim_time * preview_anim_speed,
+        preview_x + (css_anim_time < 60 ?  + 24 + (css_anim_time / 20) : 16 + (css_anim_time / 5)),
+        preview_y + 128,
+        preview_scale,
+        preview_scale,
+        0,
+        c_white,
+        css_anim_time > 10 ? (css_anim_time * -0.01 + 1.25) + 0.2 : css_anim_time * 0.1
+    );
+
+    //idle outline
+    draw_sprite_ext(
+        preview_line,
+        css_anim_time * preview_anim_speed,
+        preview_x + (css_anim_time < 60 ?  + 24 + (css_anim_time / 20) : 16 + (css_anim_time / 5)),
+        preview_y + 128,
+        preview_scale,
+        preview_scale,
+        0,
+        preview_line_color,
+        css_anim_time > 10 ? (css_anim_time * -0.01 + 1.25) + 0.2 : css_anim_time * 0.1
+    );
 }
+init_shader();
+shader_end();
+
+
 
 //ICONS
-var icon_x_pos = x + 174;
-var icon_y_pos = y + 108;
-
 if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur-13, icon_x_pos, icon_y_pos);
 if (alt_cur >= 25) draw_sprite(sprite_get("css_icons"), alt_cur+5, icon_x_pos, icon_y_pos);
 
-draw_set_halign(fa_left);
 
 //alt boxes
+draw_set_halign(fa_left);
 var thin = alt_total > 16;
 
 rectDraw(x+78, y+9, 132, 6, c_black);
@@ -97,88 +73,53 @@ rectDraw(x + 76, y + 15, 42, 20, c_black);
 
 textDraw(x + 82, y + 19, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt, false);
 
-
-//ANIMATION VARIABLES
-//original code was made by SAI
-if "is_css" not in self is_css = true;
-
-var temp_x = floor(x+10);
-var temp_y = floor(y+10);
-
-if ("drawing" not in self) drawing = 0;
-if ("prev_alt" not in self) drawtime = 0;
-if ("alttime" not in self) alttime = 0;
-if ("prev_alt" in self && prev_alt != alt_cur)
+//skill stuff
+if (menu_active)
 {
-    drawing = floor(alttime % 8);
-    drawtime = 0;
+    skill_script_type = 2;
+    user_event(2);
 }
-
-drawtime += 1;
-alttime += 1;
-prev_alt = alt_cur;
-
-//ANIMATION WORK
-//text
-if (drawtime < 10) {
-    textDraw(floor(x) + 10 + floor(drawtime), floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, (drawtime*0.1), string(alt_name[alt_cur]), false);
-}
-else if (drawtime < 120) {
-    textDraw(floor(x) + 20 + floor(drawtime/10), floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, 1, string(alt_name[alt_cur]), false);
-}
-else if (drawtime < 140) {
-    textDraw(floor(x) + 20 + floor(drawtime/10), floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, drawtime*-0.05+7, string(alt_name[alt_cur]), false);
-}
-
-//idle sprite showcase
-sprite_change_offset("idle", 16, 39);
-sprite_change_offset("idle_line", 16, 39);
-
-var idle = sprite_get("idle");
-var line = sprite_get("idle_line");
-var scale = 2;
-var anim_speed = 0.2; //the bigger the number, the slower the animation
-
-//idle
-scale = 2;
-if (drawtime < 10) draw_sprite_ext(idle, drawtime*anim_speed, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, -1, drawtime/10);
-else if (drawtime < 60) draw_sprite_ext(idle, drawtime*anim_speed, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, -1, drawtime*-0.01+1.25);
-else draw_sprite_ext(idle, drawtime*anim_speed, temp_x+16+(drawtime/5), temp_y+128, scale, scale, 0, -1, drawtime*-0.01+1.25);
-
-//outline
-scale = 2;
-var line_color = $000000;
-switch (get_player_color(player))
+else if (!menu_active && get_player_hud_color(player) != 8421504)
 {
-    case 14: //gameboy
-        line_color = $0f380f;
-        break;
-    case 15: //NES
-        line_color = $b20020; //this color doesn't show for some reason
-        break;
-    case 16: //seasonal -> hallowen
-        if (get_match_setting(SET_SEASON) == 3 && current_day != myday && current_month != mymonth) line_color = $2b2b4b;
-        break;
-    case 25: //helel
-        line_color = $343434;
-        break;
-    case 26: //theikos
-        line_color = $012b46;
-        break;
+    draw_sprite_ext(sprite_get("hud_skills"), cur_skills[0], skill_button_pos[0], skill_button_pos[1], 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_skills"), cur_skills[1], skill_button_pos[0]+30, skill_button_pos[1], 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_skills"), cur_skills[2], skill_button_pos[0], skill_button_pos[1]+30, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_skills"), cur_skills[3], skill_button_pos[0]+30, skill_button_pos[1]+30, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("hud_skillselect_button"), 0, skill_button_pos[0], skill_button_pos[1], 1, 1, 0, c_white, 1);
+
+    draw_sprite_stretched_ext(
+        sprite_get("white_pixel"),
+        0,
+        skill_button_pos[0],
+        skill_button_pos[1],
+        sprite_get_width(sprite_get("hud_skillselect_button")),
+        sprite_get_height(sprite_get("hud_skillselect_button")),
+        c_white,
+        skill_hover_time/20
+    );
 }
 
-if (drawtime < 10) draw_sprite_ext(line, drawtime*anim_speed, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, line_color, drawtime/10);
-else if (drawtime < 60) draw_sprite_ext(line, drawtime*anim_speed, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, line_color, drawtime*-0.01+1.25);
-else draw_sprite_ext(line, drawtime*anim_speed, temp_x+16+(drawtime/5), temp_y+128, scale, scale, 0, line_color, drawtime*-0.01+1.25);
+//animation - text
+if (css_anim_time < 140)
+{
+    //alt name text
+    textDraw(
+        floor(x) + (css_anim_time < 10 ? 10 + floor(css_anim_time) : 20 + floor(css_anim_time / 10)),
+        floor(y) + 43,
+        "fName",
+        c_white,
+        0,
+        1000,
+        fa_left,
+        1,
+        true,
+        css_anim_time < 10 ? css_anim_time * 0.1 : css_anim_time*-0.05+7,
+        string(alt_name[alt_cur]),
+        false
+    );
+}
 
 
-
-//changes the white shading for the 8bit alts
-if (alt_cur == 14 || alt_cur == 15) set_color_profile_slot_range(1, 150, 10, 12);
-set_color_profile_slot_range(1, 13, 7, 15); //from colors.gml
-
-
-init_shader();
 
 
 

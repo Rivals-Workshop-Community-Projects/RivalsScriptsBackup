@@ -393,7 +393,8 @@ switch attack {
 	 break;
 	 
      case AT_UTHROW:
-     
+        vsp += 1
+        fall_through = true
         soft_armor = 999
         if window == 2 {
          vsp = 0	
@@ -464,7 +465,7 @@ switch attack {
         	if window_timer == 10 {
         		sound_play(asset_get("sfx_blow_medium3"),false,noone,1,1)
         		
-        		vsp = -6
+        		vsp = -12
         		hsp = 4*spr_dir
         		
         		

@@ -87,7 +87,7 @@ if(attack == AT_UAIR){
 
 if(attack == AT_NSPECIAL){
 	if(window == 1 && window_timer = get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH)-1){ 
-		move_cooldown[AT_NSPECIAL] = 180;
+		move_cooldown[AT_NSPECIAL] = 120;
 	}
 }
 
@@ -113,6 +113,11 @@ if(attack == AT_FSPECIAL){
 		if(window_timer % 2 == 0 && !hitpause){
     	var afterimage = spawn_hit_fx(x + spr_dir * -10, y - 45, fspecial_afterfx);
     	afterimage.depth = 1;	
+		}if(!free){
+		if(window_timer = get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)-1 && !has_hit_player){
+		window = 7;
+		window_timer = 0;
+		}
 		}
 	}
 	//ledge cancel
@@ -134,6 +139,8 @@ if(attack == AT_FSPECIAL){
                 break;
             }
         }
+    }if(window == 7){
+    hsp = clamp(hsp,-10,10);	
     }
 }
 

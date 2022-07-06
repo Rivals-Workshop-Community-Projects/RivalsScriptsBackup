@@ -33,7 +33,7 @@ with (oPlayer) {
             SpamNeoSnap = false;
             SpamNeoSnapCount = 0; // So that time runs ever 2 frames
             SpamNeoSnapTimer = 0;
-            SpamNeoSnapAnim = false;
+            SpamNeoSnapAnim = true;
             SpamNeoSnapAnimEnd = false;
             SpamNeoSnapPratTime = 0; // Value 1-5
             SpamNeoSnapPratFrames = 0; // Remaining time in Pratfall (starts when free == false)

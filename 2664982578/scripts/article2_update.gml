@@ -57,6 +57,21 @@ if (state == 0){
 			other.state = 3;
 			other.state_timer = 0;
 		}
+	}if(attack == AT_USTRONG){
+		if(window == 5 && window_timer > 10){
+			attack_end();
+			attack = AT_FSPECIAL_2;
+			hurtboxID.sprite_index = sprite_get("fspecial_hurt");
+			if(hsp > 0){
+				spr_dir = 1;
+			}if(hsp < 0){
+				spr_dir = -1;
+			}
+			window = 1;
+			window_timer = 0;
+			other.state = 3;
+			other.state_timer = 0;
+		}
 	}if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	if(attack == AT_DSPECIAL){
     	if(window == 1){
@@ -90,6 +105,20 @@ with (pHitBox){
         other.state_timer = 0;
     }
 }
+if(state_timer = 600){
+	state = 1;
+	state_timer = 0;
+}
+
+with (player_id){
+if(destroy_orb){
+	other.state = 1;
+	other.state_timer = 0;
+	}if(state == PS_RESPAWN || state == PS_DEAD){
+	other.state = 1;
+	other.state_timer = 0;
+	}
+}
 }
 
 
@@ -98,6 +127,7 @@ with (pHitBox){
 
 if (state == 1){
 	if(state_timer = 2){
+	player_id.destroy_orb = false;
 	oops = create_hitbox(AT_NSPECIAL, 2, x, y+5);
 	spawn_hit_fx(x - spr_dir, y, 304);
 	sound_play(sound_get("classic_hurt"));
@@ -210,7 +240,7 @@ if (state == 6){
         x = player_id.x + player_id.spr_dir * 180;
         y = player_id.y - 110;
         spawn_hit_fx(x - spr_dir, y, 112);
-	}if(state_timer = 150){
+	}if(state_timer = 180){
 		spawn_hit_fx(x - spr_dir, y, 13);
     		    instance_destroy();
     			exit;

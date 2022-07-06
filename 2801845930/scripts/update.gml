@@ -134,8 +134,8 @@ if (SpamNeoTauntSound == true) {
     }
 }
 
-if (state_cat == SC_HITSTUN || state == PS_PRATLAND) {
-    sound_stop(sound_get("bigshit"));
+if ((state_cat == SC_HITSTUN || state == PS_PRATLAND) && SpamNeoTauntActive == true) {
+    SpamNeoTauntSound = false;
 }
 
 // Hitstun Checking
@@ -156,27 +156,26 @@ if (state_cat == SC_HITSTUN) {
     // Taunt
     SpamNeoTauntActive = false;
     
-    // Remove Grab ID
-    SpamNeoGrabbedId = 0;
 }
 
 if (state == PS_LANDING_LAG) {
     SpamNeoTauntActive = false;
 }
 
+// Grab Code Stuff
+
 if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && SpamNeoGrabbedId != 0) {
-    if (SpamNeoGrabDmg < 160) {
-        SpamNeoGrabbedId.vsp = ( SpamNeoGrabKB + (SpamNeoGrabScaling * SpamNeoGrabDmg / 4) ) * dsin(SpamNeoGrabAngle) * -1;
-        SpamNeoGrabbedId.hsp = ( SpamNeoGrabKB + (SpamNeoGrabScaling * SpamNeoGrabDmg / 4) ) * dcos(SpamNeoGrabAngle) * spr_dir;
-    } else {
-        SpamNeoGrabbedId.vsp = ( SpamNeoGrabKB + (SpamNeoGrabScaling * 40) ) * dsin(SpamNeoGrabAngle) * -1;
-        SpamNeoGrabbedId.hsp = ( SpamNeoGrabKB + (SpamNeoGrabScaling * 40) ) * dcos(SpamNeoGrabAngle) * spr_dir;
-    }
+    
+    SpamNeoGrabbedId.vsp = dsin(SpamNeoGrabAngle) * -1 *get_kb_formula(SpamNeoGrabDmg, SpamNeoGrabbedId.knockback_adj, 1.0, SpamNeoGrabHBDmg, SpamNeoGrabKB, SpamNeoGrabScaling);
+    SpamNeoGrabbedId.hsp = dcos(SpamNeoGrabAngle) * get_kb_formula(SpamNeoGrabDmg, SpamNeoGrabbedId.knockback_adj, 1.0, SpamNeoGrabHBDmg, SpamNeoGrabKB, SpamNeoGrabScaling);
+    
     SpamNeoGrabAngle = 0;
     SpamNeoGrabKB = 0;
     SpamNeoGrabScaling = 0;
+    SpamNeoGrabHBDmg = 0;
     SpamNeoGrabDmg = 0;
     SpamNeoGrabbedId = 0;
+    
 }
 
 if (free == false || state == PS_WALL_JUMP) {

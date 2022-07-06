@@ -45,7 +45,7 @@ hitstun_grav = .51;
 knockback_adj = 1.0;			//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 
-prat_land_time = 12;
+prat_land_time = 14;
 wave_land_time = 7;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .12; //grounded deceleration when wavelanding
@@ -136,13 +136,22 @@ shoryuken = 0;
 pilleffect = 0;
 gustav = 0;
 grabbedid = undefined;
+message = 0;
+checker=0;
+golpeado=9;
 
 //Pill_Hit = hit_fx_create( sprite_get("pill_hit"), 6 );
 next_group = 0;
 snolid = 0;
 pill_counter = 0;
 doc_ditto = 0;
-
+num3 = 0;
+repeat(1000)
+	   {
+	   done_reflecting_hitbox[num3] = 0;			//Chooses a pill;
+	   num3 += 1;
+	   }
+done_reflecting_article = 0;
 
 // ---------------------------------------TETRIS RNG VARIABLES : This was hell to program lmao------------------------------------
 pill=1;			//Type of  Pill

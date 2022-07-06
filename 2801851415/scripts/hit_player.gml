@@ -18,10 +18,17 @@ if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
 if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
     if(my_hitboxID.attack == AT_UAIR and my_hitboxID.hbox_num < 3){
         //print("ora")
-        hit_player_obj.y = lerp(floor(hit_player_obj.y), y-90, .35);
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), y-80, .35);
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), x, .35);
     }
 }
-
+if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
+    if(my_hitboxID.attack == AT_FAIR and my_hitboxID.hbox_num < 3){
+        //print("ora")
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), y-60, .35);
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), x+90*spr_dir, .35);
+    }
+}
 if (my_hitboxID.attack == AT_USTRONG) 
 {
     switch(my_hitboxID.hbox_num)

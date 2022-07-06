@@ -19,7 +19,7 @@ else
 			markArticle.newState = 1;
 			markArticle.sprite_index = asset_get("empty_sprite");
 			boneMark = hit_player_obj;
-			boneMarkDir = my_hitboxID.proj_angle;
+			markArticle.image_angle = spr_dir*45;
 	}
 	
 	if (my_hitboxID.player == player) switch (my_hitboxID.attack)
@@ -66,9 +66,14 @@ else
 			markArticle.newState = 1;
 			markArticle.sprite_index = asset_get("empty_sprite");
 			boneMark = hit_player_obj;
-			boneMarkDir = my_hitboxID.proj_angle;
 			sound_play(asset_get("sfx_syl_dstrong"));
-			if (attack == AT_USPECIAL) tutDone[4] = 1;
+			if (attack == AT_USPECIAL) 
+			{
+				tutDone[4] = 1;
+				markArticle.image_angle = my_hitboxID.proj_angle;
+				if (hit_player_obj.spr_dir!=my_hitboxID.spr_dir) markArticle.image_angle+=90;
+			}
+			else markArticle.image_angle = spr_dir*45;
 			break;
 		case AT_USPECIAL_2:
 			set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_TYPE, 1);
@@ -90,19 +95,26 @@ else
 			tutDone[5] = 1;
 			break;
 		case AT_FSPECIAL:
-			if (my_hitboxID.hbox_num == 1)
+			switch (my_hitboxID.hbox_num)
 			{
-				if (instance_exists(boneObj) && hit_player_obj == boneMark && boneObj.state == 1)
-				{
-					instance_destroy(boneObj);
-					boneObj = noone;
-					tutDone[3] = 1;
-					CritForcePalm();
-				}
-				else if (has_rune("A")) CritForcePalm();
-				else ForcePalmGrab();
+				case 1:
+					if (instance_exists(boneObj) && hit_player_obj == boneMark && boneObj.state == 1)
+					{
+						instance_destroy(boneObj);
+						boneObj = noone;
+						tutDone[3] = 1;
+						CritForcePalm();
+					}
+					else if (has_rune("A")) CritForcePalm();
+					else ForcePalmGrab();
+					break;
+				case 2:
+					sound_play(asset_get("sfx_blow_heavy2"));
+					break;
+				case 3:
+					sound_play(asset_get("sfx_blow_medium3"));
+					break;
 			}
-			else sound_play(asset_get("sfx_blow_heavy2"));
 			break;
 		case AT_FSPECIAL_AIR:
 		case AT_FAIR:

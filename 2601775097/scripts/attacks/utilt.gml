@@ -9,14 +9,14 @@ set_attack_value(atk, AG_LANDING_LAG, 4);
 
 var window_num = 1; //windup
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4); //controls speed
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 
 window_num ++; //windup 2 electric boogaloo
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4); //controls speed
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2); //starting frame. starts from 0
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 3);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -26,16 +26,20 @@ window_num ++; //attack itself
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4); //starting frame. starts from 0
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED, -10.5);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.4);
 
 window_num ++; //endlag
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10); //8
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1); //if the attack misses it's punishable
+set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.3);
 
 //amount of hitboxes
 set_num_hitboxes(atk, 2);

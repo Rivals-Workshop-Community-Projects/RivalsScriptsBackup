@@ -49,27 +49,16 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 // 		}
 // }
 
-//Fspecial2
-if (attack == AT_FSPECIAL && window == 1 && window_timer == 12 && special_down) {
-   set_attack(AT_FSPECIAL_2);
-}
 //glockenburn
 if (attack == AT_NSPECIAL && attack_down && ((window_timer < 5 && window == 1) || ((attack_pressed || special_pressed) && rounds_left > 0 && attack == AT_NSPECIAL_2 && window == 3)) && has_rune("N")) {
 	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
 	set_attack(AT_NSPECIAL_2);
 	rounds_left --;
 }
-//Fspecial2 qol
-if (attack = AT_FSPECIAL_2 && window == 2 || window == 3 || window == 4){
-	can_wall_jump = true;
-	can_fast_fall = false;}
 //Fspecial2 spawn smoke
 //if (attack = AT_FSPECIAL_2 && window == 1 && window_timer == 3){
 //	create_smoke(x + -65 * spr_dir, y - 24, 3, 15, 0, 359, 4, 8, 0.18)}
 //Fspecial2 hirty
-if (attack = AT_FSPECIAL_2) {
-	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
-    }
 
 
 //Apply smoke consume
@@ -81,8 +70,8 @@ for (var i = 0; i < array_length(hbox_apply_smoke_consume); i++) {
     if (array_length(hbox_atk) <= 1)
         continue;
     if (attack == hbox_atk[0]) {
-    	if (grabbedid != noone) {
-	        if (grabbedid.smoked) {
+    	if (instance_exists(grabbedid)) {
+	        if ((("smoked" in grabbedid) && grabbedid.smoked)) {
 	            smoke_consumed = grabbedid;
 	        }
     	}
@@ -123,6 +112,10 @@ if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LE
 
 //Aerials
 if (attack == AT_UAIR){
+	if (window == 1 && window_timer == 1) { 
+    	grabbedid = noone; 
+    }
+   
     if (window == 3 && grabbedid == noone) {
         if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
         	window = 25
@@ -130,7 +123,7 @@ if (attack == AT_UAIR){
         }
     }
     
-    if (window == 4 && grabbedid != noone){
+    if (window == 4 && instance_exists(grabbedid)){
 	    grabbedid.ungrab = 0;
         grabbedid.x = x + spr_dir * 4
         grabbedid.y = y - 80;
@@ -144,7 +137,12 @@ if (attack == AT_UAIR){
             
     }
     
-    if ((window == 5 || window == 7) && grabbedid != noone) {
+    if (instance_exists(grabbedid)) {
+		grabbedid.hitstop = 3;
+		grabbedid.hitpause = grabbedid.object_index == obj_stage_article ? 3 :true;
+    }
+    
+    if ((window == 5 || window == 7) && instance_exists(grabbedid)) {
 	    grabbedid.ungrab = 0;
         if (window_timer < 1) {
 	        grabbedid.ungrab = 0;
@@ -187,10 +185,20 @@ if (attack == AT_UAIR){
 	}
 	
 	can_fast_fall = window <= 3;
+	
+	if (window > 3) {
+		set_attack_value(attack, AG_CATEGORY, 2);
+	}
+	else {
+		reset_attack_value(attack, AG_CATEGORY);
+	}
 }
 
 //NSpecial
 if (attack == AT_NSPECIAL) {
+	if (window == 1 && window_timer == 1) { 
+    	grabbedid = noone; 
+    }
 	if (window == 1 && window_timer == 1) {
 		grab_timer = 0;
 	}
@@ -204,21 +212,25 @@ if (attack == AT_NSPECIAL) {
     if (window <= 4) {
     	can_fast_fall = false;
     }
-    if (grabbedid != noone) {
+    
+    if (instance_exists(grabbedid)) {
+		grabbedid.hitstop = 2;
+		grabbedid.hitpause = grabbedid.object_index == obj_stage_article ? 3 :true;
+    }
+    if (instance_exists(grabbedid)) {
     	djumps = max_djumps;
 	    grabbedid.ungrab = 0;
         grabbedid.spr_dir = -spr_dir;
         grabbedid.depth = depth + 1;
         
         if (window > 4) {
-        	
         	//Grab timer
         	grab_timer ++;
         	
         	var grab_damage = 0;
         	with (grabbedid) {
         		var mashed_this_frame = false;
-        		grab_damage = get_player_damage(player);
+        		grab_damage = object_index == obj_stage_article ? percent : get_player_damage(player);
         		
         		/*
         		if (!mashed_this_frame) {
@@ -260,7 +272,7 @@ if (attack == AT_NSPECIAL) {
         		}
         	}
         	
-        	if (grab_timer > (grab_time_max + ease_linear(0, 90, grab_damage, 100) + (has_rune("M") * 180)) / (1 + (0.5 * grabbedid.smoked))) {
+        	if (grab_timer > (grab_time_max + ease_linear(0, 90, grab_damage, 100) + (has_rune("M") * 180)) / (1 + (0.5 * (("smoked" in grabbedid) && grabbedid.smoked)))) {
         		window = 11;
         		window_timer = 0;
         		grab_timer = 0;
@@ -491,7 +503,12 @@ if (attack == AT_FTHROW) {
         }
     }
     
-    if (grabbedid != noone) {
+    
+    if (instance_exists(grabbedid)) {
+		grabbedid.hitstop = 2;
+		grabbedid.hitpause = grabbedid.object_index == obj_stage_article ? 3 :true;
+    }
+    if (instance_exists(grabbedid)) {
 	    grabbedid.ungrab = 0;
         grabbedid.spr_dir = -spr_dir;
         grabbedid.depth = depth + 1;
@@ -559,7 +576,12 @@ if (attack == AT_UTHROW) {
         }
     }
     
-    if (grabbedid != noone) {
+    if (instance_exists(grabbedid)) {
+		grabbedid.hitstop = 2;
+		grabbedid.hitpause = grabbedid.object_index == obj_stage_article ? 3 :true;
+    }
+    
+    if (instance_exists(grabbedid)) {
 	    grabbedid.ungrab = 0;
         grabbedid.spr_dir = -spr_dir;
         grabbedid.depth = depth - 0.1;
@@ -618,6 +640,9 @@ if (attack == AT_UTHROW) {
 }
 
 if (attack == AT_FSPECIAL){
+	if (window == 1 && window_timer == 1) { 
+    	grabbedid = noone; 
+    }
 	if (window == 3) {
         if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
         	window = 25
@@ -637,7 +662,12 @@ if (attack == AT_FSPECIAL){
 		vsp = -13;
 	}
     
-    if (grabbedid != noone) {
+    if (instance_exists(grabbedid)) {
+		grabbedid.hitstop = 2;
+		grabbedid.hitpause = grabbedid.object_index == obj_stage_article ? 3 :true;
+    }
+    
+    if (instance_exists(grabbedid)) {
     	off_edge = false;
 	    grabbedid.ungrab = 0;
         grabbedid.spr_dir = -spr_dir;
@@ -693,7 +723,7 @@ if (attack == AT_FSPECIAL){
 		if (window == 5) {
 	        grabbedid.x = x + spr_dir * 48
 	        grabbedid.y = y + 2;
-	        if (y >= room_height - abs(vsp) && (has_rune("K") || grabbedid.smoked)) {
+	        if (y >= room_height - abs(vsp) && (has_rune("K") || (("smoked" in grabbedid) && grabbedid.smoked))) {
 		        grabbedid.x = x;
 		        grabbedid.y = room_height + 256;
 	        }
@@ -739,6 +769,9 @@ if (attack == AT_FSPECIAL){
 }
 
 if (attack == AT_USPECIAL){
+	if (window == 1 && window_timer == 1) { 
+    	grabbedid = noone; 
+    }
    can_fast_fall = false;
    can_move = false;
    can_wall_jump = true;
@@ -758,7 +791,12 @@ if (attack == AT_USPECIAL){
         }
     }
     
-    if (grabbedid != noone) {
+    if (instance_exists(grabbedid)) {
+		grabbedid.hitstop = 2;
+		grabbedid.hitpause = grabbedid.object_index == obj_stage_article ? 3 :true;
+    }
+    
+    if (instance_exists(grabbedid)) {
 	    grabbedid.ungrab = 0;
         grabbedid.spr_dir = -spr_dir;
         grabbedid.depth = depth + 1;
@@ -798,54 +836,67 @@ if (attack == AT_USPECIAL){
     }
 }
 
-if (attack == AT_DSPECIAL){
-	if (window == 1) {
-		dspecial_charge = 0;
-	}
-    if (window == 2){
-    	dspecial_charge = ease_linear(100, 200, window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH)) / 100;
-    	if (!special_down) {
-    		window = 3;
-    		window_timer = 0
-    	}
-        if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-    		window = 5;
-    		window_timer = 0
-    	}
-    }
-    
-	if (window == 4) {
-        if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)){
-        	window = 25
-        	window_timer = 0;
-        }
-    }
-    
-    if (window == 3 || window == 5) {
-    	vsp = 0;
-    }
-    
-    if (window == 3 && window_timer == 1 && !hitpause) {
-       create_smoke(x, y - 32, 18, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18)
-    }
-    
-    if (window == 5 && window_timer == 1  && !hitpause) {
-       create_smoke(x, y - 32, 24, 55, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 14), 0.18)
-    }
-    
-    if (window == 5 && has_hit_player) {
-        if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-    		window = 4;
-    		window_timer = 0;
-    	}
-    }
-    
-    if (window == 4 || window == 6) && window_timer >= 5 && has_hit_player{
-        can_jump = true;
-    }
-    can_fast_fall = false;
-    can_move = false
+//DSpecial
+if (attack = AT_DSPECIAL) {
+	can_move = false;
+	can_fast_fall = false;
 }
+if (attack = AT_DSPECIAL && window == 2 || window == 3 || window == 4) {
+	move_cooldown[AT_DSPECIAL] = 25;
+	can_wall_jump = true;
+	djumps = 0;
+	off_edge = true;
+}
+
+//Old DSpecial
+// if (attack == AT_DSPECIAL){
+// 	if (window == 1) {
+// 		dspecial_charge = 0;
+// 	}
+//     if (window == 2){
+//     	dspecial_charge = ease_linear(100, 200, window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH)) / 100;
+//     	if (!special_down) {
+//     		window = 3;
+//     		window_timer = 0
+//     	}
+//         if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+//     		window = 5;
+//     		window_timer = 0
+//     	}
+//     }
+    
+// 	if (window == 4) {
+//         if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)){
+//         	window = 25
+//         	window_timer = 0;
+//         }
+//     }
+    
+//     if (window == 3 || window == 5) {
+//     	vsp = 0;
+//     }
+    
+//     if (window == 3 && window_timer == 1 && !hitpause) {
+//       create_smoke(x, y - 32, 18, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18)
+//     }
+    
+//     if (window == 5 && window_timer == 1  && !hitpause) {
+//       create_smoke(x, y - 32, 24, 55, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 14), 0.18)
+//     }
+    
+//     if (window == 5 && has_hit_player) {
+//         if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+//     		window = 4;
+//     		window_timer = 0;
+//     	}
+//     }
+    
+//     if (window == 4 || window == 6) && window_timer >= 5 && has_hit_player{
+//         can_jump = true;
+//     }
+//     can_fast_fall = false;
+//     can_move = false
+// }
 
 
 if (attack == AT_TAUNT_2) {

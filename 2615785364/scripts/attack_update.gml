@@ -23,22 +23,22 @@ if (sonicSpinSpeed >= 12){
 	sonicSpinSpeed = 12;
 }
 
-if (attack == AT_UTILT && window == 1 && !up_down || attack == AT_UTILT && window == 2 && !up_down){
+if (attack == AT_UTILT && window == 1 && !(up_down or up_strong_down) || attack == AT_UTILT && window == 2 && !(up_down or up_strong_down)){
 	hsp = 4*spr_dir;
 	state = PS_WALK;
 }
 
-if (attack == AT_UTILT && window == 3 && !up_down || attack == AT_UTILT && window == 4 && !up_down || attack == AT_UTILT && window == 5 && !up_down || attack == AT_UTILT && window == 6 && !up_down){
+if (attack == AT_UTILT && window == 3 && !(up_down or up_strong_down) || attack == AT_UTILT && window == 4 && !(up_down or up_strong_down) || attack == AT_UTILT && window == 5 && !(up_down or up_strong_down) || attack == AT_UTILT && window == 6 && !(up_down or up_strong_down)){
 	hsp = 8*spr_dir;
 	state = PS_DASH;
 }
 
-if (attack == AT_UTILT && window == 7 && !up_down){
+if (attack == AT_UTILT && window == 7 && !(up_down or up_strong_down)){
 	window = 8;
 	window_timer = 0;
 }
 
-if (attack == AT_DTILT && window == 3 && !down_down || attack == AT_DAIR && window == 2 && !free){
+if (attack == AT_DTILT && window == 3 && !(down_down or down_strong_down) || attack == AT_DAIR && window == 2 && !free){
 	attack = AT_EXTRA_1;
 	window = 1;
 	window_timer = 0;
@@ -49,7 +49,7 @@ if (attack == AT_DTILT && window == 1 && window_timer == 1){
 	clear_button_buffer( PC_SPECIAL_PRESSED );
 }
 
-if (attack == AT_DTILT && window == 3 && attack_pressed || attack == AT_DTILT && window == 3 && special_pressed || attack == AT_DTILT && window == 3 && strong_pressed){
+if (attack == AT_DTILT && (window == 3 && attack_pressed or window == 3 && special_pressed or window == 3 && strong_pressed or window == 3 && window_timer == 10 && down_strong_down)){
 	window = 2;
 	window_timer = 0;
 	clear_button_buffer( PC_ATTACK_PRESSED );

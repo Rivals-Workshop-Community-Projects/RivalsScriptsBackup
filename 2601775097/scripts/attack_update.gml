@@ -11,10 +11,11 @@ switch (attack)
         can_fast_fall = false;
         break;
     case AT_NAIR:
-        if ((window == 3 || window == 4 && window_timer < 17) && has_hit) //N-air canceling
+        var nair_cancel_time = 18; //smaller number means the delay is bigger
+        if ((window == 3 || window == 4 && window_timer < nair_cancel_time-1) && has_hit) //N-air canceling
         {
             window = 4;
-            window_timer = 18;
+            window_timer = nair_cancel_time;
             destroy_hitboxes();
         }
         break;
@@ -84,10 +85,10 @@ switch (attack)
                 sound_stop(sfx_charge);
                 break;
             case 5: //cancel frame
-                if (image_index >= 11 && special_pressed && mp_current >= mp_cost_strongs) set_window(0);
+                if (image_index >= 11 && (special_pressed || strong_pressed) && mp_current >= mp_cost_strongs) set_window(0);
                 if (burnbuff_active && has_hit && window_timer == window_end) burnbuff_active = false;
                 break;
-            case 6:
+            case 6: //deactivate burning fury on this window
                 if (burnbuff_active && has_hit && image_index > 17) burnbuff_active = false;
                 break;
             case 7: //effect/hitbox setup
@@ -291,18 +292,18 @@ switch (attack)
 
         switch (window)
         {
-            case 3:
+            case 3: //activate buff
                 burnbuff_active = true;
                 if (window_timer == 1)
                 {
                     spawn_hit_fx_ext(fx_fireblow[0], x-24*spr_dir, y-32, true);
                 }
                 break;
-            case 7:
+            case 7: //deactivate buff
                 burnbuff_active = false;
                 break;
-            case 9:
-                if (window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES) && attack_down)
+            case 9: //do the stun attack
+                if (window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES) && (attack_down || special_down))
                 {
                     set_window(13);
                     window_loops = 0;
@@ -395,7 +396,7 @@ switch (attack)
                     }
                     //spr_angle = angle_saved; //put in animation.gml later
                 }
-                if (attack_pressed)
+                if (attack_pressed || special_pressed)
                 {
                     if (mp_current >= skill[2].mp_cost2) set_window(6); //allow the extention
                     else //don't allow the extention and pop the low MP error up
@@ -429,7 +430,7 @@ switch (attack)
         can_move = false;
         hsp = 0;
         vsp = 0;
-        if (theikos_type == 0) blast_used = true; //should prevent bar from using the skill again in midair
+        if (theikos_type == 0 && free) blast_used = true; //should prevent bar from using the skill again in midair
         
         switch (window)
         {
@@ -1290,8 +1291,12 @@ switch (attack)
         }
         break;
     case 3:     // skill select animation
-        if (menu_timer == menu_timer_stop-1) window = 3;
-        if (window == 3 && window_timer == 8 && !info_mode_menu) set_state(PS_SPAWN);
+        if (menu_active)
+        {
+            //if (menu_type < 2) menu_type = 1;
+            if (window == 2) window_timer = 0;
+        }
+        //if (window == 3 && window_timer == 8 && menu_type < 2) state = PS_SPAWN;
         break;
 }
 

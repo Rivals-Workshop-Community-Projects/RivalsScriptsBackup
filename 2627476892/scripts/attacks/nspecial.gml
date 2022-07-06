@@ -7,11 +7,11 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 // startup
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("snd_spearrise"));
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 14);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 11);
 
 // attack
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 12);
@@ -99,7 +99,6 @@ set_window_value(AT_NSPECIAL, 10, AG_WINDOW_VSPEED, 0);
 
 set_num_hitboxes(AT_NSPECIAL, 10);
 
-set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Grab Hitbox");
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 3);
@@ -117,7 +116,6 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 15);
 
-set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Grab Hitbox");
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 3);
@@ -136,7 +134,6 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 15);
 
-set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Grab Hitbox");
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 5);
@@ -155,26 +152,6 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 15);
 
-set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Grab Hitbox");
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 8);
-set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 2);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X, 65);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_Y, -15);
-set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 90);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 40);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 0);
-set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_NSPECIAL, 4, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_HITPAUSE, 15);
-
-set_hitbox_value(AT_NSPECIAL, 5, HG_MUNO_HITBOX_NAME, "Pull in");
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW, 4);
 set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 4);
@@ -191,7 +168,6 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_HITPAUSE, 54);
 set_hitbox_value(AT_NSPECIAL, 5, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, 1);
 
-set_hitbox_value(AT_NSPECIAL, 6, HG_MUNO_HITBOX_NAME, "Stun Refresh");
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 6, HG_LIFETIME, 2);
 set_hitbox_value(AT_NSPECIAL, 6, HG_WIDTH, 30);
@@ -217,7 +193,6 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_TECHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_NSPECIAL, 7, HG_MUNO_HITBOX_NAME, "Up Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 7, HG_WINDOW, 6);
 set_hitbox_value(AT_NSPECIAL, 7, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_TYPE, 2);
@@ -253,7 +228,6 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_NSPECIAL, 7, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITSTUN_MULTIPLIER, 0.8);
 
-set_hitbox_value(AT_NSPECIAL, 8, HG_MUNO_HITBOX_NAME, "Down Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 8, HG_WINDOW, 7);
 set_hitbox_value(AT_NSPECIAL, 8, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_TYPE, 2);
@@ -290,7 +264,6 @@ set_hitbox_value(AT_NSPECIAL, 8, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_TECHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITSTUN_MULTIPLIER, 0.8);
 
-set_hitbox_value(AT_NSPECIAL, 9, HG_MUNO_HITBOX_NAME, "Forward Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 9, HG_WINDOW, 8);
 set_hitbox_value(AT_NSPECIAL, 9, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_NSPECIAL, 9, HG_HITBOX_TYPE, 2);
@@ -326,7 +299,6 @@ set_hitbox_value(AT_NSPECIAL, 9, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 9, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 9, HG_HITSTUN_MULTIPLIER, 0.8);
 
-set_hitbox_value(AT_NSPECIAL, 10, HG_MUNO_HITBOX_NAME, "Back Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 10, HG_WINDOW, 9);
 set_hitbox_value(AT_NSPECIAL, 10, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_NSPECIAL, 10, HG_HITBOX_TYPE, 2);

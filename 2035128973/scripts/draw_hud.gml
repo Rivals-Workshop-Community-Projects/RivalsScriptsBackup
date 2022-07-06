@@ -273,6 +273,22 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("UStrong Link hitbox width 40 -> 50");
 						break;
+					case 12:
+						AddText("v3.1 - 2 Jul 2022");
+						AddText("");
+						AddText("Bone Rush Removed vertical momentum");
+						AddText("Bone Rush Endlag 18 -> 14 (Before whifflag multiplier)");
+						AddText("");
+						AddText("Reworked Force Palm hitboxes");
+						AddText("Force Palm now gets weaker the farther from the base");
+						AddText("");
+						AddText("Boneless UAir KB 9+0.2 -> 8+0.35");
+						AddText("Boneless UAir Damage 4 -> 6");
+						AddText("");
+						AddText("Boneless NAir1 KB 4+0.3 -> 5+0.2");
+						AddText("");
+						AddText("Bone Article when hit by Aura Sphere will move upwards proportionately to the charge");
+						AddText("Misc bugfixes for Bone Article");
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

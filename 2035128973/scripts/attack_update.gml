@@ -235,8 +235,7 @@ else
 							with (pHitBox) if (player_id == other.id && attack == AT_USPECIAL && hbox_num == 1) destroyed = true;
 							if (boneObj != noone)
 							{
-								boneObj.newState = 2;
-								if (boneObj.state == 1) boneObj.dieTime = 0;
+								boneObj.newState = 3;
 								boneObj = noone;
 							}
 							if (hasBone)
@@ -300,6 +299,11 @@ else
 				case 2:
 					can_wall_jump = true;
 					var fireDist = 60;
+					if (hasBone)
+					{
+						set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
+						fire_ang = 90;
+					}
 					if (get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH) != 6)
 					{
 						if (instance_exists(boneObj) && boneObj.state != 2)
@@ -532,8 +536,11 @@ else
 			else if (window < 7)
 			{
 				if (afterImageTimer == 0) afterImageTimer = 16;
-				vsp /= 1.2;
-				if (has_hit_player && instance_exists(hit_player_obj)) Grab(60, 0, 2, 2);
+				if (has_hit_player && instance_exists(hit_player_obj))
+				{
+					Grab(60, 0, 2, 2);
+					vsp /= 1.2;
+				}
 			}
 			break;
 	

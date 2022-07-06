@@ -69,6 +69,9 @@ player_near_pot = false;
 effect_radius = 60;
 food_id = 0;
 
+galaxy_pot = false;
+explode_owner = noone;
+
 
 /* README - Basic Article Usage
 

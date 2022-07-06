@@ -260,6 +260,9 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.4", "29 June, 2022"); 
+initHeader("Hotfix Patch:");
+initSection("Fixed Voice toggle button to work in online mode");
 initPatch("1.3", "28 June, 2022"); 
 initHeader("QoL Change:");
 initSection("Added the Purple Voice Toggle Button at the Character Select Screen under Naruto Press it to toggle the Voice to English > Japanese > Mute again");

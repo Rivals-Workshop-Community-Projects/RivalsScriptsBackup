@@ -82,7 +82,7 @@ if (is_attacking) switch (attack)
         {
             gpu_set_blendmode(bm_add);
             gpu_set_fog(1, light_col, 0, 1);
-            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, light_col, light_alpha);
+            draw_sprite_ext(sprite_index, image_index, x, y, image_xscale*2, image_yscale*2, 0, light_col, light_alpha);
             gpu_set_fog(0, c_white, 0, 0);
             gpu_set_blendmode(bm_normal);
         }
@@ -163,16 +163,10 @@ if (playtesting)
     if (y > 466) menu_y = 466+16;
     if (y < 148) menu_y = 148+16;
 
-    if (menu_active) user_event(1);
-    else
-    {
-        draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 14, menu_y - 104, 52, 4, $8b1733, 1); // background
-        for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 12 + i * 2, menu_y - 102 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, 1); // fill
-        draw_sprite_ext(sprite_get("hud_mp_small"), 0, menu_x + 8, menu_y - 118, 2, 2, 0, c_white, 1); //frame
-        draw_debug_text(menu_x + 12, menu_y - 90, "MP: " + string(floor(mp_current))); //text
-
-        draw_debug_text(menu_x + 16, menu_y + 32, "UP + TAUNT = Skill Select");
-    }
+    draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 14, menu_y - 104, 52, 4, $8b1733, 1); // background
+    for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 12 + i * 2, menu_y - 102 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, 1); // fill
+    draw_sprite_ext(sprite_get("hud_mp_small"), 0, menu_x + 8, menu_y - 118, 2, 2, 0, c_white, 1); //frame
+    draw_debug_text(menu_x + 12, menu_y - 90, "MP: " + string(floor(mp_current))); //text
 }
 
 #define textDraw
@@ -180,11 +174,11 @@ if (playtesting)
 {
     //textDraw(x, y, string, color, font, align, outline, alpha)
     var x = argument[0], y = argument[1], string = argument[2];
-var color = argument_count > 3 ? argument[3] : c_white;
-var font = argument_count > 4 ? argument[4] : "fname";
-var align = argument_count > 5 ? argument[5] : fa_center;
-var outline = argument_count > 6 ? argument[6] : false;
-var alpha = argument_count > 7 ? argument[7] : 1;
+    var color = argument_count > 3 ? argument[3] : c_white;
+    var font = argument_count > 4 ? argument[4] : "fname";
+    var align = argument_count > 5 ? argument[5] : fa_center;
+    var outline = argument_count > 6 ? argument[6] : false;
+    var alpha = argument_count > 7 ? argument[7] : 1;
 
     draw_set_font(asset_get(font));
     draw_set_halign(align);
@@ -211,8 +205,8 @@ var alpha = argument_count > 7 ? argument[7] : 1;
     var dfg; //fg_sprite value
     var dust_color = 0;
     var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
-var angle = argument_count > 4 ? argument[4] : 0;
+    var dir = argument_count > 3 ? argument[3] : 0;
+    var angle = argument_count > 4 ? argument[4] : 0;
 
     switch (name) {
         default: 

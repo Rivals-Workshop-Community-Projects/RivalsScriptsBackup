@@ -84,7 +84,9 @@ if attack == AT_DAIR {
     if down_down {
         fall_through = true
     }
-    if has_hit && window <= 3 {
+    
+    if has_hit_player && window <= 3 {
+    	move_cooldown[AT_DAIR] = 60
         vsp = -4
         hsp = 3 * spr_dir
         window = 4

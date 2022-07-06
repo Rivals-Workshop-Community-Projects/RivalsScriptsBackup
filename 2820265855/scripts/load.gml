@@ -70,4 +70,4 @@ sprite_change_offset("crystalhurt", 24, 32);
 
 sprite_change_offset("bolt", 48, 82);
 
-sprite_change_offset("zap", 8, 32);
+sprite_change_offset("zap", 48, 48);

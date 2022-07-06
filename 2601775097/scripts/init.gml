@@ -47,7 +47,7 @@ moonwalk_accel      		= normal_moonwalk_accel;
 // Air movement
 normal_leave_ground_max 	= 7;		// 4    -  8
 normal_max_jump_hsp 		= 7;		// 4    -  8
-normal_air_max_speed 		= 6;  		// 3    -  7
+normal_air_max_speed 		= 4.5;  	// 3    -  7         //old bar value: 6
 jump_change         		= 3;		// 3
 normal_air_accel        	= 0.3;		// 0.2  -  0.4
 normal_prat_fall_accel 		= 0.85;		// 0.25 -  1.5
@@ -73,7 +73,7 @@ short_hop_speed     		= 7;		                // 4    -  7.4
 normal_djump_speed 			= 5;		                // 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         		= -1;		                // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time		= 10;		                //                  the amount of time that   djump_accel   is applied for
-normal_max_djumps 			= 3 + 2 * has_rune("B");    // 0    -  3        the 0 is elliana because she has hover instead
+normal_max_djumps 			= 2 + 3 * has_rune("B");    // 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        		= 5;		                // 4    -  7
 walljump_vsp        		= 11;		                // 7    -  10
 land_time           		= 4;		                // 4    -  6
@@ -107,6 +107,10 @@ normal_dash_anim_speed  	= 0.3;
 pratfall_anim_speed 		= 0.2;
 
 dash_anim_speed 			= normal_dash_anim_speed;
+
+wait_time                   = 256;        //how long it takes for the animation to be done
+wait_length                 = 100;         //amount of frames the wait animation takes
+wait_sprite                 = sprite_get("wait");
 
 
 // Jumps
@@ -176,6 +180,8 @@ spr_pixel = sprite_get("white_pixel");
 window_end = 0; //the last frame (including whifflag if it's there)
 window_last = 0; //AG_NUM_WINDOWS
 window_cancel_time = 0; //AG_WINDOW_CANCEL_FRAME
+
+strong_pressed = false;
 
 //various detections
 alt_cur = get_player_color(player);
@@ -406,15 +412,17 @@ mp_color_ex = $FFFF00;
 mp_cost_strongs = 5;    //strongs
 mp_cost_const_rate = 5; //for burning fury and polaris' buffed states
 
-//skill setup
-skill = [0]; //this array checks all the attacks
-a = 0; //array start
-
 //value storage
 was_free = free;
 
-//set_skill(name, id, slot_x, slot_y, atk, air_atk, cost, cost_ex, cost_min)
 
+skill_script_type = 0;
+user_event(2);
+
+skill = [0]; //this array checks all the attacks
+a = 0; //array start
+
+//skill setup
 AT_SKILL0  = set_skill("Light Dagger", 0, 0, 0, AT_NTHROW, AT_NSPECIAL_AIR, 5, 5, 5);
 AT_SKILL1  = set_skill("Burning Fury", 1, 1, 0, AT_FTHROW, AT_FSPECIAL_AIR, 10, 10, 50);
 AT_SKILL2  = set_skill("Force Leap", 2, 2, 0, AT_UTHROW, -1, 10, 10, 10);
@@ -430,9 +438,12 @@ AT_SKILL9  = set_skill("Light Hookshot", 9, 1, 2, AT_EXTRA_2, -1, 5, 15, 20);
 AT_SKILL10 = set_skill("Searing Descent", 10, 2, 2, AT_EXTRA_3, -1, 10, 10, 10);
 AT_SKILL11 = set_skill("Chasm Burster", 11, 3, 2, AT_EXTRA_1, -1, 5, 25, 30);
 
-//skill select menu
-cur_skills = [0, 1, 2, 3];          //sets the current skills to use
-prev_skills = [0, 1, 2, 3];         //sets the previous selected skills
+
+//LIVE VERSION STUFF
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+cur_skills = [0, 1, 2, 3];        //sets the current skills to use
+prev_skills = [0, 1, 2, 3];       //sets the previous selected skills
 cur_select = 0;                     //-1 = cancel | 0-3 = specials | 4 = overwrite prev selection with new one
 menu_dir = 0;                       //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = jump | -2 = attack/special
 
@@ -440,12 +451,16 @@ menu_active = !playtesting;         //whenever the menu is active, this is true
 is_practice_menu = false;           //will activate with the taunt input in training mode to allow skill info mode
 info_mode_menu = false;             //will activate when the skill descriptions are active, also adds inputs
 
+//won't need these
 menu_timer_stop = 20                //decides how long bar will stand still before being free
 menu_timer = menu_timer_stop + 4;   //with added menu delay so the game won't accidentally register inputs
 menu_invince = 60*4;                //might not be needed
 
 menu_cursor_timer = 0;              //for the selection curstors
 menu_cursor_speed = 0.2             //animation speed
+*/
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 AT_SELECT = 3;                      //select attack
 
@@ -468,13 +483,13 @@ skill_desc[0] = string("
     ");
 skill_desc[1] = string("
     Charges up holy fire, press the input again to
-    do a firey dash attack. Press ATTACK before the
-    last hit to stun foes in place.
+    do a firey dash attack. Press ATTACK or SPECIAL
+    before the last hit to stun foes in place.
     ");
 skill_desc[2] = string("
     Leaps diagnally up, can be aimed up or forward.
-    Press SPECIAL to do a powerful blast that spikes.
-    Burning Fury prevents pratfalling
+    Press ATTACK or SPECIAL for a powerful blast.
+    Hitting foes prevents pratfalling.
     ");
 skill_desc[3] = string("
     Charges up holy light by holding down SPECIAL.

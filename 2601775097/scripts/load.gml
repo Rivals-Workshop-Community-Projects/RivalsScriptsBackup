@@ -120,7 +120,7 @@ sprite_change_offset("fx_rune_i", 16, 16);
 sprite_change_offset("fx_lightstunned", 64, 64);
 
 sprite_change_offset("fx_od_bg", 240, 0);
-sprite_change_offset("fx_od_sword", 142, 191);
+sprite_change_offset("fx_od_sword", 142+42, 191);
 sprite_change_offset("fx_od_slash", 176, 96);
 
 
@@ -144,6 +144,7 @@ sprite_change_offset("intro", 32, 63);
 sprite_change_offset("select", 16, 39);
 sprite_change_offset("plat", 32, 47);
 sprite_change_offset("plat_back", 32, 47);
+sprite_change_offset("wait", 24, 47, true);
 
 sprite_change_offset("bibical_idle", 35, 112);
 sprite_change_offset("bibical_death", 35, 112);

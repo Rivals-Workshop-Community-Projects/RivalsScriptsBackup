@@ -189,13 +189,7 @@ if (sprite_index != new_sprite){
 
 
 //delete if out of bounds
-if (y < -64 || y > (room_height + 64)){
-    sound_play (sound_get ("shovel"));
-    instance_destroy();
-    exit;
-}
-
-if (x < -64 || x > (room_width + 64)){
+if (y > (room_height + 128)){
     sound_play (sound_get ("shovel"));
     instance_destroy();
     exit;

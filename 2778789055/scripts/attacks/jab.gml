@@ -33,6 +33,8 @@ set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 3);
+set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED_TYPE, 2);
 
 //endlag2
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 10);
@@ -48,6 +50,8 @@ set_window_value(AT_JAB, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(AT_JAB, 7, AG_WINDOW_HSPEED, 5);
+set_window_value(AT_JAB, 7, AG_WINDOW_HSPEED_TYPE, 2);
 
 //attack3
 set_window_value(AT_JAB, 8, AG_WINDOW_LENGTH, 6);

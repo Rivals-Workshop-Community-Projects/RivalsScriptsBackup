@@ -39,7 +39,6 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, sound_get("snd_splat"));
 
 set_num_hitboxes(AT_USPECIAL, 2);
 
-set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "Multihit");
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 4);
@@ -56,7 +55,6 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hi
 set_hitbox_value(AT_USPECIAL, 1, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DRIFT_MULTIPLIER, 0.1);
 
-set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Explosion");
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 16);

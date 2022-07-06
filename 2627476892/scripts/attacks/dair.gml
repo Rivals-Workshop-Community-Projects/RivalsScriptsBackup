@@ -31,7 +31,6 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 
 set_num_hitboxes(AT_DAIR,3);
 
-set_hitbox_value(AT_DAIR, 1, HG_MUNO_HITBOX_NAME, "Multihit 1");
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW_CREATION_FRAME, 0);
@@ -52,7 +51,6 @@ set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DAIR, 1, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_DAIR, 1, HG_DRIFT_MULTIPLIER, 0.1);
 
-set_hitbox_value(AT_DAIR, 2, HG_MUNO_HITBOX_NAME, "Multihit 2");
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW_CREATION_FRAME, 5);
@@ -73,20 +71,19 @@ set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DAIR, 2, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_DAIR, 2, HG_DRIFT_MULTIPLIER, 0.1);
 
-set_hitbox_value(AT_DAIR, 3, HG_MUNO_HITBOX_NAME, "Launcher");
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 3, HG_WINDOW_CREATION_FRAME, 10);
 set_hitbox_value(AT_DAIR, 3, HG_LIFETIME, 5);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_X, 5);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_Y, -13);
-set_hitbox_value(AT_DAIR, 3, HG_WIDTH, 65);
+set_hitbox_value(AT_DAIR, 3, HG_WIDTH, 60);
 set_hitbox_value(AT_DAIR, 3, HG_HEIGHT, 65);
 set_hitbox_value(AT_DAIR, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_DAIR, 3, HG_ANGLE, 60);
-set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 8); 
-set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 7); 
+set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 0.55);
 set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 304);

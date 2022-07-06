@@ -40,7 +40,7 @@ switch(attack){
         break;
 }
 
-
+set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, false);
 if(uspecial_pratfall_go_brr){
     hsp = clamp(hsp*.95, -3, 3); //9//8
     vsp = clamp(vsp*.95, -3, 4);

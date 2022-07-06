@@ -108,6 +108,10 @@ kirbyability = 16
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 110;
 used_fs = false;
+wait_time = 600;
+wait_length = 90;
+wait_sprite = sprite_get("wait");
+wait_what = 0;
 
 //practice mode detector
 playtest = (object_index == oTestPlayer);

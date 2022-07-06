@@ -88,7 +88,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -248,6 +248,36 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.21", "5 July, 2022");
+
+initHeader("Buffs:");
+initSection("+ Nspecial comes out 3 frames faster, F16 -> F13
++ Fstrong comes out 2 frames faster, F14 -> F12
+");
+
+initHeader("Nerfs:");
+initSection("- Weight lowered again, 1.05 -> 1.1
+- Dash speed lowered, 9 -> 8.5
+- Prat land increased, 10 -> 14
+- Shrinkwrapped multiple hitboxes
+- Dattack's bkb was lowered, 7.5 -> 6.5
+- Dattack's linking hitbox's drift multipliers were lowered, .1 -> .2
+- Removed Nspecial's 4th grab hitbox
+- Dstrong, Utilt, Bair, Fair, Dattack. Fspecial (whiff) have more endlag
+- Bair, Fstrong, Nair, Uair, and Utilt's smears now have hurtboxes
+");
+
+initHeader("Changes:");
+initSection("= Max charged Fspecial's kb was changed, 9 * 1 -> 7 * 1.15
+= Fstrong's kb was adjusted, 8 * 1.1 -> 7 * 1.1, and 11 * 0.9 -> 8 * 1.1
+= Ustrong's kb was adjusted, 9 * 1 -> 7 * 1.12
+= Dstrong's kb was adjusted, 10.5 * .95 -> 6 * 1.2
+= Fair's bkb was reduced, 9 * .5 -> 7 * .65
+= Lightweighted munophone
+= Lancer actually becomes slippery on the ground when in slippery install
+");
+
+//
 initPatch("1.20", "14 February, 2022");
 
 initHeader("Buffs:");

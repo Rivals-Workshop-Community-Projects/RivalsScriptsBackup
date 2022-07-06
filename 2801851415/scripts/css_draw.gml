@@ -10,7 +10,7 @@ var charuuid = string(sprite_get("idle"));
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 21;
+var numAlts = 27;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -60,7 +60,12 @@ alt_name[17] = "Puppet";
 alt_name[18] = "Gold";
 alt_name[19] = "Robot Swordsman";
 alt_name[20] = "Inner's Favorite";
-
+alt_name[21] = "Crimson";
+alt_name[22] = "Freedom";
+alt_name[23] = "Vocaloid";
+alt_name[24] = "Guilty";
+alt_name[25] = "Pastel";
+alt_name[26] = "Energy Drink";
 //alt_name[31] = "";
 
 draw_set_halign(fa_right);

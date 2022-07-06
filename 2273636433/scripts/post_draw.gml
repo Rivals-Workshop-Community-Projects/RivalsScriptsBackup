@@ -1,15 +1,16 @@
 //post-draw
 
-
-//draw_debug_text(x  ,y, string(docscore));
+//draw_debug_text(x  ,y, string(message));
 //draw_debug_text(x , y-20 , string(doc_score));
 //draw_debug_text(x , y-40 , string(doc_ditto));
-//draw_debug_text(x , y-60 , string(vsp));
+//draw_debug_text(x , y-60 , string(done_reflecting_article));
 //draw_debug_text(x ,y+20, string(previo[0]));
 //draw_debug_text(x , y-80 , string(valido));
 
 /*with pHitBox{ //i was here
-	draw_debug_text(x + 10 , y , string(kb_value));
+	draw_debug_text(x +30 , y , string(id%1000));
+	draw_debug_text(x +60 , y , string(hsp));
+	draw_debug_text(x +90 , y , string(hitbox_timer));
 }*/
 
 //DRAWING PILL FOR NSPECIAL - IF FRAME DATA IS CHANGED THIS MUST BE UPDATED

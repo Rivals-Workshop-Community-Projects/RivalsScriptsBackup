@@ -61,6 +61,7 @@ if(slippery == 0){
 	set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
     set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
     ground_friction     = 0.5;
+    dash_stop_percent   = 0.25;
 }if(slippery > 0){
 	set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
     set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
@@ -68,7 +69,8 @@ if(slippery == 0){
     set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 	set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
     set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
-    ground_friction     = 0.2;
+    ground_friction     = 0.1;
+    dash_stop_percent   = 0.75;
 }
 
 //respawn splat

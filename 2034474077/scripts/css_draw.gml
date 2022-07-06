@@ -65,7 +65,7 @@ if(!css_open){
     textDraw(temp_x + 130, temp_y + 115, "fName", c_white, 0, 1000, 1, true, 1, string(specials[0] + 1) + "  " + string(specials[1] + 1) + "  "
          + string(specials[2] + 1) + "  " + string(specials[3] + 1) + "  ");
     
-    if((get_instance_x(cursor_id) >= temp_x + 122 && get_instance_x(cursor_id) <= temp_x + 204) && (get_instance_y(cursor_id) >= temp_y + 106 && get_instance_y(cursor_id) <= temp_y + 135)){
+    if((get_instance_x(cursor_id) >= temp_x + 120 && get_instance_x(cursor_id) <= temp_x + 204) && (get_instance_y(cursor_id) >= temp_y + 106 && get_instance_y(cursor_id) <= temp_y + 135)){
         draw_sprite_ext(sprite_get("css_specslots_glow"), 0, temp_x + 122, temp_y + 107, 1, 1, 0, c_white, 0.4);
     }
 }

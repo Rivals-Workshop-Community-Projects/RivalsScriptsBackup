@@ -138,7 +138,8 @@ hbox_throws = [[AT_UAIR, 2], [AT_UAIR, 3], [AT_FTHROW, 1], [AT_FTHROW, 2], [AT_U
 [AT_USPECIAL, 7]]; //These will only affect the player it can damage.
 
 //COMPATIBILITY
-
+//Adventure Mode
+hit_player_event = 0;
 //Mt. Dedede
 arena_title = "The Smokescreen Powerhouse"
 arena_short_name = "Rykenburn"

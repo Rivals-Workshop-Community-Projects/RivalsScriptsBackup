@@ -25,7 +25,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -5);
 
 //endlag whiff
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 0);
@@ -53,7 +53,6 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_VSPEED, -6);
 
 set_num_hitboxes(AT_FSPECIAL, 1);
 
-set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Uncharged Fspecial Hitbox");
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 18);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 20);
@@ -63,7 +62,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .5);
@@ -72,7 +71,6 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "1 Charge Fspecial Hitbox");
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 18);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 20);
@@ -91,7 +89,6 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FSPECIAL, 3, HG_MUNO_HITBOX_NAME, "2 Charge Fspecial Hitbox");
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 18);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 20);
@@ -110,7 +107,6 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 306);
 set_hitbox_value(AT_FSPECIAL, 3, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_DRIFT_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Max Charge Fspecial Hitbox");
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 18);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_X, 20);
@@ -120,8 +116,8 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_HEIGHT, 80);
 set_hitbox_value(AT_FSPECIAL, 4, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 4, HG_DAMAGE, 11);
 set_hitbox_value(AT_FSPECIAL, 4, HG_ANGLE, 45);
-set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSPECIAL, 4, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_FSPECIAL, 4, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITPAUSE_SCALING, 1.1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

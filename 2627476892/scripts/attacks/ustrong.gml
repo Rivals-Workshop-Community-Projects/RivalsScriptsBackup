@@ -25,7 +25,6 @@ set_num_hitboxes(AT_USTRONG,3);
 
 set_attack_value(AT_USTRONG, AG_MUNO_ATTACK_MISC, "Hitbox 1 sends higher and Hitbox 2 goes higher depending on how long you hold this strong.");
 
-set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_NAME, "The hitbox that sends up");
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -35);
@@ -43,7 +42,6 @@ set_hitbox_value(AT_USTRONG, 1, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 6);
 
-set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_NAME, "Decorational");
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 30);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 2);
@@ -67,7 +65,6 @@ set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
 
-set_hitbox_value(AT_USTRONG, 3, HG_MUNO_HITBOX_NAME, "Explosion");
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_LIFETIME, 12);
 set_hitbox_value(AT_USTRONG, 3, HG_WIDTH, 80);
@@ -75,8 +72,8 @@ set_hitbox_value(AT_USTRONG, 3, HG_HEIGHT, 80);
 set_hitbox_value(AT_USTRONG, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 6);
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, 1.12);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 148);

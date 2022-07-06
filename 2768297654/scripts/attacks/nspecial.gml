@@ -5,11 +5,11 @@ set_attack_value(AT_NSPECIAL, AG_CATEGORY, 2);
 
 //startup
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 10);
 
 //attack
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
@@ -45,7 +45,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("wall_staple")
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("blank_sheet"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 13);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 12);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 11);
 
 /*
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);

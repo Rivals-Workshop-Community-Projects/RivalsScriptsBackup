@@ -61,8 +61,8 @@ if attack == AT_USPECIAL{
         grabbedid.state = PS_WRAPPED; 
 	}	
 	if window == 4 {
-		if has_hit and window_timer==1 {
-		spawn_hit_fx( x +10*spr_dir, y-64, 3 );	
+		if show_flames && window_timer==1 {
+			spawn_hit_fx( x +10*spr_dir, y-64, 3 );	
 		}
 	}
 	if (window == 5) {
@@ -78,6 +78,34 @@ if attack == AT_USPECIAL{
 }
 
 if attack == AT_TAUNT{
+	if window_timer == 12{
+		if message == 0 && (get_player_color(player) == 11 || get_player_color(player) == 12) {
+			message= (current_second+current_hour+current_minute*2)%6 + 1;		//Chooses a message
+			switch(message){
+				case 1:
+					sound_play(sound_get("medic1"));
+				break;
+				case 2:
+					sound_play(sound_get("medic2"));
+				break;
+				case 3:
+					sound_play(sound_get("medic3"));
+				break;
+				case 4:
+					sound_play(sound_get("medic4"));
+				break;
+				case 5:
+					sound_play(sound_get("medic5"));
+				break;
+				case 6:
+					sound_play(sound_get("medic6"));
+				break;
+			}
+			message = 7;
+		}
+	}
+
+
 	if window_timer ==36 {
 		if !shield_down {pill= pill + 1;}
 	}
@@ -188,6 +216,7 @@ if attack == AT_FSPECIAL {
 				cape = 1;
 			}
 		}
+		if done_reflecting_article==1 {destroy_hitboxes();}
 		if vsp >6 {
 			vsp = 6;
 		}
@@ -196,19 +225,15 @@ if attack == AT_FSPECIAL {
 }
 
 //---------------------------------------------ACTUAL REFLECTOR LOGIC - THANKS ARCHY-----------------------------------------
-//------------------------------------------------------V5 UPDATE: 03/02-----------------------------------------
+//------------------------------------------------------V6 UPDATE: 03/07-----------------------------------------
 
 //ACTIVE REFLECTOR
-if (attack == AT_FSPECIAL && window == 2 ) {		
-	if done_reflecting == 0{
+if (attack == AT_FSPECIAL && window == 2 && done_reflecting_article == 0 ) {		
 		//Interact with oponent hitboxes
 		with (asset_get("pHitBox")){					//From the perspective of the hitbox
-			if type == 2 && hit_priority >= (88) {
-				hit_priority -=1;
-			}
 			if type == 2 && other.player !=  player {		//Not my own projectile / not the same
-				if (abs (x -  (other.x + 44*other.spr_dir)) <=50 ) && (abs (y -  (other.y - 34)) <=40 ) && hitstun_factor!= -1 {		//detectiong
-					if hit_priority !=  (0) && hit_priority !=  (-1) &&  hit_priority < (88) {			//THE CHEAT
+				if (abs (x -  (other.x + 45*other.spr_dir)) <=52 ) && (abs (y -  (other.y - 34)) <=40 ) && hitstun_factor!= -1 {		//detectiong
+					if hit_priority !=  (0) && hit_priority !=  (-1) {			//THE CHEAT
 					
 						//CHECK IF ARTICLES EXIST IN THE SAME PLACE AS THE HITBOX
 						hit_check = noone;
@@ -225,63 +250,67 @@ if (attack == AT_FSPECIAL && window == 2 ) {
 
 						//Reflect Logic	
 						//For the Player
-						other.invincible = 1;
-						other.invince_time = 16;							
-						spawn_hit_fx( other.x +44*other.spr_dir, other.y-34, 111 );			//VISUAL EFFECT 
-						other.play_sound = 1;
-						was_parried = true;											
+						if other.done_reflecting_hitbox[id%1000] == 0{				//1 reflect per hitbox
+							other.invincible = 1;
+							other.invince_time = 15;							
+							spawn_hit_fx( other.x +45*other.spr_dir, other.y-34, 111 );			//VISUAL EFFECT 
+							other.play_sound = 1;
+							//was_parried = true;											
 
-						//CODE FOR TENRU INTERACTION I GUESS
-						if variable_instance_exists(self, "reflected") {
-						   reflected = true;
-						}
-						//CODE FOR MATT I GUESS
-						if variable_instance_exists(self, "UnReflectable") {
-						   UnReflectable = false;
-						}
+							//For the hitbox
+							image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
+							//Actual Reflect
+							damage *= 1.25;
+							kb_value *= 1.25;
+							other.hitpause = 1;
+							other.hitstop = 3;
+							other.hitstop_full=3;
+							other.old_vsp=other.vsp;
+							other.old_hsp=other.hsp;
+							can_hit_self = true;
+							can_hit[other.player] = false;
+							if does_not_reflect == false && hit_check == noone {hitbox_timer =0;}
+							other.done_reflecting_hitbox[id%1000] = 1;		//Player gets notified
+								
 
-						//For the hitbox
-						image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
-						//Actual Reflect
-						damage *= 1.25
-						kb_value *= 1.25;
-						can_hit_self = true;
-						if does_not_reflect == false {hitbox_timer =0;}
-						hit_priority = 88 + 12;
-
-						//Movement
-						x = other.x +50*other.spr_dir;
-						if abs(hsp) <= 1  {				//Varely any HSP
-							hsp = 4*other.spr_dir;
-							spr_dir = other.spr_dir;
-							if !free && grav != 0 {				
-								vsp = -5;
-							} else{
-								vsp = -abs(vsp);
+							//Movement
+							x = other.x +50*other.spr_dir;
+							if abs(hsp) <= 2  {				//Varely any HSP
+								hsp = 4*other.spr_dir;
+								spr_dir = other.spr_dir;
+								if !free && grav != 0 {				
+									vsp = -5;
+								} else{
+									vsp = -abs(vsp);
+								}
+							}else{
+								spr_dir = other.spr_dir;
+								hsp =  1.25* abs(hsp) *other.spr_dir;
+								old_hsp =  1.25* abs(old_hsp) *other.spr_dir;
 							}
-						}else{
-							spr_dir *= -1;
-							hsp *=  -1.5;
-						}
-						//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
-						if variable_instance_exists(self, "C_knock") {
-						   C_knock += 1;
-						   forced = 1;
-						   extra_hitpause +=2;
+							//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
+							if variable_instance_exists(self, "C_knock") {	
+							   C_knock += 1;
+							   forced = 1;
+							   extra_hitpause +=2;
+							}
 						}
 						//Movement For Articles
-						if hit_check != noone {							//Reflect Article
-							if hit_check.player == player{				//The article is from the same player as the hitbox
-								hit_check.hsp *= -1;	
-								hit_check.spr_dir *= -1;
-								hit_check = noone;
-								other.done_reflecting = 1;										//Player gets notified
-							}
-						} 
+						if other.done_reflecting_article == 0 {		//1 reflect per article
+							if hit_check != noone {							//Reflect Article
+								if hit_check.player == player{				//The article is from the same player as the hitbox
+									hit_check.hsp = 1.25*abs(hit_check.hsp)*other.spr_dir;	
+									hit_check.spr_dir = other.spr_dir;
+									hit_check = noone;
+									other.done_reflecting_article = 1;										//Player gets notified
+
+								}
+							} 
+						}
 					}
 				}
 			}
-		}
+		
     }
 	//Complementary to reflect
 	if play_sound ==1{
@@ -445,17 +474,3 @@ hud_offset = 35;
 }
 
 
-// Morshu bomb stuff
-if (attack == AT_FSPECIAL){
-	if("MorshuBomb" in self && MorshuBomb && attack == AT_NSPECIAL && hbox_num == 1 && hitlockout <= 0){
-	var dist = point_distance(other.x+50*other.spr_dir, other.y-35, x, y); //distance
-		if(dist <= 40)
-			hitafterhitpause = true;player = other.player;hitlockout = 20;
-	        in_hitpause = true;hitstop = 20;hitpausetime = 20;
-	        hsp = 12*other.spr_dir;vsp = -5;spr_dir = other.spr_dir;
-			//old_hsp = 6*other.spr_dir;old_vsp = -4;spr_dir = other.spr_dir;
-			other.hitpause = true;other.hitstop = 20;
-		    other.old_hsp = other.hsp;other.old_vsp = other.vsp;
-	        spawn_hit_fx(x, y, 304);sound_play(sound_get("mantle"));
-	    }	 
-}

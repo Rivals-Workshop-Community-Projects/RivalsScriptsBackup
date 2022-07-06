@@ -123,7 +123,7 @@ if window == 2 {
 }
 
 if attack == AT_JAB && !hitpause {
-    if window == 2 && window_timer == 1 {
+    if window == 1 && window_timer == 6 {
     sound_play(asset_get("sfx_swipe_weak1"))
     sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
     }

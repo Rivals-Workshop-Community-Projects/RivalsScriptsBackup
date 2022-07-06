@@ -39,7 +39,7 @@ set_hitbox_value(49, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(49, 1, HG_ANGLE, 40);
 set_hitbox_value(49, 1, HG_DAMAGE, 40);
 set_hitbox_value(49, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(49, 1, HG_KNOCKBACK_SCALING, 2);
+set_hitbox_value(49, 1, HG_KNOCKBACK_SCALING, 1.5);
 set_hitbox_value(49, 1, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(49, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(49, 1, HG_HITBOX_TYPE, 2);

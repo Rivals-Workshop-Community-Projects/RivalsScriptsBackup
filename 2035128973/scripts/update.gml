@@ -35,7 +35,7 @@ else
 	// taunt menu
 	if (practice)
 	{
-		var noOfPatches = 12;
+		var noOfPatches = 13;
 		tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 		if (menuStateBuffer != menuState)
 		{

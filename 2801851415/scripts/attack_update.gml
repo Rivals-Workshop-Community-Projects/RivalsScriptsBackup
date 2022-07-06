@@ -14,6 +14,9 @@ switch(attack){
 	break;
 	
 	case AT_FSPECIAL:
+	if (!has_hit){
+		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 16);
+	} else { reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH);}
 		move_cooldown[AT_FSPECIAL] = 25;
 		if(!hitpause && window == 2 && window_timer == 1)
 		{
