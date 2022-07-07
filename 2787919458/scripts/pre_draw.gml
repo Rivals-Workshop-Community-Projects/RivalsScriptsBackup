@@ -33,7 +33,26 @@ with(pHitBox){
     	gpu_set_fog(false, c_white, 1, 1);
     }
 }
-
+if(get_player_color(player) == 22){
+	shader_start();
+	draw_sprite_ext(sprite_index, image_index, x,y, 2*spr_dir, 2, 0, c_white, 1);
+	gpu_set_blendenable(false)
+	gpu_set_colorwriteenable(false,false,false,true);
+	draw_set_alpha(0);
+	draw_sprite_tiled(sprite_get("black_pixels"), 0, x, y);
+	
+	draw_set_alpha(1);
+	draw_sprite_ext(sprite_index, image_index, x,y, 2*spr_dir, 2, 0, c_white, 1);
+	gpu_set_blendenable(true);
+	gpu_set_colorwriteenable(true,true,true,true);
+	
+	gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+	gpu_set_alphatestenable(true);
+	draw_sprite_ext(sprite_get("dorito_texture"),0, x, y,1,1,0,c_white,1);
+	gpu_set_alphatestenable(false);
+	gpu_set_blendmode(bm_normal);
+	shader_end();
+}
 // input the shade slot index
 // outputs the colour of the shade slot of the current alt
 #define GetColourPlayer(_index)

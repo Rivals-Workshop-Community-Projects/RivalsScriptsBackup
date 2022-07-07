@@ -105,3 +105,13 @@ if voicebutton == 1 || voicebutton == 4 {
 }
 set_synced_var(player, voiced)
 draw_sprite_ext(sprite_get("cssvoice_button"), 0+voicebutton, x + tmp_xl, y + tmp_yl, 2, 2, 0, c_white, 1);
+
+
+if(get_player_color(player) == 22){
+	sprite_change_offset("dorito_hud", 0, -2);
+	set_ui_element(UI_CHARSELECT,sprite_get("dorito_charselect"));
+    set_ui_element(UI_HUD_ICON,sprite_get("dorito_hud"));
+}else{
+	set_ui_element(UI_CHARSELECT,get_char_info(player,INFO_CHARSELECT));
+    set_ui_element(UI_HUD_ICON,get_char_info(player,INFO_HUD));
+}

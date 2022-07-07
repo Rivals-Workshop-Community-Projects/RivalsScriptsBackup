@@ -32,11 +32,11 @@ if my_hitboxID.attack == AT_NSPECIAL && !isyellow{
 }
 
 if inkshield > 0 && my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_FSPECIAL && !isyellow && inkshield < 300 {
-   inkshield += my_hitboxID.damage * 8
+
 }
 
 if inkshield < 0 && my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_FSPECIAL && !isyellow {
-   inkshield_buildup += my_hitboxID.damage * 8
+
 }
 
 

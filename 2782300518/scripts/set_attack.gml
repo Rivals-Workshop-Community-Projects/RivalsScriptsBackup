@@ -24,7 +24,7 @@ if (attack == AT_EXTRA_2 && motorbike == false)
     timage_index=0;
     timage_number=7;
 	tfront=false;
-	tx=-45*spr_dir;
+	tx=-46*spr_dir;
 	ty=-70;
 	tsx=1;
 	tsy=1;

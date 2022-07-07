@@ -224,6 +224,13 @@ dash_hsp = 0;
 san_has_played = false;
 current_taunt = 0;
 weegee_face = get_player_color(player) == 15;
+if(get_player_color(player) == 22){
+    set_ui_element(UI_HUD_ICON,sprite_get("dorito_hud"));
+    set_ui_element(UI_HUDHURT_ICON,sprite_get("dorito_hud_hurt"));
+    set_ui_element(UI_OFFSCREEN,sprite_get("dorito_offscreen"));
+    set_ui_element(UI_WIN_PORTRAIT,sprite_get("dorito_portrait"));
+    set_ui_element(UI_WIN_SIDEBAR,sprite_get("dorito_result_small"));
+}
 //hyper
 hue_offset=0;
 hue_speed=1;

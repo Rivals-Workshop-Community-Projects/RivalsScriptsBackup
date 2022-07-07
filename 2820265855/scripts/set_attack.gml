@@ -1,7 +1,8 @@
-//if attack == AT_TAUNT{
-//    if down_down{attack = AT_TAUNT_2}
-//}
-
+// ==================== GRAFFITI SET_ATTACK  ======================
+if attack == AT_TAUNT && get_synced_var(player) == true {
+    attack = AT_TAUNT_2;
+}
+// ================================================================
 
 
 if (attack == AT_DSPECIAL){

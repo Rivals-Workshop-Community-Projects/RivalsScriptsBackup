@@ -1,6 +1,10 @@
 //This file is much longer than load characters on other characters due to every animation having a bike version
 sprite_change_offset("idle", 40, 78);
 sprite_change_offset("idle2", 40, 78);
+sprite_change_offset("wait", 40, 78);
+sprite_change_offset("waitb", 40, 78);
+sprite_change_offset("waitc", 40, 78);
+sprite_change_offset("waitd", 40, 78);
 sprite_change_offset("hurt", 40, 78);
 sprite_change_offset("hurt_bike", 40, 82);
 sprite_change_offset("bighurt", 40, 78);
@@ -98,7 +102,7 @@ sprite_change_offset("pounce", 40, 66);
 sprite_change_offset("get_on_bike", 40, 78);
 sprite_change_offset("bike_hurtbox", 40, 78);
 sprite_change_offset("bike_crouch_hurtbox", 40, 78);
-sprite_change_offset("energy_shield", 51, 86);
+sprite_change_offset("energy_shield", 50, 86);
 
 sprite_change_offset("nitro_boost", 50, 50)
 
@@ -107,7 +111,7 @@ sprite_change_offset("plat", 50, 0);
 sprite_change_offset("kirby_carol", 44, 56);
 
 //Set victory theme based on alt
-if (get_player_color(player) == 5 || get_player_color(player) == 20)
+if (get_player_color(player) == 5)
 {
     set_victory_theme(sound_get ( "fp2_victory"));   
 }

@@ -5,9 +5,9 @@ set_attack_value(AT_DAIR, AG_LANDING_LAG, 7);
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 2);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 
-set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 40);
+set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 80);
 set_window_value(AT_DAIR, 1, AG_WINDOW_TYPE, 8);
-set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 40);
+set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 80);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, 18);

@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 28;
+num_alts = 29;
 
 // Whether or not to display a name for each alt.
 use_alt_names = true;
@@ -63,6 +63,7 @@ alt_names = [
 	"Shrek",
 	"Doge",
 	"Dat Boi",
+	"Dorito",
 	"Classic Sanic",
 	"Sky",
 	"Alisa",
@@ -295,6 +296,12 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.13", "7th July, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Added a new special alt.
+- Made all summons flip properly (This was a Rivals quirk that was annoying)
+- Hopefully fixed the steam versions and in-game versions being 1 digit off");
 
 initPatch("1.12", "28th June, 2022");
 

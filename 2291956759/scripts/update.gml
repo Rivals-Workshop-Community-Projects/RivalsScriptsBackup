@@ -314,6 +314,12 @@ if inkshield > 0 && !hitpause && move_cooldown[AT_EXTRA_1] == 0{
 
 }
 
+if inkshield > 0 && hitpause {
+	
+	inkshield += 5
+
+}
+
 if inkshield == 0 {
 	sound_play(asset_get("sfx_ori_bash_projectile"));
 	spawn_hit_fx (x, y - 32, 302)

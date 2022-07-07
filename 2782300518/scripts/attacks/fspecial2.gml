@@ -12,7 +12,7 @@ set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("motorbike_wheelie"));
 
-set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_TYPE, 2);
+set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_TYPE, 7);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_LENGTH, 27);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 1);

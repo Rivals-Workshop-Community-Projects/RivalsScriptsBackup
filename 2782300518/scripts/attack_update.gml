@@ -52,6 +52,10 @@ if (motorbike == false)
 			case 19:
 			case 27:
 			case 35:
+				var base = 4*8;
+				static_colorO[base] = 0.137;
+				static_colorO[base+1] = 0.262;
+				static_colorO[base+2] = 0.192;
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect3);
 				after_effect.depth = +10;
 			break;
@@ -131,7 +135,7 @@ if (motorbike == false)
 		can_fast_fall = false;
 		//Since this move provides great recovery, the ability to wall jump should be restricted
 		walljump_number= 4;
-		//Voice line
+		walljump_number = 5;
 		
 		//Clamp Speed
 		if (window < 3)
@@ -144,13 +148,13 @@ if (motorbike == false)
 			//Shield cancellable
 			can_shield = true;
 		}
-		
+		//Voice line
 		if (window == 1 && window_timer == 1)
 		{
 			if (voice == 1)
 			{
-				sound_stop(sound_get ("go2"));
-				sound_play(sound_get ("go2"));
+				sound_stop(sound_get ("carol_jab_voice2"));
+				sound_play(sound_get ("carol_jab_voice2"));
 			}
 		}
 		
@@ -205,6 +209,12 @@ if (motorbike == false)
 		}
 		if (window == 3 && window_timer == 1)
 		{
+			if (voice == 1)
+			{
+				sound_stop(sound_get ("go2"));
+				sound_play(sound_get ("go2"));
+			}
+			
 			var disc_direction = point_direction(x, y,Fspecial_positionX, Fspecial_positionY);
 			var disc_distance = point_distance(x, y, Fspecial_positionX, Fspecial_positionY);
 			hsp = lengthdir_x (disc_distance, disc_direction) / 25;
@@ -401,7 +411,7 @@ if (motorbike == false)
 			if (left_pressed || left_down && spr_dir == 1 && !pounceChange)
 			{
 				spr_dir = -1;
-				tx=-45*spr_dir;
+				tx=-46*spr_dir;
 				hsp = 0;
 				hsp = -6;
 				destroy_hitboxes();
@@ -411,7 +421,7 @@ if (motorbike == false)
 			if (right_pressed || right_down && spr_dir == -1 && !pounceChange)
 			{
 				spr_dir = 1;
-				tx=-45*spr_dir;
+				tx=-46*spr_dir;
 				hsp = 0;
 				hsp = 6;
 				destroy_hitboxes();
@@ -428,7 +438,7 @@ if (motorbike == false)
 			can_wall_jump = true;
 			has_walljump = true;
 		}
-		if (hsp == 0 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
+		if (hsp == 0 && place_meeting(x + 5 * spr_dir, y, asset_get("par_block")))
 		{
 			if (can_wall_jump && has_walljump && jump_down && walljump_number < walljump_limit)
 			{
@@ -478,7 +488,7 @@ else if (motorbike == true)
 			//Nitro effect at start of move
 			if (hsp > - 11 && hsp < 11)
 			{
-				hsp = 8 * spr_dir;
+				hsp = free? 6 * spr_dir: 11 * spr_dir;
 			}
 			var nitro = spawn_hit_fx(x - 40 * spr_dir, y -32, nitro_boost);
 			nitro.depth = -100;
@@ -508,7 +518,7 @@ else if (motorbike == true)
 				var smallspark = spawn_hit_fx(x - 40 * spr_dir, y-32 , smallsparkle);
 				smallspark.depth = -100;
 			}
-			if (hsp == 0 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
+			if (hsp == 0 && place_meeting(x + 5 * spr_dir, y, asset_get("par_block")))
 			{
 				if (can_wall_jump && has_walljump && jump_down && walljump_number < walljump_limit)
 				{
@@ -562,12 +572,15 @@ else if (motorbike == true)
 			bimage_speed=0.5;
 			bfront=true;
 			bx=-40*spr_dir;
-			by=-80;
+			by=-79;
 			bsx=1;
 			bsy=1;
 			//Reset values back to default
 			motorbike = false;
 			bikeReady = 0;
+			
+			wait_length = 60;
+			wait_sprite = sprite_get("wait");
 			
 			//This code resolves a glitch whereby the meter gets stuck when you do a Wild Kick while running out of fuel
 			

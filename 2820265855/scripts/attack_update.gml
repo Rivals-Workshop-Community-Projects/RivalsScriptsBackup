@@ -1,3 +1,18 @@
+// ==================== GRAFFITI ATTACK_UPDATE  ======================
+if attack == AT_TAUNT_2 {
+    if window == graffiti_window && window_timer == graffiti_window_timer {
+        // destroy old graffiti
+        if instance_exists(graffiti_id) {
+            instance_destroy(graffiti_id);
+        }
+        // create new graffiti
+        graffiti_tagging = true; // must be set true before spawning
+        graffiti_id = instance_create(x, y, "obj_article3");
+        graffiti_tagging = false; // must be set false after spawning
+    }
+}
+// ===================================================================
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();

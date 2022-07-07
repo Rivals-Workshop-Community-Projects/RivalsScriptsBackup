@@ -9,6 +9,12 @@ crouch_anim_speed = .1;
 walk_anim_speed = .125;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
+wait_time = 400;
+wait_length = 80;
+wait_sprite = sprite_get("wait");
+wait_idle_pick = 0;
+voice_protection = false;
+idle_index = 36;
 
 walk_speed = 3.25;
 walk_accel = 0.2;
@@ -204,9 +210,9 @@ pounce = false;
 pounceChange = false;
 returnBike = false;
 bikeExplosion = false;
+small_djumps = true;
 
-voice = 0;
-voice_toggle = get_player_color(player);
+voice = get_synced_var(player);
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");

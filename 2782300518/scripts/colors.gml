@@ -14,9 +14,7 @@ set_color_profile_slot_range(3, 1, 1, 23);
 set_color_profile_slot_range(4, 4, 5, 12);
 set_color_profile_slot_range(5, 1, 1, 19);
 
-set_num_palettes(30);
-
-//Non voice colours
+set_num_palettes(19);
 
 //Yellow Scarf
 set_color_profile_slot(1, 0, 64, 124, 48);
@@ -114,139 +112,51 @@ set_color_profile_slot(12, 3, 42, 2, 23);
 set_color_profile_slot(12, 4, 72, 32, 104);
 set_color_profile_slot(12, 5, 255, 255, 255);
 
+// Abyss
+set_color_profile_slot(13, 0, 152, 153, 232 );
+set_color_profile_slot(13, 1, 83, 82, 140 );
+set_color_profile_slot(13, 2, 214, 209, 255 );
+set_color_profile_slot(13, 3, 83, 82, 140 );
+set_color_profile_slot(13, 4, 83, 82, 140 );
+set_color_profile_slot(13, 5, 83, 82, 140 );
+
 //Ratchet
-set_color_profile_slot(13, 0, 163, 119, 64);
-set_color_profile_slot(13, 1, 162, 91, 27);
-set_color_profile_slot(13, 2, 219, 173, 73);
-set_color_profile_slot(13, 3, 71, 43, 23);
-set_color_profile_slot(13, 4, 219, 173, 73);
-set_color_profile_slot(13, 5, 24, 104, 8);
+set_color_profile_slot(14, 0, 163, 119, 64);
+set_color_profile_slot(14, 1, 162, 91, 27);
+set_color_profile_slot(14, 2, 219, 173, 73);
+set_color_profile_slot(14, 3, 71, 43, 23);
+set_color_profile_slot(14, 4, 219, 173, 73);
+set_color_profile_slot(14, 5, 24, 104, 8);
 
 //Rivet
-set_color_profile_slot(14, 0, 160, 160, 160);
-set_color_profile_slot(14, 1, 0, 0, 0);
-set_color_profile_slot(14, 2, 216, 184, 0);
-set_color_profile_slot(14, 3, 200, 50, 0);
-set_color_profile_slot(14, 4, 220, 220, 160);
-set_color_profile_slot(14, 5, 0, 0, 77);
-
-//Voiced colours
-
-set_color_profile_slot(15, 0, 64, 124, 48);
+set_color_profile_slot(15, 0, 160, 160, 160);
 set_color_profile_slot(15, 1, 0, 0, 0);
 set_color_profile_slot(15, 2, 216, 184, 0);
-set_color_profile_slot(15, 3, 200, 0, 0);
-set_color_profile_slot(15, 4, 160, 184, 56);
-set_color_profile_slot(15, 5, 64, 124, 48);
+set_color_profile_slot(15, 3, 200, 50, 0);
+set_color_profile_slot(15, 4, 220, 220, 160);
+set_color_profile_slot(15, 5, 0, 0, 77);
 
-//Yellow scarf
-set_color_profile_slot(16, 0, 64, 124, 48);
-set_color_profile_slot(16, 1, 0, 0, 0);
-set_color_profile_slot(16, 2, 216, 184, 0);
-set_color_profile_slot(16, 3, 248, 252, 0);
-set_color_profile_slot(16, 4, 160, 184, 56);
+//Carrie
+set_color_profile_slot(16, 0, 210, 197, 37);
+set_color_profile_slot(16, 1, 166, 73, 0);
+set_color_profile_slot(16, 2, 255, 255, 255);
+set_color_profile_slot(16, 3, 166, 73, 0)
+set_color_profile_slot(16, 4, 66, 66, 66);
 set_color_profile_slot(16, 5, 64, 124, 48);
 
-//Pink Scarf
-set_color_profile_slot(17, 0, 64, 124, 48);
-set_color_profile_slot(17, 1, 0, 0, 0);
-set_color_profile_slot(17, 2, 216, 184, 0);
-set_color_profile_slot(17, 3, 248, 100, 248);
-set_color_profile_slot(17, 4, 160, 184, 56);
-set_color_profile_slot(17, 5, 64, 124, 48);
+//SSL
+set_color_profile_slot(17, 0, 167, 186, 74 );
+set_color_profile_slot(17, 1, 35, 67, 49 );
+set_color_profile_slot(17, 2, 83, 122, 62 );
+set_color_profile_slot(17, 3, 211, 226, 154 );
+set_color_profile_slot(17, 4, 167, 186, 74 );
+set_color_profile_slot(17, 5, 167, 186, 74 );
 
-//Blue Scarf
-set_color_profile_slot(18, 0, 64, 124, 48);
-set_color_profile_slot(18, 1, 0, 0, 0);
-set_color_profile_slot(18, 2, 216, 184, 0);
-set_color_profile_slot(18, 3, 98, 116, 248);
-set_color_profile_slot(18, 4, 160, 184, 56);
-set_color_profile_slot(18, 5, 64, 124, 48);
+//Gold Kitty
+set_color_profile_slot( 18, 0, 255, 162, 29 );
+set_color_profile_slot( 18, 1, 86, 23, 16 );
+set_color_profile_slot( 18, 2, 192, 92, 0 );
+set_color_profile_slot( 18, 3, 255, 162, 29 );
+set_color_profile_slot( 18, 4, 255, 234, 155 ); 
+set_color_profile_slot( 18, 5, 255, 162, 29 );
 
-//White Scarf
-set_color_profile_slot(19, 0, 64, 124, 48);
-set_color_profile_slot(19, 1, 0, 0, 0);
-set_color_profile_slot(19, 2, 216, 184, 0);
-set_color_profile_slot(19, 3, 232, 232, 232);
-set_color_profile_slot(19, 4, 160, 184, 56);
-set_color_profile_slot(19, 5, 64, 124, 48);
-
-//Corazon
-set_color_profile_slot(20, 0, 64, 124, 48);
-set_color_profile_slot(20, 1, 125, 0, 0);
-set_color_profile_slot(20, 2, 216, 184, 0);
-set_color_profile_slot(20, 3, 125, 0, 0);
-set_color_profile_slot(20, 4, 160, 184, 56);
-set_color_profile_slot(20, 5, 196, 164, 0);
-
-//Lilac
-set_color_profile_slot(21, 0, 120, 64, 176);
-set_color_profile_slot(21, 1, 0, 64, 168);
-set_color_profile_slot(21, 2, 216, 164, 24);
-set_color_profile_slot(21, 3, 0, 144, 248);
-set_color_profile_slot(21, 4, 176, 120, 248);
-set_color_profile_slot(21, 5, 248, 0, 144);
-
-//Milla
-set_color_profile_slot(22, 0, 160, 160, 104);
-set_color_profile_slot(22, 1, 255, 255, 255);
-set_color_profile_slot(22, 2, 96, 200, 0);
-set_color_profile_slot(22, 3, 230, 102, 27);
-set_color_profile_slot(22, 4, 254, 189, 159);
-set_color_profile_slot(22, 5, 24, 104, 8);
-
-//Mayor Zhao
-set_color_profile_slot(23, 0, 192, 80, 0);
-set_color_profile_slot(23, 1, 255, 0, 0);
-set_color_profile_slot(23, 2, 216, 184, 0);
-set_color_profile_slot(23, 3, 255, 0, 0);
-set_color_profile_slot(23, 4, 255, 255, 255);
-set_color_profile_slot(23, 5, 0, 92, 0);
-
-//Garfield
-set_color_profile_slot(24, 0, 181, 74, 0);
-set_color_profile_slot(24, 1, 74, 0, 0);
-set_color_profile_slot(24, 2, 181, 74, 0);
-set_color_profile_slot(24, 3, 181, 74, 0);
-set_color_profile_slot(24, 4, 255, 181, 0);
-set_color_profile_slot(24, 5, 255, 255, 255);
-
-//Litten
-set_color_profile_slot(25, 0, 30, 30, 30);
-set_color_profile_slot(25, 1, 155, 155, 255);
-set_color_profile_slot(25, 2, 30, 30, 30);
-set_color_profile_slot(25, 3, 30, 30, 30);
-set_color_profile_slot(25, 4, 255, 0, 0);
-set_color_profile_slot(25, 5, 255, 255, 0);
-
-//Sprigatito
-set_color_profile_slot(26, 0, 104, 170, 47);
-set_color_profile_slot(26, 1, 104, 170, 47);
-set_color_profile_slot(26, 2, 104, 170, 47);
-set_color_profile_slot(26, 3, 104, 170, 47);
-set_color_profile_slot(26, 4, 206, 230, 178);
-set_color_profile_slot(26, 5, 180, 95, 100);
-
-//Big
-set_color_profile_slot(27, 0, 42, 2, 23);
-set_color_profile_slot(27, 1, 255, 255, 255);
-set_color_profile_slot(27, 2, 255, 255, 255);
-set_color_profile_slot(27, 3, 42, 2, 23);
-set_color_profile_slot(27, 4, 72, 32, 104);
-set_color_profile_slot(27, 5, 255, 255, 255);
-
-//Ratchet
-set_color_profile_slot(28, 0, 163, 119, 64);
-set_color_profile_slot(28, 1, 162, 91, 27);
-set_color_profile_slot(28, 2, 219, 173, 73);
-set_color_profile_slot(28, 3, 71, 43, 23);
-set_color_profile_slot(28, 4, 219, 173, 73);
-set_color_profile_slot(28, 5, 24, 104, 8);
-
-//Rivet
-set_color_profile_slot(29, 0, 160, 160, 160);
-set_color_profile_slot(29, 1, 0, 0, 0);
-set_color_profile_slot(29, 2, 216, 184, 0);
-set_color_profile_slot(29, 3, 200, 50, 0);
-set_color_profile_slot(29, 4, 220, 220, 160);
-set_color_profile_slot(29, 5, 0, 0, 77);

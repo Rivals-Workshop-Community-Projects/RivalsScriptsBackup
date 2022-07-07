@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 18, 18, 36 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 29 );
 
 // Super
 set_color_profile_slot( 1, 0, 254, 216, 27 ); //Fur
@@ -246,65 +246,75 @@ set_color_profile_slot( 21, 5, 112, 53, 35 ); //Gloves
 set_color_profile_slot( 21, 6, 33, 27, 28 ); //Shoes
 set_color_profile_slot( 21, 7, 0, 255, 0 ); //Smears
 
-// Sonc
-set_color_profile_slot( 22, 0, 107, 106, 213 ); //Fur
-set_color_profile_slot( 22, 1, 71, 70, 175 ); //Fur S
-set_color_profile_slot( 22, 2, 247, 247, 253 ); //Eyes
-set_color_profile_slot( 22, 3, 0, 0, 0 ); //Iris
-set_color_profile_slot( 22, 4, 250, 179, 140 ); //Skin
-set_color_profile_slot( 22, 5, 221, 218, 242 ); //Gloves
-set_color_profile_slot( 22, 6, 236, 0, 0 ); //Shoes
-set_color_profile_slot( 22, 7, 50, 210, 255 ); //Smears
+// Dorito
+set_color_profile_slot( 22, 0, 232, 132, 21 ); //Fur
+set_color_profile_slot( 22, 1, 201, 83, 18 ); //Fur S
+set_color_profile_slot( 22, 2, 232, 132, 21 ); //Eyes
+set_color_profile_slot( 22, 3, 251, 255, 0 ); //Iris
+set_color_profile_slot( 22, 4, 232, 160, 79 ); //Skin
+set_color_profile_slot( 22, 5, 255, 229, 184 ); //Gloves
+set_color_profile_slot( 22, 6, 245, 154, 35 ); //Shoes
+set_color_profile_slot( 22, 7, 242, 255, 0 ); //Smears
 
-// SkyCrafter1234
-set_color_profile_slot( 23, 0, 0, 168, 243 ); //Fur
-set_color_profile_slot( 23, 1, 0, 100, 214 ); //Fur S
+// Sonc
+set_color_profile_slot( 23, 0, 107, 106, 213 ); //Fur
+set_color_profile_slot( 23, 1, 71, 70, 175 ); //Fur S
 set_color_profile_slot( 23, 2, 247, 247, 253 ); //Eyes
-set_color_profile_slot( 23, 3, 0, 168, 243 ); //Iris
-set_color_profile_slot( 23, 4, 253, 217, 166 ); //Skin
-set_color_profile_slot( 23, 5, 88, 88, 88 ); //Gloves
-set_color_profile_slot( 23, 6, 255, 202, 24 ); //Shoes
+set_color_profile_slot( 23, 3, 0, 0, 0 ); //Iris
+set_color_profile_slot( 23, 4, 250, 179, 140 ); //Skin
+set_color_profile_slot( 23, 5, 221, 218, 242 ); //Gloves
+set_color_profile_slot( 23, 6, 236, 0, 0 ); //Shoes
 set_color_profile_slot( 23, 7, 50, 210, 255 ); //Smears
 
-// Alisa(Dons)
-set_color_profile_slot( 24, 0, 148, 148, 158 ); //Fur
-set_color_profile_slot( 24, 1, 101, 91, 115 ); //Fur S
+// SkyCrafter1234
+set_color_profile_slot( 24, 0, 0, 168, 243 ); //Fur
+set_color_profile_slot( 24, 1, 0, 100, 214 ); //Fur S
 set_color_profile_slot( 24, 2, 247, 247, 253 ); //Eyes
-set_color_profile_slot( 24, 3, 98, 100, 237 ); //Iris
-set_color_profile_slot( 24, 4, 243, 225, 203 ); //Skin
-set_color_profile_slot( 24, 5, 255, 254, 254 ); //Gloves
-set_color_profile_slot( 24, 6, 237, 29, 38 ); //Shoes
-set_color_profile_slot( 24, 7, 98, 100, 237 ); //Smears
+set_color_profile_slot( 24, 3, 0, 168, 243 ); //Iris
+set_color_profile_slot( 24, 4, 253, 217, 166 ); //Skin
+set_color_profile_slot( 24, 5, 88, 88, 88 ); //Gloves
+set_color_profile_slot( 24, 6, 255, 202, 24 ); //Shoes
+set_color_profile_slot( 24, 7, 50, 210, 255 ); //Smears
+
+// Alisa(Dons)
+set_color_profile_slot( 25, 0, 148, 148, 158 ); //Fur
+set_color_profile_slot( 25, 1, 101, 91, 115 ); //Fur S
+set_color_profile_slot( 25, 2, 247, 247, 253 ); //Eyes
+set_color_profile_slot( 25, 3, 98, 100, 237 ); //Iris
+set_color_profile_slot( 25, 4, 243, 225, 203 ); //Skin
+set_color_profile_slot( 25, 5, 255, 254, 254 ); //Gloves
+set_color_profile_slot( 25, 6, 237, 29, 38 ); //Shoes
+set_color_profile_slot( 25, 7, 98, 100, 237 ); //Smears
 
 // Gee
-set_color_profile_slot( 25, 0, 251, 255, 18 ); //Fur
-set_color_profile_slot( 25, 1, 214, 168, 15 ); //Fur S
-set_color_profile_slot( 25, 2, 247, 247, 253 ); //Eyes
-set_color_profile_slot( 25, 3, 151, 75, 11 ); //Iris
-set_color_profile_slot( 25, 4, 239, 229, 175 ); //Skin
-set_color_profile_slot( 25, 5, 239, 229, 175 ); //Gloves
-set_color_profile_slot( 25, 6, 65, 65, 65 ); //Shoes
-set_color_profile_slot( 25, 7, 255, 132, 74 ); //Smears
+set_color_profile_slot( 26, 0, 251, 255, 18 ); //Fur
+set_color_profile_slot( 26, 1, 214, 168, 15 ); //Fur S
+set_color_profile_slot( 26, 2, 247, 247, 253 ); //Eyes
+set_color_profile_slot( 26, 3, 151, 75, 11 ); //Iris
+set_color_profile_slot( 26, 4, 239, 229, 175 ); //Skin
+set_color_profile_slot( 26, 5, 239, 229, 175 ); //Gloves
+set_color_profile_slot( 26, 6, 65, 65, 65 ); //Shoes
+set_color_profile_slot( 26, 7, 255, 132, 74 ); //Smears
 
 // Oarly
-set_color_profile_slot( 26, 0, 193, 228, 237 ); //Fur
-set_color_profile_slot( 26, 1, 138, 163, 170 ); //Fur S
-set_color_profile_slot( 26, 2, 168, 222, 237 ); //Eyes
-set_color_profile_slot( 26, 3, 168, 222, 237 ); //Iris
-set_color_profile_slot( 26, 4, 239, 229, 175 ); //Skin
-set_color_profile_slot( 26, 5, 72, 111, 78 ); //Gloves
-set_color_profile_slot( 26, 6, 150, 104, 76 ); //Shoes
-set_color_profile_slot( 26, 7, 255, 143, 169 ); //Smears
+set_color_profile_slot( 27, 0, 193, 228, 237 ); //Fur
+set_color_profile_slot( 27, 1, 138, 163, 170 ); //Fur S
+set_color_profile_slot( 27, 2, 168, 222, 237 ); //Eyes
+set_color_profile_slot( 27, 3, 168, 222, 237 ); //Iris
+set_color_profile_slot( 27, 4, 239, 229, 175 ); //Skin
+set_color_profile_slot( 27, 5, 72, 111, 78 ); //Gloves
+set_color_profile_slot( 27, 6, 150, 104, 76 ); //Shoes
+set_color_profile_slot( 27, 7, 255, 143, 169 ); //Smears
 
 // Chip
-set_color_profile_slot( 27, 0, 210, 40, 40 ); //Fur
-set_color_profile_slot( 27, 1, 155, 0, 0 ); //Fur S
-set_color_profile_slot( 27, 2, 247, 247, 253 ); //Eyes
-set_color_profile_slot( 27, 3, 189, 114, 81 ); //Iris
-set_color_profile_slot( 27, 4, 254, 211, 166 ); //Skin
-set_color_profile_slot( 27, 5, 66, 79, 159 ); //Gloves
-set_color_profile_slot( 27, 6, 114, 149, 229 ); //Shoes
-set_color_profile_slot( 27, 7, 237, 29, 38 ); //Smears
+set_color_profile_slot( 28, 0, 210, 40, 40 ); //Fur
+set_color_profile_slot( 28, 1, 155, 0, 0 ); //Fur S
+set_color_profile_slot( 28, 2, 247, 247, 253 ); //Eyes
+set_color_profile_slot( 28, 3, 189, 114, 81 ); //Iris
+set_color_profile_slot( 28, 4, 254, 211, 166 ); //Skin
+set_color_profile_slot( 28, 5, 66, 79, 159 ); //Gloves
+set_color_profile_slot( 28, 6, 114, 149, 229 ); //Shoes
+set_color_profile_slot( 28, 7, 237, 29, 38 ); //Smears
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

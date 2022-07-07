@@ -1,3 +1,44 @@
+// ==================== GRAFFITI INIT ======================
+// set up colors
+graffiti_colors[0] = make_color_rgb(212, 69, 254); // outer outline
+graffiti_colors[1] = make_color_rgb(183, 59, 219); // outline
+graffiti_colors[2] = make_color_rgb(255, 255,255); // main text
+graffiti_colors[3] = make_color_rgb(255, 187, 255); // text anti-aliasing
+
+// default string if there is no player tag
+graffiti_string_default = "Blaze" // default string if no player tag
+
+// set which window / window_timer to spawn the graffiti article
+graffiti_window = 2;
+graffiti_window_timer = 1;
+
+
+// ===== Please don't edit below here :) =====
+// the fonts to use when drawing -- the array indexes match up with the graffiti_colors array indexes
+graffiti_fonts[0] = font_get("_graffiti_outerline");
+graffiti_fonts[1] = font_get("_graffiti_outline");
+graffiti_fonts[2] = font_get("_graffiti");
+graffiti_fonts[3] = font_get("_graffiti_aa");
+
+// some variables to keep track of things
+graffiti_id = noone; // keeps track of your old graffiti article
+graffiti_tagging = false; // set true right before you spawn the graffiti, false immediately after
+
+// get player tag
+graffiti_string = string_lower(get_player_name(player));
+// replace any tag containing special characters with the default string
+if string_lettersdigits(graffiti_string) != string_replace_all(graffiti_string, " ", "") {
+    graffiti_string = string_lower(graffiti_string_default);
+}
+// replace empty tags with default tag
+switch graffiti_string {
+    case "p1": case "p2": case "p3": case "p4": case "":
+        graffiti_string = string_lower(graffiti_string_default);
+        break;
+}
+// =========================================================
+
+
 char_height = 52;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;

@@ -108,3 +108,9 @@ sprite_change_offset("doge_strong_words", 64, 32);
 sprite_change_offset("cloud", 50, 50);
 sprite_change_offset("spring", 90, 120);
 sprite_change_offset("fx_fire2_small", 20, 60);
+
+sprite_change_offset("dorito_texture", 100, 100);
+sprite_change_offset("black_pixels", 2, 4);
+sprite_change_offset("dorito_hud", 0, -2);
+sprite_change_offset("dorito_hud_hurt", 0, -2);
+sprite_change_offset("dorito_offscreen", 16, 18);

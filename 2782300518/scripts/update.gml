@@ -1,8 +1,5 @@
 //update
 
-//This code enables voice lines for the rest of the character
-voice = (voice_toggle > 14);
-
 //Charge the meter
 if (feline_power = false)
 {
@@ -42,7 +39,9 @@ if (motorbike == false)
 	crouchbox_spr = asset_get("ex_guy_crouch_box");
 	jump_sound = sound_get("jump");
 	djump_sound = asset_get("sfx_jumpair");
-		
+	//Bike doesn't have idle fidget, this gives the fidget back
+	wait_time = 400;
+	
 	//Abyss Runes reset, just in case!
 	if has_rune("B"){
     	walk_accel = 0.3;
@@ -88,7 +87,7 @@ if (motorbike == false)
 		timage_index=0;
 		timage_number=7;
 		tfront=false;
-		tx=-45*spr_dir;
+		tx=-46*spr_dir;
 		ty=-70;
 		tsx=1;
 		tsy=1;
@@ -127,13 +126,84 @@ if (motorbike == false)
 	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND){
 		comboCounter = 0;
 		switch (state){
+			case PS_IDLE:
+				tsprite_index=-1;
+				trotation=0;
+				tfront=0;
+				tx=0;
+				ty=0;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;
+				if (state_timer == 397)
+				{
+					voice_protection = false;
+					//Wait Animation stuff, she doesn't like it when she's not moving
+					if (voice > 0)
+					{
+						wait_idle_pick = random_func(idle_index, 5, 1);
+					}
+					else
+					{
+						wait_idle_pick = random_func(idle_index, 2, 1);
+					}
+					switch (wait_idle_pick)
+					{
+						case 0:
+							wait_length = 70;
+							wait_sprite = sprite_get("wait");
+						break;
+						case 1:
+							wait_length = 60;
+							wait_sprite = sprite_get("waitb");
+						break;
+						case 2:
+							wait_length = 120;
+							wait_sprite = sprite_get("waitc");
+							voice_protection = true;
+						case 3:
+							wait_length = 160;
+							wait_sprite = sprite_get("waitc");
+							voice_protection = true;
+						break;
+						case 4:
+							wait_length = 160;
+							wait_sprite = sprite_get("waitd");
+							voice_protection = true;				
+						default:
+						break;
+					}
+					idle_index++;
+				}
+				if (voice == 1)
+				{
+					if (wait_idle_pick == 2 && state_timer == 20 && voice_protection = true)
+					{
+						sound_stop(sound_get("im_bored"));
+						sound_play(sound_get("im_bored"));
+						voice_protection = false;
+					}
+					else if (wait_idle_pick == 3 && state_timer == 20 && voice_protection = true)
+					{	
+						sound_stop(sound_get("why_are_we_stopping"));
+						sound_play(sound_get("why_are_we_stopping"));
+						voice_protection = false;
+					}
+					else if (wait_idle_pick == 4 && state_timer == 20 && voice_protection = true)
+					{
+						sound_stop(sound_get("what_you_doing"));
+						sound_play(sound_get("what_you_doing"));
+						voice_protection = false;
+					}
+				}
+			break;
 	  		case PS_PARRY:
      		tsprite_index=sprite_get("tail_idle");
 			trotation=0;
 			timage_number=12;
 			timage_speed=0.25;
 			tfront=false;
-			tx=-45*spr_dir;
+			tx=-46*spr_dir;
 			ty=-66;
 			tsx=1;
 			tsy=1;
@@ -198,7 +268,7 @@ if (motorbike == false)
 			timage_number=6;
 			timage_speed=0.17;
 			tfront=false;
-			tx=-45*spr_dir;
+			tx=-46*spr_dir;
 			ty=-66;
 			tsx=1;
 			tsy=1;
@@ -213,7 +283,7 @@ if (motorbike == false)
 			timage_index=0;
 			timage_number=7;
 			tfront=false;
-			tx=-45*spr_dir;
+			tx=-46*spr_dir;
 			ty=-70;
 			tsx=1;
 			tsy=1;
@@ -225,7 +295,7 @@ if (motorbike == false)
 			timage_number=7;
 			timage_speed=0.25;
 			tfront=false;
-			tx=-45*spr_dir;
+			tx=-46*spr_dir;
 			ty=-70;
 			tsx=1;
 			tsy=1;
@@ -258,6 +328,10 @@ else if (motorbike == true)
 	jump_sound = sound_get("motorbike_wheelie");
 	djump_sound = sound_get("motorbike_spin");
 	fuel_remaining = fuel;
+	//Bike doesn't have idle fidget, these values should make it unlikely it's ever seen
+	wait_time = 100000;
+	wait_length = 16;
+	wait_sprite = sprite_get("idle2");
 	
 	if has_rune("I")
 	{

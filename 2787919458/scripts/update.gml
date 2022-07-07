@@ -22,7 +22,7 @@ switch(state){
     		random_dash = random_func(1,7,true)
     	}
     	hsp = clamp((5 * spr_dir) + (state_timer / 6 * spr_dir),-maxspd,maxspd);
-		if(get_player_color(player) == 27){
+		if(get_player_color(player) == 28){
 			if(get_gameplay_time() % 6 == 0){
 				var fire = spawn_hit_fx(x-(25*spr_dir)+random_func(1, 10, true)*spr_dir,y+2,fx_fire2_small);fire.spr_dir = -spr_dir;
 			}if(get_gameplay_time() % 8 == 0){

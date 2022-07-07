@@ -70,7 +70,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = asset_get("sfx_ell_small_missile_fire"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 27; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
      //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(23, 57, 230) // "color preview square" color. can be any color!
@@ -157,6 +157,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[26,0] = make_color_rgb(206, 151, 226)
     ce[26,1] = "Ender"
     ce[26,2] = "Look for the eye."
+    ce[27,0] = make_color_rgb(179, 82, 183)
+    ce[27,1] = "Infamous"
+    ce[27,2] = "Before the Definitive Edition."
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

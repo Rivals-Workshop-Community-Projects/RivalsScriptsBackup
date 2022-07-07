@@ -46,6 +46,7 @@ if(get_gameplay_time() <= 120){
 if(sanic_uspec_count != 0){
 	draw_sprite_ext(sprite_get("hud_joint"),sanic_uspec_count-1,temp_x+180,temp_y,2,2,0,sanic_uspec_count==3?c_gray:-1,1)
 }
+
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 muno_event_type = 5;

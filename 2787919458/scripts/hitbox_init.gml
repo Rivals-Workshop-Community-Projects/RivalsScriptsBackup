@@ -91,7 +91,7 @@ if(attack == AT_USTRONG){
 			case 15:
 				sprite_index = sprite_get("doge_idle_weegee")
 			break;			
-			case 23:
+			case 24:
 				sprite_index = sprite_get("doge_idle_lolbit")
 			break;					
 		}

@@ -302,7 +302,7 @@ else
 			}
 			if (random_direction > 0)
 			{
-				if ((window == 3 || window == 5) && window_timer == 1 && has_hit_player)
+				if ((window == 3 || window == 5) && window_timer == 3 && has_hit_player)
 				{
 					switch (random_direction)
 					{
@@ -335,7 +335,7 @@ else
 			}
 			else if (random_direction == 0)
 			{
-				if ((window == 3 || window == 5) && window_timer == 6 && has_hit_player)
+				if ((window == 3 || window == 5) && window_timer == 3 && has_hit_player)
 				{
 					joy_pad_idle = false;
 					attack_pressed = true;
