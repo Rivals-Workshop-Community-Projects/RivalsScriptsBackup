@@ -2,7 +2,7 @@ set_attack_value(AT_FTILT, AG_CATEGORY, 0);
 set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt"));
 set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
-set_num_hitboxes(AT_FTILT, 1);
+set_num_hitboxes(AT_FTILT, 2);
 
 set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FTILT, 1, AG_WINDOW_TYPE, 0);
@@ -43,11 +43,10 @@ set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 2);
-set_hitbox_value(AT_FTILT, 2, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 80);
-set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 70);
-set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 60);
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 25);
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -50);
+set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 50);
+set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 50);
 set_hitbox_value(AT_FTILT, 2, HG_SHAPE, 1);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 3);

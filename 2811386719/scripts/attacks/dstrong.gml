@@ -179,8 +179,8 @@ set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 //Ball
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSTRONG, 7, HG_LIFETIME, 300);
-set_hitbox_value(AT_DSTRONG, 7, HG_WIDTH, 50);
-set_hitbox_value(AT_DSTRONG, 7, HG_HEIGHT, 50);
+set_hitbox_value(AT_DSTRONG, 7, HG_WIDTH, 45);
+set_hitbox_value(AT_DSTRONG, 7, HG_HEIGHT, 45);
 set_hitbox_value(AT_DSTRONG, 7, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSTRONG, 7, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSTRONG, 7, HG_ANGLE, 65);

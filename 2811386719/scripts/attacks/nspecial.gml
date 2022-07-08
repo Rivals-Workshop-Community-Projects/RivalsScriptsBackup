@@ -14,7 +14,7 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 
 //active
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 0);
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 2);
 // set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 // set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
@@ -30,12 +30,12 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 
 //grab hitbox
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 35);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -25);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 45);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 55);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);

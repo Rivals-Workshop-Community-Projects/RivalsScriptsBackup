@@ -8,6 +8,11 @@ if(my_hitboxID.attack == AT_EXTRA_1 and my_hitboxID.hbox_num == 1){
 	can_cling = false;
 }
 
+if(my_hitboxID.attack == AT_DSPECIAL and my_hitboxID.hbox_num >= 3){
+	hsp *=1.2
+	
+}
+
 if("bubble" in my_hitboxID and my_hitboxID.bubble){
   my_hitboxID.follow_owner = true;
   // my_hitboxID.hsp *= -1;

@@ -50,7 +50,7 @@ set_window_value(AT_NTHROW, 4, AG_WINDOW_VSPEED, -4);
 
 //monster down
 set_window_value(AT_NTHROW, 5, AG_WINDOW_TYPE, 8);
-set_window_value(AT_NTHROW, 5, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_NTHROW, 5, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_GOTO, 6);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NTHROW, 5, AG_WINDOW_ANIM_FRAME_START, 18);
@@ -126,12 +126,12 @@ set_hitbox_value(AT_NTHROW, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_NTHROW, 2, HG_WIDTH, 100);
 set_hitbox_value(AT_NTHROW, 2, HG_HEIGHT, 100);
 set_hitbox_value(AT_NTHROW, 2, HG_DAMAGE, 10);
-set_hitbox_value(AT_NTHROW, 2, HG_ANGLE, 50);
-set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, 1.25);
-set_hitbox_value(AT_NTHROW, 2, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_NTHROW, 2, HG_ANGLE, 45);
+set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, 1.15);
+set_hitbox_value(AT_NTHROW, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_NTHROW, 2, HG_EXTRA_CAMERA_SHAKE, 1);
-set_hitbox_value(AT_NTHROW, 2, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_NTHROW, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_NTHROW, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 // set_hitbox_value(AT_NTHROW, 2, HG_VISUAL_EFFECT, nspecial_water_explosion_hfx);
 
@@ -163,11 +163,11 @@ set_hitbox_value(AT_NTHROW, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_NTHROW, 3, HG_WIDTH, 100);
 set_hitbox_value(AT_NTHROW, 3, HG_HEIGHT, 100);
 set_hitbox_value(AT_NTHROW, 3, HG_DAMAGE, 10);
-set_hitbox_value(AT_NTHROW, 3, HG_ANGLE, 50);
-set_hitbox_value(AT_NTHROW, 3, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_NTHROW, 3, HG_KNOCKBACK_SCALING, 1.25);
-set_hitbox_value(AT_NTHROW, 3, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_NTHROW, 3, HG_ANGLE, 45);
+set_hitbox_value(AT_NTHROW, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_NTHROW, 3, HG_KNOCKBACK_SCALING, 1.15);
+set_hitbox_value(AT_NTHROW, 3, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_NTHROW, 3, HG_EXTRA_CAMERA_SHAKE, 1);
-set_hitbox_value(AT_NTHROW, 3, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_NTHROW, 3, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_NTHROW, 3, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"))
 // set_hitbox_value(AT_NTHROW, 3, HG_VISUAL_EFFECT, nspecial_water_miss_ground_hitfx_hfx)

@@ -17,13 +17,12 @@ if (my_hitboxID.attack == AT_NSPECIAL or (my_hitboxID.attack == AT_USPECIAL_GROU
 		switch(attack){
 			case AT_NSPECIAL:
 				permanent_static = false;
-				if(hit_player_obj.static_pull) StaticConsume(hit_player_obj);
 				set_attack(AT_NTHROW);
 				hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);
 				sound_play(asset_get("sfx_forsburn_spew_end"))
 				break;
 			case AT_USPECIAL_GROUND:
-				if(hit_player_obj.static_pull) StaticConsume(hit_player_obj);
+				// if(hit_player_obj.static_pull) StaticConsume(hit_player_obj);
 				switch_to_uthrow = true;
 				break;
 			
@@ -89,6 +88,13 @@ if(my_hitboxID.attack == AT_DSPECIAL and (my_hitboxID.hbox_num == 3 or my_hitbox
 
 if(my_hitboxID.attack == AT_FSTRONG and my_hitboxID.hbox_num == 2){
 	StaticMark()
+}
+
+if(attack == AT_NTHROW and (my_hitboxID.hbox_num >= 2)){
+	if(hit_player_obj.static_pull) StaticConsume(hit_player_obj);
+}
+if(attack == AT_UTHROW and (my_hitboxID.hbox_num >= 2)){
+	if(hit_player_obj.static_pull) StaticConsume(hit_player_obj);
 }
 
 if(static >= 100 and !hit_player_obj.static_pull){

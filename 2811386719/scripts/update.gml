@@ -15,7 +15,7 @@ if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
     move_cooldown[AT_USPECIAL] = 0;
 }
 
-
+// print(can_cling)
 
 
 if(state != PS_WALL_JUMP){
@@ -23,20 +23,29 @@ if(state != PS_WALL_JUMP){
 	// can_cling = can_wall_jump and has_walljump and !(attack == AT_EXTRA_1 and window > 0);
 	
 }else{
+	if(state_timer == 0 and has_walljump and (attack != AT_EXTRA_1 and (state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND))){
+		doCling()
+		print("I did it")
+	}
   if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
+  	print("1")
     doCling()
   }
 }
 
-can_cling = can_wall_jump and has_walljump and !(attack == AT_EXTRA_1 and window > 0);
+// print(can_wall_jump)
+
+can_cling = can_wall_jump and has_walljump and (attack != AT_EXTRA_1 and (state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND));
 
 if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
-	if(can_wall_jump and has_walljump and (jump_down or (can_tap_jump() and tap_jump_pressed))){
+	if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
 		if(place_meeting(x + 1, y, solids)){
+			print("2")
 			spr_dir = sign(-1)
 			has_walljump = false;
 			set_state(PS_WALL_JUMP);
 		}else if(place_meeting(x - 1, y, solids)){
+			print("3")
 			spr_dir = sign(1)
 			has_walljump = false;
 			set_state(PS_WALL_JUMP);
@@ -55,6 +64,8 @@ if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
   	}
 	}
 }
+
+has_walljump_old = has_walljump
 
 // if(keyboard_lastkey == ord("O")){
 // 	// payload = !payload;
@@ -80,22 +91,24 @@ if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
 // 	room_speed = orig_room_speed
 // } 
 // with geyser_dfx{
- // var ls = ds_list_create()
-	// variable_instance_get_names(id,ls)
-	// var s = 9
-	// for (var i = 0; i < ds_list_size(ls); i += s){
-	//   	var strings = "";
-	//   	for(var j = 0; j < s; j++){
-	//   		if(ls[| i + j] == undefined or string_pos("inv", ls[| i + j]) == 0) continue;
-	//   		strings += ls[| i + j] + " ";
-	//   	}
-	//   	if(strings != "")print(strings);
+//   var ls = ds_list_create()
+// 	variable_instance_get_names(id,ls)
+// 	var s = 9
+// 	for (var i = 0; i < ds_list_size(ls); i += s){
+// 	  	var strings = "";
+// 	  	for(var j = 0; j < s; j++){
+// 	  		if(ls[| i + j] == undefined or string_pos("inv", ls[| i + j]) == 0) continue;
+// 	  		strings += ls[| i + j] + " ";
+// 	  	}
+// 	  	if(strings != "")print(strings);
 	  
 	  
-	// } 
-	// ds_list_destroy(ls);
+// 	} 
+// 	ds_list_destroy(ls);
 // }
 
+// for(var i = 0; )
+// print(set_ui_element(4, sprite_get("tech")))
 
 // if(taunt_down){
 //     static = 100;
@@ -146,10 +159,10 @@ pullFactor()
 
 clear_button_buffer(PC_JUMP_PRESSED);
 can_let_go_jump = false;
+has_walljump = false;
 walljump_charge = -1;
 hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
 set_attack(AT_EXTRA_1);
-can_cling = false;
 
 #define jet_update()
 

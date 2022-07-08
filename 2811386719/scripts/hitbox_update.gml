@@ -35,25 +35,10 @@ if(attack == AT_USPECIAL and hbox_num == 1){
 }
 
 if(attack == AT_DSPECIAL){
-  if(hbox_num == 3){
-  	// spr_dir *= .8
+  if(hbox_num == 3 or hbox_num = 4){
+  	draw_xscale = spr_dir
+  	kb_value += 1/8
     if(mark_for_destruction) destroyed = true;
-    
-  //   var ls = ds_list_create()
-		// variable_instance_get_names(id,ls)
-		// var s = 9
-		// for (var i = 0; i < ds_list_size(ls)-30; i += s){
-		//   	var strings = "";
-		//   	for(var j = 0; j < s; j++){
-		//   		if(ls[| i + j] == undefined) continue;
-		//   		strings += ls[| i + j] + " ";
-		//   	}
-		//   	print(strings);
-		  
-		  
-		// } 
-		// ds_list_destroy(ls);
-		
     if !ground_col(){
       var it = 0;
       while(!ground_col() and it < 50){
@@ -61,30 +46,13 @@ if(attack == AT_DSPECIAL){
         hsp = hsp - spr_dir;
       }
       mark_for_destruction = true;
-      var temp = spawn_hit_fx(x, y, player_id.wave_fx);
+      var temp = spawn_hit_fx(x, y, hbox_num == 3 ? player_id.wave_fx : player_id.electric_wave_fx);
       temp.spr_dir = spr_dir;
     }else{
       if (hitbox_timer % 3 == 2){
-          var temp = spawn_hit_fx(x+hsp, y, player_id.wave_fx);
+          var temp = spawn_hit_fx(x+hsp, y, hbox_num == 3 ? player_id.wave_fx : player_id.electric_wave_fx);
           temp.spr_dir = spr_dir;
       }
-    }
-  }else if(hbox_num == 4){
-    if(mark_for_destruction) destroyed = true;
-    if !ground_col(){
-    		var it = 0;
-        while(!ground_col() and it < 50){
-        	it++
-          hsp = hsp - spr_dir;
-        }
-        mark_for_destruction = true;
-        var temp = spawn_hit_fx(x, y, player_id.electric_wave_fx);
-        temp.spr_dir = spr_dir;
-    }else{
-        if (hitbox_timer % 3 == 2){
-            var temp = spawn_hit_fx(x+hsp, y, player_id.electric_wave_fx);
-            temp.spr_dir = spr_dir;
-        }
     }
   }
 }

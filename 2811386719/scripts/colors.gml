@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 20, 10, 21 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 32 );
+set_num_palettes( 29 );
 
 // Red
 set_color_profile_slot( 1, 0, 240, 203, 55 ); //Horn/static
@@ -226,75 +226,75 @@ set_color_profile_slot( 19, 5, 75, 98, 117 ); //Pants
 set_color_profile_slot( 19, 6, 135, 26, 26 ); //gloves
 set_color_profile_slot( 19, 7, 110, 0, 34 ); //slippers/mouth/heart
 
-// Potemkin
-set_color_profile_slot( 20, 0, 163, 162, 160 ); //Horn/static
-set_color_profile_slot( 20, 1, 79, 84, 79 ); //Shirt
-set_color_profile_slot( 20, 2, 63, 69, 42 ); //Coat
-set_color_profile_slot( 20, 3, 255, 130, 0 ); //water
-set_color_profile_slot( 20, 4, 83, 87, 66 ); //skin
-set_color_profile_slot( 20, 5, 69, 84, 66 ); //Pants
-set_color_profile_slot( 20, 6, 168, 34, 0 ); //gloves
-set_color_profile_slot( 20, 7, 120, 0, 0 ); //slippers/mouth/heart
-
 // King of Magnets
-set_color_profile_slot( 21, 0, 84, 88, 78 ); //Horn/static
-set_color_profile_slot( 21, 1, 153, 40, 0 ); //Shirt
-set_color_profile_slot( 21, 2, 90, 6, 5 ); //Coat
-set_color_profile_slot( 21, 3, 39, 163, 79 ); //water
-set_color_profile_slot( 21, 4, 254, 73, 0 ); //skin
-set_color_profile_slot( 21, 5, 82, 92, 97 ); //Pants
-set_color_profile_slot( 21, 6, 141, 141, 141 ); //gloves
-set_color_profile_slot( 21, 7, 110, 3, 12 ); //slippers/mouth/heart
+set_color_profile_slot( 20, 0, 81, 82, 73 ); //Horn/static
+set_color_profile_slot( 20, 1, 156, 39, 0 ); //Shirt
+set_color_profile_slot( 20, 2, 92, 5, 5 ); //Coat
+set_color_profile_slot( 20, 3, 227, 215, 107 ); //water
+set_color_profile_slot( 20, 4, 230, 55, 10 ); //skin
+set_color_profile_slot( 20, 5, 97, 72, 58 ); //Pants
+set_color_profile_slot( 20, 6, 97, 97, 97 ); //gloves
+set_color_profile_slot( 20, 7, 109, 3, 11 ); //slippers/mouth/heart
 
 // Collosus
-set_color_profile_slot( 22, 0, 255, 255, 112 ); //Horn/static
-set_color_profile_slot( 22, 1, 255, 204, 0 ); //Shirt
-set_color_profile_slot( 22, 2, 184, 0, 55 ); //Coat
-set_color_profile_slot( 22, 3, 112, 157, 158 ); //water
-set_color_profile_slot( 22, 4, 183, 199, 193 ); //skin
-set_color_profile_slot( 22, 5, 196, 0, 25 ); //Pants
-set_color_profile_slot( 22, 6, 184, 0, 0 ); //gloves
-set_color_profile_slot( 22, 7, 143, 0, 51 ); //slippers/mouth/heart
+set_color_profile_slot( 21, 0, 255, 255, 112 ); //Horn/static
+set_color_profile_slot( 21, 1, 255, 204, 0 ); //Shirt
+set_color_profile_slot( 21, 2, 184, 0, 55 ); //Coat
+set_color_profile_slot( 21, 3, 112, 157, 158 ); //water
+set_color_profile_slot( 21, 4, 183, 199, 193 ); //skin
+set_color_profile_slot( 21, 5, 196, 0, 25 ); //Pants
+set_color_profile_slot( 21, 6, 184, 0, 0 ); //gloves
+set_color_profile_slot( 21, 7, 143, 0, 51 ); //slippers/mouth/heart
 
 // Victor
-set_color_profile_slot( 23, 0, 240, 192, 64 ); //Horn/static
-set_color_profile_slot( 23, 1, 112, 144, 80 ); //Shirt
-set_color_profile_slot( 23, 2, 96, 112, 48 ); //Coat
-set_color_profile_slot( 23, 3, 134, 240, 240 ); //water
-set_color_profile_slot( 23, 4, 192, 208, 240 ); //skin
-set_color_profile_slot( 23, 5, 222, 94, 59 ); //Pants
-set_color_profile_slot( 23, 6, 93, 104, 145 ); //gloves
-set_color_profile_slot( 23, 7, 176, 96, 48 ); //slippers/mouth/heart
+set_color_profile_slot( 22, 0, 240, 192, 64 ); //Horn/static
+set_color_profile_slot( 22, 1, 112, 144, 80 ); //Shirt
+set_color_profile_slot( 22, 2, 96, 112, 48 ); //Coat
+set_color_profile_slot( 22, 3, 134, 240, 240 ); //water
+set_color_profile_slot( 22, 4, 192, 208, 240 ); //skin
+set_color_profile_slot( 22, 5, 222, 94, 59 ); //Pants
+set_color_profile_slot( 22, 6, 93, 104, 145 ); //gloves
+set_color_profile_slot( 22, 7, 176, 96, 48 ); //slippers/mouth/heart
 
 // K.Wally
-set_color_profile_slot( 24, 0, 234, 197, 86 ); //Horn/static
-set_color_profile_slot( 24, 1, 234, 197, 86 ); //Shirt
-set_color_profile_slot( 24, 2, 246, 62, 57 ); //Coat
-set_color_profile_slot( 24, 3, 217, 219, 81 ); //water
-set_color_profile_slot( 24, 4, 73, 150, 81 ); //skin
-set_color_profile_slot( 24, 5, 255, 51, 51 ); //Pants
-set_color_profile_slot( 24, 6, 250, 55, 47 ); //gloves
-set_color_profile_slot( 24, 7, 250, 245, 6 ); //slippers/mouth/heart
+set_color_profile_slot( 23, 0, 234, 197, 86 ); //Horn/static
+set_color_profile_slot( 23, 1, 234, 197, 86 ); //Shirt
+set_color_profile_slot( 23, 2, 246, 62, 57 ); //Coat
+set_color_profile_slot( 23, 3, 217, 219, 81 ); //water
+set_color_profile_slot( 23, 4, 73, 150, 81 ); //skin
+set_color_profile_slot( 23, 5, 255, 51, 51 ); //Pants
+set_color_profile_slot( 23, 6, 250, 55, 47 ); //gloves
+set_color_profile_slot( 23, 7, 250, 245, 6 ); //slippers/mouth/heart
 
 // Peat
-set_color_profile_slot( 25, 0, 222, 109, 131 ); //Horn/static
-set_color_profile_slot( 25, 1, 117, 81, 68 ); //Shirt
-set_color_profile_slot( 25, 2, 31, 23, 21 ); //Coat
-set_color_profile_slot( 25, 3, 170, 85, 38 ); //water
-set_color_profile_slot( 25, 4, 117, 81, 68 ); //skin
-set_color_profile_slot( 25, 5, 66, 46, 46 ); //Pants
-set_color_profile_slot( 25, 6, 31, 23, 21 ); //gloves
-set_color_profile_slot( 25, 7, 74, 32, 32 ); //slippers/mouth/heart
+set_color_profile_slot( 24, 0, 222, 109, 131 ); //Horn/static
+set_color_profile_slot( 24, 1, 117, 81, 68 ); //Shirt
+set_color_profile_slot( 24, 2, 31, 23, 21 ); //Coat
+set_color_profile_slot( 24, 3, 170, 85, 38 ); //water
+set_color_profile_slot( 24, 4, 117, 81, 68 ); //skin
+set_color_profile_slot( 24, 5, 66, 46, 46 ); //Pants
+set_color_profile_slot( 24, 6, 31, 23, 21 ); //gloves
+set_color_profile_slot( 24, 7, 74, 32, 32 ); //slippers/mouth/heart
 
 // Car Ant
-set_color_profile_slot( 26, 0, 251, 26, 0 ); //Horn/static
-set_color_profile_slot( 26, 1, 98, 70, 60 ); //Shirt
-set_color_profile_slot( 26, 2, 255, 228, 0 ); //Coat
-set_color_profile_slot( 26, 3, 98, 70, 60 ); //water
-set_color_profile_slot( 26, 4, 255, 63, 0 ); //skin
-set_color_profile_slot( 26, 5, 242, 193, 27 ); //Pants
-set_color_profile_slot( 26, 6, 98, 70, 60 ); //gloves
-set_color_profile_slot( 26, 7, 98, 70, 60 ); //slippers/mouth/heart
+set_color_profile_slot( 25, 0, 251, 26, 0 ); //Horn/static
+set_color_profile_slot( 25, 1, 98, 70, 60 ); //Shirt
+set_color_profile_slot( 25, 2, 255, 228, 0 ); //Coat
+set_color_profile_slot( 25, 3, 98, 70, 60 ); //water
+set_color_profile_slot( 25, 4, 255, 63, 0 ); //skin
+set_color_profile_slot( 25, 5, 242, 193, 27 ); //Pants
+set_color_profile_slot( 25, 6, 98, 70, 60 ); //gloves
+set_color_profile_slot( 25, 7, 98, 70, 60 ); //slippers/mouth/heart
+
+// Miss Z
+set_color_profile_slot( 26, 0, 109, 154, 94 ); //Horn/static
+set_color_profile_slot( 26, 1, 26, 61, 14 ); //Shirt
+set_color_profile_slot( 26, 2, 32, 32, 32 ); //Coat
+set_color_profile_slot( 26, 3, 171, 222, 85 ); //water
+set_color_profile_slot( 26, 4, 255, 255, 255 ); //skin
+set_color_profile_slot( 26, 5, 78, 77, 77 ); //Pants
+set_color_profile_slot( 26, 6, 28, 28, 28 ); //gloves
+set_color_profile_slot( 26, 7, 162, 255, 10 ); //slippers/mouth/heart
 
 // Cola
 set_color_profile_slot( 27, 0, 245, 253, 255 ); //Horn/static
@@ -306,45 +306,45 @@ set_color_profile_slot( 27, 5, 255, 39, 77 ); //Pants
 set_color_profile_slot( 27, 6, 227, 255, 227 ); //gloves
 set_color_profile_slot( 27, 7, 219, 235, 219 ); //slippers/mouth/heart
 
-// Diet
-set_color_profile_slot( 28, 0, 222, 36, 39 ); //Horn/static
-set_color_profile_slot( 28, 1, 222, 36, 39 ); //Shirt
-set_color_profile_slot( 28, 2, 245, 253, 255 ); //Coat
-set_color_profile_slot( 28, 3, 117, 70, 44 ); //water
-set_color_profile_slot( 28, 4, 245, 253, 255 ); //skin
-set_color_profile_slot( 28, 5, 243, 255, 255 ); //Pants
-set_color_profile_slot( 28, 6, 222, 36, 39 ); //gloves
-set_color_profile_slot( 28, 7, 199, 8, 84 ); //slippers/mouth/heart
-
 // Neo
-set_color_profile_slot( 29, 0, 227, 255, 115 ); //Horn/static
-set_color_profile_slot( 29, 1, 203, 255, 59 ); //Shirt
-set_color_profile_slot( 29, 2, 58, 74, 70 ); //Coat
-set_color_profile_slot( 29, 3, 169, 240, 103 ); //water
-set_color_profile_slot( 29, 4, 58, 79, 99 ); //skin
-set_color_profile_slot( 29, 5, 65, 46, 115 ); //Pants
-set_color_profile_slot( 29, 6, 39, 0, 61 ); //gloves
-set_color_profile_slot( 29, 7, 170, 255, 41 ); //slippers/mouth/heart
+set_color_profile_slot( 28, 0, 227, 255, 115 ); //Horn/static
+set_color_profile_slot( 28, 1, 203, 255, 59 ); //Shirt
+set_color_profile_slot( 28, 2, 58, 74, 70 ); //Coat
+set_color_profile_slot( 28, 3, 169, 240, 103 ); //water
+set_color_profile_slot( 28, 4, 58, 79, 99 ); //skin
+set_color_profile_slot( 28, 5, 65, 46, 115 ); //Pants
+set_color_profile_slot( 28, 6, 39, 0, 61 ); //gloves
+set_color_profile_slot( 28, 7, 170, 255, 41 ); //slippers/mouth/heart
 
 // BLM
-set_color_profile_slot( 30, 0, 255, 215, 71 ); //Horn/static
-set_color_profile_slot( 30, 1, 255, 255, 255 ); //Shirt
-set_color_profile_slot( 30, 2, 20, 21, 24 ); //Coat
-set_color_profile_slot( 30, 3, 255, 255, 255 ); //water
-set_color_profile_slot( 30, 4, 143, 99, 65 ); //skin
-set_color_profile_slot( 30, 5, 51, 51, 51 ); //Pants
-set_color_profile_slot( 30, 6, 255, 200, 0 ); //gloves
-set_color_profile_slot( 30, 7, 33, 33, 33 ); //slippers/mouth/heart
+set_color_profile_slot( 29, 0, 255, 215, 71 ); //Horn/static
+set_color_profile_slot( 29, 1, 255, 255, 255 ); //Shirt
+set_color_profile_slot( 29, 2, 20, 21, 24 ); //Coat
+set_color_profile_slot( 29, 3, 255, 255, 255 ); //water
+set_color_profile_slot( 29, 4, 143, 99, 65 ); //skin
+set_color_profile_slot( 29, 5, 51, 51, 51 ); //Pants
+set_color_profile_slot( 29, 6, 255, 200, 0 ); //gloves
+set_color_profile_slot( 29, 7, 33, 33, 33 ); //slippers/mouth/heart
 
-// Miss Z
-set_color_profile_slot( 31, 0, 109, 154, 94 ); //Horn/static
-set_color_profile_slot( 31, 1, 26, 61, 14 ); //Shirt
-set_color_profile_slot( 31, 2, 32, 32, 32 ); //Coat
-set_color_profile_slot( 31, 3, 171, 222, 85 ); //water
-set_color_profile_slot( 31, 4, 255, 255, 255 ); //skin
-set_color_profile_slot( 31, 5, 78, 77, 77 ); //Pants
-set_color_profile_slot( 31, 6, 28, 28, 28 ); //gloves
-set_color_profile_slot( 31, 7, 162, 255, 10 ); //slippers/mouth/heart
+// Pot XRD
+set_color_profile_slot( 30, 0, 163, 162, 160 ); //Horn/static
+set_color_profile_slot( 30, 1, 79, 84, 79 ); //Shirt
+set_color_profile_slot( 30, 2, 63, 69, 42 ); //Coat
+set_color_profile_slot( 30, 3, 255, 130, 0 ); //water
+set_color_profile_slot( 30, 4, 83, 87, 66 ); //skin
+set_color_profile_slot( 30, 5, 69, 84, 66 ); //Pants
+set_color_profile_slot( 30, 6, 168, 34, 0 ); //gloves
+set_color_profile_slot( 30, 7, 120, 0, 0 ); //slippers/mouth/heart
+
+// Diet
+set_color_profile_slot( 31, 0, 222, 36, 39 ); //Horn/static
+set_color_profile_slot( 31, 1, 222, 36, 39 ); //Shirt
+set_color_profile_slot( 31, 2, 245, 253, 255 ); //Coat
+set_color_profile_slot( 31, 3, 117, 70, 44 ); //water
+set_color_profile_slot( 31, 4, 245, 253, 255 ); //skin
+set_color_profile_slot( 31, 5, 243, 255, 255 ); //Pants
+set_color_profile_slot( 31, 6, 222, 36, 39 ); //gloves
+set_color_profile_slot( 31, 7, 199, 8, 84 ); //slippers/mouth/heart
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

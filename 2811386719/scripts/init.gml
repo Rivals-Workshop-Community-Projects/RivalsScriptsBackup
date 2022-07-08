@@ -114,6 +114,9 @@ payload = false;
 orig_room_speed = room_speed
 
 //Custom var
+
+set_synced_var(player, 1)
+
 //Command grab template
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
@@ -189,7 +192,9 @@ plats = asset_get("par_jumpthrough");
 walljump_charge = -1;
 walljump_charge_length = 15;
 can_let_go_jump = false;
+can_cling = false;
 stored_window_timer = 0;
+has_walljump_old = false
 // do_pratfall = false;
 
 have_armor = true;
@@ -242,6 +247,7 @@ wat_spr = sprite_get("wat");
 wat_dust = noone;
 wat_follow = noone;
 
+// alt_mod = get_synced_var(player)
 
 lightning_hbox = noone;
 lightning_hbox_width = 400;
@@ -265,7 +271,7 @@ music_head = 0;
 violao = sound_get("violao");
 eee = sound_get("EEE3");
 mark_to_cancel = false;
-user_event(1);
+// user_event(1);
 
 //AI stuff
 showing_thoughts = false;

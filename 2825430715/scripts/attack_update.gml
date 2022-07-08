@@ -426,8 +426,8 @@ switch attack {
                      hit_player_obj.x = x
                     hit_player_obj.y = y
                      spawn_hit_fx(x,y,SC)
-                     vsp = -10
-                     hsp = 10*spr_dir
+                     vsp = -15
+                     hsp = 15*spr_dir
                       with hit_player_obj {
                      	take_damage(player,-1,8)
                      }
@@ -441,8 +441,8 @@ switch attack {
                      hit_player_obj.x = x
                     hit_player_obj.y = y
                      spawn_hit_fx(x,y,SC)
-                     vsp = -10
-                     hsp = 10*spr_dir
+                     vsp = -15
+                     hsp = 15*spr_dir
                       with hit_player_obj {
                      	take_damage(player,-1,8)
                      }
@@ -466,7 +466,7 @@ switch attack {
         		sound_play(asset_get("sfx_blow_medium3"),false,noone,1,1)
         		
         		vsp = -12
-        		hsp = 4*spr_dir
+        		hsp = 6*spr_dir
         		
         		
         		if  get_player_stocks(galaxplayer.player) == 1 && instance_number(oPlayer) == 2 {

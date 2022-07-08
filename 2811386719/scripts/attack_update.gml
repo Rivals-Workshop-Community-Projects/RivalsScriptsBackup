@@ -409,7 +409,10 @@ if (attack == AT_USPECIAL){
     	}else{
     		set_state(PS_PRATFALL)
     	}
-    	vsp += !(vsp < -5) *-5;
+    	//diferenca entre velocidade e -5 tem que ser no maximo -5 e no minimo -3
+    	var speeddd = clamp(vsp+5, 2, 5)
+    	vsp -= speeddd
+    	hsp = hsp - hsp/7
     }
     var hsp_temp = hsp;
     if(_old_hsp > 0 and hsp == 0) hsp = _old_hsp;
@@ -532,8 +535,8 @@ if(attack == AT_EXTRA_1){
 	hsp = 0;
 	can_move = false;
 	can_fast_fall = false;
-	can_wall_jump = false;
-	can_wall_cling = false;
+	// can_wall_jump = false;
+	// can_wall_cling = false;
 	
 	if(window == 1){
 		stored_window_timer = window_timer;
@@ -762,12 +765,12 @@ if(attack == AT_NSPECIAL){
 	if(window == 2){
 		user_event(2);
 		magnet_timer++;
-		if(magnet_timer > 6){
+		if(magnet_timer > 3){
 			hsp = 0;
 			vsp = 0;
 		}
 		if(window_timer == 1 and magnet_timer%4 == 1) sound_play(asset_get("sfx_absa_orb_miss"));
-		if(magnet_timer > 24){
+		if(magnet_timer > 21){
 			set_window_value(attack, window, AG_WINDOW_TYPE, 0);
 		}else{
 			set_window_value(attack, window, AG_WINDOW_TYPE, special_down*9);
@@ -782,14 +785,14 @@ if(attack == AT_NSPECIAL){
 	
 	if(window == 3){
 		user_event(3)
-		if(window_timer > 17 and free){
-			if(was_parried){
+		// if(window_timer > 17 and free){
+		// 	if(was_parried){
 				
-			}else{
-				if(window_timer == 18) move_cooldown[attack] = 9; 
-				iasa_script();
-			}
-		}
+		// 	}else{
+		// 		// if(window_timer == 18) move_cooldown[attack] = 9; 
+		// 		// iasa_script();
+		// 	}
+		// }
 		
 		if(window_timer == 20){
 			spawn_dust_fx(x +55*spr_dir, y-50, nspecial_water_throw_whiff_spr, 19)
@@ -890,14 +893,14 @@ if (attack == AT_NTHROW){
 			
 			if(window == 4){
 				can_move = false;
-				custom_forward_air_drift(0.5)
+				custom_forward_air_drift(0.2)
 				
 				grabbed_player_obj.x = x + 0 * spr_dir;
 				grabbed_player_obj.y = y - 92;
 			}
 			if(window == 5){
 				can_move = false
-				custom_forward_air_drift(0.5)
+				custom_forward_air_drift(0.2)
 				grabbed_player_obj.x = x + 1 * spr_dir;
 				grabbed_player_obj.y = lerp(grabbed_player_obj.y, y - 30, 0.6);
 				//fall_through = true;
@@ -926,6 +929,7 @@ if (attack == AT_NTHROW){
 	if(window == 8){
 		can_move = false;
 		custom_forward_air_drift(0.2)
+		if(window_timer > 34) can_wall_jump = true
 	}
 }
 
