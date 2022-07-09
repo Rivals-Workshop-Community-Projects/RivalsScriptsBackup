@@ -10,8 +10,96 @@ if hurted == true && hitted == true {
         has_hit_player = false
 }
 
+with asset_get("pHitBox") {
+		
+		if "KanosRe" in self {
+			
+			if KanosRe == 3 && KanosReP = other.player {
+				var angle = point_direction(x, y, player_id.x , player_id.y - 30);
+
+            x += lengthdir_x(20, angle)
+            y += lengthdir_y(20, angle)
+			}
+			
+			if KanosRe == 2 && KanosReP = other.player {
+				image_xscale = 1
+   	   	   	   image_yscale = 1
+		        hsp = 0
+		        vsp = 0
+		        hitbox_timer -= 1
+		        hit_priority = 0
+		        transcendent = true
+	    	     can_hit_self = true
+	    	     enemies = 0
+	    	     walls = 1 
+	    	     grounds = 1
+	    	     
+	    	var angle = point_direction(x, y, player_id.x , player_id.y - 30);
+
+            x += lengthdir_x(20, angle)
+            y += lengthdir_y(20, angle)
+            
+	    	     
+			}
+			
+			if abs(x - player_id.x) < 50 && abs(y - player_id.y) < 60 {
+				with player_id {
+					if (state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD 
+                	or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD or invince_time > 0 or state == PS_TECH_GROUND) {
+            		            invincible = 0
+            		            invince_time = 0
+            		            state_timer = 999
+            		            window_timer = 999
+            		            visible = true 
+            		            print("inevitable")
+                	}
+                	if (state == PS_PARRY && state_timer < 10) {
+                		state_timer = 999
+                		window_timer = 999
+                		perfect_dodging = false 
+                		print("inevitable")
+                	}
+				}
+				
+				
+				hit_priority = 9
+				KanosRe = 3
+			}
+		}
+		
+}
+
 if fakeinvi > 0 {
 	with asset_get("pHitBox") {
+		
+		if "KanosRe" in self {
+			if KanosRe == 2 && KanosReP = other.player {
+				with other {
+		        	if state_timer % 8 == 0 {
+		        	pgfx = spawn_hit_fx(other.x,other.y + 18, stonef)
+		        	pgfx.spr_dir = 0.6
+		        	pgfx.image_yscale = 0.6
+		        	}
+		        }
+		        hsp = 0
+		        vsp = 0
+		        hitbox_timer -= 1
+		        hit_priority = 9
+		        transcendent = true
+	    	     can_hit_self = true
+	    	     enemies = 0
+	    	     walls = 1 
+	    	     grounds = 1
+	    	     
+	    	var angle = point_direction(x, y, player_id.x , player_id.y - 30);
+
+            x += lengthdir_x(12, angle)
+            y += lengthdir_y(12, angle)
+            
+	    	     
+			}
+		}
+		
 	     if "player_id" in self {
 	     	  if player_id = other.id {
 	     	  	hit_priority = 0

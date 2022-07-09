@@ -19,6 +19,7 @@ if get_player_color(player) == 0 {
 var alt_cur = get_player_color(player);
 var draw_index;
 
+if(!instance_exists(cursor_id)) exit;
 //Button Location
 if player == 0{ // player online
 	var tmp_xl = 16

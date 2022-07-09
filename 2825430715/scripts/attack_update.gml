@@ -42,6 +42,133 @@ if free {
 }
 
 switch attack {
+	case AT_TAUNT_2:
+	
+	hitpause = false 
+	
+	if window == 1 or window == 3 {
+	hsp /= 1.4
+	vsp /= 1.4
+	can_move = false 
+	}
+	
+
+	with pHitBox {
+			/*
+		if "KanosRe" not in self && type == 2 {
+			  KanosReP = other.player
+	    	  KanosRe = true 
+	    	
+	    	   image_xscale = 1
+   	   	   	   image_yscale = 1
+   	   	   	   
+	    	can_hit[other.player] = false
+	    	
+	    	transcendent = true
+	    	hitbox_timer -= 1
+	    	can_hit_self = true
+	    	enemies = 0
+            
+            hit_priority = 0
+            
+            hsp = 0
+            vsp = 0
+			
+		}
+	*/
+	
+		if "KanosRe" in self {
+			transcendent = true
+	    	hitbox_timer -= 1
+	    	can_hit_self = true
+	    	enemies = 0
+	    	can_hit[other.player] = false
+	    	image_xscale = 1
+   	   	   	image_yscale = 1
+		hsp = 0
+		vsp = 0
+		grounds = 1
+		walls = 1
+	    if other.window == 1 {	
+	       x += floor((other.x + 30*other.spr_dir - x)/6)	
+	       y += floor((other.y - 60 - y)/6)	
+	       depth = other.depth - 2
+	    }
+	    
+	    if other.window == 2 {	
+	    	if other.window_timer < 8 {
+	       x += floor((other.x + (30 - other.window_timer*20)*other.spr_dir - x)/4)	
+	       y += floor((other.y - 30 - y)/6)
+	    	} else {
+	    		depth = other.depth + 1
+	    	 x += floor((other.x + (10)*other.spr_dir - x)/4)	
+	         y += floor((other.y - 50 - y)/6)	
+	    	}
+	    }
+	    
+	     if other.window == 3 && other.window_timer == 1{
+
+	     	KanosRe = 2
+	     	spr_dir = other.spr_dir 
+	     	if player_id.x > other.x {
+	    		other.spr_dir = 1
+	    	} else {
+	    		other.spr_dir = -1
+	    	}
+	    	damage = (damage + 10)/2
+	    	kb_value = 1
+	    	kb_scale = 0.5
+	    	hitstun_factor = 1
+	    	hit_flipper = 0
+	    	kb_angle = 40
+	     }
+		}
+	}
+		
+	if window == 1 && state_timer % 6 == 0 {
+		pgfx = spawn_hit_fx(x + 30*spr_dir,y - 40, stonef)
+			pgfx.spr_dir = 0.6
+			pgfx.image_yscale = 0.6
+			pgfx.depth = depth + 2
+	}
+	if window == 2 && state_timer % 4 == 0 && window_timer <= 8 {
+		pgfx = spawn_hit_fx(x + (30 - window_timer*10 )*spr_dir,y - 20 - window_timer*3, stonef)
+			pgfx.spr_dir = 0.6
+			pgfx.image_yscale = 0.6
+			pgfx.depth = depth - 1
+	}
+	if window == 2 && window_timer == 12 {
+		pgfx = spawn_hit_fx(x + (10)*spr_dir,y - 30, stonef)
+			pgfx.spr_dir = 0.6
+			pgfx.image_yscale = 0.6
+			pgfx.depth = depth + 2
+	}
+	
+	if window == 1 && window_timer == 1 && !hitpause {
+		hsp = -6*spr_dir
+		soft_armor = 999
+	  	 sound_play(sound_get("SpaceCut"),false,noone,.9,.9)
+	  }
+	  
+	  if window == 2 && window_timer == 1 && !hitpause {
+	  	sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)
+          sound_play(asset_get("sfx_spin"),false,noone,1,1)
+	  }
+	  
+	  if window == 2 && window_timer == 12 && !hitpause {
+	  	hsp = -6*spr_dir
+	  	  sound_play(sound_get("Fstrong"),false,noone,1,.8)
+	  }
+	
+	 if window == 3 && window_timer == 1 && !hitpause {
+	     		create_hitbox(AT_TAUNT_2,1,x + 10*spr_dir,y - 50)
+	 	soft_armor = 0
+	 	hsp = -6*spr_dir
+	  }
+	
+	
+	break; 
+	
 	
      case AT_FSPECIAL_2:
      can_move = false
@@ -880,10 +1007,65 @@ switch attack {
 	break ;
 	
   case AT_FSTRONG:
+  
+   if window <= 2 {
+   	 with asset_get("pHitBox") {
+	
+		nearbyhitbox = collision_circle( x-12, y+20, 30 + (image_xscale*60 + image_yscale*60) + 30*other.window,other, true, true ) 
+	
+	    if nearbyhitbox != noone && player_id != other.id && type == 2 && "KanosRe" not in self {
+	    	with other {
+	    			hit_player_obj = other.player_id
+	    	}
+	    	KanosReP = other.player
+	    	KanosRe = true 
+	    	   image_xscale = .5
+   	   	   	   image_yscale = .5
+   	   	   	   
+	    	can_hit[other.player] = false
+	    	
+	    	transcendent = true
+	    	hitbox_timer -= 1
+	    	can_hit_self = true
+	    	enemies = 0
+            
+            hit_priority = 0
+            
+            hsp = 0
+            vsp = 0
+	    	
+	    	with other {
+	    		set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 0);
+	    		attack_end()
+	        strong_charge = 60
+	        move_cooldown[AT_TAUNT_2] = 0
+	    	set_attack(AT_TAUNT_2)	
+	    	window = 0 
+	    	window_timer = 0
+	    	if other.player_id.x > x {
+	    		spr_dir = 1
+	    	} else {
+	    		spr_dir = -1
+	    	}
+	    	hsp = -6*spr_dir
+            sound_stop(sound_get("parried")); 
+            sound_play(sound_get("parried")); 
+            shake_camera(4, 6)
+	    		
+	    	}
+	    }
+	    
+	} 
+   }
+   
    if window == 1 {
+   	
    	if window_timer == 1 {
    		set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
    	}
+   	
+   	
+   	
    	 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 6 + round(strong_charge/6));
    	 if hitpause && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
    	 	 hit_player_obj.x += floor((x - 10*spr_dir -  hit_player_obj.x)/8)

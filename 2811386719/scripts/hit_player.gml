@@ -91,18 +91,28 @@ if(my_hitboxID.attack == AT_FSTRONG and my_hitboxID.hbox_num == 2){
 }
 
 if(attack == AT_NTHROW and (my_hitboxID.hbox_num >= 2)){
-	if(hit_player_obj.static_pull) StaticConsume(hit_player_obj);
+	grab_special_consume()
 }
 if(attack == AT_UTHROW and (my_hitboxID.hbox_num >= 2)){
-	if(hit_player_obj.static_pull) StaticConsume(hit_player_obj);
+	grab_special_consume()
 }
 
 if(static >= 100 and !hit_player_obj.static_pull){
+	if(my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_USPECIAL_GROUND){
+		do_not_consume = true
+	}
 	StaticMark()
 }
 
 //AI
 n_times_got_hit--;
+#define grab_special_consume()
+
+if(!do_not_consume and hit_player_obj.static_pull){
+	StaticConsume(hit_player_obj);
+}
+if(do_not_consume) do_not_consume = false
+
 #define StaticMark()
 
 hit_player_obj.static_pull = 450;

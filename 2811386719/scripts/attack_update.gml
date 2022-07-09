@@ -410,7 +410,7 @@ if (attack == AT_USPECIAL){
     		set_state(PS_PRATFALL)
     	}
     	//diferenca entre velocidade e -5 tem que ser no maximo -5 e no minimo -3
-    	var speeddd = clamp(vsp+5, 2, 5)
+    	var speeddd = vsp+5
     	vsp -= speeddd
     	hsp = hsp - hsp/7
     }

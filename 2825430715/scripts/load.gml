@@ -71,6 +71,7 @@ sprite_change_offset("dtilt", 102, 124);
 sprite_change_offset("dtilt_proj", 102, 114);
 sprite_change_offset("dtilt_blow", 102, 124);
 sprite_change_offset("utilt", 102, 124);
+sprite_change_offset("projgrab", 102, 124);
 
 
 sprite_change_offset("nair", 102, 124);

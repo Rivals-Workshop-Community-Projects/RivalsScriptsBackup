@@ -115,8 +115,6 @@ orig_room_speed = room_speed
 
 //Custom var
 
-set_synced_var(player, 1)
-
 //Command grab template
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
@@ -158,6 +156,7 @@ static_bar_spr = sprite_get("static_bar")
 static_max_pull_spr = sprite_get("electric_effect_pull")
 grab_static_pull_spr = sprite_get("nspecial_magnet")
 magnetism_trail_spr = sprite_get("magnetism_trail")
+do_not_consume = false
 
 jet_spr = sprite_get("jet");
 jet_discharge_spr = sprite_get("jet_discharge");
@@ -273,8 +272,78 @@ eee = sound_get("EEE3");
 mark_to_cancel = false;
 // user_event(1);
 
+modifier = get_synced_var(player)
+print(modifier)
+col = get_player_color(player)
+
+switch col{
+  case 19:
+    if(modifier == 0){
+      color_19_0()
+    }else{
+      color_19_1()
+    }
+    break;
+  case 27:
+    if(modifier == 0){
+      color_27_0()
+    }else{
+      color_27_1()
+    }
+    break;
+}
+
 //AI stuff
 showing_thoughts = false;
 is_ai = false;
 opponent_in_static = false;
 n_times_got_hit = 0;
+
+
+#define color_19_0
+
+// Crimson Gear
+set_color_profile_slot( 19, 0, 232, 215, 132 ); //Horn/static
+set_color_profile_slot( 19, 1, 204, 179, 167 ); //Shirt
+set_color_profile_slot( 19, 2, 94, 0, 0 ); //Coat
+set_color_profile_slot( 19, 3, 255, 135, 79 ); //water
+set_color_profile_slot( 19, 4, 138, 92, 73 ); //skin
+set_color_profile_slot( 19, 5, 75, 98, 117 ); //Pants
+set_color_profile_slot( 19, 6, 135, 26, 26 ); //gloves
+set_color_profile_slot( 19, 7, 110, 0, 34 ); //slippers/mouth/heart
+
+#define color_19_1
+
+// Pot XRD
+set_color_profile_slot( 19, 0, 163, 162, 160 ); //Horn/static
+set_color_profile_slot( 19, 1, 79, 84, 79 ); //Shirt
+set_color_profile_slot( 19, 2, 63, 69, 42 ); //Coat
+set_color_profile_slot( 19, 3, 255, 130, 0 ); //water
+set_color_profile_slot( 19, 4, 83, 87, 66 ); //skin
+set_color_profile_slot( 19, 5, 69, 84, 66 ); //Pants
+set_color_profile_slot( 19, 6, 168, 34, 0 ); //gloves
+set_color_profile_slot( 19, 7, 120, 0, 0 ); //slippers/mouth/heart
+
+#define color_27_0
+
+// Cola
+set_color_profile_slot( 27, 0, 245, 253, 255 ); //Horn/static
+set_color_profile_slot( 27, 1, 219, 235, 219 ); //Shirt
+set_color_profile_slot( 27, 2, 222, 36, 67 ); //Coat
+set_color_profile_slot( 27, 3, 117, 70, 44 ); //water
+set_color_profile_slot( 27, 4, 222, 36, 39 ); //skin
+set_color_profile_slot( 27, 5, 255, 39, 77 ); //Pants
+set_color_profile_slot( 27, 6, 227, 255, 227 ); //gloves
+set_color_profile_slot( 27, 7, 219, 235, 219 ); //slippers/mouth/heart
+
+#define color_27_1
+
+// Diet
+set_color_profile_slot( 27, 0, 222, 36, 39 ); //Horn/static
+set_color_profile_slot( 27, 1, 222, 36, 39 ); //Shirt
+set_color_profile_slot( 27, 2, 245, 253, 255 ); //Coat
+set_color_profile_slot( 27, 3, 117, 70, 44 ); //water
+set_color_profile_slot( 27, 4, 245, 253, 255 ); //skin
+set_color_profile_slot( 27, 5, 243, 255, 255 ); //Pants
+set_color_profile_slot( 27, 6, 222, 36, 39 ); //gloves
+set_color_profile_slot( 27, 7, 199, 8, 84 ); //slippers/mouth/heart27

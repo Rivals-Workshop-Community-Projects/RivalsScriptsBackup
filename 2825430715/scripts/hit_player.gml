@@ -1,5 +1,5 @@
 ///
- if my_hitboxID.type == 1 { 
+ if my_hitboxID.type == 1 && my_hitboxID.effect != 9 { 
    hitted = true 
  }
  

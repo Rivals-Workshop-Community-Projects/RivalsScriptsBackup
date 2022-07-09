@@ -1,4 +1,23 @@
 ///
+if attack == AT_TAUNT_2 {
+	
+	with player_id {
+		        	if get_gameplay_time() % 4 == 0 {
+		        	pgfx = spawn_hit_fx(other.x,other.y + 18, stonef)
+		        	pgfx.spr_dir = 0.6
+		        	pgfx.image_yscale = 0.6
+		        	}
+	}
+	
+	hsp = 0 
+	vsp = 0
+	transcendent = true
+	var angle = point_direction(x, y, player_id.hit_player_obj.x , player_id.hit_player_obj.y - 30);
+	        
+		        
+    x += lengthdir_x(17, angle)
+    y += lengthdir_y(17, angle)
+}
 
 if attack == AT_DTILT {
     

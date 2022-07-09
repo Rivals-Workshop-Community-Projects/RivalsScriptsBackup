@@ -1,6 +1,7 @@
 
 alt_cur = get_player_color(player);
 
+print(modifier)
 set_synced_var(player, modifier)
 
 // var ls = ds_list_create()
@@ -31,7 +32,7 @@ return val >= low and val <= high
 show_switcher = (alt_cur == 19 or alt_cur == 27)
 if(!show_switcher) {return 0}
 
-
+if(!instance_exists(cursor_id)) return 0
 var cur_x = get_instance_x(cursor_id)
 var cur_y = get_instance_y(cursor_id)
 
@@ -53,9 +54,25 @@ if(menu_a_pressed or menu_rb_pressed or menu_lb_pressed){
 var len = array_length_1d(alt_with_mods)
 for(var i = 0; i < len; i++){
   
-  var a = script_get_index(`color_${alt_with_mods[i]}_${modifier}`)
-  if(a == -1) script_get_index(`color_${alt_with_mods[i]}_${0}`)
-  script_execute(a)
+  // var a = script_get_index(`color_${alt_with_mods[i]}_${modifier}`)
+  // if(a == -1) script_get_index(`color_${alt_with_mods[i]}_${0}`)
+  // script_execute(a)
+  switch alt_with_mods[i]{
+    case 19:
+      if(!modifier){
+        color_19_0()
+      }else{
+        color_19_1()
+      }
+      break;
+    case 27:
+      if(!modifier){
+        color_27_0()
+      }else{
+        color_27_1()
+      }
+      break;
+  }
 }
 
 init_shader()
