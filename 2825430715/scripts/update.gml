@@ -1,8 +1,64 @@
 ///
 
 
+ if cheapmode == 0 {
+ 
+ with(asset_get("oPlayer")){ 
+ 	if url != "2273636433" && url != "1870768156"
+	&& url != "1869351026" && url != "2443363942" &&
+	(string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("sand", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("psy", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("OP ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("Jo", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or url == "2159023588"
+	or url == "1980469422"
+	){
+       other.cheapmode = 1 
+     }    
+ }
+ } 
+ 
+ 
+ if cheapmode == 1 && get_gameplay_time() < 600 {
+ 	if taunt_pressed or get_player_damage(player) > 50 or state == PS_RESPAWN {
+ 		cheapmode = 3 
+ 		hasmind = 1
+        hasbody = 1
+        hasbalance = 1
+        shake_camera(10,10)
+        spawn_hit_fx(x,y - 40,SC)
+            sound_play(sound_get("stone3"),false,noone,1,1)
+    		sound_play(sound_get("stone3"),false,noone,.3,1)
+    		sound_play(sound_get("Fstrong"),false,noone,1,1.5)
+    		sound_play(sound_get("RZ"),false,noone,1,.2)
+    		gotstone += 70
+    		stoned = 1
+ 	}
+ }
 
 
+ if cheapmode == 3 {
+ 	if shield_pressed {
+ 		hitpause = 0
+ 		hitstop = 0
+ 	}
+ 	visible = true 
+ 	if state_cat == SC_HITSTUN {
+ 		perfect_dodging = true
+ 	}
+ 	init_shader()
+ }
+ 
+ 
 if hurted == true && hitted == true {
         invincible = true 
         invince_time = 10
@@ -17,8 +73,8 @@ with asset_get("pHitBox") {
 			if KanosRe == 3 && KanosReP = other.player {
 				var angle = point_direction(x, y, player_id.x , player_id.y - 30);
 
-            x += lengthdir_x(20, angle)
-            y += lengthdir_y(20, angle)
+            x += lengthdir_x(22, angle)
+            y += lengthdir_y(22, angle)
 			}
 			
 			if KanosRe == 2 && KanosReP = other.player {
@@ -36,13 +92,13 @@ with asset_get("pHitBox") {
 	    	     
 	    	var angle = point_direction(x, y, player_id.x , player_id.y - 30);
 
-            x += lengthdir_x(20, angle)
-            y += lengthdir_y(20, angle)
+            x += lengthdir_x(22, angle)
+            y += lengthdir_y(22, angle)
             
 	    	     
 			}
 			
-			if abs(x - player_id.x) < 50 && abs(y - player_id.y) < 60 {
+			if abs(x - player_id.x) < 70 && abs(y - player_id.y) < 70 {
 				with player_id {
 					if (state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD 
                 	or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD or invince_time > 0 or state == PS_TECH_GROUND) {
@@ -53,16 +109,16 @@ with asset_get("pHitBox") {
             		            visible = true 
             		            print("inevitable")
                 	}
-                	if (state == PS_PARRY && state_timer < 10) {
-                		state_timer = 999
-                		window_timer = 999
+                	if (state == PS_PARRY && state_timer < 12) {
+                		state_timer = 12
+                		window_timer = 12
                 		perfect_dodging = false 
                 		print("inevitable")
                 	}
 				}
 				
 				
-				hit_priority = 9
+				destroyed = true 
 				KanosRe = 3
 			}
 		}

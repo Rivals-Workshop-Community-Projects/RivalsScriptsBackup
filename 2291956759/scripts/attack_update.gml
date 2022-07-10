@@ -174,6 +174,22 @@ if attack == AT_DAIR {
 }
 
 if attack == AT_NSPECIAL {
+	with pHitBox {
+		if player_id = other.id && attack == AT_NSPECIAL && hbox_num == 8 {
+			if other.x - x < 0 {
+	        	hsp -= 1
+	        } else {
+	        	hsp += 1
+	        }
+	        
+	        if other.y - 40 - y < 0 {
+	        	vsp -= 1
+	        } else {
+	        	vsp += 1
+	        }
+		}
+	}
+	
     if window >= 2 {
     vsp /= 1.2
     hsp /= 2

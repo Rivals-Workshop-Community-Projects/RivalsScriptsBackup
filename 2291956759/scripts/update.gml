@@ -309,7 +309,6 @@ if state == PS_PRATFALL && visible = false {
 }
 
 if inkshield > 0 && !hitpause && move_cooldown[AT_EXTRA_1] == 0{
-	
 	inkshield -= 1
 
 }

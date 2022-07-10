@@ -96,6 +96,7 @@ var palette_names = [
   "Asgo",
   "Drip",
   "Roly",
+  "Bumble",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

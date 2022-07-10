@@ -78,6 +78,7 @@ switch attack {
 	*/
 	
 		if "KanosRe" in self {
+			other.Kaeffect = effect
 			transcendent = true
 	    	hitbox_timer -= 1
 	    	can_hit_self = true
@@ -121,6 +122,8 @@ switch attack {
 	    	hitstun_factor = 1
 	    	hit_flipper = 0
 	    	kb_angle = 40
+	    	hitpause = 15
+	    	extra_hitpause = 15
 	     }
 		}
 	}
@@ -151,8 +154,9 @@ switch attack {
 	  }
 	  
 	  if window == 2 && window_timer == 1 && !hitpause {
+	  	sound_play(sound_get("Fstrong"),false,noone,.6,1.4)
 	  	sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)
-          sound_play(asset_get("sfx_spin"),false,noone,1,1)
+
 	  }
 	  
 	  if window == 2 && window_timer == 12 && !hitpause {
@@ -161,6 +165,7 @@ switch attack {
 	  }
 	
 	 if window == 3 && window_timer == 1 && !hitpause {
+	 	set_hitbox_value(AT_TAUNT_2, 1, HG_EFFECT, Kaeffect);
 	     		create_hitbox(AT_TAUNT_2,1,x + 10*spr_dir,y - 50)
 	 	soft_armor = 0
 	 	hsp = -6*spr_dir
@@ -1008,10 +1013,10 @@ switch attack {
 	
   case AT_FSTRONG:
   
-   if window <= 2 {
+   if window <= 3 {
    	 with asset_get("pHitBox") {
 	
-		nearbyhitbox = collision_circle( x-12, y+20, 30 + (image_xscale*60 + image_yscale*60) + 30*other.window,other, true, true ) 
+		nearbyhitbox = collision_circle( x-12, y+30, 20 + (image_xscale*10 + image_yscale*10) + 5*other.window,other, true, true ) 
 	
 	    if nearbyhitbox != noone && player_id != other.id && type == 2 && "KanosRe" not in self {
 	    	with other {
@@ -1176,6 +1181,14 @@ switch attack {
    
    if window == 4 {
    	 if window_timer == 1 && !hitpause {
+   	 	if left_down && !right_down && spr_dir = 1 {
+   	 		attack_end() 
+   	 		set_state(PS_IDLE)
+   	 	}
+   	 	if !left_down && right_down && spr_dir = -1 {
+   	 		attack_end() 
+   	 		set_state(PS_IDLE)
+   	 	}
    	 	 sound_play(asset_get("sfx_swipe_heavy2"),false,noone,.7,1.2);
    	 }
    	 if window_timer == ltimer && !hitpause {
@@ -1389,6 +1402,7 @@ if attack == AT_FSPECIAL && !hitpause{
     	can_wall_jump = false 
         soft_armor = 999
         if window < 5 {
+        	
             hit_player_obj.x += floor((x + 120*spr_dir -  hit_player_obj.x)/2)
             hit_player_obj.y += floor((y - 20 - hit_player_obj.y)/4)
             hit_player_obj.fall_through = true 
@@ -1402,7 +1416,7 @@ if attack == AT_FSPECIAL && !hitpause{
         	destroy_hitboxes()
         	sound_play(asset_get("sfx_clairen_spin"));
             sound_play(asset_get("sfx_shovel_swing_med1"));
-            vsp = -8
+            vsp = -10
             window = 5
             window_timer = 1
             hsp /= 2
@@ -1415,13 +1429,26 @@ if attack == AT_FSPECIAL && !hitpause{
         }
         
         if window == 5 {
-            hit_player_obj.x += floor((x - (60 - window_timer*10)*spr_dir -  hit_player_obj.x)/4)
+        	vsp += 0.5       	
+        	if state_timer % 10 == 0 {
+        		spawn_hit_fx(hit_player_obj.x,hit_player_obj.y - 30,14)
+        		with hit_player_obj {
+        			take_damage(player,-1,1)
+        		}
+        	}
+        	
+            hit_player_obj.x += floor((x - (90 - window_timer*15)*spr_dir -  hit_player_obj.x)/4)
             hit_player_obj.y += floor((y -  hit_player_obj.y)/2)
             hit_player_obj.fall_through = true 
             hit_player_obj.state = PS_PRATFALL
 	    	
             if window_timer == 9 {
                 window_timer = 0
+            }
+            
+            if window_timer < 4 {
+              force_depth = true 
+              depth = hit_player_obj.depth + 1
             }
             
             if (state_timer > 10 && (!free or y > room_height/2 + 300)) {

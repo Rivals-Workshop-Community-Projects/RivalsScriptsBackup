@@ -15,8 +15,8 @@ if attack == AT_TAUNT_2 {
 	var angle = point_direction(x, y, player_id.hit_player_obj.x , player_id.hit_player_obj.y - 30);
 	        
 		        
-    x += lengthdir_x(17, angle)
-    y += lengthdir_y(17, angle)
+    x += lengthdir_x(22, angle)
+    y += lengthdir_y(22, angle)
 }
 
 if attack == AT_DTILT {

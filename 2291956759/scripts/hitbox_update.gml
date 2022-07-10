@@ -1,5 +1,6 @@
 ///
 
+
 if attack == AT_FSPECIAL && hbox_num == 3{
   if hitbox_timer == 1 {	
 	player_id.move_cooldown[AT_FSPECIAL] = 30
@@ -45,42 +46,7 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 	}
 	
    }
-   
-   if player_id.attacking &&  player_id.attack == AT_NSPECIAL && window < 2{
-   	hitbox_timer = 16
-   	x += floor((player_id.x - x) / 60)
-	y += floor((player_id.y - 40 - y) / 60)
-	fall_through = true
-	if player_id.x - x < 0 {
-		hsp -= 0.6
-	} else {
-		hsp += 0.6
-	}
-	
-	if player_id.y - 40 - y < 0 {
-		vsp -= 0.6
-	} else {
-		vsp += 0.6
-	}
-   }
-   
-   if player_id.inkshield > 0 {
-    x += floor((player_id.x - x) / 60)
-	y += floor((player_id.y - y) / 60)
-	fall_through = true
-	if player_id.x - x < 0 {
-		hsp -= 0.2
-	} else {
-		hsp += 0.2
-	}
-	
-	if player_id.y - 40 - y < 0 {
-		vsp -= 0.2
-	} else {
-		vsp += 0.2
-	}
-   	
-   }
+ 
 	
 }
 

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 20, 12 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 19 );
 
 // Traditional
 set_color_profile_slot( 1, 0, 122, 255, 0 ); //Green
@@ -205,6 +205,16 @@ set_color_profile_slot( 17, 4, 34, 30, 48 ); //Blue Shade
 set_color_profile_slot( 17, 5, 186, 255, 94 ); //Fur
 set_color_profile_slot( 17, 6, 106, 196, 41 ); //FurShade
 set_color_profile_slot( 17, 7, 153, 39, 179 ); //Under
+
+// Bumble
+set_color_profile_slot( 18, 0, 20, 201, 47 ); //Green
+set_color_profile_slot( 18, 1, 69, 59, 59 ); //Main
+set_color_profile_slot( 18, 2, 87, 66, 66 ); //MainShine
+set_color_profile_slot( 18, 3, 43, 194, 83 ); //Blue
+set_color_profile_slot( 18, 4, 24, 140, 82 ); //Blue Shade
+set_color_profile_slot( 18, 5, 215, 211, 240 ); //Fur
+set_color_profile_slot( 18, 6, 141, 130, 150 ); //FurShade
+set_color_profile_slot( 18, 7, 34, 69, 35 ); //Under
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

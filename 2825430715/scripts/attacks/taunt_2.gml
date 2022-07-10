@@ -56,7 +56,7 @@ set_hitbox_value(AT_TAUNT_2, 1, HG_WIDTH, 20);
 set_hitbox_value(AT_TAUNT_2, 1, HG_HEIGHT, 20);
 set_hitbox_value(AT_TAUNT_2, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_TAUNT_2, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_TAUNT_2, 1, HG_DAMAGE, 5);
+set_hitbox_value(AT_TAUNT_2, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_TAUNT_2, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_TAUNT_2, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_TAUNT_2, 1, HG_KNOCKBACK_SCALING, 0.9);
@@ -67,3 +67,7 @@ set_hitbox_value(AT_TAUNT_2, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_TAUNT_2, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_TAUNT_2, 1, HG_VISUAL_EFFECT, 306);
 set_hitbox_value(AT_TAUNT_2, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_TAUNT_2, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_TAUNT_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_TAUNT_2, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+

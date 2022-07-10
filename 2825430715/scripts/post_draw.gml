@@ -49,6 +49,20 @@ if attacking && attack == AT_FTHROW {
 
 shader_end() 
 
+if cheapmode == 1 && get_gameplay_time() < 600 &&  get_gameplay_time() > 60 {
+    draw_debug_text(x - 70 ,y -162,"You don't play fair?");
+	draw_debug_text(x - 100 ,y -142,"(taunt to active anticheap)");
+}
+
+if cheapmode == 3 && get_gameplay_time() < 900 {
+     draw_debug_text(x - 56 ,y -162,"Very well then.");
+}
+
+if cheapmode == 3 {
+    gpu_set_blendmode(bm_add);
+     draw_sprite_ext(sprite_index,image_index,x,y - get_gameplay_time()%10, spr_dir,1,0,-1, 1 - (get_gameplay_time()%10)/10 )
+     gpu_set_blendmode(bm_normal);
+}
 
 with oPlayer {
     shader_start();

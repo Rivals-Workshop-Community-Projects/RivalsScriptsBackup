@@ -31,7 +31,7 @@ if state == PS_PRATLAND {
 
 
 
-if has_rune("D") {
+if cheapmode == 3 or has_rune("D") {
 	
 	if attacking && attack == AT_DTILT && window_timer == 6 {
 		
@@ -68,7 +68,7 @@ if has_rune("D") {
 	
 }
 
-if has_rune("E") {
+if cheapmode == 3 or has_rune("E") {
 	
 	if attacking && has_hit_player && hitstop >= hitstop_full - 1 && get_gameplay_time()%2 == random_func(1,2,true) && hitpause{
 		sound_stop(sound_get("RI"))
@@ -82,7 +82,7 @@ if has_rune("E") {
 	
 }
 
-if has_rune("F") {
+if cheapmode == 3 or has_rune("F") {
 	
 	if attacking && has_hit_player && hitpause{
 		with hit_player_obj {
@@ -92,7 +92,7 @@ if has_rune("F") {
 	
 }
 
-if has_rune("G") {
+if cheapmode == 3 or has_rune("G") {
 	
 	if attacking && has_hit_player && hitpause{
 			take_damage(player,-1,-1)
@@ -119,7 +119,7 @@ if has_rune("G") {
 }
 
 
-if has_rune("H") {
+if cheapmode == 3 or has_rune("H") {
 	
 	 with asset_get("pHitBox") {
 	
@@ -172,7 +172,7 @@ if has_rune("H") {
 }
 
 
-if has_rune("I") {
+if cheapmode == 3 or has_rune("I") {
    with pHitBox {
    	   if "player_id" in self {
    	   	   if player_id == other.id && type == 1 {
@@ -210,7 +210,7 @@ if has_rune("I") {
     	
 }
 
-if has_rune("J") {
+if cheapmode == 3 or has_rune("J") {
 	if attacking && attack == AT_TAUNT {
 		shake_camera(4,4)
 		with oPlayer {
@@ -228,7 +228,7 @@ if has_rune("J") {
 }
 
 
-if has_rune("K") {
+if cheapmode == 3 or has_rune("K") {
     thresholdNEO = floor(threshold/(hit_player_obj.knockback_adj))
 	if get_player_damage(hit_player_obj.player) >= thresholdNEO {
 	if hitpause && hitstop == 1 &&  has_hit_player && get_player_damage(hit_player_obj.player) >= thresholdNEO {
@@ -242,7 +242,7 @@ if has_rune("K") {
 	
 }
 
-if has_rune("L") {
+if cheapmode == 3 or has_rune("L") {
 	with oPlayer {
     
 	if "turningtodustID" in self {
@@ -270,7 +270,7 @@ if has_rune("L") {
 	
 }
 
-if has_rune("M") {
+if cheapmode == 3 or has_rune("M") {
 	with asset_get("oPlayer") {
 	   if self != other && !hitpause && other.state_cat != SC_HITSTUN{
 		nearbyp = collision_circle( x, y-32, 10,other, true, true ) 
@@ -291,7 +291,7 @@ if has_rune("M") {
    }
 }
 
-if has_rune("N") {
+if cheapmode == 3 or has_rune("N") {
 	 if attacking && window == 1 {
 	 	super_armor = true 
 	 } else {
@@ -300,7 +300,7 @@ if has_rune("N") {
 	
 }
 
-if has_rune("O") {
+if cheapmode == 3 or has_rune("O") {
 	if state == PS_LAND or state == PS_LANDING_LAG or state == PS_PRATLAND or state == PS_HITSTUN_LAND {
 		if state_timer == 1 {
 			create_hitbox(AT_FSTRONG,9,x,y)
