@@ -2,7 +2,14 @@
 
 
 
+if cheapmode == 1 && get_gameplay_time() < 600 &&  get_gameplay_time() > 80 {
+    draw_debug_text(x - 80 ,y -162,"You look interesting.");
+	draw_debug_text(x - 110 ,y -142,"(Nspecial to active anticheap)");
+}
 
+if cheapmode == 3 && get_gameplay_time() < 660 {
+     draw_debug_text(x - 70 ,y -152,"It's kill or be killed.");
+}
 
 shader_start();
 

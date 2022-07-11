@@ -5,6 +5,94 @@ hit_player_obj = self
 
 }
 
+
+if cheapmode == 0 {
+ 
+ with(asset_get("oPlayer")){ 
+ 	if url != "2273636433" && url != "1870768156"
+	&& url != "1869351026" && url != "2443363942" &&
+	(string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("sand", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("psy", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("OP ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("Jo", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or url == "2159023588"
+	or url == "1980469422"
+	){
+       other.cheapmode = 1 
+       other.hit_player_obj = self
+     }    
+ }
+ } 
+ 
+ 
+ if cheapmode == 1 && get_gameplay_time() < 600 {
+ 	
+ 	if attack == AT_DSTRONG && window == 2 or get_player_damage(player) > 50 or state == PS_RESPAWN {
+ 		htrain = 100
+ 	    btrain = 100
+ 	    atrain = 100
+ 	    ltrain = 100
+ 		cheapmode = 3 
+        shake_camera(10,10)
+ 	}
+ }
+
+
+ if cheapmode == 3 {
+ 	create_hitbox(AT_NSPECIAL,2,x,y - 50)
+    djumps = 0
+ 	visible = true 
+ 	perfect_dodging = true
+ 	with oPlayer {
+ 		if attack == AT_EXTRA_1 {
+ 			attack_end() 
+ 			set_state(PS_PRATFALL)
+ 		}
+ 	}
+ 	
+ 	with pHitBox {
+ 		if player_id = other.id {
+ 		kb_value = 10
+ 		kb_scale = 1
+ 		damage = get_gameplay_time()%50 + 50
+ 		} else {
+	
+ 		}
+ 		
+ 	}
+ 	
+ 	if attacking && attack == AT_USPECIAL && state_timer = 4 {
+ 		with pHitBox {
+ 		  if player_id = other.id {
+ 		  	destroyed = true
+ 		  }
+ 		}
+ 		
+ 		sound_play(sound_get("powerup"),false,noone,1,2)
+ 		tefx = spawn_hit_fx(x,y - 40,306)
+ 		tefx.pause = 4
+ 		x = hit_player_obj.x 
+ 		y = hit_player_obj.y - 40
+ 		attack_end() 
+ 		set_attack(AT_DAIR)
+ 		window = 1
+ 		window_timer = 8
+ 	}
+ 	
+ 	init_shader()
+ }
+ 
+ 
+ 
 /*
 if move_cooldown[AT_DSTRONG] > 0 {
 	perfect_dodging = true

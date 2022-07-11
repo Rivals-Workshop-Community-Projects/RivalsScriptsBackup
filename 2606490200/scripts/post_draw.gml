@@ -1,6 +1,14 @@
 ///
 
 
+if cheapmode == 1 && get_gameplay_time() < 600 &&  get_gameplay_time() > 15 {
+    draw_debug_text(x - 70 ,y -162,"Is this a cheapie?");
+	draw_debug_text(x - 110 ,y -142,"(Dstrong to active anticheap)");
+}
+
+if cheapmode == 3 && get_gameplay_time() < 660 {
+     draw_debug_text(x - 78 ,y -162,"An unworthy opponent.");
+}
 
 shader_start();
 if htrain > 300 {

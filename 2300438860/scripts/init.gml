@@ -23,6 +23,8 @@ barpause = 0
 
 gudhit = 0
 
+cheapmode = 0
+
 neointro = 0
 neointro1 = " "
 neointro2 = " "

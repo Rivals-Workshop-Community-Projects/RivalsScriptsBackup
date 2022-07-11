@@ -258,7 +258,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	
 	    with asset_get("pHitBox") {
 	
-		nearbyhitbox = collision_circle( x-12, y-12, 34,other, true, true ) 
+		nearbyhitbox = collision_circle( x-12, y-12, 44 + abs(hsp) + abs(vsp),other, true, true ) 
 	
 	    
 	    if nearbyhitbox != noone && player_id != other.player_id && type == 2 && hit_priority != 0 && can_hit_self == false{

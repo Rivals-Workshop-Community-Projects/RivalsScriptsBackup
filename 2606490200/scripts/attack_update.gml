@@ -490,11 +490,13 @@ switch attack {
            create_hitbox(AT_USPECIAL,1,x,y - 110)
            sound_play(sound_get("charge2"),false,noone,1,.8)
            sound_play(asset_get("sfx_absa_boltcloud"),false,noone,1,1)
-           
+         
+         if htrain < 100 {  
                     fxhup = spawn_hit_fx(x,y - 120,hup)
          fxhup.depth = -100
          sound_play(asset_get("sfx_coin_collect"))
          htrain += 5
+         }
          
        }
        

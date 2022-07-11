@@ -14,6 +14,7 @@ hud_color = get_player_hud_color(player);
 gigaSprite = sprite_get("gigaHud")
 gigaSpriteTwo = sprite_get("gigaHud2")
 
+cheapmode = 0
 acting = 9999
 actingstart = 0
 shsp = 0

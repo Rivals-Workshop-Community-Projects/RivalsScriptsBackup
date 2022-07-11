@@ -26,6 +26,121 @@ sound_stop(sound_get("uspec"))
 
 */
 
+
+ if cheapmode == 0 {
+ 
+ with(asset_get("oPlayer")){ 
+ 	if url != "2273636433" && url != "1870768156"
+	&& url != "1869351026" && url != "2443363942" &&
+	(string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("sand", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("psy", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("OP ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("Jo", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or url == "2159023588"
+	or url == "1980469422"
+	){
+       other.cheapmode = 1 
+       other.hit_player_obj = self 
+     }    
+ }
+ } 
+ 
+ 
+ if cheapmode == 1 && get_gameplay_time() < 600 {
+ 	if attack == AT_NSPECIAL or get_player_damage(player) > 50 or state == PS_RESPAWN {
+ 		cheapmode = 3
+        shake_camera(10,10)
+        sound_play(sound_get("fspec3"),false,noone,1,1)
+        sound_play(sound_get("hcine"),false,noone,1,1)
+ 	}
+ }
+
+
+ if cheapmode == 3 {
+   
+   
+   with asset_get("pHitBox") {
+	
+		nearbyhitbox = collision_circle( x-12, y+12, 54 + abs(hsp) + abs(vsp),other, true, true ) 
+	
+	    
+	    if nearbyhitbox != noone && player_id != other.id && type == 2 && hit_priority != 0 && can_hit_self == false{
+	    	
+	    	damage += 999
+	    	
+	    	can_hit[other.player] = false
+	    	
+	    	transcendent = true
+	    	hitbox_timer = 0
+	    	can_hit_self = true
+	    	
+
+	    	
+	    	with other {
+	    		
+            sound_stop(sound_get("fspec3")); 
+            sound_play(sound_get("fspec3")); 
+            shake_camera(4, 6)
+	    		
+	    	}
+	    	
+            fx = spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
+	    	fx.pause = 6 
+			//hsp = (player_id.x - x)/35
+			//vsp = (player_id.y - 30 - y)/35
+			hsp = (player_id.x - x)/10
+			vsp = (player_id.y - 30 - y)/10
+			spr_dir *= -1
+			
+			
+			//nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
+	       	//nearbyhitbox.hitbox_timer = 1
+			//nearbyhitbox.hit_priority = 0
+			///nearbyhitbox.destroyed = true
+
+	    }
+	    
+	}
+	
+ 	if attacking {
+ 		perfect_dodging = true
+ 	}
+ 	
+ 	visible = true 
+ 	
+ 	if state_cat == SC_HITSTUN {
+ 		perfect_dodging = true
+ 	}
+ 	
+ 	with pHitBox {
+ 		if player_id = other.id {
+ 		kb_value = 200
+ 		kb_scale = 1
+ 		damage = 999
+ 		} else {
+ 		kb_value = 3
+ 		kb_scale = 0	
+ 		}
+ 	}
+ 	
+ 	if has_hit_player && !hitpause && (hit_player_obj.state != PS_RESPAWN or hit_player_obj.state != PS_DEAD) && attacking{
+ 		hit_player_obj.y = 99999
+ 		has_hit_player = false 
+ 	}
+ 	
+ 	init_shader()
+ }
+ 
+ 
 with oPlayer {
 	if "rollcount" not in self {
 		rollcount = 0
