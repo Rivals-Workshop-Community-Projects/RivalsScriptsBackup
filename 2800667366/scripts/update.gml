@@ -129,6 +129,7 @@ with oPlayer {
    if state_cat == SC_HITSTUN {
        if hitpause {
            take_damage(player,-1,1) 
+           warptime = 0
        }
       //if get_gameplay_time() % 2 == 0 state_timer -= 1
       if !free && abs(hsp) > 12 {
@@ -151,8 +152,10 @@ with oPlayer {
        shake_camera(4,6)
         spawn_hit_fx(x,y - 30, 304)
        x = room_width/2 - 600
+       if warptime <= 6 {
        if abs(hsp) < 50 hsp *= 1.2
        if abs(vsp) < 50 vsp *= 1.2
+       }
        spawn_hit_fx(x,y - 30, 306)
        take_damage(player,-1,10)
        djumps = 0
@@ -169,8 +172,10 @@ with oPlayer {
        shake_camera(4,6)
         spawn_hit_fx(x,y - 30, 304)
        x = room_width/2 + 600
+       if warptime <= 6 {
        if abs(hsp) < 50 hsp *= 1.2
        if abs(vsp) < 50 vsp *= 1.2
+       }
        spawn_hit_fx(x,y - 30, 306)
        take_damage(player,-1,10)
        djumps = 0
@@ -187,8 +192,10 @@ with oPlayer {
        shake_camera(4,6)
         spawn_hit_fx(x,y - 30, 304)
        y = room_height/2 - 300
+       if warptime <= 6 {
        if abs(hsp) < 50 hsp *= 1.2
        if abs(vsp) < 50 vsp *= 1.2
+       }
        spawn_hit_fx(x,y - 30, 306)
        take_damage(player,-1,10)
        djumps = 0
@@ -205,8 +212,10 @@ with oPlayer {
        shake_camera(4,6)
         spawn_hit_fx(x,y - 30, 304)
        y = room_height/2 + 500
+       if warptime <= 6 {
        if abs(hsp) < 50 hsp *= 1.2
        if abs(vsp) < 50 vsp *= 1.2
+       }
        spawn_hit_fx(x,y - 30, 306)
        take_damage(player,-1,10)
        djumps = 0

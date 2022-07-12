@@ -553,7 +553,7 @@ if attack == AT_EXTRA_2 {
         
         		with (asset_get("oPlayer")) {
 				if (player != other.player) {
-             	if "ai_target" in self && "nname" not in self {
+             	if "ai_target" in self && "nname" not in self && "ai_target" in other {
              		if url != "2108469290" {
              		if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
              			set_state (PS_IDLE)

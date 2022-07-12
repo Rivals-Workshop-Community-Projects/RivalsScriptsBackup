@@ -1,3 +1,5 @@
+if !(instance_exists(cursor_id)) exit;
+
 css_timer++;
 alt_cur = get_player_color(player);
 txt = "#" + string(alt_cur);

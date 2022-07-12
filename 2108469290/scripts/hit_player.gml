@@ -121,7 +121,7 @@ if my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 3  {
 
    with (asset_get("oPlayer")) {
 	if (player != other.player) {
-             	if "ai_target" in self && "nname" not in self{
+             	if "ai_target" in self && "nname" not in self && "ai_target" in other {
              		if url != "2108469290" {
                    move_cooldown[AT_DSPECIAL] = 60
                    move_cooldown[AT_FSPECIAL] = 60

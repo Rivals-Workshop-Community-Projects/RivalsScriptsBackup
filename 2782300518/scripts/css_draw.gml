@@ -63,6 +63,7 @@ else draw_sprite_ext(bike, drawtime/anim_speed, temp_x+42+(drawtime *4), temp_y+
 
 draw_sprite_ext(sprite_get("voice_button"), voicebutton, voice_button_position_x, voice_button_position_y, 1, 1, 0, c_white, 1);
 
+if !(instance_exists(cursor_id)) exit;
 
 //functions by muno
 #define rectDraw(x1, y1, width, height, color)

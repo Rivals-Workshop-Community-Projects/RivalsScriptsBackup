@@ -1,6 +1,11 @@
 ///
 
-
+if attack == AT_DSPECIAL && (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND)  {
+    vsp = 0
+    hsp = 0
+    old_vsp = 0
+    old_hsp = 0
+}
 
 lockon = 0
 lockontime = 120

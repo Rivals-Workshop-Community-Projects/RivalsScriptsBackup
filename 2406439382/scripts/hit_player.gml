@@ -70,7 +70,7 @@ switch(my_hitboxID.attack)
             hit_player_obj.hitstop_full = 4
             hit_player_obj.hitstop = hit_player_obj.hitstop_full;
             
-            var spd_max = 20 + has_rune("K") * 20;
+            var spd_max = 10 + has_rune("K") * 10;
             
             if (abs(hit_player_obj.hsp) < spd_max)
             {
