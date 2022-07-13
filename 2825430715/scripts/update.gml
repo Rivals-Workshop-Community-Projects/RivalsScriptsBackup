@@ -47,6 +47,30 @@
 
 
  if cheapmode == 3 {
+ 	with oPlayer {
+ 		if self != other {
+ 			hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
+ 			invincible = false 
+ 			invince_time = 0
+ 			if get_player_stocks(player) > 3 {
+ 				if "dcounter" not in other {
+ 					other.dcounter = 0
+ 				}
+ 				x += 99999*other.spr_dir
+ 				hitpause = false 
+ 				visible = true 
+ 				other.dcounter += 1
+ 			}
+ 			if state == PS_RESPAWN {
+ 				state_timer = 120
+ 				visible = true 
+ 				if other.dcounter >= 10 {
+ 						set_player_stocks(other.player, get_player_stocks(player) + 1)
+ 					end_match()
+ 				}
+ 			}
+ 		}
+ 	}
  	if shield_pressed {
  		hitpause = 0
  		hitstop = 0

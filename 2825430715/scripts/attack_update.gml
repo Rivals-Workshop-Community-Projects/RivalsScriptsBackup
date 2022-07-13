@@ -78,7 +78,11 @@ switch attack {
 	*/
 	
 		if "KanosRe" in self {
+			if "effect" in self {
 			other.Kaeffect = effect
+			} else {
+			other.Kaeffect = 0		
+			}
 			transcendent = true
 	    	hitbox_timer -= 1
 	    	can_hit_self = true
@@ -165,8 +169,11 @@ switch attack {
 	  }
 	
 	 if window == 3 && window_timer == 1 && !hitpause {
-	 	set_hitbox_value(AT_TAUNT_2, 1, HG_EFFECT, Kaeffect);
-	     		create_hitbox(AT_TAUNT_2,1,x + 10*spr_dir,y - 50)
+	 		if "Kaeffect" in self {
+			set_hitbox_value(AT_TAUNT_2, 1, HG_EFFECT, Kaeffect);
+			}
+	 	
+	     		create_hitbox(AT_TAUNT_2,1,floor(x) + 10*spr_dir,floor(y) - 50)
 	 	soft_armor = 0
 	 	hsp = -6*spr_dir
 	  }
@@ -1407,7 +1414,7 @@ if attack == AT_FSPECIAL && !hitpause{
             hit_player_obj.y += floor((y - 20 - hit_player_obj.y)/4)
             hit_player_obj.fall_through = true 
             hit_player_obj.state = PS_PRATFALL
-            hsp = 2*spr_dir
+            hsp = 3*spr_dir
             vsp /= 1.2
         }
         
@@ -1416,7 +1423,7 @@ if attack == AT_FSPECIAL && !hitpause{
         	destroy_hitboxes()
         	sound_play(asset_get("sfx_clairen_spin"));
             sound_play(asset_get("sfx_shovel_swing_med1"));
-            vsp = -10
+            vsp = -12
             window = 5
             window_timer = 1
             hsp /= 2
@@ -1430,7 +1437,7 @@ if attack == AT_FSPECIAL && !hitpause{
         
         if window == 5 {
         	vsp += 0.5       	
-        	if state_timer % 10 == 0 {
+        	if state_timer % 12 == 0 {
         		spawn_hit_fx(hit_player_obj.x,hit_player_obj.y - 30,14)
         		with hit_player_obj {
         			take_damage(player,-1,1)
@@ -1658,6 +1665,8 @@ if attack == AT_NSPECIAL && !hitpause{
 }
 
 if attack == AT_DSPECIAL && !hitpause{
+
+	
 	can_fast_fall = false 
 	if window < 3 {
 		hsp /= 1.5
