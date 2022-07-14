@@ -21,6 +21,12 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.orig_player == player {
     }
     window = 7;
     window_timer = 0;
+    if shields_up {
+        shields_up = false;
+        sound_play(sfx_poke_stonedge_1,false,noone,0.65,1.25);
+        var h = spawn_hit_fx(x,y, hfx_rock_small);
+        h.depth = depth -1;
+    }
 }
 
 if my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1 && my_hitboxID.orig_player_id == self {
@@ -124,6 +130,7 @@ switch(my_hitboxID.attack) {
         }
         break;
     case AT_BAIR:
+        sound_play(sfx_spiral_hitsoft_1,false,noone,0.7,0.95);
         sound_play(sfx_poke_reflect,false,noone,0.6,1.1);
         var h = spawn_hit_fx((hit_player_obj.x + x)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_X_OFFSET)*spr_dir,(hit_player_obj.y + y)*0.5 + get_hitbox_value(my_hitboxID.attack,my_hitboxID.hbox_num,HG_VISUAL_EFFECT_Y_OFFSET) - 25, 
         hfx_star_medium);

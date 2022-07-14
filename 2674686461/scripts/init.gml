@@ -4,6 +4,7 @@ shields_up = true;
 armorless_timer = 0;
 armorless_damage_time = 480; //8 seconds
 meteor_id = noone;
+meteor_armor = true;
 
 //attack specifics
 nspecial_charge_timer = 0;
@@ -129,8 +130,9 @@ max_fall = 7; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
 gravity_speed = .35;
 hitstun_grav = .40;
-knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
-base_kb_adj = knockback_adj;
+knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+meteor_kb_adj = knockback_adj;
+core_kb_adj = 1.1;
 
 land_time = 4; //normal landing frames
 prat_land_time = 20;

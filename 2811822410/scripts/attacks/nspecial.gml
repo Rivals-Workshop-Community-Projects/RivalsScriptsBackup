@@ -74,6 +74,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, HFX_MAY_LEAF_BIG);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, HFX_MAY_LEAF_SMALL);
+//
+//set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 9);
 
 //Leak Final
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 0);

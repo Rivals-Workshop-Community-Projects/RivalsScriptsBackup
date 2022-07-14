@@ -16,6 +16,7 @@ if hit_player_obj == self {
     sound_play(asset_get("sfx_absa_concentrate"));
     
     vsp += 4
+    
 } else {
     
     

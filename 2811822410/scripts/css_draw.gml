@@ -1,13 +1,21 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "1.3";
-patch_day = "2";
+patch_ver = "1.4";
+patch_day = "8";
 patch_month = "JUL";
 
 var num_alts = 29;
 var alt_cur = get_player_color(player);
 
+/*
+if "timer" !in self {
+	timer = 0;
+} else {
+	timer += 1
+	print(timer);
+}
+*/
 //Alt name init. var doesn't work with arrays lol
 
 alt_name[0]  = "Hatsune Miku" //Hatsune Miku
@@ -44,17 +52,20 @@ alt_name[29] = ""
 alt_name[30] = ""
 alt_name[31] = ""
 
-
+//Dino Gaming
+//dino_game()
 
 
 //Patch
+	//sprite_change_offset("taunt_dance", 162, 192);
+	//draw_sprite_ext(sprite_get("taunt_dance"), alt_cur, x + 192, y, 1, 1, 0, c_white, 1);
+//if !game_show {
+	draw_set_halign(fa_left);
 
-draw_set_halign(fa_left);
+	textDraw(temp_x + 6, temp_y + 35, "fName", c_white, 0, 1000, 1, true, 1, patch_ver);
 
-textDraw(temp_x + 6, temp_y + 35, "fName", c_white, 0, 1000, 1, true, 1, patch_ver);
-
-textDraw(temp_x + 6, temp_y + 51, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
-
+	textDraw(temp_x + 6, temp_y + 51, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
+//}
 
 
 //Alt
@@ -74,7 +85,9 @@ for(i = 0; i < num_alts; i++){
 draw_set_halign(fa_left);
 
 //include alt. name
-textDraw(temp_x + 6, temp_y + 67, "fName", c_white, 0, 1000, 1, true, 1, alt_name[alt_cur]);
+//if !game_show {
+	textDraw(temp_x + 6, temp_y + 67, "fName", c_white, 0, 1000, 1, true, 1, alt_name[alt_cur]);
+//}
 
 //exclude alt. name
 //textDraw(temp_x + 6, temp_y + 82, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
@@ -102,6 +115,4 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 #define rectDraw(x1, y1, x2, y2, color)
 
 draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
-
-
 

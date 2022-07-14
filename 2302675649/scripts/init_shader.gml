@@ -1,5 +1,24 @@
 switch (get_player_color(player))
 {
+    //default
+    case 0:
+    {
+        if (get_synced_var(player))
+        {
+            AltColour(1, make_color_rgb(255, 255, 255));
+            AltColour(2, make_color_rgb(160, 164, 190));
+            AltColour(5, make_color_rgb(255, 239, 99));
+            AltColour(6, make_color_rgb(222, 149, 31));
+        }
+        else
+        {
+            AltOpacity(1, 1);
+            AltOpacity(2, 1);
+            AltOpacity(5, 1);
+            AltOpacity(6, 1);
+        }
+    }
+    break;
     //early access alt
     case 5:
     {

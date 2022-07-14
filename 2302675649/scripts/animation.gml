@@ -127,7 +127,23 @@ switch(state)
 				case AT_UTILT: if (isFurry) sprite_index = sprite_get("utiltFur"); break;
 				case AT_DATTACK: if (isFurry) sprite_index = sprite_get("dattackFur"); break;
 				case AT_UTHROW: if (isFurry) sprite_index = sprite_get("grabFur"); break;
-				case AT_NTHROW: if (isFurry) sprite_index = sprite_get("strongFur"); break;
+				case AT_NTHROW:
+					if (window == 5)
+					{
+						if (free)
+						{
+							sprite_index = sprite_get(isFurry?"jumpFur":"jump");
+							image_index = lerp(0, image_number - 1, (vsp + fast_fall) / (fast_fall * 2));
+						}
+						else
+						{
+							sprite_index = sprite_get(isFurry?"landFur":"land");
+							image_index = window_timer>8;
+						}
+						hurtboxID.sprite_index = hurtbox_spr;
+					}
+					else if (isFurry) sprite_index = sprite_get("strongFur");
+					break;
 				case AT_NSPECIAL: if (isFurry) sprite_index = sprite_get("nspecialFur"+(free?"_air":"")); break;
 				case AT_FSPECIAL: if (isFurry) sprite_index = sprite_get("fspecialFur"); break;
 				case AT_DSPECIAL: if (isFurry) sprite_index = sprite_get("dspecialFur"); break;

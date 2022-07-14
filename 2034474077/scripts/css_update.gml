@@ -1,5 +1,6 @@
 
 if("css_open" not in self) exit;
+if(!instance_exists(cursor_id)) exit;
 
 
 x = floor(x);

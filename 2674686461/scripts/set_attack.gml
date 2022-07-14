@@ -23,3 +23,9 @@ if (attack == AT_FSTRONG) or (attack == AT_USTRONG) or (attack == AT_DSTRONG) {
     dstrong_loop_num_current = 0;
     dstrong_loop_num_max = 0;
 }
+
+if shields_up {
+    meteor_armor = true;
+} else {
+    meteor_armor = false;
+}

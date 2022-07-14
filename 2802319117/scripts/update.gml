@@ -13,3 +13,5 @@ if (instance_exists(phantom)) //will reset values and destroy phanto when oppone
 	    }
 	}
 }
+if (!free || state == PS_WALL_JUMP){
+move_cooldown[AT_FSPECIAL] = 0;}

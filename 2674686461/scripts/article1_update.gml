@@ -22,6 +22,13 @@ if rock_type == "sand" { //sandstorm damage, might remove
     }
 }*/
 if rock_type == "rock" {
+    with(pHitBox) {
+        if place_meeting(x,y,other) {
+            if player != other.player {
+                other.should_die = true
+            }
+        }
+    }
     if !instance_exists(rock_hitbox) && rock_timer >= 45{
         rock_hitbox = create_hitbox(AT_FSPECIAL_2,2,x,y);
         rock_hitbox.rock_owner = self;

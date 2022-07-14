@@ -15,28 +15,31 @@ if (attack == AT_FSTRONG && window == 2 && window_timer == 1 && !has_hit){
        }
     
 if (attack == AT_FSPECIAL){
-    move_cooldown[AT_FSPECIAL] = 45;
+    move_cooldown[AT_FSPECIAL] = 999;
     can_fast_fall = false;
-        }
-        
-if (attack == AT_DSPECIAL){
-    move_cooldown[AT_DSPECIAL] = 20;
-    can_fast_fall = false;
-        }
-if (attack == AT_FSPECIAL && window > 1){
+    if (window == 1 && window_timer == 1){
+    	white_flash_timer = 10;
+    }
+}
+if (attack == AT_FSPECIAL && window > 2){
 	can_attack = true;
 	can_jump = true;
 	can_special = true;
-        }
+}
+if (attack == AT_DSPECIAL){
+    move_cooldown[AT_DSPECIAL] = 20;
+    can_fast_fall = false;
+}
 
 if (attack == AT_DAIR && window == 3){
     can_shield = true;
     can_jump = true;
-
-        }
+}
         
-   if (attack == AT_DAIR && has_hit)
-   {move_cooldown[AT_DAIR] = 15;}
+if (attack == AT_DAIR && has_hit){
+	move_cooldown[AT_DAIR] = 15;
+	
+}
 
 
 

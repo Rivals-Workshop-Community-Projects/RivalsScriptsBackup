@@ -263,8 +263,8 @@ set_color_profile_slot( 26, 1, 79, 137, 243 ); //Eyes
 set_color_profile_slot( 26, 2, 35, 116, 250 ); //Shirt1
 set_color_profile_slot( 26, 3, 26, 68, 172 ); //Shirt2
 set_color_profile_slot( 26, 4, 255, 55, 57 ); //Tie
-set_color_profile_slot( 26, 5, 254, 254, 254 ); //Skirt1
-set_color_profile_slot( 26, 6, 233, 163, 172 ); //Skirt2
+set_color_profile_slot( 26, 5, 236, 244, 254 ); //Skirt1
+set_color_profile_slot( 26, 6, 163, 206, 233 ); //Skirt2
 
 // Lucina
 set_color_profile_slot( 27, 0, 100, 121, 176 ); //Hair

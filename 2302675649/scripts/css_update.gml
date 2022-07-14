@@ -1,4 +1,4 @@
-if ("syncUID" not in id || syncUID != 25005) exit;
+if ("syncUID" not in id || syncUID != 25005 || !instance_exists(cursor_id)) exit;
 var temp_x = x + 8;
 var temp_y = y + 9;
 if (player == 0)
@@ -16,6 +16,7 @@ else
 	buttonInfo.x = 66;
 	buttonInfo.y = 169;
 }
+isFurry = get_synced_var(player)==syncUID;
 buttonInfo.hover = point_in_rectangle(get_instance_x(cursor_id)-temp_x, get_instance_y(cursor_id)-temp_y, buttonInfo.x, buttonInfo.y, buttonInfo.x+30, buttonInfo.y+26);
 if (buttonInfo.hover)
 {

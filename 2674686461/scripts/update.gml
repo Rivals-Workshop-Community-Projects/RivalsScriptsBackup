@@ -1,10 +1,18 @@
 //stuff
 
 
-knockback_adj = shields_up ? base_kb_adj : base_kb_adj+0.1; // change weight based on shield up or not
+knockback_adj = shields_up ? meteor_kb_adj : core_kb_adj; // change weight based on shield up or not
 
 if state == PS_PARRY && state_timer == 1 {
     sound_play(sfx_poke_reflect,false,noone,0.65,1);
+    if !shields_up && place_meeting(x,y,meteor_id) && meteor_id.rock_type == "sand" { //regain armor
+        sound_play(asset_get("sfx_bird_sidespecial"),false,noone,0.4,1.65);
+        sound_play(sfx_poke_sandstorm,false,noone,0.85,1.35);
+        var h = spawn_hit_fx(x,y, hfx_sand_absorb);
+        h.depth = depth -1;
+        meteor_id.should_die = true;
+        shields_up = true;
+    }
 }
 
 if !shields_up {

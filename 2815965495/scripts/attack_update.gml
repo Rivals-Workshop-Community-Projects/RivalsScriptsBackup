@@ -46,6 +46,7 @@ switch(attack){
 				if !free{
 					window = 4;
 					window_timer = 0;
+					hsp=0;
 					destroy_hitboxes();
 					Fcancel=0;
 				}
@@ -57,14 +58,15 @@ switch(attack){
 
 			if window == 3{
 				can_wall_jump = true;
-				if left_down{hsp-=0.25;}
-				if right_down{hsp+=0.25;}
+				if left_down{hsp-=0.2;}
+				if right_down{hsp+=0.2;}
 				if !free{
 					window = 4;
 					Fcancel=0;
 					window_timer = 0;
 					spawn_hit_fx(x,y-28, 154 );
 					destroy_hitboxes();
+					hsp=0;
 				}
 				if state_timer >= 28 && free{
 					can_shield = (Fcancel==1);
@@ -146,8 +148,25 @@ switch(attack){
 			can_shield = true;
 			if special_down && window_timer ==4 {
 				window_timer =3;
+				//Animation
+				if(special_down){																			
+					timer_special++;																				//Animation Timer
+					if(timer_special<8){																			//ANIMATION LOGIC
+						set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_hold"));
+						set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_hold"));
+					}
+					if(timer_special<13)&&(timer_special>7){
+						set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
+						set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
+					}
+					if(timer_special==13){
+						timer_special=0;
+					}
+				}
 			} else{
 				set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
+				set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
+				set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
 			}
 			//Movement
 			if (!joy_pad_idle){
@@ -159,10 +178,12 @@ switch(attack){
 			}
 			hsp = clamp(hsp, -2,2);
 			vsp = clamp(vsp, -2,2);
-
+			//Animation
 
 			//MAX CHARGE
 			if (state_timer >= 36 && window_timer <=4) || runeF{	
+				set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
+				set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
 				set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 5);
 				window = 4;
 				window_timer = 0;
@@ -191,15 +212,19 @@ switch(attack){
 		if window ==5 {
 			if window_timer ==get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)/2-6{
 				create_hitbox( AT_NSPECIAL, 1, x +40 , y-76 );					
+				spawn_hit_fx(x+40*spr_dir,y-76, 154 );
 			}																	
 			if window_timer ==get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)/2-5{
-				create_hitbox( AT_NSPECIAL, 1, x -40 , y-76 );					
+				create_hitbox( AT_NSPECIAL, 1, x -40 , y-76 );
+				spawn_hit_fx(x-40*spr_dir,y-76, 154 );
 			}
 			if window_timer ==get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)/2-4{
-				create_hitbox( AT_NSPECIAL, 1, x +40 , y +4 );					
+				create_hitbox( AT_NSPECIAL, 1, x +40 , y +4 );		
+				spawn_hit_fx(x+40*spr_dir,y+4, 154 );
 			}
 			if window_timer ==get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)/2-3{
-				create_hitbox( AT_NSPECIAL, 1, x -40 , y +4);					
+				create_hitbox( AT_NSPECIAL, 1, x -40 , y +4);	
+				spawn_hit_fx(x-40*spr_dir,y+4, 154 );
 			}
 			move_cooldown[AT_NSPECIAL] = 24;
 		}
@@ -224,15 +249,37 @@ switch(attack){
 					window_timer =7;
 					hsp *= .9;
 					if vsp >0 {vsp *= .9;}
-				}
-				//MAX CHARGE
-				if (state_timer >= 35 && window_timer <=8)  {	
+					if(special_down){		
+						can_shield = true;
+						timer_special++;																				//Animation Timer
+						if(timer_special<9){																			//ANIMATION LOGIC
+							set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_hold"));
+							set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_hold"));
+						}
+						if(timer_special<14)&&(timer_special>8){
+							set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
+							set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
+						}
+						if(timer_special==14){
+							timer_special=0;
+						}
+					}
+				} 
 
+				//MAX CHARGE
+				if (state_timer >= 34 && window_timer <=8)  {	
+					can_shield = false;
 					window_timer=9;
 					max_charge=2;
 					set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_charged"));
 					set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_charged"));
 				}
+
+				if window_timer == 9 && max_charge != 2{
+					set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
+					set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
+				}
+
 				
 				break;
 			case 2:
@@ -383,6 +430,7 @@ switch(attack){
 				if runeG {
 					move_cooldown[AT_USPECIAL]= 9999;
 				}
+				//if has_hit {can_fast_fall = true;}
 
 		}
 		break;
@@ -405,7 +453,7 @@ switch(attack){
 			can_shield = true;
 			can_wall_jump = true;
 			//if taunt_pressed{set_attack(AT_TAUNT);}
-			if window_timer == get_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH)-1{
+			if window_timer == get_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH)-2{
 				contador+=1;
 			}
 			if contador >3 {
@@ -430,14 +478,14 @@ switch(attack){
 			can_shield = false;
 			if up_down{vsp = - 5;}
 			if down_down{vsp = 5;}
-			if window_timer == get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH)-1{
+			if window_timer == get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH)-2{
 				contador+=1;
 			}
 			if contador >1 {
 				contador = 0;
 				window = 4;
 				window_timer = 0;
-				take_damage(player, -1, 15);
+				take_damage(player, -1, 10);
 				spawn_hit_fx( x , y-32, 143 );
 				//outline_color = [250,0,0];
 			}	
@@ -525,15 +573,15 @@ if attack == AT_JAB  {
 
 if attack == AT_FTILT  {
 	can_move = true;
-	if left_down { hsp-=0.75;}
-	if right_down {hsp +=0.75;}
+	if left_down  && !was_parried { hsp-=0.75;}
+	if right_down && !was_parried {hsp +=0.75;}
 	hsp = clamp(hsp,-3,3);
 } 
 
 if attack == AT_UTILT {
 	can_move = true;
-	if left_down { hsp-=0.75;}
-	if right_down {hsp +=0.75;}
+	if left_down  && !was_parried{ hsp-=0.75;}
+	if right_down && !was_parried {hsp +=0.75;}
 	hsp = clamp(hsp,-3,3);
 } 
 

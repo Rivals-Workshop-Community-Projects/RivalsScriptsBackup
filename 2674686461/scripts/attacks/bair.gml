@@ -6,7 +6,7 @@ set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED_TYPE, -1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED, -1);
@@ -45,4 +45,4 @@ set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .95);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

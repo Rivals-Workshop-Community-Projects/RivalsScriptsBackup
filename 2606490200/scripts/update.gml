@@ -52,12 +52,7 @@ if cheapmode == 0 {
     djumps = 0
  	visible = true 
  	perfect_dodging = true
- 	with oPlayer {
- 		if attack == AT_EXTRA_1 {
- 			attack_end() 
- 			set_state(PS_PRATFALL)
- 		}
- 	}
+
  	
  	with pHitBox {
  		if player_id = other.id {
@@ -507,7 +502,7 @@ if state_timer == 1 {
 	 
 }
 
-if move_cooldown[AT_USPECIAL] > 0 {
+if move_cooldown[AT_USPECIAL] > 0 && cheapmode != 3 {
     create_hitbox(AT_USPECIAL,3,x,y)
     spawn_hit_fx(x - 20 + random_func(1,40,true) ,y - 46 - 20 + random_func(2,50,true), i6)
 	fall_through = true
@@ -522,7 +517,7 @@ if move_cooldown[AT_USPECIAL] > 0 {
 	}
 }
 
-if move_cooldown[AT_USPECIAL] == 1 {
+if move_cooldown[AT_USPECIAL] == 1 && cheapmode != 3 {
 	fx = spawn_hit_fx(x,y - 50,305)
 	fx.pause = 6
 	sound_play(asset_get("sfx_bird_sidespecial_start"));

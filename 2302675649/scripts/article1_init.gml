@@ -10,7 +10,7 @@ if !("in_adventure" in player_id && player_id.in_adventure) depth = 10;
 state = 0;
 newState = 0;
 state_timer = 0;
-animSpeed = 4;
+animSpeed = 2;
 
 can_be_grounded = false;
 ignores_walls = false;
@@ -37,6 +37,7 @@ old_hsp = 0;
 old_vsp = 0;
 
 safeZone = false;
+unsafeTimer = 0;
 
 afterImage = array_create(8, -1);
 

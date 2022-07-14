@@ -1,4 +1,4 @@
-if ("syncUID" not in id || syncUID != 25005) exit;
+if ("syncUID" not in id || syncUID != 25005 || !instance_exists(cursor_id)) exit;
 var temp_x = x + 8;
 var temp_y = y + 9;
 
@@ -25,7 +25,7 @@ else if (alt_new != currAlt)
 }
 
 alt_name = 0;
-alt_name[0]  = "The Lone Ronin";
+alt_name[0]  = isFurry?"The Lost Miko":"The Lone Ronin";
 alt_name[1]  = "Transcend";
 alt_name[2]  = "Kitsune of Light";
 alt_name[3]  = "Vaporwave";

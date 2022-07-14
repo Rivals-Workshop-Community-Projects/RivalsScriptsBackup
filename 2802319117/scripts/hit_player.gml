@@ -50,7 +50,7 @@ if (my_hitboxID.attack == AT_DSPECIAL)
 	}
 	else if (my_hitboxID.hbox_num == 2) // add code that spawns the phanto, which will track the player it hits
 	{				
-		if (phantom == noone)
+		//if (phantom == noone) {
 		create_hitbox(AT_DSPECIAL, 3, x, y - 500);
 		keymarked = 1;
 		phantom = hit_player_obj;

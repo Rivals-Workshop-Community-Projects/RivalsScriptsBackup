@@ -792,6 +792,23 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("New Mio CSS and Portrait - Thanks Sai!");
 						break;
+					case 50:
+						AddText("v1.50 - 9 Jul 2022");
+						AddText("");
+						AddText("Changed Mio's default colours");
+						AddText("");
+						AddText("Jump Strongs will no longer stop at ledge");
+						AddText("Jump Strong Endlag 12 -> 24 (Before whifflag multiplier)");
+						AddText("");
+						AddText("Hitting portals will now have quarter hitstop instead of half");
+						AddText("Portals will now be active earlier");
+						AddText("(Lonin can move through portals on whiff with any angle)");
+						AddText("");
+						AddText("Added anti-Armada portal code");
+						AddText("");
+						AddText("Grab Ground Friction 0.2 -> 0.1");
+						AddText("Grab Increased Hitbox Size");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -832,8 +849,8 @@ if ("rollArray" in self)
 					switch (tutPrevMenu)
 					{
 						case 0:
-							AddText("If you Jump Strong upwards, you'll be able to enter your own portal");
-							AddText("Recovery 1: FSpec (to the wall) -> Walljump -> Up Jump Strong");
+							AddText("If you Jump Strong, you'll be able to enter your own portal");
+							AddText("Recovery 1: FSpec (to the wall) -> Walljump -> Strong");
 							break;
 						case 1:
 							AddText("NSpec can be cancelled with the Parry button while it's not fully charged");

@@ -28,7 +28,7 @@ if (attack == AT_NSPECIAL){
                 if !shields_up && place_meeting(x,y,meteor_id) && meteor_id.rock_type == "sand" { //regain armor
                     sound_play(asset_get("sfx_bird_sidespecial"),false,noone,0.4,1.65);
                     sound_play(sfx_poke_sandstorm,false,noone,0.85,1.35);
-                        var h = spawn_hit_fx(x,y, hfx_sand_absorb);
+                    var h = spawn_hit_fx(x,y, hfx_sand_absorb);
                     h.depth = depth -1;
                     meteor_id.should_die = true;
                     shields_up = true;
@@ -155,6 +155,33 @@ if (attack == AT_DSPECIAL){
     
 }
 
+//strongs armor
+if attack == AT_FSTRONG {
+    if meteor_armor {
+        if window == 2 {
+            soft_armor = 12;
+        }
+        if window == 3 or window == 4 {
+            soft_armor = 6;
+        }
+    } else if !meteor_armor or window > 4 {
+        soft_armor = 0;
+    }
+}
+
+if attack == AT_USTRONG {
+    if meteor_armor {
+        if window == 2 {
+            soft_armor = 12;
+        }
+        if window == 3 or window == 4 {
+            soft_armor = 6;
+        }
+    } else if !meteor_armor or window > 4 {
+        soft_armor = 0;
+    }
+}
+
 if attack == AT_DSTRONG {
     if window == 2 {
         dstrong_loop_num_max = floor(strong_charge div 6);
@@ -178,6 +205,16 @@ if attack == AT_DSTRONG {
     }
     if window == 5 {
         can_wall_jump = true;
+    }
+    if meteor_armor {
+        if window == 2 {
+            soft_armor = 12;
+        }
+        if window == 3 or window == 4 {
+            soft_armor = 6;
+        }
+    } else if !meteor_armor or window > 4 {
+        soft_armor = 0;
     }
 }
 

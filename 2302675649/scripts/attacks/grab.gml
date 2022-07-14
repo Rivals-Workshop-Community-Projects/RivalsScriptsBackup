@@ -9,7 +9,7 @@ set_window_value(AT_UTHROW, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_UTHROW, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_UTHROW, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
+set_window_value(AT_UTHROW, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 
 set_window_value(AT_UTHROW, 2, AG_WINDOW_TYPE, 1); // grabbed?
 set_window_value(AT_UTHROW, 2, AG_WINDOW_LENGTH, 6);
@@ -44,9 +44,9 @@ set_hitbox_value(AT_UTHROW, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_UTHROW, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTHROW, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UTHROW, 1, HG_LIFETIME, 2);
-set_hitbox_value(AT_UTHROW, 1, HG_HITBOX_X, 30);
+set_hitbox_value(AT_UTHROW, 1, HG_HITBOX_X, 38);
 set_hitbox_value(AT_UTHROW, 1, HG_HITBOX_Y, -26);
-set_hitbox_value(AT_UTHROW, 1, HG_WIDTH, 48);
+set_hitbox_value(AT_UTHROW, 1, HG_WIDTH, 64);
 set_hitbox_value(AT_UTHROW, 1, HG_HEIGHT, 36);
 set_hitbox_value(AT_UTHROW, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_UTHROW, 1, HG_PRIORITY, 1);

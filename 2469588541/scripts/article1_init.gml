@@ -35,6 +35,13 @@ closestStarMem = -4;
 maxArticles = 7;
 replacedCount = 0;
 
+var i = 0;
+with (asset_get("obj_article1")) if (player_id == other.player_id)
+{
+    i += isBig+1;
+    replacedCount = i;
+}
+
 if (!has_rune("M"))
 {
     KillStar(NoOfStars(), 1);
@@ -42,13 +49,10 @@ if (!has_rune("M"))
 
 #define KillStar(_noOfStars, _cracked)
 {
-    var i = 0;
     var noOfStars = _noOfStars;
     var deletedSmth = false;
     with (GetFarthestStar())
     {
-        i += isBig+1;
-	    replacedCount = i;
 	    if (noOfStars > maxArticles && (!_cracked||cracked))
         {
             isDespawn = true;

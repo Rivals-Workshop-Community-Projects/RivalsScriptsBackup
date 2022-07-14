@@ -9,7 +9,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
 
-var num_alts = 12;
+var num_alts = 13;
 var alt_cur = get_player_color(player);
  
  
@@ -28,7 +28,7 @@ alt_name[8]  = "Niko";
 alt_name[9]  = "Lofi";
 alt_name[10] = "Obama";
 alt_name[11] = "Grand Dad";
-alt_name[12] = "woag";
+alt_name[12] = "Yuuka";
 alt_name[13] = "woag";
 alt_name[14] = "woag";
 alt_name[15] = "woag";

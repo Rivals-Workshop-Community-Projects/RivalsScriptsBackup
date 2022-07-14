@@ -8,11 +8,11 @@ set_attack_value(AT_USPECIAL, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 4);
 
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 11);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.8);
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 20);

@@ -1,3 +1,4 @@
+if(!instance_exists(cursor_id)) exit;
 //Button Location
 if player == 0{ // player online
 	var tmp_xl = 16

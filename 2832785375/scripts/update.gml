@@ -51,6 +51,12 @@ with oPlayer if id != other.id && (arb_tethered == other.id || arb_grabbed == ot
     hitstop_full = 6
 }
 
+if state == PS_HITSTUN || state == PS_HITSTUN_LAND {
+    with oPlayer if id != other.id && arb_grabbed == other.id {
+        arb_grabbed = undefined
+    }
+}
+
 if timer mod 60 == 0 {
 	//spawn_hit_fx(x, y-230, 134)
 }

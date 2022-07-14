@@ -28,9 +28,9 @@ if my_hitboxID.attack == AT_USPECIAL && ( my_hitboxID.hbox_num == 1 || my_hitbox
 
 
 
-
 if my_hitboxID.attack == AT_FSPECIAL && ( my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2){
-	//hit_player_obj.old_vsp=vsp;
+	//hit_player_obj.old_hsp=hsp*4/5;
+	//hit_player_obj.old_vsp=vsp*4/5;
 	//hit_player_obj.y= (y +hit_player_obj.y)/2;
 	hit_player_obj.should_make_shockwave=false;
 }

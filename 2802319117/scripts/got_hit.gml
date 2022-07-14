@@ -10,3 +10,4 @@ if (phantom != noone)
 	}
 	phantom = noone;
 }
+move_cooldown[AT_FSPECIAL] = 0;

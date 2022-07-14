@@ -1,7 +1,7 @@
 Fcancel=0;
 
 if attack == AT_USPECIAL{
-	prat_land_time      = 10;
+	prat_land_time = 10;
 	contador = 0;
 	arrow =2;
 	set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
@@ -28,6 +28,7 @@ if attack == AT_UTILT{
 if attack == AT_NSPECIAL{
 	set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 	absorb = 0;
+	timer_special=0;
 }
 
 if attack == AT_FSPECIAL{
@@ -37,6 +38,7 @@ if attack == AT_FSPECIAL{
 	contador = 0;
 	prat_alt += 1;
 	set_num_hitboxes(AT_FSPECIAL, 2);
+	timer_special=0;
 	set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 	set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 }

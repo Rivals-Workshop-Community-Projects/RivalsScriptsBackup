@@ -1,7 +1,8 @@
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
-
+set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 1);
+set_attack_value(AT_FSPECIAL, AG_LANDING_LAG, 10);
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
 
 //Jump
@@ -20,9 +21,9 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, has_rune("B") ? -12 : -8);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.4);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("jump1"));
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("jump1"));
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 15);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 2);
 

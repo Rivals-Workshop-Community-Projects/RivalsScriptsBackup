@@ -16,7 +16,13 @@ otherPortal = noone;
 with(asset_get("obj_article1")) if (player_id == other.player_id && self != other && !isDespawn && replacedCount <= maxArticles) other.otherPortal = self;
 if (otherPortalTemp != otherPortal) SetSprites();
 for (var i = 0; i < 8; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0) afterImage[i].alpha--;
-if (!safeZone && ((y > ceil(room_height/5) && y < floor(2*room_height/3) && x > ceil(room_width/6) && x < floor(5*room_width/6)) || noLimit)) safeZone = true;
+if (!safeZone && ((y > ceil(room_height/5) && y < floor(2*room_height/3) && x > ceil(room_width/6) && x < floor(5*room_width/6)) || noLimit))
+{
+    safeZone = true;
+    unsafeTimer = 0;
+    moveAngle += 180;
+}
+if (!safeZone) unsafeTimer++;
 
 var tele = true;
 if (!player_id.canTele) with(asset_get("obj_article1")) if (player_id == other.player_id && IsPlayerInPortal()) tele = false;
@@ -46,7 +52,7 @@ else
     	    {
                 SetArticleState(AS_DESPAWN);
             }
-            else if (state_timer >= 10)
+            else if (state_timer >= 6)
     	    {
                 ignores_walls = true;
     	        SetArticleState(AS_IDLE);
@@ -79,7 +85,7 @@ else
     	        //SetArticleState(AS_DESPAWN);
     	        SetArticleState(AS_IDLE);
     	    }
-            else if (state_timer == 1)
+            else if (state_timer == 1 && otherPortal != noone)
             {
                 player_id.x+=otherPortal.x-x;
                 player_id.y+=otherPortal.y-y;
@@ -118,7 +124,7 @@ else
                 with (oPlayer) if ("teleLonin" in self && teleLonin == other.player_id.player)
                     teleLonin = noone;
     	    }
-            else if (state_timer == 1)
+            else if (state_timer == 1 && otherPortal != noone)
             {
                 var selfRef = self;
                 with (pHurtBox) if (get_player_team(player) != get_player_team(other.player_id.player) && place_meeting(x,y,other.id)) with (oPlayer) if (other.player == player && "teleLonin" in self && teleLonin == noone && !clone)
@@ -170,7 +176,7 @@ else
         case AS_SPAWN:
             sprite_index = sprite_get("portalSpawn");
             break;
-            animSpeed = 10;
+            animSpeed = 2;
             break;
         case AS_DESPAWN:
             sprite_index = sprite_get("portalDespawn");
@@ -213,13 +219,13 @@ else
 {
     var canMove = true;
     var moveAdj = 2;
-    if (collision_circle(x,y,collideDist,asset_get("solid_32_obj"),false,true))
+    if ((safeZone || unsafeTimer < 200) && collision_circle(x,y,collideDist,asset_get("solid_32_obj"),false,true))
     {
         hsp = lengthdir_x(-moveAdj, moveAngle);
         vsp = lengthdir_y(-moveAdj, moveAngle);
         canMove = false;
     }
-    else if (!noLimit && y < ceil(room_height/5))
+    else if (!noLimit && y < ceil(room_height/5) && state != AS_SPAWN)
     {
         if (safeZone)
         {
@@ -238,7 +244,7 @@ else
         moveAngle = 270;
         canMove = false;
     }
-    else if (!noLimit && y > floor(2*room_height/3))
+    else if (!noLimit && y > floor(2*room_height/3) && state != AS_SPAWN)
     {
         if (safeZone)
         {
@@ -257,7 +263,7 @@ else
         moveAngle = 90;
         canMove = false;
     }
-    else if (!noLimit && x < ceil(room_width/6))
+    else if (!noLimit && x < ceil(room_width/6) && state != AS_SPAWN)
     {
         if (safeZone)
         {
@@ -276,7 +282,7 @@ else
         moveAngle = 0;
         canMove = false;
     }
-    else if (!noLimit && x > floor(5*room_width/6))
+    else if (!noLimit && x > floor(5*room_width/6) && state != AS_SPAWN)
     {
         if (safeZone)
         {
@@ -295,7 +301,7 @@ else
         moveAngle = 180;
         canMove = false;
     }
-    else
+    else if (safeZone || unsafeTimer < 200)
     {
         with (obj_article1) if (player_id == other.player_id && id != other.id && point_distance(x,y,other.x,other.y) < 124 && !isDespawn)
         {
@@ -331,7 +337,7 @@ else
                 other.moveAngle = kb_angle;
         		if (type == 1)
         		{
-                    var tempHitpause = ceil(hitpause/2);
+                    var tempHitpause = ceil(hitpause/4);
         			player_id.hitpause = true;
         			player_id.hitstop = tempHitpause;
         			player_id.hitstop_full = tempHitpause;

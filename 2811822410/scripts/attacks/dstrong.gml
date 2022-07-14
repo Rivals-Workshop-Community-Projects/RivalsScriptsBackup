@@ -62,7 +62,7 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 10);
 	set_hitbox_value(curr_attack, 1, HG_ANGLE,  70);
-	set_hitbox_value(curr_attack, 1, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(curr_attack, 1, HG_BASE_KNOCKBACK, 7.5);
 	set_hitbox_value(curr_attack, 1, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(curr_attack, 1, HG_BASE_HITPAUSE, 11);
 	set_hitbox_value(curr_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
@@ -82,7 +82,7 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 2, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 2, HG_DAMAGE, 10);
 	set_hitbox_value(curr_attack, 2, HG_ANGLE,  110);
-	set_hitbox_value(curr_attack, 2, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(curr_attack, 2, HG_BASE_KNOCKBACK, 7.5);
 	set_hitbox_value(curr_attack, 2, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(curr_attack, 2, HG_BASE_HITPAUSE, 11);
 	set_hitbox_value(curr_attack, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

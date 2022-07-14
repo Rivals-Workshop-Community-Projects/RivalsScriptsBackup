@@ -8,15 +8,24 @@ if ("rollArray" in self)
 		switch (attack)
 		{
 			case AT_NTHROW:
-				shader_start();
-				var lerpAmount = min(window_timer/6,1);
-				var spriteIndex = floor(window==1?min(state_timer/6,3):window==4?2-window_timer/get_window_value(AT_NTHROW, window, AG_WINDOW_LENGTH):4);
-				var xPos = floor(window==1?lerp(50, 2, lerpAmount):window==4?lerp(2, 50, lerpAmount):2);
-				var yPos = floor(window==1?lerp(24, 30, lerpAmount):window==4?lerp(30, 24, lerpAmount):30);
-				var rot = floor(window==1?lerp(0, FlipRotDir(strongAng), lerpAmount):window==4?lerp(FlipRotDir(strongAng), 0, lerpAmount):FlipRotDir(strongAng));
-				var offset = window<=2?lerp(0, -30, strong_charge/60):window==3?lerp(20, 0, window_timer/get_window_value(AT_NTHROW, window, AG_WINDOW_LENGTH)):0;
-				draw_sprite_ext(sprite_get("strongSword"), spriteIndex, x+xPos*spr_dir+lengthdir_x(offset, FlipRotDir(rot)), y-yPos+lengthdir_y(offset, FlipRotDir(rot)), spr_dir*2, 2, rot, c_white, 1);
-				shader_end();
+				if (window == 5)
+				{
+					shader_start();
+					draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, 0, c_ltgray, 1);
+					shader_end();
+				}
+				else
+				{
+					shader_start();
+					var lerpAmount = min(window_timer/12,1);
+					var spriteIndex = floor(window==1?min(state_timer/6,3):window==4?2-window_timer/get_window_value(AT_NTHROW, window, AG_WINDOW_LENGTH):4);
+					var xPos = floor(window==1?lerp(50, 2, lerpAmount):window==4?lerp(2, 50, lerpAmount):2);
+					var yPos = floor(window==1?lerp(24, 30, lerpAmount):window==4?lerp(30, 24, lerpAmount):30);
+					var rot = floor(window==1?lerp(0, FlipRotDir(strongAng), lerpAmount):window==4?lerp(FlipRotDir(strongAng), 0, lerpAmount):FlipRotDir(strongAng));
+					var offset = window<=2?lerp(0, -30, strong_charge/60):window==3?lerp(20, 0, window_timer/get_window_value(AT_NTHROW, window, AG_WINDOW_LENGTH)):0;
+					draw_sprite_ext(sprite_get("strongSword"), spriteIndex, x+xPos*spr_dir+lengthdir_x(offset, FlipRotDir(rot)), y-yPos+lengthdir_y(offset, FlipRotDir(rot)), spr_dir*2, 2, rot, c_white, 1);
+					shader_end();
+				}
 				break;
 			case 49:
 				if (window == 3)

@@ -159,7 +159,10 @@ switch (attack)
                     can_jump = true && free;
                     can_shield = true && free;
                     if ((can_shield && has_airdodge && shield_pressed) || (can_jump && djumps != max_djumps && jump_pressed))
+                    {
+                        jsTimer = 0;
                         tutDoneAdv[5] = true;
+                    }
                     if (is_special_pressed(DIR_UP))
                     {
                         set_attack(AT_USPECIAL);
@@ -252,7 +255,11 @@ switch (attack)
         switch (window)
         {
             case 1:
-                if (window_timer == 1) with (asset_get("obj_article1")) if (player_id == other.id && replacedCount == 2) isDespawn = true;
+                if (window_timer == 1)
+                {
+                    strongEndFree = true;
+                    with (asset_get("obj_article1")) if (player_id == other.id && replacedCount == 2) isDespawn = true;
+                }
                 if (jsCStick)
                 {
                     if (left_stick_down || right_stick_down || up_stick_down || down_stick_down)
@@ -292,6 +299,14 @@ switch (attack)
                     if (abs(strongAng-90) < 10 && NumOfPortals() >= 2) tutDoneAdv[0] = true;
                 }
                 break;
+            case 5:
+                if (free) strongEndFree = true;
+                if (strongEndFree && !free)
+                {
+                    strongEndFree = false;
+                    spawn_base_dust(x, y, "land", spr_dir);
+                    sound_play(land_sound);
+                }
             case 4:
                 can_wall_jump = !was_parried;
                 can_jump = !was_parried && has_hit;
@@ -307,7 +322,7 @@ switch (attack)
         if (aura)
         {
             SkipWindow(1, 2);
-            SkipWindow(3, 5);
+            SkipWindow(3, 6);
             clear_button_buffer(PC_UP_STRONG_PRESSED);
             clear_button_buffer(PC_DOWN_STRONG_PRESSED);
             clear_button_buffer(PC_LEFT_STRONG_PRESSED);

@@ -494,6 +494,13 @@ if ("practice" in self)
 						AddText("");
 						AddText("Bugfix for AI");
 						break;
+					case 27:
+						AddText("v1.26 - 12 Jul 2022");
+						AddText("");
+						AddText("Removed Jobble");
+						AddText("");
+						AddText("FSpecial Up Throw Hitstun Multiplier 0.35 -> 0.7");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

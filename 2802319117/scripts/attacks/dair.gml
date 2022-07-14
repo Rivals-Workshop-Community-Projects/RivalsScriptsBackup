@@ -45,7 +45,7 @@ set_window_value(AT_DAIR, 4, AG_WINDOW_VSPEED_TYPE, 1);
 
 //Bounce up
 set_window_value(AT_DAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DAIR, 5, AG_WINDOW_VSPEED, -2);
@@ -55,7 +55,7 @@ set_window_value(AT_DAIR, 5, AG_WINDOW_HSPEED_TYPE, 1);
 
 //Lag after bounce
 set_window_value(AT_DAIR, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DAIR, 6, AG_WINDOW_VSPEED, 4);

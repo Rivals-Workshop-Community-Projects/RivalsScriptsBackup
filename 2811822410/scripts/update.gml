@@ -348,14 +348,5 @@ if (get_gameplay_time() % color_timer == 0) {
 
 
 #region Cosmetic Stuff
-with oPlayer {
-	if (player != other.player) {
-		if (get_player_name(player) == "NOARMS") {
-			with (other) {
-				set_victory_theme( sound_get( "victory2" ));
-				//end_match();
-			}
-		}
-	}
-}
+//set_victory_theme( sound_get( "victory2" ));
 #endregion

@@ -80,13 +80,17 @@ SetAttack();
 			case AT_FTILT:
 			case AT_DATTACK:
 			case AT_FSPECIAL:
-				if (has_hit_player && get_training_cpu_action()== CPU_FIGHT) jump_pressed = true;
+				if (has_hit_player && get_training_cpu_action()== CPU_FIGHT)
+				{
+					jump_pressed = true;
+				}
 				break;
 			case AT_NAIR:
 			case AT_DAIR:
 			case AT_BAIR:
 			case AT_FAIR:
-				if (hitpause && GroundBelow())
+				if (has_hit_player && aura) DoAttack(AT_USPECIAL);
+				else if (hitpause && GroundBelow())
 				{
 					down_pressed = true;
 					down_down = true;
@@ -100,7 +104,13 @@ SetAttack();
 				var stage_y = get_stage_data( SD_Y_POS );
 				
 				special_down = ai_state == AS_RECOVER;
-				if (state_timer < 20)
+				if (aura && ai_state != AS_RECOVER)
+				{
+					HoldTowardsTarget();
+					HoldTowardsTargetY();
+					special_down = !has_hit_player;
+				}
+				else if (state_timer < 20)
 				{
 					up_down = true;
 					if ((x<room_width/2)?x<stage_x-140:x>room_width-stage_x+140)
@@ -212,10 +222,12 @@ SetAttack();
 					DoAttack(AT_NSPECIAL);
 				else if (ai_state==AS_NEUTRAL && dist < 100 && !free && state != PS_FIRST_JUMP && !ai_target.was_parried)
 					DoAttack(AT_NSPECIAL);
+				else if (ydist < 30 && xdist < 60)
+					DoAttack(AT_FSPECIAL);
 				else if (!free && ydist < 10 && xdist < 40)
 					DoAttack(AT_DSTRONG);
-				else if (ydist < 20 && xdist < 50)
-					DoAttack(AT_FSPECIAL);
+				else if (free && ydist < 60 && xdist < 40)
+					DoAttack(ai_target.y>y?AT_DAIR:AT_UAIR);
 				else if (ydist < 40)
 				{
 					if (xdist < 60)
@@ -223,10 +235,8 @@ SetAttack();
 					else if (xdist < 90)
 						DoAttack(free?AT_FSPECIAL:AT_DATTACK);
 				}
-				else if (free && ydist < 60 && xdist < 40)
-					DoAttack(AT_UAIR);
-				else if (ydist < 80)
-					if (xdist < 20 && !free) DoAttack(AT_USTRONG);
+				else if (ydist < 80 && xdist < 20 && !free) DoAttack(AT_USTRONG);
+				else if (attack != AT_DSPECIAL && ai_target.y<y-80) DoAttack(AT_DSPECIAL);
 			}
 			break;		
 	}
@@ -244,6 +254,14 @@ SetAttack();
 	right_down = !left_down;
 	right_pressed = right_down;
 	left_pressed = left_down;
+}
+
+#define HoldTowardsTargetY()
+{
+	up_down = y > ai_target.y;
+	down_down = !up_down;
+	down_pressed = down_down;
+	up_pressed = up_down;
 }
 
 #define ReverseHold()

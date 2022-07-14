@@ -33,6 +33,7 @@ switch (my_hitboxID.attack)
 			other.hit_player_obj.x = x;
 			other.hit_player_obj.y = y;
 			sound_play(sound_get("shing"));
+			player_id.canTele = false;
 		}
 		sound_play(sound_get("hitsfx1"));
 		break;

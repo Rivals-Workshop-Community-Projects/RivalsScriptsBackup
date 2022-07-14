@@ -68,7 +68,7 @@ if state == PS_ATTACK_AIR || state ==PS_ATTACK_GROUND{
 if smoke_counter>0{
 	with pHitBox {
 	//draw_debug_text( x + 60, y - 40, string(kb_scale));
-		if attack == AT_NSPECIAL && hbox_num ==1 && state ==1 && player == orig_player &&(player_id.url == other.url){
+		if attack == AT_NSPECIAL && hbox_num ==1 && state ==1 && orig_player == other.player &&(player_id.url == other.url){
 				draw_sprite(sprite_get("owner"), player , x, y-34);			
 		}
 	}
@@ -79,7 +79,7 @@ if smoke_counter>0{
 //Draws detonation
 shader_start();
 with pHitBox {
-		if   player_id.url == other.url {
+		if   player_id.url == other.url &&  orig_player == other.player{
 			//draw_debug_text(x + 60, y - 35, string(abs(x - (player_id.x ))));
 			//draw_debug_text(x + 90, y - 35, string(smoke_num));
 			if attack == AT_NSPECIAL && hbox_num == 1 && state != 1{

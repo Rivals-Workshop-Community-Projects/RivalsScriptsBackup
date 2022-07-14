@@ -193,8 +193,10 @@ battle_text = "*A wild Koffing has appeared!";
 guiltySprite = sprite_get("Monokuma")
 sprite_change_offset("Monokuma", 31, 0);
 
-//resort_portrait = sprite_get("Last_Resort");
-//sprite_change_offset("Last_Resort", 27, 39);
+resort_portrait = sprite_get("last_resort");
+sprite_change_offset("last_resort", 27, 39);
+
+otto_bobblehead_sprite = sprite_get("koffing_bobble_head");
 
 wily_robotmaster_img = sprite_get("Wily_Castle");
 

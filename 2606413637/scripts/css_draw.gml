@@ -14,6 +14,7 @@ set_ui_element(UI_HUD_ICON, sprite_get("hud_base"));
 set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_base"));
 set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_base"));
 
+if(!instance_exists(cursor_id)) exit;
 //Button Location
 if player == 0{ // player online
 	var tmp_xl = 16

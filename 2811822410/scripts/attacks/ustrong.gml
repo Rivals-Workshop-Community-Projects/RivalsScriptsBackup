@@ -49,8 +49,8 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 11);
 	set_hitbox_value(curr_attack, 1, HG_ANGLE,  90);
-	set_hitbox_value(curr_attack, 1, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(curr_attack, 1, HG_KNOCKBACK_SCALING, 1.1);
+	set_hitbox_value(curr_attack, 1, HG_BASE_KNOCKBACK, 7);
+	set_hitbox_value(curr_attack, 1, HG_KNOCKBACK_SCALING, 1.05);
 	set_hitbox_value(curr_attack, 1, HG_BASE_HITPAUSE, 11);
 	set_hitbox_value(curr_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(curr_attack, 1, HG_HITPAUSE_SCALING, .8);

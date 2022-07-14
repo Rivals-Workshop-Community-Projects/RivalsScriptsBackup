@@ -82,7 +82,7 @@ if((my_hitboxID.attack == AT_FSTRONG
 else
 {
 	if (!(my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 1) &&
-		!(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num >= 2) &&
+		!(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num >= 2 && !aura) &&
 		!(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) &&
 		!(my_hitboxID.attack == 49) &&
 		(my_hitboxID.attack != AT_DAIR || dairTimes < 2))
@@ -99,5 +99,9 @@ else
 		star.hsp = hit_player_obj.old_hsp*0.5;
 		star.vsp = hit_player_obj.old_vsp*0.5;
 		star.startupTime = _startupTime;
+	    if (aura && hit_player_obj.should_make_shockwave)
+		{
+			star.newState = 5;
+		}
 	}
 }

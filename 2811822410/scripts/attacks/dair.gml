@@ -65,7 +65,7 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 2, HG_PRIORITY, 6);
 	set_hitbox_value(curr_attack, 2, HG_DAMAGE, 12);
 	set_hitbox_value(curr_attack, 2, HG_ANGLE,  270);
-	set_hitbox_value(curr_attack, 2, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(curr_attack, 2, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(curr_attack, 2, HG_KNOCKBACK_SCALING, .6);
 	set_hitbox_value(curr_attack, 2, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(curr_attack, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

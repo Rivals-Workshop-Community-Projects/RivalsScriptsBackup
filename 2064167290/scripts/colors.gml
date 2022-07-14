@@ -1,4 +1,4 @@
-set_num_palettes( 12 );
+set_num_palettes( 13 );
 
 //DEFAULT COLOR (R,G,B)
 set_color_profile_slot(0, 0, 37, 77, 143); //BLUE (light)
@@ -157,7 +157,15 @@ set_color_profile_slot(11, 7, 168, 16, 0)
 
 set_color_profile_slot(11, 3, 0, 0, 255);
 
-
+// yuuka
+set_color_profile_slot(12, 0, 190,12,12); //BLUE (light)
+set_color_profile_slot(12, 1, 255, 116, 64); //RED (light)
+set_color_profile_slot(12, 2, 231, 147, 29) // YELLOW (light)
+set_color_profile_slot(12, 3, 190,12,12) // GREEN (light)
+set_color_profile_slot(12, 4, 255, 255, 255) // WHITE
+set_color_profile_slot(12, 5, 40,84,39) // Blue-black(hair) (light)
+set_color_profile_slot(12, 6, 248, 234, 194) // Skin (light)
+set_color_profile_slot(12, 7, 255, 163, 176) // Cheek
 
 
 
