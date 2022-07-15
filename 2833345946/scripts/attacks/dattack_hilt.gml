@@ -26,7 +26,7 @@ set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_SFX_FRAME, 22);
 
 
 //splat
-set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -54,8 +54,8 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_SHAPE, 2);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

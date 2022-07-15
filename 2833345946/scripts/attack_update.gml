@@ -49,10 +49,18 @@ switch attack {
 	
 	case AT_USTRONG:
 	if window == 2 {
-		if (window_timer + strong_charge) mod 8 == 4 && !hitpause sound_play(asset_get("sfx_spin"))
-		if (window_timer + strong_charge) mod 4 == 1 && !hitpause {
-			create_hitbox(AT_USTRONG, 1, x, y)
+		if state_timer >= get_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH) + 4 && state_timer < get_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH) + 8 && !strong_down {
+			window++
+			window_timer = 0
+		} else {
+		
+			if (window_timer + strong_charge) mod 8 == 4 && !hitpause sound_play(asset_get("sfx_spin"))
+			if (window_timer + strong_charge) mod 4 == 1 && !hitpause {
+				create_hitbox(AT_USTRONG, 1, x, y)
+			}
 		}
+		
+		
 	}
 	
 	if window == 3 && window_timer == 0 destroy_hitboxes()

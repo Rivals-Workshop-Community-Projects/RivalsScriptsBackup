@@ -230,6 +230,12 @@ if(get_player_color(player) == 22){
     set_ui_element(UI_OFFSCREEN,sprite_get("dorito_offscreen"));
     set_ui_element(UI_WIN_PORTRAIT,sprite_get("dorito_portrait"));
     set_ui_element(UI_WIN_SIDEBAR,sprite_get("dorito_result_small"));
+}else{
+    set_ui_element(UI_HUD_ICON,get_char_info(player,INFO_HUD));
+    set_ui_element(UI_HUDHURT_ICON,get_char_info(player,INFO_HUDHURT));
+    set_ui_element(UI_OFFSCREEN,get_char_info(player,INFO_OFFSCREEN));
+    set_ui_element(UI_WIN_PORTRAIT,get_char_info(player,INFO_PORTRAIT));
+    set_ui_element(UI_WIN_SIDEBAR,get_char_info(player,INFO_SIDEBAR));    
 }
 //hyper
 hue_offset=0;

@@ -43,7 +43,7 @@ set_hitbox_value(AT_DSTRONG_2, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_DSTRONG_2, 1, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_med2"));

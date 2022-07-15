@@ -201,10 +201,6 @@ if(attack == AT_NSPECIAL){
 		if(hitbox_timer == length - 1){
 			destroyed = true;
 		}
-		var refresh_time = 32;
-		if (hitbox_timer % refresh_time == 0) for (var i = 0; i < 20; i++){
-			can_hit[i] = 1;
-		}		
 	}
 }else if(attack == AT_USTRONG){
 	if(hbox_num == 1){//doge
@@ -276,6 +272,9 @@ if(attack == AT_NSPECIAL){
 			}			
 		}
 	}else if(hbox_num == 2 || hbox_num == 4 || hbox_num == 5){
+		if(hitbox_timer == 20){
+			image_xscale = 0;image_yscale = 0;
+		}
 		if(hitbox_timer == 25){
 			destroyed = true;
 		}	
@@ -327,7 +326,7 @@ if(attack == AT_NSPECIAL){
 		    	}
 	    	}
 	    }
-	    if(instance_exists(reflect_target)){
+	    if(instance_exists(reflect_target) && launched == 0){
 	    	with(reflect_target){
 	    		//if(abs(hsp) > 0.25){ //checks for minimum speed (unused lol!)
 	            		//spr_dir *= -1; //flips it regardless of its direction, wave doesnt use this one
@@ -342,10 +341,9 @@ if(attack == AT_NSPECIAL){
 			    	was_parried = true;
 				}if("hitbox_timer" in self){
 			    	hitbox_timer = 0;
-				}if("damage" in self){
-			    	damage *= 1.5;
-				}if("kb_value" in self){
-			    	kb_value *= 1.25;
+					for (var i = 0; i < 20; i++){
+						can_hit[i] = 1;
+					}			    	
 				}if("hit_priority" in self && hit_priority <= 0){
 					hit_priority = 1;
 				}

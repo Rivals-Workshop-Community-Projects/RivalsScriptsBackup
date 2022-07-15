@@ -297,7 +297,24 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.13", "7th July, 2022");
+initPatch("1.14", "14th July, 2022");
+
+initHeader("Buffs");
+initSection("- Uair damage (7 > 8) 
+- Dat Boi damage (6 > 9)
+- Gave Uair a sweetspot");
+
+initHeader("Nerfs");
+initSection("- Made Dat Boi no longer multihit
+- Made Doge's words active for 5 less frames");
+
+initHeader("Fixes / Other Changes");
+initSection("- Made the portrait and other sprites properly reset after using the Dorito alt
+- Made spring not increase the damage of projectiles flung (this was a left-over from the new reflect code that I forgot to remove)
+- Made spring not launch unless it's cooldown was gone
+- Made spring reset the can_hit variable on projectiles meaning they can hit again once hitting the spring.");
+
+initPatch("1.13", "6th July, 2022");
 initHeader("Fixes / Other Changes");
 initSection("- Added a new special alt.
 - Made all summons flip properly (This was a Rivals quirk that was annoying)

@@ -1,5 +1,6 @@
 set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("jab_hilt"));
 set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("jab_hilt_hurt"));
+set_attack_value(AT_EXTRA_1, AG_NO_PARRY_STUN, 1);
 
 set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 6);
 
@@ -75,8 +76,8 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_EXTRA_1, 2, HG_ANGLE, 45);
 set_hitbox_value(AT_EXTRA_1, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_EXTRA_1, 2, HG_SHAPE, 0);
-set_hitbox_value(AT_EXTRA_1, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_EXTRA_1, 2, HG_KNOCKBACK_SCALING, 0.2);
+set_hitbox_value(AT_EXTRA_1, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_EXTRA_1, 2, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_EXTRA_1, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_EXTRA_1, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));

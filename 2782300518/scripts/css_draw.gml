@@ -58,9 +58,11 @@ textDraw(floor(x) + 10, floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, tr
 
 
 //bike
-if (drawtime < 12) draw_sprite_ext(bike, drawtime/anim_speed, temp_x+40+(drawtime *4), temp_y+148, scale, scale, 0, -1, 1);
-else draw_sprite_ext(bike, drawtime/anim_speed, temp_x+42+(drawtime *4), temp_y+148, scale, scale, 0, -1, 0);
-
+if (instance_exists(cursor_id))
+{
+	if (drawtime < 12) draw_sprite_ext(bike, drawtime/anim_speed, temp_x+40+(drawtime *4), temp_y+148, scale, scale, 0, -1, 1);
+	else draw_sprite_ext(bike, drawtime/anim_speed, temp_x+42+(drawtime *4), temp_y+148, scale, scale, 0, -1, 0);
+}
 draw_sprite_ext(sprite_get("voice_button"), voicebutton, voice_button_position_x, voice_button_position_y, 1, 1, 0, c_white, 1);
 
 if !(instance_exists(cursor_id)) exit;
