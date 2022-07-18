@@ -947,6 +947,11 @@ switch(attack){
                     can_shield = true;
                 }
                 
+                if piston_target != noone{
+                	piston_target.hitpause = 0;
+                	piston_target = noone;
+                }
+                
                 var next_pos = ease_quartIn(pist_orig_x, pist_last_x, window_timer, window_end);
                 
                 if ((jump_pressed || (tap_jump_pressed && can_tap_jump())) || attack_pressed || shield_pressed || up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed){

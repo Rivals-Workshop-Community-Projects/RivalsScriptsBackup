@@ -403,6 +403,12 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.5", "17 July, 2022");
+initHeader("DStrong - Nerfs");
+initSection("Back hit size reduced.");
+initHeader("Sticky Piston - Bugfixes");
+initSection("Fixed a freeze glitch?");
+
 initPatch("2.4", "07 March, 2022");
 initWords("Community Patch: Dakota");
 initHeader("NSpecial Items - Nerfs, Buffs");
