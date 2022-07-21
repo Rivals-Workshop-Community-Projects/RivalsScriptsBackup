@@ -205,3 +205,75 @@ sprite_change_offset("diffusion_0", 0, 0);
 sprite_change_offset("diffusion_1", 4, 4);
 sprite_change_offset("diffusion_2", 4, 4);
 sprite_change_offset("diffusion_3", 4, 4);
+
+//pacman
+
+sprite_change_offset("pacman_samus_sprite_test", 18, 10);
+
+//unregistered hyper cam
+
+ sprite_change_offset("metroid nes trailer", 11, 8); 
+  
+  sprite_change_offset("Super_metroid_ad", 11, 8); 
+  
+    sprite_change_offset("metroid_fusion_ad", 11, 8); 
+      
+        sprite_change_offset("metroid_prime_ad", 11, 8); 
+        
+        sprite_change_offset("metroid_babies", 11, 8); 
+        
+
+//green flower hill zone
+
+sprite_change_offset("SamusBoard", 18, 41);
+
+
+//miiverse
+
+sprite_change_offset("my_audience_sprite", 28, 48) 
+
+//loadent
+
+sprite_change_offset("ltweet", 65, 118);
+
+//Last Resort
+
+sprite_change_offset("samus_last_resort", 27, 39);
+
+//Trial Grounds
+
+sprite_change_offset("samus_trial", 31, 0);
+
+//spamton ad
+
+sprite_change_offset("Samus_ad", 48, 34);
+
+//demopan
+
+sprite_change_offset("Samus_demopan", 127, 169);
+        
+//Bailey
+
+sprite_change_offset("Rosworth_samus_back", 68, 93);
+sprite_change_offset("Rosworth_samus_Front", 68, 93);
+
+//Naruto
+
+sprite_change_offset("Naruto_samus", 50, 70);
+
+
+//Samson
+        
+        
+sprite_change_offset("samus_honeyed", 25, 48);
+
+
+//Feri
+
+sprite_change_offset("Feri_samus", 84, 114);
+
+
+//amber
+
+sprite_change_offset("Amber_samus_samus", 32, 62);
+sprite_change_offset("Amber_samus_amber", 32, 62);

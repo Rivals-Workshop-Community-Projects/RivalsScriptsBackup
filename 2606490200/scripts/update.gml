@@ -48,6 +48,22 @@ if cheapmode == 0 {
 
 
  if cheapmode == 3 {
+ 	
+ 	with oPlayer  {
+ 		super = 0 
+ 	}
+ 	
+ 	if state == PS_RESPAWN {
+ 				state_timer = 120
+ 				visible = true 
+ 				with oPlayer  {
+ 					if self != other {
+ 						set_player_stocks(other.player, get_player_stocks(player) + 1)
+ 					    end_match()
+ 					}
+ 				}
+   }
+ 			
  	create_hitbox(AT_NSPECIAL,2,x,y - 50)
     djumps = 0
  	visible = true 

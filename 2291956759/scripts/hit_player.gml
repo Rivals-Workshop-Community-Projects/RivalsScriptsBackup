@@ -1,5 +1,7 @@
 ///
 
+draw_xscale = spr_dir
+
 if my_hitboxID.attack == AT_BAIR {
 	sound_play(sound_get("slice"),false,noone,1.2,0.6)
 	sound_play(asset_get("sfx_blow_heavy1"),false,noone,1, 2.2 - min((hitstop*hitstop)/120 , 1.5) )

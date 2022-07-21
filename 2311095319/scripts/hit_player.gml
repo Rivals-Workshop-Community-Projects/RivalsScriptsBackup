@@ -67,4 +67,7 @@ if (my_hitboxID.attack == AT_USPECIAL){
 		hit_player_obj.x = x + 14 * spr_dir
 		hit_player_obj.y = y - 48
 	}
+	var fx = spawn_hit_fx(lerp(my_hitboxID.x,hit_player_obj.x, 0.5), lerp(my_hitboxID.y,hit_player_obj.y - (hit_player_obj.char_height/2), 0.5), coin_effect);
+	fx.depth = hit_player_obj.depth + 1;
+	sound_play(sfx_coin);
 }

@@ -166,8 +166,8 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 600);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 50);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 40);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 0);
@@ -195,7 +195,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, vfx_water_small);
 
 //multihit
@@ -237,8 +237,8 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_DESTROY_EFFECT, 0);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, 0);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_DESTROY_EFFECT, 1);
 
 //launcher
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
@@ -278,5 +278,5 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 1);

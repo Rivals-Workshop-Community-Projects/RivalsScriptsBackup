@@ -68,3 +68,25 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, vfx_wood_extra_large);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
+
+//remote melee hit
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 3);
+set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -15);
+set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 100);
+set_hitbox_value(AT_DSTRONG, 3, HG_HEIGHT, 30);
+set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 1);
+set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 3);
+set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 0.4);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSE_SCALING, 0.2);
+set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 1);

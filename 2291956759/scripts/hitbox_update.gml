@@ -1,5 +1,6 @@
 ///
 
+draw_xscale = spr_dir
 
 if attack == AT_FSPECIAL && hbox_num == 3{
   if hitbox_timer == 1 {	
@@ -33,17 +34,15 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 	}
 	
 	
-	var heal_player = instance_place(x, y, oPlayer)	
-	if (heal_player != noone) && hitbox_timer > 16 {
-	if  heal_player.url == player_id.url && heal_player.state_cat != SC_HITSTUN && heal_player.isyellow = 0 {
+
+	if abs(player_id.x - x) < 40 && abs(player_id.y - y) < 40  && hitbox_timer > 16 {
 		sound_stop(asset_get("sfx_diamond_small_collect"));
   	    sound_play(asset_get("sfx_diamond_small_collect"),false,noone,0.6,1.2);
-		heal_player.ink += 4
+		player_id.ink += 4
 		destroyed = 1
 
 		spawn_hit_fx (x,y,bhl)
-		heal_player.move_cooldown[AT_EXTRA_2] = 60
-	}
+		player_id.move_cooldown[AT_EXTRA_2] = 60
 	
    }
  

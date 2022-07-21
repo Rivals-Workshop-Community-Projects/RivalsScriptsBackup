@@ -60,8 +60,10 @@ if attack == AT_NSPECIAL
 		}
 		
 		//increase speed
-		if abs(nspecSpeed) < nspecSpeedMax
+		if abs(nspecSpeed) < nspecSpeedMax && closest == noone
 			nspecSpeed += sign(nspecSpeed) * 0.5;
+		if abs(nspecSpeed) < nspecSpeedMax && closest != noone
+			nspecSpeed += sign(nspecSpeed) * 5;	
 			
 		//spawn
 		//add more conditionals here on when to activate the attack
@@ -80,7 +82,7 @@ if attack == AT_NSPECIAL
 		//particools
 		fx_particles = 1;
 		
-		image_index += 0.2;
+		image_index += 0.3;
 		if image_index > image_number-1
 			destroyed = true;
 	}

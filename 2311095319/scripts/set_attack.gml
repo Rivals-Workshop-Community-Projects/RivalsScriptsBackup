@@ -7,5 +7,3 @@ if (hasfirebrand = true){
 		}
 	}
 }
-
-user_event(13);

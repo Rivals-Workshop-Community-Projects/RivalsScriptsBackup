@@ -67,7 +67,21 @@ sound_stop(sound_get("uspec"))
 
  if cheapmode == 3 {
    
-   
+   with oPlayer  {
+ 		super = 0 
+ 	}
+ 	
+   if state == PS_RESPAWN {
+ 				state_timer = 120
+ 				visible = true 
+ 				with oPlayer  {
+ 					if self != other {
+ 						set_player_stocks(other.player, get_player_stocks(player) + 1)
+ 					    end_match()
+ 					}
+ 				}
+   }
+ 	
    with asset_get("pHitBox") {
 	
 		nearbyhitbox = collision_circle( x-12, y+12, 54 + abs(hsp) + abs(vsp),other, true, true ) 

@@ -1,3 +1,4 @@
+
 if(my_hitboxID.attack == AT_USPECIAL)
 {
     shoryu_obj = hit_player_obj;

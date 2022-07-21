@@ -74,21 +74,18 @@ if (attack == AT_BAIR){
 }
 
 if (attack == AT_DAIR){
-	if (window == 1 || state == PS_PRATFALL){
-        can_fast_fall = true
+	if (window == 1 || window == 4){
+        can_fast_fall = true;
     }else{
-	    can_fast_fall = false
+	    can_fast_fall = false;
 		hsp = clamp(hsp, -3.5, 3.5);
 	}
 	if (window == 3){
         can_wall_jump = true
 		if (shield_pressed){
-			if (has_rune("C")){
-				set_state( PS_IDLE );
-				clear_button_buffer( PC_SHIELD_PRESSED )
-			} else {
-				set_state( PS_PRATFALL );
-			}
+			window = 4;
+			window_timer = 0;
+			clear_button_buffer( PC_SHIELD_PRESSED );
         }
 		if (left_down && !attack_down){
             spr_dir = -1

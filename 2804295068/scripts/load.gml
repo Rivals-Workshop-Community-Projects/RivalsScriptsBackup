@@ -2,6 +2,12 @@ set_victory_theme( sound_get( "winmusic" ));
 
 sprite_change_offset("idle", 64, 94);
 sprite_change_offset("hurt", 64, 94);
+sprite_change_offset("hurtground", 64, 94);
+sprite_change_offset("uphurt", 64, 94);
+sprite_change_offset("downhurt", 64, 94);
+sprite_change_offset("bighurt", 64, 94);
+sprite_change_offset("bouncehurt", 64, 94);
+sprite_change_offset("spinhurt", 64, 94);
 sprite_change_offset("crouch", 64, 94);
 sprite_change_offset("walk", 64, 94);
 sprite_change_offset("walkturn", 64, 94);

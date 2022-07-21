@@ -63,8 +63,9 @@ alt_name[26] = "Miss Z"
 alt_name[27] = ["Cola", "Diet"]
 alt_name[28] = "Neo"
 alt_name[29] = "BLM"
+alt_name[30] = ["Casual Observer", "One Bloody Rain"]
 
-alt_with_mods = [19, 27]
+alt_with_mods = [19, 27, 30]
 
 css_load()
 

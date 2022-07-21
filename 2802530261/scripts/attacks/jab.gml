@@ -50,6 +50,7 @@ set_window_value(AT_JAB, 7, AG_WINDOW_SFX, sound_get("melee_swing"));
 set_num_hitboxes(AT_JAB, 4);
 
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_JAB, 1, HG_LIFETIME, 4);
@@ -68,6 +69,7 @@ set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_JAB, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 4);
@@ -86,6 +88,7 @@ set_hitbox_value(AT_JAB, 2, HG_FORCE_FLINCH, 1);
 
 
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_JAB, 3,HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 3, HG_WINDOW, 7);
 set_hitbox_value(AT_JAB, 3, HG_WINDOW_CREATION_FRAME, 3);
@@ -106,6 +109,7 @@ set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_JAB, 4,HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 4, HG_WINDOW, 7);
 set_hitbox_value(AT_JAB, 4, HG_WINDOW_CREATION_FRAME, 6);

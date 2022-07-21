@@ -40,13 +40,11 @@ if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 13 ){
 }
 
 //Nuzl (viola player)
-if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 2){
-	if (taunt_down&&down_down){
-		extra_col = 2
-		white_flash_timer = 18;
-		sound_play(sound_get("nuzl_viola"));
-		init_shader();
-	}
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 2 &&taunt_down&&down_down) or (get_gameplay_time() == 5 && get_player_color( player ) == 2 && get_player_name( player ) == "NUZLF" ){
+	extra_col = 2
+	white_flash_timer = 18;
+	sound_play(sound_get("nuzl_viola"));
+	init_shader();
 }
 
 //Doge (ex derby chamption)
@@ -60,13 +58,13 @@ if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 5){
 }
 
 //Nuzl (weeb shit)
-if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 20){
-	if (taunt_down&&down_down){
-		extra_col = 4
-		white_flash_timer = 18;
-		sound_play(sound_get("nuzl_oj"));
-		init_shader();
-	}
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 20 && taunt_down&&down_down) or (get_gameplay_time() == 5 && get_player_color( player ) == 20 && get_player_name( player ) == "NUZLF" ){
+
+	extra_col = 4
+	white_flash_timer = 18;
+	sound_play(sound_get("nuzl_oj"));
+	init_shader();
+
 }
 
 //TAG
@@ -175,13 +173,13 @@ bairused = false;
 //whether the player is inside smoke, and consumes it. returns true if smoke was consumed
 
 
-if (galaxy_timer == 0 and instance_exists(hit_player_obj) and hit_player_obj.activated_kill_effect)
-{
-	if (get_player_color( player ) == 22 or extra_col == 2 or extra_col == 4){
-    galaxy_timer = 90;
-	}
-}
-galaxy_timer = max(galaxy_timer-1,0)
+//if (galaxy_timer == 0 and instance_exists(hit_player_obj) and hit_player_obj.activated_kill_effect)
+//{
+//	if (get_player_color( player ) == 22 or extra_col == 2 or extra_col == 4){
+//    galaxy_timer = 90;
+//	}
+//}
+//galaxy_timer = max(galaxy_timer-1,0)
 
 
 #define consumeSmokeCloud()

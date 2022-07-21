@@ -39,7 +39,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 60);
+set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 40);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EFFECT, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_cloud_pop"));

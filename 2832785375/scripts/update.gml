@@ -74,6 +74,16 @@ if state == PS_LANDING_LAG && state_timer == 1 {
 	if attack == AT_UAIR sound_stop(sfx_ivy_swipe_heavy1)
 }
 
+var galaxy = false
+with oPlayer if ("activated_kill_effect" in self) && ("id" in self) && id != other.id {
+    if activated_kill_effect {
+        galaxy = true
+    }
+}
+
+if galaxy with pHitBox if player_id == other.id && attack == AT_EXTRA_1 {
+	destroyed = true
+}
 //intro anim
 var intro_time = get_gameplay_time();
 if intro_time == 4 sound_play(asset_get("sfx_kragg_rock_pillar"))

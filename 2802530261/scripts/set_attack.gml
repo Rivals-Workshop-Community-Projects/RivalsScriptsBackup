@@ -122,6 +122,24 @@ switch(attack){
     }else{
         set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
     }
+    if(charge == 90){
+        charge = 0;
+        set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 4);
+        set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 4);
+        set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 4);
+        set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 8);
+        set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, 1);
+        set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 8);
+        set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, 1);
+    }else{
+        set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 3);
+        set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 3);
+        set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 3);
+        set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 7);
+        set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, 0.2);
+        set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 7);
+        set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, 0.2);
+    }
     break;
     case AT_FTILT:
     set_attack_value(AT_FTILT, AG_SPRITE, sprite_get(string(spr_dir) + "_ftilt"));
@@ -189,6 +207,7 @@ switch(attack){
     break;
     case AT_NSPECIAL:
     c_sound = 0;
+    cing_sound = 0;
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get(string(spr_dir) + "_nspecial"));
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get(string(spr_dir) + "_nspecial_air"));
     set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get(string(spr_dir) + "_nspecial_hurt"));

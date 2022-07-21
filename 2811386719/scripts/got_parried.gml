@@ -13,6 +13,11 @@ if(my_hitboxID.attack == AT_DSPECIAL and my_hitboxID.hbox_num >= 3){
 	
 }
 
+if(my_hitboxID.attack == AT_USPECIAL and my_hitboxID.hbox_num == 1){
+	// print("sads")
+	was_parried = true
+}
+
 if("bubble" in my_hitboxID and my_hitboxID.bubble){
   my_hitboxID.follow_owner = true;
   // my_hitboxID.hsp *= -1;

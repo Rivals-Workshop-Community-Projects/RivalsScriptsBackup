@@ -97,3 +97,11 @@ draw_line_width_color(dodgex - 12 * spr_dir, dodgey - 30, dodgendx - 12 * spr_di
 draw_line_width_color(dodgex, dodgey - 40, dodgendx, dodgendy - 40, 2, c_aqua, c_aqua);
 draw_line_width_color(dodgex - 10 * spr_dir, dodgey - 56, dodgendx - 10 * spr_dir, dodgendy - 56, 2, c_aqua, c_aqua);
 draw_set_alpha(1);
+
+for(n = 0; n < 15; n++){
+    if(instance_exists(power_bomb[n]) && power_bomb[n].image_index = 5){
+        draw_set_alpha((power_bomb[n].bomb_timer >= 66? 1 - ((power_bomb[n].bomb_timer - 66) / 10): 1));
+        draw_ellipse_color(power_bomb[n].x - (power_bomb[n].bomb_xscale * 32), power_bomb[n].y - (power_bomb[n].bomb_xscale * 25), power_bomb[n].x + (power_bomb[n].bomb_xscale * 32), power_bomb[n].y + (power_bomb[n].bomb_xscale * 25), c_white, c_white, false)
+        draw_set_alpha(1);
+    }
+}

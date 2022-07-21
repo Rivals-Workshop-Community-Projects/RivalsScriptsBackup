@@ -132,8 +132,8 @@ if attack == AT_DSTRONG {
 	if window == 1 {
 		draw_sprite_ext(sprite_index, image_index, x + 4 - random_func(1,8,true) , y - random_func(2,8,true)  , spr_dir, 1, 0 , c_white , 0.4);
 	}
-	if window == 1 {
-		draw_set_alpha(window_timer/128);
+	if window == 1 or cheapmode = 3 {
+		draw_set_alpha(min(0.6,state_timer/128));
         draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
     	draw_set_alpha(1);
 	}

@@ -112,7 +112,7 @@ if(attack == AT_FSTRONG){
 		}
 	}
 	if(window == 4){
-		if(window_timer > 14*( 1 + !has_hit_player*0.5) ){
+		if(window_timer > 13*( 1 + !has_hit_player*0.5) ){
 			if(was_parried){
 				window = 29;
 			}else{
@@ -405,13 +405,13 @@ if (attack == AT_USPECIAL){
     }
     if(shield_pressed){
     	if(was_parried){
-    		window = 29;
+    		// window = 29;
     	}else{
     		set_state(PS_PRATFALL)
     	}
     	//diferenca entre velocidade e -5 tem que ser no maximo -5 e no minimo -3
-    	var speeddd = vsp+5
-    	vsp -= speeddd
+    	var speeddd = min(-vsp - 5, -3)
+    	vsp += speeddd
     	hsp = hsp - hsp/7
     }
     var hsp_temp = hsp;
@@ -436,7 +436,11 @@ if (attack == AT_USPECIAL){
       window++;
       window_timer = 0;
   }
-    
+	if(window == 7 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+		if(was_parried){
+			// set_state(PS_PRATLAND)
+		}
+	}
 }
 
 if (attack == AT_DSPECIAL){
@@ -761,6 +765,7 @@ if(attack == AT_NSPECIAL){
 	if(window == 1){
 		magnet_timer = 0;
 		user_event(2)
+		// user_event(2)
 	}
 	if(window == 2){
 		user_event(2);
@@ -770,7 +775,7 @@ if(attack == AT_NSPECIAL){
 			vsp = 0;
 		}
 		if(window_timer == 1 and magnet_timer%4 == 1) sound_play(asset_get("sfx_absa_orb_miss"));
-		if(magnet_timer > 21){
+		if(magnet_timer > 24){
 			set_window_value(attack, window, AG_WINDOW_TYPE, 0);
 		}else{
 			set_window_value(attack, window, AG_WINDOW_TYPE, special_down*9);
@@ -798,7 +803,7 @@ if(attack == AT_NSPECIAL){
 			spawn_dust_fx(x +55*spr_dir, y-50, nspecial_water_throw_whiff_spr, 19)
 		}
 		
-		if(window_timer > 26){
+		if(window_timer > 29){
 			if(was_parried){
 				window = 29;
 			}else{

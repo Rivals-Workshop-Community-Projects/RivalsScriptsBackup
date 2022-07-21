@@ -440,7 +440,7 @@ switch (attack)
 	if(ewgf_timer > 0)
     {
 		//EZGF	
-		if(window_timer >= 5 && (up_strong_pressed || up_stick_pressed) && lure_timer == 0)
+		if(window_timer >= 5 && (up_strong_pressed || up_stick_pressed) && lure_timer == 0 && !free)
 		{
 			lure_timer = 180;
 			sound_play(asset_get("sfx_absa_singlezap1"));

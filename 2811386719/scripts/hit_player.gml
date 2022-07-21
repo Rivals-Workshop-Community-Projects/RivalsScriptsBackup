@@ -106,6 +106,7 @@ if(static >= 100 and !hit_player_obj.static_pull){
 
 //AI
 n_times_got_hit--;
+// print(n_times_got_hit)
 #define grab_special_consume()
 
 if(!do_not_consume and hit_player_obj.static_pull){

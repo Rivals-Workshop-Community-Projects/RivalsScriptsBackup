@@ -235,6 +235,15 @@ if attack == AT_NSPECIAL
 }
 
 
+if attack == AT_EXTRA_1 && window == 1
+{
+	hijay = 1;
+}
+else{
+	hijay = 0;
+}
+
+
 //Smoke
 if attack == AT_DSPECIAL
 {

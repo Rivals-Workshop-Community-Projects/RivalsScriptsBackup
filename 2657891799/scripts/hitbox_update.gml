@@ -21,6 +21,8 @@ if attack == AT_NSPECIAL && hbox_num == 3 {
             destroyed = true;
         }
     }
+    
+    if was_parried transcendent = true
 }
 
 if attack == AT_NSPECIAL && hbox_num <= 3 {

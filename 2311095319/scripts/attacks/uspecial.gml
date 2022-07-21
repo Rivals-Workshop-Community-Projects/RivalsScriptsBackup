@@ -42,9 +42,6 @@ set_num_hitboxes(AT_USPECIAL, 5);
 //NOTE TO SELF: CODE INVOLVING THE HITBOX SIZES ARE FOUND IN ATTACK_UPDATE.GML, HIT_PLAYER.GML, DEATH.GML, AND GOT_HIT.GML
 
 //First Hit
-
-set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "First Hit");
-
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 2);
@@ -58,15 +55,12 @@ set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, coin_effect);
-set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, sfx_coin);
+set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
 
-//First Hit
-
-set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Linking Hit 1");
-
+//Linking 1
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 2);
@@ -80,15 +74,12 @@ set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 105);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 13);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 2);
-set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, coin_effect);
-set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, sfx_coin);
-set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 10);
+set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 2);
 
-//First Hit
-
-set_hitbox_value(AT_USPECIAL, 3, HG_MUNO_HITBOX_NAME, "Linking Hit 2");
-
+//Linking 2
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW_CREATION_FRAME, 2);
@@ -100,18 +91,15 @@ set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 35);
 set_hitbox_value(AT_USPECIAL, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 1);
-set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 75);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 2);
-set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, coin_effect);
-set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sfx_coin);
-set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE_FLIPPER, 10);
+set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, 3);
 
-//First Hit
-
-set_hitbox_value(AT_USPECIAL, 4, HG_MUNO_HITBOX_NAME, "Linking Hit 3");
-
+//Linking 3
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL, 4, HG_WINDOW_CREATION_FRAME, 4);
@@ -123,18 +111,15 @@ set_hitbox_value(AT_USPECIAL, 4, HG_HEIGHT, 35);
 set_hitbox_value(AT_USPECIAL, 4, HG_SHAPE, 2);
 set_hitbox_value(AT_USPECIAL, 4, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 1);
-set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 90);
+set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 75);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 2);
-set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, coin_effect);
-set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, sfx_coin);
-set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE_FLIPPER, 10);
+set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_GROUP, 4);
 
-//First Hit
-
-set_hitbox_value(AT_USPECIAL, 5, HG_MUNO_HITBOX_NAME, "Finishing Hitbox");
-
+//Finishing Hitbox
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL, 5, HG_WINDOW_CREATION_FRAME, 6);
@@ -150,7 +135,7 @@ set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE, 80);
 set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, coin_effect);
-set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sfx_coin);
-set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE_FLIPPER, 10);
+set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_GROUP, 5);

@@ -15,6 +15,7 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 9);
 set_num_hitboxes(AT_DSTRONG, 0);
 
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, -1);
@@ -37,6 +38,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
@@ -59,6 +61,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
@@ -81,6 +84,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, -1);
@@ -103,6 +107,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_GROUP, -1);
@@ -127,6 +132,7 @@ set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_GROUP, -1);
@@ -151,6 +157,7 @@ set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_GROUP, -1);
@@ -175,6 +182,7 @@ set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 
 set_hitbox_value(AT_DSTRONG, 8, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 8, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG, 8, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSTRONG, 8, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 8, HG_HITBOX_GROUP, -1);

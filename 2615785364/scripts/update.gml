@@ -1,5 +1,9 @@
 user_event(9);
 
+if (state == PS_HITSTUN) {
+	sonicSpinSpeed = 0;
+}
+
 if (state == PS_WALK && hsp >= 7 && right_down) {
 	state = PS_DASH;
 }

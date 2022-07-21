@@ -15,7 +15,7 @@ set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_LENGTH, 25);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_SFX, asset_get("sfx_ori_bash_hit"));
+set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_hit_strong"));
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 1);

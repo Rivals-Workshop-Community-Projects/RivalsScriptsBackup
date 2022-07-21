@@ -403,7 +403,8 @@ switch(attack){
                 break;
             case 3:
                 if (window_timer == 1){
-                    cancel = has_hit && !has_uspecialed && false;
+                    // cancel = has_hit && !has_uspecialed && false;
+                    cancel = has_hit;
                     set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, cancel ? 1 : 7);
                 }
                 

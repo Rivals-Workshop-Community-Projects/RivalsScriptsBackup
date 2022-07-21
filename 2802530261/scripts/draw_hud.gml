@@ -92,6 +92,8 @@ draw_sprite_ext(sprite_get("hud_LED"), (hud_beam_cooldown = 0? 0: (hud_beam_cool
 draw_sprite_ext(sprite_get("hud_LED"), (hud_missile_cooldown = 0? 3: (hud_missile_cooldown > 300? 4: 5)), temp_x + 84, temp_y + 2, 4, 4, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud_LED"), (hud_flash_shift_cooldown = 0? 6: (hud_flash_shift_cooldown > 300? 7: 8)), temp_x + 94, temp_y + 2, 4, 4, 0, c_white, 1);
 draw_sprite_ext(sprite_get("power_bomb_overlay"), 0, temp_x + 178, temp_y - 4, 2, 2, 0, c_white, (power_cooldown = 0? 0: 1));
+
+//menu mode select
 if(state == PS_SPAWN){
     draw_set_halign(fa_center)
     draw_text_color(temp_x + 2 + 72, temp_y - 30, "taunt: menu version", c_black, c_black, c_black, c_black, 1);

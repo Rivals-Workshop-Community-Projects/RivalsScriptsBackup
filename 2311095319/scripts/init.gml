@@ -62,7 +62,7 @@ tornadoair = false
 tornado_cheat_active = false
 
 //is mario shadow
-shadowmario = false
+shadowmario = false;
 
 //Hurtbox Stuff
 hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -252,18 +252,3 @@ if (get_player_color( player ) == 11 || get_player_color( player ) == 23){
 } else {
 	shadowmario = false
 }
-
-//MunoPhone Sprites
-spr_alts = sprite_get("alts");
-spr_dairthing = sprite_get("dair_muno");
-spr_dattackmuno = sprite_get("dattack_muno");
-spr_nspec = sprite_get("nspecial_muno");
-spr_fireball = sprite_get("fireball_muno");
-spr_firebrand = sprite_get("firebrand_muno");
-spr_ustrongmuno = sprite_get("ustrong_muno");
-spr_dive = sprite_get("dive_muno");
-spr_tornado = sprite_get("dspecial_air_muno");
-spr_sjp = sprite_get("uspecial_muno");
-
-//MunoPhone Trigger
-user_event(14);

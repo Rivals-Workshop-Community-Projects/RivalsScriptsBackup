@@ -135,7 +135,7 @@ if (has_rune("B")){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 5);
 }
 if (has_rune("C")){
-	set_window_value(AT_DAIR, 3, AG_WINDOW_TYPE, 1);
+	set_window_value(AT_DAIR, 4, AG_WINDOW_TYPE, 1);
 }
 if (has_rune("E")){
 	set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 10);

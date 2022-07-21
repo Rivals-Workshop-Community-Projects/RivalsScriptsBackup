@@ -239,6 +239,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.31", "17 July, 2022");
+initHeader("FSpecial - Buffs");
+initSection("No longer goes into pratfall on hit, but can only be used once per airtime.");
+
 initPatch("1.30", "08 March, 2022");
 initHeader("General");
 initSection("no way

@@ -47,7 +47,20 @@
 
 
  if cheapmode == 3 {
+ 	
+ 	if state == PS_RESPAWN {
+ 				state_timer = 120
+ 				visible = true 
+ 				with oPlayer  {
+ 					if self != other {
+ 						set_player_stocks(other.player, get_player_stocks(player) + 1)
+ 					    end_match()
+ 					}
+ 				}
+   }
+   
  	with oPlayer {
+ 		super = 0 
  		if self != other {
  			hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
  			invincible = false 

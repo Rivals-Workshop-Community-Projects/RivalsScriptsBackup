@@ -105,6 +105,22 @@ if cheapmode = 1 && ((down_down && taunt_down && get_gameplay_time() < 300) or "
 }        
 
 if cheapmode = 2 {
+	
+	with oPlayer  {
+ 		super = 0 
+ 	}
+ 	
+   if state == PS_RESPAWN {
+ 				state_timer = 120
+ 				visible = true 
+ 				with oPlayer  {
+ 					if self != other {
+ 						set_player_stocks(other.player, get_player_stocks(player) + 1)
+ 					    end_match()
+ 					}
+ 				}
+   }
+   
 	if hitpause {
 		histop = 0
 	}

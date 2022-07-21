@@ -36,7 +36,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 // set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_forsburn_disappear"));
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
@@ -85,7 +85,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
-set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
+// set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 4);
 // set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 3);
@@ -118,7 +118,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 6);
-set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 6);
+set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -15);
 set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 110);
 set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 30);

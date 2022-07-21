@@ -35,7 +35,7 @@ ai_attacks = [
   [AT_NAIR, [1, 2, 3]],
   [AT_NSPECIAL, [1]],
   [AT_UTILT, [1, 2]],
-  [AT_FTILT, [1]],
+  [AT_FTILT, [1, 2]],
   [AT_DTILT, [1]],
   [AT_JAB, [1,2]], 
   [AT_FSTRONG, [1]],

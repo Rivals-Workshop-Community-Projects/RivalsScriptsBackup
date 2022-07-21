@@ -4,6 +4,9 @@
 //}
 finishercd = 0
 
+if my_hitboxID.attack == AT_NSPECIAL {
+	has_hit_player = true 
+}
 if my_hitboxID.attack == AT_UTILT && move_cooldown[AT_UAIR] != 0 && move_cooldown[AT_UAIR] < 20 {
 
 move_cooldown[AT_UAIR] = 240

@@ -43,9 +43,6 @@ set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_DSPECIAL, 2);
 
 //Repeating Hits
-
-set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Repeating Hitboxes");
-
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 2);
@@ -67,9 +64,6 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 10);
 
 //Final Hit
-
-set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Final Hitbox");
-
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 4);
@@ -103,7 +97,6 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
 //Fireball Stuff
 //This is for Down B Lol!
 //Same Thing
-set_hitbox_value(AT_NSPECIAL, 7, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 7, HG_WINDOW, 3);
 set_hitbox_value(AT_NSPECIAL, 7, HG_LIFETIME, 70);

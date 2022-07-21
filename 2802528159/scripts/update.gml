@@ -806,6 +806,7 @@ if(plate_timer == 40 && plate_damage < (has_rune("H")? 40: 30)){
 
 if(plate_damage >= (has_rune("H")? 40: 30) && plate_state == 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 	set_attack(AT_TAUNT_2);
+	invincible = false;
     plate_state = 1;
 }else if(plate_damage < (has_rune("H")? 40: 30) && plate_state == 1){
     plate_state = 0;

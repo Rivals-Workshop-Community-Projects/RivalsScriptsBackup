@@ -77,7 +77,7 @@ if attack == AT_EXTRA_2 && hbox_num < 5{
 		spawn_hit_fx(x,y - 30,bh2)
 		sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,0.8 + random_func(4,4,true)/10)
 				       hsp = (player_id.inkvictim.x - x)/6
-                       vsp = (player_id.inkvictim.y - 30 - y)/12
+                       vsp = (player_id.inkvictim.y - 20 - y)/6
                        
         if hbox_num == 1 && player_id.attack != AT_EXTRA_2 {
 

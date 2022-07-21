@@ -46,7 +46,7 @@ hitstun_grav = .5;
 knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames
-prat_land_time = 16;
+prat_land_time = 18;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -344,6 +344,9 @@ uhc_uspecial_speed_fast = 7;
 
 //=================================================
 //Custom variables initialized here
+uhc_do_cstick_tilt_check = false; //detect cstick inputs
+uhc_do_cstick_special_check = false;
+
 uhc_has_cd_blade = true;
 uhc_current_cd = instance_create(x, y, "obj_article1"); //CD held (or last CD held)
 uhc_pickup_cooldown = 0; //number of frames before being able to pickup a CD
@@ -375,6 +378,7 @@ uhc_nspecial_is_charging = false;
 
 uhc_uspecial_hitbox = noone;
 uhc_uspecial_start_pos = { x:0, y:0 };
+uhc_uspecial_last_dir = 0; //controller cannot rely on joy_dir when idle; it reverts to zero
 
 //from other_init, for simplicity
 uhc_handler_id = noone;

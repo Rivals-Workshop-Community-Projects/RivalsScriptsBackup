@@ -11,6 +11,9 @@ if (attack == AT_JAB){
 				sound_play(vc_mario_wah);
 			}
 		}
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (12 * spr_dir), y, "dash_start", -spr_dir);
+		}
 	}
 }
 
@@ -37,6 +40,18 @@ if (attack == AT_DATTACK){
 	} else if (da_cheat_active = true){
 		can_jump = true;
 	}
+	
+	if (window == 2 || window == 3){
+		if (!hitpause && !free){
+			if (window_timer == 1
+			|| window_timer == 3
+			|| window_timer == 5
+			|| window_timer == 7
+			|| window_timer == 9){
+				spawn_base_dust( x, y, "dash", spr_dir);
+			}
+		}
+	}
 }
 
 //Forward Tilt: Cappy Toss
@@ -47,6 +62,9 @@ if (attack == AT_FTILT){
 	if (window == 1){
 		if (window_timer == 10){
 			sound_play(sfx_cappy_toss)
+		}
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (52 * spr_dir), y, "wavedash", -spr_dir);
 		}
 	}
 	if (window == 4){
@@ -63,11 +81,11 @@ if (attack == AT_FTILT){
 //Up Tilt
 if (attack == AT_UTILT){
 	if (window == 1){
-		if (window_timer == 9){	
-			hud_offset = 42;
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir);
 		}
-	}
-	if (window == 2){
+	}	
+	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2){
 		hud_offset = 42;
 	}
 }
@@ -118,7 +136,8 @@ if (attack == AT_FSTRONG){
 				sound_play(vc_mario_yah);
 			}
 		}
-		if (window_timer == 8){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (50 * spr_dir), y, "land", spr_dir);
 			shake_camera( 8, 4 )
 			sound_play(sfx_hammer_land);
 			hud_offset = 54;
@@ -133,6 +152,11 @@ if (attack == AT_FSTRONG){
 
 //Forward Strong 2 (Firebrand)
 if (attack == AT_FSTRONG_2){
+	if (window == 3){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (10 * spr_dir), y, "dash_start", spr_dir);
+		}
+	}
 	if (window == 4){
 		hasfirebrand = false
 		firecharge = 0
@@ -158,6 +182,15 @@ if (attack == AT_FSTRONG_2){
 //>
 
 if (attack == AT_USTRONG){
+	if (window == 2){
+		if (window_timer == 1){
+			spawn_base_dust( x, y, "dash_start", -spr_dir);
+			spawn_base_dust( x, y, "jump", spr_dir);
+			if (free){
+				spawn_base_dust( x, y, "doublejump", spr_dir);
+			}
+		}
+	}
 	if (window == 1){
 		ustrong_charge = (strong_charge / 19)
 		ustrong_charge = ustrong_charge * -1
@@ -190,6 +223,10 @@ if (attack == AT_USTRONG){
 		ustrong_charge = 0
 		//set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -9.5);
 		vsp = vsp + 0.125
+		
+		if (!free){
+			set_state(PS_LANDING_LAG);
+		}
 	}
 }
 
@@ -200,6 +237,14 @@ if (attack == AT_DSTRONG){
 			if (voiced == 1){
 				sound_play(vc_mario_haha);
 			}
+		}
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (20 * spr_dir), y, "dash_start", -spr_dir);
+		}
+	}
+	if (window == 4){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (20 * spr_dir), y, "dash_start", spr_dir);
 		}
 	}
 }
@@ -315,18 +360,6 @@ if (attack == AT_FSPECIAL){
 				//window_timer = 0
 			}
 		}
-		/*
-		if (attack_pressed == true){
-			spawn_hit_fx( x, y - 18, 302 );
-			vsp = -6
-			hsp = 0
-			sound_play(asset_get("sfx_blow_weak2"));
-			if (voiced == true){
-				sound_play(vc_mario_uhh);
-			}
-			set_state(PS_PRATFALL);
-		}
-		*/
 	}
 	if (window != 3){
 		can_jump = false;
@@ -343,8 +376,11 @@ if (attack == AT_FSPECIAL){
 		can_attack = false
 	}
 	if (window == 6){
-		if (window_timer = 1){
+		if (window_timer == 1){
 			hsp = 2 * spr_dir
+		}
+		if (window_timer == 3){
+			spawn_base_dust( x, y, "dash_start", spr_dir);
 		}
 		if (window_timer == 4){
 			hsp = 10 * spr_dir
@@ -406,6 +442,13 @@ if (attack == AT_USPECIAL){
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11.6);
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
+		
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x, y, "jump", spr_dir);
+			if(free){
+				spawn_base_dust( x, y, "doublejump", spr_dir);
+			}
+		}
 	}
 	if (window != 4){
 		can_move = false;
@@ -483,6 +526,16 @@ if (attack == AT_DSPECIAL){
 			vsp = 3
 		}
 	}
+	
+	if (window == 1 || window == 2){
+		if (!hitpause && !free){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				spawn_base_dust( x-8, y, "dash", 1);
+				spawn_base_dust( x+8, y, "dash", -1);
+			}
+		}
+	}
+	
 	if (window == 1){
 		if (window_timer == 1){
 			//Changing Down Special Animation if Firebrand
@@ -613,3 +666,38 @@ if (attack == AT_TAUNT){
 		}
 	}
 }
+
+//--------------------------------------------
+
+//Supersonic's Base Cast Dust Function
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

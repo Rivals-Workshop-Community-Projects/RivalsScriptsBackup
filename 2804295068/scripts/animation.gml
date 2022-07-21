@@ -2,6 +2,9 @@
 if (attack == AT_UTILT && window == 2){
 	hud_offset = lerp(hud_offset, 80, 0.5);
 }
+if (attack == AT_USTRONG && window == 2){
+	hud_offset = lerp(hud_offset, 100, 0.5);
+}
 
 if abs(hud_offset) < 1{
 	hud_offset = 0;

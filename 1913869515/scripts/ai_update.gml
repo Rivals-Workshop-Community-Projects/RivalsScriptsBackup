@@ -7,7 +7,7 @@ if (get_training_cpu_action() == CPU_FIGHT){
 if state != PS_HITSTUN && free {
 	if hsp > 8 or hsp < -8 {
 		hsp/= 1.2
-	                               }
+	}
 }
 
 
@@ -721,7 +721,7 @@ if state_cat = SC_HITSTUN{
 			}
 		
 		}
-	}
+}
 
 
 }

@@ -14,6 +14,8 @@ deathnum = 0
 triggertime = 0
 DT = 6
 
+cheapmode = 0
+
 prevrank = 0
 
 rank = 0

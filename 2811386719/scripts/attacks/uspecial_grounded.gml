@@ -5,7 +5,7 @@ set_attack_value(AT_USPECIAL_GROUND, AG_OFF_LEDGE, 0);
 set_attack_value(AT_USPECIAL_GROUND, AG_HURTBOX_SPRITE, sprite_get("uspecial_ground_hurt"));
 
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_VSPEED_TYPE, 0);

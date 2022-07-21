@@ -17,31 +17,13 @@ if (free){
 	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
 }
 
-phone_voiced_toggle = phone_cheats[cheat_voice];
-
-max_djumps = phone_cheats[cheat_more_djumps];
-
-fireball_charge_needed_for_firebrand = phone_cheats[cheat_insta_fire];
-
-tornado_cheat_active = phone_cheats[cheat_mario_tornado];
-
-da_cheat_active = phone_cheats[cheat_da_jc];
-
-fair_cheat_active = phone_cheats[cheat_fair_very_funy];
-
-if (get_training_cpu_action() != CPU_FIGHT){
-	if (phone_voiced_toggle == 1){
-		voiced = 1
-	} else if (phone_voiced_toggle == 0){
-		voiced = 0
-	}
-} else if (get_training_cpu_action() == CPU_FIGHT){
-	if (normal_voiced_toggle == 1){
-		voiced = 1
-	} else if (normal_voiced_toggle == 0){
-		voiced = 0
-	}
+//Voiced Mode
+if (normal_voiced_toggle == 1){
+	voiced = 1
+} else if (normal_voiced_toggle == 0){
+	voiced = 0
 }
+
 
 if (fair_cheat_active == true){
 
@@ -107,7 +89,7 @@ deathvoiceline = random_func( 0, 5, true );
 switch (state){
 	case PS_SPAWN:
 		//Turning on Voiced Mode Normally.
-		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed && get_training_cpu_action() == CPU_FIGHT){
+		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed){
 			normal_voiced_toggle = 1
 			sound_play(sfx_coin);
 			sound_play(vc_mario_herewego);

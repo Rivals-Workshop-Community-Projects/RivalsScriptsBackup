@@ -161,6 +161,7 @@ bubble_x = 0;
 bubble_y = 8;
 
 SC = hit_fx_create( sprite_get( "SC" ), 12 );
+SC2 = hit_fx_create( sprite_get( "SC" ), 12 );
 sprite_change_offset("SC", 100, 100);
 sprite_change_offset("SCf", 100, 100);
 SB = hit_fx_create( sprite_get( "SB" ), 12 );

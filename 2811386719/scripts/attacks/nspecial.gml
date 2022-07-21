@@ -6,7 +6,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("air_nspecial_hu
 set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 
 //startup
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -41,7 +41,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 // set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .85);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak3"));

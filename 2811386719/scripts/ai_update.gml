@@ -24,6 +24,8 @@
 #macro AD_CY 4
 #macro AD_FRAME 5
 
+// This code is a frankenstein of qazz roborocky AI and fudgepop AI, with modification of mine #Pejota#3122
+
 if (!attack_data_obtained) obtain_attack_data();
 
 // // MAIN LOOP DO NOT TOUCH
@@ -109,7 +111,7 @@ if(can_attack or state == PS_DASH_START or state == PS_DASH){
         if(free){
           perform_attack(AT_NSPECIAL)
         }else{
-          perform_attack(random_func(1, 2, true) == 0 ? AT_NSPECIAL : AT_USPECIAL_GROUND)
+          perform_attack(random_func(1, 2, true) == 0 ? AT_USPECIAL_GROUND : AT_USPECIAL_GROUND)
         }
         // var static_attacks = free ? [AT_NSPECIAL] : [AT_NSPECIAL, AT_USPECIAL_GROUND];
 		    
@@ -153,6 +155,7 @@ if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
     		press_jump()
     	}
     case AT_USPECIAL_GROUND:
+    	var pull_dist = point_distance( pull_dir_x, pull_dir_y, ai_target.x, ai_target.y)
       if(ai_target.static_pull and dist > 200) or (ai_target.state == PS_HITSTUN and  ai_target.hitstun_full - ai_target.hitstun > 30){
         press_special()
       }
@@ -207,7 +210,7 @@ return [new_x, new_y];
 
 switch(argument[0]){
 	case "tilts":
-		var attacke = [AT_JAB, AT_DTILT, AT_FTILT, AT_UTILT];
+		var attacke = [AT_JAB, AT_DTILT, AT_FTILT, AT_UTILT, AT_USPECIAL_GROUND];
 
 		break;
 		
@@ -219,7 +222,7 @@ switch(argument[0]){
 		var attacke = [AT_DSTRONG, AT_USTRONG, AT_FSTRONG];
 		break;
 	case "specials":
-		var attacke = [AT_USPECIAL_GROUND, AT_NSPECIAL];
+		var attacke = [AT_NSPECIAL];
 		break;
 	case "DACUS":
 		var attacke = [AT_USTRONG];
@@ -381,7 +384,9 @@ if len != 0{
   return sprite_get_width((tgt).mask_index) * (tgt).image_xscale * (tgt).spr_dir;
 
 #define HurtboxHeight(tgt)
-  return (tgt).hurtboxID.bbox_top - (tgt).hurtboxID.bbox_bottom;
+
+return -(tgt).char_height;
+  // return (tgt).hurtboxID.bbox_top - (tgt).hurtboxID.bbox_bottom;
 
 #define HurtboxWidth(tgt)
   return (tgt).hurtboxID.bbox_right - (tgt).hurtboxID.bbox_left;

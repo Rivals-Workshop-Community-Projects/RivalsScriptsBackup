@@ -202,7 +202,13 @@ switch (attack){
         if(has_rune("L")){
             bomb_timer = 30;
             bomb_type = 1;
-            boom = instance_create(x, y - 10, "obj_article1");
+            for(n = 0; n < 15; n++){
+                if(power_bomb[n] == noone){
+                    power_bomb[@n] = instance_create(x, y - 10, "obj_article1");
+                    power_bomb[n].bomb_id = n;
+                    break;
+                }
+            }
             sound_play(sound_get("power_deploy"));
         }else{
             bomb_type = 0;
@@ -239,7 +245,13 @@ switch (attack){
             power_cooldown = 400;
             power_bomb_amount--;
             bomb_type = 1;
-            instance_create(x, y - 10, "obj_article1");
+            for(n = 0; n < 15; n++){
+                if(power_bomb[n] == noone){
+                    power_bomb[@n] = instance_create(x, y - 10, "obj_article1");
+                    power_bomb[n].bomb_id = n;
+                    break;
+                }
+            }
             sound_play(sound_get("power_deploy"));
         }
         power_charge = 0;
@@ -305,7 +317,9 @@ switch (attack){
     }else if(special_down && window == 2 && charge < 90){
         charge++;
     }else if (window == 1 && charge != 90) || (window == 6 && charge != 90) || (window >= 3 && window <= 5 && window_timer >= 2){
-        charge = 0;
+        if(window >= 3 && window <= 5 && window_timer >= 2){
+            charge = 0;
+        }
         sound_stop(sound_get("beam_wide_charging"));
         sound_stop(sound_get("beam_wide_charged"));
         sound_stop(sound_get("beam_normal_charging"));
@@ -356,19 +370,21 @@ switch (attack){
     switch(beam_sprite){
         case 0:
         if(power_ups[0] == 1){
-            if(charge == 24){
+            if(charge >= 24 && charge < 90 && cing_sound == 0 && window == 2){
                 sound_play(sound_get("beam_wide_charging"));
+                cing_sound = 1;
             }
-            if(charge == 76 || charge == 90) && c_sound == 0{
+            if(charge == 90) && c_sound == 0{
                 c_sound = 1;
                 sound_play(sound_get("beam_wide_charged"), true);
             }
             set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_wide_chargeshot"): sound_get("beam_wide_shot")));
         }else{
-            if(charge == 24){
+            if(charge >= 24 && charge < 90 && cing_sound == 0 && window == 2){
                 sound_play(sound_get("beam_normal_charging"));
+                cing_sound = 1;
             }
-            if(charge == 76 || charge == 90) && c_sound == 0{
+            if(charge == 90) && c_sound == 0{
                 c_sound = 1;
                 sound_play(sound_get("beam_normal_charged"), true);
             }
@@ -407,10 +423,11 @@ switch (attack){
         set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
         set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
         set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_plasma_chargeshot"): sound_get("beam_plasma_shot")));
-        if(charge == 24){
-            sound_play(sound_get("beam_plasma_charging"));
+        if(charge >= 24 && charge < 90 && cing_sound == 0 && window == 2){
+            sound_play(sound_get("beam_plasma_charging"))
+            cing_sound = 1;;
         }
-        if(charge == 76 || charge == 90) && c_sound == 0{
+        if(charge == 90) && c_sound == 0{
             c_sound = 1;
             sound_play(sound_get("beam_plasma_charged"), true);
         }
@@ -432,10 +449,11 @@ switch (attack){
         set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
         set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 8: 1));
         set_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_wave_chargeshot"): sound_get("beam_wave_shot")));
-        if(charge == 24){
-            sound_play(sound_get("beam_wave_charging"));
+        if(charge >= 24 && charge < 90 && cing_sound == 0 && window == 2){
+            sound_play(sound_get("beam_wave_charging"))
+            cing_sound = 1;;
         }
-        if(charge == 76 || charge == 90) && c_sound == 0{
+        if(charge == 90) && c_sound == 0{
             c_sound = 1;
             sound_play(sound_get("beam_wave_charged"), true);
         }
@@ -457,10 +475,11 @@ switch (attack){
         set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
         set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, (charge = 90 || has_rune("M")? 9: 2));
         set_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX, (charge >= 90? sound_get("beam_wave_chargeshot"): sound_get("beam_wave_shot")));
-        if(charge == 24){
-            sound_play(sound_get("beam_wave_charging"));
+        if(charge >= 24 && charge < 90 && cing_sound == 0 && window == 2){
+            sound_play(sound_get("beam_wave_charging"))
+            cing_sound = 1;;
         }
-        if(charge == 76 || charge == 90) && c_sound == 0{
+        if(charge == 90) && c_sound == 0{
             c_sound = 1;
             sound_play(sound_get("beam_wave_charged"), true);
         }
@@ -720,7 +739,7 @@ switch (attack){
     break;
     
     case AT_DTILT:
-    if(jump_pressed && window == 2 && window_timer >= 5){
+    if(jump_pressed && window == 2 && window_timer >= 5 && !was_parried){
         set_state(PS_JUMPSQUAT);
         hsp /= 1.5;
     }

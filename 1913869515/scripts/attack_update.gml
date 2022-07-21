@@ -617,8 +617,13 @@ set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 8);
 
 
 if (attack == AT_NSPECIAL){
-	
 
+    if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
+       hit_player_obj.x += floor((x + 100*spr_dir - hit_player_obj.x)/4)
+    	hit_player_obj.y += floor((y - 10 - hit_player_obj.y)/4)
+    	hsp /= 2
+    }
+    
 	if special_down && window = 2 && offense = 1{
 		move_cooldown[AT_EXTRA_1] += 1
     hsp /= 1.1
@@ -677,7 +682,10 @@ if (attack == AT_NSPECIAL){
         }
         
          if halo >= 1 and offense = 1 {
-         	    	spawn_hit_fx( x + (100*spr_dir + nrange*spr_dir), y - 30, SC)
+         	    	pgfx = spawn_hit_fx( x + (100*spr_dir + nrange*spr_dir), y - 30, SC2)
+                    pgfx.spr_dir = 0.8*spr_dir
+		        	pgfx.image_yscale = 0.8
+         	    	
          	    	create_hitbox(AT_NSPECIAL , 6 , floor(x + (100 + nrange)*spr_dir), floor(y - 30) ); 
          	halo -= 1
          	spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
@@ -1084,6 +1092,14 @@ if (attack == AT_JAB){
 	nrange = 1
 	zcountered = 0
     
+    if window == 3 or window == 6 {
+    	if (left_down && spr_dir = 1) or (right_down && spr_dir = -1) {
+    		if attack_down {
+    			attack_end()
+    			can_attack = true 
+    		}
+    	}
+    }
     	set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X,  100 + nrange);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X,  100 + nrange);
 		set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X,  90 + nrange);
@@ -1140,7 +1156,7 @@ if (attack == AT_JAB){
         	fx.pause = 6
         	sound_play(sound_get("SpaceCut"),false,noone,1,1.2);
             set_attack(AT_FSTRONG)
-            set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 1);
+            set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSTRONG, 3, HG_ANGLE,  120);
 set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 12);
 set_hitbox_value(AT_FSTRONG, 3, HG_KNOCKBACK_SCALING, 0.1);

@@ -1,5 +1,208 @@
 ///
+if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
+	attacking = true
+} else {
+	attacking = false
+	move_cooldown[AT_NSPECIAL_2] = 0
+	sound_stop(drip_sound)
+	  move_cooldown[AT_NAIR] = 0
+}
 
+if cheapmode == 0 {
+ 
+ with(asset_get("oPlayer")){ 
+ 	if url != "2273636433" && url != "1870768156"
+	&& url != "1869351026" && url != "2443363942" &&
+	(string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("sand", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("psy", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("OP ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("Jo", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or url == "2159023588"
+	or url == "1980469422"
+	){
+       other.cheapmode = 1 
+     }    
+ }
+ } 
+ 
+ 
+ if cheapmode == 1 && get_gameplay_time() < 600 {
+ 	if taunt_pressed or get_player_damage(player) > 50 or state == PS_RESPAWN {
+ 		cheapmode = 3 
+        shake_camera(10,10)
+        spawn_hit_fx(x,y - 40,SC)
+    		sound_play(sound_get("Fstrong"),false,noone,1,1.5)
+    		sound_play(sound_get("RZ"),false,noone,.7,.2)
+    		sound_play(sound_get("RI"),false,noone,1,1)
+    		sound_play(sound_get("drip"),false,noone,1,1)
+    		gotstone += 70
+    		stoned = 1
+ 	}
+ }
+
+
+ if cheapmode == 3 && triggercutscene == 0 {
+ 	
+ 	with oPlayer  {
+ 		super = 0 
+ 	}
+ 	
+   if state == PS_RESPAWN {
+ 				state_timer = 120
+ 				visible = true 
+ 				with oPlayer  {
+ 					if self != other {
+ 						set_player_stocks(other.player, get_player_stocks(player) + 1)
+ 					    end_match()
+ 					}
+ 				}
+   }
+   
+ 	if abs(spr_dir) != 1 {
+ 		spr_dir = 1
+ 	}
+ 	invincible = true 
+ 	invince_time = 4
+ 
+  with asset_get("pHitBox") {
+ 	nearbyhitbox = collision_circle( x-12, y-12, 84, other, true, true ) 
+	
+	    
+    if nearbyhitbox != noone && player_id != other.id && hit_priority != 0 {
+    	hit_priority = 0
+    	hitbox_timer = 99
+    	destroyed = true 
+    	with other {
+    		hit_player_obj = other.player_id
+    	    if UIdodge <= 5 {
+    	    	spawn_hit_fx(x - 10*spr_dir,y + 6,i1)
+    	    	uifx = spawn_hit_fx(x,y - 30,306)
+    	    	uifx.pause = 4
+    	    	UIdodge = 20
+    	    	UInum ++
+    	    }
+    	}
+    	
+    	
+    }
+ }
+ 	 
+ 	if UIdodge > 0 {
+ 		spawn_hit_fx(x - 10*spr_dir,y + 6,i1)
+ 		if UInum % 2 == 0 {
+ 			x -= 4
+ 		} else { 
+ 		    x += 4	
+ 		}
+ 		UIdodge --
+ 		
+ 	  if UIdodge == 19 {
+ 	  	vsp -= 6 + random_func(1,5,true)
+ 	  	if UInum % 2 == 0 {
+ 	  		spawn_hit_fx(x - 10*spr_dir - 4,y + 6,i1)
+ 			x -= 10
+ 		} else { 
+ 			spawn_hit_fx(x - 10*spr_dir + 4,y + 6,i1)
+ 		    x += 10
+ 		}
+ 		switch UInum % 16 {
+ 			case 0 :
+ 			case 8 :
+ 			sound_play(sound_get("drip"),false,noone,1,1)
+ 			sound_play(sound_get("RZ"),false,noone,.7,1)
+ 			break;
+ 			case 1 :
+ 			case 9 :
+ 			sound_play(sound_get("drip"),false,noone,1,.9)
+ 			sound_play(sound_get("RZ"),false,noone,.7,.9)
+ 			break;
+ 			case 2 :
+ 			case 10 :
+ 			sound_play(sound_get("drip"),false,noone,1,1.05)
+ 			sound_play(sound_get("RZ"),false,noone,.7,1.05)
+ 			break;
+ 			case 3 :
+ 			case 11 :
+ 			sound_play(sound_get("drip"),false,noone,1,1)
+ 			sound_play(sound_get("RZ"),false,noone,.7,1)
+ 			break;
+ 			case 4 :
+ 			sound_play(sound_get("drip"),false,noone,1,.9)
+ 			sound_play(sound_get("RZ"),false,noone,.7,.9)
+ 			break;
+ 			case 5 :
+ 			sound_play(sound_get("drip"),false,noone,1,.8)
+ 			sound_play(sound_get("RZ"),false,noone,.7,.8)
+ 			break;
+ 			case 6 :
+ 			sound_play(sound_get("drip"),false,noone,1,.75)
+ 			sound_play(sound_get("RZ"),false,noone,.7,.75)
+ 			break;
+ 			case 7 :
+ 			sound_play(sound_get("drip"),false,noone,1,.8)
+ 			sound_play(sound_get("RZ"),false,noone,.7,.8)
+ 			break;
+ 			case 12 :
+ 			sound_play(sound_get("drip"),false,noone,1,1.2)
+ 			sound_play(sound_get("RZ"),false,noone,.7,1.2)
+ 			break;
+ 			case 13 :
+ 			sound_play(sound_get("drip"),false,noone,1,1.05)
+ 			sound_play(sound_get("RZ"),false,noone,.7,1.05)
+ 			break;
+ 			case 14 :
+ 			sound_play(sound_get("drip"),false,noone,1,1.0)
+ 			sound_play(sound_get("RZ"),false,noone,.7,1.0)
+ 			break;
+ 			case 15 :
+ 			sound_play(sound_get("drip"),false,noone,1,1.05)
+ 			sound_play(sound_get("RZ"),false,noone,.7,1.05)
+ 			sound_play(sound_get("Fstrong"),false,noone,1,1.05)
+ 			with hit_player_obj {
+ 				hitpause = false 
+ 				y = 999999
+ 				take_damage(player,-1,9999999999)
+ 			}
+ 			break;
+ 		}
+ 	  }
+ 		
+ 	}
+ 	
+ 	create_hitbox(AT_NSPECIAL,2,floor(x),floor(y) - 30)
+ 	
+    if uphit <= 0 uphit = 30
+	if downhit <= 0 downhit = 30
+	if neutralhit <= 0 neutralhit = 30
+	if sidehit <= 0 sidehit = 30
+	
+	if (hitpause && get_gameplay_time() % 4 == 0) or (attacking && attack == AT_EXTRA_2 && get_gameplay_time() % 4 ) { 
+		create_hitbox(AT_EXTRA_2,1 + random_func(1,3,true),x + 30 - random_func(2,61,true),y  - random_func(3,91,true))
+	 if attack != AT_EXTRA_2 {
+		hit_player_obj.x += floor(hit_player_obj.old_hsp*3)
+		hit_player_obj.y += floor(hit_player_obj.old_vsp*3)
+	 }
+	}
+	
+	if attack == AT_USPECIAL {
+		if hit_player_obj != noone && hit_player_obj != self {
+			has_hit_player = true 
+		}
+ 	}
+ 	init_shader()
+ }
+ 
+ 
+ 
 if state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP  {
 	
 	if state_timer <= 1 && !hitpause {
@@ -78,14 +281,7 @@ if inkshield_buildup >= 300 {
 if inkshield_buildup < 0 {
 	inkshield_buildup = 0
 }
-if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
-	attacking = true
-} else {
-	attacking = false
-	move_cooldown[AT_NSPECIAL_2] = 0
-	sound_stop(drip_sound)
-	  move_cooldown[AT_NAIR] = 0
-}
+
 
 
 if !instance_exists(hit_player_obj){

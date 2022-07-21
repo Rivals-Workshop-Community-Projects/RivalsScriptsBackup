@@ -31,8 +31,7 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSTRONG, 2);
 
-set_hitbox_value(AT_FSTRONG, 1, HG_MUNO_HITBOX_NAME, "Normal Hit");
-
+//Normal Hit
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 2);
@@ -53,8 +52,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sfx_hammer_hit_normal);
 //set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("sfx_hammer_blow"));
 
-set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Funny Spike Hitbox");
-
+//Spike
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 2);

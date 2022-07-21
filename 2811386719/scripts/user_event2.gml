@@ -39,22 +39,24 @@ with oPlayer{
     
     var cose = (sin(limits*pi*1.5) + 1)/2;
     
+    var dir_cose = dcos(dir);
+    var dir_sine = -dsin(dir);
     
-    var mult_one = (cose)*.9;
-    var mult = mult_one;
+    var mult_one = (cose)*(1 + (((hsp*dir_cose + vsp*dir_sine) <= 0)));
+    var mult = mult_one*(1);
     
-    mult = clamp(mult, 0, 2)
+    // mult = clamp(mult, 0, 2)
     // print(dist)
     // print(mult)
     
     pull_strength = mult;
     
-    var dir_cose = dcos(dir);
+    
     if !(abs(hsp) > 11 and hsp*dir_cose >= 0){
-      hsp += dir_cose*mult + 0.97*frict*sign(dir_cose)*(mult);
+      
       if(state == PS_DASH){
-        if !(abs(saved_hsp) > 5 and dir_cose*saved_hsp >= 0) {
-          saved_hsp += 0.97*frict*sign(dir_cose)*(mult);
+        if !(abs(saved_hsp+hsp) > 8 and dir_cose*saved_hsp >= 0) {
+          saved_hsp += 0.97*frict*sign(dir_cose)*(mult)*3 ;
         //saved_hsp = clamp(saved_hsp, -6, 10);
         
         }
@@ -62,10 +64,10 @@ with oPlayer{
       }else{
         saved_hsp = 0;
       }
-      
+      hsp += dir_cose*mult + 0.97*frict*sign(dir_cose)*(mult);
     } 
     
-    var dir_sine = -dsin(dir);
+    
     if !(abs(vsp) > 16 and vsp*dir_sine >= 0) vsp += (dir_sine*mult - (mult)*grav/1.2) *free;
     
     

@@ -1,3 +1,59 @@
+//Amber hug compatibility
+if (amber_startHug == true) //Amber will set this bool to true when this player accepts the hug
+{
+	with (amber_herObj) //Access Amber's player object and set the values
+	{
+		//Set the window values for Amber's hugging. DO NOT change Amber's sprites
+		//in the attack_values
+	    set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+	    set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+	    set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, asset_get("hurtbox"));
+	    
+	    //Enter
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 9);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 3);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, asset_get("sfx_diamond_collect")); 
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 8);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED_TYPE, 1);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED_TYPE, 0);
+	    
+	    //Loop
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 9);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 30);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 10);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_SFX, 0);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED_TYPE, 0);
+	    
+	    //Exit
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 9);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 3);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 14);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, 0);
+	    set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 0);
+	    
+	    //Important. Puts Amber in startup hug state (2).
+	    //Editing this variable not recommended
+	    amberHugState = 2; 
+	}
+	//Important. Puts this character in startup hug state (2).
+    //Editing this variable not recommended
+	oPlayerHugAmberState = 2;
+	
+	//Set this bool back to false so that this doesn't loop
+    amber_startHug = false;
+}
+
+
+
+
+
 if(!has_rune("N")){
     hud_beam_cooldown -= (hud_beam_cooldown > 0? 1: 0);
     hud_missile_cooldown -= (hud_missile_cooldown > 0? 1: 0);
@@ -247,3 +303,258 @@ if(get_player_color(player) == 26){
     init_shader();
 }
 prev_dameg = get_player_damage(player);
+//#region dialogue buddy
+
+diagchoice = [
+    "scans indicate no inteligent life",
+    "adam: finish this one quickly samus",
+    "You're not my bounty but i'll take you down anyway."]
+    
+if(variable_instance_exists(self, "otherUrl")){
+if(otherUrl == 2606413637) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Adam: Samus, do not engage! that is a saiyan!",
+                "(smirks and makes a bring it motion)",
+                "Adam: samus don't eve.. conection terminated."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+    
+    if(otherUrl == 2801695646) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Snake, I guess were after the same target.",
+                "Hm, seems so. Fight to see who collects?",
+                "Only if you can keep up!"]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+    
+     if(otherUrl == 2802388684) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Computer: foreign energy signatures located",
+                "Woah i've never seen armor like that! Nice color!",
+                "Right back at ya kid."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+    
+     if(otherUrl == 2825520992) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Adam: I believe that waddle dee is a friend of kirby.",
+                "Hello, kirby mentioned you. (bows) would you please spar with me?",
+                "Adam: I muted the helmets audio. Squealing is unlike you lady."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+
+
+     if(otherUrl == 2802528159) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Adam: Samus you can not beat an E.M.M.I without the omega blaster!",
+                "(Crawls forward menacingly)",
+                "Adam: However, you appear to have no choice."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+
+     if(otherUrl == 2798199714) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Adam: Samus do not engage that warrior is tougher than anything you've faced!",
+                "(points sword and unfurls wing)",
+                "Samus watch out!"]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+
+
+     if(otherUrl == 2642265963) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Computer: Warning syste-krschh. Click this link to get free missles!!!!!!",
+                "WOW I'D TAKE THAT [TOTALLY UNRELATED] Deal. IT'S A [STEAL]",
+                "Computer: system restored. Power bomb charging."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+         if(otherUrl == 2606409742) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Link ready to train?",
+                "(nods head)",
+                "(smirks) That shield isn't gonna save you."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+}

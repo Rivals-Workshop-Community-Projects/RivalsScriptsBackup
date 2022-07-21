@@ -57,7 +57,7 @@ if (attack == AT_EXTRA_1){
 if (attack == AT_FSPECIAL && hbox_num == 1){
     if (hitbox_timer == 1){
 	    vsp = -2
-	    hsp = (player_id.hsp/2.5)+(2.5*spr_dir)
+	    hsp = (player_id.hsp/2.5)+(2*spr_dir)
 		sound_play (sound_get ("bean_voice"));
 	}
 	if (hitbox_timer == 60){

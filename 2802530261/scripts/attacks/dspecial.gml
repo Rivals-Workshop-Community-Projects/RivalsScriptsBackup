@@ -26,6 +26,7 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_num_hitboxes(AT_DSPECIAL, 2);
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, -1);
@@ -49,6 +50,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, -1);

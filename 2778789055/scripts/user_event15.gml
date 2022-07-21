@@ -254,6 +254,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.21", "20 July, 2022");
+
+initHeader("Changes:");
+initSection("= Literally just an article bug fix lol
+");
+
+//
 initPatch("1.20", "5 July, 2022");
 
 initHeader("Buffs:");

@@ -1,21 +1,14 @@
 game_time = get_gameplay_time();
 
-// if(instance_exists(left_bubble)){
-//     left_bubble.vsp *= .9;
-//     if left_bubble.vsp > -0.05 left_bubble.vsp = 0;
-// }
-// if(instance_exists(right_bubble)){
-//     right_bubble.vsp *= .9;
-//     if right_bubble.vsp > -0.05 right_bubble.vsp = 0;
-// }
-
-
 
 if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
     move_cooldown[AT_USPECIAL] = 0;
 }
-
-// print(can_cling)
+if(state == PS_AIR_DODGE){
+	if(window == 1 and window_timer == 0){
+		move_cooldown[AT_USPECIAL] = 0;
+	}
+}
 
 
 if(state != PS_WALL_JUMP){
@@ -25,27 +18,21 @@ if(state != PS_WALL_JUMP){
 }else{
 	if(state_timer == 0 and has_walljump and (attack != AT_EXTRA_1 and (state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND))){
 		doCling()
-		print("I did it")
 	}
   if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
-  	print("1")
     doCling()
   }
 }
-
-// print(can_wall_jump)
 
 can_cling = can_wall_jump and has_walljump and (attack != AT_EXTRA_1 and (state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND));
 
 if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
 	if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
 		if(place_meeting(x + 1, y, solids)){
-			print("2")
 			spr_dir = sign(-1)
 			has_walljump = false;
 			set_state(PS_WALL_JUMP);
 		}else if(place_meeting(x - 1, y, solids)){
-			print("3")
 			spr_dir = sign(1)
 			has_walljump = false;
 			set_state(PS_WALL_JUMP);
@@ -150,8 +137,9 @@ if(static >= 100){
   
   outline_color = [red, green, blue];
 	init_shader();
+	outline_color = [0, 0, 0];
 }
-outline_color = [0, 0, 0];
+
 
 pullFactor()
 
@@ -259,10 +247,10 @@ old_static = static;
 #define gain_static()
 switch(state){
 	case PS_JUMPSQUAT:
-        static += (abs(hsp) > 1)*0.8;
+        static += (abs(hsp) > 1)*1;
         break;
     case PS_WAVELAND:
-        static += (abs(hsp) > 1)*0.8;
+        static += (abs(hsp) > 1)*1;
         break;
     case PS_DASH_START:
         static += 0.7;
@@ -273,7 +261,7 @@ switch(state){
     case PS_ATTACK_GROUND:
         if(attack == AT_FSPECIAL){
             if(window == 2){
-              static += 3*(hsp != 0);
+              static += 4*(hsp != 0);
             }
         }
         if(attack == AT_DATTACK){

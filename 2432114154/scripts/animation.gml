@@ -1,6 +1,7 @@
 ///
 
 
+
 /// have an intro, you're welcome
 if get_gameplay_time() <= 120 {
 	visible = true
@@ -321,6 +322,38 @@ if isyellow {
     
 }
 
+
+if UIdodge > 0 && !attacking {
+    
+    switch UInum % 5 {
+        case 0:
+        sprite_index = sprite_get("nspecial");
+        image_index = (20 - UIdodge)/8
+        break;
+    
+        case 1:
+        sprite_index = sprite_get("crouch");
+        image_index = (20 - UIdodge)/6
+        break;
+        
+        case 2:
+        sprite_index = sprite_get("djump3");
+        image_index = (20 - UIdodge)/3
+        break;
+        
+        case 3:
+        sprite_index = sprite_get("parry");
+        image_index = (20 - UIdodge)/4
+        break;
+        
+        case 4:
+        sprite_index = sprite_get("djump4");
+        image_index = (20 - UIdodge)/3
+        break;
+        
+    }
+    
+}
 
 if (state == PS_DASH
    	or state == PS_IDLE

@@ -249,12 +249,21 @@ switch attack {
             strong_draw_x -= 2*spr_dir
             set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 90 - abs(strong_draw_x-x));
         }
+        reset_num_hitboxes(AT_FSTRONG);
+    } else {
+        set_num_hitboxes(AT_FSTRONG, 2);
     }
     //seed_attack(AT_FSTRONG)
     break;
     case AT_DSTRONG:
     if window == 2 && window_timer == window_length-2 {
         sound_play(asset_get("sfx_zetter_downb"))
+    }
+    
+    if !remote_strong {
+        reset_num_hitboxes(AT_DSTRONG);
+    } else {
+        set_num_hitboxes(AT_DSTRONG, 3);
     }
     //seed_attack(AT_DSTRONG)
     break;
@@ -263,6 +272,11 @@ switch attack {
         sound_play(asset_get("sfx_may_root"))
     }
     //seed_attack(AT_USTRONG)
+    if !remote_strong {
+        reset_num_hitboxes(AT_USTRONG);
+    } else {
+        set_num_hitboxes(AT_USTRONG, 4);
+    }
     break;
     
     case AT_BAIR:

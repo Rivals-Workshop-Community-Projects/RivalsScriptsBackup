@@ -82,3 +82,8 @@ if nothanks && get_gameplay_time() <= 160 {
     draw_debug_text(x - 30,y-100,"Uhh... how about no?")
 }
 
+
+if hijay == 1 {
+    draw_debug_text(x - 30,y-100,"hi jay :D")
+}
+

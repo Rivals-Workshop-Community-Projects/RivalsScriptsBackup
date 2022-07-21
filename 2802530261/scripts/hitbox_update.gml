@@ -26,5 +26,10 @@ if(attack == AT_FSPECIAL && destroyed == true){
 }
 
 if(attack == AT_FSPECIAL){
-    hsp = (2 + (hitbox_timer < 60? hitbox_timer/60 * 10: 10)) * spr_dir;
+    hsp = (4 + (hitbox_timer < 60? hitbox_timer/60 * 10: 10)) * spr_dir;
+}
+
+if(type == 2 && was_parried && rotated_p == 0){
+    rotated_p = 1;
+    spr_dir *= -1;
 }

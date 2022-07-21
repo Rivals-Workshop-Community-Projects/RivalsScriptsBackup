@@ -57,6 +57,7 @@ sprite_change_offset("fspec_die", 60, 102);
 sprite_change_offset("uspecial", 96, 126);
 sprite_change_offset("dspecial", 64, 94);
 sprite_change_offset("taunt", 64, 94);
+sprite_change_offset("taunt_jay", 64, 94);
 
 sprite_change_offset("dattack2_hurt", 64, 94);
 

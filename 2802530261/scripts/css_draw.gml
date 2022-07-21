@@ -92,6 +92,9 @@ textDraw(temp_x + 48, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 48, temp_y + 139, "fName", c_white, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 
 init_shader();
+
+//hud button
+//draw_sprite_ext(sprite_get("menu_" + string(menu_css_version)), button_state, temp_x + (get_player_hud_color(player) == 8421504? 60: 76), temp_y + 178, 2, 2, 0, c_white, 1);
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 
 draw_set_font(asset_get(argument[2]));

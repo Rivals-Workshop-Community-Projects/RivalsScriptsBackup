@@ -1,3 +1,20 @@
+
+if cheapmode == 1 && get_gameplay_time() < 600 &&  get_gameplay_time() > 60 {
+    draw_debug_text(x - 76 ,y -162,"You seems quite sus.");
+	draw_debug_text(x - 100 ,y -142,"(taunt to active anticheap)");
+}
+
+if cheapmode == 3  {
+	if get_gameplay_time() < 660 {
+     draw_debug_text(x - 66 ,y -162,"Must be a cheapie.");
+	}
+	
+     shader_start();
+     draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,-1,1)
+     shader_end();
+}
+
+
 shader_start();
 
 if triggercutscene > 390 {

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 20, 10, 21 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 29 );
+set_num_palettes( 31 );
 
 // Red
 set_color_profile_slot( 1, 0, 240, 203, 55 ); //Horn/static
@@ -326,25 +326,45 @@ set_color_profile_slot( 29, 5, 51, 51, 51 ); //Pants
 set_color_profile_slot( 29, 6, 255, 200, 0 ); //gloves
 set_color_profile_slot( 29, 7, 33, 33, 33 ); //slippers/mouth/heart
 
+// Casual Observer
+set_color_profile_slot( 30, 0, 181, 0, 141 ); //Horn/static
+set_color_profile_slot( 30, 1, 232, 255, 248 ); //Shirt
+set_color_profile_slot( 30, 2, 120, 56, 74 ); //Coat
+set_color_profile_slot( 30, 3, 23, 183, 197 ); //water
+set_color_profile_slot( 30, 4, 156, 107, 65 ); //skin
+set_color_profile_slot( 30, 5, 110, 110, 196 ); //Pants
+set_color_profile_slot( 30, 6, 40, 41, 46 ); //gloves
+set_color_profile_slot( 30, 7, 166, 9, 90 ); //slippers/mouth/heart
+
+// One Bloody Rain
+set_color_profile_slot( 31, 0, 173, 10, 10 ); //Horn/static
+set_color_profile_slot( 31, 1, 64, 64, 64 ); //Shirt
+set_color_profile_slot( 31, 2, 32, 36, 41 ); //Coat
+set_color_profile_slot( 31, 3, 184, 0, 31 ); //water
+set_color_profile_slot( 31, 4, 119, 138, 115 ); //skin
+set_color_profile_slot( 31, 5, 87, 87, 87 ); //Pants
+set_color_profile_slot( 31, 6, 187, 48, 45 ); //gloves
+set_color_profile_slot( 31, 7, 46, 46, 46 ); //slippers/mouth/heart
+
 // Pot XRD
-set_color_profile_slot( 30, 0, 163, 162, 160 ); //Horn/static
-set_color_profile_slot( 30, 1, 79, 84, 79 ); //Shirt
-set_color_profile_slot( 30, 2, 63, 69, 42 ); //Coat
-set_color_profile_slot( 30, 3, 255, 130, 0 ); //water
-set_color_profile_slot( 30, 4, 83, 87, 66 ); //skin
-set_color_profile_slot( 30, 5, 69, 84, 66 ); //Pants
-set_color_profile_slot( 30, 6, 168, 34, 0 ); //gloves
-set_color_profile_slot( 30, 7, 120, 0, 0 ); //slippers/mouth/heart
+set_color_profile_slot( 32, 0, 163, 162, 160 ); //Horn/static
+set_color_profile_slot( 32, 1, 79, 84, 79 ); //Shirt
+set_color_profile_slot( 32, 2, 63, 69, 42 ); //Coat
+set_color_profile_slot( 32, 3, 255, 130, 0 ); //water
+set_color_profile_slot( 32, 4, 83, 87, 66 ); //skin
+set_color_profile_slot( 32, 5, 69, 84, 66 ); //Pants
+set_color_profile_slot( 32, 6, 168, 34, 0 ); //gloves
+set_color_profile_slot( 32, 7, 120, 0, 0 ); //slippers/mouth/heart
 
 // Diet
-set_color_profile_slot( 31, 0, 222, 36, 39 ); //Horn/static
-set_color_profile_slot( 31, 1, 222, 36, 39 ); //Shirt
-set_color_profile_slot( 31, 2, 245, 253, 255 ); //Coat
-set_color_profile_slot( 31, 3, 117, 70, 44 ); //water
-set_color_profile_slot( 31, 4, 245, 253, 255 ); //skin
-set_color_profile_slot( 31, 5, 243, 255, 255 ); //Pants
-set_color_profile_slot( 31, 6, 222, 36, 39 ); //gloves
-set_color_profile_slot( 31, 7, 199, 8, 84 ); //slippers/mouth/heart
+set_color_profile_slot( 33, 0, 222, 36, 39 ); //Horn/static
+set_color_profile_slot( 33, 1, 222, 36, 39 ); //Shirt
+set_color_profile_slot( 33, 2, 245, 253, 255 ); //Coat
+set_color_profile_slot( 33, 3, 117, 70, 44 ); //water
+set_color_profile_slot( 33, 4, 245, 253, 255 ); //skin
+set_color_profile_slot( 33, 5, 243, 255, 255 ); //Pants
+set_color_profile_slot( 33, 6, 222, 36, 39 ); //gloves
+set_color_profile_slot( 33, 7, 199, 8, 84 ); //slippers/mouth/heart
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

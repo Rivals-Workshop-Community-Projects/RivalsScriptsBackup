@@ -98,11 +98,12 @@ if(attack == AT_DSPECIAL){
     }else if(bomb_type = 1){
         hsp = 0;
         vsp = 0;
-        image_yscale = (image_index < 5? 2: (bomb_timer - 25) / (has_rune("G")? 1.5: 5));
-        image_xscale = (image_index < 5? 2: (bomb_timer - 25) / (has_rune("G")? 1.5: 5));
+        bomb_yscale = (image_index < 5? 2: (bomb_timer - 25) / (has_rune("G")? 1.5: 5));
+        bomb_xscale = (image_index < 5? 2: (bomb_timer - 25) / (has_rune("G")? 1.5: 5));
+        image_yscale = 2;
+        image_xscale = 2;
         sprite_index = sprite_get("power_bomb");
         image_index = (image_index < 5? bomb_timer / 6: 5);
-        image_alpha = (bomb_timer >= 66? 1 - ((bomb_timer - 66) / 10): 1);
         if(bomb_timer == 15){
             sound_play(sound_get("power_explode2"));
             sound_play(sound_get("power_explode1"));
@@ -118,17 +119,18 @@ if(attack == AT_DSPECIAL){
             sound_play(sound_get("power_explode4"));
         }
         if(image_index == 5 && bomb_timer % 2 == 1){
-            hurt = create_hitbox(AT_DSPECIAL, 2, x + 4, y);
+            hurt = create_hitbox(AT_DSPECIAL, 2, x + 1, y + 1);
             if(bomb_timer >= 70){
                 hurt.kb_scale = 1.5
             }else{
                 hurt.kb_scale = 1
             }
-            hurt.image_yscale = 50 * image_yscale / 200;
-            hurt.image_xscale = 64 * image_xscale / 200;
+            hurt.image_yscale = 50 * bomb_yscale / 200;
+            hurt.image_xscale = 64 * bomb_xscale / 200;
         }
         if(bomb_timer >= 76){
             instance_destroy(self);
+            player_id.power_bomb[@bomb_id] = noone;
         }
     }
 }
