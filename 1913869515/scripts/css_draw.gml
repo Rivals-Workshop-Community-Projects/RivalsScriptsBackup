@@ -107,7 +107,8 @@ var palette_names = [
   "Ice Bunny",
   "Miko of Paradise",
   "Three Spirits",  
-  "Can't Kill"
+  "Can't Kill",
+  "Black Outfit"
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

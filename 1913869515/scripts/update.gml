@@ -1,7 +1,19 @@
 
 
 
-
+if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
+	attacking = true 
+} else {
+	attacking = false 
+	if offense == 0 && halo > 0 {
+		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
+    		halodeact.depth = depth + 10
+    		halodeact.pause = 4
+    	offense = 1
+        offensetimer = 1	
+ 			sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3);
+   }
+}
 
    	if !hitpause { 
    		finisher = 0
@@ -523,7 +535,7 @@ if dmhit > 0 && move_cooldown[AT_EXTRA_3] <= 0 {
 	sound_play(asset_get("sfx_ice_shieldup"));
 }
 
-if offensetimer > 160 and offense > 0{
+if halo == 0 && offense > 0 {
 	offense = 0
 	offensetimer = 0
 		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )

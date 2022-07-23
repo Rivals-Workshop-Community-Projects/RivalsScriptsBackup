@@ -6,7 +6,7 @@ if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL|| at
 
  if (state_timer == 1 or (window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
       sound_play(sound_get("swingw1"),false,noone, .2 + (get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) ,
-        max ( 0.5, 1.6 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
+        max ( 0.5, 1.7 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
 }
  
 
@@ -145,7 +145,11 @@ if attack == AT_FSPECIAL {
 			 fx = spawn_hit_fx(x - 20*spr_dir ,y - 35, 305)
 			 fx.pause = 6
 			 sound_play(sound_get("SpaceCut"),false,noone,1,1);
-		}
+			 set_num_hitboxes(AT_FSPECIAL, 15);
+			 spawn_hit_fx(x + 70*spr_dir,y - 40, shit1)
+			 spawn_hit_fx(x + 140*spr_dir,y - 40, shit2)
+			 spawn_hit_fx(x + 210*spr_dir,y - 40, shit3)
+		} 
 		hsp /= 1.5
 		vsp /= 1.2
 		if vsp > 0 {
@@ -166,6 +170,9 @@ if attack == AT_FSPECIAL {
 
 		if window_timer == 20 && !hitpause {
 			
+		   if zbayo == 5 {
+		   	spawn_hit_fx(x,y-40,shit5)
+		   }
  	        hsp = 240*spr_dir
 			spr_dir *= -1
 			shake_camera(4,2)
@@ -181,6 +188,11 @@ if attack == AT_FSPECIAL {
                 }
             }
             
+            if zbayo == 5 {
+		   	spr_dir *= -1
+		   	x -= 50*spr_dir
+		   }
+		   
 			sound_play(sound_get("counterhit"),false,noone,1,1.4);
 		}
 	}
@@ -191,12 +203,14 @@ if attack == AT_FSPECIAL {
 		if window_timer <= 4 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
 			state_timer = 90
 			djumps = 0
-			
 			if hitpause {
-				hit_player_obj.y += floor((y - 10 - hit_player_obj.y)/6)
-				hit_player_obj.x += floor((x + 70*spr_dir - hit_player_obj.x)/6)
+				hit_player_obj.y += floor((y - 10 - hit_player_obj.y)/2)
+				hit_player_obj.x += floor((x + 70*spr_dir - hit_player_obj.x)/2)
 			}
 		}
+		
+
+
 		
 			if zbayo = 5 && get_gameplay_time()%4 == 0 && has_hit_player {
 				 with hit_player_obj {
@@ -757,14 +771,24 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_DSPECIAL){
 		move_cooldown[AT_DSPECIAL] = 20
-		if zcountered = 1 {
+	if zcountered = 1 {
 		invincible = true
 	}
 	
 	vsp /= 1.2
 	hsp /= 1.1
 	if window == 1 && window_timer == 1 {
-		offensetimer = 160
+		if halo > 0 {
+		offensetimer = 0
+		offense = 0
+		
+		halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
+        halodeact.depth = depth + 10
+        halodeact.pause = 4
+
+ 		sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3);
+ 		
+		}
 		zcountered = 0
 	}
 	
@@ -1158,12 +1182,12 @@ if (attack == AT_JAB){
             set_attack(AT_FSTRONG)
             set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSTRONG, 3, HG_ANGLE,  120);
-set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_FSTRONG, 3, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_FSTRONG, 3, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITPAUSE_SCALING, 3);
 set_hitbox_value(AT_FSTRONG, 3, HG_TECHABLE, 0);
-set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1);
 			window = 8;
 			window_timer = 0;
 			

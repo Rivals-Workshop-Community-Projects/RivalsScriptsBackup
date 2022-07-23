@@ -48,7 +48,8 @@ hit_player_obj.x += ((x + (35 * spr_dir)) - hit_player_obj.x) / 2
 }
 
 if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 2  {
-	hit_player_obj.y += ((y - 30) - hit_player_obj.y) / 2
+	hit_player_obj.x += ((x + (35 * spr_dir)) - hit_player_obj.x) / 2
+	hit_player_obj.y += ((y - 10) - hit_player_obj.y) / 2
 }
 
 if my_hitboxID.attack == AT_TAUNT && my_hitboxID.hbox_num < 8{
@@ -94,12 +95,12 @@ with hit_player_obj {
 	spawn_hit_fx (hit_player_obj.x, hit_player_obj.y - 10, shit5)
 }
 
-if offense == 0 {
+if offense == 0 && halo > 0 {
 		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
     		halodeact.depth = depth + 10
+    		halodeact.pause = 4
     		
-    		
-		sound_play(asset_get("sfx_ice_on_player"));
+			sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3);
 }
 
 

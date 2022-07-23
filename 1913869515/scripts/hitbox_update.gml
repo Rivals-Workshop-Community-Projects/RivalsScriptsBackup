@@ -10,3 +10,7 @@ if attack == AT_FSPECIAL && hbox_num > 1 {
      vsp *= -1
  }
 }
+
+if attack == AT_DSPECIAL {
+    depth = player_id.depth + 1
+}

@@ -1,15 +1,6 @@
 move_cooldown[AT_USPECIAL] = 0 ;
 zbayo = 0
 
-if offense == 1 {
-offense = 0
-offensetimer = 0
-		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
-    		halodeact.depth = depth + 10
-    		
-    		
-		sound_play(asset_get("sfx_jumpair"));
-}
 
 
 intro = 1
