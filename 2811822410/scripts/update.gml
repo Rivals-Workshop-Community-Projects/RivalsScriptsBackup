@@ -1,24 +1,4 @@
-//Miku Trailer!
-/*
-with oPlayer {
-	if (player != other.player) {
-		if (url == CH_KRAGG) {
-			if state == PS_IDLE {
-				spr_dir *= -1;
-				state = PS_WALK_TURN;
-			}
-		} else {
-			if state == PS_IDLE {
-				set_attack(AT_TAUNT)
-			}
-		}
-		if get_gameplay_time() > 600 {
-			set_player_damage(player, 150)
-		}
-	}
-}
-*/
-
+//
 if (!custom_clone) {
 	#region //Rioku's Strong Buffer for neutral strong input-----------------------------
 	if(strong_down and strong_buffer <= 0 and !strong_was_pressed){
@@ -65,7 +45,7 @@ if (!custom_clone) {
 					clone_player.clone_attack = 0
 				}
 			}
-			if (!clone_attack_hold && clone_player.clone_attack &&
+			if (!clone_attack_hold && !hitpause && clone_player.clone_attack &&
 				(attack_down || up_strong_down || right_strong_down || down_strong_down || left_strong_down || up_stick_down || right_stick_down || down_stick_down || left_stick_down || strong_down || taunt_down)
 				&& clone_player.state != PS_ATTACK_AIR)
 			{

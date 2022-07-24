@@ -36,7 +36,7 @@ set_window_value(AT_TAUNT, 5, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_TAUNT, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 6, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 6, AG_WINDOW_SFX, asset_get("sfx_spin"));
+set_window_value(AT_TAUNT, 6, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_TAUNT, 6, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_TAUNT, 6, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_TAUNT, 6, AG_WINDOW_ANIM_FRAMES, 2);
@@ -51,38 +51,38 @@ set_window_value(AT_TAUNT, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_TAUNT, 7, AG_WINDOW_ANIM_FRAME_START, 12);
 
 set_window_value(AT_TAUNT, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 8, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_TAUNT, 8, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 8, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT, 8, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_TAUNT, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 9, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_TAUNT, 9, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT, 9, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_TAUNT, 10, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 10, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_TAUNT, 10, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 10, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT, 10, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_TAUNT, 11, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 11, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_TAUNT, 11, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 11, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT, 11, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_TAUNT, 12, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 12, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_TAUNT, 12, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 12, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT, 12, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_TAUNT, 13, AG_WINDOW_TYPE, 1); 
-set_window_value(AT_TAUNT, 13, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_TAUNT, 13, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 13, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT, 13, AG_WINDOW_ANIM_FRAME_START, 6);
 
 
 set_window_value(AT_TAUNT, 14, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 14, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_TAUNT, 14, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 14, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT, 14, AG_WINDOW_ANIM_FRAME_START, 6);
 
@@ -91,7 +91,7 @@ set_window_value(AT_TAUNT, 15, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 15, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT, 15, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_TAUNT, 15, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 15, AG_WINDOW_SFX, asset_get("sfx_spin"));
+set_window_value(AT_TAUNT, 15, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 set_window_value(AT_TAUNT, 15, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_TAUNT, 16, AG_WINDOW_TYPE, 1);
@@ -108,15 +108,12 @@ set_window_value(AT_TAUNT, 17, AG_WINDOW_ANIM_FRAMES, 25);
 set_window_value(AT_TAUNT, 17, AG_WINDOW_ANIM_FRAME_START, 15);
 
 set_window_value(AT_TAUNT, 18, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 18, AG_WINDOW_LENGTH, 100);
-set_window_value(AT_TAUNT, 18, AG_WINDOW_ANIM_FRAMES, 25);
+set_window_value(AT_TAUNT, 18, AG_WINDOW_LENGTH, 80);
+set_window_value(AT_TAUNT, 18, AG_WINDOW_ANIM_FRAMES, 22);
 set_window_value(AT_TAUNT, 18, AG_WINDOW_ANIM_FRAME_START, 40);
-set_window_value(AT_TAUNT, 18, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, asset_get("sfx_roll"));
-set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX_FRAME, 72);
 
 set_window_value(AT_TAUNT, 19, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 19, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_TAUNT, 19, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_TAUNT, 19, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT, 19, AG_WINDOW_ANIM_FRAME_START, 64);
 
@@ -124,9 +121,6 @@ set_window_value(AT_TAUNT, 20, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 20, AG_WINDOW_LENGTH, 26);
 set_window_value(AT_TAUNT, 20, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_TAUNT, 20, AG_WINDOW_ANIM_FRAME_START, 64);
-set_window_value(AT_TAUNT, 20, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 20, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_TAUNT, 20, AG_WINDOW_SFX_FRAME, 4);
 
 set_num_hitboxes(AT_TAUNT, 12);
 
@@ -285,18 +279,18 @@ set_hitbox_value(AT_TAUNT, 9, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_TAUNT, 9, HG_WINDOW, 17);
 set_hitbox_value(AT_TAUNT, 9, HG_LIFETIME, 3);
 set_hitbox_value(AT_TAUNT, 9, HG_WINDOW_CREATION_FRAME, 29);
-set_hitbox_value(AT_TAUNT, 9, HG_HITBOX_X, 16);
+set_hitbox_value(AT_TAUNT, 9, HG_HITBOX_X, 06);
 set_hitbox_value(AT_TAUNT, 9, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_TAUNT, 9, HG_WIDTH, 60);
-set_hitbox_value(AT_TAUNT, 9, HG_HEIGHT, 35);
+set_hitbox_value(AT_TAUNT, 9, HG_WIDTH, 80);
+set_hitbox_value(AT_TAUNT, 9, HG_HEIGHT, 55);
 set_hitbox_value(AT_TAUNT, 9, HG_SHAPE, 0);
 set_hitbox_value(AT_TAUNT, 9, HG_PRIORITY, 2);
-set_hitbox_value(AT_TAUNT, 9, HG_DAMAGE, 1);
+set_hitbox_value(AT_TAUNT, 9, HG_DAMAGE, 5);
 set_hitbox_value(AT_TAUNT, 9, HG_ANGLE, 30);
 set_hitbox_value(AT_TAUNT, 9, HG_BASE_KNOCKBACK, 12);
-set_hitbox_value(AT_TAUNT, 9, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_TAUNT, 9, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_TAUNT, 9, HG_HIT_SFX, sound_get("tauntDP"));
-set_hitbox_value(AT_TAUNT, 9, HG_BASE_HITPAUSE, 15);
+set_hitbox_value(AT_TAUNT, 9, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value(AT_TAUNT, 9, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_TAUNT, 9, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_TAUNT, 9, HG_HITBOX_GROUP, -1);
@@ -323,9 +317,9 @@ set_hitbox_value(AT_TAUNT, 10, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_TAUNT, 11, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_TAUNT, 11, HG_WINDOW, 18);
-set_hitbox_value(AT_TAUNT, 11, HG_WINDOW_CREATION_FRAME, 80);
-set_hitbox_value(AT_TAUNT, 11, HG_LIFETIME, 57);
-set_hitbox_value(AT_TAUNT, 11, HG_HITBOX_X, 32);
+set_hitbox_value(AT_TAUNT, 11, HG_WINDOW_CREATION_FRAME, 75);
+set_hitbox_value(AT_TAUNT, 11, HG_LIFETIME, 26);
+set_hitbox_value(AT_TAUNT, 11, HG_HITBOX_X, 24);
 set_hitbox_value(AT_TAUNT, 11, HG_HITBOX_Y, -64);
 set_hitbox_value(AT_TAUNT, 11, HG_PRIORITY, 3);
 set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -340,10 +334,11 @@ set_hitbox_value(AT_TAUNT, 12, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_TAUNT, 12, HG_WINDOW, 20);
 set_hitbox_value(AT_TAUNT, 12, HG_WINDOW_CREATION_FRAME, 10);
 set_hitbox_value(AT_TAUNT, 12, HG_LIFETIME, 76);
-set_hitbox_value(AT_TAUNT, 12, HG_HITBOX_X, 28);
+set_hitbox_value(AT_TAUNT, 12, HG_HITBOX_X, 24);
 set_hitbox_value(AT_TAUNT, 12, HG_HITBOX_Y, -64);
 set_hitbox_value(AT_TAUNT, 12, HG_PRIORITY, 3);
 set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("hamburger"));
 set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_AIR_FRICTION, 0.1);
@@ -353,15 +348,14 @@ set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_GRAVITY, 0.3);
 set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_DESTROY_EFFECT, 1);
-
-set_hitbox_value(AT_TAUNT, 12, HG_WIDTH, 30);
-set_hitbox_value(AT_TAUNT, 12, HG_HEIGHT, 30);
+set_hitbox_value(AT_TAUNT, 12, HG_WIDTH, 50);
+set_hitbox_value(AT_TAUNT, 12, HG_HEIGHT, 50);
 set_hitbox_value(AT_TAUNT, 12, HG_SHAPE, 0);
 set_hitbox_value(AT_TAUNT, 12, HG_PRIORITY, 3);
 set_hitbox_value(AT_TAUNT, 12, HG_DAMAGE, 1);
-set_hitbox_value(AT_TAUNT, 12, HG_ANGLE, 100);
-set_hitbox_value(AT_TAUNT, 12, HG_BASE_KNOCKBACK, 15);
-set_hitbox_value(AT_TAUNT, 12, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_TAUNT, 12, HG_ANGLE, 140);
+set_hitbox_value(AT_TAUNT, 12, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_TAUNT, 12, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_TAUNT, 12, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_TAUNT, 12, HG_HITPAUSE_SCALING, 1.5);
 set_hitbox_value(AT_TAUNT, 12, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

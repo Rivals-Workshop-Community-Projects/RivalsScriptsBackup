@@ -1,4 +1,5 @@
 //
+
 if (custom_clone) {
 	destroy_hitboxes();
 	set_state(PS_IDLE_AIR);
@@ -9,6 +10,7 @@ if (custom_clone) {
 		} else {
 			set_state(PS_PRATLAND);
 		}
+		parry_lag = 120;
 	}
 	instance_destroy(clone_owner.miku_clone);
 } else {
@@ -16,3 +18,5 @@ if (custom_clone) {
 		instance_destroy(miku_clone);
 	}
 }
+
+print("Parry Lag Full: " + string(parry_lag))

@@ -1,13 +1,134 @@
 
+if dmhit < 0 {
+	dmhit = 0
+}
 
+
+if zvoice != 0 && voicecd <= 0 && (state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP or state == PS_WALL_JUMP or state == PS_PARRY 
+or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FORWARD  or state == PS_TECH_BACKWARD) && state_timer == 1 {
+	 sound_stop(zvoice)
+     if random_func(2,2,true) == 0 {
+          zvoice = sound_play(sound_get("z1"),false,noone,.67,.85 + random_func(1,11,true)/100);
+    }
+    
+    if random_func(2,2,true) == 1 {
+         zvoice = sound_play(sound_get("z2"),false,noone,.7,.85 + random_func(1,11,true)/100);
+    }
+    
+	
+}
+
+with oPlayer {
+	
+	if state == PS_RESPAWN or state == PS_DEAD {
+		pendupcd = 0
+		pendupdmg = 0
+	}
+	
+	if "pendupdmgid" in self {
+		if pendupdmgid == other.id {
+			if pendupcd == 0 {
+			if pendupdmg > 10 - other.halox {
+				take_damage(player,-1,1)
+				pendupdmg -= 10 - other.halox
+				pendupcd = 5
+				with other {
+					hit1 = spawn_hit_fx( other.x + random_func(3, 10, true), other.y - 40 + random_func(1, 10, true), slash )
+					hit1.depth = other.depth -1
+					hit1.draw_angle = random_func(2,360,true)
+					sound_play(sound_get("slice"),false,noone,.5,1 - random_func(1,10,true)/100);
+					if halox == 8 {
+					hit2 = spawn_hit_fx( other.x + random_func(3, 10, true), other.y - 40 + random_func(1, 10, true), 305 )
+					hit2.depth = other.depth + 2
+					hit2.pause = 3
+					chaseblade = create_hitbox(AT_UAIR,4,x - 20*spr_dir - random_func(4, 10, true)*spr_dir, y - 40 - random_func(2, 40, true))
+					chaseblade.ctarget = other
+			     	}
+				}
+			}
+			} else {
+				pendupcd --
+			}
+		}
+	} else {
+		pendupcd = 0
+		pendupdmg = 0
+		pendupdmgid = 0
+	}
+}
+
+if ohalox != halox {
+	huddraw = 40
+	sound_stop(sound_get("stackfinish"));
+	sound_stop(sound_get("ADfinish"));
+	sound_play(sound_get("ADfinish"),false,noone,1,1);
+	spawn_hit_fx( x , y - 30 , shit5 )
+    haloxfx = spawn_hit_fx( x - (26 * spr_dir) , y - 54 , mfuse )
+    haloxfx.depth = depth + 2
+    haloxfx.spr_dir = spr_dir*2
+    haloxfx.image_yscale = 2
+   
+	if halox == 8 {
+		if zvoice != 0 {
+			sound_stop(zvoice)
+            voicecd = 150 
+            zvoice = sound_play(sound_get("finalle"),false,noone,.9,1.15);
+		}
+   	  sound_play(sound_get("ADfinish"),false,noone,1,0.4);
+   	  sound_stop(sound_get("RI"));
+   	  sound_play(sound_get("RI"),false,noone,1,1);
+   	  
+   	    spawn_hit_fx( x + (40 * spr_dir) , y - 50 , shit7 )
+   		spawn_hit_fx( x - (40 * spr_dir) , y - 50 , shit7 )
+   		spawn_hit_fx( x + (120 * spr_dir) , y - 30 , shit8 )
+   		spawn_hit_fx( x - (120 * spr_dir) , y - 30 , shit8 )
+   		spawn_hit_fx( x + (160 * spr_dir) , y - 70 , shit8 )
+   		spawn_hit_fx( x - (160 * spr_dir) , y - 90 , shit8 )		
+   		spawn_hit_fx( x  , y - 30 , shit5 )
+   		
+   	  fullfx = spawn_hit_fx(x,y - 40, SC)
+   	  fullfx.depth = depth + 2 
+   }
+	ohalox = halox
+}
+if ohalo != halo {
+	
+	if zvoice != 0 && voicecd < 60 && (!attacking or ( attacking && (attack != AT_USPECIAL or  (attack == AT_USPECIAL && has_hit_player)))) and state != PS_RESPAWN and state != PS_DEAD{
+        voicecd = 60
+        zrandom += random_func(2,2,true) + 1
+        sound_stop(zvoice)
+        if zrandom % 4 == 0 {
+              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 1 {
+             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 2{
+            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 3{
+            zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + random_func(1,5,true)/100);
+        }
+        
+        
+    }
+		
+	huddraw = 40
+	ohalo = halo
+}
 
 if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
 	attacking = true 
 } else {
 	attacking = false 
-	if offense == 0 && halo > 0 {
+	zcountered = 0
+    if zvoice != 0 voicecd -= 0.5
+	if offense == 0 && (halo > 0 or halox == 8) {
 		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
-    		halodeact.depth = depth + 10
+    		halodeact.depth = depth + 2
     		halodeact.pause = 4
     	offense = 1
         offensetimer = 1	
@@ -44,9 +165,56 @@ if hitpause {
 }
 
 
+if state == PS_RESPAWN && state_timer == 90 {
+	if halox < 8 {
+	  halox ++ 
+    }
+    if zvoice != 0  {  
+     voicecd = 60
+        zrandom += random_func(2,2,true) + 1
+        sound_stop(zvoice)
+        if zrandom % 4 == 0 {
+              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 1 {
+             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 2{
+            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 3{
+            zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + random_func(1,5,true)/100);
+        }
+    }
+}
 if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 {
 zbayo = 0 
-dmhit = 0
+if halox < 8 {
+	halox ++ 
+}
+      if zvoice != 0  {  
+        voicecd = 60
+        zrandom += random_func(2,2,true) + 1
+        sound_stop(zvoice)
+        if zrandom % 4 == 0 {
+              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 1 {
+             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 2{
+            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + random_func(1,11,true)/100);
+        }
+        
+        if zrandom % 4 == 3{
+            zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + random_func(1,5,true)/100);
+        }
+      }
  if get_player_color(player) == 7{
      
      sound_play(sound_get("bruh"));
@@ -56,7 +224,7 @@ dmhit = 0
 }
 
 if hit_player_obj.state == PS_DEAD {
-	dmhit = 0
+	
  if get_player_color(player) == 7{
      
      sound_play(sound_get("bruh"));
@@ -296,12 +464,12 @@ if zbayo == -1 && state_timer % 3 = 0 && !hitstop{
 if zbayo > 0 {
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 1);
 	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 1);
-	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 1);
 	
-	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 1);
-	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 1);
-	set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 80);
+	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 2);
+	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 2);
+	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 2);
 	
+
 	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 65);
 	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 65);
 
@@ -395,21 +563,6 @@ if zFhittimer == 1 {
 			 vsp = -3
 
 			sound_play(asset_get("sfx_holy_lightning"));
-			if zvoice == 1{
-			 if get_player_color(player) == 1{
-            	      sound_play(sound_get("perfectJ3V"));
-            
-            } 
-            
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("startUSTRONGD"));
-            
-            } 
-            
-            if get_player_color(player) != 1 and get_player_color(player) != 4  {
-            sound_play(sound_get("perfectJ3"));
-            }
-			}
 			set_attack(AT_UTILT)
 		   	window = 2;
             window_timer = -1;	
@@ -443,78 +596,35 @@ if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR {
 		set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
 }
 
-if get_player_color(player) == 5 && zvoice == 1 && hit_player_obj.state_cat == SC_HITSTUN {
-	
-	
-
-		
-	
-	if get_gameplay_time() % 24 == 0 {
-    	spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit7 )
-    
-
-	}
-	
-  	if get_gameplay_time() % 24 == 12 {
-   var hit8 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit8 )
-   
-
-     }
-	
-	
-	
-if get_gameplay_time() % 5 == 0 && (hit_player_obj.hsp > 10 or hit_player_obj.hsp < -10) {
-		spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit6 )
-    	
-	}
 
 
-	
-}
 
-/*
 if get_gameplay_time() <= 120 && zvoice == 0 {
 
 
 	if taunt_down {
-		sound_play(asset_get("sfx_gem_collect"));
-		zvoice = 1
+		sound_play(asset_get("sfx_gem_collect"),false,noone,1,1.2);
+		if get_player_color(player) != 3 {
+		 zvoice = sound_play(sound_get("intro"));
+		} else {
+		 zvoice = sound_play(sound_get("introG7"));	
+		}
 	}
 	
 }
-*/
 
-if get_gameplay_time() == 130 {
-if zvoice == 0 {
+
+if get_gameplay_time() == 300 {
+        if zvoice == 0 {
             	set_victory_theme(sound_get("MONG"));
-        }
-            
-if zvoice == 1{
- if get_player_color(player) < 1 {
-            	set_victory_theme(sound_get("VictoryTheme1"));
-            }
-            
-if get_player_color(player) == 2 {
-            	set_victory_theme(sound_get("VictoryTheme1"));
-            }
+        } else {
+       if get_player_color(player) != 3 {
+			set_victory_theme(sound_get("VictoryTheme1"));
+		} else {
+			set_victory_theme(sound_get("VictoryThemeG7"));
+		}
 
- if get_player_color(player) == 1{
-            	      set_victory_theme(sound_get("VictoryThemeV"));
- }
-            
-if get_player_color(player) == 5 {
-            	set_victory_theme(sound_get("VictoryThemeS"));
-            }
-            
-if get_player_color(player) == 4 {
-            	set_victory_theme(sound_get("VictoryThemeD"));
-            }
-            
-if get_player_color(player) == 3 {
-            	set_victory_theme(sound_get("VictoryThemeG7"));
-            }
-}
-
+       }
 }
 
 
@@ -531,15 +641,15 @@ if hit_player_obj.state_cat == SC_HITSTUN {
 
 if dmhit > 0 && move_cooldown[AT_EXTRA_3] <= 0 {
 	dmhit -= 1
-	move_cooldown[AT_EXTRA_3] = 160
+	move_cooldown[AT_EXTRA_3] = 120
 	sound_play(asset_get("sfx_ice_shieldup"));
 }
 
-if halo == 0 && offense > 0 {
+if halo == 0 && offense > 0 and halox != 8{
 	offense = 0
 	offensetimer = 0
 		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
-    		halodeact.depth = depth + 10
+    		halodeact.depth = depth + 2
     		halodeact.pause = 5
     	sound_play(asset_get("sfx_ice_shieldup"));	
 		sound_play(asset_get("sfx_jumpair"));
@@ -618,9 +728,7 @@ if (introTimer2 < 3) {
 
 if (introTimer < 31) {
     draw_indicator = false;
-} else {
-    draw_indicator = true;
-}
+} 
 
 if (introTimer2 == 0 && introTimer == 2) {
     sound_play (sound_get("slicel"));
@@ -634,71 +742,6 @@ if (introTimer2 == 0 && introTimer == 10) {
     sound_play (sound_get("SpaceCut"));
 }
 
-if zvoice == 1{
-	
-     if get_player_color(player) == 1{
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      sound_play(sound_get("introV"));
-     }
-     }
-     
-     if get_player_color(player) == 3{
-     	if (introTimer2 == 0 && introTimer == 0) {
-            	      sound_play(sound_get("introG7"));       
-     }
-     }
-     
-     if get_player_color(player) == (5) {
-     	if (introTimer2 == 0 && introTimer == 0) {
-            	      
-            	sound_play(sound_get("introS"));
-            }
-            
-            
-     	if (introTimer2 == 0 && introTimer == 8) {
-            	      
-            	sound_play(sound_get("perfectUS"));
-            }
-     }
-     
-        if get_player_color(player) == (2) {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("intro"));
-            }
-     }
-     
-             if get_player_color(player) >= (8) {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("intro"));
-            }
-     }
-     
-                  if get_player_color(player) == (7) {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("bruh"));
-            }
-     }
-     
-     
-      if get_player_color(player) == (4) {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("introD"));
-            }
-     }
-     
-       if get_player_color(player) < 1 {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("intro"));
-            }
-     }
-     
-     
-}
 
 
 
@@ -707,27 +750,16 @@ if get_player_color(player) == 3 {
     	outline_color = [30, 0, 0]
         init_shader();
         
-     
-     if zvoice == 1 {
-      if get_gameplay_time() % 63 = random_func(6, 30, true){ 
-     create_hitbox(AT_DSPECIAL , 1 , x + (-110 * spr_dir) , y - 105 ); 
-     
-      }
-      
-      if get_gameplay_time() % 63 = random_func(7, 30, true){ 
-     create_hitbox(AT_DSPECIAL , 1 , x + (-115 * spr_dir) , y - 105 ); 
-      	
-      } 
+    
      
      
      
       if ((get_gameplay_time() % 73 = random_func(5, 30, true)) && state == PS_IDLE) { 
-     
         set_attack (AT_TAUNT);
       	window = 16;
       	window_timer = 95;
       } 
-     }
+     
       
 
     
@@ -748,7 +780,7 @@ if get_player_color(player) == 3 {
     set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("X"));
     
      
-   }
+}
 
 
 if get_player_color(player) == 1{
@@ -1372,97 +1404,7 @@ if trummelcodecneeded{
     
 }
 
-
-
-
-
-
-
-
-
-
-if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD) and state_timer > 6 and state_timer < 16 and state_timer % 5 = 0 {
-	 
-	 if get_player_color(player) == 5 && zvoice == 1 {
-			spawn_hit_fx( x, y - 30, shit1 )
-    		
-	}
-    	
-	}
-
- if (state == PS_PARRY_START or state == PS_AIR_DODGE) and get_player_color(player) == 5 && zvoice == 1 and state_timer < 2 {
-			spawn_hit_fx( x, y - 30, shit2 )
-    		
-	}	
 	
-	
-	
-if (state == PS_LAND or state == PS_LANDING_LAG or state == PS_WALL_JUMP) && get_player_color(player) == 5 && zvoice == 1{
-	
-	if state_timer == 1{
-	spawn_hit_fx( x, y, shit6 )
-
-		
-	}
-	
-	if state_timer == 2{
-	spawn_hit_fx( x, y, shit7 )
-    	
-		
-	}
-}
-
-if (state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP) && get_player_color(player) == 5 && zvoice == 1 {
-	if state_timer == 3{
-			spawn_hit_fx( x, y, shit8 )
-    	
-		
-	}
-	
-	if state == PS_DOUBLE_JUMP && state_timer == 1 {
-		spawn_hit_fx( x, y, shit5 )
-	}
-	if state_timer == 12{
-			spawn_hit_fx( x, y, shit7 )
-    		
-		
-	}
-	
-	
-	if state_timer == 20{
-			spawn_hit_fx( x, y, shit6 )
-    		
-		
-	}
-}
-
-if state == PS_DASH && get_player_color(player) == 5 && zvoice == 1 {
-	
-	
-	if state_timer % 15 == 0{
-			 spawn_hit_fx( x, y - 30, shit8 )
-    	
-		
-	}
-	
-	if state_timer % 20 == 0{
-		spawn_hit_fx( x, y - 30, shit7 )
-    	
-		
-	}
-	
-	
-	if state_timer % 25 == 0{
-			var hit6 = spawn_hit_fx( x, y - 30, shit6 )
-    		hit6.depth = -1000
-		
-	}
-}
-
-
-/// setstock 
-
-
 
 
 if get_player_color(player) == 8 {
@@ -1502,6 +1444,7 @@ if get_player_color(player) == 8 {
 if slashdraw > 0 {
 	slashdraw -= 1
 }
+
 if instance_number(oPlayer) == 2 {
 
 

@@ -1,14 +1,342 @@
 
 	//B - Reversals
-if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL|| attack == AT_DAIR ){
+if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_DAIR ){
     trigger_b_reverse();
 }
 
- if (state_timer == 1 or (window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
+	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+	
+if ((window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
       sound_play(sound_get("swingw1"),false,noone, .2 + (get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) ,
         max ( 0.5, 1.7 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
+        voicecd -= random_func(1,20,true) 
+        if voicecd < -10 voicecd ++ 
 }
- 
+
+
+	
+	
+///voicehandle 
+
+if zvoice != 0 && !hitpause && 	voicecd <= 0{
+	switch attack {
+        case AT_JAB :
+        	if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.9,.95 + random_func(1,11,true)/100);
+        	}
+        	if window == 4 && window_timer == 2 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.9,.95 + random_func(1,11,true)/100);
+        	}
+        	if window == 7 && window_timer == 2 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		voicecd += 15	
+        	}
+         break;
+         
+         case AT_DTILT :
+        	if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z4"),false,noone,.65,1.08 + random_func(1,11,true)/100);
+        		voicecd += 15 	
+        	}
+         break; 
+         
+         case AT_UTILT :
+        	if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z3"),false,noone,.7,.95 + random_func(1,11,true)/100);
+        		voicecd += 15 	
+        	}
+         break; 
+         
+     	case AT_FTILT :
+        	if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z3"),false,noone,.7,.95 + random_func(1,11,true)/100);
+        		voicecd += 15 	
+        	}
+        break; 
+        
+        case AT_USTRONG :
+        	if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z2"),false,noone,.65,.95 + random_func(1,11,true)/100);
+        	}
+        	if window == 2 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        break; 
+        
+         case AT_DSTRONG :
+        	if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z4"),false,noone,.65,1.08 + random_func(1,11,true)/100);
+        	}
+        	if window == 3 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        	if window == 4 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        	if window == 5 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z2"),false,noone,.7,.95 + random_func(1,11,true)/100);
+        	}
+        break; 
+        
+        case AT_FSTRONG :
+        	if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        	if window == 2 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        	if window == 8 && window_timer == 2 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("counter"),false,noone,.65,1 + random_func(1,11,true)/100);
+        	}
+        break; 
+        
+        case AT_NSPECIAL  :
+            if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        	if window == 3 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z2"),false,noone,.8,1.1 + random_func(1,11,true)/100);
+        	}
+        break; 
+        
+         case AT_FSPECIAL  :
+            if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        break; 
+        
+        case AT_DSPECIAL  :
+            if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        	}
+        break;
+        
+        case AT_USPECIAL  :
+            if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        	}
+        	
+        	 if window == 2 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        break;
+        
+        case AT_DATTACK  :
+            if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        	}
+        	
+        	 if window == 2 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		voicecd += 15 
+        	}
+        break;
+        
+        case AT_BAIR  :
+            if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        	}
+        	
+        	 if window == 2 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		voicecd += 15 
+        	}
+        break;
+        
+         case AT_DAIR  :
+            if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        	
+        break;
+        
+        case AT_NAIR  :
+            if window == 1 && window_timer == 5 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	}
+        break;
+        
+        case AT_FAIR  :
+            if window == 1 && window_timer == 1 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z4"),false,noone,.8,1.05 + random_func(1,11,true)/100);
+        	}
+        break;
+        
+        case AT_UAIR  :
+            if window == 1 && window_timer == 5 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        	}
+        break;
+}
+       
+}
+
+if attack == AT_UTHROW {
+	voicecd = 120
+	hsp /= 1.1
+    dmhit = 0
+    if has_hit_player {
+        soft_armor = 999
+    } else {
+        soft_armor = 0
+    }
+    
+    if window < 4 {
+                	suppress_stage_music( 0.4,60 );	
+    }
+    
+    vsp = 0
+    
+    if window = 1 && !hitpause {
+        oldx = x
+        if window_timer % 10 == 0 or window_timer == 1 {
+             spawn_base_dust(x,y - 0,"land",spr_dir);
+        }
+        
+        if window_timer % 15 == 0 or window_timer == 5 {
+             spawn_base_dust(x + window_timer*2,y - 0,"dash_start",-1);
+             spawn_base_dust(x - window_timer*2,y - 0,"dash_start",1);
+        }
+        
+        if window_timer % 16 == 6 or window_timer == 5 {
+             spawn_base_dust(x + window_timer,y - 0,"dash_start",-1);
+             spawn_base_dust(x - window_timer,y - 0,"dash_start",1);
+        }
+        
+        
+        if window_timer % 20 == 0 {
+             spawn_base_dust(x,y - 0,"jump",spr_dir);
+        }
+        
+        shake_camera(1,2)
+        if window_timer == 1 {
+        	
+        	if zvoice != 0 {
+        		sound_stop(zvoice)
+        		zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + random_func(1,11,true)/100);
+        		sound_play(sound_get("tauntU"),false,noone,1,.95 + random_func(1,11,true)/100);
+        		sound_play(sound_get("tauntU"),false,noone,.5,.8 + random_func(1,11,true)/100);
+        		sound_play(sound_get("tauntU"),false,noone,.5,.7 + random_func(1,11,true)/100);
+        	}
+        	
+		offensetimer = 0
+		offense = 0
+		
+		halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
+        halodeact.depth = depth + 2
+        halodeact.pause = 4
+
+		
+	    halo -= 1
+        sound_play(asset_get("sfx_bird_downspecial"))
+        }
+    }
+    
+    if window = 2 && !hitpause {
+        draw_indicator = false
+        if window_timer == 1  {
+        	spawn_hit_fx( x + (40 * spr_dir) , y - 50 , shit7 )
+   		    spawn_hit_fx( x - (40 * spr_dir) , y - 50 , shit7 )
+   		    spawn_hit_fx( x + (120 * spr_dir) , y - 30 , shit8 )
+   		    spawn_hit_fx( x - (120 * spr_dir) , y - 30 , shit8 )
+   		    spawn_hit_fx( x + (160 * spr_dir) , y - 70 , shit8 )
+   		    spawn_hit_fx( x - (160 * spr_dir) , y - 90 , shit8 )		
+   		    spawn_hit_fx( x  , y - 30 , shit5 )
+	            halo -= 1
+            shake_camera(10,4)
+                spawn_hit_fx(x,y,lighten)
+                sound_play(asset_get("sfx_absa_boltcloud"))
+        }
+        
+    }
+    
+    if window == 3 {
+        x = oldx
+        draw_indicator = false
+        if window_timer >= 20 && !hitpause {
+              shake_camera(4,4)
+              if window_timer % 2 == 1 {
+                  spr_dir *= -1
+              }
+              
+              if window_timer % 10 == 0{
+                spawn_hit_fx(x,y,lighten)
+            }
+            
+            if window_timer % 6 == 0{
+                spawn_hit_fx(x,y,lighten)
+            }
+            
+        }
+    }
+
+
+    if window == 4  && !hitpause {
+        if window_timer == 1 {
+        	halo = 0
+            shake_camera(6,8)
+            sound_play(asset_get("sfx_bird_downspecial"))
+             spawn_base_dust(x,y - 0,"land",spr_dir);
+             spawn_base_dust(x + 30,y - 0,"dash_start",-1);
+             spawn_base_dust(x - 30,y - 0,"dash_start",1);
+        }
+    }
+    
+    if window == 4 && window_timer == 25 && has_hit_player && !hitpause{
+    	zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + random_func(1,11,true)/100);
+    	create_hitbox(AT_UTHROW,3,x,y)
+        fx = spawn_hit_fx (x+20*spr_dir,y-40, 305)
+        fx.pause = 5
+        if zvoice != 0 {
+         zvoice = sound_play(sound_get("RI"))  
+        }
+        spawn_hit_fx (x+20*spr_dir,y-40, lighten)
+        spawn_hit_fx( x + (40 * spr_dir) , y - 50 , shit7 )
+   		spawn_hit_fx( x - (40 * spr_dir) , y - 50 , shit7 )
+   		spawn_hit_fx( x + (120 * spr_dir) , y - 30 , shit8 )
+   		spawn_hit_fx( x - (120 * spr_dir) , y - 30 , shit8 )
+   		spawn_hit_fx( x + (160 * spr_dir) , y - 70 , shit8 )
+   		spawn_hit_fx( x - (160 * spr_dir) , y - 90 , shit8 )		
+   		spawn_hit_fx( x  , y - 30 , shit5 )
+
+            shake_camera(6,10)
+            hitstop = 16
+            hitpause = 1
+     }
+    
+    
+
+}
+
 
 if get_player_color(player) == 6 {
 	
@@ -151,10 +479,7 @@ if attack == AT_FSPECIAL {
 			 spawn_hit_fx(x + 210*spr_dir,y - 40, shit3)
 		} 
 		hsp /= 1.5
-		vsp /= 1.2
-		if vsp > 0 {
-			vsp /= 1.2
-		}
+		vsp = 0
 		
 		if !hitpause && window_timer == 1 {
 			sound_play(sound_get("SpaceCut"),false,noone,1,1.2);
@@ -169,7 +494,7 @@ if attack == AT_FSPECIAL {
 		
 
 		if window_timer == 20 && !hitpause {
-			
+			y -= 4
 		   if zbayo == 5 {
 		   	spawn_hit_fx(x,y-40,shit5)
 		   }
@@ -200,6 +525,10 @@ if attack == AT_FSPECIAL {
 	zbayo = 0	
 	}
 	if window == 2 {
+		if window_timer == 1 {
+				y += 4
+				if hitpause window_timer ++
+		}
 		if window_timer <= 4 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
 			state_timer = 90
 			djumps = 0
@@ -300,21 +629,6 @@ if attack == AT_NSPECIAL and window == 1 and window_timer == 1 and !free {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////
-
-
-else {
 	
 if attack == AT_BAIR{
 	
@@ -394,22 +708,7 @@ if attack == AT_FAIR && zbayo == 2 && window == 3 && !hitpause {
 
 if (attack == AT_USPECIAL){
 	if window = 1 && halo >= 1 && window_timer == 1 && offense = 1{
-		
-		if zvoice == 1{
-             if get_player_color(player) == 1{
-            	      sound_play(sound_get("perfectNSV"));
-            
-            } 
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("startUSTRONGD"));
-            
-            } 
-            
-             if get_player_color(player) != 1 and get_player_color(player) != 4{
-            	sound_play(sound_get("perfectJ1"));
-            }
-            }
-		
+
 			
 		zbayo = -1
 		spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
@@ -421,22 +720,7 @@ if (attack == AT_USPECIAL){
 		
 		
 		if has_hit_player {
-			
-			if zvoice == 1{
-            if get_player_color(player) == 1{
-            	      sound_play(sound_get("perfectJ3V"));
-            
-            } 
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("strongD"));
-            
-            } 
-            
-             if get_player_color(player) != 1 and get_player_color(player) != 4  {
-            	sound_play(sound_get("perfectJ3"));
-            }
-			}
-			
+
 			
 		spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
@@ -605,24 +889,16 @@ set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 2);
 
-set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 8);
-
-set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 8);
+set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 4);
+set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 4);
+set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 4);
+set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 4);
+set_hitbox_value(AT_USPECIAL, 5, HG_DAMAGE, 4);
+set_hitbox_value(AT_USPECIAL, 6, HG_DAMAGE, 4);
 
     	}
     	
     
-    
-	if (window == 1 && window_timer == 1){
-		if zvoice == 1{
-        if get_player_color(player) == 1{
-            	      sound_play(sound_get("perfectJ3V"));
-            
-            } else {
-
-            }
-		}
-    }
     
 
 	
@@ -638,12 +914,14 @@ if (attack == AT_NSPECIAL){
     	hsp /= 2
     }
     
-	if special_down && window = 2 && offense = 1{
-		move_cooldown[AT_EXTRA_1] += 1
-    hsp /= 1.1
-    if vsp > 0 {
-    vsp /= 2
-    }
+	if special_down && window = 3 && halox == 8 && halo == 3 && !free {
+		attack_end()
+		set_attack(AT_UTHROW)
+		window = 1 
+		window_timer = 0
+		RCEstart = spawn_hit_fx(x,y-40,SC)
+		RCEstart.depth = depth + 2
+		sound_play(sound_get("counterhit"));
 	}
 	
 	if window = 1 {
@@ -717,21 +995,7 @@ if (attack == AT_NSPECIAL){
             window_timer = 0;
             sound_play(sound_get("counterhit"));
             
-            if zvoice == 1{
-            if get_player_color(player) == 1{
-            	      sound_play(sound_get("perfectNSV"));
-            
-            } 
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("startUSTRONGD"));
-            
-            } 
-            
-             if get_player_color(player) != 1 and get_player_color(player) != 4 {
-            	sound_play(sound_get("perfectNS"));
-            }
-      
-            }
+
             
              
         
@@ -771,6 +1035,7 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_DSPECIAL){
 		move_cooldown[AT_DSPECIAL] = 20
+		
 	if zcountered = 1 {
 		invincible = true
 	}
@@ -783,7 +1048,7 @@ if (attack == AT_DSPECIAL){
 		offense = 0
 		
 		halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
-        halodeact.depth = depth + 10
+        halodeact.depth = depth + 2
         halodeact.pause = 4
 
  		sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3);
@@ -830,47 +1095,6 @@ if (attack == AT_DSPECIAL){
     }
     
     
-    nearbyhitbox = collision_circle( x-12, y-12, 64, asset_get("pHitBox"), false, true ) 
-	if nearbyhitbox != noone{
-		if nearbyhitbox.player_id != self && nearbyhitbox.type == 2 && super_armor && nearbyhitbox.hit_priority != 0  {
-			zcountered = 1
-			        if zvoice == 1{
-         if get_player_color(player) == 1{
-            	      sound_play(sound_get("counterV"));
-            
-            } 
-            
-            
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("counterD"));
-            
-            } 
-            
-            if get_player_color(player) != 1 and get_player_color(player) != 4 {
-            sound_play(sound_get("counter"));
-            }
-        }
-			set_attack(AT_UTILT)
-			window = 2
-			window_timer = 1
-            sound_play(sound_get("RI")); 
-            shake_camera(4, 6)
-            spawn_hit_fx (nearbyhitbox.x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
-			nearbyhitbox.hsp *= -1 
-			if nearbyhitbox.x > x {
-			nearbyhitbox.x += 20
-			} else {
-			nearbyhitbox.x -= 20	
-			}
-			nearbyhitbox.air_friction = 0
-			nearbyhitbox.spr_dir *= -1
-			nearbyhitbox.vsp -= abs(nearbyhitbox.hsp/2)
-			nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/60)
-	       	nearbyhitbox.hitbox_timer = 1
-			nearbyhitbox.can_hit_self = true
-			nearbyhitbox.transcendent= true
-	}
-	}
 	
 }
 
@@ -882,7 +1106,7 @@ if attack == AT_EXTRA_1 {
 		invincible = true
 	}
 	
-	hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
+
 	vsp /= 1.1
 	if window > 7 {
 	can_wall_jump = true
@@ -959,9 +1183,6 @@ if window_timer % 3 == 0{
 			sound_play(asset_get("sfx_ice_shieldup"));
 		}
 		
-		zcountered = 0
-		
-		
 	}
 
     if window == 9 && window_timer == 10 && !hitpause{
@@ -984,53 +1205,19 @@ if window = 5 && window_timer == 8{
 
 if(attack == AT_USTRONG){
 	
-		if window < 4 & has_hit_player && !hitpause{
+   if window < 4 & has_hit_player && !hitpause{
 		hit_player_obj.hsp = ((x + (65 * spr_dir)) - hit_player_obj.x) / 4
 		hit_player_obj.y += (y - 75 - hit_player_obj.y) / 8
 	}
 	
-    if(window == 2 && window_timer == get_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH) && !has_hit){
-        window = 6;
-        window_timer = 0;
-        if zvoice == 1{
-         if get_player_color(player) == 1{
-            	      sound_play(sound_get("startUSTRONGV"));
-            
-            } 
-            
-            
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("startUSTRONGD"));
-            
-            } 
-            
-            if get_player_color(player) != 1 and get_player_color(player) != 4 {
-            sound_play(sound_get("startUSTRONG"));
-            }
-        }
-    }       
 
-    
-
-    	
-    if(window == 5 && window_timer == get_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH)){
-        set_state(PS_IDLE);
-    }
 }
 
 
 if (attack == AT_FSTRONG){
 	
 	
-    if (window == 2 && window_timer == 1) {
-    	if zvoice == 1{
-	if get_player_color(player) == 4 && !hitpause{
-            	      sound_play(sound_get("strongD"));
-            
-            } 
-    	}
-	}
-  
+
     
     if (window == 7 && window_timer = 1){
        	create_hitbox(AT_FSTRONG , 8 , x , y );
@@ -1083,28 +1270,7 @@ if attack == AT_DSTRONG {
 	}
 }
 if (attack == AT_DSTRONG && get_player_color(player) == 4){
-	if zvoice = 1{
-	if (window == 1 && window_timer == 1) {
-		
-            	      sound_play(sound_get("DstrongD1"));
-          
-            } 
-            
- 	if (window == 3 && window_timer == 1) {
 
-            	      sound_play(sound_get("DstrongD2"));
-           
-	}
-	
-	if (window == 6 && window_timer == 1) {
-
-            	      sound_play(sound_get("strongD"));
-            
-
-	}
-	
-
-	}
 	
 	
 }
@@ -1138,21 +1304,11 @@ if (attack == AT_JAB){
 			window = 7;
 			window_timer = 0;
             sound_play(sound_get("counterhit"));
-            
-            if zvoice == 1{
-             if get_player_color(player) == 1{
-            	      sound_play(sound_get("perfectJ1V"));
-            
-            } 
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("startUSTRONGD"));
-            
-            } 
-            
-             if get_player_color(player) != 1 and get_player_color(player) != 4{
-            	sound_play(sound_get("perfectJ1"));
-            }
-            }
+           if zvoice != 0 {
+           	   sound_stop(zvoice)
+           	   zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + random_func(1,11,true)/100);
+           }
+
             
         }
     }
@@ -1191,21 +1347,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1);
 			window = 8;
 			window_timer = 0;
 			
-			if zvoice == 1{
-            if get_player_color(player) == 1{
-            	      sound_play(sound_get("perfectJ3V"));
-            
-            } 
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("strongD"));
-            
-            } 
-            
-             if get_player_color(player) != 1 and get_player_color(player) != 4  {
-            	sound_play(sound_get("perfectJ3"));
-            }
-			}
-            
+
         }
     }
     
@@ -1270,6 +1412,16 @@ if(attack == AT_DAIR){
 	
 	
 if (attack == AT_TAUNT){
+	move_cooldown[AT_TAUNT] = 25
+	if window == 1 && window_timer == 1 && offense != 0 {
+			var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
+    		halodeact.depth = depth + 2
+    		halodeact.pause = 4
+    		
+			sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3);
+			offense = 0
+			offensetimer = 0
+	}
 	move_cooldown[AT_EXTRA_3] = 200
 	if window == 18 && window_timer > 6 && window_timer < 71{
 		window_timer += 1
@@ -1279,38 +1431,23 @@ if (attack == AT_TAUNT){
 		sound_play(asset_get("sfx_spin"));
 	}
 	
-	if(window == 18 && window_timer == 64){
+	if(window == 18 && window_timer == 60){
 		
 		
-      	if (get_player_color(player) == 0 or get_player_color(player) == 2 or get_player_color(player) == 3 
-      	or get_player_color(player) == 6 or get_player_color(player) == 5){
       	ztrashes = random_func(15, 8, true);
-      	}
-      	if zvoice == 0 {
-      	if (get_player_color(player) != 4){
-      	ztrashes = 7	
-      	}
-      	
+
       	if (get_player_color(player) == 4) {
-      	
-      		ztrashes = 1
-      	}
-      	
-      	
-      	}
-      	if zvoice == 1 {
-      	if (get_player_color(player) == 1) {
-      	
-      		ztrashes = 3
-      	}
-      	
-      	if (get_player_color(player) == 4) {
-      	
       		ztrashes = 1
       	}
 
-      	
+      	if (get_player_color(player) == 1) {
+      		ztrashes = 3
       	}
+      	
+      	if (get_player_color(player) == 13) {
+      		ztrashes = 7
+      	}
+      	
     }
     
 
@@ -1319,49 +1456,57 @@ if (attack == AT_TAUNT){
     	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("hamburger"));
     	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("hamburgerstill"));
     	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("thamburger"));
+    	sound_play(sound_get("thamburger"),false,noone,.7,1.6)
     }
     
     if ztrashes == 1 {
     	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("roadroller"));
     	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("roadroller"));
     	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("troadroller"));
+    	sound_play(sound_get("troadroller"),false,noone,1,1.5)
     }
     
     if ztrashes == 2 {
     	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("ring"));
     	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("ring"));
     	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tring"));
+    	sound_play(sound_get("tring"),false,noone,1,1.4)
     }
     
      if ztrashes == 3 {
     	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("bonespin"));
     	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("bone"));
     	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tbone"));
+    	sound_play(sound_get("tbone"),false,noone,1,1.6)
     }
     
     if ztrashes == 4 {
     	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("korb2"));
     	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("korb1"));
     	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tkorb"));
+    	sound_play(sound_get("tkorb"),false,noone,1,1.4)
     }
     
      if ztrashes == 5 {
     	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("fox2"));
     	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("fox1"));
     	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tfox"));
-}	
-
- if ztrashes == 6 {
-    	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("poke2"));
-    	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("poke1"));
-    	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tpoke"));
-}	
-
- if ztrashes == 7 {
-    	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("hikaru"));
-    	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("hikaru"));
-    	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tHi"));
-}
+    	sound_play(sound_get("tfox"),false,noone,1,1.6)
+     }	
+     
+      if ztrashes == 6 {
+         	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("poke2"));
+         	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("poke1"));
+         	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tpoke"));
+         	sound_play(sound_get("tpoke"),false,noone,1,1.2)
+     }	
+     
+      if ztrashes == 7 {
+         	set_hitbox_value(AT_TAUNT, 12, HG_PROJECTILE_SPRITE, sprite_get("hikaru"));
+         	set_hitbox_value(AT_TAUNT, 11, HG_PROJECTILE_SPRITE, sprite_get("hikaru"));
+         	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tHi"));
+         	sound_play(sound_get("tHi"),false,noone,1,1.3)
+     }
 
 	 if ((get_gameplay_time() % 23 = 0 ) && window_timer <= 60 ){
 	 	
@@ -1388,47 +1533,20 @@ if (attack == AT_TAUNT){
             
 	
     if (window <= 2){
-        if (special_pressed){
+        if (special_down or get_player_color(player) == 1){
             window = 7;
             window_timer = 0;
-            
-            if zvoice == 1{
-            
-            if get_player_color(player) == 1{
-            	      sound_play(sound_get("tauntV"));
-            
-            } 
-            
-             if get_player_color(player) == 4{
-            	      sound_play(sound_get("tauntDi"));
-            
-            } 
-            
-            if get_player_color(player) != 1 and get_player_color(player) != 4 {
-            	sound_play(sound_get("taunt"));
-            }
-            }
+            if zvoice != 0 {
+            zvoice = sound_play(sound_get("taunt"),false,noone,.8,1 + random_func(1,5,true)/100);
+      	   }
         }
         
          if (down_down){
             window = 16;
             window_timer = 0;
-            
-            if zvoice == 1{
-            if get_player_color(player) == 1{
-            	      sound_play(sound_get("tauntUV"));
-            
-            } 
-            
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("tauntUD"));
-            
-            }
-            
-             if get_player_color(player) != 1 and get_player_color(player) != 4 {
-            	sound_play(sound_get("tauntU"));
-            }
-            }
+            if zvoice != 0 {
+            zvoice = sound_play(sound_get("tauntU"),false,noone,.8,1 + random_func(1,5,true)/100);
+      	   }
         }
         
     
@@ -1440,10 +1558,11 @@ if (attack == AT_TAUNT){
         
       }
       
-      if (attack_pressed or get_player_color(player) == 4 ){
-      	
-
-         	
+      if (attack_down or get_player_color(player) == 4 or get_player_color(player) == 13){
+      	   if zvoice != 0 {
+            zvoice = sound_play(sound_get("z1"),false,noone,1,.95 + random_func(1,11,true)/100);
+      	   }
+      	   
             window = 18;
             window_timer = 0;
 
@@ -1453,7 +1572,7 @@ if (attack == AT_TAUNT){
     }
     
          if(window == 17 && window_timer == 24){
-
+                      
                     	sound_play(sound_get("tauntD"));
                  	
          }
@@ -1467,7 +1586,9 @@ if (attack == AT_TAUNT){
     
 if(window == 20 && window_timer > 24){
                   if (attack_down){
-         	
+         	if zvoice != 0 {
+            zvoice = sound_play(sound_get("z1"),false,noone,1,.95 + random_func(1,11,true)/100);
+      	   }
             window = 18;
             window_timer = 14;
       }
@@ -1563,64 +1684,51 @@ if (attack == AT_NAIR){
 
 
 
-}
-
-
-if get_player_color(player) == 5 && zvoice == 1 {
-	
-	
-   	
-   	
-   	
-	if attack == AT_NSPECIAL && window == 7 && get_player_color(player) == 5 && zvoice == 1 {
-   	
-   	
-   	if window_timer == 1 {
-   		spawn_hit_fx( x + (20 * spr_dir) , y - 30 , shit5 )
-   	}
-   	
-   	if window_timer == 2 {
-   		spawn_hit_fx( x + (60 * spr_dir) , y - 30 , shit6 )
-   	}
-   	
-   	if window_timer == 3 {
-   		spawn_hit_fx( x + (120 * spr_dir) , y - 30 , shit7 )
-   	}
-   	
-   		if window_timer == 4 {
-   		spawn_hit_fx( x + (160 * spr_dir) , y - 40 , shit8 )
-   	}
-   	
-   }
-   
-
-   
-	if attack == AT_DAIR && window == 2 && window_timer == 1{
-		
-		 spawn_hit_fx( x, y - 30, shit5 )
-	} 
-	
-	if attack == AT_DAIR && window > 1 && window < 4 {
-		
-			if state_timer % 7 == 0{
-			 spawn_hit_fx( x, y - 40, shit8 )
-    	
-		
+if attack == AT_USTRONG {
+	if window == 2 && window_timer == 1 && !hitpause && !has_hit_player{
+			sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.2);
 	}
 	
-	if state_timer % 13 == 0{
-		spawn_hit_fx( x, y - 40, shit7 )
-    	
-		
-	}
-	
-	
-	if state_timer % 16 == 0{
-			var hit6 = spawn_hit_fx( x, y - 30, shit6 )
-    		hit6.depth = -1000
-		
-	}
-		
+	if window == 2 or window == 3 or (window == 4 && window_timer <= 15) or (window == 4 && window_timer % 3 <= 1) {
+		draw_indicator = false 
 	}
 }
 
+
+
+
+#define spawn_base_dust(x, y, name, dir)
+var dlen;
+var dfx;
+var dfg;
+var dust_color = 0;
+
+switch (name) {
+    default:
+    case "dash_start":
+        dlen = 21;
+        dfx = 3;
+        dfg = 2626;
+    break;
+    case "dash":
+        dlen = 16;
+        dfx = 4;
+        dfg = 2656;
+    break;
+    case "jump":
+        dlen = 12;
+        dfx = 11;
+        dfg = 2646;
+    break;
+    case "doublejump":
+    case "djump":
+        dlen = 21;
+        dfx = 2;
+        dfg = 2624;
+    break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx;
+if dfg != -1 newdust.fg_sprite = dfg;
+newdust.dust_color = dust_color;
+newdust.spr_dir = dir;

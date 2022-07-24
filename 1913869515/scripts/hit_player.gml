@@ -2,6 +2,21 @@
 //if introhit = 0 {
 //	introhit = 1
 //}
+
+if voicecd < 60 voicecd = -10
+
+if halox > 0 {
+	with hit_player_obj {
+		pendupdmg += other.my_hitboxID.damage 
+		pendupdmgid = other.id
+		pendupcd = floor(other.hitstop)
+	}
+	
+}
+
+
+
+
 finishercd = 0
 
 if my_hitboxID.attack == AT_NSPECIAL {
@@ -37,6 +52,12 @@ hitdmg = my_hitboxID.damage/10
 
 angledraw = random_func(1,360,true)  
 
+if halox == 8 {
+	sound_play(sound_get("slice"),false,noone,.5 + my_hitboxID.damage/15 , 1.7 - min((hitstop*hitstop)/80 , 1.2) )
+	
+}
+
+
 }
 
 
@@ -47,9 +68,9 @@ hit_player_obj.x += ((x + (35 * spr_dir)) - hit_player_obj.x) / 2
 		hit_player_obj.y += ((y + 20) - hit_player_obj.y) / 2
 }
 
-if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 2  {
-	hit_player_obj.x += ((x + (35 * spr_dir)) - hit_player_obj.x) / 2
-	hit_player_obj.y += ((y - 10) - hit_player_obj.y) / 2
+if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num <= 2  {
+	hit_player_obj.x += ((x + (45 * spr_dir)) - hit_player_obj.x) / 4
+	hit_player_obj.y += ((y - (my_hitboxID.hbox_num - 1)*20) - hit_player_obj.y) / 4
 }
 
 if my_hitboxID.attack == AT_TAUNT && my_hitboxID.hbox_num < 8{
@@ -57,33 +78,51 @@ if my_hitboxID.attack == AT_TAUNT && my_hitboxID.hbox_num < 8{
 }
 	
 		
-if dmhit < 5 && move_cooldown[AT_EXTRA_1] = 0 && (my_hitboxID.attack != AT_USPECIAL or (attack == AT_USPECIAL && my_hitboxID.hbox_num >= 3))  {
+if dmhit < 5 && move_cooldown[AT_EXTRA_1] = 0  {
 	dmhit += 1 
 }
 
+if move_cooldown[AT_EXTRA_1] == 0 move_cooldown[AT_EXTRA_1] = 8
+
+if my_hitboxID.attack == AT_BAIR {
+	move_cooldown[AT_EXTRA_1] = 0
+}
 
 if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 2 {
 	dmhit -= 1
 }
 
 if my_hitboxID.attack == AT_USTRONG  {
-	if my_hitboxID.hbox_num == 3 {
+	
+	sound_play(asset_get("sfx_blow_heavy2"))
+	
+
 		move_cooldown[AT_EXTRA_1] = 0
 		dmhit += 1
-	}
+	
 		hit_player_obj.x += ((x + (35 * spr_dir)) - hit_player_obj.x) / 2
 }
 
+if my_hitboxID.attack == AT_DSTRONG  {
 
-	move_cooldown[AT_EXTRA_1] = 8
-	
-	
-if dmhit == 4  {
-if  halo < 3 {	
-halo += 1
+
 }
-sound_play(sound_get("stackfinish"));
-var dmdamge = min(floor(my_hitboxID.damage/2.5),8)
+
+
+	
+	
+if dmhit >= 3  {
+sound_play(sound_get("stackfinish"));	
+if  halo < (2 + (halox = 8)) {	
+halo += 1
+} else if halox < 8{
+	sound_stop(sound_get("stackfinish"));
+	sound_play(sound_get("ADfinish"));
+   halo = 0
+   halox ++
+}
+ showdm = 30
+var dmdamge = min(floor(my_hitboxID.damage/2),4)
 with hit_player_obj {
 		take_damage( player, -1 , 2 + dmdamge)
 }
@@ -97,15 +136,16 @@ with hit_player_obj {
 
 if offense == 0 && halo > 0 {
 		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
-    		halodeact.depth = depth + 10
+    		halodeact.depth = depth + 2
     		halodeact.pause = 4
     		
 			sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3);
+			offense = 1
+            offensetimer = 1
 }
 
 
-offense = 1
-offensetimer = 1
+
 move_cooldown[AT_EXTRA_3] = 160
 
 
@@ -132,7 +172,7 @@ if (attack == AT_TAUNT && my_hitboxID.hbox_num == 1){
 
 if (my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1){
 	
-	if get_player_color(player) == 5 && zvoice == 0 {
+sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.2);
 		spawn_hit_fx( x + (80 * spr_dir) , y - 50 , shit7 )
    		spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit7 )
    		spawn_hit_fx( x + (120 * spr_dir) , y - 30 , shit8 )
@@ -140,39 +180,18 @@ if (my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1){
    		spawn_hit_fx( x + (160 * spr_dir) , y - 70 , shit8 )
    		spawn_hit_fx( x - (60 * spr_dir) , y - 90 , shit8 )		
    		spawn_hit_fx( x + (20 * spr_dir) , y - 30 , shit5 )
-	}
+
    		
-	move_cooldown[AT_USPECIAL] = 0
-    set_attack(AT_USTRONG)
-            window = 3;
-            window_timer = -2;
+    
             if zvoice == 1{
-            if get_player_color(player) == 1{
-            	      sound_play(sound_get("USHITV"));
-            
-            } 
-            
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("startUSTRONGD"));
-            
-            } 
-            
-            if get_player_color(player) != 1 and get_player_color(player) != 4  {
-            sound_play(sound_get("startUSTRONG"));
-            }
+            	
+                sound_play(sound_get("startUSTRONG"));
+
             }
             
 }
 
 
-if(attack == AT_DAIR && window == 2){
-
-if zvoice == 1{
-         if get_player_color(player) == 1{
-            	      sound_play(sound_get("DAHITV"));
-    }
-}
-}
 
 
 
@@ -207,9 +226,9 @@ if (get_player_color(player) != 3) && (my_hitboxID.sound_effect == sound_get("sl
 
 if get_player_color(player) == 3{
 
-    if( attack != AT_NSPECIAL  ){
+    if( attack != AT_NSPECIAL){
     	if spr_dir == -1  {
-	 create_hitbox(AT_FSPECIAL, 9 , floor(hit_player_obj.x - 30 + random_func(1, 60, true)), floor(hit_player_obj.y - 60 + random_func(2, 30, true)) );
+	      create_hitbox(AT_FSPECIAL, 9 , floor(hit_player_obj.x - 30 + random_func(1, 60, true)), floor(hit_player_obj.y - 60 + random_func(2, 30, true)) );
     	} else {
     	 create_hitbox(AT_FSPECIAL, 10 , floor(hit_player_obj.x - 30 + random_func(1, 60, true)), floor(hit_player_obj.y - 60 + random_func(2, 30, true)) );
  		
@@ -248,9 +267,7 @@ if get_player_color(player) == 5{
 }
 
       if( attack == AT_TAUNT && window == 17 && window_timer > 50){
-      	if zvoice == 1{
-      	sound_play(sound_get("tauntDP"));
-      	}
+      	sound_play(sound_get("tauntDP"),false,noone,1,.6);
       }
             
 

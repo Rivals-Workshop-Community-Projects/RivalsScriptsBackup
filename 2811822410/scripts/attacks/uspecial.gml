@@ -13,7 +13,6 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 2);
 
-
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);

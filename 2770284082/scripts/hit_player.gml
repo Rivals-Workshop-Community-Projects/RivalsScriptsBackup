@@ -2,7 +2,7 @@
 
 sound_play(asset_get("sfx_buzzsaw_hit"),false,noone,max(.6, hit_player_obj.hitstop*hit_player_obj.hitstop/150), 3 - min(2, 1 + hit_player_obj.hitstop*hit_player_obj.hitstop/150) )
 
-if my_hitboxID.damage > 4 && hit_player_obj.hatstate != 0 && hit_player_obj.hatstate != 2*player*player && my_hitboxID.attack != AT_NSPECIAL{
+if my_hitboxID.damage > 4 && hit_player_obj.hatstate != 0 && hit_player_obj.hatstate != 2*player*player && my_hitboxID.attack != AT_NSPECIAL && hit_player_obj.hatprotection == 0{
     hit_player_obj.hatstate = 2*player*player
     hitstop += 5
     hit_player_obj.hitstop += 5
@@ -46,7 +46,7 @@ if my_hitboxID.attack == AT_NSPECIAL && (my_hitboxID.hbox_num <= 2 or my_hitboxI
     h3x.depth = -6
     sound_play(sound_get("shing"),false, noone, .4, 0.7); hit_player_obj.hatstate = player*player }
     
-  if  my_hitboxID.hbox_num == 4 {
+  if  my_hitboxID.hbox_num == 4 && hit_player_obj.hatprotection == 0 {
     hit_player_obj.hatstate = 2*player*player
   }
   

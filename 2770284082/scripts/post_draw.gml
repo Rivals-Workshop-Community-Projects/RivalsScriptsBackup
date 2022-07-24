@@ -8,6 +8,20 @@ if state != PS_PARRY && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD
 
 shader_start();
 draw_sprite_ext(sprite_index, image_index, x, y,  side, 1, 0 , -1, 1 )
+/*
+    if (move_cooldown[AT_NSPECIAL] < 40 && move_cooldown[AT_NSPECIAL] % 20 > 15) or (move_cooldown[AT_NSPECIAL] > 0 && move_cooldown[AT_NSPECIAL] < 5) {
+     gpu_set_blendmode(bm_add);
+     draw_sprite_ext(sprite_index,image_index,x,y, side,1,0,-1, .5 )
+     gpu_set_blendmode(bm_normal);
+     if move_cooldown[AT_NSPECIAL] > 0 && move_cooldown[AT_NSPECIAL] < 5 { 
+      gpu_set_blendmode(bm_add);
+     draw_sprite_ext(sprite_index,image_index,x,y, side,1,0,-1, 1 )
+     gpu_set_blendmode(bm_normal);   
+     }
+    }
+    
+  */
+  
 shader_end() 
 
 if invince_time > 0 {   
@@ -34,6 +48,22 @@ with oPlayer {
              force_depth = true
              depth = -6 
              draw_sprite_ext(sprite_get("hat2"),0, other.x, other.y - other.char_height-10, other.spr_dir,1, 0, -1, .4)   
+            }
+            }
+        }
+    }
+    
+     if hatstate == other.player*other.player*3  {
+        with other {
+            if other.draw_indicator = true {
+            if other.state != PS_ATTACK_GROUND and other.state != PS_ATTACK_AIR {
+            force_depth = true
+            depth = -6 
+            draw_sprite_ext(sprite_get("hat7"),0, other.x, other.y - other.char_height-60, other.spr_dir,1, 0, -1, .6)
+            } else {
+             force_depth = true
+             depth = -6 
+             draw_sprite_ext(sprite_get("hat7"),0, other.x, other.y - other.char_height-60, other.spr_dir,1, 0, -1, .3)   
             }
             }
         }

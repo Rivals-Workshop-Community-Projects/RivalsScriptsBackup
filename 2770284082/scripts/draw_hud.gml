@@ -2,7 +2,9 @@
 shader_start();
 
     
- 
+
+    draw_sprite_ext(sprite_get("hat2"),0,temp_x + 4,temp_y - 2,-1,1,0,-1,1)
+
 
 
 

@@ -14,11 +14,17 @@ hitdmg = 0
 shsp = 0
 svsp = 0
 
+zrandom = 0
+
 superMove = 14
 
 angledraw = 0
 
-
+ohalox = 0
+halox = 0
+ohalo = 0 
+halo = 0
+huddraw = 0
 
 introhit = 0
 
@@ -26,7 +32,7 @@ ztarget = 0
 zFhit = 0
 zFhittimer = 0
 nrange = 0
-halo = 0; 
+
 
 offense = 0
 offensetimer = 0
@@ -47,6 +53,10 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 Hikaru_Title = "Edge of Void"
+
+attacking = 0
+
+voicecd = 0
 
 zcountered = 0
 zcountered2 = 0
@@ -170,6 +180,9 @@ sprite_change_offset("SB", 100, 100);
 sprite_change_offset("death", 1000, 1000);
 sprite_change_offset("blud", 256, 125);
 
+mfuse = hit_fx_create( sprite_get( "movfuse" ), 14*4 );
+
+
 G7 = hit_fx_create( sprite_get( "G7" ), 24 );
 G72 = hit_fx_create( sprite_get( "G72" ), 24 );
 
@@ -212,7 +225,7 @@ sprite_change_offset("shit8", 100, 100);
 
 sprite_change_offset("slosh", 200, 200);
 
-lighten = hit_fx_create( sprite_get( "lighten" ), 8);
+lighten = hit_fx_create( sprite_get( "lighten" ), 4);
 sprite_change_offset("lighten", 1000, 1000);
 darken = hit_fx_create( sprite_get( "darken" ), 10);
 sprite_change_offset("darken", 1000, 1000);

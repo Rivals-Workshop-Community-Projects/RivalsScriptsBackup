@@ -80,6 +80,21 @@ sprite_change_offset("spark3", 30, 30);
   }
 }
 
+/*
+if move_cooldown[AT_NSPECIAL] < 43 && move_cooldown[AT_NSPECIAL] % 20 == 1 {
+	sound_play(sound_get("hatoff1"),false, noone, .1, 1.4);
+}
+
+if move_cooldown[AT_NSPECIAL] == 1  {
+	sound_play(sound_get("hatoff1"),false, noone, .1, 1.2);
+}
+
+
+if (move_cooldown[AT_NSPECIAL] < 40 && move_cooldown[AT_NSPECIAL] % 20 > 10) or (move_cooldown[AT_NSPECIAL] > 0 && move_cooldown[AT_NSPECIAL] < 20) {
+	spawn_hit_fx(x - 30 + random_func(1,60,true), y + vsp - 80 + random_func(2,60,true),p1)
+    spawn_hit_fx(x - 30 + random_func(3,60,true), y + vsp - 80 + random_func(4,60,true),p2)
+}
+*/
 
 with (asset_get("oPlayer")) {
 	
@@ -89,11 +104,35 @@ with (asset_get("oPlayer")) {
 	//		spawn_hit_fx( other.x - (20) + random_func(4, 40, true) - other.hsp*2, other.y - 50 + random_func(5, 40, true) - other.vsp*2, p3 )
 	//	}
 	//}
+  if "hatprotection" in self {
+  	 if hatstate == other.player*other.player*3 && hatprotection > 0{
+  	 	hatprotection --
+  	 	if hatprotection == 1 {
+  	 	hatstate = 0
+  	 	fx = spawn_hit_fx(x,y-char_height-60,302)
+  	 	fx.pause = 2
+  	 	fx.depth = depth + 4
+  	 	sound_play(asset_get("sfx_blow_weak2"),false, noone, 1, 1);
+  	   }
+  	 } 
+  	 
+  }	else {
+  	hatprotection = 0 
+  }
+  
   if "hatstate" in self {
-      if state == PS_DEAD or state == PS_RESPAWN {
+  	 if hatstate = 0 or hatstate == other.player*other.player or hatstate = 2*other.player*other.player {
+  		hatprotection = 0 
+  	}
+  	
+    if hatprotection == 0 {
+     if state == PS_DEAD or state == PS_RESPAWN {
   			hatstate = 0
-  		}
-  		
+  	}
+  	
+  	if hatstate == other.player*other.player  {	
+  	}
+  	
   	if hatstate = 2*other.player*other.player {
   		can_tech = false
   		with other {
@@ -105,12 +144,13 @@ with (asset_get("oPlayer")) {
   		
 		
   		if !hitpause && visible && (!free or state_cat != SC_HITSTUN) {
+  			hatprotection = 300
   			sound_play(asset_get("sfx_ori_energyhit_heavy"),false, noone, .8, 1.2);
   			invincible = false 
   			hitpause = false 
   			invince_time = 0
   			set_attack(PS_IDLE)
-  			hatstate = 0
+  			hatstate = other.player*other.player*3
   			with other {
   				move_cooldown[AT_EXTRA_1] = 30
   			    sound_play(sound_get("hatoff1"),false, noone, .5, 0.8);
@@ -125,7 +165,7 @@ with (asset_get("oPlayer")) {
   		
   	}
   	
-  		
+    }	
   }	
 	
 }

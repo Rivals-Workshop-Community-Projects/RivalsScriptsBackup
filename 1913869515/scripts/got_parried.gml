@@ -17,4 +17,4 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
 }
 
 dmhit = 0
-
+halo = 0

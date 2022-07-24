@@ -1,51 +1,50 @@
 move_cooldown[AT_USPECIAL] = 0 ;
+
+if move_cooldown[AT_TAUNT] == 0 && !soft_armor && !super_armor && zvoice != 0 {
+	 sound_stop(zvoice)
+     if random_func(1,2,true) == 0 {
+          zvoice = sound_play(sound_get("z1"),false,noone,.8,1.15 + random_func(1,11,true)/100);
+    }
+    
+    if random_func(1,2,true) == 1 {
+         zvoice = sound_play(sound_get("z2"),false,noone,.8,1.15 + random_func(1,11,true)/100);
+    }
+    
+
+    
+    move_cooldown[AT_TAUNT] = 30
+
+}
+
 zbayo = 0
-
-
-
 intro = 1
 
-//if introhit = 0 {
-//	introhit = -1
-//}
+voicecd = -10
 
 zFhittimer = 0
 zbayo = 0
 move_cooldown[AT_EXTRA_2] = 0
-if move_cooldown[AT_EXTRA_1] = 0 {
-move_cooldown[AT_EXTRA_3] = 0
-}
-move_cooldown[AT_EXTRA_1] = 20
+
 reset_window_value(AT_TAUNT, 18, AG_WINDOW_SFX);
 
 
 
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
-	
+	if halo < (2 + (halox = 8)) {
+	    	halo ++
+	   }
 	hit_player_obj.hitstop += 20
-			        if zvoice == 1{
-         if get_player_color(player) == 1{
-            	      sound_play(sound_get("counterV"));
-            
-            } 
-            
-            
-            if get_player_color(player) == 4{
-            	      sound_play(sound_get("counterD"));
-            
-            } 
-            
-            if get_player_color(player) != 1 and get_player_color(player) != 4 {
-            sound_play(sound_get("counter"));
-            }
+	
+		if zvoice != 0{
+			voicecd = 100
+            zvoice = sound_play(sound_get("counter"));
         }
+        
 	 spawn_hit_fx ( x  , y - 20 , SC );
 	        take_damage(player,-1,floor(enemy_hitboxID.damage * -1))
 	        offense = 1
 	        offensetimer = 0
-	        if halo < 3 {
-	        	halo += 1
-	        }
+	        dmhit = 2
             zcountered = 1
             window = 4
             window_timer = 4
@@ -79,7 +78,53 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
            
 }
 
+if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
+	if halo < (2 + (halox = 8)) {
+	    	halo ++
+	    }
+	    
+	    if zvoice != 0{
+	    	voicecd = 100
+            zvoice = sound_play(sound_get("counter"));
+        }
+        
+        
+	    
+	        spawn_hit_fx ( x  , y - 20 , SC );
+	        take_damage(player,-1,floor(enemy_hitboxID.damage * -1))
+	        offense = 1
+	        offensetimer = 0
+	        dmhit = 2
+            window = 4
+            window_timer = 4
+            super_armor = false
+            sound_play(sound_get("RI"));
+			var shortest_dist = 9999;
+			var shortest_id = noone;
+			
+			with (asset_get("oPlayer")) {
+				if (player != other.player) {
+					var curr_dist = point_distance(x,y,other.x,other.y);
+					if (curr_dist < shortest_dist) {
+						shortest_dist = curr_dist;
+						shortest_id = id;
+					}
+				}
+			}
 
+			if (shortest_id.x < x) {
+				spr_dir = 1;
+			} else {
+				spr_dir = -1;
+			}
+			x = shortest_id.x + (-50 * spr_dir)
+			y = shortest_id.y + (0 * spr_dir)
+			
+			create_hitbox(AT_DSPECIAL , 1 , x - (50 * spr_dir) , y - 105 ); 
+			create_hitbox(AT_DSPECIAL , 1 , x + (10 * spr_dir), y - 105 ); 
+			create_hitbox(AT_DSPECIAL , 1 , x + (70 * spr_dir) , y - 105 ); 
+			set_state(PS_IDLE_AIR)
+}
 
 
 if get_player_color(player) == 5 && zvoice == 1 {

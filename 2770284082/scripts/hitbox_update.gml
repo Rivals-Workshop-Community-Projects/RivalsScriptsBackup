@@ -1,6 +1,7 @@
 //
 
 
+
 if attack == AT_NSPECIAL && hbox_num == 2 {
     if hitbox_timer == 1 {
         p1x = hit_fx_create( sprite_get( "spark1" ), 12);

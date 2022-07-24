@@ -20,6 +20,13 @@ sprite_change_offset("land", 94, 146);
 sprite_change_offset("landinglag", 94, 146);
 
 
+sprite_change_offset("RCEm", 160, 160);
+sprite_change_offset("RCEs", 240, 240);
+sprite_change_offset("RCEE", 240, 240);
+
+sprite_change_offset("dm", 50, 70);
+
+
 sprite_change_offset("X", 80, 55);
 sprite_change_offset("SC1", 80, 55);
 sprite_change_offset("SC2", 80, 55);
@@ -93,8 +100,14 @@ sprite_change_offset("uspecial", 74, 94);
 sprite_change_offset("dspecial", 42, 80);
 sprite_change_offset("dspecial_air", 42, 75);
 sprite_change_offset("taunt", 54, 94);
+sprite_change_offset("JCE", 42, 80);
 
 sprite_change_offset("plat", 92, 16);
+
+sprite_change_offset("eblade", 90, 40);
+
+sprite_change_offset("hud", 35, 35);
+sprite_change_offset("movfuse", 25, 25);
 
 sprite_change_offset("hfx_wood_small", 80, 80);
 sprite_change_offset("hfx_wood_large", 128, 128);

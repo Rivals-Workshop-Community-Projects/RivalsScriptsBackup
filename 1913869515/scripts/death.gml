@@ -7,3 +7,4 @@ if(player_id == other.id) {
 offense = 0
 dmhit = 0
 halo = 0
+

@@ -1,4 +1,10 @@
 shader_start(); 
+
+
+if "showdm" in self {
+	showdm -- 
+	draw_sprite_ext(sprite_get("dm"), 9 + (get_gameplay_time()%12)/4, x , y + 24,1,1,showdm*showdm*-1, -1,showdm/30 ); 
+}
 if slashdraw > 0 && hit_player_obj != self{
         	draw_sprite_ext(sprite_get("slosh"), 0, hit_player_obj.x , hit_player_obj.y - 36,
         	1 - (slashdraw/maxdraw)/2,
@@ -14,6 +20,110 @@ if slashdraw > 0 && hit_player_obj != self && hitdmg*10 > 5{
         	angledraw+90, -1 , slashdraw/maxdraw + 0.2);
 }
 
+
+if attacking && attack == AT_UTHROW{
+	if window == 1 {
+		draw_sprite_ext(sprite_index, image_index, x + 4 - random_func(1,8,true) , y - random_func(2,8,true)  , spr_dir, 1, 0 , c_white , 0.4);
+}
+
+ if hitstop > 6 {     
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(1,14,true)/15 );
+ }
+ 
+if window == 1 {
+
+ if  window_timer % 12 > 6 {     
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(1,14,true)/10 );
+ }
+ 
+ if  window_timer % 2 == 0 {     
+ 	draw_sprite_ext(sprite_get("RCEm"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(2,14,true)/10  )
+ }
+ 
+ if  window_timer % 12 > 4 {     
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(3,14,true)/10  );
+ }
+
+}
+
+if window == 3 && window_timer > 20{
+     if  window_timer % 3 == 0 {     
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, random_func(1,3,true)/10 + 0.7, random_func(1,3,true)/10 + 0.7, 0, -1, 1  )
+ }
+      if  window_timer % 3 == 0 {     
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, 1  )
+ }
+ 
+ if  window_timer % 3 ==  1 {     
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 1, 1, 0, -1, 1  );
+ }
+    
+     if  window_timer % 3 ==  1 {     
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, random_func(1,3,true)/10 + 0.7, random_func(1,3,true)/10 + 0.7, 0, -1, 1  );
+ }
+
+}   
+
+
+if window == 2{
+   if window_timer <= 10 {
+      draw_sprite_ext(sprite_get("jab"), 13 , x - 40 - window_timer*6, y , -1, 1,0, -1,0.7 - window_timer/10  );
+      draw_sprite_ext(sprite_get("jab"), 14 , x - 100- window_timer*3, y , -1, 1,0, -1,0.7 - window_timer/10   );
+      
+      draw_sprite_ext(sprite_get("utilt"), 2 , x - 40 - window_timer*4, y - 40 - window_timer*4 , -1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("utilt"), 3 , x - 80 - window_timer*2, y - 80 - window_timer*2 , -1, 1,0, -1,0.7 - window_timer/10   );
+      
+      draw_sprite_ext(sprite_get("uair"), 2 , x , y - 40 - window_timer*6 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("uair"), 3 , x , y - 100 - window_timer*3 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+
+      draw_sprite_ext(sprite_get("utilt"), 2 , x + 40 + window_timer*4, y - 40 - window_timer*4 , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("utilt"), 3 , x + 80 + window_timer*2, y - 80 - window_timer*2 , 1, 1,0, -1,0.7 - window_timer/10   );
+      
+            
+      draw_sprite_ext(sprite_get("jab"), 13 , x + 40 + window_timer*6, y , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("jab"), 14 , x + 100 + window_timer*3, y , 1, 1,0, -1,0.7 - window_timer/10  );
+  }  
+}
+
+if window == 4{
+   if window_timer <= 10 {
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 80 + window_timer*6, y , spr_dir, 1,0, -1,0.7 - window_timer/10  );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 140 + window_timer*3, y , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 60 + window_timer*4, y - 60 + window_timer*4 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 100 + window_timer*2, y - 100 + window_timer*2 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 80 + window_timer*6 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 140 + window_timer*3 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 60 - window_timer*4, y - 60 + window_timer*4 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 100 - window_timer*2, y - 100 + window_timer*2 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      
+            
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 80 - window_timer*6, y , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 140 - window_timer*3, y , spr_dir, 1,0, -1,0.7 - window_timer/10  );
+  }  
+}
+
+if window == 3 && window_timer >= 20 {
+	
+    
+    
+    
+      
+  	spawn_hit_fx(x + random_func(5,301,true) - 150,y + random_func(6,301,true) - 150, shit5 )
+  	
+  	create_hitbox(AT_DSPECIAL , 1 , x + random_func(1,201,true) - 100, y + random_func(2,151,true) - 200); 
+  	
+  	cut1 = spawn_hit_fx(x + random_func(1,201,true) - 100,y + random_func(2,401,true) - 200,302 )
+    cut1.pause = 4
+  
+} 
+
+
+}
+
+
 shader_end(); 
 
 
@@ -23,13 +133,11 @@ shader_end();
 shader_start(); 
 
 
-
-
-
-
-
-
-
+if halox == 8 && state != PS_PRATFALL && state != PS_PRATLAND {
+	 gpu_set_blendmode(bm_add);
+     draw_sprite_ext(sprite_index,image_index,x,y - get_gameplay_time()%10/2, spr_dir,1,0,-1, .6 - (get_gameplay_time()%10)/30 )
+     gpu_set_blendmode(bm_normal);
+}
 
 
 if get_player_color(player) == 3 && random_func(4, 2, 1) == 0 {
@@ -169,3 +277,6 @@ gpu_set_fog(0, c_black, 0, 0);
 
   gpu_set_blendmode(bm_normal);
 }
+
+
+gpu_set_blendmode(bm_normal);

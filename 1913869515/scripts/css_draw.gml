@@ -29,17 +29,10 @@ prev_alt = alt;
 draw_sprite_ext(sprite_get("charselectver"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 
 if alt == 1 {
-    if drawtime == 1 {
-        sound_play(sound_get("tauntV"))
-    }
   draw_sprite_ext(sprite_get("charselect2"),drawtime / 5,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 
-if alt == 4 {
-    if drawtime == 1 {
-        sound_play(sound_get("tauntDi"))
-    }
-}
+
 
 if alt == 8 {
     if drawtime == 1 {
@@ -93,7 +86,7 @@ var palette_names = [
   "Half Devil",
   "Watermelon",
   "G7",
-  "Menacing Vocal",
+  "Vampire",
   "Sakura",
   "Golden",
   "Bruh sfx on kills",
