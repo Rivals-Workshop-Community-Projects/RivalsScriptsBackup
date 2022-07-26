@@ -72,6 +72,7 @@ var palette_names = [
   "Hey Sprite Star",  
   "Parker", 
   "Wifi", 
+  "Personalized", 
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

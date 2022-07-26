@@ -1,4 +1,52 @@
 ///
+
+if get_gameplay_time() == 120 && get_player_color(player) == 28 {
+	
+
+	
+	set_color_profile_slot( 28, 0, 0, 241, 255 );
+    set_color_profile_slot( 28, 1, 26, 36, 22 );
+    set_color_profile_slot( 28, 2, 39, 59, 32 );
+    set_color_profile_slot( 28, 3, 116, 173, 36 );
+    set_color_profile_slot( 28, 4, 53, 73, 26 );
+    set_color_profile_slot( 28, 5, 24, 33, 36 );
+    set_color_profile_slot( 28, 6, 255, 255, 255 );
+    set_color_profile_slot( 28, 7, 178, 177, 182 );
+    
+	cfx = spawn_hit_fx(x,y,304)
+	cfx.pause = 4
+	
+	if string_lower(get_player_name(player)) == "cam" {
+		sound_stop(sound_get("Fstrong"))
+		sound_play(sound_get("Fstrong"),false,noone,1,1.4)
+		set_color_profile_slot( 28, 0, 255, 126, 0 ); //Energy
+        set_color_profile_slot( 28, 1, 158, 158, 158 ); //Top shading
+        set_color_profile_slot( 28, 2, 201, 201, 201 ); //Top
+        set_color_profile_slot( 28, 3, 168, 0, 67 ); //Pattern1
+        set_color_profile_slot( 28, 4, 103, 164, 224 ); //Pattern2
+        set_color_profile_slot( 28, 5, 26, 61, 102 ); //Dark parts
+        set_color_profile_slot( 28, 6, 148, 99, 87 ); //Fur
+        set_color_profile_slot( 28, 7, 133, 75, 60 ); //Fur shading
+	}
+	
+	if string_lower(get_player_name(player)) == "blue" {
+		sound_stop(sound_get("Fstrong"))
+		sound_play(sound_get("Fstrong"),false,noone,1,1.4)
+		set_color_profile_slot( 28, 0, 0, 241, 255 ); //Energy
+        set_color_profile_slot( 28, 1, 191, 100, 127 ); //Top shading
+        set_color_profile_slot( 28, 2, 245, 169, 184 ); //Top
+        set_color_profile_slot( 28, 3, 255, 220, 255 ); //Pattern1
+        set_color_profile_slot( 28, 4, 255, 200, 240 ); //Pattern2
+        set_color_profile_slot( 28, 5, 91, 206, 250 ); //Dark parts
+        set_color_profile_slot( 28, 6, 255, 255, 255 ); //Fur
+        set_color_profile_slot( 28, 7, 178, 177, 182 ); //Fur shading
+	}
+	
+
+	
+	init_shader()
+}
+
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	attacking = true
 } else {
@@ -79,8 +127,11 @@ if cheapmode == 0 {
 	    
     if nearbyhitbox != noone && player_id != other.id && hit_priority != 0 {
     	hit_priority = 0
-    	hitbox_timer = 99
-    	destroyed = true 
+        player_id.old_vsp = vsp 
+        player_id.old_hsp = hsp 
+        player_id.hitpause = true 
+        player_id.hitstop = 29
+
     	with other {
     		hit_player_obj = other.player_id
     	    if UIdodge <= 5 {
@@ -169,8 +220,8 @@ if cheapmode == 0 {
  			sound_play(sound_get("Fstrong"),false,noone,1,1.05)
  			with hit_player_obj {
  				hitpause = false 
- 				y = 999999
  				take_damage(player,-1,9999999999)
+ 				y = 999999
  			}
  			break;
  		}

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 2, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 29 );
 
 // Astra
 set_color_profile_slot( 1, 0, 255, 203, 59 ); //Energy
@@ -97,7 +97,7 @@ set_color_profile_slot( 6, 6, 217, 188, 130 ); //Fur
 set_color_profile_slot( 6, 7, 189, 147, 91 ); //Fur shading
 
 // Melee Sai
-set_color_profile_slot( 7, 0, 0, 241, 255  ); //Energy
+set_color_profile_slot( 7, 0, 0, 241, 255 ); //Energy
 set_color_profile_slot( 7, 1, 26, 36, 22 ); //Top shading
 set_color_profile_slot( 7, 2, 39, 59, 32 ); //Top
 set_color_profile_slot( 7, 3, 116, 173, 36 ); //Pattern1
@@ -305,6 +305,16 @@ set_color_profile_slot( 27, 4, 253, 235, 121 ); //Pattern2
 set_color_profile_slot( 27, 5, 47, 55, 82 ); //Dark parts
 set_color_profile_slot( 27, 6, 252, 253, 253 ); //Fur
 set_color_profile_slot( 27, 7, 178, 177, 182 ); //Fur shading
+
+// unnamed alt palette
+set_color_profile_slot( 28, 0, 0, 255, 0 ); //Energy
+set_color_profile_slot( 28, 1, 0, 255, 0 ); //Top shading
+set_color_profile_slot( 28, 2, 0, 255, 0 ); //Top
+set_color_profile_slot( 28, 3, 0, 255, 0 ); //Pattern1
+set_color_profile_slot( 28, 4, 0, 255, 0 ); //Pattern2
+set_color_profile_slot( 28, 5, 0, 255, 0 ); //Dark parts
+set_color_profile_slot( 28, 6, 0, 255, 0 ); //Fur
+set_color_profile_slot( 28, 7, 0, 255, 0 ); //Fur shading
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
