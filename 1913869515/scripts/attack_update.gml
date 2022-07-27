@@ -9,7 +9,7 @@ if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_DAIR ){
 if ((window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
       sound_play(sound_get("swingw1"),false,noone, .2 + (get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) ,
         max ( 0.5, 1.7 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
-        voicecd -= random_func(1,20,true) 
+        voicecd -= random_func(1,30,true)
         if voicecd < -10 voicecd ++ 
 }
 
@@ -23,155 +23,147 @@ if zvoice != 0 && !hitpause && 	voicecd <= 0{
         case AT_JAB :
         	if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.9,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z1"),false,noone,.9,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         	if window == 4 && window_timer == 2 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.9,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z1"),false,noone,.9,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         	if window == 7 && window_timer == 2 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.95 + random_func(1,11,true)/100);
-        		voicecd += 15	
+        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40	
         	}
          break;
          
          case AT_DTILT :
         	if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z4"),false,noone,.65,1.08 + random_func(1,11,true)/100);
-        		voicecd += 15 	
+        		zvoice = sound_play(sound_get("z4"),false,noone,.65,1.08 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40	
         	}
          break; 
          
          case AT_UTILT :
         	if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z3"),false,noone,.7,.95 + random_func(1,11,true)/100);
-        		voicecd += 15 	
+        		zvoice = sound_play(sound_get("z3"),false,noone,.7,.95 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40	
         	}
          break; 
          
      	case AT_FTILT :
         	if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z3"),false,noone,.7,.95 + random_func(1,11,true)/100);
-        		voicecd += 15 	
+        		zvoice = sound_play(sound_get("z5"),false,noone,.7,1.15 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40	
         	}
         break; 
         
         case AT_USTRONG :
         	if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z2"),false,noone,.65,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z2"),false,noone,.65,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         	if window == 2 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         break; 
         
          case AT_DSTRONG :
         	if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z4"),false,noone,.65,1.08 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z4"),false,noone,.65,1.08 + 0.05 + random_func(1,6,true)/100);
         	}
         	if window == 3 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
         	}
-        	if window == 4 && window_timer == 1 {
-        		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	if window == 4 && window_timer == 4 {
+        		zvoice = sound_play(sound_get("z5"),false,noone,.7,1.15 + 0.05 + random_func(1,6,true)/100);
         	}
-        	if window == 5 && window_timer == 1 {
-        		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z2"),false,noone,.7,.95 + random_func(1,11,true)/100);
-        	}
+
         break; 
         
         case AT_FSTRONG :
         	if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         	if window == 2 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         	if window == 8 && window_timer == 2 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("counter"),false,noone,.65,1 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("counter"),false,noone,.65,1 + 0.05 + random_func(1,6,true)/100);
         	}
         break; 
         
         case AT_NSPECIAL  :
             if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         	if window == 3 && window_timer == 1 {
-        		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z2"),false,noone,.8,1.1 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z5"),false,noone,.7,1.15 + 0.05 + random_func(1,6,true)/100);
         	}
         break; 
         
          case AT_FSPECIAL  :
             if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         break; 
         
         case AT_DSPECIAL  :
             if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + 0.05 + random_func(1,6,true)/100);
         	}
         break;
         
         case AT_USPECIAL  :
-            if window == 1 && window_timer == 1 {
+            if window == 1 && window_timer == 6 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z5"),false,noone,.7,1.15 + 0.05 + random_func(1,6,true)/100);
         	}
         	
-        	 if window == 2 && window_timer == 1 {
-        		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        	 if window == 2 && window_timer == 6 {
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
         	}
         break;
         
         case AT_DATTACK  :
             if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + 0.05 + random_func(1,6,true)/100);
         	}
         	
         	 if window == 2 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.95 + random_func(1,11,true)/100);
-        		voicecd += 15 
+        		zvoice = sound_play(sound_get("z5"),false,noone,.7,1.15 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40
         	}
         break;
         
         case AT_BAIR  :
-            if window == 1 && window_timer == 1 {
+            if window == 1 && window_timer == 5 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z5"),false,noone,.7,1.15 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40
         	}
         	
-        	 if window == 2 && window_timer == 1 {
-        		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.95 + random_func(1,11,true)/100);
-        		voicecd += 15 
-        	}
+
         break;
         
          case AT_DAIR  :
             if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40
         	}
         	
         break;
@@ -179,21 +171,24 @@ if zvoice != 0 && !hitpause && 	voicecd <= 0{
         case AT_NAIR  :
             if window == 1 && window_timer == 5 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40
         	}
         break;
         
         case AT_FAIR  :
-            if window == 1 && window_timer == 1 {
+            if window == 2 && window_timer == 1 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z4"),false,noone,.8,1.05 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z5"),false,noone,.7,1.15 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40
         	}
         break;
         
         case AT_UAIR  :
             if window == 1 && window_timer == 5 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("z2"),false,noone,.8,.90 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("z3"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
+        		voicecd += 40
         	}
         break;
 }
@@ -242,10 +237,10 @@ if attack == AT_UTHROW {
         	
         	if zvoice != 0 {
         		sound_stop(zvoice)
-        		zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + random_func(1,11,true)/100);
-        		sound_play(sound_get("tauntU"),false,noone,1,.95 + random_func(1,11,true)/100);
-        		sound_play(sound_get("tauntU"),false,noone,.5,.8 + random_func(1,11,true)/100);
-        		sound_play(sound_get("tauntU"),false,noone,.5,.7 + random_func(1,11,true)/100);
+        		zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + 0.05 + random_func(1,6,true)/100);
+        		sound_play(sound_get("tauntU"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
+        		sound_play(sound_get("tauntU"),false,noone,.5,.8 + 0.05 + random_func(1,6,true)/100);
+        		sound_play(sound_get("tauntU"),false,noone,.5,.7 + 0.05 + random_func(1,6,true)/100);
         	}
         	
 		offensetimer = 0
@@ -312,13 +307,16 @@ if attack == AT_UTHROW {
     }
     
     if window == 4 && window_timer == 25 && has_hit_player && !hitpause{
-    	zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + random_func(1,11,true)/100);
+    	if zvoice != 0 {
+    	zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
+    	}
+    	
     	create_hitbox(AT_UTHROW,3,x,y)
         fx = spawn_hit_fx (x+20*spr_dir,y-40, 305)
         fx.pause = 5
-        if zvoice != 0 {
-         zvoice = sound_play(sound_get("RI"))  
-        }
+        
+        sound_play(sound_get("RI"))  
+       
         spawn_hit_fx (x+20*spr_dir,y-40, lighten)
         spawn_hit_fx( x + (40 * spr_dir) , y - 50 , shit7 )
    		spawn_hit_fx( x - (40 * spr_dir) , y - 50 , shit7 )
@@ -1306,7 +1304,7 @@ if (attack == AT_JAB){
             sound_play(sound_get("counterhit"));
            if zvoice != 0 {
            	   sound_stop(zvoice)
-           	   zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + random_func(1,11,true)/100);
+           	   zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
            }
 
             
@@ -1353,9 +1351,11 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1);
     
     if (window == 10){
     	sound_play(asset_get("sfx_ice_shieldup"));
+    	if !has_hit_player {
     	set_attack (AT_FSTRONG)
     	window = 3
     	window_timer = 6
+    	}
     }
     
 
@@ -1368,6 +1368,13 @@ if(attack == AT_DAIR){
 		fall_through = true 
 	}
 	if window == 1 && window_timer < 2{
+		
+		if move_cooldown[AT_DTHROW] == 0 {
+			set_num_hitboxes(AT_DAIR, 1);
+		} else {
+			set_num_hitboxes(AT_DAIR, 2);
+		}
+		
 		if left_down && !right_down {
 			spr_dir = -1
 		}
@@ -1383,22 +1390,24 @@ if(attack == AT_DAIR){
 	
 
 	
-    if (window <= 3 && has_hit) {
-    	
+    if ((window == 3 or window == 2) && has_hit_player) {
     	window = 4;
     	window_timer = 0;
     }
     
    
    if (window == 4 && !hitpause) {
+   	    djumps = 0
     	vsp = -4
        	hsp = -3 * spr_dir
     	set_attack (AT_BAIR)
     	window = 10
-    	move_cooldown[AT_DAIR] = 30
+    	move_cooldown[AT_DAIR] = 5
+    	move_cooldown[AT_DTHROW] = 30
     }
     
-    if(window == 3 && window_timer == get_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH)){
+    if(window == 3 && window_timer == get_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH)) && !hitpause{
+    	djumps = 0
         set_attack (AT_BAIR)
     	window = 5
     	window_timer = 5
@@ -1406,9 +1415,7 @@ if(attack == AT_DAIR){
     
      
    
-}
-
-
+} 
 	
 	
 if (attack == AT_TAUNT){
@@ -1560,7 +1567,7 @@ if (attack == AT_TAUNT){
       
       if (attack_down or get_player_color(player) == 4 or get_player_color(player) == 13){
       	   if zvoice != 0 {
-            zvoice = sound_play(sound_get("z1"),false,noone,1,.95 + random_func(1,11,true)/100);
+            zvoice = sound_play(sound_get("z1"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
       	   }
       	   
             window = 18;
@@ -1587,7 +1594,7 @@ if (attack == AT_TAUNT){
 if(window == 20 && window_timer > 24){
                   if (attack_down){
          	if zvoice != 0 {
-            zvoice = sound_play(sound_get("z1"),false,noone,1,.95 + random_func(1,11,true)/100);
+            zvoice = sound_play(sound_get("z1"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
       	   }
             window = 18;
             window_timer = 14;

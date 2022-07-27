@@ -119,7 +119,7 @@ if shoping == 1 && window < 3 {
 
 if move_cooldown[AT_NSPECIAL_2] > 2 {
     	
-    	        
+    shader_start() 	        
    gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_index, image_index - 1 , x , y - 2 + random_func(2,4,true)  , spr_dir, 1, 0 , c_aqua , 0.2);
 		draw_sprite_ext(sprite_index, image_index - 1, x , y + 2 - random_func(2,4,true)  , spr_dir, 1, 0 , c_fuchsia , 0.2);
@@ -136,7 +136,7 @@ if move_cooldown[AT_NSPECIAL_2] > 2 {
         draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.5 - random_func(1,4,true) , y - 2 - svsp*1.5 + random_func(2,4,true)  , spr_dir, 1, 0 , c_aqua , 0.2);
 		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*3 + random_func(1,4,true) , y + 2 - svsp*3 - random_func(2,4,true)  , spr_dir, 1, 0 , c_fuchsia , 0.2);
   gpu_set_blendmode(bm_normal);
-  
+  shader_end() 
 }
 
 if has_rune("M")  {  

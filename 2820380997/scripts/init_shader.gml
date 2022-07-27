@@ -15,7 +15,7 @@ switch(get_player_color(player)) {
     	outline_color = [ 35, 67, 49 ];
     	break;
     default: // All other alts
-        //fset_character_color_shading(1, 2) // Set hair to be shaded at 2x
+        //set_character_color_shading(1, 2) // Set hair to be shaded at 2x
         set_character_color_shading(2, 2) // Set kimono to be shaded at 2x
     break;
 }

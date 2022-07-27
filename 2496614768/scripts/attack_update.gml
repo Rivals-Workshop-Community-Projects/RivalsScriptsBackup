@@ -67,7 +67,7 @@ switch attack {
         set_state(PS_IDLE_AIR)
         state_timer = 1
     }
-    
+/*    
     if window == 8 && jabhit == 1 && hit_player_obj.state_cat == SC_HITSTUN{
         
         if window_timer < 8{
@@ -89,7 +89,7 @@ switch attack {
             
             vsp = -5
             x = hit_player_obj.x - 30*spr_dir
-            y = hit_player_obj.y - 30
+            y = hit_player_obj.y 
             
             if bhood {
              sound_play(sound_get("wiss"),false,noone,0.8,1 + random_func(1,3,true)/10)    
@@ -113,11 +113,12 @@ switch attack {
             sound_play(sound_get("wiss"),false,noone,0.8,0.9 + random_func(1,3,true)/10)
             }
             sound_play(sound_get("wissn"),false,noone,0.8,0.7 + random_func(1,3,true)/10)   
+            set_state(PS_IDLE_AIR)
         }
         
         
     }
-    
+*/    
     
     break;
   
@@ -769,7 +770,7 @@ switch attack {
     
 
            
-    if window == 4 && has_hit_player && !hitpause{
+    if window == 4 && has_hit_player && !hitpause {
     
     
          if window_timer == 25 or attack_pressed or special_pressed {
@@ -792,6 +793,7 @@ switch attack {
             window = 6
             window_timer = 1
             sound_play(asset_get("sfx_swipe_weak2"),false,noone,1,0.9 + random_func(1,3,true)/20)
+            if free vsp = -6
         }
 
         if down_down{

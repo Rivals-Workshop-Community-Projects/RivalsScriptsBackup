@@ -11,7 +11,7 @@ set_window_value(AT_USTRONG_2, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USTRONG_2, 2, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USTRONG_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USTRONG_2, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USTRONG_2, 2, AG_WINDOW_SFX, sound_get("motorbike_extra"));
+set_window_value(AT_USTRONG_2, 2, AG_WINDOW_SFX, sound_get("motorbike_uppercut"));
 
 set_window_value(AT_USTRONG_2, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USTRONG_2, 3, AG_WINDOW_ANIM_FRAMES, 1);

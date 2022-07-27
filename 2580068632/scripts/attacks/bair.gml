@@ -58,7 +58,6 @@ set_window_value(AT_BAIR, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_BAIR, 3);
 
-set_hitbox_value(AT_BAIR, 1, HG_MUNO_HITBOX_NAME, "Multi Hit 1");
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 2);
@@ -79,7 +78,6 @@ set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
 
-set_hitbox_value(AT_BAIR, 2, HG_MUNO_HITBOX_NAME, "Multi Hit 2");
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 2);
@@ -100,7 +98,6 @@ set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, 2);
 
-set_hitbox_value(AT_BAIR, 3, HG_MUNO_HITBOX_NAME, "Finishing Hit");
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 6);
 set_hitbox_value(AT_BAIR, 3, HG_LIFETIME, 2);
@@ -111,8 +108,8 @@ set_hitbox_value(AT_BAIR, 3, HG_HEIGHT, 64);
 set_hitbox_value(AT_BAIR, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_BAIR, 3, HG_ANGLE, 135);
-set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_BAIR, 3, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_BAIR, 3, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_BAIR, 3, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_BAIR, 3, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_BAIR, 3, HG_VISUAL_EFFECT_X_OFFSET, -22);

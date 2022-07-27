@@ -9,6 +9,7 @@ uspec_buff = false;
 dist_range = 150;
 fspec_charge = 0;
 
+
 sound_stop(sound_get("motivated"));
 
 grabbed_player = noone;

@@ -214,6 +214,9 @@ laugh_cancel = false;
 zetter_hit = hit_fx_create( sprite_get( "zetter_hit1" ), 25 );
 
 intro_toggle = true;
+Hikaru_Title = "Stellar Deceptor";
+arena_title = "The Stellar Deceptor";
+battle_text = "Magalor gives you a shifty look"
 kf_custom_icon = sprite_get("kf_icon");
 kf_hud_offset = -20;
 superMove = 14;

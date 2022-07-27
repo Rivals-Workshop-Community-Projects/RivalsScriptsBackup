@@ -13,6 +13,7 @@ if (attack == AT_DTILT && hbox_num == 2){
 if (attack == AT_NSPECIAL){
 	MattCanGrab = true;
 	MorshuCanGrab = true;
+	SpikeCanEat = true; 
 	just_landed = false;
 	dorito_hp = 3;
 	theplanet = self;
@@ -32,8 +33,10 @@ if (attack == AT_NSPECIAL){
 	if(hbox_num != 1){
 		spr_dir = -1;
 		CalCanSnack = true;
+		SpikeHealPercent = 1;
 	}else{
 		CalCanSnack = 2;
+		SpikeHealPercent = 5;
 	}
 	init_spr_dir = spr_dir;
 	with(asset_get("pHitBox")){

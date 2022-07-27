@@ -6,6 +6,64 @@ if(attack == AT_TAUNT && window == 5){
 	draw_sprite_ext( sprite_get("_pho_cooldown_arrow"), 0, x+(-45), y-70, 1, 1, -90, c_white, 1 )
 	
 }
+shader_start();
+shader_end();
+//Mix
+if(!hitpause){
+	if(TCG_Kirby_Copy == -1){
+		var yOffsetText = -50;
+		
+		draw_sprite_ext(sprite_get("ability_icons"), mixCurrSelected-1, x, y+45, 1, 1, 0, c_white, 1 )
+		
+		switch(mixCurrSelected){
+			case 1: 		
+				draw_debug_text(x-14,y-yOffsetText,"Fire");
+			break;
+			case 2: 		
+				draw_debug_text(x-16,y-yOffsetText,"Beam");
+			break;
+			case 3: 		
+				draw_debug_text(x-22,y-yOffsetText,"Ranger");
+			break;
+			case 4: 		
+				draw_debug_text(x-24,y-yOffsetText,"Fighter");
+			break;
+			case 5: 		
+				draw_debug_text(x-22,y-yOffsetText,"Sword");
+			break;
+			case 6: 		
+				draw_debug_text(x-22,y-yOffsetText,"Water");
+			break;
+			case 7: 		
+				draw_debug_text(x-14,y-yOffsetText,"Leaf");
+			break;
+			case 8: 		
+				draw_debug_text(x-12,y-yOffsetText,"Ice");
+			break;
+			case 9: 		
+				draw_debug_text(x-26,y-yOffsetText,"Tornado");
+			break;
+			case 10: 		
+				draw_debug_text(x-16,y-yOffsetText,"Bomb");
+			break;
+			case 11: 		
+				draw_debug_text(x-16,y-yOffsetText,"Mike");
+			break;
+			case 12: 		
+				draw_debug_text(x-18,y-yOffsetText,"Abyss");
+			break;
+			case 13: 		
+				draw_debug_text(x-12,y-yOffsetText,"ESP");
+			break;
+			case 14: 		
+				draw_debug_text(x-14,y-yOffsetText,"Drill");
+			break;
+			case 15: 		
+				draw_debug_text(x-20,y-yOffsetText,"Spark");
+			break;
+		}
+	}
+}
 
 if (attack == AT_USPECIAL){
 	if (window == 2){

@@ -164,6 +164,10 @@ if(state == PS_CROUCH){
     crawling = false;
 }
 
+if(get_gameplay_time() <= 120){
+	phone.utils_cur[phone.UTIL_FPS_WARN] = false;phone.utils_cur_updated[phone.UTIL_FPS_WARN] = true;
+}
+
 if (get_match_setting(SET_RUNES)) {
 	if (has_rune("G")) {
 		max_djumps = 10;

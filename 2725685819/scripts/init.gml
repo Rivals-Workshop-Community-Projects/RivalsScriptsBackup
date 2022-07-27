@@ -41,20 +41,20 @@ leave_ground_max    = 6;		// 4    -  8
 max_jump_hsp        = 5;		// 4    -  8
 air_max_speed       = 5;  		// 3    -  7
 jump_change         = 3;		// 3
-air_accel           = 0.4;		// 0.2  -  0.4
+air_accel           = 0.45;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
 air_friction        = 0.03;		// 0.02 -  0.07
 max_fall            = 8.5;		// 6    -  11
 fast_fall           = 12;		// 11   -  16
-gravity_speed       = 0.3;		// 0.3  -  0.6
+gravity_speed       = 0.35;		// 0.3  -  0.6
 hitstun_grav        = 0.45;		// 0.45 -  0.53
 
 // Jumps
 jump_start_time     = 5;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
-jump_speed          = 8;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
+jump_speed          = 8.5;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed     = 5;		// 4    -  7.4
 djump_speed         = -3;		// 6    -  12       absa's is -1 because of her floaty djump
-djump_accel         = -1.1;		// -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
+djump_accel         = -1.25;		// -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time= 15;		//                  the amount of time that   djump_accel   is applied for
 max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        = 7;		// 4    -  7
@@ -87,6 +87,14 @@ sfx_dbfz_hit_broken = sound_get("ARC_BTL_CMN_Hit_XLarge");
 sfx_dbfz_hit_jab3 = sound_get("ARC_BTL_GKN_Atk5A_3rd_Hit");
 
 // VFX
+vfx_slash = hit_fx_create(sprite_get("slash"), 15); 
+vfx_slash_weak = hit_fx_create(sprite_get("slash_small"), 10); 
+vfx_slash_strong = hit_fx_create(sprite_get("slash_big"), 30); 
+vfx_slash_med = hit_fx_create(sprite_get("slash_med"), 30); 
+vfx_slash_up_med = hit_fx_create(sprite_get("slashup_med"), 30); 
+vfx_stab_strong = hit_fx_create(sprite_get("stab_big"), 30); 
+vfx_stab_up_strong = hit_fx_create(sprite_get("stabup_big"), 35); 
+
 vfx_ftilt_destroy = hit_fx_create(sprite_get("vfx_ftilt_destroy"), 12); // actually for nspecial, not ftilt
 vfx_nspecial_fire = hit_fx_create(sprite_get("vfx_nspecial_fire"), 16);
 jc_destroyed = hit_fx_create( sprite_get("nspecial_dest"), 15 );
@@ -124,6 +132,8 @@ cling_limit = 2;
 
 fair_angle = 0;
 
+fair_no_fall = false;
+
 //rune vars
 trick_cancel = false;
 
@@ -156,6 +166,7 @@ intro_timer = 0;
 animtimer = 0;
 chairtimer = 0;
 
+saya_check_window = 0;
 
 trick_path = 0;
 walkstart = 0;

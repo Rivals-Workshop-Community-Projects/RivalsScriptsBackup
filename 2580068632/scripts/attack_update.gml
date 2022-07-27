@@ -10,7 +10,7 @@ if (attack == AT_JAB){
 	}
 
 	if ((window < 6) && !hitpause && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
+		//spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
 	}
 	if (buttonHold && window > 1 && window < 6){
 		if (window == 5){
@@ -176,8 +176,7 @@ if (attack == AT_FTILT){
 //Utilt
 if (attack == AT_UTILT){
 	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir*1)
-		spawn_base_dust( x + (22 * spr_dir), y, "dash", spr_dir*-1)
+		spawn_base_dust( x, y, "jump", spr_dir)
 		if (voiced == true){
 			var hg = random_func( 1, 6, true );
 			switch (hg){
@@ -204,10 +203,8 @@ if (attack == AT_UTILT){
 //Dtilt
 if (attack == AT_DTILT){
 	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
+		//spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
 		spawn_base_dust( x + (76 * spr_dir), y, "wavedash", spr_dir*-1)
-		//var mario = spawn_hit_fx( x+(52*spr_dir), y - 3, dtilt_swipe_fx );
-		//mario.draw_angle = -27*spr_dir
 		if (voiced == true){
 			var gs = random_func( 1, 6, true );
 			switch (gs){
@@ -691,12 +688,15 @@ if (attack == AT_USPECIAL){
 			shuttle_loop_vsp_lost = 0
 			shuttle_loop_can_rise = true
 			shuttle_loop_can_dive = true
-			if (has_rune("O")){
+			if (brawl_mode){
 				shuttle_loop_timer = 600
 			} else {
 				shuttle_loop_timer = 120
 			}
 			shuttle_loop_is_rising = false
+		}
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-4){
+			sound_play(sfx_smash_brawl_shuttle_loop, false, noone, 0.7, 1);
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			if (shuttle_loop_started_from_ground == true){
@@ -720,6 +720,21 @@ if (attack == AT_USPECIAL){
 	} else {
 		set_attack_value(AT_USPECIAL, AG_CATEGORY, 1);
 	}
+	
+	//Preventing accidental suicides with Up B near side blastzones.
+	if (window > 2 && window < 13){
+		if (spr_dir == 1 && x < (blastzone_l + 40)){
+			if (hsp < 2){
+				hsp = 2;
+			}
+		}
+		if (spr_dir == -1 && x > (blastzone_r - 40)){
+			if (hsp > -2){
+				hsp = -2;
+			}
+		}
+	}
+	
 	if (window == 13){ //oh my god how
 		shuttle_loop_timer--;
 		//clamp(vsp, -8, 8)

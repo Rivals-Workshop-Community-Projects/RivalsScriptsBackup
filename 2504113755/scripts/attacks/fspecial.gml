@@ -99,7 +99,7 @@ set_window_value(AT_FSPECIAL, 12, AG_WINDOW_CUSTOM_GROUND_FRICTION, 5);
 set_window_value(AT_FSPECIAL, 12, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 
 //endlag
-set_window_value(AT_FSPECIAL, 13, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_FSPECIAL, 13, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_FSPECIAL, 13, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 13, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_FSPECIAL, 13, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -114,7 +114,7 @@ set_window_value(AT_FSPECIAL, 14, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 14, AG_WINDOW_ANIM_FRAME_START, 2);
 //endlag without the cutscene
 set_window_value(AT_FSPECIAL, 15, AG_WINDOW_TYPE, 7);
-set_window_value(AT_FSPECIAL, 15, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_FSPECIAL, 15, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 15, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_FSPECIAL, 15, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

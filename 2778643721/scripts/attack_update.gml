@@ -438,9 +438,14 @@ if (attack == AT_FSPECIAL){
     
     //if (phone_cheats[cheat_fspecial_cancel] && window > 1) iasa_script();
 }
+
+if (attack == AT_UTILT && window == 3 && has_hit){
+    can_jump = true;
+}
+
 if (attack == AT_DSTRONG){
     if (window == 1){
-        if (window_timer == 12){
+        if (window_timer == 8){
             sound_play(asset_get("sfx_swipe_medium2"));
         }
     }

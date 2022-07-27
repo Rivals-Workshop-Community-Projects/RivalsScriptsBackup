@@ -1,5 +1,51 @@
 ///
 
+
+if get_gameplay_time() == 90 && get_player_color(player) == 10 {
+	
+
+     set_color_profile_slot( 10, 0, 255, 0, 0 ); //eyes
+     set_color_profile_slot( 10, 1, 255, 214, 251 ); //mainwhite
+     set_color_profile_slot( 10, 2, 115, 53, 53 ); //black
+     set_color_profile_slot( 10, 3, 67, 0, 0 ); //hair?
+     set_color_profile_slot( 10, 4, 128, 37, 37 ); //ears?
+     set_color_profile_slot( 10, 5, 67, 21, 21 ); //tight
+     set_color_profile_slot( 10, 6, 28, 28, 28 ); //unnamed color row
+
+    
+	cfx = spawn_hit_fx(x,y,304)
+	cfx.pause = 4
+	
+	if string_lower(get_player_name(player)) == "bee" {
+		sound_stop(sound_get("ADfinish"))
+		sound_play(sound_get("ADfinish"),false,noone,1,1.4)
+        set_color_profile_slot( 10, 0, 255, 102, 165 ); //eyes
+        set_color_profile_slot( 10, 1, 255, 232, 236 ); //mainwhite
+        set_color_profile_slot( 10, 2, 255, 110, 167 ); //black
+        set_color_profile_slot( 10, 3, 255, 168, 204 ); //hair?
+        set_color_profile_slot( 10, 4, 209, 116, 142 ); //ears?
+        set_color_profile_slot( 10, 5, 255, 212, 250 ); //tight
+        set_color_profile_slot( 10, 6, 28, 28, 28 ); //unnamed color row
+
+	}
+	
+	if string_lower(get_player_name(player)) == "sai" {
+		sound_stop(sound_get("ADcd"))
+		sound_play(sound_get("ADcd"),false,noone,1,1.4)
+       set_color_profile_slot( 10, 0, 255, 102, 165 ); //eyes
+       set_color_profile_slot( 10, 1, 255, 232, 236 ); //mainwhite
+       set_color_profile_slot( 10, 2, 255, 110, 167 ); //black
+       set_color_profile_slot( 10, 3, 255, 168, 204 ); //hair?
+       set_color_profile_slot( 10, 4, 209, 116, 142 ); //ears?
+       set_color_profile_slot( 10, 5, 255, 212, 250 ); //tight
+       set_color_profile_slot( 10, 6, 28, 28, 28 ); //unnamed color row
+	}
+	
+	
+	init_shader()
+}
+
+
 	if karma < 0 {
 		karma = 0 
 	}

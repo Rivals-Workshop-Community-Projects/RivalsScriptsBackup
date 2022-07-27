@@ -1,9 +1,10 @@
-switch (get_player_color(player))
+var playerAlt = "currAlt" in self ? currAlt : get_player_color(player);
+switch (playerAlt)
 {
     //default
     case 0:
     {
-        if (get_synced_var(player))
+        if ("isFurry" in self && isFurry)
         {
             AltColour(1, make_color_rgb(255, 255, 255));
             AltColour(2, make_color_rgb(160, 164, 190));
@@ -22,17 +23,7 @@ switch (get_player_color(player))
     //early access alt
     case 5:
     {
-        for(var i = 0; i < 8; ++i)
-        {
-            set_character_color_shading(i, 0);
-        }
-    }
-    break;
-    //metal
-    case 18:
-    {
-        set_character_color_shading(0, 3);
-        set_character_color_shading(7, 2);
+        for(var i = 0; i < 8; ++i) set_character_color_shading(i, 0);
     }
     break;
     //tanjiro
@@ -87,7 +78,7 @@ switch (get_player_color(player))
 }
 
 outline_colour = [0, 0, 0];
-switch (get_player_color(player))
+switch (playerAlt)
 {
     case 3:  outline_colour = [60,   0,   60]; break;
     case 5:  outline_colour = [35,   67,  49]; break;
@@ -121,7 +112,7 @@ if (object_index == asset_get("draw_result_screen"))
 
 #define AltOpacity(_index, _opacity)
 { 
-    var currentAlt = get_player_color(player);
+    var currentAlt = "currAlt" in self ? currAlt : get_player_color(player);
     var temp_r = get_color_profile_slot_r(currentAlt, _index);
     var temp_g = get_color_profile_slot_g(currentAlt, _index);
     var temp_b = get_color_profile_slot_b(currentAlt, _index);

@@ -67,95 +67,133 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 			switch(real(hit_player_obj.url)){
 				default:
 					if (real(hit_player_obj.url) > 20){
-							TCG_Kirby_Copy = random_func(1, 15, true);
+							TCG_Kirby_Copy = 1 + random_func(1, 15, true);
 							sound_play(asset_get("mfx_star"), false, noone, 1.5, 1)
 					}
 				break;
+				case 694206969696: //Character has no URL
+				case -1: //Mix
+				case 1985996538: //Ditto		
+				case 1883576466: //Pokemon Ranger		
+				case 2664982578: //Egg?		
+				case 2656419045: //Qua Mario		
+				case 1996010699: //Suitcase		
+				case 2776798757: //Mega Man X		
+				case 1884573731: //Classic Mega Man		
+				case 1892516249: //Mega Man X		
+				case 1890261108: //Mega Man X (LEGACY)		
+				case 2043406919: //Sprite Megaman		
+				case 2408200095: //Mega Man.EXE		
+				case 2469742715: //Ben 10		
+				case 2819584604: //Balanced Mega Man		
+				case 1987236304: //NES Kirby		
+				case 2297617172: //64 Kirby		
+				case 1868756032: //Kirby (luna)		
+				case 2117584528: //Triple Deluxe Kirby		
+				case 2133564470: //Adeleine		
+				case 2426361313: //Nagito Komaeda		
+				case 2081164436: //Doc Robot		
+				case 2635326464: //Mario Kart (ft. Shy Guy)		
+				case 2652079640: //Shrek in a kart		
+				case 2094681709: //Bird Guy in a Car		
+				case 2686241533: //MonkeyCar		
+				case 2250055008: //Venom SST		
+				case 1895666616: //Division		
+				case 2001969960: //The Worst		
+				case 2615647984: //SSL Kirby		
+				case 2824279381: //SSL Mega Man		
+				case 2667789015: //Eevee [Super Smash Land]		
+					//Grants Kirby Mix.
+					TCG_Kirby_Copy = -1;
+					mixCurrSelected = 1 + random_func(1, 15, true); //Random
+					sound_stop(sound_get("nspecial_down_ability"))
+				break;
+				
 				case CH_ZETTERBURN: //Zetter
 				case CH_FORSBURN: //Forsburn
-				case 2668282910: //Blaziken	
-				case 1941608772: //Blaziken	
-				case 2558467885: //Dingodile	
-				case 2311095319: //Mario	
-				case 2078587302: //Mario	
-				case 1870580396: //Mario	
-				case 2656419045: //Qua Mario	
-				case 1875532630: //Mario & Luigi	
-				case 2227633571: //Neo Mario	
-				case 1987225905: //Re-balanced Mario	
-				case 1870768156: //Melee Mario	
-				case 2173774411: //Fire	
-				case 2306690997: //Fire 2	
-				case 2660260671: //Litwick	
-				case 2241629736: //Pyro	
-				case 2104611987: //Pyro (old, outdated version)	
-				case 2110996330: //Chef	
-				case 1899103481: //Targma	
-				case 2237553996: //Targma (pre-patch)	
-				case 2390129847: //Amber	
-				case 2669653036: //Litleo	
-				case 2382224292: //Scarlet	
-				case 2069283406: //Alex Ashikaga	
-				case 2329107619: //Flandre Scarlet	
-				case 1961215248: //Fidget	
-				case 2241098230: //Rykenburn	
-				case 2154720280: //Nolan Dolal	
-				case 2199519462: //Amarelle	
-				case 2813238060: //Kitara the Spirit Flame	
-				case 2229756767: //Blaze the Cat	
-				case 2184682009: //G.B.A.	
-				case 2168492612: //Colonel Sanders	
-				case 2089363375: //Miko Mitama	
-				case 1879898363: //Agunimon V1.2	
-				case 1895062336: //TerriFried	
-				case 2365597658: //Kyort	
-				case 1890040463: //Agumon	
-				case 2835381290: //Super (V2)	
-				case 1890239227: //Guilmon	
-				case 2207197597: //Bowser	
-				case 1883546583: //Ken	
-				case 2257020796: //Literal Sun	
-				case 2063827725: //Angry Sun	
-				case 2605468610: //Exetior	
-				case 2013306839: //Tahu	
-				case 1958584630: //Blanked Woomy	
-				case 1908827075: //Agni	
-				case 2646935795: //Chef Ethan Cat	
-				case 2599770065: //Toast	
-				case 2775288890: //Sol	
-				case 2179688851: //Peppino	
-				case 2191935537: //Peppino from Pizza Tower (Discontinued)	
-				case 1870511411: //Luigi	
-				case 2342251239: //Flamingtorpedo	
-				case 1890617624: //Ronald McDonald	
-				case 2068156676: //Balanced Ronald	
-				case 2037682193: //King Bowser (Version 1)	
-				case 2157946297: //Rorschach	
-				case 2497580275: //Carcossant	
-				case 2130407920: //Spike the Dragon	
-				case 1960200333: //Fry	
-				case 2628771284: //Neco Arc	
-				case 1886936983: //Squaggies's Grandma	
-				case 2700537645: //Gordon Ramsay	
-				case 2154830630: //Hyperball	
-				case 2242316629: //Infernape	
-				case 2007531004: //SoGGy	
-				case 1893494156: //The Stove	
-				case 2828986688: //Emoji	
-				case 1882640442: //Nii	
-				case 1908827075: //Agni	
-				case 2778789055: //Po & Gumbo	
-				case 2146092294: //(OLD) Cardinal	
-				case 2391875424: //Cardinal	
-				case 2174242407: //100% Accurate Luigi	
-				case 2007516296: //100% Accurate Fire	
-				case 2608971355: //SSL Cardinal	
-				case 2612623898: //SSL Rykenburn	
-				case 2611384650: //SSL Bowser	
-				case 2624077871: //SSL Funghee	
-				case 2811006507: //SSL G.B.A	
-				case 2262699993: //Super Smash Land Mario	
-				case 2824997069: //SSL Ronald Mcdonald	
+				case 2668282910: //Blaziken
+				case 1941608772: //Blaziken
+				case 2558467885: //Dingodile
+				case 2311095319: //Mario
+				case 2078587302: //Mario
+				case 1870580396: //Mario
+				case 2656419045: //Qua Mario
+				case 1875532630: //Mario & Luigi
+				case 2227633571: //Neo Mario
+				case 1987225905: //Re-balanced Mario
+				case 1870768156: //Melee Mario
+				case 2173774411: //Fire
+				case 2306690997: //Fire 2
+				case 2660260671: //Litwick
+				case 2241629736: //Pyro
+				case 2104611987: //Pyro (old, outdated version)
+				case 2110996330: //Chef
+				case 1899103481: //Targma
+				case 2237553996: //Targma (pre-patch)
+				case 2390129847: //Amber
+				case 2669653036: //Litleo
+				case 2382224292: //Scarlet
+				case 2069283406: //Alex Ashikaga
+				case 2329107619: //Flandre Scarlet
+				case 1961215248: //Fidget
+				case 2241098230: //Rykenburn
+				case 2154720280: //Nolan Dolal
+				case 2199519462: //Amarelle
+				case 2813238060: //Kitara the Spirit Flame
+				case 2229756767: //Blaze the Cat
+				case 2184682009: //G.B.A.
+				case 2168492612: //Colonel Sanders
+				case 2089363375: //Miko Mitama
+				case 1879898363: //Agunimon V1.2
+				case 1895062336: //TerriFried
+				case 2365597658: //Kyort
+				case 1890040463: //Agumon
+				case 2835381290: //Super (V2)
+				case 1890239227: //Guilmon
+				case 2207197597: //Bowser
+				case 1883546583: //Ken
+				case 2257020796: //Literal Sun
+				case 2063827725: //Angry Sun
+				case 2605468610: //Exetior
+				case 2013306839: //Tahu
+				case 1958584630: //Blanked Woomy
+				case 1908827075: //Agni
+				case 2646935795: //Chef Ethan Cat
+				case 2599770065: //Toast
+				case 2775288890: //Sol
+				case 2179688851: //Peppino
+				case 2191935537: //Peppino from Pizza Tower (Discontinued)
+				case 1870511411: //Luigi
+				case 2342251239: //Flamingtorpedo
+				case 1890617624: //Ronald McDonald
+				case 2068156676: //Balanced Ronald
+				case 2037682193: //King Bowser (Version 1)
+				case 2157946297: //Rorschach
+				case 2497580275: //Carcossant
+				case 2130407920: //Spike the Dragon
+				case 1960200333: //Fry
+				case 2628771284: //Neco Arc
+				case 1886936983: //Squaggies's Grandma
+				case 2700537645: //Gordon Ramsay
+				case 2154830630: //Hyperball
+				case 2242316629: //Infernape
+				case 2007531004: //SoGGy
+				case 1893494156: //The Stove
+				case 2828986688: //Emoji
+				case 1882640442: //Nii
+				case 1908827075: //Agni
+				case 2778789055: //Po & Gumbo
+				case 2146092294: //(OLD) Cardinal
+				case 2391875424: //Cardinal
+				case 2174242407: //100% Accurate Luigi
+				case 2007516296: //100% Accurate Fire
+				case 2608971355: //SSL Cardinal
+				case 2612623898: //SSL Rykenburn
+				case 2611384650: //SSL Bowser
+				case 2624077871: //SSL Funghee
+				case 2811006507: //SSL G.B.A
+				case 2262699993: //Super Smash Land Mario
+				case 2824997069: //SSL Ronald Mcdonald
 					TCG_Kirby_Copy = 1; //Fire
 				break;
 					
@@ -542,7 +580,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2423063732: //Brawl Buddies
 				case 1906134855: //Fancy Pants Man
 				case 2069688364: //Levi
-				case 2465601482: //Primid
 				case 2801017927: //Fire Emblem Myrmidon
 				case 1913019153: //GeoExe
 				case 2833345946: //Reckless Swordsman
@@ -613,6 +650,8 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2646910723: //SSL Kumaki
 				case 2824941156: //SSL Renee
 				case 2835975838: //SSL Aegislash
+				case 1888737963: //Roob
+				case 2504113755: //Nova
 					TCG_Kirby_Copy = 5; //Sword
 				break;
 					
@@ -646,7 +685,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2185834832: //Torga
 				case 2503681586: //Kash & Mone
 				case 1876950538: //Dragon Quest Slime
-				case 2606853565: //Mario Pissing 2
 				case 1872070893: //Teardrop
 				case 2003067816: //Pepsi Man
 				case 2556142902: //Blackmore
@@ -710,7 +748,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 	            case CH_SYLVANOS: //Sylvanos
 				case 2605158956: //Turnip Boy
 				case 2813109055: //Guadua
-				case 2438249735: //Ceae
 				case 2669611249: //Bellsprout
 				case 2682937306: //Cradily
 				case 2396720475: //Tomo
@@ -825,6 +862,7 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2815453471: //SSL Drak Vuris
 				case 2826523455: //SSL Chilly
 				case 2820823219: //SSL Vanillite
+				case 2004919133: //Hat Kid
 					TCG_Kirby_Copy = 8; //Ice
 				break;
 					
@@ -1173,6 +1211,7 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2815922633: //SSL Crewmate
 				case 2816145042: //SSL Neco Arc Chaos
 				case 2834518864: //SSL Mr. Game & Watch
+				case 2465601482: //Primid
 					TCG_Kirby_Copy = 12; //Abyssal
 				break;
 				
@@ -1422,6 +1461,7 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2823288287: //SSL Twenny
 				case 2837903443: //SSL Silver Sonic
 					TCG_Kirby_Copy = 15;//Spark
+				break;				
 				
 			}
 		}

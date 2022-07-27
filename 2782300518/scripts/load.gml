@@ -59,7 +59,7 @@ sprite_change_offset("tech", 40, 66);
 sprite_change_offset("tech2", 30, 78);
 
 sprite_change_offset("jab", 32, 78);
-sprite_change_offset("jab2", 40, 84);
+sprite_change_offset("jab2", 46, 84);
 sprite_change_offset("dattack", 30, 78);
 sprite_change_offset("dattack2", 30, 78);
 sprite_change_offset("ftilt", 32, 78);
@@ -102,7 +102,9 @@ sprite_change_offset("pounce", 40, 66);
 sprite_change_offset("get_on_bike", 40, 78);
 sprite_change_offset("bike_hurtbox", 40, 78);
 sprite_change_offset("bike_crouch_hurtbox", 40, 78);
-sprite_change_offset("energy_shield", 50, 86);
+sprite_change_offset("carol_hurtbox_standing", 40, 78);
+sprite_change_offset("carol_hurtbox_crouch", 40, 78);
+sprite_change_offset("energy_shield", 62, 95);
 
 sprite_change_offset("nitro_boost", 50, 50)
 

@@ -1,8 +1,14 @@
 ////
 
-if state == PS_PRATFALL && !down_down && attack == AT_FSPECIAL {
-	vsp -= .3
+if state == PS_PRATFALL && attack == AT_FSPECIAL {
+	vsp -= .22
+        hsp /= 1.05
 }
+
+if state == PS_PRATFALL && attack == AT_USPECIAL {
+        hsp /= 1.1
+}
+
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self
@@ -29,9 +35,9 @@ if can_attack && special_pressed && ((!left_down && !right_down && !up_down && !
 	 move_cooldown [AT_EXTRA_3] = 0
 	 
 if hhh > 0 {	 
-	 vsp = -9
+	 vsp = -7.5
 } else {
-	vsp = -9
+	vsp = -7.5
 }
 	       	spawn_base_dust(x, y, "djump", spr_dir)
 	       	spawn_base_dust(x, y, "land", spr_dir)
@@ -115,7 +121,7 @@ if hhh > 0 && dash_speed == 7 {
     gravity_speed = .4;
     max_fall = 6; 
     fast_fall = 12;
-    knockback_adj = 1.05;
+    knockback_adj = 1.15;
 }
 
 if hhh == 0 && dash_speed != 7 {
@@ -126,13 +132,13 @@ if hhh == 0 && dash_speed != 7 {
 	air_max_speed = 5.5;
 	jump_change = 4;
 	air_accel = .3;
-    jump_speed = 13;
-    short_hop_speed = 9;
-    djump_speed = 13;
-    gravity_speed = .7;
+    jump_speed = 12;
+    short_hop_speed = 8;
+    djump_speed = 12;
+    gravity_speed = .6;
     max_fall = 8; 
     fast_fall = 16;
-    knockback_adj = 1.1;
+    knockback_adj = 1.15;
 }
 
 

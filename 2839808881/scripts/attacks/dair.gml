@@ -34,6 +34,10 @@ set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_DAIR, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_DAIR, 3, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_DAIR, 4, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 

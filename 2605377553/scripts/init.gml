@@ -141,7 +141,7 @@ uspeccancel = false;
 //nspec
 nspecObj = noone;
 nspecTimer = 0;
-nspecTimerMax = 20;
+nspecTimerMax = 15;
 
 ///dair grab
 grabbed_player_obj = noone;    //the player object currently being grabbed.

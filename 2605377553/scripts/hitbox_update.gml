@@ -63,7 +63,7 @@ if attack == AT_NSPECIAL
 		if abs(nspecSpeed) < nspecSpeedMax && closest == noone
 			nspecSpeed += sign(nspecSpeed) * 0.5;
 		if abs(nspecSpeed) < nspecSpeedMax && closest != noone
-			nspecSpeed += sign(nspecSpeed) * 5;	
+			nspecSpeed += sign(nspecSpeed) * 2.0;	
 			
 		//spawn
 		//add more conditionals here on when to activate the attack
@@ -71,6 +71,7 @@ if attack == AT_NSPECIAL
 		{
 			destroyed = true;
 			var h = create_hitbox(AT_NSPECIAL, 2, x, y);
+			sprite_change_collision_mask( "nspec_star_mask", true, 0, 0, 0, 0, 0, 0 );
 			h.image_index = 3;
 			h.walls = 1;
 			h.grounds = 1;

@@ -11,7 +11,7 @@ set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_SFX, sound_get("motorbike_extra"));
+set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_SFX, sound_get("motorbike_uppercut"));
 
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
@@ -41,6 +41,6 @@ set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 if has_rune ("O")
 {
-    set_hitbox_value(39, 1, HG_BASE_KNOCKBACK, 16);
-    set_hitbox_value(39, 1, HG_KNOCKBACK_SCALING, 1);
+    set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 16);
+    set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1);
 }

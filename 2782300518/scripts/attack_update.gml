@@ -1,26 +1,40 @@
+switch (attack)
+{
+	case AT_NSPECIAL:
+	case AT_NSPECIAL_2:
+	case AT_FSPECIAL:
+	case AT_FSPECIAL_2:
+	case AT_USPECIAL:
+	case AT_USPECIAL_2:
+		trigger_b_reverse();
+	break;
+}
+
 if (motorbike == false)
 {
 	switch (attack)
 	{
 		//Hold Taunt down to keep dancing!
 		case AT_TAUNT:
-		if (!taunt_down){
-			window = 2;
-	    	window_timer = 1;
-		}
+			if (!taunt_down){
+				window = 2;
+			 	window_timer = 1;
+			}
      	break;
      	//Add Cooldown to Dash Attack at end
 		case AT_DATTACK:
-		if (window == 3 && window_timer == 9)
-		{
-			move_cooldown[AT_DATTACK] = 30;
-		}
+			can_attack = (window > 1 ? 1 : 0);
+			if (window == 3 && window_timer == 9)
+			{
+				move_cooldown[AT_DATTACK] = 30;
+			}
 		break;
 		//Code for bounce move
 		case AT_DAIR:
-		//Allow for move cancelling through special or shield
+		//Allow for move cancelling through, jump, special or shield
 		can_shield = true;
 		can_special = true;
+		can_jump = true;
 		switch (image_index)
 		{
 			case 0:
@@ -28,6 +42,13 @@ if (motorbike == false)
 			case 16:
 			case 24:
 			case 32:
+				if (get_player_color(player) == 17)
+				{
+					var base = 4*8;
+					static_colorO[base] = 0.137;
+					static_colorO[base+1] = 0.262;
+					static_colorO[base+2] = 0.192;
+				}
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect0);
 				after_effect.depth = +10;
 			break;
@@ -36,6 +57,13 @@ if (motorbike == false)
 			case 17:
 			case 25:
 			case 33:
+				if (get_player_color(player) == 17)
+				{
+					var base = 4*8;
+					static_colorO[base] = 0.137;
+					static_colorO[base+1] = 0.262;
+					static_colorO[base+2] = 0.192;
+				}
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect1);
 				after_effect.depth = +10;
 			break;
@@ -44,6 +72,13 @@ if (motorbike == false)
 			case 18:
 			case 26:
 			case 34:
+				if (get_player_color(player) == 17)
+				{
+					var base = 4*8;
+					static_colorO[base] = 0.137;
+					static_colorO[base+1] = 0.262;
+					static_colorO[base+2] = 0.192;
+				}
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect2);
 				after_effect.depth = +10;
 			break;
@@ -52,10 +87,13 @@ if (motorbike == false)
 			case 19:
 			case 27:
 			case 35:
-				var base = 4*8;
-				static_colorO[base] = 0.137;
-				static_colorO[base+1] = 0.262;
-				static_colorO[base+2] = 0.192;
+				if (get_player_color(player) == 17)
+				{
+					var base = 4*8;
+					static_colorO[base] = 0.137;
+					static_colorO[base+1] = 0.262;
+					static_colorO[base+2] = 0.192;
+				}
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect3);
 				after_effect.depth = +10;
 			break;
@@ -64,6 +102,13 @@ if (motorbike == false)
 			case 20:
 			case 28:
 			case 36:
+				if (get_player_color(player) == 17)
+				{
+					var base = 4*8;
+					static_colorO[base] = 0.137;
+					static_colorO[base+1] = 0.262;
+					static_colorO[base+2] = 0.192;
+				}
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect4);
 				after_effect.depth = +10;
 			break;
@@ -72,6 +117,13 @@ if (motorbike == false)
 			case 21:
 			case 29:
 			case 37:
+				if (get_player_color(player) == 17)
+				{
+					var base = 4*8;
+					static_colorO[base] = 0.137;
+					static_colorO[base+1] = 0.262;
+					static_colorO[base+2] = 0.192;
+				}
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect5);
 				after_effect.depth = +10;
 			break;
@@ -80,6 +132,13 @@ if (motorbike == false)
 			case 22:
 			case 30:
 			case 38:
+				if (get_player_color(player) == 17)
+				{
+					var base = 4*8;
+					static_colorO[base] = 0.137;
+					static_colorO[base+1] = 0.262;
+					static_colorO[base+2] = 0.192;
+				}
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect6);
 				after_effect.depth = +10;
 			break;
@@ -88,6 +147,13 @@ if (motorbike == false)
 			case 23:
 			case 31:
 			case 39:
+				if (get_player_color(player) == 17)
+				{
+					var base = 4*8;
+					static_colorO[base] = 0.137;
+					static_colorO[base+1] = 0.262;
+					static_colorO[base+2] = 0.192;
+				}
 				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect7);
 				after_effect.depth = +10;
 			break;
@@ -121,8 +187,15 @@ if (motorbike == false)
 			move_cooldown[AT_DAIR] = 40;		
 		}
 		break;
+		case AT_NAIR:
+		case AT_UAIR:
+		case AT_BAIR:
+			can_jump = has_hit;
+			can_special = has_hit;
+		break;
 		//Voice clip for Fair
 		case AT_FAIR:
+		can_jump = has_hit;
 		if (voice == 1 && window == 2 && window_timer == 1)
 		{
 			sound_stop(sound_get ("carol_up_special"));
@@ -488,14 +561,15 @@ else if (motorbike == true)
 			//Nitro effect at start of move
 			if (hsp > - 11 && hsp < 11)
 			{
-				hsp = free? 6 * spr_dir: 11 * spr_dir;
+				hsp = 11 * spr_dir;
 			}
 			var nitro = spawn_hit_fx(x - 40 * spr_dir, y -32, nitro_boost);
 			nitro.depth = -100;
 		}
-		if (window <= 2 && window_timer < 5) 
+		
+		if (window <=2 && window_timer <5 && !free)
 		{
-			hsp = spr_dir * 0.5 + (hsp * 1.1);
+			hsp = spr_dir * 0.5 + (hsp * 1.15);
 		}
 
 		if (window == 2)
@@ -515,10 +589,11 @@ else if (motorbike == true)
 			}
 			if (floor(window_timer/3) == window_timer /3)
 			{
+				//Effects to enhance move	
 				var smallspark = spawn_hit_fx(x - 40 * spr_dir, y-32 , smallsparkle);
 				smallspark.depth = -100;
 			}
-			if (hsp == 0 && place_meeting(x + 5 * spr_dir, y, asset_get("par_block")))
+			if (hsp == 0 && place_meeting(x + 5 * spr_dir, y - 40, asset_get("par_block")))
 			{
 				if (can_wall_jump && has_walljump && jump_down && walljump_number < walljump_limit)
 				{
@@ -527,13 +602,12 @@ else if (motorbike == true)
 					set_state(PS_WALL_JUMP);
 				}
 			}
-			if (!free && window_timer == 27)
+			if (!free && hsp = 0)
 			{
 				set_state(PS_DASH);
 				attack_end();
 			}
 		}
-		//Effects to enhance mov	
 		break;
 
 
@@ -624,6 +698,7 @@ else if (motorbike == true)
 		//If use the dash attack, remove the hitbox on the front of the bike while moving and also add cooldown to Dash
 		attack_end(AT_EXTRA_1);
 		bike_hit = false;
+		can_attack = (window > 1 ? 1 : 0);
 		if (window == 3 && window_timer == 9)
 			{
 			move_cooldown[3] = 30;
@@ -640,6 +715,7 @@ else if (motorbike == true)
 		//Voice clip
 		if (window == 1 && window_timer == 1)
 		{
+			sound_play(sound_get("motorbike_throw2"));
 			move_cooldown[AT_DAIR] = 15;
 			if (voice == 1)
 			{
@@ -653,7 +729,12 @@ else if (motorbike == true)
 		bikeReady = 0;
 		fuel = 0;
 		break;
-
+		
+		case 39:
+		case 42:
+		case 44:
+			can_special = true;
+		break;
 		//Fair2
 		case 43:
 		//Prevent the spam of Forward Air on bike and clamp speed
@@ -662,6 +743,7 @@ else if (motorbike == true)
 		can_shield = false;
 		if (window == 1 && window_timer == 1)
 		{
+			sound_play(sound_get("motorbike_throw"));
 			returnBike = false;
 			if (instance_exists(thrownBike))
 			{
@@ -718,6 +800,7 @@ switch (attack)
 	case 48:
 	//Mix up jab quotes so that it doesn't get tired
 	var	 choose_quote = random_func(16, 15, 1);
+	
 	switch (window)
 	{
 		case 1:
@@ -768,35 +851,47 @@ switch (attack)
 		}
 		break;
 		case 3:
-		if (window_timer >= 3 && attack_pressed)
-		{
-			window = 4;
-			window_timer = 0;
-		}
-		else if (window_timer == 17)
-		{
-			set_state(PS_IDLE);
-			attack_end();
-		}
+			can_jump = has_hit;
+			can_special = has_hit;
+			can_strong = has_hit;
+			if (window_timer >= 3 && attack_pressed)
+			{
+				window = 4;
+				window_timer = 0;
+			}
+			else if (window_timer == 17)
+			{
+				set_state(PS_IDLE);
+				attack_end();
+			}
 		break;
 		case 5:
-		if (window_timer >= 3 && attack_pressed)
-		{
-			window = 6;
-			window_timer = 0;
-		}
-		else if (window_timer == 17)
-		{
-			set_state(PS_IDLE);
-			attack_end();
-		}
+			can_jump = has_hit;
+			can_special = has_hit;
+			can_strong = has_hit;
+			if (window_timer >= 3 && attack_pressed)
+			{
+				window = 6;
+				window_timer = 0;
+			}
+			else if (window_timer == 17)
+			{
+				set_state(PS_IDLE);
+				attack_end();
+			}
 		break;
 	}
 	//In order to prevent infinite combos, a counter is used to limit the amount of times you can change the current jab
-	if (comboCounter < 2 )
+	var maxCombo = 2;
+	if has_rune ("K")
+	{
+		maxCombo = 3;
+	}
+	if (comboCounter < maxCombo )
 	{
 		if ((window == 3 || window == 5) && window_timer == 1)
 		{
+			
 			//If a direction is pressed when attacking, cancel to the specificed jab
 			if (attack == AT_JAB || attack == 48)
 			{
@@ -903,8 +998,17 @@ switch (attack)
 		{
 			if (voice == 1)
 			{
-				sound_stop(sound_get ("pow_pow"));
-				sound_play(sound_get ("pow_pow"));
+				var finisher_quote = random_func(17, 15, 1);
+				if (finisher_quote < 8)
+				{
+					sound_stop(sound_get ("pow_pow"));
+					sound_play(sound_get ("pow_pow"));
+				}
+				else if (finisher_quote >7)
+				{
+					sound_stop(sound_get("sweet"));
+					sound_play(sound_get("sweet"));
+				}
 			}
 			move_cooldown[AT_JAB] = 10;
 			move_cooldown[AT_FTILT] = 10;
@@ -941,8 +1045,8 @@ switch (attack)
 			}
 			else if (make_quote > 7)
 			{
-				sound_stop(sound_get("carol_attack_voice4"));
-				sound_play(sound_get("carol_attack_voice4"));				
+				sound_stop(sound_get("carol_attack_voice2"));
+				sound_play(sound_get("carol_attack_voice2"));				
 			}
 		}
 	}

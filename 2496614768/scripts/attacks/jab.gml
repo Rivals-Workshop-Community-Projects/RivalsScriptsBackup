@@ -44,6 +44,7 @@ set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_FRAME, 1);
+set_window_value(AT_JAB, 6, AG_WINDOW_HSPEED, 4);
 
 set_window_value(AT_JAB, 7, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAMES, 1);
@@ -53,10 +54,10 @@ set_window_value(AT_JAB, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX_FRAME, 0);
 
+
 set_window_value(AT_JAB, 8, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAME_START, 16);
-
 
 set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAMES, 5);
@@ -164,9 +165,9 @@ set_hitbox_value(AT_JAB, 5, HG_PRIORITY, 2);
 set_hitbox_value(AT_JAB, 5, HG_DAMAGE, 2);
 set_hitbox_value(AT_JAB, 5, HG_ANGLE, 90);
 set_hitbox_value(AT_JAB, 5, HG_SHAPE, 0);
-set_hitbox_value(AT_JAB, 5, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_JAB, 5, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_JAB, 5, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_JAB, 5, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_JAB, 5, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_JAB, 5, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_JAB, 5, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_GROUP, -1);
@@ -184,10 +185,10 @@ set_hitbox_value(AT_JAB, 6, HG_PRIORITY, 2);
 set_hitbox_value(AT_JAB, 6, HG_DAMAGE, 2);
 set_hitbox_value(AT_JAB, 6, HG_ANGLE, 40);
 set_hitbox_value(AT_JAB, 6, HG_SHAPE, 2);
-set_hitbox_value(AT_JAB, 6, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_JAB, 6, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_JAB, 6, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_JAB, 6, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_JAB, 6, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_JAB, 6, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_JAB, 6, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_JAB, 6, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_JAB, 6, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_JAB, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

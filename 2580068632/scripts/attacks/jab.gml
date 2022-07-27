@@ -68,7 +68,6 @@ set_window_value(AT_JAB, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_JAB, 5);
 
-set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_NAME, "Rapid Jab Hitbox 1");
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_JAB, 1, HG_LIFETIME, 2);
@@ -91,7 +90,6 @@ set_hitbox_value(AT_JAB, 2, HG_SDI_MULTIPLIER, 1.3);
 set_hitbox_value(AT_JAB, 3, HG_SDI_MULTIPLIER, 1.3);
 set_hitbox_value(AT_JAB, 4, HG_SDI_MULTIPLIER, 1.3);
 
-set_hitbox_value(AT_JAB, 2, HG_MUNO_HITBOX_NAME, "Rapid Jab Hitbox 2");
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 2);
@@ -110,7 +108,6 @@ set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_JAB, 3, HG_MUNO_HITBOX_NAME, "Rapid Jab Hitbox 3");
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 3, HG_WINDOW, 4);
 set_hitbox_value(AT_JAB, 3, HG_LIFETIME, 2);
@@ -129,7 +126,6 @@ set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
 set_hitbox_value(AT_JAB, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_JAB, 4, HG_MUNO_HITBOX_NAME, "Rapid Jab Hitbox 3");
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 4, HG_WINDOW, 5);
 set_hitbox_value(AT_JAB, 4, HG_LIFETIME, 2);
@@ -148,7 +144,6 @@ set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
 set_hitbox_value(AT_JAB, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_JAB, 5, HG_MUNO_HITBOX_NAME, "Finishing Hitbox");
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 5, HG_WINDOW, 7);
 set_hitbox_value(AT_JAB, 5, HG_LIFETIME, 2);

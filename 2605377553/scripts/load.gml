@@ -53,6 +53,7 @@ sprite_change_offset("nspecial", 64, 94);
 sprite_change_offset("fspecial", 128, 158);
 sprite_change_offset("fspec_boom", 60, 102);
 sprite_change_offset("fspec_boom_mask", 60, 102);
+sprite_change_offset("fspec_boom_visualizer", 60, 102);
 sprite_change_offset("fspec_die", 60, 102);
 sprite_change_offset("uspecial", 96, 126);
 sprite_change_offset("dspecial", 64, 94);
@@ -77,6 +78,7 @@ sprite_change_offset("smokesolo", 112/2, 106/2);
 sprite_change_offset("bairburst", 0, 94);
 sprite_change_offset("nspec_star", 144/2, 144/2);
 sprite_change_offset("nspec_star_mask", 144/2, 144/2);
+sprite_change_offset("nspec_star_visualizer", 144/2, 144/2);
 sprite_change_offset("particle_2",20,20);
 nspecEffect = hit_fx_create( sprite_get("particle_2"), 10);
 

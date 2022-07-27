@@ -72,7 +72,7 @@ stall = 0;
 camping = 0;
 do_not_attack = false;
 attacking = false;
-wait_time = 0;
+reaction_time = 0;
 wavelanding = false;
 old_ai_target = noone;
 //Determine AI attack time by CPU level

@@ -92,7 +92,7 @@ if (player_id.jc_hit){
 
 }
 
-player_id.move_cooldown[AT_NSPECIAL] = 120;
+player_id.move_cooldown[AT_NSPECIAL] = 30;
 
 if (lifetime <= 0 || hit_limit <= 0){
 spawn_hit_fx( x, y, player_id.jc_destroyed );

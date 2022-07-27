@@ -223,6 +223,7 @@ dash_turn_hsp = hsp;
 dash_hsp = 0;
 san_has_played = false;
 current_taunt = 0;
+bair_grab_projectile_box = noone;
 weegee_face = get_player_color(player) == 15;
 if(get_player_color(player) == 22){
     set_ui_element(UI_HUD_ICON,sprite_get("dorito_hud"));
@@ -282,7 +283,8 @@ screamList = [
     "snore",
     "telegram help",
     "monke",
-    "BWAA"
+    "BWAA",
+    "Mosquito"
     ];
 // intro
 introTimer = -2;

@@ -166,12 +166,12 @@ switch(attack){
 
 		//hard coded cancels for parry
 		if (window == 3 || window == 6){
-			if (attack_pressed){
+			if (attack_pressed && has_hit_player){
 				window += 1;
 				window_timer = 0;
 			}
 			else if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-				window = 10;
+				window = 9;
 				window_timer = 0;
 			}
 			
@@ -179,6 +179,8 @@ switch(attack){
 	break;
 	
 	case AT_NSPECIAL:
+
+		
 
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && (nearest_dist == -1 || !special_down) && !trick_cancel && !jc_range){
 				if (vergil)
@@ -202,7 +204,7 @@ switch(attack){
 	
 	
 	case AT_FSPECIAL:
-	move_cooldown[AT_FSPECIAL]= 20;
+	move_cooldown[AT_FSPECIAL]= 10;
 	if (window == 1)
 	{
 		
@@ -348,6 +350,9 @@ switch(attack){
 // per-attack logic
 switch(attack){
 	
+
+
+
 	// give your moves some "pop" by spawning dust during them!
 	case AT_DATTACK:
 
@@ -355,7 +360,7 @@ switch(attack){
 			
 		if has_hit_player && !was_parried{
 		can_ustrong = true;
-			
+		
 		}
 		
 		}
@@ -380,7 +385,7 @@ switch(attack){
 	
 	case AT_NSPECIAL:
 
-	
+		move_cooldown[AT_NSPECIAL] = 30;
 	
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && (nearest_dist == -1 || !special_down) && !trick_cancel && !jc_range){
 			window = 3;
@@ -683,16 +688,21 @@ switch(attack){
 			window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH);
 		}
 		
-		if (window == 3 && has_hit_player && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !(grabbed_player.trick_marked || free_chaos))
+		if (window == 3 && has_hit_player && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))
 		{
-			window = 5;
-			window_timer = 0;
+			if (grabbed_player.trick_marked || free_chaos)
+				jce_loop = 0;
+			else
+				jce_loop = 1;
 		}
 		
-		if (window == 4 && (grabbed_player.trick_marked || free_chaos))
+		if (window == 4)
 		{
 			// grabbed_player.hitstop = 2;
 			// grabbed_player.hitpause = true;
+
+			grabbed_player.fall_through = false;
+
 			if (free_chaos && window_timer == 1 && jce_loop < 1){
 			take_damage( player, -1, 10 );
 		    }
@@ -718,6 +728,13 @@ switch(attack){
 			}
 			
 			draw_indicator = false;
+
+			//skip
+			// if !(grabbed_player.trick_marked || free_chaos) && (window_timer == 15){
+			// 	window = 5;
+			// 	window_timer = 0;
+			// }
+
 			//cutscene
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && jce_loop < 1){
 				window_timer = 0;
@@ -725,6 +742,9 @@ switch(attack){
 				jce_loop ++;
 				
 			}
+
+
+
 		}
 
 		// lock players into place
@@ -749,6 +769,21 @@ switch(attack){
 			
 		}
 
+		if (window == 5){
+			if (attack_down && window_timer == 1){
+				fair_no_fall = true;
+				grabbed_player.hitpause = true;
+				grabbed_player.hitstop = 10;
+				y = grabbed_player.y;
+				x = grabbed_player.x - 10 * spr_dir;
+
+				if (grabbed_player.trick_marked){
+				grabbed_player.trick_timer = 0;
+				}
+
+				set_attack(AT_FAIR);
+			}
+		}
 	
 		
 		
@@ -760,6 +795,14 @@ switch(attack){
 	
 		if (window == 1 )
 		{
+			if (fair_no_fall){
+				fall_through = false;
+				window = 2;
+				window_timer = 0;
+				fair_no_fall = false;
+				hsp = 10 * spr_dir;
+			}
+
 			if (window_timer == 3)
 			sound_play(asset_get("sfx_forsburn_cape_swipe"));
 			
@@ -802,7 +845,7 @@ switch(attack){
 			{
 				if (attack == other.attack) && (player == other.player) 
 				{
-					var stick_wall = instance_position( x + (30 * other.spr_dir), y, asset_get("par_block"));
+					var stick_wall = instance_position( x + (40 * other.spr_dir), y, asset_get("solid_32_obj"));
 					
 					if (stick_wall != noone && other.cling_limit != 0)
 					{
@@ -811,14 +854,19 @@ switch(attack){
 					other.window_timer = 0;
 					other.cling_timer = other.cling_timer_default;
 					other.cling_limit--;
+
+					other.x += 90 * spr_dir;
+					x += 90 * spr_dir;
 					//push back
-					while (instance_position( x + (28 * other.spr_dir), y, asset_get("par_block")) != noone){
+					while (position_meeting( other.x + (58 * other.spr_dir), y, asset_get("solid_32_obj"))){
 						other.x -= other.spr_dir;
 						x -= other.spr_dir;
+
+
 					}
-					
+					print(get_instance_x( stick_wall ));
+
 					//push towards
-					other.x += (28 * other.spr_dir);
 					
 					destroyed = true;
 					//other.x = get_instance_x( stick_wall ) - (56 * spr_dir);
@@ -906,6 +954,7 @@ switch(attack){
 				motivation--;
 				motivation = clamp(motivation, 0, motivation+1);
 				suppress_stage_music( 0, 0.01 );
+
 			}
 			
 			if (vergil && window == 3 && window_timer == 1 && motivation == 0)
@@ -1193,3 +1242,4 @@ attack != 49 &&
 
 
 
+saya_check_window = window;

@@ -70,6 +70,28 @@ if (attack == AT_COPY_BOMB) {
 	}
 }
 
+//Making it so ESP can be hit
+if (attack == AT_COPY_ESP) {
+	if(esp_state == 2){
+		if (collision_circle(x,y - 95, y + 95, asset_get("pHitBox"),true,true)){ //makes the pot hittable when can_get_hit is true
+			with (asset_get("pHitBox")){
+				if (player != other.player_id.player){
+					other.player_id.esp_parried = true;
+					with(other){
+						with(player_id){
+							move_cooldown[AT_COPY_ESP] = 60;
+							window = 4;
+							window_timer = 0;
+						}
+					}
+				} else {
+					//
+				}
+			}
+		}
+	}
+}
+
 if (attack == AT_COPY_ESP) {
 
 if (hbox_num == 1){
@@ -94,12 +116,15 @@ if (hbox_num == 1){
 			esp_state = 3;
 			image_index = 7;
 		}
-		
 		//State 3: Detonate
 		if (esp_state == 3){
 			hsp = 0;
 			vsp = 0;
-			image_index += 0.25;
+			if(image_index < 8){
+				image_index += 0.125;
+			} else {
+				image_index += 0.25;
+			}
 			if (image_index == 8){
 				//print("Hello World");
 				create_hitbox(AT_COPY_ESP, 3, x, y);
@@ -144,7 +169,11 @@ if (hbox_num == 4){
 		if (esp_state == 3){
 			hsp = 0;
 			vsp = 0;
-			image_index += 0.25;
+			if(image_index < 8){
+				image_index += 0.125;
+			} else {
+				image_index += 0.25;
+			}
 			if (image_index == 8){
 				//print("Hello World");
 				create_hitbox(AT_COPY_ESP, 6, x, y);
@@ -169,6 +198,7 @@ if (hbox_num == 1 || hbox_num == 4){
 	
 	if (player_id.esp_parried == true){
 		//print("why am i here")
+		sound_play(asset_get("sfx_ori_glide_start"));
 		spawn_hit_fx(x, y-12, 110);
 		player_id.esp_parried = false;
 		sound_stop(sound_get("sfx_star_allies_esp_pkshift"));

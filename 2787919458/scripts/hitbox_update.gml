@@ -232,9 +232,9 @@ if(attack == AT_NSPECIAL){
 						sprite_index = sprite_get("doge_bark_lolbit")
 					break;					
 				}
-				img_spd = .3;
+				img_spd = .4;
 			}
-			if(hitbox_timer == 10){
+			if(hitbox_timer == 9){
 				sound_play(sound_get("bork"))
 				switch(player_id.charged_summon){
 					case 0:
@@ -247,9 +247,12 @@ if(attack == AT_NSPECIAL){
 						create_hitbox(AT_USTRONG,5,x,y-20);
 					break;					
 				}				
-				create_hitbox(AT_USTRONG,3,x+5,y-15);
+				var hbx = create_hitbox(AT_USTRONG,3,x+2,y-20);hbx.depth = depth - 4;
 			}
-			if(hitbox_timer == 15){
+			if(hitbox_timer >= 9 && hitbox_timer < 14){
+				image_index = 3;
+			}
+			if(hitbox_timer == 14){
 				img_spd = .04;
 				switch(get_player_color(player)){
 					default:
@@ -266,7 +269,7 @@ if(attack == AT_NSPECIAL){
 					break;					
 				}
 			}
-			if(hitbox_timer == 58){
+			if(hitbox_timer == 42){
 				destroyed = true;
 				player_id.charged_summon = 0;
 			}			

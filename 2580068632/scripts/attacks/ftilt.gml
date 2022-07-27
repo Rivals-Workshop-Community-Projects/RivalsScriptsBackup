@@ -69,7 +69,6 @@ set_window_value(AT_FTILT, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FTILT, 3);
 
-set_hitbox_value(AT_FTILT, 1, HG_MUNO_HITBOX_NAME, "Ftilt 1");
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 2);
@@ -88,9 +87,10 @@ set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 1);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE_FLIPPER, 1);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 3);
+set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 0);
+set_hitbox_value(AT_FTILT, 1, HG_FORCE_FLINCH, 1);
+set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 
-set_hitbox_value(AT_FTILT, 2, HG_MUNO_HITBOX_NAME, "Ftilt 2");
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 2);
@@ -109,19 +109,18 @@ set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, sfx_smash_ult_sword_hit_weak);
 set_hitbox_value(AT_FTILT, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_FTILT, 2, HG_TECHABLE, 3);
+set_hitbox_value(AT_FTILT, 2, HG_TECHABLE, 0);
 
-set_hitbox_value(AT_FTILT, 3, HG_MUNO_HITBOX_NAME, "Ftilt 3");
 set_hitbox_value(AT_FTILT, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 3, HG_WINDOW, 8);
 set_hitbox_value(AT_FTILT, 3, HG_LIFETIME, 2);
-set_hitbox_value(AT_FTILT, 3, HG_HITBOX_X, 26);
-set_hitbox_value(AT_FTILT, 3, HG_HITBOX_Y, -39);
-set_hitbox_value(AT_FTILT, 3, HG_WIDTH, 87);
-set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 89);
+set_hitbox_value(AT_FTILT, 3, HG_HITBOX_X, 23);
+set_hitbox_value(AT_FTILT, 3, HG_HITBOX_Y, -37);
+set_hitbox_value(AT_FTILT, 3, HG_WIDTH, 82);
+set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 82);
 set_hitbox_value(AT_FTILT, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_FTILT, 3, HG_DAMAGE, 5);
-set_hitbox_value(AT_FTILT, 3, HG_SHAPE, 2);
+set_hitbox_value(AT_FTILT, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_FTILT, 3, HG_ANGLE, 45);
 set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FTILT, 3, HG_KNOCKBACK_SCALING, 0.6);

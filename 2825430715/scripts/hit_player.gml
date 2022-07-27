@@ -1,5 +1,5 @@
 ///
- if my_hitboxID.type == 1 && my_hitboxID.effect != 9 { 
+ if my_hitboxID.type == 1 && my_hitboxID.effect != 9 && hit_player_obj.char_height != char_height { 
    hitted = true 
  }
  

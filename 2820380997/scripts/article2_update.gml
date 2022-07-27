@@ -25,8 +25,8 @@ switch(state){
         image_index = state_timer / 10;
         hsp = 0;
         vsp = 0;
-        if(state_timer > 120 || // Times out or is manually called back
-        (player_id.attack == AT_DSPECIAL_2 && player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
+        if(state_timer > wisp_idle_timer || // Times out or is manually called back
+        (player_id.attack == AT_NSPECIAL_2 && player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
             state = WS_RETURN;
             state_timer = 0;
             sound_play(asset_get( "sfx_zetter_fireball_fire" ),false,noone,.6,1.5);

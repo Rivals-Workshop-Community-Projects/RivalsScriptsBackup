@@ -59,12 +59,12 @@ set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 40);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -31);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 44);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 48);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 70);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6); // Mirrors Forsburn's Fair
+//set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6); // Mirrors Forsburn's Fair
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);

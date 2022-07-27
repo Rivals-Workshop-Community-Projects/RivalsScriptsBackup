@@ -1665,8 +1665,23 @@ if attack == AT_NSPECIAL && !hitpause{
 }
 
 if attack == AT_DSPECIAL && !hitpause{
-
 	
+    if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
+    	free = true 
+    	y -= 10
+    	vsp = -20
+    	attack = AT_NSPECIAL_2
+    	window = 1
+    	window_timer = 0
+    	galaxplayer = hit_player_obj
+    	has_hit_player = true 
+    }
+    
+	if move_cooldown[AT_DSPECIAL] == 118 && window = 1 {
+		window = 2
+		window_timer = 0
+		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.8,1.25);
+	}
 	can_fast_fall = false 
 	if window < 3 {
 		hsp /= 1.5

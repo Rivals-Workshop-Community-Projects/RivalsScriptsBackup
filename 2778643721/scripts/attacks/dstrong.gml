@@ -4,10 +4,10 @@ set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 36);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 12);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 24);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 16);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, sound_get("sfx_usword_charge"));
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 18);

@@ -517,6 +517,28 @@ with phone{
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
 	
+initPatch("2.8", "25 July, 2022");
+
+initPatchWords_ext("Nair slam startup 5-7 frames
+Nair slam landing lag 18-20 frames
+Nair slam angle 70-80
+Nair slam landing kb 7+0.9 - 8+0.8
+Nair slam landing hitbox damage 4-6
+
+Dstrong endlag 20-21 frames
+
+Uspecial goes slightly less high
+Uspecial has less drift and more gravity at its peak
+
+Dspecial now has 20 frames of cooldown
+Dspecial endlag 16-18 frames
+
+Fspecial endlag on hit and whiff 25-28 frames.
+
+Fair is now 1 hitbox, 6 + 0.8 total
+
+Lowered volume of sai sfx", fa_center, c_white, 0, 0);	
+	
 initPatch("2.7", "9 April, 2022");
 
 initPatchWords_ext("Fixed munophone being broken

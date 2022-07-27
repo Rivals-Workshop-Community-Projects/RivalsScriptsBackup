@@ -34,8 +34,10 @@ jc_distmult = 0.75;
 }
 jc_opa = jc_distmult + 0.05;
 
+gpu_set_blendmode(bm_add);
 draw_sprite_ext( sprite_get("nspecial_proj"), get_gameplay_time()/4, x + lengthdir_x(jc_dist * jc_distmult, jc_angle), y + lengthdir_y(jc_dist * jc_distmult, jc_angle) - 40, 1, 1, 0, c_white, jc_opa);
-
+gpu_set_blendmode(bm_normal);
+draw_sprite_ext( sprite_get("nspecial_proj"), get_gameplay_time()/4, x + lengthdir_x(jc_dist * jc_distmult, jc_angle), y + lengthdir_y(jc_dist * jc_distmult, jc_angle) - 40, 1, 1, 0, c_white, jc_opa);
 
 }
 shader_end();
@@ -53,7 +55,6 @@ draw_circle_colour(x- (6*spr_dir), y - 70, 40, c_aqua, c_black, 0);
 gpu_set_blendmode(bm_normal);
 
 }
-
 
 
 

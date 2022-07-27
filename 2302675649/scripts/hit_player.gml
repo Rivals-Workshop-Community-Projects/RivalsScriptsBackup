@@ -156,6 +156,9 @@ if (hit_player_obj.url == "1867634411")
 		case 16:
 			effect = chun_effect;
 			break;
+		case 18:
+			effect = kizuna_effect;
+			break;
 		case 19:
 			effect = genesis_effect;
 			break;
@@ -164,6 +167,6 @@ if (hit_player_obj.url == "1867634411")
 			break;
 	}
 	var a = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height, get_player_color(player)==6?saw_effect:get_player_color(player)==16?chun_effect:effect);
-	a.depth = -10;
+	if (get_player_color(player) != 18) a.depth = -10;
 	a.spr_dir = 1;
 }

@@ -27,6 +27,7 @@ if (multikick_energy == 200)
 if (motorbike == false)
 {
 	//Reset values back to default if coming from the bike
+	char_height = 50;
 	walk_speed = 3.25;
 	initial_dash_speed = 7;
 	dash_speed = 7;
@@ -35,8 +36,8 @@ if (motorbike == false)
 	jump_speed = 11.5;
 	djump_speed = 3;
 	ground_friction= .35;
-	hurtbox_spr = asset_get("ex_guy_hurt_box");
-	crouchbox_spr = asset_get("ex_guy_crouch_box");
+	hurtbox_spr = sprite_get("carol_hurtbox_standing");
+	crouchbox_spr = sprite_get("carol_hurtbox_crouch");
 	jump_sound = sound_get("jump");
 	djump_sound = asset_get("sfx_jumpair");
 	//Bike doesn't have idle fidget, this gives the fidget back
@@ -52,9 +53,19 @@ if (motorbike == false)
 		dash_turn_accel = 1.5;
 	}
 	
+	if has_rune("E")
+	{
+    	max_djumps = 2;
+	}
+	
 	if has_rune("I")
 	{
 		jump_speed = 15;
+	}
+	
+	if has_rune("J")
+	{
+    	max_djumps = 3;
 	}
 	
 	if has_rune("O")
@@ -207,15 +218,7 @@ if (motorbike == false)
 			ty=-66;
 			tsx=1;
 			tsy=1;
-    		bsprite_index=sprite_get("energy_shield");
-			brotation=0;
-			bimage_number=4;
-			bimage_speed=0.25;
-			bfront=true;
-			bx=0;
-			by=0;
-			bsx=1;
-			bsy=1;
+    		bsprite_index=-1;
 			if (thrownBike != noone && state_timer = 0)
 			{
 				set_state(PS_IDLE);
@@ -317,6 +320,7 @@ if (motorbike == false)
 //While riding the motorbike, fuel is consumed
 else if (motorbike == true)
 {
+	char_height = 56;
 	walk_speed = 6;
 	initial_dash_speed = 10;
 	dash_speed = 10;
@@ -325,13 +329,23 @@ else if (motorbike == true)
 	ground_friction = 1;
 	hurtbox_spr = sprite_get("bike_hurtbox");
 	crouchbox_spr = sprite_get("bike_crouch_hurtbox");
-	jump_sound = sound_get("motorbike_wheelie");
+	jump_sound = sound_get("motorbike_jump");
 	djump_sound = sound_get("motorbike_spin");
 	fuel_remaining = fuel;
 	//Bike doesn't have idle fidget, these values should make it unlikely it's ever seen
 	wait_time = 100000;
 	wait_length = 16;
 	wait_sprite = sprite_get("idle2");
+	
+	if has_rune("E")
+	{
+		max_djumps = 1;
+	}
+	
+	if has_rune("J")
+	{
+		max_djumps = 1;
+	}
 	
 	if has_rune("I")
 	{
@@ -349,11 +363,22 @@ else if (motorbike == true)
 	
 	fuel_burn++;
 	{
-		if (fuel_burn > 50)
-    	{
-    		fuel = fuel - 1;
-    		fuel_burn = 0;
-    	}
+		if has_rune ("H")
+		{
+			if (fuel_burn > 100)
+		 	{
+				fuel = fuel - 1;
+    			fuel_burn = 0;
+    		}			
+		}
+		else
+		{
+			if (fuel_burn > 50)
+		 	{
+				fuel = fuel - 1;
+    			fuel_burn = 0;
+    		}
+		}
 	}
 	//The following code creates bike sounds
 	switch (state)
@@ -521,8 +546,8 @@ else if (motorbike == true)
 			sound_play(sound_get("motorbike_stop"));
 			if (voice == 1)
 			{
-				sound_stop(sound_get ("crap"));
-				sound_play(sound_get ("crap"));
+				sound_stop(sound_get ("comeon"));
+				sound_play(sound_get ("comeon"));
 			}
 			set_attack(AT_DSPECIAL_2);
 		}
@@ -632,8 +657,8 @@ with (oPlayer) {
 //The bike ready sounds should only play once.
 if (bikeReady == 1)
 {
-	sound_stop(sound_get ("motorbike_extra"));
-	sound_play(sound_get ("motorbike_extra"));    		
+	sound_stop(sound_get ("motorbike_spin"));
+	sound_play(sound_get ("motorbike_spin"));    		
 	if (voice == 1)
 	{
 		sound_stop(sound_get ("aw_yeah"));

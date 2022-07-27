@@ -289,6 +289,12 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Bone Article when hit by Aura Sphere will move upwards proportionately to the charge");
 						AddText("Misc bugfixes for Bone Article");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v3.1.1 - 21 Jul 2022");
+						AddText("");
+						AddText("Added Anti-Dan code");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

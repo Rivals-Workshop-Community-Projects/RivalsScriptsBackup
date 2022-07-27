@@ -17,7 +17,7 @@ set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -8);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX, sound_get("claw2"));
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX, sound_get("wild_claw2"));
 
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_TYPE, 7);

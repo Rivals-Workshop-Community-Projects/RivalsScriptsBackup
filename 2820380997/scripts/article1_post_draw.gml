@@ -6,8 +6,8 @@ if get_match_setting(SET_HITBOX_VIS) {
 	draw_sprite_ext(mask_index,image_index,x,y,1,1,image_angle,c_green,0.5);
 }
 
-if (was_parried_flag == true) {
-	draw_sprite_ext(sprite_index,image_index,x,y,1,1,image_angle,c_dkgray,0.75);
+if (was_parried == true) {
+	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,image_angle,c_dkgray,0.75);
 }
 
 // Draw Platform

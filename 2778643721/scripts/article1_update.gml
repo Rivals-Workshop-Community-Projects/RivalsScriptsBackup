@@ -223,10 +223,13 @@ if (state == 0){
 
 //State 1: Idle
 if (state == 1){
-	
-		if (portal_cooldown == 50){
+		if (portal_cooldown < 5){
+			effect_played = false;
+		}
+		if (portal_cooldown >= 5 && effect_played == false){
 			sound_play(asset_get("sfx_ori_bash_launch"), false, noone, .5, 1);
 			spawn_hit_fx(x, y + 12, 111);
+			effect_played = true;
 		}
 	//Changes the sprite
 	sprite_index = sprite_get("portal_idle");
@@ -441,8 +444,13 @@ if (state == 1){
 				    fspecial_portal = 18;
 				    break;
 				}
+				if (player == other.portal_owner or state_cat == SC_HITSTUN){
 				other.portal_cooldown = 50;
 				other.player_id.portal2.portal_cooldown = 50;
+				} else {
+				other.portal_cooldown = 80;
+				other.player_id.portal2.portal_cooldown = 80;
+				}
 				if (other.player_id.portal1.state_timer < 590 && other.player_id.portal2.state_timer < 590){
 					other.player_id.portal1.state_timer += 200;
 					other.player_id.portal2.state_timer += 200;
@@ -496,8 +504,13 @@ if (state == 1){
 				    fspecial_portal = 28;
 				    break;
 				}
+				if (player == other.portal_owner or state_cat == SC_HITSTUN){
 				other.portal_cooldown = 50;
 				other.player_id.portal1.portal_cooldown = 50;
+				} else {
+				other.portal_cooldown = 80;
+				other.player_id.portal1.portal_cooldown = 80;
+				}
 				if (other.player_id.portal1.state_timer < 590 && other.player_id.portal2.state_timer < 590){
 					other.player_id.portal1.state_timer += 200;
 					other.player_id.portal2.state_timer += 200;

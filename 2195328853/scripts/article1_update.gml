@@ -180,9 +180,9 @@ if (instance_exists(ballhitbox)) { //hitbox when moving
 				ballhitbox.image_xscale = 0.15;ballhitbox.image_yscale = 0.15;
 			}else if(ballmode == 2){
 				ballhitbox.kb_angle = 35;
-				ballhitbox.damage = 1+d/4;
-	        	ballhitbox.kb_value = 3+d/20;
-	        	ballhitbox.kb_scale = 0.1+d/38;
+				ballhitbox.damage = 1+d/3;
+        		ballhitbox.kb_value = 3+d/20;
+        		ballhitbox.kb_scale = 0.1+d/32;
 				ballhitbox.hitpause = 2;
 				ballhitbox.sound_effect = asset_get("sfx_ell_steam_release");
 				ballhitbox.hit_effect = 144;
@@ -253,9 +253,9 @@ if (instance_exists(ballhitbox)) { //hitbox when moving
 			ballhitbox.image_xscale = 0.15;ballhitbox.image_yscale = 0.15;
 		}else if(ballmode == 2){
 			ballhitbox.kb_angle = 35;
-			ballhitbox.damage = 1+d/4;
+			ballhitbox.damage = 1+d/3;
         	ballhitbox.kb_value = 3+d/20;
-        	ballhitbox.kb_scale = 0.1+d/38;
+        	ballhitbox.kb_scale = 0.1+d/32;
 			ballhitbox.hitpause = 2;
 			ballhitbox.sound_effect = asset_get("sfx_ell_steam_release");
 			ballhitbox.hit_effect = 144;
@@ -426,8 +426,8 @@ if(x > room_width || x < 0 || y >= room_height+65 || y <= -200 /*|| ball_timer >
     }
     if(ballmode == 0){
 				    create_hitbox(AT_NSPECIAL,3,x,y);
-				    	spawn_hit_fx(x+20,y+20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y+20, player_id.fx_blob_ball_explosion);
-				    	spawn_hit_fx(x+20,y-20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y-20, player_id.fx_blob_ball_explosion);
+				    spawn_hit_fx(x+20,y+20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y+20, player_id.fx_blob_ball_explosion);
+				    spawn_hit_fx(x+20,y-20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y-20, player_id.fx_blob_ball_explosion);
 				    sound_play(asset_get("sfx_waterhit_heavy"));
 				}else if(ballmode == 1){ //ice
 				    create_hitbox(AT_NSPECIAL,4,x,y);

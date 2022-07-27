@@ -177,7 +177,7 @@ afterImage[i].sprite_index = sprite_get( "fspecial_afterimage" )
     
 } else if   (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && afterImage[i].sprite_index == sprite_index) {
 	
-	y_offset = -17*1.15
+	y_offset = -15.5*1.15
 	x_offset = -13*1.15*spr_dir
     image_index_offset = 2
     afterimage_division_offset = 2

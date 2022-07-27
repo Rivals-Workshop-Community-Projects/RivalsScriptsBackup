@@ -20,6 +20,7 @@ if attack == AT_USTRONG
 		hud_offset = 64;}
 }
 
+move_cooldown[AT_NSPECIAL] = 20;
 
 //cloud pushers
 

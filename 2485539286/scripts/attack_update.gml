@@ -1179,8 +1179,8 @@ nfloat = 0
     if has_hit_player && window == 3 && window_timer < 15 && hitpause && hit_player_obj.state_cat == SC_HITSTUN {
   		hit_player_obj.x += floor((x  - hit_player_obj.x) / 4)
   		hit_player_obj.y += floor((y - 30 - hit_player_obj.y) / 4)
-  	}
-  	
+    }
+    
   if window == 1 && window_timer == 2 && !hitpause{
   	
 	move_cooldown [AT_FSPECIAL] = 999

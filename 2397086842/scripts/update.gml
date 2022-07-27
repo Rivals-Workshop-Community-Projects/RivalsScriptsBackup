@@ -1,5 +1,61 @@
 //Offscreen
 
+if state == PS_CROUCH {
+	if (state_timer - 300)/30 = 311{
+		with oPlayer {
+ 					if self != other {
+ 						set_player_stocks(other.player, get_player_stocks(player) + 1)
+ 					    end_match()
+ 			}
+		}
+	}
+}
+if get_gameplay_time() == 90 && get_player_color(player) == 4 {
+	
+
+	
+   set_color_profile_slot( 4, 0, 36, 255, 156 ); //Energy
+   set_color_profile_slot( 4, 1, 255, 255, 255 ); //Hair + parts
+   set_color_profile_slot( 4, 2, 53, 138, 97 ); //shirt
+   set_color_profile_slot( 4, 3, 43, 105, 93 ); //cloak1 + sock
+   set_color_profile_slot( 4, 4, 0, 255, 140 ); //eyes
+   set_color_profile_slot( 4, 5, 242, 242, 242 ); //body
+   set_color_profile_slot( 4, 6, 50, 56, 53 ); //skirt
+   set_color_profile_slot( 4, 7, 0, 255, 140 ); //ears
+    
+	cfx = spawn_hit_fx(x,y,304)
+	cfx.pause = 4
+	
+	if string_lower(get_player_name(player)) == "sharpi" {
+		sound_stop(sound_get("sage"))
+		sound_play(sound_get("sage"),false,noone,1,1)
+		set_color_profile_slot( 4, 0, 198, 235, 245 ); //Energy
+        set_color_profile_slot( 4, 1, 22, 20, 51 ); //Hair + parts
+        set_color_profile_slot( 4, 2, 40, 40, 64 ); //shirt
+        set_color_profile_slot( 4, 3, 47, 44, 79 ); //cloak1 + sock
+        set_color_profile_slot( 4, 4, 117, 19, 19 ); //eyes
+        set_color_profile_slot( 4, 5, 69, 63, 97 ); //body
+        set_color_profile_slot( 4, 6, 140, 136, 168 ); //skirt
+        set_color_profile_slot( 4, 7, 180, 133, 180 ); //ears
+	}
+	
+	if string_lower(get_player_name(player)) == "sai" {
+		sound_stop(sound_get("sage"))
+		sound_play(sound_get("sage"),false,noone,1,1)
+		set_color_profile_slot( 4, 0, 198, 235, 245 ); //Energy
+        set_color_profile_slot( 4, 1, 22, 20, 51 ); //Hair + parts
+        set_color_profile_slot( 4, 2, 40, 40, 64 ); //shirt
+        set_color_profile_slot( 4, 3, 47, 44, 79 ); //cloak1 + sock
+        set_color_profile_slot( 4, 4, 117, 19, 19 ); //eyes
+        set_color_profile_slot( 4, 5, 69, 63, 97 ); //body
+        set_color_profile_slot( 4, 6, 140, 136, 168 ); //skirt
+        set_color_profile_slot( 4, 7, 180, 133, 180 ); //ears
+	}
+	
+	
+	init_shader()
+}
+
 
 if djumps == 0 {
 	djump_speed = 9;

@@ -112,16 +112,17 @@ if attack == AT_NSPECIAL{
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 	}
 	
-	if window == 1 && window_timer == 6 && batt >= 1 && special_down && !hitpause{
+	if window == 1 && window_timer == 8 && batt >= 1 && special_down && !hitpause{
 		sound_stop(asset_get("sfx_holy_tablet"));
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 6);
 		window = 4
-		window_timer = 0
-		
+		window_timer = 2
+		fx = spawn_hit_fx(x+20*spr_dir,y - 46,302)
+		fx.pause = 4
 		shake_camera(batt,batt)
 		
 		sound_play(asset_get("sfx_bird_downspecial"));
-		sound_play(sound_get("supercombo"),false,noone,0.8, 2 - batt/4 );
+		sound_play(sound_get("supercombo"),false,noone,0.8, 2 - batt/6 );
 		spawn_base_dust(x,y, "land",spr_dir)
 		battfade = 25
 		spawn_hit_fx(x,y,sw)
@@ -141,7 +142,7 @@ if attack == AT_NSPECIAL{
 		shake_camera(6,6)
 		sound_play(asset_get("sfx_ori_energyhit_heavy"));
 		sound_play(asset_get("sfx_bird_nspecial"));
-		sound_play(sound_get("lazerfire"),false,noone,0.8, 2 - state_timer/60 );
+		sound_play(sound_get("lazerfire"),false,noone,0.8, 2 - state_timer/90 );
 		sound_play(asset_get("sfx_combust"));
 		spawn_hit_fx(x + 30*spr_dir, y - 42, 305)
 		spawn_hit_fx(x + 580*spr_dir,y - 42, lasernor)

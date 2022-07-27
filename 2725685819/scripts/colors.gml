@@ -6,7 +6,7 @@ set_color_profile_slot_range( 0, 34, 23, 28 );
 
 // blade
 set_color_profile_slot( 0, 1, 255, 78, 255 );
-set_color_profile_slot_range( 1, 1, 1, 1 );
+set_color_profile_slot_range( 1, 1, 18, 33 );
 
 // hood
 set_color_profile_slot( 0, 2, 224, 142, 55 );
@@ -349,6 +349,6 @@ set_color_profile_slot( 31, 7, 255, 255, 255 ); //PURE WHITE
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"hoodie","colors":[{"r":228,"g":225,"b":237,"main":true},{"r":171,"g":163,"b":196},{"r":187,"g":199,"b":228},{"r":126,"g":124,"b":169}]},{"name":"blade","colors":[{"r":255,"g":78,"b":255,"main":true}]},{"name":"hood","colors":[{"r":224,"g":142,"b":55,"main":true},{"r":185,"g":110,"b":30}]},{"name":"shorts","colors":[{"r":58,"g":73,"b":109,"main":true},{"r":27,"g":40,"b":69}]},{"name":"hair","colors":[{"r":99,"g":76,"b":126,"main":true},{"r":53,"g":35,"b":73},{"r":244,"g":234,"b":255},{"r":195,"g":178,"b":213}]},{"name":"sheathe","colors":[{"r":10,"g":21,"b":52},{"r":18,"g":0,"b":64,"main":true},{"r":22,"g":42,"b":96}]},{"name":"skin","colors":[{"r":172,"g":120,"b":85,"main":true},{"r":134,"g":79,"b":61}]},{"name":"PURE WHITE","colors":[{"r":255,"g":255,"b":255,"main":true},{"r":192,"g":192,"b":192}]}]}
+{"formatversion":1,"data":[{"name":"hoodie","colors":[{"r":228,"g":225,"b":237,"main":true},{"r":171,"g":163,"b":196},{"r":187,"g":199,"b":228},{"r":126,"g":124,"b":169}]},{"name":"blade","colors":[{"r":255,"g":78,"b":255,"main":true},{"r":173,"g":24,"b":173}]},{"name":"hood","colors":[{"r":224,"g":142,"b":55,"main":true},{"r":185,"g":110,"b":30}]},{"name":"shorts","colors":[{"r":58,"g":73,"b":109,"main":true},{"r":27,"g":40,"b":69}]},{"name":"hair","colors":[{"r":99,"g":76,"b":126,"main":true},{"r":53,"g":35,"b":73},{"r":244,"g":234,"b":255},{"r":195,"g":178,"b":213}]},{"name":"sheathe","colors":[{"r":10,"g":21,"b":52},{"r":18,"g":0,"b":64,"main":true},{"r":22,"g":42,"b":96}]},{"name":"skin","colors":[{"r":172,"g":120,"b":85,"main":true},{"r":134,"g":79,"b":61}]},{"name":"PURE WHITE","colors":[{"r":255,"g":255,"b":255,"main":true},{"r":192,"g":192,"b":192}]}]}
 === END JSON PALETTE ===
 */

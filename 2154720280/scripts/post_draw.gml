@@ -12,7 +12,7 @@ if get_player_color(player) == 11 {
 		draw_sprite_ext(sprite_index, image_index, x  , y , spr_dir, 1, 0 , c_black , 0.5);	
 	}
 	
-if get_gameplay_time() < 200 && get_player_color(player) >= 6 {
+if get_gameplay_time() < 200 && get_player_color(player) >= 6 && get_player_color(player) < 13 {
     
      draw_debug_text(x - 86,y - 120,"Press Taunt for Insanity");
 }

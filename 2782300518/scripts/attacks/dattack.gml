@@ -48,6 +48,13 @@ set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_DATTACK, 1, HG_HITSTUN_MULTIPLIER, .55);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
+if has_rune ("F")
+{
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 9);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 9);
+    set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED, 9);
+}
+
 if has_rune ("O")
 {
     set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 12);

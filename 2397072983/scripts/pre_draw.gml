@@ -74,7 +74,7 @@ if move_cooldown[AT_NSPECIAL_2] > 40 {
 }
 
 if move_cooldown[AT_FSPECIAL_2] > 0 {
-	draw_sprite_ext(sprite_get("shop"), 3, x - 6, y, 1.4, 0.5, 0 , c_fuchsia , move_cooldown[AT_FSPECIAL_2]/240 + random_func(2,2,true)/3 - 0.15)  ;
+	draw_sprite_ext(sprite_get("shop"), 3, x - 14*spr_dir , y - 46, .8, 1.2, 0 , c_fuchsia , move_cooldown[AT_FSPECIAL_2]/240 + random_func(2,2,true)/3 - 0.15)  ;
 }
 
 

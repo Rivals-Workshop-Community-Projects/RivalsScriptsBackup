@@ -16,5 +16,11 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
 
 }
 
+
+voicecd = 90
 dmhit = 0
 halo = 0
+
+if zvoice != 0 {
+ sound_stop(zvoice)
+}

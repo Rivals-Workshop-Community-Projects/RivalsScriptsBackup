@@ -66,6 +66,7 @@ sprite_change_offset("fx_ability_get", 96, 90);
 sprite_change_offset("fx_nspecial_fire", 68, 140);
 sprite_change_offset("fx_star_hit", 64, 64);
 sprite_change_offset("fx_star_trail", 11, 10);
+sprite_change_offset("ability_icons", 18, 36);
 sprite_change_offset("ability_fire", 96, 118);
 sprite_change_offset("ability_beam", 101, 198);
 sprite_change_offset("ability_ranger", 101, 118);
@@ -141,3 +142,4 @@ if ("kirb_chonk_spr_map" in self)
 sprite_change_offset("trialgrounds_kirby", 31, 0);
 
 set_victory_theme(sound_get("victory"));
+set_victory_bg(sprite_get( "victorybg" ));

@@ -9,7 +9,7 @@ set_window_value(47, 2, AG_WINDOW_LENGTH, 9);
 set_window_value(47, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(47, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(47, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(47, 2, AG_WINDOW_SFX, sound_get("claw1"));
+set_window_value(47, 2, AG_WINDOW_SFX, sound_get("claw2"));
 
 set_window_value(47, 3, AG_WINDOW_LENGTH, 17);
 set_window_value(47, 3, AG_WINDOW_ANIM_FRAMES, 1);
@@ -33,7 +33,7 @@ set_window_value(47, 6, AG_WINDOW_LENGTH, 6);
 set_window_value(47, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(47, 6, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(47, 6, AG_WINDOW_HAS_SFX, 1);
-set_window_value(47, 6, AG_WINDOW_SFX, sound_get("claw3"));
+set_window_value(47, 6, AG_WINDOW_SFX, sound_get("claw2"));
 set_window_value(47, 6, AG_WINDOW_SFX_FRAME, 3);
 
 set_window_value(47, 7, AG_WINDOW_LENGTH, 17);

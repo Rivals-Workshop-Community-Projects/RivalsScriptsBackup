@@ -29,7 +29,7 @@ set_window_value(AT_COPY_ESP, 3, AG_WINDOW_HSPEED_TYPE, 1);
 
 //transition
 set_window_value(AT_COPY_ESP, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_COPY_ESP, 4, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_COPY_ESP, 4, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_COPY_ESP, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_COPY_ESP, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_COPY_ESP, 4, AG_WINDOW_HSPEED_TYPE, 1);

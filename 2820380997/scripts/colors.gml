@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 2, 16, 6 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 26 );
 
 // Water Dragon
 set_color_profile_slot( 1, 0, 200, 200, 240 ); //Fur
@@ -196,15 +196,15 @@ set_color_profile_slot( 16, 5, 94, 183, 242 ); //Soul Fire 2
 set_color_profile_slot( 16, 6, 242, 211, 94 ); //Soul Fire 1
 set_color_profile_slot( 16, 7, 209, 166, 37 ); //Pawpads
 
-// Ithaca
-set_color_profile_slot( 17, 0, 242, 233, 233 ); //Fur
-set_color_profile_slot( 17, 1, 102, 40, 34 ); //Hair
-set_color_profile_slot( 17, 2, 51, 51, 45 ); //Kimono Main
-set_color_profile_slot( 17, 3, 171, 121, 43 ); //Kimono Accent
-set_color_profile_slot( 17, 4, 171, 121, 43 ); //Sash and Anklet
-set_color_profile_slot( 17, 5, 222, 218, 218 ); //Soul Fire 2
-set_color_profile_slot( 17, 6, 240, 142, 67 ); //Soul Fire 1
-set_color_profile_slot( 17, 7, 244, 112, 133 ); //Pawpads
+// Fubuki Shirakami
+set_color_profile_slot( 17, 0, 242, 228, 201 ); //Fur
+set_color_profile_slot( 17, 1, 246, 248, 252 ); //Hair
+set_color_profile_slot( 17, 2, 246, 248, 252 ); //Kimono Main
+set_color_profile_slot( 17, 3, 171, 226, 255 ); //Kimono Accent
+set_color_profile_slot( 17, 4, 75, 174, 144 ); //Sash and Anklet
+set_color_profile_slot( 17, 5, 246, 248, 252 ); //Soul Fire 2
+set_color_profile_slot( 17, 6, 171, 226, 255 ); //Soul Fire 1
+set_color_profile_slot( 17, 7, 54, 49, 47 ); //Pawpads
 
 // Ranked Gold
 set_color_profile_slot( 18, 0, 247, 241, 161 ); //Fur
@@ -216,45 +216,75 @@ set_color_profile_slot( 18, 5, 230, 182, 28 ); //Soul Fire 2
 set_color_profile_slot( 18, 6, 19, 74, 194 ); //Soul Fire 1
 set_color_profile_slot( 18, 7, 244, 112, 133 ); //Pawpads
 
+// Ithaca
+set_color_profile_slot( 19, 0, 242, 233, 233 ); //Fur
+set_color_profile_slot( 19, 1, 102, 40, 34 ); //Hair
+set_color_profile_slot( 19, 2, 51, 51, 45 ); //Kimono Main
+set_color_profile_slot( 19, 3, 171, 121, 43 ); //Kimono Accent
+set_color_profile_slot( 19, 4, 171, 121, 43 ); //Sash and Anklet
+set_color_profile_slot( 19, 5, 222, 218, 218 ); //Soul Fire 2
+set_color_profile_slot( 19, 6, 240, 142, 67 ); //Soul Fire 1
+set_color_profile_slot( 19, 7, 244, 112, 133 ); //Pawpads
+
 // Azamuku
-set_color_profile_slot( 19, 0, 251, 234, 216 ); //Fur
-set_color_profile_slot( 19, 1, 56, 38, 53 ); //Hair
-set_color_profile_slot( 19, 2, 177, 65, 77 ); //Kimono Main
-set_color_profile_slot( 19, 3, 255, 214, 94 ); //Kimono Accent
-set_color_profile_slot( 19, 4, 56, 38, 53 ); //Sash and Anklet
-set_color_profile_slot( 19, 5, 207, 0, 173 ); //Soul Fire 2
-set_color_profile_slot( 19, 6, 63, 225, 234 ); //Soul Fire 1
-set_color_profile_slot( 19, 7, 251, 234, 216 ); //Pawpads
+set_color_profile_slot( 20, 0, 251, 234, 216 ); //Fur
+set_color_profile_slot( 20, 1, 56, 38, 53 ); //Hair
+set_color_profile_slot( 20, 2, 177, 65, 77 ); //Kimono Main
+set_color_profile_slot( 20, 3, 255, 214, 94 ); //Kimono Accent
+set_color_profile_slot( 20, 4, 56, 38, 53 ); //Sash and Anklet
+set_color_profile_slot( 20, 5, 207, 0, 173 ); //Soul Fire 2
+set_color_profile_slot( 20, 6, 63, 225, 234 ); //Soul Fire 1
+set_color_profile_slot( 20, 7, 251, 234, 216 ); //Pawpads
 
 // Tamamo-no-Mae
-set_color_profile_slot( 20, 0, 253, 236, 212 ); //Fur
-set_color_profile_slot( 20, 1, 255, 89, 89 ); //Hair
-set_color_profile_slot( 20, 2, 68, 82, 196 ); //Kimono Main
-set_color_profile_slot( 20, 3, 233, 194, 127 ); //Kimono Accent
-set_color_profile_slot( 20, 4, 54, 41, 105 ); //Sash and Anklet
-set_color_profile_slot( 20, 5, 54, 41, 105 ); //Soul Fire 2
-set_color_profile_slot( 20, 6, 68, 82, 196 ); //Soul Fire 1
-set_color_profile_slot( 20, 7, 51, 53, 52 ); //Pawpads
+set_color_profile_slot( 21, 0, 253, 236, 212 ); //Fur
+set_color_profile_slot( 21, 1, 255, 89, 89 ); //Hair
+set_color_profile_slot( 21, 2, 68, 82, 196 ); //Kimono Main
+set_color_profile_slot( 21, 3, 233, 194, 127 ); //Kimono Accent
+set_color_profile_slot( 21, 4, 54, 41, 105 ); //Sash and Anklet
+set_color_profile_slot( 21, 5, 54, 41, 105 ); //Soul Fire 2
+set_color_profile_slot( 21, 6, 68, 82, 196 ); //Soul Fire 1
+set_color_profile_slot( 21, 7, 51, 53, 52 ); //Pawpads
+
+// Bold Kobold
+set_color_profile_slot( 22, 0, 166, 241, 209 ); //Fur
+set_color_profile_slot( 22, 1, 3, 39, 16 ); //Hair
+set_color_profile_slot( 22, 2, 11, 85, 54 ); //Kimono Main
+set_color_profile_slot( 22, 3, 0, 142, 54 ); //Kimono Accent
+set_color_profile_slot( 22, 4, 0, 142, 54 ); //Sash and Anklet
+set_color_profile_slot( 22, 5, 0, 142, 54 ); //Soul Fire 2
+set_color_profile_slot( 22, 6, 11, 85, 54 ); //Soul Fire 1
+set_color_profile_slot( 22, 7, 32, 102, 145 ); //Pawpads
+
+// Roekanshoku
+set_color_profile_slot( 23, 0, 255, 245, 245 ); //Fur
+set_color_profile_slot( 23, 1, 153, 100, 77 ); //Hair
+set_color_profile_slot( 23, 2, 231, 239, 244 ); //Kimono Main
+set_color_profile_slot( 23, 3, 72, 153, 247 ); //Kimono Accent
+set_color_profile_slot( 23, 4, 36, 44, 66 ); //Sash and Anklet
+set_color_profile_slot( 23, 5, 37, 36, 41 ); //Soul Fire 2
+set_color_profile_slot( 23, 6, 153, 2, 23 ); //Soul Fire 1
+set_color_profile_slot( 23, 7, 212, 50, 14 ); //Pawpads
 
 // Trans Rights
-set_color_profile_slot( 21, 0, 235, 220, 220 ); //Fur
-set_color_profile_slot( 21, 1, 186, 37, 67 ); //Hair
-set_color_profile_slot( 21, 2, 79, 180, 219 ); //Kimono Main
-set_color_profile_slot( 21, 3, 201, 26, 61 ); //Kimono Accent
-set_color_profile_slot( 21, 4, 201, 26, 61 ); //Sash and Anklet
-set_color_profile_slot( 21, 5, 43, 175, 227 ); //Soul Fire 2
-set_color_profile_slot( 21, 6, 222, 38, 74 ); //Soul Fire 1
-set_color_profile_slot( 21, 7, 219, 107, 130 ); //Pawpads
+set_color_profile_slot( 24, 0, 255, 250, 254 ); //Fur
+set_color_profile_slot( 24, 1, 140, 226, 255 ); //Hair
+set_color_profile_slot( 24, 2, 255, 179, 237 ); //Kimono Main
+set_color_profile_slot( 24, 3, 105, 198, 255 ); //Kimono Accent
+set_color_profile_slot( 24, 4, 255, 140, 213 ); //Sash and Anklet
+set_color_profile_slot( 24, 5, 79, 180, 219 ); //Soul Fire 2
+set_color_profile_slot( 24, 6, 140, 232, 255 ); //Soul Fire 1
+set_color_profile_slot( 24, 7, 255, 140, 213 ); //Pawpads
 
 // BLM
-set_color_profile_slot( 22, 0, 77, 81, 92 ); //Fur
-set_color_profile_slot( 22, 1, 56, 52, 45 ); //Hair
-set_color_profile_slot( 22, 2, 64, 61, 61 ); //Kimono Main
-set_color_profile_slot( 22, 3, 237, 235, 221 ); //Kimono Accent
-set_color_profile_slot( 22, 4, 179, 176, 29 ); //Sash and Anklet
-set_color_profile_slot( 22, 5, 211, 212, 197 ); //Soul Fire 2
-set_color_profile_slot( 22, 6, 242, 191, 3 ); //Soul Fire 1
-set_color_profile_slot( 22, 7, 196, 194, 184 ); //Pawpads
+set_color_profile_slot( 25, 0, 82, 45, 0 ); //Fur
+set_color_profile_slot( 25, 1, 56, 52, 45 ); //Hair
+set_color_profile_slot( 25, 2, 23, 22, 22 ); //Kimono Main
+set_color_profile_slot( 25, 3, 255, 216, 0 ); //Kimono Accent
+set_color_profile_slot( 25, 4, 255, 213, 0 ); //Sash and Anklet
+set_color_profile_slot( 25, 5, 211, 212, 197 ); //Soul Fire 2
+set_color_profile_slot( 25, 6, 255, 221, 0 ); //Soul Fire 1
+set_color_profile_slot( 25, 7, 255, 252, 239 ); //Pawpads
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

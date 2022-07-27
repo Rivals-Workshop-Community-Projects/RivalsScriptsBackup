@@ -1,5 +1,7 @@
 ///
 
+draw_xscale = spr_dir
+
 if attack == AT_DSPECIAL && hbox_num == 3 {
 	plasma_safe = true
 	with player_id.thundervictim {

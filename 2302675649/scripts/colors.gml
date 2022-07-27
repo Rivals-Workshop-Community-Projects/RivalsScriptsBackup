@@ -206,15 +206,15 @@ set_color_profile_slot( 17, 5, 102, 51, 39 ); //skin
 set_color_profile_slot( 17, 6, 87, 22, 22 ); //skin2
 set_color_profile_slot( 17, 7, 37, 34, 34 ); //hair
 
-// Iron
-set_color_profile_slot( 18, 0, 218, 215, 231 ); //sword
-set_color_profile_slot( 18, 1, 160, 173, 190 ); //shirt
-set_color_profile_slot( 18, 2, 56, 55, 89 ); //shirt2
-set_color_profile_slot( 18, 3, 209, 159, 166 ); //pants
-set_color_profile_slot( 18, 4, 94, 51, 84 ); //pants2
-set_color_profile_slot( 18, 5, 255, 233, 156 ); //skin
-set_color_profile_slot( 18, 6, 99, 71, 47 ); //skin2
-set_color_profile_slot( 18, 7, 161, 126, 126 ); //hair
+// Kizuna
+set_color_profile_slot( 18, 0, 255, 107, 109 ); //sword
+set_color_profile_slot( 18, 1, 15, 10, 10 ); //shirt
+set_color_profile_slot( 18, 2, 64, 29, 32 ); //shirt2
+set_color_profile_slot( 18, 3, 112, 44, 42 ); //pants
+set_color_profile_slot( 18, 4, 82, 34, 37 ); //pants2
+set_color_profile_slot( 18, 5, 213, 193, 195 ); //skin
+set_color_profile_slot( 18, 6, 26, 26, 26 ); //skin2
+set_color_profile_slot( 18, 7, 54, 52, 50 ); //hair
 
 // Genesis
 set_color_profile_slot( 19, 0, 255, 0, 0 ); //sword

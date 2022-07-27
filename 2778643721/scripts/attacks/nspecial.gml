@@ -121,6 +121,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("sfx_hit_magic_weak"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 6);
@@ -136,8 +137,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 112);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -8);
@@ -150,6 +151,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("sfx_hit_magic_heavy"));
+set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 9);
@@ -163,8 +165,8 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 4);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 12);
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 361);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 148);
-set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 22);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -8);
@@ -177,6 +179,8 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 12);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
 
 
 

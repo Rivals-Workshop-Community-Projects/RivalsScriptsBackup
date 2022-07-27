@@ -18,7 +18,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 //IASA
@@ -54,6 +54,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 0.00001);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, -0.1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_FRICTION, -0.1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, vfx_slash_weak);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("slicen"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_CHAOS_EXCLUDE, 0);
 
@@ -78,6 +79,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER, 0.00001);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, vfx_slash);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("slicen"));
 
 

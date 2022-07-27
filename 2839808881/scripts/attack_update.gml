@@ -656,11 +656,13 @@ switch(attack){
 		}
 		
 		if (window == 3 || window == 4){
-			
+			print(y)
 			//ground interaction
 			if(place_meeting(x+(0*spr_dir), y+28, asset_get("par_block"))){
 				if (!hitpause){
+					hsp *= 0.35;
 					y += 28;
+					set_state(PS_PRATLAND);
 					//sound_play(landing_lag_sound);
 					spr_angle = 0;
 					sprite_change_offset("uspecial", 88, 84);
@@ -697,20 +699,6 @@ switch(attack){
 				}
 			}
 		}
-		
-		/*
-		//bonking into ground
-		if (window == 3 || window == 4){
-			if(place_meeting(x, y + 28, asset_get("par_block"))){
-				set_state(PS_PRATLAND);
-				hsp *= 0.35;
-				//sound_play(landing_lag_sound);
-				spr_angle = 0;
-				sprite_change_offset("uspecial", 88, 84);
-				
-			}
-		}
-		*/
 		if (window == 4){
 			hsp *= 0.9;
 			vsp *= 0.9;
@@ -721,7 +709,13 @@ switch(attack){
 			sprite_change_offset("uspecial", 88, 84);
 			y += 20;
 		}
-		
+		if(window == 3){
+			if(!free){
+				if(jet_flight_dir == 4 || jet_flight_dir == 5 || jet_flight_dir == 6){
+					//
+				}
+			}
+		}
 		if (window == 4 || window == 5){
 			if (!free){
 				set_state(PS_PRATLAND);
@@ -1372,6 +1366,7 @@ if (attack == AT_COPY_ICE){
 		if (!special_down && state_timer >= 30){
 			window = 4;
 			window_timer = 0;
+			sound_play(asset_get("sfx_ice_ftilt"), false, noone, 0.4, 1.8);
 		}
 	}
 	
@@ -1735,9 +1730,11 @@ if (attack == AT_COPY_ESP){
 			esp_idle_timer++;
 		}
 		if (esp_idle_timer == 70){
+			esp_idle_timer++;
 			if (esp_charged == false){
 				sound_play(sound_get("sfx_star_allies_esp_pkelectroshift"));
 				spawn_hit_fx(x, y-12, 110);
+				spawn_hit_fx(esp_x, esp_y-12, 110);
 			}
 			esp_charged = true;
 			create_hitbox(AT_COPY_ESP, 4, esp_x, esp_y);

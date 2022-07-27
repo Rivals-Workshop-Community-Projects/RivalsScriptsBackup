@@ -81,23 +81,23 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_CHAOS_EXCLUDE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 10);
+set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 120);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 120);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 0);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 11);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 0);
-set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 302  );
+set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, vfx_slash);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, sound_get("slicen"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_EFFECT, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.4);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_CHAOS_EXCLUDE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 3, HG_PARENT_HITBOX, 2);
@@ -107,6 +107,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 6);
 set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_CHAOS_EXCLUDE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 4, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_TYPE, 1);
@@ -115,6 +116,7 @@ set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 12);
 set_hitbox_value(AT_DSPECIAL, 4, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DSPECIAL, 4, HG_CHAOS_EXCLUDE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 6, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DSPECIAL, 6, HG_HITBOX_TYPE, 1);
@@ -123,6 +125,7 @@ set_hitbox_value(AT_DSPECIAL, 6, HG_WINDOW_CREATION_FRAME, 18);
 set_hitbox_value(AT_DSPECIAL, 6, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSPECIAL, 6, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 6, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DSPECIAL, 6, HG_CHAOS_EXCLUDE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 7, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DSPECIAL, 7, HG_HITBOX_TYPE, 1);
@@ -131,6 +134,7 @@ set_hitbox_value(AT_DSPECIAL, 7, HG_WINDOW_CREATION_FRAME, 24);
 set_hitbox_value(AT_DSPECIAL, 7, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSPECIAL, 7, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 7, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DSPECIAL, 7, HG_CHAOS_EXCLUDE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 8, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DSPECIAL, 8, HG_HITBOX_TYPE, 1);
@@ -139,6 +143,7 @@ set_hitbox_value(AT_DSPECIAL, 8, HG_WINDOW_CREATION_FRAME, 30);
 set_hitbox_value(AT_DSPECIAL, 8, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSPECIAL, 8, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 8, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DSPECIAL, 8, HG_CHAOS_EXCLUDE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 9, HG_WINDOW, 6);
 set_hitbox_value(AT_DSPECIAL, 9, HG_LIFETIME, 2);
@@ -149,8 +154,8 @@ set_hitbox_value(AT_DSPECIAL, 9, HG_HEIGHT, 90);
 set_hitbox_value(AT_DSPECIAL, 9, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, 11);
 set_hitbox_value(AT_DSPECIAL, 9, HG_ANGLE, -45);
-set_hitbox_value(AT_DSPECIAL, 9, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_DSPECIAL, 9, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_DSPECIAL, 9, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 9, HG_HITPAUSE_SCALING, 0.70);
 set_hitbox_value(AT_DSPECIAL, 9, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

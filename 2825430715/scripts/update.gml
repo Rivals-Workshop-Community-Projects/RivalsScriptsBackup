@@ -96,11 +96,10 @@
  }
  
  
-if hurted == true && hitted == true {
+if hurted == true && hitted == true && (attack == AT_FSTRONG or attack == AT_UAIR or attack == AT_FSPECIAL) {
         invincible = true 
         invince_time = 10
         fakeinvi = 12
-        has_hit_player = false
 }
 
 with asset_get("pHitBox") {
@@ -202,7 +201,7 @@ if fakeinvi > 0 {
 }
 
 if !hitpause {
-   if hurted == true && hitted == true {
+   if hurted == true && hitted == true  && (attack == AT_FSTRONG or attack == AT_UAIR or attack == AT_FSPECIAL)  {
 		state = astate
 		attack = aattack
         window = awindow 

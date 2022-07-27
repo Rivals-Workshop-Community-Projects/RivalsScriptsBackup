@@ -1,4 +1,5 @@
 sprite_index = sprite_get("nspecial_proj");
+mask_index = sprite_get("nspecial_mask");
 
 spr_dir = player_id.spr_dir;
 

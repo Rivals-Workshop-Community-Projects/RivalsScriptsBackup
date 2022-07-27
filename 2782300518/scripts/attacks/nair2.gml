@@ -8,7 +8,7 @@ set_attack_value(44, AG_HURTBOX_SPRITE, sprite_get("nair2_hurt"));
 set_window_value(44, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(44, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(44, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(44, 1, AG_WINDOW_SFX, sound_get("motorbike_extra"));
+set_window_value(44, 1, AG_WINDOW_SFX, sound_get("motorbike_uppercut"));
 set_window_value(44, 1, AG_WINDOW_SFX_FRAME, 3);
 
 set_window_value(44, 2, AG_WINDOW_LENGTH, 10);

@@ -14,9 +14,9 @@ else
 		case PS_ATTACK_GROUND:
 		case PS_ATTACK_AIR:
 			attacking = true;
-			if wait_time == 0{
+			if reaction_time == 0{
 				
-				wait_time = -1;
+				reaction_time = -1;
 			}
 		break;
 		
@@ -76,11 +76,11 @@ else
 
 	//------------------ Wait time
 	//AI difficulty affects wait time, higher difficulties will see a more aggressive Carol   
-	if(wait_time == -1 and !attacking){
-		wait_time = 72 - (temp_level * 8);
+	if(reaction_time == -1 and !attacking){
+		reaction_time = 56 - (temp_level * 6);
 	}
-	if wait_time > 0{
-		wait_time--;
+	if reaction_time > 0{
+		reaction_time--;
 	}
 
 	switch (ai_target.state)
@@ -302,34 +302,90 @@ else
 			}
 			if (random_direction > 0)
 			{
-				if ((window == 3 || window == 5) && window_timer == 3 && has_hit_player)
+				if (strongPercent && !ai_recovering && !offstage)
 				{
-					switch (random_direction)
+					if (ydist <= 60)
 					{
-						case 1:
-							joy_pad_idle = false;
-							if (spr_dir == 1)
-							{
-								right_down = true;
-							}
-							else
-							{
-								left_down = true;
-							}
-							attack_pressed = true;
+						clear_button_buffer( PC_ATTACK_PRESSED );
+						clear_button_buffer( PC_JUMP_PRESSED );
+				        joy_pad_idle = true;
+				        left_down = false;
+				        right_down = false;
+   				        up_down = true;
+   				        down_down = false;
+   				        special_pressed = false;
+   				        attack_pressed = false;
+   				        strong_pressed = true;
+					}
+					else
+					{
+						if (xdist < 30 && !ai_target_offstage)
+						{
+							clear_button_buffer( PC_ATTACK_PRESSED );
+							clear_button_buffer( PC_JUMP_PRESSED );
+				        	joy_pad_idle = true;
+				        	left_down = false;
+				        	right_down = false;
+   				        	up_down = false;
+   				        	down_down = true;
+   				        	special_pressed = false;
+   				        	attack_pressed = false;
+   				        	strong_pressed = true;
+						}
+						else
+						{
+							clear_button_buffer( PC_ATTACK_PRESSED );
+							clear_button_buffer( PC_JUMP_PRESSED );
+				        	joy_pad_idle = true;
+			     			if x > ai_target.x{
+			     				left_down = true;
+	    		 				right_down = false;
+					 	  	} else {
+	        			    	left_down = false;
+	        				 	right_down = true;
+	    					}
+   				        	up_down = false;
+   				        	down_down = false;
+   				        	special_pressed = false;
+   				        	attack_pressed = false;
+   				        	strong_pressed = true;
+						}
+					}
+				}
+				else
+				{
+					if ((window == 3 || window == 5) && window_timer == 3 && has_hit_player)
+					{
+						switch (random_direction)
+						{
+							case 1:
+								joy_pad_idle = false;
+								if (spr_dir == 1)
+								{
+									right_down = true;
+								}
+								else
+								{
+									left_down = true;
+								}
+								attack_pressed = true;
+								random_direction = random_func(9, 4, 1);
+								break;
+								case 2:
+								joy_pad_idle = false;
+								up_down = true;
+								attack_pressed = true;
+								random_direction = random_func(9, 4, 1);
 							break;
-						case 2:
-							joy_pad_idle = false;
-							up_down = true;
-							attack_pressed = true;
-						break;
-						case 3:
-							joy_pad_idle = false;
-							up_down = true;
-							attack_pressed = true;
-						break;
-						default:
-						break;
+							case 3:
+								joy_pad_idle = false;
+								up_down = true;
+								attack_pressed = true;
+								random_direction = random_func(9, 4, 1);
+							break;
+							default:
+							break;
+						}
 					}
 				}
 			}
@@ -358,7 +414,85 @@ else
 		    {
 		    	can_DACUS = false;
 		    }
-			break;
+		break;
+		case AT_NAIR:
+		{
+			if (!free && has_hit && !ai_recovering && !offstage)
+			{
+				if (strongPercent)
+				{
+					clear_button_buffer( PC_ATTACK_PRESSED );
+					clear_button_buffer( PC_JUMP_PRESSED );
+			       	joy_pad_idle = true;
+					if x > ai_target.x{
+						left_down = true;
+	    				right_down = false;
+			 	  	} else {
+	        	    	left_down = false;
+	        		 	right_down = true;
+	    			}
+   				   	up_down = false;
+   				   	down_down = false;
+   				   	special_pressed = false;
+   				   	attack_pressed = false;
+   				   	strong_pressed = true;
+				}
+				else
+				{
+					var random_move = random_func(4, 2, 1);
+					clear_button_buffer( PC_ATTACK_PRESSED );
+					clear_button_buffer( PC_JUMP_PRESSED );
+			       	joy_pad_idle = true;
+					if x > ai_target.x{
+						left_down = true;
+	    				right_down = false;
+			 	  	} else {
+	        	    	left_down = false;
+	        		 	right_down = true;
+	    			}
+   				   	up_down = false;
+   				   	down_down = false;
+   				   	special_pressed = random_move? 0: 1;
+   				   	attack_pressed = random_move;
+   				   	strong_pressed = false;
+				}
+			}
+			else if (free && has_hit && djumps = 0 && !ai_recovering && !offstage)
+			{
+				clear_button_buffer( PC_ATTACK_PRESSED );
+				clear_button_buffer( PC_JUMP_PRESSED );
+			   	joy_pad_idle = true;
+				if x > ai_target.x{
+				left_down = true;
+	    			right_down = false;
+			  	} else {
+	            	left_down = false;
+	        	 	right_down = true;
+	    		}
+   			   	up_down = false;
+   			   	down_down = false;
+   			   	special_pressed = false;
+   			   	attack_pressed = false;
+   			   	strong_pressed = false;
+   			   	jump_pressed = true;
+			}
+		}
+		case AT_UAIR:
+		{
+			if (has_hit && xdist < 30 && y  > ai_target.y -30 && y < ai_target.y - 60)
+			{
+				clear_button_buffer( PC_ATTACK_PRESSED );
+				clear_button_buffer( PC_JUMP_PRESSED );
+			    joy_pad_idle = true;
+			    left_down = false;
+			    right_down = false;
+   			    up_down = true;
+   			    down_down = false;
+   			    special_pressed = true;
+   			    attack_pressed = false;
+   			    strong_pressed = false;
+			}
+		}
 		case AT_DAIR:
 			can_DACUS = false;
 			if (temp_level >= 7 && !do_not_attack && !ai_recovering && !offstage && has_hit)
@@ -403,7 +537,7 @@ else
 			}
 		case AT_DATTACK:
 		case 3:
-			if (temp_level >= 7 && !do_not_attack && !ai_recovering && offstage && has_hit)
+			if (temp_level >= 7 && !do_not_attack && !ai_recovering && !offstage && has_hit)
 			{
 				if (DACUSpercent < targetdamage and targetdamage < DACUSpercent * 1.30)
 				{
@@ -567,7 +701,7 @@ else
 	    }
 	    
 	    //Chase - Agression
-		if (((0 > rangedtimer) and (!ai_recovering and inactive > 20)) and (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) and state_cat != SC_HITSTUN and !ai_target_offstage and !offstage  and !can_DACUS and xdist > 100 and !wait_time > 0){
+		if (((0 > rangedtimer) and (!ai_recovering and inactive > 20)) and (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) and state_cat != SC_HITSTUN and !ai_target_offstage and !offstage  and !can_DACUS and xdist > 100 and !reaction_time > 0){
 	    	if ai_target.x > x{
 	    		right_hard_pressed = true;
 	    		if (!ai_recovering)
@@ -605,7 +739,7 @@ else
 		//Chase - Combos
 		if(ai_target.state_cat == SC_HITSTUN and state != PS_PRATFALL and state_cat != SC_HITSTUN 
 		and !((attack == AT_USPECIAL or attack == AT_FSPECIAL or attack == AT_USPECIAL_2 or attack == AT_USPECIAL_2)
-		and state == PS_ATTACK_AIR) and !ai_target_offstage and !offstage and !can_DACUS and !ai_recovering and !wait_time > 0){
+		and state == PS_ATTACK_AIR) and !ai_target_offstage and !offstage and !can_DACUS and !ai_recovering and !reaction_time > 0){
 			if ai_target.x > x{
 	    	    right_hard_pressed = true;
 	    		switch (state)
@@ -658,7 +792,7 @@ else
 	    	}
 	    }
 	    //Prevento from attacking if should wait and target is invincible
-	    if(wait_time > 0 or ai_target.invince_time > 10){
+	    if(reaction_time > 0 or ai_target.invince_time > 10){
 			do_not_attack = true;
 		}
 	    
@@ -698,6 +832,7 @@ else
 	    switch (prev_state)
 	    {
 	    	case PS_HITSTUN:
+	    	case PS_TUMBLE:
 		    	var juggle_break = random_func(1, 1, 1);
 		   		if (juggle_break == 0 || y > (stagey - 300) || !has_airdodge)
 		    	{

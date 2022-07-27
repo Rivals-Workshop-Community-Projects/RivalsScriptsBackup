@@ -103,7 +103,11 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
             		            visible = true 
             		            print("inevitable")
             		            with other.player_id {
+            		            	old_hsp = 0
+            		            	old_vsp = 0
             		             create_hitbox(AT_NSPECIAL,2,x,y)
+            		             hitpause = true 
+            		             hitstop = 15
             		            }
                 			}
                 		} else {
@@ -114,7 +118,11 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
             		    visible = true
             		    print("inevitable")
             		    with other.player_id {
+            		    	        old_hsp = 0
+            		            	old_vsp = 0
             		            create_hitbox(AT_NSPECIAL,2,x,y)
+            		            hitpause = true 
+            		             hitstop = 15
             		     }
                 		}
                    }

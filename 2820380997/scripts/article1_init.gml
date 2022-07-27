@@ -45,6 +45,7 @@ on_platform = false;
 // Other Variables
 unbashable = 1;
 was_parried = false;
+was_hit = false;
 can_be_grounded = true;
 ignores_walls = false;
 uses_shader = true;
@@ -96,10 +97,9 @@ plat_clone_assist_sprite = sprite_get("plat_clone_assist");
 
 // Attack Variables
 current_hitbox = noone;
-clone_dspecial_cooldown = 0;
+clone_dspecial_cooldown = 15;
 player_id.clone_dspecial_assist = false;
 not_throwable_flag = false; // For got hti logic
-was_parried_flag = false;
 clone_dspecial_hit = false;
 grabbed_player_obj = noone;
 grabbed_player_relative_x = 0;

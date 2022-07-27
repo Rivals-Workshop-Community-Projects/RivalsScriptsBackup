@@ -42,7 +42,6 @@ set_window_value(AT_DSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_DSTRONG, 2);
 
 //Front Hit
-set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_NAME, "Front Hitbox");
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 2);
@@ -55,8 +54,8 @@ set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 0.85);
+set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 2);
@@ -64,7 +63,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sfx_smash_ult_sword_hit_medium);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 0);
 
 //Back Hit
-set_hitbox_value(AT_DSTRONG, 2, HG_MUNO_HITBOX_NAME, "Back Hitbox");
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 2);
@@ -77,8 +75,8 @@ set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 140);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.85);
+set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, -4);

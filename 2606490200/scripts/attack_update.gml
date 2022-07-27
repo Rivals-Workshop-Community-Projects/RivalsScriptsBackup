@@ -530,7 +530,7 @@ switch attack {
     
     
     if window == 1 && window_timer == 1 && !hitpause {
-        sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1)
+        sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.4)
     }
     
     if window == 2 && window_timer == 2 && !hitpause {

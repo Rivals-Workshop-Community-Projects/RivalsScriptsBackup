@@ -26,7 +26,11 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION , 1);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION , 0.3);
+
+
 
 
 set_num_hitboxes(AT_USPECIAL, 2);

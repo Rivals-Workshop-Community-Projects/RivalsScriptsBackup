@@ -297,6 +297,26 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.15", "25th July, 2022");
+
+initHeader("Buffs");
+initSection("- 1 new scream
+- Bair can now grab articles
+- Increased the size of Utilt's hitboxes
+- Made Jab1's hitbox a bit taller and more disjointed
+- Fixed Doge's words/sfx being delayed by 1 frame from when his mouth opens.
+- Made Doge's animation a bit slower so you can see it better.
+- Made Doge leave 16 frames earlier (around when his word dies)
+- Made Dtilt's hitbox slightly bigger.
+- Gave Ftilt a sweetspot on his hand.");
+
+initHeader("Fixes / Other Changes");
+initSection("- Made Jab1's hitbox come out 3 frames sooner to match the visual
+- Made Doge return to idle 1 frame sooner to fix a bug with his animation
+- Made projectiles use the new grab hitbox on bair to make it a bit easier to grab them
+- Made grabbed projectiles have 0 hit priority.
+- Made grabbed projectiles properly sit on the plunger.");
+
 initPatch("1.14", "14th July, 2022");
 
 initHeader("Buffs");

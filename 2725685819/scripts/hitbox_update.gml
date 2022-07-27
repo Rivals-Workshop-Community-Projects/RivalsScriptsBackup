@@ -1,12 +1,10 @@
-if attack == AT_NSPECIAL {
-	player_id.attack_cooldown[AT_NSPECIAL] = 90
-}
+
 
 if (attack == AT_FSPECIAL && hbox_num == 1){
 	hsp = clamp(hsp, -7, 7);
 	
 	if (player == orig_player)
-	player_id.move_cooldown[AT_FSPECIAL]= 20;
+	player_id.move_cooldown[AT_FSPECIAL]= 10;
 	
 	player_id.jc_pointblank = false;
 	

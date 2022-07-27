@@ -87,4 +87,12 @@ if my_hitboxID.attack == AT_FSTRONG {
 	}
 }
 
+if my_hitboxID.attack == AT_DAIR{
+	if(my_hitboxID.hbox_num == 2){
+		sound_play(asset_get("sfx_ice_back_air"));
+	}else if(my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3){
+		sound_play(asset_get("sfx_ice_shatter_big"));
+	}
+}
+
 }

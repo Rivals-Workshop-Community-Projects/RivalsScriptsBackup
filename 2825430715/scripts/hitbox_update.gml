@@ -30,7 +30,8 @@ if attack == AT_DTILT {
 if attack == AT_DTHROW && hbox_num == 4 {
 	hsp /= 1.15
 	vsp /= 1.15
-
+     
+     transcendent = false 
 	
 	if player_id.state_cat == SC_HITSTUN {
 		destroyed = true
@@ -94,6 +95,7 @@ if attack == AT_DTHROW && hbox_num == 4 {
 	
 	if player_id.attack == AT_DSPECIAL && player_id.attacking = true {
 	if player_id.window == 1 {
+		player_id.move_cooldown[AT_DSPECIAL] = 120
 		if hitbox_timer % 3 == 0 {
 			ptprep = spawn_hit_fx(x + 20 - random_func(2,40,true),y + 50 - random_func(1,50,true) ,ptgone)
     					ptprep.spr_dir = 0.3*spr_dir
@@ -105,6 +107,7 @@ if attack == AT_DTHROW && hbox_num == 4 {
 	}
 	
 	if player_id.window == 2 {
+		player_id.move_cooldown[AT_DSPECIAL] = 0
 		hitbox_timer = 20 + player_id.window_timer
 	}
 	if player_id.window == 3  && hitbox_timer < 40 {

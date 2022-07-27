@@ -1,4 +1,10 @@
 debug = 0;
+small_djump = true;
+//blastzones
+blastzone_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE);
+blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE);
+blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);
+blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
 
 inputs_swapped_toggle = false;
 did_swap_inputs = false;
@@ -257,8 +263,6 @@ if (brawl_mode){
 	
 	sfx_dimensional_cape_strike = sound_get("sfx_smash_brawl_dimensional_cape_strike");
 	
-	sfx_shuttle_loop_2 = sound_get("sfx_smash_brawl_shuttle_loop");
-	
 	vc_mk_taunt_1 = sound_get("vc_mk_taunt_2");
 	vc_mk_taunt_3 = sound_get("vc_mk_taunt_2");
 }
@@ -379,25 +383,19 @@ if (brawl_mode){
 	set_victory_theme(sound_get("victory_brawl"));
 }
 
-spr_nspecial_muno = sprite_get("nspecial_muno");
-spr_fspecial_muno = sprite_get("fspecial_muno");
-spr_uspecial_muno = sprite_get("uspecial_muno");
-spr_dspecial_muno = sprite_get("dspecial_muno");
-spr_jab_muno = sprite_get("jab_muno");
-spr_ftilt_muno = sprite_get("ftilt_muno");
-spr_jump_muno = sprite_get("jump_muno");
-spr_jump_wings_muno = sprite_get("jump_wings_muno");
-
 //Compatability
+otto_bobblehead_sprite = sprite_get("otto");
+steve_death_message = "Steve had a Meta Knightmare";
+link_spear_drop = 2;
 Hikaru_Title = "Star Warrior";
 personaQuips[10] = "Victory... is my destiny.";
 tcoart = sprite_get("tco_sketch");
 ncode1 = "A mysterious swordsman from Dream Land.";
-ncode2 = "Attacks with lightning fast sword swings.";
+ncode2 = "Attacks with lightning fast sword attacks.";
 ncode3 = "Keep your guard up.";
-arena_title = "The Masked Swordsman";
+arena_title = "The Lone Swordsman";
 arena_short_name = "Meta Knight";
-battle_text = "* You begin to feel uneasy just by looking at the masked swordsman.";
+battle_text = "* You begin to feel tense just by looking at the masked swordsman.";
 
 //Adventure Mode lol
 
@@ -439,7 +437,4 @@ am_is_guest = true;			//- Is this character not an atherian local?
 am_is_realitybreak = false;	//- Is this character a casual reality manipulator?
 am_is_not = false;			//- They do not belong. They shouldn't be here. They do not belong. They shouldn't be here. They do not belong. They shouldn't be here.
 
-
-//Munophone
-muno_event_type = 0;
-user_event(14);
+user_event(7);

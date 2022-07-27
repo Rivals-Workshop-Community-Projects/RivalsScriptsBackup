@@ -1,5 +1,7 @@
 ///
 
+draw_xscale = spr_dir;
+
 if attack == AT_USPECIAL && (hbox_num != 2) && (hbox_num < 5){
 	hsp /= 1.1
 	if hitbox_timer == 1 {

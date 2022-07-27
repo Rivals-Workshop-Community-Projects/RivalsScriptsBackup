@@ -12,8 +12,6 @@ set_window_value(40, 1, AG_WINDOW_HSPEED, 0);
 set_window_value(40, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(40, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(40, 1, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(40, 1, AG_WINDOW_HAS_SFX, 1)
-set_window_value(40, 1, AG_WINDOW_SFX, sound_get("spin"));
 
 set_window_value(40, 2, AG_WINDOW_TYPE, 1);
 set_window_value(40, 2, AG_WINDOW_LENGTH, 4);

@@ -185,6 +185,11 @@ otto_bobblehead_sprite = sprite_get("kirby_bobble_head");
 tauntAbilitySelectMenuCurr = 0;
 tauntAbilitySelectMenuCD = 0;
 
+//mix
+mixCurrSelected = 0;
+mixCurrTimer = 0;
+mixCurrTotalTimer = 0;
+
 //uspecial vars
 jet_charge_count = 0;
 jet_flight_dir = 0;

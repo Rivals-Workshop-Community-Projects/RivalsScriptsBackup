@@ -406,6 +406,9 @@ switch(attack){
 			if(window_timer == 1){
 				reset_attack_value(AT_BAIR,AG_CATEGORY);
 				grab_target = noone;
+				bair_grab_projectile_box = noone;
+			}else if(window_timer == phone_window_end && !hitpause){
+				bair_grab_projectile_box = create_hitbox(AT_BAIR,4,x,y);
 			}
 		}
 		if(window == 2 && window_timer <= 4 && !instance_exists(grab_target)){
@@ -414,7 +417,7 @@ switch(attack){
 					var playerurl = real(player_id.url);
 					if("MorshuCanGrab" in self && MorshuCanGrab || playerurl < 20){
 						var dist = point_distance(other.x-40*other.spr_dir, other.y, x, y); //distance
-						if(dist <= 60 && !other.has_hit_player){
+						if(place_meeting(x,y,other.bair_grab_projectile_box) && !other.has_hit_player){
 							with(other){
 								grab_target = other;
 								set_attack_value(AT_BAIR,AG_CATEGORY,2)
@@ -428,9 +431,18 @@ switch(attack){
 							}
 							player = other.player;
 							hitbox_timer = 0;
+							hit_priority = 0;
 						}
 					}	
 				}
+			}if(!instance_exists(grab_target)){
+                with(asset_get("obj_article1")){
+                    grab_article_if_valid();
+                }with(asset_get("obj_article2")){
+                    grab_article_if_valid();
+                }with(asset_get("obj_article3")){
+                    grab_article_if_valid();
+                }
 			}
 		}
 	    if(window == 4){
@@ -438,7 +450,7 @@ switch(attack){
 	    		grab_target.hitbox_timer = 0;
 	    	}
 	        if(window_timer <= 8){
-	            Grab(-90,0,3,3,grab_target,grabbed_Proj)  
+	            Grab(-90,!grabbed_Proj?0:-30,3,3,grab_target,grabbed_Proj)  
 	        }
 	        vsp = min(vsp,1)
 			if(window_timer >= 6 && window_timer < 9){
@@ -456,6 +468,7 @@ switch(attack){
 		        		grab_target.vsp = 6;
 		        		grab_target.hsp = 3*spr_dir;
 		        		grab_target.spr_dir = spr_dir;
+		        		grab_target.hit_priority = 1;
 		        	}
 		        	grabbed_Proj = false;
 	        	}
@@ -669,3 +682,25 @@ return newdust;
 	    }
 	}
 }
+#define grab_article_if_valid
+    //contributed by Floral qua Floral <3
+    if(string_length(string(player_id.url)) > 0 && orig_player != 5){
+        var playerurl = real(player_id.url);
+        var dist = point_distance(other.x+75*other.spr_dir, other.y-35, x, y); //distance
+        if(place_meeting(x,y,other.bair_grab_projectile_box) && ("MorshuCanGrab" in self && MorshuCanGrab || playerurl < 20)){
+			with(other){
+				grab_target = other;
+				set_attack_value(AT_BAIR,AG_CATEGORY,2)
+				destroy_hitboxes();
+				window = 4;
+				window_timer = 0;
+				sound_play(sound_get("succ"))sound_play(asset_get("sfx_blow_heavy2"))
+				grabbed_Proj = true;
+				hitpause = true;
+				hitstop = 9;
+			}        	
+            if("current_player" in self){
+                current_player = other.player;
+            }
+        }
+    }

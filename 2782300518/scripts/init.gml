@@ -1,9 +1,9 @@
-hurtbox_spr = asset_get("ex_guy_hurt_box");
-crouchbox_spr = asset_get("ex_guy_crouch_box");
+hurtbox_spr = sprite_get("carol_hurtbox_standing");
+crouchbox_spr = sprite_get("carol_hurtbox_crouch");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-char_height = 47;
+char_height = 50;
 idle_anim_speed = .13;
 crouch_anim_speed = .1;
 walk_anim_speed = .125;
@@ -65,9 +65,9 @@ crouch_active_frames = 1;
 crouch_recovery_frames = 1;
 
 //parry animation frames
-dodge_startup_frames = 2;
-dodge_active_frames = 8;
-dodge_recovery_frames = 20;
+dodge_startup_frames = 1;
+dodge_active_frames = 1;
+dodge_recovery_frames = 1;
 
 //tech animation frames
 tech_active_frames = 14;
@@ -180,6 +180,7 @@ nname = "Carol the Wildcat"
 ncode1 = "An incredibly athletic kitty with ninja like reflexes and a focus on combat"
 ncode2 = "Can mount a motorbike in order to augment her speed and change her moveset"
 ncode3 = "Meow"
+TCG_Kirby_Copy = 4;
 
 kirbyability=16;
 swallowed=false;
@@ -202,6 +203,7 @@ dair_aftereffect6=hit_fx_create(sprite_get("dair_after_effect6"), 20);
 dair_aftereffect7=hit_fx_create(sprite_get("dair_after_effect7"), 20);
 nitro_boost=hit_fx_create(sprite_get("nitro_boost"), 7);
 jump_disc=hit_fx_create(sprite_get("jump_disc"), 40);
+parry_shield=hit_fx_create(sprite_get("energy_shield"), 12);
 
 multikick_energy = 200;
 kickTime=0;
@@ -239,9 +241,19 @@ if has_rune("B"){
     dash_turn_accel = 1.5;
 }
 
+if has_rune("E")
+{
+    max_djumps = 2;
+}
+
 if has_rune("I")
 {
     jump_speed = 15;
+}
+
+if has_rune("J")
+{
+    max_djumps = 3;
 }
 
 if has_rune("O")

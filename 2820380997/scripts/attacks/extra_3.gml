@@ -175,7 +175,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 12);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_paw);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

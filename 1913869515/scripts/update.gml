@@ -8,14 +8,16 @@ if zvoice != 0 && voicecd <= 0 && (state == PS_FIRST_JUMP or state == PS_DOUBLE_
 or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FORWARD  or state == PS_TECH_BACKWARD) && state_timer == 1 {
 	 sound_stop(zvoice)
      if random_func(2,2,true) == 0 {
-          zvoice = sound_play(sound_get("z1"),false,noone,.67,.85 + random_func(1,11,true)/100);
+          zvoice = sound_play(sound_get("z1"),false,noone,.56,.95 + 0.05 + random_func(1,6,true)/100);
     }
     
     if random_func(2,2,true) == 1 {
-         zvoice = sound_play(sound_get("z2"),false,noone,.7,.85 + random_func(1,11,true)/100);
+         zvoice = sound_play(sound_get("z2"),false,noone,.6,.95 + 0.05 + random_func(1,6,true)/100);
     }
-    
-	
+    if state == PS_PARRY  {
+     sound_stop(zvoice)	
+    	zvoice = sound_play(sound_get("z5"),false,noone,.7,1.1 + 0.05 + random_func(1,6,true)/100);
+    }
 }
 
 with oPlayer {
@@ -98,15 +100,15 @@ if ohalo != halo {
         zrandom += random_func(2,2,true) + 1
         sound_stop(zvoice)
         if zrandom % 4 == 0 {
-              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + random_func(1,11,true)/100);
+              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 1 {
-             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + random_func(1,11,true)/100);
+             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 2{
-            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + random_func(1,11,true)/100);
+            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 3{
@@ -125,7 +127,9 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
 } else {
 	attacking = false 
 	zcountered = 0
+	
     if zvoice != 0 voicecd -= 0.5
+    
 	if offense == 0 && (halo > 0 or halox == 8) {
 		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
     		halodeact.depth = depth + 2
@@ -174,15 +178,15 @@ if state == PS_RESPAWN && state_timer == 90 {
         zrandom += random_func(2,2,true) + 1
         sound_stop(zvoice)
         if zrandom % 4 == 0 {
-              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + random_func(1,11,true)/100);
+              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 1 {
-             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + random_func(1,11,true)/100);
+             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 2{
-            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + random_func(1,11,true)/100);
+            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 3{
@@ -200,15 +204,15 @@ if halox < 8 {
         zrandom += random_func(2,2,true) + 1
         sound_stop(zvoice)
         if zrandom % 4 == 0 {
-              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + random_func(1,11,true)/100);
+              zvoice = sound_play(sound_get("SP1"),false,noone,.95,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 1 {
-             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + random_func(1,11,true)/100);
+             zvoice = sound_play(sound_get("SP2"),false,noone,.96,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 2{
-            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + random_func(1,11,true)/100);
+            zvoice = sound_play(sound_get("taunt"),false,noone,.96,.95 + 0.05 + random_func(1,6,true)/100);
         }
         
         if zrandom % 4 == 3{

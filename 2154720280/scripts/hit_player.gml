@@ -1,6 +1,21 @@
 ///
 
-
+if my_hitboxID.type == 1 {
+    with pHitBox {
+    	if player_id = other.id && attack == AT_DSPECIAL && (hbox_num == 3 or hbox_num == 4) {
+    		destroyed = true 
+    		fx = spawn_hit_fx (x,y + 20, 306)
+    		fx.pause = 4
+    		 sound_play(asset_get("sfx_absa_kickhit"));
+    		if (other.hit_player_obj.x - x < 120) and  (other.hit_player_obj.y - y < 120) {
+    			with  other.hit_player_obj {
+    				take_damage(player,-1,10)
+    				spawn_hit_fx(x,y-40,305)
+    			}
+    		}
+    	}
+    }
+}
 
 if has_rune("N") && meleehit == 1  {
          if random_func(10, 20, true) <= 4 {

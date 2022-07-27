@@ -634,24 +634,30 @@ if attack == AT_USPECIAL {
 	
 	
 	if window = 2 {
+		if window_timer == 1 && !hitpause {
+			sound_play(sound_get("pdodge"),false,noone,1,1.5)
+			spaw = spawn_hit_fx(x,y -30, 302)
+			spaw.pause = 6
+		}
 	if has_rune("M")  {  
 			nearbyhitbox = collision_circle( x, y, 50, asset_get("pHitBox"), true, true ) 
-	if nearbyhitbox != noone && move_cooldown[AT_EXTRA_1] = 0{
-					dplayer = nearbyhitbox.player_id
-	    	hit_player_obj = nearbyhitbox.player_id
-			move_cooldown[AT_EXTRA_1] = 20
-	}
-	}
-	
-		y -= 6
-		vsp = -4
+	        if nearbyhitbox != noone && move_cooldown[AT_EXTRA_1] = 0{
+	        				dplayer = nearbyhitbox.player_id
+	            	hit_player_obj = nearbyhitbox.player_id
+	        		move_cooldown[AT_EXTRA_1] = 20
+	        }
+	} 
+	    hsp /= 2 
+	    hsp += (right_down - left_down)
+		y -= 2
+		vsp = -8
 		invincible = true
 		can_shield = true
 	}
 	
 	if window == 3 && window_timer == 1 && special_down && charge >= 1 && disc {
 		charge -= 1
-		vsp = 0
+		vsp = -6
 		hsp = 0
 		window = 4
 		window_timer = 0

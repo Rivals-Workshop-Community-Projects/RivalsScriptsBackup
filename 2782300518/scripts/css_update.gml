@@ -1,6 +1,9 @@
 if !(instance_exists(cursor_id)) exit;
 
-css_timer++;
+if ("css_timer" in self)
+{
+	css_timer++;
+}
 alt_cur = get_player_color(player);
 txt = "#" + string(alt_cur);
 
@@ -26,14 +29,14 @@ else
 		voice_button_position_y = temp_y + 169;
 	}
 }
-if (alt_cur != alt_checker)
+if ("alttime" in self && "css_timer" in self && "alt_checker" in self && alt_cur != alt_checker)
 {
 	alt_checker = alt_cur;
 	css_timer = 0;
     drawing = floor(alttime % 8);
     drawtime = 0;
-	sound_stop(sound_get("motorbike_wheelie"));
-    sound_play(sound_get("motorbike_wheelie"));
+	sound_stop(sound_get("motorbike_uppercut"));
+    sound_play(sound_get("motorbike_uppercut"));
 }
 
 drawtime += 1;

@@ -10,6 +10,7 @@ if halox > 0 {
 		pendupdmg += other.my_hitboxID.damage 
 		pendupdmgid = other.id
 		pendupcd = floor(other.hitstop)
+		has_hit_player = false
 	}
 	
 }
@@ -18,6 +19,15 @@ if halox > 0 {
 
 
 finishercd = 0
+
+if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 2  {
+	djumps = 0
+		sound_play(asset_get("sfx_blow_heavy2"))
+		move_cooldown[AT_DTHROW] = 30
+		window = 1
+		window_timer = 99
+		has_hit_player = false 
+}
 
 if my_hitboxID.attack == AT_NSPECIAL {
 	has_hit_player = true 
@@ -122,9 +132,9 @@ halo += 1
    halox ++
 }
  showdm = 30
-var dmdamge = min(floor(my_hitboxID.damage/2),4)
+var dmdamge = min(floor(my_hitboxID.damage/2),1)
 with hit_player_obj {
-		take_damage( player, -1 , 2 + dmdamge)
+		take_damage( player, -1 , 1 + dmdamge)
 }
 
 

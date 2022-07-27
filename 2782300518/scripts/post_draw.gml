@@ -27,3 +27,16 @@ if (bsprite_index!=-1 && bfront==true){
 	draw_sprite_ext(bsprite_index, bimage_index, x+bx, y+by, bsx*image_xscale, bsy, brotation, c_white, 1);
 	shader_end();
 }
+
+switch (state)
+{
+	case PS_PARRY:
+		if (state_timer == 1)
+		{
+			var guard = spawn_hit_fx(x, y, parry_shield);
+			guard.depth = -100;
+		}
+	break;
+	default:
+	break;
+}

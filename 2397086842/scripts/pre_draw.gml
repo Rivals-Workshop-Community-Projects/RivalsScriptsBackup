@@ -1,3 +1,16 @@
+
+if state == PS_CROUCH && state_timer > 300 {
+    suppress_stage_music(1 - min(0.8,(state_timer - 300)/300),120 );	
+    draw_set_alpha(min(0.8,(state_timer - 300)/128));
+    draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
+    draw_set_alpha(1);
+    draw_sprite_ext(sprite_get("morbius"), floor((state_timer - 300)/30), x + 50*spr_dir, y - 30, 1, 1,0,-1,(state_timer - 300)/60)
+    if state_timer > 360 {
+    draw_sprite_ext(sprite_get("morbius"), floor((state_timer - 300)/30) + 1, x + 50*spr_dir, y - 30, 1, 1,0,-1,((state_timer)%30)/30)
+    }
+}
+
+
 shader_start();
 
 
@@ -6,6 +19,7 @@ if get_gameplay_time() < 92 {
     spr_dir, 1, 0, -1, 1)
     
 }
+
 
 ///blue berry
 if get_player_color(player) == 13 {

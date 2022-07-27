@@ -34,6 +34,7 @@ can_be_grounded = false;
 ignores_walls = true;
 uses_shader = true;
 draw_debug_hud = false;
+wisp_idle_timer = 120; // default, overriden in article 1 update based on estruuiction
 
 // Set Sprites to Variables
 spawn_sprite = sprite_get("wisp_start");

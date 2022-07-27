@@ -61,6 +61,7 @@ var palette_names = [
   "Golden",
   "Coton Candy - Equaliza",
   "Elite Staff (Old Intro)", 
+  "Personalized", 
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

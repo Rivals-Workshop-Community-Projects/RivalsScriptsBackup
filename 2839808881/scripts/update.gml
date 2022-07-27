@@ -9,6 +9,47 @@ if (abilityStolenTracker != 0){
 		}
 	}
 }
+if(!hitpause){
+	if(TCG_Kirby_Copy == -1){
+		move_cooldown[AT_NSPECIAL] = 5;
+		mixCurrTimer++;
+		mixCurrTotalTimer++;
+		if (mixCurrTimer == 6){
+			mixCurrTimer = 0;
+			sound_play(sound_get("sfx_kssu_menu_move"), false, noone, 0.45, 1);
+			if(mixCurrTotalTimer != 150){
+				if(mixCurrSelected != 15){
+					mixCurrSelected++;
+				} else {
+					mixCurrSelected = 1;
+				}
+			}
+		}
+		
+		if(mixCurrTotalTimer == 120
+		|| mixCurrTotalTimer == 130
+		|| mixCurrTotalTimer == 140){
+			sound_play(asset_get("mfx_timertick_holy"), false, noone, 1, 1.35);
+		}
+		
+		if(special_pressed || mixCurrTotalTimer == 150){
+			TCG_Kirby_Copy = mixCurrSelected;
+			sound_play(sound_get("nspecial_down_ability"));
+			spawn_hit_fx(x, y - 14, ability_get_fx);
+			clear_button_buffer(PC_SPECIAL_PRESSED);
+		}
+	} else {
+		mixCurrTimer = 0;
+		mixCurrTotalTimer = 0;
+	}
+}
+with asset_get("oPlayer"){
+	var realURL = string(url)
+	if (realURL == "" && id != other.id){
+		url = -1;
+	}
+}
+
 //parry sound
 if(state == PS_PARRY && state_timer == 0){
 	sound_play(sound_get("sfx_parry"));

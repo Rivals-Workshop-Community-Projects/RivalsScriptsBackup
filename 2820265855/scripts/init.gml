@@ -194,3 +194,7 @@ max_djumps = 2;
 } else {
 max_djumps = 1;
 }
+
+//Kirby Copy Ability
+
+TCG_Kirby_Copy = 5;

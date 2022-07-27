@@ -59,6 +59,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_slash_weak);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_CHAOS_LEVEL, -1);
 
@@ -90,6 +91,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1.2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SDI_MULTIPLIER, 0.00001);
+set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, vfx_slash);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("slicen"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_CHAOS_EXCLUDE, 1);
 
@@ -118,6 +120,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, vfx_slash);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_NSPECIAL, 3, HG_SDI_MULTIPLIER, 0.00001);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("slicef2"));

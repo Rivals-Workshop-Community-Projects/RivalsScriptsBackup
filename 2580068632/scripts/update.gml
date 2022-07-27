@@ -1,9 +1,5 @@
 //update.gml
 
-//Munophone
-muno_event_type = 1;
-user_event(14);
-
 //Sleep Kirby Hat Offsets
 if (free){
 	//Air Hat Offsets
@@ -22,24 +18,16 @@ if (free){
 }
 
 //Voiced Mode
-if (get_training_cpu_action() != CPU_FIGHT){
-	if (phone_cheats[CHEAT_VOICED] == 1){
-		voiced = 1
-	} else if (phone_cheats[CHEAT_VOICED] == 0){
-		voiced = 0
-	}
-} else if (get_training_cpu_action() == CPU_FIGHT){
-	if (normal_voiced_toggle == 1){
-		voiced = 1
-	} else if (normal_voiced_toggle == 0){
-		voiced = 0
-	}
+if (normal_voiced_toggle == 1){
+	voiced = 1
+} else if (normal_voiced_toggle == 0){
+	voiced = 0
 }
 
 switch (state){
 	case PS_SPAWN:
 		//Voiced Mode
-		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed && get_training_cpu_action() == CPU_FIGHT){
+		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed){
 			normal_voiced_toggle = 1
 			sound_play(asset_get("mfx_star"));
 			sound_play(vc_mk_taunt_1);
@@ -143,6 +131,12 @@ switch (state){
 		if (state_timer == 0){
 			sound_play(sfx_parry);
 			//sound_stop(asset_get("sfx_parry_use"));
+		}	
+		break;
+	case PS_ROLL_FORWARD:
+	case PS_ROLL_BACKWARD:
+		if (state_timer == 2){
+			sound_play(sfx_dimensional_cape_use, false, noone, 0.4, 1.1);
 		}	
 		break;
 }

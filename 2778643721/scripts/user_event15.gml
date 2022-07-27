@@ -347,6 +347,25 @@ initPatch("1.4", "April 16, 2022");
 initWords("~ DStrong now shakes the screen");
 initWords("~ Added Kirby Fighters Buddy & Agent N support");
 
+initPatch("1.5", "July 25, 2022");
+initSection("Miscellaneous");
+initWords("~ Magolor is revealed to be a part of the Dream Collection!");
+initWords("~ Updated preview to include cleaner art and the Kirby 30th Pack logo");
+initSection("Balance");
+initWords("+ DStrong startup window length 36 -> 24");
+initWords("+ FAir bkb/kb scale 5/.7 -> 6/.75");
+initWords("+ FTilt reaches a bit farther now!");
+initWords("+ FTilt endlag window length 12 -> 9");
+initWords("+ FTilt sweetspot kb scale .7 -> .75");
+initWords("+ FTilt sourspot angle 60 -> 361");
+initWords("+ UTilt startup window length 9 -> 6");
+initWords("+ UTilt can be jump cancelled on hit");
+initWords("+ NAir launcher angle flipper is now 6");
+initWords("- BAir + All NSpecial projectiles have parry stun (the latter has extended)");
+initWords("-UAir damage 8 -> 7");
+initWords("-UAir kb scale .7 -> .6");
+initWords("-Portals now have 80 frames of cooldown instead of 50 if another player not in hitstun passes through one");
+
 initPatch("About Magolor", "");
 initWords("Magolor and the Kirby franchise belong to Nintendo and HAL Laboratories.");
 initHeader("Spriting and Presentation");
@@ -360,7 +379,7 @@ initSection("MunoPhone Layout - ArtistOfSeer");
 initSection("Key Moveset Inspiration - BrawlFan1");
 initHeader("Special Thanks");
 initSection("Spam");
-initSection("The **** ********** Team");
+initSection("The Dream Collection Team");
 initHeader("Additional SFX from");
 initSection("Kirby's Return to Dream Land");
 initSection("Kirby Star Allies");
@@ -620,13 +639,13 @@ spr_custom_trummel_color = c_red;
 otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
 
 // Otto bobblehead body. (optional, don't really need this)
-otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
+//otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
 // Steve death message.
-steve_death_message = "Steve got canceled on Twitter";
+steve_death_message = "Steve got sent to another dimension";
 
 // Link spear. (determines which spear your char will drop the first time)
-link_spear_drop = 3;
+link_spear_drop = 8;
 
 /*
 Spear IDs:

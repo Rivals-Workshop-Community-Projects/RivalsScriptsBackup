@@ -72,6 +72,7 @@ if(attack == AT_DSTRONG){
 */
 
 if(attack == AT_NSPECIAL){
+	trigger_wavebounce();
     can_fast_fall = false;
     if(window == 2 && window_timer = 1 && !hitpause){
         //gain charge
@@ -130,7 +131,9 @@ if(attack == AT_NSPECIAL){
             set_state(PS_FIRST_JUMP);   
         	}
         }
-    }if(window = 1 && window_timer = 1){
+    }
+    /*
+    if(window = 1 && window_timer = 1){
     	clear_button_buffer(PC_SPECIAL_PRESSED);
     	spec_reverse = false;
     	if(!spec_reverse && (spr_dir==1?left_down:right_down) && window_timer < 6){
@@ -141,6 +144,7 @@ if(attack == AT_NSPECIAL){
     	spec_reverse = true;
     	}
     }
+    */
 }
 
 if(attack == AT_FSPECIAL){
@@ -284,7 +288,7 @@ if(attack == AT_USPECIAL){
 		shortened_usp = false;
 		uspec_dir = 0;
 		if(!free){
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
 		}if(free){
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
 		}
@@ -384,4 +388,19 @@ if(attack == AT_UAIR || attack == AT_TAUNT || attack == AT_DSTRONG){
 
 if(attack == AT_UTILT){
 	hud_offset = 80;
+}
+
+#define trigger_wavebounce() 
+{
+	if ((left_down and state_timer <= 6 and spr_dir == 1) or (right_down and state_timer <= 6 and spr_dir == -1) and (b_reversed == false)) {
+    	if(free){
+    	hsp = 4 * -spr_dir;
+    	vsp = -4;
+    	}
+    	//hsp *= -spr_dir;
+    	spr_dir *= -1;
+    	b_reversed = true;
+	} else if (state_timer == 7) {
+    	b_reversed = false;
+	}
 }

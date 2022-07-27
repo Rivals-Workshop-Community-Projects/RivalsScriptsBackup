@@ -177,10 +177,10 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Ithaca";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Sometimes... I wonder what its like to be someone else.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Original Character Color";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Fubuki Shirakami";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
@@ -188,6 +188,13 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = "Ranked Gold";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Gold is so pretty. It reminds me of my aunt and her golden fur.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Ranked Gold Alt";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Ithaca";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Sometimes... I wonder what its like to be someone else.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Original Character Color";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
@@ -205,6 +212,20 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 0);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Bold Kobold";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 0, 0);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Roekanshoku";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Trans rights";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Support Alt";sub_element_slot++;
@@ -219,27 +240,6 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	/*
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "23";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 0, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "24";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "25";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
 	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "26";sub_element_slot++;

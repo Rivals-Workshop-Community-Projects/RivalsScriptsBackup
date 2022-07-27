@@ -120,5 +120,6 @@ sprite_change_offset("oldLonin", 12, 29);
 sprite_change_offset("genesis", 21, 37);
 sprite_change_offset("grab", 21, 64, 1);
 sprite_change_offset("grabFur", 21, 64);
+sprite_change_offset("kizunaFX", 200, 120);
 set_victory_bg(sprite_get("vic"));
 set_victory_theme(sound_get("lonin2"));

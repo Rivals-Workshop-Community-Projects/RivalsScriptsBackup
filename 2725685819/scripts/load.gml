@@ -57,6 +57,7 @@ sprite_change_offset("dstrong_hurt", 71*2, 81*2);
 sprite_change_offset("nspecial", 36, 56);
 sprite_change_offset("nspecial_hurt", 36*2, 56*2);
 sprite_change_offset("nspecial_proj", 100, 100);
+sprite_change_offset("nspecial_mask", 100, 100);
 sprite_change_offset("nspecial_dest", 100, 100);
 //sprite_change_collision_mask( "nspecial_proj", false, 2, 26, 21, 138, 133, 2 );
 
@@ -69,6 +70,7 @@ sprite_change_offset("vfx_ftilt_destroy", 100, 140); // actually for nspecial, n
 sprite_change_offset("fspecial", 36, 56);
 sprite_change_offset("fspecial_hurt", 36*2, 56*2);
 sprite_change_offset("fspecial_proj", 100, 84);
+sprite_change_offset("fspecial_mask", 100, 84);
 sprite_change_offset("fspecial_proj_base", 100, 84);
 sprite_change_offset("fspecial_merged", 100, 84);
 
@@ -91,6 +93,14 @@ sprite_change_offset("chaos_strong", 7, 7);
 sprite_change_offset("storm_cd", 7, 7);
 
 sprite_change_offset("plat", 64/2, 94/2);
+
+sprite_change_offset("slash", 64*2, 66*2);
+sprite_change_offset("slash_small", 64*2, 66*2);
+sprite_change_offset("slash_big", 208, 200);
+sprite_change_offset("slash_med", 208, 200);
+sprite_change_offset("slashup_med", 208, 200);
+sprite_change_offset("stab_big", 370, 200);
+sprite_change_offset("stabup_big", 208, 400);
 
 sprite_change_offset("intro", 36, 56);
 sprite_change_offset("neco_intro", 36, 56);

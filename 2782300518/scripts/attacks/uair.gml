@@ -12,7 +12,7 @@ set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_UAIR, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, sound_get("claw2"));
+set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, sound_get("wild_claw"));
 
 set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 17);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);

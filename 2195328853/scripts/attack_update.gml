@@ -558,10 +558,14 @@ if (attack == AT_NSPECIAL){
     		spawn_hit_fx((x) + round(lengthdir_x(25, rand_dir)), (y - 30) + round(lengthdir_y(25, rand_dir)), fx_bluetrailslow);
         }
     }
+}else if (attack == AT_DTILT){
+    if(window == 2 && window_timer >= 3 || window >= 3){
+    	cancelattack();
+    }
 }else if (attack == AT_DATTACK){
     if(has_rune("A") && window >= 2 && has_hit && jump_pressed){
         window = 10;window_timer = 100;
-    }if(window >= 3){
+    }if(window == 2 && window_timer >= 6 || window >= 3){
     	cancelattack();
     }
 }else if (attack == AT_DSTRONG){

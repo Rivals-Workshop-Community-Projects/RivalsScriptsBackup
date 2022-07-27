@@ -71,6 +71,7 @@ var palette_names = [
   "The Unforgotten",
   "The Unforgiven",
   "BLW",
+  "Personalized",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

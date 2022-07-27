@@ -24,11 +24,11 @@ antarget = -4
 shoping = 0
 item = 5
 
-adap = 0
+adap = 1
 raged = 0
 para = 0
 unte = 0
-disc = 1 
+disc = 0 
 gun = 0
 
 oldphsp = 0

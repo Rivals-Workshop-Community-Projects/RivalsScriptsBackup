@@ -6,7 +6,7 @@ gpu_set_blendmode(bm_add);
  draw_sprite_ext(sprite_get("batt"),  charge , temp_x+ 36 - random_func(1,4,true), temp_y - 46 - random_func(2,4,true),1,1,0,-1,charge/5 ); 
     gpu_set_blendmode(bm_normal); 
  
- if has_rune("M")  {   
+ //if has_rune("M")  {   
      draw_sprite_ext(sprite_get("shop2"),  0 , temp_x+ 82, temp_y -36,1,1,0,-1,1 );
      
      draw_sprite_ext(sprite_get("shop2"),  1 , temp_x+ 82, temp_y -36,1,1,0,-1,adap );
@@ -15,7 +15,7 @@ gpu_set_blendmode(bm_add);
      draw_sprite_ext(sprite_get("shop2"),  4 , temp_x+ 82, temp_y -36,1,1,0,-1,unte );
      draw_sprite_ext(sprite_get("shop2"),  5 , temp_x+ 82, temp_y -36,1,1,0,-1,disc );
      draw_sprite_ext(sprite_get("shop2"),  6 , temp_x+ 82, temp_y -36,1,1,0,-1,gun );
- }
+ //}
  
 switch(style1) {
 

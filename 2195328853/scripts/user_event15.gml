@@ -234,6 +234,20 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.74", "22nd July 2022");
+initHeader("Buffs");
+initSection("- NSpecial Blob Ball does more damage and knockback when moving at higher speeds than before when in Steam mode. Steam mode also has more kbs when blown up as well");
+initSection("- DSpecial ice block has a bit more knockback when sliding");
+initSection("- Reduced DTilt startup (11->8) and FTilt startup (10->9). FTilt, UTilt, and DTilt are also all a bit faster overall");
+initSection("- DTilt now does a bit more damage, kills better, and has a sort of dragdown hitbox added at the top. The endlag can also be cancelled on hit");
+initSection("- UTilt sourspot has less bkb and kbs to combo better");
+initSection("- DAttack can be cancelled a little earlier on hit than before");
+initSection("- DAir has an extra hitbox and is overall slightly larger due to the new animation");
+initHeader("Fixes / Other Changes");
+initSection("- Updated DAir animation, hit SFX, etc");
+initSection("- Fixed DSpecial ice block multihitting opponents");
+initSection("- Fixed some missing hitpause scaling on certain hitboxes (mainly Blob Ball)");
+
 initPatch("1.73", "10th May 2022");
 initHeader("Buffs");
 initSection("- USpecial now gives BB more of an upwards boost, doesn't halt his horizontal momentum as much, and it can also be held much longer");

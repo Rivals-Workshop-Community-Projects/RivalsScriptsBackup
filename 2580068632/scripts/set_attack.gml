@@ -17,7 +17,3 @@ if (attack == AT_FTILT){
 		}
 	}
 }
-
-//Munophone
-muno_event_type = 2;
-user_event(14);

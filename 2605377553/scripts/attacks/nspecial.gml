@@ -35,7 +35,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, sound_get("snap"));
 
 //endlag after release
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 

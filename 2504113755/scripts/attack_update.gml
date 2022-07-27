@@ -10,10 +10,10 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
  if (state_timer == 1 or (window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
      if attack == AT_NSPECIAL {
      		sound_stop(sound_get("counterhit"))
-	 sound_play(sound_get("counterhit"),false,noone,1,1.5)
+	 sound_play(sound_get("counterhit"),false,noone,0.9,1.5)
      }
      if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
-           sound_play(asset_get("sfx_absa_dashup"),false,noone, .8 ,
+           sound_play(asset_get("sfx_absa_dashup"),false,noone, .7 ,
        max( 0.9, .5 + get_window_value(attack, 1, AG_WINDOW_LENGTH)/10) - (random_func(1,10,true))/100 )
        
      }   
@@ -333,6 +333,11 @@ state_timer=0;
 landing_lag_time=5;
 //attack_end()
 }
+if (window == 5 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+	
+		move_cooldown[AT_DSPECIAL] = 20;
+}
+
 }
 
 #endregion
@@ -747,7 +752,7 @@ if (attack == AT_USPECIAL) {
     
     if  ((window == 2 || window == 3 || (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) && !hitpause) {
         
-        vsp = -18
+        vsp = -17
         hsp = 13*spr_dir
         
     }

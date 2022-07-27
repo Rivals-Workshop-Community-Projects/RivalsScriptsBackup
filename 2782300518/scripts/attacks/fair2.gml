@@ -6,15 +6,13 @@ set_attack_value(43, AG_LANDING_LAG, 4);
 set_attack_value(43, AG_HURTBOX_SPRITE, sprite_get("fair2_hurt"));
 
 set_window_value(43, 1, AG_WINDOW_LENGTH, 6);
-set_window_value(43, 1, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(43, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(43, 1, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(43, 2, AG_WINDOW_LENGTH, 40);
 set_window_value(43, 2, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(43, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(43, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(43, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(43, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(43, 2, AG_WINDOW_SFX, sound_get("motorbike_spin"));
 
 set_window_value(43, 3, AG_WINDOW_LENGTH, 6)
 set_window_value(43, 3, AG_WINDOW_ANIM_FRAMES, 1);

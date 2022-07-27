@@ -174,7 +174,7 @@ var palette_names = [
   "Void Power",
   "Stun Cat",
   "Stary",
-  "Place Holder Alt",
+  "Personalized",
   "Ran Ran Ru",
   "Deltadude", 
   "Circus Goat",   

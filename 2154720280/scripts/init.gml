@@ -10,6 +10,8 @@ ncode1 = "A [Special Unit] who is currently going undercover"
 ncode2 = "to investigate the nature of [Burger Clown] anomaly."
 ncode3 = "He also having fiancial issues."
 
+personalize = 0
+
 introhit = 0
 intro = 0
 introtimer = -1

@@ -54,5 +54,6 @@ set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("sfx_hit_magic_med"));
+set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
 
 set_hitbox_value(AT_BAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Trajectory will change upon entering a portal depending on what direction the other is facing. Angle flipper will change to 3 upon teleporting.");

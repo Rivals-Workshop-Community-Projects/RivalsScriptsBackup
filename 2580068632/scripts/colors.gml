@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 32 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 28 );
 
 // Blue - P3 Star Allies
 set_color_profile_slot( 1, 0, 51, 211, 243 ); //Body
@@ -86,15 +86,15 @@ set_color_profile_slot( 5, 5, 217, 102, 236 ); //Eye Color
 set_color_profile_slot( 5, 6, 205, 82, 225 ); //Galaxia
 set_color_profile_slot( 5, 7, 255, 0, 0 ); //Gem
 
-// Abyss - Parallel Meta Knight
-set_color_profile_slot( 6, 0, 0, 0, 0 ); //Body
-set_color_profile_slot( 6, 1, 200, 163, 87 ); //Mask
-set_color_profile_slot( 6, 2, 127, 84, 40 ); //Shoes
-set_color_profile_slot( 6, 3, 144, 84, 59 ); //Armor Pads + Cape
-set_color_profile_slot( 6, 4, 255, 242, 0 ); //Lining
-set_color_profile_slot( 6, 5, 255, 1, 1 ); //Eye Color
+// Abyss 
+set_color_profile_slot( 6, 0, 78, 23, 141 ); //Body
+set_color_profile_slot( 6, 1, 228, 210, 244 ); //Mask
+set_color_profile_slot( 6, 2, 125, 22, 130 ); //Shoes
+set_color_profile_slot( 6, 3, 133, 110, 150 ); //Armor Pads + Cape
+set_color_profile_slot( 6, 4, 250, 156, 255 ); //Lining
+set_color_profile_slot( 6, 5, 255, 98, 0 ); //Eye Color
 set_color_profile_slot( 6, 6, 219, 142, 3 ); //Galaxia
-set_color_profile_slot( 6, 7, 241, 2, 1 ); //Gem
+set_color_profile_slot( 6, 7, 78, 23, 141 ); //Gem
 
 // GB
 set_color_profile_slot( 7, 0, 167, 186, 74 ); //Body
@@ -265,6 +265,46 @@ set_color_profile_slot( 23, 4, 222, 222, 222 ); //Lining
 set_color_profile_slot( 23, 5, 255, 255, 255 ); //Eye Color
 set_color_profile_slot( 23, 6, 246, 246, 246 ); //Galaxia
 set_color_profile_slot( 23, 7, 125, 125, 125 ); //Gem
+
+// Lime - Phantom
+set_color_profile_slot( 24, 0, 115, 215, 155 ); //Body
+set_color_profile_slot( 24, 1, 255, 214, 222 ); //Mask
+set_color_profile_slot( 24, 2, 145, 82, 138 ); //Shoes
+set_color_profile_slot( 24, 3, 43, 204, 138 ); //Armor Pads + Cape
+set_color_profile_slot( 24, 4, 255, 117, 248 ); //Lining
+set_color_profile_slot( 24, 5, 255, 117, 248 ); //Eye Color
+set_color_profile_slot( 24, 6, 231, 232, 111 ); //Galaxia
+set_color_profile_slot( 24, 7, 231, 96, 98 ); //Gem
+
+// Black - Parallel
+set_color_profile_slot( 25, 0, 0, 0, 0 ); //Body
+set_color_profile_slot( 25, 1, 200, 163, 87 ); //Mask
+set_color_profile_slot( 25, 2, 127, 84, 40 ); //Shoes
+set_color_profile_slot( 25, 3, 144, 84, 59 ); //Armor Pads + Cape
+set_color_profile_slot( 25, 4, 255, 242, 0 ); //Lining
+set_color_profile_slot( 25, 5, 255, 1, 1 ); //Eye Color
+set_color_profile_slot( 25, 6, 219, 142, 3 ); //Galaxia
+set_color_profile_slot( 25, 7, 241, 2, 1 ); //Gem
+
+// Navy - Game Colors
+set_color_profile_slot( 26, 0, 25, 35, 113 ); //Body
+set_color_profile_slot( 26, 1, 245, 249, 255 ); //Mask
+set_color_profile_slot( 26, 2, 118, 57, 123 ); //Shoes
+set_color_profile_slot( 26, 3, 124, 110, 172 ); //Armor Pads + Cape
+set_color_profile_slot( 26, 4, 187, 159, 71 ); //Lining
+set_color_profile_slot( 26, 5, 251, 243, 0 ); //Eye Color
+set_color_profile_slot( 26, 6, 255, 253, 40 ); //Galaxia
+set_color_profile_slot( 26, 7, 231, 31, 30 ); //Gem
+
+// Tourney - Landkon
+set_color_profile_slot( 27, 0, 52, 53, 82 ); //Body
+set_color_profile_slot( 27, 1, 255, 245, 238 ); //Mask
+set_color_profile_slot( 27, 2, 73, 52, 82 ); //Shoes
+set_color_profile_slot( 27, 3, 52, 53, 82 ); //Armor Pads + Cape
+set_color_profile_slot( 27, 4, 255, 171, 230 ); //Lining
+set_color_profile_slot( 27, 5, 255, 171, 230 ); //Eye Color
+set_color_profile_slot( 27, 6, 255, 171, 230 ); //Galaxia
+set_color_profile_slot( 27, 7, 52, 53, 82 ); //Gem
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -10,6 +10,8 @@ if (state == PS_DOUBLE_JUMP){
 
 if (wings_out == true && state == PS_IDLE_AIR){
 	sprite_index = sprite_get("jump_wings");
+} else if (wings_out == false && state == PS_IDLE_AIR){
+	sprite_index = sprite_get("jump");
 }
 
 if (state == PS_LAND){

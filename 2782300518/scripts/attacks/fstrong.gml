@@ -40,6 +40,6 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 if has_rune ("O")
 {
-    set_hitbox_value(39, 1, HG_BASE_KNOCKBACK, 16);
-    set_hitbox_value(39, 1, HG_KNOCKBACK_SCALING, 1);
+    set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 16);
+    set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
 }

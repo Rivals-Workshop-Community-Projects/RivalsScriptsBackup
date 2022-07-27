@@ -407,12 +407,13 @@ if (attack == AT_USPECIAL){
     	if(was_parried){
     		// window = 29;
     	}else{
+    		//diferenca entre velocidade e -5 tem que ser no maximo -5 e no minimo -3
+	    	var speeddd = min(-vsp - 5, -3)
+	    	vsp += speeddd
+	    	hsp = hsp - hsp/7
     		set_state(PS_PRATFALL)
     	}
-    	//diferenca entre velocidade e -5 tem que ser no maximo -5 e no minimo -3
-    	var speeddd = min(-vsp - 5, -3)
-    	vsp += speeddd
-    	hsp = hsp - hsp/7
+    	
     }
     var hsp_temp = hsp;
     if(_old_hsp > 0 and hsp == 0) hsp = _old_hsp;

@@ -3,16 +3,23 @@ var temp_x = floor(x+10);
 var temp_y = floor(y+10);
 var buildtag = "indev";
 var alt = get_player_color(player);
+var charuuid = string(sprite_get("idle"));
 
 draw_sprite_ext(sprite_get("charselectbg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 
-if ("prev_alt" not in self){
-drawtime = 0
-drawing = 0
-
+if ("css_char" not in self || css_char != charuuid) {
+drawtime = 300
+drawing = 1
+introing = 0
+prev_alt = alt
+    css_char = charuuid;
+    sound_play(asset_get("sfx_abyss_explosion"))
+    sound_play(asset_get("sfx_bird_downspecial"))
 
 }
-    
+
+
+
 if ("prev_alt" in self && prev_alt != alt){
      drawtime = 0
 }
@@ -22,14 +29,13 @@ if alt == 5 {
   draw_sprite_ext(sprite_get("charselectsakura"),drawtime / 1,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 
-drawtime += 1 
-
+drawtime ++ 
+introing ++ 
 
 prev_alt = alt;
-draw_sprite_ext(sprite_get("charselectver"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
-
-if alt == 1 {
-  draw_sprite_ext(sprite_get("charselect2"),drawtime / 5,temp_x-2,temp_y-2,2,2,0,-1,1);
+draw_sprite_ext(sprite_get("charselectver"),min(introing/3,32 -3 ) + 3,temp_x-2,temp_y-2,2,2,0,-1,1);
+if introing == 6 * 3 {
+    sound_play(sound_get("RCE"),false,noone,1,1.4)
 }
 
 

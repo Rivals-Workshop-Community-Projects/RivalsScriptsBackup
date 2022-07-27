@@ -2,18 +2,18 @@ move_cooldown[AT_USPECIAL] = 0 ;
 
 if move_cooldown[AT_TAUNT] == 0 && !soft_armor && !super_armor && zvoice != 0 {
 	 sound_stop(zvoice)
-     if random_func(1,2,true) == 0 {
-          zvoice = sound_play(sound_get("z1"),false,noone,.8,1.15 + random_func(1,11,true)/100);
-    }
-    
-    if random_func(1,2,true) == 1 {
-         zvoice = sound_play(sound_get("z2"),false,noone,.8,1.15 + random_func(1,11,true)/100);
-    }
-    
-
-    
-    move_cooldown[AT_TAUNT] = 30
-
+	 zrandom += random_func(2,2,true) + 1
+	 
+	  if abs(old_hsp) + abs(old_vsp) > 15 or hitstop > 20 {
+	      if zrandom % 2 == 0 {
+                zvoice = sound_play(sound_get("h1"),false,noone,.9,1.15 + random_func(1,11,true)/100);
+          }
+          
+          if zrandom % 2 ==  1 {
+               zvoice = sound_play(sound_get("h2"),false,noone,.9,1.15 + random_func(1,11,true)/100);
+          }
+	 }
+	 move_cooldown[AT_TAUNT] = floor(hitstop)
 }
 
 zbayo = 0
@@ -30,9 +30,11 @@ reset_window_value(AT_TAUNT, 18, AG_WINDOW_SFX);
 
 
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
-	if halo < (2 + (halox = 8)) {
+	    if halo < (2 + (halox = 8)) {
 	    	halo ++
-	   }
+	    }
+	    
+	         
 	hit_player_obj.hitstop += 20
 	
 		if zvoice != 0{
@@ -79,9 +81,10 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
 }
 
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
-	if halo < (2 + (halox = 8)) {
+	     if halo < (2 + (halox = 8)) {
 	    	halo ++
 	    }
+
 	    
 	    if zvoice != 0{
 	    	voicecd = 100
@@ -94,7 +97,7 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
 	        take_damage(player,-1,floor(enemy_hitboxID.damage * -1))
 	        offense = 1
 	        offensetimer = 0
-	        dmhit = 2
+
             window = 4
             window_timer = 4
             super_armor = false
@@ -123,7 +126,11 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
 			create_hitbox(AT_DSPECIAL , 1 , x - (50 * spr_dir) , y - 105 ); 
 			create_hitbox(AT_DSPECIAL , 1 , x + (10 * spr_dir), y - 105 ); 
 			create_hitbox(AT_DSPECIAL , 1 , x + (70 * spr_dir) , y - 105 ); 
-			set_state(PS_IDLE_AIR)
+			move_cooldown[AT_FSPECIAL] = 0
+			set_attack(AT_FSPECIAL)
+			window = 2
+			window_timer = 1
+			create_hitbox(AT_FSPECIAL,12,x,y)
 }
 
 

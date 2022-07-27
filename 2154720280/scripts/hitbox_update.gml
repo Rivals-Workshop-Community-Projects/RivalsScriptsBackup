@@ -32,9 +32,21 @@ if y > (room_height) {
 var tauntpar1 = hit_fx_create( sprite_get( "tauntpar1" ), 20);
 var tauntpar2 = hit_fx_create( sprite_get( "tauntpar2" ), 20);
 	
+	if attack == AT_NSPECIAL && hbox_num == 27 {
+		if get_gameplay_time() > 120 can_hit_self = true 
+	}
+	
 	if attack == AT_NSPECIAL && hbox_num == 1 {
+		if get_gameplay_time() > 120 can_hit_self = true 
     if hitbox_timer < 30 {
     	hit_priority = 0
+    }
+    
+     with oPlayer {
+    	if hitpause && abs(x - other.x) < 120 && abs(y - other.y) < 120 {
+         hitstop = 2
+         y = other.y + 60
+    	}
     }
     
     if hitbox_timer == 30 {
@@ -77,6 +89,7 @@ var tauntpar2 = hit_fx_create( sprite_get( "tauntpar2" ), 20);
     	spawn_hit_fx( x  , y , 306 )
     	sound_play(asset_get("sfx_abyss_explosion_big"));
     	create_hitbox(AT_NSPECIAL , 2 , x , y - 10 );
+    	create_hitbox(AT_NSPECIAL , 27 , x , y - 10 );
     	create_hitbox(AT_NSPECIAL , 3 , x , y - 10);
     	create_hitbox(AT_NSPECIAL , 4 , x , y - 10);
     	create_hitbox(AT_NSPECIAL , 5 , x , y - 10);
@@ -194,11 +207,11 @@ if attack == AT_DSPECIAL && hbox_num == 1 && !free && player_id.milkpizz != 1  {
 	spawn_hit_fx( x  , y , 156 )
 	spawn_hit_fx( x  , y , 195 )
     	sound_play(sound_get("explosionshake"));
-    	create_hitbox(AT_DSPECIAL , 2 , x , y );
-	
+    create_hitbox(AT_DSPECIAL , 2 , x , y );
 }
 
 if attack == AT_DSPECIAL && hbox_num == 2 {
+	can_hit_self = true 
 	if hitbox_timer == 5 {
 		image_xscale *= 1.4
 		image_yscale *= 1.4
@@ -209,7 +222,10 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
 if attack == AT_DSPECIAL && hbox_num == 3 {
 	
     if hitbox_timer % 6 == 0 {
-		create_hitbox(AT_DSPECIAL , 4 , x , y );
+		hitcreate =	create_hitbox(AT_DSPECIAL , 4, x , y );
+	     if hitbox_timer > 20 {
+	     	hitcreate.can_hit_self = true 
+	     }
     }
 	
 	if hitbox_timer < 60 {

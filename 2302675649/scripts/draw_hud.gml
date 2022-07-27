@@ -808,6 +808,13 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Grab Ground Friction 0.2 -> 0.1");
 						AddText("Grab Increased Hitbox Size");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.50.1 - 21 Jul 2022");
+						AddText("");
+						AddText("Changed Metal alt to Kizuna alt");
+						AddText("");
+						AddText("Upgraded Anti-Dan code");
 						break;
 				}
 				DrawTutorialBlock();

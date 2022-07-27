@@ -34,8 +34,6 @@ draw_set_halign(fa_left);
 
 //This code is a mishmash of code made by Muno, Sai and Bar-Kun, mainly taken from Keqing's CSS
 
-//ANIMATION VARIABLES
-
 rectDraw(x+78, y+9, 132, 6, c_black);
 for (i = 0; i < num_alts; i++)
 {

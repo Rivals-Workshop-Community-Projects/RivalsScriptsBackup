@@ -3,9 +3,16 @@ if (orig_knock > 5) {
     //sound_play(sound_get("hurt"))
 }
 
-if (attack == AT_COPY_ESP){
+if (attack == AT_COPY_ESP && (state == PS_HITSTUN || state == PS_HITSTUN_LAND)){
 	esp_parried = true;
 	move_cooldown[AT_COPY_ESP] = 60;
+	window = 4;
+	window_timer = 0;
+	//sound_play(asset_get("sfx_ori_glide_start"));
+}
+
+if (attack == AT_COPY_ICE && (state == PS_HITSTUN || state == PS_HITSTUN_LAND)){
+	sound_stop(sound_get("sfx_krdl_ice_breath_loop"));
 }
 
 sound_stop(sound_get("sfx_charge"));

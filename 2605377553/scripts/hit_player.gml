@@ -8,7 +8,16 @@ switch(my_hitboxID.attack){
 		if (my_hitboxID.hbox_num == 3){ 
 				sound_play(asset_get("sfx_ice_back_air"), 0, noone, 1, 0.85)
 		}
+	break;
 	
+	case AT_NSPECIAL:
+		if (hit_player_obj.malsick && my_hitboxID.hbox_num == 2) {
+			print_debug("lol")
+			sound_play(sound_get("getboosted"));  
+			hit_player_obj.malsick = false;
+			hit_player_obj.sickTimer = 0
+			hit_player_obj.sickAfterGrace = hit_player_obj.sickAfterGraceMax;
+		}
 }
 
 var hitFSTRONG = my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1;

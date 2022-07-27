@@ -12,6 +12,9 @@ sprite_change_offset("walkturn", 46, 92);
 sprite_change_offset("dash", 46, 92);
 
 
+sprite_change_offset("morbius", 30, 13);
+
+
 sprite_change_offset("dashstart", 46, 92);
 sprite_change_offset("dashstop", 46, 92);;
 sprite_change_offset("dashturn", 46, 92);;

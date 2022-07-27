@@ -12,6 +12,7 @@
 //}
 
 
+
 if (get_player_color( player ) == 9){ //omari
 if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
 outline_color=[153, 19, 255]
@@ -31,6 +32,10 @@ if (get_player_color(player) == 9) and extra_col ==6{
 }
     
 if (get_player_color( player ) == 20){ //ghoast
+
+    
+
+
 if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
 outline_color=[57, 82, 82]
 init_shader();

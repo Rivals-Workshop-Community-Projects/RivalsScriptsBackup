@@ -218,8 +218,8 @@ move_cooldown[AT_TAUNT_2] = 30
 }
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	attacking = true
-	if move_cooldown[AT_NSPECIAL_2] >2 {
-	move_cooldown[AT_NSPECIAL_2] = 2
+	if move_cooldown[AT_NSPECIAL_2] > 10 {
+	move_cooldown[AT_NSPECIAL_2] = 10
 	}
 } else {
 	shoping = 0
@@ -280,14 +280,9 @@ if (move_cooldown[AT_NSPECIAL_2] > 0 and move_cooldown[AT_NSPECIAL_2] % 3 == 0){
 		 
 
 
-if dplayer.state != PS_ATTACK_GROUND and dplayer.state != PS_ATTACK_AIR{
-	move_cooldown[AT_NSPECIAL_2] = 1
-	
-}
-
 if move_cooldown[AT_NSPECIAL_2] > 1 {
 	invincible = true
-	
+	invince_time = 5
 	if get_gameplay_time() % 4 == 0 {
 		spawn_hit_fx(x,y,idles)
 	}
@@ -330,24 +325,79 @@ if !hitpause {
     svsp = (svsp + vsp)/2
 }
 
+if raged {
+	if state == PS_PARRY {
+		free = false 
+		if state_timer > 2 && state_timer < 15 && !invincible{
+			window_timer -= 0.6
+		} else {
+			window_timer += .25
+		}
+	}
+	
 
-if has_rune("M")  {  
+    if state == PS_AIR_DODGE && right_down - left_down = 0 && up_down - down_down = 0 && state_timer <= 1 {
+    	free = false 
+       set_attack(AT_UTHROW)
+       window = 1
+       window_timer = 0
+       state_timer = 0
+       has_airdodge = false 
+       sound_stop(asset_get("sfx_quick_dodge"))
+    }
+    
+    if attack == AT_UTHROW && attacking {
+    	can_fast_fall = false 
+    	hsp = 0
+    	vsp = 0
+    	if window_timer < 15 {
+    		perfect_dodging = true 
+    	} else {
+    		
+    	}
+    	init_shader();
+    }
+}
+if has_rune("M") or unte {  
 
-	nearbyhitbox = collision_circle( x, y, 50, asset_get("pHitBox"), true, true ) 
-	if nearbyhitbox != noone && nearbyhitbox.hit_priority > 0{
-		
-		if nearbyhitbox.player_id != self && 
+  with pHitBox {
+	if place_meeting( x, y, other.id) {
+	if hit_priority > 0 {
+		with other {
+		if other.player_id != id && 
 		(state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FORWARD  or state == PS_TECH_BACKWARD)
-		and move_cooldown[AT_EXTRA_1] == 0{
-			dplayer = nearbyhitbox.player_id
-     if unte {
-     	move_cooldown[AT_NSPECIAL_2] = 123
-     }
-	    	hit_player_obj = nearbyhitbox.player_id
+		and move_cooldown[AT_EXTRA_1] == 0 {
+			dplayer = other.player_id
+            if unte {
+            	move_cooldown[AT_NSPECIAL_2] = 123
+            }
+            
+	    	hit_player_obj = other.player_id
 			move_cooldown[AT_EXTRA_1] = 20
 		}
-			
+		}
 			 
+	}
+	}
+  }
+	
+	
+	if unte && (state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FORWARD  or state == PS_TECH_BACKWARD or state == PS_PARRY) {
+		has_airdodge = true
+		if state_timer%2 == 0 {
+			y -= vsp
+		    x -= hsp
+		}
+		
+		if state_timer == 15 {
+			set_state(PS_PRATFALL)
+		}
+		
+		if state == PS_PARRY {
+			y -= 10
+			state_timer = 1
+			window_timer = 1
+		}
 	}
 }
 	
@@ -364,9 +414,17 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
 	set_color_profile_slot(alt,0, 64, 216, 255 );
     }
     
+    //Blue
+    
+    if !has_rune("M") {  
+    	raged = 0
+        para = 0
+        unte = 0
+        disc = 1 
+    }
+    
 
-
-    if  knockback_adj != 1.001 {
+    if  knockback_adj != 1.0 {
            walk_speed = 2.5;
            walk_accel = 0.4;
            initial_dash_speed = 6.66;
@@ -596,8 +654,17 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
 	}
     init_shader();
     
+        //Gren
     
-    if knockback_adj != 1.1001 {
+    if !has_rune("M") {  
+    	raged = 0
+        para = 0
+        unte = 1
+        disc = 0
+    }
+    
+    
+    if knockback_adj != 1.1 {
     	
            walk_speed = 2;
            walk_accel = 0.3;
@@ -883,7 +950,16 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
 	       	create_hitbox(AT_EXTRA_1, 1, antarget.x, antarget.y - 40)
 	       	move_cooldown[AT_EXTRA_2] = 0
 	       }
-	       
+	    
+	//Derple     
+	if !has_rune("M") {  
+    	raged = 0
+        para = 1
+        unte = 0
+        disc = 0
+    }
+    
+    
 	  if knockback_adj != 1.2 {
 		   walk_speed = 3;
            walk_accel = 0.5;
@@ -1116,6 +1192,13 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
 	}
     init_shader();		
 	    
+    //Red       
+	if !has_rune("M") {  
+    	raged = 1
+        para = 0
+        unte = 0
+        disc = 0
+    }
     
     if knockback_adj != 0.9 {
 

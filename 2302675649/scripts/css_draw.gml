@@ -1,4 +1,3 @@
-if ("syncUID" not in id || syncUID != 25005 || !instance_exists(cursor_id)) exit;
 var temp_x = x + 8;
 var temp_y = y + 9;
 
@@ -43,7 +42,7 @@ alt_name[14] = "Unbreakable Diamond";
 alt_name[15] = "Mallow Sky";
 alt_name[16] = "Saikyo Jyanshi";
 alt_name[17] = "BLM";
-alt_name[18] = "Metal";
+alt_name[18] = "Kizuna";
 alt_name[19] = "Genesis";
 alt_name[20] = "Laurie D. Bunnykins";
 alt_name[21] = "Gold";
@@ -59,7 +58,7 @@ alt_name[30] = "Ace";
 var num_alts = array_length_1d(alt_name);
 shader_end();
 
-draw_sprite_ext(sprite_get("charselectOutline"),get_synced_var(player),x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
+draw_sprite_ext(sprite_get("charselectOutline"),isFurry,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
 
 //draw_set_halign(fa_right);
 //textDraw(temp_x + 198, temp_y + 70,	"fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
@@ -67,8 +66,11 @@ draw_sprite_ext(sprite_get("charselectOutline"),get_synced_var(player),x+8,y+8,2
 
 draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,2,2,0,c_white,1);
 
-draw_sprite_ext(sprite_get("mioButton"), buttonInfo.hover?1+menu_a_down:0, temp_x + buttonInfo.x, temp_y + buttonInfo.y, 2, 2, 0, c_white, 1);
-draw_sprite_ext(sprite_get("mioIcon"), isFurry, temp_x + buttonInfo.x + 6, temp_y + buttonInfo.y + 4, 2, 2, 0, c_white, 1);
+if ("syncUID" in id && syncUID == 25005 && instance_exists(cursor_id))
+{
+	draw_sprite_ext(sprite_get("mioButton"), buttonInfo.hover?1+menu_a_down:0, temp_x + buttonInfo.x, temp_y + buttonInfo.y, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("mioIcon"), isFurry, temp_x + buttonInfo.x + 6, temp_y + buttonInfo.y + 4, 2, 2, 0, c_white, 1);
+}
 
 draw_set_halign(fa_left);
 

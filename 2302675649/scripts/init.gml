@@ -106,6 +106,7 @@ saw_effect = hit_fx_create(sprite_get("sawhit"), 48);
 chun_effect = hit_fx_create(sprite_get("chunhit"), 48);
 bunny_effect = hit_fx_create(sprite_get("bunnyhit"), 48);
 genesis_effect = hit_fx_create(sprite_get("genesishit"), 24);
+kizuna_effect = hit_fx_create(sprite_get("kizunaFX"), 24);
 
 // vfx roll
 rollArray = array_create(6, -1);

@@ -21,6 +21,8 @@ portal_direction = 0;
 portal_number = 0;
 portal_position = 0;
 portal_cooldown = 0;
+portal_owner = player_id.player;
+effect_played = false;
 
 portal1_direction = 0;
 portal2_direction = 0;

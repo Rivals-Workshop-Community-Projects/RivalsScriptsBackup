@@ -35,6 +35,11 @@ switch(attack){
     	}
     	break;
     	
+    case AT_FSPECIAL_AIR: // add can wall jump to emergency recovery options
+    case AT_USPECIAL_GROUND:
+    	can_wall_jump = true;
+    	break;
+    	
     case AT_DSPECIAL:
     	if(up_down == true && window == 1){
     		set_attack(AT_EXTRA_2);
@@ -42,9 +47,15 @@ switch(attack){
     	}
     	break;
     	
-    case AT_NSPECIAL:
-    	if(window >= 2 && window_timer >= 2){
+    case AT_NSPECIAL: 
+    	// Shine hit
+    	if(window >= 2 && window_timer >= 2 && was_parried == false){
     		can_jump = true;
+    	}
+    	if(window == 3 && (window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) - 1) && special_down){ // 
+    		attack = AT_EXTRA_1;
+    		window = 1;
+    		window_timer = 1;
     	}
     	break;
     	

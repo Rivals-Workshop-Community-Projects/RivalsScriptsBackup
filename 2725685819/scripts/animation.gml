@@ -37,7 +37,7 @@ if abs(hud_offset) < 1{
 if (state == clamp(state,5,6))
 {
 	if  (attack == AT_EXTRA_1)
-	pHurtBox.sprite_index = hurtbox_spr;
+	hurtboxID.sprite_index = hurtbox_spr;
 	
 	if (attack == AT_USPECIAL && window == 2)
 	{
@@ -281,7 +281,7 @@ if (state == clamp(state,5,6) && attack == AT_TAUNT_2)
 
 
 //landing lag sheathing
-if (state == PS_LANDING_LAG && (attack == AT_FAIR || attack == AT_UAIR || attack == AT_BAIR) ) //sheatinglanding lag
+if (state == PS_LANDING_LAG && (attack == AT_FAIR || attack == AT_UAIR || attack == AT_BAIR) && saya_check_window != 1) //sheatinglanding lag
 {
 	sprite_index = sprite_get("landinglag_iai");
 	if state_timer == 1

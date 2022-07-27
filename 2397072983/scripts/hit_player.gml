@@ -80,7 +80,7 @@ if move_cooldown[AT_FSPECIAL_2] > 0 {
 	sound_play(asset_get("sfx_crunch_water"),false,noone, 0.7 + my_hitboxID.damage/10)
 	sound_play(asset_get("sfx_orca_absorb"),false,noone, 0.7 + my_hitboxID.damage/10)
 
-	take_damage(player, -1, hdamage*-1)
+	take_damage(player, -1,my_hitboxID.damage*-1)
 	move_cooldown[AT_FSPECIAL_2] = 0
 	spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 40, 67 )
 }

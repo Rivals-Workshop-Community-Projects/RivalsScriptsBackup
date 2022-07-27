@@ -55,7 +55,6 @@ sound_play(sound_get("dante_grab"));
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 9){
 	
 	if (grabbed_player.trick_marked){
-	take_damage( grabbed_player.player, grabbed_player.player, -2 );
 	grabbed_player.trick_timer = 0;
 	}
 	
@@ -152,7 +151,9 @@ attack_end();
 }
 
 
-
+// if (my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num != 7){
+	
+// }
 
 
 

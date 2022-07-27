@@ -74,7 +74,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 21; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 20; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(225, 92, 198) // "color preview square" color. can be any color!
@@ -110,9 +110,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[10,0] = make_color_rgb(227, 219, 141)
     ce[10,1] = "Artistic Fae"
     ce[10,2] = "Alola! Based on Mina from Pokémon Sun and Moon."
-    ce[11,0] = make_color_rgb(133, 205, 194)
-    ce[11,1] = "World is Yours"
-    ce[11,2] = "Based on the vocaloid Hatsune Miku. "    
+    ce[11,0] = make_color_rgb(0, 255, 168)
+    ce[11,1] = "Infamous"
+    ce[11,2] = "Among the paint and the fumes. The 'Infamous' color palette."    
     ce[12,0] = make_color_rgb(184, 149, 224)
     ce[12,1] = "Blight"
     ce[12,2] = "gay people install. Based on Amity from The Owl House."
@@ -143,9 +143,6 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[21,0] = make_color_rgb(255, 0, 0)
     ce[21,1] = "Canada??"
     ce[21,2] = "Thought it would be kinda funny. Mal is canadian."    
-    ce[22,0] = make_color_rgb(180, 225, 128)
-    ce[22,1] = "Summer Derby"
-    ce[22,2] = "Go get 'em Nuzl! Includes a custom Galaxy."    
 
 
     // you can add more, by copypasting and changing the first index of the array accordingly.

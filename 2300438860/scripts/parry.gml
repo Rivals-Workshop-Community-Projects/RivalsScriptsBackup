@@ -8,4 +8,7 @@ if hit_player_obj != self {
         	sound_play(sound_get("fspec2"),false,noone,1.2)
         	sound_play(sound_get("fspec3"),false,noone,1.2)
         	move_cooldown [AT_NSPECIAL] = 300
+} else {
+	set_state(PS_PRATLAND)
+	state_timer = -120
 }

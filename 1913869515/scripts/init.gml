@@ -73,7 +73,7 @@ zvoice = 0;
 
 zbayo = 0
 
-char_height = 49;
+char_height = 60;
 idle_anim_speed = 0.23;
 crouch_anim_speed = .1;
 walk_anim_speed = .20;
