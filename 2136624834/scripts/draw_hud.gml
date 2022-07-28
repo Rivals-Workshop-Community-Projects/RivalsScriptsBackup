@@ -8,7 +8,7 @@ shader_start();
 //         draw_sprite_ext(sprite_get("sno2"), 0, temp_x + 35, temp_y-18, 2, 2, 0, -1, 1);    
 //    }
     
-    
+if !timebroke {    
 draw_sprite_ext(sprite_get("flake3"),  26  , temp_x+ 68, temp_y -12,1,1,0,-1,0.6);
 draw_sprite_ext(sprite_get("flake3"),  0  , temp_x+ 68, temp_y -12,1,1,0,-1,0.7  );
     
@@ -25,7 +25,7 @@ draw_sprite_ext(sprite_get("flake3"),  0  , temp_x+ 68, temp_y -12,1,1,0,-1,0.7 
 if timestop >= 100 {
         draw_sprite(sprite_get("flake3"),  26  , temp_x+ 68, temp_y -12  );
 }    
-
+}
 
 
 if introtimer > 0 {

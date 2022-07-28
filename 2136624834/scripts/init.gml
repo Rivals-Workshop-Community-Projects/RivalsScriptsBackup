@@ -16,6 +16,8 @@ finaldir = 0
 grabbed = false
 fairhit = 0
 
+timebroke = 0
+
 nname = "Elice Vuris"
 ncode1 = "Daughter of Old Ice King and Mafia Princess."
 ncode2 = "She is capable of creating snowballs, icicles"
@@ -69,7 +71,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 11;
-short_hop_speed = 7;
+short_hop_speed = 8;
 djump_speed = 11;
 leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
@@ -91,7 +93,7 @@ hitstun_grav = .52;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 14;
 wave_land_time = 8;
 wave_land_adj = 0.6; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding

@@ -1,4 +1,6 @@
-
+if attack != AT_DTHROW {
+	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+}
 
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || attack == AT_EXTRA_1 || attack == AT_FSPECIAL){
@@ -224,6 +226,32 @@ if attack == AT_DATTACK {
     
 }
 
+if attack == AT_FTHROW && !hitpause {
+	 if window == 1 && window_timer == 1{
+        sound_play(asset_get("sfx_ice_shieldup"),false,noone,.8,max(0.7,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
+    }
+    
+     if window == 2 && window_timer == 1{
+         sound_play(asset_get("sfx_spin"));
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,.8,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
+         
+    }
+    
+	if window == 3 {
+	if window_timer == 1  {
+		 spawn_hit_fx( x + ((-15 + random_func(5, 20, true)) * spr_dir) , y - 50 + random_func(6, 20, true) , tauntpar1 )
+	}
+	
+	if window_timer == 3 {
+		spawn_hit_fx( x + ((35 + random_func(5, 20, true)) * spr_dir) , y - 40 + random_func(6, 30, true) , tauntpar1 )
+	}
+	
+	if window_timer == 5 {
+		spawn_hit_fx( x + ((0 + random_func(5, 20, true)) * spr_dir) , y - 20 + random_func(6, 30, true) , tauntpar1 )
+	}
+	
+   }
+}
 
 if attack == AT_NAIR && !hitpause {
 	
@@ -444,8 +472,10 @@ if attack == AT_NSPECIAL && !hitpause {
 if attack == AT_FSPECIAL && !hitpause {
 	
 
+	     
 
-	 if window = 3 && window_timer == 1 {
+
+	 if window = 3 && window_timer == 1 && !hitpause {
 	 	sound_play(asset_get("sfx_ori_bash_launch"));
 	 }
 	
@@ -470,7 +500,7 @@ if timefreeze > 40  {
 } 
 if uspechit && timefreeze > 40 && !hitpause {
 	vsp = 6
-
+       
 	
    with (asset_get("oPlayer")) {
 
@@ -491,6 +521,20 @@ if uspechit && timefreeze > 40 && !hitpause {
    }
 	
 }
+
+if has_hit_player && timefreeze < 40  && window == 2 && !hitpause {
+	hit_player_obj.hitstop ++
+	hit_player_obj.x += floor((x - hit_player_obj.x))/4
+	hit_player_obj.y += floor((y - hit_player_obj.y - 30))/4
+	if window_timer%4 == 0 create_hitbox(AT_USPECIAL,1,x,y)
+}
+
+if has_hit_player && window == 3 && !hitpause && window_timer == 1 {
+	create_hitbox(AT_USPECIAL,17,x,y)
+	fx = spawn_hit_fx(x,y - 40,304)
+	fx.pause = 4
+}
+
 
 if window < 3 {
 	
@@ -633,7 +677,6 @@ if window == 2 {
 }
 
 if attack == AT_NSPECIAL {
-	move_cooldown[AT_NSPECIAL] = 40
 	if free {
 		can_fast_fall = false
 	}
@@ -641,7 +684,7 @@ if attack == AT_NSPECIAL {
 		window = 4 
 	}
 	
-	if (window == 2 or (window == 1 && window_timer > 10)) && !special_down {
+	if (window == 2 or (window == 1 && window_timer > 5)) {
 		window = 3
 		window_timer = 0
 		sound_play(asset_get("sfx_swipe_heavy1"));
@@ -703,7 +746,7 @@ if attack == AT_NSPECIAL {
 		}
 	}
 	
-	if window == 4 && window_timer == 12 {
+	if window == 4 && window_timer == 9 {
 		
 	
 		window = 5 
@@ -741,12 +784,17 @@ if attack == AT_FSTRONG {
 
 if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_timer < 12) {
 		if timefreeze < 1 {
-			set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
-	if window_timer % 3 == 0 && !hitpause {
-	
+			set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 1);
+      	if window_timer % 3 == 0 && !hitpause && has_hit_player {
+     	set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 1);
 		sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
 			create_hitbox(AT_FSTRONG , 1 ,  x - ((40 + random_func(1, 40, true)) * spr_dir) , y - 60 + random_func(2, 40, true) );
 			spawn_hit_fx(  x - ((40 + random_func(1, 40, true)) * spr_dir) , y - 60 + random_func(2, 40, true) , icepar1 )
+		}
+		if window == 2 && window_timer > 8 && !has_hit_player {
+			window = 4
+			window_timer = 10
+			set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 9);
 		}
 	}
 	
@@ -833,7 +881,9 @@ if attack == AT_DSTRONG {
 }
 
 if attack == AT_USTRONG {
-    
+      if grabbed  {
+      	hsp /= 1.2
+      }
         if timefreeze > 10 {
         	vsp = 0
         }
@@ -895,22 +945,26 @@ if attack == AT_BAIR {
 
 
 if attack == AT_FAIR {
-    
+	move_cooldown[AT_FAIR] = 30
+    if window < 3 {
+    	set_attack_value(AT_FAIR, AG_CATEGORY, 2);
+    	can_fast_fall = false 
+    } else {
+    	set_attack_value(AT_FAIR, AG_CATEGORY, 1);
+    }
     if window == 1 {
     	fairhit = 0
     }
     
-    if window == 3 && has_hit{
-        if window_timer == 1 && timefreeze <= 2 {
-        	if !down_down {
+    if window == 3 && has_hit_player{
+        if window_timer == 3 && timefreeze <= 2 {
              vsp = -7
-        	} 
             hsp /= 3
         }
         
     }
     
-    if window == 2 {
+    if window == 2 && window_timer <= 15 {
     	if down_down && !hitpause{
     		y += 2
     	}
@@ -932,10 +986,10 @@ if attack == AT_FAIR {
         
         if fairhit = 1 && !hitpause {
             window = 3
-            window_timer = 0
+            window_timer = 2
             
                  if timefreeze > 1 {
-            		hsp = 2*spr_dir
+            		hsp = 4*spr_dir
             	}
     	
         }
@@ -1302,10 +1356,6 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 
 if attack == AT_NSPECIAL {
 
-
-
-	
-	
 
 	if window == 3 && window_timer == 11 {
 		set_state (PS_IDLE)

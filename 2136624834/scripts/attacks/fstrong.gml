@@ -43,8 +43,31 @@ set_window_value(AT_FSTRONG, 6, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_FSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
-set_num_hitboxes(AT_FSTRONG, 4);
+set_num_hitboxes(AT_FSTRONG, 5);
 
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSTRONG, 5, HG_WINDOW, 2);
+set_hitbox_value(AT_FSTRONG, 5, HG_WINDOW_CREATION_FRAME, 4);
+set_hitbox_value(AT_FSTRONG, 5, HG_LIFETIME, 4);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_X, 30);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_Y, -32);
+set_hitbox_value(AT_FSTRONG, 5, HG_WIDTH, 90);
+set_hitbox_value(AT_FSTRONG, 5, HG_HEIGHT, 45);
+set_hitbox_value(AT_FSTRONG, 5, HG_PRIORITY, 3);
+set_hitbox_value(AT_FSTRONG, 5, HG_DAMAGE, 1);
+set_hitbox_value(AT_FSTRONG, 5, HG_ANGLE, 30);
+set_hitbox_value(AT_FSTRONG, 5, HG_SHAPE, 0);
+set_hitbox_value(AT_FSTRONG, 5, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_FSTRONG, 5, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, 5, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_FSTRONG, 5, HG_EXTRA_HITPAUSE, 12);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITPAUSE_SCALING, .1);
+set_hitbox_value(AT_FSTRONG, 5, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FSTRONG, 5, HG_VISUAL_EFFECT_X_OFFSET, 32);
+set_hitbox_value(AT_FSTRONG, 5, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_FSTRONG, 5, HG_HIT_SFX, asset_get("sfx_holy_lightning"));
+set_hitbox_value(AT_FSTRONG, 5, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 30);

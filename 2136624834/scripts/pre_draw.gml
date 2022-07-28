@@ -7,7 +7,7 @@ shader_start();
 
 if attack == AT_NSPECIAL && window == 2 && state == PS_ATTACK_GROUND {
     
-    if ncharge >= 20 && ncharge < 60 &&  window_timer % 3 == 0 {
+    if move_cooldownn[AT_NSPECIAL] == 0 && ncharge < 60 &&  window_timer % 3 == 0 {
          draw_sprite(sprite_get("snowball1"), state_timer / 1, x - (40 * spr_dir) , y - 10  );
     }
     
@@ -44,6 +44,7 @@ if timefreeze > 1 {
          }
 
 }
+
 if timeinv > 1 {
      draw_sprite(sprite_get("flake2"), get_gameplay_time() / 1, x - (8 * spr_dir)  , y - 40  );
 }
@@ -53,7 +54,7 @@ if visible && state != PS_AIR_DODGE &&
 state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD
 && !attacking or (attacking && attack != AT_NSPECIAL) or (attacking && attack == AT_NSPECIAL && window < 2) {
 
-  if ncharge >= 20 && ncharge < 60 {
+  if move_cooldown[AT_NSPECIAL] == 0 && ncharge < 60 {
          draw_sprite_ext(sprite_get("sno1"), 0, snox , snoy, 2,2, get_gameplay_time()*2 , -1, 0.5 )
     }
     
@@ -65,7 +66,7 @@ state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_FORWAR
 
 }
 
-
+if !timebroke {   
 if visible && state != PS_AIR_DODGE && 
 state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD {
 
@@ -100,5 +101,6 @@ gpu_set_blendmode(bm_normal);
         draw_sprite_ext(sprite_get("flake4"),  26  , x  , y -32  , 1,1, 0, -1, 0.1 + move_cooldown[AT_FSPECIAL_2]/20   );
     }    
 
+}
 }
 shader_end();

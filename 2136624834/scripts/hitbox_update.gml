@@ -1,13 +1,67 @@
 ///
-	
+draw_xscale = spr_dir 
+
 if player == orig_player  {
 if attack == AT_NSPECIAL {
 	
-	if player_id.attacking &&  player_id.attack == AT_NSPECIAL && (player_id.window == 1 or player_id.window == 4) && player_id.window_timer == 1 {
-		
+	with pHitBox {
+		if player_id.char_height == other.player_id.char_height && abs(x - other.x) < 60 && abs(y - other.y) < 60 && hit_priority != 4.2131 {
+			if attack == AT_FTILT {
+				sound_stop(asset_get("sfx_blow_heavy1"));
+				sound_play(asset_get("sfx_blow_heavy1"));
+				with other {
+				   fx = spawn_hit_fx( x , y , 305 )
+                   fx.pause = 4
+                   spr_dir = other.spr_dir 
+                   hsp = 10*spr_dir 
+                   vsp = -4
+				}
+				hit_priority = 4.2131
+			}
+			
+			if attack == AT_USTRONG {
+				sound_stop(asset_get("sfx_blow_heavy1"));
+				sound_play(asset_get("sfx_blow_heavy1"));
+				with other {
+				   fx = spawn_hit_fx( x , y , 305 )
+                   fx.pause = 4
+                   spr_dir = other.spr_dir 
+                   hsp = 2*spr_dir 
+                   vsp = -14
+				}
+				hit_priority = 4.2131
+			}
+			
+			if attack == AT_DSTRONG {
+				sound_stop(asset_get("sfx_boss_laser_hit"));
+				sound_play(asset_get("sfx_boss_laser_hit"));
+				with other {
+				   fx = spawn_hit_fx( x , y , 305 )
+                   fx.pause = 4
+                   destroyed = true 
+				}
+				player_id.ncharge = 70
+				player_id.snox = other.x
+				player_id.snoy = other.y
+				hit_priority = 4.2131
+			}
+			
+			if attack == AT_BAIR {
+				sound_stop(asset_get("sfx_blow_heavy1"));
+				sound_play(asset_get("sfx_blow_heavy1"));
+				with other {
+				   fx = spawn_hit_fx( x , y , 305 )
+                   fx.pause = 4
+                   spr_dir = other.spr_dir*-1 
+                   hsp = 10*spr_dir 
+                   vsp = -4
+				}
+				hit_priority = 4.2131
+			}
+		}
 	}
 	
-		if player_id.window == 2 && player_id.attack == AT_USPECIAL  
+	if player_id.window == 2 && player_id.attack == AT_USPECIAL  
 	&& (player_id.state == PS_ATTACK_GROUND or player_id.state == PS_ATTACK_AIR) {
     	if (x - 50 - (player_id.x)) < 0 
 	and (x + 50 - (player_id.x)) > 0 and (y - 50 - (player_id.y)) < 0
@@ -47,8 +101,6 @@ if attack == AT_NSPECIAL {
 	}
 	}
 	
-	
-	
 	if player_id.window == 4 && player_id.window_timer = 1 && player_id.attack == AT_FSPECIAL  
 	&& (player_id.state == PS_ATTACK_GROUND or player_id.state == PS_ATTACK_AIR) && player_id.timefreeze < 2  {
     	if ((x - 120 - (30 * spr_dir)) - (player_id.x + (player_id.fcharge * 8 * player_id.spr_dir))) < 0 
@@ -57,36 +109,35 @@ if attack == AT_NSPECIAL {
 
 	
 	if attack == AT_NSPECIAL && hbox_num == 1  {
-    destroyed = 1
-    create_hitbox(AT_NSPECIAL , 8,  x  , y );
-    spawn_hit_fx( x , y , 305 )
+    spr_dir = player_id.spr_dir*-1
+    vsp = -2
+    fx = spawn_hit_fx( x , y , 302 )
+    fx.pause = 4
+    sound_play(asset_get("sfx_blow_medium2"));
     }	
     
-    
-	if hbox_num == 3 {
-		
-
-    destroyed = 1
-    create_hitbox(AT_NSPECIAL , 6,  x  , y );
-    create_hitbox(AT_NSPECIAL , 4,  x  , y );
-    create_hitbox(AT_NSPECIAL , 8,  x  , y );
-    spawn_hit_fx( x , y , 306 )
-     sound_play(sound_get("RI"));
-	}
 		
 	
 	if hbox_num == 2{
-
-    destroyed = 1
-    create_hitbox(AT_NSPECIAL , 7,  x  , y );
-    create_hitbox(AT_NSPECIAL , 5,  x  , y );
-    spawn_hit_fx( x , y , 304 )
-    sound_play(sound_get("RI2"));
+    spr_dir = player_id.spr_dir*-1
+    vsp = -2
+     fx = spawn_hit_fx( x , y , 304 )
+    fx.pause = 4
+    sound_play(asset_get("sfx_blow_heavy1"));
+	}
+	
+	if hbox_num == 3 {
+	spr_dir = player_id.spr_dir*-1
+	vsp = -4
+     fx = spawn_hit_fx( x , y , 306 )
+    fx.pause = 4
+     sound_play(asset_get("sfx_blow_heavy2"));
 	}
 	
 		
 	}
 	}
+	
 }	
 
 
@@ -120,12 +171,38 @@ if attack == AT_FSTRONG  {
 
 
 if attack == AT_NSPECIAL {
-	hit_priority = 9
+	player_id.move_cooldown[AT_NSPECIAL] = 5
+	if hbox_num < 3 && (free or (player_id.attack == AT_FSPECIAL && player_id.window <= 3
+	&& (player_id.state == PS_ATTACK_GROUND or player_id.state == PS_ATTACK_AIR))) {
+		hitbox_timer -= 1
+	}
+	
+	if hbox_num < 3 && hitbox_timer > (hbox_num*40) {
+		sound_play(asset_get("sfx_bird_downspecial"),false,noone,.5,hbox_num/1.5);
+		fx = spawn_hit_fx( x , y, 302 )
+        fx.pause = 4
+        y -= 2
+		destroyed = true 
+		createing = create_hitbox(AT_NSPECIAL,hbox_num + 1,x,y)
+		createing.spr_dir = spr_dir
+		createing.hsp = (3 - hbox_num)*spr_dir
+	}
+	
+
+    	if nomorehit > 0 {
+    		hit_priority = 0
+    		nomorehit -- 
+    	} else {
+    		hit_priority = 9
+    	}
+    
+	
 	  if hbox_num == 5 or hbox_num == 7 or hbox_num == 8  {
 	  	
 	  	if !free {
 	  		destroyed = 1 
 	  		 create_hitbox(AT_NSPECIAL , 10,  x  , y );
+	  		  sound_stop( asset_get("sfx_abyss_explosion"));
 	  		  sound_play( asset_get("sfx_abyss_explosion"));
 	  		  spawn_hit_fx( x , y , 305)
 	  	}
@@ -139,6 +216,7 @@ if attack == AT_NSPECIAL {
     create_hitbox(AT_NSPECIAL , 5,  x  , y );
     create_hitbox(AT_NSPECIAL , 7,  x  , y );
 	  		 create_hitbox(AT_NSPECIAL , 9,  x  , y );
+	  		  sound_stop( asset_get("sfx_abyss_explosion_big"));
 	  		  sound_play( asset_get("sfx_abyss_explosion_big"));
 	  		  spawn_hit_fx( x , y , 304 )
 	  	}
@@ -187,17 +265,16 @@ if attack == AT_NSPECIAL {
 	&& (player_id.state == PS_ATTACK_GROUND or player_id.state == PS_ATTACK_AIR) {
 		
 	if attack == AT_NSPECIAL && hbox_num == 1  {
-		spr_dir *= -1
-    hsp = -6 * player_id.spr_dir
+        hsp = 4 * spr_dir
     }	
 
      if attack == AT_NSPECIAL && hbox_num == 2  {
 
-    hsp = 4 * spr_dir
+    hsp = 3 * spr_dir
     }
      if attack == AT_NSPECIAL && hbox_num == 3{
 
-    hsp = 3 * spr_dir
+    hsp = 2 * spr_dir
     }
    
 	}
@@ -213,12 +290,20 @@ if attack == AT_NSPECIAL  {
         }
 	
         
-	if get_gameplay_time() % 6 == 0 && !free {
-	    sound_play(sound_get("ballroll"),false,noone,0.6);
+	if get_gameplay_time() % (5 + hbox_num) == 0 && !free {
+	    sound_play(sound_get("ballroll"),false,noone,0.6 + (hbox_num/50), 1 - (hbox_num/50));
+	    
 	}
 	
 	if y > room_height {
+		if hbox_num <= 3 {
+			sound_play(asset_get("sfx_bird_downspecial"),false,noone,.5,1.4);
+			sound_play(asset_get("sfx_spin"),false,noone,.5,1.4);
+	    	player_id.snox = x
+	    	player_id.snoy = y
+		}
 		destroyed = true
+		
 	}
 }
 }
@@ -279,8 +364,8 @@ if hitbox_timer = -28 {
     hsp = 14 * spr_dir
     }
      
-    	    if attack == AT_NSPECIAL && hbox_num == 1{
-    hsp = 5 * spr_dir
+    if attack == AT_NSPECIAL && hbox_num == 1{
+    hsp = 4 * spr_dir
     }
     
     if attack == AT_NSPECIAL && hbox_num == 5{
@@ -299,11 +384,11 @@ if hitbox_timer = -28 {
     }
     
     
-     if attack == AT_NSPECIAL && hbox_num == 2  {
-    hsp = 4 * spr_dir
+    if attack == AT_NSPECIAL && hbox_num == 2  {
+    hsp = 3 * spr_dir
     }
     
-         if attack == AT_NSPECIAL && hbox_num == 4 {
+    if attack == AT_NSPECIAL && hbox_num == 4 {
     hsp = -3 * spr_dir
     vsp = -8
     }
@@ -314,7 +399,7 @@ if hitbox_timer = -28 {
     }
     
      if attack == AT_NSPECIAL && hbox_num == 3{
-    hsp = 3 * spr_dir
+    hsp = 2 * spr_dir
     }
     
     

@@ -6,6 +6,14 @@ hit_player_obj = self
 
 }
 
+if timebroke {
+	timestop = 0
+}
+
+if move_cooldown[AT_NSPECIAL] = 1 {
+	snox = x
+	snoy = y - 30
+}
 
 
 if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
@@ -45,7 +53,7 @@ if get_gameplay_time() = 36 {
 	
 visible = true
 draw_indicator = true
-sound_play(sound_get("timestop"),false, noone, 2);
+sound_play(sound_get("timestop"),false, noone, 1);
 spawn_hit_fx( x, y , darken )	
 }
 
@@ -544,6 +552,7 @@ if timefreeze > 1 && timefreeze < 40 && state == PS_IDLE && attack != AT_EXTRA_3
 	window_timer = 0
     sound_play(sound_get("timeresume"),false, noone, 2);
     spr_dir = finaldir
+    timebroke = 1
 }
 
 
