@@ -20,9 +20,9 @@ sprite_change_offset("land", 94, 146);
 sprite_change_offset("landinglag", 94, 146);
 
 
-sprite_change_offset("RCEm", 160, 160);
-sprite_change_offset("RCEs", 240, 240);
-sprite_change_offset("RCEE", 240, 240);
+sprite_change_offset("RCEm", 160, 170);
+sprite_change_offset("RCEs", 240, 250);
+sprite_change_offset("RCEE", 240, 250);
 
 sprite_change_offset("dm", 50, 70);
 

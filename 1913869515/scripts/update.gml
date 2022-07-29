@@ -1640,3 +1640,13 @@ if move_cooldown[AT_UAIR] > 20 {
 	
 	
 } 
+
+if state == PS_PARRY {
+		free = false 
+		if state_timer > 2 && state_timer < 15 && !invincible{
+			window_timer -= 0.4
+		} else {
+			window_timer += .25
+		}
+	}
+	

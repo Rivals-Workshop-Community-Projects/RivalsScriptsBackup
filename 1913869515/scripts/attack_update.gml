@@ -205,14 +205,13 @@ if attack == AT_UTHROW {
         soft_armor = 0
     }
     
-    if window < 4 {
-                	suppress_stage_music( 0.4,60 );	
-    }
+
+                	suppress_stage_music( min(0.5, state_timer/120),60 );	
+    
     
     vsp = 0
     
     if window = 1 && !hitpause {
-        oldx = x
         if window_timer % 10 == 0 or window_timer == 1 {
              spawn_base_dust(x,y - 0,"land",spr_dir);
         }
@@ -234,13 +233,13 @@ if attack == AT_UTHROW {
         
         shake_camera(1,2)
         if window_timer == 1 {
-        	
+        	y -= 2
         	if zvoice != 0 {
         		sound_stop(zvoice)
         		zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + 0.05 + random_func(1,6,true)/100);
-        		sound_play(sound_get("tauntU"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
-        		sound_play(sound_get("tauntU"),false,noone,.5,.8 + 0.05 + random_func(1,6,true)/100);
-        		sound_play(sound_get("tauntU"),false,noone,.5,.7 + 0.05 + random_func(1,6,true)/100);
+        		         sound_play(sound_get("tauntU"),false,noone,.6,.95 + 0.05 + random_func(1,6,true)/100);
+        		         sound_play(sound_get("tauntU"),false,noone,.5,.8 + 0.05 + random_func(1,6,true)/100);
+        		         sound_play(sound_get("tauntU"),false,noone,.5,.7 + 0.05 + random_func(1,6,true)/100);
         	}
         	
 		offensetimer = 0
@@ -275,7 +274,6 @@ if attack == AT_UTHROW {
     }
     
     if window == 3 {
-        x = oldx
         draw_indicator = false
         if window_timer >= 20 && !hitpause {
               shake_camera(4,4)
@@ -308,7 +306,7 @@ if attack == AT_UTHROW {
     
     if window == 4 && window_timer == 25 && has_hit_player && !hitpause{
     	if zvoice != 0 {
-    	zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
+    	zvoice = sound_play(sound_get("finalle2"),false,noone,1,.95 + 0.20 + random_func(1,6,true)/100);
     	}
     	
     	create_hitbox(AT_UTHROW,3,x,y)
@@ -1285,6 +1283,7 @@ if (attack == AT_JAB){
     		if attack_down {
     			attack_end()
     			can_attack = true 
+    			spr_dir*= -1
     		}
     	}
     }
@@ -1390,14 +1389,10 @@ if(attack == AT_DAIR){
 	
 
 	
-    if ((window == 3 or window == 2) && has_hit_player) {
+    if ((window == 3 or window == 2) && has_hit_player)  && !hitpause {
     	window = 4;
     	window_timer = 0;
-    }
-    
-   
-   if (window == 4 && !hitpause) {
-   	    djumps = 0
+    	djumps = 0
     	vsp = -4
        	hsp = -3 * spr_dir
     	set_attack (AT_BAIR)
@@ -1406,19 +1401,22 @@ if(attack == AT_DAIR){
     	move_cooldown[AT_DTHROW] = 30
     }
     
+   
+    
     if(window == 3 && window_timer == get_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH)) && !hitpause{
     	djumps = 0
         set_attack (AT_BAIR)
     	window = 5
     	window_timer = 5
     }
-    
+
      
    
 } 
 	
 	
 if (attack == AT_TAUNT){
+	zrandom = 2
 	move_cooldown[AT_TAUNT] = 25
 	if window == 1 && window_timer == 1 && offense != 0 {
 			var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )

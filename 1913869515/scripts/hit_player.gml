@@ -20,6 +20,16 @@ if halox > 0 {
 
 finishercd = 0
 
+if my_hitboxID.attack == AT_UTHROW && hit_player_obj.free = false {
+	hit_player_obj.y -= 2
+}
+
+if my_hitboxID.attack == AT_TAUNT && my_hitboxID.hbox_num == 12 {
+	my_hitboxID.vsp = -6
+	my_hitboxID.hsp = 3*spr_dir
+	my_hitboxID.hitbox_timer = 0
+}
+
 if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 2  {
 	djumps = 0
 		sound_play(asset_get("sfx_blow_heavy2"))

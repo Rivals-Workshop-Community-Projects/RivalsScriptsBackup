@@ -62,7 +62,7 @@ wave_friction       = 0.12;		// 0    -  0.15
 roll_forward_max    = 9;		// 9    -  11
 roll_backward_max   = 9;		// 9    -  11       always the same as forward
 wave_land_time      = 8;		// 6    -  12
-wave_land_adj       = 1.3;		// 1.2  -  1.5      idk what zetterburn's is
+wave_land_adj       = 1.15;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;		// 7.5  -  8
 techroll_speed      = 10;		// 8    -  11
 
@@ -161,7 +161,7 @@ hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 
 // Victory
 set_victory_bg(sprite_get("victory_background")); // victory_background.png
-set_victory_theme(sound_get("victory_theme")); // victory_theme.ogg
+set_victory_theme(sound_get("victory")); // victory_theme.ogg
 
 // Movement SFX
 land_sound          = sound_get("sfx_land");
@@ -276,6 +276,8 @@ draw5_x = 0;
 draw5_y = 0;
 draw5_index = 0;
 trail_effect = sprite_get("fspecial_trail");
+
+waterJumpCancel = false;
 
 //copy
 TCG_Kirby_Copy = 0;

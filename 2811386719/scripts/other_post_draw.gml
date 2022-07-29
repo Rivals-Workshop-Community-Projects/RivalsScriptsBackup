@@ -1,8 +1,8 @@
 if(static_pull > 0){
   with other_player_id shader_start()
   if(other_player_id.pulling){
-    var rot = point_direction(x, y, other_player_id.pull_dir_x, other_player_id.pull_dir_y);
-    draw_sprite_ext(other_player_id.static_max_pull_spr, floor(other_player_id.game_time/3)%11, x, y-(char_height/2), 2, 2, rot, c_white, 1);
+    var rot = point_direction(x, y-(char_height/2), other_player_id.pull_dir_x, other_player_id.pull_dir_y);
+    draw_sprite_ext(other_player_id.static_max_pull_spr, floor(other_player_id.game_time/1.1)%11, x, y-(char_height/2), 2, 2, rot, c_white, 1);
     draw_mag_trail();
   }else{
     draw_sprite_ext(other_player_id.static_max_spr, floor(other_player_id.game_time/5)%13, x, y-(char_height/2), 2, 2, 0, c_white, 1);
@@ -33,11 +33,11 @@ with other_player_id{
 
 var owner = other_player_id;
 
-if(pull_strength < 0.1) return;
+// if(pull_strength < 0.07) return;
 
 var x_loc = x;
 var y_loc = y - char_height/2;
-var x_width = 35;
+var x_width = 36;
 var x_loc_other = owner.pull_dir_x;
 var y_loc_other = owner.pull_dir_y;
 
@@ -48,4 +48,4 @@ var avg_y = (y_loc + y_loc_other)/2;
 
 var scl = dist/x_width;
 
-draw_sprite_ext(owner.magnetism_trail_spr, owner.game_time, avg_x, avg_y, scl, owner.small_sprites + 1, dire, c_white, pull_strength);
+draw_sprite_ext(owner.magnetism_trail_spr, owner.game_time, avg_x, avg_y, scl, owner.small_sprites + 1, dire, c_white, 1);

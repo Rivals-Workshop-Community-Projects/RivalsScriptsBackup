@@ -54,7 +54,7 @@ set_window_value(AT_COPY_DRILL, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_COPY_DRILL, 7, AG_WINDOW_ANIM_FRAME_START, 28);
 
 //Endlag 2
-set_window_value(AT_COPY_DRILL, 8, AG_WINDOW_TYPE, 7);
+set_window_value(AT_COPY_DRILL, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_COPY_DRILL, 8, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_COPY_DRILL, 8, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_COPY_DRILL, 8, AG_WINDOW_ANIM_FRAME_START, 29);

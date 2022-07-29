@@ -9,7 +9,7 @@ if(attack == AT_TAUNT && window == 5){
 shader_start();
 shader_end();
 //Mix
-if(!hitpause){
+if((!hitpause && mixCurrTotalTimer < 3) || mixCurrTotalTimer > 2){
 	if(TCG_Kirby_Copy == -1){
 		var yOffsetText = -50;
 		

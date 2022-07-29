@@ -42,11 +42,13 @@ set_hitbox_value(AT_COPY_WATER, 1, HG_HEIGHT, 55);
 set_hitbox_value(AT_COPY_WATER, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_COPY_WATER, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_COPY_WATER, 1, HG_ANGLE, 35);
-set_hitbox_value(AT_COPY_WATER, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_COPY_WATER, 1, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_COPY_WATER, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_COPY_WATER, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_COPY_WATER, 1, HG_VISUAL_EFFECT, 6);
 set_hitbox_value(AT_COPY_WATER, 1, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_COPY_WATER, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_COPY_WATER, 1, HG_TECHABLE, 3);
 
 set_hitbox_value(AT_COPY_WATER, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_COPY_WATER, 2, HG_HITBOX_TYPE, 1);

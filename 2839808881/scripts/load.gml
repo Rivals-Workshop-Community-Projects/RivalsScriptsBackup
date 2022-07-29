@@ -141,5 +141,6 @@ if ("kirb_chonk_spr_map" in self)
 
 sprite_change_offset("trialgrounds_kirby", 31, 0);
 
-set_victory_theme(sound_get("victory"));
-set_victory_bg(sprite_get( "victorybg" ));
+set_victory_bg( sprite_get( "victorybg" ));
+
+set_victory_theme( sound_get( "victory" ));

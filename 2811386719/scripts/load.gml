@@ -6,6 +6,7 @@ sprite_change_offset("hurt",                        25, 42, true);
 sprite_change_offset("downhurt",                    22, 46, true);
 sprite_change_offset("uphurt",                      19, 54, true);
 sprite_change_offset("bighurt",                     26, 36, true);
+sprite_change_offset("spinhurt",                    23, 46, true);
 sprite_change_offset("hurtground",                  23, 43, true);
 sprite_change_offset("crouch",                      25, 38, true);
 sprite_change_offset("walk",                        26, 45, true);
@@ -84,14 +85,15 @@ sprite_change_offset("nspecial_water_hoop",           70*2, 57*2);
 sprite_change_offset("nspecial_water_ball_overlay",   12, 11);
 sprite_change_offset("nspecial_water_miss_ground_hitfx",   38*2, 28*2);
 
-sprite_change_offset("uthrow_hitfx",          138, 92);
-sprite_change_offset("nspecial_proj",         12, 24);
-sprite_change_offset("orb_col_mask",          30, 30);
-sprite_change_offset("electric_effect",       31, 25);
-sprite_change_offset("electric_effect_pull",  31, 25);
-sprite_change_offset("nspecial_magnet",       13, 20);
-sprite_change_offset("magnetism_trail",       17, 6);
-sprite_change_offset("ball_offscreen",        8, 9);
+sprite_change_offset("uthrow_hitfx",                  138, 92);
+sprite_change_offset("nspecial_proj",                 12, 24);
+sprite_change_offset("orb_col_mask",                  30, 30);
+sprite_change_offset("electric_effect",               31, 25);
+sprite_change_offset("electric_effect_pull",          31, 25);
+sprite_change_offset("nspecial_magnet",               13, 20);
+sprite_change_offset("magnetism_trail",               17, 6);
+sprite_change_offset("magnetism_layered_trail",       17, 6);
+sprite_change_offset("ball_offscreen",                8, 9);
 
 
 victory_theme = set_victory_theme(sound_get("Gentle Giant"))

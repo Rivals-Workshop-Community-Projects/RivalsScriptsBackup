@@ -3,7 +3,7 @@ set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_EXTRA_1, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_EXTRA_1, AG_OFF_LEDGE, 1);
 set_attack_value(AT_EXTRA_1, AG_USES_CUSTOM_GRAVITY, 1);
-set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("wall_idle_hurtbox"));
+set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("wallcrawl_hurt"));
 
 //wallcrawl
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_TYPE, 1);
@@ -15,7 +15,7 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 //wallgrab startup
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
@@ -66,11 +66,11 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_EXTRA_1, 1, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_EXTRA_1, 1, HG_LIFETIME, 4);
-set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_X, -60);
+set_hitbox_value(AT_EXTRA_1, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_X, -45);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_Y, -105);
-set_hitbox_value(AT_EXTRA_1, 1, HG_WIDTH, 65);
-set_hitbox_value(AT_EXTRA_1, 1, HG_HEIGHT, 65);
+set_hitbox_value(AT_EXTRA_1, 1, HG_WIDTH, 55);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HEIGHT, 55);
 set_hitbox_value(AT_EXTRA_1, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 6);

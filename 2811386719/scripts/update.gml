@@ -3,6 +3,7 @@ game_time = get_gameplay_time();
 
 if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
     move_cooldown[AT_USPECIAL] = 0;
+    move_cooldown[AT_NSPECIAL] = 0;
 }
 if(state == PS_AIR_DODGE){
 	if(window == 1 and window_timer == 0){
@@ -102,6 +103,8 @@ has_walljump_old = has_walljump
 //     permanent_static = true;
 // }
 
+distance_from_ledge = -min(x - stage_left, stage_right - x, 0)
+
 Static()
 
 // static = 100;
@@ -184,6 +187,10 @@ with oPlayer{
     	saved_hsp = 0;
     }
     count++;
+    
+    if(state == PS_PRATFALL){
+    	
+    }
   }
   if(static_transfer_cooldown) static_transfer_cooldown--;
 }
@@ -229,7 +236,7 @@ for(var i = 0; i < len; i++){
 gain_static();
 
 if(old_static != static){
-    static_cooldown = max(180, static_cooldown);
+    static_cooldown = max(120, static_cooldown);
 }
 
 if(drain_timer > 0) drain_timer--;
@@ -261,7 +268,7 @@ switch(state){
     case PS_ATTACK_GROUND:
         if(attack == AT_FSPECIAL){
             if(window == 2){
-              static += 4*(hsp != 0);
+              static += 3.3*(hsp != 0);
             }
         }
         if(attack == AT_DATTACK){
@@ -276,7 +283,7 @@ switch(state){
 
 if(static_cooldown <= 0){
 	if (state == PS_HITSTUN or state == PS_HITSTUN_LAND){
-		static -= 0.5;
+		static -= 1;
 		drain_timer = 10;
 	} 
    

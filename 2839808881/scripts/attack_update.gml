@@ -131,6 +131,19 @@ switch(attack){
 		if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window > 1){
 			hud_offset = 26;
 		}
+		if (window == 1){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				sound_play(sound_get("sfx_smash_64_kirby_uair"), false, noone, 1, 1);
+			}
+		}
+		break;
+	case AT_UAIR:
+		if (window == 1){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				sound_play(asset_get("sfx_jumpground"), false, noone, 0.9, 1.2);
+				sound_play(asset_get("sfx_swipe_medium2"), false, noone, 0.8, 1.1);
+			}
+		}
 		break;
 	case AT_FSTRONG:
 		if window == 2 && window_timer == 1{
@@ -267,6 +280,10 @@ switch(attack){
 					sound_stop(inhale_sound);
 				}
 			break;
+			case 5:
+				clear_button_buffer(PC_ATTACK_PRESSED);
+				move_cooldown[AT_NSPECIAL] = 25;
+			break;
 			case 9:
 				if (window_timer == 4 && !hitpause) {
 					nspec_grabbed = false;
@@ -374,16 +391,23 @@ switch(attack){
 				if !free && ((spr_dir = 1 && (left_pressed || left_down)) || (spr_dir = -1 && (right_pressed || right_down))) {
 					window = 3;
 					window_timer = 0;
+					destroy_hitboxes();
 				}
 				
-				if (jump_pressed || jump_down) && !free && window == 2  {
+				if (jump_pressed || (tap_jump_pressed && can_tap_jump())) && !free && window == 2  {
 					window = 4;
 					window_timer = 0;
 				} 
 				
-				if window == 2 && free && (jump_pressed || jump_down) && djumps != 3 {
-					can_jump = true;
-					zoom = 2;
+				if window == 2 && free && (jump_pressed || (tap_jump_pressed && can_tap_jump())) && djumps != 3 {
+					//print("mario");
+					//zoom = 2;
+					window = 8;
+					window_timer = 0;
+					vsp = -7;
+					hsp = clamp(hsp, -5, 5);
+					move_cooldown[AT_FSPECIAL] = 999999999;
+					destroy_hitboxes();
 				}
 					
 				if special_pressed || shield_pressed {
@@ -393,11 +417,13 @@ switch(attack){
 			
 				break;
 			case 3:
+			hsp -= .7*spr_dir
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 				spr_dir = spr_dir * -1;
 				window = 2;
 				window_timer = 0;
 				zoom = 4;
+				var hbox = create_hitbox( AT_FSPECIAL, 1, x, y);
 			}
 				break;
 			case 4:
@@ -425,18 +451,28 @@ switch(attack){
 				window = 2;
 				window_timer = 0;
 			}
-			if free && (jump_pressed || jump_down) && djumps != 3 {
-				can_jump = true;
-				zoom = 2;
+			if free && (jump_pressed || (tap_jump_pressed && can_tap_jump())) && djumps != 3 {
+				//can_jump = true;
+				//zoom = 2;
+				window = 8;
+				window_timer = 0;
+				vsp = -7;
+				hsp = clamp(hsp, -5, 5);
+				move_cooldown[AT_FSPECIAL] = 999999999;
+				destroy_hitboxes();
 			}
-			if special_pressed || shield_pressed {
+			if (special_pressed || shield_pressed) {
 				window = 6;
 				window_timer = 0;
+				move_cooldown[AT_FSPECIAL] = 60;
+				destroy_hitboxes();
 			}
 			
 				break;
 			case 6:
 				zoom = 2;
+				move_cooldown[AT_FSPECIAL] = 60;
+				destroy_hitboxes();
 				break;
 			case 7:
 			if window_timer == 1 {
@@ -445,8 +481,6 @@ switch(attack){
 				}
 		}
 		break;
-	
-	
 	
 	case AT_USPECIAL:
 		can_fast_fall = false;
@@ -481,7 +515,7 @@ switch(attack){
 		
 			//condensing movement during charge
 			hsp = clamp(hsp, -3, 3);
-			vsp = clamp(vsp, -3, 3);
+			vsp = clamp(vsp, -2.4, 2.4);
 			
 			//direction inputs
 			if (!joy_pad_idle){
@@ -656,19 +690,20 @@ switch(attack){
 		}
 		
 		if (window == 3 || window == 4){
-			print(y)
 			//ground interaction
-			if(place_meeting(x+(0*spr_dir), y+28, asset_get("par_block"))){
-				if (!hitpause){
-					hsp *= 0.35;
-					y += 28;
-					set_state(PS_PRATLAND);
-					//sound_play(landing_lag_sound);
-					spr_angle = 0;
-					sprite_change_offset("uspecial", 88, 84);
+			if(jet_flight_dir > 3 && jet_flight_dir < 7){
+				if(place_meeting(x+(0*spr_dir), y+28, asset_get("par_block"))){
+					if (!hitpause){
+						hsp *= 0.35;
+						y += 28;
+						set_state(PS_PRATLAND);
+						//sound_play(landing_lag_sound);
+						spr_angle = 0;
+						sprite_change_offset("uspecial", 88, 84);
+					}
 				}
 			}
-			
+			/*
 			if (window == 4){
 				if (jet_flight_dir == 2 || jet_flight_dir == 8){
 					if(place_meeting(x+(4*spr_dir), y+10, asset_get("par_block"))){
@@ -698,6 +733,7 @@ switch(attack){
 					}
 				}
 			}
+			*/
 		}
 		if (window == 4){
 			hsp *= 0.9;
@@ -899,7 +935,7 @@ switch(attack){
 		break;
 	}
 	case AT_DSPECIAL: {
-		if window == 1 {
+		if (window == 1) {
 			if window_timer == 4 {
 				//sound_play(sound_get("sfx_hammerswing_m"))
 				sound_play(sound_get("sfx_krdl_stone_form"));
@@ -907,6 +943,22 @@ switch(attack){
 			if window_timer == 30 {
 				sound_play(sound_get("sfx_krdl_hammer_flip_swipe"), false, noone, 0.6, .9);
 				sound_play(asset_get("sfx_charge_blade_swing"));
+			}
+			
+			if (image_index < 6){//>
+				soft_armor = 5;
+				super_armor = false;
+			} else {
+				soft_armor = 0;
+				super_armor = true;
+			}
+		} else {
+			if (window == 2){
+				soft_armor = 0;
+				super_armor = true;
+			} else {
+				soft_armor = 0;
+				super_armor = false;
 			}
 		}
 		
@@ -1243,13 +1295,13 @@ if (attack == AT_COPY_SWORD){
 	if (!free){
 		var swordMHitHboxBKB = 2.5;
 	} else if (free){
-		var swordMHitHboxBKB = 5;
+		var swordMHitHboxBKB = 8;
 	}
 	for (var i = 1; i < 13; i++){
 		set_hitbox_value(AT_COPY_SWORD, i, HG_BASE_KNOCKBACK, swordMHitHboxBKB);
 	}
 	if (window == 2){
-		if (window_timer == 9 && special_down){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && special_down){
 			window_timer = 1;
 		}
 	}
@@ -1257,7 +1309,7 @@ if (attack == AT_COPY_SWORD){
 		sound_stop(sound_get("sfx_charge"));
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && (up_down || (jump_down || jump_pressed)) && !free && !hitpause){
 			spawn_base_dust( x, y, "jump", spr_dir);
-			vsp = -8;
+			vsp = -10.5;
 			sound_play(jump_sound);
 		}
 		
@@ -1268,6 +1320,7 @@ if (attack == AT_COPY_SWORD){
 	}
 	if (window == 4){
 		sword_dust_timer++;
+		move_cooldown[AT_COPY_SWORD] = 80;
 		if (sword_dust_timer == 8){
 			sword_dust_timer = 0;
 			if (!free && !hitpause){
@@ -1275,11 +1328,13 @@ if (attack == AT_COPY_SWORD){
 				spawn_base_dust( x-12, y, "dash", 1);
 			}
 		}
-		if (right_down && hsp <= 3){
-			hsp += 1.5;
-		}
-		if (left_down && hsp >= -3){
-			hsp -= 1.5;
+		if (!hitpause){
+			if (right_down && hsp <= 3){
+				hsp += 3.2;
+			}
+			if (left_down && hsp >= -3){
+				hsp -= 3.2;
+			}
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 			sound_play(asset_get("sfx_charge_blade_swing"), false, noone, 1, 1);
@@ -1297,6 +1352,7 @@ if (attack == AT_COPY_SWORD){
 
 //Water
 if (attack == AT_COPY_WATER){
+	move_cooldown[AT_COPY_WATER] = 30;
 	if (window == 2 && hsp == 0 && !hitpause){
 		window = 3;
 		window_timer = 0;
@@ -1307,7 +1363,15 @@ if (attack == AT_COPY_WATER){
 		hsp = -3 * spr_dir;
 	}
 	if(window == 2){
-		vsp = clamp(vsp, -999, 5.5);
+		vsp = clamp(vsp, -999, 3.5);
+	}
+	if(was_parried){
+		waterJumpCancel = false;
+	}
+	if (window > 2){
+		if (waterJumpCancel){
+			can_jump = true;
+		}
 	}
 }
 
@@ -1448,6 +1512,9 @@ if (attack == AT_COPY_TORNADO){
 
 //Bomb
 if (attack == AT_COPY_BOMB){
+	if (window == 1 || window == 2 || window == 3){
+		var bombUpHeldMod = (up_down * 2.1);
+	}
 	if (window == 1){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			//sound_play(sound_get("sfx_krdl_bomb_throw"));
@@ -1456,8 +1523,8 @@ if (attack == AT_COPY_BOMB){
 			}
 		}
 		bomb_charge = 0;
-		set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_HSPEED, 4.5);
-		set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_VSPEED, -4.5);
+		set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_HSPEED, 6 - bombUpHeldMod);
+		set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_VSPEED, -5.5 - bombUpHeldMod);
 	}
 	if (window == 2){
 		bomb_charge++;
@@ -1472,12 +1539,12 @@ if (attack == AT_COPY_BOMB){
 			window_timer = 0;
 		}
 		if (bomb_charge > 10 && bomb_charge <= 30){
-			set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_HSPEED, 6);
-			set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_VSPEED, -6);
+			set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_HSPEED, 8 - bombUpHeldMod);
+			set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_VSPEED, -6.25 - bombUpHeldMod);
 		} 
 		if (bomb_charge > 30) {
-			set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_HSPEED, 7.5);
-			set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_VSPEED, -7.5);
+			set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_HSPEED, 10 - bombUpHeldMod);
+			set_hitbox_value(AT_COPY_BOMB, 1, HG_PROJECTILE_VSPEED, -7.85 - bombUpHeldMod);
 		}
 		if (bomb_charge == 11){
 			sound_play(sound_get("sfx_charge"));
@@ -1488,7 +1555,7 @@ if (attack == AT_COPY_BOMB){
 			sound_stop(sound_get("sfx_charge"));
 		}
 	}
-	if (window == 3 | !special_down){
+	if (window == 3 || !special_down){
 		sound_stop(sound_get("sfx_charge"));
 	}
 	if (window == 5){
@@ -1769,7 +1836,6 @@ if (attack == AT_COPY_DRILL){
 		drill_move_value = 0;
 		drill_fall_timer = 0;
 		set_hitbox_value(AT_COPY_DRILL, 1, HG_WINDOW, 2);
-		set_window_value(AT_COPY_DRILL, 8, AG_WINDOW_TYPE, 7);
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-2){
 			sound_play(asset_get("sfx_propeller_dagger_loop"), false, noone, 1, 1);
 		}
@@ -1916,13 +1982,9 @@ if (attack == AT_COPY_DRILL){
 	
 	if (window > 5){
 		if (!free){
-			if (has_hit){
-				set_state(PS_LAND);
-			} else if (!has_hit){
-				set_state(PS_PRATLAND);
-				sound_play(landing_lag_sound);
-				spawn_base_dust( x, y, "land", spr_dir);
-			}
+			set_state(PS_LAND);
+			sound_play(landing_lag_sound);
+			spawn_base_dust( x, y, "land", spr_dir);
 		}
 		move_cooldown[AT_COPY_DRILL] = 99999;
 	}
@@ -1941,7 +2003,7 @@ if (attack == AT_COPY_SPARK){
 			sparkTimesThrough++;
 		}
 		
-		if(!special_down && sparkTimesThrough != 0){
+		if((!special_down && sparkTimesThrough != 0) || (special_down && sparkTimesThrough == 3)){
 			window = 3;
 			window_timer = 0;
 			sparkTimesThrough = 0;
@@ -1956,7 +2018,7 @@ if (attack == AT_COPY_SPARK){
 		}
 	}
 	if (window > 4){
-		move_cooldown[AT_COPY_SPARK] = 35;
+		move_cooldown[AT_COPY_SPARK] = 60;
 	}
 	
 	if ((window == 1 && image_index == 2) || window == 2 || window == 3 || window == 4 || window == 5 || window == 6){

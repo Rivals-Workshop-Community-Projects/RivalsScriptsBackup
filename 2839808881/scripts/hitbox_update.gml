@@ -73,7 +73,7 @@ if (attack == AT_COPY_BOMB) {
 //Making it so ESP can be hit
 if (attack == AT_COPY_ESP) {
 	if(esp_state == 2){
-		if (collision_circle(x,y - 95, y + 95, asset_get("pHitBox"),true,true)){ //makes the pot hittable when can_get_hit is true
+		if (collision_circle(x,y - 60, y + 60, asset_get("pHitBox"),true,true)){ //makes the pot hittable when can_get_hit is true
 			with (asset_get("pHitBox")){
 				if (player != other.player_id.player){
 					other.player_id.esp_parried = true;

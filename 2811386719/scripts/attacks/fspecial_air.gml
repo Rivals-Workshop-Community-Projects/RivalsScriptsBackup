@@ -15,7 +15,7 @@ set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 10);
@@ -56,7 +56,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HIT_LOCKOUT, 10);
 
-set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_TYPE, 1); // Grouded
+set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_TYPE, 1); // Grounded
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_LIFETIME, 6);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_X, 20);
@@ -97,7 +97,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_FORCE_FLINCH, 0);
 set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
-set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_HITBOX_TYPE, 1); // Grouded
+set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_HITBOX_TYPE, 1); // Grounded
 set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_LIFETIME, 6);
 set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_HITBOX_X, 40);

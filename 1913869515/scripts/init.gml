@@ -129,9 +129,9 @@ crouch_active_frames = 8;
 crouch_recovery_frames = 3;
 
 //parry animation frames
-dodge_startup_frames = 1;
+dodge_startup_frames = 2;
 dodge_active_frames = 4;
-dodge_recovery_frames = 5;
+dodge_recovery_frames = 4;
 
 //tech animation frames
 tech_active_frames = 3;

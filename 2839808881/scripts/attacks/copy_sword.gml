@@ -11,7 +11,7 @@ set_window_value(AT_COPY_SWORD, 1, AG_WINDOW_ANIM_FRAMES, 4);
 
 //charging
 set_window_value(AT_COPY_SWORD, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_COPY_SWORD, 2, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_COPY_SWORD, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_COPY_SWORD, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_COPY_SWORD, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_COPY_SWORD, 2, AG_WINDOW_HAS_SFX, 1);
@@ -28,7 +28,7 @@ set_window_value(AT_COPY_SWORD, 3, AG_WINDOW_SFX_FRAME, 3);
 
 //spinning around
 set_window_value(AT_COPY_SWORD, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_COPY_SWORD, 4, AG_WINDOW_LENGTH, 39);
+set_window_value(AT_COPY_SWORD, 4, AG_WINDOW_LENGTH, 26);
 set_window_value(AT_COPY_SWORD, 4, AG_WINDOW_ANIM_FRAMES, 13);
 set_window_value(AT_COPY_SWORD, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
@@ -40,7 +40,7 @@ set_window_value(AT_COPY_SWORD, 5, AG_WINDOW_ANIM_FRAME_START, 20);
 
 //endlag
 set_window_value(AT_COPY_SWORD, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_COPY_SWORD, 6, AG_WINDOW_LENGTH, 21);
+set_window_value(AT_COPY_SWORD, 6, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_COPY_SWORD, 6, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_COPY_SWORD, 6, AG_WINDOW_ANIM_FRAME_START, 21);
 
@@ -52,28 +52,28 @@ for (var i = 1; i < 5; i++){
 	var hitboxMultihitWidth = 108;
 	var hitboxMultihitHeight = 42;
 	var hboxBKB = 2.5;
-	var hboxAngleFlipper = 10;
+	var hboxAngleFlipper = 9;
 
 	if (i == 1){
 		var hboxRealNum = 1;
 		var hboxCreationFrame1 = 0;
-		var hboxCreationFrame2 = 3;
-		var hboxCreationFrame3 = 6;
+		var hboxCreationFrame2 = 2;
+		var hboxCreationFrame3 = 4;
 	} else if (i == 2){
 		var hboxRealNum = 4;
-		var hboxCreationFrame1 = 9;
-		var hboxCreationFrame2 = 12;
-		var hboxCreationFrame3 = 15;
+		var hboxCreationFrame1 = 6;
+		var hboxCreationFrame2 = 8;
+		var hboxCreationFrame3 = 10;
 	} else if (i == 3){
 		var hboxRealNum = 7;
-		var hboxCreationFrame1 = 18;
-		var hboxCreationFrame2 = 21;
-		var hboxCreationFrame3 = 24;
+		var hboxCreationFrame1 = 12;
+		var hboxCreationFrame2 = 14;
+		var hboxCreationFrame3 = 16;
 	} else if (i == 4){
 		var hboxRealNum = 10;
-		var hboxCreationFrame1 = 27;
-		var hboxCreationFrame2 = 30;
-		var hboxCreationFrame3 = 33;
+		var hboxCreationFrame1 = 18;
+		var hboxCreationFrame2 = 20;
+		var hboxCreationFrame3 = 22;
 	}
 	
 	// Multihit 1
@@ -137,7 +137,7 @@ for (var i = 1; i < 5; i++){
 //Second to Last Hitbox
 set_hitbox_value(AT_COPY_SWORD, 13, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_COPY_SWORD, 13, HG_WINDOW, 4);
-set_hitbox_value(AT_COPY_SWORD, 13, HG_WINDOW_CREATION_FRAME, 36);
+set_hitbox_value(AT_COPY_SWORD, 13, HG_WINDOW_CREATION_FRAME, 24);
 set_hitbox_value(AT_COPY_SWORD, 13, HG_LIFETIME, 3);
 set_hitbox_value(AT_COPY_SWORD, 13, HG_HITBOX_X, -15);
 set_hitbox_value(AT_COPY_SWORD, 13, HG_HITBOX_Y, -18);
@@ -162,10 +162,10 @@ set_hitbox_value(AT_COPY_SWORD, 14, HG_WIDTH, 85);
 set_hitbox_value(AT_COPY_SWORD, 14, HG_HEIGHT, 52);
 set_hitbox_value(AT_COPY_SWORD, 14, HG_SHAPE, 2);
 set_hitbox_value(AT_COPY_SWORD, 14, HG_PRIORITY, 8);
-set_hitbox_value(AT_COPY_SWORD, 14, HG_DAMAGE, 6);
+set_hitbox_value(AT_COPY_SWORD, 14, HG_DAMAGE, 9);
 set_hitbox_value(AT_COPY_SWORD, 14, HG_ANGLE, 60);
-set_hitbox_value(AT_COPY_SWORD, 14, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_COPY_SWORD, 14, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_COPY_SWORD, 14, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_COPY_SWORD, 14, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_COPY_SWORD, 14, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_COPY_SWORD, 14, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_COPY_SWORD, 14, HG_VISUAL_EFFECT, 304);

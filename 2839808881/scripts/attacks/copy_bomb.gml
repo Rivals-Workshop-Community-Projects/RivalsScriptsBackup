@@ -6,14 +6,14 @@ set_attack_value(AT_COPY_BOMB, AG_OFF_LEDGE, 1);
 
 //startup 1
 set_window_value(AT_COPY_BOMB, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_COPY_BOMB, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_COPY_BOMB, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_COPY_BOMB, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_COPY_BOMB, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_COPY_BOMB, 1, AG_WINDOW_SFX, sound_get("sfx_krdl_bomb_prep"));
 
 //hold bomb
 set_window_value(AT_COPY_BOMB, 2, AG_WINDOW_TYPE, 9);
-set_window_value(AT_COPY_BOMB, 2, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_COPY_BOMB, 2, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_COPY_BOMB, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_COPY_BOMB, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 

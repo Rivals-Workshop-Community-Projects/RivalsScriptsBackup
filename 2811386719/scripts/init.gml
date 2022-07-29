@@ -155,8 +155,13 @@ static_max_spr = sprite_get("electric_effect")
 static_bar_spr = sprite_get("static_bar")
 static_max_pull_spr = sprite_get("electric_effect_pull")
 grab_static_pull_spr = sprite_get("nspecial_magnet")
-magnetism_trail_spr = sprite_get("magnetism_trail")
+magnetism_trail_spr = sprite_get("magnetism_layered_trail")
 do_not_consume = false
+
+stage_center = get_stage_data(SD_X_POS) + get_stage_data(SD_WIDTH)/2
+stage_left = get_stage_data(SD_X_POS)
+stage_right = get_stage_data(SD_X_POS) + get_stage_data(SD_WIDTH)
+distance_from_ledge = 0
 
 jet_spr = sprite_get("jet");
 jet_discharge_spr = sprite_get("jet_discharge");

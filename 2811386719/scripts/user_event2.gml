@@ -42,8 +42,9 @@ with oPlayer{
     var dir_cose = dcos(dir);
     var dir_sine = -dsin(dir);
     
-    var mult_one = (cose)*(1 + (((hsp*dir_cose + vsp*dir_sine) <= 0)));
-    var mult = mult_one*(1);
+    var mult = (cose)*(1 + (((hsp*dir_cose + vsp*dir_sine) <= 0))*0.6);
+    var dist_threshold = 35
+    if(other.distance_from_ledge > dist_threshold)mult = mult*1/((other.distance_from_ledge - dist_threshold)*0.1 + 1);
     
     // mult = clamp(mult, 0, 2)
     // print(dist)

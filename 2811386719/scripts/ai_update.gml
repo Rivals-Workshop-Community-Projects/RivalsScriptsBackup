@@ -84,7 +84,7 @@ if !free and ai_target.y - 70 > y and !ai_target.free {
 }
 
 if(free and has_hit and state == PS_ATTACK_AIR and !offstage){
-	if ((y > stagey - char_height and y < stagey) or collision_point(x, y+char_height, platform_asset, false, true)){
+	if ((y > stagey - char_height and y < stagey) or collision_line(x, y + 20, x, y+char_height, platform_asset, false, true)){
 		tap_down()
 	}
 }
@@ -156,7 +156,7 @@ if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
     	}
     case AT_USPECIAL_GROUND:
     	var pull_dist = point_distance( pull_dir_x, pull_dir_y, ai_target.x, ai_target.y)
-      if(ai_target.static_pull and dist > 200) or (ai_target.state == PS_HITSTUN and  ai_target.hitstun_full - ai_target.hitstun > 30){
+      if(ai_target.static_pull and pull_dist > 200) or (ai_target.state == PS_HITSTUN and  ai_target.hitstun_full - ai_target.hitstun > 10){
         press_special()
       }
       break;

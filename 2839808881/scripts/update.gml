@@ -9,7 +9,8 @@ if (abilityStolenTracker != 0){
 		}
 	}
 }
-if(!hitpause){
+
+if((!hitpause && mixCurrTotalTimer < 3) || mixCurrTotalTimer > 2){
 	if(TCG_Kirby_Copy == -1){
 		move_cooldown[AT_NSPECIAL] = 5;
 		mixCurrTimer++;
@@ -49,7 +50,11 @@ with asset_get("oPlayer"){
 		url = -1;
 	}
 }
-
+if (state == PS_LANDING_LAG){
+	if(attack == AT_NAIR){
+		sound_stop(sound_get("sfx_smash_64_kirby_uair"));
+	}
+}
 //parry sound
 if(state == PS_PARRY && state_timer == 0){
 	sound_play(sound_get("sfx_parry"));
@@ -58,10 +63,13 @@ if (!free || state == PS_WALL_JUMP){
 	move_cooldown[AT_COPY_FIRE] = 0;
 	move_cooldown[AT_COPY_DRILL] = 0;
 	move_cooldown[AT_USPECIAL] = 0;
+	if(move_cooldown[AT_FSPECIAL] > 60){
+		move_cooldown[AT_FSPECIAL] = 0;
+	}
 }
 
 if (attack == AT_FSPECIAL && (window == 6 || window == 7 || window == 2)){
-	move_cooldown[AT_FSPECIAL] = 40;
+	//move_cooldown[AT_FSPECIAL] = 40;
 }
 
 // Grab timer ended
