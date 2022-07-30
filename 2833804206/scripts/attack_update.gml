@@ -119,7 +119,7 @@ if attack == AT_JAB {
 if attack == AT_FSTRONG {
     if strong_throw {
         if window < 5 {
-            vsp = clamp(vsp, -1, 1)
+            vsp = 0
             hsp = clamp(hsp, -1, 1)
         }
         if window <= 3 {
@@ -146,7 +146,7 @@ if attack == AT_FSTRONG {
 if attack == AT_DSTRONG {
     if strong_throw {
         if window < 4 {
-            vsp = clamp(vsp, -1, 1)
+            vsp = 0
             hsp = clamp(hsp, -1, 1)
         }
         if window == 1 {
@@ -170,7 +170,7 @@ if attack == AT_DSTRONG {
 if attack == AT_USTRONG {
     if strong_throw {
         if window < 4 {
-            vsp = clamp(vsp, -1, 1)
+            vsp = 0
             hsp = clamp(hsp, -1, 1)
         }
         if window <= 2 {
@@ -216,6 +216,25 @@ if attack == AT_USPECIAL {
 }
 
 if attack == AT_FSPECIAL {
+    //on oil detection
+    var on_oil = false
+    if !free with obj_article1 if player_id == other.id {
+        if other.y == y && other.x >= obj_l && other.x <= obj_r {
+            on_oil = true
+        }
+    }
+    
+    if window == 2 {
+        if on_oil {
+            hsp = 24*spr_dir
+            if window_timer mod 1 == 0 {
+                spawn_hit_fx(x, y, vfx_fspec_oil)
+            }
+        } else {
+            hsp = 14*spr_dir
+        }
+    }
+    
     can_fast_fall = false
     if window == 1 && window_timer == 1 {
         sound_play(asset_get("sfx_ell_utilt_fire"))
@@ -262,6 +281,10 @@ if attack == AT_FSPECIAL {
         hsp = lerp(hsp, 0, free ? 0.02 : 0.04)
         vsp = lerp(vsp, 0, 0.2)
         
+        if has_hit {
+            vsp = 0
+        }
+        
         hsp = clamp(hsp, -10, 10)
     }
     //release
@@ -282,6 +305,17 @@ if attack == AT_FSPECIAL {
     }
     
     move_cooldown[AT_FSPECIAL] = 20
+    
+    //40px ledge snap
+    if (window == 2 || window == 3) && !has_snapped && free && place_meeting(x + hsp, y, asset_get("par_block")) {
+        for (var i = 0; i < 40; i++) {
+            if (!place_meeting(x + hsp, y-(i+1), asset_get("par_block"))) {
+                y -= i;
+                has_snapped = true;
+                break;
+            }
+        }
+    }
 }
 
 #define is_input_pressed(dir)

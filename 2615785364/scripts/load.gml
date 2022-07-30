@@ -59,3 +59,5 @@ sprite_change_offset("hfx_medium", 100, 100);
 sprite_change_offset("hfx_big", 100, 100);
 sprite_change_offset("hfx_bigger", 128, 128);
 sprite_change_offset("hfx_bigger", 128, 128);
+
+sprite_change_offset("dust", 52, 32);

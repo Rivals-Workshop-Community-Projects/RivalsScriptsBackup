@@ -139,7 +139,7 @@ set_hitbox_value(AT_JAB, 4, HG_PRIORITY, 5);
 set_hitbox_value(AT_JAB, 4, HG_DAMAGE, 5);
 set_hitbox_value(AT_JAB, 4, HG_ANGLE, 45);
 set_hitbox_value(AT_JAB, 4, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_JAB, 4, HG_KNOCKBACK_SCALING, 1.0);
+set_hitbox_value(AT_JAB, 4, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_JAB, 4, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_JAB, 4, HG_HITPAUSE_SCALING, 2.4);
 set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, sound_get("slash_hit"));

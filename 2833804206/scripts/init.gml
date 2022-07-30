@@ -2,12 +2,15 @@ is_r2 = true
 r2_oil_timer_increment = false
 timer = 0
 
+has_snapped = false
+
 crouch_turn_time = 6
 crouch_turn_timer = 0
 crouch_sfx_state = 0
 
 vfx_oil_small = hit_fx_create(sprite_get("vfx_oil_small"), 21)
 vfx_smoke = hit_fx_create(sprite_get("vfx_smoke"), 18)
+vfx_fspec_oil = hit_fx_create(sprite_get("fspecial_oil_vfx"), 20)
 
 r2_grab_id = noone; //id of opponent thats grabbed by r2
 strong_throw = false //true when performing a strong attack throw

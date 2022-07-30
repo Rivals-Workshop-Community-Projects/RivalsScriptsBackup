@@ -15,7 +15,7 @@ if "shsp" in self {
 	cfx = spawn_hit_fx(x,y,304)
 	cfx.pause = 4
 	
-	if string_lower(get_player_name(player)) == "sharpi" {
+	if string_lower(get_player_name(player)) == "tendie" {
 		sound_stop(sound_get("sage"))
 		sound_play(sound_get("sage"),false,noone,1,1)
 		set_article_color_slot(0, 198, 235, 245 ); //Energy

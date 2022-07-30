@@ -8,6 +8,11 @@ with obj_article1 if player_id == other.player_id && id != other.id {
 
 draw_vine = false
 
+if mark_id && !instance_exists(mark_id) {
+    mark_id = undefined
+    set_state(PS_DEAD)
+}
+
 switch state {
     
     case PS_IDLE: //normal

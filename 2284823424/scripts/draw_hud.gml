@@ -109,16 +109,31 @@ shader_end();
 var chat_width = 360;
 var chat_y = 420 - 3;
 
+if phone_attacking && attack == AT_CHAT && window < 3{
+	if !fast_graphics draw_set_alpha(0.5);
+	
+	rectDraw(0, chat_y + 14, chat_width, 20, c_black);
+	textDraw(6, chat_y + 17, "fName", c_white, 14, chat_width - 12, fa_left, 1, false, 0.75, keyboard_string);
+	var typed_txt = textDraw(6, chat_y + 17, "fName", c_white, 14, chat_width - 12, fa_left, 1, false, 0, string_replace(keyboard_string, " ", "_"));
+	if get_gameplay_time() % 40 < 20{
+		draw_set_alpha(0.75)
+		rectDraw(6 + typed_txt[0], chat_y + 28, 7, 1, c_white);
+	}
+	
+	draw_set_alpha(1);
+	rectDraw(0, chat_y + 14, 2, 20, c_lime);
+}
+
 if ds_list_size(chat_tmr) for (var i = ds_list_size(chat_txt) - 1; i > -1 ; i--){
 	
 	var alp = (chat_tmr[|i] < 30) ? (chat_tmr[|i] / 30) * 0.5 : 0.5;
 	
 	if !fast_graphics draw_set_alpha(alp);
 	
-	var txt = textDraw(10, chat_y + 2, "fName", chat_col[|i], 14, chat_width - 20, fa_left, 1, false, 0, chat_txt[|i]);
-	chat_y -= txt[1] - 2;
-	rectDraw(0, chat_y, chat_width, txt[1] - 3, c_black);
-	textDraw(6, chat_y + 2, "fName", chat_col[|i], 14, chat_width - 12, fa_left, 1, false, alp * 1.5, chat_txt[|i]);
+	var txt = textDraw(10, chat_y + 3, "fName", chat_col[|i], 14, chat_width - 20, fa_left, 1, false, 0, chat_txt[|i]);
+	chat_y -= txt[1] - 1;
+	rectDraw(0, chat_y, chat_width, txt[1] - 2, c_black);
+	textDraw(6, chat_y + 3, "fName", chat_col[|i], 14, chat_width - 12, fa_left, 1, false, alp * 1.5, chat_txt[|i]);
 	
 }
 
@@ -175,6 +190,11 @@ with obj_article_platform if player_id == other{
 
 muno_event_type = 5;
 user_event(14);
+
+
+if ban_timer != 0 && ban_timer <= round(ban_timer_max * 3 / 4){
+	draw_sprite_ext(sprite_get("ban_screen"), 0, 0, 0, 2, 2, 0, c_white, 1);
+}
 
 
 

@@ -485,16 +485,15 @@ if !hitpause {
           
           if window == 3 {
               vsp /= 1.2
-              
           	  
-              if window_timer == 6 && uspecbat >= 1 {
+              if window_timer == 5 && uspecbat >= 1 {
                   sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,2)
                   create_hitbox(AT_NSPECIAL,11, x - 60 ,y - 30)
                   create_hitbox(AT_NSPECIAL,11, x + 60 ,y - 30)
               }
               
               if window_timer == 16 && uspecbat > 1 {
-                  window_timer = 5
+                  window_timer = 4
                   uspecbat -= 1
                   vsp = -6
               }

@@ -193,7 +193,7 @@ so that things like page breaks can work properly.
 
 #define CORE_tips
 
-initTip("Neutral Special: Swords");
+initTip("Neutral Special: Revolution Swords");
 initWords("Galacta Knight summons floating swords. If tapped he only summons 2, but if held he can summon more, until he has swords all around him.
 The swords can't harm opponents until he launches them and will disappear if Galacta Knight gets hit however!");
 
@@ -204,11 +204,11 @@ Absorbing more damage makes the projectile more powerful!");
 initTip("Up Special: Flight");
 initWords("Galacta Knight takes flight, making for a great recovery move. Goes higher if the button is held, and if used on the ground it's faster and can be cancelled into attacks!");
 
-initTip("Down Special: Flight");
+initTip("Down Special: Great Space-Time Killing Flash");
 initWords("Galacta Knight cuts open a rift in time and space. After a bit of time, the rift will open and fire a huge laser diagonally downward.
 It's a slow but very devastating move which can control a portion of the stage!
 
-However, be aware that the rift will close if Galacta Knight loses a stock or gets parried, even while the laser is being fired!");
+However, be aware that the rift will close if Galacta Knight loses a stock, gets parried, or takes a certain amount of damage (even while the laser is being fired)!");
 
 initTip("Aerial Strongs");
 initWords("Galacta Knight can use strong attacks both in the air and on the ground! So you can consider his strong attacks to be additional aerials.
@@ -255,10 +255,20 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.7", "26th July, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed aerial c-stick smash attacks not turning Galacta Knight around if used in the opposite direction");
+
+initPatch("1.6", "8th June, 2022");
+initHeader("Nerfs");
+initSection("- Reduced Jab3 knockback scaling a bit (1.0->0.9)");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed phone tips using the wrong name for DSpecial, and updated some other stuff");
+
 initPatch("1.5", "4th May, 2022");
 initHeader("Nerfs");
 initSection("- FAir sweetspot now pushes Galacta Knight a bit backwards from the hit, and the sourspot has a more vertical angle (361->65)");
-initSection("- UStrong has a bit less knockback when used in the air, compared to the grouned (ground stats are the same as before)");
+initSection("- UStrong has a bit less knockback when used in the air, compared to grounded (ground stats are the same as before)");
 initSection("- DStrong landing lag increased (+10f), and reduced the size of the landing hitbox a bit");
 
 initPatch("1.4", "27th April, 2022");

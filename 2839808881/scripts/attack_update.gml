@@ -1789,7 +1789,7 @@ if (attack == AT_COPY_ESP){
 		}
 		vsp = clamp(vsp, -10, 4);
 	
-		if (!special_down || (esp_hit_counter == 3 && !hitpause)){
+		if (!special_down || (esp_hit_counter > 2 && !hitpause)){
 			window = 4;
 			window_timer = 0;
 		}

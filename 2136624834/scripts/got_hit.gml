@@ -1,8 +1,5 @@
 ///
-intro = 1
-if introhit = 0 {
-	introhit = -1
-}
+
 
 grabbed = false
 
@@ -12,6 +9,6 @@ fstronghit = 4
 
     move_cooldown[AT_USPECIAL] = 0
     move_cooldown[AT_FSPECIAL] = 0
-    
+    move_cooldown[AT_DSPECIAL_2] = 0
     
     

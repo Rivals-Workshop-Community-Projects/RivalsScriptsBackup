@@ -13,6 +13,25 @@ blastzone_b = phone_blastzone_b;
 
 
 
+if ban_timer > 0{
+	if ban_timer < round(ban_timer_max * 3 / 4){
+		music_fade(0, 1);
+		if !ban_has_oofed{
+			sound_play(sfx_minecraft_oof);
+			ban_has_oofed = true;
+		}
+	}
+	ban_timer--;
+	if !ban_timer{
+		ban_timer = -1;
+		var p = player;
+		with oPlayer if self != other p = player;
+		end_match(p);
+	}
+}
+
+
+
 // if shield_pressed held_item = IT_SHELL;
 
 if starman{

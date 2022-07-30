@@ -16,3 +16,5 @@ if attack == AT_DSPECIAL && free {
 if attack == AT_TAUNT {
     set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("r2_beep" + string(random_func(1, 5, true)+1)));
 }
+
+has_snapped = false

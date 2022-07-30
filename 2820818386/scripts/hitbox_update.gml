@@ -28,7 +28,7 @@ if (attack == AT_NSPECIAL){
 
 //Neutral Special Destroy if Bashed
 if (attack == AT_NSPECIAL){
-	if (hsp < 3){
+	if (hsp == 0){
 		destroyed = true;
 	}
 }

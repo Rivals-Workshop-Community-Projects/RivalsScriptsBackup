@@ -106,6 +106,12 @@ if (attack == AT_FAIR){
 	}
 }
 
+if (attack == AT_EXTRA_1){
+	if (window == 1 && window_timer == 1){
+		spawn_hit_fx(x, y, fx_dust);
+	}
+}
+
 switch(attack){
 	case AT_JAB:
 		trigger_wavebounce();

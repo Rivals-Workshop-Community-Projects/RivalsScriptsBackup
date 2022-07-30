@@ -34,7 +34,20 @@ if attack == AT_EXTRA_3 {
 	
 }
 
+if attack == AT_UTHROW {
+        hsp = 0
+        vsp = 0
+}
+
 if attack == AT_DTHROW && !hitpause  {
+        if window >= 4 {
+             hsp = 0
+             vsp = 0
+         }
+
+
+ 
+
 	if window == 4 && window_timer == 1 {
 	 ts1 = spawn_hit_fx(x,y-40,306)
 	 ts2 = spawn_hit_fx(x,y-40,304)
@@ -52,7 +65,7 @@ if attack == AT_DTHROW && !hitpause  {
 
 if attack == AT_DSPECIAL && !hitpause  {
 	
-    if window == 1 && (timestop < 100 or (state_timer == 8 && !special_down)) {
+    if window == 1 && ((timestop < 100 or (state_timer == 8 && !special_down)) or free) {
      set_attack(AT_DTHROW)
      if timestop <= 30 {
      	timestop = 0
@@ -782,7 +795,12 @@ if !hitpause and ((window == 3 && window_timer == 4) or (window == 5 && window_t
 }
 if attack == AT_FSTRONG {
 
-if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_timer < 12) {
+if window == 4 && window_timer == 11 && !hitpause {
+		sound_play(asset_get("sfx_ori_energyhit_medium"))
+		shake_camera(4,4)
+	}
+	
+if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_timer < 10) {
 		if timefreeze < 1 {
 			set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 1);
       	if window_timer % 3 == 0 && !hitpause && has_hit_player {
@@ -794,15 +812,13 @@ if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_t
 		if window == 2 && window_timer > 8 && !has_hit_player {
 			window = 4
 			window_timer = 10
-			set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 9);
+			set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
 		}
 	}
 	
-	if window == 4 && window_timer == 11 && !hitpause {
-		sound_play(asset_get("sfx_ori_energyhit_medium"))
-		shake_camera(4,4)
-	}
+	
 			if timefreeze > 0 {
+				hitpause = 0
 				set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 2);
 				
 	if window_timer % 2 == 0  {
@@ -945,7 +961,7 @@ if attack == AT_BAIR {
 
 
 if attack == AT_FAIR {
-	move_cooldown[AT_FAIR] = 30
+	
     if window < 3 {
     	set_attack_value(AT_FAIR, AG_CATEGORY, 2);
     	can_fast_fall = false 
@@ -957,9 +973,18 @@ if attack == AT_FAIR {
     }
     
     if window == 3 && has_hit_player{
+    	
         if window_timer == 3 && timefreeze <= 2 {
              vsp = -7
-            hsp /= 3
+             hsp = 0
+             
+             if move_cooldown[AT_DSPECIAL_2] != 0 {
+    		   set_state(PS_PRATFALL)
+    		   move_cooldown[AT_DSPECIAL_2] = 0
+    	    } else {
+                move_cooldown[AT_DSPECIAL_2] = 999
+    	    }
+    	
         }
         
     }

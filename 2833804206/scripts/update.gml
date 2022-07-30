@@ -123,7 +123,7 @@ with oPlayer if ("activated_kill_effect" in self) && ("id" in self) && id != oth
         with other if timer mod 2 == 0 {
             var _w = 8
             for (var i = -_w/2; i < _w/2; i++) {
-                instance_create((round(other.x/8)*8) + i*8, other.y, "obj_article1")
+                instance_create((round(other.x/8)*8) + i*8, floor(other.y), "obj_article1")
             }
         }
     }
@@ -134,7 +134,7 @@ with oPlayer if id != other.id && r2_grabbed == other.id {
     hitstop_full = 6
 }
 
-if state == PS_HITSTUN || state == PS_HITSTUN_LAND {
+if !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
     with oPlayer if id != other.id && r2_grabbed == other.id {
         r2_grabbed = 0
     }
@@ -168,3 +168,4 @@ if !shield_down {
     }
 }
 */
+

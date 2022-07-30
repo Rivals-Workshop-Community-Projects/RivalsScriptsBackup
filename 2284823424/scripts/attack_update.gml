@@ -48,6 +48,44 @@ switch(attack){
 
 
 
+if attack == AT_CHAT{
+	if window == 1{
+		was_backspacing = false;
+	}
+	if window == 2{
+		if keyboard_key == 13 || keyboard_key == 192 || keyboard_key == 9 { // enter or ` or tab (because enter is the pause button in roa)
+			setWindow(3);
+			ban_timer = ban_timer_max;
+			
+			if keyboard_key == 192{ // delete the `
+				keyboard_string = string_delete(keyboard_string, string_length(keyboard_string), 1);
+			}
+			
+			with chat_owner{
+				ds_list_add(chat_txt, "<" + chat_player_name + "> " + keyboard_string);
+				ds_list_add(chat_tmr, chat_tmr_max);
+				ds_list_add(chat_col, c_white);
+			}
+		}
+		else if keyboard_key == 27{ // escape
+			setWindow(3);
+		}
+		else{
+			window_timer = 1;
+		}
+		
+		if (keyboard_key == 8 || keyboard_key == 46) && keyboard_string != "" && !was_backspacing{ // backspace or delete (because backspace is the frame adv button)
+			keyboard_string = string_delete(keyboard_string, string_length(keyboard_string), 1);
+			was_backspacing = true;
+		}
+		if keyboard_key != 8 && keyboard_key != 46{
+			was_backspacing = false;
+		}
+	}
+}
+
+
+
 // cape swipe
 
 switch(attack){

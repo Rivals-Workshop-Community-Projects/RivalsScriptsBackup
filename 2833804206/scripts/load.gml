@@ -66,6 +66,7 @@ sprite_change_offset("invis_sprite", 32, 32);
 sprite_change_offset("oil_slick", 512, 0);
 sprite_change_offset("oil_slick_fire", 70, 120);
 sprite_change_offset("vfx_oil_small", 50, 50);
+sprite_change_offset("fspecial_oil_vfx", 80, 80);
 
 sprite_change_offset("vfx_smoke", 11, 11);
 

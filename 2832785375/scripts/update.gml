@@ -51,7 +51,7 @@ with oPlayer if id != other.id && (arb_tethered == other.id || arb_grabbed == ot
     hitstop_full = 6
 }
 
-if state == PS_HITSTUN || state == PS_HITSTUN_LAND {
+if !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL && window != 5) {
     with oPlayer if id != other.id && arb_grabbed == other.id {
         arb_grabbed = undefined
     }

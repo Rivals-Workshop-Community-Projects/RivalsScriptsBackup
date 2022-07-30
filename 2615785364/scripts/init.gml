@@ -11,6 +11,8 @@ hfx_medium = hit_fx_create(sprite_get("hfx_medium"), 24);
 hfx_big = hit_fx_create(sprite_get("hfx_big"), 24);
 hfx_bigger = hit_fx_create(sprite_get("hfx_bigger"), 24);
 
+fx_dust = hit_fx_create(sprite_get("dust"), 8);
+
 wait_time = 300;
 wait_length = 350;
 wait_sprite = sprite_get("wait");

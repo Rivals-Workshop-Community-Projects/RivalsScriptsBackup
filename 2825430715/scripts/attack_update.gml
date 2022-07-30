@@ -1025,7 +1025,7 @@ switch attack {
 	
 		nearbyhitbox = collision_circle( x-12, y+30, 20 + (image_xscale*10 + image_yscale*10) + 5*other.window,other, true, true ) 
 	
-	    if nearbyhitbox != noone && player_id != other.id && type == 2 && "KanosRe" not in self {
+	    if nearbyhitbox != noone && player_id != other.id && type == 2 && "KanosRe" not in self && hit_priority != 0 {
 	    	with other {
 	    			hit_player_obj = other.player_id
 	    	}

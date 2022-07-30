@@ -1,4 +1,4 @@
-if (strong_down || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed){
+/*if (strong_down || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed){
     if (attack == AT_FAIR || attack == AT_BAIR){
 	    attack = AT_FSTRONG;
 	}else if (attack == AT_UAIR){
@@ -6,6 +6,21 @@ if (strong_down || right_strong_pressed || left_strong_pressed || up_strong_pres
 	}else if (attack == AT_DAIR){
 	    attack = AT_DSTRONG;
 	}
+}*/
+
+if ((attack == AT_FAIR || attack == AT_BAIR) && (strong_down || right_strong_pressed || left_strong_pressed)){
+    attack = AT_FSTRONG;
+    if((right_down || right_strong_pressed) && !left_strong_pressed){
+        spr_dir = 1;
+    }else if((left_down || left_strong_pressed) && !right_strong_pressed){
+        spr_dir = -1;
+    }
+}
+if (attack == AT_UAIR && (strong_down || up_strong_pressed)){
+    attack = AT_USTRONG;
+}
+if (attack == AT_DAIR && (strong_down || down_strong_pressed)){
+    attack = AT_DSTRONG;
 }
 
 if (attack == AT_NSPECIAL){

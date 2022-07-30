@@ -1,15 +1,25 @@
 //Offscreen
 
 if state == PS_CROUCH {
-	if (state_timer - 300)/30 = 311{
+	if (state_timer - 300)/20 = 311{
 		with oPlayer {
  					if self != other {
  						set_player_stocks(other.player, get_player_stocks(player) + 1)
  					    end_match()
  			}
 		}
+		mobia = 0
+		state_timer = 0
+	}
+	
+	if state_timer > 300 {
+		mobia = state_timer 
+	}
+	if mobia > 0 && state_timer == 10 {
+		state_timer = mobia
 	}
 }
+
 if get_gameplay_time() == 90 && get_player_color(player) == 4 {
 	
 
@@ -26,7 +36,7 @@ if get_gameplay_time() == 90 && get_player_color(player) == 4 {
 	cfx = spawn_hit_fx(x,y,304)
 	cfx.pause = 4
 	
-	if string_lower(get_player_name(player)) == "sharpi" {
+	if string_lower(get_player_name(player)) == "tendie" {
 		sound_stop(sound_get("sage"))
 		sound_play(sound_get("sage"),false,noone,1,1)
 		set_color_profile_slot( 4, 0, 198, 235, 245 ); //Energy

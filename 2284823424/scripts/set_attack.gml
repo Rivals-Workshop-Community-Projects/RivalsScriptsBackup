@@ -86,6 +86,10 @@ if (attack == AT_TAUNT && shield_down){
 }
 
 if (attack == AT_TAUNT && down_down && !free) attack = AT_TAUNT_2;
+if (attack == AT_TAUNT && up_down && !free && !phone_online){
+	attack = AT_CHAT;
+	keyboard_string = "";
+}
 
 
 

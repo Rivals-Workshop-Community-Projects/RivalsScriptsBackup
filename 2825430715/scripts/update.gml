@@ -107,10 +107,9 @@ with asset_get("pHitBox") {
 		if "KanosRe" in self {
 			
 			if KanosRe == 3 && KanosReP = other.player {
-				var angle = point_direction(x, y, player_id.x , player_id.y - 30);
-
-            x += lengthdir_x(22, angle)
-            y += lengthdir_y(22, angle)
+				destroyed = true 
+				y = 9999
+            
 			}
 			
 			if KanosRe == 2 && KanosReP = other.player {

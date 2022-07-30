@@ -232,14 +232,23 @@ if attack == AT_UTHROW {
         }
         
         shake_camera(1,2)
+
+        if window_timer == 6 && zvoice != 0{
+           sound_play(sound_get("tauntU"),false,noone,.6,1 + 0.05 + random_func(1,6,true)/100);
+        }
+
+
+         if window_timer == 12 && zvoice != 0 {
+           sound_play(sound_get("tauntU"),false,noone,.3,1 + 0.05 + random_func(1,6,true)/100);
+        }
+
+
         if window_timer == 1 {
         	y -= 2
         	if zvoice != 0 {
         		sound_stop(zvoice)
         		zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + 0.05 + random_func(1,6,true)/100);
         		         sound_play(sound_get("tauntU"),false,noone,.6,.95 + 0.05 + random_func(1,6,true)/100);
-        		         sound_play(sound_get("tauntU"),false,noone,.5,.8 + 0.05 + random_func(1,6,true)/100);
-        		         sound_play(sound_get("tauntU"),false,noone,.5,.7 + 0.05 + random_func(1,6,true)/100);
         	}
         	
 		offensetimer = 0
@@ -295,7 +304,8 @@ if attack == AT_UTHROW {
 
     if window == 4  && !hitpause {
         if window_timer == 1 {
-        	halo = 0
+            y += 2
+            halo = 0
             shake_camera(6,8)
             sound_play(asset_get("sfx_bird_downspecial"))
              spawn_base_dust(x,y - 0,"land",spr_dir);
@@ -304,9 +314,10 @@ if attack == AT_UTHROW {
         }
     }
     
-    if window == 4 && window_timer == 25 && has_hit_player && !hitpause{
+
+    if window == 4 && window_timer == 25 && has_hit_player && !hitpause{ 
     	if zvoice != 0 {
-    	zvoice = sound_play(sound_get("finalle2"),false,noone,1,.95 + 0.20 + random_func(1,6,true)/100);
+    	zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
     	}
     	
     	create_hitbox(AT_UTHROW,3,x,y)

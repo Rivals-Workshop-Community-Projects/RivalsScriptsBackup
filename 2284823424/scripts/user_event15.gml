@@ -403,11 +403,18 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.6", "28 July, 2022");
+initHeader("Taunt - Additions");
+initSection("Added chat typing (up+taunt). Offline only.");
+initSection("Added player chat reporting.");
+initWords("Removed Herobrine");
+
 initPatch("2.5", "17 July, 2022");
 initHeader("DStrong - Nerfs");
 initSection("Back hit size reduced.");
 initHeader("Sticky Piston - Bugfixes");
 initSection("Fixed a freeze glitch?");
+initWords("Removed Herobrine");
 
 initPatch("2.4", "07 March, 2022");
 initWords("Community Patch: Dakota");
@@ -434,6 +441,7 @@ Arrow is now transcendent.");
 initHeader("UStrong - Nerfs, Adjustments");
 initSection("Endlag 15 --> 18.
 Angle 80 --> 90.");
+initWords("Removed Herobrine");
 
 /*
 
@@ -487,10 +495,12 @@ All throwables startup increased (8 -> 10)
 initPatch("2.3", "18 January, 2022");
 initHeader("DTilt - Bugfixes");
 initSection("No longer interrupts certain armored attacks.");
+initWords("Removed Herobrine");
 
 initPatch("2.2", "16 January, 2022");
 initHeader("DTilt - Bugfixes");
 initSection("Now correctly deals knockback at the edge of platforms.");
+initWords("Removed Herobrine");
 
 initPatch("2.1", "20 November, 2021");
 initHeader("NSpecial - Reworks");
@@ -507,6 +517,7 @@ initSection("Angle 75 --> 40.
 Knockback 6/0.3 --> 4/0.2.
 Hitpause 6/0.5 --> 5/0.3.
 Can no longer be teched.");
+initWords("Removed Herobrine");
 
 initPatch("2.0", "19 September, 2021");
 initHeader("General");

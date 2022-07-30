@@ -118,4 +118,4 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, vfx_wood_large);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, -1);

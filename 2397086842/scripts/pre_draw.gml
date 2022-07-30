@@ -4,9 +4,9 @@ if state == PS_CROUCH && state_timer > 300 {
     draw_set_alpha(min(0.8,(state_timer - 300)/128));
     draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
     draw_set_alpha(1);
-    draw_sprite_ext(sprite_get("morbius"), floor((state_timer - 300)/30), x + 50*spr_dir, y - 30, 1, 1,0,-1,(state_timer - 300)/60)
-    if state_timer > 360 {
-    draw_sprite_ext(sprite_get("morbius"), floor((state_timer - 300)/30) + 1, x + 50*spr_dir, y - 30, 1, 1,0,-1,((state_timer)%30)/30)
+    draw_sprite_ext(sprite_get("morbius"), floor((state_timer - 300)/20), x + 50*spr_dir, y - 30, 1, 1,0,-1,(state_timer - 300)/60)
+    if state_timer > 340 {
+    draw_sprite_ext(sprite_get("morbius"), floor((state_timer - 300)/20) + 1, x + 50*spr_dir, y - 30, 1, 1,0,-1,((state_timer)%20)/10 - 0.5)
     }
 }
 

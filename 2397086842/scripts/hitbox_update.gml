@@ -36,14 +36,7 @@ if attack == AT_NSPECIAL && hbox_num == 14 {
 }	
 
 
-if attack == AT_NSPECIAL && hbox_num == 11 {
-	  if (place_meeting(x, y , asset_get("par_block"))) {
-	  	y += 30
-    		sound_play(asset_get("sfx_absa_singlezap2"))
-    		destroyed = true
-      }
 	
-}	
 
 if attack == AT_FSPECIAL {
 	nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
@@ -911,4 +904,15 @@ if attack == AT_NSPECIAL && hbox_num > 3 && hbox_num < 12{
 
         
 	
+}
+
+
+if attack == AT_NSPECIAL && hbox_num == 11 {
+	  if (place_meeting(x, y , asset_get("par_block"))) {
+	  	y += 30
+    		sound_stop(asset_get("sfx_absa_singlezap2"))
+    		sound_play(asset_get("sfx_absa_singlezap2"))
+    		destroyed = true
+      }
+	kb_value = 6
 }

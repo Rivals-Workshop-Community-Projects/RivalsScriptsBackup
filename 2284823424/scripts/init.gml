@@ -1,5 +1,12 @@
 //Steve
 
+//chat
+keyboard_string = "";
+AT_CHAT = 42;
+ban_timer = 0;
+ban_timer_max = 420;
+ban_has_oofed = false;
+
 //Items
 discard_timer = 0; //Timer for holding NSpecial to discard Totem of Undying
 discard_timer_max = 60;
@@ -36,8 +43,19 @@ chat_tmr_max = 300;
 chat_owner = self; //the steve responsible for displaying the chat
 with oPlayer if ("chat_owner" in self && chat_owner == self) other.chat_owner = self;
 
+chat_player_name = get_player_name(player);
+switch(chat_player_name){
+	case "P1":
+	case "P2":
+	case "P3":
+	case "P4":
+	case "CPU":
+		chat_player_name = "Steve";
+		break;
+}
+
 with chat_owner{
-	ds_list_add(chat_txt, "Steve joined the game");
+	ds_list_add(chat_txt, chat_player_name + " joined the game");
 	ds_list_add(chat_tmr, chat_tmr_max);
 	ds_list_add(chat_col, c_yellow);
 }
