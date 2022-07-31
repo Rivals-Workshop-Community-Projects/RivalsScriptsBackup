@@ -134,6 +134,7 @@ damageCheck=false;
 smokeCounter = 0;
 bike_state_timer = 0;
 thrownBike = noone;
+bike_sp = 0;
 
 //Practice mode
 practice = false;      //Whether you're in Practice Mode or not.

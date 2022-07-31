@@ -209,6 +209,12 @@ if (motorbike == false)
 				}
 			break;
 	  		case PS_PARRY:
+	  		//Custom Parry Effect
+	  		sound_stop(asset_get("sfx_parry_use"));
+	  		if (state_timer == 0)
+	  		{
+	  			sound_play(sound_get("guard"));
+	  		}
      		tsprite_index=sprite_get("tail_idle");
 			trotation=0;
 			timage_number=12;
@@ -326,7 +332,6 @@ else if (motorbike == true)
 	dash_speed = 10;
 	dash_stop_time = 12;
 	djump_speed = 10;
-	ground_friction = 1;
 	hurtbox_spr = sprite_get("bike_hurtbox");
 	crouchbox_spr = sprite_get("bike_crouch_hurtbox");
 	jump_sound = sound_get("motorbike_jump");
@@ -461,12 +466,27 @@ else if (motorbike == true)
 			sound_stop(sound_get("motorbike_idle"));
 			sound_stop(sound_get("motorbike_stop"));
 			break;
+		case PS_DOUBLE_JUMP:
+			create_hitbox( AT_EXTRA_1, 2, x, y);
+			if (state_timer == 30)
+			{
+				attack_end(AT_EXTRA_1);
+			}
+		break;
 		case PS_HITSTUN:
 			if (prev_state == PS_WALL_JUMP && state_timer == 0)
 			{
 				vsp = 0;
 			}
 		break;
+  		case PS_PARRY:
+	  		//Custom Parry Effect
+	  		sound_stop(asset_get("sfx_parry_use"));
+	  		if (state_timer == 0)
+	  		{
+	  			sound_play(sound_get("guard"));
+	  		}
+	  	break;
 		default:
 		break;
 	}

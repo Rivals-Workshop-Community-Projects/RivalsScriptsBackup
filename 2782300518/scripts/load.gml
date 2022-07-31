@@ -104,7 +104,7 @@ sprite_change_offset("bike_hurtbox", 40, 78);
 sprite_change_offset("bike_crouch_hurtbox", 40, 78);
 sprite_change_offset("carol_hurtbox_standing", 40, 78);
 sprite_change_offset("carol_hurtbox_crouch", 40, 78);
-sprite_change_offset("energy_shield", 62, 95);
+sprite_change_offset("energy_shield", 58, 95);
 
 sprite_change_offset("nitro_boost", 50, 50)
 

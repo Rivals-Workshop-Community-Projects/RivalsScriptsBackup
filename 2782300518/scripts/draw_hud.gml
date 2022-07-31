@@ -16,15 +16,17 @@ if ("multikick_energy" in self && "meterShine" in self)
 	}
 }
 
-
 //Draw the fuel meter and canister
 draw_sprite_ext(sprite_get("fuel_meter"), 0, temp_x-16, temp_y-32, 2, 2, 0, col, 1);
 
 if (move_cooldown[43] > 0) col_2 = c_gray;
 draw_sprite_ext(sprite_get("fuel_canister"), 0, temp_x+84, temp_y-32, 2, 2, 0, col_2, 1);
 
-//Draw the amount of fuel in the meter
-draw_sprite_ext(sprite_get("fuel"), 0, (temp_x -4) , temp_y-28, 2 * fuel, 2, 0, col, 1);
+if ("fuel" in self)
+{
+	//Draw the amount of fuel in the meter
+	draw_sprite_ext(sprite_get("fuel"), 0, (temp_x -4) , temp_y-28, 2 * fuel, 2, 0, col, 1);
+}
 
 if (motorbike == false && "walljump_number" in self && "fuel" in self)
 {
@@ -42,7 +44,6 @@ if (motorbike == false && "walljump_number" in self && "fuel" in self)
 	}
 }
 
-//Not particularly ideal but Has to be done here because update doesn't run in pause screen
 if (motorbike == true)
 {
 	if (move_cooldown[AT_FSPECIAL_2] == 0)
@@ -50,6 +51,7 @@ if (motorbike == true)
 		draw_sprite_ext(sprite_get("nitro_ready"), 0, temp_x +102, temp_y-34, 2, 2, 0, col, 1);
 	}
 	
+	//Not particularly ideal but Has to be done here because update doesn't run in pause screen
 	if ("temp_pause" in self && instance_exists(temp_pause))
 	{
 		sound_stop(sound_get("motorbike_move"));

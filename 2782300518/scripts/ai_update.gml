@@ -1472,11 +1472,43 @@ ydist = abs(y - ytrag);
 //Project the attack
 var i = random_func(5, len, 1);
 //Special condition of range of the attack (if the character moves for example)
-if(attacke[i] == AT_DATTACK){
+if (attacke[i] == AT_DATTACK || attacke[i] == 3)
+{
 	distadd_x = 150;
 	distadd_y = 0;
 }
-	
+if (motorbike == true)
+{
+	switch (attacke[i])
+	{
+		case 48:
+		case 47:
+		case 46:
+		case 45:
+		case AT_USTRONG_2:	
+		case AT_FSTRONG_2:
+		case AT_DSTRONG_2:
+			if (bike_sp == dash_speed)
+			{
+				distadd_x = 150;
+				distadd_y = 0;			
+			}
+			else if (bike_sp == walk_speed)
+			{
+				distadd_x = 75;
+				distadd_y = 0;
+			}
+			else
+			{
+				distadd_x = 0;
+				distadd_y = 0;
+			}
+		break;
+		default:
+		break;
+	}
+}
+
 //Get information of the first hitbox of the attack in the array
 
 //Special cases

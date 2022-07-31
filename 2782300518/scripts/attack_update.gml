@@ -534,6 +534,22 @@ if (motorbike == false)
 }
 else if (motorbike == true)
 {
+	switch (prev_state)
+	{
+		case PS_DASH:
+		case PS_DASH_START:
+		case PS_DASH_STOP:
+		case PS_DASH_TURN:
+			bike_sp = dash_speed;
+		break;
+		case PS_WALK:
+			bike_sp = walk_speed;
+		break;
+		default:
+			bike_sp = 0;
+		break;
+	}
+ 
 	switch (attack)
 	{
 		case AT_TAUNT_2:
@@ -569,7 +585,7 @@ else if (motorbike == true)
 		
 		if (window <=2 && window_timer <5 && !free)
 		{
-			hsp = spr_dir * 0.5 + (hsp * 1.15);
+			hsp = spr_dir * 0.5 + (hsp * 1.1);
 		}
 
 		if (window == 2)
@@ -699,6 +715,10 @@ else if (motorbike == true)
 		attack_end(AT_EXTRA_1);
 		bike_hit = false;
 		can_attack = (window > 1 ? 1 : 0);
+		if (can_attack && attack_pressed)
+		{
+			bike_sp = dash_speed;
+		}
 		if (window == 3 && window_timer == 9)
 			{
 			move_cooldown[3] = 30;
@@ -782,6 +802,20 @@ else if (motorbike == true)
 			move_cooldown[43] = 240;
 		}
 		break;
+		case 48:
+		case 46:
+		case 45:
+        if (right_down and spr_dir == 1) or (left_down and spr_dir == -1)
+            hsp = spr_dir * bike_sp
+            can_move = true;
+        break;
+        case 47:
+        case AT_FSTRONG_2:
+        case AT_DSTRONG_2:
+        case AT_USTRONG_2:
+            hsp = spr_dir * bike_sp
+            can_move = true;
+        break;
 		default:
 		break;
 	}

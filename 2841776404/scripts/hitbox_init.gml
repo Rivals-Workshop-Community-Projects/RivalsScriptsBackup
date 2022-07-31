@@ -1,0 +1,2 @@
+//ass fuck shit fart                                                                                                                                                                                                                          cry about it, ExW
+useless = false;
