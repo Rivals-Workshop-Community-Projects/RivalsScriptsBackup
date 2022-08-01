@@ -66,3 +66,28 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
+
+//jumper rocket
+set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 3);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 306);
+set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 500);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, -40);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -66);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 90);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 60);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 9);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GRAVITY, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 13);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("rocket"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, sprite_get("rocket_hurt"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .3);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("jumper_explode"));

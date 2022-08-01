@@ -11,6 +11,12 @@ var num_alts = 8;
 var alt_cur = get_player_color(player);
 
 
+if ("syncUID" in id && syncUID == 25005 && instance_exists(cursor_id))
+{
+	draw_sprite_ext(sprite_get("troll_button"), isTroll + ( 2 * buttonInfo.hover), temp_x + buttonInfo.x, temp_y + buttonInfo.y, 1, 1, 0, c_white, 1);
+	
+}
+
 
 //Alt name init. var doesn't work with arrays lol
 
@@ -27,6 +33,9 @@ alt_name[8]  = "Early Access";
 //Patch
 draw_set_halign(fa_left);
 
+//muno phone compatibility
+muno_event_type = 6;
+user_event(14);
 
 //Alt
 textDraw(temp_x + 4, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, alt_name[alt_cur]);

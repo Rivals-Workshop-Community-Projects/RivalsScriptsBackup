@@ -285,7 +285,7 @@ if (attack == AT_FSPECIAL){
     if(window > 6){
     	if(has_hit_player and hit_player_obj.state == PS_HITSTUN){
     		hit_player_obj.force_depth = true
-    		depth = 1
+    		hit_player_obj.depth = depth - 1
     	}
     	have_armor = false
     }
@@ -826,7 +826,7 @@ if(attack == AT_NSPECIAL){
 			spawn_dust_fx(x +55*spr_dir, y-50, nspecial_water_throw_whiff_spr, 19)
 		}
 		
-		if(window_timer > (31 + free*8)){
+		if(window_timer > (31 + free*3)){
 			if(was_parried){
 				window = 29;
 			}else{
@@ -993,11 +993,7 @@ if(attack == AT_USPECIAL_GROUND){
 				}
 			} 
 			
-			if(!special_down){
-				window++;
-				window_timer = 0;
-				destroy_hitboxes();
-			}
+			
 			set_window_value(attack, window, AG_WINDOW_TYPE, special_down*9);
 			
 			
@@ -1009,6 +1005,12 @@ if(attack == AT_USPECIAL_GROUND){
 				switch_to_uthrow = false;
 				hurtboxID.sprite_index = get_attack_value(AT_UTHROW, AG_HURTBOX_SPRITE);
 				set_attack(AT_UTHROW);
+			}else{
+				if(!special_down){
+					window++;
+					window_timer = 0;
+					destroy_hitboxes();
+				}
 			}
 		}
 		

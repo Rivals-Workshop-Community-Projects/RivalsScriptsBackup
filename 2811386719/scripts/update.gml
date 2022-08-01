@@ -283,7 +283,7 @@ switch(state){
 
 if(static_cooldown <= 0){
 	if (state == PS_HITSTUN or state == PS_HITSTUN_LAND){
-		static -= 1;
+		static -= 0.6;
 		drain_timer = 10;
 	} 
    

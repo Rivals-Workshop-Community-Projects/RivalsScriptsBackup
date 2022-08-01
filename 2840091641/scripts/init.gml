@@ -10,12 +10,19 @@ walk_anim_speed = 2;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
-walk_speed = 2.5;
+walk_speed_default = 2.5;
+walk_speed_whipped = 5;
+
+dash_speed_default = 5;
+dash_speed_whipped = 6.5;
+
+walk_speed = walk_speed_default;
 walk_accel = 0.2;
 walk_turn_time = 8;
 initial_dash_time = 10;
 initial_dash_speed = 3;
-dash_speed = 5;
+
+dash_speed = dash_speed_default;
 dash_turn_time = 13;
 dash_turn_accel = .7;
 dash_stop_time = 6;
@@ -139,21 +146,54 @@ instanceNumber[4] = 0;
 instanceNumber[5] = 0;
 instanceAltNumber = 1;
 
-launcherSkin[0] = "laucher"
-launcherSkin[1] = "laucher1"
-launcherSkin[2] = "laucher2"
-launcherSkin[3] = "laucher3"
-launcherSkin[4] = "laucher4"
-launcherSkin[5] = "laucher5"
-launcherSkin[6] = "laucher6"
-launcherSkin[7] = "laucher7"
-launcherSkin[8] = "laucher8"
+if(get_synced_var(player))
+{
+    troll = true
+    launcherSkin[0] = "jumper"
+    launcherSkin[1] = "jumper1"
+    launcherSkin[2] = "jumper2"
+    launcherSkin[3] = "jumper3"
+    launcherSkin[4] = "jumper4"
+    launcherSkin[5] = "jumper5"
+    launcherSkin[6] = "jumper6"
+    launcherSkin[7] = "jumper7"
+    launcherSkin[8] = "jumper8"
+}
+else
+{
+    troll = false
+    launcherSkin[0] = "laucher"
+    launcherSkin[1] = "laucher1"
+    launcherSkin[2] = "laucher2"
+    launcherSkin[3] = "laucher3"
+    launcherSkin[4] = "laucher4"
+    launcherSkin[5] = "laucher5"
+    launcherSkin[6] = "laucher6"
+    launcherSkin[7] = "laucher7"
+    launcherSkin[8] = "laucher8"
+}
+
+
+//soldier init
 
 launcherFrame = 0; //visual rocket launcher frame
 holdDir = 0//keepingArm in Place Temp
+maximumBlastRadius = 130;
+rocketSpd = 7;
+rocketJumpSpeed = 13;
+rocketSelfDamage = 8;
+whip_timer_max = 210;
 
+
+//dev
 working = 0;
+
+
 
 //ai
 randomAI = 0;
 ammoAmountTimer = .80
+
+//muno
+muno_event_type = 0;
+user_event(14);

@@ -101,6 +101,7 @@ if (attack == AT_UAIR)
         if((place_meeting(x + 1, y, asset_get("par_block")) or place_meeting(x - 1, y, asset_get("par_block"))) and jump_pressed)
         {
             set_state( PS_WALL_JUMP )
+            
         }
         if(down_down = 1 or attack_pressed = 1 or jump_pressed = 1)
         {
@@ -125,25 +126,13 @@ if (attack == AT_DATTACK){
             sound_play(sound_get("discipline_device_power_up"));
         }
 		whipped = true;
-        whippedtimer = 210;
-        walk_speed = 4;
-        dash_speed = 6.5;
+        whippedtimer = whip_timer_max;
+        walk_speed = walk_speed_whipped;
+        dash_speed = dash_speed_whipped;
 	}
 }
 
 //rockets
-if(down_down or up_down or right_down or left_down)
-{
-    launchDir = joy_dir;
-}
-else
-{
-    launchDir = 0
-    if(spr_dir = -1)
-    {
-        launchDir = 180
-    }
-}
 if(attack == AT_NSPECIAL)
 {
     //arm animation
@@ -159,58 +148,41 @@ if (attack == AT_NSPECIAL and ammo > 0)
         {
              ammo --;
              ammoTimer = 75
-            sound_play(sound_get("rocket_shoot"));
-            with (create_hitbox(AT_NSPECIAL, 1, x + 4 * spr_dir, y - 55))
-        {
-            hsp = (7 * cos(degtorad(other.launchDir)) );
-            other.instanceNumber[other.instanceAltNumber] = self;
-            other.instanceAltNumber ++;
-            if(other.instanceAltNumber > 4)
-            {
-                other.instanceAltNumber = 1;
+             if(troll = 0)
+             {
+                //REGULAR LAUNCHER
+                sound_play(sound_get("rocket_shoot"));
+                var rkt = create_hitbox(AT_NSPECIAL, 1, x + 4 * spr_dir, y - 55)
+                createRocket(rkt);
             }
-
-            if(other.generalDir = -1)//facing left
+            else
             {
-                vsp = (-7 * sin(degtorad(other.launchDir)) ) * -other.generalDir;
+                //TROLLDIER
+                sound_play(sound_get("jumper_shoot"));
+                var rkt = create_hitbox(AT_NSPECIAL, 3, x + 4 * spr_dir, y - 55)
+                createRocket(rkt);
             }
-            else//facing right
-            {
-                vsp = (-10 * sin(degtorad(other.launchDir)) ) * other.generalDir;
-            }
-
-            mask_index = sprite_get("rocket_hurt");
-            sprite_index =  sprite_get("rocket");
-            proj_angle = other.launchDir;
-            if(other.generalDir = -1)
-            {
-                proj_angle = proj_angle + 180
-
-            }
-            
-        
-
-        }
-
     }
 }
 
 
-//rocketJumping
-for(r=1; r < 5; r++)
+
+
+#define createRocket(rocket)
+with (rocket)
 {
-    with(instanceNumber[r])
+    hsp = (other.generalDir * other.rocketSpd * cos(degtorad(other.launchDir)) );
+    if(other.generalDir = -1)//facing left
     {
-        if(abs(vsp) < 1 and abs(hsp) < 1)
-        {
-            with(create_hitbox(AT_NSPECIAL, 2, other.instanceNumber[r].x, other.instanceNumber[r].y))
-            {
-                x = other.x_pos - 60;
-                y = other.y_pos - 50;
-            }
-            instance_destroy(self);
-        }
+        vsp = (other.rocketSpd * sin(degtorad(other.launchDir)) );
     }
+    else//facing right
+    {
+        vsp = (-other.rocketSpd * sin(degtorad(other.launchDir)) );
+    }
+    mask_index = sprite_get("rocket_hurt");
+    sprite_index = sprite_get("rocket");
+    proj_angle = other.launchDir;
 }
 
 // #region vvv LIBRARY DEFINES AND MACROS vvv

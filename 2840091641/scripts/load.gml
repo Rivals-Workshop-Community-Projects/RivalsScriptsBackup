@@ -1,4 +1,5 @@
 sprite_change_offset("idle", 63, 110);
+sprite_change_offset("phone", 63, 110);
 sprite_change_offset("hurt", 63, 110);
 sprite_change_offset("crouch", 63, 110);
 sprite_change_offset("walk", 63, 110);
@@ -66,6 +67,17 @@ sprite_change_offset("laucher5", 50, 55);
 sprite_change_offset("laucher6", 50, 55);
 sprite_change_offset("laucher7", 50, 55);
 sprite_change_offset("laucher8", 50, 55);
+
+sprite_change_offset("jumper", 50, 55);
+sprite_change_offset("jumper1", 50, 55);
+sprite_change_offset("jumper2", 50, 55);
+sprite_change_offset("jumper3", 50, 55);
+sprite_change_offset("jumper4", 50, 55);
+sprite_change_offset("jumper5", 50, 55);
+sprite_change_offset("jumper6", 50, 55);
+sprite_change_offset("jumper7", 50, 55);
+sprite_change_offset("jumper8", 50, 55);
+
 sprite_change_offset("rocket", 80, 10);
 sprite_change_offset("rocket_hurt", 80, 10);
 
