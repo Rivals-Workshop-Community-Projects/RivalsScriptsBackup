@@ -139,7 +139,7 @@ move_cooldown[AT_FSPECIAL] = 50
 }
 
 if attack == AT_DSPECIAL and window = 3 and window_timer = 1 {
-move_cooldown[AT_DSPECIAL] = 110
+move_cooldown[AT_DSPECIAL] = 135
 }
 
 if attack == AT_UAIR and window = 2 and window_timer = 1 {

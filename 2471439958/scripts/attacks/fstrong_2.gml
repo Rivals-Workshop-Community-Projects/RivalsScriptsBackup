@@ -82,11 +82,11 @@ set_hitbox_value(AT_FSTRONG_2, 2, HG_EXTRA_CAMERA_SHAKE, 1);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_VISUAL_EFFECT, 133);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_BASE_HITPAUSE, 30);
-	set_hitbox_value(AT_FSTRONG_2, 2, HG_BASE_KNOCKBACK, 7);
+	set_hitbox_value(AT_FSTRONG_2, 2, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_KNOCKBACK_SCALING, 1.2);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_DAMAGE, 15);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_EFFECT, 0);
 	set_hitbox_value(AT_FSTRONG_2, 2, HG_ANGLE, 38);
-	set_hitbox_value(AT_FSTRONG_2, 2, HG_WIDTH, 50);
+	set_hitbox_value(AT_FSTRONG_2, 2, HG_WIDTH, 45);
 
 

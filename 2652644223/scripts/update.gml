@@ -134,12 +134,12 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 old_scarf_x = floor((scarf_x+old_scarf_x)/2);
 old_scarf_y = floor((scarf_y+old_scarf_y)/2);
 
-if(get_gameplay_time() % (8-scarf_timer) == 0 && !scarf_off && visible)
-{
-    fx = spawn_hit_fx(old_scarf_x+4*spr_dir,old_scarf_y,scarf_fire);
-    fx.draw_angle = scarf_angle;
-    if(scarf_front) fx.depth = depth-1;
-}
+// if(get_gameplay_time() % (8-scarf_timer) == 0 && !scarf_off && visible)
+// {
+//     fx = spawn_hit_fx(old_scarf_x+4*spr_dir,old_scarf_y,scarf_fire);
+//     fx.draw_angle = scarf_angle;
+//     if(scarf_front) fx.depth = depth-1;
+// }
 #endregion
 
 with(hit_fx_obj)
@@ -157,7 +157,7 @@ with(hit_fx_obj)
 
 if(bullets < 1)
 {
-    if(special_pressed && !up_down && !attack_pressed  && outline_timer == 0  && state != PS_PARRY && state != PS_ATTACK_AIR  && state != PS_ATTACK_GROUND)
+    if(special_pressed && !up_down && !attack_pressed  && outline_timer == 0 && state_cat != PS_HITSTUN  && state != PS_PARRY && state != PS_ATTACK_AIR  && state != PS_ATTACK_GROUND)
     {
         if(bullets != 0 && down_down || bullets == 0)
             reload_check();

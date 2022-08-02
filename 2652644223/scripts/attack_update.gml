@@ -55,7 +55,7 @@ if(state_timer == 1)
     }
 }
 
-if(state_timer <= 3 && !free && bullets != 6 && attack_pressed && special_pressed && attack != AT_TAUNT_2 && state != PS_PARRY)
+if(state_timer <= 3 && !free && bullets != 6 && attack_pressed && special_pressed && attack != AT_TAUNT_2 && state_cat != SC_HITSTUN && state != PS_PARRY)
 {
     tac_reload = true;
     attack = AT_TAUNT_2;
@@ -114,7 +114,7 @@ if (attack == AT_FSPECIAL){
             else
             { sound_play(sound_get("revolver_ricochet"));  bullets --; }
         }
-        if(window_timer == 9 && 6-bullets <= hud_enhanced)
+        if(window_timer == 9 && 6-bullets <= hud_enhanced && (bullets != 0 || hud_endhance != 0))
         { sound_play(sound_get("thunder_shock")); fx = spawn_hit_fx(x,y,fspec_spark) fx.depth = depth-1;}
     }
     can_move = false;
@@ -238,7 +238,7 @@ if(attack == AT_BAIR || attack == AT_DAIR)
 if(attack == AT_UAIR)
 {
     if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
-    || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 2 && window_timer > 5 && bullets > 0 && !hitpause && free)
+    || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 2 && window_timer > 8 && bullets > 0 && !hitpause && free)
     { window = 4; window_timer = 0; vsp += 2; destroy_hitboxes(); sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40)); bullets--;}
 }
 if(attack == AT_USTRONG)
@@ -342,13 +342,14 @@ if(attack == AT_DTILT)
             shot_x = 0;
             sfx_deploy = true;
             //Find solid ground to put projectile
-            for(i = 0; i < 190; i += 20)
+            for(i = 190; i > 0; i -= 10)
             {
-                if(place_meeting(x+(80+i)*spr_dir, y+2, asset_get("par_block")) 
-                || place_meeting(x+(80+i)*spr_dir, y+2, asset_get("par_jumpthrough")))
+                if(position_meeting(x+(80+i)*spr_dir, y+3, asset_get("par_block")) 
+                || position_meeting(x+(80+i)*spr_dir, y+3, asset_get("par_jumpthrough")))
+                {
                     shot_x = 80+i;
-                else
                     break;
+                }
             }
             set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, shot_x-30);
             reset_hitbox_value(AT_DTILT, 2, HG_HITBOX_Y);
@@ -391,13 +392,14 @@ if(attack == AT_DTILT)
             window = 2;
             window_timer = 0;
             //Find solid ground to put projectile
-            for(i = 0; i < 190; i += 20)
+            for(i = 190; i > 0; i -= 10)
             {
-                if(place_meeting(x+(80+i)*spr_dir, y+2, asset_get("par_block")) 
-                || place_meeting(x+(80+i)*spr_dir, y+2, asset_get("par_jumpthrough")))
+                if(position_meeting(x+(80+i)*spr_dir, y+3, asset_get("par_block")) 
+                || position_meeting(x+(80+i)*spr_dir, y+3, asset_get("par_jumpthrough")))
+                {
                     shot_x = 80+i;
-                else
                     break;
+                }
             }
             // shot_x -= 20 + random_func( 0, 40, true);
             set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, shot_x-30);

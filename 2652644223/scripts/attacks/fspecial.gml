@@ -45,7 +45,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 29);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
