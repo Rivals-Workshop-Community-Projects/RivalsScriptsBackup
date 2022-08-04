@@ -111,6 +111,19 @@ if (nspec_grabbed == false){
 	grabbedtarget = noone;
 }
 
+if(state == PS_HITSTUN && state_timer == 0 && nspec_grabbed == true){
+	grab_timer = grab_timer + 1;
+} else {
+	if (nspec_grabbed == true && !instance_exists(grabbedtarget)){
+		if(free){
+			grab_timer = grab_timer + 1;
+		} else {
+			grab_timer = grab_timer + .5;
+		}
+	}
+}
+
+
 // Grabbing state
 if (nspec_grabbed == true && grab_timer >= 0){
 	can_wall_jump = false;
@@ -185,7 +198,7 @@ if (nspec_grabbed == true && grab_timer >= 0){
 		state = PS_IDLE;
 	}
 	
-	if(down_pressed&&kirby_nspec_swallowed_yet == false){
+	if(down_pressed && kirby_nspec_swallowed_yet == false){
 		kirby_nspec_swallowed_yet = true;
         set_attack(AT_NSPECIAL);
         window = !consumed_proj ? 6 : 8;
@@ -207,12 +220,11 @@ if (nspec_grabbed == true && grab_timer >= 0){
 		nspec_grabbed = false;
 		move_cooldown[AT_NSPECIAL] = 60;
 	}
-	
-	
-	
+
 	if (y > get_stage_data(SD_Y_POS) + 230){
 	    nspec_grabbed = false;
 	}
+	
 	if(state == PS_DASH){
 		set_state(PS_WALK);
 	}

@@ -16,4 +16,11 @@ if (attack == AT_COPY_ESP){
 	move_cooldown[AT_COPY_ESP] = 60;
 }
 
+if(nspec_grabbed == true){
+	if(instance_exists(grabbedtarget)){
+		grabbedtarget.visible = true;
+		grabbedtarget = noone;
+	}
+	nspec_grabbed = false;
+}
 zoom = 2;

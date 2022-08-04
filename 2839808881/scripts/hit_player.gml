@@ -81,35 +81,36 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case -1: //Mix
 					//Grants Kirby Mix.
 					case 1985996538: //Ditto
-				case 1883576466: //Pokemon Ranger
-				case 2664982578: //Egg?
-				case 2656419045: //Qua Mario
-				case 1996010699: //Suitcase
-				case 2776798757: //Mega Man X
-				case 1884573731: //Classic Mega Man
-				case 1892516249: //Mega Man X
-				case 1890261108: //Mega Man X (LEGACY)
-				case 2043406919: //Sprite Megaman
-				case 2408200095: //Mega Man.EXE
-				case 2469742715: //Ben 10
-				case 2819584604: //Balanced Mega Man
-				case 1987236304: //NES Kirby
-				case 2297617172: //64 Kirby
-				case 1868756032: //Kirby (luna)
-				case 2117584528: //Triple Deluxe Kirby
-				case 2133564470: //Adeleine
-				case 2426361313: //Nagito Komaeda
-				case 2081164436: //Doc Robot
-				case 2635326464: //Mario Kart (ft. Shy Guy)
-				case 2652079640: //Shrek in a kart
-				case 2094681709: //Bird Guy in a Car
-				case 2686241533: //MonkeyCar
-				case 2250055008: //Venom SST
-				case 1895666616: //Division
-				case 2001969960: //The Worst
-				case 2615647984: //SSL Kirby
-				case 2824279381: //SSL Mega Man
-				case 2667789015: //Eevee [Super Smash Land]
+				case 1985996538: //Ditto	
+				case 1883576466: //Pokemon Ranger	
+				case 2664982578: //Egg?	
+				case 2656419045: //Qua Mario	
+				case 1996010699: //Suitcase	
+				case 2776798757: //Mega Man X	
+				case 1884573731: //Classic Mega Man	
+				case 1892516249: //Mega Man X	
+				case 1890261108: //Mega Man X (LEGACY)	
+				case 2043406919: //Sprite Megaman	
+				case 2408200095: //Mega Man.EXE	
+				case 2469742715: //Ben 10	
+				case 2819584604: //Balanced Mega Man	
+				case 1987236304: //NES Kirby	
+				case 1868756032: //Kirby (luna)	
+				case 2133564470: //Adeleine	
+				case 2426361313: //Nagito Komaeda	
+				case 2081164436: //Doc Robot	
+				case 2635326464: //Mario Kart (ft. Shy Guy)	
+				case 2652079640: //Shrek in a kart	
+				case 2094681709: //Bird Guy in a Car	
+				case 2686241533: //MonkeyCar	
+				case 2250055008: //Venom SST	
+				case 2443231956: //Waluigi	
+				case 1960787130: //Waluigi	
+				case 1895666616: //Division	
+				case 2001969960: //The Worst	
+				case 2615647984: //SSL Kirby	
+				case 2824279381: //SSL Mega Man	
+				case 2667789015: //Eevee [Super Smash Land]	
 					TCG_Kirby_Copy = -1;
 					mixCurrSelected = 1 + random_func(1, 15, true); //Random
 					sound_stop(sound_get("nspecial_down_ability"))
@@ -388,9 +389,11 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2822424888: //SSL Fox
 				case 2828467031: //SSL Wolf
 				case 2117584528: //Triple Deluxe Kirby
+				case 2841776404: //Susie
 					TCG_Kirby_Copy = 3; //Ranger
 				break;
 				
+				case CH_OLYMPIA: //Olympia
 				case 2035128973: //Lucario
 				case 2606413637: //Goku
 				case 1870393754: //DBS Goku
@@ -522,7 +525,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2837684230: //SSL Hotaru
 				case 2835728848: //SSL Kyanta
 				case 2727225880: //Torren
-				case CH_OLYMPIA: //Olympia
 					TCG_Kirby_Copy = 4; //Fighter
 				break;
 				
@@ -739,8 +741,8 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2618692248: //SSL Visselle
 				case 2823366767: //SSL Macka
 				case 2835668066: //SSL Clawitzer
-				case 2840669986: //Broom Hatter
 				case 2841341970: //SSL Yuuma Toutetsu
+				case 2843521167: //Pastele
 					TCG_Kirby_Copy = 6; //Water
 				break;
 					
@@ -807,6 +809,7 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2838636290: //SSL Peach
 				case 2840056931: //SSL Corn Cob Monster
 				case 2841541558: //Whispy Woods
+				case 2841806861: //Trolley
 					TCG_Kirby_Copy = 7; //Leaf
 				break;
 					
@@ -866,6 +869,7 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2820823219: //SSL Vanillite
 				case 2004919133: //Hat Kid
 				case 2840918059: //Sub-zero
+				case 2830570682: //Tiff
 					TCG_Kirby_Copy = 8; //Ice
 				break;
 					
@@ -957,6 +961,8 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2645208227: //SSL Jeff the Magcial Flying Sheep
 				case 2822905260: //SSL Falco
 				case 2840142403: //SSL Copen
+				case 2840669986: //Broom Hatter
+				case 2842873754: //King Dedede
 					TCG_Kirby_Copy = 9; //Tornado 
 				break;
 				
@@ -1217,6 +1223,9 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2465601482: //Primid
 				case 2840242565: //Gooey
 				case 2841309511: //SSL Saki Kurukoma
+				case 2842104646: //SSL Phasmophobia Ghost Hunter
+				case 2497035129: //Phasmophobia Ghost Hunter
+				case 2843385011: //Dark Matter
 					TCG_Kirby_Copy = 12; //Abyssal
 				break;
 				
@@ -1299,6 +1308,8 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2823821718: //SSL Poniko
 				case 2823291685: //SSL Mal
 				case 2709660769: //SSL Tetromino
+				case 2842986516: //ssl (mus) toki pona
+				case 2842985279: //SSL Unown
 					TCG_Kirby_Copy = 13;//ESP
 				break;				
 				
@@ -1379,6 +1390,8 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2811832666: //SSL Golem
 				case 2625128231: //SSL Mr Slam
 				case 2822347560: //SSL Eid
+				case 2841254562: //SSL Builderman
+				case 2843458785: //Mr Sir Regitus Gigitus
 					TCG_Kirby_Copy = 14;//Drill
 				break;
 				
