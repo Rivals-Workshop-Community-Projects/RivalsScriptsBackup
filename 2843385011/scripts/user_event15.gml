@@ -37,42 +37,42 @@ use_alt_names = true;
 // Type "noone" to make it always white.
 // (you can also change it to different values depending on the alt, by using
 // get_player_color(player))
-alt_ui_recolor = 0;
+alt_ui_recolor = 7;
 
 // The list of names for the alts, if enabled.
 alt_names = [
-	"Default",
-	"Light Aeon Hero",
-	"Dark Aeon Hero",
-	"Meta Knight",
-	"Parallel Meta Knight",
-	"Phantom Meta Knight",
-	"Dark Meta Knight",
-	"Morpho Knight",
-	"Morpho Knight EX",
-	"Kirby",
-	"King Dedede",
-	"Bandana Dee",
-	"Dark Matter",
-	"Zero Two",
-	"Void Termina",
-	"Magolor",
-	"Marx",
-	"Nova",
-	"Thunder God",
-	"Sun God",
-	"Android X",
-	"Wind God",
-	"Oarly",
-	"Octopus58",
-	"Poopoo Nite",
-	"Spike",
-	"Malkam",
-	"Charles",
-	"Necromancer",
-	"Yoda",
-	"Iron Knuckle",
-	"Galactic Monopoly",
+	"Darkened Sword",
+	"Deep Blue Sea",
+	"Volcanic Heart",
+	"Ancient Thorns",
+	"Frostbite",
+	"Timeless Cosmos",
+	"Endless Abyss",
+	"Old Memories",
+	"Eternal Iris",
+	"Benevolent Wings",
+	"Null Apostle",
+	"Tarnished Pigment",
+	"Underworld Star",
+	"Stitched Sorcerer",
+	"C R O W N E D",
+	"Essence of Chaos",
+	"Fluttering Blaze",
+	"Ultimate Lifeform",
+	"Fools Gold",
+	"Splotched Scabbard",
+	"Lost Master",
+	"Dream Warrior",
+	"Galactic Blade",
+	"Poor Imitation",
+	"Sparkling Star",
+	"Born of Chaos",
+	"Traveler or Dark",
+	"Wizened Child",
+	"Isolated Dream",
+	"Snowdrift",
+	"Hand Drawn",
+	"Retrograde",
 	];
 
 
@@ -93,11 +93,11 @@ MunoPhone Touch.
 
 // Character's name, used in a couple of places in the phone.
 // (if you delete this line, it'd just use the config.ini name)
-muno_char_name = "Galacta Knight";
+muno_char_name = "Dark Matter";
 
 // Whether or not the phone sprite should recolor w/ your alt costume.
 // (set to "true" if you make a custom phone sprite in your char's colors)
-phone.uses_shader = false;
+phone.uses_shader = true;
 
 // If you use a custom phone sprite that's taller than the default, enter how
 // much taller it is here. (measured in ingame pixels; so if editing the default
@@ -110,10 +110,12 @@ phone.supports_fast_graphics = false;
 // Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
 phone.dont_fast = false;
 
-// Set to true and this will DISABLE a lot of the phone's side utilities.
-// If you're porting the phone to an existing char and don't need any of these
-// features, you might as well turn on lightweight to save a tiny bit of
-// performance. (see _docs.gml for a full list of what this disables)
+// Set to true and this will DISABLE a lot of the phone's side features, mostly
+// the coding shortcuts.
+// See _docs.gml for a full list of what it disables.
+// If you don't intend to use any of those bonus features in your character,
+// you should set this to true since it saves a bit of performance.
+// (it's false by default since Phone Sandbert uses some of those features)
 phone.lightweight = false;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
@@ -193,30 +195,59 @@ so that things like page breaks can work properly.
 
 #define CORE_tips
 
-initTip("Neutral Special: Revolution Swords");
-initWords("Galacta Knight summons floating swords. If tapped he only summons 2, but if held he can summon more, until he has swords all around him.
-The swords can't harm opponents until he launches them and will disappear if Galacta Knight gets hit however!");
+initTip("FSpecial: Dark Spawn / Dark Flare");
+initWords("Dark Matter spits out a mass of dark energy which then quickly forms into a smaller Dark Matter Minion when you release the Special button. While the dark mass is traveling, pressing up or down will change the projectile's  vertical trajectory, allowing you to set it up in more conventeint areas or to snipe opponents out of the air!");
+initImage_ext(sprite_get("fspecial"), -5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("minion_move"), -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("fspecial2"), -6, fa_right, -1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initWords("Pressing Fspecial while the Minion is active causes Dark Matter to order it to detonate, causing him to stall in the air for a second while he does so. If he performs the move while he has any Dspecial orbs on him, he will instead send them off to the Minion rather than detonating it.");
 
-initTip("Side Special: Crescent Shot");
-initWords("Galacta Knight blocks with his shield, absorbing damage from both projectiles and physical attacks. When releasing the button, he fires a projectile from his shield.
-Absorbing more damage makes the projectile more powerful!");
+initTip("Dark Matter Minion");
+initWords("After releasing Fspecial, the dark mass will form into a Dark Matter Minion which you can command to perform various actions. Similar to Absa's clouds, this minion cannot disarmed by the opponent, making it more of a permanent fixture to a match that the opponent has to deal with, though the Minion automatically does go away if Dark Matter gets parried while it's out.");
+initWords("Shooting the Minion with an Nspecial projectile will cause it to travel a short distance forward. Hitting it with a charged Nspecial causes it to travel further.");
+initWords("Holding the special button during Uspecial while a Minion is active causes Dark Matter to warp to its location, destroying the Minion in the process.");
+initImage_ext(sprite_get("minion_idle"), -7, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("Up Special: Flight");
-initWords("Galacta Knight takes flight, making for a great recovery move. Goes higher if the button is held, and if used on the ground it's faster and can be cancelled into attacks!");
+initTip("Minion Strongs");
+initWords("Performing a strong attack while the Minion is active will cause it to unleash a small blast in front of it in the direction of the strong you performed. These can be used to harrass the opponent from the minion's location, though due to how comittal his strong attacks are, this can be risky.");
+initWords("The Minion will start fully prepping to unleash the blast after you release your strong charge, which results in some strongs being faster than others. Fstrong is the fastest to start while still being decently strong, Dstrong is the middle ground while also being a solidly strong spike, and Ustrong is the slowest yet strongest or the three.");
+initImage_ext(sprite_get("minion_fstrong"), -6, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("minion_dstrong"), -6, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("minion_ustrong"), -6, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("Down Special: Great Space-Time Killing Flash");
-initWords("Galacta Knight cuts open a rift in time and space. After a bit of time, the rift will open and fire a huge laser diagonally downward.
-It's a slow but very devastating move which can control a portion of the stage!
+initTip("Dark Flare Variations");
+initWords("Pressing Fspecial while the Minion is active causes Dark Matter to order it to detonate, damaging nearby opponents while causing the Minion to be destroyed in the process. The direction this sends at is determined by the direction the Minion was facing initially, allowing for some cheeky combo extensions with proper positioning.");
+initWords("If Dark Matter has any Dspecial orbs on him as he performs Fspecial causes him to send the orbs to the Minion, allowing it to form itself into a sawblade like projectile for a while. During this time, it can still be nudged around with Nspecial, teleported to with Uspecial, or detonated with Fspecial 2. The Minion cannot perform strongs while it's performing the sawblade attack. Holding Parry while you have orbs will make the Minion detonate regardless.");
+initWords("The duration on the sawblade form is determined by how many Dspecial orbs you had on him: the more orbs you have, the longer it lasts ( 28 frames -> 60 frames -> 92 frames -> 124 frames).");
+initImage_ext(sprite_get("minion_pop"), -5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("minion_dspecial"), -5, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
-However, be aware that the rift will close if Galacta Knight loses a stock, gets parried, or takes a certain amount of damage (even while the laser is being fired)!");
+initTip("USpecial: Dark Warp");
+initWords("Dark Matter rapidly slashes with dark energy before phasing out of exsistence. He then travels in one of 8 directions or teleports straight to an active Minion before reappearing with a violent burst of dark energy.");
+initWords("Acting very similarly to Zelda's Up Special from the Smash bros games, Dark Warp is a solid recovery tool and mix up option that allows you to catch opponents off guard over long distances. Dark matter is fully intangible for the entire time he's invisible, making it useful as an occasional escape tool. However, Uspecial offers little in the ways of recovery mixups and is highly venerable once Dark Matter reappears, making reckless usage of Uspecial liable towards getting punished heavily. The initial swing sports a quick hitbox that is designed to theoretically lead into the more powerful second hit, though that is largely dependant on the opponent's DI and Drift.");
+initImage_ext(sprite_get("uspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("Aerial Strongs");
-initWords("Galacta Knight can use strong attacks both in the air and on the ground! So you can consider his strong attacks to be additional aerials.
-While charging them, Galacta Knight will stall in the air slightly, until the attack is released.");
+initTip("DSpecial: Orbital Charge");
+initWords("Dark Matter rears its cloak up and proceeds to spew out golden orbs from its own body, which begin to encircle them. They will summon up to 4 orbs before stopping, though you can cancel out of the summon early by pressing the jump or shield button, allowing you to keep yourself safe. Pressing the attack or special button will transition into Orbital Assault while summoning orbs allows you to transition into Orbital Assault without having to have all 4 orbs already prepped.");
+initWords("Summoned orbs will continue to circle around you until you either expend them on Fspecial 2 or Dspecial 2, you get one of your attacks parried, or you die.");
+initImage_ext(sprite_get("dspecial_full"), -5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("idle"), -9, fa_right, -1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("dspecial_orbit"), -6, fa_right, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("Forward Air: Clinging to walls");
-initWords("With FAir, Galacta Knight can cling to walls by stabbing it with his lance! After doing this, he can stay there for up to 2 seconds.
-While clinging, you can cancel it into anything, such as a jump, attack, or an airdodge.");
+initTip("Dspecial 2: Orbital Assault");
+initWords("Once 4 orbs have been summoned, pressing Dspecial causes Dark Matter to launch all of his stocked up orbs in a barrage of large projectiles. If any of the orbs hit, they begin to orbit around the opponent for a few seconds before slamming into their location. This secondary barrage has signifigantly better tracking if the opponent is in hitstun when they start to home in, making them useful for extending combos.");
+initWords("Similar to Sephiroth Fspecial, these orbs force the opponent into a dangerous scramble situation where they have to avoid taking damage to escape the barrage. If the opponent isn't in hitstun, then the secondary barrage can be avoided by keeping on the move. Do keep in mind that the orbs go away if the opponent parries or kills Dark Matter, making it posible to avoid the situation entirely if the opponent outplays you.");
+initImage_ext(sprite_get("dspecial2"), -5, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+
+initTip("Taunts: Furious Roar and Threatening Glare");
+initWords("You can perform both of his taunts while in the air to stall yourslef for a bit (or just to show off). His main taunt has a significant vertical stall to its whole duration, though it's extremely long and can only be used once in the air. Down Taunt is faster and can be used more than once in the air, though the stall is negligable to the point of it not being useful beyond styling on people.");
+initImage_ext(sprite_get("taunt"), -5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("taunt2"), -4, fa_right, -1, 1, true, c_white, 1, false, noone, noone, noone, noone);	
+	
+initTip("Dark Matter Lore");
+initWords("To be added later :3");
+initImage_ext(sprite_get("statue"), -5, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -255,74 +286,53 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.8", "4th August, 2022");
-initHeader("Fixes / Other Changes");
-initSection("- Fixed aerial c-stick smash attacks being unchargable if used in the opposite direction of the control stick, and the control stick taking priority in general when doing this");
+initPatch("Beta 1.1", "17 May, 2022");
+initHeader("General Changes");
+initSection("~ New Victory theme composed by Delta added. Now plays at random along side the already present victory theme.");
+initSection("~ Void Victory theme added. Plays on the Sparkling Star alt only (Might add more alt specific victory themes in the future).");
+initHeader("General Minion Changes");
+initSection("- Hitting the Minion while its performing a strong attack or has is in Sawblade mode will kill the Minion.");
+initSection("- Destroying the Minion now adds a 90 frame cooldown before Dark Matter can use Fspecial to spawn another Minion.");
+initHeader("Minion Strong Attacks");
+initSection("~ New HFX added to the Minion strongs (Thanks Delta).");
+initSection("+ Minion Ustrong hitbox moved upwards to match the visual more accurately.");
+initSection("- Minion strong active time reduced from 5 frames to 4 frames.");
+initSection("- Minion Fstrong knockback scaling reduced from 0.9 to 0.85.");
+initHeader("Dark Flare (Fspecial 2)");
+initSection("+ Holding Shield while you have Dspecial orbs charged will make the Minion detonate instead of activating the Sawblade.");
+initSection("- Minion Sawblade active time readjusted. Default active time reduced from 77 frames (dear lord that was way too long) to 28 frames (32 animation frames). Additional orbs make that animation window loop 1 more time per orb, maxing out at 124 active frames with 4 orbs.");
+initSection("- Fspecial Cooldown after performing a Minion Detonate increased from 30 frames to 90 frames");
 
-initPatch("1.7", "26th July, 2022");
-initHeader("Fixes / Other Changes");
-initSection("- Fixed aerial c-stick smash attacks not turning Galacta Knight around if used in the opposite direction");
+initPatch("---", "");
+initWords_ext("Snowy and cold,", fa_center, c_white, 0, false);
+initWords_ext("Shiverstar is a winter wonderland", fa_center, c_white, 0, false);
+initWords_ext("a wonderland full of monsters and...", fa_center, c_white, 0, false);
+initWords_ext("Dark Matter", fa_center, c_white, 0, false);
+initImage_ext(sprite_get("statue"), -5, fa_center, 2, 2, true, c_white, 0.2, false, noone, noone, noone, noone);
 
-initPatch("1.6", "8th June, 2022");
-initHeader("Nerfs");
-initSection("- Reduced Jab3 knockback scaling a bit (1.0->0.9)");
-initHeader("Fixes / Other Changes");
-initSection("- Fixed phone tips using the wrong name for DSpecial, and updated some other stuff");
+initPatch("About Dark Matter", "");
+initHeader("Animation and General Attack Implementation");
+initSection("ArtistOfSeer");
+initHeader("Special move Coding and Optimization");
+initSection("VVizard");
+initHeader("Additional Credits");
+initSection("Dream Collection Organization - Spamite");
+initSection("Grounded Movement Animations - Smiley_The_Stickman");
+initSection("Intro Animation and Dair hit VFX - TheSmashWaffle"); 
+initSection("Idle base sprite, Idle Animation, and Moveset Concept - Ventaver"); 
+initSection("Fair base animation - Triforceriku"); 
+initSection("Victory Theme - GrucYord"); 
+initSection("Additional VFX and Victory Theme 2 - DeltaParallax"); 
 
-initPatch("1.5", "4th May, 2022");
-initHeader("Nerfs");
-initSection("- FAir sweetspot now pushes Galacta Knight a bit backwards from the hit, and the sourspot has a more vertical angle (361->65)");
-initSection("- UStrong has a bit less knockback when used in the air, compared to grounded (ground stats are the same as before)");
-initSection("- DStrong landing lag increased (+10f), and reduced the size of the landing hitbox a bit");
-
-initPatch("1.4", "27th April, 2022");
-initHeader("Nerfs");
-initSection("- DSpecial rift now disappears if Galacta Knight takes 25% or more damage while it's out");
-initSection("- UTilt now has more startup and endlag");
-initSection("- BAir has more landing lag (8->10)");
-
-initPatch("1.4", "24th April, 2022");
-initHeader("Buffs");
-initSection("- USpecial now has an epic windbox because epic");
-initHeader("Nerfs");
-initSection("- Tornado now disappears if Galacta Knight gets parried or hit");
-initSection("- Increased FAir landing lag (7->12) and endlag (12->16)");
-initSection("- Decreased BAir windbox kbs (1.2->1.0)");
-initSection("- Decreased NSpecial sword knockback when going upward (7->6.5 bkb, 0.8->0.7 kbs)");
-initHeader("Fixes / Other Changes");
-initSection("- Added rune L and rune K");
-initSection("- Adjusted NSpecial sword angles to only launch upward or spike if they go at higher vertical angles");
-initSection("- Fixed bug where NSpec, FSpec, UStrong, and DStrong effects wouldn't cancel properly if Galacta Knight was hit with a weak move that put him into grounded hitstun");
-
-initPatch("1.3", "23rd April, 2022");
-initHeader("Nerfs");
-initSection("- NSpecial now has a bit more startup before spawning the swords (10->16)");
-initSection("- FSpecial's shield hitbox is now smaller, making it block less behind the shield and above/below");
-initSection("- FSpecial can now fall off ledges (so you can push GK off a ledge if you hit his shield, for example)");
-initSection("- FSpecial is now slower if it hasnt already absorbed a projectile (15->20 startup, 20->25 endlag), making it worse for general zoning and also making it more punishable");
-initSection("- UStrong lightning now disappears if GK gets hit before the lightning properly comes out");
-initSection("- DAttack is now less active on both sweetspot and sourspot, and has more endlag on whiff (10->15, same frame data on hit however)");
-initHeader("Fixes / Other Changes");
-initSection("- Made more projectiles grabbable by Kewtians, and made the same projectiles also grabbable by Morshu (ex: NSpecial, FSpecial, FStrong");
-initSection("- Fixed some FSpecial hitboxes being reflectable, causing desyncs");
-
-initPatch("1.2", "23rd April, 2022");
-initHeader("Fixes / Other Changes");
-initSection("- Updated walkturn and dashturn a bit to look nicer");
-initSection("- Changed hit sfx of some sourspots to sound sharper (ex: DAir, FAir, DAttack) and less blunt");
-initSection("- Fixed NAir multihit vfx to be smaller and less flashy");
-
-initPatch("1.1", "22nd April, 2022");
-initHeader("Fixes / Other Changes");
-initSection("- Fixed UAir multihit vfx to be smaller and less flashy");
-initSection("- Fixed missing TL support being a bit broken (will add TL support at a later date)");
-
-initPatch("About Galacta Knight", "");
-initSection("Galacta Knight is a Kirby character who debuted in Kirby Super Star Ultra!");
-initHeader("Character by");
-initSection("FelixBlobDev");
+initPatch("About Dark Matter (Continued)", "");
+initHeader("Additional SFX from");
+initSection("-Various Kirby Games (Return to Dreamland, Super Star Ultra, Star Allies... etc.)");
+initSection("-Super Smash Bros Ultimate");
+initSection("-Bloodborne");
 initHeader("Compatible with");
-initSection("Steve, Link");
+initSection("Otto, Steve, Link, Hikaru, MT. Dedede Stadium, Soulbound Conflict, KF2 Buddy");
+initHeader("Credits");
+initSection("Kirby is owned by HAL Labratories. No copyright infingement was intended in making this. This is merely made out of love for the series.");
 
 // Recommended template for non-Sandbert characters (delete the other patches):
 
@@ -409,6 +419,10 @@ zero".
 */
 
 #define CORE_cheats
+
+CHEAT_FLY		= initCheat("Fly", [0, 1], ["Off", "On"], "Take flight. So balanced
+
+(hold shield to not fly)");
 
 
 
@@ -572,13 +586,13 @@ spr_custom_trummel_color = c_red;
 otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
 
 // Otto bobblehead body. (optional, don't really need this)
-otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
+//otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
 // Steve death message.
-steve_death_message = "Steve got cut in half";
+steve_death_message = "Steve got assimalated.";
 
 // Link spear. (determines which spear your char will drop the first time)
-link_spear_drop = 8;
+link_spear_drop = 7;
 
 /*
 Spear IDs:
@@ -594,7 +608,7 @@ Spear IDs:
 */
 
 // Palutena's Guidance (for RuberCuber's Pit character)
-// Works kind of similarly to MunoPhone.
+// Works kind of similarly to Trummel codecs.
 // initCodecPagePit(speaker, expression, voice, text);
 // List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
 

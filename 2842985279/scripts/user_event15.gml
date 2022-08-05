@@ -28,10 +28,10 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 32;
+num_alts = 9;
 
 // Whether or not to display a name for each alt.
-use_alt_names = true;
+use_alt_names = false;
 
 // Which color slot in your char's colors.gml to use for certain UI elements.
 // Type "noone" to make it always white.
@@ -41,38 +41,12 @@ alt_ui_recolor = 0;
 
 // The list of names for the alts, if enabled.
 alt_names = [
-	"Default",
-	"Light Aeon Hero",
-	"Dark Aeon Hero",
-	"Meta Knight",
-	"Parallel Meta Knight",
-	"Phantom Meta Knight",
-	"Dark Meta Knight",
-	"Morpho Knight",
-	"Morpho Knight EX",
-	"Kirby",
-	"King Dedede",
-	"Bandana Dee",
-	"Dark Matter",
-	"Zero Two",
-	"Void Termina",
-	"Magolor",
-	"Marx",
-	"Nova",
-	"Thunder God",
-	"Sun God",
-	"Android X",
-	"Wind God",
-	"Oarly",
-	"Octopus58",
-	"Poopoo Nite",
-	"Spike",
-	"Malkam",
-	"Charles",
-	"Necromancer",
-	"Yoda",
-	"Iron Knuckle",
-	"Galactic Monopoly",
+	"Vanilla",
+	"Blueberry",
+	"Strawberry",
+	"Mint",
+	"gray",
+	"Lemon",
 	];
 
 
@@ -93,7 +67,7 @@ MunoPhone Touch.
 
 // Character's name, used in a couple of places in the phone.
 // (if you delete this line, it'd just use the config.ini name)
-muno_char_name = "Galacta Knight";
+muno_char_name = "Unown";
 
 // Whether or not the phone sprite should recolor w/ your alt costume.
 // (set to "true" if you make a custom phone sprite in your char's colors)
@@ -114,7 +88,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -193,30 +167,52 @@ so that things like page breaks can work properly.
 
 #define CORE_tips
 
-initTip("Neutral Special: Revolution Swords");
-initWords("Galacta Knight summons floating swords. If tapped he only summons 2, but if held he can summon more, until he has swords all around him.
-The swords can't harm opponents until he launches them and will disappear if Galacta Knight gets hit however!");
+initTip("Unown Alphabet");
+initImage_ext(sprite_get("unown_chart"), 0, fa_left, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("Side Special: Crescent Shot");
-initWords("Galacta Knight blocks with his shield, absorbing damage from both projectiles and physical attacks. When releasing the button, he fires a projectile from his shield.
-Absorbing more damage makes the projectile more powerful!");
 
-initTip("Up Special: Flight");
-initWords("Galacta Knight takes flight, making for a great recovery move. Goes higher if the button is held, and if used on the ground it's faster and can be cancelled into attacks!");
+/*
+initTip("NSpecial: Kamehameha");
+initWords("This Sandbert's NSpecial is completely different from the normal version of the character: it's Goku's Kamehameha!");
+initWords("The longer it's charged, the more distance it travels. The more distance it has left to travel by the time it reaches the enemy, the more damage and knockback it deals.");
+initWords("If two Kamehamehas clash, you'll get into a beam struggle! Mash B to overpower your opponent.");
+initImage_ext(sprite_get("nspecial"), -4, fa_right, -1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("nspecial"), -4, fa_left, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("Down Special: Great Space-Time Killing Flash");
-initWords("Galacta Knight cuts open a rift in time and space. After a bit of time, the rift will open and fire a huge laser diagonally downward.
-It's a slow but very devastating move which can control a portion of the stage!
+initTip("FSpecial: Sandbert Delusion");
+initWords("Just like vanilla Sandbert, you can shorten the FSpecial by pressing B at the correct moment.");
+initWords("It's handy as a mixup when recovering!");
+initImage_ext(sprite_get("fspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-However, be aware that the rift will close if Galacta Knight loses a stock, gets parried, or takes a certain amount of damage (even while the laser is being fired)!");
+initTip("USpecial: Forbidden Flight");
+initWords("USpecial is significantly toned down from regular Sandbert: its flight has a set, short duration, and you're forced to end with the big hit.");
+initWords("On the bright side, you can now cancel the move into a wall jump! Also, its finishing hit is just as strong as before.");
+initImage_ext(sprite_get("uspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("Aerial Strongs");
-initWords("Galacta Knight can use strong attacks both in the air and on the ground! So you can consider his strong attacks to be additional aerials.
-While charging them, Galacta Knight will stall in the air slightly, until the attack is released.");
+initTip("DSpecial: Hexagon of Power");
+initWords("Sandbert's DSpecial can be canceled into a jump, but only if you successfully hit an opponent.");
+initWords("It's useful for combos, but maybe not as punish-safe as you'd expect based on its appearance.");
+initImage_ext(sprite_get("dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
-initTip("Forward Air: Clinging to walls");
-initWords("With FAir, Galacta Knight can cling to walls by stabbing it with his lance! After doing this, he can stay there for up to 2 seconds.
-While clinging, you can cancel it into anything, such as a jump, attack, or an airdodge.");
+initTip("FStrong: Burning Dropkick");
+initWords("During the charge of FStrong, Sandbert slides as if on ice. Get a running start to ambush a foe!");
+initImage_ext(sprite_get("fstrong"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+	
+initTip("Sandbert's Lore");
+initWords_ext("Chapter 1", fa_center, c_gray, 0, false);
+initWords("Sandbert, a son of the ruling family of the Firelands, is an experienced and hardened warrior. He has fought many wars for the Fire Capital, a bellicose nation that constantly seeks to expand its influence over neighbouring lands. His courage in battle has made him a hero among his people.");
+initWords("However, his straightforward character and unquestioning allegiance to the Fire Nation blind him at times. He is a reliable general on the field, but naive to the larger politics of Aether. In battle, Sandbert is equally forthright; he uses no weapons except for his razor-sharp claws and ability to control flame.");
+initWords_ext("Chapter 2", fa_center, c_gray, 0, false);
+initWords("When he first arrived in Water Town, the merchant capital of Aether, Sandbert was considered a dangerous nuisance and a criminal. Sandbert is a playful trickster, notorious for escaping even the most precarious of situations.");
+initWords("However, while the Water Merchants denounce Sandbert in public, they do not hesitate to call upon him when they need a situation dealt with quietly. Sandbert is sly and can infiltrate even the most secure strongholds. He can transform into water and confuse enemies with a spray of bubbles, making him the perfect candidate for stealth assignments.");
+initWords_ext("Chapter 3", fa_center, c_gray, 0, false);
+initWords("The youngest trainee in the history of the Air Academy, Sandbert has never lived by anyone's rules but his own. After graduating at the top of his class, he joined the Air Armada, the military force of Air Nation.");
+initWords("Within a year, Sandbert became renowned not just in Air Nation but across Aether as a fierce and unpredictable figher. However, among his superiors, he is more infamous for his brashness and arrogance than for his daring deeds. Currently an Aerial Ace for the Air Armada, Sandbert is wrecking havoc among the Armada's enemies and generals alike.");
+initWords_ext("Chapter 4", fa_center, c_gray, 0, false);
+initWords("Sandbert is a defender of the colossal Aetherian Forest. Deliberate and loyal, he is one of the infamous Wall Runners who patrol the Rock Wall. From their position atop the Wall, Sandbert and his fellow Runners defend both sides of the rock face and the forest below.");
+initWords("While normally slow because of their massive bodies, Wall Runners can curl up into balls and traverse the Wall at high speeds. Unlike other Wall Runners, Sandbert has the legendary ability to control the earth with his will. When in peril, Sandbert can summon the earth to aid him, and he repairs the Wall when it is under siege.");
+*/
+
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -255,74 +251,111 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.8", "4th August, 2022");
-initHeader("Fixes / Other Changes");
-initSection("- Fixed aerial c-stick smash attacks being unchargable if used in the opposite direction of the control stick, and the control stick taking priority in general when doing this");
+initPatch("1.2", "22 September, 2021");
+initHeader("MunoPhone Touch Firmware v2");
+initSection("Added the Endless Parry Utility.");
 
-initPatch("1.7", "26th July, 2022");
-initHeader("Fixes / Other Changes");
-initSection("- Fixed aerial c-stick smash attacks not turning Galacta Knight around if used in the opposite direction");
+initPatch("1.1", "20 September, 2021");
+initHeader("DStrong - Adjustments, Bugfixes");
+initSection("Angle 290 --> 280.
+Fixed hurtbox.");
 
-initPatch("1.6", "8th June, 2022");
-initHeader("Nerfs");
-initSection("- Reduced Jab3 knockback scaling a bit (1.0->0.9)");
-initHeader("Fixes / Other Changes");
-initSection("- Fixed phone tips using the wrong name for DSpecial, and updated some other stuff");
+initPatch("1.0", "19 September, 2021");
+initWords_ext("(Changes from Vanilla Sandbert)", fa_center, c_white, 0, false);
+initHeader("Stats - Nerfs");
+initSection("Most stats made identical to Zetterburn's.
+Prat land time 3 --> 10.");
+initHeader("NSpecial - Reworks");
+initSection("Replaced entirely with a Kamehameha.");
+initHeader("FSpecial - Adjustments, Nerfs, Buffs");
+initSection("Movement code retooled.
+Now has pratfall.
+Damage 6 --> 5.
+Endalg 16 --> 15.
+Can now be canceled into a wall jump.");
+initHeader("USpecial - Reworks, Nerfs, Buffs");
+initSection("Flight now lasts a fixed, much shorter amount of time, and cannot be canceled into pratfall.
+Flight period begins with a bit of initial upward speed, and can now go downward through platforms.
+Hitbox timings adjusted.
+Multihit damage 2 --> 1.
+Multihit active frames no longer leave blind spots.
+Finisher damage 8 --> 6.
+Finisher angle flipper 1 --> 8. (acts pretty much the same)
+Can now be canceled into a wall jump.");
+initHeader("DSpecial - Nerfs");
+initSection("Startup 1 --> 3.
+Can now be jump-canceled only on hit.
+Base knockback 10 --> 8.
+Base hitpause 3 --> 6.");
+initHeader("Jab - Buffs, Nerfs");
+initSection("Now ignores parry stun.
+Endlag 6 --> 9.
+Damage 8 --> 3.");
+initHeader("FTilt - Nerfs");
+initSection("Endlag 9 --> 12.
+Damage 9 --> 6.");
+initHeader("UTilt - Buffs, Nerfs");
+initSection("Hitbox width increased.
+Damage 5 --> 2.");
+initHeader("DTilt - Nerfs");
+initSection("Endlag 10 --> 12.
+Damage 7 --> 5.");
+initHeader("Dash Attack - Nerfs");
+initSection("Endlag 7 --> 10.
+Damage 6 --> 4.
+Hitbox size reduced.");
+initHeader("NAir - Nerfs, Adjustments");
+initSection("Final hit damage 5 --> 2.
+Final hit knockback growth 0.2 --> 0.4.
+Startup 4 --> 8.
+Endlag 7 --> 8.
+Landing lag 4 --> 5.");
+initHeader("FAir - Nerfs");
+initSection("Startup 4 --> 10.
+Endlag 8 --> 12.
+Landing lag 6 --> 7.
+Angle 30 --> 40.
+Base hitpause 6 --> 11.
+Knockback growth 0.25 --> 0.4.");
+initHeader("BAir - Nerfs");
+initSection("Endlag 7 --> 9.
+Landing lag 4 --> 7.
+Angle 30 --> 40.
+Base hitpause 6 --> 11.
+Knockback growth 0.25 --> 0.4.");
+initHeader("UAir - Nerfs");
+initSection("Damage 5 --> 2.
+Endlag 6 --> 9.");
+initHeader("DAir - Nerfs");
+initSection("Startup 9 --> 12.
+Landing lag 4 --> 9.
+Damage 18 --> 10.
+Base knockback 10 --> 7.
+Knockback growth 1.0 --> 0.8.");
+initHeader("FStrong - Nerfs");
+initSection("Damage 10 --> 8.
+Startup 12 --> 14.");
+initHeader("UStrong - Nerfs");
+initSection("Startup 7 --> 13.
+Knockback growth 1.2 --> 1.1.
+Base hitpause 8 --> 12.
+Hitpause growth 0.5 --> 0.6.");
+initHeader("DStrong - Nerfs");
+initSection("Damage 11 --> 9.
+Knockback growth 1.3 --> 0.65.
+Base hitpause 7 --> 10.");
 
-initPatch("1.5", "4th May, 2022");
-initHeader("Nerfs");
-initSection("- FAir sweetspot now pushes Galacta Knight a bit backwards from the hit, and the sourspot has a more vertical angle (361->65)");
-initSection("- UStrong has a bit less knockback when used in the air, compared to grounded (ground stats are the same as before)");
-initSection("- DStrong landing lag increased (+10f), and reduced the size of the landing hitbox a bit");
-
-initPatch("1.4", "27th April, 2022");
-initHeader("Nerfs");
-initSection("- DSpecial rift now disappears if Galacta Knight takes 25% or more damage while it's out");
-initSection("- UTilt now has more startup and endlag");
-initSection("- BAir has more landing lag (8->10)");
-
-initPatch("1.4", "24th April, 2022");
-initHeader("Buffs");
-initSection("- USpecial now has an epic windbox because epic");
-initHeader("Nerfs");
-initSection("- Tornado now disappears if Galacta Knight gets parried or hit");
-initSection("- Increased FAir landing lag (7->12) and endlag (12->16)");
-initSection("- Decreased BAir windbox kbs (1.2->1.0)");
-initSection("- Decreased NSpecial sword knockback when going upward (7->6.5 bkb, 0.8->0.7 kbs)");
-initHeader("Fixes / Other Changes");
-initSection("- Added rune L and rune K");
-initSection("- Adjusted NSpecial sword angles to only launch upward or spike if they go at higher vertical angles");
-initSection("- Fixed bug where NSpec, FSpec, UStrong, and DStrong effects wouldn't cancel properly if Galacta Knight was hit with a weak move that put him into grounded hitstun");
-
-initPatch("1.3", "23rd April, 2022");
-initHeader("Nerfs");
-initSection("- NSpecial now has a bit more startup before spawning the swords (10->16)");
-initSection("- FSpecial's shield hitbox is now smaller, making it block less behind the shield and above/below");
-initSection("- FSpecial can now fall off ledges (so you can push GK off a ledge if you hit his shield, for example)");
-initSection("- FSpecial is now slower if it hasnt already absorbed a projectile (15->20 startup, 20->25 endlag), making it worse for general zoning and also making it more punishable");
-initSection("- UStrong lightning now disappears if GK gets hit before the lightning properly comes out");
-initSection("- DAttack is now less active on both sweetspot and sourspot, and has more endlag on whiff (10->15, same frame data on hit however)");
-initHeader("Fixes / Other Changes");
-initSection("- Made more projectiles grabbable by Kewtians, and made the same projectiles also grabbable by Morshu (ex: NSpecial, FSpecial, FStrong");
-initSection("- Fixed some FSpecial hitboxes being reflectable, causing desyncs");
-
-initPatch("1.2", "23rd April, 2022");
-initHeader("Fixes / Other Changes");
-initSection("- Updated walkturn and dashturn a bit to look nicer");
-initSection("- Changed hit sfx of some sourspots to sound sharper (ex: DAir, FAir, DAttack) and less blunt");
-initSection("- Fixed NAir multihit vfx to be smaller and less flashy");
-
-initPatch("1.1", "22nd April, 2022");
-initHeader("Fixes / Other Changes");
-initSection("- Fixed UAir multihit vfx to be smaller and less flashy");
-initSection("- Fixed missing TL support being a bit broken (will add TL support at a later date)");
-
-initPatch("About Galacta Knight", "");
-initSection("Galacta Knight is a Kirby character who debuted in Kirby Super Star Ultra!");
-initHeader("Character by");
-initSection("FelixBlobDev");
+initPatch("About Sandbert", "");
+initWords("Sandbert was originally released as an overpowered April Fools' joke character, and was later used as a template Steam Workshop character - as an example of how to create a custom fighter.");
+initWords("This version of Sandbert, in addition to serving as the template for fighters that use the MunoPhone Touch, also features touched-up animations and a major balance patch.");
+initHeader("Originally developed by");
+initSection("Dan Fornace and/or his team of RoA developers");
+initHeader("Animation and balance edits by");
+initSection("Muno - byMuno.com");
+initHeader("Additional SFX from");
+initSection("Dragon Ball FighterZ");
 initHeader("Compatible with");
-initSection("Steve, Link");
+initSection("Trummel & Alto, Otto, Steve, Link, Goku");
 
 // Recommended template for non-Sandbert characters (delete the other patches):
 
@@ -410,6 +443,10 @@ zero".
 
 #define CORE_cheats
 
+CHEAT_FLY		= initCheat("Fly", [0, 1], ["Off", "On"], "Take flight. So balanced
+
+(hold shield to not fly)");
+
 
 
 /*
@@ -427,46 +464,37 @@ Customise the Frame Data guide.
 
 // Reorder this list to change the order that moves appear in the guide!
 phone.move_ordering = [
-	AT_JAB,
-	AT_FTILT,
-	AT_DTILT,
-	AT_UTILT,
-	AT_DATTACK,
-	AT_FSTRONG,
-	AT_USTRONG,
-	AT_DSTRONG,
-	AT_FSTRONG_2,
-	AT_USTRONG_2,
-	AT_DSTRONG_2,
-	AT_NAIR,
-	AT_FAIR,
-	AT_BAIR,
-	AT_UAIR,
-	AT_DAIR,
-	AT_NSPECIAL,
-	AT_NSPECIAL_AIR,
-	AT_NSPECIAL_2,
-	AT_FSPECIAL,
-	AT_FSPECIAL_AIR,
-	AT_FSPECIAL_2,
-	AT_USPECIAL,
-	AT_USPECIAL_GROUND,
-	AT_USPECIAL_2,
-	AT_DSPECIAL,
-	AT_DSPECIAL_AIR,
-	AT_DSPECIAL_2,
-	AT_NTHROW,
-	AT_FTHROW,
-	AT_UTHROW,
-	AT_DTHROW,
-	AT_EXTRA_1,
-	AT_EXTRA_2,
-	AT_EXTRA_3,
-	AT_TAUNT,
-	AT_TAUNT_2,
-	AT_PHONE,
+	1,
 	2,
 	3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    AT_DSPECIAL_2,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    AT_TAUNT,
+    28,
+    AT_EXTRA_1,
 	39,
 	42,
 	43,
@@ -575,10 +603,10 @@ otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
 otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
 // Steve death message.
-steve_death_message = "Steve got cut in half";
+steve_death_message = "Steve got canceled on Twitter";
 
 // Link spear. (determines which spear your char will drop the first time)
-link_spear_drop = 8;
+link_spear_drop = 3;
 
 /*
 Spear IDs:
