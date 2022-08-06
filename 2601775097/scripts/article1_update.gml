@@ -31,6 +31,10 @@ switch (state)
         if (alt_cur != 14 && alt_cur != 15) image_alpha = 0.8;
         else image_alpha = 1;
 
+        image_index = artc_image_index;
+
+        if (alt_cur == 9 && state_timer == 1) sound_play(sound_get("sfx_soul")); //undertale reference
+
         //records the position of the article for as long as it's active
         if (state_timer % 5 == 0) array_push(player_id.accel_pos, [x, y]);
 

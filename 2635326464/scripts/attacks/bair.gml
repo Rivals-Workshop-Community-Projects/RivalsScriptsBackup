@@ -29,8 +29,8 @@ set_hitbox_value(AT_BAIR, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -52);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -31);
-set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 52);
-set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 22);
+set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 48);
+set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 20);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 361);
@@ -180,5 +180,5 @@ set_hitbox_value(AT_BAIR, 16, HG_HITBOX_X, -52);
 set_hitbox_value(AT_BAIR, 16, HG_HITBOX_Y, -31);
 set_hitbox_value(AT_BAIR, 16, HG_HITBOX_GROUP, 6);
 
-set_attack_value(AT_BAIR, AG_MUNO_ATTACK_MISC_ADD, "Multihit. Also, not a projectile. Has 10 frames of cooldown.");
+set_attack_value(AT_BAIR, AG_MUNO_ATTACK_MISC_ADD, "Multihit. Also, not a projectile.");
 set_attack_value(AT_BAIR, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH)));

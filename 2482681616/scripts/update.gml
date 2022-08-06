@@ -41,7 +41,7 @@ with (pHitBox)
 }
 
 //Slow Start countdown
-if (state != PS_DEAD && state != PS_RESPAWN && state != PS_SPAWN)
+if (state != PS_DEAD && state != PS_RESPAWN && state != PS_SPAWN && !respawn_taunt)
 {
     if (slowstart_timer > 0 && !training_toggle)
         slowstart_timer --;

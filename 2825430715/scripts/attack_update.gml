@@ -1,6 +1,6 @@
 ///
 
-threshold = 150 - (hasbody*15) - (hasmind*15) - (hasbalance*20)
+
 
 ltimer = get_window_value(attack, window, AG_WINDOW_LENGTH)
 
@@ -279,7 +279,8 @@ switch attack {
 		
 		
 	case AT_TAUNT:
-	
+	can_shield = true 
+
 	invince_time = 0
     invincible = false
     
@@ -790,14 +791,29 @@ switch attack {
 	  
 	   if window_timer == 8*5 {
 	 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.8,.8)
+	 	take_damage(player,-1,10)
+                with snapplayer {
+                  take_damage(player,-1,15)
+                  spawn_hit_fx(x,y - 30,305)
+                }
 	  }
 	  
 	  if window_timer == 10*5 {
 	 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.8,.9)
+	 	take_damage(player,-1,10)
+                with snapplayer {
+                  take_damage(player,-1,15)
+                  spawn_hit_fx(x,y - 30,305)
+                }
 	  }
 	  
 	  if window_timer == 12*5 {
 	 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.8,1)
+	 	take_damage(player,-1,10)
+                with snapplayer {
+                  take_damage(player,-1,15)
+                  spawn_hit_fx(x,y - 30,305)
+                }
 	  }
 	  
 	  if window_timer == 14*5 {
@@ -805,13 +821,16 @@ switch attack {
 	 	sound_play(sound_get("snap"),false,noone,1,1)
 	 	sound_play(sound_get("RI"),false,noone,1,1.3)
 	 	sound_play(sound_get("RZ"),false,noone,.7,0.2);
+	 	take_damage(player,-1,3)
 	 	if get_player_color(player) == 16{
-             sound_play(sound_get("drip")) 
-        }
+                    sound_play(sound_get("drip")) 
+                }  
 	 	shake_camera(6,4)
 	 	with snapplayer {
 	 		spawn_hit_fx(x,y - 30, 306)
-	 		turningtodust = 600
+                        take_damage(player,-1,15)
+                        spawn_hit_fx(x,y - 30,305)
+	 		turningtodust = 1200
 	 		turningtodustID = other
 	 	}
 	  }
@@ -1019,8 +1038,9 @@ switch attack {
 	break ;
 	
   case AT_FSTRONG:
-  
+  /*
    if window <= 3 {
+   	
    	 with asset_get("pHitBox") {
 	
 		nearbyhitbox = collision_circle( x-12, y+30, 20 + (image_xscale*10 + image_yscale*10) + 5*other.window,other, true, true ) 
@@ -1069,10 +1089,11 @@ switch attack {
 	    
 	} 
    }
-   
+   */
    if window == 1 {
    	
    	if window_timer == 1 {
+   		threshold = 150 - (hasbody*10) - (hasmind*10) - (hasbalance*10)
    		set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
    	}
    	
@@ -1362,14 +1383,14 @@ if attack == AT_FSPECIAL && !hitpause{
         fspe = 1
         window = 3 
         window_timer = 0
+        fhsp = 8*spr_dir
         
-        
-        if (joy_pad_idle){
-		    fhsp = 8*spr_dir
-		}else{
-		    fhsp = (8 * cos(angle))
-		    fvsp = (8 * sin(angle));
-		}
+        //if (joy_pad_idle){
+		//    
+		//}else{
+		//    fhsp = (8 * cos(angle))
+		//    fvsp = (8 * sin(angle));
+		//}
 		
 		
     }
@@ -1458,7 +1479,7 @@ if attack == AT_FSPECIAL && !hitpause{
               depth = hit_player_obj.depth + 1
             }
             
-            if (state_timer > 10 && (!free or y > room_height/2 + 300)) {
+            if (state_timer > 10 && (!free or y > room_height - 100)) {
                 hit_player_obj.y = y 
                  prat_land_time = 16
 
@@ -1467,12 +1488,12 @@ if attack == AT_FSPECIAL && !hitpause{
                      sound_play(sound_get("SpaceCut"));
                      spawn_hit_fx(x,y,SC)
                      x = room_width/2 
-                     y = room_height/2 - 300
+                     y = 0
                      hit_player_obj.x = x
                     hit_player_obj.y = y
                      spawn_hit_fx(x,y,SC)
                       with hit_player_obj {
-                     	take_damage(player,-1,10)
+                     	take_damage(player,-1,8)
                      }
                  }
                  
@@ -1555,7 +1576,7 @@ if attack == AT_USPECIAL && !hitpause{
         set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 12);
     }
     
-    prat_land_time = 0 + (teletime*8)
+    prat_land_time = 10 + (teletime*4)
     
     if teletime <= 1 {
         set_num_hitboxes(AT_USPECIAL, 0);
@@ -1583,13 +1604,16 @@ if attack == AT_USPECIAL && !hitpause{
     
     if window == 4 {
         can_wall_jump = true
+        hsp /= 1.1
     }
     if window = 3 {
         if window_timer == 12 {
                 if teletime <= 1 {
                    } else { 
                        shake_camera(2, 6)
-                       spawn_hit_fx(x,y-46,SC)
+                       tfx = spawn_hit_fx(x,y-46,SC)
+                       tfx.spr_dir = 0.66*spr_dir 
+                       tfx.image_yscale = 0.66
                        sound_play(sound_get("SpaceCut"));
                    }
         }
@@ -1609,7 +1633,12 @@ if attack == AT_USPECIAL && !hitpause{
 
 if attack == AT_NSPECIAL && !hitpause{
 	can_fast_fall = false
-	
+	if state_timer <= 10 {
+		super_armor = true 
+		hitpause = false 
+	} else if state_timer == 11 {
+		super_armor = false 
+	}
    	if window == 1 && window_timer == 1 && !hitpause {
    	   sound_play(asset_get("sfx_spin"),false,noone,1,1);
        sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1.25);
@@ -1651,7 +1680,7 @@ if attack == AT_NSPECIAL && !hitpause{
 		
 		shake_camera(4,4)
 		if move_cooldown[AT_FTHROW] == 0 {
-			create_hitbox(AT_DTHROW,1, x + 88*spr_dir, y - 46)
+			//create_hitbox(AT_DTHROW,1, x + 88*spr_dir, y - 46)
 		}
 	   spawn_hit_fx (x + 88*spr_dir, y, ptgone)
 	}
@@ -1677,9 +1706,14 @@ if attack == AT_DSPECIAL && !hitpause{
     	has_hit_player = true 
     }
     
-	if move_cooldown[AT_DSPECIAL] == 118 && window = 1 {
-		window = 2
-		window_timer = 0
+	if move_cooldown[AT_DSPECIAL] == 118 {
+		if free {
+	         		vsp = -6
+	    }
+		pratfx = spawn_hit_fx(x,y - 40,306)
+		pratfx.pause = 3
+		set_state(PS_PRATFALL)
+		prat_land_time = 90
 		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.8,1.25);
 	}
 	can_fast_fall = false 

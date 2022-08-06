@@ -13,4 +13,13 @@ if (attack == AT_JAB && window == 6) {
 		enemy_hitboxID.hsp *= -1;
 	}
 }
-    sound_stop(sfx_star_allies_gooey_flicker_lick)
+sound_stop(sfx_star_allies_gooey_flicker_lick)
+
+if (attack == AT_DSPECIAL && (state == PS_HITSTUN || state == PS_HITSTUN_LAND)){
+	if(instance_exists(grabbed_player_obj)){
+		with(grabbed_player_obj){
+			visible = true;
+		}
+		grabbed_player_obj = noone;
+	}
+}

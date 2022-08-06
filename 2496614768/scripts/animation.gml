@@ -17,6 +17,6 @@ if timebreak or shock >= 1 {
 if (state == PS_PRATLAND) {
     
     sprite_index = sprite_get("landinglag");
-    image_index = min(state_timer/8,2);
+    image_index = min(state_timer/round(prat_land_time/4),3);
     
 }

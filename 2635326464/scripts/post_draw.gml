@@ -1,6 +1,3 @@
-muno_event_type = 4;
-user_event(14);
-
 // Golden shroom
 
 if (attack == AT_NSPECIAL_2){
@@ -29,18 +26,10 @@ if (attack == AT_NSPECIAL_2){
 	}
 }
 
-//Shell missing frame
-
-if (attack == AT_FSTRONG && state == PS_ATTACK_GROUND){
-	if(window == 2 && window_timer < 1){
-		draw_sprite_ext(sprite_get("green_shell"), 0, x+spr_dir*2, y-46 ,1*spr_dir,1,0,-1,1);
-	}
-}
-
 //Beeg rune
 
 
 if has_rune("L") {
-	draw_sprite_ext(sprite_index, image_index, x, y ,2*spr_dir,2,0,c_white,1);	
+	draw_sprite_ext(sprite_index, image_index, x, y ,4*spr_dir,4,0,c_white,1);	
 }
 	

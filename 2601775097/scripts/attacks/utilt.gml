@@ -29,8 +29,8 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED, -10.5);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.4);
+//set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+//set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.4);
 
 window_num ++; //endlag
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
@@ -38,8 +38,8 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10); //8
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
-set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.3);
+//set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+//set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.3);
 
 //amount of hitboxes
 set_num_hitboxes(atk, 2);

@@ -1,5 +1,6 @@
 intro = 0
 introtimer = -1
+noparryedit = 0
 
 finisher = 0
 finishercd = 0
@@ -25,6 +26,7 @@ halox = 0
 ohalo = 0 
 halo = 0
 huddraw = 0
+zvoice = 0
 
 introhit = 0
 
@@ -69,7 +71,7 @@ swallowed = 0
 introTimer = -4;
 introTimer2 = 0;
 
-zvoice = 0;
+
 
 zbayo = 0
 

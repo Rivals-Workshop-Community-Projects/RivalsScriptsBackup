@@ -132,7 +132,7 @@ if (free == false){
 }
 if (instance_exists(standby_suit)){
     suit_power = standby_suit.suit_power;
-    if (place_meeting(x, y, cockpit_detector) && standby_suit.state == 0 && standby_suit.exist_timer > 12 && standby_suit.free == false && state_cat != SC_GROUND_COMMITTED && state_cat != SC_AIR_COMMITTED){
+    if (place_meeting(x, y, cockpit_detector) && standby_suit.state == 0 && standby_suit.exist_timer > 12 && standby_suit.free == false && state_cat != SC_GROUND_COMMITTED && state_cat != SC_AIR_COMMITTED && state != PS_CRYSTALIZED){
     	suit_out = false;
         spawn_hit_fx(x, y - 16, 144);
         sound_play(sound_get("sfx_suit_up"));

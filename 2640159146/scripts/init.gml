@@ -96,8 +96,6 @@ vfx_example = hit_fx_create(spr_example, 54);
 // Variables
 rainbow_color = c_white; // (used for one of Sandbert w/ a Phone's cheat codes)
 
-
-
 // Animation Info
 
 // Misc. animation speeds
@@ -250,8 +248,3 @@ target = noone;
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
-
-// Muno template: (don't change)
-
-user_event(14); // General init
-phone_practice = false;

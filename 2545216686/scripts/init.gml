@@ -125,7 +125,7 @@ max_fall = 13; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
 gravity_speed = .48;
 hitstun_grav = .48;
-knockback_adj = 1.15; //the multiplier to KB dealt to you.
+knockback_adj = 1.1; //the multiplier to KB dealt to you.
 
 land_time = 4; //normal landing frames
 prat_land_time = 20;
@@ -220,34 +220,3 @@ set_victory_theme(victory_theme);
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
-
-//MunoPhone Sprites
-//spr_alts = sprite_get("alts");
-if (get_player_color( player ) != 0){
-	spr_nspec = sprite_get("nspecial");
-	spr_energy = sprite_get("energy_shot");
-	spr_fspec = sprite_get("fspecial");
-	spr_fspec2 = sprite_get("fspecial_2");
-	spr_uspec = sprite_get("uspecial");
-	spr_robot_walk = sprite_get("robot_walk");
-	spr_dtilt_muno = sprite_get("dtilt");
-	spr_ustronk = sprite_get("ustrong");
-} else {
-	spr_nspec = sprite_get("nspecial_muno");
-	spr_energy = sprite_get("energy_shot");
-	spr_fspec = sprite_get("fspecial_muno");
-	spr_fspec2 = sprite_get("fspecial_2_muno");
-	spr_uspec = sprite_get("uspecial_muno");
-	spr_robot_walk = sprite_get("robot_walk_default");
-	spr_dtilt_muno = sprite_get("dtilt_muno");
-	spr_ustronk = sprite_get("ustrong_muno");
-}
-
-//MunoPhone Cheat Code Vars
-phone_blurs = 0
-phone_flight = 0
-phone_dive = 0
-
-//MunoPhone Trigger
-muno_event_type = 0;
-user_event(14);

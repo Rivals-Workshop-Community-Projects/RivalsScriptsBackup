@@ -75,3 +75,29 @@ if (draw4 > 0){
 if (draw5 > 0){
     draw5 -= 0.08;
 }
+
+print(gooeyPPLHit);
+
+with (oPlayer){	
+	//print(get_char_info(player, INFO_STR_NAME) + string(visible));
+	if(url != 2840242565){
+		if(gooeyOpponentShouldBeVisisbleTimer != 0 && gooeyOpponentShouldBeVisisbleTimer < 15){
+			hitstop = 1;
+			if(state != PS_HITSTUN_LAND && state != PS_HITSTUN){
+				gooeyOpponentShouldBeVisisbleTimer--;
+			}
+			if(state == PS_HITSTUN_LAND || state == PS_HITSTUN){
+				gooeyOpponentShouldBeVisisbleTimer--;
+			}
+			visible = false;
+		} else if(gooeyOpponentShouldBeVisisbleTimer != 0 && gooeyOpponentShouldBeVisisbleTimer > 15){
+			//print(get_char_info(player, INFO_STR_NAME) + " needs help");
+			visible = false;
+			gooeyOpponentShouldBeVisisbleTimer = 0;
+			hitstop = 0;
+			set_state(PS_IDLE_AIR);
+		}
+		//print(get_char_info(player, INFO_STR_NAME) + string(gooeyOpponentShouldBeVisisbleTimer));
+		//print(get_char_info(player, INFO_STR_NAME) + string(state_timer));
+	}
+}

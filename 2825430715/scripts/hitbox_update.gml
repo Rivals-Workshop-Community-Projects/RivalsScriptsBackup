@@ -119,6 +119,8 @@ if attack == AT_DTHROW && hbox_num == 4 {
 		hit_priority = 0
 		image_xscale = 0
 	}
+	
+
 	}
 }
 
@@ -153,7 +155,7 @@ if attack == AT_DTHROW && hbox_num == 1 {
 			attack = AT_FSPECIAL
 			window = 4
 			window_timer = 1
-			vsp = -9
+			vsp = -9              
 		}
 		
     		spawn_hit_fx(x,y + 30,ptgone)
@@ -170,14 +172,38 @@ if attack == AT_DTHROW && hbox_num == 1 {
 	with (pHitBox) {
 		hitdetect = collision_circle( x, y , 44, other, true, true ) 
 	if hitdetect != noone && type == 1 && player_id != other.player_id && hit_priority > 0 {
-    	with other {
-    		
-    		spawn_hit_fx(x,y + 30,ptgone)
-    		sound_stop(asset_get("sfx_clairen_tip_strong"))
-    		sound_stop(asset_get("sfx_ori_energyhit_medium"))
-    		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.8,0.8)
-            sound_play(asset_get("sfx_clairen_tip_strong"))
+           hitbox_lifetime = -5
+           image_xscale += .2
+           image_yscale += .2       
+            with player_id {
+               invincible = true 
+               invince_timer = 15 
+               old_vsp = vsp 
+               old_hsp = hsp
+               hitpause = true 
+               hitstop = 20
+            }
+
+    	    with other {       		
+    		spawn_hit_fx(x,y - 10,SC)
+    		sound_stop(sound_get("SpaceCut"))
+    		sound_play(sound_get("SpaceCut"),false,noone,1,1.4)
             destroyed = true
+            disx = other.player.x - x
+            disy = other.player.y - y
+
+            with other.player_id {
+                       if get_attack_value(attack, AG_CATEGORY) == 0 {
+                         set_attack_value(attack, AG_CATEGORY, 2);
+                         resettingtype = true 
+                       }
+ 	          x = floor(other.player_id.x - (other.disx))
+                  y = floor(other.player_id.y - (other.disy))
+            }
+            rafx = spawn_hit_fx(other.player_id.x,other.player_id.y - 40,SC)
+            rafx.depth = -7
+            rafx.spr_dir = -0.8*spr_dir 
+            rafx.image_yscale = -0.8
     	}
     }
 	}
@@ -211,8 +237,8 @@ if attack == AT_DTHROW && hbox_num == 1 {
     					ptprep = spawn_hit_fx(other.x + 20 - random_func(2,40,true),other.y + 50 - random_func(1,50,true) ,ptgone)
     					ptprep.spr_dir = 0.5*spr_dir
     					ptprep.image_yscale = 0.5
-    					var angle = point_direction(other.x, other.y, hit_player_obj.x + hit_player_obj.hsp + hit_player_obj.old_hsp, 
-                        hit_player_obj.y - 40 + hit_player_obj.vsp + hit_player_obj.old_vsp);
+    					var angle = point_direction(other.x, other.y, hit_player_obj.x + hit_player_obj.hsp*2 + hit_player_obj.old_hsp*2, 
+                        hit_player_obj.y - 40 + hit_player_obj.vsp*2 + hit_player_obj.old_vsp*2);
                         
                         other.hsp += lengthdir_x(1.2, angle)
                         other.vsp += lengthdir_y(1.2, angle)
@@ -220,6 +246,7 @@ if attack == AT_DTHROW && hbox_num == 1 {
                         other.hsp = clamp(other.hsp, -5, 5);
                         other.vsp = clamp(other.vsp, -5, 5);
     				}
+    				
     				
                     
     			}

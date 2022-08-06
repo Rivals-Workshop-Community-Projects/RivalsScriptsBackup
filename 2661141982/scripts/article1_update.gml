@@ -6,9 +6,6 @@ if (glow_timer > glow_int)
 
 light_timer = min(light_timer+1 - (2*(state > 2)),light_max_timer)
 
-if (state == 1 and state_timer > 250)
-    glow_timer++;
-
 lock_state = false;
 
 if(get_gameplay_time() % 4 == 0)
@@ -37,6 +34,9 @@ switch(state)
             create_hitbox(AT_NSPECIAL_2, 2, x+2, y+2);
             setState(3);
         }
+        else if (state_timer > 250)
+            glow_timer++;
+
         hitbox_detection();
         break;
     case 2: //get hit and explodes (by anglara)

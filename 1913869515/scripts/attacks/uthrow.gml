@@ -92,7 +92,7 @@ set_hitbox_value(AT_UTHROW, 3, HG_EFFECT, 9);
 
 
 set_hitbox_value(AT_UTHROW, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_UTHROW, 2, HG_WINDOW, 3);
+set_hitbox_value(AT_UTHROW, 2, HG_WINDOW, 0);
 set_hitbox_value(AT_UTHROW, 2, HG_WINDOW_CREATION_FRAME, 20);
 set_hitbox_value(AT_UTHROW, 2, HG_LIFETIME, 10);
 set_hitbox_value(AT_UTHROW, 2, HG_HITBOX_X, 0);

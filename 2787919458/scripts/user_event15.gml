@@ -297,6 +297,21 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.16", "25th July, 2022");
+
+initHeader("Buffs");
+initSection("- Added 7 new screams
+- Made Sanic able to grab non transcendent projectiles with Bair. If you don't want this set 'MorshuCanGrab' to false in your projectile.
+- Bair now throws projectiles with more force.");
+
+initHeader("Fixes / Other Changes");
+initSection("- Fixed an issue with the parry sound running on load.
+- Fixed an issue that wouldn't reset Sanic's bair category (allowing it to be used on the ground)
+- Hopefully fixed an issue that would cause 'Come on, Step it up' to be overlayed with the current intro sound.
+- Made BAir's grab hitboxes ignore projectiles so they don't break if not transcendent.
+- Added back the old method to disable MLG mode as online the CSS button doesn't work.
+- If a hitbox is set to ignore projectiles Dorito will not be hit by it.")
+
 initPatch("1.15", "25th July, 2022");
 
 initHeader("Buffs");

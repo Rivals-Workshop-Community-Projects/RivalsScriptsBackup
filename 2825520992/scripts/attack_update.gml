@@ -317,6 +317,10 @@ switch(attack){
 	
 	
 	case AT_FSPECIAL:
+			if (window >= 5 && window <= 9 && parasol_hit){
+				hit_player_obj.x = x;
+		        hit_player_obj.y = y - 35;
+			}
 		switch(window){
 			case 1:
 				parasol_spear = false;
@@ -371,6 +375,7 @@ switch(attack){
 					hit_player_obj.x -= 5*spr_dir;
 				}
 			}
+			
 			break;
 		break;
 		
@@ -680,7 +685,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
 	default: 
@@ -703,5 +708,6 @@ newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+
 
 

@@ -86,8 +86,8 @@ switch(state){
 					with(oPlayer){
 						if(self != other){
 							if(url == 2397064593){
-								sound_stop(sound_get("step_it_up"));								
 								with(other){
+									sound_stop(sound_get("step_it_up"));
 									sound_play(sound_get("one_polygon"));
 								}
 							}else{
@@ -107,8 +107,8 @@ switch(state){
 									sound_play(sound_get("shadow_small_dick"));
 								}
 							}else if("sanic_uspec_count" in self && get_player_color(player) == 8 || (url == 2128232080 || url == 2545216686)){
-								sound_stop(sound_get("step_it_up"));								
 								with(other){
+									sound_stop(sound_get("step_it_up"));
 									sound_play(sound_get("miss_wife"));
 								}
 							}else{
@@ -123,13 +123,13 @@ switch(state){
 					with(oPlayer){
 						if(self != other){
 							if("sanic_uspec_count" in self && get_player_color(player) == 8 || (url == 2128232080 || url == 2545216686)){
-								sound_stop(sound_get("step_it_up"));
 								with(other){
+									sound_stop(sound_get("step_it_up"));
 									sound_play(sound_get("are_you_my_mom"));
 								}
 							}else if("sanic_uspec_count" in self && get_player_color(player) == 0 || (string_count("sonic", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0)){
-								sound_stop(sound_get("step_it_up"));
 								with(other){
+									sound_stop(sound_get("step_it_up"));
 									sound_play(sound_get("shut up you stupid bitch"));
 								}
 							}else{

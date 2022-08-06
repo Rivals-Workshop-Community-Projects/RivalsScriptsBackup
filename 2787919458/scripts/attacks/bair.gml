@@ -53,6 +53,7 @@ set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT, 9);
 set_hitbox_value(AT_BAIR, 1, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_BAIR, 1, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 2);
@@ -106,3 +107,4 @@ set_hitbox_value(AT_BAIR, 4, HG_HITBOX_Y, -26);
 set_hitbox_value(AT_BAIR, 4, HG_WIDTH, 130);
 set_hitbox_value(AT_BAIR, 4, HG_HEIGHT, 70);
 set_hitbox_value(AT_BAIR, 4, HG_PRIORITY, 0);
+set_hitbox_value(AT_BAIR, 4, HG_IGNORES_PROJECTILES, 1);

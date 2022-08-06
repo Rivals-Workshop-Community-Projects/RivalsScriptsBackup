@@ -14,3 +14,27 @@ if  (get_player_color(player) == 24) {
     set_article_color_slot( 5, 0, 0, 0, 0); 
     }
 }
+
+if get_player_color( player ) != 7 {
+
+if(valley_outline){
+   outline_color=[103, 22, 247] 
+}
+
+if(!valley_outline){
+   outline_color=[0, 0, 0]
+}
+
+}
+
+if(get_player_color( player ) == 7){
+
+if(valley_outline){
+   outline_color=[230, 188, 255] 
+}
+
+if(!valley_outline){
+   outline_color=[153, 19, 255]
+}
+
+}

@@ -5,9 +5,6 @@
  		basic_animations(); //correct the idle, walk, and dash animations
 	}
 
-	if has_rune("L") {
-	}
-
 //Fspecial trail
 for(var i = array_length_1d(blur) - 1; i > 0; i--) {
         blur[@ i] = blur[i - 1];
@@ -17,8 +14,8 @@ for(var i = array_length_1d(blur) - 1; i > 0; i--) {
         image_index,
         x, //Pode deixar só x dependendo da posição que ficar
         y,
-        image_xscale,
-        image_yscale,
+        image_xscale*2,
+        image_yscale*2,
         image_angle,
         c_white,
         .2,
@@ -33,8 +30,8 @@ for(var i = array_length_1d(blur2) - 1; i > 0; i--) {
         image_index,
         x, //Pode deixar só x dependendo da posição que ficar
         y,
-        image_xscale,
-        image_yscale,
+        image_xscale*2,
+        image_yscale*2,
         image_angle,
         c_white,
         .35,

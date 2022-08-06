@@ -8,7 +8,7 @@ set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 //first hit
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 5);
-set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 4);
@@ -33,6 +33,7 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 4, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 4, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_window_value(AT_UAIR, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 

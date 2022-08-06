@@ -1,5 +1,8 @@
 ///
 
+if attack == AT_FTHROW {
+    plasma_safe = true 
+}
 shsp = 0
 svsp = 0
 

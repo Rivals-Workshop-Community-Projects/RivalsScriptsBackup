@@ -108,11 +108,12 @@ with (pHitBox){
 
 //Fspecial and Dspecial interactions
 	    player_id.player_in_smog = false;
-	playerdetect = collision_circle(x , y - 40, 90, oPlayer, false, true);
+	playerdetect = collision_circle(x , y - 40, 90, oPlayer, false, false);
 	if (playerdetect != noone && instance_exists(playerdetect)){
 	    	with(playerdetect){
 	    		if("isHasBrainDamage" in self){
 	    	 player_in_smog = true;
+	    	 //init_shader();
 	    	 
 	    	 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	    	 if(attack == AT_FSPECIAL){
@@ -148,10 +149,11 @@ with (pHitBox){
 	    	}
 	    }
 	}	player_id.player_in_smog = false;
-	playerdetect = collision_circle(x , y - 40, 90, player_id, false, true);
+	playerdetect = collision_circle(x , y - 40, 90, player_id, false, false);
 	if (playerdetect != noone && instance_exists(playerdetect)){
 	    	with(playerdetect){
 	    	 player_in_smog = true;
+	    	 //init_shader();
 	    	 
 	    	 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	    	 if(attack == AT_FSPECIAL){
@@ -185,6 +187,9 @@ with (pHitBox){
 	    				}
 	    			}
 	    }
+	}if(!collision_circle(x , y - 40, 90, self, false, false)){
+			player_id.player_in_smog = false;
+			//init_shader();
 	}
 	
 	//poison cloud
@@ -235,7 +240,7 @@ with (pHitBox){
 	//get destroyed
     with (asset_get("pHitBox")){
     if (place_meeting(x,y,other.id) and player_id != other.player_id && (!"isHasBrainDamage" in player_id)){
-    	if(hitpause > 0 && hit_priority > 0){
+    	if(hit_priority != 0 && hitpause != 0){
         other.state = 2;
         other.state_timer = 0;
     		}
@@ -271,6 +276,7 @@ if (place_meeting(x, y, asset_get("plasma_field_obj"))) {
 if (state == 2){
 	if(state_timer = 1){
 		player_id.destroy_smog = false;
+		player_id.player_in_smog = false;
 		sound_play(asset_get("sfx_hod_steam_level1"));
 	}if(state_timer = 48){
     instance_destroy();
@@ -349,11 +355,12 @@ with (pHitBox){
 
 //Fspecial and Dspecial interactions
 	    player_id.player_in_smog = false;
-	playerdetect = collision_circle(x , y - 40, 90, oPlayer, false, true);
+	playerdetect = collision_circle(x , y - 40, 90, oPlayer, false, false);
 	if (playerdetect != noone && instance_exists(playerdetect)){
 	    	with(playerdetect){
 	    		if("isHasBrainDamage" in self){
 	    	 player_in_smog = true;
+	    	 //init_shader();
 	    	 
 	    	 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	    	 if(attack == AT_FSPECIAL){
@@ -389,10 +396,11 @@ with (pHitBox){
 	    		}
 	    }
 	} player_id.player_in_smog = false;
-	playerdetect = collision_circle(x , y - 40, 90, player_id, false, true);
+	playerdetect = collision_circle(x , y - 40, 90, player_id, false, false);
 	if (playerdetect != noone && instance_exists(playerdetect)){
 	    	with(playerdetect){
 	    	 player_in_smog = true;
+	    	 //init_shader();
 	    	 
 	    	 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	    	 if(attack == AT_FSPECIAL){
@@ -426,6 +434,10 @@ with (pHitBox){
 	    				}
 	    			}
 	    }
+	}
+		if(!collision_circle(x , y - 40, 90, self, false, false)){
+			player_id.player_in_smog = false;
+			//init_shader();
 	}
 		
 		//Become Vunerable

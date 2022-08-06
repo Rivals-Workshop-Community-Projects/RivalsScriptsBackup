@@ -9,6 +9,7 @@ switch (attack)
         break;
     case AT_UTILT:
         can_fast_fall = false;
+        hsp = clamp(hsp, -3, 3);
         break;
     case AT_NAIR:
         var nair_cancel_time = 18; //smaller number means the delay is bigger

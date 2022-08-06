@@ -19,8 +19,8 @@ else if my_hitboxID.attack == AT_FSPECIAL and my_hitboxID.hbox_num < 5 and !hit_
 }
 else if my_hitboxID.attack == AT_USTRONG and my_hitboxID.hbox_num < 3 and !hit_player_obj.clone
 {
-    hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*30),0.6)
-    hit_player_obj.y = lerp(hit_player_obj.y,y-50+vsp,0.4)
+    hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*30),0.8)
+    hit_player_obj.y = lerp(hit_player_obj.y,y-50+vsp,0.8)
 }
 else if my_hitboxID.attack == AT_DATTACK and my_hitboxID.hbox_num == 2 and !hit_player_obj.clone
 {

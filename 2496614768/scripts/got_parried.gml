@@ -7,6 +7,7 @@ inactive = 150
 
 } else {
     
-    parry_lag = 0;
     
 }
+
+prat_land_time = 60

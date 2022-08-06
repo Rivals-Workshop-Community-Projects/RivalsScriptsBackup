@@ -80,7 +80,9 @@ sprite_change_offset("dstrong_hit", 150, 182);
 
 sprite_change_offset("dspecial_air", 150, 182);
 
-
+sprite_change_offset("rune_proj1", 150, 182);
+sprite_change_offset("rune_proj2", 150, 182);
+sprite_change_offset("rune_proj3", 150, 182);
 
 
 

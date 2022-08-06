@@ -41,6 +41,7 @@ sprite_change_offset("fair", 80, 126);
 sprite_change_offset("bair", 80, 126);
 sprite_change_offset("uair", 80, 126)
 sprite_change_offset("dair", 64, 94);
+sprite_change_offset("dspecial_air", 64, 100);
 sprite_change_offset("fstrong", 80, 158);
 sprite_change_offset("ustrong", 80, 126);
 sprite_change_offset("dstrong", 48, 126);
@@ -51,11 +52,12 @@ sprite_change_offset("fthrow_air", 80, 126);
 sprite_change_offset("uthrow", 80, 126);
 sprite_change_offset("uthrow_air", 80, 126);
 sprite_change_offset("fspecial", 80, 126);
+sprite_change_offset("bullcharge", 48, 126);
+
 sprite_change_offset("fspecial2", 48, 126);
 sprite_change_offset("fspecial_air", 80, 126);
 sprite_change_offset("uspecial", 80, 158);
 sprite_change_offset("dspecial", 80, 158);
-sprite_change_offset("dspecial_air", 80, 158);
 sprite_change_offset("taunt", 80, 158);
 sprite_change_offset("taunt_2", 80, 158);
 

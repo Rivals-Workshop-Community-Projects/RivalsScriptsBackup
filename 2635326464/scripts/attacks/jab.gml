@@ -130,4 +130,4 @@ set_hitbox_value(AT_JAB, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, sound_get("Start_fail"));
 set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT, 13);
 
-set_attack_value(AT_JAB, AG_MUNO_ATTACK_MISC_ADD, "Has 10 frames of cooldown. Endlag varies depending on the number of bites.");
+set_attack_value(AT_JAB, AG_MUNO_ATTACK_MISC_ADD, "Endlag varies depending on the number of bites.");

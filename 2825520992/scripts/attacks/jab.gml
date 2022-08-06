@@ -67,7 +67,7 @@ set_window_value(AT_JAB, 10, AG_WINDOW_ANIM_FRAME_START, 24);
 
 set_num_hitboxes(AT_JAB, 6);
 
-set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_NAME, "Jab 1");
+
 
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 1, HG_WINDOW, 2);
@@ -87,7 +87,7 @@ set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_JAB, 1, HG_SDI_MULTIPLIER, 1.0);
 set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 
-set_hitbox_value(AT_JAB, 2, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 1");
+
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 5);
@@ -109,7 +109,7 @@ set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_JAB, 2, HG_SDI_MULTIPLIER, .9);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_JAB, 3, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 2");
+
 
 set_hitbox_value(AT_JAB, 3, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
@@ -120,7 +120,7 @@ set_hitbox_value(AT_JAB, 3, HG_HITBOX_X, 48);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_JAB, 4, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 3");
+
 
 set_hitbox_value(AT_JAB, 4, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_TYPE, 1);
@@ -131,7 +131,7 @@ set_hitbox_value(AT_JAB, 4, HG_HITBOX_X, 48);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_JAB, 5, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 4");
+
 
 set_hitbox_value(AT_JAB, 5, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_TYPE, 1);
@@ -141,7 +141,7 @@ set_hitbox_value(AT_JAB, 5, HG_HITBOX_X, 48);
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_JAB, 6, HG_MUNO_HITBOX_NAME, "Jab 3");
+;
 
 set_hitbox_value(AT_JAB, 6, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 6, HG_WINDOW, 9);
@@ -166,4 +166,3 @@ set_hitbox_value(AT_JAB, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_JAB, 6, HG_SDI_MULTIPLIER, 1.0);
 set_hitbox_value(AT_JAB, 6, HG_HITBOX_GROUP, 2);
 
-set_attack_value(AT_JAB, AG_MUNO_ATTACK_MISC_ADD, "Ignores parry stun.");

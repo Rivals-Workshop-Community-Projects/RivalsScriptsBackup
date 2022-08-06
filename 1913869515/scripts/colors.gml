@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 21 );
 
 // Motivated
 set_color_profile_slot( 1, 0, 54, 187, 255 ); //Eyes
@@ -216,15 +216,25 @@ set_color_profile_slot( 18, 5, 114, 109, 138 ); //Fur2
 set_color_profile_slot( 18, 6, 255, 203, 15 ); //Cloth
 set_color_profile_slot( 18, 7, 41, 41, 41 ); //LeggingKeg
 
+// Workshop Sq
+set_color_profile_slot( 19, 0, 61, 255, 116 ); //Eyes
+set_color_profile_slot( 19, 1, 110, 54, 26 ); //Skirt+ Sash
+set_color_profile_slot( 19, 2, 232, 147, 159 ); //ears
+set_color_profile_slot( 19, 3, 124, 42, 201 ); //Thread
+set_color_profile_slot( 19, 4, 255, 118, 64 ); //Fur
+set_color_profile_slot( 19, 5, 179, 29, 59 ); //Fur2
+set_color_profile_slot( 19, 6, 255, 118, 64 ); //Cloth
+set_color_profile_slot( 19, 7, 64, 36, 21 ); //LeggingKeg
+
 // Black Miko
-set_color_profile_slot( 19, 0, 162, 255, 10 ); //Eyes
-set_color_profile_slot( 19, 1, 26, 61, 14 ); //Skirt+ Sash
-set_color_profile_slot( 19, 2, 109, 154, 94 ); //ears
-set_color_profile_slot( 19, 3, 62, 169, 27 ); //Thread
-set_color_profile_slot( 19, 4, 255, 255, 255 ); //Fur
-set_color_profile_slot( 19, 5, 167, 161, 173 ); //Fur2
-set_color_profile_slot( 19, 6, 30, 30, 30 ); //Cloth
-set_color_profile_slot( 19, 7, 30, 30, 30 ); //LeggingKeg
+set_color_profile_slot( 20, 0, 162, 255, 10 ); //Eyes
+set_color_profile_slot( 20, 1, 26, 61, 14 ); //Skirt+ Sash
+set_color_profile_slot( 20, 2, 109, 154, 94 ); //ears
+set_color_profile_slot( 20, 3, 62, 169, 27 ); //Thread
+set_color_profile_slot( 20, 4, 255, 255, 255 ); //Fur
+set_color_profile_slot( 20, 5, 167, 161, 173 ); //Fur2
+set_color_profile_slot( 20, 6, 30, 30, 30 ); //Cloth
+set_color_profile_slot( 20, 7, 30, 30, 30 ); //LeggingKeg
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

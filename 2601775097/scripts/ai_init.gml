@@ -3,6 +3,8 @@
 is_cpu = true;
 cpu_fight_time = 0;
 
+cur_skills = [0, 1, 2, 3];
+
 menu_active = false;
 menu_type = 1;
 cpu_select_time = 30; //50

@@ -60,9 +60,9 @@ set_window_value(AT_NSPECIAL, 6, AG_WINDOW_SFX_FRAME, 4);
 
 set_num_hitboxes(AT_NSPECIAL, 3);
 
-set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Holding the attack button on the ground lets you charge the move, allowing you to move during the charge. At full charge, he throws 3 spears in a volley.");
 
-set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Spear Toss");
+
+
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 9);
@@ -91,7 +91,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 
-set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Spear Launch");
+
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 9);
@@ -123,7 +123,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, true);
 
-set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Spear Dinner");
+
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 9);
@@ -156,7 +156,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, true);
 
 /*
-set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Spear Toss");
+
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
@@ -189,7 +189,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 
-set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Spear Launch");
+
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);

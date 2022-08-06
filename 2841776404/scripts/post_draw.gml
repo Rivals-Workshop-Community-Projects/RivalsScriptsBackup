@@ -13,9 +13,21 @@ if (attack_charged){
             draw_sprite_ext(sprite_index, image_index, round(x) + draw_x, round(y) + draw_y, image_xscale, image_yscale, spr_angle, c_white, shade_alpha)
         gpu_set_fog(0, c_white, 0, 1);
 }
-
-
-
+shader_start();
+switch (state){
+    case PS_ATTACK_GROUND:
+    case PS_ATTACK_AIR:
+if (attack == AT_USPECIAL){
+					if (hsp > 0){
+                            var uspecial_angle = -20;
+                        }
+					if (hsp < 0){
+                            var uspecial_angle = 20;
+                        }
+draw_sprite_ext(sprite_get("uspecial_overlay"), image_index, x, y-26, 1*spr_dir, 1, uspecial_angle, c_white, 1);
+}
+break; }
+shader_end();
 // code for kamehameha
 
 

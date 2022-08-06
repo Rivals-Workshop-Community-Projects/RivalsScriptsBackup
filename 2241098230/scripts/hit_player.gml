@@ -5,6 +5,10 @@ if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 7 ) {
 
 
 }
+if (my_hitboxID.attack == AT_DSPECIAL_AIR && my_hitboxID.hbox_num <= 3) {
+    sound_play(asset_get( "sfx_blow_heavy1" ))
+
+}
 if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 6) {
     sound_play(asset_get( "sfx_blow_heavy2" ))
 
@@ -26,6 +30,11 @@ if (my_hitboxID.attack == AT_UTHROW && my_hitboxID.hbox_num == 2|| my_hitboxID.a
 
 
 }
+
+if (my_hitboxID.attack == AT_DSPECIAL_AIR && my_hitboxID.hbox_num < 3 && get_player_color(player) == 20) {
+    sound_play(sound_get( "sfx_footdive" ))
+}
+
 //Throws
 if (my_hitboxID.attack == AT_UAIR && attack == AT_UAIR){
     if (my_hitboxID.hbox_num == 1 && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){

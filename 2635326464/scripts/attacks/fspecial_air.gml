@@ -17,7 +17,6 @@ set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, sound_get("BulletStart"));
 
-
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 6);

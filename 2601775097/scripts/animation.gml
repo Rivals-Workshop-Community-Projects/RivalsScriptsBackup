@@ -92,7 +92,7 @@ switch (state) {
 		break;
 	// POINTLESS SHORTCUTS
 	case PS_PRATLAND:
-		image_index = lerp(0, 2, state_timer/clamp((4/45.0) * parry_distance + (160.0/3.0), 60, 100));
+		if (extended_parry_lag) image_index = lerp(0, 2, state_timer/clamp((4/45.0) * parry_distance + (160.0/3.0), 60, 100));
 		break;
 	case PS_ROLL_BACKWARD: case PS_ROLL_FORWARD: case PS_TECH_BACKWARD: case PS_TECH_FORWARD:
 		sprite_index = sprite_get("roll");
@@ -130,6 +130,11 @@ switch (state) {
 			spr_angle = cur_sprite_rot; 
 			draw_y = -40;
 		}
+		else
+		{
+			spr_angle = 0;
+			draw_y = 0;
+		}
 		break;
 	case PS_HITSTUN_LAND:
 		image_index = 5;
@@ -146,4 +151,11 @@ switch (state) {
 		spr_angle = 0;
 		draw_y = 0;
 		break;
+}
+
+//crystalize is seperate because of the damage thing
+if ("crystalized_damage_remaining" in self && crystalized_damage_remaining != 0 || state == PS_CRYSTALIZED)
+{
+	sprite_index = sprite_get("hurt");
+	image_index = 1;
 }

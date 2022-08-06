@@ -22,7 +22,11 @@ if attack == AT_NSPECIAL && hbox_num == 3 {
         }
     }
     
-    if was_parried transcendent = true
+    with pHitBox if player_id != other.player_id && type == 1 {
+        if place_meeting(x, y, other) {
+            other.destroyed = true
+        }
+    }
 }
 
 if attack == AT_NSPECIAL && hbox_num <= 3 {

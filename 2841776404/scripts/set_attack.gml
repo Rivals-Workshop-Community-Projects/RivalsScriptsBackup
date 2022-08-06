@@ -40,24 +40,24 @@ if (has_rock){
                 window_timer = 0;
         }
     }
-    if (right_stick_pressed){
+    if (right_stick_pressed ||  right_strong_pressed){
             spr_dir = 1;
             attack = AT_FTHROW;
             window = 1;
             window_timer = 0;
         }
-    if (left_stick_pressed){
+    if (left_stick_pressed ||  left_strong_pressed){
             spr_dir = -1;
             attack = AT_FTHROW;
             window = 1;
             window_timer = 0;
         }
-    if (up_stick_pressed){
+    if (up_stick_pressed ||  up_strong_pressed){
             attack = AT_UTHROW;
             window = 1;
             window_timer = 0;
     }
-    if (down_stick_pressed){
+    if (down_stick_pressed ||  down_strong_pressed){
             attack = AT_DTHROW;
             parried = false;
             window = 1;

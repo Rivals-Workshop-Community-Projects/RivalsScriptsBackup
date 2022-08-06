@@ -12,3 +12,5 @@ stored_hsp = 0;
 stored_vsp = 0;
 stored_angle = 0;
 knife_set = 0;
+
+old_dir = 0;

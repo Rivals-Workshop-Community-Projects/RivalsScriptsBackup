@@ -29,7 +29,7 @@ set_color_profile_slot( 0, 6, 111, 36, 209 );
 set_color_profile_slot_range( 6, 1, 12, 53 );
 
 // Down
-set_color_profile_slot( 0, 7, 178, 115, 43 );
+set_color_profile_slot( 0, 7, 179, 115, 43 );
 set_color_profile_slot_range( 7, 4, 2, 43 );
 
 

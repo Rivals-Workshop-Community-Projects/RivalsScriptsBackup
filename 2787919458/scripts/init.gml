@@ -284,7 +284,14 @@ screamList = [
     "telegram help",
     "monke",
     "BWAA",
-    "Mosquito"
+    "Mosquito",
+    "nnsg_1",
+    "nnsg_2",
+    "nnsg_3",
+    "nnsg_4",
+    "nnsg_5",
+    "nnsg_6",
+    "nnsg_7"
     ];
 // intro
 introTimer = -2;

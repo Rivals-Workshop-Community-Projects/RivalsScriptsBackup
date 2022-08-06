@@ -17,7 +17,7 @@ switch (my_hitboxID.attack){
 	case AT_USTRONG:
 		if (my_hitboxID.hbox_num == 2){
 			sound_play(asset_get("mfx_ring_bell"));
-			//spawn_hit_fx( hit_player_obj.x + (12*hit_player_obj.spr_dir), hit_player_obj.y - 20, 251);
+			spawn_hit_fx( hit_player_obj.x + (12*hit_player_obj.spr_dir), hit_player_obj.y - 20, 251);
 		}
 		break;
 	case AT_DSTRONG:

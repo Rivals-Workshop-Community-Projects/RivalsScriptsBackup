@@ -1,6 +1,3 @@
-muno_event_type = 1;
-user_event(14);
-
 //Intro stuff timer
 
 if (get_gameplay_time() < 126){
@@ -152,9 +149,9 @@ if (state == PS_WAVELAND) {
 
 //Jump Dash Thing
 
-	if (state == PS_FIRST_JUMP){
+	if (state == PS_FIRST_JUMP && prev_prev_state == PS_DASH){
  		air_speed = abs(hsp);
-	} else if (state == PS_DOUBLE_JUMP || state == PS_IDLE_AIR || state == PS_TUMBLE || state_cat == SC_AIR_COMMITTED || state_cat == SC_HITSTUN) {
+	} else if (state != PS_LAND) {
 		air_speed = 0;
 	}
 
@@ -175,6 +172,7 @@ if (state == PS_WAVELAND) {
 		move_cooldown[AT_UAIR] = default_land_timer;
 		move_cooldown[AT_DAIR] = default_land_timer;
 		move_cooldown[AT_NSPECIAL] = default_land_timer;
+		move_cooldown[AT_NSPECIAL_AIR] = default_land_timer;
 		move_cooldown[AT_FSPECIAL] = default_land_timer;
 		move_cooldown[AT_USPECIAL] = default_land_timer;
 		//No dspecial here, so you can't bypass the banana cooldown
@@ -237,12 +235,12 @@ with (oPlayer){
 		}
 	
 		if (!painted){
-			debuff_timer = debuff_timer_default;
-			air_max_speed = default_air_max_speed;
-			walk_speed = default_walk_speed;
-			dash_speed = default_dash_speed;
-			roll_forward_max = default_roll_forward_max; 
-			roll_backward_max = default_roll_backward_max;
+			//debuff_timer = debuff_timer_default;
+			//air_max_speed = default_air_max_speed;
+			//walk_speed = default_walk_speed;
+			//dash_speed = default_dash_speed;
+			//roll_forward_max = default_roll_forward_max; 
+			//roll_backward_max = default_roll_backward_max;
 		}
 	}
 
@@ -350,6 +348,19 @@ with (oPlayer){
 		sound_stop(sound_get("GliderWind"));
 	}
 
+//Lightning cooldown
+
+	if (lightning_timer_start == 1){
+		lightning_timer--;
+		lightning_cooldown_active = 1;
+		
+		if (lightning_timer == 0){
+			lightning_timer_start = 0;
+			lightning_timer = lightning_recharge;
+			lightning_cooldown_active = 0;
+		}
+	}
+
 	
 
 // Air Taunt and walking taunt
@@ -431,7 +442,7 @@ with (oPlayer){
 
 
 
-//Kirby
+//Luna Kirby
 if (swallowed)
 {
     sound_play(sound_get("item_box"), true, noone, 1, 1);
@@ -494,6 +505,52 @@ with oPlayer
         }
     }
 }
+
+//Dream Collection Kirby
+
+with oPlayer 
+{
+	if ("mixCurrTotalTimer" in self){
+
+			if(mixCurrTotalTimer == 1){
+				other.kirby_sfx_stop_timer = 0;
+				other.roulette_start = 1;
+				sound_stop(sound_get("nspecial_down_ability"));
+			}
+
+			if(mixCurrTotalTimer >= 150){
+				other.roulette_stop = 1;
+			}
+
+			if(mixCurrTotalTimer > 0 && special_pressed){
+				other.roulette_stop = 1;
+			}
+
+			if(other.roulette_start == 1) with (other){
+				sound_play(sound_get("item_box"));
+				roulette_start = 0;
+			}
+		
+			if(other.roulette_stop == 1) with (other){
+				sound_stop(sound_get("item_box"));
+				sound_play(sound_get("starman_get"));
+				roulette_stop = 0;
+			}
+
+			if(TCG_Kirby_Copy > 0){
+				other.kirby_sfx_stop_timer++;
+				if (other.kirby_sfx_stop_timer == 1){
+					other.roulette_stop = 1;
+				}
+				sound_stop(sound_get("nspecial_down_ability"));
+			}
+
+		}
+}
+
+			//sound_stop(sound_get("item_box"));
+			//sound_play(sound_get("starman_get"));
+
 
 //Rivals of fighters
 

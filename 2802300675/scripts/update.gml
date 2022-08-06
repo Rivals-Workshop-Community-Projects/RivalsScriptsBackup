@@ -30,6 +30,14 @@ if(cloud_poison_timer != 0){
 }
 */
 
+if(player_in_smog = true){
+	valley_outline = true;
+	init_shader();
+}if(player_in_smog = false){
+	valley_outline = false;
+	init_shader();
+}
+
 if(get_gameplay_time() > 100){
 	if(!start_predraw){
 	start_predraw = true;

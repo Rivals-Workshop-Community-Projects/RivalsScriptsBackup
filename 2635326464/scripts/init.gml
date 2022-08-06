@@ -31,19 +31,19 @@ if has_rune("A") {
 walk_turn_time      = 6;	    // 6
 initial_dash_time   = 5;		// 8    -  16
 initial_dash_speed  = 8;		// 4    -  9
-dash_turn_time      = 10;		// 8    -  20
-dash_turn_accel     = 1;		// 0.1  -  2
-dash_stop_time      = 5;		// 4    -  6
-dash_stop_percent   = 0.35;		// 0.25 -  0.5
-ground_friction     = 0.35;		// 0.3  -  1
-moonwalk_accel      = 1.3;		// 1.2  -  1.4
+dash_turn_time      = 16;		// 8    -  20
+dash_turn_accel     = 0.5;		// 0.1  -  2
+dash_stop_time      = 6;		// 4    -  6
+dash_stop_percent   = 0.25;		// 0.25 -  0.5
+ground_friction     = 0.3;		// 0.3  -  1
+moonwalk_accel      = 1.2;		// 1.2  -  1.4
     
 // Air movement
 leave_ground_max    = 5;		// 4    -  8
-max_jump_hsp        = 8;		// 4    -  8
+max_jump_hsp        = 6;		// 4    -  8
 air_max_speed       = 8;  		// 3    -  7
 jump_change         = 3;		// 3
-air_accel           = 0.45;		// 0.2  -  0.4
+air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 1;		// 0.25 -  1.5
 air_friction        = 0.03;		// 0.02 -  0.07
 max_fall            = 10;		// 6    -  11
@@ -208,7 +208,11 @@ default_friction = ground_friction;
 }
 */
 
+initIndexes()
+small_sprites = 1;
 idle_state_timer = 0;
+
+air_speed = 0;
 
 //bomb spr_dir
 bomb_spr_dir = 0;
@@ -260,6 +264,10 @@ fair_uses = 0;
 
 //Uair lightning;
 lighting_index = 0;
+lightning_timer_start = 0;
+lightning_recharge = 90;
+lightning_timer = lightning_recharge;
+lightning_cooldown_active = 0;
 
 //Fstrong check
 shell_spawned = 0;
@@ -316,8 +324,8 @@ if has_rune("B") {
 } else disable_banana_cooldown = 0
 
 //Land timer
-land_timer = 8;
-default_land_timer = 8;
+land_timer = 10;
+default_land_timer = 10;
 land_timer_start = 0;
 
 //Lakitu respawn
@@ -401,11 +409,15 @@ resort_portrait = sprite_get("kart_painting");
 //Green Flower Zone sign
 gfzsignspr = sprite_get("sign_kart");
 
-//Kirby
+//Kirbys
 swallowed = 0;
 kirbyability = 1;
 enemykirby = undefined;
 kart_swallowed = 0;
+roulette_start = 0;
+roulette_stop = 0;
+TCG_Kirby_Copy = -1;
+kirby_sfx_stop_timer = 0;
 
 //Toon Link
 toonlink_photo = sprite_get("toon_link_pic");
@@ -433,6 +445,15 @@ kart_anim_speed_scaling = 1;
 kart_engine_sound = 2;
 kart_drift_spr = 1;
 kart_inside = false;
+
+//Otto Bobblehead
+otto_bobblehead_sprite = sprite_get("bobble_head");
+
+// Steve death message.
+steve_death_message = "Mario Kart failed the ultra shortcut";
+
+// Link spear. (determines which spear your char will drop the first time)
+link_spear_drop = 7;
 
 dracula_speaker[page] = 0;
 dracula_text[page] = "Who is it that dares to enter the unholy realm of...";
@@ -497,7 +518,80 @@ daroach_speaker[page] = 1;
 daroach_text[page] = "[taunt][taunt]";
 page++;
 
-// Muno template: (don't change)
+//Palutena's Guidance
+user_event(7);
 
-	muno_event_type = 0;
-	user_event(14);
+//Below code from MunoPhone API.
+#define initIndexes()
+
+// Custom indexes
+
+AT_PHONE = 40;
+
+i = 80;
+
+// NOTE: All overrides for the frame data guide should be strings. Any non-applicable (N/A) values should be entered as "-"
+
+// General Attack Indexes
+AG_MUNO_ATTACK_EXCLUDE = i; i++;		// Set to 1 to exclude this move from the list of moves
+AG_MUNO_ATTACK_REFRESH = i; i++;		// Set to 1 to refresh this move's data every frame while the frame data guide is open
+AG_MUNO_ATTACK_NAME = i; i++;			// Enter a string to override move name
+AG_MUNO_ATTACK_FAF = i; i++;			// Enter a string to override FAF
+AG_MUNO_ATTACK_ENDLAG = i; i++;			// Enter a string to override endlag
+AG_MUNO_ATTACK_LANDING_LAG = i; i++;	// Enter a string to override landing lag
+AG_MUNO_ATTACK_MISC = i; i++;			// Enter a string to OVERRIDE the move's "Notes" section, which automatically includes the Cooldown System and Misc. Window Traits found below
+AG_MUNO_ATTACK_MISC_ADD = i; i++;		// Enter a string to ADD TO the move's "Notes" section (preceded by the auto-generated one, then a line break)
+
+// Adding Notes to a move is good for if a move requires a long explanation of the data, or if a move overall has certain behavior that should be listed such as a manually coded cancel window
+
+// General Window Indexes
+AG_MUNO_WINDOW_EXCLUDE = i; i++;		// 0: include window in timeline (default)    1: exclude window from timeline    2: exclude window from timeline, only for the on-hit time    3: exclude window from timeline, only for the on-whiff time
+AG_MUNO_WINDOW_ROLE = i; i++;			// 0: none (acts identically to AG_MUNO_WINDOW_EXCLUDE = 1)   1: startup   2: active (or BETWEEN active frames, eg between multihits)   3: endlag
+AG_MUNO_ATTACK_USES_ROLES = i; i++;		// Must be set to 1 for AG_MUNO_WINDOW_ROLE to take effect
+
+// If your move's windows are structured non-linearly, you can use AG_MUNO_WINDOW_ROLE to force the frame data system to parse the window order correctly.
+
+// Cooldown System (do this instead of manually setting in attack_update, and cooldown/invul/armor will automatically appear in the frame data guide)
+AG_MUNO_ATTACK_COOLDOWN = i; i++;		// Set this to a number, and the move's move_cooldown[] will be set to it automatically. Set it to any negative number and it will refresh when landing, getting hit, or walljumping. (gets converted to positive when applied)
+AG_MUNO_ATTACK_CD_SPECIAL = i; i++;		// Set various cooldown effects on a per-attack basis.
+AG_MUNO_WINDOW_CD_SPECIAL = i; i++;		// Set various cooldown effects on a per-window basis.
+AG_MUNO_WINDOW_INVUL = i; i++;			// -1: invulnerable    -2: super armor    above 0: that amount of soft armor
+
+/*
+ * AG_MUNO_ATTACK_CD_SPECIAL values:
+ * - 1: the cooldown will use the phone_arrow_cooldown variable instead of move_cooldown[attack], causing it to display on the overhead player indicator; multiple attacks can share this cooldown.
+ * - 2: the cooldown will use the phone_invis_cooldown variable instead of move_cooldown[attack], which doesn't display anywhere (unless you code your own HUD element) but does allow you to share the cooldown between moves.
+ * 
+ * AG_MUNO_WINDOW_CD_SPECIAL values:
+ * - 1: a window will be exempted from causing cooldown. It is HIGHLY RECOMMENDED to do this for any startup windows, so that the cooldown doesn't apply if you're hit out of the move before being able to use it.
+ * - 2: a window will reset the cooldown to 0.
+ * - 3: a window will set cooldown only if the has_hit	      variable is false, and set it to 0 if has_hit        is true.
+ * - 4: a window will set cooldown only if the has_hit_player variable is false, and set it to 0 if has_hit_player is true.
+ */
+
+i = 80;
+
+HG_MUNO_HITBOX_EXCLUDE = i; i++;		// Set to 1 to exclude this hitbox from the frame data guide
+HG_MUNO_HITBOX_NAME = i; i++;			// Enter a string to override hitbox name
+
+HG_MUNO_HITBOX_ACTIVE = i; i++;			// Enter a string to override active frames
+HG_MUNO_HITBOX_DAMAGE = i; i++;			// Enter a string to override damage
+HG_MUNO_HITBOX_BKB = i; i++;			// Enter a string to override base knockback
+HG_MUNO_HITBOX_KBG = i; i++;			// Enter a string to override knockback growth
+HG_MUNO_HITBOX_ANGLE = i; i++;			// Enter a string to override angle
+HG_MUNO_HITBOX_PRIORITY = i; i++;		// Enter a string to override priority
+HG_MUNO_HITBOX_GROUP = i; i++;			// Enter a string to override group
+HG_MUNO_HITBOX_BHP = i; i++;			// Enter a string to override base hitpause
+HG_MUNO_HITBOX_HPG = i; i++;			// Enter a string to override hitpause scaling
+HG_MUNO_HITBOX_MISC = i; i++;			// Enter a string to override the auto-generated misc notes (which include misc properties like angle flipper or elemental effect)
+HG_MUNO_HITBOX_MISC_ADD = i; i++;		// Enter a string to ADD TO the auto-generated misc notes, not override (line break will be auto-inserted)
+
+// Misc. Hitbox Traits
+HG_MUNO_OBJECT_LAUNCH_ANGLE = i; i++;	// Override the on-hit launch direction of compatible Workshop objects, typically ones without gravity. For example, Otto uses this for the ball rehit angles. Feel free to code this into your attacks, AND to support it for your own hittable articles.
+
+/* Set the obj launch angle to:
+ * - -1 to send horizontally away (simulates flipper 3, angle 0)
+ * - -2 to send radially away (simulates flipper 8)
+ */
+
+/*

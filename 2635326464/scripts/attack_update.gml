@@ -49,18 +49,17 @@ switch(attack){
 			window_timer = 4;
 		} 
 
- 		move_cooldown[AT_JAB] = 10;
-
 	}
 	break;
 
 	case AT_DATTACK:
 	{
-		move_cooldown[AT_DATTACK] = 15;
 		if (has_hit && window = 3 && window_timer == 9) {
 			if ((attack_down) && (left_down || right_down)){
 			window = 4;
 			window_timer = 0;
+			spawn_base_dust( x-spr_dir*22, y, "dash_start");
+			spawn_base_dust( x-spr_dir*30, y-30, "boost", 0);
 			}
 		}
 
@@ -83,12 +82,6 @@ switch(attack){
 				iasa_script();
 			}
 		}
-	}
-	break;
-
-	case AT_FTILT:
-	{
-		move_cooldown[AT_FTILT] = 45;
 	}
 	break;
 
@@ -132,8 +125,6 @@ switch(attack){
 
 	case AT_DTILT:
 	{
-		move_cooldown[AT_DTILT] = 10;
-
 		if (((window == 2 && window_timer > 6) || (window == 3)) && has_hit){
 			if (jump_pressed || attack_pressed || left_stick_pressed || up_stick_pressed || left_stick_pressed){
 				iasa_script();
@@ -163,10 +154,13 @@ switch(attack){
 			if (window_timer == 4){
 				attack_end();
 				set_state(PS_DASH);
+				spawn_base_dust( x-spr_dir*22, y, "dash_start");
+				spawn_base_dust( x-spr_dir*30, y-30, "boost", 0);
 			}
 
 			if (attack_pressed || jump_pressed || special_pressed){
-				iasa_script();
+				//iasa_script();
+				//nope, don't cancel into things
 			}
 		}
 	}
@@ -174,7 +168,6 @@ switch(attack){
 
 	case AT_BAIR:
 	{
-		move_cooldown[AT_BAIR] = 10;
 
 		if has_rune("G") {
 			set_attack_value(AT_BAIR, AG_CATEGORY, 2);
@@ -190,8 +183,6 @@ switch(attack){
 
 	case AT_FAIR:
 	{
-
-		move_cooldown[AT_FAIR] = 5;
 
 		if (window == 1){ 
 			set_attack_value(AT_FAIR, AG_LANDING_LAG, 22);
@@ -269,7 +260,6 @@ switch(attack){
 
 	case AT_UAIR:
 	{
-		move_cooldown[AT_UAIR] = 60;
 		if (window == 2){
 			if (window_timer == 1){
 				take_damage( player, -1, 3 );
@@ -282,6 +272,19 @@ switch(attack){
 			if (window == 1 && window_timer == 1){ has_tricked = 1; }
 			set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 		}
+
+		if (window == 3 && window_timer == 1){
+			lightning_timer_start = 1;
+		}
+
+		if (window == 1 && window_timer == 1 && lightning_cooldown_active == 1){
+			lightning_timer = lightning_recharge;
+
+		}
+
+		if (lightning_cooldown_active == 1){
+			set_num_hitboxes(AT_UAIR,1);
+		} else set_num_hitboxes(AT_UAIR,2);
 	}
 	break;
 
@@ -340,7 +343,7 @@ switch(attack){
 	{
 		move_cooldown[AT_FSTRONG] = 100;
 
-		if (window == 2 && window_timer == 1){
+		if (window == 2 && window_timer == 6){
 			shell_spawned = 1;
 			green_shell = create_hitbox(AT_FSTRONG, 1, x+spr_dir*16, y-46);
 				if has_rune("M") {
@@ -590,7 +593,8 @@ switch(attack){
 			sound_stop(sound_get("Drift1"));
 			sound_stop(sound_get("DriftSteer"));
 			window = 10;
-			spawn_hit_fx( x-spr_dir*26, y-30, sonic_boom);
+			spawn_base_dust( x-spr_dir*22, y, "dash_start");
+			spawn_base_dust( x-spr_dir*30, y-30, "boost", 0);
 			window_timer = 0;
 		}
 
@@ -602,7 +606,9 @@ switch(attack){
 			sound_stop(sound_get("Drift2"));
 			sound_stop(sound_get("DriftSteer"));
 			window = 11;
-			spawn_hit_fx( x-spr_dir*26, y-30, sonic_boom);
+			spawn_hit_fx( x-spr_dir*30, y-30, sonic_boom);
+			spawn_base_dust( x-spr_dir*22, y, "dash_start");
+			spawn_base_dust( x-spr_dir*30, y-30, "boost", 0);
 			window_timer = 0;
 		}
 
@@ -614,13 +620,20 @@ switch(attack){
 			sound_stop(sound_get("Drift3"));
 			sound_stop(sound_get("DriftSteer"));
 			window = 16;
+			spawn_base_dust( x-spr_dir*22, y, "dash_start");
 			spawn_hit_fx( x-spr_dir*26, y-30, sonic_boom);
+			spawn_hit_fx( x-spr_dir*34, y-30, sonic_boom);
+			spawn_base_dust( x-spr_dir*30, y-30, "boost", 0);
 			window_timer = 0;
 		}
 
-		if (window == 10 || window == 11){
+		if (window == 10 || window == 11 || window == 16){
 			if (attack_pressed || jump_pressed || down_stick_pressed || up_stick_pressed || left_stick_pressed || right_stick_pressed || shield_pressed ){
-				iasa_script();
+				//iasa_script();
+			}
+
+			if (window_timer == 0){
+				spawn_base_dust( x-spr_dir*22, y, "dash_start")
 			}
 		}
 
@@ -638,7 +651,7 @@ switch(attack){
 
 	case AT_NSPECIAL_AIR:
 	{
-		move_cooldown[AT_USTRONG] = 5;
+		move_cooldown[AT_NSPECIAL_AIR] = 5;
 	}
 	break;
 
@@ -713,14 +726,38 @@ switch(attack){
 
 		//dash
 		if ((window == 6 && window_timer == 6) || (window == 2 && special_pressed && (right_down || left_down)) || (window == 2 && window_timer == 20 && golden_index >= 3) || (window == 2 && golden_index == 4) ||  (window == 2 && attack_pressed)){
-			spawn_hit_fx( x-spr_dir*26, y-30, sonic_boom);
+			spawn_base_dust( x-spr_dir*26, y, "dash_start")
+			spawn_base_dust( x-spr_dir*30, y-30, "boost", 0)
 			attack = AT_EXTRA_1;
 			window = 1;
 			window_timer = 0;
 			hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+
+			if(golden_charge == 2){
+				spawn_hit_fx( x-spr_dir*30, y-30, sonic_boom);
+			}
+
+			if(golden_charge == 3){
+				spawn_hit_fx( x-spr_dir*26, y-30, sonic_boom);
+				spawn_hit_fx( x-spr_dir*34, y-30, sonic_boom);		
+				spawn_base_dust( x-spr_dir*30, y-30, "boost", 0)
+			}
+
+
+			if(golden_charge == 4){
+				spawn_hit_fx( x-spr_dir*26, y-30, sonic_boom);
+				spawn_hit_fx( x-spr_dir*30, y-30, sonic_boom);
+				spawn_hit_fx( x-spr_dir*34, y-30, sonic_boom);		
+				spawn_base_dust( x-spr_dir*30, y-30, "boost", 0)
+			}
+
+
+
 			if(golden_charge == 5){
-				spawn_hit_fx( x-spr_dir*34, y-30, sonic_boom);
-				spawn_hit_fx( x-spr_dir*42, y-30, sonic_boom);
+				spawn_hit_fx( x-spr_dir*26, y-30, sonic_boom);
+				spawn_hit_fx( x-spr_dir*30, y-30, sonic_boom);
+				spawn_hit_fx( x-spr_dir*34, y-30, sonic_boom);		
+				spawn_base_dust( x-spr_dir*30, y-30, "boost", 0)
 			}
 		}
 
@@ -787,18 +824,20 @@ switch(attack){
 
 		if (window == 1){
 			if (window_timer == 6){
-				spawn_hit_fx( x-spr_dir*26, y-30, sonic_boom);
+				spawn_base_dust( x-spr_dir*22, y, "dash_start")
+				spawn_hit_fx( x-spr_dir*30, y-30, sonic_boom);
+				spawn_base_dust( x-spr_dir*30, y-30, "boost", 0)
 			}
 		}
 		if (window == 3 && !was_parried){
 			if(window_timer == 14){
 				set_state(PS_DASH);
 			}
-			if(up_down && special_pressed){
+			if(window_timer > 10 && up_down && special_pressed){
 				attack_end();
 				attack = AT_USPECIAL;
 			}
-			if(!up_down && !down_down && special_pressed && window_timer > 5 && !free){
+			if(window_timer > 10 && !up_down && !down_down && special_pressed && window_timer > 5 && !free){
 				attack_end();
 				attack = AT_NSPECIAL;
 				window = 1;
@@ -816,9 +855,9 @@ switch(attack){
 	{
 		can_fast_fall = false;
 
-		if (window == 2){
+		if (window == 2 && window_timer < 16){
 			soft_armor = 8;
-		}
+		} else soft_armor = 0;
 
 		if (window == 3 && window_timer == 1){
 			sound_stop(sound_get("BulletStart"));
@@ -955,11 +994,19 @@ switch(attack){
 				window_timer = 0;
 			}
 
+			if (window == 4){
+				
+			}
+
 			//no stalling
 
 			if (abs(hsp) < 4){
 				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, 1);
-			} else set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, 0.5);
+				set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_VSPEED, 1);
+			} else {
+				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, 0.5);
+				set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_VSPEED, 0.5);
+			}
 		}
 
 		//revert fire ball
@@ -1122,7 +1169,12 @@ switch(attack){
 
 //Dust thing
 
-#define spawn_base_dust
+#define spawn_base_dust // written by supersonic
+/// @param {undefined} x
+/// @param {undefined} y
+/// @param {undefined} name
+/// @param {undefined} dir = 0
+/// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value
@@ -1131,23 +1183,27 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
-    default: 
-    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-    case "doublejump": 
-    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+	default: 
+	case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+	case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+	case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+	case "doublejump": 
+	case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+	case "boost": dlen = 21; dfx = 2; dfg = 2624;  dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+	case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+	case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+	case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+	case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+	case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+if newdust == noone return noone;
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
-if dir != 0 newdust.spr_dir = dir;
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

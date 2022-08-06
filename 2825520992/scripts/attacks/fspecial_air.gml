@@ -35,9 +35,9 @@ set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAME_START, 12);
 
 set_num_hitboxes(AT_FSPECIAL_AIR, 7);
 
-set_attack_value(AT_FSPECIAL_AIR, AG_MUNO_ATTACK_MISC_ADD, "Restores your doublejump at the end of it's duration.");
 
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_MUNO_HITBOX_NAME, "Hit 1");
+
+
 
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WINDOW, 2);
@@ -56,7 +56,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 6);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 
-set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_MUNO_HITBOX_NAME, "Hit 2");
+
 
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_GROUP, -1);
@@ -67,7 +67,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_X, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_Y, 16);
 
-set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_MUNO_HITBOX_NAME, "Hit 3");
+
 
 set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_HITBOX_GROUP, -1);
@@ -78,7 +78,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_HITBOX_X, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 3, HG_HITBOX_Y, 16);
 
-set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_MUNO_HITBOX_NAME, "Hit 4");
+
 
 set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_HITBOX_GROUP, -1);
@@ -89,7 +89,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_HITBOX_X, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 4, HG_HITBOX_Y, 16);
 
-set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_MUNO_HITBOX_NAME, "Hit 5");
+
 
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_HITBOX_GROUP, -1);
@@ -100,7 +100,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_HITBOX_X, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 5, HG_HITBOX_Y, 16);
 
-set_hitbox_value(AT_FSPECIAL_AIR, 6, HG_MUNO_HITBOX_NAME, "Hit 6");
+
 
 set_hitbox_value(AT_FSPECIAL_AIR, 6, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 6, HG_HITBOX_GROUP, -1);
@@ -111,7 +111,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 6, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 6, HG_HITBOX_X, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 6, HG_HITBOX_Y, 16);
 
-set_hitbox_value(AT_FSPECIAL_AIR, 7, HG_MUNO_HITBOX_NAME, "Hit 7");
+
 
 set_hitbox_value(AT_FSPECIAL_AIR, 7, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 7, HG_HITBOX_GROUP, -1);
@@ -122,7 +122,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 7, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 7, HG_HITBOX_X, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 7, HG_HITBOX_Y, 16);
 
-set_hitbox_value(AT_FSPECIAL_AIR, 8, HG_MUNO_HITBOX_NAME, "Landing Hitbox");
+
 
 set_hitbox_value(AT_FSPECIAL_AIR, 8, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 8, HG_HITBOX_GROUP, -1);

@@ -33,7 +33,7 @@ set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, 0.5);
 
 //firing
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_LENGTH, 28);
+set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_LENGTH, 35);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 24);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_HSPEED_TYPE, 2);
@@ -130,7 +130,7 @@ set_hitbox_value(AT_USPECIAL_2, 5, HG_MUNO_HITBOX_NAME, "Fire ball");
 
 set_hitbox_value(AT_USPECIAL_2, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_WINDOW, 4);
-set_hitbox_value(AT_USPECIAL_2, 5, HG_WINDOW_CREATION_FRAME, 12);
+set_hitbox_value(AT_USPECIAL_2, 5, HG_WINDOW_CREATION_FRAME, 16);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_LIFETIME, 180);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_DAMAGE, 1);
@@ -154,6 +154,5 @@ set_hitbox_value(AT_USPECIAL_2, 5, HG_HIT_SFX, sound_get("FireBallHit"));
 set_hitbox_value(AT_USPECIAL_2, 5, HG_VISUAL_EFFECT, 14);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_VISUAL_EFFECT_Y_OFFSET, -18);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_VISUAL_EFFECT_Y_OFFSET, 24);
-
 
 set_attack_value(AT_USPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "You can the aerial NSpecial (fire ball) during the glide. Can be cancelled into Dair and FSpecial. Using the dodge button results in pratfall. Turning the glider will decrease your height, and the decrease is bigger when the speed is smaller. The glider is a semisolid platform except when the kart is turning.");

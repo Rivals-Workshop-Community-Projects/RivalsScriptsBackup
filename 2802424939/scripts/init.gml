@@ -127,3 +127,5 @@ old_spr_dir = 0;
 target = 0;
 parry = 0;
 parry_player = 0;
+trail1 = hit_fx_create(sprite_get("knife_trail"), 1)
+trail2 = hit_fx_create(sprite_get("knife_r_trail"), 1)

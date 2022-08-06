@@ -109,9 +109,9 @@ if (state > 0 && state != 4){
 			with (other) {kb_angle = get_hitbox_angle(other.id)}
 			other.hitpause = true;
 			other.hitstop = hitpause + extra_hitpause;
-			other.le_hit_effect = hit_effect;
+			le_hit_effect = hit_effect;
 			sound_play(pHitBox.sound_effect);
-			with (other){spawn_hit_fx(x, y, le_hit_effect).pause = 7;}
+			spawn_hit_fx(other.x, other.y, le_hit_effect).pause = 7;
 			other.got_hit = true;
 			has_hit = true;
 			

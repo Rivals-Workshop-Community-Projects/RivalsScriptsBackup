@@ -146,8 +146,8 @@ sprite_change_offset("plat", 32, 47);
 sprite_change_offset("plat_back", 32, 47);
 sprite_change_offset("wait", 24, 47, true);
 
-sprite_change_offset("bibical_idle", 35, 112);
-sprite_change_offset("bibical_death", 35, 112);
+sprite_change_offset("bibical_idle", 68, 112);
+sprite_change_offset("bibical_death", 68, 112);
 
 sprite_change_offset("hud_player_arrow", 3, 2);
 sprite_change_offset("offscreen_icon", 16, 16);

@@ -51,30 +51,48 @@ if attack == AT_USPECIAL {
             window++
             window_timer = 0
         } else if window_timer == window_length {
-            window = 6
+            window = 7
             window_timer = 0
             sound_play(asset_get("sfx_bite"))
         }
         if shield_pressed {
-            window = 7
+            window = 8
             window_timer = 6
             vsp *= 0.8
         }
     }
     
     //wall detection
-    var touch_wall = place_meeting(x+1, y, asset_get("par_block")) || place_meeting(x-1, y, asset_get("par_block"))
+    var touch_ceiling = place_meeting(x, y-char_height, asset_get("par_block")) && position_meeting(x, y-char_height-20, asset_get("par_block"))
+    var touch_wall = (place_meeting(x+1, y, asset_get("par_block")) && position_meeting(x+20, y, asset_get("par_block"))) || (place_meeting(x-1, y, asset_get("par_block")) && position_meeting(x-20, y, asset_get("par_block")))
     if window == 2 && touch_wall {
         window = 3
         window_timer = 0
+    } else if window == 2 && touch_ceiling {
+        window = 4
+        window_timer = 0
     }
     
-    if window == 4 {
-        uspec_spawn_x = x + spr_dir*120
-        if right_down && !left_down uspec_spawn_x += 60
-        if left_down && !right_down uspec_spawn_x -= 60
+    if window == 5 {
+        if touch_wall {
+            uspec_spawn_x = x + spr_dir*120
+            if right_down && !left_down uspec_spawn_x += 60
+            if left_down && !right_down uspec_spawn_x -= 60
+        } else if touch_ceiling {
+            uspec_spawn_x = x
+            if right_down && !left_down {
+                uspec_spawn_x += 0
+                spr_dir = 1
+            } else if left_down && !right_down {
+                uspec_spawn_x -= 0
+                spr_dir = -1
+            }
+        }
         
         if window_timer == window_length {
+            if touch_ceiling {
+                y -= 80
+            }
             var uspec_spawn_y = floor(y/8)*8
             
             while position_meeting(uspec_spawn_x, uspec_spawn_y, asset_get("par_block")) {

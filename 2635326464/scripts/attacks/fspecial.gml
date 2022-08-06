@@ -45,5 +45,5 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
-set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "You can cancel this attack to USpecial and NSpecial on frame 15");
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "You can cancel this attack to USpecial and NSpecial on frame 11 of the dash");
 set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH)));

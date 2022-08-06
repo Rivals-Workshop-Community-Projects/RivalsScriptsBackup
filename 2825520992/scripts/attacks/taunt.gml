@@ -1,4 +1,4 @@
-set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_NAME, "Happy Boi (Taunt)");
+
 
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
 set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 3);
@@ -24,11 +24,10 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("sfx_landinglag"));
 
 
 
-set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_MISC, "he happee
 
-- trummel");
 
-set_attack_value(AT_TAUNT_2, AG_MUNO_ATTACK_NAME, "Abble Juice (Taunt 2)");
+
+
 
 set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("taunt_apple"));
 set_attack_value(AT_TAUNT_2, AG_NUM_WINDOWS, 3);

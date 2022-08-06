@@ -99,6 +99,13 @@ if (attack == AT_DSPECIAL_AIR){
 	}
 }
 
+if (attack == AT_DSTRONG){
+	if (window == 4 && has_hit){
+		can_attack = true;
+		can_special = true;
+	}
+}
+
 if (attack == AT_USPECIAL_2){
 	if (window == 1){
 		flight_timer = 0;
@@ -310,6 +317,14 @@ switch(attack){
 		suit_power -= .5;
 		can_wall_jump = true;
 	}
+	if (window == 2 or window == 3){
+		if (left_down && hsp > -6){
+			hsp -= .5;
+		}
+		if (right_down && hsp < 6){
+			hsp += .5;
+		}
+	}
 	if (window == 4){
 
 	spawn_hit_fx(x - 16*spr_dir, y - 44, drill_trail).draw_angle = darctan2(-vsp*spr_dir, hsp*spr_dir);
@@ -436,6 +451,9 @@ switch(attack){
 			if (free){
 				move_cooldown[AT_FSPECIAL] = 9999;
 			}
+			if (window_timer >= 13 && !has_hit){
+				state = PS_PRATFALL;
+			}
 			break;
 		}
 		break;
@@ -453,6 +471,24 @@ switch(attack){
 		can_wall_jump = true;
 		can_move = false;
 		can_fast_fall = false;
+		if (window < 5){
+			if (left_down or right_down){
+			set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED, 4.5);
+			set_window_value(AT_USPECIAL, 6, AG_WINDOW_HSPEED, 4.5);
+			set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 75);
+			if (left_down){
+			spr_dir = -1;
+			}
+			if (right_down){
+				spr_dir = 1;
+			}
+			} else {
+				
+			set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED, 0);
+			set_window_value(AT_USPECIAL, 6, AG_WINDOW_HSPEED, 0);
+			set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
+			}
+		}
 		switch(window){
 			case 1:
 			attack_charge ++;

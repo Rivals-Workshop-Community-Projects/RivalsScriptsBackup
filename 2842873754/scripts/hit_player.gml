@@ -110,12 +110,12 @@ if (my_hitboxID.attack == AT_NSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitbox
 }
 
 //Hitting gordos
-if (my_hitboxID.attack == AT_FSPECIAL) {
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num > 1) {
 	if (("owner" in my_hitboxID) && id == my_hitboxID.owner.player_id) {
 	    if (my_hitboxID.owner.state == 0) {
     		if (hit_player_obj.player != my_hitboxID.owner.owned_player) {
     			with (my_hitboxID.owner) {
-    		        hsp = -hsp / 2
+    				hsp = hsp * (other.hit_player_obj.x < x ? -1 : 1)
     		        if (vsp > 0)
     		            vsp = -bounce_speed;
     		        hitstop = other.hit_player_obj.hitstop;

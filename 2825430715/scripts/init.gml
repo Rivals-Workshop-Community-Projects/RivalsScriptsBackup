@@ -4,6 +4,7 @@ air_hurtbox_spr = sprite_get("air_box");
 hitstun_hurtbox_spr = sprite_get("air_box");
 
 cheapmode = 0
+noparryedit = 0
 
 potbuster = 0
 potbusterx = 0

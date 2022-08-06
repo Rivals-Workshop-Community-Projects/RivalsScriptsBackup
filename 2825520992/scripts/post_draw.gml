@@ -1,8 +1,4 @@
-// MunoPhone Touch code - don't touch
-// should be at TOP of file
-muno_event_type = 4;
-user_event(14);
-if(phone_attacking && (attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR)){
+if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR)){
     if(window == 2){
         draw_sprite_ext(sprite_get("pendulum"),bwd_pendelum_current,x,y-60,1,1,0,-1,1);
     }

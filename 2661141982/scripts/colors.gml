@@ -24,6 +24,7 @@ set_color_profile_slot_range( 4, 1, 5, 37 );
 set_color_profile_slot( 0, 5, 62, 158, 214 );
 set_color_profile_slot_range( 5, 1, 30, 14 );
 
+
 // ALTERNATE COLORS
 set_num_palettes( 32 );
 
@@ -100,12 +101,12 @@ set_color_profile_slot( 9, 4, 252, 238, 238 ); //Skin 2
 set_color_profile_slot( 9, 5, 87, 146, 255 ); //water
 
 // Early Access
-set_color_profile_slot( 10, 0, 83, 122, 62 ); //Skin
-set_color_profile_slot( 10, 1, 167, 186, 74 ); //Fins
-set_color_profile_slot( 10, 2, 35, 67, 49 ); //Marks
-set_color_profile_slot( 10, 3, 211, 226, 154 ); //Light
-set_color_profile_slot( 10, 4, 211, 226, 154 ); //Skin 2
-set_color_profile_slot( 10, 5, 211, 226, 154 ); //water
+set_color_profile_slot( 10, 0, 0, 200, 255 ); //Skin
+set_color_profile_slot( 10, 1, 245, 219, 97 ); //Fins
+set_color_profile_slot( 10, 2, 255, 170, 0 ); //Marks
+set_color_profile_slot( 10, 3, 255, 221, 0 ); //Light
+set_color_profile_slot( 10, 4, 23, 66, 153 ); //Skin 2
+set_color_profile_slot( 10, 5, 38, 197, 255 ); //water
 
 // Summit
 set_color_profile_slot( 11, 0, 63, 63, 89 ); //Skin

@@ -20,7 +20,6 @@ b_month = 10;
 //ALT NAMES
 //seasonal alt names
 season_name = [
-    "no.",
     "I Like Chocolate",
     "Beach Episode",
     "BE AFRAID NOT",
@@ -46,7 +45,7 @@ alt_name = [
     "Endless Abyss",
     "Early Access",
     "Demake",
-    current_day = b_day && current_month == b_month ? bday_name : season_name[get_match_setting(SET_SEASON)],
+    current_day = b_day && current_month == b_month ? bday_name : season_name[get_match_setting(SET_SEASON)-1],
     "Infamous",
     "Ranked Gold",
     "Son of the Omega",
@@ -86,8 +85,15 @@ skill_button_pos = [
     y + skill_button_y + sprite_get_height(sprite_get("hud_skillselect_button"))
 ];
 
+
+
 skill_script_type = 0;
 user_event(2);
+
+//saves skill data in case it's needed
+//if not, set it to [12816], which is the default kit
+if (get_synced_var(player) >= 12816 && !init) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
+else set_synced_var(player, 12816);
 
 
 

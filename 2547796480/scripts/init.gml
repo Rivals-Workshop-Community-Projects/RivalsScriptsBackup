@@ -5,8 +5,9 @@ hitstun_hurtbox_spr = sprite_get("air_box");
 
 Hikaru_Title = "N word"
 cheapmode = 0
-
+oknifecountcd = 0
 nctimer = 0
+oknifelost = 0
 
 ncode1 = "[Special Unit] who only take tasks directly"
 ncode2 = "from Mr.president. He has many encounters "
@@ -57,7 +58,7 @@ moonwalk_accel = 1.8;
 
 jump_start_time = 5;
 jump_speed = 12;
-short_hop_speed = 5;
+short_hop_speed = 8;
 djump_speed = 12;
 leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground

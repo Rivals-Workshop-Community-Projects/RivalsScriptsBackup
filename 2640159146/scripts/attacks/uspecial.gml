@@ -8,7 +8,6 @@ set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
-
 //ascent startup
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 15);
@@ -96,7 +95,6 @@ set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "Grab 1 (Ascent)");
 
 set_hitbox_value(AT_USPECIAL, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
@@ -115,7 +113,6 @@ set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Grab 2 (Ascent)");
 
 set_hitbox_value(AT_USPECIAL, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -135,8 +132,7 @@ set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_USPECIAL, 3, HG_TECHABLE, 3); //1?
-
+set_hitbox_value(AT_USPECIAL, 3, HG_TECHABLE, 3);
 
 set_hitbox_value(AT_USPECIAL, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 1);

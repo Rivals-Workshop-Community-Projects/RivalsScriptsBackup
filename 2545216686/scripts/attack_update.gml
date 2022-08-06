@@ -5,15 +5,8 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR || attack == AT_FSPECIAL 
 
 //Jab
 if (attack == AT_JAB){
-	if (window == 1 || window == 4 || window == 7){
+	if (window == 1 || window == 4){
 		clear_button_buffer(PC_ATTACK_PRESSED);
-		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			if (window == 1){
-				spawn_base_dust( x - (30 * spr_dir), y, "dash", spr_dir)
-			} else if (window == 4 || window == 7){
-				spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
-			}
-		}
 	}
 }
 
@@ -221,6 +214,7 @@ if (attack == AT_NSPECIAL_AIR){
 if (attack == AT_FSPECIAL){
 	//lol
 	can_fast_fall = false;
+	can_wall_jump = true;
 	if (window == 1){
 		fspec_loop = 0
 		if (!free){
@@ -323,12 +317,7 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
 			grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
 			grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
-			if (phone_dive == 0){
-				if (tails_fspec_started_on_ground == 0){
-					move_cooldown[AT_FSPECIAL] = 9999999999;
-				}
-			} else if (phone_dive == 1){
-				//move_cooldown[AT_FSPECIAL] = 0;
+			if (tails_fspec_started_on_ground == 0){
 				move_cooldown[AT_FSPECIAL] = 9999999999;
 			}
 		}		
@@ -408,9 +397,6 @@ if (attack == AT_USPECIAL){
 	if (window == 2 && window_timer == 23 && flightloop != 0){
 		window_timer = 0
 		flightloop--;
-		if (phone_flight == 1){
-			flightloop = 3
-		}
 	}
 	if (flightloop <= 0){
 		window = 3
@@ -423,7 +409,7 @@ if (attack == AT_USPECIAL){
 	}
 }
 
-if (phone_flight == 0 && !has_hit){
+if (!has_hit){
 	//This basically puts u into pratfall if you attacked out of up b lol
 	if (attack == AT_NAIR && window == 4 && window_timer == 10 && aerialattack == 1){
 		set_state(PS_PRATFALL);

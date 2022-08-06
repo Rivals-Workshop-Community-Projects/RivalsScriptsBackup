@@ -12,7 +12,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 			image_index=0;
 		}
 	}
-	if hitbox_timer <=45 && !player_id.runeJ{
+	if hitbox_timer <= (45 + extra_trans) && !player_id.runeJ{
 		transcendent=true;
 		sprite_index = sprite_get("nspecial_smoke2");
 	} else{

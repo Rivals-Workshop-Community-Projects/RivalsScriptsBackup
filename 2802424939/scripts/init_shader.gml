@@ -11,3 +11,4 @@ else if (get_player_color(player) != 11)
         set_character_color_slot( 7, 251, 253, 255);
     }
 }
+//rgb(251, 253, 255)

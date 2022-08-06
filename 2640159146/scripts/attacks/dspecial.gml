@@ -12,7 +12,7 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_zetter_downb"));
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
 
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 26);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 36);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -62,7 +62,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 8);
-set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 4);
+set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_X, 70);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_Y, -34);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 55);
@@ -81,7 +81,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW, 4);
+set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW, 3);
 //set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 8);
 set_hitbox_value(AT_DSPECIAL, 4, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_X, 0);
@@ -109,7 +109,7 @@ set_hitbox_value(AT_DSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW, 4);
+set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW, 3);
 //set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 8);
 set_hitbox_value(AT_DSPECIAL, 5, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_X, 0);
@@ -133,12 +133,3 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_ANIM_SPEED, .5);
 set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1); 
-
-
-
-set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Jump cancel starting on frame " + string(get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH) + 1) + " unless parried.");
-
-//This is why you should place these at the BOTTOM of the attack file - if placed at the TOP, it wouldn't be able to reference window length, or etc, because it would not have been defined yet.
-
-//Referencing data like this, instead of just typing the number 4 manually, is good because if you patch things, it'll update the description automatically.
-//Eg if I made DSpecial's startup 1 frame faster, the jump-cancel description would change to reflect the new speed.

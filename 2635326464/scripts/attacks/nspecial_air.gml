@@ -6,12 +6,12 @@ set_attack_value(AT_NSPECIAL_AIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_NSPECIAL_AIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("nspecial_air_hurt"));
 
-set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .1);
 
-set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_HAS_SFX, 1);
@@ -45,5 +45,5 @@ set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 14);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -18);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 24);
 
-set_attack_value(AT_NSPECIAL_AIR, AG_MUNO_ATTACK_MISC_ADD, "The fire ball's speed actually depends on the kart's speed, but it can't get lower than 8. Has 5 frames of cooldown.");
+set_attack_value(AT_NSPECIAL_AIR, AG_MUNO_ATTACK_MISC_ADD, "The fire ball's speed actually depends on the kart's speed");
 set_attack_value(AT_NSPECIAL_AIR, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_LENGTH)));

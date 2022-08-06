@@ -32,12 +32,12 @@
 
 //Nspecial stopped
 
-	if (attack == AT_NSPECIAL && !free && (hsp = 0 || (spr_dir == 1 && hsp < 0) || (spr_dir == -1 && hsp > 0))){
+	if (attack == AT_NSPECIAL && !free && (hsp = 0 || (spr_dir == 1 && hsp < 2) || (spr_dir == -1 && hsp > 2))){
 		attack = AT_NSPECIAL_2;
 	}
 
 //Nspecial fix
-	if (attack == AT_NSPECIAL && ((spr_dir == 1 && hsp < 0) || (spr_dir == -1 && hsp > 0))){
+	if (attack == AT_NSPECIAL && ((spr_dir == 1 && hsp < 2) || (spr_dir == -1 && hsp > 2))){
 		attack = AT_NSPECIAL_2;
 	}
 
@@ -73,6 +73,3 @@ if (attack == AT_FSTRONG){
 			spiny_shell_death = 0;
 		}
 }
-
-muno_event_type = 2;
-user_event(14);

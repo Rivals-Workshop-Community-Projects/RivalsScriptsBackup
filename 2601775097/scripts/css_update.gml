@@ -1,4 +1,6 @@
 //css_update
+if (!instance_exists(cursor_id)) exit; //stops skill select entirely
+
 skill_script_type = 1;
 user_event(2);
 
@@ -11,6 +13,7 @@ if (alt_prev != alt_cur)
     alt_prev = alt_cur;
 }
 
+//button stuff
 var cur_x = get_instance_x(cursor_id);
 var cur_y = get_instance_y(cursor_id);
 
@@ -62,7 +65,7 @@ switch (alt_cur)
         }
         break;
     case 25: preview_line_color = $343434; break; //helel
-    case 26: preview_line_color = $012b46; break; //theikos
+    case 26: preview_line_color = $022d61; break; //theikos
     default: preview_line_color = $000000; break;
 }
 

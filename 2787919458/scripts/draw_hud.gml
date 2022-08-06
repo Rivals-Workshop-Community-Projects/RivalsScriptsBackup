@@ -1,5 +1,16 @@
 // prevents draw_hud from running a frame too early and spitting an error
 if "phone" not in self exit;
+
+if(get_gameplay_time() <= 120){
+	if(!trigger_warning){
+		draw_debug_text(temp_x, temp_y - 40, "Press Taunt to disable FX's.");
+	}
+	if(taunt_pressed && !trigger_warning){
+        trigger_warning = true;
+	}
+}
+
+
 //Speed Meter
 if(get_gameplay_time() > 120){
     var char_x = temp_x;

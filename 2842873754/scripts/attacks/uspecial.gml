@@ -14,17 +14,17 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("sfx_dedede_uspecial_rise"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 14);
-set_window_value(AT_USPECIAL, 1, AG_MUNO_WINDOW_INVUL, uspecial_soft_armor);
 
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -18);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_INVINCIBILITY, 1);
+set_window_value(AT_USPECIAL, 2, AG_MUNO_WINDOW_INVUL, uspecial_soft_armor);
 
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 48);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 42);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -18);

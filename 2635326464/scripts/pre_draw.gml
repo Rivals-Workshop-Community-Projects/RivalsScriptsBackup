@@ -119,7 +119,7 @@ if(ramp_start == 1){
 
 // Uair lightning
 
-if (attack == AT_UAIR && state == PS_ATTACK_AIR){
+if (attack == AT_UAIR && state == PS_ATTACK_AIR && lightning_cooldown_active == 0){
 	if (window == 2) {
 		lightning_index = image_index-7;
 		draw_sprite(sprite_get("lightning"), lightning_index, x, y-60);

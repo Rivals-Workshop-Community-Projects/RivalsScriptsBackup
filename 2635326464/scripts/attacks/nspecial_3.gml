@@ -64,4 +64,4 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_VISUAL_EFFECT, 304);
 
 
 set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_MISC_ADD, "Speed and attack power actually vary depending on the charge. On sweetspot, Base knockback goes from 7 to 10, and damage goes from 12 to 17. On sourspot, those values go from 5 to 7 and from 8 to 11.");
-set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_ENDLAG, "8");
+set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_ENDLAG, "12");

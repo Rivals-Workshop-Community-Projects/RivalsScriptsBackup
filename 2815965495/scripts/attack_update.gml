@@ -192,7 +192,7 @@ switch(attack){
 		if window == 3{
 			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 			move_cooldown[AT_NSPECIAL] = 12;
-			if window_timer == 1 {set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, get_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED)+1);}
+			if window_timer == 1 {set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, get_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED)+0.75);}
 		}
 		if window == 4{
 			can_fast_fall = false;

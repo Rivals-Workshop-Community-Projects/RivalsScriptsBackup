@@ -1,3 +1,36 @@
+if "is_css" not in self is_css = true;
+var temp_x = floor(x+10);
+var temp_y = floor(y+10);
+var alt = get_player_color(player);
+var charuuid = string(sprite_get("idle"));
+
+if ("css_char" not in self || css_char != charuuid) {
+drawtime = 0
+drawing = 1
+    css_char = charuuid;
+
+    introtime = 0
+    drawtime2 = -1
+}
+
+drawtime += 1 
+
+if drawtime2 >= 0 {
+    drawtime2 ++
+}
+introtime ++
+
+prev_alt = alt;
+
+draw_sprite_ext(sprite_get("CSS"), min(6, introtime/5),temp_x-2,temp_y-2,2,2,0,-1,1);
+
+if drawing > 3 {
+    drawing = 0
+}
+var alt = get_player_color(player);
+
+init_shader();
+
 //--- ---
 //
 // hyuponia's "ae" css code
@@ -281,4 +314,3 @@ draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argumen
 draw_set_alpha(argument[6]*1.5);
 draw_rectangle_color(argument[0]+2, argument[1]+2, argument[2]-2, argument[3]-2, argument[4], argument[4], argument[4], argument[4], false);
 draw_set_alpha(1);
-

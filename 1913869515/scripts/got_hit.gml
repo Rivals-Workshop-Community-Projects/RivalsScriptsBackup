@@ -30,9 +30,18 @@ reset_window_value(AT_TAUNT, 18, AG_WINDOW_SFX);
 
 
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
-	    if halo < (2 + (halox = 8)) {
-	    	halo ++
-	    }
+	
+	if halox < 8 {
+                halox += 1
+	   	ohalox = halox
+                halo = 2
+	 	ohalo = 2
+                dmhit = 0
+	 } else {
+	 	halo = 3
+	 	ohalo = 3
+                dmhit = 1
+	 }
 	    
 	         
 	hit_player_obj.hitstop += 20
@@ -46,7 +55,6 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
 	        take_damage(player,-1,floor(enemy_hitboxID.damage * -1))
 	        offense = 1
 	        offensetimer = 0
-	        dmhit = 2
             zcountered = 1
             window = 4
             window_timer = 4
@@ -81,9 +89,18 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
 }
 
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
-	     if halo < (2 + (halox = 8)) {
-	    	halo ++
-	    }
+	
+	 if halox < 8 {
+	   	halox += 1
+	   	ohalox = halox
+                halo = 2
+	 	ohalo = 2
+                dmhit = 0
+	 } else {
+	 	halo = 3
+	 	ohalo = 3
+                dmhit = 1
+	 }
 
 	    
 	    if zvoice != 0{

@@ -403,8 +403,8 @@ switch(attack){
 	break;		
 	case AT_BAIR:
 		if(window == 1){
+			reset_attack_value(AT_BAIR, AG_CATEGORY);
 			if(window_timer == 1){
-				reset_attack_value(AT_BAIR,AG_CATEGORY);
 				grab_target = noone;
 				bair_grab_projectile_box = noone;
 			}else if(window_timer == phone_window_end && !hitpause){
@@ -415,7 +415,7 @@ switch(attack){
 			with(pHitBox){
 				if(type == 2 && self != other && string_length(string(player_id.url)) > 0 && orig_player != 5){
 					var playerurl = real(player_id.url);
-					if("MorshuCanGrab" in self && MorshuCanGrab || playerurl < 20){
+					if("MorshuCanGrab" in self && MorshuCanGrab || playerurl < 20 || !transcendent && (("MorshuCanGrab" in self && MorshuCanGrab) || "MorshuCanGrab" not in self)){
 						var dist = point_distance(other.x-40*other.spr_dir, other.y, x, y); //distance
 						if(place_meeting(x,y,other.bair_grab_projectile_box) && !other.has_hit_player){
 							with(other){
@@ -465,8 +465,8 @@ switch(attack){
 	        if(window_timer == 9){
 	        	if(grabbed_Proj){
 		        	if(instance_exists(grab_target)){
-		        		grab_target.vsp = 6;
-		        		grab_target.hsp = 3*spr_dir;
+		        		grab_target.vsp = 9;
+		        		grab_target.hsp = 5*spr_dir;
 		        		grab_target.spr_dir = spr_dir;
 		        		grab_target.hit_priority = 1;
 		        	}
@@ -474,7 +474,7 @@ switch(attack){
 	        	}
 	        	if(!hitpause){
 	        		vsp = -6;
-	        	}old_hsp = 0;	        	
+	        	}old_hsp = 0;
 	        }
 	    }
 	break;
@@ -664,21 +664,19 @@ return newdust;
 #define Grab(xpos, ypos, xsmooth, ysmooth,target,isproj)
 {
 	if(instance_exists(target)){
-	    if(isproj || (!isproj && (target.state != PS_DEAD && target.hitstun > 0))){
+	    if(isproj || (!isproj && (target.state != PS_DEAD && target.hitstun > 0 && (target.state == PS_HITSTUN || target.state == PS_HITSTUN_LAND)))){
 		    if (xsmooth != 0){
 		        target.x += ((x + spr_dir * xpos) - target.x)/xsmooth;
 		        target.hsp = 0;
 		        target.old_hsp = 0;
-		        target.hitpause = true;
-		        target.hitstop = 1;        
 		    }
 		    if (ysmooth != 0){
 		        target.y += ((y + ypos) - target.y)/ysmooth;
 		        target.vsp = 0;
 		        target.old_vsp = 0;
-		        target.hitpause = true;
-		        target.hitstop = 1;
 		    }
+		    target.hitpause = true;
+		    target.hitstop = 1;		    
 	    }
 	}
 }

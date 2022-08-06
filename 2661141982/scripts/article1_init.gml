@@ -47,3 +47,8 @@ with player_id
     
     other.light_color = make_color_rgb(get_color_profile_slot_r(col,slot),get_color_profile_slot_g(col,slot),get_color_profile_slot_b(col,slot))
 }
+
+if (get_player_color( player ) == 10){
+    sprite_index = sprite_get("nspecialriptide_proj");
+    } else { sprite_index = sprite_get("nspecial2_proj"); }
+    

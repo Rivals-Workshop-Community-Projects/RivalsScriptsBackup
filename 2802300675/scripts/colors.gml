@@ -236,25 +236,25 @@ set_color_profile_slot( 20, 5, 152, 91, 198 ); //death
 set_color_profile_slot( 20, 6, 67, 33, 140 ); //death outline
 set_color_profile_slot( 20, 7, 219, 167, 255 ); //gas skull
 
-// white pikmin
-set_color_profile_slot( 21, 0, 231, 230, 233 ); //white
-set_color_profile_slot( 21, 1, 200, 185, 184 ); //white shad
-set_color_profile_slot( 21, 2, 247, 247, 247 ); //skin
-set_color_profile_slot( 21, 3, 195, 188, 186 ); //purple
-set_color_profile_slot( 21, 4, 190, 20, 41 ); //eye
-set_color_profile_slot( 21, 5, 255, 179, 235 ); //death
-set_color_profile_slot( 21, 6, 255, 0, 129 ); //death outline
-set_color_profile_slot( 21, 7, 255, 195, 252 ); //gas skull
+// undead
+set_color_profile_slot( 21, 0, 202, 198, 251 ); //white
+set_color_profile_slot( 21, 1, 123, 117, 201 ); //white shad
+set_color_profile_slot( 21, 2, 235, 235, 235 ); //skin
+set_color_profile_slot( 21, 3, 68, 101, 69 ); //purple
+set_color_profile_slot( 21, 4, 0, 0, 0 ); //eye
+set_color_profile_slot( 21, 5, 107, 79, 92 ); //death
+set_color_profile_slot( 21, 6, 36, 25, 34 ); //death outline
+set_color_profile_slot( 21, 7, 68, 48, 69 ); //gas skull
 
-// rin
-set_color_profile_slot( 22, 0, 230, 54, 56 ); //white
-set_color_profile_slot( 22, 1, 187, 24, 39 ); //white shad
-set_color_profile_slot( 22, 2, 234, 220, 199 ); //skin
-set_color_profile_slot( 22, 3, 83, 68, 72 ); //purple
-set_color_profile_slot( 22, 4, 217, 0, 40 ); //eye
-set_color_profile_slot( 22, 5, 89, 98, 255 ); //death
-set_color_profile_slot( 22, 6, 122, 218, 255 ); //death outline
-set_color_profile_slot( 22, 7, 223, 224, 255 ); //gas skull
+// white pikmin
+set_color_profile_slot( 22, 0, 231, 230, 233 ); //white
+set_color_profile_slot( 22, 1, 200, 185, 184 ); //white shad
+set_color_profile_slot( 22, 2, 247, 247, 247 ); //skin
+set_color_profile_slot( 22, 3, 195, 188, 186 ); //purple
+set_color_profile_slot( 22, 4, 190, 20, 41 ); //eye
+set_color_profile_slot( 22, 5, 255, 179, 235 ); //death
+set_color_profile_slot( 22, 6, 255, 0, 129 ); //death outline
+set_color_profile_slot( 22, 7, 255, 195, 252 ); //gas skull
 
 // alex
 set_color_profile_slot( 23, 0, 255, 255, 255 ); //white
@@ -281,4 +281,4 @@ set_color_profile_slot( 24, 7, 255, 255, 255 ); //gas skull
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"white","colors":[{"r":232,"g":224,"b":255,"main":true}]},{"name":"white shad","colors":[{"r":182,"g":158,"b":251,"main":true}]},{"name":"skin","colors":[{"r":68,"g":164,"b":115,"main":true},{"r":36,"g":117,"b":75},{"r":0,"g":85,"b":41}]},{"name":"purple","colors":[{"r":110,"g":103,"b":216,"main":true},{"r":67,"g":61,"b":164}]},{"name":"eye","colors":[{"r":69,"g":103,"b":225,"main":true},{"r":33,"g":71,"b":206}]},{"name":"death","colors":[{"r":152,"g":91,"b":198,"main":true},{"r":117,"g":40,"b":170},{"r":139,"g":62,"b":192}]},{"name":"death outline","colors":[{"r":55,"g":8,"b":87,"main":true}]},{"name":"gas skull","colors":[{"r":219,"g":167,"b":255,"main":true}]}]}
 === END JSON PALETTE ===
-
+*/

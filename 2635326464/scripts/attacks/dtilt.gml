@@ -4,7 +4,7 @@ set_attack_value(AT_DTILT, AG_CATEGORY, 2);
 set_attack_value(AT_DTILT, AG_OFF_LEDGE, 0);
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 
-// startup
+//startup
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -106,5 +106,5 @@ set_hitbox_value(AT_DTILT, 5, HG_HITBOX_X, -66);
 set_hitbox_value(AT_DTILT, 5, HG_HITBOX_Y, -11);
 
 
-set_attack_value(AT_DTILT, AG_MUNO_ATTACK_MISC_ADD, "You can use this move while dashing and preserve some of the speed. Has 10 frames of cooldown.");
+set_attack_value(AT_DTILT, AG_MUNO_ATTACK_MISC_ADD, "You can use this move while dashing and preserve some of the speed.");
 set_attack_value(AT_DTILT, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH)));

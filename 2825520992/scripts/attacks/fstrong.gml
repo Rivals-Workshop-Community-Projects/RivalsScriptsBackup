@@ -41,7 +41,7 @@ set_window_value(AT_FSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSTRONG, 2);
 
-set_hitbox_value(AT_FSTRONG, 1, HG_MUNO_HITBOX_NAME, "Initial Hit");
+
 
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
@@ -65,7 +65,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Finisher");
+
 
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 5);

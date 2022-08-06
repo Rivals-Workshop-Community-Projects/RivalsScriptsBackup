@@ -1,6 +1,18 @@
 ///
 
 
+knifecount = 5
+
+with pHitBox {
+	if player_id = other.id && type == 2 && attack != AT_FTHROW && hbox_num != 6 && hbox_num != 7 {
+		other.knifecount --
+	}
+}
+
+
+batt = max(0,knifecount - oknifelost)
+
+
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self

@@ -1,42 +1,35 @@
-//Fancy CSS template by Muno
-//Put in css_draw.gml
-
-shader_end();
-
-//GB Icon
-if (get_player_color(player) == 7){
-	//draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-} 
- 
-//if (get_color_profile_slot_r(0, 0) == 238) {
-    //sound_play(sound_get("cssvoice"));
-    //set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0) + 1, get_color_profile_slot_g(0, 0), get_color_profile_slot_b(0, 0));
-//}
-
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-var num_alts = 16;
+var num_alts = 28;
 var alt_cur = get_player_color(player);
 
 //Alt name init. var doesn't work with arrays lol
  
-alt_name[0]  = "Default";
+alt_name[0]  = "Tails";
 alt_name[1]  = "Sonic";
 alt_name[2]  = "Eggman";
-alt_name[3]  = "Bean / Jet";
+alt_name[3]  = "Jet";
 alt_name[4]  = "Monochrome";
 alt_name[5]  = "Blaze";
 alt_name[6]  = "Abyss";
-alt_name[7]  = "GB";
+alt_name[7]  = "Gameboy";
 alt_name[8]  = "Classic";
-alt_name[9]  = "Tempo";
-alt_name[10] = "Astra";
-alt_name[11] = "Cream";
-alt_name[12] = "Marine";
-alt_name[13] = "Rouge";
-alt_name[14] = "Chip";
-alt_name[15] = "Shadow";
+alt_name[9]  = "Rouge";
+alt_name[10] = "SATAM";
+alt_name[11] = "Pink";
+alt_name[12] = "Astra";
+alt_name[13] = "Cream";
+alt_name[14] = "Marine";
+alt_name[15] = "Chip";
+alt_name[16] = "Infamous";
+alt_name[17] = "Pure Gold";
+alt_name[18] = "Ranked Gold";
+alt_name[19] = "Champion";
+alt_name[20] = "Shadow";
+alt_name[21] = "Fiona";
+alt_name[22] = "Cosmo";
+alt_name[23] = "Unmapped";
  
 //Alt
  
@@ -49,27 +42,22 @@ for(i = 0; i < num_alts; i++){
 }
  
 draw_set_halign(fa_left);
- 
-//include alt. name
-//textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
- 
-//exclude alt. name
-//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
 
-//ricE's colorgrid css_draw stuffs.
-if (alt_cur < 16){
-	draw_sprite(sprite_get("colorgrid"),alt_cur,x + 8, y - 24);
-	draw_sprite(sprite_get("colorgrid_pagenum1"),alt_cur,x + 202, y - 28);
-} else {
-	draw_sprite(sprite_get("colorgrid_part2"),alt_cur,x + 8, y - 24);
-	draw_sprite(sprite_get("colorgrid_pagenum2"),alt_cur,x + 202, y - 28);
+shader_end();
+
+//Outlines
+if (get_player_color(player) == 7){
+	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
+}
+if (get_player_color(player) == 17){
+	draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
 }
 
 //Special Icons n shit
 if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
 } else if (get_player_color(player) == 7){
-	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
+	//draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
 	draw_sprite(sprite_get("css_icon_ea"),0,x+10,y+42);
 } else if (get_player_color(player) == 18){
 	draw_sprite(sprite_get("css_icon_ranked"),0,x+10,y+46);
@@ -78,11 +66,15 @@ if (get_player_color(player) == 6){
 		draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
 	}
 	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
-} 
+}
 
-//phone
-muno_event_type = 6;
-user_event(14);
+//include alt. name
+textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "" : "") + string(alt_cur+1) + ": " +  alt_name[alt_cur]);
+ 
+//exclude alt. name
+//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
+
+shader_end();
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

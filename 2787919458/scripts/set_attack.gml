@@ -18,6 +18,9 @@ if(instance_exists(shrek_door)){
 		window = 4;window_timer = 0;
 	}
 }
+if(attack == AT_BAIR){
+	set_attack_value(AT_BAIR,AG_CATEGORY,1);
+}
 if (attack == AT_JAB){
 	sound_stop(airhorn_sfx);
 	switch(get_player_color(player)){

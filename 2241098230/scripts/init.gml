@@ -127,7 +127,7 @@ set_victory_bg(sprite_get("victory_bg"));
 set_victory_theme(sound_get("victory_theme"));
 
 //Attacks with status effects
-hbox_apply_smoke = [[AT_FSTRONG, 1], [AT_USTRONG, 1], [AT_DSTRONG, 1], [AT_EXTRA_1, 1], [AT_EXTRA_1, 2], [AT_EXTRA_1, 3], [AT_DSPECIAL, 1], [AT_DSPECIAL, 2]];
+hbox_apply_smoke = [[AT_FSTRONG, 1], [AT_USTRONG, 1], [AT_DSTRONG, 1], [AT_EXTRA_1, 1], [AT_EXTRA_1, 2], [AT_EXTRA_1, 3], [AT_DSPECIAL, 1], [AT_DSPECIAL, 2],[AT_DSPECIAL_AIR, 1], [AT_DSPECIAL_AIR, 2], [AT_DSPECIAL_AIR, 3]];
 hbox_apply_smoke_consume = [[AT_UAIR, 3], [AT_FTHROW, 2], [AT_UTHROW, 2], [AT_FSPECIAL, 5], [AT_USPECIAL, 7]];
 hbox_throws = [[AT_UAIR, 2], [AT_UAIR, 3], [AT_FTHROW, 1], [AT_FTHROW, 2], [AT_UTHROW, 1], [AT_UTHROW, 2],
 [AT_FSPECIAL, 3],

@@ -1,15 +1,8 @@
-user_event(13);
-
-if burst = 1 && attack == AT_FSTRONG {
+if (burst = 1 && attack == AT_FSTRONG)
     attack = AT_FSTRONG_2;
-}
 
-if (attack == AT_DSPECIAL){
-	if free {
-		attack = AT_DSPECIAL_AIR;
-	}
-}
-
+if (attack == AT_DSPECIAL && free) 
+	attack = AT_DSPECIAL_AIR;
 
 //rioku - Strong visual effects
 switch (attack){

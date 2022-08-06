@@ -18,7 +18,7 @@ set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UTILT, 2);
 
-set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_NAME, "Front Hit");
+
 
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
@@ -36,7 +36,7 @@ set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
-set_hitbox_value(AT_UTILT, 2, HG_MUNO_HITBOX_NAME, "Back Hit");
+
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);

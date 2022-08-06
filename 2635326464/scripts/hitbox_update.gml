@@ -35,12 +35,10 @@ if (attack == AT_FSTRONG)  {
 
 	if (free) {
 		damage = 5;
-		kb_value = 4;
-		kb_scale = 0.6;
+		kb_value = 3;
 	} else {
 		damage = 9;
-		kb_value = 8;
-		kb_scale = 1.2;
+		kb_value = 6;
 	}
 }
 
@@ -94,6 +92,8 @@ if (attack == AT_USTRONG)  {
 		}
 	}
 }
+
+//Uair cooldown
 
 
 //fireball speed

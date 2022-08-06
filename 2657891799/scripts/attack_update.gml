@@ -207,7 +207,7 @@ switch attack {
                 window = 1
                 window_timer = 0
                 state_timer = 0
-                y += 40
+                y += 20
             }
         }
     }

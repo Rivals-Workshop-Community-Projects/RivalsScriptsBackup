@@ -105,20 +105,6 @@ if window == 4{
   }  
 }
 
-if window == 3 && window_timer >= 20 {
-	
-    
-    
-    
-      
-  	spawn_hit_fx(x + random_func(5,301,true) - 150,y + random_func(6,301,true) - 150, shit5 )
-  	
-  	create_hitbox(AT_DSPECIAL , 1 , x + random_func(1,201,true) - 100, y + random_func(2,151,true) - 200); 
-  	
-  	cut1 = spawn_hit_fx(x + random_func(1,201,true) - 100,y + random_func(2,401,true) - 200,302 )
-    cut1.pause = 4
-  
-} 
 
 
 }

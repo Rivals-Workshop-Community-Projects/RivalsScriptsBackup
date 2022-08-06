@@ -4,11 +4,11 @@ if (my_hitboxID.attack == AT_FTILT){
 
 	with(hit_player_obj){
 		painted = true;
-		air_max_speed =  0.5 * default_air_max_speed;
-		walk_speed =  0.5 * default_walk_speed;
-		dash_speed =  0.5 * default_dash_speed;
-		roll_forward_max = 0.5 * default_roll_forward_max; 
-		roll_backward_max = 0.5 * default_roll_backward_max;
+		//air_max_speed =  0.5 * default_air_max_speed;
+		//walk_speed =  0.5 * default_walk_speed;
+		//dash_speed =  0.5 * default_dash_speed;
+		//roll_forward_max = 0.5 * default_roll_forward_max; 
+		//roll_backward_max = 0.5 * default_roll_backward_max;
 	}
 }
 

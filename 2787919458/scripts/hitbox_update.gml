@@ -4,7 +4,7 @@ if(attack == AT_NSPECIAL){
 	    	theplanet.x = x; theplanet.y = y;
 	    with(asset_get("pHitBox")){
 	    	if(place_meeting(x,y,other.theplanet)){
-	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self){
+	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && !proj_break){
 	            	if("sanic_uspec_count" in player_id && attack != AT_BAIR || "sanic_uspec_count" not in player_id){
 		            	if(damage > 0 && kb_value > 0 && hit_priority > 0){
 		            		other.current_player = player;other.player = player;

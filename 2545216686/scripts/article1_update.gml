@@ -1,4 +1,4 @@
-//article1_update - runs every frame the article exists. Template by Muno
+//article1_update - runs every frame the article exists.
 
 //Used for Remote Robot
 

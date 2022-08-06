@@ -20,6 +20,23 @@ if halox > 0 {
 
 finishercd = 0
 
+if my_hitboxID.attack == AT_FTHROW {
+	
+	if my_hitboxID.hbox_num == 1 {
+      window = 5
+      window_timer = 0
+      pgfx = spawn_hit_fx( my_hitboxID.x, my_hitboxID.y, SC2)
+      pgfx.spr_dir = 0.7*spr_dir
+      pgfx.image_yscale = 0.7
+	}
+   
+         move_cooldown[AT_NSPECIAL] = 30
+   	     move_cooldown[AT_FTHROW] = 30
+
+}
+
+
+
 if my_hitboxID.attack == AT_UTHROW && hit_player_obj.free = false {
 	hit_player_obj.y -= 2
 }
@@ -98,19 +115,18 @@ if my_hitboxID.attack == AT_TAUNT && my_hitboxID.hbox_num < 8{
 }
 	
 		
-if dmhit < 5 && move_cooldown[AT_EXTRA_1] = 0  {
+if dmhit < 5 && move_cooldown[AT_EXTRA_1] = 0 {
 	dmhit += 1 
 }
 
-if move_cooldown[AT_EXTRA_1] == 0 move_cooldown[AT_EXTRA_1] = 8
+if move_cooldown[AT_EXTRA_1] == 0 move_cooldown[AT_EXTRA_1] = 8 
+if my_hitboxID.type == 2 move_cooldown[AT_EXTRA_1] += floor(hit_player_obj.hitstop)
 
-if my_hitboxID.attack == AT_BAIR {
+if attack == AT_BAIR {
 	move_cooldown[AT_EXTRA_1] = 0
 }
 
-if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 2 {
-	dmhit -= 1
-}
+
 
 if my_hitboxID.attack == AT_USTRONG  {
 	

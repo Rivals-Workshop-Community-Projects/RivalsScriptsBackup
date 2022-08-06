@@ -23,12 +23,17 @@ if (get_training_cpu_action() == CPU_FIGHT) {
                     spr_dir = 1;
                 set_attack(AT_FSPECIAL);
             }
+            //Dedede shouldn't use DSpecial if the drum is out.
+            move_cooldown[AT_DSPECIAL] += 2;
         }
     }
     
     //While attacking
     if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
         switch (attack) {
+            case AT_NSPECIAL_2: //Spit em out automatically
+                attack_pressed = true;
+            break;
             case AT_USPECIAL: //Move toward drum if USpecial is used
                 if (instance_exists(drum_near)) {
                     left_down = drum_near.x < x;

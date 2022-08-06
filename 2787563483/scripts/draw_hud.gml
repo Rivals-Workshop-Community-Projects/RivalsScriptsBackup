@@ -1,6 +1,6 @@
 //aaa
 
-if "init_var" not in owner exit
+//if "init_var" not in owner exit
 if get_stage_data(SD_ID) == 0 exit
 
 var life = sprite_get("life_bar")
@@ -20,9 +20,10 @@ var life_color_5 = $e83040
 var hurt_color = $2e2ead
 
 with oPlayer{
-	if "init_var" in self{
+	if !clone{
+	if "multiplayer_num" not in self exit
 		//draw_debug_text(floor(x), floor(y), string(was_reloaded))//get_state_name(state))
-		if (player == other.player) || ( other.kf_CPU_toggle == false && temp_level != 0 && player < 5) {
+		//if (player == other.player) || ( other.kf_CPU_toggle == false && temp_level != 0 && player < 5) {
 		var panel_color =  get_player_hud_color(player)
 		// 1/4 = ( view_get_wview()/8 + view_get_xview() )
 		// 1/3 = ( view_get_wview()/4 + view_get_xview() )
@@ -30,8 +31,8 @@ with oPlayer{
 		
 		var hud_width = 238
 		
-		var meter_x = view_get_wview()/2 + view_get_xview() - (multiplayer_num*hud_width/2) + hud_width*hud_number - 120 + kf_hud_shake_x //( view_get_wview()/8 + view_get_xview() + (player-1)*240) + kf_hud_shake_x
-		var meter_y = view_get_hview() + view_get_yview() - 56 + kf_hud_shake_y + kf_hud_offset
+		var meter_x = view_get_wview()/2 - (multiplayer_num*hud_width/2) + hud_width*hud_number - 120 + kf_hud_shake_x //( view_get_wview()/8 + view_get_xview() + (player-1)*240) + kf_hud_shake_x
+		var meter_y = view_get_hview() - 56 + kf_hud_shake_y + kf_hud_offset
 		
 		//print_debug(meter_x)
 		
@@ -69,11 +70,11 @@ with oPlayer{
 		        var health_bar_2 = life_color_4 
 		        break;
 		}
-			if got_hurt{
-		    	if got_hurt > 2{
+			if kf_got_hurt{
+		    	if kf_got_hurt > 2{
 		    		health_bar_2 = hurt_color
 		    	} else {
-		    		health_bar_2 = merge_color(hurt_color, c_ltgray, got_hurt/3 )
+		    		health_bar_2 = merge_color(hurt_color, c_ltgray, kf_got_hurt/3 )
 		    	}
 		    }
 		    
@@ -96,6 +97,8 @@ with oPlayer{
 		    draw_sprite_ext(life, 0, meter_x, meter_y, scale, scale, 0, panel_color, 1)
 		    if "kf_custom_icon" in self{
 		    	ability_icon = kf_custom_icon
+		    } else with other{
+		    	ability_icon = sprite_get("ability_icon")
 		    }
 		    draw_sprite_ext(ability_icon, copy_ability_id, meter_x - 43*scale, meter_y - 24*scale, scale, scale, 0, c_white, 1)
 		    
@@ -105,6 +108,9 @@ with oPlayer{
 		    draw_debug_text(ceil(meter_x - 20*scale), ceil(meter_y - 21*scale), string(kf_hud_name))
 		    draw_debug_text(ceil(meter_x + 17*scale), ceil(meter_y - 2*scale), string(kf_health_points) + "/" + string( kf_total_health ))
 		    //draw_debug_text(ceil(meter_x), ceil(meter_y - 64), string(health_tier))
-		}
-	}
+		    if temp_level != 0{
+				draw_debug_text(ceil(meter_x - 20*scale), ceil(meter_y - 28*scale), string(kf_cpu_title))
+			}
+		//}
+}
 }

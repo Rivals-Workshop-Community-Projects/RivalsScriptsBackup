@@ -2,6 +2,7 @@ if attack == AT_NSPECIAL {
 	state = 1;	
 	destroy_fx =154;
 	image_index = player_id.state_timer%4;
+	extra_trans = (player_id.state_timer-12)*1.5;
 	boom_timer = 0;
 	player_url = player_id.url;
 	if hbox_num == 1 {

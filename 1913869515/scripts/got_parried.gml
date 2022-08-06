@@ -10,10 +10,8 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
     y = hit_player_obj.y
 }
 
-if (my_hitboxID.attack == AT_NSPECIAL) {
-    parry_lag = 60;
-
-
+if (my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_FTHROW) {
+    parry_lag = 90;
 }
 
 

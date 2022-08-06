@@ -9,11 +9,7 @@ with oPlayer {
 
 if canceltime > 1 {
 	
-	if attack == AT_FSPECIAL {
-    prat_land_time = 8;
-	} else {
-	prat_land_time = 15;	
-	}
+
 	
 	if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack != AT_FSPECIAL  {
 		canceltime = 100
@@ -245,7 +241,7 @@ if timebreak > 0 {
 	
 }
 
-if timebreak == 1 {
+if timebreak == 1 && !hitpause {
 	spawn_hit_fx(x,y,lighten)
 	shake_camera(6,6)
 		sound_play(sound_get("sideb"),false,noone,0.7,1.3 + random_func(1,3,true)/20) 

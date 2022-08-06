@@ -2,7 +2,9 @@
 if dmhit < 0 {
 	dmhit = 0
 }
-
+if state == PS_PARRY_START {
+	noparryedit = 0
+}
 
 if zvoice != 0 && voicecd <= 0 && (state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP or state == PS_WALL_JUMP or state == PS_PARRY 
 or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FORWARD  or state == PS_TECH_BACKWARD) && state_timer == 1 {
@@ -17,6 +19,7 @@ or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FOR
     if state == PS_PARRY  {
      sound_stop(zvoice)	
     	zvoice = sound_play(sound_get("z5"),false,noone,.7,1.1 + 0.05 + random_func(1,6,true)/100);
+    	voicecd += 40
     }
 }
 
@@ -1641,12 +1644,15 @@ if move_cooldown[AT_UAIR] > 20 {
 	
 } 
 
-if state == PS_PARRY {
+if state == PS_PARRY && noparryedit == 0 {
 		free = false 
 		if state_timer > 2 && state_timer < 15 && !invincible{
 			window_timer -= 0.4
 		} else {
-			window_timer += .25
+			if state_timer == 15 {
+				window_timer = floor(window_timer) + 1
+			}
+			window_timer += .5
 		}
-	}
+}
 	

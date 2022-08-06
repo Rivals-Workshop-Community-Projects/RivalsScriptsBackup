@@ -44,7 +44,6 @@ if my_hitboxID.attack != AT_NSPECIAL  {
 
 if my_hitboxID.type == 1  {
  move_cooldown[AT_TAUNT] = 16
- batt += 1
  var halodmg = floor(my_hitboxID.damage/2)
     with hit_player_obj {
 		take_damage( player, -1 , floor(enemy_hitboxID.damage/-5))
@@ -124,6 +123,9 @@ if my_hitboxID.type == 1  {
 
 if my_hitboxID.attack == AT_FSPECIAL {
 	
+	if my_hitboxID.hbox_num <= 4 && my_hitboxID.enemies = 0{
+		create_hitbox(AT_FTHROW,1,my_hitboxID.x,my_hitboxID.y)
+	}
 	       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
        			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
        			

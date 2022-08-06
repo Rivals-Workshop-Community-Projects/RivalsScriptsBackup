@@ -101,13 +101,14 @@ if zvoice != 0 && !hitpause && 	voicecd <= 0{
         	}
         break; 
         
-        case AT_NSPECIAL  :
+        case AT_FTHROW  :
             if window == 1 && window_timer == 1 {
         		sound_stop(zvoice)
         		zvoice = sound_play(sound_get("z1"),false,noone,.8,.95 + 0.05 + random_func(1,6,true)/100);
         	}
-        	if window == 3 && window_timer == 1 {
-        		zvoice = sound_play(sound_get("z5"),false,noone,.7,1.15 + 0.05 + random_func(1,6,true)/100);
+        	
+        	if window == 1 && window_timer == 12 {
+        		zvoice = sound_play(sound_get("z2"),false,noone,.7,1 + 0.05 + random_func(1,6,true)/100);
         	}
         break; 
         
@@ -195,6 +196,37 @@ if zvoice != 0 && !hitpause && 	voicecd <= 0{
        
 }
 
+if attack == AT_FTHROW {
+	if special_down && window = 1 && window_timer == 10 && halox == 8 && halo == 3 && !free {
+		attack_end()
+		set_attack(AT_UTHROW)
+		window = 1 
+		window_timer = 0
+		RCEstart = spawn_hit_fx(x,y-40,SC)
+		RCEstart.depth = depth + 2
+		sound_play(sound_get("counterhit"));
+	}
+	
+	if window == 1 && window_timer == 12 && !hitpause {
+    	spawn_hit_fx( x + (105*spr_dir), y - 32, SCF1)
+    	sound_play(sound_get("SpaceCut"),false,noone,1,1.2);
+    	
+    	if halo > 0 {
+    		spawn_hit_fx(x - 20*spr_dir ,y - 60,shit5)
+    		sound_play(sound_get("counterhit"),false,noone,1,.7);
+    		shake_camera(4,4)
+    		pgfx = spawn_hit_fx( x + (100*spr_dir), y - 30, SC2)
+            pgfx.spr_dir = 0.8*spr_dir
+		    pgfx.image_yscale = 0.8
+		      	create_hitbox(AT_FTHROW,2,x + 100*spr_dir,y - 30)
+		      	halo -= 1
+    	}
+	}
+	
+
+}
+
+
 if attack == AT_UTHROW {
 	voicecd = 120
 	hsp /= 1.1
@@ -212,6 +244,7 @@ if attack == AT_UTHROW {
     vsp = 0
     
     if window = 1 && !hitpause {
+    	oldx = floor(x)
         if window_timer % 10 == 0 or window_timer == 1 {
              spawn_base_dust(x,y - 0,"land",spr_dir);
         }
@@ -244,7 +277,6 @@ if attack == AT_UTHROW {
 
 
         if window_timer == 1 {
-        	y -= 2
         	if zvoice != 0 {
         		sound_stop(zvoice)
         		zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + 0.05 + random_func(1,6,true)/100);
@@ -265,6 +297,7 @@ if attack == AT_UTHROW {
     }
     
     if window = 2 && !hitpause {
+    	x = oldx
         draw_indicator = false
         if window_timer == 1  {
         	spawn_hit_fx( x + (40 * spr_dir) , y - 50 , shit7 )
@@ -299,6 +332,18 @@ if attack == AT_UTHROW {
             }
             
         }
+        
+        if window_timer >= 20 {
+    
+         	spawn_hit_fx(x + random_func(5,301,true) - 150,y + random_func(6,301,true) - 150, shit5 )
+         	
+         	create_hitbox(AT_DSPECIAL , 1 , x + random_func(1,201,true) - 100, y + random_func(2,151,true) - 200); 
+         	
+         	cut1 = spawn_hit_fx(x + random_func(1,201,true) - 100,y + random_func(2,401,true) - 200,302 )
+           cut1.pause = 4
+         
+       } 
+
     }
 
 
@@ -627,11 +672,6 @@ if attack == AT_UTILT && window == 1 && window_timer == 1{
 
 
 
-if attack == AT_NSPECIAL and window == 1 and window_timer == 1 and !free {
-
-	hsp = -7 * spr_dir 
-	
-}
 
 
 
@@ -914,7 +954,11 @@ set_hitbox_value(AT_USPECIAL, 6, HG_DAMAGE, 4);
 
 
 if (attack == AT_NSPECIAL){
-
+	
+    if window == 1 {
+    	attack = AT_FTHROW
+    }
+    
     if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
        hit_player_obj.x += floor((x + 100*spr_dir - hit_player_obj.x)/4)
     	hit_player_obj.y += floor((y - 10 - hit_player_obj.y)/4)
@@ -1288,7 +1332,6 @@ if (attack == AT_DSTRONG && get_player_color(player) == 4){
 if (attack == AT_JAB){
 	nrange = 1
 	zcountered = 0
-    
     if window == 3 or window == 6 {
     	if (left_down && spr_dir = 1) or (right_down && spr_dir = -1) {
     		if attack_down {
@@ -1309,7 +1352,7 @@ if (attack == AT_JAB){
         if (special_pressed){
         move_cooldown[AT_NSPECIAL] = 0
             set_attack(AT_NSPECIAL)
-			window = 7;
+			window = 8;
 			window_timer = 0;
             sound_play(sound_get("counterhit"));
            if zvoice != 0 {

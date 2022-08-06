@@ -1,6 +1,12 @@
 switch(attack)
 {
 	case AT_BAIR:
+		/*if (hitbox_timer <= 1)
+		{
+			old_dir = player_id.spr_dir;
+		}
+		var red = spawn_hit_fx(x - (11 * spr_dir), y, player_id.trail2)
+		red.spr_dir = old_dir;*/
 		if (instance_exists(player_id.stopwatch))
 		{
 			if (place_meeting(x,y,player_id.stopwatch) and freeze_lockout != 2 and player_id.player == player)
@@ -48,6 +54,15 @@ switch(attack)
 		}
 		break;
 	case AT_NSPECIAL:
+		/*if (hitbox_timer <= 1)
+		{
+			old_dir = player_id.spr_dir;
+		}
+		if ((instance_exists(player_id.stopwatch) and !place_meeting(x,y,player_id.stopwatch)) or !instance_exists(player_id.stopwatch))
+		{
+			var blue = spawn_hit_fx(x + (11 * spr_dir), y, player_id.trail1);
+			blue.spr_dir = old_dir;
+		}*/
 		if (instance_exists(player_id.stopwatch))
 		{
 			if (place_meeting(x,y,player_id.stopwatch) and freeze_lockout != 2 and player_id.player == player)

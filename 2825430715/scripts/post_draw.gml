@@ -70,8 +70,8 @@ with oPlayer {
     shader_start();
     if "KOdusted" in self {
       if KOdusted > 0 {
-          draw_sprite_ext(dustspr,dustimg,dustx,dusty - (60 - KOdusted)/3,dustdir * (1 + small_sprites),1 + small_sprites,0,-1, KOdusted/90 )  
-          if get_gameplay_time() % floor((100 - KOdusted)/15) == 0  {
+          draw_sprite_ext(dustspr,dustimg,dustx - 10 + random_func(1,21,true),dusty  - 10 + random_func(2,21,true),dustdir * (1 + small_sprites),1 + small_sprites,0,-1, KOdusted/90 )  
+        if get_gameplay_time() % floor((100 - KOdusted)/15) == 0 && (state == PS_DEAD or state == PS_RESPAWN) {
           dfx =  spawn_hit_fx(dustx - random_func(1,80,true) + 40,dusty - random_func(2,80,true) - (60 - KOdusted)*2,13)
           dfx.pause = 0
           dfx.spr_dir =.5

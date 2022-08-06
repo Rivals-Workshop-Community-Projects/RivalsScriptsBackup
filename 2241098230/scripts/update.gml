@@ -3,6 +3,11 @@ if (state == PS_DASH || state == PS_DASH_TURN) {
     hurtboxID.sprite_index = crouchbox_spr
 }
 
+if (state == PS_DASH && (state_timer % 10 == 0 or state_timer == 1))  {
+    sound_stop(asset_get("sfx_dash_start"))
+    sound_play(asset_get("sfx_dash_start"),false,noone,0.6, 1 + random_func(1,30,true)/100)
+}
+
 if (speedboost_timer > 0) {
 	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 		speedboost_timer --;

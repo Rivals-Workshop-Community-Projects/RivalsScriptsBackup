@@ -542,6 +542,7 @@ if (attack == AT_USPECIAL){
 
 if (attack == AT_DSPECIAL){	
 	if(window == 1){
+		gooeyPPLHit = 0;
 		cutter_proj_dir_selected = 0;
 		if (free){
 			set_window_value(AT_DSPECIAL, 6, AG_WINDOW_TYPE, 7);
@@ -605,12 +606,51 @@ if (attack == AT_DSPECIAL){
 		  	}
 		  	
     	}
+		
+		if (window == 4 || window == 5 || (window == 7 && window_timer < 8)){
+			//fuck
+			gooeyPPLHit = 0;
+			with(oPlayer){
+				if(state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+					if(gooeyOpponentShouldBeVisisbleTimer > 1){
+						//print(get_char_info(player, INFO_STR_NAME) + "HELP");
+						visible = false;
+						x = other.x;
+						y = other.y;
+					}
+				}
+			}
+		} else if (window == 7 && window_timer > 7){
+			with(oPlayer){
+				if(state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+					if(gooeyOpponentShouldBeVisisbleTimer > 1){
+						//print(get_char_info(player, INFO_STR_NAME) + "HELP");
+						visible = true;
+					}
+				}
+			}
+		}
+		
+		if (window == 6){
+			with(oPlayer){
+				if(state == PS_HITSTUN || state == PS_HITSTUN_LAND){
+					if(gooeyOpponentShouldBeVisisbleTimer > 1){
+						//print(get_char_info(player, INFO_STR_NAME) + "HELP");
+						visible = true;
+						x = other.x;
+						y = other.y;
+						hitstop = 0;
+						set_state(PS_IDLE_AIR);
+					}
+				}
+			}
+		}
     	
     	if window == 7 {
     		if window_timer < 7 {
     			grabbed_player_obj.hitstop = 2;
     			grabbed_player_obj.hitstop_full = 2;
-   				grabbed_player_obj.x = x + (spr_dir * 40);
+   				grabbed_player_obj.x = x;
     			grabbed_player_obj.y = y;
     		}
 			if (window_timer == 6){

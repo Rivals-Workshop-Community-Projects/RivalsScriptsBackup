@@ -358,7 +358,7 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 1910573552: //Green Arrow
 				case 2118432867: //The Invincible Iron Man
 				case 2607332790: //A Wii with a Gun
-				case 2108895293: //Lyca
+				case 2167624888: //Lyca
 				case 1885711901: //KOS-MOS v1.0
 				case 2287107238: //Jett
 				case 2596284015: //Setsuka Chiebukuro

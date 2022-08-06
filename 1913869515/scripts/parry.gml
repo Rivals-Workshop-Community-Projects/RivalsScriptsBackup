@@ -5,6 +5,8 @@ shake_camera(4, 12)
 
 	move_cooldown[AT_EXTRA_3] = 200
 	
+	voicecd = 0
+	
 	if halox < 8 {
 	   	halox += 1
 	 } else {
@@ -33,3 +35,8 @@ shake_camera(4, 12)
             zvoice = sound_play(sound_get("tauntU"),false,noone,1,1 + random_func(1,5,true)/100);
         }
 	 }
+	 
+	 
+	 
+window_timer = floor(window_timer)
+noparryedit = 15

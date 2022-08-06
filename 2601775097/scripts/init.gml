@@ -274,7 +274,7 @@ bar_hit_fx_pause = false;         //setting this to true makes the hit effect hi
 my_day = 25;
 my_month = 10;
 birthboy = (current_day == my_day && current_month = my_month);
-bibical = (get_match_setting(SET_SEASON) == 3 && !birthboy);
+bibical = (get_match_setting(SET_SEASON) == 3 && !birthboy && alt_cur == 16);
 
 //flash color
 light_col = make_colour_rgb(get_color_profile_slot_r(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6), get_color_profile_slot_g(alt_cur, 6));
@@ -416,8 +416,14 @@ mp_cost_const_rate = 5; //for burning fury and polaris' buffed states
 was_free = free;
 
 
+
+//record skill data
 skill_script_type = 0;
 user_event(2);
+
+//saves skill data in case it's needed
+if (get_synced_var(player) != 12816) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
+
 
 skill = [0]; //this array checks all the attacks
 a = 0; //array start
@@ -437,30 +443,6 @@ AT_SKILL8  = set_skill("Ember Fist", 8, 0, 2, AT_DSPECIAL_2, -1, 20, 0, 20);
 AT_SKILL9  = set_skill("Light Hookshot", 9, 1, 2, AT_EXTRA_2, -1, 5, 15, 20);
 AT_SKILL10 = set_skill("Searing Descent", 10, 2, 2, AT_EXTRA_3, -1, 10, 10, 10);
 AT_SKILL11 = set_skill("Chasm Burster", 11, 3, 2, AT_EXTRA_1, -1, 5, 25, 30);
-
-
-//LIVE VERSION STUFF
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-cur_skills = [0, 1, 2, 3];        //sets the current skills to use
-prev_skills = [0, 1, 2, 3];       //sets the previous selected skills
-cur_select = 0;                     //-1 = cancel | 0-3 = specials | 4 = overwrite prev selection with new one
-menu_dir = 0;                       //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = jump | -2 = attack/special
-
-menu_active = !playtesting;         //whenever the menu is active, this is true
-is_practice_menu = false;           //will activate with the taunt input in training mode to allow skill info mode
-info_mode_menu = false;             //will activate when the skill descriptions are active, also adds inputs
-
-//won't need these
-menu_timer_stop = 20                //decides how long bar will stand still before being free
-menu_timer = menu_timer_stop + 4;   //with added menu delay so the game won't accidentally register inputs
-menu_invince = 60*4;                //might not be needed
-
-menu_cursor_timer = 0;              //for the selection curstors
-menu_cursor_speed = 0.2             //animation speed
-*/
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 AT_SELECT = 3;                      //select attack
 

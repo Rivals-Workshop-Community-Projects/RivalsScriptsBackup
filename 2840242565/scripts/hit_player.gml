@@ -158,7 +158,16 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
 	
 	var fx = spawn_hit_fx(lerp(my_hitboxID.x,hit_player_obj.x, 0.5), lerp(my_hitboxID.y,hit_player_obj.y - (hit_player_obj.char_height/2), 0.5), 301);
     fx.depth = hit_player_obj.depth - 1;
-	
+
+	hit_player_obj.gooeyOpponentShouldBeVisisbleTimer = 0;
+
+	gooeyPPLHit++;
+	print(gooeyPPLHit);
+
+	if(hit_player_obj.url != url){
+		hit_player_obj.gooeyOpponentShouldBeVisisbleTimer = 15*gooeyPPLHit;
+	}
+
 	if (!free){
 		hsp = 0;
 		old_hsp = 0;
@@ -196,5 +205,10 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
 if (my_hitboxID.attack == AT_DSPECIAL){
 	if (my_hitboxID.hbox_num == 2){
 		sound_play(sfx_krdl_spit);
+		grabbed_player_obj.gooeyOpponentShouldBeVisisbleTimer = 0;
+		if (grabbed_player_obj.visible = false){
+			grabbed_player_obj.visible = true;
+		}
+		grabbed_player_obj = noone;
 	}
 }

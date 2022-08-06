@@ -213,6 +213,10 @@ bubble_x = 0;
 bubble_y = 8;
 
 //Compatibility
+Hikaru_Title = "Who, Me?";
+arena_title = "Oblivious Tongue Twsiter";
+battle_text = "Gooey stares at you... MENACINGLY!"
+otto_bobblehead_sprite = sprite_get("gooey_bobble_head"); 
 kf_custom_icon = sprite_get("ability_goo");
 kf_hud_name = "Gooey";
 
@@ -243,7 +247,10 @@ strong_fspecial = false;
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
-
+with(oPlayer){
+gooeyOpponentShouldBeVisisbleTimer = 0;
+}
+gooeyPPLHit = 0;
 cutter_proj_dir_selected = 0;
 
 // Muno template: (don't change)

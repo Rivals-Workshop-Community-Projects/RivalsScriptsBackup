@@ -1,4 +1,5 @@
-// empty
+/*
+/ empty
 switch (get_player_color(player))
 {
     //case 1: // Comic Book Shading for OG Colors

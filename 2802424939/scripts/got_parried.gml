@@ -5,7 +5,7 @@ if(instance_exists(stopwatch))
 if(my_hitboxID.attack == AT_BAIR){
     my_hitboxID.was_parried = true;
     my_hitboxID.hsp *= 1.5;
-    my_hitboxID.length = 45;
+    my_hitboxID.hitbox_timer = 0;
     with(pHitBox){
         if(player_id == other and (attack == AT_BAIR) and was_parried == false){
             player = other.hit_player;
@@ -27,7 +27,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
     my_hitboxID.was_parried = true;
     my_hitboxID.hsp *= 1.5;
     my_hitboxID.hitbox_timer = 0;
-    my_hitboxID.length = 60;
     with(pHitBox){
         if(player_id == other and (attack == AT_NSPECIAL) and was_parried == false){
             player = other.hit_player;

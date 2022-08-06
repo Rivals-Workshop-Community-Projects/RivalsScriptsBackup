@@ -61,6 +61,7 @@ sprite_change_offset("nspecial_2", 164, 222);
 sprite_change_offset("fspecial", 60, 80);
 sprite_change_offset("fspecial_2", 164, 222);
 sprite_change_offset("uspecial", 84, 110);
+sprite_change_offset("uspecial_overlay", 84, 84);
 sprite_change_offset("uspecial_2", 164, 222);
 sprite_change_offset("dspecial", 164, 190);
 sprite_change_offset("dspecial2", 164, 190);

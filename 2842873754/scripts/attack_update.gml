@@ -52,6 +52,10 @@ switch (attack){
 			}
 		break;
 		case AT_DATTACK:
+			if (attack == AT_DATTACK && window == 2 && window_timer == 2 && !hitpause)
+			{
+				shake_camera(8, 3);
+			}
 			if (window <= 2) {
 				if (has_rune("D")) super_armor = true;
 			}
@@ -68,9 +72,6 @@ switch (attack){
 		case AT_DSTRONG:
 			if (has_rune("G")) {
 				super_armor = window <= 2;
-			}
-			if(window == 2 && window_timer = get_window_value(AT_USTRONG, window, AG_WINDOW_SFX_FRAME) && !hitpause){
-				sound_play(sound_get("sfx_dedede_dstrong"))
 			}
 			
 			if (has_rune("I")) {
@@ -137,6 +138,10 @@ switch (attack){
 		break;
 		
 		case AT_FSTRONG:
+			if (window == 2 &&window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
+			{
+				shake_camera(8, 3);
+			}
 			if (window == 1) {
 				grabbed_player_obj = noone; 
 			}
@@ -171,7 +176,7 @@ switch (attack){
 	    		if (window == 3) { 
 	    		    if (window_timer >= 0 && window_timer <= window_length) {
 	        			pull_to_x = 37 * spr_dir;
-	        			pull_to_y = -8;
+	        			pull_to_y = -32;
 	    		    }
 	    		}
 	    		
@@ -359,8 +364,8 @@ switch (attack){
 			else if (instance_exists(sucked_player_obj)) {
 	    		sucked_player_obj.hitstop = 2;
 	    		sucked_player_obj.hitpause = true;
-	    		sucked_player_obj.x = x;
-	    		sucked_player_obj.y = y - 32;
+	    		sucked_player_obj.x = x + 24 * spr_dir;
+	    		sucked_player_obj.y = y - 48;
 	    		sucked_player_obj.visible = false;
 	    		sucked_player_obj.invincible = true;
 	    		sucked_player_obj.invince_time = 2;

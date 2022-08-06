@@ -36,6 +36,7 @@ alt_name[13] = "Koumajou Densetsu";
 alt_name[14] = "Melty Blood";
 alt_name[15] = "Time Lord";
 alt_name[16] = "The World";
+alt_name[17] = "Yumeko";
  
 //Patch
  

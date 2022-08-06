@@ -14,16 +14,6 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
         soft_armor = 8;
     }
 }
-
-if (attack == AT_FSTRONG && window == 3 && window_timer == 2 && !hitpause)
-{
-	shake_camera(8, 3);
-}
-
-if (attack == AT_DATTACK && window == 3 && window_timer == 0 && !hitpause)
-{
-	shake_camera(8, 3);
-}
 current_sprite_set = masked ? 1 : 0;
 //Suck effect
 

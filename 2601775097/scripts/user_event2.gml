@@ -31,9 +31,9 @@ switch (skill_script_type)
         menu_close_delay = menu_close_delay_reset;
 
         //selected skills
-        cur_skills = [0, 1, 2, 3];          //sets the current skills to use
-        if (get_synced_var(player) != 0) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
+        cur_skills = [0, 1, 2, 3];          //sets the current skills to use (the loading skills code is on css_init.gml [line 91] and init.gml [line 423])
         prev_skills = [0, 1, 2, 3];         //sets the previous selected skills
+        
         cur_select = 0;                     //-1 = cancel | 0-3 = specials | 4 = overwrite prev selection with new one
         menu_dir = 0;                       //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = jump | -2 = attack/special
 
@@ -248,12 +248,6 @@ switch (skill_script_type)
         }
         break;
 }
-
-//current issues:
-//  - add a 20 frame delay between the menu disabling
-//  - bar stays standing in spawn state after using the skill select in practice mode
-//  - info mode doesn't function yet
-
 
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 

@@ -16,7 +16,7 @@ set_window_value(49, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_num_hitboxes(49, 0);
 
-set_hitbox_value(49, 1, HG_MUNO_HITBOX_NAME, "Starman");
+//set_hitbox_value(49, 1, HG_MUNO_HITBOX_NAME, "Starman");
 
 set_hitbox_value(49, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(49, 1, HG_WINDOW, 1);

@@ -26,7 +26,7 @@ set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FAIR, 3);
 
-set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_NAME, "Multihit 1");
+
 
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
@@ -50,7 +50,7 @@ set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, 1);
 
-set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_NAME, "Multihit 2");
+
 
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
@@ -61,7 +61,7 @@ set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 45);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -15);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 2);
 
-set_hitbox_value(AT_FAIR, 3, HG_MUNO_HITBOX_NAME, "Launcher");
+
 
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 3);

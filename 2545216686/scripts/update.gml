@@ -1,9 +1,5 @@
 //update.gml
 
-//munophone
-muno_event_type = 1;
-user_event(14);
-
 // Intro stuff
 if (introTimer2 < 3) {
     introTimer2++;
@@ -22,22 +18,6 @@ if (introTimer < 17) {
     //draw_indicator = true;
 }
 // this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
-
-//Infinite Flight Cheat Code
-//phone_flight = phone_cheats[cheat_flight];
-if (phone_flight == 1){
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sfx_flight_cheat);
-} else {
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sfx_flight);
-}
-
-//Infinite Dive Cheat Code
-//phone_dive = phone_cheats[cheat_dive];
-if (phone_dive == 1){
-	set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
-} else {
-	set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
-}
 
 //Changing the portrait for alts that change outline colors.
 if (get_player_color( player ) == 7){

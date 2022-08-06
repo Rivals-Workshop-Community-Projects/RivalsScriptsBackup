@@ -297,7 +297,7 @@ switch attack {
     }
     
         
-    if window == 1 && window_timer == 12 && !hitpause {
+    if window == 1 && window_timer == 10 && !hitpause {
         sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,0.9 + random_func(1,3,true)/20)
     }
     
@@ -814,6 +814,13 @@ switch attack {
         }
         
          if left_down or right_down {
+         	 ais1 = sprite_index
+            aii1 = image_index
+            aix1 = x
+            aiy1 = y
+            aisd1 = spr_dir
+            aid1 = 30
+            
             move_cooldown[AT_NSPECIAL] = 60
              sound_play(sound_get("sideb"),false,noone,1,0.9 + random_func(1,3,true)/20)
              create_hitbox(AT_NSPECIAL,8,x,y)
@@ -827,9 +834,10 @@ switch attack {
                 spr_dir = 1
             }
         set_attack(AT_FSPECIAL)    
-           window = 2
+           window = 3
            window_timer = 0
-
+           x += 120 * spr_dir 
+           hsp = 5*spr_dir
         }
         
         
@@ -881,7 +889,6 @@ switch attack {
     
     case AT_FSPECIAL :
     
-     prat_land_time = 5;
 	 set_attack_value(AT_FAIR, AG_CATEGORY, 2);
      set_attack_value(AT_NAIR, AG_CATEGORY, 2);
      set_attack_value(AT_BAIR, AG_CATEGORY, 2);
@@ -893,14 +900,45 @@ switch attack {
         
            can_fast_fall = false
         
-        if window == 3 {
-            can_attack = true
-            can_strong = true   
-            can_ustrong = true    
+        if window == 2 && window_timer == 4 {
+             	y -= 2
+            	vsp = -2
+            	hsp = 4*spr_dir
+            if !left_down && !right_down && !down_down && !up_down {
+            	set_attack(AT_NAIR)
+            	window = 4
+            	window_timer = 0
+            	prat_land_time = 20
+            }
+            if (left_down && !right_down && spr_dir == -1) or (!left_down && right_down && spr_dir == 1) {
+            	set_attack(AT_FAIR)
+            	window = 2
+            	window_timer = 0
+            	prat_land_time = 35
+            }
+            if (left_down && !right_down && spr_dir == 1) or (!left_down && right_down && spr_dir == -1) {
+            	set_attack(AT_BAIR)
+            	window = 1
+            	window_timer = 6
+            	prat_land_time = 25
+            }
+            if up_down && !down_down {
+            	set_attack(AT_UAIR)
+            	window = 2
+            	window_timer = 0
+            	prat_land_time = 25
+            }
+            if !up_down && down_down {
+            	set_attack(AT_DAIR)
+            	window = 2
+            	window_timer = 0
+            	prat_land_time = 25
+            }
+            
             move_cooldown[AT_FSPECIAL_2] = 5
             
             if window_timer > 10 && !free {
-               set_state(PS_PRATLAND)
+               set_state(PS_PRATFALL)
 		       state_timer = 0
             }
         }
@@ -935,7 +973,7 @@ switch attack {
             aiy2 = y
             aisd2 = spr_dir
             aid2 = 30
-            hsp = 80*spr_dir    
+            hsp = 50*spr_dir    
             
             spawn_base_dust(x, y, "dash_start", spr_dir)
             spawn_base_dust(x , y, "dash", spr_dir)

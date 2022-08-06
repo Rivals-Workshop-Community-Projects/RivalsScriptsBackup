@@ -2,16 +2,6 @@ sprite_change_offset("life_bar", 48, 24);
 //sprite_change_offset("ability_icon", 12, 24);
 sprite_change_offset("life_bar_gauge", 32, 16);
 
-kf_CPU_toggle = true
-hit_sfx = sound_get("0064")
-ko_sfx = sound_get("0065")
-kf_custom_icon = sprite_get("kf_custom_icon")
-dream_friend_1 = sprite_get("bandana_waddle_dee")
-dream_friend_2 = sprite_get("king_dedede")
-dream_friend_3 = sprite_get("meta_knight")
-
-depth = -2400
-image_alpha = 0;
 
 // (>'.')>  Compatibility: <('.'<) //
 
@@ -66,6 +56,16 @@ image_alpha = 0;
 //  To change the height of the lifebar (in case it's obstructed by the character's HUD), put...
 //
 //  kf_hud_offset = X
+//
+//  ... in init.gml. X is the amount of pixels to add/subtract.
+
+// ---------------------------------------------------------------------
+
+//- (For custom stages) Wall offset:
+//  To change the position of the invisible walls, put...
+//
+//  kf_left_wall_offset = X
+//  kf_right_wall_offset = X
 //
 //  ... in init.gml. X is the amount of pixels to add/subtract.
 
@@ -149,6 +149,5 @@ image_alpha = 0;
 
 //63 - WRESTLER
 
-//Note: Not implemented yet. Using them would loop all the way around to Normal and Beam. 
 //64 - RANGER 
 //65 - DRILL

@@ -772,6 +772,9 @@ if (attack == AT_USPECIAL){
 	if (window == 1 && window_timer == 1) { 
     	grabbedid = noone; 
     }
+    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME)) {
+    	sound_play(asset_get("sfx_zetter_fireball_fire"));
+    }
    can_fast_fall = false;
    can_move = false;
    can_wall_jump = true;
@@ -840,14 +843,29 @@ if (attack == AT_USPECIAL){
 if (attack = AT_DSPECIAL) {
 	can_move = false;
 	can_fast_fall = false;
-}
-if (attack = AT_DSPECIAL && window == 2 || window == 3 || window == 4) {
 	move_cooldown[AT_DSPECIAL] = 25;
-	can_wall_jump = true;
-	djumps = 0;
-	off_edge = true;
+	if (window == 1 && window_timer == 5){
+		sound_play(asset_get("sfx_forsburn_spew_end"));
+	}
 }
 
+if (attack == AT_DSPECIAL_AIR) {
+	can_wall_jump = true;
+	djumps = 0;
+	can_move = false;
+	can_fast_fall = false;
+	if (window == 5 ){
+		if (window_timer == 1 && !has_hit){
+		sound_play(asset_get("sfx_blow_medium2"));
+		}
+	}
+	if (!free && window == 3){
+		destroy_hitboxes()
+		window = 5;
+		window_timer = 0;
+	} 
+//off_edge = true;
+}
 //Old DSpecial
 // if (attack == AT_DSPECIAL){
 // 	if (window == 1) {
@@ -930,4 +948,3 @@ smoke.smoke_speed_max = _spd_max;
 smoke.smoke_friction = _frict;
 
 return smoke;
-
