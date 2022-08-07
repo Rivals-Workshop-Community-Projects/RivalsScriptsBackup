@@ -250,6 +250,10 @@ in a Patch.
 
 // other patches go here...
 
+initPatch("1.5", "August 6, 2022"); // (replace the date lol)
+initHeader("Buffs:");
+initSection("Added Po & Gumbo compatibility");
+
 initPatch("1.4", "July 4, 2022"); // (replace the date lol)
 initSection("fixed some hitpause nonsense");
 initSection("removed hitpause scaling on uair 1")
@@ -292,7 +296,7 @@ initSection("Scruff0");
 initHeader("SFX from");
 initSection("Dungeon Fighter Online, Vine Boom");
 initHeader("Compatible with");
-initSection("literally nothing lmao");
+initSection("Po & Gumbo");
 
 
 

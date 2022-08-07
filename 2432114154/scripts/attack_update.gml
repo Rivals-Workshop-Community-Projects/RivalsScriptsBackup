@@ -241,7 +241,9 @@ if isyellow && !hitpause {
      
     if window == 1 && window_timer == 1 {
         sound_play(asset_get("sfx_forsburn_disappear"))
-        
+        	if string_lower(get_player_name(player)) == "blue" {
+        		 sound_play(sound_get("fiteme"))
+        	}
     }
     
     if window == 4 && window_timer == 59 {

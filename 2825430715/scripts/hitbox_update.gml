@@ -173,37 +173,31 @@ if attack == AT_DTHROW && hbox_num == 1 {
 		hitdetect = collision_circle( x, y , 44, other, true, true ) 
 	if hitdetect != noone && type == 1 && player_id != other.player_id && hit_priority > 0 {
            hitbox_lifetime = -5
-           image_xscale += .2
-           image_yscale += .2       
-            with player_id {
-               invincible = true 
-               invince_timer = 15 
-               old_vsp = vsp 
-               old_hsp = hsp
-               hitpause = true 
-               hitstop = 20
-            }
-
-    	    with other {       		
+           image_xscale += .6
+           image_yscale += .6       
+            hitpause = 15
+            hitpause_growth = 1
+         
+    	 with other {       		
     		spawn_hit_fx(x,y - 10,SC)
     		sound_stop(sound_get("SpaceCut"))
     		sound_play(sound_get("SpaceCut"),false,noone,1,1.4)
-            destroyed = true
-            disx = other.player.x - x
-            disy = other.player.y - y
-
+    		
+            
             with other.player_id {
                        if get_attack_value(attack, AG_CATEGORY) == 0 {
                          set_attack_value(attack, AG_CATEGORY, 2);
                          resettingtype = true 
                        }
- 	          x = floor(other.player_id.x - (other.disx))
-                  y = floor(other.player_id.y - (other.disy))
+ 	          x = floor(other.player_id.x - (other.x_pos*other.spr_dir))
+              y = floor(other.player_id.y - (other.y_pos))
             }
+            
             rafx = spawn_hit_fx(other.player_id.x,other.player_id.y - 40,SC)
             rafx.depth = -7
             rafx.spr_dir = -0.8*spr_dir 
             rafx.image_yscale = -0.8
+            destroyed = true
     	}
     }
 	}
