@@ -44,7 +44,7 @@ with oPlayer{
     
     var mult = (cose)*(1 + (((hsp*dir_cose + vsp*dir_sine) <= 0))*0.6);
     var dist_threshold = 35
-    if(other.distance_from_ledge > dist_threshold)mult = mult*1/((other.distance_from_ledge - dist_threshold)*0.1 + 1);
+    if(other.distance_from_ledge > dist_threshold)mult = mult*1/((other.distance_from_ledge - dist_threshold)*0.03 + 1);
     
     // mult = clamp(mult, 0, 2)
     // print(dist)

@@ -37,7 +37,7 @@ if(attack == AT_USPECIAL and hbox_num == 1){
 if(attack == AT_DSPECIAL){
   if(hbox_num == 3 or hbox_num = 4){
   	draw_xscale = spr_dir
-  	kb_value += 1/8
+  	kb_value += 1/6
     if(mark_for_destruction) destroyed = true;
     if !ground_col(){
       var it = 0;
@@ -141,32 +141,6 @@ if(bubble){
   }
   
   var _num = instance_place_list(floor(x), floor(y), pHitBox, hitbx, true);
-  
-	// var ls = ds_list_create()
-	// variable_instance_get_names(id,ls)
-	
-	// // instance_destroy(wat_dust);
-	// for (var i = 0; i < ds_list_size(ls); i++){
-	//   if(string_pos("hit",ls[| i])){
-	    
-	//     print(ls[| i])
-	//   }
-	// } 
-	// ds_list_destroy(ls);
-  // print(in_hitpause)
-  
-  // if(!in_hitpause and _num > 0){
-  // 	var highest_prio = noone;
-  // 	highest_prio = highest_priority();
-  	
-  // 	if(highest_prio != noone){
-  // 		if(last_attack != highest_prio.attack){ // Ignore same attack
-	 // 		last_hitbox_group = []
-	 // 		last_attack = highest_prio.attack;
-	 // 		// for(var i = 1; i <= 4; i++) can_hit[i] = true;
-	 // 	}
-  // 	}
-  // }
   if(!volley_cooldown and !in_hitpause and _num > 0){
   	var highest_prio = noone;
 		highest_prio = highest_priority(_num);

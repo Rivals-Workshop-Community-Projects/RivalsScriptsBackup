@@ -94,7 +94,7 @@ roll_backward_max = 9;
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
-waveland_sound = asset_get("sfx_waveland_zet");
+waveland_sound = asset_get("sfx_waveland_eta");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
@@ -126,6 +126,7 @@ fly_dir = 0;
 fly_dist = 0;
 nspecial_water_explosion_spr = sprite_get("nspecial_water_explosion");
 nspecial_water_explosion_hfx = hit_fx_create(nspecial_water_explosion_spr, 75)
+moved_up = false
 
 //dstrong
 
@@ -278,7 +279,7 @@ mark_to_cancel = false;
 // user_event(1);
 
 modifier = get_synced_var(player)
-print(modifier)
+// print(modifier)
 col = get_player_color(player)
 
 switch col{

@@ -151,7 +151,7 @@ if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
       break;
     case AT_USPECIAL:
     	if(vsp > 0 and collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, solid_asset, false, true)){
-    		print("pressing jump")
+    		// print("pressing jump")
     		press_jump()
     	}
     case AT_USPECIAL_GROUND:

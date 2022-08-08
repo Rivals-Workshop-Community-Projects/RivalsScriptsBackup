@@ -60,10 +60,7 @@ with(right_bubble){
   	var offset_y = n_of*-offset_dir_y
   	
   	var subImg = other.ball_idc_lup[@ j][@ i]
-  	
-  // 	xMag = view_get_xview() + 36;
-              // subMag = 4;
-              // offscreen = true;
+
     draw_sprite_ext(asset_get("offscreen_cloud_bg_spr"), subImg, view_snap_x, view_snap_y, 1, 1, 0, get_player_hud_color( player ), offscreen);
     draw_sprite_ext(other.ball_offscreen_spr, 0, view_snap_x, view_snap_y, 2, 2, 0, c_white, offscreen);
 	}

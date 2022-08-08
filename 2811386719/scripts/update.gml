@@ -17,7 +17,7 @@ if(state != PS_WALL_JUMP){
 	// can_cling = can_wall_jump and has_walljump and !(attack == AT_EXTRA_1 and window > 0);
 	
 }else{
-	if(state_timer == 0 and has_walljump and (attack != AT_EXTRA_1 and (state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND))){
+	if(state_timer == 0 and has_walljump and ((state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND))){
 		doCling()
 	}
   if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
@@ -25,7 +25,7 @@ if(state != PS_WALL_JUMP){
   }
 }
 
-can_cling = can_wall_jump and has_walljump and (attack != AT_EXTRA_1 and (state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND));
+can_cling = can_wall_jump and has_walljump and ((state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND));
 
 if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
 	if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
@@ -148,6 +148,7 @@ pullFactor()
 
 #define doCling()
 
+print(distance_from_ledge)
 clear_button_buffer(PC_JUMP_PRESSED);
 can_let_go_jump = false;
 has_walljump = false;

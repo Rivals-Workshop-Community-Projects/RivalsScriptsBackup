@@ -145,6 +145,6 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1.8);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_orca_crunch"));
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_crunch"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 2);

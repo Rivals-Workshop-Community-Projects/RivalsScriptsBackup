@@ -32,7 +32,7 @@ return val >= low and val <= high
 #define switcher
 
 show_switcher = array_find_index(alt_with_mods, alt_cur)
-print(show_switcher)
+// print(show_switcher)
 if(show_switcher == -1) {return 0}
 
 if(!instance_exists(cursor_id)) return 0

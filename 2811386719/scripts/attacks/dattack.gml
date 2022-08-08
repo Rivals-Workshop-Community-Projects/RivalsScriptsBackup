@@ -9,7 +9,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 7);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
+set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_dust_knuckle"));
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .4);
 

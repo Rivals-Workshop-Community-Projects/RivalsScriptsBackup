@@ -40,6 +40,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 // set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .85);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 3);
