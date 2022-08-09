@@ -51,7 +51,7 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
             zvoice = sound_play(sound_get("counter"));
         }
         
-	 spawn_hit_fx ( x  , y - 20 , SC );
+	 spawn_hit_fx ( x  , y - 30 , SC );
 	        take_damage(player,-1,floor(enemy_hitboxID.damage * -1))
 	        offense = 1
 	        offensetimer = 0
@@ -110,44 +110,32 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
         
         
 	    
-	        spawn_hit_fx ( x  , y - 20 , SC );
+	      fx = spawn_hit_fx ( x  , y - 30 , SC );
+		  fx.spr_dir = 0.7*spr_dir 
+		  fx.image_yscale = 0.7
 	        take_damage(player,-1,floor(enemy_hitboxID.damage * -1))
-	        offense = 1
-	        offensetimer = 0
-
-            window = 4
-            window_timer = 4
+	       
             super_armor = false
-            sound_play(sound_get("RI"));
-			var shortest_dist = 9999;
-			var shortest_id = noone;
-			
-			with (asset_get("oPlayer")) {
-				if (player != other.player) {
-					var curr_dist = point_distance(x,y,other.x,other.y);
-					if (curr_dist < shortest_dist) {
-						shortest_dist = curr_dist;
-						shortest_id = id;
-					}
-				}
-			}
+            sound_play(sound_get("RI"),false,noone,1,1.3);
+            
 
-			if (shortest_id.x < x) {
-				spr_dir = 1;
-			} else {
+			if (hit_player_obj.x < x) {
 				spr_dir = -1;
+			} else {
+				spr_dir = 1;
 			}
-			x = shortest_id.x + (-50 * spr_dir)
-			y = shortest_id.y + (0 * spr_dir)
-			
-			create_hitbox(AT_DSPECIAL , 1 , x - (50 * spr_dir) , y - 105 ); 
-			create_hitbox(AT_DSPECIAL , 1 , x + (10 * spr_dir), y - 105 ); 
-			create_hitbox(AT_DSPECIAL , 1 , x + (70 * spr_dir) , y - 105 ); 
+			old_hsp = 0
+			old_vsp = 0
+			hitpause = true 
+			hitstop = 20
+			invincible = true 
+			invince_time = 20
+			zcountered = 1
 			move_cooldown[AT_FSPECIAL] = 0
-			set_attack(AT_FSPECIAL)
-			window = 2
-			window_timer = 1
-			create_hitbox(AT_FSPECIAL,12,x,y)
+			set_attack(AT_UTILT)
+			window = 1
+			window_timer = 5
+			
 }
 
 

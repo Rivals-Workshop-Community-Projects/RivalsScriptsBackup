@@ -2,6 +2,10 @@
 
 draw_xscale = spr_dir
 
+if attack == AT_FTHROW && hbox_num == 19  {
+   spawn_hit_fx(x + random_func(5,61,true) - 30,y + random_func(6,121,true) - 60, shit6 )
+}
+
 if attack == AT_FTHROW && hbox_num == 2  {
 	if hitbox_timer == 1 {
 		hsp = player_id.hsp

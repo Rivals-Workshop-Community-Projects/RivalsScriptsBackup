@@ -26,7 +26,7 @@ sprite_change_offset("RCEE", 240, 250);
 
 sprite_change_offset("dm", 50, 70);
 
-
+sprite_change_offset("wavebig", 100, 100);
 sprite_change_offset("X", 80, 55);
 sprite_change_offset("SC1", 80, 55);
 sprite_change_offset("SC2", 80, 55);

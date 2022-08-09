@@ -191,6 +191,9 @@ if attack == AT_DTHROW && hbox_num == 1 {
                        }
  	          x = floor(other.player_id.x - (other.x_pos*other.spr_dir))
               y = floor(other.player_id.y - (other.y_pos))
+              has_airdodge = true 
+              has_walljump = true 
+              djumps = 0
             }
             
             rafx = spawn_hit_fx(other.player_id.x,other.player_id.y - 40,SC)

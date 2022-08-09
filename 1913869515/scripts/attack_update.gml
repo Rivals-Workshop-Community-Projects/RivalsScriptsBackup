@@ -575,6 +575,10 @@ if attack == AT_FSPECIAL {
 	}
 	if window == 3 {
 	zbayo = 0	
+	 if free {
+	 	vsp -= 0.3
+	 	hsp /= 1.2
+	 }
 	}
 	if window == 2 {
 		if window_timer == 1 {
@@ -1719,14 +1723,26 @@ if (attack == AT_FTILT){
 
 if (attack == AT_UTILT){
 	
-	if zcountered = 1 {
-		invincible = true
+	if zcountered = 1 && window == 2 && window_timer == 2 {
+		if (hit_player_obj.x < x) {
+				spr_dir = -1;
+			} else {
+				spr_dir = 1;
+			}
+		zcountered = 0 
+		  fx = spawn_hit_fx ( x  , y - 30 , SC );
+		  fx.spr_dir = 1.2*spr_dir 
+		  fx.image_yscale = 1.2
+		  create_hitbox(AT_FTHROW,19,x,y - 50)
+		  sound_play(sound_get("counterhit"),false,noone,1,1);
+		  sound_play(sound_get("counterhit"),false,noone,.6,.6);
 	}
 	
 	vsp /= 2
 	if free {
 		hsp = 0
 	}
+	
 	can_fast_false = false 
 	if (has_hit) && !hitstop   {
                 window_timer += 0.5;
