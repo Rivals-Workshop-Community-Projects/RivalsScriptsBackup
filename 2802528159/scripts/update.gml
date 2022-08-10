@@ -169,7 +169,7 @@ if(attack == AT_EXTRA_1 && climb_timer == get_window_value(AT_EXTRA_1, 1, AG_WIN
 }
 
 //climbing timer
-if(climbing == true) || (state == PS_ATTACK_GROUND && attack == AT_TAUNT_2){
+if(climbing == true) || (state == PS_ATTACK_GROUND && attack == AT_TAUNT_2 && !hitstop){
     move_cooldown[AT_JAB] = 10;
     move_cooldown[AT_DATTACK] = 10;
     move_cooldown[AT_NSPECIAL] = 10;
@@ -262,12 +262,14 @@ switch(wall){
 			spr_angle = (spr_dir = 1? 225: 135);
 			break;
 		}
-		set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, cos(degtorad(45 * head_rot)) * 40);
-		set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, sin(degtorad(45 * head_rot)) * 40 * -1);
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, cos(degtorad(45 * stored_head)) * 40);
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, sin(degtorad(45 * stored_head)) * 40 * -1);
 		gravity_speed = 0;
 		if(window_timer == 1){
-			y -= 20;
-			x -= 40 * spr_dir;
+			var tx = x;
+			var ty = y;
+			y = ty - 20;
+			x = tx - 40 * spr_dir;
 		}
     }else if(window > 4 && window < 9 && attack == AT_USPECIAL){
     	sprite_change_offset("hurtboxxy_uspecial", 20, 32);
@@ -837,8 +839,10 @@ if(state == PS_JUMPSQUAT){
 
 //anger value stuff
 if(anger_value > 0 && anger_state == 2){
-    anger_value -= (has_rune("O")? 0: 1);
+    anger_value -= (has_rune("O")? 0: (instance_exists(collision_circle(radar_posx, radar_posy - 20, 200, oPlayer, 1, 1))? 1: 2));
 }
+radar_posx = lerp(radar_posx, x, 0.2);
+radar_posy = lerp(radar_posy, y - 20, 0.2);
 
 if(anger_value < 500 && anger_state != 2){
     anger_state = 0;
@@ -1022,7 +1026,7 @@ switch(state){
 	break;
 }
 if(radar_state == 1 && radar_img >= 5 && anger_state != 2 && (collision_circle(x + radar_hbox_x * spr_dir, y + radar_hbox_y, 30 + (has_rune("B")? 20: 0), oPlayer, false, true) || collision_line(x + 40 * spr_dir, y - 40, x + radar_hbox_x * spr_dir, y + radar_hbox_y, oPlayer, false, true)) && anger_value < 1000){
-	anger_value += (has_rune("I")? 12: 6);
+	anger_value += (has_rune("I")? 8: 4);
 	if(radar_sound == 0){
 		radar_sound = 1;
 		if(sound_effect == 0){

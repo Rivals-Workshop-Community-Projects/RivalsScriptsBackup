@@ -368,8 +368,13 @@ if gotstone > 0 {
 
 with oPlayer {
        if "resettingtype" in self {
-             if resettingtype == true && !hitpause {
-                    set_attack_value(attack, AG_CATEGORY, 0);
+       	
+       	     if resettingtype == true {
+       	     	vsp = 0
+       	     }
+       	     
+             if resettingtype == true && (attack != changedattack or (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND)) {
+                    set_attack_value(changedattack, AG_CATEGORY, 0);
                     resettingtype = false 
              }
        }

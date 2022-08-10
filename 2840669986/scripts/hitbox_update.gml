@@ -28,7 +28,7 @@ if (attack == AT_DSPECIAL_2){
 
 if (attack == AT_NSPECIAL && hbox_num != 5){
 	water_proj_timer++;
-	proj_angle += -2 * spr_dir
+	proj_angle += (-2 * (spr_dir));
 	clamp(proj_angle, -15, 15)
 	
 	if(hbox_num == 6){
@@ -57,9 +57,12 @@ if (attack == AT_NSPECIAL && hbox_num != 5){
 			var travel_fx = spawn_hit_fx(x+(-22*spr_dir)+(proj_angle*-0.4),y-18+(vsp*1.3),player_id.water_proj_travel_vfx);
 			var travel_fx2 = spawn_hit_fx(x+(0*spr_dir)+(proj_angle*-0.4),y-2+(vsp*1.3),player_id.water_proj_travel_vfx);
 			var travel_fx3 = spawn_hit_fx(x+(-16*spr_dir)+(proj_angle*-0.4),y+8+(vsp*1.3),player_id.water_proj_travel_vfx);
-			travel_fx.draw_angle += proj_angle + (-90*spr_dir)
-			travel_fx2.draw_angle += proj_angle + (-90*spr_dir)
-			travel_fx3.draw_angle += proj_angle + (-90*spr_dir)
+			travel_fx.draw_angle += (proj_angle + (-90*spr_dir))
+			travel_fx2.draw_angle += (proj_angle + (-90*spr_dir))
+			travel_fx3.draw_angle += (proj_angle + (-90*spr_dir))
+			travel_fx.spr_dir = spr_dir;
+			travel_fx2.spr_dir = spr_dir;
+			travel_fx3.spr_dir = spr_dir;
 		}
 	} else if (hbox_num > 1 && hbox_num < 5){//nspec+dpsec projs
 		if (water_proj_timer == 5){
@@ -68,6 +71,8 @@ if (attack == AT_NSPECIAL && hbox_num != 5){
 			var travel_fx2 = spawn_hit_fx(x+(2*spr_dir)+(proj_angle*-0.4),y-0+(vsp*1.3),player_id.water_proj_travel_vfx);
 			travel_fx.draw_angle += proj_angle + (-90*spr_dir)
 			travel_fx2.draw_angle += proj_angle + (-90*spr_dir)
+			travel_fx.spr_dir = spr_dir;
+			travel_fx2.spr_dir = spr_dir;
 		}
 	}
 	
@@ -137,8 +142,23 @@ if (attack == AT_NSPECIAL && hbox_num != 5){
 		exit;
 	}
 	
+	if(projAngleTickRotateBack == -1 && hsp > 0){
+		projAngleTickRotateBack = 1;
+	}
+	
+	if(was_parried == true){
+		//spr_dir *= -1;
+		if(hsp < 0){//>
+			projAngleTickRotateBack *= -1;
+		}
+		hsp *= 1.25;
+		vsp = -4.5;
+		was_parried = false;
+		hitbox_timer = 0;
+		damage += 4;
+	}
 	//Blastzone stuffs lol
-	if ((x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b || y < blastzone_t) || was_parried == true){//>
+	if (x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b || y < blastzone_t){//>
 		instance_destroy();
 		exit;
 	}

@@ -22,28 +22,32 @@ switch(attack){
 	}
 	if(attack_pressed || special_pressed) && window == 6 && timing == false{
 		timing = true;
-		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 40 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 40 + (3 * anger_state));
 		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 15);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 306);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 	}else if((attack_pressed || special_pressed) && window > 3 && window < 6 && timing == false){
 		timing = true;
-		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9 + (3 * anger_state));
 		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	}else if(timing == false){
-		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9 + (3 * anger_state));
 		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	}
 	
-	if(hit_player_obj.shield_pressed && window == 6 && opp_timing == false){
+	if(hit_player_obj.shield_down && window == 6 && opp_timing == false){
 		opp_timing = true;
 		opp_timed = true;
 		set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
-	}else if(hit_player_obj.shield_pressed && window > 3 && window < 6 && opp_timing == false){
+		if(timing){
+			set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 0);
+			set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 15 + (3 * anger_state));
+		}
+	}else if(hit_player_obj.shield_down && window > 3 && window < 6 && opp_timing == false){
 		opp_timing = true;
 		opp_timed = false;
 		set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 0);
@@ -63,7 +67,7 @@ switch(attack){
     }
     
     if(window == 7 || (window == 6 && window_timer == 4)){
-    	if(opp_timed){
+    	if(opp_timed && !timing){
     		hit_player_obj.hitstop = 0;
     		hit_player_obj.hitpause = 0;
     		hit_player_obj.y += 10;
@@ -117,18 +121,18 @@ switch(attack){
 	}
 	if(attack_pressed || special_pressed) && window == 7 && timing == false && window_timer >= 3{
 		timing = true;
-		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 40 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 40 + (3 * anger_state));
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_BASE_HITPAUSE, 15);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_VISUAL_EFFECT, 306);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 	}else if((attack_pressed || special_pressed) && window > 3 && window < 6 && timing == false){
 		timing = true;
-		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 9 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 9 + (3 * anger_state));
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	}else if(timing == false){
-		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 9 + (2 * anger_state));
+		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_DAMAGE, 9 + (3 * anger_state));
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_VISUAL_EFFECT, 304);
 		set_hitbox_value(AT_NSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
@@ -392,6 +396,8 @@ switch(attack){
 	break;
 	
 	case AT_USPECIAL:
+	can_move = 0;
+	can_fast_fall = 0;
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, (4 + (anger_state * (has_rune("J")? 5: 3))) * (stored_spark = true? 2: 1));
 	set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, (4 + (anger_state * (has_rune("J")? 5: 3))) * (stored_spark = true? 2: 1));
 	set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, (4 + (anger_state * (has_rune("J")? 5: 3))) * (stored_spark = true? 2: 1));

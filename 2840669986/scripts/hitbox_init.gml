@@ -10,6 +10,8 @@ if (attack == AT_NSPECIAL){
 	proj_angle = 15*spr_dir
 }
 
+projAngleTickRotateBack = 1;
+
 blastzone_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);

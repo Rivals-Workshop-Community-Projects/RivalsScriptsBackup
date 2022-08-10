@@ -79,11 +79,11 @@ switch(wall){
         break;
         case PS_WALK_TURN:
         sprite_index = (sprite_get(string(plate_state) + "_turn"));
-        image_index = state_timer / 3;
+        image_index = state_timer / 1.5;
         break;
         case PS_DASH_TURN:
         sprite_index = (sprite_get(string(plate_state) + "_turn"));
-        image_index = state_timer / 3;
+        image_index = state_timer / 1.5;
         break;
         case PS_ROLL_BACKWARD:
         sprite_index = sprite_get(string(plate_state) + "_broll")

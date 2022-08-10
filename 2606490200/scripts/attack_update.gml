@@ -374,11 +374,11 @@ switch attack {
     case AT_DSPECIAL :
         var step_up_height = 30;
          
-         if place_meeting(x+hsp,y+vsp,asset_get("par_block")) {
+         if place_meeting(x+hsp,y,asset_get("par_block")) {
              for (var i = 0; i < step_up_height; i += 2) {
                  if !place_meeting(x+hsp,y+vsp-i,asset_get("par_block")) {
-                     x = x+hsp; 
-                     y = y+vsp-i;
+                     y += vsp-i;
+                     hsp = 8*spr_dir
                      break;
                  }
              }
@@ -388,6 +388,9 @@ switch attack {
         can_fast_fall = false
         
         if window == 1 && state_timer == 1 && !hitpause {
+        	spawn_base_dust(x,y,"dash",1)
+        	spawn_base_dust(x - 20*spr_dir,y,"dash_start",spr_dir)
+        	spawn_base_dust(x,y,"dash",-1)
         	sound_play(asset_get("sfx_swipe_heavy1"),false,noone,1,1)
             sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1)
         }
@@ -413,14 +416,14 @@ switch attack {
             hsp /= 1.1
         }
         
-        if window == 2 && window_timer == 8 && !hitpause{
+        if window == 2 && window_timer == 6 && !hitpause{
                 
                 spawn_base_dust(x,y,"dash_start",spr_dir)
                 x += 10*spr_dir
                   spawn_base_dust(x - 20*spr_dir,y,"dash",spr_dir*-1)
                  sound_play(asset_get("sfx_kragg_rock_pillar")) 
                 sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,.8)
-                hsp = 8*spr_dir
+                hsp = 5*spr_dir
                 if free {
                   spawn_base_dust(x,y,"land",spr_dir)
                     vsp = -3

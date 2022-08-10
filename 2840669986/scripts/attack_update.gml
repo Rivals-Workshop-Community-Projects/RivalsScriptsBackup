@@ -270,6 +270,7 @@ if (attack == AT_NSPECIAL){
 				water_proj.water_proj_was_charged = false;
 				spawn_base_dust( x - (2 * spr_dir), y, "dash", spr_dir)
 			}
+			water_proj.projAngleTickRotateBack = spr_dir;
 		}
 	}
 	if (window == 5){

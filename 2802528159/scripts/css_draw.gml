@@ -86,7 +86,7 @@ if(alpher_alt > 0){
 }
 
 if(alt_cur != prev_alt){
-    alpher_alt = 2
+    alpher_alt = 3
 }
 
 draw_set_font(asset_get("fName"));
@@ -109,7 +109,7 @@ textDraw(temp_x + 56, temp_y + 139, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 56, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 58, temp_y + 141, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 58, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
-textDraw(temp_x + 58, temp_y + 139, "fName", c_white, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
+textDraw(temp_x + 58, temp_y + 139, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(alt_cur, 0), get_color_profile_slot_b(alt_cur, 0)), 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 
 textDraw(temp_x + 60, temp_y + 124, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 60, temp_y + 122, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
@@ -119,7 +119,7 @@ textDraw(temp_x + 56, temp_y + 122, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 56, temp_y + 120, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 58, temp_y + 124, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 58, temp_y + 120, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
-textDraw(temp_x + 58, temp_y + 122, "fName", c_white, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
+textDraw(temp_x + 58, temp_y + 122, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(alt_cur, 0), get_color_profile_slot_b(alt_cur, 0)), 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 

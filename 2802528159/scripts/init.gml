@@ -16,11 +16,11 @@ knockback_adj       = 0.899;		// 0.9  -  1.2
 // Ground movement
 walk_speed          = (has_rune("D")? 7.5: 3.25);		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
-walk_turn_time      = 30;		// 6
+walk_turn_time      = 15;		// 6
 initial_dash_time   = 14;		// 8    -  16       zetterburn's is 14
 initial_dash_speed  = (has_rune("D")? 10: 5);		// 4    -  9
 dash_speed          = (has_rune("D")? 10.5: 5.5);		// 5    -  9
-dash_turn_time      = 30;		// 8    -  20
+dash_turn_time      = 15;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 12;		// 4    -  6        zetterburn's is 4
 dash_stop_percent   = 0.35;		// 0.25 -  0.5
@@ -162,6 +162,9 @@ airdodge_cooldown = 1;
 
 anger_state = 0; //0 = blue light, 1 = yellow light, 2 = red light
 anger_value = 0; //max 100
+radar_alpha = 0;
+radar_posx = x;
+radar_posy = y - 20;
 hud_timer = 0;
 bar_glow = 1;
 hud_alpha = 1;

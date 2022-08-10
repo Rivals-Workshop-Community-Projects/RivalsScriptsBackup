@@ -131,8 +131,8 @@ if (was_hit_by_fspec){
 if (state > 1 && state < 4){
 	with (asset_get("pHitBox")){
 		var MaxAreaVar = 32;
-		if ((place_meeting(x,y,other.id) && effect == 421 && attack == AT_NSPECIAL)
-		|| ((collision_rectangle(x-MaxAreaVar, y+MaxAreaVar, x+MaxAreaVar, y-MaxAreaVar, other.id, true, true)) && effect == 421 && attack == AT_NSPECIAL)){
+		if ((place_meeting(x,y,other.id) && effect == 421 && attack == AT_NSPECIAL && player_id == other.player_id)
+		|| ((collision_rectangle(x-MaxAreaVar, y+MaxAreaVar, x+MaxAreaVar, y-MaxAreaVar, other.id, true, true)) && effect == 421 && attack == AT_NSPECIAL && player_id == other.player_id)){
 			spawn_hit_fx(x, y, 150);
 			sound_play(player_id.sfx_star_allies_clean_pitch_water_charged);
 			destroyed = true;

@@ -16,7 +16,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 //Startup
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_bubblepop"));//troll
@@ -45,7 +45,7 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
 //Endlag
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 
@@ -66,7 +66,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 1 * spr_dir);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("water_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .15);

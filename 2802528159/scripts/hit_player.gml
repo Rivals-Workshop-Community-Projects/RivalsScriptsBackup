@@ -89,4 +89,6 @@ if(my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_NSPECIAL_AIR) &
     fog_alpha = 40;
 }
 
+if anger_value < 100 anger_value += my_hitboxID.damage * 6;
+
 cancel = 1;
