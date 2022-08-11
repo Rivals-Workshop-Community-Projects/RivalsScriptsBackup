@@ -115,7 +115,6 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
             shake_camera(4,10)
 			sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1)	
 			create_hitbox(AT_FSPECIAL,6,other.x,other.y)
-			create_hitbox(AT_FSPECIAL,5,other.x + 240*spr_dir,other.y)
         }
          image_index = 8
          shake_camera(4,9)
@@ -222,7 +221,6 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	     if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x == -0.666 && hitbox_timer < 60  && nearbyhitbox.player_id.nolan == 0{
 	         sound_play(asset_get("sfx_abyss_hex_hit"))
 	         spawn_hit_fx(x,y,laser4)
-	          spawn_hit_fx(x + 20*player_id.spr_dir ,y,laser2)
 	         hitbox_timer = 60
 	         ownerplayer = nearbyhitbox.player_id
 	     }
@@ -340,21 +338,6 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
             hitbox_timer = 15
 	        }
 	        
-	        if nearbyhitbox.attack == AT_DSPECIAL  && nearbyhitbox.hbox_num = 1 {
-	        with nearbyhitbox.player_id {
-	        
-	        	soft_armor = 999
-	            window = 1
-	            window_timer = 1
-	            vsp = -9
-	            hsp = 0
-	            create_hitbox(AT_NSPECIAL,3,x,y)
-	        }
-		    sound_play(asset_get("sfx_abyss_hex_hit"))
-	        destroyed = 1
-	        	  		sound_play(asset_get("sfx_abyss_seed_explode"))
-         sound_play(asset_get("sfx_abyss_explosion"))
-	       }
 	       
 	    }
 	}

@@ -153,19 +153,19 @@ if (attack != AT_NSPECIAL){
 		draw_sprite_ext(sprite_get("mini_meter"), 0, x + 1, y + 10, 1, 1, 0, c_white, MiniM_Alpha);
 
 		if (LoveMeter < 100){
-			draw_sprite_part_ext(sprite_get("mini_meter"), 1, 0, 0, LoveMeter / .8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
+			draw_sprite_part_ext(sprite_get("mini_meter"), 1, 0, 0, shown_meter_var / .8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
 		}
 		
 		if (LoveMeter >= 50 && LoveMeter < 150){
-			draw_sprite_part_ext(sprite_get("mini_meter"), 2, 0, 0, (LoveMeter - 50) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
+			draw_sprite_part_ext(sprite_get("mini_meter"), 2, 0, 0, (shown_meter_var - 50) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
 		}
 		
 		if (LoveMeter >= 100){
-			draw_sprite_part_ext(sprite_get("mini_meter"), 3, 0, 0, (LoveMeter - 100) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
+			draw_sprite_part_ext(sprite_get("mini_meter"), 3, 0, 0, (shown_meter_var - 100) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
 		}
 		
 		if (LoveMeter >= 150){
-			draw_sprite_part_ext(sprite_get("mini_meter"), 4, 0, 0, (LoveMeter - 150) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
+			draw_sprite_part_ext(sprite_get("mini_meter"), 4, 0, 0, (shown_meter_var - 150) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
 		}
 					
 		if (MiniM_display_timer >= 20){
@@ -175,9 +175,9 @@ if (attack != AT_NSPECIAL){
 			MiniM_Alpha = MiniM_Alpha - .05;
 		}
 		
-		var a = LoveMeter div 100;
-		var b = LoveMeter div 10;
-		var c = LoveMeter div 1;
+		var a = round(shown_meter_var)  div 100;
+		var b = round(shown_meter_var)  div 10;
+		var c = round(shown_meter_var)  div 1;
 
 shader_start();
 		if (LoveMeter != 200){

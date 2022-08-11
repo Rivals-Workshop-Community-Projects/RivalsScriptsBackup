@@ -72,3 +72,4 @@ set_hitbox_value(AT_DTILT, 2, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_DTILT, 2, HG_IGNORES_PROJECTILES, true);
+set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_PARRY_STUN, false);

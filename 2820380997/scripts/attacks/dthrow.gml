@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "If Clone is spawned, it will assist");//AG_MUNO_ATTACK_MISC_ADD
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -113,6 +114,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, y_offset_temp);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_ice_uspecial_start"));
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_attack_value(attack, 81, "Start");//AG_MUNO_ATTACK_NAME
     
 hitbox_num++;
 
@@ -139,6 +141,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, x_offset_temp);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, y_offset_temp);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
+    set_attack_value(attack, 81, "Burn " + string(hitbox_num));//AG_MUNO_ATTACK_NAME
 }
 
 // #6 Final Hitbox
@@ -166,7 +169,7 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, y_offset_temp);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.2); // Mirror Clarien Grab
-    
+    set_hitbox_value(attack, hitbox_num, 81, "Finisher");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // #7 Clone hitbox 1 Start Up
@@ -207,7 +210,7 @@ hitbox_num++;
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
-    
+    set_hitbox_value(attack, hitbox_num, 80, 1);//HG_MUNO_HITBOX_EXCLUDE
 hitbox_num++;
 
 // #8 Clone 2 Multi Hit 
@@ -247,7 +250,7 @@ hitbox_num++;
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
-
+    set_hitbox_value(attack, hitbox_num, 80, 1);//HG_MUNO_HITBOX_EXCLUDE
 hitbox_num++;
 
 // #9 Clone 3 Final Hit 
@@ -291,7 +294,47 @@ hitbox_num++;
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.2); // Mirror Clarien Grab
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
-
+    set_hitbox_value(attack, hitbox_num, 80, 1);//HG_MUNO_HITBOX_EXCLUDE
+    hitbox_num++;
+    
+    // Hitbox #10 / Window # 2- / Clone Hitbox (MIRRORED FROM FSPECIAL_AIR, THIS HITBOX DATA IS FOR WOODCOCK ONLY)
+    set_hitbox_value(attack, hitbox_num, HG_WINDOW, 0);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 2);
+    set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
+    set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3); // Swap 1 for what ever window this attack is
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 30);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -34);
+    set_hitbox_value(attack, hitbox_num, HG_WIDTH, 50);
+    set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 50);
+    set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
+    set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
+    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .7);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 20);
+    //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_medium);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+    
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_MASK, -1);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_HSPEED, 0);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_VSPEED, 0);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_GRAVITY, 0);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_GROUND_FRICTION, 0);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_AIR_FRICTION, 0);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1); //1 = Goes through Walls
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1); //1 = Goes through Ground
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1); //1 = Goes through enemies
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
+    set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
+    set_hitbox_value(attack, hitbox_num, 81, "Clone Assist");//HG_MUNO_HITBOX_NAME
+    hitbox_num++;
+    
 /*
 //Template for attacks - 
 

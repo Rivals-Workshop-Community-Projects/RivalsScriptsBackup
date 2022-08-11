@@ -13,6 +13,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Zetterburn Nspec Shine with no flipper. Can be Jump Canceled. Spawns a clone. Hold Nspecial to control the clone. Tapping Nspec when clone is out will cause the clone to be detonated.");//AG_MUNO_ATTACK_MISC_ADD = i; i++;	
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -72,6 +73,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 14); //14  - smoke small
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, 81, "Shine");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 

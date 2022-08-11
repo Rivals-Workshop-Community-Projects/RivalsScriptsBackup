@@ -45,7 +45,7 @@ set_hitbox_value(AT_FTILT, 1, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("slice"));
-set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 1);
 
@@ -68,6 +68,6 @@ set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
-set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 302);
 

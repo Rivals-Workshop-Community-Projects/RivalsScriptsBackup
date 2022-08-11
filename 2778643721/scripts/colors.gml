@@ -1,7 +1,7 @@
 // DEFAULT COLOR
 
 // Hood
-set_color_profile_slot( 0, 0, 71, 109, 255 );
+set_color_profile_slot( 0, 0, 72, 109, 255 );
 set_color_profile_slot_range( 0, 58, 40, 72 );
 
 // Highlights
@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 6, 23 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 30 );
+set_num_palettes( 32 );
 
 // Ally's Yellow
 set_color_profile_slot( 1, 0, 253, 168, 44 ); //Hood
@@ -325,6 +325,26 @@ set_color_profile_slot( 29, 4, 242, 147, 59 ); //Hands
 set_color_profile_slot( 29, 5, 194, 194, 194 ); //Scarf
 set_color_profile_slot( 29, 6, 255, 225, 0 ); //Cape
 set_color_profile_slot( 29, 7, 222, 0, 0 ); //Cape Ends
+
+// Monochrome 
+set_color_profile_slot( 30, 0, 122, 122, 122 ); //Hood
+set_color_profile_slot( 30, 1, 186, 186, 186 ); //Highlights
+set_color_profile_slot( 30, 2, 226, 226, 226 ); //Eyes
+set_color_profile_slot( 30, 3, 67, 67, 67 ); //Face
+set_color_profile_slot( 30, 4, 226, 226, 226 ); //Hands
+set_color_profile_slot( 30, 5, 226, 226, 226 ); //Scarf
+set_color_profile_slot( 30, 6, 186, 186, 186 ); //Cape
+set_color_profile_slot( 30, 7, 226, 226, 226 ); //Cape Ends
+
+// Pastel
+set_color_profile_slot( 31, 0, 133, 166, 237 ); //Hood
+set_color_profile_slot( 31, 1, 240, 196, 0 ); //Highlights
+set_color_profile_slot( 31, 2, 240, 196, 0 ); //Eyes
+set_color_profile_slot( 31, 3, 145, 97, 97 ); //Face
+set_color_profile_slot( 31, 4, 212, 188, 176 ); //Hands
+set_color_profile_slot( 31, 5, 248, 231, 231 ); //Scarf
+set_color_profile_slot( 31, 6, 219, 218, 254 ); //Cape
+set_color_profile_slot( 31, 7, 159, 159, 212 ); //Cape Ends
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

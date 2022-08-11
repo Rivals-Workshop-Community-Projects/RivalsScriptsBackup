@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Can be Teched out of on Jab 3");//AG_MUNO_ATTACK_MISC_ADD = i; i++;	
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -135,6 +136,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(attack, hitbox_num, HG_FORCE_FLINCH, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Jab 1");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 //Jab 2 Hitbox 1 Straight Angle
@@ -158,6 +160,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Jab 2 Hit 1");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 //Jab 2 Hitbox 2 Lower Angle
@@ -181,6 +184,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Jab 2 Hit 2");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -205,6 +209,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
+set_hitbox_value(attack, hitbox_num, 81, "Jab 2 Hit 3");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -232,6 +237,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Jab 3");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 

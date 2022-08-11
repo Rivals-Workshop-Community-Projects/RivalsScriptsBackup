@@ -506,11 +506,7 @@ if get_player_color(player) == 11 {
 }
 
 
-  	with (pHitBox) {
-  		if player_id == other.id {
-  			projectile_parry_stun = 1 
-  		}
-  	}
+
 
 if "superTrue" in self {
 if superTrue == 1 {

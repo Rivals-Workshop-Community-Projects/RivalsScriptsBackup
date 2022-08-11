@@ -46,10 +46,13 @@ set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.07);
 
+var smoke_spawn = get_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH) + get_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH) + get_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH);
 
+set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Spawns smoke on frame " + string(smoke_spawn));
 
 set_num_hitboxes(AT_DSTRONG, 1);
 
+set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_MISC_ADD, "Applies smoke debuff");
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 5);

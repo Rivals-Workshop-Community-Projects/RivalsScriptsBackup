@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Clone Detonation");//AG_MUNO_ATTACK_MISC_ADD
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -84,7 +85,7 @@ set_hitbox_value(attack, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
-
+set_hitbox_value(attack, hitbox_num, 81, "Detonation Hitbox");//HG_MUNO_HITBOX_NAME 
 hitbox_num++;
 
 /*

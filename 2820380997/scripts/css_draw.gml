@@ -227,6 +227,20 @@ color_picker_alt_index = 0;
 	color_slot++;
 	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Black Hole Sun";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(245, 169, 184);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Flame Shackle";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Trans rights";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Support Alt";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Support Alt";sub_element_slot++;
@@ -239,21 +253,8 @@ color_picker_alt_index = 0;
 	ce[color_slot,sub_element_slot] = "Support Alt";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
+
 	/*
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(0, 0, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "26";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(245, 169, 184);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "27";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
 	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "28";sub_element_slot++;

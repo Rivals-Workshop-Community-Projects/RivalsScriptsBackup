@@ -34,7 +34,7 @@ set_hitbox_value(AT_UTILT, 1, HG_ANGLE_FLIPPER, 7);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 

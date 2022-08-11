@@ -1,4 +1,4 @@
-set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_NAME, "Bravo! (Taunt)");
+
 
 set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
 set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 4);
@@ -28,6 +28,3 @@ set_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 
-
-
-set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_MISC, "You've truly earned your reputation as a Magolor main!");

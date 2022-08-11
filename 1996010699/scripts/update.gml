@@ -533,8 +533,13 @@ if(dingTimer > 0){
 	dingReady = true;
 }
 
-if(state_cat = SC_GROUND_COMMITTED){
+if(state_cat == SC_GROUND_COMMITTED){
 	move_cooldown[AT_DAIR] = 0;
+}
+
+if(state == PS_LANDING_LAG && attack == AT_NAIR && triggerSplash && item[2, 3] == 1 && state_timer == 0 && !hitpause){
+	create_hitbox(AT_NAIR, 6, x, y);
+	triggerSplash = false;
 }
 
 //Practice mode XP toggle
@@ -643,115 +648,6 @@ if (faucetShards == true){
 		IDLockedIn = true;
 	}
 	legendaryPinged = false;
-}
-
-#define applyItem(x)
-{
-	switch (x){
-		case 2:		//beach ball
-			set_attack_value(AT_NAIR, AG_OFF_LEDGE, 1);
-			set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_frog_uspecial_cast"));
-			set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 2);
-			set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 12);
-			set_window_value(AT_NAIR, 2, AG_WINDOW_HAS_SFX, 1);
-			set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_bubblepop"));
-			set_window_value(AT_NAIR, 2, AG_WINDOW_SFX_FRAME, 10);
-			
-			set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 2);
-			set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 50);
-			set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 50);
-			set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 3);
-			set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 5);
-			set_hitbox_value(AT_NAIR, 1, HG_FINAL_BASE_KNOCKBACK, 3);
-			set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_swish_weak"));
-			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, poolparty);
-			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -5);
-			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -30);
-			set_hitbox_value(AT_NAIR, 2, HG_WINDOW_CREATION_FRAME, 2);
-			set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, 2);
-			set_hitbox_value(AT_NAIR, 3, HG_WINDOW_CREATION_FRAME, 3);
-			set_hitbox_value(AT_NAIR, 4, HG_WINDOW_CREATION_FRAME, 5);
-			set_hitbox_value(AT_NAIR, 5, HG_WINDOW_CREATION_FRAME, 6);
-			set_hitbox_value(AT_NAIR, 5, HG_LIFETIME, 2);
-			set_hitbox_value(AT_NAIR, 6, HG_WINDOW_CREATION_FRAME, 8);
-			set_hitbox_value(AT_NAIR, 7, HG_WINDOW_CREATION_FRAME, 9);
-			set_hitbox_value(AT_NAIR, 7, HG_LIFETIME, 2);
-			set_hitbox_value(AT_NAIR, 8, HG_WINDOW_CREATION_FRAME, 11);
-			
-			itemsDisplayed[displaySlot] = item[2, 5];
-			displaySlot++;
-			newItemHUDRefresh = true;
-			break;
-		case 3:		//sandy dair
-			switch(sandStage){
-				case 0:
-					dairCooldown = 30;
-					
-					set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 12);
-					set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 12);
-					set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, sandair);
-					set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_sand_yell"));
-					set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 7);
-					set_hitbox_value(AT_DAIR, 3, HG_ANGLE, 280);
-					set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 3.0);
-					set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 1.0);
-					set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 10);
-					set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 1);
-					set_hitbox_value(AT_DAIR, 3, HG_ANGLE_FLIPPER, 0);
-					set_hitbox_value(AT_DAIR, 3, HG_HITSTUN_MULTIPLIER, 0.9);
-					set_hitbox_value(AT_DAIR, 3, HG_EXTRA_HITPAUSE, 3);
-					
-					itemsDisplayed[displaySlot] = item[3, 5];
-					displaySlot++;
-					newItemHUDRefresh = true;
-					break;
-				case 1:
-					set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 15);
-					set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 15);
-					set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 20);
-					set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
-					set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 4);
-					set_hitbox_value(AT_DAIR, 1, HG_EXTRA_HITPAUSE, 2);
-					set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 21);
-					set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
-					set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 5);
-					set_hitbox_value(AT_DAIR, 1, HG_EXTRA_HITPAUSE, 3);
-					set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 9);
-					set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, sandair2);
-					set_hitbox_value(AT_DAIR, 3, HG_EXTRA_HITPAUSE, 5);
-					
-					item[3, 4] = sprite_get("mini_creatorsmark1");
-					break;
-			}
-			break;
-		case 9:	//glitch
-			wave_land_adj = 1.45;
-			wave_friction = .035;
-			waveland_sound = asset_get("sfx_waveland_abs");
-			
-			itemsDisplayed[displaySlot] = item[9, 5];
-			displaySlot++;
-			newItemHUDRefresh = true;
-			break;
-		case 15:	//voidbox
-			set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_absa_new_whip1"));
-			
-			itemsDisplayed[displaySlot] = item[15, 5];
-			displaySlot++;
-			newItemHUDRefresh = true;
-			break;
-		case 16:	//mint toothpaste
-			set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_ice_ftilt"));
-			set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 27);
-
-			set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 8);
-			set_hitbox_value(AT_UTILT, 2, HG_EFFECT, 5);
-			set_hitbox_value(AT_UTILT, 3, HG_EFFECT, 5);
-			
-			itemsDisplayed[displaySlot] = item[16, 5];
-			displaySlot++;
-			break;
-		}
 }
 
 #define achieveUnlock(i)

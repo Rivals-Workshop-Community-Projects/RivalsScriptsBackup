@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 28 );
 
 // Blue
 set_color_profile_slot( 1, 0, 77, 176, 255 ); //Hair Bottom
@@ -86,15 +86,15 @@ set_color_profile_slot( 5, 5, 247, 245, 255 ); //Skin
 set_color_profile_slot( 5, 6, 49, 49, 59 ); //Leggy 1
 set_color_profile_slot( 5, 7, 49, 49, 59 ); //Leggy 2
 
-// Abyss
-set_color_profile_slot( 6, 0, 159, 70, 219 ); //Hair Bottom
-set_color_profile_slot( 6, 1, 166, 172, 214 ); //Shirt
-set_color_profile_slot( 6, 2, 79, 61, 94 ); //Tie/Hoodie
-set_color_profile_slot( 6, 3, 79, 61, 94 ); //Skirt
-set_color_profile_slot( 6, 4, 255, 183, 0 ); //Eyes
-set_color_profile_slot( 6, 5, 193, 197, 230 ); //Skin
-set_color_profile_slot( 6, 6, 105, 91, 168 ); //Leggy 1
-set_color_profile_slot( 6, 7, 68, 43, 89 ); //Leggy 2
+// Event - Riptide
+set_color_profile_slot( 6, 0, 242, 228, 214 ); //Hair Bottom
+set_color_profile_slot( 6, 1, 209, 90, 1 ); //Shirt
+set_color_profile_slot( 6, 2, 1, 198, 216 ); //Tie/Hoodie
+set_color_profile_slot( 6, 3, 12, 25, 58 ); //Skirt
+set_color_profile_slot( 6, 4, 1, 198, 216 ); //Eyes
+set_color_profile_slot( 6, 5, 230, 166, 126 ); //Skin
+set_color_profile_slot( 6, 6, 12, 25, 58 ); //Leggy 1
+set_color_profile_slot( 6, 7, 12, 25, 58 ); //Leggy 2
 
 // Gameboy
 set_color_profile_slot( 7, 0, 167, 186, 74 ); //Hair Bottom
@@ -286,15 +286,25 @@ set_color_profile_slot( 25, 5, 255, 221, 189 ); //Skin
 set_color_profile_slot( 25, 6, 48, 27, 27 ); //Leggy 1
 set_color_profile_slot( 25, 7, 48, 27, 27 ); //Leggy 2
 
-// Event - Genesis
-set_color_profile_slot( 26, 0, 191, 4, 13 ); //Hair Bottom
-set_color_profile_slot( 26, 1, 11, 18, 20 ); //Shirt
-set_color_profile_slot( 26, 2, 251, 252, 255 ); //Tie/Hoodie
-set_color_profile_slot( 26, 3, 11, 18, 20 ); //Skirt
-set_color_profile_slot( 26, 4, 163, 15, 42 ); //Eyes
-set_color_profile_slot( 26, 5, 255, 216, 212 ); //Skin
-set_color_profile_slot( 26, 6, 191, 4, 13 ); //Leggy 1
-set_color_profile_slot( 26, 7, 191, 4, 13 ); //Leggy 2
+// Abyss
+set_color_profile_slot( 26, 0, 159, 70, 219 ); //Hair Bottom
+set_color_profile_slot( 26, 1, 166, 172, 214 ); //Shirt
+set_color_profile_slot( 26, 2, 79, 61, 94 ); //Tie/Hoodie
+set_color_profile_slot( 26, 3, 79, 61, 94 ); //Skirt
+set_color_profile_slot( 26, 4, 255, 183, 0 ); //Eyes
+set_color_profile_slot( 26, 5, 193, 197, 230 ); //Skin
+set_color_profile_slot( 26, 6, 105, 91, 168 ); //Leggy 1
+set_color_profile_slot( 26, 7, 68, 43, 89 ); //Leggy 2
+
+// Virtual
+set_color_profile_slot( 27, 0, 56, 88, 136 ); //Hair Bottom
+set_color_profile_slot( 27, 1, 229, 185, 186 ); //Shirt
+set_color_profile_slot( 27, 2, 251, 86, 40 ); //Tie/Hoodie
+set_color_profile_slot( 27, 3, 12, 91, 201 ); //Skirt
+set_color_profile_slot( 27, 4, 31, 191, 0 ); //Eyes
+set_color_profile_slot( 27, 5, 255, 208, 179 ); //Skin
+set_color_profile_slot( 27, 6, 214, 66, 24 ); //Leggy 1
+set_color_profile_slot( 27, 7, 214, 66, 24 ); //Leggy 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

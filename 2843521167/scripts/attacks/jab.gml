@@ -45,12 +45,12 @@ set_hitbox_value(AT_JAB, 1, HG_WIDTH, 83);
 set_hitbox_value(AT_JAB, 1, HG_HEIGHT, 102);
 set_hitbox_value(AT_JAB, 1, HG_PRIORITY, 4);
 set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_JAB, 1, HG_ANGLE, 65);
-set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 3.5);
-set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_JAB, 1, HG_ANGLE, 30);
+set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 1.5);
+set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("hit1"));
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 1.75);
+set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 3);
 
 set_hitbox_value(AT_JAB, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);

@@ -217,6 +217,18 @@ Odor Blocker - BLW Champ, Jordan
 Leakage - Best in the World, BendyJW
 From Mud to Sludge - Kazuya Mishima, Jay/InnerOtaku");
 
+initTip("Workshop Compatibility");
+initWords("Gumbo has taken a culinary arts course and now is able to make dishes based off of who he cooks. Characters that are trapped and cooked with compatibility will now show their own special food!");
+initWords("To make compatibility for Po and Gumbo:
+Make a food sprite using the plate_strip1 in Po and Gumbo's files
+No need to resize or offset the food sprite! The compat code handles that on it's own. Just don't make the plate sprite bigger.
+In your characters init.gml, make the variable 'pot_compat_variable', and have it equal your food sprite's name.
+Also in your init.gml, make the variable 'pot_compat_text', and have it equal the name of the dish your character makes. The example is shown below.
+That's it! If your character has this compatibility, be sure to post their URL in the steam discussion for Pumbo compatibility!");
+initImage_ext(sprite_get("plate"), -5, fa_right, 2, 2, false, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("food"), -40, fa_left, 2, 2, false, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("example"), -5, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
 ║																			║
@@ -254,6 +266,35 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.21", "7 August, 2022");
+initHeader("Reverted all Balance Changes made in the last patch");
+
+initPatch("1.22", "5 August, 2022");
+
+initHeader("Buffs:");
+initSection("+ Pot slows down a little quicker on spawn to be able to hit it a little faster.
+");
+
+initHeader("Nerfs:");
+initSection("- Jab 3 is now a little less disjointed
+- Dattack is now a little less disjointed
+- Pot bkb decreased, 7 -> 6
+- Pot has now has a .75 hitstun mult
+- Pot explosion is now a little skinnier
+- Uspecial's bubbles have a little smaller hitboxes
+- Uspecial's bubbles all last 5 frames shorter
+");
+
+initHeader("Changes:");
+initSection("= Added 2 new alts
+= Hopefully fixed clinking again (pot hitting pot cycle)
+  
+  = Added workshop compatibility! Gumbo has taken a culinary arts course and now is able to make dishes based off of who he cooks.
+    - Make a sprite of a food that could represent your character (use the plate sprite in Pumbo's files), use the variables pot_compat_variable (for the sprite) and pot_compat_text (for the text) in your init.gml, and they'll show up if your character is burst out of Gumbo's pot.
+    - No need for any resizing or offset either!
+");
+
+//
 initPatch("1.21", "20 July, 2022");
 
 initHeader("Changes:");

@@ -4,6 +4,10 @@
 
 taunt_counter = 0;
 
+shown_meter_var = 0;
+
+set_victory_theme( sound_get( "callievictory" ));
+
 introTimer = 0;
 costume_end = false;
 
@@ -110,20 +114,22 @@ usedFspecial = 0;
 nthrowFastFall = false;
 dthrowCheck = false;
 
-hit_up = hit_fx_create( sprite_get("up_fx"), 30);
-hit_forward = hit_fx_create( sprite_get("forward_fx"), 38);
-hit_back = hit_fx_create( sprite_get("back_fx"), 38);
-hit_diagonal1 = hit_fx_create( sprite_get("hit_diagonal1"), 16);
-hit_slap = hit_fx_create( sprite_get("hit_slap"), 16);
-hit_heart = hit_fx_create( sprite_get("hit_heart"), 38);
-hit_dair = hit_fx_create( sprite_get("dair_fx"), 30);
-hit_uthrow = hit_fx_create( sprite_get("uthrow_fx"), 30);
-hit_dthrow = hit_fx_create( sprite_get("dthrow_fx"), 30);
-hit_fthrow = hit_fx_create( sprite_get("fthrow_fx"), 45);
-hit_nthrow = hit_fx_create( sprite_get("nthrow_fx"), 40);
-hearthurt_fx = hit_fx_create( sprite_get("heartloss_fx"), 40);
-hit_ustrong = hit_fx_create( sprite_get("ustrong_fx"), 40);
-hit_focus = hit_fx_create( sprite_get("focushitfx"), 30);
+hit_focus_new = hit_fx_create( sprite_get("Callie_VFX_focusatk"), 40);
+hit_big_heart = hit_fx_create( sprite_get("Callie_VFX_Big_Heart"), 40);
+hit_small_heart = hit_fx_create( sprite_get("Callie_VFX_Small_Heart"), 30);
+hit_bat_shatter = hit_fx_create( sprite_get("Callie_VFX_Bat_Hit"), 30);
+hit_fireball = hit_fx_create( sprite_get("Callie_VFX_Fire"), 40);
+hit_balloon = hit_fx_create( sprite_get("Callie_VFX_Balloon"), 30);
+
+hit_surprise = hit_fx_create( sprite_get("vfx_surprise"), 20);
+hit_ribbon = hit_fx_create( sprite_get("vfx_ribbon"), 30);
+hit_scatter = hit_fx_create( sprite_get("vfx_scatter"), 30);
+hit_roses = hit_fx_create( sprite_get("vfx_roses"), 50);
+hit_goo = hit_fx_create( sprite_get("vfx_goohit"), 40);
+hit_ribbonslam = hit_fx_create( sprite_get("vfx_ribbonslam"), 30);
+hit_swirl = hit_fx_create( sprite_get("vfx_beeg"), 50);
+
+trail_sparkles = hit_fx_create(sprite_get("sparkles"), 40);
 
 sfxdthrow = sound_get("dthrowsfx");
 dThrow = noone; 

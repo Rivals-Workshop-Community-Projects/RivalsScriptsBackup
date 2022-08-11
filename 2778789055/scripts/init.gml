@@ -207,12 +207,12 @@ pot_explode_owner = noone;
 
 alt = get_player_color(player);
 set_victory_portrait(sprite_get("portrait"));
-if(alt == 22){ //drip
+if(alt == 23){ //drip
 set_victory_theme(sound_get("drip_victory"));
 set_victory_portrait(sprite_get("drip_portrait"));
 }if(alt == 16){ //WW
 custom_food = 1;
-}if(alt == 21){ //Kaiman
+}if(alt == 22){ //Kaiman
 custom_food = 2;
 }if(alt == 9){ //Kawasaki
 custom_food = 3;
@@ -220,17 +220,19 @@ custom_food = 3;
 custom_food = 4;
 }if(alt == 14){ //TAG
 custom_food = 5;
+}if(alt == 21){ //
+custom_food = 6;
 }
 
-if(get_player_color(player) == 22){
-set_color_profile_slot( 22, 0, 88, 80, 63 ); //Gumbo Skin 1
-set_color_profile_slot( 22, 1, 200, 189, 158 ); //Gumb Skin 2
-set_color_profile_slot( 22, 2, 92, 92, 92 ); //Jeans
-set_color_profile_slot( 22, 3, 89, 89, 89 ); //Hoodie
-set_color_profile_slot( 22, 4, 255, 210, 77 ); //Eyes
-set_color_profile_slot( 22, 5, 242, 207, 207 ); //Po Skin 1
-set_color_profile_slot( 22, 6, 211, 120, 120 ); //Po Skin 2
-set_color_profile_slot( 22, 7, 255, 255, 255 ); //Apron  
+if(get_player_color(player) == 23){
+set_color_profile_slot( 23, 0, 88, 80, 63 ); //Gumbo Skin 1
+set_color_profile_slot( 23, 1, 200, 189, 158 ); //Gumb Skin 2
+set_color_profile_slot( 23, 2, 92, 92, 92 ); //Jeans
+set_color_profile_slot( 23, 3, 89, 89, 89 ); //Hoodie
+set_color_profile_slot( 23, 4, 255, 210, 77 ); //Eyes
+set_color_profile_slot( 23, 5, 242, 207, 207 ); //Po Skin 1
+set_color_profile_slot( 23, 6, 211, 120, 120 ); //Po Skin 2
+set_color_profile_slot( 23, 7, 255, 255, 255 ); //Apron  
 }if(get_player_color(player) == 15){
 set_color_profile_slot( 15, 0, 130, 90, 49 ); //Gumbo Skin 1
 set_color_profile_slot( 15, 1, 107, 107, 107 ); //Gumb Skin 2
@@ -258,15 +260,15 @@ set_color_profile_slot( 13, 4, 255, 255, 255 ); //Eyes
 set_color_profile_slot( 13, 5, 255, 200, 0 ); //Po Skin 1
 set_color_profile_slot( 13, 6, 158, 158, 158 ); //Po Skin 2
 set_color_profile_slot( 13, 7, 49, 222, 198 ); //Apron
-}if(get_player_color(player) == 21){
-set_color_profile_slot( 21, 0, 129, 143, 83 ); //Gumbo Skin 1
-set_color_profile_slot( 21, 1, 227, 231, 187 ); //Gumb Skin 2
-set_color_profile_slot( 21, 2, 82, 86, 69 ); //Jeans
-set_color_profile_slot( 21, 3, 35, 32, 54 ); //Hoodie
-set_color_profile_slot( 21, 4, 163, 46, 39 ); //Eyes
-set_color_profile_slot( 21, 5, 79, 150, 156 ); //Po Skin 1
-set_color_profile_slot( 21, 6, 206, 193, 130 ); //Po Skin 2
-set_color_profile_slot( 21, 7, 63, 83, 110 ); //Apron
+}if(get_player_color(player) == 22){
+set_color_profile_slot( 22, 0, 129, 143, 83 ); //Gumbo Skin 1
+set_color_profile_slot( 22, 1, 227, 231, 187 ); //Gumb Skin 2
+set_color_profile_slot( 22, 2, 82, 86, 69 ); //Jeans
+set_color_profile_slot( 22, 3, 35, 32, 54 ); //Hoodie
+set_color_profile_slot( 22, 4, 163, 46, 39 ); //Eyes
+set_color_profile_slot( 22, 5, 79, 150, 156 ); //Po Skin 1
+set_color_profile_slot( 22, 6, 206, 193, 130 ); //Po Skin 2
+set_color_profile_slot( 22, 7, 63, 83, 110 ); //Apron
 }
 
 // MunoPhone Touch code - don't touch

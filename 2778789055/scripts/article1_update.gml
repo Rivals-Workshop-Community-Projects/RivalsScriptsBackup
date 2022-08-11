@@ -67,7 +67,7 @@ if(explode_timer = 179){
 	state_timer = 0;
 	*/
 	sound_play(sound_get("se_younglink_special_N04"));
-	var hitfx = spawn_hit_fx(x, y - 40, 19);
+	var hitfx = spawn_hit_fx(floor(x), floor(y) - 40, 19);
     hitfx.pause = 10;
 	player_id.shrimpsplosion = true;
 }
@@ -108,23 +108,23 @@ if(explode_timer = 180){
     if(get_gameplay_time() % 20 == 0){
         snd_rng = random_func(0, 9, true);
         if (snd_rng == 0) {
-        spawn_hit_fx(x , y - 75, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) , floor(y) - 75, player_id.steam_effect);	
         }if (snd_rng == 1) {
-        spawn_hit_fx(x + 20, y - 70, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) + 20, floor(y) - 70, player_id.steam_effect);	
         }if (snd_rng == 2) {
-        spawn_hit_fx(x + 10, y - 90, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) + 10, floor(y) - 90, player_id.steam_effect);	
         }if (snd_rng == 3) {
-        spawn_hit_fx(x + 25, y - 50, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) + 25, floor(y) - 50, player_id.steam_effect);	
         }if (snd_rng == 4) {
-        spawn_hit_fx(x + -25, y - 70, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) + -25, floor(y) - 70, player_id.steam_effect);	
         }if (snd_rng == 5) {
-        spawn_hit_fx(x + -20, y - 65, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) + -20, floor(y) - 65, player_id.steam_effect);	
         }if (snd_rng == 6) {
-        spawn_hit_fx(x + -5, y - 85, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) + -5, floor(y) - 85, player_id.steam_effect);	
         }if (snd_rng == 7) {
-        spawn_hit_fx(x + 10, y - 80, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) + 10, floor(y) - 80, player_id.steam_effect);	
         }if (snd_rng == 8) {
-        spawn_hit_fx(x + -15, y - 45, player_id.steam_effect);	
+        spawn_hit_fx(floor(x) + -15, floor(y) - 45, player_id.steam_effect);	
         }	
     }
 }
@@ -162,8 +162,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
     			}
     			no_hitbox = false;
     		    can_be_hit = false;
-    			state = 2;
-    			state_timer = 0;
+    		    pot_turn_off_lockout = false;
     			if(hitbox_hit.player_id.attack != AT_BAIR){
 				        if(hitbox_hit.spr_dir == 1){
         	hsp_var = hitbox_hit.kb_value;
@@ -178,15 +177,20 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit)
         }
     			}
     	if(hitbox_hit.player_id.url == "2778789055"){
-    		if(hitbox_hit.player_id.attack == AT_NSPECIAL){
-    		if(hitbox_hit.hbox_num == 1){
-    			if(clink_cooldown == 0){
+    			if(hitbox_hit.enemies = 1){
+    				print("FUCK");
+    				//clink_cooldown = 60;
     				no_hitbox = true;
-    				clink_cooldown = 60;
-    				}
+    				//hitbox_hit.destroy_hitbox = true;
     			}
-    		}
+        }  if(hitbox_hit.player_id.url == "2832785375"){
+    		if(hitbox_hit.player_id.attack == AT_FSPECIAL){
+    			print("I hate articles");
+    				pot_turn_off_lockout = true;
+    				}
         }
+            			state = 2;
+    			state_timer = 0;
     	}
     			
     		}
@@ -210,7 +214,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     		}
     	}
     	if (hitbox_hit != noone){
-    		if(hitbox_hit.attack != AT_NSPECIAL && hitbox_hit.attack != AT_FSPECIAL){
+    		if(hitbox_hit.attack != AT_FSPECIAL){
     			if(hitbox_hit.hitpause > 0 && hitbox_hit.hit_priority > 0){
     			with (hitbox_hit){
         			sound_play(sound_effect);
@@ -228,8 +232,6 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     			}
     			no_hitbox = false;
     		    can_be_hit = false;
-    			state = 2;
-    			state_timer = 0;
     			}
 
     			if(hitbox_hit.player_id.attack != AT_BAIR){
@@ -245,6 +247,18 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
         	hsp_var = hitbox_hit.kb_value;
         }
     			}
+    			
+    	//if(hitbox_hit.player_id.url == "2778789055"){
+    			//if(clink_cooldown == 0){
+    				//print("FUCK");
+    				//no_hitbox = true;
+    				//hitbox_hit.destroy_hitbox = true;
+    				//clink_cooldown = 60;
+    			//}
+        //}
+    			state = 2;
+    			state_timer = 0;
+    			
     		}
 				if(hitbox_hit.hitpause != 0 && hitbox_hit.hit_priority != 0){	
     			if(spice_cooldown == 0){
@@ -280,7 +294,9 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit) { //makes the pot h
     			hitbox_hit.destroyed = true;
     					}
     				}
-    			}
+    		}
+    			
+    			
     		}
     	}
     }
@@ -296,7 +312,28 @@ if (state == 0){
 	if(state_timer = 1){
 	hsp = 5 * player_id.spr_dir;
 	vsp = -3;
-	}if(!free){
+	}
+	/*
+	if(!free){
+		if(hsp != 0){
+			if(hsp > 0){
+			hsp -= 0.3;
+			}if(hsp < 0){
+			hsp += 0.3;
+			}
+		}
+	}if(hsp = 0 && state_timer > 2){
+		state = 1;
+		state_timer = 0;
+	}if(state_timer > 1 && !free){
+			if(hsp > 0 && hsp < 0.21){
+				hsp = 0;
+			}if(hsp < 0 && hsp > -0.21){
+				hsp = 0;
+				}
+	}
+	*/
+	if(!free){
 		if(hsp != 0){
 			if(hsp > 0){
 			hsp -= 0.25;
@@ -308,13 +345,12 @@ if (state == 0){
 		state = 1;
 		state_timer = 0;
 	}if(state_timer > 1 && !free){
-			if(hsp > 0 && hsp < .1){
+			if(hsp > 0 && hsp < 0.1){
 				hsp = 0;
 			}if(hsp < 0 && hsp > -0.1){
 				hsp = 0;
 				}
 	}
-
 }
 
 
@@ -417,9 +453,12 @@ if (state == 2){
 		hsp = hsp_var * 0.9;
 		if(!has_shrimp){
 			if(!no_hitbox){
-		pot_hitbox = create_hitbox(AT_NSPECIAL, 1, x + spr_dir, y - 30);
+		pot_hitbox = create_hitbox(AT_EXTRA_2, 1, floor(x) + spr_dir, floor(y) - 25);
 		pot_hitbox.player = pot_owner;
 		pot_hitbox_active = true;
+		if(pot_turn_off_lockout){
+			pot_hitbox.no_other_hit = 0;
+		}
 		if(hsp > 0){
 			pot_hitbox.kb_angle = 50;
 		}		if(hsp < 0){
@@ -454,11 +493,11 @@ if(!free){
 	}
 	if(state_timer > 1){
 		if(hsp > 3 && pot_hitbox_active){
-		pot_hitbox.x = x;
-		pot_hitbox.y = y - 30;
+		pot_hitbox.x = floor(x);
+		pot_hitbox.y = floor(y) - 25;
 		}if(hsp < -3 && pot_hitbox_active){
-		pot_hitbox.x = x;
-		pot_hitbox.y = y - 30;
+		pot_hitbox.x = floor(x);
+		pot_hitbox.y = floor(y) - 25;
 		}
 		if(hsp > 0 && hsp < 3 && pot_hitbox_active){
 				pot_hitbox.length = 0;
@@ -531,10 +570,11 @@ with (oPlayer){
 		}
 	}
 }if(pot_has_trapped){
-	pot_trapped.x = x;
-	pot_trapped.y = y - 5;
+	pot_trapped.x = floor(x);
+	pot_trapped.y = floor(y) - 5;
 	pot_trapped.hitstop = 2;
 	pot_trapped.hitpause = true;
+	pot_trapped.state = PS_HITSTUN;
 if(pot_trapped.activated_kill_effect){
 	galaxy_pot = true;
 }
@@ -556,7 +596,8 @@ if (state == 3){
 		}
 		hsp = hsp_var * 0.9;
 		if(!has_shrimp){
-		pot_hitbox = create_hitbox(AT_NSPECIAL, 1, x + spr_dir, y - 30);
+			if(!no_hitbox){
+		pot_hitbox = create_hitbox(AT_EXTRA_2, 1, floor(x) + spr_dir, floor(y) - 25);
 		pot_hitbox.player = pot_owner;
 		pot_hitbox_active = true;
 				if(hsp > 0){
@@ -564,6 +605,7 @@ if (state == 3){
 		}		if(hsp < 0){
 			pot_hitbox.kb_angle = 130;
 		}
+			}
 		}
 	}
 	hsp = clamp(hsp,-10,10);
@@ -583,7 +625,7 @@ if(!free){
 		}
 	}
 	if(state_timer = 16){
-		spawn_hit_fx(x - spr_dir, y - 40, 3);
+		spawn_hit_fx(floor(x) - spr_dir, floor(y) - 40, 3);
 		sound_play(asset_get("sfx_zetter_fireball_fire"));
 	}if(state_timer = 28){
 		if(!pot_has_trapped){
@@ -596,11 +638,11 @@ if(!free){
 	}
 	if(state_timer > 1){
 		if(hsp > 3 && pot_hitbox_active){
-		pot_hitbox.x = x;
-		pot_hitbox.y = y - 30;
+		pot_hitbox.x = floor(x);
+		pot_hitbox.y = floor(y) - 25;
 		}if(hsp < -3 && pot_hitbox_active){
-		pot_hitbox.x = x;
-		pot_hitbox.y = y - 30;
+		pot_hitbox.x = floor(x);
+		pot_hitbox.y = floor(y) - 25;
 		}
 		if(hsp > 0 && hsp < 3 && pot_hitbox_active){
 				pot_hitbox.length = 0;
@@ -659,10 +701,11 @@ with (oPlayer){
 		}
 	}
 }if(pot_has_trapped){
-	pot_trapped.x = x;
-	pot_trapped.y = y - 5;
+	pot_trapped.x = floor(x);
+	pot_trapped.y = floor(y) - 5;
 	pot_trapped.hitstop = 2;
 	pot_trapped.hitpause = true;
+	pot_trapped.state = PS_HITSTUN;
 if(pot_trapped.activated_kill_effect){
 	galaxy_pot = true;
 }
@@ -683,7 +726,7 @@ with (pHitBox){
 if (state == 4){
 	can_be_hit = false;
 	if(state_timer = 16){
-		spawn_hit_fx(x - spr_dir, y - 40, 6);
+		spawn_hit_fx(floor(x) - spr_dir, floor(y) - 40, 6);
 		sound_play(asset_get("sfx_waterhit_weak"));
 	}
 	if(state_timer = 28){
@@ -720,10 +763,11 @@ if (state == 4){
 if (state == 5){
 	can_be_hit = false;
 	if(pot_has_trapped){
-	pot_trapped.x = x;
-	pot_trapped.y = y - 5;
+	pot_trapped.x = floor(x);
+	pot_trapped.y = floor(y) - 5;
 	pot_trapped.hitpause = true;
 	pot_trapped.hitstop = 2;
+	pot_trapped.state = PS_HITSTUN;
 	}
 	hsp = clamp(hsp,-10,10);
 if(!free){
@@ -742,9 +786,9 @@ if(!free){
 		}
 	}
 if(state_timer % 15 == 0){
-	steam_hitbox = create_hitbox(AT_NSPECIAL, 2, x, y - 30);
-	steam_hitbox.x = x;
-	steam_hitbox.y = y - 30;
+	steam_hitbox = create_hitbox(AT_EXTRA_2, 2, floor(x), floor(y) - 30);
+	steam_hitbox.x = floor(x);
+	steam_hitbox.y = floor(y) - 30;
 	//steam_hitbox.player = explode_owner;
 	if(pot_trapped_gumbo){
 		steam_hitbox.can_hit_self = true;
@@ -772,10 +816,11 @@ if(state_timer == 35){
 if (state == 6){
 	can_be_hit = false;
 	if(pot_has_trapped){
-	pot_trapped.x = x;
-	pot_trapped.y = y - 5;
+	pot_trapped.x = floor(x);
+	pot_trapped.y = floor(y) - 5;
 	pot_trapped.hitpause = true;
 	pot_trapped.hitstop = 2;
+	pot_trapped.state = PS_HITSTUN;
 	}
 if(state_timer = 1){
 	sound_play(asset_get("sfx_ell_fspecial_charge"));
@@ -784,9 +829,9 @@ if(state_timer = 1){
 	}
 }if(state_timer = 16){
 	sound_play(asset_get("sfx_orcane_dsmash"));
-	finisher_hitbox = create_hitbox(AT_NSPECIAL, 3, x, y - 70);
-	finisher_hitbox.x = x
-	finisher_hitbox.y = y - 70;
+	finisher_hitbox = create_hitbox(AT_EXTRA_2, 3, floor(x), floor(y) - 70);
+	finisher_hitbox.x = floor(x)
+	finisher_hitbox.y = floor(y)- 70;
 	//finisher_hitbox.player = explode_owner;
 	if(spice_level = 0){
 		finisher_hitbox.damage = 8;
@@ -809,6 +854,86 @@ if(state_timer = 1){
 		finisher_hitbox.kb_scale = 1.2;
 		food_id = 3;
 	}
+	
+	if(pot_trapped != noone){
+	//compat
+		with pot_trapped {
+	if ("pot_compat_variable" in self) {
+    	other.pot_compat_variable = pot_compat_variable;
+    	other.food_id = 1987;
+    	other.pot_compat_text = pot_compat_text;
+		}
+	}
+	if(pot_trapped.url == CH_ZETTERBURN){
+		food_id = 11;
+		pot_compat_text = "Charred Steak"
+	}	if(pot_trapped.url == CH_FORSBURN){
+		food_id = 12;
+		pot_compat_text = "Smoked Ham"
+	}if(pot_trapped.url == CH_CLAIREN){
+		food_id = 13;
+		pot_compat_text = "Plasma Cooked Smores"
+	}if(pot_trapped.url == CH_MOLLO){
+		food_id = 14;
+		pot_compat_text = "Pipe Bomb"
+	}if(pot_trapped.url == CH_ORCANE){
+		food_id = 15;
+		pot_compat_text = "Sparkling Water"
+	}if(pot_trapped.url == CH_ETALUS){
+		food_id = 16;
+		pot_compat_text = "Shaved Ice"
+	}if(pot_trapped.url == CH_RANNO){
+		food_id = 17;
+		pot_compat_text = "Fried Frog Legs"
+	}if(pot_trapped.url == CH_HODAN){
+		food_id = 18;
+		pot_compat_text = "Steamed Dumplings"
+	}if(pot_trapped.url == CH_KRAGG){
+		food_id = 19;
+		pot_compat_text = "Layered Rock Wall Cake"
+	}if(pot_trapped.url == CH_MAYPUL){
+		food_id = 20;
+		pot_compat_text = "Lily's Feed"
+	}if(pot_trapped.url == CH_SYLVANOS){
+		food_id = 21;
+		pot_compat_text = "Strange Salad"
+	}if(pot_trapped.url == CH_OLYMPIA){
+		food_id = 22;
+		pot_compat_text = "Rock Candy"
+	}if(pot_trapped.url == CH_WRASTOR){
+		food_id = 23;
+		pot_compat_text = "Slipstream Croissant"
+	}if(pot_trapped.url == CH_ABSA){
+		food_id = 24;
+		pot_compat_text = "Cotton Candy"
+	}if(pot_trapped.url == CH_ELLIANA){
+		food_id = 25;
+		pot_compat_text = "Airplane Food"
+	}if(pot_trapped.url == CH_POMME){
+		food_id = 26;
+		pot_compat_text = "Luxury Cheese"
+	}if(pot_trapped.url == CH_ORI){
+		food_id = 27;
+		pot_compat_text = "Spirit Stew"
+	}if(pot_trapped.url == CH_SHOVEL_KNIGHT){
+		food_id = 28;
+		pot_compat_text = "Arby's Roast Beef Sandwich"
+	}if(pot_trapped.url == 2627476892){
+		food_id = 29;
+		pot_compat_text = "Lancer Cookie"
+	}if(pot_trapped.url == 2768297654 or pot_trapped.url == 2453567307){
+		food_id = 30;
+		pot_compat_text = "Peculiar Cheese"
+	}if(pot_trapped.url == 2817605804){
+		food_id = 31;
+		pot_compat_text = "Coffee, Cheetos, and Chicken"
+	}if(pot_trapped.url == 2664982578){
+		food_id = 32;
+		pot_compat_text = "Fried Egg"
+	}
+	}
+	
+	
 	if(pot_trapped_gumbo){
 		finisher_hitbox.can_hit_self = true;
 	}if(galaxy_pot){
@@ -820,7 +945,7 @@ if(state_timer = 1){
 		galaxy_pot = false;
 	}
 	if(has_shrimp){
-	create_hitbox(AT_FSPECIAL, 2, x, y - 60);	
+	create_hitbox(AT_FSPECIAL, 2, floor(x), floor(y) - 60);	
 	if(has_shrimp = true){
 		if(player_id.custom_food == 0){
 		food_id = 4;
@@ -848,8 +973,8 @@ if(state_timer = 1){
 	pot_has_trapped = false;
 	}
 }if(state_timer = 60){
-	vfx = spawn_hit_fx(x - spr_dir, y - 40, player_id.dust_effect);
-	vfx.depth = -10;
+	dust_vfx = spawn_hit_fx(floor(x) - spr_dir, floor(y) - 40, player_id.dust_effect);
+	dust_vfx.depth = -10;
 	sound_play(asset_get("sfx_metal_hit_strong"));
 		with (player_id){
 		move_cooldown[AT_NSPECIAL] = 240;
@@ -882,12 +1007,12 @@ if(!free){
 if (state == 7){
 can_be_hit = false;	
 if(state_timer = 1){
-	vfx = spawn_hit_fx(x, y + 20, player_id.eat_up_effect);
-	vfx.spr_dir = 1;
+	eatup_vfx = spawn_hit_fx(floor(x), floor(y) + 20, player_id.eat_up_effect);
+	eatup_vfx.spr_dir = 1;
 }
 if(state_timer = 72){
-	vfx = spawn_hit_fx(x - spr_dir, y - 40, 3);
-	vfx.depth = -10;
+	eatup2_vfx = spawn_hit_fx(floor(x) - spr_dir, floor(y) - 40, 3);
+	eatup2_vfx.depth = -10;
     instance_destroy();
     exit;
 }

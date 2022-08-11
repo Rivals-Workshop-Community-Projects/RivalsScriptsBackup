@@ -1,7 +1,7 @@
    
     
     
-if  (get_player_color(player) == 22) {
+if  (get_player_color(player) == 23) {
     if(!avocado){
 //crash prevention line
 shader_end();

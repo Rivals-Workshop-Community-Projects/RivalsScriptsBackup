@@ -7,7 +7,7 @@ set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_gained_1"));
@@ -59,7 +59,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 44);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -36);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 92);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 62);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 0.1);

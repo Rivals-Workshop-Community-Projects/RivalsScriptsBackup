@@ -13,6 +13,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Emergency Version of Uspecial used mainly for recovery. Forced to use if you do not have clone and it is not near you. Sets into Pratfall");//AG_MUNO_ATTACK_MISC_ADD
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;

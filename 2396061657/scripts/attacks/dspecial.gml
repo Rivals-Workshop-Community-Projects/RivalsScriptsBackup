@@ -86,7 +86,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, nspecial_hitpause);
-set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, hit_focus);
+set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 5);
+set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
+set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, hit_focus_new);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("BTL_RAPIER_CRITICAL"));
 
-set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_PARTICLE_NUM, 6);

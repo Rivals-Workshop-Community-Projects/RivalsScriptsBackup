@@ -54,6 +54,7 @@ djump_speed = -2; //Initial speed of double jump (Negative is down here.)
 djump_accel = -1.4; //The upwards acceleration of double jump (Negative is up here.)
 djump_accel_start_time = 2; //The frame after starting double jump to start accelerating.
 djump_accel_end_time = 17;//The frame after starting double jump to stop accelerating.
+fix_old_djumps = 0;
 /*
 //init.gml
 fix_djump_counter = 0; //added to 'fix' the broken doublejumps

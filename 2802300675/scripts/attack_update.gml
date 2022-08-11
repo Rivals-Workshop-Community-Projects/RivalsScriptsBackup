@@ -119,10 +119,23 @@ if(attack == AT_NSPECIAL){
         }
         nspecial_charge_amount = 0;
     }if(window == 2){
+    	if(!free){
         if(shield_pressed){
         	nspecial_charge_amount = 0;
             set_state(PS_IDLE);
-        }if(jump_pressed){
+        }
+        }if(free){
+        if(shield_pressed){
+        	nspecial_charge_amount = 0;
+        	if(has_airdodge){
+            set_state(PS_AIR_DODGE);
+        	}if(!has_airdodge){
+            set_state(PS_IDLE_AIR);
+        	}
+        }
+        }
+        
+        if(jump_pressed){
         	if(free && djumps = 0){
         		nspecial_charge_amount = 0;
             set_state(PS_DOUBLE_JUMP);   

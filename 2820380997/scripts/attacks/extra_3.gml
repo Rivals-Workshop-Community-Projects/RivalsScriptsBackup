@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Boosted Version of Dspecial");//AG_MUNO_ATTACK_MISC_ADD
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -127,6 +128,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_dthrow_fire);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, 81, "Roekoko's Stomp 1");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -153,7 +155,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_dthrow_fire);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-
+set_hitbox_value(attack, hitbox_num, 81, "Roekoko's Stomp 2");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // Hitbox #3 / Window #5 - / Final Kick
@@ -179,7 +181,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-
+set_hitbox_value(attack, hitbox_num, 81, "Roekoko's Launcher Kick");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // Hitbox #4 / Window #0 - / Clone Stomp 1
@@ -204,7 +206,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_dthrow_fire);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, -5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-
+set_hitbox_value(attack, hitbox_num, 81, "Clone's Stomp 1");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // Hitbox #5 / Window #0 - / Clone Stomp 2
@@ -229,7 +231,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_dthrow_fire);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, -5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-
+set_hitbox_value(attack, hitbox_num, 81, "Clone's Stomp 2");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 /*

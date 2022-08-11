@@ -34,6 +34,11 @@ switch(attack){
     set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 10);
     set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 0);
     set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -44);
+    if(spark_timer > 0){
+        set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 52);
+    }else{
+        set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 40);
+    }
     break;
     case AT_FSTRONG:
     set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get(string(spr_dir) + "_fstrong"));

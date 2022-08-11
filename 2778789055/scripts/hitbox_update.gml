@@ -38,6 +38,7 @@ if(attack == AT_USPECIAL){
         bubpop_pitch = 1.4;
     }
     
+    //important! revert back to old hitbox timers
     if(hbox_num == 1){
     if(hitbox_timer == 29){
         sound_play(asset_get("sfx_bubblepop"), false, noone, 0.5, bubpop_pitch);

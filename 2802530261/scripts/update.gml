@@ -202,20 +202,22 @@ if(bomb_timer > 0){
 //flash shift
 if(power_ups[5] == 1){
     if(!free){
-        dodge_amount = 3;
+        dodge_amount = 2;
     }
-    if(state == PS_AIR_DODGE && dodge_amount > 0){
+    if(state == PS_AIR_DODGE && dodge_amount > 0 && (window == 2)){
         has_airdodge = 1;
+        if(shield_down){
+        	set_state(PS_AIR_DODGE);
+        }
         if(state_timer == 0){
             dodge_amount--;
         }
     }
-    aeion -= (has_rune("N")? 0: (has_rune("A")? 1: 2));
+    aeion = hud_flash_shift_cooldown - 300;
     if(state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODGE) && state_timer = 0{
         sound_play(sound_get("flash_trail"), false, false, 0.6);
         sound_play(sound_get("flash_shift"));
-        hud_flash_shift_cooldown -= 20;
-        aeion -= (has_rune("N")? 0: (has_rune("A")? 20: 40));
+        hud_flash_shift_cooldown -= (has_rune("N")? 0: (has_rune("A")? 10: 20));
     }
     roll_forward_max    = 12;
     roll_backward_max   = 12;
@@ -230,8 +232,8 @@ if(power_ups[5] == 1){
     air_dodge_recovery_frames   = 2;
     air_dodge_speed = 12;
 }else{
-    if(aeion < 1000){
-        aeion += 1000/300;
+    if(aeion < 700){
+        aeion += 700/300;
     }
     roll_forward_max    = 9;
     roll_backward_max   = 9;

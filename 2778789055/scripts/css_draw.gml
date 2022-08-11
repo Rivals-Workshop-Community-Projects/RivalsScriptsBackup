@@ -2,10 +2,10 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "20";
-patch_month = "JUL";
+patch_day = "7";
+patch_month = "AUG";
  
-var num_alts = 23;
+var num_alts = 25;
 var alt_cur = get_player_color(player);
 var alt = get_player_color(player);
  
@@ -47,13 +47,15 @@ alt_name[17]  = "The OG Wobblers";
 alt_name[18]  = "It's a reference"; 
 alt_name[19]  = "Seasoned Veterans"; 
 alt_name[20]  = "Fresh off the Grill"; 
-alt_name[21]  = "From Mud to Sludge"; 
-alt_name[22]  = "Leakage"; 
+alt_name[21]  = "Having fun at Dave-Land"; 
+alt_name[22]  = "From Mud to Sludge"; 
+alt_name[23]  = "Leakage"; 
+alt_name[24]  = "Reverse"; 
 
-if (get_player_color(player)==22){
+if (get_player_color(player)==23){
         draw_sprite(sprite_get("drip_charselect"),0,x+8,y+8);
 }
-if (get_player_color(player)==22){
+if (get_player_color(player)==23){
     if (drawtime == 1){
     sound_play(sound_get("drip"))
     }
@@ -78,8 +80,10 @@ if (get_player_color(player)==14){
     }
     */
 //Special Icon
-if (get_player_color(player)== 22 || get_player_color(player)== 23){
+if (get_player_color(player)== 23 || get_player_color(player)== 24){
+    //shader_end();
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
+        //shader_start();
     }
  
 //Alt

@@ -75,7 +75,7 @@ set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NTHROW, 1, HG_EXTRA_HITPAUSE, 200);
-set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, hit_nthrow);
+set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, hit_ribbon);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT_X_OFFSET, 4);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_NTHROW, 1, HG_HIT_SFX, sound_get("fthrowsfx"));
@@ -99,13 +99,14 @@ set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_NTHROW, 2, HG_BASE_HITPAUSE, 14);
 set_hitbox_value(AT_NTHROW, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_NTHROW, 2, HG_EXTRA_HITPAUSE, 3);
-set_hitbox_value(AT_NTHROW, 2, HG_VISUAL_EFFECT, hit_nthrow);
+set_hitbox_value(AT_NTHROW, 2, HG_VISUAL_EFFECT, hit_ribbonslam);
 set_hitbox_value(AT_NTHROW, 2, HG_VISUAL_EFFECT_X_OFFSET, 4);
 set_hitbox_value(AT_NTHROW, 2, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_NTHROW, 2, HG_HIT_SFX, sound_get("dthrowsfx"));
 set_hitbox_value(AT_NTHROW, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_NTHROW, 2, HG_HITSTUN_MULTIPLIER, .7);
 
+set_hitbox_value(AT_NTHROW, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_NTHROW, 2, HG_HIT_PARTICLE_NUM, 2);
 
 set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_GROUP, -1);

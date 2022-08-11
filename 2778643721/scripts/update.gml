@@ -1,6 +1,4 @@
-//
-muno_event_type = 1;
-user_event(14);
+//update.gml
 
 if (introTimer2 < 4) {
     introTimer2++;
@@ -38,8 +36,8 @@ if (state_cat == SC_HITSTUN && instance_exists(fspecial_id)){
 	fspecial_id = noone;
 }
 
-if (!instance_exists(apple) && move_cooldown[AT_DSPECIAL] > 0){
-	move_cooldown[AT_DSPECIAL] = 0;
+if (!instance_exists(apple) && move_cooldown[AT_DSPECIAL] > 30){
+	move_cooldown[AT_DSPECIAL] = 30;
 }
 
 if (instance_exists(apple) && apple.state < 5){
@@ -128,7 +126,7 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 if (char_height < 46){
 	char_height = 46;
 }
-if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
+
 
 if (state == PS_AIR_DODGE or state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD){
     if (state_timer == 3 or state_timer == 8 or state_timer == 12){

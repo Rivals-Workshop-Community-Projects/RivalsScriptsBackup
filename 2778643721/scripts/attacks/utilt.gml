@@ -19,7 +19,6 @@ set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UTILT,3);
 
-set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_NAME, "Spike");
 
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
@@ -38,15 +37,13 @@ set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("sfx_hit_sharp"));
 
-set_hitbox_value(AT_UTILT, 2, HG_MUNO_HITBOX_NAME, "Spike");
+//set_hitbox_value(AT_UTILT, 2, HG_MUNO_HITBOX_NAME, "Spike");
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, -48);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -68);
-
-set_hitbox_value(AT_UTILT, 3, HG_MUNO_HITBOX_NAME, "Swipe");
 
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 3, HG_WINDOW, 2);
@@ -66,4 +63,3 @@ set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_UTILT, 3, HG_ANGLE_FLIPPER, 4);
 
-//set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_MISC_ADD, "Two of these spawn during the attack.");

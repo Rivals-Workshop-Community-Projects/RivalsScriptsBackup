@@ -66,8 +66,12 @@ clink_cooldown = 0;
 no_hitbox = false;
 player_near_pot = false;
 
+pot_turn_off_lockout = false;
+
 effect_radius = 60;
 food_id = 0;
+pot_compat_text = "";
+pot_compat_variable = sprite_get("food");
 
 galaxy_pot = false;
 explode_owner = noone;

@@ -188,24 +188,24 @@ if ("ColorLocked" in self && ColorLocked){
 			set_article_color_slot( 7, 254, 254, 254 ); //Leggy 2
 		break;	
 		case 9:
-			// Riptide
-			set_character_color_slot( 0, 242, 228, 214 ); //Hair Bottom
-			set_character_color_slot( 1, 209, 90, 1 ); //Shirt
-			set_character_color_slot( 2, 1, 198, 216 ); //Tie/Hoodie
-			set_character_color_slot( 3, 12, 25, 58 ); //Skirt
-			set_character_color_slot( 4, 1, 198, 216 ); //Eyes
-			set_character_color_slot( 5, 230, 166, 126 ); //Skin
-			set_character_color_slot( 6, 12, 25, 58 ); //Leggy 1
-			set_character_color_slot( 7, 12, 25, 58 ); //Leggy 2
+			// Genesis
+			set_character_color_slot(0, 191, 4, 13 ); //Hair Bottom
+			set_character_color_slot(1, 11, 18, 20 ); //Shirt
+			set_character_color_slot(2, 251, 252, 255 ); //Tie/Hoodie
+			set_character_color_slot(3, 11, 18, 20 ); //Skirt
+			set_character_color_slot(4, 163, 15, 42 ); //Eyes
+			set_character_color_slot(5, 255, 216, 212 ); //Skin
+			set_character_color_slot(6, 191, 4, 13 ); //Leggy 1
+			set_character_color_slot(7, 191, 4, 13 ); //Leggy 2
 			
-			set_article_color_slot( 0, 242, 228, 214 ); //Hair Bottom
-			set_article_color_slot( 1, 209, 90, 1 ); //Shirt
-			set_article_color_slot( 2, 1, 198, 216 ); //Tie/Hoodie
-			set_article_color_slot( 3, 12, 25, 58 ); //Skirt
-			set_article_color_slot( 4, 1, 198, 216 ); //Eyes
-			set_article_color_slot( 5, 230, 166, 126 ); //Skin
-			set_article_color_slot( 6, 12, 25, 58 ); //Leggy 1
-			set_article_color_slot( 7, 12, 25, 58 ); //Leggy 2
+			set_article_color_slot(0, 191, 4, 13 ); //Hair Bottom
+			set_article_color_slot(1, 11, 18, 20 ); //Shirt
+			set_article_color_slot(2, 251, 252, 255 ); //Tie/Hoodie
+			set_article_color_slot(3, 11, 18, 20 ); //Skirt
+			set_article_color_slot(4, 163, 15, 42 ); //Eyes
+			set_article_color_slot(5, 255, 216, 212 ); //Skin
+			set_article_color_slot(6, 191, 4, 13 ); //Leggy 1
+			set_article_color_slot(7, 191, 4, 13 ); //Leggy 2
 		break;	
 		case 10:
 			// Y'shtola
@@ -425,15 +425,15 @@ set_color_profile_slot( 20, 7, 255, 255, 0 ); //Leggy 2
 */
 
 /*
-// Riptide
-set_color_profile_slot( 25, 0, 242, 228, 214 ); //Hair Bottom
-set_color_profile_slot( 25, 1, 209, 90, 1 ); //Shirt
-set_color_profile_slot( 25, 2, 1, 198, 216 ); //Tie/Hoodie
-set_color_profile_slot( 25, 3, 12, 25, 58 ); //Skirt
-set_color_profile_slot( 25, 4, 1, 198, 216 ); //Eyes
-set_color_profile_slot( 25, 5, 230, 166, 126 ); //Skin
-set_color_profile_slot( 25, 6, 12, 25, 58 ); //Leggy 1
-set_color_profile_slot( 25, 7, 12, 25, 58 ); //Leggy 2
+// Genesis
+set_color_profile_slot( 26, 0, 191, 4, 13 ); //Hair Bottom
+set_color_profile_slot( 26, 1, 11, 18, 20 ); //Shirt
+set_color_profile_slot( 26, 2, 251, 252, 255 ); //Tie/Hoodie
+set_color_profile_slot( 26, 3, 11, 18, 20 ); //Skirt
+set_color_profile_slot( 26, 4, 163, 15, 42 ); //Eyes
+set_color_profile_slot( 26, 5, 255, 216, 212 ); //Skin
+set_color_profile_slot( 26, 6, 191, 4, 13 ); //Leggy 1
+set_color_profile_slot( 26, 7, 191, 4, 13 ); //Leggy 2
 */
 
 /*
@@ -459,4 +459,16 @@ set_color_profile_slot( 25, 4, 224, 118, 20 ); //Eyes
 set_color_profile_slot( 25, 5, 242, 176, 145 ); //Skin
 set_color_profile_slot( 25, 6, 212, 203, 17 ); //Leggy 1
 set_color_profile_slot( 25, 7, 145, 17, 46 ); //Leggy 2
+*/
+
+/*
+// Riptide  
+set_color_profile_slot( 25, 0, 242, 228, 214 ); //Hair Bottom
+set_color_profile_slot( 25, 1, 209, 90, 1 ); //Shirt
+set_color_profile_slot( 25, 2, 1, 198, 216 ); //Tie/Hoodie
+set_color_profile_slot( 25, 3, 12, 25, 58 ); //Skirt
+set_color_profile_slot( 25, 4, 1, 198, 216 ); //Eyes
+set_color_profile_slot( 25, 5, 230, 166, 126 ); //Skin
+set_color_profile_slot( 25, 6, 12, 25, 58 ); //Leggy 1
+set_color_profile_slot( 25, 7, 12, 25, 58 ); //Leggy 2
 */

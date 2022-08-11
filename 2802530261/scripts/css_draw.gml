@@ -1,7 +1,6 @@
 var temp_x = x;
 var temp_y = y;
 
-var num_alts = 27;
 var alt_cur = get_player_color(player);
 if "prev_alt" not in self {
        prev_alt = 0;  
@@ -70,7 +69,7 @@ if(alpher_alt > 0){
 }
 
 if(alt_cur != prev_alt){
-    alpher_alt = 2
+    alpher_alt = 3;
 }
 
 prev_alt = alt_cur;
@@ -89,7 +88,7 @@ textDraw(temp_x + 46, temp_y + 139, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 46, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 48, temp_y + 141, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 48, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
-textDraw(temp_x + 48, temp_y + 139, "fName", c_white, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
+textDraw(temp_x + 48, temp_y + 139, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, 1), get_color_profile_slot_g(alt_cur, 1), get_color_profile_slot_b(alt_cur, 1)), 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 
 init_shader();
 

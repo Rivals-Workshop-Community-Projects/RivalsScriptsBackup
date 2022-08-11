@@ -27,7 +27,7 @@ set_num_hitboxes(AT_BAIR, 1);
 
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -28);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 75);
@@ -40,8 +40,10 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .3);
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, hit_back);
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -40);
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, hit_small_heart);
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -30);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 10);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("BTL_SPEAR1"));
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 0);
+
+set_hitbox_value(AT_BAIR, 1, HG_HIT_PARTICLE_NUM, 1);

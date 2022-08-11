@@ -79,7 +79,7 @@ if (get_gameplay_time() < 120){
 			if(attack_down && taunt_down){
 		white_flash_timer = 18;
 		sound_play(asset_get("mfx_levelup"));
-		sound_play(sound_get("sfx_michigan"), false, noone, 1.5, 1);
+		sound_play(sound_get("sfx_michigan"), false, noone, 2, 1);
     set_color_profile_slot( 13, 0, 226, 189, 166 );
     set_color_profile_slot( 13, 1, 208, 153, 137 );
     set_color_profile_slot( 13, 2, 92, 92, 92 );
@@ -112,7 +112,7 @@ if (get_gameplay_time() < 120){
 		michigan = true;
 			}
 		}
-	}		if(get_player_color(player) = 22){
+	}		if(get_player_color(player) = 23){
 		//MC-Zom-B
 		if(michigan == false){
 			if(attack_down && taunt_down){
@@ -152,7 +152,7 @@ if (get_gameplay_time() < 120){
 		michigan = true;
 			}
 		}
-	}  if(get_player_color(player) = 21){
+	}  if(get_player_color(player) = 22){
 		//Kazuya Mishima
 		if(michigan == false){
 			if(attack_down && taunt_down){

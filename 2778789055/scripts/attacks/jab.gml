@@ -101,10 +101,11 @@ set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_JAB, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 301);
 
+//revert width!
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 3, HG_WINDOW, 8);
 set_hitbox_value(AT_JAB, 3, HG_LIFETIME, 3);
-set_hitbox_value(AT_JAB, 3, HG_HITBOX_X, 45);
+set_hitbox_value(AT_JAB, 3, HG_HITBOX_X, 40);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_Y, -50);
 set_hitbox_value(AT_JAB, 3, HG_WIDTH, 65);
 set_hitbox_value(AT_JAB, 3, HG_HEIGHT, 100);

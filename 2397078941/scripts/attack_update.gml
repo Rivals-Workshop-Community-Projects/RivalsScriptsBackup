@@ -248,20 +248,23 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 }
 
    		if attack == AT_FSPECIAL {
-			
+			can_fast_fall = false 
 			move_cooldown[AT_FSPECIAL] = 45
+			
+			if window == 4 && window_timer > 15 {
+				window_timer -= 0.25
+			}
 			
 	        if window == 4 {
 	        	can_fast_fall = false
 	        }
 	        
-			if !free && window < 4 &&  window_timer == 1 {
+			if window < 4 &&  window_timer == 1 {
 								shake_camera(2,4)
 				spawn_base_dust(x,y ,"land",spr_dir);   
 			}
 			
-			if free && window < 4 &&  window_timer == 1 {
-								shake_camera(2,4)
+			if free && state_timer% 8 == 1 {
 			spawn_base_dust(x + 14,y,"dash",-1);   
 			spawn_base_dust(x - 14,y,"dash",1);   
 			}
@@ -302,6 +305,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 				set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 9);
 				
 				set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 9);
+				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 5*8);
 			}
 			
 			if window == 2 && window_timer == 15 && !special_down {
@@ -315,6 +319,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 				set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 4);
 				
 				set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 9);
+				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 6*8);
 			}
 			
 			if window == 3  {
@@ -326,6 +331,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 				set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 9);
 				
 				set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 4);
+				
 				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 6*8);
 			}
 			
@@ -717,7 +723,8 @@ if attack == AT_DAIR {
     
     
     if window == 2 && !hitpause {
-        vsp = 15
+    	hsp /= 1.2
+        vsp = 13
     }
     
     if window == 2 && hitpause  {

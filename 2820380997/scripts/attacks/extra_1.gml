@@ -13,6 +13,10 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Controlling Clone State. 
+Clone can Airdash / Wavedash with Parry Input. 
+Clone can grab by pressing attack while holding special during this mode. 
+Has directional grabs depending on direction joystick is held. ");//AG_MUNO_ATTACK_MISC_ADD
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;

@@ -2,7 +2,13 @@
 
 draw_xscale = spr_dir
 
+
+
 if attack == AT_FTHROW && hbox_num == 19  {
+   if hitbox_timer < 20 {
+   	draw_xscale = (0.5 + hitbox_timer/40)*spr_dir 
+   	draw_yscale = (0.5 + hitbox_timer/40)
+   }
    spawn_hit_fx(x + random_func(5,61,true) - 30,y + random_func(6,121,true) - 60, shit6 )
 }
 

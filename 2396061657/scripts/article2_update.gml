@@ -16,7 +16,7 @@ if (state == 1){
 
 
 if (state == 0){
-	if (state_timer == 18){
+	if (state_timer == 30){
 		instance_destroy();
 		exit;
 	}

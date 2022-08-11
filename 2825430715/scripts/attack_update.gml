@@ -1339,7 +1339,7 @@ if attack == AT_FSPECIAL && !hitpause{
 	   }
 	}
 	
-        if free {
+    if free {
         vsp /= 1.06
         hsp /= 1.1
         } else {
@@ -1415,7 +1415,7 @@ if attack == AT_FSPECIAL && !hitpause{
     }
     
     if window == 4 && window_timer > 18 {
-    	prat_land_time = 36 - window_timer
+    	prat_land_time = 46 - window_timer
         if !free {
             set_state (PS_PRATLAND)
             sound_play(asset_get("sfx_land_med"))	
@@ -1576,7 +1576,7 @@ if attack == AT_USPECIAL && !hitpause{
         set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 12);
     }
     
-    prat_land_time = 10 + (teletime*4)
+    prat_land_time = 20 + (teletime*10)
     
     if teletime <= 1 {
         set_num_hitboxes(AT_USPECIAL, 0);

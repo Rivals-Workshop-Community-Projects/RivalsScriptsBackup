@@ -26,12 +26,12 @@ if(power_charge > 20 && attack == AT_DSPECIAL && window == 2 && (state == PS_ATT
 
 if((state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODGE) && power_ups[5] == 1){
     if(state_timer == 0){
-        dodgex = x;
-        dodgey = y;
-        flash_alpha = 35;
+        dodgex[@dodge_amount] = x;
+        dodgey[@dodge_amount] = y;
+        flash_alpha[@dodge_amount] = 35;
     }
-    dodgendx = x;
-    dodgendy = y;
+    dodgendx[@dodge_amount] = x;
+    dodgendy[@dodge_amount] = y;
 }
 
 if(attack == AT_BAIR && state == PS_ATTACK_AIR && missile_amount >= 1){
@@ -87,16 +87,18 @@ if(attack == AT_TAUNT && menu_y < -12 && menu_version == 0){
     }
 }
 
-flash_alpha -= (flash_alpha > 0? 1: 0);
-draw_sprite_ext(sprite_get((free? "afterimage_air": "afterimage")), (35 - flash_alpha) / 35 * 3, dodgex, dodgey, -2 *spr_dir, 2, 0, c_white, flash_alpha / 35);
-draw_set_alpha(flash_alpha / 35);
-draw_line_width_color(dodgex - 10 * spr_dir, dodgey - 50, dodgendx - 10 * spr_dir, dodgendy - 50, 2, c_aqua, c_aqua);
-draw_line_width_color(dodgex + 12 * spr_dir, dodgey - 10, dodgendx + 10 * spr_dir, dodgendy - 10, 2, c_aqua, c_aqua);
-draw_line_width_color(dodgex + 8 * spr_dir, dodgey - 20, dodgendx + 8 * spr_dir, dodgendy - 20, 2, c_aqua, c_aqua);
-draw_line_width_color(dodgex - 12 * spr_dir, dodgey - 30, dodgendx - 12 * spr_dir, dodgendy - 30, 2, c_aqua, c_aqua);
-draw_line_width_color(dodgex, dodgey - 40, dodgendx, dodgendy - 40, 2, c_aqua, c_aqua);
-draw_line_width_color(dodgex - 10 * spr_dir, dodgey - 56, dodgendx - 10 * spr_dir, dodgendy - 56, 2, c_aqua, c_aqua);
-draw_set_alpha(1);
+for(k = 0; k < 3; k++){
+    flash_alpha[k] -= (flash_alpha[k] > 0? 1: 0);
+    draw_sprite_ext(sprite_get((free? "afterimage_air": "afterimage")), (35 - flash_alpha[k]) / 35 * 3, dodgex[k], dodgey[k], -2 *spr_dir, 2, 0, c_white, flash_alpha[k] / 35);
+    draw_set_alpha(flash_alpha[k] / 35);
+    draw_line_width_color(dodgex[k] - 10 * spr_dir, dodgey[k] - 50, dodgendx[k] - 10 * spr_dir, dodgendy[k] - 50, 2, c_aqua, c_aqua);
+    draw_line_width_color(dodgex[k] + 12 * spr_dir, dodgey[k] - 10, dodgendx[k] + 10 * spr_dir, dodgendy[k] - 10, 2, c_aqua, c_aqua);
+    draw_line_width_color(dodgex[k] + 8 * spr_dir, dodgey[k] - 20, dodgendx[k] + 8 * spr_dir, dodgendy[k] - 20, 2, c_aqua, c_aqua);
+    draw_line_width_color(dodgex[k] - 12 * spr_dir, dodgey[k] - 30, dodgendx[k] - 12 * spr_dir, dodgendy[k] - 30, 2, c_aqua, c_aqua);
+    draw_line_width_color(dodgex[k], dodgey[k] - 40, dodgendx[k], dodgendy[k] - 40, 2, c_aqua, c_aqua);
+    draw_line_width_color(dodgex[k] - 10 * spr_dir, dodgey[k] - 56, dodgendx[k] - 10 * spr_dir, dodgendy[k] - 56, 2, c_aqua, c_aqua);
+    draw_set_alpha(1);
+}
 
 for(n = 0; n < 15; n++){
     if(instance_exists(power_bomb[n]) && power_bomb[n].image_index = 5){

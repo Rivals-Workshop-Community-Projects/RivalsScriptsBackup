@@ -22,6 +22,8 @@ set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 set_num_hitboxes(AT_BAIR, 2);
+
+set_hitbox_value(AT_BAIR, 1, HG_MUNO_HITBOX_NAME, "Sweet");
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 5);
@@ -38,6 +40,7 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.75);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
+set_hitbox_value(AT_BAIR, 2, HG_MUNO_HITBOX_NAME, "Back");
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 5);

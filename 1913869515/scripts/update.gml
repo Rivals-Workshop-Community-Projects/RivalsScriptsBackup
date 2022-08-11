@@ -1,4 +1,31 @@
 
+
+if string_lower(get_player_name(player)) != "sai" {
+    with pHitBox {
+    	if player_id == other.id && hitbox_timer < 1   {
+    		if damage >= 8 {
+     			damage -= 1 
+    		}
+    		if damage >= 6 {
+     			damage -= 1 
+    		}
+    		if damage >= 4 {
+    			damage -= 1 
+    		}
+    		if damage >= 2 {
+    			damage -= 1 
+    		}
+    		image_xscale /= 1.4
+    		image_yscale /= 1.4
+
+    		kb_scale /= 1.25
+            if other.hitpause == true {
+            	hitbox_timer ++ 
+            }
+    	}
+    }
+}
+
 if dmhit < 0 {
 	dmhit = 0
 }

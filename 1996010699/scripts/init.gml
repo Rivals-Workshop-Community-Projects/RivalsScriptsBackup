@@ -45,6 +45,7 @@ nairbounceHitCheck = false;
 nairbounceSpeed = 9;
 nairbounceJumpCheck = false;
 nairbounceDodgeCheck = false;
+triggerSplash = false;
 
 //fspecial vars
 fspecialDriftBoost = 8;

@@ -12,6 +12,11 @@ set_attack_value(attack, AG_OFF_LEDGE, 1);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, 
+"- Tap Special for version that throws clone. 
+- Hold special for version that throws the real Roekoko.
+- Can use again if you are near clone, otherwise goes into emergency Fspec.
+- Can act out of being thrown immediately.");//AG_MUNO_ATTACK_MISC_ADD
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;

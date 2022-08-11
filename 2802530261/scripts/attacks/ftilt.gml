@@ -8,6 +8,8 @@ set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_FTILT, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .25);
 
 set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);

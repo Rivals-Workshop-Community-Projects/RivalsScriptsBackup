@@ -25,7 +25,7 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
 set_num_hitboxes(AT_NSPECIAL, 4);
-
+/*
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 500);
@@ -127,3 +127,4 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 10);
+*/

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 9, 2, 53 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 25 );
 
 // Mud Flats
 set_color_profile_slot( 1, 0, 179, 138, 102 ); //Gumbo Skin 1
@@ -236,25 +236,45 @@ set_color_profile_slot( 20, 5, 149, 110, 67 ); //Po Skin 1
 set_color_profile_slot( 20, 6, 110, 70, 27 ); //Po Skin 2
 set_color_profile_slot( 20, 7, 255, 255, 255 ); //Apron
 
+// Smiling Friends
+set_color_profile_slot( 21, 0, 248, 215, 79 ); //Gumbo Skin 1
+set_color_profile_slot( 21, 1, 248, 182, 0 ); //Gumb Skin 2
+set_color_profile_slot( 21, 2, 101, 103, 166 ); //Jeans
+set_color_profile_slot( 21, 3, 242, 106, 43 ); //Hoodie
+set_color_profile_slot( 21, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 21, 5, 255, 143, 227 ); //Po Skin 1
+set_color_profile_slot( 21, 6, 101, 68, 212 ); //Po Skin 2
+set_color_profile_slot( 21, 7, 255, 255, 255 ); //Apron
+
 // Kaiman
-set_color_profile_slot( 21, 0, 129, 143, 83 ); //Gumbo Skin 1
-set_color_profile_slot( 21, 1, 227, 231, 187 ); //Gumb Skin 2
-set_color_profile_slot( 21, 2, 82, 86, 69 ); //Jeans
-set_color_profile_slot( 21, 3, 35, 32, 54 ); //Hoodie
-set_color_profile_slot( 21, 4, 163, 46, 39 ); //Eyes
-set_color_profile_slot( 21, 5, 79, 150, 156 ); //Po Skin 1
-set_color_profile_slot( 21, 6, 206, 193, 130 ); //Po Skin 2
-set_color_profile_slot( 21, 7, 63, 83, 110 ); //Apron
+set_color_profile_slot( 22, 0, 129, 143, 83 ); //Gumbo Skin 1
+set_color_profile_slot( 22, 1, 227, 231, 187 ); //Gumb Skin 2
+set_color_profile_slot( 22, 2, 82, 86, 69 ); //Jeans
+set_color_profile_slot( 22, 3, 35, 32, 54 ); //Hoodie
+set_color_profile_slot( 22, 4, 163, 46, 39 ); //Eyes
+set_color_profile_slot( 22, 5, 79, 150, 156 ); //Po Skin 1
+set_color_profile_slot( 22, 6, 206, 193, 130 ); //Po Skin 2
+set_color_profile_slot( 22, 7, 63, 83, 110 ); //Apron
 
 // Drip
-set_color_profile_slot( 22, 0, 88, 80, 63 ); //Gumbo Skin 1
-set_color_profile_slot( 22, 1, 200, 189, 158 ); //Gumb Skin 2
-set_color_profile_slot( 22, 2, 92, 92, 92 ); //Jeans
-set_color_profile_slot( 22, 3, 89, 89, 89 ); //Hoodie
-set_color_profile_slot( 22, 4, 255, 210, 77 ); //Eyes
-set_color_profile_slot( 22, 5, 242, 207, 207 ); //Po Skin 1
-set_color_profile_slot( 22, 6, 211, 120, 120 ); //Po Skin 2
-set_color_profile_slot( 22, 7, 255, 255, 255 ); //Apron
+set_color_profile_slot( 23, 0, 88, 80, 63 ); //Gumbo Skin 1
+set_color_profile_slot( 23, 1, 200, 189, 158 ); //Gumb Skin 2
+set_color_profile_slot( 23, 2, 92, 92, 92 ); //Jeans
+set_color_profile_slot( 23, 3, 89, 89, 89 ); //Hoodie
+set_color_profile_slot( 23, 4, 255, 210, 77 ); //Eyes
+set_color_profile_slot( 23, 5, 242, 207, 207 ); //Po Skin 1
+set_color_profile_slot( 23, 6, 211, 120, 120 ); //Po Skin 2
+set_color_profile_slot( 23, 7, 255, 255, 255 ); //Apron
+
+// Reverse
+set_color_profile_slot( 24, 0, 242, 207, 207 ); //Gumbo Skin 1
+set_color_profile_slot( 24, 1, 211, 120, 120 ); //Gumb Skin 2
+set_color_profile_slot( 24, 2, 85, 101, 115 ); //Jeans
+set_color_profile_slot( 24, 3, 107, 124, 140 ); //Hoodie
+set_color_profile_slot( 24, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 24, 5, 88, 80, 63 ); //Po Skin 1
+set_color_profile_slot( 24, 6, 200, 189, 158 ); //Po Skin 2
+set_color_profile_slot( 24, 7, 255, 255, 255 ); //Apron
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

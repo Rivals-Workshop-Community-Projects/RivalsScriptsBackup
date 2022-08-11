@@ -6,8 +6,10 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_hurt")
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_LANDING_LAG, 22);
 set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 11);
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_USES_ROLES, 1);
 
 //Grab windows
+set_window_value(AT_NSPECIAL, 1, AG_MUNO_WINDOW_ROLE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
@@ -17,6 +19,7 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
 
+set_window_value(AT_NSPECIAL, 2, AG_MUNO_WINDOW_ROLE, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -25,6 +28,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.9);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
 
+set_window_value(AT_NSPECIAL, 3, AG_MUNO_WINDOW_ROLE, 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);

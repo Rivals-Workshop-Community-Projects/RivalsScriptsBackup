@@ -26,8 +26,11 @@ if (attack == AT_NSPECIAL && was_parried && !useless && hbox_num < 3){
     destroyed = true;
 }
 
+
+
 if (attack == AT_USTRONG && type == 2){
     spr_dir = 1;
+    draw_xscale = spr_dir;
     player_id.ustrong_proj_angle = proj_angle;
     if (useless == true){
         

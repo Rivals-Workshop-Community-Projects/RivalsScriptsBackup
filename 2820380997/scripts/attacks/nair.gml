@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 7);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Has different inital hitboxes for grounded / air enemy to prevent instant techs");//AG_MUNO_ATTACK_MISC_ADD
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -112,7 +113,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional); //301 - basic small (default)
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(attack, hitbox_num, HG_GROUNDEDNESS, 2); //0 = Can hit both aerial and grounded opponents 1 = Can only hit grounded opponents 2 = Can only hit aerial opponents
-
+set_hitbox_value(attack, hitbox_num, 81, "Hit 1 Air Enemy");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // Hitbox #2 / Window # 4- / Hit 2 - Only affects Aerial Characters
@@ -138,7 +139,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional); //301 - basic small (default)
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(attack, hitbox_num, HG_GROUNDEDNESS, 2); //0 = Can hit both aerial and grounded opponents 1 = Can only hit grounded opponents 2 = Can only hit aerial opponents
-
+set_hitbox_value(attack, hitbox_num, 81, "Hit 2 Air Enemy");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -162,7 +163,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_medium); //302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-
+set_hitbox_value(attack, hitbox_num, 81, "Hit 3 (All)");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // Hitbox #4 / Window # 2- / Hit 1 - Only affects grounded opponents
@@ -188,7 +189,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional); //301 - basic small (default)
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(attack, hitbox_num, HG_GROUNDEDNESS, 1); //0 = Can hit both aerial and grounded opponents 1 = Can only hit grounded opponents 2 = Can only hit aerial opponents
-
+set_hitbox_value(attack, hitbox_num, 81, "Hit 1 Grounded Enemy");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // Hitbox #5 / Window # 4- / Hit 2 - Only affects grounded opponents
@@ -214,7 +215,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional); //301 - basic small (default)
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(attack, hitbox_num, HG_GROUNDEDNESS, 1); //0 = Can hit both aerial and grounded opponents 1 = Can only hit grounded opponents 2 = Can only hit aerial opponents
-
+set_hitbox_value(attack, hitbox_num, 81, "Hit 2 Grounded Enemy");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 

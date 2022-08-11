@@ -52,8 +52,8 @@ walk_speed = 2.5;
 walk_accel = 0.4;
 walk_turn_time = 4;
 initial_dash_time = 10;
-initial_dash_speed = 7.5;
-dash_speed = 7.5
+initial_dash_speed = 7;
+dash_speed = 7
 dash_turn_time = 6;
 dash_turn_accel = .5;
 dash_stop_time = 9;
@@ -87,7 +87,7 @@ knockback_adj = 1.05;//the multiplier to KB dealt to you. 1 = default, >1 = ligh
 land_time = 4; //normal landing frames
 prat_land_time = 15;
 wave_land_time = 8;
-wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames

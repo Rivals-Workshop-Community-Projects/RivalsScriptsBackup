@@ -25,7 +25,7 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
        hsp *= -1
        can_hit_self = true
        transcendent = true
-       hsp += 3*spr_dir
+       hsp += 5*spr_dir
        hitbox_timer = 0
       }
     }

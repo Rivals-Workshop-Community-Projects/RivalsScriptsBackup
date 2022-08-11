@@ -44,7 +44,7 @@ switch (attack){
             power_ups[4] = items_select[4];
         }
         if(items_select[5] == 1) && (has_rune("N")? hud_flash_shift_cooldown >= 0: hud_flash_shift_cooldown == 0){
-            hud_flash_shift_cooldown = (has_rune("A")? 1300: 800);
+            hud_flash_shift_cooldown = (has_rune("A")? 1300: 1000);
             power_ups[5] = items_select[5];
         }
     }
@@ -505,6 +505,7 @@ switch (attack){
     }
     if(spark_timer > 0 && window <= 6){
         soft_armor = 999999999;
+        spark_timer = 1;
         set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 10);
         set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 1.2);
         set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 12);
@@ -545,6 +546,11 @@ switch (attack){
         set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 8);
     }
     if(window == 1){
+        can_move = 0;
+        can_fast_fall = 0;
+        if(spark_timer > 0){
+            shake_camera(3, 55);
+        }
         char_height = lerp(char_height, 80, 0.6);
         if(right_down){
             spr_dir = 1;

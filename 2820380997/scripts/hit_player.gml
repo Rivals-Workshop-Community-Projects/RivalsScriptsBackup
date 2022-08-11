@@ -209,6 +209,7 @@ if (instance_exists(clone_object_ID)){
 		clone_object_ID.state = 1; //CL_IDLE
 		clone_object_ID.clone_dspecial_hit = false;
 		clone_dspecial_hit = false;
+		clone_object_ID.clone_dspecial_cooldown = 60; // Added to prevent chain on Nair / Dair
 		}
 	}
 }

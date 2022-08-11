@@ -2,23 +2,7 @@
 // Called every frame a hitbox is out
 // From the perspective of a hitbox
 
-if (attack == AT_UTILT){
-	if (hbox_num == 2){
-		proj_angle = 30 * spr_dir;
-	}
-}
-
-if (attack == AT_FTILT || attack == AT_UTILT){
-	if (hbox_num == 2){
-		if (was_parried){
-			hitbox_timer = 30;
-			was_parried = false;
-		}
-		if (hsp > 0){ spr_dir = 1; }
-		if (hsp < 0){ spr_dir = -1; }
-	}
-}
-
+// Reflector hitbox (not active as fstrong doesn't have a second hitbox)
 if (attack == AT_FSTRONG){
 	if (hbox_num == 2){
 		x = player_id.x + (45 * spr_dir);

@@ -1,10 +1,17 @@
 //hit_player
 if (attack == AT_FAIR && (window == 1 || window == 2))
 {
-    if (has_hit and hitpause)
+    if (has_hit && hitpause)
     {
 	old_vsp = -7.5;
 	old_hsp = hsp * 0.25;
+	if (window == 1)
+	{
+		hit_player_obj.x = player.x + (5 * player.spr_dir);
+		hit_player_obj.y = player.y + 4;
+		hit_player_obj.old_vsp = -3.5;
+		hit_player_obj.old_hsp = player.old_hsp;
+	}
     }
 }
 
@@ -30,7 +37,7 @@ switch(my_hitboxID.attack){
     sound_play(asset_get("sfx_waterhit_medium")); 
 	hit_player_obj.pastelle_soaked = true;
     hit_player_obj.pastelle_soaked_id = id; 
-	hit_player_obj.pastelle_soaked_time = 360;
+	hit_player_obj.pastelle_soaked_time = 600;
 		if (has_rune("L"))
 		{
 			hit_player_obj.walk_speed = hit_player_obj.walk_speed * 0.75;
@@ -55,7 +62,7 @@ switch(my_hitboxID.attack){
     sound_play(asset_get("sfx_waterhit_medium")); 
 	hit_player_obj.pastelle_soaked = true;
     hit_player_obj.pastelle_soaked_id = id; 
-	hit_player_obj.pastelle_soaked_time = 360;
+	hit_player_obj.pastelle_soaked_time = 600;
 		if (has_rune("L"))
 		{
 			hit_player_obj.walk_speed = hit_player_obj.walk_speed * 0.75;
@@ -80,7 +87,7 @@ switch(my_hitboxID.attack){
     sound_play(asset_get("sfx_waterhit_medium")); 
 	hit_player_obj.pastelle_soaked = true;
     hit_player_obj.pastelle_soaked_id = id; 
-	hit_player_obj.pastelle_soaked_time = 360;
+	hit_player_obj.pastelle_soaked_time = 600;
 		if (has_rune("L"))
 		{
 			hit_player_obj.walk_speed = hit_player_obj.walk_speed * 0.75;
@@ -105,7 +112,7 @@ switch(my_hitboxID.attack){
     sound_play(asset_get("sfx_waterhit_medium")); 
 	hit_player_obj.pastelle_soaked = true;
     hit_player_obj.pastelle_soaked_id = id; 
-	hit_player_obj.pastelle_soaked_time = 360;
+	hit_player_obj.pastelle_soaked_time = 600;
 		if (has_rune("L"))
 		{
 			hit_player_obj.walk_speed = hit_player_obj.walk_speed * 0.75;
@@ -130,7 +137,7 @@ switch(my_hitboxID.attack){
     sound_play(asset_get("sfx_waterhit_medium")); 
 	hit_player_obj.pastelle_soaked = true;
     hit_player_obj.pastelle_soaked_id = id; 
-	hit_player_obj.pastelle_soaked_time = 360;
+	hit_player_obj.pastelle_soaked_time = 600;
 		if (has_rune("L"))
 		{
 			hit_player_obj.walk_speed = hit_player_obj.walk_speed * 0.75;
@@ -155,7 +162,7 @@ switch(my_hitboxID.attack){
     sound_play(asset_get("sfx_waterhit_medium")); 
 	hit_player_obj.pastelle_soaked = true;
     hit_player_obj.pastelle_soaked_id = id; 
-	hit_player_obj.pastelle_soaked_time = 360;
+	hit_player_obj.pastelle_soaked_time = 600;
 		if (has_rune("L"))
 		{
 			hit_player_obj.walk_speed = hit_player_obj.walk_speed * 0.75;
@@ -215,7 +222,7 @@ if (hit_player_obj.pastelle_soaked)
 			sound_play(asset_get("sfx_waterhit_medium")); 
 			hit_player_obj.pastelle_soaked = true;
 			hit_player_obj.pastelle_soaked_id = id; 
-			hit_player_obj.pastelle_soaked_time = 360;
+			hit_player_obj.pastelle_soaked_time = 600;
 		}
 
 	if (attack == AT_USTRONG)
@@ -224,7 +231,7 @@ if (hit_player_obj.pastelle_soaked)
 			sound_play(asset_get("sfx_waterhit_medium")); 
 			hit_player_obj.pastelle_soaked = true;
 			hit_player_obj.pastelle_soaked_id = id; 
-			hit_player_obj.pastelle_soaked_time = 360;
+			hit_player_obj.pastelle_soaked_time = 600;
 		}
 
 	if (attack == AT_DSTRONG)
@@ -233,7 +240,7 @@ if (hit_player_obj.pastelle_soaked)
 			sound_play(asset_get("sfx_waterhit_medium")); 
 			hit_player_obj.pastelle_soaked = true;
 			hit_player_obj.pastelle_soaked_id = id; 
-			hit_player_obj.pastelle_soaked_time = 360;
+			hit_player_obj.pastelle_soaked_time = 600;
 		}
 
 	if (attack == AT_FSTRONG)
@@ -242,7 +249,7 @@ if (hit_player_obj.pastelle_soaked)
 			sound_play(asset_get("sfx_waterhit_medium")); 
 			hit_player_obj.pastelle_soaked = true;
 			hit_player_obj.pastelle_soaked_id = id; 
-			hit_player_obj.pastelle_soaked_time = 360;
+			hit_player_obj.pastelle_soaked_time = 600;
 		}
 
 	if (attack == AT_UAIR)
@@ -251,7 +258,7 @@ if (hit_player_obj.pastelle_soaked)
 			sound_play(asset_get("sfx_waterhit_medium")); 
 			hit_player_obj.pastelle_soaked = true;
 			hit_player_obj.pastelle_soaked_id = id; 
-			hit_player_obj.pastelle_soaked_time = 360;
+			hit_player_obj.pastelle_soaked_time = 600;
 		}
 	if (attack == AT_BAIR)
 		if (my_hitboxID.hbox_num == 1)
@@ -259,6 +266,6 @@ if (hit_player_obj.pastelle_soaked)
 			sound_play(asset_get("sfx_waterhit_medium")); 
 			hit_player_obj.pastelle_soaked = true;
 			hit_player_obj.pastelle_soaked_id = id; 
-			hit_player_obj.pastelle_soaked_time = 360;
+			hit_player_obj.pastelle_soaked_time = 600;
 		}
 }

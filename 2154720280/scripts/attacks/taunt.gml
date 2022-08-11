@@ -19,7 +19,7 @@ set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX_FRAME, 22);
 
 

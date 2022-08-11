@@ -20,7 +20,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED, 1);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED, 2);
 
 //release tier 1
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 6);
@@ -44,7 +44,7 @@ set_window_value(AT_NSPECIAL, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_SFX, sound_get("sfx_charge_1"));
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_VSPEED, 1);
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_VSPEED, 2);
 
 //release tier 2
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_LENGTH, 6);
@@ -69,7 +69,7 @@ set_window_value(AT_NSPECIAL, 8, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_SFX, sound_get("sfx_charge_2"));
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_NSPECIAL, 8, AG_WINDOW_VSPEED, 1);
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_VSPEED, 2);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_HSPEED_TYPE, 1);
 
 //release tier 3
@@ -184,11 +184,3 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
 
 
 
-set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Magic Sphere");
-set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "Press and release special with no charges. Use up and down on the joystick to adjust vertical trajectory.");
-
-set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Revolution Orb");
-set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_MISC_ADD, "Hold and release special with one charge.");
-
-set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Revolution Flame");
-set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_MISC_ADD, "Hold and release special with two charges.");

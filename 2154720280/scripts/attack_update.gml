@@ -16,6 +16,25 @@ if attack == AT_JAB && !hitpause{
 	
 }
 
+if attack == AT_TAUNT {
+	if window == 2 && window_timer == 16 {
+		if taunt_down window_timer --
+		can_shield = true
+		if left_down or right_down {
+			spawn_hit_fx(x,y-40,14)
+			invincible = true 
+			invince_time = 10
+			set_state(PS_PARRY)
+			state_timer = 10
+			window = 2
+			window_timer = 10
+			hsp = 12*(right_down - left_down)
+			spr_dir = -1*(right_down - left_down)
+			sound_play(asset_get("sfx_spin"),false,noone,.8,1.2);
+			sound_play(sound_get("shing"),false,noone,.8,1.2);
+		}
+	}
+}
 
 if attack == AT_DSTRONG {
     if window == 1 && window_timer == 1 {

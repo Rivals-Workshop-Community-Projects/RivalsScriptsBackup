@@ -5,7 +5,6 @@ set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
-set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Will go into pratfall if it doesn't hit, and the direction of trajectory will change upon entering a portal depending on what direction the other portal is facing.");
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
@@ -61,7 +60,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_seinhit_weak"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "Repeats itself 4 times before the launcher.");
+
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, -1);
@@ -82,14 +81,13 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ori_seinhit_heavy"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_MISC_ADD, "Changes angle depending on the direction of trajectory.");
 
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_THROWS_ROCK, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_THROWS_ROCK, 2);
-set_hitbox_value(AT_FSPECIAL, 3, HG_MUNO_HITBOX_EXCLUDE, 1);
+//set_hitbox_value(AT_FSPECIAL, 3, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_THROWS_ROCK, 2);
-set_hitbox_value(AT_FSPECIAL, 4, HG_MUNO_HITBOX_EXCLUDE, 1);
+//set_hitbox_value(AT_FSPECIAL, 4, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_THROWS_ROCK, 2);
 
 

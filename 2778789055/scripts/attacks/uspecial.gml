@@ -35,9 +35,14 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 11);
 
 set_num_hitboxes(AT_USPECIAL, 4);
 
+//revert lifetime and width - 5 all
+
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 0);
-set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 30);
+/*set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 25);
+set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 15);
+set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 15);
+*/set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 30);
 set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 20);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 20);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);

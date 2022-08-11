@@ -3,7 +3,7 @@ set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecial_2"));
 set_attack_value(AT_USPECIAL_2, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_USPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE, hurtbox_spr );
-set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Magolor moves in the direction of the nearest portal.");
+
 
 //Startup
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH, 8);

@@ -1,5 +1,7 @@
 if(state_cat == SC_HITSTUN){
 	nairbounceHitCheck = false;
+	nairbounce = false;
+	triggerSplash = false;
 	fspecialTimer = 0;
 	chiefcase = false;
 	holdingTimer = 0;

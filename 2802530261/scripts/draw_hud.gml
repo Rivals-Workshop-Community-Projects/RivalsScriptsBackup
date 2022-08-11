@@ -86,8 +86,8 @@ draw_sprite_ext(sprite_get("hud_numbers_big"), get_player_stocks(player), temp_x
 draw_sprite_ext(sprite_get("hud_helmet"), (state == PS_RESPAWN? 1: 0), temp_x + 24, temp_y + 2, 2, 2, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud_dodge"), (has_airdodge = true? 0: 1), temp_x + 198, temp_y + 14, 2, 2, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud_player"), get_player_team(player) - 1, temp_x + 198, temp_y - 6, 2, 2, 0, c_white, 1);
-draw_sprite_stretched_ext(sprite_get("hud_aeion_bar"), (aeion < 1000? (power_ups[5] = 1? 0: 1): 0), temp_x + 74, temp_y + 36, 128 * (aeion/1000), 6, c_white, 1);
-draw_sprite_ext(sprite_get("hud_aeion"), (aeion < 1000? (power_ups[5] = 1? 0: 1): 0), temp_x + 206, temp_y + 32, 2, 2, 0, c_white, 1);
+draw_sprite_stretched_ext(sprite_get("hud_aeion_bar"), (aeion < 700? (power_ups[5] = 1? 0: 1): 0), temp_x + 74, temp_y + 36, 128 * (aeion/700), 6, c_white, 1);
+draw_sprite_ext(sprite_get("hud_aeion"), (aeion < 700? (power_ups[5] = 1? 0: 1): 0), temp_x + 206, temp_y + 32, 2, 2, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud_LED"), (hud_beam_cooldown = 0? 0: (hud_beam_cooldown > 300? 1: 2)), temp_x + 74, temp_y + 2, 4, 4, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud_LED"), (hud_missile_cooldown = 0? 3: (hud_missile_cooldown > 300? 4: 5)), temp_x + 84, temp_y + 2, 4, 4, 0, c_white, 1);
 draw_sprite_ext(sprite_get("hud_LED"), (hud_flash_shift_cooldown = 0? 6: (hud_flash_shift_cooldown > 300? 7: 8)), temp_x + 94, temp_y + 2, 4, 4, 0, c_white, 1);

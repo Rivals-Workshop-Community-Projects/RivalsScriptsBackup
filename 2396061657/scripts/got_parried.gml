@@ -11,6 +11,12 @@ if (isFspecial){
 	isFspecial = false;
 }
 
+if (my_hitboxID.attack == AT_FTILT || my_hitboxID.attack == AT_UTILT){
+	if (my_hitboxID.type == 2){
+		my_hitboxID.hitbox_timer = 30;
+		my_hitboxID.draw_xscale *= -1;
+	}
+}
 
 // Turns opponents status effects off
 with (hit_player_obj){

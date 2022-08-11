@@ -12,6 +12,11 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, 
+"- Tap Special for version that throws clone. 
+- Hold special for version that throws the real Roekoko.
+- Can use again if you are near clone, otherwise goes into emergency Uspec.
+- Can doublejump twice if Roekoko is thrown from the ground.");//AG_MUNO_ATTACK_MISC_ADD
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -87,6 +92,9 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
 //set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_chester_jump"));
+set_hitbox_value(attack, hitbox_num, 81, "Launcher Hitbox at throw start up");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Physical attack attached to Roekoko, does not travel with the clone.");//HG_MUNO_HITBOX_MISC_ADD
+
 
 hitbox_num++;
 

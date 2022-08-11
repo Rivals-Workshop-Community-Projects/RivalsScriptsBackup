@@ -123,7 +123,8 @@ if (attack == AT_NSPECIAL){
             window_timer = 0;
         }
     }
-    if (window == 11 && window_timer > 2){
+    if (window == 4 || window == 7 || window == 10){
+    	move_cooldown[AT_NSPECIAL] = 30;
     }
 }
 if (attack == AT_UAIR){
@@ -628,11 +629,13 @@ if (attack == AT_DSPECIAL_2){
 		}
 	}
 	if (window == 2 && window_timer > 8){
-		move_cooldown[AT_DSPECIAL_2] = 20;
+		move_cooldown[AT_DSPECIAL_2] = 30;
+		move_cooldown[AT_DSPECIAL] = 30;
 		//can_special = true;
 		if (down_down){
 			if (free){
 				set_state(PS_IDLE_AIR);
+				move_cooldown[AT_DSPECIAL] = 30;
 			} else set_state(PS_CROUCH);
 		}
 	}

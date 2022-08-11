@@ -203,33 +203,43 @@ if(attack == AT_FTILT){
 if(attack == AT_NAIR){
 	if(item[2, 3] == 1){
 	
-		if(window == 2 && (window_timer < get_window_value(AT_NAIR,2,AG_WINDOW_LENGTH))){
-			nairbounce = true;
-		} else {
-			nairbounce = false;
-		}
+		if(window == 2){
+			triggerSplash = true;
+			if(window_timer < get_window_value(AT_NAIR,2,AG_WINDOW_LENGTH)){
+				nairbounce = true;
+			} else {
+				nairbounce = false;
+			}
 		
-		if(nairbounce && (attack_down || attack_pressed)){
-			set_attack_value(AT_NAIR, AG_CATEGORY, 2);
-		} else {
-			set_attack_value(AT_NAIR, AG_CATEGORY, 1);
-		}
-			
-		if(window == 2 && !free){
-			thingDo = false;
-			has_airdodge = nairbounceDodgeCheck;
-			djumps = nairbounceJumpCheck;
-			vsp -= nairbounceSpeed;
-			spawn_hit_fx( x , y , spit);
-			create_hitbox(AT_NAIR, 5, x, y);
-			sound_play(asset_get("sfx_swish_medium"));
-			if(has_hit_player && nairbounceHitCheck == false){
-				can_fast_fall = false;
-				attack_end();
-				nairbounceHitCheck = true;
+			if(!free){
+				thingDo = false;
+				has_airdodge = nairbounceDodgeCheck;
+				djumps = nairbounceJumpCheck;
+				if(!was_parried){
+					vsp -= nairbounceSpeed;
+					spawn_hit_fx( x , y , spit);
+					create_hitbox(AT_NAIR, 5, x, y);
+					sound_play(asset_get("sfx_swish_medium"));
+				}
+				if(has_hit_player && nairbounceHitCheck == false){
+					can_fast_fall = false;
+					attack_end();
+					nairbounceHitCheck = true;
+				}
 			}
 		}
+		if(!was_parried){
+			if(nairbounce && (attack_down || attack_pressed)){
+				set_attack_value(AT_NAIR, AG_CATEGORY, 2);
+			} else {
+				nairbounce = false;
+				set_attack_value(AT_NAIR, AG_CATEGORY, 1);
+			}
+		}
+
 		if(window == 3 && window_timer == 1){
+			triggerSplash = false;
+			nairbounce = false;
 			spawn_hit_fx( x , y , poolparty);
 			nairbounceHitCheck = false;
 		}
@@ -905,8 +915,9 @@ switch(attack){
 			//set_hitbox_value(AT_NAIR, 4, HG_LIFETIME, 3);
 			//set_hitbox_value(AT_NAIR, 4, HG_WINDOW_CREATION_FRAME, 9);
 			
-			// hodan
-			set_num_hitboxes(AT_NAIR, 5);
+			// hodan 1 | called in attack_update nair code
+			set_num_hitboxes(AT_NAIR, 6);
+			set_hitbox_value(AT_NAIR, 5, HG_WINDOW, 5);
 			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_TYPE, 1);
 			set_hitbox_value(AT_NAIR, 5, HG_LIFETIME, 1);
 			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_X, 0);
@@ -924,6 +935,26 @@ switch(attack){
 			set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT, 6);
 			set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_hod_steamhit1"));
 			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_GROUP, 2);
+		
+			// hodan 2 | called in update.gml on landing | needs special code in got_parried.gml for parry stun to function properly
+			set_hitbox_value(AT_NAIR, 6, HG_WINDOW, 5);
+			set_hitbox_value(AT_NAIR, 6, HG_HITBOX_TYPE, 1);
+			set_hitbox_value(AT_NAIR, 6, HG_LIFETIME, 1);
+			set_hitbox_value(AT_NAIR, 6, HG_HITBOX_X, 0);
+			set_hitbox_value(AT_NAIR, 6, HG_HITBOX_Y, -20);
+			set_hitbox_value(AT_NAIR, 6, HG_WIDTH, 120);
+			set_hitbox_value(AT_NAIR, 6, HG_HEIGHT, 60);
+			set_hitbox_value(AT_NAIR, 6, HG_SHAPE, 2);
+			set_hitbox_value(AT_NAIR, 6, HG_PRIORITY, 1);
+			set_hitbox_value(AT_NAIR, 6, HG_DAMAGE, 1);
+			set_hitbox_value(AT_NAIR, 6, HG_ANGLE, 361);
+			set_hitbox_value(AT_NAIR, 6, HG_BASE_KNOCKBACK, 4);
+			set_hitbox_value(AT_NAIR, 6, HG_BASE_HITPAUSE, 2);
+			set_hitbox_value(AT_NAIR, 6, HG_HITSTUN_MULTIPLIER, 1.5);
+			set_hitbox_value(AT_NAIR, 6, HG_TECHABLE, 1);
+			set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT, 6);
+			set_hitbox_value(AT_NAIR, 6, HG_HIT_SFX, asset_get("sfx_hod_steamhit1"));
+			set_hitbox_value(AT_NAIR, 6, HG_HITBOX_GROUP, 2);
 			
 			itemsDisplayed[displaySlot] = item[2, 5];
 			displaySlot++;
@@ -988,7 +1019,7 @@ switch(attack){
 			set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, (regBonusDmg + get_hitbox_value(AT_FTILT, 2, HG_DAMAGE)));
 			set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, regKBMod + get_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING));
 			set_hitbox_value(AT_FTILT, 4, HG_DAMAGE, (regBonusDmg + get_hitbox_value(AT_FTILT, 4, HG_DAMAGE)));
-			set_hitbox_value(AT_FTILT, 4, HG_KNOCKBACK_SCALING, regKBMod + get_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING));
+			set_hitbox_value(AT_FTILT, 4, HG_KNOCKBACK_SCALING, regKBMod + get_hitbox_value(AT_FTILT, 4, HG_KNOCKBACK_SCALING));
 			set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, tada);
 			set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 304);
 			set_hitbox_value(AT_FTILT, 2, HG_EXTRA_CAMERA_SHAKE, 1);

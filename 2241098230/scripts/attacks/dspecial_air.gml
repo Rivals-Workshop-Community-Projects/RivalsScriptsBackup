@@ -49,6 +49,7 @@ set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 
 set_num_hitboxes(AT_DSPECIAL_AIR, 3);
 
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_MUNO_HITBOX_NAME, "Clean");
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_TYPE, 1);
@@ -66,7 +67,9 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 144 );
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_zetter_downb"));
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Applies smoke debuff");
 
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_MUNO_HITBOX_NAME, "Late");
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WINDOW_CREATION_FRAME, 4);
@@ -85,7 +88,9 @@ set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_VISUAL_EFFECT, 144 );
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_zetter_downb"));
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_MUNO_HITBOX_MISC_ADD, "Applies smoke debuff");
 
+set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_MUNO_HITBOX_NAME, "Landing");
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_WINDOW, 5);
@@ -103,5 +108,6 @@ set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_VISUAL_EFFECT, 144 );
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_MUNO_HITBOX_MISC_ADD, "Applies smoke debuff");
 
 

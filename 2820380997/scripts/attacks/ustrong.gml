@@ -90,6 +90,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(attack, hitbox_num, 81, "Top Hitbox");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -113,7 +114,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-
+set_hitbox_value(attack, hitbox_num, 81, "Front Hitbox");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // Hitbox #3 / Window #2 - / Inner Hitbox
@@ -136,7 +137,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-
+set_hitbox_value(attack, hitbox_num, 81, "Inner Hitbox");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 // Hitbox #4 / Window #2 - / Rear Top Small Hitbox 
@@ -159,6 +160,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(attack, hitbox_num, 81, "Rear Top Hitbox");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 

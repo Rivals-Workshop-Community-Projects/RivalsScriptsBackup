@@ -46,7 +46,7 @@ if(get_player_color(player) = 14){
 }
 
 
-if  (get_player_color(player) == 22) { //change # to the color you wanna change
+if  (get_player_color(player) == 23) { //change # to the color you wanna change
         if(!avocado){
     set_character_color_slot( 3, 0, 0, 0, 0); //change # to the slot you wanna change
         }if(avocado = true){
@@ -93,7 +93,7 @@ if(get_player_color(player) = 15){
     }
 }
 
-if(get_player_color(player) = 21){
+if(get_player_color(player) = 22){
     if(avocado = true){
         //Kazuya Mishima
     set_character_color_slot( 0, 166, 121, 181 ); //Gumbo Skin 1

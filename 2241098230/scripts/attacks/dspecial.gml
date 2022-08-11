@@ -1,5 +1,5 @@
 set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("bullcharge"));
-set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial2_hurt"));
+set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("bullcharge_hurt"));
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 4);
 //set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 1);
@@ -47,6 +47,7 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSPECIAL, 2);
 
+set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Clean");
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_GROUP, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 2);
@@ -63,7 +64,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 144 );
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zetter_downb"));
+set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "Applies smoke debuff");
 
+set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Late");
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 3);
@@ -82,5 +85,6 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 144 );
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_MISC_ADD, "Applies smoke debuff");
 
 

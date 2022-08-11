@@ -470,6 +470,10 @@ otto_bobblehead_body_sprite = sprite_get("otto_bobblehead_body");
 
 kf_custom_icon = sprite_get("Samus_kirby");
 
+//Po and gumbo
+
+pot_compat_variable = sprite_get("Metroid_sugar_cookies");
+pot_compat_text = "Metroid Sugar Cookies"
 
 //Dracula dialouge
 
@@ -560,7 +564,7 @@ hologram_y = 0;
 //resource values
 missile_amount = (has_rune("H")? 275: 35);
 power_bomb_amount = (has_rune("H")? 15: 2);
-aeion = 1000;
+aeion = 700;
 aeion_sfx = 0;
 
 //dspecial
@@ -608,11 +612,11 @@ spark_timer = 0;
 spr_distance = 0;
 
 //flash shift
-flash_alpha = 0;
-dodgex = x;
-dodgey = y;
-dodgendx = x;
-dodgendy = y;
+flash_alpha = [0, 0, 0];
+dodgex = [x, x, x];
+dodgey = [y, y, y];
+dodgendx = [x, x, x];
+dodgendy = [y, y, y];
 dodge_amount = 3;
 
 //rune F

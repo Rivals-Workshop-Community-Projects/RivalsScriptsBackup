@@ -4,7 +4,6 @@ set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
-//set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "");
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
@@ -56,4 +55,3 @@ set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("sfx_hit_magic_med"));
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
 
-set_hitbox_value(AT_BAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Trajectory will change upon entering a portal depending on what direction the other is facing. Angle flipper will change to 3 upon teleporting.");

@@ -6,6 +6,17 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 if (attack == AT_USTRONG)
 {
     can_fast_fall = false;
+    if (window == 5 && window_timer == 9)
+    {
+    if (has_hit)
+    {
+        set_state(PS_AIR_IDLE);
+    }
+    else
+    {
+        set_state(PS_PRATFALL);
+    }
+    }
 }
 
 if (attack == AT_FSPECIAL)
@@ -213,37 +224,37 @@ if (attack == AT_JAB)
 //FAIR
 if (attack == AT_FAIR)
 {
-    if (window == 1)
-    {
-    if (window_timer > 16 && attack_pressed)
-    {
-        window = 2;
-        window_timer = 0;
-    }
-    if (window_timer > 17)
-    {
-        can_special = true;
-    }
-    }
-    if (window == 2)
-    {
-    if (window_timer > 12 && attack_pressed)
-    {
-        window = 3;
-        window_timer = 0;
-    }
-    if (window_timer > 13)
-    {
-        can_special = true;
-    }
-    }
-    if (window == 3)
-    {
-    if (window_timer > 12)
-    {
-        can_special = true;
-    }
-    }
+	if (window == 1)
+	{
+		if (window_timer > 16 && attack_pressed)
+		{
+        		window = 2;
+			window_timer = 0;
+    		}
+    		if (window_timer > 17)
+    		{
+        		can_special = true;
+    		}
+    	}
+    	if (window == 2)
+    	{
+    		if (window_timer > 12 && attack_pressed)
+    		{
+        		window = 3;
+        		window_timer = 0;
+    		}
+    		if (window_timer > 13)
+    		{
+        		can_special = true;
+    		}
+    	}
+    	if (window == 3)
+    	{
+    		if (window_timer > 12)
+    		{
+        		can_special = true;
+    		}
+    	}
 }
 
 if (attack == AT_DAIR)

@@ -13,6 +13,7 @@ if (!can_fireball){
 	}
 }
 
+shown_meter_var = lerp(shown_meter_var, LoveMeter, 0.10);
 
 if (LoveGained_Timer == 0){
 	
@@ -122,7 +123,6 @@ else {
 		}
 	}
 }
-
 // Ghost effect for Nthrow
 if (attack == AT_NTHROW && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 		
@@ -249,7 +249,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	}		
 	
 	if ((window == 2 || (window == 3 && window_timer < 11)) && window_timer % 2 == 0){
-		instance_create( x, y - 10 -  random_func( 2, 60, true ), "obj_article2");
+		spawn_hit_fx( x, y - 10 -  random_func( 2, 60, true ), trail_sparkles)
 	}
 	
 	if (window <= 2){
@@ -264,10 +264,11 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	}
 }
 
+
 // Uspecial VFX
 if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && !hitpause){
 	if (window >= 2 && window_timer % 3 == 0){
-		instance_create( x + ((random_func( 2, 50, true ) - 20) * spr_dir), y - 10 - random_func( 2, 10, true ), "obj_article2");
+		spawn_hit_fx( x + ((random_func( 2, 40, true ) - 40) * spr_dir), y - 30,  trail_sparkles)
 	}
 }
 
@@ -493,9 +494,9 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 26){ // Color 26 Secret Alt
+		if (get_player_color(player) == 6){ // Color 26 Secret Alt
 
-			// Riptide - alt color
+			// Genesis - alt color
 			if (up_down && !down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
 				SecretColor = 9;
 				ColorLock = 1;

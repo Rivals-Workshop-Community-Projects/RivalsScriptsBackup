@@ -39,9 +39,9 @@ set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FTHROW, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, .7);
-set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, hit_fthrow);
-set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT_X_OFFSET, 50);
-set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, hit_roses);
+set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT_X_OFFSET, 40);
+set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_HIT_SFX, sound_get("BTL_RAPIER_CRITICAL"));
 set_hitbox_value(AT_FTHROW, 1, HG_EXTRA_CAMERA_SHAKE, 2);
 

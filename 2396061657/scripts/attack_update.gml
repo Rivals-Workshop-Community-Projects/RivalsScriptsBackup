@@ -77,6 +77,15 @@ if (attack == AT_FTILT){
 	}
 }
 
+if (attack == AT_UAIR){
+
+	// UAir hud offset
+	if ((window == 1 and window_timer > 10) or window == 2)
+	{
+		hud_offset = lerp(hud_offset, 300, 0.16);
+	}
+}
+
 if (attack == AT_UTILT){
 
 	if (window == 1 && window_timer == 1){
@@ -343,37 +352,12 @@ if (attack == AT_DSPECIAL || attack == AT_FSPECIAL || attack == AT_NSPECIAL || a
     trigger_b_reverse();
 }
 
-// Neutral Air
-if (attack == AT_NAIR){
-	if (window == 1 && window_timer == 9){
-		sound_play(sound_get("ustrongtwinkle"));
-	}
-	
-	if (!free){
-		if (window <= 3){
-			window_timer = 0;
-		}
-		destroy_hitboxes();
-		window = 4;
-	}
-	// Can cancel nair early if they land a hit
-	if (has_hit_player && !free){
-		can_attack = true;
-//		can_jump = true;
-		can_move = true;
-		can_special = true;
-		can_walk = true;
-	}
-}
-
 // Dash Attack
 if (attack == AT_DATTACK){
 	if (has_hit_player && window == 4){ // Can cancels things early if has hit a player
 		can_attack = true;
 		can_jump = true;
-		can_move = true;
 		can_special = true;
-		can_walk = true;
 	}
 	
 	if (has_hit || has_hit_player && window == 2){
@@ -382,7 +366,7 @@ if (attack == AT_DATTACK){
 			set_attack(AT_FSPECIAL);
 			state_timer = 0;
 			window = 1;
-			window_timer = 10;
+			window_timer = 14;
 			fspec_x = x;
 			fspec_y = y;
 			fspecial_circles = 0;

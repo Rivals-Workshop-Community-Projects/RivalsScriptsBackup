@@ -51,8 +51,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_VSPEED, -8);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_ell_explosion_medium"));
-set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_NAME, "Monster Flame");
-set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_MISC_ADD, "Trajectory will change upon entering a portal depending on what direction the other is facing.");
+
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);

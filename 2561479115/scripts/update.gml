@@ -25,7 +25,14 @@ if (state == PS_FIRST_JUMP && prev_state == PS_JUMPSQUAT) {
 } else if state == PS_DOUBLE_JUMP && state_timer == 1 {
     //sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
 }
+//djump sound, except it works with instant djump aerial now?
+if (djumps > fix_old_djumps && !djumped) { 
+    djumped = true;
+    sound_play(asset_get("sfx_ell_strong_attack_explosion"),false,noone,jump_audio_volume);
+}
 
+if djumps == 0 djumped = false; //reset djumped variable.
+fix_old_djumps = djumps;
 //Soup accel jump (because the base game accel jump is broken.)
 
 //archived due to not being necessary anymore.
