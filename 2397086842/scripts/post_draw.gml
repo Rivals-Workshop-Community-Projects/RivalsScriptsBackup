@@ -1,3 +1,26 @@
+
+if cheapmode == 1 && get_gameplay_time() < 600 &&  get_gameplay_time() > 90 {
+    draw_debug_text(x - 80 ,y -162,"That look like a foul ball.");
+	draw_debug_text(x - 100 ,y -142,"(Dspecial to active anticheap)");
+}
+
+if cheapmode == 3 {
+	if get_gameplay_time() < 660 {
+     draw_debug_text(x - 66 ,y -162,"Target practice!");
+	}
+     with oPlayer {
+     	if self != other && state != PS_DEAD && state != PS_RESPAWN{
+     		with other {
+     			shader_start()
+     			draw_sprite_ext(sprite_get("ball1"),  get_gameplay_time()/4 % 4, other.x, other.y - 20, 2, 2, 0, -1, 1)
+     			shader_end()
+     		}
+     	}
+     }
+}
+
+
+
 shader_start();
 
 //Offscreen

@@ -18,3 +18,5 @@ if attack == AT_TAUNT {
 }
 
 has_snapped = false
+
+fspec_jc = false

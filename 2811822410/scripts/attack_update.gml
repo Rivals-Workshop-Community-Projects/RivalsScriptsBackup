@@ -12,6 +12,15 @@ switch(attack) {
 			if (window == 3) {
 				vsp *= .9;
 			}
+			if (uspecial_will_turn) {
+				spr_dir *= -1;
+				uspecial_will_turn = false;
+			}
+		} else {
+			if (has_hit && uspecial_can_turn && ((left_down && spr_dir == 1) || (right_down && spr_dir == -1))) {
+				print("e")
+				uspecial_will_turn = true;
+			}
 		}
 	break;	
 	case AT_FSPECIAL:
@@ -78,8 +87,8 @@ switch(attack) {
 		}
 	break;	
 	case AT_DSPECIAL:
-		move_cooldown[attack] = 60;
-		if (window == 1 && window_timer == 5) {
+		if (window == 1 && window_timer == 5 && !move_cooldown[AT_DSPECIAL]) {
+			move_cooldown[attack] = 60;
 			if (!instance_exists(miku_clone)) {
 				miku_clone = instance_create( x + (spr_dir * 44), y, "obj_article1" );
 			} else {
@@ -92,7 +101,10 @@ switch(attack) {
 				miku_clone.x = x + (spr_dir * 44);
 				miku_clone.y = y;
 			}
-			miku_clone.spr_dir = spr_dir			
+			miku_clone.spr_dir = spr_dir
+		}	
+		if (move_cooldown[AT_DSPECIAL]) {
+			move_cooldown[attack] = 60;
 		}
 	break;
 	case AT_DATTACK:

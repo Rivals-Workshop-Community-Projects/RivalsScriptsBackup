@@ -37,5 +37,27 @@ switch (state){
     }
     break;
     
+    case PS_JUMPSQUAT:
+    if prev_state != PS_ATTACK_AIR && prev_state != PS_ATTACK_GROUND {
+        fspec_jc = false
+    }
+    
+    if fspec_jc {
+        if state_timer == 3 {
+            sound_play(asset_get("sfx_forsburn_reappear_hit"))
+        }
+    }
+    break;
+    
+    case PS_FIRST_JUMP:
+    if fspec_jc && state_timer < 30 {
+        sprite_index = sprite_get("uspecial")
+        image_index = 2 + floor(state_timer/6)
+    } else {
+        sprite_index = sprite_get("jump")
+        fspec_jc = false
+    }
+    break;
+    
     default: break;
 }

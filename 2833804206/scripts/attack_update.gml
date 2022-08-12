@@ -168,6 +168,9 @@ if attack == AT_DSTRONG {
 }
 
 if attack == AT_USTRONG {
+    if window == 1 {
+        hsp = clamp(hsp, -14, 14)
+    }
     if strong_throw {
         if window < 4 {
             vsp = 0
@@ -226,13 +229,22 @@ if attack == AT_FSPECIAL {
     
     if window == 2 {
         if on_oil {
-            hsp = 24*spr_dir
+            hsp = 22*spr_dir
             if window_timer mod 1 == 0 {
                 spawn_hit_fx(x, y, vfx_fspec_oil)
             }
         } else {
             hsp = 14*spr_dir
         }
+    }
+    
+    var jc_active = ((window == 2 || (window == 3 && window_timer < 6)) && on_oil)
+    
+    if jump_pressed && jc_active {
+        set_state(PS_JUMPSQUAT)
+        fspec_jc = true;
+        create_hitbox(AT_FSPECIAL, 2, x, y)
+        create_hitbox(AT_FSPECIAL, 3, x, y)
     }
     
     can_fast_fall = false

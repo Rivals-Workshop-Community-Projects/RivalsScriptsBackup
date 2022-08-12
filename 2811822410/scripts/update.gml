@@ -108,10 +108,36 @@ if (!custom_clone) {
 	}
 
 	if (instance_exists(leak_proj)) {
+		if has_rune("C") {
+			if (leak_proj.leak_state == 0) {
+				if (up_down) {
+					leak_proj.vsp -= .25;
+				}
+				if (down_down) {
+					leak_proj.vsp += .25;
+				}
+			} else if (leak_proj.leak_state == 1) {
+				leak_proj.vsp = 0
+			}
+		}
+		if has_rune("D") {
+			with leak_proj {
+				if (leak_state == 1) {
+					for (i = 0; i < 4; i++) {
+						can_hit[i] = 0;
+					}
+					image_index = 6
+					leak_state = 2;
+					leak_state_timer = 0;
+					image_xscale = 0.01;
+					image_yscale =  0.01;
+				}
+			}
+		}
 		with (leak_proj) {
 			if (was_parried) {
-				leak_state = 3
-				leak_state_timer = 0
+				leak_state = 3;
+				leak_state_timer = 0;
 			}
 			leak_state_timer += 1;
 			//print(leak_state)
@@ -226,6 +252,7 @@ if (!custom_clone) {
 			}
 		}
 	}
+	
 } else { //Clone Stuff
 	//have_collision = false;
 	//Leek Throw Clone

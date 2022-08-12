@@ -16,12 +16,12 @@ for (i = 0; i <= 1; i++) {
 	set_window_value(curr_attack, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 	set_window_value(curr_attack, 2, AG_WINDOW_TYPE, 1);
-	set_window_value(curr_attack, 2, AG_WINDOW_LENGTH, 2);
+	set_window_value(curr_attack, 2, AG_WINDOW_LENGTH, 4);
 	set_window_value(curr_attack, 2, AG_WINDOW_ANIM_FRAMES, 1);
 	set_window_value(curr_attack, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 	set_window_value(curr_attack, 2, AG_WINDOW_HAS_SFX, 1);
 	set_window_value(curr_attack, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-	set_window_value(curr_attack, 2, AG_WINDOW_SFX_FRAME, 1);
+	set_window_value(curr_attack, 2, AG_WINDOW_SFX_FRAME, 3);
 
 	set_window_value(curr_attack, 3, AG_WINDOW_TYPE, 1);
 	set_window_value(curr_attack, 3, AG_WINDOW_LENGTH, 3);
@@ -29,12 +29,12 @@ for (i = 0; i <= 1; i++) {
 	set_window_value(curr_attack, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
 	set_window_value(curr_attack, 4, AG_WINDOW_TYPE, 1);
-	set_window_value(curr_attack, 4, AG_WINDOW_LENGTH, 4);
+	set_window_value(curr_attack, 4, AG_WINDOW_LENGTH, 8);
 	set_window_value(curr_attack, 4, AG_WINDOW_ANIM_FRAMES, 2);
 	set_window_value(curr_attack, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 	set_window_value(curr_attack, 4, AG_WINDOW_HAS_SFX, 1);
 	set_window_value(curr_attack, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-	set_window_value(curr_attack, 4, AG_WINDOW_SFX_FRAME, 3);
+	set_window_value(curr_attack, 4, AG_WINDOW_SFX_FRAME, 7);
 
 	set_window_value(curr_attack, 5, AG_WINDOW_TYPE, 1);
 	set_window_value(curr_attack, 5, AG_WINDOW_LENGTH, 3);

@@ -4,6 +4,10 @@ miku_clone = -4;
 clone_attack_hold = false;
 clone_attack_hold_type = 0;
 fspecial_reset = 0; //Clone Throw Rune
+//Uspecial turnaround on hit
+uspecial_dir = -4;
+uspecial_can_turn = false;
+uspecial_will_turn = false;
 
 //Rioku's Neutral Strong code
 //Strong buffer stuff so you can have a neutral strong press
@@ -68,12 +72,12 @@ walk_accel = .5;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 8.5;
-dash_speed = 7.5;
+dash_speed = 7;
 dash_turn_time = 6;
 dash_turn_accel = 2;
 dash_stop_time = 6;
 dash_stop_percent = .30; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .75;
+ground_friction = .4;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;

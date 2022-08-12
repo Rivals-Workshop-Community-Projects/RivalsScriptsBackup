@@ -4,6 +4,14 @@ timer++
 
 window_length = get_window_value(attack, window, AG_WINDOW_LENGTH) * (get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) ? 1.5 : 1);
 
+//on oil detection
+var on_oil = false
+if !free with obj_article1 if player_id == other.id {
+    if other.y == y && other.x >= obj_l && other.x <= obj_r {
+        on_oil = true
+    }
+}
+
 //char height
 if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
     char_height = start_char_height;
@@ -147,7 +155,7 @@ with obj_article1 if player_id == other.id {
 //print(num_puddles)
 
 //hitbox puddle interaction
-with pHitBox if ("attack" in self) && player_id == other.id && ((attack == AT_USPECIAL) || (attack == AT_FSTRONG && hbox_num == 3) || (attack == AT_DSPECIAL && hbox_num == 3)) {
+with pHitBox if ("attack" in self) && player_id == other.id && ((attack == AT_USPECIAL) || (attack == AT_FSTRONG && hbox_num == 3) || (attack == AT_DSPECIAL && hbox_num == 3) || (attack == AT_FSPECIAL && (hbox_num == 2 || hbox_num == 3))) {
     var force = false
     if attack == AT_DSPECIAL && hbox_num == 3 {
         force = true

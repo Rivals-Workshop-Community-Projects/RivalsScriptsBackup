@@ -44,4 +44,15 @@ if (my_hitboxID.orig_player == player) {
 	}
 }
 
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type ==2) {
+	if has_rune("D") {
+		hit_player_obj.y = my_hitboxID.y + my_hitboxID.vsp;
+		hit_player_obj.x = my_hitboxID.x + my_hitboxID.hsp;
+	}
+}
+
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1) {
+	uspecial_can_turn = true;
+}
+
 

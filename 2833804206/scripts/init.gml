@@ -2,6 +2,8 @@ is_r2 = true
 r2_oil_timer_increment = false
 timer = 0
 
+fspec_jc = false
+
 has_snapped = false
 
 crouch_turn_time = 6
@@ -46,7 +48,7 @@ jump_speed = 11;
 short_hop_speed = 6;
 djump_speed = 11;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 9; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.2;

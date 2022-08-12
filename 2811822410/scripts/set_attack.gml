@@ -145,3 +145,7 @@ if attack == AT_FSPECIAL {
 	fspecial_reset = 0; //Clone Throw Rune
 }
 
+uspecial_dir = spr_dir;
+uspecial_will_turn = false;
+uspecial_can_turn = false;
+
