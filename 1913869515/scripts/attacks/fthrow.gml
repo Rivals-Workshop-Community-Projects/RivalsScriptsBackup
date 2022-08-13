@@ -34,12 +34,16 @@ set_window_value(AT_FTHROW, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_FTHROW, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_FTHROW, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTHROW, 4, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FTHROW, 4, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_FTHROW, 4, AG_WINDOW_ANIM_FRAME_START, 10);
 
-
+set_window_value(AT_FTHROW, 5, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FTHROW, 5, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FTHROW, 5, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_FTHROW, 5, AG_WINDOW_CUSTOM_GRAVITY, 1);
+set_window_value(AT_FTHROW, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 
 set_num_hitboxes(AT_FTHROW, 1);
 
@@ -58,7 +62,7 @@ set_hitbox_value(AT_FTHROW, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FTHROW, 1, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, 0.1);
+set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("empty"));
@@ -85,8 +89,8 @@ set_hitbox_value(AT_FTHROW, 3, HG_DAMAGE, 2);
 set_hitbox_value(AT_FTHROW, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_FTHROW, 3, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FTHROW, 3, HG_KNOCKBACK_SCALING, 0.2);
-set_hitbox_value(AT_FTHROW, 3, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FTHROW, 3, HG_HITPAUSE_SCALING, 0.1);
+set_hitbox_value(AT_FTHROW, 3, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FTHROW, 3, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_FTHROW, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FTHROW, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_FTHROW, 3, HG_PROJECTILE_SPRITE, sprite_get("empty"));

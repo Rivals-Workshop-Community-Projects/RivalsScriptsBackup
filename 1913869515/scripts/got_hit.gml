@@ -21,8 +21,11 @@ intro = 1
 
 voicecd = -10
 
-zFhittimer = 0
-zbayo = 0
+iaido = 0
+ziaido = 0
+iaicancel = 0
+iaidir = spr_dir
+
 move_cooldown[AT_EXTRA_2] = 0
 
 reset_window_value(AT_TAUNT, 18, AG_WINDOW_SFX);
@@ -32,15 +35,13 @@ reset_window_value(AT_TAUNT, 18, AG_WINDOW_SFX);
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
 	
 	if halox < 8 {
-                halox += 1
-	   	ohalox = halox
-                halo = 2
+        halo = 2
 	 	ohalo = 2
-                dmhit = 0
+        dmhit = 0
 	 } else {
 	 	halo = 3
 	 	ohalo = 3
-                dmhit = 1
+        dmhit = 1
 	 }
 	    
 	         
@@ -91,9 +92,7 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
 	
 	 if halox < 8 {
-	   	halox += 1
-	   	ohalox = halox
-                halo = 2
+        halo = 2
 	 	ohalo = 2
                 dmhit = 0
 	 } else {

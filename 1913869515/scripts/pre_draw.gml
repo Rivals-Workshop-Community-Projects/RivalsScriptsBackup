@@ -121,15 +121,7 @@ if dmhit > 0{
 }
 
 
-if zFhittimer > 0 {
-    
-    draw_sprite_ext(sprite_get("Fspecic"), 13 - zFhittimer/3, ztarget.x - 100, ztarget.y - 140, 1,1,0,-1, 0.3); 
-       
-  gpu_set_blendmode(bm_add);
-    draw_sprite_ext(sprite_get("Fspecic"), 13 - zFhittimer/3, ztarget.x - 102 + random_func(1,4,true), ztarget.y - 142 + random_func(2,4,true), 1,1,0,-1, 0.6 ); 
-  gpu_set_blendmode(bm_normal);
-    
-}
+
 shader_end();
 
 gpu_set_blendmode(bm_normal);

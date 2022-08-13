@@ -1,3 +1,16 @@
+sprite_change_offset("iaido_base", 48/2, 92/2);
+sprite_change_offset("iaido_arm1", 48/2, 92/2);
+sprite_change_offset("iaido_arm2", 48/2, 92/2);
+sprite_change_offset("iaido_arm3", 48/2, 92/2);
+sprite_change_offset("iaido_arm4", 48/2, 92/2);
+sprite_change_offset("iaido_arm5", 48/2, 92/2);
+sprite_change_offset("iaido_move", 48/2, 92/2);
+sprite_change_offset("iaido_stand", 48/2, 92/2);
+sprite_change_offset("iaido_air", 48/2, 92/2);
+sprite_change_offset("iaido_crouch", 48/2, 92/2);
+
+
+
 sprite_change_offset("idle", 48, 94);
 sprite_change_offset("crouch", 64, 94);
 sprite_change_offset("walk", 46, 94);

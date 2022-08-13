@@ -23,7 +23,7 @@ finishercd = 0
 if my_hitboxID.attack == AT_FTHROW {
 	
 	if my_hitboxID.hbox_num == 1 {
-      window = 4
+      window = 5
       window_timer = 0
       pgfx = spawn_hit_fx( my_hitboxID.x, my_hitboxID.y, SC2)
       pgfx.spr_dir = 0.7*spr_dir
@@ -115,7 +115,7 @@ if my_hitboxID.attack == AT_TAUNT && my_hitboxID.hbox_num < 8{
 }
 	
 		
-if dmhit < 5 && move_cooldown[AT_EXTRA_1] = 0 {
+if dmhit < 5 && move_cooldown[AT_EXTRA_1] = 0 && my_hitboxID.attack != AT_JAB or (my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num != 2) {
 	dmhit += 1 
 }
 

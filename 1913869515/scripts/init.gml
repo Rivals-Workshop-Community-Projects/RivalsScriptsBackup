@@ -2,6 +2,11 @@ intro = 0
 introtimer = -1
 noparryedit = 0
 
+ztrashes = 0
+
+iaihsp = 0
+iaivsp = 0
+
 finisher = 0
 finishercd = 0
 finisherinc = 0
@@ -31,10 +36,14 @@ zvoice = 0
 introhit = 0
 
 ztarget = 0    
-zFhit = 0
-zFhittimer = 0
 nrange = 0
 
+iaispr = 0
+iaiimg = 0
+iaido = 0
+ziaido = 0
+iaicancel = 0
+iaidir = 0
 
 offense = 0
 offensetimer = 0

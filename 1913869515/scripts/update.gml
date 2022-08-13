@@ -1,5 +1,5 @@
 
-
+/*
 if string_lower(get_player_name(player)) != "sai" {
     with pHitBox {
     	if player_id == other.id && hitbox_timer < 1   {
@@ -25,6 +25,7 @@ if string_lower(get_player_name(player)) != "sai" {
     	}
     }
 }
+*/
 
 if dmhit < 0 {
 	dmhit = 0
@@ -53,6 +54,14 @@ or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FOR
 with oPlayer {
 	
 	if state == PS_RESPAWN or state == PS_DEAD {
+		with other {
+			iaispr = 0
+            iaiimg = 0
+            iaido = 0
+            ziaido = 0
+            iaicancel = 0
+            iaidir = 0
+		}
 		pendupcd = 0
 		pendupdmg = 0
 	}
@@ -154,11 +163,29 @@ if ohalo != halo {
 
 if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
 	attacking = true 
+	iaihsp = hsp
+    iaivsp = vsp
 } else {
+	
 	attacking = false 
+	
+	if iaido == true {
+		if state == PS_AIR_DODGE {
+			has_airdodge = true
+			hsp = iaihsp 
+			vsp = iaivsp 
+		}
+		move_cooldown[AT_EXTRA_2] = 0
+		set_attack(AT_EXTRA_2)
+		window = 1
+		window_timer = 1
+		iaido = false
+	    spr_dir = iaidir
+	}
+	
 	zcountered = 0
 	
-    if zvoice != 0 voicecd -= 0.5
+    if zvoice > 0 voicecd -= 0.5
     
 	if offense == 0 && (halo > 0 or halox == 8) {
 		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
@@ -470,7 +497,7 @@ if(player_id == other.id) {
 
 
 
-if (!free)  {
+if (!free) {
 	
 set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 1);
 	move_cooldown[AT_USPECIAL] = 0
@@ -479,17 +506,6 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 1);
 };
 
 
-if zFhittimer > 0 {
-zFhittimer -= 1
-
-if state == PS_PARRY_START or state == PS_AIR_DODGE {
-	state = PS_IDLE
-	has_airdodge = false
-}
-
-
-
-}
 
 if zbayo == -1 && state_timer % 3 = 0 && !hitstop{
 	 create_hitbox(AT_DSPECIAL , 1 , floor( x + (-110 * spr_dir)) , floor( y - 110) ); 
@@ -539,77 +555,6 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 7);
 
 }
 
-if zFhittimer == 1 {
-	move_cooldown[AT_EXTRA_2] = 100
-		sound_play(sound_get("counterhit"));
-	if zFhit = 0 {
-			move_cooldown[AT_USPECIAL] = 0
- 
-		
-
-	 if !left_down and !right_down{
-            	
-            	
-      
-			if (ztarget.x < x) {
-				spr_dir = 1;
-			} else {
-				spr_dir = -1;
-			}
-			x = ztarget.x + (-40 * spr_dir)
-			y = ztarget.y + (0 * spr_dir)
-	 }
-		
-
-			if left_down {
-			x = ztarget.x + (40)
-			y = ztarget.y + (0 * spr_dir)
-			}
-			
-			if right_down {
-
-			x = ztarget.x - (40)
-			y = ztarget.y + (0 * spr_dir)
-			}
-			
-			sound_play(asset_get("sfx_holy_lightning"));
-
-			set_attack(AT_UTILT)
-		   	window = 2;
-            window_timer = -1;	
-
-	}
-	
-	if zFhit = 1 {
-		
-		hsp = 0
-		
-
-    
-
-			if (ztarget.x < x) {
-				spr_dir = 1;
-			} else {
-				spr_dir = -1;
-			}
-			x = ztarget.x 
-			 y = ztarget.y 
-			 vsp = -3
-
-			sound_play(asset_get("sfx_holy_lightning"));
-			set_attack(AT_UTILT)
-		   	window = 2;
-            window_timer = -1;	
-            zbayo = 7 
-	}
-	
-}
-
-if zFhittimer == 2 {
-	create_hitbox(AT_DSPECIAL , 1 , x + (( -80  - random_func(3, 50, true)) * spr_dir)  , y - 105 ); 
-	spawn_hit_fx( x, y - 30 + random_func(1, 10, true), shit5 )	
-	
-}
 
 
 
@@ -679,6 +624,8 @@ if dmhit > 0 && move_cooldown[AT_EXTRA_3] <= 0 {
 	sound_play(asset_get("sfx_ice_shieldup"));
 }
 
+
+
 if halo == 0 && offense > 0 and halox != 8{
 	offense = 0
 	offensetimer = 0
@@ -690,6 +637,8 @@ if halo == 0 && offense > 0 and halox != 8{
 }
 
 if (state_cat == SC_HITSTUN) {
+		iaicancel = false 
+		iaido = false 
  with (asset_get("pHitBox")) {
         if player_id == other.id {
           destroyed = true;
@@ -699,7 +648,6 @@ if (state_cat == SC_HITSTUN) {
 
 
 
-ztrashes = random_func(15, 3, false);
 
 
 
@@ -964,13 +912,13 @@ with oPlayer {
 		}
 	}
 }
-        if get_gameplay_time() % 22 = 0{
+        if get_gameplay_time() % 2 = 0{
             if get_player_damage( player ) > 0{
                 set_player_damage( player, get_player_damage( player ) - 1 )
             }
         }
         
-           if get_gameplay_time() % 22 = 0{     
+           if get_gameplay_time() % 2 = 0{     
   create_hitbox(AT_FSTRONG , 9 , x - 150 + random_func(1, 300, true) , y - 300 + random_func(2, 30, true) );
 
    }

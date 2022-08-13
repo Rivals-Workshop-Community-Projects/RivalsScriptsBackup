@@ -1,5 +1,97 @@
 
 	//B - Reversals
+	
+
+if get_window_value(AT_UAIR, 4, AG_WINDOW_TYPE) != 7 {
+if (attack == AT_FTILT or attack == AT_UTILT or attack == AT_DTILT or attack == AT_NAIR or attack == AT_FAIR  or attack == AT_DATTACK
+or attack == AT_UAIR or attack == AT_FSPECIAL or (attack == AT_JAB && window >= 8)) and state_timer > 2 and window > 2 {
+	iaispr = sprite_index
+	iaiimg = image_index
+	set_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG, 0);
+	iaido = true 
+	ziaido ++
+	if has_hit {
+		iaicancel = true 
+	}
+	iaidir = spr_dir 
+}
+} else {
+	iaido = false 
+	iaicancel = false 	
+}
+
+if state_timer == 1 && iaido == true {
+    spr_dir = iaidir
+	move_cooldown[AT_EXTRA_2] = 0
+	attack_end()
+	set_attack(AT_EXTRA_2)
+	window = 1
+	window_timer = 0
+	iaido = false
+}
+
+if attack == AT_EXTRA_2 {
+    if !free {
+    	if abs(hsp) < 4 && !down_down{
+    		hsp += (right_down-left_down)/1.2
+    	}
+    }
+    if window_timer == 2 && !hitpause {
+    	sound_stop(sound_get("swingw1"))
+    	sound_play(sound_get("swingw1"),false,noone,.6,.8)
+    	spr_dir = iaidir 
+    }
+
+    if window_timer = 5*4 {
+    	sound_play(sound_get("swingw1"),false,noone,.6,1.4)
+    	sound_play(asset_get("sfx_shovel_hit_med1"),false,noone, .6,1.6)
+    	fx1 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash )	
+    	fx1.depth = depth - 2
+    	fx1.spr_dir = .7*spr_dir 
+    	fx1.image_yscale = .7
+		fx2 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash2 )	
+		fx2.depth = depth - 2
+		fx2.spr_dir = .7*spr_dir 
+    	fx2.image_yscale = .7	
+		if iaicancel == true {
+    		iaicancel = false 
+    		dmhit = 3
+    		fx3 = spawn_hit_fx( x - (8* spr_dir), y - 30 , shit5 )	
+	    	fx3.depth = depth - 5
+	    	sound_play(sound_get("ADfinish"),false,noone, .8,1.4)
+	    	shake_camera(4,4)
+    	}
+    }
+    
+    if (window_timer > 6*4 or iaicancel = true) && (jump_pressed or shield_pressed or (!free and (left_hard_pressed or right_hard_pressed or down_hard_pressed)) or attack_pressed or taunt_pressed 
+    or left_strong_pressed or right_strong_pressed or up_strong_pressed or down_strong_pressed or special_pressed  
+    or up_stick_pressed or down_stick_pressed or left_stick_pressed or up_stick_pressed ) {
+    	
+    	set_state(PS_IDLE)
+   		
+    	
+    	if iaicancel == true  {
+    		sound_play(asset_get("sfx_shovel_hit_med1"),false,noone, .6,1.6)
+    	    fx1 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash )	
+    	    fx1.depth = depth - 2
+    	    fx1.spr_dir = .7*spr_dir 
+    	    fx1.image_yscale = .7
+		    fx2 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash2 )	
+		    fx2.depth = depth - 2
+		    fx2.spr_dir = .7*spr_dir
+    	}
+    	
+    	iaicancel = false
+    }
+    
+
+    	if down_down {
+    		if !free y += 4
+    		fall_through = true 
+    	}
+    
+}
+
 if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_DAIR ){
     trigger_b_reverse();
 }
@@ -7,6 +99,7 @@ if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_DAIR ){
 	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 	
 if ((window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
+	iaicancel = false 
       sound_play(sound_get("swingw1"),false,noone, .2 + (get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) ,
         max ( 0.5, 1.7 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
         voicecd -= random_func(1,30,true)
@@ -229,7 +322,7 @@ if attack == AT_FTHROW {
 
 if attack == AT_UTHROW {
 	voicecd = 120
-	hsp /= 1.1
+	hsp /= 2
     dmhit = 0
     if has_hit_player {
         soft_armor = 999
@@ -237,9 +330,10 @@ if attack == AT_UTHROW {
         soft_armor = 0
     }
     
+    if window < 4 or (window == 4 && window_timer < 25) {
 
-                	suppress_stage_music( min(0.5, state_timer/120),60 );	
-    
+                	suppress_stage_music( max(0.5, state_timer/120),60 );	
+    }
     
     vsp = 0
     
@@ -359,7 +453,10 @@ if attack == AT_UTHROW {
         }
     }
     
-
+    if window == 4 && window_timer == 28 && !hitpause && !has_hit_player {
+    sound_play(asset_get("sfx_shovel_hit_med1"),false,noone, 1,1.6)
+    }
+    
     if window == 4 && window_timer == 25 && has_hit_player && !hitpause{ 
     	if zvoice != 0 {
     	zvoice = sound_play(sound_get("z3"),false,noone,1,.95 + 0.05 + random_func(1,6,true)/100);
@@ -574,10 +671,21 @@ if attack == AT_FSPECIAL {
 		}
 	}
 	if window == 3 {
-	zbayo = 0	
+    	zbayo = 0	
 	 if free {
 	 	vsp -= 0.3
 	 	hsp /= 1.2
+	 	if window_timer == 8 {
+	 		iaispr = sprite_index
+	        iaiimg = image_index
+	        set_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG, 0);
+	        iaido = true 
+	        ziaido ++
+	        if has_hit {
+	        	iaicancel = true 
+	        }
+	        iaidir = spr_dir 
+	 	}
 	 }
 	}
 	if window == 2 {
@@ -704,15 +812,6 @@ if attack == AT_BAIR{
 	
 }
 
-if attack == AT_FTILT {
-	
-	if window == 3 && window_timer == 10 {
-		set_attack (AT_UTILT)
-		window = 3
-		hsp = 0
-		window_timer = 8
-	}
-}	
 
 if (attack == AT_UAIR && window == 1 && window_timer == 1){
 	
@@ -1401,19 +1500,14 @@ set_hitbox_value(AT_FSTRONG, 3, HG_TECHABLE, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1);
 			window = 8;
 			window_timer = 0;
-			
+			iaido = false 
+	        iaicancel = false 
 
         }
     }
     
-    if (window == 10){
-    	sound_play(asset_get("sfx_ice_shieldup"));
-    	if !has_hit_player {
-    	set_attack (AT_FSTRONG)
-    	window = 3
-    	window_timer = 6
-    	}
-    }
+
+
     
 
 }
@@ -1476,6 +1570,8 @@ if(attack == AT_DAIR){
 if (attack == AT_TAUNT){
 	zrandom = 2
 	move_cooldown[AT_TAUNT] = 25
+	
+
 	if window == 1 && window_timer == 1 && offense != 0 {
 			var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
     		halodeact.depth = depth + 2
@@ -1485,6 +1581,7 @@ if (attack == AT_TAUNT){
 			offense = 0
 			offensetimer = 0
 	}
+	
 	move_cooldown[AT_EXTRA_3] = 200
 	if window == 18 && window_timer > 6 && window_timer < 71{
 		window_timer += 1
@@ -1511,8 +1608,6 @@ if (attack == AT_TAUNT){
       		ztrashes = 7
       	}
       	
-    }
-    
 
 
 	if ztrashes == 0 {
@@ -1570,7 +1665,7 @@ if (attack == AT_TAUNT){
          	set_window_value(AT_TAUNT, 18, AG_WINDOW_SFX, sound_get("tHi"));
          	sound_play(sound_get("tHi"),false,noone,1,1.3)
      }
-
+}
 	 if ((get_gameplay_time() % 23 = 0 ) && window_timer <= 60 ){
 	 	
 	 if get_player_color(player) == 3{
@@ -1685,6 +1780,17 @@ if(window == 18 && window_timer == 30){
         set_state( PS_IDLE );
     }
     
+    
+     if shield_down && state_timer < 5 {
+     	iaispr = sprite_index
+     	iaiimg = image_index
+    	move_cooldown[AT_EXTRA_2] = 0
+		set_attack(AT_EXTRA_2) 
+		window_timer = 1
+		window = 1
+		iaidir = spr_dir
+		ziaido += random_func(1,2,true) + 1
+	}   
 }   
 
 
@@ -1711,18 +1817,12 @@ if (attack == AT_FTILT){
                 window_timer += 1;
 	}
 	
-	if window == 3 && window_timer >= 9 {
-		
-		x -= 6 * spr_dir
-		sound_play(asset_get("sfx_ice_shieldup"));
-		set_attack (AT_FSTRONG)
-    	window = 3
-    	window_timer = 12
-	}
+	
 }
 
 if (attack == AT_UTILT){
-	if zcountered = 1 {
+	if zcountered = 1  {
+		hitpause = false 
 		x -= floor(((20 - state_timer)*spr_dir)/2)
 		state_timer++
 	}

@@ -1,5 +1,47 @@
 shader_start(); 
 
+if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_EXTRA_2 {
+	
+	
+		
+	if !free {
+	if !down_down {	
+      	   if abs(hsp) < 2 {
+      	   draw_sprite_ext(sprite_get("iaido_stand"),window_timer/4,x,y ,spr_dir*2,2,0,-1,1)
+      	   } else {
+      	   draw_sprite_ext(sprite_get("iaido_move"),get_gameplay_time()/3,x,y,spr_dir*2,2,0,-1,1)	
+      	   } 
+	} else {
+	    draw_sprite_ext(sprite_get("iaido_crouch"),window_timer/4,x,y,spr_dir*2,2,0,-1,1)	
+	}
+	
+	} else {
+		draw_sprite_ext(sprite_get("iaido_air"),window_timer/4,x,y - 4,spr_dir*2,2,0,-1,1)	
+	}
+	
+	draw_sprite_ext(sprite_get("iaido_base"),window_timer/4,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+	 
+	switch ziaido%5 {
+		case 0 :
+			draw_sprite_ext(sprite_get("iaido_arm1"),window_timer/4,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+		break
+		case 1 :
+			draw_sprite_ext(sprite_get("iaido_arm2"),window_timer/4,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+		break	
+		case 2 :
+			draw_sprite_ext(sprite_get("iaido_arm3"),window_timer/4,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+		break
+		case 3 :
+			draw_sprite_ext(sprite_get("iaido_arm4"),window_timer/4,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+		break
+		case 4 :
+			draw_sprite_ext(sprite_get("iaido_arm5"),window_timer/4,x,y + (down_down*6) - free*4,spr_dir*2,2,0,-1,1)
+		break
+	}
+	
+	draw_sprite_ext(iaispr,iaiimg,x,y,iaidir,1,0,-1, 1 - ((window_timer + 5)/10))	
+	
+}
 
 if "showdm" in self {
 	showdm -- 

@@ -1,5 +1,8 @@
 
-
+if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_EXTRA_2 && state_timer < 3 {
+    sprite_index = iaispr
+    image_index = iaiimg
+}
 if (state == PS_SPAWN) {
     if (introTimer < 31 && introTimer >= 0) {
          if get_player_color(player) == 3{

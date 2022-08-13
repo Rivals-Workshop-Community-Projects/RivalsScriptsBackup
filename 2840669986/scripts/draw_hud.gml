@@ -7,7 +7,6 @@ draw_debug_text(temp_x,temp_y-64,"HSP: " + string(hsp) + "    VSP: " + string(vs
 draw_debug_text(temp_x, temp_y-80,"    Free: " + string(free))
 //further y positions should go up in multiples of 16 from 64
 */
-
 if (move_cooldown[AT_DSPECIAL] == 0
 	|| move_cooldown[AT_DSPECIAL] == 4
 	|| move_cooldown[AT_DSPECIAL] == 8

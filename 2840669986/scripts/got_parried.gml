@@ -5,6 +5,7 @@ if (my_hitboxID.attack == AT_JAB){
 }
 
 if (my_hitboxID.attack == AT_DSPECIAL_2){
+	/*
     if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2){
 		with(vacuum){
 			should_die_instantly = true;
@@ -19,5 +20,16 @@ if (my_hitboxID.attack == AT_DSPECIAL_2){
 		set_state(PS_PRATLAND);
 	} else {
 		set_state(PS_PRATFALL);
+	}
+	*/
+}
+
+with(vacuum){
+	if (instance_exists(grabbed_player_id)){
+		if(grabbed_player_id == player_id){
+			print("MARIO");
+		} else {
+			print("fuck");
+		}
 	}
 }
