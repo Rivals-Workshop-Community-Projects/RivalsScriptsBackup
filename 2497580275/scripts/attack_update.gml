@@ -1,3 +1,5 @@
+
+
 //B - Reversals
 hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
@@ -50,6 +52,10 @@ if (attack == AT_USPECIAL_2)
 }
 if (attack == AT_FSPECIAL){
     can_wall_jump = true;
+    if (has_hit){
+    	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+    } else { reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE);}
+    	
     if(window == 1)
     {
         set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
@@ -59,8 +65,8 @@ if (attack == AT_FSPECIAL){
             fspec_Air = false;
         if(window_timer == 15)
         {
-            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, (!fspec_Air ? 26 : 40));
-            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, (!fspec_Air ? 4 : 9));
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, (!fspec_Air ? 12 : 20));//40
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, (!fspec_Air ? 3 : 5));
             set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, (!fspec_Air ? -10 : 12));
             set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, (!fspec_Air ? -47: -10));
             set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, (!fspec_Air ? -47: -10));
@@ -104,9 +110,9 @@ if (attack == AT_USPECIAL){
     {
         move_cooldown[AT_USPECIAL] = 30;
         if(right_down)
-            hsp += 0.25;
+            hsp += 0.5;
         if(left_down)
-            hsp -= 0.25;
+            hsp -= 0.5;
     }
     if(window == 1 && window_timer < 2)
     {

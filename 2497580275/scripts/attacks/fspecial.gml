@@ -24,8 +24,8 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -10);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 26);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 12);//26
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -53,7 +53,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 54);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -47);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 54);
@@ -70,7 +70,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("dagger_stab1"));
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 3);
-set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 4);
+set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 58);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -47);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 20);

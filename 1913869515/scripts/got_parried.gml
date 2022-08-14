@@ -19,6 +19,11 @@ voicecd = 90
 dmhit = 0
 halo = 0
 
+iaido = 0
+ziaido = 0
+iaicancel = 0
+iaidir = spr_dir
+
 if zvoice != 0 {
  sound_stop(zvoice)
 }

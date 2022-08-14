@@ -244,13 +244,13 @@ set_color_profile_slot( 27, 3, 51, 86, 97 ); //Skin Dark
 set_color_profile_slot( 27, 4, 105, 177, 199 ); //Skin Light
 set_color_profile_slot( 27, 5, 68, 44, 112 ); //RobeShading
 
-// Cult of the Blueberry
-set_color_profile_slot( 28, 0, 49, 58, 245 ); //Robes
-set_color_profile_slot( 28, 1, 162, 0, 255 ); //Trim And Eye
-set_color_profile_slot( 28, 2, 255, 81, 0 ); //Dagger
-set_color_profile_slot( 28, 3, 7, 84, 0 ); //Skin Dark
-set_color_profile_slot( 28, 4, 12, 145, 0 ); //Skin Light
-set_color_profile_slot( 28, 5, 44, 0, 186 ); //RobeShading
+// Cult of the J
+set_color_profile_slot( 28, 0, 255, 186, 225 ); //Robes
+set_color_profile_slot( 28, 1, 255, 220, 89 ); //Trim And Eye
+set_color_profile_slot( 28, 2, 255, 186, 225 ); //Dagger
+set_color_profile_slot( 28, 3, 46, 49, 82 ); //Skin Dark
+set_color_profile_slot( 28, 4, 114, 84, 138 ); //Skin Light
+set_color_profile_slot( 28, 5, 184, 99, 174 ); //RobeShading
 
 // Cult of the Cards
 set_color_profile_slot( 29, 0, 64, 64, 64 ); //Robes

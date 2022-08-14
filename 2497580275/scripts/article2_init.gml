@@ -1,7 +1,10 @@
 //Knife man. Template by Muno
 
-//Sprite and directio
-sprite_index = sprite_get("nspecial_projectile");   //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
+//Sprite and direction + hero boomerang
+if (get_player_color( player ) == 8) {
+    sprite_index = sprite_get("hero_proj");
+    } else {sprite_index = sprite_get("nspecial_projectile");}//The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
+
 image_index = 0;                                    //The frame in the animation the article should start at. 0 = beginning of animation
 spr_dir = player_id.spr_dir;                        //The direction the article should face when it spawns. Here I have it set to face the same way as the character
 uses_shader = true;                                 //Whether or not the article is recolored according to the character's color.gml and costume.

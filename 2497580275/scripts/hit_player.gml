@@ -54,3 +54,20 @@ if(attack == AT_FSPECIAL)
 if(my_hitboxID.attack == AT_FAIR){
     old_vsp = -2;
 }
+
+if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
+    if(my_hitboxID.attack == AT_FAIR and my_hitboxID.hbox_num < 2){
+        //print("ora")
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), y-10, .35);
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), x+60*spr_dir, .35);
+    }
+}
+
+
+if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
+    if(my_hitboxID.attack == AT_USPECIAL and my_hitboxID.hbox_num < 6){
+        //print("ora")
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), y-65, .35);
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), x+5*spr_dir, .35);
+    }
+}

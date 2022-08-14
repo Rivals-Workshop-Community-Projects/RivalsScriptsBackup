@@ -28,8 +28,8 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 80);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 80);
+set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 75);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 75);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 80);
@@ -45,6 +45,6 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_projectile"));//-1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, fspecSmallHit);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("dagger_slash1"));

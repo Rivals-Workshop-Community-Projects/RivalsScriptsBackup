@@ -11,3 +11,6 @@ spawn_hit_fx(x,y - 120,bup)
 if get_player_color(player) == 11 {
 sound_play(sound_get("drip"))
 }
+
+window_timer = floor(window_timer)
+noparryedit = 15

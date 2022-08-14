@@ -1,7 +1,7 @@
 
 	//B - Reversals
 	
-
+if !was_parried {
 if get_window_value(AT_UAIR, 4, AG_WINDOW_TYPE) != 7 {
 if (attack == AT_FTILT or attack == AT_UTILT or attack == AT_DTILT or attack == AT_NAIR or attack == AT_FAIR  or attack == AT_DATTACK
 or attack == AT_UAIR or attack == AT_FSPECIAL or (attack == AT_JAB && window >= 8)) and state_timer > 2 and window > 2 {
@@ -19,6 +19,7 @@ or attack == AT_UAIR or attack == AT_FSPECIAL or (attack == AT_JAB && window >= 
 	iaido = false 
 	iaicancel = false 	
 }
+}
 
 if state_timer == 1 && iaido == true {
     spr_dir = iaidir
@@ -30,10 +31,12 @@ if state_timer == 1 && iaido == true {
 	iaido = false
 }
 
+
 if attack == AT_EXTRA_2 {
     if !free {
-    	if abs(hsp) < 4 && !down_down{
-    		hsp += (right_down-left_down)/1.2
+    	if !down_down{
+    		hsp += (right_down-left_down)*2
+    		hsp = clamp(hsp,-4,4)
     	}
     }
     if window_timer == 2 && !hitpause {
@@ -63,6 +66,19 @@ if attack == AT_EXTRA_2 {
     	}
     }
     
+        if down_down && iaicancel == false {
+    		if !free y += 4
+    		fall_through = true 
+    	}
+    	
+    	if jump_down && !free && iaicancel == false  {
+    		hsp = clamp(hsp,-4,4)
+     		spawn_base_dust(x,y,"dash",1)
+    		spawn_base_dust(x,y,"dash",-1)
+    		vsp = -8
+    		clear_button_buffer(PC_JUMP_PRESSED)
+    	}
+    	
     if (window_timer > 6*4 or iaicancel = true) && (jump_pressed or shield_pressed or (!free and (left_hard_pressed or right_hard_pressed or down_hard_pressed)) or attack_pressed or taunt_pressed 
     or left_strong_pressed or right_strong_pressed or up_strong_pressed or down_strong_pressed or special_pressed  
     or up_stick_pressed or down_stick_pressed or left_stick_pressed or up_stick_pressed ) {
@@ -85,10 +101,7 @@ if attack == AT_EXTRA_2 {
     }
     
 
-    	if down_down {
-    		if !free y += 4
-    		fall_through = true 
-    	}
+
     
 }
 

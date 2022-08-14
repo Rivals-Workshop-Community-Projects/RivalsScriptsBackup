@@ -89,6 +89,7 @@ var palette_names = [
   "Chad Dorf",
   "Chad Jojo",
   "Chad Senator",
+  "Chad Personalized",
 ];
 
 var alt = get_player_color(player);

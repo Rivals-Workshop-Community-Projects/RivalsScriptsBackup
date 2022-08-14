@@ -22,6 +22,8 @@ svsp = 0
 
 superMove = 14
 
+noparryedit = 0
+
 croutime = 0
      		ui1x = 0
             ui1y = 0
