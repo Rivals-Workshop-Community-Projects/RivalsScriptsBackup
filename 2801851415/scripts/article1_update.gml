@@ -38,9 +38,9 @@ switch(state)
     //Idle
     case 1:
         hitbox_detection();
-        image_index = 2-hits;
+        image_index = 0;//2-hits;
         //detect opponent grabby
-        if(state_timer >= 20)
+        if(state_timer >= 20 && player_id.state_cat != SC_HITSTUN)
         {
             with(oPlayer)
             {
@@ -51,6 +51,8 @@ switch(state)
                 }
             }
         }
+        else if(player_id.state_cat == SC_HITSTUN)
+            state_timer = 10;
         break;
     //Capture!
     case 2:
@@ -67,6 +69,7 @@ switch(state)
         }
         if(state_timer >= 19)
             instance_destroy();
+
         break;
     //bye
     case 3:
@@ -76,6 +79,7 @@ switch(state)
         if(state_timer >= 12)
         {
             instance_destroy();
+            sound_play(asset_get("sfx_icehit_medium2"), 0, noone, 1, 1.5);
             exit;
         }
         break;

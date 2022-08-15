@@ -70,7 +70,7 @@ if attack == AT_EXTRA_2 {
     		if !free y += 4
     		fall_through = true 
     	}
-    	
+    	/*
     	if jump_down && !free && iaicancel == false  {
     		hsp = clamp(hsp,-4,4)
      		spawn_base_dust(x,y,"dash",1)
@@ -78,7 +78,7 @@ if attack == AT_EXTRA_2 {
     		vsp = -8
     		clear_button_buffer(PC_JUMP_PRESSED)
     	}
-    	
+    	*/
     if (window_timer > 6*4 or iaicancel = true) && (jump_pressed or shield_pressed or (!free and (left_hard_pressed or right_hard_pressed or down_hard_pressed)) or attack_pressed or taunt_pressed 
     or left_strong_pressed or right_strong_pressed or up_strong_pressed or down_strong_pressed or special_pressed  
     or up_stick_pressed or down_stick_pressed or left_stick_pressed or up_stick_pressed ) {
@@ -1201,6 +1201,7 @@ if (attack == AT_NSPECIAL){
 
 
 if (attack == AT_DSPECIAL){
+               parry_cooldown = 30
 		move_cooldown[AT_DSPECIAL] = 20
 		
 	if zcountered = 1 {
@@ -1835,7 +1836,7 @@ if (attack == AT_FTILT){
 
 if (attack == AT_UTILT){
 	if zcountered = 1  {
-		hitpause = false 
+		if hitstop > 10 hitstop = 10 
 		x -= floor(((20 - state_timer)*spr_dir)/2)
 		state_timer++
 	}

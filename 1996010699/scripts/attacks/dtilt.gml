@@ -59,6 +59,7 @@ set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 3.5);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 4);
+//set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 6); //elli has this but I don't think suitcase needs the help
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 30);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));

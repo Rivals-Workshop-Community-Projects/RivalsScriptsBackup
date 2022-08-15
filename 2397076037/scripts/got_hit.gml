@@ -1,7 +1,7 @@
 ///
 
 if move_cooldown[AT_TAUNT] == 0 && !soft_armor && !super_armor{
-       if random_func(1,3,true) == 0 {
+     if random_func(1,3,true) == 0 {
          sound_play(sound_get("vhurt1"),false,noone,1.5)  
     }
     

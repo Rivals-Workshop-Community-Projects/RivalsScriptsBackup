@@ -1618,7 +1618,20 @@ if move_cooldown[AT_UAIR] > 20 {
 	
 	
 } 
-
+/*
+if state == PS_PARRY && window_timer >= 10 {
+        iaispr = sprite_index
+	iaiimg = image_index
+	iaido = false
+	ziaido ++
+	iaidir = spr_dir 
+        move_cooldown[AT_EXTRA_2] = 0
+	set_attack(AT_EXTRA_2)
+	window = 1
+	window_timer = 1
+        parry_cooldown = 40
+}
+*/
 if state == PS_PARRY && noparryedit == 0 {
 		free = false 
 		if state_timer > 2 && state_timer < 15 && !invincible{

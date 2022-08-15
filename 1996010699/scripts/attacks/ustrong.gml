@@ -120,8 +120,9 @@ set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 66);
-set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
+set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 68);
+set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT_Y_OFFSET, 28);
+set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, sound_get("abyss_explosion_trim"));
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE_FLIPPER, 6);
 
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);

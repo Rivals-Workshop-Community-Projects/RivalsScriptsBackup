@@ -18,8 +18,8 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_USTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 14);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 5);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 5);//5
+set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);//4
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //Success

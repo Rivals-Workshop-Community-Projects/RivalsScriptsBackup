@@ -24,8 +24,8 @@ if(attack == AT_NSPECIAL){
 				vsp = -4;
 				hsp /= 1.5;
 				player_id.crysProj_tickDelay += 2;
-				projectile_parry_stun = true;
-				does_not_reflect = true;
+				//projectile_parry_stun = true;
+				//does_not_reflect = true;
 				walls = 0;
 				player_id.canCrystalBounce = false;
 			} else {  

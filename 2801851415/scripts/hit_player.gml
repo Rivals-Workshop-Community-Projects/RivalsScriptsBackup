@@ -13,7 +13,13 @@ if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
         hit_player_obj.y = lerp(floor(hit_player_obj.y), y-90, .35);
     }
 }
-
+if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
+    if(my_hitboxID.attack == AT_USPECIAL and my_hitboxID.hbox_num < 3){
+        //print("ora")
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), y-80, .35);
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), x+90*spr_dir, .35);
+    }
+}
 //*
 if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
     if(my_hitboxID.attack == AT_UAIR and my_hitboxID.hbox_num < 3){
@@ -97,7 +103,9 @@ switch (atk) {
     }
     break;
     case AT_NAIR: 
-        sound_play(asset_get("sfx_icehit_heavy1"), 0, noone, .7, 1.2)
+    	if hbox == 1 {
+        sound_play(asset_get("sfx_blow_heavy1"), 0, noone, .7, 1.2)
+    	}
     break;
       case AT_DAIR: 
         sound_play(asset_get("sfx_blow_heavy1"), 0, noone, .7, 1.2)
@@ -113,15 +121,13 @@ switch (atk) {
             sound_play(asset_get("sfx_infinidagger"), 0, noone, .7, 1)
         }
     break;
-        case AT_USPECIAL: 
-        if hbox == 1 {
-            sound_play(asset_get("sfx_infinidagger"), 0, noone, .7, 1)
-        }
-    break;
 	case AT_FSPECIAL:
 	case AT_USPECIAL:
-        if(hbox == 1)
-		    sound_play(asset_get("sfx_blow_heavy1"))
+        if(hbox == 1 || hbox == 2 || hbox == 3 ){
+		    sound_play(asset_get("sfx_blow_heavy1"))}
+		if hbox == 3 {
+            sound_play(asset_get("sfx_infinidagger"), 0, noone, .7, 1)
+        }
 	break;
 	case AT_FSTRONG:
 		    sound_play(asset_get("sfx_blow_heavy1"))

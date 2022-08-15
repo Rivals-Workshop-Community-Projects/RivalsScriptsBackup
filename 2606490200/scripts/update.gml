@@ -781,7 +781,7 @@ if move_cooldown[AT_BAIR] > 0 {
 if state == PS_PARRY && noparryedit == 0 {
 		free = false 
 		if state_timer > 2 && state_timer < 15 && !invincible{
-			window_timer -= 0.7
+			window_timer -= 0.5
 		} else {
 			if state_timer == 15 {
 				window_timer = floor(window_timer) + 1

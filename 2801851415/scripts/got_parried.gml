@@ -19,6 +19,7 @@ if(my_hitboxID.type == 2 || my_hitboxID.attack == AT_DSPECIAL){
             with(other)
             {
                 other.state = 3;
+                other.state_timer = 0;
                 }
             }
         

@@ -1,14 +1,3 @@
-
-if cheapmode == 1 && get_gameplay_time() < 600 &&  get_gameplay_time() > 15 {
-    draw_debug_text(x - 110 ,y -162,"Are you dishonoring this fight?");
-	draw_debug_text(x - 105 ,y -142,"(Dstrong to active anticheap)");
-}
-
-if cheapmode == 3 && get_gameplay_time() < 660 && window != 3{
-     draw_debug_text(x - 48 ,y -162,"You Shall Die.");
-}
-
-
 shader_start();
 
 if move_cooldown[AT_EXTRA_3] > 0 && hit_player_obj != self{
@@ -24,7 +13,7 @@ if state == PS_PARRY && state_timer < 20{
 }
 
 if state_cat == SC_HITSTUN {
-		draw_sprite_ext(sprite_index, image_index, x  , y  , spr_dir, 1, 0 , c_red , 0.3);
+		draw_sprite_ext(sprite_index, image_index, x  , y - triggered*15 , spr_dir, 1, 0 , c_red , 0.3);
 }
 
 
@@ -36,26 +25,7 @@ if attacking && attack == AT_DSTRONG {
  if hitstop > 6 {     
  	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(1,14,true)/15 );
  }
-
-if cheapmode == 3 {
-	
-	
- if  get_gameplay_time() % 12 > 6 {     
- 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 3, 3, 0, -1, random_func(1,14,true)/10 );
- }
  
- if  get_gameplay_time() % 2 == 0 {     
- 	draw_sprite_ext(sprite_get("RCEm"), state_timer  / 3, x , y, 3, 3, 0, -1, random_func(2,14,true)/10  )
- }
- 
- if  get_gameplay_time() % 12 > 4 {     
- 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 3, 3, 0, -1, random_func(3,14,true)/10  );
- }
-
-}
-
-
-
 if window == 1 {
 
  if  window_timer % 12 > 6 {     

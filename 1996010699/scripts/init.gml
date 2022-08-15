@@ -36,6 +36,7 @@ nspecIsFireball = false;
 numSuds = 5;
 sudsCooldown = 20;
 airCounter = 0;
+driftCounter = 0;
 
 //pool party vars
 nairbounceTryUnlock = false;

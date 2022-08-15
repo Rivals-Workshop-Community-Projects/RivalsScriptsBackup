@@ -82,6 +82,7 @@ wave_friction = 0.12; //grounded deceleration when wavelanding
 crouch_startup_frames = 2;
 crouch_active_frames = 1;
 crouch_recovery_frames = 2;
+small_djump = true;
 
 //parry animation frames
 dodge_startup_frames = 1;

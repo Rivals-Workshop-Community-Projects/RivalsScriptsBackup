@@ -7,63 +7,7 @@
 ///	  knockback_adj = .9;
 ///}
 
- if cheapmode == 0 {
- with(asset_get("oPlayer")){ 
- 	if url != "2273636433" && url != "1870768156"
-	&& url != "1869351026" && url != "2443363942" &&
-	(string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("sand", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("psy", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("OP ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("Jo", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or url == "2159023588"
-	or url == "1980469422"
-	){
-       other.cheapmode = 1 
-       other.hit_player_obj = self
-     }    
- }
- }
-  
 
- if cheapmode == 1 && get_gameplay_time() < 600 {
- 	
- 	if attack == AT_DSTRONG or get_player_damage(player) > 50 or state == PS_RESPAWN {
- 		move_cooldown[AT_DSTRONG] = 0
- 		set_attack(AT_DSTRONG)
- 		window = 1
- 		window_timer = 0
- 		DT = 16
-        create_hitbox(AT_NSPECIAL,1,x,y)
-        shake_camera(4,10)
-        spawn_hit_fx(x,y,lighten)
-        fx = spawn_hit_fx(x,y - 46,306)
-        fx.pause = 6
-        spawn_hit_fx(x,y - 40,triggerfx)
-        sound_play(sound_get("RI"))
-        sound_play(sound_get("counterhit"))
-        triggered = 0
- 		cheapmode = 3 
-        shake_camera(10,10)
- 	}
- }
-
-
- if cheapmode == 3 {
- 	suppress_stage_music( 0, 0.01 )
- 	DT = 16
- 	invincible = true 
- 	invince_time = 999
- 	init_shader()
- }
 
 if rankm >= 0 && !hitpause {
      

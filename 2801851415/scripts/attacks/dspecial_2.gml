@@ -22,6 +22,8 @@ set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_SFX, asset_get("sfx_ice_uspecial_ju
 
 //recovery window made sperate to handle animation timing
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
@@ -37,7 +39,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_Y, -40);//32
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WIDTH, 90);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HEIGHT, 60);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_DAMAGE, 3);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .7);

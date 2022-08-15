@@ -60,16 +60,9 @@ if(my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num == 4){
 
 
 if(item[11,3] == 1){
-	if(my_hitboxID.attack==AT_UTILT && my_hitboxID.hbox_num < 4 && my_hitboxID.hbox_num > 1){
-		with (hit_player_obj.player) {
-			vsp = 0;
-			hsp = 0;
-			can_move = false;
-		}
-		if (get_player_stocks(hit_player_obj.player) == 1) {
-			create_deathbox(has_hit_id.x, has_hit_id.y, 100, 100, 0, true, 1, 20, 2);
-			create_deathbox(has_hit_id.x, has_hit_id.y, 100, 100, 0, false, 1, 20, 2);
-		}
+	if(my_hitboxID.attack==AT_UTILT && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3)){
+		create_deathbox(has_hit_id.x, has_hit_id.y, 1000, 1000, has_hit_id.player, true, 1, 20, 2);
+		//create_deathbox(has_hit_id.x, has_hit_id.y, 400, 400, has_hit_id.player, false, 1, 20, 2);
 	}
 }
 

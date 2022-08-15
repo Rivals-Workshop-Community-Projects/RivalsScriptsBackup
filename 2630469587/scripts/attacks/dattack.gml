@@ -68,7 +68,7 @@ set_window_value(AT_DATTACK, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 7, AG_WINDOW_SFX, asset_get("sfx_land"));
 set_window_value(AT_DATTACK, 7, AG_WINDOW_SFX_FRAME, 1);
 
-set_window_value(AT_DATTACK, 8, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DATTACK, 8, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DATTACK, 8, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DATTACK, 8, AG_WINDOW_ANIM_FRAME_START, 20);
 

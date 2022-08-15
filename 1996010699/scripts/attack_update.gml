@@ -12,7 +12,7 @@ if(attack == AT_UTILT){
 		if(window < 4){
 			suppress_stage_music(0.35, 0.02);
 		}
-		if(window == 4 && window_timer == 18){
+		if(window == 4 && window_timer == get_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME)){ //18
 			shake_camera( 8, 6 );
 		}
 	}
@@ -928,10 +928,11 @@ switch(attack){
 			set_hitbox_value(AT_NAIR, 5, HG_PRIORITY, 1);
 			set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 1);
 			set_hitbox_value(AT_NAIR, 5, HG_ANGLE, 361);
+			set_hitbox_value(AT_NAIR, 5, HG_ANGLE_FLIPPER, 6);
 			set_hitbox_value(AT_NAIR, 5, HG_BASE_KNOCKBACK, 4);
 			set_hitbox_value(AT_NAIR, 5, HG_BASE_HITPAUSE, 2);
 			set_hitbox_value(AT_NAIR, 5, HG_HITSTUN_MULTIPLIER, 1.5);
-			set_hitbox_value(AT_NAIR, 5, HG_TECHABLE, 1);
+			set_hitbox_value(AT_NAIR, 5, HG_TECHABLE, 0);
 			set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT, 6);
 			set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_hod_steamhit1"));
 			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_GROUP, 2);
@@ -948,10 +949,11 @@ switch(attack){
 			set_hitbox_value(AT_NAIR, 6, HG_PRIORITY, 1);
 			set_hitbox_value(AT_NAIR, 6, HG_DAMAGE, 1);
 			set_hitbox_value(AT_NAIR, 6, HG_ANGLE, 361);
+			set_hitbox_value(AT_NAIR, 6, HG_ANGLE_FLIPPER, 6);
 			set_hitbox_value(AT_NAIR, 6, HG_BASE_KNOCKBACK, 4);
 			set_hitbox_value(AT_NAIR, 6, HG_BASE_HITPAUSE, 2);
 			set_hitbox_value(AT_NAIR, 6, HG_HITSTUN_MULTIPLIER, 1.5);
-			set_hitbox_value(AT_NAIR, 6, HG_TECHABLE, 1);
+			set_hitbox_value(AT_NAIR, 6, HG_TECHABLE, 0);
 			set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT, 6);
 			set_hitbox_value(AT_NAIR, 6, HG_HIT_SFX, asset_get("sfx_hod_steamhit1"));
 			set_hitbox_value(AT_NAIR, 6, HG_HITBOX_GROUP, 2);
@@ -1200,21 +1202,21 @@ switch(attack){
 			displaySlot++;
 			break;
 		case 11:	//godhead
-			set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 24);
-			set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAMES, 8);
-			set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
-			set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_SFX, 1);
-			set_window_value(AT_UTILT, 4, AG_WINDOW_SFX, asset_get("sfx_may_whip2"));
-			set_window_value(AT_UTILT, 4, AG_WINDOW_SFX_FRAME, 8);
+			//set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 24);
+			//set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAMES, 8);
+			//set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
+			//set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_SFX, 1);
+			//set_window_value(AT_UTILT, 4, AG_WINDOW_SFX, asset_get("sfx_may_whip2"));
+			//set_window_value(AT_UTILT, 4, AG_WINDOW_SFX_FRAME, 8);
 			
-			set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, 18);
-			set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 5);
+			//set_hitbox_value(AT_UTILT, 2, HG_WINDOW_CREATION_FRAME, 18);
+			//set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 5);
 			set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 			set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 143);
 			set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 0);
 			set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 80);
-			set_hitbox_value(AT_UTILT, 3, HG_WINDOW_CREATION_FRAME, 18);
-			set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, 5);
+			//set_hitbox_value(AT_UTILT, 3, HG_WINDOW_CREATION_FRAME, 18);
+			//set_hitbox_value(AT_UTILT, 3, HG_LIFETIME, 5);
 			set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 			set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT, 143);
 			set_hitbox_value(AT_UTILT, 3, HG_BASE_KNOCKBACK, 0);
@@ -1237,6 +1239,7 @@ switch(attack){
 			set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 8);
 			set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, .7);
 			set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, tada);
+			set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 			
 			set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, (ceoBonusDmg + get_hitbox_value(AT_USTRONG, 5, HG_DAMAGE)));
 			set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, (ceoBonusBKB + get_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK)));
@@ -1329,8 +1332,8 @@ switch(attack){
 			
 		case 21:	//sunny's collar
 		
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
+			//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
+			//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 			if(nspecIsFireball){
 				nspecIsFireball = false;

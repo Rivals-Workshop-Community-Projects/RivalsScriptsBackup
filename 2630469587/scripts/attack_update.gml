@@ -280,7 +280,7 @@ if (attack == AT_DSTRONG){
     	set_attack(AT_FSTRONG_2);
     	CorrectHurtboxes();
     }
-    if (window >= 5){
+    if ((window == 4 && window_timer == get_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH) && has_hit) || (window == 4 && window_timer == 22 && !has_hit) || (window >= 5)){
             iasa_script();
     }
     if (window == 4 && window_timer == 6 && was_parried) {
@@ -961,6 +961,103 @@ if (attack == AT_FTHROW && instance_exists(grabbed_player_obj)) {
 		}
 		//the above block can be copied for as many windows as necessary.
 		//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
+	}
+}
+
+//Change animations to spin variants on hit
+if (attack == AT_JAB) 
+{
+	if (window = 1 && window_timer = 1)
+	{
+		reset_attack_value(AT_JAB, AG_SPRITE);
+	}
+	if (has_hit) 
+	{
+		set_attack_value(AT_JAB, AG_SPRITE, sprite_get("jabspin"));
+	}
+}
+
+if (attack == AT_UTILT) 
+{
+	if (window = 1 && window_timer = 1)
+	{
+		reset_attack_value(AT_UTILT, AG_SPRITE);
+	}
+	if (has_hit) 
+	{
+		set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utiltspin"));
+	}
+}
+
+if (attack == AT_FTILT) 
+{
+	if (window = 1 && window_timer = 1)
+	{
+		reset_attack_value(AT_FTILT, AG_SPRITE);
+	}
+	if (has_hit) 
+	{
+		set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftiltspin"));
+	}
+}
+
+if (attack == AT_USTRONG) 
+{
+	if (window = 1 && window_timer = 1)
+	{
+		reset_attack_value(AT_USTRONG, AG_SPRITE);
+	}
+	if (has_hit) 
+	{
+		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongspin"));
+	}
+}
+
+if (attack == AT_DSTRONG) 
+{
+	if (window = 1 && window_timer = 1)
+	{
+		reset_attack_value(AT_DSTRONG, AG_SPRITE);
+	}
+	if (has_hit) 
+	{
+		set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongspin"));
+	}
+}
+
+if (attack == AT_DATTACK) 
+{
+	if (window = 1 && window_timer = 1)
+	{
+		reset_attack_value(AT_DATTACK, AG_SPRITE);
+	}
+	if (has_hit) 
+	{
+		set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattackspin"));
+	}
+}
+
+if (attack == AT_FSPECIAL) 
+{
+	if (window = 1 && window_timer = 1)
+	{
+		reset_attack_value(AT_FSPECIAL, AG_SPRITE);
+	}
+	if (has_hit) 
+	{
+		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialspin"));
+	}
+}
+
+if (attack == AT_FSPECIAL_AIR) 
+{
+	if (window = 1 && window_timer = 1)
+	{
+		reset_attack_value(AT_FSPECIAL_AIR, AG_SPRITE);
+	}
+	if (has_hit) 
+	{
+		set_attack_value(AT_FSPECIAL_AIR, AG_SPRITE, sprite_get("fspecialspin"));
 	}
 }
 

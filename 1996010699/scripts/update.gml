@@ -516,8 +516,21 @@ if(get_gameplay_time() <= 180){
 	}
 }
 
-if(item[23, 3] == 0 && item[23, 7] == false && state == PS_DASH_STOP && ((hsp / spr_dir) < 0)){
-	achieveUnlock(23);
+if(item[23, 3] == 0 && item[23, 7] == false){
+	//keyboard check
+	if((state == PS_DASH_START)){
+		if(state_timer == 0){
+			driftCounter = 0;
+		} else {
+			if((hsp / spr_dir) < -4){
+				driftCounter++;
+			}
+		}
+	}
+
+	if(driftCounter = 10){
+		achieveUnlock(23);
+	}
 }
 
 if (chiefcase && dingReady && holdingTimer <= 30){
@@ -579,7 +592,7 @@ with(oPlayer){
 		alive_players++;
 	}
 }
-/*
+
 with(oPlayer){
 	if((alive_players == 2) && (other.player != player) && get_player_stocks(player) == 1 && get_player_damage(player) >= 100 && markedForDeath == false){
 		markedForDeath = true;	//marks opponent to die to uptilt2
@@ -598,7 +611,6 @@ if(get_player_stocks(player) == 9 || get_match_setting(SET_STOCKS) == 9){
 if(!practice && get_match_setting(SET_STOCKS) != 0 && (item[11, 3] == 0) && (item[11, 7] == false) && (canBuyGodhead == true)){
 	achieveUnlock(11);
 }
-*/
 
 if(nspecIsFireball == false){
 	if (instance_exists(crysProj_id) && crysProj_id != noone){

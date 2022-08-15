@@ -12,7 +12,11 @@
         }
 *
 */
-
+//if(attack == AT_NSPECIAL){
+//    if(hitbox_timer%10 == 0){ // the % is the modulous operator, it leaves the remainder behdind after dividing by a number, 17%8 would be the remainder of 17 divided by 8 which is 1
+//        sound_play(asset_get("sfx_ori_spirit_flame_1"), 0, noone, 0.5, 1.2)
+//        }
+//    }
 if(attack == AT_NSPECIAL)
 {
     if(hbox_num == 2)
@@ -31,11 +35,14 @@ if(attack == AT_DSPECIAL)
     {
         if((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_DSPECIAL && player_id.window == 1 || player_id.state == PS_RESPAWN)
             destroyed = true;
+            
     }
 }
 
 if(attack == AT_DSPECIAL_2)
 {
     proj_angle -= 20*spr_dir;
-    if(!free) destroyed = true;
+    if(!free) {destroyed = true;
+    sound_play(asset_get("sfx_icehit_medium2"), 0, noone, 1, 1.5);}
+    
 }

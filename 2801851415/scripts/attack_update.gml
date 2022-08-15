@@ -4,6 +4,14 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 switch(attack){
+	case AT_EXTRA_1:
+	can_fast_fall = false;
+	can_move = false;
+	if window == 1 && window_timer == 8 {
+		sound_play(asset_get("sfx_swipe_medium2"))
+	}
+	break;
+	
 	case AT_USPECIAL:
 		if(window < 3)
 			can_fast_fall = false;
@@ -11,6 +19,15 @@ switch(attack){
 			can_fast_fall = true;
 		if(window > 1)
 		can_wall_jump = true;
+		
+    	if (window == 4 && window_timer == 5 && !has_hit){
+			if (special_down){
+			attack_end();
+    		set_attack(AT_EXTRA_1);
+    		CorrectHurtboxes()
+			}
+    }
+	
 	break;
 	
 	case AT_FSPECIAL:
@@ -124,6 +141,16 @@ switch(attack){
 		}
 	break;
 	case AT_DSPECIAL:
+		if (window == 1 && window_timer == 1 && !free){
+			set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -3);
+			set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 12);
+			set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED, -3);
+		} else if (window == 1 && window_timer == 1 && free){ 
+			reset_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED);
+			reset_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH);
+			reset_window_value(AT_DSPECIAL, 2, AG_WINDOW_HSPEED);
+			
+		}
 		if(window == 2)
 		{
 			if(window_timer == 1)
@@ -192,10 +219,10 @@ switch (attack) {
 		sound_play(asset_get("sfx_swipe_medium2"))
 	}
 	break;
-	case AT_NAIR:
-		if window == 1 && window_timer == 7 {
-			sound_play(asset_get("sfx_ice_back_air"))
-		}
+//	case AT_NAIR:
+//		if window == 1 && window_timer == 2 {
+//			sound_play(asset_get("sfx_swipe_weak2"))
+//		}
 	break;
 	case AT_FAIR: 
 		if window == 1 && window_timer == 11 {
@@ -226,7 +253,11 @@ switch (attack) {
 		}
 	break;
 }
-
+	
+#define CorrectHurtboxes()
+{
+    hurtboxID.sprite_index = get_attack_value(attack, (free && get_attack_value(attack, AG_HURTBOX_AIR_SPRITE) != 0) ? AG_HURTBOX_AIR_SPRITE : AG_HURTBOX_SPRITE);
+}
 #define trigger_wavebounce() 
 {
 	if ((left_down and state_timer <= 5 and spr_dir == 1) or (right_down and state_timer <= 5 and spr_dir == -1) and (b_reversed == false)) {

@@ -20,7 +20,7 @@ can_be_grounded = false;                            //Determines if the article 
 ignores_walls = false;                               //Determines if the article goes through walls.
 free = true;                                        //Whether the article is in the air or not.
 hit_wall = false;                                   //If the article moves into a wall on its own, this variable will be true.
-hits = 2;
+hits = 1;//2
 
 //SuperSonicNK Hitbox Detection cuz im dumb lmao - mcducky
 //article init
