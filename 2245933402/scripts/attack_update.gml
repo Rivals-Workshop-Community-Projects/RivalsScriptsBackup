@@ -13,8 +13,31 @@ if (attack == AT_DATTACK){
 if !hitpause {
 if (attack == AT_NSPECIAL){
     
+    if ostyle == 2 {
+    	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_air"));
+    }  else {
+    	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
+    }
     if window == 1 && window_timer == 1 {
         set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 2);
+    }
+    
+    if ostyle == 2 && window_timer % 2 == 0 {
+            	        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
+                        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 1);
+            window_timer = 6;
+            sound_play(sound_get("gun"));
+            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 2 - random_func(1, 5, true));
+            set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, - 4 + random_func(1, 5, true)*2);
+            create_hitbox(AT_NSPECIAL , 2 , x + 30*spr_dir  , y - 10 + 14 - random_func(1, 9, true)*3);
+            x -= 3 * spr_dir
+    }
+    
+    if spamb == 5 {
+    	set_state(PS_PRATFALL)
+    	vsp = -4
     }
     
     if (window == 3){
@@ -23,25 +46,16 @@ if (attack == AT_NSPECIAL){
         if (special_pressed){
             window = 1;
             window_timer = 0;
-            spamb += 1
         }
         }
-        
+         
 
-        if spamb >= 1 {
-        if (special_pressed){
+        if ostyle == 2 {
             window = 1;
-            
-            if ostyle == 2 {
-            window_timer = 6;
+            window_timer = 0;
             spamb += 1
-            sound_play(sound_get("gun"));
-            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 2 - random_func(1, 5, true));
-            set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, - 4 + random_func(1, 5, true)*2);
-            create_hitbox(AT_NSPECIAL , 2 , x + 30*spr_dir  , y + 14 - random_func(1, 9, true)*3);
-            x -= 3 * spr_dir
-            }
-        }
+            vsp = -2
+            hsp = -3*spr_dir
        }
         
     }

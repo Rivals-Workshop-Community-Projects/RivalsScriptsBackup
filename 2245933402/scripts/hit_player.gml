@@ -15,7 +15,6 @@ if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 3 {
             
             
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 2 {
-    move_cooldown[AT_TAUNT_2] = 6
     sound_play(asset_get("sfx_icehit_medium1"));
 }
 
