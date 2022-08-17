@@ -1,9 +1,5 @@
 //update.gml
 
-//MunoPhone Touch
-muno_event_type = 1;
-user_event(14);
-
 if (!free){
 	dtilt_started_on_ground = true
 }

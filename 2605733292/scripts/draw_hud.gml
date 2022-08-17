@@ -26,7 +26,3 @@ if (move_cooldown[AT_DSPECIAL] != 0){
 } else {
 	draw_sprite(sprite_get("essence_hud_icon"), 0, temp_x - 4, temp_y - 34);
 }
-
-//MunoPhone Touch
-muno_event_type = 5;
-user_event(14);

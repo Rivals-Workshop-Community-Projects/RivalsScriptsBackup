@@ -47,7 +47,7 @@ else {
             x += lengthdir_x(0.15, smoke_timer + float_offset);
             y += lengthdir_y(0.15, smoke_timer + float_offset);
             
-            if (parent.hit < 2 && hit = 0 && smoke_timer > 2) {
+            if (parent.hit < 2 && hit = 0 && smoke_timer >= 2) {
                 with (oPlayer) {
                     if (id == other.player_id) continue;
                     if point_distance(x, y, other.x, other.y) < 44 {
@@ -147,6 +147,15 @@ else {
                                 player_near.smoked_timer = 240 + (has_rune("B") * 180);
                             }
                             */
+                        }
+                        
+                                
+                        with (obj_article1) {
+                            if (id == other.id) continue;
+                            if (player_id == other.player_id && attack == other.attack) {
+                                hit = other.hit;
+                                parried = other.parried;
+                            }
                         }
                     }    
                 }

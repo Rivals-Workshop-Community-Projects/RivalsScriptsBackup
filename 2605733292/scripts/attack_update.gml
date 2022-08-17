@@ -1,3 +1,4 @@
+//attack_update.gml
 
 //Extra_1: Sweet Dreams
 if (attack == AT_EXTRA_1){
@@ -54,9 +55,6 @@ if (attack == AT_JAB){
 		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 		set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT, pillow_hit_fx_med);
 		clear_button_buffer(PC_ATTACK_PRESSED);
-		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x - (14 * spr_dir), y, "dash", spr_dir)
-		}
 	}
 	if (window == 2){
 		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
@@ -67,9 +65,6 @@ if (attack == AT_JAB){
 	if (window == 4){
 		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 		clear_button_buffer(PC_ATTACK_PRESSED);
-		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x - (14 * spr_dir), y, "dash", spr_dir)
-		}
 	}
 	if (window == 5){
 		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
@@ -134,9 +129,13 @@ if (attack == AT_DATTACK){
 	if (window != 4){
 		dattack_sfx_timer = 0
 	}
-	if (window == 2){
-		if (!hitpause && window_timer == 1){
-			spawn_base_dust( x + (10 * spr_dir), y, "land", spr_dir)
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-4){
+			sound_play(asset_get("sfx_jumpground"), false, noone, 0.8, 1.6);
+		}
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (30 * spr_dir), y, "land", -spr_dir);
+			sound_play(waveland_sound);
 		}
 	}
 	if (window == 4){
@@ -166,6 +165,7 @@ if (attack == AT_UTILT){
 			spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
 			spawn_base_dust( x + (20 * spr_dir), y, "walk", spr_dir*-1)
 		}
+
 		if (has_rune("C")){
 			set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sfx_smash64_swipe_med);
 			set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sfx_smash64_blow_med);
@@ -179,6 +179,11 @@ if (attack == AT_UTILT){
 		//if (hurtboxID.sprite_index == sprite_get("jab")){
 			hurtboxID.sprite_index = sprite_get("utilt_hurt");
 		//}
+	}
+	
+	//Hud Offset
+	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 7)){
+		hud_offset = 32;
 	}
 }
 
@@ -262,7 +267,7 @@ if (attack == AT_EXTRA_2){
 
 //Neutral Air: Spinning Pillow Dive
 if (attack == AT_NAIR){
-	set_hitbox_value(AT_JAB, 4, HG_DAMAGE, 10);
+	set_hitbox_value(AT_JAB, 4, HG_DAMAGE, 6);
 	set_hitbox_value(AT_JAB, 4, HG_ANGLE, 45);
 	set_hitbox_value(AT_JAB, 4, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_JAB, 4, HG_KNOCKBACK_SCALING, 0.7);
@@ -326,6 +331,11 @@ if (attack == AT_NAIR){
 		state = PS_IDLE_AIR;
 		hurtboxID.sprite_index = sprite_get("sleep_hurtbox");
 	}
+	
+	//Hud Offset
+	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 7)){
+		hud_offset = 40;
+	}
 }
 
 //Forward Air
@@ -334,6 +344,14 @@ if (attack == AT_FAIR){
 		if (window_timer == 10){
 			//sound_play(sfx_kirby_swipe3, false, noone, 1.2, 1.05);
 		}
+	}
+}
+
+//Up Air
+if (attack == AT_UAIR){
+	//Hud Offset
+	if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && image_index < 6)){
+		hud_offset = 18;
 	}
 }
 
@@ -406,7 +424,7 @@ if (attack == AT_FSTRONG){
 
 //Up Strong
 if (attack == AT_USTRONG){
-hurtboxID.sprite_index = sprite_get("ustrong_hurt");
+	hurtboxID.sprite_index = sprite_get("ustrong_hurt");
 	if (window == 2){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (18 * spr_dir), y, "jump", spr_dir * -1)
@@ -427,19 +445,29 @@ hurtboxID.sprite_index = sprite_get("ustrong_hurt");
 			}
 		}
 	}
+	
+	//Hud Offset
+	if ((window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 3 || window == 4 || (window == 5 && image_index < 10)){
+		hud_offset = 80;
+	}
 }
 
 //Down Strong
 if (attack == AT_DSTRONG){
 	hurtboxID.sprite_index = sprite_get("dstrong_hurt");
+	if (window == 1){
+		if (window_timer == 5){
+			sound_play(asset_get("sfx_jumpground"), false, noone, 0.8, 1.6);
+		}
+	}
 	if (window == 2){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x + (42 * spr_dir), y, "dash", spr_dir * -1)
+			spawn_base_dust( x + (42 * spr_dir), y, "dash", spr_dir * -1);
 		}
 	}
 	if (window == 4){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x - (36 * spr_dir), y, "dash", spr_dir)
+			spawn_base_dust( x - (36 * spr_dir), y, "dash", spr_dir);
 		}
 	}
 }

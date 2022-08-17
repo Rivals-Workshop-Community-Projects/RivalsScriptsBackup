@@ -33,6 +33,7 @@ if state_timer == 1 && iaido == true {
 
 
 if attack == AT_EXTRA_2 {
+	if djumps = -1 djumps = 0
     if !free {
     	if !down_down{
     		hsp += (right_down-left_down)*2
@@ -50,12 +51,8 @@ if attack == AT_EXTRA_2 {
     	sound_play(asset_get("sfx_shovel_hit_med1"),false,noone, .6,1.6)
     	fx1 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash )	
     	fx1.depth = depth - 2
-    	fx1.spr_dir = .7*spr_dir 
-    	fx1.image_yscale = .7
 		fx2 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash2 )	
 		fx2.depth = depth - 2
-		fx2.spr_dir = .7*spr_dir 
-    	fx2.image_yscale = .7	
 		if iaicancel == true {
     		iaicancel = false 
     		dmhit = 3
@@ -90,11 +87,8 @@ if attack == AT_EXTRA_2 {
     		sound_play(asset_get("sfx_shovel_hit_med1"),false,noone, .6,1.6)
     	    fx1 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash )	
     	    fx1.depth = depth - 2
-    	    fx1.spr_dir = .7*spr_dir 
-    	    fx1.image_yscale = .7
 		    fx2 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash2 )	
 		    fx2.depth = depth - 2
-		    fx2.spr_dir = .7*spr_dir
     	}
     	
     	iaicancel = false
@@ -635,10 +629,6 @@ if attack == AT_FSPECIAL {
 			 fx = spawn_hit_fx(x - 20*spr_dir ,y - 35, 305)
 			 fx.pause = 6
 			 sound_play(sound_get("SpaceCut"),false,noone,1,1);
-			 set_num_hitboxes(AT_FSPECIAL, 15);
-			 spawn_hit_fx(x + 70*spr_dir,y - 40, shit1)
-			 spawn_hit_fx(x + 140*spr_dir,y - 40, shit2)
-			 spawn_hit_fx(x + 210*spr_dir,y - 40, shit3)
 		} 
 		hsp /= 1.5
 		vsp = 0
@@ -674,11 +664,6 @@ if attack == AT_FSPECIAL {
                     }
                 }
             }
-            
-            if zbayo == 5 {
-		   	spr_dir *= -1
-		   	x -= 50*spr_dir
-		   }
 		   
 			sound_play(sound_get("counterhit"),false,noone,1,1.4);
 		}
@@ -1201,7 +1186,6 @@ if (attack == AT_NSPECIAL){
 
 
 if (attack == AT_DSPECIAL){
-               parry_cooldown = 30
 		move_cooldown[AT_DSPECIAL] = 20
 		
 	if zcountered = 1 {
@@ -1836,7 +1820,7 @@ if (attack == AT_FTILT){
 
 if (attack == AT_UTILT){
 	if zcountered = 1  {
-		if hitstop > 10 hitstop = 10 
+		hitpause = false 
 		x -= floor(((20 - state_timer)*spr_dir)/2)
 		state_timer++
 	}

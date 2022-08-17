@@ -91,19 +91,19 @@ if (attack == AT_DATTACK) {
 
 //Strongs
 if (attack = AT_FSTRONG) {
-    if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && hitstop == 0) {
+    if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && hitstop == 0) {
     	create_smoke(x + 48 * spr_dir, y - 24, 12, 45, 0, 60, lerp(0, 4, strong_charge/60) + (has_rune("H") * 6), lerp(8, 14, strong_charge/60) + (has_rune("H") * 6), 0.18)
     }
 }
 
 if (attack = AT_USTRONG) {
-if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)&& hitstop == 0) {
+if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && hitstop == 0) {
     	create_smoke(x, y - 88, 12, 45, 60, 120, lerp(0, 4, strong_charge/60) + (has_rune("H") * 6), lerp(8, 12, strong_charge/60) + (has_rune("H") * 6), 0.18)
     }
 }
 
 if (attack = AT_DSTRONG) {
-if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && hitstop == 0) {
+if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && hitstop == 0) {
        create_smoke(x, y + 24, 12, 45, 135, 180, lerp(0, 4, strong_charge/60) + (has_rune("H") * 6), lerp(8, 12, strong_charge/60) + (has_rune("H") * 6), 0.18)
        create_smoke(x, y + 24, 12, 45, 0, 45, lerp(0, 4, strong_charge/60) + (has_rune("H") * 6), lerp(8, 12, strong_charge/60) + (has_rune("H") * 6), 0.18)
 	
@@ -946,5 +946,6 @@ smoke.smoke_spread_dir_max = _dir_max;
 smoke.smoke_speed_min = _spd_min;
 smoke.smoke_speed_max = _spd_max;
 smoke.smoke_friction = _frict;
+smoke.attack = attack;
 
 return smoke;

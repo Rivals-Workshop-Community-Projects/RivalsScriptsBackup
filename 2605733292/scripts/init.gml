@@ -1,5 +1,7 @@
 debug = 0
 
+small_djump = true;
+
 introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;
@@ -344,14 +346,17 @@ switch (get_player_color( player )){
 
 diag_portrait=sprite_get("portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
 
-//phonesprites
-spr_alts = sprite_get("alts");
-spr_sleep = sprite_get("sleep");
-spr_bubble = sprite_get("nspecial_bubble");
-spr_essence = sprite_get("essence_empty");
-spr_ability_star = sprite_get("ability_star_active");
-
 //Compatability
+
+// Otto bobblehead.
+otto_bobblehead_sprite = sprite_get("otto");
+
+// Steve death message.
+steve_death_message = "Steve got sent to Dream Land";
+
+// Link spear. (determines which spear your char will drop the first time)
+link_spear_drop = 3;
+
 Hikaru_Title = "Soundly Sleeping Star";
 
 ncode1 = "The Pink Demon from Dream Land.";
@@ -370,6 +375,4 @@ gfzsignspr = sprite_get("gfz")
 
 tcoart = sprite_get("tco_sketch");
 
-//MunoPhone Touch
-muno_event_type = 0;
-user_event(14);
+user_event(7);

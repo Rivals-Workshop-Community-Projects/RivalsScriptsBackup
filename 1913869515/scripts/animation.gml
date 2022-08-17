@@ -24,7 +24,7 @@ if (state == PS_SPAWN) {
 }
 
 
-if (state == PS_CROUCH) {
+if (state == PS_CROUCH) or (state == PS_WALK and "ai_target" in self) {
    if left_down {
        spr_dir = -1
        hsp = -2
@@ -53,3 +53,5 @@ if (state == PS_CROUCH) {
    
 
 }
+
+

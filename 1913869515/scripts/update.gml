@@ -27,6 +27,13 @@ if string_lower(get_player_name(player)) != "sai" {
 }
 */
 
+if iaido = true {
+	clear_button_buffer(PC_JUMP_PRESSED)
+	if djumps = 0 {
+		djumps = -1
+	}
+}
+
 if dmhit < 0 {
 	dmhit = 0
 }
@@ -1618,20 +1625,7 @@ if move_cooldown[AT_UAIR] > 20 {
 	
 	
 } 
-/*
-if state == PS_PARRY && window_timer >= 10 {
-        iaispr = sprite_index
-	iaiimg = image_index
-	iaido = false
-	ziaido ++
-	iaidir = spr_dir 
-        move_cooldown[AT_EXTRA_2] = 0
-	set_attack(AT_EXTRA_2)
-	window = 1
-	window_timer = 1
-        parry_cooldown = 40
-}
-*/
+
 if state == PS_PARRY && noparryedit == 0 {
 		free = false 
 		if state_timer > 2 && state_timer < 15 && !invincible{

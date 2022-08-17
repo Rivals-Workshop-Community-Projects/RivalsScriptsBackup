@@ -123,4 +123,3 @@ set_hitbox_value(AT_DATTACK, 4, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_DATTACK, 4, HG_TECHABLE, 3);
 set_hitbox_value(AT_DATTACK, 4, HG_GROUNDEDNESS, 1);
-set_hitbox_value(AT_DATTACK, 4, HG_MUNO_HITBOX_EXCLUDE, 1);

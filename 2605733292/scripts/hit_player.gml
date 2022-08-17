@@ -99,7 +99,8 @@ switch (my_hitboxID.attack){ //lol switch statement
 			y = y - 1
 			hsp = -5 * spr_dir
 			if (my_hitboxID.hbox_num == 1){
-				if (hit_player_obj.NotSleepKirby_IsSleeping == false && hit_player_obj.clone == false){
+				if (hit_player_obj.NotSleepKirby_IsSleeping == false && hit_player_obj.clone == false
+				&& hit_player_obj.super_armor == false && hit_player_obj.soft_armor == 0){
 					sound_play(sfx_death);
 					if (hit_player_obj.NotSleepKirby_FspecialImmunity == 0){
 						hit_player_obj.NotSleepKirbyID = id;
@@ -136,7 +137,7 @@ switch (my_hitboxID.attack){ //lol switch statement
 		}
 		break;
 	case AT_DSPECIAL:
-		if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3){
+		if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3)&& hit_player_obj.super_armor == false && hit_player_obj.soft_armor == 0){
 			spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-20,ability_star_hit_fx)
 			destroy_hitboxes();
 			hit_player_obj.should_make_shockwave = false
@@ -180,6 +181,10 @@ switch (my_hitboxID.attack){ //lol switch statement
 		} else if (my_hitboxID.hbox_num == 2){
 			hit_player_obj.x = my_hitboxID.x
 			hit_player_obj.y = my_hitboxID.y
+		} else if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3) && (hit_player_obj.super_armor != false || hit_player_obj.soft_armor != 0)){
+			if (my_hitboxID.hbox_num == 1){
+				copy_essence_hit = true
+			}
 		}
 		essence_got_parried = false
 		break;

@@ -38,6 +38,5 @@ shake_camera(4, 12)
 	 
 	 
 	 
-window_timer = floor(window_timer) - 1 
+window_timer = floor(window_timer)
 noparryedit = 15
-//iaicancel = true 

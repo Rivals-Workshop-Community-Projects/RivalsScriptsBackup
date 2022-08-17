@@ -18,6 +18,7 @@ smoke_objects = array_create(0);
 players_hit = array_create(0);
 parried = false;
 hit = 0;
+attack = AT_JAB;
 
 _init = true;
 disable_movement = true;

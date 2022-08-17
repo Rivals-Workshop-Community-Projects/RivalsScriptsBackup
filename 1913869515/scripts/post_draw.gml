@@ -1,5 +1,9 @@
 shader_start(); 
 
+if invincible == true && invince_time < 2 {
+	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,-1,1)
+}
+
 if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_EXTRA_2 {
 	
 	
