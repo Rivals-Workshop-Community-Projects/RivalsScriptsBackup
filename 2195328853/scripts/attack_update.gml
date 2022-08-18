@@ -565,7 +565,12 @@ if (attack == AT_NSPECIAL){
 }else if (attack == AT_DATTACK){
     if(has_rune("A") && window >= 2 && has_hit && jump_pressed){
         window = 10;window_timer = 100;
-    }if(window == 2 && window_timer >= 6 || window >= 3){
+    }
+    if(free){
+    	hsp *= 0.9;
+    	vsp *= 0.95;
+    }
+    if(window == 2 && window_timer >= 6 || window >= 3){
     	cancelattack();
     }
 }else if (attack == AT_DSTRONG){

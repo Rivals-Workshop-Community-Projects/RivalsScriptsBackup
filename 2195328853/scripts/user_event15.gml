@@ -234,6 +234,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.75", "18th August 2022");
+initHeader("Buffs");
+initSection("- Jab3 kbs increased (0.5->0.9) to kill better, and does more damage (5->8)");
+initSection("- DAttack now goes off ledges");
+initHeader("Nerfs");
+initSection("- Jab1 and Jab2 dmg decreased (3->2)");
+
 initPatch("1.74", "22nd July 2022");
 initHeader("Buffs");
 initSection("- NSpecial Blob Ball does more damage and knockback when moving at higher speeds than before when in Steam mode. Steam mode also has more kbs when blown up as well");
