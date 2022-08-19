@@ -64,9 +64,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     // the primary part you should change.
     //--- ---
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
-    color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
+    color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 17; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 22; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     var col = 0;
@@ -116,7 +116,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "Thunderous Howl" // the name of the alternate color.
-    ce[col,2] = "Iroh" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,2] = "
+    Iroh" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "The Turtle King" // the name of the alternate color.
@@ -132,15 +133,24 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "Thirty Dollar Haircut" // the name of the alternate color.
-    ce[col,2] = "Android 13" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,2] = "
+    Android 13" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
-    ce[col,1] = "Eye of the Storm" // the name of the alternate color.
-    ce[col,2] = "Daora" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,1] = "Riptide" // the name of the alternate color.
+    ce[col,2] = "Riptide" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "Genesis" // the name of the alternate color.
     ce[col,2] = "Genesis" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    col++;
+    ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
+    ce[col,1] = "Gold Rank" // the name of the alternate color.
+    ce[col,2] = "You did not earn this." // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    col++;
+    ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
+    ce[col,1] = "Eye of the Storm" // the name of the alternate color.
+    ce[col,2] = "Daora" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "Chad Win" // the name of the alternate color.

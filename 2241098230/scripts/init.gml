@@ -100,6 +100,9 @@ bubble_y = 8;
 speedboost_timer = 0;
 
 //Local variables
+hat_start = false;
+hat_fx = hit_fx_create(sprite_get("riptide_hat_d"), 30)
+
 grabbedid = noone;
 grab_timer = 0;
 grab_time_max = 30;

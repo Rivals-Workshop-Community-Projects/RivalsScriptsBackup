@@ -24,6 +24,8 @@ if (state == PS_SPAWN) {
 			sprite_index = sprite_get("intro5");
 		} else if(arizonaIntro){
 			sprite_index = sprite_get("introAZ");
+		} else if(beachIntro){
+			sprite_index = sprite_get("introRT");
 		} else {
 			sprite_index = sprite_get("intro");
 		}

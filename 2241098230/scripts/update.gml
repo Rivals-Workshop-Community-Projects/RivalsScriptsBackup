@@ -26,6 +26,18 @@ if !(attack == AT_NSPECIAL_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GR
     rounds_left = 12;
 }
 
+if (get_player_color(player) == 16) {
+	if (get_gameplay_time() == 2)
+		hat_start = true;
+	
+	if (hat_start) {
+		if (state != PS_SPAWN && state != PS_IDLE) {
+			hat_start = false;
+			spawn_hit_fx(round(x), round(y), hat_fx)
+		}
+	}
+}
+
 var smoke_r = 0;
 var smoke_g = 0;
 var smoke_b = 0;

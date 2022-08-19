@@ -215,6 +215,7 @@ pandoraIntro = false;
 goldenIntro = false;
 halloweenIntro = false;
 arizonaIntro = false;
+beachIntro = false;
 champSlot = 1;
 //chiefcase
 chiefcase = false;

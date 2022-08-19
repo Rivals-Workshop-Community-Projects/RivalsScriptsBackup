@@ -1576,7 +1576,7 @@ if attack == AT_USPECIAL && !hitpause{
         set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 12);
     }
     
-    prat_land_time = 20 + (teletime*10)
+    prat_land_time = 8 + (teletime*6)
     
     if teletime <= 1 {
         set_num_hitboxes(AT_USPECIAL, 0);
@@ -1619,10 +1619,10 @@ if attack == AT_USPECIAL && !hitpause{
         }
     }
     
-    if window == 4 && window_timer == 20 {
+    if window == 4 && window_timer == 16 {
            move_cooldown[AT_USPECIAL] = 999
         if teletime <= 1 {
-            set_state (PS_IDLE_AIR)
+            set_state (PS_PRATFALL)
         } else {
             set_state (PS_PRATFALL)
         }
@@ -1716,6 +1716,7 @@ if attack == AT_DSPECIAL && !hitpause{
 		prat_land_time = 90
 		sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,.8,1.25);
 	}
+	
 	can_fast_fall = false 
 	if window < 3 {
 		hsp /= 1.5

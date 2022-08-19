@@ -103,10 +103,22 @@ if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LE
 }
 
 if (attack = AT_DSTRONG) {
-if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && hitstop == 0) {
+	if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && hitstop == 0) {
        create_smoke(x, y + 24, 12, 45, 135, 180, lerp(0, 4, strong_charge/60) + (has_rune("H") * 6), lerp(8, 12, strong_charge/60) + (has_rune("H") * 6), 0.18)
        create_smoke(x, y + 24, 12, 45, 0, 45, lerp(0, 4, strong_charge/60) + (has_rune("H") * 6), lerp(8, 12, strong_charge/60) + (has_rune("H") * 6), 0.18)
 	
+    }
+    
+    if (window >= 4) {
+    		if (!free) {
+    			set_state(PS_LANDING_LAG);
+    			landing_lag_time = 9;
+    		}
+    		can_fast_fall = window_timer >= ceil(get_window_value(attack, window, AG_WINDOW_LENGTH) / 2)
+    }
+    if (window == 1) {
+    	set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
+    	can_fast_fall = false;
     }
 }
 

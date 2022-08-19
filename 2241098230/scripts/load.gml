@@ -74,3 +74,6 @@ sprite_change_offset("smoke_debuff", 16, 16);
 sprite_change_offset("genesis_smoke", 128, 128);
 sprite_change_offset("genesis_smoke_outline", 128, 128);
 sprite_change_collision_mask("smoke3", 0, 2, 8, 8, 56, 56, 2);
+
+sprite_change_offset("riptide_hat", 48, 126);
+sprite_change_offset("riptide_hat_d", 48, 126);

@@ -349,6 +349,8 @@ if(get_player_color(player) == 7){
 	halloweenIntro = true;
 } else if (get_player_color(player) == 15){
 	goldenIntro = true;
+} else if (get_player_color(player) == 22){
+	beachIntro = true;
 }
 if(get_player_color(player) == 15 && get_gameplay_time() % 21 == 0 && !hitpause && state != PS_RESPAWN){
 	spawn_hit_fx( x - ((22 - random_func(1, 50, true)) * spr_dir) , y - random_func(12, 58, true) , sparkle );
@@ -603,7 +605,7 @@ with(oPlayer){
 }
 
 if(get_player_stocks(player) == 9 || get_match_setting(SET_STOCKS) == 9){
-	item[11, 6] = "3gGbCqj";	//no idea what this is lol
+	item[11, 6] = "3gGbCqj";	//when there are eggs in april
 } else {
 	item[11, 6] = "INFINITY UTILT";
 }

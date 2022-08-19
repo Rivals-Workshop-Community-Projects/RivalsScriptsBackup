@@ -1,7 +1,8 @@
-set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
+set_attack_value(AT_DSTRONG, AG_CATEGORY, 0);
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 set_attack_value(AT_DSTRONG, AG_OFF_LEDGE, 0);
+set_attack_value(AT_DSTRONG, AG_LANDING_LAG, 10);
 set_attack_value(AT_DSTRONG, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 5);
@@ -19,24 +20,24 @@ set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_VSPEED, -4.5);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_VSPEED, -5);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.48);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.55);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, air_friction * 0.5);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX,  sound_get("sfx_ryk_steam_burst"));
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX_FRAME, 6);
 
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_VSPEED, -5);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_VSPEED, -4.5);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.55);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, air_friction * 0.5);
 
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 7);
@@ -44,7 +45,7 @@ set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.55);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.07);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, air_friction * 0.5);
 
 var smoke_spawn = get_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH) + get_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH) + get_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH);
 
@@ -52,6 +53,7 @@ set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Spawns smoke on frame " +
 
 set_num_hitboxes(AT_DSTRONG, 1);
 
+set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_NAME, "Initial");
 set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_MISC_ADD, "Applies smoke debuff");
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 4);

@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 23 );
 
 // borc
 set_color_profile_slot( 1, 0, 59, 73, 135 ); //CASE
@@ -195,6 +195,14 @@ set_color_profile_slot( 21, 2, 160, 223, 255 ); //WHEELS
 set_color_profile_slot( 21, 3, 254, 240, 255 ); //CHEST
 set_color_profile_slot( 21, 4, 58, 210, 228 ); //unnamed color row
 set_color_profile_slot( 21, 5, 255, 255, 255 ); //HIGHLIGHT
+
+// tide rip
+set_color_profile_slot( 22, 0, 0, 199, 218 ); //CASE
+set_color_profile_slot( 22, 1, 9, 75, 106 ); //SHADOW
+set_color_profile_slot( 22, 2, 255, 167, 61 ); //WHEELS
+set_color_profile_slot( 22, 3, 39, 60, 114 ); //CHEST
+set_color_profile_slot( 22, 4, 58, 210, 228 ); //unnamed color row
+set_color_profile_slot( 22, 5, 52, 107, 130 ); //HIGHLIGHT
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

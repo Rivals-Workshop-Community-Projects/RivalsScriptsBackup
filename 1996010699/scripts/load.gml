@@ -25,6 +25,7 @@ sprite_change_offset("intro3", 26, 52);
 sprite_change_offset("intro4", 24, 112);
 sprite_change_offset("intro5", 110, 68);
 sprite_change_offset("introAZ", 106, 68);
+sprite_change_offset("introRT", 106, 68);
 
 sprite_change_offset("jumpstart", 22, 46);
 sprite_change_offset("jump", 22, 60);

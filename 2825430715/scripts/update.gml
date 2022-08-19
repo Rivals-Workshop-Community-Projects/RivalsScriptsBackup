@@ -95,7 +95,7 @@
  	init_shader()
  }
  
- 
+ /*
 if hurted == true && hitted == true && (attack == AT_FSTRONG or attack == AT_UAIR or attack == AT_FSPECIAL) {
         invincible = true 
         invince_time = 10
@@ -214,6 +214,7 @@ if !hitpause {
     hitted = 0
 }
 
+*/
 
 if(get_match_setting(SET_PRACTICE)) == false {
 if triggercutscene != 0 && potbuster == 0 {
