@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 3, 13 );
 
 
 // ALTERNATE COLORS
-set_num_palettes(32);
+set_num_palettes( 32 );
 
 // Old Ducky
 set_color_profile_slot( 1, 0, 255, 255, 0 ); //Feathers
@@ -326,15 +326,15 @@ set_color_profile_slot( 29, 5, 161, 82, 142 ); //Eyes
 set_color_profile_slot( 29, 6, 112, 46, 122 ); //Outfit 2 / Rest
 set_color_profile_slot( 29, 7, 34, 78, 143 ); //Outfit 1/ Legs
 
-// GENESIS 8
-set_color_profile_slot( 30, 0, 242, 231, 234 ); //Feathers
-set_color_profile_slot( 30, 1, 66, 17, 8 ); //Hair
-set_color_profile_slot( 30, 2, 176, 21, 0 ); //Scarf
-set_color_profile_slot( 30, 3, 51, 59, 51 ); //Shoulder
-set_color_profile_slot( 30, 4, 255, 255, 255 ); //Gloves/Light
-set_color_profile_slot( 30, 5, 189, 0, 0 ); //Eyes
-set_color_profile_slot( 30, 6, 56, 56, 56 ); //Outfit 2 / Rest
-set_color_profile_slot( 30, 7, 242, 194, 208 ); //Outfit 1/ Legs
+// RIPTIDE
+set_color_profile_slot( 30, 0, 242, 222, 133 ); //Feathers
+set_color_profile_slot( 30, 1, 255, 243, 181 ); //Hair
+set_color_profile_slot( 30, 2, 66, 222, 216 ); //Scarf
+set_color_profile_slot( 30, 3, 255, 94, 31 ); //Shoulder
+set_color_profile_slot( 30, 4, 66, 222, 216 ); //Gloves/Light
+set_color_profile_slot( 30, 5, 0, 189, 170 ); //Eyes
+set_color_profile_slot( 30, 6, 13, 36, 61 ); //Outfit 2 / Rest
+set_color_profile_slot( 30, 7, 242, 222, 133 ); //Outfit 1/ Legs
 
 // Miku
 set_color_profile_slot( 31, 0, 238, 252, 249 ); //Feathers
@@ -345,6 +345,7 @@ set_color_profile_slot( 31, 4, 0, 219, 172 ); //Gloves/Light
 set_color_profile_slot( 31, 5, 30, 120, 156 ); //Eyes
 set_color_profile_slot( 31, 6, 59, 87, 82 ); //Outfit 2 / Rest
 set_color_profile_slot( 31, 7, 156, 235, 255 ); //Outfit 1/ Legs
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

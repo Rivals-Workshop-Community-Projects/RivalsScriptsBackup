@@ -1,11 +1,11 @@
-if(get_player_color(player) == 30)
-{
-    if(state == PS_IDLE)
-    {
-        sprite_index = sprite_get("idlegen")
-        image_index = state_timer * idle_anim_speed;
-    }
-}
+// if(get_player_color(player) == 30)
+// {
+//     if(state == PS_IDLE)
+//     {
+//         sprite_index = sprite_get("idlegen")
+//         image_index = state_timer * idle_anim_speed;
+//     }
+// }
 if(state == PS_SPAWN)
 {
     var length = 9; // num of anim frames
@@ -98,11 +98,6 @@ if(state == PS_SPAWN)
             {
                 introText = "Royalty isn't my thing.";
                 introText2 = "Here, we are equal.";
-            }
-            else if (string_count("epinel", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-            {
-                introText = "Man with the golden blood?";
-                introText2 = "Looks like youre coming in cold.";
             }
             else if (string_count("fernet", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
             {
@@ -273,6 +268,57 @@ if(state == PS_SPAWN)
             {
                 introText = "You... Ill kill you!";
                 introText2 = "You ruined the future!";
+            }
+            //Riptide
+            else if (string_count("bluey", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Get out of here, kid.";
+                introText2 = "Stroll somewhere else.";
+            }
+            else if (string_count("crewmate", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "An alien?";
+                introText2 = "This was not part of my task.";
+            }
+            else if (string_count("epinel", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "I don't think you understand";
+                introText2 = "the gravity of this situation.";
+            }
+            else if (string_count("henry stickmin", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Are you happy to see me";
+                introText2 = "Or is that a diamond in your pocket.";
+            }
+            else if (string_count("mal", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Chemical warfare?";
+                introText2 = "The past is full of surprises.";
+            }
+            else if (string_count("rin kaenbyou", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Don't think you're going to";
+                introText2 = "be grazing my bullets.";
+            }
+            else if (string_count("po & gumbo", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "The last thing I want";
+                introText2 = "is to be like a roasted duck";
+            }
+            else if (string_count("wally", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "I really hope six shots";
+                introText2 = "is enough to take you down.";
+            }
+            else if (string_count("otto 2", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Middle top pocket";
+                introText2 = "inbetween the eyes.";
+            }
+            else if (string_count("candyman", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Im not here to play ball";
+                introText2 = "You need to be striked out.";
             }
             //base cast
             else if (string_count("zetterburn", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)

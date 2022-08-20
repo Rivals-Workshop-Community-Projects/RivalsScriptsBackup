@@ -65,7 +65,7 @@ alt_name[26] = "Star Duck";
 alt_name[27] = "Undecided Residence";
 alt_name[28] = "Remnants of a Creator";
 alt_name[29] = "Sparked Berry";
-alt_name[30] = "Eighth Revelation";
+alt_name[30] = "Tides Ripper";
 alt_name[31] = "Vocalist Takeover";
 
 if(!doNotInitShader){

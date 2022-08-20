@@ -114,7 +114,7 @@ if (attack == AT_FSPECIAL){
             else
             { sound_play(sound_get("revolver_ricochet"));  bullets --; }
         }
-        if(window_timer == 9 && 6-bullets <= hud_enhanced && !(bullets == 0 || hud_enhanced == 0))
+        if(window_timer == 9 && 6-bullets < hud_enhanced && !(bullets == 0 || hud_enhanced == 0))
         { sound_play(sound_get("thunder_shock")); fx = spawn_hit_fx(x,y,fspec_spark) fx.depth = depth-1;}
     }
     can_move = false;

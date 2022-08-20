@@ -41,15 +41,15 @@ switch(state)
 // else
 //     set_victory_portrait(sprite_get("portrait"));
 
-//Genesis
-if(get_player_color(player) == 30)
-{
-    set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntgen"));
-    set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("glitch1"));
-    idle_anim_speed = .2;
-    if(state == PS_IDLE && state_timer % 20 == 0 && random_func(2, 50, false) > 45)
-        sound_play(sound_get("glitch2"), false, noone, 0.65, 1.2);
-}
+// //Genesis
+// if(get_player_color(player) == 30)
+// {
+//     set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntgen"));
+//     set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("glitch1"));
+//     idle_anim_speed = .2;
+//     if(state == PS_IDLE && state_timer % 20 == 0 && random_func(2, 50, false) > 45)
+//         sound_play(sound_get("glitch2"), false, noone, 0.65, 1.2);
+// }
 
 if(last_hit_timer != 0)
     last_hit_timer --;
@@ -134,12 +134,12 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 old_scarf_x = floor((scarf_x+old_scarf_x)/2);
 old_scarf_y = floor((scarf_y+old_scarf_y)/2);
 
-// if(get_gameplay_time() % (8-scarf_timer) == 0 && !scarf_off && visible)
-// {
-//     fx = spawn_hit_fx(old_scarf_x+4*spr_dir,old_scarf_y,scarf_fire);
-//     fx.draw_angle = scarf_angle;
-//     if(scarf_front) fx.depth = depth-1;
-// }
+if(get_gameplay_time() % (8-scarf_timer) == 0 && !scarf_off && visible)
+{
+    fx = spawn_hit_fx(old_scarf_x+4*spr_dir,old_scarf_y,scarf_fire);
+    fx.draw_angle = scarf_angle;
+    if(scarf_front) fx.depth = depth-1;
+}
 #endregion
 
 with(hit_fx_obj)

@@ -34,13 +34,13 @@ if(get_gameplay_time() < 120 || (get_gameplay_time() > 120 && get_gameplay_time(
 }
 
 //Genesis
-if(get_player_color(player) == 30)
-{
-    var rand_x, rand_y;
-    rand_x = random_func(3,50,true);
-    rand_y = random_func(6,75,true);
-    shader_start();
-    if(random_func(2, 100, false) > 95)
-        draw_sprite_part_ext(sprite_index,image_index,75+rand_x,50+rand_y,random_func(8,200,true),random_func(2,200,true),x-50*spr_dir+(random_func(6,20,true)+rand_x)*spr_dir,y-100+random_func(10,20,true)+rand_y,spr_dir,1,c_white,1);
-    shader_end();
-}
+// if(get_player_color(player) == 30)
+// {
+//     var rand_x, rand_y;
+//     rand_x = random_func(3,50,true);
+//     rand_y = random_func(6,75,true);
+//     shader_start();
+//     if(random_func(2, 100, false) > 95)
+//         draw_sprite_part_ext(sprite_index,image_index,75+rand_x,50+rand_y,random_func(8,200,true),random_func(2,200,true),x-50*spr_dir+(random_func(6,20,true)+rand_x)*spr_dir,y-100+random_func(10,20,true)+rand_y,spr_dir,1,c_white,1);
+//     shader_end();
+// }
