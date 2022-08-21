@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Can be canceled into Nspecial on hit of Jab 1 or Jab 2 but not Jab 3. Jab 3 sets water mark status.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -162,6 +163,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(attack, hitbox_num, HG_FORCE_FLINCH, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Jab 1");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 //Jab 2
@@ -185,6 +187,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
+set_hitbox_value(attack, hitbox_num, 81, "Jab 2");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -204,8 +207,8 @@ set_hitbox_value(attack, hitbox_num, HG_ANGLE, 70);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .5);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 30);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, -10);
@@ -213,6 +216,8 @@ set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 3);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Jab 3");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 
 hitbox_num++;
 

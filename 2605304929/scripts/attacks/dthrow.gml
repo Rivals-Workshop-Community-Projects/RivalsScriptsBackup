@@ -66,6 +66,8 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, 
+"- Can cancel grab before final hit with parry input.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -180,6 +182,7 @@ window_for_hitbox = 3;
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
     set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, -1); // Reset SDI
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, -1); // Reset SDI
+    set_hitbox_value(attack, hitbox_num, 81, "Start Hit");//HG_MUNO_HITBOX_NAME
 
 // Hitbox 2-5
 for(var hitbox_num = 2; hitbox_num < 6; hitbox_num++){
@@ -206,6 +209,8 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
     set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, -1); // Negate most drive and SDI during shock.
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, -1);
+    set_hitbox_value(attack, hitbox_num, 81, "Shock" + string(hitbox_num - 1));//HG_MUNO_HITBOX_NAME
+    set_hitbox_value(attack, hitbox_num, 91, "Turns off SDI and Drift during grab");//HG_MUNO_HITBOX_MISC
 }
 
 // Hitbox 6 - Final Hitbox with knockback
@@ -234,6 +239,7 @@ window_for_hitbox = 6;
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, 1); // Reset SDI
     set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, .9);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, 81, "Final Hit");//HG_MUNO_HITBOX_NAME
 //hitbox_num++;
 
 /*

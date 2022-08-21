@@ -6,21 +6,33 @@ with (asset_get("oPlayer")){
     }
 }
 
-with (oPlayer) {
-	if (malsick && sickOwner == other.id && !hitpause) {		
-		sickTimer--;
-	
+
+with (oPlayer)
+{
+	if (malsick && sickOwner == other.id && !hitpause)
+	{
+		//Remove Sickness and add grace time
 		if sickTimer <= 0
 		{
 			malsick = false;
+			sickTimer = 0;
 			sickAfterGrace = sickAfterGraceMax;
 		}
+		else
+			sickTimer--;
 		
-		if (sickTimer % 45 == 0) take_damage(player, other.player, 1);		
+		//Take damage when sick
+		if (sickTimer % 45 == 0)
+			take_damage(player, other.player, 1);		
 	}
 	
+	//Deduct grace time
 	if id != other && sickAfterGrace > 0
+	{
 		sickAfterGrace--;
+		if sickAfterGrace < 0
+			sickAfterGrace = 0;
+	}
 }
 
 //Mariiii
@@ -140,6 +152,7 @@ with (oPlayer){
     if (state == PS_RESPAWN || state == PS_SPAWN || state == PS_DEAD)
 	{
         malsick = false;
+		sickTimer = 0;
 		sickAfterGrace = sickAfterGraceMax;
 		strongStunnedTimer = 0;
     }

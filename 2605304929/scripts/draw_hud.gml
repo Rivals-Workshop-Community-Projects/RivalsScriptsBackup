@@ -12,8 +12,37 @@ else{
 }
 //#endregion
 
+//#region Dialog Box
 
-//#region Secret Alts
+if(flag_round_start_dialog){
+	
+	rectDraw(260+102,420 - 4,604,420 + 72 + 1,c_black,c_black,.33);
+	rectDraw(260 - 4,420 - 4,260 + 102 + 4,420 + 72 + 1,c_black,c_black,.5);
+	rectDraw(604 - 4,420 - 4,604 + 102 + 0,420 + 72 + 1,c_black,c_black,.5);
+	
+	
+	var player_css_sprite = get_char_info(player,INFO_CHARSELECT);
+
+	//Grab Opponent Info and draw sprites
+	var temp_self = player;
+    var temp_opponent;
+    var temp_opponent_css_sprite //Only does one opponent
+    with(asset_get("oPlayer")){
+    	if(player != temp_self){
+        //print("Opponent: " + get_char_info(player, INFO_STR_NAME));
+        temp_opponent = get_char_info(player, INFO_STR_NAME);
+        temp_opponent_css_sprite = get_char_info(player, INFO_CHARSELECT);
+    	}
+    }
+	// Draw Css Sprites
+	draw_sprite_ext(player_css_sprite,0,260,420,1,1,0,c_white,1);
+	draw_sprite_ext(temp_opponent_css_sprite,0,604 + 102 + 0,420,-1,1,0,c_white,1);
+}
+
+//#endregion
+
+/*
+//#region Secret Alts - Old Secret Alt Code
 if(state == PS_SPAWN){
     var current_alt = get_player_color(player);
     if(current_alt == 30){
@@ -31,38 +60,132 @@ if(state == PS_SPAWN){
     }
 }
 //#endregion
-/*
+*/
+
 //#region AI Draw
-var target_relative_x = ai_target.x - x;
-var target_relative_y = ai_target.y - y;
-var ai_facing_target = spr_dir * sign(target_relative_x);
-var ai_above_target = sign(target_relative_y);
 
+// debrug draw
 
-// Ai Draw
-draw_debug_text(temp_x + 0, temp_y - 10,"Target:" + string(get_char_info(ai_target.player, INFO_STR_NAME))); // Target
-draw_debug_text(temp_x + 0, temp_y - 25,"Recovering:"+ string(ai_recovering)); //Recovery
-draw_debug_text(temp_x + 0, temp_y - 40,"Atk input:" + string(attack_pressed)); //Attack
-draw_debug_text(temp_x + 0, temp_y - 55,"Spl input:" + string(special_pressed)); //special
-draw_debug_text(temp_x + 0, temp_y - 70,"Stk input:" + string(strong_down)); //special
-draw_debug_text(temp_x + 0, temp_y - 85,"Sld input:" + string(shield_pressed)); //special
+// debrug draw
+// Draw AI Variables
 
-draw_debug_text(temp_x + 110, temp_y - 10,"target_relative_x:" + string(target_relative_x)); //special
-draw_debug_text(temp_x + 110, temp_y - 25,"target_relative_y:" + string(target_relative_y));
-draw_debug_text(temp_x + 110, temp_y - 40,"ai_facing_target:" + string(ai_facing_target));
-draw_debug_text(temp_x + 110, temp_y - 55,":" + string(0));
-draw_debug_text(temp_x + 110, temp_y - 70,":" + string(0));
-draw_debug_text(temp_x + 110, temp_y - 85,"Joy Direction:" + string(joy_dir));
+// Variable Info
+/*
+ai_target -	The current target of the AI.
+ai_recovering -	Is true while the AI is attempting to recover back onto the stage.
+temp_level -	The difficulty level of the AI, from 1 to 9.
+ai_attack_timer -	The amount of frames since the AI last attacked.
+ai_attack_time -	The minimum amount of frames before the AI can try attacking again.
+ready_to_attack -	Is true if the AI can perform an attack.
+ai_going_into_attack -	Is true if the AI is attempting to attack.
+ai_going_left -	Is true if the AI is moving left.
+ai_going_right -	Is true if the AI is moving right.
 
-draw_debug_text(temp_x + 270, temp_y - 10,":" + string(0)); //special
-draw_debug_text(temp_x + 270, temp_y - 25,":" + string(0));
-draw_debug_text(temp_x + 270, temp_y - 40,"ai_neutral_route:" + string(ai_neutral_route_selection));
-draw_debug_text(temp_x + 270, temp_y - 55,"ai_sequence_timer:" + string(ai_sequence_timer));
-draw_debug_text(temp_x + 270, temp_y - 70,"ai_sequence:" + string(ai_sequence));
-draw_debug_text(temp_x + 270, temp_y - 85,"ai_current_mode:" + string(ai_current_mode));
+Note: There is no strong_pressed. Use [direction]_strong_pressed instead.
+
+attack
+special
+jump
+shield
+strong
+taunt
+up
+down
+left
+right
+[direction]_strong
+[direction]_stick
+
+*/
+/*
+// Temp variables to move the draw
+var current_x = temp_x;
+var current_y = temp_y - 485;
+var y_offset_per_line = 15;
+
+// ---AI Built In Variables---
+	if("ai_target" in self){
+draw_debug_text(current_x, current_y,"-AI Built In Variables-");
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Target:" + string(get_char_info(ai_target.player, INFO_STR_NAME))); // Target
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Recovering:"+ string(ai_recovering)); 
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"temp_level:"+ string(temp_level)); 
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_attack_timer:"+ string(ai_attack_timer)); 
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_attack_time:"+ string(ai_attack_time));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ready_to_attack:"+ string(ready_to_attack));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_going_into_attack:"+ string(ai_going_into_attack));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_going_left:"+ string(ai_going_left));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_going_right:"+ string(ai_going_right));
+current_y += y_offset_per_line;
+}
+
+// 2nd block
+current_x = temp_x + 200
+current_y = temp_y - 485;
+// --- AI Input Reading ---
+draw_debug_text(current_x, current_y,"---AI Input Reading---"); //Attack
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Atk input:" + string(attack_pressed)); //Attack
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Spl input:" + string(special_pressed)); //special
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Sld input:" + string(shield_pressed)); //special
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Jmp input:" + string(jump_pressed)); //special
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Tnt input:" + string(taunt_pressed)); //special
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"L.STR input:" + string(left_strong_pressed)); //special
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"U.STR input:" + string(up_strong_pressed)); //special
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"R.STR input:" + string(right_strong_pressed)); //special
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"D.STR input:" + string(down_strong_pressed)); //special
+current_y += y_offset_per_line;
+//draw_debug_text(current_x, current_y,"Joy Idle:" + string(joy_idle));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Joy Direction:" + string(joy_dir));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Left Pressed:" + string(left_down));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Up Presed:" + string(up_down));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Right Pressed:" + string(right_down));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"Down Pressed:" + string(down_down));
+current_y += y_offset_per_line;
+
+/*
+// Custom Variables
+draw_debug_text(current_x, current_y,"target_relative_x:" + string(target_relative_x)); //special
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"target_relative_y:" + string(target_relative_y));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_facing_target:" + string(ai_facing_target));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_neutral_route:" + string(ai_neutral_route_selection));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_sequence_timer:" + string(ai_sequence_timer));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_sequence:" + string(ai_sequence));
+current_y += y_offset_per_line;
+draw_debug_text(current_x, current_y,"ai_current_mode:" + string(ai_current_mode));
+current_y += y_offset_per_line;
+*/
+
+// Geographical
 
 //#endregion
-*/
+
 //
 //Debug Text  
 /*
@@ -173,3 +296,29 @@ shader_end();
 //draw_debug_text( temp_x + 0, temp_y - 85, "heat_fx_play: " + string(heat_fx_play));
 //draw_debug_text( temp_x + 0, temp_y - 45,"In Field: " + string(in_overklock_field));
 //draw_debug_text( temp_x + 40, temp_y - 20,"Dspec cooldown: " + string(move_cooldown[AT_DSPECIAL]));
+
+#define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
+
+draw_set_font(asset_get(argument[2]));
+draw_set_halign(fa_middle); // This is important cause it will cause the text to not align properly
+if argument[7]{
+    for (i = -1; i < 2; i++){
+        for (j = -1; j < 2; j++){
+            draw_text_ext_transformed_color(argument[0] + i * 2, argument[1] + j * 2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, c_black, c_black, c_black, c_black, 1);
+        }
+    }
+}
+
+draw_text_ext_transformed_color(argument[0], argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[3], argument[3], argument[3], argument[3], argument[8]);
+
+return string_width_ext(argument[9], argument[4], argument[5]);
+
+
+#define rectDraw(x1, y1, x2, y2, color, out_color, alpha)
+
+draw_set_alpha(argument[6]);
+draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[5], argument[5], argument[5], argument[5], false);
+draw_set_alpha(argument[6]*1.5);
+draw_rectangle_color(argument[0]+2, argument[1]+2, argument[2]-2, argument[3]-2, argument[4], argument[4], argument[4], argument[4], false);
+draw_set_alpha(1);
+

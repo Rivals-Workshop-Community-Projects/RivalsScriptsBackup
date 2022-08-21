@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 23 );
 
 // blue
 set_color_profile_slot( 1, 0, 223, 239, 242 ); //Hoodie Pink
@@ -77,15 +77,15 @@ set_color_profile_slot( 4, 5, 251, 252, 255 ); //Eyes/Socks
 set_color_profile_slot( 4, 6, 28, 28, 28 ); //Smog
 set_color_profile_slot( 4, 7, 255, 255, 255 ); //Smog Outline
 
-// pink
-set_color_profile_slot( 5, 0, 255, 207, 224 ); //Hoodie Pink
-set_color_profile_slot( 5, 1, 212, 132, 104 ); //Skin
-set_color_profile_slot( 5, 2, 232, 61, 141 ); //Hair
-set_color_profile_slot( 5, 3, 255, 43, 114 ); //Hoodie Purp
-set_color_profile_slot( 5, 4, 217, 115, 131 ); //Skirt
-set_color_profile_slot( 5, 5, 255, 207, 224 ); //Eyes/Socks
-set_color_profile_slot( 5, 6, 209, 8, 68 ); //Smog
-set_color_profile_slot( 5, 7, 208, 125, 255 ); //Smog Outline
+// RIDTIDE
+set_color_profile_slot( 5, 0, 255, 229, 84 ); //Hoodie Pink
+set_color_profile_slot( 5, 1, 214, 161, 120 ); //Skin
+set_color_profile_slot( 5, 2, 30, 52, 110 ); //Hair
+set_color_profile_slot( 5, 3, 52, 182, 194 ); //Hoodie Purp
+set_color_profile_slot( 5, 4, 220, 125, 58 ); //Skirt
+set_color_profile_slot( 5, 5, 52, 182, 194 ); //Eyes/Socks
+set_color_profile_slot( 5, 6, 52, 182, 194 ); //Smog
+set_color_profile_slot( 5, 7, 242, 124, 19 ); //Smog Outline
 
 // ace
 set_color_profile_slot( 6, 0, 255, 255, 255 ); //Hoodie Pink
@@ -247,6 +247,15 @@ set_color_profile_slot( 21, 5, 255, 0, 0 ); //Eyes/Socks
 set_color_profile_slot( 21, 6, 255, 255, 255 ); //Smog
 set_color_profile_slot( 21, 7, 255, 0, 0 ); //Smog Outline
 
+// pink
+set_color_profile_slot( 22, 0, 255, 207, 224 ); //Hoodie Pink
+set_color_profile_slot( 22, 1, 212, 132, 104 ); //Skin
+set_color_profile_slot( 22, 2, 232, 61, 141 ); //Hair
+set_color_profile_slot( 22, 3, 255, 43, 114 ); //Hoodie Purp
+set_color_profile_slot( 22, 4, 217, 115, 131 ); //Skirt
+set_color_profile_slot( 22, 5, 255, 207, 224 ); //Eyes/Socks
+set_color_profile_slot( 22, 6, 209, 8, 68 ); //Smog
+set_color_profile_slot( 22, 7, 208, 125, 255 ); //Smog Outline
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -63,7 +63,7 @@ set_window_value(AT_FSPECIAL, ig, AG_WINDOW_ANIM_FRAME_START, 19);
 ig++;
 
 //End 2 (6)
-set_window_value(AT_FSPECIAL, ig, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FSPECIAL, ig, AG_WINDOW_TYPE, 7); //UPDATE 8-13-2022, 1
 set_window_value(AT_FSPECIAL, ig, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_FSPECIAL, ig, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, ig, AG_WINDOW_ANIM_FRAME_START, 24);

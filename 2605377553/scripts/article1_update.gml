@@ -215,20 +215,21 @@ else
 
 //touch the foe
 with(oPlayer)
-{
-	//fail to perform events under certain conditions
-	var pass = true;
-	
+{	
+	//fail to get the foe sick if theyre invincible
 	if invincible
+	{
+		sickGrace = 0;
 		continue;
+	}
 
-    if place_meeting(x,y,other) && pass && other.player != player
+    if place_meeting(x,y,other) && other.player != player
     {
 		var p = other.player_id;//the owner
 		
 		//allow a grace time to not get sick
 		sickGrace++;
-		if sickGrace >= sickGraceMax && sickAfterGrace == 0
+		if sickGrace >= sickGraceMax && sickAfterGrace <= 0
 		{
 			//we're not sick yet. play this once
 			if !malsick 
@@ -242,6 +243,7 @@ with(oPlayer)
 			malsick = true;
 			sickOwner = p;
 			sickTimer = sickTimerMax; 
+			sickGrace = 0;
 		}
     }
 	else

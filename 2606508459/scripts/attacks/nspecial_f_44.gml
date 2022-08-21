@@ -1,3 +1,5 @@
+//CATOOKEN FAIL
+
 set_attack_value(44, AG_CATEGORY, 2);
 set_attack_value(44, AG_NUM_WINDOWS, 3);
 set_attack_value(44, AG_SPRITE, sprite_get("fail"));

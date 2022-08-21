@@ -416,7 +416,7 @@ if (attack == 43)
             false,
             free
         );
-        move_cooldown[AT_EXTRA_1] = 60;
+        move_cooldown[AT_EXTRA_1] = 120; //UPDATE 8-13-2022, 60
     }
 }
 
@@ -912,7 +912,7 @@ else if (mode >= 0)
     var use_charge = floor(charge / 2);
     if (use_charge > 3) { use_charge = 3; }
     
-    var useHsp = 4
+    var useHsp = 4;
     
     if (mode == 2)
     {
@@ -923,7 +923,7 @@ else if (mode >= 0)
             set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1);
             set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1); 
             */
-            set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, useHsp * .7 );
+            set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, useHsp * .7 ); 
             set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, useHsp * .7 ); 
         }
         else
@@ -941,7 +941,7 @@ else if (mode >= 0)
         set_hitbox_value( 43, 1, HG_BASE_HITPAUSE, pBall_base_hitpause + (pBall_inc_hitpause * use_charge));
         set_hitbox_value( 43, 1, HG_BASE_KNOCKBACK, 4);
         set_hitbox_value( 43, 1, HG_KNOCKBACK_SCALING, .3);
-        set_hitbox_value( 43, 1, HG_LIFETIME, 70);
+        //set_hitbox_value( 43, 1, HG_LIFETIME, 70);
     }
     else if (mode == 4)
     {

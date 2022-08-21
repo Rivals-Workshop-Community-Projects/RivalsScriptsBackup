@@ -150,6 +150,12 @@ hitfx_water_dust = hit_fx_create(sprite_get("hitfx_water_dust"),14);
 
 // intro Code
 intro_sound_played_flag = false;
+intro_animation_frames_before_start = 0;
+intro_animation_strip_frames = 0;
+intro_animation_speed = 0;
+
+//Results variable 
+countPlayers = 0;
 
 //Alt Color Variable
 color_select_alt_name = "";
@@ -170,6 +176,7 @@ play_final_smash_grab_cintematic_flag = false;
 //`fs_char_portrait_override = sprite_get('MY PORTRAIT OVERRIDE SPRITE");`
 //`fs_char_attack_index = AT_ATTACK_INDEX_OF_YOUR_CHOICE;`
 
+/* Disabled for now
 // Lukaru After Images code for Amateratsu Alt
 // Other code affected is in Colors / Init Shader / Pre draw / update
 if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amateratsu // Genesis 8 Skin
@@ -178,14 +185,64 @@ if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amatera
     afterImageMax = 6;
     afterImage = array_create(afterImageMax, -1);
 }
+*/
 // Other Compat Stuff
 // Compatibility Stuff -----------------------------------------------
 Hikaru_Title = "Dance in the rain with me";
 arena_title = "The Eye of the Storm";
-battle_text = "*They took everything from me."; 
+battle_text = "*They took everything from me."; // Opening line of "Lost at Birth" by Public Enemy
 
 //Dialogue Buddy by Ducky! get it at https://steamcommunity.com/workshop/filedetails/discussion/2557293251/3062995463267073852/
 diag_portrait=sprite_get("dialogue_buddy"); // This will allow you to put any custom portrait onto the dialogue buddy!
 
 kinniku_front = sprite_get("kinniku_front");
 kinniku_behind = sprite_get("kinniku_behind");
+
+//#region Synced Variable
+
+// Synced Variable Stuff
+/* Synced Variable should account for these. We have 32 bits to work with.
+1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
+2. Status of Win Quotes Enabled - 1 bit
+3. Status of Round Start Dialog Enabled - 1 bit 
+*/
+//This function takes the bit lengths you put in the previous function, in the same order, and outputs an array with the values you put in (assuming you put in the correct bit lengths), also in the same order.
+//split_var = split_synced_var(bit_length_1, bit_length_2...);
+split_var = split_synced_var(2,1,1);
+//print(split_var);
+
+color_shift = 0; // Declare variable
+flag_win_quote_enabled = 0; // Declare variable
+flag_round_start_dialog = 0; // Declare variable
+
+// Synced variable overwrite
+color_shift = split_var[0];
+flag_win_quote_enabled = split_var[1];
+flag_round_start_dialog = split_var[2];
+
+/*
+print("color_shift: " + string(color_shift) + string(get_gameplay_time())); // Color_Shift;
+print("flag_win_quote_enabled: " + string(flag_win_quote_enabled) + string(get_gameplay_time())); // WinQuote
+print("flag_round_start_dialog: "+ string(flag_round_start_dialog) + string(get_gameplay_time())); // Round Start Dialog
+*/
+
+// Reload on round start
+manual_init_shader_call = true;
+init_shader();
+
+//#endregion
+#define split_synced_var
+///args chunk_lengths...
+var num_chunks = argument_count;
+var chunk_arr = array_create(argument_count);
+var synced_var = get_synced_var(player);
+var chunk_offset = 0
+for (var i = 0; i < num_chunks; i++) {
+    var chunk_len = argument[i]; //print(chunk_len);
+    var chunk_mask = (1 << chunk_len)-1
+    chunk_arr[i] = (synced_var >> chunk_offset) & chunk_mask;
+    //print(`matching shift = ${chunk_len}`);
+    chunk_offset += chunk_len;
+}
+//print(chunk_arr);
+return chunk_arr;

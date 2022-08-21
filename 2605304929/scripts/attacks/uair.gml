@@ -40,6 +40,7 @@ set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 14);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 window_num++;
 
@@ -62,11 +63,11 @@ set_hitbox_value(attack, hitbox_num, HG_WIDTH, 131);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 82);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 4);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 75);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .4);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); // // 303 - basic small directional
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 

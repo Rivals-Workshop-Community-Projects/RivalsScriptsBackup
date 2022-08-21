@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 6);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Can be canceled into Nspecial on hit of Nair 1 but not Nair 2");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -90,7 +91,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 2); // MORE EXTRA HITOAUSE
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1")); 
-
+set_hitbox_value(attack, hitbox_num, 81, "Nair 1");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 //Kick 2
@@ -110,10 +111,11 @@ set_hitbox_value(attack, hitbox_num, HG_ANGLE, 40);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_FINAL_BASE_KNOCKBACK , 3);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, 81, "Nair 2");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 

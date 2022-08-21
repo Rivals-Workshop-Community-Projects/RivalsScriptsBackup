@@ -1,11 +1,4 @@
-// Variables
-if("dial_time" not in self){dial_time = 0;} // Used for transparncy
-dial_max = 100; // Used for transparncy
-color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
-col_max = 32; // number of alternate color palettes. 0 is the default color, count it accordingly.
-ue = get_player_color(player); // Color slot variable from Hyu
-color_picker_alt_index = 0;
-
+/*
 // Button Code
 	var tmp_cur = 0;
 	var tmp_i = [0, 0, 0, 0, 0];
@@ -31,260 +24,220 @@ color_picker_alt_index = 0;
 	var tmp_yl1 = y+tmp_yl
 	var tmp_yl2 = tmp_yl1+tmp_bh
 	draw_set_halign(fa_left);
-
-// Color Slot Indexs
-	//ce variable, array of character entry data.
-	//0,0 "color preview square" color. can be any color! 62, 61, 92
-	//0,1 Name of the pallet
-	//0,2 Description after hitting the button
-	//0,3 Credit to the source
-	//0,4 Icon to use from the charactrer strip. Not Used currently
-	// Line for Credit
-	var color_slot = 0;
-	var sub_element_slot = 0;
-	// Slot 0
-	ce[color_slot,sub_element_slot] = make_color_rgb(13, 99, 195);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Daora";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Everything I ever loved was destroyed in a single day. I will make sure that Loxodont will pay.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Default Palette";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0; sub_element_slot = 0;
-	color_slot++;
-	// Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(235, 51, 31);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "OG Colors";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "The lake of my home village runs red with the blood of my family.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Original Palette";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(140, 132, 148);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Klockwurth";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I used to know Cosworth before he became the shell of what he is now...";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(128, 0, 12);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Roekoko";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Roekoko is a pupil like no other. She will one day surpass me.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(123, 37, 201);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Iroh";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Somebody told me I look like one of my ancestors with a wig...";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 130, 47);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Lyca";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "There are legends of a spectre that weaponized her own children.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(227, 235, 250);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Zerra";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "A true marvel to behold the grace of an ice skater. I aspire for such grace.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(62, 61, 92);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Rykenburn";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I studied martial arts pioneered by a Fire Capital General named Rykenburn.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Harbige12";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(162, 255, 10);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Void Fox";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I made sure I was never good with a bladed weapon, in case I ever learned to enjoy killing.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Sai";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(235, 168, 248);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Hikaru";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I admire powerful illusionary Magic, you can get what you want without being destructive.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Lukaru";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot Zin
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Zinogre";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "The wrath of thunder descends...";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Monster Hunter Pallet";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot nami
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Namielle";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "A distant dark tide...";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Monster Hunter Pallet";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(47, 35, 74);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Kunoichi";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I spent alot of time operating in the shadows, more than I care to admit...";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette by Regina";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(54, 69, 101);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Gurren";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I hide many things about my past, for many would look down on me.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Talemon";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(247, 54, 54);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Tuqiu";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "My anger lingers long after, would I remain a vengeful spirit after I fall?";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Talemon";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(207, 88, 179);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Walkya";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Ferocity and rage in all of its beauty.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Loglord";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(120, 50, 50);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Blood Moon";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "The moon shifts the tide, it ebbs and flows, like blood in my eyes.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette by Causeimapilot";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(139, 60, 232);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Voidborn";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "An improvised weapon can be just as deadly as real one. We can fight with tools.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette by Dragou";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(94, 67, 37);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Sacramentum";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Loosely based off the band Mili's mascot, Torino.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette by Masqerade";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Mirror";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "It is hard to look in the mirror sometimes.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette by Shen";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot waste
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Stormy Night";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I love a stormy night.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "WasteofaName Alt";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Ouro Kronii";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "The slow cruel hands of time has taken their toll on me.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette for Jmillions";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(251, 139, 55);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Genesis 8";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "An event I won't soon forget.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette for Genesis 8";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Marlow";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Faster than greased lighting.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette by Prober for Zonyx";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 0, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Solarei";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "The Sun is sometimes fierce and sometimes gentle...";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Amaterasu";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Call upon the Sun to vanquish darkness across the land";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Okami Palette";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(64, 64, 64);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Zeraora";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I can run as fast as lightning strikes, and shredding my opponents with high-voltage claws.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Pokemon Pallet";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(245, 169, 184);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Trans Rights";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Trans Rights";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Support Pallet";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "BLM";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Black Lives Matter";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Support Pallet";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Smash Land";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "I long for the days of old. Back when everything was simple.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "GBA Pallet";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Color Select";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Use this to pick additional alts";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Based on Lukaru's Selector";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	//color_slot++;
-/*
-	Blank Version
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
-	color_slot++;
-*/
 	
 //Draw Alt Name from Muno
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black,c_black,1);
-textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "#" + string(ue) + ": " + ce[ue,1]);
+textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "#" + string(current_color_slot) + ": " + slot_property_array[current_color_slot + (color_shift * 32),0]);
 
-
-// Set up Timer Function
-if("timer" not in self){timer = 1;}
-else timer++;
-if(timer > 256){timer = 1;}
-
+/*
 // TGP Icon Rotation 
-sprite_change_offset("tgp_icon",17,17);
 draw_sprite_ext(sprite_get("tgp_icon"),timer/20,x+190,y+130,2,2,0,c_white,1);
-sprite_change_offset("css_icons", 24, 24);
-//sprite_change_offset("icon_inventory", 128, 128);
+*/
+
+#macro BOX_SUB_MENU 0
+#macro BOX_COLOR_ALTS 1
+#macro BOX_EXTRA_OPTIONS 2
+#macro BOX_LORE_INFO 3
+#macro BOX_CHARACTER_GUIDE 4
+#macro BOX_DEV_INFO 5
+#macro BOX_CLOSE_MENU 6
+#macro BOX_CLOSE_INTERAL_MENU 7
+#macro BOX_SHIFT_COLOR_ALTS 8
+#macro BOX_WIN_QUOTE_ENABLE 9
+#macro BOX_INTRO_DIALOG_ENABLE 10
+
+#macro BUTTON_NAME 0
+#macro BUTTON_IX 1
+#macro BUTTON_EX 2
+#macro BUTTON_IY 3
+#macro BUTTON_EY 4
+#macro BUTTON_SPRITE_INDEX 5
+#macro BUTTON_MASK_INDEX 6
+#macro BUTTON_CURSOR_DETECTED 7
+#macro BUTTON_PRESSED 8
+#macro BUTTON_CURSOR_HOVER_TIMER 9
+
+#macro DRAW_NO_MENU 0
+#macro DRAW_MENU_SUB_MENU 6
+#macro DRAW_MENU_COLOR_ALTS 1
+#macro DRAW_MENU_EXTRA_OPTIONS 2
+#macro DRAW_MENU_LORE_INFO 3
+#macro DRAW_MENU_CHARACTER_GUIDE 4
+#macro DRAW_MENU_DEV_INFO 5
+
+#macro CURSOR_HOVER_SHOULD_DRAW 0
+#macro CURSOR_HOVER_SPRITE_INDEX 1
+#macro CURSOR_HOVER_IMAGE_INDEX 2
+#macro CURSOR_HOVER_DRAW_X 3
+#macro CURSOR_HOVER_DRAW_Y 4
+#macro CURSOR_HOVER_MENU_BUTTON 5
+
+/* List of Fonts
+medFont
+fName
+roundFont
+roaMBLFont
+roaLBLFont
+tinyFont
+
+// Make sure to use draw set alignment cause the defalt will unset when a 2nd player is selected
+*/
+
+switch(draw_menu){
+	case DRAW_NO_MENU:
+		// Draw Sub Menu Button
+		draw_menu_button(0);
+		// Draw Names on bottom
+		textDraw(x + 10, y + 140, "fName", c_white, 18, 200, 1, true, 1,"Color#" + string(get_player_color(player)) + ":" + string(slot_property_array[ get_player_color(player) + (color_shift * 32),0]))
+		//textDraw(x + 100, y + 40, "tinyFont", c_white, 18, 200, 1, true, 1,"Hover over Sub Menu Button")
+		//draw_text_ext_transformed_color(x + 10, y + 140, "test", 18, 200, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
+		//draw_text_ext_color(x+10,y+140,"test",18,200,c_white,c_white,c_white,c_white,1)
+		//draw_text_color(x+10,y+140,"test",c_white,c_white,c_white,c_white,1)
+		// TLC Icon
+		draw_sprite_ext(sprite_get("css_tlc_icon"),timer/20,x+190,y+120,2,2,0,c_white,1);
+	break;
+	
+	case DRAW_MENU_SUB_MENU:
+		// Draw partial rectangle Underlay
+		draw_rectangle_colour(x+40, y+50, x+175, y+150, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
+		draw_rectangle_colour(x+40, y+50, x+175, y+150, c_black, c_black, c_black, c_black, true); // Original black box draw function
+		textDraw(x + 75, y + 53, "fName", c_white, 100, 100, 1, false, 0.75,"Sub-Menu");
+		// Draw Menu Buttons
+		draw_menu_button(BOX_COLOR_ALTS);
+		draw_menu_button(BOX_EXTRA_OPTIONS);
+		draw_menu_button(BOX_LORE_INFO);
+		draw_menu_button(BOX_CHARACTER_GUIDE);
+		draw_menu_button(BOX_DEV_INFO);
+		draw_menu_button(BOX_CLOSE_MENU);
+		
+	break;
+
+	case DRAW_MENU_CHARACTER_GUIDE:
+		// Draw rectangle Underlay
+		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
+		textDraw(x + 15, y + 48, "fName", c_white, 15, 95, 1, false, 0.75,
+		"Google Doc QR Code / Scan with phone / by Wasteof
+		aName");
+		//Draw Guide Menu
+		draw_sprite_ext(sprite_get("css_guide_qr"),0,x + 150,y + 96,2,2,0,c_white,1);
+		// Draw Exit Button
+		draw_menu_button(BOX_CLOSE_INTERAL_MENU);
+	break;
+	
+	case DRAW_MENU_LORE_INFO:
+		// Draw partial rectangle Underlay
+		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
+		//draw_rectangle_colour(x+16, y+40, x+204, y+150, c_black, c_black, c_black, c_black, true); // Original black box draw function
+		textDraw(x + 14, y + 45, "fName", c_white, 18, 200, 1, false, 1, slot_property_array[ get_player_color(player) + (color_shift * 32),0])
+		
+		// Get character Slow Properties and draw them
+		textDraw(x+14, y+62, "fName", c_white, 15, 200, 1, false, 1, slot_property_array[ get_player_color(player) + (color_shift * 32),1]); //Text for skin source
+		textDraw(x+14, y+78, "fName", c_white, 15, 200, 1, false, 1, slot_property_array[ get_player_color(player) + (color_shift * 32),2]); //Text for skin description
+		
+		//Change Alts notifer
+		textDraw(x+14, y+138, "fName", c_white, 15, 200, 1, false, 1, " <- Lore by Alt Color -> "); //Text for skin source
+		
+		//Draw Character Icon
+		draw_sprite_ext(sprite_get("css_icon"),0,x + 190, y + 46,2,2,0,c_white,1);
+		//print(string(get_player_color(player) + (color_shift * 32)));
+		
+		// Draw Exit Button
+		draw_menu_button(BOX_CLOSE_INTERAL_MENU);
+	break;
+	
+	case DRAW_MENU_COLOR_ALTS:
+	var mode_string;
+	switch(color_shift){
+		case 0:
+			mode_string = " -> Normal <-";
+		break;
+		case 1:
+			mode_string = " -> Extra 1 <- "
+		break;
+		case 2:
+			mode_string = " -> Extra 2 <- "
+		break;
+		default:
+		break;
+	}
+		// Draw partial rectangle Underlay
+		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
+		//draw_rectangle_colour(x+16, y+40, x+204, y+150, c_black, c_black, c_black, c_black, true); // Original black box draw function
+		textDraw(x + 10, y + 44, "fName", c_white, 18, 200, 1, false, 1,"Color #" +string(get_player_color(player)) + ": " + string(slot_property_array[ get_player_color(player) + (color_shift * 32),0]))
+		textDraw(x + 10, y + 60, "fName", c_white, 18, 200, 1, false, 1,"Mode:" + mode_string);
+		textDraw(x + 10, y + 80, "fName", c_yellow, 15, 150, 1, false, 1,"Hover over button for more alts!");
+		//Draw Character
+		if(run_init_shader_for_character_draw == true){manual_init_shader_call = true;init_shader();run_init_shader_for_character_draw = false;} // Detect Color Shift
+		draw_sprite_ext(sprite_get("idle"),timer/9,x + 175, y + 100,1,1,0,c_white,1);
+		// Draw Exit Button
+		draw_menu_button(BOX_SHIFT_COLOR_ALTS);
+		// Draw Exit Button
+		draw_menu_button(BOX_CLOSE_INTERAL_MENU);
+	break;
+	
+	case DRAW_MENU_DEV_INFO:
+	// Draw partial rectangle Underlay
+		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
+		textDraw(x + 14, y + 45, "fName", c_white, 18, 200, 1, false, 1, 
+		"Character Dev: Opengunner
+		Release Date: 9/18/21
+		WS Bracket Legal:
+		RaB / COTA / FTL / WSE
+		WORMS / Genesis / Riptide
+		Thanks to all the homies!");
+		
+		//textDraw(x + 14, y + 45, "fName", c_white, 18, 200, 1, false, 1, "With Assistance from TLC");
+		
+		// Get character Slow Properties and draw them
+		//textDraw(x+14, y+62, "fName", c_white, 15, 200, 1, false, 1, slot_property_array[ get_player_color(player) + (color_shift * 32),1]); //Text for skin source
+		//textDraw(x+14, y+78, "fName", c_white, 15, 200, 1, false, 1, slot_property_array[ get_player_color(player) + (color_shift * 32),2]); //Text for skin description
+		
+		//Draw Character Icon
+		//draw_sprite_ext(sprite_get("css_icon"),0,x + 190, y + 46,2,2,0,c_white,1);
+		//print(string(get_player_color(player) + (color_shift * 32)));
+		
+		// Draw Exit Button
+		draw_menu_button(BOX_CLOSE_INTERAL_MENU);
+	break;
+	
+	case DRAW_MENU_EXTRA_OPTIONS:
+	// Draw partial rectangle Underlay
+		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
+		textDraw(x + 14, y + 45, "fName", c_white, 18, 200, 1, false, 1, "Hover to enable / disable")
+		// Draw Text for status of each button
+		if(flag_win_quote_enabled){
+			textDraw(x + 50, y + 70, "fName", c_green, 18, 50, 1, false, 1, "Enabled");
+		}
+		else{
+			textDraw(x + 50, y + 70, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");
+		}
+		/*
+		if(flag_round_start_dialog){
+			textDraw(x + 50, y + 110, "fName", c_green, 18, 50, 1, false, 1, "Enabled");
+		}
+		else{
+			textDraw(x + 50, y + 110, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");
+		}
+		*/
+		// Draw Buttons for extra Options
+		draw_menu_button(BOX_WIN_QUOTE_ENABLE);
+		//draw_menu_button(BOX_INTRO_DIALOG_ENABLE);
+		// Draw Exit Button
+		draw_menu_button(BOX_CLOSE_INTERAL_MENU);
+	break;
+
+}
+
+if(draw_cursor_info_hover[CURSOR_HOVER_SHOULD_DRAW] == true){
+	var temp_sprite_index = draw_cursor_info_hover[CURSOR_HOVER_SPRITE_INDEX];
+	var temp_sub_image = draw_cursor_info_hover[CURSOR_HOVER_IMAGE_INDEX];
+	var temp_x_cursor = draw_cursor_info_hover[CURSOR_HOVER_DRAW_X];
+	var temp_y_cursor = draw_cursor_info_hover[CURSOR_HOVER_DRAW_Y];
+	draw_sprite_ext(temp_sprite_index,temp_sub_image,temp_x_cursor,temp_y_cursor,.5,.5,0,c_white,1);
+}
+
+/*
+//sprite_change_offset("icon_inventory", 128, 128);s
 textDraw(temp_x + 170, temp_y + 40, "fName", c_white, 100, 1000, 1, false, 0.25,"v" + string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)));
 
 /* Disabled for new portrait
@@ -293,7 +246,7 @@ sprite_change_offset("bubbles", 128, 128);
 if(timer < 64){
 draw_sprite_ext(sprite_get("bubbles"),timer/8,x+45,y+84,1,1,0,c_white,1);
 }
-*/
+
 //Revamped for new loaction
 if (color_desc_activate){
 	// Detect Cursor
@@ -314,15 +267,15 @@ if (color_desc_activate){
 	draw_set_alpha(dial_ease/500);
 	draw_rectangle_colour(tmp_xl1, tmp_yl1+3, tmp_xl2, tmp_yl2, c_white, c_white, c_white, c_white, false);
 	draw_set_alpha(1);
-	textDraw(x+14, (y+45)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, "#"+string(ue)+": "+ce[ue,1]); //String for skin name
-	textDraw(x+14, (y+65)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, ce[ue,3]); //Text for skin source
-	textDraw(x+14, (y+85)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, ce[ue,2]); //Text for skin description
+	textDraw(x+14, (y+45)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, "#"+string(current_color_slot)+": "+slot_property_array[current_color_slot + (color_shift * 32),0]); //String for skin name
+	textDraw(x+14, (y+65)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, slot_property_array[current_color_slot + (color_shift * 32),1]); //Text for skin source
+	textDraw(x+14, (y+85)-round(dial_ease/30), "fName", c_white, 18, 200, 1, false, dial_ease/100, slot_property_array[current_color_slot + (color_shift * 32),2]); //Text for skin description
 }
-
+*/
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 
 draw_set_font(asset_get(argument[2]));
-
+draw_set_halign(fa_left); // This is important cause it will cause the text to not align properly
 if argument[7]{
     for (i = -1; i < 2; i++){
         for (j = -1; j < 2; j++){
@@ -343,3 +296,28 @@ draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argumen
 draw_set_alpha(argument[6]*1.5);
 draw_rectangle_color(argument[0]+2, argument[1]+2, argument[2]-2, argument[3]-2, argument[4], argument[4], argument[4], argument[4], false);
 draw_set_alpha(1);
+
+#define draw_menu_button(number)
+{
+	//from function in init
+	//menu_box[number] = [
+    var temp_name = menu_box[number][0]; //0
+    var temp_ix = menu_box[number][1]; //1
+    var temp_ex = menu_box[number][2]; //2
+    var temp_iy = menu_box[number][3]; //3
+    var temp_ey = menu_box[number][4]; //4
+    var temp_sprite_index = menu_box[number][5]; //5
+    var temp_image_index = menu_box[number][6]; //6
+    //cursor_detected, // 7
+    //button_pressed, // 8
+    //];
+    var center_x = ((temp_ex - temp_ix) / 2) + temp_ix;
+    var center_y = ((temp_ey - temp_iy) / 2) + temp_iy;
+    
+    draw_sprite_ext(sprite_get(temp_sprite_index),temp_image_index,center_x,center_y,.5,.5,0,c_white,1);
+	//print(center_x)
+	//print(center_y)
+	//print(get_instance_x(cursor_id))
+	//print(get_instance_y(cursor_id))
+	
+}

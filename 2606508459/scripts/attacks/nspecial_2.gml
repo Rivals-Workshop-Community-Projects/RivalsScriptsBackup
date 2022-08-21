@@ -1,3 +1,5 @@
+//SHINE/CALL SPHERE
+
 //Shine
 set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial_3"));

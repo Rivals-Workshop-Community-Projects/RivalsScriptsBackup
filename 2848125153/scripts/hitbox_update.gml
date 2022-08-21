@@ -330,7 +330,7 @@ if(attack == AT_FSPECIAL){
 if(attack == AT_USPECIAL){
 	if(hbox_num == 2){
 		hitbox_timer = 0;
-
+		
 		if(free){
 			if(num == 0 && (abs(hsp) > 3 || abs(vsp) > 3) || num == 1 && (abs(hsp) > 7 || vsp > 7 || vsp < -7)){
 				hit_priority = 2;
@@ -363,13 +363,14 @@ if(attack == AT_USPECIAL){
 				destroyed = true;
 			}*/
 			num = 1;
+			dicearmor = 5;dicearmor2 = 5;
 			hit_priority = 0;
 			if(hitstop <= 0){
 				hsp *= 0.8;
 			}
 			if(num2 == 0){
 				num2 = 1;
-				shake_camera(10,8);sound_play(sound_get("moneybag_hit2"),false,noone,1);
+				shake_camera(10,8);sound_play(player_id.moneybaghitsfx2,false,noone,1);
 				sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,0.5);sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone,0.75);
 			}
 		}

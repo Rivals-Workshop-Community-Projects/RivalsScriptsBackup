@@ -49,6 +49,7 @@ if ((attack == AT_DSPECIAL) || (attack == AT_DSPECIAL_AIR) || (attack == AT_FSPE
 //Uspecial + Uthrow --------------------------------------------------------------------------------------------------------------------
 if(attack == AT_USPECIAL || attack == AT_UTHROW){
 	can_wall_jump = true; // Wall Jump out of the attack
+	if(attack == AT_UTHROW && window > 1){can_shield = true;} // Can shield or dodge after landing with the opponent to avoid other people from attacking in free for alls.
 }
 
 if (attack == AT_UTHROW && instance_exists(grabbed_player_obj)) {
@@ -95,7 +96,7 @@ if (attack == AT_UTHROW && instance_exists(grabbed_player_obj)) {
 
 if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2){
 	can_wall_jump = true; // Wall Jump out of the attack
-	if((attack == AT_FTHROW || attack == AT_FTHROW ) && window > 2){can_shield = true;} // Can shield or dodge after landing with the opponent to avoid other people from attacking in free for alls.
+	if((attack == AT_FTHROW ) && window > 2){can_shield = true;} // Can shield or dodge after landing with the opponent to avoid other people from attacking in free for alls.
 	move_cooldown[AT_FSPECIAL] = 60;
 }
 if (attack == AT_FTHROW && instance_exists(grabbed_player_obj)) {
@@ -186,11 +187,12 @@ if (attack == AT_DTHROW) {
 	can_fast_fall = false;
 	move_cooldown[AT_DSPECIAL] = 60;
 	move_cooldown[AT_DSPECIAL_AIR] = 60;
+	
 }
 
 if (attack == AT_DTHROW && instance_exists(grabbed_player_obj)) {
 	hurtboxID.sprite_index = get_attack_value(AT_DTHROW, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
-	
+	if(attack == AT_DTHROW && window > 2){can_shield = true;} // Can shield or dodge after landing with the opponent to avoid other people from attacking in free for alls.
 	
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
 	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; } //Minus 1 widnow for last window release
@@ -1064,6 +1066,36 @@ switch(attack){
 		
 	default:
 		break;
+}
+
+// Camera Shake
+switch(attack){
+	case AT_FSTRONG:
+		if(window == 4 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH)){
+			shake_camera(3,5);
+		}
+	break;
+	case AT_USPECIAL_2:
+		if(window == 4 && window_timer == 0){
+			shake_camera(4,6);
+		}
+	break;
+	case AT_FSPECIAL: // Landing Window
+		if(window == 3 && window_timer == 0){
+			shake_camera(4,6);
+		}
+	break;
+	case AT_FSPECIAL_2: // Landing Window
+	case AT_FTHROW: // Landing Window
+		if(window == 3 && window_timer == 0){
+			shake_camera(4,6);
+		}
+	break;
+	case AT_DSPECIAL_AIR: // Landing Window
+		if(window == 7 && window_timer == 0){
+			shake_camera(3,5);
+		}
+	break;
 }
 
 //#endregion

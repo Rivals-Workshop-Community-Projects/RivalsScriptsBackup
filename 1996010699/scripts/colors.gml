@@ -116,11 +116,11 @@ set_color_profile_slot( 11, 3, 186, 171, 135 ); //CHEST
 set_color_profile_slot( 11, 4, 176, 75, 207 ); //unnamed color row
 set_color_profile_slot( 11, 5, 242, 226, 208 ); //HIGHLIGHT
 
-// USA
-set_color_profile_slot( 12, 0, 60, 59, 110 ); //CASE
-set_color_profile_slot( 12, 1, 15, 15, 43 ); //SHADOW
-set_color_profile_slot( 12, 2, 178, 34, 52 ); //WHEELS
-set_color_profile_slot( 12, 3, 247, 254, 255 ); //CHEST
+// moth
+set_color_profile_slot( 12, 0, 86, 60, 86 ); //CASE
+set_color_profile_slot( 12, 1, 32, 0, 43 ); //SHADOW
+set_color_profile_slot( 12, 2, 193, 52, 52 ); //WHEELS
+set_color_profile_slot( 12, 3, 244, 212, 173 ); //CHEST
 set_color_profile_slot( 12, 4, 58, 210, 228 ); //unnamed color row
 set_color_profile_slot( 12, 5, 255, 255, 255 ); //HIGHLIGHT
 

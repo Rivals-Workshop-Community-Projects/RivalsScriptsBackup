@@ -15,11 +15,12 @@ switch(my_hitboxID.attack){
 			print_debug("lol")
 			sound_play(sound_get("getboosted"));  
 			hit_player_obj.malsick = false;
-			hit_player_obj.sickTimer = 0
+			hit_player_obj.sickTimer = 0;
 			hit_player_obj.sickAfterGrace = hit_player_obj.sickAfterGraceMax;
 		}
 }
 
+//Consume sickness to enhance strongs
 var hitFSTRONG = my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1;
 var hitUSTRONG = my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1;
 var hitDSTRONG = my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 6);
@@ -27,7 +28,7 @@ if ((hitFSTRONG || hitUSTRONG|| hitDSTRONG) && hit_player_obj.malsick)
 {
 	sound_play(sound_get("getboosted"));  
 	hit_player_obj.malsick = false;
-	hit_player_obj.sickTimer = 0
+	hit_player_obj.sickTimer = 0;
 	hit_player_obj.sickAfterGrace = hit_player_obj.sickAfterGraceMax;
 	markConsumed = true;
 	
@@ -56,11 +57,14 @@ if (my_hitboxID.attack == AT_USPECIAL) {
 	}
 }
 
-//dspec poison
-if (my_hitboxID.attack == AT_DSPECIAL) or (my_hitboxID.attack == AT_DTILT) {
-	if !hit_player_obj.malsick {
-            sound_play(sound_get("sick"));
-    } 
+//Inflict poison to hit foes
+if (my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DTILT)
+{
+	if !hit_player_obj.malsick
+	{
+        sound_play(sound_get("sick"));
+    }
+	hit_player_obj.sickAfterGrace = 0;
 	hit_player_obj.malsick = true;
 	hit_player_obj.sickOwner = id;
 	hit_player_obj.sickTimer = 60*5;

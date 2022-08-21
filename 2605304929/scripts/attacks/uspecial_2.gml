@@ -14,6 +14,11 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, 
+"- Enhanced version of Uspecial
+- Consumes Mark
+- Has anti gannoncide platform code.
+- Has anti top gimping code.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -261,6 +266,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
     set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 3);
+    set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 //hitbox_num++;
 
 /*

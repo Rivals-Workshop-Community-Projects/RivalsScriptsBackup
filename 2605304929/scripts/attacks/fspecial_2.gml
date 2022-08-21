@@ -14,6 +14,10 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, 
+"- Enhanced version of Fspecial
+- Consumes Mark
+- Has Anti Gannoncide Platform code.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -112,7 +116,7 @@ window_for_hitbox = 3;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 66);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
     set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
@@ -194,12 +198,14 @@ window_for_hitbox = 7;
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.15);
     set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
+    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // Normal Large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, 92, "If gannoncide platform is active, 
+    this sends at angle 90 always");//HG_MUNO_HITBOX_MISC
 hitbox_num++;
 
 /* Unused shock boxes for now

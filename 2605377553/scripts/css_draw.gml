@@ -72,7 +72,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     // the primary part you should change.
     //--- ---
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
-    color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
+    color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
     col_max = 20; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
@@ -92,8 +92,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[4,0] = make_color_rgb(41, 44, 51)
     ce[4,1] = "Chromatic"
     ce[4,2] = "An original color. Black and white, so be it."
-    ce[5,0] = make_color_rgb(209, 8, 68)
-    ce[5,1] = "Pretty Pink"
+    ce[5,0] = make_color_rgb(52, 182, 194)
+    ce[5,1] = "Riptide"
     ce[5,2] = "An original color. It is pretty pink."
     ce[6,0] = make_color_rgb(128, 0, 128)
     ce[6,1] = "Ace in the Hole"
@@ -142,6 +142,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[20,2] = "An original color. A white spectre."  
     ce[21,0] = make_color_rgb(255, 0, 0)
     ce[21,1] = "Canada??"
+    ce[21,2] = "Thought it would be kinda funny. Mal is canadian."    
+    ce[21,0] = make_color_rgb(209, 8, 68)
+    ce[21,1] = "Pretty Pink"
     ce[21,2] = "Thought it would be kinda funny. Mal is canadian."    
 
 

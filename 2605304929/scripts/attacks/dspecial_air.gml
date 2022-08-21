@@ -12,6 +12,8 @@ set_attack_value(attack, AG_OFF_LEDGE, 1);
 set_attack_value(attack, AG_LANDING_LAG, 15);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "-Refreshes Double Jump once per airtime.
+- Hold down on joystick to go through platforms.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -130,12 +132,13 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 16);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_HIT_LOCKOUT, 20);
+set_hitbox_value(attack, hitbox_num, 81, "Strong Start Up Hitbox");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 //2 weak traveling hitbox
@@ -160,6 +163,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 6); //6   - light water small
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, 81, "Weak Traveling Hitbox");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 //3 Sweetspot Hit Grab cannot hit if strong start up hits
@@ -183,6 +187,8 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
+set_hitbox_value(attack, hitbox_num, 81, "Sweetspot Grab");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Hitting this will start the down special Grab");//HG_MUNO_HITBOX_MISC_ADD = i; i++;
 
 hitbox_num++;
 
@@ -208,6 +214,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); //302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, 81, "Shockwave Front");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -233,6 +240,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); //302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, 81, "Shockwave Back");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 /*

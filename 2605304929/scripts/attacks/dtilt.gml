@@ -66,11 +66,11 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .3);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
+//set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 hitbox_num++;
 
 /*

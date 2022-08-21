@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 10);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Sets Water Mark Status on opponent on hit.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -89,11 +90,13 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 135);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .1);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); 
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Top Hitbox");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 
 hitbox_num++;
 
@@ -107,16 +110,18 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -40);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -69);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 59);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 60);
-set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 7);
+set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Back Hit 1");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 
 hitbox_num++;
 
@@ -135,11 +140,13 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Back Hit 2");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 
 hitbox_num++;
 
@@ -158,11 +165,14 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Final Under Hitbox");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
+
 //hitbox_num++;
 
 /*

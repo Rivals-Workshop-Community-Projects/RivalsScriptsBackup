@@ -309,6 +309,15 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.2", "20th August, 2022");
+initHeader("Nerfs");
+initSection("- Reduced the amount of properties that would fall during his final smash (Don wasn't feeling lucky today)");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed bug where Jail would sometimes make an error sound when opponents launched it");
+initSection("- Fixed bug where Jail would sometimes have more armor than intended, making it difficult for opponents to knock around");
+initSection("- Fixed DStrong reflect hitbox not being unreflectable");
+initSection("- Fixed Mr Oarly Bank sprite a little");
+
 initPatch("1.1", "12th August, 2022");
 initHeader("Fixes / Other Changes");
 initSection("- You can now pay the jail fine by pressing any of the buttons you would use to roll the dices once you've used up your roll attempts");

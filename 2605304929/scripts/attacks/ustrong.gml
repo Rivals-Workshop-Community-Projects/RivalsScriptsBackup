@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 4);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Sets Water Mark Status on opponent on hit. Sets into pratfall on whiff");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -106,11 +107,12 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 11);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.2);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 20);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1.5);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //// 304 - basic large
-set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
+//set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(attack, hitbox_num, 81, "Start Up");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -129,11 +131,12 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 7);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //// 304 - basic large
-set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
+//set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(attack, hitbox_num, 81, "Rising");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -152,11 +155,12 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 7);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
+//set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304);//// 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, 81, "Late");//HG_MUNO_HITBOX_NAME
 
 //hitbox_num++;
 

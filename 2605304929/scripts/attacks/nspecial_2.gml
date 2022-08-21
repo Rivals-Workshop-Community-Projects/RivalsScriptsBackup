@@ -19,7 +19,7 @@ var window_num = 1;
 
 // Window #1 / Frame(s) # 0-3 / Start Up / Lift
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
@@ -82,7 +82,7 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 5);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 100);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .4);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); // 302 - basic small with spin effect in center

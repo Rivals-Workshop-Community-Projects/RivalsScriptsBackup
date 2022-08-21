@@ -5,6 +5,8 @@ your hitbox (player 1, player 2, etc). Use my_hitboxID to reference the hitbox
 that was parried.*/
 //my_hitboxID
 // hit_player_obj
+if("my_hitboxID" not in self){exit};
+
 if(attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_NSPECIAL_AIR){
 	if(free) {set_state(PS_PRATFALL);parry_lag = 40;}
 	if(!free) {

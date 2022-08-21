@@ -127,7 +127,7 @@ if(finalsmashtimer > 0){
 			token.hsp = -2+random_func(0, 5, true);token.vsp = 8;
 		}
 	}else if(finalsmashnum == 2){ //property
-    	if(finalsmashtimer % 20 == 0){
+    	if(finalsmashtimer % 40 == 0){
 			var house = create_hitbox(AT_DSPECIAL, 1+random_func(3, 3, true), round(room_width/2)-500+random_func(0, 1000, true), -500);
 			house.vsp = 20;
 		}

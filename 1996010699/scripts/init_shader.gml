@@ -1,6 +1,12 @@
 //champSlot = 1;
 
 switch(get_player_color(player)){
+	case 3:
+		set_character_color_shading(2, 1.8);
+		break;
+	case 5:
+		set_character_color_shading(2, 2.7);
+		break;
 	case 6:
 		if("champSlot" in self && champSlot == -1){
 			set_character_color_slot(0, 175, 189, 200, 0.69); //CASE
@@ -21,10 +27,17 @@ switch(get_player_color(player)){
 			set_character_color_shading(i, 0);
 		}
 		break;
+	case 12:
+		set_character_color_shading(0, 0.7);
+		break;
 	case 14:
 		outline_color = [ 96, 37, 0 ];
 		break;
 	case 15:
 		outline_color = [ 76, 53, 0 ];
+		break;
+	case 22:
+		set_character_color_shading(0, 1.2);
+		set_character_color_shading(2, -3);
 		break;
 }

@@ -94,10 +94,11 @@ set_hitbox_value(attack, hitbox_num, HG_ANGLE, 30);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 1);
+set_hitbox_value(attack, hitbox_num, 81, "Surfboard Hitbox");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
@@ -117,11 +118,12 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 4);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 60);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .3);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 4);
+set_hitbox_value(attack, hitbox_num, 81, "Later Hitbox Top");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 //Rising hitbox bottom
@@ -140,11 +142,12 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 4);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 60);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .3);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 4);
+set_hitbox_value(attack, hitbox_num, 81, "Later Hitbox Front");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
 /*

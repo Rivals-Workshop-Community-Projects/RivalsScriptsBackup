@@ -103,6 +103,7 @@ sprite_change_offset("platform_icon", 128, 128);
 //Other Stuff
 sprite_change_offset("intro", 128, 162);
 sprite_change_offset("intro_g8", 128, 162);
+sprite_change_offset("intro_riptide", 128, 162);
 sprite_change_offset("plat", 128, 162);
 sprite_change_offset("plat_bg", 128, 162);
 sprite_change_offset("plat_idle", 128, 162);
@@ -132,6 +133,7 @@ set_victory_bg(sprite_get("victory_bg"));
 sprite_change_offset("dialogue_buddy", 102, 72);
 sprite_change_offset("kinniku_front", 140, 180);
 sprite_change_offset("kinniku_behind", 140, 180);
+
 
 //set_victory_theme(CH_CLAIREN);
 //set_victory_bg( sprite_get( "custom" ));

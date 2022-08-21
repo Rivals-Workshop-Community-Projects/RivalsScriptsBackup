@@ -27,40 +27,55 @@ if(state == PS_DOUBLE_JUMP){
 
 // Intro Code
 if(state == PS_SPAWN){
+	//print(get_player_color(player));
 	// Length of the spawn state is 125 frames.
-	switch(get_player_color(player)){
-		case 22:
+	// intro Code
+	/*
+	intro_sound_played_flag = false;
+	intro_animation_frames_before_start = 0;
+	intro_animation_strip_frames = 0;
+	intro_animation_speed = 0;
+	*/
+	// Genesis
+	if(get_player_color(player) == 8 && color_shift == true){
 		sprite_index = sprite_get("intro_g8");
-		break;
-		default:
+		// Parameters of the intro sequence
+		intro_animation_frames_before_start = 6; // Set this to calibrate where the animation should start
+		intro_animation_strip_frames = 18;
+		intro_animation_speed = 6; // Inverse
+		// Sound
+		if(state_timer == 1){
+			sound_play(sound_get("thunder_3"));
+		}
+		if(image_index == 9 && intro_sound_played_flag == false){ // play reload sound on image index 8S
+		    sound_play(asset_get("sfx_syl_dspecial_howl"));
+		    intro_sound_played_flag = true;
+		}
+		
+	} 
+	// Riptide
+	else if(get_player_color(player) == 4 && color_shift == false){
+		sprite_index = sprite_get("intro_riptide");
+		intro_animation_frames_before_start = 80; // Set this to calibrate where the animation should start
+		intro_animation_strip_frames = 7;
+		intro_animation_speed = 7; // Inverse
+		// Bubbles
+		if(state_timer == 20 || state_timer == 80){
+			var bubble_hfx = spawn_hit_fx(x-20,y-20,hitfx_bubbles);
+			bubble_hfx.depth = depth - 1;
+			//print("spawn bubbles")
+		}
+	}
+	// All others
+	else{
 		sprite_index = sprite_get("intro");
-		break;
-	}
-	image_index = 0;
-	// Parameters of the intro sequence
-	var start_intro_movement_timer = 6; // Set this to calibrate where the animation should start
-	var number_of_frames_in_strip = 18;
-	var animation_speed = 6; // Inverse
-	// Image Index Handler
-	if(get_gameplay_time() >= start_intro_movement_timer && image_index != number_of_frames_in_strip){ // starts animation. 
-	    image_index = clamp(floor((get_gameplay_time() - start_intro_movement_timer) / animation_speed),0,number_of_frames_in_strip);
-	}
+		intro_animation_frames_before_start = 6; // Set this to calibrate where the animation should start
+		intro_animation_strip_frames = 18;
+		intro_animation_speed = 6; // Inverse
+		}
 	
-	// Sound Handler
-	switch(get_player_color(player)){
-		case 22:
-			if(state_timer == 1){
-				sound_play(sound_get("thunder_3"));
-			}
-			if(image_index == 9 && intro_sound_played_flag == false){ // play reload sound on image index 8S
-			    sound_play(asset_get("sfx_syl_dspecial_howl"));
-			    intro_sound_played_flag = true;
-			}
-			//
-			break;
-		default:
-			break;
-	}
+	image_index = 0;
+	Intro_image_index_handler(intro_animation_frames_before_start,intro_animation_strip_frames,intro_animation_speed);
 }
 
 //Respawn Code
@@ -97,7 +112,25 @@ if(attack == AT_EXTRA_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 	}
 }
 
-
+#define Intro_image_index_handler(start_intro_movement_timer,number_of_frames_in_strip,animation_speed)
+{
+	/*
+	// Image Index Handler
+	if(get_gameplay_time() >= start_intro_movement_timer && image_index != number_of_frames_in_strip){ // starts animation. 
+	    image_index = clamp(floor((get_gameplay_time() - start_intro_movement_timer) / animation_speed),0,number_of_frames_in_strip);
+	}
+	*/
+	//number_of_frames_in_strip needs to be offset back by how long the timer has been t
+	if(state_timer > start_intro_movement_timer){
+		//print(get_gameplay_time());
+		var animation_timer = state_timer - start_intro_movement_timer
+		image_index = animation_timer / animation_speed;
+		//print("image_index: " + string(image_index));
+		image_index = clamp(floor(image_index),0,number_of_frames_in_strip);
+	}
+	//print(image_index);
+	//print(animation_timer);
+}
 /*
 // SFX Lists
 mfx_back

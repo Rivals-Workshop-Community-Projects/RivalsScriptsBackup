@@ -341,4 +341,10 @@ if(attack == AT_BAIR){
 	}
 }
 
+if(attack == AT_DSTRONG){
+	if(hbox_num == 6){
+		UnReflectable = true;
+	}
+}
+
 draw_xscale = spr_dir;

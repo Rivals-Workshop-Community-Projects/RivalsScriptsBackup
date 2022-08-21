@@ -1,3 +1,5 @@
+//SHOOT SPHERE
+
 set_attack_value(AT_NSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 12);
 set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));

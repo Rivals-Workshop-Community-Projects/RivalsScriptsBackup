@@ -12,6 +12,7 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 8);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, "Startup hitboxes Sets Water Mark Status on opponent on hit. Lingering hit does not.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -78,7 +79,8 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1.2);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 157); // 157 - lightning extra large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 4);
-
+set_hitbox_value(attack, hitbox_num, 81, "Sweetspot Tipper");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 hitbox_num++;
 
 //Strong 2 start up no sweetspot
@@ -96,12 +98,13 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 9);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .7);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
-
+set_hitbox_value(attack, hitbox_num, 81, "Start Up No Tipper");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 hitbox_num++;
 
 //Hitbox 3 Linger Knee Hitbox
@@ -119,10 +122,12 @@ set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .2);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, 81, "Lingering Sour Spot");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "DOES NOT SET water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 hitbox_num++;
 
 /*

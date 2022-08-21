@@ -14,6 +14,10 @@ set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+set_attack_value(attack, 87, 
+"- Enhanced version of Dspecial
+- Consumes Mark
+- Has Anti Gannoncide Platform code.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
@@ -95,6 +99,8 @@ window_for_hitbox = 4;
     //set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 20);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // 304 - basic large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"))
+    set_hitbox_value(attack, hitbox_num, 92, "If gannoncide platform is active, 
+    this sends at angle 90 always");//HG_MUNO_HITBOX_MISC
 //hitbox_num++;
 
 /*

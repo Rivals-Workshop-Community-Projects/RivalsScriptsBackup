@@ -1,3 +1,5 @@
+//CATOOKEN
+
 set_attack_value(43, AG_CATEGORY, 2);
 set_attack_value(43, AG_NUM_WINDOWS, 9);
 set_attack_value(43, AG_SPRITE, sprite_get("nspecial"));
@@ -74,7 +76,7 @@ ig++;
 
 //Normal Special End Alt (9)
 set_window_value(43, ig, AG_WINDOW_TYPE, 1);
-set_window_value(43, ig, AG_WINDOW_LENGTH, 10); //15
+set_window_value(43, ig, AG_WINDOW_LENGTH, 10);
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(43, ig, AG_WINDOW_ANIM_FRAME_START, 34);
 set_window_value(43, ig, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -84,7 +86,7 @@ ig = 1;
 
 //Catooken Hitbox
 set_hitbox_value(43, ig, HG_HITBOX_TYPE, 2);
-set_hitbox_value(43, ig, HG_LIFETIME, 50);
+set_hitbox_value(43, ig, HG_LIFETIME, 50); //UPDATE 8-13-2022, 70
 set_hitbox_value(43, ig, HG_PRIORITY, 2);
 set_hitbox_value(43, ig, HG_DAMAGE, 4); //Change in init
 set_hitbox_value(43, ig, HG_ANGLE, 45);

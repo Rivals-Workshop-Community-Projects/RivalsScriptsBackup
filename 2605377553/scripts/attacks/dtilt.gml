@@ -9,16 +9,22 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_featherout"));
+set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DTILT, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.01);
 
 //atj
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DTILT, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.02);
 
 //atj part 2
 set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DTILT, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.02);
 
 //end
 set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 7);
