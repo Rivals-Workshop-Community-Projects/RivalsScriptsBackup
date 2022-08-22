@@ -22,133 +22,133 @@ set_color_profile_slot_range( 4, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
-
-// fry
-set_color_profile_slot( 1, 0, 191, 43, 21 ); //skin
-set_color_profile_slot( 1, 1, 255, 135, 0 ); //claws
-set_color_profile_slot( 1, 2, 255, 101, 54 ); //crystal
-set_color_profile_slot( 1, 3, 255, 106, 0 ); //radiation
-set_color_profile_slot( 1, 4, 153, 5, 5 ); //skin shade-
-
-// parasol
-set_color_profile_slot( 2, 0, 255, 217, 48 ); //skin
-set_color_profile_slot( 2, 1, 51, 126, 255 ); //claws
-set_color_profile_slot( 2, 2, 125, 173, 255 ); //crystal
-set_color_profile_slot( 2, 3, 255, 0, 60 ); //radiation
-set_color_profile_slot( 2, 4, 255, 141, 41 ); //skin shade-
-
-// barr
-set_color_profile_slot( 3, 0, 70, 158, 206 ); //skin
-set_color_profile_slot( 3, 1, 232, 152, 58 ); //claws
-set_color_profile_slot( 3, 2, 255, 42, 42 ); //crystal
-set_color_profile_slot( 3, 3, 230, 0, 8 ); //radiation
-set_color_profile_slot( 3, 4, 70, 93, 206 ); //skin shade-
-
-// yoyo
-set_color_profile_slot( 4, 0, 57, 62, 112 ); //skin
-set_color_profile_slot( 4, 1, 56, 169, 255 ); //claws
-set_color_profile_slot( 4, 2, 56, 169, 255 ); //crystal
-set_color_profile_slot( 4, 3, 97, 187, 255 ); //radiation
-set_color_profile_slot( 4, 4, 30, 34, 82 ); //skin shade-
-
-// FLLFFL
-set_color_profile_slot( 5, 0, 108, 217, 95 ); //skin
-set_color_profile_slot( 5, 1, 173, 177, 255 ); //claws
-set_color_profile_slot( 5, 2, 192, 199, 204 ); //crystal
-set_color_profile_slot( 5, 3, 154, 154, 171 ); //radiation
-set_color_profile_slot( 5, 4, 0, 184, 0 ); //skin shade-
-
-// torus
-set_color_profile_slot( 6, 0, 206, 64, 212 ); //skin
-set_color_profile_slot( 6, 1, 255, 143, 51 ); //claws
-set_color_profile_slot( 6, 2, 255, 154, 59 ); //crystal
-set_color_profile_slot( 6, 3, 255, 130, 28 ); //radiation
-set_color_profile_slot( 6, 4, 141, 49, 212 ); //skin shade-
-
-// black and blue
-set_color_profile_slot( 7, 0, 52, 57, 59 ); //skin
-set_color_profile_slot( 7, 1, 56, 169, 255 ); //claws
-set_color_profile_slot( 7, 2, 0, 146, 255 ); //crystal
-set_color_profile_slot( 7, 3, 0, 255, 229 ); //radiation
-set_color_profile_slot( 7, 4, 28, 35, 59 ); //skin shade-
-
-// phobos
-set_color_profile_slot( 8, 0, 255, 247, 247 ); //skin
-set_color_profile_slot( 8, 1, 252, 45, 45 ); //claws
-set_color_profile_slot( 8, 2, 252, 45, 45 ); //crystal
-set_color_profile_slot( 8, 3, 255, 0, 106 ); //radiation
-set_color_profile_slot( 8, 4, 227, 188, 188 ); //skin shade-
-
-// mora
-set_color_profile_slot( 9, 0, 83, 156, 188 ); //skin
-set_color_profile_slot( 9, 1, 107, 222, 255 ); //claws
-set_color_profile_slot( 9, 2, 198, 196, 255 ); //crystal
-set_color_profile_slot( 9, 3, 184, 238, 255 ); //radiation
-set_color_profile_slot( 9, 4, 30, 131, 176 ); //skin shade-
-
-// bubblegum
-set_color_profile_slot( 10, 0, 255, 99, 204 ); //skin
-set_color_profile_slot( 10, 1, 255, 102, 181 ); //claws
-set_color_profile_slot( 10, 2, 255, 102, 181 ); //crystal
-set_color_profile_slot( 10, 3, 255, 186, 234 ); //radiation
-set_color_profile_slot( 10, 4, 232, 0, 187 ); //skin shade-
-
-// lesbian
-set_color_profile_slot( 11, 0, 191, 87, 150 ); //skin
-set_color_profile_slot( 11, 1, 242, 126, 148 ); //claws
-set_color_profile_slot( 11, 2, 242, 126, 148 ); //crystal
-set_color_profile_slot( 11, 3, 242, 126, 148 ); //radiation
-set_color_profile_slot( 11, 4, 163, 39, 93 ); //skin shade-
-
-// trans
-set_color_profile_slot( 12, 0, 254, 245, 255 ); //skin
-set_color_profile_slot( 12, 1, 87, 215, 255 ); //claws
-set_color_profile_slot( 12, 2, 186, 240, 255 ); //crystal
-set_color_profile_slot( 12, 3, 140, 221, 255 ); //radiation
-set_color_profile_slot( 12, 4, 246, 173, 255 ); //skin shade-
-
-// blw
-set_color_profile_slot( 13, 0, 105, 80, 80 ); //skin
-set_color_profile_slot( 13, 1, 255, 148, 66 ); //claws
-set_color_profile_slot( 13, 2, 255, 224, 130 ); //crystal
-set_color_profile_slot( 13, 3, 255, 111, 0 ); //radiation
-set_color_profile_slot( 13, 4, 71, 46, 46 ); //skin shade-
-
-// poison
-set_color_profile_slot( 14, 0, 69, 46, 117 ); //skin
-set_color_profile_slot( 14, 1, 206, 64, 212 ); //claws
-set_color_profile_slot( 14, 2, 206, 64, 212 ); //crystal
-set_color_profile_slot( 14, 3, 175, 31, 181 ); //radiation
-set_color_profile_slot( 14, 4, 44, 22, 89 ); //skin shade-
-
-// mint
-set_color_profile_slot( 15, 0, 237, 255, 237 ); //skin
-set_color_profile_slot( 15, 1, 46, 255, 46 ); //claws
-set_color_profile_slot( 15, 2, 169, 224, 169 ); //crystal
-set_color_profile_slot( 15, 3, 1, 187, 0 ); //radiation
-set_color_profile_slot( 15, 4, 151, 240, 171 ); //skin shade-
-
-// monotone
-set_color_profile_slot( 16, 0, 87, 87, 87 ); //skin
-set_color_profile_slot( 16, 1, 255, 145, 208 ); //claws
-set_color_profile_slot( 16, 2, 255, 222, 241 ); //crystal
-set_color_profile_slot( 16, 3, 172, 172, 172 ); //radiation
-set_color_profile_slot( 16, 4, 46, 46, 46 ); //skin shade-
+set_num_palettes( 21 );
 
 // JM-Won
-set_color_profile_slot( 17, 0, 0, 234, 255 ); //skin
-set_color_profile_slot( 17, 1, 23, 255, 251 ); //claws
-set_color_profile_slot( 17, 2, 166, 97, 88 ); //crystal
-set_color_profile_slot( 17, 3, 107, 62, 80 ); //radiation
-set_color_profile_slot( 17, 4, 111, 135, 237 ); //skin shade-
+set_color_profile_slot( 1, 0, 0, 234, 255 ); //skin
+set_color_profile_slot( 1, 1, 23, 255, 251 ); //claws
+set_color_profile_slot( 1, 2, 166, 97, 88 ); //crystal
+set_color_profile_slot( 1, 3, 107, 62, 80 ); //radiation
+set_color_profile_slot( 1, 4, 111, 135, 237 ); //skin shade-
+
+// fry
+set_color_profile_slot( 2, 0, 191, 43, 21 ); //skin
+set_color_profile_slot( 2, 1, 255, 135, 0 ); //claws
+set_color_profile_slot( 2, 2, 255, 101, 54 ); //crystal
+set_color_profile_slot( 2, 3, 255, 106, 0 ); //radiation
+set_color_profile_slot( 2, 4, 153, 5, 5 ); //skin shade-
+
+// parasol
+set_color_profile_slot( 3, 0, 255, 217, 48 ); //skin
+set_color_profile_slot( 3, 1, 51, 126, 255 ); //claws
+set_color_profile_slot( 3, 2, 125, 173, 255 ); //crystal
+set_color_profile_slot( 3, 3, 255, 0, 60 ); //radiation
+set_color_profile_slot( 3, 4, 255, 141, 41 ); //skin shade-
+
+// barr
+set_color_profile_slot( 4, 0, 70, 158, 206 ); //skin
+set_color_profile_slot( 4, 1, 232, 152, 58 ); //claws
+set_color_profile_slot( 4, 2, 255, 42, 42 ); //crystal
+set_color_profile_slot( 4, 3, 230, 0, 8 ); //radiation
+set_color_profile_slot( 4, 4, 70, 93, 206 ); //skin shade-
+
+// yoyo
+set_color_profile_slot( 5, 0, 57, 62, 112 ); //skin
+set_color_profile_slot( 5, 1, 56, 169, 255 ); //claws
+set_color_profile_slot( 5, 2, 56, 169, 255 ); //crystal
+set_color_profile_slot( 5, 3, 97, 187, 255 ); //radiation
+set_color_profile_slot( 5, 4, 30, 34, 82 ); //skin shade-
+
+// FLLFFL
+set_color_profile_slot( 6, 0, 108, 217, 95 ); //skin
+set_color_profile_slot( 6, 1, 132, 36, 255 ); //claws
+set_color_profile_slot( 6, 2, 192, 199, 204 ); //crystal
+set_color_profile_slot( 6, 3, 109, 92, 171 ); //radiation
+set_color_profile_slot( 6, 4, 0, 184, 0 ); //skin shade-
+
+// torus
+set_color_profile_slot( 7, 0, 206, 64, 212 ); //skin
+set_color_profile_slot( 7, 1, 255, 143, 51 ); //claws
+set_color_profile_slot( 7, 2, 255, 154, 59 ); //crystal
+set_color_profile_slot( 7, 3, 255, 130, 28 ); //radiation
+set_color_profile_slot( 7, 4, 141, 49, 212 ); //skin shade-
+
+// black and blue
+set_color_profile_slot( 8, 0, 52, 57, 59 ); //skin
+set_color_profile_slot( 8, 1, 56, 169, 255 ); //claws
+set_color_profile_slot( 8, 2, 0, 146, 255 ); //crystal
+set_color_profile_slot( 8, 3, 0, 255, 229 ); //radiation
+set_color_profile_slot( 8, 4, 28, 35, 59 ); //skin shade-
+
+// phobos
+set_color_profile_slot( 9, 0, 255, 247, 247 ); //skin
+set_color_profile_slot( 9, 1, 252, 45, 45 ); //claws
+set_color_profile_slot( 9, 2, 252, 45, 45 ); //crystal
+set_color_profile_slot( 9, 3, 255, 0, 106 ); //radiation
+set_color_profile_slot( 9, 4, 227, 188, 188 ); //skin shade-
+
+// mora
+set_color_profile_slot( 10, 0, 83, 156, 188 ); //skin
+set_color_profile_slot( 10, 1, 107, 222, 255 ); //claws
+set_color_profile_slot( 10, 2, 198, 196, 255 ); //crystal
+set_color_profile_slot( 10, 3, 184, 238, 255 ); //radiation
+set_color_profile_slot( 10, 4, 30, 131, 176 ); //skin shade-
+
+// bubblegum
+set_color_profile_slot( 11, 0, 255, 99, 204 ); //skin
+set_color_profile_slot( 11, 1, 255, 102, 181 ); //claws
+set_color_profile_slot( 11, 2, 255, 102, 181 ); //crystal
+set_color_profile_slot( 11, 3, 255, 186, 234 ); //radiation
+set_color_profile_slot( 11, 4, 232, 0, 187 ); //skin shade-
+
+// lesbian
+set_color_profile_slot( 12, 0, 191, 87, 150 ); //skin
+set_color_profile_slot( 12, 1, 242, 126, 148 ); //claws
+set_color_profile_slot( 12, 2, 242, 126, 148 ); //crystal
+set_color_profile_slot( 12, 3, 242, 126, 148 ); //radiation
+set_color_profile_slot( 12, 4, 163, 39, 93 ); //skin shade-
+
+// trans
+set_color_profile_slot( 13, 0, 254, 245, 255 ); //skin
+set_color_profile_slot( 13, 1, 87, 215, 255 ); //claws
+set_color_profile_slot( 13, 2, 186, 240, 255 ); //crystal
+set_color_profile_slot( 13, 3, 140, 221, 255 ); //radiation
+set_color_profile_slot( 13, 4, 246, 173, 255 ); //skin shade-
+
+// blw
+set_color_profile_slot( 14, 0, 105, 80, 80 ); //skin
+set_color_profile_slot( 14, 1, 255, 148, 66 ); //claws
+set_color_profile_slot( 14, 2, 255, 224, 130 ); //crystal
+set_color_profile_slot( 14, 3, 255, 111, 0 ); //radiation
+set_color_profile_slot( 14, 4, 71, 46, 46 ); //skin shade-
+
+// poison
+set_color_profile_slot( 15, 0, 69, 46, 117 ); //skin
+set_color_profile_slot( 15, 1, 206, 64, 212 ); //claws
+set_color_profile_slot( 15, 2, 206, 64, 212 ); //crystal
+set_color_profile_slot( 15, 3, 175, 31, 181 ); //radiation
+set_color_profile_slot( 15, 4, 44, 22, 89 ); //skin shade-
+
+// mint
+set_color_profile_slot( 16, 0, 237, 255, 237 ); //skin
+set_color_profile_slot( 16, 1, 46, 255, 46 ); //claws
+set_color_profile_slot( 16, 2, 169, 224, 169 ); //crystal
+set_color_profile_slot( 16, 3, 1, 187, 0 ); //radiation
+set_color_profile_slot( 16, 4, 151, 240, 171 ); //skin shade-
+
+// monotone
+set_color_profile_slot( 17, 0, 87, 87, 87 ); //skin
+set_color_profile_slot( 17, 1, 255, 145, 208 ); //claws
+set_color_profile_slot( 17, 2, 255, 222, 241 ); //crystal
+set_color_profile_slot( 17, 3, 172, 172, 172 ); //radiation
+set_color_profile_slot( 17, 4, 46, 46, 46 ); //skin shade-
 
 // High Tier Mortal
-set_color_profile_slot( 18, 0, 26, 26, 26 ); //skin
+set_color_profile_slot( 18, 0, 38, 38, 38 ); //skin
 set_color_profile_slot( 18, 1, 255, 0, 0 ); //claws
 set_color_profile_slot( 18, 2, 255, 0, 0 ); //crystal
 set_color_profile_slot( 18, 3, 255, 4, 0 ); //radiation
-set_color_profile_slot( 18, 4, 15, 14, 14 ); //skin shade-
+set_color_profile_slot( 18, 4, 18, 17, 17 ); //skin shade-
 
 // summit
 set_color_profile_slot( 19, 0, 44, 42, 51 ); //skin
@@ -156,6 +156,13 @@ set_color_profile_slot( 19, 1, 255, 28, 48 ); //claws
 set_color_profile_slot( 19, 2, 255, 255, 255 ); //crystal
 set_color_profile_slot( 19, 3, 201, 0, 114 ); //radiation
 set_color_profile_slot( 19, 4, 23, 23, 38 ); //skin shade-
+
+// Ducky
+set_color_profile_slot( 20, 0, 255, 222, 54 ); //skin
+set_color_profile_slot( 20, 1, 255, 87, 250 ); //claws
+set_color_profile_slot( 20, 2, 251, 112, 255 ); //crystal
+set_color_profile_slot( 20, 3, 54, 188, 255 ); //radiation
+set_color_profile_slot( 20, 4, 199, 98, 43 ); //skin shade-
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

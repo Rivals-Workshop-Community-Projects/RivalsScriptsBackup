@@ -14,7 +14,7 @@ set_color_profile_slot_range(3, 1, 1, 23);
 set_color_profile_slot_range(4, 4, 5, 12);
 set_color_profile_slot_range(5, 1, 1, 19);
 
-set_num_palettes(19);
+set_num_palettes(20);
 
 //Yellow Scarf
 set_color_profile_slot(1, 0, 64, 124, 48);
@@ -153,10 +153,17 @@ set_color_profile_slot(17, 4, 167, 186, 74 );
 set_color_profile_slot(17, 5, 167, 186, 74 );
 
 //Gold Kitty
-set_color_profile_slot( 18, 0, 255, 162, 29 );
-set_color_profile_slot( 18, 1, 86, 23, 16 );
-set_color_profile_slot( 18, 2, 192, 92, 0 );
-set_color_profile_slot( 18, 3, 255, 162, 29 );
-set_color_profile_slot( 18, 4, 255, 234, 155 ); 
-set_color_profile_slot( 18, 5, 255, 162, 29 );
+set_color_profile_slot(18, 0, 255, 162, 29 );
+set_color_profile_slot(18, 1, 86, 23, 16 );
+set_color_profile_slot(18, 2, 192, 92, 0 );
+set_color_profile_slot(18, 3, 255, 162, 29 );
+set_color_profile_slot(18, 4, 255, 234, 155 ); 
+set_color_profile_slot(18, 5, 255, 162, 29 );
 
+//Mio
+set_color_profile_slot(19, 0, 225, 225, 225);
+set_color_profile_slot(19, 1, 215, 215, 215);
+set_color_profile_slot(19, 2, 200, 39, 51);
+set_color_profile_slot(19, 3, 190, 39, 51);
+set_color_profile_slot(19, 4, 237, 205, 180);
+set_color_profile_slot(19, 5, 216, 184, 0);

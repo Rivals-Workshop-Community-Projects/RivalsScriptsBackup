@@ -448,6 +448,22 @@ else if (motorbike == true)
 					break;
 				}
 			}
+			if (state != PS_WALK)
+			{
+				if(floor(state_timer/4) == state_timer /4)
+				{
+					spawn_base_dust(x, y, "dash_start");
+					spawn_base_dust(x + 30 * spr_dir, y, "dash_start");
+				}	
+			}
+			else
+			{
+				if(floor(state_timer/4) == state_timer /4)
+				{
+					spawn_base_dust(x, y, "dash");
+					spawn_base_dust(x + 30 * spr_dir, y, "dash");
+				}
+			}
 		break;
 		//Sound effects while stopping with the bike
 		case PS_DASH_STOP:
@@ -486,6 +502,13 @@ else if (motorbike == true)
 	  		{
 	  			sound_play(sound_get("guard"));
 	  		}
+	  	break;
+	  	case PS_WAVELAND:
+			if(floor(state_timer/4) == state_timer /4)
+			{
+				spawn_base_dust(x, y, "dash_start");
+				spawn_base_dust(x + 30 * spr_dir, y, "dash_start");
+			}	
 	  	break;
 		default:
 		break;
@@ -604,6 +627,11 @@ can_wall_cling = ((motorbike = true && y > SD_Y_POS + 150 && hitpause == false)?
 //Enables the ability to ride up walls
 if (clinging == true && hitpause == false)
 {
+	if(floor(state_timer/4) == state_timer /4)
+	{
+		spawn_base_dust(x - 20 *spr_dir, y + 30, "wallride");
+		spawn_base_dust(x - 20 *spr_dir, y - 30, "wallride");
+	}
 	sound_stop(sound_get("motorbike_move"));
 	sound_play(sound_get("motorbike_move"));
 	sound_stop(sound_get("motorbike_idle"));
@@ -1217,3 +1245,38 @@ if(variable_instance_exists(id,"diag"))
         }
     }
 }
+
+#define spawn_base_dust // originally by supersonic
+/// spawn_base_dust(x, y, name, dir = 0)
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "wallride":dlen = 24; dfx = 3; dfg = 2626; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(round(x),round(y),asset_get("empty_sprite"),dlen);
+if newdust == noone return noone;
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

@@ -173,6 +173,11 @@ if (motorbike == false)
 		{
 			destroy_hitboxes();
 		}
+		if (!free)
+		{
+			spawn_base_dust(x, y, "jump");
+			spawn_base_dust(x, y, "land");
+		}
 		//Cooldown to prevent the move from being spammed, since its so good
 		if (window = 2 && window_timer == 10)
 		{
@@ -335,6 +340,10 @@ if (motorbike == false)
 				sound_stop(sound_get ("carol_up_special"));
 				sound_play(sound_get ("carol_up_special"));
 			}
+		}
+		if (window == 1 && window_timer == 6 && !free)
+		{
+			spawn_base_dust(x, y, "jump");
 		}
 		if (window == 3 || (window == 2 && window_timer >= 4))
 		{
@@ -564,6 +573,11 @@ else if (motorbike == true)
 
 		//Nitro Boost
 		case AT_FSPECIAL_2:
+		if(floor(state_timer/2) == state_timer /2 && !free)
+		{
+			spawn_base_dust(x, y, "dash_start");
+			spawn_base_dust(x + 30 *spr_dir, y, "dash_start");
+		}
 		//Voice
 		if (window == 1 && window_timer == 1)
 		{
@@ -636,6 +650,10 @@ else if (motorbike == true)
 				sound_stop(sound_get ("carol_up_special"));
 				sound_play(sound_get ("carol_up_special"));
 			}
+		}
+		if (window == 1 && window_timer == 6 && !free)
+		{
+			spawn_base_dust(x, y, "jump");
 		}
 		if (window == 3 || (window == 2 && window_timer >= 4))
 		{
@@ -806,8 +824,26 @@ else if (motorbike == true)
 		case 46:
 		case 45:
         if (right_down and spr_dir == 1) or (left_down and spr_dir == -1)
+        {
             hsp = spr_dir * bike_sp
             can_move = true;
+			if (bike_sp = dash_speed)
+			{
+				if(floor(state_timer/4) == state_timer /4)
+				{
+					spawn_base_dust(x, y, "dash_start");
+					spawn_base_dust(x + 30 * spr_dir, y, "dash_start");
+				}	
+			}
+			else if (bike_sp == walk_speed)
+			{
+				if(floor(state_timer/4) == state_timer /4)
+				{
+					spawn_base_dust(x, y, "dash");
+					spawn_base_dust(x + 30 * spr_dir, y, "dash");
+				}
+			}
+		}
         break;
         case 47:
         case AT_FSTRONG_2:
@@ -815,7 +851,23 @@ else if (motorbike == true)
         case AT_USTRONG_2:
             hsp = spr_dir * bike_sp
             can_move = true;
-        break;
+            if (bike_sp = dash_speed)
+			{
+				if(floor(state_timer/4) == state_timer /4)
+				{
+					spawn_base_dust(x, y, "dash_start");
+					spawn_base_dust(x + 30 * spr_dir, y, "dash_start");
+				}	
+			}
+			else if (bike_sp == walk_speed)
+			{
+				if(floor(state_timer/4) == state_timer /4)
+				{
+					spawn_base_dust(x, y, "dash");
+					spawn_base_dust(x + 30 * spr_dir, y, "dash");
+				}
+			}
+	    break;
 		default:
 		break;
 	}
@@ -882,7 +934,55 @@ switch (attack)
 					sound_play(sound_get ("carol_jab_voice5"));
 				}			
 			}
+			if (window != 1)
+			{
+				switch(attack)
+				{
+					case AT_FTILT:
+					case AT_UTILT:
+						spawn_base_dust(x, y, "walk");
+					break;
+					case 47:
+						spawn_base_dust(x, y, "dash");
+						spawn_base_dust(x + 30 * spr_dir, y, "dash");
+					break;
+					default:
+					break;
+				}
+				
+			}
+			else
+			{
+				switch(attack)
+				{
+					case 46:
+					case 45:
+						spawn_base_dust(x, y, "dash");
+						spawn_base_dust(x, y, "dash", -spr_dir);
+					break;
+					default:
+					break;
+				}
+			}
 		}
+		break;
+		case 2:
+			if (window_timer == 1)
+			{
+				switch(attack)
+				{
+					case AT_FTILT:
+					case AT_UTILT:
+						spawn_base_dust(x, y, "walk");
+					break;
+					case 47:
+						spawn_base_dust(x, y, "dash");
+						spawn_base_dust(x + 30 * spr_dir, y, "dash");
+					break;
+					default:
+					break;
+				}
+			}
 		break;
 		case 3:
 			can_jump = has_hit;
@@ -1084,6 +1184,34 @@ switch (attack)
 			}
 		}
 	}
+	if (window == 2 && window_timer == 1)
+	{
+		switch (attack)
+		{
+			case AT_FSTRONG:
+			case AT_USTRONG:
+			case AT_FSTRONG_2:
+			case AT_USTRONG_2:
+				spawn_base_dust (x, y, "dash");
+			break;
+			default:
+			break;
+		}
+	}
+	if (window == 2 && attack == AT_DSTRONG_2)
+	{
+		if(floor(state_timer/4) == state_timer /4)
+		{
+			spawn_base_dust(x, y, "land");
+		}	
+	}
+	if (window == 4 && window_timer == 1)
+	{
+		if (attack == AT_USTRONG)
+		{
+			spawn_base_dust (x, y, "land");
+		}
+	}
 	break;
 	
 	//Following code governs Wild Kick
@@ -1152,3 +1280,37 @@ switch (attack)
 	default:
 	break;
 }
+
+#define spawn_base_dust // originally by supersonic
+/// spawn_base_dust(x, y, name, dir = 0)
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; if (motorbike == true) dust_color = 1; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; if (motorbike == true) dust_color = 1; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(round(x),round(y),asset_get("empty_sprite"),dlen);
+if newdust == noone return noone;
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

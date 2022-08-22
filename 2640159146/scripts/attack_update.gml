@@ -70,7 +70,7 @@ if (!free)
 		}
 	}
 }
-if get_player_color( player ) == 17 {
+if get_player_color( player ) == 1 {
 	if attack == AT_TAUNT && window == 1 && window_timer == 1 {
 		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("jordan"));
 	}

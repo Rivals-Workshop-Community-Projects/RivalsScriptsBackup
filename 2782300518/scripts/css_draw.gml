@@ -18,15 +18,16 @@ alt_name[6]  = "Lilac";
 alt_name[7]  = "Milla";
 alt_name[8]  = "Mayor Zhao";
 alt_name[9]  = "Garfield";
-alt_name[10]  = "Litten";
+alt_name[10] = "Litten";
 alt_name[11] = "Sprigatito";
-alt_name[12]  = "Big";
+alt_name[12] = "Big";
 alt_name[13] = "Abyss";
 alt_name[14] = "Ratchet";
 alt_name[15] = "Rivet";
 alt_name[16] = "Carrie";
 alt_name[17] = "Game Boy";
 alt_name[18] = "Golden";
+alt_name[19] = "Mio";
 
 //Patch
 
@@ -65,6 +66,9 @@ draw_sprite_ext(sprite_get("voice_button"), voicebutton, voice_button_position_x
 
 if !(instance_exists(cursor_id)) exit;
 
+shader_end();
+cpu_hover_draw(); 
+
 //functions by muno
 #define rectDraw(x1, y1, width, height, color)
 {
@@ -88,4 +92,15 @@ if !(instance_exists(cursor_id)) exit;
 
     if array_bool return [string_width_ext(text, lineb, linew), string_height_ext(text, lineb, linew)];
     else return;
+}
+
+#define cpu_hover_draw()
+if (cpu_hover_time > 0) {
+    var prog = min(cpu_hover_time/10, 1);
+    var colprog = min(cpu_color_swap_time/5, 1);
+    var col = merge_color(cpuh_prev_color, cpuh_new_color, colprog);
+    draw_sprite_ext(cpu_hover_sprite, 0, x - 4, y - 6, 2, 2, 0, col, prog);
+    draw_set_alpha(prog);
+    draw_debug_text(plate_bounds[2]-17, plate_bounds[3]+1, `P${cpu_hovering_player}`);
+    draw_set_alpha(1);
 }
