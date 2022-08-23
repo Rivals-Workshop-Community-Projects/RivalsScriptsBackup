@@ -1,5 +1,7 @@
 //other init
 
+if (instance_exists(oTestPlayer)) exit; //don't run on playtesting
+
 holyburning = false;
 holyburner_id = 0;
 holyburn_timer = 0;

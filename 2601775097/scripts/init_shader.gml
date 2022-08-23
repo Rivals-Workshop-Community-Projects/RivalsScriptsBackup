@@ -1,6 +1,6 @@
 //init_shader
 
-var alt_cur = get_player_color(player);
+var alt_cur = "alt_fix" in self ? get_player_color(alt_fix) : get_player_color(player); //online player is actually player 0, thanks dan
 set_character_color_shading(5, 1.5); //CLOTHBLACK
 
 switch (alt_cur)

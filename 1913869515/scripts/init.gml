@@ -69,6 +69,8 @@ attacking = 0
 
 voicecd = 0
 
+cloned = false 
+
 zcountered = 0
 zcountered2 = 0
 
@@ -91,7 +93,7 @@ walk_anim_speed = .20;
 dash_anim_speed = .4;
 pratfall_anim_speed = .25;
 
-walk_speed = 5;
+walk_speed = 4.5;
 walk_accel = 2;
 walk_turn_time = 6;
 initial_dash_time = 4;

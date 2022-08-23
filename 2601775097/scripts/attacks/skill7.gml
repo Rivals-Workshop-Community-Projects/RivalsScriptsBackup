@@ -63,7 +63,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_lightblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, 3);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("fx_skill7_proj"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, fx_lightblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);

@@ -314,7 +314,7 @@ if btrain >= 100 && btrain < 300 {
 	sound_play(asset_get("sfx_abyss_explosion_start"))		
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	btrain = 420
-	knockback_adj = .9;
+	knockback_adj = .95;
 	
 	//+3 dmg nipples, +1 dmg other, grab + 4dmg
 	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 6);
@@ -356,7 +356,7 @@ if ltrain >= 100 && ltrain < 300 {
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	ltrain = 420
 	
-	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 12);
+	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 11);
 	set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4);
 	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 12);
 	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 12);
@@ -781,7 +781,7 @@ if move_cooldown[AT_BAIR] > 0 {
 if state == PS_PARRY && noparryedit == 0 {
 		free = false 
 		if state_timer > 2 && state_timer < 15 && !invincible{
-			window_timer -= 0.5
+			window_timer -= 0.7
 		} else {
 			if state_timer == 15 {
 				window_timer = floor(window_timer) + 1

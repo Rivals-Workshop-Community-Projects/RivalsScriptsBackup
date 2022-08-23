@@ -30,9 +30,8 @@ if(altSelected != alt_cur)
     altSelected = alt_cur;
 }
 if(timerSelect > 50)
-{
     drawAlpha = (1-(timerSelect - 50)/30);
-}
+
 //Alt name init. var doesn't work with arrays lol
 
 alt_name[0]  = "Punished Fowl";
@@ -72,7 +71,8 @@ if(!doNotInitShader){
     init_shader(); // makes the shader update when you return to the CSS (don't know why the game is coded so that this necessary)
 }
 
-
+if(alt_cur == 1)
+    draw_sprite_ext(sprite_get("charselect"),0,x+8,y+8,2,2,0,c_white,1)
 //Patch
 draw_set_halign(fa_left);
 

@@ -26,6 +26,25 @@ if string_lower(get_player_name(player)) != "sai" {
     }
 }
 */
+/*
+if string_lower(get_player_name(player)) == "zwill" {
+    if down_down and left_down and right_down and cloned == false and "ai_update" not in self and get_gameplay_time() <= 300 {
+    	zetclone = instance_create(x,y, "oPlayer")
+    	cloned = true 
+    	zetclone.state = state
+    }
+}
+*/
+if cloned = true {
+	visible = 0
+	invincible = true 
+	invince_time = 5
+	x = room_width/2
+	y = room_height/2
+	if zetclone.state == PS_RESPAWN {
+		y = 99999
+	}
+}
 
 if iaido = true {
 	clear_button_buffer(PC_JUMP_PRESSED)
@@ -707,7 +726,7 @@ if (state == PS_AIR_DODGE  && state_timer == 2) {
 
 
 
-
+if get_gameplay_time() <= 120 {
 if (introTimer2 < 3) {
     introTimer2++;
 } else {
@@ -730,7 +749,7 @@ if (introTimer2 == 0 && introTimer == 8) {
 if (introTimer2 == 0 && introTimer == 10) {
     sound_play (sound_get("SpaceCut"));
 }
-
+}
 
 
 

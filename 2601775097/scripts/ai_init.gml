@@ -13,6 +13,7 @@ input = 0; //will decide bar's combo strings
 target_dist = 0;
 facing_target = false;
 
+bar_should_parry = 0; //decides if bar should attempt to parry
 
 //attack specific stuff
 cpu_cur_skill = -1;
@@ -29,6 +30,7 @@ lightbuff_end_time = 300;
 surface_left = get_stage_data(SD_X_POS);
 surface_right = room_width - get_stage_data(SD_X_POS);
 surface_top = get_stage_data(SD_Y_POS);
+
 
 
 

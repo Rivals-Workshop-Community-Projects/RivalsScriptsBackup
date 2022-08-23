@@ -97,6 +97,9 @@ else if (!menu_active && get_player_hud_color(player) != 8421504)
         c_white,
         skill_hover_time/20
     );
+
+    //just in case online CSS messes up again
+    //if (room == 113) draw_debug_text(floor(x) + 24, floor(y) - 16, "Go to playtest for skill select");
 }
 
 //animation - text

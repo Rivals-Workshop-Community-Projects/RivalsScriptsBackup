@@ -20,3 +20,6 @@ lightbuff_active = false;
 if (od_cast <= 1) od_current /= 2;
 else od_current = 0;
 od_cast = 0;
+
+//sets bibically accurate bar to appear on respawn
+if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3) bibical = true;

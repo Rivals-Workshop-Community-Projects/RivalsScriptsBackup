@@ -237,14 +237,14 @@ set_color_profile_slot( 20, 6, 24, 26, 46 ); //Outfit 2 / Rest
 set_color_profile_slot( 20, 7, 227, 210, 132 ); //Outfit 1/ Legs
 
 // Regina
-set_color_profile_slot( 21, 0, 211, 255, 66 ); //Feathers
-set_color_profile_slot( 21, 1, 0, 153, 84 ); //Hair
-set_color_profile_slot( 21, 2, 163, 0, 57 ); //Scarf
-set_color_profile_slot( 21, 3, 181, 181, 181 ); //Shoulder
-set_color_profile_slot( 21, 4, 196, 0, 98 ); //Gloves/Light
-set_color_profile_slot( 21, 5, 140, 0, 0 ); //Eyes
-set_color_profile_slot( 21, 6, 199, 0, 76 ); //Outfit 2 / Rest
-set_color_profile_slot( 21, 7, 36, 19, 19 ); //Outfit 1/ Legs
+set_color_profile_slot( 21, 0, 209, 215, 227 ); //Feathers
+set_color_profile_slot( 21, 1, 77, 0, 38 ); //Hair
+set_color_profile_slot( 21, 2, 199, 189, 0 ); //Scarf
+set_color_profile_slot( 21, 3, 58, 57, 69 ); //Shoulder
+set_color_profile_slot( 21, 4, 255, 0, 119 ); //Gloves/Light
+set_color_profile_slot( 21, 5, 255, 0, 177 ); //Eyes
+set_color_profile_slot( 21, 6, 47, 36, 61 ); //Outfit 2 / Rest
+set_color_profile_slot( 21, 7, 143, 0, 79 ); //Outfit 1/ Legs
 
 // Outlaw
 set_color_profile_slot( 22, 0, 176, 129, 74 ); //Feathers
@@ -254,7 +254,7 @@ set_color_profile_slot( 22, 3, 120, 163, 123 ); //Shoulder
 set_color_profile_slot( 22, 4, 156, 0, 0 ); //Gloves/Light
 set_color_profile_slot( 22, 5, 0, 83, 166 ); //Eyes
 set_color_profile_slot( 22, 6, 94, 50, 38 ); //Outfit 2 / Rest
-set_color_profile_slot( 22, 7, 36, 67, 179 ); //Outfit 1/ Legs
+set_color_profile_slot( 22, 7, 102, 121, 138 ); //Outfit 1/ Legs
 
 // Klockwurth
 set_color_profile_slot( 23, 0, 136, 136, 153 ); //Feathers

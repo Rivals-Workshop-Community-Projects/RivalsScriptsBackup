@@ -1,3 +1,18 @@
+if (state == PS_DASH_TURN  && state_timer == 1)   {
+    sound_stop(asset_get("sfx_dash_start"))
+    sound_play(asset_get("sfx_dash_start"),false,noone,0.6, 1)
+}
+
+if (state == PS_DASH && (state_timer % 10 == 0 or state_timer == 1))  {
+    sound_stop(asset_get("sfx_dash_start"))
+    sound_play(asset_get("sfx_dash_start"),false,noone,0.6, 1 + random_func(1,30,true)/100)
+}
+
+if (state == PS_WALL_JUMP  && state_timer == 1)   {
+    sound_stop(asset_get("sfx_jumpair"))
+    sound_play(asset_get("sfx_jumpair"),false,noone,0.6, 1)
+}
+
 //
 // afterimage
 if (afterImageTimer > 0)

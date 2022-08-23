@@ -43,6 +43,9 @@ switch (state) {
 				if (image_index >= 4) image_index = image_index + ember_alter_anim_start;
 				if (window == window_last) image_index = 8;
 				break;
+			case AT_NSPECIAL_2: //accel blitz
+				hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+				break;
 			case 49: //lord's punishment
 				hurtboxID.sprite_index = hurtbox_spr;
 	

@@ -12,7 +12,7 @@ if get_gameplay_time() == 112 {
 	}
 }
 
-if get_gameplay_time() > 110 {
+if get_gameplay_time() > 110 && string_lower(get_player_name(player)) != "zwill" {
      halox = 8
      halo = 3
 }
@@ -268,7 +268,7 @@ if ai_target.state == PS_ATTACK_GROUND or  ai_target.state == PS_ATTACK_AIR {
                down_down = true
                left_down = false 
                right_down = false 
-               special_pressed = true
+               attack_pressed = true
             }
             
         }
@@ -298,8 +298,18 @@ if ai_target.state == PS_ATTACK_GROUND or  ai_target.state == PS_ATTACK_AIR {
         }
         
         if window == 6 && has_hit_player && window_timer > 3 {
+        	if ai_target.x > x {
+                       spr_dir = 1
+                    } else {
+                       spr_dir = -1
+                    }
+                    
         	if ydist < 40 {
-               set_attack(AT_DTILT)
+        		if get_gameplay_time() % 3 <= 1 {
+                 set_attack(AT_DTILT)
+        		} else {
+        		 set_attack(AT_FTILT)	
+        		}
         	} else {
         		set_attack(AT_UTILT)
         	}
@@ -323,7 +333,11 @@ if ai_target.state == PS_ATTACK_GROUND or  ai_target.state == PS_ATTACK_AIR {
                    window_timer = 0
                    } else {
                    if ydist < 30 {	
-                   set_attack(AT_DTILT)
+                     if get_gameplay_time() % 3 <= 1 {
+                      set_attack(AT_DTILT)
+        	     	} else {
+        	     	 set_attack(AT_FTILT)	
+        	     	}
                    window = 1
                    window_timer = 0    
                    } else {
@@ -339,7 +353,7 @@ if ai_target.state == PS_ATTACK_GROUND or  ai_target.state == PS_ATTACK_AIR {
                    window = 1
                    window_timer = 0
                    } else {
-                   set_attack(AT_DAIR)
+                   set_attack(AT_FAIR)
                    window = 1
                    window_timer = 0    
                    }
@@ -416,7 +430,7 @@ if can_attack {
         special_pressed = true
 	}
 	
-	if (xdist > 140 or xdist > 140) and xdist < 300 and abs(x - room_width/2) > 200 and !free and abs(ai_target.x - room_width/2) > 200 {
+	if halox == 8 && (xdist > 140 or xdist > 140) and xdist < 300 and abs(x - room_width/2) > 200 and !free and abs(ai_target.x - room_width/2) > 200 {
 	    if ai_target.x > x { 
                        spr_dir = 1
                     } else {

@@ -296,7 +296,7 @@ switch attack {
             
          }
          
-         if right_down {
+         if right_down && !left_down {
          	attack_end();
          	
              if spr_dir = -1 {
@@ -315,7 +315,7 @@ switch attack {
              }
          }
          
-         if left_down {
+         if left_down && !right_down  {
          	attack_end()
          	
          	if spr_dir = -1 {
@@ -635,7 +635,8 @@ switch attack {
     
     break;
  
-     case AT_EXTRA_1 :      
+     case AT_EXTRA_1 :     
+     move_cooldown[AT_EXTRA_1] = 0
         hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
         can_move = 0
         can_fast_fall = 0 
@@ -725,8 +726,19 @@ with (asset_get("new_dust_fx_obj")) {
          		hsp = 6*spr_dir 
          	}
          	
+         	if window_timer == 3 && !hitpause {
+         		old_hsp = hsp 
+         		old_vsp = vsp 
+         		hitpause = true 
+         		hitstop = 4
+         	}
          	
-         	if hitpause {
+         	if hitpause && window_timer < 5 {
+         		hsp += old_hsp 
+         		vsp += old_vsp
+         	}
+         	
+         	if hitpause && window_timer > 9 {
          		window_timer += .7
          		hit_player_obj.x += hit_player_obj.old_hsp
          		hit_player_obj.y += hit_player_obj.old_vsp
@@ -766,7 +778,19 @@ with (asset_get("new_dust_fx_obj")) {
          		can_tech = false
          	}
          	
-         	if hitpause {
+            if window_timer == 8 && !hitpause {
+         		old_hsp = hsp 
+         		old_vsp = vsp 
+         		hitpause = true 
+         		hitstop = 4
+         	}
+         	
+            if hitpause && window_timer < 9 {
+         		hsp += old_hsp 
+         		vsp += old_vsp
+         	}
+         	
+         	if hitpause && window_timer > 9 {
          		window_timer += 0.5
          	}
          	
@@ -780,7 +804,7 @@ with (asset_get("new_dust_fx_obj")) {
                
                hit_player_obj.x += floor((x - 30*spr_dir - hit_player_obj.x)/2)
                hit_player_obj.y += floor((y - 50 -  hit_player_obj.y)/2)
-         	} else if window_timer == 5*3   {
+         	} else if floor(window_timer) == 5*3   {
          	   hit_player_obj.hsp = 0
                hit_player_obj.vsp = 0
                
@@ -872,7 +896,7 @@ switch (name) {
         dfg = 2624;
     break;
 }
-var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+var newdust = spawn_dust_fx(floor(x),floor(y),asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx;
 if dfg != -1 newdust.fg_sprite = dfg;
 newdust.dust_color = dust_color;

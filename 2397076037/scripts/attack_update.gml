@@ -959,6 +959,84 @@ if attack == AT_FSTRONG && !hitpause {
 
 if attack == AT_DSTRONG {
     
+    if cheapmode == 3 {
+    	if get_gameplay_time() % 3 == 0 && window_timer > 1 && window == 1 {
+    		hitpause = true 
+    		hitstop = 2
+    		old_hsp = 0
+    		old_vsp = 0
+    	}
+    	if window = 3 {
+    			with(asset_get("oPlayer")){  
+                 if self != other {
+                 	if !free {
+                 		state = PS_PRATLAND 
+                 		state_timer = -999
+                 	} else {
+                 		state = PS_PRATFALL
+                 		state_timer = -999
+                 	}
+                 	if other.window_timer == 1 {
+                     	take_damage(player,-1,1)
+                 		spawn_hit_fx(x,y - 40, 302)
+                 	}
+                 	
+                 	if other.window_timer >= 20 {
+                 		take_damage(player,-1,17)
+                 		spawn_hit_fx(x,y - 40, 304)
+                 		x += 300 - random_func(1,600,true)
+                 		y += 300 - random_func(2,600,true)
+                 	}
+                 	
+                 }	
+              }
+
+    	}
+    	
+    	if state_timer == 240 {
+    		with(asset_get("oPlayer")){  
+                 if self != other {
+ 						set_player_stocks(player, 2)
+ 						set_player_stocks(other.player, 10)
+ 				    	end_match()
+                 }
+    		}
+    	}
+    	
+    	if window == 3 && window_timer == 1 {
+    		hitpause = true 
+    		hitstop = 250
+    		old_hsp = 0
+    		old_vsp = 0
+    		window_timer ++
+    		sound_play(sound_get("RCE"),false,noone,1,.6)
+    		sound_play(sound_get("RCE"),false,noone,1,.2)
+    	}
+    	
+    	if window == 3 && window_timer > 20 {
+
+
+    		smallfunnyslashfx = hit_fx_create( sprite_get( "smallfunnyslashfx" ), 30 );
+
+             actualworkdamn = spawn_hit_fx(x, y - 40, smallfunnyslashfx )
+             actualworkdamn.draw_angle = random_func(9,360,true)
+             actualworkdamn.spr_dir = (1+random_func(1,2,true))*spr_dir
+             actualworkdamn.image_yscale = 1+random_func(1,2,true)
+             actualworkdamn.depth = depth - 1
+    		oldx = room_width/2 - 400 + random_func(1,800,true)
+    			y = room_height/2 - 300 + random_func(2,500,true)
+    	}
+    	
+    	if window == 3 && window_timer == 23{
+    		rankm += 20
+    		window = 3
+    		window_timer = 20
+    		sound_play(sound_get("RCE"),false,noone,.3,1)
+    		sound_play(sound_get("slice"),false,noone,1,1)
+    			
+    	}
+    }
+    
     exheld = -1
     
     if has_hit_player {
@@ -1006,6 +1084,14 @@ if attack == AT_DSTRONG {
         }
         sound_play(sound_get("Dstrong1"))
         sound_play(asset_get("sfx_bird_downspecial"))
+        
+                
+        if cheapmode = 3 {
+    	sound_stop(sound_get("Dstrong1"))
+    	sound_play(sound_get("YOUSHALLDIE"))
+    	sound_play(sound_get("YOUSHALLDIE"))
+        }
+        
         }
     }
     

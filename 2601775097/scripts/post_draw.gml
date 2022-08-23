@@ -167,6 +167,19 @@ if (playtesting)
     for (var i = 0; i <= 2; ++i) draw_sprite_stretched_ext(spr_pixel, 0, menu_x + 12 + i * 2, menu_y - 102 - i * 2, floor(mp_current)/2 + 2, 2, mp_color, 1); // fill
     draw_sprite_ext(sprite_get("hud_mp_small"), 0, menu_x + 8, menu_y - 118, 2, 2, 0, c_white, 1); //frame
     draw_debug_text(menu_x + 12, menu_y - 90, "MP: " + string(floor(mp_current))); //text
+    
+    /*
+    //just in case online CSS messes up again
+    if (room == 113)
+    {
+        if (menu_active) //skill select
+        {
+            skill_script_type = 2;
+            user_event(2);
+        }
+        else draw_debug_text(menu_x + 16, menu_y + 32, "UP + TAUNT = skill select"); //text
+    }
+    */
 }
 
 #define textDraw

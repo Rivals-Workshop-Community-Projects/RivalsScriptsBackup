@@ -30,7 +30,7 @@ switch (attack)
         break;
     //practice mode shenanigans
     case AT_TAUNT:
-        if (training && !playtesting)
+        if (training && !playtesting) // || room == 113 && playtesting (just in case online CSS messes up again)
         {
             if (up_down) //skill select
             {

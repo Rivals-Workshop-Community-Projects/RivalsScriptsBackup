@@ -684,7 +684,7 @@ switch (attack)
         break;
     case AT_DSPECIAL_2:                     //  ember fist
         can_fast_fall = false;
-
+        
         switch (window)
         {
             case 1: //var reset

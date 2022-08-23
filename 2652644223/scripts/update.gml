@@ -36,10 +36,10 @@ switch(state)
 }
 
 //Victory Portrait. or if killed with a strong move.
-// if(attack == AT_TAUNT || last_attack_hit == AT_FSPECIAL || last_attack_hit == AT_USPECIAL)
-//     set_victory_portrait(sprite_get("portrait_install"));
-// else
-//     set_victory_portrait(sprite_get("portrait"));
+if(taunt_down || get_player_color(player) == 1)
+    set_victory_portrait(sprite_get("portrait_neco"));
+else
+    set_victory_portrait(sprite_get("portrait"));
 
 // //Genesis
 // if(get_player_color(player) == 30)

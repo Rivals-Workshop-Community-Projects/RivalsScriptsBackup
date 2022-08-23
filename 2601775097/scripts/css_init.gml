@@ -85,8 +85,6 @@ skill_button_pos = [
     y + skill_button_y + sprite_get_height(sprite_get("hud_skillselect_button"))
 ];
 
-
-
 skill_script_type = 0;
 user_event(2);
 
@@ -94,6 +92,8 @@ user_event(2);
 //if not, set it to [12816], which is the default kit
 if (get_synced_var(player) >= 12816 && !init) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
 else set_synced_var(player, 12816);
+
+//put this in user_event2 ^ because it needs to run on css and ingame
 
 
 

@@ -19,8 +19,9 @@ if (is_attacking)
 //respawn platform
 if (state == PS_RESPAWN || attack == AT_TAUNT && state == PS_ATTACK_GROUND && free)
 {
-    draw_sprite_ext(sprite_get("plat_back"), 0, x, y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("plat_back"), get_gameplay_time()*bar_plat_speed, x, y, 2, 2, 0, c_white, 1);
 }
+
 
 //lightstunning effect
 if (lightstun_active) with (oPlayer) if (lightstun_type == 2) with (other)

@@ -1,4 +1,6 @@
 //Compat
+pot_compat_variable = sprite_get("food");
+pot_compat_text = "Le Fishe";
 //dategirl_init = 0;
 //Chatting = true;
 Hikaru_Title = "Light Bringer";
@@ -128,8 +130,8 @@ crouch_recovery_frames = 1;
 
 //parry animation frames
 dodge_startup_frames = 1;
-dodge_active_frames = 1;
-dodge_recovery_frames = 2;
+dodge_active_frames = 2;
+dodge_recovery_frames = 3;
 
 //tech animation frames
 tech_active_frames = 3;

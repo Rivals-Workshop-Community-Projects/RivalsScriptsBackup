@@ -100,7 +100,7 @@ switch (skill_script_type)
                         cur_select --;
                         break;
                     case -2:
-                        if (menu_type == 1)
+                        if (menu_type == 1 && !instance_exists(oTestPlayer)) //TEMPORARY FIX SIDE EFFECT - DON'T ALLOW SKILL INFO MODE
                         {
                             menu_type = 2;
                             sound_play(asset_get("mfx_confirm"));
@@ -162,7 +162,12 @@ switch (skill_script_type)
         exit;
     case 2: //draw
         //background
-        if (menu_type != 0) draw_sprite_ext(sprite_get("hud_menu"), 0, menu_x - 8.5, menu_y - 128, 2, 2, 0, c_white, 1);
+        if (menu_type != 0) 
+        {
+            //////////////////// TEMPORARY SOLUTION UNTILL THE CSS IS FIXED ////////////////////
+            if (!playtesting) draw_sprite_ext(sprite_get("hud_menu"), 0, menu_x - 8.5, menu_y - 128, 2, 2, 0, c_white, 1);
+            else draw_sprite_ext(sprite_get("white_pixel"), 0, 0, 0, 5000, 5000, 0, c_black, 0.5);
+        }
         if (menu_type != 0) draw_sprite_ext(sprite_get("hud_menu_buttons"), menu_type == 2, menu_x - 8, menu_y + 8, 2, 2, 0, c_white, 1);
         draw_sprite_ext(
             sprite_get("hud_menu_movement"),
@@ -410,6 +415,9 @@ switch (skill_script_type)
 }
 #define update_sync_var()
 {
+    var player = (room == 113) ? 0 : self.player; //online css player is 0, this will sync the player 0 with the actual player slot
+    //room 113 is the online CSS room btw
+
     for (var i = 0; i <= 3; ++i)
     {
         prev_skills[i] = cur_skills[i]; //save skills

@@ -108,9 +108,11 @@ pratfall_anim_speed 		= 0.2;
 
 dash_anim_speed 			= normal_dash_anim_speed;
 
-wait_time                   = 256;        //how long it takes for the animation to be done
+normal_wait_time            = 256;         //how long it takes for the animation to be done
 wait_length                 = 100;         //amount of frames the wait animation takes
 wait_sprite                 = sprite_get("wait");
+
+wait_time                   = normal_wait_time;
 
 
 // Jumps
@@ -422,8 +424,10 @@ skill_script_type = 0;
 user_event(2);
 
 //saves skill data in case it's needed
-if (get_synced_var(player) != 12816) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
+if (get_synced_var(player) >= 12816) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
+else set_synced_var(player, 12816);
 
+//put this in user_event2 ^ because it needs to run on css and ingame
 
 skill = [0]; //this array checks all the attacks
 a = 0; //array start
@@ -542,6 +546,7 @@ lightstun_last_attack_timer = 0;
 ////////////////////////////////////////////////////////////// VFX SETUP //////////////////////////////////////////////////////////////
 
 fx_empty = hit_fx_create(asset_get("empty_sprite"), 1);
+bar_plat_speed = 0.2;
 
 //notice messages
 notice_type = 0;

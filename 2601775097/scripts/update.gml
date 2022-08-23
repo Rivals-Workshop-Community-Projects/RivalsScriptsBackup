@@ -201,6 +201,8 @@ if (holyburn_active)
 {
     with (oPlayer)
     {
+        if ("holyburning" not in self) holyburning = false; //playtesting shenaningans
+
         if (holyburning && holyburner_id == other)
         {
             if (!hitpause || hitpause && lightstun_type == 2) //only damage if the player isn't in hitpause
@@ -245,6 +247,8 @@ if (lightstun_active)
 {
     with (oPlayer)
     {
+        if ("lightstun_type" not in self) lightstun_type = 0; //playtesting shenaningans:blinding boogaloo
+
         if (lightstun_timer > -1) lightstun_timer --;
         if (lightstun_timer <= -1 || state == PS_DEAD || state == PS_RESPAWN)
         {
@@ -884,9 +888,11 @@ if (theikos_type > 0)
 //halloween alt costume
 if (bibical)
 {
+    wait_time = 0; //prevents bar from sticking out of the bibically accurate angel costume
     if (prev_state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE)
     {
         bibical = false;
+        wait_time = normal_wait_time;
         var newfx = spawn_hit_fx(x, y, hit_fx_create(sprite_get("bibical_death"), 40));
         newfx.depth = depth-1;
     }
@@ -990,17 +996,6 @@ user_event(6);
 
 //steve death messages / pit codec
 user_event(7);
-
-
-//RC car removing platforms and stuff
-if ("kart_inside" in self && kart_inside)
-{
-    //close_timer = -1;
-    //menu_timer = -1;
-    //msg_menu = false;
-    //plat_pre_sprite = asset_get("empty_sprite");
-    //plat_post_sprite = asset_get("empty_sprite");
-}
 
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 

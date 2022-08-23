@@ -1820,7 +1820,6 @@ if (attack == AT_FTILT){
 
 if (attack == AT_UTILT){
 	if zcountered = 1  {
-		hitpause = false 
 		x -= floor(((20 - state_timer)*spr_dir)/2)
 		state_timer++
 	}

@@ -110,6 +110,13 @@ draw_set_alpha(1);
     if(character_name == "Ranno")
         win_quote = "A pacifist that you are, I wouldn't have wanted to see your potential if you weren't one."
     
+    //Personal Lore
+     if(character_name == "Ducky")    
+        win_quote = "Sparring with my past ancestor put things to perspective. Your punches were strong, but your heart shined through."
+     if(character_name == "Kyort")    
+        win_quote = "You were the last person to see Ducky and you can't muster the strength to get back up for her?"
+     if(character_name == "Kinunosu")    
+        win_quote = "Finally, I can rest. If you're out of the picture, that means Aether will be able to see through the darkness."
     //TGP GANG
     if(character_name == "Daora")
         win_quote = "Your kind heart shouldn't have to witness these cruel acts, you deserve better than this."
@@ -166,30 +173,41 @@ draw_set_alpha(1);
         win_quote = "Trickier and faster than all the creatures I've seen in the Aether. You've earned my respect."
 
     //Generic Quotes if none are listed above
-    if(win_quote == 0){
-        var random_seed = random_func(0,6,1);
-        switch(random_seed){
-            case 0:
-                win_quote = "I have to give it to you, you managed to last longer than I thought.";
-            break;
-            case 1:
-                win_quote = "Now stay down, you wasted enough energy to show me how useless it all was.";
-            break;
-            case 2:
-                win_quote = "The ZPD would love to hear what the past was all about. You have been fascinating.";
-            break;
-            case 3:
-                win_quote = "You managed to leave a scratch on me, I'll make sure the next line of your generation sees it.";
-            break;            
-            case 4:
-                win_quote = "What drives you to fight? I hope that you find that drive in the future.";
-            break;            
-            case 5:
-                win_quote = "Keep an eye, the future is much harsher than what I have done to you.";
-            break;
+    if(win_quote == 0)
+    {
+        switch(results_data.color)
+        {
+            case 1: //Neco Duck
+                var winChoices = [
+                    "have you been blind to the truest perfection? i am built from 1000 years of perfect genetics.",
+                    "it is just only a game, playing it is always the losing gamble.",
+                    "i would've shined up-strong on last stock to punish my gameplays.",
+                    "there is one thing a duck always keeps and its the revolving door.",
+                    "you like that mix too, huh?",
+                    "where is the nearest pickle juice bar?"
+                    ];
+                break;
+            case 31: //Miku
+                var winChoices = [
+                    "Keep on being Happy! You've sung quite beautifully.",
+                    "Onto the next beat! You cannot catch me off-beat!",
+                    "You've seen quite a lot, take a deep breath and get ready for the next round!",
+                    "Do not blame yourself, it could've gone either way!"
+                    ];
+                break;
+            default:
+                var winChoices = [
+                    "I have to give it to you, you managed to last longer than I thought.",
+                    "Now stay down, you wasted enough energy to show me how useless it all was.",
+                    "The ZPD would love to hear what the past was all about. You have been fascinating.",
+                    "You managed to leave a scratch on me, I'll make sure the next line of your generation sees it.",
+                    "What drives you to fight? I hope that you find that drive in the future.",
+                    "Keep an eye, the future is much harsher than what I have done to you."
+                    ];
+                break;
         }
+        win_quote = winChoices[random_func(1,array_length(winChoices), true)];
     }
-    
-    //print(win_quote)
+
     return string(win_quote);
 }
