@@ -21,9 +21,11 @@ if (hitbox_timer == 1 && attack == AT_NSPECIAL){
 			}
 }
 			
+			var go_time = 20;
+			
 			//go
-			if (hitbox_timer > 25){
-				if (hitbox_timer == 26){
+			if (hitbox_timer > go_time){
+				if (hitbox_timer == go_time + 1){
 					sound_stop(asset_get("sfx_swipe_weak1"));
 					sound_play(asset_get("sfx_swipe_weak1"));
 				}

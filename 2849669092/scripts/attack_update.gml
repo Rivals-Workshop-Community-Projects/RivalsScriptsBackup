@@ -310,6 +310,12 @@ if (attack == AT_USPECIAL){
         vsp = 0;
         hsp = 0;
         can_move = false;
+        can_fast_fall = false;
+        if (uspec_vsp mod -4 > -1){
+            spawn_base_dust( x - (0 * spr_dir), y, "dash", spr_dir);
+            //spawn_base_dust( x - (0 * spr_dir), y, "dash", spr_dir*-1);
+            sound_play(asset_get("sfx_boss_shine"));
+        }
         if (special_down){
             window_timer = 1;
             uspec_vsp -= uspec_charge_speed;
@@ -317,6 +323,10 @@ if (attack == AT_USPECIAL){
         else{
             window = 3;
             window_timer = 0;
+            spawn_base_dust( x - (0 * spr_dir), y, "dash", spr_dir);
+            //spawn_base_dust( x - (0 * spr_dir), y, "dash", spr_dir*-1);
+            sound_play(asset_get("sfx_boss_shine"));
+            sound_play(asset_get("sfx_boss_shine"));
         }
         if (uspec_vsp < -14){
             window = 3;
@@ -325,6 +335,7 @@ if (attack == AT_USPECIAL){
     }
     if (window == 4){
         can_move = true;
+        can_fast_fall = true;
         if (window_timer == 1 && !hitpause){
             vsp = uspec_vsp;
             hsp = 0;
@@ -368,7 +379,8 @@ if (attack == AT_USPECIAL){
         }
     }
     if (window == 8){
-        move_cooldown[AT_USPECIAL] = 99999;
+        //move_cooldown[AT_USPECIAL] = 99999;
+        move_cooldown[AT_DSPECIAL] = 50;
     }
 }
 
