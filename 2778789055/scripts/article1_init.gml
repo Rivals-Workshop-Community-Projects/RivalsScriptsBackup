@@ -1,7 +1,12 @@
 //article1_init - runs once, when the article is created
 
 //Sprite and direction
+if(player_id.pot_skin = 0){
 sprite_index = sprite_get("pot_idle");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
+}if(player_id.pot_skin = 1){
+sprite_index = sprite_get("pot_idle_summer");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
+}
+
 mask_index = sprite_get("pot_hurtbox");
 image_index = 0;                                    //The frame in the animation the article should start at. 0 = beginning of animation
 uses_shader = true;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
@@ -66,6 +71,14 @@ clink_cooldown = 0;
 no_hitbox = false;
 player_near_pot = false;
 
+pot_hitbox_id = -1;
+pot_hitbox_group = -1;
+sweet_baby_dont_go = false;
+pot_multihit_counter = 0;
+
+pot_hit_cooldown = 0;
+pot_salt = 0;
+
 pot_turn_off_lockout = false;
 
 effect_radius = 60;
@@ -74,7 +87,7 @@ pot_compat_text = "";
 pot_compat_variable = sprite_get("food");
 
 galaxy_pot = false;
-explode_owner = noone;
+explode_owner = player;
 
 
 /* README - Basic Article Usage

@@ -36,7 +36,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_SDI_MULTIPLIER, 0.2);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITPAUSE_SCALING, 0.7);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 1.6);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 1.8);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_EFFECT, 9);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));

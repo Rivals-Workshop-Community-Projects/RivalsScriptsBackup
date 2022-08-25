@@ -34,6 +34,15 @@ if (attack == AT_DSPECIAL) && has_hit && window_timer = 1 && get_player_color(pl
 if (attack == AT_FSTRONG) && has_hit && window = 3 && window_timer = 1 && get_player_color(player) == 3 {
     spawn_hit_fx( x, y, cancel_chance2 );
 }
+//wind vfx change
+if get_player_color(player) == 3 or get_player_color(player) == 7 or get_player_color(player) == 8 or get_player_color(player) == 10 or get_player_color(player) == 13 or get_player_color(player) == 18 or get_player_color(player) == 27 or get_player_color(player) == 29{
+	set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("star_proj"));
+	set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_SPRITE, sprite_get("star_proj"));
+}
+if get_player_color(player) == 2 or get_player_color(player) == 15 or get_player_color(player) == 21 or get_player_color(player) == 25 or get_player_color(player) == 28 {
+	set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("flame_proj"));
+	set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_SPRITE, sprite_get("flame_proj"));
+}
 
 if (attack == AT_DSPECIAL) && has_hit && window_timer = 1 && get_player_color(player) == 3 {
     if window == 2 {

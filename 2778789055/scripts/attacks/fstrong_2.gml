@@ -18,6 +18,8 @@ set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_HSPEED, 8);
+set_window_value(AT_FSTRONG_2, 2, AG_WINDOW_HSPEED_TYPE, 2);
 
 //endlag
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_LENGTH, 16);
@@ -39,7 +41,7 @@ set_hitbox_value(AT_FSTRONG_2, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1.15);
+set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HITPAUSE_SCALING, 1.2);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, 304);

@@ -36,6 +36,9 @@ switch(get_player_color(player)){
 	case 15:
 		outline_color = [ 76, 53, 0 ];
 		break;
+	case 18:
+		set_character_color_shading(2, 2.5);
+		break;
 	case 22:
 		set_character_color_shading(0, 1.2);
 		set_character_color_shading(2, -3);

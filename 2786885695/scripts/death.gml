@@ -11,6 +11,9 @@ if (nspec_cd > 0)
     hud_anim_start = true;
 }
 
+//stop nspec aim sound
+sound_stop(sfx_nspec_aim);
+
 //fspec can be used again
 fspec_used = false;
 

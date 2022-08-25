@@ -1,5 +1,7 @@
 // prevents draw_hud from running a frame too early and spitting an error
+/*
 if "phone" not in self exit;
+*/
 
 var temp_color = c_white;
 if (move_cooldown[AT_NSPECIAL] > 0 || has_pot = false) temp_color = c_gray;
@@ -60,9 +62,10 @@ draw_sprite(sprite_get("speech_hud"), 0, temp_x + -86, temp_y + -78);
 */
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
+/*
 muno_event_type = 5;
 user_event(14);
-
+*/
 #define textDraw(x1, y1, font, color, lineb, linew, align, scale, outline, alpha, text)
 
 draw_set_font(asset_get(font));

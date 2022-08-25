@@ -26,7 +26,7 @@ switch(state) {
 	break;
 	case 2: //Projection
 		if (free) {
-			vsp += 1;
+			vsp += .5;
 		}
 		if (state_timer % 6 == 0) {
 			if (image_index == 4) {
@@ -41,6 +41,10 @@ switch(state) {
 }
 
 if (y >= room_height || x < 0 || x > room_width) {
+	clone.state = PS_IDLE;
+	clone.visible = false;
+	clone.invincible = true;
+	clone.clone_active = false;
 	instance_destroy(self);
 }
 

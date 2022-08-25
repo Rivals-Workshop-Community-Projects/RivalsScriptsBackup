@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 28 );
 
 // Yoyo
 set_color_profile_slot( 1, 0, 63, 63, 116 ); //Body main
@@ -265,7 +265,7 @@ set_color_profile_slot( 23, 4, 69, 255, 255 ); //Meter main
 set_color_profile_slot( 23, 5, 158, 9, 143 ); //Sparks
 set_color_profile_slot( 23, 6, 173, 0, 124 ); //Meter Dark White
 set_color_profile_slot( 23, 7, 20, 209, 209 ); //Meter Dark main
-
+/*
 switch(get_match_setting(SET_SEASON)){
     case 1:
     // Spring
@@ -315,6 +315,17 @@ switch(get_match_setting(SET_SEASON)){
     set_color_profile_slot( 24, 7, 35, 86, 184 ); //Meter Dark main
     break;
 }
+*/
+
+// Riptide
+set_color_profile_slot( 24, 0, 235, 134, 59 ); //Body main
+set_color_profile_slot( 24, 1, 196, 63, 22 ); //Body shade
+set_color_profile_slot( 24, 2, 242, 228, 214 ); //Eyes
+set_color_profile_slot( 24, 3, 255, 218, 117 ); //Meter White
+set_color_profile_slot( 24, 4, 0, 156, 204 ); //Meter main
+set_color_profile_slot( 24, 5, 255, 212, 133 ); //Sparks
+set_color_profile_slot( 24, 6, 242, 149, 39 ); //Meter Dark White
+set_color_profile_slot( 24, 7, 0, 88, 156 ); //Meter Dark main
 
 // Cloud
 set_color_profile_slot( 25, 0, 71, 71, 94 ); //Body main
@@ -335,6 +346,16 @@ set_color_profile_slot( 26, 4, 222, 27, 42 ); //Meter main
 set_color_profile_slot( 26, 5, 242, 105, 13 ); //Sparks
 set_color_profile_slot( 26, 6, 158, 177, 201 ); //Meter Dark White
 set_color_profile_slot( 26, 7, 179, 3, 17 ); //Meter Dark main
+
+// Custom
+set_color_profile_slot( 27, 0, 70, 206, 204 ); //Body main
+set_color_profile_slot( 27, 1, 42, 145, 176 ); //Body shade
+set_color_profile_slot( 27, 2, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 27, 3, 235, 199, 252 ); //Meter White
+set_color_profile_slot( 27, 4, 137, 55, 252 ); //Meter main
+set_color_profile_slot( 27, 5, 166, 129, 252 ); //Sparks
+set_color_profile_slot( 27, 6, 188, 144, 209 ); //Meter Dark White
+set_color_profile_slot( 27, 7, 83, 15, 176 ); //Meter Dark main
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

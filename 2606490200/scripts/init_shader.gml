@@ -13,19 +13,37 @@ if get_gameplay_time() == 90 && get_player_color(player) == 16 {
     set_article_color_slot( 7, 255, 218, 41 ); //Shine
     
 	
-	if string_lower(get_player_name(player)) == "sai" {
-		set_article_color_slot( 0, 0, 0, 0 ); //Energy
-        set_article_color_slot( 1, 196, 143, 77 ); //Skin
-        set_article_color_slot( 2, 161, 81, 63 ); //Skinshade
-        set_article_color_slot( 3, 0, 0, 0 ); //Hair
-        set_article_color_slot( 4, 5, 5, 5 ); //pant
-        set_article_color_slot( 5, 8, 0, 163 ); //Eyes
-        set_article_color_slot( 6, 71, 2, 2 ); //Shirt
-        set_article_color_slot( 7, 82, 2, 2 ); //Shine
+	if string_lower(get_player_name(player)) == "sai" or string_lower(get_player_name(player)) == "cosmic"{
+		set_character_color_slot( 0, 62, 6, 153 ); //Energy
+        set_character_color_slot( 1, 9, 0, 13 ); //Skin
+        set_character_color_slot( 2, 0, 0, 0 ); //Skinshade
+        set_character_color_slot( 3, 12, 0, 18 ); //Hair
+        set_character_color_slot( 4, 12, 0, 18 ); //pant
+        set_character_color_slot( 5, 255, 255, 255 ); //Eyes
+        set_character_color_slot( 6, 12, 0, 18 ); //Shirt
+        set_character_color_slot( 7, 62, 6, 153 ); //Shine
+        
+        set_article_color_slot( 0, 62, 6, 153 ); //Energy
+        set_article_color_slot( 1, 9, 0, 13 ); //Skin
+        set_article_color_slot( 2, 0, 0, 0 ); //Skinshade
+        set_article_color_slot( 3, 12, 0, 18 ); //Hair
+        set_article_color_slot( 4, 12, 0, 18 ); //pant
+        set_article_color_slot( 5, 255, 255, 255 ); //Eyes
+        set_article_color_slot( 6, 12, 0, 18 ); //Shirt
+        set_article_color_slot( 7, 62, 6, 153 ); //Shine
 	}
 	
 	if string_lower(get_player_name(player)) == "ded" {
-		set_article_color_slot( 0, 0, 0, 0 ); //Energy
+		set_character_color_slot( 0, 255, 55, 55 )
+        set_character_color_slot( 1, 196, 143, 77 ); //Skin
+        set_character_color_slot( 2, 161, 81, 63 ); //Skinshade
+        set_character_color_slot( 3, 0, 0, 0 ); //Hair
+        set_character_color_slot( 4, 5, 5, 5 ); //pant
+        set_character_color_slot( 5, 8, 0, 163 ); //Eyes
+        set_character_color_slot( 6, 71, 2, 2 ); //Shirt
+        set_character_color_slot( 7, 82, 2, 2 ); //Shine
+        
+		set_article_color_slot( 0, 255, 55, 55 )
         set_article_color_slot( 1, 196, 143, 77 ); //Skin
         set_article_color_slot( 2, 161, 81, 63 ); //Skinshade
         set_article_color_slot( 3, 0, 0, 0 ); //Hair

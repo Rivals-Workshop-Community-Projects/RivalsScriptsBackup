@@ -255,7 +255,8 @@ switch attack {
     
     case AT_FSPECIAL :
         
-
+    
+     
         if window >= 3 {
      
      if has_hit_player && hit_player_obj.super_armor == false {
@@ -484,9 +485,6 @@ switch attack {
        hsp = 0
        vsp = -0.6
          
-         if state_timer == 1 {
-         	prat_land_time = 8;
-         }
          
        if state_timer == 1 && !hitpause {
            spawn_hit_fx(x,y - 110, 305)
@@ -494,11 +492,11 @@ switch attack {
            sound_play(sound_get("charge2"),false,noone,1,.8)
            sound_play(asset_get("sfx_absa_boltcloud"),false,noone,1,1)
          
-         if htrain < 100 {  
+         if htrain < 90 {  
                     fxhup = spawn_hit_fx(x,y - 120,hup)
          fxhup.depth = -100
          sound_play(asset_get("sfx_coin_collect"))
-         htrain += 5
+         htrain += 7
          }
          
        }
@@ -724,13 +722,14 @@ with (asset_get("new_dust_fx_obj")) {
 
          	if window_timer = 2 && !hitpause{
          		hsp = 6*spr_dir 
+         		state_timer = 1
          	}
          	
-         	if window_timer == 3 && !hitpause {
+         	if state_timer == 2 && !hitpause {
          		old_hsp = hsp 
          		old_vsp = vsp 
          		hitpause = true 
-         		hitstop = 4
+         		hitstop = 6
          	}
          	
          	if hitpause && window_timer < 5 {
@@ -774,9 +773,7 @@ with (asset_get("new_dust_fx_obj")) {
          
          if window == 7{
          	
-         	with hit_player_obj {
-         		can_tech = false
-         	}
+         	
          	
             if window_timer == 8 && !hitpause {
          		old_hsp = hsp 
@@ -799,6 +796,9 @@ with (asset_get("new_dust_fx_obj")) {
          	}
          	
          	if window_timer < 5*3 {
+         		with hit_player_obj {
+         		can_tech = false
+         	    }
          	   hit_player_obj.hsp = 0
                hit_player_obj.vsp = 0
                

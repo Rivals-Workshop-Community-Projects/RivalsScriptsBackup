@@ -1,7 +1,7 @@
 if(my_hitboxID.attack == AT_USPECIAL){
 	if(my_hitboxID.hbox_num == 1){
-		obj_article2.state = 2
-		obj_article2.state_timer = 0
+		waterBomb.state = 2
+		waterBomb.state_timer = 0
 	}
 }
 
@@ -27,6 +27,32 @@ if(my_hitboxID.attack == AT_DSTRONG){
 		grabbedid.ungrab = 0;
 	}
 }
+
+if(my_hitboxID.attack == AT_DSPECIAL){
+	if(my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 6){
+		if(instance_exists(saw_blade)){
+			saw_blade.hitboxReal = 0
+			if(my_hitboxID.hbox_num == 6){
+				if(hit_player_obj.x > saw_blade.x){
+					saw_blade.hsp = -4
+				}else{
+					saw_blade.hsp = 4
+				}
+			}
+		}
+	}
+}
+
+/*
+if(instance_exists(saw_blade)){
+	if(distance_to_object(saw_blade) < 100 && my_hitboxID.attack != AT_DSPECIAL){
+		saw_blade.hitboxReal = -3
+		with(saw_blade){
+			instance_destroy(saw_blade_hitbox)
+		}
+	}
+}*/
+
 /*
 if(waterCharges < 3){
 	if(my_hitboxID.attack == AT_USPECIAL){

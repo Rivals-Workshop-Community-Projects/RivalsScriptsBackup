@@ -1,8 +1,70 @@
 ///
 
 
+if "cosmicman" in self {
+	
+	if playhitsound > 0 && uped >= 4{
+		playhitsound -- 
+		if playhitsound == 50 {
+			sound_play(echo,false,noone,0.6,0.9)
+		}
+		if playhitsound == 40 {
+			sound_play(echo,false,noone,0.3,0.8)
+		}
+		if playhitsound == 30 {
+			sound_play(echo,false,noone,0.15,0.7)
+		}	
+	}
+	
+	if uped >= 4 {
+		if get_gameplay_time() % 2 == 0 {
+		          	gsfx1 = spawn_hit_fx(x, y - 30 - random_func(2,51,true) , sgf1)
+                      gsfx1.spr_dir = 0.4
+                      gsfx1.image_yscale = 0.4
+                      gsfx1.draw_angle = random_func(1,360,true) 
+                      gsfx1.depth = depth + 4
+		}
+		if get_gameplay_time() % 4 == 2 {
+		              gsfx2 = spawn_hit_fx(x, y - 30 - random_func(2,51,true) , sgf2)
+                      gsfx2.spr_dir = 0.4
+                      gsfx2.image_yscale = 0.4
+                      gsfx2.draw_angle = random_func(1,360,true) 
+                      gsfx2.depth = depth + 4
+		}
+	}
+	
+			
+	with oPlayer {
+		if "cosmicman" not in self {
+			if state_cat == SC_HITSTUN && state_timer % 2 == 0 && other.uped >= 3 {
+				with other {
+					 switch random_func(player,2,true) {
+                      case 0:
+                      gsfx1 = spawn_hit_fx(other.x, other.y - 40 , sgf1)
+                      gsfx1.spr_dir = 0.4
+                      gsfx1.image_yscale = 0.4
+                      gsfx1.draw_angle =  get_gameplay_time()%360
+                      gsfx1.depth = other.depth + 2
+                      break;
+                      
+                      case 1:
+                      gsfx2 = spawn_hit_fx(other.x, other.y - 40 , sgf2)
+                      gsfx2.spr_dir = 0.4
+                      gsfx2.image_yscale = 0.4
+                      gsfx2.draw_angle =  get_gameplay_time()%360
+                      gsfx2.depth = other.depth + 2
+                      break;
+      
+                    
+                    }
+				}
+			}
+		}
+	}
+	
+}
 
-if get_gameplay_time() == 90 && get_player_color(player) == 16 {
+if (get_gameplay_time() == 90 or get_gameplay_time() == 91)  && get_player_color(player) == 16 {
 	
 
 	set_color_profile_slot( 16, 0, 255, 211, 0 ); //Energy
@@ -15,23 +77,32 @@ if get_gameplay_time() == 90 && get_player_color(player) == 16 {
     set_color_profile_slot( 16, 7, 255, 218, 41 ); //Shine
     
 	
-	if string_lower(get_player_name(player)) == "sai" {
+	if string_lower(get_player_name(player)) == "sai" or string_lower(get_player_name(player)) == "cosmic"{
+		cosmicmusic = 120
+		set_victory_theme(sound_get("cosmicman3"));
+		var volume = 0;
+        volume = get_local_setting(3);
+		sound_stop(sound_get("cosmicman2"))
+ 	   	sound_play(sound_get("cosmicman2"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 60*4
+		cosmicman = true 
 		sound_stop(sound_get("powerup"))
 		sound_play(sound_get("powerup"),false,noone,1,1.4)
-		set_color_profile_slot( 16, 0, 0, 0, 0 ); //Energy
-        set_color_profile_slot( 16, 1, 196, 143, 77 ); //Skin
-        set_color_profile_slot( 16, 2, 161, 81, 63 ); //Skinshade
-        set_color_profile_slot( 16, 3, 0, 0, 0 ); //Hair
-        set_color_profile_slot( 16, 4, 5, 5, 5 ); //pant
-        set_color_profile_slot( 16, 5, 8, 0, 163 ); //Eyes
-        set_color_profile_slot( 16, 6, 71, 2, 2 ); //Shirt
-        set_color_profile_slot( 16, 7, 82, 2, 2 ); //Shine
+        set_color_profile_slot( 16, 0, 62, 6, 153 ); //Energy
+        set_color_profile_slot( 16, 1, 9, 0, 13 ); //Skin
+        set_color_profile_slot( 16, 2, 0, 0, 0 ); //Skinshade
+        set_color_profile_slot( 16, 3, 12, 0, 18 ); //Hair
+        set_color_profile_slot( 16, 4, 12, 0, 18 ); //pant
+        set_color_profile_slot( 16, 5, 255, 255, 255 ); //Eyes
+        set_color_profile_slot( 16, 6, 12, 0, 18 ); //Shirt
+        set_color_profile_slot( 16, 7, 62, 6, 153 ); //Shine
 	}
 	
 	if string_lower(get_player_name(player)) == "ded" {
 		sound_stop(sound_get("powerup"))
 		sound_play(sound_get("powerup"),false,noone,1,1.4)
-        set_color_profile_slot( 16, 0, 0, 0, 0 ); //Energy
+        set_color_profile_slot( 16, 0, 255, 55, 55 ); //Energy
         set_color_profile_slot( 16, 1, 196, 143, 77 ); //Skin
         set_color_profile_slot( 16, 2, 161, 81, 63 ); //Skinshade
         set_color_profile_slot( 16, 3, 0, 0, 0 ); //Hair
@@ -53,7 +124,7 @@ hit_player_obj = self
 }
 
 
-if cheapmode == 0 {
+if cheapmode == 0 && get_gameplay_time() < 60 {
  
  with(asset_get("oPlayer")){ 
  	if url != "2273636433" && url != "1870768156"
@@ -78,7 +149,7 @@ if cheapmode == 0 {
        other.hit_player_obj = self
      }    
  }
- } 
+} 
  
  
  if cheapmode == 1 && get_gameplay_time() < 600 {
@@ -238,6 +309,7 @@ if htrain >= 100 && htrain < 300 {
 	fx = spawn_hit_fx(x,y - 50,306)
 	fx.pause = 6
 	uped += 1
+	cosmicmusic = 120
 	sound_play(asset_get("sfx_abyss_explosion_start"))	
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	htrain = 420
@@ -274,6 +346,7 @@ if atrain >= 100 && atrain < 300 {
 	fx = spawn_hit_fx(x,y - 50,306)
 	fx.pause = 6
 	uped += 1
+	cosmicmusic = 120
 	sound_play(asset_get("sfx_abyss_explosion_start"))		
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	atrain = 420
@@ -311,10 +384,11 @@ if btrain >= 100 && btrain < 300 {
 	fx = spawn_hit_fx(x,y - 50,306)
 	fx.pause = 6
 	uped += 1
+	cosmicmusic = 120
 	sound_play(asset_get("sfx_abyss_explosion_start"))		
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	btrain = 420
-	knockback_adj = .95;
+	knockback_adj = .92;
 	
 	//+3 dmg nipples, +1 dmg other, grab + 4dmg
 	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 6);
@@ -352,6 +426,7 @@ if ltrain >= 100 && ltrain < 300 {
 	fx = spawn_hit_fx(x,y - 50,306)
 	fx.pause = 6
 	uped += 1
+	cosmicmusic = 120
 	sound_play(asset_get("sfx_abyss_explosion_start"))		
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	ltrain = 420
@@ -392,7 +467,7 @@ window_timer = 0
 
 if state == PS_RESPAWN && visible {
 	if state_timer % 6 == 0 {
-		spawn_base_dust(x,y,"land",spr_dir)
+		spawn_base_dust(x,y + 2,"land",spr_dir)
 	}
 }
 
@@ -569,11 +644,16 @@ if move_cooldown[AT_USPECIAL] > 0 && cheapmode != 3 {
     create_hitbox(AT_USPECIAL,3,x,y)
     spawn_hit_fx(x - 20 + random_func(1,40,true) ,y - 46 - 20 + random_func(2,50,true), i6)
 	fall_through = true
-	if !free {
+	if place_meeting(x,y+vsp + 5,asset_get("par_block")) or !free {
+		vsp = (abs(vsp)) * -0.5 - 2
+		hsp /= 2
+		sound_play(asset_get("sfx_absa_kickhit"));
+		fx = spawn_hit_fx(x,y - 50,306)
+    	fx.pause = 6
 		y -= 10
-		vsp = -4
 		set_state(PS_PRATFALL)
 	}
+	
 	
 	if vsp < 0 {
 		vsp *= 1.01
@@ -581,10 +661,9 @@ if move_cooldown[AT_USPECIAL] > 0 && cheapmode != 3 {
 }
 
 if move_cooldown[AT_USPECIAL] == 1 && cheapmode != 3 {
-	fx = spawn_hit_fx(x,y - 50,305)
+	fx = spawn_hit_fx(x,y - 50,306)
 	fx.pause = 6
 	sound_play(asset_get("sfx_bird_sidespecial_start"));
-
 	hsp /= 6 
 	old_hsp /= 6
 	vsp = -8

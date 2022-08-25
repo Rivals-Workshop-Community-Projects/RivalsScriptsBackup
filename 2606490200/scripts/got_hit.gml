@@ -3,17 +3,17 @@
 
 
 if btrain < 95 {
-  btrain += enemy_hitboxID.damage/6
+  btrain += enemy_hitboxID.damage/5
 }
 
 if hit_player_obj == self {
     
     set_state(PS_PRATFALL)
     
-    move_cooldown[AT_USPECIAL] = 25
+    move_cooldown[AT_USPECIAL] = 35
    
 
-    sound_play(asset_get("sfx_absa_concentrate"));
+    sound_play(asset_get("sfx_absa_concentrate"),false,noone,1,.8);
     
     vsp += 4
     

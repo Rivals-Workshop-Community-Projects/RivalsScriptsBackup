@@ -1,6 +1,8 @@
+if(attack != AT_JAB){
 bike_charge = 0;
 bike_charging_time = 0;
 slippery = 0;
+}
 
 if(attack == AT_FSPECIAL){
     window = 3;

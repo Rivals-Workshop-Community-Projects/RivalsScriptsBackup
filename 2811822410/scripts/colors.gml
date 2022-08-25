@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 3, 10, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 29 );
+set_num_palettes( 32 );
 
 // Strawberry
 set_color_profile_slot( 1, 0, 255, 156, 220 ); //Hair
@@ -275,14 +275,41 @@ set_color_profile_slot( 27, 4, 173, 49, 24 ); //Tie
 set_color_profile_slot( 27, 5, 78, 94, 118 ); //Skirt1
 set_color_profile_slot( 27, 6, 249, 223, 152 ); //Skirt2
 
+// Roy
+set_color_profile_slot( 28, 0, 238, 90, 4 ); //Hair
+set_color_profile_slot( 28, 1, 150, 175, 207 ); //Eyes
+set_color_profile_slot( 28, 2, 8, 82, 169 ); //Shirt1
+set_color_profile_slot( 28, 3, 0, 47, 102 ); //Shirt2
+set_color_profile_slot( 28, 4, 244, 205, 82 ); //Tie
+set_color_profile_slot( 28, 5, 255, 243, 240 ); //Skirt1
+set_color_profile_slot( 28, 6, 244, 205, 82 ); //Skirt2
+
+// Chrom
+set_color_profile_slot( 29, 0, 100, 121, 176 ); //Hair
+set_color_profile_slot( 29, 1, 152, 196, 236 ); //Eyes
+set_color_profile_slot( 29, 2, 94, 113, 137 ); //Shirt1
+set_color_profile_slot( 29, 3, 38, 57, 82 ); //Shirt2
+set_color_profile_slot( 29, 4, 229, 229, 232 ); //Tie
+set_color_profile_slot( 29, 5, 94, 113, 137 ); //Skirt1
+set_color_profile_slot( 29, 6, 229, 229, 232 ); //Skirt2
+
 // Rainbow (Default)
-set_color_profile_slot( 28, 0, 135, 233, 242 ); //Hair
-set_color_profile_slot( 28, 1, 135, 233, 242 ); //Eyes
-set_color_profile_slot( 28, 2, 193, 193, 193 ); //Shirt1
-set_color_profile_slot( 28, 3, 140, 141, 147 ); //Shirt2
-set_color_profile_slot( 28, 4, 135, 233, 242 ); //Tie
-set_color_profile_slot( 28, 5, 71, 77, 81 ); //Skirt1
-set_color_profile_slot( 28, 6, 88, 170, 188 ); //Skirt2
+set_color_profile_slot( 30, 0, 135, 233, 242 ); //Hair
+set_color_profile_slot( 30, 1, 135, 233, 242 ); //Eyes
+set_color_profile_slot( 30, 2, 193, 193, 193 ); //Shirt1
+set_color_profile_slot( 30, 3, 140, 141, 147 ); //Shirt2
+set_color_profile_slot( 30, 4, 135, 233, 242 ); //Tie
+set_color_profile_slot( 30, 5, 71, 77, 81 ); //Skirt1
+set_color_profile_slot( 30, 6, 88, 170, 188 ); //Skirt2
+
+// Player Color
+set_color_profile_slot( 31, 0, 135, 233, 242 ); //Hair
+set_color_profile_slot( 31, 1, 135, 233, 242 ); //Eyes
+set_color_profile_slot( 31, 2, 193, 193, 193 ); //Shirt1
+set_color_profile_slot( 31, 3, 140, 141, 147 ); //Shirt2
+set_color_profile_slot( 31, 4, 135, 233, 242 ); //Tie
+set_color_profile_slot( 31, 5, 71, 77, 81 ); //Skirt1
+set_color_profile_slot( 31, 6, 88, 170, 188 ); //Skirt2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

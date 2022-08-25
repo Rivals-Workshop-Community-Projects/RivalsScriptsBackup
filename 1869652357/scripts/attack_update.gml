@@ -33,6 +33,11 @@ if (attack == AT_JAB){
     if (has_hit && special_pressed && down_down) {
         set_attack( AT_DSPECIAL );
     }
+//     if (attack_pressed == true and window == 6 and window_timer >= 4){
+//         attack = AT_JAB
+//         window = 1
+//         window_timer = 0
+//     }
 }
 
 if (attack == AT_DTILT){ //balance note: this cancel is probably unnecessary, the move already has a really solid angle and you get plenty of value from hitting it normally
@@ -149,6 +154,12 @@ if ((attack == AT_FSPECIAL_AIR) && has_hit_player && (get_window_value(AT_FSPECI
 }
 
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR){
+    if has_hit{
+        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
+    }
+    if window == 1 and window_timer == 1{
+        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
+    }
     if (attack == AT_FSPECIAL_AIR && can_fast_fall && window != 4) can_fast_fall = false;
     if (window == 1) {
        if (window_timer == 1) moved_up = false;

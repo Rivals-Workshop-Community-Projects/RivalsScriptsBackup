@@ -91,6 +91,7 @@ switch(attack) {
 			move_cooldown[attack] = 60;
 			if (!instance_exists(miku_clone)) {
 				miku_clone = instance_create( x + (spr_dir * 44), y, "obj_article1" );
+				miku_clone.clone = clone_player;
 			} else {
 				miku_clone.state_timer = 0;
 				miku_clone.state = 0;
@@ -116,6 +117,8 @@ switch(attack) {
 	case AT_TAUNT:
 	case AT_TAUNT_2:
 	case AT_DTHROW:
+		can_move = false;
+		can_fast_fall = false;
 		if (window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH)) {
 			if (taunt_down || clone_owner.taunt_down) {
 				window_timer = 0;

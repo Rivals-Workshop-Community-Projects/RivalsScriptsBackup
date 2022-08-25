@@ -35,7 +35,7 @@ bagelEaten = false;
 nspecIsFireball = false;
 numSuds = 5;
 sudsCooldown = 20;
-airCounter = 0;
+//airCounter = 0; old gotehorn unlock tracker
 driftCounter = 0;
 
 //pool party vars
@@ -250,6 +250,12 @@ arena_title = "The Vault of Aether";
 ncode1 = "FILE 050 '[A;T?#US' [FILE READ ERROR]"
 ncode2 = "Indiscernable from typical luggage?"
 ncode3 = "[THE ANVIL DESCENDS. SECURE THE VAULT.]"
+//Stickmin
+has_fail = true;
+fail_text = "Your text here";
+//Bayou
+pot_compat_variable = sprite_get("item_food3");
+pot_compat_text = "Shrewdinger's Catfish"
 
 
 

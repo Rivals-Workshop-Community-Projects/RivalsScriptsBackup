@@ -99,6 +99,21 @@ if (is_attacking) switch (attack)
         //clone placeholders
         if (fs_cue_slashes && fs_slash_timer >= 9) draw_sprite_ext(sprite_get("fx_starward_sword_clones"), fs_afterimage_timer*0.8, x, y-32, 2, 2, 0, c_white, 1);
         break;
+    case AT_TAUNT_2: //lyre
+        if (is_gb && image_index <= 3) //gameboy lyre spawn
+        {
+            draw_sprite_ext(
+                sprite_get("fx_lyre_spawn_gb"),
+                image_index, x - sprite_get_xoffset(sprite_get("taunt2")) * spr_dir,
+                y - sprite_get_yoffset(sprite_get("taunt2")),
+                spr_dir,
+                1,
+                0,
+                c_white,
+                1
+            );
+        }
+        break;
 }
 
 //halloween qiqi hat
@@ -106,16 +121,7 @@ if (qiqi_hat) draw_sprite_ext(sprite_get("qiqi_idle"), image_index, x+1*spr_dir,
 shader_end();
 
 
-//if (is_attacking && attack == AT_TAUNT_2 && window == 2)
-//{
-//    if (playing_lyre_timer < 60*3)
-//    {
-//        draw_debug_text(x-114, y, "use numkeys 0-9, decimal point,")
-//        draw_debug_text(x-114, y+16, "multiply and division keys to")
-//        draw_debug_text(x-56, y+32, "play the lyre")
-//    }
-//    
-//}
+
 
 var hud_x = (has_rune("K")) ? floor(x)-48 : floor(x)+48;
 var hud_y = floor(y)-char_height-24;

@@ -1,4 +1,4 @@
-set_attack_value(AT_FSTRONG_2, AG_SPRITE, sprite_get("fstrong"));
+set_attack_value(AT_FSTRONG_2, AG_SPRITE, sprite_get("truejudgement"));
 set_attack_value(AT_FSTRONG_2, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
 set_attack_value(AT_FSTRONG_2, AG_NUM_WINDOWS, 3);

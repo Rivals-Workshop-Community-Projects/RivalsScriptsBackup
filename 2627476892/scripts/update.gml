@@ -1,7 +1,9 @@
 // MunoPhone Touch code - don't touch
 // should be at TOP of file
+/*
 muno_event_type = 1;
 user_event(14);
+*/
 
 //dash smoke
 if (state == PS_DASH_START && state_timer == 1){

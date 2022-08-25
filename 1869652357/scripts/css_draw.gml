@@ -11,7 +11,7 @@ patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_cha
 //patch_day = "12";
 //patch_month = "JULY";
 
-var num_alts = 16;
+var num_alts = 30;
 var alt_new = get_player_color(player);
 image_alpha = max(image_alpha-0.02, 0);
 if ((alt_new != 15 && alt_new != image_index - 1) || (alt_new == 15 && (image_index == 15 || image_index == 1))) // image_index is global
@@ -26,20 +26,36 @@ alt_name[3]  = "Retro";
 alt_name[4]  = "Space Grey";
 alt_name[5]  = "Trans Rights";
 alt_name[6]  = "Abyss";
-alt_name[7]  = "Wireframe";
-alt_name[8]  = "Underdog";
-alt_name[9]  = "Discha South";
-alt_name[10] = "Natukat";
-alt_name[11] = "Pato Box";
-alt_name[12] = "Olympia";
-alt_name[13] = "G7";
-alt_name[14] = "Merica";
-alt_name[15] = "Riva";
+alt_name[7]  = "Underdog";
+alt_name[8]  = "Discha South";
+alt_name[9]  = "Natukat";
+alt_name[10] = "Pato Box";
+alt_name[11] = "Olympia";
+alt_name[12] = "G7";
+alt_name[13] = "Merica";
+alt_name[14] = "Riva";
+alt_name[15] = "Jackie";
+alt_name[16]  = "Kiera";
+alt_name[17]  = "Blue God";
+alt_name[18]  = "Wireframe";
+alt_name[19]  = "Fleet";
+alt_name[20]  = "Hamir";
+alt_name[21]  = "Artemis";
+alt_name[22]  = "Slade";
+alt_name[23]  = "Slashe";
+alt_name[24]  = "Bird Guy";
+alt_name[25]  = "Fernet";
+alt_name[26] = "Anglara";
+alt_name[27] = "Lukastar";
+alt_name[28] = "Exetior";
+alt_name[29] = "BLM";
+// alt_name[30] = "Merica";
+// alt_name[31] = "Riva";
 
 draw_set_halign(fa_left);
 
 //textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
-textDraw(temp_x + 16, temp_y + 72 , "fName", c_white, 0, 1000, 1, false, 0.3, "v" + patch_ver);
+// textDraw(temp_x + 16, temp_y + 72 , "fName", c_white, 0, 1000, 1, false, 0.3, "v" + patch_ver);
 
 //textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
 
@@ -51,7 +67,7 @@ if (image_alpha > 0.5)
 	for(i = 0; i < num_alts; ++i)
 	{
 	    var draw_color = (i == image_index) ? c_white : c_gray;
-	    var draw_x = temp_x + 2 + 10 * i;
+	    var draw_x = temp_x + 2 + 5 * i;
 		rectDraw(draw_x, temp_y + 143 - floor((image_alpha>1?1:image_alpha)*3.5)*2, draw_x + 7, temp_y + 140, draw_color);
 	}
 

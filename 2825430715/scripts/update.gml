@@ -1,7 +1,7 @@
 ///
 
 
- if cheapmode == 0 {
+ if cheapmode == 0 && get_gameplay_time() < 60 {
  
  with(asset_get("oPlayer")){ 
  	if url != "2273636433" && url != "1870768156"
@@ -409,9 +409,15 @@ with oPlayer {
 			    take_damage(player,-1,7)
 			    sound_play(asset_get("sfx_icehit_heavy1"),false,noone,.6,1)
 			    if random_func(4,2,true) ==  0 {
-			        spawn_hit_fx(x - random_func(1,80,true) + 40,y - random_func(2,80,true),14)
+			        dusfx = spawn_hit_fx(x - random_func(1,80,true) + 40,y - random_func(2,80,true),14)
+			        dusfx.draw_angle = random_func(1,360,true)
+                    dusfx.spr_dir = 0.5*spr_dir
+                    dusfx.image_yscale = 0.5
 			    } else {
-			        spawn_hit_fx(x - random_func(1,80,true) + 40,y - random_func(2,80,true),13)
+			        dusfx = spawn_hit_fx(x - random_func(1,80,true) + 40,y - random_func(2,80,true),13)
+			        dusfx.draw_angle = random_func(1,360,true)
+                    dusfx.spr_dir = 0.5*spr_dir
+                    dusfx.image_yscale = 0.5
 			    }
 			}
 			
@@ -648,6 +654,17 @@ with asset_get("pHitBox") {
   }
     
 }
+}
+
+if snapdamage > 0 && get_gameplay_time() %3  == 0 {
+
+		dusfx = spawn_hit_fx(x - random_func(1,80,true) + 40,y - random_func(2,80,true),13)
+        dusfx.draw_angle = random_func(1,360,true)
+        dusfx.spr_dir = 0.5*spr_dir
+        dusfx.image_yscale = 0.5
+			    
+	snapdamage --
+	take_damage(player,-1,1)
 }
 
 #define spawn_base_dust(x, y, name, dir)

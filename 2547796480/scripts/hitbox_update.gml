@@ -7,24 +7,33 @@ if attack == AT_FTHROW {
    } else {
        hsp -= 1
    }
-   if y < player_id.y - 40 {
+   if y < player_id.y - 50 {
    	  vsp += 1
    } else {
       vsp -= 1
    }
    
-
+   if abs(x - player_id.x) < 300 and abs(y - player_id.y + 50) < 300 {
+   	vsp/=1.2
+   	hsp/=1.2
    	  x += floor((player_id.x - x)/6)
-   	  y += floor((player_id.y - 40 - y)/6)
+   	  y += floor((player_id.y - 50 - y)/6)
+   }
    
    
-   
-
+   if hitbox_timer % 4 <= 1 {
    	 sprite_index = asset_get("empty_sprite")
-
-   if abs(x - player_id.x) < 50 and abs(y - player_id.y + 40) < 50 && hitbox_timer > 6 {
+   } else if hitbox_timer % 4 == 2 {
+   	  sprite_index = sprite_get("hamburger")
+   	  image_index = hitbox_timer/2
+   } else if hitbox_timer % 4 == 3 {
+   	  sprite_index = sprite_get("hamburger2")
+   	  image_index = hitbox_timer/2
+   }
+   if abs(x - player_id.x) < 30 and abs(y - player_id.y + 50) < 30 && hitbox_timer > 30 {
    	destroyed = true
    	with player_id {
+		oknifecount ++
         spawn_hit_fx(other.x,other.y,timeS)
         sound_stop(asset_get("sfx_ice_on_player"))
 		sound_play(asset_get("sfx_ice_on_player"),false,noone,.9,1.5)
@@ -165,14 +174,14 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     
     if ((place_meeting(x + hsp, y + vsp , asset_get("par_block")))) {
      	sound_play(asset_get("sfx_icehit_weak1"));
-     	vsp = max(3,abs(vsp))*-0.5
+     	vsp = -7
      	spawn_hit_fx(x,y+12,14)
     }
     
     if player_id.move_cooldown[AT_NSPECIAL_2] == 4 && hitbox_timer >= 20 {
     	hsp = shsp
         vsp = svsp
-    	hitbox_timer = -999
+    	hitbox_timer = -60
     	player = orig_player
     	hit_priority = 9
     	spawn_hit_fx(x,y,timeS2)
@@ -219,11 +228,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     		create_hitbox(AT_FSPECIAL,5,other.x,other.y)
     		}
     		
-    		if state_timer >= 400 {	  
-                with other.orig_player_id {
-                       knifecount ++
-                       oknifelost ++
-                } 
+    		if state_timer >= 400 {	
     		create_hitbox(AT_FSPECIAL,6,other.x + 600*spr_dir,other.y)
     		spawn_hit_fx(other.x + 540*spr_dir,other.y,kls2)
     		spawn_hit_fx(other.x + 540*spr_dir,other.y,kls1)
@@ -237,7 +242,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     	}
     }
     
-    if nearbyhitbox != noone && type == 1 && hitpause != 1.1412 && other.hitbox_timer > -990 {
+    if nearbyhitbox != noone && type == 1 && hitpause != 1.1412 && other.hitbox_timer > 0 {
 		  if player_id.char_height != other.player_id.char_height {
 		  	other.destroyed = true 
 		  	other.player_id.oknifelost ++

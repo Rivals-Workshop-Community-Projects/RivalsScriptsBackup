@@ -219,6 +219,8 @@ teve_death_message = "Steve joined The Lancer Fan Club.";
 Hikaru_Title = "Innocent Boy";
 fail_text = "I love to get thrashed... Just kidding! That's you! - Lancer.";
 uhc_victory_quote = "subscrib 4 mor cave story secret updat gameply";
+//pot_compat_variable = sprite_get("your_sprite_name");
+//pot_compat_text = "Your Food's Name"
 
 //Rainbow Skin
 hue_offset=0;
@@ -227,6 +229,7 @@ hue_speed=1; //change this to change the speed of the hueshift
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
-
+/*
 muno_event_type = 0;
 user_event(14);
+*/

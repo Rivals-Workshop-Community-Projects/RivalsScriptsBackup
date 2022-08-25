@@ -37,5 +37,20 @@ if (my_hitboxID.attack == AT_FSTRONG) && (window == 3)
 	spawn_hit_fx( hit_player_obj.x, hit_player_obj.y, dizzy );
 }
 
+if (my_hitboxID.attack == AT_USPECIAL) && (my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 3){
+	hit_player_obj.x = lerp(hit_player_obj.x, x, .5)
+	hit_player_obj.y = lerp(hit_player_obj.y, y - 8, .5)
+	// print("eep")
+}
+if (my_hitboxID.attack == AT_USPECIAL) && (my_hitboxID.hbox_num == 2){
+	hit_player_obj.x = lerp(hit_player_obj.x, x, .5)
+	hit_player_obj.y = lerp(hit_player_obj.y, y - 8, .5)
+	// print("oop")
+}
+if (my_hitboxID.attack == AT_USPECIAL) && ( my_hitboxID.hbox_num == 4){
+	hit_player_obj.x = lerp(hit_player_obj.x, x, .5)
+	hit_player_obj.y = lerp(hit_player_obj.y, y - 8, .5)
+	// print("oop")
+}
 
 	

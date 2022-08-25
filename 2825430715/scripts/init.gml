@@ -3,6 +3,8 @@ crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = sprite_get("air_box");
 hitstun_hurtbox_spr = sprite_get("air_box");
 
+snapdamage = 0
+
 cheapmode = 0
 noparryedit = 0
 

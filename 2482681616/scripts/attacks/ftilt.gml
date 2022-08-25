@@ -21,6 +21,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 set_num_hitboxes(AT_FTILT, 1);
+set_hitbox_value(AT_FTILT, 1, HG_MUNO_HITBOX_NAME, "Hit 1");
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 4);
@@ -31,11 +32,11 @@ set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 58);
 set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 9);
-set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 56);
+set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 12);
-set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, 2.5);
+set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
@@ -44,6 +45,19 @@ set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_UNBASHABLE, 1);
 
 if (has_rune("O")) {
     big_yes(AT_FTILT);
+}
+framedata_slowstart(AT_FTILT);
+
+#define framedata_slowstart(_move)
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	var kb = get_hitbox_value(_move, i, HG_BASE_KNOCKBACK);
+	var kbs = get_hitbox_value(_move, i, HG_KNOCKBACK_SCALING);
+	var damage = get_hitbox_value(_move, i, HG_DAMAGE);
+	var hstop = get_hitbox_value(_move, i, HG_BASE_HITPAUSE);
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + " / " + string(kb * slowstart_knockback_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + " / " + string(kbs * slowstart_knockbackscale_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + " / " + string(damage * slowstart_damage_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + " / " + string(hstop - slowstart_hitstop_sub));
 }
 
 #define big_yes

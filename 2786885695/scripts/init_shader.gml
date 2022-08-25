@@ -1,4 +1,6 @@
-var alt_cur = get_player_color(player);
+//init shader
+
+var alt_cur = "alt_fix" in self ? get_player_color(alt_fix) : get_player_color(player); //online player is actually player 0
 var season_cur = get_match_setting(SET_SEASON);
 
 switch (alt_cur)

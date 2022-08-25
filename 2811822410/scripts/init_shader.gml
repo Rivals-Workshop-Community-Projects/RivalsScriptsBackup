@@ -8,7 +8,30 @@ case 0:
 	set_character_color_slot( 5, 71, 77, 81 ); //Skirt1
 	set_character_color_slot( 6, 88, 170, 188 ); //Skirt2
 break;
-case 28:
+case 25:
+	switch(get_player_name(player)) {
+		case "BLUE":
+			susAlt(0, 0, 255);
+		break;
+		case "GREEN":
+			susAlt(5, 137, 0);
+		break;
+		case "LIME":
+			susAlt(0, 255, 0);
+		break;
+		case "PINK":
+			susAlt(255, 135, 231);
+		break;
+		case "BROWN":
+			susAlt(130, 50, 0);
+		break;
+		case "CYAN":
+		case "NOAH":
+			susAlt(0, 255, 242);
+		break;
+	}
+break;
+case 30:
 	if
 		(
 			(get_player_name(player) == "NOAH") ||
@@ -27,6 +50,12 @@ case 28:
 		rainbowAlt(6);
 	}
 break;
+case 31:
+	playerAlt(0);
+	playerAlt(1);
+	playerAlt(4);
+	playerAlt(6);
+break;
 default:
 break;
 }
@@ -43,3 +72,22 @@ break;
 
 #define rainbowAlt(profileNum)
 	set_character_color_slot( argument[0], color_r, color_g, color_b); 
+	
+#define susAlt(color_r, color_g, color_b) {
+	set_character_color_slot( 0, color_r, color_g, color_b); 
+	set_character_color_slot( 2, color_r, color_g, color_b); 
+	set_character_color_slot( 5, color_r, color_g, color_b); 
+	var temp_color = make_colour_rgb(color_r, color_g, color_b);
+	var _hue = colour_get_hue(temp_color);
+	var _sat = color_get_saturation(temp_color);
+	var _val = color_get_value(temp_color);
+	var _col = make_colour_hsv(_hue, ((_sat - 30) % 255), ((_val - 70) % 255));
+	
+	set_character_color_slot( 3, colour_get_red(_col), colour_get_green(_col), colour_get_blue(_col)); 
+}
+
+#define playerAlt(profileNum) {
+	var _col = get_player_hud_color(player);
+	print(_col)
+	set_character_color_slot( profileNum, colour_get_red(_col), colour_get_green(_col), colour_get_blue(_col)); 
+}

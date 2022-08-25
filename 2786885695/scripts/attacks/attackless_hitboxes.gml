@@ -9,7 +9,7 @@ set_attack_value(atk, AG_NUM_WINDOWS, 0);
 
 set_num_hitboxes(atk, 2);
 
-hitbox_num = 1; //rune D extra hit
+hitbox_num = 1; //rune G extra hit
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 8);

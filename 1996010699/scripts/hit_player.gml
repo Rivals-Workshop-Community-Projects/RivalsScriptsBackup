@@ -28,6 +28,11 @@ if(item[14, 7] == false && item[14, 3] == 0 && my_hitboxID.attack==AT_DSPECIAL){
 	achieveUnlock(14);
 }
 
+//absa
+if(item[7, 7] == false && item[7, 3] == 0 && item[25, 3] == 0 && my_hitboxID.attack==AT_BAIR && my_hitboxID.hbox_num == 2){
+	achieveUnlock(7);
+}
+
 /*
 if(my_hitboxID.attack==AT_NAIR){
 	if(item[2, 3] == 0 && item[2, 7] == false){
@@ -47,7 +52,6 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 }
 
 //toothpaste unlock
-
 if(has_rune("I") && item[16, 3] == 0 && item[16, 7] == false && my_hitboxID.attack == AT_UTILT && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3) && (get_player_damage(hit_player_obj.player) - (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_DAMAGE)) <= 32)){
 	achieveUnlock(16);
 }
@@ -125,7 +129,8 @@ if(my_hitboxID.attack==AT_FSTRONG){
 #define achieveUnlock(i)
 {
 	item[i, 7] = true;
-	spawn_hit_fx( x + (spr_dir * 16) , y - 48 , achTrophy );
+	var trophyFX = spawn_hit_fx( x + (spr_dir * 16) , y - 48 , achTrophy );
+	trophyFX.depth = -10;
 	sound_play( asset_get("sfx_shovel_knight_fanfare"));
 	itempoolUpdated = false;
 	setNextItem();

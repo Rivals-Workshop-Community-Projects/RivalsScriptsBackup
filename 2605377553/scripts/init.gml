@@ -132,8 +132,9 @@ malsick = false;
 malsick_consumed = false;
 
 //smoke shit
-maxSmoke = 3;
+maxSmoke = 5;
 smokeAmount = maxSmoke;
+smokeList = []//this is going to hold all the smoke we have spawned.
 
 //uspeccancel
 uspeccancel = false;

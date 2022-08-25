@@ -40,28 +40,28 @@ if(attack == AT_USPECIAL){
     
     //important! revert back to old hitbox timers
     if(hbox_num == 1){
-    if(hitbox_timer == 29){
+    if(hitbox_timer == 24){
         sound_play(asset_get("sfx_bubblepop"), false, noone, 0.5, bubpop_pitch);
         spawn_hit_fx(x, y, player_id.bubblepop);
         }
     }    
     
     if(hbox_num == 2){
-    if(hitbox_timer == 19){
+    if(hitbox_timer == 14){
         sound_play(asset_get("sfx_bubblepop"), false, noone, 0.5, bubpop_pitch);
         spawn_hit_fx(x, y, player_id.bubblepop);
         }
     }    
     
     if(hbox_num == 3){
-    if(hitbox_timer == 29){
+    if(hitbox_timer == 24){
         sound_play(asset_get("sfx_bubblepop"), false, noone, 0.5, bubpop_pitch);
         spawn_hit_fx(x, y, player_id.bubblepop);
         }
     }    
     
     if(hbox_num == 4){
-    if(hitbox_timer == 24){
+    if(hitbox_timer == 19){
         sound_play(asset_get("sfx_bubblepop"), false, noone, 0.5, bubpop_pitch);
         spawn_hit_fx(x, y, player_id.bubblepop);
         }

@@ -39,7 +39,11 @@ if (get_gameplay_time() < 10)
     if (!has_enter) and (!instance_exists(oTestPlayer))
     	{
         	has_enter = true;
-        	set_attack(AT_NTHROW);
+        		//voice_rng = random_func(0, 2, true);
+				//if (voice_rng == 0)
+        			set_attack(AT_NTHROW);
+				//else if (voice_rng = 1)
+					//set_attack(AT_DTHROW);
     	}
 }
 
@@ -68,6 +72,7 @@ if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED || state 
 // Restores nair stall on hit if grounded/wall jumping/double jumping
 if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED || state == PS_WALL_JUMP || state == PS_DOUBLE_JUMP) {
 	has_nair_stall = true;
+	nair_fastfalled = false;
 }
 
 
@@ -106,7 +111,7 @@ if ((state == PS_IDLE || state == PS_IDLE_AIR || PS_HITSTUN) && hitpause == fals
 
 //double jump effect
 if (state == PS_DOUBLE_JUMP && state_timer == 0) {
-	spawn_hit_fx(x, y + 10, djump);
+	spawn_hit_fx(x, y + 5, djump);
 }
 
 // afterimage

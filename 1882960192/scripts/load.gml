@@ -1,4 +1,5 @@
 sprite_change_offset("idle", 32, 68);
+	sprite_change_offset("idle_wait", 32, 68);
 sprite_change_offset("hurt", 32, 66);
 	sprite_change_offset("spinhurt", 32, 68);
 	sprite_change_offset("hurtground", 32, 68);
@@ -98,3 +99,8 @@ sprite_change_offset("fspecial_socc", 16, 16);
 sprite_change_offset("fspecial_socc2", 20, 20);
 sprite_change_offset("fspecial_overlay_socc", 64, 94);
 sprite_change_offset("fspecial_overlay2_socc", 64, 94);
+
+sprite_change_offset("fspecial_voll", 16, 16);
+sprite_change_offset("fspecial_voll2", 20, 20);
+sprite_change_offset("fspecial_overlay_voll", 64, 94);
+sprite_change_offset("fspecial_overlay2_voll", 64, 94);

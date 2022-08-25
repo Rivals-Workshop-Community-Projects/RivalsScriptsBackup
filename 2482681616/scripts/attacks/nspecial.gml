@@ -23,6 +23,8 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 11);
 
 set_num_hitboxes(AT_NSPECIAL, 0);
 //Ground
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Grounded Spike");
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "Always appears on the ground below Regigigas.");
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 9999);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 4);
@@ -50,6 +52,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 193);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 
 //Wall
+set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Wall Spike");
+set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_MISC_ADD, "Always appears on the wall in front of Regigigas.");
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 9999);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 4);
@@ -76,3 +80,17 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 193);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 
+
+framedata_slowstart(AT_NSPECIAL);
+
+#define framedata_slowstart(_move)
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	var kb = get_hitbox_value(_move, i, HG_BASE_KNOCKBACK);
+	var kbs = get_hitbox_value(_move, i, HG_KNOCKBACK_SCALING);
+	var damage = get_hitbox_value(_move, i, HG_DAMAGE);
+	var hstop = get_hitbox_value(_move, i, HG_BASE_HITPAUSE);
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + " / " + string(kb * slowstart_knockback_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + " / " + string(kbs * slowstart_knockbackscale_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + " / " + string(damage * slowstart_damage_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + " / " + string(hstop - slowstart_hitstop_sub));
+}

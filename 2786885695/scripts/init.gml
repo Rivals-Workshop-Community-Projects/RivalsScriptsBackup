@@ -11,7 +11,7 @@
 
 // Physical size
 char_height         = 62+has_rune("L")*16;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1.0;		// 0.9  -  1.2
+knockback_adj       = 1.1;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 4;		// 3    -  4.5
@@ -51,7 +51,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 9;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 11;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 20;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.05;		// 0    -  0.15
@@ -71,6 +71,13 @@ crouch_anim_speed   = 0.1;
 walk_anim_speed     = 0.2;
 dash_anim_speed     = 0.3;
 pratfall_anim_speed = 0.2;
+
+// wait animation/s
+normal_wait_time            = 0;         //how long it takes for the animation to be done
+wait_length                 = 0;         //amount of frames the wait animation takes
+wait_sprite                 = sprite_get("wait");
+
+wait_time                   = normal_wait_time;
 
 // Jumps
 double_jump_time    = 24;		// 24   -  40
@@ -156,8 +163,6 @@ empty = asset_get("empty_sprite");
 fx_empty = hit_fx_create(empty, 1);
 ai_fight_time = 0;
 
-keqing_exist_time = 0;
-
 has_intro = true;
 AT_INTRO = 2;
 
@@ -165,13 +170,6 @@ playtest_active = (object_index == oTestPlayer);
 is_cpu = false;
 
 AT_BURST = 49;
-
-
-
-artc_damage = noone;
-damage_gap = 0;
-prev_damage = 0;
-display_damage_numbers = true;
 
 if (get_match_setting(SET_PRACTICE)) respawn_time_appear = 0;
 else respawn_time_appear = 90;
@@ -197,8 +195,6 @@ rotate_time = -1;
 
 //jab
 can_jab4 = false;
-
-
 
 //D-air
 dair_fx_y_scale = 0;
@@ -259,7 +255,6 @@ uspec_started_grounded = true;
 //F-special stuff
 fspec_charge = 0;
 spin_count = 3;
-fspec_bounce = false;
 last_kb_angle = 0;
 fspec_used = false; //chaged from single use in midair to using a short cooldown to prevent spam
 
@@ -384,6 +379,8 @@ sfx_swordhit_heavy2 = sound_get("sfx_swordhit_heavy2");
 sfx_nspec_aim = sound_get("sfx_nspec_aim");
 sfx_nspec_teleport = sound_get("sfx_nspec_teleport");
 
+loop_sound = noone;
+
 // misc.
 //changing her portraits according to alts
 switch (alt_cur)
@@ -476,11 +473,37 @@ attack_index = [
     "???"
 ];
 
+
+
+//read synced vars
+var tmp_sync_vars = get_synced_var(player);
+for (var i = 0; i < 2; i++)
+{
+    var shift = (i*4);
+    synced_vars[i] = tmp_sync_vars >> shift & 15;
+}
+
 //voice clips
-lang = 0;
+switch (synced_vars[0])
+{
+    default: lang = 0; break;
+    case 1: lang = "jp"; break;
+    case 2: lang = "en"; break;
+    case 3: lang = "cn"; break;
+    case 4: lang = "kr"; break;
+}
 reached_100_damage = false;
-stopped_sounds = [];
 cur_voiceclip = [noone, noone];
+voice_cooldown = 0;
+voice_cooldown_set = 60; //cooldown for regular voiceclips
+voice_cooldown_set_100 = 120; //cooldown for high % lines
+
+//damage numbers display
+artc_damage = noone;
+damage_gap = 0;
+prev_damage = 0;
+display_damage_numbers = synced_vars[1];
+
 
 
 //abyss runes
@@ -527,7 +550,7 @@ crit_damage = 1.5; //it actually also increases knockback and hitpause
 //rune L (vision hunt decree) (old = O)
 has_resolve_mechanic = has_rune("L");
 resolve_max = 600;
-resolve_cur = 0;
+resolve_cur = 600;
 vhd_attack = false; //applies attack invince to taunt
 vhd_effect = false;
 vhd_effect_time_max = 60*8;
@@ -538,13 +561,17 @@ vhd_alpha = 1; //it's for the effect behind her
 
 
 //lyre
-playing_lyre_timer = 0;
+playing_lyre_timer = -1;
 lyre_hud_fade = 0;
 lyre_hud_play_fade = 0; //0 = don't play fade | 1 = play fade | -1 = play_fade in reverse
-note_id = -1;
-prev_note_id = -1;
-key_held_time = 0;
-fx_lyre_press = hit_fx_create(sprite_get("hud_lyre_press"), 24);
+fx_lyre_note = hit_fx_create(sprite_get(is_gb ? "fx_lyre_note_gb" : "fx_lyre_note"), 20);
+fx_lyre_despawn = hit_fx_create(sprite_get(is_gb ? "fx_lyre_despawn_gb" : "fx_lyre_despawn"), 32);
+note_input_show = [
+    0, 0, 0, 0 ,0 ,0 ,0,
+    0, 0, 0, 0 ,0 ,0 ,0,
+    0, 0, 0, 0 ,0 ,0 ,0
+];
+note_show_time_set = 8;
 
 ///////////////////////////////////////////////////CUSTOM HITBOX COLOR SYSTEM/////////////////////////////////////////////////
 //Custom Hitbox Colors System (by @SupersonicNK)
@@ -600,3 +627,7 @@ fs_char_chosen_trigger = "custom";
 fs_char_attack_index = AT_BURST;
 fs_hide_meter = true; //it doesn't work for some reason???
 fs_meter_y = 6; //because i can't hide it for some reason
+
+//dracula portrait
+dracula_portrait = sprite_get("dracula_portrait");
+dracula_portrait2 = asset_get("empty_sprite");

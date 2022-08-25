@@ -72,7 +72,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = asset_get("sfx_bird_upspecial"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 9; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 31; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(20, 73, 110) // "color preview square" color. can be any color!
@@ -168,6 +168,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[30,0] = make_color_rgb(99, 54, 125)
     ce[30,1] = "PNG"
     ce[30,2] = ""
+    ce[31,0] = make_color_rgb(23, 66, 153)
+    ce[31,1] = "Riptide"
+    ce[31,2] = ""
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

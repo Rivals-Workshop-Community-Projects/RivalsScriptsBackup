@@ -20,43 +20,39 @@ var alt_new = get_player_color(player);
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Default";
-alt_name[1]  = "Red";
-alt_name[2]  = "Blue";
-alt_name[3]  = "Dark";
-alt_name[4]  = "Light";
-alt_name[5]  = "Sepia";
-alt_name[6]  = "Toxic";
-alt_name[7]  = "Comic";
-alt_name[8]  = "Virtual Boy";
-alt_name[9]  = "Torkoal";
+alt_name[1]  = "Galega";
+alt_name[2]  = "Yellow";
+alt_name[3]  = "Red";
+alt_name[4]  = "Blue";
+alt_name[5]  = "Dark";
+alt_name[6]  = "Light";
+alt_name[7]  = "Sepia";
+alt_name[8]  = "Toxin";
+alt_name[9]  = "Monochrome";
 alt_name[10]  = "Squirtle";
 alt_name[11]  = "Torterra";
-alt_name[12]  = "Naturist";
-alt_name[13]  = "Hiker";
-alt_name[14]  = "Mountain Climber";
-alt_name[15]  = "BLM";
-alt_name[16]  = "Copper [5k Milestone]";
-alt_name[17]  = "Silver [10k Milestone!]";
+alt_name[12]  = "BLM";
+alt_name[13]  = "Otaku";
+alt_name[14]  = "Blastproof";
+alt_name[15]  = "Glass";
+alt_name[16]  = "Default [Alternate]";
+alt_name[17]  = "Galega [Alternate]";
 alt_name[18]  = "Gold [15k Milestone!!]";
-alt_name[19]  = "Developer";
-alt_name[20]  = "Otaku";
-alt_name[21]  = "Snolid";
-alt_name[22]  = "Dichi [Lode and Puul]";
-alt_name[23]  = "B0wlingKing";
-alt_name[24]  = "Bat Monkey";
-alt_name[25]  = "Cheddar Circle";
-alt_name[26]  = "Firedancer";
-alt_name[27]  = "Salt";
-alt_name[28]  = "Oog is the Way";
-alt_name[29]  = "Dark [Purple Edition]";
-alt_name[30]  = "Light [Pink Edition]";
-alt_name[31]  = "Parasyte";
+alt_name[19]  = "Red [Alternate]";
+alt_name[20]  = "Blue [Alternate]";
+alt_name[21]  = "Dark [Alternate]";
+alt_name[22]  = "Light [Alternate]";
+alt_name[23]  = "High Contrast";
+alt_name[24]  = "Poison";
+alt_name[25]  = "Muted";
+alt_name[26]  = "Blastoise";
+alt_name[27]  = "Turtwig";
+alt_name[28]  = "TAG";
+alt_name[29]  = "Gesture";
+alt_name[30]  = "Ash";
+alt_name[31]  = "Shattered";
  
  
- 
-if(get_player_color(player) == 31){
-    draw_sprite(sprite_get("icons"), 4, temp_x + 4, temp_y + 96)
-}
 
 //Patch
  
@@ -78,11 +74,6 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 	sound_stop(asset_get("mfx_change_color"));
- 
-//Symbols
-if (alt_cur == 19 || alt_cur == 20 || alt_cur == 21 || alt_cur == 22 || alt_cur == 23){
-  draw_sprite_ext(sprite_get("dev_icon"), 0, temp_x + 3, temp_y + 92, 1, 1, 0, c_white, 1);
-}
 
 ///Alt
  

@@ -220,8 +220,13 @@ if break_active {
 }
 
 
-if break_active && meter_cur < meter_max {
+if break_active {
 	meter_cur -= 0.1
+}
+
+if (break_active && break_timer >= 600) {
+	break_active = false
+    break_timer = 0
 }
 
 if draw_limit_flash {

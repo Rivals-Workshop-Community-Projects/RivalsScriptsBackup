@@ -1,5 +1,6 @@
 set_attack_value(AT_JAB, AG_SPRITE, sprite_get("jab"));
 set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+set_attack_value(AT_JAB, AG_MUNO_ATTACK_REFRESH, 1);
 
 set_attack_value(AT_JAB, AG_NUM_WINDOWS, 7);
 set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 4);
@@ -44,6 +45,7 @@ set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAME_START, 10);
 
 set_num_hitboxes(AT_JAB, 2);
 //Jab 1
+set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_NAME, "Hit 1");
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_JAB, 1, HG_LIFETIME, 2);
@@ -65,6 +67,7 @@ set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 
 //Jab2
+set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_NAME, "Hit 2");
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 2);
@@ -78,8 +81,8 @@ set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 65);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 16);
-set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, 2.25);
+set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);
@@ -88,8 +91,23 @@ set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_UNBASHABLE, 1);
 
+
 if (has_rune("O")) {
     big_yes(AT_JAB);
+}
+
+framedata_slowstart(AT_JAB);
+
+#define framedata_slowstart(_move)
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	var kb = get_hitbox_value(_move, i, HG_BASE_KNOCKBACK);
+	var kbs = get_hitbox_value(_move, i, HG_KNOCKBACK_SCALING);
+	var damage = get_hitbox_value(_move, i, HG_DAMAGE);
+	var hstop = get_hitbox_value(_move, i, HG_BASE_HITPAUSE);
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + " / " + string(kb * slowstart_knockback_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + " / " + string(kbs * slowstart_knockbackscale_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + " / " + string(damage * slowstart_damage_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + " / " + string(hstop - slowstart_hitstop_sub));
 }
 
 #define big_yes

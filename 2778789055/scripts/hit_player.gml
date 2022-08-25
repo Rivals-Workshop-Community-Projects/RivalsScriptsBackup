@@ -33,7 +33,7 @@ if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 		sound_play(asset_get("sfx_hod_steamhit1"));
 	}
 }
-if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
+if(my_hitboxID.attack == AT_DSPECIAL){
 	if(was_parried == false && hit_player_obj.clone == false){
 		hit_player_obj.other_scalding = true;
 		hit_player_obj.other_scalding_timer = 360;

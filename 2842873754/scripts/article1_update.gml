@@ -20,6 +20,7 @@ if (hitstop == 0) {
                     hitbox = create_article_hitbox(AT_FSPECIAL, 3, floor(x), floor(y));
                     //hitbox.can_hit = can_hit;
                     hitbox.player = owned_player;
+                    
                 }
                 if (state_timer >= 60) {
                     hitbox = create_article_hitbox(AT_FSPECIAL, 4, floor(x), floor(y));
@@ -80,7 +81,7 @@ if (hitstop == 0) {
             if (!hit_already) {
                 current_sprite_set += 0.05;
                 current_sprite_set %= 2;
-                if (!free) {
+                if (!free || (collision_rectangle(bbox_left, bbox_bottom + 8, bbox_right, bbox_bottom + 10, asset_get("par_jumpthrough"), 1, 1) && vsp > 0)) {
                     vsp = -bounce_speed;
                     sound_play(asset_get("sfx_gus_land"));
                 }

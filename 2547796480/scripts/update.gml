@@ -1,6 +1,5 @@
 ///
 
-
 knifecount = 5
 
 with pHitBox {
@@ -9,9 +8,11 @@ with pHitBox {
 	}
 }
 
+if knifecount < oknifecount {
+	oknifecount -- 
+} 
 
-batt = max(0,knifecount - oknifelost)
-
+batt = max(0,oknifecount - oknifelost)
 
 if !instance_exists(hit_player_obj){
 

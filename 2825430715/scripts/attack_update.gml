@@ -791,25 +791,22 @@ switch attack {
 	  
 	   if window_timer == 8*5 {
 	 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.8,.8)
-	 	take_damage(player,-1,10)
                 with snapplayer {
-                  take_damage(player,-1,15)
+                  take_damage(player,-1,5)
                   spawn_hit_fx(x,y - 30,305)
                 }
 	  }
 	  
 	  if window_timer == 10*5 {
 	 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.8,.9)
-	 	take_damage(player,-1,10)
                 with snapplayer {
-                  take_damage(player,-1,15)
+                  take_damage(player,-1,10)
                   spawn_hit_fx(x,y - 30,305)
                 }
 	  }
 	  
 	  if window_timer == 12*5 {
 	 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.8,1)
-	 	take_damage(player,-1,10)
                 with snapplayer {
                   take_damage(player,-1,15)
                   spawn_hit_fx(x,y - 30,305)
@@ -817,20 +814,20 @@ switch attack {
 	  }
 	  
 	  if window_timer == 14*5 {
+	  	snapdamage = 33
 	  	soft_armor = false 
 	 	sound_play(sound_get("snap"),false,noone,1,1)
 	 	sound_play(sound_get("RI"),false,noone,1,1.3)
 	 	sound_play(sound_get("RZ"),false,noone,.7,0.2);
-	 	take_damage(player,-1,3)
 	 	if get_player_color(player) == 16{
                     sound_play(sound_get("drip")) 
                 }  
 	 	shake_camera(6,4)
 	 	with snapplayer {
 	 		spawn_hit_fx(x,y - 30, 306)
-                        take_damage(player,-1,15)
+                        take_damage(player,-1,20)
                         spawn_hit_fx(x,y - 30,305)
-	 		turningtodust = 1200
+	 		turningtodust = 900
 	 		turningtodustID = other
 	 	}
 	  }

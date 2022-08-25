@@ -3,6 +3,19 @@ if(itempoolUpdated == false){
 	itempoolUpdated = true;
 }
 
+//stickmin
+switch(get_player_stocks(player)){
+	case 1:
+		fail_text = "THIS RUN: 3 WAVES";
+		break;
+	case 2:
+		fail_text = "THIS RUN: 2 WAVES";
+		break;
+	case 3:
+		fail_text = "THIS RUN: 1 WAVE";
+		break;
+}
+
 if get_player_color(player) == 10 {
 	hue+=1 if hue>255 hue-=255;
 	//make hue shift every step + loop around
@@ -243,12 +256,16 @@ if(item[15, 3] == 1 && state == PS_CROUCH && crouchCounter < 100){
 	}
 }
 
+//old gotehorn unlock
+/*
 if(item[7, 3] == 0 && state == PS_DOUBLE_JUMP && state_timer == 1 && airCounter < 7){
 	airCounter++;
 }
+
 if(item[7, 3] == 0 && item[7, 7] == false && airCounter >= 7){
 	achieveUnlock(7);
 }
+*/
 
 if (crouchCounter > 90 && crouchCounter < 100){
 	spawn_hit_fx( x , y - 30 , 13 );
@@ -353,7 +370,8 @@ if(get_player_color(player) == 7){
 	beachIntro = true;
 }
 if(get_player_color(player) == 15 && get_gameplay_time() % 21 == 0 && !hitpause && state != PS_RESPAWN){
-	spawn_hit_fx( x - ((22 - random_func(1, 50, true)) * spr_dir) , y - random_func(12, 58, true) , sparkle );
+	var goldFX = spawn_hit_fx( x - ((22 - random_func(1, 50, true)) * spr_dir) , y - random_func(12, 58, true) , sparkle );
+	goldFX.depth = -100;
 }
 
 if(abyssIntro){
@@ -667,7 +685,8 @@ if (faucetShards == true){
 #define achieveUnlock(i)
 {
 	item[i, 7] = true;
-	spawn_hit_fx( x + (spr_dir * 16) , y - 48 , achTrophy );
+	var trophyFX = spawn_hit_fx( x + (spr_dir * 16) , y - 48 , achTrophy );
+	trophyFX.depth = -10;
 	sound_play( asset_get("sfx_shovel_knight_fanfare"));
 	itempoolUpdated = false;
 }

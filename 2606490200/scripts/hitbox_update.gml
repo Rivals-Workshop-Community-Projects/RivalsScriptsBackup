@@ -204,7 +204,7 @@ if attack == AT_USPECIAL {
        
         with player_id {
         	
-        	
+        	/*
         	if !special_down {
         		prat_land_time = 16;
         		fx1 = spawn_hit_fx(x,y - 30,305)
@@ -219,7 +219,7 @@ if attack == AT_USPECIAL {
             	vsp = -9
             	
             }
-          
+          */
             
         }
           

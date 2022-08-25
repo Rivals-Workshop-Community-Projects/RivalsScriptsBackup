@@ -32,7 +32,7 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX, sound_get("mus_sfx_bookspin"));
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, .6);
 
-set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC, "This attack doesn't have any hitboxes. It's only for fueling Fspecial and Uspecial, and applying Lancer with 'Slippery'.");
+//set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC, "This attack doesn't have any hitboxes. It's only for fueling Fspecial and Uspecial, and applying Lancer with 'Slippery'.");
 
 
 

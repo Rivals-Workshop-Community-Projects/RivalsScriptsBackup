@@ -9,4 +9,8 @@ if ds_list_size(hit_player_obj.roke_mark_id) > 0 {
     }
 }
 
+if my_hitboxID.attack == AT_NSPECIAL && hbox_num == 1 {
+    move_cooldown[AT_NSPECIAL] = 30;
+}
+
 //instance_destroy(my_hitboxID)

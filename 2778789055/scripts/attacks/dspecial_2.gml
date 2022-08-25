@@ -22,7 +22,7 @@ set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 1); 
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED, 2); 
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_HSPEED_TYPE, 1); 
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_HSPEED, 9); 
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_HSPEED, 10); 
 
 //endlag
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_TYPE, 7);
@@ -32,7 +32,7 @@ set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_VSPEED_TYPE, 1); 
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_VSPEED, 1); 
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 1); 
-set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED, 3); 
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED, 4); 
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 

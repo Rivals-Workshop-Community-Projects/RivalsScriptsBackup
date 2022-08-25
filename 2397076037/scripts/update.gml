@@ -7,7 +7,7 @@
 ///	  knockback_adj = .9;
 ///}
 
- if cheapmode == 0 {
+ if cheapmode == 0 && get_gameplay_time() < 60 {
  with(asset_get("oPlayer")){ 
  	if url != "2273636433" && url != "1870768156"
 	&& url != "1869351026" && url != "2443363942" &&

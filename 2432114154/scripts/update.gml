@@ -56,7 +56,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	  move_cooldown[AT_NAIR] = 0
 }
 
-if cheapmode == 0 {
+ if cheapmode == 0 && get_gameplay_time() < 60 {
  
  with(asset_get("oPlayer")){ 
  	if url != "2273636433" && url != "1870768156"

@@ -32,10 +32,11 @@ with (pHitBox)
         }
         
         if (player_id.slowstart_state == player_id.SLOWSTART_STATE_ON) {
-            if (attack != AT_USTRONG && hbox_num <= 3)
+            if (attack != AT_USTRONG || (attack == AT_USTRONG && hbox_num > 3)) {
                 kb_value = orig_kb_value * player_id.slowstart_knockback_mult;
                 kb_scale = orig_kb_scale * player_id.slowstart_knockbackscale_mult;
             	damage = orig_damage * player_id.slowstart_damage_mult
+            }
         }
     }
 }

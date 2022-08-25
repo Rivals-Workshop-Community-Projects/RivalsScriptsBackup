@@ -11,7 +11,7 @@ else{
     draw_sprite_ext(sprite_get( "platform_icon"), 1, temp_x + 190, temp_y,1,1,0,c_dkgray,1);
 }
 //#endregion
-
+/* Disabled until finished
 //#region Dialog Box
 
 if(flag_round_start_dialog){
@@ -40,7 +40,7 @@ if(flag_round_start_dialog){
 }
 
 //#endregion
-
+*/
 /*
 //#region Secret Alts - Old Secret Alt Code
 if(state == PS_SPAWN){

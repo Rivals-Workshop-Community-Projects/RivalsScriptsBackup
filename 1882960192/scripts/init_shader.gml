@@ -106,3 +106,15 @@ if (get_player_color( player ) == 15) {
 	set_character_color_shading(6, 0);
 	set_character_color_shading(7, 0);
 }
+
+if (get_player_color( player ) == 16) {
+	set_character_color_shading(0, 1.5); //cap
+	set_character_color_shading(1, 3); //shirt
+	set_character_color_shading(2, 1.5); //pants
+	set_character_color_shading(3, 1.1); //skin
+	set_character_color_shading(4, 2); //gloves / scarf
+	set_character_color_shading(5, 6); //hair
+	set_character_color_shading(6, .9); //shoes / wand1
+	set_character_color_shading(7, 1.5); //shoes / wand2
+}
+

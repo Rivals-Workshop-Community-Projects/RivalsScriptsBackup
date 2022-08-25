@@ -17,16 +17,6 @@ if practice_mode && attack == AT_TAUNT && (up_down || down_down) {
 }
 
 
-if attack == AT_USPECIAL {
-    if !free {
-        set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 6);
-        set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 3);
-    } else {
-        reset_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH);
-        reset_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME);
-    }
-}
-
 if attack == AT_FSPECIAL {
     moveangle = 0
     movespd = 0

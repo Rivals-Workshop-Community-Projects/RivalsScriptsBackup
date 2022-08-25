@@ -82,4 +82,5 @@ set_hitbox_value(AT_UTILT, 3, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UTILT, 3, HG_HITPAUSE_SCALING, 0.62);
 set_hitbox_value(AT_UTILT, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_FTILT, 3, HG_HIT_LOCKOUT, 16);
 set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));

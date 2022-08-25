@@ -1,7 +1,20 @@
 //
 
+if(gumbo_ditto = false){
+if(gumbo_scalding == false){
+    outline_color = [ 0, 0, 0 ];
+	//init_shader();
+}
+}
+if(gumbo_ditto = true){
+if(is_scalding == false){
+    outline_color = [ 0, 0, 0 ];
+	//init_shader();
+}
+}
+
 //secret alts
-if(get_player_color(player) = 13){
+if(get_player_color(player) = 14){
 if(avocado = true){
     //Avocado
     set_character_color_slot( 0, 226, 189, 166 );
@@ -23,7 +36,7 @@ if(avocado = true){
     }
 }
 
-if(get_player_color(player) = 14){
+if(get_player_color(player) = 15){
     if(avocado = true){
 // TAG
     set_character_color_slot( 0, 0, 158, 76 ); //Gumbo Skin 1
@@ -71,7 +84,7 @@ if  (get_player_color(player) == 23) { //change # to the color you wanna change
         }
 }
 
-if(get_player_color(player) = 15){
+if(get_player_color(player) = 16){
     if(avocado = true){
 // BLW Champ
     set_character_color_slot( 0, 133, 70, 171 ); //Gumbo Skin 1
@@ -93,7 +106,7 @@ if(get_player_color(player) = 15){
     }
 }
 
-if(get_player_color(player) = 22){
+if(get_player_color(player) = 12){
     if(avocado = true){
         //Kazuya Mishima
     set_character_color_slot( 0, 166, 121, 181 ); //Gumbo Skin 1
@@ -113,6 +126,28 @@ if(get_player_color(player) = 22){
     set_article_color_slot( 6, 135, 135, 135 ); //Po Skin 2
     set_article_color_slot( 7, 199, 74, 52 ); //Apron
     }
+}
+
+if  (get_player_color(player) == 25) { //change # to the color you wanna change
+    set_character_color_slot( 3, 0, 0, 0, 0); //change # to the slot you wanna change
+}
+
+switch (get_player_color(player)){
+	case 4:
+	case 9:
+	case 15:
+	case 21:
+	case 22:
+	set_character_color_shading(3,2);
+	break;
+
+	case 2:
+	case 7:
+	case 10:
+	case 24:
+	case 25:
+	set_character_color_shading(3,1.5);
+	break;
 }
 
 

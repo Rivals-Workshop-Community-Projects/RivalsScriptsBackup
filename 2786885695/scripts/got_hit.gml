@@ -3,6 +3,9 @@
 //strongs/charge attacks get reset
 charge_attack = false;
 
+//stop nspec aim sound
+sound_stop(sfx_nspec_aim);
+
 //fspec can be used again
 fspec_used = false;
 

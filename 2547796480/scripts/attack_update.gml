@@ -404,10 +404,11 @@ if attack == AT_DSPECIAL{
    	    
    	    if ethrow = 0 {
    	    if move_cooldown[AT_DTILT] = 0 {	
-   	    if window_timer == 1 && knifecount >= 1 {
+   	    if window_timer == 1 && oknifecount >= 1 {
    	    	set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_HSPEED, 0);
    	    	set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_VSPEED, 6);
    	    	create_hitbox(AT_FSPECIAL,4,x,y+30)
+   	    	oknifecount -= 1
    	    	move_cooldown[AT_TAUNT] = 16
    	    	sound_play(asset_get("sfx_ice_shieldup"));
    	    	

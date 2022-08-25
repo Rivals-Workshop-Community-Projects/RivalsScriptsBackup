@@ -149,7 +149,164 @@ if (Omega == 4) && invincible && invince_time <= 2 {
 
 shader_end() 
 
+
 if (get_player_color(player) == 15){
 	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,c_red,move_cooldown[AT_USPECIAL_GROUND]/20)
 	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,-1, min(0.5,move_cooldown[AT_USPECIAL_GROUND]/40))
+}
+
+
+
+
+if 	"cosmicman" in self {
+ //thank you Rioku
+ if cosmicmusic > 0 {
+ 	var volume = 0;
+        volume = get_local_setting(3);
+        
+ 	if cosmicmusic == 120 {
+ 	   switch uped	{
+ 	   	case 1 :
+ 	   	sound_play(sound_get("cosmicman1"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 50
+ 	   	break;
+ 	   	
+ 	   	case 2 :
+ 	   	sound_stop(sound_get("cosmicman1"))
+ 	   	sound_play(sound_get("cosmicman2"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 60*4
+ 	   	break;
+ 	   	
+ 	   	case 3 :
+ 	   	sound_stop(sound_get("cosmicman2"))
+ 	   	sound_play(sound_get("cosmicman3"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 60*48
+ 	   	break;
+ 	   	
+ 	   	case 4 :
+ 	   	sound_stop(sound_get("cosmicman3"))
+ 	   	sound_play(sound_get("cosmicman4"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 60*80
+ 	   	break;
+ 	   }
+ 	}
+ 	
+ 	
+ 	if comextended == 0 {
+ 	 cosmicmusic --
+ 	 suppress_stage_music( 0, 0.006 )
+ 	} else {
+ 	 comextended --
+ 	 suppress_stage_music( 0, 0.05 )
+ 	}
+ }
+ gpu_set_blendmode(bm_add);
+ 
+ gpu_set_fog(1, c_blue, 0, 1);
+    draw_sprite_ext(sprite_index, image_index, x ,y + 2,spr_dir,1,0, -1, 0.5)    
+    draw_sprite_ext(sprite_index, image_index, x - 2 ,y,spr_dir,1,0, -1, 0.5)
+  gpu_set_fog(0, c_blue, 0, 0);
+  
+  gpu_set_fog(1, c_purple, 0, 1)
+     draw_sprite_ext(sprite_index, image_index, x + 2 ,y,spr_dir,1,0, -1, 0.5)
+    draw_sprite_ext(sprite_index, image_index, x ,y - 2,spr_dir,1,0, -1, 0.5)
+   gpu_set_fog(0, c_purple, 0, 0);
+   
+  gpu_set_blendmode(bm_normal);
+  
+   gpu_set_fog(1, c_black, 0, 1);
+    draw_sprite_ext(sprite_index, image_index, x + 1 ,y,spr_dir,1,0, -1, 0.5)
+    draw_sprite_ext(sprite_index, image_index, x - 1 ,y,spr_dir,1,0, -1, 0.5)
+    draw_sprite_ext(sprite_index, image_index, x ,y + 1,spr_dir,1,0, -1, 0.5)
+    draw_sprite_ext(sprite_index, image_index, x ,y - 1,spr_dir,1,0, -1, 0.5)
+   gpu_set_fog(0, c_black, 0, 0);
+   
+maskHeader();
+draw_self();
+maskMidder();
+
+
+
+draw_sprite_tiled_ext(sprite_get("cosmic"), 0, get_gameplay_time()/23 + cossetx, get_gameplay_time()/23 + cossety, 1, 1, c_white, 1)
+
+if uped >= 4  draw_sprite_tiled_ext(sprite_get("cosmicb"), 7, get_gameplay_time()/20 + cossetx*1.1, get_gameplay_time()/20 + cossety*1.1, 1, 1, c_white, 1)
+
+if uped >= 2  draw_sprite_tiled_ext(sprite_get("cosmicb"), 3, get_gameplay_time()/18 + cossetx*1.5, get_gameplay_time()/18 + cossety*1.5, 1, 1, c_white, 1)
+if uped >= 2  draw_sprite_tiled_ext(sprite_get("cosmic"), 2, get_gameplay_time()/18 + cossetx*1.5, get_gameplay_time()/18 + cossety*1.5, 1, 1, c_white, 1)
+
+
+if uped >= 3  draw_sprite_tiled_ext(sprite_get("cosmicb"), 5, get_gameplay_time()/14 + cossetx*2, get_gameplay_time()/14 + cossety*2, .5, .5, c_white, 1)
+if uped >= 3  draw_sprite_tiled_ext(sprite_get("cosmic"), 4, get_gameplay_time()/14 + cossetx*2, get_gameplay_time()/14 + cossety*2, .5, .5, c_white, 1)
+
+
+if uped >= 4  draw_sprite_tiled_ext(sprite_get("cosmic"), 6, get_gameplay_time()/12 + cossetx*2.2, get_gameplay_time()/12 + cossety*2.2, 1, 1, c_white, 1)
+
+if uped >= 1  draw_sprite_tiled_ext(sprite_get("cosmic"), 1, get_gameplay_time()/9 + cossetx*3, get_gameplay_time()/9 + cossety*3, 1.4, 1.4, c_white, 1)
+
+if abs(hsp) > 3 {
+	cossetxd = (hsp + cossetxd)/4
+} else {
+	if abs(cossetxd) > 0.1 cossetxd /= 1.05
+	if abs(cossetxd) < 0.15 && cossetxd != 0 {
+		cossetxd = 0
+	}
+}
+
+if abs(vsp) > 3 {
+	cossetyd = (vsp + cossetyd)/3
+} else {
+	if abs(cossetyd) > 0.1 cossetyd /= 1.05
+	if abs(cossetyd) < 0.15 && cossetyd != 0 {
+		cossetyd = 0
+	}
+}
+
+cossetx += cossetxd
+cossety += cossetyd
+
+maskFooter();
+
+shader_start();
+  gpu_set_blendmode(bm_add);
+      draw_sprite_ext(sprite_index, image_index , x , y  , spr_dir, 1, 0 , -1 , 1);
+  gpu_set_blendmode(bm_normal);
+shader_end();
+
+}
+
+//================================================================================
+#define maskHeader
+// Mask renderer utility: disables Normal draw.
+// Draw shapes or sprites to be used as the stencil(s) by maskMidder.
+//================================================================================
+{
+    gpu_set_blendenable(false);
+    gpu_set_colorwriteenable(false,false,false,true);
+    draw_set_alpha(0);
+    draw_rectangle_color(0,0, room_width, room_height, c_white, c_white, c_white, c_white, false);
+    draw_set_alpha(1);
+}
+//================================================================================
+#define maskMidder
+// Reenables draw but only within the region drawn between maskHeader and maskMidder.
+// Lasts until maskFooter is called.
+//================================================================================
+{
+    gpu_set_blendenable(true);
+    gpu_set_colorwriteenable(true,true,true,true);
+    gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+    gpu_set_alphatestenable(true);
+}
+//================================================================================
+#define maskFooter
+// Restores normal drawing parameters
+//================================================================================
+{
+    gpu_set_alphatestenable(false);
+    gpu_set_blendmode(bm_normal);
+    draw_set_alpha(1);
 }

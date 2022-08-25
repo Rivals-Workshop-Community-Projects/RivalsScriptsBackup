@@ -153,7 +153,7 @@ if(attack == AT_FSPECIAL){
 		move_cooldown[AT_FSPECIAL] = 240;
 		move_cooldown[AT_FSPECIAL_2] = 60;
 		has_shrimp = false;
-	}if(window == 2 && window_timer = 1){
+	}if(window == 2 && window_timer = 1 and !hitpause){
 		shrimp_proj = create_hitbox(AT_FSPECIAL, 1, x + spr_dir * 35, y - 38);
 	}
 }
@@ -309,6 +309,15 @@ if(attack == AT_TAUNT){
 	if(window == 1 && window_timer = 6){
 		sound_play(asset_get("mfx_flashy_shing"), false, noone, 9);
 	}
+	
+	if(window == 1 && window_timer = 1){
+		if(practicetutorial){
+			if(down_down || down_pressed){
+		attack = AT_TAUNT_2;	
+			}
+		}
+	}
+	
 }
 
 if(attack == AT_DAIR){
@@ -342,6 +351,222 @@ if(attack == AT_NSPECIAL_2){
 	if(window == 1 && window_timer = 1){
 		sound_play(asset_get("sfx_forsburn_cape_swipe"));
 	}
+}
+
+//#region Robophone touch ------------------------------------------------------------------
+if(attack == AT_TAUNT_2){
+	soft_armor = 999;
+		practicetutorial = 0;
+		if(window == 1 && window_timer = 1){
+			if(tutorial_up == true){
+				window = 2;
+				window_timer = 0;
+				sound_play(sound_get("_pho_acnh_prompt3"));
+			}
+		}if(window == 1 && window_timer = 36){
+		tutorial = 1;	
+		}
+	
+	if(window == 2){
+		tutorial_up = true;
+		tutorial = 1;
+		if(window_timer == 63){
+			window_timer = 1;
+		}if(attack_pressed || special_pressed){
+		if (tutorialcooldown < 10 && textbox_pos < string_length(textbox_text) && textbox_linenum < max_lines + 1) {
+		if(tutorialpage != 8){
+	textbox_pos = string_length(textbox_text);
+	textbox_skipped = true;
+	tutorialcooldown = 15;
+		}
+		}
+			if(tutorialcooldown == 0 && textbox_pos >= string_length(textbox_text)){
+				if(tutorialpage != 8){
+			tutorialpage += 1;
+		textbox_skipped = false;
+        textbox_pos = 0;
+        textbox_typetext = "";
+        textbox_linetext = "";
+        textbox_linenum = 0;
+        textbox_timer = 0;
+        show_arrow = false;
+			tutorialcooldown = 20;
+			}if(tutorialpage == 13 || tutorialpage == 21 || tutorialpage == 35 || tutorialpage == 46 || tutorialpage == 52 || tutorialpage == 58 || tutorialpage == 62 || tutorialpage == 68 || tutorialpage == 79 || tutorialpage == 92){
+			tutorialpage = 8;
+			sound_play(sound_get("_pho_acnh_cancel2"));
+		textbox_skipped = false;
+		textbox_pos = 0;
+        textbox_typetext = "";
+        textbox_linetext = "";
+        textbox_linenum = 0;
+        textbox_timer = 0;
+        show_arrow = false;
+			tutorialcooldown = 20;
+			}
+		}
+		}
+		//menu
+		if(tutorialpage == 8){
+			menu_up = true;
+			show_arrow = false;
+				arrow_heightvar = -120 + (16 * menu_select);
+			
+			//move
+			if(menu_select_cooldown == 0){
+			if(up_pressed && menu_select > 0){
+				sound_play(sound_get("_pho_acnh_move1"));
+				menu_select -= 1;
+				menu_select_cooldown = 10;
+			}if(up_pressed && menu_select == 0 && menu_select_cooldown == 0){
+				sound_play(sound_get("_pho_acnh_move1"));
+				menu_select = 9;
+				menu_select_cooldown = 10;
+			}if(down_pressed && menu_select < 9){
+				sound_play(sound_get("_pho_acnh_move2"));
+				menu_select += 1;
+				menu_select_cooldown = 10;
+			}if(down_pressed && menu_select == 9 && menu_select_cooldown == 0){
+				sound_play(sound_get("_pho_acnh_move2"));
+				menu_select = 0;
+				menu_select_cooldown = 10;
+			}
+			}
+			
+			//go to page
+			if(tutorialcooldown == 0){
+			if(attack_pressed || special_pressed){
+		textbox_skipped = false;
+		textbox_pos = 0;
+        textbox_typetext = "";
+        textbox_linetext = "";
+        textbox_linenum = 0;
+        textbox_timer = 0;
+        show_arrow = false;
+		tutorialcooldown = 20;
+		sound_play(sound_get("_pho_acnh_select1"));
+				if(menu_select == 0){
+		tutorialpage = 9;
+				}if(menu_select == 1){
+		tutorialpage = 14;
+				}if(menu_select == 2){
+		tutorialpage = 22;
+				}if(menu_select == 3){
+		tutorialpage = 36;
+				}if(menu_select == 4){
+		tutorialpage = 47;
+				}if(menu_select == 5){
+		tutorialpage = 53;
+				}if(menu_select == 6){
+		tutorialpage = 59;
+				}if(menu_select == 7){
+		tutorialpage = 63;
+				}if(menu_select == 8){
+		tutorialpage = 69;
+				}if(menu_select == 9){
+		tutorialpage = 80;
+				}
+			}
+			}
+			
+			
+		}if(tutorialpage != 8){
+			menu_up = false;
+		}
+		/*
+		if(special_pressed){
+			if(tutorialcooldown == 0){
+			if(tutorialpage > 0){
+			tutorialpage -= 1;
+			tutorialcooldown = 20;
+			}
+			}
+		}
+		*/
+		if(shield_pressed){
+			if(tutorialpage < 8){
+			tutorialpage = 8;
+        textbox_pos = 0;
+        textbox_typetext = "";
+        textbox_linetext = "";
+        textbox_linenum = 0;
+        textbox_timer = 0;
+        show_arrow = false;
+		tutorialcooldown = 20;
+			}
+			if(tutorialpage >= 8){
+				if(tutorialcooldown == 0){
+			window = 3;
+			window_timer = 0;
+			sound_play(sound_get("_pho_acnh_cancel1"));
+				}
+			}
+		}
+	}
+	if(window == 3){
+		tutorial = 0;
+	}
+	
+	//text (original code from harbige12)
+    if (window == 1 && !hitpause) {
+        textbox_pos = 0;
+        textbox_typetext = "";
+        textbox_linetext = "";
+        textbox_linenum = 0;
+        
+        max_line_length = 256;
+        max_lines = 12;
+        character_speed = 1;
+        textbox_timer = 0;
+        show_arrow = false;
+    }
+    if (window == 2) {
+        var word = "";
+        var empty_char = ' ';
+        var word_width = 0;
+        if (tutorialcooldown < 15 && textbox_pos < string_length(textbox_text) && textbox_linenum < max_lines + 1) {
+    	    if (get_gameplay_time() % character_speed == 0 ) {
+    	        if (get_gameplay_time() % 3 == 0 ) {
+        	        sound_stop(sound_get(tutorial_speaker + "_voice"));
+        	        sound_play(sound_get(tutorial_speaker + "_voice"));
+    	        }
+                if (textbox_typetext != textbox_text && textbox_linenum < max_line_length) {
+        			if (textbox_pos >= string_length(textbox_text)) {
+        				textbox_pos = string_length(textbox_text);
+        			}
+                }
+    			word = "";
+    			if (empty_char == ' ') {
+    				for (var i = textbox_pos; i < string_length(textbox_text); i++) {
+    					if (string_char_at(textbox_text, i + 1) == ' ') {
+    						break;
+    					}
+    					else {
+    						word += string_char_at(textbox_text, i + 1);
+    					}
+    				}
+    			}
+    			word_width = string_width(word);
+    			if (word_width + string_width(textbox_linetext) > max_line_length) {
+    				textbox_typetext += "
+";
+    				textbox_linenum ++;
+    				textbox_linetext = "";
+    				
+    			}
+    			empty_char = string_char_at(textbox_text, textbox_pos + 1)
+    	
+    			// Save the text
+    			textbox_typetext += string_char_at(textbox_text,textbox_pos+1);
+    			textbox_linetext += string_char_at(textbox_text,textbox_pos+1);
+    			textbox_pos++;
+            }
+        }if (textbox_pos >= string_length(textbox_text)) {
+        	if(tutorialpage != 8){
+        textbox_skipped = true;
+        show_arrow = true;
+        	}
+        }
+    }
 }
 #define spawn_base_dust
 /// spawn_base_dust(x, y, name, dir = 0)

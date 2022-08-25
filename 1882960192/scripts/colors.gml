@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 16, 22 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // BlueyBot
 set_color_profile_slot( 1, 0, 48, 91, 182 ); //Cap
@@ -46,7 +46,7 @@ set_color_profile_slot( 1, 5, 36, 56, 63 ); //Hair
 set_color_profile_slot( 1, 6, 82, 157, 255 ); //Shoes / Wand
 set_color_profile_slot( 1, 7, 36, 56, 63 ); //Shoes / Wand 2
 
-// Cinnamon
+// Cinna
 set_color_profile_slot( 2, 0, 252, 30, 30 ); //Cap
 set_color_profile_slot( 2, 1, 71, 0, 0 ); //Shirt
 set_color_profile_slot( 2, 2, 30, 159, 252 ); //Pants
@@ -185,6 +185,16 @@ set_color_profile_slot( 15, 4, 0, 112, 232 ); //Gloves / Scarf
 set_color_profile_slot( 15, 5, 32, 24, 136 ); //Hair
 set_color_profile_slot( 15, 6, 32, 24, 136 ); //Shoes / Wand
 set_color_profile_slot( 15, 7, 0, 112, 232 ); //Shoes / Wand 2
+
+// Riptide
+set_color_profile_slot( 16, 0, 3, 234, 255 ); //Cap
+set_color_profile_slot( 16, 1, 255, 179, 0 ); //Shirt
+set_color_profile_slot( 16, 2, 255, 102, 0 ); //Pants
+set_color_profile_slot( 16, 3, 255, 159, 107 ); //Skin
+set_color_profile_slot( 16, 4, 11, 37, 89 ); //Gloves / Scarf
+set_color_profile_slot( 16, 5, 230, 176, 69 ); //Hair
+set_color_profile_slot( 16, 6, 11, 37, 89 ); //Shoes / Wand
+set_color_profile_slot( 16, 7, 240, 254, 255 ); //Shoes / Wand 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

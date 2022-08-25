@@ -23,7 +23,7 @@ set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_USTRONG,3);
 
-set_attack_value(AT_USTRONG, AG_MUNO_ATTACK_MISC, "Hitbox 1 sends higher and Hitbox 2 goes higher depending on how long you hold this strong.");
+//set_attack_value(AT_USTRONG, AG_MUNO_ATTACK_MISC, "Hitbox 1 sends higher and Hitbox 2 goes higher depending on how long you hold this strong.");
 
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);

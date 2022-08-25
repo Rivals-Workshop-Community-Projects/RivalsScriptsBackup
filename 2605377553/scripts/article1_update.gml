@@ -9,7 +9,7 @@ x += mx+wiggleX;
 y += my+wiggleY;
 
 //sprite change
-if type == 0
+/*if type == 0
 {
     var touching = false;
     for(var i=0; i<instance_number(obj_article1); i++)
@@ -39,7 +39,7 @@ if type == 0
         back.visible = false;
         mask_index = sprite_get("smokesolo");
     }
-}
+}//*/
 
 //master interactions
 if type == 0
@@ -213,39 +213,4 @@ else
 	}
 }
 
-//touch the foe
-with(oPlayer)
-{	
-	//fail to get the foe sick if theyre invincible
-	if invincible
-	{
-		sickGrace = 0;
-		continue;
-	}
-
-    if place_meeting(x,y,other) && other.player != player
-    {
-		var p = other.player_id;//the owner
-		
-		//allow a grace time to not get sick
-		sickGrace++;
-		if sickGrace >= sickGraceMax && sickAfterGrace <= 0
-		{
-			//we're not sick yet. play this once
-			if !malsick 
-			{
-				with other.player_id 
-					{
-						sound_play(sound_get("sick"));
-					}
-			}
-			
-			malsick = true;
-			sickOwner = p;
-			sickTimer = sickTimerMax; 
-			sickGrace = 0;
-		}
-    }
-	else
-		sickGrace = 0;
-}
+/* Smoke collision is handled in update!*/

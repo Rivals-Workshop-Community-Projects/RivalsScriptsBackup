@@ -1,6 +1,6 @@
 //
 sprite_index = sprite_get("dspecial_projector"); 
-mask_index = sprite_get("dspecial_projector");
+mask_index = sprite_get("dspecial_mask");
 
 depth = 0
 free = true

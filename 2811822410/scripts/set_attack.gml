@@ -149,3 +149,9 @@ uspecial_dir = spr_dir;
 uspecial_will_turn = false;
 uspecial_can_turn = false;
 
+if (attack == AT_USPECIAL && has_rune("F")) {
+	if (instance_exists(miku_clone)) {
+		miku_clone.vsp = -18;
+	}
+}
+

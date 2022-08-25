@@ -101,8 +101,8 @@ if (state == 2){
     current_speed = point_distance(0, 0, vsp, hsp);
     if (movement_distance < 1) {
     	current_speed = 0;
-    } else if (movement_distance > 24) {
-    	if (current_speed != 14) {
+    } else if (movement_distance > 20) {
+    	if (current_speed != 20) {
     		current_speed++;
     	}
     } else {

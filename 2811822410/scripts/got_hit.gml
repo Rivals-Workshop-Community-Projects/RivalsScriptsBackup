@@ -5,6 +5,9 @@ if (custom_clone) {
 	instance_destroy(clone_owner.miku_clone)
 	clone_owner.move_cooldown[AT_DSPECIAL] = 120 //120
 	clone_owner.clone_attack_hold = false;
+	visible = false;
+	invincible = true;
+	clone_active = false;
 }
 
 clone_attack_hold = false;

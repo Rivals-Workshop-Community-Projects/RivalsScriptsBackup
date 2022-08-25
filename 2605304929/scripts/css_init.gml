@@ -606,7 +606,7 @@ return chunk_arr;
 		//Slot 45
 	slot_property_array[color_slot,sub_element_slot] = "Delphox";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Pokemon Color";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Sometimes the best way to fix something is to burn it down and start a new.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Sometimes the best way to fix something is to burn it down and start anew.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 45
 	slot_property_array[color_slot,sub_element_slot] = "Zoroark";sub_element_slot++;
@@ -616,7 +616,7 @@ return chunk_arr;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Driftblim";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Pokemon Color";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I am a wayward soul. I go where the wind takes me, and its guided me well so far.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I am a wayward soul. I go where the wind takes me, and it has guided me well so far.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Maractus";sub_element_slot++;
@@ -636,7 +636,7 @@ return chunk_arr;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Tak";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character by Tak";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I would never use a plasma sword, as that is the ultimate tool aggression from the Neo Fire Capital.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I would never use a plasma sword, it is the ultimate tool of aggression from the Neo Fire Capital.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "U-Sa";sub_element_slot++;
@@ -681,7 +681,7 @@ return chunk_arr;
 		//Slot 60
 	slot_property_array[color_slot,sub_element_slot] = "Yuupi";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Color for MrLasa / Chamma";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I was hatred as a child for being a half-breed. But my lineage makes me stronger than most.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I was hated as a child for being a half-breed. But my lineage makes me stronger than most.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Neo Wolf";sub_element_slot++;
@@ -696,7 +696,7 @@ return chunk_arr;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Ringtail";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Color for The Burger TV";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I can be sneaky and resourcesful when I need to be. It doesn't come up much tough.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I can be sneaky and resourcesful when I need to be. It doesn't come up much though.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 64 DO NOT USE
 	slot_property_array[color_slot,sub_element_slot] = "64 Not used yet";sub_element_slot++;

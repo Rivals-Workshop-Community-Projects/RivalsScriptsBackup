@@ -134,7 +134,6 @@ if (tokens > 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 
 if (tokens > 3){
     move_cooldown[AT_NSPECIAL] = 999;
-    move_cooldown[AT_FSPECIAL] = 999;
     if (tokens >= 3.9){
     	tokens = 3.8;
     }

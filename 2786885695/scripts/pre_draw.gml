@@ -1,9 +1,8 @@
 // pre-draw
 
-if (state == PS_RESPAWN || attack == AT_TAUNT && state == PS_ATTACK_GROUND && free == true)
+if (state == PS_RESPAWN || respawn_taunt > 0)
 {
-    if (alt_cur != 14) draw_sprite_ext(sprite_get("plat_back"), 0, x+1, y, 2, 2, 0, c_white, 1);
-    else draw_sprite_ext(sprite_get("plat_back_gb"), 0, x+1, y, 2, 2, 0, c_white, 1);
+    draw_sprite_ext(sprite_get(is_gb ? "plat_back_gb" : "plat_back"), 0, x+1, y, 2, 2, 0, c_white, 1);
 }
 
 if (fs_alpha_bg > 0) rectDraw(view_get_xview(), view_get_yview(), view_get_wview(), view_get_hview(), bg_col, fs_alpha_bg*0.5);

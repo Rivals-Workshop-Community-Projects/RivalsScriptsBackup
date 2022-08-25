@@ -6,7 +6,7 @@ with (asset_get("oPlayer")){
     }
 }
 
-
+//handle sickness
 with (oPlayer)
 {
 	if (malsick && sickOwner == other.id && !hitpause)
@@ -17,6 +17,7 @@ with (oPlayer)
 			malsick = false;
 			sickTimer = 0;
 			sickAfterGrace = sickAfterGraceMax;
+			sickGrace = 0;
 		}
 		else
 			sickTimer--;
@@ -32,6 +33,7 @@ with (oPlayer)
 		sickAfterGrace--;
 		if sickAfterGrace < 0
 			sickAfterGrace = 0;
+		//print(sickAfterGrace);
 	}
 }
 
@@ -145,7 +147,7 @@ init_shader();
 }
 
 
-//stuff
+//handle death and strongs
 with (oPlayer){
 
 	//make sure some values are reset upon death
@@ -155,6 +157,7 @@ with (oPlayer){
 		sickTimer = 0;
 		sickAfterGrace = sickAfterGraceMax;
 		strongStunnedTimer = 0;
+		sickGrace = 0;
     }
 	
 	//stun player from being struck by a super strong
@@ -168,6 +171,72 @@ with (oPlayer){
 			set_state(PS_HITSTUN);
 			strongStunnedTimer--;
 		}
+	}
+}
+
+//remove smokes that no longer exist
+var tempList = [];
+for (var i=0; i<array_length(smokeList); i++)
+{
+	if instance_exists(smokeList[i])
+		array_push(tempList,smokeList[i]);
+}
+smokeList = array_clone(tempList);
+
+//handle smoke collision
+with(oPlayer)
+{	
+	//ignore if it's us
+	if id == other
+		continue;
+
+	//fail to get the foe sick if theyre invincible
+	if invincible
+	{
+		sickGrace = 0;
+		continue;
+	}
+	
+	//Check if the player is touching any smoke
+	var touched = false;
+	for (var i=0; i<array_length(other.smokeList); i++)
+	{
+		if place_meeting(x,y,other.smokeList[i])
+		{
+			touched = true;
+			break;
+		}
+	}
+
+	//perform touching events
+	if touched
+	{
+		//allow a grace time to not get sick
+		if sickGrace >= sickGraceMax && sickAfterGrace <= 0
+		{
+			//we're not sick yet. play this once
+			if !malsick 
+			{
+				with other
+				{
+					sound_play(sound_get("sick"));
+				}
+			}
+			
+			malsick = true;
+			sickOwner = other;
+			sickTimer = sickTimerMax; 
+			sickGrace = 0;
+			sickAfterGrace = 0;
+		}
+		else
+		{
+			sickGrace++;
+		}
+	}
+	else
+	{
+		sickGrace = 0;
 	}
 }
 

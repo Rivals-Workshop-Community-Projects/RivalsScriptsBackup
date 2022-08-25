@@ -43,6 +43,7 @@ sprite_change_offset("bair", 87, 149);
 sprite_change_offset("uair", 84, 153);
 sprite_change_offset("dair", 72, 147);
 sprite_change_offset("fstrong", 88, 149);
+sprite_change_offset("truejudgement", 88, 149);
 sprite_change_offset("ustrong", 90, 151);
 sprite_change_offset("ustrongspin", 90, 151);
 sprite_change_offset("dstrong", 149, 149);
@@ -64,7 +65,7 @@ sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("judgement", 60, 58);
 sprite_change_offset("judgementweak", 60, 58);
 sprite_change_offset("cut", 60, 60);
-sprite_change_offset("djump", 145, 198);
+sprite_change_offset("djump", 144, 193);
 sprite_change_offset("projectilestart", 31, 31);
 sprite_change_offset("bouncefx", 102, 124);
 

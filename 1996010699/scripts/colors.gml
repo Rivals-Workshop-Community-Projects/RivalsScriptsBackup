@@ -165,12 +165,12 @@ set_color_profile_slot( 17, 4, 58, 210, 228 ); //unnamed color row
 set_color_profile_slot( 17, 5, 254, 230, 255 ); //HIGHLIGHT
 
 // Ranked
-set_color_profile_slot( 18, 0, 255, 204, 0 ); //CASE
-set_color_profile_slot( 18, 1, 161, 130, 7 ); //SHADOW
-set_color_profile_slot( 18, 2, 121, 122, 195 ); //WHEELS
-set_color_profile_slot( 18, 3, 255, 135, 0 ); //CHEST
+set_color_profile_slot( 18, 0, 228, 228, 240 ); //CASE
+set_color_profile_slot( 18, 1, 121, 122, 195 ); //SHADOW
+set_color_profile_slot( 18, 2, 255, 135, 0 ); //WHEELS
+set_color_profile_slot( 18, 3, 162, 96, 160 ); //CHEST
 set_color_profile_slot( 18, 4, 183, 194, 230 ); //unnamed color row
-set_color_profile_slot( 18, 5, 255, 205, 130 ); //HIGHLIGHT
+set_color_profile_slot( 18, 5, 255, 198, 235 ); //HIGHLIGHT
 
 // glacier might, but probably won't
 set_color_profile_slot( 19, 0, 243, 230, 255 ); //CASE

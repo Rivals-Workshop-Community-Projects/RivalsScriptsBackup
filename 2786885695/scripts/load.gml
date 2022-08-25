@@ -118,6 +118,13 @@ sprite_change_offset("plat_back", 39, 66);
 sprite_change_offset("plat_back_gb", 39, 66);
 sprite_change_offset("intro", 53, 126);
 
+sprite_change_offset("taunt2", 29, 94);
+sprite_change_offset("fx_lyre_note", 16, 16);
+sprite_change_offset("fx_lyre_note_gb", 16, 16);
+sprite_change_offset("fx_lyre_despawn", 16, 16);
+sprite_change_offset("fx_lyre_despawn_gb", 16, 16);
+sprite_change_offset("hud_lyre", 4, 48);
+
 sprite_change_offset("fx_damage", 4, 5);
 sprite_change_offset("fx_damage_gb", 4, 5);
 sprite_change_offset("fx_damage_heal", 4, 5);
@@ -146,7 +153,7 @@ set_victory_bg(sprite_get("winscreen"));
 sprite_change_offset("hurtbox_idle", 23, 70);
 sprite_change_offset("hurtbox_dash", 30, 48);
 sprite_change_offset("hurtbox_nspec", 11, 70);
-sprite_change_offset("hurtbox_uspec", 16, 48);
+sprite_change_offset("hurtbox_uspec", 32, 64);
 sprite_change_offset("hb_arrow", 0, 8);
 
 //rune stuff
@@ -162,7 +169,3 @@ sprite_change_offset("fx_runeK_glider_spawn", 80, 32);
 sprite_change_offset("fx_runeK_glider_despawn", 80, 32);
 sprite_change_offset("fx_runeO_disable", 16, 16);
 
-//temporary stuff
-sprite_change_offset("taunt2_wip", 40, 94);
-sprite_change_offset("hud_lyre", 4, 48);
-sprite_change_offset("hud_lyre_press", 4, 18);

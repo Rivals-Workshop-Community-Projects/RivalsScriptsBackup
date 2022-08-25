@@ -5,6 +5,7 @@ hitstun_hurtbox_spr = sprite_get("air_box");
 
 Hikaru_Title = "N word"
 cheapmode = 0
+oknifecount = 5
 oknifecountcd = 0
 nctimer = 0
 oknifelost = 0

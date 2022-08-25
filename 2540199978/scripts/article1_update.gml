@@ -7,9 +7,16 @@ draw_angle = angle;
 
 if (!instance_exists(leaderObj) || leaderObj == noone || leaderObj.state == AS_DESPAWN)
 {
-    var newLeader = noone;
-    with (obj_article1) if (player_id == other.player_id && returning && (newLeader == noone || newLeader.index > index)) newLeader = self;
-    leaderObj = (newLeader==noone?self:newLeader);
+    // var newLeader = noone;
+    // with (obj_article1) if (player_id == other.player_id && returning && (newLeader == noone || newLeader.index > index)) newLeader = self;
+    // leaderObj = (newLeader==noone?self:newLeader);
+    if (returning)
+    {
+        var uwu = spawn_hit_fx(x, y, 302);
+        uwu.spr_dir = hsp==0?1:sign(hsp);
+        uwu.depth = depth+1;
+        SetArticleState(AS_DESPAWN);
+    }
 }
 
 switch (state)
@@ -38,6 +45,10 @@ switch (state)
         }
         hsp = 0;
         vsp = 0;
+        
+        var coords = GetTargetCoords();
+        angle += angle_difference(point_direction(x, y, coords.x, coords.y), angle)*0.1;
+
         if (player_id.state_cat == SC_HITSTUN) state_timer = 1;
         if (state_timer+offsetTimer >= idleTime-30 && state_timer % 5 == 0) x += state_timer%2==0?-4:4;
         if (state_timer+offsetTimer >= idleTime)
@@ -59,20 +70,13 @@ switch (state)
         	{
                 with (other)
                 {
-                    var uwu = spawn_hit_fx(x, y, 302);
-                    uwu.spr_dir = hsp==0?1:sign(hsp);
-                    uwu.depth = depth+1;
-                    SetArticleState(AS_DESPAWN);
+                    with (leaderObj) SetArticleState(AS_DESPAWN);
                 }
             }
         }
         break;
     case AS_RETURN:
-        var coords = {x:player_id.x+fspecReturn*player_id.spr_dir*40, y:player_id.y-floor(player_id.char_height/2)};
-        if (smash && player_id.hit_player_obj != noone)
-            coords = {x:player_id.hit_player_obj.x, y:player_id.hit_player_obj.y};
-        else if (player_id.flake.isOut && !fspecReturn)
-            coords = {x:player_id.flake.x, y:player_id.flake.y};
+        var coords = GetTargetCoords();
         if (state_timer == 1 || !player_id.flake.isOut || fspecReturn)
         {
             angle = point_direction(x, y, coords.x, coords.y);
@@ -100,7 +104,7 @@ switch (state)
             else if (state_timer > snowflakeTime)
             {
                 player_id.flake.isOut = false;
-                with (obj_article1) if (player_id == other.player_id && leaderObj == other.leaderObj) SetArticleState(AS_IDLE);
+                with (obj_article1) if (player_id == other.player_id && leaderObj == other.leaderObj) SetArticleState(AS_DESPAWN);
             }
         }
         else if (point_distance(x, y, coords.x, coords.y) < 30)
@@ -163,4 +167,14 @@ if (state_timer % animSpeed == 0 && state_timer != 0)
         spawn_hit_fx(x, y, player_id.moyai_effect);
         print("...");
     }
+}
+
+#define GetTargetCoords()
+{
+    var coords = {x:player_id.x+fspecReturn*player_id.spr_dir*40, y:player_id.y-floor(player_id.char_height/2)};
+    if (smash && player_id.hit_player_obj != noone)
+        coords = {x:player_id.hit_player_obj.x, y:player_id.hit_player_obj.y};
+    else if (player_id.flake.isOut && !fspecReturn)
+        coords = {x:player_id.flake.x, y:player_id.flake.y};
+    return coords;
 }

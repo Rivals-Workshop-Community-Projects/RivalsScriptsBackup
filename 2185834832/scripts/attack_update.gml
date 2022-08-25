@@ -46,7 +46,7 @@ if(attack == AT_DTILT){
 			can_ustrong = true
 			can_strong = true
 		}
-		if(window_timer > 8){
+		if(window_timer > 8 && !was_parried){
 			if(left_down || right_down || left_pressed || right_pressed){
 				set_state(PS_IDLE)
 			}
@@ -92,11 +92,6 @@ if (attack == AT_DSPECIAL){
 	   saw_blade = instance_create(x + (spr_dir*85),y - 69, "obj_article1");
 	   move_cooldown[AT_DSPECIAL] = 50
 	}
-	if(window < 2 && saw_blade != 0){
-		if(instance_exists(saw_blade)){
-				set_attack(AT_EXTRA_1)
-    	}
-	}
 	if(free){
 		set_num_hitboxes(AT_DSPECIAL, 5);
 	}else{
@@ -106,6 +101,10 @@ if (attack == AT_DSPECIAL){
 
 if(attack == AT_EXTRA_1){
 	was_parried = false
+	if(instance_exists(saw_blade)){
+		saw_blade.startMoving = false
+		saw_blade.hitboxReal = 0
+	}
 	if(window == 1 && window_timer == 21){
 		if(instance_exists(saw_blade) && !was_parried){
 		spawn_hit_fx(x, y, waterPort);
@@ -116,7 +115,11 @@ if(attack == AT_EXTRA_1){
 	if(window == 2 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		set_state(PS_PRATLAND);
 		was_parried = true;
-		parry_lag = 30;
+		if(has_hit){
+			parry_lag = 20;
+		}else{
+			parry_lag = 30;
+		}
 	}
 }
 
@@ -140,6 +143,11 @@ if (attack == AT_USPECIAL){
 }
 
 if(attack == AT_USPECIAL_2){
+	if(free){
+		if(window == 1){
+			vsp *= 0.9
+		}
+	}
 	if(window == 3){
 		uspecVar = 0
 	}
@@ -155,7 +163,6 @@ if(attack == AT_USPECIAL_2){
 			set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -16);
 			set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 			if(shield_pressed or instance_exists(waterBomb)){
-				print("Waterbomb exists")
 				forceNoWater = true
 				spawn_hit_fx(x - 8*spr_dir, y - 90, 111)
 				sound_play(asset_get("sfx_waterhit_weak"))
@@ -197,17 +204,20 @@ if(attack == AT_FSPECIAL){
 	can_fast_fall = false
 	if(window == 2 && window_timer == 1){
 		if(instance_exists(saw_blade) && saw_blade != noone){
-			if(saw_blade.fspec_turns < 2){
-				saw_blade.fspec_turns += 1
-				sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
-				spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
-				saw_blade.spr_dir = spr_dir
-				if(saw_blade.spr_dir == -1){
-					saw_blade.hsp = -0.1
-					move_cooldown[AT_FSPECIAL] = 25
-				}else{
-					saw_blade.hsp = 0.1
-					move_cooldown[AT_FSPECIAL] = 25
+			if(saw_blade.state == 1){
+				saw_blade.startMoving = true
+				if(saw_blade.fspec_turns < 2){
+					saw_blade.fspec_turns += 1
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+					saw_blade.spr_dir = spr_dir
+					if(saw_blade.spr_dir == -1){
+						saw_blade.hsp = -0.1
+						move_cooldown[AT_FSPECIAL] = 25
+					}else{
+						saw_blade.hsp = 0.1
+						move_cooldown[AT_FSPECIAL] = 25
+					}
 				}
 			}
 		}
@@ -301,7 +311,7 @@ if(attack == AT_FSPECIAL){
 			}
 		}
 	}else if(window == 10 && window_timer == 15 ||
-	window == 11 && window_timer == 12 ||
+	window == 11 && window_timer == 15 ||
 	window == 12 && window_timer == 27){
 		window = 13
 		window_timer = 0
@@ -351,6 +361,7 @@ if(attack == AT_USTRONG){
 			}
 		}
 		if(!free){
+			destroy_hitboxes();
 			window = 5
 			window_timer = 0
 		}
@@ -382,59 +393,165 @@ if(attack == AT_NSPECIAL){
 		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
 		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialair"));
 	}
-	if(window == 2 || window == 3){
-		create_hitbox( AT_NSPECIAL, 2, x, y)
-	}
 	if(window == 2){
-		effect_drawangle = 0
 		if(!special_down && window_timer > 6){
 			window = 3
 			window_timer = 20
 		}
+		/*
+		if(instance_exists(saw_blade)){
+			if(saw_blade.x > x + 50){
+				if(saw_blade.spr_dir == 1 && saw_blade.fspec_turns < 2){
+					saw_blade.spr_dir = -1
+					saw_blade.fspec_turns += 1
+					saw_blade.hsp /= 2
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+				}else if(saw_blade.startMoving == false && saw_blade.fspec_turns < 2){
+					saw_blade.startMoving = true
+					saw_blade.hsp /= 2
+					saw_blade.fspec_turns += 1
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+				}
+				if(saw_blade.startMoving == false){
+					saw_blade.startMoving = true
+				}
+			}else if(saw_blade.x < x - 50){
+				if(saw_blade.spr_dir == -1 && saw_blade.fspec_turns < 2){
+					saw_blade.spr_dir = 1
+					saw_blade.fspec_turns += 1
+					saw_blade.hsp /= 2
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+				}else if(saw_blade.startMoving == false && saw_blade.fspec_turns < 2){
+					saw_blade.startMoving = true
+					saw_blade.hsp /= 2
+					saw_blade.fspec_turns += 1
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+				}
+				if(saw_blade.startMoving == false){
+					saw_blade.startMoving = true
+				}
+			}else if(saw_blade.fspec_turns < 2){
+				saw_blade.startMoving = false
+				saw_blade.hsp /= 1.1
+			}
+		}
+		if(instance_exists(waterBomb)){
+			if(waterBomb.y > y){
+				waterBomb.vsp -= 0.3
+			}else{
+				waterBomb.vsp += 0.2
+			}
+			if(waterBomb.x > x){
+				waterBomb.hsp -= 0.2
+			}else{
+				waterBomb.hsp += 0.2
+			}
+		}*/
 	}
 	if(window == 3){
-		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5 + state_timer / 15);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6 + state_timer / 15);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.3 + state_timer / 150);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7 + state_timer / 150);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2 + state_timer / 150);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5 + state_timer / 20);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6 + state_timer / 20);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.3 + state_timer / 200);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7 + state_timer / 20);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2 + state_timer / 200);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 130);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 130);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 65);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 8);
 		//Extra endlag
+		
+		/*
+		if(instance_exists(saw_blade)){
+			if(saw_blade.x > x + 20){
+				if(saw_blade.spr_dir == 1 && saw_blade.fspec_turns < 2){
+					saw_blade.spr_dir = -1
+					saw_blade.fspec_turns += 1
+					saw_blade.hsp /= 2
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+				}else if(saw_blade.startMoving == false && saw_blade.fspec_turns < 2){
+					saw_blade.startMoving = true
+					saw_blade.hsp /= 2
+					saw_blade.fspec_turns += 1
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+				}
+				if(saw_blade.startMoving == false){
+					saw_blade.startMoving = true
+				}
+			}else if(saw_blade.x < x - 20){
+				if(saw_blade.spr_dir == -1 && saw_blade.fspec_turns < 2){
+					saw_blade.spr_dir = 1
+					saw_blade.fspec_turns += 1
+					saw_blade.hsp /= 2
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+				}else if(saw_blade.startMoving == false && saw_blade.fspec_turns < 2){
+					saw_blade.startMoving = true
+					saw_blade.hsp /= 2
+					saw_blade.fspec_turns += 1
+					sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
+					spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
+				}
+				if(saw_blade.startMoving == false){
+					saw_blade.startMoving = true
+				}
+			}else if(saw_blade.fspec_turns < 2){
+				saw_blade.startMoving = false
+				saw_blade.hsp /= 1.1
+			}
+		}
+		if(instance_exists(waterBomb)){
+			if(waterBomb.y > y){
+				waterBomb.vsp -= 0.3
+			}else{
+				waterBomb.vsp += 0.2
+			}
+			if(waterBomb.x > x){
+				waterBomb.hsp -= 0.2
+			}else{
+				waterBomb.hsp += 0.2
+			}
+		}*/
 		
 		if(window_timer == 19 && special_down){
 			window = 3
 			window_timer = 0
 		}
 		if(!special_down){
-			if(free){
-				if(vsp > -2){
-					vsp = -2
-				}
-			}
+			vsp = -2
 			window = 3
 			window_timer = 20
-		}else if(state_timer > 70){
-			if(free){
-				if(vsp > -2){
-					vsp = -2
-				}
-			}
+		}else if(state_timer > 100 /* || state_timer > 10 && distance_to_object(saw_blade) < 20 || state_timer > 10 && distance_to_object(waterBomb) < 20*/){
+		/*	if(state_timer > 10 && distance_to_object(saw_blade) < 20){
+				instance_destroy(saw_blade)
+			}else if(state_timer > 10 && distance_to_object(waterBomb) < 20){
+				instance_destroy(waterBomb)
+			}*/
+			vsp = -3
+			hsp = 0
 			window = 3
 			window_timer = 20
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 14);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.95);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_full"));
 			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air_full"));
 			sound_play(asset_get("sfx_ell_fist_explode"))
 			spawn_hit_fx(x, y - 45, nspec_large)
-			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 180);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 180);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, -4);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 200);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 200);
 		}
 	}
 	combatTimer = 5

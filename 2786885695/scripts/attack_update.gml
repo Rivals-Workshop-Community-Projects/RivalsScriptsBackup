@@ -9,11 +9,14 @@ switch(attack)
 		break;
 	//charge attack mechanic + some other specific stuff for some of those moves
 	case AT_JAB:
-		if (get_match_setting(SET_TURBO) && window == 1) clear_button_buffer(PC_ATTACK_PRESSED);
 		if (window >= 10 && window <= 13) can_fast_fall = false; //no hitfalling jab 4
 
 		switch (window) //check for all endlag windows for jab (seperated like this cuz it's more comfterable to edit)
 		{
+			case 1:
+				can_jab4 = false; //prevents keqing jab from continiuing naturally
+				if (get_match_setting(SET_TURBO)) clear_button_buffer(PC_ATTACK_PRESSED);
+				break;
 			case 9: //jab 3 (it has the whole "ooo can i use jab 4" stuff)
 				if (window_timer >= window_cancel_time)
 				{
@@ -32,7 +35,7 @@ switch(attack)
 					}
 					else if (window_timer == window_end) //if you reach the end of the window just go to idle
 					{
-						set_state(PS_IDLE);
+						set_state(was_parried ? PS_PRATLAND : PS_IDLE);
 						can_jab4 = false;
 					}
 				}
@@ -109,9 +112,10 @@ switch(attack)
 	case AT_DAIR:
 		switch (window)
 		{
-			case 1:
+			case 1: //setup window
 				if (window_timer > 1)
 				{
+					dair_fx_y_scale = 0;
 					dair_time = 0;
 					if (!free)
 					{
@@ -120,13 +124,14 @@ switch(attack)
 					}
 				}
 				break;
-			case 2:
+			case 2: //plunge loop
 				can_wall_jump = true;
 				if (!hitpause) dair_time ++;
 				if (dair_time >= dair_cancel_time) can_shield = true;
+
+				if (dair_fx_y_scale < 2) dair_fx_y_scale += 0.25; //dair smear effect gets longer over time
 				break;
-			case 3:
-				if (window_timer == 0 && !hitpause) spawn_hit_fx(x+0*spr_dir, y, fx_dair_aoe); //placeholder effect
+			case 3: //plunge land
 				destroy_hitboxes();
 				break;
 		}
@@ -146,7 +151,9 @@ switch(attack)
 
 		switch (window)
 		{
-			case 1:
+			case 1: //setup window
+				marker_aim_timer = -1; //under 0 and 0 = not aiming || over 0 = aiming
+
 				//this part makes keqing face the right way
 				if (spr_dir) marker_angle = 0;
 				else marker_angle = 180;
@@ -154,7 +161,7 @@ switch(attack)
 			case 2: //aim logic
 				//this makes her fall slow
 				hsp = clamp(hsp, -2, 2);
-				vsp = min(vsp, 2);
+				vsp = min(vsp, 2+marker_aim_timer/20);
 
 				//how long is she aiming?
 				marker_aim_timer ++;
@@ -191,15 +198,7 @@ switch(attack)
 				//aim
 				if (instance_exists(artc_marker) && artc_marker.state == 0)
 				{
-					can_shield = true; //shield cancel to sto aiming
 					if (!joy_pad_idle && marker_aim_timer > 0) marker_angle = joy_dir;
-
-					//no raycasting take
-					//marker_dist_x = lengthdir_x(marker_dist, marker_angle);
-					//marker_dist_y = lengthdir_y(marker_dist, marker_angle);
-					//
-					//artc_marker.x = x + marker_dist_x;
-					//artc_marker.y = y + marker_dist_y-32;
 
 					//raycast take
 					for (var line_length = 0; line_length < marker_dist; line_length += 4)
@@ -214,6 +213,21 @@ switch(attack)
 					}
 					artc_marker.x = marker_dist_x;
 					artc_marker.y = marker_dist_y;
+
+					//shield cancel to stop aiming
+					if (shield_pressed)
+					{
+						sound_stop(loop_sound);
+						sound_play(asset_get("sfx_gem_collect"));
+
+						window = 0;
+						window_timer = 0;
+
+						instance_destroy(artc_marker);
+						set_state(free ? PS_IDLE_AIR : PS_IDLE);
+						move_cooldown[attack] = 20;
+						clear_button_buffer(PC_SHIELD_PRESSED);
+					}
 				}
 				break;
 			case 3: //check the marker's position and erase it
@@ -322,6 +336,13 @@ switch(attack)
 					x = temp_marker_x;
 					y = temp_marker_y;
 				}
+
+				if (window == 3 && window_timer == 1)
+				{
+					nspec_cancel_aim = false;
+					stilleto_id = noone;
+					if (instance_exists(artc_marker)) instance_destroy(artc_marker);
+				}
 				break;
 			case 6: //pratfall keqing if she doesn't land the hit (i probably don't need this cuz the move has a cooldown anyways)
 				if (window_timer == window_end && !has_hit_player && free) set_state(PS_PRATFALL);
@@ -398,6 +419,13 @@ switch(attack)
 			landing_lag_time = 12;
 		}
 
+		//effect pause
+		if (instance_exists(fspec_slash) && hitpause && state_cat != SC_HITSTUN)
+		{
+		    fspec_slash.pause_timer = 0;
+			fspec_slash.pause = hitstop;
+		}
+
 		//electric particles
 		//if (window < 3) do_electro_particles(4, 0, 0);
 
@@ -409,7 +437,7 @@ switch(attack)
 		can_wall_jump = true;
 		fall_through = true;
 
-		//makes keqing jump on the first uspec only
+		//levitation at a moderate speed
 		if (window == 1 || window == 2)
 		{
 			hsp = clamp(hsp, -4, 4);
@@ -425,8 +453,8 @@ switch(attack)
 			case 1: //check if the uspec started on the ground or not to see if it should pratfall
 				if (window_timer == 1)
 				{
+					uspec_count = 0;
 					uspec_started_grounded = !free
-
 					prev_joy_dir = -1;
 				}
 				break;
@@ -453,10 +481,9 @@ switch(attack)
 				}
 				if (window_timer == 2)
 				{
-					uspec_flash = spawn_hit_fx(x, y-32, fx_uspec_flash);
-
 					if (!hitpause)
 					{
+						uspec_flash = spawn_hit_fx(x, y-32, fx_uspec_flash);
 						if (hsp == 0 && (left_down || right_down)) uspec_flash.x = x-96*spr_dir;
 						if (vsp == 0 && (down_down || up_down)) uspec_flash.y = y-112;
 					}
@@ -673,130 +700,52 @@ switch(attack)
 		break;
 	//////////////////////////////////////////////
 	case AT_TAUNT_2: //to be the lyre
-		/*
-		var lyre_sound = sound_get("_lyre");
-		var lyre_inc_value = 0.062475; //this changes the pitch
-		//var const = 1.05946309436; //12th root of 2; important music constant
-
-		if (window_timer == 1)
+		switch (window)
 		{
-			if (window == 1) lyre_hud_play_fade = 1;
-			if (window == 3) lyre_hud_play_fade = -1;
+			case 1: //activate
+				if (window_timer == 1) lyre_hud_play_fade = 1;
+				break;
+			case 2: case 3: //playing lyre windows (window 2 is for the initial startup before the first tap)
+
+				user_event(0); //playing lyre event
+
+				//makes keqing play the animation
+				if (jump_pressed && jump_counter == 1 || attack_pressed && attack_counter == 1 ||
+				special_pressed && special_counter == 1 || shield_pressed && shield_counter == 1 ||
+				strong_down && strong_down_counter == 1 || left_pressed || right_pressed)
+				{
+					window = 3;
+					window_timer = 0;
+					spawn_hit_fx(x, y - 62, fx_lyre_note);
+				}
+				else if (window == 3 && window_timer >= window_end) window_timer = window_end-1;
+
+				//cancel playing the lyre if you press taunt again
+				if (taunt_pressed && down_down)
+				{
+					window = 4;
+					window_timer = 0;
+					playing_lyre_timer = 0;
+
+					spawn_hit_fx(x - 1 * spr_dir, y - 60, fx_lyre_despawn);
+				}
+				break;
+			case 4: //deactivate
+				if (window_timer == 1)
+				{
+					playing_lyre_timer = -1;
+					cur_octwave = 0;
+					lyre_hud_play_fade = -1;
+				}
+				if (window_timer == 25) spawn_hit_fx(x + 27 * spr_dir, y - 42, fx_introspark);
+				break;
 		}
 
-		//the time she plays the lyre
-		//this kinda replaces the state timer's purpose in case i need to change animation speeds in window 1
-		//dw about it
-		if (window == 2) 
-		{
-			playing_lyre_timer ++;
-
-			//cancel playing the lyre if you press taunt again
-			if (taunt_pressed && down_down)
-			{
-				window = 3;
-				window_timer = 0;
-				playing_lyre_timer = 0;
-			}
-		}
-		
-		if (playing_lyre_timer > 0) user_event(1);
-
-		//lyre logic (cancel logic in the end of this statement)
-		if (playing_lyre_timer > 0)
-		{
-			//set the prev note to the current one (it's like on the healing)
-			prev_note_id = note_id;
-
-			//change the key held time if it's held down
-			if (note_id > -1) key_held_time ++;
-
-			//custom key inputs
-			//i can literally add as many keys as i want
-			switch (keyboard_key)
-			{
-				default: note_id = -1; break; //no keys held down at all	
-				
-				//full keyboard ver
-				//octwave 1
-				case 90: note_id = 0+12*0; break; //do	//z
-				//1
-				case 88: note_id = 2+12*0; break; //re	//x
-				case 67: note_id = 3+12*0; break; //me	//c
-				//4
-				case 86: note_id = 5+12*0; break; //fa	//v
-				//6
-				case 66: note_id = 7+12*0; break; //sol	//b
-				//8
-				case 78: note_id = 9+12*0; break; //la	//n
-				case 77: note_id = 10+12*0; break; //si	//m
-				//11
-				
-				//octwave 2
-				case 65: note_id = 0+12*1; break; //do	//a
-				//1
-				case 83: note_id = 2+12*1; break; //re	//s
-				case 68: note_id = 3+12*1; break; //me	//d
-				//4
-				case 70: note_id = 5+12*1; break; //fa	//f
-				//6
-				case 71: note_id = 7+12*1; break; //sol	//g
-				//8
-				case 72: note_id = 9+12*1; break; //la	//h
-				case 74: note_id = 10+12*1; break; //si	//j
-				//11
-
-				//octwave 3
-				case 81: note_id = 0+12*2; break; //do	//q
-				//1
-				case 87: note_id = 2+12*2; break; //re	//w
-				case 69: note_id = 3+12*2; break; //me	//e
-				//4
-				case 82: note_id = 5+12*2; break; //fa	//r
-				//6
-				case 84: note_id = 7+12*2; break; //sol	//t
-				//8
-				case 89: note_id = 9+12*2; break; //la	//y
-				case 85: note_id = 10+12*2; break; //si	//u
-				//11
-
-
-				//numpad ver
-				//case 96: note_id = 0; break; //numpad 0  // C
-				//case 110: note_id = 1; break; //decimal point  // C#
-				//case 97: note_id = 2; break; //numpad 1  // D
-				//case 98: note_id = 3; break; //numpad 2  // D#
-				//case 99: note_id = 4; break; //numpad 3  // E	
-				//case 100: note_id = 5; break; //numpad 4  // F
-				//case 101: note_id = 6; break;//numpad 5  // F#
-				//case 102: note_id = 7; break; //numpad 6  // G
-				//case 103: note_id = 8; break; //numpad 7  // G#
-				//case 104: note_id = 9; break; //numpad 8  // A
-				//case 105: note_id = 10; break; //numpad 9  // A#
-				//case 111: note_id = 11; break; //divide  // B
-				//case 106: note_id = 12; break; //multiply  // C
-			}
-			//if a key isn't held ot the prev note isn't the same one, reset the timer
-			if (note_id == -1 || prev_note_id != note_id) key_held_time = 0;
-
-			//play sound
-			if (key_held_time == 1) sound_play(lyre_sound, 0, 0, 1, (note_id*lyre_inc_value)+1);
-		}
-		*/
-
-
-
-		//KEQING JUMP GLITCH (19/3/2021 - 9/6/2021, was patched in genshin impact v1.6)
-		// - step 1: put up a lightning stilleto
-		// - step 2: use keqing's lyre taunt
-		// - step 3: durring the startup, press special to teleport to the stilleto
-		// - step 4: depending on the angle and distance keqing is from the stilleto, she will do a massive leap
-		//THIS ONLY WORKS IN TRAINING MODE! (maybe it should be a cheat instead lol)
-
+		//in loving memory... (19/3/2021 - 9/6/2021), you will be missed :pensive:
 		if (get_match_setting(SET_PRACTICE))
 		{
 			//timing
-			if (window < 2)
+			if (lyre_hud_play_fade != 0)
 			{
 				//input
 				if (special_pressed && instance_exists(artc_marker) && artc_marker.state == 1)
@@ -840,6 +789,35 @@ switch(attack)
 			}
 		}
 		break;
+	case 2: //intro
+		var fx_x = x+11*spr_dir;
+		var fx_y = y-30;
+
+		switch (window)
+		{
+			case 1:
+				if (window_timer == 1) //spawn marker
+				{
+					artc_marker = instance_create(fx_x-2*spr_dir, fx_y, "obj_article1");
+					artc_marker.state = 1;
+				}
+				else if (window_timer == window_end-8 && instance_exists(artc_marker) && artc_marker.state == 1) //destroy marker
+				{
+					spawn_hit_fx(fx_x-2*spr_dir, fx_y, fx_nspec_marker_despawn);
+					instance_destroy(artc_marker);
+				}
+				else if (window_timer == window_end) //teleport start
+				{
+					color_outline_timer = color_outline_timer_max;
+					spawn_hit_fx(fx_x, fx_y, fx_nspec_warpend);
+				}
+				break;
+			case 4:
+				if (window_timer == 52) spawn_hit_fx(fx_x+16*spr_dir, fx_y-12, fx_introspark);
+				if (window_timer == window_end-1) if (get_gameplay_time() <= 125) state = PS_SPAWN;
+				break;
+		}
+		break;
 }
 
 
@@ -871,13 +849,14 @@ if (nspec_cancel_aim)
 	temp_marker_x = stilleto_id.x;
 	temp_marker_y = stilleto_id.y;
 }
-if (attack == AT_NSPECIAL_2 && window == 3 && window_timer == 1)
-{
-	nspec_cancel_aim = false;
-	stilleto_id = noone;
-	if (instance_exists(artc_marker)) instance_destroy(artc_marker);
-}
 
+
+//electric flash effect pause (applies to both instances of starward sword)
+if (instance_exists(uspec_flash) && hitpause)
+{
+    uspec_flash.pause_timer = 0;
+	uspec_flash.pause = hitstop;
+}
 
 
 

@@ -100,6 +100,13 @@ if (attack == AT_USPECIAL_2){
     
     if (window == 1) {
         check_if_stopped = false;
+        if (window_timer == 1) 
+        {
+        	fly_angle = point_direction(x, y, phantom.x, phantom.y);
+        	var dashfx = spawn_hit_fx( x + lengthdir_x(-45, -fly_angle), y - 40 + lengthdir_y(45, -fly_angle), djump );
+        	dashfx.draw_angle = fly_angle - 90; //this is in degrees i believe
+			//dashfx.spr_dir = 1; //this would be right; -1 is left as usual.
+        }
     }
     
     if (window == 2) {
@@ -122,7 +129,12 @@ if (attack == AT_USPECIAL_2){
         last_y = y;
         check_if_stopped = true;
 	        
-        if (shield_pressed) set_state(PS_PRATFALL);
+        if (shield_pressed) {
+        	hsp *= 0.8;
+        	white_flash_timer = 7;
+        	set_state(PS_IDLE_AIR);
+        	clear_button_buffer(PC_SHIELD_PRESSED);
+        }
         
     }
     
@@ -329,10 +341,22 @@ if (attack == AT_NAIR && hitpause == false){
         sound_play( sound_get( "weee" ) );
     }
     //stall in the air on hit, restored on double jump/walljump/grounded
-    if (has_nair_stall && window == 3 && has_hit && window_timer <= 10) {
-    	vsp = -2;
+    if (has_nair_stall && window == 3 && has_hit) {
+    	if (can_fast_fall && down_hard_pressed)
+    	{
+    		nair_fastfalled = true;
+    		return;
+    	}
+    	if (window_timer <= 10 && !down_hard_pressed && !nair_fastfalled) 
+    	{
+    		vsp = -2;
+    	}
     }
-    if (window == 3 && window_timer == get_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH)) has_nair_stall = false;
+    if (window == 3 && window_timer == get_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH) && has_hit) 
+    {
+    	has_nair_stall = false;
+    	nair_fastfalled = false;
+    }
 }
 //funny nair spin
 /*

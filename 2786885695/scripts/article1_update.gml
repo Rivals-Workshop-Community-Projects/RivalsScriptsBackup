@@ -98,7 +98,7 @@ switch (state)
                     {
                         player_id.artc_marker.state = 2;
                         player_id.artc_marker.state_timer = 0;
-                        player_id.fspec_bounce = true;
+                        player_id.vsp = -9;
                     }
                 }
             }

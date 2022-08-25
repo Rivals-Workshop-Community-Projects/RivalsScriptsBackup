@@ -36,10 +36,10 @@ set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 112);
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 4);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 361);
-set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6.5);
+set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("sfx_hammerhit_l"));
 

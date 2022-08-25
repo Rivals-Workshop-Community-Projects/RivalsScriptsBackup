@@ -22,6 +22,22 @@ if attack == AT_EXTRA_1 {
     	vsp /= 2
     }
     
+    if hbox_num > 10 {
+    	damage = 5
+    	transcendent = 1
+    	enemies = 1
+    	draw_xscale = spr_dir*2
+    	draw_yscale = 2
+    	if hitbox_timer == 1 {
+    		hsp *= 5
+    		vsp *= 5
+    		create_hitbox(AT_EXTRA_1, hbox_num - 10,x,y)
+    	}
+    	if hitbox_timer%6 == 0 {
+    		create_hitbox(AT_EXTRA_1, random_func(hbox_num,8,true) + 1,x,y)
+    	}
+    }
+    
     
 }    
     if player_id.move_cooldown[AT_EXTRA_1] > 0 {
@@ -71,72 +87,7 @@ if attack == AT_USPECIAL{
     
 }
 
-if attack == AT_TAUNT {
-	
-	
-	x = player_id.x
-	y = player_id.y - 30
-	
-	
-	    with asset_get("pHitBox") {
-	
-		nearbyhitbox = collision_circle( x-12, y-12, 34,other, true, true ) 
-	
-	    
-	    if nearbyhitbox != noone && player_id != other.player_id  && hitpause != 69 && type == 2 && hit_priority != 0{
-	    	
-	        //image_xscale *= 1.2
-            //image_yscale *= 1.2
-        //
-	    	//damage *= 2
-	    	//hitpause = 69
-	    	//transcendent = true
-	    	//hitbox_timer = 0
-	    	//can_hit_self = true
-	    	//kb_value += 5
-	    	//kb_scale += 0.4
-            //hitpause += 10
-	    	//hit_priority = 9
-	    	
-	    	     
-                 
-	    	with other {
-	    	hitbox_timer = -60	
-            sound_stop(sound_get("RI")); 
-            sound_play(sound_get("RI"),false,noone,.75); 
-            sound_play(sound_get("shot1"));
-            shake_camera(4, 6)
-            
-            create_hitbox(AT_EXTRA_1,1, other.x, other.y)
-            create_hitbox(AT_EXTRA_1,2, other.x, other.y)
-            create_hitbox(AT_EXTRA_1,3, other.x, other.y)
-            create_hitbox(AT_EXTRA_1,4, other.x, other.y)
-            create_hitbox(AT_EXTRA_1,5, other.x, other.y)
-            create_hitbox(AT_EXTRA_1,6, other.x, other.y)
-            create_hitbox(AT_EXTRA_1,7, other.x, other.y)
-            create_hitbox(AT_EXTRA_1,8, other.x, other.y)
-            
-	    	}
-	    	
-	    	destroyed = true
-	    	
-	    	
-                 
-            spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
-	    	
-			//hsp *= -1
-			//vsp *= -1
-			//spr_dir *= -1
-			//nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
-	       	//nearbyhitbox.hitbox_timer = 1
-			//nearbyhitbox.hit_priority = 0
-			///nearbyhitbox.destroyed = true
 
-	    }
-	    
-	}   
-	
-}
 
 if attack == AT_NSPECIAL{
    

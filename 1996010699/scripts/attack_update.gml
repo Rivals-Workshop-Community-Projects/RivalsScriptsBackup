@@ -1120,11 +1120,14 @@ switch(attack){
 				set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 10);
 				
 				set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 4);
+				set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
 				set_window_value(AT_BAIR, 2, AG_WINDOW_INVINCIBILITY, 0);
 				
 				set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 13);
+				set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 				
 				set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair1"));
+				set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair1_hurt"));
 				
 				set_num_hitboxes(AT_BAIR, 2);
 
@@ -1149,6 +1152,7 @@ switch(attack){
 				set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 8);
 				set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 12);
 				set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 145);
+				set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 0);
 				set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
 				set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 1);
 				set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 12);
@@ -1576,7 +1580,8 @@ switch(attack){
 #define achieveUnlock(i)
 {
 	item[i, 7] = true;
-	spawn_hit_fx( x + (spr_dir * 16) , y - 48 , achTrophy );
+	var trophyFX = spawn_hit_fx( x + (spr_dir * 16) , y - 48 , achTrophy );
+	trophyFX.depth = -10;
 	sound_play( asset_get("sfx_shovel_knight_fanfare"));
 	itempoolUpdated = false;
 	setNextItem();

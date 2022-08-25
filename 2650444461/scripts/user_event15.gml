@@ -259,7 +259,15 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.10", "5th May, 2022");
+initPatch("1.12", "20th August, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed a bug where Mudkip parry would sometimes spam SFX");
+
+initPatch("1.11", "18th August, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed an issue with the Toon Link photo where Mudkip wouldn't recolor with alts, and the background would recolor weirdly");
+
+initPatch("1.10", "6th May, 2022");
 initHeader("Fixes / Other Changes");
 initSection("- Mud balls can now be grabbed by other characters");
 

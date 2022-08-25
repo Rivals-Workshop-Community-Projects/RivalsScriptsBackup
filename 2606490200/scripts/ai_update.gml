@@ -1,13 +1,18 @@
-///
-
-if !attacking {
-    set_attack(AT_NSPECIAL)
+/*
+if state == PS_IDLE {
+    spr_dir *= -1
+    set_attack(AT_FSPECIAL)
     window = 1
-    window_timer = 1
+    window_timer = 0
 }
 
-if state_timer %6 == 0 {
-down_pressed = true 
-} else {
-   down_pressed = false
+
+
+x = room_width/2
+
+with oPlayer {
+    if state_cat != SC_HITSTUN {
+        x = room_width/2
+    }
 }
+

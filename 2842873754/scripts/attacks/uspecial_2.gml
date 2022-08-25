@@ -27,7 +27,7 @@ set_window_value(AT_USPECIAL_2, 2, AG_MUNO_WINDOW_INVUL, -2);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 42);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, -18);
+set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, -14);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 

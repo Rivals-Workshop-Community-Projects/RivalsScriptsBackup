@@ -65,7 +65,7 @@ with (asset_get("pHitBox")){
 	}
 }
 
-if(state == PS_PARRY){
+if(state == PS_PARRY && !hitpause){
 	if(state_timer == 1){
 		sound_play(sound_get("Bubble"));
 	}

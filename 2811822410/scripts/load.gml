@@ -64,6 +64,7 @@
 	
 	sprite_change_offset("dspecial", 162, 192);
 	sprite_change_offset("dspecial_projector", 160, 192);
+	sprite_change_offset("dspecial_mask", 12, 24);
 	sprite_change_offset("nspecial", 162, 192);
 	sprite_change_offset("nspecial_leak", 159, 169);
 	sprite_change_offset("uspecial", 162, 192);

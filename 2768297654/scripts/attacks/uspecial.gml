@@ -90,7 +90,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_LOCKOUT, 10);
 
 //vfx
-set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Bird VFX");
+//set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Bird VFX");
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 7);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW_CREATION_FRAME, 4);

@@ -3,8 +3,10 @@ if abs(hud_offset) < 1{
 	hud_offset = 0;
 }
 
+
 with(asset_get("oPlayer")){ 
-	if (url = "2778789055"){
+	if ("gumbo_ditto" in self) {
 		gumbo_ditto = true;
+		//enemy_pumbo = asset_get("oPlayer");
 	}
 }

@@ -23,24 +23,26 @@ set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_BAIR, 2);
 //Sweetspot
+set_hitbox_value(AT_BAIR, 1, HG_MUNO_HITBOX_NAME, "Sweet");
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -75);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -64);
-set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 110);
-set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 80);
+set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 100);
+set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 135);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 //Sourspot
+set_hitbox_value(AT_BAIR, 2, HG_MUNO_HITBOX_NAME, "Sour");
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 3);
@@ -52,7 +54,7 @@ set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 95);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 301);
@@ -60,6 +62,20 @@ set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
 if (has_rune("O")) {
     big_yes(AT_BAIR);
+}
+
+framedata_slowstart(AT_BAIR);
+
+#define framedata_slowstart(_move)
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	var kb = get_hitbox_value(_move, i, HG_BASE_KNOCKBACK);
+	var kbs = get_hitbox_value(_move, i, HG_KNOCKBACK_SCALING);
+	var damage = get_hitbox_value(_move, i, HG_DAMAGE);
+	var hstop = get_hitbox_value(_move, i, HG_BASE_HITPAUSE);
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + " / " + string(kb * slowstart_knockback_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + " / " + string(kbs * slowstart_knockbackscale_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + " / " + string(damage * slowstart_damage_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + " / " + string(hstop - slowstart_hitstop_sub));
 }
 
 #define big_yes

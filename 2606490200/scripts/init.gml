@@ -5,6 +5,15 @@ hitstun_hurtbox_spr = sprite_get("air_box");
 
 Hikaru_Title = "Gigachadiness"
 
+cosmicmusic = 0
+
+playhitsound = 0
+
+cossetx = 0
+cossetxd = 0
+cossety = 0
+cossetyd = 0
+
 nname = "Gigachad"
 ncode1 = "A man of great respect."
 ncode2 = "He can train and strengthen"
@@ -81,7 +90,7 @@ max_fall = 11.00; //maximum fall speed without fastfalling
 fast_fall = 16.00; //fast fall speed
 gravity_speed = 0.6;
 hitstun_grav = 0.55;
-knockback_adj = 1;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = .98;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames
 prat_land_time = 16;
@@ -164,6 +173,15 @@ sprite_change_offset("aup", 30, 30);
 sprite_change_offset("bup", 30, 30);
 sprite_change_offset("lup", 30, 30);
 
+sprite_change_offset("galax1", 200, 200);
+sprite_change_offset("galax2", 200, 200);
+sprite_change_offset("galax3", 200, 200);
+sprite_change_offset("galax4", 200, 200);
+
 esp = hit_fx_create( sprite_get( "esp2" ), 9 );
 sprite_change_offset("esp", 32, 32);
 
+sgf1 = hit_fx_create( sprite_get( "galax1" ), 16);
+sgf2 = hit_fx_create( sprite_get( "galax2" ), 16);
+sgf3 = hit_fx_create( sprite_get( "galax3" ), 16);
+sgf4 = hit_fx_create( sprite_get( "galax4" ), 16);

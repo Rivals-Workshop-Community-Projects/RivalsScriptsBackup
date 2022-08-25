@@ -20,7 +20,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1); //active and dash
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 22);
@@ -54,7 +54,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 8);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 20);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 30);

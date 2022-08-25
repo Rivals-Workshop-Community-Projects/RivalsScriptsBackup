@@ -2,11 +2,6 @@
 
 //draw_debug_text(x, y, "variable = " + string(variable));
 
-//draw_debug_text(x, y, "stamina = " + string(cur_stamina) + " / " + string(max_stamina));
-//draw_debug_text(x, y+16, "wind_glider_toggle = " + string(wind_glider_toggle));
-//draw_debug_text(x, y+32, "wind_glider_delay_open = " + string(wind_glider_delay_open));
-
-
 //var surface_left = get_stage_data(SD_X_POS);
 //var surface_right = room_width - get_stage_data(SD_X_POS);
 //var surface_top = get_stage_data(SD_Y_POS);
@@ -17,6 +12,10 @@
 
 //some shit i worked with
 {
+    //draw_debug_text(x, y, "stamina = " + string(cur_stamina) + " / " + string(max_stamina));
+    //draw_debug_text(x, y+16, "wind_glider_toggle = " + string(wind_glider_toggle));
+    //draw_debug_text(x, y+32, "wind_glider_delay_open = " + string(wind_glider_delay_open));
+
     //draw_debug_text(x, y, "note_id = " + string(note_id));
     //draw_debug_text(x, y+16, "prev_note_id = " + string(prev_note_id));
     //draw_debug_text(x, y+32, "time = " + string(key_held_time));
@@ -133,8 +132,8 @@ if (vhd_effect)
         floor(view_get_xview()+144-get_match_setting(SET_TEAMS)*16),
         floor(view_get_yview()+80),
         get_match_setting(SET_TEAMS) ?
-        "The Vision Hunt Decree is in force. Exept for Player " + string(player) + "'s team, characters cannot use special moves..." :
-        "The Vision Hunt Decree is in force. Exept for Player " + string(player) + ", characters cannot use special moves..."
+        "The Vision Hunt Decree is in force. Exept " + string(get_player_name(player)) + "'s team, characters cannot use special moves..." :
+        "The Vision Hunt Decree is in force. Exept " + string(get_player_name(player)) + ", characters cannot use special moves..."
     );
     //it's supposed to put up the player's tagname, so people know who is immune, but i can't do that
 
@@ -145,6 +144,7 @@ if (vhd_effect)
         shader_end();
     }
 }
+
 
 
 

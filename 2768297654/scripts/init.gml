@@ -221,6 +221,7 @@ set_color_profile_slot( 22, 6, 248, 219, 94 ); //Shirt Stripe
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
-
+/*
 muno_event_type = 0;
 user_event(14);
+*/

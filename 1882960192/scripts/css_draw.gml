@@ -17,21 +17,22 @@ if (get_player_color(player) == 11) {
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Default";
-alt_name[1]  = "BlueyBot";
-alt_name[2]  = "Cinnamon";
+alt_name[1]  = "BBot";
+alt_name[2]  = "Cinna";
 alt_name[3]  = "Cyan(y)";
 alt_name[4]  = "Crispy";
 alt_name[5]  = "Purple(y)";
 alt_name[6]  = "Matrix?";
 alt_name[7]  = "BLM";
 alt_name[8]  = "Snow";
-alt_name[9]  = "Crazy Caps";
-alt_name[10] = "Plumber Boy";
+alt_name[9]  = "Wild Hats";
+alt_name[10] = "Plumber Gentleman";
 alt_name[11] = "Orange";
 alt_name[12] = "Inverted Colors";
 alt_name[13] = "Green(y)";
 alt_name[14] = "Brazil";
 alt_name[15] = "Retro";
+alt_name[16] = "Riptide";
  
  
  

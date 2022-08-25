@@ -15,7 +15,7 @@ set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_ANIM_FRAME_START, 4);
-set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_SFX, sound_get("dash"));
+set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_SFX, sound_get("airdash"));
 
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_TYPE, 9);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 6);

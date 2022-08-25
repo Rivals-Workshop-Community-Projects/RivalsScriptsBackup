@@ -221,7 +221,7 @@ if attack == AT_FSPECIAL {
     if window == 4 && window_timer == 1 {
     	if !has_reduced && !break_active {
 	        meter_prev = meter_cur;
-	        meter_cur -= 8;
+	        meter_cur -= 4;
 	        meter_flash_timer = 30;
 	        has_reduced = true;
 	    }
@@ -267,6 +267,7 @@ if attack == AT_USPECIAL {
     }
     
     if window == 5 {
+    	hsp = clamp(hsp, -2, 2)
         if !free {
             window = 7;
             window_timer = 0;
@@ -364,6 +365,7 @@ if attack == AT_FSPECIAL_2 {
 	if window == 7 && !hitpause {
 		meter_prev = meter_cur;
     	meter_cur -= 5
+    	//meter_cur = clamp(meter_cur - 5, meter_max/2, meter_max)
 	}
 	
 	/*

@@ -56,6 +56,11 @@ crouch_startup_frames = 2;
 crouch_active_frames = 4;
 crouch_recovery_frames = 1;
 
+//Wait sprites
+wait_time = 274;
+wait_length = 130;
+wait_sprite = sprite_get("idle_wait");
+
 //parry animation frames
 dodge_startup_frames = 2;
 dodge_active_frames = 1;

@@ -388,6 +388,7 @@ if (attack == AT_UTILT) {
 	smoke.back = smokeBack;
 	
 	//obama gaming
+	array_push(smokeList,smoke);
 	return smoke;
 }
 

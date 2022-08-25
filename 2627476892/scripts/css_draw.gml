@@ -2,8 +2,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.20";
-patch_day = "5";
-patch_month = "JUL";
+patch_day = "17";
+patch_month = "AUG";
  
 var num_alts = 30;
 var alt_cur = get_player_color(player);
@@ -133,8 +133,10 @@ if get_player_color(player) = 28 {
 init_shader();
 
 
+/*
 muno_event_type = 6;
 user_event(14);
+*/
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));

@@ -51,6 +51,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.9);
+set_hitbox_value(AT_DATTACK, 1, HG_HIT_LOCKOUT, 16);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, 1);
 

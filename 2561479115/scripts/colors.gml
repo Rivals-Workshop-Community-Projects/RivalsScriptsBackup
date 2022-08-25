@@ -284,7 +284,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 23 );
 
 // Hime
 set_color_profile_slot( 1, 0, 109, 140, 161 ); //Hair_light
@@ -295,6 +295,7 @@ set_color_profile_slot( 1, 4, 81, 153, 209 ); //Energy_dark
 set_color_profile_slot( 1, 5, 186, 121, 78 ); //Metal
 set_color_profile_slot( 1, 6, 110, 74, 61 ); //Shirt
 set_color_profile_slot( 1, 7, 22, 28, 61 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Sprite
 set_color_profile_slot( 2, 0, 46, 42, 42 ); //Hair_light
@@ -305,6 +306,7 @@ set_color_profile_slot( 2, 4, 198, 194, 204 ); //Energy_dark
 set_color_profile_slot( 2, 5, 90, 89, 88 ); //Metal
 set_color_profile_slot( 2, 6, 186, 8, 47 ); //Shirt
 set_color_profile_slot( 2, 7, 39, 38, 37 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Gummy
 set_color_profile_slot( 3, 0, 179, 224, 101 ); //Hair_light
@@ -315,6 +317,7 @@ set_color_profile_slot( 3, 4, 176, 217, 74 ); //Energy_dark
 set_color_profile_slot( 3, 5, 52, 74, 53 ); //Metal
 set_color_profile_slot( 3, 6, 240, 155, 78 ); //Shirt
 set_color_profile_slot( 3, 7, 33, 33, 38 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Santiana
 set_color_profile_slot( 4, 0, 51, 51, 51 ); //Hair_light
@@ -325,6 +328,7 @@ set_color_profile_slot( 4, 4, 204, 191, 22 ); //Energy_dark
 set_color_profile_slot( 4, 5, 145, 145, 145 ); //Metal
 set_color_profile_slot( 4, 6, 130, 101, 69 ); //Shirt
 set_color_profile_slot( 4, 7, 33, 33, 38 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Misato
 set_color_profile_slot( 5, 0, 81, 65, 107 ); //Hair_light
@@ -335,6 +339,7 @@ set_color_profile_slot( 5, 4, 206, 68, 22 ); //Energy_dark
 set_color_profile_slot( 5, 5, 138, 150, 150 ); //Metal
 set_color_profile_slot( 5, 6, 138, 30, 30 ); //Shirt
 set_color_profile_slot( 5, 7, 57, 37, 37 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // rox
 set_color_profile_slot( 6, 0, 88, 111, 127 ); //Hair_light
@@ -345,6 +350,7 @@ set_color_profile_slot( 6, 4, 230, 106, 221 ); //Energy_dark
 set_color_profile_slot( 6, 5, 169, 169, 169 ); //Metal
 set_color_profile_slot( 6, 6, 65, 72, 80 ); //Shirt
 set_color_profile_slot( 6, 7, 33, 33, 38 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Ольга
 set_color_profile_slot( 7, 0, 249, 237, 194 ); //Hair_light
@@ -355,6 +361,7 @@ set_color_profile_slot( 7, 4, 127, 130, 80 ); //Energy_dark
 set_color_profile_slot( 7, 5, 74, 74, 74 ); //Metal
 set_color_profile_slot( 7, 6, 231, 228, 224 ); //Shirt
 set_color_profile_slot( 7, 7, 155, 178, 179 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Анна
 set_color_profile_slot( 8, 0, 178, 136, 112 ); //Hair_light
@@ -365,6 +372,7 @@ set_color_profile_slot( 8, 4, 77, 176, 201 ); //Energy_dark
 set_color_profile_slot( 8, 5, 74, 77, 74 ); //Metal
 set_color_profile_slot( 8, 6, 49, 50, 49 ); //Shirt
 set_color_profile_slot( 8, 7, 90, 162, 181 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // maki roll
 set_color_profile_slot( 9, 0, 64, 64, 53 ); //Hair_light
@@ -375,6 +383,7 @@ set_color_profile_slot( 9, 4, 176, 21, 21 ); //Energy_dark
 set_color_profile_slot( 9, 5, 201, 201, 200 ); //Metal
 set_color_profile_slot( 9, 6, 127, 58, 54 ); //Shirt
 set_color_profile_slot( 9, 7, 33, 33, 38 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // zetta?
 set_color_profile_slot( 10, 0, 245, 245, 245 ); //Hair_light
@@ -385,6 +394,7 @@ set_color_profile_slot( 10, 4, 61, 163, 25 ); //Energy_dark
 set_color_profile_slot( 10, 5, 37, 48, 41 ); //Metal
 set_color_profile_slot( 10, 6, 66, 91, 26 ); //Shirt
 set_color_profile_slot( 10, 7, 32, 32, 32 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Reisen
 set_color_profile_slot( 11, 0, 220, 168, 251 ); //Hair_light
@@ -395,6 +405,7 @@ set_color_profile_slot( 11, 4, 194, 30, 59 ); //Energy_dark
 set_color_profile_slot( 11, 5, 248, 197, 104 ); //Metal
 set_color_profile_slot( 11, 6, 255, 160, 156 ); //Shirt
 set_color_profile_slot( 11, 7, 56, 16, 21 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Liz
 set_color_profile_slot( 12, 0, 255, 72, 135 ); //Hair_light
@@ -405,6 +416,7 @@ set_color_profile_slot( 12, 4, 56, 186, 255 ); //Energy_dark
 set_color_profile_slot( 12, 5, 254, 227, 95 ); //Metal
 set_color_profile_slot( 12, 6, 38, 27, 110 ); //Shirt
 set_color_profile_slot( 12, 7, 255, 72, 135 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Lumi
 set_color_profile_slot( 13, 0, 225, 237, 255 ); //Hair_light
@@ -415,6 +427,7 @@ set_color_profile_slot( 13, 4, 78, 203, 229 ); //Energy_dark
 set_color_profile_slot( 13, 5, 16, 18, 33 ); //Metal
 set_color_profile_slot( 13, 6, 76, 65, 120 ); //Shirt
 set_color_profile_slot( 13, 7, 40, 39, 81 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Abyss
 set_color_profile_slot( 14, 0, 93, 54, 127 ); //Hair_light
@@ -425,6 +438,7 @@ set_color_profile_slot( 14, 4, 150, 54, 173 ); //Energy_dark
 set_color_profile_slot( 14, 5, 60, 45, 64 ); //Metal
 set_color_profile_slot( 14, 6, 107, 82, 130 ); //Shirt
 set_color_profile_slot( 14, 7, 46, 18, 71 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Eltnum
 set_color_profile_slot( 15, 0, 157, 122, 207 ); //Hair_light
@@ -435,6 +449,7 @@ set_color_profile_slot( 15, 4, 219, 117, 0 ); //Energy_dark
 set_color_profile_slot( 15, 5, 58, 63, 66 ); //Metal
 set_color_profile_slot( 15, 6, 77, 60, 125 ); //Shirt
 set_color_profile_slot( 15, 7, 86, 48, 99 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Mori Calliope
 set_color_profile_slot( 16, 0, 245, 205, 223 ); //Hair_light
@@ -445,6 +460,7 @@ set_color_profile_slot( 16, 4, 122, 4, 46 ); //Energy_dark
 set_color_profile_slot( 16, 5, 112, 89, 64 ); //Metal
 set_color_profile_slot( 16, 6, 40, 36, 42 ); //Shirt
 set_color_profile_slot( 16, 7, 100, 78, 80 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Fio
 set_color_profile_slot( 17, 0, 206, 113, 13 ); //Hair_light
@@ -455,6 +471,7 @@ set_color_profile_slot( 17, 4, 126, 96, 50 ); //Energy_dark
 set_color_profile_slot( 17, 5, 71, 41, 1 ); //Metal
 set_color_profile_slot( 17, 6, 247, 239, 178 ); //Shirt
 set_color_profile_slot( 17, 7, 199, 167, 99 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // BLM
 set_color_profile_slot( 18, 0, 38, 35, 41 ); //Hair_light
@@ -465,6 +482,7 @@ set_color_profile_slot( 18, 4, 232, 173, 0 ); //Energy_dark
 set_color_profile_slot( 18, 5, 181, 181, 181 ); //Metal
 set_color_profile_slot( 18, 6, 79, 79, 79 ); //Shirt
 set_color_profile_slot( 18, 7, 26, 26, 26 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Bout
 set_color_profile_slot( 19, 0, 55, 59, 55 ); //Hair_light
@@ -475,6 +493,7 @@ set_color_profile_slot( 19, 4, 0, 20, 133 ); //Energy_dark
 set_color_profile_slot( 19, 5, 68, 115, 70 ); //Metal
 set_color_profile_slot( 19, 6, 0, 46, 84 ); //Shirt
 set_color_profile_slot( 19, 7, 35, 59, 35 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Rat God
 set_color_profile_slot( 20, 0, 179, 255, 125 ); //Hair_light
@@ -485,6 +504,7 @@ set_color_profile_slot( 20, 4, 184, 23, 23 ); //Energy_dark
 set_color_profile_slot( 20, 5, 46, 36, 79 ); //Metal
 set_color_profile_slot( 20, 6, 168, 34, 88 ); //Shirt
 set_color_profile_slot( 20, 7, 216, 221, 230 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
 // Cotton Candy..?
 set_color_profile_slot( 21, 0, 179, 254, 255 ); //Hair_light
@@ -495,6 +515,18 @@ set_color_profile_slot( 21, 4, 230, 103, 218 ); //Energy_dark
 set_color_profile_slot( 21, 5, 201, 205, 207 ); //Metal
 set_color_profile_slot( 21, 6, 230, 248, 255 ); //Shirt
 set_color_profile_slot( 21, 7, 232, 175, 214 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, 1, 1]
+
+// Riptide
+set_color_profile_slot( 22, 0, 255, 228, 156 ); //Hair_light
+set_color_profile_slot( 22, 1, 235, 148, 148 ); //Hair_dark
+set_color_profile_slot( 22, 2, 242, 184, 145 ); //Skin
+set_color_profile_slot( 22, 3, 105, 248, 255 ); //Energy_light
+set_color_profile_slot( 22, 4, 48, 200, 255 ); //Energy_dark
+set_color_profile_slot( 22, 5, 255, 180, 61 ); //Metal
+set_color_profile_slot( 22, 6, 20, 65, 143 ); //Shirt
+set_color_profile_slot( 22, 7, 224, 101, 47 ); //Pants
+//shading data: [1, 1, 1.1, 1, 1, 2.1, 2, 1]
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

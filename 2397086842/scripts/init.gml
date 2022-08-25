@@ -25,8 +25,6 @@ fs_char_chosen_trigger = "ori";
 
 fs_char_portrait_y = 115;
  
- cheapmode = 0
- 
  mobia = 0
  
 shsp = 0

@@ -67,11 +67,19 @@ lifeTimer = 1300
 
 multi_hits = 0
 
+saw_blade_hitbox = noone
+
 sprite[0] = sprite_get("sawSpawn");             //Example sprites
 sprite[1] = sprite_get("sawMove");
 sprite[2] = sprite_get("sawMove");
 sprite[3] = sprite_get("sawMove");
 sprite[4] = sprite_get("sawSpawn");
+sprite[5] = sprite_get("sawStun_start");
+
+vfx_waterhit_small = hit_fx_create( sprite_get( "vfx_waterhit_small" ), 18 );
+vfx_waterhit_big = hit_fx_create( sprite_get( "vfx_waterhit_big" ), 24 );
+vfx_waterhit_light_big = hit_fx_create( sprite_get( "vfx_waterhit_light_big" ), 24 );
+vfx_waterhit_light_huge = hit_fx_create( sprite_get( "vfx_waterhit_light_huge" ), 24 );
 
 /* README - Basic Article Usage
 

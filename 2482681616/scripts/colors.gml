@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 17 );
+set_num_palettes( 32 );
 
 // Shiny
 set_color_profile_slot( 1, 0, 231, 255, 255 ); //White
@@ -175,6 +175,150 @@ set_color_profile_slot( 16, 3, 74, 165, 99 ); //Black
 set_color_profile_slot( 16, 4, 255, 215, 87 ); //Red
 set_color_profile_slot( 16, 5, 255, 217, 94 ); //Blue
 set_color_profile_slot( 16, 6, 255, 217, 97 ); //Gray
+
+// Wailord
+set_color_profile_slot( 17, 0, 32, 115, 222 ); //White
+set_color_profile_slot( 17, 1, 238, 230, 255 ); //Yellow
+set_color_profile_slot( 17, 2, 184, 177, 191 ); //Green
+set_color_profile_slot( 17, 3, 238, 230, 255 ); //Black
+set_color_profile_slot( 17, 4, 39, 47, 84 ); //Red
+set_color_profile_slot( 17, 5, 39, 47, 84 ); //Blue
+set_color_profile_slot( 17, 6, 39, 47, 84 ); //Gray
+
+// CoA Gold
+set_color_profile_slot( 18, 0, 248, 214, 105 ); //White
+set_color_profile_slot( 18, 1, 87, 70, 87 ); //Yellow
+set_color_profile_slot( 18, 2, 215, 148, 139 ); //Green
+set_color_profile_slot( 18, 3, 87, 70, 87 ); //Black
+set_color_profile_slot( 18, 4, 239, 156, 61 ); //Red
+set_color_profile_slot( 18, 5, 239, 156, 61 ); //Blue
+set_color_profile_slot( 18, 6, 239, 156, 61 ); //Gray
+
+// Bird Guy
+set_color_profile_slot( 19, 0, 103, 108, 173 ); //White
+set_color_profile_slot( 19, 1, 255, 233, 33 ); //Yellow
+set_color_profile_slot( 19, 2, 255, 233, 33 ); //Green
+set_color_profile_slot( 19, 3, 255, 233, 33 ); //Black
+set_color_profile_slot( 19, 4, 255, 233, 33 ); //Red
+set_color_profile_slot( 19, 5, 103, 108, 173 ); //Blue
+set_color_profile_slot( 19, 6, 181, 189, 198 ); //Gray
+
+// Hbox
+set_color_profile_slot( 20, 0, 255, 239, 255 ); //White
+set_color_profile_slot( 20, 1, 255, 198, 214 ); //Yellow
+set_color_profile_slot( 20, 2, 238, 180, 189 ); //Green
+set_color_profile_slot( 20, 3, 0, 198, 57 ); //Black
+set_color_profile_slot( 20, 4, 50, 148, 132 ); //Red
+set_color_profile_slot( 20, 5, 78, 198, 174 ); //Blue
+set_color_profile_slot( 20, 6, 82, 222, 198 ); //Gray
+
+// Regichad
+set_color_profile_slot( 21, 0, 120, 120, 120 ); //White
+set_color_profile_slot( 21, 1, 20, 20, 32 ); //Yellow
+set_color_profile_slot( 21, 2, 75, 75, 75 ); //Green
+set_color_profile_slot( 21, 3, 28, 28, 28 ); //Black
+set_color_profile_slot( 21, 4, 250, 250, 250 ); //Red
+set_color_profile_slot( 21, 5, 120, 120, 120 ); //Blue
+set_color_profile_slot( 21, 6, 181, 189, 198 ); //Gray
+
+// Morbius
+set_color_profile_slot( 22, 0, 141, 148, 150 ); //White
+set_color_profile_slot( 22, 1, 24, 84, 102 ); //Yellow
+set_color_profile_slot( 22, 2, 16, 53, 64 ); //Green
+set_color_profile_slot( 22, 3, 10, 50, 62 ); //Black
+set_color_profile_slot( 22, 4, 166, 26, 32 ); //Red
+set_color_profile_slot( 22, 5, 166, 26, 32 ); //Blue
+set_color_profile_slot( 22, 6, 181, 189, 198 ); //Gray
+
+// Exetior
+set_color_profile_slot( 23, 0, 104, 106, 92 ); //White
+set_color_profile_slot( 23, 1, 174, 54, 65 ); //Yellow
+set_color_profile_slot( 23, 2, 142, 98, 65 ); //Green
+set_color_profile_slot( 23, 3, 185, 101, 85 ); //Black
+set_color_profile_slot( 23, 4, 165, 154, 147 ); //Red
+set_color_profile_slot( 23, 5, 255, 208, 160 ); //Blue
+set_color_profile_slot( 23, 6, 181, 189, 198 ); //Gray
+
+// Memphis
+set_color_profile_slot( 24, 0, 66, 66, 66 ); //White
+set_color_profile_slot( 24, 1, 252, 155, 51 ); //Yellow
+set_color_profile_slot( 24, 2, 240, 246, 253 ); //Green
+set_color_profile_slot( 24, 3, 58, 97, 161 ); //Black
+set_color_profile_slot( 24, 4, 178, 0, 0 ); //Red
+set_color_profile_slot( 24, 5, 178, 0, 0 ); //Blue
+set_color_profile_slot( 24, 6, 181, 189, 198 ); //Gray
+
+// Incineroar
+set_color_profile_slot( 25, 0, 208, 42, 44 ); //White
+set_color_profile_slot( 25, 1, 45, 46, 47 ); //Yellow
+set_color_profile_slot( 25, 2, 162, 150, 150 ); //Green
+set_color_profile_slot( 25, 3, 46, 46, 53 ); //Black
+set_color_profile_slot( 25, 4, 238, 192, 31 ); //Red
+set_color_profile_slot( 25, 5, 238, 192, 31 ); //Blue
+set_color_profile_slot( 25, 6, 181, 189, 198 ); //Gray
+
+// Slaking
+set_color_profile_slot( 26, 0, 214, 206, 181 ); //White
+set_color_profile_slot( 26, 1, 140, 107, 82 ); //Yellow
+set_color_profile_slot( 26, 2, 173, 140, 107 ); //Green
+set_color_profile_slot( 26, 3, 239, 239, 255 ); //Black
+set_color_profile_slot( 26, 4, 252, 245, 255 ); //Red
+set_color_profile_slot( 26, 5, 171, 84, 103 ); //Blue
+set_color_profile_slot( 26, 6, 181, 189, 198 ); //Gray
+
+// King Dedede
+set_color_profile_slot( 27, 0, 62, 136, 181 ); //White
+set_color_profile_slot( 27, 1, 195, 69, 56 ); //Yellow
+set_color_profile_slot( 27, 2, 255, 253, 227 ); //Green
+set_color_profile_slot( 27, 3, 224, 231, 90 ); //Black
+set_color_profile_slot( 27, 4, 255, 222, 82 ); //Red
+set_color_profile_slot( 27, 5, 255, 222, 82 ); //Blue
+set_color_profile_slot( 27, 6, 255, 222, 82 ); //Gray
+
+// Melee Bowser
+set_color_profile_slot( 28, 0, 176, 153, 80 ); //White
+set_color_profile_slot( 28, 1, 126, 146, 87 ); //Yellow
+set_color_profile_slot( 28, 2, 245, 239, 216 ); //Green
+set_color_profile_slot( 28, 3, 42, 41, 35 ); //Black
+set_color_profile_slot( 28, 4, 175, 43, 2 ); //Red
+set_color_profile_slot( 28, 5, 186, 81, 12 ); //Blue
+set_color_profile_slot( 28, 6, 192, 123, 49 ); //Gray
+
+// Daniel Fornaniel Dog
+set_color_profile_slot( 29, 0, 201, 146, 90 ); //White
+set_color_profile_slot( 29, 1, 245, 238, 228 ); //Yellow
+set_color_profile_slot( 29, 2, 134, 104, 76 ); //Green
+set_color_profile_slot( 29, 3, 242, 246, 242 ); //Black
+set_color_profile_slot( 29, 4, 45, 38, 36 ); //Red
+set_color_profile_slot( 29, 5, 187, 182, 177 ); //Blue
+set_color_profile_slot( 29, 6, 181, 189, 198 ); //Gray
+
+// Infamous
+set_color_profile_slot( 30, 0, 0, 222, 251 ); //White
+set_color_profile_slot( 30, 1, 206, 104, 223 ); //Yellow
+set_color_profile_slot( 30, 2, 76, 68, 95 ); //Green
+set_color_profile_slot( 30, 3, 96, 95, 155 ); //Black
+set_color_profile_slot( 30, 4, 20, 255, 159 ); //Red
+set_color_profile_slot( 30, 5, 20, 255, 159 ); //Blue
+set_color_profile_slot( 30, 6, 20, 255, 159 ); //Gray
+
+// Rune Guy
+set_color_profile_slot( 31, 0, 0, 90, 190 ); //White
+set_color_profile_slot( 31, 1, 75, 75, 85 ); //Yellow
+set_color_profile_slot( 31, 2, 31, 43, 92 ); //Green
+set_color_profile_slot( 31, 3, 50, 50, 62 ); //Black
+set_color_profile_slot( 31, 4, 0, 30, 225 ); //Red
+set_color_profile_slot( 31, 5, 0, 30, 225 ); //Blue
+set_color_profile_slot( 31, 6, 0, 30, 225 ); //Gray
+
+// Old Rune Guy
+// set_color_profile_slot( 30, 0, 0, 70, 170 ); //White
+// set_color_profile_slot( 30, 1, 70, 70, 80 ); //Yellow
+// set_color_profile_slot( 30, 2, 26, 36, 77 ); //Green
+// set_color_profile_slot( 30, 3, 40, 40, 52 ); //Black
+// set_color_profile_slot( 30, 4, 0, 30, 225 ); //Red
+// set_color_profile_slot( 30, 5, 0, 30, 225 ); //Blue
+// set_color_profile_slot( 30, 6, 0, 30, 225 ); //Gray
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

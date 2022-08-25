@@ -1,7 +1,6 @@
 set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
-set_attack_value(AT_USPECIAL, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 6);

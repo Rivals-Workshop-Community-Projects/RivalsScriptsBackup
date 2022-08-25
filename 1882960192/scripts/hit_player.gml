@@ -1,11 +1,5 @@
 //hit_player - called when one of your hitboxes hits a player
 
-
-if (my_hitboxID.attack == AT_USPECIAL) {
-		my_hitboxID.destroyed = true;
-		create_hitbox(AT_USPECIAL, 1, -5, -95);
-}
-
 //Stun effect
 if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3) {
 

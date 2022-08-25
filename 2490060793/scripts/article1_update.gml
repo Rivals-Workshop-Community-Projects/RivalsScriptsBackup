@@ -343,7 +343,7 @@ if (hitbox != noone) && (timer > 10) {
             	other.hitstop = 10;
             	sound_play(hitboxSound)
             	var fx = spawn_hit_fx(other.x, other.y, hitboxVfx)
-            	fx.pause = 10
+            	//fx.pause = 10
             	
             	hitpause = true;
 	            hitstop_full = baseHitpause;

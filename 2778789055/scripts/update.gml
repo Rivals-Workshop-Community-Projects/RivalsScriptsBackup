@@ -1,7 +1,9 @@
 // MunoPhone Touch code - don't touch
 // should be at TOP of file
+/*
 muno_event_type = 1;
 user_event(14);
+*/
 
 galaxy_timer = max(galaxy_timer-1,0)
 
@@ -73,40 +75,40 @@ if(other_is_scalding && hit_player_obj.other_scalding = true && hit_player_obj.o
 }
 
 if (get_gameplay_time() < 120){
-		if(get_player_color(player) = 13){
+		if(get_player_color(player) = 14){
 			//Avocado
 		if(michigan == false){
 			if(attack_down && taunt_down){
 		white_flash_timer = 18;
 		sound_play(asset_get("mfx_levelup"));
 		sound_play(sound_get("sfx_michigan"), false, noone, 2, 1);
-    set_color_profile_slot( 13, 0, 226, 189, 166 );
-    set_color_profile_slot( 13, 1, 208, 153, 137 );
-    set_color_profile_slot( 13, 2, 92, 92, 92 );
-    set_color_profile_slot( 13, 3, 204, 30, 30 ); 
-    set_color_profile_slot( 13, 4, 255, 255, 255 );
-    set_color_profile_slot( 13, 5, 145, 85, 59 );
-    set_color_profile_slot( 13, 6, 145, 85, 59 );
-    set_color_profile_slot( 13, 7, 212, 40, 40 ); 
+    set_color_profile_slot( 14, 0, 226, 189, 166 );
+    set_color_profile_slot( 14, 1, 208, 153, 137 );
+    set_color_profile_slot( 14, 2, 92, 92, 92 );
+    set_color_profile_slot( 14, 3, 204, 30, 30 ); 
+    set_color_profile_slot( 14, 4, 255, 255, 255 );
+    set_color_profile_slot( 14, 5, 145, 85, 59 );
+    set_color_profile_slot( 14, 6, 145, 85, 59 );
+    set_color_profile_slot( 14, 7, 212, 40, 40 ); 
 		avocado = true;
 		init_shader();
 		michigan = true;
 			}
 		}
-	}		if(get_player_color(player) = 14){
+	}		if(get_player_color(player) = 15){
 		//TAG
 		if(michigan == false){
 			if(attack_down && taunt_down){
 		white_flash_timer = 18;
 		sound_play(asset_get("mfx_levelup"));
-    set_color_profile_slot( 14, 0, 0, 158, 76 ); //Gumbo Skin 1
-    set_color_profile_slot( 14, 1, 214, 171, 26 ); //Gumb Skin 2
-    set_color_profile_slot( 14, 2, 84, 84, 84 ); //Jeans
-    set_color_profile_slot( 14, 3, 110, 81, 60 ); //Hoodie
-    set_color_profile_slot( 14, 4, 255, 223, 112 ); //Eyes
-    set_color_profile_slot( 14, 5, 0, 158, 76 ); //Po Skin 1
-    set_color_profile_slot( 14, 6, 214, 171, 26 ); //Po Skin 2
-    set_color_profile_slot( 14, 7, 234, 224, 255 ); //Apron
+    set_color_profile_slot( 15, 0, 0, 158, 76 ); //Gumbo Skin 1
+    set_color_profile_slot( 15, 1, 214, 171, 26 ); //Gumb Skin 2
+    set_color_profile_slot( 15, 2, 84, 84, 84 ); //Jeans
+    set_color_profile_slot( 15, 3, 110, 81, 60 ); //Hoodie
+    set_color_profile_slot( 15, 4, 255, 223, 112 ); //Eyes
+    set_color_profile_slot( 15, 5, 0, 158, 76 ); //Po Skin 1
+    set_color_profile_slot( 15, 6, 214, 171, 26 ); //Po Skin 2
+    set_color_profile_slot( 15, 7, 234, 224, 255 ); //Apron
 		avocado = true;
 		init_shader();
 		michigan = true;
@@ -120,58 +122,61 @@ if (get_gameplay_time() < 120){
 		sound_play(asset_get("mfx_levelup"));
 		sound_play(sound_get("sfx_record"), false, noone, 1.5, 1);
 		set_victory_portrait(sprite_get("portrait"));
-            set_color_profile_slot( 22, 0, 119, 145, 121 ); //Gumbo Skin 1
-            set_color_profile_slot( 22, 1, 102, 93, 73 ); //Gumb Skin 2
-            set_color_profile_slot( 22, 2, 54, 58, 122 ); //Jeans
-            set_color_profile_slot( 22, 3, 51, 58, 171 ); //Hoodie
-            set_color_profile_slot( 22, 4, 255, 238, 181 ); //Eyes
-            set_color_profile_slot( 22, 5, 101, 100, 112 ); //Po Skin 1
-            set_color_profile_slot( 22, 6, 64, 61, 92 ); //Po Skin 2
-            set_color_profile_slot( 22, 7, 255, 255, 255 ); //Apron
+            set_color_profile_slot( 23, 0, 119, 145, 121 ); //Gumbo Skin 1
+            set_color_profile_slot( 23, 1, 102, 93, 73 ); //Gumb Skin 2
+            set_color_profile_slot( 23, 2, 54, 58, 122 ); //Jeans
+            set_color_profile_slot( 23, 3, 51, 58, 171 ); //Hoodie
+            set_color_profile_slot( 23, 4, 255, 238, 181 ); //Eyes
+            set_color_profile_slot( 23, 5, 101, 100, 112 ); //Po Skin 1
+            set_color_profile_slot( 23, 6, 64, 61, 92 ); //Po Skin 2
+            set_color_profile_slot( 23, 7, 255, 255, 255 ); //Apron
 		avocado = true;
 		init_shader();
 		michigan = true;
 			}
 		}
-	}		if(get_player_color(player) = 15){
+	}		if(get_player_color(player) = 16){
 		//BLW Champ
 		if(michigan == false){
 			if(attack_down && taunt_down){
 		white_flash_timer = 18;
 		sound_play(asset_get("mfx_levelup"));
-    set_color_profile_slot( 15, 0, 133, 70, 171 ); //Gumbo Skin 1
-    set_color_profile_slot( 15, 1, 77, 77, 77 ); //Gumb Skin 2
-    set_color_profile_slot( 15, 2, 77, 77, 77 ); //Jeans
-    set_color_profile_slot( 15, 3, 153, 153, 153 ); //Hoodie
-    set_color_profile_slot( 15, 4, 122, 255, 122 ); //Eyes
-    set_color_profile_slot( 15, 5, 74, 74, 74 ); //Po Skin 1
-    set_color_profile_slot( 15, 6, 230, 182, 52 ); //Po Skin 2
-    set_color_profile_slot( 15, 7, 255, 219, 245 ); //Apron
+    set_color_profile_slot( 16, 0, 133, 70, 171 ); //Gumbo Skin 1
+    set_color_profile_slot( 16, 1, 77, 77, 77 ); //Gumb Skin 2
+    set_color_profile_slot( 16, 2, 77, 77, 77 ); //Jeans
+    set_color_profile_slot( 16, 3, 153, 153, 153 ); //Hoodie
+    set_color_profile_slot( 16, 4, 122, 255, 122 ); //Eyes
+    set_color_profile_slot( 16, 5, 74, 74, 74 ); //Po Skin 1
+    set_color_profile_slot( 16, 6, 230, 182, 52 ); //Po Skin 2
+    set_color_profile_slot( 16, 7, 255, 219, 245 ); //Apron
 		avocado = true;
 		init_shader();
 		michigan = true;
 			}
 		}
-	}  if(get_player_color(player) = 22){
+	}  if(get_player_color(player) = 12){
 		//Kazuya Mishima
 		if(michigan == false){
 			if(attack_down && taunt_down){
 		white_flash_timer = 18;
 		sound_play(asset_get("mfx_levelup"));  
 		sound_play(sound_get("SmashLeakInnerRealVineBoomPoo"), false, noone, 3.5, 1);
-	set_color_profile_slot( 21, 0, 166, 121, 181 ); //Gumbo Skin 1
-    set_color_profile_slot( 21, 1, 73, 42, 82 ); //Gumb Skin 2
-    set_color_profile_slot( 21, 2, 232, 232, 232 ); //Jeans
-    set_color_profile_slot( 21, 3, 232, 232, 232 ); //Hoodie
-    set_color_profile_slot( 21, 4, 255, 87, 87 ); //Eyes
-    set_color_profile_slot( 21, 5, 212, 212, 212 ); //Po Skin 1
-    set_color_profile_slot( 21, 6, 135, 135, 135 ); //Po Skin 2
-    set_color_profile_slot( 21, 7, 199, 74, 52 ); //Apron
+	set_color_profile_slot( 12, 0, 166, 121, 181 ); //Gumbo Skin 1
+    set_color_profile_slot( 12, 1, 73, 42, 82 ); //Gumb Skin 2
+    set_color_profile_slot( 12, 2, 232, 232, 232 ); //Jeans
+    set_color_profile_slot( 12, 3, 232, 232, 232 ); //Hoodie
+    set_color_profile_slot( 12, 4, 255, 87, 87 ); //Eyes
+    set_color_profile_slot( 12, 5, 212, 212, 212 ); //Po Skin 1
+    set_color_profile_slot( 12, 6, 135, 135, 135 ); //Po Skin 2
+    set_color_profile_slot( 12, 7, 199, 74, 52 ); //Apron
 		avocado = true;
 		init_shader();
 		michigan = true;
 			}
 		}
+	}if(get_player_color(player) = 25){
+		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_summer"));
+	set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_summer"));	
 	}
 }
 
@@ -234,11 +239,28 @@ if(gumbo_is_scalding && gumbo_scalding = true && gumbo_scalding_timer != 0){
     }
 }
 
+
 if(gumbo_ditto){
+	gumbo_ditto();
+}
+
+//check practice mode
+if (get_training_cpu_action() != CPU_FIGHT && object_index != oTestPlayer) {
+    practice_mode = true;
+    practicetutorial = 1;
+}
+
+if(tutorialcooldown > 0){
+tutorialcooldown--;
+}if(menu_select_cooldown > 0){
+menu_select_cooldown--;
+}
+
+#define gumbo_ditto
+
 if(other_scalding){
 	is_scalding = true;
-}
+	}
 if(!gumbo_scalding && !other_scalding){
 	is_scalding = false;
-}
-}
+		}

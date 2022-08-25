@@ -1,5 +1,5 @@
 //
-if(get_player_color(player) = 13){
+if(get_player_color(player) = 14){
     if(avocado){
     snd_rng = random_func(0, 3, true);
     if(snd_rng = 0){

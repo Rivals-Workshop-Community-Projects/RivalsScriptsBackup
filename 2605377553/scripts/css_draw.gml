@@ -74,7 +74,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 20; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 22; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(225, 92, 198) // "color preview square" color. can be any color!
@@ -143,9 +143,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[21,0] = make_color_rgb(255, 0, 0)
     ce[21,1] = "Canada??"
     ce[21,2] = "Thought it would be kinda funny. Mal is canadian."    
-    ce[21,0] = make_color_rgb(209, 8, 68)
-    ce[21,1] = "Pretty Pink"
-    ce[21,2] = "Thought it would be kinda funny. Mal is canadian."    
+    ce[22,0] = make_color_rgb(209, 8, 68)
+    ce[22,1] = "Pretty Pink"
+    ce[22,2] = "Thought it would be kinda funny. Mal is canadian."    
 
 
     // you can add more, by copypasting and changing the first index of the array accordingly.

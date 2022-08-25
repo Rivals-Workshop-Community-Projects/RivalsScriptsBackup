@@ -6,10 +6,23 @@ if  (get_player_color(player) == 23) {
 //crash prevention line
 shader_end();
 maskHeader();
-    draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, 0, c_white, 1); //change the 2*spr_dir and 2 to 1 if the character doesnt use small_sprites
+    draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, spr_angle, c_white, 1); //change the 2*spr_dir and 2 to 1 if the character doesnt use small_sprites
 
 maskMidder();
     draw_sprite_tiled_ext(sprite_get("unknown"), 0, x, y, 1, 1, c_white, 1)
+maskFooter();
+    }
+}
+
+if  (get_player_color(player) == 25) {
+    if(!avocado){
+//crash prevention line
+shader_end();
+maskHeader();
+    draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, spr_angle, c_white, 1); //change the 2*spr_dir and 2 to 1 if the character doesnt use small_sprites
+
+maskMidder();
+    draw_sprite_tiled_ext(sprite_get("unknown_2"), 0, x, y, 1, 1, c_white, 1)
 maskFooter();
     }
 }
@@ -19,7 +32,7 @@ maskFooter();
 shader_end();
 if galaxy_timer > 0 {
         
-        draw_sprite_ext(sprite_get("mmm"),0, view_get_xview(), view_get_yview(), 2 , 2 ,0, c_white, (galaxy_timer/2.5)/60 );
+        //draw_sprite_ext(sprite_get("mmm"),0, view_get_xview(), view_get_yview(), 2 , 2 ,0, c_white, (galaxy_timer/2.5)/60 );
         
     }
 

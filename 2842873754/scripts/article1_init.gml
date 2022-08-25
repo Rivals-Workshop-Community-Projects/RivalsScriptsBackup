@@ -18,7 +18,7 @@ state_timer = 0;
 //Variables
 bounce_multiplier = 0.9; //Multiply bonces by this amount.
 //bounce_min = 1; //The minimum vspeed before it sticks.
-bounce_speed = 9.5;
+bounce_speed = 8;
 //bounce_current = bounce_speed * 2;
 bounce_times = 0;
 stick_time_max = 300; //The maximum sticking time before it disappears.

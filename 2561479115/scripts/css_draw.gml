@@ -11,6 +11,7 @@ if ("soupcss_char" not in self || soupcss_char != charuuid)
     css_init(charuuid)
     
 current_alt = get_player_color(player); 
+ofix = player;
 if current_alt != prev_alt { 
     swap_timer = 0;    
     
@@ -105,6 +106,7 @@ add_alt("BLM");
 add_alt("Blueberry");
 add_alt("Rat God");
 add_alt("Cotton Candy..?");
+add_alt("Riptide");
 
 
 css_timer = 0; 

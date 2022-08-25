@@ -21,8 +21,9 @@ switch (state)
 			else hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		}
 		break;
-	default: 
-		hurtboxID.sprite_index = hurtbox_spr;
+	default:
+		if (hurtboxID.dodging) hurtboxID.sprite_index = asset_get("empty_sprite");
+		else hurtboxID.sprite_index = hurtbox_spr;
 		break;
 }
 
@@ -50,6 +51,8 @@ switch (state)
 		break;
 	case PS_ROLL_BACKWARD: case PS_ROLL_FORWARD: case PS_TECH_BACKWARD: case PS_TECH_FORWARD: //unite roll animations
 		sprite_index = sprite_get("roll");
+	case PS_TECH_GROUND:
+		if (hurtboxID.dodging) invincible = true;
 		break;
 	case PS_AIR_DODGE: //prevents keqing from using the airdodge's first sprite when doing a wavedash
 		if (!free && image_index == 0)
@@ -86,6 +89,11 @@ switch (state)
 		
 			spr_angle = cur_sprite_rot; 
 			draw_y = -40;
+		}
+		else
+		{
+			spr_angle = 0;
+			draw_y = 0;
 		}
 		break;
 	case PS_HITSTUN_LAND:
@@ -135,7 +143,11 @@ switch (state)
 					sprite_index = empty;
 					hurtboxID.sprite_index = sprite_get("hurtbox_uspec");
 				}
-				else sprite_index = free ? sprite_get("uspecial_air") : sprite_get("uspecial");
+				else
+				{
+					sprite_index = free ? sprite_get("uspecial_air") : sprite_get("uspecial");
+					hurtboxID.sprite_index = get_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE);
+				}
 				break;
 			/////////////////////////////////////////////////////////////////////////////
 			//will probably move this to attack update imo

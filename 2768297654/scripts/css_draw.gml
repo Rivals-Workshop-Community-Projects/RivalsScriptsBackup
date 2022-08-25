@@ -7,8 +7,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.14";
-patch_day = "5";
-patch_month = "JUL";
+patch_day = "17";
+patch_month = "AUG";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);
@@ -84,9 +84,10 @@ textDraw(temp_x + 2, temp_y + 124 - 5*(ceil(array_length(alt_name)/16)-1), "fNam
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
-
+/*
 muno_event_type = 6;
 user_event(14);
+*/
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));

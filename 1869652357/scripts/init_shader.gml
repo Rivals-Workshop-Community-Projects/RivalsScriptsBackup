@@ -1,4 +1,4 @@
-if get_player_color(player) == 7 {
+if get_player_color(player) == 18 {
     set_character_color_slot( 0, 0, 255, 0, .3 );
     set_character_color_slot( 1, 0, 235, 0, .4 );
     set_character_color_slot( 2, 0, 215, 0, .6 );

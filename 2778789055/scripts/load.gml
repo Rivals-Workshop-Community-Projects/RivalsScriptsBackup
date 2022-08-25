@@ -77,13 +77,20 @@ sprite_change_offset("eat_up", 88, 28);//
 sprite_change_offset("uspec_afterimage", 56, 98);//
 sprite_change_offset("dtilt_hfx", 68, 70);//
 
-sprite_change_offset("pot_idle", 30, 50);//
+sprite_change_offset("pot_idle", 30, 48);//
 sprite_change_offset("pot_hurtbox", 40, 86);//
-sprite_change_offset("pot_expandanim", 52, 92);//
-sprite_change_offset("pot_idle_maxspice", 30, 60);//
-sprite_change_offset("pot_expandanim_shrimp", 52, 112);//
-sprite_change_offset("pot_shrimp_stir", 30, 100);//
-sprite_change_offset("pot_burst", 52, 152);//
+sprite_change_offset("pot_expandanim", 52, 90);//
+sprite_change_offset("pot_idle_maxspice", 30, 58);//
+sprite_change_offset("pot_expandanim_shrimp", 52, 110);//
+sprite_change_offset("pot_shrimp_stir", 30, 98);//
+sprite_change_offset("pot_burst", 52, 150);//
 sprite_change_offset("article_offscreen", 33, 33);
+
+sprite_change_offset("nspecial_summer", 32, 47, true);//
+sprite_change_offset("pot_idle_summer", 30, 68);//
+sprite_change_offset("pot_idle_maxspice_summer", 30, 68);//
+sprite_change_offset("pot_expandanim_summer", 52, 90);//
+sprite_change_offset("pot_expandanim_shrimp_summer", 52, 110);//
+sprite_change_offset("pot_burst_summer", 52, 150);//
 
 sprite_change_offset("plat", 48, 47);//

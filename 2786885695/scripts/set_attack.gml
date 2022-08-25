@@ -49,4 +49,4 @@ if (attack == AT_TAUNT && vhd_attack)
 }
 
 //lyre taunt
-//if (taunt_pressed && down_down) attack = AT_TAUNT_2;
+if (taunt_pressed && down_down) attack = AT_TAUNT_2;

@@ -38,7 +38,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 27;
+var num_alts = 28;
 var alt_cur = get_player_color(player);
  
  
@@ -69,9 +69,11 @@ alt_name[20] = "Brown";
 alt_name[21] = "Yellow";
 alt_name[22] = "Pink";
 alt_name[23] = "Clairen";
-alt_name[24] = "Seasonal";
+//alt_name[24] = "Seasonal";
+alt_name[24] = "Riptide";
 alt_name[25] = "Cloud";
 alt_name[26] = "Genesis";
+alt_name[27] = "Custom";
  
  
  

@@ -17,7 +17,9 @@ switch(attack){
 	// give your moves some "pop" by spawning dust during them!
 	
 	case AT_JAB:
-		if window == 2 || window == 5 && window_timer == 1{
+		if window == 1 && window_timer == 2{
+			spawn_base_dust(x + spr_dir * 30, y, "dash", -spr_dir);
+		}		if window == 4 && window_timer == 5{
 			spawn_base_dust(x + spr_dir * 30, y, "dash", -spr_dir);
 		}
 		break;
@@ -34,7 +36,7 @@ switch(attack){
 		}
 		break;
 	case AT_USTRONG:
-		if window == 2 && window_timer == 1{
+		if window == 2 && window_timer == 2{
 			spawn_base_dust(x, y, "dash_start", spr_dir);
 			spawn_base_dust(x, y, "dash_start", -spr_dir);
 		}

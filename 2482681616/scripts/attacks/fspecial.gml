@@ -3,11 +3,11 @@ set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("fspecial_air_hurt"));
-set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
-set_attack_value(AT_FSPECIAL, AG_LANDING_LAG, 9);
+set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_USES_ROLES, 1);
 
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 8);
+set_window_value(AT_FSPECIAL, 1, AG_MUNO_WINDOW_ROLE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, has_rune("I") ? 6 : 8);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -17,10 +17,12 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 5);
 
+set_window_value(AT_FSPECIAL, 2, AG_MUNO_WINDOW_ROLE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
+set_window_value(AT_FSPECIAL, 3, AG_MUNO_WINDOW_ROLE, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 32);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -65,6 +67,7 @@ set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, has_rune("J") ? 10 
 
 
 set_num_hitboxes(AT_FSPECIAL, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Grab");
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 3);
@@ -80,6 +83,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 //Throw
+set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Slam");
+set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_MISC_ADD, "Damage scaled based on distance.");
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
@@ -100,6 +105,20 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1.4);
 
 if (has_rune("O")) {
     big_yes(AT_FSPECIAL);
+}
+
+framedata_slowstart(AT_FSPECIAL);
+
+#define framedata_slowstart(_move)
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	var kb = get_hitbox_value(_move, i, HG_BASE_KNOCKBACK);
+	var kbs = get_hitbox_value(_move, i, HG_KNOCKBACK_SCALING);
+	var damage = get_hitbox_value(_move, i, HG_DAMAGE);
+	var hstop = get_hitbox_value(_move, i, HG_BASE_HITPAUSE);
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BKB, string(kb) + " / " + string(kb * slowstart_knockback_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_KBG, string(kbs) + " / " + string(kbs * slowstart_knockbackscale_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_DAMAGE, string(damage) + " / " + string(damage * slowstart_damage_mult));
+	set_hitbox_value(_move, i, HG_MUNO_HITBOX_BHP, string(hstop) + " / " + string(hstop - slowstart_hitstop_sub));
 }
 
 #define big_yes

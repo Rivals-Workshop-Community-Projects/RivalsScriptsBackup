@@ -18,9 +18,9 @@ if soultimer < -1 {
 	sound_play(asset_get("sfx_holy_lightning"))	
 take_damage( player, -1 , floor(-1 * enemy_hitboxID.damage))
 
-souldmg += enemy_hitboxID.damage
+//souldmg += enemy_hitboxID.damage
 prat_land_time = 15;
-
+/*
 if enemy_hitboxID.type == 1 {
 						outline_color = [0, 0, 0]
                      	init_shader();
@@ -54,6 +54,7 @@ if enemy_hitboxID.type == 1 {
                 window_timer = 0
                 soultimer = 0
 }
+*/
 }
 
 

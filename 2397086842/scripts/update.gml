@@ -1,102 +1,5 @@
 //Offscreen
 
-if cheapmode == 0 {
- 
- with(asset_get("oPlayer")){ 
- 	if url != "2273636433" && url != "1870768156"
-	&& url != "1869351026" && url != "2443363942" &&
-	(string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("sand", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("psy", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("OP ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or string_count("Jo", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
-	or url == "2159023588"
-	or url == "1980469422"
-	){
-       other.cheapmode = 1 
-     }    
- }
-} 
- 
- 
- if cheapmode == 1 && get_gameplay_time() < 600 {
- 	if (attack == AT_DSPECIAL && window == 2) or get_player_damage(player) > 50 or state == PS_RESPAWN {
- 		cheapmode = 3 
-        shake_camera(10,10)
-            sound_play(asset_get("sfx_energyhit_heavy"),false,noone,1,1)
-            with oPlayer {
-            	set_player_stocks(player, 1)
-            	spawn_hit_fx(x,y-40,306)
-            }
- 	}
- }
-
-
- if cheapmode == 3 {
- 	with pHitBox {
- 	  if hitbox_timer == 0 {
- 	  	if player_id == other.id {
- 	  		kb_value = 30
- 	  		damage = 999
- 	  		image_xscale = 1
- 	  		image_yscale = 1
- 	  	} else {
- 	  		hit_priority = 0
- 	  		image_xscale = 0
- 	  		image_xscale = 0
- 	  		image_yscale = 0
- 	  	}
- 	  }	
- 	}
- 	if state == PS_RESPAWN {
- 				state_timer = 120
- 				visible = true 
- 				with oPlayer  {
- 					if self != other {
- 						set_player_stocks(other.player, get_player_stocks(player) + 1)
- 					    end_match()
- 					}
- 				}
-   }
-   
- 	with oPlayer {
- 		super = 0 
- 		if self != other {
- 			visible = false 
- 			if free && state_cat != SC_HITSTUN && !hitpause && state != PS_DEAD {
- 				set_state(PS_PRATFALL)
- 				state_timer = -80
- 			} 
- 			if !free {
- 				vsp -= 8
- 				sound_stop(asset_get("sfx_blow_medium2"))
- 				sound_play(asset_get("sfx_blow_medium2"),false,noone,.6,1.2)
- 			}
- 			gravity_speed = .5;
- 			has_walljump = false 
- 			prat_fall_accel = 0
- 			can_tech = false 
- 			can_fast_fall = false 
- 			can_tech_wall = false 
- 			can_tech_ground = false 
- 			can_move = false
- 			can_attack = false 
- 			can_special = false 
- 			can_shield = false 
- 			can_jump = false
- 		}
- 	}
- 
-}
- 
 if state == PS_CROUCH {
 	if (state_timer - 300)/20 = 311{
 		with oPlayer {
@@ -382,7 +285,7 @@ if (activated_kill_effect) {
 }
 
 
-if instance_number(oPlayer) == 2 or cheapmode == 3 {
+if instance_number(oPlayer) == 2 {
 if move_cooldown[AT_NSPECIAL_2] == 0 && hitstop && hit_player_obj != self && killed = 0{
 with oPlayer if (activated_kill_effect) {
   if hit_player_obj == other {

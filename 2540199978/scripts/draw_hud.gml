@@ -238,6 +238,34 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added 4 runes");
 						break;
+					case 13:
+						AddText("v1.12 - 21 Aug 2022");
+						AddText("");
+						AddText("FAir Added hurtbox on smear");
+						AddText("FAir Landing lag 4 -> 5");
+						AddText("FAir Endlag 10 -> 12 (Before whifflag multiplier)");
+						AddText("UAir Landing lag 5 -> 8");
+						AddText("UAir Sweet KB 8+0.8 -> 8+0.75");
+						AddText("UAir Sour KB 5+0.3 -> 7+0.3");
+						AddText("DAir Shrunk hitbox slightly");
+						AddText("DAir Bounce vsp 8.25 -> 7");
+						AddText("BAir KB 6.5+0.95 -> 6+0.95");
+						AddText("BAir startup 13 -> 12");
+						AddText("BAir Shrunk hitbox slightly");
+						AddText("");
+						AddText("FTilt Sweet Angle 40 -> 45");
+						AddText("DTilt Endlag 9 -> 11 (Before whifflag multiplier)");
+						AddText("");
+						AddText("FStrong Shrunk hitbox slightly");
+						AddText("DStrong Angle 275 -> 280");
+						AddText("UStrong Endlag 15 -> 20 (Before whifflag multiplier)");
+						AddText("UStrong Shrunk hitbox slightly");
+						AddText("");
+						AddText("Icicles now also despawn when homing in on Snowflake");
+						AddText("Icicles KB 8.5+0.8 -> 8.5+0.5");
+						AddText("Icicles Angle 45 -> 50");
+						AddText("All icicles break when 1 gets hit");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -256,8 +284,8 @@ if ("practice" in self)
 						case 1:
 							AddText("You can charge up to 5 icicles at a time by holding down Special. Tapping Special will fire all icicles charged.");
 							AddText("Pressing Special immediately after stopping your charge will also fire icicles.");
-							AddText("Fully charged icicles will stall, and then home in on you after a short while. Returning icicles deal more knockback.");
-							AddText("If the Snowflake is out, the icicles will home in on the Snowflake instead, before returning to you.");
+							AddText("Fully charged icicles will stall, and then home in on you after a short while. Returning icicles will hit harder.");
+							AddText("If the Snowflake is out, the icicles will home in on the Snowflake instead.");
 							AddText("NSpecial can be jump- and airdodge-cancelled.");
 							break;
 						case 2:

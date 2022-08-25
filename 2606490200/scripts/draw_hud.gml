@@ -1,7 +1,7 @@
 ///
 shader_start();
 
-        draw_sprite_ext(sprite_get("hudtrain"), 0, temp_x + 10 , temp_y - 80 , 1, 1, 0 , -1 , 1);
+   draw_sprite_ext(sprite_get("hudtrain"), 0, temp_x + 10 , temp_y - 80 , 1, 1, 0 , -1 , 1);
    
    draw_sprite_ext(sprite_get("hudtrain"), 1, temp_x + 10 , temp_y - 80 , 1, 1, 0 , -1 , htrain/100);
    draw_sprite_ext(sprite_get("hudtrain"), 2, temp_x + 10 , temp_y - 80 , 1, 1, 0 , -1 , atrain/100);
@@ -32,3 +32,7 @@ if state == PS_ATTACK_AIR && attack == AT_USPECIAL && movex < 56 && movex > -56 
 }
    	  
 shader_end();
+
+if get_gameplay_time() <120 {
+	init_shader()
+}

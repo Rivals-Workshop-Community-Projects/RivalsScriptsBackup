@@ -1,8 +1,9 @@
 // MunoPhone Touch code - don't touch
 // should be at TOP of file
+/*
 muno_event_type = 4; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 user_event(14);
-
+*/
 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 if(attack == AT_USPECIAL){
     if(window > 2){
@@ -18,7 +19,7 @@ if(attack == AT_USPECIAL){
 }
 
 if(bomb_state == true){
-    if !phone_hud_hidden && draw_indicator{
+    if draw_indicator{
 	draw_sprite_ext(sprite_get("smokebomb_hud"), 0, x + 18, y - char_height - hud_offset - 44, 1, 1, 0, c_white, 1);
     }
 }

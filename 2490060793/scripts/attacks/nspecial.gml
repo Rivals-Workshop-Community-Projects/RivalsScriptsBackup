@@ -100,6 +100,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.6);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);

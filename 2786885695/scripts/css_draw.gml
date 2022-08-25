@@ -1,68 +1,54 @@
 //css_draw.gml
 
-//ALT NAMES
-var alt_total = 24;
-var alt_cur = get_player_color(player);
-var col = c_white;
+//PORTRAITS OVERLAY
+if (alt_cur == 14) draw_sprite_ext(sprite_get("charselect_ex"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
 
-switch (alt_cur)
+//animation - character
+if (css_anim_time < 140)
 {
-    case 14:
-        draw_sprite_ext(sprite_get("charselect_ex"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-        break;
+    //idle
+    draw_sprite_ext(
+        preview_idle,
+        css_anim_time * preview_anim_speed,
+        preview_x + (css_anim_time < 60 ?  + 24 + (css_anim_time / 20) : 16 + (css_anim_time / 5)),
+        preview_y + 128,
+        preview_scale,
+        preview_scale,
+        0,
+        c_white,
+        css_anim_time > 10 ? (css_anim_time * -0.01 + 1.25) + 0.2 : css_anim_time * 0.1
+    );
+
+    //idle outline
+    draw_sprite_ext(
+        preview_line,
+        css_anim_time * preview_anim_speed,
+        preview_x + (css_anim_time < 60 ?  + 24 + (css_anim_time / 20) : 16 + (css_anim_time / 5)),
+        preview_y + 128,
+        preview_scale,
+        preview_scale,
+        0,
+        preview_line_color,
+        css_anim_time > 10 ? (css_anim_time * -0.01 + 1.25) + 0.2 : css_anim_time * 0.1
+    );
 }
+init_shader();
+shader_end();
 
-//seasonal alt names
-season_name[1] = "Shall we take a stroll?";
-season_name[2] = "Sea Breeze Yuheng";
-season_name[3] = "Icy Resurrection";
-season_name[4] = "Holiday Lightning";
 
-//alt names
-alt_name[0] = "Driving Thunder";
-alt_name[1] = "Vigilant Yaksha";
-alt_name[2] = "Eclipsing Star";
-alt_name[3] = "Astral Reflection";
-alt_name[4] = "Dark Side of Dawn";
-alt_name[5] = "Plenilune Gaze";
-alt_name[6] = "Outlander (F)";
-alt_name[7] = "Outlander (M)";
-alt_name[8] = "Plane of Euthymia";
-alt_name[9] = "Alpha and Omega";
-alt_name[10] = "Swordmaster";
-alt_name[11] = "Through the Fire";
-alt_name[12] = "Flowering Night";
-alt_name[13] = "Endless Abyss"; //has the abyss death effect
-alt_name[14] = "Early Access";
-alt_name[15] = "Opulent Splendor"; //later on in development put the lantern rite 2022 outfit of keqing here, as a "milestone alt"
-alt_name[16] = season_name[get_match_setting(SET_SEASON)];
-alt_name[17] = "Infamous";
-alt_name[18] = "Ranked Gold"; //has the shiny effect
-alt_name[19] = "Power of the Aegis";
-alt_name[20] = "Superstar Idol 01";
-alt_name[21] = "Unlimited Mage Works";
-alt_name[22] = "Elemental Guardian";
-alt_name[23] = "Baleful Stormstrider";
 
 //ICONS
-var icon_x_pos = x + 174;
-var icon_y_pos = y + 108;
-
 if (alt_cur >= 13 && alt_cur <= 18) draw_sprite(sprite_get("css_icons"), alt_cur - 13 , icon_x_pos, icon_y_pos);
 
-//setting keqing's colors properly
-set_color_profile_slot_range(3, 11, 13, 15); //from colors.gml
 
-
+//alt boxes
 draw_set_halign(fa_left);
-
-//ANIMATION VARIABLES
 var thin = alt_total > 16;
 
 rectDraw(x+78, y+9, 132, 6, c_black);
 for (i = 0; i < alt_total; i++)
 {
-	var draw_color = (i == alt_cur) ? col : c_gray * 0.5;
+	var draw_color = (i == alt_cur) ? c_white : c_gray * 0.5;
 	var draw_x = x + 78 + (thin ? 4 : 8) * i;
 	rectDraw(draw_x, y + 9, thin ? 1 : 5, 4, draw_color);
 }
@@ -70,63 +56,46 @@ for (i = 0; i < alt_total; i++)
 var txt = "#" + string(alt_cur);
 rectDraw(x + 76, y + 15, 42, 20, c_black);
 
-textDraw(x + 82, y + 19, "fName", col, 20, 1000, fa_left, 1, false, 1, txt, false);
+textDraw(x + 82, y + 19, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt, false);
 
-//ANIMATION VARIABLES
-//original code was made by SAI
-if "is_css" not in self is_css = true;
 
-var temp_x = floor(x+10);
-var temp_y = floor(y+10);
+//options
+draw_sprite(sprite_get("hud_voice"), synced_vars[0] * 3 + lang_button_state, x + lang_x, y + lang_y);
 
-if ("drawing" not in self) drawing = 0;
-if ("prev_alt" not in self) drawtime = 0;
-if ("alttime" not in self) alttime = 0;
-if ("prev_alt" in self && prev_alt != alt_cur)
+draw_sprite(sprite_get("hud_damage"), synced_vars[1] * 3 + dmg_button_state, x + dmg_x, y + dmg_y);
+
+
+//animation - text
+if (css_anim_time < 140)
 {
-    drawing = floor(alttime % 8);
-    drawtime = 0;
+    //alt name text
+    textDraw(
+        floor(x) + (css_anim_time < 10 ? 10 + floor(css_anim_time) : 20 + floor(css_anim_time / 10)),
+        floor(y) + 43,
+        "fName",
+        c_white,
+        0,
+        1000,
+        fa_left,
+        1,
+        true,
+        css_anim_time < 10 ? css_anim_time * 0.1 : css_anim_time*-0.05+7,
+        string(alt_name[alt_cur]),
+        false
+    );
 }
 
-drawtime += 1;
-alttime += 1;
-prev_alt = alt_cur;
 
-//ANIMATION WORK
-//text
-if (drawtime < 10) {
-    textDraw(floor(x) + 10 + floor(drawtime), floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, (drawtime*0.1), string(alt_name[alt_cur]), false);
+//supersonics CPU detection - displays outline
+if cpu_hover_time>0 {
+    var prog = min(cpu_hover_time/10,1);
+    var colprog = min(cpu_color_swap_time/5,1);
+    var col = merge_color(prev_color,new_color,colprog);
+    draw_sprite_ext(sprite_get("cpu_controllingplayer_outline"),0,x-4,y-6,2,2,0,col,prog);
+    draw_set_alpha(prog);
+    draw_debug_text(plate_bounds[2]-17,plate_bounds[3]+1,`P${cpu_hovering_player}`);
+    draw_set_alpha(1);
 }
-else if (drawtime < 120) {
-    textDraw(floor(x) + 20 + floor(drawtime/10), floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, 1, string(alt_name[alt_cur]), false);
-}
-else if (drawtime < 140) {
-    textDraw(floor(x) + 20 + floor(drawtime/10), floor(y) + 43, "fName", c_white, 0, 1000, fa_left, 1, true, drawtime*-0.05+7, string(alt_name[alt_cur]), false);
-}
-
-//idle sprite showcase
-sprite_change_offset("idle", 32, 78);
-sprite_change_offset("idle_line", 32, 78);
-
-var idle = sprite_get("idle");
-var line = sprite_get("idle_line");
-var scale = 2;
-var anim_speed = 7; //the bigger the number, the slower the animation
-
-//idle
-scale = 1;
-if (drawtime < 10) draw_sprite_ext(idle, drawtime/anim_speed, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, -1, drawtime/10);
-else if (drawtime < 60) draw_sprite_ext(idle, drawtime/anim_speed, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, -1, drawtime*-0.01+1.25);
-else draw_sprite_ext(idle, drawtime/anim_speed, temp_x+16+(drawtime/5), temp_y+128, scale, scale, 0, -1, drawtime*-0.01+1.25);
-
-//outline
-scale = 1;
-var line_color = $000000;
-if (alt_cur == 14) line_color = $0f380f;
-
-if (drawtime < 10) draw_sprite_ext(line, drawtime/anim_speed, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, line_color, drawtime/10);
-else if (drawtime < 60) draw_sprite_ext(line, drawtime/anim_speed, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, line_color, drawtime*-0.01+1.25);
-else draw_sprite_ext(line, drawtime/anim_speed, temp_x+16+(drawtime/5), temp_y+128, scale, scale, 0, line_color, drawtime*-0.01+1.25);
 
 
 

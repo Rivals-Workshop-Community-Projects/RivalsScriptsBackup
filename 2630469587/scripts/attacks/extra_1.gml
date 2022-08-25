@@ -51,16 +51,16 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_EXTRA_1, 1, HG_VISUAL_EFFECT, 67);
 set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_CAMERA_SHAKE, 1);
-set_hitbox_value(AT_EXTRA_1, 1, HG_FINAL_BASE_KNOCKBACK, 12);
+//set_hitbox_value(AT_EXTRA_1, 1, HG_FINAL_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, 0.6);
-set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, 0.8);
+//set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, sound_get("heavyslashsoku"));
 
 set_hitbox_value(AT_EXTRA_1, 2, HG_PARENT_HITBOX, 1);
@@ -77,6 +77,6 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_EXTRA_1, 2, HG_EXTRA_HITPAUSE, 10);
+//set_hitbox_value(AT_EXTRA_1, 2, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(AT_EXTRA_1, 2, HG_HIT_SFX, sound_get("heavyslashsoku"));
 

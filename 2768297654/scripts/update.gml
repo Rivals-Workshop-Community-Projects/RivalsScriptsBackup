@@ -1,8 +1,8 @@
 // MunoPhone Touch code - don't touch
 // should be at TOP of file
-muno_event_type = 1;
+/*muno_event_type = 1;
 user_event(14);
-
+*/
 if(combo_num == 15){
 	print("lol")
 	outline_color = [ 255, 204, 0 ];

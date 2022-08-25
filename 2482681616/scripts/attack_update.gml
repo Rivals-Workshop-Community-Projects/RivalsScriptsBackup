@@ -135,7 +135,7 @@ if (attack == AT_TAUNT_2) {
 //Speed increase on DATTACK
 if (attack == AT_DATTACK) {
     if (window == 2) {
-        if (slowstart_state == SLOWSTART_STATE_OFF && window_timer == 1) {
+        if (slowstart_state == SLOWSTART_STATE_OFF && window_timer == 1 && !hitpause) {
             hsp += 6 * spr_dir;
         }
     }
@@ -362,7 +362,7 @@ if (attack == AT_USPECIAL){
 		 	window_timer = 8;
 		 }
     	 uspecial_wall_timer = 0;
-        if (wall_test && uspecial_wall_times < uspecial_wall_times_max && !hitpause) {
+        if (wall_test && !collision_rectangle(bbox_left, y - 122, bbox_right, y - 120, asset_get("par_block"), 1, 1) && uspecial_wall_times < uspecial_wall_times_max && !hitpause) {
             window = 4;
             window_timer = 0;
             hsp = 0;
@@ -372,7 +372,7 @@ if (attack == AT_USPECIAL){
             uspecial_wall_times++;
             destroy_hitboxes();
         }
-        if (shield_pressed && vsp >= 1) {
+        if (shield_pressed && vsp >= 1 && !hitpause) {
             window = 10;
             window_timer = 0;
             vsp -= 8;
@@ -389,7 +389,7 @@ if (attack == AT_USPECIAL){
     }
     
     if (window == 4) {
-        if (window_timer == 1) {
+        if (window_timer == 1 && !hitpause) {
         	shake_camera(4, 4);
             hsp = 0;
             vsp = 0;
@@ -438,6 +438,14 @@ if (attack == AT_USPECIAL){
         if (jump_pressed || attack_pressed || special_pressed || (can_tap_jump() && up_pressed)) {
             window = 7;
             window_timer = 0;
+        }
+        if (uspecial_wall_timer > uspecial_wall_timer_max - 60) {
+        	if (get_gameplay_time() % 8 == 0) {
+	            var dust = spawn_base_dust(wall_player_x + wall_player_xoffset + 48 * spr_dir, y - 64, "land", 1);
+	            dust.draw_angle = spr_dir == -1 ? 270 : 90;
+	            dust.depth = depth - 1;
+            	y += 2;
+        	}
         }
         if (uspecial_wall_timer > uspecial_wall_timer_max) {
             can_jump = true;

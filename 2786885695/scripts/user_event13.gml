@@ -36,7 +36,7 @@ switch (my_hitboxID.attack)
         {
             if (instance_exists(artc_marker) && artc_marker.state == 1)
             {
-                fspec_bounce = true;
+                old_vsp = -9;
                 artc_marker.state = 2;
                 artc_marker.state_timer = 0;
 	            if (stilleto_id != noone) stilleto_id = noone;
@@ -86,12 +86,13 @@ switch (my_hitboxID.attack)
         break;
 }
 
+//lisa extra blasts
 if (has_rune("G")) switch (my_hitboxID.attack)
 {
     case AT_NSPECIAL: case AT_NSPECIAL_2: case AT_USPECIAL: case AT_FSPECIAL: case AT_DSPECIAL:
         spawn_blast_attack = true;
         break;
-    case 48:
+    case 48: //rune G extra hit
         with (hit_player_obj)
         { 
             if (!hitpause) 
@@ -116,6 +117,30 @@ if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) 
     */
 }
 
+
+
+//adds the sfx_blow_# sounds on top of hit sounds, based on the hit effect
+with (my_hitboxID) 
+{
+    //exceptions
+    if ((attack != AT_DAIR || hbox_num != 2) && type == 1 || attack == AT_FSTRONG)
+    {
+        with (other)
+        {
+            if (my_hitboxID.hit_effect == fx_hit_phys1 || my_hitboxID.hit_effect == fx_hit_elec1) {
+                sound_play(asset_get("sfx_blow_weak" + string(random_func(22, 2, true) + 1)), false, 0, 0.75);
+            }
+            if (my_hitboxID.hit_effect == fx_hit_phys2 || my_hitboxID.hit_effect == fx_hit_elec2) {
+                sound_play(asset_get("sfx_blow_medium" + string(random_func(22, 3, true) + 1)), false, 0, 0.75);
+            }
+            if (my_hitboxID.hit_effect == fx_hit_phys3 || my_hitboxID.hit_effect == fx_hit_elec3) {
+                sound_play(asset_get("sfx_blow_heavy" + string(random_func(22, 2, true) + 1)), false, 0, 0.75);
+            }
+        }
+    }
+}
+
+
 //nspec cancel window
 if (nspec_cancel) nspec_cancel_timer = 15;
 
@@ -124,8 +149,6 @@ if (instance_exists(artc_marker) && artc_marker.state == 1 && my_hitboxID.attack
 
 
 
-//knockback formula cuz why not
-//my_hitboxID.kb_value + (my_hitboxID.kb_scale * hit_player_obj.knockback_adj * get_player_damage(hit_player_obj.player) * 0.12);
 
 //crits
 if (has_rune("I") && crit_val >= crit_rate)

@@ -10,7 +10,7 @@ var hud_x = allow_burst_UI ? temp_x + 124 : temp_x + 180;
 var hud_y = temp_y - 12;
 var icon_image = 0;
 
-if (playing_lyre_timer == 0)
+if (playing_lyre_timer < 0)
 {
     //black circle BG
     draw_sprite_ext(sprite_get("hud_skill_bg"), 0, hud_x, hud_y, 2, 2, 0, c_white, 0.3);
@@ -29,7 +29,7 @@ if (playing_lyre_timer == 0)
         icon_image = 1;
         draw_sprite_ext(sprite_get("hud_skill_icon"), icon_image, hud_x, hud_y, 2, 2, 0, c_white, 1);
     }
-    else if (using_nspec || nspec_cd > 0) //the attack is being used or it's in cooldown
+    else if (nspec_cd > 0 || using_nspec) //the attack is being used or it's in cooldown
     {
         icon_image = 0;
         if (instance_exists(artc_marker) && artc_marker.state == 1) icon_image = 1;
@@ -92,7 +92,7 @@ if (playing_lyre_timer == 0)
         draw_sprite_ext(sprite_get("hud_skill_icon"), 2, hud_x+56, hud_y-8, 2, 2, 0, c_white, burst_ready ? 1 : 0.4);
     }
 }
-else
+else if (debug_keqing)
 {
     if (nspec_cd > 0) draw_debug_text(hud_x-64, hud_y+48, string("nspec cd:" + string_format( floor(nspec_cd/60*10)/10, 2, 1) ));
 }
@@ -105,18 +105,23 @@ if (lyre_hud_fade < 10)
 }
 else //lyre menu is active
 {
-    draw_sprite_ext(sprite_get("hud_lyre"), 0, temp_x, temp_y, 2, 2, 0, c_white, 1);
-    if (key_held_time <= 7 && note_id > -1)
+    draw_sprite_ext(sprite_get("hud_lyre"), ("cur_octwave" in self) ? cur_octwave : 0, temp_x, temp_y, 2, 2, 0, c_white, 1);
+
+    //button preses
+    for (var note = 0; note < array_length(note_input_show); note ++)
     {
-        draw_sprite_ext(sprite_get("hud_lyre_press"), note_id, temp_x, temp_y - 26 * floor(note_id/12), 2, 2, 0, c_white, 1);
+        if (note_input_show[note] > 0) 
+        {
+            draw_sprite_ext(
+                sprite_get("hud_lyre_press"), 0,
+                temp_x + 24 + 26 * (note % 7),      //calculation: original x + initial offset + note spacing horizontally * loop between 7 notes
+                temp_y - 30 - 26 * floor(note/7),   //calculation: original y - initial offset - note spacing vertically * floors note / 7 to represent octwaves
+                2, 2, 0, c_white,
+                (floor(note/7) == cur_octwave - 1) ? 1 : 0.5); //changes input opacity based on if it's the current octwave or not
+
+                //note_input_show[note]/note_show_time_set = changes alpha dynamically
+        }
     }
-}
-
-
-//message prompts
-if (!is_cpu)
-{
-    if (keqing_exist_time < 120 && display_damage_numbers) draw_debug_text(temp_x - 16, hud_y - 32, "TAUNT to disable damage numbers.");
 }
 
 //debug stuff

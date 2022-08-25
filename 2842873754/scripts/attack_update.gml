@@ -317,7 +317,7 @@ switch (attack){
 			
 			if (window == 2 || window == 3) {
 				//Projectile sucking
-				var proj_hit = select_projectile(x + (32 * spr_dir), y-32, 54, 32);
+				var proj_hit = select_projectile(x + (56 * spr_dir), y-32, 112, 32);
 				
 				if (instance_exists(proj_hit)) {
 					destroy_hitboxes();
@@ -334,6 +334,7 @@ switch (attack){
 						window = 5
 						window_timer = 0;
 						grabbed_player_obj = art_hit;
+						art_hit.state = -1;
 					}
 					else {
 						art_hit = select_article(x + (56 * spr_dir), y-32, 112, 32, obj_article2);
@@ -742,7 +743,16 @@ switch (attack){
 						star.hsp = -8;
 					}
 				}
-				else if (shield_pressed || up_pressed) {
+			}
+			if (free && window > 2 && !hitpause) {
+				uspecial_hsp += 0.15 * (right_down - left_down)
+				uspecial_hsp = clamp(uspecial_hsp, -uspecial_move_speed, uspecial_move_speed)
+				
+				hsp = uspecial_hsp;
+			}
+			
+			if (((window == 3 && window_timer > get_window_value(attack, window, AG_WINDOW_LENGTH) / 4) || window == 4) && !hitpause) {
+				if (shield_pressed || up_pressed) {
 		            window = 10;
 		            window_timer = 0;
 		            vsp = 0;
@@ -753,12 +763,6 @@ switch (attack){
 					set_attack(AT_USPECIAL_GROUND);
 					hurtboxID.sprite_index = get_attack_value(AT_USPECIAL_GROUND, AG_HURTBOX_SPRITE);
 		        }
-			}
-			if (free && window > 2 && !hitpause) {
-				uspecial_hsp += 0.15 * (right_down - left_down)
-				uspecial_hsp = clamp(uspecial_hsp, -uspecial_move_speed, uspecial_move_speed)
-				
-				hsp = uspecial_hsp;
 			}
     		can_fast_fall = false;
 		break;

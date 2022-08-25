@@ -16,8 +16,8 @@ if (attack == AT_NSPECIAL) {
 	if hbox_num == 3 { 
 		if hitbox_timer == 1 || hitbox_timer mod 5 == 0 {
 				spawn_hit_fx(x-10*spr_dir, y, player_id.nspecialAfter2);
-				spawn_hit_fx(x-20*spr_dir, y+26, player_id.nspecialAfter);
-				spawn_hit_fx(x-20*spr_dir, y-26, player_id.nspecialAfter);
+				spawn_hit_fx(x-20*spr_dir, y+18, player_id.nspecialAfter);
+				spawn_hit_fx(x-20*spr_dir, y-18, player_id.nspecialAfter);
 		}
 	}
 }

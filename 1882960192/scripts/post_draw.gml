@@ -1,5 +1,6 @@
 //post_draw
 
+/*
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) and wblastcharge > 0 and showHUD == true {
 		{
 		if wblastcharge >= 45 {
@@ -19,6 +20,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) and wblastcharge > 0 an
 		}
 	}
 }
+*/
 
 /*
 draw_debug_text( x, y + 60, string(wblastcharge));
@@ -51,6 +53,9 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIA
 
 	if (get_player_color( player ) == 14) {
 	draw_sprite_ext(sprite_get("fspecial_overlay_socc"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
+	} else 
+	if (get_player_color( player ) == 16) {
+	draw_sprite_ext(sprite_get("fspecial_overlay_voll"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	} else {
 	draw_sprite_ext(sprite_get("fspecial_overlay"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	}
@@ -71,6 +76,9 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIA
 
 	if (get_player_color( player ) == 14) {
 	draw_sprite_ext(sprite_get("fspecial_overlay2_socc"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
+	} else 
+	if (get_player_color( player ) == 16) {
+	draw_sprite_ext(sprite_get("fspecial_overlay2_voll"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	} else {
 	draw_sprite_ext(sprite_get("fspecial_overlay2"), -1, x, y, spr_dir, 1, 0, c_white, 1);	
 	}

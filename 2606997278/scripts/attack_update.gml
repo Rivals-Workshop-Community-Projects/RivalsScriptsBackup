@@ -477,7 +477,6 @@ switch (attack)
         can_fast_fall = false;
         can_wall_jump = (window > 2);
         
-        //moving around
         if (window == 2 && window_timer == get_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH) - 1)
         {
             uhc_uspecial_start_pos.x = x;
@@ -487,6 +486,7 @@ switch (attack)
             uhc_anim_last_dodge.posy = y;
             uhc_uspecial_last_dir = 90; //default to upwards
         }
+        //moving around
         else if (window == 3)
         {
             var uspecial_speed = uhc_uspecial_speed;
@@ -510,19 +510,32 @@ switch (attack)
         }
         var attack_stopped = false;
         var need_ejector = true;
-        //autocancel if landing
+        //non-ejecting cancel on shield (with penalty)
         if (shield_pressed && window == 3)
         {
             window = 4; 
             window_timer = 1;
             attack_stopped = true;
             need_ejector = false;
+
+            //apply penalty...
+            if (0 < uhc_uspecial_soft_cooldown)
+            {
+               uhc_has_extended_pratland = true;
+            }
+            //... or start the penalty timer
+            else
+            {
+                uhc_uspecial_soft_cooldown = uhc_uspecial_soft_cooldown_max;
+            }
         }
+        //autocancel if landing
         else if (!free && window > 2)
         {
             set_state(PS_PRATFALL);
             attack_stopped = true;
         }
+        //ran out the clock
         else if (window == 4 && window_timer == 1)
         {
             attack_stopped = true;
@@ -567,6 +580,22 @@ switch (attack)
         else if (window == 6 && uhc_taunt_reloop)
         {
             window = 2;
+        }
+        
+        if (window == 3 || window == 4 || window == 5) && (shield_pressed)
+        {
+            uhc_taunt_muted = !uhc_taunt_muted;
+            clear_button_buffer(PC_SHIELD_PRESSED);
+            if (uhc_taunt_muted) sound_play(sound_get("sfx_popup"));
+
+            if !(uhc_rune_flags.deadly_rickroll && uhc_taunt_current_video.special == 2)
+            {
+                if (uhc_taunt_muted)
+                    sound_stop(uhc_taunt_current_audio);
+                else if (uhc_taunt_buffering_timer == 0)
+                    uhc_taunt_current_audio = 
+                    sound_play(uhc_taunt_current_video.song, true, noone, 1, 1);
+            }
         }
 
         //==============================================================

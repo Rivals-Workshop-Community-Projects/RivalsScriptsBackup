@@ -271,7 +271,12 @@ if (attack == AT_DSPECIAL){
     //Creating the Whirlwind
     if (window == 3 && window_timer == 1){
         //If there's 2 Whirlwinds, destroy the first
-        if (whirlwind_off == true){
+        
+        //Creates the Whirlwind
+        if (whirlwind_off == false && whirlwind_cooldown == 0){
+            whirlwind_cooldown = 60;
+                //If there's one already
+                if (instance_exists(whirlwind)){
                 whirlwind.state_timer = -40; 
                 with (asset_get("pHitBox")){
                     if (attack == AT_DSPECIAL && hbox_num == 1){
@@ -279,21 +284,6 @@ if (attack == AT_DSPECIAL){
                     }
                 }
             }
-        //Creates the Whirlwind
-        if (whirlwind_off == false && whirlwind_cooldown == 0){
-            whirlwind_cooldown = 60;
-            //If there's no Whirlwind made
-            if (whirlwind_first == true){
-                    whirlwind2 = instance_create( x-whirlwind_x, y-whirlwind_y, "obj_article1"); 
-                    whirlwind2.image_angle = whirlwind_angle;
-                    whirlwind_second = true;
-                    whirlwind2.whirlwind_second = true;
-                    whirlwind2.whirlwind_x_hitbox = whirlwind_x_hitbox;
-                    whirlwind2.whirlwind_y_hitbox = whirlwind_y_hitbox;
-                    whirlwind2.whirlwind_hitbox_num = whirlwind_hitbox_num;
-                }
-                //If there's one already
-            else {
                     whirlwind = instance_create( x-whirlwind_x, y-whirlwind_y, "obj_article1"); 
                     whirlwind.image_angle = whirlwind_angle;
                     whirlwind_first = true;
@@ -301,7 +291,7 @@ if (attack == AT_DSPECIAL){
                     whirlwind.whirlwind_x_hitbox = whirlwind_x_hitbox;
                     whirlwind.whirlwind_y_hitbox = whirlwind_y_hitbox;
                     whirlwind.whirlwind_hitbox_num = whirlwind_hitbox_num;
-                }    
+                  
             }
         }
     //Cooldown

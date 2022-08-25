@@ -2,6 +2,11 @@ if (has_rune("H")) IciclesHomeIn();
 
 switch (my_hitboxID.attack)
 {
+	case AT_NSPECIAL_2:
+		if (my_hitboxID.hbox_num == 2)
+			sound_play(sound_get("flakeIce"));
+		break;
+
 	case AT_FSPECIAL:
         set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
 		if (my_hitboxID.hbox_num == 1)
@@ -39,7 +44,7 @@ switch (my_hitboxID.attack)
 		break;
 
 	case AT_DAIR:
-		old_vsp = -8.25;
+		old_vsp = -7;
 		can_fast_fall = true;
 		break;
 

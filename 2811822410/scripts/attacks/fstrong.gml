@@ -29,7 +29,7 @@ for (i = 0; i <= 1; i++) {
 	set_window_value(curr_attack, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 	set_window_value(curr_attack, 4, AG_WINDOW_TYPE, 1);
-	set_window_value(curr_attack, 4, AG_WINDOW_LENGTH, 21);
+	set_window_value(curr_attack, 4, AG_WINDOW_LENGTH, 26);
 	set_window_value(curr_attack, 4, AG_WINDOW_ANIM_FRAMES, 3);
 	set_window_value(curr_attack, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 	set_window_value(curr_attack, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

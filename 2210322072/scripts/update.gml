@@ -684,8 +684,8 @@ if soultimer < -1 {
 if soultimer > -340 && soultimer < -1  { 	
 	
 	nearbyhitbox = collision_circle( soulx, souly - 10, 20, asset_get("pHitBox"), true, true ) 
-	if nearbyhitbox != noone{
-		if nearbyhitbox.player_id != self && nearbyhitbox.type == 1  {
+	if nearbyhitbox != noone {
+		if nearbyhitbox.player_id != self && nearbyhitbox.type == 1 && (nearbyhitbox.hitbox_timer < nearbyhitbox.length-1 or nearbyhitbox.hitbox_timer <= 1) {
 						outline_color = [0, 0, 0]
                      	init_shader();
                          spawn_hit_fx (x,y -30 , 302 )
@@ -696,12 +696,12 @@ if soultimer > -340 && soultimer < -1  {
                      soultimer = 0
             state_timer = 99
 		    invincible = 0
+		    invince_time = 0
 		    window_timer = 99
 		    hsp = 0
 		    vsp = -2
-		    nearbyhitbox.hitbox_timer -= 2
+		    nearbyhitbox.hitbox_timer -= 1
 		    nearbyhitbox.hitpause += 10
-		    nearbyhitbox.extra_hitpause += 10
 		    nearbyhitbox.image_xscale *= 2
 		    nearbyhitbox.image_yscale *= 2
                      x = soulx 

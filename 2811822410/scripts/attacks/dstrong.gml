@@ -16,7 +16,7 @@ for (i = 0; i <= 1; i++) {
 	set_window_value(curr_attack, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 	set_window_value(curr_attack, 2, AG_WINDOW_TYPE, 1);
-	set_window_value(curr_attack, 2, AG_WINDOW_LENGTH, 4);
+	set_window_value(curr_attack, 2, AG_WINDOW_LENGTH, 6);
 	set_window_value(curr_attack, 2, AG_WINDOW_ANIM_FRAMES, 1);
 	set_window_value(curr_attack, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 	set_window_value(curr_attack, 2, AG_WINDOW_HAS_SFX, 1);
@@ -56,8 +56,8 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_SHAPE, 2);
 	set_hitbox_value(curr_attack, 1, HG_LIFETIME, 3);
 	set_hitbox_value(curr_attack, 1, HG_HITBOX_Y, -10);
-	set_hitbox_value(curr_attack, 1, HG_HITBOX_X, 55);
-	set_hitbox_value(curr_attack, 1, HG_WIDTH, 100);
+	set_hitbox_value(curr_attack, 1, HG_HITBOX_X, 69);
+	set_hitbox_value(curr_attack, 1, HG_WIDTH, 80);
 	set_hitbox_value(curr_attack, 1, HG_HEIGHT, 20);
 	set_hitbox_value(curr_attack, 1, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 10);
@@ -76,8 +76,8 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 2, HG_SHAPE, 2);
 	set_hitbox_value(curr_attack, 2, HG_LIFETIME, 3);
 	set_hitbox_value(curr_attack, 2, HG_HITBOX_Y, -10);
-	set_hitbox_value(curr_attack, 2, HG_HITBOX_X, -50);
-	set_hitbox_value(curr_attack, 2, HG_WIDTH, 100);
+	set_hitbox_value(curr_attack, 2, HG_HITBOX_X, -60);
+	set_hitbox_value(curr_attack, 2, HG_WIDTH, 80);
 	set_hitbox_value(curr_attack, 2, HG_HEIGHT, 20);
 	set_hitbox_value(curr_attack, 2, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 2, HG_DAMAGE, 10);

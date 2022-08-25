@@ -87,8 +87,14 @@ if (attack == AT_DSPECIAL_2) {
 //NSpecial charge
 if (attack == AT_NSPECIAL){
 	can_fast_fall = false;
+
+	
 	
     if (window == 2){ //CHARGING
+		if (window_timer == 1 || window_timer mod 12 == 0) && !free && !hitpause {
+			spawn_base_dust(x-12, y, "dash", 1);
+			spawn_base_dust(x+12, y, "dash", -1);
+		}
 		can_jump = true;
 		if (shield_pressed) { //Shield storing
 			window = 6;
@@ -101,7 +107,8 @@ if (attack == AT_NSPECIAL){
 			if (45 > wblastcharge) { //Adding charge
 			wblastcharge += .5;
 				if wblastcharge == 5 || wblastcharge == 25 || wblastcharge == 45 {
-					sound_play(asset_get("sfx_ori_ustrong_charge"), false, noone, 1, 1+(wblastcharge/40));		
+					sound_play(asset_get("sfx_ori_ustrong_charge"), false, noone, 1, 1+(wblastcharge/40));	
+					spawn_hit_fx(x-38*spr_dir, y-62, 111).depth = depth-5;
 					}		
 			}
 		}
@@ -122,6 +129,9 @@ if (attack == AT_NSPECIAL){
 			}
 	if (window == 3 || window == 4 || window == 5) {
 		can_jump = false;
+		if window == 5 && window_timer == 4 && !hitpause {
+			spawn_hit_fx(x+44*spr_dir, y-32, 111);
+		}
 		if window_timer == 6 {
 			wblastcharge = 0;
 		}
@@ -273,6 +283,15 @@ if (attack == AT_USPECIAL) {
 	vsp = clamp(vsp, -1, 0);
 	}
 	
+	if (window >= 3 && 6 > window) && !hitpause {
+		if window_timer mod 7 == 0 {
+			create_hitbox(AT_USPECIAL, 1, x-4, y-100);
+		}
+	}
+	if has_hit {
+		attack_end();
+	}
+	
 	can_wall_jump = true;
 	hsp = clamp(hsp, -4, 4);
 	if (window < 7 || window == 7 && 10 > window_timer) {
@@ -352,6 +371,23 @@ if (attack == AT_DTILT && window == 2 && window_timer == 3 && attack_down && wbl
 	window_timer = 0;
 	sound_play(asset_get("sfx_may_arc_cointoss"));		
 	}
+
+//Dust effects
+if !hitpause {
+	if attack == AT_FSTRONG && window == 3 && window_timer == 4 {
+		spawn_base_dust(x+70*spr_dir, y, "dash_start", -spr_dir);
+		spawn_base_dust(x+2*spr_dir, y, "dash");
+	}
+	if attack == AT_DSTRONG && window == 4 && window_timer == 4 {
+		spawn_base_dust(x-20, y, "dash_start", 1);
+		spawn_base_dust(x+20, y, "dash_start", -1);
+	}
+	if attack == AT_USTRONG && (window == 3) && window_timer == 1 {
+		spawn_base_dust(x-12, y, "dash", 1);
+		spawn_base_dust(x+12, y, "dash", -1);
+	}
+}
+
 
 //Taunt
 if (attack == AT_EXTRA_1) and (window > 2) {
@@ -571,6 +607,11 @@ if (attack == AT_USTRONG_2) && !hitpause {
 if (get_player_color( player ) == 14) {
 	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_socc"));
 	set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_socc2"));
+}
+
+if (get_player_color( player ) == 16) {
+	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_voll"));
+	set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_voll2"));
 }
 
 //sfx things because the window indexes kinda suck
