@@ -90,6 +90,8 @@ if (attack == AT_DSTRONG){
     if (window == 2){
         if (window_timer == 3 && !hitpause){
             sound_play(asset_get("sfx_blow_medium2"));
+            spawn_base_dust( x - (0 * spr_dir), y, "dash_start", spr_dir);
+		    spawn_base_dust( x - (0 * spr_dir), y, "dash_start", spr_dir*-1);
         }
     }
 }
@@ -133,8 +135,8 @@ if (attack == AT_USTRONG){
         }
         if (free){
             can_wall_jump = true;
-            if (window_timer > 24){
-                if (window_timer == 25){
+            if (window_timer > 20){
+                if (window_timer == 21){
                     spawn_hit_fx( x + 0*spr_dir, y - 25, 301 );
                     sound_play(asset_get("mfx_star"));
                 }
@@ -383,7 +385,6 @@ if (attack == AT_USPECIAL){
         move_cooldown[AT_DSPECIAL] = 50;
     }
 }
-
 
 //--------------------------------------------
 

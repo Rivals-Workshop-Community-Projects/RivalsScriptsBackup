@@ -41,6 +41,7 @@ if(taunt_down || get_player_color(player) == 1)
 else
     set_victory_portrait(sprite_get("portrait"));
 
+// set_victory_theme(sound_get("victory"));
 // //Genesis
 // if(get_player_color(player) == 30)
 // {

@@ -77,8 +77,10 @@ ncode2 = "Technology has far advanced our times.";
 ncode3 = "Too dangerous to be kept alive. Exterminate.";
 kinniku_behind = sprite_get("Kinniku_Behind");
 kinniku_front = sprite_get("Kinniku_Front");
-set_victory_bg(sprite_get("victory_bg"));
-set_victory_theme(sound_get("fduckyvic"));
+has_fail = true;
+fail_text = "Got any grapes?";
+pot_compat_variable = sprite_get("pot_food")
+pot_compat_text = "Peking Duck"
 
 // intro
 introTimer = -4;

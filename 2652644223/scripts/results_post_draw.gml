@@ -1,8 +1,8 @@
 //results_post_draw.gml
 if(winner == player){
     // Create Timer
-    if("results_timer" not in self){results_timer = 0}
-    results_timer++;
+    if("run_timer" not in self){run_timer = 0}
+    run_timer++;
     
     // Code from Frtoud for smuggling hitbox data
     // Relies on unload.gml sending over a persistent hitbox with said data
@@ -14,8 +14,8 @@ if(winner == player){
     
     //print(results_data.opponent_name);
 
-    results_timer = clamp(results_timer,0,1000);
-    var slide_timer = clamp(results_timer-420,0,60);
+    run_timer = clamp(run_timer,0,1000);
+    var slide_timer = clamp(run_timer-200,0,30);
     var offset_x = 50
     
     if("win_quote_string" not in self)
@@ -26,8 +26,8 @@ if(winner == player){
             exit;
     }
     
-        draw_sprite_ext(sprite_get("textbox"),0,ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,60),400,0.6,1,0,c_white,1);
-        textDraw(ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,60)+(240),410,"medFont",c_white,22,350,1,true,1,string(win_quote_string));
+        draw_sprite_ext(sprite_get("textbox"),0,ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,30),400,0.6,1,0,c_white,1);
+        textDraw(ease_quadOut(view_get_hview()*2,view_get_hview()+offset_x,slide_timer,30)+(240),410,"medFont",c_white,22,350,1,true,1,string(win_quote_string));
         //draw_rectangle_colour(25, 325, 450, 425, c_blue, c_blue, c_black, c_black, false); // Body
         //draw_rectangle_colour(25, 325, 450, 425, c_white, c_white, c_gray, c_gray, true); // Main Outline
         //draw_rectangle_colour(30, 330, 445, 420, c_white, c_white, c_gray, c_gray, true); // Inside Outline

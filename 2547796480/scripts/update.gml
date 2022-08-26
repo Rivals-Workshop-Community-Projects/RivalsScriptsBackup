@@ -3,16 +3,14 @@
 knifecount = 5
 
 with pHitBox {
-	if player_id = other.id && type == 2 && attack != AT_FTHROW && hbox_num != 6 && hbox_num != 7 {
+	if player_id = other.id && type == 2 && hbox_num != 6 && hbox_num != 7 {
 		other.knifecount --
 	}
 }
 
-if knifecount < oknifecount {
-	oknifecount -- 
-} 
 
-batt = max(0,oknifecount - oknifelost)
+
+batt = max(0,knifecount - oknifelost)
 
 if !instance_exists(hit_player_obj){
 
@@ -20,6 +18,7 @@ hit_player_obj = self
 
 }
 
+print(oknifelost)
 
 set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_HSPEED, 6 - random_func(4, 14, true) );
 set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_VSPEED, -1 - random_func(3, 6, true) );
@@ -203,7 +202,8 @@ if ANtimeslow > 1 {
 	if ANtimeslow == 69  {
     	with other {
     	sound_play(asset_get("sfx_spin"),false,noone,1,0.8);  	  
-    	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx = spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx.draw_angle = get_gameplay_time()*4
     	}	
 	}
 	
@@ -211,7 +211,8 @@ if ANtimeslow > 1 {
     	    	with other {
     		sound_play(sound_get("slice"));   
     		sound_play(asset_get("sfx_spin"),false,noone,1,0.8);  
-    	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx = spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx.draw_angle = get_gameplay_time()*45
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}	
     	take_damage(player,-1,1)
@@ -223,7 +224,8 @@ if ANtimeslow > 1 {
     	with other {
     		sound_play(sound_get("slice"));   
     		sound_play(asset_get("sfx_spin"),false,noone,1,0.8);  
-    	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx = spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx.draw_angle = get_gameplay_time()*45
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}	
     	take_damage(player,-1,1)
@@ -234,7 +236,8 @@ if ANtimeslow > 1 {
     	with other {
     		sound_play(sound_get("slice"));   
     		sound_play(asset_get("sfx_spin"),false,noone,1,0.8);  
-    	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx = spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx.draw_angle = get_gameplay_time()*45
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}	
     	take_damage(player,-1,2)
@@ -245,7 +248,8 @@ if ANtimeslow > 1 {
     	with other {
     		sound_play(sound_get("slice"));   
     		sound_play(asset_get("sfx_spin"),false,noone,1,0.8);  
-    	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx = spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
+    	kfx.draw_angle = get_gameplay_time()*45
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}
     	take_damage(player,-1,2)

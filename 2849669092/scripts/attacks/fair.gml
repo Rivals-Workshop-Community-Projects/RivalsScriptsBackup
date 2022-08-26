@@ -88,5 +88,5 @@ set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 304);

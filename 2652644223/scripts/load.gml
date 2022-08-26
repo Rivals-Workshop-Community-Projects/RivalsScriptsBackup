@@ -1,3 +1,6 @@
+set_victory_theme(sound_get("victory"));
+set_victory_bg(sprite_get("victory_bg"));
+
 sprite_change_offset("idle", 116, 142);
 sprite_change_offset("idlegen", 116, 142);
 sprite_change_offset("crouch", 116, 142);

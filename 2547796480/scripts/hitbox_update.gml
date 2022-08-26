@@ -234,6 +234,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     		spawn_hit_fx(other.x + 540*spr_dir,other.y,kls1)
     		sound_stop(sound_get("RI"))
     		sound_play(sound_get("RI"),false,noone,1,0.6)
+    		other.player_id.oknifelost ++
     		}
     		
     		}

@@ -1,7 +1,5 @@
 ///
 
-oknifelost = 0
-
 
 with pHitBox {
     if player_id = other.id {
@@ -20,3 +18,6 @@ if  cheapmode = 1   {
     window = 4
     window_timer = 0
 }
+
+oknifelost = 0
+

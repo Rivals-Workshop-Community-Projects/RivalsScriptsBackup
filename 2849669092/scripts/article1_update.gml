@@ -31,15 +31,6 @@ with (asset_get("pHitBox")){
 
 
 
-//Clairen plasma field will destroy the article (NOTE: does not work properly with maxarticles > 1)
-
-if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state == 2)) {
-	sound_play(asset_get("sfx_clairen_hit_med"));
-	spawn_hit_fx(floor(x),floor(y),256)
-	shoulddie = true;
-}
-
-
 
 //State buffering
     

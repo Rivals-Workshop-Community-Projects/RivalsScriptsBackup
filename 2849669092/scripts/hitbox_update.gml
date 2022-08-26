@@ -40,10 +40,12 @@ if (hitbox_timer == 1 && attack == AT_NSPECIAL){
 			}
 			
 			
-			
+		
+/*	
 if (attack == AT_NSPECIAL && !free && destroyed == false){
     destroyed = true;
 }
+*/
 
 if (attack == AT_NSPECIAL){
     if (hitbox_timer == length - 1){
@@ -62,6 +64,7 @@ if (attack == AT_NSPECIAL){
     	hit_effect = 304;
     	supercharged_effect = true;
     	hitpause = 9;
+    	//no_other_hit = 10;
     	spawn_hit_fx( floor(x), floor(y), 20 );
     	sprite_index = sprite_get("butterfly_charged");
     	mask_index = sprite_get("butterfly_charged");
