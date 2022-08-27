@@ -1,0 +1,157 @@
+sprite_change_offset("idle", 125, 164);
+sprite_change_offset("hurt", 125, 164);
+sprite_change_offset("hurtground", 125, 164);
+sprite_change_offset("crouch", 125, 164);
+sprite_change_offset("walk", 125, 164);
+sprite_change_offset("walkturn", 125, 164);
+sprite_change_offset("dash", 125, 164);
+sprite_change_offset("dashstart", 125, 164);
+sprite_change_offset("dashstop", 125, 164);
+sprite_change_offset("dashturn", 125, 164);
+
+sprite_change_offset("jumpstart", 125, 164);
+sprite_change_offset("jump", 125, 164);
+sprite_change_offset("doublejump", 125, 164);
+sprite_change_offset("walljump", 125, 164);
+sprite_change_offset("pratfall", 125, 164);
+sprite_change_offset("land", 125, 164);
+sprite_change_offset("landinglag", 125, 164);
+
+sprite_change_offset("parry", 125, 164);
+sprite_change_offset("roll_forward", 125, 164);
+sprite_change_offset("roll_backward", 125, 164);
+sprite_change_offset("airdodge", 125, 164);
+sprite_change_offset("airdodge_up", 125, 164);
+sprite_change_offset("airdodge_back", 125, 164);
+sprite_change_offset("airdodge_down", 125, 164);
+sprite_change_offset("airdodge_forward", 125, 164);
+sprite_change_offset("airdodge_upforward", 125, 164);
+sprite_change_offset("airdodge_upback", 125, 164);
+sprite_change_offset("airdodge_downforward", 125, 164);
+sprite_change_offset("airdodge_downback", 125, 164);
+sprite_change_offset("waveland", 125, 164);
+sprite_change_offset("tech", 125, 164);
+sprite_change_offset("hurt", 125, 164);
+sprite_change_offset("bighurt", 125, 164);
+sprite_change_offset("uphurt", 125, 164);
+sprite_change_offset("downhurt", 125, 164);
+sprite_change_offset("spinhurt", 125, 164);
+sprite_change_offset("bouncehurt", 125, 164);
+
+sprite_change_offset("jab", 125, 164);
+sprite_change_offset("dattack", 125, 164);
+sprite_change_offset("dattackair", 125, 164);
+sprite_change_offset("ftilt", 125, 164);
+sprite_change_offset("dtilt", 125, 164);
+sprite_change_offset("utilt", 125, 164);
+sprite_change_offset("nair", 125, 164);
+sprite_change_offset("fair", 125, 164);
+sprite_change_offset("bair", 125, 164);
+sprite_change_offset("uair", 125, 164);
+sprite_change_offset("dair", 125, 164);
+sprite_change_offset("fstrong", 125, 164);
+sprite_change_offset("fstrongstrong", 125, 164);
+sprite_change_offset("ustrong", 125, 164);
+sprite_change_offset("ustrongstrong", 125, 164);
+sprite_change_offset("dstrong", 125, 164);
+sprite_change_offset("dstrongstrong", 125, 164);
+sprite_change_offset("nspecial_forward", 125, 164);
+sprite_change_offset("nspecial_forwardup", 125, 164);
+sprite_change_offset("nspecial_forwarddown", 125, 164);
+sprite_change_offset("nspecial_up", 125, 164);
+sprite_change_offset("nspecial_down", 125, 164);
+sprite_change_offset("nspecial_forward_air", 125, 164);
+sprite_change_offset("nspecial_forwardup_air", 125, 164);
+sprite_change_offset("nspecial_forwarddown_air", 125, 164);
+sprite_change_offset("nspecial_up_air", 125, 164);
+sprite_change_offset("nspecial_down_air", 125, 164);
+sprite_change_offset("fspecial", 125, 164);
+sprite_change_offset("fspecial_air", 125, 164);
+sprite_change_offset("uspecial", 125, 164);
+sprite_change_offset("uspecial_non", 125, 164);
+sprite_change_offset("dspecial", 125, 164);
+sprite_change_offset("dspecial_air", 125, 164);
+sprite_change_offset("taunt", 125, 164);
+sprite_change_offset("taunt_2", 125, 164);
+sprite_change_offset("plat", 95, 0);
+
+sprite_change_offset("halloween_left", 125, 164);
+sprite_change_offset("halloween_right", 125, 164);
+sprite_change_offset("halloween_end", 125, 164);
+sprite_change_offset("waterBomb_direction", 0, 21);
+
+sprite_change_offset("hurtbox", 125, 164);
+sprite_change_offset("hurtbox_air", 125, 164);
+sprite_change_offset("crouchbox", 125, 164);
+sprite_change_offset("bubblejump", 60, 60);
+sprite_change_offset("Dfect", 46, 10);
+sprite_change_offset("sawSpawn", 46, 10);
+sprite_change_offset("sawMove", 46, 10);
+sprite_change_offset("empty", 26, -30);
+sprite_change_offset("sawMask", 15, -50);
+sprite_change_offset("bouncePad", 45, 0);
+sprite_change_offset("waterSpout110", 80, 80);
+sprite_change_offset("waterTeleport", 80, 100);
+sprite_change_offset("waterSpout90", 65, 70);
+sprite_change_offset("waterSpout70", 80, 80);
+sprite_change_offset("bubbleBombIdle", 40, 40);
+sprite_change_offset("bubbleBomb_outline", 40, 40);
+sprite_change_offset("bubbleBombFrozen", 40, 40);
+sprite_change_offset("waterBombExplode", 128, 128);
+sprite_change_offset("waterBombExplodeMulti", 128, 128);
+sprite_change_offset("bubbleBombIdle", 40, 40);
+sprite_change_offset("bubbleBombStrong", 40, 40);
+sprite_change_offset("bubbleBombIdle_ocean", 40, 40);
+sprite_change_offset("bubbleBombStrong_ocean", 40, 40);
+sprite_change_offset("bubbleBombMask", 40, 40);
+sprite_change_offset("bubbleBombBreak", 69, 75);
+sprite_change_offset("bubbleBombExplode", 86, 90);
+sprite_change_offset("bubbleBombHugeEmpty", 69, 65);
+sprite_change_offset("bubbleBombEmpty", 32, 40);
+sprite_change_offset("torrohitbox", 125, 164);
+sprite_change_offset("sawport", 125, 164);
+sprite_change_offset("nspecial_charging", 54, 54);
+sprite_change_offset("nspec_large", 96, 96);
+sprite_change_offset("hurricane", 50, 50);
+sprite_change_offset("hurricane_outline", 50, 50);
+sprite_change_offset("hurricane_bomb", 50, 50);
+sprite_change_offset("hurricane_bomb_outline", 50, 50);
+sprite_change_offset("hurricane_strong_bomb", 50, 50);
+sprite_change_offset("hurricane_destroy", 50, 50);
+sprite_change_offset("hurricane_mask", 50, 50);
+sprite_change_offset("hurricane_col", 50, 50);
+sprite_change_offset("tinySaw", 12, 7);
+
+sprite_change_offset("vfx_waterfx_small", 10, 10);
+sprite_change_offset("vfx_waterhit_small", 64, 64);
+sprite_change_offset("vfx_waterhit_huge", 128, 128);
+sprite_change_offset("vfx_star", 80, 80);
+sprite_change_offset("vfx_delta_waterhit_sweet", 60, 67);
+sprite_change_offset("vfx_waterhit_medium", 70, 70);
+sprite_change_offset("dattack_jumpfx", 125, 164);
+sprite_change_offset("waterburst", 90, 0);
+
+sprite_change_offset("watershield", 31, 31);
+sprite_change_offset("fshield_left", 31, 31);
+sprite_change_offset("fshield_right", 31, 31);
+sprite_change_offset("shieldshatter", 31, 31);
+
+sprite_change_offset("water_geyser", 48, 48);
+sprite_change_offset("water_geyser_mask", 48, 48);
+sprite_change_offset("water_geyser_hitbox", 48, 48);
+
+sprite_change_offset("bubbleBombIdleGuile", 40, 40);
+sprite_change_offset("bubbleBombStrongGuile", 40, 40);
+sprite_change_offset("bubbleBombIdleUT", 40, 40);
+sprite_change_offset("bubbleBombStrongUT", 40, 40);
+
+//Rubercuber indicator
+sprite_change_offset("offscreen_indicator", 33, 33);
+sprite_change_offset("article_offscreen", 17, 17);
+
+sprite_change_offset("G7_Effect", 46, 44);
+sprite_change_offset("blw_flag", 48, 48);
+sprite_change_offset("waves", 48, 50);
+
+set_victory_bg( sprite_get( "victory" ));
+

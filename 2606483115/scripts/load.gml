@@ -44,6 +44,9 @@ sprite_change_offset("dair", 125, 152);
 sprite_change_offset("fstrong", 125, 152);
 sprite_change_offset("ustrong", 125, 308);
 sprite_change_offset("dstrong", 124, 152);
+sprite_change_offset("fstrong_tired", 125, 152);
+sprite_change_offset("ustrong_tired", 125, 308);
+sprite_change_offset("dstrong_tired", 124, 152);
 sprite_change_offset("nspecial", 125, 152);
 sprite_change_offset("nspecial_air", 125, 152);
 sprite_change_offset("fspecial", 125, 152);
@@ -93,7 +96,7 @@ sprite_change_offset("hurtbox_air", 125, 152);
 sprite_change_offset("cr_hurtbox", 125, 152);
 sprite_change_offset("vfx_steam_small", 48, 48);
 sprite_change_offset("vfx_steam_large", 140, 140);
-sprite_change_offset("vfx_steam_large", 140, 140);
+sprite_change_offset("vfx_steam_large_tired", 140, 140);
 sprite_change_offset("rocket_trail", 8, 8);
 sprite_change_offset("steam_rocket", 8, 8);
 sprite_change_offset("firework", 48, 48);
@@ -103,8 +106,6 @@ sprite_change_offset("G7_EFfect", 45, 84);
 sprite_change_offset("blw_flag", 48, 48);
 
 set_victory_bg( sprite_get( "victory" ));
-
-
 //Masked
 sprite_change_offset("masked_idle", 125, 152);
 sprite_change_offset("masked_crouch", 125, 152);
@@ -152,6 +153,9 @@ sprite_change_offset("masked_dair", 133, 152);
 sprite_change_offset("masked_fstrong", 125, 152);
 sprite_change_offset("masked_ustrong", 125, 308);
 sprite_change_offset("masked_dstrong", 124, 152);
+sprite_change_offset("masked_fstrong_tired", 125, 152);
+sprite_change_offset("masked_ustrong_tired", 125, 308);
+sprite_change_offset("masked_dstrong_tired", 124, 152);
 sprite_change_offset("masked_nspecial", 125, 152);
 sprite_change_offset("masked_nspecial_air", 125, 152);
 sprite_change_offset("masked_fspecial", 125, 152);

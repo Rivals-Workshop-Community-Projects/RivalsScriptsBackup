@@ -17,6 +17,9 @@
 //    }
 //}
 
+if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
+	grabbed = -4;
+}
 
 //star cooldown stuff
 if (star_cooldown > 0){

@@ -44,11 +44,11 @@ short_hop_speed = 8;
 djump_speed = 12.5;
 leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5; // (3) the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 5.5; // (3) the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 5; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .45;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
-air_friction = .1;
+air_friction = .025;
 max_djumps = 1;
 double_jump_time = 16; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 4.5;
@@ -58,7 +58,7 @@ max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 15; // (11) fast fall speed
 gravity_speed = .7; // (.45)
 hitstun_grav = .55;
-knockback_adj = 1.02; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 7;
@@ -131,6 +131,7 @@ vfx_speed_line_y = hit_fx_create( sprite_get( "vfx_speed_line_y" ), 12);
 vfx_steam_bar_red = hit_fx_create( sprite_get( "vfx_steam_bar_red" ), 30);
 vfx_steam_hit_small = hit_fx_create( sprite_get( "vfx_steam_small" ), 20);
 vfx_steam_hit_large = hit_fx_create( sprite_get( "vfx_steam_large" ), 24);
+vfx_steam_hit_large_tired = hit_fx_create( sprite_get( "vfx_steam_large_tired" ), 24);
 vfx_rocket_trail = hit_fx_create( sprite_get( "rocket_trail" ), 18);
 vfx_firework = hit_fx_create( sprite_get( "firework" ), 24);
 vfx_firework2 = hit_fx_create( sprite_get( "firework2" ), 24);
@@ -153,7 +154,7 @@ uspecial_uppie = false
 uspecial_steam_grav = 0
 uspecial_no_steam = false
 has_bounce = true
-nspec_cancel_buffer = false
+cancel_buffer = false
 alt_cur = get_player_color(player);
 grabbedid = noone;
 geyser = noone
@@ -167,6 +168,18 @@ steam_break_timer = 0
 steam_wall_no_down = 0
 steam_part = noone
 steam_part_2 = noone
+no_pttm = false
+lifetime = 0
+last_state_wl = false
+tired = false
+
+col_r = get_color_profile_slot_r( get_player_color(player), 0);
+col_g = get_color_profile_slot_g( get_player_color(player), 0);
+col_b = get_color_profile_slot_b( get_player_color(player), 0);
+
+col_r_outline = 0
+col_g_outline = 0
+col_b_outline = 0
 
 //Steam Update
 pedal_to_metal = false

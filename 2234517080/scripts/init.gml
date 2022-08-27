@@ -23,6 +23,8 @@ bababooey = false;
 fspec_speed = 12.5;
 should_clamp = true;
 
+grabbed = -4;
+
 //are you happy now
 star_cooldown = 0;
 star_cooldown_time = 320;

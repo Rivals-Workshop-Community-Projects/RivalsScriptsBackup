@@ -67,7 +67,6 @@ if alt == 0 {
 else if alt == 6 {
   draw_sprite_ext(sprite_get("charselect"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
     if drawtime == 1 {
-  	sound_play(sound_get("vergil_motivated_1"));
   	sound_stop(sound_get("dante_letsgo"));
     }
 } 
@@ -75,7 +74,6 @@ else if alt == 7 {
   draw_sprite_ext(sprite_get("charselect"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
     if drawtime == 1 {
     sound_stop(sound_get("vergil_motivated_1"));
-  	sound_play(sound_get("dante_letsgo"));
     }
 } 
 else if alt == 8 {
@@ -206,4 +204,12 @@ if drawtime < 15 {
     
 }
 
+
+
+shader_end();
+//buttons
+draw_sprite_ext(sprite_get("style_button"),style_button,temp_x+ 0,temp_y+32,2,2,0,-1,1);
+if (alt == 7 || alt == 6){
+draw_sprite_ext(sprite_get("voice_button"),voice_button,temp_x+ 0,temp_y+44,2,2,0,-1,1);
+}
 

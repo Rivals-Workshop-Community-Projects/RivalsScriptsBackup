@@ -5,6 +5,7 @@
 trick_fall = false;
 jc_buff = false;
 jce_loop = 0;
+jce_buff_loop = 0;
 uspec_buff = false;
 dist_range = 150;
 fspec_charge = 0;

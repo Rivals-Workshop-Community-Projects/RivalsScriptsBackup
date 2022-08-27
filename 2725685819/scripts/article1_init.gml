@@ -11,9 +11,21 @@ lifetime = 0;
 hit_limit = 8;
 jc_buff = player_id.jc_buff;
 
+jc_buff_loops = 0;
+
+jc_dest_vfx = player_id.jc_destroyed;
+
+is_hittable = true;
+hittable_hitpause_mult = 0;
+
+
+jc_hitstop = 0;
+
+jc_hitpoints = 3;
+
 jc_fspec_buff = false;
 
-current_owner = player_id.player;
+current_owner = player_id;
 
 nspec_hitbox = noone;
 fspec_hitbox = noone;

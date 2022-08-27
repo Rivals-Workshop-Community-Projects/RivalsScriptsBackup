@@ -1,3 +1,4 @@
+//update
 if(djumps > 0 && free && steam > 0){
 	if(state == PS_ATTACK_AIR && can_jump || state == PS_IDLE_AIR && hitpause == false){
 		if(jump_pressed /* && steam > 20*/){
@@ -7,7 +8,11 @@ if(djumps > 0 && free && steam > 0){
 			}
 			sound_play(sound_get("sfx_steam_quick"))
 			spawn_hit_fx(x, y + 60, vfx_doublejump_steam)
-			steam -= 10
+			if(steam >= 15){
+				steam -= 15
+			}else{
+				steam = 0
+			}
 			set_state(PS_DOUBLE_JUMP)
 			if(left_down || left_pressed){
 				hsp = -4
@@ -16,8 +21,8 @@ if(djumps > 0 && free && steam > 0){
 				hsp = 4
 				old_hsp = 4
 			}
-			vsp = -7.5
-			old_vsp = -7.5
+			vsp = -8.5
+			old_vsp = -8.5
 			//steam -= 20
 		}
 	}
@@ -55,15 +60,6 @@ if(grabbedid != noone){
 	}
 }
 
-if(steam < 20){
-	move_cooldown[AT_DSTRONG] = 2
-}
-if(steam < 25){
-	move_cooldown[AT_USTRONG] = 2
-}
-if(steam < 10){
-	move_cooldown[AT_FSTRONG] = 2
-}
 steam_wall_anim_sync += 0.25
 
 //geyser while not in fspecial
@@ -187,6 +183,67 @@ if(instance_exists(steam_rocket)){
 		}
 	}
 }
+
+//Cancel Buffer
+if(cancel_buffer){
+	if(!hitpause && move_cooldown[AT_NSPECIAL] <= 0){
+		set_attack(AT_NSPECIAL)
+		cancel_buffer = false
+		if(steam > 34){
+			steam -= 34
+		}else{
+			steam = 0
+			no_pttm = true
+			pedal_to_metal = false
+			move_cooldown[AT_NSPECIAL] = 240
+		}
+	}else if(!hitpause){
+		cancel_buffer = false
+	}
+}
+
+//Tired
+
+if(steam <= 0){
+	col_r_outline = 100 + sin(lifetime / 20) * 50
+	if(tired == false){
+		tired = true
+		move_cooldown[AT_NSPECIAL] = 180
+		sound_play(sound_get("sfx_tired"))
+	}
+}else{
+	tired = false
+	col_r_outline = 0
+}
+outline_color = [col_r_outline, col_g_outline, col_b_outline]
+
+init_shader();
+
+//Wavecancel
+
+if(state == PS_WAVELAND){
+	last_state_wl = true
+}else{
+	if(!(state == PS_ATTACK_GROUND && attack == AT_NSPECIAL) && !(state == PS_ATTACK_AIR && attack == AT_NSPECIAL)){
+		last_state_wl = false
+	}else{
+		if(state == PS_ATTACK_GROUND && attack == AT_NSPECIAL || state == PS_ATTACK_AIR && attack == AT_NSPECIAL){
+			if(window > 1){
+				last_state_wl = false
+			}
+		}
+	}
+}
+
+//Steam Check
+if(steam <= 0){
+	steam = 0
+}else if(steam >= 100){
+	steam = 100
+}
+
+
+//Reset player height
 
 if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 	char_height = lerp(char_height, 52, 0.3)
@@ -587,7 +644,6 @@ if(halloween == true){
 if(pedal_to_metal){
 	if(chuff_noise_timer >= 30){
 		chuff_noise_timer = 0
-		take_damage(player, -1, 1)
 		if(random_func_2(3, 3, true) == 0){
 			sound_play(sound_get("sfx_chuff_1"))
 		}else if(random_func_2(3, 3, true) == 1){
@@ -600,7 +656,7 @@ if(pedal_to_metal){
 	
 	green_indicator_timer = 26
 	if(steam < 100){
-		steam += 0.33
+		steam += 0.3
 	}else{
 		pedal_to_metal = false
 		sound_play(sound_get("sfx_steam_hiss_short"))
@@ -616,7 +672,7 @@ if(pedal_to_metal){
 	
 	walk_speed = 5;
 	walk_accel = 0.4;
-	initial_dash_speed = 8;
+	initial_dash_speed = 8.5;
 	dash_speed = 9;
 	dash_turn_accel = 4;
 	dash_stop_percent = .35;
@@ -657,55 +713,170 @@ if(pedal_to_metal){
 
 	set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 3);
 	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 2);
+	
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 12);
 }else{
-	idle_anim_speed = .14;
-	crouch_anim_speed = .1;
-	walk_anim_speed = .2;
-	dash_anim_speed = .4;
+	if(steam > 0){
+		idle_anim_speed = .14;
+		crouch_anim_speed = .1;
+		walk_anim_speed = .2;
+		dash_anim_speed = .4;
+		
+		walk_speed = 4;
+		walk_accel = 0.2;
+		initial_dash_speed = 7;
+		dash_speed = 7.5;
+		dash_turn_accel = 2.5;
+		dash_stop_percent = .35;
+		moonwalk_accel = 1.2;
+		max_jump_hsp = 7;
+		air_max_speed = 6;
+		jump_change = 5;
+		air_accel = .45;
+		walljump_hsp = 4.5;
+		walljump_vsp = 12;
+		knockback_adj = 1.02;
+		
+		wave_land_adj = 1.2;
+		wave_friction = .4;
+		
+		damage_adj = 1
+		
+		set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
+		set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 9);
+		
+		set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 6);
+		set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 5);
+		
+		set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 6);
+		
+		set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);
+		set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 4);
+		
+		set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 7);
 	
-	walk_speed = 4;
-	walk_accel = 0.2;
-	initial_dash_speed = 6;
-	dash_speed = 7.5;
-	dash_turn_accel = 2.5;
-	dash_stop_percent = .35;
-	moonwalk_accel = 1.2;
-	max_jump_hsp = 7;
-	air_max_speed = 5;
-	jump_change = 5;
-	air_accel = .45;
-	walljump_hsp = 4.5;
-	walljump_vsp = 12;
-	knockback_adj = 1.02;
+		set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
+		set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);
+		
+		set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 9);
+		set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+		
+		set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 5);
+		set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 4);
+		
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 11);
+	}else{
+		if(lifetime mod 5 == 0){
+			spawn_hit_fx(x - 40 + random_func(2, 80, true), y - 60 + random_func(1, 80, true), vfx_steam_small)
+		}
+		red_indicator_timer = 26
+		
+		idle_anim_speed = .1;
+		crouch_anim_speed = .05;
+		walk_anim_speed = .2;
+		dash_anim_speed = .25;
+		
+		walk_speed = 2.5;
+		walk_accel = 0.1;
+		initial_dash_speed = 4.5;
+		dash_speed = 5.5;
+		dash_turn_accel = 2.5;
+		dash_stop_percent = .35;
+		moonwalk_accel = 0.75;
+		max_jump_hsp = 4.5;
+		air_max_speed = 4.5;
+		jump_change = 5;
+		air_accel = .15;
+		walljump_hsp = 3.5;
+		walljump_vsp = 10;
+		knockback_adj = 1;
+		
+		wave_land_adj = 1;
+		wave_friction = .5;
+		
+		damage_adj = 1.2
+		
+		set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 14);
+		set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 9);
+		
+		set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 5);
+		
+		set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 12);
+		set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 6);
+		
+		set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
+		set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+		
+		set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 11);
+		set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 10);
 	
-	wave_land_adj = 1.2;
-	wave_friction = .4;
-	
-	damage_adj = 1
-	
-	set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
-	set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 9);
-	
-	set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 6);
-	set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 5);
-	
-	set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 8);
-	set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 6);
-	
-	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);
-	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 4);
-	
-	set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 8);
-	set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 7);
+		set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 7);
+		set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 6);
+		
+		set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 11);
+		set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 10);
+		
+		set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 7);
+		
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 9);
+		
+		set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+		set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+		set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+		set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+		set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+		set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+		
+		//spike nair when tired
+		set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 8);
+		set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, 0.5);
+		set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, 11);
+		set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 10);
+		set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, 0.4);
+		set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, 304);
+		
+		//jab 2 is strong when tired
+		set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 10);
+		set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.75);
+		set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 9);
+		set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 10);
+		set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, 0.7);
+		set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 304);
+		
+		set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 304);
+		set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 304);
+	}
+}
 
-	set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);
+//Not tired
+if(steam > 0){
+	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+	set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+	set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+	set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+	set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+	set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 	
-	set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 9);
-	set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+	set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 6 * damage_adj);
+	set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, 0.2 * damage_adj);
+	set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, round(6 * damage_adj));
+	set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 7 * damage_adj);
+	set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, 0.25 * damage_adj);
+	set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, 0);
 	
-	set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 4);
+	set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 9 * damage_adj);
+	set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.25 * damage_adj);
+	set_hitbox_value(AT_JAB, 2, HG_DAMAGE, round(5 * damage_adj));
+	set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 9.5);
+	set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, 0.4);
+	set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 0);
+	
+	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 0);
+	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 0);
 }
 
 //Steam Cap
@@ -716,87 +887,106 @@ if(steam > 100){
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, round(10 * damage_adj));
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 9 * damage_adj);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.95 * damage_adj);
+set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 11 * damage_adj);
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .9 * damage_adj);
 
 set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, round(7 * damage_adj));
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 5 * damage_adj);
 set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0.55 * damage_adj);
+set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 6 * damage_adj);
+set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .6 * damage_adj);
 
 set_hitbox_value(AT_DAIR, 10, HG_DAMAGE, round(5 * damage_adj));
 set_hitbox_value(AT_DAIR, 10, HG_BASE_KNOCKBACK, 5 * damage_adj);
 set_hitbox_value(AT_DAIR, 10, HG_KNOCKBACK_SCALING, 0.55 * damage_adj);
+set_hitbox_value(AT_DAIR, 10, HG_BASE_HITPAUSE, 9 * damage_adj);
+set_hitbox_value(AT_DAIR, 10, HG_HITPAUSE_SCALING, 0.7 * damage_adj);
 
-set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, round(5 * damage_adj));
-set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 8 * damage_adj);
-set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.35 * damage_adj);
+set_hitbox_value(AT_DAIR, 9, HG_DAMAGE, 3 * damage_adj);
+set_hitbox_value(AT_DAIR, 9, HG_BASE_KNOCKBACK, 7 * damage_adj);
+set_hitbox_value(AT_DAIR, 9, HG_KNOCKBACK_SCALING, 0.25 * damage_adj);
+set_hitbox_value(AT_DAIR, 9, HG_BASE_HITPAUSE, 7 * damage_adj);
+set_hitbox_value(AT_DAIR, 9, HG_HITPAUSE_SCALING, 0.6 * damage_adj);
+
+set_hitbox_value(AT_DATTACK, 6, HG_DAMAGE, round(5 * damage_adj));
+set_hitbox_value(AT_DATTACK, 6, HG_BASE_KNOCKBACK, 8 * damage_adj);
+set_hitbox_value(AT_DATTACK, 6, HG_KNOCKBACK_SCALING, 0.35 * damage_adj);
+set_hitbox_value(AT_DATTACK, 6, HG_BASE_HITPAUSE, 2 * damage_adj);
+set_hitbox_value(AT_DATTACK, 6, HG_HITPAUSE_SCALING, 0.1 * damage_adj);
 
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, round(5 * damage_adj));
 set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 9.5 * damage_adj);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0.25 * damage_adj);
+set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 6 * damage_adj);
+set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, 0.25 * damage_adj);
+
+set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 3 * damage_adj);
+set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 2 * damage_adj);
 
 set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, round(7 * damage_adj));
 set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 7 * damage_adj);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.75 * damage_adj);
+set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.8);
 
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, round(7 * damage_adj));
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7 * damage_adj);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.75 * damage_adj);
+set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 6 * damage_adj);
+set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.8 * damage_adj);
 
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6 * damage_adj);
 set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 0.4 * damage_adj);
 set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, round(5 * damage_adj));
+set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 4.5 * damage_adj);
+set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.35 * damage_adj);
 
 set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 6.5 * damage_adj);
 set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.15 * damage_adj);
+set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 4 * damage_adj);
+set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.45 * damage_adj);
 
 set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 9 * damage_adj);
 set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, 0.15 * damage_adj);
 set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, round(5 * damage_adj));
-
-set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 6 * damage_adj);
-set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, 0.2 * damage_adj);
-set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, round(6 * damage_adj));
+set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 6 * damage_adj);
+set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, 0.2 * damage_adj);
 
 set_hitbox_value(AT_NAIR, 5, HG_KNOCKBACK_SCALING, 0.5 * damage_adj);
 set_hitbox_value(AT_NAIR, 5, HG_BASE_KNOCKBACK, 7 * damage_adj);
-
-set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 9 * damage_adj);
-set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.25 * damage_adj);
-set_hitbox_value(AT_JAB, 2, HG_DAMAGE, round(5 * damage_adj));
+set_hitbox_value(AT_NAIR, 5, HG_BASE_HITPAUSE, 7 * damage_adj);
+set_hitbox_value(AT_NAIR, 5, HG_HITPAUSE_SCALING, 0.6 * damage_adj);
 
 set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 8 * damage_adj);
 set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, .75 * damage_adj);
 set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, round(7 * damage_adj));
+set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 8 * damage_adj);
+set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, .7 * damage_adj);
 
 set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, round(4 * damage_adj));
+set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 2 * damage_adj);
+set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .1 * damage_adj);
 
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6 * damage_adj);
 set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0.3 * damage_adj);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, round(5 * damage_adj));
+set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 6 * damage_adj);
+set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, 0.35 * damage_adj);
 
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7 * damage_adj);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.85 * damage_adj);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, round(11 * damage_adj));
+set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 12 * damage_adj);
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 0.8 * damage_adj);
 
 set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 9.5 * damage_adj);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.95 * damage_adj);
 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, round(10 * damage_adj));
+set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 10 * damage_adj);
+set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, 0.75 * damage_adj);
 
-set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, round(8 * damage_adj));
-set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 4 * damage_adj);
-set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 0.4 * damage_adj);
-
-set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, round(8 * damage_adj));
-set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 4 * damage_adj);
-set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.4 * damage_adj);
-
-set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, round(12 * damage_adj));
-set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 9 * damage_adj);
-set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 0.9 * damage_adj);
-
-set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, round(12 * damage_adj));
-set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 9 * damage_adj);
-set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, 0.9 * damage_adj);
 
 steam_wall_no_down--
 switch_timer--
 steam_break_timer--
+lifetime++

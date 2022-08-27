@@ -1,6 +1,10 @@
 
 
 if (attack == AT_FSPECIAL && hbox_num == 1){
+
+draw_xscale = spr_dir;
+
+
 	hsp = clamp(hsp, -7, 7);
 	
 	if (player == orig_player)
@@ -8,7 +12,7 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	
 	player_id.jc_pointblank = false;
 	
-	if (position_meeting( x, y, player_id.jc_object )) && (player_id.jc_object.current_owner == player) && (!player_id.jc_object.jc_buff)
+	if (position_meeting( x, y, player_id.jc_object )) && (player_id.jc_object.current_owner.player == player) && (!player_id.jc_object.jc_buff)
 	{
 		var fspec_hitbox = create_hitbox( AT_FSPECIAL, 2, x, y );
 		fspec_hitbox.hsp = (10*spr_dir);
@@ -39,6 +43,8 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 }
 
 if (attack == AT_FSPECIAL && hbox_num == 2){
+
+draw_xscale = spr_dir;
 
     with(pHitBox){
         

@@ -52,6 +52,11 @@ if (attack == AT_DSPECIAL){
                 var bruh_two = create_hitbox(AT_DSPECIAL, 2, x - 55*spr_dir, y - 25);
                 //bruh_two.can_hit_self = true;
             }
+            if (!hitstop && !hitpause && !was_parried){
+                if (get_player_color(player) == 8){
+                    sound_play(sound_get("thwomp"));
+                }
+            }
             window = 5;
             window_timer = 0;
         }
@@ -128,6 +133,9 @@ if (attack == AT_FSPECIAL){
     if (window > 2){
         can_wall_jump = true;
     }
+    if (window == 4 && window_timer == 14){
+        can_fast_fall = true;
+    }
 
 }
 
@@ -151,7 +159,6 @@ if (attack == AT_FSPECIAL_2){
     }
     
     if (window < 4){
-        invincible = true;
         if (should_clamp){
             hsp = clamp(hsp, -fspec_speed_max, fspec_speed_max);
         }
@@ -163,22 +170,13 @@ if (attack == AT_FSPECIAL_2){
                 hsp = -7;
             }
         }
-        if (has_hit_player){
-            bruh = hit_player_obj;
-            if (!hitpause && hit_player_obj.super_armor == false && hit_player_obj.soft_armor <= 0 && hit_player_obj.wrap_time > 0 && hit_player_obj.state != PS_RESPAWN && hit_player_obj.state != PS_DEAD){
-                bruh.invincible = true;
-                bruh.invince_timer = 50;
-                //this part doesn't work lol
-                bruh.spr_dir = -spr_dir;
-                bruh.hsp = lerp(hit_player_obj.hsp,hsp,1);
-                bruh.vsp = lerp(hit_player_obj.vsp,vsp,1);
-                bruh.x = lerp(hit_player_obj.x,x + 25*spr_dir,0.5);
-                bruh.y = lerp(hit_player_obj.y,y + 2,0.5);
+        if (grabbed != -4){
+            if (grabbed.state == PS_HITSTUN){
+                grabbed.hitstop = 4;
+                grabbed.x = lerp(grabbed.x + 20*spr_dir, x + 20*spr_dir, .5);
+                grabbed.y = lerp(grabbed.y + 2, y + 2, .5);
             }
         }
-    }
-    else{
-        invincible = false;
     }
     
     if (window == 4){

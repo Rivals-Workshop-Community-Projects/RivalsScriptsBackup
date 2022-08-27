@@ -86,7 +86,7 @@ gpu_set_fog(0,0,0,0);
 
 
 //draw uspecial teleport ghost
-if (state == clamp(state,5,6)) && (attack == AT_USPECIAL) && window >= 2{
+if (state == clamp(state,5,6)) && ((attack == AT_USPECIAL && window >= 2)) {
 	
 var vfx_rand;
 	
@@ -133,4 +133,16 @@ draw_sprite_ext( sprite_get("provoking"), floor(provoking), lightning_x, camy, 2
 
 
 
-// print_debug(string(range_alpha));
+//TRUE JCE teleport
+		if (attack == AT_EXTRA_2 && window == 2){
+
+		var rad_rand = -30 + random_func( 0, 60, true );
+		
+		gpu_set_fog(1,trick_color,0,0);
+			draw_sprite_ext( sprite_get("jump"), 5, x+dist_range + rad_rand, y + rad_rand, (2) * spr_dir, 2, 0, trick_color, 0.5 );
+			draw_sprite_ext( sprite_get("jump"), 5, x+-dist_range + rad_rand, y + rad_rand, (2) * -spr_dir, 2, 0, trick_color, 0.5 );
+		gpu_set_fog(0,0,0,0);
+		
+		
+	
+		}

@@ -11,12 +11,12 @@ if(state == 0){
 		exit;
     }
     if(image_index == 0){
-    	if(player_id.steam < 8 || free){
+    	if(player_id.steam <= 0 || free){
     		visible = false
     	}
     }
     if(image_index < 1 && image_index > 0){
-    	if(player_id.steam > 0 && visible){
+    	if(player_id.steam >= 0 && visible){
     		player_id.steam -= 1
     	}else if(visible){
     		state = 2

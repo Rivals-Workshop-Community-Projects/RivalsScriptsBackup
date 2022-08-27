@@ -95,7 +95,12 @@ vfx_slash_up_med = hit_fx_create(sprite_get("slashup_med"), 30);
 vfx_stab_strong = hit_fx_create(sprite_get("stab_big"), 30); 
 vfx_stab_up_strong = hit_fx_create(sprite_get("stabup_big"), 35); 
 
-vfx_ftilt_destroy = hit_fx_create(sprite_get("vfx_ftilt_destroy"), 12); // actually for nspecial, not ftilt
+vfx_jce_big = hit_fx_create(sprite_get("jce_big"), 60); 
+vfx_jce_clone = hit_fx_create(sprite_get("jce_clone"), 20); 
+
+
+
+vfx_ftilt_destroy = hit_fx_create(sprite_get("nspecial_dest"), 30); // actually for nspecial, not ftilt
 vfx_nspecial_fire = hit_fx_create(sprite_get("vfx_nspecial_fire"), 16);
 jc_destroyed = hit_fx_create( sprite_get("nspecial_dest"), 15 );
 projectile_rb = noone;
@@ -123,6 +128,10 @@ jc_pointblank = false;
 
 scoop = false;
 jce_loop = 0;
+jce_buff_loop = 0;
+jce_darken = false;
+jce_sfx_loop = 0;
+
 
 grabbed_player = noone;
 
@@ -157,6 +166,8 @@ vergil = false;
 dante = false;
 sparda = false;
 style_meter = false;
+
+sync_bool = get_synced_var( player );
 
 // Animation Info
 
@@ -262,10 +273,3 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-
-
-// MunoPhone Touch code - don't touch
-// should be at BOTTOM of file, but above any #define lines
-
-muno_event_type = 0;
-user_event(14);

@@ -1,0 +1,84 @@
+sprite_change_offset("idle", 32, 47);
+sprite_change_offset("crouch", 32, 47);
+sprite_change_offset("walkstart", 32, 47);
+sprite_change_offset("walk", 32, 47);
+sprite_change_offset("walkturn", 32, 47);
+sprite_change_offset("dash", 32, 47);
+sprite_change_offset("dashstart", 32, 47);
+sprite_change_offset("dashstop", 32, 47);
+sprite_change_offset("dashturn", 32, 47);
+
+sprite_change_offset("jumpstart", 32, 47);
+sprite_change_offset("jump", 32, 47);
+sprite_change_offset("float", 32, 47);
+sprite_change_offset("doublejump", 32, 47);
+sprite_change_offset("walljump", 32, 47);
+sprite_change_offset("pratfall", 32, 47);
+sprite_change_offset("land", 32, 47);
+sprite_change_offset("landinglag", 32, 47);
+
+sprite_change_offset("parry", 32, 47);
+sprite_change_offset("roll_forward", 32, 47);
+sprite_change_offset("roll_backward", 32, 47);
+sprite_change_offset("airdodge", 32, 47);
+sprite_change_offset("waveland", 32, 47);
+sprite_change_offset("tech", 32, 47);
+
+sprite_change_offset("hurt", 32, 47);
+sprite_change_offset("bighurt", 32, 47);
+sprite_change_offset("hurtground", 32, 47);
+sprite_change_offset("spinhurt", 32, 47);
+sprite_change_offset("bouncehurt", 32, 47);
+sprite_change_offset("uphurt", 32, 47);
+sprite_change_offset("downhurt", 32, 47);
+
+sprite_change_offset("jab", 32, 47, true);
+sprite_change_offset("dattack", 32, 63, true);
+sprite_change_offset("ftilt", 32, 47, true);
+sprite_change_offset("dtilt", 32, 63, true);
+sprite_change_offset("utilt", 32, 63, true);
+sprite_change_offset("nair", 32, 63, true);
+sprite_change_offset("fair", 32, 63, true);
+sprite_change_offset("bair", 32, 63, true);
+sprite_change_offset("uair", 32, 63, true);
+sprite_change_offset("dair", 32, 63, true);
+sprite_change_offset("fstrong", 32, 63, true);
+sprite_change_offset("ustrong", 64, 63, true);
+sprite_change_offset("dstrong", 64, 63, true);
+sprite_change_offset("nspecial", 64, 63, true);
+sprite_change_offset("nspecial2", 32, 63, true);
+sprite_change_offset("fspecial", 32, 63, true);
+sprite_change_offset("uspecial", 32, 47, true);
+sprite_change_offset("uspecial2", 32, 47, true);
+sprite_change_offset("dspecial", 32, 47, true);
+sprite_change_offset("dspecial2", 32, 47, true);
+sprite_change_offset("taunt", 32, 47);
+
+sprite_change_offset("hfx_mamizou_leaf", 64, 64);
+sprite_change_offset("hfx_mamizou_smoke", 64, 64);
+sprite_change_offset("hfx_mamizou_smoke_mask", 64, 64);
+sprite_change_collision_mask("hfx_mamizou_smoke_mask",  1, 1, 0, 0, 0, 0, 0);
+sprite_change_offset("hfx_mamizou_leaf_half", 64, 64);
+sprite_change_offset("hfx_smoke_large", 96, 96);
+sprite_change_offset("hfx_smoke_half_large", 96, 96);
+sprite_change_offset("hfx_part_leaf", 16, 16);
+sprite_change_offset("plat", 32, 16);
+
+sprite_change_offset("tanuki_idle", 64, 62);
+sprite_change_offset("tanuki_walkturn", 64, 62);
+sprite_change_offset("tanuki_walk", 64, 62);
+sprite_change_offset("tanuki_jumpstart", 64, 62);
+sprite_change_offset("tanuki_jump", 64, 62);
+sprite_change_offset("tanuki_land", 64, 62);
+sprite_change_offset("tanuki_landinglag", 64, 62);
+sprite_change_offset("tanuki_hurt", 64, 62);
+sprite_change_offset("tanuki_bighurt", 64, 62);
+sprite_change_offset("tanuki_spinhurt", 64, 94);
+sprite_change_offset("tanuki_attack", 64, 94);
+
+sprite_change_offset("nspecial_leaf", 16, 16);
+sprite_change_offset("uspecial_log", 32, 32);
+sprite_change_offset("dspecial_smoke", 32, 48);
+sprite_change_offset("transformations_base", 36, 47);
+sprite_change_offset("transformations_touhou", 64, 94);
+sprite_change_offset("mark", 16, 16);

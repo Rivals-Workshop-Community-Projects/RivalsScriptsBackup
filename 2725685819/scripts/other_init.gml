@@ -17,3 +17,9 @@ style_pulse = 0;
 vfx_rand = 0;
 rad_rand = 0;
 
+
+jce_circle = 0;
+jce_alpha = 0.25;
+jce_sprite = -1;
+jce_image = 0;
+jce_slice_time = 0;

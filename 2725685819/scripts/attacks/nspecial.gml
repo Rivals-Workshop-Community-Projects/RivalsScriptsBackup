@@ -50,6 +50,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 70);

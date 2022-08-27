@@ -31,7 +31,7 @@ if(attack == AT_NAIR){
 				window_timer = 0
 				old_vsp = 9
 				vsp = 9
-				hsp /= 1.5
+				hsp /= 2
 			}
 		}
 	}
@@ -61,11 +61,6 @@ if(attack == AT_NAIR){
 
 //dattack hitbox
 if(attack == AT_DATTACK){
-	if(window == 3){
-		if(window_timer == 5){
-			spawn_hit_fx(x, y - 90, vfx_nair_boost)
-		}
-	}
 	if(window == 2){
 		if(window_timer == 1 ||
 			window_timer == 5 ||
@@ -78,6 +73,13 @@ if(attack == AT_DATTACK){
 			window_timer == 11 ||
 			window_timer == 15){
 			spawn_hit_fx(x - 10 * spr_dir, y - (10 + random_func(3, 20, true)), vfx_steam_medium)
+		}
+	}
+	set_num_hitboxes(AT_DATTACK, 6);
+	set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_SFX, 1);
+	if(window == 3){
+		if(window_timer == 5){
+			spawn_hit_fx(x, y - 90, vfx_nair_boost)
 		}
 	}
 }
@@ -161,11 +163,34 @@ if (attack == AT_USTRONG && state == PS_ATTACK_GROUND){
 //Ustrong SFX
 if(attack == AT_USTRONG){
 	if(window == 2 && window_timer == 1){
+		steam -= 33
 		sound_play(sound_get("sfx_steam_whistle1"))
-		steam -= 25
 	}
 	if(window == 2 && window_timer == 15){
 		sound_play(sound_get("sfx_steam_whistle2"))
+	}
+}
+
+//Ustrong 2 SFX
+if(attack == AT_USTRONG_2){
+	if(window == 2 && window_timer == 1){
+		sound_play(sound_get("sfx_steam_whistle2"))
+	}
+}
+
+//Dstrong stuff
+if(attack == AT_DSTRONG){
+	if(window == 2){
+		if(window_timer == 1 && hitpause == false){
+			steam -= 25
+		}
+	}
+}
+
+//Fstrong 2 Sound
+if(attack == AT_FSTRONG_2){
+	if(window == 2 && window_timer == 1 && !hitpause){
+		sound_play(sound_get("sfx_steam_cloth"))
 	}
 }
 
@@ -176,12 +201,19 @@ if(attack == AT_DSTRONG){
 	}else{
 		char_height = lerp(char_height, 52, 0.3)
 	}
-	if(window == 2){
-		if(window_timer == 1 && hitpause == false){
-			steam -= 20
-		}
+}else if(attack == AT_DSTRONG_2){
+	if(window == 1){
+		char_height = lerp(char_height, 62, 0.3)
+	}else{
+		char_height = lerp(char_height, 52, 0.3)
 	}
 }else if(attack == AT_FSTRONG){
+	if(window == 1){
+		char_height = lerp(char_height, 62, 0.3)
+	}else{
+		char_height = lerp(char_height, 52, 0.3)
+	}
+}else if(attack == AT_FSTRONG_2){
 	if(window == 1){
 		char_height = lerp(char_height, 62, 0.3)
 	}else{
@@ -248,7 +280,6 @@ if(attack == AT_FSTRONG){
 
 //Nspecial Stuff
 if(attack == AT_NSPECIAL){
-	move_cooldown[AT_NSPECIAL] = 30
 	if(window == 1 && window_timer < 6){
 		if(spr_dir == 1 && left_pressed){
 			spr_dir = -1
@@ -261,14 +292,30 @@ if(attack == AT_NSPECIAL){
 	}
 	steam_break_timer = 20
 	if(window == 1 && window_timer == 1){
+		if(last_state_wl){
+			hsp *= 2
+		}
 		if(pedal_to_metal == false && steam < 100){
-			pedal_to_metal = true
+			if(move_cooldown[AT_NSPECIAL] < 40){
+				move_cooldown[AT_NSPECIAL] = 40
+			}
+			if(no_pttm == false){
+				pedal_to_metal = true
+			}else{
+				no_pttm = false
+			}
 			sound_play(sound_get("sfx_crank"))
 		}else if (steam < 100){
 			pedal_to_metal = false
+			if(move_cooldown[AT_NSPECIAL] < 80){
+				move_cooldown[AT_NSPECIAL] = 80
+			}
 			sound_play(sound_get("sfx_steam_hiss_short"))
 		}else{
 			sound_play(sound_get("sfx_crank"))
+			if(move_cooldown[AT_NSPECIAL] < 40){
+				move_cooldown[AT_NSPECIAL] = 40
+			}
 		}
 		if(vsp > -3){
 			if(free){
@@ -316,7 +363,7 @@ if(attack == AT_FSPECIAL){
 		}
 	}
 	if(window == 1 && window_timer == 6){
-		if(steam >= 20){
+		if(steam > 0){
 			sound_play(sfx_steam_cloth)
 			if(!free){
 				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 14);
@@ -374,7 +421,7 @@ if(attack == AT_FSPECIAL){
 				}
 			}
 		}
-		if(!pedal_to_metal && steam >= 20){
+		if(!pedal_to_metal && steam > 0){
 			if(window_timer == 9){
 				if(!free){
 					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 5);
@@ -395,12 +442,16 @@ if(attack == AT_FSPECIAL){
 				}
 			}
 		}
-		if(window_timer == 1 && !hitpause && steam >= 20){
+		if(window_timer == 1 && !hitpause && steam > 0){
 			if(pedal_to_metal){
 				sound_play(sound_get("sfx_steam_hiss_short"))
 				pedal_to_metal = false
 			}
-			steam -= 20
+			if(steam > 0){
+				steam -= 20
+			}else{
+				steam = 0
+			}
 		}
 		spawn_hit_fx(x, y - (10 + random_func(1, 50, true)), vfx_speed_line_x)
 	}
@@ -498,13 +549,21 @@ if (attack == AT_DSPECIAL){
 		if(!(instance_exists(geyser) && instance_exists(geyser_2))){
 			if(instance_exists(geyser)){
 				geyser.attack = true
-			}else if(steam >= 20){
+			}else if(steam > 0){
 	        	geyser = instance_create(x,y - 78, "obj_article1");
 	        	geyser.number = 1
 	        	if(!pedal_to_metal){
-		        	steam -= 20
+	        		if(steam > 20){
+		        		steam -= 20
+	        		}else{
+	        			steam = 0
+	        		}
 				}else{
-					steam -= 20
+					if(steam > 20){
+		        		steam -= 20
+	        		}else{
+	        			steam = 0
+	        		}
 					sound_play(sound_get("sfx_steam_hiss_short"))
 					pedal_to_metal = false
 				}
@@ -548,7 +607,7 @@ if(attack == AT_USPECIAL){
 			}
 		}
 		if(window_timer > 3){
-			if(shield_down || shield_pressed || steam < 25){
+			if(shield_down || shield_pressed || steam == 0){
 				if(uspecial_no_steam = false){
 					set_num_hitboxes(AT_USPECIAL, 1);
 					set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air"));
@@ -578,7 +637,11 @@ if(attack == AT_USPECIAL){
 			}else{
 				vsp = -13
 				old_vsp = -13
-				steam -= 25
+				if(steam > 25){
+					steam -= 25
+				}else if(steam != 0){
+					steam = 0
+				}
 				uspecial_steam_grav = 15
 				set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air_steam"));
 			}
@@ -782,6 +845,39 @@ if(attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_FSTRONG){
 	}
 }
 
+//Nspecial Cancel
+
+if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	if(attack != AT_USPECIAL &&
+		attack != AT_DSPECIAL &&
+		attack != AT_DSPECIAL_AIR &&
+		attack != AT_NSPECIAL &&
+		attack != AT_FSPECIAL &&
+		attack != AT_FSTRONG &&
+		attack != AT_DSTRONG &&
+		attack != AT_USTRONG){
+			if(special_pressed && joy_pad_idle && has_hit && steam != 0){
+				if(hitpause){
+					cancel_buffer = true
+				}else if(move_cooldown[AT_NSPECIAL] <= 0 && !cancel_buffer){
+					set_attack(AT_NSPECIAL)
+					if(steam > 34){
+						steam -= 34
+						if(move_cooldown[AT_NSPECIAL] < 80){
+							move_cooldown[AT_NSPECIAL] = 80
+						}
+					}else{
+						steam = 0
+						no_pttm = true
+						pedal_to_metal = false
+						if(move_cooldown[AT_NSPECIAL] < 180){
+							move_cooldown[AT_NSPECIAL] = 180
+						}
+					}
+				}
+			}
+		}
+}
 //Old fair thing but I didnt wanna get rid of it
 /* if(attack == AT_FAIR){
 	if(window > 3 || window == 2){

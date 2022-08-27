@@ -3,20 +3,17 @@
 if (intro_timer < intro_full){
 intro_timer++;
 
-if get_player_color(player) == 6 {
-    if (shield_pressed && taunt_pressed){
-    
-    if (!sparda)
-    sound_play(sound_get("crazy"));
-    
+if (sync_bool == 2 || sync_bool == 3){
     sparda = true;
+}
+
+if get_player_color(player) == 6 {
     
+    if (sync_bool == 1){
+    vergil = true;
     }
-    
-    if (attack_pressed && taunt_pressed){
-    
-    if (!vergil && !sparda)
-    sound_play(sound_get("vergil_motivated_1"));
+
+    if (sync_bool == 3){
     
     vergil = true;
     sparda = true;
@@ -25,25 +22,14 @@ if get_player_color(player) == 6 {
 }
 
 if get_player_color(player) == 7 {
-    if (shield_pressed && taunt_pressed){
     
-    if (!sparda)
-    sound_play(sound_get("crazy"));
-    
-    sparda = true;
-    
+    if (sync_bool == 1){
+    dante = true;   
     }
     
-    
-    if (attack_pressed && taunt_pressed){
-    
-    
-    if (!dante && !sparda)
-    sound_play(sound_get("dante_letsgo"));
-    
+    if (sync_bool == 3){
     dante = true;
     sparda = true;
-    
     }
     
 }
@@ -51,9 +37,6 @@ if get_player_color(player) == 7 {
 
 //neco
 if (get_player_color(player) == 9){
-	
-
-	
     necoarc = true;
 }
 
@@ -309,5 +292,18 @@ if (move_cooldown[AT_NSPECIAL] == 0 && has_rune("H")){
 	if (attack_down){
 		just_jc_hold = true;
 	}
+
+}
+
+
+
+//hitfx code
+with (asset_get("hit_fx_obj")){
+
+    if (hit_fx == other.vfx_jce_clone){
+            hsp = lengthdir_x(20 * spr_dir, draw_angle);
+            vsp = lengthdir_y(20 * spr_dir, draw_angle);
+
+    }
 
 }

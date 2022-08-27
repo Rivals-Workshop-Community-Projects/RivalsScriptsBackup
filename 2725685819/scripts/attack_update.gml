@@ -262,10 +262,6 @@ switch(attack){
 		sound_play(sound_get("necograbstart"));
 		}
 		
-		if (necoarc)
-		if (window == 5 && window_timer == 1)
-		sound_play(sound_get("necograb"));
-		
 		if (sparda) {
 			if (window == 5 && window_timer == 1 && vergil){
 			sound_stop(sound_get("vergil_grab"));
@@ -640,6 +636,11 @@ switch(attack){
 	
 	case AT_DSPECIAL:
 
+		if (grabbed_player != noone)
+		{
+			attack_invince = 2;
+
+		}
 		
 		if (was_parried)
 		was_parried = false;
@@ -690,10 +691,14 @@ switch(attack){
 		
 		if (window == 3 && has_hit_player && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))
 		{
-			if (grabbed_player.trick_marked || free_chaos)
+			if (grabbed_player.trick_marked || free_chaos){
 				jce_loop = 0;
-			else
+				attack_end();
+				set_attack(AT_EXTRA_2);
+			}
+			else{
 				jce_loop = 1;
+			}
 		}
 		
 		if (window == 4)
@@ -777,11 +782,9 @@ switch(attack){
 				y = grabbed_player.y;
 				x = grabbed_player.x - 10 * spr_dir;
 
-				if (grabbed_player.trick_marked){
-				grabbed_player.trick_timer = 0;
-				}
-
+				attack_end();
 				set_attack(AT_FAIR);
+
 			}
 		}
 	
@@ -790,6 +793,181 @@ switch(attack){
 		
 		break;
 	
+	case AT_EXTRA_2:
+
+		can_move = false;
+
+		var stage_top = get_stage_data( SD_Y_POS );
+   		var stage_mid = ((room_width - get_stage_data( SD_X_POS )) + get_stage_data( SD_X_POS ))/2 ;
+
+		if (grabbed_player != noone)
+		{
+			attack_invince = 2;
+			force_depth = true;
+			depth = grabbed_player.depth - 1;
+		}
+
+		
+		if (window == 1){
+			hsp = 0;
+			vsp = 0;
+
+			if (window_timer % 4 == 0){
+
+				var x_offset, y_offset, cut_angle;
+
+				switch(jce_buff_loop){
+					case 0:
+						x_offset = -30;
+						y_offset = 40;
+						cut_angle = 10;
+					break;
+					case 1:
+						x_offset = 40;
+						y_offset = -20;
+						cut_angle = -20;
+					break;
+					case 2:
+						x_offset = 0;
+						y_offset = -30;
+						cut_angle = 100;
+					break;
+					case 3:
+						x_offset = -30;
+						y_offset = -70;
+						cut_angle = 40;
+					break;
+					case 4:
+						x_offset = -20;
+						y_offset = 20;
+						cut_angle = 120;
+					break;
+				}
+
+				shake_camera( 7, 5 );
+
+				var slash = spawn_hit_fx( grabbed_player.x + x_offset, grabbed_player.y + y_offset, vfx_jce_big );
+				slash.draw_angle = cut_angle;
+				slash.spr_dir = -1;
+				slash.depth = grabbed_player.depth - 3;
+
+				switch(jce_buff_loop){
+					case 0:
+						x_offset = -200;
+						y_offset = 40;
+						cut_angle = 10;
+					break;
+					case 1:
+						x_offset = 200;
+						y_offset = -20;
+						cut_angle = 160;
+					break;
+					case 2:
+						x_offset = 50;
+						y_offset = -150;
+						cut_angle = 280;
+					break;
+					case 3:
+						x_offset = 200;
+						y_offset = -200;
+						cut_angle = 200;
+					break;
+					case 4:
+						x_offset = -200;
+						y_offset = 150;
+						cut_angle = 45;
+					break;
+				}
+
+				var jce_clone = spawn_hit_fx( grabbed_player.x + x_offset, grabbed_player.y + y_offset, vfx_jce_clone );
+				jce_clone.spr_dir = 1;
+				jce_clone.draw_angle = cut_angle;
+				jce_clone.depth = grabbed_player.depth - 2;
+
+				var jce_circles = spawn_hit_fx( grabbed_player.x + x_offset/2, grabbed_player.y + y_offset/2, vfx_ftilt_destroy );
+				jce_circles.depth = grabbed_player.depth - 1;
+
+				sound_play(sound_get("telefinish"),0,0,0.7,1);
+
+				sound_play(sound_get("jc_sfx"),0,0,1,1);
+
+				jce_buff_loop++;
+			}
+
+			if (window_timer % 8 == 0){
+				if (necoarc){
+					jce_sfx_loop += 1;
+					if (jce_sfx_loop > 3)
+						jce_sfx_loop = 1;
+					sound_play(sound_get("necoteleport_" + string(jce_sfx_loop)));
+				}
+			}
+
+		}
+
+		if (window == 2){
+
+			if (window_timer == 10)
+			sound_play(sound_get("telefinish"),0,0,0.7,1);
+
+			var new_x = clamp(x, get_stage_data( SD_X_POS ) + 50, (room_width - get_stage_data( SD_X_POS )) - 50);
+
+			dist_range-=6;
+			x = lerp(x, new_x, 0.2);
+			y = lerp(y, stage_top, 0.2);
+		}
+		
+		if (window == 3){
+			if (window_timer == 1){
+
+			if (vergil)
+			sound_play(sound_get("vergil_rip"));
+
+			}
+
+			if (window_timer == 8){
+				sound_play(sound_get("sheathe_slow"));
+			}
+
+			if (window_timer > 8)
+			grabbed_player.jce_slice_time++;
+
+		}
+
+
+		if (window == 4){
+
+			if (window_timer == 2){
+				create_hitbox( AT_EXTRA_2, 8, grabbed_player.x, grabbed_player.y );
+
+				if (necoarc)
+				sound_play(sound_get("necograb"));
+				if (dante)
+				sound_play(sound_get("dante_jackpot"));
+
+			}
+			if (window_timer == 3){
+				sound_stop(sound_get("sheathe_slow"));
+				sound_play(sound_get("saya"));
+				shake_camera( 20, 10 );
+				jce_darken = false;
+				grabbed_player.trick_timer = 0;
+				grabbed_player.jce_circle = 0;
+				grabbed_player.jce_alpha = 0.25;
+				grabbed_player.jce_slice_time = 0;
+			}
+		}else
+		{
+			suppress_stage_music( 0.25, 0.75 );
+			jce_darken = true;	
+			grabbed_player.hsp = 0;
+			grabbed_player.vsp = 0;
+			grabbed_player.hitstop = 2;
+			grabbed_player.hitpause = true;
+			grabbed_player.spr_dir = -spr_dir;
+		}
+		
+		break;
 	
 	case AT_FAIR:
 	

@@ -7,6 +7,12 @@ if (get_player_color(player) == 7){
 }
 
 //champion alt
-if (get_player_color(player) == 10){
+if (get_player_color(player) == 12){
     set_character_color_slot(0, 255, 255, 255, .5);
+    set_character_color_slot(6, 176, 146, 157, .5);
+}
+
+//hector alt
+if (get_player_color(player) == 10){
+    outline_color = [129, 16, 180];
 }

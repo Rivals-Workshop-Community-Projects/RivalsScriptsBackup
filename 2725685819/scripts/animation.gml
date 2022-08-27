@@ -32,22 +32,41 @@ if abs(hud_offset) < 1{
 // var cam_y = lerp(prev_y,mid_y,0.5);
 
 // set_view_position( cam_x, cam_y );
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+
+	switch(attack){
+
+		case AT_EXTRA_2:
+		hurtboxID.sprite_index = hurtbox_spr;
+		
+		if (window <= 2){
+			sprite_index = asset_get("empty_sprite");
+		}
+
+		if (window != 4)
+			draw_indicator = false;
+		
+
+		break;
+
+		case AT_EXTRA_1:
+		hurtboxID.sprite_index = hurtbox_spr;
+		break;
+
+		case AT_USPECIAL:
+		if (window == 2)
+			{
+				sprite_index = asset_get("empty_sprite");
+				draw_indicator = false;
+				image_index = 5;
+			}
+		break;
 
 
-if (state == clamp(state,5,6))
-{
-	if  (attack == AT_EXTRA_1)
-	hurtboxID.sprite_index = hurtbox_spr;
-	
-	if (attack == AT_USPECIAL && window == 2)
-	{
-		sprite_index = asset_get("empty_sprite");
-		draw_indicator = false;
-		image_index = 5;
 	}
-	
 
 }
+
 
 if (state == PS_CROUCH && attack == AT_DTILT && prev_state == PS_ATTACK_GROUND && state_timer <= 3){
 image_index = 3;
@@ -292,7 +311,22 @@ if (state == PS_LANDING_LAG && (attack == AT_FAIR || attack == AT_UAIR || attack
 
 
 
+//faster hitbox_update
+with(pHitBox){
 
+	if (player == other.player){
+
+		if (attack == AT_EXTRA_2){
+			if (hbox_num == 8){
+				x = other.grabbed_player.x;
+				y = other.grabbed_player.y;
+			}
+		}
+
+	}
+
+
+}
 
 
 

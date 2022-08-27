@@ -1,0 +1,44 @@
+far_up_attacks[0] = AT_UAIR;
+far_up_attacks[0] = AT_USTRONG;
+far_up_attacks[0] = AT_NSPECIAL;
+far_down_attacks[0] = AT_NSPECIAL;
+far_side_attacks[0] = AT_FSPECIAL;
+far_side_attacks[1] = AT_NSPECIAL;
+far_side_attacks[2] = AT_DTILT;
+mid_side_attacks[0] = AT_FTILT; 
+mid_side_attacks[1] = AT_FSPECIAL;
+mid_side_attacks[2] = AT_DTILT;
+mid_side_attacks[3] = AT_NSPECIAL;
+close_up_attacks[0] = AT_NAIR;
+close_up_attacks[1] = AT_UAIR;
+close_up_attacks[2] = AT_UTILT;
+close_up_attacks[2] = AT_DTILT;
+close_down_attacks[0] = AT_NAIR;
+close_down_attacks[1] = AT_DAIR;
+close_down_attacks[2] = AT_DTILT;
+close_side_attacks[3] = AT_DSPECIAL;
+close_side_attacks[0] = AT_DTILT;
+close_side_attacks[1] = AT_DATTACK;
+close_side_attacks[2] = AT_NAIR;
+neutral_attacks[0] = AT_JAB;
+neutral_attacks[1] = AT_DTILT;
+neutral_attacks[2] = AT_DATTACK;
+neutral_attacks[3] = AT_NSPECIAL;
+
+buffer = 0
+ai_debug_var = "None"
+last_move_hit = 0
+last_hit_timer = 0
+last_move = 0
+run_jump = 0
+run_jump_move = 0
+on_edge = 0
+waveland = true
+
+//""learning"
+dtilt_waver = 3
+dtilt_cooldown = 0
+dattack_waver = -1
+dattack_cooldown = 0
+fspecial_waver = 3
+fspecial_cooldown = 0

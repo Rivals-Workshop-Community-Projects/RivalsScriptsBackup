@@ -1,5 +1,6 @@
 sprite_change_offset("idle", 36, 56);
 sprite_change_offset("hurt", 36, 56);
+sprite_change_offset("hurtground", 36, 56);
 sprite_change_offset("spinhurt", 36, 56);
 sprite_change_offset("bouncehurt", 36, 56);
 sprite_change_offset("crouch", 36, 56);
@@ -92,6 +93,8 @@ sprite_change_offset("chaos_weak", 7, 7);
 sprite_change_offset("chaos_strong", 7, 7);
 sprite_change_offset("storm_cd", 7, 7);
 
+sprite_change_offset("jce_clone", 24, 32);
+
 sprite_change_offset("plat", 64/2, 94/2);
 
 sprite_change_offset("slash", 64*2, 66*2);
@@ -101,6 +104,9 @@ sprite_change_offset("slash_med", 208, 200);
 sprite_change_offset("slashup_med", 208, 200);
 sprite_change_offset("stab_big", 370, 200);
 sprite_change_offset("stabup_big", 208, 400);
+sprite_change_offset("jce_big", 208, 400);
+
+sprite_change_offset("slice", 500, 500);
 
 sprite_change_offset("intro", 36, 56);
 sprite_change_offset("neco_intro", 36, 56);

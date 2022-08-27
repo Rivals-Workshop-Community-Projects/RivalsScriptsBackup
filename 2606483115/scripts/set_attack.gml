@@ -14,3 +14,13 @@ if(attack == AT_TAUNT){
         }
     }
 }
+
+if(attack == AT_FSTRONG && tired && window == 1){
+    attack = AT_FSTRONG_2
+}
+if(attack == AT_DSTRONG && tired && window == 1){
+    attack = AT_DSTRONG_2
+}
+if(attack == AT_USTRONG && tired && window == 1){
+    attack = AT_USTRONG_2
+}

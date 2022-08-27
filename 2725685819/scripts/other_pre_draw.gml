@@ -1,6 +1,7 @@
 //ee
 
 
+var char_mid = ((hurtboxID.bbox_top + hurtboxID.bbox_bottom)/2)
 
 //colors
 var trick_vfx_intensity = floor(trick_stack) * 2;
@@ -12,6 +13,8 @@ var style_sprite;
 var chaos_sprite_w;
 var chaos_sprite_s;
 
+var slice_sprite;
+
 if (instance_exists(other_player_id)){
 with (other_player_id){
 	
@@ -19,6 +22,8 @@ with (other_player_id){
 	chaos_sprite_w = sprite_get("chaos_weak");
 	style_sprite = sprite_get("style");
 	jump_sprite = sprite_get("jump");
+
+	slice_sprite = sprite_get("slice");
 	
 trick_player = get_player_color(player);
 	if (trick_player == 8) {
@@ -192,15 +197,98 @@ if (instance_exists(other_player_id)){
 		}
 	}
 
+
+
+
+if (other_player_id.jce_darken){
+
+var slice_dist = 8;
+var slice_offset = slice_dist - (slice_dist * (jce_slice_time/50));
+
+
+if (jce_sprite == -1){
+jce_sprite = sprite_index;
+jce_image = image_index;
+}
+
+sprite_index = asset_get("empty_sprite");
+
+draw_circle_colour(x, char_mid, 200, c_black, c_black, 0);
+
+gpu_set_blendmode_ext(bm_zero, bm_inv_src_colour);
+draw_circle_colour(x, char_mid, 8000, c_white, c_black, 0);
+gpu_set_blendmode(bm_normal);
+
+//top slice
+gpu_set_blendenable(false);
+gpu_set_colorwriteenable(false, false, false, true);
+draw_set_alpha(0);
+draw_rectangle_color(0,0, room_width,room_height, c_black, c_black, c_black, c_black, false);
+draw_set_alpha(1);
+draw_sprite_ext( slice_sprite, 0, x - slice_offset, char_mid + slice_offset, 1, 1, 0, c_white, 1 );   
+gpu_set_blendenable(true);
+gpu_set_colorwriteenable(true,true,true,true);    
+    
+gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+gpu_set_alphatestenable(true);
+shader_start();
+draw_sprite_ext( jce_sprite, jce_image, x - slice_offset, y + slice_offset, (1 + small_sprites) * spr_dir, 1 + small_sprites, 0, c_white, 1 );
+shader_end();
+gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);
+
+//bottom slice
+gpu_set_blendenable(false);
+gpu_set_colorwriteenable(false, false, false, true);
+draw_set_alpha(0);
+draw_rectangle_color(0,0, room_width,room_height, c_black, c_black, c_black, c_black, false);
+draw_set_alpha(1);
+draw_sprite_ext( slice_sprite, 1, x + slice_offset, char_mid - slice_offset, 1, 1, 0, c_white, 1 );    
+gpu_set_blendenable(true);
+gpu_set_colorwriteenable(true,true,true,true);    
+    
+gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+gpu_set_alphatestenable(true);
+shader_start();
+draw_sprite_ext( jce_sprite, jce_image, x + slice_offset, y - slice_offset, (1 + small_sprites) * spr_dir, 1 + small_sprites, 0, c_white, 1 );
+shader_end();
+gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);
+
+
+
+draw_set_alpha(0.25);
+draw_rectangle_color(0,0, room_width,room_height, c_black, c_black, c_black, c_black, false);
+
+
+
+
+
+draw_set_alpha(jce_alpha);
+draw_circle_colour(x, y - 40, jce_circle, trick_color, trick_color, 0);
+jce_circle += 25;
+jce_alpha -= 0.01;
+
+
+draw_set_alpha(1);
+
+}
+
+
+
 }
 
 
 
 
 
-
-
-
+// if (jce_sprite != -1){
+// shader_start();
+// draw_sprite_ext( jce_sprite, jce_image, x + (20), y - 20, 1 + small_sprites, 1 + small_sprites, 0, c_white, 1 );
+// shader_end();
+// }
 
 
 

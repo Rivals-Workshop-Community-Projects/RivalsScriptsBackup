@@ -1,4 +1,26 @@
 //intro anims
+
+var trick_player = get_player_color(player);
+var trick_color_r, trick_color_g, trick_color_b;
+
+
+
+//get color
+if (trick_player == 8) {
+trick_color_r = get_color_profile_slot_r(trick_player, 7);
+trick_color_g = get_color_profile_slot_g(trick_player, 7);
+trick_color_b = get_color_profile_slot_b(trick_player, 7);
+}
+if (trick_player != 8) {
+trick_color_r = get_color_profile_slot_r(trick_player, 1);
+trick_color_g = get_color_profile_slot_g(trick_player, 1);
+trick_color_b = get_color_profile_slot_b(trick_player, 1);
+}
+
+var trick_color = make_color_rgb(trick_color_r,trick_color_g,trick_color_b);
+
+
+
 if (get_training_cpu_action() == CPU_FIGHT){	
     
 	if (get_player_color(player) == 6) { //vergil
@@ -69,3 +91,22 @@ spr_angle,
 c_white, 0.2);
 }
 gpu_set_fog(0,0,0,0);
+
+
+
+
+
+// switch(attack){
+
+// 	case AT_EXTRA_2:
+
+// 		if (window == 1){
+// 			draw_sprite_ext( sprite_get("jce_lines"), 0, x, y, 2, 300, 0, c_white, 1);
+// 		}
+
+
+
+
+// 	break;
+
+// }

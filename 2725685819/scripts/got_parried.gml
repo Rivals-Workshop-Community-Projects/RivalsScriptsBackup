@@ -13,22 +13,34 @@
 hit_player_obj.trick_timer = 0;
 hit_player_obj.trick_stack = 0;
 
-if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1{
-	
-	jc_object.current_owner = hit_player_obj.player;
-	jc_object.spr_dir *= -1;
-	jc_object.hit_limit = 8;
-	jc_object.lifetime = 60*5;
-	
-	
+
+switch (my_hitboxID.attack){
+
+	case AT_NSPECIAL:
+		if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1{
+			
+			jc_object.current_owner = hit_player_obj;
+			jc_object.spr_dir *= -1;
+			jc_object.hit_limit = 8;
+			jc_object.lifetime = 60*5;
+			
+			
+		}
+
+		if my_hitboxID.hbox_num > 1{
+			was_parried = true;
+		}
+
+	break;
+
+	case AT_FSPECIAL:
+		if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1{
+			my_hitboxID.hitbox_timer = 0;
+		}
+	break;
+
+
+
 }
 
-if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num > 1{
-	was_parried = true;
-	
-}
 
-if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1{
-	my_hitboxID.hitbox_timer = 0;
-	
-}
