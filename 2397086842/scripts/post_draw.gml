@@ -14,7 +14,12 @@ with pHitBox {
 //
 
 
-
+if get_gameplay_time() > 90 && move_cooldown[AT_NSPECIAL] <= 0 {
+	if "ballspr" not in self {
+		ballspr = get_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE);
+	}
+	 draw_sprite_ext(ballspr ,  get_gameplay_time() / 4 + 1, sagefx1 , sagefy1 - 4 , 1, 1, 0, -1, 0.45)
+}
 
 
 

@@ -15,7 +15,8 @@ fspec_teleport_prat_land = 16;
 nspec_cooldown = 80;
 
 uspec_vsp = -7;
-uspec_charge_speed = 0.45;
+uspec_vsp_max = -12.5;
+uspec_charge_speed = 0.35;
 grabbed = -4;
 interact_ver = false;
 

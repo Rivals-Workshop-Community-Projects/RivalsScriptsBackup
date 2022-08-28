@@ -1,5 +1,11 @@
 ////
 
+
+if attack == AT_NSPECIAL && image_xscale = image_yscale {
+	player_id.move_cooldown[AT_NSPECIAL] = 120
+}
+
+
 if attack == AT_NSPECIAL && hbox_num == 12 {
 	if player_id.hitpause == true {
 		hitbox_timer -= 1
@@ -71,9 +77,7 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 		//sound_play(asset_get("sfx_spin"),false,noone,1,1.3)
 	}
 
-		if player_id.move_cooldown[AT_NSPECIAL] > 0{
-        	player_id.move_cooldown[AT_NSPECIAL] = 5
-		}
+
 		
 	if bouncing == true {
 			
@@ -769,10 +773,7 @@ if lockouttimer < 0 {
 
 if attack == AT_NSPECIAL && hbox_num > 3 && hbox_num < 12{
 	
-		if player_id.move_cooldown[AT_NSPECIAL] > 0 && hbox_num <= 6{
-        	player_id.move_cooldown[AT_NSPECIAL] = 5
-		}
-		
+
 		        	hit_priority = 9
 	nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
 		if nearbyhitbox != noone {

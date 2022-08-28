@@ -8,7 +8,7 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 16;
+var num_alts = 17;
 var alt_cur = get_player_color(player);
  
  
@@ -30,6 +30,7 @@ alt_name[12] = "Imperishable Night";
 alt_name[13] = "PC-98";
 alt_name[14] = "Yuuto";
 alt_name[15] = "Cool Bug";
+alt_name[16] = "Champion";
 
 
 //Patch

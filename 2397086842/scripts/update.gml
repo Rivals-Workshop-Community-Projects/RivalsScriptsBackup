@@ -1,5 +1,14 @@
 //Offscreen
 
+if move_cooldown[AT_NSPECIAL] == 41 or move_cooldown[AT_NSPECIAL] == 21 or move_cooldown[AT_NSPECIAL] == 1 {
+	hfx =  spawn_hit_fx(x - 30*spr_dir,y-25,sw2)
+	hfx.spr_dir = .4*spr_dir 
+	hfx.image_yscale = .4
+	hfx.depth = depth - 2
+	sound_play(asset_get("sfx_absa_whip3"),false,noone,.6, 1 + move_cooldown[AT_NSPECIAL]/20)
+	
+}
+
 if state == PS_CROUCH {
 	if (state_timer - 300)/20 = 311{
 		with oPlayer {
@@ -218,10 +227,14 @@ if sagemode < 0 {
 if !hitpause {
 	shsp = (shsp + hsp)/2
     svsp = (svsp + vsp)/2
-    
+    sagefx1 += floor(((x-30*spr_dir)-sagefx1)/(4 + random_func(1,8,true)))
+    sagefy1 += floor((y-26-sagefy1)/(4 + random_func(1,8,true)))
+         
 if sagemode != 0 {
-         sagefx1 += floor(((x-30*spr_dir)-sagefx1)/(4 + random_func(1,8,true)))
-         sagefy1 += floor((y-26-sagefy1)/(4 + random_func(1,8,true)))
+	
+	move_cooldown[AT_NSPECIAL] = 120
+	
+         
     if sagemode >= 2 or sagemode <= -2 {
          sagefx2 += floor(((x-30*spr_dir)-sagefx2)/(4 + random_func(2,8,true)))
          sagefy2 += floor((y-26-sagefy2)/(4 + random_func(2,8,true)))

@@ -291,6 +291,10 @@ if !hitpause {
         if window == 1 {
             
             if window_timer == 1 {
+            	hfx =  spawn_hit_fx(x - 30*spr_dir,y-25,sw2)
+	            hfx.spr_dir = .4*spr_dir 
+	            hfx.image_yscale = .4
+	            hfx.depth = depth - 2
                 ///if sagemode >= 0 {
                 ncharge = 0
                 ///} else {

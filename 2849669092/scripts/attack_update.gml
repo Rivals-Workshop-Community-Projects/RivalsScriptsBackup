@@ -245,7 +245,7 @@ if (attack == AT_FSPECIAL){
                             }
                         }
                         else{
-                            if (!bugs_out || (bugs_out && spr_dir != side)){
+                            if (spr_dir == side){
                                 hsp = 45*spr_dir;
                                 vsp = -9;
                             }
@@ -313,7 +313,7 @@ if (attack == AT_USPECIAL){
         hsp = 0;
         can_move = false;
         can_fast_fall = false;
-        if (uspec_vsp mod -4 > -1){
+        if (uspec_vsp mod -2 > -1){
             spawn_base_dust( x - (0 * spr_dir), y, "dash", spr_dir);
             //spawn_base_dust( x - (0 * spr_dir), y, "dash", spr_dir*-1);
             sound_play(asset_get("sfx_boss_shine"));
@@ -330,7 +330,7 @@ if (attack == AT_USPECIAL){
             sound_play(asset_get("sfx_boss_shine"));
             sound_play(asset_get("sfx_boss_shine"));
         }
-        if (uspec_vsp < -14){
+        if (uspec_vsp < uspec_vsp_max){
             window = 3;
             window_timer = 0;
         }

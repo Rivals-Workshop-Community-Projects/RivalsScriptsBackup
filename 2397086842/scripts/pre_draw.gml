@@ -20,6 +20,10 @@ if get_gameplay_time() < 92 {
     
 }
 
+if get_gameplay_time() > 91 && move_cooldown[AT_NSPECIAL] <= 0 {
+	 draw_sprite_ext(ballspr ,  get_gameplay_time() / 4 + 1, sagefx1 + 1 , sagefy1 - 4 , 1, 1, 0, -1, 1)
+}
+
 
 ///blue berry
 if get_player_color(player) == 13 {

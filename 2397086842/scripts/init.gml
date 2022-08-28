@@ -5,6 +5,7 @@ ballOffSpriteTwo = sprite_get("ballHud2")
 //
 
 
+
 hurtbox_spr = sprite_get("stand_box");
 crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = sprite_get("air_box");

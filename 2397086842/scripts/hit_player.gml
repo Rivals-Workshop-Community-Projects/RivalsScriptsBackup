@@ -5,10 +5,10 @@
 
 
 if sagemode >= 0 and sagemode <= 5 and  move_cooldown[AT_EXTRA_3] = 0 and hit_player_obj != self{
-    if sagemode == 0 {
-    sagefx1 = hit_player_obj.x
-    sagefy1 = hit_player_obj.y
-    }
+    //if sagemode == 0 {
+    //sagefx1 = hit_player_obj.x
+    //sagefy1 = hit_player_obj.y
+    //}
     if sagemode == 1 {
     sagefx2 = hit_player_obj.x
     sagefy2 = hit_player_obj.y
