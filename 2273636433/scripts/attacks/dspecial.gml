@@ -150,4 +150,5 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, sound_get("melee_wack"));
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSPECIAL, 5, HG_VISUAL_EFFECT, 254);
+set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_LOCKOUT, 10);
 

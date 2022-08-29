@@ -4,37 +4,6 @@ shader_end();
 
 var alt_cur = get_player_color(player);
  
-alt_name[0]  = "Default";
-alt_name[1]  = "Dr. Pink";
-alt_name[2]  = "Dr. Red";
-alt_name[3]  = "Dr. Green";
-alt_name[4]  = "Dr. Light Blue";
-alt_name[5]  = "Dr. Dark";
-alt_name[6]  = "Dr. Gold";
-alt_name[7]  = "Dr. Purple";
-alt_name[8]  = "Dr. Bluey";
-alt_name[9]  = "Dr. Yuuto";
-alt_name[10] = "Dr. Peace";
-alt_name[11] = "The Medic (Red)";
-alt_name[12] = "The Medic (Blu)";
-alt_name[13] = "Mario";
-alt_name[14] = "Luigi";
-alt_name[15] = "Dr. Wily";
-alt_name[16] = "Dr. Piccolo";
-alt_name[17] = "Dr. Strange";
-alt_name[18] = "Gold + Silver";
-alt_name[19] = "Abyss";
-alt_name[20] = "Gameboy";
-alt_name[21] = "NES";
-alt_name[22] = "BLMario";
-alt_name[23] = "Vaporwave";
-alt_name[24] = "TSMSB"; 
-alt_name[25] = "Nauseon Line";
-alt_name[26] = "Dr. Weird"; 
-alt_name[27] = "Dr. Pepper";
-
-num_alts = 28;
-//Alt
 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
 
@@ -85,3 +54,12 @@ if (get_color_profile_slot_b(9, 0) == 255) {
     sound_play(sound_get("pill_hit"));
     set_color_profile_slot(9, 0, get_color_profile_slot_r(9, 0), get_color_profile_slot_g(9, 0), get_color_profile_slot_b(9, 0) + 1);
 }
+
+
+//CSS Button Stuff
+
+	if get_player_color(player) ==11 || get_player_color(player) ==12 {
+		draw_sprite( sprite_get("sound_toggle"), get_synced_var(player), x + 178, y+112);
+	}
+	//draw_debug_text(x+ 100 ,x+ 100, string(cur_x));
+

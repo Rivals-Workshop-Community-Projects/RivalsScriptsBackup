@@ -88,6 +88,22 @@ if (valido == 1){
 	reroll = random_func( 1,6, true)+1;
 	num ++;		//Next
 }
+
+if(state==14)&&(state_timer==80){
+	soundpick=random_func( 1, 3, true);			//Chooses a RESPAWN sound
+	if get_synced_var( player) == 1 {
+		if(soundpick==0){
+			sound_play( sound_get("medic11"));
+		} 
+		if(soundpick==1){
+			sound_play( sound_get("medic12"));
+		}
+		if(soundpick==2){
+			sound_play( sound_get("medic13"));
+		} 
+	}
+}
+
 //---------------------------------------------------CURRENT PILL CODE--------------------------------------------
 //Now pringles compatible
 switch(order[pill]){

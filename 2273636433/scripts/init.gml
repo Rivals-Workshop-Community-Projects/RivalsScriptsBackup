@@ -16,7 +16,7 @@ pratfall_anim_speed = .25;
 
 //DR MARIO RELEVANT STATS
 walk_speed = 3.25;
-walk_accel = 0.2;
+walk_accel = 0.25;
 initial_dash_time = 14;
 initial_dash_speed = 6.25;
 dash_speed = 5.75;
@@ -139,6 +139,9 @@ grabbedid = undefined;
 message = 0;
 checker=0;
 golpeado=9;
+dust_pos1=0;
+dust_pos2=0;
+soundpick = 0;
 
 //Pill_Hit = hit_fx_create( sprite_get("pill_hit"), 6 );
 next_group = 0;

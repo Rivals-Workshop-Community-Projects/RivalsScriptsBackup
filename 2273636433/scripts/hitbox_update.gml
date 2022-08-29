@@ -76,9 +76,9 @@ if attack == AT_NSPECIAL{
 					else {
 						vsp = -abs(vsp);		
 						length = length* 3/4;
-						if abs(hsp) <= 2.5 { hsp = 4.5*player_id.spr_dir; }
+						if abs(hsp) <= 2.5 { hsp = 5*player_id.spr_dir; }
 						else{
-							hsp = abs(hsp)*1.75*player_id.spr_dir; 
+							hsp = abs(hsp)*2*player_id.spr_dir; 
 						}
 						spr_dir = player_id.spr_dir;
 						player = orig_player;				//Just in case, its my pill again

@@ -9,6 +9,7 @@ suppress_cursor = browser_show;
 //Click Menu
 if ((get_instance_x(cursor_id) >= x + button_cord[0] && get_instance_x(cursor_id) <= x + button_cord[0] + 30) && (get_instance_y(cursor_id) >= y + button_cord[1] && get_instance_y(cursor_id) <= y + button_cord[1] + 26) && menu_a_pressed) {
 	menu_a_pressed = false;
+	keyboard_lastkey = -1;
 	search_term = "";
 	browser_show = !browser_show;
 	if (browser_show) {
@@ -26,6 +27,7 @@ if (menu_b_pressed) {
 	browser_show = false;
 }
 
+/*
 if browser_show {
 	if (menu_y_pressed || menu_x_pressed) {
 		menu_y_pressed = false;

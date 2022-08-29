@@ -79,8 +79,8 @@ if attack == AT_USPECIAL{
 
 if attack == AT_TAUNT{
 	if window_timer == 12{
-		if message == 0 && (get_player_color(player) == 11 || get_player_color(player) == 12) {
-			message= (current_second+current_hour+current_minute*2)%6 + 1;		//Chooses a message
+		if message == 0 && ( get_synced_var(player) == true) {
+			message= (current_second+current_hour+current_minute*2)%7 + 1;		//Chooses a message
 			switch(message){
 				case 1:
 					sound_play(sound_get("medic1"));
@@ -100,8 +100,11 @@ if attack == AT_TAUNT{
 				case 6:
 					sound_play(sound_get("medic6"));
 				break;
+				case 7:
+					sound_play(sound_get("medic0"));
+				break;
 			}
-			message = 7;
+			message = 8;
 		}
 	}
 
@@ -190,7 +193,7 @@ if(attack==AT_DSPECIAL){
 }
 
 if attack == AT_FSTRONG {
-	if window== 3 && window_timer == 5 && ! has_hit {
+	if window== 3 && window_timer == 5 && !shock_hit {
 		hit_fx_create(20, 6 );
 		spawn_hit_fx( x +72*spr_dir, y-38, 20 );
 		sound_play(  asset_get("sfx_absa_dattack"));
@@ -374,12 +377,12 @@ if (has_rune("I")){
 
 if (has_rune("J")){
 	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 320);
+	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 320);
 	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 320);
-	set_hitbox_value(AT_FAIR, 4, HG_ANGLE, 320);
 } else {
 	reset_hitbox_value(AT_FAIR, 1, HG_ANGLE);
+	reset_hitbox_value(AT_FAIR, 2, HG_ANGLE);
 	reset_hitbox_value(AT_FAIR, 3, HG_ANGLE);
-	reset_hitbox_value(AT_FAIR, 4, HG_ANGLE);
 }
 
 if (has_rune("N")){

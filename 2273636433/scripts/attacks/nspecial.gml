@@ -58,6 +58,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("pill_hit"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 109);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 12);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .8);
 
 //set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Cooldown: 42f");
 

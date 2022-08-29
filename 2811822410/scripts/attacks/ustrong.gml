@@ -14,6 +14,8 @@ for (i = 0; i <= 1; i++) {
 	set_window_value(curr_attack, 1, AG_WINDOW_TYPE, 1);
 	set_window_value(curr_attack, 1, AG_WINDOW_LENGTH, 7);
 	set_window_value(curr_attack, 1, AG_WINDOW_ANIM_FRAMES, 2);
+	set_window_value(curr_attack, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+	set_window_value(curr_attack, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
 
 	set_window_value(curr_attack, 2, AG_WINDOW_TYPE, 1);
 	set_window_value(curr_attack, 2, AG_WINDOW_LENGTH, 4);

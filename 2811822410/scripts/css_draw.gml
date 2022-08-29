@@ -1,8 +1,8 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "1.6.1";
-patch_day = "24";
+patch_ver = "1.6.2";
+patch_day = "28";
 patch_month = "AUG";
 
 var num_alts = 32;
@@ -176,7 +176,6 @@ draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argumen
 
 		//Menu Typing
 		if (keyboard_lastkey != -1) {
-			new_input()
 			print(keyboard_lastkey);
 			if (
 				keyboard_lastkey == 8 || //Backspace
@@ -198,6 +197,7 @@ draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argumen
 				}
 			}
 			keyboard_lastkey = -1;
+			new_input()
 		}
 
 		if (browser_type == "text") {

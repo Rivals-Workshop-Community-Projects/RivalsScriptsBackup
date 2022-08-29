@@ -69,5 +69,5 @@ set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_Y_OFFSET, 30);
-set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW_CREATION_FRAME, 4);

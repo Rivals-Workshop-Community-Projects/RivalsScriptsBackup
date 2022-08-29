@@ -71,6 +71,13 @@ if my_hitboxID.attack == AT_USPECIAL {
     }
 }
 
+
+if my_hitboxID.attack == AT_FSTRONG {
+    if my_hitboxID.hbox_num == 1 {
+        shock_hit=1;
+    }
+}
+
 //Called of every time the oponent is hit
 golpeado =  get_player_team( hit_player_obj.player);
 checker = get_player_stocks( hit_player_obj.player);

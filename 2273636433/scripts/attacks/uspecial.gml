@@ -118,3 +118,4 @@ set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 148);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("melee_stronghit2"));
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_USPECIAL, 3, HG_HIT_LOCKOUT, 10);

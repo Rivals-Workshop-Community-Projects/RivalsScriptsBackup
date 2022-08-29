@@ -50,6 +50,9 @@ sprite_change_offset("phone", 77, 152);
 sprite_change_offset("plat", 50, 0);
 sprite_change_offset("intro", 36, 134);
 
+sprite_change_offset("dust1", 33, 22);
+sprite_change_offset("dust2", 33, 22);
+
 //projectile offsets
 sprite_change_offset("nspecial_proj_colorcombo",17, 9);
 sprite_change_offset("nspecial_proj_colorcombo2",17, 9);

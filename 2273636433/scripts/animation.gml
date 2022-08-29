@@ -17,6 +17,16 @@ switch (state){
 		sprite_index = sprite_get("idle");
         image_index = floor(image_number*state_timer/(image_number*10));
 		}
+		if state_timer == 20 && get_synced_var(player) == true {
+		soundpick=random_func( 1, 3, true);			//Chooses a DAMAGE sound
+			if(soundpick==0){
+				sound_play(sound_get("medic7"));
+			}else if(soundpick==1){
+				sound_play(sound_get("medic0"));
+			}else if(soundpick==2){
+				sound_play(sound_get("medic14"));
+			}
+		}
 	break;
     
 	case PS_PRATLAND:

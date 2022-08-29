@@ -1,6 +1,6 @@
 //post-draw
 
-//draw_debug_text(x  ,y, string(message));
+//draw_debug_text(x  ,y, string(hsp));
 //draw_debug_text(x , y-20 , string(doc_score));
 //draw_debug_text(x , y-40 , string(doc_ditto));
 //draw_debug_text(x , y-60 , string(done_reflecting_article));
@@ -8,9 +8,9 @@
 //draw_debug_text(x , y-80 , string(valido));
 
 /*with pHitBox{ //i was here
-	draw_debug_text(x +30 , y , string(id%1000));
+	//draw_debug_text(x +30 , y , string(id%1000));
 	draw_debug_text(x +60 , y , string(hsp));
-	draw_debug_text(x +90 , y , string(hitbox_timer));
+	//draw_debug_text(x +90 , y , string(hitbox_timer));
 }*/
 
 //DRAWING PILL FOR NSPECIAL - IF FRAME DATA IS CHANGED THIS MUST BE UPDATED
@@ -150,8 +150,16 @@ if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
 		if window_timer == (get_window_value(49, 1, AG_WINDOW_LENGTH)-1) {
 			spawn_hit_fx( x +55*spr_dir, y-45, 109 );
 		}
-	
 	}
+
+	if attack == AT_DATTACK {
+		//DUST RECREATED CAUSE GIIK MESSED UP APARENTLY
+		if (window_timer%6==0){ dust_pos1 = x;}
+		if (window_timer%3==0 && window_timer%6!=0  ){ dust_pos2 = x;}
+		if (window==2 ){draw_sprite_ext( sprite_get("dust2"), window_timer, dust_pos2- 42*spr_dir, y, spr_dir, 1, 0, c_white, 1);}
+		if ((abs(hsp)> 3  || hitpause) && window> 1 ){draw_sprite_ext( sprite_get("dust1"), window_timer, dust_pos1- 42*spr_dir, y, spr_dir, 1, 0, c_white, 1); }
+	}
+	
 }
 
 //Show Ownership projectiles
