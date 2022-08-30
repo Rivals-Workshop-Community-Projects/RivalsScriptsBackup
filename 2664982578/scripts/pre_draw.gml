@@ -41,6 +41,8 @@ if(attack == AT_EXTRA_1){
     		shiny = 11;
     	}if(get_player_color(player)== 26){
     		shiny = 12;
+    	}if(get_player_color(player)== 27){
+    		shiny = 13;
     	}
     	}
         }if(window == 3 || window == 4 || window == 5){

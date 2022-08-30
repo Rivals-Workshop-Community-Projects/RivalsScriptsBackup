@@ -1,7 +1,65 @@
 switch (get_player_color(player)){
     
+    //sark
+    case 1:
+
+    if ("champ_button" in self){
+        if (champ_button){
+
+            switch(string_lower(get_player_name(player))){
+                case "sark":
+                set_color_profile_slot( 1, 0, 125, 45, 27 ); //hoodie
+                set_color_profile_slot( 1, 1, 126, 126, 126 ); //blade
+                set_color_profile_slot( 1, 2, 156, 85, 31 ); //hood
+                set_color_profile_slot( 1, 3, 135, 103, 14 ); //shorts
+                set_color_profile_slot( 1, 4, 112, 98, 98 ); //hair
+                set_color_profile_slot( 1, 5, 79, 53, 17 ); //sheathe
+                set_color_profile_slot( 1, 6, 255, 208, 176 ); //skin
+                set_color_profile_slot( 1, 7, 255, 255, 255 ); //PURE WHITE
+
+                set_character_color_shading( 2, 1.2 );
+                set_character_color_shading( 6, 1.2 ); //skin
+                set_article_color_slot( 1, 126,126,126,1);
+
+                if ("vergil_taunt" in self){
+                    vergil_taunt = true;
+                }
+
+                break;
+                default:
+                set_color_profile_slot( 1, 0, 64, 150, 207 ); //hoodie
+                set_color_profile_slot( 1, 1, 171, 87, 255 ); //blade
+                set_color_profile_slot( 1, 2, 252, 255, 253 ); //hood
+                set_color_profile_slot( 1, 3, 79, 55, 55 ); //shorts
+                set_color_profile_slot( 1, 4, 62, 79, 148 ); //hair
+                set_color_profile_slot( 1, 5, 25, 33, 61 ); //sheathe
+                set_color_profile_slot( 1, 6, 255, 199, 150 ); //skin
+                set_color_profile_slot( 1, 7, 255, 255, 255 ); //PURE WHITE
+                break;
+            }
+
+        }
+        else
+        {
+            set_color_profile_slot( 1, 0, 64, 150, 207 ); //hoodie
+            set_color_profile_slot( 1, 1, 171, 87, 255 ); //blade
+            set_color_profile_slot( 1, 2, 252, 255, 253 ); //hood
+            set_color_profile_slot( 1, 3, 79, 55, 55 ); //shorts
+            set_color_profile_slot( 1, 4, 62, 79, 148 ); //hair
+            set_color_profile_slot( 1, 5, 25, 33, 61 ); //sheathe
+            set_color_profile_slot( 1, 6, 255, 199, 150 ); //skin
+            set_color_profile_slot( 1, 7, 255, 255, 255 ); //PURE WHITE
+        }
+    }
+
+    break;
+
     //DMC
     case 6:
+            if ("vergil_taunt" in self){
+            vergil_taunt = true;
+            }
+
     case 7:
     set_character_color_shading( 0, 0.6 ); //hoodie
     set_character_color_shading( 3, 0.6 ); //shorts
@@ -89,7 +147,7 @@ switch (get_player_color(player)){
     //set_character_color_shading( 6, 0 ); //blade
     //set_character_color_shading( 7, 0 ); //PURE WHITE
     break;
-    
+
     default:
     break;
 }

@@ -3,7 +3,51 @@
 
 if "cosmicman" in self {
 	
-	if playhitsound > 0 && uped >= 4{
+	if cosmicmusic > 0 { 
+ 	var volume = 0;
+        volume = get_local_setting(3);
+        
+ 	if cosmicmusic == 120 {
+ 	   switch uped	{
+ 	   	case 1 :
+ 	   	sound_play(sound_get("cosmicman1"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 50
+ 	   	break;
+ 	   	
+ 	   	case 2 :
+ 	   	sound_stop(sound_get("cosmicman1"))
+ 	   	sound_play(sound_get("cosmicman2"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 60*4
+ 	   	break;
+ 	   	
+ 	   	case 3 :
+ 	   	sound_stop(sound_get("cosmicman2"))
+ 	   	sound_play(sound_get("cosmicman3"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 60*45
+ 	   	break;
+ 	   	
+ 	   	case 4 :
+ 	   	sound_stop(sound_get("cosmicman3"))
+ 	   	sound_play(sound_get("cosmicman4"),false,noone,min(2*volume, 1),1)
+ 	   	cosmicmusic -- 
+ 	   	comextended = 60*80
+ 	   	break;
+ 	   }
+ 	}
+ 	
+ 	
+ 	if comextended == 0 {
+ 	 cosmicmusic --
+ 	 suppress_stage_music( 0, 0.006 )
+ 	} else {
+ 	 comextended --
+ 	 suppress_stage_music( 0, 0.05 )
+ 	}
+   }
+	if playhitsound > 0 && uped >= 3{
 		playhitsound -- 
 		if playhitsound == 50 {
 			sound_play(echo,false,noone,0.6,0.9)
@@ -16,19 +60,19 @@ if "cosmicman" in self {
 		}	
 	}
 	
-	if uped >= 4 {
+	if uped >= 4 && state != PS_PRATFALL and state != PS_PRATLAND and visible {
 		if get_gameplay_time() % 2 == 0 {
-		          	gsfx1 = spawn_hit_fx(x, y - 30 - random_func(2,51,true) , sgf1)
-                      gsfx1.spr_dir = 0.4
-                      gsfx1.image_yscale = 0.4
-                      gsfx1.draw_angle = random_func(1,360,true) 
+		          	gsfx1 = spawn_hit_fx(floor(x), floor(y) - 24 - random_func(2,51,true) , sgf1)
+                      gsfx1.spr_dir = 0.3
+                      gsfx1.image_yscale = 0.3
+                      gsfx1.draw_angle = random_func(1,360,true)
                       gsfx1.depth = depth + 4
 		}
 		if get_gameplay_time() % 4 == 2 {
-		              gsfx2 = spawn_hit_fx(x, y - 30 - random_func(2,51,true) , sgf2)
-                      gsfx2.spr_dir = 0.4
-                      gsfx2.image_yscale = 0.4
-                      gsfx2.draw_angle = random_func(1,360,true) 
+		              gsfx2 = spawn_hit_fx(floor(x), floor(y) - 24 - random_func(2,51,true) , sgf2)
+                      gsfx2.spr_dir = 0.3
+                      gsfx2.image_yscale = 0.3
+                      gsfx2.draw_angle = random_func(1,360,true)
                       gsfx2.depth = depth + 4
 		}
 	}
@@ -37,13 +81,14 @@ if "cosmicman" in self {
 	with oPlayer {
 		if "cosmicman" not in self {
 			if state_cat == SC_HITSTUN && state_timer % 2 == 0 && other.uped >= 3 {
+				if !hitpause{
 				with other {
 					 switch random_func(player,2,true) {
                       case 0:
                       gsfx1 = spawn_hit_fx(other.x, other.y - 40 , sgf1)
                       gsfx1.spr_dir = 0.4
                       gsfx1.image_yscale = 0.4
-                      gsfx1.draw_angle =  get_gameplay_time()%360
+                      gsfx1.draw_angle =  random_func(1,360,true)
                       gsfx1.depth = other.depth + 2
                       break;
                       
@@ -51,13 +96,24 @@ if "cosmicman" in self {
                       gsfx2 = spawn_hit_fx(other.x, other.y - 40 , sgf2)
                       gsfx2.spr_dir = 0.4
                       gsfx2.image_yscale = 0.4
-                      gsfx2.draw_angle =  get_gameplay_time()%360
+                      gsfx2.draw_angle =  random_func(1,360,true)
                       gsfx2.depth = other.depth + 2
                       break;
       
                     
                     }
 				}
+			  } else {
+			  	with other {
+                       if uped >= 4 {
+                          gfx3 = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 50 , fgf3)
+                          gfx3.spr_dir = max( 0 , max((min(1.3,abs(hit_player_obj.old_hsp/12) + abs(hit_player_obj.old_vsp/12))),0.7) - ((60/playhitsound)/2))
+                          gfx3.image_yscale = max( 0 , max((min(1.3,abs(hit_player_obj.old_hsp/12) + abs(hit_player_obj.old_vsp/12))),0.7) - ((60/playhitsound)/2))
+                          gfx3.draw_angle = get_gameplay_time()*2
+                          gfx3.depth = other.depth + 2
+                        }
+			  	}
+			  }
 			}
 		}
 	}
@@ -646,7 +702,7 @@ if move_cooldown[AT_USPECIAL] > 0 && cheapmode != 3 {
 	fall_through = true
 	if place_meeting(x,y+vsp + 5,asset_get("par_block")) or !free {
 		vsp = (abs(vsp)) * -0.5 - 2
-		hsp /= 2
+		hsp /= 1.2
 		sound_play(asset_get("sfx_absa_kickhit"));
 		fx = spawn_hit_fx(x,y - 50,306)
     	fx.pause = 6

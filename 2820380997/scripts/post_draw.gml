@@ -7,7 +7,6 @@ draw_text_colour_outline(x - (spr_dir * 0), y - 80 - 15, string(clone_hud_text),
 draw_text_colour_outline(x - (spr_dir * 0), y - 80 - 31, string(get_player_damage(player)) + "%", c_white,c_white,1,c_black,c_black,1,2,10,1,1,0);
 }
 
-
 #define draw_text_colour_outline
 ///draw_text_colour_outline(x, y, string, textColor1, textColor2, textAlpha, outlineColor1, outlineColor2, outlineAlpha, outlineThickness, outlineQuality, xscale, yscale, angle);
 //By Blokatt - @blokatt, blokatt.net

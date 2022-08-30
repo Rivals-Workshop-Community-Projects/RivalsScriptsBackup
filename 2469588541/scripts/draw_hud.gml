@@ -500,6 +500,18 @@ if ("practice" in self)
 						AddText("Removed Jobble");
 						AddText("");
 						AddText("FSpecial Up Throw Hitstun Multiplier 0.35 -> 0.7");
+						AddText("");
+						LineBreak();
+						AddText("v1.26.1 - 25 Aug 2022");
+						AddText("");
+						AddText("Henry Stickmin: added death quips");
+						AddText("Po & Gumbo: added food compat");
+						AddText("");
+						AddText("meow meow meow meow meow meow (ahh)");
+						AddText("meow meow meow meow meow meow meow meow (ahh)");
+						AddText("meow meow meow meow meow meow (ahh)");
+						AddText("meow meow meow meow meow meow meow meow (ahh)");
+						AddText("(Thanks Causeimapilot for the frames)");
 						break;
 				}
 				DrawTutorialBlock();

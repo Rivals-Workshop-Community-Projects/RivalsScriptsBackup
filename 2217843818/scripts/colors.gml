@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 22 );
 
 // cyan
 set_color_profile_slot( 1, 0, 54, 255, 218 ); //body

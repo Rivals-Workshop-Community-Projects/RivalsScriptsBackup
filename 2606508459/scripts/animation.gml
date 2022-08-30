@@ -3,6 +3,8 @@ var curr_alt = get_player_color(player);
 switch (state)
 {
     case PS_IDLE:
+        //---> ALT RELATED CODE
+        
         //SPECIAL COSTUMES
         if (!moved && curr_alt == alt_halloween) { sprite_index = sprite_get("idle_halloween"); } 
         else if (curr_alt == alt_gen8) { sprite_index = sprite_get("idle_genesis"); } 

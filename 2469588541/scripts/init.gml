@@ -130,6 +130,7 @@ beegstar_effect = hit_fx_create(sprite_get("bighit"), 16);
 
 // transcend
 transcounter = 0;
+meowID = noone;
 
 // aura
 aura = false;
@@ -192,3 +193,8 @@ fs_char_portrait_y = 96;
 fs_portrait_x = 96;
 //kirbyability = 16;
 //swallowed = 0;
+has_fail = true;
+fail_text = "Star Fox?
+More like Star Fail!";
+pot_compat_variable = sprite_get("plate");
+pot_compat_text = "Look a Cake!"

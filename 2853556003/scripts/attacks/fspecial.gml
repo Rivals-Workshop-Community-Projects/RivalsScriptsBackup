@@ -71,15 +71,15 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 15);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2)
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_GRAVITY, 0);
-set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 11);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, -55);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, 20);
-set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 65);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 45);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 60);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 40);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 1);

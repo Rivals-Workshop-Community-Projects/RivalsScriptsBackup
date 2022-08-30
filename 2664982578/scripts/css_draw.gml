@@ -2,8 +2,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "0.0";
-patch_day = "5";
-patch_month = "JUL";
+patch_day = "24";
+patch_month = "AUG";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);
@@ -53,6 +53,7 @@ alt_name[23]  = ":Eggdog:";
 alt_name[24]  = "What the fuck is that"; 
 alt_name[25]  = "Ḙ̵̢̩̙̿̕ģ̵̘̻̀̾͂̎ģ̶̱̦͚̱͆̚ ̶̙͉͐̌̄ͅM̷̙̑̓̒͝a̸͚͂͛̎̃̚c̶͓͆̉͊̀͝h̸̺̟̆͊ȋ̷̛̠̰̘̂̚͝ǹ̸͇̮̥̲́̓͒̓e̶̡̹̮͉̓̓͆̈́̕ ̴̱̹͙̥̘̃̀͝Ḇ̸̖̠̪̮̊̉͠r̴̗̗̼̈́̀̈́̚̚͜o̷̢͂̑̅͝ͅk̴̛͎͇̜e̸͎͍̰͊̑̐̊̀"; 
 alt_name[26]  = "Cosmic Dog";  
+alt_name[27]  = "Breakfast Burger"; 
  
 if (get_player_color(player)==24){
     if (drawtime == 1){
@@ -118,7 +119,7 @@ if (get_player_color(player)==19){
     }
   */  
 //Special Icon
-if (get_player_color(player)== 18 || get_player_color(player)== 23 || get_player_color(player)== 24 || get_player_color(player)== 25){
+if (get_player_color(player)== 18 || get_player_color(player)== 23 || get_player_color(player)== 24 || get_player_color(player)== 25 || get_player_color(player)== 27){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
     
@@ -168,8 +169,10 @@ if get_player_color(player) = 29 {
 init_shader();
 */
 
+/*
 muno_event_type = 6;
 user_event(14);
+*/
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));

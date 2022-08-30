@@ -101,7 +101,7 @@ gpu_set_fog(0,0,0,0);
 }
 
 
-if (state == clamp(state,5,6)) && (attack == AT_TAUNT_2) && (get_player_color(player) == 6){
+if (state == clamp(state,5,6)) && (attack == AT_TAUNT_2) && (vergil_taunt){
 //THE STORM
 var camx = (view_get_xview() + view_get_wview()/2);
 var camy = (view_get_yview() + view_get_hview()/2);

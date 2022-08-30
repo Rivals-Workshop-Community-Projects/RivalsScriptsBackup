@@ -7,6 +7,18 @@ switch(attack){
 		trigger_b_reverse();
 		break;
 }
+
+if (ewgf){
+	if (window == 1 && window_timer == 1){
+		set_attack(AT_NSPECIAL);
+	}else
+	{
+		if (attack != AT_NSPECIAL)
+			ewgf = false;
+	}
+}
+
+
 // trick detection
 
 var nearest_dist = -1;
@@ -301,8 +313,9 @@ switch(attack){
 	case AT_TAUNT_2:
 	
 		if (window == 1 && window_timer == 1){
-		if vergil
+		if vergil_taunt
 		motivation = 60*26;
+
 		if necoarc{
 		var neco_variation = 1 + random_func( 0, 4, true );
 		sound_play(sound_get("neco_taunt_" + string(neco_variation)));
@@ -310,7 +323,7 @@ switch(attack){
 		
 		}
 		
-		if (get_player_color(player) == 6){
+		if (vergil_taunt){
 			
 			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) && vergil{
 			var motivation_variation = 1 + random_func( 0, 2, true );
@@ -391,7 +404,7 @@ switch(attack){
 			sound_play(sound_get("jc_fast_sfx"));
 			}
 		}
-		else if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && (special_down||trick_cancel||jc_range) && (nearest_dist != -1))
+		else if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && (special_down||trick_cancel||jc_range) && (nearest_dist != -1) && !ewgf)
 		{
 			    if (free_chaos){
 				take_damage( player, -1, 10 );
@@ -421,12 +434,22 @@ switch(attack){
 
 		if (window == 3 && window_timer == 1 && !hitpause){
 			
-			if (!jc_buff)
-			jc_object = instance_create( x + (75 * spr_dir), y - 40, "obj_article1" );
-			
-			if (jc_buff){
-				if (instance_exists(grabbed_player))
-				jc_object =	instance_create( grabbed_player.x, grabbed_player.y - 40, "obj_article1" );
+			if (!ewgf){
+				if (!jc_buff)
+				jc_object = instance_create( x + (75 * spr_dir), y - 40, "obj_article1" );
+				
+				if (jc_buff){
+					if (instance_exists(grabbed_player))
+					jc_object =	instance_create( grabbed_player.x, grabbed_player.y - 40, "obj_article1" );
+				}
+			}
+			else
+			{
+				jc_object = instance_create( x + (75 * spr_dir), y - 40, "obj_article1" );
+				sound_play(sound_get("slicef2"));
+				jc_object.jc_buff = true;
+				jc_object.jc_ewgf = true;
+				ewgf = false;
 			}
 			
 		}
@@ -531,7 +554,6 @@ switch(attack){
 			grabbed_player = nearest_player;
 			grabbed_player.trick_timer = 0;
 			
-			//print_debug(string(nearest_dist));
 			}
 	}	
 		
@@ -566,7 +588,6 @@ switch(attack){
 				y = grabbed_player.y;
 				}
 				
-				//print_debug(string(trick_fall));
 				if (grabbed_player.state_cat == SC_HITSTUN){
 					
 				if (window_timer == 1 && hitstop == 0){
@@ -590,7 +611,6 @@ switch(attack){
 				grabbed_player.y = floor(lerp(grabbed_player.y, y, 0.25));
 				hsp = 0;
 				vsp = -0;
-				//print_debug(string(trick_fall));
 				
 				if (grabbed_player.state_cat == SC_HITSTUN){
 				grabbed_player.hitpause = true;
@@ -799,6 +819,7 @@ switch(attack){
 
 		var stage_top = get_stage_data( SD_Y_POS );
    		var stage_mid = ((room_width - get_stage_data( SD_X_POS )) + get_stage_data( SD_X_POS ))/2 ;
+   		var new_x;
 
 		if (grabbed_player != noone)
 		{
@@ -811,6 +832,7 @@ switch(attack){
 		if (window == 1){
 			hsp = 0;
 			vsp = 0;
+			
 
 			if (window_timer % 4 == 0){
 
@@ -910,15 +932,19 @@ switch(attack){
 			if (window_timer == 10)
 			sound_play(sound_get("telefinish"),0,0,0.7,1);
 
-			var new_x = clamp(x, get_stage_data( SD_X_POS ) + 50, (room_width - get_stage_data( SD_X_POS )) - 50);
+			new_x = clamp(x, get_stage_data( SD_X_POS ) + 50, (room_width - get_stage_data( SD_X_POS )) - 50)
 
 			dist_range-=6;
-			x = lerp(x, new_x, 0.2);
-			y = lerp(y, stage_top, 0.2);
+			x = lerp(x, new_x, 0.5);
+			y = lerp(y, stage_top, 0.5);
 		}
 		
 		if (window == 3){
 			if (window_timer == 1){
+
+			new_x = clamp(x, get_stage_data( SD_X_POS ) + 50, (room_width - get_stage_data( SD_X_POS )) - 50)
+			x = new_x;
+			y = stage_top;
 
 			if (vergil)
 			sound_play(sound_get("vergil_rip"));
@@ -1042,7 +1068,6 @@ switch(attack){
 
 
 					}
-					print(get_instance_x( stick_wall ));
 
 					//push towards
 					
@@ -1121,8 +1146,8 @@ switch(attack){
 			if window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && taunt_down{
 				window_timer = 2
 			}
-		}else if (get_player_color(player) == 6){
-			// print_debug(string(vergil) + " " + string(window_timer) + " " + string(motivation));
+		}else if (vergil_taunt){
+
 			
 			if (window == 2)
 			{
@@ -1135,7 +1160,7 @@ switch(attack){
 
 			}
 			
-			if (vergil && window == 3 && window_timer == 1 && motivation == 0)
+			if (vergil_taunt && window == 3 && window_timer == 1 && motivation == 0)
 			{
 			create_hitbox( AT_TAUNT_2, 1, x, y );
 			}
@@ -1421,3 +1446,6 @@ attack != 49 &&
 
 
 saya_check_window = window;
+
+tpx_event = 2;
+user_event(15);

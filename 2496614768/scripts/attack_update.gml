@@ -908,13 +908,14 @@ switch attack {
             	set_attack(AT_NAIR)
             	window = 4
             	window_timer = 0
-            	prat_land_time = 20
+            	prat_land_time = 15
             }
             if (left_down && !right_down && spr_dir == -1) or (!left_down && right_down && spr_dir == 1) {
+            	x += 30*spr_dir
             	set_attack(AT_FAIR)
-            	window = 2
-            	window_timer = 0
-            	prat_land_time = 35
+            	window = 1
+            	window_timer = 2
+            	prat_land_time = 25
             }
             if (left_down && !right_down && spr_dir == 1) or (!left_down && right_down && spr_dir == -1) {
             	set_attack(AT_BAIR)
@@ -932,7 +933,7 @@ switch attack {
             	set_attack(AT_DAIR)
             	window = 2
             	window_timer = 0
-            	prat_land_time = 25
+            	prat_land_time = 15
             }
             
             move_cooldown[AT_FSPECIAL_2] = 5

@@ -66,7 +66,14 @@ if (practice)
 if (!canDespawn && state_cat != SC_HITSTUN && state != PS_TUMBLE) canDespawn = true;
 
 // transcend
-transcounter = clamp(((get_player_color(player) == 7 && (state==PS_SPAWN||(attack == AT_TAUNT && state == PS_ATTACK_GROUND)))?transcounter+2:transcounter-6),0,70);
+transcounter = clamp(((get_player_color(player) == 7 && (state==PS_SPAWN||((attack == AT_TAUNT || attack == AT_TAUNT_2) && state == PS_ATTACK_GROUND)))?transcounter+2:transcounter-6),0,70);
+
+// meow
+if (meowID != noone && (attack != AT_TAUNT_2 || state != PS_ATTACK_GROUND))
+{
+	sound_stop(meowID);
+	meowID = noone;
+}
 
 // fspec
 if (!free) grabDjump = true;

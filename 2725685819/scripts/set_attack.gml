@@ -21,6 +21,7 @@ switch(attack){
     case AT_DSPECIAL:
     case AT_USPECIAL:
     case AT_FSPECIAL:
+
     if (free && move_cooldown[attack] == 0){
     vsp = -4;
     
@@ -41,7 +42,8 @@ switch(attack){
     
 }
 
-
+tpx_event = 3;
+user_event(15);
 
 
 

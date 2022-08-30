@@ -258,6 +258,7 @@ switch (attack){
 			var cancel_no_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / 1.5);
 	    	can_attack = window_timer >= (uspecial_hitstun ? cancel_hitstun : cancel_no_hitstun);
 	    	can_jump = can_attack;
+	    	can_shield = can_attack;
 	    	if (instance_exists(mamizou_marked_temp)) {
 	    		if (mamizou_marked_temp.hitstun > 0) {
 	    			uspecial_hitstun = true;

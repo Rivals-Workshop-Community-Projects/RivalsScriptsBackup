@@ -163,3 +163,7 @@ galaxy_timer = 0;
 
 hijay = 0;
 
+pot_compat_variable = sprite_get("pumbo_compat");
+pot_compat_text = "Authentic Canadian Poutine"
+has_fail = true;
+fail_text = "You know that's just reskinned Zetter Consume, right?";

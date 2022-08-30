@@ -377,10 +377,10 @@ if(attack == AT_FSPECIAL){
 		}else{
 			move_cooldown[AT_FSPECIAL] = 30
 			if(!free){
-				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 10);
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7);
 				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 			}else{
-				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 8.5);
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7);
 				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 			}
 		}
@@ -437,7 +437,7 @@ if(attack == AT_FSPECIAL){
 					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 3);
 					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 				}else{
-					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 8);
+					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 4);
 					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 				}
 			}
@@ -447,8 +447,8 @@ if(attack == AT_FSPECIAL){
 				sound_play(sound_get("sfx_steam_hiss_short"))
 				pedal_to_metal = false
 			}
-			if(steam > 0){
-				steam -= 20
+			if(steam > 25){
+				steam -= 25
 			}else{
 				steam = 0
 			}
@@ -877,6 +877,86 @@ if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 				}
 			}
 		}
+}
+
+// steam moves
+if(!hitpause){
+	if(attack == AT_BAIR){
+		if(window == 2 && window_timer == 1){
+			if(steam >= 20){
+				steam -= 20
+			}else{
+				steam = 0
+			}
+			if(pedal_to_metal){
+				pedal_to_metal = false
+				if(move_cooldown[AT_NSPECIAL] < 80){
+					move_cooldown[AT_NSPECIAL] = 80
+				}
+				sound_play(sound_get("sfx_steam_hiss_short"))
+			}
+		}
+	}else if(attack == AT_DTILT){
+		if(window == 2 && window_timer == 1){
+			if(steam >= 20){
+				steam -= 20
+			}else{
+				steam = 0
+			}
+			if(pedal_to_metal){
+				pedal_to_metal = false
+				if(move_cooldown[AT_NSPECIAL] < 80){
+					move_cooldown[AT_NSPECIAL] = 80
+				}
+				sound_play(sound_get("sfx_steam_hiss_short"))
+			}
+		}
+	}else if(attack == AT_NAIR){
+		if(window == 5 && window_timer == 4){
+			if(steam >= 15){
+				steam -= 15
+			}else{
+				steam = 0
+			}
+			if(pedal_to_metal){
+				pedal_to_metal = false
+				if(move_cooldown[AT_NSPECIAL] < 80){
+					move_cooldown[AT_NSPECIAL] = 80
+				}
+				sound_play(sound_get("sfx_steam_hiss_short"))
+			}
+		}
+	}else if(attack == AT_UTILT){
+		if(window == 3 && window_timer == 1){
+			if(steam >= 10){
+				steam -= 10
+			}else{
+				steam = 0
+			}
+			if(pedal_to_metal){
+				pedal_to_metal = false
+				if(move_cooldown[AT_NSPECIAL] < 80){
+					move_cooldown[AT_NSPECIAL] = 80
+				}
+				sound_play(sound_get("sfx_steam_hiss_short"))
+			}
+		}
+	}else if(attack == AT_DATTACK){
+		if(window == 3 && window_timer == 5){
+			if(steam >= 15){
+				steam -= 15
+			}else{
+				steam = 0
+			}
+			if(pedal_to_metal){
+				pedal_to_metal = false
+				if(move_cooldown[AT_NSPECIAL] < 80){
+					move_cooldown[AT_NSPECIAL] = 80
+				}
+				sound_play(sound_get("sfx_steam_hiss_short"))
+			}
+		}
+	}
 }
 //Old fair thing but I didnt wanna get rid of it
 /* if(attack == AT_FAIR){

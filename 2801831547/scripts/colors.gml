@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 32 );
 
 // Alice
 set_color_profile_slot( 1, 0, 232, 172, 80 ); //unnamed color row
@@ -335,6 +335,16 @@ set_color_profile_slot( 30, 4, 255, 0, 47 ); //unnamed color row
 set_color_profile_slot( 30, 5, 168, 93, 72 ); //unnamed color row
 set_color_profile_slot( 30, 6, 194, 85, 127 ); //unnamed color row
 set_color_profile_slot( 30, 7, 217, 95, 142 ); //unnamed color row
+
+// Riptide
+set_color_profile_slot( 31, 0, 0, 123, 255 ); //unnamed color row
+set_color_profile_slot( 31, 1, 247, 191, 144 ); //unnamed color row
+set_color_profile_slot( 31, 2, 255, 119, 46 ); //unnamed color row
+set_color_profile_slot( 31, 3, 36, 106, 255 ); //unnamed color row
+set_color_profile_slot( 31, 4, 61, 148, 255 ); //unnamed color row
+set_color_profile_slot( 31, 5, 255, 102, 0 ); //unnamed color row
+set_color_profile_slot( 31, 6, 22, 48, 150 ); //unnamed color row
+set_color_profile_slot( 31, 7, 0, 61, 191 ); //unnamed color row
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -18,7 +18,6 @@ if object_index == oPlayer exit;
 //Get hurt by opponents' hitbox (NOTE: does not work properly with maxarticles > 1)
 
 //Idle
-
 with(player_id){
 	if(!instance_exists(hurricane)){
 		instance_destroy();
@@ -62,7 +61,7 @@ if(state == 0){
 	vsp *= 0.9
 	
 	if(state_timer mod 10 == 0 && lifetime >= 6){
-		hurricane_hitbox = create_hitbox(AT_FSPECIAL, 2, round(x + hsp), round(y + vsp) + 4)
+		hurricane_hitbox = create_hitbox(AT_FSPECIAL, 2, round(x + hsp), round(y + vsp) - 4)
 		hurricane_hitbox.player = current_owner
 	}
 	if(instance_exists(hurricane_hitbox)){
@@ -196,10 +195,12 @@ if(state == 0){
 						if(!player_id.hitpause){
 							player_id.old_hsp = player_id.hsp;
 							player_id.old_vsp = player_id.vsp;
+							if(type == 1){
+								player_id.hitpause = true
+					            player_id.hitstop = 2
+					            player_id.hitstop_full =  2
+							}
 						}
-						player_id.hitpause = true
-			            player_id.hitstop = 2
-			            player_id.hitstop_full =  2
 		    		}else if(!other.player_id.N_modifier){
 		    			other.state = 1
 						other.state_timer = 0
@@ -224,6 +225,7 @@ if(state == 0){
 						with(other.player_id){
 							if(hurricane.holding_bomb){
 								waterBomb = instance_create(hurricane.x, hurricane.y - 10,"obj_article2");
+								waterBomb.lifetime = -5
 								if(hurricane.bomb_strong){
 									waterBomb.strong = true
 								}else{
@@ -236,10 +238,12 @@ if(state == 0){
 						if(!player_id.hitpause){
 							player_id.old_hsp = player_id.hsp;
 							player_id.old_vsp = player_id.vsp;
+							if(type == 1){
+								player_id.hitpause = true
+					            player_id.hitstop = 2
+					            player_id.hitstop_full =  2
+							}
 						}
-						player_id.hitpause = true
-			            player_id.hitstop = 2
-			            player_id.hitstop_full =  2
 		    		}else{
 		    			other.state = 1
 						other.state_timer = 0

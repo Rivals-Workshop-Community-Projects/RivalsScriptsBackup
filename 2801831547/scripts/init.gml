@@ -122,7 +122,7 @@ waveland_sound = asset_get("sfx_waveland_cla");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
-set_victory_theme(sound_get("rin"));
+set_victory_theme(sound_get("victory"));
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;

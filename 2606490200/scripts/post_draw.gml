@@ -160,50 +160,7 @@ if (get_player_color(player) == 15){
 
 if 	"cosmicman" in self {
  //thank you Rioku
- if cosmicmusic > 0 {
- 	var volume = 0;
-        volume = get_local_setting(3);
-        
- 	if cosmicmusic == 120 {
- 	   switch uped	{
- 	   	case 1 :
- 	   	sound_play(sound_get("cosmicman1"),false,noone,min(2*volume, 1),1)
- 	   	cosmicmusic -- 
- 	   	comextended = 50
- 	   	break;
- 	   	
- 	   	case 2 :
- 	   	sound_stop(sound_get("cosmicman1"))
- 	   	sound_play(sound_get("cosmicman2"),false,noone,min(2*volume, 1),1)
- 	   	cosmicmusic -- 
- 	   	comextended = 60*4
- 	   	break;
- 	   	
- 	   	case 3 :
- 	   	sound_stop(sound_get("cosmicman2"))
- 	   	sound_play(sound_get("cosmicman3"),false,noone,min(2*volume, 1),1)
- 	   	cosmicmusic -- 
- 	   	comextended = 60*48
- 	   	break;
- 	   	
- 	   	case 4 :
- 	   	sound_stop(sound_get("cosmicman3"))
- 	   	sound_play(sound_get("cosmicman4"),false,noone,min(2*volume, 1),1)
- 	   	cosmicmusic -- 
- 	   	comextended = 60*80
- 	   	break;
- 	   }
- 	}
- 	
- 	
- 	if comextended == 0 {
- 	 cosmicmusic --
- 	 suppress_stage_music( 0, 0.006 )
- 	} else {
- 	 comextended --
- 	 suppress_stage_music( 0, 0.05 )
- 	}
- }
+ 
  gpu_set_blendmode(bm_add);
  
  gpu_set_fog(1, c_blue, 0, 1);
@@ -229,7 +186,7 @@ maskHeader();
 draw_self();
 maskMidder();
 
-
+if state != PS_PRATFALL and state != PS_PRATLAND {
 
 draw_sprite_tiled_ext(sprite_get("cosmic"), 0, get_gameplay_time()/23 + cossetx, get_gameplay_time()/23 + cossety, 1, 1, c_white, 1)
 
@@ -247,6 +204,7 @@ if uped >= 4  draw_sprite_tiled_ext(sprite_get("cosmic"), 6, get_gameplay_time()
 
 if uped >= 1  draw_sprite_tiled_ext(sprite_get("cosmic"), 1, get_gameplay_time()/9 + cossetx*3, get_gameplay_time()/9 + cossety*3, 1.4, 1.4, c_white, 1)
 
+}
 if abs(hsp) > 3 {
 	cossetxd = (hsp + cossetxd)/4
 } else {

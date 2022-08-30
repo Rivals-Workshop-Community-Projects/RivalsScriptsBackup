@@ -8,8 +8,8 @@ if(djumps > 0 && free && steam > 0){
 			}
 			sound_play(sound_get("sfx_steam_quick"))
 			spawn_hit_fx(x, y + 60, vfx_doublejump_steam)
-			if(steam >= 15){
-				steam -= 15
+			if(steam >= 20){
+				steam -= 20
 			}else{
 				steam = 0
 			}
@@ -204,6 +204,12 @@ if(cancel_buffer){
 
 //Tired
 
+if(move_cooldown[AT_NSPECIAL] == 1){
+	sound_play(asset_get("mfx_coin"), false, noone, 0.5)
+	col_r_outline = 255
+	col_g_outline = 255
+	col_b_outline = 255
+}
 if(steam <= 0){
 	col_r_outline = 100 + sin(lifetime / 20) * 50
 	if(tired == false){
@@ -213,12 +219,17 @@ if(steam <= 0){
 	}
 }else{
 	tired = false
-	col_r_outline = 0
 }
+
 outline_color = [col_r_outline, col_g_outline, col_b_outline]
 
 init_shader();
 
+if(steam > 0){
+	col_r_outline = lerp(col_r_outline, 0, 0.05)
+}
+col_b_outline = lerp(col_g_outline, 0, 0.05)
+col_g_outline = lerp(col_b_outline, 0, 0.05)
 //Wavecancel
 
 if(state == PS_WAVELAND){
@@ -879,6 +890,15 @@ if(steam > 0){
 	set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 0);
 }
 
+if(steam == 0){
+	set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -6);
+}else{
+	if(pedal_to_metal){
+		set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -9);
+	}else{
+		set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -8);
+	}
+}
 //Steam Cap
 if(steam > 100){
 	steam = 100

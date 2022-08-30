@@ -8,19 +8,28 @@ draw_sprite_ext(sprite_get("moneymoneymoney"), 0, temp_x - 2, temp_y - 26, 2, 2,
 //draw_debug_text(temp_x+40,temp_y-14,string(round(current_money*100)));
 draw_debug_text(temp_x+40,temp_y-14,string_thousands(current_money*100));
 
-if(instance_exists(thedice1)){
+if(instance_exists(thedice1) || dicecooldown > 0){
 	draw_sprite_ext(sprite_get("dice_icon"), 0, temp_x + 170, temp_y - 12, 2, 2, 0, c_black, 0.3);
+	if(dicecooldown > 0){
+		draw_sprite_ext(sprite_get("dice_icon"), 0, temp_x + 170, temp_y - 12, 2, 2, 0, c_red, 0.3);
+	}
 }else{
 	draw_sprite_ext(sprite_get("dice_icon"), 0, temp_x + 170, temp_y - 12, 2, 2, 0, c_white, 1);
 }
-if(instance_exists(thedice2)){
+if(instance_exists(thedice2) || dicecooldown > 0){
 	draw_sprite_ext(sprite_get("dice_icon"), 1, temp_x + 190, temp_y - 12, 2, 2, 0, c_black, 0.3);
+	if(dicecooldown > 0){
+		draw_sprite_ext(sprite_get("dice_icon"), 1, temp_x + 190, temp_y - 12, 2, 2, 0, c_red, 0.3);
+	}
 }else{
     draw_sprite_ext(sprite_get("dice_icon"), 1, temp_x + 190, temp_y - 12, 2, 2, 0, c_white, 1);
 }
 
-if(instance_exists(thetoken)){
+if(instance_exists(thetoken) || tokencooldown > 0){
 	draw_sprite_ext(sprite_get("token_icon"), 0, temp_x + 164, temp_y - 46, 2, 2, 0, c_black, 0.3);
+	if(tokencooldown > 0){
+		draw_sprite_ext(sprite_get("token_icon"), 0, temp_x + 164, temp_y - 46, 2, 2, 0, c_red, 0.3);
+	}
 }else{
 	draw_sprite_ext(sprite_get("token_icon"), 0, temp_x + 164, temp_y - 46, 2, 2, 0, c_white, 1);
 }

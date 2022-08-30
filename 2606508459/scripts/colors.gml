@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 43, 14, 29 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 29 );
 
 // Olympia
 set_color_profile_slot( 1, 0, 255, 64, 179 ); //Fire
@@ -196,55 +196,125 @@ set_color_profile_slot( 16, 5, 64, 143, 97 ); //Eyes1
 set_color_profile_slot( 16, 6, 50, 81, 219 ); //Midriff
 set_color_profile_slot( 16, 7, 130, 116, 158 ); //Pants
 
-// Regular Pants
-set_color_profile_slot( 17, 0, 148, 0, 211 ); //Fire
-set_color_profile_slot( 17, 1, 255, 195, 201 ); //Fur
-set_color_profile_slot( 17, 2, 148, 0, 211 ); //Bra
-set_color_profile_slot( 17, 3, 251, 255, 0 ); //Scarf
-set_color_profile_slot( 17, 4, 219, 112, 147 ); //Tail tip
-set_color_profile_slot( 17, 5, 64, 143, 97 ); //Eyes1
-set_color_profile_slot( 17, 6, 255, 195, 201 ); //Midriff
-set_color_profile_slot( 17, 7, 148, 0, 211 ); //Pants
+// Trans Rights
+set_color_profile_slot( 17, 0, 125, 207, 255 ); //Fire
+set_color_profile_slot( 17, 1, 255, 191, 217 ); //Fur
+set_color_profile_slot( 17, 2, 255, 148, 167 ); //Bra
+set_color_profile_slot( 17, 3, 255, 77, 189 ); //Scarf
+set_color_profile_slot( 17, 4, 255, 255, 255 ); //Tail tip
+set_color_profile_slot( 17, 5, 219, 127, 127 ); //Eyes1
+set_color_profile_slot( 17, 6, 255, 158, 183 ); //Midriff
+set_color_profile_slot( 17, 7, 255, 191, 217 ); //Pants
 
-// Amethyst Master
-set_color_profile_slot( 18, 0, 255, 249, 232 ); //Fire
+// Regular Pants
+set_color_profile_slot( 18, 0, 148, 0, 211 ); //Fire
 set_color_profile_slot( 18, 1, 255, 195, 201 ); //Fur
-set_color_profile_slot( 18, 2, 86, 86, 112 ); //Bra
-set_color_profile_slot( 18, 3, 58, 58, 77 ); //Scarf
+set_color_profile_slot( 18, 2, 148, 0, 211 ); //Bra
+set_color_profile_slot( 18, 3, 251, 255, 0 ); //Scarf
 set_color_profile_slot( 18, 4, 219, 112, 147 ); //Tail tip
 set_color_profile_slot( 18, 5, 64, 143, 97 ); //Eyes1
 set_color_profile_slot( 18, 6, 255, 195, 201 ); //Midriff
-set_color_profile_slot( 18, 7, 255, 249, 232 ); //Pants
+set_color_profile_slot( 18, 7, 148, 0, 211 ); //Pants
+
+// Amethyst Master
+set_color_profile_slot( 19, 0, 255, 249, 232 ); //Fire
+set_color_profile_slot( 19, 1, 255, 195, 201 ); //Fur
+set_color_profile_slot( 19, 2, 86, 86, 112 ); //Bra
+set_color_profile_slot( 19, 3, 58, 58, 77 ); //Scarf
+set_color_profile_slot( 19, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 19, 5, 64, 143, 97 ); //Eyes1
+set_color_profile_slot( 19, 6, 255, 195, 201 ); //Midriff
+set_color_profile_slot( 19, 7, 255, 249, 232 ); //Pants
 
 // TuQiu
-set_color_profile_slot( 19, 0, 80, 80, 135 ); //Fire
-set_color_profile_slot( 19, 1, 255, 237, 222 ); //Fur
-set_color_profile_slot( 19, 2, 255, 255, 255 ); //Bra
-set_color_profile_slot( 19, 3, 255, 76, 5 ); //Scarf
-set_color_profile_slot( 19, 4, 219, 112, 147 ); //Tail tip
-set_color_profile_slot( 19, 5, 71, 64, 143 ); //Eyes1
-set_color_profile_slot( 19, 6, 255, 237, 222 ); //Midriff
-set_color_profile_slot( 19, 7, 80, 80, 135 ); //Pants
+set_color_profile_slot( 20, 0, 80, 80, 135 ); //Fire
+set_color_profile_slot( 20, 1, 255, 237, 222 ); //Fur
+set_color_profile_slot( 20, 2, 255, 255, 255 ); //Bra
+set_color_profile_slot( 20, 3, 255, 76, 5 ); //Scarf
+set_color_profile_slot( 20, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 20, 5, 71, 64, 143 ); //Eyes1
+set_color_profile_slot( 20, 6, 255, 237, 222 ); //Midriff
+set_color_profile_slot( 20, 7, 80, 80, 135 ); //Pants
 
 // Kiera
-set_color_profile_slot( 20, 0, 0, 207, 0 ); //Fire
-set_color_profile_slot( 20, 1, 240, 215, 154 ); //Fur
-set_color_profile_slot( 20, 2, 0, 207, 0 ); //Bra
-set_color_profile_slot( 20, 3, 0, 106, 255 ); //Scarf
-set_color_profile_slot( 20, 4, 219, 112, 147 ); //Tail tip
-set_color_profile_slot( 20, 5, 64, 143, 97 ); //Eyes1
-set_color_profile_slot( 20, 6, 255, 195, 201 ); //Midriff
-set_color_profile_slot( 20, 7, 237, 243, 255 ); //Pants
+set_color_profile_slot( 21, 0, 0, 207, 0 ); //Fire
+set_color_profile_slot( 21, 1, 240, 215, 154 ); //Fur
+set_color_profile_slot( 21, 2, 0, 207, 0 ); //Bra
+set_color_profile_slot( 21, 3, 0, 106, 255 ); //Scarf
+set_color_profile_slot( 21, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 21, 5, 64, 143, 97 ); //Eyes1
+set_color_profile_slot( 21, 6, 255, 195, 201 ); //Midriff
+set_color_profile_slot( 21, 7, 237, 243, 255 ); //Pants
 
 // Daora
-set_color_profile_slot( 21, 0, 101, 85, 191 ); //Fire
-set_color_profile_slot( 21, 1, 226, 204, 255 ); //Fur
-set_color_profile_slot( 21, 2, 82, 64, 194 ); //Bra
-set_color_profile_slot( 21, 3, 251, 255, 0 ); //Scarf
-set_color_profile_slot( 21, 4, 219, 112, 147 ); //Tail tip
-set_color_profile_slot( 21, 5, 140, 255, 0 ); //Eyes1
-set_color_profile_slot( 21, 6, 235, 241, 255 ); //Midriff
-set_color_profile_slot( 21, 7, 90, 77, 171 ); //Pants
+set_color_profile_slot( 22, 0, 101, 85, 191 ); //Fire
+set_color_profile_slot( 22, 1, 226, 204, 255 ); //Fur
+set_color_profile_slot( 22, 2, 82, 64, 194 ); //Bra
+set_color_profile_slot( 22, 3, 251, 255, 0 ); //Scarf
+set_color_profile_slot( 22, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 22, 5, 140, 255, 0 ); //Eyes1
+set_color_profile_slot( 22, 6, 235, 241, 255 ); //Midriff
+set_color_profile_slot( 22, 7, 90, 77, 171 ); //Pants
+
+// Teenah
+set_color_profile_slot( 23, 0, 255, 31, 31 ); //Fire
+set_color_profile_slot( 23, 1, 166, 170, 255 ); //Fur
+set_color_profile_slot( 23, 2, 125, 97, 179 ); //Bra
+set_color_profile_slot( 23, 3, 255, 183, 0 ); //Scarf
+set_color_profile_slot( 23, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 23, 5, 68, 173, 164 ); //Eyes1
+set_color_profile_slot( 23, 6, 166, 170, 255 ); //Midriff
+set_color_profile_slot( 23, 7, 125, 97, 179 ); //Pants
+
+// Black_Ace
+set_color_profile_slot( 24, 0, 255, 238, 0 ); //Fire
+set_color_profile_slot( 24, 1, 255, 253, 232 ); //Fur
+set_color_profile_slot( 24, 2, 99, 93, 107 ); //Bra
+set_color_profile_slot( 24, 3, 255, 238, 51 ); //Scarf
+set_color_profile_slot( 24, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 24, 5, 255, 247, 0 ); //Eyes1
+set_color_profile_slot( 24, 6, 255, 253, 232 ); //Midriff
+set_color_profile_slot( 24, 7, 79, 71, 30 ); //Pants
+
+// Fernet Summer
+set_color_profile_slot( 25, 0, 224, 29, 209 ); //Fire
+set_color_profile_slot( 25, 1, 255, 195, 201 ); //Fur
+set_color_profile_slot( 25, 2, 224, 29, 209 ); //Bra
+set_color_profile_slot( 25, 3, 148, 0, 211 ); //Scarf
+set_color_profile_slot( 25, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 25, 5, 64, 143, 97 ); //Eyes1
+set_color_profile_slot( 25, 6, 255, 195, 201 ); //Midriff
+set_color_profile_slot( 25, 7, 255, 195, 201 ); //Pants
+
+// Riptide Summer
+set_color_profile_slot( 26, 0, 45, 71, 173 ); //Fire
+set_color_profile_slot( 26, 1, 255, 197, 115 ); //Fur
+set_color_profile_slot( 26, 2, 255, 115, 0 ); //Bra
+set_color_profile_slot( 26, 3, 255, 115, 0 ); //Scarf
+set_color_profile_slot( 26, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 26, 5, 45, 71, 173 ); //Eyes1
+set_color_profile_slot( 26, 6, 255, 197, 115 ); //Midriff
+set_color_profile_slot( 26, 7, 255, 197, 115 ); //Pants
+
+// Fernet Tournament
+set_color_profile_slot( 27, 0, 111, 33, 194 ); //Fire
+set_color_profile_slot( 27, 1, 255, 195, 201 ); //Fur
+set_color_profile_slot( 27, 2, 255, 255, 255 ); //Bra
+set_color_profile_slot( 27, 3, 58, 58, 77 ); //Scarf
+set_color_profile_slot( 27, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 27, 5, 64, 143, 97 ); //Eyes1
+set_color_profile_slot( 27, 6, 255, 255, 255 ); //Midriff
+set_color_profile_slot( 27, 7, 255, 255, 255 ); //Pants
+
+// Riptide Tournament
+set_color_profile_slot( 28, 0, 255, 115, 0 ); //Fire
+set_color_profile_slot( 28, 1, 255, 197, 115 ); //Fur
+set_color_profile_slot( 28, 2, 45, 71, 173 ); //Bra
+set_color_profile_slot( 28, 3, 255, 232, 115 ); //Scarf
+set_color_profile_slot( 28, 4, 219, 112, 147 ); //Tail tip
+set_color_profile_slot( 28, 5, 45, 71, 173 ); //Eyes1
+set_color_profile_slot( 28, 6, 45, 71, 173 ); //Midriff
+set_color_profile_slot( 28, 7, 52, 119, 173 ); //Pants
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -6,14 +6,24 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
 }
 
 if(instance_exists(thedice1) && instance_exists(thedice2)){
-    move_cooldown[AT_NSPECIAL] = 999;
+    move_cooldown[AT_NSPECIAL] = 9999;
 }else{
-    move_cooldown[AT_NSPECIAL] = 0;
+	if(!instance_exists(thedice1) && !instance_exists(thedice2)){
+		dicecooldown--;
+		dicecooldown = max(0,dicecooldown);
+	}
+	if(dicecooldown <= 0){
+    	move_cooldown[AT_NSPECIAL] = 0;
+	}
 }
 if(instance_exists(thetoken)){
-    move_cooldown[AT_FSPECIAL] = 999;
+    move_cooldown[AT_FSPECIAL] = 9999;
 }else{
-    move_cooldown[AT_FSPECIAL] = 0;
+	tokencooldown--;
+	tokencooldown = max(0,tokencooldown);
+	if(tokencooldown <= 0){
+    	move_cooldown[AT_FSPECIAL] = 0;
+	}
 }
 
 if(alt == 27){

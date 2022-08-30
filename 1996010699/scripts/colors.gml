@@ -201,7 +201,7 @@ set_color_profile_slot( 22, 0, 0, 199, 218 ); //CASE
 set_color_profile_slot( 22, 1, 9, 75, 106 ); //SHADOW
 set_color_profile_slot( 22, 2, 255, 167, 61 ); //WHEELS
 set_color_profile_slot( 22, 3, 39, 60, 114 ); //CHEST
-set_color_profile_slot( 22, 4, 58, 210, 228 ); //unnamed color row
+set_color_profile_slot( 22, 4, 253, 184, 0 ); //unnamed color row
 set_color_profile_slot( 22, 5, 52, 107, 130 ); //HIGHLIGHT
 
 

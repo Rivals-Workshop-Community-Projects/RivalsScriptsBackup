@@ -182,7 +182,7 @@ set_hitbox_value(AT_EXTRA_1, 6, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_EXTRA_1, 6, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_EXTRA_1, 6, HG_ANGLE_FLIPPER, 9);
 
-set_hitbox_value(AT_EXTRA_1, 7, HG_MUNO_HITBOX_NAME, "Max Growth");
+//set_hitbox_value(AT_EXTRA_1, 7, HG_MUNO_HITBOX_NAME, "Max Growth");
 set_hitbox_value(AT_EXTRA_1, 7, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_1, 7, HG_WINDOW, 0);
 set_hitbox_value(AT_EXTRA_1, 7, HG_WINDOW_CREATION_FRAME, 0); 
@@ -203,7 +203,7 @@ set_hitbox_value(AT_EXTRA_1, 7, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_EXTRA_1, 7, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_EXTRA_1, 7, HG_ANGLE_FLIPPER, 9);
 
-set_hitbox_value(AT_EXTRA_1, 8, HG_MUNO_HITBOX_NAME, "Launcher");
+//set_hitbox_value(AT_EXTRA_1, 8, HG_MUNO_HITBOX_NAME, "Launcher");
 set_hitbox_value(AT_EXTRA_1, 8, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_1, 8, HG_WINDOW, 6);
 set_hitbox_value(AT_EXTRA_1, 8, HG_WINDOW_CREATION_FRAME, 2); 
@@ -214,7 +214,7 @@ set_hitbox_value(AT_EXTRA_1, 8, HG_HEIGHT, 390);
 set_hitbox_value(AT_EXTRA_1, 8, HG_PRIORITY, 5);
 set_hitbox_value(AT_EXTRA_1, 8, HG_DAMAGE, 6); 
 set_hitbox_value(AT_EXTRA_1, 8, HG_ANGLE, 90);
-set_hitbox_value(AT_EXTRA_1, 8, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_EXTRA_1, 8, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_EXTRA_1, 8, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_EXTRA_1, 8, HG_BASE_HITPAUSE, 14);
 set_hitbox_value(AT_EXTRA_1, 8, HG_HITPAUSE_SCALING, 1);

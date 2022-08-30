@@ -26,6 +26,10 @@ if(my_hitboxID.attack == AT_FSPECIAL_2){
 	if(my_hitboxID.hbox_num == 2){
 		if(hatch_amount < 3000){
 	   hatch_amount += 400 * hatch_mult;
+	   spawn_hit_fx(other.x - spr_dir, other.y, 112);
+	   	sound_play(asset_get("mfx_star"));
+		sound_play(asset_get("sfx_ori_energyhit_heavy"));
+		charm_timer = 600;
       }
 	}
 }

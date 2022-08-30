@@ -7,3 +7,4 @@ if (my_hitboxID.attack == AT_DSPECIAL) with my_hitboxID{
 }
 
 destroy_orb = true;
+teleport_outline = false;

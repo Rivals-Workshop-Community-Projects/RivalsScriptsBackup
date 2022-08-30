@@ -309,9 +309,18 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.4", "29th August, 2022");
+initHeader("Nerfs");
+initSection("- If a move hits the choo choo during DAttack while Mr Monopoly is still on it, it can knock the choo choo back similarly to how it works after he jumps off");
+
+initPatch("1.3", "24th August, 2022");
+initHeader("Nerfs");
+initSection("- NSpecial Dices now only remove cooldown on hit if they land quickly after being thrown (so combo throws are rewarded, but spam is not)");
+initSection("- NSpecial + FSpecial now have higher cooldowns if they're used repeatedly after eachother (the extra cooldown is indicated by them being red on the HUD)");
+
 initPatch("1.2", "20th August, 2022");
 initHeader("Nerfs");
-initSection("- Reduced the amount of properties that would fall during his final smash (Don wasn't feeling lucky today)");
+initSection("- Reduced the amount of properties that would fall during his final smash");
 initHeader("Fixes / Other Changes");
 initSection("- Fixed bug where Jail would sometimes make an error sound when opponents launched it");
 initSection("- Fixed bug where Jail would sometimes have more armor than intended, making it difficult for opponents to knock around");

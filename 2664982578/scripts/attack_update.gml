@@ -14,10 +14,6 @@ switch(attack){
 switch(attack){
 	
 	// give your moves some "pop" by spawning dust during them!
-	
-	case AT_JAB:
-		was_parried = false; // easy method for single-hit jabs
-		break;
 	case AT_FSTRONG:
 		if window == 2 && window_timer == get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH)-1{
 			spawn_base_dust(x + spr_dir * 70, y, "dash_start", -spr_dir);
@@ -459,10 +455,10 @@ if(attack == AT_USPECIAL){
 	if(window == 2){
 		can_fast_fall = false;
 		can_move = false;
-		teleport_outline = true;
 		if(window_timer = 1){
+			teleport_outline = true;
 			instance_create(x, y-10, ("obj_article1"));
-		}if(window_timer = 60 || special_pressed){
+		}if(window_timer = 40 || special_pressed){
 			teleport = true;
 			window = 3;
 			window_timer = 0;
@@ -503,12 +499,15 @@ if(attack == AT_DSPECIAL){
     		instance_create(x + spr_dir * 35, y, ("obj_article3"));
     		counterbox = 1;
     		instance_create(x + spr_dir * -35, y, ("obj_article3"));
-    	}if(window_timer = 17){
+    	}if(window_timer = 13){
     		super_armor = false;
     		set_window_value(AT_DSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 0);
     	}
     }if(window == 3){
     	super_armor = false;
+    	if(window_timer == 1){
+    	move_cooldown[AT_DSPECIAL] = 40;	
+    	}
     }if(window == 4 && window_timer = 15){
     	window = 5;
     	window_timer = 0;
@@ -666,13 +665,9 @@ if(attack == AT_EXTRA_1){
 //training cheat lol
 if(attack == AT_TAUNT){
 	hud_offset = 40;
-	if(phone_practice == true){
+	if(practice_mode && down_down){
 	hatch_amount = 3000;
 	}
-}
-
-if(attack == AT_PHONE){
-	hud_offset = 30;
 }
 
 //cancel into magic burst

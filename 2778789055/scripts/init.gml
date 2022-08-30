@@ -223,7 +223,7 @@ custom_food = 2;
 custom_food = 3;
 }if(alt == 18){ //Vector
 custom_food = 4;
-}if(alt == 14){ //TAG
+}if(alt == 15){ //TAG
 custom_food = 5;
 }if(alt == 22){ //smiling
 custom_food = 6;

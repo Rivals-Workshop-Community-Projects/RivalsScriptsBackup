@@ -78,11 +78,11 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[col,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
-    ce[col,1] = "15.5 Red" // the name of the alternate color.
+    ce[col,1] = "15.5 Green" // the name of the alternate color.
     ce[col,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
-    ce[col,1] = "15.5 Green" // the name of the alternate color.
+    ce[col,1] = "15.5 Red" // the name of the alternate color.
     ce[col,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));

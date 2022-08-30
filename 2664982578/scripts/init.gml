@@ -111,6 +111,7 @@ eggdog_skin = false;
 trans_outline = false;
 bbout_egg = false;
 champ_skin = false;
+practice_mode = false;
 
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
@@ -216,7 +217,7 @@ if(alt == 14 || alt == 15 || alt == 16 || alt == 17 || alt == 18 || alt == 23){
 	trans_outline = true;
 }if(alt == 22){ 
 	bbout_egg = true;
-}if(alt == 18 || alt == 23 || alt == 24 || alt == 25 || alt == 26){ 
+}if(alt == 18 || alt == 23 || alt == 24 || alt == 25 || alt == 26 || alt == 27){ 
 	champ_skin = true;
 }if(alt == 24){ 
 	set_victory_portrait(sprite_get("nothingthere_portrait"));
@@ -232,6 +233,7 @@ if(alt == 14 || alt == 15 || alt == 16 || alt == 17 || alt == 18 || alt == 23){
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
-
+/*
 muno_event_type = 0;
 user_event(14);
+*/

@@ -106,6 +106,16 @@ jc_destroyed = hit_fx_create( sprite_get("nspecial_dest"), 15 );
 projectile_rb = noone;
 
 // Variables
+
+//inputs
+ewgf = true;
+start_dir[0] = 1;
+
+dp = 0;
+dp_timer = 0;
+dp_temp = 0;
+
+
 trick_lockout_max = 13;
 trick_lockout = trick_lockout_max;
 
@@ -162,12 +172,25 @@ AG_WINDOW_IASA = 56;
 
 //voices and misc
 necoarc = false;
-vergil = false;
-dante = false;
-sparda = false;
 style_meter = false;
-
 sync_bool = get_synced_var( player );
+
+//sync vars
+sparda = (2 & sync_bool) ? true:false;
+
+vergil = ((1 & sync_bool) && (get_player_color(player) == 6)) ? true:false;
+
+vergil_taunt = vergil;
+
+dante =  ((1 & sync_bool) && (get_player_color(player) == 7)) ? true:false;
+
+champ_button = ((4 & sync_bool) && (get_player_color(player) == 1)) ? true:false;
+
+
+//neco
+if (get_player_color(player) == 9){
+    necoarc = true;
+}
 
 // Animation Info
 
@@ -191,6 +214,21 @@ motivation = 60*26;
 provoking = 0;
 lightning_x = 0;
 lightning_dir = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Misc. animation speeds
 idle_anim_speed     = 0.1;
@@ -273,3 +311,4 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+user_event(14);

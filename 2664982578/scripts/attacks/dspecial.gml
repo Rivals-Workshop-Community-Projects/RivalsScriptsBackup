@@ -23,7 +23,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 1);
 
 //whiff
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 26);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.7);

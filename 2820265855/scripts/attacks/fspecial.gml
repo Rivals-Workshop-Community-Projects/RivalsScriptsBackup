@@ -132,7 +132,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("hweak"));
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("BladeStrike1"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 1);
@@ -151,7 +151,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("hweak"));
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("BladeStrike1"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_PARENT_HITBOX, 1);
@@ -170,7 +170,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, sound_get("hweak"));
+set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, sound_get("BladeStrike1"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_FSPECIAL, 4, HG_PARENT_HITBOX, 1);
@@ -189,7 +189,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FSPECIAL, 4, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, sound_get("hweak"));
+set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, sound_get("BladeStrike1"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_GROUP, -1);
@@ -206,6 +206,6 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_ANGLE, 55);
 set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FSPECIAL, 5, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_SFX, sound_get("hmed"));
+set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_SFX, sound_get("BladeStrike2"));
 set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSPECIAL, 5, HG_TECHABLE, 1);

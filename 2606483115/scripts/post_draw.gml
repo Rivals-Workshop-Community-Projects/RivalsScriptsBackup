@@ -47,5 +47,4 @@ if((state == PS_IDLE || state == PS_SPAWN) && halloween == true){
     }
 }
 
-//End shader, now that everything is done being drawn.
-shader_end();
+init_shader();

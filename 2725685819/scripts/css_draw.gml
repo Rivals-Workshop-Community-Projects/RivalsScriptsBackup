@@ -212,4 +212,6 @@ draw_sprite_ext(sprite_get("style_button"),style_button,temp_x+ 0,temp_y+32,2,2,
 if (alt == 7 || alt == 6){
 draw_sprite_ext(sprite_get("voice_button"),voice_button,temp_x+ 0,temp_y+44,2,2,0,-1,1);
 }
-
+if (alt == 1){
+draw_sprite_ext(sprite_get("champ_button"),champ_button,temp_x+ 0,temp_y+44,2,2,0,-1,1);
+}

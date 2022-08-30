@@ -276,7 +276,7 @@ switch(attack){
 			         
 			        var fly_dir = point_direction(0,0,hsp,vsp);
 			        var fly_dist = point_distance(0,0,hsp,vsp);
-			        var max_speed = 4.5;
+			        var max_speed = 5;
 			        if (fly_dist > max_speed){
 			            hsp = lengthdir_x(max_speed, fly_dir);
 			            vsp = lengthdir_y(max_speed, fly_dir);

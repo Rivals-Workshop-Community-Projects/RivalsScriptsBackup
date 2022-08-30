@@ -1,9 +1,10 @@
 //article1_init - runs once, when the article is created
 
 //Sprite and direction
-if(player_id.phone_practice == true){
+if(player_id.practice_mode == true){
 sprite_index = sprite_get("egg_hurtbox");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
-}if(player_id.phone_practice == false){
+image_alpha = 0.5;
+}if(player_id.practice_mode == false){
 sprite_index = sprite_get("blank_sheet");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
 }
 image_index = 0;                                    //The frame in the animation the article should start at. 0 = beginning of animation

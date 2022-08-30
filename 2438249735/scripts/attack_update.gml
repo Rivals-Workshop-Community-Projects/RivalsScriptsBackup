@@ -501,12 +501,13 @@ if !hitpause {
 		            
      	djumps = 0
      	move_cooldown [AT_FSPECIAL] = 999
-     	          set_attack (AT_JAB)
-     	           move_cooldown[AT_FSPECIAL_2] = 0	
+     	set_attack (AT_JAB)
+        move_cooldown[AT_FSPECIAL_2] = 0	
      	window = 4
      	window_timer = 1
      	vsp = -8
      	hsp = 6 * spr_dir
+     	has_hit_player = true 
      }
      if window == 4 {
      	can_wall_jump = true

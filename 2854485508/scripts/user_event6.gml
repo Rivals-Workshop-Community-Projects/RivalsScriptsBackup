@@ -141,7 +141,7 @@ switch (enem_id) {
                                 ai_moving_left = true;
                             } 
                         }
-                        if (decision_random >= ai_decision_time/2 && !committed) {
+                        if (decision_random >= ai_decision_time/2 && !committed && !standard_on_ledge()) {
                             if (ai_target.y + 32 <= y) {
                                 var jump_random = random_func(51, 100, true);
                                 if (jump_random <= 50) {
@@ -242,6 +242,16 @@ switch (enem_id) {
         }
     break;
 }
+
+#define standard_on_ledge()
+
+var off_r = !position_meet(bbox_right + 2, bbox_bottom + 4)
+var off_l = !position_meet(bbox_left - 2, bbox_bottom + 4)
+
+if ((off_r && hsp > 0) || (off_l && hsp < 0)) {
+    return true;
+}
+return false;
 
 #define standard_death() 
 invincible = 2;

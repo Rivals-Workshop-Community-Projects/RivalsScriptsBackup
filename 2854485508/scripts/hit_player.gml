@@ -11,7 +11,7 @@ if (my_hitboxID.attack == AT_USTRONG && (my_hitboxID.hbox_num == 1 || my_hitboxI
     sound_play(asset_get("sfx_frog_gong_hit"));
 }
 
-if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 1) {
+if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 2) {
     sound_play(asset_get("sfx_frog_gong_hit"));
 }
 

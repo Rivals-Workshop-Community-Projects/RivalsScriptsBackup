@@ -42,7 +42,7 @@ set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 //ground attack
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 
@@ -94,7 +94,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_MUNO_HITBOX_NAME, "Landing");
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_WINDOW, 5);
-set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_LIFETIME, 5);
+set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_X, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_WIDTH, 129);

@@ -950,6 +950,59 @@ if(attack == AT_DATTACK){
 	    	hitstop -= 1;
 	    }
 	}
+	if(hbox_num == 10){
+		hitbox_timer = 0;
+		x = player_id.x+(65*player_id.spr_dir);y = player_id.y-35;
+    	with(asset_get("pHitBox")){
+			if(place_meeting(x,y,other) && other.player_id.state != PS_HITSTUN && other.player_id.state != PS_HITSTUN_LAND){
+		    	if(damage > 0 && kb_value > 0 && hit_priority > 0 && other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && player != other.player){
+				    	other.hitlockout = 6;other.hitlockout2 = 10;
+    	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+    	    	        			if(other.hitpausehit <= 0){
+    	    	        				other.hitpausehit = 5;
+    	    	        			}
+    	    	        			other.hitstop = other.hitpausehit;
+						other.player_id.hitpause = true;other.player_id.hitstop = hitpause;
+						if(kb_value+(kb_scale*6) > other.armor){
+	                	knockback_angle = kb_angle;
+    	    	        			other.knockback_power = kb_value;
+	    	    		            other.player_id.old_hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
+	    	    		            if(other.player_id.old_hsp > 0){
+	    	    		            	other.spr_dir = 1;
+	    	    		            }else if(other.player_id.old_hsp < 0){
+	    	    		            	other.spr_dir = -1;
+	    	    		            }
+	    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
+	    	    		                other.player_id.old_vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+	    	    		            }else{
+	    	    		                other.player_id.old_vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+	    	    		            }
+						}
+						if(type == 1){
+	    	        		player_id.hitpause = true;player_id.hitstop = hitpause;
+	                		player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+						}
+						spawn_hit_fx(other.x, other.y, hit_effect);
+    	    					sound_play(sound_effect);
+    	    	                other.lasthitbox = id;other.hitbox_timer = 0;
+		    	}
+			}
+		}
+		if(player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR || (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) && player_id.window >= 6){
+			destroyed = true;
+		}
+		
+		if(hitstop <= 0){
+	    	in_hitpause = false;hitlockout -= 1;
+	    	if (instance_exists(lasthitbox)) {
+	    		hitlockout2 -= 1;
+	    	}else{
+	    		hitlockout2 = 0;
+	    	}
+	    }else{
+	    	hitstop -= 1;
+	    }
+	}
 }
 
 if(attack == AT_BAIR){

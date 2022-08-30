@@ -26,6 +26,17 @@ switch (attack)
         if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
         break;
 
+    case AT_TAUNT_2:
+        can_jump = true;
+        if (state_timer == 1)
+        {
+            meowID = sound_play(sound_get("meow"), 1, -4, 2);
+            clear_button_buffer(PC_TAUNT_PRESSED);
+        }
+        if (taunt_down && !jump_pressed) suppress_stage_music(0, 0.05);
+        else window = 2;
+        break;
+
     case 49:
         can_move = false;
         fSmashAngleSpeed /= 1.3;

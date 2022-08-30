@@ -113,22 +113,22 @@ with (other_player_id) {
     switch (mamizou_transform_sprite) {
         case -1:
         	spr = other.mamizou_transform_spr;
-            scale = 2;
+            scale = other.small_sprites;
         break;
         default:
         	if (mamizou_transform_sprite <= 20 && mamizou_transform_sprite > 0){
         	    spr = sprite_get("transformations_base");
                 img = mamizou_transform_sprite - 1;
-                scale = 2;
+                scale = 1;
             }
         	if (mamizou_transform_sprite <= 34 && mamizou_transform_sprite > 20){
         	    spr = sprite_get("transformations_touhou");
                 img = mamizou_transform_sprite - 21;
-                scale = 1;
+                scale = 0;
             }
         break;
     }
     with (other) shader_start();
-    draw_sprite_ext(spr, img, other.x, other.y, other.spr_dir * scale, scale, 0, c_white, 1);
+    draw_sprite_ext(spr, img, other.x, other.y, (other.spr_dir * other.image_xscale) + scale, other.image_yscale + scale, 0, c_white, 1);
      with (other) shader_end();
 }

@@ -1,45 +1,10 @@
 //start of game stuff
+tpx_event = 4;
+user_event(15);
+
 
 if (intro_timer < intro_full){
 intro_timer++;
-
-if (sync_bool == 2 || sync_bool == 3){
-    sparda = true;
-}
-
-if get_player_color(player) == 6 {
-    
-    if (sync_bool == 1){
-    vergil = true;
-    }
-
-    if (sync_bool == 3){
-    
-    vergil = true;
-    sparda = true;
-    }
-    
-}
-
-if get_player_color(player) == 7 {
-    
-    if (sync_bool == 1){
-    dante = true;   
-    }
-    
-    if (sync_bool == 3){
-    dante = true;
-    sparda = true;
-    }
-    
-}
-
-
-//neco
-if (get_player_color(player) == 9){
-    necoarc = true;
-}
-
 
 //share the pizza
 with (oPlayer){
@@ -78,6 +43,9 @@ switch (get_player_color(player)){
 
 }
 
+//looking
+looking=spr_dir;
+
 
 //rainbow colors for Annie alt
 if get_player_color(player) = 10 {
@@ -90,6 +58,7 @@ hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
 color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
 set_color_profile_slot( 10, 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
 set_article_color_slot( 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv),1);
+
 init_shader();
 }
 
@@ -241,8 +210,11 @@ if (state == PS_PARRY_START && taunt_pressed){
 if (shield_pressed && taunt_pressed && attack == AT_TAUNT && state == clamp(state,5,6))
 attack = AT_TAUNT_2;
 
-if state != clamp(state,5,6)
+if state != clamp(state,5,6){
 trick_cancel = false;
+ewgf = false;
+grabbed_player = noone;
+}
 
 
 
@@ -251,6 +223,7 @@ trick_cancel = false;
 if !(state == clamp(state,5,6) && attack == AT_TAUNT_2){
 sound_stop(sound_get("motivated"));
 sound_stop(asset_get("sfx_absa_8b"));
+
 }
 
 if (!free || state == PS_WALL_JUMP){
@@ -307,3 +280,149 @@ with (asset_get("hit_fx_obj")){
     }
 
 }
+
+
+//inputs
+if dp>0 dp_temp++
+if dp_temp>=dp_timer {
+    dp=0
+    dp_timer=0
+    dp_temp=0
+}
+
+#region DP
+if dp==0 start_dir[0]=spr_dir
+//Right
+if start_dir[0]==1  && spr_dir == looking{
+    if dp==0 and ((right_pressed and !down_down and !up_down))  {
+        dp=1
+        dp_timer=10
+        dp_temp=0
+    }
+        
+    if dp==1 and (!right_down and down_down ) {
+        dp=2
+        dp_timer=10
+        dp_temp=0
+
+    }
+    
+    if dp=2 and (right_down and down_down ) and special_pressed {
+        if (!was_parried){
+        ewgf=true;
+        }
+        dp=3
+        dp_timer=10
+        dp_temp=0
+    }
+
+    if dp==2 and (right_down and down_down ){
+        dp=3
+        dp_timer=10
+        dp_temp=0
+    }
+}
+
+//Left
+if start_dir[0]==-1  && spr_dir == looking{
+    if dp==0 and ((left_pressed and !down_down and !up_down))  {
+        dp=1
+        dp_timer=10
+        dp_temp=0
+    }
+    
+    if dp==1 and (!left_down and down_down ) {
+        dp=2
+        dp_timer=10
+        dp_temp=0
+
+    }
+    
+    if dp==2 and (left_down and down_down ) and special_pressed {
+        if (!was_parried){
+        ewgf=true;
+        }
+        dp=3
+        dp_timer=10
+        dp_temp=0
+    }
+
+    if dp==2 and (left_down and down_down ){
+        dp=3
+        dp_timer=10
+        dp_temp=0
+    }
+}
+
+
+//Shortcut
+
+//Right
+if start_dir[0]==1  && spr_dir == looking{
+    if dp==0 and ((right_down and !down_down and !up_down))  {
+        dp=1
+        dp_timer=10
+        dp_temp=0
+    }
+        
+    if dp==1 and (joy_pad_idle) {
+        dp=2
+        dp_timer=10
+        dp_temp=0
+
+
+    }
+    
+    if dp=2 and (right_down and down_down ) and special_pressed {
+        if (!was_parried){
+        ewgf=true;
+        }
+        dp=3
+        dp_timer=10
+        dp_temp=0
+    }
+
+    if dp==2 and (right_down and down_down ){
+        dp=3
+        dp_timer=10
+        dp_temp=0
+    }
+
+}
+
+//Left
+if start_dir[0]==-1 && spr_dir == looking{
+    if dp==0 and ((left_down and !down_down and !up_down))  {
+        dp=1
+        dp_timer=10
+        dp_temp=0
+    }
+    
+    if dp==1 and (joy_pad_idle) {
+        dp=2
+        dp_timer=10
+        dp_temp=0
+
+
+    }
+    
+    if dp==2 and (left_down and down_down ) and special_pressed {
+        if (!was_parried){
+        ewgf=true;
+        }
+        dp=3
+        dp_timer=10
+        dp_temp=0
+    }
+
+    if dp==2 and (left_down and down_down ){
+        dp=3
+        dp_timer=10
+        dp_temp=0
+    }
+
+}
+
+
+//settings
+sparda = extras_arr[3][2];

@@ -1,7 +1,21 @@
 // MunoPhone Touch code - don't touch
 // should be at TOP of file
+/*
 muno_event_type = 1;
 user_event(14);
+*/
+
+if(state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND){
+	//if(attack != AT_USPECIAL){
+		teleport_outline = false;
+		init_shader();
+	//}
+}if(state == PS_ATTACK_AIR and state == PS_ATTACK_GROUND){
+	if(attack != AT_USPECIAL){
+		teleport_outline = false;
+		init_shader();
+	}
+}
 
 if(state == PS_WALK){
     hud_offset = 20;
@@ -21,14 +35,16 @@ if (state == PS_DASH_START) {
     }
 }
 
-if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
-if(attack == AT_USPECIAL){
 if(teleport_outline == true){
 				outline_color = [ 0, 242, 255 ];
 	        init_shader();
-}if(teleport_outline == false){
+}if (get_player_color(player) != 26){
+if(teleport_outline == false){
 				outline_color = [ 0, 0, 0 ];
 }
+}if (get_player_color(player) = 26){
+if(teleport_outline == false){
+				outline_color = [108, 14, 255];
 }
 }
 
@@ -93,4 +109,9 @@ if (eggdog_skin == true){
  	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("eggdog_orb_proj"));
 } if (eggdog_skin == false){
  	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("orb_proj"));
+}
+
+//check practice mode
+if (get_training_cpu_action() != CPU_FIGHT && object_index != oTestPlayer) {
+    practice_mode = true;
 }

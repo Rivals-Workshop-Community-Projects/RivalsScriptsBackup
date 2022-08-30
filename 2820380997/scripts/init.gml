@@ -105,6 +105,8 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 pull_to_x = 0;
 pull_to_y = 0;
 grabbed_player_obj_spr_angle = 0;
+player_location_start_of_grab_x = 0;
+player_location_start_of_grab_y = 0;
 
 // Custom Variables
 double_jump_backward_flag = false;
@@ -150,9 +152,21 @@ wisp_object_ID = noone;
 wisp_returned = false;
 
 // Random Clone Text
+num_clone_text_names = 12 + 1;
 clone_text_list = ["Real Roekoko",
-"Not a trick","Not a Clone","Forsburn Clone","Roka-cola",
-"reokreok","R O E K O K O"," ROKOKOKOKOKO","r03k0K0",""];
+"Not a Trick",
+"Not a Clone",
+"Forsburn Clone",
+"Roka-cola",
+"R O E K O K O",
+"r03k0K0",
+"Kokororo",
+"^-.-^",
+"Real Faker",
+"THIS ONE",
+"Generic Name",
+"Clone Goon" //12
+];
 
 // intro Code
 intro_sound_played_flag = false;
@@ -163,6 +177,7 @@ color_b = 0;
 color_g = 0;
 color_type = 0;
 color_timer = 1; //Edit this value to change the speed of rainbow
+last_frame_color_alt = get_player_color(player);
 
 // Final Smash Compat
 fs_char_chosen_final_smash = "custom";
@@ -182,3 +197,56 @@ final_strong_window_loops = 3;
 Hikaru_Title = "We're twin tailed troublemakers";
 arena_title = "The Twin-tailed Troublemaker";
 battle_text = "*Let's have some fun!"; //
+
+//#region Synced Variable
+
+// Synced Variable Stuff
+/* Synced Variable should account for these. We have 32 bits to work with.
+1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
+2. Status of Win Quotes Enabled - 1 bit
+3. Status of Round Start Dialog Enabled - 1 bit 
+*/
+//This function takes the bit lengths you put in the previous function, in the same order, and outputs an array with the values you put in (assuming you put in the correct bit lengths), also in the same order.
+//split_var = split_synced_var(bit_length_1, bit_length_2...);
+split_var = split_synced_var(2,1,1);
+//print(split_var);
+
+color_shift = 0; // Declare variable
+flag_win_quote_enabled = 0; // Declare variable
+flag_round_start_dialog = 0; // Declare variable
+
+// Synced variable overwrite
+color_shift = split_var[0];
+flag_win_quote_enabled = split_var[1];
+flag_round_start_dialog = split_var[2];
+
+//Results variable 
+countPlayers = 0;
+
+/*
+print("color_shift: " + string(color_shift) + string(get_gameplay_time())); // Color_Shift;
+print("flag_win_quote_enabled: " + string(flag_win_quote_enabled) + string(get_gameplay_time())); // WinQuote
+print("flag_round_start_dialog: "+ string(flag_round_start_dialog) + string(get_gameplay_time())); // Round Start Dialog
+*/
+
+// Reload on round start
+manual_init_shader_call = true;
+init_shader();
+//#endregion
+
+
+#define split_synced_var
+///args chunk_lengths...
+var num_chunks = argument_count;
+var chunk_arr = array_create(argument_count);
+var synced_var = get_synced_var(player);
+var chunk_offset = 0
+for (var i = 0; i < num_chunks; i++) {
+    var chunk_len = argument[i]; //print(chunk_len);
+    var chunk_mask = (1 << chunk_len)-1
+    chunk_arr[i] = (synced_var >> chunk_offset) & chunk_mask;
+    //print(`matching shift = ${chunk_len}`);
+    chunk_offset += chunk_len;
+}
+//print(chunk_arr);
+return chunk_arr;

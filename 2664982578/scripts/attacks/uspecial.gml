@@ -13,7 +13,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 
 // article flight
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 60);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 40);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1); 
@@ -41,7 +41,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 6); 
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 3);
+set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 112);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 8);
@@ -61,4 +61,5 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_USPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.75);
+//set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.75);
+set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 8); 

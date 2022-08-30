@@ -13,6 +13,11 @@ switch(state){
 }
 */
 
+// Tech Sound Fix cause it doesn't play normally when the clone is out?
+if(instance_exists(clone_object_ID) && (state == PS_TECH_GROUND || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD) && state_timer == 1){
+    sound_play(asset_get( "sfx_tech" ),false,noone,1,1); // soundID,looping,panning,volume,pitc
+}
+
 // Extra D jump when being thrown by Uspecial on the ground
 if(instance_exists(clone_object_ID)){
     if(!clone_object_ID.free && attack == AT_USPECIAL_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && djump_given_back_flag = false){
@@ -72,6 +77,17 @@ if(instance_exists(asset_get("hit_fx_obj"))){ // Checks to see if any hfcxs exis
         	if(is_even(floor(get_gameplay_time() / 2))){spr_dir = 1;} else spr_dir = -1;
         }
     }
+}
+
+// Code for counting players for Results Screen / Intro
+if(state == PS_SPAWN && state_timer == 1)
+{
+        with(oPlayer)
+        {
+            other.countPlayers ++;
+            if(id != other.id)
+                other.enemyObj = id;
+        }
 }
 
 #region //Rainbow Alt Stuff

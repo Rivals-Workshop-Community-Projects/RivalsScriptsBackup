@@ -125,13 +125,13 @@ if (attack == AT_USPECIAL_2){
 	if (window == 3){
 		if (left_down){
 			spr_dir = -1;
-			if (hsp > -6){
+			if (hsp > -5){
 				hsp --;
 			}
 		}
 		if (right_down){
 			spr_dir = 1;
-			if (hsp < 6){
+			if (hsp < 5){
 				hsp ++;
 			}
 		}
@@ -170,9 +170,14 @@ if (attack == AT_USPECIAL_2){
 		sound_stop(spin);
 	}
 	if (window == 4 && window_timer == 11){
+		if (has_hit or flight_timer < 60){
 		if (free){
 		set_state(PS_IDLE_AIR);
 		} else set_state(PS_IDLE);
+	}
+	if !has_hit && flight_timer >= 60{
+		set_state(PS_PRATFALL);
+	}
 	}
 }
 
@@ -768,7 +773,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
 	default: 

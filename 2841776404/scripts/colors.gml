@@ -1,5 +1,4 @@
 // DEFAULT COLOR
-
 // Hair/Highlights
 set_color_profile_slot( 0, 0, 248, 74, 174 );
 set_color_profile_slot_range( 0, 1, 57, 37 );

@@ -12,7 +12,6 @@ Offset("dash");
 Offset("dashstart");
 Offset("dashstop");
 Offset("dashturn");
-
 Offset("jumpstart");
 Offset("jump");
 Offset("doublejump");
@@ -20,14 +19,12 @@ Offset("walljump");
 Offset("pratfall");
 Offset("land");
 Offset("landinglag");
-
 Offset("parry");
 Offset("roll_forward");
 Offset("roll_backward");
 Offset("airdodge");
 Offset("waveland");
 Offset("tech");
-
 Offset("jab");
 Offset("dattack");
 Offset("ftilt");
@@ -48,9 +45,8 @@ Offset("uspecial");
 Offset("dspecial");
 Offset("intro");
 Offset("taunt");
-
+sprite_change_offset("foxSpin", 22, 35);
 sprite_change_offset("plat", 32, 47);
-
 sprite_change_offset("shinestar", 64, 22);
 sprite_change_offset("star2", 32, 32);
 sprite_change_offset("starshot", 32, 32);
@@ -60,9 +56,7 @@ sprite_change_offset("startrail", 64, 64);
 sprite_change_offset("hitsmall", 64, 64);
 sprite_change_offset("hitfx", 64, 64);
 sprite_change_offset("bighit", 128, 128);
-
 set_victory_bg(sprite_get("vic"));
-//set_victory_theme(sound_get("lukastar_only_2_leads_but_actually_with_a_better_mixed_3rd_lead"));
 set_victory_theme(sound_get("lukastar_victory_finished"));
 
 #define Offset

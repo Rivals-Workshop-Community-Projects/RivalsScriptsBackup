@@ -27,9 +27,10 @@ alt_name[9]  = "Kragg";
 alt_name[10] = "Hector";
 alt_name[11] = "Qbby";
 alt_name[12] = "Champion";
-alt_name[13] = "Tourney";
-alt_name[14] = "Tr(ocky)ans";
-alt_name[15] = "Non-B(laboa)inary";
+alt_name[13] = "Trocky";
+alt_name[14] = "Non-Blaboa";
+alt_name[15] = "Tourney";
+
 
 
 //Patch

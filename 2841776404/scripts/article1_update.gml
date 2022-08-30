@@ -26,6 +26,7 @@ if (init_free == true && free == false){
     init_free = false;
 }
 if (state == 0){
+	is_hittable = true;
     if (player_id.attack == AT_DSPECIAL_AIR && player_id.window == 3 && player_id.window_timer == 2 && state != 3){
         state = 3;
         state_timer = 0;
@@ -73,11 +74,11 @@ if (state == 0){
         state_timer = 0;
     }
     vsp = 12;
-}
+} else is_hittable = false;
 
 if (state == 1){
     sprite_index = sprite_get("suit_hit");
-    if (state_timer >= hitstun_time){
+    if (state_timer >= hitstun_time * 2){
         if (suit_power > 0){
         state = 0;
         state_timer = 0;
@@ -137,7 +138,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
 	default: 

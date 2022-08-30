@@ -35,6 +35,12 @@ if (attack == AT_NSPECIAL){
 	        	}else if(!instance_exists(thedice2)){
 	        		thedice2 = dice;
 	        	}
+	        	if(instance_exists(thedice1) && instance_exists(thedice2) && (instance_exists(thetoken) || tokencooldown > 0)){
+		        	dicecooldown += 90;
+		        	if(tokencooldown > 0){
+		        		dicecooldown += 90;
+		        	}
+	        	}
         	}
         }
     }
@@ -59,8 +65,12 @@ if (attack == AT_NSPECIAL){
 	        	}else if(current_money > 1000){
 	        		thetoken = create_hitbox(AT_FSPECIAL, 1, x+55*spr_dir, y-35);create_hitbox(AT_NSPECIAL, 2, x+55*spr_dir, y-35);
 	        		current_money -= 1000;
-	        	}else{
-	        		
+	        	}
+	        	if(instance_exists(thetoken) && (dicecooldown > 0 || instance_exists(thedice1) && instance_exists(thedice2))){
+		        	tokencooldown += 60;
+		        	if(dicecooldown > 0){
+		        		tokencooldown += 90;
+		        	}
 	        	}
         	}
         }

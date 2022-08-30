@@ -6,8 +6,6 @@ hit_player_obj = self
 }
 
 
-print(move_cooldown[AT_FSPECIAL_2])
-
 
 
 if move_cooldown[AT_USPECIAL_2] == 9 {

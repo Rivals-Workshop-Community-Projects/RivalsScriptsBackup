@@ -44,7 +44,7 @@ uspecside = 0
 wjcap = 0
 
 uped = 0
-htrain = 0
+htrain = 0 
 btrain = 0
 atrain = 0
 ltrain = 0
@@ -185,3 +185,8 @@ sgf1 = hit_fx_create( sprite_get( "galax1" ), 16);
 sgf2 = hit_fx_create( sprite_get( "galax2" ), 16);
 sgf3 = hit_fx_create( sprite_get( "galax3" ), 16);
 sgf4 = hit_fx_create( sprite_get( "galax4" ), 16);
+
+fgf1 = hit_fx_create( sprite_get( "galax1" ),12);
+fgf2 = hit_fx_create( sprite_get( "galax2" ),12);
+fgf3 = hit_fx_create( sprite_get( "galax3" ),12);
+fgf4 = hit_fx_create( sprite_get( "galax4" ),12);

@@ -37,14 +37,27 @@
 #macro CL_ARTICLE_DESTROY 99
 
 check_interupts();
-hit_detection();
+if(state != CL_GOT_HIT && state != CL_ARTICLE_DESTROY){hit_detection();}
+//print("left_down: " + string(player_id.left_down) + "\ right_down: " + string(player_id.right_down));
+//if(mask_index != player_id.hurtbox_spr){mask_index = player_id.hurtbox_spr;} // Enable for hurtbox editing Set this before every state and change it later
+
+if(state == CL_DSPECIAL){
+//Clear Throw flags to prevent the throw from taking effect after the move
+        // Reset flags to prevent second throws and grab storage
+        if(player_id.clone_fspecial_player_throwing_clone == true){player_id.clone_fspecial_player_throwing_clone = false;}
+		if(player_id.clone_fspecial_clone_throwing_player == true){player_id.clone_fspecial_clone_throwing_player = false;}
+		if(player_id.clone_uspecial_player_throwing_clone == true){player_id.clone_uspecial_player_throwing_clone = false;}
+		if(player_id.clone_uspecial_clone_throwing_player == true){player_id.clone_uspecial_clone_throwing_player = false;}
+}
 /*
-print(state)
-print(state_timer)
+print(state);
+print(state_timer);
+//print("player dspecial hit flag: " + string(player_id.clone_dspecial_hit) + "/ clone dspecial hit flag:" + string(clone_dspecial_hit));
 
 print(sprite_index)
 print(image_index)
 */
+
 switch(state){
     case CL_INITALIZE:
         sprite_index = spawn_sprite;
@@ -59,6 +72,15 @@ switch(state){
         hsp *= .80; // ground friction
         clone_state_cat = SC_NEUTRAL;
         clone_has_djump = true;
+        // Reset flags
+        if(player_id.clone_dspecial_hit){player_id.clone_dspecial_hit = false;} //Force to false to prevent storing grabs glitch
+        if(clone_dspecial_hit){clone_dspecial_hit = false;}
+        // Reset flags to prevent second throws and grab storage
+        if(player_id.clone_fspecial_player_throwing_clone == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_fspecial_player_throwing_clone = false;}
+		if(player_id.clone_fspecial_clone_throwing_player == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_fspecial_clone_throwing_player = false;}
+		if(player_id.clone_uspecial_player_throwing_clone == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_uspecial_player_throwing_clone = false;}
+		if(player_id.clone_uspecial_clone_throwing_player == true && !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){player_id.clone_uspecial_clone_throwing_player = false;}
+        
         if(free){vsp = vsp + player_id.gravity_speed;}
         
         // Dash Start Logic
@@ -95,7 +117,8 @@ switch(state){
         clone_has_air_dash = true;
         clone_state_cat = SC_COMMITTED;
         clear_button_buffer(PC_JUMP_PRESSED);
-        if(state_timer > 4){state = CL_AIR_NEUTRAL;state_timer = 0;vsp = -1 * jump_speed;spawn_base_dust(x, y, "jump", spr_dir)}
+        if(state_timer > 4 && player_id.jump_down == false){state = CL_AIR_NEUTRAL;state_timer = 0;vsp = -1 * short_hop_speed;spawn_base_dust(x, y, "jump", spr_dir)} // Short hop
+        if(state_timer > 4 && player_id.jump_down == true){state = CL_AIR_NEUTRAL;state_timer = 0;vsp = -1 * jump_speed;spawn_base_dust(x, y, "jump", spr_dir)} // Full Hop
     	break;
     
     case CL_AIR_NEUTRAL:
@@ -103,7 +126,7 @@ switch(state){
         image_index = 2 + (vsp / player_id.max_fall);
         clone_state_cat = SC_NEUTRAL;
         vsp = vsp + player_id.gravity_speed;
-        hsp = clamp(hsp + (player_id.air_accel * player_id.clone_walk_direction),-1 * player_id.air_max_speed,player_id.air_max_speed)
+        hsp = clamp(hsp + (player_id.air_accel * 1.1 * player_id.clone_walk_direction),-1 * player_id.air_max_speed,player_id.air_max_speed); // Added Multipler to speed it up slightly
         //vsp = clamp(vsp,-8,player_id.max_fall);
         //Fast Fall Logic
         if(player_id.down_hard_pressed && sign(vsp) == 1 && player_id.attack == AT_EXTRA_1){
@@ -150,6 +173,7 @@ switch(state){
         clone_has_djump = true;
         clone_has_air_dash = true;
         fast_fall_fx_played_flag = false;
+        hsp *= .95; // ground friction
         // Play Sound
         if(state_timer == 1){spawn_base_dust(x, y, "land", spr_dir);sound_play(player_id.land_sound);}
         // Exit Condition
@@ -391,6 +415,7 @@ switch(state){
     // Dspecial is 26 frames w/ whiff, currently 1 -> 6, 2 -> 2, 3 -> 12 ( 18 whiff). 8 Animation Frames
         sprite_index = dspecial_sprite;
         image_index = state_timer / 1.5;
+        //mask_index = dspecial_hurt_sprite; // Enable for hurtbox editing
         clone_state_cat = SC_COMMITTED;
         clone_dspecial_cooldown = 2;
         // Friction
@@ -411,6 +436,8 @@ switch(state){
         if(state_timer < 5 && player_id.up_down){state = CL_DSPECIAL_UP;state_timer = 0;} // Go to Dspecial Up
         if(state_timer < 5 && player_id.down_down && free && 
         player_id.attack == AT_EXTRA_1){state = CL_DSPECIAL_DOWN;state_timer = 0} // Go to Dspecial Up
+        
+        
         if(state_timer = 4){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	sound_play(asset_get("sfx_ori_spirit_flame_2"),false,noone,.5,.8)// sound_play(sound_temp,false,noone,volume_temp,pitch_temp ); // soundID,looping,panning,volume,pitch /
@@ -427,6 +454,7 @@ switch(state){
         if(player_id.clone_dspecial_hit == true){
     	clone_dspecial_hit = true; // Sets the variable on the player to the article
         state = CL_DTHROW; 
+        state_timer = 0;
         sprite_index = dthrow_full_sprite;
         image_index = 0;} 
         
@@ -438,6 +466,7 @@ switch(state){
     case CL_DSPECIAL_UP:
         sprite_index = dspecial_up_sprite;
         image_index = state_timer / 1.5;
+        //mask_index = dspecial_up_hurt_sprite; // Enable for hurtbox editing
         clone_state_cat = SC_COMMITTED;
         clone_dspecial_cooldown = 2;
         // Friction
@@ -468,7 +497,8 @@ switch(state){
 			}
     	if(player_id.clone_dspecial_hit == true){
     	clone_dspecial_hit = true; // Sets the variable on the player to the article
-        state = CL_DTHROW; 
+        state = CL_DTHROW;
+        state_timer = 0;
         sprite_index = dthrow_full_sprite;
         image_index = 0;} 
         if(state_timer > 7){image_index = 2 + (state_timer / 4);}
@@ -479,6 +509,7 @@ switch(state){
     case CL_DSPECIAL_DOWN:
         sprite_index = dspecial_down_sprite;
         image_index = state_timer / 1.5;
+        //mask_index = dspecial_down_hurt_sprite; // Enable for hurtbox editing
         clone_state_cat = SC_COMMITTED;
         clone_dspecial_cooldown = 30;
         // Friction
@@ -499,10 +530,10 @@ switch(state){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	sound_play(asset_get("sfx_ori_spirit_flame_2"),false,noone,.5,.85);
         }
-        if(state_timer = 4){current_hitbox = create_article_hitbox(AT_EXTRA_2,3,x + (spr_dir * 9), y + 2);}
+    	var temp_x = x + (spr_dir * 9); // Set hitbox X
+    	var temp_y = y - 12; // Set Hitbox Y
+        if(state_timer = 4){current_hitbox = create_article_hitbox(AT_EXTRA_2,3,temp_x, temp_y);}
         if(instance_exists(current_hitbox)){
-        	var temp_x = x + spr_dir * 9;
-        	var temp_y = y + 2;
         	with(current_hitbox){
         		x = temp_x;
         		y = temp_y;
@@ -510,12 +541,13 @@ switch(state){
         	}
         
     	if(player_id.clone_dspecial_hit == true){
-    	clone_dspecial_hit = true; // Sets the variable on the player to the article
-        state = CL_DTHROW; 
-        sprite_index = dthrow_full_sprite;
-        image_index = 0;} 
+	    	clone_dspecial_hit = true; // Sets the variable on the player to the article
+	        state = CL_DTHROW;
+	        state_timer = 0;
+	        sprite_index = dthrow_full_sprite;
+	        image_index = 0;} 
         if(state_timer > 7){image_index = 2 + (state_timer / 4);}
-        if(!free && !player_id.clone_dspecial_hit){state = CL_LAND;state_timer = 0;clone_dspecial_cooldown = 30;}
+        if(state_timer > 8 && !free && !player_id.clone_dspecial_hit){state = CL_LAND;state_timer = 0;clone_dspecial_cooldown = 30;}
         if(state_timer > 26 && free){state = CL_AIR_NEUTRAL;state_timer = 0;clone_dspecial_cooldown = 30;}
     	break;
         
@@ -526,6 +558,7 @@ switch(state){
         if(state_timer <= 30){image_index = state_timer / 5;}
         if(state_timer > 30 && state_timer <= 62 ){image_index = 6 + ((state_timer - 30) / 11);}
         if(state_timer > 62){image_index = 9 + ((state_timer - 62) / 4);}
+    	//print(state_timer)
         vsp = 0;
         hsp = 0;
         clone_state_cat = SC_COMMITTED;
@@ -546,20 +579,30 @@ switch(state){
 				grabbed_player_obj.can_wall_tech = false;
 				
 				//if this is the first frame of a window, store the grabbed player's relative position.
-				if (state_timer <= 1) {
+				if (state_timer == 1) {
 					grabbed_player_relative_x = grabbed_player_obj.x - x;
 					grabbed_player_relative_y = grabbed_player_obj.y - y;
+					pull_to_x = grabbed_player_relative_x;
+					pull_to_y = grabbed_player_relative_y; // - floor(grabbed_player_obj.char_height/2);
+					clone_grab_start_x = x;
+					clone_grab_start_y = y;
+					//print("grabbed_player_relative_x: " + string(grabbed_player_relative_x) +  "/ grabbed_player_relative_y: " + string(grabbed_player_relative_y))
+					//print("pull_to_x: " + string(pull_to_x) +  "/ pull_to_y: " + string(pull_to_y));
+					//print("clone_grab_start_x: " + string(clone_grab_start_x) +  "/ clone_grab_start_y: " + string(clone_grab_start_y));
 				}
-				
-				if (state_timer <= 4) {
-					if(free){
-						if(state_timer <= 2){
-							pull_to_x = grabbed_player_relative_x;
-							pull_to_y = grabbed_player_relative_y - floor(grabbed_player_obj.char_height/2);
-						}
-						x = grabbed_player_obj.x; //+ ease_linear(0, pull_to_x, window_timer, window_length);
-						y = grabbed_player_obj.y; // + ease_linear(0, pull_to_y, window_timer, window_length);
-					}
+				// Pull Window
+				var grab_start_up_window = 20;
+				if (state_timer <= grab_start_up_window) {
+					//if(free){
+						//x = grabbed_player_obj.x;
+						//y = grabbed_player_obj.y;
+						x = clone_grab_start_x + ease_linear(0, pull_to_x, state_timer, grab_start_up_window); //x + ease_linear(0, pull_to_x, state_timer, 15) - 
+						y = clone_grab_start_y + ease_linear(0, pull_to_y, state_timer, grab_start_up_window); //y + ease_linear(0, pull_to_y, state_timer, 15) - 
+						//print("x:" + string(x) + "y" + string(y));
+						//print(ease_linear(0, pull_to_x, state_timer, grab_start_up_window));
+						//print(ease_linear(0, pull_to_y, state_timer, grab_start_up_window));
+					//}
+					/*
 					if(!free){
 						if(state_timer <= 2){
 							pull_to_x = 20 * spr_dir;
@@ -567,16 +610,16 @@ switch(state){
 						}
 						grabbed_player_obj.x = x; //+ ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
 						grabbed_player_obj.y = y; //+ ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
-					}
+					}*/
 				}
-				if (state_timer >= 5) {
-				/*	x = grabbed_player_obj.x
-					y = grabbed_player_obj.y */
+				if (state_timer >= grab_start_up_window) {
+					
 					grabbed_player_obj.x = x;
 					grabbed_player_obj.y = y;
+					
 				}
 			}
-			}
+		}
         if(state_timer = 30){current_hitbox = create_article_hitbox(AT_DTHROW,7,x, y - 40);}
         if(state_timer = 36){current_hitbox = create_article_hitbox(AT_DTHROW,8,x, y - 40);}
         if(state_timer = 42){current_hitbox = create_article_hitbox(AT_DTHROW,8,x, y - 40);}
@@ -620,8 +663,15 @@ switch(state){
         // Hitboxes
         if(player_id.window == 2 && image_index == 6 && !player_id.hitpause){current_hitbox = create_article_hitbox(AT_EXTRA_3,4,x, y);}
         if(player_id.window == 3 && image_index == 6 && !player_id.hitpause){current_hitbox = create_article_hitbox(AT_EXTRA_3,5,x, y);}
+        //print(state_timer)
         // Exit Condition
-        if(!(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
+        //if(!(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
+
+        var englag_window = 6
+        var endlag_window_final_frame = 12;
+        	
+        if(player_id.window == englag_window && player_id.window_timer == (endlag_window_final_frame - 1) // Normal
+        || !(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){ // Incase she is hit out
         	player_id.clone_dspecial_hit = false;
         	clone_dspecial_hit = false;
         	state = CL_IDLE;
@@ -687,7 +737,7 @@ switch(state){
         if(state_timer == 1){spr_dir = player_id.spr_dir;}
         if(state_timer < 4){image_index = state_timer;}
         if(state_timer >= 5){image_index = 3 + state_timer / 4;}
-        if(state_timer > 23){state = CL_IDLE;state_timer = 0;}
+        if(state_timer > 20){state = CL_IDLE;state_timer = 0;}
         break;
         
     case CL_FSPECIAL_2: //Being Thrown
@@ -715,7 +765,7 @@ switch(state){
         clone_state_cat = SC_COMMITTED;
         if(state_timer < 4){image_index = state_timer;}
         if(state_timer >= 5){image_index = 3 + state_timer / 4;}
-        if(state_timer > 23){state = CL_IDLE;state_timer = 0;}
+        if(state_timer > 17){state = CL_IDLE;state_timer = 0;}
         break;
         
     case CL_USPECIAL_2: //Being Thrown
@@ -778,95 +828,97 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 {
 	// Throw Interupts
 	if(player_id.clone_fspecial_player_throwing_clone == true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_FSPECIAL_2; state_timer = 0; player_id.clone_fspecial_player_throwing_clone = false;}
-	if(player_id.clone_fspecial_clone_throwing_player = true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_FSPECIAL;state_timer = 0; player_id.clone_fspecial_clone_throwing_player = false;}
-	if(player_id.clone_uspecial_player_throwing_clone = true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_USPECIAL_2;state_timer = 0; player_id.clone_uspecial_player_throwing_clone = false;}
-	if(player_id.clone_uspecial_clone_throwing_player = true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_USPECIAL;state_timer = 0; player_id.clone_uspecial_clone_throwing_player = false;}
-    
-    // Idle in the Air
-    if(free == true && state_timer > 4 && clone_state_cat == SC_NEUTRAL && !(state == CL_FSPECIAL_2 || state == CL_USPECIAL_2 || state == CL_FSPECIAL_AIR || state == CL_DJUMP)){state = CL_AIR_NEUTRAL;}
-    
-    //Jump
-    if(!free && player_id.jump_down == true && player_id.attack == AT_EXTRA_1 && 
-    (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
-    	state = CL_JUMP_SQUAT; state_timer = 0;}
-    	
-    // Double Jump
-    if(free && state_timer > 4 && player_id.jump_pressed && player_id.attack == AT_EXTRA_1 && clone_has_djump == true && 
-    (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
-    	state = CL_DJUMP; state_timer = 0;}
-    	
-    //platdrop
-    if(!free == true && clone_state_cat == SC_NEUTRAL && player_id.attack == AT_EXTRA_1 && 
-    (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) &&
-    place_meeting(x, y, asset_get("jumpthrough_32_obj"))
-    && player_id.down_hard_pressed){can_be_grounded = false;free = true; state = CL_AIR_NEUTRAL; vsp = vsp + 4;}
-    
-    // Reset Platdrop
-    if(!player_id.down_hard_pressed){can_be_grounded = true};
-    
-    if(!free && player_id.shield_pressed && player_id.attack == AT_EXTRA_1 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL)
-    {
-    	state = CL_WAVELAND; state_timer = 0;
-    }
-    
+	if(player_id.clone_fspecial_clone_throwing_player == true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_FSPECIAL;state_timer = 0; player_id.clone_fspecial_clone_throwing_player = false;}
+	if(player_id.clone_uspecial_player_throwing_clone == true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_USPECIAL_2;state_timer = 0; player_id.clone_uspecial_player_throwing_clone = false;}
+	if(player_id.clone_uspecial_clone_throwing_player == true && not_throwable_flag == false && clone_state_cat == SC_NEUTRAL){state = CL_USPECIAL;state_timer = 0; player_id.clone_uspecial_clone_throwing_player = false;}
+	
+	// Idle in the Air
+	if(free == true && state_timer > 4 && clone_state_cat == SC_NEUTRAL && !(state == CL_FSPECIAL_2 || state == CL_USPECIAL_2 || state == CL_FSPECIAL_AIR || state == CL_DJUMP)){state = CL_AIR_NEUTRAL;}
+	
+	// Jump
+	if(!free && player_id.jump_down == true && player_id.attack == AT_EXTRA_1 && 
+	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
+		state = CL_JUMP_SQUAT; state_timer = 0;}
+		
+	// Double Jump
+	if(free && state_timer > 4 && player_id.jump_pressed && player_id.attack == AT_EXTRA_1 && clone_has_djump == true && 
+	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
+		state = CL_DJUMP; state_timer = 0;}
+		
+	// Platdrop
+	if(!free == true && clone_state_cat == SC_NEUTRAL && player_id.attack == AT_EXTRA_1 && 
+	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) &&
+	place_meeting(x, y, asset_get("jumpthrough_32_obj"))
+	&& player_id.down_hard_pressed){can_be_grounded = false;free = true; state = CL_AIR_NEUTRAL; vsp = vsp + 4;}
+	
+	// Reset Platdrop
+	if(!player_id.down_hard_pressed){can_be_grounded = true};
+	
+	// Wavedash
+	if(!free && player_id.shield_pressed && player_id.attack == AT_EXTRA_1 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL)
+	{
+		state = CL_WAVELAND; state_timer = 0;
+	}
+
 	// Air Dash
 	if(free && state_timer > 1 && player_id.shield_down && player_id.attack == AT_EXTRA_1 && clone_has_air_dash == true && 
-    (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
-    	// Numpad Direction
-    	if(player_id.up_down && !player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 8;}
-    	if(player_id.up_down && player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 9;}
-    	if(!player_id.up_down && player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 6;}
-    	if(!player_id.up_down && player_id.right_down && player_id.down_down && !player_id.left_down){clone_air_dash_direction = 3;}
-    	if(!player_id.up_down && !player_id.right_down && player_id.down_down && !player_id.left_down){clone_air_dash_direction = 2;}
-    	if(!player_id.up_down && !player_id.right_down && player_id.down_down && player_id.left_down){clone_air_dash_direction = 1;}
-    	if(!player_id.up_down && !player_id.right_down && !player_id.down_down && player_id.left_down){clone_air_dash_direction = 4;}
-    	if(player_id.up_down && !player_id.right_down && !player_id.down_down && player_id.left_down){clone_air_dash_direction = 7;}
-    	if(!player_id.up_down && !player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 5;} // Neutral
-    	state = CL_AIR_DASH; state_timer = 0;}
-    	
+	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
+		// Numpad Direction
+		if(player_id.up_down && !player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 8;}
+		if(player_id.up_down && player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 9;}
+		if(!player_id.up_down && player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 6;}
+		if(!player_id.up_down && player_id.right_down && player_id.down_down && !player_id.left_down){clone_air_dash_direction = 3;}
+		if(!player_id.up_down && !player_id.right_down && player_id.down_down && !player_id.left_down){clone_air_dash_direction = 2;}
+		if(!player_id.up_down && !player_id.right_down && player_id.down_down && player_id.left_down){clone_air_dash_direction = 1;}
+		if(!player_id.up_down && !player_id.right_down && !player_id.down_down && player_id.left_down){clone_air_dash_direction = 4;}
+		if(player_id.up_down && !player_id.right_down && !player_id.down_down && player_id.left_down){clone_air_dash_direction = 7;}
+		if(!player_id.up_down && !player_id.right_down && !player_id.down_down && !player_id.left_down){clone_air_dash_direction = 5;} // Neutral
+		state = CL_AIR_DASH; state_timer = 0;
+	}
+	
 	// DSPECIAL GRAB
-    if( clone_dspecial_cooldown == 0 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL &&
-    	(player_id.attack == AT_DSPECIAL || // If Player is using Dspecial.
-    	(player_id.attack == AT_EXTRA_1 && player_id.attack_down ))){ // Allows her to grab by pressing attack
-    	state = CL_DSPECIAL; state_timer = 0;}
-    	
-    // Dspecial Team Grab
-    if(player_id.attack == AT_EXTRA_3 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL && state != CL_DTHROW_TEAM){clone_dspecial_hit = false;state = CL_DTHROW_TEAM;clone_dspecial_cooldown = 60;state_timer=0;}
-    	
+	if( clone_dspecial_cooldown == 0 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL &&
+		(player_id.attack == AT_DSPECIAL || // If Player is using Dspecial.
+		(player_id.attack == AT_EXTRA_1 && player_id.attack_down ))){ // Allows her to grab by pressing attack
+		state = CL_DSPECIAL; state_timer = 0;
+	}
+	
+	// Dspecial Team Grab
+	if(player_id.attack == AT_EXTRA_3 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL && state != CL_DTHROW_TEAM){clone_dspecial_hit = false;state = CL_DTHROW_TEAM;clone_dspecial_cooldown = 60;state_timer=0;}
+	
 	// Nspecial Detonate
-    if(clone_state_cat == SC_NEUTRAL && Nspecial_explosion_flag == false &&
-    	((player_id.attack == AT_NSPECIAL_2 && player_id.window == 2) || // If Player is using Nspecial.
-    	((state == CL_FSPECIAL_2 || state == CL_USPECIAL_2) && player_id.special_down && player_id.state_timer > 22) // In player presses Nspecial while flying
-		))
-    	{
-    	state = CL_NSPECIAL_2; state_timer = 0;
-    	}
-/*
+	if(clone_state_cat == SC_NEUTRAL && Nspecial_explosion_flag == false &&
+		((player_id.attack == AT_NSPECIAL_2 && player_id.window == 2)  // If Player is using Nspecial.
+		//|| ((state == CL_FSPECIAL_2 || state == CL_USPECIAL_2) && player_id.special_down && player_id.state_timer > 22) // In player presses Nspecial while flying
+		)){
+		state = CL_NSPECIAL_2; state_timer = 0;
+	}
+	/*
 	// Nspecial held control
-    if(clone_state_cat == SC_NEUTRAL && Nspecial_explosion_flag == false && (state == CL_FSPECIAL_2 || state == CL_USPECIAL_2) &&
-    	((player_id.attack == AT_FSPECIAL || player_id.attack == AT_USPECIAL) && player_id.special_down)) // In player presses Nspecial while flying
-    	{
-    	state = CL_IDLE; state_timer = 0;
-    	}
-*/
-    //Dspecial During Throw
-        if(player_id.special_pressed && clone_dspecial_cooldown == 0 && clone_state_cat == SC_NEUTRAL &&
-        player_id.down_down && !player_id.up_down && 
-        !player_id.left_down && !player_id.right_down){state = CL_DSPECIAL;state_timer = 0;}
+	if(clone_state_cat == SC_NEUTRAL && Nspecial_explosion_flag == false && (state == CL_FSPECIAL_2 || state == CL_USPECIAL_2) &&
+		((player_id.attack == AT_FSPECIAL || player_id.attack == AT_USPECIAL) && player_id.special_down)) // In player presses Nspecial while flying
+		{
+		state = CL_IDLE; state_timer = 0;
+		}
+	*/
+	
+	// Dspecial During actions while not in hitstun
+    if(player_id.special_pressed && clone_dspecial_cooldown == 0 && clone_state_cat == SC_NEUTRAL && player_id.state_cat != SC_HITSTUN &&
+    player_id.down_down && !player_id.up_down && 
+    !player_id.left_down && !player_id.right_down){state = CL_DSPECIAL;state_timer = 0;}
+	
+	// Clone Assist
+    if(player_id.clone_dspecial_assist = true && !(state == CL_FSPECIAL_AIR) && was_parried == false && was_hit == false){state = CL_FSPECIAL_AIR_TRAVEL;}
     
-    // Clone Assist
-        if(player_id.clone_dspecial_assist = true && !(state == CL_FSPECIAL_AIR) && was_parried == false && was_hit == false){state = CL_FSPECIAL_AIR_TRAVEL;}
-        
-    // Taunt
-        if(player_id.taunt_down = true && !free && clone_state_cat == SC_NEUTRAL &&
-        (player_id.attack != AT_FSPECIAL_2 || player_id.attack != AT_USPECIAL_2)){state = CL_TAUNT;state_timer = 0;}
-        
-        // Death Interupts (High priority, these need to be written at the end of the interupts stage)
-        if(player_id.was_parried == true && state != CL_GOT_PARRIED){state = CL_GOT_PARRIED;}
-        if(was_parried == true && state != CL_ARTICLE_DESTROY){state = CL_GOT_PARRIED;} // Force Parry State
-        if(was_hit == true && state != CL_ARTICLE_DESTROY){state = CL_GOT_HIT;} // Force Got Hit State
-        if(y > room_height || x > room_width || x < 0){state = CL_ARTICLE_DESTROY;state_timer = 0;}
+	// Taunt
+    if(player_id.taunt_down = true && !free && clone_state_cat == SC_NEUTRAL &&
+    (player_id.attack != AT_FSPECIAL_2 || player_id.attack != AT_USPECIAL_2)){state = CL_TAUNT;state_timer = 0;}
     
+    // Death Interupts (High priority, these need to be written at the end of the interupts stage)
+    if(player_id.was_parried == true && state != CL_GOT_PARRIED){state = CL_GOT_PARRIED;}
+    if(was_parried == true && state != CL_ARTICLE_DESTROY){state = CL_GOT_PARRIED;} // Force Parry State
+    if(was_hit == true && state != CL_ARTICLE_DESTROY){state = CL_GOT_HIT;} // Force Got Hit State
+    if(y > room_height || x > room_width || x < 0){state = CL_ARTICLE_DESTROY;state_timer = 0;}
 }
 #define Add_SFX_To_State(state_timer_temp,sound_temp,volume_temp,pitch_temp)
 {
@@ -976,6 +1028,7 @@ with hbox {
     var team_equal = get_player_team(player) == get_player_team(other.player_id.player);
     return ("owner" not in self || owner != other) //check if the hitbox was created by this article
         && hit_priority != 0 && hit_priority <= 10
+        && damage >= 1 // Added so zero damage hitboxes do not hit the clone
         && (groundedness == 0 || groundedness == 1+other.free)
         && (!player_equal) //uncomment to prevent the article from being hit by its owner.
         //&& ( (get_match_setting(SET_TEAMS) && (get_match_setting(SET_TEAMATTACK) || !team_equal) ) || player_equal) //uncomment to prevent the article from being hit by its owner's team.

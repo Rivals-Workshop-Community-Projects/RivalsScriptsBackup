@@ -6,5 +6,6 @@ style_button_y = 42;
 
 voice_button = false;
 style_button = false;
+champ_button = false;
 
 sync_bools = 0;

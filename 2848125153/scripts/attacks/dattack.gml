@@ -44,7 +44,7 @@ set_window_value(AT_DATTACK, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 6, AG_WINDOW_ANIM_FRAME_START, 17);
 //set_window_value(AT_DATTACK, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_DATTACK, 9);
+set_num_hitboxes(AT_DATTACK, 10);
 
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_WINDOW, 20);
@@ -231,3 +231,27 @@ set_hitbox_value(AT_DATTACK, 9, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DATTACK, 9, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DATTACK, 9, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy1"));
 set_hitbox_value(AT_DATTACK, 9, HG_VISUAL_EFFECT, 304);
+
+//choo choo hit collision while riding it
+set_hitbox_value(AT_DATTACK, 10, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DATTACK, 10, HG_WINDOW, 2);
+set_hitbox_value(AT_DATTACK, 10, HG_SHAPE, 0);
+set_hitbox_value(AT_DATTACK, 10, HG_LIFETIME, 9999);
+set_hitbox_value(AT_DATTACK, 10, HG_HITBOX_X, 65);
+set_hitbox_value(AT_DATTACK, 10, HG_HITBOX_Y, -35);
+set_hitbox_value(AT_DATTACK, 10, HG_WIDTH, 85);
+set_hitbox_value(AT_DATTACK, 10, HG_HEIGHT, 55);
+set_hitbox_value(AT_DATTACK, 10, HG_PRIORITY, 0);
+set_hitbox_value(AT_DATTACK, 10, HG_EFFECT, 11);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DATTACK, 10, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_DATTACK, 10, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_DATTACK, 10, HG_IGNORES_PROJECTILES, true);

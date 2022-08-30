@@ -1,3 +1,9 @@
+if ("alt_glow_timer" not in self) {
+	alt_glow_timer = 0;
+}
+
+var alt_glow_timer_max = 480;
+
 var alt_cur = get_player_color("online_fix" in self ? online_fix : player) //sprite_get_xoffset(sprite_get("alts"));
 switch (alt_cur) {
     case 7:
@@ -25,10 +31,10 @@ switch (alt_cur) {
     	set_shading([1, 1, 1, 2.5, 3, 1, 1]);
     break;
     case 16:
-    	set_shading([1, 1, 1, -1.5, 0, 1, 1]);
+    	set_shading([1, 1, 1, pingpong(-1.5, 1.5, alt_glow_timer, alt_glow_timer_max), 0, 1, 1]);
     break;
     case 17:
-    	set_shading([1, 1, 1, -2, -2.9, 1, 1]);
+    	set_shading([1, 1, 1, pingpong(-2, 2, alt_glow_timer, alt_glow_timer_max), pingpong(-2.9, 2.9, alt_glow_timer, alt_glow_timer_max), 1, 1]);
     break;
     case 18:
     	set_shading([0.3, 1.3, 1, 1.5, 1, 1, 0.5]);
@@ -40,6 +46,11 @@ switch (alt_cur) {
     	set_shading([0, 0, 0, 0, 0, 0, 0]);
     break;
 }
+#define pingpong(_s, _e, _time, _time_max)
+var dir = 1
+if (_time % _time_max >= _time_max / 2)
+	dir = -1;
+return lerp(_s, _e, (dir == 1 ? (_time % _time_max) / (_time_max / 2) : (_time_max - (_time % _time_max))/ (_time_max / 2)))
 
 #define set_shading(arr)
 for (var ix = 0; ix < array_length(arr); ix++) 

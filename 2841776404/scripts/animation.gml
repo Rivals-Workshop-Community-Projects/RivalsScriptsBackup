@@ -1,5 +1,5 @@
 if (has_rock){
-	if (state_cat == SC_HITSTUN){
+	if (state_cat == SC_HITSTUN || state == PS_PRATFALL){
 		sprite_index = sprite_get("rock_hurt");
 	}
 	if (state == PS_IDLE){
@@ -48,7 +48,7 @@ if (has_rock){
 		changeAnim(sprite_get("rock_jump"), sprite_get("jump"));
 		image_index = 4;
 	}
-	if (state == PS_LAND){
+	if (state == PS_LAND || state == PS_PRATLAND){
 	changeAnim(sprite_get("rock_land"), sprite_get("land"));
 	var frames = 3;
     var frame_dur = 3;

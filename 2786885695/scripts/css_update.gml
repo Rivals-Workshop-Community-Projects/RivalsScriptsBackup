@@ -163,8 +163,7 @@ else preview_line_color = $000000;
             chunk = chunk << 4; //bitshift left 4 to make room for the next value
         chunk += var_array[i]; //add the special's value
     }
-
-    return chunk;
+    return real(chunk);
 }
 
 //CPU check by supersonic

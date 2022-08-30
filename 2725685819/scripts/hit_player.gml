@@ -76,8 +76,11 @@ if ((get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_CHAOS_EXCLUDE
 			hit_player_obj.trick_stack += 7;
 			else
 			hit_player_obj.trick_stack++;	
+
+			if (extras_arr[1][2])
+			hit_player_obj.trick_stack += 7;
 			
-			
+
 			hit_player_obj.trick_stack = clamp(hit_player_obj.trick_stack,0,7);
 		
 		

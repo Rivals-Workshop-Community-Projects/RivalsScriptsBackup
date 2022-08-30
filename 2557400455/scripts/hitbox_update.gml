@@ -1,5 +1,7 @@
 ///
 
+draw_xscale = spr_dir 
+
 if attack == AT_NSPECIAL && hbox_num == 3 {
 	create_hitbox(AT_TAUNT,2,x,y-30)
 }

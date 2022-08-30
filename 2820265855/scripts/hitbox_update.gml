@@ -1,5 +1,5 @@
 if (attack == AT_NSPECIAL_2 && hbox_num == 1 && hitbox_timer == 59) destroyed = 1;
-
+if (attack == AT_NSPECIAL_2 && hbox_num == 1 && destroyed == 1) sound_play(asset_get( "sfx_oly_crystal_cracking" ));
 
 //zap
 if (attack == AT_EXTRA_3){

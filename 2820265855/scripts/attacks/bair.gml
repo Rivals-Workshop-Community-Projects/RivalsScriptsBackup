@@ -52,7 +52,7 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("hmed"));
+set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("BladeStrike1"));
 
 set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
@@ -72,4 +72,4 @@ set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .75);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("hmed"));
+set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("BladeStrike2"));

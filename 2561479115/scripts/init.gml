@@ -247,3 +247,7 @@ ytarget = 0;
     particles = ds_list_create();
     
 
+// compat
+//po & gumbo
+pot_compat_variable = sprite_get("plasma_curry");
+pot_compat_text = "Plasma Curry";

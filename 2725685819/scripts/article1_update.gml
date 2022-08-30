@@ -5,7 +5,8 @@ can_be_hit[player_id.player] = 2;
 
 image_index += 0.40;
 if (jc_hitstop == 0){
-        if (!jc_buff)
+
+        if (!jc_buff && !jc_fspec_buff && !jc_ewgf)
         hsp = 0.25 * spr_dir;
 
 
@@ -19,7 +20,7 @@ if (jc_hitstop == 0){
             sound_play(sound_get("bladehadou"));
             if !jc_buff
             lifetime = 60*5;
-            else if (jc_buff || jc_fspec_buff){
+            else if (jc_buff || jc_fspec_buff || jc_ewgf){
             lifetime = 16;
             hit_limit = 4;
             }
@@ -45,7 +46,7 @@ if (jc_hitstop == 0){
                 }
                 else if (jc_buff){
                     
-                    if (!jc_fspec_buff){
+                    if (!jc_fspec_buff && !jc_ewgf){
                     var buff_hbox = create_hitbox( AT_NSPECIAL, 2, x + (10 * spr_dir), y );
 
                     if (jc_buff_loops % 2 == 0)
@@ -65,6 +66,18 @@ if (jc_hitstop == 0){
                     jc_buff_loops++;
 
                     }
+                    else if (jc_ewgf){
+                
+                    ewgf_hitbox = create_hitbox( AT_NSPECIAL, 4, x + (10 * spr_dir), y );
+                    ewgf_hitbox.spr_dir = spr_dir;
+                    ewgf_hitbox.player = current_owner.player;
+                        
+                    if (jc_buff_loops % 2 == 0)
+                    ewgf_hitbox.spr_dir = -ewgf_hitbox.spr_dir;
+
+                    jc_buff_loops++;
+                
+                    }
                 
                 }
                 
@@ -77,7 +90,7 @@ if (jc_hitstop == 0){
         else{
         if (!jc_buff)
         hitbox_delay = 10;
-        else if (jc_fspec_buff || jc_buff)
+        else if (jc_fspec_buff || jc_buff || jc_ewgf)
         hitbox_delay = 4;
 
         }

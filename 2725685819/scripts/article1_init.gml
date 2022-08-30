@@ -13,6 +13,8 @@ jc_buff = player_id.jc_buff;
 
 jc_buff_loops = 0;
 
+
+
 jc_dest_vfx = player_id.jc_destroyed;
 
 is_hittable = true;
@@ -25,7 +27,10 @@ jc_hitpoints = 3;
 
 jc_fspec_buff = false;
 
+jc_ewgf = false;
+
 current_owner = player_id;
 
 nspec_hitbox = noone;
 fspec_hitbox = noone;
+ewgf_hitbox = noone;

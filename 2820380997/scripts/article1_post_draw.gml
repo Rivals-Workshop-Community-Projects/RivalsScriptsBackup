@@ -26,6 +26,8 @@ if(!(state == CL_DTHROW_TEAM || state == CL_FSPECIAL_AIR) && plat_exists == true
 		plat_despawn_timer--
 	}
 }
+
+
 /*
 if(draw_debug_hud == true){
 

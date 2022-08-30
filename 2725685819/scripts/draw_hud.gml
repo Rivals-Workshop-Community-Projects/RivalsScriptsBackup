@@ -22,4 +22,8 @@ if (get_player_color(player) == 9){
 
 }
 
+if (get_training_cpu_action() != CPU_FIGHT){
+draw_debug_text( temp_x, temp_y-14, "TAUNT for Move list");
+}
+
 

@@ -64,7 +64,7 @@ draw_sprite_ext( sprite_get("nspecial_proj"), get_gameplay_time()/4, x + lengthd
 }
 shader_end();
 //MOTIVATION
-if (state == clamp(state,5,6)) && (attack == AT_TAUNT_2) && (get_player_color(player) == 6) && window >= 2{
+if (state == clamp(state,5,6)) && (attack == AT_TAUNT_2) && (vergil_taunt) && window >= 2{
 //rain
 var camx = (view_get_xview() + view_get_wview()/2);
 var camy = (view_get_yview() + view_get_hview()/2);

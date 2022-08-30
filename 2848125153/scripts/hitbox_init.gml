@@ -330,6 +330,15 @@ if(attack == AT_DATTACK){
 	if(hbox_num >= 5){
 		UnReflectable = true;
 	}
+	if(hbox_num == 10){
+		armor = 4;
+		knockback_power = 0;
+            knockback_angle = 0;
+            hitpausehit = 0;
+		lasthitbox = noone;
+            hitlockout = 4;
+            hitlockout2 = 0;
+	}
 }
 
 if(attack == AT_BAIR){

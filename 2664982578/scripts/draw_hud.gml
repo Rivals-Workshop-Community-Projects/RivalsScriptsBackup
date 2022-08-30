@@ -20,5 +20,7 @@ draw_debug_text(temp_x + 160, temp_y - 72, string(counter_drop));
 */
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
+/*
 muno_event_type = 5;
 user_event(14);
+*/

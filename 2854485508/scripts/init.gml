@@ -168,6 +168,9 @@ dspecial_counter_active = false;
 //taunt
 taunt_loops = 0;
 
+//other
+alt_glow_timer = 0;
+
 set_victory_theme(sound_get("victory"));
 set_victory_bg(sprite_get("victory_bg"));
 //#endregion

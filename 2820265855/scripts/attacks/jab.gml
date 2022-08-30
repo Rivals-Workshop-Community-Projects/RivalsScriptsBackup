@@ -122,5 +122,5 @@ set_hitbox_value(AT_JAB, 3, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, sound_get("hweak"));
+set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, sound_get("BladeStrike1"));
 set_hitbox_value(AT_JAB, 3, HG_TECHABLE, 1);

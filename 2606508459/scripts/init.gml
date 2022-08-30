@@ -231,10 +231,7 @@ flag_breverse = false;
 //====> ALT MAINTENANCE ###########################################
 //***************************************************************************
 
-alt_split = 17
-
-alt_kiera = 20
-alt_halloween = 22
+alt_halloween = 99
 alt_gen8 = 13
 
 //***************************************************************************
@@ -245,9 +242,18 @@ intro_timer = -2;
 intro_fpf = .2;
 intro_timerMax = 
     get_player_color(player) == alt_gen8 ? 18 : 24;
+    
+//---> ALT RELATED CODE
 intro_sprite = 
-    get_player_color(player) == alt_gen8 ? sprite_get("introGenesis") :
-    get_player_color(player) >= alt_split ? sprite_get("intro2") : sprite_get("intro");
+    get_player_color(player) == 13 ? sprite_get("introGenesis") :
+    get_player_color(player) == 18 ? sprite_get("intro2") :
+    get_player_color(player) == 19 ? sprite_get("intro2") :
+    get_player_color(player) == 20 ? sprite_get("intro2") :
+    get_player_color(player) == 21 ? sprite_get("intro2") :
+    get_player_color(player) == 22 ? sprite_get("intro2") :
+    get_player_color(player) == 23 ? sprite_get("intro2") :
+    get_player_color(player) == 24 ? sprite_get("intro2") :
+    sprite_get("intro");
 
 //***************************************************************************
 //====> RC COMP ########################################################################################
@@ -313,6 +319,9 @@ else
     arena_title = "The Stars Right Hand";
     boxing_title = "The Stars Right Hand";
 }
+
+pot_compat_variable = sprite_get("fernet_mordiendo_cable");
+pot_compat_text = "Cat Cake al Cable";
 
 //***************************************************************************
 //====> DEFAULT VARIABLES ########################################################################################

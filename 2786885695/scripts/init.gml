@@ -631,3 +631,8 @@ fs_meter_y = 6; //because i can't hide it for some reason
 //dracula portrait
 dracula_portrait = sprite_get("dracula_portrait");
 dracula_portrait2 = asset_get("empty_sprite");
+
+//po & gumbo food
+var food_random = random_func(current_second, 2, true) + 1;
+pot_compat_variable = sprite_get("gumbo_food" + string(food_random));
+pot_compat_text = (food_random == 1) ? "Golden Shrimp Balls" : "Survival Grilled Fish";

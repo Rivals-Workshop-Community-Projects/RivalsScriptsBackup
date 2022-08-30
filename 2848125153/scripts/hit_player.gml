@@ -8,10 +8,12 @@ if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
     		sound_play(other.sfx_dice1);
     	}
     }
-    if(instance_exists(thedice1) && my_hitboxID == thedice1){
-    	thedice1 = noone;
-    }else if(instance_exists(thedice2) && my_hitboxID == thedice2){
-    	thedice2 = noone;
+    if(my_hitboxID.dicetimer < 20){
+	    if(instance_exists(thedice1) && my_hitboxID == thedice1){
+	    	thedice1 = noone;
+	    }else if(instance_exists(thedice2) && my_hitboxID == thedice2){
+	    	thedice2 = noone;
+	    }
     }
 }
 

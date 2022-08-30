@@ -102,8 +102,8 @@ set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("nsmbwiiGroundPound2"));
-set_hitbox_value(AT_DAIR, 2, HG_DRIFT_MULTIPLIER, 0.1);
-set_hitbox_value(AT_DAIR, 2, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_DAIR, 2, HG_DRIFT_MULTIPLIER, 0.5);
+set_hitbox_value(AT_DAIR, 2, HG_SDI_MULTIPLIER, 0.5);
 
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 3, HG_WINDOW, 8);

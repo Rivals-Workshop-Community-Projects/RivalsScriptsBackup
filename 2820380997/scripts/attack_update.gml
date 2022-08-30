@@ -52,8 +52,10 @@ switch(attack){
     	if(window >= 2 && window_timer >= 2 && was_parried == false){
     		can_jump = true;
     	}
+    	// Set into control if the button is held
     	if(window == 3 && (window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) - 1) && special_down){ // 
     		attack = AT_EXTRA_1;
+    		hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
     		window = 1;
     		window_timer = 1;
     	}
@@ -79,6 +81,9 @@ switch(attack){
 			default:
 				break;
 		}
+    	break;
+    case AT_EXTRA_3:
+    		//print(state_timer);
     	break;
     default:
         break;
@@ -215,36 +220,24 @@ if (attack == AT_DTHROW && clone_dspecial_hit = false && instance_exists(grabbed
 		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
-		if (window_timer <= 1) {
-			grabbed_player_relative_x = grabbed_player_obj.x - x;
-			grabbed_player_relative_y = grabbed_player_obj.y - y;
-		}
-
-		if (window = 1) {
-			if(free){ // 
-				if(window_timer == 1){
-					pull_to_x = grabbed_player_relative_x;
-					pull_to_y = grabbed_player_relative_y - floor(grabbed_player_obj.char_height/2);
-				}
-				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				hsp = pull_to_x / window_length;
-				vsp = pull_to_y / window_length;
-				//x = x + ease_linear(0, pull_to_x, window_timer, window_length);
-				//y = y + ease_linear(0, pull_to_y, window_timer, window_length);
-				//print(ease_linear(0, pull_to_x, window_timer, window_length));
-				//print(ease_linear(0, pull_to_y, window_timer, window_length));
+		if (window == 1) {
+			//print(window_timer)
+			if (window_timer == 0) { // Set properties on very first frame of the move
+				grabbed_player_relative_x = grabbed_player_obj.x - x;
+				grabbed_player_relative_y = grabbed_player_obj.y - y;
+				pull_to_x = grabbed_player_relative_x;
+				pull_to_y = grabbed_player_relative_y; // - floor(grabbed_player_obj.char_height/2);
+				player_location_start_of_grab_x = x;
+				player_location_start_of_grab_y = y;
+				//print("player_location_start_of_grab_x: " + string(player_location_start_of_grab_x) + "/ player_location_start_of_grab_y: " + string(player_location_start_of_grab_y))
 			}
-			
-			if(!free){
-				if(window_timer <= 2){
-					pull_to_x = 20 * spr_dir;
-					pull_to_y = 0;
-				}
-				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
-				grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
-			
-			}
+			//if(free){ // 
+			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+			x = player_location_start_of_grab_x + ease_linear(0, pull_to_x, window_timer, window_length); //x + ease_linear(0, pull_to_x, state_timer, 15) - 
+			y = player_location_start_of_grab_y + ease_linear(0, pull_to_y, window_timer, window_length); //y + ease_linear(0, pull_to_y, state_timer, 15) - 
+			//print("player_location_start_of_grab_x: " + string(player_location_start_of_grab_x) + "/ player_location_start_of_grab_y: " + string(player_location_start_of_grab_y))
+			//print(ease_linear(0, pull_to_x, window_timer, window_length));
+			//print(ease_linear(0, pull_to_y, window_timer, window_length));
 		}
 		if (window >= 2) {
 		/*	x = grabbed_player_obj.x
@@ -288,8 +281,8 @@ if (attack == AT_EXTRA_3 && clone_dspecial_hit = false && instance_exists(grabbe
 		}
 
 		if (window = 1) {
-			var pull_to_x = 25 * spr_dir;
-			var pull_to_y = 0;
+			pull_to_x = 25 * spr_dir;
+			pull_to_y = 0;
 			if(spr_dir = -1){grabbed_player_obj_spr_angle=45; grabbed_player_obj.spr_dir = 1;Resolve_Draw_Offsets(grabbed_player_obj,grabbed_player_obj.spr_dir,grabbed_player_obj_spr_angle);} // Draws in other_pre_draw.gml
     		if(spr_dir = 1){grabbed_player_obj_spr_angle=315;grabbed_player_obj.spr_dir = -1;Resolve_Draw_Offsets(grabbed_player_obj,grabbed_player_obj.spr_dir,grabbed_player_obj_spr_angle);}
 			
@@ -302,8 +295,8 @@ if (attack == AT_EXTRA_3 && clone_dspecial_hit = false && instance_exists(grabbe
 		if (window >= 2) {
 		/*	x = grabbed_player_obj.x
 			y = grabbed_player_obj.y */
-			var pull_to_x = 5 * spr_dir;
-			var pull_to_y = -1 * floor(opponent_hurtbox_width * .50);
+			pull_to_x = 5 * spr_dir;
+			pull_to_y = -1 * floor(opponent_hurtbox_width * .50);
 		    if(spr_dir = -1){grabbed_player_obj_spr_angle=90;Resolve_Draw_Offsets(grabbed_player_obj,spr_dir,grabbed_player_obj_spr_angle);} // Draws in other_pre_draw.gml
 		    if(spr_dir = 1){grabbed_player_obj_spr_angle=270;Resolve_Draw_Offsets(grabbed_player_obj,spr_dir,grabbed_player_obj_spr_angle);}
 			/*
@@ -359,8 +352,8 @@ if (attack == AT_FINAL_STRONG_THROW && instance_exists(grabbed_player_obj)) {
 		}
 
 		if (window = 1) {
-			var pull_to_x = 10 * spr_dir;
-			var pull_to_y = 0;
+			pull_to_x = 10 * spr_dir;
+			pull_to_y = 0;
 			if(spr_dir = -1){grabbed_player_obj_spr_angle=45; grabbed_player_obj.spr_dir = 1;Resolve_Draw_Offsets(grabbed_player_obj,grabbed_player_obj.spr_dir,grabbed_player_obj_spr_angle);} // Draws in other_pre_draw.gml
     		if(spr_dir = 1){grabbed_player_obj_spr_angle=315;grabbed_player_obj.spr_dir = -1;Resolve_Draw_Offsets(grabbed_player_obj,grabbed_player_obj.spr_dir,grabbed_player_obj_spr_angle);}
 			
@@ -373,8 +366,8 @@ if (attack == AT_FINAL_STRONG_THROW && instance_exists(grabbed_player_obj)) {
 		if (window >= 2) {
 		/*	x = grabbed_player_obj.x
 			y = grabbed_player_obj.y */
-			var pull_to_x = 0;
-			var pull_to_y = -1 * floor(opponent_hurtbox_width * .50);
+			pull_to_x = 0;
+			pull_to_y = -1 * floor(opponent_hurtbox_width * .50);
 		    if(spr_dir = -1){grabbed_player_obj_spr_angle=90;Resolve_Draw_Offsets(grabbed_player_obj,spr_dir,grabbed_player_obj_spr_angle);} // Draws in other_pre_draw.gml
 		    if(spr_dir = 1){grabbed_player_obj_spr_angle=270;Resolve_Draw_Offsets(grabbed_player_obj,spr_dir,grabbed_player_obj_spr_angle);}
 			/*
@@ -480,10 +473,11 @@ switch(attack){
 		vfx_smoke_object = spawn_hit_fx(clone_object_ID.x + (0 * spr_dir),clone_object_ID.y-30,vfx_smoke);
 		}
 		break;
-		
+	
+	// Set into extra 1 for controlling the clone	
 	case AT_NSPECIAL_2:
 	//if(window == 1 && window_timer == 1){clear_button_buffer(PC_SPECIAL_PRESSED)}
-	if(window == 1 && window_timer > 6 && special_down){ // Set into beckon mod if held down
+	if(window == 1 && window_timer == get_window_value(AT_EXTRA_1,window,AG_WINDOW_LENGTH) && special_down){ // Set into beckon mod if held down
 		set_attack(AT_EXTRA_1);
 		hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE); // Set proper hurtbox
 		window = 2;

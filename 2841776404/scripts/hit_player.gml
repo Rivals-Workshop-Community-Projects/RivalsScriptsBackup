@@ -15,3 +15,7 @@ if (attack == AT_NSPECIAL_2){
 		sound_play(asset_get("sfx_kragg_rock_shatter"));
 	}
 }
+
+if (attack == AT_FSTRONG && my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num < 4){
+	hit_player_obj.y = lerp(hit_player_obj.y, y - 24, 0.2);
+}

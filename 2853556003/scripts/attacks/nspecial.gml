@@ -32,7 +32,7 @@ set_num_hitboxes(AT_NSPECIAL, 5);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2)
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 7);

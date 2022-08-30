@@ -40,5 +40,5 @@ set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("hweak"));
+set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("BladeStrike1"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);

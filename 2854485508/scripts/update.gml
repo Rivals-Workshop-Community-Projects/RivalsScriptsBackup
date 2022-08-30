@@ -1,3 +1,9 @@
+//Shader changing
+if (get_player_color(player) == 16 || get_player_color(player) == 17) {
+	alt_glow_timer ++;
+	init_shader();
+}
+
 //Floating
 if (down_pressed){
 	float_cancel_buffer = float_cancel_buffer_max;

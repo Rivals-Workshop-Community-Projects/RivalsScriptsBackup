@@ -211,6 +211,10 @@ daroach_speaker[page] = 0;
 daroach_text[page] = "You're a persistent one, arent you?[laugh] Once I'm done with you, your city's riches will be mine!";
 page++;
 
+//Pojumbo
+pot_compat_variable = sprite_get("big_beef");
+pot_compat_text = "Big Beef"
+
 initIndexes();
 
 //Below code from MunoPhone API.

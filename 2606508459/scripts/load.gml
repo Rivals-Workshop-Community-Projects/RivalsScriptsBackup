@@ -111,6 +111,15 @@ sprite_change_offset("ball_formA_2_hurt", 65, 65);
 sprite_change_offset("ball_formA_3_hurt", 65, 65);
 sprite_change_offset("ball_formA_4_hurt", 65, 65);
 
+sprite_change_offset("ball_formRip_1", 65, 65);
+sprite_change_offset("ball_formRip_2", 65, 65);
+sprite_change_offset("ball_formRip_3", 65, 65);
+sprite_change_offset("ball_formRip_4", 65, 65);
+sprite_change_offset("ball_formRip_1H", 65, 65);
+sprite_change_offset("ball_formRip_2H", 65, 65);
+sprite_change_offset("ball_formRip_3H", 65, 65);
+sprite_change_offset("ball_formRip_4H", 65, 65);
+
 sprite_change_offset("ball_formB_1", 36, 47);
 sprite_change_offset("ball_formB_2", 36, 47);
 sprite_change_offset("ball_formB_3", 36, 47);
@@ -171,6 +180,30 @@ set_victory_bg(sprite_get("victory_bg"));
 //BLUE EXCEPTION
 try
 {
+    //---> ALT RELATED CODE
+    alt_arr = 
+        get_player_color(player) == 18 ? [sprite_get( "portrait2" ), sprite_get( "result_small2" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 19 ? [sprite_get( "portrait2" ), sprite_get( "result_small2" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 20 ? [sprite_get( "portrait2" ), sprite_get( "result_small2" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 21 ? [sprite_get( "portrait3" ), sprite_get( "result_small3" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 22 ? [sprite_get( "portrait2" ), sprite_get( "result_small2" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 23 ? [sprite_get( "portrait2" ), sprite_get( "result_small2" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 24 ? [sprite_get( "portrait2" ), sprite_get( "result_small2" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 25 ? [sprite_get( "portrait4" ), sprite_get( "result_small4" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 26 ? [sprite_get( "portrait4" ), sprite_get( "result_small4" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 27 ? [sprite_get( "portrait5" ), sprite_get( "result_small5" ), sound_get("fernet_victory"), 40, 100] :
+        get_player_color(player) == 28 ? [sprite_get( "portrait5" ), sprite_get( "result_small5" ), sound_get("fernet_victory"), 40, 100] :
+        [sprite_get( "portrait" ), sprite_get( "result_small" ), sound_get("OGG_Fernet_Victory_Theme"), 0, 136];
+    
+    set_victory_portrait( alt_arr[0] );
+    set_victory_sidebar( alt_arr[1] );
+    set_victory_theme( alt_arr[2] );
+    
+    fs_char_portrait_override = alt_arr[0];
+    fs_portrait_x = alt_arr[3];
+    fs_char_portrait_y = alt_arr[4];
+    
+    /*
     if (get_player_color(player) == alt_kiera)
     {
         set_victory_portrait( sprite_get( "portrait3" ));
@@ -200,10 +233,12 @@ try
         
         fs_char_portrait_y = 136;
     }
+    */
 }
 catch (er)
 {
     print_debug("caught")
+    print_debug(er)
     set_victory_portrait( sprite_get( "portrait" ));
     set_victory_sidebar( sprite_get( "result_small" ));
     set_victory_theme(sound_get("OGG_Fernet_Victory_Theme"));

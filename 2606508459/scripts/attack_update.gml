@@ -878,7 +878,13 @@ if (mode == 0 ||
         c_HBVRepositionDist = 60;   //Reposition Distance (custom property)
         c_hitFX = 304;              //Fire Burst
         //c_sprite = "ball_formB";
-        c_sprite = "ball_formA";
+        
+        //---> ALT RELATED CODE
+        c_sprite = 
+            get_player_color(player) == 26 ? "ball_formRip" :
+            get_player_color(player) == 28 ? "ball_formRip" :
+            "ball_formA";
+        
         c_HBsound_effect = asset_get("sfx_clairen_hit_strong");
         _charge = charge; //other.nspecial_charge;
         _targetX = xs + (xDist * other.image_xscale); //other.x + (other.fBall_distance * other.image_xscale);

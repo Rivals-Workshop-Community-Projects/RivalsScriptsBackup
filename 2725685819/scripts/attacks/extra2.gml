@@ -120,7 +120,7 @@ set_hitbox_value(AT_EXTRA_2, 8, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 8, HG_PRIORITY, 3);
 set_hitbox_value(AT_EXTRA_2, 8, HG_DAMAGE, 18);
 set_hitbox_value(AT_EXTRA_2, 8, HG_ANGLE, 65);
-set_hitbox_value(AT_EXTRA_2, 8, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_EXTRA_2, 8, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_EXTRA_2, 8, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_EXTRA_2, 8, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_EXTRA_2, 8, HG_HITPAUSE_SCALING, 0);

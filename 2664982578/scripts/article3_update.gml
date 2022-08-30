@@ -30,7 +30,7 @@ if (state == 0){
 	x = player_id.x + 35 * spr_dir;
 	y = player_id.y;
 		if(player_id.attack == AT_DSPECIAL){
-		if(player_id.window == 2 && player_id.window_timer = 16){
+		if(player_id.window == 2 && player_id.window_timer = 12){
 			state = 4;
 			state_timer = 0;
 		}
@@ -88,7 +88,7 @@ if (state == 1){
 	x = player_id.x + -35 * spr_dir;
 	y = player_id.y;
 		if(player_id.attack == AT_DSPECIAL){
-		if(player_id.window == 2 && player_id.window_timer = 16){
+		if(player_id.window == 2 && player_id.window_timer = 12){
 			state = 4;
 			state_timer = 0;
 		}
@@ -187,7 +187,7 @@ if (state == 4){
 //Sprite and animation handling
 
 //Assign each state both a sprite it should have and a way it should animate
-if(player_id.phone_practice == false){
+if(player_id.practice_mode == false){
 switch(state){
     case 0:
         new_sprite = sprite_get("blank_sheet");
@@ -210,26 +210,31 @@ switch(state){
         animation_type = 1;
         break;
 }
-}if(player_id.phone_practice == true){
+}if(player_id.practice_mode == true){
 switch(state){
     case 0:
         new_sprite = sprite_get("egg_hurtbox");
+        image_alpha = 0.5;
         animation_type = 1;
         break;
     case 1:
         new_sprite = sprite_get("egg_hurtbox");
+        image_alpha = 0.5;
         animation_type = 1;
         break;
     case 2:
         new_sprite = sprite_get("egg_hurtbox");
+        image_alpha = 0.5;
         animation_type = 1;
         break;
     case 3:
         new_sprite = sprite_get("egg_hurtbox");
+        image_alpha = 0.5;
         animation_type = 1;
         break;
     case 4:
         new_sprite = sprite_get("egg_hurtbox");
+        image_alpha = 0.5;
         animation_type = 1;
         break;
 }

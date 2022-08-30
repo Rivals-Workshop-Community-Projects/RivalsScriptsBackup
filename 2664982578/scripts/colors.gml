@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 2, 5, 24 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 28 );
 
 // Red egg
 set_color_profile_slot( 1, 0, 238, 241, 210 ); //egg shell
@@ -205,6 +205,13 @@ set_color_profile_slot( 26, 1, 117, 158, 176 ); //egg spots
 set_color_profile_slot( 26, 2, 117, 158, 176 ); //Egg spots bottom
 set_color_profile_slot( 26, 3, 204, 138, 106 ); //adrenaline orb
 set_color_profile_slot( 26, 4, 222, 205, 213 ); //ditto
+
+// theburger
+set_color_profile_slot( 27, 0, 61, 63, 133 ); //egg shell
+set_color_profile_slot( 27, 1, 217, 74, 102 ); //egg spots
+set_color_profile_slot( 27, 2, 191, 75, 98 ); //Egg spots bottom
+set_color_profile_slot( 27, 3, 162, 0, 207 ); //adrenaline orb
+set_color_profile_slot( 27, 4, 88, 92, 163 ); //ditto
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

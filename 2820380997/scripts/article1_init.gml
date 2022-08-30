@@ -25,6 +25,7 @@ gravity_speed = .52;
 land_time = 4; //normal landing frames
 land_sound = asset_get("sfx_land_light");
 jump_speed = player_id.jump_speed;
+short_hop_speed = player_id.short_hop_speed;
 djump_speed = player_id.djump_speed;
 
 // State Control
@@ -72,8 +73,11 @@ landing_lag_sprite = sprite_get("landinglag");
 waveland_sprite = sprite_get("waveland");
 
 dspecial_sprite = sprite_get("dspecial");
+//dspecial_hurt_sprite = sprite_get("dspecial_hurt"); // Enable for hurtbox editing
 dspecial_up_sprite = sprite_get("dspecial_up");
+//dspecial_up_hurt_sprite = sprite_get("dspecial_up_hurt"); // Enable for hurtbox editing
 dspecial_down_sprite = sprite_get("dspecial_down");
+//dspecial_down_hurt_sprite = sprite_get("dspecial_down"); // Enable for hurtbox editing
 dthrow_partial_sprite = sprite_get("dthrow");
 dthrow_full_sprite = sprite_get("dthrow_behind");
 dthrow_team_sprite = sprite_get("clone_extra_3");
@@ -98,16 +102,17 @@ plat_clone_assist_sprite = sprite_get("plat_clone_assist");
 // Attack Variables
 current_hitbox = noone;
 clone_dspecial_cooldown = 15;
+clone_throw_cooldown = 0;
 player_id.clone_dspecial_assist = false;
 not_throwable_flag = false; // For got hti logic
 clone_dspecial_hit = false;
+Nspecial_explosion_flag = false;
 grabbed_player_obj = noone;
 grabbed_player_relative_x = 0;
 grabbed_player_relative_y = 0;
-Nspecial_explosion_flag = false;
+clone_grab_start_x = 0;
+clone_grab_start_y = 0;
 player_grab_timer = 0;
-grabbed_player_relative_x = 0;
-grabbed_player_relative_y = 0;
 
 // Effects variables
 dust_timer = 0;
@@ -116,7 +121,7 @@ fast_fall_fx_played_flag = false;
 
 // Draw indicator
 draw_indicator = true;
-clone_hud_text = player_id.clone_text_list[random_func(0,9,true)]; // Pull from the list once for this init.
+clone_hud_text = player_id.clone_text_list[random_func(0,player_id.num_clone_text_names,true)]; // Pull from the list once for this init.
 
 ///SUPERSONIC Hit Detection
  

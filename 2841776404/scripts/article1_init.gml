@@ -6,6 +6,7 @@ image_index = 0;
 mask_index = sprite_get("suit_standby");//The frame in the animation the article should start at. 0 = beginning of animation
 spr_dir = player_id.spr_dir;                        //The direction the article should face when it spawns. Here I have it set to face the same way as the character
 uses_shader = true;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
+is_hittable = true;
 
 //State
 state = 0;                                          //The behavior state the article should start in.
@@ -30,3 +31,6 @@ prev_hbox_group = 0;
 hbox_refresh_time = 0;
 hbox_refresh = false;
 prev_attack = 0;
+kb_speed = 0;
+bkb = 0;
+kb_angle = 0;

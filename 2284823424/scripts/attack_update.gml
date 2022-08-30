@@ -1331,8 +1331,8 @@ switch(attack){
 					var hfx_a = random_func(40 + i, 40, true) - 20;
 					
 					var hfx = spawn_hit_fx(hfx_x, hfx_y, vfx_blocks_break_grass);
-					hfx.hsp = hfx_h;
-					hfx.vsp = hfx_v;
+					hfx.hsp = hfx_h / 2;
+					hfx.vsp = hfx_v / 2;
 					hfx.depth = hfx_d;
 					hfx.parent_y = y - 32;
 					hfx.asp = hfx_a;
@@ -1402,6 +1402,8 @@ switch(attack){
 				break;
 			case 9: //build
 				if (window_timer == 5){
+					
+					has_properly_landed = false;
 					
 					var place_y = 6;
                     var threshold = 41;

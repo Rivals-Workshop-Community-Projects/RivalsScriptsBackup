@@ -26,7 +26,7 @@ if (enemy_hitboxID.player != current_owner.player && !(jc_buff || jc_fspec_buff)
 	// enemy_hitboxID.player_id.hitstop = enemy_hitboxID.hitpause;
 
 	if (enemy_hitboxID.enemies == 0 && !enemy_hitboxID.transcendent && enemy_hitboxID.type == 2){
-	enemy_hitboxID.destroyed = true;
+	enemy_hitboxID.destroyed = false;
 	}
 
 }

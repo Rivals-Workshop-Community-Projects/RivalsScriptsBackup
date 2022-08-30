@@ -181,6 +181,7 @@ set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 44);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 3);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 2);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 75);
+set_hitbox_value(attack, hitbox_num, HG_FORCE_FLINCH, 1);
 //set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);

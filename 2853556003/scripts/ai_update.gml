@@ -4,6 +4,13 @@ if (ai == 0) {
 
 //aiplaceholder = random_func( 0, 4, true)
 
+/*
+if(!instance_exists(hurricane)){
+	hurricane = instance_create(x + (spr_dir*85),y - 90,"obj_article1");
+	hurricane.holding_bomb = true
+}
+*/
+
 if(buffer > 0){
 	can_special = false
 	can_jump = false

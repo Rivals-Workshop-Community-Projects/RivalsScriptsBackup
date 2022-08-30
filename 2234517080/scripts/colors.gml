@@ -140,32 +140,32 @@ set_color_profile_slot( 12, 4, 255, 255, 255 ); //eye white
 set_color_profile_slot( 12, 5, 69, 69, 69 ); //eye blue
 set_color_profile_slot( 12, 6, 176, 146, 157 ); //rock shading
 
-// rocky blaboa
-set_color_profile_slot( 13, 0, 99, 255, 182 ); //rock
-set_color_profile_slot( 13, 1, 179, 86, 86 ); //feet
-set_color_profile_slot( 13, 2, 150, 72, 237 ); //band white
-set_color_profile_slot( 13, 3, 175, 143, 255 ); //band blue
-set_color_profile_slot( 13, 4, 255, 255, 255 ); //eye white
-set_color_profile_slot( 13, 5, 100, 84, 168 ); //eye blue
-set_color_profile_slot( 13, 6, 44, 153, 132 ); //rock shading
-
 // trnas riguhts
-set_color_profile_slot( 14, 0, 255, 250, 255 ); //rock
-set_color_profile_slot( 14, 1, 158, 232, 255 ); //feet
-set_color_profile_slot( 14, 2, 244, 184, 255 ); //band white
-set_color_profile_slot( 14, 3, 166, 122, 204 ); //band blue
-set_color_profile_slot( 14, 4, 255, 255, 255 ); //eye white
-set_color_profile_slot( 14, 5, 0, 0, 0 ); //eye blue
-set_color_profile_slot( 14, 6, 175, 149, 191 ); //rock shading
+set_color_profile_slot( 13, 0, 255, 250, 255 ); //rock
+set_color_profile_slot( 13, 1, 158, 232, 255 ); //feet
+set_color_profile_slot( 13, 2, 244, 184, 255 ); //band white
+set_color_profile_slot( 13, 3, 166, 122, 204 ); //band blue
+set_color_profile_slot( 13, 4, 255, 255, 255 ); //eye white
+set_color_profile_slot( 13, 5, 0, 0, 0 ); //eye blue
+set_color_profile_slot( 13, 6, 175, 149, 191 ); //rock shading
 
 // bocky
-set_color_profile_slot( 15, 0, 206, 99, 255 ); //rock
-set_color_profile_slot( 15, 1, 109, 102, 112 ); //feet
-set_color_profile_slot( 15, 2, 255, 250, 250 ); //band white
-set_color_profile_slot( 15, 3, 255, 221, 0 ); //band blue
+set_color_profile_slot( 14, 0, 206, 99, 255 ); //rock
+set_color_profile_slot( 14, 1, 109, 102, 112 ); //feet
+set_color_profile_slot( 14, 2, 255, 250, 250 ); //band white
+set_color_profile_slot( 14, 3, 255, 221, 0 ); //band blue
+set_color_profile_slot( 14, 4, 255, 255, 255 ); //eye white
+set_color_profile_slot( 14, 5, 41, 41, 41 ); //eye blue
+set_color_profile_slot( 14, 6, 134, 55, 204 ); //rock shading
+
+// rocky blaboa
+set_color_profile_slot( 15, 0, 99, 255, 182 ); //rock
+set_color_profile_slot( 15, 1, 179, 86, 86 ); //feet
+set_color_profile_slot( 15, 2, 150, 72, 237 ); //band white
+set_color_profile_slot( 15, 3, 175, 143, 255 ); //band blue
 set_color_profile_slot( 15, 4, 255, 255, 255 ); //eye white
-set_color_profile_slot( 15, 5, 41, 41, 41 ); //eye blue
-set_color_profile_slot( 15, 6, 134, 55, 204 ); //rock shading
+set_color_profile_slot( 15, 5, 100, 84, 168 ); //eye blue
+set_color_profile_slot( 15, 6, 44, 153, 132 ); //rock shading
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

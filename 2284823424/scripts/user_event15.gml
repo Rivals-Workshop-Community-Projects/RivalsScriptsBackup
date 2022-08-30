@@ -403,6 +403,17 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.8", "29 August, 2022");
+initHeader("UStrong - Corrections");
+initSection("Corrected knockback angle.");
+initWords("Removed Herobrine");
+
+initPatch("2.7", "28 August, 2022");
+initHeader("Taunt - Aesthetics, Bugfixes");
+initSection("Adjusted the sprint particles.");
+initSection("Fixed an infinite stall.");
+initWords("Removed Herobrine");
+
 initPatch("2.6", "28 July, 2022");
 initHeader("Taunt - Additions");
 initSection("Added chat typing (up+taunt). Offline only.");
@@ -442,55 +453,6 @@ initHeader("UStrong - Nerfs, Adjustments");
 initSection("Endlag 15 --> 18.
 Angle 80 --> 90.");
 initWords("Removed Herobrine");
-
-/*
-
-Down Tilt:
-
-Startup increased (4 -> 6)
-Knockback scaling increased (0.2 -> 0.3)
-
-
-Neutral Air:
-
-Startup after blocking increased (4 -> 6)
-
-
-Forward Air:
-
-Hitbox moved outward (28 -> 30)
-Hitbox width decreased (80 -> 70)
-Hitbox height decreased (100 -> 90)
-
-
-Up Air:
-
-Hitbox 1:
-
-Angle changed (80 -> 90)
-Height decreased (80 -> 50)
-Hitbox moved downward (-40 -> -30)
-
-
-Forward Strong:
-
-Startup decreased by 3 frames
-Is now transcendent
-
-
-Up Strong:
-
-Endlag increased (15 -> 18)
-Angle changed (80 -> 90)
-
-
-Neutral Special:
-
-Crossbow is now transcendent
-Sticky Piston startup increased (9 -> 13)
-All throwables startup increased (8 -> 10)
-
-*/
 
 initPatch("2.3", "18 January, 2022");
 initHeader("DTilt - Bugfixes");

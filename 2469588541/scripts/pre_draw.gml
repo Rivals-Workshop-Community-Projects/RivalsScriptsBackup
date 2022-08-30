@@ -52,8 +52,9 @@ if ("practice" in self)
 				break;
 
 			case AT_DSPECIAL:
-				draw_set_alpha(0.15);
-				draw_circle_colour(x, y-floor(char_height/2), ease_sineInOut(0, dspecRadius, window_timer, get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH)/2), tempColour, tempColour, 0);
+				var windowMax = get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH);
+				draw_set_alpha(lerp(0.05, 0.2, window_timer/windowMax));
+				draw_circle_colour(x, y-floor(char_height/2), ease_sineInOut(0, dspecRadius, windowMax-window_timer, windowMax), tempColour, tempColour, 0);
 				draw_set_alpha(1);
 				break;
 		}

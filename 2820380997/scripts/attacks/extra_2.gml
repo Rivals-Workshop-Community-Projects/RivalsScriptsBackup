@@ -108,6 +108,7 @@ set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1); //1 = Goes
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1); //1 = Goes through Ground
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1); //1 = Goes through enemies
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(attack, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
@@ -124,7 +125,7 @@ set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, 0);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 60);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 25);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 50);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
@@ -148,6 +149,7 @@ set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1); //1 = Goes
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1); //1 = Goes through Ground
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1); //1 = Goes through enemies
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(attack, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);

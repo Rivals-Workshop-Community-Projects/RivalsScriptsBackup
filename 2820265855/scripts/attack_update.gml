@@ -254,19 +254,19 @@ if (attack == AT_EXTRA_2){
 }
 
 if (attack == AT_DSPECIAL_2){
-    if (window == 1)
+    if (window == 2)
         super_armor = true
         damage_scaling = 0
-    if (window == 2)
+    if (window == 3)
         super_armor = false
         damage_scaling = 1
-    if (window == 2 && window_timer == 8)
+    if (window == 3 && window_timer == 8)
         set_state( PS_IDLE )
 }
 
 
 if (attack == AT_DSPECIAL_2){
-    if window == 1 && window_timer == 12
+    if window == 2 && window_timer == 12
         sound_play( sound_get( "counterstart" ) );
 }
 
