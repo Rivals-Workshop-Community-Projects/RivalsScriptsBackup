@@ -49,6 +49,7 @@ sprite_change_offset("taunt", 91, 114);
 sprite_change_offset("plat", 64, 94);
 
 sprite_change_offset("star", 92, 96);
+sprite_change_offset("star_masking", 92, 96);
 
 sprite_change_offset("hurtbox", 91, 114);
 sprite_change_offset("crouch_hurtbox", 91, 114);

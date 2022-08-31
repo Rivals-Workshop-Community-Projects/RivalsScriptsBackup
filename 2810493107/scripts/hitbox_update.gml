@@ -1,9 +1,9 @@
 //hitbox_update//hitbox_update
 
-/*
-if (attack == AT_FSPECIAL) {
-    // Put this move on cooldown while the projectile it exists
-    player_id.move_cooldown[AT_FSPECIAL] = 2;
+
+/*if (attack == AT_FSPECIAL) {
+print (x)
+print (y)
 }
 */
 if (!free) {

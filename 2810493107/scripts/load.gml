@@ -60,9 +60,9 @@ sprite_change_offset("taunt", 200, 225);
 
 sprite_change_offset("plat", 210, 225);
 
-sprite_change_offset("proj_stored_power", 210, 200);
+sprite_change_offset("proj_stored_power", 205, 190);
 sprite_change_offset("proj_psyshock", 200, 193);
-sprite_change_offset("s-orb", 200, 225);
+sprite_change_offset("s-orb", 200, 190);
 sprite_change_offset("m-orb", 200, 190);
 sprite_change_offset("l-orb", 200, 190);
 sprite_change_offset("nspecial_proj", 64, 94);

@@ -46,7 +46,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 90);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 44);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
@@ -58,7 +58,6 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("s-orb"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("s-orb"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("psyhit_weak"));
 
 // Medium version
@@ -78,7 +77,6 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("m-orb"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("m-orb"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_HSPEED, 4);
-set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("psyhit_medium"));
 
 // Big version
@@ -98,7 +96,6 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("l-orb"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, sprite_get("l-orb"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED, 1.5);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, false);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, sound_get("fblaststrong"));
 /*

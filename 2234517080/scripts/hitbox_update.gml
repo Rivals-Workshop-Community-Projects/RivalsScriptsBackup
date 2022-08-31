@@ -1,9 +1,16 @@
 if (attack == AT_DSPECIAL){
-	proj_angle += 1.2 * -spr_dir;
+	if (!player_id.masking_alt){
+		proj_angle += 1.2 * -spr_dir;	
+	}
+	
 	var flash_time = 70;
 	
 	if (hitbox_timer > length - 60 && hsp == 0){
 		visible = !(flash_time && hitbox_timer % 10 < 5);
+	}
+	
+	if (hitbox_timer == length - 1){
+		destroyed = true;
 	}
 	
 	if (hitbox_timer == length - 1){

@@ -1,3 +1,16 @@
+masking_alt = false;
+should_use_masking_alt = true;
+
+if (get_match_setting( SET_RUNES ) == true){
+    should_use_masking_alt = false;
+}
+
+//change star sprite on alts that use masking
+if (get_player_color(player) == 9 && should_use_masking_alt){
+    masking_alt = true;
+    set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("star_masking"));
+}
+
 //character support stuff
 tcoart = sprite_get("tcoart");
 otto_bobblehead_sprite = sprite_get("otto");

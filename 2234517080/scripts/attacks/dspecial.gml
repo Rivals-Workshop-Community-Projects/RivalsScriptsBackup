@@ -105,6 +105,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, .65);
 set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .75);
-//set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 //set_hitbox_value(AT_DSPECIAL, 2, HG_EFFECT, 9);
