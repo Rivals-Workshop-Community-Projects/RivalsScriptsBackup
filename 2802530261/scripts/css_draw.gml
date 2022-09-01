@@ -93,7 +93,25 @@ textDraw(temp_x + 48, temp_y + 139, "fName", make_color_rgb(get_color_profile_sl
 init_shader();
 
 //hud button
-//draw_sprite_ext(sprite_get("menu_" + string(menu_css_version)), button_state, temp_x + (get_player_hud_color(player) == 8421504? 60: 76), temp_y + 178, 2, 2, 0, c_white, 1);
+draw_sprite_ext(sprite_get("menu_" + string(menu_css_version)), button_state, temp_x + (player == 0? 12: (get_player_hud_color(player) == 8421504? 58: 74)), temp_y + (player == 0? 44: 178), 2, 2, 0, c_white, 1);
+
+//template
+cpu_hover_draw(); 
+// you can put this anywhere above your #defines.
+// i would recommend ending the shader first (shader_end();)
+
+//as always, #defines go at the bottom of the script.
+#define cpu_hover_draw()
+if (cpu_hover_time > 0) {
+    var prog = min(cpu_hover_time/10, 1);
+    var colprog = min(cpu_color_swap_time/5, 1);
+    var col = merge_color(cpuh_prev_color, cpuh_new_color, colprog);
+    draw_sprite_ext(cpu_hover_sprite, 0, x - 4, y - 6, 2, 2, 0, col, prog);
+    draw_set_alpha(prog);
+    draw_debug_text(plate_bounds[2]-17, plate_bounds[3]+1, `P${cpu_hovering_player}`);
+    draw_set_alpha(1);
+}
+
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 
 draw_set_font(asset_get(argument[2]));

@@ -310,8 +310,10 @@ in a Patch.
 #define CORE_patches
 
 initPatch("1.4", "29th August, 2022");
+initHeader("Buffs");
+initSection("- If you hold forward or special while riding the choo choo, it will accelerate much faster at the cost of more money dropping");
 initHeader("Nerfs");
-initSection("- If a move hits the choo choo during DAttack while Mr Monopoly is still on it, it can knock the choo choo back similarly to how it works after he jumps off");
+initSection("- If a move hits the choo choo during DAttack while Mr Monopoly is still on it, it can knock the choo choo back (similarly to how it works after he jumps off)");
 
 initPatch("1.3", "24th August, 2022");
 initHeader("Nerfs");

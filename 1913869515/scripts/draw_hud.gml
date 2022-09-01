@@ -1,5 +1,5 @@
 shader_start();
-
+if legacy == true {
 if halox < 8 {
     if halox == 0 {
     draw_sprite_ext(sprite_get("hud"),0,temp_x + 180,temp_y - 20,1.5 + min(.5,huddraw/30),1.5 + min(.5,huddraw/30),huddraw*huddraw/2,-1,1)
@@ -25,7 +25,7 @@ if huddraw > 0 {
     gpu_set_blendmode(bm_normal);
     huddraw -- 
 }
-
+}
 shader_end();
 /*
 draw_debug_text( temp_x+60, temp_y-15, "state : " + get_state_name(state));

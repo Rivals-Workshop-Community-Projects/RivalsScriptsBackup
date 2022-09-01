@@ -452,3 +452,50 @@ if (get_gameplay_time() < 127) {
 	}
 }
 
+// dialogue buddy support
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Soldier"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "The last thing out your mouth will be Sir! And it will be loud!",
+	"I am going to strangle you with your own frilly taining bra!",
+	"If you know what's good for ya, you will run!",
+	"I am going to claw my way down your throat and tear out your very soul!",
+	"Do not look at me, I did not ask you a question!",
+	"You are a maggot hatched from a mutant maggot egg!",
+	]
+	
+//  Regular dialogue
+    if(otherUrl == "2113500915" && diag != "2113500915") //Change the url into a specific character's
+    { // engineer
+        diag = "Go back to Calgary, ya cow-herdin' Canadian!";
+    }
+	
+    if(otherUrl == "2192126112" && diag != "2192126112") //Change the url into a specific character's
+    { // demopan
+		// this doesn't work for some reason :(
+        diag = "Scotland is not a real country; you are an Englishman with a dress.";
+    }
+
+//  NRS/3-Part dialogue
+    if(otherUrl == url) //Change the url into a specific character's
+    { // soldier
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+				"I joined this team just to kill maggots like you."
+				"Get a haircut, hippie.",
+                "You're a disgrace to the uniform."]
+            }
+        }
+    }
+}
+

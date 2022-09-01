@@ -1,5 +1,7 @@
 ///
-
+if "standon" in self and state != PS_PRATFALL and state != PS_PRATLAND and state != PS_PARRY and state != PS_ROLL_FORWARD and state != PS_ROLL_BACKWARD and state != PS_TECH_FORWARD and state != PS_TECH_BACKWARD  {
+	draw_y = 9999
+}
 if atrain < 100 && state == PS_DOUBLE_JUMP && state_timer < 25{ 
     
     sprite_index = sprite_get("jump")

@@ -540,13 +540,24 @@ if (attack == AT_NSPECIAL){
 		}else{
 			reset_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START);reset_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAME_START);
 		}
+		dattackboost =  false;
 		if(!down_down || free){
-			if(abs(hsp) < 10 && !free){
-				hsp += 0.3*spr_dir;
-			}else if(abs(hsp) < 16 && !free){
-				hsp += 0.15*spr_dir;
+			if(special_down || right_down && spr_dir == 1 || left_down && spr_dir == -1){
+				if(abs(hsp) < 10 && !free){
+					hsp += 0.6*spr_dir;
+				}else if(abs(hsp) < 16 && !free){
+					hsp += 0.3*spr_dir;
+				}else{
+					hsp += 0.1*spr_dir;
+				}dattackboost =  true;
 			}else{
-				hsp += 0.05*spr_dir;
+				if(abs(hsp) < 10 && !free){
+					hsp += 0.3*spr_dir;
+				}else if(abs(hsp) < 16 && !free){
+					hsp += 0.15*spr_dir;
+				}else{
+					hsp += 0.05*spr_dir;
+				}
 			}
 		}else{
 			if(abs(hsp) > 2){
@@ -570,15 +581,19 @@ if (attack == AT_NSPECIAL){
 		}
 		if(!free && (dattacknum = 1 && get_gameplay_time() % 2 == 0 || dattacknum = 2 && get_gameplay_time() % 4 == 0 || dattacknum = 3 && get_gameplay_time() % 6 == 0)){
 			var dusteff = spawn_hit_fx(x+15*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
-			dusteff = spawn_hit_fx(x+100*spr_dir,y-50,fx_dust);dusteff.depth = depth-1;
-			if(down_down){
+			if(!dattackboost){
+				dusteff = spawn_hit_fx(x+100*spr_dir,y-50,fx_dust);dusteff.depth = depth-1;
+			}else{
+				dusteff = spawn_hit_fx(x+100*spr_dir,y-50,fx_fire2);dusteff.depth = depth-1;
+			}
+			if(down_down || dattackboost){
 				dusteff = spawn_hit_fx(x-25*spr_dir,y,fx_sparks);dusteff.depth = depth-2;
 			}
 		}
 		dattacktimer += 1;
-		if(dattacktimer % 20 == 0 && abs(hsp) > 4){
+		if(dattacktimer % 20 == 0 && abs(hsp) > 4 && !dattackboost || dattacktimer % 6 == 0 && abs(hsp) > 4 && dattackboost){
 			if(current_money >= 500){
-	    		var money = create_hitbox(AT_JAB, 10, round(x-15*spr_dir), round(y-55));money.hsp *= -0.25;money.vsp *= 1.5;money.hitbox_timer = 20;money.hit_priority = 0;;
+	    		var money = create_hitbox(AT_JAB, 10, round(x-15*spr_dir), round(y-55));money.hsp *= -0.25;money.vsp *= 1.5;money.hitbox_timer = 20;money.hit_priority = 0;
 	    		current_money -= 500;
 	    	}
 		}

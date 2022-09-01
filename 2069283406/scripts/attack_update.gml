@@ -56,7 +56,6 @@ if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && at
 
 
 if shade = 1 {
-	
 	shadeshine = 1
 }
 

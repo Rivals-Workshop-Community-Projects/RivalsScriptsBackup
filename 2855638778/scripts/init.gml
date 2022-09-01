@@ -158,6 +158,8 @@ airstrongs_credits = 60;
 css_dspec = 0;
 dspec_swap_task_timer = 0;
 
+// localization file updates: 1
+
 
 // compatibilities :(
 
@@ -168,4 +170,19 @@ TCG_Kirby_Copy = 10;
 pot_compat_variable = sprite_get("food_soldier");
 pot_compat_text = "Military Chocolate";
 
+// Hikaru support
+Hikaru_Title = "The Tenth Class";
 
+// steve
+steve_death_message = "Steve was slain by Soldier using [Zoo Wee Mama]";
+
+// undertale stage compatibility
+battle_text = "*Smells like gunpowder.";
+
+// mt dedede stage compatiblity init
+arena_title = "Screamin' Eagle";
+
+// snake interrogation support
+sna_interrogated_line_01 = "If someone tells you to 'quit smoking', don't believe them!";
+sna_interrogated_line_02 = "The cow on Teufort prevents the world from ending!";
+sna_interrogated_line_03 = "We cannot teleport bread anymore!";

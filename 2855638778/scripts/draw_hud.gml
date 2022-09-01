@@ -9,7 +9,7 @@ if ("debug" in self) {
 	var col_final = make_color_rgb(col_R, col_G, col_B);
 	
 	// the default colors for these two alts make the ammo and rage bar difficult to see
-	if (get_player_color(player) == 6) {
+	if (get_player_color(player) == 6 || get_player_color(player) == 14) {
 		col_final = make_color_rgb(120, 120, 120);
 	}
 	else if (get_player_color(player) == 10) {

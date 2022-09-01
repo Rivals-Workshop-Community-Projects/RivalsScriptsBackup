@@ -1,3 +1,48 @@
+if (special_down or "ai_target" in self) && get_gameplay_time() < 100 {
+	legacy = true 
+	if "ai_target" not in self {
+	dmhit = 0
+    ohalox = 0
+    halox = 0
+    ohalo = 0
+    halo = 0
+	}
+}
+
+if get_gameplay_time() < 5 {
+	sound_stop(asset_get("sfx_ice_on_player"))
+}
+
+if legacy == 0 {
+
+if state_cat == SC_HITSTUN && enhanceee == 1  {
+ 	var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
+    		halodeact.depth = depth + 2
+    		halodeact.pause = 4
+
+ enhanceee = -1
+ dmhit = 0
+ ohalox = 0
+ halox = 0
+ ohalo = 0
+ halo = 0
+}	
+
+if enhanceee == -1 {	
+    dmhit = 0
+    ohalox = 0
+    halox = 0
+    ohalo = 0
+    halo = 0
+} else {
+	dmhit = 3
+    ohalox = 8
+    halox = 8
+    ohalo = 3
+    halo = 3
+}
+
+}
 
 /*
 if string_lower(get_player_name(player)) != "sai" {
@@ -95,25 +140,48 @@ with oPlayer {
 	if "pendupdmgid" in self {
 		if pendupdmgid == other.id {
 			if pendupcd == 0 {
-			if pendupdmg > 10 - other.halox {
-				take_damage(player,-1,1)
-				pendupdmg -= 10 - other.halox
-				pendupcd = 5
-				with other {
-					hit1 = spawn_hit_fx( other.x + random_func(3, 10, true), other.y - 40 + random_func(1, 10, true), slash )
-					hit1.depth = other.depth -1
-					hit1.draw_angle = random_func(2,360,true)
-					sound_play(sound_get("slice"),false,noone,.5,1 - random_func(1,10,true)/100);
-					if halox == 8 {
-					hit2 = spawn_hit_fx( other.x + random_func(3, 10, true), other.y - 40 + random_func(1, 10, true), 305 )
-					hit2.depth = other.depth + 2
-					hit2.pause = 3
-					chaseblade = create_hitbox(AT_UAIR,4,x - 20*spr_dir - random_func(4, 10, true)*spr_dir, y - 40 - random_func(2, 40, true))
-					chaseblade.ctarget = other
-			     	}
-				}
+			if other.legacy == true {	
+			   if pendupdmg > 10 - other.halox {
+			   	take_damage(player,-1,1)
+			   	pendupdmg -= 10 - other.halox
+			   	pendupcd = 5
+			   	with other {
+			   		hit1 = spawn_hit_fx( other.x + random_func(3, 10, true), other.y - 40 + random_func(1, 10, true), slash )
+			   		hit1.depth = other.depth -1
+			   		hit1.draw_angle = random_func(2,360,true)
+			   		sound_play(sound_get("slice"),false,noone,.5,1 - random_func(1,10,true)/100);
+			   		if halox == 8 {
+			   		hit2 = spawn_hit_fx( other.x + random_func(3, 10, true), other.y - 40 + random_func(1, 10, true), 305 )
+			   		hit2.depth = other.depth + 2
+			   		hit2.pause = 3
+			   		chaseblade = create_hitbox(AT_UAIR,4,x - 20*spr_dir - random_func(4, 10, true)*spr_dir, y - 40 - random_func(2, 40, true))
+			   		chaseblade.ctarget = other
+			        	}
+			   	}
+			   }
+			}  else {
+				if pendupdmg > 2 {
+			   	take_damage(player,-1,1)
+			   	pendupdmg -= 2
+			   	pendupcd = 5
+			   	with other {
+			   		hit1 = spawn_hit_fx( other.x + random_func(3, 10, true), other.y - 40 + random_func(1, 10, true), slash )
+			   		hit1.depth = other.depth -1
+			   		hit1.draw_angle = random_func(2,360,true)
+			   		sound_play(sound_get("slice"),false,noone,.5,1 - random_func(1,10,true)/100);
+
+			   		hit2 = spawn_hit_fx( other.x + random_func(3, 10, true), other.y - 40 + random_func(1, 10, true), 305 )
+			   		hit2.depth = other.depth + 2
+			   		hit2.pause = 3
+			   		chaseblade = create_hitbox(AT_UAIR,4,x - 20*spr_dir - random_func(4, 10, true)*spr_dir, y - 40 - random_func(2, 40, true))
+			   		chaseblade.ctarget = other
+			        	
+			   	}
+			   }
 			}
-			} else {
+			
+			}
+			else {
 				pendupcd --
 			}
 		}
@@ -158,7 +226,7 @@ if ohalox != halox {
    }
 	ohalox = halox
 }
-if ohalo != halo {
+if ohalo != halo or enhanceee == 0{
 	
 	if zvoice != 0 && voicecd < 60 && (!attacking or ( attacking && (attack != AT_USPECIAL or  (attack == AT_USPECIAL && has_hit_player)))) and state != PS_RESPAWN and state != PS_DEAD{
         voicecd = 60
@@ -185,6 +253,7 @@ if ohalo != halo {
 		
 	huddraw = 40
 	ohalo = halo
+	enhanceee = -1
 }
 
 if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
@@ -219,7 +288,7 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
     		halodeact.pause = 4
     	offense = 1
         offensetimer = 1	
- 			sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3);
+ 		sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3);
    }
 }
 
@@ -1646,6 +1715,7 @@ if move_cooldown[AT_UAIR] > 20 {
 } 
 
 if state == PS_PARRY && noparryedit == 0 {
+	move_cooldown[AT_DSPECIAL] = 40
 		free = false 
 		if state_timer > 2 && state_timer < 15 && !invincible{
 			window_timer -= 0.4

@@ -5,7 +5,7 @@
 
 if voicecd < 60 voicecd = -10
 
-if halox > 0 {
+if halox > 0 or enhanceee = true {
 	with hit_player_obj {
 		pendupdmg += other.my_hitboxID.damage 
 		pendupdmgid = other.id
@@ -314,4 +314,8 @@ if ( my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2 && state_cat != 
    old_hsp = hsp 
    old_vsp = vsp 
 	
+}
+
+if enhanceee >= 0 {
+enhanceee = 0
 }

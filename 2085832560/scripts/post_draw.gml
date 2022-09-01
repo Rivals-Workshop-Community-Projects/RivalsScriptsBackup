@@ -1,4 +1,4 @@
-///
+ ///
 shader_start();   
 
 if "in_adventure" in self {
@@ -70,11 +70,17 @@ shader_start();
     	         draw_sprite_ext(sprite_get("NS8"), 2 , x - 10 , y - 85, 0.6,0.6,0, c_black, t24  );
     	         
     	         draw_sprite_ext(sprite_get("NS5"), 3 , x  + 38,  y - 180, 0.6,0.6,0, -1, 0.4 + (gunname = 8)  );
+    	         draw_sprite_ext(sprite_get("NS5"), 3 , x  + 38,  y - 180, 0.6,0.6,0, c_black, t31  );
     	         draw_sprite_ext(sprite_get("NS9"), 3 , x  + 38,  y - 160, 0.6,0.6,0, -1, 0.4 + (gunname = 9)  );
+    	         draw_sprite_ext(sprite_get("NS9"), 3 , x  + 38,  y - 160, 0.6,0.6,0,  c_black, t32   );
     	         draw_sprite_ext(sprite_get("NS10"), 3 , x + 38 , y - 140, 0.4,0.4,0, -1, 0.4 + (gunname = 10)  );
+    	         draw_sprite_ext(sprite_get("NS10"), 3 , x + 38 , y - 140, 0.4,0.4,0, c_black, t33   );
     	         draw_sprite_ext(sprite_get("NS11"), 2 , x + 38 , y - 116, 0.6,0.6,0, -1, 0.4 + (gunname = 11)  );
+    	         draw_sprite_ext(sprite_get("NS11"), 2 , x + 38 , y - 116, 0.6,0.6,0, c_black, t34  ); 
     	         draw_sprite_ext(sprite_get("NS12"), 2 , x + 34 , y - 96, 0.7,0.7,0, -1, 0.4 + (gunname = 12)  );
+    	         draw_sprite_ext(sprite_get("NS12"), 2 , x + 34 , y - 96, 0.7,0.7,0,  c_black, t35   );
     	         draw_sprite_ext(sprite_get("NS13"), 2 , x + 34 , y - 80, 0.8,0.8,0, -1, 0.4 + (gunname = 13)  );
+    	         draw_sprite_ext(sprite_get("NS13"), 2 , x + 34 , y - 80, 0.8,0.8,0, c_black, t36  );
     }
     
     

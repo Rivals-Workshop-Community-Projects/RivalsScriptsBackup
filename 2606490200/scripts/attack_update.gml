@@ -237,16 +237,16 @@ switch attack {
     	window_timer = 1
     	spawn_base_dust(x,y,"land",spr_dir)
     	sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,1.2)
-    	if btrain < 100 {
+    	if btrain < 98 {
     		btrain += 1
     	}
-    	if htrain < 100 {
+    	if htrain < 98 {
     		htrain += 1
     	}
-    	if atrain < 100 {
+    	if atrain < 98 {
     		atrain += 1
     	}
-    	if ltrain < 100 {
+    	if ltrain < 98 {
     		ltrain += 1
     	}
     }

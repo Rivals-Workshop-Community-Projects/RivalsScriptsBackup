@@ -555,9 +555,6 @@ select_timer = 0;
 sound_timer = 0;
 prev_dameg = get_player_damage(player);
 menu_version = get_synced_var(player) - 1;
-if(get_synced_var(player) == 0){
-	menu_version = 1;
-}
 menu_v_select = 0;
 hologram_y = 0;
 

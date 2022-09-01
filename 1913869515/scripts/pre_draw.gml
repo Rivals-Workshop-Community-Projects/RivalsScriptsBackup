@@ -4,7 +4,23 @@ if get_player_color(player) == 6 and get_gameplay_time() % 2 == 0{
 }
 
 
+shader_start();
+with pHitBox {
+    if player_id == other.id && "ctarget" in self && attack == AT_UAIR{
+         
+        draw_sprite_ext(sprite_get("eblade"),image_index,x,y,1,1,cangle,-1,1)
+        gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_get("eblade"),image_index,x + hsp,y + vsp,1,1,cangle,-1,.5)
+        draw_sprite_ext(sprite_get("eblade"),image_index,x + hsp*2,y + vsp*2,1,1,cangle,-1,.25)
+        gpu_set_blendmode(bm_normal); 
+         
+    }
+}
 
+shader_end();
+
+
+if legacy == true or enhanceee > 0 {
 
 
 shader_start();
@@ -22,17 +38,6 @@ if attacking && attack == AT_UTHROW {
 
 
 
-with pHitBox {
-    if player_id == other.id && "ctarget" in self && attack == AT_UAIR{
-         
-        draw_sprite_ext(sprite_get("eblade"),image_index,x,y,1,1,cangle,-1,1)
-        gpu_set_blendmode(bm_add);
-        draw_sprite_ext(sprite_get("eblade"),image_index,x + hsp,y + vsp,1,1,cangle,-1,.5)
-        draw_sprite_ext(sprite_get("eblade"),image_index,x + hsp*2,y + vsp*2,1,1,cangle,-1,.25)
-        gpu_set_blendmode(bm_normal); 
-         
-    }
-}
 
 if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR )
 and attack == AT_EXTRA_1 and window >= 7 and (window != 9 or (window == 9 and window_timer < 5)) {
@@ -54,7 +59,7 @@ if halox >= 8 and offense and (state != PS_ATTACK_GROUND or (state == PS_ATTACK_
  gpu_set_blendmode(bm_normal);   
 }
 
-
+if legacy == true {
 if halo >= 1 and offense = 1 and (state != PS_ATTACK_GROUND or (state == PS_ATTACK_GROUND && attack != AT_TAUNT)) and zcountered != 1 {
     draw_sprite_ext(sprite_get("motivationr"), get_gameplay_time() / 3, x - 18*spr_dir, y - 48 ,spr_dir,1,0,-1,1 );
    draw_sprite_ext(sprite_get("motivationr"), 3 + get_gameplay_time() / 3, x - 18*spr_dir, y - 48 ,spr_dir,1,0,-1,.3 );
@@ -71,7 +76,7 @@ if halo >= 1 and offense = 1 and (state != PS_ATTACK_GROUND or (state == PS_ATTA
    }
 }
 
-
+}
 if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR 
     or ((state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR) and attack != AT_EXTRA_1 ) or ((state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR) 
     and attack == AT_EXTRA_1 and window == 9 && window_timer >= 5) {
@@ -95,7 +100,7 @@ gpu_set_blendmode(bm_normal);
     
 }
 
-
+if legacy == true {
 if halo >= 1 and offense = 1 and (state != PS_ATTACK_GROUND or (state == PS_ATTACK_GROUND && attack != AT_TAUNT)) and zcountered != 1 {
 
     draw_sprite_ext(sprite_get("motivationr"), get_gameplay_time() / 3, x - 18*spr_dir, y - 48 ,spr_dir,1,0,-1,1 );
@@ -114,6 +119,7 @@ if halo == 3 {
 }
 
 }
+}
 
 
 if dmhit > 0{
@@ -122,6 +128,7 @@ if dmhit > 0{
 
 
 
-shader_end();
 
+shader_end();
+}
 gpu_set_blendmode(bm_normal);

@@ -1,29 +1,25 @@
-/* if you're here to take the Tablet code, this isnt organized yet... BUT
-
-Copy the files articlesolid_init.gml and articletablet_post_draw.gml
-
-Copy the fonts folder, _notation_strip41.png, and tpxtab_icon.png
-
---paste in attack_update.gml BOTTOM--
-tpx_event = 2;
-user_event(15);
-
---paste in set_attack.gml BOTTOM--
-tpx_event = 3;
-user_event(15);
-
---paste in update.gml TOP--
-tpx_event = 4;
-user_event(15);
-
---paste in init.gml BOTTOM--
-user_event(14);
 
 
-
-*/
 switch(tpx_event){
+
+case 4:
+	
+	if (get_training_cpu_action() == CPU_FIGHT && get_gameplay_time() == 1){
+		instance_destroy(tablet_article);
+	}
+
+/* --SETTINGS/CHEATS CODE HERE-- 
+	get_tab_setting(setting, array)
+*/
+
+cpu_parry = get_tab_setting("Extend CPU Parry", extras_arr);
+sparda = get_tab_setting("Style Meter", extras_arr);
+instant_chaos = get_tab_setting("1 Hit Chaos", extras_arr);
+
+break;
+//DO NOT TOUCH ANYTHING BEYOND HERE
 case 1:
+
 
 	//Drawing Tablet Code
 	shader_end();
@@ -38,66 +34,37 @@ case 1:
 
     draw_text_outline( camera_x + 800, camera_y + 317, top_text, asset_get("fName"), fa_right, fa_top, c_white, c_black);
 
-    //draw tabs
+    //Draw Tabs
     for (k = 0; k < array_length_1d(pages_arr); k++){
-        var select_color;
 
         draw_set_alpha(0.8);
-        if (tips_page == k){
-        draw_rectangle_colour(camera_x + 146 + (k * 97), camera_y + 96,camera_x + 240 + (k * 97), camera_y + 76, c_black, c_black, c_black, c_black, false);
-        select_color = c_white;
+        if (pages_arr[k] == pages_arr[tips_page]){
+        draw_rectangle_colour(camera_x + 146 + (k * 97), camera_y + 96,camera_x + 240 + (k * 97), camera_y + 76, tab_base_col, tab_base_col, tab_base_col, tab_base_col, false);
+        max_visible = pages_arr[k][1];
+        current_arr = pages_arr[k][2];
+        draw_text_outline(camera_x + 160 + (k * 97), camera_y + 82, pages_arr[k][0], asset_get("fName"), fa_left, fa_top, tab_tabtext_col, c_black);
         }
         else{
-        draw_rectangle_colour(camera_x + 146 + (k * 97), camera_y + 96,camera_x + 240 + (k * 97), camera_y + 76, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false); 
-        select_color = c_gray;
+        draw_rectangle_colour(camera_x + 146 + (k * 97), camera_y + 96,camera_x + 240 + (k * 97), camera_y + 76, tab_inactivetab_col, tab_inactivetab_col, tab_inactivetab_col, tab_inactivetab_col, false); 
+        draw_text_outline(camera_x + 160 + (k * 97), camera_y + 82, pages_arr[k][0], asset_get("fName"), fa_left, fa_top, tab_tabtextinactive_col, c_black);
         }
         draw_set_alpha(1);
 
-        draw_text_outline(camera_x + 160 + (k * 97), camera_y + 82, pages_arr[k], asset_get("fName"), fa_left, fa_top, select_color, c_black);
+        
     }
 
-    /*
 
-		--TAB DATA--
-
-	    Add arrays on this switch statement
-	    max_visible should either be 4(small frames) or 2(big frames)
-    */
-        switch(tips_page){
-
-            case 0:
-                max_visible = 4;
-                current_arr = moves_arr;
-            break;
-
-            case 1:
-                max_visible = 4; 
-                current_arr = extras_arr;
-            break;
-
-            case 2:
-                max_visible = 2; 
-                current_arr = tips_arr;
-            break;
-
-            case 3:
-                max_visible = 2; 
-                current_arr = about_arr;
-            break;
-
-        }
-
-    // --TAB DATA END--
-
-        //base
+        
         draw_set_alpha(0.8);
-        draw_rectangle_colour(camera_x + 146, camera_y + 96,camera_x + 804, camera_y + 310, c_black, c_black, c_black, c_black, false);
-        draw_rectangle_colour(camera_x + 808, camera_y + 96,camera_x + 812, camera_y + 310, c_black, c_black, c_black, c_black, false);
+        //Base
+        draw_rectangle_colour(camera_x + 146, camera_y + 96,camera_x + 804, camera_y + 310, tab_base_col, tab_base_col, tab_base_col, tab_base_col, false);
+        //Scroll Base
+        draw_rectangle_colour(camera_x + 808, camera_y + 96,camera_x + 812, camera_y + 310, tab_base_col, tab_base_col, tab_base_col, tab_base_col, false);
         draw_set_alpha(1);
 
         //turpix tablet icon
-        draw_sprite_ext( sprite_get("tpxtab_icon"), 0,camera_x + 624, camera_y + 70, 2, 2, 0, c_white, 1);
-        draw_text_outline( camera_x + 660, camera_y + 82, "TURPIX TABLET v1.0", asset_get("fName"), fa_left, fa_top, c_fuchsia, c_purple);
+        draw_sprite_ext( tab_icon, 0,camera_x + 800 + tab_icon_x, camera_y + 70 + tab_icon_y, 2, 2, 0, c_white, 1);
+        draw_text_outline( camera_x + 660, camera_y + 82, tab_title, asset_get("fName"), fa_left, fa_top, tab_title_col, c_purple);
 
         var page_text = string(visible_selected + 1) + " of " + string(array_length_1d(current_arr));
         draw_text_outline(camera_x + 150, camera_y + 317, page_text, asset_get("fName"), fa_left, fa_top, c_white, c_black);
@@ -105,9 +72,9 @@ case 1:
         //Scroll bar
         draw_set_alpha(0.8);
         if (array_length_1d(current_arr) > max_visible)
-        draw_rectangle_colour(camera_x + 806, camera_y + 96 + (214/array_length_1d(current_arr))*(list_selected),camera_x + 814, camera_y + 96 + (214/array_length_1d(current_arr))*(list_selected+max_visible), c_white, c_white, c_white, c_white, false);
+        draw_rectangle_colour(camera_x + 806, camera_y + 96 + (214/array_length_1d(current_arr))*(list_selected),camera_x + 814, camera_y + 96 + (214/array_length_1d(current_arr))*(list_selected+max_visible), tab_scrollbar_col, tab_scrollbar_col, tab_scrollbar_col, tab_scrollbar_col, false);
     	else
-    	draw_rectangle_colour(camera_x + 806, camera_y + 96,camera_x + 814, camera_y + 310, c_white, c_white, c_white, c_white, false);
+    	draw_rectangle_colour(camera_x + 806, camera_y + 96,camera_x + 814, camera_y + 310, tab_scrollbar_col, tab_scrollbar_col, tab_scrollbar_col, tab_scrollbar_col, false);
         draw_set_alpha(1);
 
         //Draw Stuff
@@ -129,6 +96,7 @@ case 1:
         
         if !(state == PS_ATTACK_GROUND && attack == 40){
         	draw_set_alpha(0.5);
+      		//Darkness when in control
         	draw_rectangle_colour(0, 0,room_width, room_height, c_black, c_black, c_black, c_black, false);
         	draw_set_alpha(1);
         }
@@ -143,6 +111,8 @@ case 1:
 break;
 
 case 2:
+//DO NOT TOUCH ANYTHING HERE
+//Tablet Attack State
 
 switch (attack){
 	case 40:
@@ -267,7 +237,6 @@ switch (attack){
 
 					if (current_arr[visible_selected][0] == 1){
 						list_selected = visible_selected;
-						list_selected = clamp(list_selected, 0, array_length_1d(current_arr) - max_visible);
 						sound_play(asset_get("mfx_coin"));
 					}
 					else
@@ -289,7 +258,7 @@ switch (attack){
 					else
 						visible_selected = starting_item;
 			}
-
+			list_selected = clamp(list_selected, 0, array_length_1d(current_arr) - max_visible);
 			visible_selected = clamp(visible_selected, 0, array_length_1d(current_arr) - 1);
 
 			}
@@ -302,7 +271,7 @@ switch (attack){
 break;
 
 case 3:
-
+//DO NOT TOUCH ANYTHING HERE
     if (attack == AT_TAUNT && get_training_cpu_action() != CPU_FIGHT && !down_down){
         if (get_gameplay_time() >= 60 * 2)
         attack = 40;
@@ -315,14 +284,16 @@ case 3:
 
 break;
 
-case 4:
-	if (get_training_cpu_action() == CPU_FIGHT && get_gameplay_time() == 1){
-		instance_destroy(tablet_article);
-	}
-
-break;
-
 }
+#define get_tab_setting(setting, array)
+
+for (j = 0;j < array_length_1d(array); j++){
+	if (array[j][1] == setting){
+		return array[j][2];
+		break;
+	}
+}
+
 
 #define draw_text_outline( text_x, text_y ,text, font, halign, valign, color, outline_color)
 
@@ -354,20 +325,23 @@ switch(type){
         draw_set_alpha(0.5);
 
         if (selected == current_sel)
-        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, c_aqua, c_aqua, c_teal, c_teal, false);
+        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, tab_notation_col1, tab_notation_col1, tab_notation_col2, tab_notation_col2, false);
         else
-        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
+        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, tab_inactivenotation_col, tab_inactivenotation_col, tab_inactivenotation_col, tab_inactivenotation_col, false);
 
         draw_set_alpha(1);
 
-        draw_debug_text(camera_x + 160, camera_y + text_y + 104, string(title));
+        draw_text_outline(camera_x + 160, camera_y + text_y + 104, string(title), asset_get("fName"), fa_left, fa_top, tab_notationtitle_col, c_black);
+
         draw_set_font(font_get("_notation"));
         draw_text_color(camera_x + 200, camera_y + text_y + 116, string(value), c_white, c_white, c_white, c_white, 1);
 
-        draw_text_outline(camera_x + 800, camera_y + text_y + 104, string(comment), asset_get("fName"), fa_right, fa_top, c_gray, c_black);
+        draw_text_outline(camera_x + 800, camera_y + text_y + 104, string(comment), asset_get("fName"), fa_right, fa_top, tab_notationcom_col, c_black);
 
         draw_set_font(asset_get("fName"));
+
         draw_set_halign( fa_left );
+        draw_set_valign( fa_top );
         draw_text_color(camera_x + 154, camera_y + text_y + 134, string(item), c_white, c_white, c_white, c_white, 0.1);
     break;
 
@@ -375,39 +349,42 @@ switch(type){
         draw_set_alpha(0.5);
 
         if (selected == current_sel)
-        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, c_fuchsia, c_fuchsia, c_fuchsia, c_fuchsia, false);
+        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, tab_category_col1, tab_category_col1, tab_category_col2, tab_category_col2, false);
         else
-        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, c_purple, c_purple, c_purple, c_purple, false);
+        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, tab_inactivecategory_col, tab_inactivecategory_col, tab_inactivecategory_col, tab_inactivecategory_col, false);
 
         draw_set_alpha(1);
 
-        draw_text_outline(camera_x + 475, camera_y + text_y + 124, string(title), asset_get("medFont"), fa_center, fa_center, c_fuchsia, c_black);
+        draw_text_outline(camera_x + 475, camera_y + text_y + 124, string(title), asset_get("medFont"), fa_center, fa_center, tab_categorytext_col, c_black);
 
         draw_set_font(asset_get("fName"));
         draw_set_halign( fa_left );
-        draw_text_color( camera_x + 154, camera_y + text_y + 134, string(item), c_black, c_black, c_black, c_black, 0.2);
+        draw_set_valign( fa_top );
+        draw_text_color(camera_x + 154, camera_y + text_y + 134, string(item), c_white, c_white, c_white, c_white, 0.1);
     break;
 
     case 2: //Tips
         draw_set_alpha(0.5);
 
         if (selected == current_sel)
-        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 200, c_yellow, c_yellow, c_orange, c_orange, false);
+        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 200, tab_tip_col1, tab_tip_col1, tab_tip_col2, tab_tip_col2, false);
         else
-        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 200, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
+        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 200, tab_inactivetip_col, tab_inactivetip_col, tab_inactivetip_col, tab_inactivetip_col, false);
 
         draw_set_alpha(1);
 
-        draw_text_outline(camera_x + 160, camera_y + text_y + 106, string(title), asset_get("medFont"), fa_left, fa_top, c_fuchsia, c_black);
+        draw_text_outline(camera_x + 160, camera_y + text_y + 106, string(title), asset_get("medFont"), fa_left, fa_top, tab_tiptitle_col, c_black);
 
         draw_set_font(font_get("_notation"));
         draw_set_halign( fa_right );
         draw_text_color(camera_x + 800, camera_y + text_y + 100, string(value), c_white, c_white, c_white, c_white, 1);
 
-        draw_debug_text(camera_x + 200, camera_y + text_y + 138, string(comment) );
+        draw_text_outline(camera_x + 200, camera_y + text_y + 138, string(comment), asset_get("fName"), fa_left, fa_top, tab_tipcom_col, c_black);
 
         draw_set_font(asset_get("fName"));
+
         draw_set_halign( fa_left );
+        draw_set_valign( fa_top );
         draw_text_color(camera_x + 154, camera_y + text_y + 186, string(item), c_white, c_white, c_white, c_white, 0.1);
 
     break;
@@ -415,29 +392,40 @@ switch(type){
     case 3: //Settings
         draw_set_alpha(0.5);
 
-        if (selected == current_sel)
-        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, c_lime, c_lime, c_green, c_green, false);
+        if (selected == current_sel){
+            switch (value){
+                case 1:
+                    draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, tab_setbaseon_col1, tab_setbaseon_col1, tab_setbaseon_col2, tab_setbaseon_col2, false);
+                break;
+                case 0:
+                    draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, tab_setbaseoff_col1, tab_setbaseoff_col1, tab_setbaseoff_col2, tab_setbaseoff_col2, false);
+                break;
+            }
+        
+
+    	}
         else
-        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
+        draw_rectangle_colour(camera_x + 150, camera_y + text_y + 100, camera_x + 800, camera_y + text_y + 148, tab_inactiveset_col, tab_inactiveset_col, tab_inactiveset_col, tab_inactiveset_col, false);
 
         draw_set_alpha(1);
 
-        draw_text_outline(camera_x + 160, camera_y + text_y + 106, string(title), asset_get("medFont"), fa_left, fa_top, c_white, c_black);
+        draw_text_outline(camera_x + 160, camera_y + text_y + 106, string(title), asset_get("medFont"), fa_left, fa_top, tab_settitle_col, c_black);
 
             switch (value){
                 case 0:
-                    draw_text_outline(camera_x + 475, camera_y + text_y + 106, "OFF", asset_get("medFont"), fa_center, fa_top, c_red, c_black);
+                    draw_text_outline(camera_x + 475, camera_y + text_y + 106, "OFF", asset_get("medFont"), fa_center, fa_top, tab_setoff_col, c_black);
                 break;
                 case 1:
-                    draw_text_outline(camera_x + 475, camera_y + text_y + 106, "ON", asset_get("medFont"), fa_center, fa_top, c_lime, c_black);
+                    draw_text_outline(camera_x + 475, camera_y + text_y + 106, "ON", asset_get("medFont"), fa_center, fa_top, tab_seton_col, c_black);
                 break;
             }
 
 
-        draw_text_outline(camera_x + 800, camera_y + text_y + 104, string(comment), asset_get("fName"), fa_right, fa_top, c_gray, c_black);
+        draw_text_outline(camera_x + 800, camera_y + text_y + 104, string(comment), asset_get("fName"), fa_right, fa_top, tab_setcom_col, c_black);
 
         draw_set_font(asset_get("fName"));
         draw_set_halign( fa_left );
+        draw_set_valign( fa_top );
         draw_text_color(camera_x + 154, camera_y + text_y + 134, string(item), c_white, c_white, c_white, c_white, 0.1);
 
     break;

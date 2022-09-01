@@ -72,7 +72,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -106,7 +106,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 2);

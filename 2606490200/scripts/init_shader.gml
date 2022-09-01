@@ -12,6 +12,30 @@ if get_gameplay_time() == 90 && get_player_color(player) == 16 {
     set_article_color_slot( 6, 250, 0, 0 ); //Shirt
     set_article_color_slot( 7, 255, 218, 41 ); //Shine
     
+    if string_lower(get_player_name(player)) == "stand"{
+    	
+
+		
+		set_character_color_slot( 0, 82, 40, 166 ); //Energy
+        set_character_color_slot( 1, 175, 64, 230 ); //Skin
+        set_character_color_slot( 2, 108, 36, 224 ); //Skinshade
+        set_character_color_slot( 3, 28, 34, 125 ); //Hair
+        set_character_color_slot( 4, 57, 28, 125 ); //pant
+        set_character_color_slot( 5, 125, 50, 166 ); //Eyes
+        set_character_color_slot( 6, 125, 50, 166 ); //Shirt
+        set_character_color_slot( 7, 255, 23, 231 ); //Shine
+
+        set_article_color_slot( 0, 82, 40, 166 ); //Energy
+        set_article_color_slot( 1, 175, 64, 230 ); //Skin
+        set_article_color_slot( 2, 108, 36, 224 ); //Skinshade
+        set_article_color_slot( 3, 28, 34, 125 ); //Hair
+        set_article_color_slot( 4, 57, 28, 125 ); //pant
+        set_article_color_slot( 5, 125, 50, 166 ); //Eyes
+        set_article_color_slot( 6, 255, 255, 255); //Shirt
+        set_article_color_slot( 7, 255, 23, 231 ); //Shine
+
+	}
+	
 	
 	if string_lower(get_player_name(player)) == "sai" or string_lower(get_player_name(player)) == "cosmic"{
 		set_character_color_slot( 0, 62, 6, 153 ); //Energy

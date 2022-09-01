@@ -358,7 +358,7 @@ if attack == AT_BAIR {
     }
     
     if window == 4 {
-    				move_cooldown[AT_FSPECIAL] = 90
+    				move_cooldown[AT_FSPECIAL] = 300
     }
     
     if window == 4 && window_timer == 27 {
@@ -413,7 +413,7 @@ if attack == AT_DAIR {
     }
    
     if window == 5 && window_timer == 7 {
-    		prat_land_time = 12;
+    		prat_land_time = 16;
 			set_state (PS_PRATFALL)
     }
     
@@ -482,7 +482,7 @@ if attack == AT_USPECIAL {
 	}
 	
 	if window != 6{
-	prat_land_time = 6;
+	prat_land_time = 16;
 	}
 	move_cooldown[AT_USPECIAL] = 999
 	
@@ -511,6 +511,7 @@ if attack == AT_USPECIAL {
      
 
      if window == 6 && window_timer == 1 {
+     	    move_cooldown[AT_FSPECIAL] = 300
      	    sound_play(sound_get("exp2"));
             spawn_hit_fx( x + (30 * spr_dir) , y - 10, exp1 )
             create_hitbox(AT_EXTRA_3 , 24 , x + (32 * spr_dir) , y - 14 );
@@ -520,7 +521,7 @@ if attack == AT_USPECIAL {
 
 if attack == AT_FSPECIAL  {
 	
-	prat_land_time = 12;
+	prat_land_time = 16;
 	can_wall_jump = true 
 	
 	if state_timer > 10 && !hitpause {
@@ -869,7 +870,7 @@ if window == 1 && bursted != 0 {
 			gunname = 1
 		}
 		
-	    if (!special_pressed and !attack_pressed) or state_timer < 20 {
+	    if (!special_pressed and !attack_pressed) or state_timer < 20 or move_cooldown[AT_DSPECIAL_2] > 0{
 	    	if window_timer = 18 {
 	    		window_timer = 10
 	    	}
@@ -910,7 +911,7 @@ if window == 1 && bursted != 0 {
 	        if left_pressed {
 	        	move_cooldown[AT_DTHROW] = 0
 	        	move_cooldown[AT_UTHROW] = 15
-	        	gunname -= 4
+	        	gunname -= 5
 	        	sound_play(asset_get("mfx_back"))
 	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
@@ -918,43 +919,11 @@ if window == 1 && bursted != 0 {
 	        if right_pressed {
 	        	move_cooldown[AT_UTHROW] = 0
 	        	move_cooldown[AT_DTHROW] = 15
-	        	gunname += 4
+	        	gunname += 5
 	        	sound_play(asset_get("mfx_back"))
 	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
 	    }
-	    
-	        if move_cooldown[AT_DTHROW] > 0 {
-	        if gunname == 4 && t21 != 0 gunname ++
-	        if gunname == 5 && t22 != 0 gunname ++
-	        if gunname == 6 && t23 != 0 gunname ++
-	        if gunname == 7 && t24 != 0 gunname ++
-	        
-	        if gunname == 8 && t31 != 0 gunname ++
-	        if gunname == 9 && t32 != 0 gunname ++
-	        if gunname == 10 && t33 != 0 gunname ++
-	        if gunname == 11 && t34 != 0 gunname ++
-	        if gunname == 12 && t35 != 0 gunname ++
-	        if gunname == 13 && t36 != 0 gunname ++
-	        }
-	        
-	        if move_cooldown[AT_UTHROW] > 0 {
-	        if gunname == 4 && t21 != 0 gunname --
-	        if gunname == 5 && t22 != 0 gunname --
-	        if gunname == 6 && t23 != 0 gunname --
-	        if gunname == 7 && t24 != 0 gunname --
-	        
-	        if gunname == 8 && t31 != 0 gunname --
-	        if gunname == 9 && t32 != 0 gunname --
-	        if gunname == 10 && t33 != 0 gunname --
-	        if gunname == 11 && t34 != 0 gunname --
-	        if gunname == 12 && t35 != 0 gunname --
-	        if gunname == 13 && t36 != 0 gunname --
-	        }
-	        
-	    
-	    
-	    	
 	    
 	}
 	  
@@ -1189,7 +1158,7 @@ if window == 3 {
 			}
 			
 			if free {
-				prat_land_time = 12;
+				prat_land_time = 16;
 				set_state (PS_IDLE_AIR)
 			}	
 			
@@ -1314,7 +1283,7 @@ if window == 9 {
 				 
 					vsp = -6
 				
-				prat_land_time = 12;
+				prat_land_time = 16;
 				set_state (PS_IDLE_AIR)
 			}	
 			
@@ -1369,7 +1338,7 @@ if window == 13 {
 			}
 			
 			if free {
-				prat_land_time = 12;
+				prat_land_time = 16;
 				set_state (PS_IDLE_AIR)
 			}	
 			
@@ -1420,7 +1389,7 @@ if window == 15 {
 			}
 			
 			if free {
-				prat_land_time = 12;
+				prat_land_time = 16;
 				set_state (PS_IDLE_AIR)
 			}	
 			}

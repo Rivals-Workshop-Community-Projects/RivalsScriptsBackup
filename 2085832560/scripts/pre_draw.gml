@@ -63,7 +63,7 @@ draw_sprite_ext(sprite_get("rank"), 14, x - 50 + 10, y- 60 - 22,1 ,1 ,0,-1, rank
 
 if move_cooldown[AT_FSPECIAL] > 0 {
 	
-     draw_sprite(sprite_get("nobike"), (90 - move_cooldown[AT_FSPECIAL]) / 9, x , y + 20  );
+     draw_sprite(sprite_get("nobike"), max(1,(90 - move_cooldown[AT_FSPECIAL]) / 9), x , y + 20  );
 
 
 }

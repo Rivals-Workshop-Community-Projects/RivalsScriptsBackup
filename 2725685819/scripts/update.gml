@@ -1,7 +1,7 @@
 //start of game stuff
+
 tpx_event = 4;
 user_event(15);
-
 
 if (intro_timer < intro_full){
 intro_timer++;
@@ -424,5 +424,31 @@ if start_dir[0]==-1 && spr_dir == looking{
 }
 
 
-//settings
-sparda = extras_arr[3][2];
+
+
+//CPU Parry Extend
+if (cpu_parry){
+
+    with(oPlayer){
+        if (other.player != player){
+            if (temp_level > 0){
+                if (state == PS_PARRY){
+                    if (state_timer >= 1 && !invincible){
+                        old_vsp = vsp;
+                        old_hsp = hsp;
+
+                        hitpause = true;
+                        hitstop = 2;
+
+                        if (hit_player_obj == other){
+                            state_timer++;
+                            hit_player_obj = noone;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+

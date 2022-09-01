@@ -2,6 +2,10 @@ intro = 0
 introtimer = -1
 noparryedit = 0
 
+legacy = 0
+
+enhanceee = 0
+
 ztrashes = 0
 
 iaihsp = 0

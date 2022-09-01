@@ -122,13 +122,13 @@ if(hud_flash_shift_cooldown <= 300 && !has_rune("N")){
     }
 }
 
-//menu mode select
+/*/menu mode select
 menu_v_select -= (menu_v_select > 0? 1: 0);
 if(state == PS_SPAWN && taunt_pressed && menu_v_select <= 0){
     menu_v_select = 8;
     menu_version = (menu_version = 0? 1: 0);
     sound_play(sound_get("hud_select"));
-}
+}//*/
 
 //beam properties
 if(power_ups[1] == 1 && power_ups[2] == 0){
@@ -313,7 +313,7 @@ diagchoice = [
     "You're not my bounty but i'll take you down anyway."]
     
 if(variable_instance_exists(self, "otherUrl")){
-if(otherUrl == 2606413637) 
+if(otherUrl == 2842982057) 
     {
         with(pet_obj)
         {

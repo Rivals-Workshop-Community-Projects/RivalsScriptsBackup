@@ -13,8 +13,8 @@ if (attack == AT_DSPECIAL){
 		destroyed = true;
 	}
 	
-	if (hitbox_timer == length - 1){
-		destroyed = true;
+	if (hitbox_timer >= 2){
+		projectile_parry_stun = false;
 	}
 	
 	with (oPlayer){

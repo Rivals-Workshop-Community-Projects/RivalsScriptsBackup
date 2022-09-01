@@ -120,6 +120,30 @@ if "cosmicman" in self {
 	
 }
 
+if "standon" in self {
+	
+	if !hitpause {
+	standx += round((x - abs(standtime)*o_spr_dir - standx)/4)
+	standy += round((y - ofree*15 - standy )/4)
+	}
+	
+	if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) and attack != AT_USPECIAL and get_gameplay_time() > 140 and attack != AT_BAIR{
+		if standtime > -10 {
+			o_spr_dir = spr_dir
+			ofree = free
+			sound_play(asset_get("sfx_sand_yell"),false,noone,.5, 0.45 + random_func(1,20,true)/100)
+			sound_play(asset_get("sfx_forsburn_reappear"),false,noone,.8, 0.75 + random_func(2,15,true)/100)
+		}
+		
+		if standtime > -40 standtime = -40
+		
+	} else {
+		if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
+			if standtime < 0 standtime += 2
+		}
+	}
+}
+
 if (get_gameplay_time() == 90 or get_gameplay_time() == 91)  && get_player_color(player) == 16 {
 	
 
@@ -132,6 +156,27 @@ if (get_gameplay_time() == 90 or get_gameplay_time() == 91)  && get_player_color
     set_color_profile_slot( 16, 6, 250, 0, 0 ); //Shirt
     set_color_profile_slot( 16, 7, 255, 218, 41 ); //Shine
     
+	
+	if string_lower(get_player_name(player)) == "stand"{
+		standon = true 
+		standtime = 30
+		standx = x
+		standy = y
+		o_spr_dir = spr_dir
+		ofree = free
+	     sound_stop(sound_get("powerup"))
+		sound_play(sound_get("powerup"),false,noone,1,0.6)
+		sound_play(asset_get("sfx_sand_yell"),false,noone,.6,0.55)
+		sound_play(asset_get("sfx_sand_yell"),false,noone,.6,0.45)
+        set_color_profile_slot( 16, 0, 82, 40, 166 ); //Energy
+        set_color_profile_slot( 16, 1, 175, 64, 230 ); //Skin
+        set_color_profile_slot( 16, 2, 108, 36, 224 ); //Skinshade
+        set_color_profile_slot( 16, 3, 28, 34, 125 ); //Hair
+        set_color_profile_slot( 16, 4, 57, 28, 125 ); //pant
+        set_color_profile_slot( 16, 5, 125, 50, 166 ); //Eyes
+        set_color_profile_slot( 16, 6, 255, 255, 255 ); //Shirt
+        set_color_profile_slot( 16, 7, 255, 23, 231 ); //Shine
+	}
 	
 	if string_lower(get_player_name(player)) == "sai" or string_lower(get_player_name(player)) == "cosmic"{
 		cosmicmusic = 120
@@ -916,7 +961,7 @@ if move_cooldown[AT_BAIR] > 0 {
 if state == PS_PARRY && noparryedit == 0 {
 		free = false 
 		if state_timer > 2 && state_timer < 15 && !invincible{
-			window_timer -= 0.7
+			window_timer -= 0.5
 		} else {
 			if state_timer == 15 {
 				window_timer = floor(window_timer) + 1

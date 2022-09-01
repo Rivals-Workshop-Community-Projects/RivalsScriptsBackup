@@ -1,6 +1,5 @@
 ///
 
-
 if cheapmode == 1 && get_gameplay_time() < 600 &&  get_gameplay_time() > 15 {
     draw_debug_text(x - 70 ,y -162,"Is this a cheapie?");
 	draw_debug_text(x - 110 ,y -142,"(Dstrong to active anticheap)");
@@ -235,6 +234,89 @@ shader_start();
 shader_end();
 
 }
+
+
+
+if "standon" in self and state != PS_PRATFALL and state != PS_PRATLAND and state != PS_PARRY and state != PS_ROLL_FORWARD and state != PS_ROLL_BACKWARD and state != PS_TECH_FORWARD and state != PS_TECH_BACKWARD {
+  
+		
+	 shader_start();
+        if standtime > 0 {
+        	
+        if get_gameplay_time() % 2 == 0 {
+		          	gsfx1 = spawn_hit_fx(floor(standx), floor(standy) - 24 - random_func(2,51,true) , sgf1)
+                      gsfx1.spr_dir = 0.3
+                      gsfx1.image_yscale = 0.3
+                      gsfx1.draw_angle = random_func(1,360,true)
+                      gsfx1.depth = depth + 4
+		}
+		if get_gameplay_time() % 4 == 2 {
+		              gsfx2 = spawn_hit_fx(floor(standx), floor(standy) - 24 - random_func(2,51,true) , sgf2)
+                      gsfx2.spr_dir = 0.3
+                      gsfx2.image_yscale = 0.3
+                      gsfx2.draw_angle = random_func(1,360,true)
+                      gsfx2.depth = depth + 4
+		}
+		
+     	draw_sprite_ext(sprite_index, image_index , standx , standy  , spr_dir, 1, 0 , -1 , 0.3);
+     	gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_index, image_index , standx -2, standy  , spr_dir, 1, 0 , -1 , 0.2);	
+        draw_sprite_ext(sprite_index, image_index , standx +2, standy  , spr_dir, 1, 0 , -1 , 0.2);	
+        draw_sprite_ext(sprite_index, image_index , standx , standy -2 , spr_dir, 1, 0 , -1 , 0.2);	
+        draw_sprite_ext(sprite_index, image_index , standx , standy +2 , spr_dir, 1, 0 , -1 , 0.2);	
+        gpu_set_blendmode(bm_normal);
+        standtime -= 1
+        }
+        shader_end();
+        
+        if standtime >= 0 {
+	  	draw_sprite_ext(sprite_index, image_index , x , y  , spr_dir, 1, 0 , -1 , 1);
+	  } else {
+	  	draw_sprite_ext(sprite_get("gigastandon"), ofree , round((x + standx)/2) ,round((y + standy)/2)  , spr_dir, 1, 0 , -1 , 1 - abs(standtime/20) );
+	  	draw_sprite_ext(sprite_get("gigastandon"), ofree , standx , standy  , o_spr_dir, 1, 0 , -1 , abs(standtime/20));
+	  	draw_sprite_ext(sprite_get("gigastandon"), ofree , standx , standy  , o_spr_dir, 1, 0 , c_black , min(0.5,abs(standtime/20)));
+	  	
+	  	draw_sprite_ext(sprite_index, image_index , round((x + standx)/2) , round((y + standy)/2)  , spr_dir, 1, 0 , -1 , 1 - abs(standtime/20) );
+	  	draw_sprite_ext(sprite_index, image_index , x , y  , spr_dir, 1, 0 , -1 , 1 - abs(standtime/20) );
+	  	
+	  }
+	  
+	  shader_start();
+        if standtime < 0 {
+        	
+        	if get_gameplay_time() % 2 == 0 {
+		          	gsfx1 = spawn_hit_fx(floor(x), floor(y) - 24 - random_func(2,51,true) , sgf1)
+                      gsfx1.spr_dir = 0.3
+                      gsfx1.image_yscale = 0.3
+                      gsfx1.draw_angle = random_func(1,360,true)
+                      gsfx1.depth = depth + 4
+		}
+		if get_gameplay_time() % 4 == 2 {
+		              gsfx2 = spawn_hit_fx(floor(x), floor(y) - 24 - random_func(2,51,true) , sgf2)
+                      gsfx2.spr_dir = 0.3
+                      gsfx2.image_yscale = 0.3
+                      gsfx2.draw_angle = random_func(1,360,true)
+                      gsfx2.depth = depth + 4
+		}
+		
+     	draw_sprite_ext(sprite_index, image_index , x , y  , spr_dir, 1, 0 , -1 , 0.4);
+     	gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_index, image_index , x -2, y  , spr_dir, 1, 0 , -1 , 0.15);	
+        draw_sprite_ext(sprite_index, image_index , x +2, y  , spr_dir, 1, 0 , -1 , 0.15);	
+        draw_sprite_ext(sprite_index, image_index , x , y -2 , spr_dir, 1, 0 , -1 , 0.15);	
+        draw_sprite_ext(sprite_index, image_index , x , y +2 , spr_dir, 1, 0 , -1 , 0.15);	
+        gpu_set_blendmode(bm_normal);
+        
+        standtime += 1
+        }
+        
+	 shader_end();
+	 
+	
+	
+	  
+} 
+
 
 //================================================================================
 #define maskHeader

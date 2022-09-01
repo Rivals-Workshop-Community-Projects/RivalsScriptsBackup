@@ -203,6 +203,7 @@ dattackhitbox = noone;
 dattacknum = 0;
 dattacktimer = 0;
 takearideontherailroad = false;
+dattackboost =  false;
 sfx_rest = sound_get("rest_hit");
 sfx_dice1 = sound_get("dice 1");
 moneysfx1 = sound_get("money_pickup2");

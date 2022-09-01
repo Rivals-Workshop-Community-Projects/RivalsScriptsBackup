@@ -1,5 +1,39 @@
 
 
+if move_cooldown[AT_DTHROW] > 0 {
+	        if gunname == 4 && t21 != 0 gunname ++
+	        if gunname == 5 && t22 != 0 gunname ++
+	        if gunname == 6 && t23 != 0 gunname ++
+	        if gunname == 7 && t24 != 0 gunname ++
+	        
+	        if gunname == 8 && t31 != 0 gunname ++
+	        if gunname == 9 && t32 != 0 gunname ++
+	        if gunname == 10 && t33 != 0 gunname ++
+	        if gunname == 11 && t34 != 0 gunname ++
+	        if gunname == 12 && t35 != 0 gunname ++
+	        if gunname == 13 && t36 != 0 gunname ++
+	        }
+	        
+	        if move_cooldown[AT_UTHROW] > 0 {
+	        if gunname == 4 && t21 != 0 gunname --
+	        if gunname == 5 && t22 != 0 gunname --
+	        if gunname == 6 && t23 != 0 gunname --
+	        if gunname == 7 && t24 != 0 gunname --
+	        
+	        if gunname == 8 && t31 != 0 gunname --
+	        if gunname == 9 && t32 != 0 gunname --
+	        if gunname == 10 && t33 != 0 gunname --
+	        if gunname == 11 && t34 != 0 gunname --
+	        if gunname == 12 && t35 != 0 gunname --
+	        if gunname == 13 && t36 != 0 gunname --
+}
+	        
+if !hitpause && state == PS_PRATFALL {
+	if abs(hsp) > 4 {
+		hsp /= 1.05
+	}
+}
+
 
 if bursted != 0 && down_down {
 	 clear_button_buffer( PC_SPECIAL_PRESSED );

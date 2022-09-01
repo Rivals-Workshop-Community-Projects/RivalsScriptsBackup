@@ -403,6 +403,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.9", "31 August, 2022");
+initHeader("UAir - Adjustments");
+initImage(sprite_get("civic"), 0);
+initWords("Removed Herobrine");
+
 initPatch("2.8", "29 August, 2022");
 initHeader("UStrong - Corrections");
 initSection("Corrected knockback angle.");

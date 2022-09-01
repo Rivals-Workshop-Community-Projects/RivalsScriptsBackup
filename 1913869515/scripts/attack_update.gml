@@ -54,7 +54,15 @@ if attack == AT_EXTRA_2 {
 		fx2 = spawn_hit_fx( x - (8* spr_dir), y - 20 , slash2 )	
 		fx2.depth = depth - 2
 		if iaicancel == true {
+			if legacy == false {
+			var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
+    		halodeact.depth = depth + 2
+    		halodeact.pause = 4
+         	offense = 1
+            offensetimer = 1	
+			}
     		iaicancel = false 
+    		enhanceee = 1
     		dmhit = 3
     		fx3 = spawn_hit_fx( x - (8* spr_dir), y - 30 , shit5 )	
 	    	fx3.depth = depth - 5
@@ -297,7 +305,7 @@ if zvoice != 0 && !hitpause && 	voicecd <= 0{
 }
 
 if attack == AT_FTHROW {
-	if special_down && window = 1 && window_timer == 10 && halox == 8 && halo == 3 && !free {
+	if special_down && window = 1 && window_timer == 10 && halox == 8 && halo == 3 && !free && legacy == true {
 		attack_end()
 		set_attack(AT_UTHROW)
 		window = 1 
@@ -320,6 +328,10 @@ if attack == AT_FTHROW {
 		    pgfx.image_yscale = 0.8
 		      	create_hitbox(AT_FTHROW,2,x + 100*spr_dir,y - 30)
 		      	halo -= 1
+		      	if legacy == 0 {
+		      		enhanceee = 0
+		      		halox = 1
+		      	}
     	}
 	}
 	
@@ -393,6 +405,7 @@ if attack == AT_UTHROW {
 
 		
 	    halo -= 1
+	    
         sound_play(asset_get("sfx_bird_downspecial"))
         }
     }
@@ -626,6 +639,10 @@ if attack == AT_FSPECIAL {
 		if halo > 0 && zbayo != 5 {
 			 zbayo = 5
 			 halo -= 1
+			 if legacy == 0 {
+		      		enhanceee = 0
+		      		halox = 1
+		      }
 			 fx = spawn_hit_fx(x - 20*spr_dir ,y - 35, 305)
 			 fx.pause = 6
 			 sound_play(sound_get("SpaceCut"),false,noone,1,1);
@@ -865,11 +882,15 @@ if (attack == AT_USPECIAL){
 	
 	if window = 4 && window_timer == 7 && zbayo == -1 {
 		halo -= 1 
-		
+			 if legacy == 0 {
+		      		enhanceee = 0
+		      		halox = 1
+		      }
 		
 		if has_hit_player {
 
-			
+	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 0);
+	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 0);	
 		spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
 		sound_play(asset_get("sfx_swipe_weak1"));
@@ -1132,6 +1153,10 @@ if (attack == AT_NSPECIAL){
          	    	
          	    	create_hitbox(AT_NSPECIAL , 6 , floor(x + (100 + nrange)*spr_dir), floor(y - 30) ); 
          	halo -= 1
+			 if legacy == 0 {
+		      		enhanceee = 0
+		      		halox = 1
+		      }
          	spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
                 window = 4;
             	window_timer = 0;
@@ -1186,8 +1211,8 @@ if (attack == AT_NSPECIAL){
 
 
 if (attack == AT_DSPECIAL){
-		move_cooldown[AT_DSPECIAL] = 20
-		
+		move_cooldown[AT_DSPECIAL] = 40
+		parry_cooldown = 40
 	if zcountered = 1 {
 		invincible = true
 	}

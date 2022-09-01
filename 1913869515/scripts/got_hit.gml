@@ -34,6 +34,8 @@ reset_window_value(AT_TAUNT, 18, AG_WINDOW_SFX);
 
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
 	
+	enhanceee = true 
+	
 	if halox < 8 {
         halo = 2
 	 	ohalo = 2
@@ -90,6 +92,8 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
 }
 
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
+	
+	enhanceee = true 
 	
 	 if halox < 8 {
         halo = 2

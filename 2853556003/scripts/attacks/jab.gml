@@ -29,10 +29,9 @@ set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 
-set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 9);
-set_window_value(AT_JAB, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 /*
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_FRAME, 2);
@@ -75,7 +74,6 @@ set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sfx_punch_blow_weak2);
 set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_JAB, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_JAB, 1, HG_SHAPE, 0)
 
@@ -152,7 +150,6 @@ set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, sfx_waterhit_weak);
 set_hitbox_value(AT_JAB, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT, vfx_waterhit_small);
 set_hitbox_value(AT_JAB, 4, HG_FORCE_FLINCH, 1);
-set_hitbox_value(AT_JAB, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_JAB, 4, HG_SHAPE, 0)
 

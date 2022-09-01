@@ -4,6 +4,7 @@ sprite_change_offset("crouch2", 51, 114);
 sprite_change_offset("crouch3", 51, 114);
 sprite_change_offset("crouch4", 51, 114);
 sprite_change_offset("walk", 51, 114);;
+sprite_change_offset("gigastandon", 51, 114);;
 sprite_change_offset("walkturn", 51, 114);
 
 

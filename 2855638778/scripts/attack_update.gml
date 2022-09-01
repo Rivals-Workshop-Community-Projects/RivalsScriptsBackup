@@ -275,8 +275,9 @@ if (attack == AT_BAIR) {
 		}
 	}
 	
-	// resets variable
+	// resets variables
 	if (window == 1) {
+		rocket_cancel = false;
 		grenade_explode = 0;
 	}
 	
@@ -317,8 +318,9 @@ if (attack == AT_USTRONG) {
 		}
 	}
 	
-	// resets variable
+	// resets variables
 	if (window == 1) {
+		rocket_cancel = false;
 		grenade_explode = 0;
 	}
 	
@@ -354,6 +356,12 @@ if (attack == AT_USPECIAL_2) {
 		can_wall_jump = true;
 	}
 	*/
+}
+
+// for situations where you land during awkward points of uspecial
+if (attack == AT_USPECIAL && !free) {
+	
+	para_should_undeploy = true;
 }
 
 // unique handlers for using attacks that don't instantly end blastjump state upon touching the ground

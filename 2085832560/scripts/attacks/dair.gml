@@ -48,7 +48,7 @@ set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 
 
 set_window_value(AT_DAIR, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_DAIR, 6, AG_WINDOW_HAS_SFX, 1);
@@ -73,7 +73,7 @@ set_window_value(AT_DAIR, 8, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_weak"))
 set_window_value(AT_DAIR, 8, AG_WINDOW_SFX_FRAME, 12);
 
 set_window_value(AT_DAIR, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 9, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DAIR, 9, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DAIR, 9, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DAIR, 9, AG_WINDOW_ANIM_FRAME_START, 20);
 set_window_value(AT_DAIR, 9, AG_WINDOW_HAS_WHIFFLAG, 1);

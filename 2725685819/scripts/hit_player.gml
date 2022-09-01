@@ -77,7 +77,7 @@ if ((get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_CHAOS_EXCLUDE
 			else
 			hit_player_obj.trick_stack++;	
 
-			if (extras_arr[1][2])
+			if (instant_chaos)
 			hit_player_obj.trick_stack += 7;
 			
 
@@ -161,7 +161,7 @@ attack_end();
 
 
 //Style points
-if (style_meter || sparda){
+if (style_meter || sparda) && (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_CHAOS_EXCLUDE) != 1){
 	switch(floor(hit_player_obj.trick_stack)){
 		case 1:
 			if (hit_player_obj.styled_on < 1){

@@ -60,7 +60,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, shit5);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
@@ -114,7 +114,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, sound_get("uspec"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, shit1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_FSPECIAL, 3,  HG_PROJECTILE_IS_TRANSCENDENT, true);
 
@@ -147,6 +147,6 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, sound_get("uspec"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT, shit4);
-set_hitbox_value(AT_FSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_FSPECIAL, 4, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_FSPECIAL, 4,  HG_PROJECTILE_IS_TRANSCENDENT, true);

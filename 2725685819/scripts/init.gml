@@ -174,6 +174,7 @@ AG_WINDOW_IASA = 56;
 necoarc = false;
 style_meter = false;
 sync_bool = get_synced_var( player );
+style_meter = false;
 
 //sync vars
 sparda = (2 & sync_bool) ? true:false;
@@ -215,8 +216,9 @@ provoking = 0;
 lightning_x = 0;
 lightning_dir = 1;
 
-
-
+//Settings for tablet
+cpu_parry = false;
+instant_chaos = false;
 
 
 
