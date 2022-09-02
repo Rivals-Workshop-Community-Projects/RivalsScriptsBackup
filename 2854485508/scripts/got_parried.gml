@@ -3,15 +3,17 @@ if (("mamizou_mark_id" in hit_player_obj) && hit_player_obj.mamizou_mark_id != n
     hit_player_obj.mamizou_mark_id = noone;
 }
 
-with (enemy_hitboxID) {
-    if ("follower_owner" in self && player_id == other.id && type == 1) {
-        follower_owner.percent += 999;
-		follower_owner.state_timer = 2;
-		follower_owner.hitstop = hit_player_obj.hitstop;
-		follower_owner.next_state = PS_HITSTUN;
-		follower_owner.kb_dir = 45;
-		follower_owner.orig_knock = 8;
-		follower_owner.state_timer = 0;
-		follower_owner.spr_dir = -hit_player_obj.spr_dir;
+
+with (obj_article2) {
+    if (player_id == other.id) {
+        percent += 999;
+    	hitstun = 60;
+    	hitstun_full = 60;
+    	state_timer = 2;
+    	hitstop = 0;
+    	next_state = PS_HITSTUN;
+    	kb_dir = 45;
+    	orig_knock = 8;
+    	state_timer = 0;
     }
 }

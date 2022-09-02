@@ -55,7 +55,7 @@ switch (get_player_color(player)) {
     case 7:  phantom_color = make_colour_rgb(170,  80,  80); break;
     case 8: phantom_color = make_colour_rgb(255,  255,  50); break;
     case 9:  phantom_color = make_colour_rgb(255, 234, 173); break;
-    case 10:  phantom_color = make_colour_rgb(168, 44, 44); break;
+    case 10:  phantom_color = make_colour_rgb(147, 112, 219); break;
     case 11: phantom_color = make_colour_rgb(191, 242, 255); break;
     case 12: phantom_color = make_colour_rgb(42,  87,  176); break;
     case 13: phantom_color = make_colour_rgb(78, 67, 133); break;

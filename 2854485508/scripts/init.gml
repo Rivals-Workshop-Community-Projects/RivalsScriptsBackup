@@ -132,6 +132,8 @@ set_hit_particle_sprite(1, sprite_get("hfx_part_leaf"))
 
 //Mark
 mark_spr = sprite_get("mark");
+nspecial_kb_mult = 0;
+nspecial_in_hitstun = false;
 
 //FSpecial
 follower_max = 2; //Amount of gordos on screen at a time.

@@ -103,8 +103,9 @@ if (attack == AT_USPECIAL_2){
         if (window_timer == 1) 
         {
         	fly_angle = point_direction(x, y, phantom.x, phantom.y);
-        	var dashfx = spawn_hit_fx( x + lengthdir_x(-45, -fly_angle), y - 40 + lengthdir_y(45, -fly_angle), djump );
+        	var dashfx = spawn_hit_fx( x + lengthdir_x(-45, -fly_angle), y - 40 + lengthdir_y(45, -fly_angle), uspecjump );
         	dashfx.draw_angle = fly_angle - 90; //this is in degrees i believe
+        	clear_button_buffer(PC_SPECIAL_PRESSED);
 			//dashfx.spr_dir = 1; //this would be right; -1 is left as usual.
         }
     }
@@ -129,7 +130,7 @@ if (attack == AT_USPECIAL_2){
         last_y = y;
         check_if_stopped = true;
 	        
-        if (shield_pressed) {
+        if (shield_pressed || attack_pressed || special_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed) {
         	hsp *= 0.8;
         	white_flash_timer = 7;
         	set_state(PS_IDLE_AIR);
@@ -462,6 +463,18 @@ if (attack == AT_USTRONG){
         }
     }
     */
+    if (window == 1)
+    {
+    	reset_window_value(AT_USTRONG, 4, AG_WINDOW_HSPEED);
+		reset_window_value(AT_USTRONG, 4, AG_WINDOW_HSPEED_TYPE);	
+    }
+    if (window == 3 && window_timer >= 4) 
+    {
+    	if ((spr_dir == 1 && right_down) || (spr_dir == -1 && left_down)) {
+    		set_window_value(AT_USTRONG, 4, AG_WINDOW_HSPEED, 5);
+			set_window_value(AT_USTRONG, 4, AG_WINDOW_HSPEED_TYPE, 2);
+    	}
+    }
     if (window == 3 && was_parried) {
         window = 9;
         window_timer = 26;
@@ -684,6 +697,14 @@ if (attack == AT_TAUNT && has_hit) {
 	can_jump = true;
 }
 
+if (attack == AT_UTHROW && window == 1)
+{
+	if (window_timer == 35)
+	{
+		white_flash_timer = 15;
+	}
+}
+
 if (attack == AT_EXTRA_3){
 	if (window == 1 && window_timer == 2 && !was_parried && (phantom.state = 1 || phantom.state = 4 || phantom.state = 3 || phantom.state = 7 || phantom.state = 9 || phantom.state = 6)) {
     	phantom.state = 9;
@@ -896,16 +917,41 @@ if (attack == AT_DSPECIAL_AIR && (window == 1 || window == 2 || window == 3 || w
     can_fast_fall = false;
 }
 
-if (attack == AT_NSPECIAL_AIR && (window == 1 || window == 2 || window == 3)) {
+if (attack == AT_NSPECIAL_AIR && !free) {
+	if (window == 1) 
+	{
+		attack_end();
+		set_attack = AT_NSPECIAL;
+		attack = AT_NSPECIAL;
+		window = 1;
+		window_timer = 2;
+		CorrectHurtboxes();
+	}
+		if (window == 2) 
+	{
+		attack_end();
+		set_attack = AT_NSPECIAL;
+		attack = AT_NSPECIAL;
+		window = 1;
+		window_timer = 5;
+		CorrectHurtboxes();
+	}
+		if (window == 3) 
+	{
+		attack_end();
+		set_attack = AT_NSPECIAL;
+		attack = AT_NSPECIAL;
+		window = 1;
+		window_timer = 10;
+		CorrectHurtboxes();
+	}
+}
+
+if (attack == AT_NSPECIAL_AIR && (window == 4)) {
 	if (!free) {
 		window = 5;
 		window_timer = 0;
 	}
-}
-
-if (attack == AT_NSPECIAL_AIR && window == 4 && !free) {
-		window = 5;
-		window_timer = 0;
 }
 
 if ((attack == AT_NSPECIAL_AIR || attack == AT_NSPECIAL) && window == 1) {
@@ -1110,7 +1156,7 @@ if (voice_mode) {
 			sound_play(sound_get("v_myon4"));
 	}
 	
-	if ((attack == AT_NSPECIAL) && window = 1 && window_timer = 8 && hitpause == false) {
+	if ((attack == AT_NSPECIAL) && window = 1 && window_timer = 1 && hitpause == false) {
 		voice_rng = random_func(0, 3, true);
 		if (voice_rng == 0)
 			sound_play(sound_get("v_b1"));

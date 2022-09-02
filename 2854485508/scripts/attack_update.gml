@@ -71,10 +71,17 @@ switch (attack){
     	move_cooldown[AT_NSPECIAL_2] = 25; 
 	    can_fast_fall = window >= 3;
 	    can_move = can_fast_fall;
+	    if (window == 1 && window_timer == 1) {
+	    	uspecial_hitstun = false;
+	    }
+	    
     	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME) && !hitpause) {
 			with (oPlayer) {
 			    if (("mamizou_mark_id" in self) && mamizou_mark_id != noone) {
 			        if (mamizou_mark_id == other.id) {
+			    		if (mamizou_marked_temp.hitstun > 0) {
+			    			uspecial_hitstun = true;
+			    		}
 			        	with (other) {
 			        		spawn_hit_fx(floor(other.x), floor(other.y), 311 )
 			        	}
@@ -83,6 +90,9 @@ switch (attack){
 			}
 		    with (obj_article2) {
 		        if (("mamizou_mark_id" in self) && mamizou_mark_id == other.id) {	
+		    		if (mamizou_marked_temp.hitstun > 0) {
+		    			uspecial_hitstun = true;
+		    		}
 		        	with (other) {
 			        	spawn_hit_fx(floor(other.x), floor(other.y), 311 )
 		        	}

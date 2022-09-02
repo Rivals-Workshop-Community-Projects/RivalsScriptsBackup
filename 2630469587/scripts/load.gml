@@ -2,6 +2,7 @@ sprite_change_offset("idle", 56, 85);
 sprite_change_offset("hurtground", 81, 149);
 sprite_change_offset("bighurt", 74, 149);
 sprite_change_offset("hurt", 80, 149);
+sprite_change_offset("spinhurt", 50, 89);
 sprite_change_offset("crouch", 87, 148);
 sprite_change_offset("walk", 86, 149);
 sprite_change_offset("walkturn", 27, 71);
@@ -61,11 +62,13 @@ sprite_change_offset("taunt_2", 91, 149);
 sprite_change_offset("plat", 64, 94);
 
 sprite_change_offset("entrance", 155, 159);
+sprite_change_offset("entrance2", 58, 159);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("judgement", 60, 58);
 sprite_change_offset("judgementweak", 60, 58);
 sprite_change_offset("cut", 60, 60);
 sprite_change_offset("djump", 144, 193);
+sprite_change_offset("uspecjump", 144, 193);
 sprite_change_offset("projectilestart", 31, 31);
 sprite_change_offset("bouncefx", 102, 124);
 

@@ -75,6 +75,7 @@ sprite_change_offset("tanuki_hurt", 64, 62);
 sprite_change_offset("tanuki_bighurt", 64, 62);
 sprite_change_offset("tanuki_spinhurt", 64, 94);
 sprite_change_offset("tanuki_attack", 64, 94);
+sprite_change_offset("tanuki_help", 64, 62);
 
 sprite_change_offset("nspecial_leaf", 16, 16);
 sprite_change_offset("uspecial_log", 32, 32);

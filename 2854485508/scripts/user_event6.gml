@@ -13,7 +13,7 @@ switch (art_event) {
     case EN_EVENT.GOT_HIT:
         if (enemy_hitboxID.player_id.url == player_id.url && get_player_name(enemy_hitboxID.player) == get_player_name(player_id.player))
         {
-            if (enemy_hitboxID.attack == AT_NSPECIAL && enemy_hitboxID.hbox_num == 1) {
+            if (enemy_hitboxID.attack == AT_NSPECIAL && enemy_hitboxID.hbox_num == 1 && !enemy_hitboxID.destroyed ) {
                 mamizou_mark_id = enemy_hitboxID.player_id;
                 percent -= enemy_hitboxID.damage;
                 enemy_hitboxID.destroyed = 1;
@@ -62,7 +62,7 @@ switch (enem_id) {
                 ai_range_low = 96; //The preferred minimum range
                 ai_range_far = 256; //The preferred maximum range
                 ai_move_frequency = 5;
-                
+                player_id_hitstun = 0;
                 //Jumping
                 ai_jump_back_frequency = 15; //How often the AI should jump back randomly.
                 ai_jump_up_frequency = 12; //How often the AI should jump up randomly.
@@ -96,114 +96,122 @@ switch (enem_id) {
                     jump_down = state == PS_JUMPSQUAT;
                     
                     var decision_random = 0;
-                    //Moving
-                    ai_move_timer ++;
-                    
-                    if (ai_move_timer % ai_move_frequency == 0 && !committed) {
-                        if (t_xd >= ai_range_low) {
-                         
-                            if (ai_target.x > x) {
-                                ai_moving_right = true;
-                                ai_moving_left = false
-                            } 
-                            if (ai_target.x < x) {
+                    if (player_id.hitstun <= 0) {
+                        player_id_hitstun = 0;
+                        //Moving
+                        ai_move_timer ++;
+                        
+                        if (ai_move_timer % ai_move_frequency == 0 && !committed) {
+                            if (t_xd >= ai_range_low) {
+                             
+                                if (ai_target.x > x) {
+                                    ai_moving_right = true;
+                                    ai_moving_left = false
+                                } 
+                                if (ai_target.x < x) {
+                                    ai_moving_right = false;
+                                    ai_moving_left = true;
+                                } 
+                            }
+                            else {
                                 ai_moving_right = false;
-                                ai_moving_left = true;
-                            } 
+                                ai_moving_left = false;
+                                if (ai_target.x > x && spr_dir == -1) {
+                                    right_down = true;
+                                    left_down = false; 
+                                }
+                                if (ai_target.x < x && spr_dir == 1) {
+                                    right_down = false;
+                                    left_down = true; 
+                                }
+                            }
+                        }
+                    
+                        //Jumping
+                        ai_jump_timer ++;
+                        decision_random = random_func(50, round(ai_decision_time), true);
+                        
+                        if (!free) {
+                            if (place_meeting(floor(x) + 8 * spr_dir, floor(y) - 2, asset_get("par_block"))) {
+                                jump_down = true;
+                                if (spr_dir == 1) {
+                                    ai_moving_right = true;
+                                    ai_moving_left = false
+                                } 
+                                if (spr_dir == -1) {
+                                    ai_moving_right = false;
+                                    ai_moving_left = true;
+                                } 
+                            }
+                            if (decision_random >= ai_decision_time/2 && !committed && !standard_on_ledge()) {
+                                if (ai_target.y + 32 <= y) {
+                                    var jump_random = random_func(51, 100, true);
+                                    if (jump_random <= 50) {
+                                        var jump_random2 = random_func(52, 100, true);
+                                        if (ai_jump_timer % (ai_jump_fwd_frequency  + decision_random) == 0 && jump_random2 <= 33) {
+                                            jump_down = true;
+                                            if (ai_target.x > x) {
+                                                ai_moving_right = true;
+                                                ai_moving_left = false
+                                            } 
+                                            if (ai_target.x < x) {
+                                                ai_moving_right = false;
+                                                ai_moving_left = true;
+                                            } 
+                                        }
+                                        
+                                        if (ai_jump_timer % (ai_jump_up_frequency + decision_random) == 0 && jump_random2 > 33 && jump_random2 <= 66) {
+                                            jump_down = true;
+                                            ai_moving_right = false;
+                                            ai_moving_left = false;
+                                        }
+                                        
+                                        if (ai_jump_timer % (ai_jump_back_frequency + decision_random) == 0 && jump_random2 > 66) {
+                                            jump_down = true;
+                                            if (ai_target.x > x) {
+                                                ai_moving_right = false;
+                                                ai_moving_left = true;
+                                            } 
+                                            if (ai_target.x < x) {
+                                                ai_moving_right = true;
+                                                ai_moving_left = false;
+                                            } 
+                                        }
+                                    }
+                                    else {
+                                        if (ai_jump_timer % ai_decision_time == 0) {
+                                            down_hard_pressed = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        //Attacking
+                        if (ai_attack_cooldown <= 0) {
+                            ai_attack_timer ++;
+                            decision_random = random_func(53, round(ai_attack_frequency), true);
+                            if (decision_random == 0 && !committed) {
+                                var decision_random2 = random_func(54, 100, true);
+                                if (t_xd <= 96 && t_yd <= 64 && !free && ai_target.player != player_id.player) {
+                                    next_attack = AT_EXTRA_3;
+                                    
+                                    if ((ai_target.x < x && spr_dir == 1) || (ai_target.x > x && spr_dir = -1)) {
+                                        spr_dir = -spr_dir;
+                                    }
+                                    ai_attack_cooldown = 60;
+                                }
+                            }
                         }
                         else {
-                            ai_moving_right = false;
-                            ai_moving_left = false;
-                            if (ai_target.x > x && spr_dir == -1) {
-                                right_down = true;
-                                left_down = false; 
-                            }
-                            if (ai_target.x < x && spr_dir == 1) {
-                                right_down = false;
-                                left_down = true; 
-                            }
-                        }
-                    }
-                
-                    //Jumping
-                    ai_jump_timer ++;
-                    decision_random = random_func(50, round(ai_decision_time), true);
-                    
-                    if (!free) {
-                        if (place_meeting(floor(x) + 8 * spr_dir, floor(y) - 2, asset_get("par_block"))) {
-                            jump_down = true;
-                            if (spr_dir == 1) {
-                                ai_moving_right = true;
-                                ai_moving_left = false
-                            } 
-                            if (spr_dir == -1) {
-                                ai_moving_right = false;
-                                ai_moving_left = true;
-                            } 
-                        }
-                        if (decision_random >= ai_decision_time/2 && !committed && !standard_on_ledge()) {
-                            if (ai_target.y + 32 <= y) {
-                                var jump_random = random_func(51, 100, true);
-                                if (jump_random <= 50) {
-                                    var jump_random2 = random_func(52, 100, true);
-                                    if (ai_jump_timer % (ai_jump_fwd_frequency  + decision_random) == 0 && jump_random2 <= 33) {
-                                        jump_down = true;
-                                        if (ai_target.x > x) {
-                                            ai_moving_right = true;
-                                            ai_moving_left = false
-                                        } 
-                                        if (ai_target.x < x) {
-                                            ai_moving_right = false;
-                                            ai_moving_left = true;
-                                        } 
-                                    }
-                                    
-                                    if (ai_jump_timer % (ai_jump_up_frequency + decision_random) == 0 && jump_random2 > 33 && jump_random2 <= 66) {
-                                        jump_down = true;
-                                        ai_moving_right = false;
-                                        ai_moving_left = false;
-                                    }
-                                    
-                                    if (ai_jump_timer % (ai_jump_back_frequency + decision_random) == 0 && jump_random2 > 66) {
-                                        jump_down = true;
-                                        if (ai_target.x > x) {
-                                            ai_moving_right = false;
-                                            ai_moving_left = true;
-                                        } 
-                                        if (ai_target.x < x) {
-                                            ai_moving_right = true;
-                                            ai_moving_left = false;
-                                        } 
-                                    }
-                                }
-                                else {
-                                    if (ai_jump_timer % ai_decision_time == 0) {
-                                        down_hard_pressed = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    
-                    //Attacking
-                    if (ai_attack_cooldown <= 0) {
-                        ai_attack_timer ++;
-                        decision_random = random_func(53, round(ai_attack_frequency), true);
-                        if (decision_random == 0 && !committed) {
-                            var decision_random2 = random_func(54, 100, true);
-                            if (t_xd <= 96 && t_yd <= 64 && !free && ai_target.player != player_id.player) {
-                                next_attack = AT_EXTRA_3;
-                                
-                                if ((ai_target.x < x && spr_dir == 1) || (ai_target.x > x && spr_dir = -1)) {
-                                    spr_dir = -spr_dir;
-                                }
-                                ai_attack_cooldown = 60;
-                            }
+                            if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)
+                                ai_attack_cooldown --;
                         }
                     }
                     else {
-                        if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)
-                            ai_attack_cooldown --;
+                        ai_attack_cooldown = 60;
+                        ai_moving_right = false;
+                        ai_moving_left = false;
                     }
                 }
                 
@@ -229,6 +237,10 @@ switch (enem_id) {
                 if (state == PS_SPAWN) {
                     sprite_index = enemy_sprite_get(spr_name, "hurt");
                     image_index += state_timer * 0.25;
+                }
+                if (state == PS_IDLE && player_id.hitstun > 0) {
+                    sprite_index = enemy_sprite_get(spr_name, "help");
+                    image_index += state_timer * 0.3;
                 }
                 if (state == PS_DEAD) {
                     sprite_index = enemy_sprite_get(spr_name, "spinhurt");

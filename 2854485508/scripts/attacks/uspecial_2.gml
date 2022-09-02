@@ -25,7 +25,7 @@ set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.07);
 set_window_value(AT_USPECIAL_2, 2, AG_MUNO_WINDOW_ROLE, 1);
 
-set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 2);

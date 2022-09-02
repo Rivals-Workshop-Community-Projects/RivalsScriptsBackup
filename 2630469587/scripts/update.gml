@@ -39,11 +39,9 @@ if (get_gameplay_time() < 10)
     if (!has_enter) and (!instance_exists(oTestPlayer))
     	{
         	has_enter = true;
-        		//voice_rng = random_func(0, 2, true);
-				//if (voice_rng == 0)
-        			set_attack(AT_NTHROW);
-				//else if (voice_rng = 1)
-					//set_attack(AT_DTHROW);
+
+        			set_attack(AT_UTHROW);
+
     	}
 }
 
@@ -51,6 +49,13 @@ if ((attack == AT_NTHROW) && (window == 3) && (window_timer == 19))
 {
     set_state(PS_SPAWN);
     state_timer += 81;
+    
+}
+
+if ((attack == AT_UTHROW) && (window == 2) && (window_timer == 24))
+{
+    set_state(PS_SPAWN);
+    state_timer += 75;
     
 }
 
@@ -81,6 +86,7 @@ if (state == PS_PARRY && special_down) {
 	if (window_timer == 1 && (phantom.state == 2 || phantom.state == 8 || ((phantom.state == 6 || phantom.state == 10) && phantom.last_state == 2))) {
         phantom.state = 7;
         phantom.state_timer = 20;
+        white_flash_timer = 10;
     }
 }
 
@@ -89,6 +95,7 @@ if (state_cat == SC_AIR_NEUTRAL && taunt_down) {
 	if ((phantom.state == 2 || phantom.state == 8 || ((phantom.state == 6 || phantom.state == 10) && phantom.last_state == 2))) {
         phantom.state = 7;
         phantom.state_timer = 20;
+        white_flash_timer = 10;
     }
 }
 

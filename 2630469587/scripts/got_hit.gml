@@ -1,5 +1,5 @@
 // Forces phantom to return to youmu when hit
-if (phantom.state == 2 || phantom.state == 8 || (phantom.state == 6 && phantom.last_state == 2)) {
+if ((phantom.state == 2 || phantom.state == 8 || (phantom.state == 6 && phantom.last_state == 2)) && enemy_hitboxID.damage >= 6) {
 	phantom.state = 7;
 	phantom.state_timer = 10;
 }

@@ -125,6 +125,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 
 //double jump effect
 djump = hit_fx_create( sprite_get( "djump"), 18);
+uspecjump = hit_fx_create( sprite_get( "uspecjump"), 18);
 bouncefx = hit_fx_create( sprite_get( "bouncefx"), 16);
 cut = hit_fx_create( sprite_get( "cut"), 16);
 
