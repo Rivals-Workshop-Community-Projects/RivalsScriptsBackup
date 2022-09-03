@@ -146,3 +146,9 @@ bowser = sound_get("mario-solongbowser");
 yawn = sound_get("mario-yawn");
 yahoo = sound_get("mario-yahoo");
 yippee = sound_get("mario-yippee");
+
+//adventure
+pronouns = ["he","him","his","is"];
+am_is_verbal = false;
+am_is_experienced = true;
+am_is_magic = true;

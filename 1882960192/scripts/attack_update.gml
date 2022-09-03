@@ -374,7 +374,7 @@ if (attack == AT_DTILT && window == 2 && window_timer == 3 && attack_down && wbl
 
 //Dust effects
 if !hitpause {
-	if attack == AT_FSTRONG && window == 3 && window_timer == 4 {
+	if attack == AT_FSTRONG && window == 3 && window_timer == 3 {
 		spawn_base_dust(x+70*spr_dir, y, "dash_start", -spr_dir);
 		spawn_base_dust(x+2*spr_dir, y, "dash");
 	}

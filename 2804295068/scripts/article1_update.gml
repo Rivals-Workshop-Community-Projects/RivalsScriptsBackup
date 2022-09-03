@@ -47,12 +47,33 @@
 if (state != 2){
     with pHitBox{
 	    //firepea
-	    if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49){
+	    if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL){
 	    	if (!torched){
 	            torched = true;
 				with obj_article1{
 					if (player_id == other.player_id){
 						state_timer += 60
+					}
+				}
+	    	}
+		}
+		//final smash
+		if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == 49){
+	    	if (!torched){
+	            torched = true;
+				if (hbox_num != 3){
+					with obj_article1{
+						if (player_id == other.player_id){
+							state_timer += 15
+						}
+					}
+				}
+				if (hbox_num == 3){
+					with obj_article1{
+						if (player_id == other.player_id){
+							state = 2
+							state_timer = 0
+						}
 					}
 				}
 	    	}

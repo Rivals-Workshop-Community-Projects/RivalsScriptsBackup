@@ -58,8 +58,8 @@ crouch_recovery_frames = 11;
 
 //parry animation frames
 dodge_startup_frames = 1;
-dodge_active_frames = 3;
-dodge_recovery_frames = 2;
+dodge_active_frames = 2;
+dodge_recovery_frames = 3;
 
 //tech animation frames
 tech_active_frames = 3;
@@ -105,9 +105,13 @@ bean_bomb_recharge = 0;
 torchwood_recharge = 0;
 timer = 0;
 kirbyability = 16
+copy_ability_id = 64
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 110;
 used_fs = false;
+mamizou_transform_spr = sprite_get("helpless");
+pot_compat_variable = sprite_get("food");
+pot_compat_text = "Roasted Sugar Snap Peas"
 wait_time = 600;
 wait_length = 90;
 wait_sprite = sprite_get("wait");

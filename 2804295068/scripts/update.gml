@@ -1,14 +1,14 @@
 //timers
 timer++;
-bean_bomb_recharge = clamp(bean_bomb_recharge, 0, 900);
+bean_bomb_recharge = clamp(bean_bomb_recharge, 0, 450);
 bean_bomb_recharge++;
-torchwood_recharge = clamp(torchwood_recharge, 0, 900);
+torchwood_recharge = clamp(torchwood_recharge, 0, 450);
 torchwood_recharge++;
 
 //bean
 if (boom == true){
-	create_hitbox( AT_FSPECIAL, 2, bean_x, bean_y, );
-	spawn_hit_fx(bean_x,bean_y,263)
+	create_hitbox( AT_FSPECIAL, 2, bean_x, bean_y-12, );
+	spawn_hit_fx(bean_x,bean_y-12,263)
 	sound_play(sound_get("bean_explode"));
 	sound_stop (sound_get ("bean_voice"));
 	sound_stop (sound_get ("bean_voice2"));
@@ -54,11 +54,7 @@ if (get_player_color(player) == 4){
 
 //shadow pea alt
 if (get_player_color(player) == 5){
-    if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack == AT_USPECIAL_2)){
-		set_character_color_slot(0, 101, 170, 237);
-		set_character_color_slot(1, 146, 222, 246);
-		set_character_color_slot(2, 187, 136, 193);
-	} else if (state == PS_WAVELAND){
+	if (state == PS_WAVELAND){
 		set_character_color_slot(0, 4, 6, 81);
 		set_character_color_slot(1, 4, 6, 81);
 		set_character_color_slot(2, 4, 6, 81);
@@ -129,10 +125,15 @@ if (state == PS_PARRY){
 	}
 }
 
+//gold & silver alt
+if (get_player_color(player) == 17) || (get_player_color(player) == 18){
+	set_victory_theme(sound_get("finalfanfare"));
+}
+
 //runes
 if (has_rune("B")){
-	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 60);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 5);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 100);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
 }
 if (has_rune("C")){
 	set_window_value(AT_DAIR, 4, AG_WINDOW_TYPE, 1);
@@ -191,9 +192,11 @@ if (has_rune("K")){
 	set_num_hitboxes(AT_TAUNT_2, 1);
 }
 if (has_rune("M")){
-	if (!free){
-		bean_bomb_recharge = 900;
-		torchwood_recharge = 900;
+	if (bean_bomb_recharge < 450){
+		bean_bomb_recharge = 450;
+	}
+	if (torchwood_recharge < 450){
+		torchwood_recharge = 450;
 	}
 }
 if (has_rune("N")){
@@ -215,8 +218,8 @@ if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;
 }
 if (practice_mode && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
-    bean_bomb_recharge = 900;
-	torchwood_recharge = 900;
+    bean_bomb_recharge = 450;
+	torchwood_recharge = 450;
 }
 
 //copy ability
@@ -290,7 +293,7 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 80);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 4);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_FORCE_FLINCH, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, ability_sfx_splat3);
@@ -298,7 +301,7 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, ability_proj);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, ability_proj);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 5);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_PARRY_STUN, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_TYPE, 2);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW, 6);
@@ -312,13 +315,16 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE, 80);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 6);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, .3);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 2);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 4);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .2);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, ability_sfx_splat3);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT, 303);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_SPRITE, ability_proj);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_MASK, ability_proj);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_HSPEED, 5);
 		set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_PARRY_STUN, 1);
+		set_hitbox_value(AT_EXTRA_3, 2, HG_EXTENDED_PARRY_STUN, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 	newicon = ability_icon
 	}
 }
@@ -329,5 +335,3 @@ if enemykirby != undefined { //if kirby is in a match & swallowed
         }
     }
 }
-
-//wait animations

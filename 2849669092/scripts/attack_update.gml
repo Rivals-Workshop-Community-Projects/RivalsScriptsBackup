@@ -386,6 +386,19 @@ if (attack == AT_USPECIAL){
     }
 }
 
+if (attack == AT_JAB){
+    
+    if (window == 3 && window_timer == 15){
+        
+        if (was_parried){
+            
+            was_parried = false;
+            
+        }
+        
+    }
+}
+
 //--------------------------------------------
 
 //Supersonic's Base Cast Dust Function

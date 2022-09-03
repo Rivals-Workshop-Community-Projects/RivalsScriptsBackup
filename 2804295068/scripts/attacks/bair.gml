@@ -16,7 +16,7 @@ set_window_value(AT_BAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -2);
+set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -1.5);
 
 set_window_value(AT_BAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 4);
@@ -40,7 +40,7 @@ set_num_hitboxes(AT_BAIR, 2);
 
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 12);
+set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 10);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, 18);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -16);
 set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 24);
@@ -58,10 +58,12 @@ set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("pea"));
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_MASK, sprite_get("pea"));
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_HSPEED, 16);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_BAIR, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_BAIR, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 12);
+set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 10);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, 18);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 24);
@@ -79,3 +81,5 @@ set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("pea"));
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_MASK, sprite_get("pea"));
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_HSPEED, 16);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_BAIR, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_BAIR, 2, HG_HITSTUN_MULTIPLIER, 0.5);

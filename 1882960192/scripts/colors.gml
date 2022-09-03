@@ -126,7 +126,7 @@ set_color_profile_slot( 9, 5, 55, 28, 9 ); //Hair
 set_color_profile_slot( 9, 6, 109, 0, 125 ); //Shoes / Wand
 set_color_profile_slot( 9, 7, 234, 179, 0 ); //Shoes / Wand 2
 
-// Mario
+// Plumber Gentleman
 set_color_profile_slot( 10, 0, 232, 0, 0 ); //Cap
 set_color_profile_slot( 10, 1, 232, 0, 0 ); //Shirt
 set_color_profile_slot( 10, 2, 0, 48, 240 ); //Pants
@@ -156,15 +156,15 @@ set_color_profile_slot( 12, 5, 53, 34, 25 ); //Hair
 set_color_profile_slot( 12, 6, 62, 62, 62 ); //Shoes / Wand
 set_color_profile_slot( 12, 7, 38, 125, 255 ); //Shoes / Wand 2
 
-// Green
-set_color_profile_slot( 13, 0, 94, 194, 0 ); //Cap
-set_color_profile_slot( 13, 1, 117, 47, 0 ); //Shirt
-set_color_profile_slot( 13, 2, 77, 242, 0 ); //Pants
-set_color_profile_slot( 13, 3, 237, 117, 12 ); //Skin
-set_color_profile_slot( 13, 4, 19, 105, 0 ); //Gloves / Scarf
-set_color_profile_slot( 13, 5, 66, 30, 13 ); //Hair
-set_color_profile_slot( 13, 6, 0, 44, 201 ); //Shoes / Wand
-set_color_profile_slot( 13, 7, 0, 103, 255 ); //Shoes / Wand 2
+// Humanity's Strongest
+set_color_profile_slot( 13, 0, 34, 33, 42 ); //Cap
+set_color_profile_slot( 13, 1, 73, 120, 57 ); //Shirt
+set_color_profile_slot( 13, 2, 196, 115, 53 ); //Pants
+set_color_profile_slot( 13, 3, 255, 167, 120 ); //Skin
+set_color_profile_slot( 13, 4, 237, 237, 237 ); //Gloves / Scarf
+set_color_profile_slot( 13, 5, 34, 33, 42 ); //Hair
+set_color_profile_slot( 13, 6, 110, 69, 36 ); //Shoes / Wand
+set_color_profile_slot( 13, 7, 204, 204, 204 ); //Shoes / Wand 2
 
 // Brazil
 set_color_profile_slot( 14, 0, 0, 222, 21 ); //Cap

@@ -77,10 +77,10 @@ set_color_profile_slot( 4, 6, 247, 198, 33 ); //flame 2
 set_color_profile_slot( 4, 7, 247, 247, 33 ); //flame 3
 
 // Shadow
-set_color_profile_slot( 5, 0, 58, 127, 80 ); //head and peas
-set_color_profile_slot( 5, 1, 83, 192, 65 ); //head and peas 2
-set_color_profile_slot( 5, 2, 153, 108, 149 ); //head and peas 3
-set_color_profile_slot( 5, 3, 123, 46, 150 ); //body and leaves
+set_color_profile_slot( 5, 0, 101, 170, 237 ); //head and peas
+set_color_profile_slot( 5, 1, 146, 222, 246 ); //head and peas 2
+set_color_profile_slot( 5, 2, 187, 136, 193 ); //head and peas 3
+set_color_profile_slot( 5, 3, 179, 38, 238 ); //body and leaves
 set_color_profile_slot( 5, 4, 4, 6, 81 ); //body and leaves 2
 set_color_profile_slot( 5, 5, 60, 48, 100 ); //flame
 set_color_profile_slot( 5, 6, 110, 94, 166 ); //flame 2
@@ -157,14 +157,14 @@ set_color_profile_slot( 12, 6, 104, 147, 52 ); //flame 2
 set_color_profile_slot( 12, 7, 134, 179, 80 ); //flame 3
 
 // edition
-set_color_profile_slot( 13, 0, 76, 240, 254); //head and peas
-set_color_profile_slot( 13, 1, 28, 202, 255 ); //head and peas 2
-set_color_profile_slot( 13, 2, 14, 139, 181 ); //head and peas 3
-set_color_profile_slot( 13, 3, 200, 67, 195 ); //body and leaves
-set_color_profile_slot( 13, 4, 107, 16, 147 ); //body and leaves 2
-set_color_profile_slot( 13, 5, 6, 91, 86 ); //flame
-set_color_profile_slot( 13, 6, 0, 182, 122 ); //flame 2
-set_color_profile_slot( 13, 7, 0, 231, 178 ); //flame 3
+set_color_profile_slot( 13, 0, 0, 255, 169); //head and peas
+set_color_profile_slot( 13, 1, 4, 209, 140 ); //head and peas 2
+set_color_profile_slot( 13, 2, 4, 163, 109 ); //head and peas 3
+set_color_profile_slot( 13, 3, 210, 70, 253 ); //body and leaves
+set_color_profile_slot( 13, 4, 144, 66, 247 ); //body and leaves 2
+set_color_profile_slot( 13, 5, 50, 184, 196 ); //flame
+set_color_profile_slot( 13, 6, 61, 232, 249 ); //flame 2
+set_color_profile_slot( 13, 7, 90, 255, 249 ); //flame 3
 
 // Luminescent
 set_color_profile_slot( 14, 0, 69, 69, 69); //head and peas

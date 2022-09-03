@@ -111,6 +111,10 @@ if (my_hitboxID.attack == AT_DSPECIAL && attack == AT_DSPECIAL && has_rune("E"))
 	speedboost_timer = 60;
 }
 
+if (my_hitboxID.attack == AT_FSPECIAL && attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
+	fspecial_hit = true;
+}
+
 if (my_hitboxID.attack == AT_USPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3)) {
 	hit_player_obj.should_make_shockwave = false;
 }
@@ -156,4 +160,8 @@ for (var i = 0; i < array_length(hbox_apply_smoke_consume); i++) {
         }
     }
 }
+//haha fune
+// if (racism_install && my_hitboxID.attack == AT_FAIR) {
+//     hit_player_obj.x = spr_dir * 4000;
+// }
 

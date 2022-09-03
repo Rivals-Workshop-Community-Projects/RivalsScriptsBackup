@@ -105,9 +105,11 @@ hat_fx = hit_fx_create(sprite_get("riptide_hat_d"), 30)
 
 grabbedid = noone;
 grab_timer = 0;
-grab_time_max = 30;
+grab_time_min = 30;
+grab_time_max = 60;
 
 dspecial_charge = 0;
+dspecial_djump = false;
 
 smoked_fx = hit_fx_create(sprite_get("smoke_debuff"), 12)
 smoked = false; //The smoked status effect
@@ -125,6 +127,8 @@ rounds_left = 12;
 
 genesis_smoke_id = noone;
 genesis_taunt = 0;
+fspecial_hit = 0;
+fspecial_hit_timer = 0;
 
 set_victory_bg(sprite_get("victory_bg"));
 set_victory_theme(sound_get("victory_theme"));
@@ -139,6 +143,10 @@ hbox_throws = [[AT_UAIR, 2], [AT_UAIR, 3], [AT_FTHROW, 1], [AT_FTHROW, 2], [AT_U
 [AT_FSPECIAL, 6],
 [AT_USPECIAL, 6],
 [AT_USPECIAL, 7]]; //These will only affect the player it can damage.
+
+//haha fune
+// racism_install = false;
+// can_racism = true;
 
 //COMPATIBILITY
 //Adventure Mode

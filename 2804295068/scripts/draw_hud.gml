@@ -1,8 +1,8 @@
 //bean packet
 var bean_packet_shader = c_gray;
-var bean_bomb_recharge_yscale = ((round((900-bean_bomb_recharge)/45))/20)
+var bean_bomb_recharge_yscale = ((ceil((450-bean_bomb_recharge)/22.5))/20)
 
-if (bean_bomb_recharge >= 900){
+if (bean_bomb_recharge >= 450){
     bean_packet_shader = c_white;
 }
 
@@ -13,7 +13,7 @@ draw_sprite_ext(sprite_get("packet_recharge"), 0, temp_x+96, temp_y-44, 1, bean_
 //torchwood packet
 
 var torchwood_packet_shader = c_gray;
-var torchwood_recharge_yscale = ((round((900-torchwood_recharge)/45))/20)
+var torchwood_recharge_yscale = ((ceil((450-torchwood_recharge)/22.5))/20)
 var exists = false;
 
 with (obj_article1){
@@ -22,7 +22,7 @@ with (obj_article1){
     }
 }
 
-if (torchwood_recharge >= 900) && (!exists){
+if (torchwood_recharge >= 450) && (!exists){
     torchwood_packet_shader = c_white;
 }
 
@@ -32,6 +32,6 @@ shader_end();
 
 draw_sprite_ext(sprite_get("packet_recharge"), 0, temp_x+158, temp_y-44, 1, torchwood_recharge_yscale, 0, c_black, 0.5);
 
-if (practice_mode && (bean_bomb_recharge < 900 || torchwood_recharge < 900)){
+if (practice_mode && (bean_bomb_recharge < 450 || torchwood_recharge < 450)){
     draw_debug_text(temp_x+94, temp_y - 60, "Taunt to refresh")
 }

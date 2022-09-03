@@ -86,9 +86,8 @@ if (get_player_color( player ) == 12) {
 }
 
 if (get_player_color( player ) == 13) {
-	set_character_color_shading(1, 1.5);
+	set_character_color_shading(0, .5);
 	set_character_color_shading(4, 2);
-	set_character_color_shading(7, 2);
 }
 
 if (get_player_color( player ) == 14) {

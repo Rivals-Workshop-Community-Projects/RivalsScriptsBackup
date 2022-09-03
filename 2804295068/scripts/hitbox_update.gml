@@ -1,5 +1,9 @@
 //firepea stuff
-if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49 && hbox_num == 1){
+if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num == 4) || attack == AT_FAIR || attack == AT_BAIR || attack == AT_FSTRONG || attack == AT_NSPECIAL || attack == 49 && hbox_num != 3){
+	if was_parried{
+		instance_destroy();
+		exit;
+	}
 	if torched{
 		sprite_index = sprite_get("firepea");
 		collision = sprite_get("pea");
@@ -14,10 +18,6 @@ if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num =
 		length = torch_length_mult
 		hsp = torch_hsp_mult
 		vsp = torch_vsp_mult
-		if was_parried{
-			instance_destroy();
-			exit;
-		}
 	}
 }
 if (has_rune("G")){
@@ -28,7 +28,11 @@ if (has_rune("G")){
 	}
 }
 //big firepea
-if (attack == 49 && hbox_num == 2){
+if (attack == 49 && hbox_num == 3){
+	if was_parried{
+		instance_destroy();
+		exit;
+	}
 	if torched{
 		sprite_index = sprite_get("firepea_big");
 		collision = sprite_get("pea_big");
@@ -40,10 +44,6 @@ if (attack == 49 && hbox_num == 2){
 		vsp = torch_vsp_mult
 		if (has_rune("G")){
 		    extra_hitpause = 12
-		}
-		if was_parried{
-			instance_destroy();
-			exit;
 		}
 	}
 }
@@ -75,7 +75,6 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	}
 	if (was_parried){
 		player = orig_player
-		hsp = 0
 	}
 	player_id.bean_x = x;
 	player_id.bean_y = y;

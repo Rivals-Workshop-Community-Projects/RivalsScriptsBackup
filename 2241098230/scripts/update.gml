@@ -21,6 +21,15 @@ else {
 	air_max_speed = air_max_speed_def;
 }
 
+if (fspecial_hit) {
+	fspecial_hit_timer++;
+	if (fspecial_hit_timer > 30 && (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND))
+	{
+		fspecial_hit_timer = 0;
+		fspecial_hit = 0;
+	}
+}
+
 if !(attack == AT_NSPECIAL_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 {
     rounds_left = 12;
@@ -98,3 +107,14 @@ with (oPlayer){
 	    }
 	}
 }
+
+
+//Lore Accuracy
+// if (get_gameplay_time() < 120 && can_racism) {
+//     if ((attack_down + special_down + shield_down + taunt_down + jump_down) > 1)) {
+//         can_racism = false;
+//     }
+//     if (attack_pressed && !attack_down && special_pressed && !special_down && shield_pressed && !shield_down && taunt_pressed && !taunt_down && !jump_pressed && !jump_down && down_pressed && up_pressed && !left_pressed && !right_pressed && joy_pad_idle) {
+//         racism_install = true;
+//     }
+// }

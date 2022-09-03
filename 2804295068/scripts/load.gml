@@ -75,3 +75,4 @@ sprite_change_offset("wait", 64, 94);
 sprite_change_offset("wait2", 64, 94);
 
 sprite_change_offset("jab_kirby", 32, 62);
+sprite_change_offset("helpless", 64, 94);
