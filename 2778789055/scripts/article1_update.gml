@@ -137,7 +137,7 @@ if(explode_timer = 120){
 if (place_meeting(x, y, asset_get("pHitBox")) && can_be_hit && can_opponent_hit) { //makes the pot hittable when can_get_hit is true
     	with (asset_get("pHitBox")){
     		if (player != other.player_id.player){
-    			if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0){
+    			if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0 && kb_value != 0){
     				other.hitbox_hit = self;
     				if(type != 2 and other.hitbox_hit != other.pot_hitbox_id){
     				player_id.hitpause = true;

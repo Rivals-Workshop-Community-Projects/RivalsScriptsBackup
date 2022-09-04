@@ -1,3 +1,4 @@
+set_attack_value(AT_DSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("dspecial2"));
 set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 1);
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, asset_get("dspecial2_hurt"));

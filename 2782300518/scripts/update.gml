@@ -132,10 +132,16 @@ if (motorbike == false)
 	{
 		move_cooldown[AT_FSPECIAL] = 40;
 	}
+	if (walljump_number == walljump_limit)
+	{
+		can_wall_jump = false;
+		has_walljump = false;
+	}
 	
 	//This code animated the tail and adds an effect to Parry depending on state
 	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND){
 		comboCounter = 0;
+		hitConfirm = false;
 		switch (state){
 			case PS_IDLE:
 				tsprite_index=-1;
@@ -341,6 +347,14 @@ else if (motorbike == true)
 	wait_time = 100000;
 	wait_length = 16;
 	wait_sprite = sprite_get("idle2");
+	
+	//Increase this timer for a prompt for FSpecial2.
+	nBoostReadyTimer++;
+	
+	if (move_cooldown[AT_FSPECIAL_2] == 1)
+	{
+		nBoostReadyTimer = 0;
+	}
 	
 	if has_rune("E")
 	{
@@ -611,7 +625,10 @@ if (bikeExplosion == true)
 //Reset Wall jumps and certain cooldowns
 if (!free)
 {
-	walljump_number = 0;
+	if (state !=PS_ATTACK_GROUND)
+	{
+		walljump_number = 0;
+	}
 	move_cooldown[AT_USPECIAL] = 0;
 	move_cooldown[AT_DAIR] = 0;
 	move_cooldown[AT_DSPECIAL] = 0;

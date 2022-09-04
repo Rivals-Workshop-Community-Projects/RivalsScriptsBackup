@@ -250,6 +250,10 @@ in a Patch.
 
 // other patches go here...
 
+initPatch("1.6", "September 3, 2022"); // (replace the date lol)
+initHeader("Bug Fixes:");
+initSection("Fixed a bug where i forgot to add Mamizou compatibility");
+
 initPatch("1.5", "August 6, 2022"); // (replace the date lol)
 initHeader("Buffs:");
 initSection("Added Po & Gumbo compatibility");

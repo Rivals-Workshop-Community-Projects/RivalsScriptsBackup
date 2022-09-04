@@ -69,6 +69,8 @@ techroll_speed      = 10;		// 8    -  11
 pot_compat_variable = sprite_get("plate");
 pot_compat_text = "Flying Dutchman";
 
+mamizou_transform_spr = sprite_get("mamizou");
+
 //idk how to do this better. fixes endless abyss crashing
 if get_player_team(1) == get_player_team(2) && get_player_team(2) == get_player_team(3) && get_player_team(3) == get_player_team(4) {
     probably_in_abyss = true;

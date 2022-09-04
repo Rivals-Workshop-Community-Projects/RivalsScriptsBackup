@@ -51,6 +51,9 @@ if(state = 7){
   }if(food_id = 10){
       //draw_debug_text(floor(x)-50, floor(y) - 85,string("Century Egg"));
       pot_compat_text = "Century Egg"
+  }if(food_id = 33){
+      //draw_debug_text(floor(x)-50, floor(y) - 85,string("Century Egg"));
+      pot_compat_text = "Macaroni Lemonade"
   }
   
   

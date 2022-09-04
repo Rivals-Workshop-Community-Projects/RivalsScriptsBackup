@@ -135,6 +135,10 @@ smokeCounter = 0;
 bike_state_timer = 0;
 thrownBike = noone;
 bike_sp = 0;
+nBoostReadyTimer = 100;
+
+hitConfirm = false;
+
 
 //Practice mode
 practice = false;      //Whether you're in Practice Mode or not.
@@ -167,6 +171,7 @@ pkmn_stadium_back_img = sprite_get("pkmn_carol_back");
 btt_get_data = "false";
 hikaru_title = "The Kung-Fu Kitty";
 arena_title = "The Kung-Fu Kitty";
+boxing_title = "The Kung-Fu Kitty";
 arena_short_name = "Carol";
 battle_text = "You want to pretend to pee really badly";
 miiverse_post = sprite_get("miiverse_post");
@@ -182,6 +187,15 @@ ncode1 = "An incredibly athletic kitty with ninja like reflexes and a focus on c
 ncode2 = "Can mount a motorbike in order to augment her speed and change her moveset"
 ncode3 = "Meow"
 TCG_Kirby_Copy = 4;
+walle_taunt_sound = sound_get("jade_creek");
+walle_taunt_type = 1;
+has_fail = true;
+fail_text = "Beaten by a cat, pathetic";
+greenwood_cheer = 1;
+naruto_sexyjutsu_gender = 2;
+gfzsignspr = sprite_get("carol_sign");
+pot_compat_variable = sprite_get("cat_food");
+pot_compat_text = "Cat Food";
 
 kirbyability=16;
 swallowed=false;

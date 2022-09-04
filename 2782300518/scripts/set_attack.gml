@@ -91,7 +91,14 @@ if (motorbike == true)
 	}
 	if (attack == AT_DSPECIAL)
 	{
-		attack = AT_DSPECIAL_2;
+		if (free)
+		{
+			attack = AT_DSPECIAL_AIR;
+		}
+		else
+		{
+			attack = AT_DSPECIAL_2;
+		}
 	}
 	if (attack == AT_FSTRONG)
 	{

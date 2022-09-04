@@ -1,4 +1,4 @@
-if (attack == 40 && !free)
+if ((attack == 40 || attack == AT_DSPECIAL_AIR) && !free)
 {
     player_id.bikeExplosion = true;
     var bikeExplode = spawn_hit_fx(x, y , 271);

@@ -21,7 +21,7 @@ set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX, sound_get("wild_claw2"));
 
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_TYPE, 7);
-set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_CUSTOM_GRAVITY, .5);
@@ -33,7 +33,7 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_X, 26);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_X, 18);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_Y, -43);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_WIDTH, 60);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HEIGHT, 90);

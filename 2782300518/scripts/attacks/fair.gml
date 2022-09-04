@@ -15,7 +15,7 @@ set_window_value(AT_FAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, sound_get("wild_claw"));
 
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 

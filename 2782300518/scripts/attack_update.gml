@@ -212,8 +212,6 @@ if (motorbike == false)
 		case AT_FSPECIAL:
 		can_fast_fall = false;
 		//Since this move provides great recovery, the ability to wall jump should be restricted
-		walljump_number= 4;
-		walljump_number = 5;
 		
 		//Clamp Speed
 		if (window < 3)
@@ -287,6 +285,7 @@ if (motorbike == false)
 		}
 		if (window == 3 && window_timer == 1)
 		{
+			walljump_number= walljump_number == 0? 4: 5;
 			if (voice == 1)
 			{
 				sound_stop(sound_get ("go2"));
@@ -327,6 +326,7 @@ if (motorbike == false)
 		{
 			moveDisc = true;
 			move_cooldown[AT_FSPECIAL] = 60;
+			print_debug(string(has_walljump));
 		}
 		break;
 		
@@ -745,11 +745,13 @@ else if (motorbike == true)
 
 		//Dair2
 		case 40:
+		case AT_DSPECIAL_AIR:
 		//We're dropping the bike from midair, so should reset values back to default
 		sound_stop(sound_get("motorbike_move"));
 		sound_stop(sound_get("motorbike_idle"));
 		sound_stop(sound_get("motorbike_stop"));
 		set_hitbox_value(40, 1, HG_DAMAGE, fuel_remaining / 2);
+		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, fuel_remaining / 2);
 		//Voice clip
 		if (window == 1 && window_timer == 1)
 		{
@@ -886,6 +888,19 @@ switch (attack)
 	case 48:
 	//Mix up jab quotes so that it doesn't get tired
 	var	 choose_quote = random_func(16, 15, 1);
+	if (attack == AT_DTILT)
+	{
+		tsprite_index=sprite_get("tail_walk");
+		trotation=0;
+		timage_number=7;
+		timage_speed=0.25;
+		tfront=false;
+		tx=-46*spr_dir;
+		ty=-70;
+		tsx=1;
+		tsy=1;
+		bsprite_index=-1;
+	}
 	
 	switch (window)
 	{
@@ -1154,6 +1169,11 @@ switch (attack)
 			move_cooldown[48] = 10;
 		}
 	}
+	
+	if (window == 7 && window_timer == 17 && attack == AT_DTILT)
+	{
+		set_state(PS_CROUCH);
+	}
 	break;
 	//Voice clip for Strong
 	case AT_DSTRONG:
@@ -1212,12 +1232,29 @@ switch (attack)
 			spawn_base_dust (x, y, "land");
 		}
 	}
+	if (window == 5 && (window_timer == 18 && has_hit || window_timer == 23) && attack == AT_DSTRONG)
+	{
+		set_state(PS_CROUCH);
+	}
 	break;
 	
 	//Following code governs Wild Kick
 	case AT_NSPECIAL:
 	case AT_NSPECIAL_2:
 	trigger_b_reverse();
+	if (attack == AT_NSPECIAL)
+	{
+    	tsprite_index=sprite_get("tail_idle");
+		trotation=0;
+		timage_number=12;
+		timage_speed=0.1;
+		tfront=false;
+		tx= -42*spr_dir;
+		ty=-66;
+		tsx=1;
+		tsy=1;
+    	bsprite_index=-1;
+	}
 	//Voice line
 	if (window == 1 && window_timer == 1)
 	{

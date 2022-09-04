@@ -5,13 +5,83 @@ if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL || a
 
 
 if attack == AT_FSTRONG or attack == AT_DSTRONG or attack == AT_USTRONG {
-    if window == 1 && window_timer == 1 {
+    if window == 1 && window_timer == 1 && !hitpause{
         sound_play(charge_sound)
         sound_stop(sound_get("squeaky_short"))
     }
-    if window == 2 && window_timer == 1 {
+    if window == 2 && window_timer == 1 && !hitpause {
         sound_play(sound_get("shot1"),false,noone,0.7)
+        
+        if redP >= 100 {
+        if attack == AT_FSTRONG {
+        	        sound_stop(sound_get("RI")); 
+                    sound_play(sound_get("RI"),false,noone,.75,.6); 
+                    shake_camera(4, 6)
+                    create_hitbox(AT_EXTRA_1,11, x, y-20)
+                    create_hitbox(AT_EXTRA_1,17, x, y-20)
+                    create_hitbox(AT_EXTRA_1,15, x, y-20)
+                    spawn_hit_fx (x , y  - 20 , 302 )
+        }
+        
+        if attack == AT_USTRONG {
+        	        sound_stop(sound_get("RI")); 
+                    sound_play(sound_get("RI"),false,noone,.75,.6); 
+                    shake_camera(4, 6)
+                    create_hitbox(AT_EXTRA_1,14, x, y-20)
+                    create_hitbox(AT_EXTRA_1,18, x, y-20)
+                    create_hitbox(AT_EXTRA_1,17, x, y-20)
+                    
+                 
+                 
+                    spawn_hit_fx (x , y  - 20 , 302 )
+        }
+        
+        if attack == AT_DSTRONG {
+        	        sound_stop(sound_get("RI")); 
+                    sound_play(sound_get("RI"),false,noone,.75,.6); 
+                    shake_camera(4, 6)
+                    create_hitbox(AT_EXTRA_1,11, x, y-20)
+                    create_hitbox(AT_EXTRA_1,12, x, y-20)
+                    create_hitbox(AT_EXTRA_1,1, x,y - 20)
+                    create_hitbox(AT_EXTRA_1,2, x,y - 20)
+                    create_hitbox(AT_EXTRA_1,3, x,y - 20)
+                    create_hitbox(AT_EXTRA_1,4, x,y - 20)
+                    create_hitbox(AT_EXTRA_1,5, x,y - 20)
+                    create_hitbox(AT_EXTRA_1,6, x,y - 20)
+                    create_hitbox(AT_EXTRA_1,7, x,y - 20)
+                    create_hitbox(AT_EXTRA_1,8, x,y - 20)
+                    
+                 
+                 
+                    spawn_hit_fx (x , y  - 20 , 302 )
+        }
+        
+        
+        }
     }
+    
+    if window == 2 && window_timer == 2 && !hitpause && redP >= 100{
+    	if attack == AT_FSTRONG {
+                    shake_camera(4, 6)
+                    create_hitbox(AT_EXTRA_1,11, x, y-60)
+                    create_hitbox(AT_EXTRA_1,11, x, y+20)
+        }
+        
+        if attack == AT_USTRONG {
+            create_hitbox(AT_EXTRA_1,4, x,y - 20)
+            create_hitbox(AT_EXTRA_1,1, x,y - 20)
+            create_hitbox(AT_EXTRA_1,7, x,y - 20)
+            create_hitbox(AT_EXTRA_1,8, x,y - 20)
+            create_hitbox(AT_EXTRA_1,2, x,y - 20)
+        }
+        
+        if redP > 300 {
+        	redP = 200 
+        } else {
+        	redP -= 100
+        }
+    }
+    
     if window == 4 {
         sound_stop(charge_sound)
     }
@@ -233,6 +303,7 @@ switch attack {
           move_cooldown[AT_TAUNT] = 0  
         }
         
+        /*
                  with asset_get("pHitBox") {
 	
 		nearbyhitbox = collision_circle( x-12, y+12, 54,other, true, true ) 
@@ -288,6 +359,7 @@ switch attack {
 	    }
 	    
     	}   
+    	*/
     	
         if window_timer > 2 {
         can_jump = true     

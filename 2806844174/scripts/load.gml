@@ -1,6 +1,9 @@
 sprite_change_offset("idle", 132, 190);
 sprite_change_offset("bighurt", 132, 166);
 sprite_change_offset("hurt", 132, 166);
+
+sprite_change_offset("mamizou", 132, 166);
+
 sprite_change_offset("hurtground", 136, 166);
 sprite_change_offset("spinhurt", 132, 166);
 sprite_change_offset("uphurt", 132, 166);

@@ -28,7 +28,7 @@ if ("fuel" in self)
 	draw_sprite_ext(sprite_get("fuel"), 0, (temp_x -4) , temp_y-28, 2 * fuel, 2, 0, col, 1);
 }
 
-if (motorbike == false && "walljump_number" in self && "fuel" in self)
+if ("motorbike" in self && motorbike == false && "walljump_number" in self && "fuel" in self)
 {
 	//This code lets the player know how many walljumps Carol has, as a clear indicator to the player that they have multiple walljumps
 	draw_sprite_ext(sprite_get("walljump_counter"), walljump_number, temp_x+102, temp_y-32, 2, 2, 0, col, 1);
@@ -44,7 +44,7 @@ if (motorbike == false && "walljump_number" in self && "fuel" in self)
 	}
 }
 
-if (motorbike == true)
+if ("motorbike" in self && motorbike == true)
 {
 	if (move_cooldown[AT_FSPECIAL_2] == 0)
 	{

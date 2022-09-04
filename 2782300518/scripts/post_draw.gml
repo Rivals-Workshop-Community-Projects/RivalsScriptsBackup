@@ -37,6 +37,27 @@ switch (state)
 			guard.depth = -100;
 		}
 	break;
+	case PS_WALL_JUMP:
+		if (motorbike == false)
+		{
+			draw_sprite_ext(sprite_get("walljump_counter2"), walljump_number, x-26, y-80, 2, 2, 0, c_white, 1);
+		}
+	break;
 	default:
 	break;
+}
+
+if (motorbike == false && fuel >=40)
+{
+	draw_sprite_ext(sprite_get("fuel_prompt2"), 0, x-26, y-84, 2, 2, 0, c_white, 1);
+}
+if (hitConfirm)
+{
+	draw_sprite_ext(sprite_get("fuel_canister"), 0, x-16, y-84, 2, 2, 0, c_white, 1);
+	draw_debug_text(x+4, y-80, string(fuel));
+}
+
+if (nBoostReadyTimer < 100 && move_cooldown [AT_FSPECIAL_2] == 0)
+{
+	draw_sprite_ext(sprite_get("nitro_ready"), 0, x-36, y-94, 2, 2, 0, c_white, 1);
 }

@@ -1,7 +1,12 @@
 //Gain fuel upon attacking opponent
 if (motorbike == false && my_hitboxID.attack != 43)
 {
+	fuel = round(fuel); //This is to fix a glitch that causes decimal values
 	fuel++;
+	if (bikeReady < 2)
+	{
+		hitConfirm = true;
+	}
 	if (fuel >=40)
 	{
 		fuel = 40;
@@ -10,6 +15,12 @@ if (motorbike == false && my_hitboxID.attack != 43)
 	{
 		bikeReady = 1;
 	}
+}
+
+if (attack == 40 || attack == AT_DSPECIAL_AIR)
+{
+    var bikeExplode = spawn_hit_fx(x, y , 271);
+    bikeExplode.depth = -100;
 }
 
 //Reset bike hit timer

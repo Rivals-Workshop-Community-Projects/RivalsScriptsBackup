@@ -169,6 +169,7 @@ if (get_gameplay_time() < 120){
     set_color_profile_slot( 12, 5, 212, 212, 212 ); //Po Skin 1
     set_color_profile_slot( 12, 6, 135, 135, 135 ); //Po Skin 2
     set_color_profile_slot( 12, 7, 199, 74, 52 ); //Apron
+    custom_food = 29;
 		avocado = true;
 		init_shader();
 		michigan = true;

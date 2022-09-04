@@ -92,7 +92,7 @@ sprite_change_offset("fspecial", 32, 78);
 sprite_change_offset("fspecial2", 56, 78);
 sprite_change_offset("fspecial_proj", 24, 24);
 sprite_change_offset("uspecial", 32, 78);
-sprite_change_offset("uspecial2", 32, 78);
+sprite_change_offset("uspecial2", 40, 82);
 sprite_change_offset("dspecial", 40, 78);
 sprite_change_offset("dspecial2", 40, 78);
 sprite_change_offset("taunt", 40, 78);
