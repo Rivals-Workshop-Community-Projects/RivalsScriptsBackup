@@ -130,11 +130,13 @@ if !(attack == AT_JAB || attack == AT_NAIR) {
 	}
 }
 
-if (attack == AT_TAUNT) {
-	if (down_pressed || down_down) {
-		attack = AT_DTHROW;
-	} else if (up_pressed || up_down) {
-		attack = AT_TAUNT_2;
+if (!is_oc) {
+	if (attack == AT_TAUNT) {
+		if (down_pressed || down_down) {
+			attack = AT_DTHROW;
+		} else if (up_pressed || up_down) {
+			attack = AT_TAUNT_2;
+		}
 	}
 }
 

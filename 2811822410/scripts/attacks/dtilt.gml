@@ -48,5 +48,5 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_BASE_HITPAUSE, 7);
 	set_hitbox_value(curr_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 	set_hitbox_value(curr_attack, 1, HG_HITPAUSE_SCALING, .35);
-	set_hitbox_value(curr_attack, 1, HG_VISUAL_EFFECT, HFX_MAY_LEAF_BIG);
+	set_hitbox_value(curr_attack, 1, HG_VISUAL_EFFECT, leak_vfx_big);
 }

@@ -93,15 +93,8 @@ if my_hitboxID.type == 1 && my_hitboxID.sound_effect != asset_get("sfx_ori_energ
 	
 	
 	
-	if my_hitboxID.attack == AT_EXTRA_1 {
+	if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num < 11 {
 		move_cooldown[AT_EXTRA_1] = 2
-		set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_HSPEED, 6 - random_func(1,12,true));
-        set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_VSPEED, 3 - random_func(2,12,true));
-	
-	if gun == 0 {
-		create_hitbox(AT_DSPECIAL,3,hit_player_obj.x, hit_player_obj.y - 20)
-	}
-	
 		sound_play(asset_get("sfx_leafy_hit1"))
 	}
 	

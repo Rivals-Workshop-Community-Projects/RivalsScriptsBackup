@@ -21,3 +21,18 @@
         set_state(PS_PRATFALL)
         
     }
+    
+    
+    if  gun != 0 && my_hitboxID.attack == AT_NSPECIAL{
+         gun = 0
+         spawn_hit_fx (x , y - 10 , 14)
+	    spawn_hit_fx (x , y - 10 , 13)
+	    sound_stop(sound_get("exp1")); 
+	    sound_play(sound_get("exp1"),false,noone,1.4); 
+	    my_hitboxID.destroyed = true 
+    }
+    
+    
+    if my_hitboxID.type == 2 {
+        parry_lag = 30 + floor(abs(x - hit_player_obj.x)/8)
+    }

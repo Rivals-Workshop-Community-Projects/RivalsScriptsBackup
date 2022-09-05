@@ -56,7 +56,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, HFX_MAY_LEAF_HUGE);
+set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, leak_vfx_huge);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
@@ -75,4 +75,4 @@ set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, HFX_MAY_LEAF_BIG);
+set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, leak_vfx_big);

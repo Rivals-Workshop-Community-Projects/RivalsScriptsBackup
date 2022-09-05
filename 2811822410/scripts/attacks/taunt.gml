@@ -7,7 +7,7 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 90);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 18);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("popipo"));
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, taunt_sfx);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 0);
 
 set_num_hitboxes(AT_TAUNT, 0);

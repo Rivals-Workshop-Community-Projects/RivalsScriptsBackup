@@ -1,63 +1,79 @@
-switch(get_player_color(player)) { 
-case 0:
-	set_character_color_slot( 0, 135, 233, 242 ); //Hair
-	set_character_color_slot( 1, 135, 233, 242 ); //Eyes
-	set_character_color_slot( 2, 193, 193, 193 ); //Shirt1
-	set_character_color_slot( 3, 140, 141, 147 ); //Shirt2
-	set_character_color_slot( 4, 135, 233, 242 ); //Tie
-	set_character_color_slot( 5, 71, 77, 81 ); //Skirt1
-	set_character_color_slot( 6, 88, 170, 188 ); //Skirt2
-break;
-case 25:
-	switch(get_player_name(player)) {
-		case "BLUE":
-			susAlt(0, 0, 255);
-		break;
-		case "GREEN":
-			susAlt(5, 137, 0);
-		break;
-		case "LIME":
-			susAlt(0, 255, 0);
-		break;
-		case "PINK":
-			susAlt(255, 135, 231);
-		break;
-		case "BROWN":
-			susAlt(130, 50, 0);
-		break;
-		case "CYAN":
-		case "NOAH":
-			susAlt(0, 255, 242);
+var is_oc = false;
+if (!is_oc) {
+	switch(get_player_color(player)) { 
+	case 0:
+		set_character_color_slot( 0, 135, 233, 242 ); //Hair
+		set_character_color_slot( 1, 135, 233, 242 ); //Eyes
+		set_character_color_slot( 2, 193, 193, 193 ); //Shirt1
+		set_character_color_slot( 3, 140, 141, 147 ); //Shirt2
+		set_character_color_slot( 4, 135, 233, 242 ); //Tie
+		set_character_color_slot( 5, 71, 77, 81 ); //Skirt1
+		set_character_color_slot( 6, 88, 170, 188 ); //Skirt2
+	break;
+	case 25:
+		switch(get_player_name(player)) {
+			case "BLUE":
+				susAlt(0, 0, 255);
+			break;
+			case "GREEN":
+				susAlt(5, 137, 0);
+			break;
+			case "LIME":
+				susAlt(0, 255, 0);
+			break;
+			case "PINK":
+				susAlt(255, 135, 231);
+			break;
+			case "BROWN":
+				susAlt(130, 50, 0);
+			break;
+			case "CYAN":
+			case "NOAH":
+				susAlt(0, 255, 242);
+			break;
+		}
+	break;
+	case 30:
+		if
+			(
+				(get_player_name(player) == "NOAH") ||
+				(get_player_name(player) == "HP") || 
+				(get_player_name(player) == "HEALTH")
+			)
+		{
+			healthAlt(0);
+			healthAlt(1);
+			healthAlt(4);
+			healthAlt(6);
+		} else {
+			rainbowAlt(0);
+			rainbowAlt(1);
+			rainbowAlt(4);
+			rainbowAlt(6);
+		}
+	break;
+	case 31:
+		playerAlt(0);
+		playerAlt(1);
+		playerAlt(4);
+		playerAlt(6);
+	break;
+	default:
+	break;
+	}
+} else {
+	switch(get_player_color(player)) { 
+		case 0:
+			set_character_color_slot( 0, 77, 83, 87 ); //Hat
+			set_character_color_slot( 1, 143, 79, 11 ); //Hair
+			set_character_color_slot( 2, 255, 228, 191 ); //Skin
+			set_character_color_slot( 3, 143, 79, 11 ); //Eyes
+			set_character_color_slot( 4, 80, 117, 212 ); //Shirt
+			set_character_color_slot( 5, 77, 83, 87 ); //Apron
+			set_character_color_slot( 6, 212, 64, 64 ); //Meat 1
+			set_character_color_slot( 7, 77, 83, 87 ); //Shoes
 		break;
 	}
-break;
-case 30:
-	if
-		(
-			(get_player_name(player) == "NOAH") ||
-			(get_player_name(player) == "HP") || 
-			(get_player_name(player) == "HEALTH")
-		)
-	{
-		healthAlt(0);
-		healthAlt(1);
-		healthAlt(4);
-		healthAlt(6);
-	} else {
-		rainbowAlt(0);
-		rainbowAlt(1);
-		rainbowAlt(4);
-		rainbowAlt(6);
-	}
-break;
-case 31:
-	playerAlt(0);
-	playerAlt(1);
-	playerAlt(4);
-	playerAlt(6);
-break;
-default:
-break;
 }
 
 //Dino Cool Alt Pack

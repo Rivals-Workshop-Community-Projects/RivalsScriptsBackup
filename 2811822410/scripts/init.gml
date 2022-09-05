@@ -1,4 +1,7 @@
+is_oc = false;
+
 dash_fx = hit_fx_create( sprite_get("fspecial_dash"), 6)
+pizza_fx = hit_fx_create( sprite_get("pizza_vfx"), 30)
 leak_proj = -4;
 miku_clone = -4;
 clone_attack_hold = false;
@@ -39,15 +42,39 @@ color_timer = 1;
 
 b_reversed_nspecial = false;
 
-sfx_veg_light1 = asset_get("sfx_syl_nspecial_flowerhit");
-sfx_veg_light2 = asset_get("sfx_syl_ustrong_part3")
-sfx_veg_med1 = asset_get("sfx_syl_ustrong");
-sfx_veg_med2 = asset_get("sfx_syl_ustrong_part3");
-sfx_veg_heavy1 = sound_get("veg_heavy");
-sfx_veg_heavy2 = asset_get("sfx_syl_dstrong");
-sfx_wet_light = sound_get("splat3");
-sfx_wet_med = sound_get("splat1");
-sfx_wet_heavy = sound_get("splat2");
+if (!is_oc) {
+	sfx_veg_light1 = asset_get("sfx_syl_nspecial_flowerhit");
+	sfx_veg_light2 = asset_get("sfx_syl_ustrong_part3")
+	sfx_veg_med1 = asset_get("sfx_syl_ustrong");
+	sfx_veg_med2 = asset_get("sfx_syl_ustrong_part3");
+	sfx_veg_heavy1 = sound_get("veg_heavy");
+	sfx_veg_heavy2 = asset_get("sfx_syl_dstrong");
+	sfx_wet_light = sound_get("splat3");
+	sfx_wet_med = sound_get("splat1");
+	sfx_wet_heavy = sound_get("splat2");
+	//
+	leak_vfx_small = HFX_MAY_LEAF_SMALL;
+	leak_vfx_huge = HFX_MAY_LEAF_HUGE;
+	leak_vfx_big = HFX_MAY_LEAF_BIG;
+	clone_create_sfx = asset_get("sfx_mobile_gear_deploy");
+	taunt_sfx = sound_get("popipo");
+} else {
+	sfx_veg_light1 = asset_get("sfx_syl_nspecial_flowerhit");
+	sfx_veg_light2 = sound_get("Meat_feet_fast3");
+	sfx_veg_med1 = asset_get("sfx_syl_ustrong");
+	sfx_veg_med2 = asset_get("sfx_syl_ustrong_part3");
+	sfx_veg_heavy1 = sound_get("veg_heavy");
+	sfx_veg_heavy2 = sound_get("Meat_feet_fast3");
+	sfx_wet_light = sound_get("splat3");
+	sfx_wet_med = sound_get("splat1");
+	sfx_wet_heavy = sound_get("splat2");
+	//
+	leak_vfx_small = HFX_MAY_LEAF_SMALL;
+	leak_vfx_huge = HFX_MAY_LEAF_HUGE;
+	leak_vfx_big = pizza_fx;
+	clone_create_sfx = asset_get("sfx_mobile_gear_deploy");
+	taunt_sfx = sound_get("popipo");
+}
 
 
 set_victory_bg( sprite_get( "bg" ));

@@ -7,7 +7,7 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_mobile_gear_deploy"));
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, clone_create_sfx);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 5);
 
 /*

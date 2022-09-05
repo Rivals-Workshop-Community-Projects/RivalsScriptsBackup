@@ -37,10 +37,10 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_HITBOX_TYPE, 1);
 	set_hitbox_value(curr_attack, 1, HG_WINDOW, 2);
 	set_hitbox_value(curr_attack, 1, HG_LIFETIME, 3);
-	set_hitbox_value(curr_attack, 1, HG_HITBOX_Y, -75);
-	set_hitbox_value(curr_attack, 1, HG_HITBOX_X, 0);
-	set_hitbox_value(curr_attack, 1, HG_WIDTH, 110);
-	set_hitbox_value(curr_attack, 1, HG_HEIGHT, 60);
+	set_hitbox_value(curr_attack, 1, HG_HITBOX_Y, -80);
+	set_hitbox_value(curr_attack, 1, HG_HITBOX_X, -10);
+	set_hitbox_value(curr_attack, 1, HG_WIDTH, 100);
+	set_hitbox_value(curr_attack, 1, HG_HEIGHT, 50);
 	set_hitbox_value(curr_attack, 1, HG_PRIORITY, 2);
 	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 8.2);
 	set_hitbox_value(curr_attack, 1, HG_ANGLE,  90);
@@ -50,5 +50,5 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(curr_attack, 1, HG_HITPAUSE_SCALING, .5);
 	set_hitbox_value(curr_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-	set_hitbox_value(curr_attack, 1, HG_VISUAL_EFFECT, HFX_MAY_LEAF_BIG);
+	set_hitbox_value(curr_attack, 1, HG_VISUAL_EFFECT, leak_vfx_big);
 }

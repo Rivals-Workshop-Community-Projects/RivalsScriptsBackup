@@ -12,7 +12,7 @@ if attack == AT_FSTRONG or attack == AT_DSTRONG or attack == AT_USTRONG {
     if window == 2 && window_timer == 1 && !hitpause {
         sound_play(sound_get("shot1"),false,noone,0.7)
         
-        if redP >= 100 {
+        if redP >= 100 && shield_down{
         if attack == AT_FSTRONG {
         	        sound_stop(sound_get("RI")); 
                     sound_play(sound_get("RI"),false,noone,.75,.6); 
@@ -56,11 +56,11 @@ if attack == AT_FSTRONG or attack == AT_DSTRONG or attack == AT_USTRONG {
                     spawn_hit_fx (x , y  - 20 , 302 )
         }
         
-        
+        state_timer = 999
         }
     }
     
-    if window == 2 && window_timer == 2 && !hitpause && redP >= 100{
+    if window == 2 && window_timer == 2 && !hitpause && state_timer >= 999{
     	if attack == AT_FSTRONG {
                     shake_camera(4, 6)
                     create_hitbox(AT_EXTRA_1,11, x, y-60)
@@ -167,8 +167,21 @@ switch attack {
     
     case AT_FAIR:
           
-          
+          if window == 1 && redP >= 100 && shield_down && state_timer < 999{
+                       	        sound_stop(sound_get("RI")); 
+                                sound_play(sound_get("RI"),false,noone,.75,.6); 
+                                spawn_hit_fx(x,y-30,302)
+                       if redP > 300 {
+                       	redP = 200 
+                       } else {
+                       	redP -= 100
+                       }
+                       state_timer = 999
+       }
+       
          if window <= 2 or (window == 3 && window_timer < 5) {
+         	
+         	
              can_fast_fall = false
               if spr_dir == 1 {
                  if hsp > 0 {
@@ -224,6 +237,10 @@ switch attack {
              }
              
               if window_timer == 2 or window_timer % 2 == 0 {
+              	if state_timer >= 999 &&  window_timer % 4 == 0 {
+              		 create_hitbox(AT_EXTRA_1,11, x - 30*spr_dir, y+20 - random_func(1,90,true))
+              		  sound_play(sound_get("shot1"),false,noone,1,0.7)
+              	}
                  create_hitbox(AT_FAIR,2,x + 30*spr_dir,y - 26)
              }
          }
@@ -232,9 +249,30 @@ switch attack {
     
     case AT_DAIR:
 
-             if window == 2 and window_timer == 3 && !hitpause {
+             if window == 2 and window_timer == 2 && !hitpause {
                  sound_play(sound_get("shot1"),false,noone,0.7)
+                 if redP >= 100 && shield_down{
+                       	        sound_stop(sound_get("RI")); 
+                                   sound_play(sound_get("RI"),false,noone,.75,.6); 
+                                   shake_camera(4, 6)
+                                   create_hitbox(AT_EXTRA_1,13, x, y-40)
+                                   create_hitbox(AT_EXTRA_1,15, x, y-40)
+                                   create_hitbox(AT_EXTRA_1,16, x, y-40)
+                                   spawn_hit_fx (x , y  - 20 , 302 )
+                       if redP > 300 {
+                       	redP = 200 
+                       } else {
+                       	redP -= 100
+                       }
+                       state_timer = 999
+                 }
              }
+             
+             if window == 2 and window_timer == 3 && state_timer >= 999 {
+                                   create_hitbox(AT_EXTRA_1,13, x - 40, y -40)
+                                   create_hitbox(AT_EXTRA_1,13, x + 40 ,y -40)
+             }
+             
              
              move_cooldown[AT_DAIR] = 15
 

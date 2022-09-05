@@ -161,7 +161,7 @@ if (!custom_clone) {
 					//Regrab Leek
 					if (abs(hsp) <= 8 && place_meeting(x, y, other)) {
 						sound_play(asset_get("sfx_diamond_small_collect"))
-						spawn_hit_fx( x, y, HFX_MAY_LEAF_BIG );
+						spawn_hit_fx( x, y,  other.leak_vfx_big );
 						instance_destroy(self);
 					}
 				break;
@@ -189,7 +189,7 @@ if (!custom_clone) {
 					//Regrab Leek
 					if place_meeting(x, y, other) {
 						sound_play(asset_get("sfx_diamond_small_collect"))
-						spawn_hit_fx( x, y, HFX_MAY_LEAF_BIG );
+						spawn_hit_fx( x, y,  other.leak_vfx_big );
 						instance_destroy(self);
 					}
 				break;
@@ -203,7 +203,7 @@ if (!custom_clone) {
 							other.kb_scale = get_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING);
 							other.hitpause = get_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE);
 							other.hitpause_growth = get_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING);
-							other.hit_effect =  HFX_MAY_LEAF_HUGE;
+							other.hit_effect = leak_vfx_huge;
 						}
 
 					}
@@ -242,7 +242,7 @@ if (!custom_clone) {
 					y = lerp(y, other.y - (other.char_height / 2), .2)
 					if (place_meeting(x, y, other)) {
 						sound_play(asset_get("sfx_diamond_small_collect"))
-						spawn_hit_fx( x, y, HFX_MAY_LEAF_BIG );
+						spawn_hit_fx( x, y, other.leak_vfx_big);
 						print("Leak Died")
 						hitbox_timer = length;
 					}

@@ -32,7 +32,7 @@ crossout = 0
 crossx = -1
 crossy = -1
 
-redP = 0
+redP = 150
 
 char_height = 62.9;
 idle_anim_speed = .13;
