@@ -8,9 +8,9 @@ if(attack == AT_JAB && my_hitboxID.attack == AT_JAB){
 if(my_hitboxID.attack == AT_FSTRONG){
 	if(my_hitboxID.hbox_num == 1){
 		if(hit_player_obj.x < x + 60 && spr_dir == 1){
-			hit_player_obj.x = lerp(x + 70*spr_dir, hit_player_obj.x, 0.5)
+			hit_player_obj.x = lerp(x + 68*spr_dir, hit_player_obj.x, 0.5)
 		}else if(hit_player_obj.x > x - 60 && spr_dir == -1){
-			hit_player_obj.x = lerp(x + 70*spr_dir, hit_player_obj.x, 0.5)
+			hit_player_obj.x = lerp(x + 68*spr_dir, hit_player_obj.x, 0.5)
 		}
 	}
 }

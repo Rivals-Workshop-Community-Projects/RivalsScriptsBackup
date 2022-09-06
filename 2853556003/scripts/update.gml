@@ -586,7 +586,7 @@ set_color_profile_slot( 12, 5, 224, 40, 52 ); //Book
 set_color_profile_slot( 13, 0, 92, 92, 92 ); //Cloth
 set_color_profile_slot( 13, 1, 0, 225, 255 ); //Liquid
 set_color_profile_slot( 13, 2, 159, 206, 209 ); //Skin
-set_color_profile_slot( 13, 3, 71, 63, 46 ); //Shell
+set_color_profile_slot( 13, 3, 92, 88, 72 ); //Shell
 set_color_profile_slot( 13, 4, 255, 214, 214 ); //Beads
 set_color_profile_slot( 13, 5, 143, 135, 96 ); //Book
 

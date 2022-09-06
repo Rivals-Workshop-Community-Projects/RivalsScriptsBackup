@@ -124,33 +124,32 @@ if(!secret_skins){
 
 //Tap jump button
 
-if(abs(get_instance_x(cursor_id) - (temp_x + 81)) < 15 && abs(get_instance_y(cursor_id) - (temp_y + 182)) < 13){
+if(abs(get_instance_x(cursor_id) - (temp_x + 189)) < 15 && abs(get_instance_y(cursor_id) - (temp_y + 120)) < 13){
 	var cursor_x = round(get_instance_x(cursor_id))
 	var cursor_y = round(get_instance_y(cursor_id))
-	name_fade = lerp(name_fade, 1, 0.5)
-	
-	if(menu_a_pressed){
-		if(tap_jump_suppress){
-			tap_jump_suppress = false
-			sound_play(asset_get("mfx_forward"))
-		}else{
-			tap_jump_suppress = true
-			sound_play(asset_get("mfx_forward"))
-		}
-	}
 	if(can_tap_jump()){
+		name_fade = lerp(name_fade, 1, 0.5)
+		if(menu_a_pressed){
+			if(tap_jump_suppress){
+				tap_jump_suppress = false
+				sound_play(asset_get("mfx_forward"))
+			}else{
+				tap_jump_suppress = true
+				sound_play(asset_get("mfx_forward"))
+			}
+		}
 		if(tap_jump_suppress){
-			button = draw_sprite(sprite_get("css_button"), 3, temp_x + 66, temp_y + 169)
+			button = draw_sprite(sprite_get("css_button"), 3, temp_x + 174, temp_y + 107)
 		}else{
-			button = draw_sprite(sprite_get("css_button"), 2, temp_x + 66, temp_y + 169)
+			button = draw_sprite(sprite_get("css_button"), 2, temp_x + 174, temp_y + 107)
 		}
 	}
 }else{
 	if(can_tap_jump()){
 		if(tap_jump_suppress){
-			button = draw_sprite(sprite_get("css_button"), 1, temp_x + 66, temp_y + 169)
+			button = draw_sprite(sprite_get("css_button"), 1, temp_x + 174, temp_y + 107)
 		}else{
-			button = draw_sprite(sprite_get("css_button"), 0, temp_x + 66, temp_y + 169)
+			button = draw_sprite(sprite_get("css_button"), 0, temp_x + 174, temp_y + 107)
 		}
 	}
 	name_fade = lerp(name_fade, 0, 0.3)

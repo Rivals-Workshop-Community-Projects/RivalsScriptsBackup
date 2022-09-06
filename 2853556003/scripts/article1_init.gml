@@ -51,3 +51,4 @@ with(asset_get("obj_article1")){
         replacedcount++;                            //If there are any other article1s owned by the same person, tell them to increment their replacedcount by 1
     }
 }
+

@@ -9,6 +9,7 @@ if(attack == AT_DTILT){
 	if(window == 2 && has_hit && !hitpause){
 		window = 3
 		window_timer = 0
+		destroy_hitboxes();
 		if(hsp > 4){
 			hsp = 4
 		}else if(hsp < -4){

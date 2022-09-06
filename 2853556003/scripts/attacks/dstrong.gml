@@ -52,7 +52,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 7.5);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1.05);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, vfx_waterhit_huge);

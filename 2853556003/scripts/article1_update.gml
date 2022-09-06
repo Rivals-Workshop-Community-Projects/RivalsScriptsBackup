@@ -46,6 +46,7 @@ if(state == 0){
 			}
 		}
 	}
+	//initial thingy
 	if(!holding_bomb){
 		sprite_index = sprite_get("hurricane")
 	}else{
@@ -179,7 +180,9 @@ if(state == 0){
 		    			other.state = 1
 						other.state_timer = 0
 						other.image_index = 0
-						other.hurricane_hitbox.destroyed = true
+						if(instance_exists(other.hurricane_hitbox)){
+							other.hurricane_hitbox.destroyed = true
+						}
 						with(other.player_id){
 							if(hurricane.holding_bomb){
 								waterBomb = instance_create(hurricane.x, hurricane.y - 10,"obj_article2");
@@ -205,14 +208,18 @@ if(state == 0){
 		    			other.state = 1
 						other.state_timer = 0
 						other.image_index = 0
-						other.hurricane_hitbox.destroyed = true
+						if(instance_exists(other.hurricane_hitbox)){
+							other.hurricane_hitbox.destroyed = true
+						}
 		    		}
 		    	}
 		    }else if(!other.player_id.N_modifier){
 		    	if(player_id.url == 2853556003 && attack == AT_NSPECIAL && hbox_num == 1 && !other.holding_bomb){
 		    		other.holding_bomb = true
 		    		other.current_owner = player
-		    		other.hurricane_hitbox.destroyed = true
+		    		if(instance_exists(other.hurricane_hitbox)){
+						other.hurricane_hitbox.destroyed = true
+					}
 		    		player_id.waterBomb.destroy = true
 		    		destroyed = true
 		    		sound_play(sound_get("sfx_explosion_water_small"))
@@ -221,7 +228,9 @@ if(state == 0){
 			    		other.state = 1
 						other.state_timer = 0
 						other.image_index = 0
-						other.hurricane_hitbox.destroyed = true
+						if(instance_exists(other.hurricane_hitbox)){
+							other.hurricane_hitbox.destroyed = true
+						}
 						with(other.player_id){
 							if(hurricane.holding_bomb){
 								waterBomb = instance_create(hurricane.x, hurricane.y - 10,"obj_article2");
@@ -251,6 +260,17 @@ if(state == 0){
 		    		}
 		    	}
 		    }
+		}
+	}
+	//later thingy
+	if(!holding_bomb){
+		sprite_index = sprite_get("hurricane")
+	}else{
+		
+		if(bomb_strong){
+			sprite_index = sprite_get("hurricane_strong_bomb")
+		}else{
+			sprite_index = sprite_get("hurricane_bomb")
 		}
 	}
 }
@@ -307,6 +327,8 @@ if(hsp < 1 && hsp > -1 && lifetime > 60){
 	    exit;
 	}
 }
+
+
 
 //Make time progress
 state_timer++;

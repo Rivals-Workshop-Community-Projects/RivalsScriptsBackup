@@ -65,6 +65,10 @@ if(attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR
     shader_end();
 }
 
+//Articles weird online 
+set_article_color_slot( 0, col_r, col_g, col_b, 1 ); //Cloth
+set_article_color_slot( 1, col_r_2, col_g_2, col_b_2, 1 ); //Liquid
+
 //G7 Glitch effect by Giik
 
 if (get_player_color(player) == 12 && random_func(4, 3, 1) == 0) {

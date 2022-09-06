@@ -59,4 +59,5 @@ set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sfx_kick_blow_medium1);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_LOCKOUT, 3);
+set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 303);
 

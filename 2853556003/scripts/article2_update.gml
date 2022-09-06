@@ -139,13 +139,16 @@ if (state == 1){
 							player_id.old_hsp = player_id.hsp;
 							player_id.old_vsp = player_id.vsp;
 						}
-						if(attack != AT_USPECIAL){
+						if(attack != AT_USPECIAL && attack != AT_FSPECIAL){
 				            player_id.hitpause = true
 				            player_id.hitstop = hitpause
 				            player_id.hitstop_full =  hitpause
 				            other.hitstun = hitpause
 				            other.got_hit_timer = hitpause
 						}else{
+							player_id.hitpause = true
+				            player_id.hitstop = hitpause
+				            player_id.hitstop_full =  hitpause
 							other.got_hit_timer = 2
 						}
 			        	
@@ -219,9 +222,11 @@ if (state == 1){
 					    	other.spr_dir = -1
 					    }
 					    
-			            other.image_yscale = (1 * player_id.G_modifier) - (kb_scale / 2)
-						other.image_xscale = (1 * player_id.G_modifier) + (1 - other.image_yscale)
-			            other.image_angle = true_kb_angle * other.spr_dir
+					    if(attack != AT_FSPECIAL){
+				            other.image_yscale = (1 * player_id.G_modifier) - (kb_scale / 2)
+							other.image_xscale = (1 * player_id.G_modifier) + (1 - other.image_yscale)
+				            other.image_angle = true_kb_angle * other.spr_dir
+					    }
 					    
 			            
 			            other.last_move = attack
