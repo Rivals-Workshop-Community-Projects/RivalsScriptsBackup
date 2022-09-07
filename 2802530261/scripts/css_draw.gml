@@ -76,7 +76,9 @@ prev_alt = alt_cur;
 
 //extra icons
 if(alt_cur == 30){
-    draw_sprite_ext(sprite_get("ccs_icons"), 1, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("ccs_icons"), 2, temp_x + 174, temp_y + 108, 1, 1, 0, c_white, 1);
+}else if(alt_cur == 31){
+    draw_sprite_ext(sprite_get("ccs_icons"), 9, temp_x + 174, temp_y + 108, 1, 1, 0, c_white, 1);
 }
 
 //alt name
