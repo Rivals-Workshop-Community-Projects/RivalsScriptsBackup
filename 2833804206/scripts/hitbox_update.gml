@@ -6,7 +6,7 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
         destroyed = true
         var _w = 10
         for (var i = -_w/2; i < _w/2; i++) {
-            instance_create((round((x-hsp)/8)*8) + i*8,y+16, "obj_article1")
+            if !was_parried instance_create((round((x-hsp)/8)*8) + i*8,y+16, "obj_article1")
         }
         
         sound_play(asset_get("sfx_waterhit_heavy2"))

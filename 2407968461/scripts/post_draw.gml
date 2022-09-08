@@ -6,6 +6,7 @@ var sad_y = 56;
 var happy_y = 132;
 var angry_y = 52;
 
+
 if (menu_open){
     if (spr_dir == 1){
         draw_sprite( sprite_get("iconsad"), (sad_cooldown > 0), x + sad_x, y - sad_y);

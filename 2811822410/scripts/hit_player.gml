@@ -41,11 +41,14 @@ if (my_hitboxID.orig_player == player) {
 		} else {
 			my_hitboxID.should_hfx = true;
 		}
+		if (rune_follow_hit) {
+			leak_proj.rune_follow = hit_player_obj;
+		}
 	}
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type ==2) {
-	if has_rune("D") {
+	if (rune_teleport) {
 		hit_player_obj.y = my_hitboxID.y + my_hitboxID.vsp;
 		hit_player_obj.x = my_hitboxID.x + my_hitboxID.hsp;
 	}
@@ -55,4 +58,11 @@ if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1) {
 	uspecial_can_turn = true;
 }
 
+if (rune_hit_reset) {
+	djumps = 0;
+	has_airdodge = true;
+	move_cooldown[AT_FSPECIAL] = 0;
+	move_cooldown[AT_DSPECIAL] = 0;
+	move_cooldown[AT_NSPECIAL] = 0;
+}
 

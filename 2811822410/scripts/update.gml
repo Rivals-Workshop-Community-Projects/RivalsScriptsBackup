@@ -108,7 +108,8 @@ if (!custom_clone) {
 	}
 
 	if (instance_exists(leak_proj)) {
-		if has_rune("C") {
+		#region Runes
+		if (rune_leek_move) {
 			if (leak_proj.leak_state == 0) {
 				if (up_down) {
 					leak_proj.vsp -= .25;
@@ -120,7 +121,8 @@ if (!custom_clone) {
 				leak_proj.vsp = 0
 			}
 		}
-		if has_rune("D") {
+		/*
+		if (rune_teleport) {
 			with leak_proj {
 				if (leak_state == 1) {
 					for (i = 0; i < 4; i++) {
@@ -134,6 +136,26 @@ if (!custom_clone) {
 				}
 			}
 		}
+		*/
+		if (rune_follow_hit) {
+			with leak_proj {
+				if ("rune_follow" in self && rune_follow != -4) {
+					var rune_dir = point_direction(x, y, rune_follow.x, rune_follow.y - rune_follow.char_height / 2)
+					hsp = lengthdir_x(2, rune_dir);
+					vsp = lengthdir_y(2, rune_dir);
+					print(hsp)
+				}
+			}
+		}
+		if (rune_follow_miku) {
+			with leak_proj {
+				if ("rune_follow" in self && rune_follow == -4) {
+					x = other.x;
+					y = other.y - other.char_height / 2;
+				}
+			}
+		}
+		#endregion
 		with (leak_proj) {
 			if (was_parried) {
 				leak_state = 3;
@@ -159,10 +181,12 @@ if (!custom_clone) {
 						}
 					}
 					//Regrab Leek
-					if (abs(hsp) <= 8 && place_meeting(x, y, other)) {
-						sound_play(asset_get("sfx_diamond_small_collect"))
-						spawn_hit_fx( x, y,  other.leak_vfx_big );
-						instance_destroy(self);
+					if (!other.rune_follow_miku) { //Doesn't collect if you have the leaf shield rune
+						if (abs(hsp) <= 8 && place_meeting(x, y, other)) {
+							sound_play(asset_get("sfx_diamond_small_collect"))
+							spawn_hit_fx( x, y,  other.leak_vfx_big );
+							instance_destroy(self);
+						}
 					}
 				break;
 				case 1: //Constant
@@ -187,10 +211,12 @@ if (!custom_clone) {
 						image_yscale =  0.01;
 					}
 					//Regrab Leek
-					if place_meeting(x, y, other) {
-						sound_play(asset_get("sfx_diamond_small_collect"))
-						spawn_hit_fx( x, y,  other.leak_vfx_big );
-						instance_destroy(self);
+					if (!other.rune_follow_miku) { //Doesn't collect if you have the leaf shield rune
+						if place_meeting(x, y, other) {
+							sound_play(asset_get("sfx_diamond_small_collect"))
+							spawn_hit_fx( x, y,  other.leak_vfx_big );
+							instance_destroy(self);
+						}
 					}
 				break;
 				case 2: //Swing
@@ -256,11 +282,13 @@ if (!custom_clone) {
 } else { //Clone Stuff
 	//have_collision = false;
 	//Leek Throw Clone
-	if (has_rune("B") && instance_exists(clone_owner.leak_proj) && place_meeting(x, y, clone_owner.leak_proj) && (clone_owner.leak_proj.leak_state == 1 || clone_owner.leak_proj.leak_state == 0)  && attack != AT_NSPECIAL && !clone_owner.clone_attack_hold && !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) {
+	#region Runes
+	if (rune_rethrow && instance_exists(clone_owner.leak_proj) && place_meeting(x, y, clone_owner.leak_proj) && (clone_owner.leak_proj.leak_state == 1 || clone_owner.leak_proj.leak_state == 0)  && attack != AT_NSPECIAL && !clone_owner.clone_attack_hold && !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) {
 		//instance_destroy(clone_owner.leak_proj)
 		clone_owner.leak_proj.y += 2000;
 		set_attack(AT_NSPECIAL)
 	}
+	#endregion
 	if (clone_owner.clone_attack_hold) { //Has Attack or not
 		outline_color = [100, 100, 100];
 	} else {

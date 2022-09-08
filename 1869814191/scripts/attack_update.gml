@@ -10,54 +10,24 @@ if (attack == AT_NSPECIAL) {
 		destroy_gaster_blaster = false;
 	}
     if (window == 2 && window_timer == 1) {
+    	if (trolled) { sound_play(snd_blaster_charge[trolled]); }
         sound_play(sound_get("sfx_blaster_charge"));
-        var temp_x = 24;
-        var temp_y = -30;
-        var initspeed = 10;
-        var blaster = instance_create(x+(temp_x*spr_dir),y+(temp_y),"obj_article2");
-        if (trolled) {
-	        blaster.sprite_index = sprite_get("t_gaster_blaster");
-	        blaster.air_hurtbox_spr = sprite_get("t_gaster_blaster");
-        } else {
-	        blaster.sprite_index = sprite_get("gaster_blaster");
-	        blaster.air_hurtbox_spr = sprite_get("gaster_blaster");        	
-        }
-        blaster.image_xscale = spr_dir;
+        var b_x = 24;
+        var b_y = -30;
+        var blaster = instance_create(x+(b_x*spr_dir),y+(b_y),"obj_article2");
         blaster.dir = spr_dir;
-        if (blaster.state == 0) {
-            blaster.hsp = 3*spr_dir;
-            blaster.vsp = 0;
-        }
-        if (!hard_mode) {
-	        move_cooldown[AT_NSPECIAL] = 150;
-	        /*
-		    move_cooldown[AT_FTILT] = 150;
-		    move_cooldown[AT_BAIR] = 150;
-		    move_cooldown[AT_UTILT] = 150;
-		    */
-			move_cooldown[AT_FSTRONG] = 150;
-		    move_cooldown[AT_DSTRONG] = 150;
-		    move_cooldown[AT_USTRONG] = 150;
-		    /*
-		    move_cooldown[AT_DSPECIAL] = 150;
-		    move_cooldown[AT_EXTRA_1] = 150;
-		    */
-        }
+        blaster.hsp = 3*spr_dir;
+        blaster.vsp = 0;
+        
+        //move_cooldown[AT_NSPECIAL] = 180;
+		//move_cooldown[AT_FSTRONG] = 150;
+		//move_cooldown[AT_DSTRONG] = 150;
+		//move_cooldown[AT_USTRONG] = 150;
     }
 }
 
 if (attack == AT_USPECIAL) {
-    if (window == 1){
-        hsp = 0;
-        vsp = 0;
-        can_move = false;
-    }
-    if (window == 2){
-        hsp = 0;
-        vsp = 0;
-        can_move = false;
-    }
-    if (window == 3){
+    if (window >= 1 && window <= 3){
         hsp = 0;
         vsp = 0;
         can_move = false;
@@ -70,16 +40,13 @@ if (attack == AT_USPECIAL) {
         }
     }
     if (window == 5){
+    	if (window_timer == 10) {
+    		if (free) { state = PS_PRATFALL; }
+    		
+    	}
         hsp = 0;
         vsp = 0;
         can_wall_jump = true;
-    }
-    if (window == 5 && window_timer == 10) {
-    	if (!hard_mode) {
-	    	if (free) {
-	    		state = PS_PRATFALL;
-	    	}
-    	}
     }
 }
 
@@ -168,228 +135,68 @@ if (attack == AT_FSPECIAL) or (attack == AT_FSPECIAL_AIR){
     }
 }
 
-
 if (attack == AT_DSPECIAL){
     if (window == 1 && window_timer == 1) {
     	
     	//instance_create(x+(60*spr_dir),y,"obj_article3");
-    	
-        blue_bone = true;
         
-        //Bone going forward
+        if (blue_bone) {
+        spawnBone(7*spr_dir, 0, 24, -4, 0);
+        spawnBone(-7*spr_dir, 0, -24, -4, 0);
+    	}
+        
+        if (!blue_bone) {
         create_hitbox(AT_EXTRA_1, 7, x+(32*spr_dir), y+(-4));
-        //Bone going backwards
         create_hitbox(AT_EXTRA_1, 8, x+(-32*spr_dir), y+(-4));
+    	}
+        
+        blue_bone = !blue_bone;
         
         //Cooldown
-        if (!hard_mode) {
-	        move_cooldown[AT_DSPECIAL] = 80;
-	        move_cooldown[AT_EXTRA_1] = 80;
-        }
+	    move_cooldown[AT_DSPECIAL] = 80;
     }
 }
-
-if (attack == AT_EXTRA_1){
-    if (window == 1 && window_timer == 1) {
-    	
-    	//instance_create(x+(60*spr_dir),y,"obj_article3");
-    	
-        blue_bone = false;
-        
-        //Bone going forward
-        var temp_x1 = 24;
-        var temp_y1 = -4;
-        var initspeed = 10;
-        var bone1 = instance_create(x+(temp_x1*spr_dir),y+(temp_y1),"obj_article1");
-        bone1.sprite_index = sprite_get("bone_horizontal");
-        bone1.air_hurtbox_spr = sprite_get("bone_horizontal");
-        if (bone1.state == 0) {
-            bone1.hsp = 3*spr_dir;
-            bone1.vsp = 0;
-            bone1.state = 1;
-            bone1.dir = spr_dir;
-        }
-        //Bone going backwards
-        var temp_x2 = -24;
-        var temp_y2 = -4;
-        var initspeed = 10;
-        var bone2 = instance_create(x+(temp_x2*spr_dir),y+(temp_y2),"obj_article1");
-        bone2.sprite_index = sprite_get("bone_horizontal");
-        bone2.air_hurtbox_spr = sprite_get("bone_horizontal");
-        if (bone2.state == 0) {
-            bone2.hsp = -3*spr_dir;
-            bone2.vsp = 0;
-            bone2.state = 1;
-            bone2.dir = -1*spr_dir;
-        }
-        
-        //Cooldown
-        if (!hard_mode) {
-	        move_cooldown[AT_DSPECIAL] = 80;
-	        move_cooldown[AT_EXTRA_1] = 80;
-        }
-    }
-}
-
-/*
-if (attack == AT_FAIR) {
-	if (blue_bone) {
-		move_cooldown[AT_FAIR] = 20;
-	    move_cooldown[AT_FTILT] = 20;
-	    move_cooldown[AT_BAIR] = 20;
-	    move_cooldown[AT_UTILT] = 20;
-	}
-	if (!blue_bone) {
-		move_cooldown[AT_FAIR] = 5;
-	    move_cooldown[AT_FTILT] = 5;
-	    move_cooldown[AT_BAIR] = 5;
-	    move_cooldown[AT_UTILT] = 5;
-	}
-    if (window == 1) {
-        bone_direction = 0;
-    }
-    if (window == 2 && window_timer == 1) {
-        if (blue_bone == false) {
-	        var temp_x = 32;
-	        var temp_y = -4;
-	        var initspeed = 10;
-	        var bone = instance_create(x+(temp_x*spr_dir),y+(temp_y),"obj_article1");
-            bone.sprite_index = sprite_get("bone_horizontal");
-            bone.air_hurtbox_spr = sprite_get("bone_horizontal");
-            if (bone.state == 0) {
-                bone.hsp = 7*spr_dir;
-                bone.vsp = 0;
-                bone.state = 1;
-                bone.dir = spr_dir;
-            }
-        }
-        if (blue_bone == true) {
-        	create_hitbox(AT_EXTRA_1, 7, x+(40*spr_dir), y+(-4));
-        }
-        bone.id = player.id;
-        bone.player = player;
-        bone.spr_dir = spr_dir;
-    }
-}
-*/
 
 if (attack == AT_FTILT) {
-	if (blue_bone) {
-		move_cooldown[AT_FAIR] = 20;
-	    move_cooldown[AT_FTILT] = 20;
-	    move_cooldown[AT_BAIR] = 20;
-	    move_cooldown[AT_UTILT] = 20;
-	}
-	if (!blue_bone) {
-		move_cooldown[AT_FAIR] = 15;
-	    move_cooldown[AT_FTILT] = 15;
-	    move_cooldown[AT_BAIR] = 15;
-	    move_cooldown[AT_UTILT] = 15;
-	}
+	boneCooldown(attack, 15, 25);
     if (window == 1) {
         bone_direction = 0;
     }
     if (window == 2 && window_timer == 1) {
         if (blue_bone == false) {
-	        var temp_x = 32;
-	        var temp_y = -4;
-	        var initspeed = 10;
-	        var bone = instance_create(x+(temp_x*spr_dir),y+(temp_y),"obj_article1");
-            bone.sprite_index = sprite_get("bone_horizontal");
-            bone.air_hurtbox_spr = sprite_get("bone_horizontal");
-            if (bone.state == 0) {
-                bone.hsp = 7*spr_dir;
-                bone.vsp = 0;
-                bone.state = 1;
-                bone.dir = spr_dir;
-            }
-        }
-        if (blue_bone == true) {
+        	spawnBone(10*spr_dir, 0, 32, -4, 0);
+        } else {
         	create_hitbox(AT_EXTRA_1, 7, x+(40*spr_dir), y+(-4));
         }
-        bone.id = player.id;
-        bone.player = player;
-        bone.spr_dir = spr_dir;
     }
 }
 
 if (attack == AT_BAIR) {
-	if (blue_bone) {
-		move_cooldown[AT_FAIR] = 20;
-	    move_cooldown[AT_FTILT] = 20;
-	    move_cooldown[AT_BAIR] = 20;
-	    move_cooldown[AT_UTILT] = 20;
-	}
-	if (!blue_bone) {
-		move_cooldown[AT_FAIR] = 5;
-	    move_cooldown[AT_FTILT] = 5;
-	    move_cooldown[AT_BAIR] = 5;
-	    move_cooldown[AT_UTILT] = 5;
-	}
+	boneCooldown(attack, 15, 20);
+//	move_cooldown[AT_BAIR] = 20;
     if (window == 1) {
         bone_direction = 0;
     }
     if (window == 3 && window_timer == 1) {
         if (blue_bone == false) {
-	        var temp_x = -60;
-	        var temp_y = -28;
-	        var initspeed = 10;
-	        var bone = instance_create(x+(temp_x*spr_dir),y+(temp_y),"obj_article1");
-            bone.sprite_index = sprite_get("bone_vertical");
-            bone.air_hurtbox_spr = sprite_get("bone_vertical");
-            if (bone.state == 0) {
-                bone.hsp = 0;
-                bone.vsp = 8;
-                bone.state = 3;
-                bone.vert_dir = 1;
-            }
+        	spawnBone(0, 7, -60, -28, 1);
+        } else {
+        	create_hitbox(AT_EXTRA_1, 10, x+(-60*spr_dir), y+(-28));
         }
-        if (blue_bone == true) {
-        	create_hitbox(AT_EXTRA_1, 12, x+(-60*spr_dir), y+(-28));
-        }
-        bone.id = player.id;
-        bone.player = player;
-        bone.spr_dir = spr_dir;
     }
 }
 
-
 if (attack == AT_UTILT) {
-	if (blue_bone) {
-		move_cooldown[AT_FAIR] = 20;
-	    move_cooldown[AT_FTILT] = 20;
-	    move_cooldown[AT_BAIR] = 20;
-	    move_cooldown[AT_UTILT] = 20;
-	}
-	if (!blue_bone) {
-		move_cooldown[AT_FAIR] = 5;
-	    move_cooldown[AT_FTILT] = 5;
-	    move_cooldown[AT_BAIR] = 5;
-	    move_cooldown[AT_UTILT] = 5;
-	}
+	boneCooldown(attack, 6, 12);
     if (window == 1) {
         bone_direction = 0;
     }
     if (window == 2 && window_timer == 1) {
         if (blue_bone == false) {
-	        var temp_x = 0;
-	        var temp_y = -4;
-	        var initspeed = 10;
-	        var bone = instance_create(x+(temp_x*spr_dir),y+(temp_y),"obj_article1");
-            bone.sprite_index = sprite_get("bone_vertical");
-            bone.air_hurtbox_spr = sprite_get("bone_vertical");
-            if (bone.state == 0) {
-                bone.hsp = 0;
-                bone.vsp = -16;
-                bone.state = 4;
-            }
+        	spawnBone(0, -14, 0, -4, 1);
+        } else {
+        	create_hitbox(AT_EXTRA_1, 9, x, y+(-4));
         }
-        if (blue_bone == true) {
-        	create_hitbox(AT_EXTRA_1, 10, x, y+(-4));
-        }
-        bone.id = player.id;
-        bone.player = player;
-        bone.spr_dir = spr_dir;
     }
 }
 
@@ -397,64 +204,18 @@ if (attack == AT_UAIR) {
 	move_cooldown[AT_UAIR] = 7;
 }
 
-/*
-if (attack == AT_DTILT) {
-    if (window == 2 && window_timer == 1) {
-        var temp_x = 0;
-        var temp_y = -4;
-        var initspeed = 10;
-        var bone = instance_create(x+(temp_x*spr_dir),y+(temp_y),"obj_article1");
-        if (blue_bone == false) {
-            bone.sprite_index = sprite_get("baby_bone");
-            bone.air_hurtbox_spr = sprite_get("baby_bone");
-            if (bone.state == 0) {
-                bone.hsp = 9*spr_dir;
-                bone.vsp = 0;
-                bone.state = 5;
-                bone.dir = spr_dir;
-            }
-        }
-        if (blue_bone == true) {
-            bone.sprite_index = sprite_get("baby_blue_bone");
-            bone.air_hurtbox_spr = sprite_get("baby_blue_bone");
-            if (bone.state == 0) {
-                bone.hsp = 9*spr_dir;
-                bone.vsp = 0;
-                bone.state = 14;
-                bone.dir = spr_dir;
-            }
-        }
-        bone.id = player.id;
-        bone.player = player;
-        bone.spr_dir = spr_dir;
-    }
-}
-*/
-
-if (attack == AT_DTILT) {
-	if (!hard_mode) {
-	    if (window == 3) {
-	        move_cooldown[AT_DTILT] = 150;
-	    }
+if (attack == AT_DTILT && window == 3) {
+	if (window == 3) {
+		move_cooldown[AT_DTILT] = 150;
 	}
 }
 
 if (attack == AT_DATTACK){ //Dash
-    vsp = 0;
-    if (window == 1 || window == 2 || window == 3 || window == 4 || window == 5 || window == 6) {
-    	if (!hard_mode) {
-	    	if (!was_parried) {
-	    		hsp = 6*spr_dir;
-	    	}
-	    	if (was_parried) {
-	    		hsp = 0;
-	    	}
-    	}
-    	if (hard_mode) {
-    		hsp = 10*spr_dir;
-    	}
-    }
-    if ((window == 2 || window == 3 || window == 4 || window == 5 || window == 6) && has_hit_player) {
+	vsp = 0;
+	if (window < 7) {
+		hsp = (6*spr_dir)*(!was_parried);
+	}
+    if ((window != 1 && window < 7) && has_hit_player) {
     	can_jump = true;
     }
     if (window == 7) {
@@ -463,33 +224,48 @@ if (attack == AT_DATTACK){ //Dash
 }
 
 //Strong Attacks
-
-if (attack == AT_DSTRONG) {
-    if (window == 1 && window_timer == 1) {
-        sound_play(sound_get("sfx_sans_alert"));
-    }
-
-    if (window == 3 && window_timer == 1) {
-        sound_play(sound_get("sfx_sans_rise"));
-    }
+if (attack == AT_DSTRONG || attack == AT_USTRONG || attack == AT_FSTRONG) {
+	if (window_timer == 1) {
+		switch(window) {
+			case 1:
+				sound_play(sound_get("sfx_sans_alert"));
+			break;
+			
+			case 3:
+				sound_play(sound_get("sfx_sans_rise"));
+			break;
+		}
+	}
 }
 
-if (attack == AT_USTRONG) {
-    if (window == 1 && window_timer == 1) {
-        sound_play(sound_get("sfx_sans_alert"));
-    }
+#define spawnBone(_hsp, _vsp, _x, _y, dir)
 
-    if (window == 3 && window_timer == 1) {
-        sound_play(sound_get("sfx_sans_rise"));
-    }
-}
+var bone = instance_create(x+(_x*spr_dir),y+(_y),"obj_article1");
+bone.init_hsp = _hsp;
+bone.init_vsp = _vsp;
+bone.bone_dir = dir;
+bone.id = player.id;
+bone.player = player;
+bone.spr_dir = spr_dir;
 
-if (attack == AT_FSTRONG) {
-    if (window == 1 && window_timer == 1) {
-        sound_play(sound_get("sfx_sans_alert"));
-    }
+#define boneCooldown(_attack, base_cool, max_cool)
 
-    if (window == 3 && window_timer == 1) {
-        sound_play(sound_get("sfx_sans_rise"));
-    }
-}
+move_cooldown[_attack] = base_cool+((max_cool-base_cool)*blue_bone);
+
+/*
+var ftilt_b_cool = 10;
+var ftilt_m_cool = 20;
+
+var utilt_b_cool = 10;
+var utilt_m_cool = 20;
+
+
+var bair_b_cool = 10;
+var bair_m_cool = 20;
+//if attack == AT_BAIR { bair_b_cool = 15; bair_m_cool = 20; }
+
+//move_cooldown[AT_FAIR] = base_cool+((max_cool-base_cool)*blue_bone);
+
+move_cooldown[AT_FTILT] = ftilt_b_cool+((ftilt_m_cool-ftilt_b_cool)*blue_bone);
+move_cooldown[AT_BAIR] = bair_b_cool+((bair_m_cool-bair_b_cool)*blue_bone);
+move_cooldown[AT_UTILT] = utilt_b_cool+((utilt_m_cool-utilt_b_cool)*blue_bone);

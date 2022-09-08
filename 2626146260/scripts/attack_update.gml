@@ -221,6 +221,8 @@ if attack == AT_EXTRA_3 {
     
 }
 
+
+
 if attack == AT_EXTRA_1 {
 
 weapon = 0
@@ -230,12 +232,12 @@ weapon = 0
        	
     if window == 1 && window_timer == 1 {
 
-	create_hitbox(AT_EXTRA_1, 3 , x + 200*spr_dir , y - 40)
-	spawn_hit_fx( x + 200*spr_dir, y - 40, slashc)
+	//create_hitbox(AT_EXTRA_1, 3 , x + 200*spr_dir , y - 40)
+	//spawn_hit_fx( x + 200*spr_dir, y - 40, slashc)
 	
         jc = 1
-        fx = spawn_hit_fx(x-10*spr_dir,y-50,305)
-        fx.pause = 5
+         fx = spawn_hit_fx(x-10*spr_dir,y-50,305)
+         fx.pause = 5
         if !free  && triggered == 0 {
           sound_play(sound_get("cnoise4"))
         }
@@ -262,8 +264,8 @@ weapon = 0
             DT -= 2
             }
             
-     create_hitbox(AT_EXTRA_1, 3 , x + 180*spr_dir , y - 80)
-	spawn_hit_fx( x + 200*spr_dir, y - 80, slashc)
+     //create_hitbox(AT_EXTRA_1, 3 , x + 180*spr_dir , y - 80)
+	//spawn_hit_fx( x + 200*spr_dir, y - 80, slashc)
 	
         sound_play(sound_get("vJC1"),false,noone, 2)
         sound_play(sound_get("SpaceCutB"))
@@ -279,8 +281,8 @@ weapon = 0
     
     if window == 1 && window_timer == 8 && jc == 2 {
                     window_timer = 2
-    create_hitbox(AT_EXTRA_1, 3 , x + 180*spr_dir , y - 00)
-	spawn_hit_fx( x + 200*spr_dir, y - 00, slashc)            
+    //create_hitbox(AT_EXTRA_1, 3 , x + 180*spr_dir , y - 00)
+	//spawn_hit_fx( x + 200*spr_dir, y - 00, slashc)            
         sound_play(sound_get("SpaceCutB"))
             hsp = -4*spr_dir
         if free {    
@@ -292,7 +294,6 @@ weapon = 0
         create_hitbox(AT_EXTRA_1, 1, x -10*spr_dir, y)
     }
 }
-
 
 if attack == AT_JAB {
     

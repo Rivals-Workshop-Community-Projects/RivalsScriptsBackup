@@ -12,6 +12,8 @@ otime = 0
 
 jumping = 0
 
+healtime = 0
+
 nname = "Boarack Oboama"
 ncode1 = "The President of AERica."
 ncode2 = "Suspected to carry the exotic material [Obamium] "

@@ -271,12 +271,6 @@ if (attack == AT_DSTRONG){
     }
 }
 
-if (attack == AT_USTRONG){
-    if (window == 3 && window_timer == 1 && !has_hit){
-        sound_play(asset_get("sfx_blow_heavy1"));
-    }
-}
-
 
 
 //runes

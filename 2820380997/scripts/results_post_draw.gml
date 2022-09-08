@@ -1,10 +1,12 @@
 // Synced Var Stuff to ensure winquotes are enabled
-split_var = split_synced_var(2,1,1);
+split_var = split_synced_var(2,1,1,1,2);
 //print(split_var);
 
 color_shift = split_var[0];
 flag_win_quote_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
+swap_nspec_dspec_input = split_var[3];
+portrait_to_use = split_var[4];
 
 /*
 print(split_var[0]); // Color_Shift;
@@ -28,16 +30,8 @@ if(flag_win_quote_enabled == true && winner == player){
     
     //print(results_data.opponent_name);
     
-    // Set Timer and transparncey Effect
-    var duration_for_transparency_effect = 500;
-    var current_transparency = run_timer / duration_for_transparency_effect;
-    
-    // Clamp Values to prevent out of bounds if left waiting on results screen
-    current_transparency = clamp(current_transparency,0,1);
-    run_timer = clamp(run_timer,0,duration_for_transparency_effect);
-    
     run_timer = clamp(run_timer,0,1000);
-    var slide_timer = clamp(run_timer-420,0,60);
+    var slide_timer = clamp(run_timer-200,0,60);
     var offset_x = 50;
     
     if("win_quote_string" not in self){
@@ -58,6 +52,22 @@ if(flag_win_quote_enabled == true && winner == player){
         //draw_rectangle_colour(25, 325, 450, 425, c_white, c_white, c_gray, c_gray, true); // Main Outline
         //draw_rectangle_colour(30, 330, 445, 420, c_white, c_white, c_gray, c_gray, true); // Inside Outline
         
+}
+
+//print(portrait_to_use);
+//Handle setting portraits
+switch(portrait_to_use){
+	case 0: // Default
+		set_ui_element(UI_WIN_PORTRAIT, get_char_info(player, INFO_PORTRAIT));
+	break;
+	case 1: // Ninetailed Roekoko
+		
+	break;
+	case 2: // Neco Roekoko
+		set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_neco_roe"));
+	break;
+	default:
+	break;
 }
 
 #define split_synced_var

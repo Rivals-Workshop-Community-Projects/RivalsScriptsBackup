@@ -408,8 +408,11 @@ if (torga_grav_jump == 1) {
 if(bomb_hurricane){
 	if(instance_exists(waterBomb) && instance_exists(hurricane)){
 		if(waterBomb.current_owner == player){
-			waterBomb.x = hurricane.x
-			waterBomb.y = hurricane.y
+			if(abs(hurricane.x - waterBomb.x) < 100 && abs(hurricane.y - waterBomb.y) < 100 &&
+			hurricane.bomb_hurricane == true){
+				waterBomb.x = hurricane.x
+				waterBomb.y = hurricane.y
+			}
 		}else{
 			bomb_hurricane = false
 		}

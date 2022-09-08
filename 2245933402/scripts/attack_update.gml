@@ -235,6 +235,7 @@ if attack == AT_UTILT && ostyle == 3 {
 if attack == AT_USTRONG {
 	
 	if has_hit_player && window == 3 && window_timer < 6 {
+		hit_player_obj.hitstop ++
 		hit_player_obj.x += floor((x - 20*spr_dir - hit_player_obj.x)/15)
 		hit_player_obj.y += floor( (y - 100 - hit_player_obj.y)/8)
 	}
@@ -673,6 +674,9 @@ if attack == AT_TAUNT {
 if attack == AT_EXTRA_1 {
 	
 	if window >= 2 {
+		if get_gameplay_time() % 10 == 0 {
+			take_damage(player,-1,1)
+		}
 					suppress_stage_music( 0, 20 );	
 		bullet = 0
 
@@ -701,7 +705,8 @@ gun = 0
 	        obabo -= 1
 	        ostyle = 1
 	        move_cooldown[AT_EXTRA_1] = 60
-	        set_state(PS_PRATLAND)
+	        set_state(PS_PRATFALL)
+	        healtime += 15
 		}
 		
 		if special_pressed {
@@ -712,7 +717,8 @@ gun = 0
 	        obabo -= 1
 	        ostyle = 2
 	        move_cooldown[AT_EXTRA_1] = 60
-	        set_state(PS_PRATLAND)
+	        set_state(PS_PRATFALL)
+	        healtime += 15
 		}
 		
 		if attack_pressed {
@@ -724,7 +730,8 @@ gun = 0
 	        obabo -= 1
 	        ostyle = 3
 	        move_cooldown[AT_EXTRA_1] = 60
-	        set_state(PS_PRATLAND)
+	        set_state(PS_PRATFALL)
+	        healtime += 15 
 		}
 		
 		if left_strong_pressed or right_strong_pressed or up_strong_pressed or down_strong_pressed {
@@ -736,7 +743,8 @@ gun = 0
 	        obabo -= 1
 	        ostyle = 4
 	        move_cooldown[AT_EXTRA_1] = 60
-	        set_state(PS_PRATLAND)
+	        set_state(PS_PRATFALL)
+	        healtime += 15 
 		}
 		
 		if shield_pressed {
@@ -744,10 +752,10 @@ gun = 0
 	        sound_play(asset_get("mfx_back"));	
 	        sound_play(asset_get("sfx_diamond_collect"));	
 	        obabo -= 1
-	        ostyle = 0
+	        ostyle = 5
 	        move_cooldown[AT_EXTRA_1] = 0
 	        set_state(PS_PRATLAND)
-	        take_damage(player, -1, -10)
+	        healtime += 15 
 		}
 		
 	}
@@ -755,11 +763,10 @@ gun = 0
 	if window == 3 && window_timer == 119  {
 		spawn_hit_fx (x, y - 40, 115);
 	    sound_play(asset_get("mfx_back"));	
-	    sound_play(asset_get("sfx_diamond_collect"));	
 	    obabo -= 1
 	    move_cooldown[AT_EXTRA_1] = 0
-	    set_state(PS_PRATLAND)
-	    take_damage(player, -1, -10)
+	    set_state(PS_PRATFALL)
+	    healtime += 15 
 	}
 	
 }

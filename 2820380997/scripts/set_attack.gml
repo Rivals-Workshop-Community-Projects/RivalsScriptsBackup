@@ -1,5 +1,17 @@
 //if(clone_active == true){
 
+//Swap button code:
+if(swap_nspec_dspec_input == true){
+    switch(attack){
+        case AT_DSPECIAL:
+            attack = AT_NSPECIAL;
+        break;
+        case AT_NSPECIAL:
+            attack = AT_DSPECIAL;
+        break;
+    }
+}
+
 // Change based on closed
 //print(instance_exists(clone_object_ID));
 if(instance_exists(clone_object_ID)){

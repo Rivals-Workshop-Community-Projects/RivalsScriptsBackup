@@ -37,6 +37,9 @@ bomb_strong = false
 grabbedid = noone
 multihits = 0
 hurricane_hitbox = noone
+if(player_id.bomb_hurricane){
+    bomb_hurricane = true
+}
 
 lifetime = 0
 

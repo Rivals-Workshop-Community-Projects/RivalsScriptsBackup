@@ -111,6 +111,7 @@ if(attack == AT_EXTRA_1){
 		x = saw_blade.x
 		y = saw_blade.y + 69
 		}
+		instance_destroy(saw_blade)
 	}
 	if(window == 2 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		set_state(PS_PRATLAND);

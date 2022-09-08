@@ -54,3 +54,6 @@ sprite_change_offset("star_masking", 92, 96);
 sprite_change_offset("hurtbox", 91, 114);
 sprite_change_offset("crouch_hurtbox", 91, 114);
 sprite_change_offset("hitstun_hurtbox", 91, 114);
+
+sprite_change_offset("hfx_blabrock_big", 128, 128);
+sprite_change_offset("hfx_blabrock_small", 64, 64);

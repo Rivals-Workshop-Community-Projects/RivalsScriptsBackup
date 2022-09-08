@@ -1,5 +1,5 @@
 masking_alt = false;
-should_use_masking_alt = true;
+should_use_masking_alt = false;
 
 if (get_match_setting( SET_RUNES ) == true){
     should_use_masking_alt = false;
@@ -42,6 +42,7 @@ grabbed = -4;
 star_cooldown = 0;
 star_cooldown_time = 320;
 
+blaboa_big = hit_fx_create( sprite_get("hfx_blabrock_big"), 20 );
 
 hurtbox_spr = sprite_get("hurtbox");
 crouchbox_spr = sprite_get("crouch_hurtbox");

@@ -26,7 +26,7 @@ switch(attack) {
 	case AT_FSPECIAL:
 		if (instance_exists(miku_clone)) {
 			miku_clone.spr_dir = spr_dir;
-			if (place_meeting(x, y, miku_clone) && window == 2 && !fspecial_reset && has_rune("A")) {
+			if (place_meeting(x, y, miku_clone) && window == 2 && !fspecial_reset && rune_fspecial) {
 				djumps = 0;
 				vsp = -12;
 				hsp = spr_dir * 16;
@@ -41,6 +41,7 @@ switch(attack) {
 		if (window == 2) {
 			spawn_hit_fx( x, y, dash_fx );
 			if (window_timer == 1) {
+				//Rune Off
 				if (!free) {
 					hsp = spr_dir * 12;
 				} else {
@@ -112,6 +113,13 @@ switch(attack) {
 		if (free && !custom_clone) {
 			set_attack(AT_FAIR)
 			hsp *= .5
+		}
+	break;
+	case AT_NAIR:
+		if (rune_nair && attack_down && window == 3 && window_timer = get_window_value(attack, 3, AG_WINDOW_LENGTH)) {
+			window = 2;
+			window_timer = 0;
+			attack_end();
 		}
 	break;
 	case AT_TAUNT:

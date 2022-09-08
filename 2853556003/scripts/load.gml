@@ -148,6 +148,7 @@ sprite_change_offset("bubbleBombStrongUT", 40, 40);
 //Rubercuber indicator
 sprite_change_offset("offscreen_indicator", 33, 33);
 sprite_change_offset("article_offscreen", 17, 17);
+sprite_change_offset("hurricane_offscreen", 17, 17);
 
 sprite_change_offset("G7_Effect", 46, 44);
 sprite_change_offset("blw_flag", 48, 48);

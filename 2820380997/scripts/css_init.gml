@@ -175,6 +175,8 @@ if(menu_button[0][8]){ // Sub Menu Button Pressed
 #macro BOX_SHIFT_COLOR_ALTS 8
 #macro BOX_WIN_QUOTE_ENABLE 9
 #macro BOX_INTRO_DIALOG_ENABLE 10
+#macro BOX_SWAP_INPUTS 11
+#macro BOX_NECO_PORTRAIT 12
 
 #macro BUTTON_NAME 0
 #macro BUTTON_IX 1
@@ -274,6 +276,8 @@ row_x = x + 20
 row_y = y + 70;
 create_menu_box(BOX_WIN_QUOTE_ENABLE,"Win Quote",row_x,row_y,32,32,"css_menu_buttons",7);
 //create_menu_box(BOX_INTRO_DIALOG_ENABLE,"Intro Dialog",row_x,row_y + 40,32,32,"css_menu_buttons",8); //Disabled for riptide cannot finish in time
+create_menu_box(BOX_SWAP_INPUTS,"Swap Inputs",row_x + 100,row_y,32,32,"css_menu_buttons",9);
+create_menu_box(BOX_NECO_PORTRAIT,"NECO_PORTRAIT",row_x + 100,row_y + 40,32,32,"css_menu_buttons",9);
 
 // Color Shifter
 last_frame_color_alt = get_player_color(player); // Color slot variable for memory
@@ -288,6 +292,8 @@ initialize_color_slot_info();
 generated_var = 0;
 flag_win_quote_enabled = false;
 flag_round_start_dialog = false;
+swap_nspec_dspec_input = false;
+portrait_to_use = 0;
 
 //#region Synced Variable
 
@@ -295,11 +301,14 @@ flag_round_start_dialog = false;
 /* Synced Variable should account for these. We have 32 bits to work with.
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
 2. Status of Win Quotes Enabled - 1 bit
-3. Status of Round Start Dialog Enabled - 1 bit 
+3. Status of Round Start Dialog Enabled - 1 bit
+4. Spawn Nspec / Dspec - 1 bit
+5. Portrait to use - 2 bits
 */
+
 //This function takes the bit lengths you put in the previous function, in the same order, and outputs an array with the values you put in (assuming you put in the correct bit lengths), also in the same order.
 //split_var = split_synced_var(bit_length_1, bit_length_2...);
-split_var = split_synced_var(2,1,1);
+split_var = split_synced_var(2,1,1,1,2);
 //print(split_var);
 /*
 print(split_var[0]); // Color_Shift;
@@ -309,6 +318,8 @@ print(split_var[2]); // Round Start Dialog
 color_shift = split_var[0];
 flag_win_quote_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
+swap_nspec_dspec_input = split_var[3];
+portrait_to_use = split_var[4];
 
 //print("color_shift: " + string(color_shift)); // Color_Shift;
 //print("flag_win_quote_enabled: " + string(flag_win_quote_enabled)); // WinQuote
@@ -426,9 +437,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "The winter is my favorite season, the snow is so beautiful...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Cybernetic Soldier";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Penny Alt";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Penny isn't afraid of Loxodont, so neither am I!";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Graveyard Keeper";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Fennek Colors";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I don't like graveyards very much, they're sorta grim tbh...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Flickering Spectre";sub_element_slot++;
@@ -475,10 +486,10 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Ranked Gold Alt";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Gold is so pretty. It reminds me of my aunt and her golden fur.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-	//Slot 20
-	slot_property_array[color_slot,sub_element_slot] = "Azamuku";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Obakawaii";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Decieve and Devour is a motto some kitsune live by. Stay away from them.";sub_element_slot++;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Tales of Ninjas";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color for Slimepuffen";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I could be pretty sneaky, but then how will people know I played tricks on them?";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Caster of Fate";sub_element_slot++;
@@ -595,6 +606,16 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Ithaca";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Original Character Color";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Sometimes... I wonder what its like to be someone else.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 20
+	slot_property_array[color_slot,sub_element_slot] = "Azamuku";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character by Obakawaii";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Decieve and Devour is a motto some kitsune live by. Stay away from them.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Cybernetic arm";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Penny Alt";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Penny isn't afraid of Loxodont, so neither am I!";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	
 	num_of_shifted_alts = color_slot - 32;

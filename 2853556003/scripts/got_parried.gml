@@ -1,3 +1,9 @@
+if(my_hitboxID.type == 1){
+    if(double_jump_timer > 0){
+        double_jump_timer = 0
+    }
+}
+
 if(my_hitboxID.attack == AT_NSPECIAL){
     waterBomb.vsp *= -1
     waterBomb.hsp *= -1

@@ -100,10 +100,24 @@ if (state == 1){
 		    		other.current_owner = player 
 			    	
 			        if(attack != AT_NSPECIAL && !(attack == AT_FSPECIAL && hbox_num == 2) && attack != AT_DSPECIAL && !(attack == other.last_move && hbox_group == other.last_group && hbox_group != -1)){
-			        	if(kb_angle == 361){
-			        		var true_kb_angle = 20
+			        	if(attack == AT_DSTRONG && hbox_num == 1){
+		        			if(x > other.x){
+		        				var true_kb_angle = 160
+		        			}else if(x < other.x){
+		        				var true_kb_angle = 20
+		        			}else{
+		        				if(spr_dir == 1){
+		        					var true_kb_angle = 20
+		        				}else{
+		        					var true_kb_angle = 160
+		        				}
+		        			}
 			        	}else{
-			        		var true_kb_angle = kb_angle
+			        		other.enemy_hitboxID = id
+			        		with(other){
+		        				temp_hitbox_angle = get_hitbox_angle(enemy_hitboxID)
+			        		}
+		        			var true_kb_angle = other.temp_hitbox_angle
 			        	}
 					    var kb_distance = kb_value + damage * kb_scale * (1 + player_id.strong_charge / 60);
 			            if(sound_effect != asset_get("sfx_blow_heavy1") &&
@@ -139,24 +153,27 @@ if (state == 1){
 							player_id.old_hsp = player_id.hsp;
 							player_id.old_vsp = player_id.vsp;
 						}
-						if(attack != AT_USPECIAL && attack != AT_FSPECIAL){
+						if(attack != AT_USPECIAL){
 				            player_id.hitpause = true
 				            player_id.hitstop = hitpause
 				            player_id.hitstop_full =  hitpause
-				            other.hitstun = hitpause
-				            other.got_hit_timer = hitpause
+				            other.old_vsp = other.vsp
+				        	other.old_hsp = other.hsp
+				        	other.hitstun = hitpause
+				            if(attack != AT_FSPECIAL){
+				            	other.got_hit_timer = hitpause
+				            }else{
+				            	other.got_hit_timer = 2
+				            }
 						}else{
-							player_id.hitpause = true
-				            player_id.hitstop = hitpause
-				            player_id.hitstop_full =  hitpause
 							other.got_hit_timer = 2
 						}
 			        	
 			        	if(attack != AT_USPECIAL && !(attack == AT_BAIR && hbox_num < 5)){
-				        	other.hsp = lengthdir_x( kb_distance, true_kb_angle) * spr_dir;
+				        	other.hsp = lengthdir_x( kb_distance, true_kb_angle);
 						    other.vsp = ( lengthdir_y(kb_distance, true_kb_angle));
 			        	}else if (attack == AT_USPECIAL){
-			        		other.hsp = lengthdir_x( kb_distance, true_kb_angle) * spr_dir;
+			        		other.hsp = lengthdir_x( kb_distance, true_kb_angle);
 						    other.vsp = ( lengthdir_y(kb_distance, true_kb_angle) * 2);
 			        	}else if(attack == AT_BAIR && hbox_num < 5){
 			        		other.hsp = other.player_id.hsp
@@ -225,7 +242,7 @@ if (state == 1){
 					    if(attack != AT_FSPECIAL){
 				            other.image_yscale = (1 * player_id.G_modifier) - (kb_scale / 2)
 							other.image_xscale = (1 * player_id.G_modifier) + (1 - other.image_yscale)
-				            other.image_angle = true_kb_angle * other.spr_dir
+				            other.image_angle = true_kb_angle
 					    }
 					    
 			            
@@ -257,7 +274,7 @@ if (state == 1){
 					other.current_owner = player 
 					
 					var kb_distance = kb_value + damage * kb_scale * (1 + player_id.strong_charge / 60);
-				    other.hsp = lengthdir_x( kb_distance, true_kb_angle) * spr_dir;
+				    other.hsp = lengthdir_x( kb_distance, true_kb_angle);
 				    other.vsp = ( lengthdir_y(kb_distance, true_kb_angle) );
 		            sound_play(sound_effect)
 		            var fx = spawn_hit_fx(x, y, hit_effect)
@@ -284,7 +301,7 @@ if (state == 1){
 				    
 		            other.image_yscale = 1 - (kb_scale / 2)
 					other.image_xscale = 1 + (1 - other.image_yscale)
-		            other.image_angle = true_kb_angle * other.spr_dir
+		            other.image_angle = true_kb_angle
 					
 		            exit;
 				}else if(type == 2 && damage > 0 && kb_value > 0){
@@ -294,7 +311,7 @@ if (state == 1){
 		        		var true_kb_angle = kb_angle
 		        	}
 		        	
-					other.hsp += ( lengthdir_x( kb_distance, true_kb_angle) * spr_dir) / 2
+					other.hsp += ( lengthdir_x( kb_distance, true_kb_angle)) / 2
 				    other.vsp += ( lengthdir_y(kb_distance, true_kb_angle)) / 2	
 				    
 				    if(other.hsp > 0){
@@ -303,8 +320,19 @@ if (state == 1){
 				    	other.spr_dir = -1
 				    }
 				    
+				    sound_play(sound_effect)
+		            var fx = spawn_hit_fx(x, y, hit_effect)
+		            fx.pause = 8.58
+		            
+		            if(enemies != 1){
+		            	destroyed = true
+		            }
+				    
 				    other.damage += damage
-				    other.got_hit_timer = 4 + hitpause + kb_value
+				    other.old_vsp = other.vsp
+		        	other.old_hsp = other.hsp
+		        	other.hitstun = hitpause
+				    other.got_hit_timer = hitpause
 				}
 			}
 		}

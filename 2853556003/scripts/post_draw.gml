@@ -142,14 +142,14 @@ if(not_moved){
 
 if(attack == AT_TAUNT){
 	if(window == 1){
-		if(get_player_color(player) < 9){
+		if(get_player_color(player) < 9 && !secret_skins){
 			random_text = random_func_2(1, 9, true)
 		}else{
 			random_text = random_func_2(1, 3, true)
 		}
 	}
 	if(window == 3){
-		if(!torga_balling){
+		if(!torga_balling && !secret_skins){
 			if(get_player_color(player) < 9 || get_player_color(player) == 13){
 				if(random_text == 0){
 					draw_debug_text(x - 36, y - 60, "Skill issue")
@@ -213,8 +213,18 @@ if(attack == AT_TAUNT){
 					draw_debug_text(x - 92, y - 60, "PU PU V V L RI L GHT B A s")
 				}
 			}
-		}else{
+		}else if(torga_balling){
 			draw_debug_text(x - 38, y - 60, "Torga Balls")
+		}else if(secret_skins){
+			if(random_text == 0){
+				draw_debug_text(x - 44, y - 60, "Train harder")
+			}else if(random_text == 1){
+				draw_debug_text(x - 32, y - 60, "L, huge L")
+			}else if(random_text == 2){
+				draw_debug_text(x - 86, y - 60, "You serve zero purpose!")
+			}else{
+				draw_debug_text(x - 86, y - 60, "You serve zero purpose!")
+			}
 		}
 	}
 }
@@ -224,64 +234,66 @@ if(attack == AT_TAUNT){
 //indicator draw for bomb
 shader_start();
 
-with pHitBox {
-	if attack == AT_NSPECIAL && player == other.player {
-		if(instance_exists(player_id.waterBomb) && player == player_id.player){
-			if(player_id.waterBomb.strong){
-				draw_indicator('bomb', 0, 1);
-			}else{
-				draw_indicator('bomb', 0, 0);
-			}
-		}
+if(instance_exists(waterBomb)){
+	if(waterBomb.strong){
+		draw_indicator('bomb', 0, 1, waterBomb.x, waterBomb.y, waterBomb.current_owner);
+	}else{
+		draw_indicator('bomb', 0, 0, waterBomb.x, waterBomb.y, waterBomb.current_owner);
 	}
-	if attack == AT_FSPECIAL && hbox_num == 2 && !was_parried && player == other.player {
-		if(instance_exists(player_id.hurricane) && player == player_id.player){
-			if(player_id.hurricane.bomb_strong && player_id.hurricane.holding_bomb){
-				draw_indicator('bomb', 0, 1);
-			}else if(player_id.hurricane.holding_bomb){
-				draw_indicator('bomb', 0, 0);
-			}
-		}
+}
+if(instance_exists(hurricane)){
+	if(hurricane.bomb_strong && hurricane.holding_bomb){
+		draw_indicator('bomb', 0, 1, hurricane.x, hurricane.y, hurricane.current_owner);
+	}else if(hurricane.holding_bomb){
+		draw_indicator('bomb', 0, 0, hurricane.x, hurricane.y, hurricane.current_owner);
+	}else if(!hurricane.holding_bomb && hurricane.y >= -20){
+		draw_indicator('hurricane', 0, 0, hurricane.x, hurricane.y, hurricane.current_owner);
 	}
 }
 
 
 shader_end();
 
-#define draw_indicator(type, angle, index)
+#define draw_indicator(type, angle, index, temp_x, temp_y, current_owner)
 var offX = undefined;
 var offY = undefined;
 var offIndex = 0;
 var offRot = 0;
 var size = 0;
 
-if (y < view_get_yview() + 35) {
-    offX = x;
+if (temp_y < view_get_yview() + 35) {
+    offX = temp_x;
     offY = view_get_yview();
     offIndex = 0;
     offRot = 180;
-    if(abs(1 / ((view_get_yview() - y) / 32)) > 1){
+    if(abs(1 / ((view_get_yview() - temp_y) / 32)) > 1){
     	size = 1
     }else{
-    	size = lerp(0.5, 1, abs(1 / ((view_get_yview() - y) / 32)))
+    	size = lerp(0.5, 1, abs(1 / ((view_get_yview() - temp_y) / 32)))
     }
 }
 
-if (y < view_get_yview() + 35) {
+if (temp_y < view_get_yview() + 35) {
 	if (offX != undefined) {
-		draw_sprite_ext(sprite_get("offscreen_indicator"), offIndex, offX, offY + (size * 35), size, size, offRot, get_player_hud_color(player), 1);
+		draw_sprite_ext(sprite_get("offscreen_indicator"), offIndex, offX, offY + (size * 35), size, size, offRot, get_player_hud_color(current_owner), 1);
 		switch type {
 			case 'bomb':
 			draw_sprite_ext(sprite_get("article_offscreen"), index, offX, offY + (size * 35), size, size, 0, c_white, 1);
+			break;
+			case 'hurricane':
+			draw_sprite_ext(sprite_get("hurricane_offscreen"), index, offX, offY + (size * 35), size, size, 0, c_white, 1);
 			break;
 		}
 	}
 }else{
 	if (offX != undefined) {
-		draw_sprite_ext(sprite_get("offscreen_indicator"), offIndex, offX, offY, 1, 1, offRot, get_player_hud_color(player), 1);
+		draw_sprite_ext(sprite_get("offscreen_indicator"), offIndex, offX, offY, 1, 1, offRot, get_player_hud_color(current_owner), 1);
 		switch type {
 			case 'bomb':
 			draw_sprite_ext(sprite_get("article_offscreen"), index, offX, offY, 1, 1, 0, c_white, 1);
+			break;
+			case 'hurricane':
+			draw_sprite_ext(sprite_get("hurricane_offscreen"), index, offX, offY, 1, 1, 0, c_white, 1);
 			break;
 		}
 	}

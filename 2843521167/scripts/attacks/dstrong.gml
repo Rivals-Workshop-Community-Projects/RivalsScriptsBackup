@@ -1,6 +1,6 @@
 //Inksicle
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
-set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 5);
+set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
@@ -30,11 +30,17 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_poison_hit_med"));
 
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 28);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 7);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_SFX, asset_get("sfx_zetter_shine_charged"));
+
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSTRONG, 4);
 
@@ -118,8 +124,8 @@ set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 6);
 set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 65);
-set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 283);

@@ -126,7 +126,7 @@ switch(state){
         image_index = 2 + (vsp / player_id.max_fall);
         clone_state_cat = SC_NEUTRAL;
         vsp = vsp + player_id.gravity_speed;
-        hsp = clamp(hsp + (player_id.air_accel * 1.1 * player_id.clone_walk_direction),-1 * player_id.air_max_speed,player_id.air_max_speed); // Added Multipler to speed it up slightly
+       Apply_Air_Drift();
         //vsp = clamp(vsp,-8,player_id.max_fall);
         //Fast Fall Logic
         if(player_id.down_hard_pressed && sign(vsp) == 1 && player_id.attack == AT_EXTRA_1){
@@ -426,16 +426,17 @@ switch(state){
         	case 1: // Airborne
 	        	if(hsp > player_id.air_max_speed) {hsp *= 0.95;}
 	        	vsp = vsp + player_id.gravity_speed;
+	        	Apply_Air_Drift();
 	        	break;
         	default:
         		break;
         }
         //vsp = clamp(vsp,-8,player_id.max_fall);
-        if(state_timer < 5 && player_id.right_down){ spr_dir = 1}; // Face Right
-        if(state_timer < 5 && player_id.left_down){ spr_dir = -1}; // Face Left
-        if(state_timer < 5 && player_id.up_down){state = CL_DSPECIAL_UP;state_timer = 0;} // Go to Dspecial Up
-        if(state_timer < 5 && player_id.down_down && free && 
-        player_id.attack == AT_EXTRA_1){state = CL_DSPECIAL_DOWN;state_timer = 0} // Go to Dspecial Up
+        if(state_timer < 5 && (player_id.right_down || player_id.right_strong_pressed) && !player_id.left_strong_pressed){ spr_dir = 1}; // Face Right, Need to disable alt direction if drifting
+        if(state_timer < 5 && (player_id.left_down || player_id.left_strong_pressed) && !player_id.right_strong_pressed){ spr_dir = -1}; // Face Left, Need to disable alt direction if drifting
+        if(state_timer < 5 && (player_id.up_down || player_id.up_strong_pressed)){state = CL_DSPECIAL_UP;state_timer = 0;} // Go to Dspecial Up
+        if(state_timer < 5 && (player_id.down_down || player_id.down_strong_pressed)
+        && free && player_id.attack == AT_EXTRA_1){state = CL_DSPECIAL_DOWN;state_timer = 0} // Go to Dspecial Down
         
         
         if(state_timer = 4){
@@ -451,14 +452,16 @@ switch(state){
 				y = temp_y;
 				}
 			}
+		// Set into Throw upon successful hit
         if(player_id.clone_dspecial_hit == true){
     	clone_dspecial_hit = true; // Sets the variable on the player to the article
         state = CL_DTHROW; 
         state_timer = 0;
         sprite_index = dthrow_full_sprite;
         image_index = 0;} 
-        
+        // Animation Handlers
         if(state_timer > 7){image_index = 2 + (state_timer / 4);}
+        // Exit conditions
         if(state_timer > 26 && !free){state = CL_IDLE;state_timer = 0;}
         if(state_timer > 26 && free){state = CL_AIR_NEUTRAL;state_timer = 0;}
         break;
@@ -477,11 +480,11 @@ switch(state){
         	case 1: // Airborne
 	        	if(hsp > player_id.air_max_speed) {hsp *= 0.95;}
 	        	vsp = vsp + player_id.gravity_speed;
+	        	Apply_Air_Drift();
 	        	break;
         	default:
         		break;
         }
-        
         if(state_timer = 4){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	sound_play(asset_get("sfx_ori_spirit_flame_2"),false,noone,.5,.75);
@@ -520,6 +523,7 @@ switch(state){
         	case 1: // Airborne
 	        	if(hsp > player_id.air_max_speed) {hsp *= 0.95;}
 	        	vsp = vsp + player_id.gravity_speed;
+	        	Apply_Air_Drift();
 	        	break;
         	default:
         		break;
@@ -878,8 +882,13 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 	
 	// DSPECIAL GRAB
 	if( clone_dspecial_cooldown == 0 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL &&
-		(player_id.attack == AT_DSPECIAL || // If Player is using Dspecial.
-		(player_id.attack == AT_EXTRA_1 && player_id.attack_down ))){ // Allows her to grab by pressing attack
+		(
+		//(player_id.attack == AT_DSPECIAL && player_id.swap_nspec_dspec_input == true) || //If Player is using Dspecial without swapped inputs
+		//(player_id.attack == AT_NSPECIAL && player_id.swap_nspec_dspec_input == true) || //If Player is using Nspecial with swapped inputs
+		(player_id.attack == AT_EXTRA_1 && (player_id.attack_pressed // Attack Pressed
+		|| player_id.up_strong_pressed || player_id.down_strong_pressed // Any Strong Pressed
+		|| player_id.right_strong_pressed || player_id.left_strong_pressed) // Any Strong Pressed
+		))){
 		state = CL_DSPECIAL; state_timer = 0;
 	}
 	
@@ -904,8 +913,9 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 	
 	// Dspecial During actions while not in hitstun
     if(player_id.special_pressed && clone_dspecial_cooldown == 0 && clone_state_cat == SC_NEUTRAL && player_id.state_cat != SC_HITSTUN &&
-    player_id.down_down && !player_id.up_down && 
-    !player_id.left_down && !player_id.right_down){state = CL_DSPECIAL;state_timer = 0;}
+    ((player_id.down_down && player_id.swap_nspec_dspec_input == false) || // Normal Input, detects down and special held
+    (!player_id.down_down && player_id.swap_nspec_dspec_input == true)) // Swapped Input, detects down not held and special held
+    && !player_id.up_down && !player_id.left_down && !player_id.right_down){state = CL_DSPECIAL;state_timer = 0;}
 	
 	// Clone Assist
     if(player_id.clone_dspecial_assist = true && !(state == CL_FSPECIAL_AIR) && was_parried == false && was_hit == false){state = CL_FSPECIAL_AIR_TRAVEL;}
@@ -925,6 +935,12 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 		if(state_timer == state_timer_temp){
 	        sound_play(sound_temp,false,noone,volume_temp,pitch_temp ); // soundID,looping,panning,volume,pitch /
 		}
+}
+
+#define Apply_Air_Drift()
+{
+// This simulates Air drift for multiple states
+hsp = clamp(hsp + (player_id.air_accel * 1.1 * player_id.clone_walk_direction),-1 * player_id.air_max_speed,player_id.air_max_speed); // Added Multipler to speed it up slightly
 }
 /*
     Supersonic's Complex Hit Detection script v2

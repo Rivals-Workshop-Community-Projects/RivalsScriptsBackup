@@ -183,7 +183,30 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+//6 Level1
+rune_fspecial = 				has_rune("A");
+rune_rethrow = 				has_rune("B");
+rune_leek_move = 		has_rune("C");
+//rune_teleport = 				has_rune("D");
+rune_dair_spike = 			has_rune("D");
+rune_follow_hit = 			has_rune("E");
+rune_clone_jump = 		has_rune("F");
+//5 Level 2
+rune_follow_miku = 		has_rune("G");
+rune_attack = 				has_rune("H");
+rune_friction = 				has_rune("I");
+rune_nair = 					has_rune("J");
+rune_recovery_boost = has_rune("K");
+//4 Level 3
+rune_hit_reset = 			has_rune("L");
+rune_indestructible =	has_rune("M");
+rune_sentience = 			has_rune("N");
+rune_clairen = 				has_rune("O");
 
+
+if has_rune("I") {
+	ground_friction = .1;
+}
 
 
 

@@ -3,7 +3,7 @@
 
 
 if get_gameplay_time() <= 120 && voiced == 1 {
-
+sound_stop(sound_get("v_dowitdabear"))
 	if taunt_down {
 		sound_play(asset_get("sfx_gem_collect"));
 		voiced = 0
@@ -112,7 +112,7 @@ with (asset_get("oPlayer")) {
   	 	fx = spawn_hit_fx(x,y-char_height-60,302)
   	 	fx.pause = 2
   	 	fx.depth = depth + 4
-  	 	sound_play(asset_get("sfx_blow_weak2"),false, noone, 1, 1);
+  	 	sound_play(asset_get("sfx_buzzsaw_hit"),false, noone, 1, 1.2);
   	   }
   	 } 
   	 

@@ -45,6 +45,8 @@ draw_sprite_ext(sprite_get("tgp_icon"),timer/20,x+190,y+130,2,2,0,c_white,1);
 #macro BOX_SHIFT_COLOR_ALTS 8
 #macro BOX_WIN_QUOTE_ENABLE 9
 #macro BOX_INTRO_DIALOG_ENABLE 10
+#macro BOX_SWAP_INPUTS 11
+#macro BOX_NECO_PORTRAIT 12
 
 #macro BUTTON_NAME 0
 #macro BUTTON_IX 1
@@ -209,14 +211,10 @@ switch(draw_menu){
 	case DRAW_MENU_EXTRA_OPTIONS:
 	// Draw partial rectangle Underlay
 		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
-		textDraw(x + 14, y + 45, "fName", c_white, 18, 200, 1, false, 1, "Hover to enable / disable")
+		textDraw(x + 14, y + 45, "fName", c_white, 18, 200, 1, false, 1, "Press to enable / disable")
 		// Draw Text for status of each button
-		if(flag_win_quote_enabled){
-			textDraw(x + 50, y + 70, "fName", c_green, 18, 50, 1, false, 1, "Enabled");
-		}
-		else{
-			textDraw(x + 50, y + 70, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");
-		}
+		if(flag_win_quote_enabled){textDraw(x + 50, y + 70, "fName", c_green, 18, 50, 1, false, 1, "Enabled");}
+			else{textDraw(x + 50, y + 70, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");}
 		/*
 		if(flag_round_start_dialog){
 			textDraw(x + 50, y + 110, "fName", c_green, 18, 50, 1, false, 1, "Enabled");
@@ -225,9 +223,20 @@ switch(draw_menu){
 			textDraw(x + 50, y + 110, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");
 		}
 		*/
+		if(swap_nspec_dspec_input){textDraw(x + 150, y + 70, "fName", c_green, 18, 30, 1, false, 1, "Enabled");}
+			else{textDraw(x + 150, y + 70, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");}
+		if(portrait_to_use == 2){textDraw(x + 150, y + 110, "fName", c_green, 18, 30, 1, false, 1, "Enabled");}
+			else{textDraw(x + 150, y + 110, "fName", c_gray, 18, 50, 1, false, 1, "Disabled");}
+		
 		// Draw Buttons for extra Options
 		draw_menu_button(BOX_WIN_QUOTE_ENABLE);
 		//draw_menu_button(BOX_INTRO_DIALOG_ENABLE);
+		draw_menu_button(BOX_SWAP_INPUTS);
+		textDraw(x + 116, y + 67, "tinyFont", c_white, 8, 15, 1, false, 1, "SWAP NSPEC DSPEC");
+		
+		draw_menu_button(BOX_NECO_PORTRAIT);
+		textDraw(x + 116, y + 106, "tinyFont", c_white, 8, 15, 1, false, 1, "USE NECO ART");
+		
 		// Draw Exit Button
 		draw_menu_button(BOX_CLOSE_INTERAL_MENU);
 	break;

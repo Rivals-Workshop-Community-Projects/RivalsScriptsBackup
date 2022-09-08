@@ -65,18 +65,21 @@ sprite_change_offset("blue_bone_horizontal", 32, 64);
 sprite_change_offset("blue_bone_vertical", 32, 64);
 sprite_change_offset("bones", 58, 80);
 
+sprite_change_offset("bone_mask_vertical", 37, 64);
+sprite_change_offset("bone_mask_horizontal", 32, 64);
+
 //Gaster Blaster stuff
 sprite_change_offset("gaster_blaster", 50, 48);
-sprite_change_offset("blaster_ready", 50, 48);
-sprite_change_offset("blaster_firing", 50, 48);
+sprite_change_offset("gaster_blaster_ready", 50, 48);
+sprite_change_offset("gaster_blaster_firing", 50, 48);
+sprite_change_offset("gaster_blaster_beam", 632, 48);
 
-sprite_change_offset("gaster_blaster_beam", 50, 48);
-sprite_change_offset("gaster_blaster_beam_final", 632, 48);
+sprite_change_offset("blaster_beam", 0, 13);
+sprite_change_offset("blaster_beam_start", 0, 13);
+
 
 //Souls
-sprite_change_offset("red_soul", 24, 24);
 sprite_change_offset("blue_soul", 24, 24);
-
 sprite_change_offset("arrows", 45, 45);
 
 //diddy kong
@@ -101,7 +104,7 @@ sprite_change_offset("signsans", 18, 41);
 //set_victory_theme(sound_get("mus_win_sans")); - song that might play if you fight sans
 
 //getttttttttttttt dunked on!!!!!!!!!!!!!!!!
-set_victory_theme(sound_get("mus_win2_sans"));
+set_victory_theme(sound_get("mus_win_sans"));
 
 set_victory_bg(sprite_get( "v_background" ));
 
@@ -161,9 +164,14 @@ sprite_change_offset("t_taunt", 50, 80);
 
 //firing my laser
 sprite_change_offset("t_gaster_blaster", 50, 48);
-sprite_change_offset("t_blaster_ready", 50, 48);
-sprite_change_offset("t_blaster_firing", 50, 48);
-sprite_change_offset("t_gaster_blaster_beam_final", 632, 48);
+sprite_change_offset("t_gaster_blaster_ready", 50, 48);
+sprite_change_offset("t_gaster_blaster_firing", 50, 48);
+sprite_change_offset("t_gaster_blaster_beam", 632, 48);
+
+sprite_change_offset("t_blaster_beam", 0, 13);
+sprite_change_offset("t_blaster_beam_start", 0, 13);
 
 //trollganronpa
 sprite_change_offset("t_sansganronpa", 31, 0);
+
+user_event(3);

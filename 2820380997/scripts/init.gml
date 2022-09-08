@@ -208,25 +208,27 @@ battle_text = "*Let's have some fun!"; //
 */
 //This function takes the bit lengths you put in the previous function, in the same order, and outputs an array with the values you put in (assuming you put in the correct bit lengths), also in the same order.
 //split_var = split_synced_var(bit_length_1, bit_length_2...);
-split_var = split_synced_var(2,1,1);
+split_var = split_synced_var(2,1,1,1);
 //print(split_var);
 
 color_shift = 0; // Declare variable
 flag_win_quote_enabled = 0; // Declare variable
 flag_round_start_dialog = 0; // Declare variable
+swap_nspec_dspec_input = 0; // Declare Variable
 
 // Synced variable overwrite
 color_shift = split_var[0];
 flag_win_quote_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
+swap_nspec_dspec_input = split_var[3];
 
 //Results variable 
 countPlayers = 0;
-
 /*
 print("color_shift: " + string(color_shift) + string(get_gameplay_time())); // Color_Shift;
 print("flag_win_quote_enabled: " + string(flag_win_quote_enabled) + string(get_gameplay_time())); // WinQuote
 print("flag_round_start_dialog: "+ string(flag_round_start_dialog) + string(get_gameplay_time())); // Round Start Dialog
+print("swap_nspec_dspec_input: "+ string(swap_nspec_dspec_input) + string(get_gameplay_time())); // Round Start Dialog
 */
 
 // Reload on round start

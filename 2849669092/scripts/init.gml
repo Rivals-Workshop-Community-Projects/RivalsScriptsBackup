@@ -20,7 +20,11 @@ uspec_charge_speed = 0.35;
 grabbed = -4;
 interact_ver = false;
 
+//dream collection kirby support
 TCG_Kirby_Copy = 15;
+
+//steve death message
+steve_death_message = "Steve was kicked too hard";
 
 explosion_effect = hit_fx_create( sprite_get("explosion"), 45 );
 
@@ -54,7 +58,7 @@ jump_speed = 11;
 short_hop_speed = 5;
 djump_speed = 8;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;

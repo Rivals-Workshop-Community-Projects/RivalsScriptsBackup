@@ -1,7 +1,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "1.6.3";
+patch_ver = "1.7";
 patch_day = "4";
 patch_month = "SEPT";
 

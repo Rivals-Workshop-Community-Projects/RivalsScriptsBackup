@@ -80,4 +80,10 @@ if (attack == AT_NSPECIAL){
             other.supercharged = true;
         }
     }
+    
+    var flash_time = 45;
+	
+	if (hitbox_timer > length - 16){
+		visible = !(flash_time && hitbox_timer % 8 < 4);
+	}
 }

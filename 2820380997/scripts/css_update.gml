@@ -10,6 +10,8 @@
 #macro BOX_SHIFT_COLOR_ALTS 8
 #macro BOX_WIN_QUOTE_ENABLE 9
 #macro BOX_INTRO_DIALOG_ENABLE 10
+#macro BOX_SWAP_INPUTS 11
+#macro BOX_NECO_PORTRAIT 12
 
 #macro BUTTON_NAME 0
 #macro BUTTON_IX 1
@@ -90,6 +92,23 @@ if(last_frame_color_alt != get_player_color(player)){
 	sound_stop(asset_get( "mfx_change_color" ));
 	sound_play(asset_get( "mfx_coin" ),false,noone,.9,(last_frame_color_alt * .033) + .25);
 }
+
+//Handle setting portraits
+switch(portrait_to_use){
+	case 0:
+		set_ui_element(UI_CHARSELECT, get_char_info(player, INFO_CHARSELECT));
+	break;
+	case 1: // Ninetailed Roekoko
+		
+	break;
+	case 2: // Neco Roekoko
+		set_ui_element(UI_CHARSELECT, sprite_get("portrait_neco_roe_css"));
+	break;
+	default:
+	break;
+}
+
+
 // Sub Menu Logic
 //print(draw_menu)
 switch(draw_menu){
@@ -242,12 +261,20 @@ switch(draw_menu){
 	break;
 	
 	case DRAW_MENU_EXTRA_OPTIONS:
-		// Options Buttons
+		// Options Buttons Detection
 		current_box_draw = BOX_WIN_QUOTE_ENABLE;
 	    Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
+		
 		//current_box_draw = BOX_INTRO_DIALOG_ENABLE;
 	    //Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
 		
+		current_box_draw = BOX_SWAP_INPUTS;
+		Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
+		
+		current_box_draw = BOX_NECO_PORTRAIT;
+		Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
+		
+		// Set Buton Press Actions
 		if(menu_box[BOX_WIN_QUOTE_ENABLE][BUTTON_PRESSED] == true){
 			if(flag_win_quote_enabled == false){flag_win_quote_enabled = true;}
 			else flag_win_quote_enabled = false;
@@ -264,6 +291,21 @@ switch(draw_menu){
 	        //print("flag_round_start_dialog: " + string(flag_round_start_dialog));
 	    }
 	    */
+	    if(menu_box[BOX_SWAP_INPUTS][BUTTON_PRESSED] == true){
+			if(swap_nspec_dspec_input == false){swap_nspec_dspec_input = true;}
+			else swap_nspec_dspec_input = false;
+	        menu_box[@BOX_SWAP_INPUTS][@BUTTON_PRESSED] = false;
+	        menu_box[@BOX_SWAP_INPUTS][@BUTTON_CURSOR_HOVER_TIMER] = 0;
+	        //print("flag_win_quote_enabled: " + string(flag_win_quote_enabled));
+		}
+		if(menu_box[BOX_NECO_PORTRAIT][BUTTON_PRESSED] == true){
+			if(portrait_to_use == 2){portrait_to_use = 0;}
+			else portrait_to_use = 2;
+	        menu_box[@BOX_NECO_PORTRAIT][@BUTTON_PRESSED] = false;
+	        menu_box[@BOX_NECO_PORTRAIT][@BUTTON_CURSOR_HOVER_TIMER] = 0;
+	        //print("flag_win_quote_enabled: " + string(flag_win_quote_enabled));
+		}
+		
 		// Exit Button
 	    current_box_draw = BOX_CLOSE_INTERAL_MENU;
 	    Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
@@ -301,10 +343,11 @@ if(get_player_color(player) == 27){
 /* Synced Variable should account for these. We have 32 bits to work with.
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
 2. Status of Win Quotes Enabled - 1 bit
-3. Status of Round Start Dialog Enabled - 1 bit 
+3. Status of Round Start Dialog Enabled - 1 bit
+4. Swap Inputs - 1 bit
 */
 
-generated_var = generate_synced_var(color_shift,2,flag_win_quote_enabled,1,flag_round_start_dialog,1)
+generated_var = generate_synced_var(color_shift,2,flag_win_quote_enabled,1,flag_round_start_dialog,1,swap_nspec_dspec_input,1,portrait_to_use,2)
 set_synced_var(player, real(generated_var));
 //print(generated_var);
 

@@ -1090,7 +1090,7 @@ if(attack == AT_USPECIAL){
 				spr_dir = -1
 			}
 		}
-		if(window_timer == 20){
+		if(window_timer == 20 && !hitpause){
 			if(instance_exists(waterBomb) && teleport){
 				if(waterBomb.state == 1){
 					vsp = -12

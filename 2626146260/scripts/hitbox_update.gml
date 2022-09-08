@@ -1,5 +1,4 @@
 ///
-/*
 if attack == AT_EXTRA_1 && hbox_num == 1 {
  slashc = hit_fx_create( sprite_get( "slashc" ), 20 );
  
@@ -7,8 +6,8 @@ var heal_player = instance_place(x, y, oPlayer)
 prevheal_player = 0
 if (heal_player != noone) && heal_player.id != player_id && hitbox_timer > 0 && heal_player != prevheal_player
 && heal_player.visible == true{
-	create_hitbox(AT_EXTRA_1, 3 , heal_player.x, heal_player.y - 40)
-	spawn_hit_fx( floor(heal_player.x), floor(heal_player.y) - 40, slashc)
+	create_hitbox(AT_EXTRA_1, 3 , heal_player.x, player_id.y - 40)
+	spawn_hit_fx( floor(heal_player.x), floor(player_id.y) - 40, slashc)
 	sound_play(asset_get("sfx_bird_sidespecial_start"))
 	hitbox_timer = -6
 	shake_camera(2,5)
@@ -36,13 +35,14 @@ if hitbox_timer == 1 {
     
 }
 
-*/
-
 
 if attack == AT_EXTRA_1 && hbox_num == 3 {
- SC = hit_fx_create( sprite_get( "SC" ), 12 );
+ SC = hit_fx_create( sprite_get( "SC" ), 16 );
  if hitbox_timer == 19 {
-          spawn_hit_fx(x, y - 6, SC)
+          fx = spawn_hit_fx(x, y - 6, SC)
+          fx.spr_dir = 0.8*spr_dir 
+          fx.image_yscale = 0.8
+          fx.draw_angle = random_func(1,360,0)
            sound_play(sound_get("SpaceCut")) 
  }
  

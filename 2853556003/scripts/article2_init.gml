@@ -92,6 +92,8 @@ last_move = noone
 last_group = 0
 destroy = false
 
+temp_hitbox_angle = 0
+
 //runes
 G_modifier = player_id.G_modifier
 

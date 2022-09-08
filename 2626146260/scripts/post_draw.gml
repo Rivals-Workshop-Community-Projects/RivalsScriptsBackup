@@ -13,7 +13,7 @@ if state == PS_PARRY && state_timer < 20{
 }
 
 if state_cat == SC_HITSTUN {
-		draw_sprite_ext(sprite_index, image_index, x  , y  , spr_dir, 1, 0 , c_red , 0.3);
+		draw_sprite_ext(sprite_index, image_index, x  , y - triggered*15 , spr_dir, 1, 0 , c_red , 0.3);
 }
 
 

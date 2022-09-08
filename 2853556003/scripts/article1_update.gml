@@ -172,7 +172,15 @@ if(state == 0){
 		    				other.bomb_strong = false
 		    			}
 		    			other.current_owner = other.player_id.waterBomb.current_owner
-		    			sound_play(sound_get("sfx_explosion_water_small"))
+		    			
+		    			if(other.current_owner == other.player_id){
+		    				sound_play(sound_get("sfx_explosion_water_small"))
+		    			}else{
+		    				with(other.player_id){
+		    					sound_play(sound_get("sfx_explosion_water_small"), false, 0)
+		    				}
+		    			}
+		    			
 		    			instance_destroy(other.player_id.waterBomb);
 		    		}
 		    	}else if(attack != AT_DSPECIAL && attack != AT_FSPECIAL && attack != AT_NSPECIAL && other.state != 1){
@@ -217,12 +225,18 @@ if(state == 0){
 		    	if(player_id.url == 2853556003 && attack == AT_NSPECIAL && hbox_num == 1 && !other.holding_bomb){
 		    		other.holding_bomb = true
 		    		other.current_owner = player
-		    		if(instance_exists(other.hurricane_hitbox)){
+		    		if(instance_exists(other.hurricane_hitbox)){ 
 						other.hurricane_hitbox.destroyed = true
 					}
 		    		player_id.waterBomb.destroy = true
 		    		destroyed = true
-		    		sound_play(sound_get("sfx_explosion_water_small"))
+	    			if(other.current_owner == other.player_id){
+	    				sound_play(sound_get("sfx_explosion_water_small"))
+	    			}else{
+	    				with(other.player_id){
+	    					sound_play(sound_get("sfx_explosion_water_small"), false, 0)
+	    				}
+	    			}
 		    	}else{
 			    	if(other.holding_bomb && other.state != 1){
 			    		other.state = 1
@@ -328,6 +342,9 @@ if(hsp < 1 && hsp > -1 && lifetime > 60){
 	}
 }
 
+if(!player_id.bomb_hurricane){
+	bomb_hurricane = false
+}
 
 
 //Make time progress

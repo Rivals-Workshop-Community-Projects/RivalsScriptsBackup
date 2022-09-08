@@ -1,3 +1,11 @@
+if (has_skin()) { //is there a skin equipped?
+    sprite_index = skin_sprite(sprite_index); //get the skinned sprite
+    basic_animations(); //correct the idle, walk, and dash animations
+}
+
+//script for handling skins made by supersonicnk
+if (trolled) set_skin("t");
+
 switch (state){
     case PS_IDLE:
         //code here can change the sprite_index and image_index while in the idle state
@@ -6,89 +14,140 @@ switch (state){
     default: break;
 }
 
-if (trolled){
-    //Ground
-    changeAnim(spr_idle_troll, sprite_get("idle"));
-    changeAnim(spr_crouch_troll, sprite_get("crouch"));
-    changeAnim(spr_walk_troll, sprite_get("walk"));
-    changeAnim(spr_walkturn_troll, sprite_get("walkturn"));
-    changeAnim(spr_dash_troll, sprite_get("dash"));
-    changeAnim(spr_dashstart_troll, sprite_get("dashstart"));
-    changeAnim(spr_dashstop_troll, sprite_get("dashstop"));
-    changeAnim(spr_dashturn_troll, sprite_get("dashturn"));
+#define sprite_get_skinned
+var sprite = argument[0];
+var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+
+///Gets a skinned sprite based on its name.
+var obj = (object_index != oPlayer && object_index != oTestPlayer) ? player_id : id;
+with obj if (_ssnksprites.skin_active != -1 || argument_count > 1)  {
     
-    //Air
-    changeAnim(spr_jumpstart_troll, sprite_get("jumpstart"));
-    changeAnim(spr_jump_troll, sprite_get("jump"));
-    changeAnim(spr_doublejump_troll, sprite_get("doublejump"));
-    changeAnim(spr_walljump_troll, sprite_get("walljump"));
+    var skindata = argument_count > 1 ? -1 : _ssnksprites.skins_n[_ssnksprites.skin_active];
+    if is_string(skin) {
+        if skin in _ssnksprites.skins skindata = variable_instance_get(_ssnksprites.skins, skin);
+        else print(`Skin ${skin} not found.`);
+    } else if is_number(skin) {
+        if skin < array_length(_ssnksprites.skins_n) skindata = _ssnksprites.skins_n[skin];
+        else print(`Skin ${skin} not found.`);
+    }
+    if !is_array(skindata) return sprite_get(sprite);
+    var skinname = skindata[0];
+    var suffix = skindata[1];
+    var name_raw = skindata[2];
+    var cache = variable_instance_get(_ssnksprites.cache,name_raw, -1);
+    var spr;
+    if sprite in cache return variable_instance_get(cache,sprite);
+    spr = sprite_get(sprite);
     
-    changeAnim(spr_pratfall_troll, sprite_get("pratfall"));
-    changeAnim(spr_land_troll, sprite_get("land"));
-    changeAnim(spr_landinglag_troll, sprite_get("landinglag"));
-    
-    //Dodge
-    changeAnim(spr_parry_troll, sprite_get("parry"));
-    changeAnim(spr_roll_forward_troll, sprite_get("roll_forward"));
-    changeAnim(spr_roll_backward_troll, sprite_get("roll_backward"));
-    changeAnim(spr_airdodge_troll, sprite_get("airdodge"));
-    changeAnim(spr_airdodge_waveland_troll, sprite_get("waveland"));
-    changeAnim(spr_tech_troll, sprite_get("tech"));
-    
-    //Hurt
-    changeAnim(spr_hurt_troll, sprite_get("hurt"));
-    changeAnim(spr_bighurt_troll, sprite_get("bighurt"));
-    changeAnim(spr_hurtground_troll, sprite_get("hurtground"));
-    changeAnim(spr_downhurt_troll, sprite_get("downhurt"));
-    //Attack
-    changeAnim(spr_jab_troll, sprite_get("jab"));
-    changeAnim(spr_dattack_troll, sprite_get("dattack"));
-    changeAnim(spr_ftilt_troll, sprite_get("ftilt"));
-    changeAnim(spr_dtilt_troll, sprite_get("dtilt"));
-    changeAnim(spr_utilt_troll, sprite_get("utilt"));
-    changeAnim(spr_nair_troll, sprite_get("nair"));
-    changeAnim(spr_fair_troll, sprite_get("fair"));
-    changeAnim(spr_bair_troll, sprite_get("bair"));
-    changeAnim(spr_uair_troll, sprite_get("uair"));
-    changeAnim(spr_dair_troll, sprite_get("dair"));
-    changeAnim(spr_fstrong_troll, sprite_get("fstrong"));
-    changeAnim(spr_ustrong_troll, sprite_get("ustrong"));
-    changeAnim(spr_dstrong_troll, sprite_get("dstrong"));
-    
-    changeAnim(spr_nspecial_troll, sprite_get("nspecial"));
-    changeAnim(spr_nspecial_air_troll, sprite_get("nspecial_air"));
-    changeAnim(spr_fspecial_troll, sprite_get("fspecial"));
-    changeAnim(spr_fspecial_air_troll, sprite_get("fspecial_air"));
-    changeAnim(spr_uspecial_troll, sprite_get("uspecial"));
-    changeAnim(spr_uspecial_air_troll, sprite_get("uspecial_air"));
-    changeAnim(spr_dspecial_troll, sprite_get("dspecial"));
-    changeAnim(spr_dspecial_air_troll, sprite_get("dspecial_air"));
-    
-    changeAnim(spr_taunt_troll, sprite_get("taunt"));
+    if string(spr) in _ssnksprites.names {
+        var sproot = sprite_get(`${suffix? //if suffix
+                                    sprite+skinname: //suffix
+                                    skinname+sprite}`); //prefix
+        if sproot == asset_get('net_disc_spr') { //no X allowed
+            variable_instance_set(cache,sprite,spr);
+            return spr;
+        }
+        if sprite_get_xoffset(sproot) == 0 && sprite_get_yoffset(sproot) == 0 {
+            sprite_change_offset(sproot,sprite_get_xoffset(spr),sprite_get_yoffset(spr));
+        }
+        variable_instance_set(cache,sprite,sproot); //put sprite in cache
+        return sproot;
+    } else {
+        variable_instance_set(cache,sprite,spr);
+        return spr;
+    }
+}
+return sprite_get(sprite);
+
+#define skin_sprite
+var spr_index = argument[0];
+var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+
+///Gets a skinned sprite by its unskinned sprite index.
+var str = `${spr_index}`;
+var obj = (object_index != oPlayer && object_index != oTestPlayer) ? player_id : id;
+with obj if (_ssnksprites.skin_active != -1 || argument_count > 1)  {
+    var skindata = argument_count > 1 ? -1 : _ssnksprites.skins_n[_ssnksprites.skin_active];
+    if is_string(skin) {
+        if skin in _ssnksprites.skins skindata = variable_instance_get(_ssnksprites.skins, skin);
+        else print(`Skin ${skin} not found.`);
+    } else if is_number(skin) {
+        if skin < array_length(_ssnksprites.skins_n) && skin >= 0 skindata = _ssnksprites.skins_n[skin];
+        else print(`Skin #${skin} out of bounds.`);
+    }
+    if !is_array(skindata) return(spr_index);
+    var skinname = skindata[0];
+    var suffix = skindata[1];
+    var name_raw = skindata[2];
+    var cache = variable_instance_get(_ssnksprites.cache,name_raw, -1);
+    if (str in cache) return variable_instance_get(cache,str);
+    if (str in _ssnksprites.names) {
+        var sprname = variable_instance_get(_ssnksprites.names,str);
+        //var sproot = sprite_get(`${variable_instance_get(_ssnksprites.names,str)+_ssnksprites.skins[_ssnksprites.skin_active]}`);
+        var sproot = sprite_get(`${suffix? //if suffix
+                                    sprname+skinname: //suffix
+                                    skinname+sprname}`); //prefix
+        if sproot == asset_get('net_disc_spr') { //no X allowed
+            variable_instance_set(cache,str,spr_index);
+            return spr;
+        }
+        if sprite_get_xoffset(sproot) == 0 && sprite_get_yoffset(sproot) == 0 {
+            sprite_change_offset(sproot,sprite_get_xoffset(spr_index),sprite_get_yoffset(spr_index));
+        }
+        variable_instance_set(cache,str,sproot); //put sprite in cache
+        return sproot;
+    } else {
+        variable_instance_set(cache,str,spr_index);
+        return spr_index;
+    }
+}
+return spr_index;
+
+#define basic_animations()
+/// Run this after changing the sprite_index.
+// Corrects certain animations to be how they normally would be.
+switch (state){
+    case PS_IDLE:
+    case PS_RESPAWN:
+    case PS_SPAWN:
+        image_index = state_timer*idle_anim_speed;
+    break;
+    case PS_WALK:
+        image_index = state_timer*walk_anim_speed;
+    break;
+    case PS_DASH:
+        image_index = state_timer*dash_anim_speed;
+    break;
 }
 
-//Handle certain looping animations
-if (sprite_index == spr_idle_troll){
-    var frames = 10;
-    var frame_dur = 8;
-    image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
-}
-if (sprite_index == spr_walk_troll){
-    var frames = 12;
-    var frame_dur = 4;
-    image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
-}
-if (sprite_index == spr_dash_troll){
-    var frames = 6;
-    var frame_dur = 4;
-    image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
+#define set_skin(skin)
+///Sets the active skin. You can supply a name or an index.
+var obj = (object_index != oPlayer && object_index != oTestPlayer) ? player_id : id;
+with obj {
+    if (is_string(argument[0])) {
+        //_ssnksprites.skin_active = array_find_index(_ssnksprites.skins,skin);
+        var sskin = -1;
+        if argument[0] in _ssnksprites.skins {
+            _ssnksprites.skin_active = variable_instance_get(_ssnksprites.skins, argument[0])[@3];
+        }
+        else print(`Skin ${skin} not found.`);
+    } else if (is_number(argument[0])) {
+        
+        if (_ssnksprites.skin_active >= array_length(_ssnksprites.skins_n)) print(`${skin} is out of bounds of the skin array. [0..${array_length(_ssnksprites.skins_n)-1}] inclusive. (-1 to disable skin.)`);
+        else _ssnksprites.skin_active = skin;
+    }
 }
 
-#define changeAnim
-
-var old_spr = argument[1];
-var new_spr = argument[0];
-
-if (sprite_index == old_spr && old_spr != new_spr){
-    sprite_index = new_spr;
+#define get_skin()
+///Gets the active skin. -1 when no skin is active.
+if object_index != oPlayer && object_index != oTestPlayer {
+    return player_id._ssnksprites.skin_active;
 }
+return _ssnksprites.skin_active;
+
+#define has_skin()
+///Shortcut for get_skin() != -1.
+if object_index != oPlayer && object_index != oTestPlayer {
+    return player_id._ssnksprites.skin_active != -1;
+}
+return _ssnksprites.skin_active != -1;

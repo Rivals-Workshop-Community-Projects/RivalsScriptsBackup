@@ -107,7 +107,7 @@ set_color_profile_slot( 7, 6, 105, 109, 112 ); //Reds
 set_color_profile_slot( 7, 7, 99, 75, 30 ); //Browns
 
 // gold
-set_color_profile_slot( 8, 0, 165, 144, 132 ); //Greys
+set_color_profile_slot( 8, 0, 204, 115, 66 ); //Greys
 set_color_profile_slot( 8, 1, 244, 245, 249 ); //Body light
 set_color_profile_slot( 8, 2, 224, 189, 137 ); //Body dark
 set_color_profile_slot( 8, 3, 255, 161, 20 ); //Blues dark

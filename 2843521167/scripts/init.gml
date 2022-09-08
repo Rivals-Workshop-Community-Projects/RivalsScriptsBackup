@@ -10,6 +10,10 @@ reflectHit = false;
 //Kirby Copy Ability
 TCG_Kirby_Copy = 6;
 
+//Po and Gumbo
+pot_compat_variable = sprite_get("pastelle_food");
+pot_compat_text = "Rainbow Gelatin";
+
 char_height = 52;
 idle_anim_speed = .13;
 crouch_anim_speed = .17;

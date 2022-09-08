@@ -79,9 +79,6 @@ switch (attack){
 			with (oPlayer) {
 			    if (("mamizou_mark_id" in self) && mamizou_mark_id != noone) {
 			        if (mamizou_mark_id == other.id) {
-			    		if (mamizou_marked_temp.hitstun > 0) {
-			    			uspecial_hitstun = true;
-			    		}
 			        	with (other) {
 			        		spawn_hit_fx(floor(other.x), floor(other.y), 311 )
 			        	}
@@ -90,9 +87,6 @@ switch (attack){
 			}
 		    with (obj_article2) {
 		        if (("mamizou_mark_id" in self) && mamizou_mark_id == other.id) {	
-		    		if (mamizou_marked_temp.hitstun > 0) {
-		    			uspecial_hitstun = true;
-		    		}
 		        	with (other) {
 			        	spawn_hit_fx(floor(other.x), floor(other.y), 311 )
 		        	}

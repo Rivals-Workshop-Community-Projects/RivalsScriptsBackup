@@ -185,10 +185,6 @@ if (anti_op) {
 if (state == PS_SPAWN) {
 	match_start += -1;
 	if (match_start > 0) && (times_pressed >= pressed_required) && (!deed_is_done) {
-		/*no = true;
-		sound_play(sound_get("sfx_sanstalk"));
-		deed_is_done = true;
-		*/
 		trolled = true;
 	}
 }
@@ -203,236 +199,22 @@ if (match_start > 0) {
 if (trolled) {
 	//set_victory_theme(sound_get("mus_win_troll"));
 	guiltySprite = sprite_get("t_sansganronpa");
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam_final"));
-	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam_final"));
-	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam_final"));
-	set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam_final"));
+	//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam"));
+	//set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam"));
+	//set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam"));
+	//set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam"));
 }
-
-/*
-if (hard_mode) {
-	hard_alt_timer += 1;
-	
-	if (hard_alt_timer == 4) {
-		hard_alt *= -1;
-		hard_alt_timer = 0;
-		take_damage(player, -1, -5);
-	}
-	
-	if (hard_alt >= 0) {
-		set_color_profile_slot(get_player_color(player), 0, 132, 255, 242); //Jacket
-		set_color_profile_slot(get_player_color(player), 1, 185, 188, 197); //Jacket fur
-		set_color_profile_slot(get_player_color(player), 2, 162, 111, 140); //Slippers
-	}
-	if (hard_alt <= 0) {
-		set_color_profile_slot(get_player_color(player), 0, 255, 255, 64); //Jacket
-		set_color_profile_slot(get_player_color(player), 1, 185, 188, 197); //Jacket fur
-		set_color_profile_slot(get_player_color(player), 2, 162, 111, 140); //Slippers
-	}
-	
-	dash_speed = hard_dash;
-	initial_dash_speed = hard_initialdash;
-	walk_speed = hard_walk;
-	ground_friction = hard_groundfric;
-	leave_ground_max = hard_groundmax;
-	max_jump_hsp = hard_jumpmax;
-	air_max_speed = hard_airmax;
-	max_djumps = 99999999;
-	knockback_adj = 0.90;
-	prat_land_time = 0;
-	fspecial_select_min = 10;
-	air_dodge_speed = 8;
-	air_dodge_startup_frames = 0;
-	air_dodge_active_frames = 4;
-	air_dodge_recovery_frames = 2;
-	
-	if (state == PS_AIR_DODGE  && state_timer == 13) {
-		set_attack(PS_IDLE_AIR);
-		has_airdodge = false;
-	}
-	
-	set_victory_theme(sound_get("sansvictory2")); // geeettttttt dunked on!!!
-	
-	set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 2);
-	
-	set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_DAIR, 2, AG_WINDOW_HAS_WHIFFLAG, 0);
-	
-	set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_DSTRONG, 7, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_USTRONG, 7, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 3);
-	
-	set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 3);
-	
-	set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 0);
-	set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 6);
-	set_window_value(AT_NAIR, 2, AG_WINDOW_SFX_FRAME, 1);
-	set_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 8);
-	set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 0);
-	set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_UAIR, 2, AG_WINDOW_VSPEED_TYPE, 2);
-	set_window_value(AT_UAIR, 2, AG_WINDOW_VSPEED, -6);
-	
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 5);
-	set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 5);
-	
-	set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 1);
-	set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_FSTRONG, 7, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_FSTRONG, 8, AG_WINDOW_LENGTH, 1);
-	
-	set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 1);
-	set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 2);
-	
-	set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WINDOW_CREATION_FRAME, 1);
-	set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 2);
-	set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_LENGTH, 2);
-	
-	set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 1);
-	set_window_value(AT_BAIR, 4, AG_WINDOW_LENGTH, 1);
-	
-	set_hitbox_value(AT_EXTRA_1, 7, HG_PROJECTILE_IS_TRANSCENDENT, true);
-	set_hitbox_value(AT_EXTRA_1, 8, HG_PROJECTILE_IS_TRANSCENDENT, true);
-	set_hitbox_value(AT_EXTRA_1, 10, HG_PROJECTILE_IS_TRANSCENDENT, true);
-	set_hitbox_value(AT_EXTRA_1, 12, HG_PROJECTILE_IS_TRANSCENDENT, true);
-}
-*/
-
-/*
-with (oPlayer) {
-	if (bone_pause && state_cat != SC_HITSTUN && state != PS_TUMBLE) {
-		bone_pause_timer++;
-		
-		if (bone_pause_timer < 2) {
-			hitpause = 2;
-			hitstop_total = 2;
-		}
-		
-		if (bone_pause_timer >= 2) {
-			hitpause = 0;
-			bone_pause = false;
-		}
-	}
-}
-*/
-
-
-/*
-with (oPlayer) {
-	if (kr == true && kr_id == other.id) {
-		kr_timer++;
-		kr_dmg_timer++;
-		gravity_speed = soul_grav;
-		dash_speed = soul_dash;
-		walk_speed = soul_walk;
-		
-		if (state_cat != SC_HITSTUN) {
-			if (hsp >= 5) {
-				hsp = 5;
-			}
-			
-			if (hsp <= -5) {
-				hsp = -5;
-			}
-		}
-			
-		outline_color = [128, 0, 128];
-		init_shader();
-			
-		if (kr_dmg_timer >= kr_dmg_time) {
-			take_damage(player, -1, 1);
-			kr_dmg_timer = 0;
-		}
-			
-		if (kr_timer >= kr_time) {
-			outline_color = [0, 0, 0];
-			init_shader();
-			kr_timer = 0;
-			kr_dmg_timer = 0;
-			kr = false;
-		}
-		if (state == PS_SPAWN || state == PS_RESPAWN || state == PS_DEAD){
-			outline_color = [0, 0, 0];
-			init_shader();
-			kr_timer = 0;
-			kr_dmg_timer = 0;
-			kr = false;
-		}
-    }
-    if (!kr) {
-    	gravity_speed = actual_grav;
-    	dash_speed = actual_dash;
-    	walk_speed = actual_walk;
-    }
-}
-*/
 
 with (asset_get("oPlayer")){
 	var sansgrabtime = 0;
 	sansgrabtime++;
 	
-	if (sansgrabtime >= 70) {
+	if (sansgrabtime >= 70 || 
+	state_cat == SC_GROUND_NEUTRAL ||
+	state_cat == SC_AIR_NEUTRAL) {
 		grabbed = 0;
 		grabbed_id = noone;
 	}
-    if (state_cat == SC_GROUND_NEUTRAL) {
-		grabbed = 0;
-    	grabbed_id = noone;
-    }
-    if (state_cat == SC_AIR_NEUTRAL) {
-		grabbed = 0;
-    	grabbed_id = noone;
-    }
 }
 
 var bone_height = normal_height;

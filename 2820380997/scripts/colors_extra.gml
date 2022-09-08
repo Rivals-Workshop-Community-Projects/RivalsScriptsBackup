@@ -106,6 +106,26 @@ set_color_profile_slot( 7, 5, 222, 218, 218 ); //Soul Fire 2
 set_color_profile_slot( 7, 6, 240, 142, 67 ); //Soul Fire 1
 set_color_profile_slot( 7, 7, 244, 112, 133 ); //Pawpads
 
+// Azamuku
+set_color_profile_slot( 8, 0, 251, 234, 216 ); //Fur
+set_color_profile_slot( 8, 1, 56, 38, 53 ); //Hair
+set_color_profile_slot( 8, 2, 177, 65, 77 ); //Kimono Main
+set_color_profile_slot( 8, 3, 255, 214, 94 ); //Kimono Accent
+set_color_profile_slot( 8, 4, 56, 38, 53 ); //Sash and Anklet
+set_color_profile_slot( 8, 5, 207, 0, 173 ); //Soul Fire 2
+set_color_profile_slot( 8, 6, 63, 225, 234 ); //Soul Fire 1
+set_color_profile_slot( 8, 7, 251, 234, 216 ); //Pawpads
+
+// Cybernetic Soldier
+set_color_profile_slot( 9, 0, 228, 124, 72 ); //Fur
+set_color_profile_slot( 9, 1, 146, 83, 51 ); //Hair
+set_color_profile_slot( 9, 2, 72, 81, 89 ); //Kimono Main
+set_color_profile_slot( 9, 3, 35, 42, 36 ); //Kimono Accent
+set_color_profile_slot( 9, 4, 49, 42, 37 ); //Sash and Anklet
+set_color_profile_slot( 9, 5, 238, 145, 88 ); //Soul Fire 2
+set_color_profile_slot( 9, 6, 175, 231, 137 ); //Soul Fire 1
+set_color_profile_slot( 9, 7, 239, 156, 89 ); //Pawpads
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

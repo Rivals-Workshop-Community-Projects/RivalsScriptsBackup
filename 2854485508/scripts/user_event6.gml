@@ -96,7 +96,7 @@ switch (enem_id) {
                     jump_down = state == PS_JUMPSQUAT;
                     
                     var decision_random = 0;
-                    if (player_id.hitstun <= 0) {
+                    if (player_id.state_cat != SC_HITSTUN) {
                         player_id_hitstun = 0;
                         //Moving
                         ai_move_timer ++;
@@ -238,7 +238,7 @@ switch (enem_id) {
                     sprite_index = enemy_sprite_get(spr_name, "hurt");
                     image_index += state_timer * 0.25;
                 }
-                if (state == PS_IDLE && player_id.hitstun > 0) {
+                if (state == PS_IDLE && (player_id.state_cat == SC_HITSTUN && player_id.state != PS_TUMBLE)) {
                     sprite_index = enemy_sprite_get(spr_name, "help");
                     image_index += state_timer * 0.3;
                 }

@@ -116,15 +116,15 @@ set_color_profile_slot( 8, 5, 238, 145, 88 ); //Soul Fire 2
 set_color_profile_slot( 8, 6, 165, 205, 234 ); //Soul Fire 1
 set_color_profile_slot( 8, 7, 238, 235, 194 ); //Pawpads
 
-// Cybernetic Soldier
-set_color_profile_slot( 9, 0, 228, 124, 72 ); //Fur
-set_color_profile_slot( 9, 1, 146, 83, 51 ); //Hair
-set_color_profile_slot( 9, 2, 72, 81, 89 ); //Kimono Main
-set_color_profile_slot( 9, 3, 35, 42, 36 ); //Kimono Accent
-set_color_profile_slot( 9, 4, 49, 42, 37 ); //Sash and Anklet
-set_color_profile_slot( 9, 5, 238, 145, 88 ); //Soul Fire 2
-set_color_profile_slot( 9, 6, 175, 231, 137 ); //Soul Fire 1
-set_color_profile_slot( 9, 7, 239, 156, 89 ); //Pawpads
+// Graveyard Keeper
+set_color_profile_slot( 9, 0, 250, 251, 255 ); //Fur
+set_color_profile_slot( 9, 1, 34, 35, 54 ); //Hair
+set_color_profile_slot( 9, 2, 152, 178, 181 ); //Kimono Main
+set_color_profile_slot( 9, 3, 152, 178, 181 ); //Kimono Accent
+set_color_profile_slot( 9, 4, 128, 36, 40 ); //Sash and Anklet
+set_color_profile_slot( 9, 5, 250, 251, 255 ); //Soul Fire 2
+set_color_profile_slot( 9, 6, 128, 36, 40 ); //Soul Fire 1
+set_color_profile_slot( 9, 7, 128, 36, 40 ); //Pawpads
 
 // Flickering Spectre
 set_color_profile_slot( 10, 0, 255, 130, 47 ); //Fur
@@ -216,15 +216,15 @@ set_color_profile_slot( 18, 5, 230, 182, 28 ); //Soul Fire 2
 set_color_profile_slot( 18, 6, 19, 74, 194 ); //Soul Fire 1
 set_color_profile_slot( 18, 7, 244, 112, 133 ); //Pawpads
 
-// Azamuku
-set_color_profile_slot( 19, 0, 251, 234, 216 ); //Fur
-set_color_profile_slot( 19, 1, 56, 38, 53 ); //Hair
-set_color_profile_slot( 19, 2, 177, 65, 77 ); //Kimono Main
-set_color_profile_slot( 19, 3, 255, 214, 94 ); //Kimono Accent
-set_color_profile_slot( 19, 4, 56, 38, 53 ); //Sash and Anklet
-set_color_profile_slot( 19, 5, 207, 0, 173 ); //Soul Fire 2
-set_color_profile_slot( 19, 6, 63, 225, 234 ); //Soul Fire 1
-set_color_profile_slot( 19, 7, 251, 234, 216 ); //Pawpads
+// Tales of Ninjas
+set_color_profile_slot( 19, 0, 64, 56, 77 ); //Fur
+set_color_profile_slot( 19, 1, 84, 80, 102 ); //Hair
+set_color_profile_slot( 19, 2, 180, 178, 236 ); //Kimono Main
+set_color_profile_slot( 19, 3, 239, 236, 251 ); //Kimono Accent
+set_color_profile_slot( 19, 4, 180, 178, 236 ); //Sash and Anklet
+set_color_profile_slot( 19, 5, 64, 56, 77 ); //Soul Fire 2
+set_color_profile_slot( 19, 6, 228, 115, 94 ); //Soul Fire 1
+set_color_profile_slot( 19, 7, 241, 237, 250 ); //Pawpads
 
 // Caster of Fate
 set_color_profile_slot( 20, 0, 253, 236, 212 ); //Fur

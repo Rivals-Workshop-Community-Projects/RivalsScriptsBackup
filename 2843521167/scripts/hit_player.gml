@@ -3,15 +3,18 @@ if (attack == AT_FAIR && (window == 1 || window == 2))
 {
     if (has_hit && hitpause)
     {
-	old_vsp = -7.5;
-	old_hsp = hsp * 0.25;
-	if (window == 1)
-	{
-		hit_player_obj.x = player.x + (5 * player.spr_dir);
-		hit_player_obj.y = player.y + 4;
-		hit_player_obj.old_vsp = -3.5;
-		hit_player_obj.old_hsp = player.old_hsp;
-	}
+    old_vsp = -7.5;
+    old_hsp = hsp * 0.25;
+    if (window == 1)
+    {
+        if (my_hitboxID.orig_player == player)
+        {
+            hit_player_obj.x = player.x + (5 * player.spr_dir);
+            hit_player_obj.y = player.y + 4;
+        }
+        hit_player_obj.old_vsp = -3.5;
+        hit_player_obj.old_hsp = player.old_hsp;
+    }
     }
 }
 

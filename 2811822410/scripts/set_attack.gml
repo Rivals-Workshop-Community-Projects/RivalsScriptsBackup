@@ -14,23 +14,24 @@ with oPlayer {
 */
 b_reversed_nspecial = false;
 
-if (instance_exists(leak_proj)) {
+if (instance_exists(leak_proj) && !rune_attack) {
 	if !(attack == AT_TAUNT || attack == AT_FSPECIAL || attack == AT_DSPECIAL) {
 		move_cooldown[attack] = 1;
 	}
-} else {
-	//Bair Turn Around
-	if (attack == AT_BAIR) {
-		if (custom_clone) {
-			if (instance_exists(clone_owner.miku_clone)) {
-				spr_dir *= -1;
-				clone_owner.miku_clone.spr_dir *= -1;
-			}
-		} else {
+} 
+
+//Bair Turn Around
+if (attack == AT_BAIR) {
+	if (custom_clone) {
+		if (instance_exists(clone_owner.miku_clone)) {
 			spr_dir *= -1;
+			clone_owner.miku_clone.spr_dir *= -1;
 		}
+	} else {
+		spr_dir *= -1;
 	}
 }
+
 
 //Clnoe Stuff
 if (custom_clone) {
@@ -151,9 +152,39 @@ uspecial_dir = spr_dir;
 uspecial_will_turn = false;
 uspecial_can_turn = false;
 
-if (attack == AT_USPECIAL && has_rune("F")) {
+
+//Runes
+if (attack == AT_NAIR && rune_nair) {
+	set_window_value(attack, 2, AG_WINDOW_VSPEED_TYPE, 1);
+	set_window_value(attack, 2, AG_WINDOW_VSPEED, 0);
+}
+
+if (rune_recovery_boost) {
+	//Uspecial
+	set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
+	set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -18 * 1.5);
+	set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
+	set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 6 * 1.5);
+	//Fspecial
+	set_num_hitboxes(AT_FSPECIAL, 1);
+	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 18);
+}
+
+if (attack == AT_USPECIAL && rune_clone_jump ) {
 	if (instance_exists(miku_clone)) {
 		miku_clone.vsp = -18;
+	}
+}
+
+if (rune_dair_spike) {
+	for (i = 1; i <= 10; i++) {
+		set_hitbox_value(AT_DAIR, i, HG_ANGLE, 270);
+	}
+}
+
+if (rune_clairen) {
+	for (i = 1; i <= 10; i++) {
+		set_hitbox_value(attack, i, HG_EFFECT, 11);
 	}
 }
 

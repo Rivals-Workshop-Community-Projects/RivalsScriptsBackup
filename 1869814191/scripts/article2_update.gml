@@ -1,130 +1,113 @@
 //article1_update
 
-if (!player_id.hard_mode) {
-    if (init == 0) {
-        init = 1;
-        with (asset_get("obj_article2")) {
-            if (id != other.id && player_id == other.player_id && state < 10) {
-                state = 10;
-                state_timer = 0;
-                if (player_id.trolled) {
-                    sprite_index = sprite_get("t_gaster_blaster");
-                } else {
-                    sprite_index = sprite_get("gaster_blaster");
-                }
-            }
-        }
-    }
-    if (state == 1) {
-        with(pHitBox){
-            if (place_meeting(x,y,other) && player_id != other.player_id){
-                other.state = 10;
-            }
+#macro GB_IDLE 0
+#macro GB_READY 1
+#macro GB_BLAST 2
+#macro GB_DESPAWN 3
+#macro GB_DESTROY 10
+
+if (init == 0) {
+    init = 1;
+    with (asset_get("obj_article2")) {
+        if (id != other.id && player_id == other.player_id && state < 10) {
+            state = GB_DESTROY;
+            sprite_index = spr_gaster_idle[troll];
         }
     }
 }
-
-if (player_id.hard_mode) {
-    blaster_charge = 20;
-}
-
 if (state <= 2) {
     with (asset_get("plasma_field_obj")){ //destroyed in clairen's plasma field
         with (other.id){
             if (get_player_team(get_instance_player(other)) != get_player_team(player)){
                 if (point_distance(x+10*spr_dir, y-46, get_instance_x(other), get_instance_y(other)) < 180){
-                    state = 10;
-                    state_timer = 0;
+                    state = GB_DESTROY;
                 }
             }
         }
     }
 }
 
-var blaster_distance = 0;
-
+state_timer++;
+anim_timer++;
 switch(state) {
-    case 0: //birth
-        state_timer++;
-        free = true;
-        if (state_timer >= blaster_spawn) {
-            state = 1;
-            state_timer = 0;
+    case 0:
+    case 1:
+    case 2:
+        if (anim_timer mod frames[state] == 0) {
+                image_index++;
         }
     break;
-    case 1: //literally nothing
-        state_timer++;
-        free = true;
-        
-        hsp = hsp*5/6;
-        vsp = vsp*5/6;
-        
-        if (state_timer >= blaster_charge) {
-            state = 2;
-            state_timer = 0;
+}
+image_xscale = dir;
+free = true;
+
+var blaster_distance = 0;
+switch(state) {
+    case GB_IDLE: //literally nothing
+        if (state_timer >= 5) {
+            hsp = hsp*5/6;
+            vsp = vsp*5/6;
         }
-    break;
-    case 2: //preparing to fire
-        state_timer++;
-        free = true;
-        blaster_distance = 648*dir;
-        
-        if (state_timer == 10) {
-            sound_play(sound_get("sfx_blaster_fire"));
+        if (state_timer == state_len[state]-20)  {
+            spawn_hit_fx(x, y, 302);
         }
-    
-        if (state_timer >= 10) {
-            if (dir >= 0) {
-                create_hitbox(AT_NSPECIAL, 1, x+blaster_distance, y);
-            }
-            if (dir <= 0) {
-                create_hitbox(AT_NSPECIAL, 2, x+blaster_distance, y);
-            }
-        }
-        
-        if (player_id.trolled) {
-            sprite_index = sprite_get("t_blaster_ready");
-        } else {
-            sprite_index = sprite_get("blaster_ready");
-        }
-        
-        if (state_timer >= blaster_fire) {
-            state = 3;
+        if (state_timer >= state_len[state]) {
+            state++;
             state_timer = 0;
             anim_timer = 0;
+            sprite_index = spr_gaster_ready[troll];
+            image_index = 0;
         }
     break;
-    case 3: //firing
-        state_timer++;
-        free = true;
+    case GB_READY: //preparing to fire
+        if (state_timer == state_len[state]) {
+            
+            if (troll) { sound_play(snd_blaster_fire[troll]); }
+            sound_play(sound_get("sfx_blaster_fire"));
+        }
+        if (state_timer > state_len[state]/2) { scale_timer++; }
+        
+        if (state_timer >= state_len[state]) {
+            state++;
+            state_timer = 0;
+            anim_timer = 0;
+            sprite_index = spr_gaster_firing[troll];
+            image_index = 0;
+        }
+    break;
+    case GB_BLAST: //firing
         blaster_distance = 648*dir;
+        blast_timer++;
         
-        if (dir >= 0) {
-            create_hitbox(AT_NSPECIAL, 1, x+blaster_distance, y);
-        }
-        if (dir <= 0) {
-            create_hitbox(AT_NSPECIAL, 2, x+blaster_distance, y);
-        }
-        
-        if (player_id.trolled) {
-            sprite_index = sprite_get("t_blaster_firing");
-        } else {
-            sprite_index = sprite_get("blaster_firing");
+        if (blast_timer mod 3 == 0) {
+            var hb = create_hitbox(AT_NSPECIAL, 1, x+blaster_distance, y+1);
+            if !dir { hb.kb_angle = (180 - hb.kb_angle); }
         }
         
-        if (state_timer >= blaster_destroy) {
+        if (state_timer >= state_len[state]) {
+            state++;
+            state_timer = 0;
+            scale_timer = 0;
+        }
+    break;
+    case GB_DESPAWN:
+        scale_timer++;
+        image_alpha = ease_linear(1, 0, scale_timer, 20);
+    
+        if (state_timer >= state_len[state]) {
+            //spawn_hit_fx(x, y, 305);
+            //state = 10;
             instance_destroy();
             exit;
         }
     break;
-    case 10: //destroy
-        spawn_hit_fx(x, y, 301);
+    
+    case GB_DESTROY: //destroy
+        //spawn_hit_fx(x, y, 301);
+        sound_play(sound_get("sfx_soul_break"));
         instance_destroy();
         exit;
     break;
 }
 
-anim_timer++;
-if (anim_timer % 7 == 1) {
-        image_index--;
-}
+player_id.move_cooldown[AT_NSPECIAL] = 30;

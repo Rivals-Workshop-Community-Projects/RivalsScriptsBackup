@@ -28,60 +28,6 @@ deed_is_done = false;
 //spritesheet i'd add it as a skin/costume
 trolled = false;
 
-spr_idle_troll = sprite_get("t_idle");
-spr_crouch_troll = sprite_get("t_crouch");
-spr_walk_troll = sprite_get("t_walk");
-spr_walkturn_troll = sprite_get("t_walkturn");
-spr_dash_troll = sprite_get("t_dash");
-spr_dashstart_troll = sprite_get("t_dashstart");
-spr_dashstop_troll = sprite_get("t_dashstop");
-spr_dashturn_troll = sprite_get("t_dashturn");
-
-spr_jumpstart_troll = sprite_get("t_jumpstart");
-spr_jump_troll = sprite_get("t_jump");
-spr_doublejump_troll = sprite_get("t_doublejump");
-spr_walljump_troll = sprite_get("t_walljump");
-spr_pratfall_troll = sprite_get("t_pratfall");
-spr_land_troll = sprite_get("t_land");
-spr_landinglag_troll = sprite_get("t_landinglag");
-
-spr_parry_troll = sprite_get("t_parry");
-spr_roll_forward_troll = sprite_get("t_roll_forward");
-spr_roll_backward_troll = sprite_get("t_roll_backward");
-spr_airdodge_troll = sprite_get("t_airdodge");
-spr_airdodge_waveland_troll = sprite_get("t_waveland");
-spr_tech_troll = sprite_get("t_tech");
-
-spr_hurt_troll = sprite_get("t_hurt");
-spr_bighurt_troll = sprite_get("t_bighurt");
-spr_hurtground_troll = sprite_get("t_hurtground");
-spr_downhurt_troll = sprite_get("t_downhurt");
-
-spr_jab_troll = sprite_get("t_jab");
-spr_dattack_troll = sprite_get("t_dattack");
-spr_ftilt_troll = sprite_get("t_ftilt");
-spr_dtilt_troll = sprite_get("t_dtilt");
-spr_utilt_troll = sprite_get("t_utilt");
-spr_nair_troll = sprite_get("t_nair");
-spr_fair_troll = sprite_get("t_fair");
-spr_bair_troll = sprite_get("t_bair");
-spr_uair_troll = sprite_get("t_uair");
-spr_dair_troll = sprite_get("t_dair");
-spr_fstrong_troll = sprite_get("t_fstrong");
-spr_ustrong_troll = sprite_get("t_ustrong");
-spr_dstrong_troll = sprite_get("t_dstrong");
-
-spr_nspecial_troll = sprite_get("t_nspecial");
-spr_nspecial_air_troll = sprite_get("t_nspecial_air");
-spr_fspecial_troll = sprite_get("t_fspecial");
-spr_fspecial_air_troll = sprite_get("t_fspecial_air");
-spr_uspecial_troll = sprite_get("t_uspecial");
-spr_uspecial_air_troll = sprite_get("t_uspecial_air");
-spr_dspecial_troll = sprite_get("t_dspecial");
-spr_dspecial_air_troll = sprite_get("t_dspecial_air");
-
-spr_taunt_troll = sprite_get("t_taunt");
-
 //trummel & alto
 trummelcodecneeded = false;
 trummelcodec_id = noone;
@@ -151,6 +97,7 @@ fspecial_select_max = 60;
 fspecial_select_min = 30;
 
 destroy_gaster_blaster = false;
+snd_blaster_charge = [sound_get("sfx_blaster_charge"), sound_get("sfx_lazar_charge")];
 
 walk_speed = 3.25;
 walk_accel = 0.5;

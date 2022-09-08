@@ -4,6 +4,14 @@ hit_player_obj = self
 
 }
 
+if healtime > 0 {
+	if get_gameplay_time()%4 == 3 {
+		take_damage(player,-1,-1)
+		spawn_hit_fx( x + 40 - random_func(5, 80, true) + (10*spr_dir), y - 10 - random_func(4, 80, true) , esp2 )
+		healtime --
+	}
+}
+
 if nbullet > 5 {
 	nbullet = 5
 }
@@ -21,11 +29,11 @@ if state_timer == 1 {
 }
 	 
 	 if state_timer < 9{
-	     hsp = -0.5 * spr_dir
+	     hsp = -6 * spr_dir
 	 }
 	 
 	 if state_timer >= 9 and state_timer < 12 {
-	     hsp = -40 * spr_dir
+	     hsp = -20 * spr_dir
 	 }
 	 if state_timer >= 4 and state_timer < 12 {
 	     draw_indicator = false
