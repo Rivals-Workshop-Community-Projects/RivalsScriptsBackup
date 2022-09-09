@@ -5,13 +5,11 @@ var buildtag = "indev";
 var alt = get_player_color(player);
 var charuuid = string(sprite_get("idle"));
 
-draw_sprite_ext(sprite_get("charselectbg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
-
 if ("css_char" not in self || css_char != charuuid) {
 drawtime = 0
 drawing = 1
     css_char = charuuid;
-	sound_play(sound_get("SpaceCut"),false,noone,.8,1.1)
+	sound_play(asset_get("sfx_blow_medium2"),false,noone,.8,1.1)
 	introtime = 0
 	drawtime2 = -1
 }
@@ -19,9 +17,6 @@ drawing = 1
 if ("prev_alt" in self && prev_alt != alt){
      drawtime = 0
      drawtime2 = 0
-     if get_player_color(player) == 16{
-     sound_play(sound_get("drip")) 
-     }
 }
 
 
@@ -36,39 +31,6 @@ introtime ++
 
 prev_alt = alt;
 
-draw_sprite_ext(sprite_get("charselectEX"), min(15, introtime/5),temp_x-2,temp_y-2,2,2,0,-1,1);
-
-switch introtime/5 {
-     case 1 :
-     sound_play(asset_get("sfx_spin"),false,noone,1,0.6)
-     break; 
-     
-     case 3 :
-     sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)
-     break; 
-    
-    case 5 :
-     sound_play(asset_get("sfx_swipe_heavy1"),false,noone,1,1)
-     break; 
-    
-    case 6 :
-     sound_play(asset_get("sfx_frog_fspecial_charge_full"),false,noone,.7,1)
-     break; 
-     
-     case 7 :
-     sound_play(asset_get("sfx_frog_fspecial_charge_full"),false,noone,.7,1.1)
-     break; 
-     
-     case 8 :
-     sound_play(asset_get("sfx_frog_fspecial_charge_full"),false,noone,.7,1.2)
-     break; 
-
-     case 9 :
-     sound_play(sound_get("Fstrong"),false,noone,.8,1.3)
-     break; 
-     
-}
-
 
      
 if drawing > 3 {
@@ -78,25 +40,15 @@ if drawing > 3 {
 
 //define the palette names
 var palette_names = [
-  "Hu Hou General",
-  "Traditional",
-  "Zan Gi",
-  "Tem Ki",
-  "Cosmic",
-  "Calamity",
-  "Nano",
-  "Storm",
-  "Regis",
-  "Giga",
-  "Rock",
-  "Titan",
-  "Seid",
-  "NEO tag",
-  "Sig",
-  "Asgo",
-  "Drip",
-  "Roly",
-  "Bumble",
+  "Justin, a guy",
+  "guy",
+  "guy",
+  "guy",
+  "the man behind",
+  "gay",
+  "girl",
+  "gender?",
+  "brazilian",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
