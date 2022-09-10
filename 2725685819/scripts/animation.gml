@@ -1,4 +1,5 @@
 
+
 // fix weird jittering that can happen when it tries to return to 0
 if abs(hud_offset) < 1{
 	hud_offset = 0;
@@ -101,7 +102,7 @@ if (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD)
 
 
 
-if (get_training_cpu_action() == CPU_FIGHT){
+if (get_training_cpu_action() == CPU_FIGHT) && !hikari_exists{
 	
 
 
@@ -327,6 +328,117 @@ with(pHitBox){
 
 
 }
+
+
+
+//check for hikari
+if (get_gameplay_time() < 4){
+	
+	with(oPlayer){
+	    if ("turpix_exists" in self){
+	        other.hikari_exists = true;
+	        other.hikari_y = y;
+	    }
+	}
+	
+		if (ground_type == 2){
+		hikari_exists = false;
+		}
+		if (hikari_y != y){
+		hikari_exists = false;
+		}
+
+	
+}
+
+
+
+
+
+//hikari intro
+if (hikari_exists){
+
+go_through = true;
+	
+	if (get_gameplay_time() == 4)
+	{
+	spawning_y = y;
+	spawning_x = x;
+		
+	var stage_top = get_stage_data( SD_Y_POS );
+    var stage_mid = ((room_width - get_stage_data( SD_X_POS )) + get_stage_data( SD_X_POS ))/2 ;
+    
+    y = stage_top;
+    x = stage_mid;
+    spr_dir = -spr_dir;
+    set_state(25);
+	}
+	
+	
+	if (get_gameplay_time() < 40){
+		sprite_index = sprite_get("walk");
+		image_index = state_timer/10;
+
+		
+		hsp = 1.2 * spr_dir;
+		
+		
+		
+	}else if (get_gameplay_time() < 40 + 30){
+		if (get_gameplay_time() == 40){
+		set_state(25);
+		spr_dir = -spr_dir;
+		}
+		
+		
+		sprite_index = sprite_get("jab");
+		if (get_gameplay_time() < 50 + 20){
+		image_index = clamp(state_timer*0.3, 0,1);
+		}
+
+		if (get_gameplay_time() == 45){
+			hikari_circle = 0;
+		}
+		
+	}else if (get_gameplay_time() < 90){
+		sprite_index = sprite_get("jab");
+		image_index = state_timer*0.12;
+		
+		x = lerp(x, spawning_x, 0.5);
+		
+		if (free)
+		sprite_index = sprite_get("hurt");
+	}
+	else if (get_gameplay_time() > 2*60 - 1){
+		state = PS_IDLE;
+		x = spawning_x;
+		y = spawning_y;
+	}
+		
+
+	if (get_gameplay_time() == 90){
+		if (vergil){
+			sound_play(sound_get("vergil_intro"));
+		}
+	}
+	
+	
+	x += hsp;
+
+}
+
+
+
+if (get_gameplay_time() == 60*2){
+hikari_exists = false;
+state = PS_IDLE;
+}
+
+
+
+
+
+
 
 
 

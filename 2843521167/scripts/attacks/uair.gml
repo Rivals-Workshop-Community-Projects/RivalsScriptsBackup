@@ -1,16 +1,23 @@
 //Ike
 set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
-set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 1);
+set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 2);
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_UAIR, AG_LANDING_LAG, 7);
+set_attack_value(AT_UAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 24);
-set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+
+//Endlag
+set_window_value(AT_UAIR, 2, AG_WINDOW_TYPE, 1);
+set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_UAIR, 2, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UAIR, 5);
 

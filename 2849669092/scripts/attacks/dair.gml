@@ -59,7 +59,6 @@ set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, 0.9);
 
 //sweetspot
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
@@ -79,7 +78,6 @@ set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 0.9);
 
 //late hit
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);

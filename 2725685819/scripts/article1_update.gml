@@ -1,7 +1,7 @@
 jc_hitpoints = (jc_hitpoints < 0) ? 0 : jc_hitpoints;
 
 
-can_be_hit[player_id.player] = 2;
+can_be_hit[current_owner.player] = 2;
 
 image_index += 0.40;
 if (jc_hitstop == 0){
@@ -48,7 +48,8 @@ if (jc_hitstop == 0){
                     
                     if (!jc_fspec_buff && !jc_ewgf){
                     var buff_hbox = create_hitbox( AT_NSPECIAL, 2, x + (10 * spr_dir), y );
-
+                    buff_hbox.player = current_owner.player;
+                    
                     if (jc_buff_loops % 2 == 0)
                     buff_hbox.spr_dir = -buff_hbox.spr_dir;
 
@@ -144,5 +145,6 @@ if (jc_hitstop == 0){
     hsp = 0;
     jc_hitstop--;
 }
+
 
 //sound_play(asset_get("sfx_clairen_dspecial_counter_active"));

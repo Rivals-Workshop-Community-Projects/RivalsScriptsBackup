@@ -16,8 +16,8 @@ if(instance_exists(hat_object)){
 		hat_object.state = 5;
 	}
 	hat_object.state_timer = 0;
-	hat_object.health = 20;
+	hat_object.health = 0;
 }
-hat_health = 20;
+hat_health = 0;
 fspecial_air_count = 0;
 

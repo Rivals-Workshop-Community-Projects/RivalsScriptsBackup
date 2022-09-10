@@ -29,6 +29,8 @@ if(attack == AT_NSPECIAL){
         MattCanGrab = true;
         MorshuCanGrab = true;
         CalCanSnack = 2;
+        AriaCantAbsorb = true;
+        
         playerurl = player_id.url;
             orig_player = player;
             current_player = player;
@@ -131,7 +133,7 @@ if(attack == AT_NSPECIAL){
     		    	}
     			}
     		}
-    		UnReflectable = true;
+    		UnReflectable = true;AriaCantAbsorb = true;
         }else if(hbox_num == 3){
             can_hit_self = true;
         }
@@ -142,6 +144,8 @@ if(attack == AT_FSPECIAL){
 		MattCanGrab = true;
         MorshuCanGrab = true;
         CalCanSnack = 2;
+        AriaCantAbsorb = true;
+        Bounceable = true;
         
         playerurl = player_id.url;
             orig_player = player;
@@ -161,6 +165,7 @@ if(attack == AT_FSPECIAL){
 			if(hbox_num == 2){
 				statboost = 0.3;
 				dicearmor = 4;dicearmor2 = 2;
+				UnReflectable = true;
 			}
 			with(asset_get("pHitBox")){
     			if(place_meeting(x,y,other)){
@@ -202,6 +207,7 @@ if(attack == AT_USPECIAL){
 		MattCanGrab = true;
         MorshuCanGrab = true;
         CalCanSnack = 2;
+        AriaCantAbsorb = true;
         thedice = instance_create(x,y-40,"obj_article_platform");
         thedice.choochoo = self;
         
@@ -224,19 +230,20 @@ if(attack == AT_USPECIAL){
 		UnReflectable = true;
 		depth = -2;spr_dir = 1;
 	}
+	AriaCantAbsorb = true;
 }
 
 if(attack == AT_DSPECIAL){
 	if(hbox_num == 1 || hbox_num == 2 || hbox_num == 3){
 		if(hbox_num == 1){
-			num = 50;
+			hp = 50;
 			housemoney = 5000;
 		}else if(hbox_num == 2){
-			num = 100;
+			hp = 100;
 			housemoney = 10000;
 			image_index = 1;
 		}else{
-			num = 500;
+			hp = 500;
 			housemoney = 30000;
 			image_index = 2;
 		}
@@ -245,7 +252,7 @@ if(attack == AT_DSPECIAL){
 	    }housemoney = housemoney2;
 		//mask_index = sprite_get("property_collision");
 		collision_sprite = sprite_get("property_collision");
-		originalhp = num;
+		originalhp = hp;
 		originalnum = num;
 		playermoneytimer = 6;
 		lastplayer = noone;
@@ -255,6 +262,7 @@ if(attack == AT_DSPECIAL){
         //MorshuCanGrab = true;
         //CalCanSnack = 2;
         UnReflectable = true;
+        AriaCantAbsorb = true;
 		depth = -2;
         thedice = instance_create(x,y-40,"obj_article_platform");
         thedice.choochoo = self;
@@ -339,6 +347,7 @@ if(attack == AT_DATTACK){
             hitlockout = 4;
             hitlockout2 = 0;
 	}
+	AriaCantAbsorb = true;
 }
 
 if(attack == AT_BAIR){

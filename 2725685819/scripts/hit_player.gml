@@ -35,8 +35,12 @@ if my_hitboxID.attack == AT_NSPECIAL{
 }
 
 //dspecial grab
-if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
+
+if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1 && !hit_player_obj.super_armor){
+	
 grabbed_player = hit_player_obj;
+hit_player_obj.should_make_shockwave = false;
+
 
 if (window == 3 || window == 2)
 window_timer = 0;
@@ -66,7 +70,7 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 9){
 if ((get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_CHAOS_EXCLUDE) != 1) && hit_player_obj != id) {
 	
 	
-	if (!hit_player_obj.trick_marked){
+	if (!hit_player_obj.trick_marked && hit_player_obj.player != player){
 		
 			if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_CHAOS_LEVEL) == -1)
 			hit_player_obj.trick_stack += 0.5;

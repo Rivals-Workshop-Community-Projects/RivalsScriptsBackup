@@ -185,15 +185,21 @@ switch my_hitboxID.attack
 		
 }
 
-	
-	
 
 
 //Grabs player
-if (my_hitboxID.attack == AT_NSPECIAL && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 1) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !hit_player_obj.clone) {
+//	i added the hitstun state check so it prevents super armored enemies from being grabbed, aswell as making sure they aren't in ranno's bubble
+//	also you should concider adding [hatted_id == undefined] too, just to make sure it won't overwrite who you grabbed
+//	- bar-kun
+
+if (my_hitboxID.attack == AT_NSPECIAL && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 1) &&
+	(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !hit_player_obj.clone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
+	&& !hit_player_obj.bubbled)
+{
     hatted_id = hit_player_obj.id;
     hatted_id.invincible = true;
     hatted_id.invince_time = 40;
+	hatted_id.hitstop = 999999999999; //this number doesn't matter it will simply put them in hitpause for a long time
 }
 
 //Grab Hits

@@ -17,7 +17,28 @@
 
 //DinoBros'
 if instance_exists(hat_object) {
-	draw_debug_text(hat_object.x - 8,hat_object.y + 8, string(hat_object.health) + "%");
+	//draw_debug_text(hat_object.x - 8,hat_object.y + 8, string(hat_object.health) + "%");
 	//Debug
 	//draw_debug_text(hat_object.x - 8,hat_object.y + 32, string(hat_object.image_index));
+	
+	//Hat Health Bar
+	/*
+	RectDraw(hat_object.x - 20, hat_object.y + 18, hat_object.x + 20, hat_object.y + 26, c_black, 1)
+	RectDraw(hat_object.x - 18, hat_object.y + 20, hat_object.x + 18, hat_object.y + 24, c_gray, 1)
+	if (hat_object.health < hat_grab_start_health) {
+		RectDraw(hat_object.x - 18, hat_object.y + 20, hat_object.x + -18 + (clamp(hat_object.health / hat_grab_start_health, 0, 1) * 36), hat_object.y + 24, c_white, 1)
+	} else {
+		RectDraw(hat_object.x - 18, hat_object.y + 20, hat_object.x + 18, hat_object.y + 24, c_yellow, 1)
+	}
+	*/
+	draw_sprite_ext(sprite_get("meter_empty"), 0, hat_object.x, hat_object.y + 8, 1, 1, 0, c_white, 1)
+	draw_sprite_part_ext(sprite_get("meter_full"), 0, 0, 0, clamp(hat_object.health / hat_grab_start_health, 0, 1) * 70, 10, hat_object.x - 35, hat_object.y + 12, 1, 1, c_white, 1)
 } 
+
+
+#define RectDraw(x1, y1, x2, y2, color, alpha)
+{
+	draw_set_alpha(alpha);
+	draw_rectangle_color(x1, y1, x2, y2, color, color, color, color, false);
+	draw_set_alpha(1);
+}

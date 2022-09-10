@@ -1,6 +1,4 @@
 ///
 
 
-move_cooldown[AT_DSPECIAL] = 0
-
-bulletnum = 12 
+ Kanosbeatbox = 0

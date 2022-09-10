@@ -23,7 +23,7 @@ hittable_hitpause_mult = 0;
 
 jc_hitstop = 0;
 
-jc_hitpoints = 3;
+jc_hitpoints = 10;
 
 jc_fspec_buff = false;
 

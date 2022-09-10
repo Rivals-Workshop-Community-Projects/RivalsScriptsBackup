@@ -94,6 +94,16 @@ gpu_set_fog(0,0,0,0);
 
 
 
+if (hikari_circle != -1 && hikari_circle < 500){
+	
+		gpu_set_blendmode(bm_add);
+		draw_set_alpha((500-hikari_circle)/500);
+		draw_circle_colour(x + 10*spr_dir, y - 20, hikari_circle, c_black, trick_color, 0);
+		hikari_circle += 20;
+		draw_set_alpha(1);
+		gpu_set_blendmode(bm_normal);
+}
+
 
 
 // switch(attack){

@@ -1,5 +1,5 @@
 //ee
-
+if ("other_player_id" in self){
 
 var char_mid = ((hurtboxID.bbox_top + hurtboxID.bbox_bottom)/2)
 
@@ -282,7 +282,7 @@ if (instance_exists(other_player_id)){
 
 
 
-
+}
 
 // if (jce_sprite != -1){
 // shader_start();

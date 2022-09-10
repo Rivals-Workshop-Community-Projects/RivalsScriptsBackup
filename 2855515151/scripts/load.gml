@@ -163,3 +163,7 @@ for (var i = 0; i < 3; i++)
 }
 set_victory_theme(sound_get("victory_theme"));
 set_victory_bg(sprite_get("victory_bg"));
+
+sprite_change_offset("meter_full", 35, 0);
+sprite_change_offset("meter_empty", 39, 0);
+sprite_change_offset("hat_icon", 7, 7);

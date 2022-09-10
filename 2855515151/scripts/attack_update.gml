@@ -67,6 +67,7 @@ switch (attack)
 			vsp = sign(vsp) == -1 ? vsp : floor(lerp(vsp, 0, 0.1));
 		}
 		if (window <= 2) hsp *= 0.98;
+		move_cooldown[AT_FSPECIAL] = 90;
 		break;
 	case AT_DSPECIAL:
 		move_coooldown[AT_DSPECIAL] = 20;

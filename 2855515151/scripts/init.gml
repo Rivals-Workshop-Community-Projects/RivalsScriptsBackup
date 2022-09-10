@@ -1,6 +1,6 @@
 //This is when the hat can do the grab attack.
-hat_grab_start_health = 70;
-hat_health = 20;
+hat_grab_start_health = 50;
+hat_health = 0;
 //the VSP slowdown is once per air time per wall jump
 fspecial_air_count = 0;
 

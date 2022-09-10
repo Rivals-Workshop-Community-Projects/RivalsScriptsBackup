@@ -117,12 +117,13 @@ if (attack == AT_USTRONG){
             hud_offset = 20;
         }
     }
-    if (window == 3){
+    if (window == 3 || window == 4){
         if (grabbed != -4){
             if (grabbed.state == PS_HITSTUN){
+            	grabbed.spr_dir = spr_dir*-1;
                 grabbed.hitstop = 4;
-                grabbed.x = lerp(grabbed.x, x, .5);
-                grabbed.y = lerp(grabbed.y - 20, y - 20, .5);
+                grabbed.x = lerp(grabbed.x + 36*spr_dir, x, .5);
+                grabbed.y = lerp(grabbed.y - 5, y - 20, .5);
             }
         }
     }

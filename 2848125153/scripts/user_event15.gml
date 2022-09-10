@@ -309,6 +309,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.5", "8th September, 2022");
+initHeader("Buffs");
+initSection("- Increased Jab3 kbs (0.6->0.8 normal, 0.9->1.0 boosted). Also increased the hitbox size of boosted Jab3");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed DSpecial properties being indestructible");
+initSection("- Made some hitboxes (NSpecial dices, FSpecial tokens, DSpecial falling properties, USpecial Jail and goal, and DAttack choo choo) unabsorbable. Golden FSpecial tokens are also now unreflectable, unlike their normal counterparts");
+
 initPatch("1.4", "29th August, 2022");
 initHeader("Buffs");
 initSection("- If you hold forward or special while riding the choo choo, it will accelerate much faster at the cost of more money dropping");

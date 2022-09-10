@@ -11,7 +11,7 @@ mask_index = sprite_get("hat_mask");
 
 //DinoBros' New code
 if (player_id.hat_health <= 0) {
-	player_id.hat_health = 20;
+	player_id.hat_health = 0;
 	health = player_id.hat_health; //Health before death
 } else {
 	health = player_id.hat_health; //Health before death

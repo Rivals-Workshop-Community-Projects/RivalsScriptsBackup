@@ -528,7 +528,7 @@ if(attack == AT_DSPECIAL){
 				thedice.y = y-58;
 			}
 		}
-		if (num <= 0 || y >= room_height || x >= room_width+1000 || x < -1000) {
+		if (hp <= 0 || y >= room_height || x >= room_width+1000 || x < -1000) {
 			destroying = true;
 		}
 		
@@ -539,7 +539,7 @@ if(attack == AT_DSPECIAL){
     	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && player != other.player && get_player_team(player) != get_player_team(other.player) && other != self && effect != 100){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 && type <= 1){
     	            		if(throws_rock < 1 && type <= 1){
-    	            			other.num -= round(damage*(1+(player_id.strong_charge/100)));
+    	            			other.hp -= round(damage*(1+(player_id.strong_charge/100)));
     	            		}
     	    	                other.hitplayertimer -= 10;
     	    	                other.hitlockout = 6;other.hitlockout2 = 10;
@@ -618,21 +618,21 @@ if(attack == AT_DSPECIAL){
 		    		}
 		    	}
 		    }
-		    if(num < originalhp/2 || destroying){
+		    if(hp < originalhp/2 || destroying){
 		    	if(get_gameplay_time() % 6 == 0 || get_gameplay_time() % 2 == 0 && destroying){
 		            var dust = spawn_hit_fx(round(x+(-40+random_func(0, 80, true))), round(y+(-50+random_func(1, 80, true))), player_id.fx_dust);dust.depth = depth-1;
 		        }
-		    }if(num < originalhp/4 || destroying){
+		    }if(hp < originalhp/4 || destroying){
 		    	if(get_gameplay_time() % 3 == 0 || get_gameplay_time() % 2 == 0 && destroying){
 		            var fire = spawn_hit_fx(round(x+(-40+random_func(2, 80, true))), round(y+(-50+random_func(3, 80, true))), player_id.fx_fire);fire.depth = depth-1;
 		        }
 		    }
 	    }else{
-	    	if(num < originalhp/2 || destroying){
+	    	if(hp < originalhp/2 || destroying){
 		    	if(get_gameplay_time() % 6 == 0 || get_gameplay_time() % 2 == 0 && destroying){
 		            var dust = spawn_hit_fx(round(x+(-50+random_func(0, 100, true))), round(y+(-90+random_func(1, 120, true))), player_id.fx_dust);dust.depth = depth-1;
 		        }
-		    }if(num < originalhp/4 || destroying){
+		    }if(hp < originalhp/4 || destroying){
 		    	if(get_gameplay_time() % 3 == 0 || get_gameplay_time() % 2 == 0 && destroying){
 		            var fire = spawn_hit_fx(round(x+(-50+random_func(2, 100, true))), round(y+(-90+random_func(3, 120, true))), player_id.fx_fire);fire.depth = depth-1;
 		        }

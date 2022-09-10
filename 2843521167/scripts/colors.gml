@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 32, 25, 6 );
 
 // sword
 set_color_profile_slot( 0, 6, 173, 191, 241 );
-set_color_profile_slot_range( 6, 1, 1, 1 );
+set_color_profile_slot_range( 6, 13, 12, 12 );
 
 // shirt 2
 set_color_profile_slot( 0, 7, 80, 189, 155 );
@@ -259,6 +259,6 @@ set_color_profile_slot( 22, 7, 198, 64, 195 ); //shirt 2
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"hair","colors":[{"r":255,"g":148,"b":216,"main":true},{"r":206,"g":121,"b":231}]},{"name":"bow","colors":[{"r":233,"g":45,"b":93,"main":true},{"r":201,"g":37,"b":148},{"r":151,"g":12,"b":167}]},{"name":"skin","colors":[{"r":255,"g":181,"b":170,"main":true},{"r":201,"g":112,"b":143}]},{"name":"shirt","colors":[{"r":152,"g":230,"b":57,"main":true}]},{"name":"blues","colors":[{"r":68,"g":139,"b":235,"main":true},{"r":55,"g":98,"b":216},{"r":81,"g":217,"b":251}]},{"name":"gold","colors":[{"r":255,"g":222,"b":83,"main":true},{"r":241,"g":166,"b":137}]},{"name":"sword","colors":[{"r":173,"g":191,"b":241,"main":true}]},{"name":"shirt 2","colors":[{"r":80,"g":189,"b":155,"main":true}]}]}
+{"formatversion":1,"data":[{"name":"hair","colors":[{"r":255,"g":148,"b":216,"main":true},{"r":206,"g":121,"b":231}]},{"name":"bow","colors":[{"r":233,"g":45,"b":93,"main":true},{"r":201,"g":37,"b":148},{"r":151,"g":12,"b":167}]},{"name":"skin","colors":[{"r":255,"g":181,"b":170,"main":true},{"r":201,"g":112,"b":143}]},{"name":"shirt","colors":[{"r":152,"g":230,"b":57,"main":true}]},{"name":"blues","colors":[{"r":68,"g":139,"b":235,"main":true},{"r":55,"g":98,"b":216},{"r":81,"g":217,"b":251}]},{"name":"gold","colors":[{"r":255,"g":222,"b":83,"main":true},{"r":241,"g":166,"b":137}]},{"name":"sword","colors":[{"r":173,"g":191,"b":241,"main":true},{"r":129,"g":134,"b":213}]},{"name":"shirt 2","colors":[{"r":80,"g":189,"b":155,"main":true}]}]}
 === END JSON PALETTE ===
 */

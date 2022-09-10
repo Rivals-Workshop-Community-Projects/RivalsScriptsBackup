@@ -65,7 +65,7 @@ max_fall = 10; max_fall_ref = max_fall; max_fall_nspe2 = 4;//maximum fall speed 
 fast_fall = 13; //fast fall speed
 gravity_speed = .40;
 hitstun_grav = .45;
-knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 8;

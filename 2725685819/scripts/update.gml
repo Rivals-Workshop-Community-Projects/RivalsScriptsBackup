@@ -272,11 +272,9 @@ if (move_cooldown[AT_NSPECIAL] == 0 && has_rune("H")){
 
 //hitfx code
 with (asset_get("hit_fx_obj")){
-
-    if (hit_fx == other.vfx_jce_clone){
+    if (hit_fx == other.vfx_jce_clone && player = other.player){
             hsp = lengthdir_x(20 * spr_dir, draw_angle);
             vsp = lengthdir_y(20 * spr_dir, draw_angle);
-
     }
 
 }

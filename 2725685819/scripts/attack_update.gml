@@ -662,9 +662,6 @@ switch(attack){
 
 		}
 		
-		if (was_parried)
-		was_parried = false;
-		
 		can_move = false;
 		can_fast_fall = false;
 		

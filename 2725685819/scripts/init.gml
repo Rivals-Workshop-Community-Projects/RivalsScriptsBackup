@@ -223,10 +223,16 @@ instant_chaos = false;
 
 
 
+//hkr intro
+hikari_exists = false;
+hikari_y = 0;
 
 
 
+spawning_x = x;
+spawning_y = y;
 
+hikari_circle = -1;
 
 
 
@@ -312,5 +318,22 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 // Visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+
+
+
+//trailer var
+trailer_start = false;
+trailer_timer = -1;
+
+
+
+
+
+
+
+
+
+
 
 user_event(14);

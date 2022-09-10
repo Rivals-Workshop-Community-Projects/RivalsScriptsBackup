@@ -73,6 +73,7 @@ switch (state)
         }*/
     case 1: // idle
         hsp = lerp(hsp, 0, 0.2);
+		hit_detection();
         if (ForceDespawn()) exit;
         break;
     //hat return state
@@ -214,6 +215,7 @@ switch (state)
 			}
 		}
 		if (image_index == (grab_end - 1)) { //End of grab
+			mask_index = sprite_get("hat_mask");
 			setState(0);
 		}
 	
@@ -221,6 +223,7 @@ switch (state)
 	case 10: //Whiff
 		image_index = state_timer/grab_speed;
 		if (image_index >= 54) {
+			mask_index = sprite_get("hat_mask");
 			setState(0);
 		}
 	break;
@@ -330,8 +333,8 @@ if(hbox.type == 2 and hbox.player != player_id.player and !hbox.plasma_safe){
 //DinoBros' Health damage
 if (hbox.player == player) {
 	health += hbox.damage;
-	if (health >= 999) {
-		health = 999;
+	if (health >= 50) {
+		health = 50;
 	}
 } else {
 	health -= hbox.damage;
