@@ -18,12 +18,16 @@ if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 }
 
 if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num <= 2){
+	my_hitboxID.hittimer = 30;
     if(my_hitboxID.num == 0){ //top hat
     	my_hitboxID.hsp = 0.5*spr_dir;
     	if(my_hitboxID.vsp > -10){
     		my_hitboxID.vsp = -10;
     	}my_hitboxID.hittimer = 20;
-    }if(my_hitboxID.num == 6){ //iron
+    }else if(my_hitboxID.num == 5){ //rubber duck
+    	my_hitboxID.hsp = 0.5*spr_dir;
+    	my_hitboxID.vsp = -my_hitboxID.vsp;
+    }else if(my_hitboxID.num == 6){ //iron
     	my_hitboxID.hsp = 0.5*spr_dir;
     	if(my_hitboxID.vsp > -10){
     		my_hitboxID.vsp = -10;

@@ -44,18 +44,7 @@ if (state = PS_WAVELAND){
     sound_stop(air_dodge_sound);
 }
 
-if (state = PS_PRATFALL && attack == AT_FSPECIAL){
-	if (hitstop == 0 && hitpause == 0){
-	hsp = -3 * spr_dir; 
-		if (state_timer = 1){
-		vsp = -9;
-	}
-	if (state_timer > 1){	
-	vsp = vsp + 0.35;
-	}
-	}
-	
-}
+
 
 
 

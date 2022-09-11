@@ -8,7 +8,7 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 17;
+var num_alts = 18;
 var alt_cur = get_player_color(player);
  
  
@@ -31,6 +31,29 @@ alt_name[13] = "PC-98";
 alt_name[14] = "Yuuto";
 alt_name[15] = "Cool Bug";
 alt_name[16] = "Champion";
+alt_name[17] = "Rainbow";
+
+
+//thanks kirby
+if !("hue" in self) hue = 0
+if get_player_color(player) = 17 {
+	hue+=.2 
+	if hue>255 hue-=255;
+	//make hue shift every step + loop around
+
+	color_rgb=make_color_rgb( 214, 64, 64 );
+	//make a gamemaker color variable using kirby's default color (body)
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot( 17, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 17, 1, color_get_red(color_hsv),color_get_green(color_hsv) - 25,color_get_blue(color_hsv) + 25); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 17, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+    set_color_profile_slot( 17, 7, color_get_red(color_hsv),color_get_green(color_hsv) + 50,color_get_blue(color_hsv) - 50); //uses that variable to set the slot's new colours
+	//set the new color using rgb values from the gamemaker color
+}
+init_shader();
 
 
 //Patch

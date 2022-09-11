@@ -75,7 +75,6 @@ sprite_change_offset("icicle3", 32, 32);
 sprite_change_offset("snowball1", 32, 32);
 sprite_change_offset("snowball2", 32, 32);
 sprite_change_offset("snowball3", 48, 48);
-sprite_change_offset("snowballEX", 30, 30);
 
 sprite_change_offset("sno1", 8, 8);
 sprite_change_offset("sno2", 8, 8);

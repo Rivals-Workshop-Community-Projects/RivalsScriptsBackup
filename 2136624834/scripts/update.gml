@@ -42,7 +42,20 @@ if !hitpause {
    }
 }
 
+if get_gameplay_time() < 36 {
+	
+visible = false	
+draw_indicator = false
+}
 
+
+if get_gameplay_time() = 36 {
+	
+visible = true
+draw_indicator = true
+sound_play(sound_get("timestop"),false, noone, 1);
+spawn_hit_fx( x, y , darken )	
+}
 
 
 
@@ -103,7 +116,7 @@ with (asset_get("oPlayer")) {
 if(get_gameplay_time() == 2){
 	
 
-            var shortest_dist = 9999;
+var shortest_dist = 9999;
 			var shortest_id = noone;
 			
 			with (asset_get("oPlayer")) {
@@ -320,7 +333,7 @@ if fstronghit > 0 {
 
 set_victory_theme(sound_get("Drak"));
 
-if timestop < 30 {
+if timestop < 30 or free {
 	move_cooldown[AT_DSPECIAL] = 2
 }
 
@@ -912,11 +925,11 @@ timestop = 100
         	set_state (PS_WALK)
         	state_timer = get_gameplay_time()
         if get_gameplay_time() % 64 == 32 {
-				sound_play(sound_get("fs1"), false, noone,.8);
+				sound_play(sound_get("fs1"), false, noone, 0.6);
 		}
 		
 		if get_gameplay_time() % 64 == 0 {
-			sound_play(sound_get("fs2"), false, noone, .8);
+			sound_play(sound_get("fs2"), false, noone, 0.6);
 		}
         }
         }

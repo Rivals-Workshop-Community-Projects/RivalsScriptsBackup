@@ -8,3 +8,4 @@ if(player_id == other.id) {
 }
 }
 			
+			timestop *= 0.58

@@ -1,0 +1,1 @@
+//draw_debug_text( x - 7, y - 100, "draw_timer" + string(draw_timer) );

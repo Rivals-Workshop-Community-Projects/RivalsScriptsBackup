@@ -11,6 +11,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, sound_get("dattackjump"));
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 4);
 
 
+
 set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 4);

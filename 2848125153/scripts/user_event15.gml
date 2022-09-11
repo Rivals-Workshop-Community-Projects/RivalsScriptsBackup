@@ -309,6 +309,15 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.6", "10th September, 2022");
+initHeader("Buffs");
+initSection("- All FSpecial tokens can now hit multiple times (can hit again 30 frames after hitting someone), and not just Hat, Iron, and Shoe. They also do more damage when going faster (previously this would only buff knockback)");
+initSection("- FSpecial Rubber Duck token now slows down on hit, and Car + Plane tokens do more damage and have a bit more armor. Car and Plane tokens also now have slightly different patterns that are hopefully more useful");
+initHeader("Nerfs");
+initSection("- FSpecial shoe token has a bit lower base damage to compensate for the above");
+initHeader("Fixes / Other Changes");
+initSection("- Properties are now Bounceable if they are aerial");
+
 initPatch("1.5", "8th September, 2022");
 initHeader("Buffs");
 initSection("- Increased Jab3 kbs (0.6->0.8 normal, 0.9->1.0 boosted). Also increased the hitbox size of boosted Jab3");

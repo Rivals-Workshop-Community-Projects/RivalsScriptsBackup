@@ -12,3 +12,4 @@ if (frog_deathtimer > -1){
     frog_deathtimer = 1;
 }
 
+ dair_jumpcancel_timer = 0;

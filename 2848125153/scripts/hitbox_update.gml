@@ -134,21 +134,21 @@ if(attack == AT_FSPECIAL){
         if(vsp > 8 || num == 7 && vsp > 2){ //spike
 			kb_angle = 270;
 			if(abs(hsp) < 8 && abs(vsp) < 8){
-				kb_value = 4;kb_scale = 0.5+(statboost/3);
+				kb_value = 4;kb_scale = 0.5+(statboost/3);damage = originaldamage;
 				hitpause = 8;hitpause_growth = .7;
             	sound_effect = asset_get("sfx_shovel_hit_heavy2");hit_effect = 302;
 			}else{
-				kb_value = 6;kb_scale = 0.6+(statboost/3);
+				kb_value = 6;kb_scale = 0.6+(statboost/3);damage = originaldamage+(2+(statboost*10));
 				hitpause = 12;hitpause_growth = 1;
             	sound_effect = asset_get("sfx_shovel_hit_heavy1");hit_effect = 304;
 			}
 		}else{
 			if(abs(hsp) < 8 && abs(vsp) < 8){
-				kb_value = 6;kb_scale = 0.6+statboost;
+				kb_value = 6;kb_scale = 0.6+statboost;damage = originaldamage;
 				hitpause = 8;hitpause_growth = .7;
             	sound_effect = asset_get("sfx_shovel_hit_heavy2");hit_effect = 302;
 			}else{
-				kb_value = 7;kb_scale = 0.8+statboost;
+				kb_value = 7;kb_scale = 0.8+statboost;damage = originaldamage+(2+(statboost*10));
 				hitpause = 12;hitpause_growth = 1;
             	sound_effect = asset_get("sfx_shovel_hit_heavy1");hit_effect = 304;
 			}
@@ -190,11 +190,19 @@ if(attack == AT_FSPECIAL){
 	        }
         }else if(num == 3){ //car
 			if(abs(hsp) < 20){
-				hsp += 0.1*spr_dir;
+				if(abs(hsp) < 2){
+					hsp += 0.025*spr_dir;
+        		}else{
+        			hsp += 0.5*spr_dir;
+        		}
 			}
         }else if(num == 4){ //plane
         	if(abs(hsp) < 20){
-				hsp += 0.1*spr_dir;
+        		if(abs(hsp) < 1){
+					hsp += 0.025*spr_dir;
+        		}else{
+        			hsp += 0.5*spr_dir;
+        		}
 			}if(num2 == 0){
 				vsp += 0.2;
 				if(vsp > 0){
@@ -202,7 +210,13 @@ if(attack == AT_FSPECIAL){
 				}
 			}else if(num2 == 1){
 				if(vsp > -3){
-					vsp -= 0.075;
+					if(abs(hsp) >= 1){
+						vsp -= 0.15;
+					}else{
+						if(vsp > 0){
+							vsp -= 0.075;
+						}
+					}
 				}
 			}
         	grav = 0;
@@ -506,6 +520,7 @@ if(attack == AT_DSPECIAL){
 			}else{
 				hit_priority = 0;
 			}num2 = 0;
+			Bounceable = true;
 		}else{
 			depth = -1;
 			hit_priority = 0;
@@ -516,6 +531,7 @@ if(attack == AT_DSPECIAL){
 			if(destroysoon){
 				destroying = true;
 			}
+			Bounceable = false;
 		}
 		if(instance_exists(thedice)){
 			thedice.x = x;thedice.spr_dir = spr_dir;

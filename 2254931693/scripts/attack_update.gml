@@ -57,9 +57,13 @@ if (attack == AT_DSTRONG && window = 5){
     vsp = vsp + 0.35;
 }
 
+if attack == AT_FSPECIAL && window = 1 && window_timer = 1 && !hitpause{
+      sound_play(sound_get("bonby_swipe_2"))  
+}
+
 if (attack == AT_FSPECIAL && (window = 5 || window = 4)){
 
- if (grabbed_player_damage >= 120){
+ if (grabbed_player_damage >= 100){
     if (hsp > 8){
         hsp = 8;
     }
@@ -67,7 +71,7 @@ if (attack == AT_FSPECIAL && (window = 5 || window = 4)){
         hsp = -8;
     }
  }
- if (grabbed_player_damage < 120){
+ if (grabbed_player_damage < 100){
     if (hsp > 6){
         hsp = 6;
     }
@@ -79,13 +83,17 @@ if (attack == AT_FSPECIAL && (window = 5 || window = 4)){
 
 }
 
+if attack == AT_FSPECIAL && window < 4{
+   can_move = false; 
+}
+
 
 if (attack == AT_FSPECIAL && (window = 5 || window = 4) && left_down){
     if (spr_dir = -1){    
     hsp = hsp - fspecial_movement_mult;
     }    
     if (spr_dir = 1){    
-    hsp = hsp - (fspecial_movement_mult * 0.4);
+    hsp = hsp - (fspecial_movement_mult * 0.5);
     }
 }
 
@@ -94,7 +102,7 @@ if (attack == AT_FSPECIAL && (window = 5 || window = 4) && right_down){
     hsp = hsp + fspecial_movement_mult;
     }    
     if (spr_dir = -1){    
-    hsp = hsp + (fspecial_movement_mult * 0.4);
+    hsp = hsp + (fspecial_movement_mult * 0.5);
     }
 }
 
@@ -103,8 +111,8 @@ if (attack == AT_FSPECIAL && window = 6){
     move_cooldown[AT_FSPECIAL] = 40;
 }
 
-if (attack == AT_FSPECIAL && window = 3 && free = 1){
-    move_cooldown[AT_FSPECIAL] = 9999;
+if (attack == AT_FSPECIAL && window = 3 && free = 1 && window_timer = 6){
+    set_state(PS_PRATFALL);
 }
 
 if (attack == AT_FSPECIAL && window == 2 && !has_hit_player && frog_exists = 1){
@@ -118,6 +126,8 @@ if (point_distance(x, y, frog.x, frog.y) < 46 && (frog.state = PS_IDLE || frog.s
 }
 
 }
+
+
 
 if (attack == AT_FSPECIAL_2){
     can_move = false;
@@ -222,7 +232,7 @@ if (attack == AT_FSPECIAL && has_hit_player){
     var blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
     
         if (y > blastzone_b - 100) {
-            if grabbed_player_damage < 120{
+            if grabbed_player_damage < 100{
     with hit_player_obj {
         self.y = other.y - 60;
             hitstop = 0;   
@@ -230,7 +240,7 @@ if (attack == AT_FSPECIAL && has_hit_player){
     } 
     }
 
-            if grabbed_player_damage >= 120{
+            if grabbed_player_damage >= 100{
     with hit_player_obj {
         hitstop = 8;
         self.y = other.y;
@@ -304,11 +314,11 @@ if (window == 4){
         }
     }
     
- if (grabbed_player_damage >= 120){
+ if (grabbed_player_damage >= 100){
 fspecial_movement_mult = (0.05 * ((grabbed_player_damage * 0.25) + 1));
  }
- if (grabbed_player_damage < 120){
-fspecial_movement_mult = (0.02 * ((grabbed_player_damage * 0.05) + 0.85));
+ if (grabbed_player_damage < 100){
+fspecial_movement_mult = (0.04 * ((grabbed_player_damage * 0.05) + 0.85));
  }     
 }
 
@@ -329,6 +339,10 @@ if (attack == AT_FSPECIAL && window = 2 && has_hit_player){
     window_timer = 0;
 }
 
+if attack == AT_FSPECIAL && window = 4{
+    vsp = vsp - 0.4;
+}
+
 if (attack == AT_FSPECIAL && (window = 2 || window = 3) && !has_hit_player){
     can_wall_jump = true;
 }
@@ -337,7 +351,7 @@ if (attack == AT_FSPECIAL && (window = 2 || window = 3) && !has_hit_player){
 
 
 if (attack == AT_FSPECIAL && window = 5){
-vsp = vsp + 0.5;
+vsp = vsp + 0.45;
 }
 
 
@@ -354,13 +368,13 @@ if (attack == AT_NSPECIAL && window < 6){
 
 if (attack == AT_NSPECIAL && has_hit_player){
     if (window = 8){
-    if (frog_pausetime < 12){
+    if (frog_pausetime < 16){
         frog_pausetime = frog_pausetime + 1;
     } 
     if (frog_pausetime = 1){
         shake_camera(3, 3);
     }
-    if (frog_pausetime = 11){
+    if (frog_pausetime = 14){
         sound_play( sound_get("bonby_frog_zip"));
     }        
  with (nspecial_grabbedplayer){
@@ -371,7 +385,7 @@ if (attack == AT_NSPECIAL && has_hit_player){
     vsp = 0;
     old_hsp = 0;
     old_vsp = 0;
-    if (point_distance(x, y, other.x, other.y) > 44 && other.frog_pausetime > 11){ 
+    if (point_distance(x, y, other.x, other.y) > 44 && other.frog_pausetime > 15){ 
     var frogdir = point_direction(x, y, other.x, other.y - 12);
     var frogspeed = 30;
     other.frog_movetimer = other.frog_movetimer + 1;
@@ -384,7 +398,7 @@ if (attack == AT_NSPECIAL && has_hit_player){
 
 
 if (attack == AT_NSPECIAL && window = 8){
-     if ((point_distance(x, y, hit_player_obj.x, hit_player_obj.y) < 45) || frog_movetimer = 12){ 
+     if ((point_distance(x, y, hit_player_obj.x, hit_player_obj.y) < 45) || frog_movetimer = 16){ 
          window = 6;
          create_hitbox( AT_NSPECIAL, 2, x, y);
          frog_pausetime = 0;
@@ -531,18 +545,30 @@ if attack == AT_USPECIAL_GROUND{
 }
 
 
+if attack == AT_DAIR && window == 1{
+     dair_jumpcancel_timer = 0;
+}
 
-if (attack == AT_DAIR && window == 1){
-    clear_button_buffer(PC_ATTACK_PRESSED);
-        clear_button_buffer(PC_DOWN_STICK_PRESSED);
+if (attack == AT_DAIR && (window == 2 || window == 3)){
+
+dair_jumpcancel_timer++;
+
+if dair_jumpcancel_timer > 19{
     can_jump = true;
+    can_shield = true;
 }
 
-
-if (attack == AT_DAIR && has_hit_player && window < 4 && !hitpause){
-can_jump = true;
-can_shield = true;
+if dair_jumpcancel_timer = 20{
+    white_flash_timer = 10;
 }
+
+if attack == AT_DAIR && window == 4{
+    dair_jumpcancel_timer = 0;
+    
+}
+
+}
+
 
 //Final Smash
 if (attack == 49){

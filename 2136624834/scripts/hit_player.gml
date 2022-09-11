@@ -5,16 +5,14 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 11 {
 }
 
 if my_hitboxID.attack == AT_DTHROW {
-   if my_hitboxID.hbox_num == 1 {
-	hit_player_obj.forze = 1 
-    } 
-        timestop -= my_hitboxID.damage*2
+	hit_player_obj.forze = 1
 }
 
 if timefreeze <= 0 && my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 3 {
 		finaldir = spr_dir
 	
 	startdir = hit_player_obj.spr_dir
+	
 	create_hitbox(AT_USPECIAL , 3 , x, y );
 	timehit = 0
 	timestop = 0
@@ -44,6 +42,7 @@ if timefreeze <= 0 && my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num 
 		finaldir = spr_dir
 	
 	startdir = hit_player_obj.spr_dir
+	
 	create_hitbox(AT_USPECIAL , 3 , x, y );
 	timehit = 0
 	timestop = 0
@@ -60,11 +59,6 @@ if timefreeze <= 0 && my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num 
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3 {
-	
-		snExplode = spawn_hit_fx(my_hitboxID.x,my_hitboxID.y,snEX)
-		snExplode.spr_dir = 3*my_hitboxID.spr_dir
-		snExplode.image_yscale = 3
-		snExplode.depth = depth - 3
 	if my_hitboxID.x < hit_player_obj.x {
 		my_hitboxID.spr_dir = -1 
 	} else {
@@ -80,11 +74,6 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3 {
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 {
-	
-		   snExplode =spawn_hit_fx(my_hitboxID.x,my_hitboxID.y,snEX)
-		   snExplode.spr_dir = 2*my_hitboxID.spr_dir
-		   snExplode.image_yscale = 2
-		   snExplode.depth = depth - 3
 	if my_hitboxID.x < hit_player_obj.x {
 		my_hitboxID.spr_dir = -1 
 	} else {
@@ -145,10 +134,10 @@ if my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 3 {
 
 }
 
-if timestop < 100 && timefreeze < 1 {
+if timestop < 100 && timefreeze < 1 && (my_hitboxID.attack != AT_USPECIAL) && move_cooldown[AT_DSPECIAL] <= 10{
     
     if timestop < 95 {
-      timestop += max(my_hitboxID.damage,2) 
+    timestop += my_hitboxID.damage * 1
     } else {
      timestop = 101
     }
@@ -198,14 +187,22 @@ if timefreeze > 40 {
 }
 
 
+if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 && timestop < 100{
+   timestop += my_hitboxID.damage * 0.4
+}
 
 if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 && timefreeze > 40 {
 	uspechit = 1
 }
 
-
+if my_hitboxID.attack == AT_NSPECIAL && timestop < 100{
+   timestop += my_hitboxID.damage * 0.2
+}
 
 if my_hitboxID.attack == AT_FSPECIAL{
+	if timestop < 100 {
+      timestop += my_hitboxID.damage * 0.4
+	}
    if move_cooldown[AT_NSPECIAL] == 0 && ncharge < 60{
    	ncharge = 70
    	sound_play(asset_get("sfx_bird_downspecial"),false,noone,.8,1.5);
@@ -214,7 +211,9 @@ if my_hitboxID.attack == AT_FSPECIAL{
    }
 }
 
-
+if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 && timestop < 100{
+   timestop += my_hitboxID.damage * 1
+}
 
 if my_hitboxID.attack == AT_FAIR {
 	fairhit = 1
@@ -265,6 +264,14 @@ if window <= 4 {
 }
 }
 
+if timestop < 100 && timefreeze < 1 && (my_hitboxID.attack != AT_USPECIAL) && move_cooldown[AT_DSPECIAL] <= 10{
+    
+    if timestop < 95 {
+    timestop += my_hitboxID.damage * 1
+    } else {
+     timestop = 101
+    }
+}
 
 if timefreeze > 40 {
 	
@@ -307,11 +314,25 @@ if timefreeze > 40 {
 }
 
 
+if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 && timestop < 100{
+   timestop += my_hitboxID.damage * 0.4
+}
+
 if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 && timefreeze > 40 {
 	uspechit = 1
 }
 
+if my_hitboxID.attack == AT_NSPECIAL && timestop < 100{
+   timestop += my_hitboxID.damage * 0.2
+}
 
+if my_hitboxID.attack == AT_FSPECIAL && timestop < 100{
+   timestop += my_hitboxID.damage * 0.4
+}
+
+if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 && timestop < 100{
+   timestop += my_hitboxID.damage * 1
+}
 
 if my_hitboxID.attack == AT_FAIR {
 	fairhit = 1

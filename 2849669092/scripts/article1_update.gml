@@ -18,18 +18,6 @@
 
 
 
-//Get hurt by opponents' hitbox (NOTE: does not work properly with maxarticles > 1)
-
-with (asset_get("pHitBox")){
-    if (place_meeting(x,y,other.id) && other.player_id != player_id){
-        other.shoulddie = true;
-        other.hitstop = 10; //Article freeze frames
-        hitpause = true;    //Player freeze frames
-        hitstop = 10;       //Player freeze frames, cont.
-    }
-}
-
-
 
 
 //State buffering

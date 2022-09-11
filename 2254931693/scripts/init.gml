@@ -26,7 +26,7 @@ ground_friction = .45;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 9;
+jump_speed = 9.5;
 short_hop_speed = 6;
 djump_speed = 9;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
@@ -34,7 +34,7 @@ max_jump_hsp = 6.5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.75; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .4;
-prat_fall_accel = .55; //multiplier of air_accel while in pratfall
+prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
@@ -128,6 +128,8 @@ frogthrow_dir = 2;
 
 nspecial_grabbedplayer = 0;
 
+ dair_jumpcancel_timer = 0;
+
 sprite_change_collision_mask( "frog_tonguehitbox1", true, 0, 0, 0, 0, 0, 0 );
 frog_hb_sprite_1 = sprite_get("frog_tonguehitbox1");
 
@@ -145,7 +147,11 @@ indicator_color = get_player_hud_color( player );
 gfzsignspr = sprite_get("gfzsignpost")
 sprite_change_offset("gfzsignpost", 18, 41);
 
-kirbyability = 16;
+pkmn_stadium_front_img = sprite_get("pokestadiumfront");
+pkmn_stadium_back_img = sprite_get("pokestadiumback");
+
+miiverse_post = sprite_get("miiverse_post");
+
 
 family = 0;
 

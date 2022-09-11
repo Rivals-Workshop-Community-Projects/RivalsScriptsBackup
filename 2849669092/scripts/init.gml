@@ -9,7 +9,7 @@ times = 0;
 distance_between_x_changing = 0;
 distance_between_y_changing = 0;
 fspec_teleporting = false;
-regular_prat_land = 10;
+regular_prat_land = 12;
 fspec_teleport_prat_land = 16;
 
 nspec_cooldown = 80;
@@ -19,6 +19,10 @@ uspec_vsp_max = -12.5;
 uspec_charge_speed = 0.35;
 grabbed = -4;
 interact_ver = false;
+
+//rainbow alt stuff
+hue_offset = 0;
+hue_speed = .2; //change this to change the speed of the hueshift
 
 //dream collection kirby support
 TCG_Kirby_Copy = 15;

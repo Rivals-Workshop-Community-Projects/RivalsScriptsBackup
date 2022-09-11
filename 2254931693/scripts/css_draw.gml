@@ -8,10 +8,7 @@ var temp_y = y + 9;
 
 
 
-if (get_color_profile_slot_b(0, 6) == 29) {
-    sound_play(sound_get("bonby_frog_jump"), false, 0);
-    set_color_profile_slot(0, 6, get_color_profile_slot_r(0, 6)+1, get_color_profile_slot_g(0, 6)+1, get_color_profile_slot_b(0, 6)+1);
-} 
+
 
  
 if get_player_color(player) == 7 {

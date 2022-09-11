@@ -145,8 +145,6 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-snEX = hit_fx_create( sprite_get( "snowballEX" ), 24);
-
 forze1 = hit_fx_create( sprite_get( "forze1" ), 1);
 sprite_change_offset("forze1", 50, 50);
 

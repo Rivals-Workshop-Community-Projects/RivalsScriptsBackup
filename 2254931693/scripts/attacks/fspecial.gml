@@ -5,15 +5,19 @@ set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
 
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 4);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("bonby_fspecial_start"));
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("bonby_fspecial_start2"));
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, -2);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, -3);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 2);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 0);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -6);
@@ -32,6 +36,8 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, sound_get("dstrongjump"));
+
+
 
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 10);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 640);
@@ -57,7 +63,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 14);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 24);

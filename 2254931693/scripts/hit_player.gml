@@ -31,11 +31,11 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num = 1){
  with (hit_player_obj){
         other.grabbed_player_damage = get_player_damage( player );
  }
- if (grabbed_player_damage >= 120){
+ if (grabbed_player_damage >= 100){
    sound_play(sound_get("bonby_fspecial_grab_highdamage"));  
   set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, sound_get("bonby_fspecial_jump_highdamage")); 
  }
- if (grabbed_player_damage < 120){
+ if (grabbed_player_damage < 100){
    sound_play(sound_get("dstronggrab"));       
   set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, sound_get("dstrongjump")); 
  } 

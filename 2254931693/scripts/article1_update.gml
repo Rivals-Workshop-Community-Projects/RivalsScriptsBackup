@@ -211,13 +211,13 @@ switch(state){
     case PS_WRAPPED:
         sprite_index = sprite_get("frog_grabbing");
         image_index = 0;
-        if (frog_dspecial_pausetime < 12){
+        if (frog_dspecial_pausetime < 16){
             frog_dspecial_pausetime = frog_dspecial_pausetime + 1;
         }
     if (frog_dspecial_pausetime = 1){
         shake_camera(3, 3);
     }        
-    if (frog_dspecial_pausetime = 11){
+    if (frog_dspecial_pausetime = 14){
         sound_play( sound_get("bonby_frog_zip"));
     }              
         with (grabbedplayer){
@@ -227,7 +227,7 @@ switch(state){
             can_tech = false;
         var grabdir = point_direction(x, y, other.x, other.y);
         var grabspeed = 30;
-        if (other.frog_dspecial_pausetime > 11){
+        if (other.frog_dspecial_pausetime > 15){
             other.frog_dspecial_movetime = other.frog_dspecial_movetime + 1;
           x += lengthdir_x(grabspeed, grabdir);
           y += lengthdir_y(grabspeed, grabdir);
@@ -236,12 +236,12 @@ switch(state){
           vsp = 0;
             fall_through = true;
         }
-        if (point_distance(x, y, grabbedplayer.x, grabbedplayer.y) < 36 && frog_dspecial_pausetime > 11){
+        if (point_distance(x, y, grabbedplayer.x, grabbedplayer.y) < 36 && frog_dspecial_pausetime > 15){
             sound_play(sound_get("bonby_frog_gulp"));
             state = PS_ATTACK_AIR;
             state_timer = 0;
         }
-        if (frog_dspecial_movetime = 12){
+        if (frog_dspecial_movetime = 16){
             state = PS_ATTACK_GROUND;
             frog_dspecial_movetime = 0;
             frog_dspecial_pausetime = 0;

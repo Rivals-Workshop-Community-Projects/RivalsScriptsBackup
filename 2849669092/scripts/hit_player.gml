@@ -1,4 +1,4 @@
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
+if (my_hitboxID.attack == AT_FSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 4)){
     sound_play(sound_get("bat"));
 }
 

@@ -14,7 +14,6 @@ draw_sprite_ext( sprite_get( "frogmeterbarwhite" ), -1, temp_x + 186, temp_y - 1
 
 
 
-
 // Final Smash graphics
 if (attack == 49){
     if (window = 1){
