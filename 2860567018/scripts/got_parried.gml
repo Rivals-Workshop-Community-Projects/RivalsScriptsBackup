@@ -9,3 +9,7 @@ if(my_hitboxID.attack == AT_FSPECIAL and fspec_misfire){
 if(my_hitboxID.attack == AT_NSPECIAL and my_hitboxID.orig_player == player and my_hitboxID.hbox_num == 1){
     my_hitboxID.hitbox_timer = 0;
 }
+
+if(attack == AT_FSPECIAL){
+    sound_stop(asset_get("sfx_ell_missile_loop"));
+}

@@ -75,7 +75,7 @@ case 4:
 	[1, "--Strongs--"],
 	[0, "Gun Shot (forward)"	, "6D"	, "Excites(" + string(get_window_value(AT_FSTRONG, 3, AG_HKR_EXCITE)) + "%)", AT_FSTRONG],
 	[0, "Gun Shot (upward)"		, "8D"	, "Excites(" + string(get_window_value(AT_USTRONG, 5, AG_HKR_EXCITE)) + "%)", AT_USTRONG],
-	[0, "Gun Shot (downward)"	, "2D"	, "Excites(" + string(get_window_value(AT_DSTRONG, 3, AG_HKR_EXCITE)) + "%)", AT_DSTRONG],
+	[0, "Gun Shot (downward)"	, "2D"	, "Excites(" + string(get_window_value(AT_DSTRONG, 3, AG_HKR_EXCITE)) + "%), Jump Cancellable", AT_DSTRONG],
 	
 	[1, "--Air Strongs--"],
 	[0, "Air Gun Shot (forward)"	, "6D"	, "Aerial, Jump Cancellable

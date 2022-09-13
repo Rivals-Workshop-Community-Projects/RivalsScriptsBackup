@@ -74,6 +74,7 @@ sprite_change_offset("nspecial_proj2", 64, 64);
 sprite_change_offset("nspecial_projfire", 64, 64);
 sprite_change_offset("nspecial2_proj", 64, 64);
 sprite_change_offset("nspecialriptide_proj", 64, 64);
+sprite_change_offset("nspecialbighouse_proj", 64, 64);
 sprite_change_offset("nspecial2_glow", 64, 64);
 sprite_change_offset("arrow_indi", 64, 110);
 sprite_change_offset("nspecial2_proj_death", 64, 64);

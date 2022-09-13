@@ -40,3 +40,18 @@ shake_camera(4, 12)
 	 
 window_timer = floor(window_timer)
 noparryedit = 15
+
+
+			if legacy == false {
+			var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
+    		halodeact.depth = depth + 2
+    		halodeact.pause = 4
+         	offense = 1
+            offensetimer = 1	
+            enhanceee = 1
+    		dmhit = 3
+    		fx3 = spawn_hit_fx( x - (8* spr_dir), y - 30 , shit5 )	
+	    	fx3.depth = depth - 5
+	    	sound_play(sound_get("ADfinish"),false,noone, .8,1.4)
+	    	shake_camera(4,4)
+			}

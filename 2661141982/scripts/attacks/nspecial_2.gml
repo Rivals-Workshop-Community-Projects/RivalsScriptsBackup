@@ -53,6 +53,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
 //set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 251);
 
 //WEAK
@@ -75,4 +76,5 @@ set_hitbox_value(AT_NSPECIAL_2, 2, HG_HIT_LOCKOUT, 5);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_VISUAL_EFFECT, ewgf_fx);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_PARRY_STUN, 1);
 //set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_DESTROY_EFFECT, 251);

@@ -339,6 +339,11 @@ if (attack == AT_FSPECIAL){
 		old_hsp = 0;
 	}
 	
+	if(window == 1 && window_timer == get_window_value(AT_FSPECIAL,1,AG_WINDOW_LENGTH)){
+		taxiAirStart = false;
+		taxiMaxHSP = 10;
+	}
+	
 	if (window == 1 && window_timer >= 7 && free){	//13 super armor
 		vsp -= 5;
 	}
@@ -372,8 +377,8 @@ if (attack == AT_FSPECIAL){
 			}
 		}
 		
-		if(state == PS_ATTACK_GROUND && taxiAirStart){
-			taxiLanded = true;
+		if(state == PS_ATTACK_GROUND && taxiAirStart == true){
+			//taxiLanded = true;
 			taxiAirStart = false;
 		}
 		
@@ -383,7 +388,7 @@ if (attack == AT_FSPECIAL){
 			} else {
 				fspecialTimer -= 0.5;
 			}
-			if(taxiAirStart = false){
+			if(taxiAirStart == false){
 				taxiMaxHSP = 6;
 				taxiAirStart = true;
 				if(up_down || special_down){
@@ -416,6 +421,7 @@ if (attack == AT_FSPECIAL){
 			taxiMaxHSP = 10;
 		}
 		
+// slow taxi on landing
 //		if(taxiLanded){
 //			if(landTime == 0){
 //				landTime = fspecialTimer;
@@ -1288,12 +1294,12 @@ switch(attack){
 			break;
 			
 		case 17:	//gamers on the edge
-			air_accel = air_accel + .1;
-			gravity_speed = gravity_speed - .03;
-			knockback_adj = knockback_adj + .01;
-			hitstun_grav = hitstun_grav - .05;
-			max_fall = max_fall - 1;
-			fast_fall = fast_fall - 1;
+			//air_accel = air_accel + .1;
+			//gravity_speed = gravity_speed - .03;
+			//knockback_adj = knockback_adj + .01;
+			//hitstun_grav = hitstun_grav - .05;
+			//max_fall = max_fall - 1;
+			//fast_fall = fast_fall - 1;
 			set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.45);
 			
 			itemsDisplayed[displaySlot] = item[17, 5];

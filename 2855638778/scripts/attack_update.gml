@@ -295,7 +295,8 @@ if (attack == AT_BAIR) {
 				spawn_hit_fx(x-(spr_dir * 50), y-40, 143);
 				//create_hitbox( 51, 1, x, y);
 				create_hitbox( AT_EXTRA_1, 1, x-(spr_dir * 50), y-40);
-				sound_play(sound_get("explode1"), false, noone, 0.8, 1);	
+				sound_stop(explosion_sound);
+				sound_play(explosion_sound, false, noone, 0.9, 1);	
 			}
 		}
 	}
@@ -339,7 +340,8 @@ if (attack == AT_USTRONG) {
 				spawn_hit_fx(x-10, y-65, 143);
 				//create_hitbox( 51, 1, x, y);
 				create_hitbox( 50, 1, x-10, y-65);
-				sound_play(sound_get("explode1"), false, noone, 0.8, 1);	
+				sound_stop(explosion_sound);
+				sound_play(explosion_sound, false, noone, 0.9, 1);	
 			}
 		}
 	}

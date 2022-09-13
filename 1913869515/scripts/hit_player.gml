@@ -11,6 +11,9 @@ if halox > 0 or enhanceee = true {
 		pendupdmgid = other.id
 		pendupcd = floor(other.hitstop)
 		has_hit_player = false
+		if other.legacy == false {
+			pendupdmg += 5
+		}
 	}
 	
 }

@@ -51,4 +51,8 @@ with player_id
 if (get_player_color( player ) == 10){
     sprite_index = sprite_get("nspecialriptide_proj");
     } else { sprite_index = sprite_get("nspecial2_proj"); }
+
+if (get_player_color( player ) == 9){
+    sprite_index = sprite_get("nspecialbighouse_proj");
+    } else { sprite_index = sprite_get("nspecial2_proj"); }
     

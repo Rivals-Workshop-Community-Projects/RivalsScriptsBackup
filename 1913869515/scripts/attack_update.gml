@@ -1,6 +1,9 @@
 
 	//B - Reversals
-	
+if spr_dir = 0 {
+	spr_dir = 1
+}
+
 if !was_parried {
 if get_window_value(AT_UAIR, 4, AG_WINDOW_TYPE) != 7 {
 if (attack == AT_FTILT or attack == AT_UTILT or attack == AT_DTILT or attack == AT_NAIR or attack == AT_FAIR  or attack == AT_DATTACK

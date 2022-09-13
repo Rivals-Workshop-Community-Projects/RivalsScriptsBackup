@@ -82,6 +82,11 @@ switch(attack){
             if(window == 1 and window_timer == 1){
                 sound_play(asset_get("sfx_swipe_weak1"), false, noone, .6, 1.05)
             }
+            if(window == 3 and !free){
+            	attack_end();
+            	landing_lag_time = 3;
+            	set_state(PS_LANDING_LAG);
+            }
         break;
         case AT_BAIR:
             if(window == 1 and window_timer == 3){
@@ -159,11 +164,12 @@ switch(attack){
             
             if(window == 2){
                 if(!special_down or fspec_charge > 146){
-                    if(random_func(1, 9, true)+1 == 9 and has_rune("A")){
+                    if(random_func(1, 9, true)+1 == 9){
                         fspec_misfire = true;
                     }
                     
                     if(fspec_misfire){
+                    	sound_play(sound_get("funky"))
                         take_damage(player, player, 12);
                         fspec_charge = 130;
                         set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"))
@@ -175,7 +181,7 @@ switch(attack){
                     }
                     window++;
                     window_timer = 0;
-                    set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .25+fspec_charge/200)
+                    set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .25+fspec_charge/150)
                     set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, round(4+fspec_charge/8))
                     if(fspec_misfire){
                         set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 158)
@@ -449,6 +455,24 @@ switch(attack){
 		    
 		}
 	break;
+	case AT_EXTRA_1:
+		if(window == 2 and window_timer > 10 + 10*has_hit*.5){
+			iasa_script();
+		}
+	break;
+	case AT_EXTRA_2:
+	suppress_stage_music(0, 0.02);
+	if(window == 1 and window_timer == 4){
+		sound_play(sound_get("victory2"), false, 0, 1, 1);
+	}
+	
+	if(window == 3 and !taunt_down){
+		sound_stop(sound_get("victory2"));
+		window=4;
+		window_timer = 0;
+	}
+	break;
+		
 }
 
 #define joy_stick_lock

@@ -159,7 +159,7 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
-wait_time = 280;
+wait_time = 90;
 wait_length = 100;
 wait_sprite = sprite_get("wait");
 

@@ -106,10 +106,10 @@ if(item[15, 3] == 1){
 }
 
 if (sprite_index == sprite_get("taunt")){
-	if(get_player_color(player) == 6){
+	if(get_player_color(player) == 9){
 		sprite_index = sprite_get("taunt3");
 	}
-	if(get_player_color(player) == 15){
+	if(get_player_color(player) == 11){
 		sprite_index = sprite_get("taunt1");
 	}
 	if(get_player_color(player) == 3 && window = 2){
@@ -124,5 +124,13 @@ if(item[16,3] == 1 && !item[11,3]){
 } else if(item[11,3] == 1){
 	if (sprite_index == sprite_get("utilt")){
 		sprite_index = sprite_get("utilt1");
+	}
+}
+
+if(state == PS_FIRST_JUMP){
+	if(vis_full_hop && hyperJump){
+		sprite_index = sprite_get("hyperjump");
+	} else {
+		sprite_index = sprite_get("jump");
 	}
 }

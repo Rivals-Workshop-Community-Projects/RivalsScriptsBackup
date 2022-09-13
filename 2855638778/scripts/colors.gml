@@ -186,6 +186,16 @@ set_color_profile_slot( 15, 5, 22, 84, 41 ); //boots color
 set_color_profile_slot( 15, 6, 22, 84, 41 ); //rocket launcher metal
 set_color_profile_slot( 15, 7, 36, 138, 68 ); //skin
 
+// hud (unused)
+set_color_profile_slot( 16, 0, 0, 255, 0 ); //jacket
+set_color_profile_slot( 16, 1, 75, 73, 72 ); //helmet
+set_color_profile_slot( 16, 2, 248, 182, 107 ); //logo/grenade
+set_color_profile_slot( 16, 3, 44, 44, 44 ); //chest strap
+set_color_profile_slot( 16, 4, 61, 61, 61 ); //pants color
+set_color_profile_slot( 16, 5, 50, 50, 50 ); //boots color
+set_color_profile_slot( 16, 6, 59, 59, 59 ); //rocket launcher metal
+set_color_profile_slot( 16, 7, 247, 166, 126 ); //skin
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

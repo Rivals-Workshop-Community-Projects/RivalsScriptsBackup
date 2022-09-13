@@ -8,7 +8,7 @@ update_prev_image_index = 0;
 set_hit_particle_sprite(1, sprite_get("hfx_part_ice"));
 set_hit_particle_sprite(2, sprite_get("hfx_part_ice_small"));
 
-set_victory_theme(sound_get("victory1"));
+set_victory_theme(sound_get("victory" + string(random_func(1, 3, true)+1)));
 set_victory_bg(sprite_get("bg"))
 
 hfx_egg = hit_fx_create(sprite_get("hfx_egg"), 24)
@@ -24,9 +24,9 @@ pratfall_anim_speed = .25;
 walk_speed = 3;
 walk_accel = 0.2;
 walk_turn_time = 6;
-initial_dash_time = 12;
-initial_dash_speed = 7;
-dash_speed = 6.75;
+initial_dash_time = 13;
+initial_dash_speed = 7.5;
+dash_speed = 7;
 dash_turn_time = 12;
 dash_turn_accel = .9;
 dash_stop_time = 6;

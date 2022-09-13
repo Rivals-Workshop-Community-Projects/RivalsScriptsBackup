@@ -238,7 +238,7 @@ if (blastjumping) {
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 157);
 	// reduced scaling
-	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
+	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9); // i want to make this 1 so bad
 	set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	
 	// stats changes while blast jumping
@@ -255,7 +255,7 @@ if (blastjumping) {
 	// visual dust
 	if (blastjump_sound_deployed == false) {
 		blastjump_dust_timer = 10;
-		sound_play( blastjump_sound, true, noone, 1, 1 );
+		sound_play( blastjump_sound, true, noone, 0.8, 1 );
 		blastjump_sound_deployed = true;
 	}
 	
@@ -498,4 +498,12 @@ if(variable_instance_exists(id,"diag"))
         }
     }
 }
+/*
+//This code changes the player's jacket on alt 16 to the same color as their HUD.
+var _col = get_player_hud_color( player );
+if (get_player_color(player) == 16) {
+	
+	set_color_profile_slot(16, 0, color_get_red( _col ), color_get_green( _col ), color_get_blue( _col ) );
+}
+*/
 

@@ -12,8 +12,8 @@ switch(my_hitboxID.attack){
     sound_play(asset_get("sfx_blow_heavy1"), false, noone, .5, 1)
     break;
     case AT_DAIR:
-        if(my_hitboxID.hbox_num == 1)
-            sound_play(asset_get("sfx_icehit_heavy1"), false, noone, .7, 1.1)
+        if(my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 3)
+            sound_play(asset_get("sfx_icehit_heavy1"), false, noone, .8, 1.05)
     case AT_FAIR:
     
     
@@ -45,18 +45,18 @@ switch(my_hitboxID.attack){
         if(my_hitboxID.hbox_num == 1){
             spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, hfx_egg);
             sound_play(asset_get("sfx_mol_spark_explode2"), false, false, 1, 1)
-            var hb = create_hitbox(AT_NSPECIAL, 2, my_hitboxID.x, my_hitboxID.y);
+            var hb = create_hitbox(AT_NSPECIAL, 3, my_hitboxID.x, my_hitboxID.y);
             hb.player = my_hitboxID.player;
             hb.spr_dir = my_hitboxID.spr_dir;
             if(my_hitboxID.spr_dir == 1){
                 if(my_hitboxID.hsp < 0){
-                    hb.kb_angle = 140;
+                    hb.kb_angle = 110;
                 } else if (my_hitboxID.hsp == 0){
                     hb.hit_flipper = 3;
                 }
             } else {
                 if(my_hitboxID.hsp > 0){
-                    hb.kb_angle = 140;
+                    hb.kb_angle = 110;
                 } else if (my_hitboxID.hsp == 0){
                     hb.hit_flipper = 3;
                 }

@@ -37,9 +37,11 @@ if(GAUGE_EXP_CURRENT < 50){
 	draw_sprite(sprite_get("gauge"), 50, temp_x + 28, temp_y + 22);
 	draw_sprite(sprite_get("gaugegrad"), GAUGE_EXP_CURRENT - 50, temp_x + 28, temp_y + 22);
 }
+/*
 if(item[8,3] == 1){
 	draw_sprite(item[8,4], 1, temp_x + 40, temp_y + 48);
 }
+*/
 
 if(newItemHUDRefresh){
 	//var randRuneIndex, runeChosen, canBuyBlink;
@@ -51,11 +53,17 @@ if(newItemHUDRefresh){
 			} else {
 				draw_sprite( item[itemsDisplayed[d], 4], 1, temp_x + (210 - (22 * d)), temp_y + 4);
 			}
-		} else {
+		} else if (d >= 10 && d < 20){
 			if(item[itemsDisplayed[d], 3] == 2){
 				draw_sprite_ext( item[itemsDisplayed[d], 4], 1, temp_x + (420 - (22 * d)), temp_y - 12, 1, 1, 1, c_red, 0.8);
 			} else {
 				draw_sprite( item[itemsDisplayed[d], 4], 1, temp_x + (420 - (22 * d)), temp_y - 12);
+			}
+		} else {
+			if(item[itemsDisplayed[d], 3] == 2){
+				draw_sprite_ext( item[itemsDisplayed[d], 4], 1, temp_x + (650 - (22 * d)), temp_y - 28, 1, 1, 1, c_red, 0.8);
+			} else {
+				draw_sprite( item[itemsDisplayed[d], 4], 1, temp_x + (650 - (22 * d)), temp_y - 28);
 			}
 		}
 	}
@@ -65,8 +73,10 @@ if(newItemHUDRefresh){
 		}
 		if (displaySlot < 10){
 			draw_sprite_ext( item[ID_chosen, 4], 1, temp_x + (210 - (22 * displaySlot)), temp_y + 4, 1, 1, 1, (itemCredits >= 1 && canBuyBlink < 0) ? $ffddf6 : $996b8d, 0.5);
-		} else {
+		} else if (displaySlot >= 10 && displaySlot < 20) {
 			draw_sprite_ext( item[ID_chosen, 4], 1, temp_x + (420 - (22 * displaySlot)), temp_y - 12, 1, 1, 1, (itemCredits >= 1 && canBuyBlink < 0) ? $ffddf6 : $996b8d, 0.5 );
+		} else {
+			draw_sprite_ext( item[ID_chosen, 4], 1, temp_x + (650 - (22 * displaySlot)), temp_y - 28, 1, 1, 1, (itemCredits >= 1 && canBuyBlink < 0) ? $ffddf6 : $996b8d, 0.5 );
 		}
 	}
 	

@@ -1175,11 +1175,13 @@ if (state == PS_AIR_DODGE || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWA
             with (pHitBox){
                 if (place_meeting(x,y,other) && player != other.player){
                     if (player_id.witch_timer == 0){
-                    player_id.witch_timer = 60 * 10;
+                    player_id.witch_timer = 60 * 4;
                     player_id.witch_timer_player = other.player;
-
-                    player_id.witch_hsp = player_id.hsp;
-                    player_id.witch_vsp = player_id.vsp;
+					
+					if (player_id.state_cat != SC_HITSTUN){
+					player_id.old_hsp = player_id.hsp;
+					player_id.old_vsp = player_id.vsp;
+					}
 
                     destroyed = true;
 
@@ -1196,6 +1198,14 @@ if (state == PS_AIR_DODGE || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWA
 }
 
 
+with (pHitBox){ 
+	if ("witch_timer" in player_id){
+	if (player_id.witch_timer > 0){
+		destroyed = true;
+	}
+	}	
+}
+
 with (oPlayer){
     if (player != other.player){
 
@@ -1204,40 +1214,15 @@ with (oPlayer){
 
         if (witch_timer > 0 && witch_timer_player == other.player){
             
-
-            if (state_cat == SC_HITSTUN){
-
-                if (!witch_hit){
-                    witch_vsp = vsp;
-                    witch_hsp = hsp;
-                    witch_hit = true;
-                }
-
-                vsp = witch_vsp * 0.1;
-                hsp = witch_hsp * 0.1;
-
-
-                hitstun = witch_timer;
-
-                
-            }
-            else{
-                old_vsp = witch_vsp;
-                old_hsp = witch_hsp;
-
-                if (get_gameplay_time() % 2 == 0){
-                x += round((witch_hsp/20));
-                y += round((witch_vsp/20));
-                }
-
-                hitstop = witch_timer;
-                hitpause = true;
-            }
-
+        	hitstop = witch_timer;
+            hitpause = true;
 
             witch_timer--;
 
-
+			if (get_gameplay_time() % 5 == 0){
+				x += old_hsp*0.001;
+				y += old_vsp*0.001;
+			}
 
             if (witch_timer == 0){
             sound_stop(witch_start);

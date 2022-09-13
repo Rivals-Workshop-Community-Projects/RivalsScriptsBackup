@@ -22,8 +22,8 @@ gaugeToCheck = 50;
 //misc vars
 fspecialTimer = 0;
 taxiAirStart = false;
-taxiLanded = false;
-taxiMaxHSP = 9;
+//taxiLanded = false;
+taxiMaxHSP = 10;
 landTime = 0;
 crystalHold = 0;
 drawDan = false;
@@ -64,6 +64,8 @@ rlQuote[3] = "What a save!"
 
 //pandora vars
 crouchCounter = 0;
+//ranno jump?
+hyperJump = false;
 
 //set up victory screen
 set_victory_theme(sound_get("DE"));
@@ -541,7 +543,7 @@ item[17, 2] = sprite_get("item_aldor");
 item[17, 3] = 0;
 item[17, 4] = sprite_get("mini_aldor");
 item[17, 5] = 17;
-item[17, 6] = "AIR MOBILITY UP";
+item[17, 6] = "CROUCHING SUPERJUMP";
 item[17, 7] = false; //unlock
 item[17, 8] = sprite_get("hud_shop1");
 item[17, 9] = $b2eaff;

@@ -3,3 +3,7 @@ if(attack == AT_FSTRONG){
 } else if(attack == AT_DSTRONG){
     hsp = clamp(hsp, -5, 5);
 }
+
+if(down_down and attack == AT_TAUNT){
+    attack = AT_EXTRA_2;
+}

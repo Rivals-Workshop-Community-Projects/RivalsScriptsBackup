@@ -3,6 +3,23 @@
 //accelerator_run();
 
 
+if(get_player_color(player) == 17){
+	init_shader();
+	var cur_time = get_gameplay_time();
+	rainbow_color = make_colour_hsv((cur_time/12)%255, 185, 125); //default rainbow
+	rainbow_color2 = make_colour_hsv(((cur_time/12))%255, 185, 205); //default shifed halfway through cycle
+	rainbow_color3 = make_colour_hsv(((cur_time/12))%255, 185, 50); //default shifed halfway through cycle
+	dodge_trail_color = rainbow_color;
+}
+
+if(get_player_color(player) == 14){
+    set_character_color_shading(2, 0);
+    set_character_color_shading(4, 0);
+    set_character_color_shading(5, 0);
+    set_character_color_shading(6, 0);
+    set_character_color_shading(7, 0);
+}
+
 if(free and (state == PS_IDLE_AIR or state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP or state == PS_WALL_JUMP) and taunt_pressed){
    set_attack(AT_TAUNT);
 }

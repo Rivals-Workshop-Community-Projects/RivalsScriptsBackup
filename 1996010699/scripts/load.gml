@@ -28,12 +28,13 @@ sprite_change_offset("introAZ", 106, 68);
 sprite_change_offset("introRT", 106, 68);
 
 sprite_change_offset("jumpstart", 22, 46);
-sprite_change_offset("jump", 22, 60);
+sprite_change_offset("jump", 66, 122);
 sprite_change_offset("doublejump", 24, 52);
 sprite_change_offset("walljump", 22, 54);
 sprite_change_offset("pratfall", 21, 56);
 sprite_change_offset("land", 24, 48);
 sprite_change_offset("landinglag", 22, 48);
+sprite_change_offset("hyperjump", 66, 122);
 
 sprite_change_offset("parry", 20, 50);
 sprite_change_offset("roll_forward", 20, 50);

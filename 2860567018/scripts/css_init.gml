@@ -1,0 +1,1 @@
+sound_play(sound_get("funky"), false, 0, .8, 1);

@@ -96,6 +96,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, splashfx);//6
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 21);//150
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 1);
+//set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);

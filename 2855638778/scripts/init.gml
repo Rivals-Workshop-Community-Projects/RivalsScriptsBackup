@@ -144,6 +144,8 @@ blastjump_sound = sound_get( "grenade_jump_lp_01" );
 blastjump_sound_deployed = false;
 blastjump_should_undeploy = false;
 
+explosion_sound = sound_get("explode1");
+
 grenade_explode = false;
 
 blastjump_dust_timer = 0;
@@ -157,6 +159,8 @@ airstrongs_credits = 60;
 
 css_dspec = 0;
 dspec_swap_task_timer = 0;
+
+_col = get_player_hud_color( player );
 
 // localization file updates: 1
 

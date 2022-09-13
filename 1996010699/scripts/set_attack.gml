@@ -1,4 +1,5 @@
 //The Suitcase
+	
 var tidePods = (item[11, 3] == 1 && item[2, 3] == 1 && get_player_color(player) == 22);
 var lordBagel = (foodVoided);
 if (attack == AT_DSPECIAL){

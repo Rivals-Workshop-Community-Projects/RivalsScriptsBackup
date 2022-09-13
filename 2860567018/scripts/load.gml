@@ -51,7 +51,7 @@ sprite_change_offset("uspecial", 126, 158);
 sprite_change_offset("dspecial", 126, 158);
 sprite_change_offset("dspecial_objects", 126, 158);
 sprite_change_offset("taunt", 126, 158);
-
+sprite_change_offset("taunt2", 126, 158);
 
 sprite_change_offset("hfx_egg", 64, 64);
 sprite_change_offset("hfx_special", 64, 64);

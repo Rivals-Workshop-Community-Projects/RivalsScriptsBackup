@@ -1,19 +1,22 @@
 
 // when a rocket hits the floor, a player, or a wall, it creates an explosion and then disappears.
 if (attack == AT_FSPECIAL) {
-	if (!free) || (has_hit) ||(place_meeting(x, y, asset_get("par_block"))){
+	if (!free) || (has_hit) || (place_meeting(x, y, asset_get("par_block"))){
 		spawn_hit_fx(x, y, 143);
 		create_hitbox( 49, 1, x, y);
 		//create_hitbox( 50, 1, x, y);
+		sound_stop(remotesound);
 		sound_play(remotesound, false, noone, 0.8, 1);	
 		destroyed = true;
 	}
 }
 if (attack == AT_DSTRONG) {
-	if (!free) || (has_hit) ||(place_meeting(x, y, asset_get("par_block"))){
+	if (!free) || vsp == 0 || (has_hit) || (place_meeting(x, y, asset_get("par_block"))){
 		//move_cooldown[AT_DSTRONG] = 200;
 		spawn_hit_fx(x, y, 143);
 		//create_hitbox( 51, 1, x, y);
+		sound_stop(remotesound);
+		//sound_stop(remotesound);
 		create_hitbox( 50, 1, x, y);
 		sound_play(remotesound, false, noone, 0.8, 1);	
 		destroyed = true;

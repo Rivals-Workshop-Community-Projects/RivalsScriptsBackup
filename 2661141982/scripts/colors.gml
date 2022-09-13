@@ -92,15 +92,15 @@ set_color_profile_slot( 8, 3, 207, 178, 132 ); //Light
 set_color_profile_slot( 8, 4, 255, 74, 74 ); //Skin 2
 set_color_profile_slot( 8, 5, 212, 196, 152 ); //water
 
-// Kohaku Koi
-set_color_profile_slot( 9, 0, 252, 238, 238 ); //Skin
-set_color_profile_slot( 9, 1, 255, 175, 153 ); //Fins
-set_color_profile_slot( 9, 2, 255, 94, 94 ); //Marks
-set_color_profile_slot( 9, 3, 255, 217, 0 ); //Light
-set_color_profile_slot( 9, 4, 252, 238, 238 ); //Skin 2
+// Big House
+set_color_profile_slot( 9, 0, 252, 252, 252 ); //Skin
+set_color_profile_slot( 9, 1, 255, 179, 0 ); //Fins
+set_color_profile_slot( 9, 2, 70, 88, 191 ); //Marks
+set_color_profile_slot( 9, 3, 255, 179, 0 ); //Light
+set_color_profile_slot( 9, 4, 255, 179, 0 ); //Skin 2
 set_color_profile_slot( 9, 5, 87, 146, 255 ); //water
 
-// Early Access
+// riptide
 set_color_profile_slot( 10, 0, 0, 200, 255 ); //Skin
 set_color_profile_slot( 10, 1, 245, 219, 97 ); //Fins
 set_color_profile_slot( 10, 2, 255, 170, 0 ); //Marks
@@ -108,7 +108,7 @@ set_color_profile_slot( 10, 3, 255, 221, 0 ); //Light
 set_color_profile_slot( 10, 4, 23, 66, 153 ); //Skin 2
 set_color_profile_slot( 10, 5, 38, 197, 255 ); //water
 
-// Summit
+// genesis
 set_color_profile_slot( 11, 0, 63, 63, 89 ); //Skin
 set_color_profile_slot( 11, 1, 234, 243, 240 ); //Fins
 set_color_profile_slot( 11, 2, 204, 0, 37 ); //Marks

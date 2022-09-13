@@ -14,16 +14,16 @@ if(attack == AT_NSPECIAL and hbox_num == 1 and vsp > 0 and (collision_point(x, y
         sound_play(asset_get("sfx_blow_heavy1"), false, false, .5, 1.1)
         sound_play(asset_get("sfx_mol_spark_explode2"), false, false, 1, 1)
         sound_play(asset_get("sfx_ice_shatter"), false, false, .4, 1)
-        var hb = create_hitbox(AT_NSPECIAL, 2, x, y);
+        var hb = create_hitbox(AT_NSPECIAL, 3, x, y);
         if(spr_dir == 1){
             if(hsp < 0){
-                hb.kb_angle = 140;
+                hb.kb_angle = 110;
             } else if (hsp == 0){
                 hb.hit_flipper = 3;
             }
         } else {
             if(hsp > 0){
-                hb.kb_angle = 140;
+                hb.kb_angle = 110;
             } else if (hsp == 0){
                 hb.hit_flipper = 3;
             }
@@ -37,20 +37,28 @@ if(attack == AT_NSPECIAL and hbox_num == 1 and vsp > 0 and (collision_point(x, y
         sound_play(asset_get("sfx_blow_heavy1"), false, false, .5, 1.1)
         sound_play(asset_get("sfx_mol_spark_explode2"), false, false, 1, 1)
         sound_play(asset_get("sfx_ice_shatter"), false, false, .4, 1)
-        var hb = create_hitbox(AT_NSPECIAL, 2, x, y);
+        var hb = create_hitbox(AT_NSPECIAL, 3, x, y);
         if(spr_dir == 1){
             if(hsp < 0){
-                hb.kb_angle = 140;
+                hb.kb_angle = 110;
             } else if (hsp == 0){
                 hb.hit_flipper = 3;
             }
         } else {
             if(hsp > 0){
-                hb.kb_angle = 140;
+                hb.kb_angle = 110;
             } else if (hsp == 0){
                 hb.hit_flipper = 3;
             }
         }
+        hb.spr_dir = spr_dir;
+        hb.player = player;
+}
+
+else if (attack == AT_NSPECIAL and hbox_num == 3 and hitbox_timer == 6){
+        var hb = create_hitbox(AT_NSPECIAL, 2, x, y);
+        hb.kb_angle = kb_angle;
+        hb.hit_flipper = hit_flipper;
         hb.spr_dir = spr_dir;
         hb.player = player;
 }

@@ -342,13 +342,21 @@ switch (attack)
         }
 		break;
 	case AT_USPECIAL:
-		if (window == 3 && down_down && special_pressed){
-		    set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 6);
+		if (window == 3 && down_down && special_pressed && !has_hit){
+		    set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 8);//6
 		    window = 4;
 		    window_timer = 0;
-		    vsp = -5;
+		    //vsp = -5;
 		    can_fast_fall = false;
 		    can_move = false;
+		    
+		}
+		if (window > 4){
+			can_wall_jump = true;
+			afterImageTimer = 4;
+		}
+		if (window == 7 && window_timer == 1 ){
+			sound_play(asset_get("sfx_waterhit_heavy"));
 		}
 		if (get_gameplay_time() mod 4 == 0 and window > 1)
 		{

@@ -248,6 +248,20 @@ if (swallowed == 1) {
     }
 }
 
+//aldor ranno jump
+if(state == PS_CROUCH && item[17, 3] == 1){
+	hyperJump = true;
+}
+
+if(hyperJump){
+	if(state == PS_CROUCH || state == PS_JUMPSQUAT || state == PS_FIRST_JUMP){
+		jump_speed = 16;
+	} else {
+		jump_speed = 11.5;
+		hyperJump = false;
+	}
+}
+
 if(item[15, 3] == 1 && state == PS_CROUCH && crouchCounter < 100){
 	crouchCounter++;
 	
@@ -256,20 +270,10 @@ if(item[15, 3] == 1 && state == PS_CROUCH && crouchCounter < 100){
 	}
 }
 
-//old gotehorn unlock
-/*
-if(item[7, 3] == 0 && state == PS_DOUBLE_JUMP && state_timer == 1 && airCounter < 7){
-	airCounter++;
-}
-
-if(item[7, 3] == 0 && item[7, 7] == false && airCounter >= 7){
-	achieveUnlock(7);
-}
-*/
-
 if (crouchCounter > 90 && crouchCounter < 100){
 	spawn_hit_fx( x , y - 30 , 13 );
 	sound_play(asset_get("sfx_shovel_hit_med2"));
+	shake_camera( 4, 2 );
 	crouchCounter = 100;
 }
 
@@ -289,11 +293,18 @@ if(!free){
 	carbounceRestoredJumps = false;
 }
 
-if(state = PS_LANDING_LAG){
+//clamp max speed when jumping out of fspecial - later
+/*
+if(state == PS_DOUBLE_JUMP && state_timer == 0 && prev_state == PS_ATTACK_AIR && attack == AT_FSPECIAL){
+	hsp = clamp(hsp, 0, (spr_dir * 6));
+}
+*/
+
+if(state == PS_LANDING_LAG){
 	char_height = 44;
 }
 
-if(state = PS_WALL_JUMP){
+if(state == PS_WALL_JUMP){
 	move_cooldown[AT_FSPECIAL] = 0;
 }
 
@@ -339,6 +350,7 @@ if(state_cat == SC_AIR_NEUTRAL && prev_state == PS_ATTACK_GROUND && attack == AT
 	item[3, 6] = "101% SANDBERT DAIR";
 }
 
+//pandora cheevo VS katie/sai
 if(PS_SPAWN){
 	with (oPlayer) {
 		if (player != other.player) {  
@@ -356,20 +368,20 @@ if(PS_SPAWN){
 
 
 //intro stuff
-if(get_player_color(player) == 7){
+if(get_player_color(player) == 15){
 	arizonaIntro = true;
-} else if(get_player_color(player) == 8){
+} else if(get_player_color(player) == 14){
 	gameboyIntro = true;
 } else if(get_player_color(player) == 13){
 	abyssIntro = true;
-} else if(get_player_color(player) == 14){
+} else if(get_player_color(player) == 6){
 	halloweenIntro = true;
-} else if (get_player_color(player) == 15){
+} else if (get_player_color(player) == 11){
 	goldenIntro = true;
-} else if (get_player_color(player) == 22){
+} else if (get_player_color(player) == 12){
 	beachIntro = true;
 }
-if(get_player_color(player) == 15 && get_gameplay_time() % 21 == 0 && !hitpause && state != PS_RESPAWN){
+if(get_player_color(player) == 11 && get_gameplay_time() % 21 == 0 && !hitpause && state != PS_RESPAWN){
 	var goldFX = spawn_hit_fx( x - ((22 - random_func(1, 50, true)) * spr_dir) , y - random_func(12, 58, true) , sparkle );
 	goldFX.depth = -100;
 }
@@ -476,17 +488,14 @@ if(state == PS_SPAWN && state_timer == 8){
 	if has_rune("I"){
 		item[0, 7] = true;
 		item[10, 7] = true;
-		//item[16, 7] = true;
-		//item[22, 7] = true;
 		item[25, 7] = true;
-		
 	}
 	if has_rune("F"){
 		item[26, 7] = true;
 	}
 		
 	switch(get_player_color(player)){
-		case 6:
+		case 9:
 			achTrophy = hit_fx_create(sprite_get("achievement1"), 60);
 			
 			set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
@@ -499,35 +508,34 @@ if(state == PS_SPAWN && state_timer == 8){
 			set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 4);
 			set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 			break;
-		case 15:
+		case 11:
 			introTimer = -4;
-			if(!item[10, 7]){
-				//achieveUnlock(10);
-				set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 3);
-				set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
-				set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 18);
-				set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 6);
-				set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
-				set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, asset_get("mfx_star"));
-				set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 12);
+			set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 3);
+			set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
+			set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 18);
+			set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 6);
+			set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
+			set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, asset_get("mfx_star"));
+			set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 12);
 				
-				set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 1);
-				set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 64);
-				set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 4);
-				set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 6);
+			set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 1);
+			set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 64);
+			set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 4);
+			set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 				
-				set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 1);
-				set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 15);
-				set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 5);
-				set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 10);
-				set_window_value(AT_TAUNT, 3, AG_WINDOW_HAS_SFX, 1);
-				set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, asset_get("sfx_kragg_rock_pull"));
-			}
+			set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 1);
+			set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 15);
+			set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 5);
+			set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 10);
+			set_window_value(AT_TAUNT, 3, AG_WINDOW_HAS_SFX, 1);
+			set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, asset_get("sfx_kragg_rock_pull"));
 			break;
 	}
 }
 
+//controller unlock
 if(get_gameplay_time() <= 180){
+	setNextItem();
 	if(attack_pressed || special_pressed || jump_pressed || shield_pressed || up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed || taunt_pressed || up_pressed || down_pressed || left_pressed || right_pressed || up_stick_pressed || down_stick_pressed || left_stick_pressed || right_stick_pressed){
 		inputTally++;
 	}
@@ -536,6 +544,7 @@ if(get_gameplay_time() <= 180){
 	}
 }
 
+//joycon unlock
 if(item[23, 3] == 0 && item[23, 7] == false){
 	//keyboard check
 	if((state == PS_DASH_START)){
@@ -566,9 +575,11 @@ if(dingTimer > 0){
 	dingReady = true;
 }
 
+/*
 if(state_cat == SC_GROUND_COMMITTED){
 	move_cooldown[AT_DAIR] = 0;
 }
+*/
 
 if(state == PS_LANDING_LAG && attack == AT_NAIR && triggerSplash && item[2, 3] == 1 && state_timer == 0 && !hitpause){
 	create_hitbox(AT_NAIR, 6, x, y);
@@ -764,4 +775,20 @@ if (faucetShards == true){
 		}
 	}
 	faucetShards = false;
+}
+
+#define setNextItem
+{
+	r = random_func(0, numItemsAvailable, true);
+	if(ID_chosen == 6 && IDs_available[0] != 6){
+		IDLockedIn = false;
+		ID_chosen = IDs_available[r];
+		IDLockedIn = true;
+	}
+	if(IDLockedIn == false){
+		ID_chosen = IDs_available[r];
+		IDLockedIn = true;
+	}
+	itempoolUpdated = false;
+	newItemHUDRefresh = true;
 }
