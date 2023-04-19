@@ -1,5 +1,18 @@
 //Tails' Custom Variables
 
+// runes
+rollRune = has_rune("B");
+rhythmBadgeRune = has_rune("C");
+jetAnkletRune = has_rune("D");
+fstrongWindRune = has_rune("E");
+
+remoteRobotDetonateRune = has_rune("G");
+nspecMultihitRune = has_rune("H");
+jumpsRune = has_rune("I");
+
+remoteRobotDoubleRune = has_rune("M");
+
+
 //Non Attack Related Vars
 
 defaultcolor = false
@@ -32,6 +45,15 @@ bombcharge = -2 //Variable for Ustrong's bomb charge height modifier.
 ring_dstrong_vfx = hit_fx_create(sprite_get("dstrong_vfx"), 15);
 
 nspec_air_window_timer = 0
+
+// nspec
+
+nspecRuneHitPlayerX = 0;
+nspecRuneHitPlayerY = 0;
+nspecRuneHit = false;
+nspecRuneTimer = 0;
+nspecRuneTimesThrough = 0;
+nspecRuneTimesThroughMax = 2;
 
 //Fspecial: Air Dive
 
@@ -73,11 +95,16 @@ tailsrobotx = 0
 
 tailsroboty = 0
 
+tailsrobot2x = 0
+
+tailsrobot2y = 0
+
 tailsdidrobotgetparried = false
 
 tailsdidbombhitrobot = false
 
-tailsdidstartingdownbhitboxhit = false
+tailsdidstartingdownbhitboxhitRobot1 = false;
+tailsdidstartingdownbhitboxhitRobot2 = false;
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
@@ -109,13 +136,13 @@ jump_speed = 10;
 short_hop_speed = 5;
 djump_speed = 9;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 5.5 + (rollRune * 3.25); //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .04;
-max_djumps = 2;
+max_djumps = 2 + (jumpsRune * 8);
 double_jump_time = 24; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
 walljump_vsp = 8;
@@ -166,8 +193,8 @@ roll_forward_recovery_frames = 4;
 roll_back_startup_frames = 1;
 roll_back_active_frames = 4;
 roll_back_recovery_frames = 2;
-roll_forward_max = 9; //roll speed
-roll_backward_max = 9;
+roll_forward_max = 9 + (rollRune * 8); //roll speed
+roll_backward_max = 9 + (rollRune * 8);
 
 //SFX List
 sfx_airdodge = sound_get("sfx_airdodge")

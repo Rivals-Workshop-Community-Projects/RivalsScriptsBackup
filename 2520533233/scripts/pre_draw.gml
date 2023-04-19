@@ -1,12 +1,18 @@
 // pre-draw
 if(dragon_install){
-   
-    gpu_set_fog(true, rainbow_color, 0, 0);
+   if(music_alt != "" and music_page == "_page2_" and get_player_color(player) == 6){
+        gpu_set_fog(true, c_red, 0, 0);
+    } else {
+        gpu_set_fog(true, rainbow_color, 0, 0);
+    }
     draw_sprite_ext(sprite_index, image_index, x + 2 - random_func(4,8,true) , y - 2 + random_func(2,6,true)  , spr_dir*2, 2, 0 , c_black , 1);
     draw_sprite_ext(sprite_index, image_index, x - 2 + random_func(4,8,true) , y + 2 - random_func(2,6,true)  , spr_dir*2, 2, 0 , c_black , 1);
     for(var t = 0; t < install_trail_size; t++){
         var i = install_trail[t];
         if(i.life > 0){
+            if(music_alt != "" and music_page == "_page2_" and get_player_color(player) == 6){
+                i.color = c_red;
+            }
             gpu_set_fog(true, i.color, 0, 0);
             draw_sprite_ext(i.sprite_index, i.image_index, i.x, i.y, (1+small_sprites)*i.spr_dir, 1+small_sprites, 0, i.color, (i.life/30)/1.5);
         }

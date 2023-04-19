@@ -1,11 +1,19 @@
 //update
-user_event(14); 
-
-if !superbluey and !(get_player_color( player ) == 15) { 
-	if (wblastcharge >= 45) { 
+if !(get_player_color( player ) == 15) { 
+	if (wblastcharge >= 35) { 
 		var outlineclr = (sin((get_gameplay_time() - wblastcharge) * 0.2) * -50) + 50
 		outline_color = [ 0, outlineclr * 1.05, outlineclr * 2];
+
+		if get_gameplay_time() mod 25 == 0 {
+				spawn_hit_fx(x-30, y-60, nspecialAfter);
 		}
+		if get_gameplay_time() mod 20 == 0 {
+				spawn_hit_fx(x+30, y-40, nspecialAfter);
+		}
+		if get_gameplay_time() mod 30 == 0 {
+				spawn_hit_fx(x-34, y-14, nspecialAfter);
+		}
+	}
 	else	{	
 		outline_color = [ 0, 0, 0 ];
 	}
@@ -31,23 +39,24 @@ if ballDown > 0 {
 }
 
 if (get_player_color( player ) == 15) {
-	if (wblastcharge >= 45) and ((get_gameplay_time() mod 10) > 5) {
-	outline_color = [ 168, 224, 248 ];
+	if (wblastcharge >= 35) and ((get_gameplay_time() mod 20) >= 5) {
+		outline_color = [ 40, 100, 255];
 	}
-	else	{	
-		outline_color = [32, 24, 136];
+	else {	
+		outline_color = [31, 31, 31];
 	}
 }
 
 init_shader();
 
-if (wblastcharge > 45) { //Ensure wblastcharge never goes above 55
-	wblastcharge = 45;
+if (wblastcharge > 35) { //Ensure wblastcharge never goes above 55
+	wblastcharge = 35;
 }
 
 if (0 > wblastcharge) { //Ensure wblastcharge never goes below zero
 	wblastcharge = 0;
 }
+
 if !(url == 1882960192) {
 	set_state(PS_DEAD);
 }
@@ -157,7 +166,7 @@ if swallowed { //Kirby ability script starts here
 
 ///runes thing
 if has_rune("G") { //Rune G: Charging NSpecial boosts stats.
-	if wblastcharge >= 45 {
+	if wblastcharge >= 35 {
 	walk_anim_speed = .31;
 	dash_anim_speed = .5;
 	
@@ -196,6 +205,7 @@ if(variable_instance_exists(id,"diag"))
     diagchoice = [
     "Another day, another opponent. Let's do it!",
     "Heyo.",
+    "Nothing to do but fight, I guess...",
     "(I might actually just go home right now.)"]
 
 //  Specific Character Interactions
@@ -213,7 +223,7 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == CH_CLAIREN && diag != "") 
     {
-        diag = "That's a pretty cool sword.";
+        diag = "That's a pretty cool sword. I wonder...";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == CH_MAYPUL && diag != "") 
@@ -223,12 +233,12 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "2014106219" && diag != "") 
     {
-        diag = "Um...hi, Cinna?";
+        diag = "Um...hi, Sis?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == "2007375819" && diag != "") 
     {
-        diag = "Well...this is kind of awkward. Eh, BBot?";
+        diag = "Well...this is kind of weird. Eh, BBot?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == "2089998666" && diag != "") 

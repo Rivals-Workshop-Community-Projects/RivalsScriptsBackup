@@ -139,8 +139,9 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 1);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 0.7);
-set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]); //shouldn't be here
+set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.1); //0.7
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.5); //1
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);

@@ -3,6 +3,9 @@ print_debug("Smash 4 be like");
 var day;
 var hour = current_hour;
 var minute = current_minute;
+var actual_day = current_day;
+var month = current_month;
+var year = current_year;
 
 moe_squr_bonk_type = 1; // 1, Wood
 
@@ -35,10 +38,10 @@ print_debug(string(hour))
 switch(current_weekday){
    case 0:
        day = "Sunday";
-       //print_debug("Weeklies Today");
+       print_debug("Weeklies Today");
        with(obj_stage_article){
            if num == 2{
-               visible = 0;
+               visible = 1;
            }
            if num == 3{
                visible = 0;
@@ -125,6 +128,28 @@ switch(current_weekday){
        //print("Blueberry Bout");
        break;
 }
+
+if current_month == 1 and current_year == 2023{
+    if current_day >= 20 and current_day < 23{
+        // Genesis
+        with(obj_stage_article){
+           if num == 2{
+               visible = 1;
+           }
+           if num == 5{
+               visible = 1;
+           }
+        }
+    }
+} else {
+    with(obj_stage_article){
+        if num == 5{
+            visible = 0;
+        }
+    }
+}
+
+// Top plat appears every thirty seconds, lasts 9 seconds
 
 print_debug("Today is: " + string(day));
 print_debug("Time is: " + string(hour) + " : " + string(minute));

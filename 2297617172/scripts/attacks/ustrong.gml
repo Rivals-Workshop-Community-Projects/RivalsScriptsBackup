@@ -66,3 +66,4 @@ set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("impact"));
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_VSPEED, -18);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_GRAVITY, .85);
+set_hitbox_value(AT_USTRONG, 1, HG_FINAL_BASE_KNOCKBACK, 7);

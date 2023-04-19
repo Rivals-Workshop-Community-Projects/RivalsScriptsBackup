@@ -2,7 +2,6 @@
 // Draws sprites in front of the other player
 // Use other_player_id to refer to this character's files
 
-
 // Draws balloons behind the opponent when they are afflicted with the Balloon Effect
 var	bal = noone;
 

@@ -49,14 +49,14 @@ alt_name[11] = "The Baby";
 alt_name[12] = "Secret Pubby";
 alt_name[13] = "Fluid of Gender";
 alt_name[14] = "Freedom Fighter";
-alt_name[15] = "Void Duck";
+alt_name[15] = "The 9th Beginning";
 alt_name[16] = "Sapphire Shot";
 alt_name[17] = "Holographic Slayer";
 alt_name[18] = "Wind Strider";
 alt_name[19] = "Burning Fang";
 alt_name[20] = "Ms. Fanservice";
 alt_name[21] = "Revolver Reforged";
-alt_name[22] = "Rebel Ducky";
+alt_name[22] = "Laser Bandit";
 alt_name[23] = "Borrowed Time";
 alt_name[24] = "Between Worlds";
 alt_name[25] = "Portal Zer0";
@@ -64,7 +64,7 @@ alt_name[26] = "Star Duck";
 alt_name[27] = "Undecided Residence";
 alt_name[28] = "Remnants of a Creator";
 alt_name[29] = "Sparked Berry";
-alt_name[30] = "Tides Ripper";
+alt_name[30] = "Into the Vortex";
 alt_name[31] = "Vocalist Takeover";
 
 if(!doNotInitShader){

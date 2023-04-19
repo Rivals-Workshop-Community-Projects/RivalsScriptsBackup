@@ -114,6 +114,8 @@ if trummelcodecneeded {
     trummelcodecline[9,4] = "";
 }
 
+/*
+
 if (anti_op) {
 	switch (get_gameplay_time()) {
 		case 121:
@@ -132,7 +134,7 @@ if (anti_op) {
 			break;
 	}
 }
-/*	
+
 with (asset_get("oPlayer")) { //Anti-Ronalds
 
 	if ("has_shake" in self && "has_apple" in self) { //ronald
@@ -172,37 +174,27 @@ with (asset_get("oPlayer")) { //Anti-Ronalds
 		}
 	}
 }
-*/
 
 if (anti_op) {
 	times_pressed = 0;
 	set_victory_theme(sound_get("mus_win2_sans"));
 }
-
-//hard mode sans
-//some code borrowed from diamond kris
+*/
 
 if (state == PS_SPAWN) {
 	match_start += -1;
-	if (match_start > 0) && (times_pressed >= pressed_required) && (!deed_is_done) {
-		trolled = true;
+	if (match_start > 0) {
+		if (special_pressed) {
+			clear_button_buffer(PC_SPECIAL_PRESSED);
+			times_pressed++;
+		}
+		if (times_pressed >= pressed_required) && (!deed_is_done) {
+			trolled = true;
+		}
 	}
 }
-
-if (match_start > 0) {
-	if (special_pressed) {
-		clear_button_buffer(PC_SPECIAL_PRESSED);
-		times_pressed++;
-	}
-}
-
 if (trolled) {
-	//set_victory_theme(sound_get("mus_win_troll"));
 	guiltySprite = sprite_get("t_sansganronpa");
-	//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam"));
-	//set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam"));
-	//set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam"));
-	//set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("t_gaster_blaster_beam"));
 }
 
 with (asset_get("oPlayer")){
@@ -212,7 +204,6 @@ with (asset_get("oPlayer")){
 	if (sansgrabtime >= 70 || 
 	state_cat == SC_GROUND_NEUTRAL ||
 	state_cat == SC_AIR_NEUTRAL) {
-		grabbed = 0;
 		grabbed_id = noone;
 	}
 }
@@ -228,42 +219,34 @@ char_height+=(bone_height-char_height)/3
 dracula_portrait = sprite_get("dracula_portrait");
 dracula_portrait2 = sprite_get("dracula_portrait2");
 var page = 0;
-
 //Page 0
 dracula_speaker[page] = 0;
 dracula_text[page] = "You don't look to be from around here, my undead comrade, are you possibly lost?";
 page++;
-
 //Page 1
 dracula_speaker[page] = 1;
 dracula_text[page] = "it looks like i took a wrong turn on my way to grillby's, so yeah, i'd say so.";
 page++;
-
 //Page 2
 dracula_speaker[page] = 1;
 dracula_text[page] = "i sure am a real bonehead, right?";
 page++;
-
 //Page 3
 dracula_speaker[page] = 1;
 dracula_text[page] = "that aside, you're a vampire, right? i wouldn't know, i've never seen one before. unless i count dracula.";
 page++;
-
 //Page 4
 dracula_speaker[page] = 1;
 dracula_text[page] = "life sure is crazy. at this point, not even i know what will happen necks.";
 page++;
-
 //Page 5
 dracula_speaker[page] = 0;
 dracula_text[page] = "Enough with your insolent jokes! I regret welcoming you so politely.[glass] Leave my manor this moment, or I shall violently force you!";
 page++;
-
 //Page 6
 dracula_speaker[page] = 1;
 dracula_text[page] = "yeesh, tough crowd. if it's a fight with me you want, though...";
 page++;
-
 //Page 7
 dracula_speaker[page] = 2;
 dracula_text[page] = "I t ' s   a   b a d   t i m e   y o u ' l l   g e t .";

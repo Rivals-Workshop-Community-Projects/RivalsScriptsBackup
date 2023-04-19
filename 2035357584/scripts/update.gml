@@ -112,6 +112,15 @@ if(handle_parry){
     handle_parry = false;
 }
 
+//count down grab ftile
+if(grab_time > 0){
+    --grab_time;
+}
+else{
+    my_grab_id = noone;
+}
+
+
 //spawn extra grenades for related abyss rune
 if (spawn_cluster){
     spawn_grenades(spawnX, spawnY, get_hitbox_value(AT_EXPLOSION, 1, HG_WIDTH)/2);
@@ -143,7 +152,7 @@ else{
 init_shader();
 
 //resetting flags and counters
-if(state != PS_ATTACK_GROUND){
+if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
     taunt = false;
 }
 if(taunt_pressed && !has_grenade){

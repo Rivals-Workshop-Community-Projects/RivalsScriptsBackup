@@ -1,4 +1,8 @@
-set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+if get_player_color(player) == 17{
+		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntdrip"));
+}else{
+		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+}
 set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 1);
 set_attack_value(AT_TAUNT, AG_OFF_LEDGE, 1);
 set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));

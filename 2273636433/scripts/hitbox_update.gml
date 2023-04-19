@@ -8,14 +8,20 @@ if attack == AT_NSPECIAL{
 		show = 0;
 	}
 
+
+	damage= 4+ C_dam*2;
+	kb_value = 4+ C_knock*1.25;
+
 	//DAMAGE AND KNOCKBACK RESTRICTIONS
 	if limit == 1{																				//For RUNE K
-		if damage >14 { damage = 14; C_dam =6;}
-		if kb_value >13.5 {  kb_value = 14; C_knock =6;}
-		if extra_hitpause >18 {  extra_hitpause =18;}
+		if damage >16 { damage = 16; C_dam =6;}
+		if kb_value >12 {  kb_value = 12; C_knock =6;}
+		if  hitstun_factor >1.2{hitstun_factor=1.2;}
 	}
+
 	if C_dam > 6 { C_dam = 6;}
 	if C_knock > 6 {C_knock = 6;}
+
 	if damage >=8 {
 		effect = 0;
 	}
@@ -26,9 +32,6 @@ if attack == AT_NSPECIAL{
 	//BOUNCE
 	if pill_state != 5 &&(!free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0) ){
 		floor_pos = y;
-		 if length == 99999{
-			destroyed = true;
-		 }
 	}
 	if y == floor_pos {
 		 if grav == 0.5 { vsp = -10.5}
@@ -45,7 +48,6 @@ if attack == AT_NSPECIAL{
 				if abs(y - (player_id.y - 34))<56{
 
 					//Check each Pill State
-
 					if (pill_state == 2 ){					//Fstrong
 						vsp = 0;
 						if hsp == 0 {hsp = 4.5*player_id.spr_dir;}
@@ -70,11 +72,8 @@ if attack == AT_NSPECIAL{
 						else{ hsp = abs(hsp)*1.5*player_id.spr_dir;}
 						spr_dir = player_id.spr_dir;
 						pill_state = 5;
-					}
-
-
-					else {
-						vsp = -abs(vsp);		
+					}	else {
+						vsp = -abs(vsp)*.8;		
 						length = length* 3/4;
 						if abs(hsp) <= 2.5 { hsp = 5*player_id.spr_dir; }
 						else{
@@ -89,10 +88,16 @@ if attack == AT_NSPECIAL{
 					hitbox_timer = 0;
 					player_id.pilleffect=2;
 					spr_dir = player_id.spr_dir;		//Can Turn Around
-					kb_value = kb_value*1.55;
 					C_knock += 2;
-					extra_hitpause+=2;
+					hitstun_factor+=0.05;
 					show = 1;
+
+					//Reseting reflect values
+					can_hit_self =false;
+					can_hit[1] = true;
+					can_hit[2] = true;
+					can_hit[3] = true;
+					can_hit[4] = true;
 				}
 		}
 	}
@@ -119,15 +124,15 @@ if attack == AT_NSPECIAL{
 				x = player_id.x +26*player_id.spr_dir;
 				y = player_id.y - 26;
 				vsp = -15;
-				hsp = 2.5*player_id.spr_dir;
+				hsp = 2.25*player_id.spr_dir;
 				length = 200;
 				hitbox_timer = 0;
 				if grav!= 0 {grav = 0.5;}
 				else { grav = 0.25;}
 				player_id.pilleffect=1;
-				damage = damage*1.55;
 				C_dam  += 2;
-				extra_hitpause+=4;
+				hitstun_factor+=0.05;
+				extra_hitpause=4;
 				pill_state =0;
 				spr_dir = player_id.spr_dir;		//Can Turn Around
 				show = 1;
@@ -138,32 +143,10 @@ if attack == AT_NSPECIAL{
 	}
 
 
-	//CHECK IF INTERACTS WITH USTRong (MEME LAUNCHER) -NUMERO 1
-	if (hitbox_timer > 8)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 2{
-		if abs(x - (player_id.x-37*player_id.spr_dir))<48{
-			if abs(y - (player_id.y - 58))<48{
-				grav = 0.42;
-				vsp = - 26 - player_id.strong_charge/6;
-				hsp = hsp/4;
-				through_platforms =16;
-				y = player_id.y - 58;
-				hitbox_timer =0;
-				length = 99999;
-				grounds = 0;
-				pill_state = 1;
-				player_id.pilleffect=8;
-				kb_value = kb_value*1.55;
-				C_knock += 2;
-				extra_hitpause+=2;
-				show = 1;
-			}
-		}
-	}
-
 	//CHECK IF INTERACTS WITH USTRong (MEME LAUNCHER) -NUMERO 2
 	if (hitbox_timer > 8)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 4 && player_id.window_timer > 1{
-		if abs(x - (player_id.x+2*player_id.spr_dir))<48{
-			if abs(y - (player_id.y - 70))<48{
+		if abs(x - (player_id.x-28*player_id.spr_dir))<48{
+			if abs(y - (player_id.y - 52))<60{
 				grav = 0.42;
 				vsp = - 26 - player_id.strong_charge/6;
 				hsp = hsp/6;
@@ -173,9 +156,8 @@ if attack == AT_NSPECIAL{
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=4;
-				kb_value = kb_value*1.55;
 				C_knock += 2;
-				extra_hitpause+=2;
+				hitstun_factor+=0.05;
 				show = 1;
 			}
 		}
@@ -183,8 +165,8 @@ if attack == AT_NSPECIAL{
 
 	//CHECK IF INTERACTS WITH USTRong (MEME LAUNCHER) -NUMERO 3
 	if (hitbox_timer > 8)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 6 && player_id.window_timer > 3{
-		if abs(x - (player_id.x+35*player_id.spr_dir))<48{
-			if abs(y - (player_id.y - 52))<48{
+		if abs(x - (player_id.x+12*player_id.spr_dir))<80{
+			if abs(y - (player_id.y - 60))<48{
 				grav = 0.42;
 				vsp = - 26 - player_id.strong_charge/6;
 				hsp = hsp/8;
@@ -194,9 +176,8 @@ if attack == AT_NSPECIAL{
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=9;
-				kb_value = kb_value*1.55;
 				C_knock += 2;
-				extra_hitpause+=2;
+				hitstun_factor+=0.05;
 				show = 1;
 			}
 		}
@@ -235,11 +216,9 @@ if attack == AT_NSPECIAL{
 					hsp = 0;
 					vsp = 0;
 					grav = 0;
-					kb_value= kb_value*1.25;
-					damage = damage*1.25;
 					C_knock += 1;
 					C_dam  += 1;
-					extra_hitpause+=2;
+					hitstun_factor+=0.05;
 					show = 1;
 					charge = player_id.strong_charge;
 					pill_state = 2;
@@ -263,11 +242,9 @@ if attack == AT_NSPECIAL{
 				walls = 0;
 				player_id.pilleffect=3;
 				pill_state =3;
-				kb_value= kb_value*1.25;
-				damage = damage*1.25;
 				C_knock += 1;
 				C_dam  += 1;
-				extra_hitpause+=2;
+				hitstun_factor+=0.05;
 				show = 1;
 			}
 		}
@@ -281,9 +258,8 @@ if attack == AT_NSPECIAL{
 				length = 110;
 				hitbox_timer =0;
 				player_id.pilleffect=6;
-				damage = damage*1.55;
 				C_dam  += 2;
-				extra_hitpause+=2;
+				hitstun_factor+=0.05;
 				show = 1;
 				vsp =  -11-player_id.strong_charge/20;
 				if pill_state == 4 || pill_state == 5  { hsp = player_id.spr_dir*(abs(hsp*1.25)+player_id.strong_charge/20);}
@@ -304,9 +280,8 @@ if attack == AT_NSPECIAL{
 				length = 110;
 				hitbox_timer =0;
 				player_id.pilleffect=7;
-				damage = damage*1.55;
 				C_dam  += 2;
-				extra_hitpause+=2;
+				hitstun_factor+=0.05;
 				show = 1;
 				vsp = -11-player_id.strong_charge/20;
 				if pill_state == 4 || pill_state == 5  { hsp = -player_id.spr_dir*(abs(hsp*1.25)+player_id.strong_charge/20);}

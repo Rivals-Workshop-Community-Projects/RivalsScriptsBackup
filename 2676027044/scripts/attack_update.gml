@@ -47,10 +47,16 @@ switch(attack){
 		if (atk_air || atk_ground){
 			if(window == 4 && window_timer == 1 && !has_hit_player){
 				set_player_damage(player, clamp(get_player_damage(player) + 10, 0, 999) )
-				shake_camera(3,2);	
+				shake_camera(3,3);	
 			}
 		}
-	break
+	break;
+	
+	//case AT_FSTRONG:
+	//	if (window == 3){
+	//		shake_camera(3,5);
+	//	}
+	break;
 	
 	// Forward Special - Normal Multihit
 	case AT_FSPECIAL:

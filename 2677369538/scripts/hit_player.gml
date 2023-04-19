@@ -26,7 +26,3 @@ if !(my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_DSPECIAL || m
 		if (window == 2){ spin_hit = true; move_cooldown[AT_FSPECIAL] = 1; }
 	}
 }
-
-if (attack == AT_DSPECIAL){
-	attack_end();
-}

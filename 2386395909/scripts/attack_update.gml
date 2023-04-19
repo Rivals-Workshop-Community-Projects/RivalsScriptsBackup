@@ -7,31 +7,6 @@ if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
 
 switch (attack)
 {
-    case AT_DAIR:
-        if window == 1 && window_timer == 1
-        {
-            reset_hitbox_value(AT_DAIR, 1, HG_ANGLE);
-            reset_hitbox_value(AT_DAIR, 2, HG_ANGLE);
-            reset_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK);
-    
-        }
-        if left_down && spr_dir = 1 || right_down && spr_dir = -1 
-        {
-            set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 105);
-            set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 8);
-            set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 105);
-            set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 8);
-            
-            set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, 1.0);
-            set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 1.0);    
-        }
-        else
-        {
-            set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, 0.7);
-            set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 0.7);          
-        }
-    break;
-    
     case AT_DSPECIAL:
         if window == 2 && window_timer == 1
         {
@@ -146,7 +121,7 @@ switch (attack)
         }
     }*/
     break;
-    case AT_NSPECIAL:if window > 1 { can_jump = true; can_shield = true;}
+    case AT_NSPECIAL:if window > 1 { can_jump = true; can_shield = true;move_cooldown[AT_NSPECIAL] = 20;}
     break;
     case AT_DATTACK: if (window != 3 || window != 1) && has_hit {can_jump = true;}
     break;

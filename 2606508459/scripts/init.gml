@@ -36,6 +36,9 @@ hud_MPMode = [189, -18];
 //====> CUSTOM VARIABLES ###########################################
 //***************************************************************************
 
+//player object
+playerObject = noone;
+
 //Previous Frame
 pre_state = state;
 pf_x = [x, x, x, x, x]
@@ -133,7 +136,7 @@ ballCall_blinkMin = 100;
 ballCall_blinkChange = 15;
 ballCall_blinkCurr = 0;
 
-c_callRadius = 500; //300;
+c_callRadius = 400; //Riptide Update, 500; 
 
 //FSpecial
 fspecial_chargeHSP = 0;
@@ -162,7 +165,7 @@ uspecial_baseKnockback = 8;
 uspecial_extraKnockback = 0;
 */
 
-uspecial_air_max_speed = 1;
+uspecial_air_max_speed = 1.7;
 uspecial_hits = 0;
 uspecial_hits_cool = 0;
 uspecial_hits_cool_c = 30;
@@ -241,18 +244,18 @@ alt_gen8 = 13
 intro_timer = -2;
 intro_fpf = .2;
 intro_timerMax = 
-    get_player_color(player) == alt_gen8 ? 18 : 24;
+    get_player_color(player) == alt_gen8 ? 19 : 25;
     
 //---> ALT RELATED CODE
 intro_sprite = 
     get_player_color(player) == 13 ? sprite_get("introGenesis") :
-    get_player_color(player) == 18 ? sprite_get("intro2") :
     get_player_color(player) == 19 ? sprite_get("intro2") :
     get_player_color(player) == 20 ? sprite_get("intro2") :
     get_player_color(player) == 21 ? sprite_get("intro2") :
     get_player_color(player) == 22 ? sprite_get("intro2") :
     get_player_color(player) == 23 ? sprite_get("intro2") :
     get_player_color(player) == 24 ? sprite_get("intro2") :
+    get_player_color(player) == 25 ? sprite_get("intro2") :
     sprite_get("intro");
 
 //***************************************************************************
@@ -358,9 +361,9 @@ short_hop_speed = 5;
 djump_speed = 10.5;
 leave_ground_max = 4; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 5.5; //5 //UPDATE 10-28-2022 //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .25; //.35 //UPDATE 8-1-2022
+air_accel = .30; //UPDATE 10-28-2022 //.35 //UPDATE 8-1-2022
 prat_fall_accel = .7; //.5; //multiplier of air_accel while in pratfall
 air_friction = .04; //.02; //UPDATE 8-1-2022
 max_djumps = 1;

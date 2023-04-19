@@ -76,3 +76,38 @@ set_window_value(AT_TAUNT, 13, AG_WINDOW_TYPE, 0);
 set_window_value(AT_TAUNT, 13, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_TAUNT, 13, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_TAUNT, 13, AG_WINDOW_ANIM_FRAME_START, 22);
+
+//laser
+set_window_value(AT_TAUNT, 14, AG_WINDOW_TYPE, 9);
+set_window_value(AT_TAUNT, 14, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_TAUNT, 14, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_TAUNT, 14, AG_WINDOW_ANIM_FRAME_START, 15);
+
+
+//laser hit
+set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_TAUNT, 1, HG_WINDOW, 20);
+set_hitbox_value(AT_TAUNT, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_TAUNT, 1, HG_WIDTH, 100);
+set_hitbox_value(AT_TAUNT, 1, HG_HEIGHT, 100);
+set_hitbox_value(AT_TAUNT, 1, HG_PRIORITY, 7);
+set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 20);
+set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_TAUNT, 1, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(AT_TAUNT, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_TAUNT, 1, HG_HITPAUSE_SCALING, 1.2);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_TAUNT, 1, HG_HIT_SFX, sound_get("hit_strong"));
+set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_TAUNT, 1, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_TAUNT, 1, HG_HIT_LOCKOUT, 2);

@@ -230,6 +230,47 @@ set_article_color_slot( 5, 190, 188, 204 ); //light
 set_article_color_slot( 6, 255, 166, 23 ); //ori_replace
 set_article_color_slot( 7, 111, 101, 161 ); //yellow.2
 }
+
+if (extra_col==9){//arachnid
+set_character_color_slot( 0, 49, 60, 84 ); //blue
+set_character_color_slot( 1, 155, 112, 81 ); //skin
+set_character_color_slot( 2, 109, 45, 61 ); //yellow
+set_character_color_slot( 3, 244, 236, 174 ); //orange
+set_character_color_slot( 4, 235, 185, 255 ); //blush
+set_character_color_slot( 5, 235, 185, 255 ); //light
+set_character_color_slot( 6, 235, 185, 255 ); //ori_replace
+set_character_color_slot( 7, 77, 16, 70 ); //yellow.2
+
+set_character_color_shading( 0, 1 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1 );
+
+set_article_color_slot( 2, 109, 45, 61 ); //yellow
+set_article_color_slot( 5, 235, 185, 255 ); //light
+set_article_color_slot( 6, 235, 185, 255 ); //ori_replace
+set_article_color_slot( 7, 77, 16, 70 ); //yellow.2
+}
+if (extra_col==10){//prismatic
+set_character_color_slot( 0, 198, 251, 161 ); //blue
+set_character_color_slot( 1, 255, 224, 205 ); //skin
+set_character_color_slot( 2, 255, 157, 172 ); //yellow
+set_character_color_slot( 3, 122, 204, 157 ); //orange
+set_character_color_slot( 4, 255, 157, 172 ); //blush
+set_character_color_slot( 5, 255, 255, 255 ); //light
+set_character_color_slot( 6, 122, 204, 157 ); //ori_replace
+set_character_color_slot( 7, 226, 107, 125 ); //yellow.2
+
+set_character_color_shading( 0, 1 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1 );
+
+set_article_color_slot( 2, 255, 157, 172 ); //yellow
+set_article_color_slot( 5, 255, 255, 255 ); //light
+set_article_color_slot( 6, 122, 204, 157 ); //ori_replace
+set_article_color_slot( 7, 226, 107, 125 ); //yellow.2
+}
 }
 
 /* outdated extra alts...
@@ -293,6 +334,7 @@ if (variable_instance_exists(id, "hylalala")){
 			var altb = get_color_profile_slot_b( altnum, 2 ) + (hylalala_s*2);
 			
 			set_character_color_slot( 2, altr, altg, altb );
+			set_article_color_slot( 5, altr, altg, altb );
 			
 			var altr = get_color_profile_slot_r( altnum, 3 );
 			var altg = get_color_profile_slot_g( altnum, 3 ) + (hylalala_s*2);
@@ -307,6 +349,7 @@ if (variable_instance_exists(id, "hylalala")){
 			var altb = get_color_profile_slot_b( altnum, 7 ) - round(hylalala_s/2);
 		
 			set_character_color_slot( 7, altr, altg, altb );
+			set_article_color_slot( 7, altr, altg, altb );
 			
 			var altr = 30
 			var altg = 153 + hylalala_s;

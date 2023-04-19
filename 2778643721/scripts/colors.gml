@@ -326,15 +326,15 @@ set_color_profile_slot( 29, 5, 194, 194, 194 ); //Scarf
 set_color_profile_slot( 29, 6, 255, 225, 0 ); //Cape
 set_color_profile_slot( 29, 7, 222, 0, 0 ); //Cape Ends
 
-// Monochrome 
-set_color_profile_slot( 30, 0, 122, 122, 122 ); //Hood
-set_color_profile_slot( 30, 1, 186, 186, 186 ); //Highlights
-set_color_profile_slot( 30, 2, 226, 226, 226 ); //Eyes
-set_color_profile_slot( 30, 3, 67, 67, 67 ); //Face
-set_color_profile_slot( 30, 4, 226, 226, 226 ); //Hands
-set_color_profile_slot( 30, 5, 226, 226, 226 ); //Scarf
-set_color_profile_slot( 30, 6, 186, 186, 186 ); //Cape
-set_color_profile_slot( 30, 7, 226, 226, 226 ); //Cape Ends
+// Monochrome
+set_color_profile_slot( 30, 0, 202, 205, 214 ); //Hood
+set_color_profile_slot( 30, 1, 255, 255, 255 ); //Highlights
+set_color_profile_slot( 30, 2, 255, 244, 42 ); //Eyes
+set_color_profile_slot( 30, 3, 131, 87, 32 ); //Face
+set_color_profile_slot( 30, 4, 203, 205, 211 ); //Hands
+set_color_profile_slot( 30, 5, 235, 235, 246 ); //Scarf
+set_color_profile_slot( 30, 6, 242, 243, 247 ); //Cape
+set_color_profile_slot( 30, 7, 118, 127, 129 ); //Cape Ends
 
 // Pastel
 set_color_profile_slot( 31, 0, 133, 166, 237 ); //Hood

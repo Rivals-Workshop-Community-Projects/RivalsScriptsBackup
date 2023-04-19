@@ -53,6 +53,10 @@ sprite_change_offset("uspecial", 100, 118);
 sprite_change_offset("dspecial", 100, 118);
 sprite_change_offset("taunt", 140, 158);
 
+sprite_change_offset("particle_flower", 15, 15);
+sprite_change_offset("particle_leaf", 15, 15);
+sprite_change_offset("particle_wood", 15, 15);
+
 sprite_change_offset("intro", 142, 316);
 
 sprite_change_offset("plat", 60, 4);

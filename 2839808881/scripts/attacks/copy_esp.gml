@@ -67,7 +67,7 @@ set_hitbox_value(AT_COPY_ESP, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_COPY_ESP, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_COPY_ESP, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_COPY_ESP, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_COPY_ESP, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_COPY_ESP, 1, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(AT_COPY_ESP, 1, HG_HIT_SFX, asset_get("sfx_absa_whip"));
 
 //PK Shift Traveling Hitbox (Damage only, no KB)
@@ -76,8 +76,8 @@ set_hitbox_value(AT_COPY_ESP, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_COPY_ESP, 2, HG_LIFETIME, 0);
 set_hitbox_value(AT_COPY_ESP, 2, HG_HITBOX_X, -4);
 set_hitbox_value(AT_COPY_ESP, 2, HG_HITBOX_Y, -60);
-set_hitbox_value(AT_COPY_ESP, 2, HG_WIDTH, 80);
-set_hitbox_value(AT_COPY_ESP, 2, HG_HEIGHT, 80);
+set_hitbox_value(AT_COPY_ESP, 2, HG_WIDTH, 64);
+set_hitbox_value(AT_COPY_ESP, 2, HG_HEIGHT, 64);
 set_hitbox_value(AT_COPY_ESP, 2, HG_PRIORITY, 5);
 set_hitbox_value(AT_COPY_ESP, 2, HG_DAMAGE, 2);
 set_hitbox_value(AT_COPY_ESP, 2, HG_ANGLE, 60);
@@ -145,7 +145,7 @@ set_hitbox_value(AT_COPY_ESP, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_COPY_ESP, 4, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_COPY_ESP, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_COPY_ESP, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_COPY_ESP, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_COPY_ESP, 4, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(AT_COPY_ESP, 4, HG_HIT_SFX, asset_get("sfx_absa_whip"));
 
 //PK Electroshift Traveling Hitbox (Damage only, no KB)
@@ -154,8 +154,8 @@ set_hitbox_value(AT_COPY_ESP, 5, HG_WINDOW, 3);
 set_hitbox_value(AT_COPY_ESP, 5, HG_LIFETIME, 0);
 set_hitbox_value(AT_COPY_ESP, 5, HG_HITBOX_X, -4);
 set_hitbox_value(AT_COPY_ESP, 5, HG_HITBOX_Y, -60);
-set_hitbox_value(AT_COPY_ESP, 5, HG_WIDTH, 90);
-set_hitbox_value(AT_COPY_ESP, 5, HG_HEIGHT, 90);
+set_hitbox_value(AT_COPY_ESP, 5, HG_WIDTH, 75);
+set_hitbox_value(AT_COPY_ESP, 5, HG_HEIGHT, 75);
 set_hitbox_value(AT_COPY_ESP, 5, HG_PRIORITY, 5);
 set_hitbox_value(AT_COPY_ESP, 5, HG_DAMAGE, 3);
 set_hitbox_value(AT_COPY_ESP, 5, HG_ANGLE, 60);

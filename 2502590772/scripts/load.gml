@@ -1,8 +1,8 @@
 
 
-sprite_change_offset("pm_hurtbox", 20, 56);
-sprite_change_offset("pm_hurtbox_crouch", 21, 30);
-sprite_change_offset("pm_hurtbox_air", 20, 52);
+sprite_change_offset("pm_hurtbox", 18, 56);
+sprite_change_offset("pm_hurtbox_crouch", 20, 30);
+sprite_change_offset("pm_hurtbox_air", 18, 50);
 sprite_change_offset("pm_hurtbox_dash", 22, 42);
 
 sprite_change_offset_pm("idle", 40, 78);
@@ -56,7 +56,7 @@ sprite_change_offset_pm("dair", 102, 138);
 sprite_change_offset_pm("uair", 102, 130);
 sprite_change_offset_pm("fstrong", 34, 64);
 sprite_change_offset_pm("fstrong_2", 108, 68);
-sprite_change_offset_pm("ustrong", 72, 158);
+sprite_change_offset_pm("ustrong", 74, 158);
 sprite_change_offset_pm("ustrong_2", 104, 198);
 sprite_change_offset_pm("dstrong", 104, 118);
 sprite_change_offset_pm("dstrong_2", 104, 118);
@@ -100,6 +100,8 @@ sprite_change_offset_pm_fx("fxchargedespawn1", 64, 64);
 sprite_change_offset_pm_fx("fxchargedespawn2", 64, 64);
 sprite_change_offset_pm_fx("fxchargedespawn3", 64, 64);
 
+
+
 sprite_change_offset_pm_fx("fxpowerup", 48, 50); //48, 56
 sprite_change_offset_pm_fx("fxpowerupfront", 30, 82);
 
@@ -110,8 +112,10 @@ sprite_change_offset_pm_fx("fxdash", 44, 32);
 sprite_change_offset_pm_fx("fxthunder", 16, 192);
 sprite_change_offset_pm_fx("fxthundertell", 3, 400);
 sprite_change_offset_pm_fx("fxcharge", 64, 64);
+sprite_change_offset_pm_fx("fxparrycancel", 32, 56);
 sprite_change_offset("fxbatoncaught", 90, 96);
 sprite_change_offset("fxfstrongtrail", 15, 44);
+sprite_change_offset("fxspecialhold", 32, 16);
 
 set_victory_theme(sound_get("victory"));
 

@@ -1,12 +1,32 @@
 //hit_player.gml
 //dattack2
 
+var sickImmune = "immune_to_sickness" in hit_player_obj && hit_player_obj.immune_to_sickness
+
 //sfx layering
 switch(my_hitboxID.attack){
 	
 	case AT_NAIR:
 		if (my_hitboxID.hbox_num == 3){ 
 				sound_play(asset_get("sfx_ice_back_air"), 0, noone, 1, 0.85)
+		}
+	break;
+	
+	case AT_FSTRONG:
+		if (my_hitboxID.hbox_num == 2){ 
+				sound_play(asset_get("sharp3"), 0, noone, 1, 0.85)
+		}
+	break;
+	
+	case AT_DSTRONG:
+		if (my_hitboxID.hbox_num == 8){ 
+				sound_play(asset_get("sharp3"), 0, noone, 1, 0.85)
+		}
+	break;
+	
+	case AT_USTRONG:
+		if (my_hitboxID.hbox_num == 7){ 
+				sound_play(asset_get("sharp3"), 0, noone, 1, 0.85)
 		}
 	break;
 	
@@ -58,16 +78,19 @@ if (my_hitboxID.attack == AT_USPECIAL) {
 }
 
 //Inflict poison to hit foes
-if (my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DTILT)
+if (my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DTILT) 
 {
-	if !hit_player_obj.malsick
-	{
-        sound_play(sound_get("sick"));
+    if !("malsick_immune" in hit_player_obj and hit_player_obj.malsick_immune)
+    {
+        if !hit_player_obj.malsick 
+        {
+            sound_play(sound_get("sick"));
+        }
+        hit_player_obj.sickAfterGrace = 0;
+        hit_player_obj.malsick = true;
+        hit_player_obj.sickOwner = id;
+        hit_player_obj.sickTimer = 60*5;
     }
-	hit_player_obj.sickAfterGrace = 0;
-	hit_player_obj.malsick = true;
-	hit_player_obj.sickOwner = id;
-	hit_player_obj.sickTimer = 60*5;
 }
 
 

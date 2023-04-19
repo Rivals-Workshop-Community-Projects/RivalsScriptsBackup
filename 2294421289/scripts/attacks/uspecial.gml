@@ -7,7 +7,7 @@ set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 20); //21
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 18); //20
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);

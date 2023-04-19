@@ -8,7 +8,6 @@ set_attack_value(AT_UTHROW, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 set_attack_value(AT_UTHROW, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_UTHROW, AG_LANDING_LAG, 20);
 set_attack_value(AT_UTHROW, AG_OFF_LEDGE, 1);
-set_attack_value(AT_UTHROW, AG_MUNO_ATTACK_NAME, "DAttack2");
 
 // startup
 set_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH, 2);

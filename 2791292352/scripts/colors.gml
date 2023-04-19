@@ -43,8 +43,8 @@ set_color_profile_slot( 1, 2, 222, 123, 214 ); //CREST 1
 set_color_profile_slot( 1, 3, 168, 66, 140 ); //CREST 2
 set_color_profile_slot( 1, 4, 58, 58, 107 ); //HANDS
 set_color_profile_slot( 1, 5, 141, 217, 208 ); //EYES
-set_color_profile_slot( 1, 6, 136, 226, 247 ); //GHOST LIGHT
-set_color_profile_slot( 1, 7, 40, 98, 173 ); //GHOST DARK
+set_color_profile_slot( 1, 6, 136, 247, 243 ); //GHOST LIGHT
+set_color_profile_slot( 1, 7, 40, 75, 173 ); //GHOST DARK
 
 // RUNERIGUS
 set_color_profile_slot( 2, 0, 58, 171, 158 ); //GHOST MID
@@ -53,8 +53,8 @@ set_color_profile_slot( 2, 2, 184, 44, 50 ); //CREST 1
 set_color_profile_slot( 2, 3, 117, 28, 28 ); //CREST 2
 set_color_profile_slot( 2, 4, 58, 60, 61 ); //HANDS
 set_color_profile_slot( 2, 5, 201, 120, 199 ); //EYES
-set_color_profile_slot( 2, 6, 137, 232, 221 ); //GHOST LIGHT
-set_color_profile_slot( 2, 7, 42, 101, 125 ); //GHOST DARK
+set_color_profile_slot( 2, 6, 108, 235, 166 ); //GHOST LIGHT
+set_color_profile_slot( 2, 7, 55, 96, 161 ); //GHOST DARK
 
 // DELTA
 set_color_profile_slot( 3, 0, 0, 133, 58 ); //GHOST MID
@@ -63,8 +63,8 @@ set_color_profile_slot( 3, 2, 255, 102, 0 ); //CREST 1
 set_color_profile_slot( 3, 3, 166, 62, 46 ); //CREST 2
 set_color_profile_slot( 3, 4, 157, 241, 23 ); //HANDS
 set_color_profile_slot( 3, 5, 189, 24, 176 ); //EYES
-set_color_profile_slot( 3, 6, 0, 201, 88 ); //GHOST LIGHT
-set_color_profile_slot( 3, 7, 0, 89, 61 ); //GHOST DARK
+set_color_profile_slot( 3, 6, 99, 184, 39 ); //GHOST LIGHT
+set_color_profile_slot( 3, 7, 0, 89, 86 ); //GHOST DARK
 
 // PYUKUMUKU
 set_color_profile_slot( 4, 0, 101, 99, 220 ); //GHOST MID
@@ -73,7 +73,7 @@ set_color_profile_slot( 4, 2, 220, 99, 144 ); //CREST 1
 set_color_profile_slot( 4, 3, 181, 25, 103 ); //CREST 2
 set_color_profile_slot( 4, 4, 193, 209, 217 ); //HANDS
 set_color_profile_slot( 4, 5, 220, 99, 144 ); //EYES
-set_color_profile_slot( 4, 6, 164, 162, 250 ); //GHOST LIGHT
+set_color_profile_slot( 4, 6, 135, 164, 250 ); //GHOST LIGHT
 set_color_profile_slot( 4, 7, 70, 43, 158 ); //GHOST DARK
 
 // AEGISLASH
@@ -83,8 +83,8 @@ set_color_profile_slot( 5, 2, 243, 240, 226 ); //CREST 1
 set_color_profile_slot( 5, 3, 204, 195, 155 ); //CREST 2
 set_color_profile_slot( 5, 4, 153, 101, 207 ); //HANDS
 set_color_profile_slot( 5, 5, 213, 179, 255 ); //EYES
-set_color_profile_slot( 5, 6, 150, 147, 149 ); //GHOST LIGHT
-set_color_profile_slot( 5, 7, 36, 35, 35 ); //GHOST DARK
+set_color_profile_slot( 5, 6, 125, 125, 125 ); //GHOST LIGHT
+set_color_profile_slot( 5, 7, 49, 49, 71 ); //GHOST DARK
 
 // ABYSS
 set_color_profile_slot( 6, 0, 220, 113, 255 ); //GHOST MID
@@ -93,8 +93,8 @@ set_color_profile_slot( 6, 2, 168, 175, 215 ); //CREST 1
 set_color_profile_slot( 6, 3, 112, 120, 163 ); //CREST 2
 set_color_profile_slot( 6, 4, 69, 58, 104 ); //HANDS
 set_color_profile_slot( 6, 5, 255, 238, 109 ); //EYES
-set_color_profile_slot( 6, 6, 244, 209, 255 ); //GHOST LIGHT
-set_color_profile_slot( 6, 7, 145, 53, 181 ); //GHOST DARK
+set_color_profile_slot( 6, 6, 255, 191, 251 ); //GHOST LIGHT
+set_color_profile_slot( 6, 7, 113, 53, 181 ); //GHOST DARK
 
 // GENWUNNER
 set_color_profile_slot( 7, 0, 167, 186, 74 ); //GHOST MID
@@ -113,8 +113,8 @@ set_color_profile_slot( 8, 2, 40, 185, 252 ); //CREST 1
 set_color_profile_slot( 8, 3, 17, 100, 217 ); //CREST 2
 set_color_profile_slot( 8, 4, 33, 33, 41 ); //HANDS
 set_color_profile_slot( 8, 5, 230, 57, 255 ); //EYES
-set_color_profile_slot( 8, 6, 173, 255, 231 ); //GHOST LIGHT
-set_color_profile_slot( 8, 7, 27, 143, 110 ); //GHOST DARK
+set_color_profile_slot( 8, 6, 191, 255, 202 ); //GHOST LIGHT
+set_color_profile_slot( 8, 7, 27, 118, 143 ); //GHOST DARK
 
 // METAGROSS
 set_color_profile_slot( 9, 0, 181, 29, 29 ); //GHOST MID
@@ -123,8 +123,8 @@ set_color_profile_slot( 9, 2, 203, 207, 210 ); //CREST 1
 set_color_profile_slot( 9, 3, 138, 143, 148 ); //CREST 2
 set_color_profile_slot( 9, 4, 54, 120, 143 ); //HANDS
 set_color_profile_slot( 9, 5, 228, 94, 103 ); //EYES
-set_color_profile_slot( 9, 6, 237, 102, 102 ); //GHOST LIGHT
-set_color_profile_slot( 9, 7, 102, 16, 16 ); //GHOST DARK
+set_color_profile_slot( 9, 6, 222, 114, 31 ); //GHOST LIGHT
+set_color_profile_slot( 9, 7, 99, 10, 68 ); //GHOST DARK
 
 // MACHAMP
 set_color_profile_slot( 10, 0, 235, 118, 0 ); //GHOST MID
@@ -133,8 +133,8 @@ set_color_profile_slot( 10, 2, 237, 207, 109 ); //CREST 1
 set_color_profile_slot( 10, 3, 191, 157, 44 ); //CREST 2
 set_color_profile_slot( 10, 4, 85, 105, 122 ); //HANDS
 set_color_profile_slot( 10, 5, 227, 137, 115 ); //EYES
-set_color_profile_slot( 10, 6, 252, 211, 98 ); //GHOST LIGHT
-set_color_profile_slot( 10, 7, 176, 57, 39 ); //GHOST DARK
+set_color_profile_slot( 10, 6, 252, 199, 55 ); //GHOST LIGHT
+set_color_profile_slot( 10, 7, 176, 39, 71 ); //GHOST DARK
 
 // GALVANTULA
 set_color_profile_slot( 11, 0, 0, 193, 196 ); //GHOST MID
@@ -143,8 +143,8 @@ set_color_profile_slot( 11, 2, 182, 135, 185 ); //CREST 1
 set_color_profile_slot( 11, 3, 137, 83, 140 ); //CREST 2
 set_color_profile_slot( 11, 4, 57, 67, 145 ); //HANDS
 set_color_profile_slot( 11, 5, 182, 135, 185 ); //EYES
-set_color_profile_slot( 11, 6, 166, 236, 237 ); //GHOST LIGHT
-set_color_profile_slot( 11, 7, 0, 107, 150 ); //GHOST DARK
+set_color_profile_slot( 11, 6, 204, 254, 255 ); //GHOST LIGHT
+set_color_profile_slot( 11, 7, 54, 101, 194 ); //GHOST DARK
 
 // YVELTAL
 set_color_profile_slot( 12, 0, 204, 73, 97 ); //GHOST MID
@@ -153,7 +153,7 @@ set_color_profile_slot( 12, 2, 94, 74, 74 ); //CREST 1
 set_color_profile_slot( 12, 3, 51, 30, 30 ); //CREST 2
 set_color_profile_slot( 12, 4, 51, 46, 46 ); //HANDS
 set_color_profile_slot( 12, 5, 74, 188, 184 ); //EYES
-set_color_profile_slot( 12, 6, 232, 169, 181 ); //GHOST LIGHT
+set_color_profile_slot( 12, 6, 232, 140, 132 ); //GHOST LIGHT
 set_color_profile_slot( 12, 7, 135, 34, 79 ); //GHOST DARK
 
 // GOLURK
@@ -163,8 +163,8 @@ set_color_profile_slot( 13, 2, 197, 156, 82 ); //CREST 1
 set_color_profile_slot( 13, 3, 140, 95, 24 ); //CREST 2
 set_color_profile_slot( 13, 4, 24, 90, 123 ); //HANDS
 set_color_profile_slot( 13, 5, 255, 238, 164 ); //EYES
-set_color_profile_slot( 13, 6, 255, 238, 164 ); //GHOST LIGHT
-set_color_profile_slot( 13, 7, 148, 119, 22 ); //GHOST DARK
+set_color_profile_slot( 13, 6, 255, 232, 164 ); //GHOST LIGHT
+set_color_profile_slot( 13, 7, 181, 118, 89 ); //GHOST DARK
 
 // CHANDELURE
 set_color_profile_slot( 14, 0, 164, 178, 246 ); //GHOST MID
@@ -173,8 +173,8 @@ set_color_profile_slot( 14, 2, 115, 82, 230 ); //CREST 1
 set_color_profile_slot( 14, 3, 120, 137, 219 ); //CREST 2
 set_color_profile_slot( 14, 4, 87, 62, 173 ); //HANDS
 set_color_profile_slot( 14, 5, 255, 230, 32 ); //EYES
-set_color_profile_slot( 14, 6, 232, 236, 255 ); //GHOST LIGHT
-set_color_profile_slot( 14, 7, 105, 101, 246 ); //GHOST DARK
+set_color_profile_slot( 14, 6, 212, 234, 255 ); //GHOST LIGHT
+set_color_profile_slot( 14, 7, 130, 101, 246 ); //GHOST DARK
 
 // CRUSTLE
 set_color_profile_slot( 15, 0, 115, 43, 5 ); //GHOST MID
@@ -183,8 +183,8 @@ set_color_profile_slot( 15, 2, 246, 189, 57 ); //CREST 1
 set_color_profile_slot( 15, 3, 176, 124, 21 ); //CREST 2
 set_color_profile_slot( 15, 4, 214, 116, 64 ); //HANDS
 set_color_profile_slot( 15, 5, 246, 189, 57 ); //EYES
-set_color_profile_slot( 15, 6, 217, 81, 9 ); //GHOST LIGHT
-set_color_profile_slot( 15, 7, 51, 2, 2 ); //GHOST DARK
+set_color_profile_slot( 15, 6, 191, 106, 8 ); //GHOST LIGHT
+set_color_profile_slot( 15, 7, 66, 16, 52 ); //GHOST DARK
 
 // HYDREIGON
 set_color_profile_slot( 16, 0, 194, 63, 143 ); //GHOST MID
@@ -193,8 +193,8 @@ set_color_profile_slot( 16, 2, 189, 82, 123 ); //CREST 1
 set_color_profile_slot( 16, 3, 139, 41, 98 ); //CREST 2
 set_color_profile_slot( 16, 4, 46, 46, 46 ); //HANDS
 set_color_profile_slot( 16, 5, 196, 82, 62 ); //EYES
-set_color_profile_slot( 16, 6, 240, 141, 189 ); //GHOST LIGHT
-set_color_profile_slot( 16, 7, 125, 28, 106 ); //GHOST DARK
+set_color_profile_slot( 16, 6, 240, 141, 164 ); //GHOST LIGHT
+set_color_profile_slot( 16, 7, 115, 28, 125 ); //GHOST DARK
 
 // QUAGSIRE
 set_color_profile_slot( 17, 0, 113, 130, 245 ); //GHOST MID
@@ -203,8 +203,8 @@ set_color_profile_slot( 17, 2, 169, 118, 184 ); //CREST 1
 set_color_profile_slot( 17, 3, 117, 69, 150 ); //CREST 2
 set_color_profile_slot( 17, 4, 38, 51, 64 ); //HANDS
 set_color_profile_slot( 17, 5, 255, 149, 0 ); //EYES
-set_color_profile_slot( 17, 6, 181, 217, 255 ); //GHOST LIGHT
-set_color_profile_slot( 17, 7, 42, 48, 156 ); //GHOST DARK
+set_color_profile_slot( 17, 6, 161, 217, 255 ); //GHOST LIGHT
+set_color_profile_slot( 17, 7, 72, 64, 156 ); //GHOST DARK
 
 // GOLD
 set_color_profile_slot( 18, 0, 145, 150, 217 ); //GHOST MID
@@ -213,8 +213,8 @@ set_color_profile_slot( 18, 2, 247, 222, 41 ); //CREST 1
 set_color_profile_slot( 18, 3, 189, 132, 41 ); //CREST 2
 set_color_profile_slot( 18, 4, 58, 58, 107 ); //HANDS
 set_color_profile_slot( 18, 5, 247, 222, 41 ); //EYES
-set_color_profile_slot( 18, 6, 195, 220, 247 ); //GHOST LIGHT
-set_color_profile_slot( 18, 7, 75, 55, 156 ); //GHOST DARK
+set_color_profile_slot( 18, 6, 190, 232, 247 ); //GHOST LIGHT
+set_color_profile_slot( 18, 7, 93, 78, 156 ); //GHOST DARK
 
 // REUNICLUS
 set_color_profile_slot( 19, 0, 23, 92, 0 ); //GHOST MID
@@ -223,8 +223,8 @@ set_color_profile_slot( 19, 2, 222, 98, 98 ); //CREST 1
 set_color_profile_slot( 19, 3, 156, 47, 80 ); //CREST 2
 set_color_profile_slot( 19, 4, 95, 168, 120 ); //HANDS
 set_color_profile_slot( 19, 5, 255, 195, 77 ); //EYES
-set_color_profile_slot( 19, 6, 108, 189, 83 ); //GHOST LIGHT
-set_color_profile_slot( 19, 7, 10, 38, 0 ); //GHOST DARK
+set_color_profile_slot( 19, 6, 100, 150, 84 ); //GHOST LIGHT
+set_color_profile_slot( 19, 7, 0, 56, 50 ); //GHOST DARK
 
 // MIMIKYU
 set_color_profile_slot( 20, 0, 199, 112, 66 ); //GHOST MID
@@ -233,8 +233,8 @@ set_color_profile_slot( 20, 2, 153, 116, 86 ); //CREST 1
 set_color_profile_slot( 20, 3, 94, 76, 62 ); //CREST 2
 set_color_profile_slot( 20, 4, 55, 55, 51 ); //HANDS
 set_color_profile_slot( 20, 5, 222, 137, 27 ); //EYES
-set_color_profile_slot( 20, 6, 245, 172, 86 ); //GHOST LIGHT
-set_color_profile_slot( 20, 7, 161, 52, 35 ); //GHOST DARK
+set_color_profile_slot( 20, 6, 245, 192, 86 ); //GHOST LIGHT
+set_color_profile_slot( 20, 7, 143, 46, 31 ); //GHOST DARK
 
 // CROOKODILE
 set_color_profile_slot( 21, 0, 115, 95, 64 ); //GHOST MID
@@ -243,8 +243,8 @@ set_color_profile_slot( 21, 2, 80, 80, 102 ); //CREST 1
 set_color_profile_slot( 21, 3, 52, 52, 66 ); //CREST 2
 set_color_profile_slot( 21, 4, 157, 165, 171 ); //HANDS
 set_color_profile_slot( 21, 5, 80, 80, 102 ); //EYES
-set_color_profile_slot( 21, 6, 201, 166, 112 ); //GHOST LIGHT
-set_color_profile_slot( 21, 7, 74, 55, 26 ); //GHOST DARK
+set_color_profile_slot( 21, 6, 173, 139, 80 ); //GHOST LIGHT
+set_color_profile_slot( 21, 7, 74, 51, 40 ); //GHOST DARK
 
 // TREVANENT
 set_color_profile_slot( 22, 0, 84, 207, 92 ); //GHOST MID
@@ -253,8 +253,8 @@ set_color_profile_slot( 22, 2, 71, 175, 114 ); //CREST 1
 set_color_profile_slot( 22, 3, 9, 102, 93 ); //CREST 2
 set_color_profile_slot( 22, 4, 42, 42, 42 ); //HANDS
 set_color_profile_slot( 22, 5, 255, 116, 92 ); //EYES
-set_color_profile_slot( 22, 6, 208, 232, 155 ); //GHOST LIGHT
-set_color_profile_slot( 22, 7, 52, 128, 84 ); //GHOST DARK
+set_color_profile_slot( 22, 6, 192, 232, 104 ); //GHOST LIGHT
+set_color_profile_slot( 22, 7, 52, 128, 115 ); //GHOST DARK
 
 // DHELMISE
 set_color_profile_slot( 23, 0, 223, 198, 80 ); //GHOST MID
@@ -263,8 +263,8 @@ set_color_profile_slot( 23, 2, 134, 90, 51 ); //CREST 1
 set_color_profile_slot( 23, 3, 105, 53, 55 ); //CREST 2
 set_color_profile_slot( 23, 4, 117, 88, 98 ); //HANDS
 set_color_profile_slot( 23, 5, 220, 111, 72 ); //EYES
-set_color_profile_slot( 23, 6, 255, 239, 161 ); //GHOST LIGHT
-set_color_profile_slot( 23, 7, 166, 129, 59 ); //GHOST DARK
+set_color_profile_slot( 23, 6, 255, 247, 161 ); //GHOST LIGHT
+set_color_profile_slot( 23, 7, 166, 120, 59 ); //GHOST DARK
 
 // MYCOLICH
 set_color_profile_slot( 24, 0, 0, 145, 104 ); //GHOST MID
@@ -273,7 +273,7 @@ set_color_profile_slot( 24, 2, 227, 214, 190 ); //CREST 1
 set_color_profile_slot( 24, 3, 176, 161, 131 ); //CREST 2
 set_color_profile_slot( 24, 4, 178, 204, 164 ); //HANDS
 set_color_profile_slot( 24, 5, 168, 255, 208 ); //EYES
-set_color_profile_slot( 24, 6, 0, 242, 173 ); //GHOST LIGHT
+set_color_profile_slot( 24, 6, 47, 217, 168 ); //GHOST LIGHT
 set_color_profile_slot( 24, 7, 0, 65, 74 ); //GHOST DARK
 
 // PLANT GANG
@@ -283,7 +283,7 @@ set_color_profile_slot( 25, 2, 215, 232, 216 ); //CREST 1
 set_color_profile_slot( 25, 3, 160, 173, 161 ); //CREST 2
 set_color_profile_slot( 25, 4, 113, 176, 67 ); //HANDS
 set_color_profile_slot( 25, 5, 255, 255, 255 ); //EYES
-set_color_profile_slot( 25, 6, 113, 176, 67 ); //GHOST LIGHT
+set_color_profile_slot( 25, 6, 82, 150, 30 ); //GHOST LIGHT
 set_color_profile_slot( 25, 7, 1, 48, 39 ); //GHOST DARK
 
 // MARTH
@@ -293,8 +293,8 @@ set_color_profile_slot( 26, 2, 243, 225, 83 ); //CREST 1
 set_color_profile_slot( 26, 3, 194, 154, 74 ); //CREST 2
 set_color_profile_slot( 26, 4, 35, 196, 217 ); //HANDS
 set_color_profile_slot( 26, 5, 233, 83, 79 ); //EYES
-set_color_profile_slot( 26, 6, 35, 196, 217 ); //GHOST LIGHT
-set_color_profile_slot( 26, 7, 34, 27, 105 ); //GHOST DARK
+set_color_profile_slot( 26, 6, 0, 117, 235 ); //GHOST LIGHT
+set_color_profile_slot( 26, 7, 35, 28, 107 ); //GHOST DARK
 
 // RAINBOW
 set_color_profile_slot( 27, 0, 253, 84, 255 ); //GHOST MID
@@ -303,7 +303,7 @@ set_color_profile_slot( 27, 2, 32, 149, 188 ); //CREST 1
 set_color_profile_slot( 27, 3, 27, 85, 150 ); //CREST 2
 set_color_profile_slot( 27, 4, 42, 42, 42 ); //HANDS
 set_color_profile_slot( 27, 5, 125, 203, 255 ); //EYES
-set_color_profile_slot( 27, 6, 254, 199, 255 ); //GHOST LIGHT
+set_color_profile_slot( 27, 6, 255, 189, 246 ); //GHOST LIGHT
 set_color_profile_slot( 27, 7, 133, 39, 196 ); //GHOST DARK
 
 // TRANS RIGHTS
@@ -314,7 +314,7 @@ set_color_profile_slot( 28, 3, 184, 84, 176 ); //CREST 2
 set_color_profile_slot( 28, 4, 228, 232, 237 ); //HANDS
 set_color_profile_slot( 28, 5, 242, 80, 230 ); //EYES
 set_color_profile_slot( 28, 6, 242, 148, 235 ); //GHOST LIGHT
-set_color_profile_slot( 28, 7, 115, 29, 122 ); //GHOST DARK
+set_color_profile_slot( 28, 7, 86, 29, 122 ); //GHOST DARK
 
 // ENBY
 set_color_profile_slot( 29, 0, 228, 237, 247 ); //GHOST MID
@@ -323,8 +323,8 @@ set_color_profile_slot( 29, 2, 255, 221, 0 ); //CREST 1
 set_color_profile_slot( 29, 3, 209, 150, 0 ); //CREST 2
 set_color_profile_slot( 29, 4, 49, 49, 49 ); //HANDS
 set_color_profile_slot( 29, 5, 235, 244, 255 ); //EYES
-set_color_profile_slot( 29, 6, 255, 255, 255 ); //GHOST LIGHT
-set_color_profile_slot( 29, 7, 134, 159, 191 ); //GHOST DARK
+set_color_profile_slot( 29, 6, 245, 245, 255 ); //GHOST LIGHT
+set_color_profile_slot( 29, 7, 161, 185, 217 ); //GHOST DARK
 
 // ACE
 set_color_profile_slot( 30, 0, 163, 163, 163 ); //GHOST MID
@@ -334,7 +334,7 @@ set_color_profile_slot( 30, 3, 87, 87, 87 ); //CREST 2
 set_color_profile_slot( 30, 4, 139, 32, 145 ); //HANDS
 set_color_profile_slot( 30, 5, 254, 252, 255 ); //EYES
 set_color_profile_slot( 30, 6, 212, 212, 212 ); //GHOST LIGHT
-set_color_profile_slot( 30, 7, 99, 99, 99 ); //GHOST DARK
+set_color_profile_slot( 30, 7, 97, 97, 115 ); //GHOST DARK
 
 // COFA DEEZ NUTS
 set_color_profile_slot( 31, 0, 255, 252, 252 ); //GHOST MID
@@ -343,7 +343,7 @@ set_color_profile_slot( 31, 2, 0, 0, 0 ); //CREST 1
 set_color_profile_slot( 31, 3, 0, 0, 0 ); //CREST 2
 set_color_profile_slot( 31, 4, 0, 0, 0 ); //HANDS
 set_color_profile_slot( 31, 5, 255, 252, 252 ); //EYES
-set_color_profile_slot( 31, 6, 255, 252, 252 ); //GHOST LIGHT
+set_color_profile_slot( 31, 6, 255, 255, 255 ); //GHOST LIGHT
 set_color_profile_slot( 31, 7, 0, 0, 0 ); //GHOST DARK
 
 

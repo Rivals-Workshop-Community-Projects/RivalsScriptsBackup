@@ -1,9 +1,12 @@
 // called when  you hit the oponent
 
 if my_hitboxID.attack == AT_FSPECIAL{
+	sound_play(sound_get("mantle"))
 	hit_player_obj.spr_dir *= -1;
+    hit_player_obj.hsp *= -1;
+	hit_player_obj.hsp = (8.5-hit_player_obj.free*2.5)*spr_dir;
+	hit_player_obj.vsp = -7*hit_player_obj.free;
 
-	hit_player_obj.hsp*= -1;
 	if hit_player_obj.state  == PS_ATTACK_GROUND || hit_player_obj.state  == PS_ATTACK_AIR{
 		hit_player_obj.old_hsp*=1.05;
 	}else{
@@ -13,10 +16,8 @@ if my_hitboxID.attack == AT_FSPECIAL{
 	if  hit_player_obj.state ==22 || hit_player_obj.state ==29 ||hit_player_obj.state ==27{
 		hit_player_obj.state = 23;
 	}
-	hit_player_obj.hitpause = true;
-    hit_player_obj.hitstop_full = 3;
-    hit_player_obj.hitstop = hit_player_obj.hitstop_full;
 	hit_player_obj.has_walljump = true;
+	destroy_hitboxes();
 
 }
 
@@ -28,9 +29,13 @@ if my_hitboxID.attack == AT_DAIR{
 }
 
 if (my_hitboxID.attack == AT_USPECIAL){
-	
-	if (my_hitboxID.hbox_num ==1 ){
+    if my_hitboxID.hbox_num == 3 {
+        sound_play(asset_get("sfx_blow_heavy2"))
+		set_num_hitboxes(AT_USPECIAL,2);
+    }
+	if (my_hitboxID.hbox_num == 1 ){
 		set_num_hitboxes(AT_USPECIAL, 3);
+		sound_play(asset_get("sfx_blow_medium2"))
 		show_flames=true;
 		hit_player_obj.should_make_shockwave = false;									//first hitbox does not galaxy
 	}
@@ -62,19 +67,10 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 	}
 }
 
-if my_hitboxID.attack == AT_USPECIAL {
-    if my_hitboxID.hbox_num == 1 {
-        sound_play(asset_get("sfx_blow_medium2"))
-    }
-    if my_hitboxID.hbox_num == 3 {
-        sound_play(asset_get("sfx_blow_heavy2"))
-    }
-}
-
-
 if my_hitboxID.attack == AT_FSTRONG {
     if my_hitboxID.hbox_num == 1 {
         shock_hit=1;
+		//spawn_hit_fx( x +70*spr_dir, y-38, 304 );
     }
 }
 

@@ -13,16 +13,6 @@ or attack == AT_USTRONG) && window == 1 {
   
   
 }
-if get_gameplay_time() < 120 {
-
-	draw_sprite_ext(sprite_get("introAE"), 1, x , y, 1, 1, 0 , -1 , 1.2 - get_gameplay_time()/100);
-	
-	if get_gameplay_time() % 3 < 1 {
-	draw_sprite_ext(sprite_get("introAE"), 1, x - 6 + random_func(1,12,true) , y - 6 + random_func(2,12,true), 1, 1, 0 , -1 , 0.5 - get_gameplay_time()/240);	
-	}
-	
-	
-}
 
 if state == PS_AIR_DODGE {
     

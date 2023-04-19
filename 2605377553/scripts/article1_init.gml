@@ -1,18 +1,12 @@
-sprite_index = sprite_get("smoke");
-mask_index = sprite_get("smokeback");
+sprite_index = sprite_get("empty");
+mask_index = sprite_get("smokeHitbox");
 
 //only used by master
-myLife = 120*3;
+myLife = 120*60;
 shrinkTime = 20;
 dir = 0;
 spd = 0;
 drag = 0.1;
-
-//stoihasoudh
-type = 0;//0 means it's the master
-par = noone;
-top = noone;
-back = noone;
 
 image_xscale = 0;
 image_yscale = 0;
@@ -33,3 +27,8 @@ wigSpd = (1+random_func(wigSeed%16,1,false))*wigFace;
 wigDst = 0.2;
 
 image_speed = 0.2;
+
+visible = 1
+
+
+smokeAnimSpeed = 0.1;

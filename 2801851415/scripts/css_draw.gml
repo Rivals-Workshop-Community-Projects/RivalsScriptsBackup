@@ -10,7 +10,7 @@ var charuuid = string(sprite_get("idle"));
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 27;
+var numAlts = 30;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -45,7 +45,7 @@ alt_name[2]  = "Red";
 alt_name[3]  = "Green";
 alt_name[4]  = "Black";
 alt_name[5]  = "Purple";
-alt_name[6]  = "Homerun";
+alt_name[6]  = "Midnight";
 alt_name[7]  = "Stone Rodent";
 alt_name[8]  = "Cave Dweller";
 alt_name[9]  = "Vigilante";
@@ -66,6 +66,9 @@ alt_name[23] = "Vocaloid";
 alt_name[24] = "Guilty";
 alt_name[25] = "Pastel";
 alt_name[26] = "Energy Drink";
+alt_name[27] = "Bice Cream";
+alt_name[28] = "Hyper Light";
+alt_name[29] = "Dragon";
 //alt_name[31] = "";
 
 draw_set_halign(fa_right);

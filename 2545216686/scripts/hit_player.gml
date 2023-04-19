@@ -1,5 +1,9 @@
 //hit_player.gml
 
+if (jumpsRune){
+	djumps = 0;
+}
+
 switch (my_hitboxID.attack){
 	case AT_DATTACK:
 		//sound_play(asset_get("sfx_blow_weak1"));
@@ -14,10 +18,16 @@ switch (my_hitboxID.attack){
 			destroy_hitboxes();
 		}	
 		break;
+	case AT_FSTRONG:
+		if (my_hitboxID.hbox_num == 2){
+			hit_player_obj.vsp = -7;
+			hit_player_obj.hsp = 9 * spr_dir;
+		}
+		break;
 	case AT_USTRONG:
 		if (my_hitboxID.hbox_num == 2){
 			sound_play(asset_get("mfx_ring_bell"));
-			spawn_hit_fx( hit_player_obj.x + (12*hit_player_obj.spr_dir), hit_player_obj.y - 20, 251);
+			spawn_hit_fx( x + (42 * spr_dir), y - 82, 251);
 		}
 		break;
 	case AT_DSTRONG:
@@ -33,9 +43,20 @@ switch (my_hitboxID.attack){
 		break;
 	case AT_DSPECIAL:
 		if (my_hitboxID.hbox_num == 3){
-			tailsdidstartingdownbhitboxhit = true
+			tailsdidstartingdownbhitboxhitRobot1 = true;
+		}
+		if (my_hitboxID.hbox_num == 5){
+			tailsdidstartingdownbhitboxhitRobot2 = true;
 		}
 		break;
+}
+
+if (nspecMultihitRune){
+	if ((my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) || my_hitboxID.attack == AT_NSPECIAL_AIR) {
+		nspecRuneHitPlayerX = hit_player_obj.x;
+		nspecRuneHitPlayerY = hit_player_obj.y;
+		nspecRuneHit = true;
+	}
 }
 
 if (my_hitboxID.attack == AT_NAIR

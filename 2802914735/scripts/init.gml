@@ -2,6 +2,7 @@
 //variables
 window_length = 10; //window length variable, updated later
 should_debug = false; //variable to toggle debug text
+
 axes_num = 1; //funny variable to handle axe number in throw animations
 dspecial_failed = false;
 has_touched_grass = false; //wii fit deep breath for buffs
@@ -16,10 +17,14 @@ fspec_jumpstart_timer = 0; //jumpstart
 fspec_land_timer = 0; //fspec land anims
 
 
-nspecial_buffer = 10;
+
+nspecial_buffer_required = 10; //required timing buffer for held nspecial
+nspecial_buffer = nspecial_buffer_required; //current timing buffer for held nspecial
 nspecial_anim_buffer = 25; //for icon
 
+dspecial_base_cooldown = 420; //base cooldown for dspecial
 dspecial_fail_buffer = 0; //for the sound when you try using dspecial while on cooldown
+
 
 prev_free = false;
 //vfx

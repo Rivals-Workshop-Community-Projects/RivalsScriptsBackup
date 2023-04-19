@@ -8,7 +8,7 @@ set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("wallcrawl_hurt"));
 //wallcrawl
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_GOTO, 7);
-set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 300);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 200);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_CUSTOM_GRAVITY, 0);

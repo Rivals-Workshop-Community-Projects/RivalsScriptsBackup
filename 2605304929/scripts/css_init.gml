@@ -268,7 +268,7 @@ create_menu_box(BOX_CLOSE_MENU,"Close Menu",row_x + 80,row_y + 40,32,32,"css_men
 // Sub Menu Close Button
 create_menu_box(BOX_CLOSE_INTERAL_MENU,"Close Sub Menu",x + 86, y + 18,32,32,"css_menu_buttons",6); // Reuse Couse Menu Sprite
 //Color Menu More Alts button
-create_menu_box(BOX_SHIFT_COLOR_ALTS,"Alt_shifter",x+ 70,y + 120,32,32,"css_menu_buttons",1);
+create_menu_box(BOX_SHIFT_COLOR_ALTS,"Alt_shifter",x + 20,y + 70,32,32,"css_menu_buttons",1);
 // Extra Options Menu Buttons
 row_x = x + 20
 row_y = y + 70;
@@ -282,6 +282,7 @@ initialize_color_slot_info();
 last_frame_color_alt = 0; // Color slot variable for memory
 color_shift = 0;
 run_init_shader_for_character_draw = false;
+num_of_shifted_alts = 0;
 
 // Supersonic's Synched Variable Code
 generated_var = 0;
@@ -390,19 +391,19 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "The lake of my home village runs red with the blood of my family.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Klockwurth";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Mechanical Bird";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Klockwurth Colors";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I used to know Cosworth before he became the shell of what he is now...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Roekoko";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Tricks and Clones";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Roekoko Colors";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Roekoko is a pupil like no other. She will one day surpass me.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Riptide";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "2022 Riptide Bracket";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character at Riptide 2022 WS Bracket";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Genesis";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Genesis 9";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character at Genesis 8 & 9 2022/2023 WS Bracket";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Iroh";sub_element_slot++;
@@ -425,9 +426,9 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "I studied martial arts pioneered by a Fire Capital General named Rykenburn.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Void Fox";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Species by Sai";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I made sure I was never good with a bladed weapon, in case I ever learned to enjoy killing.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flicorian";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color for CAMaera";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The odds are against us, but I have many friends...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Hikaru";sub_element_slot++;
@@ -530,10 +531,11 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "I long for the days of old. Back when everything was simple.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot  30
-	slot_property_array[color_slot,sub_element_slot] = "Colorblind";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Black and White Color";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Manga";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flat Grayscale";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Things are not always black and white. There is some evil within me, and there is good in some evil.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+	
 	//Slot 31 - Actual Slot 32, CANNOT USE LEAVE BLANK
 	slot_property_array[color_slot,sub_element_slot] = "Name";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Pallet Decription";sub_element_slot++;
@@ -584,9 +586,29 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Character was in BB, bracket is now archived";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Genesis";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Genesis 8";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character at Genesis 8 2022 WS Bracket";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Baja";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "TLC";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Pallet Description";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "FW";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Pallet Description";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Scrimsho";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Riptide";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "2022 Riptide Bracket";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character at Riptide 2022 WS Bracket";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "R-00";sub_element_slot++;
@@ -634,11 +656,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "I have held a couple of roles, but my job as a shrine maiden was the most relaxed.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Tak";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Character by Tak";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I would never use a plasma sword, it is the ultimate tool of aggression from the Neo Fire Capital.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "U-Sa";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character by Usagibun1";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "When my family was destroyed. I felt a part of me shatter. I would never be whole or complete again.";sub_element_slot++;
@@ -659,24 +676,14 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "When I am not fighting evil, I can be a tad lazy... ";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Slime";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Color for Prober";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Slime is a sign that something is unclean. Not really what I want to see or step in.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-		//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Sailee";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Being powerful comes with a responsibility. I cannot imagine a world where I had no morals...";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Keiki";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Touhou character";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "There are sprits all around us. Show everything respect.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Nakiri Ayame";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Vtuber Character";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I get a lot of questions about the horns. I am half dragon, not an Oni.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Zexiphi";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 		//Slot 60
 	slot_property_array[color_slot,sub_element_slot] = "Yuupi";sub_element_slot++;
@@ -693,17 +700,94 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Color for FuRi";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "I can and will rush anybody if they threaten me or my friends. No-one is safe from my grasp.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-		//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Ringtail";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Color for The Burger TV";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I can be sneaky and resourcesful when I need to be. It doesn't come up much though.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
 		//Slot 64 DO NOT USE
 	slot_property_array[color_slot,sub_element_slot] = "64 Not used yet";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Pallet Description";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
+	
 	// Where Extra 2 would start
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Can't Shift Alt 0";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color Shifted Default";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The default color cannot be shifted due to the way code works.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Craum";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Zaora";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Nezuko";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Kumaki";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Ringtail";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color for The Burger TV";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I can be sneaky and resourcesful when I need to be. It doesn't come up much though.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+			//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Keiki";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Touhou character";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "There are sprits all around us. Show everything respect.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Nakiri Ayame";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Vtuber Character";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I get a lot of questions about the horns. I am half dragon, not an Oni.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+			//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Slime";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Color for Prober";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Slime is a sign that something is unclean. Not really what I want to see or step in.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+			//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Tak";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character by Tak";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I would never use a plasma sword, it is the ultimate tool of aggression from the Neo Fire Capital.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Autumn Leaves";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Bee";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Golden Dragon";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Ribbon by MrLasa";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Prue Furies";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Junko for Renecup";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+		//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Rushing Rei";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Giovanna(GG) for Inverted";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+
+	
+		num_of_shifted_alts = color_slot - 96;
+		
+	//print(num_of_shifted_alts);
+	// Fill out rest with placeholders
+	for(var current_color_slot = color_slot;current_color_slot < 95;current_color_slot++;){
+		slot_property_array[current_color_slot,0] = slot_property_array[current_color_slot - 32,0];
+		slot_property_array[current_color_slot,1] = slot_property_array[current_color_slot - 32,1];
+		slot_property_array[current_color_slot,2] = slot_property_array[current_color_slot - 32,2];
+	}
 
 /*
 	Blank Version

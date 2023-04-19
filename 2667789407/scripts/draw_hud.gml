@@ -1,5 +1,5 @@
 // prevents draw_hud from running a frame too early and spitting an error
-if "phone" not in self exit;
+if "unown_text_buffer" not in self exit;
 
 
 var text_posx = temp_x+32;
@@ -33,8 +33,8 @@ if (hidden_power_text_anim_timer > 0)
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
-muno_event_type = 5;
-user_event(14);
+//muno_event_type = 5;
+//user_event(14);
 
 //====================================================
 #define outlined_text_draw(posx, posy, text_string, text_color, outline_color)

@@ -11,10 +11,10 @@ if (init == 0){
 			other.sprite_index = sprite_get("moon_gb");
 		}
 		if (get_player_color( player ) == 8||
-			get_player_color( player ) == 10||
-			get_player_color( player ) == 13||
-			get_player_color( player ) == 21||
-			get_player_color( player ) == 22){
+			get_player_color( player ) == 11||
+			get_player_color( player ) == 14||
+			get_player_color( player ) == 22||
+			get_player_color( player ) == 23){
 			other.sprite_index = sprite_get("moon_alt");
 			other.altmoon = true;
 		}
@@ -71,22 +71,56 @@ if (state == 1){
 				tmp_id.hitpause = true;
 			}
 			if (tmp_hb_id.attack==AT_FSPECIAL){
-				if (tmp_id.fsp_level<3){
-					tmp_id.fsp_level++;
+				if (tmp_id.fsp_level>-1){
+					tmp_id.fsp_level--;
 				}
 			}
 			if (tmp_hb_id.attack==AT_USTRONG){
+				var ring = instance_create( tmp_id.x, tmp_id.y-30, "obj_article1" );
+				ring.r_dur = 20
+				sound_play(sound_get("blink"), false, noone, 0.8);
 				tmp_id.window=2;
 				tmp_id.window_timer=0;
 				tmp_id.old_vsp=-14;//-13
+				with (tmp_id){
+					attack_end() 
+					destroy_hitboxes()
+				}
 			}
 			if (tmp_hb_id.attack==AT_FSTRONG){
+				var ring = instance_create( tmp_id.x, tmp_id.y-30, "obj_article1" );
+				ring.r_dur = 20
+				sound_play(sound_get("blink"), false, noone, 0.8);
 				tmp_id.window=2;
 				tmp_id.window_timer=0;
+				with (tmp_id){
+					attack_end() 
+					destroy_hitboxes()
+					set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED_TYPE, 1);
+					set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 9);
+					set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 0);
+					set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 0);
+				}
 			}
 			if (tmp_hb_id.attack==AT_DSTRONG){
+				var ring = instance_create( tmp_id.x, tmp_id.y-30, "obj_article1" );
+				ring.r_dur = 20
+				sound_play(sound_get("blink"), false, noone, 0.8);
 				tmp_id.window=2;
 				tmp_id.window_timer=0;
+				//tmp_hb_id
+				if (tmp_hb_id.hbox_num == 1){
+					tmp_id.old_hsp = 14*tmp_id.spr_dir
+				}
+				if (tmp_hb_id.hbox_num == 2){
+					tmp_id.old_hsp = -14*tmp_id.spr_dir
+				}
+				with (tmp_id){
+					attack_end() 
+					destroy_hitboxes()
+					set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 4);
+					set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 4);
+				}
 			}
 			tmp_id.hitstop = tmp_hb_id.hitpause;//9
 			tmp_id.hitstop_full = tmp_hb_id.hitpause;//9

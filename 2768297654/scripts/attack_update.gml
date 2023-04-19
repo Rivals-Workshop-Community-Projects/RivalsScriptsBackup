@@ -53,11 +53,13 @@ switch(attack){
 }
 
 if(attack == AT_DATTACK){
+	/*
 	if(window == 2){
 		soft_armor = 8;
 	}	if(window == 3 || window == 4){
 		soft_armor = 0;
-	}	if(window == 1 && window_timer = 1){
+	} */
+	if(window == 1 && window_timer = 1){
 		sound_play(asset_get("sfx_forsburn_cape_swipe"));
 	}
 }
@@ -86,6 +88,7 @@ if(attack == AT_UAIR){
 }
 
 if(attack == AT_NSPECIAL){
+	trigger_wavebounce();
 	if(window == 1 && window_timer = get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH)-1){ 
 		move_cooldown[AT_NSPECIAL] = 120;
 	}
@@ -200,7 +203,7 @@ if(attack == AT_DSPECIAL){
 		vfx.depth = 10;
 	}if(window == 2 && window_timer = 4){
 		bomb_state = true;
-		bomb_timer = 300;
+		bomb_timer = 240;
 	}
 }
 
@@ -208,35 +211,38 @@ if(attack == AT_FTHROW){
 	if(window == 1 && window_timer = get_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH)-1 && !hitpause){
 		sound_play(sound_get("se_item_item_throw"));
 		sound_play(asset_get("sfx_swipe_medium2"));
+		bomb_missfire = false;
 	}if(window == 1 && window_timer = get_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH)-1){
 		bomb_timer = 0;
 		bomb_state = false;
-		move_cooldown[AT_DSPECIAL] = 300;
+		move_cooldown[AT_DSPECIAL] = 330;
 	}
 }if(attack == AT_DTHROW){
 	if(window == 1 && window_timer = get_window_value(AT_DTHROW, 1, AG_WINDOW_LENGTH)-1 && !hitpause){
 		sound_play(sound_get("se_item_item_throw"));
 		sound_play(asset_get("sfx_swipe_medium2"));
+		bomb_missfire = false;
 	}if(window == 1 && window_timer = get_window_value(AT_DTHROW, 1, AG_WINDOW_LENGTH)-1){
 		bomb_timer = 0;
 		bomb_state = false;
-		move_cooldown[AT_DSPECIAL] = 300;
+		move_cooldown[AT_DSPECIAL] = 330;
 	}
 }if(attack == AT_UTHROW){
 	if(window == 1 && window_timer = get_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH)-1 && !hitpause){
 		sound_play(sound_get("se_item_item_throw"));
 		sound_play(asset_get("sfx_swipe_medium2"));
+		bomb_missfire = false;
 	}if(window == 1 && window_timer = get_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH)-1){
 		bomb_timer = 0;
 		bomb_state = false;
-		move_cooldown[AT_DSPECIAL] = 300;
+		move_cooldown[AT_DSPECIAL] = 330;
 	}
 }if(attack == AT_DSPECIAL_2){
 	can_fast_fall = false;
 	if(window == 1 && window_timer = get_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH)-1){
 		bomb_timer = 0;
 		bomb_state = false;
-		move_cooldown[AT_DSPECIAL] = 300;		
+		move_cooldown[AT_DSPECIAL] = 330;		
 	}
 }
 
@@ -245,6 +251,18 @@ if (attack == AT_TAUNT && down_down){
     attack = AT_TAUNT_2;
     window = 1;
     window_timer = 0;
+    /*
+    if(practice_mode){
+if(combo_cooldown > 0){
+    if(hud_combo_num = 0){
+    combo_cooldown = 15;
+    hud_combo_cooldown = 285;
+    }
+}
+    	combo_num = 15;
+    	combo_timer = 420;
+    }
+    */
 	}
 }
 ///The better taunt
@@ -288,3 +306,14 @@ newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+
+#define trigger_wavebounce() 
+{
+	if ((left_down and state_timer <= 5 and spr_dir == 1) or (right_down and state_timer <= 5 and spr_dir == -1) and (b_reversed == false)) {
+    	hsp *= -1;
+    	spr_dir *= -1;
+    	b_reversed = true;
+	} else if (state_timer == 6) {
+    	b_reversed = false;
+	}
+}

@@ -1,6 +1,6 @@
 //post-draw
 
-if (grabbed && other_player_id == grabbed_id){
+if (other_player_id == grabbed_id){
     var soul_sprite = -1;
     with (grabbed_id){
         soul_sprite = sprite_get("arrows");

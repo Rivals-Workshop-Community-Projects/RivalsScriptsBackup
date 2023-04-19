@@ -5,6 +5,7 @@ bullet_fired = false;
 if (attack == AT_USPECIAL) {
     reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
     uspec_airdodge_pratfall = false;
+    uspec_had_walljump = has_walljump;
 }
 if attack == AT_NSPECIAL {
     roke_nspecial_charge = 0;

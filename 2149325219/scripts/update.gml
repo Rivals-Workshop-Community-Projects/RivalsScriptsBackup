@@ -2,17 +2,17 @@
 //#region Fuse
 
 //#region Low fuse
-if(fuse <= 180 && !lowfuse){
+if(fuse <= 240 && !lowfuse){
     lowfuse = true;
 }
-if(fuse > 180 && lowfuse){
+if(fuse > 240 && lowfuse){
     lowfuse = false;
 }
 
 //#endregion
 
 //#region boom
-if(fuse <= 0){
+if(fuse <= 0 && !hitpause){
         bubbled = false;
         wrapped = false;
     
@@ -47,7 +47,7 @@ if(hitstun && activated_kill_effect){
 }else{
 	fuse_pause = false;
 }
-if(!smash_charging && state != PS_HITSTUN && state != PS_HITSTUN_LAND){
+if(!smash_charging && state != PS_HITSTUN && state != PS_HITSTUN_LAND && state != PS_WRAPPED && state != PS_FROZEN){
     
     
     //if(fuse > 60){
@@ -199,12 +199,26 @@ if(!fusesound){
         sound_play(sound_get("mollo_fuse"))
         sound_play(sound_get("mollo_fuse"))
         sound_play(sound_get("mollo_fuse"))
+        
+        
+    }
+}
+if(!fusesound2){
+	if(fuse <= 120){
+		fusesound2 = true;
+		// sound_stop(sound_get("mollo_fuse"))
+	    sound_play(sound_get("crackerFuse"));
+	    sound_play(sound_get("crackerFuse"));
+	    sound_play(sound_get("crackerFuse"));
+	    	
     }
 }
 
 if(fuse > 240 && fusesound){
     sound_stop(sound_get("mollo_fuse"))
+    sound_stop(sound_get("crackerFuse"))
     fusesound = false;
+    fusesound2 = false;
 }
 
 
@@ -265,7 +279,7 @@ if((state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) && attack != AT_EXTRA_1
 //#region minesuper jump //fix set_atack
 with(obj_article2){
     if(player_id == other.id){
-        if(position_meeting(x, y, other) || position_meeting(x + 5*spr_dir, y, other) || position_meeting(x - 10*spr_dir, y, other)){
+        if((position_meeting(x, y, other) || position_meeting(x + 5*spr_dir, y, other) || position_meeting(x - 10*spr_dir, y, other)) && other.down_down){
             if(fuse > 1){
                 other.jump_speed = 18;
                 other.short_hop_speed = 18;
@@ -337,5 +351,70 @@ if(sparktimer > 100){
 }
 
 sparktimer++;
+
+//#endregion
+
+
+//#region reset Extra HB stats
+if((state == PS_IDLE || state == PS_IDLE_AIR || state == PS_HITSTUN) && alterExtra){
+	reset_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE);
+	reset_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE_FLIPPER);
+	alterExtra = false;
+}
+
+//#endregion
+
+
+
+//#region Jab
+
+if(state != PS_ATTACK_GROUND && jabParry){
+	jabParry = false;
+}
+
+
+//#endregion
+
+//#region Dstrong
+with(oPlayer){
+	if(id != other.id){
+		if(DstrongGrab){
+			if(state == PS_HITSTUN){
+				y = ease_linear(y, other.dMiney, state_timer, 10)
+				x = ease_linear(x, other.dMinex, state_timer, 10)
+			}
+		}
+	}
+}
+
+
+//#endregion
+
+
+
+//#region Prime CounterPlay
+if(primeCounterTimer > 0){
+	primeCounterTimer--;
+}else{
+	primeDamage = primeDamageLimit;				//If not in prime reset damage limit to max
+	reset_hitbox_value(AT_EXTRA_1,1, HG_DAMAGE);
+	reset_hitbox_value(AT_EXTRA_1,1, HG_BASE_KNOCKBACK);
+	reset_window_value(AT_EXTRA_1, 3, AG_WINDOW_TYPE)
+	handsoff_tumble = 0
+	primeCounter = false;
+}
+
+if(primeDamage <= 0){
+	primeDamage = primeDamageLimit;
+	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE,0);
+	set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK,0);
+	set_window_value(AT_EXTRA_1, 2, AG_WINDOW_TYPE, 7)
+	handsoff_tumble = 3;
+	primeCounter = true;
+	fuse = -1;
+	
+}
+
+
 
 //#endregion

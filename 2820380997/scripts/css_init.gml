@@ -177,6 +177,7 @@ if(menu_button[0][8]){ // Sub Menu Button Pressed
 #macro BOX_INTRO_DIALOG_ENABLE 10
 #macro BOX_SWAP_INPUTS 11
 #macro BOX_NECO_PORTRAIT 12
+#macro BOX_ALT_OUTFIT 13
 
 #macro BUTTON_NAME 0
 #macro BUTTON_IX 1
@@ -227,9 +228,11 @@ current_button_selected = 0;
 sprite_change_offset("css_menu_buttons", 16, 16);
 sprite_change_offset("css_menu_buttons_highlight", 16, 16);
 sprite_change_offset("css_cursor_hover", 16, 16);
-sprite_change_offset("idle", 128, 128);
+sprite_change_offset("idle", 128, 190);
+sprite_change_offset("9t_idle", 128, 190);
 sprite_change_offset("css_icon", 7, 7);
 sprite_change_offset("css_tlc_icon",12,12);
+sprite_change_offset("css_guide_QR",26,26);
 
 // Declare an multidimensional array ahead of time to hold each menu box array
 menu_box = [];
@@ -271,6 +274,7 @@ create_menu_box(BOX_CLOSE_MENU,"Close Menu",row_x + 80,row_y + 40,32,32,"css_men
 create_menu_box(BOX_CLOSE_INTERAL_MENU,"Close Sub Menu",x + 86, y + 18,32,32,"css_menu_buttons",6); // Reuse Couse Menu Sprite
 //Color Menu More Alts button
 create_menu_box(BOX_SHIFT_COLOR_ALTS,"Alt_shifter",x + 20,y + 70,32,32,"css_menu_buttons",1);
+create_menu_box(BOX_ALT_OUTFIT,"Alt_outfit",x + 20,y + 110,32,32,"css_menu_buttons",9);
 // Extra Options Menu Buttons
 row_x = x + 20
 row_y = y + 70;
@@ -278,6 +282,10 @@ create_menu_box(BOX_WIN_QUOTE_ENABLE,"Win Quote",row_x,row_y,32,32,"css_menu_but
 //create_menu_box(BOX_INTRO_DIALOG_ENABLE,"Intro Dialog",row_x,row_y + 40,32,32,"css_menu_buttons",8); //Disabled for riptide cannot finish in time
 create_menu_box(BOX_SWAP_INPUTS,"Swap Inputs",row_x + 100,row_y,32,32,"css_menu_buttons",9);
 create_menu_box(BOX_NECO_PORTRAIT,"NECO_PORTRAIT",row_x + 100,row_y + 40,32,32,"css_menu_buttons",9);
+
+//Alt outfit
+alt_outfit_enabled = false;
+css_idle_sprite_to_use = sprite_get("idle");
 
 // Color Shifter
 last_frame_color_alt = get_player_color(player); // Color slot variable for memory
@@ -302,13 +310,14 @@ portrait_to_use = 0;
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
 2. Status of Win Quotes Enabled - 1 bit
 3. Status of Round Start Dialog Enabled - 1 bit
-4. Spawn Nspec / Dspec - 1 bit
+4. Swap Nspec / Dspec - 1 bit
 5. Portrait to use - 2 bits
+6. Alt Outfit Bit enable - 1 it
 */
 
 //This function takes the bit lengths you put in the previous function, in the same order, and outputs an array with the values you put in (assuming you put in the correct bit lengths), also in the same order.
 //split_var = split_synced_var(bit_length_1, bit_length_2...);
-split_var = split_synced_var(2,1,1,1,2);
+split_var = split_synced_var(2,1,1,1,2,1);
 //print(split_var);
 /*
 print(split_var[0]); // Color_Shift;
@@ -320,6 +329,7 @@ flag_win_quote_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
 swap_nspec_dspec_input = split_var[3];
 portrait_to_use = split_var[4];
+alt_outfit_enabled = split_var[5];
 
 //print("color_shift: " + string(color_shift)); // Color_Shift;
 //print("flag_win_quote_enabled: " + string(flag_win_quote_enabled)); // WinQuote
@@ -412,6 +422,11 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Cosworth seems perpetually angry, but there is some kindness behind all the anger.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Heat Wave";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Heat Wave Brackets";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Character is legal in 2022 Heatwave Workshop Bracket.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Tricky Kitsune";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Hikaru Colors";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "The fox that taught me how to be tricky. I hope to be as strong as her someday!";sub_element_slot++;
@@ -429,7 +444,7 @@ return chunk_arr;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Nova Visionary";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Astra Colors";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "The star's guide me home at night. I wish I could see them from the city.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The stars guide me home at night. I wish I could see them from the city.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 5
 	slot_property_array[color_slot,sub_element_slot] = "Snowblind";sub_element_slot++;
@@ -472,11 +487,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "I am always polite and always kind, but I always have a plan to trick someone.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Ouro Kronii";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Colors for Jmillions";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I don't know what the future holds, and Daora has told me that it isn't always bright.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Yin & Yang";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Black and White Colors";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Yin and Yang are the symbols my mother identifies with. I think of her whenever I see them.";sub_element_slot++;
@@ -494,7 +504,7 @@ return chunk_arr;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Caster of Fate";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Tamamo-no-Mae Alt";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Legends of powerful kitsune go back for millenia. I follow in their footsteps.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Legends of powerful kitsune go back for millennia. I follow in their footsteps.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Blood Moon";sub_element_slot++;
@@ -507,6 +517,11 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "The sakura bloom is one of my favorite spectacles!";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Flame Shackle";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for CAMaera";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I will contain the evil here, and shackle it with my soul fire.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Bold Kobold";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Colors for Loglord";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Adventuring is so much fun! I couldn't live a boring life in a village.";sub_element_slot++;
@@ -515,11 +530,6 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Black Hole Sun";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Colors for Succ";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "My great aunt is powered by sunlight. She is bright, but also powerful.";sub_element_slot++;
-	color_slot++;sub_element_slot = 0;
-	//Slot 
-	slot_property_array[color_slot,sub_element_slot] = "Flame Shackle";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Colors for CAMaera";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "I will contain the evil here, and shackle it with my soul fire.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Autumn Leaves";sub_element_slot++;
@@ -560,18 +570,16 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Color Shifted Default";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "The default color cannot be shifted due to the way code works.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-	/* Legality Pending....
-	    //Slot 33
-	slot_property_array[color_slot,sub_element_slot] = "RaB";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Round-A-Bouts";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Join the RaB bracket every Monday at 7:30PM Est";sub_element_slot++;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "FW";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Fungal Wastes";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Join the FW bracket every Monday at 7:30PM Est";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	    //Slot 
-	slot_property_array[color_slot,sub_element_slot] = "COTA";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Call of the Abyss";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Join the COTA bracket every Wednesday at 7:30PM Est";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "TLC";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "The Lotus Clash";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Join the TLC bracket every Wednesday at 7:30PM Est";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
-	*/
 		//Slot 35
 	slot_property_array[color_slot,sub_element_slot] = "FTL";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Forbidden Training Lounge";sub_element_slot++;
@@ -603,6 +611,11 @@ return chunk_arr;
 	slot_property_array[color_slot,sub_element_slot] = "Hey Daora! Look at me! I am on the TV!";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Cerbera";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Original Charactrer Color";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "If I could read minds, I think my illusions would be even better!";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Ithaca";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Original Character Color";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Sometimes... I wonder what its like to be someone else.";sub_element_slot++;
@@ -610,12 +623,22 @@ return chunk_arr;
 	//Slot 20
 	slot_property_array[color_slot,sub_element_slot] = "Azamuku";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Character by Obakawaii";sub_element_slot++;
-	slot_property_array[color_slot,sub_element_slot] = "Decieve and Devour is a motto some kitsune live by. Stay away from them.";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Deceive and Devour is a motto some kitsune live by. Stay away from them.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	//Slot 
 	slot_property_array[color_slot,sub_element_slot] = "Cybernetic arm";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Penny Alt";sub_element_slot++;
 	slot_property_array[color_slot,sub_element_slot] = "Penny isn't afraid of Loxodont, so neither am I!";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Ouro Kronii";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Jmillions";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "I don't know what the future holds, and Daora has told me that it isn't always bright.";sub_element_slot++;
+	color_slot++;sub_element_slot = 0;
+	//Slot 
+	slot_property_array[color_slot,sub_element_slot] = "Namielle";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "Colors for Erika";sub_element_slot++;
+	slot_property_array[color_slot,sub_element_slot] = "These colors shine briliantly, like an RGB gamer set up at the local cafe.";sub_element_slot++;
 	color_slot++;sub_element_slot = 0;
 	
 	num_of_shifted_alts = color_slot - 32;

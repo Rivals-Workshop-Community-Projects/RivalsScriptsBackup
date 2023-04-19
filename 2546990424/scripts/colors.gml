@@ -86,14 +86,14 @@ set_color_profile_slot( 6, 4, 0, 62, 92 ); //glasses
 set_color_profile_slot( 6, 5, 163, 159, 152 ); //teeth
 set_color_profile_slot( 6, 6, 255, 161, 206 ); //wind
 
-// Void Kong
-set_color_profile_slot( 7, 0, 222, 255, 222 ); //skin 1
-set_color_profile_slot( 7, 1, 222, 255, 222 ); //skin 2
-set_color_profile_slot( 7, 2, 56, 56, 56 ); //jacket 1
-set_color_profile_slot( 7, 3, 12, 69, 12 ); //jacket 2
-set_color_profile_slot( 7, 4, 0, 158, 68 ); //glasses
-set_color_profile_slot( 7, 5, 64, 255, 0 ); //teeth
-set_color_profile_slot( 7, 6, 122, 255, 165 ); //wind
+// Genesis 9
+set_color_profile_slot( 7, 0, 46, 46, 46 ); //skin 1
+set_color_profile_slot( 7, 1, 99, 99, 99 ); //skin 2
+set_color_profile_slot( 7, 2, 249, 249, 249 ); //jacket 1
+set_color_profile_slot( 7, 3, 194, 0, 0 ); //jacket 2
+set_color_profile_slot( 7, 4, 202, 0, 0 ); //glasses
+set_color_profile_slot( 7, 5, 219, 219, 219 ); //teeth
+set_color_profile_slot( 7, 6, 202, 0, 0 ); //wind
 
 // Kiryu Kong
 set_color_profile_slot( 8, 0, 46, 46, 54 ); //skin 1
@@ -284,14 +284,14 @@ set_color_profile_slot( 28, 4, 237, 117, 71 ); //glasses
 set_color_profile_slot( 28, 5, 173, 173, 173 ); //teeth
 set_color_profile_slot( 28, 6, 173, 245, 130 ); //wind
 
-// Great Ape Baby
-set_color_profile_slot( 29, 0, 253, 232, 2 ); //skin 1
-set_color_profile_slot( 29, 1, 108, 115, 156 ); //skin 2
-set_color_profile_slot( 29, 2, 250, 6, 7 ); //jacket 1
-set_color_profile_slot( 29, 3, 226, 233, 151 ); //jacket 2
-set_color_profile_slot( 29, 4, 228, 9, 12 ); //glasses
+// Riptide
+set_color_profile_slot( 29, 0, 23, 66, 153 ); //skin 1
+set_color_profile_slot( 29, 1, 0, 200, 255 ); //skin 2
+set_color_profile_slot( 29, 2, 255, 223, 0 ); //jacket 1
+set_color_profile_slot( 29, 3, 255, 170, 0 ); //jacket 2
+set_color_profile_slot( 29, 4, 255, 223, 0 ); //glasses
 set_color_profile_slot( 29, 5, 157, 157, 157 ); //teeth
-set_color_profile_slot( 29, 6, 194, 186, 230 ); //wind
+set_color_profile_slot( 29, 6, 255, 223, 0 ); //wind
 
 // JPEG
 set_color_profile_slot( 30, 0, 99, 54, 125 ); //skin 1
@@ -302,14 +302,14 @@ set_color_profile_slot( 30, 4, 44, 48, 56 ); //glasses
 set_color_profile_slot( 30, 5, 157, 157, 157 ); //teeth
 set_color_profile_slot( 30, 6, 231, 115, 255 ); //wind
 
-// Riptide
-set_color_profile_slot( 31, 0, 23, 66, 153 ); //skin 1
-set_color_profile_slot( 31, 1, 0, 200, 255 ); //skin 2
-set_color_profile_slot( 31, 2, 255, 223, 0 ); //jacket 1
-set_color_profile_slot( 31, 3, 255, 170, 0 ); //jacket 2
-set_color_profile_slot( 31, 4, 255, 223, 0 ); //glasses
+// Great Ape Baby
+set_color_profile_slot( 31, 0, 253, 232, 2 ); //skin 1
+set_color_profile_slot( 31, 1, 108, 115, 156 ); //skin 2
+set_color_profile_slot( 31, 2, 250, 6, 7 ); //jacket 1
+set_color_profile_slot( 31, 3, 226, 233, 151 ); //jacket 2
+set_color_profile_slot( 31, 4, 228, 9, 12 ); //glasses
 set_color_profile_slot( 31, 5, 157, 157, 157 ); //teeth
-set_color_profile_slot( 31, 6, 255, 223, 0 ); //wind
+set_color_profile_slot( 31, 6, 194, 186, 230 ); //wind
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

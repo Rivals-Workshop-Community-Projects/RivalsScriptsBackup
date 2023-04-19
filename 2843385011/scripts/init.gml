@@ -179,6 +179,9 @@ nspecial_trail3 = hit_fx_create(sprite_get("nspecial_proj_trail3"), 30);
 dspecial_trail1 = hit_fx_create(sprite_get("dspecial_proj_trail1"), 10);
 dspecial_trail2 = hit_fx_create(sprite_get("dspecial_proj_trail2"), 15);
 
+dair_forgiveness = 0;
+dair_forgiveness_threshold = 21
+
 dspecial_orb = 0;
 dspecial_orb_gather = false;
 dspecial_enemy = noone;
@@ -213,3 +216,61 @@ introAnimFrameLength = 4;
 kf_custom_icon = sprite_get("ability_dmb");
 kf_hud_name = "Dark Matter Blade";
 
+
+//Feri
+feri_costume = sprite_get("Dark_Feri");
+
+
+
+//Pokemon stadium
+pkmn_stadium_name_override = "Dark swd."
+pkmn_stadium_front_img = sprite_get("Dark_Matter_front")
+pkmn_stadium_back_img = sprite_get("Dark_Matter_back")
+
+//Trial Grounds
+guiltySprite = sprite_get("Dark_Matter_Trial")
+
+//Po and gumbo
+ pot_compat_text = "Sweet-HEART cake"
+ pot_compat_variable = sprite_get("Dark_Matter_Cake");
+ 
+ //Mt Dedede
+
+arena_title = "The blade of darkness.";
+
+//Boxing arena
+
+boxing_title = "Rainbow stealer";
+
+//Soulbound Conflict message
+
+battle_text = "* The darkness stares into you.";
+//Snake interigations
+
+sna_interrogated_line_01 = "'incomprehensible Screeching'";
+//AgentN Codec
+
+ncode1 = "Information on this creature is difficult to find"
+ncode2 = "It is named 'Dark Matter' and is attempting to"
+ncode3 = "cover the world in darkness. Eliminate at all cost"
+//Henry Stickmin fail
+
+has_fail = true;
+fail_text = "Good luck Henry. Hopefully that sack has air holes.";
+//unregistered HyperCam quotes
+
+uhc_victory_quote = "I s dk mttr Kbys d a d :0 :0 :0?!";
+
+//Pac man
+
+Namco_Taunt = sprite_get("Dark_Pac")
+Namco_Taunt_Sound = sound_get("Pac_Sword_Effect")
+
+//Hikaru title
+
+Hikaru_Title = "Possessed"; 
+
+// Wall-E
+
+walle_taunt_sound = sound_get("28 - vs. Dark Matter Blade")
+walle_taunt_type = 1

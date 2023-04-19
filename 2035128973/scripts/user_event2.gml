@@ -14,7 +14,7 @@ set_color_profile_slot_range( 2, 133, 13, 50 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 31 );
 
 // Shiny
 set_color_profile_slot( 1, 0, 251, 255, 0 ); //Fur
@@ -66,50 +66,105 @@ set_color_profile_slot( 10, 0, 255, 140, 0 ); //Fur
 set_color_profile_slot( 10, 1, 255, 235, 122 ); //Body
 set_color_profile_slot( 10, 2, 105, 0, 112 ); //Accent
 
-// Hikaru
-set_color_profile_slot( 11, 0, 250, 250, 250 ); //Fur
-set_color_profile_slot( 11, 1, 250, 120, 196 ); //Body
-set_color_profile_slot( 11, 2, 214, 88, 105 ); //Accent
+// spectrum
+set_color_profile_slot( 11, 0, 147, 251, 253 ); //Fur
+set_color_profile_slot( 11, 1, 255, 105, 157 ); //Body
+set_color_profile_slot( 11, 2, 130, 139, 156 ); //Accent
+
+// badassF42069
+set_color_profile_slot( 12, 0, 181, 218, 85 ); //Fur
+set_color_profile_slot( 12, 1, 86, 187, 145 ); //Body
+set_color_profile_slot( 12, 2, 244, 32, 105 ); //Accent
 
 // Flake
-set_color_profile_slot( 12, 0, 153, 0, 255 ); //Fur
-set_color_profile_slot( 12, 1, 77, 120, 184 ); //Body
-set_color_profile_slot( 12, 2, 110, 197, 255 ); //Accent
+set_color_profile_slot( 13, 0, 153, 0, 255 ); //Fur
+set_color_profile_slot( 13, 1, 77, 120, 184 ); //Body
+set_color_profile_slot( 13, 2, 110, 197, 255 ); //Accent
 
-// Melon
-set_color_profile_slot( 13, 0, 255, 87, 132 ); //Fur
-set_color_profile_slot( 13, 1, 178, 255, 166 ); //Body
-set_color_profile_slot( 13, 2, 104, 168, 88 ); //Accent
+// Hikaru
+set_color_profile_slot( 14, 0, 250, 250, 250 ); //Fur
+set_color_profile_slot( 14, 1, 250, 120, 196 ); //Body
+set_color_profile_slot( 14, 2, 214, 88, 105 ); //Accent
+
+// lorekeeper
+set_color_profile_slot( 15, 0, 99, 100, 104 ); //Fur
+set_color_profile_slot( 15, 1, 64, 63, 55 ); //Body
+set_color_profile_slot( 15, 2, 171, 38, 38 ); //Accent
 
 // CMY
-set_color_profile_slot( 14, 0, 255, 0, 255 ); //Fur
-set_color_profile_slot( 14, 1, 255, 255, 0 ); //Body
-set_color_profile_slot( 14, 2, 0, 255, 255 ); //Accent
+set_color_profile_slot( 16, 0, 255, 0, 255 ); //Fur
+set_color_profile_slot( 16, 1, 255, 255, 0 ); //Body
+set_color_profile_slot( 16, 2, 0, 255, 255 ); //Accent
 
 // RGB
-set_color_profile_slot( 15, 0, 255, 0, 0 ); //Fur
-set_color_profile_slot( 15, 1, 0, 255, 0 ); //Body
-set_color_profile_slot( 15, 2, 0, 0, 255 ); //Accent
+set_color_profile_slot( 17, 0, 255, 0, 0 ); //Fur
+set_color_profile_slot( 17, 1, 0, 255, 0 ); //Body
+set_color_profile_slot( 17, 2, 0, 0, 255 ); //Accent
+
+// snowblind
+set_color_profile_slot( 18, 0, 219, 219, 219 ); //Fur
+set_color_profile_slot( 18, 1, 255, 168, 168 ); //Body
+set_color_profile_slot( 18, 2, 166, 166, 166 ); //Accent
+
+// drunken
+set_color_profile_slot( 19, 0, 150, 63, 128 ); //Fur
+set_color_profile_slot( 19, 1, 240, 233, 202 ); //Body
+set_color_profile_slot( 19, 2, 95, 95, 95 ); //Accent
+
+// net
+set_color_profile_slot( 20, 0, 0, 84, 157 ); //Fur
+set_color_profile_slot( 20, 1, 0, 46, 86 ); //Body
+set_color_profile_slot( 20, 2, 255, 188, 47 ); //Accent
+
+// lemongrass
+set_color_profile_slot( 21, 0, 128, 219, 116 ); //Fur
+set_color_profile_slot( 21, 1, 243, 255, 156 ); //Body
+set_color_profile_slot( 21, 2, 219, 219, 219 ); //Accent
+
+// Melon
+set_color_profile_slot( 22, 0, 255, 87, 132 ); //Fur
+set_color_profile_slot( 22, 1, 178, 255, 166 ); //Body
+set_color_profile_slot( 22, 2, 104, 168, 88 ); //Accent
 
 // T
-set_color_profile_slot( 16, 0, 140, 255, 251 ); //Fur
-set_color_profile_slot( 16, 1, 255, 255, 255 ); //Body
-set_color_profile_slot( 16, 2, 255, 140, 191 ); //Accent
+set_color_profile_slot( 23, 0, 140, 255, 251 ); //Fur
+set_color_profile_slot( 23, 1, 255, 255, 255 ); //Body
+set_color_profile_slot( 23, 2, 255, 140, 191 ); //Accent
 
 // Pan
-set_color_profile_slot( 17, 0, 255, 99, 182 ); //Fur
-set_color_profile_slot( 17, 1, 255, 255, 148 ); //Body
-set_color_profile_slot( 17, 2, 79, 184, 255 ); //Accent
+set_color_profile_slot( 24, 0, 255, 99, 182 ); //Fur
+set_color_profile_slot( 24, 1, 255, 255, 148 ); //Body
+set_color_profile_slot( 24, 2, 79, 184, 255 ); //Accent
 
 // NB
-set_color_profile_slot( 18, 0, 255, 253, 120 ); //Fur
-set_color_profile_slot( 18, 1, 218, 130, 255 ); //Body
-set_color_profile_slot( 18, 2, 125, 125, 125 ); //Accent
+set_color_profile_slot( 25, 0, 255, 253, 120 ); //Fur
+set_color_profile_slot( 25, 1, 218, 130, 255 ); //Body
+set_color_profile_slot( 25, 2, 125, 125, 125 ); //Accent
 
 // A
-set_color_profile_slot( 19, 0, 153, 255, 143 ); //Fur
-set_color_profile_slot( 19, 1, 255, 255, 255 ); //Body
-set_color_profile_slot( 19, 2, 94, 94, 94 ); //Accent
+set_color_profile_slot( 26, 0, 153, 255, 143 ); //Fur
+set_color_profile_slot( 26, 1, 255, 255, 255 ); //Body
+set_color_profile_slot( 26, 2, 94, 94, 94 ); //Accent
+
+// candy
+set_color_profile_slot( 27, 0, 240, 139, 175 ); //Fur
+set_color_profile_slot( 27, 1, 187, 106, 204 ); //Body
+set_color_profile_slot( 27, 2, 247, 207, 219 ); //Accent
+
+// god of death
+set_color_profile_slot( 28, 0, 52, 52, 52 ); //Fur
+set_color_profile_slot( 28, 1, 99, 100, 104 ); //Body
+set_color_profile_slot( 28, 2, 255, 245, 122 ); //Accent
+
+// Coffee Cake
+set_color_profile_slot( 29, 0, 69, 48, 39 ); //Fur
+set_color_profile_slot( 29, 1, 140, 83, 56 ); //Body
+set_color_profile_slot( 29, 2, 196, 138, 122 ); //Accent
+
+// stars
+set_color_profile_slot( 30, 0, 93, 82, 99 ); //Fur
+set_color_profile_slot( 30, 1, 242, 230, 143 ); //Body
+set_color_profile_slot( 30, 2, 230, 69, 127 ); //Accent
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

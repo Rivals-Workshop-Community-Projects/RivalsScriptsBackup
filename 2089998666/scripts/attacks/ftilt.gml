@@ -26,13 +26,13 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_SFX, asset_get("sfx_land_heavy"));
 set_window_value(AT_FTILT, 3, AG_WINDOW_SFX_FRAME, 0);
 
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_FTILT, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FTILT, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

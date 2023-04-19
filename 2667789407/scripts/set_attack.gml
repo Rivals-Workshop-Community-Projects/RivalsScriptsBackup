@@ -81,19 +81,20 @@ if (attack == UNOWN_ATK.C && unown_c_used)
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
+/*
 muno_event_type = 2;
 user_event(14);
 
 if (attack == AT_PHONE)
 {
     target_form = UNOWN_ATK.I;
-}
+}*/
 
 if !(move_cooldown[attack] > 0)
 {
     hurtbox_spr = unown_form_data[target_form].hurtbox;
     unown_current_form = target_form;
-    unown_attack_is_fresh = (attack != AT_PHONE);
+    unown_attack_is_fresh = true; //(attack != AT_PHONE);
     
     adjust_unown_attack_grid();
     unown_recalculate_stats = true;

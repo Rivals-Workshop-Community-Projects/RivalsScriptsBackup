@@ -37,3 +37,4 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, wwisp_hit);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("empty_sound"));
+set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_PARTICLE_NUM, 2);

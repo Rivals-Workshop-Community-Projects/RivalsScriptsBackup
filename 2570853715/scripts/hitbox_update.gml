@@ -3,6 +3,7 @@ if(attack == AT_DSPECIAL){
 	
 	visible = false;
 	if(reversed != prev_reversed){
+
 		if(get_player_color(player) == 16){
 			sprite_index = reversed?sprite_get("dspecial2_dev_knife"):sprite_get("dspecial_dev_knife");
 		} else {
@@ -16,7 +17,7 @@ if(attack == AT_DSPECIAL){
 			color = reversed? c_orange:c_purple;
 		}
 	}
-	prev_reversed = reversed;
+	
 	
 	if(collision_point(x+hsp, y, asset_get("par_block"), true, true)){
 		hsp = -hsp;
@@ -59,10 +60,16 @@ if(attack == AT_DSPECIAL){
 	if(prev_vsp != vsp or prev_hsp != hsp and sound_lockout <=0){
 		sound_play(sound_get("knife_bounce"));
 		sound_lockout = 15;
+		if(bounced and prev_reversed == reversed){
+			destroyed = true;
+		}
+		print("Boing")
+		bounced = true;
 	}
 	sound_lockout--;
 	prev_vsp = vsp;
 	prev_hsp = hsp;
+	prev_reversed = reversed;
 	if(spr_dir > 0){
 		if(hsp > 0){
 			kb_angle = 45;

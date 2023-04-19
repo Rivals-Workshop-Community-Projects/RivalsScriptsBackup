@@ -36,11 +36,12 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 70);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 26);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 30);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -20);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 3);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6); //6
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1.4); //1
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.75); //1
+set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_plusle"));

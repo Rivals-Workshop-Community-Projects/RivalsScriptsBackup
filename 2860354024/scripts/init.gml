@@ -64,7 +64,7 @@ def_idle_anim_speed 	= idle_anim_speed;
 def_crouch_anim_speed 	= crouch_anim_speed;
 def_walk_anim_speed 	= walk_anim_speed;
 def_dash_anim_speed 	= dash_anim_speed;
-
+def_prat_fall_accel     = prat_fall_accel;
 
 
 //crouch animation frames
@@ -176,7 +176,10 @@ dspec_cd = 0;
 
 jump_strong_input = false;
 
-air_launch_rate = 0.01;
+fair_launch_rate = 0.005;
+uair_launch_rate = 0.01;
+dair_launch_rate = 0.015;
+
 ammo = 3;
 reload_delay_default = 60 * 9;
 reload_delay = 0;

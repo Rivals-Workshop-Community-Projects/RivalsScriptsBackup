@@ -1,6 +1,8 @@
 //Movement/Idle Based
 	sprite_change_offset("idle", 162, 192);
 	sprite_change_offset("idle_hurt", 162, 192);
+	sprite_change_offset("old_idle", 162, 192);
+	sprite_change_offset("clone_idle_hurt", 162, 192);
 	sprite_change_offset("crouch", 162, 192);
 	sprite_change_offset("dspecial", 162, 192);
 	
@@ -29,6 +31,7 @@
 	
 	//Other
 	sprite_change_offset("plat", 162, 192);
+	sprite_change_offset("plat_real", 162, 192);
 	sprite_change_offset("hurt", 162, 192);
 	sprite_change_offset("bighurt", 162, 192);
 	sprite_change_offset("hurtground", 162, 192);
@@ -74,45 +77,71 @@
 	
 	sprite_change_offset("dattack", 162, 192);
 	sprite_change_offset("pizza_vfx", 128, 128);
+	sprite_change_offset("pizza_big", 160, 160);
+	sprite_change_offset("pizza_small", 72, 72);
+	sprite_change_offset("vfx_leek_med", 80, 80);
+	
 
+	sprite_change_offset("boxCircle", 100, 100);
+	sprite_change_offset("boxSquare", 100, 100);
+	sprite_change_offset("boxRound", 100, 100);
+	sprite_change_offset("arrow", 0, 16);
+	
+	//Grabs and Throws
+	sprite_change_offset("fthrow", 162, 192);
+	sprite_change_offset("dthrow", 162, 192);
+	sprite_change_offset("bthrow", 162, 192);
+	sprite_change_offset("uthrow", 162, 192);
+	sprite_change_offset("grab", 162, 192);
+	sprite_change_offset("grab_hold", 162, 192);
+	sprite_change_offset("pummel", 162, 192);
+	
 
+	//Leekless and Meatless
+	sprite_change_offset("no_idle", 162, 192);
+	sprite_change_offset("no_crouch", 162, 192);
+	
+	sprite_change_offset("no_jump", 162, 192);
+	sprite_change_offset("no_jumpstart", 162, 192);
+	sprite_change_offset("no_doublejump", 162, 192);
+	sprite_change_offset("no_walljump", 162, 192);
+	
+	sprite_change_offset("no_land",  162, 192);
+	//sprite_change_offset("no_landinglag",  162, 192);
+	sprite_change_offset("no_pratfall", 162, 192);
+	//sprite_change_offset("no_pratland",  162, 192);
+	//sprite_change_offset("no_waveland", 162, 192);
+	//sprite_change_offset("no_tech", 162, 192);
+	
+	sprite_change_offset("no_walk", 162, 192);
+	sprite_change_offset("no_walkturn", 162, 192);
+	
+	sprite_change_offset("no_dash", 162, 192);
+	sprite_change_offset("no_dashstart", 162, 192);
+	sprite_change_offset("no_dashstop", 162, 192);
 
+	//sprite_change_offset("no_waveland", 162, 192);
+	
+	sprite_change_offset("no_parry", 162, 192);
+	sprite_change_offset("no_roll", 162, 192);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	sprite_change_offset("no_dspecial", 162, 192);
+	sprite_change_offset("no_fspecial_ground", 162, 192);
+	sprite_change_offset("no_fspecial_air", 162, 192);
+	
+	//Grabs and Throws
+	sprite_change_offset("no_fthrow", 162, 192);
+	sprite_change_offset("no_dthrow", 162, 192);
+	sprite_change_offset("no_bthrow", 162, 192);
+	sprite_change_offset("no_uthrow", 162, 192);
+	sprite_change_offset("no_grab", 162, 192);
+	sprite_change_offset("no_grab_hold", 162, 192);
+	sprite_change_offset("no_pummel", 162, 192);
+	
+	sprite_change_offset("no_hurt", 162, 192);
+	sprite_change_offset("no_bighurt", 162, 192);
+	sprite_change_offset("no_hurtground", 162, 192);
+	sprite_change_offset("no_bouncehurt", 162, 192);
+	sprite_change_offset("no_spinhurt", 162, 192);
+	sprite_change_offset("no_uphurt", 162, 192);
+	sprite_change_offset("no_downhurt", 162, 192);

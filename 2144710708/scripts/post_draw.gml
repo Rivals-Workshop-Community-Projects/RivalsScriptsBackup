@@ -1,9 +1,5 @@
 // post draw
 
-// munophone touch support (why does it skip the threeeeeee)
-	muno_event_type = 4;
-	user_event(14);
-
 var arrow_sprite = spr_kb_arrow;
 var spr_isplayer_sprite = spr_isplayer;
 var zone_sprite = spr_zone_init;
@@ -15,9 +11,7 @@ var col_B = get_color_profile_slot_b( get_player_color(player), 1);
 
 var col_final = make_color_rgb(col_R, col_G, col_B);
 
-var phone_boot_data = phone_cheats[cheat_boot_data];
-
-
+var show_boot_data = boot_data;
 
 // ammo character element
 // only visible under character during attacks that use ammo
@@ -46,27 +40,27 @@ if wearing_hat {
 	switch (get_match_setting(SET_SEASON)) {
 	  case 1: // valentines
 		//set your valentines holiday alt
-		draw_sprite_ext(sprite_get("festivehat_va_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("festivehat_va_idle"), image_index, x, y, spr_dir*2, 2, 0, c_white, 1);
 		break;
 	  case 2: // summer
 		//set your summer holiday alt
-		draw_sprite_ext(sprite_get("festivehat_su_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("festivehat_su_idle"), image_index, x, y, spr_dir*2, 2, 0, c_white, 1);
 		break;
 	  case 3: // halloween
 		//set your halloween holiday alt
-		draw_sprite_ext(sprite_get("festivehat_ha_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("festivehat_ha_idle"), image_index, x, y, spr_dir*2, 2, 0, c_white, 1);
 		break;
 	  case 4: // christmas
 		//set your christmas holiday alt
-		draw_sprite_ext(sprite_get("festivehat_ch_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("festivehat_ch_idle"), image_index, x, y, spr_dir*2, 2, 0, c_white, 1);
 		break;
 	}
 }
-/*
+
 if wearing_hat_blu {
 	draw_sprite_ext(sprite_get("festivehat_blu_idle"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
 }
-*/
+
 // fspecial outer circle code
 if (attack == AT_FSPECIAL) {
 	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
@@ -262,14 +256,15 @@ with (asset_get("pHitBox"))
 				}
 			}
 			
-			// phone mode
-			if (phone_boot_data != 0) {
+			// display boot data
+			if (show_boot_data != 0) {
 				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-100, "Angle: " + string(kb_angle));
 				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-85, "Base Knockback: " + string(kb_value));
 				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-70, "Knockback Scaling: " + string(kb_scale));
 				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-55, "Effect: " + string(effect));
 				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-40, "Base Hitpause: " + string(hitpause));
 				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-25, "Hitpause Scaling: " + string(hitpause_growth));
+				draw_debug_text(x+arrow_offsetX+0,y+arrow_offsetY-10, "Hitstun Multiplier: " + string(hitstun_factor));
 				//draw_debug_text(x+arrow_offsetX+80,y+arrow_offsetY-10, "Angle Flipper: " + string(hit_flipper));
 				
 			}

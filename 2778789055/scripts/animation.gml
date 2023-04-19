@@ -10,3 +10,12 @@ with(asset_get("oPlayer")){
 		//enemy_pumbo = asset_get("oPlayer");
 	}
 }
+if (get_gameplay_time() >= 20 && I_am_gumbo = false){
+if(url == 2778789055){
+	//num_pumbos += 1;
+	with(oPlayer){
+	num_pumbos += 1;	
+	}
+	I_am_gumbo = true;
+}
+}

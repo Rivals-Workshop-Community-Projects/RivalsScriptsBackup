@@ -74,19 +74,17 @@ set_color_profile_slot( 9, 1, 29, 96, 43 ); //Mask
 set_color_profile_slot( 9, 2, 225, 103, 53 ); //Body
 set_color_profile_slot( 9, 3, 246, 224, 189 ); //Skin
 
-
 // Monkey
 set_color_profile_slot( 10, 0, 78, 78, 80 ); //Cuffs
 set_color_profile_slot( 10, 1, 107, 73, 48 ); //Mask
 set_color_profile_slot( 10, 2, 219, 149, 61 ); //Body
 set_color_profile_slot( 10, 3, 221, 205, 180 ); //Skin
 
-
-// Currency Coin
-set_color_profile_slot( 11, 0, 212, 191, 43); //Cuffs
-set_color_profile_slot( 11, 1, 204, 190, 190); //Mask
-set_color_profile_slot( 11, 2, 255, 197, 23); //Body
-set_color_profile_slot( 11, 3, 255, 253, 251); //Skin
+// Monkey Rage
+set_color_profile_slot( 11, 0, 69, 69, 69 ); //Cuffs
+set_color_profile_slot( 11, 1, 255, 42, 0 ); //Mask
+set_color_profile_slot( 11, 2, 28, 28, 28 ); //Body
+set_color_profile_slot( 11, 3, 242, 0, 0 ); //Skin
 
 // Astronomy
 set_color_profile_slot( 12, 0, 0, 124, 158 ); //Cuffs
@@ -106,11 +104,11 @@ set_color_profile_slot( 14, 1, 199, 80, 16 ); //Mask
 set_color_profile_slot( 14, 2, 146, 201, 45 ); //Body
 set_color_profile_slot( 14, 3, 0, 99, 146 ); //Skin
 
-// Royal
-set_color_profile_slot( 15, 0, 193, 225, 232 ); //Cuffs
-set_color_profile_slot( 15, 1, 199, 147, 27 ); //Mask
-set_color_profile_slot( 15, 2, 115, 41, 114 ); //Body
-set_color_profile_slot( 15, 3, 130, 208, 254 ); //Skin
+// TAG
+set_color_profile_slot( 15, 0, 248, 219, 94 ); //Cuffs
+set_color_profile_slot( 15, 1, 55, 93, 112 ); //Mask
+set_color_profile_slot( 15, 2, 255, 147, 94 ); //Body
+set_color_profile_slot( 15, 3, 192, 227, 165 ); //Skin
 
 // Monarch
 set_color_profile_slot( 16, 0, 92, 175, 215 ); //Cuffs
@@ -121,32 +119,32 @@ set_color_profile_slot( 16, 3, 179, 0, 57 ); //Skin
 // Blue
 set_color_profile_slot( 17, 0, 163, 163, 163 ); //Cuffs
 set_color_profile_slot( 17, 1, 25, 18, 170 ); //Mask
-set_color_profile_slot( 17, 2, 60, 60, 73 ); //Skin
-set_color_profile_slot( 17, 3, 0, 100, 255 ); //Body 
+set_color_profile_slot( 17, 2, 60, 60, 73 ); //Body
+set_color_profile_slot( 17, 3, 0, 100, 255 ); //Skin
 
 // MONKEY'S FURY
-set_color_profile_slot( 18, 0, 69, 69, 69 ); //Cuffs
-set_color_profile_slot( 18, 1, 255, 42, 0 ); //Mask
-set_color_profile_slot( 18, 2, 28, 28, 28 ); //Skin
-set_color_profile_slot( 18, 3, 242, 0, 0 ); //Body
+set_color_profile_slot( 18, 0, 212, 191, 43 ); //Cuffs
+set_color_profile_slot( 18, 1, 204, 190, 190 ); //Mask
+set_color_profile_slot( 18, 2, 255, 197, 23 ); //Body
+set_color_profile_slot( 18, 3, 255, 253, 251 ); //Skin
 
 // Evil Monke
 set_color_profile_slot( 19, 0, 251, 255, 0 ); //Cuffs
 set_color_profile_slot( 19, 1, 171, 0, 171 ); //Mask
-set_color_profile_slot( 19, 2, 38, 38, 38 ); //Skin
-set_color_profile_slot( 19, 3, 171, 152, 171 ); //Body
+set_color_profile_slot( 19, 2, 38, 38, 38 ); //Body
+set_color_profile_slot( 19, 3, 171, 152, 171 ); //Skin
 
 // Monke Rights
 set_color_profile_slot( 20, 0, 255, 125, 162 ); //Cuffs
 set_color_profile_slot( 20, 1, 69, 255, 236 ); //Mask
-set_color_profile_slot( 20, 2, 255, 255, 255 ); //Skin
-set_color_profile_slot( 20, 3, 255, 173, 197 ); //Body
+set_color_profile_slot( 20, 2, 255, 255, 255 ); //Body
+set_color_profile_slot( 20, 3, 255, 173, 197 ); //Skin
 
 // Prober alt
 set_color_profile_slot( 21, 0, 255, 123, 15 ); //Cuffs
 set_color_profile_slot( 21, 1, 5, 255, 17 ); //Mask
-set_color_profile_slot( 21, 2, 255, 135, 23 ); //Skin
-set_color_profile_slot( 21, 3, 252, 255, 252 ); //Body 
+set_color_profile_slot( 21, 2, 255, 135, 23 ); //Body
+set_color_profile_slot( 21, 3, 252, 255, 252 ); //Skin
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

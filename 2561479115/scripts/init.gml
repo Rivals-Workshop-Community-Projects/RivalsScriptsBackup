@@ -2,7 +2,7 @@
 //no help for you
 enable_help = false;
 
-
+uspec_had_walljump = true;
 
 buffering_reverse = false;
 jab_was_parried = false;

@@ -20,7 +20,7 @@ switch (master_player_id.c_naruto_clone_mode) {
     case 0:
     	//make fx
 	    spawn_hit_fx_2x(x, y, master_player_id.vfx_clone_smoke).depth = depth-1;
-    	
+    	is_dspecial_clone = false
     	//if there are no other dspecial clones active, put the master player's dspecial on cooldown.
 		update_dspecial_cooldown();
     	
@@ -50,6 +50,7 @@ switch (master_player_id.c_naruto_clone_mode) {
 		if (naruto_clone_max_lifetime == master_player_id.c_naruto_dspecial_clone_active_time) {
 			
 			clear_ai_move_array();
+			is_dspecial_clone = false
 			
 			//if there are no other dspecial clones active, put the master player's dspecial on cooldown.
 			update_dspecial_cooldown();

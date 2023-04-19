@@ -1,8 +1,3 @@
-// make the nametag go higher while ustrong's fist is raised
-if phone_attacking && attack == AT_TAUNT{
-	hud_offset = lerp(hud_offset, 90, 0.5);
-}
-
 switch (state){
     case PS_IDLE:
     case PS_RESPAWN:
@@ -38,11 +33,4 @@ if (state == PS_SPAWN) {
 // Thrown Garbage logic
 if (instance_exists(rand_garbage)) {
     rand_garbage.spr_angle = 90;
-}
-
-
-
-// fix weird jittering that can happen when it tries to return to 0
-if abs(hud_offset) < 1{
-	hud_offset = 0;
 }

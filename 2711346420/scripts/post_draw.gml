@@ -26,8 +26,4 @@ if (current_monkeyball_front_spr == sprite_get("monkey_ball_front_spin") && atta
 	draw_sprite_ext( sprite_get("monkey_ball_spin_smear"), 0, x-(1.5*spr_dir), y-38+monkey_ball_air_offset_adjust, 1, 1, monkey_ball_tilt*1.5, c_white, 1);
 }
 
-//phone
-muno_event_type = 4;
-user_event(14);
-
 shader_end();

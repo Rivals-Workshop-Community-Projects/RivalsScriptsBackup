@@ -7,3 +7,4 @@ if grabbedid != noone
     grabbedid.ungrab = 0;
     grabbedid = noone;
 }
+move_cooldown[AT_USPECIAL] = 0; //Krankees Stuff

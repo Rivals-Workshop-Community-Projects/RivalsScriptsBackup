@@ -8,6 +8,8 @@ if (get_stage_data(SD_ID) != "213227551" && get_stage_data(SD_ID) != "2381606021
 wait_time = 0;
 if (got_gameplay_time > 260) wait_time = normal_wait_time;
 
+if (has_theikos && theikos_type == 0) theikos_type = 1;
+
 var page = 0;
 
 //Page 0
@@ -27,7 +29,7 @@ page++;
 
 //Page 3
 dracula_speaker[page] = 1;
-dracula_text[page] = "It's my job to put a stop to your reign of terror. Please give up, and we can end this peacefully. I've defeat all your minions already!";
+dracula_text[page] = "I have a job to stop your reign of terror. Please give up and we can end this peacefully.";
 page++;
 
 //Page 4
@@ -54,53 +56,52 @@ page++;
 dracula_speaker[page] = 2;
 dracula_text[page] = "I guess there's no other choice, then..";
 
-/*
+
 if (theikos_type > 0)
 {
-        var page = 0;
-
-        //Page 0
-        dracula_speaker[page] = 1;
-        dracula_text[page] = "You must be Count Dracula.";
-        page++;
-
-        //Page 1
-        dracula_speaker[page] = 0;
-        dracula_text[page] = "And you must be the infamous 'Guardian Angel of the Elements'.";
-        page++;
-
-        //Page 2
-        dracula_speaker[page] = 0;
-        dracula_text[page] = "You are but a puny child, and yet your aura tells another story, how curious."
-        page++;
-
-        //Page 3
-        dracula_speaker[page] = 1;
-        dracula_text[page] = "It's my job to put a stop to your reign of terror. Give up, and we can end this peacefully. I've destroyed your entire army, there's no escape.";
-        page++;
-
-        //Page 4
-        dracula_speaker[page] = 0;
-        dracula_text[page] = "I see... So this the Theïkós state, as they call it.";
-        page++;
-
-        //Page 5
-        dracula_speaker[page] = 0; 
-        dracula_text[page] = "Your aura is strong, child,[glass] However I will not fall to your little handycap.";
-        page++;
-
-        //Page 6
-        dracula_speaker[page] = 0;
-        dracula_text[page] = "It will not be enough to save you from Count Dracula Tepes!";
-        page++;
-
-        //Page 7
-        dracula_speaker[page] = 0;
-        dracula_text[page] = "[shake] Have at you, guardian!";
-        page++;
-
-        //Page 8
-        dracula_speaker[page] = 2;
-        dracula_text[page] = "You'll regret this, Dracula.";
+    var page = 0;
+    
+    //Page 0
+    dracula_speaker[page] = 1;
+    dracula_text[page] = "...Dracula.";
+    page++;
+    
+    //Page 1
+    dracula_speaker[page] = 0;
+    dracula_text[page] = "You must be the infamous 'Guardian Angel of the Elements'.";
+    page++;
+    
+    //Page 2
+    dracula_speaker[page] = 0;
+    dracula_text[page] = "You are but a puny child, and yet your aura tells another story, how curious."
+    page++;
+    
+    //Page 3
+    dracula_speaker[page] = 1;
+    dracula_text[page] = "You will stop your reign of terror. Surrender and it will be over swiftly, there's nowhere to run.";
+    page++;
+    
+    //Page 4
+    dracula_speaker[page] = 0;
+    dracula_text[page] = "I see... So this the Theïkós state, as they call it.";
+    page++;
+    
+    //Page 5
+    dracula_speaker[page] = 0; 
+    dracula_text[page] = "Your aura is strong, child,[glass] However I will not fall to your little handycap.";
+    page++;
+    
+    //Page 6
+    dracula_speaker[page] = 0;
+    dracula_text[page] = "It will not be enough to save you from Count Dracula Tepes!";
+    page++;
+    
+    //Page 7
+    dracula_speaker[page] = 0;
+    dracula_text[page] = "[shake] Have at you, guardian!";
+    page++;
+    
+    //Page 8
+    dracula_speaker[page] = 2;
+    dracula_text[page] = "You'll regret this.";
 }
-*/

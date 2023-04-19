@@ -19,7 +19,7 @@ if(my_hitboxID.attack == AT_DSPECIAL){
         if(distance_to_object(saw_blade) < 100){
             set_state(PS_PRATLAND);
 	    	was_parried = true;
-	    	parry_lag = 60
+	    	parry_lag = (60 + distance_to_object(saw_blade))
         }
     }
 }

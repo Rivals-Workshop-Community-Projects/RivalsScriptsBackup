@@ -316,15 +316,15 @@ set_color_profile_slot( 28, 5, 255, 255, 255 ); //visor
 set_color_profile_slot( 28, 6, 165, 165, 165 ); //shinespark
 set_color_profile_slot( 28, 7, 255, 255, 255 ); //gunship
 
-// Super Gameboy Palette
-set_color_profile_slot( 29, 0, 189, 33, 91 ); //helmet
-set_color_profile_slot( 29, 1, 181, 231, 25 ); //limbs
-set_color_profile_slot( 29, 2, 181, 231, 25 ); //body
-set_color_profile_slot( 29, 3, 189, 33, 91 ); //gun
-set_color_profile_slot( 29, 4, 181, 231, 25 ); //gun lights
-set_color_profile_slot( 29, 5, 181, 231, 25 ); //visor
-set_color_profile_slot( 29, 6, 181, 231, 25 ); //shinespark
-set_color_profile_slot( 29, 7, 189, 33, 91 ); //gunship
+// Galaxy
+set_color_profile_slot( 29, 0, 0, 0, 0 ); //helmet
+set_color_profile_slot( 29, 1, 0, 0, 0 ); //limbs
+set_color_profile_slot( 29, 2, 0, 0, 0 ); //body
+set_color_profile_slot( 29, 3, 0, 0, 0 ); //gun
+set_color_profile_slot( 29, 4, 255, 255, 255 ); //gun lights
+set_color_profile_slot( 29, 5, 255, 255, 255 ); //visor
+set_color_profile_slot( 29, 6, 0, 0, 0 ); //shinespark
+set_color_profile_slot( 29, 7, 0, 0, 0 ); //gunship
 
 // Abyss
 set_color_profile_slot( 30, 0, 86, 84, 146 ); //helmet

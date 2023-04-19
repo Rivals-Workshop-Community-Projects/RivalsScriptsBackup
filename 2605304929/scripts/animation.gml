@@ -27,17 +27,8 @@ if(state == PS_DOUBLE_JUMP){
 
 // Intro Code
 if(state == PS_SPAWN){
-	//print(get_player_color(player));
-	// Length of the spawn state is 125 frames.
-	// intro Code
-	/*
-	intro_sound_played_flag = false;
-	intro_animation_frames_before_start = 0;
-	intro_animation_strip_frames = 0;
-	intro_animation_speed = 0;
-	*/
 	// Genesis
-	if(get_player_color(player) == 8 && color_shift == true){
+	if(get_player_color(player) == 4 && color_shift == false){
 		sprite_index = sprite_get("intro_g8");
 		// Parameters of the intro sequence
 		intro_animation_frames_before_start = 6; // Set this to calibrate where the animation should start
@@ -54,7 +45,7 @@ if(state == PS_SPAWN){
 		
 	} 
 	// Riptide
-	else if(get_player_color(player) == 4 && color_shift == false){
+	else if(get_player_color(player) == 12 && color_shift == true){
 		sprite_index = sprite_get("intro_riptide");
 		intro_animation_frames_before_start = 80; // Set this to calibrate where the animation should start
 		intro_animation_strip_frames = 7;

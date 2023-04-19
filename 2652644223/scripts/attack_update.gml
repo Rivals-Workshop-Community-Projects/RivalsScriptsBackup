@@ -13,7 +13,7 @@ if(state_timer == 1)
         set_hitbox_value(AT_DAIR, 2, HG_EXTRA_HITPAUSE, 12);
         set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 9);
         set_hitbox_value(AT_DTILT, 2, HG_EXTRA_HITPAUSE, 9);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 8);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 6);
         set_hitbox_value(AT_USTRONG, 2, HG_EXTRA_HITPAUSE, 8);
         set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 8);
         set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE, 8);
@@ -238,8 +238,8 @@ if(attack == AT_BAIR || attack == AT_DAIR)
 if(attack == AT_UAIR)
 {
     if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
-    || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 2 && window_timer > 8 && bullets > 0 && !hitpause && free)
-    { window = 4; window_timer = 0; vsp += 2; destroy_hitboxes(); sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40)); bullets--;}
+    || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 3 && bullets > 0 && !hitpause && free)
+    { window = 5; window_timer = 0; vsp += 2; destroy_hitboxes(); sound_play(sound_get("revolver_shot"),false,noone,1,1.05-(random_func(2,2,false)/40)); bullets--;}
 }
 if(attack == AT_USTRONG)
 {   

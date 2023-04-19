@@ -21,15 +21,16 @@ switch (alt_cur)
     case 2: // ningguang
         set_character_color_shading(3, -1); //white-blue
         break;
-    case 6: case 7: //travellers change elements
-        //
+    case 6: //alhaitham shading fix
+        set_character_color_shading(4, 0.5); //dark purple
+        set_character_color_shading(7, 1.5); //stocking
         break;
-    case 9: // vergil
+    case 10: // vergil
         set_character_color_shading(0, -1); //electro
         set_character_color_shading(4, 0.5); //dark purple
         set_character_color_shading(5, 2); //gold
         break;
-    case 10: // lyn
+    case 11: // lyn
         set_character_color_shading(0, -2); //electro
         set_character_color_shading(6, 0.5); //purple-blue
         break;

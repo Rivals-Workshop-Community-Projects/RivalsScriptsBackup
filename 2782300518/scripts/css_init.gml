@@ -3,7 +3,7 @@
 alt_cur = get_player_color(player);
 default_alt = 0;
 alt_checker = get_player_color(player);
-num_alts = 20;
+num_alts = 22;
 offset = 0;
 temp_x = x + 8;
 temp_y = y + 9;

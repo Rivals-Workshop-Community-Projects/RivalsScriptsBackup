@@ -29,6 +29,7 @@ set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 16);
 
 set_num_hitboxes(AT_DSPECIAL_2, 1);
 
+// windbox
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW, 9);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_LIFETIME, 26);
@@ -53,6 +54,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 
+// grab hitbox
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW, 9);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_LIFETIME, 26);
@@ -76,8 +78,8 @@ set_hitbox_value(AT_DSPECIAL_2, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_PROJECTILE_PLASMA_SAFE, true);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_HIT_LOCKOUT, 10);
 
+// forward throw hitbox
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_WINDOW, 9);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_LIFETIME, 3);
@@ -104,6 +106,7 @@ set_hitbox_value(AT_DSPECIAL_2, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_PROJECTILE_PLASMA_SAFE, true);
 
+// back throw hitbox
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_WINDOW, 9);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_LIFETIME, 3);

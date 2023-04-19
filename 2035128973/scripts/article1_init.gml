@@ -5,7 +5,7 @@ sizelimit = 100 + size;
 size += player_id.chargeSave;
 player_id.charge = self;
 
-sprite_index = asset_get("no_sprite");
+sprite_index = asset_get("empty_sprite");
 image_index = 0;
 spr_dir = player_id.spr_dir;
 uses_shader = false;

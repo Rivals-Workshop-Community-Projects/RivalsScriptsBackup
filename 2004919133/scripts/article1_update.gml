@@ -31,6 +31,7 @@ if (!free){
 
 if (timer > 250){
     instance_destroy();
+    exit;
 }
 
 var flash_time = 50;
@@ -59,7 +60,7 @@ if (timer > 250 - flash_time){
                 }
                 
                 
-                if (url == other.player_id.url){
+                if (url == other.player_id.url && !hitpause && !hitstop){
                     if (pon_count < 999){
                         pon_count++;
                     }
@@ -84,7 +85,7 @@ if (x < 0 || x > room_width){
     exit;
 }
 
-if (place_meeting( x, y, player_id )){
+if (place_meeting( x, y, player_id ) && !player_id.hitpause && !player_id.hitstop){
     if (player_id.pon_mod == 0){
         sound_stop( sound_get ("sfx_pon_collect2") );
         sound_stop( sound_get ("sfx_pon_collect") );
@@ -98,18 +99,21 @@ if (place_meeting( x, y, player_id )){
     if (player_id.pon_count < 999){
         player_id.pon_count ++;
     }
+    
     instance_destroy();
     exit;
 }
 
-if (player_id.badge_slot_1 = 1 || player_id.badge_slot_2 = 1 || player_id.badge_slot_3 = 1){
+if (player_id.badge_slot_1 == 1 || player_id.badge_slot_2 == 1 || player_id.badge_slot_3 == 1 && !player_id.hitpause && !player_id.hitstop){
     var shortest_id = noone;
-    var shortest_dist = 80;
-    var additional_speed = .2;
+    var shortest_dist = 100;
+    var additional_speed = .4;
     var fast_range = 40;
-    if (player_id.runeO == true){
+    
+    if (player_id.rune_C_equipped == true){
         var shortest_dist = 1000;
     }
+    
     with (asset_get("oPlayer")) {
         if (player == other.player_id.player) {
         var curr_dist = point_distance(x,y,other.x,other.y);
@@ -120,8 +124,8 @@ if (player_id.badge_slot_1 = 1 || player_id.badge_slot_2 = 1 || player_id.badge_
         }
     }
     if (shortest_id != undefined){
-        x = lerp(x, shortest_id.x, 0.08+(point_distance(x,y,shortest_id.x,shortest_id.y) < fast_range)*additional_speed);
-        y = lerp(y, shortest_id.y, 0.08+(point_distance(x,y,shortest_id.x,shortest_id.y) < fast_range)*additional_speed);
+        x = lerp(x, shortest_id.x - 5*player_id.spr_dir, 0.08+(point_distance(x,y,shortest_id.x,shortest_id.y) < fast_range)*additional_speed);
+        y = lerp(y, shortest_id.y - 40, 0.08+(point_distance(x,y,shortest_id.x,shortest_id.y) < fast_range)*additional_speed);
     }
 }
 

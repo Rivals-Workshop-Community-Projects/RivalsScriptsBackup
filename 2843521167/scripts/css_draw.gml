@@ -12,7 +12,7 @@ patch_day = "";
 patch_month = "";
 
 //CHANGE THIS SECTION ONLY 
-var num_alts = 23;
+var num_alts = 29;
 var alt_cur = get_player_color(player);
 
 //Alt name init. var doesn't work with arrays lol
@@ -22,24 +22,30 @@ alt_name[1]  = "Soothing Blue";
 alt_name[2]  = "Honeycrisp Punch";
 alt_name[3]  = "Midnight Ice";
 alt_name[4]  = "Citrus Blast";
-alt_name[5]  = "Teagate Ink";
-alt_name[6]  = "Dueling Desire";
-alt_name[7]  = "Rooster's Caw";
-alt_name[8]  = "Sparknight Glitter";
-alt_name[9]  = "Cherry Lime Beam";
-alt_name[10]  = "Ret-2-Goo";
-alt_name[11]  = "Ink of Courage";
-alt_name[12]  = "Shrouding Sky Sword";
-alt_name[13]  = "Kikopen";
-alt_name[14]  = "Cyan Crusader";
-alt_name[15]  = "Rolling Drip";
-alt_name[16]  = "Distant Drip";
-alt_name[17]  = "Hero of Blue Ink";
-alt_name[18]  = "Princess Pastelle";
-alt_name[19]  = "G-pen IV";
-alt_name[20]  = "Check It";
-alt_name[21]  = "G-Brush";
-alt_name[22]  = "Stained Ink";
+alt_name[5]  = "Dueling Desire";
+alt_name[6]  = "Rooster's Caw";
+alt_name[7]  = "Sparknight Glitter";
+alt_name[8]  = "Cherry Lime Beam";
+alt_name[9]  = "Ret-2-Goo";
+alt_name[10]  = "Ink of Courage";
+alt_name[11]  = "Shrouding Sky Sword";
+alt_name[12]  = "Kikopen";
+alt_name[13]  = "Cyan Crusader";
+alt_name[14]  = "Rolling Drip";
+alt_name[15]  = "Distant Drip";
+alt_name[16]  = "Hero of Blue Ink";
+alt_name[17]  = "Princess Pastelle";
+alt_name[18]  = "G-pen IV";
+alt_name[19]  = "Check It";
+alt_name[20]  = "G-Brush";
+alt_name[21]  = "Stained Ink";
+alt_name[22]  = "Ink of the Abyss";
+alt_name[23]  = "Trans Ink";
+alt_name[24]  = "BLM Ink";
+alt_name[25]  = "Mushroom Ink";
+alt_name[26]  = "A New Beginning";
+alt_name[27]  = "Strawberry Jam";
+alt_name[28]  = "Grape Jelly";
 
 //Patch
 

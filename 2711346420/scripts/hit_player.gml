@@ -96,7 +96,7 @@ if (my_hitboxID.attack == AT_DSPECIAL){
             if (player_id == other.id){
                 if (place_meeting(x, y, other.my_hitboxID)){
                     should_destroy_hitbox = true;
-					monkey_ball_hit_cooldown = 35;
+					monkey_ball_hit_cooldown = 45;
                     hsp = hsp*-.35;
 					if (vsp > 0){
 						//vsp = vsp*-.6;

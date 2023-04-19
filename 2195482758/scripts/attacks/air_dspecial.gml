@@ -21,7 +21,7 @@ set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_LENGTH, 99);
 set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 10.5);
-set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_VSPEED, 18);
+set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_VSPEED, 16);
 set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_AIR_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_ori_glide_featherout"));

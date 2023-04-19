@@ -20,7 +20,7 @@ if (!stats_changed){
             ground_friction = .4;
             
             leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-            max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+            max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
             air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
             air_accel = .3;
             air_friction = .04;
@@ -46,7 +46,7 @@ if (!stats_changed){
             ground_friction = .35;
             
             leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-            max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+            max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
             air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
             air_accel = .35;
             air_friction = .03;
@@ -72,7 +72,7 @@ if (!stats_changed){
             ground_friction = .4;
             
             leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-            max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
+            max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
             air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
             air_accel = .3;
             air_friction = .05;
@@ -98,7 +98,7 @@ if (!stats_changed){
             ground_friction = .4;
             
             leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-            max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+            max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
             air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
             air_accel = .3;
             air_friction = .04;

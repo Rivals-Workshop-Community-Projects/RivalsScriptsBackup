@@ -46,8 +46,13 @@ else
 
 fling_toggle = 0;
 
-
+fall_timer = 0;
+fall_sound = 0;
+fall_sfx_loop = 0;
+is_jump = 0;
 reminder_timer = 0;
+hit_count = 0;
+
 boom = hit_fx_create( sprite_get( "boom" ), 18 );
 
 chargefx = hit_fx_create( sprite_get( "chargefx" ), 22 );
@@ -73,6 +78,7 @@ wackyracescrash = hit_fx_create( sprite_get( "wackyracescrash" ), 37 );
 fsmashgun = hit_fx_create( sprite_get( "fsmashgun" ), 36);
 fsmashshot = hit_fx_create( sprite_get( "fsmashshot" ), 18);
 
+sticky_reminder = hit_fx_create( sprite_get( "nostickies"), 18);
 
 dsmashspah = hit_fx_create( sprite_get( "dsmashspah" ), 50);
 
@@ -217,4 +223,4 @@ fs_char_chosen_final_smash = "custom";
 looseboost_timer = 0; //if this is > 0, it makes dair give a much bigger boost
 bair_cancel = false; //
 bair_can_vsp = 0;
-meem_ping = 2;
+stage_y = 0;

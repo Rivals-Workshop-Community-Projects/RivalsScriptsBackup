@@ -33,12 +33,24 @@ if(my_hitboxID.attack == AT_NSPECIAL) with my_hitboxID{
 
 if (my_hitboxID.attack == AT_FTHROW || my_hitboxID.attack == AT_DTHROW || my_hitboxID.attack == AT_DSPECIAL_2){
 	 if(my_hitboxID.hbox_num == 1){
-	my_hitboxID.hitbox_timer = 59;
+	my_hitboxID.hitbox_timer = 0;
+	bomb_missfire = true;
+	//bomb_owner = hit_player_obj;
+	//print(hit_player_obj);
 	 }
 }if (my_hitboxID.attack == AT_UTHROW){
 	 if(my_hitboxID.hbox_num == 1){
-	my_hitboxID.hitbox_timer = 119;
+	my_hitboxID.hitbox_timer = 0;
+	bomb_missfire = true;
+	//bomb_owner = hit_player_obj;
 	 }
+}
+
+if(my_hitboxID.attack == AT_DSPECIAL){
+bomb_missfire = true;
+smokebomb.state = 2;
+smokebomb.state_timer = 0;
+smokebomb.smoke_owner = hit_player;
 }
 
 #define deactivate_crit()

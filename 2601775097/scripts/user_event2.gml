@@ -33,6 +33,8 @@ switch (skill_script_type)
         //selected skills
         cur_skills = [0, 1, 2, 3];          //sets the current skills to use (the loading skills code is on css_init.gml [line 91] and init.gml [line 423])
         prev_skills = [0, 1, 2, 3];         //sets the previous selected skills
+
+        cur_skill_hover = 0;                //currently hovered skill
         
         cur_select = 0;                     //-1 = cancel | 0-3 = specials | 4 = overwrite prev selection with new one
         menu_dir = 0;                       //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = jump | -2 = attack/special
@@ -41,13 +43,6 @@ switch (skill_script_type)
 
         menu_x = x + 6;
         menu_y = y + 130; //y + 130 (embed) | y - 48 (above)
-
-        if (menu_type == 0) //css menu has different inputs
-        {
-            jump_pressed = menu_a_pressed;
-            attack_pressed = menu_b_pressed;
-            special_pressed = menu_y_pressed;
-        }
         break;
     case 1: //update
         if (menu_active)
@@ -57,7 +52,126 @@ switch (skill_script_type)
             menu_active_time ++;
             if (menu_active_time == 0) cur_select = 0;
 
-            if (menu_type < 2)
+            switch (menu_type)
+            {
+                case 0: //CSS menu
+                    menu_controls(true);
+                    
+                    switch (menu_dir)
+                    {
+                        case -1: //confirm selection
+                            cur_skills[cur_select] = cur_skill_hover;
+                            sound_play(asset_get("mfx_confirm"));
+                            
+                            for (var i = 0; i < cur_select; i++) //prevent skill select from selectig skills that were already selected
+                            {
+                                if (cur_skills[i] == cur_skill_hover)
+                                {
+                                    sound_stop(asset_get("mfx_confirm"));
+                                    sound_play(asset_get("mfx_tut_fail"));
+                                    cur_select --;
+                                }
+                            }
+                            cur_select ++;
+                            break;
+                        case -2: //cancel select
+                            sound_play(asset_get("mfx_back"));
+                            cur_select --;
+                            break;
+                    }
+                    break;
+                case 1: case 2: //practice / info mode
+                    if ("old_skills" in self && old_skills != cur_skills) cur_skills = old_skills; //if skills were swapped, swap them back
+
+                    //picks skills
+                    switch (menu_dir)
+                    {
+                        case 1: //up
+                            if (cur_skill_hover - 4 >= 0) cur_skill_hover -= 4;
+                            sound_play(asset_get("mfx_move_cursor"));
+                            break;
+                        case 2: //right
+                            if (cur_skill_hover + 1 <= 4 *skill[cur_skill_hover].skill_pos_y + 3) cur_skill_hover += 1;
+                            sound_play(asset_get("mfx_move_cursor"));
+                            break;
+                        case 3: //down
+                            if (cur_skill_hover + 4 <= 11) cur_skill_hover += 4;
+                            sound_play(asset_get("mfx_move_cursor"));
+                            break;
+                        case 4: //left
+                            if (cur_skill_hover - 1 >= 4 * skill[cur_skill_hover].skill_pos_y) cur_skill_hover -= 1;;
+                            sound_play(asset_get("mfx_move_cursor"));
+                            break;
+                        case -1: //confirm selection
+                            if (menu_type == 1)
+                            {
+                                cur_skills[cur_select] = cur_skill_hover;
+                                sound_play(asset_get("mfx_confirm"));
+                                
+                                for (var i = 0; i < cur_select; i++) //prevent skill select from selectig skills that were already selected
+                                {
+                                    if (cur_skills[i] == cur_skill_hover)
+                                    {
+                                        sound_stop(asset_get("mfx_confirm"));
+                                        sound_play(asset_get("mfx_tut_fail"));
+                                        cur_select --;
+                                    }
+                                }
+                                cur_select ++;
+                            }
+                            break;
+                        case -2: //cancel select / go back to skill select
+                            if (menu_type == 1)
+                            {
+                                sound_play(asset_get("mfx_back"));
+                                cur_select --;
+                            }
+                            else
+                            {
+                                sound_play(asset_get("mfx_back"));
+                                menu_type = 1;
+                            }
+                            break;
+                        case -3: //go to skill info mode / allow bar to move with skill descriptions
+                            if (menu_type == 1)
+                            {
+                                menu_type = 2;
+                                sound_play(asset_get("mfx_confirm"));
+                                menu_dir = 0;
+                            }
+                            else
+                            {
+                                //cur_skill_hover needs to be equiped (based on the current selection)
+                                var swap_skill = array_find_index(cur_skills, cur_skill_hover);
+                                old_skills = array_clone(cur_skills);
+
+                                if (swap_skill == -1) //if skill isn't equipped, add it to the current selection slot
+                                {
+                                    cur_skills[cur_select] = cur_skill_hover;
+                                }
+                                else //if it does exist already, swap it with the new selection
+                                {
+                                    var temp_val = cur_skills[cur_select]; //store one of the two targets, doesn't matter which one
+                                    cur_skills[cur_select] = cur_skills[swap_skill]; //replace *the target that you previously stored*
+                                    cur_skills[swap_skill] = temp_val; //replace the other target with the stored target.
+                                }
+
+
+                                //gives bar the MP to use the skill too
+                                if (mp_current < skill[cur_skill_hover].mp_use_cost) mp_current = skill[cur_skill_hover].mp_use_cost;
+                                menu_active = false;
+                                menu_controls(false);
+                                bar_pause(false);
+                                sound_play(asset_get("mfx_option"));
+                            }
+                            break;
+                    }
+
+                    if (menu_type == 2 && menu_dir != -2) menu_controls(true); //if we aren't cancelling the selection on info mode allow menu controls
+                    break;
+            }
+
+            if (menu_type < 2) //skill storing + logic that doesn't apply to info mode
             {
                 if (cur_select > -1 && cur_select < 4)
                 {
@@ -72,184 +186,92 @@ switch (skill_script_type)
                     menu_close_delay --;
 
                     //skill slots saving
-                    if (menu_close_delay == menu_close_delay_reset-1)
-                    {
-                        if (cur_select >= 4) update_sync_var();
-                        else if (cur_select <= -1) for (var i = 0; i <= 3; ++i) cur_skills[i] = prev_skills[i]; //revert changes
-                    }
+                    if (menu_close_delay == menu_close_delay_reset-1) update_sync_var();
 
                     if (menu_close_delay == 0)
                     {
                         bar_pause(false);
                         menu_active = false;
-                        cur_skill_info = 0;
+                        cur_skill_hover = 0;
                         menu_close_delay = menu_close_delay_reset;
                     }
-                }
-
-                //picks skills
-                switch (menu_dir)
-                {
-                    case 1: case 2: case 3: //selections
-                        cur_skills[cur_select] = cur_select+4*(menu_dir-1);
-                        sound_play(asset_get("mfx_confirm"));
-                        cur_select ++;
-                        break;
-                    case -1: //cancel select
-                        sound_play(asset_get("mfx_back"));
-                        cur_select --;
-                        break;
-                    case -2:
-                        if (menu_type == 1 && !instance_exists(oTestPlayer)) //TEMPORARY FIX SIDE EFFECT - DON'T ALLOW SKILL INFO MODE
-                        {
-                            menu_type = 2;
-                            sound_play(asset_get("mfx_confirm"));
-                        }
-                        menu_dir = 0;
-                        break;
-                }
-            }
-            else
-            {
-                if (menu_dir != -2) menu_controls(true);
-
-                //hover over skills on info mode
-                switch (menu_dir)
-                {
-                    case 1: //up
-                        if (cur_skill_info - 4 >= 0) cur_skill_info -= 4;
-                        sound_play(asset_get("mfx_move_cursor"));
-                        break;
-                    case 2: //right
-                        if (cur_skill_info + 1 <= 4 *skill[cur_skill_info].skill_pos_y + 3) cur_skill_info += 1;
-                        sound_play(asset_get("mfx_move_cursor"));
-                        break;
-                    case 3: //down
-                        if (cur_skill_info + 4 <= 11) cur_skill_info += 4;
-                        sound_play(asset_get("mfx_move_cursor"));
-                        break;
-                    case 4: //left
-                        if (cur_skill_info - 1 >= 4 * skill[cur_skill_info].skill_pos_y) cur_skill_info -= 1;;
-                        sound_play(asset_get("mfx_move_cursor"));
-                        break;
-                    case -1: //go back to skill select
-                        sound_play(asset_get("mfx_back"));
-                        menu_type = 1;
-                        break;
-                    case -2: //allow bar to move with skill descriptions
-                        //cur_skill_info needs to be equiped
-                        for (var g = 0; g <= 3; ++g)
-                        {
-                            if (skill[cur_skills[g]].skill_id != skill[cur_skill_info].skill_id
-                            && skill[cur_skills[g]].skill_pos_x == skill[cur_skill_info].skill_pos_x)
-                            {
-                                replaced_skill_temp = cur_skills[g]
-                                cur_skills[g] = cur_skill_info;
-                            }
-                        }
-
-                        //gives bar the MP to use the skill too
-                        if (mp_current < skill[cur_skill_info].mp_use_cost) mp_current = skill[cur_skill_info].mp_use_cost;
-
-                        menu_active = false;
-                        menu_controls(false);
-                        bar_pause(false);
-                        sound_play(asset_get("mfx_option"));
-                        break;
                 }
             }
         }
         exit;
     case 2: //draw
         //background
-        if (menu_type != 0) 
+        draw_sprite_ext(sprite_get("hud_menu"), menu_type == 0, menu_x - 8.5, menu_y - 128, 2, 2, 0, c_white, 1);
+
+        //buttons
+        if (menu_type != 0) draw_sprite_ext(sprite_get("hud_menu_buttons"), 0, menu_x - 8, menu_y + 8, 2, 2, 0, c_white, 1);
+        else draw_sprite_ext(sprite_get("hud_menu_buttons"), 1, menu_x, menu_y - 152, 2, 2, 0, c_white, 1);
+
+        //practice text
+        if (menu_type == 1)
         {
-            //////////////////// TEMPORARY SOLUTION UNTILL THE CSS IS FIXED ////////////////////
-            if (!playtesting) draw_sprite_ext(sprite_get("hud_menu"), 0, menu_x - 8.5, menu_y - 128, 2, 2, 0, c_white, 1);
-            else draw_sprite_ext(sprite_get("white_pixel"), 0, 0, 0, 5000, 5000, 0, c_black, 0.5);
+            //writes the current selection
+            var select_text = [
+                "Skill Select Cancelled",
+                "Selecting: N-SPECIAL",
+                "Selecting: F-SPECIAL",
+                "Selecting: U-SPECIAL",
+                "Selecting: D-SPECIAL",
+                "Selection Complete"];
+            textDraw(menu_x + 108, menu_y - 100, string(select_text[cur_select+1]), c_white, "fName", fa_center, false, 1);
         }
-        if (menu_type != 0) draw_sprite_ext(sprite_get("hud_menu_buttons"), menu_type == 2, menu_x - 8, menu_y + 8, 2, 2, 0, c_white, 1);
-        draw_sprite_ext(
-            sprite_get("hud_menu_movement"),
-            menu_type == 2,
-            (menu_type != 0) ? menu_x + 2 : menu_x + 8,
-            (menu_type != 0) ? menu_y - 84 : menu_y - 86,
-            2,
-            2,
-            0,
-            c_white,
-            1
-        );
 
         //skill icons
-        for (var skill_slot = 0; skill_slot <= 3; ++skill_slot)
+        for (var i = 0; i <= 3; ++i)
         {
-            for (var skill_count = skill_slot; skill_count <= skill_slot + 8; skill_count += 4)
+            for (var j = i; j <= i + 8; j += 4)
             {
-                if (cur_select <= skill[skill_count].skill_pos_x && cur_select != -1
-                || skill[cur_skills[skill_slot]].skill_id == skill[skill_count].skill_id)
+                cur_skill_spr = sprite_get(cur_select == -1 ? "hud_skills_disabled" : "hud_skills"); //Default to shiny and clean.
+
+                var input_spotted = false;
+
+                for (var s = 0; s < cur_select; s++) //only loop through *previously selected* skill slots
                 {
-                    current_skill_sprite = sprite_get("hud_skills");
+                    if (skill[cur_skills[s]].skill_id == skill[j].skill_id)
+                    {
+                        cur_skill_spr = sprite_get("hud_skills_disabled"); //disabled if selected on a previous slot.
+                        input_spotted = true;
+                        break; //continuing through this loop is unnecessary, so break.
+                    }
                 }
-                else current_skill_sprite = sprite_get("hud_skills_disabled");
 
                 draw_sprite_ext(
-                    current_skill_sprite,
-                    skill[skill_count].skill_id,
-                    menu_x + skill[skill_count].skill_pos_x * 38 + 38 + ((menu_type == 0) * 6),
-                    menu_y + skill[skill_count].skill_pos_y * 32 - 84,
+                    cur_skill_spr,
+                    skill[j].skill_id,
+                    menu_x + i * 38 + 38 + ((menu_type == 0) * -6),
+                    menu_y + floor(j / 4) * 32 - 84,
                     2, 2, 0, c_white, 1
+                );
+
+                //input icons
+                if (input_spotted) draw_sprite_part_ext(
+                    sprite_get("hud_skills_inputs"),
+                    0,
+                    s * 15,
+                    0,
+                    15,
+                    8,
+                    menu_x + i * 38 + 38 + ((menu_type == 0) * -6) - 1,
+                    menu_y + floor(j / 4) * 32 - 66,
+                    2, 2, c_white, 1
                 );
             }
         }
 
-        if (menu_type != 2)
+        //cursor
+        if (cur_select > -1 && cur_select < 4)
         {
-            if (menu_type == 1)
-            {
-                //writes the current selection
-                var select_text = ["Skill Select Cancelled", "Selecting: N-SPECIAL", "Selecting: F-SPECIAL", "Selecting: U-SPECIAL", "Selecting: D-SPECIAL", "Selection Complete"];
-                textDraw(menu_x + 108, menu_y - 100, string(select_text[cur_select+1]), c_white, "fName", fa_center, false, 1);
-            }
-            else draw_sprite_ext(sprite_get("hud_menu"), 1, menu_x - 8.5, menu_y - 128, 2, 2, 0, c_white, 1);
-
-            //cursor
-            if (cur_select > -1 && cur_select < 4)
-            {
-                draw_sprite_ext(
-                    sprite_get("hud_menu_cursor"),
-                    menu_active_time * menu_cursor_speed,
-                    menu_x + (38 * (cur_select + 1) + (menu_type == 0) * 6),
-                    menu_y - 84,
-                    2, 2, 0, c_white, 1);
-            }
-            
-            //input stuff
-            if (menu_type == 0)
-            {
-                //i hate draw order
-                for (var i = 0; i <= 3; ++i)
-                {
-                    draw_sprite_part_ext(
-                        sprite_get("hud_skills_inputs"),
-                        0,
-                        i * 15,
-                        0,
-                        15,
-                        8,
-                        menu_x + i * 38 + 38 + ((menu_type == 0) * 4),
-                        menu_y + 6,
-                        2,
-                        2,
-                        c_white,
-                        1
-                    );
-                }
-
-                //jump to cancel button
-                draw_sprite_stretched_ext(sprite_get("white_pixel"), 0, menu_x + 70, menu_y - 144 , 80, 24, c_black, 1);
-                draw_sprite_part_ext(sprite_get("hud_menu_buttons"), 0, 36, 3, 40, 12, menu_x + 70, menu_y - 144, 2, 2, c_white, 1);
-            }
+            draw_sprite_ext(
+                sprite_get("hud_menu_cursor"),
+                menu_active_time * menu_cursor_speed,
+                menu_x + skill[cur_skill_hover].skill_pos_x * 38 + 38 + ((menu_type == 0) * -6),
+                menu_y + skill[cur_skill_hover].skill_pos_y * 32 - 84,
+                2, 2, 0, c_white, 1);
         }
         break;
 }
@@ -375,19 +397,52 @@ switch (skill_script_type)
 #define menu_controls(enable)
 {
     //menu controls
-    //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = jump | -2 = attack/special
+    //0 = nothing | 1 = up | 2 = right | 3 = down | 4 = left | -1 = set | -2 = back | -3 = info
     if (enable)
     {
         if (menu_dir != 0) menu_dir = 0; //this will always force the input back to 0, so it's active for 1 frame
 
-        if (up_pressed) menu_dir = 1;
-        if (right_pressed) menu_dir = 2;
-        if (down_pressed) menu_dir = 3;
-        if (left_pressed) menu_dir = 4;
-        if (jump_pressed && jump_counter == 0 || menu_type == 0 && menu_a_pressed) menu_dir = -1;
-        if (special_pressed && special_counter == 0) menu_dir = -2;
+        if (menu_type != 0) //practice / info mode
+        {
+            if (up_pressed) menu_dir = 1;
+            if (right_pressed) menu_dir = 2;
+            if (down_pressed) menu_dir = 3;
+            if (left_pressed) menu_dir = 4;
+
+            if (attack_pressed && attack_counter == 0) menu_dir = -1;
+            if (jump_pressed && jump_counter == 0) menu_dir = -2;
+            if (special_pressed && special_counter == 0) menu_dir = -3;
+        }
+        else //CSS
+        {
+            //button stuff
+            var cur_x = get_instance_x(cursor_id);
+            var cur_y = get_instance_y(cursor_id);
+
+            for (var i = 0; i <= 3; ++i)
+            {
+                for (var j = i; j <= i + 8; j += 4)
+                {
+                    if (point_in_rect(cur_x, cur_y, skill_pos[j][0], skill_pos[j][1], skill_pos[j][2], skill_pos[j][3]))
+                    {
+                        cur_skill_hover = j;
+                        break;
+                    }
+                }
+            }
+
+            if (menu_type == 0 && menu_b_pressed) menu_dir = -1;
+            if (menu_type == 0 && menu_a_pressed) menu_dir = -2;
+        }
     }
     else menu_dir = 0;
+}
+//stores button positions for CSS skill select
+#define point_in_rect (px, py, x1, y1, x2, y2)
+{
+    return
+        px == clamp(px, min(x1,x2), max(x1,x2)) && 
+        py == clamp(py, min(y1,y2), max(y1,y2));
 }
 #define textDraw
 {
@@ -420,7 +475,9 @@ switch (skill_script_type)
 
     for (var i = 0; i <= 3; ++i)
     {
-        prev_skills[i] = cur_skills[i]; //save skills
+        //only save skills if we actually reached the proper cur_select
+        if (cur_select == 4) prev_skills[i] = cur_skills[i]; //save new set
+        else if (cur_select == -1) cur_skills[i] = prev_skills[i]; //go back to previous set
 
         var old_sync_var = get_synced_var(player);                                  //the synced var before updating
         var zeroed_element = old_sync_var & ~(0xf << (i * 4))                       //i forgor but it has something to do with shifting the bits

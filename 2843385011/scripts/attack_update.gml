@@ -124,9 +124,27 @@ switch(attack){
 		}
 		break;
 	case AT_DAIR:
+		
 		if window == 1 && window_timer == 14{
 			spawn_hit_fx( x, y, vfx_dair_fade );
 			sound_play(asset_get("sfx_frog_uspecial_divekick"));
+			dair_forgiveness = 0
+		}
+		if window == 2 {
+			dair_forgiveness++;
+            
+            if dair_forgiveness == dair_forgiveness_threshold {
+            	spawn_hit_fx( x, y, dark_smull );
+            	sound_play(asset_get("sfx_zetter_shine_charged"));
+            }
+            if dair_forgiveness >= dair_forgiveness_threshold and free
+                {
+                	can_jump = true;
+                	can_wall_jump = true;
+                	if((special_down && up_down)){
+						set_attack(AT_USPECIAL);
+					}
+                }
 		}
 		if window == 3 && window_timer ==1{
 			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
@@ -487,7 +505,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
 	default: 

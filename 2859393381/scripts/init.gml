@@ -22,7 +22,7 @@ evidence2 = 0;
 evidence3_status = 0; 
 evidence3 = 0;              //evidence to throw on use of fspecial, 
 throw_evidence = 0;         //pick the first bad piece of evidence to throw 
-parry_evidence = 0;         //pick the first good piece of evidence to lose on parry
+parry_evidence = 0;         //pick the first good piece of evidence to lose on parry/turnabout bridge counter
 evidence_proj_sprite = 0;   //evidence_proj"__"_strip4
 
 evidence_box_index = 0;     //for dspecial gui
@@ -33,6 +33,7 @@ dspecial_random_index = 2;  //so the while script in dspecial doesn't crash the 
 key_dir = 0;
 ustrong_launch_dir = 0;
 ustrong_parried = 0;
+ustrong_hit = 0;
 
 uspecial_angle = 90;
 uspecial_old_hsp = hsp;
@@ -41,12 +42,19 @@ uspecial_old_vsp = vsp;
 cornered_segment = 0;
 cornered_timer = 0;
 cornered_disabled = 0;
+cornered_volume = get_local_setting(3) / get_local_setting(4);
 turnaboutID = noone;
 cornered_sound = noone;
 song_type = 0;
 
+shocked_vfx = hit_fx_create(sprite_get("vfx_shock"), 9);
+shock_lines_vfx = hit_fx_create(sprite_get("vfx_shocklines"), 42);
+set_hit_particle_sprite(1, sprite_get("vfx_sweat_drop"));
+
 strong_notif_timer = 120;
 special_error_cooldown = 0; //60
+
+player_i_hit = noone;
 
 camera_x = 0;
 camera_y = 0;

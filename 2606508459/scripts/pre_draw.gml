@@ -5,7 +5,14 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
     && attack == AT_NSPECIAL_2
     && window == 2)
 {
+    //with(playerObject)
+    //{
+    shader_start();
+    
     draw_sprite(sprite_get("shine"), floor(window_timer/2), x, y);
+    
+    shader_end();
+    //}
 }
 
 /*

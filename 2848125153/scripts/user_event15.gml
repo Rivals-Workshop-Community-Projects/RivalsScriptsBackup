@@ -38,6 +38,13 @@ use_alt_names = true;
 // (you can also change it to different values depending on the alt, by using
 // get_player_color(player))
 alt_ui_recolor = 0;
+if(get_player_color(player) == 12 || get_player_color(player) == 26){
+	alt_ui_recolor = 6;
+}else if(get_player_color(player) == 14 || get_player_color(player) == 19){
+	alt_ui_recolor = 2;
+}else if(get_player_color(player) == 20 || get_player_color(player) == 21 || get_player_color(player) == 22 || get_player_color(player) == 25 || get_player_color(player) == 27){
+	alt_ui_recolor = 1;
+}
 
 // The list of names for the alts, if enabled.
 alt_names = [
@@ -56,23 +63,26 @@ alt_names = [
 	"It's electrifying!",
 	"Tinkyspin",
 	"Mr Oarly",
+	"Oarluis",
 	"R. J. Pasino",
 	"I'm feeling lucky today!",
 	"MG",
 	"Wah",
-	"Fast Food",
+	//"Fast Food",
 	"Ruby Merchant",
 	"Gwonam",
 	"Meen",
 	"Father's Money",
 	"Snow Miser",
 	"Brutal",
+	"Toadsworth",
+	"Cranky Kong",
 	"Plans",
 	"Master Roshi",
 	"Ice King",
 	"The Richest Duck",
-	"Skinner",
-	"Herbert",
+	//"Skinner",
+	//"Herbert",
 	];
 
 
@@ -308,6 +318,101 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.18", "30th March, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a bug where cancelling USpecial would spawn a hitbox sometimes");
+initSection("+ Fixed money when cancelling USpecial being able to hit opponents");
+
+initPatch("1.17", "3rd March, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed a misc error and some projectile things");
+
+initPatch("1.16", "3rd March, 2023");
+initHeader("Buffs");
+initSection("+ Increased money gain on hit somewhat, to balance out that he loses money much easier after last patch");
+initSection("+ Falling money will now gravitate towards Mr Monopoly if he is near them, making it a bit easier to collect (doesn't work while in hitstun or similar, and only with his own money)");
+initSection("+ Reverted USpecial money nerf (125k->200k)");
+initSection("+ Mr Monopoly can now pick up his own money 10f earlier than before, and money is protected from other characters 10f longer. In addition, money piles now follow these rules as well (previously only falling money did, so any character could pick up piles instantly), and Mr Monopoly's teammates can collect his money early now too");
+initHeader("Fixes / Other Changes");
+initSection("+ Added Toadsworth sfx to css and on galaxy");
+initSection("+ Added rune K");
+
+initPatch("1.15", "20th February, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed bug where rune A wouldn't work properly");
+
+initPatch("1.14", "14th February, 2023");
+initHeader("Skillful Buffs");
+initSection("+ If Mr Monopoly is flying during USpecial for longer than 50 frames, he can cancel out of the move (at a cost). USpecial should still be very vulnerable even with this, but it will hopefully make him just a bit less vulnerable, especially when getting Home far from the center");
+initSection("+ House and Hotel now gains more passive income (100k->150k, 200k->300k)");
+initSection("+ House and Hotel now have more health in a match with 3+ players, since they are harder to defend and easily destroyed");
+initSection("+ DAttack can be cancelled early if Mr Monopoly hits the first hit (at a cost), and if you hold down while jumping off the train normally he'll do a lower jump that makes it easier to get on top of the train");
+initSection("+ When boosting UTilt, it will boost the damage of the main hit as well, instead of only spawning more money (6->9)");
+initSection("+ Money gained on hit now takes strong charge into account (so a charged strong attack will gain more money)");
+initSection("+ When doing side taunt, you can hold Attack to drop 4 million instead of just 1 million like normal, allowing you to put money into a property even faster");
+initHeader("Unskillful Nerfs");
+initSection("- Money received when passing Go during USpecial reduced a bit (200k->125k)");
+initSection("- Boosted UAir spends a bit more money (250k->350k), which also results in a loss on whiff");
+initSection("- UTilt base damage is lower (7->6)");
+initSection("- Money dropped on hit now takes the opponents strong charge into account (previously a charged strong attack would only count the base damage). Also, if Mr Monopoly takes more than 8% from the hit, he will drop a bit more money than before");
+initHeader("Fixes / Other Changes");
+initSection("+ Falling money can now merge with other ones in mid-air, made money merge together a bit more in general, and also made money merge with another Monopoly's money even if they aren't on your team. Should help boost FPS more overall");
+initSection("+ Updated Wario alt colors, and enabled Kewt tokens on Oarly and Pasino alts. Also replaced Fast Food, Skinner, and Herbert alts with Oarluis, Toadsworth, and Cranky Kong alts");
+initSection("+ Fixed shader stuff not working online on the css");
+initSection("+ If Mr Monopoly (somehow) reaches 100 million, the UI will stretch to fit the numbers. The same will happen if he reaches 1 billion");
+initSection("+ Added runes: A, B, C, D, E, F, G, H, I, J, L, M. He now almost has a full set!");
+
+initPatch("1.13", "29th December, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Hotfixed an error from last patch");
+
+initPatch("1.12", "24th December, 2022");
+initHeader("Skillful Buffs");
+initSection("- Some normals have 1-2 frames quicker startup (ex: Jab1, FTilt, DTilt, UTilt)");
+initSection("- Due to the projectile parry change (see below), parrying certain weaker moves will now make Mr Monopoly drop less money (ex: Jab1)");
+initHeader("Unskillful Nerfs");
+initSection("- Money thrown during certain moves are now less active (16f->10f)");
+initSection("- When parrying one of Mr Monopoly's projectiles, he will now drop just as much money as if you parried a physical attack (previously, parrying projectiles dropped less). Instead of dropping extra money for specifically physical attacks, extra money will drop if the parried hitbox did 6% or more");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed a bug from one of the previous patches where parrying one of Mr Monopoly's dices wouldn't make him drop money (this was only meant to apply to the 1 dice but was broken in a patch later on, now it works again)");
+initSection("- Added Green Flower Zone compatibility (credit to DonGT for making it)");
+initSection("- Updated some compatibility with other KoB characters");
+
+initPatch("1.11", "30th October, 2022");
+initHeader("Skillful Buff");
+initSection("- Added another CSS (credit to DonGT for making it, I just cleaned it up)");
+
+initPatch("1.10", "12th October, 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed a bug where if another character grabbed a dice/token and got hit out of the grab, the projectile would get sorta stuck by being unhittable and unable to hit anyone. Now, if this happens, the projectile goes away on it's own");
+
+initPatch("1.9", "5th October, 2022");
+initHeader("Skillful Buffs");
+initSection("- If Mr Monopoly has 15 million invested into a property, he can now taunt in front of it (while holding the button) to invest in stocks! Very skillful!");
+initSection("- Mr Monopoly can now re-grab his own dropped money 10 frames before other characters can");
+initSection("- Increased property health slightly (50->75 for House, 100->150 for Hotel), and House and Hotel properties now generate more money passively (50k->100k for House, 100k->200k for Hotel)");
+initSection("- If a Dice 1 is parried, it won't force Mr Monopoly to drop money");
+initHeader("Unskillful Nerfs");
+initSection("- When using heavy UStrong and BAir, Mr Monopoly will drop some money on whiff (for BAir, this doesnt happen if the bag is thrown though)");
+initSection("- FSpecial tokens now don't hit quite as often (10 frames longer between hits)");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed a bug where go to property USpecial would sometimes not refresh Mr Monopoly's collisions depending on the stage");
+
+initPatch("1.8", "17th September, 2022");
+initHeader("Skillful Buffs");
+initSection("- You can now press Parry to activate the Kewtian FSpecial tokens as any alt");
+
+initPatch("1.7", "16th September, 2022");
+initHeader("Nerfs");
+initSection("- NSpecial dice and FSpecial tokens now have slightly larger hit collision, making them a bit easier to hit back");
+initSection("- All FSpecial tokens now deal less hitstun on weaker hits (1->0.9), and some normal tokens (shoe, iron, duck, and hat) deal even less (1->0.7), to make token multihits a bit weaker (doesn't affect tokens that move faster and do more damage, only the slower, weaker hits)");
+initSection("- Most FSpecial tokens now can't multihit quite as quickly (30->40), and FSpecial has a bit more startup (16->19)");
+initSection("- Mr Monopoly no longer gains any money when hitting opponents with projectiles; only physical hits give money. This was already the case for some projectiles, but will now affect all of them");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed a bug where dices and tokens would sometimes be unhittable");
+initSection("- When you can't afford any tokens, they will now be greyed out on the UI, and Mr Monopoly will throw dust instead like with other moves. Also, fixed so you can use tokens if you have the exact values needed (100k and 300k), and not just above");
+initSection("- Fixed a bug where if a House or Hotel drained money from an enemy Mr Monopoly, they could get below 0 money");
 
 initPatch("1.6", "10th September, 2022");
 initHeader("Buffs");

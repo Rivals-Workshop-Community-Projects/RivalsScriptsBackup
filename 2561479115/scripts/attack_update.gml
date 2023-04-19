@@ -55,6 +55,7 @@ switch (attack) {
 		//startup.
 		move_cooldown[AT_USPECIAL] = 2;
 		free = true;
+		has_walljump = uspec_had_walljump;
 		
 		if (window == 1 && window_timer == 1) {
 			sound_play(asset_get("sfx_clairen_fspecial_dash"));

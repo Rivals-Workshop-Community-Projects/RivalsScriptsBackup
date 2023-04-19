@@ -1,4 +1,4 @@
-//got_parried.gml
+//	got_parried.gml
 
 if ("my_hitboxID" in self)
 {
@@ -22,7 +22,23 @@ if ("my_hitboxID" in self)
 	}    
 }
 
+if (attack == AT_DAIR)
+{
+	if (free)
+	{
+		set_state(PS_PRATFALL);
+	}
+}
+
 if (attack == AT_FSPECIAL)
+{
+	if (free)
+	{
+		set_state(PS_PRATFALL);
+	}
+}
+
+if (attack == AT_USPECIAL)
 {
 	if (free)
 	{

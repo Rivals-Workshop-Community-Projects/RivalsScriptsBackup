@@ -52,11 +52,12 @@ if (attack == AT_COPY_RANGER) {
 		y += initYOffset
 		initYOffset = 1;
 	}
-
+	/*
 	var baseMovementSpeed = 11+((hbox_num-1)*3);
 
 	hsp = playerJoyDirectionMultHSP*baseMovementSpeed*(playerJoyDirectionRemember);
 	vsp = playerJoyDirectionMultVSP*baseMovementSpeed*(playerJoyDirectionRememberVert);
+	*/
 }
 
 if (attack == AT_COPY_BOMB) {
@@ -70,13 +71,19 @@ if (attack == AT_COPY_BOMB) {
 	}
 }
 
+/*
 //Making it so ESP can be hit
 if (attack == AT_COPY_ESP) {
 	if(esp_state == 2){
-		if (collision_circle(x,y - 60, y + 60, asset_get("pHitBox"),true,true)){ //makes the pot hittable when can_get_hit is true
+		//if (collision_circle(x,y, y, asset_get("pHitBox"),true,true)){ //makes the pot hittable when can_get_hit is true
 			with (asset_get("pHitBox")){
 				if (player != other.player_id.player){
 					other.player_id.esp_parried = true;
+					if (collision_circle(x,y-600, y+600, other, true,true)){ //makes the pot hittable when can_get_hit is true
+						print("mario")
+					} else {
+						print("die");
+					}
 					with(other){
 						with(player_id){
 							move_cooldown[AT_COPY_ESP] = 60;
@@ -88,12 +95,25 @@ if (attack == AT_COPY_ESP) {
 					//
 				}
 			}
+		//}
+	}
+}
+*/
+
+if (attack == AT_COPY_ESP) {
+if (hbox_num == 2 || hbox_num == 5){
+	if (place_meeting(x,y, asset_get("pHitBox"))){
+		var tmp_hb_id = instance_place(x,y, asset_get("pHitBox"))
+		if (tmp_hb_id.player_id != player_id){
+			player_id.esp_parried = true;
+			player_id.window = 5;
+			player_id.window_timer = 0;
+			destroy_hitboxes();
+		} else {
+			//print("false");
 		}
 	}
 }
-
-if (attack == AT_COPY_ESP) {
-
 if (hbox_num == 1){
 	
 	if (player_id.esp_charged == false){

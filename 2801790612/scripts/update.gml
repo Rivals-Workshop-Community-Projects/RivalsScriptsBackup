@@ -1,8 +1,3 @@
-// MunoPhone Touch code - don't touch
-// should be at TOP of file
-muno_event_type = 1;
-user_event(14);
-
 if (introTimer2 < 8) {
 	introTimer2++;
 } else {
@@ -31,11 +26,6 @@ if(get_gameplay_time() <= 120){
 	}
 }
 
-if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
-
-if (phone_cheats[CHEAT_DEBUG] && !debug_text) {
-    debug_text = true;
-}
 
 if (state == PS_DASH) {
     if (state_timer % 16 == 0) sound_play(sfx_pepsi_step, false, noone, 0.3, 1);
@@ -79,12 +69,12 @@ if (fspecial_timer > 0) {
     fspecial_timer -= 1;
 }
 // If the combo timer is active, tick it down.
-if (combo_timer > 0) {
-    combo_timer -= 1;
-}
-else if (combo_timer == 0) {
-    combo = 0;
-}
+//if (combo_timer > 0) {
+//    combo_timer -= 1;
+//}
+//else if (combo_timer == 0) {
+//    combo = 0;
+//}
 
 // Never have more than 100 Pepsi
 if (pepsi_meter > 100) pepsi_meter = 100;

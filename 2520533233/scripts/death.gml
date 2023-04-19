@@ -21,9 +21,10 @@ enum ROCK{
 }
 
 // called when the character gets KO'd
+/*
 if(tenshi_uspecial_rock != noone){
 	tenshi_uspecial_rock.rock_state = ROCK.KABOOM
-}
+}*/
 sound_stop(sound_get("drill_loop"));
 sound_stop(sound_get("drill_long"));
 sound_play(sound_get("DETH"));
@@ -41,6 +42,7 @@ if(dragon_install){
 {
     //this passes on ownership of install assets to the tenshi with the most
     //time left in dragon install
+    manual_init_shader_call = true;
     var other_DI = false;
     var other_tenko = noone;
     var other_tenko_di_time = 9999999999999;
@@ -91,7 +93,7 @@ if(dragon_install){
     	tenshi_magic = 0;
     }
     dragon_install = false;
-	sound_stop(sound_get("install" + string(install_theme)));
+	sound_stop(sound_get("install" + music_page + music_alt + string(install_theme)));
     initial_dash_speed = base_initial_dash_speed;
     dash_speed = base_dash_speed;
     moonwalk_accel = base_moonwalk_accel;
@@ -121,6 +123,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 12);
 //uair
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 5);
 //bair
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 13);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
@@ -163,3 +166,4 @@ set_hitbox_value(AT_DTILT, 5, HG_WINDOW, 99);
 set_hitbox_value(AT_DTILT, 6, HG_WINDOW, 99);
 //fspecial grab
 set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.7);
+set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_TYPE, 7);

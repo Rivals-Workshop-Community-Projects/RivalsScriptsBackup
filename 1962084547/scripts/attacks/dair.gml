@@ -106,7 +106,10 @@ set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, beakss2 );
 
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_HSPEED, -2); //These values are how fast they bounce off of enemies if the attack lands.
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_VSPEED, -5); 
-
+//stall prevention
+dair_stall_count = 0; //amount of hits you have stalled with. don't change this one
+dair_max_stall = 3; //max amount of hits you can stall with.
+//these values only apply to dair > egg stall
 
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_HSPEED, -6); //These values are how fast they bounce off of enemies if the attack lands.
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_VSPEED, -7); 

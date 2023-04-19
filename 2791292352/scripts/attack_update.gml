@@ -58,6 +58,39 @@ switch(attack){
 	    }
 		break;
 	
+	case AT_DSPECIAL:
+	    can_fast_fall = false;
+		if vsp > max_fall vsp = max_fall;
+	break;
+	
+	case AT_DSTRONG:
+	
+	    switch window {
+		    case 1:
+			    if window_timer = 20 && !hitpause && taunt_down {
+		            sound_play(sound_get("ragdoll"));
+			        dst_sound = true;
+				}
+			break;
+			case 2:
+			    //slightly move
+		        if left_down {
+		            hsp -= 0.3;
+		        } else if right_down {
+		            hsp += 0.3;
+		        }
+				hsp = clamp(hsp, -1.5, 1.5);
+			break;
+			case 3:
+			    if window_timer = 1 {
+		            sound_stop(sound_get("ragdoll"));
+			        hsp = 0;
+		        }
+			break;
+		}
+		
+	break;
+	
 	case AT_NSPECIAL:
 		if (!hitpause){
 			//print(wow_chrg);
@@ -230,7 +263,11 @@ switch(attack){
 						if (window_timer % 3 == 0 && abs(hsp) > 3){ // fx
 							var dragfx_1 = hit_fx_create(sprite_get("fspecial_fx"), 12);
 							var fx1 = spawn_hit_fx(x, y, dragfx_1);
-							//spawn_base_dust(x, y, "dash");
+							var drag_pitch = 1 + random_func(0, 3, true) * 0.1;
+							sound_play(asset_get("sfx_kragg_roll_turn"), 0, noone, 0.3, drag_pitch );
+						}
+						if window_timer%16 = 2 {
+						    spawn_hit_fx(x, y, fspec_aimage);
 						}
 							
 						if (attack_pressed || special_pressed){ // yeet
@@ -258,9 +295,6 @@ switch(attack){
 						if (instance_exists(fspecial_grab_id)){
 							with(fspecial_grab_id){
 								visible = true;
-								has_walljump = true;
-								has_airdodge = true;
-								djumps = max_djumps;
 							}
 						}
 						fspecial_grab_id = noone;
@@ -300,11 +334,30 @@ switch(attack){
 	break;
 	
 	case AT_USPECIAL:
-		if window == 2 && !hitpause{
-	    create_hitbox(AT_USPECIAL, 1, x, y);
-		    if window_timer = 1 {
-			spawn_hit_fx (x, y, uspecial_boost);
-			}
+	    switch window{
+		    case 1:
+			    if window_timer = 8 {
+		            sound_play(asset_get("sfx_absa_cloud_send"));
+					vfxlol = spawn_hit_fx (x - hsp*2, y, uspecial_boost);
+					vfxlol.depth = depth-1;
+					vfxlol.draw_angle = hsp * -8;
+		        }
+			break;
+			case 2:
+		        
+			    if window_timer %3 = 0 && !hitpause{
+			//dan moment so to flip the sprite we gotta turn the whole cofa around
+				    var stored_dir = spr_dir;
+					windir = window_timer%6;
+					if windir < 3 {
+					    spr_dir = 1;
+					} else {
+					    spr_dir = -1;
+					}
+                    create_hitbox(AT_USPECIAL, 1, x, y);
+					spr_dir = stored_dir;
+		        }
+		    break;
 		}
 	break;
 	

@@ -15,7 +15,6 @@ created_instance_index = 0; //since everything in load.gml and attacks happens i
 unit_player_id_array[0] = instance_create( x + spr_dir * 320, y, player_type); //plusle
 created_instance_index = 1;
 unit_player_id_array[1] = instance_create( x - spr_dir * 320, y, player_type); //minun
-
 unit_current_leader_index = 0;
 
 edit_instance_id = unit_player_id_array[0];

@@ -1,5 +1,5 @@
-set_victory_theme(sound_get("Victory"))
-set_victory_bg(sprite_get("victory_background"))
+set_victory_theme(sound_get("Victory"));
+set_victory_bg(sprite_get("victory_background"));
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
@@ -49,7 +49,7 @@ hitstun_grav = .48;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 15;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -109,7 +109,6 @@ grov_pounce_foe_id = null
 grov_digdir = 1
 grov_wandangle = 0
 grov_dspecial_loops = 0
-grov_current_nspecial = 0 //0 Iron Thorn /1 Blast Seed /2 Geo Pebble
 grov_fspecial_cooldown = 0
 grov_fspecial_airuse = false
 grov_char_height = char_height
@@ -125,17 +124,15 @@ has_fail = true;
 fail_text = "That was a Reviser Seed, try checking your items next time.";
 resort_portrait = sprite_get("grov_lastresort01");
 resort_portrait2 = sprite_get("grov_lastresort02");
-if get_player_color(player) == 13 resort_portrait = resort_portrait2
+if get_player_color(player) == 13 resort_portrait = resort_portrait2;
 arena_title = "Temporal Escapee";
 boxing_title = "Temporal Escapee";
-toonlink_photo = sprite_get("toonlink_photo");
-toonlink_photo2 = 2;
 steve_death_message = "Steve fainted!";
-feri_costume = sprite_get("feri_costume_grovyle")
-gfzsignspr = sprite_get("GFZ_Grovyle")
-miiverse_post = sprite_get("miiverse_grovyle")
-pkmn_stadium_front_img = sprite_get("gen1_grovyle")
-pkmn_stadium_back_img = sprite_get("gen1_grovyle_back")
+feri_costume = sprite_get("feri_costume_grovyle");
+gfzsignspr = sprite_get("GFZ_Grovyle");
+miiverse_post = sprite_get("miiverse_grovyle");
+pkmn_stadium_front_img = sprite_get("gen1_grovyle");
+pkmn_stadium_back_img = sprite_get("gen1_grovyle_back");
 link_spear_drop = 6;
 
 //Amber interaction variables
@@ -158,19 +155,8 @@ amber_hugExitTimer = 30; //How many frames should pass before either player can 
 amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop
 
 Hikaru_Title = "Time Gear Theif";
-hikaru_walkclone = sprite_get("walk_hikaruclone");
-hikaru_dairclone = sprite_get("dair_hikaruclone");
-hikaru_tauntclone = sprite_get("tauntHikaru");
-hikaru_gearglow = sprite_get("timegearglow");
 
 other_name = null
-// with oPlayer{
-//     if player != other.player{
-//         other.other_name = get_char_info(player, INFO_STR_NAME)
-//         // print(string(url))
-//     }
-//     if url == 10 other.other_name = "Ori"
-// }
 
 //RUNES
 if has_rune("A"){

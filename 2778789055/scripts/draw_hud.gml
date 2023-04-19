@@ -2,6 +2,7 @@
 /*
 if "phone" not in self exit;
 */
+//draw_debug_text(temp_x+10, temp_y-42,string(synced_vars[0]));
 
 var temp_color = c_white;
 if (move_cooldown[AT_NSPECIAL] > 0 || has_pot = false) temp_color = c_gray;
@@ -46,7 +47,7 @@ with obj_article1 if player_id == other{
 		with other shader_end();
 	}
 }
-
+//draw_debug_text(temp_x + 200, temp_y - 32, string(other_scalding));
 /*
 draw_debug_text(temp_x + 200, temp_y - 32, string(gumbo_scalding));
 draw_debug_text(temp_x + 100, temp_y - 32, string(gumbo_scalding_timer));

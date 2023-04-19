@@ -19,15 +19,15 @@ set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_UAIR, 2, AG_WINDOW_SFX_FRAME, 3);
 
 // spin kick
-var kick_duration = 3;
+var kick_duration = 4; // 3
 set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, kick_duration);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 // slow down
-var spin_duration = 18;
+var spin_duration = 12; // 18
 set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, spin_duration);
-set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
 // flip back
@@ -51,9 +51,9 @@ set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 5.5);
-set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .85);
+set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 5.5);
-set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .85);
+set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.85);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
@@ -69,11 +69,12 @@ set_hitbox_value(AT_UAIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 5.5);
-set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .85);
+set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 5.5);
-set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .85);
+set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.85);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+
 
 // Lingering hit top
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1);
@@ -85,11 +86,11 @@ set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 52); // 63
 set_hitbox_value(AT_UAIR, 3, HG_HEIGHT, 54); // 70
 set_hitbox_value(AT_UAIR, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 5);
-set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 85);
+set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 90); // 85
 set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_UAIR, 3, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 // Lingering hit bottom
@@ -102,12 +103,13 @@ set_hitbox_value(AT_UAIR, 4, HG_WIDTH, 52); // 63
 set_hitbox_value(AT_UAIR, 4, HG_HEIGHT, 54); // 70
 set_hitbox_value(AT_UAIR, 4, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 4, HG_DAMAGE, 5);
-set_hitbox_value(AT_UAIR, 4, HG_ANGLE, 85);
+set_hitbox_value(AT_UAIR, 4, HG_ANGLE, 90); // 85
 set_hitbox_value(AT_UAIR, 4, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_UAIR, 4, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_UAIR, 4, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_UAIR, 4, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_UAIR, 4, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_UAIR, 4, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+
 
 /*
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 3);

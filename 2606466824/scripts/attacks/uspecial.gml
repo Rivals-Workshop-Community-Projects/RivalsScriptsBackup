@@ -25,16 +25,16 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("uspec_1"));
 
 //ascent active
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -9);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -8.5);
 
 //ascent endlag
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
@@ -190,9 +190,9 @@ set_hitbox_value(AT_USPECIAL, 5, HG_WIDTH, 120);
 set_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT, 120);
 set_hitbox_value(AT_USPECIAL, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_DAMAGE, 6);
-set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE, 45);
-set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_USPECIAL, 5, HG_ANGLE, 55);
+set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 5, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_BASE_HITPAUSE, 17);
 set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, firehfx);

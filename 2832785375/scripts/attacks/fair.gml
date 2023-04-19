@@ -68,8 +68,8 @@ set_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 88);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, 28);
-set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 12);
-set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 12);
+set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 18);
+set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 18);
 set_hitbox_value(AT_FAIR, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 8);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 9);
@@ -81,6 +81,7 @@ set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, vfx_flower_sweetspot);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_FAIR, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 2);
 
 //hit 2 sourspots

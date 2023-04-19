@@ -1,43 +1,34 @@
 //update
 
-// Reset shard stepping
-with oPlayer{
-    grov_emerashard = false
-}
-
 if (!free || (free && (state = PS_WALL_JUMP || state = PS_WALL_TECH || state = PS_HITSTUN))){
-    move_cooldown[AT_USPECIAL] = 0
-    move_cooldown[AT_DSPECIAL] = 0
-    grov_fspecial_airuse = false
-    grov_fspecial_cooldown = 0
+    move_cooldown[AT_USPECIAL] = 0;
+    move_cooldown[AT_DSPECIAL] = 0;
+    grov_fspecial_airuse = false;
+    grov_fspecial_cooldown = 0;
 }
 
 if grov_fspecial_cooldown > 0 grov_fspecial_cooldown--
 
 if has_rune("H") grov_fspecial_airuse = false
 
-if grov_fspecial_cooldown == 0 && grov_fspecial_airuse == false move_cooldown[AT_FSPECIAL] = 0
-else move_cooldown[AT_FSPECIAL] = 10
-
-if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-    grov_link_jump = false
-}
+if grov_fspecial_cooldown == 0 && grov_fspecial_airuse == false move_cooldown[AT_FSPECIAL] = 0;
+else                                                            move_cooldown[AT_FSPECIAL] = 10;
 
 if char_height != grov_char_height{
-    if (attack != AT_NSPECIAL || ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR))) char_height = grov_char_height
+    if (attack != AT_NSPECIAL || ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR))) char_height = grov_char_height;
 }
 
 // Resets/lowers emera shard timer.
 with(oPlayer){
+    grov_emerashard = false; // Reset shard stepping
+    if (state != PS_LAND && state != PS_LANDING_LAG && state != PS_PRATLAND) grov_emera_land = 0; //Reset landing
+    else if grov_emera_land == 0 grov_emera_land = 1; //Set landing
     if grov_emeratimer > 0{
-        if free || hsp == 0 grov_emeratimer = 0
-        else grov_emeratimer -= abs(hsp)
+        if free || hsp == 0 grov_emeratimer = 0;
+        else grov_emeratimer -= abs(hsp);
     }
-    if grov_emeratimer < 0 grov_emeratimer = 0
-    // print(string(grov_emeratimer))
+    if grov_emeratimer < 0 grov_emeratimer = 0;
 }
-
-
 
 // Blue leaf
 if get_gameplay_time() == 1 && shield_down && get_player_color(player) == 0{
@@ -82,29 +73,6 @@ if (amber_startHug == true) //Amber will set this bool to true when this player 
     amber_startHug = false;
 }
 
-// Hikaru test
-with asset_get("oPlayer")
-{
-    if ((variable_instance_exists(id,"url")) && url == 1877715009){
-        if grov_hikaru_tauntglow == 0 grov_hikaru_tauntglow = other.hikaru_gearglow
-        if (counterid == other && aura && !beast_deity){
-            if grov_hikaru == false{
-                grov_hikaru = true
-                theirAnim = other.hikaru_walkclone
-                theirAnimSpeed = other.walk_anim_speed;
-                transProj = true;
-                
-                abyssHime_deathspr = theirAnim;
-                set_attack_value(AT_EXTRA_1, AG_SPRITE, other.hikaru_dairclone);
-                set_attack_value(AT_TAUNT_2, AG_SPRITE, other.hikaru_tauntclone);
-            }
-        }
-        else grov_hikaru = false
-    }
-}
-
-// var other_name = ""
-// print(other_name)
 // Dialog Buddy
 if(variable_instance_exists(id,"diag")){
     if other_name == null

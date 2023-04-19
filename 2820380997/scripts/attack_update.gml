@@ -5,13 +5,13 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 //Small Gameplay Effects
 switch(attack){
-	
+	/*
     case AT_NAIR: // Hover
         if(has_hit == true && down_down != true){
             vsp = vsp * .8;
         }
         break;
-    
+    */
     /*
     case AT_DATTACK:
         if(has_hit == true){
@@ -23,19 +23,44 @@ switch(attack){
     case AT_USPECIAL:
     	if(window > 2 && !special_pressed && special_down){
     		set_attack(AT_EXTRA_1);
-    		hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
+    		hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
     		window = 1;
     		window_timer = 1;
     	}
+    	
+    	if(window == 1 and window_timer < 6 && shield_down){
+			destroy_hitboxes();
+    		attack_end();
+    		if(attack == AT_FSPECIAL){
+    			set_attack(AT_FSPECIAL_AIR);
+    			hurtboxID.sprite_index = get_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE);
+    			}
+    		if(attack == AT_USPECIAL){
+    			set_attack(AT_USPECIAL_GROUND);
+    			hurtboxID.sprite_index = get_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE)
+    		}
+    		window = 1;
+    		window_timer = 0;
+    	}
+    	
     	break;
-    case AT_FSPECIAL_2: // can act if she's thrown
+    case AT_FSPECIAL_2: 
     case AT_USPECIAL_2:
-    	if(window > 1){
+    	// can act if she's thrown, but will preserve momentum if holding into the throw
+    	if((window == 1 || window == 2) && (
+    	(spr_dir == 1 && !right_down) || (spr_dir == -1 && !left_down) || // Determine if holding in direction of the throw
+    	attack_down || jump_down || shield_down || // Any button but special is pressed
+    	up_strong_down || down_strong_down || left_strong_down || right_strong_down)){ // Strongs pressed
+    		iasa_script();
+    	}
+    	// Iasa on window 3 and above
+    	if(window > 2){
     		iasa_script();
     	}
     	break;
     	
-    case AT_FSPECIAL_AIR: // add can wall jump to emergency recovery options
+    case AT_FSPECIAL_AIR: // add can wall jump to emergency recovery options and add cooldown to Fspecial emergency recovery
+    	move_cooldown[AT_FSPECIAL_AIR] = 30;
     case AT_USPECIAL_GROUND:
     	can_wall_jump = true;
     	break;
@@ -83,7 +108,6 @@ switch(attack){
 		}
     	break;
     case AT_EXTRA_3:
-    		//print(state_timer);
     	break;
     default:
         break;
@@ -221,7 +245,6 @@ if (attack == AT_DTHROW && clone_dspecial_hit = false && instance_exists(grabbed
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window == 1) {
-			//print(window_timer)
 			if (window_timer == 0) { // Set properties on very first frame of the move
 				grabbed_player_relative_x = grabbed_player_obj.x - x;
 				grabbed_player_relative_y = grabbed_player_obj.y - y;
@@ -229,15 +252,11 @@ if (attack == AT_DTHROW && clone_dspecial_hit = false && instance_exists(grabbed
 				pull_to_y = grabbed_player_relative_y; // - floor(grabbed_player_obj.char_height/2);
 				player_location_start_of_grab_x = x;
 				player_location_start_of_grab_y = y;
-				//print("player_location_start_of_grab_x: " + string(player_location_start_of_grab_x) + "/ player_location_start_of_grab_y: " + string(player_location_start_of_grab_y))
 			}
 			//if(free){ // 
 			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
 			x = player_location_start_of_grab_x + ease_linear(0, pull_to_x, window_timer, window_length); //x + ease_linear(0, pull_to_x, state_timer, 15) - 
 			y = player_location_start_of_grab_y + ease_linear(0, pull_to_y, window_timer, window_length); //y + ease_linear(0, pull_to_y, state_timer, 15) - 
-			//print("player_location_start_of_grab_x: " + string(player_location_start_of_grab_x) + "/ player_location_start_of_grab_y: " + string(player_location_start_of_grab_y))
-			//print(ease_linear(0, pull_to_x, window_timer, window_length));
-			//print(ease_linear(0, pull_to_y, window_timer, window_length));
 		}
 		if (window >= 2) {
 		/*	x = grabbed_player_obj.x
@@ -402,12 +421,10 @@ switch(attack){
         	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
         	clone_uspecial_player_throwing_clone = false;
 			clone_uspecial_clone_throwing_player = true;
-			//print("clone_uspecial_clone_throwing_player: " + string(clone_uspecial_clone_throwing_player));
         }
         else if(window == 2 && window_timer == get_window_value(AT_USPECIAL,2,AG_WINDOW_LENGTH) && !special_down) { // Throwing Clone
         	clone_uspecial_player_throwing_clone = true;
 			clone_uspecial_clone_throwing_player = false;
-			//print("clone_uspecial_player_throwing_clone: " + string(clone_uspecial_player_throwing_clone));
         }
         break;
         
@@ -421,12 +438,10 @@ switch(attack){
         	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
         	clone_fspecial_player_throwing_clone = false;
 			clone_fspecial_clone_throwing_player = true;
-			//print("clone_fspecial_clone_throwing_player: " + string(clone_fspecial_clone_throwing_player));
         }
         else if(window == 2 && window_timer == get_window_value(AT_FSPECIAL,2,AG_WINDOW_LENGTH) && !special_down) { // Throwing Clone
         	clone_fspecial_player_throwing_clone = true;
 			clone_fspecial_clone_throwing_player = false;
-			//print("clone_fspecial_player_throwing_clone: " + string(clone_fspecial_player_throwing_clone));
         }
         break;
     /*
@@ -460,16 +475,13 @@ if(has_hit_player == true && instance_exists(clone_object_ID) == false && specia
 		}
 }
 */
-		
-		//print("attack:" + string(attack))
-		//print("state_timer:" + string(state_timer))
-		//print("special_down:" + string(special_down));
-		//print("special_pressed:" + string(special_pressed));
+
 // Clone Interaction Section
 switch(attack){
 	case AT_NSPECIAL:
 	if(window == 2 && window_timer == 1 && !hitpause){
 		clone_object_ID = instance_create((spr_dir * 30) + x,y,"obj_article1");
+		clone_object_ID.spr_dir = -1 * spr_dir;
 		vfx_smoke_object = spawn_hit_fx(clone_object_ID.x + (0 * spr_dir),clone_object_ID.y-30,vfx_smoke);
 		}
 		break;
@@ -500,6 +512,11 @@ switch(attack){
 	case AT_USPECIAL:
 		if(instance_exists(clone_object_ID) == false && instance_exists(wisp_object_ID) == false && window == 1 && window_timer == 8){
 			clone_object_ID = instance_create((spr_dir * 30) + x,y,"obj_article1");
+			// Added to try to prevent from the clone from spawning into the throw animation on accident sometimes.
+			if(clone_fspecial_player_throwing_clone == true){clone_fspecial_player_throwing_clone = false;}
+			if(clone_fspecial_clone_throwing_player == true){clone_fspecial_clone_throwing_player = false;}
+			if(clone_uspecial_player_throwing_clone == true){clone_uspecial_player_throwing_clone = false;}
+			if(clone_uspecial_clone_throwing_player == true){clone_uspecial_clone_throwing_player = false;}
 		}
 		break;
 		
@@ -512,8 +529,6 @@ switch(attack){
 	var middle_y = (object_ID.hurtboxID.bbox_bottom - object_ID.hurtboxID.bbox_top)/2; //MIDDLE OF HEIGHT
 	grabbed_player_obj_draw_x = floor((middle_y)*dsin(grabbed_player_obj_spr_angle)) * spr_dir //+ hsp if necessary
     grabbed_player_obj_draw_y =  - floor(((middle_y) - (middle_y)*dcos(grabbed_player_obj_spr_angle)))//+ vsp if necessary
-    //print(grabbed_player_obj_draw_x);
-    //print(grabbed_player_obj_draw_y);
 }
 
 #define Add_SFX_To_Attack(window_temp,window_timer_temp,sound_temp,volume_temp,pitch_temp)

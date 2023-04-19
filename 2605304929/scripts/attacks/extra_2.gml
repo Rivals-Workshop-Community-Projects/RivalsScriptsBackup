@@ -160,9 +160,10 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); // 302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_general);
 hitbox_num++;
 
-// 2: Angle Grab hitbox
+// 2: Ankle Grab hitbox
 window_for_hitbox = 6; 
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
@@ -186,7 +187,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 19); //19  - sweetspot sm
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 30);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, -100);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
-//set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
     
 hitbox_num++;
 
@@ -215,6 +216,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, sound_get("bone-crunch"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_general);
 
 hitbox_num++;
 
@@ -246,7 +248,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, 1); // Reset SDI
 set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, 1); // Reset SDI
-
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 /*
 //Template for attacks - 
 

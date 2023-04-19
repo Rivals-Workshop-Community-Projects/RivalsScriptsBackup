@@ -14,3 +14,8 @@ stored_angle = 0;
 knife_set = 0;
 
 old_dir = 0;
+setup = 0;
+no_stopwatch = 0;
+parried = 0;
+
+stun = 0;

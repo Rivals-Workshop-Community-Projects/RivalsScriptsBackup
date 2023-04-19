@@ -42,6 +42,21 @@ if ("ColorLocked" in self && ColorLocked){
 		
 		case 3:
 			// TAG
+			// Tomo Almost Good
+			
+			// New Colors
+			set_character_color_slot( 0, 255, 124, 61 ); //Body
+			set_character_color_slot( 1, 92, 158, 155 ); //Leaf
+			set_character_color_slot( 2, 248, 225, 129 ); //Needle
+			set_character_color_slot( 3, 149, 202, 116 ); //Box
+			
+			set_article_color_slot( 0, 255, 124, 61 ); //Body
+			set_article_color_slot( 1, 92, 158, 155 ); //Leaf
+			set_article_color_slot( 2, 248, 225, 129 ); //Needle
+			set_article_color_slot( 3, 149, 202, 116 ); //Box
+			
+			// Old Colors
+			/*
 			set_character_color_slot( 0, 4, 123, 51 ); //Body
 			set_character_color_slot(1, 255, 222, 135 ); //Leaf
 			set_character_color_slot(2, 255, 204, 54 ); //Needle
@@ -51,6 +66,7 @@ if ("ColorLocked" in self && ColorLocked){
 			set_article_color_slot(1, 255, 222, 135 ); //Leaf
 			set_article_color_slot(2, 255, 204, 54 ); //Needle
 			set_article_color_slot(3, 129, 82, 31 ); //Box
+			*/
 		break;	
 		
 		case 4:

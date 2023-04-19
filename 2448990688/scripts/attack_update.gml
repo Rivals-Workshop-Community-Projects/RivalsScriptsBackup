@@ -17,6 +17,12 @@ if (attack == AT_FSPECIAL){
         move_cooldown[AT_FSPECIAL] = 45;
         can_move = true;
         can_wall_jump = true;
+                if  (window > 2 && left_down && !free){
+            hsp = -5
+        }
+        if  (window > 2 && right_down && !free){
+            hsp = 5
+        }
     }
 if (attack == AT_USPECIAL){
         can_wall_jump = true;
@@ -38,13 +44,13 @@ if (attack == AT_NSPECIAL){
         }
     }
     
-        move_cooldown[AT_NSPECIAL] = 25;
+        move_cooldown[AT_NSPECIAL] = 35;
     }
 
 //Can Move and Jump
 if (attack == AT_FSPECIAL && window > 2 && special_down){
         vsp = -2;
-        
+
     }
 //LMAO
 /*

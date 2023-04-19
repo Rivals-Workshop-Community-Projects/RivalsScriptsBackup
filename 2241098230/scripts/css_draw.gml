@@ -14,9 +14,31 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "Rykenburn"
+var qe_b = string(sprite_get("idle")) //my sneaky trick to make sure every reload refreshes -supersonic
 // ! you can now scroll down until you reach "the primary part you should change."
  
+shader_end();
+prepare_shader();
+switch (alt_cur)
+{
+    case 14: set_outline(15, 56, 15); break; //early access / gameboy
+    default: set_outline(0, 0, 0); break;
+}
+
+shader_start();
+//we need to draw over the portrait so the outline colors apply to it too
+draw_sprite_ext(css_port_select ? sprite_get( "charselect_o" ) : sprite_get( "charselect"), 0, x+8, y+8, 2, 2, 0, c_white, 1);
+
+shader_end();
+prepare_shader(); //resets shader
+
+if ((get_instance_x(cursor_id) >= x + button_cord[0] && get_instance_x(cursor_id) <= x + button_cord[0] + 30) && (get_instance_y(cursor_id) >= y + button_cord[1] && get_instance_y(cursor_id) <= y + button_cord[1] + 26)) {
+	suppress_cursor = true;
+	draw_sprite_ext(sprite_get("css_change"), 1, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_white, 1);
+} else {
+	draw_sprite_ext(sprite_get("css_change"), 0, x + button_cord[0], y + button_cord[1], 1, 1, 0, c_white, 1);
+}
+
 var tmp_cur = 0;
 var tmp_i = [0, 0, 0, 0, 0];
 var tmp_x = [0, 0, 0, 0, 0];
@@ -66,8 +88,6 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 22; // number of alternate color palettes. 0 is the default color, count it accordingly.
-    
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     var col = 0;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
@@ -95,12 +115,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[col,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
-    ce[col,1] = "Abyss" // the name of the alternate color.
-    ce[col,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,1] = "Forest's Howl" // the name of the alternate color.
+    ce[col,2] = "Sylvanos" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
-    ce[col,1] = "EA" // the name of the alternate color.
-    ce[col,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,1] = "Three-Tailed" // the name of the alternate color.
+    ce[col,2] = "Tauros" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "Cursed King" // the name of the alternate color.
@@ -124,12 +144,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[col,2] = "Bowser" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
-    ce[col,1] = "Forest's Howl" // the name of the alternate color.
-    ce[col,2] = "Sylvanos" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,1] = "Abyss" // the name of the alternate color.
+    ce[col,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
-    ce[col,1] = "Three-Tailed" // the name of the alternate color.
-    ce[col,2] = "Tauros" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,1] = "EA" // the name of the alternate color.
+    ce[col,2] = "" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = "Thirty Dollar Haircut" // the name of the alternate color.
@@ -164,9 +184,15 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[col,1] = "Sorcerer of Doom" // the name of the alternate color.
     ce[col,2] = "Dr. Doom" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
+    ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
+    ce[col,1] = "Galactic" // the name of the alternate color.
+    ce[col,2] = "idk man space" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    col++;
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...
+    col_max = col-1; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    
 }
  
 if (ae == "ae"){
@@ -254,6 +280,27 @@ if (color_desc_activate){
  
 //ae code end
  
+ 
+//functions by supersonic
+#define prepare_shader()
+{
+    //init_shader(); fails to generate these variables for some reason,
+    //so we assign them to these completely equivalent values
+    //this allows shader_start() to be run in css_draw.gml!!!
+    static_colorB = colorB;
+    static_colorO = colorO;
+    static_colorT = colorT;
+    static_colorI = colorI;
+    init_shader();
+}
+#define set_outline(r, g, b)
+{
+    //we use this function to add custom outlines to our character's portrait
+    var start = 8*4; //outline
+    static_colorO[start] = r/255;
+    static_colorO[start+1] = g/255;
+    static_colorO[start+2] = b/255;
+}
  
  
 //--- ---

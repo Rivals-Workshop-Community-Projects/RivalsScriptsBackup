@@ -111,7 +111,19 @@ if (attack == AT_FSPECIAL && window = 6){
     move_cooldown[AT_FSPECIAL] = 40;
 }
 
-if (attack == AT_FSPECIAL && window = 3 && free = 1 && window_timer = 6){
+if attack == AT_FSPECIAL && window = 1{
+
+    move_cooldown[AT_FSPECIAL] = 30;
+    if free = 1{
+        fspecial_pratfall = 1;
+    }else{
+        fspecial_pratfall = 0;        
+    }
+    
+}
+
+
+if (attack == AT_FSPECIAL && window = 3 && fspecial_pratfall = 1 && window_timer = 6){
     set_state(PS_PRATFALL);
 }
 
@@ -347,7 +359,9 @@ if (attack == AT_FSPECIAL && (window = 2 || window = 3) && !has_hit_player){
     can_wall_jump = true;
 }
 
-
+if attack == AT_NSPECIAL && window = 3 && window_timer = 1 && free = 1{
+    vsp = -3;
+}
 
 
 if (attack == AT_FSPECIAL && window = 5){
@@ -360,14 +374,15 @@ if (attack == AT_DAIR && taunt_down && window = 5 && window_timer = 4){
     window_timer = 3;
 }
 
-if (attack == AT_NSPECIAL && window < 6){
-    can_move = false;
-    hsp = 0;
-}
+
+
 
 
 if (attack == AT_NSPECIAL && has_hit_player){
+
     if (window = 8){
+            hsp = 0;
+    vsp = 0;
     if (frog_pausetime < 16){
         frog_pausetime = frog_pausetime + 1;
     } 

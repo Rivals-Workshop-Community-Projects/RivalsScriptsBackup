@@ -73,11 +73,3 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, 2);
-
-
-//set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Jump cancel starting on frame " + string(get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH) + 1) + " unless parried.");
-
-//This is why you should place these at the BOTTOM of the attack file - if placed at the TOP, it wouldn't be able to reference window length, or etc, because it would not have been defined yet.
-
-//Referencing data like this, instead of just typing the number 4 manually, is good because if you patch things, it'll update the description automatically.
-//Eg if I made DSpecial's startup 1 frame faster, the jump-cancel description would change to reflect the new speed.

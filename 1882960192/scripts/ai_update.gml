@@ -22,17 +22,6 @@ if (x > ai_target.x and spr_dir = -1) or (ai_target.x > x and spr_dir = 1){
     facing = true;
 }
 
-
-
-if attack != AT_NSPECIAL{ 
-	nearbyhitbox = collision_circle( x-32, y-32, 64, asset_get("pHitBox"), true, true ) 
-	if nearbyhitbox != noone{
-		if nearbyhitbox.player_id != self{
-			shield_pressed = true
-			}
-	}
-}
-
 if attack == AT_JAB {
 	if has_hit && (window == 3 || window == 6) {
 	attack_pressed = true;
@@ -43,6 +32,14 @@ if (get_training_cpu_action() == CPU_FIGHT && temp_level > 5) {
 /// insert custom attack code here, since it should only execute
 /// if the CPU Action is set to Fight
 
+if attack != AT_NSPECIAL{ 
+	nearbyhitbox = collision_circle( x-32, y-32, 64, asset_get("pHitBox"), true, true ) 
+	if nearbyhitbox != noone{
+		if nearbyhitbox.player_id != self{
+			shield_pressed = true
+			}
+	}
+}
 
 // Chase the opponent down
 if (((0 > rangedtimer) or (!ai_recovering and inactive > 20)) and (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) and xdist > 100){

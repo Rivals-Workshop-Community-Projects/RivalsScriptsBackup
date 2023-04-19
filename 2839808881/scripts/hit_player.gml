@@ -81,48 +81,69 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case -1: //Mix
 					//Grants Kirby Mix.
 					case 1985996538: //Ditto
-				case 1985996538: //Ditto	
-				case 1883576466: //Pokemon Ranger	
-				case 2664982578: //Egg?	
-				case 2656419045: //Qua Mario	
-				case 1996010699: //Suitcase	
-				case 2776798757: //Mega Man X	
-				case 1884573731: //Classic Mega Man	
-				case 1892516249: //Mega Man X	
-				case 1890261108: //Mega Man X (LEGACY)	
-				case 2043406919: //Sprite Megaman	
-				case 2408200095: //Mega Man.EXE	
-				case 2469742715: //Ben 10	
-				case 2819584604: //Balanced Mega Man	
-				case 1987236304: //NES Kirby	
-				case 1868756032: //Kirby (luna)	
-				case 2133564470: //Adeleine	
-				case 2426361313: //Nagito Komaeda	
-				case 2081164436: //Doc Robot	
-				case 2635326464: //Mario Kart (ft. Shy Guy)	
-				case 2652079640: //Shrek in a kart	
-				case 2094681709: //Bird Guy in a Car	
-				case 2686241533: //MonkeyCar	
-				case 2250055008: //Venom SST	
-				case 2443231956: //Waluigi	
-				case 1960787130: //Waluigi	
-				case 1895666616: //Division	
-				case 2001969960: //The Worst	
-				case 2615647984: //SSL Kirby	
-				case 2824279381: //SSL Mega Man	
-				case 2667789015: //Eevee [Super Smash Land]	
-					TCG_Kirby_Copy = -1;
-					mixCurrSelected = 1 + random_func(1, 15, true); //Random
+					case 1883576466: //Pokemon Ranger
+					case 2664982578: //Egg?
+					case 2656419045: //Qua Mario
+					case 1996010699: //Suitcase
+					case 2776798757: //Mega Man X
+					case 1884573731: //Classic Mega Man
+					case 1892516249: //Mega Man X
+					case 1890261108: //Mega Man X (LEGACY)
+					case 2043406919: //Sprite Megaman
+					case 2408200095: //Mega Man.EXE
+					case 2469742715: //Ben 10
+					case 2819584604: //Balanced Mega Man
+					case 1987236304: //NES Kirby
+					case 1868756032: //Kirby (luna)
+					case 2133564470: //Adeleine
+					case 2426361313: //Nagito Komaeda
+					case 2081164436: //Doc Robot
+					case 2635326464: //Mario Kart (ft. Shy Guy)
+					case 2652079640: //Shrek in a kart
+					case 2094681709: //Bird Guy in a Car
+					case 2686241533: //MonkeyCar
+					case 2250055008: //Venom SST
+					case 2443231956: //Waluigi
+					case 1960787130: //Waluigi
+					case 1895666616: //Division
+					case 2001969960: //The Worst
+					case 2615647984: //SSL Kirby
+					case 2824279381: //SSL Mega Man
+					case 2667789015: //Eevee [Super Smash Land]
+					case 2855515151: //Dazz
+					case 2848125153: //Mr Monopoly
+					case 2846483965: //Blissey
+					case 2859046287: //Tester the Template Man
+					case 2839808881: //Kirby
+					case 2868367722: //X parasite
+					case 2868962262: //Charlie Brown
+					case 2893413371: //Epala
+					case 2893272211: //Person
+					case 2890017650: //Scampton
+					case 2885950817: //Mr Brown
+					case 2876135889: //Doflamingo
+					case 2874556373: //SSL Bad Ideas
+					case 2871078296: //Mega Man (2022)
+					case 2869759049: //Nonsense
+					case 2904815192: //Mr. Monopoly
+					case 2924885818: //Paimon
+					case 2938398093: //Bort "The Lad" Yoshi
+					case 2936638505: //Sara Chidouin
+					case 2947499397: //John Dice
+					case 2945796136: //Harold
+					case 2949585003: //GameShow Harold
+					case 2944933385: //Pac-Man
+						TCG_Kirby_Copy = -1;
+						mixCurrSelected = 1 + random_func(1, 15, true); //Random
 					sound_stop(sound_get("nspecial_down_ability"))
 				break;
 				
 				case CH_ZETTERBURN: //Zetterburn
 				case CH_FORSBURN: //Forsburn
 				case 2668282910: //Blaziken
-				case 1941608772: //Blaziken
 				case 2558467885: //Dingodile
-				case 2311095319: //Mario
 				case 2078587302: //Mario
+				case 2944680077: //Mario
 				case 1870580396: //Mario
 				case 1875532630: //Mario & Luigi
 				case 2227633571: //Neo Mario
@@ -200,6 +221,27 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2811006507: //SSL G.B.A
 				case 2262699993: //Super Smash Land Mario
 				case 2824997069: //SSL Ronald Mcdonald
+				case 2845587100: //Torchlight Zombie
+				case 2860024078: //DreadBeak
+				case 2860398151: //Kodiak [DE]
+				case 2108895293: //Lyca
+				case 2833804206: //R2-D2
+				case 2801831547: //Rin Kaenbyou
+				case 2448990688: //Scoville
+				case 2882474181: //Lampent
+				case 2885762133: //Brook
+				case 2870524088: //Yonko Luffy
+				case 2906514220: //Kyo Kusanagi
+				case 2904498757: //Peppino
+				case 2904400792: //LDR 100
+				case 2912277205: //Cardinal [LEGACY]
+				case 2929660722: //MeiMay
+				case 2936487814: //100% Roy
+				case 2933305929: //Hotdog
+				case 2932865352: //Portemkin + R
+				case 2945062156: //Mario
+				case 2944933385: //Mario
+				case 2311095319: //Mario
 					TCG_Kirby_Copy = 1; //Fire
 				break;
 					
@@ -240,7 +282,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2406439382: //Seija Kijin
 				case 2827402568: //Aegiomon
 				case 2773863837: //Luz
-				case 2291956759: //SAI
 				case 1897152603: //Lilac
 				case 2697174282: //Lilac the Dragon Girl
 				case 2500535242: //I. M. Meen
@@ -251,7 +292,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2471439958: //Jaunted REDUX
 				case 2396918792: //Marcus
 				case 2802254223: //Darc Sharc
-				case 2136440419: //Hodan
 				case 2741675272: //Fire Emblem Sage
 				case 2187506252: //[OLD] Shirx
 				case 2599438516: //Shyrx
@@ -272,7 +312,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2494517317: //Marisa Kirisame
 				case 2728346517: //God
 				case 2209519554: //Wrys
-				case 2485539286: //Lynk
 				case 2801908639: //Marisa
 				case 2589701676: //Brugalo
 				case 2720972859: //Blaze
@@ -286,6 +325,23 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2642407746: //SSL Christopher Belmont
 				case 2710807847: //SSL FE Mage
 				case 2832180403: //SSL Junko
+				case 2857841114: //Impmon
+				case 2849134176: //Mima
+				case 2859169439: //Calamity Anne
+				case 2862617017: //Sanae Kochiya
+				case 2864785679: //Miracle
+				case 2892961686: //Frieza
+				case 2892046709: //The Shepherd
+				case 2879813992: //Aerith
+				case 2876868838: //SSL Lorna
+				case 2870523164: //Sengoku
+				case 2899563373: //Palutena
+				case 2917685449: //Mercy
+				case 2932444130: //Emmanuel, Artificial Angel
+				case 2931556217: //Remilia Scarlet
+				case 2906927565: //Dispenser
+				case 2912079281: //Chopper
+				case 2611020513: //Saki
 					TCG_Kirby_Copy = 2; //Beam
 				break;
 				
@@ -358,7 +414,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 1910573552: //Green Arrow
 				case 2118432867: //The Invincible Iron Man
 				case 2607332790: //A Wii with a Gun
-				case 2167624888: //Lyca
 				case 1885711901: //KOS-MOS v1.0
 				case 2287107238: //Jett
 				case 2596284015: //Setsuka Chiebukuro
@@ -390,6 +445,26 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2828467031: //SSL Wolf
 				case 2117584528: //Triple Deluxe Kirby
 				case 2841776404: //Susie
+				case 2851611940: //Rico
+				case 2855638778: //Soldier
+				case 2855135577: //SSL Geno
+				case 2846120094: //Doraemon
+				case 2860354024: //Hikari Kurogane
+				case 2860421116: //Justin, a guy
+				case 2894736308: //The Batter
+				case 2888933786: //Kaptain K. Rool
+				case 2877329670: //Finger
+				case 2880168350: //SSL Battle Tonk
+				case 2872760470: //Snaily Snail
+				case 2871758528: //Jacket (Remix)
+				case 2911048812: //Dalek
+				case 2906916649: //Goggles
+				case 2896434873: //Go-Lucky
+				case 2915820228: //Mario With a Gun
+				case 2921407044: //Klock DE
+				case 2930825593: //Vaughn
+				case 2928639593: //Chaos Gamma
+				case 2940946477: //Emmett Graves
 					TCG_Kirby_Copy = 3; //Ranger
 				break;
 				
@@ -500,7 +575,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 1878949757: //Sonic the Hedgehog
 				case 2606508459: //Fernet
 				case 1900202421: //Sion
-				case 2830570682: //Tiff
 				case 2839335343: //Chris
 				case 2432114154: //SAI - m
 				case 1879057993: //Misako (Complete)
@@ -525,6 +599,26 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2837684230: //SSL Hotaru
 				case 2835728848: //SSL Kyanta
 				case 2727225880: //Torren
+				case 2857783701: //Hong Meiling
+				case 2856260215: //Sandbert with a Tablet
+				case 2856139552: //SSF1 Sonic
+				case 2851873208: //Jiren
+				case 2851873155: //Bardock
+				case 2849673475: //Roark
+				case 2848736520: //SSL Akuma
+				case 2847959446: //Jiren
+				case 2861786587: //Bonus Kun
+				case 2869345298: //SSL Charlie
+				case 2890757258: //Shantae
+				case 2880790506: //The Explorer
+				case 2885336444: //SSL Brenda
+				case 2870520031: //Franky
+				case 2910426637: //Father John
+				case 2905773757: //Mama-Sony
+				case 2919253815: //Manh
+				case 2930066171: //Chad DE
+				case 2933259400: //Onizaru
+				case 2911887442: //Inf1n1te
 					TCG_Kirby_Copy = 4; //Fighter
 				break;
 				
@@ -652,6 +746,28 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2835975838: //SSL Aegislash
 				case 1888737963: //Roob
 				case 2504113755: //Nova
+				case 2855312440: //Blade Knight
+				case 2854022542: //Raiden
+				case 2851872940: //Vegito
+				case 2848225066: //Yunica Tovah
+				case 2847856356: //mans
+				case 2844844068: //Mirai Trunks
+				case 2868152990: //Nair
+				case 2894353323: //Harold
+				case 2363013042: //Marselo asaito
+				case 2888528091: //Virgo (DE)
+				case 2888069461: //Jump King
+				case 2885852936: //MaskedMan DE
+				case 2876131562: //Shanks
+				case 2872371940: //Ven-Rysa
+				case 2904732530: //Finn and Jake
+				case 2903805649: //Scizor
+				case 2902717355: //Hassan
+				case 2931357116: //Sora
+				case 2931014721: //FE Cavalier
+				case 2930520152: //Ike
+				case 2934718204: //Hornet
+				case 2947656797: //Saphrey (DE)
 					TCG_Kirby_Copy = 5; //Sword
 				break;
 					
@@ -719,7 +835,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2661352606: //Ray
 				case 2020372134: //Flipnote Frog
 				case 2802451772: //BrewStew
-				case 1871281672: //Squidward
 				case 2802319117: //Wart
 				case 2089363375: //Handy
 				case 2254931693: //Bonby
@@ -742,7 +857,23 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2823366767: //SSL Macka
 				case 2835668066: //SSL Clawitzer
 				case 2841341970: //SSL Yuuma Toutetsu
-				case 2843521167: //Pastele
+				case 2843521167: //Pastelle
+				case 2852423558: //SSL Samurott
+				case 2846298810: //Soap
+				case 2606483115: //Galega
+				case 2136440419: //Hodan
+				case 2291956759: //SAI
+				case 2895815326: //Nuclear Gyarados
+				case 2895402617: //Mira
+				case 2895157780: //Mira (Toilet in Wonderland)
+				case 2882711884: //Spongebob Squarepants
+				case 2874473566: //Neptune
+				case 2896129393: //Rawberry
+				case 2910686680: //Laki
+				case 2898726970: //Bulldoger
+				case 2924333208: //Isaac
+				case 2939560813: //Carbon Roller Deco
+				case 2938023274: //Deeep(dot)io Shark
 					TCG_Kirby_Copy = 6; //Water
 				break;
 					
@@ -790,7 +921,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2605637280: //Dinock w/ Apple
 				case 2399014260: //Captain Toad
 				case 2642998742: //Tsareena
-				case 2448990688: //Scoville
 				case 1887976261: //Annoying Orange
 				case 2802539804: //Cloala
 				case 2030326269: //Flower
@@ -810,6 +940,23 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2840056931: //SSL Corn Cob Monster
 				case 2841541558: //Whispy Woods
 				case 2841806861: //Trolley
+				case 2854485508: //Mamizou Futatsuiwa
+				case 2844696926: //SSL Daisy
+				case 2858800302: //Basil
+				case 2860125814: //Day 1 Lilligant
+				case 2861924796: //Thive
+				case 2895805897: //Watermimic
+				case 2882828107: //Ghost Pepper
+				case 2872343232: //Aria Smite
+				case 2909667246: //Villager
+				case 2909354429: //Kuuroba
+				case 2916041220: //Chomper
+				case 2917111020: //Caterpie
+				case 2917554895: //Pac-Man
+				case 2931502053: //Manzaneitor 3000
+				case 2943926573: //nasugrave.test
+				case 2941680951: //Spice
+				case 2132807608: //DefNotPomme
 					TCG_Kirby_Copy = 7; //Leaf
 				break;
 					
@@ -870,6 +1017,19 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2004919133: //Hat Kid
 				case 2840918059: //Sub-zero
 				case 2830570682: //Tiff
+				case 2853643966: //Minion
+				case 2860567018: //Fumo Cirno
+				case 2868563198: //Polandball
+				case 2894541036: //Minion 2.0
+				case 2885868624: //Sivi
+				case 2904134945: //Noelle Holiday
+				case 2917082599: //Madeline
+				case 2919516752: //Blue
+				case 2923481937: //Wonton
+				case 2008886775: //Nero Claudius
+				case 1915517948: //Wobbling in Rivals!
+				case 2611101267: //D.Smuggler
+				case 1870263669: //Cat
 					TCG_Kirby_Copy = 8; //Ice
 				break;
 					
@@ -885,7 +1045,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2128298462: //Tails
 				case 2128232080: //[OLD] Tails
 				case 2230601893: //gus guy
-				case 2547070158: //Admiral Delores
 				case 1926836320: //Archen
 				case 2626351533: //Morcilo
 				case 2601775097: //Bar Reygard
@@ -963,12 +1122,24 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2840142403: //SSL Copen
 				case 2840669986: //Broom Hatter
 				case 2842873754: //King Dedede
+				case 2849669092: //Wriggle Nightbug
+				case 2396735388: //Zephrie
+				case 2894515725: //Blackbeak
+				case 2889369766: //Sora Toyukanboe
+				case 2878240885: //Bird by User
+				case 2873456228: //Zephyr
+				case 2869345298: //SSL Charlie
+				case 2899431794: //Brenda
+				case 2923701356: //Ollie
+				case 2931408497: //Grace
+				case 2946043340: //Uysal
+				case 2912077854: //Katakuri
+				case 2910938459: //Yarida
 					TCG_Kirby_Copy = 9; //Tornado 
 				break;
 				
 				case CH_MOLLO: //Mollo
 				case 2801695646: //Solid Snake
-				case 2668638714: //Electrode
 				case 1870709992: //Electrode
 				case 2687601440: //Ditto as Electrode
 				case 2170728238: //Monokuma
@@ -990,7 +1161,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2341842959: //Stinker
 				case 2325366840: //Morshu
 				case 2288002784: //Lumity
-				case 2801831547: //Rin Kaenbyou
 				case 1876656531: //Explosion-Propelled Slime
 				case 1997963969: //Peacock (OLD)
 				case 2407716024: //Peacock
@@ -1000,12 +1170,9 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2813743218: //Joe Biden X
 				case 2406639408: //Karen
 				case 2245933402: //Oboama
-				case 2396817161: //Klockwurth
 				case 1867713261: //Almighty TNT
-				case 2606483115: //Galega
 				case 2397064593: //Rouge
 				case 2202646888: //Eggdog
-				case 2611101267: //D.Smuggler
 				case 2540479841: //Wario
 				case 2512197735: //Wario
 				case 1895655773: //Wario
@@ -1048,6 +1215,24 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2834275360: //SSL Ringo
 				case 2201608216: //Blake
 				case 2262012258: //Mr. Dooter
+				case 2848210432: //King K. Rool
+				case 2849261348: //SSL Opa-Opa
+				case 2848169006: //SSL Poppy Bros. Jr.
+				case 2845614848: //Dewi
+				case 2861538244: //Crungle Skrunk
+				case 2866565174: //Sly Cooper
+				case 2895317804: //Albaniaball
+				case 2887929608: //SSL Gustavo Fring
+				case 2877706883: //Vi
+				case 2885831543: //Junichiro
+				case 2871608790: //Azi & Mr. Baggy
+				case 2913598032: //Rattle Me Bones
+				case 2934115392: //Terumi
+				case 2948986806: //Business Bomberman
+				case 2946784030: //Wario
+				case 2946246328: //Waluigi
+				case 2952924678: //Eddie
+				case 2951611530: //Egbert
 					TCG_Kirby_Copy = 10; //Bomb
 				break;
 	
@@ -1129,13 +1314,45 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2668658819: //SSL Cleffa
 				case 2620782865: //SSL Jigglypuff
 				case 2821288602: //SSL Peter Griffin
+				case 2854896436: //Mashin Kai
+				case 2844291202: //Michael Scott
+				case 2859393381: //Phoenix Wright
+				case 2860654227: //Codec Snake
+				case 2860034132: //Gabriel Boric
+				case 2863909689: //Hamood
+				case 2865678343: //troll face
+				case 2868151488: //Howzit (Super Paper Mario)
+				case 2895612943: //Scratch & Bite
+				case 2877828501: //Puppetflip
+				case 2880066265: //Eustace Bagge
+				case 2876273463: //Hotel Luigi
+				case 2876134749: //Whitebeard
+				case 2874616685: //Shy Gal & Shy Guy
+				case 2872992189: //SSL PlaqueboyMax
+				case 2901580507: //Javen_Playz
+				case 2901455799: //ShyGal
+				case 2925807473: //Hazama
+				case 2922189970: //Free Bird
+				case 2941534514: //Disco
+				case 2941243552: //Buster
+				case 2940939030: //Samira
+				case 2940456822: //Earl P.
+				case 2940069199: //Hoshimachi Suisei
+				case 2938095696: //Dee Jay
+				case 2947104312: //Squidward
+				case 1871281672: //Squidward
+				case 2944203759: //Bastet [Jam Build]
+				case 2943878715: //King Coal (JAM BUILD)
+				case 2942375772: //Marti
+				case 2942196774: //King Tide
+				case 2941870676: //Toussant
+				case 2636585625: //Abyss Pomme
 					TCG_Kirby_Copy = 11;//Mike
 					mike_level = 1;
 				break;
 				
 				case 2229832619: //N/A
 				case 2836730753: //Gaster
-				case 2636585625: //Abyss Pomme
 				case 1968648848: //Abyss Hime
 				case 2698963767: //Abyss Mora
 				case 2397078941: //Nullan
@@ -1197,7 +1414,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2272591153: //Oni-Miko-Zero
 				case 2557597143: //turbo clap kid
 				case 2605377553: //Mal
-				case 2363013042: //Marselo asaito
 				case 2791185565: //Sven
 				case 1996022431: //Calamitas
 				case 1880771377: //Wario (Master of Disguise)
@@ -1226,6 +1442,26 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2842104646: //SSL Phasmophobia Ghost Hunter
 				case 2497035129: //Phasmophobia Ghost Hunter
 				case 2843385011: //Dark Matter
+				case 2856176628: //Dark Sonic
+				case 2853436882: //Mr. Incredible Uncanny
+				case 2848199264: //SSL Ms. Game & Watch
+				case 2892961716: //Beerus
+				case 2892500465: //Marselo Diabolos
+				case 2892102710: //Negative Scott
+				case 2890217777: //Null
+				case 2882757791: //Firebrand
+				case 2886663444: //Abyssant
+				case 2876133511: //Blackbeard
+				case 2869581624: //Classic Chara
+				case 2909668306: //Alvis
+				case 2930890186: //Sven
+				case 2927505941: //Itachi Uchiha
+				case 2925810388: //Raidou Kuzunoha
+				case 2939603284: //Cam
+				case 2606989921: //MissingNo.
+				case 2948782115: //Andrew Tate
+				case 2942332620: //Zote the Mighty
+				case 2909196222: //SOMETHING (OMORI)
 					TCG_Kirby_Copy = 12; //Abyssal
 				break;
 				
@@ -1310,6 +1546,25 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2709660769: //SSL Tetromino
 				case 2842986516: //ssl (mus) toki pona
 				case 2842985279: //SSL Unown
+				case 2851199108: //SSL Clepsydra
+				case 2895650073: //Madotsuki
+				case 2894405278: //KEL
+				case 2892961633: //Kid Buu
+				case 2892688938: //Phillip
+				case 2886226643: //Jean
+				case 2875864068: //Silver 2.0
+				case 2872758537: //Dr SSL Mario
+				case 2909668071: //Pauline
+				case 2906702804: //G. Raptor
+				case 2902598138: //Baldi
+				case 2901665237: //Jellicar
+				case 2897141312: //File Explorer
+				case 2922282666: //Anzen
+				case 2936583338: //Sukapon
+				case 2935154317: //SSL Spoink
+				case 2934045532: //Good Cell
+				case 2945616859: //Castel Guide
+				case 2945057721: //Kevight
 					TCG_Kirby_Copy = 13;//ESP
 				break;				
 				
@@ -1392,6 +1647,23 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2822347560: //SSL Eid
 				case 2841254562: //SSL Builderman
 				case 2843458785: //Mr Sir Regitus Gigitus
+				case 2854546562: //Arizona
+				case 2853424572: //Arizona
+				case 2853253577: //Buzzy Beetle
+				case 2847493104: //Jonah Fumo
+				case 2846267633: //e
+				case 2860449829: //SSL Rocky
+				case 2862726537: //Rocky
+				case 2867341866: //Aur
+				case 2876246765: //Chaos Emeralds
+				case 2912302980: //Mawile Plush
+				case 2920097316: //Diogenes (Getting Over It)
+				case 2920880979: //Springo
+				case 2928595710: //Flint Cragley (Super Paper Mario)
+				case 2924948563: //Knuckles (Definitive Echidna)
+				case 2922280596: //Desirae
+				case 2922196552: //Quake
+				case 2943033840: //Sudowoodo
 					TCG_Kirby_Copy = 14;//Drill
 				break;
 				
@@ -1432,14 +1704,13 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2307094493: //Loadent
 				case 2508425343: //Big S.
 				case 2628951201: //JD
-				case 2396735388: //Zephrie
 				case 2294523795: //Kazuki
 				case 2606478015: //R.O.B.
 				case 2142662749: //Ru & Zo
 				case 1978838569: //Pichu
 				case 2042252388: //Plugg
 				case 1946956064: //Gunvolt
-				case 1895275607: //Lode & Puul
+				case 1895275607: //Lode & Puul (Legacy Build)
 				case 2097954859: //Jonathon Joestar (Improved)
 				case 2005846024: //Susie
 				case 2180050029: //Spongebot
@@ -1461,7 +1732,6 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 1870530402: //Travis Touchdown
 				case 2833083376: //Vemmom
 				case 2162127118: //Gamecube
-				case 2833804206: //R2-D2
 				case 2099418807: //Colosso
 				case 2199133504: //Optimus Prime
 				case 2836752410: //Beri
@@ -1477,6 +1747,30 @@ if(my_hitboxID.attack == AT_NSPECIAL){
 				case 2612585677: //Super Smash Land Pikachu
 				case 2823288287: //SSL Twenny
 				case 2837903443: //SSL Silver Sonic
+				case 2846262924: //Ire
+				case 2845592958: //Espacio
+				case 2798743282: //100% Busted Pikachu
+				case 2668638714: //Electrode
+				case 2485539286: //Lynk
+				case 2862345197: //Shelly
+				case 2869246326: //SSL Mecha Sonic
+				case 2894930440: //Niko
+				case 2887334299: //100% accurate ROB
+				case 2872479211: //Jynpii
+				case 2871136791: //Lode & Puul
+				case 2908149654: //Vraz
+				case 2906921482: //Tyler
+				case 2904028974: //SSL Ampharos
+				case 2916748503: //Competitive LTG
+				case 2917082124: //MegaMan.EXE
+				case 2921407337: //Iroh DE
+				case 2929245030: //WEBcat
+				case 2926418973: //Sova
+				case 2925741500: //Robo-Plankton
+				case 2923121510: //Data
+				case 2937645473: //Orbitron
+				case 2949826052: //Ty
+				case 2945067212: //Luigi
 					TCG_Kirby_Copy = 15;//Spark
 				break;				
 				

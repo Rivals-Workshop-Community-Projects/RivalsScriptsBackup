@@ -15,7 +15,7 @@ abilityStolenTracker = 0;
 
 // Physical size
 char_height         = 32;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1;		// 0.9  -  1.2
+knockback_adj       = 1.1;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 3.25;		// 3    -  4.5
@@ -55,7 +55,7 @@ max_djumps          = 4;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 24;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -292,6 +292,8 @@ ranger_aim = 0;
 ranger_charge = 0;
 
 sword_dust_timer = 0;
+sword_charge_timer = 0;
+sword_charged = false;
 
 leaf_fallVFX = hit_fx_create(sprite_get("ability_leaf_fallVFX"), 12);
 

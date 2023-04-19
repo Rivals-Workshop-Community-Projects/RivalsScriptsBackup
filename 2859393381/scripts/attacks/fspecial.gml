@@ -40,6 +40,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .32);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .45);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);

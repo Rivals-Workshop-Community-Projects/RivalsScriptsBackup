@@ -210,6 +210,23 @@ case 29:
 	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("bumbum"));
 	break;}
 
+//howzit
+howzitisthebestshopowner123 = true
+howzittaunttextarr[0] = "Job Bot? Another
+job employee?"
+howzitautoforward[0] = 0
+howzittaunttextarr[1] = "Looks like I got some
+friendly competition"
+howzitautoforward[1] = 0
+//howzit part 2 lol
+howzithasnotso=true
+notsotaunttextarr[0] = "Job Bot? Another
+job employee?"
+notsoautoforward[0] = 0
+notsotaunttextarr[1] = "Atleast I get
+some form of company..."
+notsoautoforward[1] = 0
+
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 muno_event_type = 0;

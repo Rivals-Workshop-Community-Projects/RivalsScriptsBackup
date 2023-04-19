@@ -42,18 +42,17 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 56);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("mantle"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DRIFT_MULTIPLIER, 0.2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 0.2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 194);
 set_hitbox_value(AT_FSPECIAL, 1, HG_GROUNDEDNESS,1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_THROWS_ROCK, 1);
-
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_THROWS_ROCK, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 12);
 
 //Aerial
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
@@ -66,17 +65,17 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 56);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 40);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("mantle"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DRIFT_MULTIPLIER, 0.2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_SDI_MULTIPLIER, 0.2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 194);
 set_hitbox_value(AT_FSPECIAL, 2, HG_GROUNDEDNESS,2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_THROWS_ROCK, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_THROWS_ROCK, 2);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 12);
 
 //Projectiles
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -88,7 +87,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -34);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 68);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 56);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 0);
-set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 40);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 2);
@@ -101,3 +100,4 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 194);
 set_hitbox_value(AT_FSPECIAL, 3, HG_GROUNDEDNESS,2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_THROWS_ROCK, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_LOCKOUT, 10);

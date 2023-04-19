@@ -32,7 +32,7 @@ else if (alt_new != currAlt)
 }
 
 alt_name[0]  = "Cult of the Parasite";
-alt_name[1]  = "Cult of the Lost Angels";
+alt_name[1]  = "Cult of the Abyss";
 alt_name[2]  = "Cult of the Inverse";
 alt_name[3]  = "Cult of the Black Mage";
 alt_name[4]  = "Cult of the KOF";

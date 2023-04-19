@@ -192,8 +192,8 @@ if (baseCombo > 0 && comboBuffer == 0) {
 
 if (currentCombo < 4) {
 	set_hitbox_value(AT_FSTRONG, 4, HG_DAMAGE, 5);
-	set_hitbox_value(AT_FSTRONG, 4, HG_BASE_KNOCKBACK, 7.5);
-	set_hitbox_value(AT_FSTRONG, 4, HG_KNOCKBACK_SCALING, 0.95);
+	set_hitbox_value(AT_FSTRONG, 4, HG_BASE_KNOCKBACK, 8.5);
+	set_hitbox_value(AT_FSTRONG, 4, HG_KNOCKBACK_SCALING, 1);
 	set_hitbox_value(AT_FSTRONG, 4, HG_BASE_HITPAUSE, 18);
 	set_hitbox_value(AT_FSTRONG, 4, HG_HITPAUSE_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 0);
@@ -306,8 +306,8 @@ if (currentCombo < 4) {
 	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 } else {
 	set_hitbox_value(AT_FSTRONG, 4, HG_DAMAGE, 10);
-	set_hitbox_value(AT_FSTRONG, 4, HG_BASE_KNOCKBACK, 8.5);
-	set_hitbox_value(AT_FSTRONG, 4, HG_KNOCKBACK_SCALING, 1);
+	set_hitbox_value(AT_FSTRONG, 4, HG_BASE_KNOCKBACK, 9.75);
+	set_hitbox_value(AT_FSTRONG, 4, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG, 4, HG_BASE_HITPAUSE, 22);
 	set_hitbox_value(AT_FSTRONG, 4, HG_HITPAUSE_SCALING, 0.8);
 	set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 127);
@@ -346,7 +346,7 @@ if (currentCombo < 4) {
 	set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_may_whip2"));
 	
 	set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 15);
-	set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 12);
+	set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 11);
 	set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, 1);
 	set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 22);
 	set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, 1);

@@ -187,7 +187,7 @@ switch (state)
         image_index = 0;
         draw_y = 8 - floor(sin(0.02*state_timer*(2*pi)) * 8);
         
-        if (state_timer == (phone_practice? 1 : 90)) 
+        if (state_timer == (get_match_setting(SET_PRACTICE)? 1 : 90)) 
            spawn_hit_fx(x, y - unown_eye_center_offset, 66);
     } break;
 }

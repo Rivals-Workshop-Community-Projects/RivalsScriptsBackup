@@ -44,6 +44,8 @@ spr_dspecial_chargeboom[0] = get_fx_sprite_pm("fxchargeboom1");
 spr_dspecial_chargeboom[1] = get_fx_sprite_pm("fxchargeboom2");
 spr_dspecial_chargeboom[2] = get_fx_sprite_pm("fxchargeboom3");
 
+spr_specialhold = sprite_get("fxspecialhold");
+
 // SFX
 sfx_hh_dashboost = asset_get("sfx_absa_orb_miss"); /*placeholder*/
 sfx_hh_buff_attack_hit = asset_get("sfx_absa_singlezap1");
@@ -64,7 +66,7 @@ vfx_dspecial_chargedespawn[1] = hit_fx_create_pm("fxchargedespawn2", 16);
 vfx_dspecial_chargedespawn[2] = hit_fx_create_pm("fxchargedespawn3", 16);
 
 vfx_fstrong2_trail = hit_fx_create(sprite_get("fxfstrongtrail"), 16);
-
+vfx_parrycancel = hit_fx_create_pm("fxparrycancel", 10);
 
 
 #define get_fx_sprite_pm(fx_name)

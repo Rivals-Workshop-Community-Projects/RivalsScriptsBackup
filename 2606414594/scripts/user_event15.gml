@@ -248,6 +248,9 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.6", "14 April, 2023");
+initWords("Advertising");
+
 initPatch("1.5", "20 November, 2021");
 initHeader("MunoPhone Touch Firmware v5");
 initSection("Added a new utility var: phone_game_over, which is true when the game has ended and is in the slow-mo at the end.

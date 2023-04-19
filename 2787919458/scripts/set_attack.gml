@@ -1,18 +1,31 @@
 ///#args attack // this line makes code editors not freak out for some reason
 #macro AT_OLD_FAIR 42
-if((move_cooldown[AT_FSTRONG] == 0 && move_cooldown[AT_DSTRONG] == 0 && move_cooldown[AT_USTRONG] == 0)){
+if(runeG || !runeG && (move_cooldown[AT_FSTRONG] == 0 && move_cooldown[AT_DSTRONG] == 0 && move_cooldown[AT_USTRONG] == 0)){
 	if((instance_exists(doge) || instance_exists(shrek_door) || instance_exists(dat_boi))){
 		if(attack == AT_FAIR || attack == AT_BAIR || attack == AT_UAIR || attack == AT_DAIR){
 			if (strong_down || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed){
-				attack = AT_FSTRONG;
+				if(!runeG)attack = AT_FSTRONG;
+				if(runeG){
+					if(instance_exists(shrek_door) && (strong_down && !up_strong_pressed && !down_strong_pressed || right_strong_pressed || left_strong_pressed)){
+						attack = AT_FSTRONG;
+					}
+					if(instance_exists(doge) && up_strong_pressed){
+						attack = AT_USTRONG;
+					}
+					if(instance_exists(dat_boi) && down_strong_pressed){
+						attack = AT_DSTRONG;
+					}
+				}
 			}
 		}
 	}
 }
 curspd_override = false;
 if(instance_exists(shrek_door)){
-	if(attack == AT_DSTRONG || attack == AT_USTRONG){
-	    attack = AT_FSTRONG;
+	if(!runeG){
+		if(attack == AT_DSTRONG || attack == AT_USTRONG){
+		    attack = AT_FSTRONG;
+		}
 	}
 	if(attack == AT_FSTRONG){
 		window = 4;window_timer = 0;
@@ -21,32 +34,21 @@ if(instance_exists(shrek_door)){
 if(attack == AT_BAIR){
 	set_attack_value(AT_BAIR,AG_CATEGORY,1);
 }
-if (attack == AT_JAB){
-	sound_stop(airhorn_sfx);
-	switch(get_player_color(player)){
-		default:
-			airhorn_sfx = sound_play(sound_get("you're"));
-		break;
-		case 15:
-			airhorn_sfx = sound_play(sound_get("you"));
-		break;		
-		case 16:
-			airhorn_sfx = sound_play(sound_get("lamp oil"));
-		break;		
-	}
-	sound_play(sound_get("sfx_sonic_homing_startup"))
-}
 if(instance_exists(dat_boi)){
-	if(attack == AT_FSTRONG || attack == AT_USTRONG){
-	    attack = AT_DSTRONG;
+	if(!runeG){
+		if(attack == AT_FSTRONG || attack == AT_USTRONG){
+		    attack = AT_DSTRONG;
+		}
 	}
 	if(attack == AT_DSTRONG){
 		window = 4;window_timer = 0;
 	}	
 }
 if(instance_exists(doge)){
-	if(attack == AT_FSTRONG || attack == AT_DSTRONG){
-	    attack = AT_USTRONG;
+	if(!runeG){
+		if(attack == AT_FSTRONG || attack == AT_DSTRONG){
+		    attack = AT_USTRONG;
+		}
 	}
 	if(attack == AT_USTRONG){
 		window = 4;window_timer = 0;
@@ -63,7 +65,7 @@ if(up_down && attack == AT_TAUNT){
 	attack = AT_TAUNT_2;
 	CorrectHurtboxes()
 }
-if(right_down && attack == AT_TAUNT && get_player_color(player) == 7){
+if(right_down && attack == AT_TAUNT &&(get_player_color(player) == 7 || get_player_color(player) == 24)){
 	attack = 43;
 }
 

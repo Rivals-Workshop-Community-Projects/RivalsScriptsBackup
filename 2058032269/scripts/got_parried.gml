@@ -4,10 +4,8 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
     orbit_hit = 8;
 }
 
-if (card_count >= 20) {
-    card_count += -20;
-} else if (card_count < 20) {
-    card_count += -(card_count);
-}
-
+if (invincible_super) {
+    card_count = 0;
+    invincible_super = false;
+} else { card_count = clamp(card_count-20, 0, 100) }
 chargeshot_charge = 0;

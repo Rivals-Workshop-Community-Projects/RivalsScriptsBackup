@@ -138,9 +138,9 @@ if (down_charge == 2 && attack_pressed && !free){
 // should be at BOTTOM of file, but above any #define lines
 if (!is_nana){
 
-// if (dd == 3 && special_pressed){
-//     attack = 49;
-// }
+if (dd == 3 && special_pressed){
+    attack = 49;
+}
 
 // if (dd == 3 && attack_pressed){
 

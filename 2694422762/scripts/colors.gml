@@ -196,24 +196,24 @@ set_color_profile_slot( 16, 5, 201, 217, 38 ); //White
 set_color_profile_slot( 16, 6, 254, 255, 0 ); //Eye
 set_color_profile_slot( 16, 7, 254, 255, 0 ); //Eyewhite
 
-// Void fox
-set_color_profile_slot( 17, 0, 255, 255, 255 ); //Fur
-set_color_profile_slot( 17, 1, 255, 255, 255 ); //Fur2
-set_color_profile_slot( 17, 2, 255, 255, 255 ); //Hair
-set_color_profile_slot( 17, 3, 162, 255, 10 ); //Red
-set_color_profile_slot( 17, 4, 105, 105, 105 ); //Suit
-set_color_profile_slot( 17, 5, 109, 154, 94 ); //White
-set_color_profile_slot( 17, 6, 162, 255, 10 ); //Eye
-set_color_profile_slot( 17, 7, 255, 255, 255 ); //Eyewhite
-
 // Show Stopper
-set_color_profile_slot( 18, 0, 255, 204, 0 ); //Fur
-set_color_profile_slot( 18, 1, 255, 204, 0 ); //Fur2
-set_color_profile_slot( 18, 2, 255, 204, 0 ); //Hair
-set_color_profile_slot( 18, 3, 215, 148, 0 ); //Red
-set_color_profile_slot( 18, 4, 215, 148, 0 ); //Suit
-set_color_profile_slot( 18, 5, 255, 204, 0 ); //White
-set_color_profile_slot( 18, 6, 215, 148, 0 ); //Eye
+set_color_profile_slot( 17, 0, 255, 204, 0 ); //Fur
+set_color_profile_slot( 17, 1, 255, 204, 0 ); //Fur2
+set_color_profile_slot( 17, 2, 255, 204, 0 ); //Hair
+set_color_profile_slot( 17, 3, 215, 148, 0 ); //Red
+set_color_profile_slot( 17, 4, 215, 148, 0 ); //Suit
+set_color_profile_slot( 17, 5, 255, 204, 0 ); //White
+set_color_profile_slot( 17, 6, 215, 148, 0 ); //Eye
+set_color_profile_slot( 17, 7, 255, 255, 255 ); //Eyewhite// Gold Rank
+
+//Gold Rank
+set_color_profile_slot( 18, 0, 126, 146, 171 ); //Fur
+set_color_profile_slot( 18, 1, 250, 241, 192 ); //Fur2
+set_color_profile_slot( 18, 2, 241, 195, 29 ); //Hair
+set_color_profile_slot( 18, 3, 241, 195, 29 ); //Red
+set_color_profile_slot( 18, 4, 126, 146, 171 ); //Suit
+set_color_profile_slot( 18, 5, 250, 241, 192 ); //White
+set_color_profile_slot( 18, 6, 160, 151, 204 ); //Eye
 set_color_profile_slot( 18, 7, 255, 255, 255 ); //Eyewhite
 
 // Look a star!
@@ -316,51 +316,16 @@ set_color_profile_slot( 28, 5, 228, 236, 247 ); //White
 set_color_profile_slot( 28, 6, 193, 37, 255 ); //Eye
 set_color_profile_slot( 28, 7, 255, 255, 255 ); //Eyewhite
 
-switch (get_match_setting(SET_SEASON)) {
-  case 1: // valentines
-        // Spring
-        set_color_profile_slot( 29, 0, 255, 168, 214 ); //Fur
-        set_color_profile_slot( 29, 1, 255, 238, 247 ); //Fur2
-        set_color_profile_slot( 29, 2, 255, 238, 247 ); //Hair
-        set_color_profile_slot( 29, 3, 255, 238, 247 ); //Red
-        set_color_profile_slot( 29, 4, 225, 73, 73 ); //Suit
-        set_color_profile_slot( 29, 5, 255, 238, 247 ); //White
-        set_color_profile_slot( 29, 6, 225, 73, 73 ); //Eye
-        set_color_profile_slot( 29, 7, 255, 255, 255 ); //Eyewhite
-    break;
-  case 2: // summer
-        set_color_profile_slot( 29, 0, 104, 208, 247 ); //Fur
-        set_color_profile_slot( 29, 1, 254, 250, 116 ); //Fur2
-        set_color_profile_slot( 29, 2, 246, 165, 48 ); //Hair
-        set_color_profile_slot( 29, 3, 254, 250, 116 ); //Red
-        set_color_profile_slot( 29, 4, 169, 32, 16 ); //Suit
-        set_color_profile_slot( 29, 5, 251, 251, 251 ); //White
-        set_color_profile_slot( 29, 6, 246, 165, 48 ); //Eye
-        set_color_profile_slot( 29, 7, 255, 255, 255 ); //Eyewhite
-    break;
-  case 3: // halloween
-        // Fall
-        set_color_profile_slot( 29, 0, 255, 255, 255 ); //Fur
-        set_color_profile_slot( 29, 1, 255, 255, 255 ); //Fur2
-        set_color_profile_slot( 29, 2, 48, 48, 48 ); //Hair
-        set_color_profile_slot( 29, 3, 199, 33, 0 ); //Red
-        set_color_profile_slot( 29, 4, 101, 104, 107 ); //Suit
-        set_color_profile_slot( 29, 5, 181, 3, 0 ); //White
-        set_color_profile_slot( 29, 6, 201, 30, 0 ); //Eye
-        set_color_profile_slot( 29, 7, 255, 202, 194 ); //Eyewhite
-    break;
-  case 4: // christmas
-        // Winter
-        set_color_profile_slot( 29, 0, 253, 235, 232 ); //Fur
-        set_color_profile_slot( 29, 1, 253, 251, 250 ); //Fur2
-        set_color_profile_slot( 29, 2, 209, 207, 207 ); //Hair
-        set_color_profile_slot( 29, 3, 109, 194, 83 ); //Red
-        set_color_profile_slot( 29, 4, 207, 0, 0 ); //Suit
-        set_color_profile_slot( 29, 5, 109, 194, 83 ); //White
-        set_color_profile_slot( 29, 6, 109, 194, 83 ); //Eye
-        set_color_profile_slot( 29, 7, 255, 255, 255 ); //Eyewhite
-    break;
-}
+// Candy Glow
+set_color_profile_slot( 29, 0, 199, 174, 235 ); //Fur
+set_color_profile_slot( 29, 1, 255, 243, 230 ); //Fur2
+set_color_profile_slot( 29, 2, 199, 174, 235 ); //Hair
+set_color_profile_slot( 29, 3, 255, 243, 230 ); //Red
+set_color_profile_slot( 29, 4, 61, 222, 214 ); //Suit
+set_color_profile_slot( 29, 5, 255, 243, 230 ); //White
+set_color_profile_slot( 29, 6, 61, 222, 214 ); //Eye
+set_color_profile_slot( 29, 7, 255, 255, 255 ); //Eyewhite
+
 // Black Bunny Winning
 set_color_profile_slot( 30, 0, 71, 71, 71 ); //Fur
 set_color_profile_slot( 30, 1, 115, 115, 115 ); //Fur2

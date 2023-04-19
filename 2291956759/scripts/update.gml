@@ -315,11 +315,15 @@ if (state == PS_PRATLAND or state == PS_WALL_JUMP)  && visible = false {
 if state == PS_PRATFALL && visible = false {
 	invincible = true
 	visible = true
-	vsp = 4
-	if y < room_height/2 {
+	vsp = 8
+	if y < room_height - 200 {
 	y += 160
 	} else {
-	y += 80	
+	y = room_height	
+	vsp = -20
+	risefx = spawn_hit_fx(x,y,306)
+	risefx.pause = 4
+	sound_play(asset_get("sfx_bird_sidespecial_start"));
 	}
 
 }

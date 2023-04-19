@@ -8,11 +8,11 @@ if (enable_munophone) {
 	if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
 	
 	//rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100) : make_color_rgb(
-	rainbow_activate = phone_cheats[cheat_skittles];
-	if (rainbow_activate) {
+	//rainbow_activate = phone_cheats[cheat_skittles];
+	/*if (rainbow_activate) {
 		rainbow_color = make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255);
 		set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));
-	}
+	}*/
 	/*
 	rainbow_color
 	    = rainbow_activate ? make_color_hsv((get_gameplay_time() % 128) * 2, 255, 255)
@@ -31,6 +31,12 @@ if (enable_munophone) {
 }
 // End of Muno code
 
+if (party_mode_active) {
+	rainbow_color = make_color_hsv((get_gameplay_time() % 255) * 1, 255, 255);
+	set_character_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));
+	set_article_color_slot(2, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));
+}
+
 if phone_cheats[cheat_perma_final_smash] fs_charge = 200;
 // End of Final Smash additional code
 
@@ -41,6 +47,7 @@ if (((attack == AT_USPECIAL) && (window < 3))
     && ((state == PS_ATTACK_AIR) || (state == PS_ATTACK_GROUND)))
 {
 	if (window == 1) && (window_timer == 1) {
+		sound_stop(current_rocket_sound);
 		current_rocket_sound = sound_play(rocket_sound, true, noone, 1, 0.8);
 	}
 } else {
@@ -85,9 +92,10 @@ if (state == PS_WALL_JUMP) {
 		}
 		*/
 		//fuel_recovery_active = !uspecial_rework;
-		if (energy_floor) && (rocket_fuel < pity_fuel_amount) {
+		/*if (energy_floor) && (rocket_fuel < pity_fuel_amount) {
 			rocket_fuel = pity_fuel_amount;
-		}
+		}*/
+		rocket_fuel += pity_fuel_amount;
 		/*if (!uspecial_rework) {
 			if (pity_available) {
 				rocket_fuel += pity_fuel_amount;
@@ -268,6 +276,38 @@ if (state == PS_CROUCH) {
 	sound_stop(engine_idling_sound);
 	engine_idle_time = 0;
 }
+//print_debug("driving: " + string(driving) + ", penalty frames: " + string(penalty_frames));
+//print_debug("window: " + string(window) + ", window_timer: " + string(window_timer));
+if (driving) {
+	if (penalty_frames < max_penalty_frames) {
+		penalty_frames = max_penalty_frames;
+	}
+} else {
+	if (penalty_frames > 0) {
+		penalty_frames--;
+	}
+}
+
+// nspecial arrow
+if (draw_big_arrow_timer > 0) {
+	draw_big_arrow_timer--;
+	switch (draw_big_arrow_angle) {
+		case 0 :
+			draw_big_arrow_timer_x += draw_big_arrow_drift;
+			break;
+		case 90 :
+			draw_big_arrow_timer_y -= draw_big_arrow_drift;
+			break;
+		case 180 :
+			draw_big_arrow_timer_x -= draw_big_arrow_drift;
+			break;
+		case 270 :
+			draw_big_arrow_timer_y += draw_big_arrow_drift;
+			break;
+		default:
+			break;
+	}
+}
 
 if ((attack == AT_DSPECIAL)
 	&& ((state == PS_ATTACK_AIR) || (state == PS_ATTACK_GROUND)))
@@ -283,6 +323,8 @@ if ((attack == AT_DSPECIAL)
 		spawn_hit_fx(x, y, dspecial_twinkle);
 	}
 }
+
+//print_debug("HSP: " + string(hsp));
 
 /*
 if (state == PS_CROUCH) {
@@ -380,6 +422,11 @@ if (!driving && driving_prev) {
 }
 */
 driving_prev = driving;
+
+
+djumping_prev = djumping;
+djumping = (state == PS_DOUBLE_JUMP);
+
 
 /*
 if (ds_list_size(afterimages) >= num_afterimages_max) {
@@ -585,12 +632,14 @@ with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other &&
 }
 
 
-//print_debug("Player state: " + string(state) + ", prev state: " + string(prev_state));
+//print_debug("Player state: " + get_state_name(state) + ", prev state: " + get_state_name(prev_state) + ", djumps: " + string(djumps) + ", djumping_prev: " + string(djumping_prev));
 //print_debug("Number of charges: " + string(booster_rush_charges));
 //print_debug("Fuel: " + string(rocket_fuel));
 //print_debug("driving: " + string(driving) + ", driving_prev: " + string(driving_prev));
 //print_debug("state: " + get_state_name(state) + ", attack: " + string(attack) + ", window: " + string(window) + ", window_timer: " + string(window_timer));// + "state_prev: " + string(state_prev));
 //print_debug("afterimage countdown: " + string(afterimage_countdown) + "prev: " + string(afterimage_countdown_prev));
+//print_debug("window: " + string(window) + ", window_timer: " + string(window_timer) + ", ustrong_rising_count: " + string(ustrong_rising_count));
+//print_debug("tournament_legal_mode_active: " + string(tournament_legal_mode_active));
 
 // Function to spawn built-in dust effects, courtesy of SupersonicNK
 #define spawn_base_dust

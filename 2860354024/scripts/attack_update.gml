@@ -13,11 +13,17 @@ switch (attack){
 
 timer_end = get_window_value(attack, window, AG_WINDOW_LENGTH) - 1;
 
+
 switch (attack){
 
 case AT_DTILT:
-    if (window == 5 && window_timer == timer_end && !was_parried)
+    if (window == 5 && !was_parried){
+    	if (window_timer == timer_end && has_hit_player)
         set_state(PS_CROUCH);
+        if (window_timer == timer_end*2 && !has_hit_player)
+        set_state(PS_CROUCH);
+        
+    }
     
 
     break;
@@ -118,7 +124,7 @@ case AT_DATTACK:
 break;
 
 case AT_FSTRONG:
-
+	reload_delay = 0;
     if (window == 3 && window_timer == 1  && !hitpause){
         hsp = (-5.5 - (5.5*strong_charge*air_launch_rate)) * spr_dir;
 
@@ -130,8 +136,7 @@ case AT_FSTRONG:
 break;
 
 case AT_USTRONG:
-
-
+	reload_delay = 0;
     if (window == 5 && window_timer == 1  && !hitpause){
         ammo--;
         reload_delay = 0;
@@ -148,8 +153,7 @@ case AT_USTRONG:
 break;
 
 case AT_DSTRONG:
-
-
+	reload_delay = 0;
     if (window == 3 && window_timer == 1  && !hitpause){
 
         ammo--;
@@ -169,6 +173,7 @@ break;
 
 
 case AT_DSTRONG_2:
+	reload_delay = 0;
     can_fast_fall = false;
     if (window == 1){
         vsp *= 0.8;
@@ -185,10 +190,17 @@ case AT_DSTRONG_2:
             }
 
         }
+        else{
+        	if (strong_charge == 15){
+        	smash_charging = false;
+        	window = 2;
+        	window_timer = 0;
+        	}
+        }
     }
 
     if (window == 3 && window_timer == 1 && !hitpause){
-        vsp = (-djump_speed - (djump_speed*strong_charge*air_launch_rate));
+        vsp = (-djump_speed - (djump_speed*strong_charge*dair_launch_rate));
 
         ammo--;
         reload_delay = 0;
@@ -226,8 +238,11 @@ case AT_DSTRONG_2:
 break;
 
 case AT_USTRONG_2:
+	reload_delay = 0;
     can_fast_fall = false;
-    fall_through = true
+    fall_through = true;
+
+
 
     if (!free) && !(window == 1 && window_timer < 3){
         hsp = hsp * 1.5;
@@ -237,8 +252,19 @@ case AT_USTRONG_2:
 
 
     if (window == 1){
+    	
+
         vsp *= 0.8;
         fall_through = true
+        
+        if (smash_charging){
+        	if (strong_charge == 30){
+        	smash_charging = false;
+        	window = 2;
+        	window_timer = 0;
+        	}
+        }
+        
     }
     else if (window != 2)
     {
@@ -246,8 +272,8 @@ case AT_USTRONG_2:
     }
 
     if (window == 3 && window_timer == 1 && !hitpause){
-        hsp = (-10 - (10*strong_charge*air_launch_rate)) * spr_dir;
-        vsp = (4 + (4*strong_charge*air_launch_rate));
+        hsp = (-10 - (10*strong_charge*uair_launch_rate)) * spr_dir;
+        vsp = (4 + (4*strong_charge*uair_launch_rate));
 
         ammo--;
         reload_delay = 0;
@@ -278,15 +304,22 @@ case AT_USTRONG_2:
 break;
 
 case AT_FSTRONG_2:
+	reload_delay = 0;
     can_fast_fall = false;
 
     if (window == 1){
         vsp *= 0.8;
-
+        if (smash_charging){
+        	if (strong_charge == 30){
+        	smash_charging = false;
+        	window = 2;
+        	window_timer = 0;
+        	}
+        }
     }
 
     if (window == 3 && window_timer == 1 && !hitpause){
-        hsp = (-7.5 - (7.5*strong_charge*air_launch_rate)) * spr_dir;
+        hsp = (-7 - (7*strong_charge*fair_launch_rate)) * spr_dir;
 
         ammo--;
         reload_delay = 0;
@@ -451,6 +484,11 @@ case AT_USPECIAL:
 
     if (window == 4){
         can_wall_jump = true;
+    }
+    
+    if (window == 5){
+    	if (excited)
+    	hsp *= 0.5;
     }
 
 

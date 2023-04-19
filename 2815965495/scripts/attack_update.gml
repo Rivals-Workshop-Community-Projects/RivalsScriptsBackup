@@ -8,7 +8,7 @@ switch(attack){
 		break;
 }
 
-if Fcancel >1{
+if Fcancel >1 && !hitpause{
 	Fcancel-=1;
 }
 
@@ -40,8 +40,8 @@ switch(attack){
 				fall_through = false;
 			}
 			if window == 2{
-				can_jump = Fcancel;
-				can_shield = Fcancel;
+					can_jump = (Fcancel==1);
+					can_shield = (Fcancel==1);
 				can_wall_jump = true;
 				if !free{
 					window = 4;
@@ -57,9 +57,15 @@ switch(attack){
 			}
 
 			if window == 3{
+
 				can_wall_jump = true;
 				if left_down{hsp-=0.2;}
 				if right_down{hsp+=0.2;}
+				if state_timer == 30 {
+					Fcancel=4;
+					sound_stop(sound_get("jingle"));
+					sound_play(sound_get("jingle"));
+				}
 				if !free{
 					window = 4;
 					Fcancel=0;
@@ -68,15 +74,9 @@ switch(attack){
 					destroy_hitboxes();
 					hsp=0;
 				}
-				if state_timer >= 28 && free{
-					can_shield = (Fcancel==1);
-					can_jump =(Fcancel==1);
-				} 
-				if state_timer == 28 {
-					Fcancel=4;
-					sound_stop(sound_get("jingle"));
-					sound_play(sound_get("jingle"));
-				}
+				can_shield = (Fcancel==1);
+				can_jump =(Fcancel==1);
+
 			}
 			break;	
 	case AT_UTILT:
@@ -146,8 +146,11 @@ switch(attack){
 			can_fast_fall = false;
 			can_wall_jump =true;
 			can_shield = true;
-			if special_down && window_timer ==4 {
-				window_timer =3;
+			if window_timer == 1 && !hitpause{
+				sound_play(asset_get("sfx_forsburn_cape_swipe"));
+			}
+			if special_down && window_timer ==3 {
+				window_timer =2;
 				//Animation
 				if(special_down){																			
 					timer_special++;																				//Animation Timer
@@ -191,7 +194,7 @@ switch(attack){
 		}
 		if window == 3{
 			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
-			move_cooldown[AT_NSPECIAL] = 12;
+			move_cooldown[AT_NSPECIAL] = 18;
 			if window_timer == 1 {set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, get_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED)+0.75);}
 		}
 		if window == 4{
@@ -203,8 +206,8 @@ switch(attack){
 				hsp += lengthdir_x(1, joy_dir);
 				vsp += lengthdir_y(1, joy_dir);
 			} else {
-				hsp *= .8;
-				vsp *= .6;
+				hsp *= .6;
+				vsp *= .8;
 			}
 			hsp = clamp(hsp, -1.5,1.5);
 			vsp = clamp(vsp, -1.5,1.5);
@@ -226,7 +229,7 @@ switch(attack){
 				create_hitbox( AT_NSPECIAL, 1, x -40 , y +4);	
 				spawn_hit_fx(x-40*spr_dir,y+4, 154 );
 			}
-			move_cooldown[AT_NSPECIAL] = 24;
+			move_cooldown[AT_NSPECIAL] = 27;
 		}
 	
 	break;
@@ -243,6 +246,14 @@ switch(attack){
 				}
 				if window_timer == 6 && !hitpause{
 				sound_play(asset_get("sfx_forsburn_cape_swipe"));
+				}
+					//Movement
+				if !free{
+					if (!joy_pad_idle){
+						hsp += lengthdir_x(.2, joy_dir);
+					} else {
+						hsp *= .6;
+					}
 				}
 
 				if special_down && window_timer ==8 {
@@ -569,6 +580,7 @@ if attack == AT_JAB  {
 	if left_down { hsp-=0.75;}
 	if right_down {hsp +=0.75;}
 	hsp = clamp(hsp,-2,2);
+	can_jump = (Fcancel==1);
 } 
 
 if attack == AT_FTILT  {

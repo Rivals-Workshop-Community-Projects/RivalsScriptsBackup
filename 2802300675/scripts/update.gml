@@ -33,9 +33,18 @@ if(cloud_poison_timer != 0){
 if(player_in_smog = true){
 	valley_outline = true;
 	init_shader();
+	if(get_gameplay_time() % 5 == 0){
+	valley_outline_timer = 0;
+	player_in_smog = false;	
+	}
 }if(player_in_smog = false){
+	if(valley_outline_timer < 5){
+		valley_outline_timer++;
+	}
+	if(valley_outline_timer == 2){
 	valley_outline = false;
 	init_shader();
+	}
 }
 
 if(get_gameplay_time() > 100){

@@ -5,22 +5,26 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 if (attack == AT_USTRONG)
 {
-    can_fast_fall = false;
-    if (window == 5 && window_timer == 9)
-    {
-    if (has_hit)
-    {
-        set_state(PS_AIR_IDLE);
-    }
-    else
-    {
-        set_state(PS_PRATFALL);
-    }
-    }
+	can_fast_fall = false;
+	can_move = false;
+	if (window == 3){
+		if (window_timer == 1){
+		vsp = -9;}
+	}
+	
+}
+
+if (attack == AT_NSPECIAL)
+{
+	if (window == 1 && window_timer == 1)
+	{
+		move_cooldown[AT_NSPECIAL] = 120;//212
+	}
 }
 
 if (attack == AT_FSPECIAL)
 {
+	can_wall_jump = true;
     if (window == 1)
     {
     //transform sfx	
@@ -108,7 +112,7 @@ if (attack == AT_FSPECIAL)
     		}
     	}
     	
-    	if !has_hit && window = 5 {
+    	if !has_hit && window = 5 && free{
     		set_state(PS_PRATFALL)
     	}
     	vsp /= 1.2
@@ -181,7 +185,7 @@ if (attack == AT_DSPECIAL)
     }
     if (!free)
     {
-    move_cooldown[AT_DSPECIAL] = 90;
+    move_cooldown[AT_DSPECIAL] = 240;
     }
     can_fast_fall = false;
     if (window == 3 && window_timer == 7)
@@ -193,18 +197,20 @@ if (attack == AT_DSPECIAL)
         counterBonus = get_player_damage(player) - myDmg;
         set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4 + (counterBonus / 2));
         set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 4 + (counterBonus / 2));
-        set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8 + (counterBonus / 8));
-        set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.65 + (counterBonus / 24));
+        set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 7 + (counterBonus / 8));
+        set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.6 + (counterBonus / 24));
         set_player_damage(player, myDmg);
     }
     }
 }
 
 //JAB
+/*
 if (attack == AT_JAB)
 {
     if (window == 1)
     {
+	   was_parried = false;
     if (window_timer > 15 && attack_pressed)
     {
         window = 2;
@@ -213,6 +219,7 @@ if (attack == AT_JAB)
     }
     if (window == 2)
     {
+	was_parried = false;
     if (window_timer > 15 && attack_pressed)
     {
         window = 3;
@@ -220,13 +227,13 @@ if (attack == AT_JAB)
     }
     }
 }
-
+*/
 //FAIR
 if (attack == AT_FAIR)
 {
 	if (window == 1)
 	{
-		if (window_timer > 16 && attack_pressed)
+		if (window_timer > 16 && (attack_pressed || left_stick_pressed || right_stick_pressed))
 		{
         		window = 2;
 			window_timer = 0;
@@ -235,10 +242,16 @@ if (attack == AT_FAIR)
     		{
         		can_special = true;
     		}
+		if (window_timer == 23)
+		{
+
+        		window = 4;
+			window_timer = 0;
+		}
     	}
     	if (window == 2)
     	{
-    		if (window_timer > 12 && attack_pressed)
+    		if (window_timer > 12 && (attack_pressed || left_stick_pressed || right_stick_pressed))
     		{
         		window = 3;
         		window_timer = 0;
@@ -247,6 +260,12 @@ if (attack == AT_FAIR)
     		{
         		can_special = true;
     		}
+		if (window_timer == 15)
+		{
+
+        		window = 4;
+			window_timer = 0;
+		}
     	}
     	if (window == 3)
     	{
@@ -254,17 +273,11 @@ if (attack == AT_FAIR)
     		{
         		can_special = true;
     		}
-    	}
-}
+		if (window_timer == 15)
+		{
 
-if (attack == AT_DAIR)
-{
-    if (window != 3)
-    {
-	can_fast_fall = false;
-    }
-    else
-    {
-	can_fast_fall = true;
-    }
+        		window = 4;
+			window_timer = 0;
+		}
+    	}
 }

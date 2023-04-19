@@ -39,6 +39,7 @@ bomb_limit = player_id.bomb_limit;
 loose = false;
 
 fusesound = false;
+fusesound2 = false;
 
 oldhb = 0;
 oldat = noone;
@@ -46,3 +47,4 @@ oldat = noone;
 flip_up = false;
 
 bombpause = 0;
+//skull = true;

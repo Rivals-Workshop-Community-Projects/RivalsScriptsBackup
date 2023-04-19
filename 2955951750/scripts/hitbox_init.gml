@@ -1,0 +1,2 @@
+//hitbox_init.gml
+

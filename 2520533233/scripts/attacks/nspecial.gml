@@ -50,7 +50,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_NSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 400);
+set_hitbox_value(AT_NSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 330);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.4);

@@ -56,7 +56,8 @@ spr_dir = player_id.spr_dir;                        //The direction the article 
 uses_shader = true;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
 
 //my stuff
-affinity = 50;                          //0-39 is low, 40 - 139 is medium, 140 - 200 is high
+affinity = 50;                          //0-39 is low, 40 - 139 is medium, 140 - max is high
+affinity_max = 202;
 affinity_level = 1;                     //0 = low, 1 = med, 2 = high
 player_near_x = true;
 player_near_y = true;
@@ -79,7 +80,7 @@ uspec_vfx = noone;
 nspec_animframes = [5, 5, 4, 3, 4, 4, 5, 6];
 fspec_animframes = [2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 8, 4, 6];
 uspec_animframes = [3, 3, 2, 2, 5, 4, 6, 6, 8, 3];
-dspec_animframes = [4, 4, 5, 5, 5, 6, 14, 2, 2];
+dspec_animframes = [4, 4, 5, 5, 5, 6, 12, 2, 2];
 window_timer = -1;
 
 

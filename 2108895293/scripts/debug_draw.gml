@@ -17,3 +17,10 @@ draw_debug_text(x-10,y+30,string(player));
 draw_debug_text(x-10,y+50,string(orig_player));
 }
 */
+
+
+
+
+
+
+

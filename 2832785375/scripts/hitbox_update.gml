@@ -86,5 +86,6 @@ if attack == AT_EXTRA_1 && hbox_num == 2 {
     }
     
     //sprite rotation
-    proj_angle = -darctan(vsp/hsp) - (spr_dir*90);
+    spr_dir = 1
+    proj_angle = -darctan(vsp/hsp) + (spr_dir*90);
 }

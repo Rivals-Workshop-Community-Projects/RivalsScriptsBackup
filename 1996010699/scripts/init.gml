@@ -195,8 +195,11 @@ smokeXP = hit_fx_create(sprite_get("smokeXP"), 20);
 buyFX = hit_fx_create(sprite_get("hit_fx_buy"), 16);
 bubblpop = hit_fx_create(sprite_get("hit_fx_bubblpop"), 4);
 spit = hit_fx_create(sprite_get("hit_fx_spit"), 12);
+spitNair = hit_fx_create(sprite_get("hit_fx_spitNair"), 22);
+spitHit = hit_fx_create(sprite_get("hit_fx_spitHit"), 16);
 abyssbomb = hit_fx_create(sprite_get("hit_fx_abyssbomb"), 48);
 
+/*
 //Katie vfx used with permission from SAI
 smokeKT1 = hit_fx_create(sprite_get("smokeKT1"), 20);
 smokeKT2 = hit_fx_create(sprite_get("smokeKT2"), 20);
@@ -206,7 +209,7 @@ exp1KT = hit_fx_create( sprite_get( "exp1KT" ), 42 );
 exp2KT = hit_fx_create( sprite_get( "exp2KT" ), 42 );
 blast1KT  = hit_fx_create( sprite_get( "blast1KT" ), 9 );
 blast2KT  = hit_fx_create( sprite_get( "blast2KT" ), 9 );
-
+*/
 
 //intro 
 introTimer = -2;
@@ -218,6 +221,7 @@ goldenIntro = false;
 halloweenIntro = false;
 arizonaIntro = false;
 beachIntro = false;
+geneIntro = false;
 champSlot = 1;
 //chiefcase
 chiefcase = false;
@@ -248,10 +252,6 @@ dracula_portrait2 = asset_get("empty_sprite");
 var page = 0;
 //Mt. Dedede Stadium
 arena_title = "The Vault of Aether";
-//Agent N
-ncode1 = "FILE 050 '[A;T?#US' [FILE READ ERROR]"
-ncode2 = "Indiscernable from typical luggage?"
-ncode3 = "[THE ANVIL DESCENDS. SECURE THE VAULT.]"
 //Stickmin
 has_fail = true;
 fail_text = "Your text here";
@@ -309,6 +309,7 @@ crysProj_shotSpeedBonus = 0;
 dairCooldown = 15;
 dairBounce = -8;
 sandStage = 0;
+leafBlower = false;
 //Registration Tracker
 regTracker = 0;
 regBonusDmg = 2;
@@ -515,13 +516,13 @@ item[14, 7] = false; //unlock
 item[14, 8] = sprite_get("hud_shop1");
 item[14, 9] = $b2eaff;
 // Voidbox Experiment, ID 15
-item[15, 0] = "PROTOTYPE MK-7";
-item[15, 1] = "Voidbox Experiment";
+item[15, 0] = "Rivals of Aether - Extended Workshop";
+item[15, 1] = "cancelled item";
 item[15, 2] = sprite_get("item_pandora");
 item[15, 3] = 0;
 item[15, 4] = sprite_get("mini_pandora");
 item[15, 5] = 15;
-item[15, 6] = "CROUCH AMPS STRONGS";
+item[15, 6] = "NOPE";
 item[15, 7] = false;
 item[15, 8] = sprite_get("hud_shop2");
 item[15, 9] = $1818f9;

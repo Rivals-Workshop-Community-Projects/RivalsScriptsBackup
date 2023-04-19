@@ -26,6 +26,10 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 
 
 set_num_hitboxes(AT_DSPECIAL, 0 + has_rune("M") * 1);

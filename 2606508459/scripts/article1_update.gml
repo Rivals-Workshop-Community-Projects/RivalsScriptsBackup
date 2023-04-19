@@ -135,6 +135,19 @@ if (_charge < 0 &&
     flag_destroy = true;
 }
 
+//====> Detect Proximity
+/*
+var txo = 0; //Target X Offset
+var tyo = -25; //Target Y Offset
+
+_inRange = (!c_owner.dip_radius ||
+    (c_callRadius == 0 || //If call_radius is 0 then let it be unimpided
+    point_distance(x, y, c_owner.x + txo, c_owner.y + tyo) <= c_callRadius))
+
+print_debug(point_distance(x, y, c_owner.x + txo, c_owner.y + tyo))
+print_debug(_inRange)
+*/
+
 //====> Calling protocol, reduce charge by one after x frames once
 if (_reduceChargeNSCool == 0 &&
     _reduceChargeNSFlag)
@@ -242,21 +255,6 @@ if (_explode)
     c_owner.dspecial_lastExplosion = _charge
     flag_destroy = true;
 }
-
-//====> Detect Proximity
-var txo = 0; //Target X Offset
-var tyo = -25; //Target Y Offset
-
-_inRange = (!c_owner.dip_radius ||
-    (c_callRadius == 0 || //If call_radius is 0 then let it be unimpided
-    point_distance(x, y, c_owner.x + txo, c_owner.y + tyo) <= c_callRadius))
-
-if (_currHB != noone)
-{
-    
-}
-
-//print_debug(_inRange)
 
 //====> Collide with other fireballs
 if (_currHB != noone)
@@ -657,8 +655,9 @@ if (instance_exists(_currHB))
 if (_postHitCool < 0 &&
     !instance_exists(_currHB)) //This conditions happens only when the above thing happens
 {
-    //spawn_hit_fx(x, y, c_hitFX);
-    _charge--;
+    spawn_hit_fx(x, y, c_hitFX);
+    //_charge--;
+    _charge -= 2; //UPDATE 10-28-2022
     _postHitCool = c_HBPostHitCool * 2;
     _postHitCoolMax = c_HBPostHitCool * 2;
     //flag_destroy = true;

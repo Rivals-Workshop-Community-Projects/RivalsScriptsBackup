@@ -1,4 +1,3 @@
-
 // Seagulls
 play_sound++;
 
@@ -43,4 +42,11 @@ if ambience_on > 0{
     sound_stop(sound_get("sfx_seagulls"));
     play_sound = 0;
     seagull_timer = 0;
+}
+
+with(obj_stage_article){
+   if num == 10{
+       obj_stage_main.bud_train_plat_x = x;
+       obj_stage_main.bud_train_plat_y = y;
+   }
 }

@@ -26,8 +26,9 @@ sprite_change_offset("intro4", 24, 112);
 sprite_change_offset("intro5", 110, 68);
 sprite_change_offset("introAZ", 106, 68);
 sprite_change_offset("introRT", 106, 68);
+sprite_change_offset("introG", 106, 68);
 
-sprite_change_offset("jumpstart", 22, 46);
+sprite_change_offset("jumpstart", 24, 48);
 sprite_change_offset("jump", 66, 122);
 sprite_change_offset("doublejump", 24, 52);
 sprite_change_offset("walljump", 22, 54);
@@ -90,6 +91,7 @@ sprite_change_offset("proj_bubbl", 8, 8);
 sprite_change_offset("xpshards", 14, 14);
 sprite_change_offset("xpshards1", 14, 14);
 sprite_change_offset("xpshards2", 14, 14);
+sprite_change_offset("xpshards3", 14, 14);
 
 sprite_change_offset("coldsnap", 76, 72);
 
@@ -189,6 +191,8 @@ sprite_change_offset("hit_fx_bubbl", 8, 8);
 sprite_change_offset("sparkle", 7, 7); 
 sprite_change_offset("smokeXP", 7, 9); 
 sprite_change_offset("hit_fx_spit", 95, 58);
+sprite_change_offset("hit_fx_spitNair", 45, 84);
+sprite_change_offset("hit_fx_spitHit", 64, 98);
 sprite_change_offset("hit_fx_abyssbomb", 64, 64);
 
 //Katie Hit FX & VFX - Used with permission from SAI

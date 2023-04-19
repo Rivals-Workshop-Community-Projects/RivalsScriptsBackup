@@ -49,7 +49,7 @@ set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
 //set_hitbox_value(AT_DAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 //set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, small);
+set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, uspec_large);
 // set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_DESTROY_EFFECT, blank);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 // set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));

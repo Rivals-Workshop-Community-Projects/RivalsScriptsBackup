@@ -1,5 +1,5 @@
 
-
+/*
 if (attack == AT_FSPECIAL){
 	if (hbox_num == 1){
 		proj_angle = 270*player_id.fspecial_dir;

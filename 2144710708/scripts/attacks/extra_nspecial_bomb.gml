@@ -7,8 +7,6 @@ set_attack_value(AT_DSTRONG_2, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_DSTRONG_2, AG_OFF_LEDGE, 1);
 //set_attack_value(AT_DSTRONG_2, AG_AIR_SPRITE, sprite_get("nspecial_air"));
 set_attack_value(AT_DSTRONG_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
-
-set_attack_value(AT_DSTRONG_2, AG_MUNO_ATTACK_EXCLUDE, 1);
  
 // pull out (note: this should never be frame 4)
 // also firing
@@ -42,7 +40,7 @@ set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 // put away
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
 

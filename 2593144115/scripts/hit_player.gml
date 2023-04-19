@@ -28,7 +28,7 @@ if (my_hitboxID.attack == AT_FTILT)
 	}
 }
 
-if ( my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num > 1 ||
+if ( my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num > 0 ||
 my_hitboxID.attack == AT_FSTRONG || 
 my_hitboxID.attack == AT_FSPECIAL ||
 my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3){
@@ -39,13 +39,39 @@ my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3){
         }
 	    hit_player_obj.amaya_venom = true;
             hit_player_obj.amaya_venom_id = id;
-            hit_player_obj.amaya_venom_count++;
             amaya_venom_consumed = false;
-            if (my_hitboxID.attack == AT_FSTRONG ||
-            my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3 ||
-            my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num = 2 ||
-            my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num = 3) hit_player_obj.amaya_venom_count++; //hitboxes that inflict 2+ venom
-            if (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num = 2) hit_player_obj.amaya_venom_count++; //hitboxes that inflict 3+ venom
+            //hit_player_obj.amaya_venom_count++;
+
+            if (my_hitboxID.attack == AT_FSTRONG)
+            {
+                if (my_hitboxID.hbox_num = 1) hit_player_obj.amaya_venom_count += 2;
+                else hit_player_obj.amaya_venom_count += 3;
+            }
+            if (my_hitboxID.attack == AT_JAB)
+            {
+                hit_player_obj.amaya_venom_count += 2;
+            }
+            if (my_hitboxID.attack == AT_FSPECIAL)
+            {
+                if (my_hitboxID.hbox_num = 2) hit_player_obj.amaya_venom_count += 2;
+                else hit_player_obj.amaya_venom_count += 1;
+            }
+            if (my_hitboxID.attack == AT_NSPECIAL)
+            {
+                if (my_hitboxID.hbox_num = 3) hit_player_obj.amaya_venom_count += 2;
+                else if (my_hitboxID.hbox_num = 2) hit_player_obj.amaya_venom_count += 1;
+                else if (my_hitboxID.hbox_num > 3) hit_player_obj.amaya_venom_count += 1;
+            }
+
+            //if (my_hitboxID.attack == AT_FSTRONG ||
+            //my_hitboxID.attack == AT_JAB ||
+            //my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num = 2 ||
+            //my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num = 3) hit_player_obj.amaya_venom_count++; //hitboxes that inflict 2+ venom
+
+            //if (my_hitboxID.attack != AT_NSPECIAL || my_hitboxID.hbox_num > 1) hit_player_obj.amaya_venom_count++; //hitboxes that inflict 2+ venom
+
+            //if (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num = 2 ||) hit_player_obj.amaya_venom_count++; //hitboxes that inflict 3+ venom
+
             if (hit_player_obj.amaya_venom_count > 4) hit_player_obj.amaya_venom_count = 4;
             else hit_player_obj.amaya_venom_timer = 0;
         }

@@ -11,9 +11,15 @@ if(pandoria == noone){
     pandoria = instance_create(m+(15*spr_dir), get_stage_data(SD_Y_POS), "obj_article1");
     pandoria.spr_dir = spr_dir;
     pandoria.can_tap_jump = can_tap_jump();
-    if(get_player_color(player) > 0){
-        set_victory_portrait(sprite_get("zportrait_alt" + string(get_player_color(player))));
-        set_victory_sidebar( sprite_get("zresult_alt" + string(get_player_color(player))));
+    
+    set_victory_portrait(sprite_get("zportrait_alts"));
+    sprite_change_offset("zportrait_alts", 0, 350 * get_player_color(player));
+    set_victory_sidebar( sprite_get("zresult_alts"));
+    sprite_change_offset("zresult_alts", 0, 350 * get_player_color(player));
+    
+    if(va_enabled){
+        va_type = 0;
+        user_event(0);
     }
 }
 
@@ -294,6 +300,14 @@ with(pandoria){
                 state_timer = 0;
                 window_timer = 0;
                 has_djump = true;
+                if(other.va_enabled > 0){
+                    with(other){
+                        if(va_cd <= 0 && random_func(0, 1, false) > (1 - va_freq_spec)){
+        					va_type = 18;
+        			        user_event(0);
+        			    }
+                    }
+                }
             }
             //fspec electric circus
             else if(((atk_input && (player_id.left_down xor player_id.right_down)) || (player_id.left_strong_pressed xor player_id.right_strong_pressed)) && player_id.window > 2){
@@ -305,6 +319,14 @@ with(pandoria){
                 state = 9;
                 state_timer = 0;
                 window_timer = 0;
+                if(other.va_enabled > 0){
+                    with(other){
+                        if(va_cd <= 0 && random_func(0, 1, false) > (1 - va_freq_spec)){
+        					va_type = 17;
+        			        user_event(0);
+        			    }
+                    }
+                }
             }
             //nspec thunder doom
             else if(atk_input && player_id.window > 2){
@@ -312,6 +334,14 @@ with(pandoria){
                 state = 8;
                 state_timer = 0;
                 window_timer = 0;
+                if(other.va_enabled > 0){
+                    with(other){
+                        if(va_cd <= 0 && random_func(0, 1, false) > (1 - va_freq_spec)){
+        					va_type = 16;
+        			        user_event(0);
+        			    }
+                    }
+                }
             }
         }
     }
@@ -333,8 +363,17 @@ if(in_affinity){
 //affinity test in practice mode
 if(get_match_setting( SET_PRACTICE )){
     if(taunt_down && up_down){
-        pandoria.affinity++;
+        pandoria.affinity += 2;
     }else if(taunt_down && down_down){
-        pandoria.affinity--;
+        pandoria.affinity -= 2;
+    }
+}
+
+pandoria.affinity = clamp(pandoria.affinity, 0, pandoria.affinity_max);
+
+//voice lines
+if(va_enabled){
+    if(va_cd > 0){
+        va_cd--;
     }
 }

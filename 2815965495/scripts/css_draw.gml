@@ -24,9 +24,11 @@ alt_name[16] = "S.D. Parade";
 alt_name[17] = "Second Hand";
 alt_name[18] = "Movement";
 alt_name[19] = "Retro";
+alt_name[20] = "Nacli";
+alt_name[21] = "Glimmora";
 
 
-num_alts = 20;
+num_alts = 22;
 //Alt
 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);

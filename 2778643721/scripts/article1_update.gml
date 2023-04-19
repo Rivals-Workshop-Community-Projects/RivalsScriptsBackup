@@ -644,7 +644,8 @@ if (state == 1){
 	}	//place_meeting(x,y,other.id
 	
 	//Teleports the Apple
-	with (asset_get("obj_article3")){
+	if (instance_exists(player_id.apple) || instance_exists(player_id.apple2) || instance_exists(player_id.apple3)){
+	with (player_id.apple){
 	
 	if (apple_health < 100)	{
 		if (place_meeting(x, y, other)){
@@ -776,6 +777,275 @@ if (state == 1){
 		}
 		
 	
+	}
+	}
+	with (player_id.apple2){
+	
+	if (apple_health < 100)	{
+		if (place_meeting(x, y, other)){
+			if (hsp > 0){
+				apple_hsp = hsp;
+			}
+			else {
+				apple_hsp = -hsp;
+			}
+			if (vsp > 0){
+				apple_vsp = vsp;
+			}
+			else {
+				apple_vsp = -vsp;
+			}
+				if (apple_hsp != 0 && apple_vsp != 0){
+					apple_speed = apple_hsp + apple_vsp;
+					apple_speed = apple_speed/1.1;
+					apple_speed_less = apple_speed/1.25;
+				}
+				if (apple_hsp == 0 && apple_vsp != 0){
+					apple_speed = apple_vsp;
+					apple_speed_less = apple_vsp;
+				}
+				if (apple_hsp != 0 && apple_vsp == 0){
+					apple_speed = apple_hsp;
+					apple_speed_less = apple_hsp;
+				}
+				
+		}
+
+		
+		if (other.portal_number == 1 && other.portal_cooldown == 0 && other.state_timer > 70 && other.state == 1){
+			if (place_meeting(x, y, other)){
+				teleported = true;
+				x = other.player_id.portal2_x;
+				y = other.player_id.portal2_y;
+				charge += 40;
+				other.portal_cooldown = 50;
+				other.player_id.portal2.portal_cooldown = 50;
+				switch (other.portal2_direction){
+					case 1:
+					hsp = 0;
+					vsp = apple_speed*-1.2;
+				    break;
+				    case 2:
+				    hsp = apple_speed_less;
+				    vsp = apple_speed_less*-1;
+				    break;
+				    case 3:
+				    hsp = apple_speed;
+				    vsp = 0;
+				    break;
+				    case 4:
+				    hsp = apple_speed_less;
+				    vsp = apple_speed_less;
+				    break;
+				    case 5:
+					hsp = 0;
+					vsp = apple_speed;
+				    break;
+				    case 6:
+				    hsp = apple_speed_less*-1;
+				    vsp = apple_speed_less;
+				    break;
+				    case 7:
+				    hsp = apple_speed*-1;
+				    vsp = 0;
+				    break;
+				    case 8:
+				    hsp = apple_speed_less*-1;
+				    vsp = apple_speed_less*-1;
+				    break;
+				}
+				if (other.player_id.portal1.state_timer < 690 && other.player_id.portal2.state_timer < 690){
+					other.player_id.portal1.state_timer += 100;
+					other.player_id.portal2.state_timer += 100;
+				}
+			}
+		}
+		
+		if (other.portal_number == 2 && other.portal_cooldown == 0 && other.state_timer > 70 && other.state == 1){
+			if (place_meeting(x, y, other)){
+				teleported = true;
+				x = other.player_id.portal1_x;
+				y = other.player_id.portal1_y;
+				charge += 40;
+				other.portal_cooldown = 50;
+				other.player_id.portal1.portal_cooldown = 50;
+				switch (other.portal1_direction){
+					case 1:
+					hsp = 0;
+					vsp = apple_speed;
+				    break;
+				    case 2:
+				    hsp = apple_speed_less*-1;
+				    vsp = apple_speed_less;
+				    break;
+				    case 3:
+				    hsp = apple_speed*-1;
+				    vsp = 0;
+				    break;
+				    case 4:
+				    hsp = apple_speed_less*-1;
+				    vsp = apple_speed_less*-1;
+				    break;
+				    case 5:
+					hsp = 0;
+					vsp = apple_speed*-1;
+				    break;
+				    case 6:
+				    hsp = apple_speed_less;
+				    vsp = apple_speed_less*-1;
+				    break;
+				    case 7:
+				    hsp = apple_speed;
+				    vsp = 0;
+				    break;
+				    case 8:
+				    hsp = apple_speed_less;
+				    vsp = apple_speed_less;
+				    break;
+				}
+				if (other.player_id.portal1.state_timer < 690 && other.player_id.portal2.state_timer < 690){
+					other.player_id.portal1.state_timer += 100;
+					other.player_id.portal2.state_timer += 100;
+				}
+			}
+		}
+		
+	
+	}
+	}
+	with (player_id.apple3){
+	
+	if (apple_health < 100)	{
+		if (place_meeting(x, y, other)){
+			if (hsp > 0){
+				apple_hsp = hsp;
+			}
+			else {
+				apple_hsp = -hsp;
+			}
+			if (vsp > 0){
+				apple_vsp = vsp;
+			}
+			else {
+				apple_vsp = -vsp;
+			}
+				if (apple_hsp != 0 && apple_vsp != 0){
+					apple_speed = apple_hsp + apple_vsp;
+					apple_speed = apple_speed/1.1;
+					apple_speed_less = apple_speed/1.25;
+				}
+				if (apple_hsp == 0 && apple_vsp != 0){
+					apple_speed = apple_vsp;
+					apple_speed_less = apple_vsp;
+				}
+				if (apple_hsp != 0 && apple_vsp == 0){
+					apple_speed = apple_hsp;
+					apple_speed_less = apple_hsp;
+				}
+				
+		}
+
+		
+		if (other.portal_number == 1 && other.portal_cooldown == 0 && other.state_timer > 70 && other.state == 1){
+			if (place_meeting(x, y, other)){
+				teleported = true;
+				x = other.player_id.portal2_x;
+				y = other.player_id.portal2_y;
+				charge += 40;
+				other.portal_cooldown = 50;
+				other.player_id.portal2.portal_cooldown = 50;
+				switch (other.portal2_direction){
+					case 1:
+					hsp = 0;
+					vsp = apple_speed*-1.2;
+				    break;
+				    case 2:
+				    hsp = apple_speed_less;
+				    vsp = apple_speed_less*-1;
+				    break;
+				    case 3:
+				    hsp = apple_speed;
+				    vsp = 0;
+				    break;
+				    case 4:
+				    hsp = apple_speed_less;
+				    vsp = apple_speed_less;
+				    break;
+				    case 5:
+					hsp = 0;
+					vsp = apple_speed;
+				    break;
+				    case 6:
+				    hsp = apple_speed_less*-1;
+				    vsp = apple_speed_less;
+				    break;
+				    case 7:
+				    hsp = apple_speed*-1;
+				    vsp = 0;
+				    break;
+				    case 8:
+				    hsp = apple_speed_less*-1;
+				    vsp = apple_speed_less*-1;
+				    break;
+				}
+				if (other.player_id.portal1.state_timer < 690 && other.player_id.portal2.state_timer < 690){
+					other.player_id.portal1.state_timer += 100;
+					other.player_id.portal2.state_timer += 100;
+				}
+			}
+		}
+		
+		if (other.portal_number == 2 && other.portal_cooldown == 0 && other.state_timer > 70 && other.state == 1){
+			if (place_meeting(x, y, other)){
+				teleported = true;
+				x = other.player_id.portal1_x;
+				y = other.player_id.portal1_y;
+				charge += 40;
+				other.portal_cooldown = 50;
+				other.player_id.portal1.portal_cooldown = 50;
+				switch (other.portal1_direction){
+					case 1:
+					hsp = 0;
+					vsp = apple_speed;
+				    break;
+				    case 2:
+				    hsp = apple_speed_less*-1;
+				    vsp = apple_speed_less;
+				    break;
+				    case 3:
+				    hsp = apple_speed*-1;
+				    vsp = 0;
+				    break;
+				    case 4:
+				    hsp = apple_speed_less*-1;
+				    vsp = apple_speed_less*-1;
+				    break;
+				    case 5:
+					hsp = 0;
+					vsp = apple_speed*-1;
+				    break;
+				    case 6:
+				    hsp = apple_speed_less;
+				    vsp = apple_speed_less*-1;
+				    break;
+				    case 7:
+				    hsp = apple_speed;
+				    vsp = 0;
+				    break;
+				    case 8:
+				    hsp = apple_speed_less;
+				    vsp = apple_speed_less;
+				    break;
+				}
+				if (other.player_id.portal1.state_timer < 690 && other.player_id.portal2.state_timer < 690){
+					other.player_id.portal1.state_timer += 100;
+					other.player_id.portal2.state_timer += 100;
+				}
+			}
+		}
+		
+	
+	}
 	}
 	}
 	

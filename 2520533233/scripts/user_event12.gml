@@ -37,6 +37,42 @@ var pal_names = [
 	"Bad Apple"
 	];
 
+
+var pal_names_2 = [
+	"Tenshi Hinanawi",
+	"Snappystunner",
+	"Yuuto Ichika",
+	"Nori",
+	"Keiki Haniyasushin",
+	"Seiga Kaku",
+	"Seiran",
+	"Byakuren Hijiri",
+	"Yuyuko Saigyouji",
+	"Yukari Yakumo",
+	"Suika Ibuki",
+	"Reisen Udongein Inaba",
+	"Aya Shameimaru",
+	"Komachi Onozuka",
+	"Iku Nagae",
+	"Flandre Scarlet",
+	"Shinmyoumaru Sukuna",
+	"Utsuho Reiuji",
+	"Tenkyuu Chimata",
+	"Bad Apple",
+	"Clownpiece",
+	"Junko",
+	"Sans Undertale",
+	"Nitori Kawashiro",
+	"Cirno",
+	"Doremy Sweet",
+	"Mike Goutokuji",
+	"Miracle Child",
+	"Mystia Lorelei",
+	"Sacramentum",
+	"Seija Kijin",
+	"Bad Apple"
+	];
+
 if (object_index == oPlayer || object_index == oTestPlayer){
 	if phone_arrow_cooldown && !(phone_arrow_cooldown - 1 < 25 && (phone_arrow_cooldown - 1) % 10 >= 5){
 		draw_sprite_ext(spr_pho_cooldown_arrow, 0, x - 7, y - char_height - hud_offset - 28, 1, 1, 0, get_player_damage(player) >= 100 ? get_player_hud_color(player) : phone_darkened_player_color, 1);
@@ -125,8 +161,11 @@ for(i = 0; i < num_alts; i++){
     var draw_x = i > 15 ? x + 10 + 8 * (i-16): x + 10 + 8 * i;
     rectDraw(draw_x, y + 148 - draw_y, 5, 3, draw_color);
 }
-
-var txt = pal_names[alt_cur];
+if(color_shift){
+	var txt = pal_names_2[alt_cur];
+} else {
+	var txt = pal_names[alt_cur];
+}
 draw_debug_text(floor(x+10), floor(y + 128), string(txt));
 //rectDraw(x + 8, y + 128, 41, 20, c_black);
 //textDraw(x + 10, y + 128, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt);

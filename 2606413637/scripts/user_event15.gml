@@ -28,19 +28,42 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 0;
+num_alts = 22;
 
 // Whether or not to display a name for each alt.
-use_alt_names = false;
+use_alt_names = true;
 
 // Which color slot in your char's colors.gml to use for certain UI elements.
 // Type "noone" to make it always white.
 // (you can also change it to different values depending on the alt, by using
 // get_player_color(player))
-alt_ui_recolor = 0;
+alt_ui_recolor = 1;
 
 // The list of names for the alts, if enabled.
-alt_names = [];
+alt_names = [
+	"Goku",
+	"early DB",
+	"End of DB",
+	"Yardret",
+	"Saiyan Armor",
+	"Casual Jacket",
+	"Sport Suit",
+	"End of DBZ",
+	"GT",
+	"Xeno Goku",
+	"Tien",
+	"Piccolo",
+	"Frieza",
+	"Cell",
+	"Majin Buu",
+	"Vegito",
+	"Goku Black",
+	"Drip",
+	"Golden",
+	"Manga",
+	"GameBoy",
+	"Abyss",
+	];
 
 
 
@@ -178,7 +201,7 @@ var ssj_shortcuts = [
 	"Nothing",
 	"Attack",
 	"Jump",
-	"Jump + Shield or Attack + Shield",
+	"Jump + Shield, or Attack + Shield, or Strong",
 	"Shield",
 	];
 
@@ -265,6 +288,26 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("2.1", "14 April, 2023");
+initWords("Advertising");
+
+initPatch("2.0", "29 November, 2022");
+initSection("(by DrFlux)");
+initHeader("General");
+initSection("Sprite palette changed to allow new alt costumes with more distinct colors.");
+initSection("Removed the hair that displays on the SSJ meter.");
+initSection("Added portraits for SSJ1 and SSJ3 hairstyles, which will display on certain stages.");
+initSection("Added a funny drip alt with custom sprites for FTilt and Taunt.");
+initHeader("SSJ - QoL");
+initSection("Added a third option for entering SSJ Blue: pressing the Strong button during the transformation.");
+initHeader("Mod Compatibility - Additions");
+initSection("Characters: Solid snake interrogations, Hikaru, henry stickman, Agent N, Wall-e, Feri, Po, and gumbo, Pacman, amber (plush), Mamizou Futatsuiwa, Toon Link, T.C.O, Loadent, So Sorry, Spamton, Unregistered Hypercam, Moonchild, Demopan, Moonchild, Naruto,");
+initSection("Stages: Mt Dedede, Boxing arena, Soulbound Conflict, Trial Grounds, pokemon Stadium, Wily Castle, Green flower zone, Last resort, The Thousand-Year Door, Dracula");
+
+initPatch("1.12", "10 November, 2022");
+initHeader("CPU AI");
+initSection("The CPU will now activate its SSJ form when its ki meter fills up.");
 
 initPatch("1.11", "27 June, 2022");
 initHeader("User Interface");

@@ -28,11 +28,6 @@ if (state == PS_SPAWN)
 	energy_meter = 100;
 }
 
-if (state == PS_PARRY && state_timer == 1)
-{
-	energy_meter += 10;
-}
-
 //	Ensure meter never goes above 100
 if (energy_meter > 100) 
 { 

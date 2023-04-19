@@ -7,10 +7,7 @@ var temp_y = y + 9;
 
 
 
-if (get_color_profile_slot_b(0, 0) == 78) {
-    sound_play(sound_get("vileplume_leechseed_fire"), false, 0);
-    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0)+1, get_color_profile_slot_g(0, 0)+1, get_color_profile_slot_b(0, 0)+1);
-}
+
 
  
 if get_player_color(player) == 7 {
@@ -158,8 +155,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[18,0] = make_color_rgb(255, 204, 0)
     ce[18,1] = "Ranked Gold"
     ce[18,2] = "" 
-    ce[19,0] = make_color_rgb(96, 31, 194)
-    ce[19,1] = ""
+    ce[19,0] = make_color_rgb(217, 90, 255)
+    ce[19,1] = "Infamous"
     ce[19,2] = ""    
     ce[20,0] = make_color_rgb(255, 85, 162)
     ce[20,1] = ""

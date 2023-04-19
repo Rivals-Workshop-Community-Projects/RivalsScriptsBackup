@@ -33,7 +33,6 @@ if (my_hitboxID.attack == AT_FSPECIAL) or (my_hitboxID.attack == AT_FSPECIAL_AIR
 		if (!hit_player_obj.clone && hit_player_obj.hitstun > 0) {
 		window = 6;
 		window_timer = 0;
-		hit_player_obj.grabbed = true;
 		hit_player_obj.grabbed_id = id;
 		soul_id = hit_player_obj.id;
 		}

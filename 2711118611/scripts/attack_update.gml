@@ -32,6 +32,8 @@ if (attack == AT_UAIR) {
 if (attack == AT_USPECIAL){
     if (window == 2){
         vsp = 0;
+        hsp = 0;
+        can_move = false;
     }
     if (window == 2 && window_timer == 2) {
         var destination = noone;
@@ -261,8 +263,8 @@ if (state == PS_ATTACK_GROUND && attack == AT_TAUNT && window == 2) {
 
 }
 
-if (attack == AT_JAB && bigiron) {
-    if (window == 1 && (special_pressed || special_down)) {
-        attack = AT_NSPECIAL_2;
-    }
-}
+//if (attack == AT_JAB && bigiron) {
+//    if (window == 1 && (special_pressed || special_down)) {
+//        attack = AT_NSPECIAL_2;
+//    }
+//}

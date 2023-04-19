@@ -11,54 +11,11 @@ if ("prev_alt" in self && prev_alt != alt){
 drawtime += 1;
 prev_alt = alt;
 
+alt_fix = player; //keep this line, on the online css the player is actually player 0, we later go on init_shader to check for this variable
+
 //if (get_color_profile_slot_b(0, 7) == 255) {
 	if(drawtime == 1){
-		if(alt <= 11 || alt == 14 || alt == 15){
-	    	rand = random_func(0, 21, true);
-    	    if(rand == 0){
-    	    	sound_stop(voice);voice = sound_play(sound_get("very skillful"));
-    	    }else if(rand == 1){
-    	    	sound_stop(voice);voice = sound_play(sound_get("lets go"));
-    	    }else if(rand == 2){
-    	    	sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
-    	    }else if(rand == 3){
-    	    	sound_stop(voice);voice = sound_play(sound_get("look at all that cash"));
-    	    }else if(rand == 4){
-    	    	sound_stop(voice);voice = sound_play(sound_get("feeling lucky"));
-    	    }else if(rand == 5){
-    	    	sound_stop(voice);voice = sound_play(sound_get("money money money"));
-    	    }else if(rand == 6){
-    	    	sound_stop(voice);voice = sound_play(sound_get("monopoly byebyenow"));
-    	    }else if(rand == 7){
-    	    	sound_stop(voice);voice = sound_play(sound_get("time to roll the dice"));
-    	    }else if(rand == 8){
-    	    	sound_stop(voice);voice = sound_play(sound_get("take a ride on the railroad"));
-    	    }else if(rand == 9){
-    	    	sound_stop(voice);voice = sound_play(sound_get("money money money"));
-    	    }else if(rand == 10){
-    	    	sound_stop(voice);voice = sound_play(sound_get("you want more"));
-    	    }else if(rand == 11){
-    	    	sound_stop(voice);voice = sound_play(sound_get("be a tycoon like me"));
-    	    }else if(rand == 12){
-    	    	sound_stop(voice);voice = sound_play(sound_get("big bonus"));
-    	    }else if(rand == 13){
-    	    	sound_stop(voice);voice = sound_play(sound_get("dont spend this all in one place"));
-    	    }else if(rand == 14){
-    	    	sound_stop(voice);voice = sound_play(sound_get("i wanna be a millionaire"));
-    	    }else if(rand == 15){
-    	    	sound_stop(voice);voice = sound_play(sound_get("welcome to the tycoon club"));
-    	    }else if(rand == 16){
-    	    	sound_stop(voice);voice = sound_play(sound_get("turbo jackpot"));
-    	    }else if(rand == 17){
-    	    	sound_stop(voice);voice = sound_play(sound_get("we need high numbers here"));
-    	    }else if(rand == 18){
-    	    	sound_stop(voice);voice = sound_play(sound_get("you own it all"));
-    	    }else if(rand == 19){
-    	    	sound_stop(voice);voice = sound_play(sound_get("jackpot"));
-    	    }else if(rand == 20){
-    	    	sound_stop(voice);voice = sound_play(sound_get("free money"));
-    	    }
-	    }else if(alt == 12){
+		if(alt == 12){
 			rand = random_func(0, 9, true);
     	    if(rand == 0){
     	    	sound_stop(voice);voice = sound_play(sound_get("thats the big time"));
@@ -92,7 +49,7 @@ prev_alt = alt;
     	    }else if(rand == 4){
     	    	sound_stop(voice);voice = sound_play(sound_get("feel the power"));
     	    }
-	    }else if(alt == 16){
+	    }else if(alt == 17){
 			rand = random_func(0, 7, true);
     	    if(rand == 0){
     	    	sound_stop(voice);voice = sound_play(sound_get("thats the big time"));
@@ -109,7 +66,7 @@ prev_alt = alt;
     	    }else if(rand == 6){
     	    	sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
     	    }
-	    }else if(alt == 18){
+	    }else if(alt == 19){
 			rand = random_func(0, 2, true);
     	    if(rand == 0){
     	    	sound_stop(voice);voice = sound_play(sound_get("wario go"));
@@ -173,8 +130,58 @@ prev_alt = alt;
     	    }
 	    }else if(alt == 24){
 			sound_stop(voice);voice = sound_play(sound_get("snow miser"));
+	    }else if(alt == 26){
+			rand = random_func(0, 2, true);
+    	    if(rand == 0){
+    	    	sound_stop(voice);voice = sound_play(sound_get("toadsworth noise"));
+    	    }else if(rand == 1){
+    	    	sound_stop(voice);voice = sound_play(sound_get("toadsworth noise 2"));
+    	    }
 	    }else{
-			sound_stop(voice);
+	    	rand = random_func(0, 21, true);
+    	    if(rand == 0){
+    	    	sound_stop(voice);voice = sound_play(sound_get("very skillful"));
+    	    }else if(rand == 1){
+    	    	sound_stop(voice);voice = sound_play(sound_get("lets go"));
+    	    }else if(rand == 2){
+    	    	sound_stop(voice);voice = sound_play(sound_get("im feeling lucky today"));
+    	    }else if(rand == 3){
+    	    	sound_stop(voice);voice = sound_play(sound_get("look at all that cash"));
+    	    }else if(rand == 4){
+    	    	sound_stop(voice);voice = sound_play(sound_get("feeling lucky"));
+    	    }else if(rand == 5){
+    	    	sound_stop(voice);voice = sound_play(sound_get("money money money"));
+    	    }else if(rand == 6){
+    	    	sound_stop(voice);voice = sound_play(sound_get("monopoly byebyenow"));
+    	    }else if(rand == 7){
+    	    	sound_stop(voice);voice = sound_play(sound_get("time to roll the dice"));
+    	    }else if(rand == 8){
+    	    	sound_stop(voice);voice = sound_play(sound_get("take a ride on the railroad"));
+    	    }else if(rand == 9){
+    	    	sound_stop(voice);voice = sound_play(sound_get("money money money"));
+    	    }else if(rand == 10){
+    	    	sound_stop(voice);voice = sound_play(sound_get("you want more"));
+    	    }else if(rand == 11){
+    	    	sound_stop(voice);voice = sound_play(sound_get("be a tycoon like me"));
+    	    }else if(rand == 12){
+    	    	sound_stop(voice);voice = sound_play(sound_get("big bonus"));
+    	    }else if(rand == 13){
+    	    	sound_stop(voice);voice = sound_play(sound_get("dont spend this all in one place"));
+    	    }else if(rand == 14){
+    	    	sound_stop(voice);voice = sound_play(sound_get("i wanna be a millionaire"));
+    	    }else if(rand == 15){
+    	    	sound_stop(voice);voice = sound_play(sound_get("welcome to the tycoon club"));
+    	    }else if(rand == 16){
+    	    	sound_stop(voice);voice = sound_play(sound_get("turbo jackpot"));
+    	    }else if(rand == 17){
+    	    	sound_stop(voice);voice = sound_play(sound_get("we need high numbers here"));
+    	    }else if(rand == 18){
+    	    	sound_stop(voice);voice = sound_play(sound_get("you own it all"));
+    	    }else if(rand == 19){
+    	    	sound_stop(voice);voice = sound_play(sound_get("jackpot"));
+    	    }else if(rand == 20){
+    	    	sound_stop(voice);voice = sound_play(sound_get("free money"));
+    	    }
 		}
 	    //set_color_profile_slot(0, 7, get_color_profile_slot_r(0, 7), get_color_profile_slot_g(0, 7), get_color_profile_slot_b(0, 7) + 1);
 	}
@@ -186,15 +193,15 @@ if ("portrait" in self){
 	draw_sprite_ext(sprite_get("charselectbg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 	
 	if ("prev_alt2" in self && prev_alt2 != alt){
-	    portrait = random_func(0, 2, true);
+	    portrait = random_func(0, 3, true);
 	    if(portrait == 0){
 		    //set_victory_portrait(sprite_get("portrait1"));
 		    set_victory_sidebar(sprite_get("result_small_1"));
 	    }else if(portrait == 1){
 		    set_victory_sidebar(sprite_get("result_small_2"));
-	    }/*else if(portrait == 2){
+	    }else if(portrait == 2){
 		    set_victory_sidebar(sprite_get("result_small_3"));
-	    }*/
+	    }
 	}
 	
 	prev_alt2 = alt;
@@ -203,22 +210,22 @@ if ("portrait" in self){
 	    draw_sprite_ext(sprite_get("charselect_1"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 	}else if(portrait == 1){
 	    draw_sprite_ext(sprite_get("charselect_2"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
-	}/*else if(portrait == 2){
+	}else if(portrait == 2){
 	    draw_sprite_ext(sprite_get("charselect_3"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
-	}*/
+	}
 	     
 	if(portrait > 2){
 	    portrait = 0;
 	}
 }else{
-	portrait = random_func(0, 2, true);
+	portrait = random_func(0, 3, true);
 	if(portrait == 0){
 		set_victory_sidebar(sprite_get("result_small_1"));
 	}else if(portrait == 1){
 		set_victory_sidebar(sprite_get("result_small_2"));
-	}/*else if(portrait == 2){
+	}else if(portrait == 2){
 		set_victory_sidebar(sprite_get("result_small_3"));
-	}*/
+	}
 }
 
 muno_event_type = 6;

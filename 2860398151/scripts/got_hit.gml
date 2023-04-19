@@ -27,3 +27,9 @@ old_hsp *= 0.70;
 old_vsp *= 0.70;
 
 move_cooldown[AT_USPECIAL] = 0;
+
+if (grabbed_player_obj != noone)
+{
+    grabbed_player_obj 			= noone;
+	grabbed_player_obj.hitstop 	= 0;
+}

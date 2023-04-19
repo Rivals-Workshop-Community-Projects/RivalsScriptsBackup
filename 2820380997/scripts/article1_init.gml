@@ -16,6 +16,7 @@ image_blend = c_white;
 image_index = 0;
 image_xscale = 1;
 image_yscale = 1;
+image_alpha = 1;
 
 // Movement Variables
 walk_speed = 2;
@@ -42,6 +43,7 @@ clone_has_djump = true;
 clone_has_air_dash = true;
 clone_air_dash_direction = 0;
 on_platform = false;
+clone_can_tap_jump = false;
 
 // Other Variables
 unbashable = 1;
@@ -57,6 +59,7 @@ plat_despawn_timer = 10;
 plat_temp_x = 0;
 plat_temp_y = 0;
 
+/* OLD
 // Set Sprites to Variables
 spawn_sprite = sprite_get("clone_spawn");
 idle_sprite = sprite_get("idle");
@@ -98,6 +101,49 @@ wisp_idle_sprite = sprite_get("wisp_idle");
 wisp_travel_sprite = sprite_get("wisp_travel");
 
 plat_clone_assist_sprite = sprite_get("plat_clone_assist");
+
+*/
+// Pulls sprite index from player to ensure correct skin is used
+spawn_sprite = player_id.clone_spawn_sprite
+idle_sprite = player_id.clone_idle_sprite
+idle_flourish_sprite = player_id.clone_idle_flourish_sprite
+walk_sprite = player_id.clone_walk_sprite
+jumpstart_sprite = player_id.clone_jumpstart_sprite
+jump_sprite = player_id.clone_jump_sprite
+doublejump_sprite = player_id.clone_doublejump_sprite
+doublejump_backward_sprite = player_id.clone_doublejump_backward_sprite
+land_sprite = player_id.clone_land_sprite
+taunt_sprite = player_id.clone_taunt_sprite
+hurt_sprite = player_id.clone_hurt_sprite
+landing_lag_sprite = player_id.clone_landing_lag_sprite
+waveland_sprite = player_id.clone_waveland_sprite
+
+dspecial_sprite = player_id.clone_dspecial_sprite
+dspecial_hurt_sprite = sprite_get("dspecial_hurt"); // Enable for hurtbox editing
+dspecial_up_sprite = player_id.clone_dspecial_up_sprite
+dspecial_up_hurt_sprite = sprite_get("dspecial_up_hurt"); // Enable for hurtbox editing
+dspecial_down_sprite = player_id.clone_dspecial_down_sprite
+dspecial_down_hurt_sprite = sprite_get("dspecial_down"); // Enable for hurtbox editing
+dthrow_partial_sprite = player_id.clone_dthrow_partial_sprite
+dthrow_full_sprite = player_id.clone_dthrow_full_sprite
+dthrow_team_sprite = player_id.clone_dthrow_team_sprite
+fspecial_sprite = player_id.clone_fspecial_sprite
+fspecial_2_sprite = player_id.clone_fspecial_2_sprite
+fspecial_air_sprite = player_id.clone_fspecial_air_sprite
+uspecial_sprite = player_id.clone_uspecial_sprite
+uspecial_2_sprite = player_id.clone_uspecial_2_sprite
+nspecial_sprite = player_id.clone_nspecial_sprite
+utilt_sprite = player_id.clone_utilt_sprite // Used for clone assist attack
+
+airdash_forward_sprite = player_id.clone_airdash_forward_sprite
+airdash_backward_sprite = player_id.clone_airdash_backward_sprite
+airdash_upward_sprite = player_id.clone_airdash_upward_sprite
+airdash_downward_sprite = player_id.clone_airdash_downward_sprite
+
+wisp_idle_sprite = player_id.clone_wisp_idle_sprite
+wisp_travel_sprite = player_id.clone_wisp_travel_sprite
+
+plat_clone_assist_sprite = player_id.clone_plat_clone_assist_sprite
 
 // Attack Variables
 current_hitbox = noone;

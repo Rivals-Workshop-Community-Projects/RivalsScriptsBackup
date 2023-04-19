@@ -39,7 +39,7 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 12);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+//set_window_value(AT_USPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_USPECIAL, 8);
 

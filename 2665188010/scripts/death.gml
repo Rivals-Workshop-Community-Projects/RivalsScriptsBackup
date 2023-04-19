@@ -11,5 +11,6 @@ with pHitBox{
         if type = 2 destroyed = true;
     }
 }
-player_id.move_cooldown[AT_NSPECIAL] = 0;
-player_id.move_cooldown[AT_DSPECIAL] = 0;
+move_cooldown[AT_NSPECIAL] = 0;
+move_cooldown[AT_FSPECIAL] = 0;
+move_cooldown[AT_DSPECIAL] = 0;

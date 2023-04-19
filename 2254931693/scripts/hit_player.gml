@@ -20,6 +20,8 @@ if ((my_hitboxID.attack == AT_USPECIAL || my_hitboxID.attack == AT_USPECIAL_GROU
 
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num = 1){
+    hsp = 0;
+    vsp = 0;
     if  (hit_player_obj.state_cat = SC_HITSTUN){
     window = 8;
     nspecial_grabbedplayer = hit_player_obj;

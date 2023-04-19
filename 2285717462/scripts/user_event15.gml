@@ -246,6 +246,9 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.11", "14 April, 2023");
+initWords("Advertising");
+
 initPatch("1.10", "22 October, 2021");
 initHeader("General");
 initSection("Added a new Cheat.");

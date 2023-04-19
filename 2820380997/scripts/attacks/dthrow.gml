@@ -114,6 +114,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, y_offset_temp);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_ice_uspecial_start"));
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
     set_attack_value(attack, 81, "Start");//AG_MUNO_ATTACK_NAME
     
 hitbox_num++;
@@ -141,6 +142,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, x_offset_temp);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, y_offset_temp);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
     set_attack_value(attack, 81, "Burn " + string(hitbox_num));//AG_MUNO_ATTACK_NAME
 }
 
@@ -169,6 +171,7 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, y_offset_temp);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.2); // Mirror Clarien Grab
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
     set_hitbox_value(attack, hitbox_num, 81, "Finisher");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
@@ -210,6 +213,7 @@ hitbox_num++;
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
     set_hitbox_value(attack, hitbox_num, 80, 1);//HG_MUNO_HITBOX_EXCLUDE
 hitbox_num++;
 
@@ -250,6 +254,7 @@ hitbox_num++;
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
     set_hitbox_value(attack, hitbox_num, 80, 1);//HG_MUNO_HITBOX_EXCLUDE
 hitbox_num++;
 
@@ -294,6 +299,7 @@ hitbox_num++;
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
     set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, 1.2); // Mirror Clarien Grab
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
     set_hitbox_value(attack, hitbox_num, 80, 1);//HG_MUNO_HITBOX_EXCLUDE
     hitbox_num++;
     

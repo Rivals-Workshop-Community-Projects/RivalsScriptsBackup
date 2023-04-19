@@ -37,21 +37,29 @@ switch(attack){
 			if(window_timer == 8){
 				airhorn_sfx = sound_play(sound_get("dorito_bag"));
 			}
-			if(window_timer >= 8 && window_timer <= 12){
-				var horizontal = right_down - left_down;
-				if(horizontal != 0){
-					spr_dir = horizontal;
-				}				
-			}			
 		}
 		if(free && !nspec_stall){
 			vsp = min(vsp,3);
 			hsp = sign(hsp)*lerp(abs(hsp), 0, .04); 
 		}
 		if(window == 1 && !hitpause){
-			if(window_timer == phone_window_end && !instance_exists(dorito_hb)){
+			if(window_timer == phone_window_end-2 && !instance_exists(dorito_hb)){
 				sound_play(asset_get("sfx_swipe_medium2"))
-				dorito_hb = create_hitbox(AT_NSPECIAL,1,x+20*spr_dir,y-60);//var collision_dorito = create_hitbox(AT_NSPECIAL,5,x+20*spr_dir,y-60);collision_dorito.depth=depth-4;
+				dorito_hb = create_hitbox(AT_NSPECIAL,1,x+30*spr_dir,y-70);//var collision_dorito = create_hitbox(AT_NSPECIAL,5,x+20*spr_dir,y-60);collision_dorito.depth=depth-4;
+	        	if(right_down && spr_dir == 1 || left_down && spr_dir == -1){
+	        		if(up_down){
+	        			dorito_hb.hsp *= 1.5;dorito_hb.vsp *= 1.2;
+	        		}else{
+	        			dorito_hb.hsp *= 1.75;dorito_hb.vsp *= 0.5;
+	        		}
+	        	}else if(right_down && spr_dir == -1 || left_down && spr_dir == 1){
+	        		dorito_hb.hsp *= -0.4;dorito_hb.vsp *= 1.2;
+	        	}else if(up_down){
+	        		dorito_hb.hsp *= 0.5;dorito_hb.vsp *= 1.5;
+	        	}else if(down_down){
+	        		dorito_hb.hsp *= 0.2;dorito_hb.vsp *= 0.5;
+	        		if(!free && freemd)dorito_hb.dorito_hp = 4;
+	        	}				
 				move_cooldown[AT_NSPECIAL] = 999;
 			}
 		}
@@ -89,9 +97,9 @@ switch(attack){
 			if(window_timer >= 12){
 				can_wall_jump = true;
 			}
-			if(window_timer == 1){
+			if(window_timer == 6){
 				if !free{
-					vsp = -6;
+					vsp = -5;
 				}
 				hsp = 16*spr_dir;
 				if(!trigger_warning)
@@ -229,7 +237,41 @@ switch(attack){
 		}
 	break;
 	case AT_NAIR:
-	hsp = clamp(hsp,-2,2);
+	hsp *= .98;
+	vsp *= .99;
+	if(window == 1){
+		if(window_timer == 1){
+			hit_attack_timer = 0;
+			for(i = 2; i <= 3; i++){
+				reset_hitbox_value(AT_NAIR, i, HG_WIDTH);
+				reset_hitbox_value(AT_NAIR, i, HG_HEIGHT);	
+			}			
+		}
+		if(has_hit_player){
+			hit_attack_timer++;
+			for(i = 2; i <= 3; i++){
+				set_hitbox_value(AT_NAIR, i, HG_WIDTH, 70);
+				set_hitbox_value(AT_NAIR, i, HG_HEIGHT, 70);	
+			}
+		}
+		can_attack = (hit_attack_timer >= 6);
+		move_cooldown[AT_NAIR] = 2;
+		if(window_timer == 3 && !hitpause){
+			sound_play(asset_get("sfx_ori_stomp_spin"));
+		}
+		if(window_timer == phone_window_end && !hitpause){
+			spawn_hit_fx(x+80*spr_dir,y-30,fx_sound_wave)
+			var thing2 = spawn_hit_fx(x+80*-spr_dir,y-30,fx_sound_wave)thing2.spr_dir = -spr_dir;			
+			sound_stop(asset_get("sfx_ori_stomp_spin"));
+			sound_play(sound_get("airhorn"));
+		}
+	}else if(window == 3){
+		vsp *= .95;
+	}
+	if(!free){
+		sound_stop(asset_get("sfx_ori_stomp_spin"));
+	}
+	/*
 		for(i = 0; i <= 12; i++){
 			reset_hitbox_value(AT_NAIR, i, HG_WIDTH);
 			reset_hitbox_value(AT_NAIR, i, HG_HEIGHT);
@@ -275,7 +317,7 @@ switch(attack){
 					sound_stop(airhorn_sfx)
 				}
 			}
-		}
+		}*/
 	break;
 	case AT_FSTRONG://To anyone here wondering why I didn't do this in hitbox_init.gml welllllll it didn't work. It refused to change it, I added a print function and it printed but the damage didn't change. I tried to change it on DStrong and it worked so idfk
 		if(window == 1){
@@ -294,7 +336,7 @@ switch(attack){
 			if(window_timer == phone_window_end && !was_parried){
 				if(!instance_exists(shrek_door)){
 					charged_summon = strong_charge >= 30;
-					shrek_door = create_hitbox(AT_FSTRONG, 1, x+54*spr_dir, y-6);
+					shrek_door = create_hitbox(AT_FSTRONG, 3, x+54*spr_dir, y-46);
 				}				
 			}
 		}
@@ -330,7 +372,7 @@ switch(attack){
 			if(window_timer == phone_window_end && !was_parried){
 				if(!instance_exists(dat_boi)){
 					charged_summon = strong_charge >= 30;
-					dat_boi = create_hitbox(AT_DSTRONG, 1, x+60*spr_dir, y-10);
+					dat_boi = create_hitbox(AT_DSTRONG, 1, x+60*spr_dir, y-46);
 				}				
 			}			
 		}
@@ -365,7 +407,7 @@ switch(attack){
 					}else if(strong_charge == 60){
 						charged_summon = 2;	
 					}
-					doge = create_hitbox(AT_USTRONG, 1, x+46*spr_dir, y);
+					doge = create_hitbox(AT_USTRONG, 1, x+56*spr_dir, y-30);
 				}					
 			}
 		}
@@ -377,6 +419,7 @@ switch(attack){
 			if(window_timer == 11 && instance_exists(doge)){
 				move_cooldown[AT_USTRONG] = 999;
 				doge.doge_speak = true;
+				doge.num = 1;
 				doge.hitbox_timer = 0;
 			}
 		}
@@ -481,6 +524,9 @@ switch(attack){
 	case AT_DTILT:
 		if(state_timer == 1){
 			dtilt_mash = 0;
+			hit_attack_timer = 0;
+			reset_hitbox_value(AT_DTILT, 1, HG_DAMAGE);
+			reset_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING);
 		}
 		if(window >= 2 && !was_parried){
 			can_jump = true;
@@ -495,11 +541,25 @@ switch(attack){
 				dtilt_mash+=1;
 				spin_sound = sound_play(sound_get("sfx_sonic_spindash_charge"))
 				clear_button_buffer(PC_ATTACK_PRESSED);
+				if(dtilt_mash > 1){
+					set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 6*1.5+dtilt_mash);
+					set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .7+dtilt_mash/30);
+				}
 			}
 			if(!down_down && !attack_down || (dtilt_mash == 5 && !runeF || dtilt_mash == 69 && runeF)){
 				window = 2;window_timer = 0;
 				var dust = spawn_hit_fx(x-30*spr_dir,y,fx_dust_sharp_big)dust.spr_dir=-spr_dir;
 				sound_stop(spin_sound)sound_play(sound_get("sfx_sonic_spindash_turn"))
+			}
+			if(dtilt_mash <= 2){
+				set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 11);
+				set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 6);
+			}else if(dtilt_mash >= 3 && dtilt_mash < 5){
+				set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 5);
+				set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 6);
+			}else if(dtilt_mash >= 5){
+				set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+				set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 5);
 			}
 		}else if(window == 2 && !hitpause && !was_parried){
 			curspd_override = false;
@@ -516,7 +576,10 @@ switch(attack){
 				hsp *= .97;
 				vsp = min(vsp,3)
 			}
-		}
+			if(has_hit_player){
+				hit_attack_timer++;
+			}
+		}can_attack = (hit_attack_timer >= 6);
 	break;
 	case AT_TAUNT:
 		if window_timer == phone_window_end - 80 && !hitpause{
@@ -592,33 +655,49 @@ switch(attack){
 		}
 	break;	
 	case AT_JAB:
-		if(window == 4 && window_timer == phone_window_end && !hitpause){
-			sound_stop(airhorn_sfx);
-			switch(get_player_color(player)){
-				default:
-					airhorn_sfx = sound_play(sound_get("too"));
-				break;
-				case 15:
-					airhorn_sfx = sound_play(sound_get("tube"));
-				break;				
-				case 16:
-					airhorn_sfx = sound_play(sound_get("rope"));
-				break;		
+		if(!trigger_warning){
+			if(window == 1 && window_timer == 3 && !hitpause){
+				sound_stop(airhorn_sfx);
+				switch(get_player_color(player)){
+					default:
+						airhorn_sfx = sound_play(sound_get("you're"));
+					break;
+					case 15:
+						airhorn_sfx = sound_play(sound_get("you"));
+					break;		
+					case 16:
+						airhorn_sfx = sound_play(sound_get("lamp oil"));
+					break;		
+				}
+				sound_play(sound_get("sfx_sonic_homing_startup"))			
+			}else if(window == 4 && window_timer == phone_window_end && !hitpause){
+				sound_stop(airhorn_sfx);
+				switch(get_player_color(player)){
+					default:
+						airhorn_sfx = sound_play(sound_get("too"));
+					break;
+					case 15:
+						airhorn_sfx = sound_play(sound_get("tube"));
+					break;				
+					case 16:
+						airhorn_sfx = sound_play(sound_get("rope"));
+					break;		
+				}
+			}else if(window == 7 && window_timer == 1 && !hitpause){
+				sound_stop(airhorn_sfx);
+				switch(get_player_color(player)){
+					default:
+						airhorn_sfx = sound_play(sound_get("slow"));
+					break;
+					case 15:
+						airhorn_sfx = sound_play(sound_get("poop"));
+					break;				
+					case 16:
+						airhorn_sfx = sound_play(sound_get("bombs"));
+					break;		
+				}		    
 			}
-		}else if(window == 7 && window_timer == 1 && !hitpause){
-			sound_stop(airhorn_sfx);
-			switch(get_player_color(player)){
-				default:
-					airhorn_sfx = sound_play(sound_get("slow"));
-				break;
-				case 15:
-					airhorn_sfx = sound_play(sound_get("poop"));
-				break;				
-				case 16:
-					airhorn_sfx = sound_play(sound_get("bombs"));
-				break;		
-			}		    
-		}	
+		}
 	break;
 	case AT_UAIR:
 		if(window == 2 && window_timer == 2 && !hitpause){

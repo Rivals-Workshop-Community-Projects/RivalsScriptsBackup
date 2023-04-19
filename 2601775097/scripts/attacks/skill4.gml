@@ -44,6 +44,8 @@ set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
+set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_uptilt_single"));
 
 window_num ++; //flash
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);

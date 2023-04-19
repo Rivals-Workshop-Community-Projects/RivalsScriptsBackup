@@ -44,6 +44,14 @@ if(pandy_control){
 			player_id.window = 4;
 			player_id.window_timer = 6;
         }
+        if(player_id.va_enabled > 0){
+			with(player_id){
+				if(va_cd <= 0 && random_func(0, 1, false) > (1 - 1)){
+					va_type = 19;
+			        user_event(0);
+			    }
+			}
+		}
 	}
 }
 
@@ -92,12 +100,20 @@ if(y > room_height){
     }
     vsp = -5;
     hsp = 0;
+    if(player_id.va_enabled > 0){
+		with(player_id){
+			if(va_cd <= 0 && random_func(0, 1, false) > (1 - 1)){
+				va_type = 19;
+		        user_event(0);
+		    }
+		}
+	}
 }
 
 var affinitywaslow = (affinity_level < 2);
 
 //affinity handling
-affinity = clamp(0, affinity, 200);
+affinity = clamp(affinity, 0, affinity_max);
 
 if(affinity >= 140){
 	affinity_level = 2;
@@ -107,7 +123,7 @@ if(affinity >= 140){
 	affinity_level = 0;
 }
 
-//if just reached max affinity, once per match if in neutral states, do a special anim
+//if just reached max affinity, once per stock if in neutral states, do a special anim
 if(affinity_level == 2 && affinitywaslow && affinityanim && !pandy_control &&
 (state == 1 || state == 6 || state == 7)){
 	affinityanim = false;
@@ -203,7 +219,7 @@ case 1:
 		y += 5;
         state = 14;
         state_timer = 0;
-    }else if(!pandy_control && (x < stage_x || x > room_width - stage_x) && !place_meeting(x + (45 * spr_dir), y + 5, asset_get("par_jumpthrough"))){
+    }else if(!pandy_control && (x < stage_x || x > room_width - stage_x) && !place_meeting(x + (45 * spr_dir), y + 5, asset_get("par_jumpthrough"))  && mask_index == mask_index2){
         state = 14;
         state_timer = 0;
         y -= 2;
@@ -308,8 +324,8 @@ case 8:
 	fall_through = false;
 	if (hsp != 0) hsp -= (free? player_id.air_friction : player_id.ground_friction) * spr_dir;
 	if(sign(hsp) == sign(spr_dir) * -1) hsp = 0;
-	vsp = clamp(-10, vsp, 2);
-	hsp = clamp(-4, hsp, 4);
+	vsp = clamp(vsp, -10, 2);
+	hsp = clamp(hsp, -4, 4);
 	if(state_timer == 0) image_index = 0;
     can_attack = false;
     window_timer++;
@@ -362,8 +378,8 @@ case 9:
 	fall_through = false;
 	if (hsp != 0) hsp -= (free? player_id.air_friction : player_id.ground_friction) * spr_dir;
 	if(sign(hsp) == sign(spr_dir) * -1) hsp = 0;
-	vsp = clamp(-10, vsp, 2);
-	hsp = clamp(-4, hsp, 4);
+	vsp = clamp(vsp, -10, 2);
+	hsp = clamp(hsp, -4, 4);
 	if(state_timer == 0) image_index = 0;
     can_attack = false;
     window_timer++;
@@ -417,8 +433,8 @@ case 10:
 	fall_through = false;
 	if (hsp != 0) hsp -= (free? player_id.air_friction : player_id.ground_friction) * spr_dir;
 	if(sign(hsp) == sign(spr_dir) * -1) hsp = 0;
-	vsp = clamp(-10, vsp, 2);
-	hsp = clamp(-4, hsp, 4);
+	vsp = clamp(vsp, -10, 2);
+	hsp = clamp(hsp, -4, 4);
 	if(state_timer == 0) image_index = 0;
     can_attack = false;
     window_timer++;
@@ -493,7 +509,7 @@ case 12:
 	fall_through = false;
 	if (hsp != 0) hsp -= player_id.ground_friction * spr_dir;
 	if(sign(hsp) == sign(spr_dir) * -1) hsp = 0;
-	vsp = clamp(-10, vsp, 2);
+	vsp = clamp(vsp, -10, 2);
 	if(state_timer == 0) image_index = 0;
     can_attack = false;
     window_timer++;
@@ -524,7 +540,7 @@ case 13:
 	vsp = 0;
     if(sign(hsp) == sign(spr_dir) * -1) hsp = 0;
     if(state_timer >= player_id.jump_start_time){
-	    hsp = clamp(-(player_id.leave_ground_max + 0.5), hsp, (player_id.leave_ground_max + 0.5));
+	    hsp = clamp(hsp, -(player_id.leave_ground_max + 0.5), (player_id.leave_ground_max + 0.5));
 	    if(pandy_control){
 	    	//fullhop
     	    if(player_id.jump_down || (player_id.up_down && can_tap_jump)){
@@ -549,8 +565,8 @@ case 13:
 //State 14: Jump
 case 14:
 	if (abs(hsp > abs(0.3))) hsp -= player_id.air_friction * sign(hsp);
-	hsp = clamp(-(player_id.leave_ground_max - 1), hsp, player_id.leave_ground_max - 1);
-	vsp = clamp(-player_id.jump_speed, vsp, (fastfall? player_id.fast_fall : player_id.max_fall));
+	hsp = clamp(hsp, -(player_id.leave_ground_max - 1), player_id.leave_ground_max - 1);
+	vsp = clamp(vsp, -player_id.jump_speed, (fastfall? player_id.fast_fall : player_id.max_fall));
 	
 	//get back to the mf stage!!
 	if(!pandy_control){
@@ -602,7 +618,17 @@ case 15:
 	
 //State 16: Affinity Max flourish
 case 16:
-	if(state_timer == 20) sound_play(asset_get("sfx_frog_fspecial_charge_full"), false, noone, 0.7, 1.0);
+	if(state_timer == 20){
+		sound_play(asset_get("sfx_frog_fspecial_charge_full"), false, noone, 0.7, 1.0);
+		if(player_id.va_enabled > 0){
+			with(player_id){
+				if(va_cd <= 0 && random_func(0, 1, false) > (1 - va_freq_spec)){
+					va_type = 15;
+			        user_event(0);
+			    }
+			}
+		}
+	}
 	else if(state_timer >= 40){
 		state = 1;
 		state_timer = 0;

@@ -50,7 +50,7 @@ switch (state) {
 
         partner_distance = point_distance(x, y, receiving_unit_id.x, receiving_unit_id.y - 40);
         //if the baton reaches the partner, activate it
-        if (partner_distance < move_speed) {
+        if (partner_distance < move_speed && state_timer >= 10) {
              x = receiving_unit_id.x;
             y = receiving_unit_id.y - 40;
             hsp = 0;

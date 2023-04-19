@@ -15,6 +15,7 @@ if (my_hitboxID.attack == AT_NSPECIAL){
 	if(my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4){
 		window = 4;
 		window_timer = 0;
+		grabbed_id = hit_player_obj;
 		destroy_hitboxes();
 	}if(my_hitboxID.hbox_num == 5){
 		nspecial_grab_failed = 1;

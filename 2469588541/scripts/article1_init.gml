@@ -9,7 +9,7 @@ image_yscale = 2;
 state = 0;
 newState = 0;
 state_timer = 0;
-animSpeed = 4;
+animSpeed = 6;
 
 can_be_grounded = false;
 ignores_walls = false;
@@ -25,6 +25,7 @@ checkMerge = false;
 cracked = false;
 crackedTimer = 0;
 crackedMax = 69;
+hitArray = 0;
 
 old_hsp = 0;
 old_vsp = 0;
@@ -38,36 +39,38 @@ replacedCount = 0;
 var i = 0;
 with (asset_get("obj_article1")) if (player_id == other.player_id)
 {
-    i += isBig+1;
-    replacedCount = i;
+	i += isBig+1;
+	replacedCount = i;
 }
 
 if (!has_rune("M"))
 {
-    KillStar(NoOfStars(), 1);
+	KillStar(NoOfStars(), 1);
 }
 
 #define KillStar(_noOfStars, _cracked)
 {
-    var noOfStars = _noOfStars;
-    var deletedSmth = false;
-    with (GetFarthestStar())
-    {
-	    if (noOfStars > maxArticles && (!_cracked||cracked))
-        {
-            isDespawn = true;
-            deletedSmth = true;
-            --noOfStars;
-        }
-    }
-    if (noOfStars > maxArticles) KillStar(noOfStars, deletedSmth);
+	var noOfStars = _noOfStars;
+	var deletedSmth = false;
+	var farthestStar = GetFarthestStar();
+	if (farthestStar == noone) return;
+	with (farthestStar)
+	{
+		if (noOfStars > maxArticles && (!_cracked||cracked))
+		{
+			isDespawn = true;
+			deletedSmth = true;
+			--noOfStars;
+		}
+	}
+	if (noOfStars > maxArticles) KillStar(noOfStars, deletedSmth);
 }
 
 #define NoOfStars()
 {
-    var i = 0;
-    with (asset_get("obj_article1")) if (player_id == other.player_id && !isDespawn && state != 2) i += isBig+1;
-    return i;
+	var i = 0;
+	with (asset_get("obj_article1")) if (player_id == other.player_id && !isDespawn && state != 2) i += isBig+1;
+	return i;
 }
 
 #define GetFarthestStar()

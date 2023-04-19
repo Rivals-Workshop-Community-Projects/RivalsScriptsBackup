@@ -302,7 +302,7 @@ with phone{
 	UTIL_ATTACK		= pho_initUtil("Spam Attack", attack_list, attack_names, "Makes the CPU spam a certain attack. Set the CPU action to Crouch for ground moves, and Jump for air moves.
 	
 	(If the action is Jump, this Utility will also try to force the CPU to shorthop.)");
-	UTIL_CPU		= pho_initUtil("CPU Behavior Changes", [1, 0], ["On", "Off"], "Makes changes to some base-game CPUs to make them better training dummies, removing annoying side effects when recovering.
+	UTIL_CPU		= pho_initUtil("CPU Behavior Changes", [0, 1], ["Off", "On"], "Makes changes to some base-game CPUs to make them better training dummies, removing annoying side effects when recovering.
 	
 		Zetterburn, Maypul, and Ranno cannot inflict their status effects.
 		

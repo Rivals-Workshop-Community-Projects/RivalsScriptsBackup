@@ -23,3 +23,5 @@ neutral_attacks[0] = AT_DSPECIAL;
 neutral_attacks[1] = AT_NAIR;
 
 ai_state = 0;
+waveland = false;
+topcustom = 0;

@@ -14,7 +14,7 @@ set_color_profile_slot_range( 2, 17, 31, 13 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 22 );
 
 // Shiny
 set_color_profile_slot( 1, 0, 148, 197, 205 ); //Base
@@ -77,7 +77,7 @@ set_color_profile_slot( 12, 1, 181, 181, 181 ); //Mouth
 set_color_profile_slot( 12, 2, 255, 79, 79 ); //Smoke
 
 // Charjing
-set_color_profile_slot( 13, 0, 232, 225, 74 ); //Base
+set_color_profile_slot( 13, 0, 219, 213, 70 ); //Base
 set_color_profile_slot( 13, 1, 214, 212, 210 ); //Mouth
 set_color_profile_slot( 13, 2, 119, 93, 222 ); //Smoke
 
@@ -92,8 +92,8 @@ set_color_profile_slot( 15, 1, 239, 25, 99 ); //Mouth
 set_color_profile_slot( 15, 2, 232, 232, 232 ); //Smoke
 
 // S.D. Parade
-set_color_profile_slot( 16, 0, 186, 153, 133 ); //Base
-set_color_profile_slot( 16, 1, 161, 120, 89 ); //Mouth
+set_color_profile_slot( 16, 0, 153, 153, 153 ); //Base
+set_color_profile_slot( 16, 1, 237, 216, 78 ); //Mouth
 set_color_profile_slot( 16, 2, 242, 142, 51 ); //Smoke
 
 // snolid's super cool special alt cause he is awesome
@@ -110,6 +110,16 @@ set_color_profile_slot( 18, 2, 255, 237, 82 ); //Smoke
 set_color_profile_slot( 19, 0, 106, 156, 79 ); //Base
 set_color_profile_slot( 19, 1, 167, 186, 64 ); //Mouth
 set_color_profile_slot( 19, 2, 211, 226, 154 ); //Smoke
+
+// Nacli
+set_color_profile_slot( 20, 0, 211, 162, 144 ); //Base
+set_color_profile_slot( 20, 1, 239, 139, 60 ); //Mouth
+set_color_profile_slot( 20, 2, 229, 229, 228 ); //Smoke
+
+// Glimmora
+set_color_profile_slot( 21, 0, 95, 117, 217 ); //Base
+set_color_profile_slot( 21, 1, 107, 107, 107 ); //Mouth
+set_color_profile_slot( 21, 2, 237, 227, 88 ); //Smoke
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

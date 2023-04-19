@@ -87,8 +87,11 @@ set_color_profile_slot( 5, 6, 36, 77, 148 ); //Poncho2
 set_color_profile_slot( 5, 7, 43, 44, 61 ); //Blue
 
 // Void
-set_color_profile_slot( 6, 0, 110, 255, 0 ); //Energy
-set_color_profile_slot( 6, 1, 110, 255, 0 ); //Eye
+// such a shame
+//set_color_profile_slot( 6, 0, 110, 255, 0 ); //Energy
+//set_color_profile_slot( 6, 1, 110, 255, 0 ); //Eye
+set_color_profile_slot( 6, 0, 255, 0, 0 ); //Energy
+set_color_profile_slot( 6, 1, 255, 0, 0 ); //Eye
 set_color_profile_slot( 6, 2, 0, 0, 0 ); //Eye2
 set_color_profile_slot( 6, 3, 255, 255, 255 ); //Fur1
 set_color_profile_slot( 6, 4, 211, 197, 230 ); //Fur2

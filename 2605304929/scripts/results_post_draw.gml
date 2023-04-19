@@ -15,8 +15,8 @@ print(split_var[2]); // Round Start Dialog
 //results_post_draw.gml
 if(flag_win_quote_enabled == true && winner == player){
     // Create Timer
-    if("results_timer" not in self){results_timer = 0}
-    results_timer++;
+    if("run_timer" not in self){run_timer = 0}
+    run_timer++;
 
     // Code from Frtoud for smuggling hitbox data
     // Relies on unload.gml sending over a persistent hitbox with said data
@@ -30,14 +30,14 @@ if(flag_win_quote_enabled == true && winner == player){
     
     // Set Timer and transparncey Effect
     var duration_for_transparency_effect = 500;
-    var current_transparency = results_timer / duration_for_transparency_effect;
+    var current_transparency = run_timer / duration_for_transparency_effect;
     
     // Clamp Values to prevent out of bounds if left waiting on results screen
     current_transparency = clamp(current_transparency,0,1);
-    results_timer = clamp(results_timer,0,duration_for_transparency_effect);
+    run_timer = clamp(run_timer,0,duration_for_transparency_effect);
     
-    results_timer = clamp(results_timer,0,1000);
-    var slide_timer = clamp(results_timer-420,0,60);
+    run_timer = clamp(run_timer,0,1000);
+    var slide_timer = clamp(run_timer-200,0,60);
     var offset_x = 50
     
     if("win_quote_string" not in self){
@@ -104,7 +104,6 @@ draw_set_alpha(1);
 #define get_win_quote(character_name)
 {
     var win_quote;
-    //print(character_name);
     // Base Cast
     if(character_name == "Zetterburn"){win_quote = "I heard you were reckless but I had no idea of the extent. It is hard to believe you command men under you."}
     if(character_name == "Forsburn"){win_quote = "My student Roekoko has taken inspiration from your abilites. They are a sight to behold."}
@@ -162,32 +161,24 @@ draw_set_alpha(1);
     if(character_name == "Wally"){win_quote = "You are still very strong as always Wally. We should go to the beach when the world is safer."} // works
     if(character_name == "Zephrie"){win_quote = "Your species glides with such grace. I aspire to be half as graceful as you."} // works
     
-    /*Riptide list
-    Maverick
-    Barr
-    Bluey
-    Donyoku
-    Future Ducky
-    Anglara
-    Callie
-    Nade
-    Po and Gumbo
-    Nate
-    Lyca
-    Mal
-    N/A
-    Chimera
-    Epinel
-    Suitcase
-    Fernet
-    Lukastar
-    Wally
-    Torga
-    Zephire
-    Candyman
-    Henry Stickman
-    Crewmate
-    Rin */
+    // Genesis 2023
+    if(character_name == "Arboris"){win_quote = "I can see the forest spirits are angered. If Loxodont gets his way, there will be no forest left...";} // works
+    if(character_name == "Business Casual Man"){win_quote = "Your corporate background makes you dispicable. Keep your business away from me.";} // works
+    if(character_name == "Dazz"){win_quote = "Your magic is very lovely, but you need more practice to weaponize it effectively.";} // works
+    if(character_name == "Gay Fridge"){win_quote = "I should avoid putting unknown herbs in my pipe, there's no way I just fought a fridge.";} // works
+    if(character_name == "Glare"){win_quote = "Your command of the electromagnetic spectrum is impressive, I have never seen such magic before.";} // works
+    if(character_name == "Hat Kid"){win_quote = "Be careful child! You can get hurt around here!";} // works
+    if(character_name == "Heartbrake"){win_quote = "Don't tell me how much you hate love. I have lost more loved ones than you could ever ever hold hate in your heart.";} // works
+    if(character_name == "Hana"){win_quote = "I like your phonograph! We had a couple in my old village. We were slow to adopt technology.";} // works
+    if(character_name == "Jerma985"){win_quote = "I heard you had a compatriot named _STAR. What ever happened to him?";} // works
+    if(character_name == "Lode & Puul"){win_quote = "Next time be considerate of when you use your magnetism, you almost stole my pipe.";} // Works
+    if(character_name == "owen"){win_quote = "You look nice, but your use of full automatic assault weapons does deeply concern me...";} //Works
+    if(character_name == "Reimu"){win_quote = "My student Roekoko is training to be a shrine maiden much like you. She may need some help to banish evil.";} // works
+    if(character_name == "Sheftu"){win_quote = "You fight pretty well for a farmer. I suppose you have no need for weapons, when you can fight with tools";} // works
+    if(character_name == "Untitled Goose"){win_quote = "GO AWAY GOOSE, I AM TRYING TO RELAX HERE.";} // works
+    if(character_name == "Valley & Death"){win_quote = "You reek of death. You are no ordinary florae, you may be the most evil one I have met yet.";} // works
+    if(character_name == "Yuuto Ichika"){win_quote = "Bolders, space ships, magic, is there anything you won't throw at me?";} //works
+
     
     //Generic Quotes if none are listed above
     if(win_quote == 0){

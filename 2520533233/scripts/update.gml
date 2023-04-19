@@ -23,32 +23,15 @@ enum ROCK{
 //Muno Phone -------------------------------------------------------------------
 //user_event(14);
 
-if(state == PS_SPAWN){
-	if(get_player_color(player) == 29 and down_pressed){
-		skin_alt = !skin_alt;
-		sound_play(sound_get("_pho_open1"));
-		if(skin_alt){
-			//snappy
-			set_color_profile_slot( 29, 0, 15, 15, 15 ); //Hat
-			set_color_profile_slot( 29, 1, 151, 82, 201 ); //Clothes
-			set_color_profile_slot( 29, 2, 9, 10, 9 ); //Skirt
-			set_color_profile_slot( 29, 3, 89, 0, 0 ); //Bow Front
-			set_color_profile_slot( 29, 4, 111, 64, 47 ); //Hair
-			set_color_profile_slot( 29, 5, 111, 64, 47 ); //Eyes
-			set_color_profile_slot( 29, 6, 52, 6, 71 ); //Detailing
-			set_color_profile_slot( 29, 7, 0, 255, 0 ); //Rainbow
-		} else {
-			//masq
-			set_color_profile_slot( 29, 0, 173, 255, 242 ); //Hat
-			set_color_profile_slot( 29, 1, 161, 98, 64 ); //Clothes
-			set_color_profile_slot( 29, 2, 214, 255, 237 ); //Skirt
-			set_color_profile_slot( 29, 3, 212, 228, 255 ); //Bow Front
-			set_color_profile_slot( 29, 4, 46, 128, 153 ); //Hair
-			set_color_profile_slot( 29, 5, 161, 215, 255 ); //Eyes
-			set_color_profile_slot( 29, 6, 157, 250, 242 ); //Detailing
-			set_color_profile_slot( 29, 7, 0, 255, 0 ); //Rainbow
-		}
-	}
+
+
+
+if(state == PS_PARRY and parried_nspecial){
+	state_timer++;
+}
+
+if(state == PS_PARRY_START){
+	parried_nspecial = false;
 }
 
 
@@ -140,13 +123,17 @@ if(knockback_adj != base_knockback_adj){
 #region RAINBOWS
 //Because she has so many different rainbow effects we need all these different
 //rainbow colors stored for use all over the kit
-init_shader();
+
 var cur_time = get_gameplay_time();
 rainbow_color = make_colour_hsv(12*(cur_time%30), 225, 225); //default rainbow
 rainbow_color2 = make_colour_hsv(12*((cur_time + 15)%30), 225, 225); //default shifed halfway through cycle
 rainbow_dark = make_colour_hsv(12*((cur_time/15)%30), 225, 100); //dark rainbow
 rainbow_dark2 = make_colour_hsv(12*((cur_time/15 + 15)%30), 225, 100); //dark shifted halfway through cycle
-
+if(color_shift and get_player_color(player) == 3){
+	nori_color = make_colour_hsv((cur_time/12)%255, 185, 125); //default rainbow
+	nori_color2 = make_colour_hsv(((cur_time/12))%255, 185, 205); //default shifed halfway through cycle
+	nori_color3 = make_colour_hsv(((cur_time/12))%255, 185, 50); //default shifed halfway through cycle
+}
 #endregion
 //-----------------------------PEACH INSTALL------------------------------------
 #region INSTALL
@@ -154,7 +141,7 @@ rainbow_dark2 = make_colour_hsv(12*((cur_time/15 + 15)%30), 225, 100); //dark sh
 //Only run if in install
 if(dragon_install){
 	
-	if(install_theme > 100){
+	if(install_theme > 100 or music_alt != ""){
 		rainbow_color_slow2 = make_colour_hsv(12*((cur_time/4+15)%30), 255, 160); //ui rainbow2 only runs in DI
 		rainbow_pastel = make_colour_hsv(12*((cur_time/4+15)%30), 120, 255); //ui rainbow2 only runs in DI
 	}
@@ -209,22 +196,29 @@ if(dragon_install){
 	//and we end the install if the time goes on past the limit and the player
 	//is standing on the ground
 	if(install_time > tenshi_magic and !free and !invincible and state != PS_ROLL_BACKWARD and state != PS_ROLL_FORWARD and state != PS_TECH_GROUND and state != PS_TECH_BACKWARD and state != PS_TECH_FORWARD){
-		deactivate_install();
-		end_install();
-		set_attack(AT_NSPECIAL_2);
+		if !(state == PS_ATTACK_GROUND and (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG) and window == 1){
+			if!(attack == AT_DSTRONG and window == 2) {
+				//print("End Install")
+				deactivate_install();
+				end_install();
+				set_attack(AT_NSPECIAL_2);
+			}
+			
+		}
+
 	}
 	//if another tenshi tells this one to start their music up
 	//this is basically a control value to make sure music is always playing when
 	//an install is up when multiple of this character are in the same game
-	if(play_theme){
+	if(play_theme and !mute_audio){
 		var volume = 0;
         volume = get_local_setting(3);
-		sound_play(sound_get("install" + string(install_theme)), true, 0, min(2*volume, 1), 1);
+		sound_play(sound_get("install" + music_page + music_alt + string(install_theme)), true, 0, min(2*volume, 1), 1);
 		play_theme = !play_theme;
 	}
 
 }
-
+init_shader();
 #endregion
 //---------------------------------GRAZE----------------------------------------
 #region GRAZE_STUFF
@@ -275,12 +269,15 @@ if(rock_proj != noone and rock_proj.kaboom){
 		sound_play(sound_get("a_not_as_large_kaboom"), false, noone, .6);
 		shake_camera(8, 8);
 		sound_play(asset_get("sfx_abyss_explosion_big"), false, noone, .7);
+		var scaled_bkb = 9;
 		if(instance_exists(rock_proj.hitbox)){
 			rock_proj.hitbox.length = 0;
+			scaled_bkb = rock_proj.hitbox.kb_value
 		}
+
 		var temp = create_hitbox(AT_NSPECIAL, 2, rock_proj.x, rock_proj.y);
+		temp.kb_value = scaled_bkb;
 		if(rock_proj.owner != noone){
-			
 			temp.player = rock_proj.owner;
 			temp.can_hit_self = false;
 		} else {
@@ -302,9 +299,11 @@ if(attack != AT_NSPECIAL or (window != 3 or window != 2)){
 }
 #endregion
 //-------------------RESET USPECIAL IF GROUNDED---------------------------------
+
+
 #region USPEC_RESET
 if(!free){
-	if(!place_meeting(x, y+4, obj_article_platform) and state != PS_ATTACK_GROUND){
+	if(!place_meeting(x, y+4, obj_article_platform) and state != PS_ATTACK_GROUND and state != PS_JUMPSQUAT){
 		can_move_rock = true;
 	}
 }
@@ -403,6 +402,9 @@ if(di_input_buffer == 0){
 {
     //this passes on ownership of install assets to the tenshi with the most
     //time left in dragon install
+    manual_init_shader_call = true;
+    sound_stop(sound_get("drill_loop"));
+	sound_stop(sound_get("drill_long"));
     var other_DI = false;
     var other_tenko = noone;
     var other_tenko_di_time = 9999999999999;
@@ -454,7 +456,7 @@ if(di_input_buffer == 0){
     	tenshi_magic = 0;
     }
     dragon_install = false;
-	sound_stop(sound_get("install" + string(install_theme)));
+	sound_stop(sound_get("install" + music_page + music_alt + string(install_theme)));
     initial_dash_speed = base_initial_dash_speed;
     dash_speed = base_dash_speed;
     moonwalk_accel = base_moonwalk_accel;
@@ -484,6 +486,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 12);
 //uair
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 5);
 //bair
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 13);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
@@ -526,3 +529,4 @@ set_hitbox_value(AT_DTILT, 5, HG_WINDOW, 99);
 set_hitbox_value(AT_DTILT, 6, HG_WINDOW, 99);
 //fspecial grab
 set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.7);
+set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_TYPE, 7);

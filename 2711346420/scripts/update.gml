@@ -1,9 +1,5 @@
 //update.gml
 
-//phone
-muno_event_type = 1;
-user_event(14);
-
 //Sleep Kirby Hat Offsets
 if (free){
 	//Air Hat Offsets

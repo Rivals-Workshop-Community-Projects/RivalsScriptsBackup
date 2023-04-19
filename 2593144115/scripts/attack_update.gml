@@ -135,9 +135,9 @@ switch (attack)
         }
         if (window == 4 && window_timer < 4)
         {
-            if (easetimer < 4)
+            if (easetimer < 3)
             {
-                char_height = ease_expoOut(54, 96, easetimer, 3);
+                char_height = ease_expoOut(54, 114, easetimer, 2);
                 easetimer++;
             }
         }
@@ -145,7 +145,7 @@ switch (attack)
         {
             if (easetimer < 16-has_hit*5)
             {
-                char_height = ease_quadIn(96, 54, easetimer, 15-has_hit*5);
+                char_height = ease_quadIn(114, 54, easetimer, 15-has_hit*5);
                 easetimer++;
             }
         }

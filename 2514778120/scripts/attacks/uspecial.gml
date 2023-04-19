@@ -106,7 +106,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 6);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 5);
 set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 6);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 11);

@@ -67,8 +67,21 @@ else
 if cd_sandwich > 0
 {
     cd_sandwich--
-    invincible=true;
-    invince_time = 1;
+    djump_speed = -1;        
+	djump_accel = -1.2;        
+	djump_start_time = 3;
+	djump_accel_end_time= 15;      
+	max_djumps = 1;
+	air_dodge_speed = 9;
+}
+else
+{
+	sandwich_used = 0;
+	djump_speed = 9;
+	djump_accel = 0;
+	djump_accel_end_time = 0;
+	max_djumps = 1;
+	air_dodge_speed = 7.5;
 }
 
 if (state != PS_ATTACK_GROUND || state != PS_ATTACK_AIR)

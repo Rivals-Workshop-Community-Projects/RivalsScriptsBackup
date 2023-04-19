@@ -4,7 +4,7 @@ if ("alt_glow_timer" not in self) {
 
 var alt_glow_timer_max = 480;
 
-var alt_cur = get_player_color("online_fix" in self ? online_fix : player) //sprite_get_xoffset(sprite_get("alts"));
+alt_cur = get_player_color("online_fix" in self ? online_fix : player) //sprite_get_xoffset(sprite_get("alts"));
 switch (alt_cur) {
     case 7:
     case 21:

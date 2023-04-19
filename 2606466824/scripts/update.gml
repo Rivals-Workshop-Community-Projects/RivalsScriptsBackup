@@ -89,7 +89,7 @@ if ("target" in self) {
 
 if (phone_cheats[CHEAT_PERSIST] % 2 == 0) {
 	if (revengeBuffer < 0) {
-		revengeMult -= 0.0012;
+		revengeMult -= 0.0014;
 	} else {
 		revengeBuffer--;
 	}

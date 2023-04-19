@@ -30,7 +30,7 @@ moveAngle = 0;
 nspecAngle = -621;
 nspecSpeed = 5;
 
-noLimit = has_rune("L") || ("in_adventure" in player_id && player_id.in_adventure);
+noLimit = has_rune("L") || ("in_adventure" in player_id && player_id.in_adventure) || player_id.object_index == oTestPlayer;
 
 hitpause = 0;
 old_hsp = 0;
@@ -42,3 +42,4 @@ unsafeTimer = 0;
 afterImage = array_create(8, -1);
 
 articleInit = false;
+Pocketable = false

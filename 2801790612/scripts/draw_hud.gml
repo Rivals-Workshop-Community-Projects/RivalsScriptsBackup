@@ -1,6 +1,3 @@
-// prevents draw_hud from running a frame too early and spitting an error
-if "phone" not in self exit;
-
 if (debug_text) {
     var line_y = 200;
     var step_y = 14
@@ -79,7 +76,3 @@ if (pepsi_meter < 76) draw_sprite(spr_pepsi_meter, 0, temp_x + 4 + 144, temp_y -
 else if (pepsi_meter >= 100) draw_sprite(spr_pepsi_meter, 25, temp_x + 4 + 144, temp_y - 30);
 else draw_sprite(spr_pepsi_meter, pepsi_meter - 75, temp_x + 4 + 144, temp_y - 30);
 shader_end();
-// MunoPhone Touch code - don't touch
-// should be at BOTTOM of file, but above any #define lines
-muno_event_type = 5;
-user_event(14);

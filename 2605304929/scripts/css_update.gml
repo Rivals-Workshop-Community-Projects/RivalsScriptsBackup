@@ -207,7 +207,7 @@ switch(draw_menu){
 	    // Color SHift Button Pressed
 	    if(menu_box[BOX_SHIFT_COLOR_ALTS][BUTTON_PRESSED] == true){
 	        color_shift++;
-	        if(color_shift > 1){
+	        if(color_shift > 2){
 	            color_shift = 0;
 	        }
 	        manual_init_shader_call = true;

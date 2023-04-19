@@ -147,3 +147,4 @@ article_should_lockout = true; //set to false if you don't want hit lockout.
 super_armor = false;
 soft_armor = 0;
 enemy_hitboxID = noone;
+hitpoints = 0;

@@ -32,3 +32,4 @@ index = 0;
 smash = false;
 
 hbox = noone;
+Pocketable = false;

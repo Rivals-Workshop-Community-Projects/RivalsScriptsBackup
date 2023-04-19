@@ -66,7 +66,7 @@ if attacking && attack == AT_TAUNT && window == 3 {
 
 shader_end() 
 
-
+/*
 if finisher > 0 && hitpause{
 
 

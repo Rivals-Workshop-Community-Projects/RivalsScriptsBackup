@@ -273,6 +273,9 @@ statboost_sprite = sprite_get("powerup");
 gender = 0;
 if random_func(0, 7, 1) == 0 {gender = 1;}
 
+
+
+
 // Hikaru Title
 Hikaru_Title = "Bird Fox";
 

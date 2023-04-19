@@ -239,16 +239,22 @@ process_inputs();
                     //joy_dir = round(point_direction(x, y, teammate_player_id.x, teammate_player_id.y));
                     //joy_pad_idle = false;
                     
-                    //in hitstun, no-DI and drift in.
-                    joy_dir = 90;
-                    joy_pad_idle = true;
+                    if (hitstop > 1) {
+                        //SDI towards the partner.
+                        joy_dir = round( point_direction(x, y, teammate_player_id.x, teammate_player_id.y) );
+                        joy_pad_idle = true = false;
+                    }
+                    else {
+                        //no-DI when hitstun ends.
+                        joy_dir = 90;
+                        joy_pad_idle = true;
+                        
+                    }
+                    //drift towards the partner.
                     var teammate_dir = sign(teammate_player_id.x - x);
                     move_in_x_direction(-sign(teammate_dir), false);
                 }
-                //else if (y < teammate_player_id.y && state == PS_TUMBLE) {
-                //    var teammate_dir = sign(teammate_player_id.x - x);
-                //    move_in_x_direction(-sign(teammate_dir), false);
-                //}
+
                 else if (hsp != 0) {
                     move_in_x_direction(-sign(hsp), false);
                 }
@@ -499,7 +505,7 @@ process_inputs();
                 ai_airdodge_direction = joy_dir;
                 if (recover_dir < 0) ai_inputs |= INP_LEFT;
                 if (recover_dir > 0) ai_inputs |= INP_RIGHT;
-                if ((!has_walljump || leader_x_distance >= 400) && has_airdodge) {
+                if ((!has_walljump || leader_x_distance >= 400) && has_airdodge) { 
                     //can't make AIs perform directional dodges without setting the state directly, as far as I know.
                     set_state(PS_AIR_DODGE);
                     ai_inputs |= INP_UP;
@@ -910,8 +916,8 @@ process_inputs();
   
   attack_pressed    = attack_counter    < 6 && (up_stick_pressed + down_stick_pressed + left_stick_pressed + right_stick_pressed == 0);
   special_pressed   = special_counter   < 6;
-  jump_pressed      = jump_counter      < 7;
-  shield_pressed    = shield_counter    < 3;
+  jump_pressed      = jump_counter      < 6; //7
+  shield_pressed    = shield_counter    < 3; //3
   
   up_hard_pressed   = up_hard_counter   < 3;
   down_hard_pressed = down_hard_counter < 3;

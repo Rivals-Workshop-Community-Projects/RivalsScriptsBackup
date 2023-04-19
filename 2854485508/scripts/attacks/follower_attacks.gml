@@ -7,11 +7,11 @@ set_attack_value(AT_EXTRA_3, AG_MUNO_ATTACK_EXCLUDE, 1);
 follower_window_min[0, AT_EXTRA_3] = 1;
 follower_window_max[0, AT_EXTRA_3] = 3;
 
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 6);
 
 set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 2);

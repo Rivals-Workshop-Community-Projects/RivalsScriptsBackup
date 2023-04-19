@@ -7,9 +7,12 @@ if (my_hitboxID.type == 2 && my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.at
         old_hsp = hsp;
         old_vsp = vsp;
     }
+  
+if (my_hitboxID.type == 1 && my_hitboxID.attack == AT_FSPECIAL){
+        window = 4;
+        window_timer = 0;
+}  
     
-
-
 //if (attack == AT_DATTACK){
 //    window_timer = 1;
 //    window = 4;

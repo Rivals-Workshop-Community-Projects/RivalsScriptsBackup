@@ -10,7 +10,7 @@ switch(current_alt) {
     case 10:
         draw_sprite_ext(sprite_get("css_icons"), 2, temp_x + 162, temp_y + 96, 2, 2, 0, c_white, 1);
     break;
-    case 11:
+    case 13:
         draw_sprite_ext(sprite_get("css_icons"), 1, temp_x + 162, temp_y + 96, 2, 2, 0, c_white, 1);
     break;
 }
@@ -28,8 +28,10 @@ alt_name[7]  = "the fallen child";
 alt_name[8]  = "=)";
 alt_name[9]  = "seasonal";
 alt_name[10] = "÷infamous÷"; // :(
-alt_name[11] = "easiest enemy";
-alt_name[12] = "hypergoner";
+alt_name[11] = "hopeful luck";
+alt_name[12] = "psycho";
+alt_name[13] = "easiest enemy";
+alt_name[14] = "hypergoner";
 /*
 alt_name[11] = "woag";
 alt_name[12] = "woag";
@@ -40,8 +42,8 @@ alt_name[15] = "woag";
 
 //Patch Info - Format borrowed from Hime
 
-patch_day = "3";
-patch_month = "sept";
+patch_day = "26";
+patch_month = "oct";
 patch_year = "2022"
  
 textDraw(temp_x + 3, temp_y + 126, font_get("fnt_sans"), c_white, 0, 1000, 1, true, 1, patch_month + " " + patch_day + ", " + patch_year); 

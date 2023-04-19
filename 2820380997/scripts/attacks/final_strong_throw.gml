@@ -91,6 +91,7 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_disperse);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 hitbox_num++;
@@ -115,6 +116,7 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_disperse);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 hitbox_num++;
@@ -139,6 +141,7 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_disperse);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 hitbox_num++;
@@ -163,6 +166,7 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_disperse);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 hitbox_num++;
@@ -186,6 +190,7 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 20);
     set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); // 197 - lightning large
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 0);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 0);

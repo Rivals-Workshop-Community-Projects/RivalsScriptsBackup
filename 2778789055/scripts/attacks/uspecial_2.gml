@@ -18,7 +18,7 @@ set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 0); 
-set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -12.5); 
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -13.5); 
 
 //freefall
 set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH, 40);

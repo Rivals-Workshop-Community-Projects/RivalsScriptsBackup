@@ -102,6 +102,17 @@ if (state == 0){
 		}
 	}
 	
+	if (instance_exists(whirlwind_active_hitbox)){
+		if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR)
+		&& player_id.attack == AT_DSPECIAL && player_id.window < 3){
+			whirlwind_active_hitbox.hit_priority = 0;
+		}
+		else {
+			whirlwind_active_hitbox.hit_priority = 5;
+		}
+	}
+	
+	
 	//Whirwind descends if it's to high up
 	if (y < get_stage_data(SD_Y_POS) - 250){
 		y += 1;

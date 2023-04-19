@@ -6,6 +6,9 @@ if(player_id.xp_mod == 1){
 } else if(player_id.goldenIntro == true){
 	sprite_index = sprite_get("xpshards1");
 	image_index = random_func(0, 3, true);
+} else if(player_id.geneIntro == true){
+	sprite_index = sprite_get("xpshards3");
+	image_index = random_func(0, 3, true);
 } else {
 	sprite_index = sprite_get("xpshards");
 	image_index = random_func(0, 3, true);

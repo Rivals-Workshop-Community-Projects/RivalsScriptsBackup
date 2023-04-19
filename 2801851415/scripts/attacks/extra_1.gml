@@ -13,33 +13,35 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, asset_get("sfx_ice_fspecial_hit_ground"));
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, asset_get("sfx_oly_nspecial_shoot"));
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX_FRAME, 9);
-set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED_TYPE, 0);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAME_START, 8);
 
 //active window
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 3);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAME_START, 10);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_TYPE, 1);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_HSPEED_TYPE, 0);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_VSPEED_TYPE, 0);
 
 //recovery window made sperate to handle animation timing
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_EXTRA_1, 3, AG_WINDOW_HSPEED_TYPE, 0);
+set_window_value(AT_EXTRA_1, 3, AG_WINDOW_VSPEED_TYPE, 0);
 
 //recovery window, does not have whifflag because it is a projectile
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_TYPE, 7);
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_1, 4, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(AT_EXTRA_1, 4, AG_WINDOW_HSPEED_TYPE, 0);
+set_window_value(AT_EXTRA_1, 4, AG_WINDOW_VSPEED_TYPE, 0);
 
 
 
@@ -70,7 +72,7 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_proj"
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_MASK, sprite_get("uspecial_proj")); //this sets the hitbox of the projectile to be the same as the sprite
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_HSPEED, 4);
-set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_VSPEED, 7);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_VSPEED, 9);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("uspecial_proj"));
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
@@ -104,7 +106,7 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_SPRITE, sprite_get("uspecial_proj"
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_MASK, sprite_get("uspecial_proj")); //this sets the hitbox of the projectile to be the same as the sprite
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_HSPEED, 3);
-set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_VSPEED, 9);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_VSPEED, 11);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("uspecial_proj"));
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
@@ -138,7 +140,7 @@ set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_SPRITE, sprite_get("uspecial_proj"
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_MASK, sprite_get("uspecial_proj")); //this sets the hitbox of the projectile to be the same as the sprite
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_HSPEED, 5);
-set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_VSPEED, 5);
+set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_VSPEED, 7);
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("uspecial_proj"));
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);

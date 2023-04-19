@@ -105,4 +105,5 @@ if jump_pressed
     }
 
 }
-
+// Opengunner: For Debuging
+//print(ball_cooldown);

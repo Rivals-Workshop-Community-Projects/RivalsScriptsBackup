@@ -147,12 +147,26 @@ vfx_clone_fast_fall = hit_fx_create(sprite_get("clone_fast_fall_shine"),12);
 vfx_smoke_object = 0;
 vfx_dash_fire_object = 0;
 
+// Hit Particles
+set_hit_particle_sprite(1,sprite_get("hit_particle1")); // Fire Small
+set_hit_particle_sprite(2,sprite_get("hit_particle2")); // Fire Large
+set_hit_particle_sprite(3,sprite_get("hit_particle3")); // Fire Disperse
+
+hp_fire_small = 1;
+hp_fire_large = 2;
+hp_fire_disperse = 3;
+
+plat_exists = false;
+plat_despawn_timer = 10;
+plat_x = 0;
+plat_y = 0;
+
 // WISP Section
 wisp_object_ID = noone;
 wisp_returned = false;
 
 // Random Clone Text
-num_clone_text_names = 12 + 1;
+num_clone_text_names = 14 + 1;
 clone_text_list = ["Real Roekoko",
 "Not a Trick",
 "Not a Clone",
@@ -165,7 +179,9 @@ clone_text_list = ["Real Roekoko",
 "Real Faker",
 "THIS ONE",
 "Generic Name",
-"Clone Goon" //12
+"Kiriko",
+"Ivan",
+"Clone Goon" //14
 ];
 
 // intro Code
@@ -192,24 +208,73 @@ final_strong_window_loops = 3;
 //`fs_char_portrait_override = sprite_get('MY PORTRAIT OVERRIDE SPRITE");`
 //`fs_char_attack_index = AT_ATTACK_INDEX_OF_YOUR_CHOICE;`
 
+
+// CLone Skins Section
+clone_spawn_sprite = 0;
+clone_idle_sprite = 0;
+clone_idle_flourish_sprite = 0;
+clone_walk_sprite = 0;
+clone_jumpstart_sprite = 0;
+clone_jump_sprite = 0;
+clone_doublejump_sprite = 0;
+clone_doublejump_backward_sprite = 0;
+clone_land_sprite = 0;
+clone_taunt_sprite = 0;
+clone_hurt_sprite = 0;
+clone_landing_lag_sprite = 0;
+clone_waveland_sprite = 0;
+
+clone_dspecial_sprite = 0;
+//dspecial_hurt_sprite = 0; // Enable for hurtbox editing
+clone_dspecial_up_sprite = 0;
+//dspecial_up_hurt_sprite = 0; // Enable for hurtbox editing
+clone_dspecial_down_sprite = 0;
+//dspecial_down_hurt_sprite = 0; // Enable for hurtbox editing
+clone_dthrow_partial_sprite = 0;
+clone_dthrow_full_sprite = 0;
+clone_dthrow_team_sprite = 0;
+clone_fspecial_sprite = 0;
+clone_fspecial_2_sprite = 0;
+clone_fspecial_air_sprite = 0;
+clone_uspecial_sprite = 0;
+clone_uspecial_2_sprite = 0;
+clone_nspecial_sprite = 0;
+clone_utilt_sprite = 0; // Used for clone assist attack
+
+clone_airdash_forward_sprite = 0;
+clone_airdash_backward_sprite = 0;
+clone_airdash_upward_sprite = 0;
+clone_airdash_downward_sprite = 0;
+
+clone_wisp_idle_sprite = 0;
+clone_wisp_travel_sprite = 0;
+
+clone_plat_clone_assist_sprite = 0;
+
 // Other Compat Stuff
 // Compatibility Stuff -----------------------------------------------
 Hikaru_Title = "We're twin tailed troublemakers";
 arena_title = "The Twin-tailed Troublemaker";
 battle_text = "*Let's have some fun!"; //
+pot_compat_variable = sprite_get("compat_pot");
+pot_compat_text = "Roka-cola!";
+mamizou_transform_spr = sprite_get("compat_mamizou"); //Replace "X" with your sprite.
 
 //#region Synced Variable
 
-// Synced Variable Stuff
+// Synced Variable Stuff -Should run to reset these valus on game load
 /* Synced Variable should account for these. We have 32 bits to work with.
 1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
 2. Status of Win Quotes Enabled - 1 bit
-3. Status of Round Start Dialog Enabled - 1 bit 
+3. Status of Round Start Dialog Enabled - 1 bit
+4. Swap Nspec / Dspec - 1 bit
+5. Portrait to use - 2 bits
+6. Alt Outfit Bit enable - 1 bit
 */
+
 //This function takes the bit lengths you put in the previous function, in the same order, and outputs an array with the values you put in (assuming you put in the correct bit lengths), also in the same order.
 //split_var = split_synced_var(bit_length_1, bit_length_2...);
-split_var = split_synced_var(2,1,1,1);
-//print(split_var);
+split_var = split_synced_var(2,1,1,1,2,1);
 
 color_shift = 0; // Declare variable
 flag_win_quote_enabled = 0; // Declare variable
@@ -221,6 +286,8 @@ color_shift = split_var[0];
 flag_win_quote_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
 swap_nspec_dspec_input = split_var[3];
+portrait_to_use = split_var[4];
+alt_outfit_enabled = split_var[5];
 
 //Results variable 
 countPlayers = 0;

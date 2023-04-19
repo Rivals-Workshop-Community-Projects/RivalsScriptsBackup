@@ -1,0 +1,1 @@
+uspecial_scapegoat = noone;

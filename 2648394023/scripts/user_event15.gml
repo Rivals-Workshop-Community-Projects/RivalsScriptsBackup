@@ -254,6 +254,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.6", "14 April, 2023");
+initWords("Advertising");
+
+initPatch("1.5", "19 September, 2022");
+initHeader("Stats - Buffs");
+initSection("Knockback adj 1.2 --> 1.1.");
+
 initPatch("1.4", "18 January, 2022");
 initHeader("NSpecial - Buffs");
 initSection("Cooldown 40 --> 30.");

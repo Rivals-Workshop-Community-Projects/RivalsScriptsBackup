@@ -12,7 +12,7 @@ set_color_profile_slot_range(2, 1, 1, 36);
 set_color_profile_slot_range(3, 96, 20, 12);
 set_color_profile_slot_range(4, 43, 8, 6);
 
-set_num_palettes(12);
+set_num_palettes(14);
 
 //Papyrus
 set_color_profile_slot(1, 0, 162, 45, 11);
@@ -110,17 +110,23 @@ set_color_profile_slot(10, 2, 173, 255, 244);
 set_color_profile_slot(10, 3, 255, 255, 255);
 set_color_profile_slot(10, 4, 132, 255, 242);
 
-//In-Game Battle
-set_color_profile_slot(11, 0, 19, 19, 19);
-set_color_profile_slot(11, 1, 250, 250, 250);
-set_color_profile_slot(11, 2, 255, 255, 255);
+//fingers
+set_color_profile_slot(11, 0, 53, 71, 46);
+set_color_profile_slot(11, 1, 156, 11, 9);
+set_color_profile_slot(11, 2, 145, 97, 80);
 set_color_profile_slot(11, 3, 255, 255, 255);
 set_color_profile_slot(11, 4, 132, 255, 242);
 
-/*
-// fingers
-set_color_profile_slot(10, 0, 53, 71, 46);
-set_color_profile_slot(10, 1, 156, 11, 9);
-set_color_profile_slot(10, 2, 145, 97, 80);
-set_color_profile_slot(10, 3, 255, 255, 255);
-set_color_profile_slot(10, 4, 132, 255, 242);
+// sexy something
+set_color_profile_slot(12, 0, 74, 73, 77);
+set_color_profile_slot(12, 1, 222, 218, 239);
+set_color_profile_slot(12, 2, 75, 80, 81);
+set_color_profile_slot(12, 3, 255, 255, 255);
+set_color_profile_slot(12, 4, 132, 255, 242);
+
+//In-Game Battle
+set_color_profile_slot(13, 0, 19, 19, 19);
+set_color_profile_slot(13, 1, 250, 250, 250);
+set_color_profile_slot(13, 2, 255, 255, 255);
+set_color_profile_slot(13, 3, 255, 255, 255);
+set_color_profile_slot(13, 4, 132, 255, 242);

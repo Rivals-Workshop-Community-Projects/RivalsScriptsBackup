@@ -54,6 +54,8 @@ sprite_change_offset("uspecial", 125, 152);
 sprite_change_offset("uspecial_air", 125, 152);
 sprite_change_offset("uspecial_air_steam", 125, 152);
 sprite_change_offset("dspecial", 125, 152);
+sprite_change_offset("dspecial_tired", 125, 152);
+sprite_change_offset("masked_dspecial_tired", 125, 152);
 sprite_change_offset("dspecial_air", 125, 152);
 sprite_change_offset("taunt", 125, 152);
 sprite_change_offset("taunt_2", 125, 152);

@@ -840,7 +840,7 @@ switch attack {
 	  
 	  if window_timer < 3*5 {
 	  	snapplayer.hitpause = true 
-	 	snapplayer.hitstop = 5
+	 	snapplayer.hitstop = 2
 	 	snapplayer.invince_time = 0
 	  	snapplayer.x += floor((x - 45*spr_dir -  snapplayer.x)/6)
          snapplayer.y += floor((y - 20 - snapplayer.y)/6)
@@ -859,7 +859,7 @@ switch attack {
 	
 	
 	case AT_FTHROW:
-	
+
 	if "turningtodust" in self {
                 		if turningtodust > 2 {
                 			turningtodust = 600
@@ -897,7 +897,7 @@ switch attack {
 	 		invincible = true 
 	 		invince_time = 2
 	 		with hit_player_obj {
-	 			hitpause = true 
+	 		    hitpause = true 
 	 		    hitstop = 30
 	 		    old_hsp = 0
 	 		    old_vsp = 0
@@ -913,10 +913,10 @@ switch attack {
        window = 1
        window_timer = 0
      }
-     
+
      if move_cooldown[AT_FTHROW] > 90 {
      	hit_player_obj.x += floor((x + 45*spr_dir -  hit_player_obj.x)/2)
-         hit_player_obj.y += floor((y - 20 - hit_player_obj.y)/2)
+        hit_player_obj.y += floor((y - 20 - hit_player_obj.y)/2)
      }
 
 
@@ -946,7 +946,8 @@ switch attack {
 	 	
 	 	
 	 	hit_player_obj.hitpause = true 
-	 	hit_player_obj.hitstop = 5
+	 	hit_player_obj.hitstop = 2
+
 	 	
 	 	if window_timer == 36 {
 	 		//if (spr_dir = 1 && right_down - left_down = -1) or (spr_dir = -1 && right_down - left_down = 1) {
@@ -982,8 +983,10 @@ switch attack {
 	 		sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,1);
 	 		hsp = 4*spr_dir
 	 	}
-	 		hit_player_obj.hitpause = true 
-	 	hit_player_obj.hitstop = 5
+
+	 	hit_player_obj.hitpause = true 
+	 	hit_player_obj.hitstop = 2
+
 	 	if window_timer < 10 {
 	 	 hit_player_obj.x += floor((x - 20*spr_dir -  hit_player_obj.x)/4)
          hit_player_obj.y += floor((y - 30 - hit_player_obj.y)/4)
@@ -1003,11 +1006,10 @@ switch attack {
 	 		sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,1);
 	 		hsp = -4*spr_dir
 	 	}
-	 	
 	 	hit_player_obj.hitpause = true 
-	 	hit_player_obj.hitstop = 5
-         hit_player_obj.force_depth = true 
-         hit_player_obj.depth = depth - 1
+	 	hit_player_obj.hitstop = 2
+                hit_player_obj.force_depth = true 
+                hit_player_obj.depth = depth - 1
  
        if window_timer < 10 {
 	 	 hit_player_obj.x += floor((x + 10*spr_dir -  hit_player_obj.x)/4)
@@ -1020,7 +1022,7 @@ switch attack {
 	 
 	 if window == 5 {
 	 	hit_player_obj.force_depth = true 
-         hit_player_obj.depth = depth - 1
+                hit_player_obj.depth = depth - 1
          if hitpause {
          	window_timer += 1
          }
@@ -1330,7 +1332,6 @@ if attack == AT_FSPECIAL && !hitpause{
 	
 	if window_timer == 4{
 	   if move_cooldown[AT_FTHROW] >= 4 && !hitpause{
-	   	sound_stop(sound_get("SpaceCut"))
 	   	sound_play(sound_get("SpaceCut"),false,noone,1,1.2)
 			create_hitbox(AT_DTHROW,3,portalx + 56*spr_dir, portaly + 4 )
 	   }
@@ -1447,7 +1448,6 @@ if attack == AT_FSPECIAL && !hitpause{
             hsp /= 2
             state_timer = 0
             if move_cooldown[AT_FTHROW] >= 4 && !hitpause {
-            sound_stop(sound_get("SpaceCut"))
             sound_play(sound_get("SpaceCut"),false,noone,1,1.2)
 			create_hitbox(AT_DTHROW,3,portalx + 56*spr_dir, portaly + 4 )
             }
@@ -1692,16 +1692,16 @@ if attack == AT_NSPECIAL && !hitpause{
 
 if attack == AT_DSPECIAL && !hitpause{
 	
-    if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
-    	free = true 
-    	y -= 10
-    	vsp = -20
-    	attack = AT_NSPECIAL_2
-    	window = 1
-    	window_timer = 0
-    	galaxplayer = hit_player_obj
-    	has_hit_player = true 
-    }
+    //if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
+    //	free = true 
+    //	y -= 10
+    //	vsp = -20
+    //	attack = AT_NSPECIAL_2
+    //	window = 1
+    //	window_timer = 0
+    //	galaxplayer = hit_player_obj
+    //	has_hit_player = true 
+    //}
     
 	if move_cooldown[AT_DSPECIAL] == 118 {
 		if free {
@@ -1745,17 +1745,42 @@ if attack == AT_DSPECIAL && !hitpause{
 		}
 	}
 	
-	if window == 2 && window_timer == 16 {
+	if window == 2 && window_timer == 16 && !hitpause{
 		if move_cooldown[AT_FTHROW] == 0 {
+			
+         x = round(x)
+			y = round(y)
+			
 			sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.2)
 			sound_play(sound_get("SpaceCut"),false,noone,1,1.4)
-			create_hitbox(AT_DTHROW,1, x + 48*spr_dir, y - 46)
-			grab = spawn_hit_fx (x + 48*spr_dir, y - 10, ptgone)
+			create_hitbox(AT_DTHROW,1, x + 18*spr_dir, y - 46)
+			grab = spawn_hit_fx (x + 18*spr_dir, y - 10, ptgone)
+			hee = spawn_hit_fx (x + 30*spr_dir, y, rollfx)
+	 	    hee.spr_dir = spr_dir
+	 	    hee1 = spawn_hit_fx (x + 90*spr_dir, y, rollfx)
+	 	    hee1.spr_dir = spr_dir
+			hsp = 50*spr_dir 
+			vsp = 0
 			grab.depth = -6
 		} else{
 			sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.4)
 		}
 	}
+	
+   if window == 3 {
+     	var step_up_height = 60;
+    	if place_meeting(x+40*spr_dir + hsp,y,asset_get("par_block")) {
+             for (var i = 0; i < step_up_height; i += 2) {
+                 if !place_meeting(x+hsp+40*spr_dir,y+vsp-i,asset_get("par_block")) {
+                     x = x+hsp; 
+                     y = y+vsp-i;
+                     hsp = 50*spr_dir
+                     break;
+                 }
+             }
+         }
+     }    	
+	
 	
 }
 

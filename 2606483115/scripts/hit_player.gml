@@ -67,3 +67,14 @@ if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2){
 		other.old_vsp = 0
 	}
 }
+
+if(my_hitboxID.attack != AT_USPECIAL &&
+my_hitboxID.attack != AT_FSPECIAL &&
+my_hitboxID.attack != AT_DSPECIAL &&
+my_hitboxID.attack != AT_NSPECIAL){
+	if(steam < 100){
+		if(my_hitboxID.type == 1){
+			steam += my_hitboxID.damage * 2
+		}
+	}
+}

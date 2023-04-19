@@ -1,35 +1,36 @@
-//Fancy CSS template by Muno
-//Put in css_draw.gml
-
-if (get_player_color(player) == 7){
-	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-}
-
-
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-var num_alts = 16;
+var num_alts = 20;
 var alt_cur = get_player_color(player);
+
+if (get_color_profile_slot_r(0, 0) == 238) {
+    sound_play(sound_get("sfx_monkey_ball_2_banana"));
+    set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0) + 1, get_color_profile_slot_g(0, 0), get_color_profile_slot_b(0, 0));
+}
 
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Default";
-alt_name[1]  = "Mario Bros. Box Art";
-alt_name[2]  = "Pink";
-alt_name[3]  = "Wrecking Crew";
-alt_name[4]  = "Monochrome";
-alt_name[5]  = "Waluigi";
+alt_name[1]  = "Blue";
+alt_name[2]  = "GonGon";
+alt_name[3]  = "Green";
+alt_name[4]  = "White";
+alt_name[5]  = "MeeMee";
 alt_name[6]  = "Abyss";
-alt_name[7]  = "GB";
-alt_name[8]  = "Foreman Spike";
-alt_name[9]  = "Wario";
-alt_name[10] = "Fire";
-alt_name[11] = "Shadow Mario";
-alt_name[12] = "Jumpman";
-alt_name[13] = "Luigi";
-alt_name[14] = "4th Color (Mario Golf)";
-alt_name[15] = "SMB3";
+alt_name[7]  = "Gameboy";
+alt_name[8]  = "Yellow";
+alt_name[9]  = "Dr. BadBoon";
+alt_name[10] = "Inverse";
+alt_name[11] = "Magenta";
+alt_name[12] = "Cyan";
+alt_name[13] = "Monochrome";
+alt_name[14] = "Baby";
+alt_name[15] = "Sonic";
+alt_name[16] = "Infamous";
+alt_name[17] = "Pure Gold";
+alt_name[18] = "Ranked Gold";
+alt_name[19] = "Champion";
  
 //Alt
  
@@ -42,25 +43,17 @@ for(i = 0; i < num_alts; i++){
 }
  
 draw_set_halign(fa_left);
- 
-//include alt. name
-//textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
- 
-//exclude alt. name
-//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
-
-//user_event(12);
 
 shader_end();
 
-//ricE's colorgrid css_draw stuffs.
-if (alt_cur < 16){
-	draw_sprite(sprite_get("colorgrid"),alt_cur,x + 8, y - 24);
-	draw_sprite(sprite_get("colorgrid_pagenum1"),alt_cur,x + 202, y - 28);
-} else {
-	draw_sprite(sprite_get("colorgrid_part2"),alt_cur,x + 8, y - 24);
-	draw_sprite(sprite_get("colorgrid_pagenum2"),alt_cur,x + 202, y - 28);
+//Outlines
+if (get_player_color(player) == 7){
+	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
 }
+if (get_player_color(player) == 17){
+	draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
+}
+
 //Special Icons n shit
 if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
@@ -74,17 +67,15 @@ if (get_player_color(player) == 6){
 		draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
 	}
 	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
-} 
+}
 
+//include alt. name
+textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "" : "") + string(alt_cur+1) + ": " +  alt_name[alt_cur]);
+ 
+//exclude alt. name
+//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
 
-//Outlines
-if (get_player_color(player) == 7){
-	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-} 
-
-//phone
-muno_event_type = 6;
-user_event(14);
+shader_end();
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

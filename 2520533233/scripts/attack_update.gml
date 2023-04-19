@@ -31,14 +31,13 @@ if(dragon_install and has_hit_player and !was_parried){
     can_jump = true;	
 }
 
-if(state_timer < 5 and (attack_pressed and special_pressed  or di_input == 5 and special_pressed or attack_pressed and taunt_pressed) and tenshi_magic >= tenshi_magic_max/2 and !dragon_install){
+if(state_timer < 3 and (attack_pressed and special_pressed  or di_input == 5 and special_pressed or attack_pressed and taunt_pressed) and tenshi_magic >= tenshi_magic_max/2 and !dragon_install){
     if(di_input == 5){
         true_input = true;
     } else if (taunt_pressed) {
         true_input2 = true;
     }
-    window_timer = 0;
-    window = 0;
+	set_attack(AT_EXTRA_1);
     hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 }
 
@@ -179,14 +178,14 @@ switch(attack){
                 
             } 
             if(!fspec_start and dragon_install){
-            	hsp = spr_dir*17 + spr_dir * (tenshi_fsp_charge/5); ;
+            	hsp = spr_dir*15 + spr_dir * (tenshi_fsp_charge/5); ;
             	//x += spr_dir*max((tenshi_fsp_charge/2.4), 10);
             } else {
             	if(fspec_start and !dragon_install){
             		hsp = spr_dir*12 + spr_dir * (tenshi_fsp_charge/5); 
             		//x += spr_dir * (tenshi_fsp_charge/2.4);
             	} else {
-            		hsp = spr_dir*17 + spr_dir * (tenshi_fsp_charge/5);
+            		hsp = spr_dir*15 + spr_dir * (tenshi_fsp_charge/5);
             		//x += spr_dir * (tenshi_fsp_charge/2.4);
             	}
             }
@@ -222,7 +221,7 @@ switch(attack){
         	
         	if(place_meeting(x, y, asset_get("par_jumpthrough"))){
         		can_jump = true;
-        		if(jump_down and djumps < max_djumps){
+        		if(jump_pressed and djumps < max_djumps){
         			if(abs(hsp) > 8 and !dragon_install){
         				hsp = spr_dir *8;
         			}
@@ -354,33 +353,74 @@ switch(attack){
         		dragon_install = true;
             	//run only if we moved into DI
             	if(dragon_install){
+            		manual_init_shader_call = true;
+            		if(color_shift and get_player_color(player) < 8){
+						music_sprite_name = "song_credits_page2";
+					} else {
+						music_sprite_name = "song_credits";
+					}
+
+					if(color_shift){
+						if(get_player_color(player) > 0 and  get_player_color(player) < 8){
+							music_page = "_page2_";
+							//print("Hi")
+						}
+						music_sprite = sprite_get("song_credits_page2");
+					} else {
+						music_sprite = sprite_get("song_credits");
+					}
             		
             		var volume = 0;
             		volume = get_local_setting(3);
-            		print_debug(volume);
+            		//print_debug(volume);
             		activate_install();
             		install_time = 0;
             		shake_camera(8,10);
             		//start theme 
             		install_theme = get_player_color(player);
-            		if(true_input){
+     
+
+					
+					if(down_down and music_page != "" and get_player_color(player) > 0 and get_player_color(player) < 7){
+						music_alt = "alt_"
+						music_sprite_name = music_sprite_name + "_alt";
+					} else {
+						music_alt = "";
+					}
+					var has_alt_theme = false;
+					switch(install_theme){
+						case 1:
+						case 5:
+						case 9:
+						case 10:
+						case 11:
+						case 14:
+						case 22:
+						case 24:
+						case 29:
+							has_alt_theme = true;
+					}
+					
+					if(down_down and music_page == "" and has_alt_theme){
+						music_sprite_name = music_sprite_name + "_alt";
+						music_alt = "_alt_"
+					}
+					//print(music_sprite_name)
+					if(true_input){
             			install_theme = 33;
             			true_input = false;
+            			music_alt = "";
+            			music_page = "";
             		} else if (true_input2){
             			install_theme = 32;
             			true_input2 = false;
+            			music_alt = "";
+            			music_page = "";
             		}
-					if(install_theme == 29 or install_theme = 22){
-						if(down_down){
-							install_theme += 100;
-						} 
-					}
-					if(skin_alt){
-						install_theme = 421;
-						if(down_down){
-							install_theme = 420;
-						}
-					}
+
+					
+					//print(music_sprite_name);
+					music_sprite = sprite_get(music_sprite_name);
             		//clear trail so 2 installs in one game isnt weird
             		for(var i = 0; i < install_trail_size; i++){
 						install_trail[i].life = 0;
@@ -395,29 +435,30 @@ switch(attack){
 					wave_friction = install_wave_friction;
 					air_max_speed = install_air_max_speed;
 					max_jump_hsp = install_max_jump_hsp;
-	            
-	            	// TODO -----------------------<<<<<<<<<<<<<<<<<<<<<<<
-	            	//Check other players, I'll figure out UUID stuff for this later
-	            	//this var name hack solution works for now
-	            	var other_DI = false;
-	            	var temp_lw = lightweight;
-	            	with(oPlayer){
-	            		if("dragon_install" in self){
-	            			if(dragon_install and other != self){
-	            				other_DI = true;
-	            				sound_stop(sound_get("install" + string(install_theme)));
-	            			}
-	            			if(lightweight){
-	            				temp_lw = lightweight;
-	            			}
-	            		} else if (url == 2357967710){
-	            			sound_stop(sound_get("pursuit"));
-	            			playing_install_theme = false;
-	            		}
-	            	}
-	            	playing_install_theme = true;
-            		sound_play(sound_get("install" + string(install_theme)), true, 0, min(volume*2, 1), 1);
-            		
+	            	
+	            	if(!mute_audio){
+		            	// TODO -----------------------<<<<<<<<<<<<<<<<<<<<<<<
+		            	//Check other players, I'll figure out UUID stuff for this later
+		            	//this var name hack solution works for now
+		            	var other_DI = false;
+		            	var temp_lw = lightweight;
+		            	with(oPlayer){
+		            		if("dragon_install" in self){
+		            			if(dragon_install and other != self){
+		            				other_DI = true;
+		            				sound_stop(sound_get("install" + music_page + music_alt + string(install_theme)));
+		            			}
+		            			if(lightweight){
+		            				temp_lw = lightweight;
+		            			}
+		            		} else if (url == 2357967710){
+		            			sound_stop(sound_get("pursuit"));
+		            			playing_install_theme = false;
+		            		}
+		            	}
+		            	playing_install_theme = true;
+	            		sound_play(sound_get("install"  + music_page + music_alt + string(install_theme)), true, 0, min(volume*2, 1), 1);
+		            }
 	            	if(!other_DI and !temp_lw){
 	            		
 	            		var temp_bg = instance_create(0, 0, "obj_article2");
@@ -558,14 +599,7 @@ switch(attack){
     	if(window == 1 and window_timer == 7){
     		charge_level = dragon_install;
     		
-    		var cfx = instance_create(x, y, "obj_article2");
-    		cfx.visible =0;
-    		cfx.fx_type = FX.dstrong_charge;
-    		cfx.tenshi = self;
-    		cfx.sprite_index = sprite_get("dstrong_charge");
-    		cfx.image_xscale = 2;
-    		cfx.image_yscale = 2;
-    		cfx.depth = -10;
+    	
     	} else if (window == 2 and strong_charge > 30 and charge_level < 2){
     		strong_charge = 0;
     		charge_level++;
@@ -820,7 +854,7 @@ switch(attack){
     	}
     	if(window == 1 and window_timer == 10){
     		charge_level = dragon_install;
-    		var cfx = instance_create(x, y, "obj_article2");
+    		/*var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.ustrong_charge;
     		cfx.tenshi = self;
@@ -828,7 +862,7 @@ switch(attack){
     		cfx.spr_dir = spr_dir;
     		cfx.image_xscale = 2;
     		cfx.image_yscale = 2;
-    		cfx.depth = -10;
+    		cfx.depth = -10;*/
     	} else if (window == 1 and strong_charge > 30 and charge_level < 2){
     		strong_charge = 0;
     		charge_level++;
@@ -836,10 +870,12 @@ switch(attack){
     			sound_play(asset_get("sfx_zetter_upb_hit"));
     			shake_camera(8, 12);
     			spawn_hit_fx(x+spr_dir*(-54), y, hisou_large);
+    			spawn_hit_fx(x, y, ustrong_charge2);
     		} else {
     			sound_play(asset_get("sfx_zetter_upb_hit"));
     			shake_camera(3*charge_level, 6*charge_level);
     			spawn_hit_fx(x+spr_dir*(-54), y, hisou_small);
+    			spawn_hit_fx(x, y, ustrong_charge1);
     		}
     	} else if (window == 2 and window_timer == 1){
     		switch(charge_level){
@@ -907,15 +943,6 @@ switch(attack){
     
     	if(window == 1 and window_timer == 8){
     		charge_level = dragon_install;
-    		var cfx = instance_create(x-spr_dir*40, y+16, "obj_article2");
-    		cfx.visible =0;
-    		cfx.fx_type = FX.fstrong_charge;
-    		cfx.tenshi = self;
-    		cfx.sprite_index = sprite_get("fstrong_charge");
-    		cfx.spr_dir = spr_dir;
-    		cfx.image_xscale = 2;
-    		cfx.image_yscale = 2;
-    		cfx.depth = -10;
     	} else if (window == 1 and strong_charge > 30 and charge_level < 2){
     		strong_charge = 0;
     		charge_level++;
@@ -986,6 +1013,9 @@ switch(attack){
     	if(!taunt_down and window == 1){
     		window = 2;
     		window_timer = 0;
+    	}
+    	if(get_match_setting(SET_PRACTICE) and window_timer == 10){
+    		tenshi_magic = 2400;
     	}
     	if(window_timer == 44 and taunt_down){
     		window_timer = 0;
@@ -1211,7 +1241,7 @@ switch(attack){
     					counter = true;
     					countered = player_id;
 						if(type == 2){
-							print("hi");
+							//print("hi");
 							countered = noone;
 						}
     					dmg = damage;
@@ -1308,7 +1338,7 @@ switch(attack){
     	tenshi_magic = 0;
     }
     dragon_install = false;
-	sound_stop(sound_get("install" + string(install_theme)));
+	sound_stop(sound_get("install" + music_page + music_alt + string(install_theme)));
     initial_dash_speed = base_initial_dash_speed;
     dash_speed = base_dash_speed;
     moonwalk_accel = base_moonwalk_accel;
@@ -1371,6 +1401,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 8);
 //uair
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 2);
 //bair
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 9);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 99);
@@ -1414,6 +1445,7 @@ set_hitbox_value(AT_DTILT, 5, HG_WINDOW, 2);
 set_hitbox_value(AT_DTILT, 6, HG_WINDOW, 2);
 //fspecial grab
 set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 1.1);
+set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_TYPE, 1);
 
 #define add_install_trail(frequency, durration)
 		var cur_time = get_gameplay_time();

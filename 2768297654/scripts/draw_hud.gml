@@ -27,7 +27,7 @@ draw_sprite_ext(sprite_get("combometer_bar2"), 0, temp_x + 24, temp_y + -18, (hu
 if(bomb_state = true){
    draw_sprite(sprite_get("hudsmokebomb1"), 0, temp_x + 180, temp_y + -38);
    draw_sprite(sprite_get("fly_meter"), 0, temp_x + 170, temp_y + -46);
-   draw_sprite_ext(sprite_get("bomb_bar"), 0, temp_x + 176, temp_y + -46, (bomb_timer/300), 1, 0, c_white, 1);
+   draw_sprite_ext(sprite_get("bomb_bar"), 0, temp_x + 176, temp_y + -46, (bomb_timer/240), 1, 0, c_white, 1);
 }
 
 if(duster_muted = true){

@@ -85,14 +85,14 @@ init_shader();
 }
 
 if (state==PS_SPAWN && extra_col == 0){
-	if (taunt_down&&down_down){//owen
+	if (taunt_down&&up_down){//owen
 		extra_col = 1
 		white_flash_timer = 18;
 		sound_play(sound_get("dspecial_activate"));
 		init_shader();
 	}
-	if (taunt_down&&up_down){//obligatory hyuponia color
-		extra_col = 2
+	if (taunt_down&&down_down){//spider
+		extra_col = 5
 		white_flash_timer = 18;
 		sound_play(sound_get("dspecial_activate"));
 		init_shader();
@@ -110,4 +110,14 @@ if (state==PS_SPAWN && extra_col == 0){
 		init_shader();
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("lemon"));
 	}
+	if (taunt_down&&special_down){//obligatory hyuponia color
+		extra_col = 2
+		white_flash_timer = 18;
+		sound_play(sound_get("dspecial_activate"));
+		init_shader();
+	}
 }
+
+
+
+

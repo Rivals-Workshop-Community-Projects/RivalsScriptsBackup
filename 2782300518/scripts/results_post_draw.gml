@@ -9,98 +9,122 @@ var frame3 = 0;
 var frame4 = 0;
 var frame5 = 0;
 
-
 //Sparkle effect
-if results_timer >= 8 and results_timer < 10{
-    frame = 1;
-}
-if results_timer >= 10 and results_timer < 13{
-    frame = 2;
-    sparkling2 = true;
-}
-if results_timer >= 13 and results_timer < 16{
-    frame = 3;
-     frame2 = 1;
-}
-if results_timer >= 16 and results_timer < 19{
-    frame = 4;
-    frame2 = 2;
-    sparkling3 = true;
-}
-if results_timer >= 19 and results_timer < 22{
-    frame = 5;
-    frame2 = 3;
-    frame3 = 1;
-}
-if results_timer >= 22 and results_timer < 25{
-    frame = 6;
-    frame2 = 4;
-    frame3 = 2;
-    sparkling4 = true;
-}
-if (results_timer >=25 and results_timer < 29)
+switch (results_timer)
 {
-  	sparkling1 = false;
-    frame2 = 5;
-    frame3 = 3;
-    frame4 = 1;
+	case 8:
+	case 9:
+	    frame = 1;
+	break;
+	case 10:
+	case 11:
+	case 12:
+		frame = 2;
+	    sparkling2 = true;
+	break;
+	case 13:
+	case 14:
+	case 15:
+	    frame = 3;
+		frame2 = 1;
+	break;
+	case 16:
+	case 17:
+	case 18:
+	    frame = 4;
+		frame2 = 2;
+	    sparkling3 = true;
+	break;
+	case 19:
+	case 20:
+	case 21:
+    	frame = 5;
+		frame2 = 3;
+		frame3 = 1;
+	break;
+	case 22:
+	case 23:
+	case 24:
+    	frame = 6;
+    	frame2 = 4;
+		frame3 = 2;
+	    sparkling4 = true;
+	break;
+	case 25:
+	case 26:
+	case 27:
+  		sparkling1 = false;
+    	frame2 = 5;
+	    frame3 = 3;
+		frame4 = 1;
+	break;
+	case 28:
+	case 29:
+	case 30:
+		sparkling1 = false;
+		frame2 = 6;
+		frame3 = 4;
+		frame4 = 2;
+		sparkling5 = true;
+	break;
+	case 31:
+	case 32:
+	case 33:
+	  	sparkling1 = false;
+	   	sparkling2 = false;
+		frame3 = 5;
+		frame4 = 3;
+	    frame5 = 1;
+	break;
+	case 34:
+	case 35:
+	case 36:
+	  	sparkling1 = false;
+	   	sparkling2 = false;
+	    frame3 = 6;
+		frame4 = 4;
+	    frame5 = 2;
+	break;
+	case 37:
+	case 38:
+	case 39:
+  		sparkling1 = false;
+  		sparkling2 = false;
+    	sparkling3 = false;
+		frame4 = 5;
+	    frame5 = 3;
+	break;
+	case 40:
+	case 41:
+	case 42:
+		sparkling1 = false;
+		sparkling2 = false;
+		sparkling3 = false;
+		frame4 = 6;
+		frame5 = 4;
+	break;
+	case 43:
+	case 44:
+	case 45:
+		sparkling1 = false;
+		sparkling2 = false;
+		sparkling3 = false;
+		sparkling4 = false;
+	    frame5 = 5;
+	break;
+	case 46:
+	case 47:
+	case 48:
+		sparkling1 = false;
+		sparkling2 = false;
+		sparkling3 = false;
+		sparkling4 = false;
+	    frame5 = 6;		
+	break;
+	default:
+	break;
 }
-if (results_timer >=29 and results_timer <31)
-{
-  	sparkling1 = false;
-   	frame2 = 6;
-    frame3 = 4;
-    frame4 = 2;
-    sparkling5 = true;
-}
-if (results_timer >=31 and results_timer <34)
-{
-  	sparkling1 = false;
-   	sparkling2 = false;
-    frame3 = 5;
-    frame4 = 3;
-    frame5 = 1;
-}
-if (results_timer >=34 and results_timer <37)
-{
-  	sparkling1 = false;
-   	sparkling2 = false;
-    frame3 = 6;
-    frame4 = 4;
-    frame5 = 2;
-}
-if (results_timer >=37 and results_timer <36)
-{
-  	sparkling1 = false;
-  	sparkling2 = false;
-    sparkling3 = false;
-    frame4 = 5;
-    frame5 = 3;
-}
-if (results_timer >=36 and results_timer <43)
-{
-  	sparkling1 = false;
-   	sparkling2 = false;
-    sparkling3 = false;
-	frame4 = 6;
-    frame5 = 4;
-}
-if (results_timer >=43 and results_timer <46)
-{
-	sparkling1 = false;
-   	sparkling2 = false;
-    sparkling3 = false;
-    sparkling4 = false;
-    frame5 = 5;
-}
-if (results_timer >=46 and results_timer <49)
-{
-	sparkling1 = false;
-   	sparkling2 = false;
-    sparkling3 = false;
-    sparkling4 = false;
-    frame5 = 6;		
-}
+
 if (results_timer >=49)
 {
 	sparkling1 = false;

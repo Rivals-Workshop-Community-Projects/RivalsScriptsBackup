@@ -476,7 +476,8 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 		if (get_player_color(player) == 15){
 			Box.sprite_index = sprite_get("moff");
 		}
-		if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3 || SecretColor == 4){
+		if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || 
+			get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3 || SecretColor == 4){
 			Box.flag = false;
 		}		
 		if (movingbox.flag){		
@@ -547,6 +548,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			// TAG - Alt color Down + Attack + Jump
 			if (!up_down && down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
 				SecretColor = 3;
+
 				hit_big = hit_fx_create( sprite_get("bighit_custom1_fx"), 44);
 				hit_small1 = hit_fx_create( sprite_get("smallhit1_custom1_fx"), 38);
 
@@ -562,6 +564,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
+				
 			}			
 		}	
 		

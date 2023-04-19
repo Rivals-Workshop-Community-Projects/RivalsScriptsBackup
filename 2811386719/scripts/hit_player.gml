@@ -44,11 +44,16 @@ if(my_hitboxID.attack == AT_JAB and my_hitboxID.hbox_num == 5){
 	if(hit_player_obj.static_pull) StaticConsume(hit_player_obj)
 }
 
-if(my_hitboxID.attack == AT_USPECIAL and my_hitboxID.hbox_num == 2){
-	// permanent_static = true;
-	static = 100;
-	var spawned = false;
-	//with oPlayer if !spawned and id != other { spawn_dust_fx(x, y, other.lightningfx_uspecial_spr, 20); spawned = true}
+if(my_hitboxID.attack == AT_USPECIAL){
+	if(my_hitboxID.hbox_num == 1){
+		cancel_cooldown = 26
+	}
+	if(my_hitboxID.hbox_num == 2){
+		// permanent_static = true;
+		static = 100;
+		var spawned = false;
+		//with oPlayer if !spawned and id != other { spawn_dust_fx(x, y, other.lightningfx_uspecial_spr, 20); spawned = true}
+	}
 }
 
 if(attack == AT_EXTRA_1 and my_hitboxID.hbox_num == 1){
@@ -82,26 +87,50 @@ if("bubble" in my_hitboxID and my_hitboxID.bubble){
 	my_hitboxID.hitbox_timer = max(my_hitboxID.hitbox_timer - 90, 0);
 }
 
-if(my_hitboxID.attack == AT_DSPECIAL and (my_hitboxID.hbox_num == 3 or my_hitboxID.hbox_num == 4) ){
+if(my_hitboxID.attack == AT_DSPECIAL and (my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 3 or my_hitboxID.hbox_num == 4) ){
 	hit_player_obj.should_make_shockwave = false;
+	with hit_player_obj{ sound_play(asset_get("sfx_waveland_fors")); sound_play(asset_get("sfx_abyss_despawn")) }
+	if ((hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
+    	  && was_parried == false
+	  && hit_player_obj.clone == false) 
+  {
+	  hit_player_obj.hit_wave = true;
+	  hit_player_obj.hit_wave_id = id;
+  }
 }
 
-if(my_hitboxID.attack == AT_FSTRONG and my_hitboxID.hbox_num == 2){
-	StaticMark()
+if(my_hitboxID.attack == AT_FSPECIAL_AIR){
+	old_hsp += -spr_dir*2.99*(spr_dir*hsp > 0)
+	// hit_player_obj.can_bounce = false
 }
 
-if(attack == AT_NTHROW and (my_hitboxID.hbox_num >= 2)){
-	grab_special_consume()
+if (my_hitboxID.attack == AT_FSTRONG)
+{
+	switch my_hitboxID.hbox_num
+	{
+		case 1:
+			sound_play(asset_get("sfx_hod_dstrong_hit"),false,noone,0.8,1.1)
+			sound_play(asset_get("sfx_birdclap"),false,noone,0.9,0.9)
+			sound_play(sound_get("clap 3 mono"),false,noone,0.7,1)
+			
+		break;	
+		case 2:
+			StaticMark();
+		break;
+	}
 }
-if(attack == AT_UTHROW and (my_hitboxID.hbox_num >= 2)){
+
+var mark = true
+if((attack == AT_UTHROW or attack == AT_NTHROW ) and (my_hitboxID.hbox_num >= 2)){
 	grab_special_consume()
+	mark = false
 }
 
 if(static >= 100 and !hit_player_obj.static_pull){
 	if(my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_USPECIAL_GROUND){
-		do_not_consume = true
+		consume = false
 	}
-	StaticMark()
+	if(mark) StaticMark()
 }
 
 //AI
@@ -109,12 +138,14 @@ n_times_got_hit--;
 // print(n_times_got_hit)
 #define grab_special_consume()
 
-if(!do_not_consume and hit_player_obj.static_pull){
+if(consume and hit_player_obj.static_pull){
 	StaticConsume(hit_player_obj);
+	static = 100;
 }
-if(do_not_consume) do_not_consume = false
+if(!consume) consume = true
 
 #define StaticMark()
+if(!hit_player_obj.wally_static_enabled) return;
 
 hit_player_obj.static_pull = 450;
 sound_play(asset_get("sfx_absa_singlezap2"))

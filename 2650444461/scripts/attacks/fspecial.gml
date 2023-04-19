@@ -116,7 +116,7 @@ set_hitbox_value(AT_FSPECIAL, 8, HG_PRIORITY, 6);
 set_hitbox_value(AT_FSPECIAL, 8, HG_DAMAGE, 4);
 set_hitbox_value(AT_FSPECIAL, 8, HG_ANGLE, 50);
 set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSPECIAL, 8, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_FSPECIAL, 8, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, 8, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL, 8, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));

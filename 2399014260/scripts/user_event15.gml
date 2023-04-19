@@ -245,6 +245,9 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.6", "14 April, 2023");
+initWords("Advertising");
+
 initPatch("1.5", "11 October, 2021");
 initHeader("NSpecial - Adjustments");
 initSection("When Luma gets hit during the Pull Star, Toad now gets popped up a bit instead of keeping his prior momentum.");

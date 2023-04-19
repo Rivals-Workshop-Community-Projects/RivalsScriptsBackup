@@ -6,7 +6,7 @@
 
 if (x > room_width or y > room_height + 200){
 	sound_play(asset_get("sfx_ell_cooldown"));
-	player_id.move_cooldown[AT_DSPECIAL] = 60;
+	player_id.move_cooldown[AT_DSPECIAL] = 90;
     instance_destroy();
     exit;
 }
@@ -178,10 +178,11 @@ if (state == 0){
 		image_index = 0;
 		hsp = 0;
 		sound_play(asset_get("sfx_shovel_hit_med2"));
+		spawn_base_dust( x, y, "land", spr_dir);
 		instance_destroy(throw_hitbox);
 	}
 	
-	player_id.move_cooldown[AT_DSPECIAL] = 12;
+	player_id.move_cooldown[AT_DSPECIAL] = 45;
 	
 }
 
@@ -229,7 +230,7 @@ if (state == 2){
 	if (!free){
 		//hsp = 0;
 	}
-	player_id.move_cooldown[AT_DSPECIAL] = 0;
+	//player_id.move_cooldown[AT_DSPECIAL] = 0;
 }
 
 //Vacuuming
@@ -237,7 +238,7 @@ if (state == 3){
 	if(opponentDirRelative != 0){
 		spr_dir = opponentDirRelative;
 	}
-	player_id.move_cooldown[AT_DSPECIAL] = 12;
+	player_id.move_cooldown[AT_DSPECIAL] = 46;
 	with (asset_get("pHitBox")){
     	if (place_meeting(x,y,other.id) && kb_value > 0){
     		other.desired_hitstop = clamp(hitpause + damage * hitpause_growth * 0.05, 0, 20);
@@ -300,6 +301,12 @@ if (state == 3){
 		grab_hitbox.x = x+40*spr_dir;
 		grab_hitbox.y = y-20;
 	}
+	//dust
+	if (image_index > 4 && image_index < 12){
+		if (get_gameplay_time() % 6 == 0){
+			spawn_base_dust( x - (20 * spr_dir), y, "dash", spr_dir);
+		}
+	}
 	
 	if (image_index > 17){
 		if (should_die_instantly == false){
@@ -328,6 +335,12 @@ if (state == 4){
 	if (!free){
 		//hsp = 0;
 	}
+	
+	if (image_index == 4.65){
+		spawn_base_dust( x - 20, y, "walk", 1);
+		spawn_base_dust( x + 20, y, "walk", -1);
+	}
+	
 	instance_destroy(suck_hitbox);
 	instance_destroy(grab_hitbox);
 	sprite_index = sprite_get("super_vac_grab");
@@ -355,6 +368,7 @@ if (state == 5){
 	if (!free){
 		//hsp = 0;
 	}
+	print(image_index);
 	//Opponent is fired forward
 	if (throw_direction == spr_dir){
 		sprite_index = sprite_get("super_vac_fire");
@@ -380,6 +394,9 @@ if (state == 5){
 					grabbed_player_id.y = lerp(grabbed_player_id.y, y-38, 0.4);
 				}
 			}
+		}
+		if (image_index == 5.7){
+			spawn_base_dust( x - (24 * spr_dir), y, "dash_start", spr_dir);
 		}
 		if (vacuum_myself){
 			var vacuum_self_increase_timer = .0;
@@ -453,6 +470,9 @@ if (state == 5){
 				} 
 			}
 		}
+		if (image_index == 7.5){
+			spawn_base_dust( x + (24 * spr_dir), y, "dash_start", -spr_dir);
+		}
 		nspecial_shot = false;
 		sprite_index = sprite_get("super_vac_fire_back");
 		if (vacuum_myself){
@@ -491,7 +511,7 @@ if (state == 5){
 //State 6: Dying
 if (state == 6){
 	should_die_instantly = false;
-	player_id.move_cooldown[AT_DSPECIAL] = 60;
+	player_id.move_cooldown[AT_DSPECIAL] = 90;
 	if (state_timer == 0){
 		sound_play(asset_get("sfx_ell_cooldown"));
 	}
@@ -511,3 +531,48 @@ if (state == 6){
 
 //Make time progress
 state_timer++;
+
+//--------------------------------------------
+
+//Supersonic's Base Cast Dust Function
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+	
+	case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+    case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": dlen = 21; dfx = 16; dfg = 0; break;
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;
+
+//--------------------------------------------

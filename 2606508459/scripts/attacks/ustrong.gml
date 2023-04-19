@@ -8,7 +8,7 @@ var ig = 1;
 
 //Up Strong Charge
 set_window_value(AT_USTRONG, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, ig, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USTRONG, ig, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_USTRONG, ig, AG_WINDOW_ANIM_FRAMES, 6);
 
 ig++;

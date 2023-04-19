@@ -53,40 +53,40 @@ for (var i = 0; i < fstrong_num_angles; i++) {
 // Movement across various windows
 if (fstrong_recoil_enabled) {
     // Horizontal aim angle
-    set_window_value(AT_FSTRONG, 5, AG_WINDOW_HSPEED, -7.5);
+    set_window_value(AT_FSTRONG, 5, AG_WINDOW_HSPEED, -7); // -7.5
     set_window_value(AT_FSTRONG, 5, AG_WINDOW_VSPEED, -3);
     //set_window_value(AT_FSTRONG, 5, AG_WINDOW_HSPEED, -10);
     //set_window_value(AT_FSTRONG, 5, AG_WINDOW_VSPEED, -4);
     set_window_value(AT_FSTRONG, 5, AG_WINDOW_HSPEED_TYPE, 2);
     set_window_value(AT_FSTRONG, 5, AG_WINDOW_VSPEED_TYPE, 2);
     // Angled up, so less horizontal movement
-    set_window_value(AT_FSTRONG, 9, AG_WINDOW_HSPEED, -6);
+    set_window_value(AT_FSTRONG, 9, AG_WINDOW_HSPEED, -5); // -6
     set_window_value(AT_FSTRONG, 9, AG_WINDOW_VSPEED, 1);
     set_window_value(AT_FSTRONG, 9, AG_WINDOW_HSPEED_TYPE, 2);
     set_window_value(AT_FSTRONG, 9, AG_WINDOW_VSPEED_TYPE, 2);
     // Angled down, so pop up into the air
-    set_window_value(AT_FSTRONG, 13, AG_WINDOW_HSPEED, -7.5);
-    set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED, -10);
+    set_window_value(AT_FSTRONG, 13, AG_WINDOW_HSPEED, -4.0); // -7.5
+    set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED, -8.5); // -10
     //set_window_value(AT_FSTRONG, 13, AG_WINDOW_HSPEED, -9);
     //set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED, -12);
     set_window_value(AT_FSTRONG, 13, AG_WINDOW_HSPEED_TYPE, 2);
     set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED_TYPE, 2);
-} else {
+} else { // weak knockback
     // Horizontal aim angle
-    set_window_value(AT_FSTRONG, 5, AG_WINDOW_HSPEED, 0);
-    set_window_value(AT_FSTRONG, 5, AG_WINDOW_VSPEED, 0);
-    set_window_value(AT_FSTRONG, 5, AG_WINDOW_HSPEED_TYPE, 1);
-    set_window_value(AT_FSTRONG, 5, AG_WINDOW_VSPEED_TYPE, 1);
+    set_window_value(AT_FSTRONG, 5, AG_WINDOW_HSPEED, -4);
+    set_window_value(AT_FSTRONG, 5, AG_WINDOW_VSPEED, 1);
+    set_window_value(AT_FSTRONG, 5, AG_WINDOW_HSPEED_TYPE, 2);
+    set_window_value(AT_FSTRONG, 5, AG_WINDOW_VSPEED_TYPE, 2);
     // Angled up, so less horizontal movement
-    set_window_value(AT_FSTRONG, 9, AG_WINDOW_HSPEED, 0);
-    set_window_value(AT_FSTRONG, 9, AG_WINDOW_VSPEED, 0);
-    set_window_value(AT_FSTRONG, 9, AG_WINDOW_HSPEED_TYPE, 1);
-    set_window_value(AT_FSTRONG, 9, AG_WINDOW_VSPEED_TYPE, 1);
+    set_window_value(AT_FSTRONG, 9, AG_WINDOW_HSPEED, -4);
+    set_window_value(AT_FSTRONG, 9, AG_WINDOW_VSPEED, 1);
+    set_window_value(AT_FSTRONG, 9, AG_WINDOW_HSPEED_TYPE, 2);
+    set_window_value(AT_FSTRONG, 9, AG_WINDOW_VSPEED_TYPE, 2);
     // Angled down, so pop up into the air
-    set_window_value(AT_FSTRONG, 13, AG_WINDOW_HSPEED, 0);
-    set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED, 0);
-    set_window_value(AT_FSTRONG, 13, AG_WINDOW_HSPEED_TYPE, 1);
-    set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED_TYPE, 1);
+    set_window_value(AT_FSTRONG, 13, AG_WINDOW_HSPEED, -4);
+    set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED, 1);
+    set_window_value(AT_FSTRONG, 13, AG_WINDOW_HSPEED_TYPE, 2);
+    set_window_value(AT_FSTRONG, 13, AG_WINDOW_VSPEED_TYPE, 2);
 }
 
 // Return to your original position
@@ -95,63 +95,115 @@ set_window_value(AT_FSTRONG, 15, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_FSTRONG, 15, AG_WINDOW_ANIM_FRAME_START, 11);
 
+// Penalty Zone
+set_window_value(AT_FSTRONG, penalty_window, AG_WINDOW_LENGTH, max_penalty_frames);
 
-set_num_hitboxes(AT_FSTRONG, 6);
 
-for (var i = 0; i < 3; i++) {
+var num_hitboxes_per_angle = 2;//3;
+set_num_hitboxes(AT_FSTRONG, num_hitboxes_per_angle * fstrong_num_angles);
+
+for (var i = 0; i < fstrong_num_angles; i++) {
     // Base
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_HITBOX_TYPE, 1);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_WINDOW, 5 + (4 * i));
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_LIFETIME, cycles_per_frame * 4);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_WIDTH, 52);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_HEIGHT, 52);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_PRIORITY, 1);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_VISUAL_EFFECT_X_OFFSET, -12);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_VISUAL_EFFECT_Y_OFFSET, 20);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_VISUAL_EFFECT, blast_hit_effect);
-    set_hitbox_value(AT_FSTRONG, 1 + (i * 2), HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_HITBOX_TYPE, 1);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_WINDOW, 5 + (4 * i));
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_LIFETIME, cycles_per_frame);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_WIDTH, 52);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_HEIGHT, 52);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_PRIORITY, 2);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT_X_OFFSET, -12);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT_Y_OFFSET, 20);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT, blast_hit_effect);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
     
     // Tip
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_HITBOX_TYPE, 1);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_WINDOW, 5 + (4 * i));
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_LIFETIME, cycles_per_frame * 2);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_WIDTH, 40);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_HEIGHT, 40);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_PRIORITY, 1);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_VISUAL_EFFECT_X_OFFSET, -12);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_VISUAL_EFFECT_Y_OFFSET, 20);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_VISUAL_EFFECT, blast_hit_effect);
-    set_hitbox_value(AT_FSTRONG, 2 + (i * 2), HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_HITBOX_TYPE, 1);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_WINDOW, 5 + (4 * i));
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_LIFETIME, cycles_per_frame);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_WIDTH, 40);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_HEIGHT, 40);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_PRIORITY, 2);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT_X_OFFSET, -12);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT_Y_OFFSET, 20);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT, blast_hit_effect);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+
+/*
+    // Lingering (same size as base)
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_HITBOX_TYPE, 1);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_WINDOW, 5 + (4 * i));
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_WINDOW_CREATION_FRAME, cycles_per_frame);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_LIFETIME, cycles_per_frame * 3);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_WIDTH, 52);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_HEIGHT, 52);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_PRIORITY, 1);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT_X_OFFSET, -12);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT_Y_OFFSET, 20);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_VISUAL_EFFECT, blast_hit_effect);
+    set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+*/
 }
 
 // Set damage/knockback angles
+// Initial hit
+for (var i = 0; i < fstrong_num_angles; i++) {
+    var base = i * num_hitboxes_per_angle;
+    for (var j = 1; j <= num_hitboxes_per_angle; j++) {
+        set_hitbox_value(AT_FSTRONG, base + j, HG_DAMAGE, 13);
+        set_hitbox_value(AT_FSTRONG, base + j, HG_ANGLE, 45); //60
+        set_hitbox_value(AT_FSTRONG, base + j, HG_BASE_KNOCKBACK, 7.0);
+        set_hitbox_value(AT_FSTRONG, base + j, HG_KNOCKBACK_SCALING, 1.1);
+        set_hitbox_value(AT_FSTRONG, base + j, HG_BASE_HITPAUSE, 7.0);
+        set_hitbox_value(AT_FSTRONG, base + j, HG_HITPAUSE_SCALING, 1.1);
+        //set_hitbox_value(AT_FSTRONG, base + j, HG_FINAL_BASE_KNOCKBACK, 1.0);
+    }
+}
+/*
+// Lingering hit
+for (var i = 1; i <= fstrong_num_angles; i++) {
+    var base = i * 3;
+    set_hitbox_value(AT_FSTRONG, base, HG_DAMAGE, 11); // 13
+    set_hitbox_value(AT_FSTRONG, base, HG_ANGLE, 60);
+    set_hitbox_value(AT_FSTRONG, base, HG_BASE_KNOCKBACK, 5.0); // 7.0
+    set_hitbox_value(AT_FSTRONG, base, HG_KNOCKBACK_SCALING, 0.9); // 1.1
+    set_hitbox_value(AT_FSTRONG, base, HG_BASE_HITPAUSE, 5.0); // 7.0
+    set_hitbox_value(AT_FSTRONG, base, HG_HITPAUSE_SCALING, 0.9); // 1.1
+    set_hitbox_value(AT_FSTRONG, base, HG_FINAL_BASE_KNOCKBACK, 2.0);
+}
+*/
+
+
+/*
 // Neutral
 for (var i = 1; i <= 2; i++) {
     set_hitbox_value(AT_FSTRONG, i, HG_DAMAGE, 13);
-    set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 62); // 55
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.25); // 7.5
+    set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 60); // 62 55
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.0); // 7.25 7.5
     set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.1); // 0.9
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.25); // 7.5
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.0); // 7.25 7.5
     set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 1.1); // 0.9
+    set_hitbox_value(AT_FSTRONG, i, HG_FINAL_BASE_KNOCKBACK, 1.0);
 }
 // High
 for (var i = 3; i <= 4; i++) {
     set_hitbox_value(AT_FSTRONG, i, HG_DAMAGE, 14);
-    set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 70); // 70
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.25); // 7.5
+    set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 60); // 70
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.0); // 7.25 7.5
     set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.1); // 0.95
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.25); // 7.5
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.0); // 7.25 7.5
     set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 1.1); // 0.95
+    set_hitbox_value(AT_FSTRONG, i, HG_FINAL_BASE_KNOCKBACK, 1.0);
 }
 // Low
 for (var i = 5; i <= 6; i++) {
     set_hitbox_value(AT_FSTRONG, i, HG_DAMAGE, 12);
-    set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 54); // 40
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.25); // 7.5
+    set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 60); // 54 40
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7.0); // 7.25 7.5
     set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.1); // 0.85
-    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.25); // 7.5
+    set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 7.0); // 7.25 7.5
     set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 1.1); // 0.85
+    set_hitbox_value(AT_FSTRONG, i, HG_FINAL_BASE_KNOCKBACK, 1.0);
 }
+*/
 
 // Make the hitbox placement self-adjust with angle
 // Fulcrum offset from player's current position
@@ -162,7 +214,7 @@ var fulcrum_offset_x = 51;
 var fulcrum_offset_y = -9;
 var distance_to_base = point_distance(0, 0, fulcrum_offset_x, fulcrum_offset_y);
 var aim_angle = 0;
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < fstrong_num_angles; i++) {
     switch (i) {
         case 1 : // Up
             aim_angle = fstrong_upward_angle;
@@ -188,23 +240,27 @@ for (var i = 0; i < 3; i++) {
     var tip_hitbox_x = base_hitbox_x + lengthdir_x(hb_origin_distance, hb_origin_angle);
     var tip_hitbox_y = base_hitbox_y + lengthdir_y(hb_origin_distance, hb_origin_angle);
 
-    set_hitbox_value(AT_FSTRONG, 1 + (2 * i), HG_HITBOX_X, base_hitbox_x);
-    set_hitbox_value(AT_FSTRONG, 1 + (2 * i), HG_HITBOX_Y, base_hitbox_y);
-    set_hitbox_value(AT_FSTRONG, 2 + (2 * i), HG_HITBOX_X, tip_hitbox_x);
-    set_hitbox_value(AT_FSTRONG, 2 + (2 * i), HG_HITBOX_Y, tip_hitbox_y);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_HITBOX_X, base_hitbox_x);
+    set_hitbox_value(AT_FSTRONG, 1 + (i * num_hitboxes_per_angle), HG_HITBOX_Y, base_hitbox_y);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_HITBOX_X, tip_hitbox_x);
+    set_hitbox_value(AT_FSTRONG, 2 + (i * num_hitboxes_per_angle), HG_HITBOX_Y, tip_hitbox_y);
+    //set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_HITBOX_X, base_hitbox_x);
+    //set_hitbox_value(AT_FSTRONG, 3 + (i * num_hitboxes_per_angle), HG_HITBOX_Y, base_hitbox_y);
 }
 
 
 // Munophone notes
 set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Only hitboxes of the same angle will appear together.");
 // Exclude windows of up/down angles
-for (var i = 1; i < fstrong_num_angles; i++) {
+//for (var i = 1; i < fstrong_num_angles; i++) {
     var fstrong_windows_per_angle = 4;
-    for (var j = 3; j < 3 + fstrong_windows_per_angle; j++) {
-        var fstrong_current_window = j + (fstrong_windows_per_angle * i)
-        set_window_value(AT_FSTRONG, fstrong_current_window, AG_MUNO_WINDOW_EXCLUDE, 1);
+    var exclusion_start = 3 + fstrong_windows_per_angle;
+    for (var j = exclusion_start; j < fstrong_num_angles * fstrong_windows_per_angle; j++) {
+        //set_window_value(AT_FSTRONG, j, AG_MUNO_WINDOW_EXCLUDE, 1);
+        //set_window_value(AT_FSTRONG, j, AG_MUNO_ATTACK_USES_ROLES, 1);
+        //set_window_value(AT_FSTRONG, j, AG_MUNO_WINDOW_ROLE, 0);
     }
-}
+//}
 
 set_hitbox_value(AT_FSTRONG, 1, HG_MUNO_HITBOX_MISC_ADD, "Neutral angle");
 set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_MISC_ADD, "Neutral angle");
@@ -214,14 +270,14 @@ var fstrong_first_hitbox_frame = get_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGT
                                + get_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH)
                                + get_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH);
 set_hitbox_value(AT_FSTRONG, 3, HG_MUNO_HITBOX_MISC_ADD, "Upward angle");
-set_hitbox_value(AT_FSTRONG, 3, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 4)));
+set_hitbox_value(AT_FSTRONG, 3, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 1)));
 set_hitbox_value(AT_FSTRONG, 4, HG_MUNO_HITBOX_MISC_ADD, "Upward angle");
-set_hitbox_value(AT_FSTRONG, 4, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 2)));
+set_hitbox_value(AT_FSTRONG, 4, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 1)));
 
 set_hitbox_value(AT_FSTRONG, 5, HG_MUNO_HITBOX_MISC_ADD, "Downward angle");
-set_hitbox_value(AT_FSTRONG, 5, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 4)));
+set_hitbox_value(AT_FSTRONG, 5, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 1)));
 set_hitbox_value(AT_FSTRONG, 6, HG_MUNO_HITBOX_MISC_ADD, "Downward angle");
-set_hitbox_value(AT_FSTRONG, 6, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 2)));
+set_hitbox_value(AT_FSTRONG, 6, HG_MUNO_HITBOX_ACTIVE, string(fstrong_first_hitbox_frame + 1) + "-" + string(fstrong_first_hitbox_frame + (cycles_per_frame * 1)));
 
 /*
 // Sweetspot

@@ -14,7 +14,7 @@ hsp = 0;                                            //The horizontal speed of th
 vsp = 0;                                            //The vertical speed of the article.
 depth = -99;
 
-
+fspecial_passed = false;
 
 //Terrain behavior
 can_be_grounded = true;                            //Determines if the article follows platforms when free == false.

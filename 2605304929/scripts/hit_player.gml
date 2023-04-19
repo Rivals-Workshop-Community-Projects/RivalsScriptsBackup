@@ -1,4 +1,4 @@
-/* Maw's Code
+ /* Maw's Code
 ## `hit_player.gml` - 'Grab' Opponents On Hit, Transition to 'Throw'
 ```GML
 //hit_player.gml */
@@ -79,7 +79,7 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 }
 
 //DSpecial Command Grab
-if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && (my_hitboxID.hbox_num == 3) && my_hitboxID.type == 1) {
+if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && (my_hitboxID.hbox_num == 2) && my_hitboxID.type == 1) {
 
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
@@ -181,10 +181,10 @@ if (my_hitboxID.attack == AT_FINAL_SMASH_GRAB) {
 //#region Execute Command Grab Section
 
 if(water_buff_electric_attack_flag == 1){
-	hitfx_consume_water_obj = spawn_hit_fx(x,y-80,hitfx_consume_water);
-	hitfx_boosted_grab_obj = spawn_hit_fx(x,y-36,hitfx_boosted_grab);
-	
-	sound_play(asset_get("sfx_ice_uspecial_jump"));
+	hitfx_consume_water_obj = spawn_hit_fx(x,y-80,hitfx_consume_water); // Eyes
+	hitfx_mark_consume_obj = spawn_hit_fx(x, hit_player_obj.y - floor(hit_player_obj.char_height / 2),hitfx_mark_consume);
+	//print()
+	sound_play(sound_get("deep_hit" ),false,noone,1,1.5);
 	switch(attack){
 		case AT_UTHROW: 
 			attack_end(); 
@@ -316,7 +316,7 @@ switch(my_hitboxID.attack){
 			sound_play(asset_get("sfx_waterhit_medium"),false,noone,.75,1); // soundID,looping,panning,volume,pitch
 			}
 		if(my_hitboxID.hbox_num == 3 ){
-			var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_combined);
+			var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_elec);
 			hitfx_water_object.depth = depth - 1;
 			sound_play(sound_get( "quick-shock"),false,noone,.5,1); // soundID,looping,panning,volume,pitch
 			}
@@ -324,7 +324,7 @@ switch(my_hitboxID.attack){
 	case AT_FAIR:
 		if(my_hitboxID.hbox_num == 1){sound_play(sound_get( "lightning_ps1" ),false,noone,1,1.5);} // soundID,looping,panning,volume,pitch}{)
 		if(my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2){
-			var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_combined);
+			var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_elec);
 			hitfx_water_object.depth = depth - 1;
 		}
 		break;
@@ -389,7 +389,7 @@ switch(my_hitboxID.attack){
 	case AT_DSPECIAL:
 	case AT_NSPECIAL:
 	case AT_NSPECIAL_AIR: // // Lighting Hitfx
-		var hitfx_elec_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_elec);
+		var hitfx_elec_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_elec_paw);
 		hitfx_elec_object.depth = depth - 1;
 		break;
 	case AT_FSPECIAL_2:
@@ -423,7 +423,7 @@ switch(my_hitboxID.attack){
 	case AT_DSTRONG:
 	case AT_FSTRONG:
 	case AT_BAIR:
-		var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_combined);
+		var hitfx_water_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_large_elec);
 		hitfx_water_object.depth = depth - 1;
 		sound_play(sound_get( "quick-shock" ),false,noone,1,1); // soundID,looping,panning,volume,pitch
 		//print("in_loop")
@@ -500,9 +500,8 @@ switch(my_hitboxID.attack){
 	if(hitbox_attack_name == AT_DSPECIAL ||
 	hitbox_attack_name == AT_DSPECIAL_AIR)
 	{
-		if(my_hitboxID.hbox_num == 1){element = "non-elemental";}
-		if(my_hitboxID.hbox_num == 2){element = "non-elemental";}
-		if(my_hitboxID.hbox_num == 3){element = "grab";}
+		if(my_hitboxID.hbox_num == 1){element = "water";}
+		if(my_hitboxID.hbox_num == 2){element = "grab";}
 	}
 	
 	return element;

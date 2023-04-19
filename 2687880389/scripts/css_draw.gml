@@ -10,18 +10,43 @@ switch (selected_color) {
 	    draw_sprite_ext(sprite_get("charselect_original"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
 		break;
 	case 21 :
-		draw_sprite_ext(sprite_get("charselect_hologram"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		if (!tournament_legal_mode_active) {
+			draw_sprite_ext(sprite_get("charselect_hologram"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		} else {
+			draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		}
 	    break;
 	case 23 :
-		draw_sprite_ext(sprite_get("charselect_queen"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		if (!tournament_legal_mode_active) {
+			draw_sprite_ext(sprite_get("charselect_queen"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		} else {
+        	set_character_color_slot( 7, 51, 51, 51, 1 ); //feet
+			draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		}
 		break;
 	case 25 :
-		draw_sprite_ext(sprite_get("charselect_rotom"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		if (!tournament_legal_mode_active) {
+			draw_sprite_ext(sprite_get("charselect_rotom"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		} else {
+        	set_character_color_slot( 7, 243, 130, 88, 1 ); //feet
+			draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+		}
 		break;
 	default :
 		draw_sprite_ext(sprite_get("charselect"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
 		break;
 }
+
+prepare_shader();
+shader_end();
+if (special_color_available) {
+	// frame 0 == unselected, 1 == unselected and hovering, 2 == selected, 3 == selected and hovering
+	draw_sprite_ext(sprite_get("special_button"), special_button_frame, x + special_button_origin_x, y + special_button_origin_y, 1, 1, 0, c_white, 1);
+}
+
+draw_sprite_ext(sprite_get("party_button"), party_button_frame, x + party_button_origin_x, y + party_button_origin_y, 1, 1, 0, c_white, 1);
+shader_start();
+prepare_shader();
 
 switch (selected_color) {
 	case 20 : // disable shading for EA
@@ -128,7 +153,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 25; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(111, 0, 255) // "color preview square" color. can be any color!
@@ -141,46 +166,46 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[2,1] = "Villain"
 	ce[2,2] = "Is it fear or courage that compels you?"
 	ce[3,0] = make_color_rgb(255, 221, 0)
-	ce[3,1] = "Bee"
+	ce[3,1] = "Yellow Stinger"
 	ce[3,2] = "This is our home - we have to fight for it!"
 	ce[4,0] = make_color_rgb(255, 106, 0)
-	ce[4,1] = "Scream"
+	ce[4,1] = "New Management"
 	ce[4,2] = "All hail ME!"
 	ce[5,0] = make_color_rgb(253, 110, 255)
-	ce[5,1] = "R.C."
+	ce[5,1] = "Remote Control"
 	ce[5,2] = "Locked and loaded!"
 	ce[6,0] = make_color_rgb(130, 255, 46)
 	ce[6,1] = "Construction"
 	ce[6,2] = "This is not your planet to rule."
 	ce[7,0] = make_color_rgb(34, 77, 214)
-	ce[7,1] = "Mega"
+	ce[7,1] = "Variable"
 	ce[7,2] = "Got equipped!"
 	ce[8,0] = make_color_rgb(255, 170, 0)
-	ce[8,1] = "Metroid"
+	ce[8,1] = "Bounty Hunter"
 	ce[8,2] = "See you next mission!"
 	ce[9,0] = make_color_rgb(37, 143, 61)
-	ce[9,1] = "Spartan"
+	ce[9,1] = "Military Grade"
 	ce[9,2] = "I need a weapon."
 	ce[10,0] = make_color_rgb(248, 143, 250)
-	ce[10,1] = "Nerf THIS!"
+	ce[10,1] = "Increased APM"
 	ce[10,2] = "Please don't actually nerf this..."
 	ce[11,0] = make_color_rgb(207, 174, 133)
 	ce[11,1] = "R.E.T.R.O."
 	ce[11,2] = "*Happy whirring noises*"
 	ce[12,0] = make_color_rgb(245, 198, 117)
-	ce[12,1] = "Gizoid"
+	ce[12,1] = "Ult. Weapon"
 	ce[12,2] = "Show me your power. Or I shall not obey."
 	ce[13,0] = make_color_rgb(255, 255, 255)
 	ce[13,1] = "Science"
 	ce[13,2] = "We do what we must because we can."
 	ce[14,0] = make_color_rgb(255, 0, 0)
-	ce[14,1] = "Iron Man"
+	ce[14,1] = "Avenging Red"
 	ce[14,2] = "I am Iron Man."
 	ce[15,0] = make_color_rgb(89, 161, 255)
-	ce[15,1] = "Cyborg"
+	ce[15,1] = "Justice Blue"
 	ce[15,2] = "Booyah!"
 	ce[16,0] = make_color_rgb(153, 18, 18)
-	ce[16,1] = "Mischeif Maker"
+	ce[16,1] = "Mischeivious"
 	ce[16,2] = "Shake-shake!"
 	ce[17,0] = make_color_rgb(8, 14, 33)
 	ce[17,1] = "Ugh"
@@ -198,17 +223,32 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[21,1] = "Hologram"
 	ce[21,2] = "...it was a hologram."
 	ce[22,0] = make_color_rgb(255, 51, 228)
-	ce[22,1] = "Mettaton EX"
+	ce[22,1] = "Beautiful"
 	ce[22,2] = "Oh, YES."
 	ce[23,0] = make_color_rgb(0, 136, 255)
-	ce[23,1] = "Queen"
+	ce[23,1] = "Royalty"
 	ce[23,2] = "Ohohohoho!~"
 	ce[24,0] = make_color_rgb(0, 122, 94)
-	ce[24,1] = "Cabinet Man"
+	ce[24,1] = "Arcade Carpet"
 	ce[24,2] = "This must be what love would have felt like..."
 	ce[25,0] = make_color_rgb(243, 130, 88)
-	ce[25,1] = "Rotom"
+	ce[25,1] = "Possession"
 	ce[25,2] = "It likes to wreak havoc in electronic devices."
+	ce[26,0] = make_color_rgb(0, 163, 248)
+	ce[26,1] = "Vortex Gallery"
+	ce[26,2] = "Retroblast is leagal in Vortex Gallery?!"
+//	ce[26,0] = make_color_rgb(255, 0, 0)
+//	ce[26,1] = "Overheated"
+//	ce[26,2] = "Original, red"
+//	ce[27,0] = make_color_rgb(37, 143, 61)
+//	ce[27,1] = "Overgrown"
+//	ce[27,2] = "Original, green"
+//	ce[28,0] = make_color_rgb(41, 80, 255)
+//	ce[28,1] = "Oversaturated"
+//	ce[28,2] = "Original, blue"
+//	ce[29,0] = make_color_rgb(112, 255, 117)
+//	ce[29,1] = "RGB Gamer Rig"
+//	ce[29,2] = "Original, red"
 //	ce[25,0] = make_color_rgb(255, 0, 0)
 //	ce[25,1] = "Robot"
 //	ce[25,2] = "Hey look, it's me! :)"
@@ -332,3 +372,16 @@ draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argumen
 draw_set_alpha(argument[6]*1.5);
 draw_rectangle_color(argument[0]+2, argument[1]+2, argument[2]-2, argument[3]-2, argument[4], argument[4], argument[4], argument[4], false);
 draw_set_alpha(1);
+
+//functions by supersonic
+#define prepare_shader()
+{
+    //init_shader(); fails to generate these variables for some reason,
+    //so we assign them to these completely equivalent values
+    //this allows shader_start() to be run in css_draw.gml!!!
+    static_colorB = colorB;
+    static_colorO = colorO;
+    static_colorT = colorT;
+    static_colorI = colorI;
+    init_shader();
+}

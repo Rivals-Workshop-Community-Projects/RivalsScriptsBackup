@@ -113,7 +113,7 @@ if (attack == AT_DSPECIAL)
                         sound_play(sound_get("snd_spooky"), false, noone, 1.25); 
                         sandwich_used = 1;
                         general_cooldown = 300;
-                        cd_sandwich = 300;
+                        cd_sandwich = 500;
                     }
                     else
                     {

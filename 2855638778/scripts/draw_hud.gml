@@ -1,5 +1,11 @@
 //go and declare debug variable in init
 if ("debug" in self) {
+
+	var debug_displacer = 0;
+	
+	if (debug == 1 && soldier_debug == 1) {
+		debug_displacer = 128;
+	}
 	
 	//This code draws a custom sprite tinted to the exact color of the player's first color slot.
 	var col_R = get_color_profile_slot_r( get_player_color(player), 0);
@@ -18,10 +24,10 @@ if ("debug" in self) {
 	
 	// debug vars 
 	if debug == 1 {
-		draw_debug_text(temp_x,temp_y-16,"Current state: " + get_state_name(state))
-		draw_debug_text(temp_x,temp_y-32,"Window timer: " + string(window_timer) + "    State timer: " + string(state_timer))
-		draw_debug_text(temp_x,temp_y-48,"Window: " + string(window) + "   Joystick: " + string(joy_dir))
-		draw_debug_text(temp_x,temp_y-64,"HSP: " + string(hsp) + "    VSP: " + string(vsp) + "    Free: " + string(free))
+		draw_debug_text(temp_x,temp_y-debug_displacer-16,"Current state: " + get_state_name(state))
+		draw_debug_text(temp_x,temp_y-debug_displacer-32,"Window timer: " + string(window_timer) + "    State timer: " + string(state_timer))
+		draw_debug_text(temp_x,temp_y-debug_displacer-48,"Window: " + string(window) + "   Joystick: " + string(joy_dir))
+		draw_debug_text(temp_x,temp_y-debug_displacer-64,"HSP: " + string(hsp) + "    VSP: " + string(vsp) + "    Free: " + string(free))
 		//further y positions should go up in multiples of 16 from 64
 	}
 
@@ -34,7 +40,7 @@ if ("debug" in self) {
 		draw_debug_text(temp_x,temp_y-64,"Parachute Active: " + string(para_active));
 		draw_debug_text(temp_x,temp_y-80,"Blastjumping: " + string(blastjumping));
 		draw_debug_text(temp_x,temp_y-96,"Strong Charge: " + string(strong_charge));
-		draw_debug_text(temp_x,temp_y-112,"Airstrong Credits: " + string(airstrongs_credits));
+		draw_debug_text(temp_x,temp_y-112,"Fspec Timer: " + string(fspecial_blast_ground_timer));
 	}
 	
 	if soldier_debug != 1 && debug != 1 {
@@ -69,13 +75,20 @@ if ("debug" in self) {
 	if (buff_active) {
 		draw_sprite_ext(hud_ragebar, 2, temp_x+118, temp_y-20, (buff_cur_timer/buff_timer)*2, 2, 0, c_white, 1);
 		// flag icon
-		draw_sprite_ext(hud_buff, 0, temp_x+28, temp_y-48, 2, 2, 0, c_white, 1);
+		draw_sprite_ext(hud_buff, 0, temp_x+28, temp_y-46, 2, 2, 0, c_white, 1);
+		if (runeB) { // rune b acts similar to tf2 batallion's backup buff
+			draw_sprite_ext(hud_buff, 1, temp_x+54, temp_y-46, 2, 2, 0, c_white, 1);
+		}
+		if (runeM) { // rune m acts similar to tf2 concheror's buff
+			draw_sprite_ext(hud_buff, 2, temp_x+54, temp_y-46, 2, 2, 0, c_white, 1);
+		}
 	}
 	
 	
 	// grayed out parachute icon if the move was used but isn't active
 	if (move_cooldown[AT_USPECIAL] > 2) {
 		draw_sprite_ext(hud_para, 0, temp_x-6, temp_y-48, 2, 2, 0, c_gray, 1);
+
 	}
 	
 	// parachute icon if move is currently in use
@@ -86,4 +99,66 @@ if ("debug" in self) {
 	}
 	
 }
+
+	
+//abyss gui code
+ab_hud_x = temp_x;
+ab_hud_y = temp_y;
+//this is for the outdated warning message
+if ("depNotice" not in self) depNotice = 0;
+if ("abyssEnabled" in self && abyssEnabled && (menuActive || timerActive)) abyssDraw();
+#define abyssDraw 
+/// abyssDraw()
+/// draws text and images the player recieved from the abyss buddy.
+if ("abyss_drawArray" in self && ds_list_valid(abyss_drawArray))  {
+	if (ds_list_size(abyss_drawArray) > 0) {
+		for (var _i = 0; _i < ds_list_size(abyss_drawArray);_i++) {
+			var _text = abyss_drawArray[| _i];
+			if draw_get_halign() != _text[6] {
+				draw_set_halign(_text[6]);
+			}
+			switch (_text[0]) {
+				case 0:
+					draw_debug_text(floor(_text[1]),floor(_text[2]),string(_text[3]));
+					break;
+				case 1:
+					draw_sprite_ext(_text[3],_text[5],_text[1],_text[2],1,1,0,_text[4],1);
+					break;
+				case 2:
+					draw_text_plus(floor(_text[1]),floor(_text[2]),string(_text[3]),floor(_text[5]),floor(_text[4]));
+					break;
+				case 3:
+					if draw_get_font() != 1 draw_set_font(1);
+			  draw_text_ext_color(floor(_text[1]),floor(_text[2]),string(_text[3]),16,floor(_text[5]),_text[4],_text[4],_text[4],_text[4], 1);
+					break;
+				default:
+				break;
+			}
+		}
+	}
+	//finished drawing, so clear the table for the next frame.
+	ds_list_clear(abyss_drawArray);
+}
+//return draw_calls;
+#define draw_text_plus
+/// draw_text_plus(x, y, text, font, color = c_white)
+/// draws outlined text in any in-game font.
+if draw_get_font() != argument[3] {
+	draw_set_font(argument[3]);
+}
+draw_text_color(argument[0]+2,argument[1],argument[2],c_black,c_black,c_black,c_black,1);
+draw_text_color(argument[0]-2,argument[1],argument[2],c_black,c_black,c_black,c_black,1);
+draw_text_color(argument[0],argument[1]-2,argument[2],c_black,c_black,c_black,c_black,1);
+draw_text_color(argument[0],argument[1]+2,argument[2],c_black,c_black,c_black,c_black,1);
+draw_text_color(argument[0]+2,argument[1]-2,argument[2],c_black,c_black,c_black,c_black,1);
+draw_text_color(argument[0]-2,argument[1]-2,argument[2],c_black,c_black,c_black,c_black,1);
+draw_text_color(argument[0]+2,argument[1]+2,argument[2],c_black,c_black,c_black,c_black,1);
+draw_text_color(argument[0]-2,argument[1]+2,argument[2],c_black,c_black,c_black,c_black,1);
+draw_text_color(argument[0],argument[1],argument[2],argument_count > 4 ? argument[4] : c_white,argument_count > 4 ? argument[4] : c_white,argument_count > 4 ? argument[4] : c_white,argument_count > 4 ? argument[4] : c_white,1);
+
+	
+
+
+
+
 

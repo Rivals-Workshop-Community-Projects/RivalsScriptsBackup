@@ -66,6 +66,8 @@ if(fuse <= 0 && state != 100){
 //offstage
 
 if(y >= room_height && state != 100){
+    sound_stop(sound_get("mollo_fuse"))
+    sound_stop(sound_get("crackerFuse"))
     instance_destroy();
     exit;
 }
@@ -73,7 +75,7 @@ if(y >= room_height && state != 100){
 
 //#region sizzle
 if(!fusesound){
-    if(fuse <= 180){
+    if(fuse <= 240){
         fusesound = true;
     
         sound_stop(sound_get("mollo_fuse"))
@@ -82,13 +84,32 @@ if(!fusesound){
         sound_play(sound_get("mollo_fuse"))
         sound_play(sound_get("mollo_fuse"))
         sound_play(sound_get("mollo_fuse"))
+        sound_play(sound_get("mollo_fuse"))
+        sound_play(sound_get("mollo_fuse"))
+        sound_play(sound_get("mollo_fuse"))
+        sound_play(sound_get("mollo_fuse"))
+        
+        
+    }
+}
+if(!fusesound2){
+	if(fuse <= 120){
+		fusesound2 = true;
+		// sound_stop(sound_get("mollo_fuse"))
+	    sound_play(sound_get("crackerFuse"));
+	    sound_play(sound_get("crackerFuse"));
+	    sound_play(sound_get("crackerFuse"));
+	    	
     }
 }
 
-if(fuse > 180 && fusesound){
+if(fuse > 240 && fusesound ){
     sound_stop(sound_get("mollo_fuse"))
+    sound_stop(sound_get("crackerFuse"))
     fusesound = false;
+    fusesound2 = false;
 }
+
 
 //#endregion
 //#region boom
@@ -101,6 +122,7 @@ if(state == 100){
             }
         }
         sound_stop(sound_get("mollo_fuse"))
+    	sound_stop(sound_get("crackerFuse"))
         var boom = create_hitbox(AT_EXTRA_1,1, x, y)
         if(loose){
             boom.hit_flipper = 3;
@@ -214,7 +236,7 @@ with(asset_get("pHitBox")){
     if((((attack != AT_EXTRA_1) && player_id == other.player_id) || player_id != other.player_id)){
     //if(attack != AT_EXTRA_1){
         if(place_meeting(x,y,other) && other.state != 100){
-            if(player_id.hitpause  == false && other.bombpause >= 30){
+            if(player_id.hitpause  == false && other.bombpause >= 30 && type == 1){
                 player_id.hitpause = true
                 player_id.hitstop = hitpause;
                 other.bombpause = 0 - hitpause;
@@ -289,18 +311,18 @@ if(abs(bomb_sp) > 1.0 ){
     }
     if(instance_exists(smack)){
         if(state_timer % 6 == 0){
-            spawn_hit_fx(x,y,29)
+            //spawn_hit_fx(x,y,29)
         }
         smack.damage = floor(abs(bomb_sp)*0.3);
         if(free){
             smack.kb_angle = point_direction(0,0,hsp*spr_dir,vsp);
             //smack.kb_value = floor(abs(bomb_sp)*0.20)+2;
-            smack.kb_value = 0
+            smack.kb_value = 3
         }
         else{
             smack.kb_angle = 60;
             //smack.kb_value = floor(abs(bomb_sp)*0.4)+2;
-            smack.kb_value = 0
+            smack.kb_value = 4
         }
         smack.x = x + hsp;
         smack.y = y+vsp+2;
@@ -332,7 +354,7 @@ draw_debug_text(x - 30*spr_dir, y - 120, "FUSE: "+string(bomb_sp));
 
 //#region Blink
 
-if(fuse < 180 && fuse >= 60){
+if(fuse < 240 ){
     if(fuse % 10 == 0){
         blinkT++;
     }
@@ -341,8 +363,8 @@ if(fuse < 180 && fuse >= 60){
     }
 }
 
-if(fuse < 60 && state != 100){
-    if(fuse % 3 == 0){
+if(fuse < 120 && state != 100){
+    if(fuse % 5 == 0){
         blinkT++;
     }
     if(fuse % 20 == 0){
@@ -377,9 +399,4 @@ if(fuse > 1900){
 bvsp = vsp;
 bhsp = hsp;
 
-if(fuse > 60){
-    fuse--;
-}
-else{
-    fuse -= 0.5;
-}
+fuse--;

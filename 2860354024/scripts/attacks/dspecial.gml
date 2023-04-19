@@ -9,7 +9,7 @@ set_attack_value(AT_DSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 20);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, sound_get("reload1"));
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 19);
@@ -43,7 +43,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 30);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 270);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, .2);

@@ -187,14 +187,14 @@ set_color_profile_slot( 15, 6, 138, 221, 78 ); //Brown Claw
 set_color_profile_slot( 15, 7, 233, 233, 233 ); //White Eye
 
 // Takky
-set_color_profile_slot( 16, 0, 71, 71, 71 ); //Black Fur
-set_color_profile_slot( 16, 1, 56, 56, 56 ); //Black Fur Shading
-set_color_profile_slot( 16, 2, 255, 0, 0 ); //Green Bracelet
-set_color_profile_slot( 16, 3, 178, 23, 255 ); //White Hair
-set_color_profile_slot( 16, 4, 132, 17, 189 ); //White Hair Shading
-set_color_profile_slot( 16, 5, 255, 0, 0 ); //Green Mask
-set_color_profile_slot( 16, 6, 255, 255, 255 ); //Brown Claw
-set_color_profile_slot( 16, 7, 233, 233, 233 ); //White Eye
+set_color_profile_slot( 16, 0, 139, 82, 151 ); //Black Fur
+set_color_profile_slot( 16, 1, 93, 46, 88 ); //Black Fur Shading
+set_color_profile_slot( 16, 2, 208, 62, 64 ); //Green Bracelet
+set_color_profile_slot( 16, 3, 250, 240, 252 ); //White Hair
+set_color_profile_slot( 16, 4, 167, 135, 148 ); //White Hair Shading
+set_color_profile_slot( 16, 5, 240, 178, 68 ); //Green Mask
+set_color_profile_slot( 16, 6, 250, 240, 252 ); //Brown Claw
+set_color_profile_slot( 16, 7, 250, 240, 252 ); //White Eye
 
 // Zoroark
 set_color_profile_slot( 17, 0, 71, 71, 71 ); //Black Fur

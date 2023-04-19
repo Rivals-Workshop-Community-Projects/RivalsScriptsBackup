@@ -1,64 +1,101 @@
 
-// (former) damage modifiers for equalizer attacks
-// (up tilt, up air)
-if (get_player_damage( player) >= 200) {
+// psuedo jump buffer for rocketjump ustrong on the ground
 /*
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 13);
-set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 13);
-
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 13);
-set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 13);
+if (!free && blastjumping) {
+	
+	if (up_strong_down || up_strong_pressed) && (jump_down || jump_pressed) {
+		
+		sound_play(asset_get("sfx_jumpground"), false, noone, 1, 1);
+		
+		if (jump_pressed) {
+			vsp = -short_hop_speed;
+		}
+		
+		else if (jump_down) {
+			vsp = -jump_speed;
+		}
+		
+		
+		move_cooldown[AT_USTRONG] = 5;
+		//set_state(PS_IDLE_AIR)
+		//vsp = -11;
+		
+	}
+}
 */
+
+// abyss rune damage modifiers for equalizer attacks
+// (up tilt, up air)
+// also escape plan speed boost modifier (dattack)
+if (get_player_damage( player) >= 200) {
+
+	if (runeE) {
+		set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 13);
+		set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 13);
+
+		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 13);
+		set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 13);
+	}
+
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 10);
 }
 else if (get_player_damage( player) >= 160) {
-/*
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 12);
-set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 12);
+	
+	if (runeE) {
+		set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 12);
+		set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 12);
 
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 12);
-set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 12);
-*/
+		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 12);
+		set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 12);
+	}
+	
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 9);
 }
 else if (get_player_damage( player) >= 120) {
-/*
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 11);
-set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 11);
+	
+	if (runeE) {
+		set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 11);
+		set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 11);
 
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 11);
-set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 11);
-*/
+		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 11);
+		set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 11);
+	}
+	
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 8);
 }
 else if (get_player_damage( player) >= 80) {
-/*
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 10);
-set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 10);
 
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 10);
-set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 10);
-*/
+	if (runeE) {
+		set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 10);
+		set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 10);
+
+		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 10);
+		set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 10);
+	}
+
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 7);
 }
 else if (get_player_damage( player) >= 40) {
-/*
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 9);
-set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 9);
 
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 9);
-set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 9);
-*/
+	if (runeE) {
+		set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 9);
+		set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 9);
+
+		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 9);
+		set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 9);
+	}
+
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6.5);
 }
 else {
-/*
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 8);
-set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 8);
+	
+	if (runeE) {
+		set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 8);
+		set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 8);
 
-set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 8);
-set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 8);
-*/
+		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 8);
+		set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 8);
+	}
 
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6);
 }
@@ -71,7 +108,7 @@ if (rockets_clip <= 0) {
 }
 
 // if your clip is full, you can't reload.
-if (rockets_clip >= 4) {
+if (rockets_clip >= rockets_clip_max) {
 	move_cooldown[AT_NSPECIAL] = 2;
 }
 
@@ -82,6 +119,21 @@ if (buff_current != buff_max) {
 
 // things that happen while buff is active
 if (buff_active) {
+	
+
+	
+	if (runeB) {
+		// become chungus
+		knockback_adj = 0.9;
+	}
+	
+	if (runeM) {
+		// buff banner speed
+		// healing is in attack_update
+		dash_speed = 7.5;
+		initial_dash_speed = 8;
+		leave_ground_max = 7.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+	}
 	
 	
 	// rage meter reset to 0
@@ -116,6 +168,20 @@ if (buff_active) {
 	
 }
 
+if (!buff_active)  {
+	if (runeB) {
+		// become unchungus
+		knockback_adj = 0.95;
+	}
+	
+	if (runeM) {
+		// slow
+		dash_speed = 5.5;
+		initial_dash_speed = 6;
+		leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+	}
+}
+
 // many, many, many states that determine when the parachute or blastjumping should undeploy
 // reset cooldown of upsecial if wall teched, wall jumped, or commited to landing
 if (state == PS_WALL_TECH) || (state == PS_WALL_JUMP) || (state_cat == SC_GROUND_COMMITTED) {
@@ -145,7 +211,13 @@ if (state == PS_AIR_DODGE) {
 
 // fall speed decreased while parachute is active
 if (para_active) {
-	max_fall = 3.73/2;
+	max_fall = 1.865;
+	
+	// remove aerial boost
+	set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED, -0);
+	set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, -0);
+	set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -0);
+	
 }
 else {
 	max_fall = 10;
@@ -211,6 +283,12 @@ if (para_active) {
 // starts the timer to display the undeploy animation
 if (para_should_undeploy = true) {
 	if (para_active) {
+		
+		// reset aerial boost
+		set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED, -1);
+		set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, -1);
+		set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -1);
+		
 		//spawn_dust_fx( x, y, sprite_get("uspecial_undeploy"), 10 );
 		sound_play(sound_get("para_close"), false, noone, 1, 1);
 		para_active = false;
@@ -225,20 +303,28 @@ if (rockets_clip < 0) {
 	rockets_clip = 0;
 }
 
-// enables the strongs to be used in air while blast jump is active
-// idk why this isn't initialized in the attacks themselves but whatever
-set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
-set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
-set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
-
 // handler for when blastjumping
 if (blastjumping) {
+	
+	// enables the strongs to be used in air while blast jump is active
+	set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
+	set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
+	//set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
 	
 	// RJ fstrong hitpause and visual 
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 157);
-	// reduced scaling
-	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9); // i want to make this 1 so bad
+	
+	
+	if (!runeK) { // reduced scaling for air fstrong
+		set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9); // i want to make this 1 so bad
+	}
+	else { // rune K makes air fstrong much stronger
+		set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.35);
+		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 20);
+	}
+	
+	// reduced scaling for air ustrong
 	set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	
 	// stats changes while blast jumping
@@ -269,12 +355,18 @@ if (blastjump_should_undeploy) {
 	
 	if (blastjumping) {
 		
+		set_attack_value(AT_FSTRONG, AG_CATEGORY, 0);
+		set_attack_value(AT_USTRONG, AG_CATEGORY, 0);
+		//set_attack_value(AT_DSTRONG, AG_CATEGORY, 0);
+		
 		// revert the RJ fstrong hitpause and visual
 		set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 9);
 		set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 		
 		set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 		set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
+		
+		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 12);
 		
 		// revert stats
 		air_accel = .3;
@@ -287,8 +379,9 @@ if (blastjump_should_undeploy) {
 		sound_stop(blastjump_sound);
 		blastjump_sound_deployed = false;
 		
-		// disables variable
+		// disables variables
 		blastjumping = false;
+		fspecial_blast_ground_timer = 0;
 		
 	}
 	// function self destruct
@@ -308,22 +401,34 @@ if(get_match_setting(SET_TEAMS)){
 	if (buff_active) {
 		with(oPlayer){
 			if(get_player_team(player) == get_player_team(other.player) && self != other){
-				if(instance_exists(hit_player_obj) && !inflicted_buff && has_hit_player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+				if !(other.url == 2855638778) {
+					if(instance_exists(hit_player_obj) && !inflicted_buff && has_hit_player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 
-					with hit_player_obj {
-						take_damage( player, player, 3 );
+						with hit_player_obj {
+							take_damage( player, player, 3 );
+							// idk how to play minicrit sfx through other players
+							//sound_play(asset_get("sfx_ori_energyhit_medium"), false, noone, 0.95, 1.25); 
+						}
+						
+						inflicted_buff = true;
 					}
 					
-					inflicted_buff = true;
+					if(!has_hit_player){
+						inflicted_buff = false;
+					}
 				}
-				
-				if(state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
-					inflicted_buff = false;
+				else if (other.url == 2855638778) {
+					
+					teammate_triggered_buff = 2;
+					
 				}
-				
 			}
 		}
 	}
+}
+
+if (teammate_triggered_buff > 0) {
+	teammate_triggered_buff--;
 }
 
 // red gets red horn. blue gets blue horn. green gets red horn? yellow gets blue horn??
@@ -431,7 +536,7 @@ if (!free) {
 
 // the idea of not being able to charge strongs in the air was chosen instead.
 if !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
-	if (free || blastjumping) {
+	if (free || blastjumping) && (!runeJ) {
 		set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 0);
 		set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 0);
 	}
@@ -507,3 +612,71 @@ if (get_player_color(player) == 16) {
 }
 */
 
+// a bulk of the abyss runes will be handled here
+
+if (runeC) {
+	// extra jump
+	max_djumps = 2;
+}
+
+// dspecial funny hitbox
+if (runeF) {
+	set_num_hitboxes(AT_DSPECIAL, 1);
+
+	// orcane puddle ustrong stats btw
+	//set_hitbox_value(AT_DSPECIAL, 1, HG_PARENT_HITBOX, 1);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 3);
+	//set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 1);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 3);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -30);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 80);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 80);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 14); 
+	set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.3);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 254);
+	set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("homerun_bat"));
+	//set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
+	//set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);	
+		
+}
+
+// more rockets in the clip
+// increased reload speed
+if (runeG) {
+	if runesUpdated {
+		rockets_clip = 8;
+	}
+	rockets_clip_max = 8;
+	
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 2);
+}
+
+// doubled buff
+if (runeI) {
+	buff_timer = 1800;
+}
+
+// fspecial and dstrong less endlag
+if (runeO) {
+	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 3);
+	set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 3);
+}
+
+// special fix for more maxammo rune
+if (get_gameplay_time() < 127) {
+	if (runeG) {
+		rockets_clip = 8;
+	}
+}
+
+// a very stupid fix for a very stupid bug.
+if (fspecial_blast_ground_timer > 2) {
+	blastjump_should_undeploy = true;
+}

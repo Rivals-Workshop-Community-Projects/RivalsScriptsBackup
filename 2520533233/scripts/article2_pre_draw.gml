@@ -27,3 +27,4 @@ if(fx_type == FX.install){
 	    }
     }
 }
+

@@ -53,11 +53,13 @@ sprite_change_offset("uair", 78, 216);
 sprite_change_offset("dair", 66, 120);
 sprite_change_offset("fstrong", 96, 120);
 sprite_change_offset("ustrong", 64, 114);
-sprite_change_offset("dstrong", 68, 150);
+sprite_change_offset("dstrong", 82, 150);
 sprite_change_offset("nspecial", 68, 124);
 sprite_change_offset("nspecial_air", 68, 124);
 sprite_change_offset("tip_nspecial", 68, 120);
 sprite_change_offset("fspecial", 108, 122);
+sprite_change_offset("fspecial_air", 108, 122);
+sprite_change_offset("fspecial_afterimage", 108, 122);
 sprite_change_offset("tip_fspecial", 108, 122);
 sprite_change_offset("uspecial", 66, 124);
 sprite_change_offset("dspecial", 68, 120);
@@ -86,14 +88,18 @@ sprite_change_offset("fspecial_slam_fx", 40, 80);
 sprite_change_offset("wwisp_proj", 32, 32);
 sprite_change_offset("wwisp_proj_col", 32, 32);
 sprite_change_offset("uspecial_wind", 40, 47);
+sprite_change_offset("uspecial_wind_over", 40, 47);
 sprite_change_offset("uspecial_boost", 34, 116);
 sprite_change_offset("dspecial_eye", 68, 120);
 sprite_change_offset("dspecial_eye_r", 76, 120);
 
 sprite_change_offset("intro", 68, 124);
 
+sprite_change_offset("hex_galaxy", 275, 275);
+
 //compat
 sprite_change_offset("comp_miiverse", 60, 30);
 sprite_change_offset("comp_guilty", 31, 0);
 sprite_change_offset("comp_feri", 84, 114);
 sprite_change_offset("comp_luigi", 27, 39);
+sprite_change_offset("comp_mario_en_weede", 70, 104);

@@ -40,9 +40,9 @@ switch graffiti_string {
 
 
 char_height = 52;
-idle_anim_speed = .1;
+idle_anim_speed = 0;
 crouch_anim_speed = .1;
-walk_anim_speed = .100;
+walk_anim_speed = .1;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
@@ -51,7 +51,7 @@ walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 9;
-dash_speed = 7;
+dash_speed = 5;//7
 dash_turn_time = 9;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -60,12 +60,12 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 11;
-short_hop_speed = 7;
-djump_speed = 12;
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 10; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_speed = 9;//11
+short_hop_speed = 6;//7;
+djump_speed = 9;//12
+leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -75,17 +75,17 @@ double_jump_time = 32; //the number of frames to play the djump animation. Can't
 walljump_hsp = 7;
 walljump_vsp = 11;
 walljump_time = 32;
-max_fall = 8; //maximum fall speed without fastfalling
-fast_fall = 16; //fast fall speed
-gravity_speed = .65;
+max_fall = 9; //maximum fall speed without fastfalling
+fast_fall = 13; //fast fall speed
+gravity_speed = .5; //.65
 hitstun_grav = .5;
 knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 8; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .1; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -102,9 +102,9 @@ tech_active_frames = 3;
 tech_recovery_frames = 1;
 
 //tech roll animation frames
-techroll_startup_frames = 2
-techroll_active_frames = 2;
-techroll_recovery_frames = 2;
+techroll_startup_frames = 1
+techroll_active_frames = 3;
+techroll_recovery_frames = 1;
 techroll_speed = 10;
 
 //airdodge animation frames
@@ -115,7 +115,7 @@ air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 4;
+roll_forward_active_frames = 3;
 roll_forward_recovery_frames = 1;
 roll_back_startup_frames = 1;
 roll_back_active_frames = 8;
@@ -141,15 +141,29 @@ swordfollow = {x: 0, y:0};
 
 combo = 0
 
-hud_option = 0
+hud_option = 1
 
 powerpoints = 64
 
 dspecial_sfx = 0
 
+released = false;
+
 powerpoints_regen = 0;
 
 trigger_delay = -1;
+
+stored_spell = false;
+
+shield_hbox = noone;
+
+aerial_fspecial = false;
+
+fspecial_cooldown = 0;
+
+blaze_fspecial_grab = noone;
+
+blaze_uspecial_grab = noone;
 
 //FX
 fx_slice = hit_fx_create(sprite_get("slice"), 15);
@@ -158,18 +172,23 @@ fx_slice2 = hit_fx_create(sprite_get("slice2"), 15);
 
 fx_slice3 = hit_fx_create(sprite_get("slice3"), 15);
 
+fx_portal = hit_fx_create(sprite_get("introportal"), 68);
 
 //In Init:
 hue_offset=0;
 hue_speed=1; //change this to change the speed of the hueshift
 
- set_victory_theme(sound_get("Victory!"));
+set_victory_theme(sound_get("Victory!"));
+
+if (get_player_color(player) == 9){
+    set_victory_theme(sound_get("Victorubies"));
+}
+
+set_victory_bg(sprite_get("victory_bg"))
 
  //Runes
  if has_rune("C") {
 dash_speed = 10;
-} else {
-dash_speed = 7;
 }
 
  if has_rune("E") {
@@ -185,7 +204,7 @@ prat_land_time = 5;
 wave_land_time = 4;
 } else {
 land_time = 8
-prat_land_time = 10;
+prat_land_time = 14;
 wave_land_time = 8;
 }
 
@@ -196,5 +215,24 @@ max_djumps = 1;
 }
 
 //Kirby Copy Ability
-
 TCG_Kirby_Copy = 5;
+
+// afterimages (thanks karu :3)
+afterimage_array = 0;
+afterimage_colour = make_colour_rgb(115, 0, 230);
+//afterimage_colour = GetColourPlayer(0);
+
+//drip
+drippy = false;
+
+//final smash
+fs_portrait_x = 150;
+fs_char_portrait_y = 100;
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "NSPECIAL";
+fs_char_attack_index = 49;
+fs_charge = 0;
+
+//pokemon stadium
+pkmn_stadium_front_img = sprite_get("Blaze_PKMN");
+pkmn_stadium_back_img = sprite_get("Blaze_PKMN_Back");

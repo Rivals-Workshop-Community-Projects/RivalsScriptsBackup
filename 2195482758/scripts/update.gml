@@ -39,7 +39,6 @@ if(do_taunt_2)
 	do_taunt_2 = false;
 }
 
-
 // Wallsit hsp and vsp scaling
 if(clinging && jump_down)
 {
@@ -57,6 +56,9 @@ else if(state != PS_WALL_JUMP)
 	walljump_hsp = base_walljump_hsp;
 }
 
+
+// Uspec grab cooldown
+if(uspec_grab_cooldown > 0) uspec_grab_cooldown--;
 
 if(attack == AT_TAUNT && state != PS_ATTACK_GROUND) sound_stop( sound_get( "tenru_laugh" ));
 
@@ -293,6 +295,15 @@ if(grabbedid != noone && !grabbed_solid){
 	}
 }
 
+// Secret portrait (shh!)
+if(taunt_down && shield_down)
+{
+	set_victory_portrait(sprite_get("portrait"));
+}
+else
+{
+	set_victory_portrait(0);
+}
 
 
 // Grab release backup
@@ -309,7 +320,8 @@ if(last_grabbedid != noone && (state != PS_ATTACK_GROUND && state != PS_ATTACK_A
     last_grabbedid = noone;
 }
 
-if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || uspecial_ground == true)
+// Ground resets
+if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESPAWN)
 {
 	// 1 Firecracker on screen at a time
 	var can_can_throw = true;
@@ -320,8 +332,7 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || uspecial_ground 
 				other.move_cooldown[AT_NSPECIAL] = max(other.move_cooldown[AT_NSPECIAL],1);
 				
 				
-	can_throw = uspecial_ground == true ? true : can_can_throw;
-	uspecial_ground = false;
+	can_throw = can_can_throw;
 	
 	can_grab_solid_fspec = true;
 	can_grab_plat_fspec = true;
@@ -329,7 +340,13 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || uspecial_ground 
 	can_grab_plat_uspec = true;
 	leniancy_recovery = false;
 	can_air_dspecial = true;
+	used_uspec = false;
+	first_uspec = state == PS_ATTACK_GROUND;
 	varying_uspecial_vsp = base_uspecial_vsp;
+	
+	// Reset uspec cooldown when on the ground
+	// Intent is to stop air comboing, don't need it when already on ground
+	uspec_grab_cooldown = 0;
 }
 
 // Particles
@@ -576,6 +593,12 @@ with(pHitBox){
          
          //hitbox_timer = bounced == 2 ? other.fc_lifetime-1 : hitbox_timer;
 
+		if(bounced > 0)
+		{
+			vsp = max(vsp,other.fc_standardized_bounce_speed);
+			//vsp = min(vsp,other.fc_standardized_min_bounce_speed);
+		}
+
          // Increment bounce counter
          bounced++;
          if(!is_spin) hitbox_timer = min(other.fc_lifetime-1,hitbox_timer+10); // Subtract from lifetime
@@ -586,6 +609,10 @@ with(pHitBox){
          if(is_spin)
          {
          	hsp = -3 * sign(hsp);
+         }
+         else
+         {
+         	hsp = 3 * sign(hsp);
          }
          
          // Transition to backspin

@@ -47,7 +47,8 @@ set_color_profile_slot( 1, 6, 66, 9, 20 ); //Robe shade
 set_color_profile_slot( 1, 7, 23, 23, 33 ); //Underrobe
 
 // Void
-set_color_profile_slot( 2, 0, 64, 255, 0 ); //Enegy/blood
+//set_color_profile_slot( 2, 0, 64, 255, 0 ); //Enegy/blood
+set_color_profile_slot( 2, 0, 255, 0, 0 ); //Enegy/blood
 set_color_profile_slot( 2, 1, 255, 255, 255 ); //Fur
 set_color_profile_slot( 2, 2, 37, 59, 35 ); //Trim
 set_color_profile_slot( 2, 3, 39, 43, 46 ); //Horn

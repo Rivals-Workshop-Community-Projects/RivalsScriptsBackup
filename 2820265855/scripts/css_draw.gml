@@ -1,3 +1,38 @@
+if !("hue" in self) hue = 0
+if get_player_color(player) = 18 {
+	hue+=1 
+	if hue>255 hue-=255;
+	//make hue shift every step + loop around
+
+	color_rgb=make_color_rgb(23, 57, 230);
+	//make a gamemaker color variable using kirby's default color (body)
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(18,0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	//set the new color using rgb values from the gamemaker color
+
+    	color_rgb=make_color_rgb(0, 128, 255);
+	//make a gamemaker color variable using kirby's default color (body)
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(18,1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	//set the new color using rgb values from the gamemaker color
+
+        	color_rgb=make_color_rgb(0, 0, 204);
+	//make a gamemaker color variable using kirby's default color (body)
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(18,4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	//set the new color using rgb values from the gamemaker color
+}
+init_shader();
+
 if "is_css" not in self is_css = true;
 var temp_x = floor(x+10);
 var temp_y = floor(y+10);
@@ -12,6 +47,12 @@ drawing = 1
     introtime = 0
     drawtime2 = -1
 }
+    
+if ("prev_alt" in self && prev_alt != alt){
+     drawing = random_func(4, 4, true)
+     drawtime = 0
+     introanim = random_func(1,4,true)
+}
 
 drawtime += 1 
 
@@ -19,6 +60,10 @@ if drawtime2 >= 0 {
     drawtime2 ++
 }
 introtime ++
+
+if drawtime == 1 && alt == 29{
+    sound_play(sound_get("drip"));    
+}
 
 prev_alt = alt;
 
@@ -193,6 +238,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[27,0] = make_color_rgb(179, 82, 183)
     ce[27,1] = "Infamous"
     ce[27,2] = "Before the Definitive Edition."
+    ce[28,0] = make_color_rgb(0, 30, 225)
+    ce[28,1] = "Rune Guy"
+    ce[28,2] = "I am Epic."
+    ce[29,0] = make_color_rgb(236, 36, 20)
+    ce[29,1] = "Drip"
+    ce[29,2] = "Supreme."
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

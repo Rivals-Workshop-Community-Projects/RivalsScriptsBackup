@@ -3,7 +3,7 @@ set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_USPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_USPECIAL, AG_OFF_LEDGE, 1);
-//set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air"));
+set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial_air"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 
 // startup ( no vsp and hps clamp)
@@ -45,7 +45,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -86);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, -3);
 set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 90);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 50);
-set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 5);
@@ -64,7 +64,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -56);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, -3);
 set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 50);
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 50);
-set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 2);
+set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 4);
 set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 6);

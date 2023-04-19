@@ -411,7 +411,7 @@ if (attack == AT_FSPECIAL){
 	if(window == 2){
         //ledge snap
         if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
-            for (var i = 1; i < 40; i++){
+            for (var i = 1; i < 20; i++){
                 if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) {
                     y -= i;
 					break;
@@ -661,11 +661,11 @@ if (attack == AT_NTHROW) {
 		}
 		
 		if (free) {
-			set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, 8);
-			set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, 0.8);
+			set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, 6);
+			set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, .9);
 		} else {
-			set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, 9);
-			set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, 0.95);	
+			set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, 7);
+			set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, 1);	
 		}
 		if (revengeMult > 1 && get_hitbox_value(attack, 2, HG_REVENGE_KB_MULTIPLIER) != 0) {
 			set_hitbox_value(attack, 2, HG_BASE_KNOCKBACK, get_hitbox_value(attack, 2, HG_BASE_KNOCKBACK) * get_hitbox_value(attack, 2, HG_REVENGE_KB_MULTIPLIER));
@@ -697,7 +697,7 @@ if (attack == AT_USPECIAL){
 	
 	if (window == 2) {
 		set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, (-14 + (window_timer * .66)));	
-		set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 1.3 * (right_down - left_down) * spr_dir);	
+		set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 1.2 * (right_down - left_down) * spr_dir);	
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED));	
 		if (window_timer % 4 == 0) {
 			array_push(phone_dust_query, [x, y, "walk", spr_dir]);	
@@ -716,10 +716,11 @@ if (attack == AT_USPECIAL){
 			window = 4;
 			window_timer = 0;
 		}
-		if (window_timer == 8 && get_window_value(AT_USPECIAL, 3, AG_WINDOW_GOTO) == 8) {
+		if (window_timer == 11 && get_window_value(AT_USPECIAL, 3, AG_WINDOW_GOTO) == 8) {
 			set_state(PS_PRATFALL);
 			target = noone;	
 		}
+		vsp *= 0.97;
 	}
 	if (window == 4) {
 		set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED, 7 + (3*(right_down - left_down)*spr_dir));

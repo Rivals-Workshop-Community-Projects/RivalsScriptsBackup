@@ -2,29 +2,14 @@
 
 owen_shading_intensity = 2;
 
-/*
-// shading
-if (get_player_color( player ) != 14) { // every other alt
-	set_character_color_shading( 0, 2);
-	set_character_color_shading( 1, 2);
-	set_character_color_shading( 2, 2);
-	set_character_color_shading( 3, 2);
-	set_character_color_shading( 4, 2);
-	set_character_color_shading( 5, 2);
+// default pallette color
+// this is necessary due to the way i color mapped stuff
+if (get_player_color( player ) == 0) {	
+	set_character_color_slot(6, 207, 155, 229, 1 ); // body shading
+	set_character_color_slot(7, 193, 120, 229, 1 ); // hair shading
 }
-else if (get_player_color( player ) == 14) { // early access alt 
-	set_character_color_shading( 0, 0);
-	set_character_color_shading( 1, 0);
-	set_character_color_shading( 2, 0);
-	set_character_color_shading( 3, 0);
-	set_character_color_shading( 4, 0);
-	set_character_color_shading( 5, 0);
-}
-*/
 
 if (get_player_color( player ) == 0) { // default
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -32,8 +17,6 @@ if (get_player_color( player ) == 0) { // default
 }
 
 if (get_player_color( player ) == 1) { // carrot
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -41,8 +24,6 @@ if (get_player_color( player ) == 1) { // carrot
 }
 
 if (get_player_color( player ) == 2) { //  grise
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -50,8 +31,6 @@ if (get_player_color( player ) == 2) { //  grise
 }
 
 if (get_player_color( player ) == 3) { //  blue
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -59,8 +38,6 @@ if (get_player_color( player ) == 3) { //  blue
 }
 
 if (get_player_color( player ) == 4) { //  setaria
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -68,8 +45,6 @@ if (get_player_color( player ) == 4) { //  setaria
 }
 
 if (get_player_color( player ) == 5) { //  gray shirt
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -77,8 +52,6 @@ if (get_player_color( player ) == 5) { //  gray shirt
 }
 
 if (get_player_color( player ) == 6) { //  freeman
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -86,8 +59,6 @@ if (get_player_color( player ) == 6) { //  freeman
 }
 
 if (get_player_color( player ) == 7) { //  natsumi
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -95,16 +66,12 @@ if (get_player_color( player ) == 7) { //  natsumi
 }
 
 if (get_player_color( player ) == 8) { //  SAKK
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity * 0);
 	set_character_color_shading( 5, owen_shading_intensity * 0);
 }
 if (get_player_color( player ) == 9) { //  orin
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -112,8 +79,6 @@ if (get_player_color( player ) == 9) { //  orin
 }
 
 if (get_player_color( player ) == 10) { //  niko
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -121,8 +86,6 @@ if (get_player_color( player ) == 10) { //  niko
 }
 
 if (get_player_color( player ) == 11) { // scaryami alt (no shading trololol)
-	set_character_color_shading( 0, 0);
-	set_character_color_shading( 1, 0);
 	set_character_color_shading( 2, 0);
 	set_character_color_shading( 3, 0);
 	set_character_color_shading( 4, 0);
@@ -131,8 +94,6 @@ if (get_player_color( player ) == 11) { // scaryami alt (no shading trololol)
 
 
 if (get_player_color( player ) == 12) { //  rainbow
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity * 0); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity * 0); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -140,18 +101,13 @@ if (get_player_color( player ) == 12) { //  rainbow
 }
 
 if (get_player_color( player ) == 13) { //  abyss
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
 	set_character_color_shading( 5, owen_shading_intensity);
 }
 
-
 if (get_player_color( player ) == 14) { // early access alt (no shading)
-	set_character_color_shading( 0, 0);
-	set_character_color_shading( 1, 0);
 	set_character_color_shading( 2, 0);
 	set_character_color_shading( 3, 0);
 	set_character_color_shading( 4, 0);
@@ -161,8 +117,6 @@ if (get_player_color( player ) == 14) { // early access alt (no shading)
 
 
 if (get_player_color( player ) == 15) { //  seasonal
-	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, owen_shading_intensity);
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity);
@@ -170,29 +124,13 @@ if (get_player_color( player ) == 15) { //  seasonal
 }
 
 if (get_player_color( player ) == 16) { //  trans rights
-	
-	alt_redcolor = get_color_profile_slot_r( get_player_color(player), 0);
-	//print_debug( alt_redcolor );
-	
-	// i really hope this works online
-	set_character_color_shading( 0, owen_shading_intensity);
-	if (alt_redcolor == 255) {
-		set_character_color_shading( 1, -owen_shading_intensity); // hair
-		set_character_color_shading( 5, -owen_shading_intensity); // crowbar edges
-	}
-	else {
-		set_character_color_shading( 1, 2); // hair
-		set_character_color_shading( 5, 2); // crowbar edges
-	}
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity); 
-	
+	set_character_color_shading( 5, owen_shading_intensity * -1);
 }
 
 if (get_player_color( player ) == 17) { //  100 bec
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -200,8 +138,6 @@ if (get_player_color( player ) == 17) { //  100 bec
 }
 
 if (get_player_color( player ) == 18) { //  sunny
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -209,17 +145,13 @@ if (get_player_color( player ) == 18) { //  sunny
 }
 
 if (get_player_color( player ) == 19) { //  clairen
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, 0*owen_shading_intensity); // crowbar
 	set_character_color_shading( 5, 0*owen_shading_intensity); // crowbar edges
 }
 
-if (get_player_color( player ) == 20) { //  fancy pants
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
+if (get_player_color( player ) == 20) { // nb
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -227,44 +159,27 @@ if (get_player_color( player ) == 20) { //  fancy pants
 }
 
 if (get_player_color( player ) == 21) { // sand cat
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
 	set_character_color_shading( 5, owen_shading_intensity); // crowbar edges
 }
-/*
-if (get_player_color( player ) == 22) { // slashe
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
-	set_character_color_shading( 2, owen_shading_intensity); // shirt
-	set_character_color_shading( 3, owen_shading_intensity); // shorts
-	set_character_color_shading( 4, owen_shading_intensity); // crowbar
-	set_character_color_shading( 5, owen_shading_intensity); // crowbar edges
-}
-*/
 
 if (get_player_color( player ) == 22) { // nes
-	set_character_color_shading( 0, 0); // body
-	set_character_color_shading( 1, 0); // hair
 	set_character_color_shading( 2, 0); // shirt
 	set_character_color_shading( 3, 0); // shorts
 	set_character_color_shading( 4, 0); // crowbar
 	set_character_color_shading( 5, 0); // crowbar edges
 }
 
-
 if (get_player_color( player ) == 23) { // the zerks one
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
 	set_character_color_shading( 5, owen_shading_intensity); // crowbar edges
 }
 
-if (get_player_color( player ) == 24) { // bob
+if (get_player_color( player ) == 24) { // genesis
 	set_character_color_shading( 0, owen_shading_intensity); // body
 	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
@@ -274,8 +189,6 @@ if (get_player_color( player ) == 24) { // bob
 }
 
 if (get_player_color( player ) == 25) { // blm
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -283,8 +196,6 @@ if (get_player_color( player ) == 25) { // blm
 }
 
 if (get_player_color( player ) == 26) { // mae
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -292,8 +203,6 @@ if (get_player_color( player ) == 26) { // mae
 }
 
 if (get_player_color( player ) == 27) { // banana rat
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -301,8 +210,6 @@ if (get_player_color( player ) == 27) { // banana rat
 }
 
 if (get_player_color( player ) == 28) { // skitteh
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -310,8 +217,6 @@ if (get_player_color( player ) == 28) { // skitteh
 }
 
 if (get_player_color( player ) == 29) { // the cooler mae
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -319,8 +224,6 @@ if (get_player_color( player ) == 29) { // the cooler mae
 }
 
 if (get_player_color( player ) == 30) { // this place makes bootcamp look like disneyland
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar
@@ -328,8 +231,6 @@ if (get_player_color( player ) == 30) { // this place makes bootcamp look like d
 }
 
 if (get_player_color( player ) == 31) { // troll alt
-	set_character_color_shading( 0, owen_shading_intensity); // body
-	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt
 	set_character_color_shading( 3, owen_shading_intensity); // shorts
 	set_character_color_shading( 4, owen_shading_intensity); // crowbar

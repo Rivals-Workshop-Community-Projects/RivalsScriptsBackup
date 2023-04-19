@@ -79,7 +79,7 @@ set_hitbox_value(AT_USPECIAL_2, 2, HG_PRIORITY, 8);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_DAMAGE, 7); //more damage than plusle's
 set_hitbox_value(AT_USPECIAL_2, 2, HG_ANGLE, 90); //upward angle
 set_hitbox_value(AT_USPECIAL_2, 2, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.6); //higher base, lower scaling than plusle's
+set_hitbox_value(AT_USPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.65); //higher base, lower scaling than plusle's
 set_hitbox_value(AT_USPECIAL_2, 2, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_VISUAL_EFFECT, 157); //extra large

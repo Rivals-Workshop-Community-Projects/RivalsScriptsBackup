@@ -4,40 +4,40 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 52;
-idle_anim_speed = .14;
+idle_anim_speed = .2;
 crouch_anim_speed = .14;
 walk_anim_speed = .18;
 dash_anim_speed = .35;
 pratfall_anim_speed = .25;
 
-walk_speed = 3.35;
-walk_accel = 0.3;
+walk_speed = 3.05;
+walk_accel = 0.25;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 6.85;
-dash_speed = 6.25;
+initial_dash_speed = 6.75;
+dash_speed = 5.95;
 dash_turn_time = 9;
 dash_turn_accel = 1.75;
 dash_stop_time = 6;
-dash_stop_percent = .45; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .55;
+dash_stop_percent = .3; //the value to multiply your hsp by when going into idle from dash or dashstop
+ground_friction = .5;
 moonwalk_accel = 1.2749;
 
 jump_start_time = 5;
-jump_speed = 9.5;
-short_hop_speed = 6;
-djump_speed = 8.9;
-leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
+jump_speed = 11;
+short_hop_speed = 5;
+djump_speed = 9;
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 3; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .35;
+air_accel = .25;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 33; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 6;
-walljump_vsp = 7;
+walljump_hsp = 5;
+walljump_vsp = 8;
 walljump_time = 20;
 max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
@@ -80,10 +80,10 @@ air_dodge_speed = 7.5;
 //roll animation frames
 roll_forward_startup_frames = 1;
 roll_forward_active_frames = 4;
-roll_forward_recovery_frames = 1;
+roll_forward_recovery_frames = 2;
 roll_back_startup_frames = 1;
 roll_back_active_frames = 4;
-roll_back_recovery_frames = 1;
+roll_back_recovery_frames = 2;
 roll_forward_max = 8; //roll speed
 roll_backward_max = 8;
 
@@ -98,6 +98,11 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+//Wait sprites
+wait_time = 379;
+wait_length = 170;
+wait_sprite = sprite_get("idle_wait");
+
 //other variables. idk
 ballOut = 0;
 ballDown = 0;
@@ -107,10 +112,11 @@ showHUD = false;
 hue_offset=0;
 hue_speed=1; //change this to change the speed of the hueshift
 nspecialAfter = hit_fx_create( sprite_get( "nspecial_proj_after" ),16);
-nspecialAfter2 = hit_fx_create( sprite_get( "nspecial_proj2_after" ),14);
+fireAfter = hit_fx_create( sprite_get( "fire_after" ),12);
 nspecialAfter3 = hit_fx_create( sprite_get( "nspecial_proj3_after" ),14);
-fspecialAfter = hit_fx_create( sprite_get( "fspecial_proj_after" ),8);
-fspecialAfter2 = hit_fx_create( sprite_get( "fspecial_proj2_after" ),8);
+fspecialAfter = hit_fx_create( sprite_get( "fspecial_proj_after" ),6);
+fspecialAfter2 = hit_fx_create( sprite_get( "fspecial_proj2_after" ),6);
+ligmaballs = 0;
 
 //Character support
 tcoart = sprite_get("cinnytcoart");
@@ -121,7 +127,7 @@ otto_bobblehead_sprite = sprite_get("hudbobblehead");
 otto_bobblehead_body_sprite = sprite_get("hudbobblebody");
 kirbyability = 16;
 swallowed = 0;
-diag_portrait=sprite_get("diagportrait");
+diag_portrait= sprite_get("diagportrait");
 
 //Dracula Support
 dracula_portrait = sprite_get("dracportrait1");
@@ -137,7 +143,7 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "I have met many people in this room lately, but I don't take too kind to intruders in my domain of night monsters. Not even children such as you!";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Ohhh... I see what's going on here... You're that Count Dracula, aren't you? The one that family of burly dudes with whips keeps beating to a pulp everytime!";
+dracula_text[page] = "Ohhh... I see what's going on here... You're that Count Dracula, aren't you? The one who gets beaten into a pulp by burly dudes with whips and crosses?";
 page++;
 dracula_speaker[page] = 2;
 dracula_text[page] = "Well, guess what! I don't have a whip or a cross, but I'm not afraid of you!";

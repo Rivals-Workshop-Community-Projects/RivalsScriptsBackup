@@ -56,15 +56,15 @@ if (shop_open == 1 && attack == AT_DSPECIAL && state == PS_ATTACK_GROUND){
         break;
         case 2:
             draw_sprite(sprite_get("cursor"), onehit_bought, 266 + 82*(item_selected - 1), 10);
-            draw_debug_text( desc_x, 14, string( "Mail Scooter Badge" ));
-            draw_debug_text( desc_x, 40, string( "Shoot a projectile with" ));
-            draw_debug_text( desc_x, 65, string( "dash attack!" ));
+            draw_debug_text( desc_x, 14, string( "Scooter Badge" ));
+            draw_debug_text( desc_x, 40, string( "Ride an accelerating" ));
+            draw_debug_text( desc_x, 65, string( "scooter while dashing!" ));
         break;
         case 3:
             draw_sprite(sprite_get("cursor"), onehit_bought, 266 + 82*(item_selected - 1), 10);
-            draw_debug_text( desc_x, 14, string( "Beam Badge" ));
-            draw_debug_text( desc_x, 40, string( "Lets you hold down" ));
-            draw_debug_text( desc_x, 65, string( "jab1 for a laser beam!" ));
+            draw_debug_text( desc_x, 14, string( "Hookshot Badge" ));
+            draw_debug_text( desc_x, 40, string( "Replaces Neutral Special" ));
+            draw_debug_text( desc_x, 65, string( "with a command grab." ));
         break;
         case 4:
             draw_sprite(sprite_get("cursor"), onehit_bought, 266 + 82*(item_selected - 1) - 1, 10);

@@ -1,7 +1,11 @@
+// the bug, it still haunts me gordon
+
 hurtbox_spr = sprite_get("soldier_hurtbox");
 crouchbox_spr = sprite_get("soldier_crouchbox");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
+
+small_sprites = 1;
 
 char_height = 56;
 idle_anim_speed = .1;
@@ -105,6 +109,7 @@ soldier_debug = 0;
 //hud_mode = 2;
 
 rockets_clip = 4;
+rockets_clip_max = 4;
 rockets_reserve = 20;
 
 buff_current = 0;
@@ -144,9 +149,11 @@ blastjump_sound = sound_get( "grenade_jump_lp_01" );
 blastjump_sound_deployed = false;
 blastjump_should_undeploy = false;
 
+fspecial_blast_ground_timer = 0;
+
 explosion_sound = sound_get("explode1");
 
-grenade_explode = false;
+grenade_explode = 0;
 
 blastjump_dust_timer = 0;
 
@@ -157,10 +164,16 @@ death_sound_var = 0;
 
 airstrongs_credits = 60;
 
+teammate_triggered_buff = 0;
+
 css_dspec = 0;
 dspec_swap_task_timer = 0;
 
 _col = get_player_hud_color( player );
+
+// variable used for blastjump state anims
+rj_anim_pos = 0; 
+rj_dstrong_anim_pos = 0;
 
 // localization file updates: 1
 
@@ -188,5 +201,53 @@ arena_title = "Screamin' Eagle";
 
 // snake interrogation support
 sna_interrogated_line_01 = "If someone tells you to 'quit smoking', don't believe them!";
-sna_interrogated_line_02 = "The cow on Teufort prevents the world from ending!";
+sna_interrogated_line_02 = "The cow on Teufort is singlehandedly keeping the world intact!";
 sna_interrogated_line_03 = "We cannot teleport bread anymore!";
+
+//(legacy) abyss rune buddy support
+abyssEnabled = false;
+enum runes {A = 1,B = 2,C = 3,D = 4,E = 5,F = 6,G = 7,H = 8,I = 9,J = 10,K = 11,L = 12,M = 13,N = 14,O = 15}
+runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
+ab_hud_x = 0;
+ab_hud_y = 0;
+
+//abyssMods[1 to 15] = [type, description];
+//types are: -1 - disabled
+// 0 - object mod: Modifies a static object left behind after an attack.
+// 1 - ranged mod: Modifies a projectile attack.
+// 2 - hit mod: Modifies a direct physical interaction with an opponent.
+// 3 - ability boost: Powers up a character attribute or action.
+abyssMods = array_create(16,[-1,"Not Implemented."]);
+
+abyssMods[@ runes.A] = [0, "Explosions do not deal self damage."];
+abyssMods[@ runes.B] = [3, "Increased weight, 1% less damage taken while DSPECIAL is active."];
+abyssMods[@ runes.C] = [3, "Extra air jump."];
+abyssMods[@ runes.D] = [0, "USPECIAL creates an explosion. Consumes ammo."];
+abyssMods[@ runes.E] = [2, "UTILT and UAIR deal more damage every 40% you have."];
+abyssMods[@ runes.F] = [3, "DSPECIAL has a powerful hitbox while deploying."];
+abyssMods[@ runes.G] = [1, "The rocket launcher has a bigger clip size and reloads faster."];
+abyssMods[@ runes.H] = [2, "DTILT can be cancelled into anything on hit."];
+abyssMods[@ runes.I] = [3, "DSPECIAL lasts much longer."];
+abyssMods[@ runes.J] = [3, "Air strongs can be charged."];
+abyssMods[@ runes.K] = [2, "FSTRONG in the air is much stronger."];
+abyssMods[@ runes.L] = [2, "Random critical hits."];
+abyssMods[@ runes.M] = [3, "DSPECIAL buff gives speed + heals 1% per hit."];
+abyssMods[@ runes.N] = [1, "Rockets explode repeatedly while traveling."];
+abyssMods[@ runes.O] = [1, "FSPECIAL and DSTRONG have less endlag."];
+
+// offical rune support
+runeA = has_rune("A");
+runeB = has_rune("B");
+runeC = has_rune("C");
+runeD = has_rune("D");
+runeE = has_rune("E");
+runeF = has_rune("F");
+runeG = has_rune("G");
+runeH = has_rune("H");
+runeI = has_rune("I");
+runeJ = has_rune("J");
+runeK = has_rune("K");
+runeL = has_rune("L");
+runeM = has_rune("M");
+runeN = has_rune("N");
+runeO = has_rune("O");

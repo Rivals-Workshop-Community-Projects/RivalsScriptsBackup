@@ -8,13 +8,13 @@ if (mp_gainable)
 }
 
 //hit mechanics
-if (holyburn_active) HolyBurn();
+if (holyburn_active) holyburn_apply();
 if (lightstun_active)
 {
-    if (lightstun_last_attack != my_hitboxID.attack) LightStun();
+    if (lightstun_last_attack != my_hitboxID.attack) lightstun_apply();
     else if (my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_USTRONG_2) //exceptions
     {
-        if (lightstun_last_hbox != my_hitboxID.hbox_num) LightStun();
+        if (lightstun_last_hbox != my_hitboxID.hbox_num) lightstun_apply();
     }
 
     lightstun_last_attack = my_hitboxID.attack;
@@ -28,10 +28,15 @@ if (burnbuff_active)
     switch (attack)
     {
         case AT_JAB:
-            if (my_hitboxID.hbox_num == 2) ManaBurn();
+            if (my_hitboxID.hbox_num == 2)
+            {
+                drain_mp();
+                burn_hit_ex();
+            }
             break;
-        case AT_UTILT: case AT_FAIR: case AT_DAIR: case AT_USTRONG: case AT_FSTRONG:  case AT_DSTRONG:  case AT_TAUNT:
-            ManaBurn();
+        case AT_UTILT: case AT_FAIR: case AT_DAIR: case AT_USTRONG: case AT_FSTRONG: case AT_DSTRONG: case AT_TAUNT:
+            drain_mp();
+            burn_hit_ex();
             break;
     }
 }
@@ -39,6 +44,9 @@ if (burnbuff_active)
 //other hitbox logic
 switch (my_hitboxID.attack)
 {
+    case AT_DSTRONG:
+        dstrong_last_hbox = my_hitboxID.hbox_num;
+        break;
     case AT_USTRONG:
         if (my_hitboxID.hbox_num <= 3) //bar_tracking_id setup
         {
@@ -62,7 +70,14 @@ switch (my_hitboxID.attack)
             }
         }
         break;
-    case AT_NTHROW: case AT_NSPECIAL_AIR: case AT_EXTRA_2:
+    case AT_EXTRA_2:
+        if (my_hitboxID.hbox_num == 1)
+        {
+            if (my_hitboxID.explosive_spear) create_hitbox(AT_EXTRA_2, 2, my_hitboxID.x, my_hitboxID.y);
+            else do_rune_warp(); //rune warp
+        }
+        break;
+    case AT_NTHROW: case AT_NSPECIAL_AIR:
         if (my_hitboxID.hbox_num == 1) do_rune_warp(); //rune warp
         break;
     //bar_grabbed_id setup
@@ -78,6 +93,7 @@ switch (my_hitboxID.attack)
         {
             bar_grabbed_id = hit_player_obj;
             bar_grab_time = 0;
+            if (!bar_grabbed_id.was_free) bar_grabbed_id.old_vsp -= 5;
         }
         break;
     case 39:
@@ -109,14 +125,14 @@ if (lightbuff_active && !was_parried && homing_cooldown <= -1)
 	
 	//prevents it from spawning on some attacks and conditions
 	if (my_hitboxID.attack != skill[7].skill_attack && my_hitboxID.attack != 48
-	&& (attack != skill[11].skill_attack || attack == skill[11].skill_attack && my_hitboxID.hbox_num != 1)
+	&& (my_hitboxID.attack != skill[11].skill_attack || my_hitboxID.attack == skill[11].skill_attack && my_hitboxID.hbox_num != 1)
 	&& !polaris_shot && polaris_id != self)
 	{
 		polaris_shot = true;
 		homing_cooldown = 20; //internal cooldown
 		if (x > hit_player_obj.x) create_hitbox(skill[7].skill_attack, 1, x+64, y-48);
 		else create_hitbox(skill[7].skill_attack, 1, x-64, y-48);
-		ManaBurn();
+		drain_mp();
 	}
 }
 if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1) sound_play(asset_get("sfx_holy_lightning"));
@@ -133,12 +149,12 @@ if (od_cast == 3) take_damage(hit_player_obj.player, player, floor(my_hitboxID.d
 if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * (theikos_mult+theikos_type-1)));
 
 
-#define ManaBurn
+#define drain_mp
 {
 	//if (!has_rune("K") && !theikos_active) mp_current -= round(my_hitboxID.damage / 2);
     if (!infinite_mp_mode) mp_current -= round(my_hitboxID.damage / 2);
 }
-#define HolyBurn
+#define holyburn_apply
 {
 	if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[3]) with (hit_player_obj)
 	{
@@ -148,7 +164,7 @@ if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(my_hitbox
         outline_color = other.line_color;
 	}
 }
-#define LightStun
+#define lightstun_apply
 {
     if (lightstun_active)
     {
@@ -183,6 +199,34 @@ if (theikos_type > 0) take_damage(hit_player_obj.player, player, floor(my_hitbox
                 hit_player_obj.lightstun_type = 0;
                 hit_player_obj.lightstun_timer = 0;
             }
+        }
+    }
+}
+#define burn_hit_ex
+{
+    if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[3] && my_hitboxID.attack != AT_TAUNT)
+    {
+        //hitbox stuff
+        with (hit_fx_obj) if (hit_fx == other.my_hitboxID.hit_effect) //hit fx position
+        {
+            var _x = x;
+            var _y = y;
+        }
+
+        if (my_hitboxID.damage < 10) //play extra sfx and vfx
+        {
+            if (my_hitboxID.sound_effect != asset_get("sfx_burnapplied")) sound_play(asset_get("sfx_burnapplied"));
+            if (my_hitboxID.hit_effect != fx_fireblow[0]) spawn_hit_fx(_x, _y, fx_fireblow[0]);
+        }
+        else if (my_hitboxID.damage < 15)
+        {
+            if (my_hitboxID.sound_effect != asset_get("sfx_forsburn_combust")) sound_play(asset_get("sfx_forsburn_combust"));
+            if (my_hitboxID.hit_effect != fx_fireblow[1]) spawn_hit_fx(_x, _y, fx_fireblow[1]);
+        }
+        else if (my_hitboxID.damage >= 15)
+        {
+            if (my_hitboxID.sound_effect != asset_get("sfx_burnconsume")) sound_play(asset_get("sfx_burnconsume"));
+            if (my_hitboxID.hit_effect != fx_fireblow[2]) spawn_hit_fx(_x, _y, fx_fireblow[2]);
         }
     }
 }

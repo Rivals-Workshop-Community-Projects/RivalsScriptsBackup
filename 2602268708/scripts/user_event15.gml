@@ -1,726 +1,961 @@
-// Muno template - [CORE] user-defined content
+// phone - frontend
 
-
-
-/*
- * THIS IS THE ONLY FILE YOU NEED TO EDIT! The other user_events, as well as
- * css_draw, are not to be edited by the end user.
- */
-
-
+CORE_general();
+CORE_tips();
+CORE_patches();
+CORE_cheats();
+CORE_frame_data();
+CORE_muno_compatibility();
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ General Settings															║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Update Code			                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Set miscellaneous values to customize how your character interacts with the
+MunoPhone Touch.
 
 */
 
-if ("phone_inited" in self && phone_inited && !phone_lightweight){
+#define CORE_general
 
-	/*
-	 * update.gml Code - this runs every frame, edit the below sections as you
-	 * see fit.
-	 */
-	
-	
-	
-	/*
-	 * Below are 3 custom entries for the Print Debug setting in the Settings
-	 * app. You can replace the "url"s with any constant, variable, or function
-	 * to monitor it when that setting is enabled.
-	 */
-	
-	phone_custom_debug = [
-		"woag",
-		"woag",
-		"woag"
-		];
-	
-	
-	
-	/*
-	 * Char compatibility code below; find EVEN MORE lower down in the file
-	 */
-	 
-	 
-	
-	// Copy Ability
-	
-	if pho_has_copy_power{
-		
-		// Initial swallow
-		
-		if swallowed {
-			
-			swallowed = 0; // don't touch this line please im begging you
-			
-			var copy_spr = sprite_get("copy_sprite");
-			var copy_hrt = sprite_get("copy_hurt");
-			var copy_icn = sprite_get("copy_icon");
-			// add more to transfer other sprites, or sfx
-			
-			with enemykirby{
-				newicon = copy_icn;
-				muno_last_swallowed = other.id;
-				
-				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
-				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
-				
-				// edit the below (and, indeed, the above!) just like a regular attack script
-				
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
-				
-				set_num_hitboxes(AT_EXTRA_3, 1);
-				
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
-			}
-		}
-		
-		
-		
-		// Update code
-		
-		with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
-			// you can treat this like an attack_update.gml for when kirby is using your character's ability
-			
-			// this system avoids conflicts between 2 swallowed chars IF they both use the munophone system for copy abilities.
-		}
-	}
-	
-	
-	
-	// Break the Targets data
-	
-	if pho_has_btt_layout{
-		if get_btt_data { // Get data for Break The Targets
-			course_name = "R-00 Course";
-			// Set the spawn properties
-			respawn_point = [[29,50],[0,0],1];
-			// Set the collision of the solid sprites to precise
-			sprite_change_collision_mask("btt_solid",true, 1, 0, 0, 0, 0, 0 );  
-			room_add(1,[
-			    [ // Each Cell
-			        [0,0], // Cell Coordinates
-			        [
-			        	// Targets
-				        [10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
-				        [10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
-				        [10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
-				        // Solid Ground
-				    	[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	// Plats
-				    	[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
-			            ]
-			        ],
-			    // Blastzones
-			    [ // Each Cell
-			        [0,1], // Cell Coordinates
-			        [
-			            [4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [
-			        [1,1],
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [ // Each Cell
-			        [-1,1], // Cell Coordinates
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ]
-			    ]);
-		}
-	}
-	
-	
-	
-	// Amber
-	
-	if pho_has_amber_love{
-		if amber_startHug{ // Amber will set this bool to true when this player accepts the hug
-		    with amber_herObj{ // Access Amber's player object and set the values
-		        // Set the window values for Amber's hugging. DO NOT change Amber's sprites
-		        // in the attack_values
-		        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
-		        // etc....
-		
-		        // Important. Puts Amber in startup hug state (2).
-		        // Editing this variable not recommended
-		        amberHugState = 2; 
-		    }
-		    // Important. Puts this character in startup hug state (2).
-		    // Editing this variable not recommended
-		    oPlayerHugAmberState = 2;
-		    
-		    // Set this bool back to false so that this doesn't loop
-		    amber_startHug = false;
-		}
-	}
-	
-	exit;
-}
+// Character's name, used in a couple of places in the phone.
+// (if you delete this line, it'd just use the config.ini name)
+muno_char_name = "Chuckya";
+
+// Whether or not the phone sprite should recolor w/ your alt costume.
+// (set to "true" if you make a custom phone sprite in your char's colors)
+phone.uses_shader = false;
+
+// If you use a custom phone sprite that's taller than the default, enter how
+// much taller it is here. (measured in ingame pixels; so if editing the default
+// phone sprite, multiply it by two)
+phone.extra_top_size = 0;
+
+// Set to true and the "Fast Graphics" feature will be enabled; see _readme.gml.
+phone.supports_fast_graphics = false;
+
+// Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
+phone.dont_fast = false;
+
+// Set to true and this will DISABLE a lot of the phone's side features, mostly
+// the coding shortcuts.
+// See _docs.gml for a full list of what it disables.
+// If you don't intend to use any of those bonus features in your character,
+// you should set this to true since it saves a bit of performance.
+// (it's false by default since Phone Sandbert uses some of those features)
+phone.lightweight = false;
+
+// If you've created custom AG_ or HG_ indexes for your character already,
+// use these to change where the phone starts assigning custom AG_s and HG_s.
+// If you have no idea what that means, leave these alone!
+// There's probably an upper bound here, but it's at least 200, so...
+phone.starting_ag_index = 80;
+phone.starting_hg_index = 80;
+
+// The above, but for the AT_PHONE index.
+// Maximum value is 50, minimum value (to avoid overlap w/ normal ones) is 39.
+phone.phone_attack_index = 40;
 
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Tips																		║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Compatibility Setup	                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Add Tips to your character, giving info on how to play or trivia. You can add
+both text and images. It's recommended to keep these short-and-sweet, as in the
+examples.
+
+Use the initTip() function to start a new Tip:
+
+	initTip(name);
+
+Then, use the following functions to add content or paragraphs:
+
+	initWords(text)
+	
+	initWords_ext(text, alignment, color, indent, ignore_height)
+	
+	initImage(sprite, frame)
+	
+	initImage_ext(sprite, frame, alignment, xscale, yscale, uses_shader, color,
+		alpha, ignore_height, crop_left, crop_right, crop_up, crop_down)
+
+Glossary:
+	
+	"_ext" at the end of a function name means an extended version of the
+		function it's named after - giving you more formatting options.
+	
+	"alignment" can be the GML constants fa_left, fa_center, or fa_right.
+	
+	"color" can be any GML color, e.g. c_red, #00ff00, or make_color_hsv(...).
+		Set this to a string (e.g. "h"), and it will be colored to the main
+		color of whichever phone app the text is being displayed in.
+	
+	"indent" basically allows you to put any amount of "tabs" to the left of a
+		paragraph.
+	
+	"sprite" can be any sprite index, e.g. sprite_get(...) or asset_get(...).
+	
+	"ignore_height" prevents this element from pushing the one below it
+		downward. Set this to true to achieve effects such as two elements
+		being side-by-side.
+	
+	"frame" can be 0 or any positive number for a static image, or a negative
+		number for an animated image. The size of the negative number determines
+		the framerate; -1 is the fastest, -2 is half as fast, -3 a third, etc.
+	
+	"uses_shader" determines whether or not the image should recolor with the
+		character's alt costumes.
+	
+	"crop_left", "crop_right", etc allow you to crop an image by determining how
+		far from the image's offset it should be drawn. Set all four to "noone"
+		and it will use the entire image (including empty space).
+
+NOTE: It's recommended to separate each paragraph into its own initWords() line,
+so that things like page breaks can work properly.
 
 */
 
-/*
- * This code runs from the CSS, as well as from the character itself.
- * 
- * The pho_has_something variables are for compatibility badges, which display
- * if your character has certain compatibilities.
- * 
- * By default, only the "gameplay-relevant" badges appear. The rest appear
- * only when the 0 key is held on the keyboard. So, don't worry about
- * cluttering the screen; include ALL compatibilites your character has,
- * for user convenience!
- * 
- * Enabling these flags ALSO enables the template code for each compatibility
- * (found within this very file).
- */
+#define CORE_tips
 
-// Gameplay-relevant, and codecs because im biased :>
-pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
-pho_has_trum_codec = 1;	// Trummel & Alto codec
-pho_has_copy_power = 0;	// Kirby Copy Ability
-pho_has_btt_layout = 0;	// Break the Targets stage
-
-// Character cosmetics
-pho_has_otto_bhead = 1;	// Bobblehead for Otto's bike
-pho_has_steve_dmsg = 1;	// Death message for Steve
-pho_has_feri_taunt = 1;	// Costume for Feri's taunt
-pho_has_hikaru_fak = 1;	// Title for Hikaru's fakie
-pho_has_rat_allout = 1;	// Quip for Rat's all-out attack
-pho_has_tco_sketch = 1;	// Drawing for The Chosen One's down taunt
-pho_has_ahime_dead = 1;	// Sprite for Abyss Hime's slicing effect
-pho_has_tink_picto = 1;	// Photograph for Toon Link's picto box
-pho_has_fire_taunt = 0; // Fire's Taunt
-pho_has_wall_e_ost = 1; // Wall-E's music
-pho_has_amber_love = 0; // Amber's plush and/or hug
-pho_has_moon_music = 1; // Moonchild's taunt music
-pho_has_agentn_cdc = 1; // Agent N's codec
-
-// Stage cosmetics
-pho_has_drac_codec = 1;	// Dialogue for the Dracula boss fight
-pho_has_miivs_post = 1;	// Posts for the Miiverse stage
-pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 1; // Text for the Soulbound Conflict stage
-pho_has_been_found = 1; // Death sprite for the Trial Grounds stage
-pho_has_resort_pic = 1; // Portrait for the Last Resort stage
-pho_has_pkmn_image = 1; // Battle sprite for Pokémon Stadium
-pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
-
-
-
-if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 32; // Number of alt costumes; controls how many appear on the CSS
-	exit;
-}
-
-
-
-/*
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ General Character Info                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-*/
-
-muno_char_name = get_char_info(player, INFO_STR_NAME);	// Name of the character, used for the MunoPhone - and also free to be used by other mods
-
-muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character. You can replace this with an arbitrary sprite, using sprite_get(), and it'll be used in the upper left of the phone's big screen. (Make it the same size pls, thank u)
-
-phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
-phone.taunt_hint_y = 0;									// Vertical offset
-phone.shader = 0;										// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
-
-phone.dont_fast = 0;									// Set to 1, and Fast Graphics will NOT automatically be set when the FPS dips below 60.
-phone_lightweight = 0;									// Set to 1 to disable certain features, possibly improving performance a little bit. See _readme.gml.
-phone.frame_data_loaded = 0;							// Set to 1 to disable the frame data guide, which MIGHT improve performance on bad computers? (This is just a guess. It has no impact on code run during gameplay, but gets rid of a TON of data stored in memory in Practice Mode...)
-
-
-
-/*
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Tips					                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-*/
-
-with phone{
-	
-	i = 0;
-	j = 0;
-	
-	/*
-	 * Tips are hints or instructions on how to play the character. They range
-	 * from one-sentence descriptions to pages-long tutorials. You can also
-	 * embed images and formatted text.
-	 * 
-	 * initTip(name)
-	 * initTipWords(text)
-	 * initTipImage(sprite, frame, align, xscale, color, gimmick)
-	 * initTipWords_ext(text, align, color, indent, gimmick)
-	 * initTipImage_ext(sprite, frame, align, xscale, color, gimmick, border_l, border_r, border_u, border_d)
-	 * 
-	 * NOTE: indent = a number of "tabs", not a number of pixels
-	 * 
-	 * To place two consecutive elements side-by-side, they must meet the
-	 * following conditions:
-	 * - The second element must not be text
-	 * - The width of the two elements must not exceed the page width
-	 * - One element must be left-aligned, and the other right-aligned
-	 * 
-	 * NOTE: For images, set frame to a negative number and it will animate the
-	 * sprite at that rate. E.g. set to -3, each anim frame will last 3 frames.
-	 * 
-	 * Another image-related note: the placement for images is calculated based
-	 * on the BORDERS of the sprite. Two consequences:
-	 * - The offset of the sprite (load.gml) has NO effect.
-	 * - If your sprites are made with a lot of transparent empty space around
-	 *   the actual content (like mine are), it'll have that much extra space
-	 *   around it in the tip.
-	 * 
-	 * To fix the second bullet point, use initTipImage_ext(), with the four
-	 * extra "border_" arguments representing the distance FROM THE SPRITE'S
-	 * OFFSET (as defined in load.gml) to "cut off" the sprite in each of the
-	 * four directions. E.g. if your sprite's actual content is all contained
-	 * within these distances from the sprite offset:
-	 * - 100 to the left
-	 * - 20 to the right
-	 * - 50 up
-	 * - 0 down
-	 * 
-	 * ...then the last 4 arguments should be 100, 20, 50, 0. It basically crops
-	 * the sprite
-	 * 
-	 * Lastly, the "gimmick" is a special effect that you can apply to an
-	 * element. Here's the list of implemented gimmicks:
-	 * - 0: Nothing
-	 * - 1: Shaking
-	 * - 2: Scrolling left
-	 * - 3: Scrolling right
-	 * - 4: Cause this element to not push the subsequent elements downward
-	 * - 5: Cause the character's palette to apply to this element
-	 * 
-	 * Negative gimmick numbers are saved for whatever YOU might need them for!
-	 * Like idk, if you're a coding wizard and figure out something cool to do
-	 * by interacting with the tip data.
-	 * 
-	 */
-	
-	// NOTE: Using sprite_get() does not work here, so sprites must be saved as
-	// variables. See init.gml for an example of this with spr_nspecial_proj.
-	
-//	initTip("NSpecial: Fast Repeat Shots");
-//	initTipWords("After shooting a heart with NSpecial, you can fire another shot sooner than you can perform any other action. Rack up damage against a distracted opponent!");
-//	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
-//	initTipImage_ext(player_id.spr_nspecial, 2, fa_left, 1, c_white, 0, 24, 40, 64, 0);
-	
 	initTip("Wall Cling");
-	initTipWords("Chuckya can wall cling. That is all.");
-	initTipImage(player_id.spr_wallcling, -5, fa_center, 1, c_white, 0);
+	initWords("Chuckya can wall cling. That is all.");
+	initImage_ext(sprite_get("wallcling"), -5, fa_center, 2, 2, false, c_white, 1, false, noone, noone, noone, noone);
 	
 	initTip("Cargo Grab");
-	initTipWords("With Nspecial, Chuckya can grab opponents. You can walk and do a short jump while grabbing opponents");
-	initTipImage(player_id.spr_nspecial, -4, fa_center, 1, c_white, 0);
+	initWords("With Nspecial, Chuckya can grab opponents and items. Try grabbing a bouncing Bob-Omb, moving Heave-Ho, or even a resting cannon!");
+	initWords("While holding opponents, there is a time limit before Chuckya will drop them, putting it into landing lag on the ground. No such limit exists for items. If Chuckya is too close to the bottom blastzone it will automatically drop players (not items), to prevent early cheese kills with down throw.");
+	initWords("Chuckya has a full range of movement while holding something, and can fully dash, jump, and even crouch. Certain actions will cause Chuckya to drop its held object however, being dodging, parrying, or wall jumping.");
+	initImage_ext(sprite_get("nspecial"), -5, fa_center, 2, 2, false, c_white, 1, false, noone, noone, noone, noone);
 
 	initTip("Throws");
-	initTipWords("While grabbing, Chuckya can throw an opponent in any direction.");
-	initTipImage(player_id.spr_grab_dthrow, -5, fa_center, 1, c_white, 0);
+	initWords("While grabbing, Chuckya can throw an opponent in any direction. Inputting attacks or specials will throw in the held direction, and even works with the C-Stick.");
+	initImage_ext(sprite_get("grab_fthrow"), -5, fa_center, 2, 2, false, c_white, 1, false, noone, noone, noone, noone);
+	initHeader("Back Throw Input");
+	initWords("BThrow is a bit finnicky on the ground, due to Chuckya being able to turn freely. Inputting attack too soon after the turning animation or NSpecial endlag will instead perform a backwards FThrow. To properly BThrow input backward, then slightly hesitate the attack input. When using C-Stick the issue only arrises when inputting too close to NSpecial's endlag, so just wait a few frames.");
+    initImage_ext(sprite_get("grab_bthrow"), -5, fa_center, 2, 2, false, c_white, 1, false, noone, noone, noone, noone);
 
 	initTip("Bob-Ombs");
-	initTipWords("For fspecial, Chuckya throws a Bob-Omb that bounces once before exploding on contact with the stage.");
-	initTipImage(player_id.spr_fspecial_bombproj_blast, -5, fa_center, 1, c_white, 0);
+	initWords("For FSpecial, Chuckya throws a Bob-Omb that bounces once before exploding on contact with the stage. Holding the Special button during startup will allow Chuckya to hold onto the Bob-Omb. It can still be caught mid-air when bouncing, but is a bit more difficult than this method.");
+	initWords("Once grabbed the Bob-Omb will no longer bounce on the ground, instead exploding after being thrown. When exploding on the ground Bob-Ombs also have an extra larger explosion hitbox, which can catch opponents off guard.");
+	initImage_ext(sprite_get("fspecial_bombproj_blast"), -5, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
 
 	initTip("Heave-Ho");
-	initTipWords("For Dspecial, Chuckya throws a Heave-Ho. It will move across the stage automatically, throwing opponents or Bob-Ombs it comes across then exploding.");
-	initTipImage(player_id.spr_heaveho, -5, fa_center, 1, c_white, 0);
+	initWords("For DSpecial, Chuckya summons a Heave-Ho. It will move across the stage automatically, throwing opponents, Bob-Ombs, or Cannons it comes across up into the air before exploding.");
+	initWords("Heave-Ho keeps going in a single direction until hitting a wall, so turn Heave-Ho around by grabbing it and throwing it back down! Heave-Ho will also not attempt to throw players that are invincible, so rolling past Heave-Ho won't get rid of it.");
+	initImage_ext(sprite_get("heaveho"), -5, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
 
 	initTip("Cannon");
-	initTipWords("For USpecial, Chuckya launches itself out of a cannon. It can be aimed by pressing left or right. After launching yourself upwards, the cannon drops as a heavy projectile.");
-	initTipImage(player_id.spr_uspecial, 1, fa_center, 1, c_white, 0);
+	initWords("For USpecial, Chuckya launches itself out of a cannon. It can be aimed by pressing left or right, and fired Chuckya further the longer Special is held. After launching Chuckya will spin rapidly with a weak hitbox, making it hard to punish.");
+	initWords("After launching yourself upwards, the cannon drops as a heavy projectile with moomentum the opposite of Chuckya's. If the cannon is grabbed and thrown by either Chuckya or Heave-Ho, it will actually get more powerful! The cannon will dissapear either after being inactive too long or when hitting a player.");
+	initImage_ext(sprite_get("uspecial_cannon_grabbed"), 0, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
 	
 	initTip("Whomps & Thwomps");
-	initTipWords("Chuckya's Fstrong and DStrong are Whomp and Thwomp respectively, and both can be thrown offstage.
+	initWords("Chuckya's FStrong and DStrong are Whomp and Thwomp respectively, and both can be thrown offstage.
 	
 	Whomp can be tossed off by standing close to the ledge, and sends upward. Thwomp can be tossed off by sliding off the ledge during DStrong's startup, and does spike offstage.
 	
 	Whomps have a cooldown when being tossed off the ledge, but not when used onstage.");
-	initTipImage(player_id.spr_whomp, 1, fa_center, 1, c_white, 0);
-
-}
-
-
+	initImage_ext(sprite_get("fstrong_whomp"), -5, fa_center, 1, 1, false, c_white, 1, false, noone, noone, noone, noone);
+	
+	initTip("Misc. Advice");
+	initHeader("Hit Cancels");
+	initWords("Both DTilt and DAttack can be cancelled on hit. DTilt can be jump cancelled on hit at any time, and DAttack can be tilt cancelled on hit once the move enters endlag.");
+	initImage_ext(sprite_get("dtilt"), -5, fa_left, 2, 2, false, c_white, 1, true, noone, noone, noone, noone);
+	initImage_ext(sprite_get("dattack"), -5, fa_right, -2, 2, false, c_white, 1, false, noone, noone, noone, noone);
+	initHeader("Shockwave");
+	initWords("During FTilt Chuckya claps its hands, smacking any opponents that are close. It also creates a much larger, much weaker shockwave that can easily catch opponents off guard. While not being powerful, this large range can prove very useful for disruption.");
+	initImage_ext(sprite_get("ftilt"), -5, fa_center, 2, 2, false, c_white, 1, false, noone, noone, noone, noone);
+	initHeader("Momentum Aerials");
+	initWords("DAir gives a small upward boost during the attack, and the sweetspot will boost Chuckya even higher.");
+	initWords("BAir, DThrow, and DSpecial also give a small upward boost, though both are constant to any use of the move regardless of hitting.");
+	initImage_ext(sprite_get("dair"), -5, fa_center, 2, 2, false, c_white, 1, true, noone, noone, noone, noone);
+	initImage_ext(sprite_get("bair"), -5, fa_left, 2, 2, false, c_white, 1, true, noone, noone, noone, noone);
+	initImage_ext(sprite_get("grab_dthrow"), -10, fa_right, -2, 2, false, c_white, 1, true, noone, noone, noone, noone);
+	
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Patches																	║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Patch Notes			                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Keep a record of your character's update history, and at the end, also give
+credits to the developer(s) of the character or any assets used.
+
+Use the initPatch() function to start a new Patch:
+
+	initPatch(version_number, date)
+
+If the "date" field is set to an empty string, then the Patch will act more like
+a Tip - mainly useful for making an "About [character]" page.
+
+Use the same functions as in the Tips app to populate the Patch with text and
+images.
+
+Here are two more content functions, which are designed for use in Patches but
+also work in Tips:
+
+	initHeader(text)
+	initSection(text)
+
+These are basically shortcuts for two different types of formatted text.
+initHeader() is a text heading that is colored either blue or green, depending
+on whether it's a Tip or a Patch. initSection() is an indented block of text.
+
+These are handy for dividing a Tip/Patch into sections, such as different moves
+in a Patch.
 
 */
 
-with phone{
-	
-	i = 0;
-	
-	/*
-	 * Patch notes are patch notes. Inform players on what's changed since they
-	 * last played the character. If you want, you can just paste the changelogs
-	 * from your Steam page or etc.
-	 * 
-	 * initPatch(name)
-	 * initPatchWords(text)
-	 * initPatchImage(sprite, frame, align, xscale, color, gimmick)
-	 * initPatchWords_ext(text, align, color, indent, gimmick)
-	 * initPatchImage_ext(sprite, frame, align, xscale, color, gimmick, border_l, border_r, border_u, border_d)
-	 * 
-	 * The formatting is exactly the same as with tips. Just replace "Tip" with
-	 * "Patch" in the function calls, and instead of a name for the patch,
-	 * put the version number and full date.
-	 */
-	
-	initPatch("1.0", "18 September, 2021)");
-	initPatchWords("Chuckya released :)")
+#define CORE_patches
 
-}
+initPatch("2.3", "24 March, 2023");
+initHeader("Balance");
+initSection("-UAir first hit hitboxes no longer have extra hitpause
+-UAir first hit upper hitbox now has 0.2 KB scaling to match the lower hitbox
+-UAir first hit upper hitbox no longer runs the horizontal linking code in hit_player, only the vertical
+-UAir first hit lower hitbox angle adjusted from 85 to 110
+-UAir first hit lower hitbox BKB increased from 5 to 7
+-UAir first hit lower hitbox angle flipper changed from 4 to 7 (sends toward Chuckya's center instead of the hitbox center)
+-UAir landing lag increased from 6 to 8
+
+UAir had an infinite when hitfalling correctly + was janky and unreliable all around, should be much better for use as intended now");
+
+initPatch("2.2", "16 November, 2022");
+initHeader("Aesthetic");
+initSection("-Updated ingame description and Munophone about page to not call Chuckya new");
+initHeader("Balance");
+initSection("-FStrong and DStrong no longer put Chuckya in hitpause (this majorly desynced online)
+-FStrong launching hitbox no longer has hitpause scaling
+-DStrong launching hitbox no longer has hitpause scaling
+-DStrong shockwave hitbox no longer has hitpause scaling
 
 
+(Since Chuckya is no longer put in hitpause I removed scaling just so the moves maintain consistency of when Chuckya is actionable)");
+initPatch("2.1", "30 October, 2022");
+initHeader("Balance");
+initSection("-Heave-Ho throw hitbox can no longer be reflected
+-Heave-Ho explosion hitbox now applies parry stun
+-FStrong now applies parry stun (it was supposed to, whoops)
+-L Rune wobbling is now true");
+initHeader("Fixes");
+initSection("-Optimized more code behind the scenes
+-Bouncehurt sprite is now the correct size
+-Fixed missing pixel on Bouncehurt
+-Chuckya can no longer pick up a bomb that has been reflected
+-Cannon charge is once again properly capped i have ZERO IDEA WHY IT WAS UN-FIXED BUT S U R E
+-In fact USpecial shouldn't break at all for any reason anymore and if it does i am going to Piss");
 
-/*
+initPatch("2.0", "29 October, 2022");
+initHeader("Aesthetic");
+initSection("-Wait animations now use the ingame system
+-Renamed ``Default`` alt to ``Chuckya``
+-Renamed ``Original`` alt to ``N64``
+-Altered Golden, Rainbow, Virtual Boy, and N64 alts
+-Bobble highlight colour removed from having its own colour slot
+-Added colour slot for body shading
+-Added smooth animation for carrying a Bob-Omb out of FSpecial
+-Hoot now flies away after dropping from the respawn platform
+-Added seasonal costumes when spawning
+-DSpecial now has a proper animation
+-Added DTaunt
+-Added UTaunt
+-Flags now have nicer animation
+-Added platform variants of every taunt
+-Added extra sound effect for starting UStrong
+-Added fun surprise when triggering a galaxy from UStrong
+-Added smear and extra sound effect for UTilt to better indicate its first hit
+-Altered DAir hit effect to look nicer
+-Altered FTilt shockwave to look nicer
+-Wario Apparition (Final Smash) now has a rainbow trail
+-Bob-Omb destroy effect is no longer an explosion (visually misleading)
+-Star particles are now sprited at 1x scale (to look nicer with the rotation, said rotation already making it pointless to try and avoid mixels with them)
+-Neutral airdodge now uses the sideways airdodge sprite
+-Altered Bully foot colour
+-Adjusted BAir and Jab 3 keys to look less dumb when exaggerated
+-NSpecial now animates as intended (seperate endlag for a successful grab is now used)
+-Held objects are now always given a lower depth than Chuckya while carried
+-Cannon now blinks fully invisible rather than half transparent when dissapearing
+-Adjusted UStrong, NSpecial, UAir, and DAttack sound effects
+-Thwomps, Whomps, and cannons now have an extra sound, screenshake, and dust when hitting the ground
+-Tweaked default hit effect usage for more variety/being actually good (there were a lot of strong hits with the small hfx)
+-Increased double jump animation speed
+-Increased walking animation speed
+-DAir sweetspot now has extra screenshake
+-Final Smash no longer has 2 projectiles spawn, instead having a smooth fade in
+-Added more HUD offset stuff on various attacks
+-Added a bunch of dust effects to various attacks
+-Bob-Ombs now have a fuse sound and particles when active
+-Heave-Ho now has dust effects when moving");
+initHeader("Balance");
+initSection("-Added Abyss Runes
+-Added AI (not very good AI but better than the default one)
+-Reduced jump speed from 11 to 10.5
+-Reduced knockback adjustment from 0.95 - 0.9 (Chuckya could stand to feel a little heavier, these changes should help)
+-Pratland time increased from 8 to 24 (USpecial is stupidly safe, this is necessary)
+-Key and bobble are no longer part of Chuckya's hurtbox (mostly benefits Jab 3, BAir, and UAir with disjoint)
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Cheat Codes			                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+-Held objects now track Chuckya's hands during throw animations
+-FThrow and DThrow hitboxes adjusted to match new animated throw positions
 
-*/
+-NSpecial no longer cancels into idle when landing the grab on a player (grab release timer pauses so same overall hold time)
+-NSpecial now has whifflag (whifflag doesn't apply when landing the grab on objects, since you still ``hit`` the move)
+-NSpecial endlag window length decreased from 16 to 10 (evens out with new whifflag/cancel changes)
+-NSpecial hitpause decreased from 6 to 4
 
-with self{
-	
-	i = 0;
-	
-	/*
-	 * Cheat codes enable bonus features or overpowered modes. This is a great
-	 * place to put utilities that help when practicing the character, such as
-	 * an option to instantly fill a resource meter or skip a cooldown.
-	 * 
-	 * initCheat(display name, backstage name, options, option names, description)
-	 * 
-	 * Use phone_cheats[] to reference these cheats in code, putting the
-	 * backstage name (without quotes) as the array index. The backstage name
-	 * becomes the name of a variable storing the cheat's index. E.g.
-	 * 
-	 * if (phone_cheats[cheat_funny_snail] == 1) {
-	 *	   print_debug("woag");
-	 * }
-	 * 
-	 * This is pretty similar to abyss runes - but instead of checking for if
-	 * has_rune("X") is true or false, you check for the entry in the
-	 * phone_cheats array.
-	 * 
-	 * Each cheat defaults to the first option in its option list (e.g.
-	 * cheat_funny_snail defaults to 0). This happens even when the MunoPhone
-	 * itself is not available.
-	 * 
-	 * Cheat descriptions should be short and sweet, as they can't be scrolled.
-	 */
-	
-	// NOTE: If you remove these cheat codes, you will need to remove where
-	// they're referenced elsewhere in code. The comment above each cheat tells
-	// you which files reference it.
-	
-	// post_draw.gml
-	initCheat("Say woag", "cheat_funny_snail", [0, 1], ["no", "yes"], "Say woag? Yes. No. AAAAAA");
-	
-	// update.gml
-	initCheat("Max DJumps", "cheat_more_djumps", [1, 2, 3, 4, 5, 0], ["1", "2", "3", "4", "5", "0"], "Change Sandbert's maximum number of double jumps.");
-	
-	// update.gml
-	initCheat("wide?", "cheat_widebert", [1, 1.25, 1.5, 2, 3, 5, 10, 20, 0.5, 0.25, 0.1, 0], ["Normal", "wide", "w i d e", "w  i  d  e", "w   i   d   e", "w    i    d    e", "w     i     d     e", "w      h      a      t", "narrow", "narrower", "narrowerer", "."], "how");
-	
-	// init_shader.gml
-	initCheat("Disco", "cheat_skittles", [0, 1], ["Off", "On"], "skittles");
-	
-	// update.gml
-	initCheat("stop hitting yourself", "cheat_recoil", [0, 1], ["Off", "On"], "ouf");
-	
-}
+-BThrow angle adjusted from 135 to 145 (35 backward)
+(Since Chuckya can freely turn having BThrow be a kill move or something wouldn't work since it's not position based. I gave it a lower angle so it has different utility without being strictly better or worse)
 
+-Doubled explosion sizes (Bob-Omb, Heave-Ho)
 
+-Bob-Ombs now refresh their bounce when parried
+-Adjusted how FSpecial's cooldown is applied
 
-/*
+-DSpecial startup increased from 8 to 9 (this is literally just to fit the new animation lmao)
+-Heave-Ho now has a seperate collision mask sprite (should also help with player detection)
+-Heave-Ho can now throw cannons
+-Heave-Ho no longer makes a whirring sound when held
+-Heave-Ho explosion lifetime increased from 6 to 9
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Frame Data Guide		                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+-Cannon base hitpause and scaling increased from 8 and 0.3 to 15 and 0.7
+-Cannon damage increased from 6 to 16 (Only applies after grab)
+-Cannon BKB increased from 6 to 8 (Only applies after grab)
+-Cannon KB scaling increased from 0.5 to 0.6 (Only applies after grab)
 
-*/
+-DAir sourspot BKB decreased from 5 to 4 (it should feel worse to hit and usually not kill)
+-DAir sourspot KB scaling decreased from 0.55 to 0.4
+-DAir sourspot base hitpause and scaling decreased from 7 and 0.6 to 6 and 0.4
+-DAir can no longer hitfall
 
-with phone{
+-BAir final hit base hitpause and scaling increased from 6 and 0.5 to 7 and 0.6
 
-	// Move ordering. Reorder this as you see fit for your character
-	
-	// note: do NOT remove indexes from this list. empty indexes will be ignored by the frame data guide.
-	// to hide an in-use attack index from the guide, use AG_MUNO_ATTACK_EXCLUDE instead!
-	
-	move_ordering = [
-		AT_JAB,
-		AT_FTILT,
-		AT_DTILT,
-		AT_UTILT,
-		AT_DATTACK,
-		AT_FSTRONG,
-		AT_USTRONG,
-		AT_DSTRONG,
-		AT_FSTRONG_2,
-		AT_USTRONG_2,
-		AT_DSTRONG_2,
-		AT_NAIR,
-		AT_FAIR,
-		AT_BAIR,
-		AT_UAIR,
-		AT_DAIR,
-		AT_NSPECIAL,
-		AT_NSPECIAL_AIR,
-		AT_NSPECIAL_2,
-		AT_FSPECIAL,
-		AT_FSPECIAL_AIR,
-		AT_FSPECIAL_2,
-		AT_USPECIAL,
-		AT_USPECIAL_GROUND,
-		AT_USPECIAL_2,
-		AT_DSPECIAL,
-		AT_DSPECIAL_AIR,
-		AT_DSPECIAL_2,
-		AT_NTHROW,
-		AT_FTHROW,
-		AT_UTHROW,
-		AT_DTHROW,
-		AT_EXTRA_1,
-		AT_EXTRA_2,
-		AT_EXTRA_3,
-		AT_TAUNT,
-		AT_TAUNT_2,
-		AT_PHONE,
-		2,
-		3,
-		39,
-		42,
-		43,
-		44,
-		45,
-		46,
-		47,
-		48,
-		49,
-		50
-	];
-	
-	
-	
-	// Include a "Stats" page in the frame data guide?
-	include_stats = true;
-	
-	// If so, put any specific notes here:
-	stats_notes = "-"; // "-" means no notes
-	
-	
-	
-	// Include a custom page in the frame data guide? (Useful for documenting miscellaneous numbers, e.g. stats of a passive mechanic)
-	include_custom = false;
-	
-	// If so, what's its name?
-	custom_name = "Monado Art Data"
-	
-	i = 0;
-	
-	// If so, use these functions to populate it:
-	// initCFDHeader(text)
-	// initCFDBody(text)
-	
-	initCFDHeader("Monado Jump");
-	initCFDBody("Cooldown: 100000 seconds
-	Duration: 5
-	Effects: you jump higher???? by like 2x");
-	
-	initCFDHeader("Monando Shield");
-	initCFDBody("Cooldown: 4
-	Duration: 2
-	Effects: Wait why is this listed second");
-	initCFDBody("woag this is a enw apragraph");
-	
-	initCFDHeader("Some crazy third thing");
-	initCFDBody("Damage: 7
-	sw: i
-	m");
-	
-}
+-UAir final hit base hitpause and scaling increased from 5 and 0.2 to 7 and 0.6
+-UAir final hit height increased from 37 to 45 and lowered by 5 pixels
+
+-UStrong startup increased from 6 to 12 (YIKES WHY WAS IT ONLY 6)
+-UStrong initial hitbox width increased from 42 to 64 and moved back (covers more of Chuckya's body)
+-UStrong initial hitbox given angle flipper 6 (compliments above change)
+-UStrong launching hitbox damage increased from 2 to 5 (11 to 14 total with all other hits)
+-UStrong launching hitbox KB scaling decreased from 1 to 0.9
+
+-DAttack can now be cancelled on hit during window 3 (4 frames earlier, should help it better fit the role of an open-ended combo starter)
+
+-DTilt sweetspot given higher priority (more consistent with DAir, as well as making it easier to hit for how small the extra reward is)
+
+-UTilt first hitbox width increased from 46 to 65
+-UTilt second hitbox width increased from 60 to 70
+-UTilt second hitbox height increased from 75 to 80
+-UTilt startup reduced from 6 to 4
+
+-Wario Apparition (Final Smash) now spawns further behind Chuckya (-450 to -800)
+
+-DEDICATED WHOMP/THWOMP PATCHNOTES (theres a lot)-
+-Thwomps and Whomps no longer move during hitpause
+-Adjusted Whomp collision mask
+
+-FStrong and DStrong now have untechable 3 on their comboing hitboxes (untechable + doesn't bounce, the initial hits now combo to launching hit even at 999)
+-FStrong and DStrong hitboxes are now classified as projectile hitboxes (fixes a bunch of issues)
+
+-FStrong first hit merged into 1 hitbox from the ground only + air only (untechable 3 makes this redundant)
+-FStrong launching hit BKB reduced from 10 to 6 (this kb is stupid, the only reason no one noticed is because whomps were so janky)
+-FStrong falling hit damage reduced from 10 to 6
+-FStrong falling hitbox is now one long hitbox and no longer stops spawning after hitting a player (only really affects multiplayer)
+-FStrong falling hit now has extra hitpause of 10 (should connect to launching hit when landing off the side of a platform)
+-FStrong lifetimes on all hitboxes now last longer than 1 frame
+
+-DStrong startup decreased from 24 to 20
+-DStrong endlag gravity increased from 0.55 to 1 (should no longer awkwardly stall in the air)
+-DStrong falling hitbox merged into 1 hitbox from the ground only + air only (untechable 3 makes this redundant)
+-DStrong falling hitbox is now one long hitbox and no longer has a hit lockout of 7
+-DStrong falling hitbox no longer has extra hitpause
+-DStrong launching hit damage increased from 8 to 12 (DStrong is kinda just worse than FStrong so this should help)
+-DStrong KB scaling increased from 0.8 to 0.9
+-DStrong now has an extra grounded only shockwave hitbox (again to give it better usage over FStrong)
+-DStrong launching hitbox no longer has untechable 1
+-DStrong launching hitbox now has a hit lockout of 10 (so the shockwave doesn't cancel the hit, groups don't work here)");
+initHeader("Fixes");
+initSection("-Optimized a bunch of stuff behind the scenes
+-Grounded BThrow now works when using the right stick
+-Players not being able to escape during throws now applies to all throws rather than just FThrow (why was it fixed but just for fthrow what even is that)
+-Adjusted BThrow sprite offset
+-Swipe sounds for UStrong, UAir, UTilt, DStrong, DTilt, DAir, BAir, NAir, FThrow, DThrow, BThrow, UThrow, and NSpecial now play at the correct time
+-UStrong crystal once again uses Chuckya's shader
+-Colour groups adjusted to include UStrong crystal
+-Smear hurtboxes on DAir, NAir, and USpecial have been properly removed
+-FStrong endlag now plays all animation frames as intended
+-DStrong frame with missing bobble is now fixed (it was hidden by the Thwomp projectile but yknow, peace of mind and all that)
+-All attacks now use the correct hit particles
+-Cannon dissapearing now uses bottom blastzone Y rather than the stage boundary Y
+-Removed whifflag from DAttack window 3
+-Crouch now plays all frames as intended
+-Intro sound effects should now only play once even if Chuckya's state is messed with
+-Heave-Ho can no longer move while exploding
+-Heave-Ho now makes a swipe sound when throwing objects, not just players
+-Jumping while holding an object now uses the correct animation
+-Jump start time is no longer set to 3
+-USpecial startup now uses its sound effect
+-DAttack now animates as intended
+-Updated Walljump code, and releasing the wall cling now plays the jump sound (more polished than dan could even bother with)
+-Fixed Platform Taunt offset
+-Jab 1 now animates as intended
+-Fixed miscoloured pixel when closing Munophone
+-Fixed miscoloured pixel on intro animation
+-Fixed missing pixel on UTilt
+-Explosions from parried Bob-Ombs now belong to the correct player");
+
+initPatch("1.16", "15 May, 2022");
+initHeader("Aesthetic");
+initSection("-Removed 8bit sound effects on classic alts (they don't sound great and honestly discourage me from picking them)
+-8bit taunts now use the 8bit warping sound
+-Reduced volume on the remaining 8bit sounds
+-Flag taunts now overwrite neutral taunt on gayzone alts (this only wasn't the case initially because of isssues with Munophone we were too dumb to realize how to fix easily)
+-Flags now dissapear immediately when using a flag taunt a second time");
+
+initPatch("1.15", "23 March, 2022");
+initHeader("Aesthetic");
+initSection("-Removed cyan pixels on results screen (i forgor)
+-Added more frames on DAir sweetspot hfx");
+initHeader("Balance");
+initSection("-Droppin grabbed players offstage now uses the bottom blastzone Y rather than the stage boundary Y
+-Heaveho being destroyed offstage now uses the bottom blastzone Y rather than the stage boundary Y
+-Heave-Ho no longer activates when passing a player that is invincible
+-Chuckya can no longer fastfall during DStrong
+-FStrong launching hitbox height increased from 20 to 35 (Should hit more consistently on aerial opponents)
+-Removed hit lockout from FStrong launching hit (idk why it's even there)
+-Removed hit lockout from FStrong falling hitbox (It should now combo into the launching hit when falling off a platform)
+-FStrong falling hitbox now deativates after hitting a player (sucks for 4p matches but like those guys are stinky anyway)
+-UStrong multihit window length increased from 10 to 14
+-Above change means amount of hits is increased, so damage is also increased from 9 to 11
+-Reduced DAir sourspot BKB scaling from 0.65 to 0.55
+-DAttack can now be attack cancelled on hit during the endlag window");
+initHeader("Fixes");
+initSection("-Flag taunts can no longer be activated on the platform
+-Flag taunt music is now stopped in got_hit
+-Hitting Chuckya on the first frame of parrying no longer repeats the sound 80 times because ouch my ears
+-Put !hitpause on some other sound effects because you can never be too careful
+-Fixed the swipe sound effect for the launching hit of BAir not playing");
 
 
+initPatch("1.14", "10 March, 2022");
+initHeader("Aesthetic");
+initSection("-Exaggerated visuals on Jab, FAir, UTilt, and FTilt
+-Removed cyan highlight on CSS
+-Added CSS select sound
+-USpecial now has a white border for the entire charge duration
+-USpecial now has some squash before firing
+-The blue part on the cannon no longer has slightly assymetrical shading
+-UStrong crystal is now a separate sprite
+-UStrong star now recolours with alts
+-Thwomp and Whomp now use custom hit effects
+-UStrong now uses custom hit effects
+-All attacks now have star hit particles (except when Dan Moment messed them up)
+-Players grabbed by Chuckya will now flip back and forth as well as shaking when the grab timer is low");
+initHeader("Balance");
+initSection("-Hurtboxes adjusted on Jab, FAir, UTilt, and FTilt to match visual tweaks
+-Jab 1 hitbox width increased from 56 to 65 and moved forward slightly
+-Jab 2 hitbox width increased from 50 to 70 and moved forward
+-Jab 3 hitbox height increased from 50 to 55 and moved forward
+-FAir hitboxes width increased from 50 to 60 and moved forward
+-FAir top hitbox moved slight upward
+-UTilt second hitbox width increased from 50 to 60
+-UTilt second hitbox height increased from 70 to 75
+-Due to USpecial visual change, Chuckya is now fired out 6 frames after the button is released
+-USpecial vsp changed from 0.8 to 0.6
+-USpecial now puts Chuckya into Pratfall 20 frames after being fired out (all this really changes is walljumping)
+-Body hitbox when being fired from USpecial is now part of the move rather than attaching it to Pratfall
+-Increased Pratland time from 4 to 8
+-FSpecial cooldown is no longer 60 from initially spawning the Bob-Omb, instead the cooldown is active as long as a Bob-Omb is on screen
+-Bob-Ombs can now be automatically grabbed by holding special when throwing one
+-DSpecial throw hitbox lifetime increased from 3 to 7 (to better match the animation and be more consistent when hitting players)
+-DSpecial throw hitbox width increased from 70 to 85, should now more consistently hit players slightly behind Heaveho
+-Reduced DSpecial cooldown after Heave-Ho is destroyed
+-Heave-Ho now dissapears closer to the bottom blastzone
+-Bob-Ombs no longer bounce after being dropped from Chuckya's grab");
+initHeader("Fixes");
+initSection("-Christmas alt is no longer broken (not that itll matter for a while)
+-Whomp now uses the correct sound when using an 8bit alt
+-Fire HFX for USpecial body hitbox now fully recolours with alts
+-Fixed darker grey colours on Heave-Ho not recolouring with alts
+-DAir hitboxes are now in the same group (whoops idk when that happened)");
 
-/*
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ About					                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+initPatch("1.13", "9 March, 2022");
+initHeader("Fixes");
+initSection("-Thwomp now properly breaks when hitting the ground
+-Fixed custom gravity on airborne DStrong
+-HOPEFULLY fixed the cannon being weird and launching Chuckya into space
+-Heave-Ho now has extended parry stun on the throwing hitbox
+-Heave-Ho now has parry stun and extended parry stun on explosion hitbox (i thought i fixed that before rip)
+-Heave-Ho can now throw players when being initially spawned");
 
-*/
+initPatch("1.12", "6 October, 2021");
+initHeader("Aesthetic");
+initSection("-Added custom effect for DAir sweetspot");
+initHeader("Balance");
+initSection("-Bob-Ombs are no longer transcendant
+-Bob-Omb cooldown increased from 60 to 75
+-FStrong now has 7 whifflag
+-DStrong now has 6 whifflag
+-Bob-Ombs can no longer hit players when held (even though that was really funny, blame ambi)");
 
-with phone{
-	
-	/*
-	 * Info found in the "About" app.
-	 * 
-	 * initAbout(entry name, entry text)
-	 * 
-	 * Useful for credits or etc. The page can also scroll, so they can be long
-	 * if you want. AND you can have multiple of these
-	 */
-	
-	initAbout("About Chuckya", "Chuckya by the Fighting Polygon Team
-	Inspired by NickYellow0313's Chuckya (also I used its sprite for the taunt)
-	
-	CREDITS:
-	Flophawk: Project Manager, Lead Artist, Lead Coder, Victory Theme
-	Ability: Lead Coder
+initPatch("1.11", "5 October, 2021");
+initHeader("Balance");
+initSection("-Heaveho throw no longer has an angle flipper, now always sending upward
+-Adjusted Heaveho throw angle from 70 to 90
+-Reduced Heaveho throw base hitpause from 9 to 3
+-Increased Heaveho throw BKB from 10 to 13 (it still barely has any scaling, don't worry about it)");
+initHeader("Fixes");
+initSection("-Bob-Omb eyes now recolour with alts during Chuckya's FSpecial animation
+-Bully eyes now recolour with alts
+-Heaveho HUD indicator eyes now recolour with alts
+-Flag taunt can no longer be activated when on the platform
+-Heaveho throw hitbox now properly follows Heaveho's position
+-Bully now properly appears randomly on FSpecial");
+
+initPatch("1.10", "30 September, 2021");
+initHeader("Aesthetic");
+initSection("-Changed falling cannon hit effect
+-Changed falling cannon mask sprite");
+initHeader("Fixes");
+initSection("-Fixed cannon shlide (again)");
+
+initPatch("1.9", "30 September, 2021");
+initHeader("''Fixes''");
+initSection("-Cannon shlide is back because for some reason fixing it made it spawn 300 hitboxes (thank you lemons very cool)
+-Removed some print_debug stuff");
+
+initPatch("1.8", "30 September, 2021");
+initHeader("Aesthetic");
+initSection("-Chuckya now has a unique sprite for crouching while holding an object");
+initHeader("Balance");
+initSection("-Chuckya now drops its held object when wall jumping or getting hit
+-Grabbed opponents are now released 8 frames sooner when Chuckya drops them
+-Heaveho throw hitbox adjusted to be higher up and closer to Heaveho's front
+-Heaveho throw hitbox is now larger
+-Removed second 3% hitbox from falling USpecial cannon
+-First Falling USpecial hitbox now does 6%");
+initHeader("Fixes");
+initSection("-Chuckya's eyes now recolour with alts during platform taunt
+-Chuckya's key now recolours with alts during FThrow
+-Adjusted sprite offset for crouching
+-Bob-Omb sound effects now play properly when reflected
+-Chuckya's Cargo Dash animation now loops
+-Fixed bug where a falling cannon shot at a precise angle and speed would cause it to slide across the ground");
+
+initPatch("1.7", "25 September, 2021");
+initHeader("Aesthetic");
+initSection("-Added Dialogue Buddy support");
+initHeader("Balance");
+initSection("-Reduced endlag on FStrong from 16 frames to 10");
+
+initPatch("1.6", "23 September, 2021");
+initHeader("Fixes");
+initSection("-Fixed bug where Thwomps would get stuck falling when landing on a platform too low to solid ground
+-Fixed bug (I say bug, it was me being stupid) where the aerial only combo hit on Thwomp had the wrong hitbox number and prevented the grounded only hitbox from appearing");
+
+initPatch("1.5", "22 September, 2021");
+initHeader("Aesthetic");
+initSection("-FThrow now has a unique animation from FSpecial
+-Thwomp eyes now recolour with alts");
+
+initHeader("Balance");
+initSection("-Extended player grab range
+-Extended Bob-Omb grab range
+-Grab timer no longer affects articles
+-Chuckya now drops whatever it's holding when dodging
+
+-Thwomp now has 1 less animation frame when hitting the ground for better gamefeel
+-DStrong endlag increased from 0 (rip) to 8
+-Nerfed DStrong launching hit BKB from 10 to 9
+-Nerfed DStrong launching hit scaling from 1.0 to 0.8
+-DStrong launching hit now comes out a few frames later (there was a weird bug don't ask)
+-DStrong comboing hits now how 7 frames of hit lockout (same bug, still don't ask)
+
+-FStrong endlag increased from 14 frames to 24
+
+-Cannon now dissapears after hitting an opponent
+-Chuckya now loses super armor sooner when exiting the cannon
+
+-Nerfed scaling on explosions from 0.8 to 0.6
+-Increased hitpause on explosions
+-Increased cooldown on Bob-Ombs
+
+-Heaveho now puts Chuckya into parry stun when its attack is parried
+-Heaveho is now destroyed by Clairen's plasma field");
+initHeader("Fixes");
+initSection("-Cargo Idle animation now loops
+-Offscreen indicator eyes now recolour with alts
+-Chuckya now has 20 frames of landing lag when dropping opponents on the ground, and 20 frames of NSpecial cooldown in the air to prevent wobbling
+-You can grab a Bob-Omb while it's exploding to hold nothing, which I didn't actually fix because it's funny and SM64 accurate. I just wanted to let everyone know it's there lol
+-Heaveho no longer falls through platforms when placed directly on them");
+
+initPatch("1.4", "20 September, 2021");
+initHeader("Balance");
+initSection("-Body hitbox added when firing out of USpecial
+-Added 4 frames of pratland back
+
+-Falling Cannon now only does 6%
+-Falling Cannon angle changed from 270 to 90
+-Cannon no longer loses friction after falling hitbox hits an opponent
+
+-DStrong launching hit angle changed from 270 to 90
+-DStrong launching hit scaling changed from 1.5 to 1
+
+-FStrong combo hit changed to grounded only
+-Extra FStrong combo hit added for aerial only");
+initHeader("Fixes");
+initSection("-Charging USpecial no longer dissapears when fighting an opponent with a solid article
+-Removed some leftover print_debug");
+
+initPatch("1.3", "19 September, 2021");
+initHeader("Aesthetic");
+initSection("-why was it using the old victory theme
+-well anyway it''s the new one now
+-chuckya ballz");
+
+initPatch("1.2", "19 September, 2021");
+initHeader("Aesthetic");
+initSection("-Renamed ''Chuckyaster'' alt to ''Ramel C. Chuckster''
+-USpecial falling hitbox sound changed");
+initHeader("Balance");
+initSection("-UStrong launching hit scaling nerfed back from 1.2 to 1.0
+
+-DStrong launching hit BKB buffed from 9 to 10
+-DStrong launching hit scaling buffed from 1.3 to 1.5
+
+-USpecial falling hitbox height reduced
+-USpecial falling hitbox scaling nerfed from 0.8 to 0.5
+
+-DAttack HSP reduced from 3 to 2
+-DAttack friction on last window increased from 0.4 to 0.6
+-DAttack BKB reduced from 6 to 5 to make followups easier with the new reduced speed
+
+-Added 0.2 scaling to UAir second hit
+
+-Removed custom gravity from BAir's first window
+-Removed VSpeed from BAir's first window
+-Reduced VSpeed on BAir window 3 from -3 to -2
+
+-Distance to blastzone before dropping opponents reduced
+-Removed pratland lag, Chuckya is now actionable immediately when touching the ground");
+initHeader("Fixes");
+initSection("-HEAVE-HO WORKS NOW WOOOOO
+-Unique platform taunt now works
+-Cargo Dashstop no longer has miscoloured eyes on alts
+-The last patch notes lied, Heaveho explosion was still ludicrously strong. Fixed it to be the same strength as Bob-Ombs, actually this time");
+
+initPatch("1.1", "18 September, 2021");
+initHeader("Balance");
+initSection("-Reduced time limit on grabbing from 2 seconds to 1
+-Increased friction on dropped cannons from 6 to 1.2
+
+-FStrong launching hit BKB buffed from 9 to 10
+-UStrong launching hit scaling buffed from 1 to 1.2
+-DStrong launching hit BKB buffed from 8 to 9
+
+-DTilt endlag nerfed from 10 frames to 15
+-Increased DTilt friction on final window from 0.1 to 0.3
+
+-DAttack can no longer be held down, only hitting the minimum 4 times
+
+-DSpecial explosion hitbox and FSpecial ground explosion hitbox fixed from 15 damage, 10 BKB, 1.1 scaling to 7 damage, 7 bkb, 0.8 scaling (JESUS CHRIST WHO MADE THEM THAT STRONG)
+-DSpecial explosion hitbox and FSpecial ground explosion hitbox made smaller
+-Removed hit sound and hit effect from DSpecial explosion hitbox and FSpecial ground explosion hitbox");
+initHeader("Fixes");
+initSection("-Neutral special can no longer galaxy off the bottom at 0% (Chuckya will drop opponents when offstage)
+-FTilt no longer has miscoloured eyes on alts");
+
+
+initPatch("1.0", "18 September, 2021)");
+initSection("-Chuckya released :)");
+
+initPatch("About Chuckya", "");
+initHeader("General Info");
+initSection("The Clockwork Catapult from SM64, Chuckya, comes to Rivals of Aether! Carrying on the spirit of NickYellow's Chuckya character, it's the high quality Chuckya by Fighting Polygon Team!
+
+This round robot loves to throw things around, including players! Use Chuckya's cargo grab to throw opponents, Bob-Ombs, and everything inbetween!");
+initHeader("Character by Fighting Polygon Team");
+initSection("Flophawk: Project Manager, Lead Artist, Lead Coder, Victory Theme
+Ability: Lead Coder
 Gnome: Lead Coder
 DeltaParallax: Lead Coder
 DynamicLemons: Last Minute Very Epic Coder
-	Mr. Start: Assistant Artist
-	Succ: Assistant Artist
-	Tai: Assistant Hitbox Coder
-	Spam: Assistant Coder
+Mr. Start: Assistant Artist
+Succ: Assistant Artist
+Tai: Assistant Hitbox Coder
+Spam: Assistant Coder
+BagelBoy: Thwomp Sprite
+NickYellow: Taunt Sprite
+
+
+Shoutouts to BowlingKing and Ambi for balancing tips.");
 	
-	STUFF USED:
-	Gaybow Road Taunt Music: Rainbow Road by RhymesWithStomach
-	Numerous Bees Taunt Music: Honeycomb Highway by Siivagunner
-	Trans Rights Taunt Music: idk the USSR or something
-	Wall E Compatability Music: Slider from SM64DS
-	Final Smash Buddy Music: Looping Steps from SM64 (reversed)
+initHeader("Stuff used:");
+initSection("Gaybow Road Taunt Music: Rainbow Road by RhymesWithStomach
+Numerous Bees Taunt Music: Honeycomb Highway by Siivagunner
+Trans Rights Taunt Music: idk the USSR or something
+Final Smash Buddy Music: Looping Steps from SM64 (reversed)
+Rune Wobbling Music: Looping Steps from SM64
+
 	
-	SFX sourced from Super Mario 64, SMB2, Super Mario Maker, SML2, Rhythm Heaven Fever, Marvel vs Capcom 3,  Mario Party, Undertale, and Smash Ultimate.");
-}
+SFX sourced from Super Mario 64, SMB2, Super Mario Maker, SML2, Rhythm Heaven Fever, Marvel vs Capcom 3,  Mario Party, Undertale, Smash Ultimate, and Super Mario Sunshine");
+initHeader("Compatible with");
+initSection("Final Smash Buddy, Dialouge Buddy, Trummel & Alto, Otto, Steve, Link, Feri, Hikaru, The Chosen One, Abyss Hime, Wall-E, Moonchild, Miiverse, Mt. Dedede, Soulbound Conflict, Trial/Killing Grounds, The Last Resort, Dracula Boss, and Pokemon Stadium");
 
+// Recommended template for non-Sandbert characters (delete the other patches):
 
+/*
 
+// other patches go here...
 
+initPatch("1.0", "42 Shmebruary, 2021"); // (replace the date lol)
+initHeader("General");
+initSection("The character was released.");
+
+initPatch("About CHARACTER NAME", "");
+initHeader("Character by");
+initSection("your name here");
+initHeader("SFX from");
+initSection("any places you got sfx (or other assets)");
+initHeader("Compatible with");
+initSection("Trummel & Alto, Otto, Steve, Link");
+
+*/
 
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Cheats																	║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Compatibility			                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Create options for players to change how the character plays, either as silly
+fun bonuses or useful training utilities (e.g. filling a meter instantly).
+
+Use the initCheat() function to create a Cheat:
+
+	CHEAT_[NAME_HERE] = initCheat(name, [options], [option_names], description)
+
+Glossary:
+	
+	"CHEAT_[NAME_HERE]" is a variable that stores the ID of the Cheat. In the
+		example below, CHEAT_FLY is equal to 0. This is necessary for
+		referencing your cheat later in your character's code.
+	
+	"[options]" is an array of the possible values that the Cheat can have. A
+		simple example is [0, 1] for on and off, but it could also be something
+		like [0, 1, 5, 9] or ["Cherry", "Strawberry", ""].
+	
+	"[option_names]" is an array of the displayed names for the options given in
+		"[options]". It should be the same length as "[options]", and each entry
+		should be a string.
+	
+To access a Cheat's current value inside your character's code, grab the entry
+in the "phone_cheats" array at the index of the "CHEAT_" variable. For example:
+
+	// update.gml
+	
+	if phone_cheats[CHEAT_FLY] == 1{
+		vsp = -2;
+	}
+
+The "phone_cheats" array entry holds whatever value you defined in "[options]",
+for the Cheat's current setting. (e.g. "phone_cheats" could contain a string,
+not just a number)
+
+You can also run code only at the moment that the Cheat was clicked on, by
+using the "phone_cheats_updated" array (each entry is just true or false):
+	
+	// update.gml
+	
+	if phone_cheats_updated[CHEAT_FLY]{
+		phone_cheats_updated[CHEAT_FLY] = 0; // you have to reset it yourself
+		if phone_cheats[CHEAT_FLY]{
+			print("Flight started");
+		}
+		else{
+			print("Flight ended");
+		}
+	}
+
+Pro tip: having a Cheat with only a single option is useful if you just need a
+"click button to do X" thing for your character, e.g. "click to reset meter to
+zero".
 
 */
 
-// Trummel & Alto codec
+#define CORE_cheats
 
-if pho_has_trum_codec{
-	
-	/*
-	 * initCodec(gimmick)
-	 * initCodecPage(speaker, expression, gimmick, text)
-	 * 
-	 * The variable trummel_id is initially set to noone (-4). When Trummel
-	 * opens this char's codec, trummel_id is set to Trummel's object ID.
-	 */
-	
-	/*
-	 * Codec speaker handles:
-	 * SPK_TRUM: Trum
-	 * SPK_ALTO: Alto
-	 * SPK_OTTO: Otto
-	 * SPK_CODA: Coda
-	 * SPK_ECHO: Tempo
-	 * SPK_MINE: Steve (i dont normally use this one... like, what is he supposed to say?? the funny oof noise? you can if you want)
-	 * SPK_SEGA: Sonic (see above)
-	 */
-	
-	/* 
-	 * Page gimmick handles:
-	 * GIM_CHOMP			make the enemy ftilt
-	 * GIM_CLONE 			display 2 speakers
-	 * GIM_LAUGH_TRACK		play the funny haha sound
-	 * GIM_SKIP   			advance the page immediately when the text finishes
-	 * GIM_DIE    			die
-	 * GIM_SHUT_UP			no chatter sfx
-	 * GIM_HOWL				make the enemy dspecial
-	 * GIM_SHADER			use your char's shaders (palette swaps) for the speaker portrait
-	 * GIM_TEXTBOX			text color             is set to the value of the   spr_custom_trummel_textbox   variable in the player object
-	 * GIM_COLOR			textbox sprite index   is set to the value of the   spr_custom_trummel_color     variable in the player object
-	 * 
-	 * To use multiple gimmicks on a single page, MULTIPLY them together. See
-	 * _readme.gml for examples
-	 */
-	
-	// Custom speaker setup - use 1, 2, 3, 4, ... for the index
-	
-	SPK_SAND = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
-	SPK_TWIN = initSpeaker(2, "Sandbert's evil twin", sprite_get("_pho_example_speaker"));
-	
-	trummel_codecs = [];
-	
-	initCodec(0);
+CHEAT_INFGRAB		= initCheat("Endless Grab", [0, 1], ["Off", "On"], "Renoves grab time limit on players, and doesn't drop them when near the bottom blast zone.
+
+Doesn't remove the shaking, so you can still tell when the grab *would* have ended.");
+
+CHEAT_CANON         = initCheat("Endless Cannon Charge", [0, 1], ["Off", "On"], "Renoves automatic firing on USpecial.
+
+When normal time limit is reached, Chuckya also stops sinking.");
+CHEAT_HEAVE         = initCheat("Heave-Ho Speed", [1, 0.5, 0], ["100%", "50%", "0%"], "Set Heave-Ho's movement speed when grounded.");
+
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Frame Data																║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+Customise the Frame Data guide.
+
+*/
+
+#define CORE_frame_data
+
+// Reorder this list to change the order that moves appear in the guide!
+phone.move_ordering = [
+	AT_JAB,
+	AT_FTILT,
+	AT_DTILT,
+	AT_UTILT,
+	AT_DATTACK,
+	AT_FSTRONG,
+	AT_USTRONG,
+	AT_DSTRONG,
+	AT_FSTRONG_2,
+	AT_USTRONG_2,
+	AT_DSTRONG_2,
+	AT_NAIR,
+	AT_FAIR,
+	AT_BAIR,
+	AT_UAIR,
+	AT_DAIR,
+	AT_NSPECIAL,
+	AT_NSPECIAL_AIR,
+	AT_NSPECIAL_2,
+	AT_FSPECIAL,
+	AT_FSPECIAL_AIR,
+	AT_FSPECIAL_2,
+	AT_USPECIAL,
+	AT_USPECIAL_GROUND,
+	AT_USPECIAL_2,
+	AT_DSPECIAL,
+	AT_DSPECIAL_AIR,
+	AT_DSPECIAL_2,
+	AT_NTHROW,
+	AT_FTHROW,
+	AT_UTHROW,
+	AT_DTHROW,
+	AT_EXTRA_1,
+	AT_EXTRA_2,
+	AT_EXTRA_3,
+	AT_TAUNT,
+	AT_TAUNT_2,
+	AT_PHONE,
+	2,
+	3,
+	39,
+	42,
+	43,
+	44,
+	45,
+	46,
+	47,
+	48,
+	49,
+	50
+];
+
+// Whether or not to include the "Stats" page.
+phone.include_stats = true;
+
+// Notes for the "Stats" page - put "-" for no notes.
+phone.stats_notes = "-";
+
+// Whether or not to include a custom data page, which can hold any values you
+// want - useful for data that's specific to your character's mechanics.
+phone.include_custom = false;
+
+// The name of the custom page.
+phone.custom_name = "Example Custom Data"
+
+// The content of the custom page.
+initCFDHeader("Article lifetime");
+initCFDBody("100 frames");
+initCFDHeader("Second value");
+initCFDBody("459");
+initCFDBody("epic");
+
+
+
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Muno Character Compatibility												║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+Add bonus features and interactions with Muno's characters, like a codec for
+Trummel & Alto.
+
+If you don't feel like adding one of them, you can just comment out the lines
+of code.
+
+*/
+
+#define CORE_muno_compatibility
+
+/*
+Trummel codec:
+
+initCodec(gimmick)
+initCodecPage(speaker, expression, gimmick, text)
+
+The variable trummel_id is initially set to noone (-4). When Trummel opens this
+char's codec, trummel_id is set to Trummel's object ID.
+
+Codec speaker handles:
+SPK_TRUM: Trum
+SPK_ALTO: Alto
+SPK_OTTO: Otto
+SPK_CODA: Coda
+SPK_ECHO: Tempo
+SPK_MINE: Steve (i dont normally use this one... like, what is he supposed to say?? the funny oof noise? you can if you want)
+SPK_SEGA: Sonic (see above)
+
+Codec speaker expressions:
+https://pastebin.com/qTLnsNFY
+
+Codec gimmicks:
+there aren't any
+
+Page gimmicks:
+GIM_CHOMP			make the enemy ftilt
+GIM_CLONE 			display 2 speakers
+GIM_LAUGH_TRACK		play the funny haha sound
+GIM_SKIP 			advance the page immediately when the text finishes
+GIM_DIE				die
+GIM_SHUT_UP			no chatter sfx
+GIM_HOWL			make the enemy dspecial
+GIM_SHADER			use your char's shaders (palette swaps) for the speaker portrait
+GIM_TEXTBOX			text color				is set to the value of the	spr_custom_trummel_textbox	variable in the player object
+GIM_COLOR			textbox sprite index	is set to the value of the	spr_custom_trummel_color	variable in the player object
+
+To use multiple gimmicks on a single page, MULTIPLY them together.
+*/
+
+// Custom speaker setup - use 1, 2, 3, 4, ... for the index.
+SPK_SAND = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
+SPK_TWIN = initSpeaker(2, "Sandbert's evil twin", sprite_get("_pho_example_speaker"));
+
+initCodec(0); // this should just always be 0, because there are no codec gimmicks
 	initCodecPage(SPK_ALTO, 2, 0, "Chuckya, The Clockwork Catapult. It appears in SM64 and it's remake.");
 	initCodecPage(SPK_ALTO, 3, 0, "Fun fact! Chuckya can blink, but chooses not to.");
 	initCodecPage(SPK_TRUM, 2, 0, "thats not fun at all");
@@ -728,388 +963,202 @@ if pho_has_trum_codec{
 	initCodecPage(SPK_TRUM, 1, 0, "why are you like this");
 	initCodecPage(SPK_ALTO, 6, 0, "I had fun removal surgery in 2004.");
 	initCodecPage(SPK_TRUM, 4, 0, "that explains a lot");
-	initCodecPage(SPK_ALTO, 9, 0, "...");
-	initCodecPage(SPK_ALTO, 4, 0, "how dare you");	
-		
-	
-}
+    initCodecPage(SPK_ALTO, 4, 0, "");
+	initCodecPage(SPK_ALTO, 4, 0, "No it doesn't shut up.");
 
+// Otto bobblehead.
+otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
 
+// Otto bobblehead body. (optional, don't really need this)
+otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
-// Otto bobblehead
+// Steve death message.
+steve_death_message = "Steve was thrown out of the course.";
 
-if pho_has_otto_bhead{
-	
-	otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
-	otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body"); // you only need to change this one if you REALLY want to. most chars just use the head sprite
-	
-}
+// Link spear. (determines which spear your char will drop the first time)
+link_spear_drop = 4;
 
+/*
+Spear IDs:
 
+1: Traveler's Spear
+2: Knight's Halberd
+3: Wooden Mop
+4: Spiked Boko Spear
+5: Flamespear
+6: Frostspear
+7: Thunderspear
+8: Guardian Spear
+*/
 
-// Steve death message
+// Palutena's Guidance (for RuberCuber's Pit character)
+// Works kind of similarly to Trummel codecs.
+// initCodecPagePit(speaker, expression, voice, text);
+// List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
 
-if pho_has_steve_dmsg{
-	
-	steve_death_message = "Steve was thrown out of the course.";
-	
-}
-
-
-
-if !phone_lightweight{
-
-
-
-	// Feri taunt costume
-	
-	if pho_has_feri_taunt{
-		
-		sprite_change_offset("comp_feri_costume", 84, 114);
-		feri_costume = sprite_get("comp_feri_costume_chuckya");
-		
-	}
-	
-	
-	
-	// Hikaru fakie title
-	
-	if pho_has_hikaru_fak{
-		
-		Hikaru_Title = "Chuckster";
-		
-	}
-	
-	
-	
-	// Rat all-out quote
-	
-	if pho_has_rat_allout{
-		
-		personaQuips[10] = "EE OING!";
-		
-	}
-	
-	
-	
-	// The Chosen One sketch
-	
-	if pho_has_tco_sketch{
-		
-		tcoart = sprite_get("comp_chuckya_tcoart");
-		
-	}
-	
-	
-	
-	// Abyss Hime death sprite
-	
-	if pho_has_ahime_dead{
-		
-		sprite_change_offset("comp_a_hime_death", 36, 76);
-		abyssHime_deathspr = sprite_get("comp_a_hime_death");
-		
-	}
-	
-	
-	
-	// Fire's taunt
-	
-	if pho_has_fire_taunt{
-		
-		sprite_change_offset("fire_taunt", 0, 0);
-		fire_taunt = sprite_get("fire_taunt");
-		fire_taunt_duration = 420;
-		fire_taunt_frames = 69;
-		fire_taunt_sound = sound_get("woagf");
-		fire_taunt_sound_frame = 3;
-		
-	}
-	
-	
-	
-	// Wall-E's radio
-	
-	if pho_has_wall_e_ost{
-		
-		walle_taunt_sound = sound_get("slider_ds");
-		walle_taunt_type = 1;
-		
-	}
-	
-	
-	
-	// Amber's plushie and hug
-	
-	if pho_has_amber_love{
-		
-		plushForAmber = sprite_get("amber_plushie");
-		
-		// Amber interaction variables
-		amber_herObj = noone; // The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-		amber_thisHugSprite = sprite_get("sandbert_hug");
-		amber_herHugSprite = sprite_get("amber_hug");
-		amber_startHug = false; // This variable is set true from Amber's scripts
-		amber_thisSpriteInFront = true; // When true, this character's sprite is rendered over Amber's sprite
-		amber_autoTurnToHer = true; // This character will automatically face towards Amber upon hug activatation when true
-		
-		amber_hugStartPos[0] = 42; // The x target offset point (from Amber's pos) where the player should hug Amber at. 
-		amber_hugStartPos[1] = 0; // The y target offset point. Recommended to keep this at 0 for grounded interaction
-		
-		amber_hugExitPos[0] = 42; // The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
-		amber_hugExitPos[1] = 0; // The y target offset point.
-		
-		// The x target offset positions will inherit the character's spr_dir when this is true.
-		// Set this to true for character interactions that face toward each other such as hugging
-		// Set this to false for centered interaction animations
-		amber_useSprDirOffset = true; 
-		
-		amber_hugExitTimer = 30; // How many frames should pass before either player can exit the hug window loop
-		amber_hugExitWindow = 3; // The window to jump to when either player presses a button to exit hug loop
-		
-		sprite_change_offset("sandbert_hug", 32, 62);
-		sprite_change_offset("amber_hug", 32, 62);
-		
-	}
-	
-	
-	
-	// Moonchild music
-	
-	if pho_has_moon_music{
-		
-		childsupport = true; // this is so sad
-		
-	}
-	
-	
-	
-	// Agent N codec
-	
-	if pho_has_agentn_cdc{
-		
-		ncode1 = "It's gonna chuck ya!";
-		ncode2 = "This automaton posses free will but no morality.";
-		ncode3 = "Caution is advised. Stay out of it's reach.";
-		
-	}
-	
-	
-	
-	// Dracula dialogue
-	
-	if pho_has_drac_codec{
-		
-		dracula_portrait = sprite_get("comp_drachuchya_portrait");
-		dracula_portrait2 = asset_get("empty_sprite");
-		dracula_portrait3 = asset_get("empty_sprite");
-		var page = 0;
-		
-		// Page 0
-		dracula_speaker[page] = 0;
-		dracula_text[page] = "Fantastic. I'm being graced by the presence of the world record holder for largest gumball. How very lucky of me.";
-		page++;
-		
-		// Page 1
-		dracula_speaker[page] = 1;
-		dracula_text[page] = "EE OING[taunt]";
-		page++;
-		
-		// Page 2
-		dracula_speaker[page] = 0;
-		dracula_text[page] = "...What?";
-		page++;
-		
-		// Page 3
-		dracula_speaker[page] = 1;
-		dracula_text[page] = "EE OING[taunt]";
-		page++;
-	
-		// Page 4
-		dracula_speaker[page] = 0;
-		dracula_text[page] = "[shake]Is that the only noise you can make, you wretched automaton?";
-		page++;
-		
-		// Page 5
-		dracula_speaker[page] = 1;
-		dracula_text[page] = "EE OING[taunt]";
-		page++;	
-	
-		// Page 6
-		dracula_speaker[page] = 0;
-		dracula_text[page] = "Enough with your incessant racket![glass] I shall deal with you myself!";
-		page++;
-		
-		// Page 7
-		dracula_speaker[page] = 1;
-		dracula_text[page] = "";
-		page++;	
-		
-		// Page 8
-		dracula_speaker[page] = 1;
-    	dracula_text[page] = "EE OING[taunt]";
-		page++;	
-	
-	}
-	
-	
-	
-	// Miiverse post
-	
-	if pho_has_miivs_post{
-		
-		sprite_change_offset("comp_chuchya_miiverse", 60, 30);
-		miiverse_post = sprite_get("comp_chuchya_miiverse");
-		
-	}
-	
-	
-	
-	// Mt Dedede title
-	
-	if pho_has_dede_title{
-		
-		arena_title = "The Clockwork Catapult";
-		arena_short_name = "Chuckya";
-		
-	}
-	
-	
-	
-	// Soulbound Conflict
-	
-	if pho_has_soul_title{
-		
-		battle_text = "* Smells like a good yeeting.";
-		
-	}
-	
-	
-	
-	// Trial Grounds
-	
-	if pho_has_been_found{
-	
-		sprite_change_offset("trial_grounds", 31, 0);
-		guiltySprite = sprite_get("comp_chuchya_guilty");
-		
-	}
-	
-	
-	
-	// Last Resort painting
-	
-	if pho_has_resort_pic{
-		
-		sprite_change_offset("comp_im_deaaaad", 27, 39);
-		resort_portrait = sprite_get("comp_im_deaaaad");
-		
-	}
-	
-	
-	
-	// PKMN Stadium battle portraits
-	
-	if pho_has_pkmn_image{
-		
-		pkmn_stadium_front_img = sprite_get("comp_pkmn_battlefort_front");
-		pkmn_stadium_back_img = sprite_get("comp_pkmn_battlefort_back");
-		pkmn_stadium_name_override = "CHUCKYA";
-		
-	}
-	
-	
-	
-	// Daroach dialogue
-	
-	if pho_has_daro_codec{
-		
-		daroach_portrait = sprite_get("daro_portrait");
-		daroach_portrait2 = asset_get("empty_sprite");
-		daroach_portrait3 = asset_get("empty_sprite");
-		var page = 0;
-		
-		// Page 0
-		daroach_speaker[page] = 0;
-		daroach_text[page] = "holy frick";
-		page++;
-		
-		// Page 1
-		daroach_speaker[page] = 0;
-		daroach_text[page] = "im dracula";
-		page++;
-		
-		// repeat...
-		
-	}
-	
-}
-
-
+initCodecPit();
+initCodecPagePit(SPK_PIT,	3,	0,	"Hey, it's Sandbert!");
+initCodecPagePit(SPK_PIT,	1,	6,	"...Isn't he a bit above my power level?");
+initCodecPagePit(SPK_PALU,	0,	3,	"Actually, this version of Sandbert has received a lot of nerfs to his damage and frame data.");
+initCodecPagePit(SPK_PALU,	0,	2,	"He can't even cancel his USpecial or end it early anymore!");
+initCodecPagePit(SPK_VIR,	5,	1,	"But yes, Pit, he IS still above your power level.");
+initCodecPagePit(SPK_PIT,	6,	0,	"Pssh, sounds like a pushover to me.");
+initCodecPagePit(SPK_PALU,	0,	4,	"Don't be so sure - despite the nerfs, his power and attack speed are still a force to be reckoned with.");
+initCodecPagePit(SPK_PALU,	0,	2,	"Also, he has the same MunoPhone as you do - so he'll be well-versed in his frame data and combos.");
+initCodecPagePit(SPK_VIR,	6,	4,	"Maybe you should turn on some Cheats for this fight, Pit?");
+initCodecPagePit(SPK_PALU,	0,	2,	"No, I'm sure he'll be fine.");
+initCodecPagePit(SPK_PALU,	2,	5,	"...As long as he avoids the Kamehameha.");
+initCodecPagePit(SPK_PIT,	4,	1,	"The WHAT?!?");
 
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Behind-The-Scenes															║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ The End				                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+This is the end of the stuff you need to worry about!
+
+Below this point are just all of the functions used to make the above sections
+work.
+
+It's not recommended to edit anything below here unless you know what you're
+doing and have a good reason to.
 
 */
 
-// THIS MARKS THE END OF THE SECTION YOU HAVE TO EDIT!
-// BELOW THIS IS JUST BEHIND-THE-SCENES CODE
+#define initTip(tip_name)
 
+array_push(phone.tips, {
+	name: tip_name,
+	objs: [],
+	page_starts: [0]
+});
 
+phone.currently_edited_obj = phone.tips[array_length(phone.tips) - 1];
 
+initWords_ext("- " + tip_name + " -", fa_center, phone.apps[phone.APP_TIPS].color, 0, 0);
 
+#define initPatch(patch_version, patch_date)
 
-#define initAbout(obj_name, obj_text)
+array_push(phone.patches, {
+	name: (patch_date == "" ? "" : "v") + patch_version,
+	objs: [],
+	page_starts: [0]
+});
 
-var para = {
+phone.currently_edited_obj = phone.patches[array_length(phone.patches) - 1];
+
+if patch_date == ""{
+	initWords_ext("- " + patch_version + " -", fa_center, phone.apps[phone.APP_PATCHES].color, 0, 0);
+}
+else{
+	initWords_ext("- v" + patch_version + ": " + patch_date + " -", fa_center, phone.apps[phone.APP_PATCHES].color, 0, 0);
+}
+
+#define initHeader(obj_text)
+
+initWords_ext(obj_text, fa_left, "h", 0, 0);
+
+#define initSection(obj_text)
+
+initWords_ext(obj_text, fa_left, $4ABAA7, 1, 0);
+
+#define initWords(obj_text)
+
+array_push(phone.currently_edited_obj.objs, {
 	type: 0,
 	text: obj_text,
 	align: fa_left,
-	color: c_white,
+	color: $4ABAA7,
 	indent: 0,
-	gimmick: 0,
-	side_by_side_exempt: false
-};
+	side_by_side: false
+});
 
-var tip = {
-	name: obj_name,
-	objs: [para]
-};
+#define initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_ignore_height)
 
-array_push(abouts, tip);
+array_push(phone.currently_edited_obj.objs, {
+	type: 0,
+	text: obj_text,
+	align: obj_align,
+	color: obj_color,
+	indent: obj_indent,
+	side_by_side: obj_ignore_height
+});
 
+#define initImage(obj_sprite, obj_frame)
 
+array_push(phone.currently_edited_obj.objs, {
+	type: 1,
+	sprite: obj_sprite,
+	frame: obj_frame,
+	align: fa_center,
+	xscale: 1,
+	yscale: 1,
+	uses_shader: 1,
+	color: c_white,
+	alpha: 1,
+	margin_l: noone,
+	margin_r: noone,
+	margin_u: noone,
+	margin_d: noone,
+	needs_auto_margins: true,
+	side_by_side: false
+});
+
+#define initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_yscale, obj_uses_shader, obj_color, obj_alpha, obj_ignore_height, obj_l, obj_r, obj_u, obj_d)
+
+array_push(phone.currently_edited_obj.objs, {
+	type: 1,
+	sprite: obj_sprite,
+	frame: obj_frame,
+	align: obj_align,
+	xscale: obj_xscale,
+	yscale: obj_yscale,
+	uses_shader: obj_uses_shader,
+	color: obj_color,
+	alpha: obj_alpha,
+	margin_l: obj_l,
+	margin_r: obj_r,
+	margin_u: obj_u,
+	margin_d: obj_d,
+	needs_auto_margins: (obj_l == noone && obj_r == noone && obj_u == noone && obj_d == noone),
+	side_by_side: obj_ignore_height
+});
+
+#define initCheat(ch_name, ch_opt, ch_opt_name, ch_desc)
+
+array_push(phone.cheats, {
+	name: ch_name,
+	options: ch_opt,
+	option_names: ch_opt_name,
+	description: ch_desc,
+	on: 0
+});
+
+array_push(phone_cheats, ch_opt[0]);
+array_push(phone_cheats_updated, 0);
+return array_length(phone.cheats) - 1;
 
 #define initCFDHeader(text)
 
-custom_fd_content[i] = {
+array_push(phone.custom_fd_content, {
 	type: 0, // header
 	content: text
-};
-
-i++;
-
-
+});
 
 #define initCFDBody(text)
 
-custom_fd_content[i] = {
+array_push(phone.custom_fd_content, {
 	type: 1, // body
 	content: text
-};
-
-i++;
-
-
+});
 
 #define initCodec(cd_gimmick)
+
+if "trummel_codecs" not in self trummel_codecs = [];
 
 var new_cdc = {
 	gimmick: cd_gimmick,
@@ -1117,8 +1166,6 @@ var new_cdc = {
 };
 
 array_push(trummel_codecs, new_cdc);
-
-
 
 #define initCodecPage(cd_speaker, cd_expression, cd_gimmick, cd_text)
 
@@ -1131,9 +1178,9 @@ var new_page = {
 
 array_push(trummel_codecs[array_length(trummel_codecs) - 1].pages, new_page);
 
-
-
 #define initSpeaker(idx, speak_name, speak_sprite)
+
+if "trummel_speakers" not in self trummel_speakers = [];
 
 trummel_speakers[idx] = {
 	name: speak_name,		// Name displayed while talking
@@ -1142,226 +1189,25 @@ trummel_speakers[idx] = {
 
 return idx * -1;
 
+#define initCodecPit()
 
-
-#define initTip(tip_name)
-
-tips[i] = {
-	name: tip_name,
-	objs: [0]
-};
-
-i++;
-
-j = 0;
-
-
-
-#define initTipWords(obj_text)
-
-i--;
-
-tips[i].objs[j] = initWords(obj_text);
-
-tipObjEnd();
-
-
-
-#define initTipWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-i--;
-
-tips[i].objs[j] = initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initTipImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-i--;
-
-tips[i].objs[j] = initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initTipImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-i--;
-
-tips[i].objs[j] = initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d);
-
-tipObjEnd();
-
-
-
-#define initPatch(pat_ver, pat_date)
-
-patches[i] = {
-	name: "v" + pat_ver,
-	date: pat_date,
-	objs: [0]
-};
-
-i++;
-
-j = 0;
-
-
-
-#define initPatchWords(obj_text)
-
-i--;
-
-patches[i].objs[j] = initWords(obj_text);
-
-tipObjEnd();
-
-
-
-#define initPatchWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-i--;
-
-patches[i].objs[j] = initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initPatchImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-i--;
-
-patches[i].objs[j] = initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initPatchImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-i--;
-
-patches[i].objs[j] = initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d);
-
-tipObjEnd();
-
-
-
-#define initWords(obj_text)
-
-return {
-	type: 0,
-	text: obj_text,
-	align: fa_left,
-	color: c_white,
-	indent: 0,
-	gimmick: 0,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-return {
-	type: 0,
-	text: obj_text,
-	align: obj_align,
-	color: obj_color,
-	indent: obj_indent,
-	gimmick: obj_gimmick,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-return {
-	type: 1,
-	sprite: obj_sprite,
-	frame: obj_frame,
-	align: obj_align,
-	xscale: obj_xscale,
-	color: obj_color,
-	gimmick: obj_gimmick,
-	margin_l: "unset",
-	margin_r: "unset",
-	margin_u: "unset",
-	margin_d: "unset",
-	needs_auto_margins: true,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-return {
-	type: 1,
-	sprite: obj_sprite,
-	frame: obj_frame,
-	align: obj_align,
-	xscale: obj_xscale,
-	color: obj_color,
-	gimmick: obj_gimmick,
-	margin_l: obj_l,
-	margin_r: obj_r,
-	margin_u: obj_u,
-	margin_d: obj_d,
-	needs_auto_margins: false,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define tipObjEnd
-
-i++;
-
-j++;
-
-
-
-#define initCheat(ch_name, ch_cmd, ch_opt, ch_opt_name, ch_desc)
-
-phone.cheats[i] = {
-	name: ch_name,
-	command: ch_cmd,
-	options: ch_opt,
-	option_names: ch_opt_name,
-	description: ch_desc,
-	on: 0
-};
-
-variable_instance_set(self, ch_cmd, i);
-phone_cheats[i] = ch_opt[0];
-
-i++;
-
-
-
-#define room_add(_room_id,room_data) // Adds a new room to the scene. for BTT
-with obj_stage_article if num == 5 {
-	var _room_id_ind = array_find_index(array_room_ID,_room_id);
-	if _room_id_ind == - 1 {
-	    if debug print_debug("[RM] Adding... "+string(_room_id));
-	    array_push(array_room_data,room_data);
-	    array_push(array_room_ID,_room_id);
-	} else {
-	    array_room_data[_room_id_ind] = room_data;
-	    array_room_ID[_room_id_ind] = _room_id;
-	}
+with oPlayer if "ruber_pit" in self {
+	load_codecs = true;
 }
+
+pit_codecs = [];
+
+var new_cdc = {
+	pages: []
+};
+
+array_push(pit_codecs, new_cdc);
+
+#define initCodecPagePit(cd_speaker, cd_expression, cd_sfx, cd_text)
+var new_page = {
+	speaker: cd_speaker,
+	expression: cd_expression,
+	sfx: cd_sfx,
+	text: cd_text
+};
+array_push(pit_codecs[array_length(pit_codecs) - 1].pages, new_page);

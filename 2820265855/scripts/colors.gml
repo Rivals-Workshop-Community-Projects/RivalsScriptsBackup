@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 2, 25, 3 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 30 );
 
 // Red
 set_color_profile_slot( 1, 0, 255, 0, 0 ); //Scarf and Stripes
@@ -240,7 +240,7 @@ set_color_profile_slot( 20, 7, 245, 204, 176 ); //Skin
 set_color_profile_slot( 21, 0, 232, 231, 223 ); //Scarf and Stripes
 set_color_profile_slot( 21, 1, 250, 222, 145 ); //Hair
 set_color_profile_slot( 21, 2, 208, 168, 122 ); //Bag
-set_color_profile_slot( 21, 3, 254, 254, 254 ); //Shirt
+set_color_profile_slot( 21, 3, 84, 65, 69 ); //Shirt
 set_color_profile_slot( 21, 4, 231, 164, 101 ); //Eyes
 set_color_profile_slot( 21, 5, 120, 76, 70 ); //Pants
 set_color_profile_slot( 21, 6, 84, 65, 69 ); //Coat
@@ -305,6 +305,26 @@ set_color_profile_slot( 27, 4, 40, 217, 255 ); //Eyes
 set_color_profile_slot( 27, 5, 53, 54, 66 ); //Pants
 set_color_profile_slot( 27, 6, 53, 54, 66 ); //Coat
 set_color_profile_slot( 27, 7, 249, 220, 196 ); //Skin
+
+// Rune Guy
+set_color_profile_slot( 28, 0, 0, 30, 225 ); //Scarf and Stripes
+set_color_profile_slot( 28, 1, 216, 192, 120 ); //Hair
+set_color_profile_slot( 28, 2, 0, 20, 120 ); //Bag
+set_color_profile_slot( 28, 3, 40, 40, 50 ); //Shirt
+set_color_profile_slot( 28, 4, 0, 132, 255 ); //Eyes
+set_color_profile_slot( 28, 5, 0, 20, 160 ); //Pants
+set_color_profile_slot( 28, 6, 45, 45, 58 ); //Coat
+set_color_profile_slot( 28, 7, 249, 220, 196 ); //Skin
+
+// Drip
+set_color_profile_slot( 29, 0, 236, 36, 20 ); //Scarf and Stripes
+set_color_profile_slot( 29, 1, 0, 128, 255 ); //Hair
+set_color_profile_slot( 29, 2, 44, 44, 44 ); //Bag
+set_color_profile_slot( 29, 3, 0, 0, 0 ); //Shirt
+set_color_profile_slot( 29, 4, 0, 0, 204 ); //Eyes
+set_color_profile_slot( 29, 5, 44, 44, 44 ); //Pants
+set_color_profile_slot( 29, 6, 44, 44, 44 ); //Coat
+set_color_profile_slot( 29, 7, 249, 220, 196 ); //Skin
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -17,6 +17,10 @@ if (attack == AT_DSPECIAL && motorbike == false)
 	}
 }
 
+//if (attack == AT_DAIR)
+//{
+	//y = y - 10;
+//}
 //Insurance for tail animations... just in case!
 if (attack == AT_EXTRA_2 && motorbike == false)
 {

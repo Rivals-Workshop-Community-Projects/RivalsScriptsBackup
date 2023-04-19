@@ -6,6 +6,9 @@ var y_off = 82;
 
 small_sprites = true;
 
+sprite_change_offset("transformations_bubbles",x_off, y_off);       // Done
+
+sprite_change_offset("ever_snowman_spr",    126, 170);
 sprite_change_offset("idle",                x_off, y_off, true);   // Done
 sprite_change_offset("crouch",              x_off, y_off, true);   // Done
 sprite_change_offset("walk",                x_off, y_off, true);   // Done

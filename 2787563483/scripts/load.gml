@@ -151,3 +151,8 @@ sprite_change_offset("life_bar_gauge", 32, 16);
 
 //64 - RANGER 
 //65 - DRILL
+
+//66 - JELLY
+
+//67 - SAND
+//68 - MECHA

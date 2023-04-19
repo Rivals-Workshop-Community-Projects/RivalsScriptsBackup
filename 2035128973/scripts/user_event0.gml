@@ -23,4 +23,5 @@ else
 	set_ui_element(UI_CHARSELECT, sprite_get("charselect"));
 	set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small"));
 	user_event(1);
+	user_event(3);
 }

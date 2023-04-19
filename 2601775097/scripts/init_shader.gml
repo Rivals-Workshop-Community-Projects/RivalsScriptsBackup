@@ -34,7 +34,11 @@ switch (alt_cur)
 		if ("birthboy" in self && birthboy)
 		{
 			set_color_profile_slot(alt_cur, 1, 102, 194, 241); //CLOTHWHITE
-		    set_color_profile_slot(alt_cur, 2, 202, 114, 70); //HAIR
+		    if ("theikos_type" in self)
+			{
+				if (theikos_type == 0) set_color_profile_slot(alt_cur, 2, 202, 114, 70); //HAIR
+				else set_color_profile_slot(alt_cur, 2, 230, 230, 250); //HAIR
+			}
 		    set_color_profile_slot(alt_cur, 3, 245, 181, 150); //SKIN
 		    set_color_profile_slot(alt_cur, 4, 62, 101, 185); //CLOTHLIGHTBLUE
 		    set_color_profile_slot(alt_cur, 0, 43, 60, 140); //CLOTHDARKBLUE
@@ -132,37 +136,6 @@ switch (alt_cur)
 		do_theikos_colors();
 		break;
 }
-
-/* moved this all into the switch statement for optimization sake
-
-//if (alt_cur == 14 || alt_cur == 15) set_color_profile_slot_range(1, 150, 10, 12);
-
-//super secret alt that appears only once a year :)
-if (alt_cur == 16 && "birthboy" in self && birthboy)
-{
-	set_color_profile_slot(alt_cur, 1, 102, 194, 241); //CLOTHWHITE
-    set_color_profile_slot(alt_cur, 2, 202, 114, 70); //HAIR
-    set_color_profile_slot(alt_cur, 3, 245, 181, 150); //SKIN
-    set_color_profile_slot(alt_cur, 4, 62, 101, 185); //CLOTHLIGHTBLUE
-    set_color_profile_slot(alt_cur, 0, 43, 60, 140); //CLOTHDARKBLUE
-    set_color_profile_slot(alt_cur, 5, 33, 43, 139); //CLOTHBLACK
-	set_color_profile_slot(alt_cur, 6, 159, 241, 255); //LIGHT
-	set_color_profile_slot(alt_cur, 7, 247, 149, 56); //FIRE
-
-	line_color = [get_color_profile_slot_r(alt_cur, 7), get_color_profile_slot_g(alt_cur, 7), get_color_profile_slot_b(alt_cur, 7)]
-
-	//shading tweaks
-	set_character_color_shading(5, 1); //CLOTHBLACK
-	set_character_color_shading(7, 1.5); //FIRE
-
-	//color slot stuff
-	set_character_color_slot(6, 159, 241, 255, 1);
-	set_character_color_slot(7, 255, 117, 33, 1);
-	
-	set_article_color_slot(6, 159, 241, 255, 1);
-	set_article_color_slot(7, 255, 117, 33, 1);
-}
-*/
 
 if (object_index == asset_get("draw_result_screen")) set_endgame_stuff();
 

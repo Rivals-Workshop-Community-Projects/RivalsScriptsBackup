@@ -1,39 +1,6 @@
 //user_event8.gml
 //get arrays of each attack's damage and hitpause.
 
-/*
-attack_base_damage[0, 0] = 0;
-attack_base_hitpause[0, 0] = 0;
-attack_base_damage_boosted[0, 0] = 0;
-attack_base_hitpause_boosted[0, 0] = 0;
-*/
-/*
-with unit_player_id_array[0] {
-    var index = 0
-	i = 1;
-	repeat (40) {
-	    if (get_num_hitboxes(i) >= 1) {
-	        other.ha_attack_index[index] = i;
-    		n = 1;
-    		repeat (get_num_hitboxes(i)) {
-    			other.ha_attack_base_damage[index, n] = get_hitbox_value(i, n, HG_DAMAGE);
-    			other.ha_attack_base_damage_boosted[index, n] = round(other.ha_attack_base_damage[index, n] * other.hh_damage_multiplier);
-    			other.ha_attack_base_hitpause[index, n] = get_hitbox_value(i, n, HG_BASE_HITPAUSE);
-    			other.ha_attack_base_hitpause_boosted[index, n] = (other.ha_attack_base_hitpause[index, n] + other.hh_hitpause_increment);
-    			
-    			var base_kb = get_hitbox_value(i, n, HG_BASE_KNOCKBACK);
-    			other.ha_attack_base_knockback[index, n] = base_kb;
-    			other.ha_attack_base_knockback_boosted[index, n] = base_kb + ( sign(base_kb) * other.hh_base_knockback_increment );
-    			n++;
-    		}
-    		index++;
-	    }
-		i++;
-	}
-}
-
-*/
-
 var i = 0;
 var n = 0;
 repeat (50) {
@@ -47,27 +14,7 @@ repeat (50) {
 	
     i++;
 }
-/*
-with unit_player_id_array[0] {
-	i = 0;
-	repeat (50) {
-		n = 1;
-		repeat (get_num_hitboxes(i)) {
-			other.attack_base_damage[i, n] = get_hitbox_value(i, n, HG_DAMAGE);
-			other.attack_base_damage_boosted[i, n] = round(other.attack_base_damage[i, n] * other.hh_damage_multiplier);
-			other.attack_base_hitpause[i, n] = get_hitbox_value(i, n, HG_BASE_HITPAUSE);
-			other.attack_base_hitpause_boosted[i, n] = (other.attack_base_hitpause[i, n] + other.hh_hitpause_increment);
-			
-			var base_kb = get_hitbox_value(i, n, HG_BASE_KNOCKBACK);
-			other.attack_base_knockback[i, n] = base_kb;
-			other.attack_base_knockback_boosted[i, n] = base_kb + ( sign(base_kb) * other.hh_base_knockback_increment );	
-			
-			n++;
-		}
-		i++;
-	}
-}
-*/
+
 
 if (is_solo_player) {
 	i = 0;
@@ -119,17 +66,40 @@ else {
 				var base_kb = get_hitbox_value(i, n, HG_BASE_KNOCKBACK);
 				other.attack_base_knockback[i, n] = base_kb;
 				
-				//don't buff the empowered strong attacks or jab
-				if (i == AT_FSTRONG_2 || i == AT_DSTRONG_2 || i == AT_USTRONG_2 || i == AT_JAB || i == 0 ) {
-					other.attack_base_damage_boosted[i, n] = other.attack_base_damage[i, n];
-					other.attack_base_hitpause_boosted[i, n] = other.attack_base_hitpause[i, n];
-					other.attack_base_knockback_boosted[i, n] = other.attack_base_knockback[i, n];
-				}
-				//buff everything else
-				else {
-					other.attack_base_damage_boosted[i, n] = round(other.attack_base_damage[i, n] * other.hh_damage_multiplier);
-					if (other.attack_base_hitpause[i, n] > 0) other.attack_base_hitpause_boosted[i, n] = (other.attack_base_hitpause[i, n] + other.hh_hitpause_increment);
-					other.attack_base_knockback_boosted[i, n] = base_kb + ( sign(base_kb) * other.hh_base_knockback_increment );
+				
+				switch (i) {
+					//don't buff the empowered Strong attacks.
+					case AT_FSTRONG_2:
+					case AT_DSTRONG_2:
+					case AT_USTRONG_2:
+						other.attack_base_damage_boosted[i, n] = other.attack_base_damage[i, n];
+						other.attack_base_hitpause_boosted[i, n] = other.attack_base_hitpause[i, n];
+						other.attack_base_knockback_boosted[i, n] = other.attack_base_knockback[i, n];
+					break;
+					
+					//for non-empowered Strongs, increase damage and hitpause, but not knockback.
+					case AT_FSTRONG:
+					case AT_DSTRONG:
+					case AT_USTRONG:
+						other.attack_base_damage_boosted[i, n] = round(other.attack_base_damage[i, n] * other.hh_damage_multiplier);
+						if (other.attack_base_hitpause[i, n] > 0) other.attack_base_hitpause_boosted[i, n] = (other.attack_base_hitpause[i, n] + other.hh_hitpause_increment);
+						other.attack_base_knockback_boosted[i, n] = other.attack_base_knockback[i, n];
+					break;
+					
+					//for Jab, increase damage, but only increase hitpause by 2.
+					case AT_JAB:
+					case 0: //partner jab
+						other.attack_base_damage_boosted[i, n] = round(other.attack_base_damage[i, n] * other.hh_damage_multiplier);
+						other.attack_base_hitpause_boosted[i, n] = other.attack_base_hitpause[i, n] + 2;
+						other.attack_base_knockback_boosted[i, n] = other.attack_base_knockback[i, n];
+					break;
+					
+					//buff damage, hitpause and knockback of every other move.
+					default:
+						other.attack_base_damage_boosted[i, n] = round(other.attack_base_damage[i, n] * other.hh_damage_multiplier);
+						if (other.attack_base_hitpause[i, n] > 0) other.attack_base_hitpause_boosted[i, n] = (other.attack_base_hitpause[i, n] + other.hh_hitpause_increment);
+						other.attack_base_knockback_boosted[i, n] = base_kb + ( sign(base_kb) * other.hh_base_knockback_increment );
+					break;
 				}
 		
 				n++;

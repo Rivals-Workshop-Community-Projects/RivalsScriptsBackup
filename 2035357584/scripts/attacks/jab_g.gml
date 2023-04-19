@@ -3,12 +3,12 @@ set_attack_value(AT_JAB_G, AG_NUM_WINDOWS, 9);
 set_attack_value(AT_JAB_G, AG_HURTBOX_SPRITE, sprite_get("jabg_hurt"));
 
 //jabg1 start
-set_window_value(AT_JAB_G, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_JAB_G, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_JAB_G, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB_G, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_JAB_G, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB_G, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_JAB_G, 1, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_JAB_G, 1, AG_WINDOW_SFX_FRAME, 4);
 
 //jabg1 active
 set_window_value(AT_JAB_G, 2, AG_WINDOW_LENGTH, 3);

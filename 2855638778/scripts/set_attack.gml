@@ -20,7 +20,9 @@ if (blastjumping) {
 
 // dstrong can be activated whether or not you're blast jumping
 if (down_strong_pressed || down_strong_down ) {
-	attack = AT_DSTRONG;	
+	if (rockets_clip > 0) {
+		attack = AT_DSTRONG;	
+	}
 }
 
 // uspecial 2 if uspecial 1 is on cooldown

@@ -36,8 +36,8 @@ with oPlayer{
 			bounce_SFX_played = false
 		}
 		
-		if x < left_wall{
-			x = left_wall
+		if x < left_wall + 24{
+			x = left_wall + 24
 			if state_cat == (SC_HITSTUN){
 			vsp *= 0.9;
 			hsp *= -0.9;
@@ -48,7 +48,7 @@ with oPlayer{
 			var retribution = last_player
 				with oPlayer{
 					if player == retribution{
-					var close_enough = spawn_hit_fx( other.x, other.y, 303)
+					var close_enough = spawn_hit_fx( other.x - 8, other.y, 303 )
 					close_enough.spr_dir *= -1
 					}
 				}
@@ -56,8 +56,8 @@ with oPlayer{
 			// 	invince_time = 6
 				
 			}
-		} else if x > right_wall{
-			x = right_wall
+		} else if x > right_wall - 24{
+			x = right_wall - 24
 			if state_cat == (SC_HITSTUN){
 				vsp *= 0.9;
 				hsp *= -0.9;
@@ -68,7 +68,7 @@ with oPlayer{
 			var retribution = last_player
 				with oPlayer{
 					if player == retribution{
-					spawn_hit_fx( other.x, other.y - 16, 303)
+					var close_enough = spawn_hit_fx( other.x + 24, other.y, 303 )
 					close_enough.spr_dir *= -1
 					}
 				}
@@ -179,11 +179,15 @@ with oPlayer{
 		if kf_health_points <= 0 && state != PS_DEAD{
 			invincible = 1
 			invince_time = 1
+			suppress_stage_music( 0.01, 0.1 );
 			if !kf_done_in{
 				sound_play(other.hit_sfx)
+				shake_camera( 20, 10 )
 				set_state( PS_TUMBLE )
-				hitpause = 1
-				hitstop = 40
+				with oPlayer{
+					hitpause = 1
+					hitstop = 60
+				}
 				//scale_bonus = 0.5
 				kf_hud_shake_timer = 20
 				kf_done_in = true
@@ -212,10 +216,12 @@ with oPlayer{
 
 }
 }
+
 if get_match_setting(SET_PRACTICE) && !barrier_enabled{
 	with owner{
 		if down_down && taunt_pressed {
 			other.barrier_enabled = true
+			
 		}
 	}
 } else if barrier_enabled{

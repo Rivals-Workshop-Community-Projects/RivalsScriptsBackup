@@ -16,6 +16,7 @@ state_timer = 0;
 grabbed_player = [];
 
 throw_dir = 0;
+psybeam = null;
 
-arrow_color = get_player_hud_color(player_id.player)
-if get_match_setting(SET_TEAMS) == 1 arrow_color = make_color_hsv(get_color_profile_slot_r(get_player_color(player),0),get_color_profile_slot_g(get_player_color(player),0),get_color_profile_slot_b(get_player_color(player),0))
+player_color = get_player_hud_color(player_id.player)
+if get_match_setting(SET_TEAMS) == 1 player_color = make_color_rgb(get_color_profile_slot_r(get_player_color(player),0),get_color_profile_slot_g(get_player_color(player),0),get_color_profile_slot_b(get_player_color(player),0))

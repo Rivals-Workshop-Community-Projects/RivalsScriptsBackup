@@ -6,17 +6,13 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-if (attack == AT_DSPECIAL){
-
-	if(window == 1){
+if (attack == AT_DSPECIAL)
+{
+	if(window == 1)
 		trigger_dspecial_effect = false;
-	}
-
-	if(window == 2){
+	if(window == 2)
 		super_armor = true;
-	}
 }
-
 // Create the article for gravity, delete once button is no longer held
 if (attack == AT_NSPECIAL_AIR) {
 	// Don't allow drift
@@ -295,8 +291,130 @@ if (attack == AT_FSPECIAL) {
 if(attack == AT_DAIR) {
 	hud_offset = 85
 }
-if(attack == AT_UAIR) {
-	hud_offset = 85
+switch (attack)
+{
+	case AT_UAIR:
+		if(state_timer == 1) 
+		{
+			reset_attack_value(AT_UAIR, AG_NUM_WINDOWS);
+            grabbed_player_obj = noone; 
+            grabbed_player_relative_x = 0;
+            grabbed_player_relative_y = 0;
+		}
+		if (window >= 3)
+		{
+			can_fast_fall = false;
+			can_move = false;
+		}
+        if(window == 4 && instance_exists(grabbed_player_obj))
+        {
+            if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
+                else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+
+                else 
+				{
+                    grabbed_player_obj.hitstop = 2;
+                    grabbed_player_obj.hitpause = true;
+                    grabbed_player_obj.spr_dir = -spr_dir;
+
+                    var pull_to_x = -10*spr_dir;
+                    var pull_to_y = -50;
+
+					var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+					grabbed_player_obj.x = x + ease_circOut( floor(grabbed_player_relative_x), pull_to_x, window_timer, window_length);
+					grabbed_player_obj.y = y + ease_circOut( floor(grabbed_player_relative_y), pull_to_y, window_timer, window_length);
+                }
+        }
+		break;
+	case AT_USPECIAL:
+        if(instance_exists(grabbed_player_obj))
+        {
+            if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
+                else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+
+                else 
+				{
+                    grabbed_player_obj.hitstop = 2;
+                    grabbed_player_obj.hitpause = true;
+					grabbed_player_obj.spr_dir = -spr_dir;
+					hsp /= 1.25;
+					switch(image_index)
+					{
+						case 7:
+							var pull_to_x = 5*spr_dir;
+							var pull_to_y = -70;
+							break;
+						case 8:
+						case 11:
+						case 12:
+							var pull_to_x = -10*spr_dir;
+							var pull_to_y = -70;
+							break;
+						case 9:
+							var pull_to_x = 24*spr_dir;
+							var pull_to_y = 10;
+							break;
+						case 10:
+							var pull_to_x = -40*spr_dir;
+							var pull_to_y = 10;
+							break;
+						case 13:
+							var pull_to_x = 70*spr_dir;
+							var pull_to_y = -10;
+							break;
+					}
+					grabbed_player_obj.x = x+pull_to_x;
+					grabbed_player_obj.y = y+pull_to_y;
+                }
+        }
+		break;
+	case AT_DSTRONG:
+        if(instance_exists(grabbed_player_obj))
+        {
+            if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
+                else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+
+                else 
+				{
+                    grabbed_player_obj.hitstop = 2;
+                    grabbed_player_obj.hitpause = true;
+
+					switch(image_index)
+					{
+						case 7:
+						case 8:
+						case 9:
+							var pull_to_x = 51*spr_dir;
+							var pull_to_y = -5;
+                    		grabbed_player_obj.spr_dir = -spr_dir;
+							break;
+						case 10:
+						case 14:
+						case 18:
+							var pull_to_x = -14*spr_dir;
+							var pull_to_y = -70;
+                    		grabbed_player_obj.spr_dir = spr_dir;
+							break;
+						case 11:
+						case 12:
+						case 13:
+						case 19:
+							var pull_to_x = -66*spr_dir;
+							var pull_to_y = -5;
+                    		grabbed_player_obj.spr_dir = spr_dir;
+							break;
+						case 15:
+						case 16:
+						case 17:
+							var pull_to_x = 55*spr_dir;
+							var pull_to_y = -5;
+							break;
+					}
+					grabbed_player_obj.x = x+pull_to_x;
+					grabbed_player_obj.y = y+pull_to_y;
+                }
+        }
+		break;
 }
 if(attack == AT_USTRONG) {
 	hud_offset = 85

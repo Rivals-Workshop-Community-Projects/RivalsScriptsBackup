@@ -150,6 +150,9 @@ if(attack == AT_DSPECIAL){
 	if(window > 4 && !free){
 		set_state(PS_PRATFALL);
 	}
+	else if(window < 4 && free){
+		set_state(PS_IDLE_AIR);
+	}
 	if((window == 3 || window == 7) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 		var trap_set = false;
 		//loop through traps...
@@ -519,7 +522,7 @@ if(attack == AT_BAIR){
 
 //set off explosion if grenade triggered
 if(attack == AT_BAIR_G){
-	if(trigger && !hitpause){
+	if(trigger && hitstop == 1){
 		trigger = false;
         has_grenade = false;
 		var expl = create_hitbox(AT_EXPLOSION, 1, x -85 * spr_dir, y - 47);
@@ -613,6 +616,20 @@ if(attack == AT_UTILT){
 	}
 }
 
+//command grab for first hit
+if(attack == AT_FTILT){
+	if (my_grab_id != noone && window < 4){
+		with (my_grab_id){
+			hurt_img = 1;
+			x = ease_sineInOut(x, other.x+52*other.spr_dir, other.grab_time, 10);
+            y = ease_sineInOut(y, other.y-28, other.grab_time, 10);
+		}
+	}
+	else{
+		my_grab_id = noone;
+	}
+}
+
 //set off explosion if grenade triggered during ftilt_g
 if(attack == AT_FTILT_G){
 	if(trigger && !hitpause){
@@ -635,26 +652,35 @@ if(attack == AT_TAUNT){
 	if(window == 4 && window_timer == 50){
 		sound_play(sound_get("pistolricochet"))	
 	}
-	if(!taunt && window == 2){
-		window = 3;
-		window_timer = 0;
+	if (window == 2){
+		if(!taunt){
+			window = 3;
+			window_timer = 0;
+		}
+		
+		if(!joy_pad_idle){
+			if(joy_dir < 270 && joy_dir > 90){
+				hsp = -taunt_speed;
+			}
+			else{
+				hsp = taunt_speed;
+			}
+		}
+		if(jump_pressed && !free){
+			vsp -= 11;
+		}
 	}
 	
-	if(!joy_pad_idle && window == 2){
-		if(joy_dir < 270 && joy_dir > 90){
-			x -= taunt_speed;
-		}
-		else{
-			x += taunt_speed;
-		}
-	}
+	
+	
+	
 }
 
 //uair momentum only activates on the way up
 if (attack == AT_UAIR) {
-	if (window == 1 && window_timer == get_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH) && vsp > 0) {
-        vsp = -2;
-    }
+	//if (window == 1 && window_timer == get_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH) && vsp > 0) {
+    //    vsp = -2;
+    //}
 }
 
 //manually cancel into next jab or tilt due to bug with custom attack indexes

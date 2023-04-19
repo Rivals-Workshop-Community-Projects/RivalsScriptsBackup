@@ -1,17 +1,13 @@
 //css_init
-alt_total = 24;
 
 alt_cur = 0;
 alt_prev = 0;
 css_anim_time = 0;
 
-//icons for certain alts
-icon_x_pos = x + 174;
-icon_y_pos = y + 108;
-
-//preview char
-preview_x = floor(x+10);
-preview_y = floor(y+10);
+icon_x_pos = 0; //icon placement for the event/unlock based alts from rivals
+icon_y_pos = 0;
+preview_x = 0; //preview char
+preview_y = 0;
 
 
 //ALT NAMES
@@ -31,13 +27,13 @@ alt_name = [
     "Astral Reflection",
     "Dark Side of Dawn",
     "Plenilune Gaze",
+    "Admonishing Instruction",
     "Outlander (F)",
     "Outlander (M)",
     "Plane of Euthymia",
     "Alpha and Omega",
     "Swordmaster",
     "Through the Fire",
-    "Flowering Night",
     "Endless Abyss", //has the abyss death effect
     "Early Access",
     "Opulent Splendor",
@@ -47,9 +43,12 @@ alt_name = [
     "Power of the Aegis",
     "Superstar Idol 01",
     "Unlimited Mage Works",
+    "Flowering Night",
     "Elemental Guardian",
     "Baleful Stormstrider",
-]
+];
+
+alt_total = array_length(alt_name);
 
 //ANIMATION VARS
 sprite_change_offset("idle", 31, 94);

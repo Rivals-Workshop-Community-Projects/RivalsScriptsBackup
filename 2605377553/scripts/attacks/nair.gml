@@ -84,3 +84,4 @@ set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, bigsmoke);
+set_hitbox_value(AT_NAIR, 3, HG_ANGLE_FLIPPER, 6);

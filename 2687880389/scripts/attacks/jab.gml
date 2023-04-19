@@ -93,6 +93,9 @@ set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT_Y_OFFSET, -5);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 0);
 
+// Penalty Zone
+set_window_value(AT_JAB, penalty_window, AG_WINDOW_LENGTH, max_penalty_frames);
+
 
 
 /*

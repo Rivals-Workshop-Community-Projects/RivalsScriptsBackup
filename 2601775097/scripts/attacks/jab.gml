@@ -132,13 +132,14 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 3);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 0.7);
+set_hitbox_value(atk, hitboxNum, HG_SDI_MULTIPLIER, 1.5);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 5); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 1);
 
 hitboxNum ++; // [JAB 2] - hitbox data
@@ -181,7 +182,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 3);
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
+set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0); //3
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
 
 hitboxNum ++; // [JAB 4] - hitbox data

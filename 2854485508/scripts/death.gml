@@ -10,7 +10,7 @@ with (oPlayer) {
 
 with (obj_article2) {
     if (player_id == other.id) {
-        percent += 999;
+        hitpoints = 0;
     	hitstun = 60;
     	hitstun_full = 60;
     	state_timer = 2;

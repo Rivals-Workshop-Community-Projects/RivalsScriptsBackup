@@ -1,5 +1,5 @@
 divespeed = 9;
-hk_weight = 1.12;
+hk_weight = 1.15;
 
 swallowed = 0;
 
@@ -26,6 +26,8 @@ beam_price = 100;
 bonk_price = 125;
 umbrella_price = 125;
 onehit_price = 100;
+
+scooter = false;
 
 error_cooldown = 0;
 error_cooldown_basic = 12;
@@ -54,8 +56,8 @@ timer2 = 0;
 
 actual_practice = get_training_cpu_action() != CPU_FIGHT;
 
-uspecial_timer = 50;
-uspecial_timer_max = 50;
+uspecial_timer = 32 * 3;
+uspecial_timer_max = 32 * 3;
 
 shop_type = "current";
 
@@ -63,6 +65,31 @@ taunt_time = 0;
 volume_slide = 1;
 
 changed_prices = false;
+
+uspec_descend = 0.75;
+next_window = false;
+
+nspec_cooldown = 45;
+homing_attack_cooldown = 60;
+
+hookshot_hit = false;
+hookshot_hitbox = -4;
+
+hookshot_wall_hsp = 3;
+hookshot_wall_vsp = -9;
+
+hookshot_hit_cooldown = 40;
+
+hook_reverse_speed = 0.9;
+hook_not_always_active = true;
+
+rune_C_equipped = false;
+
+shortest_dist = 200;
+
+sparkle_timer = 0;
+
+hit_above = true;
 
 hue_offset=0;
 hue_speed=1; //change this to change the speed of the hueshift
@@ -76,8 +103,10 @@ otto_bobblehead_sprite = sprite_get("ottohatkidsupportyes");
 //tco art
 tcoart = sprite_get("TCOart");
 
+/*
 //yeah
 kirbyability = 16;
+*/
 
 //wall-e
 walle_taunt_sound = sound_get("sfx_scooter_beep");
@@ -89,13 +118,13 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 62;
-idle_anim_speed = .085;
+idle_anim_speed = .1;
 crouch_anim_speed = .1;
 walk_anim_speed = .15;
-dash_anim_speed = .2;
+dash_anim_speed = .1;
 pratfall_anim_speed = .25;
 
-walk_speed = 4;
+walk_speed = 3;
 walk_accel = 0.4;
 walk_turn_time = 9;
 initial_dash_time = 14;
@@ -113,25 +142,25 @@ jump_speed = 11;
 short_hop_speed = 5;
 djump_speed = 10;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .25;
-prat_fall_accel = .7; //multiplier of air_accel while in pratfall
-air_friction = .04;
+prat_fall_accel = .8; //multiplier of air_accel while in pratfall
+air_friction = .03;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 8;
-walljump_vsp = 9;
+walljump_hsp = 5;
+walljump_vsp = 8;
 walljump_time = 32;
-max_fall = 10; //maximum fall speed without fastfalling
-fast_fall = 12; //fast fall speed
-gravity_speed = .45;
-hitstun_grav = .45;
+max_fall = 11; //maximum fall speed without fastfalling
+fast_fall = 14.5; //fast fall speed
+gravity_speed = .5;
+hitstun_grav = .5;
 knockback_adj = hk_weight; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 20;
+prat_land_time = 14;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -139,12 +168,12 @@ wave_friction = .04; //grounded deceleration when wavelanding
 //crouch animation frames
 crouch_startup_frames = 2;
 crouch_active_frames = 1;
-crouch_recovery_frames = 2;
+crouch_recovery_frames = 1;
 
 //parry animation frames
 dodge_startup_frames = 1;
-dodge_active_frames = 1;
-dodge_recovery_frames = 1;
+dodge_active_frames = 2;
+dodge_recovery_frames = 5;
 
 //tech animation frames
 tech_active_frames = 5;
@@ -157,18 +186,18 @@ techroll_recovery_frames = 2;
 techroll_speed = 8.5;
 
 //airdodge animation frames
-air_dodge_startup_frames = 1;
-air_dodge_active_frames = 1;
-air_dodge_recovery_frames = 1;
+air_dodge_startup_frames = 2;
+air_dodge_active_frames = 2;
+air_dodge_recovery_frames = 3;
 air_dodge_speed = 6.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 4;
-roll_forward_recovery_frames = 2;
+roll_forward_active_frames = 3;
+roll_forward_recovery_frames = 3;
 roll_back_startup_frames = 1;
-roll_back_active_frames = 4;
-roll_back_recovery_frames = 2;
+roll_back_active_frames = 3;
+roll_back_recovery_frames = 3;
 roll_forward_max = 8.5; //roll speed
 roll_backward_max = 8.5;
 
@@ -188,7 +217,12 @@ bubble_y = 8;
 
 
 
+spr_dash = sprite_get("dash");
+spr_dashstart = sprite_get("dashstart");
+spr_dashstop = sprite_get("dashstop");
+spr_dashturn = sprite_get("dashturn");
 
+grabbed = -4;
 
 
 
@@ -200,6 +234,7 @@ bubble_y = 8;
 
 taunt_timer = 0;
 
+/*
 //RUNES
 
 //Rune Support
@@ -235,3 +270,4 @@ abyssMods[@ runes.L] = [3, "DSPECIAL can lock on from almost anywhere (still has
 abyssMods[@ runes.M] = [3, "Having more pons makes you heavier."];
 abyssMods[@ runes.N] = [3, "All badge costs are halved."];
 abyssMods[@ runes.O] = [3, "Makes the Magnet Badge drag all pons towards you."];
+*/

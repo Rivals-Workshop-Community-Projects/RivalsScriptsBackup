@@ -42,8 +42,8 @@ set_hitbox_value(AT_UTHROW, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_UTHROW, 1, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_UTHROW, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UTHROW, 1, HG_HITPAUSE_SCALING, .35);
-set_hitbox_value(AT_UTHROW, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-set_hitbox_value(AT_UTHROW, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_UTHROW, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_UTHROW, 1, HG_VISUAL_EFFECT, HFX_KRA_ROCK_SMALL);
 
 set_hitbox_value(AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("geopebble"));
 set_hitbox_value(AT_UTHROW, 1, HG_PROJECTILE_MASK, -1);
@@ -54,3 +54,4 @@ set_hitbox_value(AT_UTHROW, 1, HG_PROJECTILE_AIR_FRICTION, 0.015);
 set_hitbox_value(AT_UTHROW, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_UTHROW, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_UTHROW, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+set_hitbox_value(AT_UTHROW, 1, HG_PROJECTILE_DESTROY_EFFECT, HFX_KRA_ROCK_SMALL);

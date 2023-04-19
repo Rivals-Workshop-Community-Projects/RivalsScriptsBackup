@@ -11,6 +11,14 @@ switch(attack){
         }else if(window == 4 && window_timer == 7){
             sound_play(sound_get("sfx_slash_m"), false, noone, 0.9, 1.1);
         }
+        //turnaround
+        if((window == 4 || window == 7) && window_timer == 1){
+            if(spr_dir == (right_down - left_down) * -1){
+                spr_dir *= -1;
+                attack_end();
+                set_attack(AT_FTILT);
+            }
+        }
         break;
     
     /*case AT_DATTACK:
@@ -19,7 +27,25 @@ switch(attack){
         }
         break;//*/
     
+    case AT_DTILT:
+        //turnaround
+        if(window == 1 && window_timer == 1){
+            if(spr_dir == (right_down - left_down) * -1){
+                spr_dir *= -1;
+            }
+        }
+        if(window == 1 && window_timer == 7){
+            spawn_base_dust(x - (0 * spr_dir), y, "dash_start");
+        }
+        break;
+    
     case AT_UTILT:
+        //turnaround
+        if(window == 1 && window_timer == 1){
+            if(spr_dir == (right_down - left_down) * -1){
+                spr_dir *= -1;
+            }
+        }
         if(window == 1 && window_timer == 7){
             sound_play(asset_get("sfx_swipe_medium1"));
             sound_play(sound_get("sfx_slash_l"), false, noone, 1, 0.8);
@@ -51,7 +77,7 @@ switch(attack){
         break;
     
     case AT_FSTRONG:
-        if((window == 1 && window_timer == 6) && strong_charge % 15 == 0){
+        if((window == 1 && window_timer == 8) && strong_charge % 10 == 0){
             spawn_base_dust(x - (20 * spr_dir), y, "dash");
         }else if(window == 2 && window_timer == 4){
             sound_play(sound_get("sfx_slash_m"), false, noone, 0.7, 1.0);
@@ -67,14 +93,14 @@ switch(attack){
             var vfx = spawn_hit_fx(x, y - 24, vfx_reappear);
             vfx.hsp = hsp/6;
         }else if(window == 5 && window_timer == 14){
-            spawn_base_dust(x, y, "dash_start");
+            spawn_base_dust(x - (10*spr_dir), y, "dash_start");
         }else if((window == 6 || window == 7) && get_gameplay_time() % 6 == 0 && abs(hsp) > 3 && !hitpause){
             spawn_base_dust(x, y, "dash");
         }
         break;
     
     case AT_USTRONG:
-        if((window == 1 && window_timer == 9) && strong_charge % 15 == 0){
+        if((window == 1 && window_timer == 9) && strong_charge % 10 == 0){
             spawn_base_dust(x + 10, y, "dash", -1);
             spawn_base_dust(x - 10, y, "dash", 1);
         }else if(window == 2 && window_timer == 4){
@@ -111,8 +137,8 @@ switch(attack){
     case AT_NSPECIAL:
         can_move = false;
         can_jump = false;
-        vsp = clamp(-4, vsp, 4);
-        hsp = clamp(-2, hsp, 2);
+        vsp = clamp(vsp, -4, 4);
+        hsp = clamp(hsp, -2, 2);
         if(!free) vsp = 0;
         if(window == 7 && window_timer == 6){
             sound_play(sound_get("sfx_slash_m"), false, noone, 0.9, 0.9);
@@ -134,8 +160,11 @@ switch(attack){
         can_wall_jump = true;
         can_fast_fall = false;
         if(window == 1){
-            vsp = clamp(-3, vsp, 3);
-            hsp = clamp(-2, hsp, 2);
+            vsp = clamp(vsp, -3, 3);
+            hsp = clamp(hsp, -2, 2);
+            if((window_timer + 1) % 7 == 0){
+                spawn_base_dust(x - (15*spr_dir), y, "dash_start");
+            }
         }
         if(window == 3 && window_timer == 15){
             vsp = 15;
@@ -167,8 +196,8 @@ switch(attack){
         can_fast_fall = false;
         can_wall_jump = true;
         if(window == 1){
-            hsp = clamp(-3, hsp, 3);
-            vsp = clamp(-3, vsp, 1);
+            hsp = clamp(hsp, -3.5, 3.5);
+            vsp = clamp(vsp, -3, 1);
             if(window_timer == 13){
                 sound_play(sound_get("sfx_slash_m"), false, noone, 1.1, 0.7);
             }
@@ -179,8 +208,8 @@ switch(attack){
     
     case AT_DSPECIAL:
         can_move = false;
-        hsp = clamp(-4, hsp, 4);
-        vsp = clamp(-10, vsp, 2);
+        hsp = clamp(hsp, -4, 4);
+        vsp = clamp(vsp, -10, 2);
         if(window == 1 && window_timer == 4){
             sound_play(asset_get("sfx_clairen_swing_weak"));
             dspec_sword_handler[0] = {from:0, type:1, x:x, y:y-80, spr_dir:spr_dir, anim_frame:0, anim_timer:2, lifetime:1, lifemax:12};
@@ -198,12 +227,12 @@ switch(attack){
         break;
     
     case AT_TAUNT:
-        if(window == 3 && window_timer == 12 && state_timer < 42){
+        if(window == 3 && window_timer == 15 && state_timer < 60){
             window = 3;
             window_timer = 0;
         }
         if(window == 3 && window_timer == 1){
-            sound_play(asset_get("sfx_swipe_weak2"), false, noone, 0.7, 0.9);
+            sound_play(asset_get("sfx_swipe_weak1"), false, noone, 0.7, 0.9);
         }
         break;
     

@@ -7,7 +7,7 @@ patch_ver = "2.749";
 patch_day = "31";
 patch_month = "FEB";
  
-var num_alts = 12;
+var num_alts = 18;
 var alt_cur = get_player_color(player);
  
  
@@ -20,18 +20,18 @@ alt_name[2]  = "Home Depot";
 alt_name[3]  = "VeganBot";
 alt_name[4]  = "DarkBot";
 alt_name[5]  = "T. Hanos";
-alt_name[6]  = "Bender";
+alt_name[6]  = "Blender";
 alt_name[7]  = "CinnaBot";
-alt_name[8]  = "Samus";
-alt_name[9]  = "Retro";
+alt_name[8]  = "Bounty Hunter";
+alt_name[9]  = "So Retro!!1!";
 alt_name[10] = "BlaneyBot";
 alt_name[11] = "Roo";
-alt_name[12] = "";
-alt_name[13] = "";
-alt_name[14] = "";
-alt_name[15] = "";
- 
- 
+alt_name[12] = "SnowBot";
+alt_name[13] = "TangerineBot";
+alt_name[14] = "Sand Under Table";
+alt_name[15] = "Suspicious";
+alt_name[16] = "KyleBot";
+alt_name[17] = "DD4";
  
 //Alt
  

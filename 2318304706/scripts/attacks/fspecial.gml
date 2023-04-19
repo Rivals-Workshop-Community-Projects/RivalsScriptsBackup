@@ -36,7 +36,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -22);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 20);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 20);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.2);
@@ -45,6 +45,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("null"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
@@ -65,8 +66,8 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 25);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 16);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 45);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 10.5); //because screw whoever wanted to be cross stage from geno and not die at 20%
-set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9); //because screw whoever wanted to be cross stage from geno and not die at 20%
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("null"));

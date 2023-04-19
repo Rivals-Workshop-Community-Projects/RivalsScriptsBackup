@@ -27,3 +27,4 @@ defaultPos = {x: -30, y: -40};
 noHit = false;
 afterImage = array_create(10, -1);
 uspecPos = {x:0, y:0};
+Pocketable = false;

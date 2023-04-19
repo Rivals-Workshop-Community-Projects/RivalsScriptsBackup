@@ -60,9 +60,9 @@ var hitbox_num = 1;
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 6);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 24);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 32); //24
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -34);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 80);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 70); //80
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);

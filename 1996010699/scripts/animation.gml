@@ -14,8 +14,9 @@ if (state == PS_SPAWN) {
     if (introTimer < 13 && introTimer >= 0) {
 		if(abyssIntro){
 			sprite_index = sprite_get("intro1");
-		} else if(pandoraIntro){
+		/* }else if(pandoraIntro){
 			sprite_index = sprite_get("intro2");
+		*/
 		} else if(goldenIntro){
 			sprite_index = sprite_get("intro3");
 		} else if(gameboyIntro){
@@ -26,6 +27,8 @@ if (state == PS_SPAWN) {
 			sprite_index = sprite_get("introAZ");
 		} else if(beachIntro){
 			sprite_index = sprite_get("introRT");
+		} else if(geneIntro){
+			sprite_index = sprite_get("introG");
 		} else {
 			sprite_index = sprite_get("intro");
 		}
@@ -33,8 +36,9 @@ if (state == PS_SPAWN) {
     } else if (introTimer < 0) {
 		if(abyssIntro){
 			sprite_index = sprite_get("intro1");
-		} else if(pandoraIntro){
+		/* } else if(pandoraIntro){
 			sprite_index = sprite_get("intro2");
+		*/
 		} else if(goldenIntro){
 			sprite_index = sprite_get("intro3");
 		} else if(gameboyIntro){
@@ -43,6 +47,8 @@ if (state == PS_SPAWN) {
 			sprite_index = sprite_get("intro5");
 		} else if(arizonaIntro){
 			sprite_index = sprite_get("introAZ");
+		} else if(geneIntro){
+			sprite_index = sprite_get("introG");
 		} else {
 			sprite_index = sprite_get("intro");
 		}
@@ -99,11 +105,13 @@ if(item[14, 3] == 1){
 	}
 }
 
+/*
 if(item[15, 3] == 1){
 	if (sprite_index == sprite_get("crouch")){
 		sprite_index = sprite_get("crouchKT");
 	}
 }
+*/
 
 if (sprite_index == sprite_get("taunt")){
 	if(get_player_color(player) == 9){

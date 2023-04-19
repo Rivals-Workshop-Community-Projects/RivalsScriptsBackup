@@ -4,11 +4,12 @@ if (state = PS_PRATFALL && !was_parried)
 }
 
 if ((state = PS_HITSTUN_LAND || state = PS_TECH_GROUND || state = PS_TECH_BACKWARD || state = PS_TECH_FORWARD) 
-&& ustrong_parried)
+&& ustrong_parried && attack = AT_USTRONG)
 {
     state = PS_PRATLAND;
     was_parried = true;
     parry_lag = 40;
+    ustrong_parried = 0;
 }
 
 if (get_gameplay_time() <= 120 && !cornered_disabled && taunt_pressed)
@@ -39,16 +40,30 @@ bad_evidence_count = (evidence1_status = 2)+(evidence2_status = 2)+(evidence3_st
 if (good_evidence_count = 0) strong_notif_timer = 120;
 if (good_evidence_count > 0) strong_notif_timer--;
 
-//umvc3 percentages (g 6/9 b 2/9 f 1/9)
-//good_evidence_percent = (6-good_evidence_count) / (9-evidence_count);
-//bad_evidence_percent = (2-bad_evidence_count) / (9-evidence_count);
-//food_evidence_percent = 1 / (9-evidence_count);
+if (!invincible && get_gameplay_time() >= 240)
+{
+    //umvc3 percentages (g 6/9, b 2/9, f 1/9)
+    //good_evidence_percent = (6-good_evidence_count) / (9-evidence_count);
+    //bad_evidence_percent = (2-bad_evidence_count) / (9-evidence_count);
+    //food_evidence_percent = 1 / (9-evidence_count);
 
-//custom 1 (g 5/8 b 2/8 f 1/8)
-good_evidence_percent = (5-good_evidence_count) / (8-evidence_count);
-bad_evidence_percent = (2-bad_evidence_count) / (8-evidence_count);
-food_evidence_percent = 1 / (8-evidence_count);
-
+    //custom 1 (g 5/8, b 2/8, f 1/8)
+    //good_evidence_percent = (5-good_evidence_count) / (8-evidence_count);
+    //bad_evidence_percent = (2-bad_evidence_count) / (8-evidence_count);
+    //food_evidence_percent = 1 / (7.5-evidence_count);
+    
+    //halved food percentage (g 5/7.5, b 2/7.5, f 0.5/7.5)
+    good_evidence_percent = (5-good_evidence_count) / (7.5-evidence_count);
+    bad_evidence_percent = (2-bad_evidence_count) / (7.5-evidence_count);
+    food_evidence_percent = 0.5 / (7.5-evidence_count);
+}
+else
+{
+    //start of match/respawn iframes (g 1/3, b 2/3, f 0/3)
+    good_evidence_percent = (1-good_evidence_count) / (3-evidence_count);
+    bad_evidence_percent = (2-bad_evidence_count) / (3-evidence_count);
+    food_evidence_percent = 0; //you dont need to heal at 0% buddy
+}
 
 if (evidence1_status = 2) throw_evidence = 1;
 else if (evidence2_status = 2) throw_evidence = 2;
@@ -90,6 +105,8 @@ if (!turnabout)
     set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 17);
     set_window_value(AT_NSPECIAL_2_AIR, 1, AG_WINDOW_LENGTH, 24);
     set_window_value(AT_NSPECIAL_2_AIR, 1, AG_WINDOW_SFX_FRAME, 23);
+    set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 15);
+    set_window_value(AT_NSPECIAL_2_AIR, 3, AG_WINDOW_LENGTH, 15);
     set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 10);
     set_hitbox_value(AT_NSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0);
     set_hitbox_value(AT_NSPECIAL_2, 1, HG_ANGLE, 70);
@@ -106,6 +123,8 @@ else
     set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 12);
     set_window_value(AT_NSPECIAL_2_AIR, 1, AG_WINDOW_LENGTH, 16);
     set_window_value(AT_NSPECIAL_2_AIR, 1, AG_WINDOW_SFX_FRAME, 15);
+    set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 12);
+    set_window_value(AT_NSPECIAL_2_AIR, 3, AG_WINDOW_LENGTH, 12);
     set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 6);
     set_hitbox_value(AT_NSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.2);
     set_hitbox_value(AT_NSPECIAL_2, 1, HG_ANGLE, 50);
@@ -121,11 +140,20 @@ else
     }
 }
 
-if (turnabout && instance_exists(hit_player_obj) && hit_player_obj.state = PS_RESPAWN && hit_player_obj.state_timer = 1)
+if (instance_exists(hit_player_obj) && hit_player_obj.player != player) player_i_hit = hit_player_obj;
+if !(instance_exists(hit_player_obj)) player_i_hit = noone;
+
+if (turnabout && instance_exists(player_i_hit) && player_i_hit.state = PS_RESPAWN && player_i_hit.state_timer = 1)
 {
-    turnabout_timer += 210;
+    //turnabout_timer += 210; 
     turnabout_timer_pause = 1;
 }
+
+//if (turnabout && instance_exists(hit_player_obj) && hit_player_obj.state = PS_RESPAWN && hit_player_obj.state_timer = 1)
+//{
+    //turnabout_timer += 210; 
+//    turnabout_timer_pause = 1;
+//}
 
 move_cooldown[AT_NSPECIAL_2_AIR]--; //why cant you program your game properly dan you shithead
 

@@ -196,6 +196,10 @@ initTip("DTILT: Slide Kick | Tornado Slide(10)");
 initWords("Kodiak slides down for a safe kick, it's so safe you won't accidently slide off ledges. Tapping the Attack button during a slide as long as you have 10 energy in your meter.");
 initImage_ext(sprite_get("dtilt"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
+initTip("DATTACK: Flip Reflect");
+initWords("If you can time it right, Kodiak can reflect projectiles with his dash attack! Definitely catch your opponent off-guard.");
+initImage_ext(sprite_get("dattack"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+
 initTip("FSTRONG: Absolute Heel Kick");
 initWords("Kodiak lifts his legs and drops it for a heavy hit, but it does stagger Kodiak for a bit. ");
 initImage_ext(sprite_get("fstrong"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
@@ -249,6 +253,22 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.03", "21 December, 2022");
+initHeader("MISC:");
+initSection("Fixed a bug where Kodiak gained meter on activating a Parry instead of gaining meter on a successful Parry");
+
+initPatch("1.02", "20 November, 2022");
+initHeader("FSTRONG:");
+initSection("Start-Up reduced from 17 -> 15");
+initHeader("NSPECIALs:");
+initSection("No longer gain meter from hit");
+
+initPatch("1.01", "23 September, 2022");
+initHeader("BAIR:");
+initSection("Tweaked the priority order for the hitboxes");
+initHeader("Misc:");
+initSection("Updated the Tip Section regarding the Dash Attack.");
 
 initPatch("1.0", "?? September, 2022");
 initHeader("A tiny man...");

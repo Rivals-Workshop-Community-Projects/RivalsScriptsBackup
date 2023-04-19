@@ -1,6 +1,9 @@
 //champSlot = 1;
 
 switch(get_player_color(player)){
+	case 2:
+		set_character_color_shading(4, 0.5);
+		break;
 	case 3:
 		set_character_color_shading(2, 1.8);
 		break;
@@ -27,7 +30,7 @@ switch(get_player_color(player)){
 			set_character_color_shading(i, 0);
 		}
 		break;
-	case 17:
+	case 19:
 		set_character_color_shading(0, 0.7);
 		break;
 	case 6:
@@ -43,5 +46,10 @@ switch(get_player_color(player)){
 		set_character_color_shading(0, 1.2);
 		set_character_color_shading(2, -3);
 		set_character_color_shading(4, 0.3);
+		break;
+	case 15:
+		set_character_color_shading(0, 1.1);
+		set_character_color_shading(2, -1);
+		set_character_color_shading(4, 0);
 		break;
 }

@@ -10,45 +10,6 @@ stage_x = get_stage_data( SD_X_POS );
 stage_y = get_stage_data( SD_Y_POS );
 blastzone = get_stage_data(SD_SIDE_BLASTZONE);
 
-/*
-if (!practice) {
-    var di = random_func(11, 5, true);
-    
-    if (state_cat == SC_HITSTUN) {
-		if (hitpause) {
-			
-			if (di == 1) {
-				if (x > ai_target.x) {
-					left_down = false;
-					right_down = true;
-				} else {
-					left_down = true;
-					right_down = false;
-				}
-			}
-			
-			if (di == 2) {
-				if (x > ai_target.x) {
-					left_down = true;
-					right_down = false;
-				} else {
-					left_down = false;
-					right_down = true;
-				}
-			}
-			
-			if (di == 3) {
-				down_down = true;
-			}
-			
-			if (di == 4) {
-				up_down = true;
-			}
-		}
-    }
-}
-*/
-
 if (ai_recovering) {
     
     if (place_meeting(x+spr_dir,y,asset_get("par_block")) && has_walljump) {
@@ -60,85 +21,85 @@ if (ai_recovering) {
 if (!ai_recovering) {
     
     //EX Shots
-    
-    if (current_shot == 1) { //Mega Blast
-        if (card_count >= 20 && v_range <= 50) {
-            if (x_dist <= 2000 && x_dist > 0) {
-            	joy_pad_idle = true;
-                left_down = false;
-                right_hard_pressed = true;
-            	down_down = false;
-                special_pressed = true;
-                attack_pressed = false;
-            } else if (x_dist >= -2000 && x_dist < 0) {
-            	joy_pad_idle = true;
-                left_hard_pressed = true;
-                right_down = false;
-            	down_down = false;
-                special_pressed = true;
-                attack_pressed = false;
-            }
-        }
-    }
-    
-    if (current_shot == 4) { //Kablooey
-        if (card_count >= 20) {
-            if (x_dist <= 150 && x_dist > 0) {
-            	joy_pad_idle = true;
-                left_down = false;
-                right_hard_pressed = true;
-            	down_down = false;
-                special_pressed = true;
-                attack_pressed = false;
-            } else if (x_dist >= -150 && x_dist < 0) {
-            	joy_pad_idle = true;
-                left_hard_pressed = true;
-                right_down = false;
-            	down_down = false;
-                special_pressed = true;
-                attack_pressed = false;
-            }
-        }
-    }
-    
-    if (current_shot == 2 || current_shot == 3 || current_shot == 5) { //Eight Way, Chaos Orbit, & Radical Barrage
-        if (card_count >= 20) {
-            if (x_dist <= 200 && x_dist > 0) {
-            	joy_pad_idle = true;
-                left_down = false;
-                right_hard_pressed = true;
-            	down_down = false;
-                special_pressed = true;
-                attack_pressed = false;
-            } else if (x_dist >= -200 && x_dist < 0) {
-            	joy_pad_idle = true;
-                left_hard_pressed = true;
-                right_down = false;
-            	down_down = false;
-                special_pressed = true;
-                attack_pressed = false;
-            }
-        }
-    }
-    
-    if (current_shot == 6) { //Roundabout
-        if (card_count >= 20) {
-            if (x_dist <= 300 && x_dist > 0) {
-            	joy_pad_idle = true;
-                left_down = false;
-                right_hard_pressed = true;
-            	down_down = false;
-                special_pressed = true;
-                attack_pressed = false;
-            } else if (x_dist >= -300 && x_dist < 0) {
-            	joy_pad_idle = true;
-                left_hard_pressed = true;
-                right_down = false;
-            	down_down = false;
-                special_pressed = true;
-                attack_pressed = false;
-            }
-        }
+	switch(current_shot) {
+		case 1: //mega blast
+			if (card_count >= 20 && v_range <= 50) {
+				if (x_dist <= 2000 && x_dist > 0) {
+					joy_pad_idle = true;
+					left_down = false;
+					right_hard_pressed = true;
+					down_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+				} else if (x_dist >= -2000 && x_dist < 0) {
+					joy_pad_idle = true;
+					left_hard_pressed = true;
+					right_down = false;
+					down_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+				}
+			}
+		break;
+		case 2: //eight way
+		case 3: //chaos orbit
+		case 5: //radical barrage
+			if (card_count >= 20) {
+				if (x_dist <= 200 && x_dist > 0) {
+					joy_pad_idle = true;
+					left_down = false;
+					right_hard_pressed = true;
+					down_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+				} else if (x_dist >= -200 && x_dist < 0) {
+					joy_pad_idle = true;
+					left_hard_pressed = true;
+					right_down = false;
+					down_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+				}
+			}
+		break;
+		case 4:
+			if (card_count >= 20) {
+				if (x_dist <= 150 && x_dist > 0) {
+					joy_pad_idle = true;
+					left_down = false;
+					right_hard_pressed = true;
+					down_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+				} else if (x_dist >= -150 && x_dist < 0) {
+					joy_pad_idle = true;
+					left_hard_pressed = true;
+					right_down = false;
+					down_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+				}
+			}
+		break;
+		case 6:
+			if (card_count >= 20) {
+				if (x_dist <= 300 && x_dist > 0) {
+					joy_pad_idle = true;
+					left_down = false;
+					right_hard_pressed = true;
+					down_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+				} else if (x_dist >= -300 && x_dist < 0) {
+					joy_pad_idle = true;
+					left_hard_pressed = true;
+					right_down = false;
+					down_down = false;
+					special_pressed = true;
+					attack_pressed = false;
+				}
+			}
+		break;
     }
     
     //Super Art

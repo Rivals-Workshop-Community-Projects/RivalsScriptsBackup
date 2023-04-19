@@ -123,6 +123,7 @@ uspec_cooldown = 0;
 shortened_usp = false;
 uspec_dir = 0;
 
+valley_outline_timer = 0;
 valley_outline = false;
 
 isHasBrainDamage = true;

@@ -11,7 +11,7 @@ if (state == 0 && state_timer < 50)
 {
     image_index += 0.122;
 }
-if (hits > 5 && state != 2)
+if (hits > 4 && state != 2)
 {
 	sound_play( sound_get( "meem_dies" ) );
 	setState(2);
@@ -37,25 +37,24 @@ setState(2);
 }
 var got_hit = 0;
 
-with (asset_get("pHitBox")){
-    if (place_meeting(x,y,other)){
-		if (player_id == other.player_id){ //Owner hit
-			got_hit = 1;
-		}
-		else{ //Enemy hit
-			
-        	got_hit = 2;
-        		
-
+if hit_sfx_timer == 0 && state < 2{
+	with (asset_get("pHitBox")){
+    	if (place_meeting(x,y,other)){
+			if (player_id == other.player_id){ //Owner hit
+				got_hit = 1;
+			}
+			else { //Enemy hit
+        		got_hit = 2;
+        		spawn_hit_fx( x, y, 301 );
+			}
 		}
     }
 }
 
-if (got_hit = 2)
+if (got_hit = 2 && hit_sfx_timer == 0)
 {
 	hits++;
 	if hit_sfx_timer == 0{
-		
 		if ((random_func (3, 3, true)) == 1)
    		{
    			sound_play( sound_get("mc_shield1"));
@@ -68,7 +67,7 @@ if (got_hit = 2)
    		{
  			sound_play( sound_get("mc_shield3"));
     	}
-    hit_sfx_timer = 2
+    hit_sfx_timer = 3;
 	}
 }
 if (hit_sfx_timer > 0){
@@ -116,21 +115,15 @@ if (state = 2 && state_timer > 60)
 
 if (state == 1)
 {
-	
 	meem_timer += -1;
 	if (player_id.attack == AT_DSPECIAL_2 && player_id.window == 2 && player_id.window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-	
 	{
 	my_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y);
 	meem_timer = 100;
-	 	sound_play( sound_get( "meem" ) );
-
-	
+	sound_play( sound_get( "meem" ) );
 	}
-	
 	if (meem_timer > 0)
 	{
-		
 	my_hitbox.x = x;
 	my_hitbox.y = y;
 	my_hitbox.spr_dir = spr_dir;

@@ -47,11 +47,6 @@ switch(state)
                     introText = "Only the biggest asskicking";
                     introText2 = "for a big shot like you!";
                 }
-                if (string_count("vergil", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 || string_count("birgil", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 )
-                {
-                    introText = "I am not underestimating that lawn chair";
-                    introText2 = "but I've got chairs of my own!";
-                }
                 if (string_count("kris", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 || string_count("birgil", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 )
                 {
                     introText = "A handicap match?";
@@ -125,22 +120,6 @@ switch(state)
                     introText = "Don’t get mad if I break your grill!";
                 if (string_count("monokuma", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
                     introText = "Let’s see what color your blood is!";
-                if (string_count("agent n", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "What the hell, I haven’t done anything!";
-                if (string_count("zetta", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "I love a challenge like you!";
-                if (string_count("mayu", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "I’ve dealt with a lot worse than a sword, kid!";
-                if (string_count("alex", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "You and my friend should slug it out after this!";
-                if (string_count("oboama", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "You agreed to this so I’m not holding back!";
-                if (string_count("gigachad", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "Better know how to use those muscles!";
-                if (string_count("bat bar", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "Show me what you can do with that bat!";
-                if (string_count("sai", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
-                    introText = "I’m not going down without a fight! COME ON!";
                 if (string_count("golem", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
                 string_count("egg", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||
                 string_count("tapu koko", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0 ||

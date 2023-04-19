@@ -1,6 +1,6 @@
 set_attack_value(49, AG_CATEGORY, 2);
 set_attack_value(49, AG_SPRITE, sprite_get("final"));
-set_attack_value(49, AG_HURTBOX_SPRITE, sprite_get("final_hurt"));
+set_attack_value(49, AG_HURTBOX_SPRITE, sprite_get("idle_hurtbox"));
 set_attack_value(49, AG_NUM_WINDOWS, 8);
 set_attack_value(49, AG_OFF_LEDGE, 1);
 

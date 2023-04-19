@@ -5,7 +5,7 @@ if (nspecial_gague == 1){
                     			shade_alpha = 0;
 		} else shade_alpha = .3;
         gpu_set_fog(1, c_white, 0, 1);
-            draw_sprite_ext(sprite_index, image_index, round(x) + draw_x, round(y) + draw_y, image_xscale, image_yscale, spr_angle, c_white, shade_alpha)
+            draw_sprite_ext(sprite_index, image_index, round(x) + draw_x, round(y) + draw_y, image_xscale*2, image_yscale*2, spr_angle, c_white, shade_alpha)
         gpu_set_fog(0, c_white, 0, 1);
 }
 
@@ -15,7 +15,7 @@ if (nspecial_gague == 2){
                     			shade_alpha = 0;
 		} else shade_alpha = .3;
         gpu_set_fog(1, c_orange, 0, 1);
-            draw_sprite_ext(sprite_index, image_index, round(x) + draw_x, round(y) + draw_y, image_xscale, image_yscale, spr_angle, c_white, shade_alpha)
+            draw_sprite_ext(sprite_index, image_index, round(x) + draw_x, round(y) + draw_y, image_xscale*2, image_yscale*2, spr_angle, c_white, shade_alpha)
         gpu_set_fog(0, c_orange, 0, 1);
 }
 

@@ -70,7 +70,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 70);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 7)
-set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, .85);
+set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, .65);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));

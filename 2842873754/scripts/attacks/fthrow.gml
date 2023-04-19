@@ -60,7 +60,7 @@ set_hitbox_value(AT_FTHROW, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_FTHROW, 2, HG_ANGLE, 70);
 set_hitbox_value(AT_FTHROW, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FTHROW, 2, HG_KNOCKBACK_SCALING, 0.75);
-set_hitbox_value(AT_FTHROW, 2, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_FTHROW, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_FTHROW, 2, HG_EFFECT, 9);
 set_hitbox_value(AT_FTHROW, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FTHROW, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));

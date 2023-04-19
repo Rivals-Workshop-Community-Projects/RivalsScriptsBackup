@@ -160,6 +160,8 @@ if draw_e = 1
 #region getting hit
 if st != 5
 {
+	var candyman_player_id = player_id;
+	var this_ball = self;
     with (asset_get("pHitBox")) //if you are reading this and you actually know how to code, i'm sorry.
     {
         if place_meeting(x,y,other) && other.hitstop == 0 && other.fuckingrockid != id
@@ -176,7 +178,7 @@ if st != 5
             other.fuckingrockid = id;
             if damage != 0 
             {
-                if (attack == AT_NSPECIAL || attack == AT_FSPECIAL) && (player_id == other.player_id || player_id.url == other.original_url)
+                if ((attack == AT_NSPECIAL || attack == AT_FSPECIAL) && (player_id == other.player_id || player_id.url == other.original_url))
                 {
                     if player_id.url == other.original_url
                     {
@@ -187,7 +189,7 @@ if st != 5
                         other.playerurl = player_id.url
                     }
 
-                    if attack == AT_NSPECIAL
+                    if (attack == AT_NSPECIAL)
                     {
                         other.angle = 90;
                         other.spd = 0;
@@ -238,10 +240,10 @@ if st != 5
                 {
                     if (other.hitlockout != player || other.hitlockout2 == 0) && (other.hitstop == 0)
                     {
-                        if player_id != other.player_id
+                        /*if player_id != other.player_id // Opengunner: Removing Life on ball
                         {
                             other.life-=1;
-                        }
+                        }*/
                         if other.spd >= 60
                         {
                             other.draw_e = 1;
@@ -280,13 +282,32 @@ if st != 5
                             other.hitstop_increase += round(other.spd/10);
                         }
                         switch (attack)
-                        {
-                            case AT_DAIR: if player_id != other.player_id{kb_angle = 270;} break;
+                        { // Opengunner: Added forced angles for consistency so that jab sends it 45 degrees Angles the ball sends at: 
+                        	case AT_JAB: kb_angle = 45; break; // 
+                        	case AT_DATTACK: kb_angle = 45; break; //
+                            case AT_FTILT: kb_angle = 0;break;
+                            case AT_UTILT: kb_angle = 90;break;
+                            case AT_DTILT: kb_angle = 90;break;
+                            case AT_NAIR: kb_angle = 45; break;
+                            case AT_DAIR: kb_angle = 270; break;
                             case AT_FAIR: kb_angle = -45; other.spd+= 10;break;
                             case AT_BAIR: kb_angle = 180;break;
-                            case AT_FTILT: kb_angle = 0;break;
                             case AT_UAIR: kb_angle = 90; break;
                             case AT_FSTRONG: kb_angle = 0;break;
+                            case AT_USTRONG: kb_angle = 90;break;
+                            //case AT_NSPECIAL: kb_angle = 90;break;
+                            case AT_FSPECIAL: kb_angle = 0;break;
+                            case AT_DSPECIAL: kb_angle = 45;break;
+                            case AT_USPECIAL: kb_angle = 90;break;
+                            case AT_DSTRONG: // Added logic to make the ball go in a consistent direction based on proximity to the person who hits it.
+                            	switch(spr_dir){
+                            		case -1:
+                            			if(player_id.x - this_ball.x < 0){ kb_angle = 135;} else {kb_angle = 45;}
+                            			break;
+                            		case 1:
+                            			if(player_id.x - this_ball.x > 0){ kb_angle = 135;} else {kb_angle = 45;}
+                            			break;
+                            	}
                         break;
                         }
                         cool_hitboxstuff();
@@ -373,12 +394,12 @@ if (st == 0)
             x = lerp(x,round((room_width - stage_x)),0.2);
         }
     ignores_walls = false;
-    art_time++
+    art_time= art_time + 2; //Opengunner: Timer was sped up to be twice as fast.
     hsp = ease_quartOut( 1, 3, art_time, 20)*spr_dir; 
     vsp = ease_quartOut( 4, -2, art_time, 40);
     
 
-    if (stt >= 40)
+    if (stt >= 20) // Opengunner: Changed from 40 to 20 
     {
         st = 1;
         stt = 0;
@@ -619,14 +640,23 @@ if (st = 5)
     vsp = 0;
     vsp+=nvsp
     nvsp+= grav;
-    if stt >= 160
-    {
+	// Opengunner: Added to prevent cooldown on death
+    if(death_script_cooldown_flag == true){
         with player_id
         {
-            ball_cooldown = 240;
+            ball_cooldown = 1;
+            //ball_exists = false;
+        }
+    }
+    if stt >= 160
+    {
+    	var temp_death_script_cooldown_flag = death_script_cooldown_flag;
+        with player_id
+        {
+            if(temp_death_script_cooldown_flag == false){ball_cooldown = 240;} // Prevent cooldown reset on death
             ball_exists = false;
         }
-
+		death_script_cooldown_flag = false;
         instance_destroy();
         exit;
     }
@@ -653,7 +683,7 @@ if (st = 7)//bunt
         instance_destroy(ballhitbox);
         hit_exists = false;
     }
-    if stt == 0
+    if stt == 5
     {
         grav = 0.24;
         if !((player_id.left_down || playerurl.left_down) || (player_id.right_down || playerurl.right_down))

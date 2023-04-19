@@ -52,7 +52,7 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_HITPAUSE_SCALING, 1.2);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_SDI_MULTIPLIER, 1);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 251 );//251
+set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, ewgf_fx );//251
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_GROUP, -1);//161
 //set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, lanternfx);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));

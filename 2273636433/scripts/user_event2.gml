@@ -1,13 +1,30 @@
 // called when  you hit the oponent
 
 if my_hitboxID.attack == AT_FSPECIAL{
+	sound_play(sound_get("mantle"))
 	hit_player_obj.spr_dir *= -1;
-	hit_player_obj.hsp = hit_player_obj.hsp*-1;
+    hit_player_obj.hsp *= -1;
+	hit_player_obj.hsp = (8.5-hit_player_obj.free*2.5)*spr_dir;
+	hit_player_obj.vsp = -7*hit_player_obj.free;
+
+	if hit_player_obj.state  == PS_ATTACK_GROUND || hit_player_obj.state  == PS_ATTACK_AIR{
+		hit_player_obj.old_hsp*=1.05;
+	}else{
+		hit_player_obj.old_hsp*=1.15;
+
+	}
+	if  hit_player_obj.state ==22 || hit_player_obj.state ==29 ||hit_player_obj.state ==27{
+		hit_player_obj.state = 23;
+	}
+	hit_player_obj.has_walljump = true;
+	destroy_hitboxes();
+
 }
 
 if my_hitboxID.attack == AT_DAIR{
 	if my_hitboxID.hbox_num < 10 {
 		hit_player_obj.should_make_shockwave=false;
+			//hit_player_obj.old_hsp=hsp*1.2;
 	}
 }
 
@@ -15,6 +32,7 @@ if (my_hitboxID.attack == AT_USPECIAL){
 	
 	if (my_hitboxID.hbox_num ==1 ){
 		set_num_hitboxes(AT_USPECIAL, 3);
+		show_flames=true;
 		hit_player_obj.should_make_shockwave = false;									//first hitbox does not galaxy
 	}
 	if (my_hitboxID.type!=2){
@@ -55,6 +73,16 @@ if my_hitboxID.attack == AT_USPECIAL {
 }
 
 
+if my_hitboxID.attack == AT_FSTRONG {
+    if my_hitboxID.hbox_num == 1 {
+        shock_hit=1;
+    }
+}
+
+//Called of every time the oponent is hit
+golpeado =  get_player_team( hit_player_obj.player);
+checker = get_player_stocks( hit_player_obj.player);
+
 //If Final Smash Connects, Doc Score gets added 1
 if (my_hitboxID.attack == 49){
 	doc_score++;
@@ -66,3 +94,4 @@ if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) 
 		   take_damage(player, -1, -1);
 	}
 }
+

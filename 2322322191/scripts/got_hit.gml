@@ -4,7 +4,7 @@ if armor_active
     {
         if enemy_hitboxID.damage > 1
         {
-            take_damage( player, -1, floor(-enemy_hitboxID.damage/1.5) );
+            take_damage( player, -1, floor(-enemy_hitboxID.damage/3) );
         }
     }              
 

@@ -12,7 +12,6 @@ var random_pitch = (random_func(1, 7, 0) - 3) / 100;
 var window_end = window_timer == (floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1)));
 
 // per-attack logic
-
 switch(attack){
 	
 	// give your moves some "pop" by spawning dust during them!
@@ -251,7 +250,50 @@ switch(attack){
 		}
 		break;
 	
-	
+	case AT_NSPECIAL_2:
+		if !free && (window_timer < 16 || window != 2) && !hitpause {
+			sound_stop(sound_get("deboning_slasher_throw"));
+			sound_stop(sound_get("scale_grinder_stab"));
+			destroy_hitboxes();
+			attack_end(AT_NSPECIAL_2);
+			set_state(PS_LANDING_LAG);
+			break;
+		}
+		can_wall_jump = false;
+		fall_through = true;
+		if !hitpause switch(window) {
+			case 1:
+				if window_timer == 5 && free {
+					sound_play(sound_get("scale_grinder_stab"));
+				}
+				if window_end && free sound_play(asset_get("sfx_spin"));
+				if vsp > 0 vsp *= .95;
+				break;
+			case 2:
+				can_fast_fall = false;
+				if vsp > 0 vsp *= .83;
+				if window_timer == 15 {
+					sound_stop(sound_get("deboning_slasher_throw"));
+					sound_play(sound_get("violent_pierce_javelin"), 0, noone, .95, .99);
+				}
+				if window_end {
+					vsp = -8;
+					move_cooldown[AT_DSPECIAL] = 10;
+					move_cooldown[AT_FSPECIAL] = 300;
+					with obj_article3 if player_id == other {
+			            with other spawn_hit_fx(other.x, other.y, bubble_fx);
+			            instance_destroy(self);
+			        }
+			        with instance_create(x, y, "obj_article3") {
+			        	//time_alive = 18;
+			        	//vsp = 0;
+			        	//frozen = true;
+			        }
+			        spawn_hit_fx(x, y, 115);
+				}
+				break;
+		}
+		break;
 	
 	case AT_USPECIAL:
 		can_move = false;
@@ -315,6 +357,7 @@ switch(attack){
 				//if !hit_bubble && !hitpause && free vsp -= gravity_speed;
 				break;
 			case 3:
+				can_wall_jump = true;
 				if window_timer < 5 {
 					if !hitpause with obj_article3 if "holy_bubble" in self {
 						if place_meeting(x, y, other) {

@@ -101,7 +101,7 @@ Ribbon_damage= 8;
 RibbonRights = 0;
 Calliecide = false;
 
-ThornKB_scale = .6;
+ThornKB_scale = 0.4;
 CandyKB = 4;
 CandyKB_scale = .5;
 full_candy_bar = false;

@@ -5,16 +5,16 @@ set_attack_value(AT_DTILT, AG_OFF_LEDGE, 1)
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 //Build
 set_window_value(AT_DTILT, 1, AG_WINDOW_TYPE, 9);
-set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 5);
 //Dash
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 14);
-set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 //Stop
 set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 12); // 10
-set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DTILT, 2);
@@ -31,7 +31,7 @@ set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 6); // 7
 set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 30);

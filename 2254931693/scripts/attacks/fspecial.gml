@@ -11,18 +11,15 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("bonby_fspecial_start2"));
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, -2);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, -3);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 2);
+
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -6);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -5);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7.5);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 9);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 0);
@@ -89,7 +86,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 125);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 125);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 12);
-set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 50);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 1.1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 10);

@@ -1,3 +1,5 @@
+malsick_immune = false;
+
 //thank u for reading this have a nice day
 //thanks you too :)
 
@@ -21,6 +23,7 @@ fspecdie = hit_fx_create( sprite_get( "fspec_die" ), 30 );
 
 //extra alts
 extra_col = 0;
+extra_col_key = 0;
 
 hurtbox_spr = sprite_get("1");
 crouchbox_spr = sprite_get("2");
@@ -67,7 +70,7 @@ max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
 gravity_speed = .45;
 hitstun_grav = .5;
-knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.00; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 9;
@@ -132,17 +135,50 @@ malsick = false;
 malsick_consumed = false;
 
 //smoke shit
-maxSmoke = 5;
+maxSmoke = 4;
 smokeAmount = maxSmoke;
 smokeList = []//this is going to hold all the smoke we have spawned.
+spr_smokeShade = sprite_get("smokeshade");
+spr_smoke = sprite_get("smoke");
+spr_smokeBack = sprite_get("smokeback");
 
-//uspeccancel
+//Set the below sprites in order to activate stencil masks
+//set it back to -1 for any reason if u want to turn it off (goes back to regular drawing
+smokeStencilSprite = -1;
+smokeStencilAnimSpeed = 0.1;// <- change this if u want to adjust the speed of the animated sprite, see below
+
+//Example on how to change the sprite based on the alt
+switch(get_player_color( player ))
+{
+	case 8://celeste
+	{
+		smokeStencilSprite = sprite_get("galaxy");
+		smokeStencilAnimSpeed = 0.1;
+	}break;
+	case 9://omori
+	{
+		smokeStencilSprite = sprite_get("omorispace");
+	}break;
+	case 23://genesis
+	{
+		smokeStencilSprite = sprite_get("genesis");
+	}
+}
+
+//this spawns in the outline drawer thingy specifically for stenciled stuff
+smokeShaderDrawer = instance_create(x,y,"obj_article3");
+smokeShaderDrawer.sprite_index = sprite_get("empty");
+smokeShaderDrawer.depth = depth+10;
+
+//uspec
 uspeccancel = false;
+uspechassmogboosted = false;
+turnonsuperwavedash = false;
 
 //nspec
 nspecObj = noone;
 nspecTimer = 0;
-nspecTimerMax = 15;
+nspecTimerMax = 18;
 
 ///dair grab
 grabbed_player_obj = noone;    //the player object currently being grabbed.
@@ -154,16 +190,25 @@ markConsumed = false;
 sickAfterGraceMax = 0;
 sickAfterGrace = 0;//How many frames the opponent is invincible from getting sick again after recovering from sickness
 
+breakable = 0;
+glassbreak = 0;
+
 //bair 
 bairused = false;
 
-nothanks =  false;
+
 
 galaxy_timer = 0;
 
-hijay = 0;
+
+bluehairandpronouns = false;
 
 pot_compat_variable = sprite_get("pumbo_compat");
 pot_compat_text = "Authentic Canadian Poutine"
-has_fail = true;
-fail_text = "You know that's just reskinned Zetter Consume, right?";
+
+
+//sweet victory
+//Quote
+mal_victory_quote = "Dude, was that th-the SUS Guy????";
+mal_handled_victory_quote = false;
+victoryicon_subimg = 0;

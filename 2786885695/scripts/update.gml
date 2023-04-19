@@ -166,6 +166,7 @@ else if (state == PS_WALL_JUMP || !free) //walljump/grounded resets
 }
 else
 {
+    if (state == PS_PRATFALL && !was_parried) can_fast_fall = true;
     sound_stop(loop_sound);
 }
 
@@ -229,6 +230,10 @@ if (hud_anim_start)
 //  F-SPECIAL
 //make the move unavailable according to the fspec_used variable
 move_cooldown[AT_FSPECIAL] = fspec_used+1;
+
+//  U-SPECIAL
+//electric flash effect pause (applies to both instances of starward sword)
+if (instance_exists(uspec_flash)) if (hitpause) uspec_flash.step_timer --;
 
 ////////////////////////////////////////////////////////////// ABYSS RUNES /////////////////////////////////////////////////////////////
 
@@ -545,7 +550,7 @@ if (is_dodging)
 }
 
 //heal effect when getting healed/respawning
-if (display_damage_numbers)
+if (display_damage_numbers && state != PS_DEAD)
 {
     //check if there's a gap between the old damage and the new damage value
     damage_gap = prev_damage - get_player_damage(player);
@@ -578,7 +583,7 @@ if (display_damage_numbers)
     }
 
     //the current damage is now the previous damage value
-    if (state != PS_RESPAWN && state != PS_DEAD) prev_damage = get_player_damage(player);
+    if (state != PS_RESPAWN) prev_damage = get_player_damage(player);
     else if (state == PS_RESPAWN && state_timer >= respawn_time_appear) prev_damage = get_player_damage(player);
 }
 

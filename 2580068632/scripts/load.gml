@@ -95,3 +95,10 @@ sprite_change_offset("nspecial_proj", 64, 94);
 
 //Victory Background
 set_victory_bg(sprite_get("victory_background"));
+
+//pokemon stadium
+
+sprite_change_offset("metaknight_trial", 31, 0);
+
+//Feri
+sprite_change_offset("Feri_meta_cosplay", 84, 114);

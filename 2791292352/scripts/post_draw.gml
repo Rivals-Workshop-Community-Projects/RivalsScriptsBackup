@@ -35,6 +35,16 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack == AT_DSPECI
 	shader_end();
 }
 
+/*
+//snazzy but makes it too easy (sad)
+if attack = AT_FSPECIAL && window = 6 {
+    var alt = get_player_color(player);
+	var col_slot = 7;
+	var _col =  make_color_rgb(get_color_profile_slot_r( alt, col_slot), get_color_profile_slot_g( alt, col_slot), get_color_profile_slot_b( alt, col_slot));
+    draw_circle_color(x+16*spr_dir, y+16, clamp(fspecial_grab_time_max - fspecial_grab_time, 0, 14), _col, _col, false);
+}
+/*
+
 if (get_match_setting(SET_PRACTICE) && phone_cheats[CHEAT_FSPEC]){
 	if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 		switch(attack){

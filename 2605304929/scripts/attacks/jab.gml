@@ -80,7 +80,7 @@ set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 17);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 6);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED, 8);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2")); // asset_get("sfx_swipe_weak1") or sound_get("")
@@ -100,10 +100,9 @@ window_num++;
 
 // Window #9 / Frame(s) # 24-29 / Jab 3 Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 14);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 17);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 26);
-set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 1);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 //window_num++;
@@ -160,9 +159,10 @@ set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(attack, hitbox_num, HG_FORCE_FLINCH, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 set_hitbox_value(attack, hitbox_num, 81, "Jab 1");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
@@ -183,10 +183,11 @@ set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_water);
 set_hitbox_value(attack, hitbox_num, 81, "Jab 2");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
@@ -198,11 +199,11 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 30);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -41);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -50);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 56);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 70);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 3);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 4);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 70);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
@@ -216,6 +217,7 @@ set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 3);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Jab 3");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 

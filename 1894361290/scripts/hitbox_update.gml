@@ -7,5 +7,5 @@ if attack == AT_DSPECIAL && hbox_num == 1 {
     }
     
     x = wt.x + wt.hsp;
-    y = wt.y + wt.vsp - 5;
+    y = wt.y + wt.vsp + 4;
 }

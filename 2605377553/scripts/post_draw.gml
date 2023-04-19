@@ -93,21 +93,4 @@ if (state == PS_ATTACK_AIR && attack == AT_NAIR )
 
 
 
-//no.
-if (get_gameplay_time() == 3 && nothanks = true) {
-    print("This is LITERALLY none of your business.");
-}
-
-if (get_gameplay_time() == 50 && nothanks = true) {
-    sound_play(sound_get("jerma"));
-}
-
-if nothanks && get_gameplay_time() <= 160 {
-    draw_debug_text(x - 30,y-100,"Uhh... how about no?")
-}
-
-
-if hijay == 1 {
-    draw_debug_text(x - 30,y-100,"hi jay :D")
-}
 

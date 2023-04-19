@@ -9,4 +9,6 @@ if has_rune("G"){
     }
 }
 
-// if my_hitboxID.attack = AT_FAIR && my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_leafy_hit2"))
+if my_hitboxID.attack = AT_DAIR && my_hitboxID.hbox_num < 6{
+    hit_player_obj.should_make_shockwave = false;
+}

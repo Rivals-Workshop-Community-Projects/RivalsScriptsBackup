@@ -26,7 +26,7 @@ sprite_change_offset("jab", 109, 92);
 sprite_change_offset("dattack", 109, 92);
 sprite_change_offset("ftilt", 88, 92);
 sprite_change_offset("dtilt", 109, 91);
-sprite_change_offset("utilt", 109, 156);
+sprite_change_offset("utilt", 68, 116);
 sprite_change_offset("nair", 110, 92);
 sprite_change_offset("fair", 110, 92);
 sprite_change_offset("bair", 110, 92);
@@ -41,7 +41,7 @@ sprite_change_offset("fspecial_air", 109, 96);
 sprite_change_offset("fspecial_boosted", 109, 92);
 sprite_change_offset("uspecial", 109, 92);
 sprite_change_offset("dspecial", 109, 68);
-sprite_change_offset("dspecial_boosted", 109, 68);
+sprite_change_offset("dspecial_boosted", 109, 112);
 sprite_change_offset("taunt", 109, 126);
 
 sprite_change_offset("plat", 64, 94);

@@ -31,7 +31,7 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
-
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_INVINCIBILITY, 1);
 //startup2
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 6);
@@ -45,6 +45,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, sound_get("slice"));
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX_FRAME, 5);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_INVINCIBILITY, 1);
 
 //active
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);

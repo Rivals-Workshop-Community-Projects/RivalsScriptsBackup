@@ -375,7 +375,7 @@ with (oPlayer)
 		}
 		if (taunt_pressed && state == PS_ATTACK_GROUND && get_match_setting(SET_PRACTICE) && !other.dragon_summoning && !other.dragon_active && !other.wish_made)
 		{
-			other.dragon_ball_owners = [player, player, player, -1, player, player, player]
+			other.dragon_ball_owners = [1, 1, 1, -1, 1, 1, 1]
 			other.flying_nimbus_dir = 0.5
 			other.flying_nimbus_x = ease_linear( get_stage_data( SD_X_POS ), room_width - get_stage_data( SD_X_POS ), 1, 2 )
 			other.flying_nimbus_y = 0
@@ -391,6 +391,21 @@ with (oPlayer)
 				lose_dragon_ball()
 			}
 			lost_ball = true
+		}
+		if (state == PS_HITSTUN || state == PS_TUMBLE)
+		{
+			combo_damage_current[player] = get_player_damage(player) - combo_damage_start[player]
+			//print(combo_damage_current[player])
+			if (combo_damage_current[player] - combo_drop_penalty[player] >= 7)
+			{
+				combo_drop_penalty[player] += 7
+				lose_dragon_ball()
+			}
+		}
+		else
+		{
+			combo_damage_start[player] = get_player_damage(player)
+			combo_drop_penalty[player] = 7
 		}
 	}
 }

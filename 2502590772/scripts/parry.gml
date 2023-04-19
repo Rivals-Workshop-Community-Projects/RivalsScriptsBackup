@@ -25,7 +25,7 @@ if (enemy_hitboxID.orig_player == player) {
 
 
 //otherwise, if the teammate is nearby and grounded, share invulnerability frames with them
-else if (instance_exists(teammate_player_id)) {
+else if (!custom_clone && instance_exists(teammate_player_id)) {
     with (teammate_player_id) {
         if (!free && abs(x - other.x) <= 100 && abs(y - other.y) <= 10) {
             invincible = max(invincible, other.invincible);

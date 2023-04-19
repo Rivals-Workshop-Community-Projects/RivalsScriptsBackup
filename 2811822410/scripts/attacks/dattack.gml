@@ -2,7 +2,7 @@ for (i = 0; i <= 1; i++) {
 	if (i = 0) {
 		curr_attack = AT_DATTACK;
 	} else {
-		curr_attack = AT_NSPECIAL_AIR;
+		curr_attack = 48;
 	}
 	
 	set_attack_value(curr_attack, AG_CATEGORY, 2);
@@ -51,6 +51,6 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_HITBOX_GROUP, 1);
 	set_hitbox_value(curr_attack, 1, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(curr_attack, 1, HG_HITPAUSE_SCALING, .7);
-	set_hitbox_value(curr_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+	set_hitbox_value(curr_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(curr_attack, 1, HG_VISUAL_EFFECT, leak_vfx_big);
 }

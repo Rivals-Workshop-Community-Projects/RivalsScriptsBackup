@@ -7,6 +7,7 @@ Hikaru_Title = "Gigachadiness"
 
 cosmicmusic = 0
 
+boostedparry = 0
 playhitsound = 0
 
 cossetx = 0

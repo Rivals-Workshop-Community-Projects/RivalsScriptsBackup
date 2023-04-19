@@ -74,7 +74,17 @@ set_color_profile_slot(palNum, 5, 209, 65, 65); //gold
 set_color_profile_slot(palNum, 6, 89, 182, 235); //purple-blue
 set_color_profile_slot(palNum, 7, 51, 39, 45); //stocking
 
-palNum ++; // 6 =lumine
+palNum ++; // 6 = al haitham
+set_color_profile_slot(palNum, 0, 98, 214, 83); //electro
+set_color_profile_slot(palNum, 1, 114, 133, 132); //hair
+set_color_profile_slot(palNum, 2, 240, 196, 171); //skin
+set_color_profile_slot(palNum, 3, 13, 28, 31); //white-blue
+set_color_profile_slot(palNum, 4, 18, 37, 43); //dark purple
+set_color_profile_slot(palNum, 5, 209, 147, 82); //gold
+set_color_profile_slot(palNum, 6, 72, 201, 154); //purple-blue
+set_color_profile_slot(palNum, 7, 24, 48, 70); //stocking
+
+palNum ++; // 7 =lumine
 set_color_profile_slot(palNum, 0, 237, 153, 83); //electro (it's moreso their eye color)
 set_color_profile_slot(palNum, 1, 230, 197, 134); //hair
 set_color_profile_slot(palNum, 2, 229, 176, 145); //skin
@@ -84,7 +94,7 @@ set_color_profile_slot(palNum, 5, 163, 181, 201); //gold
 set_color_profile_slot(palNum, 6, 133, 102, 76); //purple-blue
 set_color_profile_slot(palNum, 7, 205, 221, 230); //stocking
 
-palNum ++; // 7 = aether
+palNum ++; // 8 = aether
 set_color_profile_slot(palNum, 0, 237, 153, 83); //electro (it's moreso their eye color)
 set_color_profile_slot(palNum, 1, 230, 197, 134); //hair
 set_color_profile_slot(palNum, 2, 229, 176, 145); //skin
@@ -94,7 +104,7 @@ set_color_profile_slot(palNum, 5, 232, 217, 132); //gold
 set_color_profile_slot(palNum, 6, 71, 57, 33); //purple-blue
 set_color_profile_slot(palNum, 7, 69, 37, 31); //stocking
 
-palNum ++; // 8 = ei
+palNum ++; // 9 = ei
 set_color_profile_slot(palNum, 0, 153, 107, 232); //electro
 set_color_profile_slot(palNum, 1, 84, 41, 194); //hair
 set_color_profile_slot(palNum, 2, 242, 184, 148); //skin
@@ -104,7 +114,7 @@ set_color_profile_slot(palNum, 5, 242, 176, 61); //gold
 set_color_profile_slot(palNum, 6, 54, 54, 150); //purple-blue
 set_color_profile_slot(palNum, 7, 32, 28, 66); //stocking
 
-palNum ++; // 9 = vergil
+palNum ++; // 10 = vergil
 set_color_profile_slot(palNum, 0, 106, 220, 255); //electro
 set_color_profile_slot(palNum, 1, 193, 209, 219); //hair
 set_color_profile_slot(palNum, 2, 229, 176, 145); //skin
@@ -114,7 +124,7 @@ set_color_profile_slot(palNum, 5, 92, 170, 240); //gold
 set_color_profile_slot(palNum, 6, 57, 73, 129); //purple-blue
 set_color_profile_slot(palNum, 7, 38, 36, 59); //stocking
 
-palNum ++; // 10 = lyn
+palNum ++; // 11 = lyn
 set_color_profile_slot(palNum, 0, 67, 244, 255); //electro
 set_color_profile_slot(palNum, 1, 10, 149, 67); //hair
 set_color_profile_slot(palNum, 2, 232, 190, 155); //skin
@@ -124,7 +134,7 @@ set_color_profile_slot(palNum, 5, 237, 184, 94); //gold
 set_color_profile_slot(palNum, 6, 32, 28, 64); //purple-blue
 set_color_profile_slot(palNum, 7, 67, 28, 23); //stocking
 
-palNum ++; // 11 = sir percival (blaze)
+palNum ++; // 12 = sir percival (blaze)
 set_color_profile_slot(palNum, 0, 237, 153, 83); //electro
 set_color_profile_slot(palNum, 1, 168, 140, 204); //hair
 set_color_profile_slot(palNum, 2, 230, 197, 172); //skin
@@ -133,16 +143,6 @@ set_color_profile_slot(palNum, 4, 158, 156, 202); //dark purple
 set_color_profile_slot(palNum, 5, 222, 49, 49); //gold
 set_color_profile_slot(palNum, 6, 175, 187, 194); //purple-blue
 set_color_profile_slot(palNum, 7, 203, 201, 209); //stocking
-
-palNum ++; // 12 = sakuya
-set_color_profile_slot(palNum, 0, 240, 52, 20); //electro
-set_color_profile_slot(palNum, 1, 153, 172, 194); //hair
-set_color_profile_slot(palNum, 2, 237, 203, 156); //skin
-set_color_profile_slot(palNum, 3, 220, 249, 250); //white-blue
-set_color_profile_slot(palNum, 4, 51, 95, 168); //dark purple
-set_color_profile_slot(palNum, 5, 61, 204, 61); //gold
-set_color_profile_slot(palNum, 6, 186, 222, 218); //purple-blue
-set_color_profile_slot(palNum, 7, 54, 50, 47); //stocking
 
 palNum ++; // 13 = abyss
 set_color_profile_slot(palNum, 0, 146, 74, 219); //electro
@@ -273,7 +273,17 @@ set_color_profile_slot(palNum, 5, 173, 179, 209); //gold
 set_color_profile_slot(palNum, 6, 48, 41, 41); //purple-blue
 set_color_profile_slot(palNum, 7, 31, 28, 26); //stocking
 
-palNum ++; // 22 = bar reygard
+palNum ++; // 22 = sakuya
+set_color_profile_slot(palNum, 0, 240, 52, 20); //electro
+set_color_profile_slot(palNum, 1, 153, 172, 194); //hair
+set_color_profile_slot(palNum, 2, 237, 203, 156); //skin
+set_color_profile_slot(palNum, 3, 220, 249, 250); //white-blue
+set_color_profile_slot(palNum, 4, 51, 95, 168); //dark purple
+set_color_profile_slot(palNum, 5, 61, 204, 61); //gold
+set_color_profile_slot(palNum, 6, 186, 222, 218); //purple-blue
+set_color_profile_slot(palNum, 7, 54, 50, 47); //stocking
+
+palNum ++; // 23 = bar reygard
 set_color_profile_slot(palNum, 0, 134, 153, 235); //electro
 set_color_profile_slot(palNum, 1, 184, 92, 45); //hair
 set_color_profile_slot(palNum, 2, 240, 163, 132); //skin
@@ -283,7 +293,7 @@ set_color_profile_slot(palNum, 5, 114, 204, 224); //gold
 set_color_profile_slot(palNum, 6, 228, 247, 243); //purple-blue
 set_color_profile_slot(palNum, 7, 31, 34, 48); //stocking
 
-palNum ++; // 23 = a fucking wind glider LOL
+palNum ++; // 24 = a fucking wind glider LOL
 set_color_profile_slot(palNum, 0, 237, 162, 231); //electro
 set_color_profile_slot(palNum, 1, 190, 126, 202); //hair
 set_color_profile_slot(palNum, 2, 229, 176, 145); //skin

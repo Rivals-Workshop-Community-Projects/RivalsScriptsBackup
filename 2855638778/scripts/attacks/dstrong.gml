@@ -10,9 +10,9 @@ set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("soldier_hurtbox"));
 // startup (pre-fire)
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, sound_get("rocket_shoot"));
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 5);
+//set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, sound_get("rocket_shoot"));
+//set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 5);
 
 // "active" (projectile spawns here)
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 2);

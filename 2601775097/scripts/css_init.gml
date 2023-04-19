@@ -5,13 +5,10 @@ alt_cur = 0;
 alt_prev = 0;
 css_anim_time = 0;
 
-//icons for certain alts
-icon_x_pos = x + 174;
-icon_y_pos = y + 108;
-
-//preview char
-preview_x = floor(x+10);
-preview_y = floor(y+10);
+icon_x_pos = 0; //icon placement for the event/unlock based alts from rivals
+icon_y_pos = 0;
+preview_x = 0; //preview char
+preview_y = 0;
 
 b_day = 25;
 b_month = 10;
@@ -71,26 +68,47 @@ preview_line_color = 0;
 
 
 //CSS skill select
+skill_script_type = 0;
+user_event(2);
+
 skill_hover_time_max = 20;
 skill_hover_time = skill_hover_time_max;
 skill_hover = false;
 
-skill_button_x = 150;
-skill_button_y = 30;
+skill_button_x = x + 150;
+skill_button_y = y + 30;
 
 skill_button_pos = [
-    x + skill_button_x,
-    y + skill_button_y,
-    x + skill_button_x + sprite_get_width(sprite_get("hud_skillselect_button")),
-    y + skill_button_y + sprite_get_height(sprite_get("hud_skillselect_button"))
+    skill_button_x,
+    skill_button_y,
+    skill_button_x + sprite_get_width(sprite_get("hud_skillselect_button")),
+    skill_button_y + sprite_get_height(sprite_get("hud_skillselect_button"))
 ];
 
-skill_script_type = 0;
-user_event(2);
+var w = sprite_get_width(sprite_get("hud_skills"));
+var h = sprite_get_height(sprite_get("hud_skills"));
+
+for (var i = 0; i <= 3; ++i)
+{
+    for (var j = i; j <= i + 8; j += 4)
+    {
+        var offset_x = x + i * 38 + 44 + ((menu_type == 0) * 6);
+        var offset_y = y + floor(j / 4) * 32 + 46;
+
+        skill_pos[j] = [
+            offset_x,
+            offset_y,
+            offset_x + w * 2,
+            offset_y + h * 2,
+        ];
+    }
+}
+
+if (init) set_synced_var(player, 0);
 
 //saves skill data in case it's needed
 //if not, set it to [12816], which is the default kit
-if (get_synced_var(player) >= 12816 && !init) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
+if (get_synced_var(player) >= 4228 && !init) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
 else set_synced_var(player, 12816);
 
 //put this in user_event2 ^ because it needs to run on css and ingame

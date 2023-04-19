@@ -104,6 +104,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 hitbox_num++;
 
 //Set Hitbox Values - This is the basic block of a functional hitbox
@@ -117,7 +118,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, 2);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 62);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 24);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 0);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .1);
@@ -125,6 +126,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 
 hitbox_num++;
 

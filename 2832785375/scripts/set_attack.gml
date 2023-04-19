@@ -10,10 +10,22 @@ if attack == AT_FSPECIAL {
     reset_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS);
 }
 
+if attack == AT_DTILT {
+    grabbedID = undefined;
+    grabbedTimer = 0;
+    wall_grab = false
+    seed_grab = false
+    seed_grab_id = undefined
+}
+
 if attack == AT_DSPECIAL {
     with pHitBox if ("arb_seeker" in self) {
         die = true
     }
+}
+
+if attack == AT_JAB {
+    was_canceled = false
 }
 
 remote_strong = false

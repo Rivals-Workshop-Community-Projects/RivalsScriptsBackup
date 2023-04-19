@@ -327,6 +327,11 @@ switch (attack)
 			    can_move = false;
 			}
 		break;
+		case 7:
+//			if (has_hit){
+//				vsp = -3;
+//			}
+			break;
 	}
 	break;
 	case AT_FSPECIAL_2:
@@ -524,6 +529,18 @@ switch (attack)
 		}
 		
 		case 3:
+			if (window_timer == 15)
+			{
+				set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 5);
+				window = 5;
+				
+				afterImageTimer = 4
+			    window_timer = 0;
+			    vsp = round(lerp(vsp, 0, 1));//0.1
+			    can_fast_fall = false;
+			    can_move = false;
+				clear_button_buffer(PC_SPECIAL_PRESSED);
+			}
 			if ((special_pressed or shield_pressed) and dir != 0)
 			{
 				set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 5 + !dir_correspond);
@@ -531,7 +548,7 @@ switch (attack)
 				
 				afterImageTimer = 4
 			    window_timer = 0;
-			    vsp = round(lerp(vsp, 0, 0.1));
+			    vsp = round(lerp(vsp, 0, 1));//0.1
 			    can_fast_fall = false;
 			    can_move = false;
 				clear_button_buffer(PC_SPECIAL_PRESSED);

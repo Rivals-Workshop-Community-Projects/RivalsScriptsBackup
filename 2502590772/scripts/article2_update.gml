@@ -63,11 +63,10 @@ if (destroy) {
         if (was_parried) {
             //change variables so that this hitbox can hit the correct players
             hitbox_id.can_hit_self = true;
-            var i = 1;
-            repeat (4) {
-               hitbox_id.can_hit[i] = (i != parried_by_player);
-               i++;
-            }
+
+            //abyss fix
+            hitbox_id.can_hit = array_create(20, 1);
+            if (parried_by_player < 20) hitbox_id.can_hit[parried_by_player] = 0;
         }
     }
 
@@ -111,14 +110,16 @@ if (was_parried) {
     hitbox_id.owner = parried_by_player;
     hitbox_id.was_parried = was_parried;
     if (was_parried) hitbox_id.can_hit_self = true;
-    
+    /*
     var i = 1;
     repeat (4) {
        hitbox_id.can_hit[i] = (i != parried_by_player);
        i++;
     }
-    
-    
+    */
+    //abyss fix
+    hitbox_id.can_hit = array_create(20, 1);
+    if (parried_by_player < 20) hitbox_id.can_hit[parried_by_player] = 0;
 }
 
 return;

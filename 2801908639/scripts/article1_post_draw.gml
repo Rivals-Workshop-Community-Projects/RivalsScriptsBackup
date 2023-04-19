@@ -77,6 +77,7 @@ else if st == 5
     image_speed = 0.5;
 }
 
+
     /*draw_debug_text(x-100,y+55,"spd = " + string (spd));
     draw_debug_text(x-100,y+75,"hsp = " + string (hsp));
     draw_debug_text(x-100,y+95,"vsp = " + string (vsp));

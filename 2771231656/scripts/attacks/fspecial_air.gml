@@ -187,7 +187,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_ANGLE, 270);
 set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_BASE_HITPAUSE, 8);
-//set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_HITPAUSE_SCALING, .2);
+set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_VISUAL_EFFECT, 123);
 set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_FSPECIAL_AIR, 13, HG_HIT_SFX, sound_get("fspecial_hit"));

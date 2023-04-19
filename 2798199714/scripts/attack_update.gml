@@ -171,8 +171,19 @@ if (attack == AT_NSPECIAL){
     	}
     }else if(window == 3){
         if(window_timer == 1 && !hitpause){
-            if(!instance_exists(time_rift)){
-            	move_cooldown[AT_DSPECIAL] = 999;time_rift_dmg = 0;
+        	var has_time_rift = 0;
+        	with(obj_article1){
+				if(player_id == other && player == other.player){
+					with(other) {
+						has_time_rift += 1;
+					}
+				}
+        	}
+            if(has_time_rift == 0 && !runeM || has_time_rift < 3 && runeM){
+            	if(!runeM || has_time_rift >= 2 && runeM){
+            		move_cooldown[AT_DSPECIAL] = 999;
+            	}
+            	time_rift_dmg = 0;
     	        time_rift = instance_create(x+15*spr_dir,y+5, "obj_article1");
     	        if (spr_dir == 1){
     				set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 370);set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 370);
@@ -204,6 +215,11 @@ if (attack == AT_NSPECIAL){
         	}
         	create_hitbox(AT_FTILT, 7, x+50*spr_dir, y-20);
         	window = 8;window_timer = 0;
+        }else{
+        	if(runeB && attack_down && window == 6 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+        		window = 1;window_timer = get_window_value(attack, 1, AG_WINDOW_LENGTH);
+        		sound_play(sound_get("speen"));
+        	}
         }
     }else{
     	if(window == 1 || window == 7){
@@ -240,8 +256,8 @@ if (attack == AT_NSPECIAL){
 }else if (attack == AT_UAIR){
     if(window == 2){
         if(window_timer == 1){
-	        if(vsp > -6 || vsp > -8 && (attack_down || strong_down || up_stick_down || up_strong_down)){
-	        	if(attack_down || strong_down || up_stick_down || up_strong_down){
+	        if(vsp > -6 || vsp > -8 && (!runeH && (attack_down || strong_down || up_stick_down || up_strong_down) || runeH && up_down)){
+	        	if(!runeH && (attack_down || strong_down || up_stick_down || up_strong_down) || runeH && up_down){
 	        		uairhold += 1;
 		            if(vsp < 0){
 		                vsp -= 4*uairboost; 
@@ -275,7 +291,7 @@ if (attack == AT_NSPECIAL){
     	}uairused = true;
     }
     if(window == 2 && window_timer >= 5){
-        if(uairloop < 4){
+        if(uairloop < 4 && (!runeH || runeH && !attack_down && !strong_down && !up_stick_down && !up_strong_down) || runeH && (attack_down || strong_down || up_stick_down || up_strong_down) && uairloop < 20){
             uairloop += 1;
             window = 2;window_timer = 0;
         }else{
@@ -322,6 +338,10 @@ if (attack == AT_NSPECIAL){
 	        var star = spawn_hit_fx(x+150*spr_dir, y-35, fx_star_tiny);star.depth = depth-1;
 	        star = spawn_hit_fx(x-80*spr_dir, y-35, fx_star_tiny);star.spr_dir = -spr_dir;star.depth = depth-1;
 	        shake_camera(5,5);
+	        if (has_rune("F") || runeF) {
+	        	create_hitbox(AT_FSTRONG, 2, x+50*spr_dir, y-45);
+    			sound_play(sound_get("swordbeam"));
+	        }
 	    }
 	}if(window == 5 || window == 6){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
@@ -334,6 +354,16 @@ if (attack == AT_NSPECIAL){
 			}
     	}
 	}
+}else if (attack == AT_FTILT){
+    if(window == 1){
+        if (has_rune("E") || runeE) {
+        	if(attack_down || strong_down || right_stick_down || right_strong_down || left_stick_down || left_strong_down){
+        		set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 12);set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 14);
+        	}else{
+        		reset_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH);reset_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED);
+        	}
+        }
+    }
 }else if (attack == AT_UTILT){
     if(window == 1 && window_timer == 8 && !hitpause){
         sound_play(asset_get("sfx_birdflap"));
@@ -354,7 +384,7 @@ if (attack == AT_NSPECIAL){
     }
     if(window == 2){
     	vsp *= 0.9;
-    	if(strong_charge >= 30){
+    	if(strong_charge >= 30*runeC_charge_multiplier){
     		set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 21);set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 20);
     		set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 21);
     		if(window_timer == 21){
@@ -375,7 +405,7 @@ if (attack == AT_NSPECIAL){
 		hsp -= .35;
 	}
     if (vsp >= 0 && (position_meeting(x,y+25,asset_get("par_block")) || position_meeting(x,y+25,asset_get("par_jumpthrough")))){
-    	if(strong_charge <= 30){
+    	if(strong_charge <= 30*runeC_charge_multiplier){
         	vsp *= 0.5;
     	}else{
         	vsp *= 0.25;
@@ -383,17 +413,17 @@ if (attack == AT_NSPECIAL){
     }
     if(window == 2 && !hitpause){
     	vsp *= 0.9;
-    	if(strong_charge >= 30){
+    	if(strong_charge >= 30*runeC_charge_multiplier){
     		if(position_meeting(x,y+25,asset_get("par_block")) || position_meeting(x,y+25,asset_get("par_jumpthrough"))){
     			hsp *= 0.5;
     		}
-    		if(window_timer == 1 && strong_charge < 60 || window_timer == 4 && strong_charge >= 60){
+    		if(window_timer == 1 && strong_charge < 60*runeC_charge_multiplier || window_timer == 4 && strong_charge >= 60*runeC_charge_multiplier){
     			if(position_meeting(x+60*spr_dir, y+30,asset_get("par_block")) || position_meeting(x+60*spr_dir, y+30,asset_get("par_jumpthrough"))){
 		    		create_hitbox(AT_USTRONG, 4, x+60*spr_dir, y-150);spawnlightning = true;
     			}if(position_meeting(x-60*spr_dir, y+30,asset_get("par_block")) || position_meeting(x-60*spr_dir, y+30,asset_get("par_jumpthrough"))){
 		    		create_hitbox(AT_USTRONG, 4, x-60*spr_dir, y-150);spawnlightning = true;
     			}
-		    	if(strong_charge >= 60){
+		    	if(strong_charge >= 60*runeC_charge_multiplier){
 		    		if(position_meeting(x+160*spr_dir, y+30,asset_get("par_block")) || position_meeting(x+160*spr_dir, y+30,asset_get("par_jumpthrough"))){
 			    		create_hitbox(AT_USTRONG, 4, x+160*spr_dir, y-150);spawnlightning = true;
 		    		}if(position_meeting(x-160*spr_dir, y+30,asset_get("par_block")) || position_meeting(x-160*spr_dir, y+30,asset_get("par_jumpthrough"))){
@@ -404,7 +434,7 @@ if (attack == AT_NSPECIAL){
 		    		}
 			    }
 			    if(spawnlightning){
-			    	if(strong_charge < 60){
+			    	if(strong_charge < 60*runeC_charge_multiplier){
 			    		set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 16);set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 15);
 			    		set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 16);
 		    		}else{
@@ -445,7 +475,7 @@ if (attack == AT_NSPECIAL){
 	    	ustrongstall = true;
 	    }
     }
-    if(strong_charge > 30){
+    if(strong_charge > 30*runeC_charge_multiplier){
     	hsp *= 0.5;
     }
 }else if (attack == AT_DSTRONG){
@@ -470,10 +500,16 @@ if (attack == AT_NSPECIAL){
         var star = spawn_hit_fx(x+100*spr_dir, y-35, fx_star_tiny);star.depth = depth-1;
 		star = spawn_hit_fx(x-100*spr_dir, y-35, fx_star_tiny);star.spr_dir = -spr_dir;star.depth = depth-1;
         if (position_meeting(x+70*spr_dir,y+5,asset_get("par_block")) || position_meeting(x+70*spr_dir,y+5,asset_get("par_jumpthrough"))){
-            if(freemd && strong_charge >= 60 && position_meeting(x+200*spr_dir,y+5,asset_get("par_block"))){
-                create_hitbox(AT_DSTRONG, 9, x+80*spr_dir, y-4500);
+            if(!free && strong_charge >= 60*runeC_charge_multiplier && (position_meeting(x+200*spr_dir,y+5,asset_get("par_block")) || position_meeting(x+200*spr_dir,y+5,asset_get("par_jumpthrough")))){
+                var tornado = create_hitbox(AT_DSTRONG, 9, x+80*spr_dir, y-4500);tornado.hsp = 2*spr_dir;
                 set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 40);
-                set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 40);
+                if (!has_rune("G") && !runeG) {
+                	set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 40);
+                }
+                if (has_rune("N") || runeN) {
+                	tornado = create_hitbox(AT_DSTRONG, 9, x+85*spr_dir, y-4500);tornado.hsp = 3*spr_dir;
+                	tornado = create_hitbox(AT_DSTRONG, 9, x+85*spr_dir, y-4500);tornado.hsp = 1*spr_dir;
+                }
             }else{
                 var shockwave = spawn_hit_fx(x+60*spr_dir,y,fx_shockwave);shockwave.depth = depth-1;create_hitbox(AT_DSTRONG, 6, x+60*spr_dir, y-40);
             }
@@ -483,7 +519,7 @@ if (attack == AT_NSPECIAL){
     	if(window_timer == get_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH)){
     		sound_play(sound_get("stab"));
     		//if(strong_charge >= 30){
-    			dstrongcharge = strong_charge;
+    			dstrongcharge = strong_charge*runeC_charge_multiplier2;
     		//}
 	    }
     }
@@ -537,6 +573,15 @@ if (attack == AT_NSPECIAL){
 		}else if(get_gameplay_time() < 120){
 			window = 13;window_timer = 0;
 		}
+	}else if(window == 8){
+		/*if(runeO && (attack_down || special_down)){
+			window = 14;window_timer = 0;
+			lasernum = 0;
+			lasernum2 = 0;
+			laser = 0;
+			laserscale = 0;
+			laserangle = 90;laseranglespeed = 0;
+		}*/
 	}else if(window == 10){
 		set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 5);
 		set_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH, 6);//set_window_value(AT_TAUNT, 5, AG_WINDOW_LENGTH, 8);
@@ -561,6 +606,92 @@ if (attack == AT_NSPECIAL){
 	}else if(window == 13){
 		vsp = 4;
 	}
+	else if(window == 14){ //laser
+		window_timer = 0;hsp = 0;vsp = 0;
+		laser += 1;
+		if(laser < 20){
+			
+		}else if(laser <= 40){
+			laseranglespeed += 0.02;shake_camera(1,2);
+		}else if(laser <= 70){
+			laseranglespeed += 0.1;shake_camera(1,2);
+		}else if(laser <= 95){
+			laseranglespeed += 2;laseranglespeed = min(laseranglespeed,10);shake_camera(5,2);
+		}else if(laser <= 110){
+			laseranglespeed *= 0.9;shake_camera(1,2);
+			if(lasernum2 == 3){lasernum2 = 4;}
+		}else{
+			window = 9;window_timer = 0;
+		}laserangle += 1*laseranglespeed;
+		
+		var radians = laserangle * pi / 180;
+		var laserx = (x-5*spr_dir) + (cos(radians)*10000);
+		var lasery = (y - 125) + -(sin(radians)*10000);
+		laser_list = collision_line_list(x-5*spr_dir, y - 125, laserx, lasery, pHurtBox, true, true);
+		if(ds_list_valid(laser_list)) {
+			//sound_play(sound_get("energyhit low"));sound_play(sound_get("lightboost"));sound_play(sound_get("lighthit4"));
+			for(var i=0; i < ds_list_size(laser_list); i++) {
+				var target = ds_list_find_value(laser_list, i);//target = target.player_id;
+		    	var height = target.bbox_bottom - target.bbox_top;
+		    	//if(target.state != PS_RESPAWN && target.state != PS_DEAD){
+		    		create_hitbox(AT_TAUNT, 1, round(target.x), round(target.y-height/2));
+		    		//var flash = spawn_hit_fx(target.x, target.y-height/2,fx_shine_ballfast);flash.depth = depth-1;
+				//}
+			}
+		}
+		//print(laserx);
+		//print(lasery);
+		//create_hitbox(AT_DSTRONG, 6, round(laserx), round(lasery));
+		
+		if(lasernum2 == 0){ //grow fast
+			if(laserscale < 160){
+				laserscale += 40;
+				if(laserscale >= 120){
+					lasernum2 = 1;shake_camera(15,10);
+				}
+			}
+		}else if(lasernum2 == 1){ //shrink fast
+			if(laserscale > 80){
+				laserscale -= 40;
+				if(laserscale <= 80){
+					lasernum2 = 2;
+				}
+			}
+		}else if(lasernum2 == 2){ //grow
+			if(laserscale < 100){
+				laserscale += 10;
+				if(laserscale >= 100){
+					lasernum2 = 3;
+				}
+			}
+		}else if(lasernum2 == 3){ //idle
+			laserscale = ease_sineIn(90,110,get_gameplay_time(),6);
+		}else if(lasernum2 == 4){ //grow
+			if(laserscale < 140){
+				laserscale += 20;
+				if(laserscale >= 140){
+					lasernum2 = 5;
+				}
+			}
+		}else if(lasernum2 == 5){ //shrink fast
+			if(laserscale > 20){
+				laserscale -= 20;
+				if(laserscale <= 20){
+					lasernum2 = 6;
+				}
+			}
+		}else if(lasernum2 == 6){ //shrink
+			if(laserscale > 0){
+				laserscale -= 5;
+				laserscale = max(laserscale,0);
+			}
+		}
+		
+		//print(laser);
+		if(taunt_pressed){
+			window = 20;
+		}
+	}
 }
 
 
@@ -570,10 +701,10 @@ if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
 	    if(strong_charge >= 1){
 	        hsp = 0;vsp = 0;
 	    }
-	    if(strong_charge == 30){
+	    if(strong_charge == round(30*runeC_charge_multiplier)){
 	        sound_play(sound_get("charge"));
 	    }
-	    if(strong_charge == 60){
+	    if(strong_charge == round(60*runeC_charge_multiplier)){
 	        sound_play(sound_get("charge2"));
 	    }
     }
@@ -587,3 +718,28 @@ if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
 			vsp *= 0.5;
 		}
 	}
+	
+#define collision_line_list {
+    {
+        var x1,y1,x2,y2,obj,prec,notme,dsid,i;
+        x1 = argument0;
+        y1 = argument1;
+        x2 = argument2;
+        y2 = argument3;
+        obj = argument4;
+        prec = argument5;
+        notme = argument6;
+        dsid = ds_list_create();
+        with (obj) {
+            if (!notme || "id" in self && id != other.id) {
+                i = collision_line(x1,y1,x2,y2,id,prec,false);
+                if (i != noone) ds_list_add(dsid,i);
+            }
+        }
+        if (ds_list_size(dsid) == 0) {
+            ds_list_destroy(dsid);
+            dsid = noone;
+        }
+        return dsid;
+    }
+}

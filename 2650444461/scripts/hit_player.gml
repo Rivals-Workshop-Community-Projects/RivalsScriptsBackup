@@ -53,6 +53,9 @@ if(my_hitboxID.attack == AT_DAIR){
 	sound_play(sound_get("Iron Tail2"));
 }
 
-if(hit_player_obj.should_make_shockwave){
+if(hit_player_obj.should_make_shockwave || crit && (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num > 7 || my_hitboxID.attack != AT_FSPECIAL)){
 	sound_play(sound_get("Hit Super Effective"));
+	if(crit){
+		spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-25,304);
+	}
 }

@@ -5,6 +5,20 @@ if get_player_color(player) == 0 {
 	set_ui_element(UI_CHARSELECT, sprite_get("hud_default_charselect"));
 	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_default_result_small"));
 	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_default_portrait"));
+}else if get_player_color(player) == 10{
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_alt1_hud"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_alt1_hurt"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("hud_alt1_offscreen"));
+	set_ui_element(UI_CHARSELECT, sprite_get("hud_alt10_charselect"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_alt10_result_small"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt10_portrait"));
+}else if get_player_color(player) == 11{
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_alt1_hud"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_alt1_hurt"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("hud_alt1_offscreen"));
+	set_ui_element(UI_CHARSELECT, sprite_get("hud_alt11_charselect"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_alt11_result_small"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt11_portrait"));
 }else{
 	set_ui_element(UI_HUD_ICON, sprite_get("hud_alt1_hud"));
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_alt1_hurt"));

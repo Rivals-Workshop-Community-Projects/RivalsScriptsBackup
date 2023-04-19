@@ -14,7 +14,7 @@ set_color_profile_slot_range(3, 1, 1, 23);
 set_color_profile_slot_range(4, 4, 5, 12);
 set_color_profile_slot_range(5, 1, 1, 19);
 
-set_num_palettes(20);
+set_num_palettes(22);
 
 //Yellow Scarf
 set_color_profile_slot(1, 0, 64, 124, 48);
@@ -167,3 +167,19 @@ set_color_profile_slot(19, 2, 200, 39, 51);
 set_color_profile_slot(19, 3, 190, 39, 51);
 set_color_profile_slot(19, 4, 237, 205, 180);
 set_color_profile_slot(19, 5, 216, 184, 0);
+
+//Trans Rights
+set_color_profile_slot(20, 0, 245, 171, 185);
+set_color_profile_slot(20, 1, 245, 171, 185);
+set_color_profile_slot(20, 2, 245, 171, 185);
+set_color_profile_slot(20, 3, 255, 255, 255);
+set_color_profile_slot(20, 4, 91, 207, 252);
+set_color_profile_slot(20, 5, 91, 207, 252);
+
+//Doraemon
+set_color_profile_slot(21, 0, 10, 98, 235);
+set_color_profile_slot(21, 1, 10, 98, 235);
+set_color_profile_slot(21, 2, 237, 187, 10);
+set_color_profile_slot(21, 3, 190, 36, 36);
+set_color_profile_slot(21, 4, 255, 255, 255);
+set_color_profile_slot(21, 5, 255, 255, 255);

@@ -3,21 +3,22 @@ set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 3); // used to be 4
 set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
 
 // startup
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 10); // change to 8 someday
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 9); // get trolled
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 8);
 
 // active
 set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 // endlag
 set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FTILT,1);

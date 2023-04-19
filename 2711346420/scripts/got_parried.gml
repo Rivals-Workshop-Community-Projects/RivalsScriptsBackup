@@ -7,5 +7,8 @@ if (my_hitboxID.attack == AT_USPECIAL){
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
     with (monkeyBall){
 		hey_did_i_get_parried = true;
+		with(current_owner){
+			was_parried = true;
+		}
     }
 }

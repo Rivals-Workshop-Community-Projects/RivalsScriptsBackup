@@ -114,10 +114,14 @@ sprite_change_offset("hurtbox", 23, 60);
 sprite_change_offset("crouchbox", 23, 60);
 sprite_change_offset("parry_hurtbox", 30, 60);
 
-sprite_change_offset("wt_blue", 15, 10);
-sprite_change_offset("wt_yellow", 15, 10);
-sprite_change_offset("wt_mask", 15, 10);
+sprite_change_offset("wt_blue", 36, 10);
+sprite_change_offset("wt_yellow", 36, 10);
+sprite_change_offset("wt_mask", 36, 10);
 sprite_change_offset("wt_disabled_vfx", 20, 28);
+sprite_change_offset("wt_sparks", 69, 138);
+sprite_change_offset("wt_sparks_small", 69, 138);
+
+sprite_change_offset("particle_feather", 15, 15);
 
 sprite_change_offset("shockwave_large", 100, 100);
 sprite_change_offset("shine_large", 100, 100);
@@ -128,6 +132,7 @@ sprite_change_offset("vfx_feather_side_small", 60, 60);
 sprite_change_offset("vfx_feather_up_small", 60, 60);
 sprite_change_offset("vfx_feather_side_large", 60, 60);
 sprite_change_offset("vfx_feather_up_large", 60, 60);
+sprite_change_offset("vfx_water_large", 200, 200);
 
 sprite_change_offset("fspecial_sweetspot_vfx", 21, 21);
 sprite_change_offset("phone_open", 40, 78);

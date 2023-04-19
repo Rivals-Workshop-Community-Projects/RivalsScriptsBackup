@@ -3,6 +3,7 @@ set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_USTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
+set_attack_value(AT_USTRONG, AG_CATEGORY, 1 + ustrongJumpRune);
 
 //charge
 set_window_value(AT_USTRONG, 1, AG_WINDOW_TYPE, 1);
@@ -20,7 +21,7 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
 //active frames
 set_window_value(AT_USTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 6 + (ustrongJumpRune*3));
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
@@ -35,7 +36,7 @@ set_num_hitboxes(AT_USTRONG, 3);
 
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 2 + ustrongJumpRune);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 29);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -38);
 set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 52);
@@ -54,8 +55,8 @@ set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 2 + ustrongJumpRune);
+set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 2 + ustrongJumpRune);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 4);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -70);
 set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 80);
@@ -74,8 +75,8 @@ set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_WINDOW, 3);
-set_hitbox_value(AT_USTRONG, 3, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_USTRONG, 3, HG_LIFETIME, 2);
+set_hitbox_value(AT_USTRONG, 3, HG_WINDOW_CREATION_FRAME, 4 + (ustrongJumpRune * 2));
+set_hitbox_value(AT_USTRONG, 3, HG_LIFETIME, 2 + ustrongJumpRune);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_X, -31);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_Y, -48);
 set_hitbox_value(AT_USTRONG, 3, HG_WIDTH, 50);

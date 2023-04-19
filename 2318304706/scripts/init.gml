@@ -155,6 +155,11 @@ gbeamLarge = hit_fx_create( sprite_get( "nspecial_beam_large" ), 40 );
 
 empoweredFX = hit_fx_create( sprite_get( "fxEmpowered" ), 18 );
 
+specialBurst = hit_fx_create( sprite_get( "fx_specialburst" ), 16 );
+specialBurstT = hit_fx_create( sprite_get( "fx_specialburst_trans" ), 16 );
+killBurst = hit_fx_create( sprite_get( "fx_killburst" ), 35 );
+shouldKillBurst = 1;
+
 beaconAlert = hit_fx_create( sprite_get( "dspec_article_alert" ), 14 );
 
 introSoul = hit_fx_create( sprite_get( "soul" ), 12 );

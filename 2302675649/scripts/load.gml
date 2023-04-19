@@ -121,5 +121,7 @@ sprite_change_offset("genesis", 21, 37);
 sprite_change_offset("grab", 21, 64, 1);
 sprite_change_offset("grabFur", 21, 64);
 sprite_change_offset("kizunaFX", 200, 120);
+sprite_change_offset("hud2", 12, 12);
+sprite_change_offset("portalHud", 8, 8);
 set_victory_bg(sprite_get("vic"));
 set_victory_theme(sound_get("lonin2"));

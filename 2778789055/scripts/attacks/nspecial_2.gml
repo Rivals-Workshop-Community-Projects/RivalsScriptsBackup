@@ -7,11 +7,11 @@ set_attack_value(AT_NSPECIAL_2, AG_AIR_SPRITE, sprite_get("pot_activation"));
 set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("pot_activation_hurt"));
 
 // startup
-set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 14);
+set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 11);
 
 // attack
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 8);

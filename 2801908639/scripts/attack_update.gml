@@ -6,7 +6,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_FTILT){
-	if (window == 1 and window_timer == 10) and !hitpause{
+	if (window == 1 and window_timer == 5) and !hitpause{
 		sound_play(asset_get("sfx_birdclap"))
 	}
 }
@@ -41,6 +41,14 @@ if (attack == AT_USPECIAL){
 	can_wall_jump = true
 	if window == 2
 		can_move = false;
+	if (window == 5)
+	{
+		jump += 1;
+		if (jump >= 20)
+		{
+			can_jump = true; //Code to make it so Marisa can jump out of Up b
+		}
+	}
 	if (window == 6 and window_timer == 0)
 	{
 		destroy_hitboxes();
@@ -96,6 +104,25 @@ if (attack == AT_UAIR || attack == AT_FAIR){
 if (attack == AT_TAUNT and taunt_down){
 	if window_timer > 42 and window_timer < 51
 		window_timer = 49;
+		
+}
+
+if (attack == AT_DTILT and dtilt_jc_on) {
+	if (!trigger_dtilt_jc and jump_pressed and has_hit)
+	{
+		trigger_dtilt_jc = true;
+	}
+	
+	if (!hitpause and trigger_dtilt_jc) {
+		set_state(PS_JUMPSQUAT);
+	}
+}
+
+
+if(attack == AT_DSPECIAL and window == 2 and window_timer > 2 and !was_parried and !hitpause){
+  can_jump = true;
+  clear_button_buffer(PC_DOWN_HARD_PRESSED);
+  clear_button_buffer(PC_SPECIAL_PRESSED);
 }
 
 if (attack == AT_NSPECIAL)
@@ -146,7 +173,7 @@ if (attack == AT_NSPECIAL)
 				
 			if (ball_exists == false && ball_cooldown < 1){
 
-				var ball = instance_create( x+30*spr_dir, y-20, "obj_article1" );
+				ball = instance_create( x+30*spr_dir, y-20, "obj_article1" );
 				ball_exists=true;
 			}
 		}
@@ -246,6 +273,7 @@ if (attack == AT_FSPECIAL) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROU
 
     else if has_hit && (window == 2 && window_timer < 29)
     {
+    	destroy_hitboxes();
     	window_timer = 0;
     	window = 3;
     }

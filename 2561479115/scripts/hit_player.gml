@@ -16,6 +16,7 @@
     
 }
 */
+var remove_from_grab = true
 
 if ((my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) 
 || (my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 2)) 
@@ -28,6 +29,8 @@ if ((my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1)
         ds_list_insert(hit_player_obj.roke_mark_anim,0,[0,0]);
     }
 }
+
+
 
 if (my_hitboxID.type == 2 && my_hitboxID.hits_tag == 2) {
     
@@ -84,19 +87,28 @@ switch (my_hitboxID.attack) {
             case 3:
             case 4:
                 if ds_list_find_index(roke_dstrong_targets, hit_player_obj) != -1 {
-                    print("r")
+                    //print("r")
                     ds_list_remove(roke_dstrong_targets, hit_player_obj)
                 }
             break;
             default:
                 if ds_list_find_index(roke_dstrong_targets, hit_player_obj) == -1  {
-                    print("a")
+                    //print("a")
                     ds_list_add(roke_dstrong_targets, hit_player_obj);
                 }
+                remove_from_grab = false;
             break;
         }
     break;
 }
+if remove_from_grab {
+    if ds_list_find_index(roke_dstrong_targets, hit_player_obj) != -1 {
+        ds_list_remove(roke_dstrong_targets, hit_player_obj)
+    }
+}
 
-
+if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 {
+    instance_destroy(my_hitboxID)
+    exit;
+}
 

@@ -1,24 +1,31 @@
 // Check if we grabbed someone
 if (my_hitboxID == grab_hitbox) {
-    // Fail grab under certain circumstances
-    if ((!hit_player_obj.invincible)
-        && (!hit_player_obj.super_armor))
-    {
-        // Grab the struck opponent
-        hit_player_obj.RETROBLAST_HOLDER_ID = id;
-        
-        // Play a grab-confirm sound
-        sound_play(asset_get("sfx_waveland_syl"));
-        
-        // Reward player with an additional Booster Rush and full fuel
-        /*if (booster_rush_charges < max_booster_rush_charges) {
-            booster_rush_charges++;
-        }*/
-        if (rocket_fuel < max_rocket_fuel) {
-            rocket_fuel = max_rocket_fuel;
-	        pity_available = true;
-        }
-    }
+	if (attack == AT_NSPECIAL) {
+	    // Fail grab under certain circumstances
+	    if ((!hit_player_obj.invincible)
+	        && (!hit_player_obj.super_armor))
+	    {
+	        // Grab the struck opponent
+	        hit_player_obj.RETROBLAST_HOLDER_ID = id;
+	        
+	        // Play a grab-confirm sound
+	        sound_play(asset_get("sfx_waveland_syl"));
+	        
+	        // Reward player with an additional Booster Rush and full fuel
+	        /*if (booster_rush_charges < max_booster_rush_charges) {
+	            booster_rush_charges++;
+	        }*/
+	        /*if (rocket_fuel < max_rocket_fuel) {
+	            rocket_fuel = max_rocket_fuel;
+		        pity_available = true;
+	        }*/
+	        // Give the double jump back
+	        djumps = 0;
+	    }
+	} else if (attack == AT_USTRONG_2) {
+	    // Grab the struck opponent
+	    hit_player_obj.RETROBLAST_HOLDER_ID = id;
+	}
 }
 
 // Reward agressive gameplay
@@ -34,7 +41,7 @@ switch (my_hitboxID.attack) {
     // Blast attack list
     case AT_FSTRONG :
     case AT_UTHROW :
-    case AT_USTRONG :
+    //case AT_USTRONG :
     case 49 : // Final Smash
     //case AT_DSPECIAL :
     case AT_DATTACK :

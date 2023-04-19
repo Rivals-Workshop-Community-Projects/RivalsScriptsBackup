@@ -204,13 +204,13 @@ set_color_profile_slot( 22, 3, 82, 0, 14 ); //Light
 set_color_profile_slot( 22, 4, 128, 166, 185 ); //Skin 2
 set_color_profile_slot( 22, 5, 221, 222, 222 ); //water
 
-// VoidFish
-set_color_profile_slot( 23, 0, 255, 255, 255 ); //Skin
-set_color_profile_slot( 23, 1, 109, 154, 94 ); //Fins
+// Thive
+set_color_profile_slot( 23, 0, 255, 183, 82 ); //Skin
+set_color_profile_slot( 23, 1, 140, 106, 79 ); //Fins
 set_color_profile_slot( 23, 2, 51, 120, 28 ); //Marks
-set_color_profile_slot( 23, 3, 162, 255, 10 ); //Light
-set_color_profile_slot( 23, 4, 224, 224, 224 ); //Skin 2
-set_color_profile_slot( 23, 5, 162, 255, 10 ); //water
+set_color_profile_slot( 23, 3, 255, 192, 0 ); //Light
+set_color_profile_slot( 23, 4, 255, 236, 140 ); //Skin 2
+set_color_profile_slot( 23, 5, 255, 210, 105 ); //water
 
 // Raging Demon
 set_color_profile_slot( 24, 0, 91, 84, 115 ); //Skin

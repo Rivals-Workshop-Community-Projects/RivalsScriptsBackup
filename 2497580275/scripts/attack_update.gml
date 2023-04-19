@@ -5,6 +5,11 @@ hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
+if (attack == AT_JAB)
+{
+    can_tilt = true;
+}
+
 
 if (attack == AT_NSPECIAL){
     with(obj_article2)

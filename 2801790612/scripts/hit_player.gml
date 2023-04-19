@@ -1,5 +1,6 @@
-// code for kamehameha
-//sound_play(sfx_pepsiman);
+var hit_att = my_hitboxID.attack;
+var hit_num = my_hitboxID.hbox_num;
+var dmg_done = my_hitboxID.damage;
 
 if (my_hitboxID.attack == AT_FSPECIAL) {
 	hit_fspecial = true;
@@ -31,19 +32,36 @@ if (my_hitboxID.attack != AT_FSPECIAL){
 	fspecial_timer = timer_set;
 }
 
-//General hit stuff for lazy combo system
+
+// Pepsi Meter Gain
 var prev_mod = pepsi_meter % 25;
-if (combo < 5) {
-	combo += 1;
+
+if (hit_att == AT_NSPECIAL) {
+	if (hit_num == 1) pepsi_meter += 6;
+	if (hit_num == 2) pepsi_meter += 12;
+	if (hit_num == 3) pepsi_meter += 25;
 }
-combo_timer = combo_time;
-if (pepsi_meter < 100) {
-	pepsi_meter += combo + 1;
+else {
+	var base_gain = floor(dmg_done / 2)
+	if (base_gain == 0) base_gain = 1;
+	pepsi_meter += base_gain + combo;
 }
+
+
+//General Pepsi gain
+
+//if (combo < 5) {
+//	combo += 1;
+//}
+//combo_timer = combo_time;
+//if (pepsi_meter < 100) {
+//	//pepsi_meter += combo + 2;
+//	var base_gain = floor(dmg_done / 2)
+//	if (base_gain == 0) base_gain = 1;
+//	pepsi_meter += base_gain + combo;
+//}
 if (pepsi_meter > 100) pepsi_meter = 100;
 
-
-//pepsi_meter += 1;
 var curr_mod = pepsi_meter % 25;
 
 if (curr_mod < prev_mod) {

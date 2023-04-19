@@ -67,6 +67,7 @@ set_hitbox_value(AT_COPY_RANGER, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_COPY_RANGER, 1, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_COPY_RANGER, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_COPY_RANGER, 1, HG_HIT_SFX, asset_get("sfx_ori_energy_hit"));
+set_hitbox_value(AT_COPY_RANGER, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 
 //lv 1 charge
 set_hitbox_value(AT_COPY_RANGER, 2, HG_HITBOX_TYPE, 2);
@@ -97,6 +98,7 @@ set_hitbox_value(AT_COPY_RANGER, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_COPY_RANGER, 2, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_COPY_RANGER, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_COPY_RANGER, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_weak"));
+set_hitbox_value(AT_COPY_RANGER, 2, HG_HITSTUN_MULTIPLIER, 1);
 
 //lv 2 charge
 set_hitbox_value(AT_COPY_RANGER, 3, HG_HITBOX_TYPE, 2);
@@ -127,6 +129,7 @@ set_hitbox_value(AT_COPY_RANGER, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_COPY_RANGER, 3, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_COPY_RANGER, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_COPY_RANGER, 3, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+set_hitbox_value(AT_COPY_RANGER, 3, HG_HITSTUN_MULTIPLIER, 1);
 
 //max charge
 set_hitbox_value(AT_COPY_RANGER, 4, HG_HITBOX_TYPE, 2);
@@ -157,3 +160,4 @@ set_hitbox_value(AT_COPY_RANGER, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_COPY_RANGER, 4, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_COPY_RANGER, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_COPY_RANGER, 4, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
+set_hitbox_value(AT_COPY_RANGER, 4, HG_HITSTUN_MULTIPLIER, 1);

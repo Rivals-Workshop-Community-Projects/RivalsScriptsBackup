@@ -102,6 +102,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_USTRONG, 3, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
-set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 161);
+set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, vfx_water_large);
+set_hitbox_value(AT_USTRONG, 3, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_LOCKOUT, 10);

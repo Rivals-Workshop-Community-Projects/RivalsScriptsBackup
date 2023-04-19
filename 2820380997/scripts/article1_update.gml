@@ -39,7 +39,7 @@
 check_interupts();
 if(state != CL_GOT_HIT && state != CL_ARTICLE_DESTROY){hit_detection();}
 //print("left_down: " + string(player_id.left_down) + "\ right_down: " + string(player_id.right_down));
-//if(mask_index != player_id.hurtbox_spr){mask_index = player_id.hurtbox_spr;} // Enable for hurtbox editing Set this before every state and change it later
+if(mask_index != player_id.hurtbox_spr){mask_index = player_id.hurtbox_spr;} // Enable for hurtbox editing Set this before every state and change it later
 
 if(state == CL_DSPECIAL){
 //Clear Throw flags to prevent the throw from taking effect after the move
@@ -49,6 +49,12 @@ if(state == CL_DSPECIAL){
 		if(player_id.clone_uspecial_player_throwing_clone == true){player_id.clone_uspecial_player_throwing_clone = false;}
 		if(player_id.clone_uspecial_clone_throwing_player == true){player_id.clone_uspecial_clone_throwing_player = false;}
 }
+var temp_can_tap_jump;
+with(player_id){
+	temp_can_tap_jump = can_tap_jump();
+}
+
+clone_can_tap_jump = temp_can_tap_jump;
 /*
 print(state);
 print(state_timer);
@@ -116,9 +122,22 @@ switch(state){
         image_index = 1;
         clone_has_air_dash = true;
         clone_state_cat = SC_COMMITTED;
+        
+        var temp_tap_jump_down = (player_id.up_down && clone_can_tap_jump);
+        
         clear_button_buffer(PC_JUMP_PRESSED);
-        if(state_timer > 4 && player_id.jump_down == false){state = CL_AIR_NEUTRAL;state_timer = 0;vsp = -1 * short_hop_speed;spawn_base_dust(x, y, "jump", spr_dir)} // Short hop
-        if(state_timer > 4 && player_id.jump_down == true){state = CL_AIR_NEUTRAL;state_timer = 0;vsp = -1 * jump_speed;spawn_base_dust(x, y, "jump", spr_dir)} // Full Hop
+        if(state_timer > 4 && (player_id.jump_down == false && temp_tap_jump_down == false)){
+        	state = CL_AIR_NEUTRAL;
+        	state_timer = 0;
+        	vsp = -1 * short_hop_speed;
+        	spawn_base_dust(x, y, "jump", spr_dir);
+        	sound_play(asset_get("sfx_jumpground"));} // Short hop
+        if(state_timer > 4 && (player_id.jump_down == true || temp_tap_jump_down == true)){
+        	state = CL_AIR_NEUTRAL;
+        	state_timer = 0;
+        	vsp = -1 * jump_speed;
+        	spawn_base_dust(x, y, "jump", spr_dir);
+        	sound_play(asset_get("sfx_jumpground"));} // Full Hop
     	break;
     
     case CL_AIR_NEUTRAL:
@@ -148,11 +167,13 @@ switch(state){
     	// Double Jump HSP reverse around logic
     	if(state_timer < 4 && spr_dir == 1 && sign(hsp) == 1 && player_id.left_down){
     		hsp = -1 * .5 * hsp;
+    		if(hsp > -1 * player_id.jump_change){hsp = -1 * player_id.jump_change}
     		//sprite_index = doublejump_backward_sprite;
     	} 
     	if(state_timer < 4 && spr_dir == -1 && sign(hsp) == -1 && player_id.right_down){
     		hsp = -1 * .5 * hsp;
     		//sprite_index = doublejump_backward_sprite;
+    		if(hsp < 1 * player_id.jump_change){hsp = player_id.jump_change;}
     	} 
     	// Spawn Dust
     	if(state_timer == 1){vsp = -1 * djump_speed; spawn_base_dust(x, y, "djump", spr_dir);sound_play(player_id.djump_sound);}
@@ -402,20 +423,21 @@ switch(state){
     case CL_GOT_PARRIED:
         sprite_index = land_sprite;
         image_index = 0;
+        image_alpha = .33;
         clone_state_cat = SC_COMMITTED;
         destroy_hitboxes();
         not_throwable_flag = true;
         was_parried = true;
         hsp *= .80; // ground friction
         vsp *= .80; // Vertical Friction
-        if(state_timer > 30){state = CL_ARTICLE_DESTROY;state_timer = 0;}
+        if(state_timer > 1){state = CL_ARTICLE_DESTROY;state_timer = 0;}
         break;
         
     case CL_DSPECIAL:
     // Dspecial is 26 frames w/ whiff, currently 1 -> 6, 2 -> 2, 3 -> 12 ( 18 whiff). 8 Animation Frames
         sprite_index = dspecial_sprite;
         image_index = state_timer / 1.5;
-        //mask_index = dspecial_hurt_sprite; // Enable for hurtbox editing
+        mask_index = dspecial_hurt_sprite; // Enable for hurtbox editing
         clone_state_cat = SC_COMMITTED;
         clone_dspecial_cooldown = 2;
         // Friction
@@ -445,8 +467,8 @@ switch(state){
         	} 
         if(state_timer = 5){current_hitbox = create_article_hitbox(AT_DSPECIAL,2,x + (spr_dir * 35), y - 26);}
         if(instance_exists(current_hitbox)){
-			var temp_x = x + (spr_dir * 45);
-			var temp_y = y - 20;
+			var temp_x = x + (spr_dir * 38);
+			var temp_y = y - 24;
 			with(current_hitbox){
 				x = temp_x;
 				y = temp_y;
@@ -469,7 +491,7 @@ switch(state){
     case CL_DSPECIAL_UP:
         sprite_index = dspecial_up_sprite;
         image_index = state_timer / 1.5;
-        //mask_index = dspecial_up_hurt_sprite; // Enable for hurtbox editing
+        mask_index = dspecial_up_hurt_sprite; // Enable for hurtbox editing
         clone_state_cat = SC_COMMITTED;
         clone_dspecial_cooldown = 2;
         // Friction
@@ -489,7 +511,7 @@ switch(state){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	sound_play(asset_get("sfx_ori_spirit_flame_2"),false,noone,.5,.75);
         }
-        if(state_timer = 4){current_hitbox = create_article_hitbox(AT_EXTRA_2,2,x + (spr_dir * -1), y + -84);}
+        if(state_timer = 5){current_hitbox = create_article_hitbox(AT_EXTRA_2,2,x + (spr_dir * -1), y + -84);}
         if(instance_exists(current_hitbox)){
 			var temp_x = x;
 			var temp_y = y - 84;
@@ -529,7 +551,6 @@ switch(state){
         		break;
         }
         
-        
         if(state_timer = 4){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	sound_play(asset_get("sfx_ori_spirit_flame_2"),false,noone,.5,.85);
@@ -568,7 +589,6 @@ switch(state){
         clone_state_cat = SC_COMMITTED;
 		if (clone_dspecial_hit == true && instance_exists(grabbed_player_obj)) {
 			//move_cooldown[AT_DSPECIAL] = 30;
-			//hurtboxID.sprite_index = get_attack_value(AT_DTHROW, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
 			
 			//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
 			if (clone_dspecial_hit == false) { grabbed_player_obj = noone;} //Minus 1 window for last window release
@@ -731,7 +751,7 @@ switch(state){
         if(player_grab_timer < 44){image_index = 1 + (player_grab_timer / 4); sprite_index = taunt_sprite;}
         if(player_grab_timer > 45){image_index = ((player_grab_timer - 45) / 2); sprite_index = utilt_sprite;}
 		if(player_grab_timer > 50){hsp = 2 * spr_dir;vsp = 0;}
-		if(player_grab_timer > 59 || player_id.state_cat == SC_HITSTUN){player_id.clone_dspecial_assist = false;state = CL_IDLE;state_timer = 0;clone_dspecial_cooldown = 30;}
+		if(player_grab_timer > 59 || player_id.state_cat == SC_HITSTUN){player_id.clone_dspecial_assist = false;state = CL_IDLE;state_timer = 0;clone_dspecial_cooldown = 60;}
         break;
         
     case CL_FSPECIAL: //Throwing
@@ -777,7 +797,7 @@ switch(state){
         sprite_index = uspecial_2_sprite;
         image_index = state_timer / 2.5;
         clone_state_cat = SC_NEUTRAL;
-        if(state_timer == 1){spr_dir = player_id.spr_dir; vsp = -1 * 8;}
+        if(state_timer == 1){spr_dir = player_id.spr_dir; vsp = -1 * 9;}
         /*
         // Explode
         if(state_timer > 5 && player_id.special_pressed && clone_dspecial_cooldown == 0 &&
@@ -840,12 +860,12 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
 	if(free == true && state_timer > 4 && clone_state_cat == SC_NEUTRAL && !(state == CL_FSPECIAL_2 || state == CL_USPECIAL_2 || state == CL_FSPECIAL_AIR || state == CL_DJUMP)){state = CL_AIR_NEUTRAL;}
 	
 	// Jump
-	if(!free && player_id.jump_down == true && player_id.attack == AT_EXTRA_1 && 
+	if(!free && (player_id.jump_down == true || (player_id.tap_jump_pressed && clone_can_tap_jump)) && player_id.attack == AT_EXTRA_1 && 
 	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
 		state = CL_JUMP_SQUAT; state_timer = 0;}
 		
 	// Double Jump
-	if(free && state_timer > 4 && player_id.jump_pressed && player_id.attack == AT_EXTRA_1 && clone_has_djump == true && 
+	if(free && state_timer > 4 && (player_id.jump_pressed || (player_id.tap_jump_pressed && clone_can_tap_jump)) && player_id.attack == AT_EXTRA_1 && clone_has_djump == true && 
 	(player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && clone_state_cat == SC_NEUTRAL){
 		state = CL_DJUMP; state_timer = 0;}
 		
@@ -915,7 +935,7 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
     if(player_id.special_pressed && clone_dspecial_cooldown == 0 && clone_state_cat == SC_NEUTRAL && player_id.state_cat != SC_HITSTUN &&
     ((player_id.down_down && player_id.swap_nspec_dspec_input == false) || // Normal Input, detects down and special held
     (!player_id.down_down && player_id.swap_nspec_dspec_input == true)) // Swapped Input, detects down not held and special held
-    && !player_id.up_down && !player_id.left_down && !player_id.right_down){state = CL_DSPECIAL;state_timer = 0;}
+    ){state = CL_DSPECIAL;state_timer = 0;} //&& !player_id.up_down && !player_id.left_down && !player_id.right_down Removed cause this was causing a problem reading diagonals
 	
 	// Clone Assist
     if(player_id.clone_dspecial_assist = true && !(state == CL_FSPECIAL_AIR) && was_parried == false && was_hit == false){state = CL_FSPECIAL_AIR_TRAVEL;}
@@ -925,7 +945,7 @@ if(clone_dspecial_cooldown > 0){clone_dspecial_cooldown--}
     (player_id.attack != AT_FSPECIAL_2 || player_id.attack != AT_USPECIAL_2)){state = CL_TAUNT;state_timer = 0;}
     
     // Death Interupts (High priority, these need to be written at the end of the interupts stage)
-    if(player_id.was_parried == true && state != CL_GOT_PARRIED){state = CL_GOT_PARRIED;}
+    if(player_id.was_parried == true && (state != CL_GOT_PARRIED && state != CL_ARTICLE_DESTROY)){state = CL_GOT_PARRIED;}
     if(was_parried == true && state != CL_ARTICLE_DESTROY){state = CL_GOT_PARRIED;} // Force Parry State
     if(was_hit == true && state != CL_ARTICLE_DESTROY){state = CL_GOT_HIT;} // Force Got Hit State
     if(y > room_height || x > room_width || x < 0){state = CL_ARTICLE_DESTROY;state_timer = 0;}

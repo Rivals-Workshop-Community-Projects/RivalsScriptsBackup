@@ -1,6 +1,35 @@
+
+
+if object_index == oPlayer { //removes playtesting hellscape
+	
+	//pre_draw.gml
+	if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
+	    shader_end();
+	    maskHeader();
+	    draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, spr_angle, c_white, 1);
+	    maskMidder();
+	    shader_start();
+	    draw_sprite_tiled_ext(sprite_get("matrix_code"), get_player_color( player ) , x , y + 2*get_gameplay_time(), 2, 2, c_white, 2)
+	    maskFooter();
+	}
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 // afterimage
 var tempColour = c_white;
-if (get_player_color(player) == 25) {
+if (get_player_color(player) == 24) {
 
 
 
@@ -8,11 +37,21 @@ if (get_player_color(player) == 25) {
 
 
 col1 = make_colour_rgb(color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv))
-
-
-} else { col1 = GetColourPlayer(0) }
-
 col2 = GetColourPlayer(1)
+
+
+} else if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
+
+col1 = make_colour_rgb(145, 0, 0);
+col2 = make_colour_rgb(237, 64, 64);
+
+}
+else { col1 = GetColourPlayer(0) 
+	col2 = GetColourPlayer(1)
+
+}
+
+
 
 image_index_offset = 0
 afterimage_division_offset = 0
@@ -23,7 +62,6 @@ afterimage_division_offset = 0
 afterimage_division_multiplier = 40
 
 second_x_offset_lmao = 0
-
 
 
 
@@ -279,7 +317,9 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 }}
 */
 
-if (get_player_color(player) == 26) {
+// afterimage
+var tempColour = c_white;
+if (get_player_color(player) == 24) {
 
 
 
@@ -287,11 +327,19 @@ if (get_player_color(player) == 26) {
 
 
 col1 = make_colour_rgb(color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv))
-
-
-} else { col1 = GetColourPlayer(0) }
-
 col2 = GetColourPlayer(1)
+
+
+} else if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
+
+col1 = make_colour_rgb(145, 0, 0);
+col2 = make_colour_rgb(237, 64, 64);
+
+}
+else { col1 = GetColourPlayer(0) 
+	col2 = GetColourPlayer(1)
+
+}
 /*
 if (attack == AT_FSPECIAL) {
     
@@ -350,3 +398,27 @@ if (attack == AT_FSPECIAL) {
     get_color_profile_slot_b(get_player_color(player), _index));
 } // lukaru
 
+//Defines, put at bottom of file
+#define maskHeader
+{
+    gpu_set_blendenable(false);
+    gpu_set_colorwriteenable(false,false,false,true);
+    draw_set_alpha(0);
+    draw_rectangle_color(0,0, room_width, room_height, c_white, c_white, c_black, c_black, false);
+    draw_set_alpha(1);
+}
+
+#define maskMidder
+{
+    gpu_set_blendenable(true);
+    gpu_set_colorwriteenable(true,true,true,true);
+    gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+    gpu_set_alphatestenable(true);
+}
+
+#define maskFooter
+{
+    gpu_set_alphatestenable(false);
+    gpu_set_blendmode(bm_normal);
+    draw_set_alpha(1);
+}

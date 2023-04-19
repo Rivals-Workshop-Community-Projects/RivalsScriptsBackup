@@ -302,7 +302,7 @@ if (attack == AT_NSPECIAL)
 }
 
 //Input Catooken
-if (attack_down && 
+/*if (attack_down && 
     special_down &&
     (
         (attack == AT_NSPECIAL_2 && window == 1) || 
@@ -318,9 +318,9 @@ if (attack_down &&
     }
     else
     {
-        set_attack(44);
+        //set_attack(44);
     }
-}
+}*/
 
 //====> NEUTRAL B 3, CATOOKEN (43) #######################################################
 
@@ -328,7 +328,8 @@ if (attack == 43)
 {
     if (window == 1 && window_timer == 1 && !hitpause)
     {
-        sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"), false, noone, 1, 2);
+        //sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"), false, noone, 1, 2);
+        sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
         spawn_hit_fx(x + 10 * spr_dir, y - 20, 311)
     }
     
@@ -401,7 +402,8 @@ if (attack == 43)
     //Shoot
     if (window == 8 && window_timer == 1 && move_cooldown[AT_EXTRA_1] <= 0)
     {      
-        sound_play(asset_get("sfx_clairen_swing_strong"), false, noone, 1, 2);
+        //sound_play(asset_get("sfx_clairen_swing_strong"), false, noone, 1, 2);
+        sound_play(asset_get("sfx_zetter_fireball_fire"));
         
         flag_breverse = false;
         spawnFireBall(            
@@ -422,9 +424,9 @@ if (attack == 43)
 
 //Catooken fail
 
-if (attack == 44)
+/*if (attack == 44)
 {
-    if (window == 3 && 
+    /*if (window == 3 && 
         (
             attack_pressed ||
             special_pressed ||
@@ -448,8 +450,8 @@ if (attack == 44)
     {
         attack_end();
         set_state(PS_IDLE);
-    }
-}
+    //}
+}*/
 
 //====> FINAL SMASH, PHOENIX CATOOKEN (49) #######################################################
 if (attack == 49)
@@ -476,12 +478,19 @@ if (attack == 49)
     Call all the fire balls
 */
 
+
 if (attack == AT_NSPECIAL_2)
+//if (false)
 {
     /*if (attack_down)
     {
         set_attack(AT_NSPECIAL);
     }*/
+    
+    if (((window == 2 && window_timer >= 1) || window > 2) && !was_parried)
+    {
+        can_jump = true;
+    }
     
     //B Reverse
     if (!flag_breverse &&
@@ -496,8 +505,6 @@ if (attack == AT_NSPECIAL_2)
     var txo = 0; //Target X Offset
     var tyo = -25; //Target Y Offset
     
-    can_jump = !was_parried;
-    
     if (window == 1 && window_timer == 1)
     {
         var nstx = x + txo;
@@ -508,7 +515,7 @@ if (attack == AT_NSPECIAL_2)
         //spawn_hit_fx(nspecial_targetX, nspecial_targetY, fx_shine);
         
         //Indicator
-        if (fBall_obj != noone)
+        if (fBall_obj != noone && move_cooldown[AT_EXTRA_2] <= 0)
         {
             sound_play(asset_get("sfx_frog_fspecial_cancel"));
             
@@ -544,8 +551,10 @@ if (attack == AT_NSPECIAL_2)
         val_mp -= ballCall_cost;
         
         //Call Fire balls
-        if (fBall_obj != noone)
+        if (fBall_obj != noone && move_cooldown[AT_EXTRA_2] <= 0)
         {
+            move_cooldown[AT_EXTRA_2] = 120; //Riptide Update, New
+            
             with (fBall_obj)
             {
                 var _dist = point_distance(x, y, other.x + txo, other.y + tyo);
@@ -628,9 +637,11 @@ if (attack == AT_FSPECIAL)
     if (fspecial_grab)
     {
         fspecial_grab = false;
-        window_timer = 0;
-        window = 0;
+        //window_timer = 0;
+        //window = 0;
         set_attack(AT_FSPECIAL_2);
+        window_timer = 0;
+        window = 1;
     }
     /*
     */
@@ -670,6 +681,7 @@ if (attack == AT_FSPECIAL_2)
         //Fumble Sphere
         if (jump_pressed || shield_pressed)
         {
+            move_cooldown[AT_FSPECIAL] = 180;
             spawnFireBall(
                 x + (nspecial_offsetX * image_xscale),
                 y + nspecial_offsetY,
@@ -881,8 +893,8 @@ if (mode == 0 ||
         
         //---> ALT RELATED CODE
         c_sprite = 
-            get_player_color(player) == 26 ? "ball_formRip" :
-            get_player_color(player) == 28 ? "ball_formRip" :
+            get_player_color(player) == 27 ? "ball_formRip" :
+            get_player_color(player) == 29 ? "ball_formRip" :
             "ball_formA";
         
         c_HBsound_effect = asset_get("sfx_clairen_hit_strong");

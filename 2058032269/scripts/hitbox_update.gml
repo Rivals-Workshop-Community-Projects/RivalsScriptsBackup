@@ -95,139 +95,65 @@ if (attack == AT_FSPECIAL) { // EX Shots
 }
 
 if (attack == AT_NSPECIAL) { // Standard Shots
-	if (hbox_num == 2 || hbox_num == 4) {
-		if (!free) {
-			destroyed = true;
-		}
-	}
-	if (hbox_num == 5) {
-		if (hitbox_timer >= 40) {
-			hsp += -0.45*ownerdirection;
-		}
-		if (was_parried) {
-			hsp += 0.6*ownerdirection;
-		}
-	}
-	if (hbox_num == 6) {
-		if (free) {
-			vsp += 0.45;
-		}
-		if (!free) {
-			destroyed = true;
-		}
-	}
-}
-
-if (attack == AT_NSPECIAL_2) { // Standard Shots Upwards
-	if (hbox_num == 2 || hbox_num == 4) {
-		if (!free) {
-			destroyed = true;
-		}
-	}
-	if (hbox_num == 5) {
-		if (hitbox_timer >= 30) {
-			vsp += 0.1;
-		}
-		if (was_parried) {
-			vsp += -0.6;
-		}
-		if (!free) {
-			destroyed = true;
-		}
-	}
-	if (hbox_num == 6) {
-		if (free) {
-			vsp += 0.45;
-		}
-		if (!free) {
-			destroyed = true;
-		}
-	}
-}
-
-if (attack == AT_EXTRA_1 || attack == AT_EXTRA_2) { // Charge Shot
-	if (hbox_num == 2) {
-		if (was_parried) {
-			hitbox_timer = 10;
-		}
-	}
-}
-
-if (attack == AT_NSPECIAL) { // Chaser Shot
-	if (hbox_num == 7) {
-		
-		if (was_parried && player == orig_player && chase == player_id) {
-			destroyed = true;
-		}
-		
-		if (was_parried) {
-			chase = player_id;
-			hitbox_timer = 60;
-		}
-		
-		if (hitbox_timer >= 20) {
+	switch(hbox_num) {
+		case 2:
+		case 4:
+			if (!free) { destroyed = true; }
+		break;
+		case 5:
+			if (hitbox_timer >= 10) {
+				hsp = lerp(hsp, rHSP, 0.0075);
+				vsp = lerp(vsp, rVSP, 0.0075);
+				//vsp += -0.45*dsin(proj_angle);
+				
+				//hsp += -0.45*ownerdirection;
+			}
+			if (was_parried) {
+				hsp += 0.6*ownerdirection;
+			}
+			if (!free) {
+				destroyed = true;
+			}
+		break;
+		case 6:
+			if (free) {
+				vsp += 0.45;
+			}
+			if (!free) {
+				destroyed = true;
+			}
+		break;
+		case 7:
+			if (was_parried) {
+				if (player == orig_player && chase == player_id) { destroyed = true; }
+				chase = player_id;
+				hitbox_timer = 60;
+			}
 			
-			var angle = point_direction(x, y, chase.x, chase.y-(chase.char_height/2));
-			chase_hsp = lengthdir_x(12, angle);
-			chase_vsp = lengthdir_y(12, angle);
-			
-			hsp = lerp(hsp, chase_hsp, 0.025);
-			vsp = lerp(vsp, chase_vsp, 0.025);
-			
-			var one_dif = angle - proj_angle;
-			if (ownerdirection > 0) {
-				if (angle < 180) {
-					proj_angle = lerp(proj_angle, angle, 0.035);
+			if (hitbox_timer >= 20) {
+				
+				var angle = point_direction(x, y, chase.x, chase.y-(chase.char_height/2));
+				chase_hsp = lengthdir_x(12, angle);
+				chase_vsp = lengthdir_y(12, angle);
+				
+				hsp = lerp(hsp, chase_hsp, 0.025);
+				vsp = lerp(vsp, chase_vsp, 0.025);
+				var one_dif = angle - proj_angle;
+				if (ownerdirection > 0) {
+					if (angle < 180) {
+						proj_angle = lerp(proj_angle, angle, 0.035);
+					}
+					if (angle > 180) {
+						proj_angle = lerp(proj_angle, angle-360, 0.035);
+					}
 				}
-				if (angle > 180) {
-					proj_angle = lerp(proj_angle, angle-360, 0.035);
+				if (ownerdirection < 0) {
+					proj_angle = lerp(proj_angle, angle-180, 0.035);
 				}
 			}
-			if (ownerdirection < 0) {
-				proj_angle = lerp(proj_angle, angle-180, 0.035);
-			}
-		}
-	}
-}
-
-if (attack == AT_NSPECIAL_2) { // Chaser Shot Upwards
-	if (hbox_num == 7) {
-		
-		if (was_parried && player == orig_player && chase == player_id) {
-			destroyed = true;
-		}		
-
-		if (was_parried) {
-			chase = player_id;
-			hitbox_timer = 60;
-		}
-		
-		if (hitbox_timer >= 20) {
-			
-			var angle = point_direction(x, y, chase.x, chase.y-(chase.char_height/2));
-			chase_hsp = lengthdir_x(12, angle);
-			chase_vsp = lengthdir_y(12, angle);
-			
-			hsp = lerp(hsp, chase_hsp, 0.025);
-			vsp = lerp(vsp, chase_vsp, 0.025);
-			
-			var one_dif = angle - proj_angle;
-			if (ownerdirection > 0) {
-				if (angle > 90 && angle < 270) {
-					proj_angle = lerp(proj_angle, angle-90, 0.035);
-				}
-				if (angle > 270 || angle < 90) {
-					proj_angle = lerp(proj_angle, angle-450, 0.035);
-				}
-			}
-			if (ownerdirection < 0) {
-				if (angle > 90 && angle < 270) {
-					proj_angle = lerp(proj_angle, angle-90, 0.035);
-				}
-				if (angle > 270 || angle < 90) {
-					proj_angle = lerp(proj_angle, angle-450, 0.035);
-				}
-			}
-		}
+		break;
+		case 10:
+			if (was_parried) { hitbox_timer = 10; }
+		break;
 	}
 }

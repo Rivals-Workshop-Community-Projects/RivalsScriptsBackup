@@ -5,12 +5,16 @@ cpu_fight_time = 0;
 
 cur_skills = [0, 1, 2, 3];
 
+cpu_skill_pool = ds_list_create();
+for (var i = 0; i < 12 i ++) ds_list_insert(cpu_skill_pool, i, i);
+
 menu_active = false;
 menu_type = 1;
 cpu_select_time = 30; //50
 
 input = 0; //will decide bar's combo strings
 target_dist = 0;
+target_angle = 0;
 facing_target = false;
 
 bar_should_parry = 0; //decides if bar should attempt to parry

@@ -51,9 +51,9 @@ alt_name[31] = "Peabody";
  
 draw_set_halign(fa_left);
  
-textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
+textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + "3.5");
  
-textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
+textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, "12" + " " + "October");
 
 ///Alt
  
@@ -77,7 +77,6 @@ textDraw(temp_x + 2, temp_y + 119, "fName", c_white, 0, 1000, 1, true, 1, "" + (
  
  
  
-user_event(12);
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));

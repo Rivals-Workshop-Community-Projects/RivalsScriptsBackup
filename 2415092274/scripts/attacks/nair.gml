@@ -11,12 +11,12 @@ set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair2_hurt"));
 //set_window_value(AT_NAIR, 0, AG_WINDOW_ANIM_FRAMES, 1);
 //set_window_value(AT_NAIR, 0, AG_WINDOW_ANIM_FRAME_START, 0);
 
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);//9
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("SWE2"));
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);//8
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
@@ -26,11 +26,11 @@ set_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
-set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 14);//12
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 
-set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 14);//16
+set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 10);//16//14
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_NAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -48,12 +48,12 @@ set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_X, 6);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -7);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 18);
+set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 20);//18
 set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 72);
 set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 28);
 set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 4);
+set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 3);//4
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 361);//65
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 6);//this is new
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 5);//.68
@@ -73,7 +73,7 @@ set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 76);
 set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 34);
 set_hitbox_value(AT_NAIR, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_NAIR, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 7);
+set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 5);//7
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 80);//65
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE_FLIPPER, 6);//this is new
 set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 6);//.68

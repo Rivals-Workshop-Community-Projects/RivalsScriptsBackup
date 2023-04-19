@@ -252,3 +252,19 @@ if (get_player_color( player ) == 11 || get_player_color( player ) == 23){
 } else {
 	shadowmario = false
 }
+
+//Compatability
+otto_bobblehead_sprite = sprite_get("otto");
+steve_death_message = "Steve got stomped";
+Hikaru_Title = "Leaping Plumber";
+tcoart = sprite_get("tco_sketch");
+ncode1 = "Reisdent and hero of the Mushroom Kingdom.";
+ncode2 = "Known for jumping on enemies and transforming.";
+ncode3 = "Very agile for some reason.";
+sprite_change_offset("miiverse", 60, 30);
+miiverse_post = sprite_get("miiverse");
+arena_title = "Mr. Video Game Himself";
+arena_short_name = "Mario";
+battle_text = "* Mario leaps into sight!";
+has_fail = true;
+fail_text = "Looks like you needed one of those extra lives.";

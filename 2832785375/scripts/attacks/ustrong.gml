@@ -47,6 +47,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, vfx_flower_sweetspot);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
 
 //midspot
@@ -60,7 +61,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 80);
 set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 160);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 5);
-set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 10);
+set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);
@@ -82,7 +83,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_WIDTH, 140);
 set_hitbox_value(AT_USTRONG, 3, HG_HEIGHT, 50);
 set_hitbox_value(AT_USTRONG, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_PRIORITY, 4);
-set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 10);
+set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 8);
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USTRONG, 3, HG_KNOCKBACK_SCALING, 0.8);

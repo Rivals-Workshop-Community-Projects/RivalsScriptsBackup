@@ -400,7 +400,7 @@ if (attack == AT_USPECIAL){
 
 if (attack == AT_DSPECIAL){
     can_fast_fall = false;
-    can_move = false
+    can_move = false;
 	if (window == 1 && window_timer == 1){
 	//propeller_rats += 1;
 	//attack_end();
@@ -437,9 +437,11 @@ switch (name) {
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+if (instance_exists(newdust)){
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+}

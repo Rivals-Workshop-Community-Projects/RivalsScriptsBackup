@@ -82,7 +82,7 @@ switch(attack){
             if(window == 1 and window_timer == 1){
                 sound_play(asset_get("sfx_swipe_weak1"), false, noone, .6, 1.05)
             }
-            if(window == 3 and !free){
+            if(window == 3 and !free and !was_parried){
             	attack_end();
             	landing_lag_time = 3;
             	set_state(PS_LANDING_LAG);
@@ -160,9 +160,14 @@ switch(attack){
                 fspec_charge = 0;
                 fspec_sonic = 23;
                 fspec_misfire = false;
+                //fspecial_window_2_length = 30;
+                set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 30)
             }
             
             if(window == 2){
+            	if(window_timer == get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)){
+            		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)-3)
+            	}
                 if(!special_down or fspec_charge > 146){
                     if(random_func(1, 9, true)+1 == 9){
                         fspec_misfire = true;
@@ -250,7 +255,13 @@ switch(attack){
                 attack_end();
                 landing_lag_time = get_window_value(attack, window, AG_WINDOW_LENGTH) - window_timer;
                 landing_lag_time = clamp(landing_lag_time, 4, 12);
-                set_state(PS_LANDING_LAG);
+                var stateto = PS_LANDING_LAG
+                if(was_parried){
+                	landing_lag_time = 40;
+                	parry_lag = 40;
+                	stateto = PS_PRATLAND
+                }
+                set_state(stateto);
             }
             if(window > 4){ 
                 if(window_timer==1){
@@ -463,13 +474,26 @@ switch(attack){
 	case AT_EXTRA_2:
 	suppress_stage_music(0, 0.02);
 	if(window == 1 and window_timer == 4){
-		sound_play(sound_get("victory2"), false, 0, 1, 1);
+		play_music = false;
+		
+		with(oPlayer){
+			if(url == other.url) and other != self{
+				other.play_music = suppress_music;
+			}
+		}
+		if(!play_music){
+			sound_play(sound_get("victory2"), true, 0, 1, 1);
+		}
+		suppress_music = true;
 	}
 	
 	if(window == 3 and !taunt_down){
-		sound_stop(sound_get("victory2"));
+		if(!play_music){
+			sound_stop(sound_get("victory2"));
+		}
 		window=4;
 		window_timer = 0;
+		suppress_music = false;
 	}
 	break;
 		

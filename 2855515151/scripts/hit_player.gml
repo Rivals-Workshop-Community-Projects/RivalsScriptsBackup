@@ -198,15 +198,17 @@ if (my_hitboxID.attack == AT_NSPECIAL && (my_hitboxID.hbox_num == 3 || my_hitbox
 {
     hatted_id = hit_player_obj.id;
     hatted_id.invincible = true;
-    hatted_id.invince_time = 40;
-	hatted_id.hitstop = 999999999999; //this number doesn't matter it will simply put them in hitpause for a long time
+    hatted_id.invince_time = 4;
+	//hatted_id.hitstop = 2; //this number doesn't matter it will simply put them in hitpause for a long time
 }
+
+
 
 //Grab Hits
 if (my_hitboxID.attack == AT_FSPECIAL && (my_hitboxID.hbox_num == 3) && !hit_player_obj.clone) {
     hat_object.hatted_id = hit_player_obj.id;
     hat_object.hatted_id.invincible = true;
-    hat_object.hatted_id.invince_time = 20 * hat_object.grab_speed;
+    hat_object.hatted_id.invince_time = 20;
 	hat_object.hitstop = clamp(my_hitboxID.hitpause + my_hitboxID.damage + my_hitboxID.hitpause_growth * 0.05, 0, 20);	
 	hat_object.hatted_id.visible = false;
 }

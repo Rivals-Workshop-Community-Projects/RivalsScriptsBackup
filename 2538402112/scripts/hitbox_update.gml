@@ -13,7 +13,6 @@ if (attack == AT_FTHROW){
 		player_id.move_cooldown[AT_FTHROW] = 210;
 		proj_angle = point_direction(0,0,abs(hsp),sign(hsp)*vsp);
 	}
-	player_id.grov_current_nspecial = 0;
     if !free destroyed = true;
     
     if get_player_color(player) == 13 image_index = 1
@@ -21,7 +20,6 @@ if (attack == AT_FTHROW){
 }
 if (attack == AT_UTHROW){
 	if hitbox_timer == 1 && !has_rune("O") player_id.move_cooldown[AT_UTHROW] = 150;
-	// player_id.grov_current_nspecial = 2;
 	// through_platforms = 10
     if !free destroyed = true;
     
@@ -48,6 +46,8 @@ if (attack == AT_DTHROW){
 }
 
 if (attack == AT_FSPECIAL){
+	image_index = (hitbox_timer/2)%2 + (get_player_color(player) == 13)*2 + (get_player_color(player) == 12)*4;
+	// image_index = hitbox_timer/2 + (get_player_color(player) == 13) + (get_player_color(player) == 12)*2;
 	if player == orig_player{ //Allows Ori to Bash it
 	    hsp = lengthdir_x(14, player_id.grov_wandangle);
 	    vsp = lengthdir_y(14, player_id.grov_wandangle);
@@ -61,11 +61,11 @@ if (attack == AT_FSPECIAL){
 	    	if player != other.orig_player{
 	    		if place_meeting(x,y,other){
 	    			other.has_hit = true
-	    			other.player_id.grov_pouncex = playerID.x
-	    			other.player_id.grov_pouncey = playerID.y
-	    			if other.player_id.free other.player_id.grov_pouncey -= playerID.char_height/2
-	    			other.player_id.grov_fspecial_airuse = false
-	    			other.player_id.grov_pounce_foe_id = playerID
+	    			other.player_id.grov_pouncex = playerID.x;
+	    			other.player_id.grov_pouncey = playerID.y;
+	    			if other.player_id.free other.player_id.grov_pouncey -= 32;
+	    			other.player_id.grov_fspecial_airuse = false;
+	    			other.player_id.grov_pounce_foe_id = playerID;
 	    		}
 	    	}
 	    }
@@ -79,6 +79,9 @@ if (attack == AT_FSPECIAL){
 	    	rune_check = true
 	    	other.destroyed = true
 	    }
+    }
+    if destroyed{
+        spawn_hit_fx(x, y, HFX_ABS_ZAP_SMALL);
     }
     if (destroyed && was_parried == false && player == orig_player) || rune_check = true{
         // if !has_hit {

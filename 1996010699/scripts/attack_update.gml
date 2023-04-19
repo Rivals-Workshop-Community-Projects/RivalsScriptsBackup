@@ -6,6 +6,20 @@ if(attack == AT_JAB){
 	}
 }
 
+if(attack == AT_DAIR){
+	switch(window){
+		case 1:
+			leafBlower = false;
+			break;
+		case 2:
+			leafBlower = true;
+			break;
+		case 3:
+			leafBlower = false;
+			break;
+	}
+}
+
 if(attack == AT_UTILT){
 	can_fast_fall = false;
 	if (item[11,3] == 1){
@@ -65,23 +79,28 @@ if(attack == AT_DTILT){
 }
 
 if(attack == AT_USTRONG){
+	/*
+	//pandora
 	if (window == 2){
 		if(crouchCounter >= 100 && window_timer == 1){
 			window = 7;
 		}
 	}
+	*/
 	if (window >= 2 && window <= 5){
 		hud_offset = 40;
 	}
 	if (window == 2 && window_timer == 1){
 		sound_play(asset_get("sfx_abyss_portal_spawn"));
 	}
+	/*
+	//pandora
 	if (window == 7 && window_timer == get_window_value(AT_USTRONG,7,AG_WINDOW_LENGTH)){
 		window = 8;
 		window_timer = 0;
 	}
 	if (window == 8){
-		crouchCounter = 0;
+		//crouchCounter = 0; //pandora
 		if (window_timer % 2 == 0 && !hitpause){
 			create_hitbox(AT_USTRONG , 4 , x   , y );
 		}
@@ -100,12 +119,15 @@ if(attack == AT_USTRONG){
 		window = 11;
 		window_timer = 0;
 	}
+	*/
 }
 
 if(attack == AT_DSTRONG){
 	if(window < 3){
 		hud_offset = 28;
 	}
+	/*
+	//pandora
 	if(window == 2 && window_timer == 1 && crouchCounter >= 100){
 		window = 5;
 	}
@@ -130,14 +152,19 @@ if(attack == AT_DSTRONG){
 			window_timer = 0;
 		}
 	}
+	*/
 }
 
 if(attack == AT_FTILT){
 	if(window == 1 && window_timer == 4){
+		/*
+		//pandora
 		if(crouchCounter >= 100){
 			window = 5;
 			window_timer = 0;
-		} else if (item[27, 3] == 1){
+		}
+		*/
+		if (item[27, 3] == 1){	//else if
 			for(var b = 5; b < (5 + numSuds); b++){
 				set_num_hitboxes(AT_FTILT, b);
 				var randBub = random_func(0, b, true);
@@ -145,9 +172,9 @@ if(attack == AT_FTILT){
 				set_hitbox_value(AT_FTILT, b, HG_HITBOX_TYPE, 2);
 				set_hitbox_value(AT_FTILT, b, HG_WINDOW, 4);
 				set_hitbox_value(AT_FTILT, b, HG_WINDOW_CREATION_FRAME, 1 + (b - 5));
-				set_hitbox_value(AT_FTILT, b, HG_LIFETIME, 45 + random_func(1, 15, true));
-				set_hitbox_value(AT_FTILT, b, HG_HITBOX_X, 30 + (randBub));
-				set_hitbox_value(AT_FTILT, b, HG_HITBOX_Y, -32 + randBub - 5);
+				set_hitbox_value(AT_FTILT, b, HG_LIFETIME, 45 + random_func(b - 5, 15, true));
+				set_hitbox_value(AT_FTILT, b, HG_HITBOX_X, 30 + random_func(5 * (b - 5), 5, true));
+				set_hitbox_value(AT_FTILT, b, HG_HITBOX_Y, -32 + random_func(6 * (b - 5), 16, true));
 				set_hitbox_value(AT_FTILT, b, HG_WIDTH, 32);
 				set_hitbox_value(AT_FTILT, b, HG_HEIGHT, 32);
 				set_hitbox_value(AT_FTILT, b, HG_PRIORITY, 1);
@@ -156,15 +183,16 @@ if(attack == AT_FTILT){
 				//set_hitbox_value(AT_FTILT, b, HG_ANGLE_FLIPPER, 5);
 				set_hitbox_value(AT_FTILT, b, HG_BASE_KNOCKBACK, 3);
 				set_hitbox_value(AT_FTILT, b, HG_HIT_LOCKOUT, 2);
+				set_hitbox_value(AT_FTILT, b, HG_EXTENDED_PARRY_STUN, 1);
 				set_hitbox_value(AT_FTILT, b, HG_HIT_SFX, asset_get("sfx_bubblepop"));
 				set_hitbox_value(AT_FTILT, b, HG_VISUAL_EFFECT, bubblpop);
 				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_SPRITE, sprite_get("proj_bubbl"));
 				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_MASK, sprite_get("proj_bubbl"));
 				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_ANIM_SPEED, .14);
-				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_HSPEED, (b / 2) + (random_func(2, 6, true) / 3));
-				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_VSPEED, -1.5);
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_HSPEED, (random_func(2 * (b - 5), 5, true)));
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_VSPEED, -1 - random_func(4 * (b - 5), 1, false));
 				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_GRAVITY, 0);
-				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_AIR_FRICTION, 0.15 + (randBub / 100));
+				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_AIR_FRICTION, (random_func(2 * (b - 5), 1, false )) / 5);
 				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 				set_hitbox_value(AT_FTILT, b, HG_PROJECTILE_DESTROY_EFFECT, bubblpop);
@@ -178,6 +206,8 @@ if(attack == AT_FTILT){
 		move_cooldown[AT_FTILT] = sudsCooldown;
 	}
 	
+	/*
+	//pandora
 	if (window == 5){
 		if (window_timer == 8 && !hitpause){
 			sound_play(asset_get("sfx_ori_energyhit_heavy"));
@@ -198,6 +228,7 @@ if(attack == AT_FTILT){
 			window_timer = 0;
 		}
 	}
+	*/
 }
 
 if(attack == AT_NAIR){
@@ -469,7 +500,7 @@ if (attack == AT_FSPECIAL){
 			create_hitbox( AT_FSPECIAL, 1, x, y );
 			//super_armor = true;
 		}
-		if(fspecialTimer >= 15 && !was_parried){
+		if(fspecialTimer >= 9 && !was_parried){
 			can_jump = true;
 			if((item[22, 3] == 1 || !free) && (attack_pressed || (!joy_pad_idle && joy_dir > 60 + (90 * spr_dir) && joy_dir < 120 + (90 * spr_dir)))){
 				destroy_hitboxes();
@@ -494,7 +525,9 @@ if (attack == AT_FSPECIAL){
 			fspecialTimer = 0;
 		}
 		
-		if (item[15,3] == 1 && !hitpause) {
+		/*
+		//pandora
+		if (geneIntro && !hitpause) {
 			if(window_timer % 3 == 1){
 				spawn_hit_fx( x - ((20 - random_func(1, 36, true)) * spr_dir) , y - 16 - random_func(2, 16, true) , smokeKT1 );
 			}
@@ -503,6 +536,7 @@ if (attack == AT_FSPECIAL){
 				spawn_hit_fx( x , y - 10 , dashfxKT);
 			}
 		}
+		*/
 	}
 	if (window == 4){
 		if(item[22, 3] == 1){
@@ -759,7 +793,7 @@ switch(attack){
 			
 			case 4:
 				//whiffed attack: end the attack here.
-				if (window_timer >= get_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH)) {
+				if (window_timer >= 25 || has_hit == true && window_timer >= get_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH)) {
 					attack_end();
 					if (was_parried)  { window = 12; window_timer = 1; }
 					else { set_state(PS_IDLE); }
@@ -909,9 +943,9 @@ switch(attack){
 			set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, .4);
 			set_hitbox_value(AT_NAIR, 1, HG_FINAL_BASE_KNOCKBACK, 3);
 			set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_swish_weak"));
-			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, poolparty);
+			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, spitNair);
 			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -5);
-			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -30);
+			set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 45);
 			set_hitbox_value(AT_NAIR, 1, HG_HIT_LOCKOUT, 0);
 			set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 3);
 			set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 3);
@@ -939,7 +973,8 @@ switch(attack){
 			set_hitbox_value(AT_NAIR, 5, HG_BASE_HITPAUSE, 2);
 			set_hitbox_value(AT_NAIR, 5, HG_HITSTUN_MULTIPLIER, 1.5);
 			set_hitbox_value(AT_NAIR, 5, HG_TECHABLE, 0);
-			set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT, 6);
+			set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT, spitHit);
+			set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT_Y_OFFSET, 45);
 			set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_hod_steamhit1"));
 			set_hitbox_value(AT_NAIR, 5, HG_HITBOX_GROUP, 2);
 		
@@ -960,7 +995,8 @@ switch(attack){
 			set_hitbox_value(AT_NAIR, 6, HG_BASE_HITPAUSE, 2);
 			set_hitbox_value(AT_NAIR, 6, HG_HITSTUN_MULTIPLIER, 1.5);
 			set_hitbox_value(AT_NAIR, 6, HG_TECHABLE, 0);
-			set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT, 6);
+			set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT, spitHit);
+			set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT_Y_OFFSET, 45);
 			set_hitbox_value(AT_NAIR, 6, HG_HIT_SFX, asset_get("sfx_hod_steamhit1"));
 			set_hitbox_value(AT_NAIR, 6, HG_HITBOX_GROUP, 2);
 			
@@ -1037,12 +1073,10 @@ switch(attack){
 					set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, (get_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME) - 2));
 					set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH) - 2));
 					GAUGE_EXP_CURRENT = GAUGE_EXP_CURRENT + 25;
-					numSuds = 3;
-					sudsCooldown = 10;
+					numSuds = 4;
 					break;
 				case 1:
-					numSuds = 5;
-					sudsCooldown = 15;
+					numSuds = 6;
 					break;
 				case 2:
 					set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, (get_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME) + 2));
@@ -1050,7 +1084,6 @@ switch(attack){
 					set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH) + 2));
 					set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH) + 2));
 					numSuds = 7;
-					sudsCooldown = 30;
 					break;
 				case 3:
 					set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, (get_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME) - 1));
@@ -1058,7 +1091,6 @@ switch(attack){
 					set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH) - 1));
 					set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, (get_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH) - 1));
 					numSuds = 10;
-					sudsCooldown = 15;
 					break;
 			}
 			itemsDisplayed[displaySlot] = item[5, 5];
@@ -1335,6 +1367,8 @@ switch(attack){
 			
 		case 20:	//letterman jacket
 			set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
+			
+			set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 7);
 			
 			itemsDisplayed[displaySlot] = item[20, 5];
 			displaySlot++;

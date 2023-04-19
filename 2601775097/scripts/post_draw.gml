@@ -77,7 +77,12 @@ if (is_attacking) switch (attack)
     case AT_NTHROW: case AT_NSPECIAL_AIR:
         draw_sprite_ext(sprite_get("fx_skill0"), image_index+(20/(1+burnbuff_active)*free)+(40*burnbuff_active), x, y, 2*spr_dir, 2, 0, c_white, 1);
         break;
-    case AT_DTHROW: case AT_EXTRA_2: //photon blast | light hookshot
+    case AT_EXTRA_2: //light hookshot
+        if (window < 4) draw_sprite_ext(
+            sprite_get("fx_skill9"), image_index + burnbuff_active * (image_number/2 - 2),
+            x - 88 * spr_dir, y - 94 - free * 2, 2*spr_dir, 2, 0, c_white, 1
+        );
+    case AT_DTHROW: //photon blast
         if (charge_color)
         {
             gpu_set_blendmode(bm_add);

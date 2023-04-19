@@ -106,14 +106,14 @@ set_color_profile_slot( 7, 5, 186, 186, 186 ); //Black
 set_color_profile_slot( 7, 6, 115, 50, 0 ); //Eyes
 set_color_profile_slot( 7, 7, 0, 255, 0 ); //Table
 
-// Springatito
-set_color_profile_slot( 8, 0, 191, 255, 161 ); //Light Fur
-set_color_profile_slot( 8, 1, 16, 69, 12 ); //Dark Fur
-set_color_profile_slot( 8, 2, 49, 163, 31 ); //Red Tights
-set_color_profile_slot( 8, 3, 9, 66, 9 ); //Yellow Tights
-set_color_profile_slot( 8, 4, 44, 66, 56 ); //Kneepads
-set_color_profile_slot( 8, 5, 22, 87, 26 ); //Black
-set_color_profile_slot( 8, 6, 255, 138, 153 ); //Eyes
+// Ciclope
+set_color_profile_slot( 8, 0, 219, 127, 98 ); //Light Fur
+set_color_profile_slot( 8, 1, 28, 24, 18 ); //Dark Fur
+set_color_profile_slot( 8, 2, 43, 43, 43 ); //Red Tights
+set_color_profile_slot( 8, 3, 156, 62, 33 ); //Yellow Tights
+set_color_profile_slot( 8, 4, 38, 38, 38 ); //Kneepads
+set_color_profile_slot( 8, 5, 41, 41, 41 ); //Black
+set_color_profile_slot( 8, 6, 120, 120, 120 ); //Eyes
 set_color_profile_slot( 8, 7, 0, 255, 0 ); //Table
 
 // Akira Taue

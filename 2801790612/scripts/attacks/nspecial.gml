@@ -7,9 +7,6 @@ set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 0);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(AT_NSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
-//set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_COOLDOWN, 120);
-//set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_CD_SPECIAL, 1);
-//set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "The number of multi-hits, as well as the final hit's power, will change depending on A) the charge of the move and B) the distance from the opponent.");
 
 // startup
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);

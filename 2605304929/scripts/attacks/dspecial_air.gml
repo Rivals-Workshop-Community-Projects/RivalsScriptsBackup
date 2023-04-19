@@ -6,7 +6,7 @@ set_attack_value(attack, AG_SPRITE, sprite_get("dspecial_air"));
 set_attack_value(attack, AG_AIR_SPRITE, 0);
 set_attack_value(attack, AG_HURTBOX_SPRITE, sprite_get("dspecial_air_hurt"));
 set_attack_value(attack, AG_HURTBOX_AIR_SPRITE, 0);
-set_attack_value(attack, AG_NUM_WINDOWS, 6);
+set_attack_value(attack, AG_NUM_WINDOWS, 5);
 set_attack_value(attack, AG_HAS_LANDING_LAG, 1);
 set_attack_value(attack, AG_OFF_LEDGE, 1);
 set_attack_value(attack, AG_LANDING_LAG, 15);
@@ -50,10 +50,10 @@ set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
 
 window_num++;
 
-// Window #3 / Frame(s) #4-5 / Active Hitbox Strong Box
+// Window #3 / Frame(s) #4 / Active Hitbox Strong Box
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 4);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 1);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 3);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 7);
@@ -64,44 +64,31 @@ set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 
 window_num++;
 
-// Window #4 / Frame(s) # 6-11 / Before Sweetspot
+// Window #4 / Frame(s) # 5-7 / Active Hitbox Late Hit Grab
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 7);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
-//set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
-set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
-set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2")); // asset_get("") or sound_get("")
-set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 6);
-
-window_num++;
-
-// Window #5 / Frame(s) # 12 / Sweetspot Active
-set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 2);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 12);
-//set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
-
-window_num++;
-
-// Window #6 / Frame(s) # 13-15 / Endlag Air
-set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
-set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
-//set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3); //
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, 7);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
+
+window_num++;
+
+// Window #5 / Frame(s) # 8-10 / Endlag Air
+set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 
 window_num++;
 
 // Ground Endlag
 
-// Window #7 / Frame(s) # 16-20 / Custom Landing Lag
+// Window #6 / Frame(s) # 11-15 / Custom Landing Lag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 20);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 16);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_land_heavy")); // asset_get("sfx_swipe_medium1") or sound_get("")
 set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
@@ -111,7 +98,7 @@ window_num++;
 
 //Hitbox Values --------------------------------------------------------------------------
 //Set Number of Hitboxes
-set_num_hitboxes(attack, 5); // Swap 1 for number of hitboxes
+set_num_hitboxes(attack, 4); // Swap 1 for number of hitboxes
 
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
@@ -122,78 +109,56 @@ set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 28);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -12);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, 0);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 50);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 50);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
+//set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_HIT_LOCKOUT, 20);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Strong Start Up Hitbox");//HG_MUNO_HITBOX_NAME
+set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 hitbox_num++;
 
-//2 weak traveling hitbox
+//2 Sweetspot Hit Grab cannot hit if strong start up hits
 window_for_hitbox = 4;
-set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
-set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 28);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -12);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 25);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 25);
-set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 2);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 315);
-set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 3);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 6); //6   - light water small
-set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-set_hitbox_value(attack, hitbox_num, 81, "Weak Traveling Hitbox");//HG_MUNO_HITBOX_NAME
-hitbox_num++;
-
-//3 Sweetspot Hit Grab cannot hit if strong start up hits
-window_for_hitbox = 5;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 22);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -4);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 50);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 20);
+//set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 28);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, 2);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 40);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 40);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 9);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .1);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 set_hitbox_value(attack, hitbox_num, 81, "Sweetspot Grab");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Hitting this will start the down special Grab");//HG_MUNO_HITBOX_MISC_ADD = i; i++;
 
 hitbox_num++;
 
-// Hitbox #4 / Window # 7- / Weak Shockwave Hitbox Front
-window_for_hitbox = 7; // Set this to change the window that the hitbox comes out at and its length quickly
+// Hitbox #3 / Window # 6- / Weak Shockwave Hitbox Front
+window_for_hitbox = 6; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
@@ -214,12 +179,13 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); //302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Shockwave Front");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;
 
-// Hitbox #5 / Window # 7- / Weak Shockwave Hitbox Back
-window_for_hitbox = 7; // Set this to change the window that the hitbox comes out at and its length quickly
+// Hitbox #4 / Window # 6- / Weak Shockwave Hitbox Back
+window_for_hitbox = 6; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
@@ -240,6 +206,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); //302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Shockwave Back");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;

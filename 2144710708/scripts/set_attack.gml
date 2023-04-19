@@ -125,30 +125,3 @@ if (attack == AT_DTILT) {
 	attack=AT_DSPECIAL_2;
 }
 */
-
-// someday...
-
-if (phone_cheats[cheat_air_strongs] != 0) {
-	if (state == PS_ATTACK_AIR) {
-		
-		
-		if (up_strong_pressed || up_strong_down) {
-			attack = AT_USTRONG;
-		}
-		else if (down_strong_pressed || down_strong_down ) {
-			attack = AT_DSTRONG;	
-		}
-		else if (left_strong_pressed || left_strong_down) {
-			spr_dir = -1;
-			attack = AT_FSTRONG;
-		}
-		else if (right_strong_pressed || right_strong_down) {
-			spr_dir = 1;
-			attack = AT_FSTRONG;
-		}
-	}	
-}
-
-// munophone touch support
-	muno_event_type = 2;
-	user_event(14);

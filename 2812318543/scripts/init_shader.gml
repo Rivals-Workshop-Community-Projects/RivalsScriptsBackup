@@ -13,18 +13,34 @@ if("pandoria_colors" in self && !init_UNshader){
 }
 
 
-if (get_player_color(player) == 16){
-    for(i = 0; i < 8; i++){
-        set_character_color_shading(i, 0);
-    }
+
+var col = get_player_color(player);
+//coat darker on 2, 6, 9-11, 13
+if (col == 2 || col == 6 || (col >= 9 && col <= 111) || col == 13){
+set_character_color_shading( 2, 1.3 );
+}
+//gloves darker on 1, 2, 6-13, 16
+if (col == 1 || col == 2 || (col >= 6 && col <= 13) || col == 16){
+set_character_color_shading( 3, 1.3 );
 }
 
 //color correction for win/lose portraits               312 is right before results screen
 if (object_index == asset_get("draw_result_screen") || object_index == 312){
-    if(get_player_color(player) == 12){
+    if(col == 13){
         set_character_color_slot(4, 255, 231, 201);
-    }else if(get_player_color(player) == 14){
+    }else if(col == 15){
         set_character_color_slot(6, 135, 133, 145);
         set_character_color_slot(7, 94, 92, 107);
+    }else if(col == 16){
+        set_character_color_slot(4, 255, 231, 201);
     }
+
+    //voice lines. this code doesnt work but i tried
+    /*if(get_synced_var(player) == 1){
+        var va_select = random_func(0, 5, true);
+        sound_play(va_lines[1][va_select]);
+    }else if(get_synced_var(player) == 2){
+        var va_select = random_func(0, 5, true);
+        sound_play(va_lines[1][va_select]);
+    }*/
 }

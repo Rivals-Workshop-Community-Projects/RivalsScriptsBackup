@@ -20,6 +20,7 @@ shoryu_obj = -1;
 ewgf_input = -1;
 ewgf_timer = 0;
 
+
 alt1_secret = 0;
 alt2_secret = 0;
 fishe = 0;
@@ -86,8 +87,8 @@ walk_speed = 4;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 8;
-initial_dash_speed = 7.2;
-dash_speed = 6.8;
+initial_dash_speed = 7.5;
+dash_speed = 7;
 dash_turn_time = 8;
 dash_turn_accel = 1.75;
 dash_stop_time = 4;
@@ -176,7 +177,7 @@ sweet = hit_fx_create( sprite_get( "sweet" ), 15 );
 small = hit_fx_create( sprite_get( "smallhit" ), 15 );
 set_hit_particle_sprite(1, sprite_get("particles"))
 ewgf_fx = hit_fx_create(sprite_get("ewgfhit"), 30);
-
+uspec_large = hit_fx_create( sprite_get( "hfx_uspec_large" ), 30 )
 star = hit_fx_create( sprite_get( "star" ), 15 );
 
 taunt_fstrong = false;

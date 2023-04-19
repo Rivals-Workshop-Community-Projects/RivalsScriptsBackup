@@ -10,12 +10,16 @@ with pHitBox {
 	}
 }
     
+    
 timestop *= 0.5
 
 
 
 
-    ncharge = 0
+ncharge = 0
     
 
+if my_hitboxID.type == 2 {
+	parry_lag = 30 + floor(abs(x - hit_player_obj.x)/5)
+}
 

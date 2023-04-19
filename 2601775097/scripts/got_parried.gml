@@ -3,7 +3,13 @@
 window_loops = 0;
 bar_grabbed_id = noone;
 
-burnbuff_active = false;
+if (my_hitboxID.attack == AT_NTHROW) my_hitboxID.hitbox_timer = 0;
+
+if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_COLOR) == hb_color[3] ||
+    attack == skill[2].skill_attack || attack == skill[4].skill_attack || attack == skill[5].skill_attack)
+{
+    burnbuff_active = false;
+}
 
 if (instance_exists(hook_chain_artc))
 {
@@ -25,6 +31,8 @@ if (lightstun_active)
 
         if (lightstun_type < 2) lightstun_type ++;
     }
+
+    if (my_hitboxID.orig_player == player && my_hitboxID.attack == 48) invince_time = 0;
 }
 
 //AI STUFF

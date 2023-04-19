@@ -44,7 +44,7 @@ if (attack == AT_EXTRA_1)
 		charge_timer++;
 		if (hsp == 0 && has_hit = false)
 		{
-			window = 4;
+		window = 4;
 		window_timer = 0;
 		charge_timer = 0;
 		}
@@ -95,6 +95,8 @@ if (attack == AT_EXTRA_1)
 		charge_timer = 0;
 		window = 0;
 		window_timer = 0;
+		set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, crit);
+
 
 	}
 	}
@@ -107,11 +109,9 @@ if (attack == AT_FTHROW && window = 4)
 	sound_stop (sound_get("demo_charge_windup3"));
 }
 
-
- if (attack == AT_DATTACK && window = 1)
+if (attack == AT_DATTACK && window = 1)
 {
 	soft_armor = 5;
-
 }
 
 if (attack == AT_FSTRONG && (window == 3 || window == 4))
@@ -134,54 +134,33 @@ if (attack == AT_DSTRONG && (window == 3 || window == 4 || window == 5))
 	//soft_armor = 14;
 }
 
-
-
 if (attack == AT_DATTACK && window = 2)
 {
-
-if (attack == AT_DATTACK && window_timer > 5 && obj_article1.hit_wall = true)
-{
-	hsp = 0;
-	
-}
+	if (attack == AT_DATTACK && window_timer > 5 && obj_article1.hit_wall = true)
+	{
+		hsp = 0;
+	}
 }
 if (attack == AT_DATTACK && window = 2 && window_timer = 10) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
 	vsp += -4;
 }
-
 if (special_down && sticky_count < 1 && det_timer < 1 && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_DSPECIAL_2 && attack != AT_DSPECIAL_AIR && reminder_timer > 30)
 {
-
-
     sticky_reminder = spawn_hit_fx(x, y, nostickies);
     reminder_timer = 0;
-
 }
-
-
-
-else if (special_down && sticky_count > 0 && det_timer < 1 && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_DSPECIAL_2 && attack != AT_DSPECIAL_AIR && obj_article2.strength > 5)
+else if (special_down && sticky_count > 0 && det_timer < 1  && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_DSPECIAL_2 && attack != AT_DSPECIAL_AIR && obj_article2.strength > 5)
 {
-
-	sound_play( sound_get( "grenade_jump_lp_01" ) );
-		sound_play( sound_get( "stickybomblauncher_det" ) );
     det_timer = 5;
     is_jump = true;
     reminder_timer = 0;
 }
 else if (special_down && sticky_count > 0 && det_timer < 1 && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_DSPECIAL_2 && attack != AT_DSPECIAL_AIR)
 {
-
-
     det_timer = 5;
     reminder_timer = 0;
-
 }
-
-
-
-
 
 if (attack == AT_UAIR || attack == AT_DATTACK)
 {
@@ -430,7 +409,7 @@ if (attack = AT_TAUNT && window = 1)
     		}
     		else
     		{
-    			sound_play(sound_get("yes03"));
+    			sound_play(sound_get("yes01"));
     		}
 
 		window = 2;
@@ -538,7 +517,7 @@ if (attack = AT_TAUNT && window = 1)
     		}
     		else
     		{
-    			sound_play(sound_get("needteleporter02"));
+    			sound_play(sound_get("needteleporter01"));
     		}
 
 		window = 2;
@@ -654,12 +633,9 @@ if (attack = AT_TAUNT && window = 1)
     		{
     			sound_play( sound_get( "battlecry07" ) );
     		}
-    		
-
 		window = 2;
     	window_timer = 0;
     	taunt_num = 1;
-			
 		}
 		if (taunt_num = 3)
 		{
@@ -723,20 +699,14 @@ if (attack = AT_TAUNT && window = 1)
 		}
 		if (taunt_num = 5)
 		{
-		
-    	sound_play( sound_get( "positivevocalization01" ) );
-    		
-    		
-
+    	sound_play( sound_get( "positivevocalization02" ) );
 		window = 2;
     	window_timer = 0;
     	taunt_num = 1;
-			
 		}
-		
+
 		if (taunt_num = 6)
 		{
-		
     	if ((random_func (4, 4, true)) == 1)
     		{
     			sound_play( sound_get( "negativevocalization01" ) );
@@ -795,31 +765,19 @@ if (attack = AT_TAUNT && window = 1)
     		}
     		else
     		{
-    			sound_play(sound_get("goodjob03"));
+    			sound_play(sound_get("goodjob02"));
     		}
-
 		window = 2;
     	window_timer = 0;
     	taunt_num = 1;
-			
 		}
-		
 		if ( taunt_num = 10)
 		{
 			window = 2;
     	window_timer = 0;
     	taunt_num = 1;
 		}
-	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }
 }
 
@@ -838,64 +796,56 @@ if (attack == AT_DATTACK)
 if (attack == AT_DATTACK && window = 1 && window_timer = 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     fling_toggle = 0;
-sound_play( asset_get( "sfx_jumpground" ) );
-    	if (get_player_color(player) == 10)
+	sound_play( asset_get( "sfx_jumpground" ) );
+    if (get_player_color(player) == 10)
 	{
-			sound_play( sound_get( "freedom" ) );
+		sound_play( sound_get( "freedom" ) );
 	}
 	if (get_player_color(player) == 11)
 	{
-		
-	song_num++;
-				if (song_num = 1 || song_num = 3)
-    		{
-    			sound_play( sound_get( "junkies" ) );
-    		}
-    		else if (song_num = 2)
-    		{
-    			sound_play( sound_get( "oil" ) );
-    		}
-    		else if (song_num = 4)
-    		{
-    			sound_play(sound_get("wacha"));
-    			song_num = 0;
-    		}
-
+		song_num++;
+		if (song_num = 1 || song_num = 3)
+   		{
+    		sound_play( sound_get( "junkies" ) );
+   		}
+   		else if (song_num = 2)
+   		{
+   			sound_play( sound_get( "oil" ) );
+   		}
+    	else if (song_num = 4)
+   		{
+   			sound_play(sound_get("wacha"));
+   			song_num = 0;
+   		}
 	}
-    
 }
 
 if (attack == AT_DATTACK && window = 2 && window_timer = 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     fling_toggle = 0;
 	sound_play( sound_get( "engine_idle" ) );
-
-    
 }
 if (attack == AT_DATTACK && window == 2 && window_timer == 30) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     fling_toggle = 1;
-    
     if (get_player_color(player) == 10)
 	{
-	 spawn_hit_fx(x, y, mesacrash);
+		spawn_hit_fx(x, y, mesacrash);
 	}
-	  if (get_player_color(player) == 11)
+	if (get_player_color(player) == 11)
 	{
-	 spawn_hit_fx(x, y, wackyracescrash);
+		spawn_hit_fx(x, y, wackyracescrash);
 	}
 	else
 	{
-    spawn_hit_fx(x, y, crash);
+    	spawn_hit_fx(x, y, crash);
 	}
-	    	sound_stop( sound_get( "engine_idle" ) );
-	   
-    		sound_play( asset_get( "sfx_ell_overheat" ) );
+	sound_stop( sound_get( "engine_idle" ) );
+	sound_play( asset_get( "sfx_ell_overheat" ) );
     
 }
 if (attack == AT_DSPECIAL_2 && window == 2 && window_timer == 1 && obj_article_solid.player_id = id) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
-    
     meemfx = spawn_hit_fx(obj_article_solid.x, obj_article_solid.y, 254);
     call_count++;
 }
@@ -904,12 +854,11 @@ if (attack == AT_DSPECIAL_2 && window == 2 && window_timer == 1 && obj_article_s
 if (attack == AT_FSTRONG && window == 5 && window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     spawn_hit_fx(x, y, fsmashgun);
-    
     vsp = vsp - 20;
     hsp = hsp - (80 * spr_dir);
 }
 
-if (attack == AT_USTRONG && window == 3 && window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+if (attack == AT_USTRONG && window == 9 && window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     spawn_hit_fx( x, y, shoot);
 }
@@ -917,17 +866,17 @@ if (attack == AT_USTRONG && window == 3 && window_timer == 1) // WARN: Possible 
 if (attack == AT_UTILT)
 {
     if ((random_func (3, 3, true)) == 0)
-    		{
-    			set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sound_get("badpipe"));
-    		}
-    		else if ((random_func (3, 3, true)) == 1)
-    		{
-    			set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sound_get("badpipe2"));
-    		}
-    		else
-    		{
-    			set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sound_get("badpipe3"));
-    		}
+    {
+    	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sound_get("badpipe"));
+    }
+    else if ((random_func (3, 3, true)) == 1)
+    {
+    	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sound_get("badpipe2"));
+    }
+    else
+    {
+    	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sound_get("badpipe3"));
+    }
 }
 
 if (attack == AT_FAIR && is_jump == true)
@@ -1030,44 +979,49 @@ if (attack = AT_DAIR) // WARN: Possible repetition during hitpause. Consider usi
   		vsp = -8;
 		}
 	} 
-}else {bair_can_vsp = 0;}
-
-if (attack == AT_DAIR && window == 3 && window_timer == 3) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
-
+}
+else 
 {
-    
-    if (has_hit = true)
-    {
-        hit_count = 1;
-    }
-    has_hit = false;
-    
+	bair_can_vsp = 0;
 }
 
-//changes here by TinMines
-if (attack == AT_FSPECIAL){
-	move_cooldown[AT_FSPECIAL] = 10;
+if (attack == AT_DAIR && window == 3 && window_timer == 3) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+{
+    if (has_hit = true)
+    {
+    	hit_count = 1;
+    }
+    has_hit = false;
+}
+
+if (attack == AT_DAIR ) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+{
+	if(window == 3 && window_timer == 10)
+	{
+		if(hit_count == 0 && has_hit == false)
+		{
+			take_damage(player, -1, 4);
+		}
+	}
 }
 
 
 if (attack == AT_DAIR && window == 3 && window_timer == 9 && has_hit = true && hit_count = 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 
 {
-    	sound_play( sound_get( "doubledonk" ) );
-    	sound_play( sound_get( "grenade_jump_lp_01" ) );
-        spawn_hit_fx( x, y, donk );
-        
-        vsp = vsp - 25;
-        if (vsp < -20)
+    sound_play( sound_get( "doubledonk" ) );
+    spawn_hit_fx( x, y, donk );
+    vsp = vsp - 25;
+    if (vsp < -20)
     {
     	vsp = -20;
     }
-        is_jump = 1;
+    is_jump = 1;
 }
 
 if (attack == AT_DAIR && window == 4)
 {
-     hit_count = 0;
+    hit_count = 0;
 }
 
 if (attack == AT_USPECIAL && window == 1 && window_timer < 3)
@@ -1082,13 +1036,10 @@ if (attack == AT_USPECIAL && window == 1 && window_timer < 3)
 if (attack == AT_USPECIAL && window == 1)
 {
     vsp += -1;
-    
     if (special_down && window_timer != 22 && window_timer != 21)
     {
     	window_timer += -0.35;
     }
-    
-    
     if (window_timer = 22 && special_down && hover_timer < 10) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 	//changes here by TinMines 
     {
@@ -1100,7 +1051,12 @@ if (attack == AT_USPECIAL && window == 1)
     {
         window = 3;
         window_timer = 10;
-        vsp = -12;
+        if vsp <-8{
+        	vsp = -4;
+        } else{
+        	vsp = -10;
+        }
+        hsp = hsp /20;
         sound_play( sound_get( "bottle_intact_hit_world1" ) );
         set_state( PS_PRATFALL );
         //move_cooldown[AT_USPECIAL] = 70;
@@ -1109,18 +1065,16 @@ if (attack == AT_USPECIAL && window == 1)
 
 if (attack == AT_USPECIAL && window == 2)
 {
-	
     vsp += 2;
-	
     fall_through = false;
     soft_armor = 14;		
     if (jump_pressed)
     //changes here by TinMines
     {
     	sound_play( sound_get( "bottle_broken_hit_flesh3" ) );
-    	vsp = -12;
+    	vsp = -6;
         set_state( PS_PRATFALL );
-          //move_cooldown[AT_USPECIAL] = 70;
+        move_cooldown[AT_USPECIAL] = 70;
     }
 }
 
@@ -1129,24 +1083,23 @@ if (attack == AT_USPECIAL && (window == 2) && has_hit == true && uspecial_toggle
     window = 3;
     window_timer = 0;
     uspecial_toggle = 0;
-    
 }
-
 else if (attack == AT_USPECIAL && (window == 3) && has_hit == true)
 {
     vsp = -6;
     is_jump = 1;
-    
 }
-
 else if (attack == AT_USPECIAL && (window == 2) && free == false && uspecial_toggle == 1)
 {
     window = 3;
     window_timer = 0;
     uspecial_toggle = 0;
 }
-
-
+if (attack == AT_USPECIAL){
+	if (window == 3 && window_timer == 4 && has_hit == false){
+		take_damage(player, -1, 4);
+	}
+}
 
 if (attack = AT_BAIR && window == 2)
 //changes here by TinMines
@@ -1162,13 +1115,14 @@ if (attack = AT_BAIR && window == 2)
     {
         spr_dir = 1;
     }
-    move_cooldown[AT_BAIR] = 120;
+    move_cooldown[AT_BAIR] = 180;
 }
 
 
-
-
-
+//changes here by TinMines
+if (attack == AT_FSPECIAL){
+	move_cooldown[AT_FSPECIAL] = 10;
+}
 
 if (attack == AT_DSPECIAL && window == 2 && window_timer = 1 ) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
@@ -1179,13 +1133,13 @@ if (attack == AT_DSPECIAL && window == 2 && window_timer = 1 ) // WARN: Possible
 
 if (attack == AT_FSPECIAL && window == 1 && window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
-		sound_play( sound_get( "stickybomblauncher_charge_up" ) );
+	sound_play( sound_get( "stickybomblauncher_charge_up" ) );
 }
 
 
 if (attack == AT_FSPECIAL && (window == 4 || window == 5 )&& window_timer == 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
-		sound_stop( sound_get( "stickybomblauncher_charge_up" ) );
+	sound_stop( sound_get( "stickybomblauncher_charge_up" ) );
 }
 
 
@@ -1193,23 +1147,17 @@ if (attack == AT_FSPECIAL && (window == 4 || window == 5 )&& window_timer == 1) 
 if (attack == AT_FSPECIAL && window = 4 && window_timer = 1)  // aim forward // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     instance_create (x + spr_dir * 40, (y-50), "obj_article2");
-
-
-    
 }
 
 else if (attack == AT_FSPECIAL && window = 5 && window_timer = 1) //aim downward
 {
     instance_create (x + spr_dir * 30, (y-10), "obj_article2");
-
-
 }
 
 if (attack == AT_FSPECIAL && window = 1 && window_timer == 6) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     if (special_down)
     {
-    
     window = 2;
     window_timer = 0;
     }
@@ -1219,7 +1167,6 @@ if (attack == AT_FSPECIAL && window = 1 && window_timer == 6) // WARN: Possible 
     window_timer = 0;
     clear_button_buffer( PC_SPECIAL_PRESSED );
     }
-        
 }
 
 
@@ -1227,7 +1174,6 @@ if (attack == AT_FSPECIAL && window = 2 && window_timer == 6) // WARN: Possible 
 {
     if (special_down)
     {
-    
     window = 3;
     window_timer = 0;
     }
@@ -1236,14 +1182,12 @@ if (attack == AT_FSPECIAL && window = 2 && window_timer == 6) // WARN: Possible 
     window = 4;
     window_timer = 0;
     }
-        
 }
 
 if (attack == AT_FSPECIAL && window = 3 && window_timer == 6) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
 {
     if (special_down)
     {
-    
     window = 3;
     window_timer = 0;
     }
@@ -1252,7 +1196,6 @@ if (attack == AT_FSPECIAL && window = 3 && window_timer == 6) // WARN: Possible 
     window = 4;
     window_timer = 0;
     }
-        
 }
 
 if (attack == AT_DATTACK && window = 2 && window_timer = 1) // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
@@ -1260,13 +1203,9 @@ if (attack == AT_DATTACK && window = 2 && window_timer = 1) // WARN: Possible re
 	   instance_create (x , y, "obj_article1");
 }
 
-
-
 if (attack == AT_FSPECIAL && (window == 3 || window == 2))
 {
     sticky_charge+= 1.5;
-    
-    
 }
 else if (attack == AT_FSPECIAL && window = 4 && window_timer == 3)
 {

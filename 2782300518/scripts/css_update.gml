@@ -1,6 +1,7 @@
 cpu_hover_update();
 
 if !(instance_exists(cursor_id)) exit;
+if ("temp_y" not in self) exit;
 
 if ("css_timer" in self)
 {
@@ -8,6 +9,9 @@ if ("css_timer" in self)
 }
 alt_cur = get_player_color(player);
 txt = "#" + string(alt_cur);
+
+temp_x = x + 8;
+temp_y = y + 9;
 
 if get_synced_var(player) > 1 {
     set_synced_var( player, 0)
@@ -97,7 +101,7 @@ if voicebutton == 1 || voicebutton == 4 {
 var p = player;
 var is_cpu = (get_player_hud_color(p) == 8421504);
 
-if (is_cpu) {
+if (is_cpu && "plate_bounds" in self) {
     var pb = plate_bounds, cs = cursors;
     if (cpu_is_hovered) {
         var c = cs[@cpu_hovering_player]
@@ -131,7 +135,10 @@ if (is_cpu) {
 }
 
 #define get_new_hovering_player()
-var pb = plate_bounds, cs = cursors;
+if ("plate_bounds" in self)
+{
+	var pb = plate_bounds, cs = cursors;
+}
 for (var i = 1; i <= 4; i++) {
     var c = cs[@i];
     var cx = get_instance_x(c);

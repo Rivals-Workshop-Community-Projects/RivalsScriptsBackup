@@ -4,7 +4,6 @@ set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 2);
 set_attack_value(AT_TAUNT, AG_HAS_LANDING_LAG, 200); // hmm
 set_attack_value(AT_TAUNT, AG_OFF_LEDGE, 1);
 set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, sprite_get("owen_hurtbox"));
-set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_EXCLUDE, 1);
 
 // mew
 set_window_value(AT_TAUNT, 1, AG_WINDOW_INVINCIBILITY, 0); // :trollpensive:

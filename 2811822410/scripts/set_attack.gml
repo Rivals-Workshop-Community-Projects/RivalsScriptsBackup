@@ -1,5 +1,16 @@
 //
-
+if(strong_down and strong_buffer <= 0 and !strong_was_pressed){
+	strong_buffer = 6;
+	strong_pressed = true;
+	strong_was_pressed = true;
+} else if(!strong_down){
+	strong_was_pressed = false;
+} else if (strong_buffer > 0){
+	strong_buffer--;
+	if(strong_buffer <= 0){
+		strong_pressed = false;
+	}
+}
 //Miku Trailer
 
 /*
@@ -32,6 +43,25 @@ if (attack == AT_BAIR) {
 	}
 }
 
+if (is_oc) {
+	if (instance_exists(leak_proj)) {
+		if (attack == AT_DSPECIAL) {
+			set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("no_dspecial"));	
+		}
+		if (attack == AT_FSPECIAL) {
+			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("no_fspecial_ground"));	
+			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("no_fspecial_air"));
+		}
+	} else {
+		if (attack == AT_DSPECIAL) {
+			set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));	
+		}
+		if (attack == AT_FSPECIAL) {
+			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_ground"));	
+			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air"));
+		}
+	}
+}
 
 //Clnoe Stuff
 if (custom_clone) {
@@ -44,7 +74,7 @@ if (custom_clone) {
 			set_hitbox_value(attack, 1, HG_FORCE_FLINCH, 0);
 		break;
 		case AT_DATTACK:
-			attack = AT_NSPECIAL_AIR;
+			attack = 48;
 		break;
 		//Aerials
 		case AT_NAIR:
@@ -97,9 +127,26 @@ if (custom_clone) {
 	set_attack_value(AT_UTILT, AG_CATEGORY, 0);
 	set_attack_value(AT_FTILT, AG_CATEGORY, 0);
 	set_attack_value(AT_JAB, AG_CATEGORY, 0);
+	
+	
+	if (grab_type == "strong") {
+		if (attack == AT_FSTRONG && strong_pressed && !(left_down || right_down)) {
+			pummel_count = 2;
+			attack = AT_GRAB;
+		}		
+	}
+	if (attack == AT_NSPECIAL && grab_type == "nspecial" && !free) {
+		attack = AT_GRAB;	
+	}
+	if (attack == AT_FSPECIAL && grab_type == "fspecial") {
+		attack = AT_GRAB;	
+	}
+	if (attack == AT_GRAB) {
+		pummel_count = 2;
+	}
 }
 
-if !(attack == AT_JAB || attack == AT_NAIR) {
+if !(attack == AT_JAB || attack == AT_NAIR || attack == AT_NTHROW) {
 	if (custom_clone) {
 		for (i = 1; i  <= 9; i++) {
 			set_hitbox_value(attack, i, HG_HITBOX_GROUP,  3);
@@ -110,7 +157,7 @@ if !(attack == AT_JAB || attack == AT_NAIR) {
 		}
 	}
 } else {
-	if (attack == AT_JAB) {
+	if (attack == AT_JAB || attack == AT_FAIR) {
 		if (custom_clone) {
 			set_hitbox_value(attack, 1, HG_HITBOX_GROUP,  1);
 			set_hitbox_value(attack, 2, HG_HITBOX_GROUP,  2);
@@ -118,7 +165,7 @@ if !(attack == AT_JAB || attack == AT_NAIR) {
 			set_hitbox_value(attack, 1, HG_HITBOX_GROUP,  3);
 			set_hitbox_value(attack, 2, HG_HITBOX_GROUP,  4);
 		}
-	} else if (attack == AT_NAIR) {
+	} else if (attack == AT_NAIR || attack == AT_NTHROW) {
 		if (custom_clone) {
 			set_hitbox_value(attack, 1, HG_HITBOX_GROUP,  1);
 			set_hitbox_value(attack, 2, HG_HITBOX_GROUP,  2);
@@ -128,6 +175,12 @@ if !(attack == AT_JAB || attack == AT_NAIR) {
 			set_hitbox_value(attack, 2, HG_HITBOX_GROUP,  4);
 			set_hitbox_value(attack, 3, HG_HITBOX_GROUP,  4);
 		}
+	}
+}
+
+if custom_clone {
+	for (i = 1; i  <= 9; i++) {
+		set_hitbox_value(attack, i, HG_HITSTUN_MULTIPLIER,  .8);
 	}
 }
 
@@ -141,7 +194,7 @@ if (!is_oc) {
 	}
 }
 
-print(attack)
+//print(attack)
 
 //Variable Resets
 if attack == AT_FSPECIAL {
@@ -188,3 +241,8 @@ if (rune_clairen) {
 	}
 }
 
+if !(attack == AT_GRAB_HOLD || attack == AT_PUMMEL || attack == AT_FTHROW_2 || attack == AT_DTHROW_2 || attack == AT_BTHROW_2 || attack == AT_UTHROW_2) {
+	grabbed_player = -4;
+}
+
+//test_var = false;

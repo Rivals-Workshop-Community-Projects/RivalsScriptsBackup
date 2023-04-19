@@ -24,6 +24,41 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FTILT, 3);
 
+
+
+set_hitbox_value(AT_FTILT, 10, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_FTILT, 10, HG_WINDOW, 2);
+set_hitbox_value(AT_FTILT, 10, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_FTILT, 10, HG_LIFETIME, 10);
+set_hitbox_value(AT_FTILT, 10, HG_HITBOX_X, 0);
+set_hitbox_value(AT_FTILT, 10, HG_HITBOX_Y, 46);
+set_hitbox_value(AT_FTILT, 10, HG_PRIORITY, -1);
+set_hitbox_value(AT_FTILT, 10, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_FTILT, 10, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_FTILT, 10, HG_PROJECTILE_SPRITE, sprite_get("empty"));
+set_hitbox_value(AT_FTILT, 10, HG_PROJECTILE_HSPEED, 0);
+set_hitbox_value(AT_FTILT, 10,  HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value(AT_FTILT, 10, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_FTILT, 10, HG_PROJECTILE_ANIM_SPEED, 0.4);
+set_hitbox_value(AT_FTILT, 10, HG_WIDTH, 88);
+set_hitbox_value(AT_FTILT, 10, HG_HEIGHT, 20);
+set_hitbox_value(AT_FTILT, 10, HG_SHAPE, 2);
+set_hitbox_value(AT_FTILT, 10, HG_PRIORITY, 0);
+set_hitbox_value(AT_FTILT, 10, HG_DAMAGE, 1.005);
+set_hitbox_value(AT_FTILT, 10, HG_ANGLE, 90);
+set_hitbox_value(AT_FTILT, 10, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_FTILT, 10, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FTILT, 10, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FTILT, 10, HG_HITPAUSE_SCALING, 0.3);
+set_hitbox_value(AT_FTILT, 10, HG_HIT_SFX, sound_get("uspec"));
+set_hitbox_value(AT_FTILT, 10, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FTILT, 10, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_FTILT, 10, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FTILT, 10, HG_IGNORES_PROJECTILES, true);
+set_hitbox_value(AT_FTILT, 10, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_FTILT, 10, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_FTILT, 10, HG_PROJECTILE_IS_TRANSCENDENT, false);
+
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 3);

@@ -1,3 +1,48 @@
+
+if get_player_color(player) == 0 {
+	if ssj == 0 || ssj == 3 || ssj == 5 {
+		set_ui_element(UI_CHARSELECT, sprite_get("hud_default_charselect"));
+		set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_default_portrait"));
+	}
+	else if ssj == 1 || ssj == 4 || ssj == 6 {
+		set_ui_element(UI_CHARSELECT, sprite_get("hud_default_SSJ1_charselect"));
+		set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_default_SSJ1_portrait"));
+	}
+	else{
+		set_ui_element(UI_CHARSELECT, sprite_get("hud_default_SSJ3_charselect"));
+		set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_default_SSJ3_portrait"));
+	}
+}else{
+	if ssj == 0 || ssj == 3 || ssj == 5 {
+		set_ui_element(UI_CHARSELECT, sprite_get("hud_alt1_charselect"));
+		set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_portrait"));
+	}
+	else if ssj == 1 || ssj == 4 || ssj == 6 {
+		set_ui_element(UI_CHARSELECT, sprite_get("hud_alt1_SSJ1_charselect"));
+		set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_SSJ1_portrait"));
+	}
+	else{
+		set_ui_element(UI_CHARSELECT, sprite_get("hud_alt1_SSJ3_charselect"));
+		set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_SSJ3_portrait"));
+	}
+}
+
+if ssj == 0 || ssj == 3 || ssj == 5 {
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_base"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_base"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_base"));
+}
+if ssj == 1 || ssj == 4 || ssj == 6 {
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_SSJ1"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_SSJ1"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_SSJ1"));
+	
+}
+if ssj == 2{
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_SSJ3"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_SSJ3"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_SSJ3"));	
+}
 muno_event_type = 1;
 user_event(14);
 
@@ -255,6 +300,332 @@ if swallowed {
 	}
 }
 
+
+
+//Howzitt
+howzittaunttextarr = 0 and howzitautoforward = 0
+
+howzitisthebestshopowner123 = true
+if (ssj == 0){
+howzittaunttextarr[0] = "Wow are you a saiyan? I 
+heard you guys were extinct.";
+howzitautoforward[0] = 0;
+howzittaunttextarr[1] = "I've never met one before.
+Howzabout a discount?"
+howzitautoforward[1] = 0;
+howzittaunttextarr[2] = "You're my first saiyan 
+customer after all!"
+howzitautoforward[2] = 0;
+howzittaunttextarr[3] = "Oh yes we have food.
+How much do you want?"
+howzitautoforward[3] = 0;
+howzittaunttextarr[4] = "..."
+howzitautoforward[4] = 0;
+howzittaunttextarr[5] = "YOU WANT HOW MUCH?!"
+howzitautoforward[5] = 0; 
+howzithasnotso = false; 
+}
+else
+
+if (ssj = 1) {
+howzittaunttextarr[0] = "Woah that was a quick dye job.
+What kind of brand do you use";
+howzitautoforward[0] = 0;
+howzithasnotso = false; 
+
+}
+
+
+
+//dialogue buddy
+
+diagchoice = [
+    "I'm not one to back down from a challenge.",
+    "Let's see how strong we can both get from this fight.",
+    "Alright, let's have a quick spar then grab some chow."]
+    
+
+if "otherUrl" in self {
+
+	if(otherUrl == 2802388684) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Hey! I heard your really strong. Do you want to spar?",
+                "Eh sure why not. Don't start crying when you lose though. ",
+                "Heh, im not the one whos gonna lose. Bring it on!"]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+    
+    if(otherUrl == 2801695646) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Woah where did you come from?",
+                "I'm here to bring an end to your capsule organization.",
+                "What does organization mean?"]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+    
+     if(otherUrl == 2802530261) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Eh, what did i do?",
+                "Computer: bounty located proceed with capture.",
+                "Woops, guess Vados never canceled that bounty, eh he."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+    
+     if(otherUrl == 2825520992) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "A punching contest?",
+                "Yeah whoever wins gets a free cake!",
+                "Cake and a fight?! sign me up!"]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+
+
+     if(otherUrl == 2802528159) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Hmmmm, are you a good robot or a bad robot?",
+                "(Makes a loud screeching noise)",
+                "Guess your a bad robot then."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+
+     if(otherUrl == 2798199714) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "This energy is no joke, I may have to get serious.",
+                "(Galacta knight readys his full power)",
+                "Gonna have to use more than a finger this time."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+
+
+     if(otherUrl == 2642265963) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Hey, this isn't the four star ball!",
+                "SORRY NO [money back guarantee] (Runs away)",
+                "Hey, get back here!"]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+    
+         if(otherUrl == 2606409742) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Wow that sword looks sharp. Do you know trunks?",
+                "(Tilts head to the side)",
+                "A weapon? Heh, all i'll need is a finger."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+
+        if(otherUrl == 2841541558) 
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; 
+                diag_nrs = true; 
+                diag_nrs_diag = [
+                "Woah, your alive?! Hey can I have some apples?",
+                "You dare steal from whispy woods?!",
+                "Hey wait I didn't. Ow hey stop throwing apples!"]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+ 
+}
+    
 with oPlayer if "goku_ability_id" in self && goku_ability_id == other doing_goku_beam = ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3 && window == clamp(window, 4, 6));
 with oPlayer if "goku_ability_id" in self && goku_ability_id == other && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
 	var phone_window_end = get_window_value(attack, window, AG_WINDOW_LENGTH);

@@ -44,7 +44,7 @@ if ((attack == AT_NSPECIAL)
         case AT_NSPECIAL :
 	        switch (window) {
 	        	case 1 : // Allow changing directions during windup
-			    	created_grab_hitbox = false;
+			    	//created_grab_hitbox = false;
 		            if (left_down) {
 		                if (spr_dir > 0) {
 		                    // Turn around
@@ -63,9 +63,12 @@ if ((attack == AT_NSPECIAL)
 		            }
 		        	break;
 	        	case 2 :
-		    		if ((window_timer == 4) && !created_grab_hitbox) {
+		    		if ((window_timer == 4)) {// && !created_grab_hitbox) {
 		    			grab_hitbox = create_hitbox(AT_NSPECIAL, 1, x, y);
-		    			created_grab_hitbox = true;
+		    			//created_grab_hitbox = true;
+		    		} else if ((window_timer == 8)) {// && !created_grab_hitbox) {
+		    			//grab_hitbox = create_hitbox(AT_NSPECIAL, 2, x, y);
+		    			//created_grab_hitbox = true;
 		    		}
 		        	break;
 	        	case 3 :
@@ -91,17 +94,28 @@ if ((attack == AT_NSPECIAL)
 		                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                window = 0;
 		                window_timer = 0;
+		                draw_big_arrow_timer = draw_big_arrow_timer_max;
+						draw_big_arrow_timer_x = x;
+						draw_big_arrow_timer_y = y - 34;
+						draw_big_arrow_drift = 0.9;
+						draw_big_arrow_angle = 90;
 		            } else if (down_down) {
 		                attack = AT_DTHROW;
 		                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                window = 0;
 		                window_timer = 0;
+		                draw_big_arrow_timer = draw_big_arrow_timer_max;
+						draw_big_arrow_timer_x = x;
+						draw_big_arrow_timer_y = y - 34;
+						draw_big_arrow_drift = 0.9;
+						draw_big_arrow_angle = 270;
 		            } else if (left_down) {
 		                if (spr_dir > 0) { // backward throw
 		                    attack = AT_NTHROW;
 		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                    window = 0;
 		                    window_timer = 0;
+							draw_big_arrow_drift = 2.8;
 		                    // Turn around
 		                    spr_dir *= -1;
 		                } else { // forward throw
@@ -109,21 +123,32 @@ if ((attack == AT_NSPECIAL)
 		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                    window = 0;
 		                    window_timer = 0;
+							draw_big_arrow_drift = 1.5;
 		                }
+		                draw_big_arrow_timer = draw_big_arrow_timer_max;
+						draw_big_arrow_timer_x = x;
+						draw_big_arrow_timer_y = y - 34;
+						draw_big_arrow_angle = 180;
 		            } else if (right_down) {
 		                if (spr_dir > 0) { // forward throw
 		                    attack = AT_FTHROW;
 		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                    window = 0;
 		                    window_timer = 0;
+							draw_big_arrow_drift = 1.5;
 		                } else { // backward throw
 		                    attack = AT_NTHROW;
 		                    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 		                    window = 0;
 		                    window_timer = 0;
+							draw_big_arrow_drift = 2.8;
 		                    // Turn around
 		                    spr_dir *= -1;
 		                }
+		                draw_big_arrow_timer = draw_big_arrow_timer_max;
+						draw_big_arrow_timer_x = x;
+						draw_big_arrow_timer_y = y - 34;
+						draw_big_arrow_angle = 0;
 		            } else {
 		                // If hold expired, drop 'em ya butterfingers
 		                if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
@@ -204,17 +229,26 @@ if ((attack == AT_NSPECIAL)
 			        if (window_timer = 1) {
 			        	shake_camera(1, current_window_length / 4);
 			    	} else if (window_timer == current_window_length  / 4) {
-			        	shake_camera(1, current_window_length / 4);
+			        	shake_camera(3, current_window_length / 4); // old intensity 1
+						sound_play(asset_get("sfx_zetter_fireball_fire"),
+								   false, noone, 0.9, 0.9);
 			    	} else if (window_timer == current_window_length  * 2 / 4) {
-			        	shake_camera(3, current_window_length / 4);
+			        	shake_camera(2, current_window_length / 4); // old intensity 3
 			    	} else if (window_timer == current_window_length  * 3 / 4) {
-			        	shake_camera(4, current_window_length / 4);
+			        	shake_camera(1, current_window_length / 4); // old intensity 4
 			    	} else if (window_timer == (current_window_length - 1)) {
-				        sound_stop(current_effect_sound);
+						sound_stop(current_effect_sound);
 				        current_effect_sound = sound_play(laser_blast_sound,
-																false, noone, 1, 0.5);
+														  false, noone, 1, 0.5);
+						sound_play(asset_get("sfx_absa_uair"),
+								   false, noone, 0.8, 0.7);
                     } else if (window_timer == current_window_length) {
 			            let_everyone_go();
+			        }
+                    break;
+                case 3 :
+			        if (window_timer = 0) {
+                		shake_camera(8, get_window_value(attack, window, AG_WINDOW_LENGTH));
 			        }
                     break;
                 default :
@@ -248,6 +282,7 @@ if ((attack == AT_NSPECIAL)
                 		shake_camera(10, get_window_value(attack, window, AG_WINDOW_LENGTH));
 						sound_stop(current_effect_sound);
                     } else if (window_timer == 1) {
+						sound_stop(current_effect_sound);
             			let_everyone_go();
                     }
                     break;
@@ -279,7 +314,7 @@ if (attack == AT_FSPECIAL) {
     
     // Start drawing afterimages
     if ((window == 2) && (window_timer == 1)) {
-    	afterimage_countdown = 30;
+    	afterimage_countdown = fspecial_endlag;
     	
     	if (rocket_fuel >= booster_rush_cost) {
     		fuel_recovery_active = false;
@@ -287,6 +322,10 @@ if (attack == AT_FSPECIAL) {
     	    	rocket_fuel -= booster_rush_cost;
         	}
     	}
+    } else if ((window == 4) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+    	// Play a sound as it ends
+    	sound_play(asset_get("sfx_burnend"), false, noone, 0.9, 1.5);
+		white_flash_timer = white_flash_duration;
     }
     
     /*
@@ -320,7 +359,7 @@ if (attack == AT_USPECIAL) {
     */
     
     // If we touch the ground, end
-    if (!free && (window != 1)) {
+    if (!free && (window != penalty_window) && (window != 1)) {
         set_state(PS_LANDING_LAG);
     } else {
         // Dampen fall at start
@@ -372,7 +411,7 @@ if (attack == AT_USPECIAL) {
                     var speed_diff = max_rocket_rising_speed + vsp;
                     if (vsp > max_rocket_rising_speed) {
                         //vsp += (0.1 * speed_diff);
-                        vsp += (0.05 * speed_diff);
+                        vsp += (0.08 * speed_diff); // 0.05
                         
                         /*
                         var abs_rocket_accel = 0.1;
@@ -617,6 +656,41 @@ if (attack == AT_DSPECIAL) {
 		}
 		*/
 	}
+	
+	if ((window >= 5) && (!free) && (!was_parried)
+		&& window_timer > 0)
+	{
+		if (attack_down && down_down) {
+			attack_end();
+			set_attack(AT_DTILT);
+		} else if (can_dstrong_cancel_dspecial) {
+			if ((strong_down && down_down) || (down_strong_pressed)) {
+				attack_end();
+				set_attack(AT_DSTRONG);
+			}
+		}
+	}
+	
+	/*
+	if (window >= 5) {
+		can_attack = true;
+		can_strong = true;
+	}
+	if ((window == 5) && (window_timer == 1)) {
+		// Only allow dtilt and dstrong
+		move_cooldown[AT_USTRONG] = dspecial_duration;
+		move_cooldown[AT_FSTRONG] = dspecial_duration;
+		move_cooldown[AT_JAB] = dspecial_duration;
+		move_cooldown[AT_DATTACK] = dspecial_duration;
+		move_cooldown[AT_FTILT] = dspecial_duration;
+		move_cooldown[AT_UTILT] = dspecial_duration;
+		move_cooldown[AT_FAIR] = dspecial_duration;
+		move_cooldown[AT_UAIR] = dspecial_duration;
+		move_cooldown[AT_BAIR] = dspecial_duration;
+		move_cooldown[AT_DAIR] = dspecial_duration;
+		move_cooldown[AT_NAIR] = dspecial_duration;
+	}
+	*/
 }
 
 if (attack == AT_DSTRONG) {
@@ -684,6 +758,14 @@ if (attack == AT_DTILT) {
 	}
 }
 
+if (attack == AT_UTILT) {
+	if ((window == 2)
+		&& (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
+	{
+		spawn_base_dust(x - (spr_dir * 0), y, "jump");
+	}
+}
+
 
 /*
 if (attack == AT_DSTRONG) {
@@ -721,13 +803,22 @@ if (attack == AT_DTILT) {
 }
 */
 
-/*
+
 if (attack == AT_DATTACK) {
-	if ((window >= 2) && (has_hit) && (!was_parried)) {
-		can_jump = true;
+	if ((window == 1) && (!free) && (!was_parried)
+		&& window_timer <= 3)
+	{
+		if ((strong_down && up_down) || (up_strong_pressed)) {
+			attack_end();
+			set_attack(AT_USTRONG);
+		}
 	}
+
+	/*if ((window >= 2) && (has_hit) && (!was_parried)) {
+		can_jump = true;
+	}*/
 }
-*/
+
 
 /*
 if (attack == AT_DTHROW) {
@@ -744,19 +835,25 @@ if (attack == AT_FSTRONG) {
     can_fast_fall = false;
     can_move = false;
     // Prevent slipping off the edge if aiming up
-    if (window > 6) && (window < 11) {
+    //if (window > 6) && (window < 11) {
 	    off_edge = false;
-    } else {
-        off_edge = true;
-    }
+    //} else {
+    //    off_edge = true;
+    //}
     
     // Tilt fstrong up or down
     // Can only change selection in the 'hold' stage
     if ((window == 3) || (window == 7) || (window == 11)) {
-        smash_charging = true;
+        //smash_charging = strong_charge >= 90;
         if (up_down) {
+        	if (window_timer == 4) {
+        		smash_charging = true;
+        	}
             window = 7;
         } else if (down_down) {
+        	if (window_timer == 4) {
+        		smash_charging = true;
+        	}
             window = 11;
         } else {
             window = 3;
@@ -769,7 +866,7 @@ if (attack == AT_FSTRONG) {
     }
 
     // Allow action after flame is gone
-    if ((window == 6) || (window == 10) || (window >= 14)) {
+    if ((!was_parried) && ((window == 6) || (window == 10) || (window >= 14))) {
         can_jump = true;
         can_attack = true;
         can_special = true;
@@ -794,6 +891,8 @@ if (attack == AT_FSTRONG) {
     {
         sound_stop(current_effect_sound);
         sound_play(laser_blast_sound);
+		sound_play(laser_blast_supplemental_sound,
+				   false, noone, 0.4, 2.2);
     }
 
     // Add dust at feet
@@ -806,8 +905,32 @@ if (attack == AT_FSTRONG) {
     }
 }
 
+
+if (attack == AT_BAIR) {
+	if ((window == 2) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+		current_aerial_laser_sound = sound_play(laser_stomp_supplemental_sound,
+												false, noone, 0.5, 1.2);
+	}
+	if ((!free) && (current_aerial_laser_sound != noone)) {
+		sound_stop(current_aerial_laser_sound);
+		current_aerial_laser_sound = noone;
+	}
+}
+
+if (attack == AT_DAIR) {
+	if ((window == 2) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+		current_aerial_laser_sound = sound_play(laser_stomp_supplemental_sound,
+												false, noone, 0.5, 1.2);
+	}
+	if ((!free) && (current_aerial_laser_sound != noone)) {
+		sound_stop(current_aerial_laser_sound);
+		current_aerial_laser_sound = noone;
+	}
+}
+
 if (attack == AT_USTRONG) {
 	can_fast_fall = false;
+	can_move = false;
 	
 	if (accellerated_jump_kick)
 		&& ((window > 1)
@@ -815,7 +938,7 @@ if (attack == AT_USTRONG) {
 	{
 		sliding_speed += (spr_dir * sliding_speed_accel);
 		hsp = sliding_speed;
-	} else if (window >= 5) { // dampen movement during endlag
+	} else if ((window != penalty_window) && (window >= 5)) { // dampen movement during endlag
 		hsp *= 0.8; // 0.85
 	} else {
 		sliding_speed = hsp;
@@ -823,12 +946,145 @@ if (attack == AT_USTRONG) {
 	
 	// Play windup sound
 	if ((window == 1) && (window_timer == 1)) {
-		current_effect_sound = sound_play(takeoff_start_sound);
+		current_effect_sound = sound_play(takeoff_charge2_sound);
+	}
+
+	if ((window == 1) && (window_timer == 1)) {
+		ustrong_rising_count = 1;
 	}
 	
 	// End playing sound
 	if ((window == 3) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-        sound_stop(current_effect_sound);
+        attack_end();
+        set_attack(AT_USTRONG_2);
+        attack = AT_USTRONG_2;
+        window = 1;
+        window_timer = 0;
+        ustrong_stored_charge = strong_charge;
+	}
+	
+	/*if (window == 4) {
+		// Increase rising speed based on charge level
+		var current_max_rising_speed = ustong_min_v_speed + ((ustong_max_v_speed - ustong_min_v_speed) * (strong_charge / 60));
+		var rising_completion_percent = window_timer / get_window_value(attack, window, AG_WINDOW_LENGTH);
+		vsp = ustong_init_v_speed + current_max_rising_speed * rising_completion_percent;
+		
+		// Allow a little horizontal influence
+		hsp = spr_dir * 1.5;
+		var h_influence_amount = 3 * rising_completion_percent;
+		if (left_down) {
+			hsp -= h_influence_amount;
+		}
+		if (right_down) {
+			hsp += h_influence_amount;
+		}
+		if (ustrong_rising_countdown <= 0) {
+			window = 5;
+			window_timer = 0;
+		} else {
+			//ustrong_rising_countdown--;
+		}
+	}*/
+	
+	/*
+	// Do rising loops
+	if ((ustrong_loop_count < ustrong_num_rising_loops)
+		&& (window == 4)
+		&& (window_timer == get_window_value(AT_USTRONG, window, AG_WINDOW_LENGTH))) {
+		window_timer = 0;
+		ustrong_loop_count++;
+	}
+	*/
+}
+
+if (attack == AT_USTRONG_2) {
+	can_fast_fall = false;
+	can_move = false;
+
+	if ((window == 1) && (window_timer == 1)) {
+		//created_grab_hitbox = false;
+    	let_everyone_go();
+    	//ustrong_loop_count = 0;
+    	strong_charge = ustrong_stored_charge;
+	}
+	
+	if ((window == 1)
+		&& (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
+	{
+		sound_stop(current_effect_sound);
+    	current_effect_sound = sound_play(takeoff_active_sound);
+    	// Create first grab hitbox here because it will apear on the next frame
+    	grab_hitbox = create_hitbox(AT_USTRONG_2, 1, x, y);
+	}
+	
+	// Loop indefinitely until kicked out
+	if (//(ustrong_loop_count < ustrong_loop_max)
+		(window == 2)
+		&& (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
+	{
+		window_timer = 0;
+		//ustrong_loop_count++;
+	}
+	
+	if (window == 2) {
+		// Increase rising speed based on charge level
+		var current_max_rising_speed = ustong_min_v_speed + ((ustong_max_v_speed - ustong_min_v_speed) * (strong_charge / 60));
+		//var rising_completion_percent = window_timer / get_window_value(attack, window, AG_WINDOW_LENGTH);
+		var rising_completion_percent = ustrong_rising_count / ustrong_rising_duration;
+		vsp = ustong_base_v_speed + current_max_rising_speed * rising_completion_percent;
+		
+		// Allow a little horizontal influence
+		hsp = spr_dir * 1.5;
+		var h_influence_amount = ustring_drift * rising_completion_percent;
+		if (left_down) {
+			hsp -= h_influence_amount;
+		}
+		if (right_down) {
+			hsp += h_influence_amount;
+		}
+		// -1 because we want to transition on frame 20, not 21, for example
+		if (ustrong_rising_count < ustrong_rising_duration) {
+			//if ((window_timer == 1)) {// && (!created_grab_hitbox)) {
+			if (ustrong_rising_count % ustrong_rising_hitbox_duration == 0) {
+				grab_hitbox = create_hitbox(AT_USTRONG_2, 1, x, y);
+				//created_grab_hitbox = true;
+			}
+			ustrong_rising_count++;
+		} else {
+			window = 3;
+			window_timer = 0;
+		}
+	}
+
+	//if ((window == 3) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
+	if ((window == 3) && (window_timer == 1)) {
+		sound_stop(current_effect_sound);
+        let_everyone_go();
+    }
+    
+	if ((window != penalty_window) && (window > 6) && (!free) && (!was_parried)) {
+		// Enter landing lag on contact with the ground
+		set_state(PS_LANDING_LAG);
+		state_timer = 0;
+		hurtboxID.sprite_index = hurtbox_spr;
+		landing_lag_time = has_hit_player ? 6 : 10;
+		window = 0;
+		window_timer = 0;
+		attack_end();
+	}
+}
+
+if (attack == AT_UTILT) {
+	//can_fast_fall = false;
+	if ((window != penalty_window) && (window > 4) && (!free) && (!was_parried)) {
+		// Enter landing lag on contact with the ground
+		set_state(PS_LANDING_LAG);
+		state_timer = 0;
+		hurtboxID.sprite_index = hurtbox_spr;
+		landing_lag_time = 8;
+		window = 0;
+		window_timer = 0;
+		attack_end();
 	}
 }
 

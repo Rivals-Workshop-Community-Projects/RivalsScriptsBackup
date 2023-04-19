@@ -8,6 +8,7 @@ if(my_hitboxID.attack == AT_EXPLOSION){
         //explosion from the trap has this unique variable to prevent parry stun
         if(my_hitboxID.camera_shake == 0){
             was_parried = false;
+            move_cooldown[AT_DSPECIAL] = 200;
         }
         else{
             if(free){

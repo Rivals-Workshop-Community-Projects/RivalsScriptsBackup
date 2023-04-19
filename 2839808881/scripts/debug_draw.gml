@@ -4,7 +4,7 @@
 if(attack == AT_TAUNT && window == 5){
 	draw_debug_text(x-64,y-120,"(Training Mode Only)");
 	draw_debug_text(x-42,y-95,"Ability Select");
-	
+
 	var yOffsetText = 68;
 	
 	switch(tauntAbilitySelectMenuCurr){

@@ -56,7 +56,7 @@ set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("emera"));
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_HSPEED, 4);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_VSPEED, 12);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_GRAVITY, 0.7);
-set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_AIR_FRICTION, 0.0);
+set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_AIR_FRICTION, 0.1);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

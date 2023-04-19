@@ -18,17 +18,17 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 //Charge 2
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
 //Charge 3
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 
 //Store charge
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_GOTO, 9);

@@ -5,6 +5,12 @@ css_anim_time ++;
 alt_cur = get_player_color(player);
 alt_fix = player; //keep this line, on the online css the player is actually player 0
 
+//these values need to be updated every frame lol
+icon_x_pos = x + 174;
+icon_y_pos = y + 108;
+preview_x = floor(x+10);
+preview_y = floor(y+10);
+
 if (alt_prev != alt_cur)
 {
     css_anim_time = 0;

@@ -1,5 +1,3 @@
-user_event(11);
-
 ui_y = 18
 sword_one_x = 154
 sword_two_x = 174
@@ -39,4 +37,3 @@ if (state == PS_ATTACK_GROUND && attack == AT_TAUNT && window == 2) {
     }
 
 }
-

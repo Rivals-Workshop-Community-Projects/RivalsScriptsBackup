@@ -10,6 +10,7 @@ switch(voice_line)
 }
 do_a_fair = false;
 
+/* Opengunner: Commented out to prevent ball from going off cooldown
 if !ball_exists 
 {
     var stage_x = get_stage_data(SD_X_POS);
@@ -24,7 +25,7 @@ if !ball_exists
     {
         ball.hsp -= 1;
     }
-    ball_cooldown = 240;
+    ball_cooldown = 30;
 }
 else
 {
@@ -36,6 +37,24 @@ else
             {
                 st = 5;
                 stt = 0;
+                death_script_cooldown_flag = true;
+            }
+        }
+    }
+}
+*/
+
+if ball_exists
+{
+    with (obj_article1)
+    {
+        if player_id == other.id
+        {
+            if st!= 5
+            {
+                st = 5;
+                stt = 0;
+                death_script_cooldown_flag = true;
             }
         }
     }

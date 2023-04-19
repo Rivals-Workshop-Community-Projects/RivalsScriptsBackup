@@ -34,7 +34,6 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITSTUN_MULTIPLIER, 1.2);
-
 set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_VISUAL_EFFECT_X_OFFSET, 30);

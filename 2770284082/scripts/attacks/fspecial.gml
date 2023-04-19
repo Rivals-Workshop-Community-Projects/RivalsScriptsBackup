@@ -54,6 +54,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 2)
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 302);

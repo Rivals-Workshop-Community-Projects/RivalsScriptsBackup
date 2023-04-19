@@ -15,7 +15,7 @@ for (i = 0; i <= 1; i++) {
 	set_window_value(curr_attack, 1, AG_WINDOW_LENGTH, 4);
 	set_window_value(curr_attack, 1, AG_WINDOW_ANIM_FRAMES, 2);
 	set_window_value(curr_attack, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-	set_window_value(curr_attack, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
+	set_window_value(curr_attack, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .2);
 
 	set_window_value(curr_attack, 2, AG_WINDOW_TYPE, 1);
 	set_window_value(curr_attack, 2, AG_WINDOW_LENGTH, 6);
@@ -62,7 +62,7 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_WIDTH, 80);
 	set_hitbox_value(curr_attack, 1, HG_HEIGHT, 20);
 	set_hitbox_value(curr_attack, 1, HG_PRIORITY, 2);
-	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 10);
+	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 11);
 	set_hitbox_value(curr_attack, 1, HG_ANGLE,  70);
 	set_hitbox_value(curr_attack, 1, HG_BASE_KNOCKBACK, 7.5);
 	set_hitbox_value(curr_attack, 1, HG_KNOCKBACK_SCALING, 1.1);
@@ -82,7 +82,7 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 2, HG_WIDTH, 80);
 	set_hitbox_value(curr_attack, 2, HG_HEIGHT, 20);
 	set_hitbox_value(curr_attack, 2, HG_PRIORITY, 2);
-	set_hitbox_value(curr_attack, 2, HG_DAMAGE, 10);
+	set_hitbox_value(curr_attack, 2, HG_DAMAGE, 11);
 	set_hitbox_value(curr_attack, 2, HG_ANGLE,  110);
 	set_hitbox_value(curr_attack, 2, HG_BASE_KNOCKBACK, 7.5);
 	set_hitbox_value(curr_attack, 2, HG_KNOCKBACK_SCALING, 1.1);

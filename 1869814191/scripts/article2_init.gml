@@ -24,6 +24,7 @@ grounds = 1;
 walls = 1;
 dir = 0;
 is_hittable = true;
+can_be_hit[player] = 2;
 
 accel = .02;
 ground_friction = .02;

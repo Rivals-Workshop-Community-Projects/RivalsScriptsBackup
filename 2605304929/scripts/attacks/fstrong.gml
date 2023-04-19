@@ -91,8 +91,9 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.10);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // // 304 - basic large
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hitfx_large_elec); // // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Top Outsending Hitbox");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 
@@ -116,9 +117,10 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 4);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // 304 - basic large
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hitfx_large_elec); // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Bottom Spiking Hitbox");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 hitbox_num++;

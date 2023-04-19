@@ -95,4 +95,10 @@ if my_hitboxID.attack == AT_DAIR{
 	}
 }
 
+if my_hitboxID.attack == AT_TAUNT{
+	if(my_hitboxID.hbox_num == 1 && free){
+		old_vsp = -7;
+	}
+}
+
 }

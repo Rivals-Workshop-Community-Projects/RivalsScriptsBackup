@@ -47,6 +47,7 @@ draw_sprite_ext(sprite_get("tgp_icon"),timer/20,x+190,y+130,2,2,0,c_white,1);
 #macro BOX_INTRO_DIALOG_ENABLE 10
 #macro BOX_SWAP_INPUTS 11
 #macro BOX_NECO_PORTRAIT 12
+#macro BOX_ALT_OUTFIT 13
 
 #macro BUTTON_NAME 0
 #macro BUTTON_IX 1
@@ -119,14 +120,13 @@ switch(draw_menu){
 	case DRAW_MENU_CHARACTER_GUIDE:
 		// Draw rectangle Underlay
 		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
-		textDraw(x + 15, y + 48, "fName", c_white, 15, 200, 1, false, 0.75, "Under contruction, check back later!");
-		/*
+		//textDraw(x + 15, y + 48, "fName", c_white, 15, 200, 1, false, 0.75, "Under contruction, check back later!");
+		
 		textDraw(x + 15, y + 48, "fName", c_white, 15, 95, 1, false, 0.75,
-		"Google Doc QR Code / Scan with phone / by Wasteof
-		aName");
+		"Google Doc QR Code / Scan with phone / by Bee & CAMaera");
 		//Draw Guide Menu
-		draw_sprite_ext(sprite_get("css_guide_qr"),0,x + 150,y + 96,2,2,0,c_white,1);
-		*/
+		draw_sprite_ext(sprite_get("css_guide_QR"),0,x + 150,y + 96,2,2,0,c_white,1);
+		
 		// Draw Exit Button
 		draw_menu_button(BOX_CLOSE_INTERAL_MENU);
 		
@@ -154,6 +154,7 @@ switch(draw_menu){
 	break;
 	
 	case DRAW_MENU_COLOR_ALTS:
+	// Set Color Mode String
 	var mode_string;
 	switch(color_shift){
 		case 0:
@@ -168,18 +169,46 @@ switch(draw_menu){
 		default:
 		break;
 	}
+	// Set Alt Outfit Mode String
+	var alt_outfit_mode_string;
+	switch(alt_outfit_enabled){
+		case 0:
+			alt_outfit_mode_string = "Default
+			Outfit";
+		break;
+		case 1:
+			alt_outfit_mode_string = "Ninetailed
+			Alt Outfit";
+		break;
+	}
 		// Draw partial rectangle Underlay
 		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
 		//draw_rectangle_colour(x+16, y+40, x+204, y+150, c_black, c_black, c_black, c_black, true); // Original black box draw function
 		if(color_shift && get_player_color(player) < num_of_shifted_alts) then var mode_indicator_suffix ="+" else var mode_indicator_suffix = ""; // Add plus
+		// Draw Text
 		textDraw(x + 10, y + 44, "fName", c_white, 18, 210, 1, false, 1,"Color #" +string(get_player_color(player)) + mode_indicator_suffix + ": " + string(slot_property_array[ get_player_color(player) + (color_shift * 32),0]))
 		textDraw(x + 50, y + 70, "fName", c_white, 18, 200, 1, false, 1, mode_string);
-		//textDraw(x + 10, y + 80, "fName", c_yellow, 15, 150, 1, false, 1,"Hover over button for more alts!");
+		textDraw(x + 50, y + 103, "fName", c_white, 18, 200, 1, false, 1, alt_outfit_mode_string);
+
 		//Draw Character
 		if(run_init_shader_for_character_draw == true){manual_init_shader_call = true;init_shader();run_init_shader_for_character_draw = false;} // Detect Color Shift
-		draw_sprite_ext(sprite_get("idle"),timer/9,x + 175, y + 80,1,1,0,c_white,1);
-		// Draw Exit Button
+		// Draw Idle Sprite
+		switch(alt_outfit_enabled){
+			case 0:
+				css_idle_sprite_to_use = sprite_get("idle"); // Set sprite to be the normal idle
+				break;
+			case 1:
+				css_idle_sprite_to_use = sprite_get("9t_idle"); // Set sprite to be the alt idle
+				break;
+		}
+		draw_sprite_ext(css_idle_sprite_to_use,timer/9,x + 165, y + 136,1,1,0,c_white,1);
+		// Draw Extra Colors Button
 		draw_menu_button(BOX_SHIFT_COLOR_ALTS);
+		// Draw Alt Outfit Button
+		draw_menu_button(BOX_ALT_OUTFIT);
+		textDraw(x + 22, y + 106, "tinyFont", c_white, 8, 15, 1, false, 1, "ALT
+		OUT
+		FIT");
 		// Draw Exit Button
 		draw_menu_button(BOX_CLOSE_INTERAL_MENU);
 	break;
@@ -191,7 +220,8 @@ switch(draw_menu){
 		"Character Dev: Opengunner
 		Release Date: 6/12/22
 		WS Bracket Legal:
-		FTL / WSE"
+		FTL / WSE / TLC / FW
+		Heatwave 2022"
 		);
 		
 		//textDraw(x + 14, y + 45, "fName", c_white, 18, 200, 1, false, 1, "With Assistance from TLC");

@@ -158,7 +158,8 @@ if (attack == AT_NSPECIAL) {
     }
 
         air_accel = .25
-        move_cooldown[AT_NSPECIAL] = 10
+        if !free{move_cooldown[AT_NSPECIAL] = 10}
+        if free{move_cooldown[AT_NSPECIAL] = 35}
         can_fast_fall = false
 }
 

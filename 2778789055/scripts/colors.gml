@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 9, 2, 53 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 28 );
 
 // Mud Flats
 set_color_profile_slot( 1, 0, 179, 138, 102 ); //Gumbo Skin 1
@@ -285,6 +285,26 @@ set_color_profile_slot( 25, 4, 158, 255, 254 ); //Eyes
 set_color_profile_slot( 25, 5, 0, 200, 255 ); //Po Skin 1
 set_color_profile_slot( 25, 6, 255, 220, 155 ); //Po Skin 2
 set_color_profile_slot( 25, 7, 245, 212, 64 ); //Apron
+
+// lakers/big house
+set_color_profile_slot( 26, 0, 110, 23, 191 ); //Gumbo Skin 1
+set_color_profile_slot( 26, 1, 255, 191, 94 ); //Gumb Skin 2
+set_color_profile_slot( 26, 2, 134, 136, 227 ); //Jeans
+set_color_profile_slot( 26, 3, 255, 255, 255 ); //Hoodie
+set_color_profile_slot( 26, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 26, 5, 99, 25, 204 ); //Po Skin 1
+set_color_profile_slot( 26, 6, 181, 130, 255 ); //Po Skin 2
+set_color_profile_slot( 26, 7, 255, 191, 0 ); //Apron
+
+// Genesis
+set_color_profile_slot( 27, 0, 64, 63, 63 ); //Gumbo Skin 1
+set_color_profile_slot( 27, 1, 222, 27, 42 ); //Gumb Skin 2
+set_color_profile_slot( 27, 2, 191, 4, 13 ); //Jeans
+set_color_profile_slot( 27, 3, 105, 105, 105 ); //Hoodie
+set_color_profile_slot( 27, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 27, 5, 240, 79, 92 ); //Po Skin 1
+set_color_profile_slot( 27, 6, 94, 94, 94 ); //Po Skin 2
+set_color_profile_slot( 27, 7, 255, 255, 255 ); //Apron
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

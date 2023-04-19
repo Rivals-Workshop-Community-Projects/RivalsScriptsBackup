@@ -6,7 +6,7 @@ set_attack_value(AT_USTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 10); // 4
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 9); // 4
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_cape_swipe"));
@@ -68,8 +68,8 @@ set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -80);
-set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 26);
-set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 144);
+set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 28);
+set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 148);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 10);

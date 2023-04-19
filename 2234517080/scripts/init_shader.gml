@@ -7,7 +7,7 @@ if (get_player_color(player) == 7){
 }
 
 //champion alt
-if (get_player_color(player) == 13){
+if (get_player_color(player) == 12){
     set_character_color_slot(0, 255, 255, 255, .5);
     set_character_color_slot(6, 176, 146, 157, .5);
 }

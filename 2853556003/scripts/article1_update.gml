@@ -25,6 +25,14 @@ with(player_id){
 	}
 }
 if(state == 0){
+	if(grabbedid != noone){
+		if(grabbedid.state != PS_HITSTUN){
+			state = 1
+			state_timer = 0
+			image_index = 0
+			grabbedid = noone
+		}
+	}
 	if(player_id.N_modifier){
 		x = round(lerp(x, player_id.x, 0.03))
 		y = round(lerp(y, player_id.y - 20, 0.03))
@@ -46,6 +54,8 @@ if(state == 0){
 			}
 		}
 	}
+	hsp *= 0.9
+	vsp *= 0.9
 	//initial thingy
 	if(!holding_bomb){
 		sprite_index = sprite_get("hurricane")
@@ -58,8 +68,6 @@ if(state == 0){
 		}
 	}
 	image_index += 0.25
-	hsp *= 0.9
-	vsp *= 0.9
 	
 	if(state_timer mod 10 == 0 && lifetime >= 6){
 		hurricane_hitbox = create_hitbox(AT_FSPECIAL, 2, round(x + hsp), round(y + vsp) - 4)
@@ -222,8 +230,14 @@ if(state == 0){
 		    		}
 		    	}
 		    }else if(!other.player_id.N_modifier){
-		    	if(player_id.url == 2853556003 && attack == AT_NSPECIAL && hbox_num == 1 && !other.holding_bomb){
+		    	//Torga Bomb
+		    	if(player_id.url == 2853556003 && attack == AT_NSPECIAL && hbox_num == 1 && !other.holding_bomb || player_id.url == 2794570829 && attack == AT_NSPECIAL && hbox_num == 1 && !other.holding_bomb){
 		    		other.holding_bomb = true
+		    		if(instance_exists(player_id.waterBomb)){
+			    		if(player_id.waterBomb.strong){
+			    			other.bomb_strong = true
+			    		}
+		    		}
 		    		other.current_owner = player
 		    		if(instance_exists(other.hurricane_hitbox)){ 
 						other.hurricane_hitbox.destroyed = true
@@ -242,6 +256,7 @@ if(state == 0){
 			    		other.state = 1
 						other.state_timer = 0
 						other.image_index = 0
+						other.current_owner = player
 						if(instance_exists(other.hurricane_hitbox)){
 							other.hurricane_hitbox.destroyed = true
 						}
@@ -292,9 +307,6 @@ if(state == 0){
 //Disappear
 
 if(state == 1){
-	if(instance_exists(hurricane_hitbox)){
-		hurricane_hitbox.destroyed = true
-	}
 	if(state_timer == 1){
 		with(player_id){
 			if(hurricane.holding_bomb){
@@ -306,8 +318,18 @@ if(state == 1){
 				}
 				waterBomb.spr_dir = 1
 				hurricane.holding_bomb = false
+				waterBomb.current_owner = other.current_owner
 			}
 		}
+	}else if(state_timer <= 3 && state_timer > 0){
+		with(player_id){
+			if(instance_exists(waterBomb)){
+				waterBomb.current_owner = other.current_owner
+			}
+		}
+	}
+	if(instance_exists(hurricane_hitbox)){
+		hurricane_hitbox.destroyed = true
 	}
 	if(state_timer == 1){
 		sound_play(asset_get("sfx_bird_sidespecial_start"));

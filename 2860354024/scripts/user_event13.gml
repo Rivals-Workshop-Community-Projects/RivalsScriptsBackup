@@ -2,7 +2,7 @@
 
 var voice_randomizer;
 
-if (!hitpause){
+if (!hitpause && nero_voice){
 	switch (attack){
 		case AT_TAUNT:
 

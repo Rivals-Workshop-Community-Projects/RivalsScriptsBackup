@@ -11,7 +11,7 @@ display = image_alpha * 10;
 // Variables for positioning of visuals
 var temp_x = x + 12;
 var temp_y = y + 140;
-var alts = 29;
+var alts = 30;
 
 var color = get_player_color(player);
 var name = " ";
@@ -358,9 +358,9 @@ image_index = color;
 			var position = 27;
 			ColorPrev = make_color_rgb(41, 41, 41);
 			ColorNext = make_color_rgb(47, 48, 47);
-			ColorNextNext = make_color_rgb(250, 212, 122);
+			ColorNextNext = make_color_rgb(233, 147, 46);
 			if (path_position == 27 && path_scale == 0){
-				path_position = 0;
+				path_position = 28;
 			}
 				break;
 
@@ -368,10 +368,21 @@ image_index = color;
 			name = " 28: Champion";
 			var position = 28;
 			ColorPrev = make_color_rgb(67, 0, 156);
+			ColorNext = make_color_rgb(233, 147, 46);
+			ColorNextNext = make_color_rgb(250, 212, 122);
+			if (path_position == 28 && path_scale == 0){
+				path_position = 29;
+			}
+				break;
+
+				case 29:
+			name = " 29: Heatwave";
+			var position = 29;
+			ColorPrev = make_color_rgb(47, 48, 47);
 			ColorNext = make_color_rgb(250, 212, 122);
 			ColorNextNext = make_color_rgb(98, 87, 227);
-			if (path_position == 28 && path_scale == 0){
-				path_position = 0;
+			if (path_position == 29 && path_scale == 0){
+				path_position = 30;
 			}
 				break;
 
@@ -383,13 +394,13 @@ image_index = color;
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.2.2", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.3", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "July 6th, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "September 29th, 2022", c_white, c_white, c_white, c_white, 1);
 
 var css_y = y + 94;
 var css_prevc_x = x + 12;   // previous

@@ -10,11 +10,11 @@ state_timer += 1
 
 if (state == 0) {
 
-			if (get_player_color( player ) != 28) {
-	sprite_index = sprite_get("dspec_hold") }
+			if (get_player_color( player ) == 25 && get_synced_var(player) == 1) {
+	sprite_index = sprite_get("dspec_ball") }
 	
 else {
-				sprite_index = sprite_get("dspec_ball")
+				sprite_index = sprite_get("dspec_hold")
 
 		}
 		image_index += 0.15

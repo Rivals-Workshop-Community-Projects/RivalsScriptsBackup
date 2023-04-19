@@ -116,6 +116,16 @@ if (state == PS_SPAWN){
 //////////////////ok no more of that////////////////
 ////////////////////////////////////////////////////
 
+// roll rune
+if (rollRune){
+	if (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD){
+		if (jump_pressed){
+			state_timer = 19;
+			window_timer = 19;
+		}
+	}
+}
+
 if (!free){
 	flightloop = 3
 	aerialattack = 0
@@ -127,6 +137,33 @@ move_cooldown[AT_DSPECIAL_2] = move_cooldown[AT_DSPECIAL]
 
 if (move_cooldown[AT_NSPECIAL] == 1){
 	spawn_hit_fx( x , y - 20, 302 );
+}
+
+// nspec rune stuff
+if (nspecMultihitRune){
+	if (nspecRuneHit == true && nspecRuneTimesThrough != 69420){
+		nspecRuneTimer++;
+		if (nspecRuneTimer > 20){
+			if (nspecRuneTimesThrough != nspecRuneTimesThroughMax){
+				nspecRuneTimesThrough++;
+				nspecRuneTimer = 0;
+				create_hitbox(AT_NSPECIAL, 2, nspecRuneHitPlayerX, nspecRuneHitPlayerY - 0);
+			} else if (nspecRuneTimesThrough == nspecRuneTimesThroughMax){
+				create_hitbox(AT_NSPECIAL, 3, nspecRuneHitPlayerX, nspecRuneHitPlayerY - 0);
+				nspecRuneHitPlayerX = 0;
+				nspecRuneHitPlayerY = 0;
+				nspecRuneTimer = 0;
+				nspecRuneTimesThrough = 69420;
+				nspecRuneHit = false;
+			}
+		}
+	} else {
+		nspecRuneHitPlayerX = 0;
+		nspecRuneHitPlayerY = 0;
+		nspecRuneTimer = 0;
+		nspecRuneTimesThrough = 0;
+		nspecRuneHit = false;
+	}
 }
 
 if (instance_exists(obj_article1)){

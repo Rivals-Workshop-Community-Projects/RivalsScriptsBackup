@@ -72,3 +72,57 @@ switch(attack){
         }
         break;
 }
+
+
+//voice lines
+if(va_enabled > 0){
+    switch(attack){
+        
+        //special cases
+        case AT_DATTACK:
+            va_type = 12;
+            break;
+        case AT_USTRONG:
+            va_type = 13;
+            break;
+        case AT_NSPECIAL:
+            va_type = 9;
+            break;
+        case AT_FSPECIAL:
+            va_type = 10;
+            break;
+        case AT_USPECIAL:
+            va_type = 11;
+            break;
+        case AT_DSPECIAL:
+            va_type = 14;
+            break;
+        case AT_TAUNT:
+            va_type = 6;
+            break;
+
+        //heavy attacks
+        case AT_FTILT:
+        case AT_BAIR:
+        case AT_UAIR:
+        case AT_DAIR:
+        case AT_FSTRONG:
+        case AT_DSTRONG:
+            va_type = 8;
+            break;
+
+        //weaker attacks
+        default:
+            va_type = 7;
+            break;
+    }
+    
+    //specials always play, normals are RNG
+    if(va_type == 7 || va_type == 8){
+        if(va_cd <= 0 && random_func(0, 1, false) > (1 - va_freq_atk)){
+            user_event(0);
+        }
+    }else if(va_cd <= 0 && random_func(0, 1, false) > (1 - va_freq_spec)){
+        user_event(0);
+    }
+}

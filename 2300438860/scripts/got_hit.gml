@@ -2,7 +2,7 @@
 
 if hit_player_obj != self {
 wjcap = 0
-move_cooldown[AT_USPECIAL] = 0
+move_cooldown[AT_DSPECIAL] = 0
 move_cooldown[AT_FSPECIAL] = 0
 }
 
@@ -28,7 +28,7 @@ if savex != 0 {
     x = savex
     y = savey
     hitstop += 20
-    take_damage(player,-1, -6)
+    take_damage(player,-1, -33)
     sound_play(sound_get("fstrong1"),false,noone,0.6)
      set_state (PS_HITSTUN)
          savex = 0

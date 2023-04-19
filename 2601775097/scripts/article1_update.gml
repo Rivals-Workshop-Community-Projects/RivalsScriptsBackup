@@ -38,11 +38,7 @@ switch (state)
         //records the position of the article for as long as it's active
         if (state_timer % 5 == 0) array_push(player_id.accel_pos, [x, y]);
 
-        if (player_id.state_cat == SC_HITSTUN || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN)
-        {
-            instance_destroy();
-            exit;
-        }
+        if (player_id.state_cat == SC_HITSTUN || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) do_destroy();
 
         //when he's about to teleport, record the last position and delete the article
         if (player_id.window == 3)
@@ -54,7 +50,7 @@ switch (state)
                     vsp = 0;
                     array_push(player_id.accel_pos, [x, y]);
                 case 1:
-                    instance_destroy();
+                    do_destroy();
                     exit;
             }
         }
@@ -75,35 +71,22 @@ switch (state)
 
                 switch (window_timer)
                 {
-                    case 1:
-                        sound_stop(sound_get("sfx_constantfire"));
-                        break;
                     case 2:
-                        if (!free) sound_play(sound_get("sfx_constantfire"));
-                        else
-                        {
-                            sound_stop(sound_get("sfx_constantfire"));
-                            instance_destroy();
-                            exit;
-                        }
+                        if (free) do_destroy();
                         break;
                 }
                 break;
             case 2: //idle
                 window_frame_start = 2;
                 window_frames = 1;
-                window_length = 170;
+                window_length = 170 + (120 * had_burnbuff); //burning fury makes it stay for longer
                 break;
             case 3: //destroyed
                 window_frame_start = 3;
                 window_frames = 2;
                 window_length = 10;
 
-                if (window_timer == 0)
-                {
-                    sound_stop(sound_get("sfx_constantfire"));
-                    sound_play(asset_get("sfx_burnend"));
-                }
+                if (window_timer == 0) sound_play(asset_get("sfx_burnend"));
                 break;
         }
 
@@ -112,12 +95,12 @@ switch (state)
             //fire particles
             var random_x = (random_func(26, 17,true)-8)*8;
             var random_dir = random_func(364, 2,true)-1;
-            var fx_fire = spawn_hit_fx(x+random_x, y-16, player_id.fx_burn);
+            var fx_fire = spawn_hit_fx(x+random_x, y-16, hit_fx_create(sprite_get("fx_burn"), had_burnbuff ? 32 : 18));
             fx_fire.spr_dir = random_dir;
             if (fx_fire.spr_dir == 0) fx_fire.spr_dir = 1;
             fx_fire.draw_angle = 40*fx_fire.spr_dir;
-            fx_fire.vsp = -1.25;
-            fx_fire.hsp = -random_x/64;
+            fx_fire.vsp = -1.25 - (had_burnbuff);
+            fx_fire.hsp = had_burnbuff ? random_x/64 : -random_x/64;
 
             //hitbox stuff
             if (get_gameplay_time() % 30 == 0)
@@ -137,7 +120,6 @@ switch (state)
             //premature destruction
             if ((place_meeting(x, y, asset_get("plasma_field_obj")) || free && state_timer > 2))
             {
-                sound_stop(sound_get("sfx_constantfire"));
                 sound_play(asset_get("sfx_burnend"));
                 set_window(3);
             }
@@ -196,11 +178,7 @@ switch (state)
                 switch (window_timer)
                 {
                     case 1:
-                        sound_stop(sound_get("sfx_constantfire"));
                         rec_fire_count = player_id.dstrong2_fire_count;
-                        break;
-                    case 2:
-                        sound_play(sound_get("sfx_constantfire"));
                         break;
                 }
                 break;
@@ -225,7 +203,6 @@ switch (state)
                 switch (window_timer)
                 {
                     case 1:
-                        sound_stop(sound_get("sfx_constantfire"));
                         sound_play(asset_get("sfx_burnend"));
                         break;
                     case 9:
@@ -247,7 +224,7 @@ switch (state)
         
         if (state_timer == 10)
         {
-            instance_destroy();
+            do_destroy();
             exit;
         }
         break;
@@ -257,7 +234,7 @@ switch (state)
 if (last_window > 0)
 {
     artc_image_index = lerp(window_frame_start, window_frame_start+window_frames, window_timer/window_length);
-    if (window_timer >= window_length) instance_destroy();
+    if (window_timer >= window_length) do_destroy();
 }
 
 
@@ -281,4 +258,9 @@ if (last_window > 0)
 {
     window = new_window;
     window_timer = 0;
+}
+#define do_destroy
+{
+    instance_destroy();
+    exit;
 }

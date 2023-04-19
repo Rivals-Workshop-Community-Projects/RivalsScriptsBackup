@@ -14,3 +14,7 @@ if (hitmove == AT_DSPECIAL && sword_two == hit_player_obj) {
         dspecial_hit = true;
     }  
 }
+
+if (hitmove == AT_DSPECIAL) {
+    sword_two = hit_player_obj;
+}

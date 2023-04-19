@@ -10,6 +10,7 @@ enum EN_EVENT {
 
 if (!_init) {
     custom_behavior(EN_EVENT.INIT)
+    hitpoints = hitpoints_max;
     _init = true;
 }
 reset_variables()
@@ -79,7 +80,7 @@ if hitstun <= 0 {
 }
 
 if hitpoints_max > 0 {
-    if (percent >= hitpoints_max && state != PS_DEAD) {
+    if (hitpoints <= 0 && state != PS_DEAD) {
         prev_state = state;
         next_state = PS_DEAD;
         state = PS_DEAD;
@@ -125,7 +126,7 @@ if !committed {
     if jump_down && able_to_jump {
         if free {
             if jump_held == 1 && djumps > 0 && able_to_djump {
-                next_state = PS_DOUBLE_JUMP;
+                next_state = PS_FIRST_JUMP;
                 djumps--;
             }
         } else next_state = PS_JUMPSQUAT;
@@ -193,6 +194,9 @@ switch state { //Gameplay Logic
         next_state = PS_FIRST_JUMP;
     break;
     case PS_FIRST_JUMP:
+    	if (state_timer == 1) {
+            djumps = max_djumps;
+    	}
         if !free next_state = PS_LAND;
         break;
     case PS_WALK_TURN:
@@ -709,9 +713,16 @@ if hbox.type == 1 {
 // or comment out the line below.
 hitstop = floor(desired_hitstop); 
  
+
 //Hit Lockout
 if article_should_lockout hit_lockout = hbox.no_other_hit;
  
+percent += ceil(hbox.damage);
+
+if (hbox.player_id != player_id) {
+	hitpoints -= ceil(hbox.damage);
+}
+
 //Default Hitstun Calculation
 if (hbox.effect != 9 || hitstun > 0) {
 	hitstun = get_hitstun_formula(percent, kb_adj, hbox.hitstun_factor == 0 ? 1 : hbox.hitstun_factor, hbox.damage, hbox.kb_value, hbox.kb_scale)
@@ -755,8 +766,6 @@ if (hbox.type == 2) {
         }
     }
 }
- 
-percent += ceil(hbox.damage);
  
 #define filters(hbox)
 //These are the filters that check whether a hitbox should be able to hit the article.

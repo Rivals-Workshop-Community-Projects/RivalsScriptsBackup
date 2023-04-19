@@ -10,6 +10,9 @@ if cheapmode == 3 && get_gameplay_time() < 660 {
 }
 
 shader_start();
+
+
+
 if htrain > 300 {
    if htrain > 340 {    
          draw_debug_text(floor(x) - 70 ,floor(y) - 170 , "+ Head Strength");
@@ -55,7 +58,7 @@ if atrain > 300 && atrain % 2 == 0 {
 if btrain > 300 {
        if btrain > 340 {   
       draw_debug_text(floor(x) - 70 ,floor(y) - 170 , "+ Body Strength");
-      draw_debug_text(floor(x) - 70 ,floor(y) - 150 , "+ Projectile Reflect");
+      draw_debug_text(floor(x) - 70 ,floor(y) - 150 , "+ Strong Armor");
        }
     
 }
@@ -68,7 +71,7 @@ if btrain > 300 && btrain % 2 == 0 {
            
     }
       draw_debug_text(floor(x) - 70 ,floor(y) - 170 , "+ Body Strength");
-      draw_debug_text(floor(x) - 70 ,floor(y) - 150 , "+ Projectile Reflect");
+      draw_debug_text(floor(x) - 70 ,floor(y) - 150 , "+ Strong Armor");
     
 }
 

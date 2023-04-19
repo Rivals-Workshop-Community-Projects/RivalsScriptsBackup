@@ -88,6 +88,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SDI_MULTIPLIER, .8);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .8);
 			
 //Flipper 10  - Hitbox 2
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -130,6 +131,7 @@ set_hitbox_value(AT_DSPECIAL, 4, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_DSPECIAL, 4, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSPECIAL, 4, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DSPECIAL, 4, HG_SDI_MULTIPLIER, .8);
+set_hitbox_value(AT_DSPECIAL, 4, HG_HITSTUN_MULTIPLIER, .8);
 
 //Finisher Hitbox
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_TYPE, 1);

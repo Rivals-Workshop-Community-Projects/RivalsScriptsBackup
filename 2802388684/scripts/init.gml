@@ -195,7 +195,7 @@ set_victory_theme(sound_get("snd_victorymusic"));
 
 
 
-
+// ai_draw = ds_list_create();
 
 
 

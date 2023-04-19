@@ -47,7 +47,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .65);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("rubberband"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("rubberband"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 18);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 14);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -2);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GRAVITY, .2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_may_whip1"));

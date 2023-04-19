@@ -91,8 +91,304 @@ else {
     dstrong_grab = false;
 }
 
-if (my_hitboxID.attack == AT_DSPECIAL){
+if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num < 3){
     will_o_wisp.shoulddie = true;
 }
 
 
+switch my_hitboxID.attack {
+    
+    case AT_JAB:
+    if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium1"),false,noone,0.8);
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium2"),false,noone,0.8);
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+     }
+    break;
+    case AT_DATTACK:
+    if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium3"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium3"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+     }
+    if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+     }
+    break;
+    case AT_FTILT:
+    if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+     }
+    if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_medium3"),false,noone,0.8);
+     }
+     if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }
+    break;
+    case AT_UTILT:
+    if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+     }
+    break;
+    case AT_DTILT:
+    if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium2"));
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_medium2"));
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }
+    break;
+    case AT_FSTRONG:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }
+     
+    break;
+    case AT_USTRONG:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }
+	if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }     
+	if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }    
+    break;
+    case AT_DSTRONG:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium3"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }
+	if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }     
+	if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_medium3"));
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }  
+     if my_hitboxID.hbox_num == 6 {
+         sound_play(asset_get("sfx_blow_medium3"));
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }    
+    break;
+    case AT_DSTRONG:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium2"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium2"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_medium2"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }
+	if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }     
+	if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_medium2"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     } 
+    if my_hitboxID.hbox_num == 6 {
+         sound_play(asset_get("sfx_blow_medium2"),false,noone,0.8);
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }   
+    if my_hitboxID.hbox_num == 7 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }   
+    break;
+    case AT_NAIR:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+	if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }     
+	if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_medium3"));
+     }    
+    break;
+    case AT_FAIR:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium3"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }
+	if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }     
+	if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_medium3"));
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }  
+     if my_hitboxID.hbox_num == 6 {
+         sound_play(asset_get("sfx_blow_medium3"));
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }    
+    break;
+    case AT_BAIR:
+    if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium3"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }
+    break;
+    case AT_UAIR:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+	if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+     }     
+	if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }  
+     if my_hitboxID.hbox_num == 6 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }    
+    break;
+    case AT_DAIR:
+    if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+     }
+    break;
+    case AT_NSPECIAL:
+    if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_abyss_explosion"));
+     }
+    break;
+    case AT_FSPECIAL:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"));
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_medium2"));
+     }
+	if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_medium3"));
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }     
+	if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_medium3"));
+         sound_play(asset_get("sfx_forsburn_reappear_hit"));
+     }  
+     if my_hitboxID.hbox_num == 6 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }    
+    break;
+    case AT_USPECIAL:
+     if my_hitboxID.hbox_num == 1 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+     }
+     if my_hitboxID.hbox_num == 2 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+     }
+     if my_hitboxID.hbox_num == 3 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+     }
+	if my_hitboxID.hbox_num == 4 {
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+     }     
+	if my_hitboxID.hbox_num == 5 {
+         sound_play(asset_get("sfx_blow_heavy1"),false,noone,0.8);
+         sound_play(asset_get("sfx_blow_heavy2"),false,noone,0.8);
+         sound_play(asset_get("sfx_ell_uspecial_explode"));
+     }    
+    break;
+}

@@ -9,7 +9,7 @@ if((attack == AT_NSPECIAL or attack == AT_DSPECIAL)and hbox_num == 1){
 }
 
 if(attack == AT_DSPECIAL){
-
+    bounced = false;
     sound_lockout = 0;
     reversed = false;
     prev_reversed = false;

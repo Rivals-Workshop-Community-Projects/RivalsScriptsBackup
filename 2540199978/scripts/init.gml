@@ -170,9 +170,6 @@ ustrongLoop = 0;
 // intro
 introTimer = -4;
 
-//topcustom
-topcustom = 0;
-
 // Support
 Hikaru_Title = "Ice fox";
 personaQuips[10] = "Melt it all!";

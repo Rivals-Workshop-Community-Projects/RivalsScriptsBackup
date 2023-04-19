@@ -30,7 +30,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.80);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.10);
 
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.80);
@@ -38,13 +38,13 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.10);
 
 //	Default Reset
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.20);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.50);
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+//set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //	Attack 2
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 25);
@@ -59,7 +59,7 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.80);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.10);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.50);
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
+//set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 8);
 

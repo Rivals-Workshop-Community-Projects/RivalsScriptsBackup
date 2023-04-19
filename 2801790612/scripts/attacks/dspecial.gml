@@ -65,8 +65,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.55);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.25);
-set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, spr_pepsican);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, spr_pepsican_hurt);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_COLLISION_SPRITE, spr_pepsican_hurt);
@@ -83,6 +82,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 301);
 set_hitbox_value(AT_DSPECIAL, 2, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_EFFECT, 69);
 
+// Old one
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 150);
@@ -94,7 +94,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.55);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, 0.25);
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("pepsican"));
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_MASK, spr_pepsican_hurt);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_COLLISION_SPRITE, spr_pepsican_hurt);
@@ -169,4 +169,3 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_GROUP, 1);
 
 
 
-set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Jump cancel starting on frame " + string(get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH) + 1) + " unless parried.");

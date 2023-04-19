@@ -42,20 +42,7 @@ if !hitpause {
    }
 }
 
-if get_gameplay_time() < 36 {
-	
-visible = false	
-draw_indicator = false
-}
 
-
-if get_gameplay_time() = 36 {
-	
-visible = true
-draw_indicator = true
-sound_play(sound_get("timestop"),false, noone, 1);
-spawn_hit_fx( x, y , darken )	
-}
 
 
 
@@ -116,7 +103,7 @@ with (asset_get("oPlayer")) {
 if(get_gameplay_time() == 2){
 	
 
-var shortest_dist = 9999;
+            var shortest_dist = 9999;
 			var shortest_id = noone;
 			
 			with (asset_get("oPlayer")) {
@@ -310,12 +297,6 @@ if timestop < 0 {
 	timestop = 0
 }
 
-if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 {
-	
-timestop += 14
- 
-}
-
 
 if state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_AIR_DODGE{
 	if state_timer == 1 {
@@ -333,7 +314,7 @@ if fstronghit > 0 {
 
 set_victory_theme(sound_get("Drak"));
 
-if timestop < 30 or free {
+if timestop < 30 {
 	move_cooldown[AT_DSPECIAL] = 2
 }
 
@@ -373,11 +354,11 @@ if state_timer == 1 {
 }
 	 
 	 if state_timer < 9{
-	     hsp = -0.5 * spr_dir
+	     hsp = -4 * spr_dir
 	 }
 	 
 	 if state_timer >= 9 and state_timer < 12 {
-	     hsp = -30 * spr_dir
+	     hsp = -26 * spr_dir
 	 }
 	 if state_timer >= 4 and state_timer < 12 {
 	     draw_indicator = false
@@ -925,11 +906,11 @@ timestop = 100
         	set_state (PS_WALK)
         	state_timer = get_gameplay_time()
         if get_gameplay_time() % 64 == 32 {
-				sound_play(sound_get("fs1"), false, noone, 0.6);
+				sound_play(sound_get("fs1"), false, noone,.8);
 		}
 		
 		if get_gameplay_time() % 64 == 0 {
-			sound_play(sound_get("fs2"), false, noone, 0.6);
+			sound_play(sound_get("fs2"), false, noone, .8);
 		}
         }
         }
@@ -960,36 +941,5 @@ timestop = 100
 
 if get_player_color(player) == 7 {
 	outline_color = [19, 15, 28]
-   if visible {  
-   	if !hitpause {
-	if get_gameplay_time() % 40 == 0 {
-   	set_color_profile_slot(get_player_color(player),3, 255, 196, 244); 
-	} 
-	
-	if get_gameplay_time() % 40 == 26{
-	set_color_profile_slot(get_player_color(player),3, 0, 191, 255 );	
-	}
-	
-    if get_gameplay_time() % 40 == 13 {
-	set_color_profile_slot(get_player_color(player),3, 160, 195, 250 );	
-	}
-	
-
-   	}
-   	
-   	if hitpause {
-	if get_gameplay_time() % 8 == 0	 {
-   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
-	} 
-	
-	if get_gameplay_time() % 8 == 6{
-	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
-	}
-	
-    if get_gameplay_time() % 8 == 3{
-	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
-	}
-   	}
-	}
     init_shader();	 
 }

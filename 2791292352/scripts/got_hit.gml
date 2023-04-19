@@ -1,21 +1,6 @@
+if state_cat = SC_HITSTUN { 
 sound_stop(sound_get("spookydance"));
-
-if hit_player_obj.cofa_mummy == true && enemy_hitboxID.type == 1{
-hit_player_obj.cofa_mummy = 0;
-hit_player_obj.cofa_mummy_timer = 0;
-hit_player_obj.cofa_mummy_outcol_time = 0;
-    sound_play(sound_get("mcurse_apply"));
-    cofa_mummy = true;
-    cofa_mummy_id = id;
-    cofa_mummy_timer = 180;
-    cofa_mummy_outcol_time = 0;
-}
-else if (enemy_hitboxID.player_id.player == player && enemy_hitboxID.attack == AT_NSPECIAL){
-    sound_play(sound_get("mcurse_apply"));
-    cofa_mummy = true;
-    cofa_mummy_id = id;
-    cofa_mummy_timer = 180;
-    cofa_mummy_outcol_time = 0;
+sound_stop(sound_get("ragdoll"));
 }
 
 // cancel cofa grab on hit

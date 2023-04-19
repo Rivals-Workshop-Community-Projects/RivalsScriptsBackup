@@ -59,8 +59,12 @@ switch (attack)
 			hat.hsp = throw_hsp;
 			hat.vsp = throw_vsp;
 		}
+		if attack == AT_FSPECIAL {
+		move_cooldown[AT_FSPECIAL] = 180;
+		}
 		break;
 	//hatless fspecial return
+	
 	case AT_FSPECIAL_2:
 		can_move = false;
 		if (fspecial_air_count < 1) {
@@ -343,6 +347,12 @@ switch (attack)
 	case AT_USPECIAL:
 		hurtboxID.image_angle = spr_angle;
 		can_fast_fall = false;
+		if (move_cooldown[AT_FSPECIAL] && instance_exists(hat_object)) {
+		set_state(PS_PRATFALL);
+		sound_play(asset_get("sfx_forsburn_reappear"));
+		spawn_hit_fx(x, y, 13);
+		vsp = -8;
+		}
 		//can_move = false;
 		switch (window)
 		{
@@ -457,6 +467,11 @@ switch (attack)
 			hatted_id.invincible = false;
 			hatted_id.x = x + (50 * spr_dir);
 			hatted_id = undefined;
+		}
+		
+		if(hatted_id != noone and window < 6){
+			hatted_id.hitstop = 2;		
+			
 		}
 
 		if (window == 5 && window_timer == 1 && (left_down ^^ right_down)) spr_dir = -left_down + right_down;

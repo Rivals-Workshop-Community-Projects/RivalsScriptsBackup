@@ -144,7 +144,7 @@ set_color_profile_slot( 11, 3, 250, 237, 218 ); //Skin
 set_color_profile_slot( 11, 4, 54, 33, 39 ); //Ribbon
 set_color_profile_slot( 11, 5, 34, 32, 37 ); //Shoe
 set_color_profile_slot( 11, 6, 230, 54, 56 ); //Tie
-set_color_profile_slot( 11, 7, 88, 227, 159 ); //White
+set_color_profile_slot( 11, 7, 159, 224, 162 ); //White
 
 // Kasen
 set_color_profile_slot( 12, 0, 163, 200, 97 ); //Dress

@@ -1,4 +1,5 @@
 
+
 if(my_hitboxID.attack == AT_USPECIAL)
 {
     shoryu_obj = hit_player_obj;
@@ -17,6 +18,8 @@ else if my_hitboxID.attack == AT_FSPECIAL and my_hitboxID.hbox_num < 5 and !hit_
     hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*10),0.2)
     hit_player_obj.y = lerp(hit_player_obj.y,y,0.3)
 }
+
+
 else if my_hitboxID.attack == AT_USTRONG and my_hitboxID.hbox_num < 3 and !hit_player_obj.clone
 {
     hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*30),0.8)

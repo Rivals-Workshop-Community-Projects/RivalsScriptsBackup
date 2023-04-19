@@ -6,20 +6,20 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_NSPECIAL){
-    can_fast_fall = false;
+    can_fast_fall = false;can_wall_jump = true;
     if(window == 2){
         if(!special_down && !shield_down){
             window = 3;window_timer = 0;
         }else if(shield_down){
             window = 6;window_timer = 0;
         }else{
-            nspecialcharge += 1;
+            nspecialcharge += 1.5;
             nspecialcharge = min(nspecialcharge,40);
         }
         if(nspecialcharge >= 40){
-            set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 40);
+            set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, round(40*nspec_multiplier));
         }else if(nspecialcharge >= 20){
-            set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 20);
+            set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, round(20*nspec_multiplier));
             if(nspecialcharge == 20){
                 outline_timer = 50;
             }
@@ -36,7 +36,7 @@ if (attack == AT_NSPECIAL){
             //}
         }
     }else if(window == 4){
-        vsp *= 0.5;//can_move = false;
+        vsp *= 0.5;free = true;
         //if(nspecialcharge2 <= 90){
             if(window_timer % 4 == 0){
                 create_hitbox(AT_NSPECIAL,1,x+25*spr_dir,y-15);hsp -= 0.5*spr_dir;
@@ -58,7 +58,7 @@ if (attack == AT_NSPECIAL){
 	                	set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_muddy"));
 						set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air_muddy"));
 						set_hitbox_value(AT_FSPECIAL, 8, HG_DAMAGE, 8);set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_HITPAUSE, 15);set_hitbox_value(AT_FSPECIAL, 8, HG_ANGLE, 361);
-						set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_KNOCKBACK, 9);set_hitbox_value(AT_FSPECIAL, 8, HG_KNOCKBACK_SCALING, 1.05);
+						set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_KNOCKBACK, 9);set_hitbox_value(AT_FSPECIAL, 8, HG_KNOCKBACK_SCALING, 1.1);
 	                }destroyed = true;		 
 	        	}
 	    	}
@@ -229,8 +229,12 @@ if (attack == AT_NSPECIAL){
 		cancelattack();has_hit = true;
 	}
 }else if (attack == AT_FAIR){
-    if(window == 1 && window_timer == 9 && !hitpause){
+    if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
         sound_play(sound_get("Bubble"));
+        if(has_rune("B") || runeB){
+        	var bubl = create_hitbox(AT_FAIR,1,x+25*spr_dir,y-15);bubl.hsp *= 0.75;bubl.vsp = -2;bubl.damage = round(bubl.damage/2);
+        	bubl = create_hitbox(AT_FAIR,1,x+25*spr_dir,y-15);bubl.hsp *= 0.75;bubl.vsp = 2;bubl.damage = round(bubl.damage/2);
+        }
     }
 }else if (attack == AT_UAIR){
     if(window == 1 && window_timer == 12 && !hitpause){
@@ -354,7 +358,7 @@ if (attack == AT_NSPECIAL){
         dusteff = spawn_hit_fx(x+50*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
     }
 }else if (attack == AT_JAB){
-    if(window == 2 && window_timer == 3 && !hitpause){
+    if(window == 2 && window_timer == 3 && !hitpause && !has_hit){
         sound_play(sound_get("Bite"));
     }
 }else if (attack == AT_TAUNT){

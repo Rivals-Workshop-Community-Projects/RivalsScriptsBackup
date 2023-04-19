@@ -299,13 +299,13 @@ switch (state)
                 { 
                     image_index = 1; //air frame
                 }
-                else if (window == 3)
+                else if (window == 3 || window == 4)
                 {
-                    spawn_twinkle(vfx_glitch, x, y - (char_height/2), 15);
+                    spawn_twinkle(vfx_glitch, x, y - (char_height/2), 15 * (window - 2));
                     spawn_twinkle(vfx_glitch, uhc_anim_last_dodge.posx, 
-                                              uhc_anim_last_dodge.posy - (char_height/2), 80);
+                                  uhc_anim_last_dodge.posy - (char_height/2), 80);
                 }
-                else if (window > 3 && uhc_has_extended_pratland)
+                else if (window > 4 && uhc_has_extended_pratland)
                 {
                     image_index = 7;
                 }
@@ -460,7 +460,7 @@ switch (state)
 }
 
 if (uhc_uspecial_soft_cooldown)
-&& !(state == PS_ATTACK_AIR && attack == AT_USPECIAL && window == 3)
+&& !(state == PS_ATTACK_AIR && attack == AT_USPECIAL && (window == 3 || window == 4))
 {
     image_index = 2 * floor(image_index/2);
 }
@@ -488,6 +488,22 @@ if (uhc_taunt_current_video != noone && state != PS_ATTACK_GROUND)
     uhc_taunt_is_opening = false;
     uhc_taunt_opening_timer = 0;
     uhc_taunt_current_video = noone;
+}
+
+//==============================================================
+// USPECIAL's custom music suppresion
+// HAHAHAHAHAHZZAZZHZZAZZHZZAZZH---%;
+if (uhc_buffer_breaks_music)
+{
+    var should_break = ( (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) 
+                      && (attack == AT_USPECIAL && (window == 3 || window == 4)) );
+
+    if (uhc_music_is_broken xor should_break)
+    {
+        uhc_music_is_broken = should_break;
+        for (var i = 0; i < uhc_music_break_strength; i++)
+            sound_volume(uhc_music_break_storage[i], should_break, 1);
+    }
 }
 
 //==============================================================
@@ -560,6 +576,9 @@ if (uhc_taunt_collect_videos && state == PS_ATTACK_GROUND && attack == AT_TAUNT)
         }
     }
 }
+
+//Mamizou compatibility is immune to post_draw blade sprites
+mamizou_transform_spr = sprite_get(uhc_has_cd_blade ? "cmp_mamizou_blade" : "cmp_mamizou");
 
 //==============================================================
 // purpose: if AG_WINDOW_SFX_FRAME is negative, play SFX on the X-to-last frame of this window

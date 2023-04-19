@@ -10,6 +10,8 @@ ncode1 = "Very small"
 ncode2 = "Weight exactly 450g"
 ncode3 = "May or may not send you to god"
 
+tengiaglow = 0
+
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 

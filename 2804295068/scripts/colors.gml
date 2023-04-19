@@ -1,7 +1,7 @@
 // DEFAULT COLOR
 
 // head and peas
-set_color_profile_slot( 0, 0, 192, 240, 56 );
+set_color_profile_slot( 0, 0, 216, 248, 64 );
 set_color_profile_slot_range( 0, 1, 1, 1 );
 
 // head and peas 2
@@ -13,11 +13,11 @@ set_color_profile_slot( 0, 2, 112, 168, 16 );
 set_color_profile_slot_range( 2, 1, 1, 1 );
 
 // body and leaves
-set_color_profile_slot( 0, 3, 56, 200, 8 );
+set_color_profile_slot( 0, 3, 56, 192, 8 );
 set_color_profile_slot_range( 3, 1, 1, 1 );
 
 // body and leaves 2
-set_color_profile_slot( 0, 4, 40, 152, 0 );
+set_color_profile_slot( 0, 4, 32, 136, 0 );
 set_color_profile_slot_range( 4, 1, 1, 1 );
 
 // flame
@@ -37,8 +37,8 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 set_num_palettes( 20 );
 
 // Snow
-set_color_profile_slot( 1, 0, 168, 250, 243 ); //head and peas
-set_color_profile_slot( 1, 1, 96, 226, 226 ); //head and peas 2
+set_color_profile_slot( 1, 0, 174, 252, 246 ); //head and peas
+set_color_profile_slot( 1, 1, 87, 219, 220 ); //head and peas 2
 set_color_profile_slot( 1, 2, 63, 166, 173 ); //head and peas 3
 set_color_profile_slot( 1, 3, 44, 185, 195 ); //body and leaves
 set_color_profile_slot( 1, 4, 28, 119, 127 ); //body and leaves 2
@@ -47,11 +47,11 @@ set_color_profile_slot( 1, 6, 180, 230, 230 ); //flame 2
 set_color_profile_slot( 1, 7, 253, 252, 255 ); //flame 3
 
 // Fire
-set_color_profile_slot( 2, 0, 231, 188, 83 ); //head and peas
-set_color_profile_slot( 2, 1, 226, 101, 37 ); //head and peas 2
+set_color_profile_slot( 2, 0, 241, 204, 123 ); //head and peas
+set_color_profile_slot( 2, 1, 235, 118, 39 ); //head and peas 2
 set_color_profile_slot( 2, 2, 211, 34, 42 ); //head and peas 3
 set_color_profile_slot( 2, 3, 248, 243, 139 ); //body and leaves
-set_color_profile_slot( 2, 4, 235, 118, 39 ); //body and leaves 2
+set_color_profile_slot( 2, 4, 225, 76, 40 ); //body and leaves 2
 set_color_profile_slot( 2, 5, 0, 48, 119 ); //flame
 set_color_profile_slot( 2, 6, 63, 179, 235 ); //flame 2
 set_color_profile_slot( 2, 7, 169, 255, 216 ); //flame 3
@@ -67,7 +67,7 @@ set_color_profile_slot( 3, 6, 244, 132, 178 ); //flame 2
 set_color_profile_slot( 3, 7, 255, 253, 254 ); //flame 3
 
 // Heatwave
-set_color_profile_slot( 4, 0, 255, 255, 66 ); //head and peas
+set_color_profile_slot( 4, 0, 255, 255, 198 ); //head and peas
 set_color_profile_slot( 4, 1, 255, 206, 33 ); //head and peas 2
 set_color_profile_slot( 4, 2, 255, 107, 16 ); //head and peas 3
 set_color_profile_slot( 4, 3, 65, 224, 12 ); //body and leaves
@@ -108,7 +108,7 @@ set_color_profile_slot( 7, 7, 211, 226, 154 ); //flame 3
 
 // Snapdragon
 set_color_profile_slot( 8, 0, 179, 180, 44 ); //head and peas
-set_color_profile_slot( 8, 1, 151, 152, 50 ); //head and peas 2
+set_color_profile_slot( 8, 1, 135, 135, 42 ); //head and peas 2
 set_color_profile_slot( 8, 2, 203, 204, 50 ); //head and peas 3
 set_color_profile_slot( 8, 3, 203, 102, 50 ); //body and leaves
 set_color_profile_slot( 8, 4, 146, 72, 35 ); //body and leaves 2
@@ -127,7 +127,7 @@ set_color_profile_slot( 9, 6, 93, 12, 105 ); //flame 2
 set_color_profile_slot( 9, 7, 44, 4, 81 ); //flame 3
 
 // Sweet Potato
-set_color_profile_slot( 10, 0, 255, 200, 107 ); //head and peas
+set_color_profile_slot( 10, 0, 255, 220, 117 ); //head and peas
 set_color_profile_slot( 10, 1, 248, 160, 50 ); //head and peas 2
 set_color_profile_slot( 10, 2, 208, 100, 7 ); //head and peas 3
 set_color_profile_slot( 10, 3, 162, 42, 78 ); //body and leaves
@@ -157,13 +157,13 @@ set_color_profile_slot( 12, 6, 104, 147, 52 ); //flame 2
 set_color_profile_slot( 12, 7, 134, 179, 80 ); //flame 3
 
 // edition
-set_color_profile_slot( 13, 0, 0, 255, 169); //head and peas
-set_color_profile_slot( 13, 1, 4, 209, 140 ); //head and peas 2
+set_color_profile_slot( 13, 0, 195, 255, 251); //head and peas
+set_color_profile_slot( 13, 1, 0, 255, 169 ); //head and peas 2
 set_color_profile_slot( 13, 2, 4, 163, 109 ); //head and peas 3
 set_color_profile_slot( 13, 3, 210, 70, 253 ); //body and leaves
 set_color_profile_slot( 13, 4, 144, 66, 247 ); //body and leaves 2
-set_color_profile_slot( 13, 5, 50, 184, 196 ); //flame
-set_color_profile_slot( 13, 6, 61, 232, 249 ); //flame 2
+set_color_profile_slot( 13, 5, 0, 149, 170 ); //flame
+set_color_profile_slot( 13, 6, 54, 231, 251 ); //flame 2
 set_color_profile_slot( 13, 7, 90, 255, 249 ); //flame 3
 
 // Luminescent
@@ -220,8 +220,8 @@ set_color_profile_slot( 18, 7, 255, 255, 214 ); //flame 3
 set_color_profile_slot( 19, 0, 249, 249, 249 ); //head and peas
 set_color_profile_slot( 19, 1, 205, 210, 196 ); //head and peas 2
 set_color_profile_slot( 19, 2, 139, 156, 111 ); //head and peas 3
-set_color_profile_slot( 19, 3, 170, 189, 164 ); //body and leaves
-set_color_profile_slot( 19, 4, 113, 147, 103 ); //body and leaves 2
+set_color_profile_slot( 19, 3, 161, 184, 153 ); //body and leaves
+set_color_profile_slot( 19, 4, 99, 128, 90 ); //body and leaves 2
 set_color_profile_slot( 19, 5, 152, 135, 118 ); //flame
 set_color_profile_slot( 19, 6, 255, 255, 255 ); //flame 2
 set_color_profile_slot( 19, 7, 255, 255, 255 ); //flame 3

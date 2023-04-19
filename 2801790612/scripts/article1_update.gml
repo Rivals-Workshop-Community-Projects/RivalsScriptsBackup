@@ -107,10 +107,19 @@ if (explode) {
         spawn_hit_fx(x, y, player_id.vfx_pepsi_burst);
         var new_instance_one = create_hitbox(AT_DSPECIAL, 2, x, y);
         new_instance_one.spr_dir = player_id.spr_dir;
+        new_instance_one.hsp = 3;
+        new_instance_one.vsp = -14;
         new_instance_one = noone;
-        var new_instance_two = create_hitbox(AT_DSPECIAL, 3, x, y);
+        var new_instance_two = create_hitbox(AT_DSPECIAL, 2, x, y);
         new_instance_two.spr_dir = player_id.spr_dir;
+        new_instance_two.hsp = -3;
+        new_instance_two.vsp = -14;
         new_instance_two = noone;
+        var new_instance_three = create_hitbox(AT_DSPECIAL, 2, x, y);
+        new_instance_three.spr_dir = player_id.spr_dir;
+        new_instance_three.hsp = 0;
+        new_instance_three.vsp = -15;
+        new_instance_three = noone;
         sound_play(player_id.sfx_pepsi_crash);
         destroy = true;
     }

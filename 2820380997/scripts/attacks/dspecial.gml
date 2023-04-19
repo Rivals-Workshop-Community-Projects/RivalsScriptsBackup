@@ -58,7 +58,7 @@ set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 35);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -26);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 60);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 54);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 24);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
@@ -70,6 +70,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_paw);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
 set_hitbox_value(attack, hitbox_num, HG_HIT_LOCKOUT, 3);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
 set_hitbox_value(attack, hitbox_num, 81, "Roekoko's Hitbox");//HG_MUNO_HITBOX_NAME = i; i++;	
 
 hitbox_num++;
@@ -81,8 +82,8 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 3);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 35);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -26);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 60);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -100);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 54);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 24);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
@@ -112,6 +113,7 @@ set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
 set_hitbox_value(attack, hitbox_num, 81, "Clone's Hitbox");//HG_MUNO_HITBOX_NAME = i; i++;
 
 hitbox_num++;

@@ -115,8 +115,8 @@ nero_music_end = false;
 
 // if (excitement == 100){
     
-//     if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && !excited)
-//     set_attack(AT_EXTRA_1);
+if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
+grabbed_player = noone;
 
 // }
 
@@ -140,6 +140,7 @@ if (excitement >= 50 && !excited){
     crouch_anim_speed = .25;
     walk_anim_speed = .3;
     dash_anim_speed = .3;
+	prat_fall_accel = .5; 
 
     excited = true;
 
@@ -158,6 +159,7 @@ if (excitement < 50 && excited){
     crouch_anim_speed   = def_crouch_anim_speed;
     walk_anim_speed     = def_walk_anim_speed; 
     dash_anim_speed     = def_dash_anim_speed; 
+	prat_fall_accel		= def_prat_fall_accel;
 
     reload_delay_default = 60 * 9;
     excited_timer = 0;

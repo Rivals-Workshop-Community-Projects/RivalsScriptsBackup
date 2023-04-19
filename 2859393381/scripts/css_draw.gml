@@ -43,7 +43,7 @@ cpu_hover_draw();
 
 var temp_x = x + 8;
 var temp_y = y + 15;
-var numAlts = 20;
+var numAlts = 21;
 
 //patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1); 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)); 
@@ -85,7 +85,8 @@ alt_name[15]	= "Hello Internet";
 alt_name[16]	= "Jinkies!";
 alt_name[17]	= "Sponge At Law";
 alt_name[18]	= "44th President";
-alt_name[19]	= "White Boy"; //no bias to adding this alt definitely not
+alt_name[19]	= "Daniel"; //no bias to adding this alt definitely not
+alt_name[20]	= "BLM";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 150, temp_y + 24, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

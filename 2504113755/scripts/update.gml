@@ -7,6 +7,7 @@ if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
 }
 
 
+print_debug(get_synced_var(player))
 
 
 
@@ -109,7 +110,7 @@ if (get_gameplay_time() == intro_time + 7) {
 
 
 
-if (get_player_color( player ) == 25) {
+if (get_player_color( player ) == 24) {
 hue_offset+=hue_speed;
 init_shader();
 

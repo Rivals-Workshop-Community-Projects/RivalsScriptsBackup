@@ -14,6 +14,7 @@ if (is_master_player) {
     visible = true;
 }
 
+ds_list_destroy(ai_draw);
 #define deactivate_pet(pet_id)
 //something about pets and clones makes the game crash, try to fix that somehow
 if (!instance_exists(pet_id)) return;

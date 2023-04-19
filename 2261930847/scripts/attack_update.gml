@@ -298,6 +298,10 @@ if (attack == AT_USPECIAL || attack == AT_USPECIAL_2) && window == 4 {
 	can_fast_fall = true;
 }
 
+if (attack == AT_USPECIAL || attack == AT_USPECIAL_2) {
+	can_wall_jump = true;
+}
+
 if(attack == AT_DSPECIAL_2)
 {
         //can_move = false;
@@ -333,18 +337,6 @@ if(attack == AT_NSPECIAL && special_down){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -4);
 }
-
-
-//MUNOPHONE CHEATS
-
- if (phone_cheats[cheat_moist_meter] == 0) {
-	 	   mud_training_level = 0;
-	  } else if (phone_cheats[cheat_moist_meter] == 1){
-	  	mud_training_level = 1;
-	  } else if (phone_cheats[cheat_moist_meter] == 2){
-	  	mud_training_level = 2;
-	  } 
-	  
 
 //RUNES
 	  

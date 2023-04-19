@@ -1,11 +1,27 @@
 //
 
-if(has_shrimp && state != 4){
+if(player_id.pot_skin = 2){
+    if(state != 7 && state != 8){
+   backboard = draw_sprite_ext(backboard_sprite,image_index,floor(x),floor(y) + 2,1,1,0,c_white,1); 
+    //backboard.depth = 10;  
+    }
+}
+
+if(has_shrimp && state != 4 && state != 8){
+    if(!player_id.genesis_alt){
     var fx_image_index = get_gameplay_time() / 8
         draw_sprite_ext(sprite_get("pot_shrimp_stir"),fx_image_index,floor(x),floor(y) + 2,1,1,0,c_white,1);
     if(!can_opponent_hit){
       draw_sprite_ext(sprite_get("pot_shrimp_stir"),fx_image_index,floor(x),floor(y) + 2,1,1,0,c_gray,1);  
     }
+}else{
+        draw_sprite_ext(sprite_get("pot_shrimp_stir"),0,floor(x),floor(y) + 2,1,1,0,c_white,1);
+        draw_sprite_ext(sprite_get("white_pot_shrimp_stir"),0,floor(x),floor(y) + 2,1,1,0,c_white,0.4);
+    if(!can_opponent_hit){
+      draw_sprite_ext(sprite_get("pot_shrimp_stir"),0,floor(x),floor(y) + 2,1,1,0,c_gray,1);  
+      draw_sprite_ext(sprite_get("white_pot_shrimp_stir"),0,floor(x),floor(y) + 2,1,1,0,c_white,0.4);
+    }    
+}
 }
 //food
 
@@ -64,7 +80,6 @@ if(state = 7){
   
   
 }
-
 #define textDraw(x1, y1, font, color, lineb, linew, align, scale, outline, alpha, text, array_bool)
 
 draw_set_font(asset_get(font));

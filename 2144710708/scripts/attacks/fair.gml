@@ -61,5 +61,6 @@ set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 306); // vfx
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("crowbar_hit1"));
+//set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy1"));
 set_hitbox_value(AT_FAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 

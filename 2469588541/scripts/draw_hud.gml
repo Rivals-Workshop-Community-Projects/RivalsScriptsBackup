@@ -40,7 +40,7 @@ if ("practice" in self)
 				AddText("Up Throw Up Air");
 				AddText("Up Throw NSpec");
 				AddText("Up Throw FSpec");
-				AddText("USpec Link");
+				AddText(aura?"USpec Link":"USpec Cancel");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -513,6 +513,85 @@ if ("practice" in self)
 						AddText("meow meow meow meow meow meow meow meow (ahh)");
 						AddText("(Thanks Causeimapilot for the frames)");
 						break;
+					case 28:
+						AddText("v1.27 - 17 Sep 2022");
+						AddText("");
+						AddText("Star outline now only shows against another Lukastar.");
+						AddText("Star hitboxes now no longer have hit lockout.");
+						AddText("");
+						AddText("Jab 1 Window Cancel Frame 5 -> 4");
+						AddText("");
+						AddText("USpecial input now doesn't require holding Special.");
+						AddText("");
+						AddText("Dattack Endlag 10 -> 14 (Before whifflag multiplier)");
+						AddText("Dattack Landing hit 1 immediately starts hit 2");
+						AddText("");
+						AddText("Adjusted FTilt hitboxes to fit animation");
+						AddText("FTilt Lifetime 4 -> 2");
+						AddText("");
+						AddText("Fixed meow song loop");
+						AddText("");
+						LineBreak();
+						AddText("v1.27.1 - 20 Sep 2022");
+						AddText("");
+						AddText("Changed CSS Background Colour to Air");
+						AddText("");
+						AddText("Cracked stars can no longer merge with DSpec");
+						AddText("");
+						LineBreak();
+						AddText("v1.27.2 - 17 Nov 2022");
+						AddText("");
+						AddText("NSpec - Fixed Special buffer when jump cancelling");
+						break;
+					case 29:
+						AddText("v1.28 - 25 Dec 2022");
+						AddText("");
+						AddText("Merry Christmas!!");
+						AddText("");
+						AddText("Hitstun Gravity 0.6 -> 0.53");
+						AddText("");
+						AddText("Fixed a freeze bug in Galaxy Fox mode");
+						AddText("");
+						LineBreak();
+						AddText("v1.28.1 - 30 Dec 2022");
+						AddText("");
+						AddText("USpec Endlag 8 -> 18");
+						AddText("USpec No longer has whifflag");
+						AddText("USpec KB 5 -> 8");
+						AddText("");
+						AddText("Fixed a Dan bug with detecting alts in the online CSS");
+						AddText("");
+						LineBreak();
+						AddText("v1.28.2 - 31 Dec 2022");
+						AddText("");
+						AddText("USpec KB 8 -> 6.75");
+						AddText("");
+						AddText("Galaxy Fox no longer triggers on Turbo mode");
+						LineBreak();
+						AddText("v1.28.3 - 31 Dec 2022");
+						AddText("");
+						AddText("USpec KB 6.75 -> 6.45");
+						AddText("agedcheez please stop asking for changes");
+						break;
+					case 30:
+						AddText("v1.29 - 24 Jan 2023");
+						AddText("");
+						AddText("USpecial is now Fox/Zetterburn USpec instead of Pika/Absa USpec.");
+						AddText("Uspec can be cancelled into a boost upwards by touching a star.");
+						AddText("");
+						LineBreak();
+						AddText("v1.29.1 - 6 Feb 2023");
+						AddText("");
+						AddText("Increased time freshly spawned stars from NSpec cannot be fired 18 -> 24");
+						AddText("This timer is cancelled at the beginning of NSpec");
+						AddText("");
+						AddText("USpec Damage 2 -> 9");
+						AddText("");
+						LineBreak();
+						AddText("v1.29.2 - 8 Mar 2023");
+						AddText("");
+						AddText("Fixed a visual bug where the Constellation effect connects to the wrong stars.");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -525,7 +604,7 @@ if ("practice" in self)
 					{
 						case 0:
 							AddText("Most attacks create stars on hitting the opponent");
-							AddText("These stars will add base knockback and damage when consumed by landing a Strong attack or a tipper UAir");
+							AddText("These stars will add base knockback and damage when consumed by landing a Strong attack or a sweetspot UAir");
 							AddText("You can have a maximum on 7 stars at any time");
 							AddText("Each star will increase knockback multiplier by " + string(starKB) + "% and increase damage by " + string(starDamage) + "%");
 							AddText("");
@@ -576,12 +655,20 @@ if ("practice" in self)
 							AddText("Grab (FSpecial) -> Shorthop/DSpecial -> FSpecial");
 							break;
 						case 3:
-							AddText("Frame 6 or faster moves are true if you hit USpec on the ground, ending close to the opponent");
-							AddText("It's more consistent if you do it diagonally downwards");
-							AddText("However, this can easily be countered by crouch cancelling");
-							AddText("If you see your opponent crouching before getting hit by USpec, don't follow up!");
-							AddText("");
-							AddText("USpec1 -> USpec2 -> UStrong/DStrong/UTilt/DTilt (or anything frame 6 or faster)");
+							if (aura)
+							{
+								AddText("Fast moves are true if you hit USpec on the ground, ending close to the opponent");
+								AddText("It's more consistent if you do it diagonally downwards");
+								AddText("However, this can easily be countered by crouch cancelling");
+								AddText("If you see your opponent crouching before getting hit by USpec, don't follow up!");
+								AddText("");
+								AddText("USpec1 -> USpec2 (Optional) -> Jab/UTilt/DTilt");
+							}
+							else
+							{
+								AddText("USpec can be cancelled into a boost upwards if you hit a star.");
+								AddText("The cancel will be applied at the end of your movement, or can be cancelled earlier if you press Special or Shield.");
+							}
 							break;
 					}
 				}
@@ -616,7 +703,7 @@ if ("practice" in self)
 				AddText("");
 				AddText("Occasionally, Lukastar falls from the sky to learn other creatures' fighting techniques.");
 				AddText("Moves that they have tried to replicate are:");
-				AddText("Zetterburn Shine, Forsburn BAir, Forsburn FAir, Ranno NAir, Maypul Drill, Maypul FSpec, and Absa USpec.");
+				AddText("Zetterburn Shine, Forsburn BAir, Forsburn FAir, Ranno NAir, Maypul Drill, Maypul FSpec, and Zetterburn USpec.");
 				DrawTutorialBlock();
 				DrawTutorialText();
 				break;

@@ -16,3 +16,5 @@ if(attack == AT_JAB && hbox_num == 3){
         instance_destroy();
     }
 }
+
+

@@ -1,12 +1,33 @@
 if ("rollArray" in self)
 {
+	with (obj_article1) if (player_id == other.id)
+	{
+		var clampCheckX = x != clamp(x, view_get_xview(), view_get_xview()+view_get_wview());
+		var clampCheckY = y != clamp(y, view_get_yview(), view_get_yview()+view_get_hview()-52);
+		if (clampCheckX || clampCheckY)
+		{
+			var hudShape = clampCheckX&&clampCheckY;
+			var hudOffset = 32;
+			var drawX = clamp(x-view_get_xview(), hudOffset, view_get_wview()-hudOffset);
+			var drawY = clamp(y-view_get_yview(), hudOffset, view_get_hview()-52-hudOffset);
+			var hudRot = 0;
+			if (drawX == view_get_wview()-hudOffset) hudRot = 90;
+			if (drawY == hudOffset) hudRot = 180;
+			if (drawX == hudOffset) hudRot = (drawY==view_get_hview()-52-hudOffset)?0:270;
+			draw_sprite_ext(sprite_get("hud2"), hudShape, drawX, drawY, 2, 2, hudRot, get_player_hud_color(other.player), 1);
+			with (other) shader_start();
+			draw_sprite_ext(sprite_get("portalHud"), (replacedCount==1), drawX, drawY, 2, 2, 0, c_white, 1);
+			shader_end();
+		}
+	}
+
 	// intro song
 	if ("in_adventure" not in self && state == PS_SPAWN && IsFirstLonin())
 	{
 		draw_set_font(asset_get("roaMBLFont"));
 		var musicName = GetMusicName();
 		var tempColour = c_gray;
-		var bgMaxWidth = string_width_ext(musicName, 0, 1000) + 64;
+		var bgMaxWidth = max(string_width_ext(musicName, 0, 1000) + 64, 160);
 		var bgWidth = state_timer<20?ease_backOut(0, bgMaxWidth, state_timer, 20, 1):state_timer>100?ease_backIn(bgMaxWidth, 0, state_timer-100, 26, 1):bgMaxWidth;
 		var bgHeight = 68;
 		draw_set_alpha(0.8);
@@ -815,6 +836,39 @@ if ("rollArray" in self)
 						AddText("Changed Metal alt to Kizuna alt");
 						AddText("");
 						AddText("Upgraded Anti-Dan code");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.50.2 - 20 Dec 2022");
+						AddText("");
+						AddText("Fixed AI from a base game update.");
+						break;
+					case 51:
+						AddText("v1.51 - 4 Jan 2023");
+						AddText("");
+						AddText("Fixed Portal rendering in the playtest screen");
+						AddText("Added compatibility with Dakota's Citizen mod");
+						AddText("Readjusted Portal hit effects");
+						AddText("Hitting the Portal now sets 'has_hit' to true");
+						AddText("Portal knockback angle now calculates with angle flipper");
+						AddText("");
+						AddText("Fixed AI taunt code");
+						AddText("(Hopefully) Fixed CSS colours");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.51.1 - 6 Jan 2023");
+						AddText("");
+						AddText("Fixed an obscure Portal hit detection bug");
+						AddText("Changed Portal hit detection to include hitbox priority");
+						AddText("");
+						AddText("Added offscreen hud for Portals");
+						AddText("");
+						AddText("Added stage compatibility for the song name");
+						AddText("(Use the 'loninMusicName' variable in your stage's init.gml)");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.51.2 - 7 Jan 2023");
+						AddText("");
+						AddText("CPU Mio button on the CSS can now be pressed by all players");
 						break;
 				}
 				DrawTutorialBlock();
@@ -1052,8 +1106,8 @@ if ("rollArray" in self)
 		case 36:
 			return "Tactical Evolution EX ~ Creatures Medley";
 		default:
-			if (CheckStageUrl(2061009621))		return "Derek Fiechter - Night at the Castle";
-			//else if (CheckStageUrl(2298935492))	return "Loeder - Miitopia Boss Battle 1 8-BIT";
+			if ("loninMusicName" in obj_stage_main) return string(obj_stage_main.loninMusicName);
+			else if (CheckStageUrl(2061009621))		return "Derek Fiechter - Night at the Castle";
 			else if (CheckStageUrl(2082867100))	return "Evan King - [KARLSONVIBE]";
 			else if (CheckStageUrl(2210984773))	return "Porter Robinson - Shelter";
 			else if (CheckStageUrl(2158754801))	return "Bill Kiley - You Will Never Know";
@@ -1062,7 +1116,7 @@ if ("rollArray" in self)
 			else if (CheckStageUrl(2498298211))	return "Pokemon Masters EX - Lillie Battle Theme";
 			else if (CheckStageUrl(2598328548))	return "No Straight Roads - Vs. Sayu";
 			else if (CheckStageUrl(2669189302))	return "Hyper Potions - Waterfall";
-			else if (CheckStageUrl(2809646591))	return "Christa Lee - Celestial Resort (Good Karma Mix)";
+			else if (CheckStageUrl(2809646591))	return "Answearing Machine - Shattered Shrine of Light";
 			else if (CheckStageUrl(2823202747))	return "SSBM - Final Destination (GSV Remix)";
 			return "Darude - Sandstorm";
 	}

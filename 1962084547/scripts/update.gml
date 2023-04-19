@@ -1,6 +1,10 @@
 if !free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN{
 	has_daired = false;
 }
+if !free {
+	dair_stall_count = 0;
+	fspecial_stall_count = 0;
+}
 
 
 

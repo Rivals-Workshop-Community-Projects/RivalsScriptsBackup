@@ -1,117 +1,57 @@
-muno_event_type = 6;
-user_event(14);
-// Button Code thanks Muno/Dr;Flux
-	if get_player_hud_color(player) == 8421504{
-		var tmp_cur = 0;
-		var tmp_i = [0, 0, 0, 0, 0];
-		var tmp_x = [0, 0, 0, 0, 0];
-		var tmp_y = [0, 0, 0, 0, 0];
-		with(asset_get("cs_playercursor_obj")){
-			tmp_cur = (!tmp_i[0])?0:(!tmp_i[1])?1:(!tmp_i[2])?2:(!tmp_i[3])?3:4
-			tmp_i[tmp_cur] = 1
-			tmp_x[tmp_cur] = get_instance_x( self );
-			tmp_y[tmp_cur] = get_instance_y( self );
-		}
-		var tmp_pt = abs(player-5)-1
-		var temp_x = x + 8;
-		var temp_y = y + 9;
+alt_cur = get_player_color(player);
+if(alt_prev != alt_cur){
+    portrait = random_func(0, 8, true);
+	if(portrait > 6){
+	    portrait = 0;
+	} 
+	set_victory_sidebar(sprite_get((alt_cur!=22?"result_small_":"result_small_dorito_")+string(portrait)));
+	css_draw_time = 0;
+	alt_prev = alt_cur;
+	if(get_player_color(player) == 22){
+		sprite_change_offset("dorito_hud", 0, -2);
+		set_ui_element(UI_CHARSELECT,sprite_get("dorito_charselect"));
+	    set_ui_element(UI_HUD_ICON,sprite_get("dorito_hud"));
 	}else{
-		var tmp_cur = 0;
-		var tmp_i = [0, 0, 0, 0, 0];
-		var tmp_x = [0, 0, 0, 0, 0];
-		var tmp_y = [0, 0, 0, 0, 0];
-		with(asset_get("cs_playercursor_obj")){
-			tmp_cur = (!tmp_i[0])?0:(!tmp_i[1])?1:(!tmp_i[2])?2:(!tmp_i[3])?3:4
-			tmp_i[tmp_cur] = 1
-			tmp_x[tmp_cur] = get_instance_x( self );
-			tmp_y[tmp_cur] = get_instance_y( self );
-		}
-		var tmp_pt = abs(player-5)-1
-		var temp_x = x + 8;
-		var temp_y = y + 9;
-	}
-
-//Button Location
-if player == 0{ // player online
-	var tmp_xl = 16
-	var tmp_yl = 48
-}else{
-	if get_player_hud_color(player) == 8421504 { //if CPU offline
-		var tmp_xl = 58
-		var tmp_yl = 178
-	}else{ //if player offline
-		var tmp_xl = 74
-		var tmp_yl = 178
-	}
-
-}
-var tmp_bw = 30 // button width
-var tmp_bh = 26
-var tmp_xl1 = x+tmp_xl
-var tmp_xl2 = tmp_xl1+tmp_bw
-var tmp_yl1 = y+tmp_yl
-var tmp_yl2 = tmp_yl1+tmp_bh
-draw_set_halign(fa_left);
-
-if get_synced_var(player) > 1 {
-	set_synced_var( player, 0)
-}
-if("cssframes" not in self){cssframes = 0;}
-if("voiced" not in self){voiced = get_synced_var(player);}
-if("voicebutton" not in self){voicebutton = voiced * 2;}
-if("voicebuttoncurrent" not in self){voicebuttoncurrent =  voiced * 2;}
-if voicebutton == 2 || voicebutton == 5 {
-	if cssframes == 0{
-	    sound_stop(asset_get("mfx_input_back"));
-	    sound_stop(asset_get("mfx_forward"));
-		if voicebutton == 2{
-			voiced = 1;
-			voicebuttoncurrent = voicebutton;
-			sound_play(asset_get("mfx_input_back"));
-		}
-		if voicebutton == 5{
-			voiced = 0;
-			voicebuttoncurrent = voicebutton;
-			sound_play(asset_get("mfx_forward"));
-		}
-	}
-	cssframes++;
-	if cssframes == 5{
-		cssframes = 0;
-		voicebutton += 1;
-		if voicebutton > 5 {
-			voicebutton -= 6;
-		}
-		voicebuttoncurrent = voicebutton;
-	}
-}
-if (tmp_x[tmp_pt]>tmp_xl1 && tmp_x[tmp_pt]<tmp_xl2 && tmp_y[tmp_pt]>tmp_yl1 && tmp_y[tmp_pt]<tmp_yl2){ 	
-	if voicebutton == voicebuttoncurrent {
-		if voicebutton == 0 || voicebutton == 3 {
-			voicebutton += 1;
-		}
-	}
-}else{
-	if voicebutton == 1 || voicebutton == 4 {
-		voicebutton -= 1;
-	}
-	voicebuttoncurrent = voicebutton;
-}
-if voicebutton == 1 || voicebutton == 4 {
-	if menu_a_pressed{
-		voicebutton += 1;
-		voicebuttoncurrent = voicebutton;
+		set_ui_element(UI_CHARSELECT,get_char_info(player,INFO_CHARSELECT));
+	    set_ui_element(UI_HUD_ICON,get_char_info(player,INFO_HUD));
 	}	
 }
-set_synced_var(player, voiced)
-draw_sprite_ext(sprite_get("cssvoice_button"), 0+voicebutton, x + tmp_xl, y + tmp_yl, 2, 2, 0, c_white, 1);
 
+//thanks to supersonic, we can use colors directly from init_shader.gml
+//which is useful for adding special colored outlines to our alts
+shader_end();
+prepare_shader();
+draw_sprite_ext(sprite_get("charselectbg"),0,x+8,y+8,2,2,0,-1,1);
 
-if(get_player_color(player) == 22){
-	sprite_change_offset("dorito_hud", 0, -2);
-	set_ui_element(UI_CHARSELECT,sprite_get("dorito_charselect"));
-    set_ui_element(UI_HUD_ICON,sprite_get("dorito_hud"));
-}else{
-	set_ui_element(UI_CHARSELECT,get_char_info(player,INFO_CHARSELECT));
-    set_ui_element(UI_HUD_ICON,get_char_info(player,INFO_HUD));
+shader_start();
+draw_sprite_ext(sprite_get(alt_cur!=22?"charselect":"charselect_dorito"),portrait,x+8,y+8,2,2,0,-1,1);
+
+shader_end();
+prepare_shader(); //resets shader
+
+muno_event_type = 6;
+user_event(14);
+if(get_player_hud_color(player) != 8421504){
+    draw_sprite_ext(sprite_get("cssvoice_button"), voicebutton, x+voice_button_pos[0], y+voice_button_pos[1], 2, 2, 0, c_white, 1);
+}
+
+//functions by supersonic
+#define prepare_shader()
+{
+    //init_shader(); fails to generate these variables for some reason,
+    //so we assign them to these completely equivalent values
+    //this allows shader_start() to be run in css_draw.gml!!!
+    static_colorB = colorB;
+    static_colorO = colorO;
+    static_colorT = colorT;
+    static_colorI = colorI;
+    init_shader();
+}
+#define set_outline(r, g, b)
+{
+    //we use this function to add custom outlines to our character's portrait
+    var start = 8*4; //outline
+    static_colorO[start] = r/255;
+    static_colorO[start+1] = g/255;
+    static_colorO[start+2] = b/255;
 }

@@ -30,6 +30,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_boss_shine"));
+set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[3].mp_cost2);
 
 window_num ++; //charge 3 (window 4)
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 0);
@@ -38,6 +39,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_boss_shine"));
+set_window_value(atk, window_num, AG_WINDOW_MP_CONSUME, skill[3].mp_cost2);
 
 window_num ++; //released attack
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 9);
@@ -72,8 +74,8 @@ set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 10); //level 1 = 10 | level 2 = 7, 
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 361);
 set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.8);
-set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.2);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10); //8
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6); //0.2
 set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 0.7);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_lightblow[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 1);

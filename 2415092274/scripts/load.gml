@@ -30,12 +30,14 @@ sprite_change_offset("tech", tx, ty);
 
 sprite_change_offset("jab", tx, ty);
 sprite_change_offset("dattack", tx, ty);
+sprite_change_offset("dattack2", tx, ty);
 sprite_change_offset("ftilt", tx, ty);
 sprite_change_offset("dtilt", tx, ty);
 sprite_change_offset("utilt", tx, ty);
 sprite_change_offset("nair", tx, ty);
 sprite_change_offset("nair2", tx, ty);
 sprite_change_offset("fair", tx, ty);
+sprite_change_offset("fair2", tx, ty);
 sprite_change_offset("bair", tx, ty);
 sprite_change_offset("uair", tx, ty);
 sprite_change_offset("dair", tx, ty);
@@ -48,8 +50,11 @@ sprite_change_offset("fspecial", tx, ty);
 sprite_change_offset("uspecial", tx, ty);
 sprite_change_offset("dspecial", tx, ty);
 sprite_change_offset("taunt", tx, ty);
+sprite_change_offset("taunt2", tx, ty);
+sprite_change_offset("skate", tx, ty);
 
 sprite_change_offset("plat", tx, ty);
+sprite_change_offset("plat_grnd", tx, ty);
 sprite_change_offset("plat_bg", tx, ty);
 
 sprite_change_offset("hurt", tx, ty);
@@ -71,13 +76,20 @@ sprite_change_offset("moon_gb", 40, 40);
 sprite_change_offset("moon_alt", 40, 40);
 sprite_change_offset("moon_stars", 40, 40);
 sprite_change_offset("moon_stars_alt", 40, 40);
+sprite_change_offset("moon_stars_v2", 80, 80);
+sprite_change_offset("moon_stars_wh", 40, 40);
 sprite_change_offset("hfx_tackle", 96, 96);
 sprite_change_offset("hfx_tackle2", 96, 96);
+sprite_change_offset("dspecial_indicator", tx, ty);
 
+sprite_change_offset("particle1", 16, 16);
+sprite_change_offset("particle2", 16, 16);
 sprite_change_offset("exp_ao", 84, 114);
 sprite_change_offset("stars", 40, 40);
 sprite_change_offset("stars2", 40, 40);
 sprite_change_offset("stars3", 40, 40);
+sprite_change_offset("stars_v2", 80, 80);
+sprite_change_offset("stars3_v2", 80, 80);
 
 
 

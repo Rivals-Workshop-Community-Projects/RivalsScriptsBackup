@@ -14,7 +14,6 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_JAB, 3, AG_WINDOW_HAS_WHIFFLAG, 1); //NOTE: if you make it a multi-hit jab, remove whifflag, since Rivals multi-step jabs do not have whifflag. single-hits like sandbert, elli, etc DO have whifflag
 
 set_num_hitboxes(AT_JAB, 1);
 

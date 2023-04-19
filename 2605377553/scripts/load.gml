@@ -70,10 +70,15 @@ sprite_change_offset("nspecial_proj_big", 64, 74);
 
 sprite_change_offset("sick", -36, 72);
 
-sprite_change_offset("smoke", 56, 30);
-sprite_change_offset("smokeback", 56, 30);
-sprite_change_offset("smokeshade", 56, 30);
+sprite_change_offset("smoke", 51, 25);
+sprite_change_offset("smokeback", 51, 25);
+sprite_change_offset("smokeshade", 51, 25);
+sprite_change_offset("smokeStencilMask", 51, 25);
+sprite_change_offset("smokeStencilOutline", 51, 25);
 sprite_change_offset("smokesolo", 112/2, 106/2);
+
+sprite_change_offset("smokeHitbox", 51, 25);
+sprite_change_offset("smokeHurtbox", 51, 25);
 
 sprite_change_offset("bairburst", 0, 94);
 sprite_change_offset("nspec_star", 144/2, 144/2);
@@ -100,4 +105,7 @@ sprite_change_offset("chain_link",0,11);
 set_victory_bg( sprite_get( "mal_victorybg" ));
 set_victory_theme( sound_get( "mal_victory" ));
 
-sprite_change_offset("los_pronouns_hormones",0,0);
+//genny glass
+sprite_change_offset("fstrong_genesis", 160, 190);
+sprite_change_offset("ustrong_genesis", 160, 190);
+sprite_change_offset("dstrong_genesis", 160, 190);

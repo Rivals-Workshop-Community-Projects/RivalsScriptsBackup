@@ -149,7 +149,6 @@ set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_USPECIAL, 3, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_EXTRA_CAMERA_SHAKE, -1);
 
 set_hitbox_value(AT_USPECIAL, 4, HG_MUNO_HITBOX_NAME, "Choke");

@@ -18,7 +18,7 @@ if (state == PS_SPAWN) {
 	}
 }
 
-if (state == PS_WAVELAND){
+if (state == PS_WAVELAND || state == PS_TECH_GROUND){
 	sprite_index = sprite_get("landinglag")
 }
 

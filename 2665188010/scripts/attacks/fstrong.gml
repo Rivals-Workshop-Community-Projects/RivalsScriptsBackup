@@ -55,13 +55,13 @@ set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 105);
 set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 12);
-set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 60);
+set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.95);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 197);
+set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, HFX_ABS_SWEET_BIG);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 30);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 //Sour

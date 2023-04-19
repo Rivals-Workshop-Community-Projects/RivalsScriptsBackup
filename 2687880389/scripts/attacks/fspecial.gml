@@ -1,6 +1,6 @@
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
-set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
+set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
@@ -19,7 +19,7 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 4);
 //set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 5);
 //set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 //set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 15);
 //set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -6.5);
@@ -28,11 +28,21 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, fspecial_leap_vsp);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 
+// continue horizontal momentum
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 0);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, fspecial_leap_hsp);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
+
+// cooldown
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, fspecial_endlag - 6 - 2);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+
+// Penalty Zone
+set_window_value(AT_FSPECIAL, penalty_window, AG_WINDOW_LENGTH, max_penalty_frames);
+
 
 set_num_hitboxes(AT_FSPECIAL, 0);
 

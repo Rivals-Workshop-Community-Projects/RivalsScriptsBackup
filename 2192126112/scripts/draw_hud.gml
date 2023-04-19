@@ -39,3 +39,8 @@ if (meem_num != 0)
 
 draw_sprite_ext(sprite_get("meemiconx"), 0, temp_x+200, temp_y-37, 1, 1, 0, temp_color, 1);
 }
+
+//draw_debug_text( temp_x+210, temp_y-30, string( hsp ));
+//draw_debug_text( temp_x+0, temp_y-30, string( y ));
+
+//draw_debug_text( temp_x+170, temp_y-30, string( meem_num ));

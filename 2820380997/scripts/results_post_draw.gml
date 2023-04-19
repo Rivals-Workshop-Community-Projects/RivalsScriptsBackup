@@ -1,12 +1,22 @@
 // Synced Var Stuff to ensure winquotes are enabled
-split_var = split_synced_var(2,1,1,1,2);
-//print(split_var);
+/* Synced Variable should account for these. We have 32 bits to work with.
+1. Color Shift - 2 bits - Off / Extra 1 / Extra 2
+2. Status of Win Quotes Enabled - 1 bit
+3. Status of Round Start Dialog Enabled - 1 bit
+4. Swap Nspec / Dspec - 1 bit
+5. Portrait to use - 2 bits
+6. Alt Outfit Bit enable - 1 bit
+*/
 
+split_var = split_synced_var(2,1,1,1,2,1);
+
+// Synced variable overwrite
 color_shift = split_var[0];
 flag_win_quote_enabled = split_var[1];
 flag_round_start_dialog = split_var[2];
 swap_nspec_dspec_input = split_var[3];
 portrait_to_use = split_var[4];
+alt_outfit_enabled = split_var[5];
 
 /*
 print(split_var[0]); // Color_Shift;
@@ -14,6 +24,15 @@ print(split_var[1]); // WinQuote
 print(split_var[2]); // Round Start Dialog
 */
 
+if(alt_outfit_enabled == 1){
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("9t-portrait"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("9t-result_small"));
+}
+else{
+set_ui_element(UI_WIN_PORTRAIT, get_char_info(player, INFO_PORTRAIT));
+set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small")); // This forces me to have the result in the sprites folder as well
+
+}
 //results_post_draw.gml
 if(flag_win_quote_enabled == true && winner == player){
     // Create Timer
@@ -124,14 +143,14 @@ draw_set_alpha(1);
     if(character_name == "Absa"){win_quote = "Daora has spoken highly of your techniques! May I ask for an autograph for her?"}
     if(character_name == "Elliana"){win_quote = "Your machines are cool! Can I take a ride in the mech?"}
     if(character_name == "Pomme"){win_quote = "If you ever need a manga artist for your next album, give me a call!"}
-    if(character_name == "Kragg"){win_quote = "Trhowing rocks is cool, but I think throwing a copy of yourself is pretty cool too."}
+    if(character_name == "Kragg"){win_quote = "Throwing rocks is cool, but I think throwing a copy of yourself is pretty cool too."}
     if(character_name == "Maypul"){win_quote = "I love your tree house! I would love to live in one of my own one day."}
     if(character_name == "Sylvanos"){win_quote = "You are pretty angry Mr. Wolf! We can talk this out! Please relax."}
     if(character_name == "Olympia"){win_quote = "I love your martial arts adventures, it was one of the things that got me into a dojo."}
     if(character_name == "Orcane"){win_quote = "Wow! You are cute! Now that we're done fighting, can I pet you?"}
     if(character_name == "Etalus"){win_quote = "I am from a colder region, I am used to navigating the ice."}
     if(character_name == "Ranno"){win_quote = "I also want to solve all of my problems without fighting, I prefer hugs instead!"}
-    if(character_name == "Hodan"){win_quote = "I also enjoy hot springs. Do you know me any around here I could go to?"}
+    if(character_name == "Hodan"){win_quote = "I also enjoy hot springs. Do you know any around here I could go to?"}
     if(character_name == "Ori & Sein"){win_quote = "My clone and I are also a team! But I have a little more control over her."}
     if(character_name == "Shovel Knight"){win_quote = "Watch where you're swinging that shovel! You could hurt someone!"}
     
@@ -148,12 +167,12 @@ draw_set_alpha(1);
     if(character_name == "Anglara"){win_quote = "Would you know a good place to get Sushi around here Ms. Fish Lady?"} // works
     if(character_name == "Barr"){win_quote = "Wow you can use a bar to attack? All I can do is change the UI for funny tags."} // workss
     //if(character_name == "Bluey"){win_quote = ""} // works
-    if(character_name == "Callie"){win_quote = "We should host a dating show one of these days! Think of all the cutie we can talk to!"} // works
+    if(character_name == "Callie"){win_quote = "We should host a dating show one of these days! Think of all the cuties we can talk to!"} // works
     if(character_name == "Candyman"){win_quote = "I am not sure what you would call that sport, but what ever it was, it was fun!"} // works
     if(character_name == "Chimera"){win_quote = "No need to be so angry. Would you feel better if I gave you a hug?"} // works
     if(character_name == "Crewmate"){win_quote = "Both me and my clone are voting Red, they are pretty sus."} // sus
     if(character_name == "Donyoku"){win_quote = "You appear to be bleeding gold! Me and my clone will carry you to the hospital."} // works
-    if(character_name == "Fernet"){win_quote = "I love your outfit Fernet! Can we get some milkshakes after this?"} // works
+    if(character_name == "Fernet"){win_quote = "I love your outfit, Fernet! Can we get some milkshakes after this?"} // works
     if(character_name == "Epinel"){win_quote = "Your anger and lack of remorse makes being nice to you very hard, Mr. Hedgehog."} // works
     if(character_name == "Henry Stickmin"){win_quote = "Next heist you plan should be Loxodont's bank. I could help you with that..."} // works
     //if(character_name == "Lukastar"){win_quote = ""} // works

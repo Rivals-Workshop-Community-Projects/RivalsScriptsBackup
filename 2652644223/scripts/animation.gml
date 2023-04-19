@@ -1,11 +1,11 @@
-// if(get_player_color(player) == 30)
-// {
-//     if(state == PS_IDLE)
-//     {
-//         sprite_index = sprite_get("idlegen")
-//         image_index = state_timer * idle_anim_speed;
-//     }
-// }
+if(get_player_color(player) == 15)
+{
+    if(state == PS_IDLE)
+    {
+        sprite_index = sprite_get("idlegen")
+        image_index = state_timer * idle_anim_speed;
+    }
+}
 if(state == PS_SPAWN)
 {
     var length = 9; // num of anim frames
@@ -24,9 +24,12 @@ if(state == PS_SPAWN)
         intro_y = y;
         with(oPlayer)
         {
-            other.countPlayers ++;
-            if(id != other.id)
-                other.enemyObj = id;
+            if(is_player_on(player)) 
+            {
+                other.countPlayers ++;
+                if(id != other.id)
+                    other.enemyObj = id;
+            }
         }
         if(countPlayers == 2 && instance_exists(enemyObj))
         {
@@ -58,7 +61,53 @@ if(state == PS_SPAWN)
                 introText = "You cant mess with";
                 introText2 = "this mission. Go home!";
             }
-            //Genesis
+            //Genesis 9 additions
+            else if (string_count("owen", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "I know what you are.";
+                introText2 = "";
+            }
+            else if (string_count("jerma", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Another impostor?";
+                introText2 = "You're out of line.";
+            }
+            else if (string_count("hat kid", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Another impostor?";
+                introText2 = "You're out of line.";
+            }
+            else if (string_count("untitled goose", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Standing here. I realize";
+                introText2 = "You were just like me.";
+            }
+            else if (string_count("heartbrake", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "A broken soul, trying to fight";
+                introText2 = "your own justice.";
+            }
+            else if (string_count("arboris", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Such feral creatures in the past";
+                introText2 = "I'm glad you only exist here.";
+            }
+            else if (string_count("business casual man", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "I don't have a penny to spare";
+                introText2 = "for your shares.";
+            }
+            else if (string_count("dazz", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "Carnivorous plants?";
+                introText2 = "Ill make you disappear.";
+            }
+            else if (string_count("valley", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
+            {
+                introText = "I don't have a penny to spare";
+                introText2 = "for your shares.";
+            }
+            //Genesis 8
             else if (string_count("barr", string_lower(get_char_info(enemyObj.player, INFO_STR_NAME))) > 0)
             {
                 introText = "These VR missions in";

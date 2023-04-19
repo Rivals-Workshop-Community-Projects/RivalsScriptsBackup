@@ -132,7 +132,7 @@ else
 #define CritForcePalm()
 {
 	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 10);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.05);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("criticalhit"));
 	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 30);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 16);

@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 51;
+	var noOfPatches = 52;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -74,7 +74,7 @@ if (jsTimer > 0) jsTimer--;
 if (state_timer == 0 && (state == PS_JUMPSQUAT || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP)) jsTimer = jsMax;
 
 // jump vfx
-if (jsTimer > 0) jsArray[jsTimer-1]={jsSprite:sprite_index,jsImage:image_index,jsX:x,jsY:y,jsDir:spr_dir,jsAlpha:10};
+if (jsTimer > 0 && jsTimer%2==0) jsArray[jsTimer-1]={jsSprite:sprite_index,jsImage:image_index,jsX:x,jsY:y,jsDir:spr_dir,jsAlpha:10};
 for (var i = 0; i < 10; ++i) if (jsArray[i] != -1 && jsArray[i].jsAlpha > 0) jsArray[i].jsAlpha--;
 
 // uspec vfx
@@ -83,7 +83,7 @@ for (var i = 0; i < 10; ++i) if (uspecArray[i] != -1 && uspecArray[i].uspecAlpha
 // slice vfx
 if (vfxSlice.sliceTimer > 0) vfxSlice.sliceTimer--;
 
-// slice vfx
+// dspec vfx
 if (dspecImage != -1 && dspecImage.alpha > 0) dspecImage.alpha--;
 
 if (thonkObj != -1 && thonkObj.alpha > 0) thonkObj.alpha--;
@@ -151,7 +151,7 @@ switch (state)
 		if (state_timer == 68)
 		{
 			sound_play(sound_get("button"));
-			aura = ("temp_level" in self && temp_level == 1) || aura || auraMeter >= 67 || get_match_setting(SET_TURBO);
+			aura = ("temp_level" in self && temp_level == 1) || aura || auraMeter >= 67;
 			gpu_set_alphatestfunc(aura);
 			if (aura)
 			{

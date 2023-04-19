@@ -75,8 +75,8 @@ jump_speed = 11.5;
 short_hop_speed = 7.5;//8
 djump_speed = 10;
 leave_ground_max = 7;//7 //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5;//6 //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 5.5;//4 //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5.2;//6//5.5 //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -147,6 +147,7 @@ bubble_y = 8;
 
 
 natdev = false;
+
 usp_did = false;
 fsp_did = false;
 dsp_target = -4;

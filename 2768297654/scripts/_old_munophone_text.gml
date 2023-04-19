@@ -36,10 +36,9 @@ Gimmick: 16-Hit Combos ------------------------------
 	If he doesn't hit an enemy within these 6 seconds, his combo is reset. 
 	This timer can be reset by activating a parry. Hit an enemy 16 times to unleash a very powerful attack!
 - Every 16th hit is boosted damage-wise and knockback-wise. All attacks do 16 percent and the knockback buffs are listed below:
-		Grounded normals are raised to 6 * 1.1
-		Aerials and Specials are raised to 7 * 1.15
-		Strongs are raised to 8 * 1.2
-		All attacks boosted have a knockback scaling of 1.1");
+		Aerials and Specials are raised to 6 * 1.15
+		Grounded normals are raised to 7 * 1.15
+		Strongs are raised to 8 * 1.25");
 - Once Duster hits a 16-hit combo, his meter will go on cooldown for 10 seconds. 
 	The same applies if he is parried during his combo, but the cooldown is only 5 seconds. 
 	The cooldown created by getting parried can be removed by Duster parrying an attack.

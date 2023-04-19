@@ -20,15 +20,16 @@ if(status_effect_water == true){
     if(status_effect_water == true){
         with(other_player_id){
             shader_start();
-            draw_sprite_ext(sprite_get("buildup_water"),fx_image_index,temp_x,temp_y + 20,1,1,0,c_white,1);
+            draw_sprite_ext(sprite_get("buildup_water"),fx_image_index,temp_x,temp_y - floor(temp_char_height / 2),1,1,0,c_white,1);
             shader_end();
         }
     }
     
-
+/* Disabled
     gpu_set_fog(true,c_blue,0,0);
     draw_sprite_ext(sprite_index, image_index, x, y, (spr_dir) * (1 + small_sprites), 1 + small_sprites, image_angle, 1, .33);
     gpu_set_fog(false,c_blue,0,0);
+*/
     /*
     // set the character's outline color to red:
     outline_color = [ 164, 164, 0 ];

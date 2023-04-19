@@ -1,7 +1,7 @@
 //draw_hud
 
 //munophone
-user_event(11);
+//user_event(11);
 
 //final smash
 if "trigger_fs" in self && trigger_fs {

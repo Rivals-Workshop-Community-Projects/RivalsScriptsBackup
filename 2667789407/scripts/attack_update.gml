@@ -653,7 +653,7 @@ fall_through = (down_down) && (!lev_bypass);
 		attack = unown_form_data[new_form].atk;
 	    hurtbox_spr = unown_form_data[new_form].hurtbox;
 	    unown_current_form = new_form;
-	    unown_attack_is_fresh = (attack != AT_PHONE);
+	    unown_attack_is_fresh = true;//(attack != AT_PHONE);
 	    
 	    adjust_unown_attack_grid();
 	    unown_recalculate_stats = true;

@@ -8,6 +8,10 @@ sound_stop(sound_get("boom"));
 
 has_frozen = false;
 
+if (attack == AT_NSPECIAL) && (free && move_cooldown[AT_FSPECIAL] == 0) {
+    attack = AT_NSPECIAL_2;
+}
+
 /*
 if attack == AT_NSPECIAL {
     clear_button_buffer(PC_SPECIAL_PRESSED);

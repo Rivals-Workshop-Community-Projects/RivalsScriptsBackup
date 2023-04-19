@@ -126,6 +126,10 @@ sprite_change_offset("bouncehurt", 64, 110);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("fxEmpowered", 60, 60);
 
+sprite_change_offset("fx_specialburst", 64, 64);
+sprite_change_offset("fx_specialburst_trans", 64, 64);
+sprite_change_offset("fx_killburst", 99, 99);
+
 set_victory_theme( sound_get( "Victory!Geno" ));
 set_victory_bg( sprite_get( "vicBG" ));
 

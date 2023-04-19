@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 12, 22, 18 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 11 );
+set_num_palettes( 13 );
 
 // Pre-TimeSkip
 set_color_profile_slot( 1, 0, 221, 92, 0 ); //MainColor
@@ -126,15 +126,35 @@ set_color_profile_slot( 9, 5, 248, 166, 252 ); //Hair
 set_color_profile_slot( 9, 6, 0, 15, 67 ); //Eye Color
 set_color_profile_slot( 9, 7, 234, 187, 152 ); //Skin
 
+// Manga
+set_color_profile_slot( 10, 0, 255, 255, 255 ); //MainColor
+set_color_profile_slot( 10, 1, 54, 54, 54 ); //Arms
+set_color_profile_slot( 10, 2, 255, 255, 255 ); //Pants
+set_color_profile_slot( 10, 3, 54, 54, 54 ); //HeadBand
+set_color_profile_slot( 10, 4, 54, 54, 54 ); //TopJacket, Boots
+set_color_profile_slot( 10, 5, 255, 255, 255 ); //Hair
+set_color_profile_slot( 10, 6, 230, 230, 230 ); //Eye Color
+set_color_profile_slot( 10, 7, 255, 255, 255 ); //Skin
+
 // GameBoy
-set_color_profile_slot( 10, 0, 167, 186, 74 ); //MainColor
-set_color_profile_slot( 10, 1, 83, 122, 62 ); //Arms
-set_color_profile_slot( 10, 2, 167, 186, 74 ); //Pants
-set_color_profile_slot( 10, 3, 83, 122, 62 ); //HeadBand
-set_color_profile_slot( 10, 4, 83, 122, 62 ); //TopJacket, Boots
-set_color_profile_slot( 10, 5, 211, 226, 154 ); //Hair
-set_color_profile_slot( 10, 6, 83, 122, 62 ); //Eye Color
-set_color_profile_slot( 10, 7, 211, 226, 154 ); //Skin
+set_color_profile_slot( 11, 0, 167, 186, 74 ); //MainColor
+set_color_profile_slot( 11, 1, 83, 122, 62 ); //Arms
+set_color_profile_slot( 11, 2, 167, 186, 74 ); //Pants
+set_color_profile_slot( 11, 3, 83, 122, 62 ); //HeadBand
+set_color_profile_slot( 11, 4, 83, 122, 62 ); //TopJacket, Boots
+set_color_profile_slot( 11, 5, 211, 226, 154 ); //Hair
+set_color_profile_slot( 11, 6, 83, 122, 62 ); //Eye Color
+set_color_profile_slot( 11, 7, 211, 226, 154 ); //Skin
+
+// Abyss
+set_color_profile_slot( 12, 0, 100, 38, 164 ); //MainColor
+set_color_profile_slot( 12, 1, 72, 75, 119 ); //Arms
+set_color_profile_slot( 12, 2, 100, 38, 164 ); //Pants
+set_color_profile_slot( 12, 3, 72, 75, 119 ); //HeadBand
+set_color_profile_slot( 12, 4, 72, 75, 119 ); //TopJacket, Boots
+set_color_profile_slot( 12, 5, 100, 38, 164 ); //Hair
+set_color_profile_slot( 12, 6, 255, 220, 23 ); //Eye Color
+set_color_profile_slot( 12, 7, 220, 113, 255 ); //Skin
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

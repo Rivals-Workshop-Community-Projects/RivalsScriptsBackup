@@ -1,0 +1,1 @@
+draw_sprite_ext(sprite_get("stage_article"), 0, x, y, 2, 2, 0, c_white, 1);

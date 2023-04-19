@@ -23,7 +23,7 @@ set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED_TYPE, 0);
-set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED, 7.5); // 8
+set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED, 5); // 7.5 8
 set_window_value(AT_BAIR, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_BAIR, 3, AG_WINDOW_VSPEED, 0);
 
@@ -84,7 +84,7 @@ set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 0);
-set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 /*
 // Sweetspot

@@ -15,31 +15,6 @@ if(!free && djump_given_back_flag == true){
 	djump_given_back_flag = false;
 }
 
-// Adujust height of hud indicator during Dthrow
-if(attack == AT_DTHROW && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
-	//print("height" + string(window_timer));
-	//draw_indicator = false;
-	//grabbed_player_obj.draw_indicator = false;
-	with(asset_get("oPlayer")){
-		draw_indicator = false;
-		//print("Player " + string(player) + " Indicator Draw:" + string(draw_indicator) + "/ State timer: " + string(state_timer));
-	}
-	/* switch(window){
-		Old Code
-		case 2:
-			char_height = 52 + 70;
-			grabbed_player_obj.char_height = grabbed_player_obj.char_height + 70;
-		break;
-		case 5: // Reset
-			char_height = 52;
-			grabbed_player_obj.char_height = grabbed_player_obj.char_height - 70;
-			break;
-		default:
-			break;
-		
-	}*/
-}
-
 //Dthrow exception for plats so she does not auto land afterwards.
 if(attack == AT_DTHROW && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 	fall_through_timer = 20;
@@ -55,6 +30,7 @@ if((attack != AT_FSPECIAL && attack != AT_DSPECIAL_AIR) && (state == PS_ATTACK_A
 			break;
 	}
 }
+
 // Move Eyes VFX on boosted Grab hit
 if(instance_exists(hitfx_consume_water_obj)){
 	var temp_x = x;
@@ -65,23 +41,13 @@ if(instance_exists(hitfx_consume_water_obj)){
 	}
 }
 
-if(instance_exists(hitfx_boosted_grab_obj)){
-	var opponent_relative_angle = point_direction(x, y, grabbed_player_obj.x, grabbed_player_obj.y);
-	var temp_x = x;
-	var temp_y = y;
-	var temp_spr_dir = spr_dir;
-	with(hitfx_boosted_grab_obj){
+// Move Mark Consume HFX on opponent
+if(instance_exists(hitfx_mark_consume_obj) && hitfx_mark_consume_obj != noone && grabbed_player_obj != noone){
+	var temp_x = grabbed_player_obj.x;
+	var temp_y = grabbed_player_obj.y - floor(grabbed_player_obj.char_height / 2);
+	with(hitfx_mark_consume_obj){
 		x = temp_x;
-		y = temp_y - 36;
-		draw_angle = opponent_relative_angle;
-		switch(temp_spr_dir){
-			case 1:
-				draw_angle = opponent_relative_angle;
-				break;
-			default:
-				draw_angle = opponent_relative_angle + 180;
-				break;
-		}
+		y = temp_y;
 	}
 }
 

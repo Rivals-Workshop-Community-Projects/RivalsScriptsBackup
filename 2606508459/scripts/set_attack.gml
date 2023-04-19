@@ -33,7 +33,7 @@ if (dip_swapSpecial)
         }
         else
         {
-            attack = 44;
+            //attack = 44;
         }
     }
 }
@@ -53,6 +53,36 @@ if (attack == AT_NSPECIAL)
         attack = AT_NSPECIAL_2;
     }
 }
+
+//====> CATOOKEN INPUT #######################################################
+
+if (attack_down && 
+    special_down &&
+    (
+        (attack == AT_NSPECIAL_2 && window == 1) || 
+        (attack == AT_JAB && window == 1)
+    )
+)
+
+/*if (attack_down && 
+    special_down &&
+    (
+        (attack == AT_NSPECIAL_2 && window == 1) || 
+        (attack == AT_JAB && window == 1)
+    )
+)
+{
+    window = 1;
+    window_timer = 0;
+    if (move_cooldown[AT_EXTRA_1] <= 0)
+    {
+        set_attack(43);
+    }
+    else
+    {
+        //set_attack(44);
+    }
+}*/
 
 //====> TAUNT #######################################################
 

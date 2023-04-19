@@ -90,6 +90,7 @@ if (my_hitboxID.attack == AT_FSPECIAL && state != PS_HITSTUN){
 			case 0:			
 				hurtboxID.sprite_index = get_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE);
 				ThornKB_scale = ThornKB_scale + LoveMeter/1000;
+				print(ThornKB_scale)
 				set_hitbox_value(AT_FTHROW, 1, HG_KNOCKBACK_SCALING, ThornKB_scale);
 				set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, ThornKB_scale +.1);
 				attack = AT_FTHROW;
@@ -245,10 +246,14 @@ if (attack == AT_DTHROW){
 if (attack == AT_NTHROW){
 	other.isRibbon = true;
 	other.ribbon_id = id;
-
+	
 	if (other.RibbonCounter == 0){
 		other.RibbonCounter = LoveMeter  + 120;
 		LoveMeter = 0;
+	}
+
+	if (my_hitboxID.hbox_num == 2){
+		other.isRibbon = false
 	}
 }
 

@@ -8,7 +8,7 @@ hitstun_hurtbox_spr = -1;
 
 char_height = 42;
 idle_anim_speed = .1;
-crouch_anim_speed = .1;
+crouch_anim_speed = .125;
 walk_anim_speed = .125;
 dash_anim_speed = .15;
 pratfall_anim_speed = .25;
@@ -111,5 +111,16 @@ azelf_futureplaced = false;
 azelf_futureready = false;
 azelf_char_height = char_height;
 azelf_psybeam_ready = false;
+azelf_sound = null;
+azelf_jab_parried = false;
 
 sprite_change_collision_mask( "future_sight_mask", true, 0, 0, 0, 0, 0, 0 );
+
+//Workshop
+arena_title = "The Being of Willpower";
+boxing_title = "The Being of
+Willpower";
+link_spear_drop = 8;
+Hikaru_Title = "Willfull Guardian";
+steve_death_message = "Steve fainted!";
+battle_text = "* Azelf appears before you.";

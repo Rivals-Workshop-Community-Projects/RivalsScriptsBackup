@@ -14,8 +14,36 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "Lucy"
+shader_end();
+prepare_shader();
+
+//outline colors - the set_outline function is similar to the outline_color array- the numbers are red, green and blue values
+switch (alt_cur)
+{
+    case 14: set_outline(15, 56, 15); break; //early access / gameboy
+    default: set_outline(0, 0, 0); break;
+}
+
+shader_start();
+//we need to draw over the portrait so the outline colors apply to it too
+//This part's for Lucy
+    if (eyes_same_shade()) {
+        var css_x = floor(x+10);
+        var css_y = floor(y+10);
+        
+        draw_sprite_ext(sprite_get("charselect_alt"),0,css_x-2,css_y-2,2,2,0,-1,1);
+    }
+     
+else
+    draw_sprite_ext(get_char_info(player, INFO_CHARSELECT), 0, x+8, y+8, 2, 2, 0, c_white, 1);
+
+shader_end();
+prepare_shader(); //resets shader
+
+
+var qe_b = string(sprite_get("idle")) //my sneaky trick to make sure every reload refreshes -supersonic
 // ! you can now scroll down until you reach "the primary part you should change."
+online_fix = player; //this is used in init_shader to fix the online init_shader bug.
  
 var tmp_cur = 0;
 var tmp_i = [0, 0, 0, 0, 0];
@@ -65,8 +93,6 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     //--- ---
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
-    
-    col_max = 31; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(get_color_profile_slot_r(0, 1), get_color_profile_slot_g(0, 1), get_color_profile_slot_b(0, 1));
@@ -121,11 +147,11 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[16,1] = "Future Card"
     ce[16,2] = "R00"
     ce[17,0] = make_color_rgb(get_color_profile_slot_r(17, 1), get_color_profile_slot_g(17, 1), get_color_profile_slot_b(17, 1));
-    ce[17,1] = "Voidfox"
-    ce[17,2] = "SAIIII"
+    ce[17,1] = "Show Stopper"
+    ce[17,2] = "Purely visual, all stunning"
     ce[18,0] = make_color_rgb(get_color_profile_slot_r(18, 1), get_color_profile_slot_g(18, 1), get_color_profile_slot_b(18, 1));
-    ce[18,1] = "Show Stopper"
-    ce[18,2] = "Purely visual, all stunning"
+    ce[18,1] = "Gold Rank"
+    ce[18,2] = "You did not earn this"
     ce[19,0] = make_color_rgb(get_color_profile_slot_r(19, 1), get_color_profile_slot_g(19, 1), get_color_profile_slot_b(19, 1));
     ce[19,1] = "Look a star!"
     ce[19,2] = "Lukastar"
@@ -157,8 +183,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[28,1] = "TAGGED"
     ce[28,2] = "Almost Good"
     ce[29,0] = make_color_rgb(get_color_profile_slot_r(29, 1), get_color_profile_slot_g(29, 1), get_color_profile_slot_b(29, 1));
-    ce[29,1] = "Seasonal"
-    ce[29,2] = "Changes with the seasons!"
+    ce[29,1] = "Candy Glow"
+    ce[29,2] = "It glows!"
     ce[30,0] = make_color_rgb(get_color_profile_slot_r(30, 1), get_color_profile_slot_g(30, 1), get_color_profile_slot_b(30, 1));
     ce[30,1] = "BLW"
     ce[30,2] = "Black Bunny Winning"
@@ -168,16 +194,10 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...
+    
+    col_max = 32-1;
 }
 
-//This part's for Lucy
-if (eyes_same_shade()) {
-    var css_x = floor(x+10);
-    var css_y = floor(y+10);
-    
-    draw_sprite_ext(sprite_get("charselect_alt"),0,css_x-2,css_y-2,2,2,0,-1,1);
-}
- 
 if (ae == "ae"){
     ae = "oe";
 }
@@ -264,6 +284,28 @@ if (color_desc_activate){
 //ae code end
  
  
+//functions by supersonic
+#define prepare_shader()
+{
+    //init_shader(); fails to generate these variables for some reason,
+    //so we assign them to these completely equivalent values
+    //this allows shader_start() to be run in css_draw.gml!!!
+    static_colorB = colorB;
+    static_colorO = colorO;
+    static_colorT = colorT;
+    static_colorI = colorI;
+	alt_glow_timer ++;
+    init_shader();
+}
+#define set_outline(r, g, b)
+{
+    //we use this function to add custom outlines to our character's portrait
+    var start = 8*4; //outline
+    static_colorO[start] = r/255;
+    static_colorO[start+1] = g/255;
+    static_colorO[start+2] = b/255;
+}
+
  
 //--- ---
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.

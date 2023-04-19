@@ -3,6 +3,7 @@ if (attack == AT_NSPECIAL || attack == AT_DSPECIAL ){
     trigger_b_reverse();
 }
 
+
 with hit_player_obj {
 	
 	if "clone" in self {
@@ -18,9 +19,6 @@ switch attack {
     
     case AT_JAB :
         
-        if btrain >= 100 {
-            create_hitbox(AT_NSPECIAL,2,x,y - 50)
-        }
         
         if !hitpause {
             
@@ -36,10 +34,7 @@ switch attack {
     break;
     
     case AT_NAIR :
-        
-        if btrain >= 100 {
-            create_hitbox(AT_NSPECIAL,2,x,y - 50)
-        }
+
         
         if hitpause {
             window_timer += 0.5
@@ -178,6 +173,13 @@ switch attack {
     
     case AT_FSTRONG :
         
+                
+        if btrain >= 100 && state_timer <= 6 {
+            super_armor = true 
+        } else {
+        	super_armor = false
+        }
+        
         if !hitpause {
             
         if window == 1 && window_timer == 1 {
@@ -198,6 +200,12 @@ switch attack {
     break;
 
     case AT_DSTRONG :
+    
+        if btrain >= 100 && state_timer <= 6 {
+            super_armor = true 
+        } else {
+        	super_armor = false
+        }
         
         if !hitpause {
             
@@ -213,6 +221,11 @@ switch attack {
     break;
     
     case AT_USTRONG :
+    if btrain >= 100 && state_timer <= 6 {
+            super_armor = true 
+        } else {
+        	super_armor = false
+        }
     draw_indicator = false
     break;
     

@@ -88,18 +88,15 @@ switch (state)
         }
 
         //if keqing hits the article with F-spec, she makes the marker explode and bounces off it
-        if (place_meeting(x, y, pHitBox))
+        with (pHitBox)
         {
-            with (pHitBox)
+            if (player_id.attack == AT_FSPECIAL) if (variable_instance_exists(player_id, "artc_marker"))
             {
-                if (player_id.attack == AT_FSPECIAL) if (variable_instance_exists(player_id, "artc_marker"))
+                if (place_meeting(x, y, other) && player_id.artc_marker.state == 1 && player_id.stilleto_id == noone)
                 {
-                    if (place_meeting(x, y, other) && player_id.artc_marker.state == 1 && player_id.stilleto_id == noone)
-                    {
-                        player_id.artc_marker.state = 2;
-                        player_id.artc_marker.state_timer = 0;
-                        player_id.vsp = -9;
-                    }
+                    player_id.artc_marker.state = 2;
+                    player_id.artc_marker.state_timer = 0;
+                    player_id.vsp = -9;
                 }
             }
         }

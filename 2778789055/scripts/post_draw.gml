@@ -5,6 +5,16 @@ muno_event_type = 4;
 user_event(14);
 */
 
+//draw_debug_text(x-7, y + -100,string(x));
+
+if(attack == AT_FSTRONG && state == PS_ATTACK_GROUND){
+    if(window == 1 && strong_charge > 0){
+        var anim = 2 + (strong_charge / 4) % 3;
+        //draw_sprite(sprite_get("dstrong_hold"), anim, x*2, y*2);
+        draw_sprite_ext(sprite_get("fstrong_water"), anim, x + 0*spr_dir, y, 2 * spr_dir, 2, 0, c_white, 1);
+    }
+}
+
 if(gumbo_ditto = false){
 if(gumbo_scalding == true){
     outline_color = [ 140, 0, 0 ];
@@ -24,6 +34,13 @@ if(is_scalding == false){
 	//init_shader();
 }
 }
+var fx_image_index2 = get_gameplay_time() / 10;
+
+if(move_cooldown[AT_FSPECIAL] > 0 || has_shrimp = false || shrimp_in_pot = true){
+    if draw_indicator{
+	draw_sprite_ext(sprite_get("po_hud"), fx_image_index2, x + 18, y - char_height - hud_offset - 40, 1, 1, 0, c_white, 1);
+    }
+}
 
 //#region Tutorial WOOOOO ------------------------------------------------------------------
 
@@ -37,11 +54,18 @@ if(attack == AT_TAUNT_2){
 }
 
 if(tutorial == 1){
-    var tb_x1 = x - 74;
-    var tb_y1 = y - 140;
 	//var box_w = 220;
+	//if(!presentation_mode){
+	var tb_x1 = x - 74;
+    var tb_y1 = y - 140;
 	draw_sprite_ext(sprite_get("tutorial_box"), 0, x + -200, y + -180, 2, 2, 0, c_white, 0.95);
 	draw_sprite_ext(sprite_get(tutorial_speaker + "_faces"), speaker_face, x + -180, y + -110, 2, 2, 0, c_white, 1);
+/*}else{
+	var tb_x1 = x - 10;
+    var tb_y1 = y - 240;
+draw_sprite_ext(sprite_get("sitting-Sheet"), 0, x + -200, y + -280, 3, 3, 0, c_white, 1);	
+draw_sprite_ext(sprite_get(tutorial_speaker + "_faces"), speaker_face, x + -110, y + -255, 2, 2, 0, c_white, 1);
+}*/
 	if(show_arrow){
 	draw_sprite_ext(sprite_get("arrow"), get_gameplay_time() / 12, x + 160, y + 30, 2, 2, 0, c_white, 1);	
 	}
@@ -91,10 +115,10 @@ if(tutorial == 1){
 		draw_debug_text(x + -175, y + -190, string("Press Shield to close"));
 	temp_x = x;
 	temp_y = y;
-	var box_w = 240;
+	var box_w = 252;
 		tutorial_speaker = "po"
 		speaker_face = 0;
-		textbox_text = "Yo, what'cha want to learn about?"
+		textbox_text = "Yo, what'cha wanna learn about?"
 		textDraw(temp_x - 34, temp_y - 120, "fName", c_white, 16, box_w, fa_left, 1, false, 1, tutorial_text);
 		tutorial_text = "Gimmick
 		Nspecial
@@ -167,7 +191,8 @@ if(tutorial == 1){
 	draw_debug_text(x + -175, y + -190, string("Nspecial: Cooking Pot"));
 		tutorial_speaker = "gumbo"
 		speaker_face = 6;
-		textbox_text = "For real we gotta move locations. I can't live with customers who can't handle spice."
+		textbox_text = "For real we gotta move locations, just throwing the pot with Nspecial isn't enough..
+		I can't live with customers who can't handle spice."
 	}if(tutorialpage == 20){
 	draw_debug_text(x + -175, y + -190, string("Nspecial: Cooking Pot"));
 		tutorial_speaker = "po"
@@ -381,10 +406,10 @@ if(tutorialpage == 59){
 		speaker_face = 0;
 		textbox_text = "Fishing Trout Lads - Avocado, snappystunner
 		Something Something Florida Alligator - Old TAG color scheme
-		Odor Blocker 
-		- BLW Champ, Jordan
-		Leakage - Best in the World, BendyJW
-		From Mud to Sludge - Kazuya Mishima, Jay/InnerOtaku"
+		Odor Blocker - Champed-Up, Jordan
+		Having Fun at Dave Land - The Best, BendyJW
+		From Mud to Sludge - Mishima, Jay/InnerOtaku
+		Fresh off the Grill - Investigator, FantasticFungus"
 	}
 //#region WS Compat ------------------------------------------------------------------
 if(tutorialpage == 63){
@@ -540,20 +565,87 @@ if(tutorialpage == 80){
 		speaker_face = 6;
 		textbox_text = "A'ight, you owe me dinner after this though!"
 	}
+/*	
+if(tutorialpage == 93){
+	//draw_debug_text(x + -175, y + -190, string("Codec?"));
+	var box_w = 442;
+		tutorial_speaker = "po"
+		speaker_face = 0;
+		textbox_text = "Yo, what's up Workshop Community? Pretty wild awards ceremony so far huh?"
+	}if(tutorialpage == 94){
+		tutorial_speaker = "gumbo"
+		speaker_face = 3;
+		textbox_text = "Robo asked us to cover for him on this award. Something ‘bout.. Temporary sentience, or uh. Yeah."
+	}if(tutorialpage == 95){
+		tutorial_speaker = "po"
+		speaker_face = 4;
+		textbox_text = "Since Jerma can't exactly do this speech himself, we're here instead."
+	}if(tutorialpage == 96){
+		tutorial_speaker = "gumbo"
+		speaker_face = 0;
+		textbox_text = "Uhhh, lemme pull out the script he told us to read off."
+	}if(tutorialpage == 97){
+		tutorial_speaker = "gumbo"
+		speaker_face = 3;
+		textbox_text = "'Thank you so much for the award. I'm a little surprised I managed to sneak in two of my characters in this category'..."
+	}if(tutorialpage == 98){
+		tutorial_speaker = "gumbo"
+		speaker_face = 1;
+		textbox_text = "Oh yeah huh, we were nominated for this award too! Look Po, that's us on the screen!"
+	}if(tutorialpage == 99){
+		tutorial_speaker = "po"
+		speaker_face = 1;
+		textbox_text = "It's not like we're fully voiced like Jerma is though."
+	}if(tutorialpage == 100){
+		tutorial_speaker = "gumbo"
+		speaker_face = 3;
+		textbox_text = "Yeah. Wonder what you'd sound like with a voice."
+	}if(tutorialpage == 101){
+		tutorial_speaker = "po"
+		speaker_face = 2;
+		textbox_text = "Probably better than you'd sound. Get back to reading the script, we're going off topic."
+	}if(tutorialpage == 102){
+		tutorial_speaker = "gumbo"
+		speaker_face = 0;
+		textbox_text = "Alright alright. Apparently Robo's upset he had to remove the swears from the default voice mode Jerma had, but he's glad that people enjoy them anyways."
+	}if(tutorialpage == 103){
+		tutorial_speaker = "gumbo"
+		speaker_face = 5;
+		textbox_text = "Heh, he would be wouldn't he."
+	}if(tutorialpage == 104){
+		tutorial_speaker = "gumbo"
+		speaker_face = 0;
+		textbox_text = "And uh.. what word is that? Oh right right… He'd like to thank a couple of other characters that inspired the voice mode itself such as, Goku by Muno, and Naruto by Dr. Flux."
+	}if(tutorialpage == 105){
+		tutorial_speaker = "gumbo"
+		speaker_face = 3;
+		textbox_text = "Hm.. Looks like that's it. Anything else you wanna say, Po?"
+	}if(tutorialpage == 106){
+		tutorial_speaker = "po"
+		speaker_face = 4;
+		textbox_text = "Nah, I'm good. Enjoy the rest of the awards, guys."
+	}*/
 	
 	if(textbox_skipped == true){
+		//if(!presentation_mode){
 	temp_x = x - 74;
 	temp_y = y - 140;
-	var box_w = 256;
-		textDraw(temp_x, temp_y, "fName", c_white, 16, box_w, fa_left, 1, false, 1, textbox_text);
+	var box_w = 252;
+	textDraw(temp_x, temp_y, "fName", c_white, 16, box_w, fa_left, 1, false, 1, "* " + textbox_text);
+		/*}else{
+	temp_x = x - 10;
+	temp_y = y - 240;
+	var box_w = 442;
+	textDraw(temp_x, temp_y, "fName", c_white, 16, box_w, fa_left, 1, false, 1, "* " + textbox_text);
+		}*/
 	}
 }
 
 
 
 #define draw_text_trans_outline(_x, _y, str, separ, w, xscale, yscale, angl, text_colour, outline_colour, alph)
-for (i = - 1; i < 2; i++) for (j = -1; j < 2; j++) draw_text_ext_transformed_color(_x+i*2,_y+j*2,str,separ, w, xscale, yscale, angl, outline_colour, outline_colour, outline_colour, outline_colour, 1);
-draw_text_ext_transformed_color(_x,_y,str,separ, w, xscale, yscale, angl, text_colour, text_colour, text_colour, text_colour, 1);
+for (i = - 1; i < 2; i++) for (j = -1; j < 2; j++) draw_text_ext_transformed_color(_x+i*2,_y+j*2,"* " + str,separ, w, xscale, yscale, angl, outline_colour, outline_colour, outline_colour, outline_colour, 1);
+draw_text_ext_transformed_color(_x,_y,"* " + str,separ, w, xscale, yscale, angl, text_colour, text_colour, text_colour, text_colour, 1);
 
 #define textDraw(x1, y1, font, color, lineb, linew, align, scale, outline, alpha, text)
 
@@ -563,7 +655,7 @@ draw_set_halign(align);
 if outline{
     for (i = -1; i < 2; i++){
         for (j = -1; j < 2; j++){
-            draw_text_ext_transformed_color(x1 + i * 2, y1 + j * 2, text, lineb, linew, scale, scale, 0, c_black, c_black, c_black, c_black, alpha);
+            draw_text_ext_transformed_color(x1 + i * 2, y1 + j * 2, "* " + text, lineb, linew, scale, scale, 0, c_black, c_black, c_black, c_black, alpha);
         }
     }
 }

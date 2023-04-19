@@ -34,7 +34,7 @@ var palette_names = [
   "Natsumi",
   "Astra",
   "Bluey",
-  "Void Power",
+  "Null",
   "10",
   "7-11",
   "LGBT",

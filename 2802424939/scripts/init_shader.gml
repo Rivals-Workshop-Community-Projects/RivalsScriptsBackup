@@ -1,6 +1,6 @@
 if (get_player_color(player) == 11)
 {
-    set_color_profile_slot( 0, 7, 145, 187, 255 );
+    set_character_color_shading(7, 1.4)
 }
 else if (get_player_color(player) != 11)
 {

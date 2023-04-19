@@ -1,6 +1,4 @@
    
-    
-    
 if  (get_player_color(player) == 23) {
     if(!avocado){
 //crash prevention line
@@ -31,9 +29,9 @@ maskFooter();
 
 shader_end();
 if galaxy_timer > 0 {
-        
-        //draw_sprite_ext(sprite_get("mmm"),0, view_get_xview(), view_get_yview(), 2 , 2 ,0, c_white, (galaxy_timer/2.5)/60 );
-        
+    galaxy_scale += 0.02; 
+        draw_sprite_ext(sprite_get("mmm"),0, view_get_xview() -(-85 + galaxy_scale*250), view_get_yview() -(-80 + galaxy_scale*200), 1.5+galaxy_scale , 1.5+galaxy_scale ,0, c_white, (galaxy_timer/1.5)/60 );
+
     }
 
 #define maskHeader

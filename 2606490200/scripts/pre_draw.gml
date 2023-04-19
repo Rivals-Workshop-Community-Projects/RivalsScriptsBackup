@@ -15,6 +15,13 @@ if "cosmicman" in self && uped >= 4 {
 */
 
 shader_start();
+
+with asset_get("pHitBox") {
+		if attack == AT_FTILT && hbox_num == 10 && "ye" in self {
+			draw_sprite_ext( ye, heck, x, y, spr_dir,1,0,-1, 0.5 - hitbox_timer/20 )
+		}
+}
+
 if (state == PS_DASH_START or state == PS_DASH or state == PS_DASH_TURN or state == PS_DASH_STOP or 
 state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_WAVELAND 
 or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD) && htrain >= 100{

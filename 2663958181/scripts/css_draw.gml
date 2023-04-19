@@ -15,6 +15,72 @@
 // and just in case, this code goes into css_draw.gml.
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
+cpu_hover_update();
+
+//player select button
+
+var player_button_pos = 
+[
+    x + player_button_x,
+    y + player_button_y,
+    x + player_button_x+30,
+    y + player_button_y+26,
+]
+
+var player_choice_index = player_choice * 3;
+
+cursor_x = get_instance_x(cursor_id);
+cursor_y = get_instance_y(cursor_id);
+
+if (cursor_x > player_button_pos[0] && cursor_x < player_button_pos[2] && cursor_y > player_button_pos[1] && cursor_y < player_button_pos[3] && !instance_exists(oTestPlayer))
+{
+   if (menu_a_pressed)
+   {
+        player_choice_index++;
+        sound_play(asset_get("mfx_option"));
+        switch(player_choice){
+            case 0:
+                set_ui_element(UI_HUD_ICON, sprite_get("hud_nohat"));
+                set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_nohat"));
+                set_ui_element(UI_CHARSELECT, sprite_get("charselect_nohat"));
+                set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_nohat"));
+                set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_nohat"));
+            case 1:
+                set_ui_element(UI_HUD_ICON, sprite_get("hud_hat"));
+                set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_hat"));
+                set_ui_element(UI_CHARSELECT, sprite_get("charselect_hat"));
+                set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_hat"));
+                set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_hat"));
+                break;
+        }
+        player_choice++;
+        if player_choice > 1{
+        	player_choice = 0;
+        	
+            set_ui_element(UI_HUD_ICON, sprite_get("hud_nohat"));
+            set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_nohat"));
+            set_ui_element(UI_CHARSELECT, sprite_get("charselect_nohat"));
+            set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_nohat"));
+            set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_nohat"));
+        }
+        sound_stop(sound_get("mfx_css_shades"));
+        sound_stop(asset_get("mfx_option"));
+        switch(player_choice){
+        	case 0:
+        		sound_play(asset_get("mfx_option"), 0, 0, 1, 1);
+        		break;
+        	case 1:
+        		sound_play(sound_get("mfx_css_shades"), 0, 0, 1, 1);
+        		break;
+        }
+   }
+   player_choice_index++;
+}
+
+draw_sprite_ext(sprite_get("player_button"), player_choice_index, player_button_pos[0], player_button_pos[1], 1, 1, 0, -1, 1);
+
+cpu_hover_draw(); 
+
 //--- ---
 var qe_b = "Bubbles"
 // ! you can now scroll down until you reach "the primary part you should change."
@@ -74,7 +140,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 30;
+	col_max = 31;
 	ce[0,0] 	= make_color_rgb(149, 222, 246)
 	ce[0,1] 	= "Default"
 	ce[0,2] 	= "Designed by Aozane. Modified by Softcore. Mod by EquinoxDoodles."
@@ -173,9 +239,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[25,0]	= make_color_rgb(145, 139, 127)
 	ce[25,1]	= "Galega"
 	ce[25,2]	= "Tugma... wink. Based on the workshop character, Galega, an air themed turtle."
-	ce[26,0]	= make_color_rgb(172, 33, 50)
-	ce[26,1]	= "Wild Fire"
-	ce[26,2]	= "The Feral Flame. You'll see soon enough..."
+	ce[26,0]	= make_color_rgb(216, 198, 194)
+	ce[26,1]	= "Goober Gaming"
+	ce[26,2]	= "Not all ideas are bad, but she certainly has a lot of them."
 	ce[27,0]	= make_color_rgb(246, 104, 148)
 	ce[27,1]	= "Liz"
 	ce[27,2]	= "oh my gosh its liz timerpg from friday night funkin by slep16 omg"
@@ -188,9 +254,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[30,0]	= make_color_rgb(254, 238, 238)
 	ce[30,1]	= "Kanna"
 	ce[30,2]	= "ちゅうちゅう、Yeah! Based on Kanna from Miss Kobayashi's Dragon Maid."
-	//ce[31,0]	= make_color_rgb(232, 63, 63)
-	//ce[31,1]	= "???"
-	//ce[31,2]	= "This is a secret color that will hopefully be unlocked later"
+	ce[31,0]	= make_color_rgb(0, 163, 248)
+	ce[31,1]	= "Vortex"
+	ce[31,2]	= "She has been freed."
 }
 
 if (ae == "ae"){
@@ -318,3 +384,19 @@ draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argumen
 draw_set_alpha(argument[6]*1.5);
 draw_rectangle_color(argument[0]+2, argument[1]+2, argument[2]-2, argument[3]-2, argument[4], argument[4], argument[4], argument[4], false);
 draw_set_alpha(1);
+#define cpu_hover_draw()
+if (cpu_hover_time > 0) {
+    var prog = min(cpu_hover_time/10, 1);
+    var colprog = min(cpu_color_swap_time/5, 1);
+    var col = merge_color(cpuh_prev_color, cpuh_new_color, colprog);
+    draw_sprite_ext(cpu_hover_sprite, 0, x - 4, y - 6, 2, 2, 0, col, prog);
+    draw_set_alpha(prog);
+    draw_debug_text(plate_bounds[2]-17, plate_bounds[3]+1, `P${cpu_hovering_player}`);
+    draw_set_alpha(1);
+}
+
+set_synced_var(player, player_choice);
+
+#define cpu_hover_update()
+var p = player;
+var is_cpu = (get_player_hud_color(p) == 8421504);

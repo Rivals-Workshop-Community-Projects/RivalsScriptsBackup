@@ -1,7 +1,4 @@
 //update
-user_event(14); 
-
-
 //Check if a fspecial ball is out
 var ABallThereIs = false;
 
@@ -23,59 +20,43 @@ if ballDown > 0 {
 
 
 if !(get_player_color( player ) == 10) {
-	if (wblastcharge >= 45) {
+	if (wblastcharge >= 35) {
 		var outlineclr = (sin((get_gameplay_time() - wblastcharge) * 0.2) * -50) + 50
 		outline_color = [ outlineclr * 2, outlineclr * 0.5, outlineclr * 0.2];
+		if get_gameplay_time() mod 25 == 0 {
+				spawn_hit_fx(x-30, y-60, nspecialAfter);
 		}
+		if get_gameplay_time() mod 20 == 0 {
+				spawn_hit_fx(x+30, y-40, nspecialAfter);
+		}
+		if get_gameplay_time() mod 30 == 0 {
+				spawn_hit_fx(x-34, y-14, nspecialAfter);
+		}
+	}
 	else 	{
 		outline_color = [ 0, 0, 0 ];
 	}
 }
-	
+
 	
 if (get_player_color( player ) == 10) {
-	if (wblastcharge >= 45) and ((get_gameplay_time() mod 10) > 5) {
-	outline_color = [ 255, 194, 182 ];
+	if (wblastcharge >= 35) and ((get_gameplay_time() mod 10) > 5) {
+		outline_color = [ 255, 194, 182 ];
 	}
 	else	{	
-		outline_color = [197, 27, 0];
+		outline_color = [31, 31, 31];
 	}
 }
 	
 
 init_shader();
+
+if (wblastcharge > 35) { //Ensure wblastcharge never goes above 55
+	wblastcharge = 35;
+}
 
 if (0 > wblastcharge) { //Ensure wblastcharge never goes below zero
 	wblastcharge = 0;
-}
-
-if (wblastcharge > 45) { //Ensure wblastcharge never goes above 55
-	wblastcharge = 45;
-}
-
-
-if (get_player_color( player ) == 9) {
-hue_offset+=hue_speed;
-hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
-
-color_rgb=make_color_rgb( 255, 0, 0 ); //input rgb values here, uses rgb to create a gamemaker colour variable
-hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
-color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot( 9, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 9, 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 9, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-
-hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
-color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot( 9, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 9, 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 9, 3, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
 }
 
 if !(url == 2014106219) {
@@ -156,7 +137,8 @@ if(variable_instance_exists(id,"diag"))
     diagchoice = [
     "Alright, Cinna, you can do this!",
     "Is it battle time already...?",
-    "Heyo!"]
+    "Let's do our best, okay?",
+    "Heya!"]
 
 //  Specific Character Interactions
 
@@ -178,7 +160,7 @@ if(variable_instance_exists(id,"diag"))
     }
     if(otherUrl == "1882960192" && diag != "") 
     {
-        diag = "Blu?? But I don't want to fight you...";
+        diag = "Big bro? But I don't want to fight you...";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
     if(otherUrl == "2007375819" && diag != "") 

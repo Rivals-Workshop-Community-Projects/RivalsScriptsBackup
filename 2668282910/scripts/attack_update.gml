@@ -30,10 +30,10 @@ if (window == 1 && enhanced == false && attack != AT_JAB && ex_cooldown == 0){
         sound_play(sound_get("fire_start"));
         spawn_hit_fx( x-25*spr_dir, y-50, zetter_hit_ex);
         if (attack == AT_FTILT || attack == AT_UTILT || attack == AT_DTILT || attack == AT_FAIR
-        || attack == AT_UAIR){
+        || attack == AT_UAIR || attack == AT_NAIR){
             take_damage( player, -1, 5);
         }
-        if (attack == AT_DATTACK || attack == AT_NAIR || attack == AT_DAIR || attack == AT_DSPECIAL
+        if (attack == AT_DATTACK || attack == AT_DAIR || attack == AT_DSPECIAL
         || attack == AT_FSPECIAL){
             take_damage( player, -1, 8);
         }
@@ -70,11 +70,12 @@ if ((attack == AT_FTILT && window == 2) || (attack == AT_UTILT && window == 2)
 //The EX Cooldown for each move (only counts if the hitbox comes out)
 if (enhanced == true){
     if ((attack == AT_FTILT && window == 2) || (attack == AT_UTILT && window == 2)
-    || (attack == AT_DTILT && window == 2) || (attack == AT_FAIR && window == 2)){
+    || (attack == AT_DTILT && window == 2) || (attack == AT_FAIR && window == 2)
+    || (attack == AT_NAIR && window == 5)){
         ex_cooldown = 60;
     }
-    if ((attack == AT_DATTACK && window == 2) || (attack == AT_NAIR && window == 5)
-    || (attack == AT_DSPECIAL && window == 3) || (attack == AT_UAIR && window == 2)){
+    if ((attack == AT_DATTACK && window == 2) || (attack == AT_DSPECIAL && window == 3) 
+    || (attack == AT_UAIR && window == 2)){
         ex_cooldown = 90;
     }
     if ((attack == AT_FSTRONG && window == 3) || (attack == AT_USTRONG && window == 3)
@@ -111,6 +112,13 @@ if (attack == AT_FTILT){
     }
 }
 
+//DTilt - Gives a tiny horizontal boost
+if (attack == AT_DTILT){
+    if (enhanced == true && window == 1 && window_timer == 7){
+        hsp = 7*spr_dir;
+    }
+}
+
 //UTilt - Jump height and HUD stuff
 if (attack == AT_UTILT){
     can_fast_fall = false;
@@ -135,7 +143,7 @@ if (attack == AT_DATTACK){
     }
 }
 
-//Changes the EX SPrite for these moves
+//Changes the EX Sprite for these moves
 if (attack == AT_DTILT || attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG
  || attack == AT_FAIR || attack == AT_BAIR || attack == AT_NAIR || attack == AT_DAIR){
     if (enhanced == true){
@@ -278,7 +286,7 @@ if (attack == AT_NSPECIAL){
         }
     }
     //Triggers the EX Super Armor
-    if (enhanced == true && window == 2){
+    if (enhanced == true && (window == 2 || window == 3)){
         super_armor = true;
         set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 60);
     }
@@ -290,19 +298,27 @@ if (attack == AT_NSPECIAL){
 
 //FSpecial - Brave Bird
 if (attack == AT_FSPECIAL){
+    move_cooldown[AT_FSPECIAL] = 25;
+    if (was_parried == true){
+        window = 5;
+    }
     //Sets the cooldown
     if (window == 1 && free){
-        move_cooldown[AT_FSPECIAL] = 9999;
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 7);
     }
     if (window == 1 && !free){
-        move_cooldown[AT_FSPECIAL] = 9999;
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
     }
     can_fast_fall = false;
     can_wall_jump = true;
     //EX Attributes and Animations
     if (enhanced == true){
+        set_attack_value(AT_FSPECIAL, AG_STRONG_CHARGE_WINDOW, 1);
+        if (window == 1){
+            vsp = 0;
+            can_move = false;
+        }
+        strong_down = special_down;
         set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecialex"));
         hurtboxID.sprite_index = sprite_get("fspecialex_hurt");
         trail_effect = sprite_get("fspecial_trail2");
@@ -314,16 +330,38 @@ if (attack == AT_FSPECIAL){
         set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 12);
-        
-        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 16);
-        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 16);
+
+            if (strong_charge < 20){
+                set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 12);
+                set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 12); 
+            }
+            if (strong_charge >= 20 && strong_charge < 30){
+                set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 13);
+                set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 13); 
+            }
+            if (strong_charge >= 30 && strong_charge < 40){
+                set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 14);
+                set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 14); 
+            }
+            if (strong_charge >= 40 && strong_charge < 50){
+                set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 15);
+                set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 15); 
+            }
+            if (strong_charge >= 50){
+                set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 17);
+                set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 17); 
+            }
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("pokken_brave_bird_ex"));
     }
     else {
+        if (window == 1 && window_timer == 1){
+            strong_charge = 0;
+        }
         set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
         hurtboxID.sprite_index = sprite_get("fspecial_hurt");
         trail_effect = sprite_get("fspecial_trail");
         
+        set_attack_value(AT_FSPECIAL, AG_STRONG_CHARGE_WINDOW, 0);
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
         set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
         set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
@@ -331,14 +369,13 @@ if (attack == AT_FSPECIAL){
         set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 9);
-        
         set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 12);
         set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 12);
+        
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("pokken_brave_bird"));
     }
     //Can Jump on hit
     if (window > 2 && has_hit && !hitpause){
-        move_cooldown[AT_FSPECIAL] = 0;
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
         if (enhanced == false){
             can_jump = true;
@@ -453,9 +490,11 @@ if (attack == AT_USPECIAL){
 if (attack == AT_DSPECIAL){
     //Sets the sound effect
     if (enhanced == true){
+        set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 3);
         set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, sound_get("pokken_ball_ex"));
     }
     else {
+        set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 0);
         set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, sound_get("pokken_ball"));
     }
     //Spawns the Wisp (if it's the EX one and if it needs to destroy a previous one)

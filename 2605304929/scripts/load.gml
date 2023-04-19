@@ -75,7 +75,6 @@ sprite_change_offset("buildup_water", 128, 128); //
 //HitFX
 sprite_change_offset("hitfx_large_elec", 128, 128); //
 sprite_change_offset("hitfx_large_water", 128, 128); //
-sprite_change_offset("hitfx_large_combined", 128, 128); //
 sprite_change_offset("hitfx_water_paw", 128, 128); // 
 sprite_change_offset("hitfx_elec_paw", 128, 128); //
 sprite_change_offset("hitfx_boosted_grab", 128, 128); //
@@ -83,6 +82,22 @@ sprite_change_offset("consume_elec", 128, 382); // Custom Offsets
 sprite_change_offset("consume_water", 128, 128);
 sprite_change_offset("cooldown_electricity", 128, 128);
 sprite_change_offset("hitfx_water_dust", 128, 128);
+sprite_change_offset("hitfx_mark_consume", 128, 128);
+sprite_change_offset("hitfx_mark_disperse", 128, 128);
+sprite_change_offset("hitfx_mark_disperse", 128, 128);
+
+sprite_change_offset("hfx_dspecial_floor", 64, 64);
+sprite_change_offset("hfx_electric_dash", 64, 64);
+sprite_change_offset("hfx_uspecial_jumpfx", 64, 128);
+sprite_change_offset("hfx_electric_directional_arrow", 128, 128);
+sprite_change_offset("hfx_dspecial_indicator", 30, 30);
+
+// Hit Particle
+sprite_change_offset("hit_particle1",0,16);
+sprite_change_offset("hit_particle2",0,16);
+sprite_change_offset("hit_particle3",0,16);
+sprite_change_offset("hit_particle4",0,16);
+sprite_change_offset("hit_particle5",0,16);
 
 //Hurt Sprites
 sprite_change_offset("hurt", 128, 162);

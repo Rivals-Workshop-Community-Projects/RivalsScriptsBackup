@@ -96,8 +96,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[6,0] = make_color_rgb(255, 128, 221)
     ce[6,1] = "Gorilla Pink"
     ce[6,2] = ""
-    ce[7,0] = make_color_rgb(222, 255, 222)
-    ce[7,1] = "Void"
+    ce[7,0] = make_color_rgb(202, 0, 0 )
+    ce[7,1] = "Genesis 9"
     ce[7,2] = ""
     ce[8,0] = make_color_rgb(46, 46, 54)
     ce[8,1] = "Dojima Dragon"
@@ -162,14 +162,14 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[28,0] = make_color_rgb(93, 74, 73)
     ce[28,1] = "Drums"
     ce[28,2] = ""
-    ce[29,0] = make_color_rgb(253, 232, 2)
-    ce[29,1] = "Neo Machine"
+    ce[29,0] = make_color_rgb(23, 66, 153)
+    ce[29,1] = "Riptide"
     ce[29,2] = ""
     ce[30,0] = make_color_rgb(99, 54, 125)
     ce[30,1] = "PNG"
     ce[30,2] = ""
-    ce[31,0] = make_color_rgb(23, 66, 153)
-    ce[31,1] = "Riptide"
+    ce[31,0] = make_color_rgb(253, 232, 2)
+    ce[31,1] = "Neo Machine"
     ce[31,2] = ""
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

@@ -9,7 +9,13 @@ with obj_article1 if player_id == other.player_id && id != other.id {
 draw_vine = false
 
 if mark_id && !instance_exists(mark_id) {
-    mark_id = undefined
+    mark_id = noone
+    set_state(PS_DEAD)
+}
+
+if die && state == PS_IDLE {
+    sound_play(asset_get("sfx_syl_nspecial_flowerhit"))
+    spawn_hit_fx(x, y, player_id.vfx_wood_small)
     set_state(PS_DEAD)
 }
 
@@ -26,9 +32,9 @@ switch state {
     }
     
     if is_colliding {
-        set_state(PS_DEAD)
         sound_play(asset_get("sfx_syl_nspecial_flowerhit"))
         spawn_hit_fx(x, y, player_id.vfx_wood_small)
+        set_state(PS_DEAD)
     }
     
     break;
@@ -162,7 +168,7 @@ switch state {
             set_state(PS_DEAD)
         }
         with other_seed_id.mark_id {
-            arb_marked = undefined
+            arb_marked = false
             arb_tethered = undefined
         }
         sound_play(asset_get("sfx_may_whip2"))
@@ -197,7 +203,7 @@ switch state {
         sound_play(asset_get("sfx_bite"))
         state_timer++
         create_hitbox(AT_DSPECIAL, 2, x, y-52)
-        mark_id = undefined
+        mark_id = noone
         if other_seed_id != undefined other_seed_id.state = PS_DEAD
     }
     

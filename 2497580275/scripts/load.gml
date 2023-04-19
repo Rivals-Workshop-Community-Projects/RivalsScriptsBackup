@@ -48,6 +48,7 @@ sprite_change_offset("nspecial2", 132, 158);
 sprite_change_offset("nspecial3", 132, 158);
 sprite_change_offset("precombust", 132, 158);
 sprite_change_offset("nspecial_projectile", 132, 158);
+sprite_change_offset("nspecial_projectile_abyss", 132, 158);
 sprite_change_offset("hero_proj", 132, 158);
 sprite_change_offset("fspecial", 132, 158);
 sprite_change_offset("fspecial_air", 132, 158);

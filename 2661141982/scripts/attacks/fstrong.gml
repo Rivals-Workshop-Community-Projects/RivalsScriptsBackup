@@ -58,5 +58,5 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 // set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 // set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_PARRY_STUN, 1);
 // set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, uspec_large);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_PARTICLE_NUM, 1);

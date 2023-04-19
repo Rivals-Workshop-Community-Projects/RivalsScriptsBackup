@@ -448,6 +448,199 @@ initHeader("Compatible with");
 initSection("Trummel & Alto, Otto, Steve, Link");
 
 */
+
+
+initPatch("2.12", "19 Mar, 2023");
+initHeader("Balance");
+initSection("- fstrong's recoil no longer leaves the ground and is standardized across angles
+			- fstrong aim angles are narrower (30->25)
+			- fstrong initial recoil speed decreased (5->4)
+			- fspecial endlag increased (14->16)
+			- crawl speed 'limit' reduced (13->12)
+			- dstrong max speed reduced (5->4)");
+initHeader("Presentation");
+initSection("- fspecial now flashes to signal when you can act
+			- added arrow to nspecial to make throw direction more clear");
+initHeader("Runes");
+initSection("- Changed rune D to now re-enable the recoil of fstrong");
+
+initPatch("2.11", "22 Feb, 2023");
+initHeader("Balance");
+initSection("- Adjusted uspecial to maybe slightly improve combo potential
+			-- Max uspecial speed reduced (5.5 -> 5)
+			-- uspecial acceleration factor increased (0.05 -> 0.08)
+			- Added bkb decay to dstrong, now scales from 8 down to 5");
+initHeader("Bugs");
+initSection("- Vortex alt was missing the little color swatch box on CSS
+			- Default alt had incorrectly colored portrait in tourney mode");
+initHeader("Presentation");
+initSection("- Re-enabled funny sound effects now that Vortex is over
+			- Added details of dspecial to Munophone notes");
+
+initPatch("2.10", "09 Feb, 2023");
+initHeader("Bugs");
+initSection("- Fixed an issue with fstrong being charged at different angles");
+
+initPatch("2.9", "09 Feb, 2023");
+initHeader("Balance");
+initSection("- Uair lingering hit added back in, but is shorter than pre-2.7
+			- Uair lingering hit angle changed (85->90)");
+initHeader("Bugs");
+initSection("- Fixed an issue where using uspecial while crouched would immediately enter landing lag
+			- Fixed an issue causing fstrong's hitboxes to appear too early");
+initHeader("Presentation");
+initSection("- Added a tiny bit of layered sound to some blast attacks
+			- Adjusted screen shake during uthrow");
+
+initPatch("2.8", "05 Feb, 2023");
+initHeader("Balance");
+initSection("- Reduced nspecial endlag on whiff (20->16)
+			- Reduced dtilt damage (8->7)
+			- Reduced dtilt bkb (9->8)
+			- Reduced dtilt startup (10->7)
+			- Decreased short-hop speed (7->6)
+			- Dstrong increased after decrease last patch (6->12)
+			- Fstrong angle adjusted (60->45)
+			- Fstrong is no longer ledge-cancellable on landing
+			- Fstrong hurtbox size increased to cover part of the arm for some angles");
+initHeader("Presentation");
+initSection("- Disabled down-taunt and removed copyrighted material in preparation of Vortex Gallery
+			- Added Vortex Gallery alt
+			- Future Ducky compatibility");
+
+initPatch("2.7", "02 Feb, 2023");
+initHeader("Balance - Big thanks to Ambi for taking such a close look at the character, as well as SpiderBoi and Anebriate for providing feedback as well!");
+initSection("- After being in car mode for a brief period, grounded attacks require 5 frames to turn into a robot before they come out
+			  - This 'penalty' is deducted from natural transform time, so it should flow naturally
+			- Reduced car 'max' speed (15->13) and acceleration below max (0.85->0.8)
+			- Removed energy refill on grab, replaced with double-jump refill for consistency with similar characters
+			- Removed uair's and nair's lingering hitbox
+			  - Reduced nair's endlag (-4 frames formerly spent with lingering hitbox)
+			  - Reduced uair's endlag (-6 frames formerly spent with lingering hitbox)
+			- Increased fspecial number of frames before action can be taken (+7)
+			- Reduced bair's momentum (7.5->5.0)
+			- Removed fstrong lingering hit
+			- Slightly reduced fstrong kickback for all aim angles
+			- Increased friction while charging ustrong (0.05->0.3)
+			- Reduced disjointedness of ftilt/utilt but adding hurtbox to the smear frame
+			- Slightly reduced size of utilt/ftilt hitboxes to more closely match smear frame
+			- Slightly reduced width of dstrong hitboxes
+			- Dstrong now only spins once and hits once, but rotation lasts slightly longer
+			- Dstrong now sends up instead of out (45->90)
+			- Dstrong hitbox is now slightly narrower
+			- Dstrong acceleration reduced (1->0.8) and top speed reduced (7->6)
+			- Reduced active hitbox time of nspecial (8->4)
+			  - There is now only one lower hitbox while sliding, no longer hitting once arms are raised
+			- Reduced hspeed of dattack's little burst (9->8)");
+initHeader("Bugs");
+initSection("- Fixed a bug causing the upspecial jet sound to play forever when mashing upspecail/jump repeatedly
+			- Fixed grabs doing more damage than intended if the opponent was grabbed too early in the animation");
+initHeader("Presentation");
+initSection("- Added compatibility for:
+			  - Po & Gumbo signature dish
+			  - Mamizou transformation
+			  - Henry Stickmin fail message
+			- Updated/corrected Munophone description of dspecial
+			- When fspecial ends, play a sound effect and turn off afterimages for clarity");
+
+initPatch("2.6", "24 Nov, 2022");
+initHeader("Balance");
+initSection("- Crouching hurtbox is slightly taller
+			- nair final hit kb increased (6.7->7)
+			- nair endlag increased (4(6)->7(11))
+			- nair overall hitbox size decreased
+			  - Second hit is now slightly larger than the first (no longer matching, but still smaller than before)
+			- fstrong initial hit kb no longer decays
+			- fstong lingering hit kb now decays more quickly (initial kb 7->5)
+			- fstong lingering hit kb now decays to higher endpoint (1.0->2.0)
+			- fstong lingering hit scaling kb reduced (1.1->0.9)
+			- fstrong initial tip hitbox lifetime reduced
+			- fstrong initial hit damage normalized across angles (12/13/14->13)
+			- fstrong lingering hit damage reduced (12/13/14->11)
+			- dspecial charged speed increased (14.0->14.5)");
+initHeader("Presentation");
+initSection("- Updated CSS icon
+			- Changed victory theme to no longer reference copyrighted material");
+
+
+initPatch("2.5", "15 Oct, 2022");
+initHeader("Balance");
+initSection("- Reduced dair knockback scaling on sweetspot (0.9->0.8)
+			- Increased ustrong knockback scaling on final hit (1.0->1.1)
+			- Separated nspecial grab hitbox into two distinct boxes, both smaller than the original");
+initHeader("Presentation");
+initSection("- Adjusted visuals of uthrow
+			- Added several new hurt sprites");
+
+initPatch("2.4", "09 Oct, 2022");
+initHeader("Presentation");
+initSection("- Added '!' button to CSS, allowing any alt to have color shifting
+			- Removed rainbow cheat in Munophone
+			- Corrected Munophone/frame data buddy representation of ustrong
+			- Modified some alt names to no longer overlap flavor text on hover");
+
+initPatch("2.3", "01 Oct, 2022");
+initHeader("Balance");
+initSection("- Reduced ustrong startup (19->15)
+			- Reduced ustrong rising frames (30->20)
+			- Reduced ustrong number of rising hits (6->5)
+			- Increased ustrong damage of final hit (6->7)
+			- Reduced ustrong endlag (26[39whiff]->20[26whiff])
+			- Increased ustrong horizontal influence
+			- Added landing lag to ustrong (0->6[10whiff])");
+initHeader("Bugs");
+initSection("- ustrong now correctly has damage/knockback scale with charge");
+initHeader("Presentation");
+initSection("- Attempted to smooth out ustrong animation
+			- Munophone's 'CPU behavior changes' is now defaulted to 'off'");
+
+initPatch("2.2", "24 Sep, 2022");
+initHeader("Balance");
+initSection("- fair now has hurtbox on main smear animation (and in the gap between body and smear)");
+initHeader("Bugs");
+initSection("- ustrong should no longer be able to slip off ledge at the start
+			- tapping uspecial right after double jump should no longer retain the double jump");
+initHeader("Presentation");
+initSection("- fstrong flame visual effect is larger for longer");
+
+initPatch("2.1", "20 Sep, 2022");
+initHeader("Balance");
+initSection("- ustrong final hit angle (60->50)
+			- nair now hits away from Retroblast rather than always forward
+			- upstrong rises fewer frames (40->30), speed adjusted
+			- fewer ustrong hits (8->6)
+			- ustrong final hit damage increased (4->6)
+			- dstrong multi-hit angle reduced to prevent escape (25->0)");
+initHeader("Bugs");
+initSection("- uspecial no longer gets caught on ledge
+			- trading with ustrong no longer causes opponent to flinch on next ustrong use");
+initHeader("Presentation");
+initSection("- Updated some hit sounds");
+
+initPatch("2.0", "18 Sep, 2022");
+initHeader("Balance - Big thanks to everyone in TGP for feedback/suggestions/advice/playtesting! : )");
+initSection("- utilt and ustrong have been replaced
+			- dspecial can be cancelled into dtilt (thanks to Veglord Supreme for the suggestion)
+			- Unified fstrong knockback & angles across all aim directions
+			- fstrong now has decaying knockback
+			- Walljump now grants a flat 30% (being struck still only restores up to 30% if below 30%)
+			- Most base kb, scaling kb, and kb angle values have been rouned to the nearest multiple of 0.5, 0.05, and 5 respectively
+			- ftilt now scoots forward a tiny bit
+			- dstrong non-final hits have lower hitstun but can no longer be tech'd
+			- dstrong endlag increased (20->26, 30->39 on whiff)
+			- Last hit of dstrong now sends away from center instead of always toward where Retrobalst was facing
+			- dattack can be cancelled into ustrong in the first 3 frames
+			- nspecial grab startup reduced (10->8)");
+initSection("Bug fixes");
+initSection("- Can no longer ignore parry stun with tilts/jab after fstrong is parried");
+initSection("Presentation");
+initSection("- Added character select sound
+			- Changed some names of alt palettes to be less direct references
+			- Updated ftilt smear
+			- grabs now slide opponents into position instead of suddenly appearing in your hands");
+initSection("Runes");
+initSection("- New rune to cancel dspecial into dstrong");
+
 initPatch("1.20", "17 Jun, 2022");
 initHeader("Presentation:");
 initSection("- Fixed dattack animation that was accidentally replaced");
@@ -890,7 +1083,7 @@ cheat_fspecial_cancel = initCheat("FSpecial Cancel", [0, 1], ["Off", "On"], "Can
 cheat_widebert = initCheat("wide?", [1, 1.25, 1.5, 2, 3, 5, 10, 20, 0.5, 0.25, 0.1, 0], ["Normal", "wide", "w i d e", "w  i  d  e", "w   i   d   e", "w    i    d    e", "w     i     d     e", "w      h      a      t", "narrow", "narrower", "narrowerer", "."], "how");
 
 // init_shader.gml
-cheat_skittles = initCheat("Disco", [0, 1], ["Off", "On"], "skittles");
+//cheat_skittles = initCheat("Disco", [0, 1], ["Off", "On"], "skittles");
 
 // update.gml
 cheat_recoil = initCheat("stop hitting yourself", [0, 1], ["Off", "On"], "ouf");

@@ -3,6 +3,9 @@
 //print_debug(get_player_color(player));
 //print_debug(dip_mode);
 
+//====> INIT #######################################################
+playerObject = self;
+
 //====> SWITCHES #######################################################
 
 switch (dip_mode)

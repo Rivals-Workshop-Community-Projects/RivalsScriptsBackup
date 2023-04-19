@@ -73,6 +73,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 14); //14  - smoke small
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_disperse);
 set_hitbox_value(attack, hitbox_num, 81, "Shine");//HG_MUNO_HITBOX_NAME
 
 hitbox_num++;

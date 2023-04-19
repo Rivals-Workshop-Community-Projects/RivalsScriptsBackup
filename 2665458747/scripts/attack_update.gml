@@ -74,7 +74,7 @@ switch(attack)
 				if id != other.id && pseudograb
 				{
 					x = lerp(x, other.x-55*spr_dir, 0.1)
-					y = lerp(y, other.y-70, 0.2)
+					y = lerp(y, other.y-70, 0.25)
 				}
 			}
 		}
@@ -86,7 +86,7 @@ switch(attack)
 				if id != other.id && pseudograb
 				{
 					x = lerp(x, other.x-55*spr_dir, 0.1)
-					y = lerp(y, other.y-40, 0.3)
+					y = lerp(y, other.y-40, 0.1)
 				}
 			}
 		}
@@ -344,8 +344,8 @@ switch(attack)
 					}
 					else
 					{
-						hsp += 7*spr_dir;
-						hsp = clamp(hsp, -16, 16);
+						hsp += 18*spr_dir;
+						hsp = clamp(hsp, -30, 30);
 					}
 				}
 				
@@ -442,7 +442,7 @@ switch(attack)
 				croagbelchcharged = true;
 			}
 			
-			if window_timer >= 5 && button_down >= 8 && special_down
+			if window_timer >= 14 && button_down >= 8 && special_down
 			{
 				window = 4;
 				window_timer = 0;
@@ -1243,6 +1243,9 @@ switch(attack)
 						}
 }
 #define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
+/// spawn_base_dust(x, y, name, dir = 0)
+/// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value
@@ -1251,7 +1254,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
     default: 

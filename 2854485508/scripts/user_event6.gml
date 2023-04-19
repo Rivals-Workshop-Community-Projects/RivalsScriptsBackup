@@ -20,7 +20,7 @@ switch (art_event) {
                 sound_play(asset_get("sfx_leaves"));
             }
             if (enemy_hitboxID.attack == AT_NSPECIAL_2 && enemy_hitboxID.hbox_num == 1) {
-                percent += 999;
+                hitpoints = 0;
                 sound_play(asset_get("sfx_leaves"));
             }
         }
@@ -143,7 +143,7 @@ switch (enem_id) {
                                     ai_moving_left = true;
                                 } 
                             }
-                            if (decision_random >= ai_decision_time/2 && !committed && !standard_on_ledge()) {
+                            if (decision_random >= ai_decision_time/2 && !committed) {
                                 if (ai_target.y + 32 <= y) {
                                     var jump_random = random_func(51, 100, true);
                                     if (jump_random <= 50) {
@@ -185,10 +185,38 @@ switch (enem_id) {
                                     }
                                 }
                             }
+                            if (standard_on_ledge()) {
+                                ai_moving_right = false;
+                                ai_moving_left = false;
+                            }
+                        }
+                        else {
+                            ai_moving_right = false;
+                            ai_moving_left = false;
+                            if (ai_target.x > x) {
+                                ai_moving_right = true;
+                                ai_moving_left = false
+                            } 
+                            if (ai_target.x < x) {
+                                ai_moving_right = false;
+                                ai_moving_left = true;
+                            } 
+                             if (x < (room_width - get_stage_data(SD_WIDTH)) / 2 || x > (room_width + get_stage_data(SD_WIDTH) / 2) && vsp > 0) {
+                                jump_down = true;
+                                if (x < get_stage_data(SD_X_POS)) {
+                                    ai_moving_right = true;
+                                    ai_moving_left = false
+                                } 
+                                if (x > get_stage_data(SD_X_POS)) {
+                                    ai_moving_right = false;
+                                    ai_moving_left = true;
+                                } 
+                             }
                         }
                         
                         //Attacking
                         if (ai_attack_cooldown <= 0) {
+                            
                             ai_attack_timer ++;
                             decision_random = random_func(53, round(ai_attack_frequency), true);
                             if (decision_random == 0 && !committed) {
@@ -248,6 +276,8 @@ switch (enem_id) {
                 }
             break;
             case EN_EVENT.DEATH:
+                spawn_hitbox = false
+                if (instance_exists(hitbox)) instance_destroy(hitbox);
                 mamizou_mark_id = noone;
                 standard_death()
             break;
@@ -257,8 +287,8 @@ switch (enem_id) {
 
 #define standard_on_ledge()
 
-var off_r = !position_meet(bbox_right + 2, bbox_bottom + 4)
-var off_l = !position_meet(bbox_left - 2, bbox_bottom + 4)
+var off_r = !position_meet(bbox_right + 2, bbox_bottom + room_height)
+var off_l = !position_meet(bbox_left - 2, bbox_bottom + room_height)
 
 if ((off_r && hsp > 0) || (off_l && hsp < 0)) {
     return true;

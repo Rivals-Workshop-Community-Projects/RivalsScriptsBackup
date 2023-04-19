@@ -1,37 +1,21 @@
 // attack_update
 
 //B - Reversals
-if (/*attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_EXTRA_1 || */attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
 switch(attack)
 {
-    // Jump cancel Link Box
-    // case AT_NAIR:
-    // case AT_FAIR:
-    // case AT_BAIR:
-    // case AT_UAIR:
-    // case AT_DAIR:
-    case AT_FTILT:
-    case AT_DTILT:
-    case AT_UTILT:
-        if grov_link_jump && was_parried == false{
-            can_jump = true;
-        }
-        break;
-    
     case AT_JAB:
-        if (window == 4 && window_timer == 1)
-            hsp += (0*spr_dir);
-        else if (window == 7 && window_timer == 1)
-            hsp += (6*spr_dir);
+        if (window == 4 && window_timer == 1)       hsp += (0*spr_dir);
+        else if (window == 7 && window_timer == 1)  hsp += (6*spr_dir);
         break;
     case AT_DATTACK:
-        can_move = false
-        can_fast_fall = false
+        can_move = false;
+        can_fast_fall = false;
         set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
-        set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1)
+        set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
         
         if (window == 1){
             if window_timer < get_window_value(attack, window, AG_WINDOW_LENGTH)-1{
@@ -53,7 +37,7 @@ switch(attack)
         break;
     case AT_USTRONG:
         if (window == 3 || window == 4 || window == 5){
-            go_through = true
+            go_through = true;
         }
         break;
     case AT_NSPECIAL:
@@ -62,29 +46,6 @@ switch(attack)
             can_wall_jump = true;
             can_jump = true;
             can_shield = true;
-            // TEST
-            // if left_pressed{
-            //     if spr_dir == 1 grov_current_nspecial = 1
-            //     else grov_current_nspecial = 0
-            //     window = 3
-            //     window_timer = 0
-            // }
-            // else if right_pressed{
-            //     if spr_dir == 1 grov_current_nspecial = 0
-            //     else grov_current_nspecial = 1
-            //     window = 3
-            //     window_timer = 0
-            // }
-            // else if up_pressed{
-            //     grov_current_nspecial = 2
-            //     window = 3
-            //     window_timer = 0
-            // }
-            // else if down_pressed{
-            //     grov_current_nspecial = 3
-            //     window = 3
-            //     window_timer = 0
-            // }
             if left_down || left_stick_down{
                 if spr_dir == 1 select_nspecial(AT_NTHROW)
                 else select_nspecial(AT_FTHROW)
@@ -96,8 +57,8 @@ switch(attack)
             else if up_down || up_stick_down select_nspecial(AT_UTHROW)
             else if down_down || down_stick_down select_nspecial(AT_DTHROW)
             else if !special_down{
-                window = 3
-                window_timer = 0
+                window = 3;
+                window_timer = 0;
             }
         }
         break;
@@ -164,19 +125,17 @@ switch(attack)
             }
         }
         if window = 4{
-            can_fast_fall = false
-            can_move = false
-            can_wall_jump = true
+            can_fast_fall = false;
+            can_move = false;
+            can_wall_jump = true;
             set_attack_value(AT_FSPECIAL,AG_OFF_LEDGE,1)
             
-            // spr_angle = point_direction(x,y,grov_pouncex,grov_pouncey)
-            
-            fall_through = true
+            fall_through = true;
             
             if grov_pounce_foe_id != null{
-                grov_pouncex = grov_pounce_foe_id.x
-                grov_pouncey = grov_pounce_foe_id.y
-                if grov_pounce_foe_id.free grov_pouncey -= grov_pounce_foe_id.char_height/2
+                grov_pouncex = grov_pounce_foe_id.x;
+                grov_pouncey = grov_pounce_foe_id.y;
+                if grov_pounce_foe_id.free grov_pouncey -= 32;
             }
             
             var pounce_speed = 20;
@@ -213,7 +172,6 @@ switch(attack)
         else set_attack_value(AT_FSPECIAL,AG_OFF_LEDGE,0)
         break;
     case AT_USPECIAL:
-        // if window == 1 can_move = false
         can_fast_fall = false
         if (window == 2 && window_timer == 1) move_cooldown[AT_USPECIAL] = 9999;
         if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
@@ -221,16 +179,16 @@ switch(attack)
             if down_down set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -9);
             else if up_down set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -15);
         }
-        if window == 3 can_wall_jump = true
+        if window == 3 can_wall_jump = true;
         break;
     case AT_DSPECIAL:
-        can_move = false
-        can_fast_fall = false
-        fall_through = true
+        can_move = false;
+        can_fast_fall = false;
+        fall_through = true;
         
         if (window == 1 && window_timer == 1){
-            grov_dspecial_parryed = false
-            if !free && ground_type == 2 free = true
+            grov_dspecial_parryed = false;
+            if !free && ground_type == 2 free = true;
         }
         
         if window == 2{
@@ -242,7 +200,7 @@ switch(attack)
             }
             if !free downb_article_check()
         }
-        else grov_dspecial_loops = 0    
+        else grov_dspecial_loops = 0;
         
         if (window == 3 && window_timer == 0) destroy_hitboxes();
         
@@ -260,8 +218,7 @@ switch(attack)
         
         if (window == 5){
             if hitpause == false{
-                can_wall_jump = true
-                // spr_dir = grov_digdir
+                can_wall_jump = true;
                 if grov_digdir == 1 || grov_digdir == -1{
                     if !was_parried hsp = 8.5 * spr_dir;
                     vsp = -5.5;
@@ -282,9 +239,7 @@ switch(attack)
             else if window_timer == 1 grov_dspecial_parryed = false
         }
         
-        
         //RUNES
-        
         if has_rune("J"){
             if window == 1 || window == 3 || window == 6 invincible = true
         }
@@ -300,28 +255,23 @@ switch(attack)
                         window_timer = 0;
                     }
                     break;
-                    
                 case 2:
                     grov_dspecial_loops++
                     if grov_dspecial_loops < 4 window_timer = 0;
                     break;
-                    
                 case 3:
                     window++;
                     window_timer = 0;
                     break;
-                    
                 case 4:
                     window++;
                     window_timer = 0;
                     instance_create(x,y,"obj_article2")
                     break;
-                
                 case 5:
                     window = 8;
                     window_timer = 0;
                     break;
-                    
                 case 6:
                     window = 2;
                     window_timer = 0;
@@ -386,34 +336,26 @@ newdust.draw_angle = dfa;
 return newdust;
 
 #define downb_article_check
-window = 3
-window_timer = 0
+window = 3;
+window_timer = 0;
 
 with asset_get("obj_article_solid"){
-    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone{
-        other.window = 7;
-    }
+    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone  other.window = 7;
 }
 with asset_get("pillar_obj"){
-    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone{
-        other.window = 7;
-    }
+    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone  other.window = 7;
 }
 with asset_get("rock_obj"){
-    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone{
-        other.window = 7;
-    }
+    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone  other.window = 7;
 }
 
 #define select_nspecial(sel_nspecial)
 if move_cooldown[sel_nspecial] == 0{
-    set_attack(sel_nspecial)
+    set_attack(sel_nspecial);
     hurtboxID.sprite_index = get_attack_value(sel_nspecial, AG_HURTBOX_SPRITE);
-    // sound_play(sound_get("Menu_Select"))
 }
 else{
-    // sound_play(asset_get("mfx_tut_fail"))
-    sound_play(sound_get("Menu_Back"))
-    window = 3
-    window_timer = 0
+    sound_play(sound_get("Menu_Back"));
+    window = 3;
+    window_timer = 0;
 }

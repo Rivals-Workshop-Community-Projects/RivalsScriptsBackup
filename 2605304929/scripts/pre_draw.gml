@@ -8,6 +8,21 @@ if(state == PS_RESPAWN){
 	shader_end();
 }
 
+if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3){
+	switch(window){
+		case 1:
+		case 2:
+		case 3:
+			shader_start();
+			draw_sprite_ext(sprite_get("extra_3_behind"),image_index,x,y,spr_dir,1,0,c_white,1);
+			shader_end();
+		break;
+		
+		default:
+		break;
+	}
+}
+
 /* Disabled 3/18/22
 // afterimage  Code for Amateratsu
 if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amateratsu

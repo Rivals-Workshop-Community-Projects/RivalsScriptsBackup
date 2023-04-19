@@ -17,7 +17,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
 
 //upthwards
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 25);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -12);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
@@ -25,8 +25,8 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
 //endlag
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 
 set_num_hitboxes(AT_USPECIAL, 2);
 
@@ -44,7 +44,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 1, HG_EFFECT, 9);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_wind"));
-set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.1);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.12);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, -1)
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_GRAVITY, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -57,4 +57,4 @@ set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, wwisp_charge);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
-set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Wind projectiles are created every frame during Window 2. Wind lingers and inflicts curse.");
+set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Wind projectiles are created every third frame during Window 2. Wind lingers and inflicts Mummy.");

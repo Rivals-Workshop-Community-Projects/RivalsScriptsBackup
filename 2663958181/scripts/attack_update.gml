@@ -14,10 +14,10 @@ switch(attack){
                 }
                 break;
             case 2:
-                if window_timer == 24{
+                if (window_timer == 24 and !hitpause){
                     sound_play(asset_get("sfx_swipe_weak2"));
                 }
-                if window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) - 1{
+                if ((window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) - 1) and !hitpause){
                     if !taunt_down{
                         window = 3;
                         window_timer = 0;
@@ -29,19 +29,19 @@ switch(attack){
     case AT_TAUNT_2:
         switch(window){
             case 1:
-                if window_timer == 1{
+                if (window_timer == 1 and !hitpause){
                     shades_to_equip = 1;
                     /*
                     if attack_down{
                         shades_to_equip = 2;
                     }*/
                 }
-                if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2{
+                if ((window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2) and !hitpause){
                     sound_play(asset_get("sfx_blow_weak1"))
                 }
                 break;
             case 3:
-                if window_timer == 1{
+                if (window_timer == 1 and !hitpause){
                     if shades != 1{
                         sound_play(asset_get("mfx_star"));
                     } else {
@@ -49,15 +49,25 @@ switch(attack){
                     }
                 }
                 // Equip
-                if window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH){
+                if (window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) and !hitpause){
                     if shades < 1{
                         if shades_to_equip == 2{
                             shades = 2;
                         } else {
                             shades = 1;
+                            set_ui_element(UI_HUD_ICON, sprite_get("hud_hat"));
+                            set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_hat"));
+                            set_ui_element(UI_CHARSELECT, sprite_get("charselect_hat"));
+                            set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_hat"));
+                            set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_hat"));
                         }
                     } else {
                         shades = 0;
+                        set_ui_element(UI_HUD_ICON, sprite_get("hud_nohat"));
+                        set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_nohat"));
+                        set_ui_element(UI_CHARSELECT, sprite_get("charselect_nohat"));
+                        set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_nohat"));
+                        set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_nohat"));
                     }
                 }
                 break;
@@ -116,7 +126,7 @@ switch(attack){
         }
         switch(window){
             case 1:
-                if window_timer == 1{
+                if (window_timer == 1 and !hitpause){
                     hsp = (shift_speed * -spr_dir);
                     spr_dir *= -1;
                 }
@@ -126,14 +136,14 @@ switch(attack){
                 }
                 break;
             case 2:
-                if window_timer == 1{
+                if (window_timer == 1 and !hitpause){
                     spr_dir *= -1;
                 }
                 break;
             case 3:
                 break;
             case 4:
-                if window_timer == get_window_value(AT_NTHROW, 4, AG_WINDOW_LENGTH) - 1{
+                if ((window_timer == get_window_value(AT_NTHROW, 4, AG_WINDOW_LENGTH) - 1) and !hitpause){
                     if (left_down or right_down){
                         set_state(PS_DASH);
                         //spr_dir *= -1;
@@ -153,22 +163,22 @@ switch(attack){
         }
         break;
     case AT_DTILT:
-        if window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2{
+        if ((window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2) and !hitpause){
             sound_play(asset_get("sfx_watergun_splash"));
         }
         break;
     case AT_DSTRONG:
-        if window == 2 and window_timer == 1{
+        if ((window == 2 and window_timer == 1) and !hitpause){
             sound_play(asset_get("sfx_swish_medium"));
         }
         break;
     case AT_FSTRONG:
-        if window == 2 and window_timer == 1{
+        if ((window == 2 and window_timer == 1) and !hitpause){
             sound_play(asset_get("sfx_swipe_medium1"));
         }
         break;
     case AT_FAIR:
-        if window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2{
+        if ((window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2) and !hitpause){
             sound_play(asset_get("sfx_swish_medium"));
         }
         break;
@@ -179,11 +189,11 @@ switch(attack){
         }
         break;
     case AT_NSPECIAL:
-        if window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2{
+        if ((window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2) and !hitpause){
             sound_play(asset_get("sfx_swipe_weak1"));
         }
         if window == 3{
-            if window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) or window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) * 1.5{
+            if window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) or window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) * 1.5{ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
                 move_cooldown[AT_NSPECIAL] = 45;
                 move_cooldown[AT_NSPECIAL_AIR] = 45;
             }
@@ -197,11 +207,11 @@ switch(attack){
         } else {
             trigger_b_reverse();
         }
-        if window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2{
+        if ((window == 1 and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 2) and !hitpause){
             sound_play(asset_get("sfx_swipe_weak1"));
         }
         if window == 3{
-            if window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) or window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) * 1.5{
+            if ((window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) or window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) * 1.5) and !hitpause){
                 move_cooldown[AT_NSPECIAL] = 45;
                 move_cooldown[AT_NSPECIAL_AIR] = 45;
             }
@@ -229,7 +239,7 @@ switch(attack){
         
         switch(window){
             case 1:
-                if window_timer == 1{
+                if (window_timer == 1 and !hitpause){
                     clear_button_buffer(PC_SPECIAL_PRESSED);
                     can_escape = false;
                     hit_wall = false;
@@ -238,7 +248,7 @@ switch(attack){
                     sound_play(asset_get("sfx_spin"));
                     set_num_hitboxes(AT_FSPECIAL, 1);
                 }
-                if window_timer == 4{
+                if (window_timer == 4 and !hitpause){
                     if !special_down{
                         // CHECK
                         set_num_hitboxes(AT_FSPECIAL, 1);
@@ -246,10 +256,10 @@ switch(attack){
                         set_num_hitboxes(AT_FSPECIAL, 2);
                     }
                 }
-                if window_timer == 10 and get_num_hitboxes(attack) == 2{
+                if ((window_timer == 10 and get_num_hitboxes(attack) == 2) and !hitpause){
                     spawn_hit_fx((x + 6) * spr_dir, y - 15, 19);
                 }
-                if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1{
+                if ((window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1) and !hitpause){
                     sound_play(sound_get("sfx_fspecial_loop"), true, false);
                 }
                 break;
@@ -257,7 +267,7 @@ switch(attack){
                 // FUCK
                 move_cooldown[AT_FSPECIAL] = 60;
                 hsp = fspecial_speed * spr_dir;
-                if window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) - 1{
+                if ((window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) - 1) and !hitpause){
                     can_escape = true;
                 }
                 if place_meeting(x + 8 *spr_dir,y,asset_get("par_block")){
@@ -320,11 +330,11 @@ switch(attack){
         }
         switch(window){
             case 1:
-                if window_timer == 1{
+                if (window_timer == 1 and !hitpause){
                         reset_window_value(attack, 2, AG_WINDOW_HSPEED);
                         reset_window_value(attack, 2, AG_WINDOW_VSPEED);
                 }
-                if window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1{
+                if ((window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1) and !hitpause){
                     // check if holding back
                     if ((spr_dir == -1 and right_down) or (spr_dir == 1 and left_down)){
                         set_window_value(attack, 2, AG_WINDOW_HSPEED, 1);
@@ -350,13 +360,13 @@ switch(attack){
                 }
                 break;
             case 2:
-                if window_timer % 6 == 0{
+                if ((window_timer % 6 == 0) and !hitpause){
                     sound_play(sound_get("sfx_uspecial"))
                 }
                 break;
             case 3:
                 // spawn visual effect
-                if window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) - 6{
+                if ((window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH) - 6) and !hitpause){
                     spawn_hit_fx(x + 26 * spr_dir, y - 40, hfx_waterfallfinal)
                 }
                 break;
@@ -367,10 +377,10 @@ switch(attack){
         can_wall_jump = true;
         switch(window){
             case 2:
-                if window_timer == 14{
+                if (window_timer == 14 and !hitpause){
                     sound_play(sound_get("sfx_thunder"));
                 }
-                if window_timer == get_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH) - 1{
+                if ((window_timer == get_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH) - 1) and !hitpause){
                     // Create
                     raincloud = instance_create(x, round(get_stage_data(SD_TOP_BLASTZONE) / 3), "obj_article1");
                     raincloud.player_id = id;
@@ -381,7 +391,7 @@ switch(attack){
     case AT_DSPECIAL_2:
         can_fast_fall = false;
         can_wall_jump = true;
-        if window == 1 and raincloud != noone and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1{
+        if ((window == 1 and raincloud != noone and window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1) and !hitpause){
             if x > get_stage_data(SD_X_POS) and x < room_width - get_stage_data(SD_X_POS){
                 sound_play(asset_get("sfx_absa_cloud_send"))
                 raincloud.state = 2;
@@ -395,14 +405,14 @@ switch(attack){
             if window_timer >= 10{
                 can_jump = true;
             }
-            if window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) - 1{
+            if ((window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) - 1) and !hitpause){
                 if !special_down{
                     window = 3;
                     window_timer = 0;
                 }
             }
         }
-        if window == 3 and window_timer == 1{
+        if ((window == 3 and window_timer == 1) and !hitpause){
             // Cool
             if raincloud != noone{
                 raincloud.state = 1;
@@ -420,3 +430,12 @@ if (left_down && state_timer <= 5 && spr_dir == 1) || (right_down && state_timer
 } else if state_timer == 6 {
     attack_hasBReversed = false;
 }
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

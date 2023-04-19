@@ -45,6 +45,10 @@ if (instance_exists(sucked_player_obj)) {
 	}
 }
 
+if (instance_exists(gordo_held)) {
+    with (gordo_held) instance_destroy();   
+}
+
 with (obj_article3) {
     if (player_id == other.id) {
         state = 3;

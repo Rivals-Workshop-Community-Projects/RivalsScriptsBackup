@@ -54,7 +54,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_THROWS_ROCK, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("Hitsound"));
+set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_weak"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("meem"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);

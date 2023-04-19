@@ -141,7 +141,7 @@ if(has_rune("D") && state_timer == 1 && shotoTurnBuffer == 0)
 	set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 40);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 40);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 11);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 15);
 }
 
 if(has_rune("O"))
@@ -317,7 +317,7 @@ if(fishe >= 0)
 	fishe /= 1.1;
 #endregion
 
-//Taunt SFX
+/*/Taunt SFX
 if(taunt_down && window == 1 && window_timer == 1)
 {
 	if (attack == AT_NSPECIAL) { if(get_player_color(player) == 24) sound_play(sound_get("nspecial")); else sound_play(sound_get("hado")); }

@@ -17,6 +17,8 @@ currx = 0
 curry = 0
 currsprdir = 0
 
+cloned = 0
+
 fspechit = 0
 fspechit2 = 0
 AClone = noone

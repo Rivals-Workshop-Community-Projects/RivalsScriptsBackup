@@ -1,4 +1,3 @@
-
 if  (get_player_color(player) == 24) {
     if(start_predraw){
 //crash prevention line
@@ -12,6 +11,21 @@ maskHeader();
 maskMidder();
 var fx_image_index = get_gameplay_time() / 6;
     draw_sprite_tiled_ext(sprite_get("unknown"), fx_image_index, x, y, 1, 1, c_white, 1)
+maskFooter();
+    }
+}if  (get_player_color(player) == 25) {
+    if(start_predraw){
+//crash prevention line
+shader_end();
+maskHeader();
+    draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 0, c_white, 1); //change the 2*spr_dir and 2 to 1 if the character doesnt use small_sprites
+    with pHitBox if player_id == other && type == 2 {
+        draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 1, c_white, 1);
+    }
+
+maskMidder();
+var fx_image_index = get_gameplay_time() / 6;
+    draw_sprite_tiled_ext(sprite_get("rumor"), fx_image_index, x, y, 1, 1, c_white, 1)
 maskFooter();
     }
 }

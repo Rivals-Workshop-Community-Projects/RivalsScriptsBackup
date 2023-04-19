@@ -1,3 +1,5 @@
+if state == PS_PRATFALL can_fast_fall = 1;
+
 //Amber hug compatibility
 if (amber_startHug == true) //Amber will set this bool to true when this player accepts the hug
 {

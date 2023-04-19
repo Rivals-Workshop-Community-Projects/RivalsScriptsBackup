@@ -47,6 +47,7 @@ sprite_change_offset("fstrong", 156, 190);
 sprite_change_offset("ustrong", 144, 190);
 sprite_change_offset("dstrong", 132, 190);
 sprite_change_offset("nspecial", 132, 190);
+sprite_change_offset("nspecial2", 132, 168);
 sprite_change_offset("fspecial", 132, 190);
 sprite_change_offset("uspecial", 132, 190);
 sprite_change_offset("dspecial", 132, 190);

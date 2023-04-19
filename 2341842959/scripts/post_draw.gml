@@ -8,7 +8,7 @@ draw_debug_text( x+50, y - 20, string(corG));
 
 draw_debug_text( x+50, y - 1, string(corB)); */
 
-print(charge);
+
 
 shader_start();
 

@@ -1,13 +1,29 @@
-muno_event_type = 6;
-user_event(14);
 if get_player_color(player) == 0 {
+	draw_sprite(sprite_get("hud_default_charselect_fix"),0,x + 24,y + 14);
 	set_ui_element(UI_HUD_ICON, sprite_get("hud_default_hud"));
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_default_hurt"));
 	set_ui_element(UI_OFFSCREEN, sprite_get("hud_default_offscreen"));
 	set_ui_element(UI_CHARSELECT, sprite_get("hud_default_charselect"));
 	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_default_result_small"));
 	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_default_portrait"));
+}else if get_player_color(player) == 10{
+	draw_sprite(sprite_get("hud_alt1_charselect_fix"),0,x + 24,y + 14);
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_alt1_hud"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_alt1_hurt"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("hud_alt1_offscreen"));
+	set_ui_element(UI_CHARSELECT, sprite_get("hud_alt10_charselect"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_alt10_result_small"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt10_portrait"));
+}else if get_player_color(player) == 11{
+	draw_sprite(sprite_get("hud_alt1_charselect_fix"),0,x + 24,y + 14);
+	set_ui_element(UI_HUD_ICON, sprite_get("hud_alt1_hud"));
+	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_alt1_hurt"));
+	set_ui_element(UI_OFFSCREEN, sprite_get("hud_alt1_offscreen"));
+	set_ui_element(UI_CHARSELECT, sprite_get("hud_alt11_charselect"));
+	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_alt11_result_small"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt11_portrait"));
 }else{
+	draw_sprite(sprite_get("hud_alt1_charselect_fix"),0,x + 24,y + 14);
 	set_ui_element(UI_HUD_ICON, sprite_get("hud_alt1_hud"));
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hud_alt1_hurt"));
 	set_ui_element(UI_OFFSCREEN, sprite_get("hud_alt1_offscreen"));
@@ -15,6 +31,9 @@ if get_player_color(player) == 0 {
 	set_ui_element(UI_WIN_SIDEBAR, sprite_get("hud_alt1_result_small"));
 	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_portrait"));
 }
+muno_event_type = 6;
+user_event(14);
+
 
 var alt_cur = get_player_color(player);
 var draw_index;

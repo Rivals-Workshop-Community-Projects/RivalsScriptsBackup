@@ -75,6 +75,15 @@ if my_hitboxID.attack == AT_USPECIAL //and whatever other conditions you want
   hit_effect.depth = depth - 4;
 }
 
+if my_hitboxID.attack == AT_DSTRONG_2
+{
+  //var hit_effect = spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-35,myonhit);
+  //hit_effect.depth = depth - 4;
+  	//phantom.state = 8;
+	//phantom.state_timer = 0;
+	//phantom.following = hit_player_obj;
+}
+
 
 
 if (my_hitboxID.attack == AT_FSPECIAL) {
@@ -95,7 +104,7 @@ if (my_hitboxID.attack == AT_DATTACK) {
 }
 
 if (my_hitboxID.attack == AT_FSTRONG) {
-    set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 15);
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 13);
 }
 
 if (voice_mode && (my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR)) {

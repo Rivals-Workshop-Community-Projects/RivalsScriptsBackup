@@ -1,7 +1,11 @@
 //Jab
 if (attack == AT_JAB){
+	if (window == 1 && window_timer == 2){
+		jab_parried = false;
+	}
 	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		spawn_base_dust( x + (40 * spr_dir), y, "walk", spr_dir*-1)
+		spawn_base_dust( x + (28 * spr_dir), y, "dattack", spr_dir*-1);
+		// windbox rune
 		if(windRune){
 			for (var i = 0; i < 6; i++){
 				spawn_base_dust( (x + (24+(i*6)) * spr_dir), y-(i*7), "wavedash", spr_dir*-1);
@@ -34,10 +38,11 @@ if (attack == AT_JAB){
 	}
 	clamp(hsp, -3, 3)
 	can_move = true;
+	hsp = clamp(hsp, -5.2, 5.2);
 	if (left_down && !right_down){
-		hsp += -0.5;
+		hsp += -0.5 - (jabRune * 0.52);
 	} else if (!left_down && right_down){
-		hsp += 0.5;
+		hsp += 0.5 + (jabRune * 0.52);
 	}
 }
 
@@ -71,7 +76,7 @@ if (attack == AT_DTILT){
 	if (window == 1){
 		clear_button_buffer(PC_ATTACK_PRESSED);
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x - (10 * spr_dir), y, "dash_start", spr_dir);
+			spawn_base_dust( x - (10 * spr_dir), y, "dattack", spr_dir);
 			clear_button_buffer(PC_ATTACK_PRESSED);
 		}
 	}
@@ -142,7 +147,7 @@ if (attack == AT_FSTRONG){
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (34 * spr_dir), y, "dash_start", spr_dir*-1)
-			spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
+			spawn_base_dust( x - (-6 * spr_dir), y, "dattack", spr_dir)
 			hsp = 2.6*spr_dir;
 			
 			if(windRune){
@@ -178,6 +183,9 @@ if (attack == AT_USTRONG){
 	if (window == 2){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (8 * spr_dir), y, "dash_start", spr_dir*-1)
+			if (ustrongJumpRune){
+				vsp = -7.2 - (strong_charge / 11);
+			}
 		}
 	}
 	if (window == 4){
@@ -363,6 +371,14 @@ if (attack == AT_FSPECIAL){
 //Up Special: Cleaning ChuChu
 if (attack == AT_USPECIAL){
 	can_wall_jump = true;
+	// rune
+	if (uspecialBoostRune && window > 1 && has_hit && !hitpause){
+		can_attack = true;
+		if (attack_pressed || (up_stick_pressed || down_stick_pressed || left_stick_pressed || right_stick_pressed)){
+			sound_stop(sfx_star_allies_clean_chuchu);
+			sound_play(sfx_star_allies_clean_chuchu_end);
+		}
+	}
     if (window == 1){
 		hsp *= 0.75;
 		vsp *= 0.75;
@@ -546,6 +562,14 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+	
+	case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
+    case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
+    case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
+    case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
+    case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
+    case "doublejump_small": dlen = 21; dfx = 16; dfg = 0; break;
+    case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx; //set the fx id
@@ -554,3 +578,5 @@ newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+
+//--------------------------------------------

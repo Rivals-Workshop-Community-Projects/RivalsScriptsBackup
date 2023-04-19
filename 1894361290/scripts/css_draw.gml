@@ -35,6 +35,12 @@ if get_player_color(player) = 13 {
 }
 init_shader();
 
+//copyright option
+if custom_slot && !mute_lockout {
+    draw_sprite_ext(sprite_get("_mute"), mute, x+icon_x, y+icon_y, 1, 1, 0, c_white, 1)
+    draw_sprite_ext(sprite_get("_icon_box"), 0, x+icon_x, y+icon_y, 1, 1, 0, icon_hovering ? c_white : c_black, 1)
+}
+
 
 var temp_x = x + 8;
 var temp_y = y + 9;
@@ -43,7 +49,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 16;
+var num_alts = 17;
 var alt_cur = get_player_color(player);
  
  
@@ -66,12 +72,13 @@ alt_name[12] = "Early Access";
 alt_name[13] = "Rainbow";
 alt_name[14] = "Player 2";
 alt_name[15] = "Wrastor";
+alt_name[16] = "Genesis";
  
  
  
 //Patch
  
-draw_set_halign(fa_left);
+//draw_set_halign(fa_left);
  
 //textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
  
@@ -98,7 +105,7 @@ textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
  
 //munophone
-user_event(12);
+//user_event(12);
  
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

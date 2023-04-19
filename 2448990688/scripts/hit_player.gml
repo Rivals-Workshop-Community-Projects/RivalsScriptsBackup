@@ -29,7 +29,10 @@ if(my_hitboxID.attack == AT_FAIR){
     old_hsp = 0;
 }
 
-
+if(my_hitboxID.attack == AT_DTILT){
+    old_vsp = -5;
+    old_hsp = 3;
+}
 
 if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
     if(my_hitboxID.attack == AT_FSPECIAL and my_hitboxID.hbox_num < 6){

@@ -1,17 +1,44 @@
-is_oc = false;
+//Oc or not but so I can copy init without any bad things happening.
 
+user_event(8);
+should_show_plat = false;
+is_training_mode = false;
+//Cosmetics
+set_victory_bg( sprite_get( "bg" ));
+if (is_oc) {
+	pot_compat_variable = sprite_get("food");
+	pot_compat_text = "'The Best Pizza in Town'";
+	if (!get_synced_var(player)) {
+		set_victory_theme( sound_get( "victory" ));
+	} else {
+		set_victory_theme( sound_get( "old_victory" ));
+	}
+} else {
+		set_victory_theme( sound_get( "victory" ));
+	//pot_compat_variable = sprite_get("food");
+	//pot_compat_text = "X";
+}
+//test_var = false;
+//
 dash_fx = hit_fx_create( sprite_get("fspecial_dash"), 6)
 pizza_fx = hit_fx_create( sprite_get("pizza_vfx"), 30)
+big_pizza_fx = hit_fx_create( sprite_get("pizza_big"), 45)
+small_pizza_fx = hit_fx_create( sprite_get("pizza_small"), 18)
+med_leek_fx = hit_fx_create( sprite_get("vfx_leek_med"), 30)
+
 leak_proj = -4;
 miku_clone = -4;
 clone_attack_hold = false;
 clone_attack_hold_type = 0;
 fspecial_reset = 0; //Clone Throw Rune
+//Fspecial Speed - Note that ground will be higher than air due to friction
+fspecial_speed_air = 8;
+fspecial_speed_ground = 12;
+fspecial_once_cooldown = 3600;
 //Uspecial turnaround on hit
 uspecial_dir = -4;
 uspecial_can_turn = false;
 uspecial_will_turn = false;
-
 //Rioku's Neutral Strong code
 //Strong buffer stuff so you can have a neutral strong press
 strong_buffer = 0;
@@ -20,12 +47,15 @@ strong_was_pressed = false;
 
 if (object_index != oTestPlayer){ //Code to stop crashing in test player
 	if (!custom_clone) {
+		clone_player = -4;
 		custom_clone = false;
 		clone_player = instance_create(x,y, "oPlayer");
 		clone_player.clone_owner = id
 		clone_player.x = x;
 		clone_player.y = y;
 	} else {
+		malsick_immune = true;
+		wally_static_enabled = false;
 		clone_attack = 0;
 		clone_active = 0;
 		custom_clone = true;
@@ -33,6 +63,10 @@ if (object_index != oTestPlayer){ //Code to stop crashing in test player
 } else {
 	clone_player = -4;
 }
+
+//new clone variables
+clone_got_hit = false;
+clone_hit_timer = 0;
 
 color_r = 255;
 color_b = 0;
@@ -44,7 +78,7 @@ b_reversed_nspecial = false;
 
 if (!is_oc) {
 	sfx_veg_light1 = asset_get("sfx_syl_nspecial_flowerhit");
-	sfx_veg_light2 = asset_get("sfx_syl_ustrong_part3")
+	sfx_veg_light2 = asset_get("sfx_leafy_hit1")
 	sfx_veg_med1 = asset_get("sfx_syl_ustrong");
 	sfx_veg_med2 = asset_get("sfx_syl_ustrong_part3");
 	sfx_veg_heavy1 = sound_get("veg_heavy");
@@ -53,9 +87,12 @@ if (!is_oc) {
 	sfx_wet_med = sound_get("splat1");
 	sfx_wet_heavy = sound_get("splat2");
 	//
-	leak_vfx_small = HFX_MAY_LEAF_SMALL;
+	leak_vfx_small = HFX_MAY_LEAF_BIG;
 	leak_vfx_huge = HFX_MAY_LEAF_HUGE;
-	leak_vfx_big = HFX_MAY_LEAF_BIG;
+	leak_vfx_big = med_leek_fx;
+	//leak_vfx_small = HFX_MAY_LEAF_SMALL;
+	//leak_vfx_huge = HFX_MAY_LEAF_HUGE;
+	//leak_vfx_big = HFX_MAY_LEAF_BIG;
 	clone_create_sfx = asset_get("sfx_mobile_gear_deploy");
 	taunt_sfx = sound_get("popipo");
 } else {
@@ -69,16 +106,32 @@ if (!is_oc) {
 	sfx_wet_med = sound_get("splat1");
 	sfx_wet_heavy = sound_get("splat2");
 	//
-	leak_vfx_small = HFX_MAY_LEAF_SMALL;
-	leak_vfx_huge = HFX_MAY_LEAF_HUGE;
+	leak_vfx_small = small_pizza_fx;
+	leak_vfx_huge = big_pizza_fx;
 	leak_vfx_big = pizza_fx;
 	clone_create_sfx = asset_get("sfx_mobile_gear_deploy");
-	taunt_sfx = sound_get("popipo");
+	taunt_sfx = asset_get("sfx_swipe_weak1");
 }
 
 
-set_victory_bg( sprite_get( "bg" ));
-set_victory_theme( sound_get( "victory" ));
+//Grab/Throws
+
+AT_GRAB = 40;
+AT_GRAB_HOLD = 41;
+AT_PUMMEL = 42;
+AT_FTHROW_2 = 43;
+AT_DTHROW_2 = 44;
+AT_BTHROW_2 = 45;
+AT_UTHROW_2 = 46;
+
+grabbed_obj = -4;
+pummel_count = 2;
+//grab_type = "strong";
+grab_type = "nspecial";
+//grab_type = "fspecial";
+
+//
+
 
 //
 
@@ -98,13 +151,13 @@ walk_speed = 4.5;
 walk_accel = .5;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 8.5;
-dash_speed = 7;
-dash_turn_time = 6;
-dash_turn_accel = 2;
+initial_dash_speed = 7.5;
+dash_speed = 6.5;
+dash_turn_time = 10;
+dash_turn_accel = 1;
 dash_stop_time = 6;
 dash_stop_percent = .30; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .4;
+ground_friction = .55;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
@@ -133,7 +186,7 @@ land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_friction = .15; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -204,11 +257,11 @@ rune_sentience = 			has_rune("N");
 rune_clairen = 				has_rune("O");
 
 
-if has_rune("I") {
+if rune_friction {
 	ground_friction = .1;
 }
 
-
-
-
-
+//Test Player viewer
+spr_shapes = [sprite_get("boxCircle"), sprite_get("boxSquare"), sprite_get("boxRound"), sprite_get("arrow")]
+test_frame_advance = false;
+window_reset = true;

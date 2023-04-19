@@ -1,6 +1,11 @@
 //article2_init.gml
 //minun's projectile. it's much more fancy than plusle's one.
 
+//* hey, you. if you're looking for a multi-hit projectile script to steal, 
+//  consider using this one instead:
+//  https://github.com/Menace13/RoA-Workshop-Templates/blob/master/Templates/Attacks/multi_hit_projectile.md
+//  it's simpler than the solution I used for Minun, and it doesn't require an article either.
+
 // constants
 max_hitbox_respawn_time = 5;
 max_exist_timer = 150;

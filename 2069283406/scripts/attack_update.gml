@@ -255,7 +255,7 @@ if attack == AT_FSTRONG{
 
 if attack == AT_DSTRONG {
 	
-	if state_timer <= 1 {
+	if state_timer <= 1 && get_gameplay_time() > 120 {
 		if left_down && !right_down {
             hsp = -7
 		}
@@ -655,6 +655,7 @@ if attack == AT_NSPECIAL{
 	if window == 3 && firerange > 0 && inrange  {
 
 		move_cooldown[AT_FSPECIAL_AIR] = 999
+       
 
 		
 		move_cooldown[AT_TAUNT_2] = 15
@@ -699,7 +700,13 @@ if attack == AT_NSPECIAL{
 	    x += 6
 	} 	
 	
-		
+		        if hit_player_obj.state == PS_RESPAWN or hit_player_obj.state == PS_DEAD {
+        	hsp /= 4
+        	vsp = -9
+        	set_state(PS_IDLE_AIR)
+        	djumps = 0
+        	spawn_hit_fx(x,y,302)
+        }
 		
 	}
 	

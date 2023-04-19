@@ -69,6 +69,29 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, false);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
 
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_X, 60);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 75);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 75);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 5);
+set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 3);
+set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 60);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_DSPECIAL, 3, HG_EXTRA_HITPAUSE, 5);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, sound_get("pokken_ball_hit"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, false);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
+
 /*
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 99);

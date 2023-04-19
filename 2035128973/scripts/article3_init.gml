@@ -17,3 +17,4 @@ ignores_walls = true;
 dieTime = 10;
 
 player_id.boneObj = id;
+Pocketable = false;

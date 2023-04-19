@@ -25,7 +25,7 @@ if attack == AT_NSPECIAL && hbox_num == 1{
 
 	if state == 1{							//SMOKE IDLE
 		//MULTIHIT
-		refresh_time = 20;
+		refresh_time = 22;
 		if (hitbox_timer % refresh_time == 0) for ( var i =1; i<20; i++) {
 			can_hit[i] = 1;
 		}

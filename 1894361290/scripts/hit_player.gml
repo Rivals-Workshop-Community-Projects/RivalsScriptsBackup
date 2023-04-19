@@ -19,6 +19,10 @@ if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3 {
 }
 */
 
+if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1 {
+    sound_play(sound_get("wt_impact"))
+}
+
 
 //damage bonus
 var wt_attacks = [AT_JAB, AT_FTILT, AT_DTILT, AT_UTILT, AT_UAIR, AT_FAIR, AT_DAIR, AT_FSPECIAL, AT_USPECIAL];

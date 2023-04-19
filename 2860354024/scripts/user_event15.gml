@@ -121,6 +121,8 @@ case 4:
 	//Settings tab data
 	extras_arr = [
 	[1, "--Training Settings--"],
+	[3, "Frame Data Display"		, false		, "Show Frame Data 
+														for moves performed"],
 	[3, "Extend CPU Parry"		, false		, "CPU Parries will be 
 												extended for easier testing"],
 	[4, "Reset Damage Frame"		, 0			, 120,"CPUs will reset damage after this
@@ -183,7 +185,7 @@ case 4:
 	
 	
 	
-
+if (get_training_cpu_action() != CPU_FIGHT || get_gameplay_time() == 1){
 	
 #region Settings Variables
 /* --SETTINGS/CHEATS CODE HERE-- 
@@ -196,7 +198,7 @@ no_selfdmg = get_tab_setting("No Self Damage", extras_arr);
 max_ammo = get_tab_setting("Max Ammo", extras_arr);
 dmg_reset_frame = get_tab_setting("Reset Damage Frame", extras_arr);
 tab_demo_active = get_tab_setting("Movelist Demo", extras_arr);
-
+tab_frame_disp = get_tab_setting("Frame Data Display", extras_arr);
 
 
 
@@ -204,6 +206,7 @@ tab_demo_active = get_tab_setting("Movelist Demo", extras_arr);
 tab_can_type = get_tab_setting("Typing", extras_arr);
 
 #endregion
+}
 
 
 //Spawn Dummy
@@ -223,6 +226,84 @@ case 1:
 //DO NOT TOUCH ANYTHING HERE
 	//Drawing Tablet Code
 	shader_end();
+	
+	
+	
+	    //framedata
+    if ("tab_frame_disp" in self){
+	    if (tab_frame_disp){
+	    		
+	    		camera_x = ceil(view_get_xview());
+				camera_y = ceil(view_get_yview());
+	    	
+				var tab_start_x = camera_x + 250; 
+				var tab_start_y = camera_y + 36;
+				
+				draw_set_alpha(0.4);
+				draw_rectangle_colour(tab_start_x - 2, camera_y + 47,tab_start_x + (8 * 60), camera_y + 73, c_black, c_black, c_black, c_black, false);
+				draw_set_alpha(1);
+				
+	    	    for (i = 59; i >= 0; i--){
+	
+	    	    		if (framedata_arr[i][0] != noone){
+	    	    			
+	    	    			if (framedata_arr[i][3] == 1)
+	    	    			draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + (8 * i) - 1, camera_y + 50 - 2, 2.8, 2.4, 0, c_white, 0.5);
+	    	    			
+	    	    			if (framedata_arr[i][3] == 2)
+	    	    			draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + (8 * i) - 1, camera_y + 50 - 2, 2.8, 2.4, 0, c_aqua, 0.5);
+	    	    			
+	    	    			
+		    				draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 8 * i, camera_y + 50, 2, 2, 0, framedata_arr[i][0], 1);
+							
+
+							
+							if (i < 60){
+								if (framedata_arr[i][0] != framedata_arr[i+1][0]){
+									draw_text_outline(tab_start_x + 4 + (8 * (i)),tab_start_y, framedata_arr[i][1] + 1, asset_get("fName"), fa_right, fa_top, framedata_arr[i][0], c_black);
+								}
+							}
+					    	
+		    			}
+	    		}
+	    	
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 8, camera_y + 80, 2, 2, 0, c_blue, 1);	
+	    	draw_text_outline(tab_start_x + 20, camera_y + 86,"Startup", asset_get("fName"), fa_left, fa_top, c_white, c_black);
+	    	
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 108, camera_y + 80, 2, 2, 0, c_red, 1);	
+	    	draw_text_outline(tab_start_x + 120, camera_y + 86,"Active", asset_get("fName"), fa_left, fa_top, c_white, c_black);
+	    	
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 208, camera_y + 80, 2, 2, 0, c_yellow, 1);	
+	    	draw_text_outline(tab_start_x + 220, camera_y + 86,"Recovery", asset_get("fName"), fa_left, fa_top, c_white, c_black);
+	    	
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 308, camera_y + 80, 2, 2, 0, c_olive, 1);	
+	    	draw_text_outline(tab_start_x + 320, camera_y + 86,"Landing Recovery", asset_get("fName"), fa_left, fa_top, c_white, c_black);
+	    	
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 8, camera_y + 110, 2, 2, 0, c_orange, 1);	
+	    	draw_text_outline(tab_start_x + 20, camera_y + 116,"Cancellable", asset_get("fName"), fa_left, fa_top, c_white, c_black);
+	    	
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 108, camera_y + 110, 2, 2, 0, c_green, 1);	
+	    	draw_text_outline(tab_start_x + 120, camera_y + 116,"Actionable", asset_get("fName"), fa_left, fa_top, c_white, c_black);
+	    	
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 208 - 1, camera_y + 110 - 2, 2.8, 2.4, 0, c_white, 0.8);
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 208, camera_y + 110, 2, 2, 0, c_dkgray, 1);	
+	    	draw_text_outline(tab_start_x + 220, camera_y + 116,"Invincible", asset_get("fName"), fa_left, fa_top, c_white, c_black);
+	    	
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 308 - 1, camera_y + 110 - 2, 2.8, 2.4, 0, c_aqua, 0.8);
+	    	draw_sprite_ext( sprite_get("frame_unit"), 0, tab_start_x + 308, camera_y + 110, 2, 2, 0, c_dkgray, 1);	
+	    	draw_text_outline(tab_start_x + 320, camera_y + 116,"Projectile Invincible", asset_get("fName"), fa_left, fa_top, c_white, c_black);
+	    }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
     if (list_open){
 
 
@@ -308,7 +389,8 @@ case 1:
         }
 
     }
-
+    
+    
 
 	
 
@@ -619,6 +701,30 @@ break;
 
 case 3:
 //DO NOT TOUCH ANYTHING HERE
+if ("tab_frame_disp" in self){
+	if (tab_frame_disp){
+		for (i = 0; i < 60; i++){
+	    framedata_arr[@i][@0] = noone;
+	    }
+	
+		tab_last_window = 0;
+		for (i = 0; i <= get_num_hitboxes(attack); i++){
+			
+			if (get_hitbox_value(attack, i, HG_WINDOW) > tab_last_window){
+				tab_last_window = get_hitbox_value(attack, i, HG_WINDOW);
+			}
+			
+		}
+	
+		tab_current_frame = 0;
+		tab_frame_type = 0;
+		tab_prev_hboxnum = 0;
+		tab_loop_frames = 0;
+		tab_loop_timer = 0;
+		tab_type_timer = 0;
+	}
+}
+
     if (attack == AT_TAUNT && get_training_cpu_action() != CPU_FIGHT && !down_down && !instance_exists(oTestPlayer)){
         if (get_gameplay_time() >= 60 * 2)
         attack = 40;

@@ -234,6 +234,14 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.77", "5th october 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Added crown sprite to most animations when using King Blob or KoB alts");
+
+initPatch("1.76", "5th october 2022");
+initHeader("Buffs");
+initSection("- Blue Blob can now taunt in the air, and he now has 2 new taunts (side taunt and down taunt). Credit to Skycrafter for making the taunts");
+
 initPatch("1.75", "18th August 2022");
 initHeader("Buffs");
 initSection("- Jab3 kbs increased (0.5->0.9) to kill better, and does more damage (5->8)");

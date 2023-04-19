@@ -8,7 +8,12 @@ if (my_hitboxID.attack==AT_USTRONG){
 	//}
 }
 if (my_hitboxID.attack==AT_DSPECIAL){
+	if (my_hitboxID.hbox_num==1){
+		dspeccancel = true;
+	}
 	if (my_hitboxID.hbox_num==2){
+		dspeccancel = false;
+		
 		if (joycon_drift = "off"){
 			joycon_drift_timer = drift_on_duration;
 		}
@@ -28,6 +33,7 @@ if (my_hitboxID.attack==AT_USPECIAL){
 		//hit_player_obj.x = hit_player_obj.x-(sign(hit_player_obj.x-my_hitboxID.x)*3)
 	}
 }
+
 
 //csnw sfx layering
 switch(my_hitboxID.attack){

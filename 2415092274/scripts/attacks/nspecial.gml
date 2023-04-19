@@ -86,7 +86,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);//.68
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.0);//.21
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 8);//2
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.75);//.9//0.4
-set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, tackle_hfx2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("DST1"));
 
 

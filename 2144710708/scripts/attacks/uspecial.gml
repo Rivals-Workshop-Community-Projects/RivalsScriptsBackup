@@ -60,7 +60,6 @@ set_hitbox_value(AT_USPECIAL, 1, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_uair"));
 
 // abyss rune
-set_hitbox_value(AT_USPECIAL, 2, AG_MUNO_ATTACK_EXCLUDE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 404);
 set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 7);
@@ -96,7 +95,6 @@ set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 
 
 // blast damage from smb bomb (abyss rune)
-set_hitbox_value(AT_USPECIAL, 3, AG_MUNO_ATTACK_EXCLUDE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 2);
 //set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 7);

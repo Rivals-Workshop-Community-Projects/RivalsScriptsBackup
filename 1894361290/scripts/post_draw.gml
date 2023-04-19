@@ -1,12 +1,17 @@
 //post-draw
 
 if holding_wt {
+    var _col = c_white;
     switch state {
         case PS_JUMPSQUAT: wt_sprite = sprite_get("jumpstart_wt") break;
         case PS_FIRST_JUMP: if state_timer > 0 {wt_sprite = sprite_get("jump_wt")} break;
         case PS_LAND: case PS_PRATLAND: wt_sprite = sprite_get("land_wt") break;
         case PS_LANDING_LAG: wt_sprite = sprite_get("landinglag_wt") break;
         case PS_IDLE_AIR: wt_sprite = sprite_get("jump_wt") break;
+    }
+    
+    if state == PS_PRATFALL || state == PS_PRATLAND {
+        _col = c_gray;
     }
     
     if sprite_index == sprite_get("roll_forward") {wt_sprite = sprite_get("roll_forward_wt")}
@@ -19,7 +24,7 @@ if holding_wt {
     else if sprite_index == sprite_get("tech") {wt_sprite = sprite_get("tech_wt")}
     
     shader_start();
-    draw_sprite_ext(wt_sprite, image_index, x, y, spr_dir, 1, 0, c_white, 1);
+    draw_sprite_ext(wt_sprite, image_index, x, y, spr_dir, 1, 0, _col, 1);
     shader_end();
 } else if draw_non {
     if attack == AT_DSPECIAL {
@@ -43,4 +48,4 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
 }
 
 //munophone
-user_event(12);
+//user_event(12);

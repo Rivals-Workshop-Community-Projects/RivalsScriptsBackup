@@ -45,7 +45,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .45;
-knockback_adj = .95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
@@ -106,6 +106,7 @@ dspec_sprite2 = sprite_get("dspecial_hotel");
 dspec_sprite3 = sprite_get("dspecial_bank");
 
 alt = get_player_color(player);
+kewtmode = 0;
 if(alt != 0){
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_golden_alts"));
 	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("property_alts"));
@@ -115,9 +116,7 @@ if(alt != 0){
 	dspec_sprite2 = sprite_get("dspecial_hotel_alts");
 	dspec_sprite3 = sprite_get("dspecial_bank_alts");
 }
-if(alt == 19){ //dan
-	
-}else if(alt == 12 || alt == 13 || alt == 16){ //matthew, TL, katie
+if(alt == 12 || alt == 13 || alt == 17){ //matthew, TL, katie
 	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_planet"));
 	dice_sprite1 = sprite_get("nspecial_dice_planet");
 	dice_sprite2 = sprite_get("nspecial_dice_planet2");
@@ -128,7 +127,10 @@ if(alt == 19){ //dan
 	dspec_sprite1 = sprite_get("dspecial_oarly");
 	dspec_sprite2 = sprite_get("dspecial_hotel_oarly");
 	dspec_sprite3 = sprite_get("dspecial_bank_oarly");
-}else if(alt == 14){ //oarly
+	kewtmode = 2;
+}else if(alt == 14 || alt == 15 || alt == 16){ //oarly, oarluis, pasino
+	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden"));
 	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("property_oarly"));
 	dspec_sprite1 = sprite_get("dspecial_oarly");
 	dspec_sprite2 = sprite_get("dspecial_hotel_oarly");
@@ -139,14 +141,14 @@ if(alt == 19){ //dan
 	dice_sprite2 = sprite_get("nspecial_dice_bomb2");
 	dice_sprite3 = sprite_get("nspecial_dice_bomb3");
 	//set_victory_theme(sound_get("morshu_win"));
-}else if(alt == 18 || alt == 25){ //wario, mario
+}else if(alt == 19 || alt == 25 || alt == 26 || alt == 27){ //wario, mario, toadsworth, cranky
 	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_mario"));
 	dice_sprite1 = sprite_get("nspecial_dice_mario");
 	dice_sprite2 = sprite_get("nspecial_dice_mario2");
 	dice_sprite3 = sprite_get("nspecial_dice_mario3");
 	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_mario"));
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_mario_golden"));
-}else if(alt == 24 || alt == 28){ //ice king, snow miser
+}else if(alt == 24 || alt == 30){ //ice king, snow miser
 	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_ice"));
 	dice_sprite1 = sprite_get("nspecial_dice_ice");
 	dice_sprite2 = sprite_get("nspecial_dice_ice2");
@@ -160,14 +162,14 @@ if(alt == 19){ //dan
 	dspec_sprite1 = sprite_get("dspecial_ice");
 	dspec_sprite2 = sprite_get("dspecial_hotel_ice");
 	dspec_sprite3 = sprite_get("dspecial_bank_ice");
-}else if(alt == 27){ //dbzr
+}else if(alt == 29){ //dbzr
 	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_dbz"));
 	dice_sprite1 = sprite_get("nspecial_dice_dbz");
 	dice_sprite2 = sprite_get("nspecial_dice_dbz2");
 	dice_sprite3 = sprite_get("nspecial_dice_dbz3");
 }
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, dice_sprite1);
-if(alt == 5 || alt == 17 || alt == 23 /*|| alt == 23*/){ //alts that need special dice for visibility
+if(alt == 5 || alt == 18 || alt == 23 /*|| alt == 23*/){ //alts that need special dice for visibility
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_dice_alts"));
 }
 
@@ -218,6 +220,10 @@ DairBounce = 0;
 VerySkillful = true;
 current_money = 15000;
 current_money2 = 15000;
+income_boost = 1;
+discount = 1;
+discount_stocks = 0;
+tauntmoney = 0;
 notmuchtimeleft = 0;
 diedienow = 0;
 diedienowP1 = false;
@@ -237,6 +243,9 @@ finalsmashnum = 0;
 finalsmashtimer = 0;
 
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
+//runeK = true;runesUpdated = true;
+crit = false;
+runesUpdated2 = false;
 
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = 7;
@@ -245,8 +254,8 @@ miiverse_post = sprite_get("miiverse_post");
 wily_robotmaster_img = sprite_get("Wily_Castle");
 //guiltySprite = sprite_get("trialgrounds");
 //tcoart = sprite_get("tcoart");
-//gfzsignspr = sprite_get("greenflowerzone");
-//gfzsignsfx = sound_get("taunt");
+gfzsignspr = sprite_get("greenflowerzone");
+gfzsignsfx = sound_get("very skillful");
 //nname = "character name"
 ncode1 = "The richest man in the world!";
 ncode2 = "He's feeling very lucky today. Very skillful!";

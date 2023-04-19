@@ -50,3 +50,4 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 36);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("slash2"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);

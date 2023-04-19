@@ -9,6 +9,7 @@ if(state_cat == SC_HITSTUN){
 	taxiLanded = false;
 	taxiAirStart = false;
 	hyperJump = false;
+	leafBlower = false;
 	if(char_height != 44){
 		char_height = 44;
 	}

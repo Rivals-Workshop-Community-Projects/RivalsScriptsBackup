@@ -2,10 +2,10 @@ with obj_article1{
 	if player_id != other break;
 	var leeway = 0;
 	
-	var off_l = x < view_get_xview() - leeway;
-	var off_r = x > view_get_xview() + view_get_wview() + leeway;
-	var off_u = y < view_get_yview() - leeway;
-	var off_d = y > view_get_yview() + view_get_hview() + leeway;
+	var off_l = x < view_get_xview() - leeway; // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+	var off_r = x > view_get_xview() + view_get_wview() + leeway; // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")).
+	var off_u = y < view_get_yview() - leeway; // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
+	var off_d = y > view_get_yview() + view_get_hview() + leeway; // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 	
 	var margin = 34;
 	var idx = noone;
@@ -25,9 +25,9 @@ with obj_article1{
 	
 	if idx != noone {
 		with other {
-			draw_sprite_ext(sprite_get("article_offscreen"), idx, clamp(other.x - view_get_xview(), margin, view_get_wview() - margin), clamp(other.y - view_get_yview(), margin, view_get_hview() - margin), 1, 1, 0, get_player_hud_color(player), 1);
+			draw_sprite_ext(sprite_get("article_offscreen"), idx, clamp(other.x - view_get_xview(), margin, view_get_wview() - margin), clamp(other.y - view_get_yview(), margin, view_get_hview() - margin), 1, 1, 0, get_player_hud_color(player), 1); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 			shader_start();
-			draw_sprite_ext(sprite_get("article_offscreen"), other.offscreen_track, clamp(other.x - view_get_xview(), margin, view_get_wview() - margin), clamp(other.y - view_get_yview(), margin, view_get_hview() - margin), 1, 1, 0, c_white, 1);
+			draw_sprite_ext(sprite_get("article_offscreen"), other.offscreen_track, clamp(other.x - view_get_xview(), margin, view_get_wview() - margin), clamp(other.y - view_get_yview(), margin, view_get_hview() - margin), 1, 1, 0, c_white, 1); // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
 			shader_end();
 		}
 	} 

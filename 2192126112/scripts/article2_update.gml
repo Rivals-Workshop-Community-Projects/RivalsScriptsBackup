@@ -49,7 +49,6 @@ if ((free == false || hit_wall = true) && state == 0)
     hsp = 0;
     vsp = 0;
     setState(1);
-    
 }
 
 if (state == 1)
@@ -57,7 +56,6 @@ if (state == 1)
 	if (state_timer < 3)
 	{
 		x = x + 1 * spr_dir;
-
 		if (hit_wall == false && free == true)
 		{
 			setState(0);
@@ -72,17 +70,12 @@ if (state == 1)
 		stickx = x;
 		 sticky = y;
 	}
-		
-	}
-
-
-
-
+}
 
 
 if (state = 2)
 {
-	
+	spawn_hit_fx( x + (10*spr_dir), y+ 2, 13 );
 	with (player_id)
 	{
 		if (sticky_count > 0)
@@ -96,83 +89,68 @@ if (state = 2)
 	{
 		strength = strength / 4;
 	}
-	
 	if (strength > 20)
 	{
 		strength = 20;
 	}
-	
 	if (strength > 5)
 	{
-	
-	
     player_id.hsp = hsp + lengthdir_x(strength, angle);
     player_id.vsp = vsp + lengthdir_y(strength, angle);
+    player_id.is_jump = true;
+	sound_play( sound_get( "stickybomblauncher_det" ) );
+    spawn_hit_fx( player_id.x, player_id.y - 10, 194 );
 	}
 	
-	if (hit != noone)
-	{
-///			if (hit.free != true)
-///{
-///		estrength = estrength / 1.5;
-///	}
-
-
 	
-	if (estrength > 6)
+if has_rune("D"){
+	if (hit != noone) 
 	{
-		estrength = 6;
+		if (hit.free != true)
+		{
+			estrength = estrength / 1.5;
+		}
+		if (estrength > 6)
+		{
+			estrength = 6;
+		}
+		if (estrength > 2 && explodestickies = 0)
+		{
+			hit.hsp = lengthdir_x(estrength, eangle) - (5 * hit.spr_dir);
+			hit.vsp = lengthdir_y(estrength, eangle) - 5;
+		}	
 	}
+}
 	
-	if (estrength > 2 && explodestickies = 0)
-	{
-	
-	
-    hit.hsp = lengthdir_x(estrength, eangle) - (5 * hit.spr_dir);
-    hit.vsp = lengthdir_y(estrength, eangle) - 5;
-	}	
-	}
     if (player_id.meem_num > 0)
     {
+		if (obj_article_solid.free == true)
+		{
+			mstrength = mstrength / 4;
+		}
 	
-	if (obj_article_solid.free != true)
-	{
-		mstrength = mstrength / 4;
-	}
-	
-	if (mstrength > 20)
-	{
-		mstrength = 20;
-	}
-	
-	if (mstrength > 3)
-	{
-	
-	
-	
-    obj_article_solid.hsp = hsp + lengthdir_x(mstrength, mangle);
-    obj_article_solid.vsp = vsp + lengthdir_y(mstrength, mangle);
-        obj_article_solid.spr_dir = obj_article_solid.spr_dir * -1;
-        player_id.meem_limit += -250;
+		if (mstrength > 20)
+		{
+			mstrength = 20;
+		}
+		if (mstrength > 1)
+		{
+    		obj_article_solid.hsp = hsp + lengthdir_x(mstrength, mangle);
+    		obj_article_solid.vsp = vsp + lengthdir_y(mstrength, mangle);
+    	    obj_article_solid.spr_dir = obj_article_solid.spr_dir * -1;
+    	    player_id.meem_limit += -250;
+    	    spawn_hit_fx( obj_article_solid.x + 15 * spr_dir, obj_article_solid.y + 40, 194 );
+    	}
     }
-    }
-    
-
     state = 3;
     state_timer = 0;
-    
 }
-
 
 if (state = 3 && state_timer > 10)
 {
-
-	 instance_destroy();
+	instance_destroy();
 	exit;
 }
-
-
-
 
 #define setState(new_state) //This custom function makes it easier to switch states. You can't use it outside of articleX_update.gml; if you want to do this from the player's update.gml or something, just copy the contents of this to the with statement.
 

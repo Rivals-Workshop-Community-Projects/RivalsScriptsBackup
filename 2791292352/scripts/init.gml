@@ -76,17 +76,20 @@ wwisp_hit = hit_fx_create(sprite_get("wwisp_hfx"), 18);
 bair_cross1 = hit_fx_create(sprite_get("bair_hfx_1"), 14);
 bair_cross2 = hit_fx_create(sprite_get("bair_hfx_2"), 14);
 fspecial_fx = hit_fx_create(sprite_get("fspecial_fx"), 16);
+fspec_aimage = hit_fx_create(sprite_get("fspecial_afterimage"), 12);
 fspecial_slam = hit_fx_create(sprite_get("fspecial_slam_fx"), 15);
 uspecial_boost = hit_fx_create(sprite_get("uspecial_boost"), 10);
+cursefx_1 = hit_fx_create(sprite_get("cursed_fx1"), 24);
+cursefx_2 = hit_fx_create(sprite_get("cursed_fx2"), 16);
 
 // Variables
 
 // Animation Info
 
 // Misc. animation speeds
-idle_anim_speed     = 0.15;
+idle_anim_speed     = 0.18;
 crouch_anim_speed   = 0.1;
-walk_anim_speed     = 0.4;
+walk_anim_speed     = 0.35;
 dash_anim_speed     = 0.2;
 pratfall_anim_speed = 0.25;
 
@@ -169,24 +172,23 @@ wow_chrg = 0;
 wow_chrg_max = 90; // 2 seconds
 wow_hitbox_group = 0; // adds 1 when nspecial is shot, resets to 0 if there are no projectiles
 
-//reflected nspecial
+//mummy variables
 cofa_mummy = false;
-cofa_mummy_id = noone;
+cofa_mummy_source = noone;
+cofa_mummy_owner = noone;
 cofa_mummy_timer = 0;
-cofa_mummy_atktimer = 0;
-cofa_mummy_atkstored = 0;
-cofa_mummy_fx_timer = 0;
-cofa_mummy_omen = false;
-cofa_mummy_omen_timer = 0;
-selfiflict = false;
-omegacurser = false;
+cofa_mummy_real_attack = false;
 
 // fspecial grab
 fspecial_grab_id = noone;
 fspecial_grab_time = 0;
-fspecial_grab_time_max = 30;
+fspecial_grab_time_max = 10;
 
-introTimer = -4;
+//dspecial effect
+hex_alpha = 0;
+dspec_galaxy = false;
+
+introTimer = -player -3;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;
 
@@ -251,18 +253,13 @@ feri_costume = sprite_get("comp_feri");
 
 guiltySprite = sprite_get("comp_guilty")
 
-ncode1 = "This Pokémon has a body of sparkling gold. People"
-ncode2 = "say it no longer remembers that it was once human."
-ncode3 = "They like to eat gold nuggets."
-
 Hikaru_Title = "Coffer Greebus";
-
-toonlink_photo = sprite_get("comp_toonspook");
-toonlink_photo2 = 4;
 
 arena_title = "The Restless Relic";
 
 battle_text = "*As comfortable as it looks.";
+
+mario_cap_compat = sprite_get("comp_mario_en_weede")
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

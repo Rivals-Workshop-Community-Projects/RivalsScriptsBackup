@@ -396,7 +396,7 @@ switch (alt_cur)
 }
 
 //travellers alt shenanigans
-if (alt_cur == 6 || alt_cur == 7) alt_mc = true;
+if (alt_cur == 7 || alt_cur == 8) alt_mc = true;
 else alt_mc = false;
 
 if (alt_cur == 16 && get_match_setting(SET_SEASON) == 3) qiqi_hat = true;
@@ -409,7 +409,7 @@ travel_col_time = 0;
 travel_col[0] = [115, 255, 189]; //anemo
 travel_col[1] = [222, 184, 97]; //geo
 travel_col[2] = [194, 116, 229]; //electro
-travel_col[3] = [98, 214, 83]; //dendro???
+travel_col[3] = [98, 214, 83]; //dendro
 travel_col[4] = [157, 150, 255]; //hydro
 travel_col[5] = [255, 60, 38]; //pryo
 travel_col[6] = [186, 248, 255]; //cryo
@@ -606,6 +606,9 @@ hb_color[2] = $FF00FF;  //electro
 // Adventure Mode hit player
 hit_player_event = 13;
 
+//draw_hud redirect
+draw_hud_event = 14;
+
 //steve death message
 steve_death_message = "Steve forgot to level his artifacts";
 
@@ -636,3 +639,6 @@ dracula_portrait2 = asset_get("empty_sprite");
 var food_random = random_func(current_second, 2, true) + 1;
 pot_compat_variable = sprite_get("gumbo_food" + string(food_random));
 pot_compat_text = (food_random == 1) ? "Golden Shrimp Balls" : "Survival Grilled Fish";
+
+//mamizou cat
+mamizou_transform_spr = sprite_get("mamizou_catqing");

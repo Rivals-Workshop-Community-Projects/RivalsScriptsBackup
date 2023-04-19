@@ -37,20 +37,26 @@ switch(state)
 
 //Victory Portrait. or if killed with a strong move.
 if(taunt_down || get_player_color(player) == 1)
+{
     set_victory_portrait(sprite_get("portrait_neco"));
+    necomode = 1;
+}
 else
+{
     set_victory_portrait(sprite_get("portrait"));
+    necomode = 0;
+}
 
 // set_victory_theme(sound_get("victory"));
-// //Genesis
-// if(get_player_color(player) == 30)
-// {
-//     set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntgen"));
-//     set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("glitch1"));
-//     idle_anim_speed = .2;
-//     if(state == PS_IDLE && state_timer % 20 == 0 && random_func(2, 50, false) > 45)
-//         sound_play(sound_get("glitch2"), false, noone, 0.65, 1.2);
-// }
+//Genesis
+if(get_player_color(player) == 15)
+{
+    set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("tauntgen"));
+    set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("glitch1"));
+    idle_anim_speed = .2;
+    if(state == PS_IDLE && state_timer % 20 == 0 && random_func(2, 50, false) > 45)
+        sound_play(sound_get("glitch2"), false, noone, 0.65, 1.2);
+}
 
 if(last_hit_timer != 0)
     last_hit_timer --;

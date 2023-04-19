@@ -3,4 +3,4 @@ if(item[9, 3] == 1){
 	sayoTimer = get_gameplay_time();
 }
 //Decryption interrupted. Please try again.
-crouchCounter = 0;
+//crouchCounter = 0;

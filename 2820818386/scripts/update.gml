@@ -1,3 +1,20 @@
+//Reset Cooldowns On Respawn
+if (state == PS_RESPAWN){
+	move_cooldown[AT_NSPECIAL] = 0;
+	move_cooldown[AT_FSPECIAL] = 0;
+	move_cooldown[AT_DSPECIAL] = 0;
+}
+
+//Nspecial Prevent Duplication
+if (move_cooldown[AT_USTRONG] > 0){
+	set_attack_value(AT_JAB, AG_NUM_WINDOWS, 5);
+}
+
+if (move_cooldown[AT_USTRONG] == 0){
+	set_attack_value(AT_JAB, AG_NUM_WINDOWS, 9);
+}
+
+
 //Up Special Pratfall
 if (!free){
 	set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 6);
@@ -40,12 +57,12 @@ if (state == PS_TECH_BACKWARD){
 //A
 if (has_rune("A")){
 	set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .3);
+	set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 7);
+	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
+	set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 7);
+	set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 7);
+	set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .4);
 }
 
 //B
@@ -72,13 +89,12 @@ if (has_rune("D")){
 
 //E
 if (has_rune("E")){
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 2);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 240);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4.5);
 }
 
 //F
 if (has_rune("F")){
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 }
 
 //G
@@ -99,14 +115,7 @@ if (state == PS_WALL_JUMP){
 }
 
 //H
-if (has_rune("H")){
-	move_cooldown[AT_USTRONG] = 0;
-	move_cooldown[AT_JAB] = 0;
-	move_cooldown[AT_FSTRONG] = 0;
-	move_cooldown[AT_DTILT] = 0;
-	move_cooldown[AT_DSTRONG] = 0;
-	move_cooldown[AT_UTILT] = 0;
-}
+
 
 //I
 if (has_rune("I")){
@@ -129,20 +138,21 @@ if (has_rune("J")){
 	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 	set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 2);
-	set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 25);
+	set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 30);
 	set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 10);
 	set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -10);
-	set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 22);
-	set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 22);
+	set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 20);
+	set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 20);
 	set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 0);
 	set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 1);
 	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 45);
-	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 75);
+	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.2);
-	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 2);
+	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 6);
+	set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSESCALING, .3);
 	set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 302);
-	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
+	set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_light2"));
 	set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 302);
 	set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 
@@ -156,20 +166,21 @@ if (has_rune("J")){
 	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 	set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 2);
-	set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 25);
+	set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 30);
 	set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 10);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -35);
-	set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 22);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HEIGHT, 22);
+	set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -30);
+	set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 20);
+	set_hitbox_value(AT_DSTRONG, 3, HG_HEIGHT, 20);
 	set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 0);
 	set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 1);
 	set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 45);
-	set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 75);
+	set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 0.2);
-	set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 2);
+	set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 6);
+	set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSESCALING, .3);
 	set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 302);
-	set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_shovel_hit_light2"));
+	set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_shovel_hit_med2"));
 	set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_DESTROY_EFFECT, 302);
 	set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 2);
 
@@ -183,20 +194,21 @@ if (has_rune("J")){
 	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 	set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 2);
-	set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 25);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, -10);
+	set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 30);
+	set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, 10);
 	set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_Y, -10);
-	set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 22);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 22);
+	set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 20);
+	set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 20);
 	set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 0);
 	set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 1);
 	set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 135);
-	set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 105);
+	set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, 0.2);
-	set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 2);
+	set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 6);
+	set_hitbox_value(AT_DSTRONG, 4, HG_HITPAUSESCALING, .3);
 	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 302);
-	set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
+	set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_shovel_hit_light2"));
 	set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 302);
 	set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, 3);
 
@@ -210,18 +222,19 @@ if (has_rune("J")){
 	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 	set_hitbox_value(AT_DSTRONG, 5, HG_WINDOW, 2);
-	set_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME, 25);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_X, -10);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_Y, -35);
-	set_hitbox_value(AT_DSTRONG, 5, HG_WIDTH, 22);
-	set_hitbox_value(AT_DSTRONG, 5, HG_HEIGHT, 22);
+	set_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME, 30);
+	set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_X, 10);
+	set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_Y, -30);
+	set_hitbox_value(AT_DSTRONG, 5, HG_WIDTH, 20);
+	set_hitbox_value(AT_DSTRONG, 5, HG_HEIGHT, 20);
 	set_hitbox_value(AT_DSTRONG, 5, HG_SHAPE, 0);
 	set_hitbox_value(AT_DSTRONG, 5, HG_PRIORITY, 1);
 	set_hitbox_value(AT_DSTRONG, 5, HG_DAMAGE, 3);
-	set_hitbox_value(AT_DSTRONG, 5, HG_ANGLE, 135);
-	set_hitbox_value(AT_DSTRONG, 5, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_DSTRONG, 5, HG_ANGLE, 105);
+	set_hitbox_value(AT_DSTRONG, 5, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_DSTRONG, 5, HG_KNOCKBACK_SCALING, 0.2);
-	set_hitbox_value(AT_DSTRONG, 5, HG_BASE_HITPAUSE, 2);
+	set_hitbox_value(AT_DSTRONG, 5, HG_BASE_HITPAUSE, 6);
+	set_hitbox_value(AT_DSTRONG, 5, HG_HITPAUSESCALING, .3);
 	set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 302);
 	set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_shovel_hit_light2"));
 	set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, 302);
@@ -238,22 +251,12 @@ if (has_rune("K")){
 }
 
 //L
-if (has_rune("L") && attack == AT_NSPECIAL && window == 1){
-	move_cooldown[AT_NSPECIAL] = 180;
-}
 
-if (has_rune("L") && attack == AT_FSPECIAL && window == 1){
-	move_cooldown[AT_FSPECIAL] = 180;
-}
-
-if (has_rune("L") && attack == AT_DSPECIAL && window == 1){
-	move_cooldown[AT_DSPECIAL] = 180;
-}
 
 //M
 if (has_rune("M")){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .2);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
 }
 
 //N
@@ -273,11 +276,11 @@ if (has_rune("N")){
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, false);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, don_miss);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, false);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 1);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 6);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 85);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 20);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -30);
@@ -287,9 +290,10 @@ if (has_rune("N")){
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 7);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 280);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 6);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .5);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, don_hit);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
@@ -310,7 +314,7 @@ if (has_rune("N")){
 	set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, don_miss);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, false);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 1);
-	set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 1);
+	set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 6);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 85);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 20);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -30);
@@ -320,36 +324,21 @@ if (has_rune("N")){
 	set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 7);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 280);
-	set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, .6);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 6);
+	set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, .5);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, don_hit);
 	set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 }
 
 //O
-if (has_rune("O") && attack == AT_DSPECIAL){
+if (has_rune("O") && !has_rune("L") && move_cooldown[AT_DSPECIAL] > 120){
 	super_armor = true;
 }
 
-if (has_rune("O") && state == PS_ATTACK_AIR){
+if (has_rune("O") && has_rune("L") && move_cooldown[AT_DSPECIAL] > 0){
 	super_armor = true;
-}
-
-if (has_rune("O") && state == PS_ATTACK_GROUND){
-	super_armor = true;
-}
-
-if (has_rune("O") && state_timer > 0){
-	super_armor = true;
-}
-
-if (move_cooldown[AT_DSPECIAL] < 540 && !has_rune("L")){
-	super_armor = false;
-}
-
-if (move_cooldown[AT_DSPECIAL] < 1){
-	super_armor = false;
 }
 
 

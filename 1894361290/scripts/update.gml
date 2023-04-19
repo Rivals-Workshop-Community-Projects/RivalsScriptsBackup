@@ -2,8 +2,13 @@
 
 timer++;
 
+window_length = get_window_value(attack, window, AG_WINDOW_LENGTH) * (get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) ? 1.5 : 1);
+
+//check hitbox view
+hitbox_view = get_match_setting(SET_HITBOX_VIS);
+
 //munophone
-user_event(14);
+//user_event(14);
 
 //char height
 var start_char_height = 48;
@@ -30,6 +35,8 @@ if wt_destroyed_timer > 0 {
 	if move_cooldown[AT_DSPECIAL] < 2 move_cooldown[AT_DSPECIAL] = 2;
 }
 
+//print(wt_destroyed_timer)
+
 //codec stuff
 if ("trummel_id" in self) {
 	with trummel_id {
@@ -43,21 +50,25 @@ if ("trummel_id" in self) {
 	}
 }
 
-switch get_player_color(player) {
-	case 8: honk_sfx = sound_get("falco_0" + string(random_func_2(player, 6, true)+1)) break; //hands of my cawk
-	
-	case 9: //SNAAAAAAAKE
-	switch random_func_2(player, 2, true) { 
-		case 0: honk_sfx = sound_get("snake_there"); break;
-		case 1: honk_sfx = sound_get("snake_now"); break;
+if !mute_mode {
+	switch get_player_color(player) {
+		case 8: honk_sfx = sound_get("falco_0" + string(random_func_2(player, 6, true)+1)) break; //hands of my cawk
+		
+		case 9: //SNAAAAAAAKE
+		switch random_func_2(player, 2, true) { 
+			case 0: honk_sfx = sound_get("snake_there"); break;
+			case 1: honk_sfx = sound_get("snake_now"); break;
+		}
+		break;
+		
+		case 10: honk_sfx = sound_get("squack" + string(random_func_2(player, 3, true)+1)) break; //bird up
+		case 11: honk_sfx = sound_get("sans_speak") break; //sans
+		case 14: honk_sfx = sound_get("honk2_0" + string(random_func_2(player, 7, true)+1)) break; //player 2
+		
+		default: honk_sfx = sound_get("honk_0" + string(random_func_2(player, 5, true)+1)) break;
 	}
-	break;
-	
-	case 10: honk_sfx = sound_get("squack" + string(random_func_2(player, 3, true)+1)) break; //bird up
-	case 11: honk_sfx = sound_get("sans_speak") break; //sans
-	case 14: honk_sfx = sound_get("honk2_0" + string(random_func_2(player, 5, true)+1)) break; //player 2
-	
-	default: honk_sfx = sound_get("honk_0" + string(random_func_2(player, 5, true)+1)) break;
+} else {
+	honk_sfx = sound_get("honk_0" + string(random_func_2(player, 5, true)+1));
 }
 
 if !(state == PS_ATTACK_GROUND && attack == AT_TAUNT) {
@@ -305,6 +316,19 @@ if fspec_grapple_id != undefined {
 with oPlayer if id != other.id && activated_kill_effect && triggers_kill_effect {
     with other sound_play(sound_get("bonk"))
     triggers_kill_effect = false;
+}
+
+with hit_fx_obj {
+	if sprite_index == sprite_get("vfx_feather_side_small")
+	|| sprite_index == sprite_get("vfx_feather_side_large")
+	|| sprite_index == sprite_get("vfx_feather_up_small")
+	|| sprite_index == sprite_get("vfx_feather_up_large") {
+		depth = -10;
+	}
+}
+
+if !free || state == PS_HITSTUN || state == PS_HITSTUN_LAND || state == PS_WALL_JUMP {
+	move_cooldown[AT_FSPECIAL] = 0
 }
 
 //final smash

@@ -34,7 +34,10 @@ if my_hitboxID.attack == AT_USPECIAL {
 if my_hitboxID.attack == AT_FSPECIAL && !was_parried && hit_player_obj.state_cat == SC_HITSTUN {
 	attack_end();
 	destroy_hitboxes();
-	set_attack(AT_FSPECIAL_2);
+	
+	if (fspecial_stall_count > 0) set_attack(AT_FSPECIAL_AIR);
+	else set_attack(AT_FSPECIAL_2);
+	
 	spawn_hit_fx(x, y, hit_fx_create(sprite_get("fspecial_fx"), 15))
 	//	vsp = -(y-(hit_player_obj.y-hit_player_obj.char_height/2))
 	y = ((hit_player_obj.y-hit_player_obj.char_height/2))

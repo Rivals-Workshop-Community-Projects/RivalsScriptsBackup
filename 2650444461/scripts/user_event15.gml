@@ -55,12 +55,12 @@ alt_names = [
 	"Seviper",
 	"Zangoose",
 	"Salamence",
-	"Metagross",
+	//"Metagross",
 	"Regirock",
 	"Regice",
 	"Registeel",
 	"Latias",
-	"Latios",
+	//"Latios",
 	"Groudon",
 	"Kyogre",
 	"Rayquaza",
@@ -68,10 +68,12 @@ alt_names = [
 	"Deoxys",
 	"Pikachu",
 	"Ditto",
+	"Bel",
 	"Matt",
 	"Aria",
 	"Sol",
 	"Toadie",
+	"Mr Oarly",
 	"Michael",
 	];
 
@@ -258,6 +260,28 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.15", "4th February, 2023");
+initHeader("Buffs");
+initSection("- Increased kbs a little bit on both Surf (0.7->0.8) and Muddy Water (1.05->1.1)");
+initHeader("Nerfs");
+initSection("- Lowered knockback a little bit on UAir");
+initHeader("Fixes / Other Changes");
+initSection("- Added rune H");
+initSection("- Made UAir skip the first frame, as it was very similar to one of Mudkip's jump animation frames, which made UAir seem deceptively fast. Startup is still the same, it's just easier to react to it");
+initSection("- Replaced Metagross and Latios alts with Bel and Mr Oarly alts");
+
+initPatch("1.14", "15th January, 2023");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed rune B and rune F not working properly");
+
+initPatch("1.13", "10th January, 2023");
+initHeader("Buffs");
+initSection("- Fixed Jab going into parrystun");
+initSection("- NSpecial charges faster than before, and you can now walljump cancel it");
+initHeader("Fixes / Other Changes");
+initSection("- Added runes: B, F, G, H, I");
+initSection("- Added Villager compatibility");
 
 initPatch("1.12", "20th August, 2022");
 initHeader("Fixes / Other Changes");

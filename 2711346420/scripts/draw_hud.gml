@@ -25,7 +25,3 @@ draw_debug_text(temp_x, temp_y-178,"
   AiAi and his stage will be releasing
 today, right after this trailer finishes.")
 */
-
-//phone
-muno_event_type = 5;
-user_event(14);

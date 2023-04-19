@@ -19,4 +19,5 @@ if should_debug {
     draw_debug_text(x - 30, y + 60, "Cur Axes: "+string(axes_num));
     draw_debug_text(x - 30, y + 75, "Djumps: "+string(djumps));
     draw_debug_text(x - 30, y + 90, "Axe Type: "+string(axe_type));
+    draw_debug_text(x - 30, y + 105, "Nspec Buffer: "+string(nspecial_buffer));
 }

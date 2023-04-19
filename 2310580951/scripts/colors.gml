@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 6, 1, 29 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Blue
 set_color_profile_slot( 1, 0, 0, 0, 255 ); //Cap
@@ -122,7 +122,7 @@ set_color_profile_slot( 9, 1, 0, 11, 115 ); //Shirt
 set_color_profile_slot( 9, 2, 0, 31, 255 ); //Overalls
 set_color_profile_slot( 9, 3, 176, 145, 255 ); //Shoes
 set_color_profile_slot( 9, 4, 13, 13, 13 ); //Gloves
-set_color_profile_slot( 9, 5, 230, 175, 69 ); //Skin
+set_color_profile_slot( 9, 5, 255, 144, 59 ); //Skin
 set_color_profile_slot( 9, 6, 46, 16, 0 ); //Hair
 set_color_profile_slot( 9, 7, 255, 250, 0 ); //Overall Buttons
 
@@ -146,14 +146,14 @@ set_color_profile_slot( 11, 5, 232, 202, 129 ); //Skin
 set_color_profile_slot( 11, 6, 57, 3, 0 ); //Hair
 set_color_profile_slot( 11, 7, 255, 250, 0 ); //Overall Buttons
 
-// MM54321
-set_color_profile_slot( 12, 0, 200, 200, 1 ); //Cap
-set_color_profile_slot( 12, 1, 255, 250, 0 ); //Shirt
-set_color_profile_slot( 12, 2, 200, 200, 200 ); //Overalls
-set_color_profile_slot( 12, 3, 1, 30, 180 ); //Shoes
-set_color_profile_slot( 12, 4, 70, 70, 70 ); //Gloves
-set_color_profile_slot( 12, 5, 255, 235, 80 ); //Skin
-set_color_profile_slot( 12, 6, 0, 0, 153 ); //Hair
+// Brazil
+set_color_profile_slot( 12, 0, 39, 214, 0 ); //Cap
+set_color_profile_slot( 12, 1, 255, 200, 1 ); //Shirt
+set_color_profile_slot( 12, 2, 39, 214, 0 ); //Overalls
+set_color_profile_slot( 12, 3, 17, 47, 214 ); //Shoes
+set_color_profile_slot( 12, 4, 170, 170, 170 ); //Gloves
+set_color_profile_slot( 12, 5, 232, 160, 104 ); //Skin
+set_color_profile_slot( 12, 6, 92, 22, 11 ); //Hair
 set_color_profile_slot( 12, 7, 255, 250, 0 ); //Overall Buttons
 
 // Boli
@@ -185,6 +185,16 @@ set_color_profile_slot( 15, 4, 227, 195, 136 ); //Gloves
 set_color_profile_slot( 15, 5, 232, 202, 129 ); //Skin
 set_color_profile_slot( 15, 6, 57, 3, 0 ); //Hair
 set_color_profile_slot( 15, 7, 255, 250, 0 ); //Overall Buttons
+
+// Fire
+set_color_profile_slot( 16, 0, 255, 219, 219 ); //Cap
+set_color_profile_slot( 16, 1, 255, 219, 219 ); //Shirt
+set_color_profile_slot( 16, 2, 255, 0, 0 ); //Overalls
+set_color_profile_slot( 16, 3, 156, 38, 19 ); //Shoes
+set_color_profile_slot( 16, 4, 170, 170, 170 ); //Gloves
+set_color_profile_slot( 16, 5, 232, 202, 129 ); //Skin
+set_color_profile_slot( 16, 6, 57, 3, 0 ); //Hair
+set_color_profile_slot( 16, 7, 255, 250, 0 ); //Overall Buttons
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -1,12 +1,10 @@
 //attack_update
 
+//B - Reversals
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
 
 switch(attack)
 {
-	//B - Reversals
-	case AT_NSPECIAL: case AT_FSPECIAL: case AT_DSPECIAL: case AT_USPECIAL:
-		trigger_b_reverse();
-		break;
 	//charge attack mechanic + some other specific stuff for some of those moves
 	case AT_JAB:
 		if (window >= 10 && window <= 13) can_fast_fall = false; //no hitfalling jab 4
@@ -328,7 +326,7 @@ switch(attack)
 			case 1:
 				vsp = clamp(vsp, vsp, 2);
 			case 2:
-				do_electro_particles(2, 1, 1);
+				if (!counter_success) do_electro_particles(2, 1, 1);
 				break;
 			case 3:
 				if (!counter_success) //no beidou counter lmao
@@ -466,30 +464,29 @@ switch(attack)
 				}
 				break;
 			case 3: //movement
-				if (!hitpause && window_timer == 1)
-				{
-					fall_through = true;
-
-					//quick slash aim logic
-					if (joy_pad_idle && prev_joy_dir = -1) joy_dir = 90;
-					hsp = lengthdir_x(uspec_travel_dist, joy_dir);
-					vsp = lengthdir_y(uspec_travel_dist, joy_dir);
-					prev_joy_dir = joy_dir;
-
-					if (joy_dir > 90 && joy_dir < 270) spr_dir = -1;
-					else if (joy_dir < 90 || joy_dir > 270) spr_dir = 1;
-				}
-				if (window_timer == 2)
+				if (window_timer == 1)
 				{
 					if (!hitpause)
 					{
-						uspec_flash = spawn_hit_fx(x, y-32, fx_uspec_flash);
-						if (hsp == 0 && (left_down || right_down)) uspec_flash.x = x-96*spr_dir;
-						if (vsp == 0 && (down_down || up_down)) uspec_flash.y = y-112;
-					}
+						fall_through = true;
 
-					if (spr_dir) uspec_flash.draw_angle = prev_joy_dir;
-					else uspec_flash.draw_angle = prev_joy_dir+180;
+						//quick slash aim logic
+						if (joy_pad_idle && prev_joy_dir = -1) joy_dir = 90;
+						hsp = lengthdir_x(uspec_travel_dist, joy_dir);
+						vsp = lengthdir_y(uspec_travel_dist, joy_dir);
+						prev_joy_dir = joy_dir;
+
+						if (joy_dir > 90 && joy_dir < 270) spr_dir = -1;
+						else if (joy_dir < 90 || joy_dir > 270) spr_dir = 1;
+					}
+				}
+				if (window_timer == 2)
+				{
+					if (abs(hsp) > 0 || abs(vsp) > 0)
+					{
+						uspec_flash = spawn_hit_fx(x, y-32, fx_uspec_flash);
+						uspec_flash.draw_angle = point_direction(x, y, x + hsp * spr_dir, y + vsp * spr_dir);
+					}
 				}
 				if (window_timer == window_end) spawn_hit_fx(x, y-32, fx_nspec_cursorspawn); //lol reusing effects
 				break;
@@ -576,8 +573,12 @@ switch(attack)
 
 				if (has_resolve_mechanic && burst_charge > 0) resolve_cur += 60; //bursts add to keqing's resolve automatically
 
-				if ("fs_char_initialized" in self && fs_char_initialized) fs_force_fs = false;
-				else burst_charge = 0;
+				if ("fs_char_initialized" in self && fs_char_initialized)
+				{
+					fs_force_fs = false;
+					fs_charge = 0;
+				}
+				burst_charge = 0;
 				break;
 			case 2: //vanish effect
 				if (window_timer == window_end)
@@ -848,14 +849,6 @@ if (nspec_cancel_aim)
 {
 	temp_marker_x = stilleto_id.x;
 	temp_marker_y = stilleto_id.y;
-}
-
-
-//electric flash effect pause (applies to both instances of starward sword)
-if (instance_exists(uspec_flash) && hitpause)
-{
-    uspec_flash.pause_timer = 0;
-	uspec_flash.pause = hitstop;
 }
 
 

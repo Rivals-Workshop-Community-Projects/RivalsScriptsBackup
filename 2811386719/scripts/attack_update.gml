@@ -64,9 +64,13 @@ if(attack == AT_FSTRONG){
 	if(window == 1 and window_timer == 1) { 
 		reflect_id = noone;
 		times_reflected = 0;
+		jet_ball_timer = 0
+		set_window_value(AT_FSTRONG, 3, AG_WINDOW_INVINCIBILITY, 0);
+		set_window_value(AT_FSTRONG, 4, AG_WINDOW_INVINCIBILITY, 0);
 	}
-	if(smash_charging){
-		set_window_value(AT_FSTRONG, 1, AG_WINDOW_INVINCIBILITY, 2);
+	can_counter = (window == 1 and window_timer > 3 and !smash_charging) or (window != 1 and window != 4)
+	if(!can_counter){
+		set_window_value(AT_FSTRONG, 1, AG_WINDOW_INVINCIBILITY, 0);
 	}else{
 		set_window_value(AT_FSTRONG, 1, AG_WINDOW_INVINCIBILITY, 2);
 		set_window_value(AT_FSTRONG, 2, AG_WINDOW_INVINCIBILITY, 2);
@@ -75,36 +79,37 @@ if(attack == AT_FSTRONG){
 	} 
 	var w = get_hitbox_value(attack, 1, HG_WINDOW);
 	if(window < w){//Create reflector one frame earlier because frame 1 create hitbox doesn't exist :(
-		if((window == 1 and window_timer > 3 and !smash_charging) or (window != 1 and window != 4)) {
+		if(can_counter and reflect_id == noone) {
 			var fstrong_collide = false;
 			with pHitBox {
-				if (!fstrong_collide and player != other.player and type == 2 and !transcendent and !plasma_safe){
-					var fstrong_collide = place_meeting(x + hsp, y + vsp, other.hurtboxID);
-					if(fstrong_collide){
-						// other.spr_dir = (player_id.x < other.x) ? -1 : 1;
-						destroyed = true;
-						if(other.reflect_id == noone){
-							sound_play(asset_get("sfx_absa_whip"));
+				if(!fstrong_collide){
+					if (player != other.player and type == 2 and !plasma_safe){ // hurtbox collide
+						var fstrong_collide = place_meeting(x + hsp, y + vsp, other.hurtboxID);
+						if(fstrong_collide){
+							// other.spr_dir = (player_id.x < other.x) ? -1 : 1;
+							destroyed = true;
+							if(other.reflect_id == noone){
+								sound_play(asset_get("sfx_absa_whip"));
+							}
+							other.reflect_id = player_id;
+							other.times_reflected++;
 						}
-						other.reflect_id = player_id;
-						other.times_reflected++;
 					}
 				}
 			}
 		}
 	}
 	if(reflect_id != noone){
-		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_lightning"));
+		// set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_lightning"));
 		set_window_value(AT_FSTRONG, window, AG_WINDOW_INVINCIBILITY, 2);
 		// set_window_value(AT_FSTRONG, 4, AG_WINDOW_INVINCIBILITY, 2);
 	}
-	if(window == w){//Check if hitbox is active
-		if(reflect_id){
-			var hbox = create_hitbox(attack, 2, (x + 30*spr_dir), y-50);
+	if(window > 1){//Check if hitbox is active
+		if(reflect_id and jet_ball_timer > jet_ball_time){
+			var hbox = create_hitbox(attack, 2, (x + 30*spr_dir), y-60);
 			hbox.bubble = true;
 			hbox.static = true;
 			hbox.volley_cooldown = 10;
-		
 			
 			// else if(!instance_exists(lightning_hbox)){
 				
@@ -118,16 +123,16 @@ if(attack == AT_FSTRONG){
 			reflect_id = noone;
 		}
 	}
-	if(window == 4){
-		if(window_timer > 13*( 1 + !has_hit_player*0.5) ){
-			if(was_parried){
-				window = 29;
-			}else{
-				iasa_script();
-			}
+	// if(window == 4){
+	// 	if(window_timer > 14*( 1 + !has_hit_player*0.5) ){
+	// 		if(was_parried){
+	// 			window = 29;
+	// 		}else{
+	// 			iasa_script();
+	// 		}
 			
-		}
-	}
+	// 	}
+	// }
 }
 
 if(attack == AT_DSTRONG){
@@ -146,14 +151,14 @@ if(attack == AT_DSTRONG){
 		}
 	}
 	if(window == 3){
-		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 2 and !hitpause){
+		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 2 and !hitpause and !was_parried){
 			if(instance_exists(right_bubble)){
 				orb_lifetime_checker = spawn_dust_fx(x + spr_dir*75, y - 48, orb_dissipate_spr, 15);
 				orb_lifetime_checker.static = false;
 			}else{
 				orb_lifetime_checker = spawn_dust_fx(x + spr_dir*75, y - 48, orb_spawn_spr, 15);
 				orb_lifetime_checker.static = true;
-				create_hitbox(attack, 6, x, y);
+				// create_hitbox(attack, 6, x, y);
 			}
 		}
 	}
@@ -176,7 +181,7 @@ if(attack == AT_BAIR){
 			sound_play(asset_get("sfx_swipe_medium1"))
 		}
 		if(free and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){ 
-			wat_dust = spawn_dust_fx(x - 75*spr_dir, y-50, wat_spr, 9);
+			wat_dust = spawn_dust_fx(x - 75*spr_dir, y-50, wat_spr, 12);
 			wat_dust.dust_depth = depth;
 		}
 	}
@@ -199,72 +204,125 @@ if(attack == AT_DAIR){
 
 if (attack == AT_FSPECIAL){
 	hud_offset = 60
-	if(window == 1 and window_timer == 1) have_armor = 1; 
-	if(have_armor and state_timer > 4 and window < 3){
+	if(window == 1 and window_timer == 1){
+		have_armor = 1;
+		sound_play(asset_get("sfx_waterwarp_start"));
+	}
+	
+	if(have_armor and state_timer > 7 and window < 3){
 		super_armor = 1;
 	}else{
 		super_armor = 0;
 	}
-    if (window == 2){ //run
-    	if(get_gameplay_time()%4 == 3 and hsp != 0){
-    		spawn_hit_fx(x - spr_dir*25, y, wave_fx)
-    	}
-        if(window_timer < 15){
-            hsp = hsp * 1.05;
-            hsp = clamp(hsp, -13, 13);
-        }
-        if(shield_pressed){
-            window = 10;
-            window_timer = 0;
-            clear_button_buffer(PC_SHIELD_PRESSED);
-        }
-        var fspecial_collide = collision_rectangle(x + 20, y - char_height, x + 72*spr_dir, y, oPlayer, true, true);
-        if(fspecial_collide and window_timer > 3 and !hitpause){
-            window++;
-            window_timer = 0;
-        }
-        
-    	
+	//f\left(x\right)=(x-a)/(b*0.12*0.9)-c
+	// if(window == 2) soft_armor = 10 + window_timer*7/25
+	// if(window >= 4) soft_armor = 0
+	// if(window == 1 and window_timer > 7) soft_armor = 10
+	
+  if (window == 2){ //run
+  	if(get_gameplay_time()%4 == 3 and hsp != 0){
+  		spawn_hit_fx(x - spr_dir*25, y, wave_fx)
+  		if(static == 100) sound_play(asset_get("sfx_hod_jab_end"), false, noone, 0.4, 1.7 - random_func(0, 1, false)*0.5)
+  	}
+  	if(!hitpause){
+  		// print("NOOO")
+	  	hsp += (hsp*spr_dir < 7)*spr_dir
+	    hsp = hsp * 1.05;
+	    hsp = clamp(hsp, -13, 13);
+  	}
+    if(shield_pressed){
+      window = 10;
+      window_timer = 0;
+      super_armor = 0;
+      clear_button_buffer(PC_SHIELD_PRESSED);
     }
-    if(window == 4){
-    	if(has_hit_player){
-    		set_window_value(attack, window, AG_WINDOW_GOTO, 5);
-    	}else{
-    		set_window_value(attack, window, AG_WINDOW_GOTO, 9);
-    	}
+    
+    var fspecial_collide = collision_rectangle(x + 20, y - char_height, x + 72*spr_dir, y, oPlayer, true, true);
+  	off_edge = window_timer != get_window_value(attack, window, AG_WINDOW_LENGTH) and !fspecial_collide
+  	
+    if(fspecial_collide and window_timer > 3 and !hitpause and !free){
+      window++;
+      window_timer = 0;
+      super_armor = 0;
+      off_edge = false
+      if(!position_meeting(spr_dir > 0 ? bbox_right : bbox_left, y, solids)){
+      	hsp = 0
+      }
     }
-    if(window == 10){
-    	// if(window_timer > 9){
-	    //     can_attack = true;
-	    //     can_special = true;
-    	// }
-    	if(window_timer == 1){ 
-    		sound_play(asset_get("sfx_springgo"))
-    		shake_camera(3, 5);
-    	}
-    	hsp = clamp(hsp, -7, 7);
-    	
-    }
-    if(window > 6){
-    	if(has_hit_player and hit_player_obj.state == PS_HITSTUN){
-    		hit_player_obj.force_depth = true
-    		hit_player_obj.depth = depth - 1
-    	}
-    	have_armor = false
-    }
+      
+  }
+  if(window == 3){
+  	off_edge = false
+  }
+  if(window == 4){
+  	if(has_hit_player){
+  		set_window_value(attack, window, AG_WINDOW_GOTO, 5);
+  	}else{
+  		set_window_value(attack, window, AG_WINDOW_GOTO, 9);
+  	}
+  }
+  
+  //The leap, order matters, before the cancel, after run
+	if(window == 2 or window == 10){
+		if(free){
+			var new_speed = (hsp - sign(hsp)*5)
+			hsp = clamp(new_speed, -leave_ground_max, leave_ground_max)
+			vsp = -5 + (down_down*2)
+			window = 11
+			window_timer = 0
+			super_armor = 0;
+		}
+	}
+  
+  if(window == 10){
+  	
+  	if(window_timer == 1){
+  		// if(abs(hsp) > 7){
+  		// 	var sshsp = (abs(hsp) - 7)
+  		// 	hsp *= (1 - (sshsp/6)*0.34)
+  		// }
+  		hsp = clamp(hsp, -7, 7)
+  		sound_play(asset_get("sfx_springgo"))
+  		shake_camera(3, 5);
+  	}
+  	if(window_timer > 9){
+  		can_jump = true;
+  	}
+  }
+  if(window == 11){
+  	if(window_timer == 1){
+  		sound_play(asset_get("sfx_bird_nspecial2"), false, noone, 0.6, 0.8)
+  		sound_play(asset_get("sfx_holy_grass"), false, noone, 1, 0.7)
+  	}
+  	if(!free){
+  		set_state(PS_LAND)
+  	}
+  	can_move = true
+  	can_fast_fall = false
+  }
+  if(window > 6){
+  	if(has_hit_player and hit_player_obj.state == PS_HITSTUN){
+  		hit_player_obj.force_depth = true
+  		hit_player_obj.depth = depth - 1
+  	}
+  	have_armor = false
+  }
+  
 }
 
 if(attack == AT_FSPECIAL_AIR){
 	can_fast_fall = false;
 	can_move = false;
-	move_cooldown[attack] = 4;
-	if(window == 1 and window_timer == 1){
-		if(hsp*spr_dir < 0){
-			hsp = spr_dir*2;
+	// move_cooldown[attack] = 4;
+	if(window == 1){
+		if(window_timer == 1){
+			if(hsp*spr_dir <= 0){
+				hsp = spr_dir*3;
+			}
 		}
-		if(hsp*spr_dir < 3){
-			hsp += sign(hsp)*2
-		}
+		// if(hsp*spr_dir < 3){
+		// 	hsp += sign(hsp)*3
+		// }
 		
 	}
 	var dir_val = (-left_down*air_accel*0.8) + (right_down*air_accel*0.8);
@@ -274,10 +332,10 @@ if(attack == AT_FSPECIAL_AIR){
 		if(window_timer > 4){
 			can_wall_jump = true;
 		}
-		if(!free){
-			window = 4;
-			window_timer = 0;
-		}
+		// if(!free){
+		// 	window = 4;
+		// 	window_timer = 0;
+		// }
 	}
 }
 
@@ -304,7 +362,7 @@ if (attack == AT_USPECIAL){
 	    }
 	    
 	    
-	    if(window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH)){ 
+	    if(window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH)){
 	    	//var map_x = ease_linear(85, 35, 200*(spr_dir < 0) + spr_dir*( floor(100 + lengthdir_x(100, joy_dir)) ), 200)  ;
 	    	
 	    	var h_dir = left_down*-1 + right_down;
@@ -334,7 +392,7 @@ if (attack == AT_USPECIAL){
 	  fly_dist = point_distance(0,0,hsp,vsp);
 		can_wall_jump = true;
 	  
-	  
+	  if(cancel_cooldown > 0 and !hitstop) cancel_cooldown--
 	  
 	  if(!free){
 	  	destroy_hitboxes();
@@ -346,9 +404,9 @@ if (attack == AT_USPECIAL){
 	  }
 
 	  if (!moved_up){
-      if (free && place_meeting(x+hsp,y,asset_get("par_block"))){
+      if (free && place_meeting(x+hsp,y, solids)){
         for (var i = 0; i < 39; i++){
-          if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))){
+          if (!place_meeting(x+hsp,y-(i+1), solids)){
               y -= i;
               moved_up = true;
               break;
@@ -362,7 +420,7 @@ if (attack == AT_USPECIAL){
 	  if(right_down and hsp < air_max_speed){
 	  	hsp += air_accel*.95;
 	  }
-	  if(shield_pressed){
+	  if(shield_pressed and cancel_cooldown <= 0){
 	  	if(was_parried){
 	  		// window = 29;
 	  	}else{
@@ -402,9 +460,9 @@ if (attack == AT_DSPECIAL){
 	if(window == 1){
 		if(window_timer == 1){ 
 			falling_hbox = noone;
-			sound_play(sound_get("dspecial"))
+			sound_play(sound_get("dspecial"), false, noone, 1.1)
 			if(free){
-		        set_window_value(attack, 2, AG_WINDOW_VSPEED, -4);
+		        set_window_value(attack, 2, AG_WINDOW_VSPEED, -6);
 		    }else{
 		        set_window_value(attack, 2, AG_WINDOW_VSPEED, -7);
 		    }
@@ -440,11 +498,23 @@ if (attack == AT_DSPECIAL){
   	can_wall_jump = true;
   	if(!free){
   		window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) + 1;
+  	}else{
+  		if(window_timer == 45){
+	  		white_flash_timer = 10
+	  	}
+  		if(window_timer >= 45){
+	  		can_shield = true
+	  	}
   	}
   	
   	var dir_val = (-left_down*air_accel*1) + (right_down*air_accel*1);
   	hsp += (dir_val)*(abs(hsp*dir_val) < 5);
   	hsp = clamp(hsp, -air_max_speed, air_max_speed);
+  	
+  	if(vsp >= max_fall){
+  		vsp += grav
+  		vsp = min(vsp, fast_fall)
+  	}
   }
   if(!free){
   	if(instance_exists(falling_hbox)){
@@ -454,9 +524,9 @@ if (attack == AT_DSPECIAL){
   if(window == 4){
 		if(!wave_summoned and !free){
 			var hleft = create_hitbox(AT_DSPECIAL, (static >= 100) + 3, x, y+4);
-  		hleft.hsp = -21;
+  		hleft.hsp = -20;
   		var hright = create_hitbox(AT_DSPECIAL, (static >= 100) + 3, x, y+4);
-  		hright.hsp = 21;
+  		hright.hsp = 20;
   		hright.spr_dir = 1;
   		hleft.spr_dir = -1;
   		sound_play(asset_get("sfx_waterhit_heavy"))
@@ -512,7 +582,7 @@ if(attack == AT_EXTRA_1){
 		if((is_special_pressed(DIR_ANY) or is_attack_pressed(DIR_ANY) or is_strong_pressed(DIR_ANY))){
 			var h_offset = x - 49*spr_dir
 			var v_offset = y - 80
-			var not_coll = !position_meeting(h_offset, y-char_height-20, solids);
+			var not_coll = !position_meeting(h_offset, y-char_height-30, solids);
 			// print(not_coll)
 			set_window_value(attack, 3, AG_WINDOW_ANIM_FRAME_START, not_coll*10 + 11);
 			set_window_value(attack, 4, AG_WINDOW_ANIM_FRAME_START, not_coll*10 + 15);
@@ -580,6 +650,7 @@ if(attack == AT_EXTRA_1){
 		if(jump_down and stored_window_timer < get_window_value(attack, 1, AG_WINDOW_LENGTH)){
 			window = 1;
 			window_timer = stored_window_timer;
+			has_hit_player = false;
 			attack_end()
 			reset_window_value(AT_EXTRA_1, 3, AG_WINDOW_GOTO);
 			reset_window_value(AT_EXTRA_1, 5, AG_WINDOW_TYPE);
@@ -596,29 +667,64 @@ if(attack == AT_EXTRA_1){
 if(attack == AT_TAUNT){
 	if(window == 1 and window_timer == 1){ 
 		mark_to_cancel = false;
-		music_head = 0;
-		music_time = 0;
-		print(array_length_1d(midi))
-		active_notes = ds_list_create();
-		music_notes_num = array_length_1d(midi) - music_head;
+		sound_play(asset_get("sfx_waveland_wra"))
+		// music_head = 0;
+		// music_time = 0;
+		// print(array_length_1d(midi))
+		// active_notes = ds_list_create();
+		// music_notes_num = array_length_1d(midi) - music_head;
 	}
 	if(!taunt_down){
 		mark_to_cancel = true;
 	}
-	if(image_index == 13 and mark_to_cancel){
+	if((image_index == 13 or image_index == 5) and mark_to_cancel){
 		window = 3;
 		window_timer = 0;
-		ds_list_destroy(active_notes);
-		midi = 0;
+		// ds_list_destroy(active_notes);
+		// midi = 0;
 	}
 	if(window == 2){
-		music_time++;
+		if(window_timer == 11 or window_timer == 28){
+			var pr = 0.25
+			var pitch = (random_func(0, 1, false)*pr/2 - pr) + 1;
+			sound_play(asset_get("sfx_syl_ustrong_part1"), false, noone, 0.4, pitch)
+			sound_play(asset_get("mfx_editor_paint"), false, noone, 0.4, pitch-0.2)
+		}
 		
-		check_active_notes();
-		queue_and_play_active_notes();
+		// music_time++;
+		
+		// check_active_notes();
+		// queue_and_play_active_notes();
 		// play_active_notes();
 	}
-	
+	if(window == 3){
+		if(window_timer == 18){
+			sound_play(asset_get("sfx_blow_weak2"), false, noone, 0.5, 0.5)
+		}
+	}
+	if(window == 4){
+		if(col == 5 and modifier == 0){//Genesis
+			if(window_timer == 1){
+				spawn_dust_fx(x,y, G9_lightning_taunt_fx_spr, 16)
+				var dt = spawn_dust_fx(x,y, G9_taunt_fx_spr, 80);
+				dt.spr_dir = 1
+			}
+			if(window_timer == 4){
+				sound_play(asset_get("sfx_absa_kickhit"))
+				sound_play(asset_get("mfx_player_found"), false, noone, 0.4)
+				sound_play(asset_get("mfx_title_start"), false, noone, 0.4)
+			}
+		}else{
+			
+		}
+	}
+	// if(window == 5){
+	// 	if!(col == 5 and modifier == 0){// not Genesis
+	// 		if(window_timer > 5){
+	// 			iasa_script()
+	// 		}
+	// 	}
+	// }
 }
 
 if(has_hit_player){
@@ -716,35 +822,42 @@ if(attack == AT_NSPECIAL){
 	if(window == 1){
 		magnet_timer = 0;
 		user_event(2)
-		// user_event(2)
 	}
 	if(window == 2){
+		if(window_timer == 1 and magnet_timer == 0){
+			// create_hitbox(attack, 1, x, y)
+			sound_play(asset_get("sfx_dash_start"))
+		}
+		user_event(2);
+	}
+	if(window == 3){
 		user_event(2);
 		magnet_timer++;
 		if(magnet_timer > 3){
 			hsp = 0;
 			vsp = 0;
 		}
-		if(window_timer == 1 and magnet_timer%4 == 1){
-			sound_play(asset_get("sfx_absa_orb_miss"));
-			if(opponent_in_static){
-				sound_play(asset_get("sfx_absa_dattack"), false, noone, 0.45, 1.65);
-			}
-		}
-		if(magnet_timer > 18){
+		
+		if(magnet_timer > 24){
 			set_window_value(attack, window, AG_WINDOW_TYPE, 0);
 		}else{
 			set_window_value(attack, window, AG_WINDOW_TYPE, special_down*9);
 			
-			if(!special_down and magnet_timer > get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			if(magnet_timer%4 == 1){
+				sound_play(asset_get("sfx_absa_orb_miss"));
+				if(opponent_in_static){
+					sound_play(asset_get("sfx_absa_dattack"), false, noone, 0.45, 1.65);
+				}
+			}
+			if(!special_down){
 				window++;
 				window_timer = 0;
+				destroy_hitboxes();
 			}
-			
 		}
 	}
 	
-	if(window == 3){
+	if(window == 5){
 		user_event(3)
 		// if(window_timer > 17 and free){
 		// 	if(was_parried){
@@ -774,6 +887,11 @@ if (attack == AT_NTHROW){
 	can_fast_fall = false;
 	move_cooldown[AT_NSPECIAL] = 1;
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
+	if(window > 1 and window < 7){
+		soft_armor = 25
+	}else{
+		soft_armor = 0
+	}
 	if(instance_exists(grabbed_player_obj)){
 		if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
 		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
@@ -805,12 +923,19 @@ if (attack == AT_NTHROW){
 				
 				// Look, I coded this once and now I have no clue how to translate it, this basically sums teh windows and does math to make an arc in which the character should follow, I had to plot this in demos to visualize it
 				// Anyway, look away please
-				if(window_timer == window_length){ 
+				if(window_timer == window_length){
 					
 					starting_x = grabbed_player_obj.x;
 					starting_y = grabbed_player_obj.y;
-					relative_dest_x = 10*2;
-					relative_dest_y = -(120*2);
+					relative_dest_x = (10*2);
+					if(!joy_pad_idle){
+						var dir = spr_dir*dcos((floor(point_direction(0,0, dcos(joy_dir), -dsin(joy_dir))/45 + .5)%8)*45);
+						relative_dest_x = spr_dir*lerp(-relative_dest_x-35, relative_dest_x, (dir+1)/2)
+					}else{
+						relative_dest_x *= spr_dir;
+					}
+					// print(relative_dest_x)
+					relative_dest_y = -(110*2);
 					count = 1;
 					x2 = 0;
 					
@@ -819,20 +944,31 @@ if (attack == AT_NTHROW){
 				
 			}
 			
+			if(window > 1 and window < 7){
+				soft_armor = 25
+			}else{
+				soft_armor = 0
+			}
+			
 			if(window == 2){
 				can_move = false;
 				var window_length = get_window_value(attack, 2, AG_WINDOW_LENGTH);
 				drive_grabbed();
 		
 				if(window_timer == window_length){ 
-					var t = 17;
-					var s = x + ((relative_dest_x + 160) * spr_dir);
-					var so = x;
-					hsp = (s - so)/t;
+					// var t = 24;
+					// var s = x + ((relative_dest_x + 160) * spr_dir);
+					// var so = x;
+					// hsp = (s - so)/t;
 					
-					var s = y + relative_dest_y + 10;
-					var so = y;
-					vsp = sqrt(abs(2 * (grav *0.5) * abs(s - so))) * sign(s - so) ;
+					// var s = y + relative_dest_y + 10;
+					// var so = y;
+					// vsp = sqrt(abs(2 * (grav *0.5) * abs(s - so))) * sign(s - so) ;
+					
+					var hmax = relative_dest_y+char_height;
+					
+					hsp = (grabbed_player_obj.x-x)/ (get_window_value(attack, window+1, AG_WINDOW_LENGTH))
+					vsp = -sqrt(-hmax*2*grav);
 				}else{
 					hsp = 0;
 					vsp = 0;
@@ -854,14 +990,14 @@ if (attack == AT_NTHROW){
 			
 			if(window == 4){
 				can_move = false;
-				custom_forward_air_drift(0.2)
+				custom_forward_air_drift(0.1)
 				
 				grabbed_player_obj.x = x + 0 * spr_dir;
 				grabbed_player_obj.y = y - 92;
 			}
 			if(window == 5){
 				can_move = false
-				custom_forward_air_drift(0.2)
+				custom_forward_air_drift(0.1)
 				grabbed_player_obj.x = x + 1 * spr_dir;
 				grabbed_player_obj.y = lerp(grabbed_player_obj.y, y - 30, 0.6);
 				//fall_through = true;
@@ -896,26 +1032,23 @@ if (attack == AT_NTHROW){
 
 if(attack == AT_USPECIAL_GROUND){
 	can_fast_fall = false;
-	if(window == 1 and window_timer < 3){
-		// if (window_timer <= 1) { StaticConsume(grabbed_player_obj) }
-		magnet_timer = -1;
-		// if(attack_pressed and static >= 100){
-		// 	set_attack(AT_USPECIAL_2);
-		// }
+	if(window == 1){
+		if(window_timer > 5) user_event(2);
+		if(window_timer < 3) magnet_timer = 0;
+		
 	}
 	if(window == 2){
-		user_event(2);
-		magnet_timer = 0;
-		if(window_timer > 3 and switch_to_uthrow){
-			permanent_static = false;
-			switch_to_uthrow = false;
-			hurtboxID.sprite_index = get_attack_value(AT_UTHROW, AG_HURTBOX_SPRITE);
-			set_attack(AT_UTHROW);
+		if(window_timer == 1 and magnet_timer == 0){
+			// create_hitbox(attack, 1, x, y)
+			sound_play(asset_get("sfx_dash_start"))
 		}
+		user_event(2);
 	}
 	if(window == 3){
+		
+		user_event(2);
 		magnet_timer++;
-		if(magnet_timer > 48){
+		if(magnet_timer > 45){
 			set_window_value(attack, window, AG_WINDOW_TYPE, 0);
 		}else{
 			
@@ -924,14 +1057,12 @@ if(attack == AT_USPECIAL_GROUND){
 				if(opponent_in_static){
 					sound_play(asset_get("sfx_absa_dattack"), false, noone, 0.45, 1.65);
 				}
-			} 
-			
-			
+			}
 			set_window_value(attack, window, AG_WINDOW_TYPE, special_down*9);
 			
 			
 			// if(window_timer == 1) create_hitbox(attack, 1, 55, -115)
-			user_event(2);
+			// user_event(2);
 			
 			if(switch_to_uthrow){
 				permanent_static = false;
@@ -948,9 +1079,18 @@ if(attack == AT_USPECIAL_GROUND){
 		}
 		
 	}
-	if(window == 4){
+	if(window == 5){
+		if(switch_to_uthrow){
+			permanent_static = false;
+			switch_to_uthrow = false;
+			hurtboxID.sprite_index = get_attack_value(AT_UTHROW, AG_HURTBOX_SPRITE);
+			set_attack(AT_UTHROW);
+		}
 		if(magnet_timer >= 1){
 			user_event(3);
+		}
+		if(window_timer > 5){
+			move_cooldown[attack] = 5
 		}
 	}
 }
@@ -974,80 +1114,91 @@ if(attack == AT_USPECIAL_2){
 
 
 
-if ((attack == AT_UTHROW or attack == AT_USPECIAL_GROUND) && instance_exists(grabbed_player_obj)) {
+if (attack == AT_UTHROW or attack == AT_USPECIAL_GROUND){
 	//can_fast_fall = false;
-	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
-	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
-
-	else {
-		//if this is the first frame of a window, store the grabbed player's relative position.
-		if (window_timer <= 1) {
-			grabbed_player_relative_x = grabbed_player_obj.x - x;
-			grabbed_player_relative_y = grabbed_player_obj.y - y;
+	if(attack == AT_UTHROW ){
+		if(window >= 1 and window < 4){
+			soft_armor = 25
+		}else{
+			soft_armor = 0
 		}
-		 
-		//on the first window, pull the opponent into the grab.
-		if (window == 1) { 
-			grabbed_player_obj.hitstop = 2;
-			grabbed_player_obj.hitpause = true;
-			grabbed_player_obj.fall_through = true;
-			
-			var pull_to_x = 0;
-			var pull_to_y = 0;
-			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-			if(window_timer < 7){
-				pull_to_x = 60 * spr_dir;
-				pull_to_y = -95;
-				// print("1")
-				// window_length = 7;
-			}else if(window_timer < 12){
-				pull_to_x = 40 * spr_dir;
-				pull_to_y = -55;
-				// print("2")
-				// window_length = 12;
-			}else	if(window_timer < 18){
-				pull_to_x = 30 * spr_dir;
-				pull_to_y = -25;
-				// print("3")
-				// window_length = 18;
-			}else if(window_timer < 24){
-				pull_to_x = 60 * spr_dir;
-				pull_to_y = -25;
-				// print("4")
-				// window_length = 24;
-			}else if(window_timer < 30){
-				pull_to_x = 10 * spr_dir;
-				pull_to_y = -65;
-				// print("5")
-				// window_length = 30;
-			}else{
-				pull_to_x = -20 * spr_dir;
-				pull_to_y = -0;
-				// print("6")
-				window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+	}
+	if(instance_exists(grabbed_player_obj)) {
+		//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
+		if (window >= get_attack_value(attack, AG_NUM_WINDOWS)) { grabbed_player_obj = noone; }
+		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+	
+		else {
+			//if this is the first frame of a window, store the grabbed player's relative position.
+			if (window_timer <= 1) {
+				grabbed_player_relative_x = grabbed_player_obj.x - x;
+				grabbed_player_relative_y = grabbed_player_obj.y - y;
 			}
 			
-			grabbed_player_obj.x =  floor(lerp( grabbed_player_obj.x, x + pull_to_x, 0.4));
-			grabbed_player_obj.y = floor(lerp( grabbed_player_obj.y, y + pull_to_y, 0.4));
-		}
-		if(window == 2){
-			relative_dest_x = 50;
-			relative_dest_y = -125;
-			if(window_timer <= 2){ 
-				var t = 19;
-				var s = x + relative_dest_x * spr_dir;
-				var so = grabbed_player_obj.x;
-				grabbed_player_obj.hsp = (s - so)/t;
+			
+			 
+			//on the first window, pull the opponent into the grab.
+			if (window == 1) { 
+				grabbed_player_obj.hitstop = 2;
+				grabbed_player_obj.hitpause = true;
+				grabbed_player_obj.fall_through = true;
 				
-				var s = y + relative_dest_y;
-				var so = grabbed_player_obj.y;
-				var v_final = 0;
-				grabbed_player_obj.vsp = sqrt( abs( (v_final*v_final) + (2 * grabbed_player_obj.hitstun_grav * abs(s - so)) )) * sign(s - so) ;
+				var pull_to_x = 0;
+				var pull_to_y = 0;
+				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+				if(window_timer < 7){
+					pull_to_x = 60 * spr_dir;
+					pull_to_y = -95;
+					// print("1")
+					// window_length = 7;
+				}else if(window_timer < 12){
+					pull_to_x = 40 * spr_dir;
+					pull_to_y = -55;
+					// print("2")
+					// window_length = 12;
+				}else	if(window_timer < 18){
+					pull_to_x = 30 * spr_dir;
+					pull_to_y = -25;
+					// print("3")
+					// window_length = 18;
+				}else if(window_timer < 24){
+					pull_to_x = 60 * spr_dir;
+					pull_to_y = -25;
+					// print("4")
+					// window_length = 24;
+				}else if(window_timer < 30){
+					pull_to_x = 10 * spr_dir;
+					pull_to_y = -65;
+					// print("5")
+					// window_length = 30;
+				}else{
+					pull_to_x = -20 * spr_dir;
+					pull_to_y = -0;
+					// print("6")
+					window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+				}
+				
+				grabbed_player_obj.x =  floor(lerp( grabbed_player_obj.x, x + pull_to_x, 0.4));
+				grabbed_player_obj.y = floor(lerp( grabbed_player_obj.y, y + pull_to_y, 0.4));
 			}
+			if(window == 2){
+				relative_dest_x = 50;
+				relative_dest_y = -125;
+				if(window_timer <= 2){ 
+					var t = 19;
+					var s = x + relative_dest_x * spr_dir;
+					var so = grabbed_player_obj.x;
+					grabbed_player_obj.hsp = (s - so)/t;
+					
+					var s = y + relative_dest_y;
+					var so = grabbed_player_obj.y;
+					var v_final = 0;
+					grabbed_player_obj.vsp = sqrt( abs( (v_final*v_final) + (2 * grabbed_player_obj.hitstun_grav * abs(s - so)) )) * sign(s - so) ;
+				}
+			}
+			//the above block can be copied for as many windows as necessary.
+			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
 		}
-		//the above block can be copied for as many windows as necessary.
-		//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
 	}
 }
 
@@ -1144,14 +1295,25 @@ if (attack == AT_USPECIAL && instance_exists(grabbed_player_obj)) {
 #define custom_forward_air_drift(modifier)
 modifier = 1 - modifier
 
+var forward_extra = 1 - (x - starting_x < 0)*0.5
+
 var dir_val = (-left_down*air_accel*1) + (right_down*air_accel*1);
 dir_val = clamp(dir_val+hsp, -air_max_speed, air_max_speed) - hsp
-hsp += dir_val - (dir_val*spr_dir > 0)*modifier*dir_val
+hsp += dir_val - (dir_val*spr_dir > 0)*modifier*dir_val*forward_extra
 
 #define effects_nthrow()
 var geyser_length = 20;
 if(instance_exists(geyser_dfx)){
 	// print(geyser_dfx.step_timer)
+	
+	// indicador_x = x ;
+		
+	// 	//indicador_y = y + v*t + 0.5*grav*grav_mult*t*t;
+	// geyser_dfx.x = lerp(geyser_dfx.x, indicador_x, 0.1) ;
+	
+	if(geyser_dfx.step_timer >= 10){
+		
+	}
 	if(geyser_dfx.step_timer >= (geyser_length - 1)){
 		// print("Tried to spawn")
 		var t = 20;
@@ -1160,7 +1322,9 @@ if(instance_exists(geyser_dfx)){
 		indicador_x = x + hsp*t;
 		
 		indicador_y = y + v*t + 0.5*grav*grav_mult*t*t;
+		
 		hoop_dfx = spawn_hit_fx(indicador_x, indicador_y, nspecial_water_hoop_hfx);
+		hoop_dfx.spr_dir = ((hsp*spr_dir >= 2)*2 + -1)*spr_dir;
 		hoop_dfx.depth = depth -1;
 	}
 	
@@ -1181,13 +1345,32 @@ if(instance_exists(hoop_dfx)){ // Correct hoop position
 	var window_length = get_window_value(attack, 2, AG_WINDOW_LENGTH);
 	var window2_length = get_window_value(attack, 3, AG_WINDOW_LENGTH);
 	
+	var starting_offset = 0
 	
-	x2 = ease_linear(0, 30, count, window_length+window2_length);
+	if(relative_dest_x != 0){
+		var sub_r_x = relative_dest_x + starting_offset
+		var d = 1.5*sub_r_x;
+		var t = count*d/(window_length+window2_length)
+		// x2 = ease_linear(0, 30, count, window_length+window2_length);
+		
+		var x_squared = (t - sub_r_x)*(t - sub_r_x);
+		var relative_dest_x_squared = (sub_r_x*sub_r_x);
+		
+		
+		var new_y = -1*(x_squared)*(relative_dest_y / relative_dest_x_squared) + relative_dest_y;
 	
-	var x_squared = (x2 - relative_dest_x)*(x2 - relative_dest_x);
-	var relative_dest_x_squared = (relative_dest_x*relative_dest_x);
-	var new_y = -1*(x_squared)*(relative_dest_y / relative_dest_x_squared) + relative_dest_y;
+	}else{
+		var sub_r_x = 1
+		var d = 1.5*sub_r_x;
+		var t = count*d/(window_length+window2_length)
+		// x2 = ease_linear(0, 30, count, window_length+window2_length);
+		
+		var x_squared = (t - sub_r_x)*(t - sub_r_x);
+		var relative_dest_x_squared = (sub_r_x*sub_r_x);
+
+		var new_y = -1*(x_squared)*(relative_dest_y / relative_dest_x_squared) + relative_dest_y;
+	}
 	
 	count++;
 	grabbed_player_obj.y = floor(starting_y + new_y);
-	grabbed_player_obj.x = floor(starting_x + x2 * spr_dir);
+	grabbed_player_obj.x = floor(starting_x + (relative_dest_x == 0 ? 0 : t));

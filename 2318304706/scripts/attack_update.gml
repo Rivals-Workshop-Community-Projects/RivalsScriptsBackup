@@ -280,6 +280,8 @@ if (attack == AT_NSPECIAL){
 			} else {
 				sound_play(sound_get("smrpg_coin"));
 			}
+			myBurst = spawn_hit_fx(x, y - 40, specialBurstT);
+			myBurst.depth = depth + 1;
 		}
 		
 		if (window_timer % 4 == 0) {
@@ -543,6 +545,47 @@ if (attack == AT_USPECIAL_2) {
 	if (window == 1) {
 		timedHitAvailable = true;
 		clear_button_buffer(PC_SPECIAL_PRESSED);
+		/*
+		set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_GOTO, 19);
+		set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_GOTO, 19);
+		set_window_value(AT_USPECIAL_2, 12, AG_WINDOW_GOTO, 19);
+		set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_GOTO, 19);
+		set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_GOTO, 19);
+		set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_USPECIAL_2, 12, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_USPECIAL_2, 11, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_LENGTH, 4);
+		*/
+		
+		set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_VSPEED, -5.5);
+		set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_HSPEED, 8);
+		set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_VSPEED, -8.5);
+		set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_HSPEED, 6.75);
+		set_window_value(AT_USPECIAL_2, 11, AG_WINDOW_VSPEED, -11);
+		set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_VSPEED, -8.5);
+		set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_HSPEED, -6.75);
+		set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_VSPEED, -5.5);
+		set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_HSPEED, -8);
+		
+		
+		set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH,  8);
+		set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_LENGTH,  8);
+		set_window_value(AT_USPECIAL_2, 11, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_LENGTH, 8);
+			
+		set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_LENGTH,  6);
+		set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_LENGTH,  6);
+		set_window_value(AT_USPECIAL_2, 12, AG_WINDOW_LENGTH, 6);
+		set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_LENGTH, 6);
+		set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_LENGTH, 6);
+		
 	} else if (!(window > 3 && window < 19 && window % 3 == 1) && special_pressed) {
 		timedHitAvailable = false;
 	}
@@ -554,30 +597,51 @@ if (attack == AT_USPECIAL_2) {
 		clear_button_buffer(PC_UP_STICK_PRESSED);
 		set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_GOTO, 10 + (spr_dir * 3 * (left_down - right_down)));
 		if (!up_down) {set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_GOTO, get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_GOTO) + (spr_dir * 3 * (left_down - right_down)));}
+		/*
 		set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_VSPEED, -4.5);
-		set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_HSPEED, 7);
+		set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_HSPEED, 6.5);
 		set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_VSPEED, -6.5);
 		set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_HSPEED, 5);
 		set_window_value(AT_USPECIAL_2, 11, AG_WINDOW_VSPEED, -8);
 		set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_VSPEED, -6.5);
 		set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_HSPEED, -5);
 		set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_VSPEED, -4.5);
-		set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_HSPEED, -7);
+		set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_HSPEED, -6.5);
+		*/
 	}
 	
-	if (((window > 3 && window < 19 && window % 3 == 1) || (window == 3 && window_timer > 4)) && get_window_value(AT_USPECIAL_2, 11, AG_WINDOW_VSPEED) == -8 && (timedHitAvailable == true || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1)) {
+	if (((window > 3 && window < 19 && window % 3 == 1) || (window == 3 && window_timer > 4)) && get_window_value(AT_USPECIAL_2, 11, AG_WINDOW_VSPEED) == -8 && (timedHitAvailable == true || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1) && false) {
 		shouldShowIndicator = 2;
 		if(special_pressed || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1) {
 			set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_VSPEED, -6);
-			set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_HSPEED, 9);
+			set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_HSPEED, 8);
 			set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_VSPEED, -10);
 			set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_HSPEED, 6.5);
-			set_window_value(AT_USPECIAL_2, 11, AG_WINDOW_VSPEED, -13);
+			set_window_value(AT_USPECIAL_2, 11, AG_WINDOW_VSPEED, -12);
 			set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_VSPEED, -10);
 			set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_HSPEED, -6.5);
 			set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_VSPEED, -6);
-			set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_HSPEED, -9);
+			set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_HSPEED, -8);
 			sound_play(sound_get("smrpg_character_extrapower"));
+			
+			set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_GOTO, 20);
+			set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_GOTO, 20);
+			set_window_value(AT_USPECIAL_2, 12, AG_WINDOW_GOTO, 20);
+			set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_GOTO, 20);
+			set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_GOTO, 20);
+			
+			set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_LENGTH, 4);
+			set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_LENGTH, 4);
+			set_window_value(AT_USPECIAL_2, 12, AG_WINDOW_LENGTH, 4);
+			set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_LENGTH, 4);
+			set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_LENGTH, 4);
+			
+			set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH,  10);
+			set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_LENGTH,  10);
+			set_window_value(AT_USPECIAL_2, 11, AG_WINDOW_LENGTH, 10);
+			set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_LENGTH, 10);
+			set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_LENGTH, 10);
+			
 			stars = spawn_hit_fx (x, y-30, empoweredFX);
 			stars.depth = -12;
 			array_push(phone_dust_query, [x + 15, y, "dash_start", -1 * spr_dir]);
@@ -647,6 +711,11 @@ if (attack == AT_USPECIAL_2) {
 		array_push(phone_dust_query, [x, y, "land", spr_dir]);
 	}
 	
+	
+	if (window == 19 && window_timer == 1 && right_down - left_down != 0) {
+		spr_dir = sign(right_down - left_down);
+	}
+	
 	switch (window) {
 		case 2: 
 			hsp *= 0.8;
@@ -661,7 +730,8 @@ if (attack == AT_USPECIAL_2) {
 			vsp *= 0.8;
 			break;
 		case 19: 
-			hsp *= 0.98;
+		case 20: 
+			hsp *= 0.95;
 			vsp *= 0.8;
 			move_cooldown[AT_USPECIAL] = 9999999;
 			move_cooldown[AT_USPECIAL_2] = 9999999;

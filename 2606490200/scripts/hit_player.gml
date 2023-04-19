@@ -1,5 +1,29 @@
 ///
 
+if boostedparry > 1 {
+	boostedparry = 0
+	
+	 
+	 with hit_player_obj {
+	 	take_damage(player,-1,15)
+	 	hitstop += 10
+	 }
+	 hitstop += 10
+		sound_play(asset_get("sfx_absa_kickhit"));
+		sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,0.7);
+		fx = spawn_hit_fx(x - 6*spr_dir,y - 50,304)
+    	fx.pause = 12
+    	
+    	fx1 = spawn_hit_fx(x - 6*spr_dir + 30,y - 50,306)
+    	fx1.pause = 12
+    	fx2 = spawn_hit_fx(x - 6*spr_dir - 30,y - 50,306)
+    	fx2.pause = 12
+    	fx3 = spawn_hit_fx(x - 6*spr_dir,y - 80,306)
+    	fx3.pause = 12
+    	fx4 = spawn_hit_fx(x - 6*spr_dir,y - 20,306)
+    	fx4.pause = 12
+
+}
 
 
 

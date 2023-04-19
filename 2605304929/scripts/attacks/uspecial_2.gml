@@ -137,6 +137,7 @@ window_for_hitbox = 1;
     //set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1); // 1  - No Visual Effect
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
     set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 3);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 }
 
 hitbox_num++;
@@ -163,6 +164,7 @@ window_for_hitbox = 2;
     //set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1); // 1  - No Visual Effect
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
     set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 3);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 hitbox_num++;
 
 // Hitbox 6
@@ -188,6 +190,7 @@ window_for_hitbox = 2;
     //set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1); // 1  - No Visual Effect
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
     set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 3);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 hitbox_num++;
 
 // Hitbox 7
@@ -213,6 +216,7 @@ window_for_hitbox = 3;
     //set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1); // 1  - No Visual Effect
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
     set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 3);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 hitbox_num++;
 
 // Hitbox 8
@@ -238,6 +242,7 @@ window_for_hitbox = 3;
     //set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 1); // 1  - No Visual Effect
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
     set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 3);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 hitbox_num++;
 
 
@@ -267,6 +272,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
     set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 3);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 //hitbox_num++;
 
 /*

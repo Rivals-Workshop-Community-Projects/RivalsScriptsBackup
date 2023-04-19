@@ -196,12 +196,6 @@ if ("fs_using_final_smash" in self && fs_using_final_smash)
 }
 if (aura > 0) aura--;
 
-// topcustom
-if (!free && place_meeting(x, y, asset_get("par_block")))
-{
-	topcustom = y;
-}
-
 init_shader();
 
 #define MenuNav(_maxv, _prevState, _nextState)

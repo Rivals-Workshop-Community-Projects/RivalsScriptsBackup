@@ -46,6 +46,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, vfx_wood_extra_large);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_PARTICLE_NUM, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -67,6 +68,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, vfx_wood_extra_large);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_PARTICLE_NUM, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 
 //remote melee hit

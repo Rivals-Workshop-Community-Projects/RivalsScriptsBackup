@@ -63,5 +63,3 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sfx_pepsi);
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 
 
-
-set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Shorten during frames " + string(get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH) + 1) + "-" + string(get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH) + get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)) + ", skipping to endlag and destroying hitbox.");

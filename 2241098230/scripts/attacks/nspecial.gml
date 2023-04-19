@@ -111,6 +111,5 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);

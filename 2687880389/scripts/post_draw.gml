@@ -15,7 +15,7 @@ shader_start();
 
 // Draw upper and lower halves of body for fstrong
 if ((state == PS_ATTACK_AIR) || (state == PS_ATTACK_GROUND)) {
-	if (attack == AT_FSTRONG) {
+	if ((attack == AT_FSTRONG) && (window < penalty_window)) {
 		if (codename_wireframe_active) {
 			fstrong_leg_sprite = sprite_get("fstrong_legs_wireframe");
 		} else {
@@ -150,12 +150,22 @@ if (titanium_ally) {
 	}
 }
 
+// Draw big arrow once you choose a direction
+if (draw_big_arrow_timer > 0) {
+	var opacity = (draw_big_arrow_timer / draw_big_arrow_timer_max) * 0.6;
+	draw_sprite_ext(sprite_get("big_arrow"), 0,
+					draw_big_arrow_timer_x, draw_big_arrow_timer_y,
+					1.8, 1.8, draw_big_arrow_angle, c_white, opacity);
+}
+
 // Draw arrows during throw
 if ((attack == AT_NSPECIAL) && (window == 6)) {
 	var opacity = ((get_gameplay_time() % 12) > 5)  ? 0.9 : 0.3;
 	draw_sprite_ext(sprite_get("nspecial_arrows"), 0,
 					x, y, spr_dir, 1, 0, c_white, opacity);
 }
+
+
 
 // Draw targetting reticle
 /*set_article_color_slot(0,

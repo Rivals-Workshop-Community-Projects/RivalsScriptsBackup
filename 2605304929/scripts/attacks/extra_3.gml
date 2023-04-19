@@ -37,7 +37,7 @@ window_num++;
 
 // Window #2 / Frame(s) # 2/ Teleport to Opponent
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
@@ -49,7 +49,7 @@ window_num++;
 
 // Window #3 / Frame(s) # 3-6 / Jump On Opponent
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START,3);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
@@ -118,6 +118,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 0);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_ice_uspecial_start"));
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_general);
     
 hitbox_num++;
 
@@ -145,6 +146,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
     set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, -1); // Negate most drive and SDI during shock.
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, -1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 }
 
 // #5 Final Shock
@@ -160,7 +162,7 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 75);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 8);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 110); // This is changed in attack update if this move is used in air.
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90); // This is changed in attack update if this move is used in air.
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .25);
     set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 20);
@@ -175,6 +177,7 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
     set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, 1); // Reset SDI
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, 1); // Reset SDI
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
 /*
 //Template for attacks - 
 

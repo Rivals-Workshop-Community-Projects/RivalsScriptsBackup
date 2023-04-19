@@ -131,7 +131,7 @@ switch (attack){
     case AT_FSPECIAL:
 	    can_fast_fall = false;
 	    can_move = false;
-	    move_cooldown[AT_FSPECIAL] = 25;
+	    move_cooldown[AT_FSPECIAL] = 10;
 	    trigger_wavebounce();
 		var window_length = get_window_value(attack, 1, AG_WINDOW_LENGTH);
 		var window_frames = get_window_value(attack, 1, AG_WINDOW_ANIM_FRAMES);
@@ -206,9 +206,13 @@ switch (attack){
     break;
     case AT_USPECIAL:
 	    can_fast_fall = window == 3;
+	    can_move = window == 3;
 	    
 	    if (window == 1 && window_timer == get_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH) && !hitpause) {
 	    	hsp *= 0.5;
+	    }
+	    if (window == 2 && !hitpause) {
+	    	grav = 0.6;
 	    }
     break;
     case AT_USPECIAL_2:
@@ -243,7 +247,7 @@ switch (attack){
 	    	fx.spr_dir = spr_dir;
 		    if (instance_exists(mamizou_marked_temp)) {
 		    	x = round(mamizou_marked_temp.x - 32 * mamizou_marked_temp.spr_dir)
-		    	y = round(mamizou_marked_temp.y - 48)
+		    	y = round(mamizou_marked_temp.y - 32)
 		    	spr_dir = (mamizou_marked_temp.x < x) ? -1 : 1;
 		    	djumps = 0;
 		    }
@@ -258,8 +262,8 @@ switch (attack){
 	    	vsp = 0;
 	    	grav = 0;
 	    	can_move = false;
-			var cancel_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / 2);
-			var cancel_no_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / 1.5);
+			var cancel_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / uspecial_cancel_hs);
+			var cancel_no_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / uspecial_cancel_nhs);
 	    	can_attack = window_timer >= (uspecial_hitstun ? cancel_hitstun : cancel_no_hitstun);
 	    	can_jump = can_attack;
 	    	can_shield = can_attack;
@@ -275,6 +279,27 @@ switch (attack){
 	    	}
 	    }
     break;
+    case AT_DSPECIAL:
+    	can_move = (window == 2 || window == 3 || window == 4);
+    	can_fast_fall = false;
+    	move_cooldown[AT_DSPECIAL] = 20;
+    	if (window == 1 && window_timer == 1 && !hitpause) {
+    		dspecial_countered = noone;
+    	}
+    	soft_armor = ((window == 2 || window == 3 || window == 4) && !hitpause) ? 999 : 0;
+    	if (window == 3) {
+    		vsp = min(vsp, 1.25);
+    	}
+    	if (window == 6 && !hitpause && has_hit_player) {
+    		if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)/2)
+    		{
+    		 can_jump = true;
+    		 can_dash = true;
+    		}
+    	}
+    break;
+    /*
+    le old dspecial
     case AT_DSPECIAL:
     	can_move = false;
     	can_fast_fall = false;
@@ -311,10 +336,8 @@ switch (attack){
 						counter.hitstop_full *= counter.hitstop;
 						counter.hitpause = true;
 						counter.old_vsp = 0;
-						counter.old_hsp = 0;
-						if (("mamizou_mark_id" in counter) && instance_exists(counter.mamizou_mark_id)) {	
-							dspecial_countered = counter;
-						}
+						counter.old_hsp = 0;	
+						dspecial_countered = counter;
 					}
 				}
 				else {
@@ -341,6 +364,15 @@ switch (attack){
     	hsp = 0;
     	vsp = 0;
     	grav = 0;
+        if (instance_exists(dspecial_countered)) {
+	    	var enemy_dir = point_direction(x, y-30, dspecial_countered.x, dspecial_countered.y - 30);
+	    	var enemy_dist = point_distance(x, y-30, dspecial_countered.x, dspecial_countered.y - 30);
+		    set_hitbox_value(attack, 1, HG_HITBOX_X, lengthdir_x(enemy_dist, enemy_dir) * spr_dir);
+		    set_hitbox_value(attack, 1, HG_HITBOX_Y, lengthdir_y(enemy_dist, enemy_dir));
+		    set_hitbox_value(attack, 2, HG_HITBOX_X, lengthdir_x(enemy_dist, enemy_dir) * spr_dir);
+		    set_hitbox_value(attack, 2, HG_HITBOX_Y, lengthdir_y(enemy_dist, enemy_dir));
+		    
+        }
 	    
 	    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause) {
 	    	var fx = spawn_hit_fx(floor(x + 32 * spr_dir), floor(y - 48), hfx_dspec_smoke);
@@ -348,11 +380,16 @@ switch (attack){
 	    	djumps = 0;
 	        if (instance_exists(dspecial_countered)) {
 	    		sound_play(sound_get("sfx_smb3_explosion"));
-	        	window = 4;
-	        	window_timer = 0;
+	    		with (dspecial_countered) {
+			        if (("mamizou_mark_id" in self) && mamizou_mark_id == other.id) {	
+			        	other.window = 4;
+			        	other.window_timer = 0;
+			        }
+		        }
 	        }
 	    }
     break;
+    */
     case AT_TAUNT:
 	    if (window == 1 && window_timer == 1)
 	    {

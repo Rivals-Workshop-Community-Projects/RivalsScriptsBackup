@@ -2,7 +2,7 @@
 
 with oPlayer{
   
-  if(other != self and static_pull){
+  if(other != self and wally_static_enabled and static_pull and state != PS_ROLL_BACKWARD and state != PS_ROLL_FORWARD and state != PS_TECH_BACKWARD and state != PS_TECH_FORWARD){
     
         
       var pull_to_x = 0;
@@ -46,13 +46,14 @@ with oPlayer{
       var dir_sine = -dsin(dir);
       // vsp += -((mult)*grav/1.8) * free;
       // vsp *= vsp > 0 ? .99 : 0.98;
-      
+      // print(hsp)
       var dir_cose = dcos(dir);
       if !free and abs(hsp) > 0{
         var temp_hsp = hsp;
         hsp += (frict - 0.18)*sign(hsp);
         if(temp_hsp*hsp < 0) hsp = 0;
       }
+      // print(hsp)
       saved_hsp = 0;
       // switch(attack){
       //   case AT_USPECIAL_GROUND:

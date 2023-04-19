@@ -49,7 +49,7 @@ sprite_change_offset("taunt", 22, 54);
 sprite_change_offset("plat", 31, 0);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("snowflake", 11, 11);
-sprite_change_offset("nspecialCharge", 3, 7);
+sprite_change_offset("nspecialCharge", 3, 8);
 sprite_change_offset("uspec_hurt2", 40, 80);
 sprite_change_offset("particle", 4, 4);
 sprite_change_offset("maid", 20, 36);

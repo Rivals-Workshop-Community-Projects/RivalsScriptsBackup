@@ -10,6 +10,15 @@ with oPlayer {
         }
     }
 }
+if instance_exists(beacon) {
+    beacon.state = 2
+    beacon.state_timer = 0
+}
+with pHitBox {
+    if player_id == other && attack == AT_DSPECIAL {
+        instance_destroy(self)
+    }
+}
 
 move_cooldown[AT_DSPECIAL] = 0;
 move_cooldown[AT_USPECIAL] = 0;

@@ -33,6 +33,7 @@ sprite_change_offset("tech", 50, 70);
 sprite_change_offset("jab", 50, 70, true);
 sprite_change_offset("dattack", 50, 70, true);
 sprite_change_offset("ftilt", 50, 70, true);
+sprite_change_offset("ftiltdrip", 50, 70, true);
 sprite_change_offset("dtilt", 50, 70, true);
 sprite_change_offset("utilt", 50, 70, true);
 sprite_change_offset("nair", 50, 70, true);
@@ -50,11 +51,15 @@ sprite_change_offset("uspecial", 50, 70, true);
 sprite_change_offset("dspecial", 50, 70, true);
 sprite_change_offset("dspecial_2", 50, 70, true);
 sprite_change_offset("taunt", 50, 70);
+sprite_change_offset("tauntdrip", 50, 70);
 sprite_change_offset("phone_open", 50, 70);
 
 sprite_change_offset("vfx_afterimage", 100, 140);
 sprite_change_offset("vfx_afterimage_ssj1", 100, 140);
 sprite_change_offset("vfx_afterimage_ssj3", 100, 140);
+sprite_change_offset("vfx_afterimage_alt0", 100, 140);
+sprite_change_offset("vfx_afterimage_ssj1_alt0", 100, 140);
+sprite_change_offset("vfx_afterimage_ssj3_alt0", 100, 140);
 sprite_change_offset("ftilt_proj", 100, 140);
 sprite_change_offset("vfx_ftilt_destroy", 100, 140);
 sprite_change_offset("utilt_proj", 100, 140 - 30);
@@ -91,3 +96,76 @@ sprite_change_offset("hudhurt_SSJ3", 0, -2);
 sprite_change_offset("offscreen_base", 16, 18);
 sprite_change_offset("offscreen_SSJ1", 16, 18);
 sprite_change_offset("offscreen_SSJ3", 16, 18);
+
+//Trial grounds
+sprite_change_offset("goku", 31, 0);
+
+//green flower hill zone
+
+sprite_change_offset("DragonBoard", 18, 41);
+
+//Last Resort
+
+sprite_change_offset("gohan", 27, 39);
+
+//TTYD
+
+sprite_change_offset("chi_chi", 22, 48)
+
+
+//Feri
+
+sprite_change_offset("Feri_goku", 84, 114);
+
+//Pac-Man
+
+sprite_change_offset("Pacman_Goku", 20, 36);
+
+//mamizou
+
+sprite_change_offset("Goku_tanooki", 39, 32);
+
+//Miiverse
+
+sprite_change_offset("Goku_miiverse", 60, 30);
+
+//Loadent
+
+sprite_change_offset("ltweet", 65, 118);
+
+//Hypercam
+
+sprite_change_offset("Goku_hyper_Gif", 11, 8); 
+
+//Bailey Rosworth
+
+sprite_change_offset("Goku_Wrestle_Back", 70, 95);
+sprite_change_offset("Goku_Wrestle_front_base", 70, 95);
+sprite_change_offset("Goku_Wrestle_front_ssj", 70, 95);
+sprite_change_offset("Goku_Wrestle_front_ssj3", 70, 95);
+
+//Demopan
+
+sprite_change_offset("demo-pan-goku", 127, 169);
+
+//Spamton
+
+sprite_change_offset("Goku_spamton", 48, 34);
+
+//Naruto
+
+sprite_change_offset("Goku_naruto_taunt", 50, 70);
+
+//Samson
+
+sprite_change_offset("Goku_samson", 50, 70);
+
+//amber
+
+sprite_change_offset("Goku_gokuhug", 32, 100);
+sprite_change_offset("Goku_amberhug", 32, 100);
+
+// misc
+
+sprite_change_offset("taunt_sexyjutsu_custom", 50, 70);
+sprite_change_offset("hud_base", 0, -2);

@@ -298,10 +298,13 @@ battle_text = "* Broom Hatter cleans up into the fray!.";
 //Rune Stuff
 
 dtiltRune = has_rune("A");
+jabRune = has_rune("B");
 dairRune = has_rune("C");
 fspecDistanceRune = has_rune("D");
 windRune = has_rune("E");
+uspecialBoostRune = has_rune("F");
 additionalNspecChargeRune = has_rune("G");
+ustrongJumpRune = has_rune("H");
 fspecialJumpRune = has_rune("I");
 fspecJumpSavedHsp = 0;
 fspecJumpRuneInputted = false;

@@ -1,5 +1,5 @@
 sprite_change_offset("idle",                        23, 43, true);
-sprite_change_offset("idle_hurtbox",                44, 84, true);
+sprite_change_offset("idle_hurtbox",                44, 78, true);
 sprite_change_offset("wall_idle_hurtbox",           30, 80, true);
 sprite_change_offset("crouch_hurtbox",              44, 61, true);
 sprite_change_offset("hurt",                        25, 42, true);
@@ -11,15 +11,15 @@ sprite_change_offset("hurtground",                  23, 43, true);
 sprite_change_offset("crouch",                      25, 38, true);
 sprite_change_offset("walk",                        26, 45, true);
 sprite_change_offset("walkturn",                    34, 48, true);
-sprite_change_offset("dash",                        41, 41, true);
-sprite_change_offset("dashstart",                   43, 47, true);
+sprite_change_offset("dash",                        43, 41, true);
+sprite_change_offset("dashstart",                   45, 47, true);
 sprite_change_offset("dashstop",                    19, 45, true);
 sprite_change_offset("dashturn",                    48, 48, true);
 
 sprite_change_offset("jumpstart",                   29, 47, true);
-sprite_change_offset("jump",                        28, 59, true);
-sprite_change_offset("doublejump",                  28, 59, true);
-sprite_change_offset("walljump",                    28, 53, true);
+sprite_change_offset("jump",                        30, 59, true);
+sprite_change_offset("doublejump",                  30, 59, true);
+sprite_change_offset("walljump",                    26, 53, true);
 sprite_change_offset("wallcrawl",                   38, 82, true);
 sprite_change_offset("pratfall",                    25, 48, true);
 sprite_change_offset("land",                        29, 37, true);
@@ -51,7 +51,8 @@ sprite_change_offset("dstrong",                     64, 62, true);
 sprite_change_offset("dstrong_static_overlay",      64, 62, true);
 sprite_change_offset("dstrong_proj_nh",             12, 13, true);
 sprite_change_offset("orb_spawn",                   28, 22, true);
-sprite_change_offset("orb_loop",                    29, 30, true);
+sprite_change_offset("orb_loop",                    30, 30, true);
+sprite_change_offset("orb_loop_out",                17, 17, true);
 
 sprite_change_offset("nspecial",                    72, 79, true);
 sprite_change_offset("air_nspecial",                72, 79, true);
@@ -64,12 +65,15 @@ sprite_change_offset("uspecial_ground",             48, 75, true);
 sprite_change_offset("uthrow",                      84, 123, true);
 sprite_change_offset("dspecial",                    35, 57, true);
 sprite_change_offset("taunt",                       42, 56, true);
+sprite_change_offset("G9_taunt_fx",                 42, 265, true);
+sprite_change_offset("G9_lightning_taunt_fx",       42, 265, true);
 
 sprite_change_offset("plat",                        32, 47);
 sprite_change_offset("electric_wave",               100, 35);
 sprite_change_offset("wave",                        100, 35);
 sprite_change_offset("jet",                         24, 29);
 sprite_change_offset("jet_discharge",               24, 29);
+sprite_change_offset("jet_fstrong",                 27, 37);
 sprite_change_offset("jet_static_overlay",          24, 29);
 sprite_change_offset("wat",                         25, 26);
 sprite_change_offset("lightningfx_uspecial",        85, 134);
@@ -84,6 +88,7 @@ sprite_change_offset("nspecial_water_geyser",         60*2, 83*2);
 sprite_change_offset("nspecial_water_hoop",           70*2, 57*2);
 sprite_change_offset("nspecial_water_ball_overlay",   12, 11);
 sprite_change_offset("nspecial_water_miss_ground_hitfx",   38*2, 28*2);
+sprite_change_offset("sparkfx",                        90,90);
 
 sprite_change_offset("uthrow_hitfx",                  138, 92);
 sprite_change_offset("nspecial_proj",                 12, 24);
@@ -94,6 +99,9 @@ sprite_change_offset("nspecial_magnet",               13, 20);
 sprite_change_offset("magnetism_trail",               17, 6);
 sprite_change_offset("magnetism_layered_trail",       17, 6);
 sprite_change_offset("ball_offscreen",                8, 9);
+sprite_change_offset("dspecial_bubble",               50, 50);
+sprite_change_offset("dspecial_bubble_fx",            50, 50);
+sprite_change_offset("dspecial_bubble_fail_fx",            50, 50);
 
 
 victory_theme = set_victory_theme(sound_get("Gentle Giant"))

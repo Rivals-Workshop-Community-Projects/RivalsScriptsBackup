@@ -87,12 +87,12 @@ set_color_profile_slot( 9, 2, 130, 30, 30 ); //SHOES
 set_color_profile_slot( 9, 3, 255, 211, 38 ); //SOLES
 set_color_profile_slot( 9, 4, 255, 233, 224 ); //BELLY
 
-// Void
-set_color_profile_slot( 10, 0, 197, 224, 197 ); //SKIN
-set_color_profile_slot( 10, 1, 0, 99, 0 ); //SADDLE
-set_color_profile_slot( 10, 2, 16, 105, 0 ); //SHOES
-set_color_profile_slot( 10, 3, 247, 255, 247 ); //SOLES
-set_color_profile_slot( 10, 4, 219, 255, 219 ); //BELLY
+// Pink
+set_color_profile_slot( 10, 0, 255, 117, 218 ); //SKIN
+set_color_profile_slot( 10, 1, 248, 60, 5 ); //SADDLE
+set_color_profile_slot( 10, 2, 255, 242, 0 ); //SHOES
+set_color_profile_slot( 10, 3, 255, 236, 191 ); //SOLES
+set_color_profile_slot( 10, 4, 235, 199, 218 ); //BELLY
 
 // Orange / Plessie
 set_color_profile_slot( 11, 0, 255, 115, 0 ); //SKIN

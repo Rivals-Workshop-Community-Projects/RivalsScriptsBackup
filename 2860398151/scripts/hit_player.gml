@@ -5,6 +5,11 @@ if (my_hitboxID.attack == AT_DTILT)
 	energy_meter+= 2;
 }
 
+if (my_hitboxID.type == 2)
+{
+	energy_meter+= 0;
+}
+
 else
 {
 	energy_meter+= 5;
@@ -270,6 +275,8 @@ if (my_hitboxID.attack == AT_DSPECIAL)
 
 if (my_hitboxID.attack == AT_DSPECIAL_2)
 {
+	grabbed_player_obj = hit_player_obj;
+	
 	if (my_hitboxID.hbox_num == 8)
 	{		
 		sound_play(asset_get("sfx_ori_energyhit_heavy"), false, noone, 0.80);

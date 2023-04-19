@@ -22,11 +22,13 @@ set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_LENGTH, 12);
@@ -35,6 +37,7 @@ set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_HAS_SFX, true);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_LENGTH, 24);
@@ -43,7 +46,7 @@ set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_HAS_SFX, true);
 set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_SFX_FRAME, 0);
-
+set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_INVINCIBILITY, 2);
 
 set_num_hitboxes(AT_FSPECIAL_2, 2);
 

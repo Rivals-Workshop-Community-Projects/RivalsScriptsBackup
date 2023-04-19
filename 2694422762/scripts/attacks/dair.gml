@@ -4,7 +4,7 @@ set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_DAIR, AG_MUNO_ATTACK_USES_ROLES, 1);
-set_attack_value(AT_DAIR, AG_MUNO_ATTACK_MISC, "Hitting the ground during active frames will cause the user to bounce.");
+set_attack_value(AT_DAIR, AG_MUNO_ATTACK_MISC, "Hitting the ground and holding attack during active frames will cause Lucy to bounce.");
 
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 5);
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 11);
@@ -37,13 +37,14 @@ set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_SFX, sound_get("sfx_lucy_dairland"));
 set_window_value(AT_DAIR, 4, AG_WINDOW_SFX_FRAME, 1);
 
-set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.06);
-set_window_value(AT_DAIR, 5, AG_WINDOW_VSPEED, -9.5);
+set_window_value(AT_DAIR, 5, AG_WINDOW_VSPEED, -6.5);
 set_window_value(AT_DAIR, 5, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 set_num_hitboxes(AT_DAIR, 4);

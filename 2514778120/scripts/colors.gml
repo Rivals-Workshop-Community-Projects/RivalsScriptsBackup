@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 11, 1, 14 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 27 );
 
 // Blue
 set_color_profile_slot( 1, 0, 171, 110, 63 ); //Skin
@@ -212,14 +212,14 @@ set_color_profile_slot( 20, 4, 255, 0, 0 ); //Green
 set_color_profile_slot( 20, 5, 255, 179, 0 ); //Orange
 set_color_profile_slot( 20, 6, 255, 0, 0 ); //Bandages
 
-// Zetta
-set_color_profile_slot( 21, 0, 233, 233, 243 ); //Skin
-set_color_profile_slot( 21, 1, 233, 233, 243 ); //Hair
-set_color_profile_slot( 21, 2, 245, 245, 255 ); //White
-set_color_profile_slot( 21, 3, 59, 59, 59 ); //Black
-set_color_profile_slot( 21, 4, 10, 163, 10 ); //Green
-set_color_profile_slot( 21, 5, 59, 59, 59 ); //Orange
-set_color_profile_slot( 21, 6, 10, 163, 10 ); //Bandages
+// halloween
+set_color_profile_slot( 21, 0, 96, 96, 96 ); //Skin
+set_color_profile_slot( 21, 1, 255, 128, 0 ); //Hair
+set_color_profile_slot( 21, 2, 255, 128, 0 ); //White
+set_color_profile_slot( 21, 3, 96, 96, 96 ); //Black
+set_color_profile_slot( 21, 4,  96, 96, 96 ); //Green
+set_color_profile_slot( 21, 5, 255, 128, 0 ); //Orange
+set_color_profile_slot( 21, 6,  96, 96, 96 ); //Bandages
 
 // Transistor
 set_color_profile_slot( 22, 0, 255, 194, 150 ); //Skin
@@ -257,54 +257,14 @@ set_color_profile_slot( 25, 4, 96, 205, 181 ); //Green
 set_color_profile_slot( 25, 5, 96, 205, 181 ); //Orange
 set_color_profile_slot( 25, 6, 245, 248, 250 ); //Bandages
 
-// Seasonal
-switch (get_match_setting(SET_SEASON)) {
-  case 1: // valentines
-        set_color_profile_slot( 26, 0, 250, 206, 150 ); //Skin
-        set_color_profile_slot( 26, 1, 254, 176, 255 ); //Hair
-        set_color_profile_slot( 26, 2, 210, 150, 195 ); //White
-        set_color_profile_slot( 26, 3, 182, 38, 39 ); //Black
-        set_color_profile_slot( 26, 4, 254, 176, 255 ); //Green
-        set_color_profile_slot( 26, 5, 182, 38, 39 ); //Orange
-        set_color_profile_slot( 26, 6, 182, 38, 39 ); //Bandages
-    break;
-  case 2: // summer
-        set_color_profile_slot( 26, 0, 155, 99, 59 ); //Skin
-        set_color_profile_slot( 26, 1, 98, 240, 204 ); //Hair
-        set_color_profile_slot( 26, 2, 254, 228, 166 ); //White
-        set_color_profile_slot( 26, 3, 253, 128, 56 ); //Black
-        set_color_profile_slot( 26, 4, 98, 240, 204 ); //Green
-        set_color_profile_slot( 26, 5, 253, 128, 56 ); //Orange
-        set_color_profile_slot( 26, 6, 253, 128, 56 ); //Bandages
-    break;
-  case 3: // halloween
-        set_color_profile_slot( 26, 0, 96, 96, 96 ); //Skin
-        set_color_profile_slot( 26, 1, 255, 128, 0 ); //Hair
-        set_color_profile_slot( 26, 2, 255, 128, 0 ); //White
-        set_color_profile_slot( 26, 3, 96, 96, 96 ); //Black
-        set_color_profile_slot( 26, 4,  96, 96, 96 ); //Green
-        set_color_profile_slot( 26, 5, 255, 128, 0 ); //Orange
-        set_color_profile_slot( 26, 6,  96, 96, 96 ); //Bandages
-    break;
-  case 4: // christmas
-        set_color_profile_slot( 26, 0, 216, 155, 108 ); //Skin
-        set_color_profile_slot( 26, 1, 255, 72, 72 ); //Hair
-        set_color_profile_slot( 26, 2, 12, 170, 0 ); //White
-        set_color_profile_slot( 26, 3, 37, 37, 37 ); //Black
-        set_color_profile_slot( 26, 4, 246, 232, 232 ); //Green
-        set_color_profile_slot( 26, 5, 255, 72, 72 ); //Orange
-        set_color_profile_slot( 26, 6, 255, 72, 72 ); //Bandages
-    break;
-}
-
 // spider 
-set_color_profile_slot( 27, 0, 155, 112, 81 ); //Skin
-set_color_profile_slot( 27, 1, 244, 236, 174 ); //Hair
-set_color_profile_slot( 27, 2, 48, 57, 77 ); //White
-set_color_profile_slot( 27, 3, 74, 98, 117 ); //Black
-set_color_profile_slot( 27, 4, 235, 185, 255 ); //Green
-set_color_profile_slot( 27, 5, 255, 195, 0 ); //Orange
-set_color_profile_slot( 27, 6, 109, 45, 61 ); //Bandages
+set_color_profile_slot( 26, 0, 155, 112, 81 ); //Skin
+set_color_profile_slot( 26, 1, 244, 236, 174 ); //Hair
+set_color_profile_slot( 26, 2, 48, 57, 77 ); //White
+set_color_profile_slot( 26, 3, 74, 98, 117 ); //Black
+set_color_profile_slot( 26, 4, 235, 185, 255 ); //Green
+set_color_profile_slot( 26, 5, 255, 195, 0 ); //Orange
+set_color_profile_slot( 26, 6, 109, 45, 61 ); //Bandages
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

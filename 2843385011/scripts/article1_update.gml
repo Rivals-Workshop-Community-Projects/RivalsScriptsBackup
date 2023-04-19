@@ -17,8 +17,12 @@ with (asset_get("pHitBox")){
 }
 
 if (nspecial_push){
+	if (state_timer%8 == 0){
+		spawn_hit_fx(x - 10*spr_dir, y, player_id.nspecial_trail1);
+		sound_play(asset_get("sfx_ori_uptilt_single"),false,noone,.4,1.1);
+	}
 	if (hsp != 0){
-		hsp -= 0.5*spr_dir;
+		hsp -= 0.25*spr_dir;
 	}
 }
 
@@ -33,7 +37,7 @@ if (nspecial_fly){
 		sound_play(asset_get("sfx_ori_uptilt_single"),false,noone,.5);
 	}
 	if (hsp != 0){
-		hsp -= 0.25*spr_dir;
+		hsp -= 0.1*spr_dir;
 	}
 }
 
@@ -201,7 +205,7 @@ if (state == 6){
 	}
 }
 
-if (state == 4 || state == 5){
+if (state == 2 || state == 4 || state == 5){
 	with (asset_get("pHitBox")){
     	if (place_meeting(x,y,other.id) && kb_value > 0){
     		other.desired_hitstop = clamp(hitpause + damage * hitpause_growth * 0.05, 0, 20);

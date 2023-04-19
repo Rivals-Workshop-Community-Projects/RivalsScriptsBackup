@@ -207,10 +207,10 @@ set_color_profile_slot( 17, 6, 0, 0, 0 ); //EyeBlack2
 set_color_profile_slot( 17, 7, 18, 149, 173 ); //Orb/Gear
 
 // Golden
-set_color_profile_slot( 18, 0, 207, 194, 8 ); //Green
-set_color_profile_slot( 18, 1, 194, 204, 204 ); //Red
-set_color_profile_slot( 18, 2, 152, 136, 237 ); //Eye
-set_color_profile_slot( 18, 3, 219, 129, 18 ); //Leaf
+set_color_profile_slot( 18, 0, 194, 204, 204 ); //Green
+set_color_profile_slot( 18, 1, 224, 181, 24 ); //Red
+set_color_profile_slot( 18, 2, 212, 114, 30 ); //Eye
+set_color_profile_slot( 18, 3, 152, 136, 237 ); //Leaf
 set_color_profile_slot( 18, 4, 196, 94, 111 ); //Mouth
 set_color_profile_slot( 18, 5, 0, 0, 0 ); //EyeBlack
 set_color_profile_slot( 18, 6, 0, 0, 0 ); //EyeBlack2
@@ -275,26 +275,6 @@ set_color_profile_slot( 24, 4, 196, 94, 111 ); //Mouth
 set_color_profile_slot( 24, 5, 0, 0, 0 ); //EyeBlack
 set_color_profile_slot( 24, 6, 0, 0, 0 ); //EyeBlack2
 set_color_profile_slot( 24, 7, 18, 149, 173 ); //Orb/Gear
-
-// Marshtomp
-set_color_profile_slot( 25, 0, 86, 173, 166 ); //Green
-set_color_profile_slot( 25, 1, 230, 155, 46 ); //Red
-set_color_profile_slot( 25, 2, 230, 155, 46 ); //Eye
-set_color_profile_slot( 25, 3, 67, 82, 110 ); //Leaf
-set_color_profile_slot( 25, 4, 196, 94, 111 ); //Mouth
-set_color_profile_slot( 25, 5, 0, 0, 0 ); //EyeBlack
-set_color_profile_slot( 25, 6, 0, 0, 0 ); //EyeBlack2
-set_color_profile_slot( 25, 7, 18, 149, 173 ); //Orb/Gear
-
-// Combusken
-set_color_profile_slot( 26, 0, 224, 197, 90 ); //Green
-set_color_profile_slot( 26, 1, 230, 100, 25 ); //Red
-set_color_profile_slot( 26, 2, 230, 100, 25 ); //Eye
-set_color_profile_slot( 26, 3, 122, 122, 122 ); //Leaf
-set_color_profile_slot( 26, 4, 196, 94, 111 ); //Mouth
-set_color_profile_slot( 26, 5, 0, 0, 0 ); //EyeBlack
-set_color_profile_slot( 26, 6, 0, 0, 0 ); //EyeBlack2
-set_color_profile_slot( 26, 7, 18, 149, 173 ); //Orb/Gear
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -7,8 +7,6 @@ set_attack_value(AT_EXTRA_2, AG_HAS_LANDING_LAG, 200); // hmm
 set_attack_value(AT_EXTRA_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE, sprite_get("owen_crouchbox_copy"));
 
-set_attack_value(AT_EXTRA_2, AG_MUNO_ATTACK_EXCLUDE, 1);
-
 // start sitting down
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 6);

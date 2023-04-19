@@ -46,7 +46,7 @@ set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_JAB, 7, AG_WINDOW_HSPEED, 5);
-set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_JAB, 8, AG_WINDOW_TYPE, 1);
@@ -58,7 +58,7 @@ set_window_value(AT_JAB, 9, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAME_START, 14);
-set_window_value(AT_JAB, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
+
 
 set_num_hitboxes(AT_JAB, 3);
 
@@ -116,6 +116,6 @@ set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_JAB, 3, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, sound_get("slash1"));
+set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, sound_get("slash4"));
 set_hitbox_value(AT_JAB, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, 2);

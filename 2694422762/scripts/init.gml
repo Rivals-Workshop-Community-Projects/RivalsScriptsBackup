@@ -144,6 +144,7 @@ grabbed_player_timer = 0;
 
 training_toggle = get_training_cpu_action() != CPU_FIGHT
 training_meter_inc = 0
+alt_glow_timer = 0;
 
 initIndexes();
 

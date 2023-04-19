@@ -18,7 +18,7 @@ walk_speed          = 3.12;		// 3    -  4.5
 walk_accel          = 0.45;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
 initial_dash_time   = 10;		// 8    -  16       zetterburn's is 14
-initial_dash_speed  = 7;		// 4    -  9
+initial_dash_speed  = 7.50;		// 4    -  9
 dash_speed          = 7.45;		// 5    -  9
 dash_turn_time      = 20;		// 8    -  20
 dash_turn_accel     = 1.85;		// 0.1  -  2
@@ -67,7 +67,6 @@ techroll_speed      = 10;		// 8    -  11
 
 //	Sprites
 spr_nspecial_proj = sprite_get("nspecial_proj");
-//spr_example = sprite_get("example"); // sprites/example_stripX.png
 
 //	SFX
 sfx_kodiak_jab1 		= sound_get("jab 1");
@@ -164,7 +163,6 @@ The reason for this is that otherwise, the crouch just glitches out at the end
 of the standing-up animation. Dan Moment
 
 */
-
 
 
 //	Hurtbox sprites

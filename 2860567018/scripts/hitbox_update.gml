@@ -61,4 +61,15 @@ else if (attack == AT_NSPECIAL and hbox_num == 3 and hitbox_timer == 6){
         hb.hit_flipper = hit_flipper;
         hb.spr_dir = spr_dir;
         hb.player = player;
+} else if (attack == AT_EXTRA_2){
+    if(hitbox_timer > 160){
+        img_spd = .15;
+    } if (hitbox_timer > 210){
+        img_spd = .2;
+    }
+    
+    if(hitbox_timer > 45 and collision_point(x, y-2, oPlayer, true, true)){
+        destroyed = true;
+        sound_play(sound_get("graze"));
+    }
 }

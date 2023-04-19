@@ -1,16 +1,56 @@
+cpu_hover_update();
+
 if (get_color_profile_slot_r(1, 0) == 179) {
     sound_play(asset_get("sfx_hod_steam_level1"));
     set_color_profile_slot( 1, 0, 180, 138, 102 );
 }
 
+//alt button
+
+var alt_button_pos = 
+[
+    x + alt_button_x,
+    y + alt_button_y,
+    x + alt_button_x+30,
+    y + alt_button_y+26,
+]
+
+var alt_button_index = alt_button*3;
+
+cursor_x = get_instance_x(cursor_id);
+cursor_y = get_instance_y(cursor_id);
+
+if (cursor_x > alt_button_pos[0] && cursor_x < alt_button_pos[2] && cursor_y > alt_button_pos[1] && cursor_y < alt_button_pos[3] && !instance_exists(oTestPlayer))
+{
+	if(is_alt_changeable){
+   alt_button_index++;
+	}
+}
+
+//set_synced_var( player, voice_button)
+//set_synced_var( player, secret_alt_on)
+//secret_alt_on = get_synced_var(player)
+if(!secret_alt_on){
+if (get_player_color(player)==23){
+        draw_sprite(sprite_get("drip_charselect"),0,x+8,y+8);
+}if (get_player_color(player)==25){
+        draw_sprite(sprite_get("charselect_summer"),0,x+8,y+8);
+}
+}
+draw_sprite(sprite_get("stockicon"),0,x+156,y+34);
+if(is_alt_changeable){
+draw_sprite_ext(sprite_get("alt_button"), alt_button_index, alt_button_pos[0]-24, alt_button_pos[1]-12, 1, 1, 0, -1, 1);
+}
+cpu_hover_draw(); 
+
 var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "4";
-patch_month = "SEP";
+patch_day = "20";
+patch_month = "MAR";
  
-var num_alts = 25;
+var num_alts = 27;
 var alt_cur = get_player_color(player);
 var alt = get_player_color(player);
  
@@ -21,16 +61,38 @@ drawing = 0
     
 if ("prev_alt" in self && prev_alt != alt){
      drawtime = 0
+	is_alt_changeable = false;
+    secret_alt_on = 0;
+    alt_button = 0; 
+    secret_alt_num = 0;
+    avocado = false;
 }
 
+var read_alts = 0;
 if(drawtime < 5){
 drawtime += 1
+read_alts = 0;
+	is_alt_changeable = false;
+    secret_alt_on = 0;
+    alt_button = 0; 
+    secret_alt_num = 0;
+    avocado = false;
 }
 prev_alt = alt;
+
+/*
+var reset_alts = false;
+
+if(!reset_alts){
+	wagabaga_bobo();
+	reset_alts = true;
+}
+*/
  
  
 //Alt name init. var doesn't work with arrays lol
- 
+if(read_alts = 0){  
+    if(secret_alt_on == 0){
 alt_name[0]  = "Po & Gumbo"; 
 alt_name[1]  = "Mud-Flats"; 
 alt_name[2]  = "Freshwater"; 
@@ -57,11 +119,17 @@ alt_name[22]  = "Having fun at Dave-Land";
 alt_name[23]  = "Leakage"; 
 alt_name[24]  = "Reverse"; 
 alt_name[25]  = "Riptide"; 
-
-if (get_player_color(player)==23){
-        draw_sprite(sprite_get("drip_charselect"),0,x+8,y+8);
-}if (get_player_color(player)==25){
-        draw_sprite(sprite_get("charselect_summer"),0,x+8,y+8);
+alt_name[26]  = "Hoops"; 
+alt_name[27]  = "GENESIS"; 
+}else{
+alt_name[12]  = "Mishima"; 
+alt_name[14]  = "Avocado";  
+alt_name[15]  = "RetroTag"; 
+alt_name[16]  = "Champed-Up"; 
+alt_name[21]  = "Investigator";
+alt_name[22]  = "The Best"; 
+}
+read_alts = 1;
 }
 if (get_player_color(player)==23){
     if (drawtime == 1){
@@ -75,7 +143,17 @@ draw_set_halign(fa_left);
  
 textDraw(temp_x + 134, temp_y + -12, "fName", c_white, 0, 1000, 1, true, 1, "VER");
 textDraw(temp_x + 2, temp_y + 32, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
-draw_sprite(sprite_get("stockicon"),0,x+156,y+34);
+
+if (get_player_color(player)==12 || get_player_color(player)==14 || get_player_color(player)==15 || get_player_color(player)==16 || get_player_color(player)==22 || get_player_color(player)==21){
+	is_alt_changeable = true;
+}else{
+	is_alt_changeable = false;
+    secret_alt_on = 0;
+    alt_button = 0; 
+    secret_alt_num = 0;
+    avocado = false;
+}
+init_shader();
 
 /*
 //GB Icon
@@ -138,3 +216,20 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 #define rectDraw(x1, y1, x2, y2, color)
  
 draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
+#define cpu_hover_draw()
+if (cpu_hover_time > 0) {
+    var prog = min(cpu_hover_time/10, 1);
+    var colprog = min(cpu_color_swap_time/5, 1);
+    var col = merge_color(cpuh_prev_color, cpuh_new_color, colprog);
+    draw_sprite_ext(cpu_hover_sprite, 0, x - 4, y - 6, 2, 2, 0, col, prog);
+    draw_set_alpha(prog);
+    draw_debug_text(plate_bounds[2]-17, plate_bounds[3]+1, `P${cpu_hovering_player}`);
+    draw_set_alpha(1);
+}
+
+//set_synced_var(player, voice_button);
+//set_synced_var(player, alt_button);
+
+#define cpu_hover_update()
+var p = player;
+var is_cpu = (get_player_hud_color(p) == 8421504);

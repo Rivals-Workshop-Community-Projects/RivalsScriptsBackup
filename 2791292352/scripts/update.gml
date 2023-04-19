@@ -57,6 +57,22 @@ if get_player_color(player) = 27 {
 }
 init_shader();
 
+//HEX GALAXY =============================================
+
+if phone_cheats[CHEAT_SWIRLY] || (hitpause && dspec_galaxy && attack = AT_DSPECIAL && (state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR)) {
+if hex_alpha < 3 {
+hex_alpha += 0.4;
+}
+} else {
+dspec_galaxy = false;
+}
+
+if hex_alpha > 0 {
+hex_alpha -= 0.1;
+}
+
+//INTRO ANIM =============================================
+
 if (introTimer2 < 3)
     introTimer2++;
 else{
@@ -64,14 +80,21 @@ else{
     introTimer++;
 }
 
-if (sprite_index == sprite_get("intro")){
-    if (state_timer == 20 || state_timer == 28)
-		sound_play(asset_get("sfx_swipe_weak1"));
-	
-	if (state_timer == 48){
-		sound_play(sound_get("cry"));
-		sound_play(asset_get("sfx_swipe_heavy2"));
+if introTimer2 = 0 {
+    switch introTimer {
+	    case 1:
+		case 3:
+		    sound_play(asset_get("sfx_swipe_weak1"));
+		break;
+		case 9:
+		    sound_play(sound_get("cry"));
+		    sound_play(asset_get("sfx_swipe_heavy2"));
+		break;
 	}
+}
+
+if was_reloaded || object_index == oTestPlayer{
+introTimer = 15;
 }
 
 //this increments introTimer every few frames, depending on the number entered
@@ -82,6 +105,8 @@ else
     draw_indicator = true;
 
 //this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
+
+//---------------------------
 
 if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
 if phone_cheats[CHEAT_INF_NSPECIAL] wow_chrg = wow_chrg_max;
@@ -155,14 +180,6 @@ with(asset_get("pHitBox")){
 }
 if (!nspecial_inst_exists)
 	wow_hitbox_group = 0;
-			
-var cursefx_1 = hit_fx_create(sprite_get("cursed_fx1"), 6*4);
-var cursefx_2 = hit_fx_create(sprite_get("cursed_fx2"), 4*4);
-var cursefx_used = (round(get_gameplay_time() / 4.5) % 2 == 0) ? cursefx_2 : cursefx_1;
-
-var omenfx_1 = hit_fx_create(sprite_get("wwisp_fx1"), 6*4);
-var omenfx_2 = hit_fx_create(sprite_get("wwisp_fx2"), 4*4);
-var omenfx_used = (round(get_gameplay_time() / 4.5) % 2 == 0) ? omenfx_2 : omenfx_1;
 
 // i forgot to store the sounds (lmao)
 // yeah so sprite_get / sound_get pull from your perspective, so like, if you call sound_get("mcurse_lift") in the with statement, it'll uhhh
@@ -174,107 +191,86 @@ var curselift_snd = sound_get("mcurse_lift");
 var cursedamage_snd = sound_get("mcurse_damage");
 var curseapply_snd = sound_get("mcurse_apply");
 
-omegacurser = phone_cheats[CHEAT_INFINICURSE];
+long_cursed = phone_cheats[CHEAT_INFINICURSE];
 
-//REFLECTED CURSE CODE
-if (cofa_mummy){
-	if (cofa_mummy_id.state == PS_RESPAWN || cofa_mummy_id.state == PS_DEAD || state == PS_RESPAWN || state == PS_DEAD){ // inflictor or target died
-		if (cofa_mummy_timer != 0)
-			sound_play(curselift_snd); // snd
-		cofa_mummy_timer = 0;
-	}
-	else{ // no
-		if (!hitpause){
-			// bunch of checks
-			if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
-				cofa_mummy_atktimer = 2;
-			if (get_num_hitboxes(attack) == 0 || attack == AT_TAUNT || attack == AT_TAUNT_2) // not taunt or has no hitboxes in attack
-				cofa_mummy_atktimer = 0;
+//grafficks for cursed players
+
+with oPlayer {
+//disable running mummy script in the event of plural cofagrigi
+if cofa_mummy_source = other {
+
+//check if current player has mummy inflicted
+if cofa_mummy {
+	
+//attack check and damage
+	if (!hitpause){
+		//if currently attacking, stall the timer
+			if !other.long_cursed && !(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) {
+				cofa_mummy_timer--;
 				
-			var should_take_dmg = false;
-			if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) && (!has_hit_player && !hitpause) && (cofa_mummy_atktimer == 1) && (get_num_hitboxes(attack) != 0) // vine boom
-				should_take_dmg = true;
-			
-			if (should_take_dmg){ // yes
-				take_damage(player, -1, 1); // take damage
-				sound_play(cursedamage_snd); // snd
-				cofa_mummy_atktimer = 0;
+		//in the attacking states, take damage if this move has a hitbox
+			} else {
+				if state_timer = 0 && !hitpause && !(get_num_hitboxes(attack) = 0 || attack = AT_TAUNT || attack = AT_TAUNT_2) {
+				    cofa_mummy_real_attack = true;
+					take_damage(player, cofa_mummy_owner.player, 1); // take damage
+					sound_play(cursedamage_snd); // snd
+		        	with other {
+				    	var fxlol = spawn_hit_fx(other.x, other.y-40, wwisp_charge);
+				    	fxlol.depth = other.depth+1;
+					}
+				} else {
+				    cofa_mummy_real_attack = false;
+				}
 			}
 			
-			cofa_mummy_atktimer = max(cofa_mummy_atktimer-1, 0);
-			cofa_mummy_timer = max(cofa_mummy_timer-1, (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) ? 1 : 0);
-			
-			if (cofa_mummy_timer <= 0){
-				cofa_mummy = false;
-				sound_play(curselift_snd);
-			}
-		}
-		
-		if (cofa_mummy_fx_timer == 0){
-			var fx1 = spawn_hit_fx(round(x + random_func(0, 85, true)) - 42, round(y + random_func_2(0, char_height + 1, true)) - char_height, cursefx_used);
-			fx1.depth = depth-1; // move above player
-			cofa_mummy_fx_timer = 2;
-		}
-		cofa_mummy_fx_timer--;
+    }
+	
+	with other {
+    if (get_gameplay_time()%2 = 0){
+        var cursefx_used = (round(get_gameplay_time() / 4.5) % 2 == 0) ? cursefx_2 : cursefx_1;
+
+	    var fx1 = spawn_hit_fx(round(other.x + random_func(0, 85, true)) - 42, round(other.y + random_func_2(0, char_height + 1, true)) - char_height, cursefx_used);
+	    fx1.depth = other.depth-1; // move above player
+    }
+    }
+
+	//erase the curse when out of time or killed
+	//under here so it doesnt spit an error if above code is run when mummy is removed
+    if (cofa_mummy_timer <= 0) || ((state = PS_RESPAWN || state = PS_DEAD) && state_timer = 0) || ((cofa_mummy_owner.state = PS_RESPAWN || cofa_mummy_owner.state = PS_DEAD) && cofa_mummy_owner.state_timer = 0) {
+		cofa_mummy_owner = noone;
+		cofa_mummy = false;
+		sound_play(curselift_snd);
 	}
+	
+}
 }
 
-//OTHER PLAYER CURSE CODE
-with (oPlayer) {
-	if player != other.player {	
-		if (cofa_mummy){
-		//transfer to non-cofa players
-
-
-
-			if (cofa_mummy_id.state == PS_RESPAWN || cofa_mummy_id.state == PS_DEAD || state == PS_RESPAWN || state == PS_DEAD){ // inflictor or target died
-				if (cofa_mummy_timer != 0)
-					sound_play(curselift_snd); // snd
-				cofa_mummy_timer = 0;
+//check for mummy transfers if hit/parried
+        if "enemy_hitboxID" in self && instance_exists(enemy_hitboxID) && "type" in enemy_hitboxID {
+        if hitpause && hitstun && enemy_hitboxID.type = 1 {
+	        if hit_player_obj.cofa_mummy = true {
+		    	hit_player_obj.cofa_mummy = false;
+				hit_player_obj.cofa_mummy_owner = noone;
+				cofa_mummy = true;
+				cofa_mummy_timer = 180;
+				cofa_mummy_owner = hit_player_obj;
+				cofa_mummy_source = hit_player_obj.cofa_mummy_source;
+				sound_play(curselift_snd);
+		    	sound_play(curseapply_snd);
 			}
-			else{ // no
-				if (!hitpause){
-    				// bunch of checks
-					if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
-						cofa_mummy_atktimer = 2;
-					if (get_num_hitboxes(attack) == 0 || attack == AT_TAUNT || attack == AT_TAUNT_2) // not taunt or has no hitboxes in attack
-						cofa_mummy_atktimer = 0;
-						
-					var should_take_dmg = false;
-					if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) && (!has_hit_player && !hitpause) && (cofa_mummy_atktimer == 1) && (get_num_hitboxes(attack) != 0) // vine boom
-						should_take_dmg = true;
-					
-					if (should_take_dmg){ // yes
-						take_damage(player, -1, 1); // take damage
-						sound_play(cursedamage_snd); // snd
-						cofa_mummy_atktimer = 0;
-					}
-					
-					cofa_mummy_atktimer = max(cofa_mummy_atktimer-1, 0);
-					
-					omegacursed = other.omegacurser;
-					
-					if (omegacursed){
-					cofa_mummy_timer = 180;
-					} else {
-					cofa_mummy_timer = max(cofa_mummy_timer-1, (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) ? 1 : 0);
-					}
-					
-					if (cofa_mummy_timer <= 0){
-						cofa_mummy = false;
-						sound_play(curselift_snd);
-					}
-				}
-				
-				if (cofa_mummy_fx_timer == 0){
-					with(other){
-						var fx1 = spawn_hit_fx(round(other.x + random_func(0, 85, true)) - 42, round(other.y + random_func_2(0, other.char_height + 1, true)) - other.char_height, cursefx_used);
-						fx1.depth = other.depth-1; // move above player
-					}
-					cofa_mummy_fx_timer = 2;
-				}
-				cofa_mummy_fx_timer--;		
-			}
+	    }
 		}
-	}
+
+	//parry transfer
+		if was_parried && hit_player_obj.cofa_mummy = true {
+		    hit_player_obj.cofa_mummy = false;
+			hit_player_obj.cofa_mummy_owner = noone;
+            cofa_mummy = true;
+			cofa_mummy_timer = 180;
+			cofa_mummy_owner = hit_player_obj;
+			cofa_mummy_source = hit_player_obj.cofa_mummy_source;
+			sound_play(curselift_snd);
+		    sound_play(curseapply_snd);
+		}
+
 }

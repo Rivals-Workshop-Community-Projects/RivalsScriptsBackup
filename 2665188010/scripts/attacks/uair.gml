@@ -26,7 +26,7 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UAIR,2);
-
+// Sour
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 4);
@@ -37,14 +37,14 @@ set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 75);
 set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 65);
-set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .4);
-set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .45);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 0);
-
+// Sweet
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 4);

@@ -1,0 +1,11 @@
+step_timer = 0;
+skill_exp = 0;
+exp_given = 1;
+xp_kb = 8;
+xp_ang = 0;
+step_length = 32;
+sprite_index = sprite_get("fx_exp");
+uses_shader = false;
+disable_movement = true;
+depth = 4;
+spr_color = get_player_hud_color(player_id.player);

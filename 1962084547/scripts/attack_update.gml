@@ -4,16 +4,17 @@ if attack == AT_DATTACK || attack == AT_FSTRONG {
 }
 
 
-if attack == AT_FSPECIAL_2 {
+if attack == AT_FSPECIAL_2 || attack == AT_FSPECIAL_AIR {
     can_move = 0;
     can_fast_fall = 0;
-    if window == 2 && window_timer == 1 {spr_dir *= -1; }
+    if window == 2 && window_timer == 1 {spr_dir *= -1; fspecial_stall_count++; }
     //cap vsp until the move hits a player
-    if (!hitpause && !has_hit_player) vsp = max(vsp, -1);
+    //if (!hitpause && !has_hit_player) vsp = max(vsp, -1);
 }
 
 if attack == AT_FSPECIAL {
 	move_cooldown[AT_FSPECIAL] = glide_cooldown*60;
+	
 	
 	can_move = 0;
 	if get_window_value(attack, window, AG_WINDOW_TYPE) == 69 {

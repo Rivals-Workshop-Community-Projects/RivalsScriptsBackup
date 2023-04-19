@@ -146,6 +146,7 @@ slashsparkslow = hit_fx_create( sprite_get( "slashspark"), 20);
 slashsparkslow2 = hit_fx_create( sprite_get( "slashspark2"), 20);
 nslashsparkslow = hit_fx_create( sprite_get( "nslashspark"), 18);
 nslashsparkslow2 = hit_fx_create( sprite_get( "nslashspark2"), 18);
+phantomslash = hit_fx_create( sprite_get( "phantomslash"), 18);
 myonhit = hit_fx_create( sprite_get( "myonhit"), 18);
 TJCflash = hit_fx_create( sprite_get( "TJCflash"), 8);
 TJCflashslow = hit_fx_create( sprite_get( "TJCflash"), 16);

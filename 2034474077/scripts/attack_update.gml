@@ -279,7 +279,7 @@ switch (attack){
             window = 5;
             window_timer = 0;
             can_move = true;
-            hsp = -0.5 * spr_dir; //was -4 * spr_dir
+            hsp = -2.5 * spr_dir; //was -0.5 * spr_dir
             vsp = -7; //was -6
             multihit = noone;
         }

@@ -45,7 +45,6 @@ set_window_value(AT_NAIR, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_NAIR, 4);
 
 //First Hit, Main Hitbox
-set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Front Hitbox");
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 3);
@@ -64,10 +63,8 @@ set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "This move's 2nd hitbox shares the same stats as this hitbox.");
 
 //First Hit, Smaller Hitbox
-set_hitbox_value(AT_NAIR, 2, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 3);
@@ -88,7 +85,6 @@ set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 1);
 
 //Second Hit, Main Hitbox
-set_hitbox_value(AT_NAIR, 3, HG_MUNO_HITBOX_NAME, "Back Hitbox");
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 4);
 set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, 3);
@@ -108,10 +104,8 @@ set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT_X_OFFSET, -0);
 set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_NAIR, 3, HG_MUNO_HITBOX_MISC_ADD, "This move's 4th hitbox shares the same stats as this hitbox.");
 
 //Second Hit, Smaller Hitbox
-set_hitbox_value(AT_NAIR, 4, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NAIR, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 4);
 set_hitbox_value(AT_NAIR, 4, HG_LIFETIME, 3);

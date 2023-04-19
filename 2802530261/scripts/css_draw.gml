@@ -46,7 +46,7 @@ alt_name[25] = "The Mandalorian";
 alt_name[26] = "Hyper beam";
 alt_name[27] = "NES";
 alt_name[28] = "Metroid II";
-alt_name[29] = "Super Gameboy";
+alt_name[29] = "Galaxy";
 alt_name[30] = "Abyss";
 alt_name[31] = "Villains Of Aether";
 
@@ -79,6 +79,8 @@ if(alt_cur == 30){
     draw_sprite_ext(sprite_get("ccs_icons"), 2, temp_x + 174, temp_y + 108, 1, 1, 0, c_white, 1);
 }else if(alt_cur == 31){
     draw_sprite_ext(sprite_get("ccs_icons"), 9, temp_x + 174, temp_y + 108, 1, 1, 0, c_white, 1);
+}else if(alt_cur == 21){
+    draw_sprite_ext(sprite_get("ccs_icons"), 1, temp_x + 174, temp_y + 108, 1, 1, 0, c_white, 1);
 }
 
 //alt name
@@ -90,7 +92,7 @@ textDraw(temp_x + 46, temp_y + 139, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 46, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 48, temp_y + 141, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 48, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
-textDraw(temp_x + 48, temp_y + 139, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, 1), get_color_profile_slot_g(alt_cur, 1), get_color_profile_slot_b(alt_cur, 1)), 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
+textDraw(temp_x + 48, temp_y + 139, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, (alt_cur = 29? 5: 1)), get_color_profile_slot_g(alt_cur, (alt_cur = 29? 5: 1)), get_color_profile_slot_b(alt_cur, (alt_cur = 29? 5: 1))), 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 
 init_shader();
 

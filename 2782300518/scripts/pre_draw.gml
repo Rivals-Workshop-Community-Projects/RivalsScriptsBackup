@@ -1,5 +1,6 @@
 //Draw tail behind Carol
-if (tsprite_index!=-1 && tfront==false){
+if (tsprite_index!=-1 && tfront==false)
+{
 	init_shader();
 	if (get_player_color(player) == 17)
 	{
@@ -14,7 +15,8 @@ if (tsprite_index!=-1 && tfront==false){
 }
 
 //Draw Bike behind Carol
-if (bsprite_index!=-1 && bfront==false){
+if (bsprite_index!=-1 && bfront==false)
+{
 	init_shader();
 	if (get_player_color(player) == 17)
 	{
@@ -26,4 +28,17 @@ if (bsprite_index!=-1 && bfront==false){
 	shader_start();
 	draw_sprite_ext(bsprite_index, bimage_index, x+bx, y+by, bsx*image_xscale, bsy, brotation, c_white, 1);
 	shader_end();
+}
+
+switch (state)
+{
+	case PS_PARRY:
+	case PS_AIR_DODGE:
+	if (state_timer == 1)
+	{
+		var guard = spawn_hit_fx(x, y, parry_shield);
+		guard.alpha = 0.8;
+		guard.depth = 10;
+	}
+	break;
 }

@@ -73,7 +73,7 @@ set_window_value(AT_USTRONG, 13, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 13, AG_WINDOW_ANIM_FRAME_START, 37);
 
 
-set_num_hitboxes(AT_USTRONG, 4);
+set_num_hitboxes(AT_USTRONG, 5);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME, 2);
@@ -140,6 +140,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_USTRONG, 3, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 306);
+set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, 7);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, sound_get("heavierslashsoku"));
 
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);
@@ -163,6 +164,28 @@ set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, sound_get("heavyslashsoku"));
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_GROUP, 5);
+
+set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USTRONG, 5, HG_WINDOW, 4);
+set_hitbox_value(AT_USTRONG, 5, HG_WINDOW_CREATION_FRAME, 4);
+set_hitbox_value(AT_USTRONG, 5, HG_LIFETIME, 2);
+set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_X, 0);
+set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_Y, -120);
+set_hitbox_value(AT_USTRONG, 5, HG_WIDTH, 80);
+set_hitbox_value(AT_USTRONG, 5, HG_HEIGHT, 70);
+set_hitbox_value(AT_USTRONG, 5, HG_PRIORITY, 1);
+set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 6);
+set_hitbox_value(AT_USTRONG, 5, HG_ANGLE, 45);
+set_hitbox_value(AT_USTRONG, 5, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_USTRONG, 5, HG_KNOCKBACK_SCALING, 0.95);
+set_hitbox_value(AT_USTRONG, 5, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_USTRONG, 5, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_USTRONG, 5, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_USTRONG, 5, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, 306);
+set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_GROUP, 7);
+set_hitbox_value(AT_USTRONG, 5, HG_HIT_SFX, sound_get("heavierslashsoku"));
 
 
 

@@ -99,6 +99,7 @@ switch (attack)
             }
         }
 
+        if (window == 1 && window_timer = 1) ustrong_hit = 0;
         ustrong_parried = was_parried;
         if (window = 5 && window_timer > 7 && !hitpause) sound_play(asset_get("sfx_blow_medium1"));
         break;
@@ -199,7 +200,13 @@ sound_play(sound_get("phone"));
             if (!free)
             {
                 iasa_script();
-                set_state(PS_PRATLAND);
+                if (was_parried = true)
+                {
+                    set_state(PS_PRATLAND);
+                    was_parried = true;
+                    parry_lag = 40;
+                }
+                else set_state(PS_LAND);
                 spawn_base_dust(x, y, "land", spr_dir);
                 move_cooldown[AT_NSPECIAL] = 60;
                 move_cooldown[AT_NSPECIAL_AIR] = 70;
@@ -585,7 +592,13 @@ sound_play(sound_get("phone"));
             if (!free)
             {
                 iasa_script();
-                set_state(PS_PRATLAND);
+                if (was_parried = true)
+                {
+                    set_state(PS_PRATLAND);
+                    was_parried = true;
+                    parry_lag = 40;
+                }
+                else set_state(PS_LAND);
                 spawn_base_dust(x, y, "land", spr_dir);
                 move_cooldown[AT_NSPECIAL_2] = 50;
                 move_cooldown[AT_NSPECIAL_2_AIR] = 50;

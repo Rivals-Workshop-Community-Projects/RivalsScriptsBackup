@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 24 );
 
 // borc
 set_color_profile_slot( 1, 0, 59, 73, 135 ); //CASE
@@ -41,7 +41,7 @@ set_color_profile_slot( 2, 0, 137, 105, 93 ); //CASE
 set_color_profile_slot( 2, 1, 60, 36, 36 ); //SHADOW
 set_color_profile_slot( 2, 2, 121, 173, 100 ); //WHEELS
 set_color_profile_slot( 2, 3, 176, 183, 194 ); //CHEST
-set_color_profile_slot( 2, 4, 58, 210, 228 ); //unnamed color row
+set_color_profile_slot( 2, 4, 153, 121, 108 ); //unnamed color row
 set_color_profile_slot( 2, 5, 213, 216, 221 ); //HIGHLIGHT
 
 // 117
@@ -134,35 +134,36 @@ set_color_profile_slot( 13, 5, 215, 230, 255 ); //HIGHLIGHT
 
 // EA GameBoy
 set_color_profile_slot( 14, 0, 83, 122, 62 ); //CASE
-set_color_profile_slot( 14, 1, 83, 122, 62 ); //SHADOW
-set_color_profile_slot( 14, 2, 211, 226, 154 ); //WHEELS
-set_color_profile_slot( 14, 3, 167, 186, 74 ); //CHEST
-set_color_profile_slot( 14, 4, 58, 210, 228 ); //unnamed color row
-set_color_profile_slot( 14, 5, 167, 186, 74 ); //HIGHLIGHT
+set_color_profile_slot( 14, 1, 35, 67, 49 ); //SHADOW
+set_color_profile_slot( 14, 2, 167, 186, 74 ); //WHEELS
+set_color_profile_slot( 14, 3, 211, 226, 154 ); //CHEST
+set_color_profile_slot( 14, 4, 167, 186, 74 ); //unnamed color row
+set_color_profile_slot( 14, 5, 211, 226, 154 ); //HIGHLIGHT
+
+// gensis
+set_color_profile_slot( 15, 0, 86, 86, 86 ); //CASE
+set_color_profile_slot( 15, 1, 25, 19, 22 ); //SHADOW
+set_color_profile_slot( 15, 2, 255, 57, 63 ); //WHEELS
+set_color_profile_slot( 15, 3, 250, 247, 247 ); //CHEST
+set_color_profile_slot( 15, 4, 255, 57, 63 ); //unnamed color row
+set_color_profile_slot( 15, 5, 255, 255, 255 ); //HIGHLIGHT
 
 // Arizona
-set_color_profile_slot( 15, 0, 186, 28, 11 ); //CASE
-set_color_profile_slot( 15, 1, 91, 0, 41 ); //SHADOW
-set_color_profile_slot( 15, 2, 255, 215, 90 ); //WHEELS
-set_color_profile_slot( 15, 3, 40, 28, 163 ); //CHEST
-set_color_profile_slot( 15, 4, 229, 113, 45 ); //unnamed color row
-set_color_profile_slot( 15, 5, 61, 105, 255 ); //HIGHLIGHT
+set_color_profile_slot( 16, 0, 186, 28, 11 ); //CASE
+set_color_profile_slot( 16, 1, 91, 0, 41 ); //SHADOW
+set_color_profile_slot( 16, 2, 255, 215, 90 ); //WHEELS
+set_color_profile_slot( 16, 3, 40, 28, 163 ); //CHEST
+set_color_profile_slot( 16, 4, 229, 113, 45 ); //unnamed color row
+set_color_profile_slot( 16, 5, 61, 105, 255 ); //HIGHLIGHT
 
 // pacifist (lol!)
-set_color_profile_slot( 16, 0, 51, 131, 170 ); //CASE
-set_color_profile_slot( 16, 1, 44, 53, 113 ); //SHADOW
-set_color_profile_slot( 16, 2, 182, 244, 48 ); //WHEELS
-set_color_profile_slot( 16, 3, 255, 124, 0 ); //CHEST
-set_color_profile_slot( 16, 4, 182, 244, 48 ); //unnamed color row
-set_color_profile_slot( 16, 5, 255, 189, 125 ); //HIGHLIGHT
+set_color_profile_slot( 17, 0, 51, 131, 170 ); //CASE
+set_color_profile_slot( 17, 1, 44, 53, 113 ); //SHADOW
+set_color_profile_slot( 17, 2, 182, 244, 48 ); //WHEELS
+set_color_profile_slot( 17, 3, 255, 124, 0 ); //CHEST
+set_color_profile_slot( 17, 4, 182, 244, 48 ); //unnamed color row
+set_color_profile_slot( 17, 5, 255, 189, 125 ); //HIGHLIGHT
 
-// moth
-set_color_profile_slot( 17, 0, 86, 60, 86 ); //CASE
-set_color_profile_slot( 17, 1, 32, 0, 43 ); //SHADOW
-set_color_profile_slot( 17, 2, 193, 52, 52 ); //WHEELS
-set_color_profile_slot( 17, 3, 244, 212, 173 ); //CHEST
-set_color_profile_slot( 17, 4, 58, 210, 228 ); //unnamed color row
-set_color_profile_slot( 17, 5, 255, 255, 255 ); //HIGHLIGHT
 
 // Ranked -- immovable (shimmer vfx)
 set_color_profile_slot( 18, 0, 228, 228, 240 ); //CASE
@@ -172,37 +173,45 @@ set_color_profile_slot( 18, 3, 162, 96, 160 ); //CHEST
 set_color_profile_slot( 18, 4, 183, 194, 230 ); //unnamed color row
 set_color_profile_slot( 18, 5, 255, 198, 235 ); //HIGHLIGHT
 
+// moth
+set_color_profile_slot( 19, 0, 86, 60, 86 ); //CASE
+set_color_profile_slot( 19, 1, 32, 0, 43 ); //SHADOW
+set_color_profile_slot( 19, 2, 193, 52, 52 ); //WHEELS
+set_color_profile_slot( 19, 3, 244, 212, 173 ); //CHEST
+set_color_profile_slot( 19, 4, 58, 210, 228 ); //unnamed color row
+set_color_profile_slot( 19, 5, 255, 255, 255 ); //HIGHLIGHT
+
 // punchrat
-set_color_profile_slot( 19, 0, 194, 128, 83 ); //CASE
-set_color_profile_slot( 19, 1, 96, 48, 41 ); //SHADOW
-set_color_profile_slot( 19, 2, 228, 133, 116 ); //WHEELS
-set_color_profile_slot( 19, 3, 230, 223, 237 ); //CHEST
-set_color_profile_slot( 19, 4, 218, 112, 179 ); //unnamed color row
-set_color_profile_slot( 19, 5, 253, 245, 255 ); //HIGHLIGHT
+set_color_profile_slot( 20, 0, 194, 128, 83 ); //CASE
+set_color_profile_slot( 20, 1, 96, 48, 41 ); //SHADOW
+set_color_profile_slot( 20, 2, 228, 133, 116 ); //WHEELS
+set_color_profile_slot( 20, 3, 230, 223, 237 ); //CHEST
+set_color_profile_slot( 20, 4, 218, 112, 179 ); //unnamed color row
+set_color_profile_slot( 20, 5, 253, 245, 255 ); //HIGHLIGHT
 
 // hxyz
-set_color_profile_slot( 20, 0, 201, 201, 201 ); //CASE
-set_color_profile_slot( 20, 1, 100, 100, 100 ); //SHADOW
-set_color_profile_slot( 20, 2, 162, 41, 162 ); //WHEELS
-set_color_profile_slot( 20, 3, 186, 171, 135 ); //CHEST
-set_color_profile_slot( 20, 4, 176, 75, 207 ); //unnamed color row
-set_color_profile_slot( 20, 5, 242, 226, 208 ); //HIGHLIGHT
+set_color_profile_slot( 21, 0, 201, 201, 201 ); //CASE
+set_color_profile_slot( 21, 1, 100, 100, 100 ); //SHADOW
+set_color_profile_slot( 21, 2, 162, 41, 162 ); //WHEELS
+set_color_profile_slot( 21, 3, 186, 171, 135 ); //CHEST
+set_color_profile_slot( 21, 4, 176, 75, 207 ); //unnamed color row
+set_color_profile_slot( 21, 5, 242, 226, 208 ); //HIGHLIGHT
 
 // idk looks cool
-set_color_profile_slot( 21, 0, 161, 122, 146 ); //CASE
-set_color_profile_slot( 21, 1, 73, 49, 97 ); //SHADOW
-set_color_profile_slot( 21, 2, 230, 255, 233 ); //WHEELS
-set_color_profile_slot( 21, 3, 201, 181, 255 ); //CHEST
-set_color_profile_slot( 21, 4, 58, 210, 228 ); //unnamed color row
-set_color_profile_slot( 21, 5, 247, 217, 255 ); //HIGHLIGHT
+set_color_profile_slot( 22, 0, 161, 122, 146 ); //CASE
+set_color_profile_slot( 22, 1, 73, 49, 97 ); //SHADOW
+set_color_profile_slot( 22, 2, 230, 255, 233 ); //WHEELS
+set_color_profile_slot( 22, 3, 201, 181, 255 ); //CHEST
+set_color_profile_slot( 22, 4, 58, 210, 228 ); //unnamed color row
+set_color_profile_slot( 22, 5, 247, 217, 255 ); //HIGHLIGHT
 
 // see above
-set_color_profile_slot( 22, 0, 173, 252, 136 ); //CASE
-set_color_profile_slot( 22, 1, 46, 130, 116 ); //SHADOW
-set_color_profile_slot( 22, 2, 145, 113, 252 ); //WHEELS
-set_color_profile_slot( 22, 3, 255, 196, 224 ); //CHEST
-set_color_profile_slot( 22, 4, 58, 210, 228 ); //unnamed color row
-set_color_profile_slot( 22, 5, 254, 230, 255 ); //HIGHLIGHT
+set_color_profile_slot( 23, 0, 173, 252, 136 ); //CASE
+set_color_profile_slot( 23, 1, 46, 130, 116 ); //SHADOW
+set_color_profile_slot( 23, 2, 145, 113, 252 ); //WHEELS
+set_color_profile_slot( 23, 3, 255, 196, 224 ); //CHEST
+set_color_profile_slot( 23, 4, 58, 210, 228 ); //unnamed color row
+set_color_profile_slot( 23, 5, 254, 230, 255 ); //HIGHLIGHT
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

@@ -24,7 +24,7 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //sword
 set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START,7)
 
@@ -36,7 +36,7 @@ set_window_value(AT_UAIR, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 5, AG_WINDOW_SFX, sound_get("Sswing2"))
 
 set_window_value(AT_UAIR, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 6, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_UAIR, 6, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_UAIR, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 6, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_UAIR, 6, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -87,6 +87,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
 set_hitbox_value(attack, hitbox_num, 81, "Front Hitbox");//HG_MUNO_HITBOX_NAME = i; i++;	
 
 hitbox_num++;
@@ -111,6 +112,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_large); // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
 set_hitbox_value(attack, hitbox_num, 81, "Rear Hitbox");//HG_MUNO_HITBOX_NAME = i; i++;	
 hitbox_num++;
 

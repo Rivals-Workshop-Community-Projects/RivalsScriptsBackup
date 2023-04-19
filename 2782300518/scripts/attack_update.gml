@@ -16,157 +16,184 @@ if (motorbike == false)
 	{
 		//Hold Taunt down to keep dancing!
 		case AT_TAUNT:
-			if (!taunt_down){
+			if (!taunt_down)
+			{
 				window = 2;
 			 	window_timer = 1;
 			}
      	break;
-     	//Add Cooldown to Dash Attack at end
+     	//Stop Dash Attack on hit or if parried
 		case AT_DATTACK:
-			can_attack = (window > 1 ? 1 : 0);
-			if (window == 3 && window_timer == 9)
+			can_attack = has_hit;
+			//if (!has_hit)
+			//{
+				if (has_rune("F"))
+				{
+					hsp = 9 * spr_dir;
+				}
+				else
+				{
+					hsp = 8 * spr_dir;
+				}
+			//}
+			//else
+			//{
+			//	hsp = 4 * spr_dir;
+			//}
+			if (was_parried)
 			{
-				move_cooldown[AT_DATTACK] = 30;
+				hsp = 0;
 			}
 		break;
 		//Code for bounce move
 		case AT_DAIR:
 		//Allow for move cancelling through, jump, special or shield
-		can_shield = true;
-		can_special = true;
-		can_jump = true;
-		switch (image_index)
+		can_shield = state_timer >=8;
+		can_special = state_timer >=8;
+		can_attack = !down_pressed && !down_down && !down_strong_pressed && !down_strong_down &&!down_stick_down && state_timer >=8;
+		can_jump = state_timer >= 8;
+		if (window == 1)
 		{
-			case 0:
-			case 8:
-			case 16:
-			case 24:
-			case 32:
-				if (get_player_color(player) == 17)
-				{
-					var base = 4*8;
-					static_colorO[base] = 0.137;
-					static_colorO[base+1] = 0.262;
-					static_colorO[base+2] = 0.192;
-				}
-				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect0);
-				after_effect.depth = +10;
-			break;
-			case 1:
-			case 9:
-			case 17:
-			case 25:
-			case 33:
-				if (get_player_color(player) == 17)
-				{
-					var base = 4*8;
-					static_colorO[base] = 0.137;
-					static_colorO[base+1] = 0.262;
-					static_colorO[base+2] = 0.192;
-				}
-				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect1);
-				after_effect.depth = +10;
-			break;
-			case 2:
-			case 10:
-			case 18:
-			case 26:
-			case 34:
-				if (get_player_color(player) == 17)
-				{
-					var base = 4*8;
-					static_colorO[base] = 0.137;
-					static_colorO[base+1] = 0.262;
-					static_colorO[base+2] = 0.192;
-				}
-				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect2);
-				after_effect.depth = +10;
-			break;
-			case 3:
-			case 11:
-			case 19:
-			case 27:
-			case 35:
-				if (get_player_color(player) == 17)
-				{
-					var base = 4*8;
-					static_colorO[base] = 0.137;
-					static_colorO[base+1] = 0.262;
-					static_colorO[base+2] = 0.192;
-				}
-				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect3);
-				after_effect.depth = +10;
-			break;
-			case 4:
-			case 12:
-			case 20:
-			case 28:
-			case 36:
-				if (get_player_color(player) == 17)
-				{
-					var base = 4*8;
-					static_colorO[base] = 0.137;
-					static_colorO[base+1] = 0.262;
-					static_colorO[base+2] = 0.192;
-				}
-				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect4);
-				after_effect.depth = +10;
-			break;
-			case 5:
-			case 13:
-			case 21:
-			case 29:
-			case 37:
-				if (get_player_color(player) == 17)
-				{
-					var base = 4*8;
-					static_colorO[base] = 0.137;
-					static_colorO[base+1] = 0.262;
-					static_colorO[base+2] = 0.192;
-				}
-				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect5);
-				after_effect.depth = +10;
-			break;
-			case 6:
-			case 14:
-			case 22:
-			case 30:
-			case 38:
-				if (get_player_color(player) == 17)
-				{
-					var base = 4*8;
-					static_colorO[base] = 0.137;
-					static_colorO[base+1] = 0.262;
-					static_colorO[base+2] = 0.192;
-				}
-				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect6);
-				after_effect.depth = +10;
-			break;
-			case 7:
-			case 15:
-			case 23:
-			case 31:
-			case 39:
-				if (get_player_color(player) == 17)
-				{
-					var base = 4*8;
-					static_colorO[base] = 0.137;
-					static_colorO[base+1] = 0.262;
-					static_colorO[base+2] = 0.192;
-				}
-				var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect7);
-				after_effect.depth = +10;
-			break;
-			default:
-			break;
+			vsp= clamp(vsp, 0, 1)
+			hsp = 0;
+		}
+		if (window > 1 && window <4)
+		{
+			switch (image_index)
+			{
+				case 0:
+				case 8:
+				case 16:
+				case 24:
+				case 32:
+					if (get_player_color(player) == 17)
+					{
+						var base = 4*8;
+						static_colorO[base] = 0.137;
+						static_colorO[base+1] = 0.262;
+						static_colorO[base+2] = 0.192;
+					}
+					var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect0);
+					after_effect.depth = +10;
+				break;
+				case 1:
+				case 9:
+				case 17:
+				case 25:
+				case 33:
+					if (get_player_color(player) == 17)
+					{
+						var base = 4*8;
+						static_colorO[base] = 0.137;
+						static_colorO[base+1] = 0.262;
+						static_colorO[base+2] = 0.192;
+					}
+					var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect1);
+					after_effect.depth = +10;
+				break;
+				case 2:
+				case 10:
+				case 18:
+				case 26:
+				case 34:
+					if (get_player_color(player) == 17)
+					{
+						var base = 4*8;
+						static_colorO[base] = 0.137;
+						static_colorO[base+1] = 0.262;
+						static_colorO[base+2] = 0.192;
+					}
+					var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect2);
+					after_effect.depth = +10;
+				break;
+				case 3:
+				case 11:
+				case 19:
+				case 27:
+				case 35:
+					if (get_player_color(player) == 17)
+					{
+						var base = 4*8;
+						static_colorO[base] = 0.137;
+						static_colorO[base+1] = 0.262;
+						static_colorO[base+2] = 0.192;
+					}
+					var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect3);
+					after_effect.depth = +10;
+				break;
+				case 4:
+				case 12:
+				case 20:
+				case 28:
+				case 36:
+					if (get_player_color(player) == 17)
+					{
+						var base = 4*8;
+						static_colorO[base] = 0.137;
+						static_colorO[base+1] = 0.262;
+						static_colorO[base+2] = 0.192;
+					}
+					var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect4);
+					after_effect.depth = +10;
+				break;
+				case 5:
+				case 13:
+				case 21:
+				case 29:
+				case 37:
+					if (get_player_color(player) == 17)
+					{
+						var base = 4*8;
+						static_colorO[base] = 0.137;
+						static_colorO[base+1] = 0.262;
+						static_colorO[base+2] = 0.192;
+					}
+					var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect5);
+					after_effect.depth = +10;
+				break;
+				case 6:
+				case 14:
+				case 22:
+				case 30:
+				case 38:
+					if (get_player_color(player) == 17)
+					{
+						var base = 4*8;
+						static_colorO[base] = 0.137;
+						static_colorO[base+1] = 0.262;
+						static_colorO[base+2] = 0.192;
+					}
+					var after_effect= spawn_hit_fx(x-35 * spr_dir, y-77, dair_aftereffect6);
+					after_effect.depth = +10;
+				break;
+				case 7:
+				case 15:
+				case 23:
+				case 31:
+				case 39:
+					if (get_player_color(player) == 17)
+					{
+						var base = 4*8;
+						static_colorO[base] = 0.137;
+						static_colorO[base+1] = 0.262;
+						static_colorO[base+2] = 0.192;
+					}
+					var after_effect= spawn_hit_fx(x-35 * spr_dir, y-79, dair_aftereffect7);
+					after_effect.depth = +10;
+				break;
+				default:
+				break;
+			}
 		}
 		//Check if bounce is in effect
 		if (vsp == 18)
 		{
-			if (window == 1 && has_hit)
+			if (window == 2 && has_hit)
 			{
-				//If bounce off anything, move to window 2
-				window = 2;
+				//If bounce off anything, move to window 3
+				old_vsp = 0;
+				window =3;
+				window_timer= 0;
 			}
 		}
 		if (vsp == 0)
@@ -178,30 +205,24 @@ if (motorbike == false)
 			spawn_base_dust(x, y, "jump");
 			spawn_base_dust(x, y, "land");
 		}
-		//Cooldown to prevent the move from being spammed, since its so good
-		if (window = 2 && window_timer == 10)
-		{
-			move_cooldown[AT_DAIR] = 40;
-		}
-		if (can_shield && shield_pressed)
-		{
-			move_cooldown[AT_DAIR] = 40;
-		}
-		if (can_special && special_pressed)
-		{
-			move_cooldown[AT_DAIR] = 40;		
-		}
+		break;
+		case AT_USTRONG:
+			//Turn Carol around so that the attack can hit from the front
+			if (window == 1 && window_timer == 5)
+			{
+				spr_dir = (spr_dir == 1? -1: 1);
+			}
 		break;
 		case AT_NAIR:
 		case AT_UAIR:
 		case AT_BAIR:
-			can_jump = has_hit;
-			can_special = has_hit;
+			can_jump = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
+			can_special = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
 		break;
 		//Voice clip for Fair
 		case AT_FAIR:
-		can_jump = has_hit;
-		if (voice == 1 && window == 2 && window_timer == 1)
+		can_jump = has_hit && window = 3 && window_timer >=3 && window_timer <=8;
+		if (voice == 1 && window == 1 && window_timer == 14)
 		{
 			sound_stop(sound_get ("carol_up_special"));
 			sound_play(sound_get ("carol_up_special"));
@@ -219,14 +240,36 @@ if (motorbike == false)
 			vsp = clamp(vsp, -2, 2);
 		}
 		
-		if (window > 1 || (window == 1 && window_timer > 7))
+		if (window == 1 && window_timer == 1)
+		{
+			bsprite_index = sprite_get("disc_arrow");
+			bimage_number = 1;
+			bx= 0 ;
+			by= -36;
+		}
+		
+		if (window = 1)
+		{
+			var ddir = spr_dir > 0 ? 0 : 180;
+			//Move the boost arrow around
+			if (joy_pad_idle) brotation=0;
+			else brotation=joy_dir + ddir;
+			if (window_timer == 6)
+			{
+				if (joy_pad_idle) dst=spr_dir>0 ? 0 : 180;
+				else dst=joy_dir;
+			}
+		}
+		
+		if (window > 2 || (window == 2 && window_timer > 7))
 		{
 			//Shield cancellable
 			can_shield = true;
 		}
 		//Voice line
-		if (window == 1 && window_timer == 1)
+		if (window == 1 && window_timer == 5)
 		{
+			bsprite_index = -1;
 			if (voice == 1)
 			{
 				sound_stop(sound_get ("carol_jab_voice2"));
@@ -235,18 +278,18 @@ if (motorbike == false)
 		}
 		
 		//You can throw the disc normally, or hold down Special to zoom towards it
-		if (window == 2 && window_timer == 1 && special_down)
+		if (window == 3 && window_timer == 1 && special_down)
 		{
-			window = 3;
+			window = 4;
 		}
 		
-		if (window == 2 && window_timer > 1 && window_timer < 24)
+		if (window == 3 && window_timer > 1 && window_timer < 24)
 		{
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 		}
 		//If you simply throw the disc without zooming towards it, this attack ends the move and prevents it moving to window 3	
-		if (window == 2 && window_timer == 24)
+		if (window == 3 && window_timer == 36)
 		{
 			moveDisc = true;
 			move_cooldown[AT_FSPECIAL] = 60;
@@ -264,7 +307,7 @@ if (motorbike == false)
 		}
 		
 		//Effect generation to make the move look more flashy (and like the FP2 Demo that it comes from)
-		if (window > 2)
+		if (window == 4)
 		{
 			switch (window_timer)
 			{
@@ -273,19 +316,19 @@ if (motorbike == false)
 				case 9:
 				case 13:
 				case 17:
-				case 21:
-				case 25:
-				case 29:
-						var smallspark = spawn_hit_fx(x - 20 * spr_dir, y-30 , smallsparkle);
+					var smallspark = spawn_hit_fx(x - 20 * spr_dir, y-30 , sparkle);
 					smallspark.depth = -100;
 				break;
 				default:
 				break;
 			}
 		}
-		if (window == 3 && window_timer == 1)
+		if (window == 4 && window_timer == 1)
 		{
-			walljump_number= walljump_number == 0? 4: 5;
+			if (dst >=30 && dst <= 150 && !has_rune("N"))
+			{
+				walljump_number= walljump_number == 0? 4: 5;
+			}
 			if (voice == 1)
 			{
 				sound_stop(sound_get ("go2"));
@@ -294,8 +337,8 @@ if (motorbike == false)
 			
 			var disc_direction = point_direction(x, y,Fspecial_positionX, Fspecial_positionY);
 			var disc_distance = point_distance(x, y, Fspecial_positionX, Fspecial_positionY);
-			hsp = lengthdir_x (disc_distance, disc_direction) / 25;
-			vsp = lengthdir_y(disc_distance, disc_direction) / 25;
+			hsp = lengthdir_x (disc_distance, disc_direction) / 20;
+			vsp = lengthdir_y(disc_distance, disc_direction) / 20;
 			
 			if (!free && y < Fspecial_positionY)
 			{
@@ -303,30 +346,77 @@ if (motorbike == false)
 				attack_end();
 			}
 		}
-		if (window == 3)
+		if (window == 4)
 		{
 			can_move = false
 			moveDisc = false;
 		}
 		
 		//This code allows Carol to jump off enemies and immediately bounce up if she hits a wall
-		if (window == 3 && hsp == 0)
+		if (window == 4 && hsp == 0)
 		{
-			window = 4;
+			window = 5;
 			sound_stop(sound_get ("spin_jump"));
 			sound_play(sound_get ("spin_jump"));
 		}
-		if (window = 4 && window_timer == 1)
+		if (window = 5)
 		{
-			//restore ability to move
-			can_move = true;
-		}
-		//Set Cooldown at the very end of the move
-		if (window == 4 && window_timer == 32)
-		{
-			moveDisc = true;
-			move_cooldown[AT_FSPECIAL] = 60;
-			print_debug(string(has_walljump));
+			hsp = clamp (hsp, -2, 2);
+			switch (window_timer)
+			{
+				case 1:
+					//restore ability to move
+					vsp = 0;
+					can_move = true;
+					if has_rune("D")
+					{
+						vsp = -9;
+					}
+					else if has_rune("O")
+					{
+						vsp = -11;
+					}
+					else
+					{
+						vsp = -6;
+					}
+					spawn_hit_fx(Fspecial_positionX + 20 * spr_dir, Fspecial_positionY + 20, disc_hit);
+				break;
+				case 2:
+				case 9:
+				case 16:
+				case 23:
+				case 30:
+					var sparkly1 = spawn_base_dust(x - 10, y - 30, "fastfall");
+					sparkly1.depth = -100;
+					var sparkly2 = spawn_base_dust(x, y - 50, "fastfall");
+					sparkly2.depth = -100;
+					var sparkly3 =spawn_base_dust(x + 10, y - 40, "fastfall");
+					sparkly3.depth = -100;
+				break;
+				//Set Cooldown at the very end of the move
+				case 32:
+					moveDisc = true;
+					move_cooldown[AT_FSPECIAL] = 60;
+					if (dst >= 60 && dst <= 120)
+					{
+						set_state(PS_PRATFALL);
+					}
+				break;
+			}
+			
+			if has_rune ("D")
+			{
+				vsp += 0.3;
+			}
+			else if has_rune ("O")
+			{
+				vsp += 0.5;
+			}
+			else
+			{
+				vsp += 0.2;
+			}
 		}
 		break;
 		
@@ -378,6 +468,7 @@ if (motorbike == false)
 			by=-80;
 			bsx=1;
 			bsy=1;
+			hitConfirm = true;
 			//Rate of how long fuel increases
 		 	fuel_charge++;
     		//Abyss Runes, charge fuel faster if rune C is selected
@@ -429,6 +520,7 @@ if (motorbike == false)
    		//This code makes sure the conformation sound plays, but only once	
    		if (window == 2 && window_timer == 0 && fuel >=40 && bikeReady == 0)
 		{
+   			hitConfirm = false;
 			sound_stop(sound_get ("motorbike_idle"));
 			bikeReady = 1;
 	   	}
@@ -450,12 +542,6 @@ if (motorbike == false)
 			bsx=1;
 			bsy=1;
 			returnBike = false;
-			if (move_cooldown[AT_NSPECIAL] > 0)
-			{
-				feline_power = false;
-				move_cooldown[AT_NSPECIAL]= 200;
-				move_cooldown[AT_NSPECIAL_2]= 200;
-			}
 			//Voice line
 			if (voice == 1)
 			{
@@ -496,8 +582,6 @@ if (motorbike == false)
 				tx=-46*spr_dir;
 				hsp = 0;
 				hsp = -6;
-				destroy_hitboxes();
-				create_hitbox( AT_EXTRA_2, 1, x + 20, y-21);
 				pounceChange = true;
 			}
 			if (right_pressed || right_down && spr_dir == -1 && !pounceChange)
@@ -506,8 +590,6 @@ if (motorbike == false)
 				tx=-46*spr_dir;
 				hsp = 0;
 				hsp = 6;
-				destroy_hitboxes();
-				create_hitbox( AT_EXTRA_2, 1, x + 20, y-21);
 				pounceChange = true;
 			}
 		}
@@ -515,6 +597,7 @@ if (motorbike == false)
 		can_special = true;
 		can_shield = true;
 		can_strong = true;
+		can_ustrong = true;
 		if (walljump_number < walljump_limit)
 		{
 			can_wall_jump = true;
@@ -527,6 +610,7 @@ if (motorbike == false)
 				spr_dir = -spr_dir;
 				has_walljump = false;
 				pounceChange = false;
+				pounce = false;
 				set_state(PS_WALL_JUMP);
 			}
 		}
@@ -543,7 +627,7 @@ if (motorbike == false)
 }
 else if (motorbike == true)
 {
-	switch (prev_state)
+	/*switch (prev_state)
 	{
 		case PS_DASH:
 		case PS_DASH_START:
@@ -557,7 +641,8 @@ else if (motorbike == true)
 		default:
 			bike_sp = 0;
 		break;
-	}
+	}*/
+	bike_sp = prev_hsp;
  
 	switch (attack)
 	{
@@ -582,12 +667,22 @@ else if (motorbike == true)
 		if (window == 1 && window_timer == 1)
 		{
 			//Set Cooldown
-			move_cooldown[AT_FSPECIAL_2] = 300;
+			if has_rune("L")
+			{
+				move_cooldown[AT_FSPECIAL_2] = 100;
+			}
+			else
+			{
+				move_cooldown[AT_FSPECIAL_2] = 300;
+			}
 			if (voice == 1)
 			{
 				sound_stop(sound_get ("go2"));
 				sound_play(sound_get ("go2"));
 			}
+		}
+		if (window == 1 && window_timer == 6)
+		{
 			//Nitro effect at start of move
 			if (hsp > - 11 && hsp < 11)
 			{
@@ -597,7 +692,7 @@ else if (motorbike == true)
 			nitro.depth = -100;
 		}
 		
-		if (window <=2 && window_timer <5 && !free)
+		if ((window == 1 ||(window ==2 && window_timer <5)) && !free)
 		{
 			hsp = spr_dir * 0.5 + (hsp * 1.1);
 		}
@@ -610,7 +705,8 @@ else if (motorbike == true)
 				can_attack = true;
 				can_shield = true;
 				can_strong = true;
-				can_jump = true;
+				can_ustrong = true;
+				can_jump = window_timer >= 2;
 			}
 			if (walljump_number < walljump_limit)
 			{
@@ -620,7 +716,7 @@ else if (motorbike == true)
 			if (floor(window_timer/3) == window_timer /3)
 			{
 				//Effects to enhance move	
-				var smallspark = spawn_hit_fx(x - 40 * spr_dir, y-32 , smallsparkle);
+				var smallspark = spawn_hit_fx(x - 40 * spr_dir, y-32 , sparkle);
 				smallspark.depth = -100;
 			}
 			if (hsp == 0 && place_meeting(x + 5 * spr_dir, y - 40, asset_get("par_block")))
@@ -692,7 +788,7 @@ else if (motorbike == true)
 			
 			//This code resolves a glitch whereby the meter gets stuck when you do a Wild Kick while running out of fuel
 			
-			if (multikick_energy < 200)
+			if (multikick_energy < 200 && fuel == 0)
 			{
 				feline_power = false;
 				move_cooldown[AT_NSPECIAL]= 200;
@@ -729,18 +825,33 @@ else if (motorbike == true)
 
 		//Dattack2
 		case 3:
-		//If use the dash attack, remove the hitbox on the front of the bike while moving and also add cooldown to Dash
-		attack_end(AT_EXTRA_1);
-		bike_hit = false;
-		can_attack = (window > 1 ? 1 : 0);
-		if (can_attack && attack_pressed)
-		{
-			bike_sp = dash_speed;
-		}
-		if (window == 3 && window_timer == 9)
+			//If use the dash attack, remove the hitbox on the front of the bike while moving and also add cooldown to Dash
+			attack_end(AT_EXTRA_1);
+			bike_hit = false;
+			can_attack = has_hit;
+			if (can_attack && attack_pressed)
 			{
-			move_cooldown[3] = 30;
-		}
+				bike_sp = dash_speed;
+			}
+			//if (!has_hit)
+			//{
+				if (has_rune("F"))
+				{
+					hsp = 9 * spr_dir;
+				}
+				else
+				{
+					hsp = 8 * spr_dir;
+				}
+			//}
+			//else
+			//{
+			//	hsp = 2 * spr_dir;
+			//}
+			if (was_parried)
+			{
+				hsp = 0;
+			}
 		break;
 
 		//Dair2
@@ -756,12 +867,11 @@ else if (motorbike == true)
 		if (window == 1 && window_timer == 1)
 		{
 			sound_play(sound_get("motorbike_throw2"));
-			move_cooldown[AT_DAIR] = 15;
-			if (voice == 1)
+			/*if (voice == 1)
 			{
 				sound_stop(sound_get ("look_up"));
 				sound_play(sound_get ("look_up"));
-			}
+			}*/
 		}
 		
 		//The following code is resetting values back to default as declared in init.
@@ -773,7 +883,7 @@ else if (motorbike == true)
 		case 39:
 		case 42:
 		case 44:
-			can_special = true;
+			can_special = has_hit && window = 3 && window_timer >=3 && window_timer <=6;
 		break;
 		//Fair2
 		case 43:
@@ -827,9 +937,9 @@ else if (motorbike == true)
 		case 45:
         if (right_down and spr_dir == 1) or (left_down and spr_dir == -1)
         {
-            hsp = spr_dir * bike_sp
+            hsp = bike_sp;
             can_move = true;
-			if (bike_sp = dash_speed)
+			if (bike_sp >= dash_speed)
 			{
 				if(floor(state_timer/4) == state_timer /4)
 				{
@@ -851,7 +961,7 @@ else if (motorbike == true)
         case AT_FSTRONG_2:
         case AT_DSTRONG_2:
         case AT_USTRONG_2:
-            hsp = spr_dir * bike_sp
+            hsp = bike_sp;
             can_move = true;
             if (bike_sp = dash_speed)
 			{
@@ -869,7 +979,7 @@ else if (motorbike == true)
 					spawn_base_dust(x + 30 * spr_dir, y, "dash");
 				}
 			}
-	    break;
+		break;
 		default:
 		break;
 	}
@@ -886,294 +996,290 @@ switch (attack)
 	case 46:
 	case 47:
 	case 48:
-	//Mix up jab quotes so that it doesn't get tired
-	var	 choose_quote = random_func(16, 15, 1);
-	if (attack == AT_DTILT)
-	{
-		tsprite_index=sprite_get("tail_walk");
-		trotation=0;
-		timage_number=7;
-		timage_speed=0.25;
-		tfront=false;
-		tx=-46*spr_dir;
-		ty=-70;
-		tsx=1;
-		tsy=1;
-		bsprite_index=-1;
-	}
-	
-	switch (window)
-	{
-		case 1:
-		case 4:
-		case 6:
-		if (window_timer == 1)
+		//Mix up jab quotes so that it doesn't get tired
+		var	 choose_quote = random_func(16, 15, 1);
+		if (attack == AT_DTILT)
 		{
-			if (choose_quote <3)
-			{
-				if (voice == 1)
-				{
-					sound_stop(sound_get ("carol_jab_voice1"));
-					sound_play(sound_get ("carol_jab_voice1"));
-				}
-			}
-			else if (choose_quote >2 && choose_quote <6)
-				{
-				if (voice == 1)
-				{
-					sound_stop(sound_get ("carol_jab_voice2"));
-					sound_play(sound_get ("carol_jab_voice2"));
-				}
-			}
-			else if (choose_quote >5 && choose_quote <9)
-			{
-				if (voice == 1)
-				{
-					sound_stop(sound_get ("carol_jab_voice3"));
-					sound_play(sound_get ("carol_jab_voice3"));
-				}
-			}
-			else if (choose_quote >8 && choose_quote <13)
-			{
-				if (voice == 1)
-				{
-					sound_stop(sound_get ("carol_jab_voice4"));
-					sound_play(sound_get ("carol_jab_voice4"));
-				}
-			}
-			else
-			{
-				if (voice == 1)
-				{
-					sound_stop(sound_get ("carol_jab_voice5"));
-					sound_play(sound_get ("carol_jab_voice5"));
-				}			
-			}
-			if (window != 1)
-			{
-				switch(attack)
-				{
-					case AT_FTILT:
-					case AT_UTILT:
-						spawn_base_dust(x, y, "walk");
-					break;
-					case 47:
-						spawn_base_dust(x, y, "dash");
-						spawn_base_dust(x + 30 * spr_dir, y, "dash");
-					break;
-					default:
-					break;
-				}
-				
-			}
-			else
-			{
-				switch(attack)
-				{
-					case 46:
-					case 45:
-						spawn_base_dust(x, y, "dash");
-						spawn_base_dust(x, y, "dash", -spr_dir);
-					break;
-					default:
-					break;
-				}
-			}
+			tsprite_index=sprite_get("tail_walk");
+			trotation=0;
+			timage_number=7;
+			timage_speed=0.25;
+			tfront=false;
+			tx=-46*spr_dir;
+			ty=-70;
+			tsx=1;
+			tsy=1;
+			bsprite_index=-1;
 		}
-		break;
-		case 2:
+		switch (window)
+		{
+			case 1:
+			case 4:
+			case 6:
 			if (window_timer == 1)
 			{
-				switch(attack)
+				if (choose_quote <3)
 				{
-					case AT_FTILT:
-					case AT_UTILT:
-						spawn_base_dust(x, y, "walk");
-					break;
-					case 47:
-						spawn_base_dust(x, y, "dash");
-						spawn_base_dust(x + 30 * spr_dir, y, "dash");
-					break;
-					default:
-					break;
+					if (voice == 1)
+					{
+						sound_stop(sound_get ("carol_jab_voice1"));
+						sound_play(sound_get ("carol_jab_voice1"));
+					}
+				}
+				else if (choose_quote >2 && choose_quote <6)
+				{
+					if (voice == 1)
+					{
+						sound_stop(sound_get ("carol_jab_voice2"));
+						sound_play(sound_get ("carol_jab_voice2"));
+					}
+				}
+				else if (choose_quote >5 && choose_quote <9)
+				{
+					if (voice == 1)
+					{
+						sound_stop(sound_get ("carol_jab_voice3"));
+						sound_play(sound_get ("carol_jab_voice3"));
+					}
+				}
+				else if (choose_quote >8 && choose_quote <13)
+				{
+					if (voice == 1)
+					{
+						sound_stop(sound_get ("carol_jab_voice4"));
+						sound_play(sound_get ("carol_jab_voice4"));
+					}
+				}
+				else
+				{
+					if (voice == 1)
+					{
+						sound_stop(sound_get ("carol_jab_voice5"));
+						sound_play(sound_get ("carol_jab_voice5"));
+					}			
+				}
+				if (window != 1)
+				{
+					switch(attack)
+					{
+						case AT_FTILT:
+						case AT_UTILT:
+							spawn_base_dust(x, y, "walk");
+						break;
+						case 47:
+							spawn_base_dust(x, y, "dash");
+							spawn_base_dust(x + 30 * spr_dir, y, "dash");
+						break;
+						default:
+						break;
+					}
+				}
+				else
+				{
+					switch(attack)
+					{
+						case 46:
+						case 45:
+							spawn_base_dust(x, y, "dash");
+							spawn_base_dust(x, y, "dash", -spr_dir);
+						break;
+						default:
+						break;
+					}
 				}
 			}
-		break;
-		case 3:
-			can_jump = has_hit;
-			can_special = has_hit;
-			can_strong = has_hit;
-			if (window_timer >= 3 && attack_pressed)
-			{
-				window = 4;
-				window_timer = 0;
-			}
-			else if (window_timer == 17)
-			{
-				set_state(PS_IDLE);
-				attack_end();
-			}
-		break;
-		case 5:
-			can_jump = has_hit;
-			can_special = has_hit;
-			can_strong = has_hit;
-			if (window_timer >= 3 && attack_pressed)
-			{
-				window = 6;
-				window_timer = 0;
-			}
-			else if (window_timer == 17)
-			{
-				set_state(PS_IDLE);
-				attack_end();
-			}
-		break;
-	}
-	//In order to prevent infinite combos, a counter is used to limit the amount of times you can change the current jab
-	var maxCombo = 2;
-	if has_rune ("K")
-	{
-		maxCombo = 3;
-	}
-	if (comboCounter < maxCombo )
-	{
-		if ((window == 3 || window == 5) && window_timer == 1)
+			break;
+			case 2:
+				if (window_timer == 1)
+				{
+					switch(attack)
+					{
+						case AT_FTILT:
+						case AT_UTILT:
+							spawn_base_dust(x, y, "walk");
+						break;
+						case 47:
+							spawn_base_dust(x, y, "dash");
+							spawn_base_dust(x + 30 * spr_dir, y, "dash");
+						break;
+						default:
+						break;
+					}
+				}
+			break;
+			case 3:
+				can_jump = has_hit && window_timer >=6;
+				can_special = has_hit && window_timer >=6;
+				can_strong = has_hit && window_timer >=6;
+				if (window_timer >= 6 && attack_pressed)
+				{
+					window = 4;
+					window_timer = 0;
+				}
+				else if (window_timer == 20)
+				{
+					set_state(PS_IDLE);
+					attack_end();
+				}
+			break;
+			case 5:
+				can_jump = has_hit && window_timer >=6;
+				can_special = has_hit && window_timer >=6;
+				can_strong = has_hit && window_timer >=6;
+				if (window_timer >= 6 && attack_pressed)
+				{
+					window = 6;
+					window_timer = 0;
+				}
+				else if (window_timer == 20)
+				{
+					set_state(PS_IDLE);
+					attack_end();
+				}
+			break;
+		}
+		//In order to prevent infinite combos, a counter is used to limit the amount of times you can change the current jab
+		var maxCombo = 2;
+		if has_rune ("K")
 		{
-			
-			//If a direction is pressed when attacking, cancel to the specificed jab
-			if (attack == AT_JAB || attack == 48)
+			maxCombo = 3;
+		}
+		if (comboCounter < maxCombo )
+		{
+			if ((window == 3 || window == 5) && window_timer >= 5)
 			{
-				can_attack=(has_hit && !joy_pad_idle);			
-			}
-			else if (attack == AT_FTILT || attack == 47)
-			{
-				can_attack=(has_hit && !right_pressed && !right_down && !left_pressed && !left_down);			
-			}
-			else if (attack == AT_UTILT || attack == 46)
-			{
-				can_attack=(has_hit && !up_pressed && !up_down);			
-			}
-			else if (attack == AT_DTILT || attack == 45)
-			{
-				can_attack=(has_hit && !down_pressed && !down_down);			
-			}
-			//This code is here to help cancel the multi hit tilts into each other for comboing
-			if (can_attack)
-			{
-				if (attack != AT_JAB && motorbike == false)
+				//If a direction is pressed when attacking, cancel to the specificed jab
+				if (attack == AT_JAB || attack == 48)
 				{
-					if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-					&& !up_down && !down_pressed && !down_down && attack_pressed)	
-					{
-						comboCounter++;
-						set_attack(AT_JAB);
-					}
+					can_attack=(has_hit && !joy_pad_idle);			
 				}
-				if (attack != AT_FTILT && motorbike = false)
+				else if (attack == AT_FTILT || attack == 47)
 				{
-					if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
-					{
-						comboCounter++;
-						set_attack(AT_FTILT);
-					}
-					else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
-					{
-						comboCounter++;
-						set_attack(AT_FTILT);
-					}
+					can_attack=(has_hit && !right_pressed && !right_down && !right_strong_down && !left_pressed && !left_down && left_strong_down);			
 				}
-				if (attack !=AT_UTILT && motorbike == false)
+				else if (attack == AT_UTILT || attack == 46)
 				{
-					if ((up_pressed || up_down) && attack_pressed )
-					{
-						comboCounter++;
-						set_attack(AT_UTILT);
-					}
+					can_attack=(has_hit && !up_pressed && !up_down && !up_strong_down);			
 				}
-				if (attack !=AT_DTILT && motorbike == false)
+				else if (attack == AT_DTILT || attack == 45)
 				{
-					if ((down_pressed || down_down ) && attack_pressed )
-					{
-						comboCounter++;
-						set_attack(AT_DTILT);
-					}
+					can_attack=(has_hit && !down_pressed && !down_down && !down_strong_down);			
 				}
-				if (attack != 48 && motorbike == true)
+				//This code is here to help cancel the multi hit tilts into each other for comboing
+				if (can_attack)
 				{
-					if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
-					&& !up_down && !down_pressed && !down_down && attack_pressed)
+					if (attack != AT_JAB && motorbike == false)
 					{
-						comboCounter++;
-						set_attack(48);
+						if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
+						&& !up_down && !down_pressed && !down_down && attack_pressed)	
+						{
+							comboCounter++;
+							set_attack(AT_JAB);
+						}
 					}
-				}
-				if (attack !=47 && motorbike == true)
-				{
-					if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
+					if (attack != AT_FTILT && motorbike = false)
 					{
-						comboCounter++;
-						set_attack(47);
+						if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
+						{
+							comboCounter++;
+							set_attack(AT_FTILT);
+						}
+						else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
+						{
+							comboCounter++;
+							set_attack(AT_FTILT);
+						}
 					}
-					else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
+					if (attack !=AT_UTILT && motorbike == false)
 					{
-						comboCounter++;
-						set_attack(47);
+						if ((up_pressed || up_down) && attack_pressed )
+						{
+							comboCounter++;
+							set_attack(AT_UTILT);
+						}
 					}
-				}
-				if (attack !=46 && motorbike == true)
-				{
-					if ((up_pressed || up_down) && attack_pressed )
+					if (attack !=AT_DTILT && motorbike == false)
 					{
-						comboCounter++;
-						set_attack(46);
+						if ((down_pressed || down_down ) && attack_pressed )
+						{
+							comboCounter++;
+							set_attack(AT_DTILT);
+						}
 					}
-				}
-				if (attack !=45 && motorbike == true)
-				{
-					if ((down_pressed || down_down ) && attack_pressed )
+					if (attack != 48 && motorbike == true)
 					{
-						comboCounter++;
-						set_attack(45);
+						if (!right_pressed && !left_pressed && !right_down && !left_down && !up_pressed
+						&& !up_down && !down_pressed && !down_down && attack_pressed)
+						{
+							comboCounter++;
+							set_attack(48);
+						}
+					}
+					if (attack !=47 && motorbike == true)
+					{
+						if (spr_dir == 1 && (right_pressed || right_down) && attack_pressed)
+						{
+							comboCounter++;
+							set_attack(47);
+						}
+						else if (spr_dir == -1 && (left_pressed || left_down) && attack_pressed)
+						{
+							comboCounter++;
+							set_attack(47);
+						}
+					}
+					if (attack !=46 && motorbike == true)
+					{
+						if ((up_pressed || up_down) && attack_pressed )
+						{
+							comboCounter++;
+							set_attack(46);
+						}
+					}
+					if (attack !=45 && motorbike == true)
+					{
+						if ((down_pressed || down_down ) && attack_pressed )
+						{
+							comboCounter++;
+							set_attack(45);
+						}
 					}
 				}
 			}
 		}
-	}
-	//Add small cooldown if attack plays out fully, for balancing reasons
-	else if (comboCounter == 2)
-	{
-		if (window == 7 && window_timer == 1)
+		//Add small cooldown if attack plays out fully, for balancing reasons
+		else if (comboCounter == 2)
 		{
-			if (voice == 1)
+			if (window == 7 && window_timer == 1)
 			{
-				var finisher_quote = random_func(17, 15, 1);
-				if (finisher_quote < 8)
+				if (voice == 1)
 				{
-					sound_stop(sound_get ("pow_pow"));
-					sound_play(sound_get ("pow_pow"));
+					var finisher_quote = random_func(17, 15, 1);
+					if (finisher_quote < 8)
+					{
+						sound_stop(sound_get ("pow_pow"));
+						sound_play(sound_get ("pow_pow"));
+					}
+					else if (finisher_quote >7)
+					{
+						sound_stop(sound_get("sweet"));
+						sound_play(sound_get("sweet"));
+					}
 				}
-				else if (finisher_quote >7)
-				{
-					sound_stop(sound_get("sweet"));
-					sound_play(sound_get("sweet"));
-				}
+				move_cooldown[AT_JAB] = 10;
+				move_cooldown[AT_FTILT] = 10;
+				move_cooldown[AT_UTILT] = 10;
+				move_cooldown[AT_DTILT] = 10;
+				move_cooldown[45] = 10;
+				move_cooldown[46] = 10;
+				move_cooldown[47] = 10;
+				move_cooldown[48] = 10;
 			}
-			move_cooldown[AT_JAB] = 10;
-			move_cooldown[AT_FTILT] = 10;
-			move_cooldown[AT_UTILT] = 10;
-			move_cooldown[AT_DTILT] = 10;
-			move_cooldown[45] = 10;
-			move_cooldown[46] = 10;
-			move_cooldown[47] = 10;
-			move_cooldown[48] = 10;
 		}
-	}
-	
-	if (window == 7 && window_timer == 17 && attack == AT_DTILT)
-	{
-		set_state(PS_CROUCH);
-	}
+		if (window == 7 && window_timer == 17 && attack == AT_DTILT)
+		{
+			set_state(PS_CROUCH);
+		}
 	break;
 	//Voice clip for Strong
 	case AT_DSTRONG:
@@ -1182,60 +1288,67 @@ switch (attack)
 	case AT_DSTRONG_2:
 	case AT_USTRONG_2:
 	case AT_FSTRONG_2:
-	if (window == 1 && window_timer == 1)
-	{
-		var make_quote = random_func(15, 12, 1);
-		if (voice == 1)
+		if (window == 1 && window_timer == 1)
 		{
-			if (make_quote < 4)
+			var make_quote = random_func(15, 12, 1);
+			if (voice == 1)
 			{
-				sound_stop(sound_get("carol_attack_voice1"));
-				sound_play(sound_get("carol_attack_voice1"));
-			}
-			else if (make_quote > 3 && make_quote < 8)
-			{
-				sound_stop(sound_get("carol_attack_voice3"));
-				sound_play(sound_get("carol_attack_voice3"));				
-			}
-			else if (make_quote > 7)
-			{
-				sound_stop(sound_get("carol_attack_voice2"));
-				sound_play(sound_get("carol_attack_voice2"));				
+				if (make_quote < 4)
+				{
+					sound_stop(sound_get("carol_attack_voice1"));
+					sound_play(sound_get("carol_attack_voice1"));
+				}
+				else if (make_quote > 3 && make_quote < 8)
+				{
+					sound_stop(sound_get("carol_attack_voice3"));
+					sound_play(sound_get("carol_attack_voice3"));				
+				}
+				else if (make_quote > 7)
+				{
+					sound_stop(sound_get("carol_attack_voice2"));
+					sound_play(sound_get("carol_attack_voice2"));				
+				}
 			}
 		}
-	}
-	if (window == 2 && window_timer == 1)
-	{
-		switch (attack)
+		if (window == 2 && window_timer == 1)
 		{
-			case AT_FSTRONG:
-			case AT_USTRONG:
-			case AT_FSTRONG_2:
-			case AT_USTRONG_2:
+			switch (attack)
+			{
+				case AT_USTRONG:
+				case AT_FSTRONG_2:
+				case AT_USTRONG_2:
+					spawn_base_dust (x, y, "dash");
+				break;
+				default:
+				break;
+			}
+		}
+		
+		if (window == 2 && attack == AT_DSTRONG_2)
+		{
+			if(floor(state_timer/4) == state_timer /4)
+			{
+				spawn_base_dust(x, y, "land");
+			}	
+		}
+		if (window == 4 && window_timer == 1)
+		{
+			switch (attack)
+			{
+				case AT_FSTRONG:
 				spawn_base_dust (x, y, "dash");
-			break;
-			default:
-			break;
+				break;
+				case AT_USTRONG:
+					spawn_base_dust (x, y, "land");
+				break;
+				default:
+				break;
+			}
 		}
-	}
-	if (window == 2 && attack == AT_DSTRONG_2)
-	{
-		if(floor(state_timer/4) == state_timer /4)
+		if (window == 5 && (window_timer == 18 && has_hit || window_timer == 23) && attack == AT_DSTRONG)
 		{
-			spawn_base_dust(x, y, "land");
-		}	
-	}
-	if (window == 4 && window_timer == 1)
-	{
-		if (attack == AT_USTRONG)
-		{
-			spawn_base_dust (x, y, "land");
+			set_state(PS_CROUCH);
 		}
-	}
-	if (window == 5 && (window_timer == 18 && has_hit || window_timer == 23) && attack == AT_DSTRONG)
-	{
-		set_state(PS_CROUCH);
-	}
 	break;
 	
 	//Following code governs Wild Kick
@@ -1271,7 +1384,6 @@ switch (attack)
 	//Increase Kick Time to make the meter drain during the attack
 	if (window == 2 && !hitpause)
 	{
-		can_shield=(window < 3);
 		super_armor=true;
 		can_jump=(has_hit_player && window < 3);
 		kickTime++;
@@ -1281,26 +1393,29 @@ switch (attack)
 			multikick_energy = 200 - (kickTime * 2.5);
 			remainingCharge = multikick_energy;
 		}
+		//Set Cooldown if cancelled by shield and also trigger meter
+		if (shield_pressed)
+		{
+			window = 3;
+			window_timer = 0;
+			feline_power = false;
+			multikick_energy = remainingCharge;
+			move_cooldown[AT_NSPECIAL]= 200 - remainingCharge;
+			move_cooldown[AT_NSPECIAL_2]= 200 - remainingCharge;
+			sound_stop(sound_get ("wild_kick"));
+		}
 	}
-
 
 	//Set Cooldown if cancelled by jump and also trigger meter
 	if (jump_pressed && can_jump)
 	{
 		feline_power = false;
-		move_cooldown[AT_NSPECIAL]= 200;
-		move_cooldown[AT_NSPECIAL_2]= 200;
+		multikick_energy = remainingCharge;
+		move_cooldown[AT_NSPECIAL]= 200 - remainingCharge;
+		move_cooldown[AT_NSPECIAL_2]= 200 - remainingCharge;
 		sound_stop(sound_get ("wild_kick"));
 	}
-	//Set Cooldown if cancelled by shield and also trigger meter
-	if (shield_pressed && can_shield)
-	{
-		feline_power = false;
-		move_cooldown[AT_NSPECIAL]= 200;
-		move_cooldown[AT_NSPECIAL_2]= 200;
-		sound_stop(sound_get ("wild_kick"));
-	}
-	
+
 	//Set Cooldown and allow meter to refill
 	if (window == 2 && window_timer == 80)
 	{
@@ -1342,6 +1457,7 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    case "fastfall": dlen = 44; dfx = 17; dfg = 2657; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(round(x),round(y),asset_get("empty_sprite"),dlen);
 if newdust == noone return noone;

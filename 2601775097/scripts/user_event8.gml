@@ -12,8 +12,11 @@ with (oPlayer) if (player != other.player && "url" in self && url != 2396061657)
 //5 - angry flustered
 //Date Girl Support. Generated using McDucky's Date Girl Generator!
 Chatting = true;
-DG_portrait = sprite_get("DG_portrait");
-//if (theikos) DG_portrait = sprite_get("DG_portrait_theikos");
+
+//he has a random chance to appear with glasses (unless he is on his theikos state/alt)
+DG_portrait = (theikos_type > 0 || alt_cur == 26) ? sprite_get("DG_port_theikos") : ( random_func(0, 5, true) == 0 ? sprite_get("DG_port_glasses") : sprite_get("DG_port") );
+
+
 var DG_page = 0;
 
 //Page 0 - INTRO
@@ -60,8 +63,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"*Ahem* Well... I'm Bar Reygard, Guardian of the Elements.
-Who are you?
+"*Ahem* Well... I'm Bar. Bar Reygard.
 "
 
 DG_nextindex[DG_page] = 2;
@@ -110,13 +112,12 @@ DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
 "G-Get to know me? Well.. There isn't a lot to say...
-I'm just an angel from another world assigned to stop the
-chaos happening here in Aether."
+I'm just an angel from another world with a job to do."
 
 DG_options[DG_page] = 
 "An angel? I never would have guessed!
 I would have expected something a bit more grand.
-What do you guard?"
+What do you do?"
 			
 DG_answers[DG_page] = [4,9,18];
 
@@ -137,9 +138,9 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Yeah, Angels in my world are hiding in plain sight.
-We use a human disguise to blend in.
-Gehenom did it first so we were forced into it to stop them."
+"Angels in my world are hiding in plain sight.
+My human form is more of a disguise if anything.
+Gehenom did it first so we needed to do it too."
 
 DG_nextindex[DG_page] = 5;
 
@@ -185,7 +186,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"You Humans probably know it as Hell or The Underworld.
+"You probably know it as Hell.
 
 "
 
@@ -229,8 +230,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"It was nice talking to someone for once though!
-Things started to get a bit lonely here...
+"It was uhm... Nice to talk to you, I suppose.
 "
 
 //OPTION1-2
@@ -250,7 +250,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"W-well yeah that's understandable.
+"T-that's understandable.
 
 "
 
@@ -272,7 +272,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"You probably expected something less... Normal looking.
+"You probably expected something less... Normal.
 
 "
 
@@ -294,7 +294,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"My Theïkós would fit that description a bit more.
+"Maybe my Theïkós would fit that description...
 
 "
 
@@ -364,9 +364,8 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Using God's blessing I can transform to an unrestraint form,
-summoning an a holy armor on my body and becoming
-virtually indestructable."
+"With divine blessings I can remove all my physical restraints,
+summoning holy armor and becoming virtually indestructable."
 
 DG_nextindex[DG_page] = 15;
 
@@ -386,7 +385,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"The only thing really holding this pure power back is...
+"The only thing holding this power back is...
 Well my willpower.
 "
 
@@ -431,7 +430,7 @@ DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
 "W-well I should get going, I have a job to do.
-But I do appritiate the talk!
+But I appritiate the talk!
 "
 
 //OPTION1-3
@@ -451,7 +450,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"This gauntlet, actually.
+"I guard this gauntlet I wear.
 
 "
 
@@ -495,7 +494,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"The gauntlet holds the leftover energies God used to create
+"It holds leftover energies from the creation of
 the universe. My gauntlet specifically has the energy of
 the creation of the physical world, the elements."
 
@@ -517,8 +516,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"But... It also holds a more... personal place in my heart...
-
+"...
 "
 
 DG_nextindex[DG_page] = 22;
@@ -561,7 +559,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Thanks for the chat, though..!
+"Thanks for the interest, I guess...
 
 "
 
@@ -583,7 +581,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"...Dad...
+"...I will never forgive those demons... Dad...
 
 "
 
@@ -696,7 +694,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Besides...! I-... I have someone else on my mind already.
+"Besides...! I-... I'm not interested...
 
 "
 
@@ -765,7 +763,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Yeah I... I guess so. It's just... It's been odd here.
+"Yeah I... I guess so.
 
 "
 
@@ -787,8 +785,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"This world is filled to the brim with people of all
-shapes and sizes.
+"Talking animals aren't exactly a thing I'm familiar with.
 "
 
 DG_nextindex[DG_page] = 34;
@@ -832,8 +829,8 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"On top of that, most people here are looking for a fight,
-I just want to finish my job and go back home.
+"On top of that, most people are looking for a fight,
+I just want to finish my job and go home.
 "
 
 DG_options[DG_page] = 
@@ -882,7 +879,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"But for now time is against me, creatures of abyss are
+"..But for now time is against me, creatures of the abyss
 appearing all over this world, I should at least wrap that
 up."
 
@@ -904,7 +901,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Thanks for talking with me a bit... Uh...
+"Thanks for the chat uhm...
 
 "
 
@@ -952,7 +949,7 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Haha... I was rambling too much to ask for your name...
+"Haha... I forgot to ask for your name...
 I-I see.. thanks, Callie.
 "
 
@@ -995,8 +992,8 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Maybe I should try to get around here first... It might make
-it easier for me to feel more comfterable here.
+"Maybe I should explore more of what's around me...
+It could help me get around... Possibly.
 "
 
 DG_nextindex[DG_page] = 43;
@@ -1017,8 +1014,8 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"Can't help but feel like I'm meddling with other people's
-affairs.
+"Can't help but feel like I'm sticking my nose into
+other people's business.
 "
 
 DG_nextindex[DG_page] = 44;
@@ -1039,8 +1036,8 @@ DG_custom_right_portrait[DG_page] = false;
 DG_right_speaker[DG_page] = false;
 
 DG_dialogue[DG_page] = 
-"I should go, I feel like I need to understand this world and
-it's people more, so I can do a decent job at preventing a
+"I should go, I feel like it would help understanding this world
+and it's people, so I can do a decent job at preventing a
 disaster waiting to happen."
 
 DG_nextindex[DG_page] = 38;

@@ -8,14 +8,10 @@ bone_hit_timer++;
 state_timer++;
 fail_timer++;
 
-if (state > 1) {
-    with(pHitBox){
-        if ((place_meeting(x,y,other) && player_id != other.player_id) || was_parried){
-            spawn_hit_fx(x, y, 301);
-            instance_destroy(other);
-        }
-    }
-}
+//if (state > 1) {
+//    is_hittable = true;
+//} else { is_hittable = false; }
+
 with (asset_get("plasma_field_obj")){ //bones are destroyed in clairen's plasma field
     with (other.id){
         if (get_player_team(get_instance_player(other)) != get_player_team(player)){

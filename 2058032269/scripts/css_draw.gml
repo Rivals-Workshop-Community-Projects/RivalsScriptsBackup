@@ -53,9 +53,9 @@ if (get_player_color(player) == 10){
 
 //Patch Info - Format borrowed from Hime
 
-patch_day = "4";
-patch_month = "AUG";
-patch_year = "2021";
+patch_day = "21";
+patch_month = "SEP";
+patch_year = "2022";
  
 textDraw(temp_x + 70, temp_y - 11, "fName", c_white, 0, 1000, 1, true, 1, patch_month + " " + patch_day + ". " + patch_year); 
  

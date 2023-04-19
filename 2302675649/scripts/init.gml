@@ -156,7 +156,7 @@ dspecCoolMax = has_rune("K")?0:120;
 
 // strong angle
 strongAng = 0;
-strongEndFree = true;
+//strongEndFree = true;
 
 // transcend
 transcounter = 0;

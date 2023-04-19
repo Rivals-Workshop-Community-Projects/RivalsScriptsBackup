@@ -179,7 +179,6 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_FSPECIAL, 4, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FSPECIAL, 4, HG_EXTRA_CAMERA_SHAKE, -1);
-set_hitbox_value(AT_FSPECIAL, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT, 1);
 
 
@@ -227,5 +226,4 @@ set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_KNOCKBACK, 9 + (has_rune("J") * 3));
 set_hitbox_value(AT_FSPECIAL, 6, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL, 6, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_FSPECIAL, 6, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 6, HG_VISUAL_EFFECT, 1);

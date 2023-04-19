@@ -53,6 +53,8 @@ sprite_change_offset("dspecial_objects", 126, 158);
 sprite_change_offset("taunt", 126, 158);
 sprite_change_offset("taunt2", 126, 158);
 
+sprite_change_offset("lunatic", 150, 150);
+sprite_change_offset("p", 16, 16);
 sprite_change_offset("hfx_egg", 64, 64);
 sprite_change_offset("hfx_special", 64, 64);
 sprite_change_offset("plat", 64, 94);

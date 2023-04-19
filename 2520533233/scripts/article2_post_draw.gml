@@ -1,4 +1,5 @@
 //rip glow effects ;~;
+
 enum FX{
     graze,
     graze_after,

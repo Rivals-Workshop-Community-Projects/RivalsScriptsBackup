@@ -138,7 +138,7 @@ switch(draw_menu){
 		textDraw(x+14, y+138, "fName", c_white, 15, 200, 1, false, 1, " <- Lore by Alt Color -> "); //Text for skin source
 		
 		//Draw Character Icon
-		draw_sprite_ext(sprite_get("css_icon"),0,x + 190, y + 46,2,2,0,c_white,1);
+		draw_sprite_ext(get_char_info(player, INFO_ICON),0,x + 180, y + 34,2,2,0,c_white,1);
 		//print(string(get_player_color(player) + (color_shift * 32)));
 		
 		// Draw Exit Button
@@ -149,13 +149,13 @@ switch(draw_menu){
 	var mode_string;
 	switch(color_shift){
 		case 0:
-			mode_string = " -> Normal <-";
+			mode_string = "Default Alts";
 		break;
 		case 1:
-			mode_string = " -> Extra 1 <- "
+			mode_string = "Extra Alts"
 		break;
 		case 2:
-			mode_string = " -> Extra 2 <- "
+			mode_string = "Extra 2 Alts"
 		break;
 		default:
 		break;
@@ -164,11 +164,11 @@ switch(draw_menu){
 		draw_rectangle_colour(x+10, y+10, x+210, y+154, c_dkgray, c_dkgray, c_black, c_black, false); // Original black box draw functions
 		//draw_rectangle_colour(x+16, y+40, x+204, y+150, c_black, c_black, c_black, c_black, true); // Original black box draw function
 		textDraw(x + 10, y + 44, "fName", c_white, 18, 200, 1, false, 1,"Color #" +string(get_player_color(player)) + ": " + string(slot_property_array[ get_player_color(player) + (color_shift * 32),0]))
-		textDraw(x + 10, y + 60, "fName", c_white, 18, 200, 1, false, 1,"Mode:" + mode_string);
-		textDraw(x + 10, y + 80, "fName", c_yellow, 15, 150, 1, false, 1,"Hover over button for more alts!");
+		textDraw(x + 50, y + 70, "fName", c_white, 18, 200, 1, false, 1,mode_string);
+		//textDraw(x + 10, y + 80, "fName", c_yellow, 15, 150, 1, false, 1,"Hover over button for more alts!");
 		//Draw Character
 		if(run_init_shader_for_character_draw == true){manual_init_shader_call = true;init_shader();run_init_shader_for_character_draw = false;} // Detect Color Shift
-		draw_sprite_ext(sprite_get("idle"),timer/9,x + 175, y + 100,1,1,0,c_white,1);
+		draw_sprite_ext(sprite_get("idle"),timer/6.5,x + 175, y + 100,1,1,0,c_white,1);
 		// Draw Exit Button
 		draw_menu_button(BOX_SHIFT_COLOR_ALTS);
 		// Draw Exit Button

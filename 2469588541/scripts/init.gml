@@ -43,7 +43,7 @@ wall_frames = 1;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .65;
-hitstun_grav = .6;
+hitstun_grav = .53;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier 1.15>1.1
 
 land_time = 4; //normal landing frames
@@ -172,6 +172,12 @@ canDespawn = true;
 starKB = has_rune("K")?8:5;
 starDamage = 2;
 hudColour = get_player_hud_color(player);
+hasCopy = false;
+with (oPlayer) if ("url" in self && url == other.url && other != id)
+{
+	other.hasCopy = true;
+	hasCopy = true;
+}
 
 // afterimage
 afterImageTimer = 0;
@@ -191,8 +197,6 @@ steve_death_message = "Transphobia is gone";
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 96;
 fs_portrait_x = 96;
-//kirbyability = 16;
-//swallowed = 0;
 has_fail = true;
 fail_text = "Star Fox?
 More like Star Fail!";

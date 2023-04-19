@@ -386,6 +386,108 @@ if(not_moved && state != PS_SPAWN){
 }
 
 
+//Enemy URL
+if(just_spawned > 5){
+	if(players_num == 2 && enemy_url == 0){
+		with(oPlayer){
+			if(player != other.player){
+				other.enemy_url = url
+			}
+		}
+	}
+}else{
+	just_spawned += 1
+}
+
+//Taunt Compat
+
+//Torga 2853556003 That Torga is a spy!
+//Anglara 2661141982 Useless fish...
+//Arboris 2832785375 Sylvanos wanna-be...
+//Bluey 1882960192 Is blue all you wear?
+//BCM 2617988512 Where does your neck end?
+//Callie 2396061657 Go back to your dating sim!
+//Candyman 2386395909 Shoulda never left lethal league...
+//Crewmate 2217843818 amoogus
+//Daora 2605304929 Get a new gimmick
+//Dazz 2855515151 Royal flush!
+//Donyoku 2400092760 Gold sinks in water, yknow...
+//Fernet 2606508459 Punch all you want, ryu wanna-be
+//Future Ducky 2652644223 How does a duck have hair?
+//Gay Fridge 2552501300 How do you fit a flag in there?
+//Glare 2648394023 I'll clip your wings!
+//Hana 2064167290 How the turn tables
+//Hat Kid 2004919133 Cool hat, I'll be taking that...
+//Heartbrake 2396053263 Someones gotta introduce you to Tinder, bro
+//Henry 2495375306 Must. Not. Get. Distracted.
+//Jerma 2817605804 Currently peeping the horror
+//L&P 2871136791 Archemedes, NO!
+//Lukastar 2469588541 The following contains bright flashing lights, viewer discretion is advised.
+//Mal 2605377553 Remember kids, don't do drugs
+//Maverick 2546990424 FUNNE MONKY
+//NA 2229832619 You Axolotl questions, my friend
+//Nade 2035357584 Hide behind your cover, I dare you
+//Nitori 2459562158 How... How do you lift that?
+//Nova 2504113755 2 Swords??? How is this allowed?
+//Po 2778789055 So are you guys friends... orr????
+//Reimu 2263955842 I'm seeing a lot of yang without much yin
+//Yuuto 2626409326 A meteor, rocket ship, and flame vortex walk into a bar...
+//Rokesha 2561479115 Mmmm, gun
+//Ryken 2241098230 This is a load of bull-.... shoot
+//Sheftu 2354000869 I'll take my medium-rare, hold the onions
+//Suitcase 1996010699 What gave you sentience, and why do you have a boot?
+//Goose 1894361290 Silly goose, trix are for kids
+//Valley 2802300675 Your skin is green, you might want to get that checked out
+//Wally 2811386719 Hey! Water balls were my thing first!
+//Zeph 2396735388 Slow and steady wins the race
+//Owen 2144710708 Who's gmod oc is this?
+
+
+if(enemy_url == 2853556003 || 
+enemy_url == 2661141982 ||
+enemy_url == 2832785375 ||
+enemy_url == 1882960192 ||
+enemy_url == 2617988512 ||
+enemy_url == 2396061657 ||
+enemy_url == 2386395909 ||
+enemy_url == 2217843818 ||
+enemy_url == 2605304929 ||
+enemy_url == 2855515151 ||
+enemy_url == 2400092760 ||
+enemy_url == 2606508459 ||
+enemy_url == 2652644223 ||
+enemy_url == 2552501300 ||
+enemy_url == 2648394023 ||
+enemy_url == 2064167290 ||
+enemy_url == 2004919133 ||
+enemy_url == 2396053263 ||
+enemy_url == 2495375306 ||
+enemy_url == 2817605804 ||
+enemy_url == 2871136791 ||
+enemy_url == 2469588541 ||
+enemy_url == 2605377553 ||
+enemy_url == 2546990424 ||
+enemy_url == 2229832619 ||
+enemy_url == 2035357584 ||
+enemy_url == 2459562158 ||
+enemy_url == 2504113755 ||
+enemy_url == 2778789055 ||
+enemy_url == 2263955842 ||
+enemy_url == 2626409326 ||
+enemy_url == 2561479115 ||
+enemy_url == 2241098230 ||
+enemy_url == 2354000869 ||
+enemy_url == 1996010699 ||
+enemy_url == 1894361290 ||
+enemy_url == 2802300675 ||
+enemy_url == 2811386719 ||
+enemy_url == 2396735388 ||
+enemy_url == 2144710708){
+	taunt_compat = true
+}else{
+	taunt_compat = false
+}
+
 //DJ Stuff
 if(state == PS_DOUBLE_JUMP && state_timer < 2){
     if(left_down){

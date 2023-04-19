@@ -43,6 +43,7 @@ set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, vfx_wood_small);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_leafy_hit3"));
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_NAIR, 1, HG_HIT_PARTICLE_NUM, 3);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_NAIR, 2, HG_PARENT_HITBOX, 1);

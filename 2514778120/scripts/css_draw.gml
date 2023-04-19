@@ -14,9 +14,9 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "Ramlethal"
+var qe_b = string(sprite_get("idle")) //my sneaky trick to make sure every reload refreshes -supersonic
 // ! you can now scroll down until you reach "the primary part you should change."
- 
+online_fix = player; //this is used in init_shader to fix the online init_shader bug.
 var tmp_cur = 0;
 var tmp_i = [0, 0, 0, 0, 0];
 var tmp_x = [0, 0, 0, 0, 0];
@@ -65,8 +65,6 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     //--- ---
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
-    
-    col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(get_color_profile_slot_r(0, 2), get_color_profile_slot_g(0, 2), get_color_profile_slot_b(0, 2));
@@ -133,7 +131,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[20,1] = "Black Hole"
     ce[20,2] = ""
     ce[21,0] = make_color_rgb(get_color_profile_slot_r(21, 2), get_color_profile_slot_g(21, 2), get_color_profile_slot_b(21, 2));
-    ce[21,1] = "Voidfox"
+    ce[21,1] = "Darkness"
     ce[21,2] = ""
     ce[22,0] = make_color_rgb(get_color_profile_slot_r(22, 2), get_color_profile_slot_g(22, 2), get_color_profile_slot_b(22, 2));
     ce[22,1] = "Transistor"
@@ -147,12 +145,11 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[25,0] = make_color_rgb(get_color_profile_slot_r(25, 2), get_color_profile_slot_g(25, 2), get_color_profile_slot_b(25, 2));
     ce[25,1] = "Daisy"
     ce[25,2] = ""
-    ce[26,0] = make_color_rgb(get_color_profile_slot_r(26, 2), get_color_profile_slot_g(26, 2), get_color_profile_slot_b(26, 2));
-    ce[26,1] = "Seasonal"
+    ce[26,0] = make_color_rgb(get_color_profile_slot_r(27, 2), get_color_profile_slot_g(27, 2), get_color_profile_slot_b(27, 2));
+    ce[26,1] = "Spider"
     ce[26,2] = ""
-    ce[27,0] = make_color_rgb(get_color_profile_slot_r(27, 2), get_color_profile_slot_g(27, 2), get_color_profile_slot_b(27, 2));
-    ce[27,1] = "Spider"
-    ce[27,2] = ""
+    
+    col_max = array_length(ce)-1; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

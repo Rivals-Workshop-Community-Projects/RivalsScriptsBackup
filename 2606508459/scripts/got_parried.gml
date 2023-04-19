@@ -44,4 +44,9 @@ switch (my_hitboxID.attack)
     case 43:
         move_cooldown[43] = 0;
         my_hitboxID.hitbox_timer = 0;
+        my_hitboxID.proj_angle = 180;
+        /*with (my_hitboxID)
+        {
+            spr_dir *= -1
+        }*/
 }

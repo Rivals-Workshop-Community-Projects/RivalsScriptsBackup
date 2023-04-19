@@ -42,8 +42,14 @@ if attack == AT_DAIR {
 }
 
 if attack == AT_USPECIAL {
-    can_wall_jump = true
+    
     can_move = false
+    
+    if window < 3 || window > 5 {
+        can_wall_jump = true
+    } else {
+        can_wall_jump = false
+    }
     
     if window == 1 && window_timer == 1 sound_play(asset_get("sfx_syl_uspecial_travel_start"))
     if window == 2 {
@@ -158,6 +164,10 @@ if attack == AT_JAB {
     if window == 7 && window_timer == window_length && !hitpause {
         sound_play(asset_get("sfx_bite"))
     }
+    if window == 6 && special_pressed {
+        set_attack(AT_NSPECIAL)
+        was_canceled = true
+    }
 }
 
 if attack == AT_FSPECIAL {
@@ -250,9 +260,38 @@ if !remote_strong {
     strong_draw_y = y
 }
 
+if attack == AT_DATTACK {
+    if window == 1 seed_hit = false;
+    var orig_id = id;
+    with pHitBox if player_id == other.id && attack == AT_DATTACK && hbox_num == 3 {
+        with obj_article1 if is_seed && state == PS_IDLE && place_meeting(x, y, other) {
+            orig_id.seed_hit = true;
+        
+            orig_id.has_hit = true
+            orig_id.hitpause = true
+            orig_id.hitstop = 6
+            orig_id.old_hsp = orig_id.hsp
+            orig_id.old_vsp = orig_id.vsp
+            
+            die = true
+            sound_play(asset_get("sfx_crunch"))
+            spawn_hit_fx(x, y, 133)
+        }
+    }
+    
+    if seed_hit && !hitpause {
+        can_jump = true
+        can_attack = true
+        can_special = true
+        can_strong = true
+        can_ustrong = true
+    }
+}
+
 switch attack {
     case AT_TAUNT:
     if window == 1 && window_timer == window_length sound_play(asset_get("sfx_syl_uspecial_travel_start"))
+    if window == 1 && window_timer == 10 sound_play(asset_get("sfx_syl_dspecial_growth"))
     if window == 2 && window_timer == 1 shake_camera(4, 12)
     break;
     
@@ -303,6 +342,36 @@ switch attack {
     
     case AT_DTILT:
     if window == 1 && window_timer == 3 sound_play(sfx_ivy_swipe_med1)
+    
+    //tipper seed interaction
+    var dtiltbox = undefined;
+    with pHitBox if player_id == other.id && attack == AT_DTILT && hbox_num == 1 {
+        dtiltbox = id
+    }
+    if dtiltbox != undefined && !seed_grab {
+        //seed hit
+        with obj_article1 if player_id == other.id && place_meeting(x, y, dtiltbox) && state == PS_IDLE {
+            sound_play(asset_get("sfx_leafy_hit2"))
+            other.seed_grab = true
+            other.seed_grab_id = id
+            other.has_hit = true
+            other.hitpause = true
+            other.hitstop = 6
+            other.old_hsp = 0
+            other.old_vsp = 0
+            
+            spawn_hit_fx(x, y-8, 305)
+        }
+    }
+    
+    if seed_grab && !hitpause {
+        seed_grab_id.destroyed = true
+        var hbox = create_hitbox(AT_NSPECIAL, 1, seed_grab_id.x, seed_grab_id.y)
+            hbox.spr_dir = -spr_dir
+            hbox.hsp = -spr_dir*5
+            hbox.vsp = -13
+        seed_grab = false
+    }
     break;
     
     case AT_UTILT:

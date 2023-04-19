@@ -1,5 +1,5 @@
 // for dspecial boot sound when it lands
-boot_land_sound = sound_get("toolgun_shoe_place");
+boot_land_sound = player_id.sound_boot_land_sound;
 times_played = 0;
 
 // boolean for smg bomb hitting shoe
@@ -33,19 +33,6 @@ gun_ground_effect = hit_fx_create( sprite_get( "guneffect_ground" ), 7 );
 
 // effect when dspecial
 dspecial_spawn_effect = hit_fx_create( sprite_get( "dspecial_effect" ), 14 );
-
-// cry about it
-/*
-if (attack == AT_NSPECIAL) {
-	no_absorb = 1;
-}
-*/
-
-// self explanatory
-if (attack == AT_DSPECIAL) {
-	MattCanGrab = true;
-	MorshuCanGrab = true;
-}
 
 // blastzone stuff
 stage_left_blast = get_stage_data( SD_X_POS ) - get_stage_data( SD_SIDE_BLASTZONE );

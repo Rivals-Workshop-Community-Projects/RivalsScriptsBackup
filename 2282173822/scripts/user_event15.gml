@@ -257,6 +257,12 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("2.2", "14 April, 2023");
+initWords("Advertising");
+initHeader("FStrong - Nerfs");
+initSection("Now has extended parry stun.
+(I did this ages ago and forgot to upload apparently)");
+
 initPatch("2.1", "04 October, 2021");
 initHeader("General - Bugfixes");
 initSection("Re-added the internal Muno Character ID, the absence of which caused a bug.");

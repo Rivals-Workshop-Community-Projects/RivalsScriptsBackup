@@ -258,7 +258,7 @@ with phone{
 		dont_fast = true;
 	}
 	
-	UTIL_FPS_WARN	= pho_initUtil("Low FPS Warning", [1, 0], ["On", "Off"], "Display an onscreen warning when the game's FPS dips below 60.")
+	//UTIL_FPS_WARN	= pho_initUtil("Low FPS Warning", [1, 0], ["On", "Off"], "Display an onscreen warning when the game's FPS dips below 60.")
 	UTIL_OPAQUE		= pho_initUtil("Opaque Background", [0, 1, 2], ["Off", "On", "When Focused"], "Draw an opaque background for app content, instead of a transparent one.");
 	UTIL_DMG_FREEZE	= pho_initUtil("Freeze Own Damage", [0, 1], ["Off", "On"], "Prevent the phone user's damage from changing (by constantly setting it back to the initial value).");
 	UTIL_STATE_SAVE	= pho_initUtil("Save Position and Damage", [0], "", "Save the position and damage of all characters.");
@@ -668,9 +668,9 @@ if !array_equals(phone_offscreen, []){
 
 // onscreen text
 
-if (fps_real) < 60 && !phone_online && phone.utils_cur[phone.UTIL_FPS_WARN]{
+/*if (fps_real) < 60 && !phone_online && phone.utils_cur[phone.UTIL_FPS_WARN]{
 	draw_debug_text(32, 32, "Low FPS! (" + string(floor(fps_real)) + ")");
-}
+}*/
 
 if phone_online && get_gameplay_time() < 300 draw_debug_text(10, 48, "ONLINE: Press the F1 key to enable Fast Graphics.");
 

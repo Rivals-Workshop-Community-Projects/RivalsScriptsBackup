@@ -12,21 +12,25 @@ var challenge_sfx = sound_get("knight_challenge")
 var rand_seed = 0
 
 if pre_timer == 10 {
-    with oPlayer if ("url" in self) && url == 2105527362 {
-        array_push(other.knight_ids, id)
-        
-        //set challenge attack
-        set_attack_value(AT_TAUNT_2, AG_SPRITE, challenge_spr);
-        set_attack_value(AT_TAUNT_2, AG_NUM_WINDOWS, 1);
-        set_attack_value(AT_TAUNT_2, AG_OFF_LEDGE, 0);
-        set_attack_value(AT_TAUNT_2, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
-        
-        set_window_value(AT_TAUNT_2, 1, AG_WINDOW_TYPE, 0);
-        set_window_value(AT_TAUNT_2, 1, AG_WINDOW_LENGTH, 130);
-        set_window_value(AT_TAUNT_2, 1, AG_WINDOW_ANIM_FRAMES, 26);
-        set_window_value(AT_TAUNT_2, 1, AG_WINDOW_HAS_SFX, 1);
-        set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX, challenge_sfx);
-        set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX_FRAME, 30);
+    with oPlayer {
+        if ("url" in self) && url == 2105527362 {
+            array_push(other.knight_ids, id)
+            
+            //set challenge attack
+            set_attack_value(AT_TAUNT_2, AG_SPRITE, challenge_spr);
+            set_attack_value(AT_TAUNT_2, AG_NUM_WINDOWS, 1);
+            set_attack_value(AT_TAUNT_2, AG_OFF_LEDGE, 0);
+            set_attack_value(AT_TAUNT_2, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
+            
+            set_window_value(AT_TAUNT_2, 1, AG_WINDOW_TYPE, 0);
+            set_window_value(AT_TAUNT_2, 1, AG_WINDOW_LENGTH, 130);
+            set_window_value(AT_TAUNT_2, 1, AG_WINDOW_ANIM_FRAMES, 26);
+            set_window_value(AT_TAUNT_2, 1, AG_WINDOW_HAS_SFX, 1);
+            set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX, challenge_sfx);
+            set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX_FRAME, 30);
+        } else if ("is_hornet" in self) && is_hornet {
+            array_push(other.knight_ids, id)
+        }
     }
 }
 
@@ -46,7 +50,7 @@ if array_length(knight_ids) > 0 {
 
 //print(knight_hitboxes)
 
-//knight pogo off hitboxes
+//pogo off hitboxes
 with pHitBox if player_id == other.id && !was_parried {
     for (var i = 0; i < array_length(knight_hitboxes); i++) {
         if place_meeting(x, y, knight_hitboxes[i]) {
@@ -228,7 +232,7 @@ if is_aether_stage() { //sisters of battle
                         break;
                         
                         case 2: //double throw + dive
-                        attack_duration = 171
+                        attack_duration = 201
                         if move_timer == 1 {
                             spawn_attack(AT_FTHROW, 1, target, mantis_1, rand_variation)
                             spawn_attack(AT_FTHROW, -1, target, mantis_2, rand_variation)
@@ -528,7 +532,7 @@ switch _atk {
         set_hitbox_value(AT_FTHROW, 11, HG_HITBOX_Y, -120);
         break;
     }
-    delay = 203
+    delay = 221
     break;
 }
 

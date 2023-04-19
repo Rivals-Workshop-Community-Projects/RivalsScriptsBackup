@@ -19,8 +19,8 @@ walk_speed          = 3;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
 initial_dash_time   = 8;		// 8    -  16       zetterburn's is 14
-initial_dash_speed  = 8;		// 4    -  9
-dash_speed          = 7;		// 5    -  9
+initial_dash_speed  = 7;		// 4    -  9
+dash_speed          = 6.5;		// 5    -  9
 dash_turn_time      = 10;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 6;		// 4    -  6        zetterburn's is 4
@@ -31,7 +31,7 @@ moonwalk_accel      = 1.3;		// 1.2  -  1.4
 // Air movement
 leave_ground_max    = 6;		// 4    -  8
 max_jump_hsp        = 6;		// 4    -  8
-air_max_speed       = 6;  		// 3    -  7
+air_max_speed       = 5.75;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
@@ -52,7 +52,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 11;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 22;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 18;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -176,6 +176,7 @@ instrum_num = 1;
 stop_instrum = 0;
 combo_cooldown = 0;
 combo_respawnpause = false;
+respawn_timer = 0;
 
 duster_muted = false;
 
@@ -187,13 +188,34 @@ bomb_state = false;
 bomb_timer = 0;
 bomb_missfire = false;
 smoke_hitbox_reset = false;
+bomb_owner = noone;
+smokebomb = 0;
 
 fly_length = 120;
 
 fspecial_ledge_cancel = 0;
 
+var tmp_sync_vars = get_synced_var(player);
+for (var i = 0; i < 2; i++)
+{
+    var shift = (i*4);
+    synced_vars[i] = tmp_sync_vars >> shift & 15;
+}
 secret_alt_on = false;
+switch (synced_vars[0])
+{
+	default:
+	secret_alt_on = false;
+	break;
+	case 1:
+	secret_alt_on = true;
+	break;
+}
+
+secret_alt_num = 0;
 seinfeld = false;
+
+practice_mode = false;
 
 beta_voice_mode = false;
 alt = get_player_color(player);
@@ -208,6 +230,15 @@ battle_text = "*Duster attacks with blinding speed!";
 arena_title = "The Thief of Tazmily";
 fail_text = "Don't tell me you thought the Noble Spittoon was ACTUALLY the treasure.";
 
+if(get_player_color(player) == 21){ // FTL
+set_color_profile_slot( 21, 0, 55, 185, 232 ); //Shirt
+set_color_profile_slot( 21, 1, 248, 207, 170 ); //Skin
+set_color_profile_slot( 21, 2, 159, 97, 61 ); //Hair1
+set_color_profile_slot( 21, 3, 119, 73, 29 ); //Hair2
+set_color_profile_slot( 21, 4, 53, 85, 89 ); //Pants
+set_color_profile_slot( 21, 5, 255, 203, 31 ); //Shoes
+set_color_profile_slot( 21, 6, 255, 203, 31 ); //Shirt Stripe
+}
 if(get_player_color(player) == 22){ // TAG
 set_color_profile_slot( 22, 0, 255, 147, 94 ); //Shirt
 set_color_profile_slot( 22, 1, 217, 146, 105 ); //Skin
@@ -218,7 +249,7 @@ set_color_profile_slot( 22, 5, 149, 202, 116 ); //Shoes
 set_color_profile_slot( 22, 6, 248, 219, 94 ); //Shirt Stripe
 }
 
-
+user_event(7);
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 /*

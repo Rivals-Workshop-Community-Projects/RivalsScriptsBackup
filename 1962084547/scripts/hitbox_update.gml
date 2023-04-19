@@ -163,7 +163,8 @@ if ap_hit_enabled && !hit_by_fspecial && hitstop < 1 {
 					with (player_id) {
 						if (attack != AT_FSPECIAL || (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || was_parried ) break;
 						attack_end();
-						set_attack(AT_FSPECIAL_2);
+						if (fspecial_stall_count > 0) set_attack(AT_FSPECIAL_AIR);
+						else set_attack(AT_FSPECIAL_2);
 						spawn_hit_fx(x, y, hit_fx_create(sprite_get("fspecial_fx"), 15));
 						y = (other.y + 10);
 						if (other == nspecial_current) {
@@ -181,6 +182,7 @@ if ap_hit_enabled && !hit_by_fspecial && hitstop < 1 {
 						
 					break;
 					case AT_FSPECIAL_2:
+					case AT_FSPECIAL_AIR:
 						//hit the egg horizontally
 						hsp = 9 * player_id.spr_dir;
 						vsp = -2;
@@ -206,7 +208,8 @@ if ap_hit_enabled && !hit_by_fspecial && hitstop < 1 {
 							with (player_id) {
 								//change bird guy's bounce vsp and hsp in dair.gml
 								hsp = get_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_HSPEED) * spr_dir
-								vsp = get_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_VSPEED)
+								vsp = get_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_VSPEED) * max(1-(dair_stall_count/dair_max_stall), 0.1);
+								dair_stall_count++;
 								old_hsp = hsp;
 								old_vsp = vsp;
 							}		

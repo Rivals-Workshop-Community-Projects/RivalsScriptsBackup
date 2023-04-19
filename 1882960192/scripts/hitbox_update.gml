@@ -2,20 +2,13 @@
 if (attack == AT_NSPECIAL) {
 	if hbox_num == 1 {
 		if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
-			spawn_hit_fx(x, y, player_id.nspecialAfter);
-		}
-	}
-
-	if hbox_num == 2 {
-		if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
-			spawn_hit_fx(x, y, player_id.nspecialAfter2);
-			spawn_hit_fx(x-30*spr_dir, y, player_id.nspecialAfter);			
+			spawn_hit_fx(x+2*spr_dir, y, player_id.nspecialAfter);
 		}
 	}
 
 	if hbox_num == 3 { 
 		if hitbox_timer == 1 || hitbox_timer mod 5 == 0 {
-				spawn_hit_fx(x-10*spr_dir, y, player_id.nspecialAfter2);
+				spawn_hit_fx(x+2*spr_dir, y, player_id.nspecialAfter3);
 				spawn_hit_fx(x-20*spr_dir, y+18, player_id.nspecialAfter);
 				spawn_hit_fx(x-20*spr_dir, y-18, player_id.nspecialAfter);
 		}
@@ -24,21 +17,27 @@ if (attack == AT_NSPECIAL) {
 
 if (attack == AT_FSPECIAL) {
 	if hbox_num == 1 {
-		img_spd = hsp/5*spr_dir;
+		img_spd = hsp/6*spr_dir;
 
 		var got_hit = false;
 		var enemy_hitboxID = noone;
 		var hit_distance = 4;
 		var hit_dir = 0;
 		
-		if hitbox_timer == length {
-			spawn_hit_fx(x, y, 14);
+		if hitbox_timer == length-1 {
+			sound_play(asset_get("sfx_ell_fist_explode"));
+			spawn_hit_fx(x, y, 141);
+			with player_id create_hitbox(AT_FSPECIAL, 3, other.x, other.y);
 			with player_id ballDown = 30;
+			shake_camera(4, 6);
 		}
 		
 		if destroyed {
 			with player_id ballDown = 30;
 		}		
+		if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
+			spawn_hit_fx(x+2*spr_dir, y-4, player_id.fireAfter);
+		}
 		
 		if smacked && (hitbox_timer == 1 || hitbox_timer mod 2 == 0) {
 			spawn_hit_fx(x, y, player_id.fspecialAfter);
@@ -55,14 +54,14 @@ if (attack == AT_FSPECIAL) {
 		
 		with (asset_get("pHitBox")) {
 			if (player_id == other.player_id &&
-			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3 || attack == AT_FSPECIAL_AIR || 
+			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_TAUNT || attack == AT_FSPECIAL_AIR || 
 			attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_DSPECIAL_2 || attack == AT_DTHROW)
 			&& place_meeting(x,y,other.id) && !other.was_parried && !other.has_hit && !player_id.has_hit) {
 				other.player = player;
 				enemy_hitboxID = noone;
 				other.smacked = true;
 				other.borked = false;
-				other.hitbox_timer = 20;
+				other.hitbox_timer = 10;
 				other.spr_dir = player_id.spr_dir;
 				other.grav += .1;
 				other.air_friction = 0;			
@@ -104,9 +103,9 @@ if (attack == AT_FSPECIAL) {
 					}					
 				}
 				
-				if (attack == AT_JAB) {
-					other.old_vsp = -1;
-					other.old_hsp = 11 * (spr_dir);
+				if (attack == AT_TAUNT) {
+					other.old_vsp = 20;
+					other.old_hsp = 20 * (-spr_dir);
 				}
 				
 				if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
@@ -179,15 +178,28 @@ if (attack == AT_FSPECIAL) {
 		sound_play(asset_get("sfx_metal_hit_strong"), false, noone, 1, .9);		
 		}
 	}
+	
+	if hbox_num == 3 {
+		with (asset_get("pHitBox")) {
+			if (attack == AT_FSPECIAL && hbox_num == 1) {
+				other.player = player;
+				other.spr_dir = spr_dir;
+			}
+		}
+	}
 }
 if (attack == AT_FSPECIAL_2) {
 	if hbox_num == 1 {
-		img_spd = hsp/7*spr_dir;
+		img_spd = hsp/6*spr_dir;
 
 		var got_hit = false;
 		var enemy_hitboxID = noone;
 		var hit_distance = 4;
 		var hit_dir = 0;
+		
+		if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
+			spawn_hit_fx(x+2*spr_dir, y, player_id.nspecialAfter);
+		}
 		
 		if smacked && (hitbox_timer == 1 || hitbox_timer mod 2 == 0) {
 			spawn_hit_fx(x, y, player_id.fspecialAfter2);
@@ -205,13 +217,10 @@ if (attack == AT_FSPECIAL_2) {
 		
 		if hitbox_timer == length-1 {
 			with player_id ballDown = 40;
-			if smacked || has_hit {
-				spawn_hit_fx(x, y, 112);
-				with player_id create_hitbox(AT_FSPECIAL_2, 3, other.x, other.y);
-				sound_play(asset_get("sfx_clairen_tip_strong"));
-			} else {
-			spawn_hit_fx(x, y, 111);
-			}
+			spawn_hit_fx(x, y, 112);
+			with player_id create_hitbox(AT_FSPECIAL_2, 3, other.x, other.y);
+			sound_play(asset_get("sfx_clairen_tip_strong"));
+			shake_camera(8, 12);
 		}
 		
 		if destroyed {
@@ -220,14 +229,14 @@ if (attack == AT_FSPECIAL_2) {
 		
 		with (asset_get("pHitBox")) {
 			if (player_id == other.player_id &&
-			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3 || attack == AT_FSPECIAL_AIR || 
+			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_TAUNT || attack == AT_FSPECIAL_AIR || 
 			attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_DSPECIAL_2 || attack == AT_DTHROW)
 			&& place_meeting(x,y,other.id) && !other.was_parried && !other.has_hit && !player_id.has_hit) {
 				other.player = player;
 				enemy_hitboxID = noone;
 				other.smacked = true;
 				other.borked = false;
-				other.hitbox_timer = 118;
+				other.hitbox_timer = other.length-10;
 				other.spr_dir = player_id.spr_dir;
 				other.grav = 0;
 				other.air_friction = 0;	
@@ -269,9 +278,9 @@ if (attack == AT_FSPECIAL_2) {
 					}					
 				}
 				
-				if (attack == AT_JAB) {
-					other.old_vsp = 6;
-					other.old_hsp = 18 * (spr_dir);
+				if (attack == AT_TAUNT) {
+					other.old_vsp = 20;
+					other.old_hsp = 20 * (-spr_dir);
 				}
 				
 				if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
@@ -338,21 +347,13 @@ if (attack == AT_FSPECIAL_2) {
 		spawn_hit_fx(x, y, 304);
 		sound_play(asset_get("sfx_metal_hit_strong"), false, noone, 1, .9);		
 		}
-		
-		with (asset_get("pHitBox")) {
-			if (attack == AT_FSPECIAL_2 && hbox_num == 3) {
-				if other.smacked {
-					damage = 8;
-					kb_value = 9;
-				}
-			}
-		}
 	}
 	
 	if hbox_num == 3 {
 		with (asset_get("pHitBox")) {
 			if (attack == AT_FSPECIAL_2 && hbox_num == 1) {
 				other.player = player;
+				other.spr_dir = spr_dir;
 			}
 		}
 	}

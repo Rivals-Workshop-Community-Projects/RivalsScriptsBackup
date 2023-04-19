@@ -67,7 +67,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 80);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 4);
-set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 4);
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.2);
@@ -78,6 +78,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_crunch"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.6);
 
@@ -98,5 +99,3 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 135);
-
-//double vine

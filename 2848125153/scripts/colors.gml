@@ -174,6 +174,17 @@ colorSet(a, 6, $919bb3); //Hair
 colorSet(a, 7, $5cacc3); //Eyes
 a++;
 
+// Oarluis
+colorSet(a, 0, $b790b1); //Hat rim
+colorSet(a, 1, $3e1b12); //Hat
+colorSet(a, 2, $3e1b12); //Shirt
+colorSet(a, 3, $f6e2c1); //Skin
+colorSet(a, 4, $b790b1); //Pants
+colorSet(a, 5, $96644c); //Shoes
+colorSet(a, 6, $919bb3); //Hair
+colorSet(a, 7, $1d177c); //Eyes
+a++;
+
 // Pasino
 colorSet(a, 0, $1e5633); //Hat rim
 colorSet(a, 1, $2f3953); //Hat
@@ -208,18 +219,26 @@ colorSet(a, 7, $e72a2a); //Eyes
 a++;
 
 // Wah
-colorSet(a, 0, $4939ee); //Hat rim
+/*colorSet(a, 0, $4939ee); //Hat rim
 colorSet(a, 1, $fbc338); //Hat
 colorSet(a, 2, $fbc338); //Shirt
 colorSet(a, 3, $d9996d); //Skin
 colorSet(a, 4, $a43b97); //Pants
 colorSet(a, 5, $578e66); //Shoes
 colorSet(a, 6, $603515); //Hair
+colorSet(a, 7, $40435d); //Eyes*/
+colorSet(a, 0, $3e4fcb); //Hat rim
+colorSet(a, 1, $f8d02f); //Hat
+colorSet(a, 2, $f8d02f); //Shirt
+colorSet(a, 3, $fed3a6); //Skin
+colorSet(a, 4, $761b70); //Pants
+colorSet(a, 5, $0d5730); //Shoes
+colorSet(a, 6, $693328); //Hair
 colorSet(a, 7, $40435d); //Eyes
 a++;
 
 // Ronald
-colorSet(a, 0, $fe0000); //Hat rim
+/*colorSet(a, 0, $fe0000); //Hat rim
 colorSet(a, 1, $ffd500); //Hat
 colorSet(a, 2, $ffd500); //Shirt
 colorSet(a, 3, $ffffff); //Skin
@@ -227,7 +246,7 @@ colorSet(a, 4, $ffd500); //Pants
 colorSet(a, 5, $fe0000); //Shoes
 colorSet(a, 6, $fe0000); //Hair
 colorSet(a, 7, $030303); //Eyes
-a++;
+a++;*/
 
 // Morshu
 colorSet(a, 0, $af65e5); //Hat rim
@@ -295,6 +314,28 @@ colorSet(a, 6, $421a12); //Hair
 colorSet(a, 7, $162cff); //Eyes
 a++;
 
+// Toadsworth
+colorSet(a, 0, $794a16); //Hat rim
+colorSet(a, 1, $faefad); //Hat
+colorSet(a, 2, $9d1ac0); //Shirt
+colorSet(a, 3, $fed3a6); //Skin
+colorSet(a, 4, $fafcff); //Pants
+colorSet(a, 5, $763b30); //Shoes
+colorSet(a, 6, $e3e5f0); //Hair
+colorSet(a, 7, $09091a); //Eyes
+a++;
+
+// Cranky
+colorSet(a, 0, $5a3b28); //Hat rim
+colorSet(a, 1, $582414); //Hat
+colorSet(a, 2, $d1a2a0); //Shirt
+colorSet(a, 3, $f8d49e); //Skin
+colorSet(a, 4, $582414); //Pants
+colorSet(a, 5, $f8d49e); //Shoes
+colorSet(a, 6, $e3e5f0); //Hair
+colorSet(a, 7, $000000); //Eyes
+a++;
+
 // Dr T
 colorSet(a, 0, $a60c0c); //Hat rim
 colorSet(a, 1, $e3e5f0); //Hat
@@ -340,7 +381,7 @@ colorSet(a, 7, $00000f); //Eyes
 a++;
 
 // Skinner
-colorSet(a, 0, $fa8d6b); //Hat rim
+/*colorSet(a, 0, $fa8d6b); //Hat rim
 colorSet(a, 1, $bb87cb); //Hat
 colorSet(a, 2, $337996); //Shirt
 colorSet(a, 3, $ffd51b); //Skin
@@ -348,10 +389,10 @@ colorSet(a, 4, $337996); //Pants
 colorSet(a, 5, $66696f); //Shoes
 colorSet(a, 6, $9a9181); //Hair
 colorSet(a, 7, $000001); //Eyes
-a++;
+a++;*/
 
 // Herbert
-colorSet(a, 0, $ffffff); //Hat rim
+/*colorSet(a, 0, $ffffff); //Hat rim
 colorSet(a, 1, $9fbeef); //Hat
 colorSet(a, 2, $9fbeef); //Shirt
 colorSet(a, 3, $ffcb9f); //Skin
@@ -359,7 +400,7 @@ colorSet(a, 4, $ffffff); //Pants
 colorSet(a, 5, $745632); //Shoes
 colorSet(a, 6, $d4d4d4); //Hair
 colorSet(a, 7, $000001); //Eyes
-a++;
+a++;*/
 
 set_num_palettes(a); // automatically sets the number for you
  

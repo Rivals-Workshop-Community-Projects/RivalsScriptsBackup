@@ -92,7 +92,7 @@ pratfall_anim_speed = .25;
 
 // Effective Weight
 knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
-gravity_speed = .40;
+gravity_speed = .42;
 hitstun_grav = .45;
 air_friction = .04;
 air_accel = .3;
@@ -100,7 +100,7 @@ max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 
 // Movement
-ground_friction = .4;
+ground_friction = .45;
 dash_speed = 6;
 initial_dash_speed = 7;
 moonwalk_accel = 1.2;
@@ -116,7 +116,7 @@ wave_land_time = 8;
 wave_friction = .04; //grounded deceleration when wavelanding
 
 // Aerial
-air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 4.2; //the maximum hsp you can accelerate to when in a normal aerial state
 max_djumps = 1;
 jump_start_time = 5;
 jump_speed = 10.5;

@@ -134,6 +134,8 @@ sprite_change_offset("test_radius120", 60, 60);
 sprite_change_offset("test_radius180", 90, 90);
 sprite_change_offset("test_radius250", 125, 125);
 
+sprite_change_offset("css_va_button", 1, 1);
+
 set_victory_theme(sound_get("zeke_victory"));
 
 //Intellectual, Xenoblade Enjoyer, Third Synonym

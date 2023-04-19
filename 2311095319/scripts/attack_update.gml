@@ -96,11 +96,12 @@ if (attack == AT_DTILT){
 		if (window_timer == 1){
 			//sound_play(sfx_tanooki_equip)
 		}
-		if (window_timer == 9){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			sound_stop(sfx_tanooki_equip)
 			sound_play(sfx_tanooki_swipe)
-			window = 2
-			window_timer = 0
+			window = 2;
+			window_timer = 0;
+			spawn_base_dust( x - (6 * spr_dir), y, "dash", spr_dir);
 		}
 	}
 }
@@ -368,12 +369,12 @@ if (attack == AT_FSPECIAL){
 	if (window == 4){
 		destroy_hitboxes();
 	}
-	if (window == 4 && special_pressed && window_timer > 1 && window_timer < 12){ //>
-		window = 6
-		window_timer = 0
-		can_jump = false
-		can_shield = false
-		can_attack = false
+	if (window == 4 && (special_pressed || (jump_pressed || (tap_jump_pressed && can_tap_jump()))) && window_timer > 1 && window_timer < 12){ //>
+		window = 6;
+		window_timer = 0;
+		can_jump = false;
+		can_shield = false;
+		can_attack = false;
 	}
 	if (window == 6){
 		if (window_timer == 1){

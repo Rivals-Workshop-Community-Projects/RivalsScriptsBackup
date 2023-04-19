@@ -137,6 +137,10 @@ flying_nimbus_fallspeed = 3
 flying_nimbus_dir = 0
 use_old_nimbus = false
 
+combo_damage_start = [0, 0, 0, 0]
+combo_damage_current = [0, 0, 0, 0]
+combo_drop_penalty = [0, 0, 0, 0]
+
 enable_dramatic_finish = true
 dramatic_finish_time = 0
 dramatic_finish = false

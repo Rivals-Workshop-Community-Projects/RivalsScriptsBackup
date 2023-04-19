@@ -27,8 +27,7 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DAIR, 2);
 
-//Sweetspot
-set_hitbox_value(AT_DAIR, 1, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
+//Sweetspot;
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 2);
@@ -41,8 +40,8 @@ set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.95);
-set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
@@ -50,7 +49,6 @@ set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 0);
 
 //Sourspot
-set_hitbox_value(AT_DAIR, 2, HG_MUNO_HITBOX_NAME, "Weak Hitbox");
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 2);

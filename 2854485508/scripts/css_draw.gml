@@ -14,6 +14,24 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
+
+shader_end();
+prepare_shader();
+
+//outline colors - the set_outline function is similar to the outline_color array- the numbers are red, green and blue values
+switch (alt_cur)
+{
+    case 7: set_outline(15, 56, 15); break; //early access / gameboy
+    default: set_outline(0, 0, 0); break;
+}
+
+shader_start();
+//we need to draw over the portrait so the outline colors apply to it too
+draw_sprite_ext(get_char_info(player, INFO_CHARSELECT), 0, x+8, y+8, 2, 2, 0, c_white, 1);
+
+shader_end();
+prepare_shader(); //resets shader
+
 var qe_b = string(sprite_get("idle")) //my sneaky trick to make sure every reload refreshes -supersonic
 // ! you can now scroll down until you reach "the primary part you should change."
 online_fix = player; //this is used in init_shader to fix the online init_shader bug.
@@ -155,7 +173,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     col++;
     ce[col,0] = make_color_rgb(get_color_profile_slot_r(col, 1), get_color_profile_slot_g(col, 1), get_color_profile_slot_b(col, 1));
     ce[col,1] = `Seven Great Father` // the name of the alternate color.
-    ce[col,2] = "JETSON" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
+    ce[col,2] = "
+    JETSON" // description to display if "alt color description button" is on. keep it blank if none, and you can remove it if you didn't turn it on.
     col++;
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
@@ -249,6 +268,29 @@ if (color_desc_activate){
  
 //ae code end
  
+ 
+//functions by supersonic
+#define prepare_shader()
+{
+    //init_shader(); fails to generate these variables for some reason,
+    //so we assign them to these completely equivalent values
+    //this allows shader_start() to be run in css_draw.gml!!!
+    static_colorB = colorB;
+    static_colorO = colorO;
+    static_colorT = colorT;
+    static_colorI = colorI;
+	alt_glow_timer ++;
+    init_shader();
+}
+#define set_outline(r, g, b)
+{
+    //we use this function to add custom outlines to our character's portrait
+    var start = 8*4; //outline
+    static_colorO[start] = r/255;
+    static_colorO[start+1] = g/255;
+    static_colorO[start+2] = b/255;
+}
+
  
  
 //--- ---

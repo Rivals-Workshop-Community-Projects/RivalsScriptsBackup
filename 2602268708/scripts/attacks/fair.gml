@@ -25,6 +25,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
 
 set_num_hitboxes(AT_FAIR,2);
 
+set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_NAME, "High");
 set_hitbox_value(AT_FAIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
@@ -39,11 +40,13 @@ set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .45);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_FAIR, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-set_hitbox_value(AT_FAIR, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_FAIR, 1, HG_HIT_PARTICLE_NUM, 2);
 
+set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_NAME, "Low");
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);

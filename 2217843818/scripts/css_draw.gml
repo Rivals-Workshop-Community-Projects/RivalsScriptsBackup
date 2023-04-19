@@ -36,6 +36,7 @@ alt_name[18] = "Gray";
 alt_name[19] = "Tan";
 alt_name[20] = "Coral";
 alt_name[21] = "Riptide";
+alt_name[22] = "Genesis";
 
 
 

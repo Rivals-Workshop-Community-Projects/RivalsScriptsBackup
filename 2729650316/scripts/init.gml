@@ -132,11 +132,3 @@ Hikaru_Title = "King of the Ring"
 
 arena_title = "The Ace of Aether"
 arena_short_name = "Bailey Rosworth";
-
-//codec
-
-nname = "Bailey Rosworth"
-
-ncode1 = "Pro wrestling badger from another world."
-ncode2 = "Affiliated with the GWA."
-ncode3 = "May have hammerspace abilities."

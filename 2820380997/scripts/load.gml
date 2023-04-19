@@ -72,7 +72,7 @@ sprite_change_offset("intro", 128, 190);
 sprite_change_offset("plat", 128, 128);
 sprite_change_offset("plat_bg", 128, 128);
 sprite_change_offset("plat_idle", 128, 190);
-sprite_change_offset("plat_clone_assist", 128, 128);
+sprite_change_offset("plat_clone_assist", 118, 137);
 
 sprite_change_offset("indicator", 7, 10);
 sprite_change_offset("offscreen_indicator", 33, 33);
@@ -88,6 +88,10 @@ sprite_change_offset("vfx_fire_dash", 128, 128);
 sprite_change_offset("vfx_fire_dash_upwards", 128, 128);
 sprite_change_offset("vfx_dthrow_fire", 128, 128);
 
+sprite_change_offset("hit_particle1",0,16);
+sprite_change_offset("hit_particle2",0,16);
+sprite_change_offset("hit_particle3",0,16);
+
 sprite_change_offset("final_smash_start", 128, 190);
 sprite_change_offset("final_smash_projectile", 128, 190);
 sprite_change_offset("final_smash_grab", 128, 190);
@@ -97,10 +101,16 @@ sprite_change_offset("final_smash_success", 128, 190);
 //sprite_change_offset("nspecial_proj", 128, 190);
 sprite_change_offset("hurt", 128, 190);
 sprite_change_offset("bighurt", 128, 190);
-sprite_change_offset("groundhurt", 128, 190);
+sprite_change_offset("bouncehurt", 128, 190);
+sprite_change_offset("hurtground", 128, 190);
 sprite_change_offset("downhurt", 128, 190);
 sprite_change_offset("uphurt", 128, 190);
 sprite_change_offset("spinhurt", 128, 190);
 
+sprite_change_offset("compat_mamizou", 64, 94);
+
 set_victory_theme(CH_FORSBURN);
 set_victory_bg(sprite_get("victory_bg"));
+
+//Supersonic's Skin Handler
+user_event(15);

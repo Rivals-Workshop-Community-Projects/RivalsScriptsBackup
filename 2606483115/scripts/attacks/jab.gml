@@ -33,7 +33,6 @@ set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_JAB, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 10);
 
 set_num_hitboxes(AT_JAB, 7);

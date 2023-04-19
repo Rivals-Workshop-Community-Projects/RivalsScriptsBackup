@@ -2,14 +2,16 @@ var is_oc = false;
 if (!is_oc) {
 	switch(get_player_color(player)) { 
 	case 0:
-		set_character_color_slot( 0, 135, 233, 242 ); //Hair
-		set_character_color_slot( 1, 135, 233, 242 ); //Eyes
-		set_character_color_slot( 2, 193, 193, 193 ); //Shirt1
-		set_character_color_slot( 3, 140, 141, 147 ); //Shirt2
-		set_character_color_slot( 4, 135, 233, 242 ); //Tie
-		set_character_color_slot( 5, 71, 77, 81 ); //Skirt1
-		set_character_color_slot( 6, 88, 170, 188 ); //Skirt2
+		set_character_color_slot(	0, 135, 233, 242 ); //Hair
+		set_character_color_slot(	1, 135, 233, 242 ); //Eyes
+		set_character_color_slot(	2, 193, 193, 193 ); //Shirt1
+		set_character_color_slot(	3, 140, 141, 147 ); //Shirt2
+		set_character_color_slot(	4, 135, 233, 242 ); //Tie
+		set_character_color_slot(	5, 71, 77, 81 ); //Skirt1
+		set_character_color_slot(	6, 48, 54, 61 ); //Skirt 2
+		set_character_color_slot(	7, 88, 170, 188 ); //Skirt 3
 	break;
+	/*
 	case 25:
 		switch(get_player_name(player)) {
 			case "BLUE":
@@ -33,7 +35,8 @@ if (!is_oc) {
 			break;
 		}
 	break;
-	case 30:
+	*/
+	case 31: //Rainbow
 		if
 			(
 				(get_player_name(player) == "NOAH") ||
@@ -44,20 +47,22 @@ if (!is_oc) {
 			healthAlt(0);
 			healthAlt(1);
 			healthAlt(4);
-			healthAlt(6);
+			healthAlt(7);
 		} else {
 			rainbowAlt(0);
 			rainbowAlt(1);
 			rainbowAlt(4);
-			rainbowAlt(6);
+			rainbowAlt(7);
 		}
 	break;
+	/*
 	case 31:
 		playerAlt(0);
 		playerAlt(1);
 		playerAlt(4);
 		playerAlt(6);
 	break;
+	*/
 	default:
 	break;
 	}
@@ -73,6 +78,14 @@ if (!is_oc) {
 			set_character_color_slot( 6, 212, 64, 64 ); //Meat 1
 			set_character_color_slot( 7, 77, 83, 87 ); //Shoes
 		break;
+		case 10: //Home Depot
+		//
+		break;
+		default:
+			set_character_color_shading( 0, 2 );
+			set_character_color_shading( 5, 2 );
+			set_character_color_shading( 7, 2 );
+		break;
 	}
 }
 
@@ -87,6 +100,7 @@ if (!is_oc) {
 	set_character_color_slot( argument[0], color_get_red(temp_color), color_get_green(temp_color), color_get_blue(temp_color)); 
 
 #define rainbowAlt(profileNum)
+	//The rainbow alt works dumbass you're just using your name. Don't waste another 15 minutes searching for bugs and start searching for some bitches. BTW it changes color with your %. You made the character I should know I made it.
 	set_character_color_slot( argument[0], color_r, color_g, color_b); 
 	
 #define susAlt(color_r, color_g, color_b) {
@@ -104,6 +118,6 @@ if (!is_oc) {
 
 #define playerAlt(profileNum) {
 	var _col = get_player_hud_color(player);
-	print(_col)
+	//print(_col)
 	set_character_color_slot( profileNum, colour_get_red(_col), colour_get_green(_col), colour_get_blue(_col)); 
 }

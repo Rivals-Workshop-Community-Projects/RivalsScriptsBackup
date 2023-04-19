@@ -1,5 +1,16 @@
 //#region Specials
     //#region uspecial
+if move_cooldown[AT_FSPECIAL] {
+  if (attack == AT_USPECIAL)  {
+    window = 4;
+    sound_play(asset_get("sfx_forsburn_reappear"));
+     spawn_hit_fx(x, y, 13);
+    vsp = -8;
+  }
+  if (attack == AT_NSPECIAL) {
+    attack = AT_FSPECIAL;
+  }
+}
 if (attack == AT_USPECIAL)
 {
     sprite_change_offset("uspecial", 64, 94);
@@ -21,6 +32,10 @@ if (attack == AT_USPECIAL)
 if attack == AT_UAIR and hat_object != noone
 {
     attack = AT_EXTRA_2;
+}
+
+if(attack == AT_NSPECIAL){
+	hatted_id = noone;
 }
 
     //#endregion
@@ -95,19 +110,23 @@ if (instance_exists(hat_object))
         
         //attacks that change based on hat or nah
         case AT_FSPECIAL:
+        if move_cooldown[AT_FSPECIAL] == 0{
 			fspecial_air_count += 1;
             attack = AT_FSPECIAL_2;
             //if required later change so it can't return during attacks or maybe add a cooldown to fspec while
 		    //any 'high commitment' actions are being done by the hat
             hat_object.state = 2;
 			hat_object.state_timer = 0;
+        }
             break;
-
+		
         case AT_NSPECIAL:
         case AT_USPECIAL:
+            if (!move_cooldown[AT_FSPECIAL]) {
             // lol everything returns hat
-            hat_object.state = 2;
-			hat_object.state_timer = 0;
+                hat_object.state = 2;
+                hat_object.state_timer = 0;
+            }
             break;
             
         case AT_DSPECIAL:
@@ -185,4 +204,7 @@ else
             set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
             break;
     }
+}
+if (attack == AT_UAIR && hat_health >= 50) {
+  attack = AT_EXTRA_3;
 }

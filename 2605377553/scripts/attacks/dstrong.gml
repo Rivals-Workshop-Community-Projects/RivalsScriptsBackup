@@ -35,7 +35,7 @@ set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 2);
 
 //end
-set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 17);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -44,14 +44,15 @@ set_window_value(AT_DSTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DSTRONG, 7, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DSTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_DSTRONG, 7, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG, 7, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSTRONG, 7, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_DSTRONG, 7, AG_WINDOW_SFX, sound_get("sharp3"));
 
-//chain
+//glass hex
 set_window_value(AT_DSTRONG, 8, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSTRONG, 8, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_DSTRONG, 8, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_DSTRONG, 7, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG, 7, AG_WINDOW_SFX_FRAME, 3);
-set_window_value(AT_DSTRONG, 7, AG_WINDOW_SFX, sound_get("elli_chains"));
+
 
 //true end
 set_window_value(AT_DSTRONG, 9, AG_WINDOW_LENGTH, 16);

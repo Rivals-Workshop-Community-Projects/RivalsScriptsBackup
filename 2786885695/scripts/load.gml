@@ -127,7 +127,7 @@ sprite_change_offset("hud_lyre", 4, 48);
 
 sprite_change_offset("fx_damage", 4, 5);
 sprite_change_offset("fx_damage_gb", 4, 5);
-sprite_change_offset("fx_damage_heal", 4, 5);
+sprite_change_offset("fx_damage_heal", 7, 5);
 
 sprite_change_offset("hud_skill_bg", 16, 16);
 sprite_change_offset("hud_skill_icon", 11, 11);
@@ -169,3 +169,5 @@ sprite_change_offset("fx_runeK_glider_spawn", 80, 32);
 sprite_change_offset("fx_runeK_glider_despawn", 80, 32);
 sprite_change_offset("fx_runeO_disable", 16, 16);
 
+//workshop
+sprite_change_offset("mamizou_catqing", 48, 84);

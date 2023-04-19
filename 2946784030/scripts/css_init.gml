@@ -1,0 +1,1 @@
+wario_css_impatience = 0;

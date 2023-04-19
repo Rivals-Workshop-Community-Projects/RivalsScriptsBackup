@@ -21,7 +21,7 @@ set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 7);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED, 5);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 0); 
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1")); // asset_get("sfx_swipe_medium1") or sound_get("")
@@ -75,6 +75,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 //set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); //303 - basic small directional
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_water);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 hitbox_num++;

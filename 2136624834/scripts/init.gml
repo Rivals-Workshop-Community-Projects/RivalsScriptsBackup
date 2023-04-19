@@ -60,7 +60,7 @@ walk_speed = 2.5;
 walk_accel = 0.4;
 walk_turn_time = 6;
 initial_dash_time = 12;
-initial_dash_speed = 6;
+initial_dash_speed = 4;
 dash_speed = 6
 dash_turn_time = 12;
 dash_turn_accel = .5;
@@ -94,9 +94,9 @@ knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 
 land_time = 4; //normal landing frames
 prat_land_time = 14;
-wave_land_time = 8;
-wave_land_adj = 0.6; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .01; //grounded deceleration when wavelanding
+wave_land_time = 12;
+wave_land_adj = 0.5; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .005; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -144,6 +144,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+snEX = hit_fx_create( sprite_get( "snowballEX" ), 24);
 
 forze1 = hit_fx_create( sprite_get( "forze1" ), 1);
 sprite_change_offset("forze1", 50, 50);

@@ -16,8 +16,8 @@ walk_speed = 3;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 14;
-initial_dash_speed = 5;
-dash_speed = 5.5;
+initial_dash_speed = 7.5;
+dash_speed = 7;
 dash_turn_time = 18;
 dash_turn_accel = 2;
 dash_stop_time = 6;
@@ -31,7 +31,7 @@ short_hop_speed = 6;
 djump_speed = 9;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6.5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.75; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .4;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -141,6 +141,8 @@ taunt_flasheffect = hit_fx_create( sprite_get( "tauntflash" ), 16 );
 frog_despawneffect = hit_fx_create( sprite_get( "frog_despawn" ), 16 );
 
 indicator_color = get_player_hud_color( player );
+
+fspecial_pratfall = 0;
 
 //character/stage support
 

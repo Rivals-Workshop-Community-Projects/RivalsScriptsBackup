@@ -161,6 +161,10 @@ for (var i = 0; i < follower_amount; i++) {
 
 //USpecial
 uspecial_hitstun = false;
+uspecial_hit = false;
+uspecial_aerial_decay = 0.75;
+uspecial_cancel_hs = 1.6;
+uspecial_cancel_nhs = 1.4;
 
 //Dspecial
 dspecial_invincible_frames = 2;
@@ -175,6 +179,12 @@ alt_glow_timer = 0;
 
 set_victory_theme(sound_get("victory"));
 set_victory_bg(sprite_get("victory_bg"));
+
+
+//Po Gumbo
+pot_compat_variable = sprite_get("food");
+pot_compat_text = "Mystery Meal"
+
 //#endregion
 
 //Below code from MunoPhone API.

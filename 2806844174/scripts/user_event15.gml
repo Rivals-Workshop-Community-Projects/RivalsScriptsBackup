@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 12;
+num_alts = 13;
 
 // Whether or not to display a name for each alt.
 use_alt_names = false;
@@ -52,7 +52,8 @@ alt_names = [
 	"Venom",
 	"Spicy",
 	"i ran out of alt name ideas",
-	"Time to Morb"
+	"Time to Morb",
+	"Backwards Thingy"
 	];
 
 
@@ -183,8 +184,11 @@ initImage_ext(sprite_get("wheel"), -4, fa_center, 1, 1, true, c_white, 1, true, 
 initImage_ext(sprite_get("bubble"), -4, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("NSpecial");
-initWords("Freezes/unfreezes your Interial Bubble");
-initImage_ext(sprite_get("nspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initWords("Freezes/unfreezes your Interial Bubble.");
+initWords("Using NSpecial while aerial and FSpecial isn't on cooldown will turn it into another attack.");
+initWords("This attack will spawn a bubble just like FSpecial.");
+//initImage_ext(sprite_get("nspecial"), -4, fa_left, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+initImage_ext(sprite_get("nspecial2"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("USpecial");
 initWords("Rapidly move in one of eight directions.");
@@ -250,6 +254,17 @@ in a Patch.
 
 // other patches go here...
 
+initPatch("1.7", "October 29, 2022"); // (replace the date lol)
+initHeader("New Nspecial:");
+initSection("Dutch does some spinny thing and spawns a bubble.");
+initSection("New Nspecial happens when you're in the air and fspecial isn't on cooldown.");
+initSection("Otherwise you just use old Nspecial.");
+initHeader("Other changes:");
+initSection("You can wall jump during Uspecial ending window");
+initSection("Jab 2 doesnt force flinch now");
+initSection("Pratland 10->15");
+initSection("Added Ven-Rysa themed alt");
+
 initPatch("1.6", "September 3, 2022"); // (replace the date lol)
 initHeader("Bug Fixes:");
 initSection("Fixed a bug where i forgot to add Mamizou compatibility");
@@ -300,7 +315,7 @@ initSection("Scruff0");
 initHeader("SFX from");
 initSection("Dungeon Fighter Online, Vine Boom");
 initHeader("Compatible with");
-initSection("Po & Gumbo");
+initSection("Po & Gumbo, Mamizou");
 
 
 

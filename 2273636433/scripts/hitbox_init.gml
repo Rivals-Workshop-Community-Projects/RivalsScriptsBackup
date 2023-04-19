@@ -17,13 +17,13 @@ if (attack == AT_NSPECIAL){
 	 //KNOCKBACK
 	 if (kb_value) == 4{ //Starts at 0
 		 C_knock = 0;
-	 } else if (kb_value) == 5{ //Starts at 1
+	 } else if (kb_value) == 5.25{ //Starts at 1
 		 C_knock = 1;
 	 }
 	 //DAMAGE
 	 if (damage) == 4{ //Starts at 0
 		 C_dam = 0;
-	 } else if (damage) == 5{ //Starts at 1
+	 } else if (damage) == 6{ //Starts at 1
 		 C_dam = 1;
 	 }
 		

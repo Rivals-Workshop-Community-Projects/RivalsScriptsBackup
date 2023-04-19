@@ -84,7 +84,7 @@ var move_ordering = [
 	AT_BAIR,
 	AT_UAIR,
 	AT_DAIR,
-	AT_NSPECIAL,
+	(owner.url == CH_ABSA) ? 50 : AT_NSPECIAL,
 	AT_NSPECIAL_AIR,
 	AT_NSPECIAL_2,
 	AT_FSPECIAL,
@@ -430,7 +430,7 @@ var effect_desc = ["nothing", "burn", "burn consume", "burn stun", "wrap", "free
 
 var ground_desc = ["woag", "Hits only grounded enemies", "Hits only airborne enemies"];
 
-var tech_desc = ["woag", "Untechable", "Hit enemy goes through platforms", "Untechable, doesn't bounce"];
+var tech_desc = ["woag", "Untechable", "Hit enemy goes through platforms", "Untechable, doesn't bounce", "Untechable flag 4 (what)"];
 
 var flinch_desc = ["woag", "Forces grounded foes to flinch", "Cannot force flinch", "Forces crouching opponents to flinch"];
 

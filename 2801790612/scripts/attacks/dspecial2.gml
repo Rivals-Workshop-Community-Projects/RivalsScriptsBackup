@@ -20,5 +20,8 @@ set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_SFX, sfx_pepsi_gulp);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_SFX, sfx_metal_can);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_SFX_FRAME, 3);
 
 set_num_hitboxes(AT_DSPECIAL_2, 0);

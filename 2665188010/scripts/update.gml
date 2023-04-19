@@ -1,5 +1,12 @@
 //update
-
-// if char_height != azelf_char_height{
-//     if ((attack != AT_USTRONG && window > 2) || ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR))) char_height = azelf_char_height
-// }
+if state != PS_ATTACK_GROUND || attack != AT_JAB move_cooldown[AT_JAB] = 0;
+if azelf_sound != null{
+    if attack == AT_DAIR && state != PS_ATTACK_AIR{
+        sound_stop(azelf_sound);
+        azelf_sound = null;
+    }
+    if attack == AT_FSPECIAL && (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+        sound_stop(azelf_sound);
+        azelf_sound = null;
+    }
+}

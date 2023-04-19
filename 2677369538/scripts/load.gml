@@ -85,7 +85,7 @@ sprite_change_offset("rat_bombardier_mask", 64*2, 95*2);
 sprite_change_offset("rat_bombardier", 64*2, 95*2);
 sprite_change_offset("rat_bombardier_bomb", 64*2, 88*2);
 sprite_change_offset("rat_bombardier_run", 131, 188);
-sprite_change_offset("rat_bombardier_turn", 134, 194);
+sprite_change_offset("rat_bombardier_turn", 124, 194);
 sprite_change_offset("rat_bombardier_nobomb", 131, 188);
 sprite_change_offset("rat_bombardier_disappear", 131, 194);
 sprite_change_offset("rat_bombardier_mask", 64*2, 95*2);

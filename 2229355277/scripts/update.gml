@@ -4,12 +4,10 @@ if get_gameplay_time() == 2 {
 	move_cooldown[AT_NSPECIAL] = 360;
 }
 
-if has_rune("B"){
-	if ((state == PS_LAND or state == PS_LANDING_LAG) and state_timer == 0){
-		if prev_attack_used == AT_BAIR and do_fancy_land{
-			hsp += psuedo_waveland_speed * spr_dir;
-			do_fancy_land = false;
-		}
+if ((state == PS_LAND or state == PS_LANDING_LAG) and state_timer == 0){
+	if prev_attack_used == AT_BAIR and do_fancy_land{
+		hsp += psuedo_waveland_speed * spr_dir;
+		do_fancy_land = false;
 	}
 }
 
@@ -61,12 +59,10 @@ if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND)
     switch (attack)
       {
       case AT_BAIR:
-    	if has_rune("B"){
-	    	if window < 2{
-	    		do_fancy_land = true;
-	    	} else {
-	    		do_fancy_land = false;
-	    	}
+    	if window < 2{
+    		do_fancy_land = true;
+    	} else {
+    		do_fancy_land = false;
     	}
     	break;
       case AT_NSPECIAL:

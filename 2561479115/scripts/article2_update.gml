@@ -146,10 +146,10 @@ if (state == 1){
     col_hitbox.player_id == player_id && 
     point_distance(x+center[0],y+center[1],col_hitbox.x,col_hitbox.y) <= 40) {
         if (col_hitbox.attack == AT_NSPECIAL) {
-            col_hitbox.destroyed = 1;
-            instance_destroy(col_hitbox);
-            state = 3;
-            state_timer = 0;
+        	col_hitbox.destroyed = 1;
+			instance_destroy(col_hitbox);
+			state = 3;
+			state_timer = 0;
         } else if (col_hitbox.attack == AT_FSPECIAL && col_hitbox.changed == 0) {
             tag = col_hitbox;
             tag.changed = 1;
@@ -392,8 +392,8 @@ if (state == 5){
 	if (state_timer == 35 || !instance_exists(tag)) {
 	    if (instance_exists(tag)) {
 	    	repeat(2) sound_play(asset_get("sfx_ell_small_missile_fire"),false,-4,1,1.4);
-    	    tag.hsp = lengthdir_x(16,tag_ang);
-    	    tag.vsp = lengthdir_y(16,tag_ang);
+    	    tag.hsp = lengthdir_x(12,tag_ang);
+    	    tag.vsp = lengthdir_y(12,tag_ang);
     	    tag.kb_angle = 90;
     	    tag.hit_flipper = 0;
     	    tag.kb_value = 6;

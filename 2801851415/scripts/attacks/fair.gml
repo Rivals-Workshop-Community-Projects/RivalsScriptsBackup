@@ -7,13 +7,13 @@ set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 //startup window
 set_window_value(AT_FAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 14); //12>16
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12); //12>16
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -1);
+//set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_icehit_weak1"));
-set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 13);
+set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 11);
 
 //active window 1
 set_window_value(AT_FAIR, 2, AG_WINDOW_TYPE, 1);
@@ -67,6 +67,8 @@ set_window_value(AT_FAIR, 8, AG_WINDOW_HAS_WHIFFLAG, true);
 
 set_num_hitboxes(AT_FAIR, 3);
 
+//set_hitbox_value(AT_FAIR, 1, HG_TECHABLE, 1);
+//set_hitbox_value(AT_FAIR, 2, HG_TECHABLE, 1);
 //set_hitbox_value(AT_FAIR, 1, HG_PARENT_HITBOX, 1);//use this line to make follow up hitboxes share values with this one, remove it if it should be different
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
@@ -78,18 +80,18 @@ set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 52);//70
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);//this is angle 45 hitting behind
+set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 361);//this is angle 45 hitting behind
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 4); //this is high knockback for an aerial
 //set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .2); //this is high scaling for an aerial
 //set_hitbox_value(AT_FAIR, 1, HG_EXTRA_HITPAUSE, 2); //4
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 2); //4
 // set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .3); //note: multihits should usually never have hitpause scaling
 //set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, shatter);
-set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 9); //2
+//set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 9); //2
 //set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -32);
 //set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 //set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1")); //hitplayer.gml
-
+set_hitbox_value(AT_FAIR, 1, HG_FORCE_FLINCH, 1);
 //set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 1);//use this line to make follow up hitboxes share values with this one, remove it if it should be different
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 4);
@@ -101,12 +103,12 @@ set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 52);//70
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 4);
-set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 270);//this is angle 45 hitting behind
+set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 361);//this is angle 45 hitting behind
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 4); //this is high knockback for an aerial
 //set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .2); //this is high scaling for an aerial
 //set_hitbox_value(AT_FAIR, 2, HG_EXTRA_HITPAUSE, 2); //4
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 2); //4
-//set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .3); //note: multihits should usually never have hitpause scaling
+ //note: multihits should usually never have hitpause scaling
 //set_hitbox_value(AT_FAIR, 2, HG_ANGLE_FLIPPER, 10); //2
 //set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, shatter);
 //set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -32);

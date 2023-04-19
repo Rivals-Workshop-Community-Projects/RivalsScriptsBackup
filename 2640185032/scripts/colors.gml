@@ -78,7 +78,7 @@ set_color_profile_slot( 4, 7, 74, 35, 135 ); //scarf dark
 
 // dark
 set_color_profile_slot( 5, 0, 212, 36, 41 ); //ice main
-set_color_profile_slot( 5, 1, 255, 87, 87 ); //ice light
+set_color_profile_slot( 5, 1, 255, 102, 102 ); //ice light
 set_color_profile_slot( 5, 2, 153, 0, 34 ); //ice dark
 set_color_profile_slot( 5, 3, 92, 9, 9 ); //ice darkest
 set_color_profile_slot( 5, 4, 61, 61, 61 ); //body main
@@ -129,8 +129,8 @@ set_color_profile_slot( 9, 7, 71, 81, 87 ); //scarf dark
 // yupia
 set_color_profile_slot( 10, 0, 255, 129, 187 ); //ice main
 set_color_profile_slot( 10, 1, 255, 212, 231 ); //ice light
-set_color_profile_slot( 10, 2, 207, 70, 157 ); //ice dark
-set_color_profile_slot( 10, 3, 140, 34, 118 ); //ice darkest
+set_color_profile_slot( 10, 2, 207, 58, 172 ); //ice dark
+set_color_profile_slot( 10, 3, 140, 34, 126 ); //ice darkest
 set_color_profile_slot( 10, 4, 254, 254, 254 ); //body main
 set_color_profile_slot( 10, 5, 214, 174, 199 ); //body dark
 set_color_profile_slot( 10, 6, 182, 146, 172 ); //scarf main
@@ -139,8 +139,8 @@ set_color_profile_slot( 10, 7, 133, 89, 129 ); //scarf dark
 // umbrella
 set_color_profile_slot( 11, 0, 181, 59, 238 ); //ice main
 set_color_profile_slot( 11, 1, 222, 153, 255 ); //ice light
-set_color_profile_slot( 11, 2, 126, 19, 194 ); //ice dark
-set_color_profile_slot( 11, 3, 97, 4, 163 ); //ice darkest
+set_color_profile_slot( 11, 2, 119, 18, 184 ); //ice dark
+set_color_profile_slot( 11, 3, 81, 12, 145 ); //ice darkest
 set_color_profile_slot( 11, 4, 77, 69, 74 ); //body main
 set_color_profile_slot( 11, 5, 46, 38, 44 ); //body dark
 set_color_profile_slot( 11, 6, 125, 100, 132 ); //scarf main
@@ -149,7 +149,7 @@ set_color_profile_slot( 11, 7, 81, 63, 87 ); //scarf dark
 // hunter
 set_color_profile_slot( 12, 0, 130, 194, 250 ); //ice main
 set_color_profile_slot( 12, 1, 207, 232, 255 ); //ice light
-set_color_profile_slot( 12, 2, 76, 149, 212 ); //ice dark
+set_color_profile_slot( 12, 2, 76, 144, 212 ); //ice dark
 set_color_profile_slot( 12, 3, 39, 108, 169 ); //ice darkest
 set_color_profile_slot( 12, 4, 92, 104, 160 ); //body main
 set_color_profile_slot( 12, 5, 59, 66, 108 ); //body dark
@@ -179,8 +179,8 @@ set_color_profile_slot( 14, 7, 166, 141, 148 ); //scarf dark
 // slicy
 set_color_profile_slot( 15, 0, 84, 235, 230 ); //ice main
 set_color_profile_slot( 15, 1, 196, 255, 253 ); //ice light
-set_color_profile_slot( 15, 2, 13, 181, 181 ); //ice dark
-set_color_profile_slot( 15, 3, 3, 128, 124 ); //ice darkest
+set_color_profile_slot( 15, 2, 13, 181, 164 ); //ice dark
+set_color_profile_slot( 15, 3, 3, 128, 118 ); //ice darkest
 set_color_profile_slot( 15, 4, 230, 239, 242 ); //body main
 set_color_profile_slot( 15, 5, 157, 192, 199 ); //body dark
 set_color_profile_slot( 15, 6, 204, 59, 83 ); //scarf main

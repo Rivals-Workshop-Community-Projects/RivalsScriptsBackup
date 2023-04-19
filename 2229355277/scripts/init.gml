@@ -72,7 +72,7 @@ spBomb = 2;         // You lit the fuse, I stand accused
 spPekayFire = 1;    // Ness
 spEmpowerRing = 2;  // OH NO MY PRECIOUS POWER RING
 spRagnarok = 4;     // haha big sword go PSHHH
-spGetNaeNaed = 4;   // thwack.
+spGetNaeNaed = 3;   // thwack.
 spEcho = 1;         // What the hell's going on, can someone tell me please?
 spKnockdown = 2;    // Can hurt enemies who are using Fly or Bounce, I think
 spCrossfire = 2;    // IN THE FUTURE, THE ULTIMATE CHALLENGE -
@@ -161,7 +161,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 10;
-short_hop_speed = 6;
+short_hop_speed = 5;
 djump_speed = 10.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground

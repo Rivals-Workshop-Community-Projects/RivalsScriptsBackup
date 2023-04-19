@@ -97,9 +97,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 75);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 9.6);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 9.5); // 9.6
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .85); // .8
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 9.6);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 9.5); // 9.6
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, .85); // .8
 //set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 20);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
@@ -107,8 +107,11 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong")
 
 // Munophone notes
 set_attack_value(AT_DSPECIAL, AG_MUNO_ATTACK_MISC_ADD,
-"Can be released " + string(get_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH)) + " frames earlier and still have super armor.
-Can be released " + string(get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH)) + " frames earlier than that without armor.
+//"Can be released " + string(get_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH)) + " frames earlier and still have super armor.
+//Can be released " + string(get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH)) + " frames earlier than that without armor.
+"Moves faster/further at full charge.
+Immune to projectiles while charging.
+Can be cancelled into dtilt while moving.
 Also, " + string(get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH)) + " frames at the beginning are skipped if already crouching.");
 
 

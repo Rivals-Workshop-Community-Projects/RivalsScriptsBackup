@@ -31,3 +31,14 @@ can_be_grounded = true;
 ignores_walls = true;
 uses_shader = true;
 
+//offscreen indicator -- taken from Bar's "Tester" workshop character 
+//https://steamcommunity.com/sharedfiles/filedetails/?id=2859046287&searchtext=tester
+hud_col = get_player_hud_color(player);  
+
+offscreen_arrow_enabled = true;             
+article_offscreen = false;                 
+offscreen_image = 0;                        
+offscreen_x_pos = 0;                        
+offscreen_y_pos = 0;       
+
+orig_depth = depth;

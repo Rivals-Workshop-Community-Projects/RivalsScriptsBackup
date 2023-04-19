@@ -14,7 +14,6 @@ set_player_damage(player, teammate_player_id.damage_percent_as_teammate);
 //make the leader a follower
 if (!is_solo_player && !is_test_player) {
 	custom_clone = true;
-
 	//give the leader's aerials a short delay - prevents instant-buffered aerials from occuring before the AI attempts a recovery
 	put_aerials_on_cooldown();
 	
@@ -33,6 +32,7 @@ if (!is_solo_player && !is_test_player) {
 	    
 	    i++;
 	}
+	
 }
 //else if (is_solo_player && nspecial_buffer_into_dspecial) {
 	
@@ -84,6 +84,8 @@ with (teammate_player_id) {
     						case PS_WALL_JUMP:
     						case PS_LAND:
     						case PS_LANDING_LAG:
+    						case PS_WALK_TURN:
+    						case PS_JUMPSQUAT:
     							use_dspec = 1;
     						break;
     					}

@@ -47,6 +47,7 @@ set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, vfx_flower_sweetspot);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_UAIR, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_GROUP, 1);
 
 //sourspots
@@ -69,4 +70,5 @@ set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_UAIR, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_UAIR, 2, HG_HIT_PARTICLE_NUM, 3);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, 1);

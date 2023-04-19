@@ -1,31 +1,34 @@
 //hit_player - called when one of your hitboxes hits a player
 
-
-if (my_hitboxID.attack == AT_USPECIAL) {
-		if my_hitboxID.hbox_num == 1 {
-		my_hitboxID.destroyed = true;
-		create_hitbox(AT_USPECIAL, 1, -76, -28);
-		}
-		if my_hitboxID.hbox_num == 2 {
-		my_hitboxID.destroyed = true;
-		create_hitbox(AT_USPECIAL, 2, -76, 28);
-		}
+//Stun effect
+if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3 ||
+	my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 3) {
+	
+	var stung = hit_fx_create(sprite_get("nspecial_proj_after"), 28);
+	var stung2 = hit_fx_create(sprite_get("nspecial_proj3_after"), 34);
+	spawn_hit_fx(other.x-40*other.spr_dir, other.y+6, stung2);
+	spawn_hit_fx(other.x+30*other.spr_dir, other.y-60, stung2);
+	spawn_hit_fx(other.x+24*other.spr_dir, other.y-30, stung);
+	spawn_hit_fx(other.x-10*other.spr_dir, other.y+10, stung);
+	spawn_hit_fx(other.x-20*other.spr_dir, other.y-70, stung);
 }
 
 //FSpecial bounce
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = 80;
-	if (my_hitboxID.grounds == 2) {
-			my_hitboxID.vsp = -9;
-			my_hitboxID.hsp = -2*(spr_dir);	
-	}
-	else {
-			my_hitboxID.vsp = -5;
-		}
+	my_hitboxID.hitbox_timer = my_hitboxID.length-4;
+	my_hitboxID.vsp = 0;
+	my_hitboxID.hsp = 0;
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = 128;
+	my_hitboxID.hitbox_timer = my_hitboxID.length-4;
+	my_hitboxID.vsp = 0;
+	my_hitboxID.hsp = 0;	
+}
+
+if (my_hitboxID.attack == AT_DAIR) {
+	old_vsp = -5;
+	attack_end();
 }
 
 //DSpecial double jump restore

@@ -14,7 +14,6 @@ lifetime++;
 if (lifetime > 2500){
 	lifetime = 0;
 }
-
 if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_cooldown == 0) {
 	if (!has_rune("G")){
 		with (asset_get("pHitBox")){
@@ -87,7 +86,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_c
 			hitbox_owner = hitbox_hit.player_id;
 			hitbox_bkb = hitbox_hit.kb_value;
 			hitbox_kbs = hitbox_hit.kb_scale;
-			hitbox_damage = hitbox_hit.damage;
+			//hitbox_damage = hitbox_hit.damage;
 			//hitbox_sfx = hitbox_hit.sound_effect;
 			hitbox_sfx = asset_get("sfx_blow_heavy1")
 			//var hitbox_flipper = hitbox_hit.hit_flipper;
@@ -98,7 +97,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 0 && monkey_ball_hit_c
 			
 			hud_color = get_player_hud_color(hitbox_owner.player);
 			current_owner = hitbox_owner.player;
-			print("Current owner of Monkey Ball is Player " + string(current_owner))
+			//print("Current owner of Monkey Ball is Player " + string(current_owner))
 			spr_dir = hitbox_owner.spr_dir*-1;
 			
 			if (hitbox_angle == 361){
@@ -374,6 +373,32 @@ if (state == 0){
 		}
 	}
 	
+	//Decreasing Knockback + Damage as lifetime goes on
+	/*
+	if(!has_rune("F")){
+		if(instance_exists(cur_hitbox)){
+			print(cur_hitbox.hitbox_timer);
+			print(cur_hitbox.damage);
+			if(cur_hitbox.hitbox_timer < 9){
+				cur_hitbox.kb_value = 8;
+				cur_hitbox.kb_scale = 0.5;
+				cur_hitbox.hitstun_factor = 0.9;
+			} else if(cur_hitbox.hitbox_timer > 8 && cur_hitbox.hitbox_timer < 17){
+				cur_hitbox.kb_value = 7;
+				cur_hitbox.kb_scale = 0.5;
+				cur_hitbox.hitstun_factor = 0.8;
+			} else if(cur_hitbox.hitbox_timer > 16 && cur_hitbox.hitbox_timer < 25){
+				cur_hitbox.kb_value = 6;
+				cur_hitbox.kb_scale = 0.4;
+				cur_hitbox.hitstun_factor = 0.7;
+			} else if(cur_hitbox.hitbox_timer > 24){
+				cur_hitbox.kb_value = 5;
+				cur_hitbox.kb_scale = 0.4;
+				cur_hitbox.hitstun_factor = 0.6;
+			}
+		}
+	}
+	*/
 	//Destroy Hitbox
 	if (should_destroy_hitbox == true && is_hitbox_active == true){
 		should_destroy_hitbox = false;

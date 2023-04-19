@@ -18,7 +18,7 @@ if (state_timer > 435){
 
 with (asset_get("pHitBox")){
 	
-if (damage > 0 && kb_value > 0){
+if (damage > 0 && kb_value > 0 && other.state_timer > 120){
 	if (place_meeting(x,y,other.id) && other.player != player){
 		if !(get_player_team(other.player_id.player ) == get_player_team( player_id.player )){
 			other.state_timer = 451;
@@ -50,15 +50,34 @@ if (player_id.levei_parry == true){
 //	shoulddie = true;
 //}
 
+if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR)
+	&& player_id.attack == AT_FSPECIAL && player_id.window == 1){
+		fspecial_passed = false;
+}
+
 with (asset_get("pHitBox")){
-	if ((attack == AT_DSPECIAL || attack == AT_FSPECIAL) 
+	if (attack == AT_DSPECIAL 
 	&& (place_meeting(x,y,other.id) && other.player_id = player_id) && other.state != 2){
-		if (attack == AT_FSPECIAL){
-			destroyed = true;
-		}
 		other.image_index = 0;
 		other.state = 2;
 		other.state_timer = 0;
+	}
+	if (attack == AT_FSPECIAL 
+	&& (place_meeting(x,y,other.id) && other.player_id = player_id) 
+	&& other.state == 1	&& other.fspecial_passed == false){
+		if (other.player_id.state_timer > 12){
+			other.player_id.window = 2;
+			other.player_id.window_timer = 2;	
+		}
+		other.player_id.fspecial_cloud += 0.2;
+		
+		//other.state_timer = 436;
+		//other.image_index = 2;
+		//other.state = 3;
+		other.fspecial_passed = true;
+	//	other.image_index = 0;
+	//	other.state = 2;
+	//	other.state_timer = 0;
 	}
 }
 
@@ -78,7 +97,12 @@ if (state == 0){
 
 //State 1: Idle
 if (state == 1){
-	sprite_index = sprite_get("cloud");
+	if (state_timer <= 180){
+		sprite_index = sprite_get("cloud_inv");
+	}
+	else {
+		sprite_index = sprite_get("cloud");
+	}
 	image_index += .1;	
     hsp = 0;
 	vsp = 0;
@@ -91,7 +115,7 @@ if (state == 2){
     hsp = 0;
 	vsp = 0;
 	if (state_timer == 9){
-		player_id.explosion_cont++;
+		player_id.explosion_cont += 3;
 		sound_play(asset_get("sfx_ell_fist_explode"));
 		create_hitbox( AT_DSPECIAL, 2, x, y-30);
 	}

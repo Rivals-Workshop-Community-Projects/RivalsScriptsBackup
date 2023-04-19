@@ -1,7 +1,7 @@
 
 
 // buff banner aura effect in front of soldier
-if (buff_active) {
+if (buff_active || teammate_triggered_buff > 0) {
 	
 	var dspec_image = get_gameplay_time() / 6;
 	

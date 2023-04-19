@@ -34,8 +34,8 @@ set_window_value(AT_USPECIAL_2, 3, AG_MUNO_WINDOW_ROLE, 3);
 
 var appear_frame = get_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH) + get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH);
 var attack_cancel_frame = get_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH) + get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH);
-var cancel_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / 2);
-var cancel_no_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / 1.5);
+var cancel_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / uspecial_cancel_hs);
+var cancel_no_hitstun =  floor(get_window_value(AT_USPECIAL_2, 3, AG_WINDOW_LENGTH) / uspecial_cancel_nhs);
 
 set_attack_value(AT_USPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "Attack and jump cancelable frame " + string(attack_cancel_frame + cancel_no_hitstun) + " onwards (" + string(attack_cancel_frame + cancel_hitstun) + " onwards if marked opponent is in hitstun)");
 
@@ -85,7 +85,7 @@ set_hitbox_value(AT_USPECIAL_2, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_EXTRA_HITPAUSE, 6);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_EFFECT, 9);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_VISUAL_EFFECT, hfx_leaf);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));

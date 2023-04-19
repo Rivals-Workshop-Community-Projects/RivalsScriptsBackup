@@ -57,15 +57,17 @@ if (attack == AT_NSPECIAL){
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	if(!instance_exists(thetoken)){
-	        	if(fspec_charge >= 30 && current_money > 3000){
+	        	if(fspec_charge >= 30 && current_money >= 3000*discount){
 	        		thetoken = create_hitbox(AT_FSPECIAL, 2, x+55*spr_dir, y-35);create_hitbox(AT_NSPECIAL, 2, x+55*spr_dir, y-35);
-	        		current_money -= 3000;
+	        		current_money -= 3000*discount;
 	        		rand = random_func(0, 3, true);                    
             		sound_play(sound_get("money_pickup"+string(rand+1)));
-	        	}else if(current_money > 1000){
+	        	}else if(current_money >= 1000*discount){
 	        		thetoken = create_hitbox(AT_FSPECIAL, 1, x+55*spr_dir, y-35);create_hitbox(AT_NSPECIAL, 2, x+55*spr_dir, y-35);
-	        		current_money -= 1000;
-	        	}
+	        		current_money -= 1000*discount;
+	        	}else{
+					create_hitbox(AT_JAB, 12, x+55*spr_dir, y-35);
+				}
 	        	if(instance_exists(thetoken) && (dicecooldown > 0 || instance_exists(thedice1) && instance_exists(thedice2))){
 		        	tokencooldown += 60;
 		        	if(dicecooldown > 0){
@@ -76,11 +78,19 @@ if (attack == AT_NSPECIAL){
         }
     }
     if(window == 4 && !hitpause){
+    	if(attack_down && current_money >= 40000 && window_timer < 5 && tauntmoney == 0){
+			sound_stop(voice);voice = sound_play(sound_get("four million"));tauntmoney = 1;
+		}
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	sound_play(sound_get("money_pickup2"),false,noone,2);sound_play(sound_get("money_pickup3"),false,noone,2);
-    		var money = create_hitbox(AT_JAB, 10, round(x+65*spr_dir), round(y-35));money.value = 10000;
-    		current_money -= 10000;
+        	if(tauntmoney == 0){
+				var money = create_hitbox(AT_JAB, 10, round(x+65*spr_dir), round(y-35));money.value = 10000;
+    			current_money -= 10000*discount;
+			}else{
+				var money = create_hitbox(AT_JAB, 10, round(x+65*spr_dir), round(y-35));money.value = 40000;
+    			current_money -= 40000*discount;
+			}
         }
     }
 }else if (attack == AT_USPECIAL){
@@ -98,6 +108,12 @@ if (attack == AT_NSPECIAL){
 			/*}else{
 				uspecnum = random_func(0, 83, true);
 			}*/
+			if(runeL){
+	        	var extra_rng = random_func(0, 100, true);
+	        	if(extra_rng < uspecnum && (uspecnum <= 82 && !jailcard || jailcard)){
+	        		uspecnum = extra_rng;
+	        	}
+	        }
 			if(phone_cheats[CHEAT_Uspec] >= 0){
 				if(phone_cheats[CHEAT_Uspec] == 1){
 					uspecnum = 50;
@@ -167,11 +183,11 @@ if (attack == AT_NSPECIAL){
 		if(instance_exists(uspectarget)){
 		    var dist = point_distance(uspectarget.x, uspectarget.y, x, y); //distance
 		    if(dist < 10){
-		    	window = 30;
+		    	window = 30;mask_index = asset_get("ex_guy_collision_mask");
 		    }
 		}
 		if(y >= 150){
-			window = 30;
+			window = 30;mask_index = asset_get("ex_guy_collision_mask");
 		}
 		
 		if(get_gameplay_time() % 3 == 0){
@@ -181,16 +197,29 @@ if (attack == AT_NSPECIAL){
 		mask_index = asset_get("empty_sprite");fall_through = 999;
 		if(instance_exists(uspectarget)){
 			uspectarget.spr_dir = 1;
-			var move_angle = point_direction(uspectarget.x, uspectarget.y, x, y);
-    	    hsp = (-cos(degtorad(move_angle))*6)*uspec_speed;
-			if(hsp > 0){
-				spr_dir = 1;
-			}else if(hsp < 0){
-		    	spr_dir = -1;
+			if(!runeG){
+				var move_angle = point_direction(uspectarget.x, uspectarget.y, x, y);
+	    	    hsp = (-cos(degtorad(move_angle))*6)*uspec_speed;
+				if(hsp > 0){
+					spr_dir = 1;
+				}else if(hsp < 0){
+			    	spr_dir = -1;
+				}
+			    vsp = (-sin(degtorad(-move_angle))*6)*uspec_speed;
+			}else{
+				grav = 0;
+				if(right_down && hsp < 8){
+					hsp += 0.35;
+				}else if(left_down && hsp > -8){
+					hsp -= 0.35;
+				}if(up_down && vsp > -8){
+					vsp -= 0.35;
+				}else if(down_down && vsp < 8){
+					vsp += 0.35;
+				}hsp *= 0.95;vsp *= 0.95;
 			}
-		    vsp = (-sin(degtorad(-move_angle))*6)*uspec_speed;
 		    var dist = point_distance(uspectarget.x, uspectarget.y, x, y); //distance
-		    if(dist < 10){
+		    if(!runeG && dist < 10 || runeG && dist < 30){
 		    	uspectarget.destroyed = true;spawn_hit_fx(round(uspectarget.x) , round(uspectarget.y), 302);
 		    	window = 18;mask_index = asset_get("ex_guy_collision_mask");
 		    	current_money += 2000;
@@ -201,10 +230,12 @@ if (attack == AT_NSPECIAL){
 		if(get_gameplay_time() % 6 == 0){
 			spawn_hit_fx(x-20+(random_func(0, 40, true)),y-20,fx_feathers);
 		}
-		uspectime += 1;
-		if(uspectime >= 420){
+		uspectime += 1;//print(uspectime);
+		if(!runeG && uspectime >= 420 || runeG && uspectime >= 180){
 			uspectarget.destroyed = true;spawn_hit_fx(round(uspectarget.x) , round(uspectarget.y), 302);
 			window = 18;mask_index = asset_get("ex_guy_collision_mask");
+		}if(uspectime >= 45 && !position_meeting(x,y-45,asset_get("par_block"))){
+			cancelattack2();
 		}
 	}
     if(window >= 20){
@@ -212,9 +243,9 @@ if (attack == AT_NSPECIAL){
     	soft_armor = 24;
     	if(window == 20){ //enters jail
     		if(window_timer == 1 && !hitpause){
-    			jailcost = floor(current_money/3);
-    			if(jailcost < 5000){
-    				jailcost = 5000;
+    			jailcost = floor(current_money/3)*discount;
+    			if(jailcost < 5000*discount){
+    				jailcost = 5000*discount;
     			}sound_stop(voice);
     			if(alt == 21){
 	    			voice = sound_play(sound_get("prison"),false,noone,3);
@@ -264,9 +295,26 @@ if (attack == AT_NSPECIAL){
 		    	}else if((jaildice1 != 0 || special_pressed || attack_pressed || jump_pressed) && (jaildiceattempts < 3 || jaildiceattempts >= 100)){
 	    			if(jaildice1 == 0){
 	    				jaildice1 = random_func(0, 6, true)+1;jaildicetimer = 5;sound_play(sound_get("dice1"),false,noone,1.25);
+	    				/*if(runeL){
+				        	var extra_rng = random_func(0, 6, true)+1;
+				        	if(extra_rng == jaildice1){
+				        		jaildice1 = extra_rng;
+				        	}
+				        }*/
 	    			}else{
 	    				if(jaildice2 == 0){
-		    				jaildice2 = random_func(0, 6, true)+1;jaildicetimer = 30;sound_play(sound_get("dice2"),false,noone,1.25);
+		    				jaildice2 = random_func(0, 6, true)+1;jaildicetimer = 30;sound_play(sound_get("dice2"),false,noone,1.25);//print(jaildice2);
+		    				if(runeL){
+					        	var extra_rng = random_func(0, 6, true)+1;//print(extra_rng);
+					        	if(extra_rng == jaildice1){
+					        		jaildice2 = extra_rng;
+					        	}else{
+					        		extra_rng = random_func(1, 6, true)+1;//print(extra_rng);
+						        	if(extra_rng == jaildice1){
+						        		jaildice2 = extra_rng;
+						        	}
+					        	}
+					        }
 		    			}
 	    			}
     			}else if((down_pressed || special_pressed || attack_pressed || jump_pressed) && /*free || !free && */jaildiceattempts >= 3 && current_money >= jailcost || current_money < jailcost && jaildiceattempts < 100){
@@ -352,19 +400,19 @@ if (attack == AT_NSPECIAL){
         }
     }else if(window == 3 && !hitpause){
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-        	if(dspec_charge < 30 && current_money >= 5000 || current_money < 10000){
-        		if(current_money >= 5000){
+        	if(dspec_charge < 30 && current_money >= 5000*discount || current_money < 10000*discount){
+        		if(current_money >= 5000*discount){
 		        	property = create_hitbox(AT_DSPECIAL, 1, round(x), round(y+25));property.vsp = 7;
-		        	current_money -= 5000;
+		        	current_money -= 5000*discount;
         		}else{
         			var dust = create_hitbox(AT_JAB, 12, round(x), round(y+15));dust.hsp = 0;dust.vsp = 7;
         		}
-        	}else if(dspec_charge < 60 && current_money >= 10000 || current_money < 30000){
+        	}else if(dspec_charge < 60 && current_money >= 10000*discount || current_money < 30000*discount){
         		property = create_hitbox(AT_DSPECIAL, 2, round(x), round(y+35));property.vsp = 14;
-	        	current_money -= 10000;
+	        	current_money -= 10000*discount;
         	}else if(current_money >= 30000){
         		property = create_hitbox(AT_DSPECIAL, 3, round(x), round(y+55));property.vsp = 20;
-	        	current_money -= 30000;
+	        	current_money -= 30000*discount;
         	}
         	if(instance_exists(property)){
         		if(property.hbox_num <= 2){ //house and hotel sfx
@@ -474,15 +522,15 @@ if (attack == AT_NSPECIAL){
     		//var money = create_hitbox(AT_JAB, 10, x+50*spr_dir, y-35);
     		//money = create_hitbox(AT_JAB, 10, x+50*spr_dir, y-35);money.hsp *= 2;money.vsp *= 1.5;
     		//money = create_hitbox(AT_JAB, 10, x+50*spr_dir, y-35);money.hsp *= 1.5;money.vsp *= 2;
-    		if(current_money2 >= 500){
+    		if(current_money2 >= 500*discount){
 				sound_play(sound_get("money_pickup2"),false,noone,2);sound_play(sound_get("money_pickup3"),false,noone,2);
 				moneysfx();
     			var money = create_hitbox(AT_JAB, 10, round(x+65*spr_dir), round(y-35));
-    			current_money -= 500;
+    			current_money -= 500*discount;
     			if(current_money >= 2000 && attack_down){
     				create_hitbox(AT_JAB, 5, round(x), round(y));
 	    			money = create_hitbox(AT_JAB, 10, round(x+65*spr_dir), round(y-35));money.hsp *= 2;money.vsp *= 1.5;money.value = 900;
-	    			current_money -= 2000;
+	    			current_money -= 2000*discount;
 	    			//if(current_money >= 500){
 		    			money = create_hitbox(AT_JAB, 10, round(x+65*spr_dir), round(y-35));money.hsp *= 1.5;money.vsp *= 2;money.value = 900;
 		    			//current_money -= 500;
@@ -505,18 +553,16 @@ if (attack == AT_NSPECIAL){
 			dusteff = spawn_hit_fx(x+115*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;
 			shake_camera(5,5);sound_play(sound_get("moneybag_hit2"),false,noone,1);
 			sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,0.5);sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone,0.75);
-			if(current_money >= 500){
+			if(current_money >= 500*discount){
 				sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
 	    		var money = create_hitbox(AT_JAB, 10, round(x-15*spr_dir), round(y-55));money.hsp *= -1;money.vsp *= 1;money.hitbox_timer = 20;money.hit_priority = 0;;
-	    		current_money -= 500;
-	    		if(current_money >= 500){
+	    		current_money -= 500*discount;
+	    		if(current_money >= 500*discount){
 		    		var money = create_hitbox(AT_JAB, 10, round(x-15*spr_dir), round(y-55));money.hsp *= -0.25;money.vsp *= 2;money.hitbox_timer = 20;money.hit_priority = 0;;
-		    		current_money -= 500;
+		    		current_money -= 500*discount;
 		    	}
 	    	}
 		}
-	}else if(window == 3){
-		
 	}else if(window == 5){
 		if(!attack_down || was_parried){
 			destroy_hitboxes();
@@ -529,7 +575,11 @@ if (attack == AT_NSPECIAL){
 			//}else{
 				//var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-29);choochoo.hsp = hsp;choochoo.vsp = vsp;
 			//}
-			vsp = -11;
+			if(!down_down){
+				vsp = -11;
+			}else{
+				vsp = -7.5;hsp = 3*spr_dir;
+			}
 			takearideontherailroad = false;
 		}
 	}
@@ -592,11 +642,14 @@ if (attack == AT_NSPECIAL){
 		}
 		dattacktimer += 1;
 		if(dattacktimer % 20 == 0 && abs(hsp) > 4 && !dattackboost || dattacktimer % 6 == 0 && abs(hsp) > 4 && dattackboost){
-			if(current_money >= 500){
+			if(current_money >= 500*discount){
 	    		var money = create_hitbox(AT_JAB, 10, round(x-15*spr_dir), round(y-55));money.hsp *= -0.25;money.vsp *= 1.5;money.hitbox_timer = 20;money.hit_priority = 0;
-	    		current_money -= 500;
+	    		current_money -= 500*discount;
 	    	}
 		}
+	}
+	if(window <= 2){
+		cancelattack();
 	}
 }else if (attack == AT_FTILT){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
@@ -621,17 +674,18 @@ if (attack == AT_NSPECIAL){
 }else if(attack == AT_UTILT){
 	if(window == 1 && !hitpause){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-    		if(current_money2 >= 500){
+    		if(current_money2 >= 500*discount){
 				sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
 				moneysfx();
     			var money = create_hitbox(AT_JAB, 10, round(x+50*spr_dir), round(y-65));money.hsp *= 0.5;money.vsp *= 2.5;
-    			current_money -= 500;
-    			if(current_money >= 500 && (attack_down || up_stick_down)){
-	    			var money = create_hitbox(AT_JAB, 10, round(x+50*spr_dir), round(y-65));money.hsp *= -0.25;money.vsp *= 2;
-	    			current_money -= 500;
-	    			if(current_money >= 500){
+    			current_money -= 500*discount;
+    			if(current_money >= 750*discount && (attack_down || up_stick_down)){
+    				set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, get_hitbox_value(AT_UTILT, 1, HG_DAMAGE)+3);
+	    			var money = create_hitbox(AT_JAB, 10, round(x+50*spr_dir), round(y-65));money.hsp *= -0.25;money.vsp *= 2;money.value = 1000;
+	    			current_money -= 750*discount;
+	    			if(current_money >= 750*discount){
 		    			var money = create_hitbox(AT_JAB, 10, round(x+50*spr_dir), round(y-65));money.hsp *= 1;money.vsp *= 1.75;
-		    			current_money -= 500;
+		    			current_money -= 750*discount;
 		    		}
 	    		}
 			}else{
@@ -674,6 +728,21 @@ if (attack == AT_NSPECIAL){
 				var dusteff = spawn_hit_fx(x-115*spr_dir,y,fx_dust_sharp_big);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
 			}
 		}
+    }if(window == 5 && !hitpause){
+		if(window_timer == 1){
+			if(current_money2 <= 15000){
+			}else if(current_money2 <= 30000){
+			}else{
+				if(!has_hit){
+					if(current_money2 >= 1500*discount){
+						sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
+		    			var money = create_hitbox(AT_JAB, 10, round(x-40*spr_dir), round(y-25));money.hsp *= -0.6;money.vsp *= 1.5;money.value = 750;
+		    			var money = create_hitbox(AT_JAB, 10, round(x-60*spr_dir), round(y-25));money.hsp *= -0.9;money.vsp *= 1;money.value = 750;
+		    			current_money -= 1500*discount;
+					}
+				}
+			}
+		}
     }
     
     if(window >= 5 && current_money2 <= 15000 && !hitpause && !strong_down && !up_strong_pressed){
@@ -686,24 +755,24 @@ if (attack == AT_NSPECIAL){
 }else if(attack == AT_NAIR){
 	if(window == 1 && !hitpause){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-    		if(current_money2 >= 500){
+    		if(current_money2 >= 500*discount){
 				sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
 				moneysfx();
     			var money = create_hitbox(AT_JAB, 10, round(x+40*spr_dir), round(y-45));money.hsp *= 0.5;money.vsp *= 1;money.value = 300;
     			var money = create_hitbox(AT_JAB, 10, round(x-40*spr_dir), round(y-45));money.hsp *= -0.5;money.vsp *= 1;money.value = 300;
-    			current_money -= 500;
-    			if(current_money >= 400 && attack_down){
+    			current_money -= 500*discount;
+    			if(current_money >= 400*discount && attack_down){
 	    			var money = create_hitbox(AT_JAB, 10, round(x+40*spr_dir), round(y-55));money.hsp *= 1;money.vsp *= 1.5;money.value = 500;
-	    			current_money -= 400;
-	    			if(current_money >= 400){
+	    			current_money -= 400*discount;
+	    			if(current_money >= 400*discount){
 		    			var money = create_hitbox(AT_JAB, 10, round(x-40*spr_dir), round(y-55));money.hsp *= -1;money.vsp *= 1.5;money.value = 500;
-		    			current_money -= 400;
-		    			if(current_money >= 400){
+		    			current_money -= 400*discount;
+		    			if(current_money >= 400*discount){
 			    			var money = create_hitbox(AT_JAB, 10, round(x+40*spr_dir), round(y-35));money.hsp *= 1;money.vsp *= -0.5;money.value = 500;
-			    			current_money -= 400;
-			    			if(current_money >= 400){
+			    			current_money -= 400*discount;
+			    			if(current_money >= 400*discount){
 				    			var money = create_hitbox(AT_JAB, 10, round(x-40*spr_dir), round(y-35));money.hsp *= -1;money.vsp *= -0.5;money.value = 500;
-				    			current_money -= 400;
+				    			current_money -= 400*discount;
 				    		}
 			    		}
 		    		}
@@ -718,22 +787,36 @@ if (attack == AT_NSPECIAL){
     	if(attack_down || right_stick_down || left_stick_down || right_strong_down || left_strong_down || strong_down){
     		set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair_throw"));set_num_hitboxes(AT_BAIR, 1);
     		if(current_money2 <= 15000){
-    			if(current_money >= 1000){
+    			if(current_money >= 1000*discount){
 					var money = create_hitbox(AT_BAIR, 3, round(x-50*spr_dir), round(y-75));money.spr_dir = -spr_dir;//money.hsp *= 0.5;money.vsp *= 2.5;
-					current_money -= 1000;
+					current_money -= 1000*discount;
     			}
 			}else if(current_money2 <= 30000){
-				if(current_money >= 2000){
+				if(current_money >= 2000*discount){
 					var money = create_hitbox(AT_BAIR, 4, round(x-50*spr_dir), round(y-75));money.spr_dir = -spr_dir;//money.hsp *= 0.5;money.vsp *= 2.5;
-					current_money -= 2000;
+					current_money -= 2000*discount;
     			}
 			}else{
-				if(current_money >= 4000){
+				if(current_money >= 4000*discount){
 					var money = create_hitbox(AT_BAIR, 5, round(x-50*spr_dir), round(y-75));money.spr_dir = -spr_dir;//money.hsp *= 0.5;money.vsp *= 2.5;
-					current_money -= 4000;
+					current_money -= 4000*discount;
     			}
 			}
     	}
+    }
+    if(window == 2 && window_timer == 1 && !hitpause && get_num_hitboxes(AT_BAIR) > 1){
+		if(current_money2 <= 15000){
+		}else if(current_money2 <= 30000){
+		}else{
+			if(!has_hit){
+				if(current_money2 >= 1500*discount){
+					sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
+		    		var money = create_hitbox(AT_JAB, 10, round(x-60*spr_dir), round(y-55));money.hsp *= -0.6;money.vsp *= 1.5;money.value = 750;money.hit_priority = 0;
+		    		var money = create_hitbox(AT_JAB, 10, round(x-45*spr_dir), round(y-85));money.hsp *= -0.9;money.vsp *= 1;money.value = 750;money.hit_priority = 0;
+		    		current_money -= 1500*discount;
+				}
+			}
+		}
     }
 }else if(attack == AT_UAIR){
 	if(window == 1 && !hitpause){
@@ -742,14 +825,14 @@ if (attack == AT_NSPECIAL){
 				sound_play(sound_get("money_pickup2"),false,noone,2)sound_play(sound_get("money_pickup3"),false,noone,2)
 				moneysfx();
     			var money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 0.5;money.vsp *= 2;
-    			current_money -= 500;
-    			if(current_money >= 2000 && (attack_down || up_stick_down || up_strong_down || strong_down)){
+    			current_money -= 500*discount;
+    			if(current_money >= 3000*discount && (attack_down || up_stick_down || up_strong_down || strong_down)){
     				hsp -= 3*spr_dir;vsp += 5;
     				create_hitbox(AT_UAIR, 2, round(x), round(y));
-	    			var money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 0.25;money.vsp *= 3;
-	    			current_money -= 2000;
+	    			var money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 0.25;money.vsp *= 3;money.value = 1000;
+	    			current_money -= 3000*discount;
 	    			//if(current_money >= 500){
-		    			money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 1;money.vsp *= 1.5;
+		    			money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 1;money.vsp *= 1.5;money.value = 1000;
 		    			//current_money -= 500;
 		    			//if(current_money >= 500){
 			    			money = create_hitbox(AT_JAB, 10, round(x+35*spr_dir), round(y-75));money.hsp *= 1.5;money.vsp *= 3.5;
@@ -847,6 +930,15 @@ if (attack == AT_NSPECIAL){
 	    }else if(rand == 6){
 	    	sound_stop(voice);voice = sound_play(sound_get("you want more"));
 	    }
+	    if(instance_exists(property) && taunt_down){
+	    	with(property){
+		    	if(place_meeting(x,y,other) && housemoney >= 150000-other.discount_stocks){
+		    		housemoney -= 150000-other.discount_stocks;
+			    	sound_play(sound_get("soldsfx"),false,noone,2);
+			    	set_player_stocks(other.player,get_player_stocks(other.player)+1);
+		    	}
+		    }
+	    }
     }
     if(window == 2){
     	if(!taunt_down){
@@ -884,19 +976,19 @@ if (attack == AT_NSPECIAL){
     		sound_stop(voice);voice = sound_play(sound_get("move your token"));
     	}else if(finalsmashnum == 2){ //property
     		rand = random_func(0, 7, true);
-		    		if(rand <= 1){
-		    			sound_stop(voice);voice = sound_play(sound_get("i love building houses"));
-		    		}else if(rand == 2){
-		    			sound_stop(voice);voice = sound_play(sound_get("free property"));
-		    		}else if(rand == 3){
-		    			sound_stop(voice);voice = sound_play(sound_get("lets collect that rent now"));
-		    		}else if(rand == 4){
-		    			sound_stop(voice);voice = sound_play(sound_get("time to raise the rent"));
-		    		}else if(rand == 5){
-		    			sound_stop(voice);voice = sound_play(sound_get("owning property never goes out of style"));
-		    		}else if(rand == 6){
-		    			sound_stop(voice);voice = sound_play(sound_get("its time for landgrab"));
-		    		}
+    		if(rand <= 1){
+    			sound_stop(voice);voice = sound_play(sound_get("i love building houses"));
+    		}else if(rand == 2){
+    			sound_stop(voice);voice = sound_play(sound_get("free property"));
+    		}else if(rand == 3){
+    			sound_stop(voice);voice = sound_play(sound_get("lets collect that rent now"));
+    		}else if(rand == 4){
+    			sound_stop(voice);voice = sound_play(sound_get("time to raise the rent"));
+    		}else if(rand == 5){
+    			sound_stop(voice);voice = sound_play(sound_get("owning property never goes out of style"));
+    		}else if(rand == 6){
+    			sound_stop(voice);voice = sound_play(sound_get("its time for landgrab"));
+    		}
     	}
     }
     if(window == 2){
@@ -911,6 +1003,28 @@ if (attack == AT_NSPECIAL){
     if(has_hit && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
 	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)){
 		window = 20;
+		if(attack == AT_DATTACK){
+			var choochoo = create_hitbox(AT_DATTACK, 4, x+60*spr_dir, y-25);choochoo.hsp = hsp;choochoo.vsp = vsp;
+			hitpause = 0;hitstop = 0;in_hitpause = false;
+			if(current_money >= 3000*discount){
+    			money = create_hitbox(AT_JAB, 10, x, round(y-35));money.hsp *= -1;money.vsp *= 2;money.value = 3000;money.hitbox_timer = 20;money.hit_priority = 0;
+    			current_money -= 3000*discount;
+    		}
+		}
+	}
+	
+#define cancelattack2
+    if(attack_pressed || special_pressed || jump_pressed || shield_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
+	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed){
+		window = 20;
+		if(attack == AT_USPECIAL){
+			uspectarget.destroyed = true;spawn_hit_fx(round(uspectarget.x) , round(uspectarget.y), 302);
+			window = 18;mask_index = asset_get("ex_guy_collision_mask");
+			if(current_money >= 5000*discount){
+    			money = create_hitbox(AT_JAB, 10, x, round(y-35));money.hsp *= -1;money.vsp *= 2;money.value = 5000;money.hitbox_timer = 20;money.hit_priority = 0;
+    			current_money -= 5000*discount;
+    		}
+		}
 	}
 	
 #define moneysfx

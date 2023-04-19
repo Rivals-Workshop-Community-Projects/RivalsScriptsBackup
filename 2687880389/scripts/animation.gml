@@ -71,14 +71,41 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 		hurtboxID.sprite_index = final_smash_hurtbox_spr;
 	}
 	
+	// Penalty frames
+	if (window == penalty_window) {
+		if ((attack == AT_JAB)
+			|| (attack == AT_DATTACK)
+			|| (attack == AT_FTILT)
+			|| (attack == AT_UTILT)
+			|| (attack == AT_FSTRONG)
+			|| (attack == AT_USTRONG)
+			|| (attack == AT_USTRONG_2)
+			|| (attack == AT_NSPECIAL)
+			|| (attack == AT_FSPECIAL)
+			|| (attack == AT_USPECIAL)
+			|| (attack == AT_USPECIAL_2)
+			|| (attack == AT_TAUNT)
+			|| (attack == AT_TAUNT_2))
+		{
+			window_timer = max_penalty_frames - penalty_frames;
+			if (window_timer == 1) {
+				sound_play(transform_up_sound);
+			}
+			hurtboxID.sprite_index = crouchbox_spr;
+			sprite_index = sprite_get("crouch");
+			image_index = (penalty_frames < (max_penalty_frames / 2)) ? 5 : 4;
+		}
+	}
+	
 	if ((attack == AT_NSPECIAL)
 	    || (attack == AT_NTHROW)
 	    || (attack == AT_FTHROW)
 	    || (attack == AT_UTHROW)
-	    || (attack == AT_DTHROW))
+	    || (attack == AT_DTHROW)
+	    || (attack == AT_USTRONG_2))
 	{
 		// Prevents messing with previously grabbed opponents
-		if ((attack != AT_NSPECIAL) || (window > 1)) {
+		if (((attack != AT_NSPECIAL) && (attack != AT_USTRONG_2)) || (window > 1)) {
 		    holding_someone = false;
 		    // Try to make sure nobody else can grab who we're holding
 		    var current_window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
@@ -113,8 +140,10 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 		                    spr_dir = -other.spr_dir;
 		                    switch (other.window) {
 		                        case 3 :
-		                        	grab_x_offset = other.x + (54 * other.spr_dir);
-		                        	grab_y_offset = other.y - 32;
+		                        	grab_x_offset = ease_linear(x, other.x + (54 * other.spr_dir), other.window_timer, current_window_length);
+                            		grab_y_offset = ease_linear(y, other.y - 32, other.window_timer, current_window_length);
+		                        	//grab_x_offset = other.x + (54 * other.spr_dir);
+		                        	//grab_y_offset = other.y - 32;
 		                            break;
 		                        case 4 :
 		                            grab_x_offset = other.x + (46 * other.spr_dir);
@@ -237,6 +266,13 @@ if ((state == PS_ATTACK_GROUND) || (state == PS_ATTACK_AIR)) {
 		                            break;
 		                    }
 		                    break;
+	                    case AT_USTRONG_2 :
+		                    spr_dir = -other.spr_dir;
+		                    grab_x_offset = ease_linear(x, other.x + (24 * other.spr_dir), other.ustrong_rising_count, other.ustrong_rising_duration);
+                            grab_y_offset = ease_linear(y, other.y - 60, other.ustrong_rising_count, other.ustrong_rising_duration);
+		                    //grab_x_offset = other.x + (24 * other.spr_dir);
+                            //grab_y_offset = other.y - 60;
+		        			hitstop = other.ustrong_rising_hitbox_duration + 4;
 		                default :
 		                    break;
 		            }

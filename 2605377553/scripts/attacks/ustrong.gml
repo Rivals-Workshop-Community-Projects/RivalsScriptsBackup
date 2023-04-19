@@ -45,15 +45,16 @@ set_window_value(AT_USTRONG, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_SFX, sound_get("sharp3"));
 
-//chain
+//glass hex
 set_window_value(AT_USTRONG, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_SFX_FRAME, 3);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_SFX, sound_get("elli_chains"));
+
 
 //true end
 set_window_value(AT_USTRONG, 7, AG_WINDOW_TYPE, 1);
@@ -194,7 +195,7 @@ set_hitbox_value(AT_USTRONG, 7, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 7, HG_PRIORITY, 7);
 set_hitbox_value(AT_USTRONG, 7, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USTRONG, 7, HG_KNOCKBACK_SCALING, 1.2);
-set_hitbox_value(AT_USTRONG, 7, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_USTRONG, 7, HG_BASE_HITPAUSE, 7.5);
 set_hitbox_value(AT_USTRONG, 7, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_USTRONG, 7, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 7, HG_HIT_SFX, sound_get("slash"));

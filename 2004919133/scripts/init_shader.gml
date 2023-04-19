@@ -14,17 +14,13 @@ if (get_player_color(player) == 12){
     outline_color = [60, 19, 124];
 }
 
-if (get_player_color(player) == 13){
-    for(i = 0; i < 8; i++){
-        set_character_color_shading(i, 0);
-    }
-}
-
+/*
 if (get_player_color(player) == 15){
     for(i = 0; i < 8; i++){
         set_character_color_shading(i, 0);
     }
 }
+*/
 
 //if (get_player_color(player) == 14){
 //    for(i = 0; i < 8; i++){

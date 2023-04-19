@@ -15,7 +15,7 @@ walk_accel = 0.5;
 walk_turn_time = 6;
 initial_dash_time = 9;
 initial_dash_speed = 7.2;//7.8
-dash_speed = 6.5;//7.2
+dash_speed = 6.7;//7.2
 dash_turn_time = 8;
 dash_turn_accel = 0.8;
 dash_stop_time = 8;//8
@@ -28,8 +28,8 @@ jump_speed = 10.75;
 short_hop_speed = 5;//7
 djump_speed = 9.5;
 leave_ground_max = 4.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 4.75; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 6.5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5.25; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .38;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -50,7 +50,7 @@ land_time = 4; //normal landing frames
 prat_land_time = 12;
 wave_land_time = 8;
 wave_land_adj = 1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .02; //grounded deceleration when wavelanding
+wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;
@@ -146,6 +146,13 @@ arena_title = "Species Born Of Chaos";
 arena_short_name = "CSNW";
 battle_text = "* Switch blades.";
 Hikaru_Title = "Careless Health & Safety Notice Fox";
+
+dspeccancel = false;
+
+hue_offset=0;
+hue_speed=5; //change this to change the speed of the hueshift
+hue_rising=1;
+hue_hold = 40;
 
 //afterimages
 after_image = array_create(10, -1);

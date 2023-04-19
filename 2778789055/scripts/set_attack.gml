@@ -23,21 +23,31 @@ if(has_shrimp == false){
 if(has_pot = false){
     if(!shrimpsplosion){
     if(attack == AT_NSPECIAL){
+    if(!able_to_grab_pot){    
     if(has_shrimp == true){
         attack = AT_FSPECIAL;
      }    if(has_shrimp == false){
         attack = AT_FSPECIAL_2;
         }
+    }else{
+     attack = AT_NSPECIAL;   
     }
     }
+}
 }
 
 if(!has_pot){
     if(!has_shrimp){
         if(shrimpsplosion){
+            if(!able_to_grab_pot){  
             if(attack == AT_NSPECIAL){
                 attack = AT_NSPECIAL_2;
             }
+            }else{
+      if(attack == AT_NSPECIAL){          
+     attack = AT_NSPECIAL;   
+      }
+    }
         }
     }
 }

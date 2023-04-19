@@ -87,7 +87,7 @@ switch attack {
 	               			 sound_stop(cur_sound)
 	               			 cur_sound = sound_play(sound_get("v_heehee"),false,noone,.9,1.05 - random_func(1,10,true)/100)
 	               			 hit_player_obj.hitpause = true 
-	               			 hit_player_obj.hitstop = nearbyhitbox.hitpause
+	               			 hit_player_obj.hitstop = 5 //nearbyhitbox.hitpause
 	               			 hit_player_obj.old_hsp = hit_player_obj.hsp 
 	               			 hit_player_obj.old_vsp = hit_player_obj.vsp
 	               			 if hit_player_obj.hatstate == 0 { 
@@ -711,7 +711,7 @@ switch attack {
 	               			 sound_stop(cur_sound)
 	               			 cur_sound = sound_play(sound_get("v_heehee"),false,noone,.9,1.05 - random_func(1,10,true)/100)
 	               			 hit_player_obj.hitpause = true 
-	               			 hit_player_obj.hitstop = max(20, min(40,nearbyhitbox.hitpause*4))
+	               			 hit_player_obj.hitstop = 10 //max(20, min(40,nearbyhitbox.hitpause*4))
 	               			 hit_player_obj.old_hsp = hit_player_obj.hsp 
 	               			 hit_player_obj.old_vsp = hit_player_obj.vsp
 	               			 if hit_player_obj.hatstate == 0 { 

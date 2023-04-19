@@ -1,14 +1,14 @@
 
 with(pHitBox){
     if(player_id == other &&
-    (attack == AT_NSPECIAL && hbox_num == 1 && hit_priority > 0 || attack == AT_FSPECIAL && hbox_num <= 2 && hit_priority > 0 || attack == AT_JAB && hbox_num == 10 && hitbox_timer < 90)){
+    (attack == AT_NSPECIAL && hbox_num == 1 && hit_priority > 0 || attack == AT_FSPECIAL && hbox_num <= 2 && hit_priority > 0 || attack == AT_JAB && (hbox_num == 10 || hbox_num == 11) && hitbox_timer < 100)){
         gpu_set_fog(1, get_player_hud_color(player), 0, 1);
     	draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir, 1, proj_angle, c_white, 1);
     	draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir, 1, proj_angle, c_white, 1);
     	draw_sprite_ext(sprite_index, image_index, x-2, y-2, spr_dir, 1, proj_angle, c_white, 1);
     	draw_sprite_ext(sprite_index, image_index, x+2, y-2, spr_dir, 1, proj_angle, c_white, 1);
     	gpu_set_fog(false, c_white, 1, 1);
-    }else if(player_id == other && (attack == AT_DSPECIAL && hbox_num <= 3)){
+    }else if(player_id == other && (attack == AT_DSPECIAL && hbox_num <= 3) && "housemoney" in self){
         if(hbox_num == 1){
             draw_sprite_ext(sprite_get("playerarrow"),0,x,y-70,1,1,0,get_player_hud_color(player),1);
             draw_debug_text(x-(round(string_length(string_thousands(housemoney*100))*3.25)),y-90,string_thousands(housemoney*100));

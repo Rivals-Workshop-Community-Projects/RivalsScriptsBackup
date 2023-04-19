@@ -932,9 +932,11 @@ if phone.big_screen_pos_offset < 1{
 							break;
 					}
 					
+					init_shader();
 					if obj.uses_shader shader_start();
 					draw_sprite_part_ext(obj.sprite, draw_frame, img_l, img_t, img_w, img_h, this_x, text_y + (sprite_get_height(obj.sprite) * abs(obj.yscale) * 0.5 * (sign(obj.yscale) == -1)), obj.xscale, obj.yscale, obj.color, obj.alpha);
 					if obj.uses_shader shader_end();
+					init_shader();
 					
 					if !obj.side_by_side{
 						text_y += img_h * abs(obj.yscale) + 10;

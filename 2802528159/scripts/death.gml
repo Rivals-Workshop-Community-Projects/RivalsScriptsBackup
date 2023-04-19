@@ -1,9 +1,16 @@
-wall = 0;
-victim = noone;
-sound_stop(sound_get("beep"));
-if(sound_effect == 1){
-    sound_play(sound_get(dead_turret[random_func(90, 5, true)]), false, false, 1);
+if(get_player_stocks(player) == 1){
+    sound_stop(sound_get("radar_sound"));
 }
-plate_damage = 0;
-radar_posx = x;
-radar_posy = y - 20;
+plate_hp = (has_rune("H")? 50: 30);
+plate = 0;
+if awareness > 0 awareness -= 150;
+if awareness < 0 awareness = 0;
+sound_stop(sound_get("beep"));
+mask_index = sprite_get("def_mask");
+move_cooldown[AT_USPECIAL] = 0;
+should_vis = 1;
+hsp = 0;
+vsp = 0;
+wall = 0;
+image_angle = 0;
+spr_angle = 0;

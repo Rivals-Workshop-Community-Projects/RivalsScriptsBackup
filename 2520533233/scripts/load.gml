@@ -81,6 +81,8 @@ sprite_change_offset("rock_cracked", 76, 0);
 //strongs
 sprite_change_offset("dstrong_rock", 70, 102);
 sprite_change_offset("ustrong_hitbox", 128, 172);
+sprite_change_offset("ustrong1_enlarge", 128, 172);
+sprite_change_offset("ustrong2_enlarge", 128, 172);
 sprite_change_offset("ustrong_charge", 0, -42);
 sprite_change_offset("fstrong_lv2", 30, 58);
 sprite_change_offset("fstrong_lv3", 30, 58);

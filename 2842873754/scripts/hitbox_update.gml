@@ -44,10 +44,12 @@ if (attack == AT_FTHROW && hbox_num == 1)
 		
 		if (destroyed || hitbox_timer >= length) {
 		    sucked_player_obj.visible = true;
+		    sucked_player_obj.invincible = false;
+			sucked_player_obj.invince_time = 0;
+			sucked_player_obj.hitstun = 4;
 		    with (player_id) {
 		        var hbox = create_hitbox(AT_FTHROW, 2, floor(other.sucked_player_obj.x), floor(other.sucked_player_obj.y - 32));
 		    }
-		    sucked_player_obj.invincible = false;
 		}
     }
     else {

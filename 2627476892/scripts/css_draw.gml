@@ -3,7 +3,7 @@ var temp_y = y + 9;
  
 patch_ver = "1.20";
 patch_day = "17";
-patch_month = "AUG";
+patch_month = "DEC";
  
 var num_alts = 30;
 var alt_cur = get_player_color(player);

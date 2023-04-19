@@ -66,7 +66,7 @@ set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 16);
-set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 197);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("kick_heavy"))
 
@@ -84,7 +84,7 @@ set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 270);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 12);
-set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 197);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("swordmid"))
 

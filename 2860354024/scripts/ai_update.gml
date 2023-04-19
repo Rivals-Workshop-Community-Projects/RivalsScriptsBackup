@@ -247,3 +247,140 @@ if (!tab_demo){
 
 
 }
+else{
+	
+	if (ai_recovering)
+	{
+		//distance from ledge left and right
+		var stage_top = get_stage_data( SD_Y_POS );
+		var dfl_r = (room_width - get_stage_data(SD_X_POS)) - x;
+    	var dfl_l = (room_width - get_stage_data(SD_X_POS) - get_stage_data(SD_WIDTH)) - x  ;
+		var stage_mid = ((room_width - get_stage_data( SD_X_POS )) + get_stage_data( SD_X_POS ))/2 ;
+		
+        if (state == PS_IDLE_AIR || (state == PS_ATTACK_AIR && attack == AT_USPECIAL && window == 1 && window_timer == 0)){
+                
+                if (stage_mid < x )
+	            spr_dir = -1;
+	            else if ( stage_mid > x )
+	            spr_dir = 1;
+
+                if (y < stage_top + 20) && ((dfl_r < -100 ) || ( dfl_l > 100 )){
+                	set_state(PS_ATTACK_AIR);
+	                attack = AT_FSPECIAL;
+                }
+                else if (move_cooldown[AT_NSPECIAL] == 0){
+	                set_state(PS_ATTACK_AIR);
+	                attack = AT_NSPECIAL;
+               }
+                
+            
+        }
+		
+		
+	}
+	
+	if (get_training_cpu_action() == CPU_FIGHT){
+		
+		var target_dist = abs(x - ai_target.x);
+		var target_dist_y = ai_target.y - y;
+		
+		//aggro
+		if (target_dist > 70) && (state_cat != SC_HITSTUN){
+			if (x < ai_target.x){
+				right_pressed = true;
+				right_down = true;
+			}
+			if (x > ai_target.x){
+				right_pressed = true;
+				left_down = true;
+			}
+		}
+	
+		//wavedash back
+		var rand_wave = random_func( 1, 30, true );
+		
+		if (rand_wave == 1 && (state == PS_DASH || state == PS_DASH_START)){
+			joy_pad_idle = false;
+			
+			if (spr_dir == 1)
+			joy_dir = 180;
+			if (spr_dir == -1)
+			joy_dir = 0;
+			
+			set_state(PS_AIR_DODGE);
+		}
+		
+		
+		if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+			
+			
+			switch (attack){
+				case AT_DSPECIAL:
+					if (ammo > 1 && window == 1 && window_timer == 0){
+						if (state == PS_ATTACK_AIR){
+							attack = AT_FAIR;
+						}
+						if (state == PS_ATTACK_GROUND){
+							attack = AT_FTILT;
+						}
+					}	
+				break;
+				
+				case AT_DATTACK:
+				case AT_UTILT:
+				case AT_DSTRONG:
+					if (has_hit_player){
+						jump_pressed = true;
+						ai_full_hop = true;
+					}
+				break;
+				
+			}
+			
+		}
+		
+		if (state == PS_JUMPSQUAT){
+			if (ai_full_hop){
+				jump_down = true;
+			}
+		}
+		
+		if (state == PS_IDLE_AIR || state == PS_IDLE){
+			ai_full_hop = false;
+		}
+		
+		if (ai_target.state_cat == SC_HITSTUN) && (!(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) || get_window_value(attack, window, AG_WINDOW_IASA) != 0){
+			
+			attack_pressed = true;
+			jump_pressed = true;
+			
+	
+	
+			
+			if (target_dist < 50) && (target_dist_y < 20 && target_dist_y > -20){
+				attack = AT_FAIR;
+			}
+			
+			if (target_dist < 30) && (target_dist_y < 20 && target_dist_y > -20){
+				attack = AT_UAIR;
+			}
+			
+			if (target_dist < 30) && (target_dist_y < 40 && target_dist_y > -10){
+				attack = AT_DAIR;
+			}
+			
+		}
+		
+	}
+	
+	
+}
+
+
+
+
+
+
+
+
+

@@ -12,6 +12,9 @@ afterimage_countdown = 0;
 
 sound_stop(current_rocket_sound);
 sound_stop(horn_current);
+sound_stop(current_effect_sound);
+sound_stop(laser_blast_sound);
+sound_stop(laser_supplemental_sound);
 
 // Release anyone we may have grabbed
 with (asset_get("oPlayer")) {

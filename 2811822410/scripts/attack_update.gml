@@ -1,6 +1,7 @@
 //
 switch(attack) {
 	case AT_USPECIAL:
+		can_fast_fall = false;
 		if (!hitpause) {
 			if (window == 1) {
 				vsp = 0;
@@ -18,7 +19,7 @@ switch(attack) {
 			}
 		} else {
 			if (has_hit && uspecial_can_turn && ((left_down && spr_dir == 1) || (right_down && spr_dir == -1))) {
-				print("e")
+				//print("e")
 				uspecial_will_turn = true;
 			}
 		}
@@ -43,9 +44,9 @@ switch(attack) {
 			if (window_timer == 1) {
 				//Rune Off
 				if (!free) {
-					hsp = spr_dir * 12;
+					hsp = spr_dir * fspecial_speed_ground;
 				} else {
-					hsp = spr_dir * 8;
+					hsp = spr_dir * fspecial_speed_air;
 				}
 			}
 		}
@@ -127,13 +128,184 @@ switch(attack) {
 	case AT_DTHROW:
 		can_move = false;
 		can_fast_fall = false;
-		if (window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH)) {
+		if ((window_timer == get_window_value(attack, get_attack_value(attack, AG_NUM_WINDOWS), AG_WINDOW_LENGTH)) && window == get_attack_value(attack, AG_NUM_WINDOWS)) {
 			if (taunt_down || clone_owner.taunt_down) {
+				window = 1;
 				window_timer = 0;
 			}
 		}
+	break;
+	case AT_JAB:
+		/*
+		if (window == 3 && attack_pressed && !hitpause) {
+			window = 4;
+			window_timer = 0;
+		}
+		if (window == 3 && !hitpause && window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH)) {
+			window = 7;
+		}
+		*/
+	break;
+	/*
+	case AT_FSTRONG: //testing
+		set_attack_value(attack, AG_CATEGORY, 2);
+		if (!free && !freemd) {
+			print("test");
+			if (window == 4) {
+				if (window_timer == 1) {
+					test_var = true;
+					vsp = -4;
+				}				
+			}
+		}
+		if (test_var) {
+			hsp = 0;
+			fall_through = true;
+		}
+	break;
+	*/
+	//Grabs and Throws
+	case 40: //Grab
+		was_parried = false;
+		can_fast_fall = false;
+		if (!hitstop && instance_exists(grabbed_obj) && grabbed_obj != -4) {
+			attack_end();
+			set_attack(AT_GRAB_HOLD);
+			destroy_hitboxes();
+		}
+		if (grab_type == "nspecial") {
+			trigger_b_reverse();
+		}
+		//Grab Clone
+		/*
+		var grabbed_clone = false;
+		if (!has_hit) {
+			with pHitBox {
+				if (attack == other.AT_GRAB && type == 1) {
+					if place_meeting(x, y, other.miku_clone) {
+						other.grabbed_obj = other.miku_clone
+						grabbed_clone = self;
+					}
+				}
+			}
+			if (grabbed_clone) {
+				sound_play(grabbed_clone.sound_effect);
+				spawn_hit_fx(grabbed_obj.x, grabbed_obj.x, grabbed_clone.hit_effect);
+				set_attack(AT_GRAB_HOLD);
+				destroy_hitboxes();
+			}
+		}
+		*/
+	break;
+	case 41: //Hold
+		can_fast_fall = false;
+		grab_pos(attack, 0, 32, -16);
+		if (!hitstop && instance_exists(grabbed_obj) && grabbed_obj != -4) {
+			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || (left_pressed || down_pressed || right_pressed || up_pressed) || (attack_pressed && (left_down || right_down || up_down || down_down)) || (left_stick_pressed || left_strong_pressed || right_stick_pressed || right_strong_pressed || down_stick_pressed || down_strong_pressed || up_stick_pressed || up_strong_down) {
+				activate_throw()
+			} else if (attack_pressed && joy_pad_idle) {
+				set_attack(AT_PUMMEL);
+				attack_end();
+			}			
+		}
+		if !(instance_exists(grabbed_obj)) {
+			window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH);
+		}
+
+	break;
+	case 42: //Pummel:
+		can_fast_fall = false;
+		grab_pos(attack, 0, 32, -20);
+		grab_pos(attack, 1, 24, -8);
+		grab_pos(attack, 2, 24, -8);
+		grab_pos(attack, 3, 24, -8);
+		if (window == 3 && !hitpause && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+			if pummel_count {
+				pummel_count--;
+				attack_end();
+				window = 1;
+				window_timer = 0;
+			} else {
+				activate_throw()
+			}
+		}
+	break;
+	case 43: //Fthrow
+		can_fast_fall = false;
+		grab_pos(attack, 0, -24, -16);
+		grab_pos(attack, 1, -28, -16);
+		grab_set_pos(attack, 2, 56, -16);
+		//release_obj()
+	break;
+	case 44: //Dthrow
+		can_fast_fall = false;
+		grab_pos(attack, 0, -28, -40);
+		grab_pos(attack, 1, -24, -44);
+		grab_set_pos(attack, 2, -8, 0);
+		//release_obj()
+	break;
+	case 45: //Bthrow
+		can_fast_fall = false;
+		grab_pos(attack, 0, 14, -16);
+		grab_pos(attack, 1, -8, -8);
+		grab_set_pos(attack, 2, -16, -8);
+		//release_obj()
+	break;
+	case 46: //Uthrow
+		can_fast_fall = false;
+		grab_pos(attack, 0, 4, -8);
+		grab_pos(attack, 1, 8, -4);
+		grab_set_pos(attack, 2, 16, -40);
+		//release_obj()
 	break;
 	default:
 	break;
 }
 
+
+#define grab_pos(_attack, _image, _x, _y) {
+	if (!hitstop && instance_exists(grabbed_obj) && grabbed_obj != -4 && attack == _attack && image_index == _image) {
+		grabbed_obj.x = lerp(grabbed_obj.x , (x + _x * spr_dir), .5);
+		grabbed_obj.y = lerp(grabbed_obj.y , (y + _y), .5);
+		with (grabbed_obj) {
+			if place_meeting(x, y, asset_get("par_block")) {
+				while(place_meeting(x, y, asset_get("par_block"))) {
+					x -= sign(x - other.x);
+					y -= sign(y - other.y);
+				}
+			}
+		}
+	}
+}
+
+#define grab_set_pos(_attack, _window, _x, _y) {
+	if (instance_exists(grabbed_obj) && grabbed_obj != -4 && attack == _attack && window == _window - 1 && window_timer == get_window_value(attack, _window - 1, AG_WINDOW_LENGTH)) {
+		grabbed_obj.x = x + (_x * spr_dir)
+		grabbed_obj.y = y + _y
+	}
+}
+
+#define activate_throw() {
+	if (down_down || down_pressed || down_stick_pressed || down_stick_down || down_strong_down || down_strong_pressed) {
+	//	spr_dir = -spr_dir;
+		set_attack(AT_DTHROW_2);
+	} else if (up_down || up_pressed || up_stick_pressed || up_stick_down || up_strong_down || up_strong_pressed) {
+		set_attack(AT_UTHROW_2);
+	} else if (spr_dir == 1 && (left_down || left_pressed || left_stick_pressed || left_stick_down || left_strong_down || left_strong_pressed)) || (spr_dir == -1 && (right_down || right_pressed || right_stick_pressed || right_stick_down || right_strong_down || right_strong_pressed))  {
+		set_attack(AT_BTHROW_2);
+	} else {
+		set_attack(AT_FTHROW_2);
+	}
+}
+
+#define release_obj() {
+	with pHitBox {
+		if (attack == other.attack && player_id == other) {
+			if instance_exists(other.grabbed_obj) {
+				other.grabbed_obj.vsp = lengthdir_y(get_kb_formula(0, 1, 1, damage, kb_value, kb_scale), kb_angle);
+				other.grabbed_obj.hsp = lengthdir_x(get_kb_formula(0, 1, 1, damage, kb_value, kb_scale), kb_angle) * spr_dir;
+				other.grabbed_obj = -4;
+			}
+		}
+	}
+}

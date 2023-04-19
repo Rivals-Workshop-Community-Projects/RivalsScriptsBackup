@@ -20,7 +20,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 4); // 0
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 9); // 11
+set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 8); // 9 11
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_SFX, 1);
@@ -44,6 +44,10 @@ set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 6); // 5
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAME_START, 7);
+
+// Penalty Zone
+set_window_value(AT_DATTACK, penalty_window, AG_WINDOW_LENGTH, max_penalty_frames);
+
 
 set_num_hitboxes(AT_DATTACK, 2);
 
@@ -88,7 +92,7 @@ set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 5.5);
 set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 5.5);
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, 0.7);
-set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 /*
 set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 4);

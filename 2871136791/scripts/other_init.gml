@@ -1,0 +1,1 @@
+kirby_ball_left = 0;

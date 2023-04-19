@@ -68,6 +68,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 14);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, .75);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("sm-fightinghit2"));
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 6);
 
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME, 0);
@@ -89,6 +90,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 14);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("sm-tipper"));
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 6);
 
 set_hitbox_value(AT_FSTRONG, 3, HG_WINDOW, 4);
 set_hitbox_value(AT_FSTRONG, 3, HG_WINDOW_CREATION_FRAME, 0);
@@ -110,3 +112,4 @@ set_hitbox_value(AT_FSTRONG, 3, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, sound_get("sm-fightinghit2"));
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FSTRONG, 3, HG_HIT_LOCKOUT, 6);

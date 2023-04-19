@@ -1,7 +1,8 @@
-set_attack_value(AT_DSPECIAL_AIR, AG_CATEGORY, 2);
+set_attack_value(AT_DSPECIAL_AIR, AG_CATEGORY, 1);
 set_attack_value(AT_DSPECIAL_AIR, AG_SPRITE, sprite_get("dspecial_air"));
 set_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS, 4);
-set_attack_value(AT_DSPECIAL_AIR, AG_HAS_LANDING_LAG, 4);
+set_attack_value(AT_DSPECIAL_AIR, AG_HAS_LANDING_LAG, 1);
+set_attack_value(AT_DSPECIAL_AIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_DSPECIAL_AIR, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL_AIR, AG_AIR_SPRITE, sprite_get("dspecial_air"));
 set_attack_value(AT_DSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("dspecial_air_hurt"));

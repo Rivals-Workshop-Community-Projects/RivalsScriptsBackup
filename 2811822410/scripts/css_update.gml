@@ -1,4 +1,6 @@
-/*
+set_ui_element( UI_CHARSELECT, sprite_get( "charselect" ));
+
+
 //Browser
 
 text_timer += 1;
@@ -32,11 +34,22 @@ if browser_show {
 	if (menu_y_pressed || menu_x_pressed) {
 		menu_y_pressed = false;
 		menu_x_pressed = false;
-		if (browser_type == "text") {
-			browser_type = "framedata";
-		} else {
-			browser_type = "text";
-		}	
+		switch(browser_type) {
+			case "Info Deluxe":
+				//browser_type = "Frame Data";
+				browser_type = "Patch Notes";
+			break;
+			case "Frame Data":
+				browser_type = "Patch Notes";
+			break;
+			case "Patch Notes":
+				browser_type = "Info Deluxe";
+			break;
+			default:
+				browser_type = "Info Deluxe";
+			break;
+		}
+		sound_play(asset_get("mfx_option"));
 	}
 }
 */

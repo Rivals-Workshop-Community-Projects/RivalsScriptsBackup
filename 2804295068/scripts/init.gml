@@ -10,7 +10,7 @@ walk_anim_speed = .1;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
-walk_speed = 3;
+walk_speed = 3.5;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 8;
@@ -26,12 +26,12 @@ moonwalk_accel = 1.4;
 jump_start_time = 5;
 jump_speed = 11;
 short_hop_speed = 7;
-djump_speed = 12;
+djump_speed = 13;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .25;
+air_accel = .3;
 prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
@@ -49,7 +49,7 @@ land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_friction = .12; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 6;
@@ -98,12 +98,15 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 0;
 
+nspecial_charge = 0;
 boom = false;
 bean_x = 0;
 bean_y = 0;
 bean_bomb_recharge = 0;
 torchwood_recharge = 0;
 timer = 0;
+airraid_used = false;
+hover_used = false;
 kirbyability = 16
 copy_ability_id = 64
 fs_char_chosen_final_smash = "custom";
@@ -112,10 +115,13 @@ used_fs = false;
 mamizou_transform_spr = sprite_get("helpless");
 pot_compat_variable = sprite_get("food");
 pot_compat_text = "Roasted Sugar Snap Peas"
+arena_title = "The Garden's First Defender";
 wait_time = 600;
 wait_length = 90;
 wait_sprite = sprite_get("wait");
 wait_what = 0;
+swallowed = 0;
+enemykirby = 0;
 
 //practice mode detector
 playtest = (object_index == oTestPlayer);

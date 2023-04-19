@@ -1,7 +1,7 @@
 // MunoPhone Touch code - don't touch
 // should be at TOP of file
-muno_event_type = 1;
-user_event(14);
+//muno_event_type = 1;
+//user_event(14);
 
 //if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
 

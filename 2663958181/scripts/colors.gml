@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 32 );
 
 // Shiny (Blue)
 set_color_profile_slot( 1, 0, 181, 206, 255 ); //fucking blue
@@ -87,48 +87,14 @@ set_color_profile_slot( 5, 6, 207, 135, 107 ); //skin 1
 set_color_profile_slot( 5, 7, 156, 79, 76 ); //skin 2
 
 // Seasonal
-switch (get_match_setting(SET_SEASON)) {
-    case 1: // valentines
-        set_color_profile_slot( 6, 0, 255, 133, 193 ); //fucking blue
-        set_color_profile_slot( 6, 1, 189, 76, 182 ); //fucking blue (but dark)
-        set_color_profile_slot( 6, 2, 231, 3, 142 ); //backie packie
-        set_color_profile_slot( 6, 3, 161, 14, 157 ); //dark backie packie
-        set_color_profile_slot( 6, 4, 206, 46, 46 ); //coat
-        set_color_profile_slot( 6, 5, 145, 18, 58 ); //coat 2
-        set_color_profile_slot( 6, 6, 201, 151, 135 ); //skin 1
-        set_color_profile_slot( 6, 7, 163, 91, 87 ); //skin 2
-        break;
-    case 2: // summer
-        set_color_profile_slot( 6, 0, 255, 163, 40 ); //fucking blue
-        set_color_profile_slot( 6, 1, 219, 86, 20 ); //fucking blue (but dark)
-        set_color_profile_slot( 6, 2, 255, 246, 140 ); //backie packie
-        set_color_profile_slot( 6, 3, 232, 178, 102 ); //dark backie packie
-        set_color_profile_slot( 6, 4, 89, 204, 233 ); //coat
-        set_color_profile_slot( 6, 5, 54, 102, 199 ); //coat 2
-        set_color_profile_slot( 6, 6, 201, 151, 135 ); //skin 1
-        set_color_profile_slot( 6, 7, 163, 91, 87 ); //skin 2
-        break;
-    case 3: // halloween
-        set_color_profile_slot( 6, 0, 25, 140, 101 ); //fucking blue
-        set_color_profile_slot( 6, 1, 9, 84, 102 ); //fucking blue (but dark)
-        set_color_profile_slot( 6, 2, 49, 68, 75 ); //backie packie
-        set_color_profile_slot( 6, 3, 32, 36, 54 ); //dark backie packie
-        set_color_profile_slot( 6, 4, 253, 201, 59 ); //coat
-        set_color_profile_slot( 6, 5, 219, 104, 37 ); //coat 2
-        set_color_profile_slot( 6, 6, 242, 226, 208 ); //skin 1
-        set_color_profile_slot( 6, 7, 209, 162, 153 ); //skin 2
-        break;
-    case 4: // christmas
-        set_color_profile_slot( 6, 0, 222, 72, 72 ); //fucking blue
-        set_color_profile_slot( 6, 1, 166, 32, 46 ); //fucking blue (but dark)
-        set_color_profile_slot( 6, 2, 68, 179, 34 ); //backie packie
-        set_color_profile_slot( 6, 3, 13, 122, 24 ); //dark backie packie
-        set_color_profile_slot( 6, 4, 141, 236, 130 ); //coat
-        set_color_profile_slot( 6, 5, 65, 148, 94 ); //coat 2
-        set_color_profile_slot( 6, 6, 253, 235, 232 ); //skin 1
-        set_color_profile_slot( 6, 7, 227, 169, 166 ); //skin 2
-        break;
-}
+set_color_profile_slot( 6, 0, 222, 72, 72 ); //fucking blue
+set_color_profile_slot( 6, 1, 166, 32, 46 ); //fucking blue (but dark)
+set_color_profile_slot( 6, 2, 68, 179, 34 ); //backie packie
+set_color_profile_slot( 6, 3, 13, 122, 24 ); //dark backie packie
+set_color_profile_slot( 6, 4, 141, 236, 130 ); //coat
+set_color_profile_slot( 6, 5, 65, 148, 94 ); //coat 2
+set_color_profile_slot( 6, 6, 253, 235, 232 ); //skin 1
+set_color_profile_slot( 6, 7, 227, 169, 166 ); //skin 2
 
 // Yellow
 set_color_profile_slot( 7, 0, 255, 214, 66 ); //fucking blue
@@ -320,15 +286,15 @@ set_color_profile_slot( 25, 5, 79, 88, 150 ); //coat 2
 set_color_profile_slot( 25, 6, 242, 226, 208 ); //skin 1
 set_color_profile_slot( 25, 7, 219, 193, 187 ); //skin 2
 
-// Ratio
-set_color_profile_slot( 26, 0, 172, 33, 50 ); //fucking blue
-set_color_profile_slot( 26, 1, 130, 16, 71 ); //fucking blue (but dark)
-set_color_profile_slot( 26, 2, 252, 123, 6 ); //backie packie
-set_color_profile_slot( 26, 3, 173, 40, 1 ); //dark backie packie
-set_color_profile_slot( 26, 4, 243, 232, 243 ); //coat
-set_color_profile_slot( 26, 5, 181, 163, 201 ); //coat 2
-set_color_profile_slot( 26, 6, 136, 90, 102 ); //skin 1
-set_color_profile_slot( 26, 7, 115, 62, 95 ); //skin 2
+// Bad Ideas
+set_color_profile_slot( 26, 0, 216, 198, 194 ); //fucking blue
+set_color_profile_slot( 26, 1, 166, 134, 138 ); //fucking blue (but dark)
+set_color_profile_slot( 26, 2, 209, 121, 120 ); //backie packie
+set_color_profile_slot( 26, 3, 136, 60, 60 ); //dark backie packie
+set_color_profile_slot( 26, 4, 135, 123, 123 ); //coat
+set_color_profile_slot( 26, 5, 87, 72, 72 ); //coat 2
+set_color_profile_slot( 26, 6, 178, 114, 114 ); //skin 1
+set_color_profile_slot( 26, 7, 115, 60, 66 ); //skin 2
 
 // Liz
 set_color_profile_slot( 27, 0, 246, 104, 148 ); //fucking blue
@@ -369,6 +335,17 @@ set_color_profile_slot( 30, 4, 255, 200, 217 ); //coat
 set_color_profile_slot( 30, 5, 209, 130, 188 ); //coat 2
 set_color_profile_slot( 30, 6, 255, 245, 216 ); //skin 1
 set_color_profile_slot( 30, 7, 254, 185, 173 ); //skin 2
+
+// Vortex
+set_color_profile_slot( 31, 0, 0, 163, 248 ); //fucking blue
+set_color_profile_slot( 31, 1, 36, 85, 212 ); //fucking blue (but dark)
+set_color_profile_slot( 31, 2, 253, 220, 0 ); //backie packie
+set_color_profile_slot( 31, 3, 179, 117, 13 ); //dark backie packie
+set_color_profile_slot( 31, 4, 0, 248, 255 ); //coat
+set_color_profile_slot( 31, 5, 0, 113, 189 ); //coat 2
+set_color_profile_slot( 31, 6, 255, 245, 216 ); //skin 1
+set_color_profile_slot( 31, 7, 217, 108, 168 ); //skin 2
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

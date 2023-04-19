@@ -3,9 +3,38 @@ if (attack == AT_NSPECIAL  || attack == AT_DSPECIAL || attack == AT_USPECIAL || 
     trigger_b_reverse();
 }
 
+if(was_parried){
+	fuse++;
+}
+
 
 //#region specials
     //#region Nspecial
+    
+    
+if(attack == AT_NSPECIAL_AIR){
+    if(window == 1){
+        if(window_timer == 14){
+            
+            with(obj_article1){
+                if(player_id == other.id){
+                	if(skull == 0){
+                    	bomb_limit--;
+                	}
+                }
+            }
+            var DAbomb = instance_create(x-10*spr_dir, y - 10, "obj_article1")
+                DAbomb.state = 1;
+                DAbomb.vsp = 6;
+                DAbomb.loose = true;
+                //DAbomb.
+               // DAbomb.
+            fuse = fuse_max + 29    
+            
+        }
+    }
+}
+    
 if(attack == AT_NSPECIAL){
 	can_fast_fall = false;
     if(window == 1){
@@ -160,15 +189,15 @@ if(attack == AT_FSPECIAL){
                 fspec_bkb       =8
                 fspec_kbs       =0.3
                 fspec_damage    =12
-                fspec_bhp       =20
-                fspec_hps       =1
+                fspec_bhp       =16
+                fspec_hps       =1.1
             }
             else{
                 fspec_low       = false;
                 fspec_bkb       =7
                 fspec_kbs       =0.3
                 fspec_damage    =6
-                fspec_bhp       =12
+                fspec_bhp       =9
                 fspec_hps       =0.5
             }
         }
@@ -489,6 +518,7 @@ if(attack == AT_FSTRONG){
 			window +=2;
 			window_timer = 1;
 		}
+		
 	}
 	if(spr_dir = 1){
 		fst_dir = point_direction(x, y, x + hsp, y-vsp)
@@ -496,6 +526,7 @@ if(attack == AT_FSTRONG){
 	if(spr_dir = -1){
 		fst_dir = point_direction(x, y, x - hsp, y+vsp)
 	}
+	
 	
 	if(window == 2){
 		if(free){
@@ -564,8 +595,8 @@ if(attack == AT_FSTRONG){
 			destroy_hitboxes();
 			create_hitbox(attack, 8, x, y)
 			fst_bomb = create_hitbox(attack, 9, x, y)
-			vsp = -fst_sp * sin(degtorad(24))
-			hsp = fst_sp * cos(degtorad(24)) * spr_dir
+			vsp = -fst_sp * sin(degtorad(20))
+			hsp = fst_sp * cos(degtorad(20)) * spr_dir
             handsx = (floor((cos (spr_dir*arctan(31/36)+ degtorad( point_direction(0,0,hsp,vsp))))*sqrt((36*36)+(31*31)))+10)*spr_dir
             handsy = floor((sin  (spr_dir*arctan(31/36)+ degtorad( point_direction(0,0,hsp,vsp))))*sqrt((36*36)+(31*31)))
 		}
@@ -600,6 +631,11 @@ if(attack == AT_FSTRONG){
 
     //#region Ustrong
 if(attack == AT_USTRONG){
+	
+    if(!alterExtra){
+    	set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 90);
+    	alterExtra = true;
+    }
 	if(window == 1 && window_timer <= 6){
 		if(left_down) spr_dir = -1
 		if(right_down) spr_dir = 1
@@ -676,29 +712,46 @@ if(attack == AT_DSTRONG){
 //#region Aerials
 
     //#region Dair
-if(attack == AT_NSPECIAL_AIR){
-    if(window == 1){
-        if(window_timer == 14){
-            
-            with(obj_article1){
-                if(player_id == other.id){
-                	if(skull == 0){
-                    	bomb_limit--;
-                	}
-                }
-            }
-            var DAbomb = instance_create(x-10*spr_dir, y - 10, "obj_article1")
-                DAbomb.state = 1;
-                DAbomb.vsp = 6;
-                DAbomb.loose = true;
-                //DAbomb.
-               // DAbomb.
-            fuse = fuse_max + 29    
-            
-        }
-    }
+if(attack == AT_DAIR){
+    switch(image_index) {
+	    	case 0: 
+	    		handsx = 1;
+	    		handsy = 33;
+	    		boomvsp = -3;
+	    		boomhsp = 0;
+	    		break;
+	    	case 2: 
+	    		handsx = 1;
+	    		handsy = -29;
+	    		boomvsp = -8;
+	    		boomhsp = -0;
+	    		break;
+	    	case 3: 
+	    		handsx = 0;
+	    		handsy = 9;
+	    		boomvsp = -3;
+	    		boomhsp = 0;
+	    		break;
+	    	case 4: 
+	    		handsx = 1;
+	    		handsy = 23;
+	    		boomvsp = -3;
+	    		boomhsp = 0;
+	    		break;
+	    	case 5: 
+	    		handsx = 8;
+	    		handsy = 35;
+	    		boomvsp = -3;
+	    		boomhsp = 0;
+	    		break;
+	    	case 6: 
+	    		handsx = 10;
+	    		handsy = 35;
+	    		boomvsp = -3;
+	    		boomhsp = 0;
+	    		break;
+	    }	
 }
-    
     
     //#endregion
     
@@ -706,17 +759,54 @@ if(attack == AT_NSPECIAL_AIR){
     //#region Uair
     
     if(attack == AT_UAIR){
+    	switch(image_index) {
+	    	case 1: 
+	    		handsx = 1;
+	    		handsy = 36;
+	    		boomvsp = 2;
+	    		boomhsp = 0;
+	    		break;
+	    	case 2: 
+	    		handsx = 2;
+	    		handsy = 20;
+	    		boomvsp = 2;
+	    		boomhsp = 0
+	    		break;
+	    	case 3: 
+	    		handsx = 3;
+	    		handsy = 80;
+	    		boomvsp = 2;
+	    		boomhsp = 0;
+	    		break;
+	    	case 4: 
+	    		handsx = 2;
+	    		handsy = 58;
+	    		boomvsp = 2;
+	    		boomhsp = 0;
+	    		break;
+	    	case 5: 
+	    		handsx = 2;
+	    		handsy = 50;
+	    		boomvsp = 2;
+	    		boomhsp = 0;
+	    		break;
+	    	case 6: 
+	    		handsx = 13;
+	    		handsy = 37;
+	    		boomvsp = -3;
+	    		boomhsp = -2;
+	    		break;
+	    }
+	    if(!alterExtra){
+	    	set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 90);
+	    	alterExtra = true;
+	    }
         
         if(window == 2){
             if(window_timer <= 4){
             char_height = ease_linear(30,70, window_timer, 4);
             }
-            if(window_timer == 4){
-                handsx = -5
-                handsy = 75
-            boomvsp = -4;
-            boomhsp = 0;
-            }
+            
         }
         if(window == 3){
             char_height = ease_linear(70, 30, window_timer, 24);
@@ -729,28 +819,56 @@ if(attack == AT_NSPECIAL_AIR){
     //#region Fair
 if(attack == AT_FAIR){
 		
-    if(window == 2){
-        if(window_timer == 2){
-            handsx = 18
-            handsy = 40
-            boomvsp = -10;
-            boomhsp = -5;
-        }
-        if(window_timer == 4){
-            handsx = -2
-            handsy = 18
-            boomvsp = -12;
-            boomhsp = -2;
-        }
-    }
-    if(window == 3){
-        if(window_timer == 6){
-            handsx = -28
-            handsy = 75
-            boomvsp = -8;
-            boomhsp = 4;
-        }
-    }
+    switch(image_index) {
+	    	case 0: 
+	    		handsx = -20;
+	    		handsy = 44;
+	    		boomvsp = -3;
+	    		boomhsp = 2;
+	    		break;
+	    	case 1: 
+	    		handsx = -28;
+	    		handsy = 26;
+	    		boomvsp = -3;
+	    		boomhsp = 4
+	    		break;
+	    	case 3: 
+	    		handsx = -2;
+	    		handsy = 45;
+	    		boomvsp = -3;
+	    		boomhsp = 0;
+	    		break;
+	    	case 4: 
+	    		handsx = 44;
+	    		handsy = 9;
+	    		boomvsp = -7;
+	    		boomhsp = -2;
+	    		break;
+	    	case 5: 
+	    		handsx = -7;
+	    		handsy = -9;
+	    		boomvsp = -7;
+	    		boomhsp = 0;
+	    		break;
+	    	case 6: 
+	    		handsx = -24;
+	    		handsy = 3;
+	    		boomvsp = -7;
+	    		boomhsp = 2;
+	    		break;
+	    	case 7: 
+	    		handsx = -28;
+	    		handsy = 29;
+	    		boomvsp = -6;
+	    		boomhsp = 3;
+	    		break;
+	    	case 8: 
+	    		handsx = -5;
+	    		handsy = 45;
+	    		boomvsp = 3;
+	    		boomhsp = 4;
+	    		break;
+	    }	
 }
     
     //#endregion
@@ -758,19 +876,20 @@ if(attack == AT_FAIR){
     
     //#region Nair
 if(attack == AT_NAIR){
-    if(window == 2){
-        if(window_timer % 3 == 0 && !hitpause){
-            create_hitbox(AT_NAIR, 1, x, y)
-            create_hitbox(AT_NAIR, 2, x, y)
-            /*reset_hitbox_value(attack, 1, HG_HIT_SFX)
-            reset_hitbox_value(attack, 2, HG_HIT_SFX)*/
-        }
+    var correct_window;
+    correct_window = window == 2 and window_timer mod 3 == 0 and window_timer != 0;
+    
+    if (correct_window and !hitpause)
+    {
+        var hitbox;
+        hitbox = 2 + (window_timer > 6);
         
+        create_hitbox(attack, hitbox, x, y)
     }
     if(window == 1){
         if(window_timer == 1){
-            handsx = 28
-            handsy = 18
+            handsx = 20
+            handsy = 25
             boomvsp = -9;
             boomhsp = -6;
         }
@@ -788,48 +907,51 @@ if(attack == AT_NAIR){
     
     //#region Bair
 if(attack == AT_BAIR){
-    if(window == 1){
-        if(window_timer == 1){
-            
-        reset_hitbox_value(AT_BAIR, 2, HG_HIT_SFX);
-        reset_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE);
-        reset_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING);
-        }
-        if(window_timer == 15) {
-        	
-            handsx = 18;
-            handsy = -13;
-            boomvsp = -12;
-            boomhsp = 0;
-        }
-    }
-    if(window == 2){
-        if(window_timer == 1){
-        }
-        if(window_timer == 3){
-        	if(handsx = 18){
-            	handsx = -33;
-        	}
-            if(handsy == -13){
-            	handsy = 40;
-            }
-            boomvsp = -10;
-            boomhsp = 6;
-        }
-        if(window_timer == 6){
-        	if(!hitpause){
-	        	vsp -= 3;
-	        	hsp -= 3*spr_dir
-        	}
-        	if(handsx == -33){
-            	handsx = -26;
-        	}
-            if(handsy == 40){
-            	handsy = 50;
-            }
-            boomvsp = -4;
-            boomhsp = 4;
-        }
+	if(!hitstop){
+	    switch(image_index) {
+	    	case 0: 
+	    		handsx = 27;
+	    		handsy = 50;
+	    		boomvsp = -3;
+	    		boomhsp = -4;
+	    		break;
+	    	case 1: 
+	    		handsx = 37;
+	    		handsy = 20;
+	    		boomvsp = -4;
+	    		boomhsp = -4;
+	    		break;
+	    	case 2: 
+	    		handsx = 23;
+	    		handsy = -6;
+	    		boomvsp = -7;
+	    		boomhsp = -4;
+	    		break;
+	    	case 3: 
+	    		handsx = -50;
+	    		handsy = 24;
+	    		boomvsp = -3;
+	    		boomhsp = 4;
+	    		break;
+	    	case 4: 
+	    		handsx = 5;
+	    		handsy = 52;
+	    		boomvsp = -3;
+	    		boomhsp = 0;
+	    		break;
+	    	case 5: 
+	    		handsx = 29;
+	    		handsy = 48;
+	    		boomvsp = -3;
+	    		boomhsp = -2;
+	    		break;
+	    	case 6: 
+	    		handsx = 23;
+	    		handsy = 36;
+	    		boomvsp = -3;
+	    		boomhsp = -2;
+	    		break;
+	    }		
     }
 }
     
@@ -871,9 +993,9 @@ if(attack == AT_DATTACK){
         }
     }
     if(window == 3){
-        if(window_timer >= 10 && !attack_down){
-            window = 4;
-            window_timer = 0;
+        if(window_timer >= 10 && !attack_down && window_timer < 24){
+            window = 3;
+            window_timer = 24;
         }
     }
     if(window == 4){
@@ -901,12 +1023,31 @@ if(attack == AT_UTILT){
     
     //#region Ftilt
 if(attack == AT_FTILT){
-    if(window == 1){
-        if(window_timer == 1){
-            
-            boomvsp = -10;
-            boomhsp = 5;
-        }
+    switch (image_index){
+    	case 0:
+    		handsx = -43;
+    		handsy = 40;
+    		boomvsp = -3;
+    		boomhsp = 5;
+    		break;
+    	case 1:
+    		handsx = 68;
+    		handsy = 12;
+    		boomvsp = -4;
+    		boomhsp = -5;
+    		break;
+    	case 2:
+    		handsx = 62;
+    		handsy = 20;
+    		boomvsp = -4;
+    		boomhsp = -2;
+    		break;
+    	case 4:
+    		handsx = 17;
+    		handsy = 16;
+    		boomvsp = -5;
+    		boomhsp = -1;
+    		break;
     }
 }
     
@@ -988,5 +1129,28 @@ if(attack == AT_EXTRA_1){
 
 //#region Taunt
 
+//#endregion
+
+if(jabParry){
+	if((attack == AT_UTILT || attack == AT_DTILT || attack == AT_FTILT) && window == 3){
+		was_parried =  true;
+	}
+}
+//#region Prime Extra Hitpause
+// if(prime){
+// 	with(pHitBox){
+// 		if(player_id == other.id){
+// 			extra_hitpause = 4;
+// 		}
+// 	}
+// }else{
+// 	with(pHitBox){
+// 		if(player_id == other.id){
+// 			extra_hitpause = 0;
+// 		}
+		
+// 	}
+	
+// }
 
 //#endregion

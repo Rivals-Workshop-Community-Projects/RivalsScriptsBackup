@@ -37,22 +37,22 @@ set_color_profile_slot_range( 7, 2, 7, 12 );
 set_num_palettes( 32 );
 
 // Red
-set_color_profile_slot( 1, 0, 255, 153, 0 ); //unnamed color row
-set_color_profile_slot( 1, 1, 108, 28, 28 ); //unnamed color row
-set_color_profile_slot( 1, 2, 92, 0, 0 ); //unnamed color row
+set_color_profile_slot( 1, 0, 255, 175, 36 ); //unnamed color row
+set_color_profile_slot( 1, 1, 214, 169, 154 ); //unnamed color row
+set_color_profile_slot( 1, 2, 64, 16, 3 ); //unnamed color row
 set_color_profile_slot( 1, 3, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 1, 4, 173, 50, 36 ); //unnamed color row
-set_color_profile_slot( 1, 5, 20, 17, 17 ); //unnamed color row
+set_color_profile_slot( 1, 4, 196, 30, 61 ); //unnamed color row
+set_color_profile_slot( 1, 5, 15, 82, 87 ); //unnamed color row
 set_color_profile_slot( 1, 6, 255, 252, 252 ); //unnamed color row
-set_color_profile_slot( 1, 7, 8, 8, 8 ); //unnamed color row
+set_color_profile_slot( 1, 7, 89, 100, 117 ); //unnamed color row
 
 // Blue
 set_color_profile_slot( 2, 0, 0, 91, 166 ); //unnamed color row
-set_color_profile_slot( 2, 1, 184, 184, 184 ); //unnamed color row
+set_color_profile_slot( 2, 1, 129, 126, 126 ); //unnamed color row
 set_color_profile_slot( 2, 2, 129, 126, 126 ); //unnamed color row
 set_color_profile_slot( 2, 3, 207, 207, 207 ); //unnamed color row
-set_color_profile_slot( 2, 4, 0, 97, 166 ); //unnamed color row
-set_color_profile_slot( 2, 5, 150, 198, 251 ); //unnamed color row
+set_color_profile_slot( 2, 4, 150, 198, 198 ); //unnamed color row
+set_color_profile_slot( 2, 5, 33, 53, 99 ); //unnamed color row
 set_color_profile_slot( 2, 6, 240, 255, 252 ); //unnamed color row
 set_color_profile_slot( 2, 7, 0, 26, 31 ); //unnamed color row
 
@@ -67,20 +67,20 @@ set_color_profile_slot( 3, 6, 237, 255, 237 ); //unnamed color row
 set_color_profile_slot( 3, 7, 26, 59, 3 ); //unnamed color row
 
 // White
-set_color_profile_slot( 4, 0, 28, 28, 28 ); //unnamed color row
-set_color_profile_slot( 4, 1, 246, 250, 246 ); //unnamed color row
-set_color_profile_slot( 4, 2, 253, 255, 253 ); //unnamed color row
+set_color_profile_slot( 4, 0, 92, 93, 103 ); //unnamed color row
+set_color_profile_slot( 4, 1, 254, 234, 250 ); //unnamed color row
+set_color_profile_slot( 4, 2, 254, 234, 250 ); //unnamed color row
 set_color_profile_slot( 4, 3, 250, 250, 250 ); //unnamed color row
-set_color_profile_slot( 4, 4, 209, 209, 209 ); //unnamed color row
-set_color_profile_slot( 4, 5, 38, 38, 38 ); //unnamed color row
-set_color_profile_slot( 4, 6, 0, 0, 0 ); //unnamed color row
-set_color_profile_slot( 4, 7, 82, 82, 82 ); //unnamed color row
+set_color_profile_slot( 4, 4, 239, 211, 215 ); //unnamed color row
+set_color_profile_slot( 4, 5, 148, 133, 145 ); //unnamed color row
+set_color_profile_slot( 4, 6, 251, 255, 242 ); //unnamed color row
+set_color_profile_slot( 4, 7, 8, 7, 8 ); //unnamed color row
 
 // Pink
 set_color_profile_slot( 5, 0, 255, 150, 208 ); //unnamed color row
-set_color_profile_slot( 5, 1, 255, 227, 227 ); //unnamed color row
+set_color_profile_slot( 5, 1, 219, 156, 156 ); //unnamed color row
 set_color_profile_slot( 5, 2, 219, 156, 156 ); //unnamed color row
-set_color_profile_slot( 5, 3, 255, 191, 191 ); //unnamed color row
+set_color_profile_slot( 5, 3, 254, 234, 250 ); //unnamed color row
 set_color_profile_slot( 5, 4, 201, 82, 120 ); //unnamed color row
 set_color_profile_slot( 5, 5, 110, 25, 86 ); //unnamed color row
 set_color_profile_slot( 5, 6, 255, 255, 255 ); //unnamed color row
@@ -94,37 +94,37 @@ set_color_profile_slot( 6, 3, 255, 195, 201 ); //unnamed color row
 set_color_profile_slot( 6, 4, 148, 0, 211 ); //unnamed color row
 set_color_profile_slot( 6, 5, 78, 16, 163 ); //unnamed color row
 set_color_profile_slot( 6, 6, 218, 165, 32 ); //unnamed color row
-set_color_profile_slot( 6, 7, 148, 0, 211 ); //unnamed color row
+set_color_profile_slot( 6, 7, 47, 83, 138 ); //unnamed color row
 
 // Lemoncholy
-set_color_profile_slot( 7, 0, 84, 29, 29 ); //unnamed color row
+set_color_profile_slot( 7, 0, 107, 38, 38 ); //unnamed color row
 set_color_profile_slot( 7, 1, 224, 155, 99 ); //unnamed color row
-set_color_profile_slot( 7, 2, 227, 191, 116 ); //unnamed color row
+set_color_profile_slot( 7, 2, 163, 112, 83 ); //unnamed color row
 set_color_profile_slot( 7, 3, 230, 208, 175 ); //unnamed color row
-set_color_profile_slot( 7, 4, 105, 55, 34 ); //unnamed color row
+set_color_profile_slot( 7, 4, 140, 73, 45 ); //unnamed color row
 set_color_profile_slot( 7, 5, 201, 111, 13 ); //unnamed color row
 set_color_profile_slot( 7, 6, 245, 208, 123 ); //unnamed color row
-set_color_profile_slot( 7, 7, 120, 84, 30 ); //unnamed color row
+set_color_profile_slot( 7, 7, 179, 146, 88 ); //unnamed color row
 
-// Chrysallis
-set_color_profile_slot( 8, 0, 41, 124, 138 ); //unnamed color row
-set_color_profile_slot( 8, 1, 110, 110, 130 ); //unnamed color row
-set_color_profile_slot( 8, 2, 93, 93, 110 ); //unnamed color row
-set_color_profile_slot( 8, 3, 128, 128, 151 ); //unnamed color row
-set_color_profile_slot( 8, 4, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 8, 5, 76, 154, 156 ); //unnamed color row
+// Sage
+set_color_profile_slot( 8, 0, 193, 124, 116 ); //unnamed color row
+set_color_profile_slot( 8, 1, 122, 108, 93 ); //unnamed color row
+set_color_profile_slot( 8, 2, 188, 172, 155 ); //unnamed color row
+set_color_profile_slot( 8, 3, 221, 201, 180 ); //unnamed color row
+set_color_profile_slot( 8, 4, 221, 201, 180 ); //unnamed color row
+set_color_profile_slot( 8, 5, 193, 124, 116 ); //unnamed color row
 set_color_profile_slot( 8, 6, 23, 23, 23 ); //unnamed color row
-set_color_profile_slot( 8, 7, 93, 93, 110 ); //unnamed color row
+set_color_profile_slot( 8, 7, 42, 61, 69 ); //unnamed color row
 
-// Infamous
-set_color_profile_slot( 9, 0, 0, 230, 179 ); //unnamed color row
-set_color_profile_slot( 9, 1, 185, 88, 228 ); //unnamed color row
-set_color_profile_slot( 9, 2, 185, 88, 228 ); //unnamed color row
-set_color_profile_slot( 9, 3, 209, 178, 209 ); //unnamed color row
-set_color_profile_slot( 9, 4, 0, 230, 179 ); //unnamed color row
-set_color_profile_slot( 9, 5, 44, 137, 145 ); //unnamed color row
+// Thorn
+set_color_profile_slot( 9, 0, 197, 33, 132 ); //unnamed color row
+set_color_profile_slot( 9, 1, 249, 180, 237 ); //unnamed color row
+set_color_profile_slot( 9, 2, 229, 116, 188 ); //unnamed color row
+set_color_profile_slot( 9, 3, 245, 228, 245 ); //unnamed color row
+set_color_profile_slot( 9, 4, 51, 65, 57 ); //unnamed color row
+set_color_profile_slot( 9, 5, 51, 65, 57 ); //unnamed color row
 set_color_profile_slot( 9, 6, 240, 255, 250 ); //unnamed color row
-set_color_profile_slot( 9, 7, 87, 0, 78 ); //unnamed color row
+set_color_profile_slot( 9, 7, 30, 45, 36 ); //unnamed color row
 
 // Gameboy
 set_color_profile_slot( 10, 0, 83, 122, 62 ); //unnamed color row
@@ -142,7 +142,7 @@ set_color_profile_slot( 11, 1, 98, 87, 125 ); //unnamed color row
 set_color_profile_slot( 11, 2, 98, 87, 125 ); //unnamed color row
 set_color_profile_slot( 11, 3, 196, 182, 218 ); //unnamed color row
 set_color_profile_slot( 11, 4, 106, 51, 173 ); //unnamed color row
-set_color_profile_slot( 11, 5, 226, 99, 237 ); //unnamed color row
+set_color_profile_slot( 11, 5, 151, 66, 158 ); //unnamed color row
 set_color_profile_slot( 11, 6, 196, 182, 218 ); //unnamed color row
 set_color_profile_slot( 11, 7, 55, 41, 85 ); //unnamed color row
 
@@ -181,30 +181,30 @@ set_color_profile_slot( 15, 0, 103, 62, 43 ); //unnamed color row
 set_color_profile_slot( 15, 1, 197, 127, 95 ); //unnamed color row
 set_color_profile_slot( 15, 2, 110, 71, 53 ); //unnamed color row
 set_color_profile_slot( 15, 3, 238, 202, 181 ); //unnamed color row
-set_color_profile_slot( 15, 4, 172, 50, 50 ); //unnamed color row
+set_color_profile_slot( 15, 4, 82, 82, 126 ); //unnamed color row
 set_color_profile_slot( 15, 5, 82, 82, 126 ); //unnamed color row
 set_color_profile_slot( 15, 6, 203, 219, 252 ); //unnamed color row
 set_color_profile_slot( 15, 7, 172, 50, 50 ); //unnamed color row
 
-// P/G
-set_color_profile_slot( 16, 0, 82, 23, 118 ); //unnamed color row
-set_color_profile_slot( 16, 1, 187, 117, 71 ); //unnamed color row
-set_color_profile_slot( 16, 2, 113, 65, 59 ); //unnamed color row
-set_color_profile_slot( 16, 3, 212, 212, 212 ); //unnamed color row
-set_color_profile_slot( 16, 4, 82, 23, 118 ); //unnamed color row
-set_color_profile_slot( 16, 5, 205, 174, 85 ); //unnamed color row
-set_color_profile_slot( 16, 6, 212, 212, 212 ); //unnamed color row
-set_color_profile_slot( 16, 7, 21, 20, 27 ); //unnamed color row
+// Azi
+set_color_profile_slot( 16, 0, 67, 64, 82 ); //unnamed color row
+set_color_profile_slot( 16, 1, 255, 224, 223 ); //unnamed color row
+set_color_profile_slot( 16, 2, 67, 64, 82 ); //unnamed color row
+set_color_profile_slot( 16, 3, 255, 224, 223 ); //unnamed color row
+set_color_profile_slot( 16, 4, 243, 247, 255 ); //unnamed color row
+set_color_profile_slot( 16, 5, 209, 159, 79 ); //unnamed color row
+set_color_profile_slot( 16, 6, 95, 95, 108 ); //unnamed color row
+set_color_profile_slot( 16, 7, 37, 46, 54 ); //unnamed color row
 
-// Iroh
-set_color_profile_slot( 17, 0, 200, 200, 240 ); //unnamed color row
-set_color_profile_slot( 17, 1, 200, 200, 240 ); //unnamed color row
-set_color_profile_slot( 17, 2, 73, 21, 136 ); //unnamed color row
-set_color_profile_slot( 17, 3, 253, 253, 253 ); //unnamed color row
-set_color_profile_slot( 17, 4, 123, 37, 201 ); //unnamed color row
-set_color_profile_slot( 17, 5, 206, 135, 23 ); //unnamed color row
-set_color_profile_slot( 17, 6, 219, 119, 101 ); //unnamed color row
-set_color_profile_slot( 17, 7, 67, 68, 87 ); //unnamed color row
+// Go Lakers!!!
+set_color_profile_slot( 17, 0, 58, 23, 114 ); //unnamed color row
+set_color_profile_slot( 17, 1, 187, 117, 71 ); //unnamed color row
+set_color_profile_slot( 17, 2, 113, 65, 59 ); //unnamed color row
+set_color_profile_slot( 17, 3, 212, 212, 212 ); //unnamed color row
+set_color_profile_slot( 17, 4, 58, 23, 114 ); //unnamed color row
+set_color_profile_slot( 17, 5, 255, 188, 66 ); //unnamed color row
+set_color_profile_slot( 17, 6, 212, 212, 212 ); //unnamed color row
+set_color_profile_slot( 17, 7, 21, 20, 27 ); //unnamed color row
 
 // Legacy
 set_color_profile_slot( 18, 0, 157, 159, 255 ); //unnamed color row
@@ -227,9 +227,9 @@ set_color_profile_slot( 19, 6, 254, 219, 173 ); //unnamed color row
 set_color_profile_slot( 19, 7, 122, 23, 37 ); //unnamed color row
 
 // Monarch
-set_color_profile_slot( 20, 0, 55, 57, 94 ); //unnamed color row
+set_color_profile_slot( 20, 0, 43, 165, 247 ); //unnamed color row
 set_color_profile_slot( 20, 1, 206, 190, 226 ); //unnamed color row
-set_color_profile_slot( 20, 2, 43, 165, 247 ); //unnamed color row
+set_color_profile_slot( 20, 2, 55, 57, 94 ); //unnamed color row
 set_color_profile_slot( 20, 3, 248, 245, 252 ); //unnamed color row
 set_color_profile_slot( 20, 4, 196, 44, 69 ); //unnamed color row
 set_color_profile_slot( 20, 5, 102, 41, 184 ); //unnamed color row
@@ -242,33 +242,33 @@ set_color_profile_slot( 21, 1, 255, 130, 47 ); //unnamed color row
 set_color_profile_slot( 21, 2, 180, 67, 33 ); //unnamed color row
 set_color_profile_slot( 21, 3, 247, 237, 213 ); //unnamed color row
 set_color_profile_slot( 21, 4, 255, 130, 47 ); //unnamed color row
-set_color_profile_slot( 21, 5, 74, 208, 223 ); //unnamed color row
+set_color_profile_slot( 21, 5, 48, 136, 145 ); //unnamed color row
 set_color_profile_slot( 21, 6, 247, 237, 213 ); //unnamed color row
-set_color_profile_slot( 21, 7, 235, 51, 31 ); //unnamed color row
+set_color_profile_slot( 21, 7, 133, 39, 18 ); //unnamed color row
 
 // Zerra
 set_color_profile_slot( 22, 0, 153, 221, 255 ); //unnamed color row
 set_color_profile_slot( 22, 1, 194, 209, 240 ); //unnamed color row
 set_color_profile_slot( 22, 2, 194, 209, 240 ); //unnamed color row
 set_color_profile_slot( 22, 3, 247, 248, 250 ); //unnamed color row
-set_color_profile_slot( 22, 4, 22, 91, 196 ); //unnamed color row
-set_color_profile_slot( 22, 5, 90, 186, 242 ); //unnamed color row
+set_color_profile_slot( 22, 4, 255, 255, 255 ); //unnamed color row
+set_color_profile_slot( 22, 5, 105, 152, 194 ); //unnamed color row
 set_color_profile_slot( 22, 6, 247, 248, 250 ); //unnamed color row
-set_color_profile_slot( 22, 7, 65, 167, 255 ); //unnamed color row
+set_color_profile_slot( 22, 7, 41, 101, 161 ); //unnamed color row
 
 // Joker
-set_color_profile_slot( 23, 0, 44, 45, 53 ); //unnamed color row
-set_color_profile_slot( 23, 1, 241, 237, 233 ); //unnamed color row
+set_color_profile_slot( 23, 0, 32, 32, 38 ); //unnamed color row
+set_color_profile_slot( 23, 1, 240, 236, 232 ); //unnamed color row
 set_color_profile_slot( 23, 2, 60, 44, 45 ); //unnamed color row
-set_color_profile_slot( 23, 3, 247, 232, 199 ); //unnamed color row
+set_color_profile_slot( 23, 3, 247, 200, 163 ); //unnamed color row
 set_color_profile_slot( 23, 4, 50, 52, 53 ); //unnamed color row
 set_color_profile_slot( 23, 5, 181, 27, 36 ); //unnamed color row
 set_color_profile_slot( 23, 6, 180, 176, 175 ); //unnamed color row
-set_color_profile_slot( 23, 7, 31, 33, 35 ); //unnamed color row
+set_color_profile_slot( 23, 7, 22, 24, 26 ); //unnamed color row
 
 // Mad Hatter
 set_color_profile_slot( 24, 0, 174, 177, 213 ); //unnamed color row
-set_color_profile_slot( 24, 1, 242, 101, 112 ); //unnamed color row
+set_color_profile_slot( 24, 1, 242, 148, 156 ); //unnamed color row
 set_color_profile_slot( 24, 2, 174, 177, 213 ); //unnamed color row
 set_color_profile_slot( 24, 3, 202, 184, 165 ); //unnamed color row
 set_color_profile_slot( 24, 4, 132, 124, 8 ); //unnamed color row
@@ -278,73 +278,73 @@ set_color_profile_slot( 24, 7, 79, 118, 64 ); //unnamed color row
 
 // Hat Kid
 set_color_profile_slot( 25, 0, 136, 74, 36 ); //unnamed color row
-set_color_profile_slot( 25, 1, 243, 187, 139 ); //unnamed color row
+set_color_profile_slot( 25, 1, 232, 154, 103 ); //unnamed color row
 set_color_profile_slot( 25, 2, 97, 37, 23 ); //unnamed color row
-set_color_profile_slot( 25, 3, 232, 154, 103 ); //unnamed color row
+set_color_profile_slot( 25, 3, 243, 187, 139 ); //unnamed color row
 set_color_profile_slot( 25, 4, 244, 171, 45 ); //unnamed color row
 set_color_profile_slot( 25, 5, 88, 65, 141 ); //unnamed color row
 set_color_profile_slot( 25, 6, 88, 65, 141 ); //unnamed color row
 set_color_profile_slot( 25, 7, 75, 158, 205 ); //unnamed color row
 
-// Void
-set_color_profile_slot( 26, 0, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 26, 1, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 26, 2, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 26, 3, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 26, 4, 26, 61, 14 ); //unnamed color row
-set_color_profile_slot( 26, 5, 109, 154, 94 ); //unnamed color row
-set_color_profile_slot( 26, 6, 162, 255, 10 ); //unnamed color row
+// First lady
+set_color_profile_slot( 26, 0, 83, 62, 45 ); //unnamed color row
+set_color_profile_slot( 26, 1, 162, 112, 53 ); //unnamed color row
+set_color_profile_slot( 26, 2, 184, 139, 74 ); //unnamed color row
+set_color_profile_slot( 26, 3, 221, 202, 125 ); //unnamed color row
+set_color_profile_slot( 26, 4, 36, 35, 49 ); //unnamed color row
+set_color_profile_slot( 26, 5, 83, 62, 45 ); //unnamed color row
+set_color_profile_slot( 26, 6, 221, 202, 125 ); //unnamed color row
 set_color_profile_slot( 26, 7, 28, 28, 28 ); //unnamed color row
 
-// Ztatic
-set_color_profile_slot( 27, 0, 255, 203, 112 ); //unnamed color row
-set_color_profile_slot( 27, 1, 37, 46, 54 ); //unnamed color row
-set_color_profile_slot( 27, 2, 173, 169, 176 ); //unnamed color row
-set_color_profile_slot( 27, 3, 189, 198, 217 ); //unnamed color row
-set_color_profile_slot( 27, 4, 255, 229, 214 ); //unnamed color row
-set_color_profile_slot( 27, 5, 113, 64, 27 ); //unnamed color row
-set_color_profile_slot( 27, 6, 173, 169, 176 ); //unnamed color row
-set_color_profile_slot( 27, 7, 37, 46, 54 ); //unnamed color row
-
 // Noire
-set_color_profile_slot( 28, 0, 97, 97, 99 ); //unnamed color row
-set_color_profile_slot( 28, 1, 251, 250, 255 ); //unnamed color row
-set_color_profile_slot( 28, 2, 251, 250, 255 ); //unnamed color row
-set_color_profile_slot( 28, 3, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 28, 4, 52, 52, 54 ); //unnamed color row
-set_color_profile_slot( 28, 5, 153, 153, 156 ); //unnamed color row
-set_color_profile_slot( 28, 6, 109, 14, 14 ); //unnamed color row
-set_color_profile_slot( 28, 7, 97, 97, 99 ); //unnamed color row
+set_color_profile_slot( 27, 0, 82, 82, 84 ); //unnamed color row
+set_color_profile_slot( 27, 1, 251, 250, 255 ); //unnamed color row
+set_color_profile_slot( 27, 2, 251, 250, 255 ); //unnamed color row
+set_color_profile_slot( 27, 3, 255, 255, 255 ); //unnamed color row
+set_color_profile_slot( 27, 4, 52, 52, 54 ); //unnamed color row
+set_color_profile_slot( 27, 5, 153, 153, 156 ); //unnamed color row
+set_color_profile_slot( 27, 6, 109, 14, 14 ); //unnamed color row
+set_color_profile_slot( 27, 7, 97, 97, 99 ); //unnamed color row
 
 // BLW
-set_color_profile_slot( 29, 0, 255, 184, 64 ); //unnamed color row
-set_color_profile_slot( 29, 1, 29, 29, 29 ); //unnamed color row
-set_color_profile_slot( 29, 2, 29, 29, 29 ); //unnamed color row
-set_color_profile_slot( 29, 3, 115, 115, 115 ); //unnamed color row
-set_color_profile_slot( 29, 4, 138, 84, 57 ); //unnamed color row
-set_color_profile_slot( 29, 5, 163, 131, 50 ); //unnamed color row
-set_color_profile_slot( 29, 6, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 29, 7, 71, 71, 71 ); //unnamed color row
-
-// Reforged
-set_color_profile_slot( 30, 0, 27, 168, 16 ); //unnamed color row
-set_color_profile_slot( 30, 1, 255, 234, 97 ); //unnamed color row
-set_color_profile_slot( 30, 2, 27, 168, 16 ); //unnamed color row
-set_color_profile_slot( 30, 3, 255, 234, 97 ); //unnamed color row
-set_color_profile_slot( 30, 4, 255, 0, 136 ); //unnamed color row
-set_color_profile_slot( 30, 5, 37, 40, 43 ); //unnamed color row
-set_color_profile_slot( 30, 6, 74, 89, 81 ); //unnamed color row
-set_color_profile_slot( 30, 7, 77, 53, 44 ); //unnamed color row
+set_color_profile_slot( 28, 0, 255, 184, 64 ); //unnamed color row
+set_color_profile_slot( 28, 1, 148, 93, 56 ); //unnamed color row
+set_color_profile_slot( 28, 2, 84, 48, 44 ); //unnamed color row
+set_color_profile_slot( 28, 3, 212, 212, 212 ); //unnamed color row
+set_color_profile_slot( 28, 4, 245, 245, 245 ); //unnamed color row
+set_color_profile_slot( 28, 5, 219, 155, 39 ); //unnamed color row
+set_color_profile_slot( 28, 6, 255, 255, 255 ); //unnamed color row
+set_color_profile_slot( 28, 7, 13, 13, 13 ); //unnamed color row
 
 // Rockstar
-set_color_profile_slot( 31, 0, 44, 39, 54 ); //unnamed color row
-set_color_profile_slot( 31, 1, 242, 186, 116 ); //unnamed color row
-set_color_profile_slot( 31, 2, 242, 186, 116 ); //unnamed color row
-set_color_profile_slot( 31, 3, 222, 209, 193 ); //unnamed color row
-set_color_profile_slot( 31, 4, 145, 0, 68 ); //unnamed color row
-set_color_profile_slot( 31, 5, 224, 0, 113 ); //unnamed color row
-set_color_profile_slot( 31, 6, 44, 39, 54 ); //unnamed color row
-set_color_profile_slot( 31, 7, 14, 12, 18 ); //unnamed color row
+set_color_profile_slot( 29, 0, 44, 39, 54 ); //unnamed color row
+set_color_profile_slot( 29, 1, 242, 186, 116 ); //unnamed color row
+set_color_profile_slot( 29, 2, 242, 186, 116 ); //unnamed color row
+set_color_profile_slot( 29, 3, 222, 209, 193 ); //unnamed color row
+set_color_profile_slot( 29, 4, 145, 0, 68 ); //unnamed color row
+set_color_profile_slot( 29, 5, 224, 0, 113 ); //unnamed color row
+set_color_profile_slot( 29, 6, 44, 39, 54 ); //unnamed color row
+set_color_profile_slot( 29, 7, 14, 12, 18 ); //unnamed color row
+
+// Idk lol
+set_color_profile_slot( 30, 0, 241, 196, 15 ); //unnamed color row
+set_color_profile_slot( 30, 1, 3, 206, 164 ); //unnamed color row
+set_color_profile_slot( 30, 2, 0, 204, 102 ); //unnamed color row
+set_color_profile_slot( 30, 3, 253, 253, 253 ); //unnamed color row
+set_color_profile_slot( 30, 4, 247, 92, 3 ); //unnamed color row
+set_color_profile_slot( 30, 5, 22, 73, 105 ); //unnamed color row
+set_color_profile_slot( 30, 6, 219, 119, 101 ); //unnamed color row
+set_color_profile_slot( 30, 7, 217, 3, 104 ); //unnamed color row
+
+// Reforged
+set_color_profile_slot( 31, 0, 27, 168, 16 ); //unnamed color row
+set_color_profile_slot( 31, 1, 255, 234, 97 ); //unnamed color row
+set_color_profile_slot( 31, 2, 27, 168, 16 ); //unnamed color row
+set_color_profile_slot( 31, 3, 255, 234, 97 ); //unnamed color row
+set_color_profile_slot( 31, 4, 255, 0, 136 ); //unnamed color row
+set_color_profile_slot( 31, 5, 37, 40, 43 ); //unnamed color row
+set_color_profile_slot( 31, 6, 74, 89, 81 ); //unnamed color row
+set_color_profile_slot( 31, 7, 77, 53, 44 ); //unnamed color row
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

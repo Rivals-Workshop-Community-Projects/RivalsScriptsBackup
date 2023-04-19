@@ -159,7 +159,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[29,1] = "Matters Most Dark"
 
     ce[30,0] = make_color_rgb(122, 122, 122)
-    ce[30,1] = "Monochrome"
+    ce[30,1] = "Interdimensional Traveler"
 
     ce[31,0] = make_color_rgb(133, 166, 237)
     ce[31,1] = "Pastel"

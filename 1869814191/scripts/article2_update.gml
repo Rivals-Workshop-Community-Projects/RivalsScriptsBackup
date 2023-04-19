@@ -6,6 +6,18 @@
 #macro GB_DESPAWN 3
 #macro GB_DESTROY 10
 
+can_be_hit[player] = 2; //this is a cooldown so it has to be set every single frame
+//(also thanks giik for helping me with this)
+with oPlayer {
+    if (get_player_team(player) == get_player_team(get_instance_player(other))) && !get_match_setting(SET_TEAMATTACK) {
+    	other.can_be_hit[player] = 2; //teammates can't hit
+    } else {
+    	with other { //can't be hit during exe's invincibility frames
+    	    if (state >= 2) { can_be_hit[get_instance_player(other)] = 2; }
+    	}
+    }
+}
+
 if (init == 0) {
     init = 1;
     with (asset_get("obj_article2")) {

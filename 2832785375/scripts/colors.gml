@@ -149,11 +149,11 @@ set_color_profile_slot( 11, 7, 212, 225, 155 ); //Whites
 // genesis
 set_color_profile_slot( 12, 0, 71, 71, 71 ); //Red light
 set_color_profile_slot( 12, 1, 33, 33, 33 ); //Red dark
-set_color_profile_slot( 12, 2, 202, 0, 0 ); //Yellow
+set_color_profile_slot( 12, 2, 202, 26, 26 ); //Yellow
 set_color_profile_slot( 12, 3, 112, 0, 0 ); //Pink
 set_color_profile_slot( 12, 4, 249, 249, 249 ); //Frill green
 set_color_profile_slot( 12, 5, 71, 71, 71 ); //Body green
-set_color_profile_slot( 12, 6, 105, 0, 0 ); //Browns
+set_color_profile_slot( 12, 6, 168, 29, 29 ); //Browns
 set_color_profile_slot( 12, 7, 249, 249, 249 ); //Whites
 
 

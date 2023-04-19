@@ -79,3 +79,14 @@ set_color_profile_slot(6, 4, 191, 0, 0); //Orange
 set_color_profile_slot(6, 5, 216, 207, 177); //Armor
 set_color_profile_slot(6, 6, 255, 237, 201); //Skin
 set_color_profile_slot(6, 7, 147, 79, 0); //Skin2
+
+if (super_form_active)
+{
+    set_color_profile_slot(0, 0, 198, 165, 55); //Yellow
+    set_color_profile_slot(1, 0, 198, 165, 55); //Yellow
+    set_color_profile_slot(2, 0, 198, 165, 55); //Yellow
+    set_color_profile_slot(3, 0, 198, 165, 55); //Yellow
+    set_color_profile_slot(4, 0, 198, 165, 55); //Yellow
+    set_color_profile_slot(5, 0, 198, 165, 55); //Yellow
+    set_color_profile_slot(6, 0, 198, 165, 55); //Yellow
+}

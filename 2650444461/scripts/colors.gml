@@ -126,122 +126,136 @@ set_color_profile_slot(13, 3, 173, 74, 86); //EYES
 set_color_profile_slot(13, 4, 229, 117, 175); //MOUTH
 
 //Metagross
-set_color_profile_slot(14, 0, 80, 129, 174); //BLUE
+/*set_color_profile_slot(14, 0, 80, 129, 174); //BLUE
 set_color_profile_slot(14, 1, 183, 198, 208); //LIGHT BLUE
 set_color_profile_slot(14, 2, 183, 198, 208); //ORANGE
 set_color_profile_slot(14, 3, 224, 90, 97); //EYES
-set_color_profile_slot(14, 4, 229, 117, 175); //MOUTH
+set_color_profile_slot(14, 4, 229, 117, 175); //MOUTH*/
 
 //Regirock
-set_color_profile_slot(15, 0, 200, 178, 174); //BLUE
-set_color_profile_slot(15, 1, 204, 131, 93); //LIGHT BLUE
-set_color_profile_slot(15, 2, 204, 131, 93); //ORANGE
-set_color_profile_slot(15, 3, 232, 134, 62); //EYES
-set_color_profile_slot(15, 4, 153, 130, 138); //MOUTH
+set_color_profile_slot(14, 0, 200, 178, 174); //BLUE
+set_color_profile_slot(14, 1, 204, 131, 93); //LIGHT BLUE
+set_color_profile_slot(14, 2, 204, 131, 93); //ORANGE
+set_color_profile_slot(14, 3, 232, 134, 62); //EYES
+set_color_profile_slot(14, 4, 153, 130, 138); //MOUTH
 
 //Regice
-set_color_profile_slot(16, 0, 154, 230, 252); //BLUE
-set_color_profile_slot(16, 1, 154, 230, 252); //LIGHT BLUE
-set_color_profile_slot(16, 2, 237, 223, 69); //ORANGE
-set_color_profile_slot(16, 3, 237, 223, 69); //EYES
-set_color_profile_slot(16, 4, 85, 149, 214); //MOUTH
+set_color_profile_slot(15, 0, 154, 230, 252); //BLUE
+set_color_profile_slot(15, 1, 154, 230, 252); //LIGHT BLUE
+set_color_profile_slot(15, 2, 237, 223, 69); //ORANGE
+set_color_profile_slot(15, 3, 237, 223, 69); //EYES
+set_color_profile_slot(15, 4, 85, 149, 214); //MOUTH
 
 //Registeel
-set_color_profile_slot(17, 0, 80, 80, 94); //BLUE
-set_color_profile_slot(17, 1, 193, 193, 217); //LIGHT BLUE
-set_color_profile_slot(17, 2, 193, 193, 217); //ORANGE
-set_color_profile_slot(17, 3, 224, 69, 76); //EYES
-set_color_profile_slot(17, 4, 115, 105, 131); //MOUTH
+set_color_profile_slot(16, 0, 80, 80, 94); //BLUE
+set_color_profile_slot(16, 1, 193, 193, 217); //LIGHT BLUE
+set_color_profile_slot(16, 2, 193, 193, 217); //ORANGE
+set_color_profile_slot(16, 3, 224, 69, 76); //EYES
+set_color_profile_slot(16, 4, 115, 105, 131); //MOUTH
 
 //Latias
-set_color_profile_slot(18, 0, 181, 48, 55); //BLUE
-set_color_profile_slot(18, 1, 201, 211, 233); //LIGHT BLUE
-set_color_profile_slot(18, 2, 48, 119, 196); //ORANGE
-set_color_profile_slot(18, 3, 225, 169, 61); //EYES
-set_color_profile_slot(18, 4, 229, 117, 175); //MOUTH
+set_color_profile_slot(17, 0, 181, 48, 55); //BLUE
+set_color_profile_slot(17, 1, 201, 211, 233); //LIGHT BLUE
+set_color_profile_slot(17, 2, 48, 119, 196); //ORANGE
+set_color_profile_slot(17, 3, 225, 169, 61); //EYES
+set_color_profile_slot(17, 4, 229, 117, 175); //MOUTH
 
 //Latios
-set_color_profile_slot(19, 0, 48, 119, 196); //BLUE
+/*set_color_profile_slot(19, 0, 48, 119, 196); //BLUE
 set_color_profile_slot(19, 1, 165, 166, 165); //LIGHT BLUE
 set_color_profile_slot(19, 2, 181, 48, 55); //ORANGE
 set_color_profile_slot(19, 3, 224, 90, 97); //EYES
-set_color_profile_slot(19, 4, 229, 117, 175); //MOUTH
+set_color_profile_slot(19, 4, 229, 117, 175); //MOUTH*/
 
 //Groudon
-set_color_profile_slot(20, 0, 194, 48, 31); //BLUE
-set_color_profile_slot(20, 1, 136, 123, 112); //LIGHT BLUE
-set_color_profile_slot(20, 2, 24, 12, 40); //ORANGE
+set_color_profile_slot(18, 0, 194, 48, 31); //BLUE
+set_color_profile_slot(18, 1, 136, 123, 112); //LIGHT BLUE
+set_color_profile_slot(18, 2, 24, 12, 40); //ORANGE
+set_color_profile_slot(18, 3, 241, 206, 42); //EYES
+set_color_profile_slot(18, 4, 229, 117, 175); //MOUTH
+
+//Kyogre
+set_color_profile_slot(19, 0, 45, 81, 155); //BLUE
+set_color_profile_slot(19, 1, 214, 219, 235); //LIGHT BLUE
+set_color_profile_slot(19, 2, 201, 40, 72); //ORANGE
+set_color_profile_slot(19, 3, 241, 206, 42); //EYES
+set_color_profile_slot(19, 4, 229, 117, 175); //MOUTH
+
+//Rayquaza
+set_color_profile_slot(20, 0, 66, 133, 85); //BLUE
+set_color_profile_slot(20, 1, 179, 62, 78); //LIGHT BLUE
+set_color_profile_slot(20, 2, 243, 219, 129); //ORANGE
 set_color_profile_slot(20, 3, 241, 206, 42); //EYES
 set_color_profile_slot(20, 4, 229, 117, 175); //MOUTH
 
-//Kyogre
-set_color_profile_slot(21, 0, 45, 81, 155); //BLUE
-set_color_profile_slot(21, 1, 214, 219, 235); //LIGHT BLUE
-set_color_profile_slot(21, 2, 201, 40, 72); //ORANGE
-set_color_profile_slot(21, 3, 241, 206, 42); //EYES
+//Jirachi
+set_color_profile_slot(21, 0, 238, 210, 137); //BLUE
+set_color_profile_slot(21, 1, 244, 245, 249); //LIGHT BLUE
+set_color_profile_slot(21, 2, 73, 190, 191); //ORANGE
+set_color_profile_slot(21, 3, 4, 27, 29); //EYES
 set_color_profile_slot(21, 4, 229, 117, 175); //MOUTH
 
-//Rayquaza
-set_color_profile_slot(22, 0, 66, 133, 85); //BLUE
-set_color_profile_slot(22, 1, 179, 62, 78); //LIGHT BLUE
-set_color_profile_slot(22, 2, 243, 219, 129); //ORANGE
-set_color_profile_slot(22, 3, 241, 206, 42); //EYES
+//Deoxys
+set_color_profile_slot(22, 0, 236, 108, 63); //BLUE
+set_color_profile_slot(22, 1, 61, 176, 200); //LIGHT BLUE
+set_color_profile_slot(22, 2, 157, 97, 148); //ORANGE
+set_color_profile_slot(22, 3, 8, 27, 34); //EYES
 set_color_profile_slot(22, 4, 229, 117, 175); //MOUTH
 
-//Jirachi
-set_color_profile_slot(23, 0, 238, 210, 137); //BLUE
-set_color_profile_slot(23, 1, 244, 245, 249); //LIGHT BLUE
-set_color_profile_slot(23, 2, 73, 190, 191); //ORANGE
-set_color_profile_slot(23, 3, 4, 27, 29); //EYES
+//Pikachu
+set_color_profile_slot(23, 0, 255, 215, 62); //BLUE
+set_color_profile_slot(23, 1, 40, 40, 40); //LIGHT BLUE
+set_color_profile_slot(23, 2, 238, 79, 53); //ORANGE
+set_color_profile_slot(23, 3, 40, 40, 40); //EYES
 set_color_profile_slot(23, 4, 229, 117, 175); //MOUTH
 
-//Deoxys
-set_color_profile_slot(24, 0, 236, 108, 63); //BLUE
-set_color_profile_slot(24, 1, 61, 176, 200); //LIGHT BLUE
-set_color_profile_slot(24, 2, 157, 97, 148); //ORANGE
-set_color_profile_slot(24, 3, 8, 27, 34); //EYES
-set_color_profile_slot(24, 4, 229, 117, 175); //MOUTH
+//Ditto
+set_color_profile_slot(24, 0, 203, 179, 240); //BLUE
+set_color_profile_slot(24, 1, 203, 179, 240); //LIGHT BLUE
+set_color_profile_slot(24, 2, 203, 179, 240); //ORANGE
+set_color_profile_slot(24, 3, 119, 68, 196); //EYES
+set_color_profile_slot(24, 4, 119, 68, 196); //MOUTH
 
-//Pikachu
-set_color_profile_slot(25, 0, 255, 215, 62); //BLUE
-set_color_profile_slot(25, 1, 40, 40, 40); //LIGHT BLUE
-set_color_profile_slot(25, 2, 238, 79, 53); //ORANGE
-set_color_profile_slot(25, 3, 40, 40, 40); //EYES
+//Bel
+set_color_profile_slot(25, 0, 41, 49, 157); //BLUE
+set_color_profile_slot(25, 1, 102, 189, 230); //LIGHT BLUE
+set_color_profile_slot(25, 2, 70, 222, 73); //ORANGE
+set_color_profile_slot(25, 3, 116, 0, 154); //EYES
 set_color_profile_slot(25, 4, 229, 117, 175); //MOUTH
 
-//Ditto
-set_color_profile_slot(26, 0, 203, 179, 240); //BLUE
-set_color_profile_slot(26, 1, 203, 179, 240); //LIGHT BLUE
-set_color_profile_slot(26, 2, 203, 179, 240); //ORANGE
-set_color_profile_slot(26, 3, 119, 68, 196); //EYES
-set_color_profile_slot(26, 4, 119, 68, 196); //MOUTH
-
 //Matt
-set_color_profile_slot(27, 0, 118, 224, 178); //BLUE
-set_color_profile_slot(27, 1, 249, 225, 94); //LIGHT BLUE
-set_color_profile_slot(27, 2, 210, 56, 40); //ORANGE
-set_color_profile_slot(27, 3, 38, 48, 124); //EYES
-set_color_profile_slot(27, 4, 229, 117, 175); //MOUTH
+set_color_profile_slot(26, 0, 118, 224, 178); //BLUE
+set_color_profile_slot(26, 1, 249, 225, 94); //LIGHT BLUE
+set_color_profile_slot(26, 2, 210, 56, 40); //ORANGE
+set_color_profile_slot(26, 3, 38, 48, 124); //EYES
+set_color_profile_slot(26, 4, 229, 117, 175); //MOUTH
 
 //Aria
-set_color_profile_slot(28, 0, 244, 163, 76); //BLUE
-set_color_profile_slot(28, 1, 209, 107, 215); //LIGHT BLUE
-set_color_profile_slot(28, 2, 99, 58, 167); //ORANGE
-set_color_profile_slot(28, 3, 0, 58, 14); //EYES
-set_color_profile_slot(28, 4, 229, 117, 175); //MOUTH
+set_color_profile_slot(27, 0, 244, 163, 76); //BLUE
+set_color_profile_slot(27, 1, 209, 107, 215); //LIGHT BLUE
+set_color_profile_slot(27, 2, 99, 58, 167); //ORANGE
+set_color_profile_slot(27, 3, 0, 58, 14); //EYES
+set_color_profile_slot(27, 4, 229, 117, 175); //MOUTH
 
 //Sol
-set_color_profile_slot(29, 0, 210, 56, 40); //BLUE
-set_color_profile_slot(29, 1, 249, 225, 94); //LIGHT BLUE
-set_color_profile_slot(29, 2, 246, 152, 90); //ORANGE
-set_color_profile_slot(29, 3, 0, 103, 112); //EYES
-set_color_profile_slot(29, 4, 229, 117, 175); //MOUTH
+set_color_profile_slot(28, 0, 210, 56, 40); //BLUE
+set_color_profile_slot(28, 1, 249, 225, 94); //LIGHT BLUE
+set_color_profile_slot(28, 2, 246, 152, 90); //ORANGE
+set_color_profile_slot(28, 3, 0, 103, 112); //EYES
+set_color_profile_slot(28, 4, 229, 117, 175); //MOUTH
 
 //Toadie
-set_color_profile_slot(30, 0, 97, 215, 45); //BLUE
-set_color_profile_slot(30, 1, 25, 141, 239); //LIGHT BLUE
-set_color_profile_slot(30, 2, 249, 127, 37); //ORANGE
-set_color_profile_slot(30, 3, 44, 57, 157); //EYES
+set_color_profile_slot(29, 0, 97, 215, 45); //BLUE
+set_color_profile_slot(29, 1, 25, 141, 239); //LIGHT BLUE
+set_color_profile_slot(29, 2, 249, 127, 37); //ORANGE
+set_color_profile_slot(29, 3, 44, 57, 157); //EYES
+set_color_profile_slot(29, 4, 229, 117, 175); //MOUTH
+
+//Mr Oarly
+set_color_profile_slot(30, 0, 193, 228, 237); //BLUE
+set_color_profile_slot(30, 1, 72, 111, 78); //LIGHT BLUE
+set_color_profile_slot(30, 2, 255, 132, 132); //ORANGE
+set_color_profile_slot(30, 3, 92, 172, 195); //EYES
 set_color_profile_slot(30, 4, 229, 117, 175); //MOUTH
 
 //Michael
@@ -249,4 +263,4 @@ set_color_profile_slot(31, 0, 128, 220, 61); //BLUE
 set_color_profile_slot(31, 1, 249, 150, 43); //LIGHT BLUE
 set_color_profile_slot(31, 2, 73, 81, 124); //ORANGE
 set_color_profile_slot(31, 3, 116, 59, 33); //EYES
-set_color_profile_slot(31, 4, 229, 117, 175); //MOUTH
+set_color_profile_slot(31, 4, 116, 59, 33); //MOUTH

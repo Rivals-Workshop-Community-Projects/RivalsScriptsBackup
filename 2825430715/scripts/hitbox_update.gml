@@ -116,7 +116,7 @@ if attack == AT_DTHROW && hbox_num == 4 {
 		player_id.move_cooldown[AT_DSPECIAL] = 30
 		hit_priority = 0
 		image_xscale = 0
-	} else {
+	} else if  hitbox_timer < 50 {
 		player_id.move_cooldown[AT_DSPECIAL] = 120
 	}
 	
@@ -182,7 +182,6 @@ if attack == AT_DTHROW && hbox_num == 1 {
 
     	   with other {       		
     		spawn_hit_fx(x,y - 10,SC)
-    		sound_stop(sound_get("SpaceCut"))
     		sound_play(sound_get("SpaceCut"),false,noone,1,1.4)
     		
             

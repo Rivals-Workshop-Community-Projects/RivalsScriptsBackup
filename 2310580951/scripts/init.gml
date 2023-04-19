@@ -107,6 +107,7 @@ bubble_y = 8;
 wall_frames = 1;		// may or may not work... dan pls
 
 //Unique variables
+sleepTimer = 0;
 jumps = 0;
 jumpTimer = 0;
 RollAfter = hit_fx_create( sprite_get( "roll_afterimage" ),6);

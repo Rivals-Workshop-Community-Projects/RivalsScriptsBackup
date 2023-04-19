@@ -15,18 +15,26 @@ switch (attack)
     case AT_NSPECIAL:
         attack = free ? skill[cur_skills[0]].skill_attack_air : skill[cur_skills[0]].skill_attack;
         if (skill[cur_skills[0]].skill_attack_air == -1) attack = skill[cur_skills[0]].skill_attack;
+
+        cur_skill_used = cur_skills[0];
         break;
     case AT_FSPECIAL:
         attack = free ? skill[cur_skills[1]].skill_attack_air : skill[cur_skills[1]].skill_attack;
         if (skill[cur_skills[1]].skill_attack_air == -1) attack = skill[cur_skills[1]].skill_attack;
+
+        cur_skill_used = cur_skills[1];
         break;
     case AT_USPECIAL:
         attack = free ? skill[cur_skills[2]].skill_attack_air : skill[cur_skills[2]].skill_attack;
         if (skill[cur_skills[2]].skill_attack_air == -1) attack = skill[cur_skills[2]].skill_attack;
+
+        cur_skill_used = cur_skills[2];
         break;
     case AT_DSPECIAL:
         attack = free ? skill[cur_skills[3]].skill_attack_air : skill[cur_skills[3]].skill_attack;
         if (skill[cur_skills[3]].skill_attack_air == -1) attack = skill[cur_skills[3]].skill_attack;
+
+        cur_skill_used = cur_skills[3];
         break;
     //practice mode shenanigans
     case AT_TAUNT:
@@ -47,7 +55,7 @@ switch (attack)
             {
                 infinite_mp_mode = !infinite_mp_mode;
                 mp_current = mp_max;
-                set_state(PS_IDLE);
+                set_state(prev_state == PS_CROUCH ? PS_CROUCH : PS_IDLE);
                 clear_button_buffer(PC_TAUNT_PRESSED);
             }
         }

@@ -48,10 +48,11 @@ if attack == AT_FSPECIAL_GREEN {
 }
 
 //strong
+/* fstrong was changed to a regular strong
 if attack == AT_FSTRONG {
     player_id.move_cooldown[AT_FSTRONG] = 2;
     minmin_arms_proj_code_very_awesome();
-}
+}*/
 
 #define minmin_arms_proj_code_very_awesome()
 with(pHitBox) {
@@ -351,7 +352,7 @@ if player_id.window == 4 && player_id.window_timer >= 28 && (player_id.attack ==
 if place_meeting(x,y,player_id) && ayaka_axe_timer > 5 {
     if player_id.axes_num < 1 
     {player_id.axes_num += 1;} //readd axe
-    else if (player_id.attack == AT_FSPECIAL or player_id.attack == AT_FSTRONG or player_id.attack == AT_FTILT)
+    else if (player_id.attack == AT_FSPECIAL_GREEN)
     {
     //custom 'endlag/cooldown' should the axes return earlier than the endlag
     var endleft = axe_got_hit ? 55 - player_id.window_timer : 40 - player_id.window_timer;

@@ -252,7 +252,7 @@ initWords("
 initWords_ext("-----------------------------------------------------------",fa_left,c_white,false,false);
 initImage_ext(sprite_get("datboi_idle"), -6, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("datboi_ride"), -6, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
-initWords_ext("Dat Boi will sit there beside his unicycle, when called he will hop on and dash forward",fa_center,c_white,false,true);
+initWords_ext("Dat Boi will sit there waiting to dash, when called he will dash forward",fa_center,c_white,false,true);
 
 initTip("BAir: Plunger");
 initWords("BAir has Sanic stab backwards with a plunger, hitting an opponent or a projectile will cause the plunger to stick before Sanic throws the stuck object down!");
@@ -296,8 +296,121 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.19", "20th February, 2023");
 
-initPatch("1.16", "25th July, 2022");
+initHeader("Buffs");
+initSection("- When Shrek and Doge are in endlag you can use the other available strongs
+- 1 new scream");
+
+initHeader("Nerfs");
+initSection("- Doge stays around longer, but you can use your other 2 strongs until he despawns (makes pocketing easier");
+
+initHeader("Fixes / Other Changes");
+initSection("- Shrek no longer triggers on projectiles with 0 priority
+- Shrek can detect your own projectiles and launch them
+- Fixed a spawn issue with Shrek's detection box
+- Shrek's detect/hit box is no longer pocketable or reflectable (Turns out this was a rivals moment lol)
+- Doge's words now have proper despawn effects
+- Fixed some issues with Villager pocket
+- Fixed a drawing error with Sanic's summons drawing arrows on other peoples hitboxes
+- Weegee alt has a different death sound")
+
+initPatch("1.18", "19th February, 2023");
+
+initHeader("Buffs");
+initSection("- Dat Boi now spikes when falling
+- 2 new screams
+- 1 new up hurt scream
+- 2 new CSS's
+- Nair Airhorn damage increased by 1
+- Nair Airhorn knockback increased 8 > 9
+- Added Rune D, E, G
+- Dorito shards now spike when falling
+- Nair has less startup 19 > 16
+- Utilt has less startup 11 > 9
+- Fair has less startup 19 > 13
+- Utilt has less startup 11 > 9
+- FSpecial has less startup 29 > 25
+- All strongs have less startup 12 > 8
+- Ustrong and Dstrong slams now spawn on the right frame
+- Shrek can now reflect projectiles, when a projectile is near him he'll quickly hurry up and slam the door open to reflect it back at them. You may not disturb his private times");
+
+initHeader("Nerfs");
+initSection("- Fspecial hits 1 frame later
+- Dat Boi gets weaker after 40 frames
+- Ftilt and Utilt now have whifflag woops
+- Fair sweetspot angle 35 > 45");
+
+initHeader("Fixes / Other Changes");
+initSection("- Dorito will now send straight up if moving up and not horizontally
+- Updated some compatibility with other KoB characters
+- Added support for Villager's pocket
+- Recoded the summons for his strongs
+- Recoded DSpecial Sniper
+- Dat Boi has an outline to show the owner
+- All summons now have a dust effect and land sound
+- Tech, Parry and Jab sounds now don't play when muted
+- Recoded alternate sprite code to make it cleaner
+- TLDR; lots of code changes.
+- Finally fixed Doge's animation being buggy
+- Fixed a bug that would have Dat Boi's first hit to have 2 hitfx spawned upon hit
+- Cleaned some sprites up
+- Fixed the spring animation looking janky
+- Moved the first jab sound to attack_update (fixed issues that spammed the sound) and also made it play a bit later to match the visual
+- Added Dracula support
+- Added Toon Link support
+- Made the colormapping also change article color slot to fix drawing issues
+- Made projectiles that despawned offscreen check for blastzone to make it better on bigger stages
+- Fixed a bug that could cause an X to show on the results screen
+- Fixed a small issue that would cause active Dat Boi to not make the airhorn noise offscreen
+- Fixed an animation issue where the parry sprite would show up for a frame when rolling
+- Made Olympia's crystal overwrite Sanic's colormapping properly.
+- Dorito shards now send out properly
+- Sky alt can now use secret side taunt")
+
+
+
+initPatch("1.17", "14th September, 2022");
+
+initHeader("Buffs");
+initSection("- Jab3 damage 5 > 8
+- Jab3 kb scaling .6 > .85
+- Jab 1 cancel time is 2 frames faster
+- Jab 2 is now 2 frames faster
+- Swapped the stats for Dorito shard and the big Dorito
+- Dtilt will now launch you up if you hit it
+- Dtilt kb scale .6 > .7
+- Dtilt can be attack canceled
+- Dtilt damage and kb scaling now increase with charge
+- Dorito can now be aimed when throwing it
+- You can have multiple Dorito's if your previous Dorito lasts long enough
+- Increased the size of Utilt's sourspot
+- If Dat Boi is out for long enough you will be able to summon someone else/another Dat Boi
+- Dorito spawns 2 frames earlier and a bit further
+- Shrek slam hitbox base kb 9 > 11
+- DatBoi now multihits but properly and won't hit multiple times when he shouldn't");
+
+initHeader("Nerfs");
+initSection("- Grounded FSpecial boosts you up a bit less
+- Fspecial is a few frames slower before the hitbox appears
+- Dair spike kb scale .7 > .5");
+
+initHeader("Fixes / Other Changes");
+initSection("- Made Dorito no longer ignore hitboxes with 'ignore projectiles' as that was causing some strange interactions
+- Fixed Munophone dates
+- Added a Dorito to the hud to show the cooldown/availability of Nspecial
+- Readded the online css button using new code that works online
+- Reanimated and re-worked Nair, it's now a 2 hit that's quicker and has attack cancel on hit
+- Reanimated DTilt
+- Reanimated FSpecial
+- Reanimated NSpecial
+- Added multiple css
+- Added Wily Castle support
+- Made spring check for 'Bounceable'
+- DatBoi now properly spawns at the right position so he won't fall through a platform")
+
+
+initPatch("1.16", "3rd August, 2022");
 
 initHeader("Buffs");
 initSection("- Added 7 new screams
@@ -310,7 +423,8 @@ initSection("- Fixed an issue with the parry sound running on load.
 - Hopefully fixed an issue that would cause 'Come on, Step it up' to be overlayed with the current intro sound.
 - Made BAir's grab hitboxes ignore projectiles so they don't break if not transcendent.
 - Added back the old method to disable MLG mode as online the CSS button doesn't work.
-- If a hitbox is set to ignore projectiles Dorito will not be hit by it.")
+- If a hitbox is set to ignore projectiles Dorito will not be hit by it.
+- Fixed a bug that could allow Sanic to grab through full armor due to Rivals not resetting it's variables")
 
 initPatch("1.15", "25th July, 2022");
 
@@ -584,7 +698,7 @@ initWords("fest");
 initHeader("Additional SFX from");
 initSection("Sonic games or something");
 initHeader("Compatible with");
-initSection("Steve, Link, GFZ");
+initSection("Steve, Link, GFZ, Dracula, Toon Link");
 
 // Recommended template for non-Sandbert characters (delete the other patches):
 
@@ -671,7 +785,6 @@ zero".
 */
 
 #define CORE_cheats
-
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
 ║																			║
@@ -827,6 +940,62 @@ gfzsignspr = sprite_get("gfz_sign");
 sprite_change_offset("gfz_sign",18,41)
 //DDD
 arena_title = "The MLG superstar";
+//Wily
+wily_robotmaster_img = sprite_get("wilycastle");
+//TL
+toonlink_photo = sprite_get("tl_photo");
+toonlink_photo2 = 6;
+//Dracula support
+dracula_portrait = (get_player_color(player)!=22)?sprite_get("drac_2"):sprite_get("drac_2_dorito");
+dracula_portrait2 = asset_get("empty_sprite");
+dracula_portrait3 = (get_player_color(player)!=22)?sprite_get("drac_1"):sprite_get("drac_1_dorito");
+var page = 0;
+
+//Page 0
+dracula_speaker[page] = 0;
+dracula_text[page] = "Back again I see, you filthy rat.";
+page++;
+
+//Page 1
+dracula_speaker[page] = 1;
+dracula_text[page] = "cumon step it up";
+page++;
+
+//Page 2
+dracula_speaker[page] = 0;
+dracula_text[page] = "I beg your pardon?";
+page++;
+
+//Page 3
+dracula_speaker[page] = 1;
+dracula_text[page] = "ur too slow";
+page++;
+
+//Page 4
+dracula_speaker[page] = 0;
+dracula_text[page] = "What is this nonsense?";
+page++;
+
+//Page 5
+dracula_speaker[page] = 3;
+dracula_text[page] = "OHH OHHH OOOOOOOOOHHH MOMMM MOMMM!!! GET THE CAMERA!!";
+page++;
+
+//Page 6
+dracula_speaker[page] = 0;
+dracula_text[page] = "Calling for your mother? Pathetic.";
+page++;
+
+//Page 7
+dracula_speaker[page] = 1;
+dracula_text[page] = "iLL maKe yoU eAt tHosE wOrDs!";
+page++;
+
+//Page 8
+dracula_speaker[page] = 0;
+dracula_text[page] = "I've had it to here with your incessive aggravating voice. Off with you [glass]";
+page++;
+
 /*
 Spear IDs:
 
@@ -844,20 +1013,6 @@ Spear IDs:
 // Works kind of similarly to Trummel codecs.
 // initCodecPagePit(speaker, expression, voice, text);
 // List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
-
-initCodecPit();
-initCodecPagePit(SPK_PIT,	3,	0,	"Hey, it's Sandbert!");
-initCodecPagePit(SPK_PIT,	1,	6,	"...Isn't he a bit above my power level?");
-initCodecPagePit(SPK_PALU,	0,	3,	"Actually, this version of Sandbert has received a lot of nerfs to his damage and frame data.");
-initCodecPagePit(SPK_PALU,	0,	2,	"He can't even cancel his USpecial or end it early anymore!");
-initCodecPagePit(SPK_VIR,	5,	1,	"But yes, Pit, he IS still above your power level.");
-initCodecPagePit(SPK_PIT,	6,	0,	"Pssh, sounds like a pushover to me.");
-initCodecPagePit(SPK_PALU,	0,	4,	"Don't be so sure - despite the nerfs, his power and attack speed are still a force to be reckoned with.");
-initCodecPagePit(SPK_PALU,	0,	2,	"Also, he has the same MunoPhone as you do - so he'll be well-versed in his frame data and combos.");
-initCodecPagePit(SPK_VIR,	6,	4,	"Maybe you should turn on some Cheats for this fight, Pit?");
-initCodecPagePit(SPK_PALU,	0,	2,	"No, I'm sure he'll be fine.");
-initCodecPagePit(SPK_PALU,	2,	5,	"...As long as he avoids the Kamehameha.");
-initCodecPagePit(SPK_PIT,	4,	1,	"The WHAT?!?");
 
 
 

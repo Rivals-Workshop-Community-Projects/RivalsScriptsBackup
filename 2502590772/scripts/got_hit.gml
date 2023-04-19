@@ -1,12 +1,5 @@
 //got_hit.gml
 
-// Called when one of our hitboxes hits a player.
-//
-// hit_player  = Which player was hit.
-// my_hitboxID = The hitbox we hit them with.
-// orig_knock  = Knockback given.
-
-
 //if the partner is being attacked, add the damage onto the partner.
 var unaltered_orig_knock = 0;
 
@@ -23,8 +16,12 @@ if (custom_clone) {
     //recalculate knockback/stun effects.
     recalculate_hitbox_effects_for_teammate();
     
+    //Workaround for Synne's FAir and BAir
+    the_fix_for_synne_the_function_specifically_to_fix_synne_synnes_fix();
     
-    
+
+
+
 }
 else {
     //still update the 'damage_percent_as_teammate' variable if the leader gets hit.
@@ -65,7 +62,8 @@ if (species_id == 1 && state_cat == SC_HITSTUN && !hit_by_own_fspecial) {
 //if using helping hand, add faux crouch armor
 if (attack == AT_DSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR)) {
     
-    orig_knock /= 1.5; //reduce by 33%
+    orig_knock = max(0, orig_knock - 2); //actual crouch armor
+    //orig_knock /= 1.5; //reduce by 33%
     
     if (!free && (orig_knock <= 4 || state == PS_HITSTUN_LAND || (enemy_hitboxID.type == 2 && enemy_hitboxID.damage <= 8))) {
         if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) { set_state(prev_state); }
@@ -77,13 +75,17 @@ if (attack == AT_DSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AI
             if (unaltered_orig_knock > 0 && old_hsp != 0) {
                 spr_dir = -sign(old_hsp); //flip facing direction as if really taking a hit
             }
-            old_hsp = 0;
+            old_hsp = -spr_dir;
             old_vsp = 0;
         }
         else {
             hsp = 0;
         }
-        
+        //reduce damage taken.
+        if (damage_dealt > 0) {
+            var half_damage = floor(damage_dealt * 0.5);
+            damage_percent_as_teammate -= half_damage; 
+        }
     }
     
     if (orig_knock < unaltered_orig_knock) should_make_shockwave = false;
@@ -138,3 +140,15 @@ if (cam_shake >= 0 && (cam_shake >= 1 || orig_knock >= 1)) {
 #define is_teammate_using_helping_hand
 if (!instance_exists(teammate_player_id)) return false;
 with (teammate_player_id) return attack == AT_DSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
+
+#define convert_string_or_return_real
+//converts a string variable into a number, or returns a numeric variable as is.
+if (is_real(argument0)) return argument0;
+return real(argument0);
+
+#define the_fix_for_synne_the_function_specifically_to_fix_synne_synnes_fix
+if (state_cat == SC_HITSTUN) with (enemy_hitboxID) {
+    if (type == 2 && (attack == AT_FAIR || attack == AT_BAIR) && convert_string_or_return_real(player_id.url) == 2430633441) {
+        player_id.planet_can_hit[other.player + 10] = 0;
+    }
+}

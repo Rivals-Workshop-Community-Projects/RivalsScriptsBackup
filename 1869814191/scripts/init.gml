@@ -23,54 +23,33 @@ hard_airmax = air_max_speed*1.2;
 no = false;
 deed_is_done = false;
 
-//i was pressured into doing this
-//also i said if someone made a complete troll!sans
+//i said if someone made a complete troll!sans
 //spritesheet i'd add it as a skin/costume
 trolled = false;
+//the sprites were edited by another creator named "dreem!", go check out their stuff :)
+//https://steamcommunity.com/id/toadfungus/myworkshopfiles/?appid=383980
 
 //trummel & alto
 trummelcodecneeded = false;
 trummelcodec_id = noone;
 sans_speech = 0;
 
-//tco
-tcoart = sprite_get("sanstcoart");
-
-//feri
-feri_costume = sprite_get("sansferi");
-
-//otto
-otto_bobblehead_sprite = sprite_get("sans_bobble");
-
-//miiverse
-miiverse_post = sprite_get("sans_miiverse1");
-miiverse_post2 = sprite_get("sans_miiverse2");
-
+tcoart = sprite_get("sanstcoart"); //tco
+feri_costume = sprite_get("sansferi"); //feri
+otto_bobblehead_sprite = sprite_get("sans_bobble"); //otto
+miiverse_post = sprite_get("sans_miiverse1"); //miiverse 1/2
 sprite_change_offset("sans_miiverse1", 60, 30);
+miiverse_post2 = sprite_get("sans_miiverse2"); //miiverse 2/2
 sprite_change_offset("sans_miiverse2", 60, 30);
-
-//dedede that's the name you should know
-arena_title = "The Judgeful Comedian";
-
-//d-d-danganronpa
-guiltySprite = sprite_get("sansganronpa");
-
-//last resort
-resort_portrait = sprite_get("portrait_sans");
-
-//waaaalllllll-eeeee
-walle_taunt_sound = sound_get("mus_yea");
+arena_title = "The Judgeful Comedian"; //dedede that's the name you should know
+guiltySprite = sprite_get("sansganronpa"); //d-d-danganronpa
+resort_portrait = sprite_get("portrait_sans"); //last resort
+walle_taunt_sound = sound_get("mus_yea"); //waaaalllllll-eeeee
 walle_taunt_type = 1;
-
-//amber :)
-plushForAmber = sprite_get("plushSans");
-
-//pokemon - gotta catch em all
-pkmn_stadium_front_img = sprite_get("sans_front");
+plushForAmber = sprite_get("plushSans"); //amber :)
+pkmn_stadium_front_img = sprite_get("sans_front"); //pokemon - gotta catch em all
 pkmn_stadium_back_img = sprite_get("sans_back");
-
-//greenflower - aka my past catching up to me
-gfzsignspr = sprite_get("signsans");
+gfzsignspr = sprite_get("signsans"); //greenflower - aka my past catching up to me
 
 //anti-youtuber-bait
 anti_op = false;
@@ -89,14 +68,7 @@ dash_anim_speed = .25;
 pratfall_anim_speed = .25;
 
 blue_bone = false;
-
-dtilt_cooldown = 0;
-
 fspecial_select_timer = 0;
-fspecial_select_max = 60;
-fspecial_select_min = 30;
-
-destroy_gaster_blaster = false;
 snd_blaster_charge = [sound_get("sfx_blaster_charge"), sound_get("sfx_lazar_charge")];
 
 walk_speed = 3.25;

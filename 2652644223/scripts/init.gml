@@ -31,6 +31,7 @@ auto_reload = true;
 tac_reload = false;
 prac_text = "";
 prac_timer = 0;
+necomode = 0;
 
 bTut_Missions = true;
 bTut_mssn_reset = false;

@@ -23,6 +23,11 @@ switch(attack){
     case AT_UAIR:
         uair_loop = 0;
         break;
+    
+    case AT_DAIR:
+    	dair_bounce = true;
+    	break;
+    	
     case AT_USTRONG:
         grab = noone;
         reset_attack_value(AT_USTRONG, AG_NUM_WINDOWS);

@@ -1,5 +1,5 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_DAIR){
+if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_2 || attack == AT_DAIR){
     trigger_b_reverse();
 }
 //if (attack == AT_DAIR && window = 2 && window_timer = 1) {
@@ -159,11 +159,25 @@ if (attack == AT_USPECIAL_2){
 //Phantom code ends here
 
 if (attack == AT_JAB){
-	if (window == 12 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6) && (special_pressed || up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
+	if (window == 12 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6) && (up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
     	attack_end();
-    	set_attack(AT_FSTRONG_2);
-    	CorrectHurtboxes();
+    	if (phantom.state != 2 && phantom.state != 8 && phantom.state != 10) {
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    	else {
+    		set_attack(AT_FSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
     }
+    if (window == 12 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6) && (special_pressed)) {
+    	attack_end();
+    	set_attack(AT_DSTRONG_2);
+    	clear_button_buffer(PC_SPECIAL_PRESSED);
+    	CorrectHurtboxes();
+    	}
     if (window >= 11){
             iasa_script();
     }
@@ -182,10 +196,24 @@ if (attack == AT_JAB){
 }
 
 if (attack == AT_FTILT){
-	if (window == 6 && has_hit && (window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9 || window_timer == 10 || window_timer == 11) && (special_pressed || up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
+	if (window == 6 && has_hit && (window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9 || window_timer == 10 || window_timer == 11) && (up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
     	attack_end();
-    	set_attack(AT_FSTRONG_2);
-    	CorrectHurtboxes();
+    	if (phantom.state != 2 && phantom.state != 8 && phantom.state != 10) {
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    	else {
+    		set_attack(AT_FSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    }
+    	if (window == 6 && has_hit && (window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9 || window_timer == 10 || window_timer == 11) && (special_pressed)) {
+    	attack_end();
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
     }
     if (window >= 4){
             iasa_script();
@@ -209,10 +237,24 @@ if (attack == AT_FSPECIAL){
         reset_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH);
         reset_window_value(AT_FSPECIAL, 11, AG_WINDOW_LENGTH);
     }
-	if (window == 9 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (special_pressed || up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
+	if (window == 9 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
     	attack_end();
-    	set_attack(AT_FSTRONG_2);
-    	CorrectHurtboxes();
+    	if (phantom.state != 2 && phantom.state != 8 && phantom.state != 10) {
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    	else {
+    		set_attack(AT_FSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    }
+    if (window == 9 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (special_pressed)) {
+    	attack_end();
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
     }
     if (window == 5 && window_timer == 3 && was_parried) {
         window = 15;
@@ -253,9 +295,22 @@ if (attack == AT_FSPECIAL_AIR){
         reset_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME);
     }
 	if (window == 9 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6) && (special_pressed || up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
+    	if (phantom.state != 2 && phantom.state != 8 && phantom.state != 10) {
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    	else {
+    		set_attack(AT_FSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    }
+    if (window == 9 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (special_pressed)) {
     	attack_end();
-    	set_attack(AT_FSTRONG_2);
-    	CorrectHurtboxes();
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
     }
 	if (window == 5 && window_timer == 3 && was_parried) {
         window = 15;
@@ -288,10 +343,24 @@ if (attack == AT_FSPECIAL_AIR){
 }
 
 if (attack == AT_DSTRONG){
-    if (window == 7 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (special_pressed || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)) {
+    if (window == 7 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)) {
     	attack_end();
-    	set_attack(AT_FSTRONG_2);
-    	CorrectHurtboxes();
+    	if (phantom.state != 2 && phantom.state != 8 && phantom.state != 10) {
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    	else {
+    		set_attack(AT_FSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    }
+        if (window == 7 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (special_pressed)) {
+    	attack_end();
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
     }
     if ((window == 4 && window_timer == get_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH) && has_hit) || (window == 4 && window_timer == 22 && !has_hit) || (window >= 5)){
             iasa_script();
@@ -370,10 +439,24 @@ if (attack == AT_NAIR) {
 }
 */
 if (attack == AT_UTILT){
-	if (window == 5 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && ( special_pressed || up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
+	if (window == 5 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && ( up_strong_pressed || right_strong_pressed || left_strong_pressed || down_strong_pressed)) {
     	attack_end();
-    	set_attack(AT_FSTRONG_2);
-    	CorrectHurtboxes();
+    	if (phantom.state != 2 && phantom.state != 8 && phantom.state != 10) {
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    	else {
+    		set_attack(AT_FSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    }
+    	if (window == 5 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && ( special_pressed)) {
+    	attack_end();
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
     }
     if (window >= 4){
             iasa_script();
@@ -450,10 +533,24 @@ if (attack == AT_EXTRA_1) {
 }
 
 if (attack == AT_USTRONG){
-	if (window == 8 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (special_pressed || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)) {
+	if (window == 8 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)) {
     	attack_end();
-    	set_attack(AT_FSTRONG_2);
-    	CorrectHurtboxes();
+    	if (phantom.state != 2 && phantom.state != 8 && phantom.state != 10) {
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    	else {
+    		set_attack(AT_FSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    }
+    	if (window == 8 && has_hit && (window_timer == 1 || window_timer == 2 || window_timer == 3 || window_timer == 4 || window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9) && (special_pressed)) {
+    	attack_end();
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
     }
     /*if (window == 3 && window_timer <= 24 && hitpause == false && !was_parried)
     {
@@ -514,10 +611,24 @@ if (attack == AT_DATTACK){
 	if (window == 1 && window_timer == 1) {
         reset_window_value(AT_DATTACK, 7, AG_WINDOW_LENGTH);
     }
-	if (window == 9 && has_hit && (window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9 || window_timer == 10 || window_timer == 11 || window_timer == 12 || window_timer == 13) && (special_pressed || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)) {
+	if (window == 9 && has_hit && (window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9 || window_timer == 10 || window_timer == 11 || window_timer == 12 || window_timer == 13) && (right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)) {
     	attack_end();
-    	set_attack(AT_FSTRONG_2);
-    	CorrectHurtboxes();
+    	if (phantom.state != 2 && phantom.state != 8 && phantom.state != 10) {
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    	else {
+    		set_attack(AT_FSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
+    	}
+    }
+    if (window == 9 && has_hit && (window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9 || window_timer == 10 || window_timer == 11 || window_timer == 12 || window_timer == 13) && (special_pressed)) {
+    	attack_end();
+    		set_attack(AT_DSTRONG_2);
+    		clear_button_buffer(PC_SPECIAL_PRESSED);
+    		CorrectHurtboxes();
     }
     can_fast_fall = false;
     if (has_hit) {
@@ -606,6 +717,30 @@ if (attack == AT_FSTRONG_2){
     }
 }
 
+if (attack == AT_DSTRONG_2){
+	if (window == 1 && window_timer == 3 && hitpause == false) {
+		sound_play(sound_get("tjc"));
+	}
+	if (window == 1 && window_timer == 4 && !was_parried) {
+		if (spr_dir == 1) {
+		var hit_effect = spawn_hit_fx(x-10, y-20, TJCflash);
+		hit_effect.depth = depth - 6;
+		}
+		else {
+		var hit_effect2 = spawn_hit_fx(x+10, y-20, TJCflash);
+		hit_effect2.depth = depth - 6;
+		}
+		//var hit_effect3 = spawn_hit_fx(x, y-60, TJCswirl);
+		//hit_effect3.depth = depth - 3;
+		//var hit_effect4 = spawn_hit_fx(x, y-60, TJCswirl2);
+		//hit_effect4.depth = depth - 5;
+	}
+	if (window == 1 && window_timer == 4 && hitpause == false && !was_parried)
+    {
+        create_hitbox(AT_DSTRONG_2, 1, hit_player_obj.x, hit_player_obj.y - 40);
+    }
+}
+
 if (attack == AT_DAIR){
 	if (window == 2 && window_timer == 1) {
 		afterImageTimer = 5;
@@ -620,7 +755,7 @@ if (attack == AT_EXTRA_1){
 
 if (attack == AT_FSTRONG_2){
 	if (window == 1 && window_timer == 1) {
-		afterImageTimer = 15;
+		//afterImageTimer = 15;
 	}
 }
 

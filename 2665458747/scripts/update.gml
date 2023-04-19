@@ -352,6 +352,7 @@ with (hit_fx_obj) if (hitfxname == hit_fx && player_id = other.id && depth != de
 }
 
 #define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value
@@ -360,7 +361,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
     default: 

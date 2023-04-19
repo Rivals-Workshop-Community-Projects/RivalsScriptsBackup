@@ -11,8 +11,11 @@ if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num =
 		if (sound_effect == sound_get("splat3")){
 		    sound_effect = sound_get("ignite");
 		}
-		if ((sound_effect == sound_get("splat2")) || (sound_effect == asset_get("sfx_ell_utilt_hit"))){
+		if (sound_effect == sound_get("splat2")){
 		    sound_effect = sound_get("ignite2");
+		}
+		if (sound_effect == asset_get("sfx_ell_utilt_hit")){
+		    sound_effect = asset_get("sfx_ell_uspecial_explode");
 		}
 		damage = torch_damage_mult
 		length = torch_length_mult
@@ -57,7 +60,7 @@ if (attack == AT_EXTRA_1){
 if (attack == AT_FSPECIAL && hbox_num == 1){
     if (hitbox_timer == 1){
 	    vsp = -2
-	    hsp = (player_id.hsp/2.5)+(2*spr_dir)
+	    hsp = (player_id.hsp/3)+(2*spr_dir)
 		sound_play (sound_get ("bean_voice"));
 	}
 	if (hitbox_timer == 60){
@@ -71,7 +74,11 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	    proj_angle += (hsp*-2)
 	}
 	if (hitbox_timer == length){
-	    player_id.boom = true;
+		create_hitbox( AT_FSPECIAL, 2, x, y-12, );
+		spawn_hit_fx(x,y-12,263)
+		sound_play(sound_get("bean_explode"));
+		sound_stop (sound_get ("bean_voice"));
+		sound_stop (sound_get ("bean_voice2"));
 	}
 	if (was_parried){
 		player = orig_player

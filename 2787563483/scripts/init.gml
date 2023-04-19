@@ -9,6 +9,8 @@ dream_friend_5 = sprite_get("gooey")
 dream_friend_10 = sprite_get("magolor")
 barrier_tile = sprite_get("barrier_tile")
 duplicate_buddy = false
+you_love_the_classics = false //change this for funny
+icon_select = sprite_get("ability_icon")
 
 image_alpha = 0;
 
@@ -148,6 +150,10 @@ with oPlayer{
 	// 	cpu_title()
 	// 	//print(kf_cpu_title)
 	// }
+	
+	if other.you_love_the_classics{
+		other.icon_select = sprite_get("classic_ability_icon")
+	}
 
 
 	bounce_SFX_played = false
@@ -155,13 +161,11 @@ with oPlayer{
 	kf_buddy_set_up = true
 
 #define abilityCheck()
-
+var support
+if "kf_custom_icon" not in self{support = false} else {support = true}
 
 if "copy_ability_id" not in self{
 	switch(url){
-		case 0: //Literally just the easter egg Sandbert
-			copy_ability_id = 0 //Normal
-			break;
 		case CH_ZETTERBURN:
 			copy_ability_id = 3 //Fire
 			//Too bad Burning hasn't reappeared with a modern icon yet or I would use it. But Fire's adaquate.
@@ -245,150 +249,167 @@ if "copy_ability_id" not in self{
 			copy_ability_id = 26 //Fighter
 			//kf_hud_name = "Olympia"
 			break;
+		case 20: //the easter egg Sandbert ID for some reason
+			copy_ability_id = 67 //Sand
+			break;
 		default:
-		    copy_ability_id = 0
-			if "kf_custom_icon" not in self and string_pos("Kirby", kf_hud_name) == 0{
-			kf_custom_icon = other.custom_icon
-			}
+			copy_ability_id = 0
+		    if "url" in self{
+				if url = 1865940669{ //the workshop sandbert
+					copy_ability_id = 67 //Sand
+				}
+				if url = 1866016173{ //panda express
+						copy_ability_id = 48 //Leaf
+				}
+				if string_pos("Kirby", kf_hud_name) != 0{
+					//kf_hud_name = "Kirby"
+					copy_ability_id = 0 //Normal
+				}
+					switch(kf_hud_name){
+						// case "Kirby":
+						// 	kf_hud_name = "Kirby"
+						// 	copy_ability_id = 0 //Normal
+						// 	break;
+						case "Bandana Dee": 
+						case "Bandana Waddle Dee":
+						case "B. W. Dee":
+							kf_hud_name = "Bandana Waddle Dee"
+							copy_ability_id = 51 //Spear
+							kf_custom_icon = other.dream_friend_1
+							break;
+						case "Dedede": 
+						case "King Dedede":
+							kf_hud_name = "King Dedede"
+							copy_ability_id = 20 //Hammer
+							kf_custom_icon = other.dream_friend_2
+							break;
+						case "Meta Knight": 
+							copy_ability_id = 6 //Sword
+							kf_custom_icon = other.dream_friend_3
+							break;
+						case "Gooey":
+							copy_ability_id = 49 //Whip
+							kf_custom_icon = other.dream_friend_5
+							break;
+						case "Magolor":
+						case "Magalor": //dies of cringe
+							kf_hud_name = "Magolor"
+							copy_ability_id = 1 //Beam
+							kf_custom_icon = other.dream_friend_10
+							break;
+						//abilities/helpers:
+						case "Waddle Doo":
+							copy_ability_id = 1
+							break;
+						case "Burning Leo":
+							copy_ability_id = 3
+							break;
+						case "Sir Kibble":
+							copy_ability_id = 4
+							break;
+						case "Blade Knight":
+							copy_ability_id = 6
+							break;
+						case "Parasol Waddle Dee":
+							copy_ability_id = 10
+							break;
+						case "Wheelie":
+							copy_ability_id = 12
+							break;
+						case "Rocky":
+							copy_ability_id = 13
+							break;
+						case "Chilly":
+						//case "Mr. Frosty":
+							copy_ability_id = 18
+							break;
+						case "Bonkers":
+							copy_ability_id = 20
+							break;
+						case "Poppy Bros. Jr.":
+							copy_ability_id = 25
+							break;
+						case "Knuckle Joe":
+							copy_ability_id = 26
+							break;
+						case "Simmirror":
+							copy_ability_id = 27
+							break;
+						case "Chef Kawasaki":
+							copy_ability_id = 28
+							break;
+						case "Bio Spark":
+							copy_ability_id = 29
+							break;
+						case "Plasma Wisp":
+						case "Plugg":
+							copy_ability_id = 30
+							break;
+						case "Gim":
+							copy_ability_id = 31
+							break;
+						case "Buggzy":
+							copy_ability_id = 32
+							break;
+						case "Birdon":
+							copy_ability_id = 33
+							break;
+						case "Tac":
+							copy_ability_id = 34
+							break;
+						case "Capsule J":
+						case "Capsule J2":
+							copy_ability_id = 35
+							break;
+						case "Broom Hatter":
+							copy_ability_id = 37
+							break;
+						case "Wester":
+							copy_ability_id = 49
+							break;
+						case "Driblee":
+							copy_ability_id = 50
+							break;
+						case "Beetley":
+							copy_ability_id = 53
+							break;
+						case "NESP":
+							copy_ability_id = 57
+							break;
+						case "Vividria":
+							copy_ability_id = 60
+							break;
+						case "Como":
+							copy_ability_id = 61
+							break;
+						case "Jammerjab":
+							copy_ability_id = 62
+							break;
+						// case "Master Hand":
+						// 	copy_ability_id = 40
+						// 	break;
+							break;
+							case "Sleep Kirby":
+							copy_ability_id = 16
+							kf_hud_name = "Sleep"
+							break;
+						default:
+							if (copy_ability_id = 0 && string_pos("Kirby", kf_hud_name) == 0 && !support){
+								kf_custom_icon = other.custom_icon
+							}
+							break;
+					}
+			}	
+		    // copy_ability_id = 0
+			// if "kf_custom_icon" not in self and string_pos("Kirby", kf_hud_name) == 0{
+			// kf_custom_icon = other.custom_icon
+			// }
 			break;
 		}
 }
 
-if "url" in self{
-	if string_pos("Kirby", kf_hud_name) != 0{
-		//kf_hud_name = "Kirby"
-		copy_ability_id = 0 //Normal
-	}
-		switch(kf_hud_name){
-			// case "Kirby":
-			// 	kf_hud_name = "Kirby"
-			// 	copy_ability_id = 0 //Normal
-			// 	break;
-			case "Bandana Dee": 
-			case "Bandana Waddle Dee":
-			case "B. W. Dee":
-				kf_hud_name = "Bandana Waddle Dee"
-				copy_ability_id = 51 //Spear
-				kf_custom_icon = other.dream_friend_1
-				break;
-			case "Dedede": 
-			case "King Dedede":
-				kf_hud_name = "King Dedede"
-				copy_ability_id = 20 //Hammer
-				kf_custom_icon = other.dream_friend_2
-				break;
-			case "Meta Knight": 
-				copy_ability_id = 6 //Sword
-				kf_custom_icon = other.dream_friend_3
-				break;
-			case "Gooey":
-				copy_ability_id = 49 //Whip
-				kf_custom_icon = other.dream_friend_5
-				break;
-			case "Magolor":
-			case "Magalor": //dies of cringe
-				kf_hud_name = "Magolor"
-				copy_ability_id = 1 //Beam
-				kf_custom_icon = other.dream_friend_10
-				break;
-			//abilities/helpers:
-			case "Waddle Doo":
-				copy_ability_id = 1
-				break;
-			case "Burning Leo":
-				copy_ability_id = 3
-				break;
-			case "Sir Kibble":
-				copy_ability_id = 4
-				break;
-			case "Blade Knight":
-				copy_ability_id = 6
-				break;
-			case "Parasol Waddle Dee":
-				copy_ability_id = 10
-				break;
-			case "Wheelie":
-				copy_ability_id = 12
-				break;
-			case "Rocky":
-				copy_ability_id = 13
-				break;
-			case "Chilly":
-			//case "Mr. Frosty":
-				copy_ability_id = 18
-				break;
-			case "Bonkers":
-				copy_ability_id = 20
-				break;
-			case "Poppy Bros. Jr.":
-				copy_ability_id = 25
-				break;
-			case "Knuckle Joe":
-				copy_ability_id = 26
-				break;
-			case "Simmirror":
-				copy_ability_id = 27
-				break;
-			case "Chef Kawasaki":
-				copy_ability_id = 28
-				break;
-			case "Bio Spark":
-				copy_ability_id = 29
-				break;
-			case "Plasma Wisp":
-			case "Plugg":
-				copy_ability_id = 30
-				break;
-			case "Gim":
-				copy_ability_id = 31
-				break;
-			case "Buggzy":
-				copy_ability_id = 32
-				break;
-			case "Birdon":
-				copy_ability_id = 33
-				break;
-			case "Tac":
-				copy_ability_id = 34
-				break;
-			case "Capsule J":
-			case "Capsule J2":
-				copy_ability_id = 35
-				break;
-			case "Broom Hatter":
-				copy_ability_id = 37
-				break;
-			case "Wester":
-				copy_ability_id = 49
-				break;
-			case "Driblee":
-				copy_ability_id = 50
-				break;
-			case "Beetley":
-				copy_ability_id = 53
-				break;
-			case "NESP":
-				copy_ability_id = 57
-				break;
-			case "Vividria":
-				copy_ability_id = 60
-				break;
-			case "Como":
-				copy_ability_id = 61
-				break;
-			case "Jammerjab":
-				copy_ability_id = 62
-				break;
-			// case "Master Hand":
-			// 	copy_ability_id = 40
-			// 	break;
-				break;
-				case "Sleep Kirby":
-				copy_ability_id = 16
-				kf_hud_name = "Sleep"
-				break;
-		}
-}	
+
+
 //recheck_copy_ability = false
 
 #define cpu_title()

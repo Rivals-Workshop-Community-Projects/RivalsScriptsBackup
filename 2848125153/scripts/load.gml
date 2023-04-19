@@ -133,3 +133,4 @@ sprite_change_offset("shine_small", 20, 20);
 sprite_change_offset("playerarrow", 7, 0);
 
 sprite_change_offset("miiverse_post", 60, 30);
+sprite_change_offset("greenflowerzone", 18, 41, true);

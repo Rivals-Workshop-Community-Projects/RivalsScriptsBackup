@@ -144,7 +144,7 @@ set_hitbox_value(AT_FSTRONG, 4, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-set_hitbox_value(AT_FSTRONG, 4, HG_HITSTUN_MULTIPLIER, 1.6);
+set_hitbox_value(AT_FSTRONG, 4, HG_HITSTUN_MULTIPLIER, 3);
 set_hitbox_value(AT_FSTRONG, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_DRIFT_MULTIPLIER, 0.2);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_GROUP, 1);

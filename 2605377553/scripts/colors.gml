@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 25 );
 
 // blue
 set_color_profile_slot( 1, 0, 223, 239, 242 ); //Hoodie Pink
@@ -77,15 +77,15 @@ set_color_profile_slot( 4, 5, 251, 252, 255 ); //Eyes/Socks
 set_color_profile_slot( 4, 6, 28, 28, 28 ); //Smog
 set_color_profile_slot( 4, 7, 255, 255, 255 ); //Smog Outline
 
-// RIDTIDE
-set_color_profile_slot( 5, 0, 255, 229, 84 ); //Hoodie Pink
-set_color_profile_slot( 5, 1, 214, 161, 120 ); //Skin
-set_color_profile_slot( 5, 2, 30, 52, 110 ); //Hair
-set_color_profile_slot( 5, 3, 52, 182, 194 ); //Hoodie Purp
-set_color_profile_slot( 5, 4, 220, 125, 58 ); //Skirt
-set_color_profile_slot( 5, 5, 52, 182, 194 ); //Eyes/Socks
-set_color_profile_slot( 5, 6, 52, 182, 194 ); //Smog
-set_color_profile_slot( 5, 7, 242, 124, 19 ); //Smog Outline
+// pink
+set_color_profile_slot( 5, 0, 255, 207, 224 ); //Hoodie Pink
+set_color_profile_slot( 5, 1, 212, 132, 104 ); //Skin
+set_color_profile_slot( 5, 2, 232, 61, 141 ); //Hair
+set_color_profile_slot( 5, 3, 255, 43, 114 ); //Hoodie Purp
+set_color_profile_slot( 5, 4, 217, 115, 131 ); //Skirt
+set_color_profile_slot( 5, 5, 255, 207, 224 ); //Eyes/Socks
+set_color_profile_slot( 5, 6, 209, 8, 68 ); //Smog
+set_color_profile_slot( 5, 7, 208, 125, 255 ); //Smog Outline
 
 // ace
 set_color_profile_slot( 6, 0, 255, 255, 255 ); //Hoodie Pink
@@ -127,35 +127,35 @@ set_color_profile_slot( 9, 5, 251, 246, 252 ); //Eyes/Socks
 set_color_profile_slot( 9, 6, 141, 92, 255 ); //Smog
 set_color_profile_slot( 9, 7, 255, 97, 251 ); //Smog Outline
 
-// mina
-set_color_profile_slot( 10, 0, 255, 254, 252 ); //Hoodie Pink
-set_color_profile_slot( 10, 1, 248, 227, 216 ); //Skin
-set_color_profile_slot( 10, 2, 227, 219, 141 ); //Hair
-set_color_profile_slot( 10, 3, 245, 134, 171 ); //Hoodie Purp
-set_color_profile_slot( 10, 4, 200, 242, 153 ); //Skirt
-set_color_profile_slot( 10, 5, 245, 134, 171 ); //Eyes/Socks
-set_color_profile_slot( 10, 6, 188, 252, 114 ); //Smog
-set_color_profile_slot( 10, 7, 245, 105, 152 ); //Smog Outline
-
 // infamous
-set_color_profile_slot( 11, 0, 198, 69, 255 ); //Hoodie Pink
-set_color_profile_slot( 11, 1, 232, 255, 249 ); //Skin
-set_color_profile_slot( 11, 2, 86, 83, 170 ); //Hair
-set_color_profile_slot( 11, 3, 0, 255, 168 ); //Hoodie Purp
-set_color_profile_slot( 11, 4, 89, 238, 255 ); //Skirt
-set_color_profile_slot( 11, 5, 0, 255, 168 ); //Eyes/Socks
-set_color_profile_slot( 11, 6, 89, 238, 255 ); //Smog
-set_color_profile_slot( 11, 7, 198, 69, 255 ); //Smog Outline
+set_color_profile_slot( 10, 0, 198, 69, 255 ); //Hoodie Pink
+set_color_profile_slot( 10, 1, 232, 255, 249 ); //Skin
+set_color_profile_slot( 10, 2, 86, 83, 170 ); //Hair
+set_color_profile_slot( 10, 3, 0, 255, 168 ); //Hoodie Purp
+set_color_profile_slot( 10, 4, 89, 238, 255 ); //Skirt
+set_color_profile_slot( 10, 5, 0, 255, 168 ); //Eyes/Socks
+set_color_profile_slot( 10, 6, 89, 238, 255 ); //Smog
+set_color_profile_slot( 10, 7, 198, 69, 255 ); //Smog Outline
 
-// amity
-set_color_profile_slot( 12, 0, 65, 68, 74 ); //Hoodie Pink
-set_color_profile_slot( 12, 1, 254, 231, 218 ); //Skin
-set_color_profile_slot( 12, 2, 184, 149, 224 ); //Hair
-set_color_profile_slot( 12, 3, 65, 68, 74 ); //Hoodie Purp
-set_color_profile_slot( 12, 4, 158, 88, 87 ); //Skirt
-set_color_profile_slot( 12, 5, 201, 170, 94 ); //Eyes/Socks
-set_color_profile_slot( 12, 6, 146, 108, 177 ); //Smog
-set_color_profile_slot( 12, 7, 45, 35, 66 ); //Smog Outline
+// bocchi
+set_color_profile_slot( 11, 0, 247, 172, 178 ); //Hoodie Pink
+set_color_profile_slot( 11, 1, 255, 235, 211 ); //Skin
+set_color_profile_slot( 11, 2, 247, 158, 180 ); //Hair
+set_color_profile_slot( 11, 3, 247, 172, 178 ); //Hoodie Purp
+set_color_profile_slot( 11, 4, 97, 101, 111 ); //Skirt
+set_color_profile_slot( 11, 5, 97, 101, 111 ); //Eyes/Socks
+set_color_profile_slot( 11, 6, 48, 47, 43 ); //Smog
+set_color_profile_slot( 11, 7, 221, 181, 85 ); //Smog Outline
+
+// subway midnight
+set_color_profile_slot( 12, 0, 153, 153, 153 ); //Hoodie Pink
+set_color_profile_slot( 12, 1, 145, 145, 145 ); //Skin
+set_color_profile_slot( 12, 2, 61, 61, 61 ); //Hair
+set_color_profile_slot( 12, 3, 255, 255, 255 ); //Hoodie Purp
+set_color_profile_slot( 12, 4, 94, 94, 94 ); //Skirt
+set_color_profile_slot( 12, 5, 61, 61, 61 ); //Eyes/Socks
+set_color_profile_slot( 12, 6, 15, 15, 15 ); //Smog
+set_color_profile_slot( 12, 7, 191, 0, 0 ); //Smog Outline
 
 // macka
 set_color_profile_slot( 13, 0, 252, 238, 161 ); //Hoodie Pink
@@ -177,15 +177,15 @@ set_color_profile_slot( 14, 5, 252, 255, 255 ); //Eyes/Socks
 set_color_profile_slot( 14, 6, 192, 252, 252 ); //Smog
 set_color_profile_slot( 14, 7, 47, 87, 189 ); //Smog Outline
 
-// arelle
-set_color_profile_slot( 15, 0, 71, 185, 89 ); //Hoodie Pink
-set_color_profile_slot( 15, 1, 254, 208, 177 ); //Skin
-set_color_profile_slot( 15, 2, 182, 73, 218 ); //Hair
-set_color_profile_slot( 15, 3, 71, 185, 89 ); //Hoodie Purp
-set_color_profile_slot( 15, 4, 92, 92, 92 ); //Skirt
-set_color_profile_slot( 15, 5, 92, 92, 92 ); //Eyes/Socks
-set_color_profile_slot( 15, 6, 66, 46, 66 ); //Smog
-set_color_profile_slot( 15, 7, 182, 73, 218 ); //Smog Outline
+// heartbrake
+set_color_profile_slot( 15, 0, 235, 229, 83 ); //Hoodie Pink
+set_color_profile_slot( 15, 1, 163, 143, 84 ); //Skin
+set_color_profile_slot( 15, 2, 167, 105, 191 ); //Hair
+set_color_profile_slot( 15, 3, 235, 229, 83 ); //Hoodie Purp
+set_color_profile_slot( 15, 4, 62, 62, 114 ); //Skirt
+set_color_profile_slot( 15, 5, 62, 62, 114 ); //Eyes/Socks
+set_color_profile_slot( 15, 6, 242, 78, 166 ); //Smog
+set_color_profile_slot( 15, 7, 253, 178, 237 ); //Smog Outline
 
 // nats
 set_color_profile_slot( 16, 0, 255, 255, 198 ); //Hoodie Pink
@@ -247,15 +247,35 @@ set_color_profile_slot( 21, 5, 255, 0, 0 ); //Eyes/Socks
 set_color_profile_slot( 21, 6, 255, 255, 255 ); //Smog
 set_color_profile_slot( 21, 7, 255, 0, 0 ); //Smog Outline
 
-// pink
-set_color_profile_slot( 22, 0, 255, 207, 224 ); //Hoodie Pink
-set_color_profile_slot( 22, 1, 212, 132, 104 ); //Skin
-set_color_profile_slot( 22, 2, 232, 61, 141 ); //Hair
-set_color_profile_slot( 22, 3, 255, 43, 114 ); //Hoodie Purp
-set_color_profile_slot( 22, 4, 217, 115, 131 ); //Skirt
-set_color_profile_slot( 22, 5, 255, 207, 224 ); //Eyes/Socks
-set_color_profile_slot( 22, 6, 209, 8, 68 ); //Smog
-set_color_profile_slot( 22, 7, 208, 125, 255 ); //Smog Outline
+// riptide
+set_color_profile_slot( 22, 0, 255, 229, 84 ); //Hoodie Pink
+set_color_profile_slot( 22, 1, 214, 161, 120 ); //Skin
+set_color_profile_slot( 22, 2, 30, 52, 110 ); //Hair
+set_color_profile_slot( 22, 3, 52, 182, 194 ); //Hoodie Purp
+set_color_profile_slot( 22, 4, 220, 125, 58 ); //Skirt
+set_color_profile_slot( 22, 5, 52, 182, 194 ); //Eyes/Socks
+set_color_profile_slot( 22, 6, 242, 124, 19 ); //Smog
+set_color_profile_slot( 22, 7, 52, 182, 194 ); //Smog Outline
+
+// genesis
+set_color_profile_slot( 23, 0, 179, 12, 12 ); //Hoodie Pink
+set_color_profile_slot( 23, 1, 255, 242, 230 ); //Skin
+set_color_profile_slot( 23, 2, 48, 47, 47 ); //Hair
+set_color_profile_slot( 23, 3, 48, 47, 47 ); //Hoodie Purp
+set_color_profile_slot( 23, 4, 166, 172, 181 ); //Skirt
+set_color_profile_slot( 23, 5, 179, 12, 12 ); //Eyes/Socks
+set_color_profile_slot( 23, 6, 48, 47, 47 ); //Smog
+set_color_profile_slot( 23, 7, 179, 12, 12 ); //Smog Outline
+
+// champion's key
+set_color_profile_slot( 24, 0, 240, 255, 240 ); //Hoodie Pink
+set_color_profile_slot( 24, 1, 240, 255, 240 ); //Skin
+set_color_profile_slot( 24, 2, 240, 255, 240 ); //Hair
+set_color_profile_slot( 24, 3, 0, 255, 0 ); //Hoodie Purp
+set_color_profile_slot( 24, 4, 0, 255, 0 ); //Skirt
+set_color_profile_slot( 24, 5, 0, 255, 0 ); //Eyes/Socks
+set_color_profile_slot( 24, 6, 240, 255, 240 ); //Smog
+set_color_profile_slot( 24, 7, 0, 255, 0 ); //Smog Outline
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

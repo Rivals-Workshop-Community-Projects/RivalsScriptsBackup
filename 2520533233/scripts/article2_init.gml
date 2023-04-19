@@ -44,3 +44,5 @@ glow_timer = 0;
 glow_time = 60;
 glow_phase = 1;
 sub_alpha = 0;
+
+

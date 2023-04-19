@@ -3,17 +3,6 @@ crouchbox_spr = sprite_get("beegguycrouch_hurt");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-bossmode = 0
-///Boss variable
-yosword = 0
-bsta = 100
-bdefeat = -1
-bscore = 1000
-fparry = 0
-fheal = 0
-fphase = 0
-///
-
 char_height = 64;
 idle_anim_speed = .12;
 crouch_anim_speed = .1;
@@ -39,7 +28,7 @@ jump_speed = 12;		//12
 short_hop_speed = 7.5;
 djump_speed = 10.5;		//10.5
 leave_ground_max = 7; 	//5		//the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; 		//6		//the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 7; 		//7		//the maximum hsp you can have when jumping from the ground
 air_max_speed = 4;		//4	 	//the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .4;
@@ -129,6 +118,10 @@ cookieTimer = 0;
 cookieMeter = 3;
 cookieRestore = hit_fx_create(sprite_get("cookierestore"), 15);
 sax = 1;
+
+//Spin charge rune
+spincharge = 30;
+spincool = 0;
 
 set_victory_theme(sound_get("victory_bigyoster"));
 

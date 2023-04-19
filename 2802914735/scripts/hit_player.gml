@@ -68,7 +68,8 @@ switch(my_hitboxID.attack) {
         if(my_hitboxID.hbox_num == 2) sound_play(asset_get("sfx_blow_medium1"));
         break;
     case AT_FSTRONG:
-        sound_play(sound_get("sfx_sharphit_l"));
+        if(my_hitboxID.hbox_num == 1) sound_play(asset_get("sfx_blow_medium1"));
+        if(my_hitboxID.hbox_num == 2) sound_play(asset_get("sfx_blow_heavy1"));
         break;
     case AT_DSTRONG:
         sound_play(asset_get("sfx_blow_heavy1"));

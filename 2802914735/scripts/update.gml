@@ -53,7 +53,7 @@ if fspec_jump_timer > 0 {
 //nspecial tap
 move_cooldown[AT_NSPECIAL] = 0;
 if (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) && joy_pad_idle {
-    if special_pressed && nspecial_buffer >= 10 {
+    if special_pressed && nspecial_buffer >= nspecial_buffer_required {
         axe_type += 1;
         if axe_type > 3 {
             axe_type = 0;
@@ -70,19 +70,19 @@ if (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) && joy_pad_id
         }
     }
     if !special_down {
-        if nspecial_buffer < 10 {
-            nspecial_buffer += 1;
+        if nspecial_buffer < nspecial_buffer_required {
+            nspecial_buffer = nspecial_buffer_required;
         }
     }
 } else {
-    if nspecial_buffer < 10 {
+    if nspecial_buffer < nspecial_buffer_required {
         nspecial_buffer += 1;
     }
 }
 if special_down && nspecial_buffer <= 0 {
     set_attack(AT_NSPECIAL);
 }
-if nspecial_buffer != 10 {
+if nspecial_buffer != nspecial_buffer_required {
     clear_button_buffer(PC_SPECIAL_PRESSED);
     nspecial_anim_buffer = 0;
 } else {

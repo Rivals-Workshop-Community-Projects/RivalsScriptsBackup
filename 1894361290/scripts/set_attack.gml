@@ -87,4 +87,4 @@ if holding_wt {
 draw_non = true;
 
 //munophone
-user_event(13);
+//user_event(13);

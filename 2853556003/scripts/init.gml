@@ -39,7 +39,8 @@ if(get_synced_var(player) == 1 || get_synced_var(player) == 3){
 	tap_jump_suppress = false
 }
 
-//Cheatcode
+//Cheatcode (RUNES, NOT AN ACTUAL CHEATCODE, RUNES NEED TO BE ACTIVE)
+//B E N
 if(has_rune("B") && has_rune("E") && has_rune("N") 
 && !has_rune("A") && !has_rune("C") && !has_rune("D") && !has_rune("F") && !has_rune("G") && !has_rune("H")
 && !has_rune("I") && !has_rune("J") && !has_rune("K") && !has_rune("L") && !has_rune("M") && !has_rune("O")){
@@ -163,6 +164,8 @@ vfx_waterfx_small = hit_fx_create( sprite_get( "vfx_waterfx_small" ), 21);
 
 vfx_shieldshatter = hit_fx_create( sprite_get( "shieldshatter" ), 24);
 
+vfx_fspecial = hit_fx_create( sprite_get( "fspecial_fx" ), 24);
+
 //sfx
 if(get_player_color(player) == 11){
 	sound_play(sound_get("sfx_guile_intro"), 0, 0, 2)
@@ -250,6 +253,7 @@ teleport = true
 bypass_sounds = false
 sounds_changed = false
 bomb_hurricane = false
+uspecial_charge = 0
 
 thump = 0
 bomb_thump = 0
@@ -576,12 +580,6 @@ if(has_rune("F") || all_runes){
 	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.95);
-}else{
-	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 12);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 7);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.65);
 }
 
 // Level 2 Runes
@@ -613,30 +611,7 @@ if(has_rune("G") || all_runes){
 	set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 180);
 }else{
 	G_modifier = 1
-	
-	set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 35);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 35);
-
-	set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 6);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.45);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 10);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 1.1);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 100);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 100);
-	
-	set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 2);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.7);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 50);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 0);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 120);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 120);
-	
-	set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 120);
-	set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 120);
 }
-
 //H (Waterbomb has no cooldown)
 
 //I (dattack cancel)
@@ -665,6 +640,8 @@ if(has_rune("K") || all_runes){
 
 //M (Waterbomb always strong)
 
+//O (Turbo mode)
+
 //Hurricane cannot be destroyed
 if(has_rune("N") || all_runes){
 	N_modifier = true
@@ -672,4 +649,15 @@ if(has_rune("N") || all_runes){
 	N_modifier = false
 }
 
-//O (Turbo mode)
+//Other player URL
+
+
+players_num = 0
+enemy_url = 0
+taunt_compat = false
+
+with(oPlayer){
+	other.players_num += 1
+}
+
+just_spawned = 0

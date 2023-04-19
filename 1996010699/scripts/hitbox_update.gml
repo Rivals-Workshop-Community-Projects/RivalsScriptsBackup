@@ -18,7 +18,7 @@ if(attack == AT_NSPECIAL){
 			grav += (hitbox_timer / 2000);
 		}
 		if(!free){
-			if(player_id.item[21,3] == 1 && player_id.canCrystalBounce = true){
+			if(player_id.item[21,3] == 1 && player_id.canCrystalBounce == true){
 				makeShards(3 + player_id.xp_mod);
 				grav = .2;
 				vsp = -4;
@@ -52,15 +52,23 @@ if(attack == AT_NSPECIAL){
 if(attack == AT_FTILT && hbox_num >= 5){
 	if(player_id.joy_pad_idle == false && hitbox_timer % 1 == 0){
 		if(player_id.joy_dir <= 315 && player_id.joy_dir >= 225){
-			y++;
+			if(vsp < -1){
+				vsp += 0.1;
+			}
 		} else if(player_id.joy_dir <= 135 && player_id.joy_dir >= 45){
-			y--;
+			if(vsp > -4){
+				vsp -= 0.1;
+			}
 		}
 		if(player_id.joy_dir <= 225 && player_id.joy_dir >= 135){
-			x--;
+			hsp -= 0.1;
 		} else if(player_id.joy_dir <= 45 || player_id.joy_dir >= 315){
-			x++;
+			hsp += 0.1;
 		}
+	}
+	if(player_id.leafBlower == true){
+		hsp += 1 * player_id.spr_dir;
+		length += 1;
 	}
 	
 	if(hitbox_timer == length-1){

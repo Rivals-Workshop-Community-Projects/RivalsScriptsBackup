@@ -30,6 +30,13 @@ switch (attack){
 
     case AT_UAIR:
         if (up_strong_pressed) && ammo > 0 && move_cooldown[AT_USTRONG_2] == 0{
+            
+            if (left_down)
+	        	spr_dir = -1;
+	        	
+	        if (right_down)
+	        	spr_dir = 1;
+            
             attack = AT_USTRONG_2;
         }
 

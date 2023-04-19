@@ -63,13 +63,13 @@ set_hitbox_value(AT_JAB, 2, HG_WIDTH, 78);
 set_hitbox_value(AT_JAB, 2, HG_HEIGHT, 101);
 set_hitbox_value(AT_JAB, 2, HG_PRIORITY, 4);
 set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 3); // 8
-set_hitbox_value(AT_JAB, 2, HG_ANGLE, 80);
-set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 2);
+set_hitbox_value(AT_JAB, 2, HG_ANGLE, 70);
+set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sound_get("coreblade_hit_05"));
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_JAB, 2, HG_HITSTUN_MULTIPLIER, 2);
-set_hitbox_value(AT_JAB, 2, HG_TECHABLE, 1);
+//set_hitbox_value(AT_JAB, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, hitfx1);
 //set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 6);
 

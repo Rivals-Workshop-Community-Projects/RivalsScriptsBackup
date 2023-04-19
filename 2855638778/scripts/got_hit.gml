@@ -13,6 +13,12 @@ if (buff_active) {
 	if (buff_cur_timer < 0) {
 		buff_cur_timer = 0;
 	}
+	
+	if (runeB) {
+		if (enemy_hitboxID.damage >= 1) {
+			take_damage( player, player, -1 );
+		}
+	}
 
 }
 

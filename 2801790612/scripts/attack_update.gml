@@ -40,31 +40,11 @@ switch(attack){
 	
 	case AT_JAB:
 		was_parried = false; // easy method for single-hit jabs
-	case AT_FTILT:
-	case AT_DTILT:
-		if window == 1 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
-		}
-		break;
-	case AT_UTILT:
-		if window == 1 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
-			array_push(phone_dust_query, [x, y, "dash", -spr_dir]);
-		}
 		break;
 	case AT_BAIR:
 		move_cooldown[AT_BAIR] = 12;
 		break;
-	case AT_FSTRONG:
-		if window == 2 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
-		}
-		break;
 	case AT_USTRONG:
-		if window == 2 && window_timer == phone_window_end{
-			array_push(phone_dust_query, [x, y, "dash_start", spr_dir]);
-			array_push(phone_dust_query, [x, y, "dash_start", -spr_dir]);
-		}
 		if (window == 1 && window_timer == 1) {
 			if (!instance_exists(rand_garbage)) {
 				garb_bounce = 0;
@@ -87,7 +67,7 @@ switch(attack){
 					case 3: set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_SPRITE, spr_garbage4); break;
 				}
 				sound_play(sfx_pepsi_zoop);
-				rand_garbage = create_hitbox(AT_USTRONG, 2, x, y);
+				rand_garbage = create_hitbox(AT_USTRONG, 2, x + 20 * spr_dir, y + 10);
 				//print_debug(string(strong_charge));
 				rand_garbage.vsp = -10 - (floor(strong_charge / 10));
 			}
@@ -95,9 +75,6 @@ switch(attack){
 		}
 		break;
 	case AT_DATTACK:
-		if (window == 2 && window_timer % 4 == 0) {
-			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
-		}
 		if (has_hit && !hitpause) {
 			can_jump = true;
 		}
@@ -304,12 +281,21 @@ switch(attack){
 		break;
 	
 	case AT_DSPECIAL_2:
+		//pepsi_meter += 1;
+		//print(string(state_timer) + " --- " + string(state_timer div 8));
+		if (window == 2) {
+			var pepsi_time = (state_timer div 16) / 10 
+			pepsi_meter += 0.3 + pepsi_time;
+		}
 		if (window == 2 && window_timer == get_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH)) {
 			if (special_down) {
 				window = 2;
 				window_timer = 0;
 			}
-			pepsi_meter += 5;
+		}
+		if (window == 3) {
+			move_cooldown[AT_DSPECIAL_2] = 30;
+			move_cooldown[AT_DSPECIAL] = 30;
 		}
 		break;
 	
@@ -318,22 +304,6 @@ switch(attack){
 		if (taunt_down && window == 3 && window_timer == get_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH)) {
 			window = 3;
 			window_timer = 0;
-		}
-		break;
-	
-	
-	
-	case AT_TAUNT_2:
-		if !(shield_down || taunt_down){
-			attack_end();
-			set_state(PS_IDLE);
-		}
-		if window_timer == phone_window_end - 32{
-			spawn_hit_fx(x + 16 * spr_dir, y - 44, 113);
-			sound_play(asset_get("mfx_star"));
-		}
-		if window_timer == phone_window_end - 4{
-			spawn_hit_fx(x, y - 32, 143);
 		}
 		break;
 }

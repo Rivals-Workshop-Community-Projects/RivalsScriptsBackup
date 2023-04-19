@@ -8,10 +8,11 @@
 // draw_debug_text( temp_x- 15, temp_y-45, "x: " + string(x));
 // draw_debug_text( temp_x- 15, temp_y-60, "y: " + string(y));
 // draw_debug_text( temp_x- 15, temp_y-75, "img ind: " + string(image_index));
-// draw_debug_text( floor(x+60 - view_get_xview()), floor(y-15-view_get_yview()), "static: " + string(static));
+// draw_debug_text( floor(x+60 - view_get_xview()), floor(y-15-view_get_yview()), "hitstop: " + string(hitstop));
+// draw_debug_text( floor(x+60 - view_get_xview()), floor(y-30-view_get_yview()), "nsw: " + string(near_stage_wall));
 
-if(fps_real < lowest_fps) lowest_fps = fps_real;
-if(get_gameplay_time()%60 == 0) lowest_fps = fps_real;
+// if(fps_real < lowest_fps) lowest_fps = fps_real;
+// if(get_gameplay_time()%60 == 0) lowest_fps = fps_real;
 // draw_debug_text( 10, 10, "FPS : " + string(lowest_fps));
 // draw_debug_text( 10, 80, "grav : " + string(grav));
 // var ida;

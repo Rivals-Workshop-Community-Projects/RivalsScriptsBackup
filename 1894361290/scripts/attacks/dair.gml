@@ -15,7 +15,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, 0);
-set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 10);
 set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 8);
@@ -93,6 +93,7 @@ set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy2"));
 set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_DAIR, 3, HG_HIT_PARTICLE_NUM, 0);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_GROUP, 3);
 
 set_hitbox_value(AT_DAIR, 4, HG_HITBOX_TYPE, 1);
@@ -114,6 +115,7 @@ set_hitbox_value(AT_DAIR, 4, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DAIR, 4, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DAIR, 4, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy2"));
 set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_DAIR, 4, HG_HIT_PARTICLE_NUM, 0);
 set_hitbox_value(AT_DAIR, 4, HG_HITBOX_GROUP, 3);
 
 set_hitbox_value(AT_DAIR, 5, HG_PARENT_HITBOX, 4);

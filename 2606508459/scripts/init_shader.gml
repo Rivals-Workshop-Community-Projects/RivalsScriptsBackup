@@ -10,15 +10,16 @@ try
     
     //---> ALT RELATED CODE
     
-    if (_curr == 18 ||
-        _curr == 19 ||
+    if (_curr == 19 ||
         _curr == 20 ||
         _curr == 21 ||
         _curr == 22 ||
         _curr == 23 ||
         _curr == 24 ||
-        _curr == 27 ||
-        _curr == 28)
+        _curr == 25 ||
+        _curr == 28 ||
+        _curr == 29 ||
+        _curr == 30)
     //if (_curr < alt_split)
     {
         //Replace Tail tip color slot with Ankles
@@ -35,8 +36,8 @@ try
         );
     }
     
-    else if (_curr == 25 ||
-            _curr == 26)
+    else if (_curr == 26 ||
+            _curr == 27)
     //if (_curr < alt_split)
     {
         //Replace Tail tip color slot with Ankles

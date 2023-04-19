@@ -8,9 +8,13 @@ sprite_change_offset("crouch", 122, 148);
 sprite_change_offset("walk", 122, 148);
 sprite_change_offset("walkturn", 122, 148);
 sprite_change_offset("dash", 122, 148);
+sprite_change_offset("dash_scoot", 122, 148);
 sprite_change_offset("dashstart", 122, 148);
+sprite_change_offset("dashstart_scoot", 122, 148);
 sprite_change_offset("dashstop", 122, 148);
+sprite_change_offset("dashstop_scoot", 122, 148);
 sprite_change_offset("dashturn", 122, 148);
+sprite_change_offset("dashturn_scoot", 122, 148);
 
 sprite_change_offset("jumpstart", 122, 148);
 sprite_change_offset("jump", 122, 148);
@@ -30,7 +34,7 @@ sprite_change_offset("tech", 122, 148);
 sprite_change_offset("jab", 122, 148);
 sprite_change_offset("jab_beam", 122, 148);
 sprite_change_offset("dattack", 122, 148);
-sprite_change_offset("dattack_2", 122, 148);
+sprite_change_offset("dattack_scoot", 122, 148);
 sprite_change_offset("ftilt", 122, 148);
 sprite_change_offset("dtilt", 122, 148);
 sprite_change_offset("utilt", 122, 148);
@@ -43,6 +47,9 @@ sprite_change_offset("fstrong", 122, 148);
 sprite_change_offset("ustrong", 122, 148);
 sprite_change_offset("dstrong", 122, 148);
 sprite_change_offset("nspecial", 122, 148);
+sprite_change_offset("nspecial_hook", 122, 148);
+sprite_change_offset("nspecial_hook_line", 8, 6);
+sprite_change_offset("nspecial_hook_proj", 15, 28);
 sprite_change_offset("fspecial", 122, 148);
 sprite_change_offset("uspecial", 122, 148);
 sprite_change_offset("dspecial", 122, 148);
@@ -51,7 +58,7 @@ sprite_change_offset("taunt", 122, 148);
 
 sprite_change_offset("plat", 64, 94);
 
-sprite_change_offset("potion", 8, 8);
+sprite_change_offset("potion", 9, 18);
 sprite_change_offset("box", 9, 4);
 
 sprite_change_offset("pon", 7, 7);

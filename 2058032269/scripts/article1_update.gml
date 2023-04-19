@@ -31,6 +31,7 @@ if (player_id.orbit_hit >= 8) {
     player_id.orbit_hit = 0;
     player_id.orbit_active = false;
     instance_destroy();
+    exit;
 }
 
 image_index = player_id.orbit_hit;
@@ -47,4 +48,5 @@ if (state_timer >= (4*second)) {
     player_id.orbit_hit = 0;
     player_id.orbit_active = false;
     instance_destroy();
+    exit;
 }

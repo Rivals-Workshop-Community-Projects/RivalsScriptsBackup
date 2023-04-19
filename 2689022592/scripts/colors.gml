@@ -76,15 +76,28 @@ set_color_profile_slot( 4, 5, 69, 75, 255 ); //Robe
 set_color_profile_slot( 4, 6, 54, 0, 92 ); //Underrobe
 set_color_profile_slot( 4, 7, 255, 255, 255 ); //Eye
 
-// Void
-set_color_profile_slot( 5, 0, 102, 255, 0 ); //Enegy/blood
-set_color_profile_slot( 5, 1, 247, 248, 255 ); //Hair
-set_color_profile_slot( 5, 2, 247, 248, 255 ); //Fur
-set_color_profile_slot( 5, 3, 102, 255, 0 ); //Irises
-set_color_profile_slot( 5, 4, 180, 255, 130 ); //Mouth/ear
-set_color_profile_slot( 5, 5, 36, 89, 34 ); //Robe
-set_color_profile_slot( 5, 6, 0, 0, 0 ); //Underrobe
+
+// Dorime Rat
+set_color_profile_slot( 5, 0, 255, 187, 0 ); //Enegy/blood
+set_color_profile_slot( 5, 1, 255, 255, 255 ); //Hair
+set_color_profile_slot( 5, 2, 164, 117, 43 ); //Fur
+set_color_profile_slot( 5, 3, 110, 106, 115 ); //Irises
+set_color_profile_slot( 5, 4, 255, 142, 165 ); //Mouth/ear
+set_color_profile_slot( 5, 5, 255, 255, 255 ); //Robe
+set_color_profile_slot( 5, 6, 255, 187, 0 ); //Underrobe
 set_color_profile_slot( 5, 7, 0, 0, 0 ); //Eye
+
+//
+//// Void
+//set_color_profile_slot( 5, 0, 102, 255, 0 ); //Enegy/blood
+//set_color_profile_slot( 5, 1, 247, 248, 255 ); //Hair
+//set_color_profile_slot( 5, 2, 247, 248, 255 ); //Fur
+//set_color_profile_slot( 5, 3, 102, 255, 0 ); //Irises
+//set_color_profile_slot( 5, 4, 180, 255, 130 ); //Mouth/ear
+//set_color_profile_slot( 5, 5, 36, 89, 34 ); //Robe
+//set_color_profile_slot( 5, 6, 0, 0, 0 ); //Underrobe
+//set_color_profile_slot( 5, 7, 0, 0, 0 ); //Eye
+
 
 // Popstar
 set_color_profile_slot( 6, 0, 224, 173, 255 ); //Enegy/blood

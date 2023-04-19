@@ -59,16 +59,17 @@ set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 2);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -77);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 131);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 120);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 82);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 4);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
-set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); // // 303 - basic small directional
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_general);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 hitbox_num++;

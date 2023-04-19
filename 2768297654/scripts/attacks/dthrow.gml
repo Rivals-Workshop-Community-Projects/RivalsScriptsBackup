@@ -47,7 +47,6 @@ set_hitbox_value(AT_DTHROW, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_DESTROY_EFFECT, 13);
-set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_DTHROW, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DTHROW, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DTHROW, 1, HG_FORCE_FLINCH, 1);

@@ -112,11 +112,13 @@ air_accel_shift     = 2;		// 0.2  -  0.4
 air_accel           = air_accel_norm;
 air_max_speed       = air_max_speed_norm; //the maximum hsp you can accelerate to when in a normal aerial state
 
+ever_snowman_spr = sprite_get("ever_snowman_spr")
+
 // Yee-HAW
 if get_player_color(player) == 28{
     shades = 1; // Change to 2 when cowboy hat is done
 } else {
-    shades = 0;
+    shades = get_synced_var(player);
 }
 had_shades = 0;
 shades_to_equip = 1;
@@ -285,3 +287,14 @@ set_victory_theme(sound_get("bubbles_victory"));
 pkmn_stadium_front_img = sprite_get("pkmn_stadium_front_img")
 pkmn_stadium_back_img = sprite_get("pkmn_stadium_back_img")
 pkmn_stadium_name_override = "Bubbles";
+
+// Henry
+has_fail = true;
+fail_text = "Watch out for the Ninjas.";
+
+// touhou criiinge
+mamizou_transform_spr = sprite_get("transformations_bubbles"); //Replace "X" with your sprite.
+
+// Pumbo
+pot_compat_variable = sprite_get("food");
+pot_compat_text = "Jelly Donut"

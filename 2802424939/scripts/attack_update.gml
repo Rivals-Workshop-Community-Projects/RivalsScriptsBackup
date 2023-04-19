@@ -11,23 +11,43 @@ switch(attack)
         }
         break;
     case AT_DATTACK:
-        if (window == 3)
+        if (window >= 3)
         {
             
-            if (window_timer >= 3 and has_hit)
+            if (window_timer >= 3 and has_hit and !hitpause)
             {
                 can_attack = true;
             }
         }
-    case AT_BAIR:
+        break;
+    case AT_FSTRONG_2:
         if (window == 1)
         {
+            if (window_timer == 1)
+            {
+                reset_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_FSTRONG_2, 1, HG_EXTENDED_PARRY_STUN);
+                reset_hitbox_value(AT_FSTRONG_2, 2, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_FSTRONG_2, 2, HG_EXTENDED_PARRY_STUN);
+                reset_hitbox_value(AT_FSTRONG_2, 3, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_FSTRONG_2, 3, HG_EXTENDED_PARRY_STUN);
+            	reset_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_WALL_BEHAVIOR)
+                reset_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR)
+            }
+            if ((instance_exists(stopwatch) and stopwatch.cooldown != 1) or frozen == 1)
+            {
+                set_hitbox_value(AT_FSTRONG_2, 1, HG_EXTENDED_PARRY_STUN, true);
+                set_hitbox_value(AT_FSTRONG_2, 2, HG_EXTENDED_PARRY_STUN, true);
+                set_hitbox_value(AT_FSTRONG_2, 3, HG_EXTENDED_PARRY_STUN, true);        
+            }
             if (window_timer == get_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH))
             {
-                if (instance_exists(stopwatch))
-                stopwatch.unfreeze = 0;
-                if (!attack_down)
+                if (mode == 0)
+                var stopwatch_fx = spawn_hit_fx(stopwatch.x + 4, stopwatch.y + 4, 301)
+                else
                 {
+                    if (instance_exists(stopwatch))
+                    stopwatch.unfreeze = 0;
                     with(pHitBox)
                     {
                         if (player = other.player)
@@ -35,17 +55,6 @@ switch(attack)
                             frozen = 2;
                             if (freeze_lockout == 1)
                             freeze_lockout += 1;
-                        }
-                    }                    
-                }
-                else if (attack_down)
-                {
-                    with(pHitBox)
-                    {
-                        if (player = other.player)
-                        {
-                            if (knife_set == 1)
-                            knife_set += 1;
                         }
                     }
                 }
@@ -57,56 +66,108 @@ switch(attack)
         }
         break;
     case AT_NSPECIAL:
+        if (b_reversed = true)
+        {
+            hsp *= -1;
+            b_reversed = false;
+        }
         if (free)
         set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
         else 
         set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
         if (window == 1)
         {
+            if (window_timer == 1)
+            {
+                reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN);
+                reset_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN);
+                reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN);
+            	reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR)
+                reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR)
+                reset_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR)
+                reset_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR)
+                reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR)
+                reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR)
+            }
+            else if (window_timer == get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH))
+            {
+                if (free == true)
+                {
+                    set_attack_value(AT_NSPECIAL, AG_CATEGORY, 1);//code for landing lag
+                }
+                else if (free == false)
+                {
+                    set_attack_value(AT_NSPECIAL, AG_CATEGORY, 2);//code for landing lag
+                }
+            }
+            
+            
+			if ((instance_exists(stopwatch) and stopwatch.cooldown != 1) or frozen == 1)
+            {
+                set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
+                set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, true);
+                set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, true);        
+            }
             old_spr_dir = spr_dir;
-            can_move = false;
+            can_move = true;
             if (window_timer == get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH))
             {
-                if (instance_exists(stopwatch))
-                stopwatch.unfreeze = 0;
-                if (!special_down)
+                if (instance_exists(stopwatch) and stopwatch.cooldown != 1)
                 {
-                    with(pHitBox)
+                    if (mode = 0)
+                    var stopwatch_fx = spawn_hit_fx(stopwatch.x + 4, stopwatch.y + 4, 301)
+                    else
                     {
-                        if (player = other.player)
+                        stopwatch.unfreeze = 0;
+                        with(pHitBox)
                         {
-                            frozen = 2;
-                            if (freeze_lockout == 1)
-                            freeze_lockout += 1;
-                        }
-                    }                    
-                }
-                else if (special_down)
-                {
-                    with(pHitBox)
-                    {
-                        if (player = other.player)
-                        {
-                            if (knife_set == 1)
-                            knife_set += 1;
+                            if (player = other.player)
+                            {
+                                frozen = 2;
+                                if (freeze_lockout == 1)
+                                freeze_lockout += 1;
+                            }
                         }
                     }
                 }
             }
         }
-        else if (window == 4)
+        else if (window == 2)
         {
-            if (window_timer == get_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH))
+            if (window_timer == 1)
             {
-                move_cooldown[AT_NSPECIAL] = 30;
-                move_cooldown[AT_FSPECIAL] = 30;
+                if (free)
+                vsp = -3;
             }
+        }
+        else if (window >= 3)
+        {
+            move_cooldown[AT_NSPECIAL] = 30;
+            move_cooldown[AT_FSPECIAL] = 30;
         }
         can_fast_fall = false;
         break;
     case AT_FSPECIAL:
         if (window == 1)
         {
+            if (window_timer == 1)
+            {
+                reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN);
+                reset_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_FSPECIAL, 2, HG_EXTENDED_PARRY_STUN);
+                reset_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PARRY_STUN);
+                reset_hitbox_value(AT_FSPECIAL, 3, HG_EXTENDED_PARRY_STUN);
+            }
+            if (instance_exists(stopwatch) and stopwatch.cooldown != 1)
+            {
+                set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
+                set_hitbox_value(AT_FSPECIAL, 2, HG_EXTENDED_PARRY_STUN, true);
+                set_hitbox_value(AT_FSPECIAL, 3, HG_EXTENDED_PARRY_STUN, true);        
+            }
             reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED);
             reset_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED);
             reset_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED);
@@ -115,6 +176,7 @@ switch(attack)
             reset_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y);
             if (free == true)
             {
+                if (window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH))
                 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 1);//code for landing lag
                 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 6.8);
                 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, 5.2);
@@ -130,28 +192,21 @@ switch(attack)
             }
             if (window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH))
             {
-                if (instance_exists(stopwatch))
-                stopwatch.unfreeze = 0;
-                if (!special_down)
+                if (instance_exists(stopwatch) and stopwatch.cooldown != 1)
                 {
-                    with(pHitBox)
+                    if (mode = 0)
+                    var stopwatch_fx = spawn_hit_fx(stopwatch.x + 4, stopwatch.y + 4, 301)
+                    else
                     {
-                        if (player = other.player)
+                        stopwatch.unfreeze = 0;
+                        with(pHitBox)
                         {
-                            frozen = 2;
-                            if (freeze_lockout == 1)
-                            freeze_lockout += 1;
-                        }
-                    }                    
-                }
-                else if (special_down)
-                {
-                    with(pHitBox)
-                    {
-                        if (player = other.player)
-                        {
-                            if (knife_set == 1)
-                            knife_set += 1;
+                            if (player = other.player)
+                            {
+                                frozen = 2;
+                                if (freeze_lockout == 1)
+                                freeze_lockout += 1;
+                            }
                         }
                     }
                 }
@@ -199,7 +254,7 @@ switch(attack)
             x_ = x + tp_dist_x; //The coordinates of the desired teleportation destination.
             y_ = y + tp_dist_y;
         }
-        if (!instance_exists(stopwatch))
+        if (!instance_exists(stopwatch) or (instance_exists(stopwatch) and stopwatch2.cooldown == 1))
         {
             //Teleportation Logic
             if(window == 2) 
@@ -226,7 +281,7 @@ switch(attack)
                 }
             }
         }
-        if (instance_exists(stopwatch))
+        if (instance_exists(stopwatch) and stopwatch2.cooldown != 1)
         {
             //Teleportation Logic
             if(window == 2) {
@@ -283,21 +338,38 @@ switch(attack)
         {
             if (!instance_exists(stopwatch))
             {
-                stopwatch = instance_create(x, y + 20, "obj_article1");
-                stopwatch2 = instance_create(x, y + 20, "obj_article2");
-            }
-            else if (instance_exists(stopwatch))
-            {
-                stopwatch.x = x;
-                stopwatch.y = y+20;
-                stopwatch2.x = x;
-                stopwatch2.y = y+20;
+                stopwatch = instance_create(x - 4, y + 20, "obj_article1");
+                stopwatch2 = instance_create(x - 4, y + 20, "obj_article2");
+                stopwatch.mode = mode;
             }
         }
         else if (window == 3 and window_timer == get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH))
         {
             move_cooldown[AT_DSPECIAL] = 60; 
         }
+        break;
+    case AT_DSPECIAL_2:
+        can_fast_fall = false;
+        if (window == 2 and window_timer == 1)
+        {
+            if (!special_down)
+            {
+                stopwatch.dead = 1;
+                stopwatch2.dead = 1;
+                stopwatch.explode = 1;
+                stopwatch2.explode = 1;
+            }
+            else
+            {
+                stopwatch.x = x - 4;
+                stopwatch2.x = x - 4;
+                stopwatch.y = y - 40;
+                stopwatch2.y = y - 40;
+                spawn_hit_fx(stopwatch.x - 2, stopwatch.y, 301)
+            }
+        }
+        if (window >= 2)
+        move_cooldown[AT_DSPECIAL] = 90;
         break;
     case AT_USTRONG:
         can_fast_fall = false;
@@ -310,6 +382,20 @@ switch(attack)
             set_attack_value(AT_USTRONG, AG_CATEGORY, 1);
         }
         break;
+}
+#define trigger_wavebounce() 
+{
+	if ((left_down and state_timer <= 6 and spr_dir == 1) or (right_down and state_timer <= 6 and spr_dir == -1) and (b_reversed == true)) {
+    	if(free){
+    	hsp = 4 * -spr_dir;
+    	vsp = -4;
+    	}
+    	//hsp *= -spr_dir;
+    	spr_dir *= -1;
+    	b_reversed = true;
+	} else if (state_timer == 7) {
+    	b_reversed = false;
+	}
 }
 #define stage_collide_alt {
     ///stage_collide_alt(x1, y1, x2, y2, prec)

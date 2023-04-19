@@ -111,43 +111,43 @@ switch(order[pill]){
 			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo_pringles"));}
 			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo"));}
 
-			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);	
+			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 60);	
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);	
+			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5.25);	
 			break;
 		case 2 :			//RED RED
 			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo2_pringles"));}
 			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo2"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 120);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);	
+			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5.25);	
 			break;
 		case 3 :			//YELLOW YELLOW
 			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo3_pringles"));}
 			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo3"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);	
+			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5.25);	
 			break;	
 		case 4 :		//RED BLUE
 			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4_pringles"));}
 			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);	
-			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
 			break;
 		case 5 :			//RED YELLOW
 			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo5_pringles"));}
 			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo5"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 105);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
 			break;	
 		case 6 :			//BLUE YELLOW
 			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo6_pringles"));}
 			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo6"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 75);	
-			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
 			break;
 		default: break;
@@ -216,6 +216,7 @@ if(state != PS_ATTACK_AIR)&&(state != PS_ATTACK_GROUND){				//Not Attacking
 	combo=0;
 	grabbedid = noone;	//Nobody is being grabbed
 	hitbox_active=0;
+	set_num_hitboxes(AT_USPECIAL,2);
 }
 
 
@@ -518,38 +519,38 @@ if swallowed { //Kirby ability script starts here
 		switch(pick_pill){
 			case 1 :			//BLUE BLUE
 				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 45 );																//This will vary;
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 60 );																//This will vary;
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5.25);
 				break;
 			case 2 :			//RED RED
 				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 120 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5.25);
 				break;
 			case 3 :			//YELLOW YELLOW
 				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK,  5.25);
 				break;	
 			case 4 :		//RED BLUE
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 60 );																//This will vary
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 6);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90 );																//This will vary
 				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
 				break;
 			case 5 :			//RED YELLOW
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 6);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 105 );																//This will vary
 				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
 				break;	
 			case 6 :			//BLUE YELLOW
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 6);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 75 );																//This will vary
 				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
 				break;
 			default: 
 				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 60 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90 );																//This will vary
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
 				break;
 		}
 

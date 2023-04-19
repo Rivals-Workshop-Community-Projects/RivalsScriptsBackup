@@ -2,9 +2,9 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.05";
-patch_day = "30";
-patch_month = "AUG";
+patch_ver = "1.19";
+patch_day = "26";
+patch_month = "MAR";
  
 var num_alts = 25;
 var alt_cur = get_player_color(player);
@@ -28,12 +28,14 @@ alt_name[15] = "Ouroboros"
 alt_name[16] = "Space Invader"
 alt_name[17] = "Beach Bash"
 alt_name[18] = "Molten Metal"
-alt_name[19] = "BLW"
-alt_name[20] = "Transcendence"
-alt_name[21] = "Girl Power"
-alt_name[22] = "Ace Trainer"
-alt_name[23] = "Bicycle"
-alt_name[24] = "Panoramic"
+alt_name[19] = "Phosphorus"
+alt_name[20] = "Egg"
+alt_name[21] = "BLW"
+alt_name[22] = "Transcendence"
+alt_name[23] = "Girl Power"
+alt_name[24] = "Ace Trainer"
+alt_name[25] = "Bicycle"
+alt_name[26] = "Panoramic"
 
 //Patch
  

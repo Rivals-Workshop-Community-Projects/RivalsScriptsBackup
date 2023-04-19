@@ -174,11 +174,11 @@ initWords("Only direct attacks to the coffin part of Cofagrigus's body will conn
 initWords("This gives Cofagrigus powerful disjoint on its attacks, making it difficult to get in. As a tradeoff, if the opponent does reach Cofagrigus its slow movements and floaty physics make it combo food.");
 
 initTip("Ability: Mummy");
-initWords("Cofagrigus's  main gimmick is it's ability, Mummy. When attacking with its body or special powers, the opponent will be afflicted by it's mummy curse.");
-initWords("When under the effects of the curse, any move that doesn't land will cause the user to take a small amount of damage, similarly to Ranno's poison. The Mummy curse can be lifted either by waiting or by attacking another player with a physical move. (THIS ONLY WORKS WHEN HITTING COFAGRIGUS FOR NOW, ONCE DAN MOMENT IS RESOLVED IT'LL WORK BETWEEN ANY CHARACTER)");
-initWords("The curse is also lifted if the cursed player succesfully parries, or either the curse giver or reciever loses a stock.");
+initWords("Cofagrigus's  main gimmick is it's ability, Mummy. When attacking with its body or certial specials, the opponent will be afflicted by it's mummy curse.");
+initWords("When under the effects of the curse, any move that whiffs will cause the user to take a small amount of damage. The Mummy curse can be lifted either by waiting or dying to remove it from play, or transferring it to another player by hitting them with a physical move.");
+initWords("The curse is also tranferred if the cursed player succesfully parries, or lifted if the player who inflicted the curse loses a stock.");
 initHeader("Risk Vs. Reward");
-initWords("While inflicting Mummy is useful for its whiff effect and enabling FSpecial, be careful! The opponent can easily transfer it back and make you deal with the effects instead!");
+initWords("While inflicting Mummy is useful for its whiff effect and enabling FSpecial and DSpecial, be careful! The opponent can easily transfer it back and make you deal with the effects instead!");
 
 initTip("NSpecial: Will-O-Wisp");
 initWords("Cofagrigus charges Will-O-Wisp, a weak projectile attack that inflicts its Mummy Curse on anyone hit. It can be charged up to 3 levels, and pressing the parry button will store the charge.");
@@ -189,28 +189,29 @@ initWords("Level 3: Three Will-O-Wisp orbs are fired at a long range. If the cha
 initImage_ext(sprite_get("tip_nspecial"), -4, fa_right, -1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("tip_nspecial"), -4, fa_left, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initHeader("Parrying");
-initWords("If an opponent parries a Will-O-Wisp orb, all orbs in a given cluster will reset their lifetimes and be reflected as well as increasing speed. A reflected NSpecial that hits Cofagrigus will also inflict the Mummy status.");
+initWords("If an opponent parries a Will-O-Wisp orb, all orbs in a given cluster will reset their lifetimes and be reflected with increased speed.");
 
 initTip("FSpecial: Snatch");
-initWords("Cofagrigus will attempt to grab the opponent, stalling its momentum. This can be used to recover horizontally and slow its descent. The grab will only connect if the opponent is afflicted with Mummy.");
-initWords("If an opponent is grabbed, they will be flipped into the air before getting slammed downward. If Cofagrigus is not above the stage, it will drag both of them into the blast zone. Cofagrigus will lose its stock first from this. To prevent suicide killing, press Parry to drop the opponent.");
+initWords("Cofagrigus will attempt to grab the opponent, stalling its momentum in the air. This can be used to recover horizontally and slow its descent. The grab will only connect if the opponent is afflicted with Mummy.");
+initWords("If an opponent is grabbed, they will be flipped into the air before getting slammed downward. If Cofagrigus is not above the stage, it will drag both of them into the blast zone. Cofagrigus will lose its stock first from this. To prevent this, press Parry to release the opponent at any time.");
 initWords("When landing on stage the opponent will be dragged forward, taking damage as Cofagrigus moves. If Cofagrigus presses attack the opponent will be tossed foward. If time runs out, Cofagrigus will instead drop the opponent, barely sending them anywhere.");
 initWords("The amount of time an opponent can be dragged scales with their percentage, meaning Cofagrigus can carry them along the entire length of the stage at high percents.");
 initImage_ext(sprite_get("tip_fspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("USpecial: Ominous Wind");
 initWords("Cofagrigus summons Ominous Wind to propel itself upward. This move lacks any damage dealing hitboxes, making Cofagrigus's recovery easily interrupted.");
-initWords("Despite dealing no direct damage, the wind left behind will curse any opponents that make contact with it. This wind lingers for a good while, making this move useful as a stage hazard.");
+initWords("Despite dealing no direct damage, the wind left behind will curse any opponents that pass it with the Mummy status. This wind lingers for a good while, making this move useful as a stage hazard.");
 initImage_ext(sprite_get("uspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("DSpecial: Hex");
 initWords("Hex is a Rest type move, dealing powerful damage with the drawback of a small hitbox and long endlag.");
-initWords("While Hex leaves Cofagrigus significantly less vulnerable than Rest, the move can also only reach maximum power if landed on a cursed opponent. Landing the move on an opponent who is not cursed deals significantly lower knockback. If Hex hits an uncursed opponent however, its endlag will be significantly reduced, even more than a full power hit.");
+initWords("While Hex leaves Cofagrigus significantly less vulnerable than Rest, the move can also only reach maximum power if landed on a cursed opponent. Landing the move on an opponent who is not cursed with Mummy deals significantly lower knockback. If Hex hits an uncursed opponent however, its endlag will be significantly reduced, even more than a full power hit.");
 initWords("Landing the move on a cursed opponent will consume the curse, removing it from the opponent as payment for the strong hit.");
 initImage_ext(sprite_get("dspecial"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("DStrong: Phantom Force");
-initWords("While charging Phantom Force, Cofagrigus retreats into ground. This makes the move incredibly safe to use, as Cofagrigus cannot be hit during this time. This move has very long endlag though, so be careful.");
+initWords("While charging Phantom Force, Cofagrigus retreats into ground. This makes the move incredibly safe to use, as Cofagrigus cannot be hit during this time. To compensate it's quite slow, so be careful and use it wisely!");
+initWords("Hitting with Cofagrigus's body will send opponents straight up, and hitting the rippling void on the sides will send horizontally. Space the move right for the desired angle.");
 initImage_ext(sprite_get("dstrong"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("The center hitbox inflicts the Mummy Curse, as Cofagrigus uses its body to attack.");
 
@@ -219,11 +220,11 @@ initWords("Cofagrigus quickly pushes itself into the air, using its body to quic
 initWords("This move will leave Cofagrigus in the air after use, making it useful for avoiding grounded attacks.");
 initWords("The downside of this move is that it is very weak when hitting grounded opponents, meaning that to take full advantage the opponent must already be above you.");
 initImage_ext(sprite_get("ustrong"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
-initWords("This attack inflicts the Mummy Curse, as Cofagrigus uses its body to attack.");
+initWords("The sweetspot of this attack inflicts the Mummy Curse, as Cofagrigus uses its body to attack.");
 
 initTip("DAir: Body Press");
 initWords("Cofagrigus flips before slamming its body downward for a powerful spike.");
-initWords("Due to the fact Cofagrigus's body goes through the floor at the peak of the attack, this move can be used to attack below platforms if timed correctly.");
+initWords("At the peak of the attack, Cofagirgus can slam straight down through platforms and hit opponents underneath. Use this on an unsuspecting opponent for a nasty surprise!");
 initImage_ext(sprite_get("dair"), -4, fa_center, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("This attack inflicts the Mummy Curse, as Cofagrigus uses its body to attack.");
 
@@ -276,6 +277,84 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.7", "March 18th, 2023");
+initHeader("Aesthetic");
+initSection("-Hit effect for Mummy damage is now layered behind players
+-Added 1.6 changes to the Munophone patch list (i forgor)
+-Renamed a couple alts");
+initHeader("Balance");
+initSection("-Mummy damage no longer applies on whiff, and is instead applied at the start of attacks
+-Removed floor hurtbox when charging DStrong again (it's funny and i wanna)
+-DTilt startup increased from 8 to 10");
+initHeader("Bugs/Fixes");
+initSection("-Fixed Mummy not properly applying damage when attacking to fast by scrapping the whiff system entirely xoxo
+-Fixed Mummy only transferring back to Cofagrigus if it had been hit by a reflected NSpecial");
+
+initPatch("1.6", "March 13th, 2023");
+initHeader("Aesthetic");
+initSection("-Updated the compatibility list in the Munophone's ''About Cofagrigus''
+-Fixed messed up Miiverse compatability sprite");
+
+initPatch("1.5", "March 12th, 2023");
+initHeader("Aesthetic");
+initSection("-Idle, BAir, USpecial, and DStrong animations overhauled
+-Added more frames to jump and doublejump animations
+-DAttack, UTilt, NAir, FAir, and UStrong animations tweaked to be smoother
+-FSpecial visuals given 300 gallons of flair
+-DSpecial now has a custom galaxy effect any time the strong version is landed (regardless of %)
+-Added secret when holding taunt during DStrong startup
+-Added custom hit particles to BAir, DStrong, NSpecial, and DSpecial
+-Updated CSS
+-Improved outline/void colour shades on alts
+-Air FSpecial now uses the sprites I made for it (oops)
+-Slightly tweaked large custom hfx to have a nicer circle on the last frame
+-Added extra floor scraping sound to FSpecial
+-Added extra windier sound to USpecial
+-Added extra sound when hitting the void hitbox on DStrong
+-Mummy now plays a hit effect when damaging a player
+-Second to last frame of jump no longer plays after an aerial
+-Slightly reduced walk animation speed
+-Updated Munophone to reflect mechanical changes
+-Added Swirly Dirly cheat to Munophone
+-Added more Miiverse posts
+-Added Regina Mario compatability
+-Removed Agent N & Toon Link compatability");
+initHeader("Balance");
+initSection("-Jab now has forced flinch
+-FTilt angle adjusted from 45 to 40
+-FAir landing lag reduced from 14 to 8
+-NAir landing lag reduced from 12 to 8
+-DAir landing lag reduced from 16 to 10
+-BAir landing lag reduced from 7 to 6
+-BAir multihit width increased from 55 to 65
+-BAir multihit height increased from 60 to 90
+-BAir launcher width increased from 55 to 75
+-BAir launcher height increased from 85 to 110
+-BAir startup increased from 6 to 9
+-FStrong sweetspot scaling reduced from 0.8 to 0.7
+-DStrong can now be slightly moved left and right while charging (and I mean slightly don't worry lol)
+-DStrong hitbox lifetimes increased from 3 to 6
+-DStrong body hitbox width increased from 10 to 40
+-DStrong body hitbox height increased from 100 to 110
+-DStrong void hitbox width increased from 105 to 150
+-DStrong void hitbox height decreased from 105 to 55 (This should make landing each seperate angle easier)
+-DTilt width increased from 160 to 180 to better match the animation and be better at long range poking
+-UTilt active window frames decreased from 8 to 6
+-FSpecial base duration reduced from 30 to 10
+-FSpecial duration scaling reduced
+-FSpecial release no longer refreshes airdodge, walljump, and doublejumps on grabbed players
+-DSpecial will now kick Cofagrigus out of fastfall (offstage kills will be much cooler now)");
+initHeader("Bugs/Fixes");
+initSection("-USpecial now only spawns a wind projectile every third frame (this should improve performance on toasters)
+-Updated intro animation code to not replay if Cofagrigus is set to respawn state (eg. boss intros)
+-UStrong sweetspot now uses large hit effect
+-NSpecial now loses it's charge when Cofagrigus dies
+-Mummy status recoded. Mummy should now transfer between any player in a match, and be properly removed with parries and deaths.
+(Note: Only melee attacks that put players in hitstun will work for non-Cofagrigus players! Only Cofagrigus gets projectile priviledge)
+-Mummy timer now fully stalls when attacking (rather than still ticking down but not removing the effect until out of attack state)
+-Mummy damage taken when attacking is now attributed to the player that inflicted the status
+-Mummy effect is now properly removed when either the curser or cursee dies");
+
 initPatch("1.4", "May 13th, 2022");
 initHeader("Aesthetic");
 initSection("-Walking animation now has more animnation frames (as a treat <:)");
@@ -284,7 +363,7 @@ initSection("-Shader code wasn't updated to reflect new shader slot order, resul
 
 initPatch("1.3", "May 8th, 2022");
 initHeader("i forgot the munophone");
-initSection("-they forgot the munophone");
+initSection("-she forgot the munophone");
 
 initPatch("1.2", "May 8th, 2022");
 initHeader("Aesthetic");
@@ -421,7 +500,7 @@ initSection("Robot: Crawl Code");
 initHeader("SFX from");
 initSection("Pokemon White, Smash Ultimate, Luigi's Mansion 3");
 initHeader("Compatible with");
-initSection("Trummel & Alto, Otto, Steve, Link, Pit, TCO, Feri, Agent N, Hikaru, Rat, Miiverse, Pokemon Stadium, Trial/Killing Grounds, Last Resort, Mt. Dedede, Soulbound Conflict, and Dialogue Buddy");
+initSection("Trummel & Alto, Otto, Steve, Link, Pit, TCO, Feri, Hikaru, Rat, Regina Mario, Miiverse, Pokemon Stadium, Trial/Killing Grounds, Last Resort, Mt. Dedede, Soulbound Conflict, and Dialogue Buddy");
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗
@@ -494,9 +573,10 @@ CHEAT_FLY		= initCheat("Fly", [0, 1], ["Off", "On"], "Take flight. So balanced
 
 CHEAT_INF_NSPECIAL = initCheat("Infinite Nspecial Charge", [0, 1], ["Off", "On"], ";)")
 CHEAT_FUNNY_NSPECIAL = initCheat("Funny Nspecial", [0, 1], ["Off", "On"], "Will-O-Wisp is now Transcendent")
-CHEAT_INFINICURSE = initCheat("Infinicurse", [0, 1], ["Off", "On"], "Curse timer now lasts forever (doesn't apply to precurse)")
-CHEAT_SUDOCURSE = initCheat("Special Access", [0, 1], ["Off", "On"], "Removes Curse requirement from FSpecial and DSpecial")
-CHEAT_FSPEC = initCheat("FSpecial Info", [0, 1], ["Off", "On"], "Show remaining grab time when using FSpecial")
+CHEAT_INFINICURSE = initCheat("Infinicurse", [0, 1], ["Off", "On"], "Curse timer now lasts forever")
+CHEAT_SUDOCURSE = initCheat("Special Access", [0, 1], ["Off", "On"], "Removes Mummy requirement from FSpecial and DSpecial")
+CHEAT_FSPEC = initCheat("FSpecial Info", [0, 1], ["Off", "On"], "Show the exact duration value during FSpecial")
+CHEAT_SWIRLY = initCheat("Swirly Dirly", [0, 1], ["Off", "On"], "Permanently turn on the Hex galaxy effect because why not!")
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗

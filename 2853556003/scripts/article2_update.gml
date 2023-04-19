@@ -31,6 +31,12 @@ if(hitstun > 0){
 	vsp = old_vsp
 }
 
+if(hsp != 0){
+	old_hspeed = hsp
+}
+if(vsp != 0){
+	old_vspeed = vsp
+}
 if (state == 1){
 	if(hsp > 1 || hsp < -1){
     	image_angle += (hsp * -2)
@@ -48,9 +54,10 @@ if (state == 1){
 	if(vsp < 12 && !slow){
     	vsp += 0.24
 	}else if(slow){
-		current_owner = player_id.player
-		vsp *= 0.93
-		hsp *= 0.93
+		if(current_owner == player_id.player){
+			vsp *= 0.93
+			hsp *= 0.93
+		}
 	}
   
     if(hsp > 0){
@@ -76,7 +83,12 @@ if (state == 1){
     	}
     }
     
-    if(hit_wall == true || !free){
+    if(hit_wall == true){
+    	hsp = old_hspeed * -1
+    	vsp = old_vspeed
+    	sound_play(sound_get("sfx_waterhit_bomb_weak"))
+    	spawn_hit_fx(x, y, vfx_waterhit_small)
+    }else if(!free){
     	if(!slow){
 	    	if(!strong){
 		    	state = 2
@@ -266,11 +278,13 @@ if (state == 1){
 				    }
 				
 				}else if(type == 1 && damage > 0 && kb_value > 0){
-					if(kb_angle == 361){
-		        		var true_kb_angle = 35
-		        	}else{
-		        		var true_kb_angle = kb_angle
-		        	}
+					other.enemy_hitboxID = id
+					
+	        		with(other){
+        				temp_hitbox_angle = get_hitbox_angle(enemy_hitboxID)
+	        		}
+        			var true_kb_angle = other.temp_hitbox_angle
+        			
 					other.current_owner = player 
 					
 					var kb_distance = kb_value + damage * kb_scale * (1 + player_id.strong_charge / 60);
@@ -305,14 +319,33 @@ if (state == 1){
 					
 		            exit;
 				}else if(type == 2 && damage > 0 && kb_value > 0){
-					if(kb_angle == 361){
-		        		var true_kb_angle = 35
-		        	}else{
-		        		var true_kb_angle = kb_angle
-		        	}
+					other.enemy_hitboxID = id
+					
+					other.current_owner = player 
+					
+					if(player_id.url == 2853556003 || player_id.url == 2794570829){
+						if(instance_exists(other.player_id.waterBomb)){
+							if(attack == AT_NSPECIAL){
+								if(!other.player_id.waterBomb.strong){
+									other.player_id.waterBomb.state = 2
+									other.player_id.waterBomb.state_timer = 0
+								}else{
+									other.player_id.waterBomb.state = 3
+									other.player_id.waterBomb.state_timer = 0
+								}
+							}
+						}
+					}
+					
+	        		with(other){
+        				temp_hitbox_angle = get_hitbox_angle(enemy_hitboxID)
+	        		}
+        			var true_kb_angle = other.temp_hitbox_angle
 		        	
-					other.hsp += ( lengthdir_x( kb_distance, true_kb_angle)) / 2
-				    other.vsp += ( lengthdir_y(kb_distance, true_kb_angle)) / 2	
+		        	var kb_distance = kb_value + damage * kb_scale;
+		        	
+					other.hsp = ( lengthdir_x( kb_distance, true_kb_angle))
+				    other.vsp = ( lengthdir_y(kb_distance, true_kb_angle))
 				    
 				    if(other.hsp > 0){
 				    	other.spr_dir = 1
@@ -328,7 +361,6 @@ if (state == 1){
 		            	destroyed = true
 		            }
 				    
-				    other.damage += damage
 				    other.old_vsp = other.vsp
 		        	other.old_hsp = other.hsp
 		        	other.hitstun = hitpause

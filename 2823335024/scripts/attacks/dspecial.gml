@@ -83,7 +83,6 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0.4);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("hit_medium_2"));
 
@@ -104,7 +103,6 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 15);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.4);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1.3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_abyss_hex_hit"));
 

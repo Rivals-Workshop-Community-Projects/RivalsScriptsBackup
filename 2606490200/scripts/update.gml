@@ -344,6 +344,35 @@ if state == PS_PARRY {
 */
 
 
+if boostedparry > 0 {
+	boostedparry -= 1
+	
+	  
+	  
+	if boostedparry == 5 {
+		sound_play(asset_get("sfx_absa_kickhit"));
+		sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,0.7);
+		fx = spawn_hit_fx(x - 6*spr_dir,y - 50,304)
+    	fx.pause = 12
+    	
+    	fx1 = spawn_hit_fx(x - 6*spr_dir + 30,y - 50,306)
+    	fx1.pause = 12
+    	fx2 = spawn_hit_fx(x - 6*spr_dir - 30,y - 50,306)
+    	fx2.pause = 12
+    	fx3 = spawn_hit_fx(x - 6*spr_dir,y - 80,306)
+    	fx3.pause = 12
+    	fx4 = spawn_hit_fx(x - 6*spr_dir,y - 20,306)
+    	fx4.pause = 12
+	} else {
+		if get_gameplay_time()% 3 == 1 && boostedparry > 0 {
+			super_armor = true 
+		}
+		if boostedparry == 1 && !hitpause {
+			create_hitbox(AT_JAB,4,x,y)
+		}
+	}
+}
+
 if djumps == 1 {
 	djump_speed = 9;
 } else {
@@ -570,6 +599,24 @@ if state == PS_RESPAWN && visible {
 	if state_timer % 6 == 0 {
 		spawn_base_dust(x,y + 2,"land",spr_dir)
 	}
+}
+
+if state == PS_RESPAWN && state_timer <= 30 {
+	if htrain < 100 {
+    htrain += floor((100 - htrain)/35)
+    }
+    
+    if btrain < 100 {
+        btrain += floor((100 - btrain)/35)
+    }
+    
+    if atrain < 100 {
+        atrain += floor((100 - atrain)/35)
+    }
+    
+    if ltrain < 100 {
+        ltrain += floor((100 - ltrain)/35)
+    }
 }
 
 

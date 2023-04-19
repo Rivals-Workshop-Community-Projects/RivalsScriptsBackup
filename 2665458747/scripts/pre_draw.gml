@@ -15,27 +15,27 @@ switch (croagstance)
 
 if state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND
 {
-    if attack == AT_FSPECIAL && window_timer >= 1 && (window == 2)
+    if attack == AT_FSPECIAL && ((window_timer >= 1 && window == 2) || (window == 3 && window_timer <= 3))
     {
         gpu_set_blendmode(bm_inv_src_color)
         draw_sprite_ext(sprite_get("fspecial_a"),image_index,x-10*spr_dir, y, 2*spr_dir, 2, 0, c_purple, .9)
         gpu_set_blendmode(bm_normal)
         
-        if window_timer >= 2
+        if window_timer >= 2 || (window == 3)
         {
             gpu_set_blendmode(bm_add)
             draw_sprite_ext(sprite_get("fspecial_a"),image_index,x-35*spr_dir, y, 2*spr_dir, 2, 0, c_purple, 1)
             gpu_set_blendmode(bm_normal)
         }
         
-        if window_timer >= 3
+        if window_timer >= 3 || (window == 3)
         {
             gpu_set_blendmode(bm_inv_src_color)
             draw_sprite_ext(sprite_get("fspecial_a"),image_index,x-55*spr_dir, y, 2*spr_dir, 2, 0, c_purple, .5)
             gpu_set_blendmode(bm_normal)
         }
         
-        if window_timer >= 4
+        if window_timer >= 4 || (window == 3)
         {
             gpu_set_blendmode(bm_add)
             draw_sprite_ext(sprite_get("fspecial_a"),image_index,x-80*spr_dir, y, 2*spr_dir, 2, 0, c_purple, 1)

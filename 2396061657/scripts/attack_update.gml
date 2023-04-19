@@ -360,7 +360,7 @@ if (attack == AT_DATTACK){
 		can_special = true;
 	}
 	
-	if (has_hit || has_hit_player && window == 2){
+	if ((has_hit || has_hit_player) && window == 2 && LoveMeter >= 50){
 		if ((spr_dir = -1 && (left_pressed || left_down) && (special_pressed || special_down)) || (spr_dir = 1 && (right_pressed || right_down) && (special_pressed || special_down))){
 			attack_end();
 			set_attack(AT_FSPECIAL);

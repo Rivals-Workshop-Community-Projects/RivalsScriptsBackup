@@ -25,30 +25,7 @@ if state = PS_ATTACK_AIR && djumps > 0 && can_wall_jump && has_walljump {
 
 
 
-if (get_training_cpu_action() == CPU_FIGHT && (temp_level == 1 || temp_level == 9) ) {
-	if state == PS_SPAWN && state_timer == 90 && temp_level == 1 {
-		bossmode = 1
-		sound_play(sound_get("smw2_message_block"));
-		sound_play(sound_get("DSw"));
-		sound_play(asset_get("sfx_ice_on_player"));
-		spawn_hit_fx(x , y - 60, 306);
-		yosword = 1
-		
-		var shortest_dist = 9999;
-				var shortest_id = noone;
-				
-				with (asset_get("oPlayer")) {
-					if (player != other.player) {
-						set_player_stocks(player, 1);
-						var curr_dist = point_distance(x,y,other.x,other.y);
-						if (curr_dist < shortest_dist) {
-							shortest_dist = curr_dist;
-							shortest_id = id;
-						}
-					}
-				}
-		create_hitbox(AT_NSPECIAL , 20 , shortest_id.x , shortest_id.y - 600 );   
-	}
+if (get_training_cpu_action() == CPU_FIGHT && (temp_level == 9) ) {
 
 if ai_recovering {
 	recoverytimer += 1
@@ -231,7 +208,7 @@ if (get_gameplay_time() mod 3 == 0 and ai_target.state_cat = SC_HITSTUN and can_
 }
 
 //Dspecial
-if (200 > xdist and can_special and 100 > ydist and !ai_recovering and cookieMeter > 0 and cookieTimer == 0 and bossmode != 1) || (bossmode == 1 and yosword != 1 and 200 > xdist and can_special and 100 > ydist and !ai_recovering and cookieMeter > 0 and cookieTimer == 0) {
+if (200 > xdist and can_special and 100 > ydist and !ai_recovering and cookieMeter > 0 and cookieTimer == 0) || (200 > xdist and can_special and 100 > ydist and !ai_recovering and cookieMeter > 0 and cookieTimer == 0) {
 	joy_pad_idle = true;
     left_down = false;
     right_down = false;

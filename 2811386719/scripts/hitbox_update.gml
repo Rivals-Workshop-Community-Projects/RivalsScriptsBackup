@@ -60,35 +60,7 @@ if(attack == AT_DSPECIAL){
 
 
 if(attack == AT_FSTRONG){
-  // if(hbox_num == 2){
-  // 	through_platforms = 2;
-  //   var target = noone;
-  //   var max_ball_turning_speed = 15; //Degrees
-  //   var dist = 9999;
-    
-  //   //hoam to the nearest player
-  //   with oPlayer{
-    
-  //     if(id != other.player_id and (target == noone or point_distance(other.x, other.y, x, y) < dist)){
-  //       target = id;
-  //       dist = point_distance(other.x, other.y, x, y);
-  //     }
-      
-  //   }
-  //   var dir = point_direction(x, y, target.x, target.y - 35);
-						
-		// if(was_parried) destroyed = true;
-		
-  //   	hsp += lengthdir_x(0.1, dir);
-  //   	vsp += lengthdir_y(0.1, dir);
-    	
-  //   	var pit = sqrt(hsp*hsp + vsp*vsp);
-    	
-  //   	if(pit > 8){
-  //   		hsp -= hsp/(pit*3);
-  //   		vsp -= vsp/(pit*3);
-  //   }
-  // }
+  if(hitbox_timer > 25) transcendent = false
   if(hbox_num == 3){
     //print(image_xscale)
     image_xscale = set_image_xscale;
@@ -193,11 +165,11 @@ if(bubble){
 	  			// sound_play(get_hitbox_value(attack, highest_prio.hbox_num, HG_HIT_SFX));
 	  			var a = spawn_hit_fx(other.x, other.y, 304)
 	  			a.pause = 8;
-	  		// 	hitpause = true;
-					// hitstop_full = 3 + (1 * get_hitbox_value(attack, highest_prio.hbox_num, HG_HITPAUSE_SCALING)*.05);
-					// hitstop = hitstop_full;
-					// old_hsp = hsp;
-					// old_vsp = vsp;
+	  			hitpause = true;
+					hitstop_full = 3 + (1 * get_hitbox_value(attack, highest_prio.hbox_num, HG_HITPAUSE_SCALING)*.05);
+					hitstop = hitstop_full;
+					old_hsp = hsp;
+					old_vsp = vsp;
 					
 					// print(hitstop)
 	  		}
@@ -212,35 +184,39 @@ if(bubble){
   
   // if(vsp < 5) acc_y += 0.15;
   
-  if(static){
+  if(static or follow_owner){
 
     var target = noone;
     var max_ball_turning_speed = 15; //Degrees
     var dist = 9999;
     
     //hoam to the nearest player
-    with oPlayer{
-    
-      if(id != other.player_id and (static_pull > 0 or other.attack == AT_FSTRONG) and (target == noone or point_distance(other.x, other.y, x, y) < dist)){
-        target = id;
-        dist = point_distance(other.x, other.y, x, y);
-      }
-      
+    if(follow_owner){
+    	target = player_id
+    }else{
+  	if(player_id.pulling or attack == AT_FSTRONG){
+	    with oPlayer{
+	    	
+	      if(id != other.player_id and (static_pull > 0 or other.attack == AT_FSTRONG) and (target == noone or point_distance(other.x, other.y, x, y) < dist)){
+	        target = id;
+	        dist = point_distance(other.x, other.y, x, y);
+	      }
+	      
+	    }
+  	}
     }
     if(target){
     	var dir = point_direction(x, y, target.x, target.y - 35);
-						
 			
-			
-	  	acc_x += lengthdir_x(0.06, dir);
+	  	acc_x += lengthdir_x(0.04 + (follow_owner)*0.1, dir);
 	  	
-	  	acc_y += lengthdir_y(0.26, dir);
-	  	acc_y = min(acc_y, 0.1)
+	  	acc_y += lengthdir_y(0.26 + (follow_owner)*0.1, dir);
+	  	// acc_y = min(acc_y, 0.1)
 	  	var pit = sqrt(hsp*hsp + vsp*vsp);
 	  	
-	  	if(attack == AT_FSTRONG and pit > 3.5){
-	  		hsp -= hsp/(pit*9);
-	  		vsp -= vsp/(pit*9);
+	  	if(attack == AT_FSTRONG and pit > 4.5 + (follow_owner)*6){
+	  		hsp -= hsp/(pit*7);
+	  		vsp -= vsp/(pit*7);
 	    }
     }
     

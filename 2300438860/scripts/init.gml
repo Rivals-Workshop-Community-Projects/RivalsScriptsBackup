@@ -3,6 +3,9 @@ crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = sprite_get("air_box");
 hitstun_hurtbox_spr = sprite_get("air_box");
 
+ox = 0
+oy = 0
+
 pitch = 0
 rollcount = 0
 
@@ -40,7 +43,7 @@ finisherinc = 0
 
 Genocide = false 
 
-cosmetic = 1
+cosmetic = 0
 
 heartbroke = 0
 
@@ -195,6 +198,7 @@ sprite_change_offset("darken", 1000, 1000);
 
 shit2 = hit_fx_create( sprite_get( "shit1" ), 60 );
 
+riftgone = hit_fx_create( sprite_get( "riftgone" ), 12 );
 
 shit4 = hit_fx_create( sprite_get( "shit4" ), 60 );
 

@@ -5,8 +5,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH)
-
 if attack == AT_NSPECIAL {
     if window == 1 && window_timer == 1 {
         wt_hitbox_size = 0;
@@ -92,6 +90,11 @@ if attack == AT_JAB {
     if was_parried {
         was_parried = false;
     }
+    
+    if window == 3 && window_timer >= window_length - 3 {
+        can_attack = true;
+        move_cooldown[AT_JAB] = 1;
+    }
 }
 
 if attack == AT_NAIR {
@@ -108,8 +111,10 @@ if attack == AT_NAIR {
 
 if attack == AT_DAIR {
     can_move = false;
+    can_fast_fall = false
     if window == 2 && state_timer >= 30 {
         can_jump = true;
+        can_shield = true;
     }
     
     if window == 2 && window_timer == get_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH) {
@@ -119,6 +124,8 @@ if attack == AT_DAIR {
     if window == 3 && window_timer == 0 && !hitpause {
         destroy_hitboxes();
         sound_play(asset_get("sfx_bird_upspecial"))
+        spawn_base_dust(x+20, y, "dash_start", -1);
+        spawn_base_dust(x-20, y, "dash_start", 1);
     }
 }
 
@@ -146,6 +153,7 @@ if attack == AT_USPECIAL {
 }
 
 if attack == AT_FSPECIAL {
+    move_cooldown[AT_FSPECIAL] = 10000000000;
     can_wall_jump = true;
     
     if (window == 4 || window == 5) && free {
@@ -154,24 +162,45 @@ if attack == AT_FSPECIAL {
         state_timer = 0;
     }
     
-    if window == 2 && !free {
+    if window == 2 && !free && !hitpause {
+        if has_hit {
+            set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 6);
+        }
+        
         window = 4;
         window_timer = 0;
+        spawn_base_dust(x + 80*spr_dir, y, "dash", -spr_dir);
+        spawn_base_dust(x + 40*spr_dir, y, "dash", spr_dir);
+        if holding_wt {
+            sound_play(sound_get("wt_impact"))
+        }
+        destroy_hitboxes();
+        
     }
     
     
     if window == 1 {
+        reset_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH);
+        if window_timer == window_length {
+            if !free spawn_base_dust(x, y, "dash_start", spr_dir);
+            if holding_wt {
+                sound_play(sound_get("wt_release"))
+            }
+        }
         can_move = false;
         attack_end();
     }
-    
-    if window == 3 {
-        if state_timer >= 50 && !was_parried {
-            can_jump = true;
-            can_attack = true;
-            //can_special = true;
-            can_airdodge = true;
-        }
+    /*
+    if window == 2 && window_timer < 20 {
+        can_move = false
+    }
+    */
+
+    if window == 3 && state_timer >= 50 && !was_parried && !hitpause {
+        can_jump = true;
+        can_attack = true;
+        //can_special = true;
+        can_airdodge = true;
     }
 }
 
@@ -425,6 +454,19 @@ if window == 1 && window_timer == 1 {
     }
 }
 
+if attack == AT_DTILT {
+    if window == 1 && window_timer == window_length {
+        spawn_base_dust(x, y, "dash", spr_dir);
+    }
+}
+
+if attack == AT_DSTRONG {
+    if window == 2 && window_timer == 4 && !hitpause {
+        spawn_base_dust(x+20, y, "dash_start", -1);
+        spawn_base_dust(x-20, y, "dash_start", 1);
+    }
+}
+
 //throw attacks
 if holding_wt && throwing_wt {
     if (attack == AT_FTILT || attack == AT_FAIR || attack == AT_BAIR) && window == 1 && window_timer == get_window_value(attack, 1, AG_WINDOW_LENGTH) {
@@ -517,7 +559,7 @@ if holding_wt && throwing_wt {
             var wt_hsp = 4;
             var wt_vsp = 0;
         }
-        var wt = instance_create(x + 44*spr_dir, y, "obj_article1");
+        var wt = instance_create(x + 44*spr_dir, y+2, "obj_article1");
             wt.player_id = id;
             wt.hsp = wt_hsp*spr_dir;
             wt.vsp = wt_vsp;
@@ -552,7 +594,7 @@ if holding_wt && throwing_wt {
             hitbox.wt = wt.id;
     }
     
-    move_cooldown[AT_DSPECIAL] = 30;
+    move_cooldown[AT_DSPECIAL] = clamp(move_cooldown[AT_DSPECIAL], 20, 100000);
 }
 
 //picking up wt
@@ -581,7 +623,7 @@ if attack == AT_DSPECIAL && picking_wt {
 }
 
 if attack == AT_TAUNT {
-    if get_player_color(player) == 11 { //sans
+    if get_player_color(player) == 11 && !mute_mode { //sans
         if window == 1 && window_timer == get_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH) {
             window = 5;
             window_timer = 0;

@@ -4,9 +4,9 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.73";
-patch_day = "OCT";
-patch_month = "23";
+patch_ver = "2.0";
+patch_day = "DEC";
+patch_month = "11";
  
 var num_alts = 20;
 var alt_cur = get_player_color(player);
@@ -25,8 +25,8 @@ alt_name[6]  = "Big Yoshi";
 alt_name[7]  = "Boshi";
 alt_name[8]  = "Croco";
 alt_name[9]  = "Belome";
-alt_name[10]  = "Knife Guy";
-alt_name[11]  = "Grate Guy";
+alt_name[10] = "Knife Guy";
+alt_name[11] = "Grate Guy";
 alt_name[12] = "Yaridovich";
 alt_name[13] = "Culex";
 alt_name[14] = "pastel";

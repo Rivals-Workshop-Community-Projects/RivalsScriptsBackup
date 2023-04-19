@@ -72,6 +72,18 @@ if (nspec_grabbed == true && ds_map_exists(kirb_chonk_spr_map, sprite_index)){
     }
 }
 
+if (attack == AT_TAUNT){
+	if (window < 7){
+		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+	} else {
+		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt2"));
+		set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 9);
+	}
+} else {
+	set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 3);
+	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+}
+
 /*
 if(attack == AT_COPY_MIKE){
 	if (window == 1){

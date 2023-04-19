@@ -1,107 +1,245 @@
-//Paired with Dstrong 
-
-var attack = AT_DSPECIAL_2; // Swap Taunt for attack that this is
+var attack = AT_DSPECIAL_2; // Dspecial EX Grab
 
 //Attack Values-----------------------------------------------------------------------------
 set_attack_value(attack, AG_CATEGORY, 2);
-set_attack_value(attack, AG_SPRITE, sprite_get("dspecial_2"));
+set_attack_value(attack, AG_SPRITE, sprite_get("dspecial_2")); //sprite_get("")
 set_attack_value(attack, AG_AIR_SPRITE, 0);
-set_attack_value(attack, AG_HURTBOX_SPRITE, sprite_get("dspecial_2_hurt"));
+set_attack_value(attack, AG_HURTBOX_SPRITE, sprite_get("dspecial_2_hurt")); //sprite_get("_hurt")
 set_attack_value(attack, AG_HURTBOX_AIR_SPRITE, 0);
-set_attack_value(attack, AG_NUM_WINDOWS, 5);
+set_attack_value(attack, AG_NUM_WINDOWS, 9);
 set_attack_value(attack, AG_HAS_LANDING_LAG, 0);
 set_attack_value(attack, AG_OFF_LEDGE, 0);
 set_attack_value(attack, AG_LANDING_LAG, 0);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
-set_attack_value(attack, 87, 
-"- Enhanced version of Dspecial
-- Consumes Mark
-- Has Anti Gannoncide Platform code.");//AG_MUNO_ATTACK_MISC_ADD 
 
 //Window Values-----------------------------------------------------------------------------
 var window_num = 1;
 
-// Window #1 / Frame(s) # 0-1 / Swing
+// Window #1 / Frame(s) # 0-4 / Start up In Front
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 2);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
-set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 0);
-window_num++;
-
-// Window #2 / Frame(s) # 2- / Rising
-set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 3);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_VSPEED, -7);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, -4);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED, 5);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
+
 window_num++;
 
-// Window #3 / Frame(s) # 3- / Dropping
+// Window #2 / Frame(s) # 5-7 / Start up Behind
+set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, -4);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
+set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
+set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1")); //  or sound_get("")
+set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 5);
+
+window_num++;
+
+// Window #3 / Frame(s) # 8-9 / Looping Fall
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 10);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 4);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 3);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED, 10);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
+
 window_num++;
 
-// Window #4 / Frame(s) # 4- / Impact
+// Window #4 / Frame(s) # 10-12 / Landing
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 4);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 9);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
+
 window_num++;
 
-// Window #5 / Frame(s) # 5-8 / Recovery
+// Window #5 / Frame(s) # 13-17 / Stomp 1
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 16);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
+
+window_num++;
+
+// Window #6 / Frame(s) # 13-17 / Stomp 2
+set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
+
+window_num++;
+
+// Window #7 / Frame(s) # 18-21 / Launcher Kick Start Up
+set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 2);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 18);
+
+window_num++;
+
+// Window #8 / Frame(s) # 22- / Active Frames Launcher Kick
+set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 22);
+
+window_num++;
+
+// Window #9 / Frame(s) # 23-27 / Endlag
+set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 23);
+
+window_num++;
 
 //Hitbox Values --------------------------------------------------------------------------
 //Set Number of Hitboxes
-set_num_hitboxes(attack, 1); // Swap 1 for number of hitboxes
+set_num_hitboxes(attack, 5); // Swap 1 for number of hitboxes
 
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
 
-//Set Hitbox Values - This is the basic block of a functional hitbox
-// Hitbox 1 - Final Hitbox with knockback
-window_for_hitbox = 4; 
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 4);
-    set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -45);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -40);
-    set_hitbox_value(attack, hitbox_num, HG_WIDTH, 100);
-    set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 80);
-    set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 15);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 70);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 9);
-    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.2);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1.2);
-    //set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 20);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // 304 - basic large
-    set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"))
-    set_hitbox_value(attack, hitbox_num, 92, "If gannoncide platform is active, 
-    this sends at angle 90 always");//HG_MUNO_HITBOX_MISC
-//hitbox_num++;
+// Hitbox #1 / Window #3 - / Falling Shock Hitbox
+window_for_hitbox = 3; // Set this to change the window that the hitbox comes out at and its length quickly
+set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
+set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -23);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 60);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 99);
+set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 1);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); // 303 - basic small directional
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1")); //sfx_absa_singlezap1 sfx_absa_singlezap2
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
+
+hitbox_num++;
+
+// Hitbox #2 / Window #4 - / Shockwave Landing Hitbox
+window_for_hitbox = 4; // Set this to change the window that the hitbox comes out at and its length quickly
+set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
+set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -21);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 113);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 48);
+set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 3);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_general);
+
+hitbox_num++;
+
+// #3 Stomp 1 Hitbox Window 5
+window_for_hitbox = 5; 
+set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
+set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2);
+set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 12);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 19);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -19);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 47);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 41);
+set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 4);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
+//set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); //303 - basic small directional
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1")); //sfx_absa_singlezap1 sfx_absa_singlezap2
+set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
+hitbox_num++;
+
+// #4 Stomp 2 Hitbox Window 6
+window_for_hitbox = 6; 
+set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
+set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2);
+set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 12);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 19);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -19);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 47);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 41);
+set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 4);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
+//set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); //303 - basic small directional
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1")); //sfx_absa_singlezap1 sfx_absa_singlezap2
+set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
+hitbox_num++;
+
+// Hitbox #5 / Window #8 - / Launcher Hitbox
+window_for_hitbox = 8; // Set this to change the window that the hitbox comes out at and its length quickly
+set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, -1);
+set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 38);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -34);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 78);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 68);
+set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 5);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.15);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, 1); // Negate most drive and SDI during shock.
+set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // Normal Large
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
+set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
+set_hitbox_value(attack, hitbox_num, 92, "If gannoncide platform is active, 
+this sends at angle 90 always");//HG_MUNO_HITBOX_MISC
+
+hitbox_num++;
 
 /*
 //Template for attacks - 
@@ -126,7 +264,7 @@ set_window_value(attack, window_num, AG_WINDOW_CANCEL_TYPE, 0);
 set_window_value(attack, window_num, AG_WINDOW_CANCEL_FRAME, 0);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 0); 
 set_window_value(attack, window_num, AG_WINDOW_SFX, 0); // asset_get("") or sound_get("")
-set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0); //get_window_value(attack,window_num,AG_WINDOW_LENGTH)-1);
 
 //individual hitbox properties --------------------------------------------------------
 set_hitbox_value(attack, hitbox_num, HG_PARENT_HITBOX, 0);
@@ -179,12 +317,35 @@ set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_AIR_FRICTION, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_LIFESPAN, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 0);
 
+//Woodcock Specific Attack Indexes
+set_attack_value(attack, 80, 0);//AG_MUNO_ATTACK_EXCLUDE = i; i++;		// Set to 1 to exclude this move from the list of moves
+set_attack_value(attack, 81, 0);//AG_MUNO_ATTACK_REFRESH = i; i++;		// Set to 1 to refresh this move's data every frame while the frame data guide is open
+set_attack_value(attack, 82, 0);//AG_MUNO_ATTACK_NAME = i; i++;			// Enter a string to override move name
+set_attack_value(attack, 83, 0);//AG_MUNO_ATTACK_FAF = i; i++;			// Enter a string to override FAF
+set_attack_value(attack, 84, 0);//AG_MUNO_ATTACK_ENDLAG = i; i++;			// Enter a string to override endlag
+set_attack_value(attack, 85, 0);//AG_MUNO_ATTACK_LANDING_LAG = i; i++;	// Enter a string to override landing lag
+set_attack_value(attack, 86, 0);//AG_MUNO_ATTACK_MISC = i; i++;			// Enter a string to OVERRIDE the move's "Notes" section, which automatically includes the Cooldown System and Misc. Window Traits found below
+set_attack_value(attack, 87, 0);//AG_MUNO_ATTACK_MISC_ADD = i; i++;		// Enter a string to ADD TO the move's "Notes" section (preceded by the auto-generated one, then a line break)
+
+//Woodcock Specific Hitbox Indexes
+set_hitbox_value(attack, hitbox_num, 80, 0);//HG_MUNO_HITBOX_EXCLUDE = i; i++;		// Set to 1 to exclude this hitbox from the frame data guide
+set_hitbox_value(attack, hitbox_num, 81, 0);//HG_MUNO_HITBOX_NAME = i; i++;			// Enter a string to override hitbox name
+set_hitbox_value(attack, hitbox_num, 82, 0);//HG_MUNO_HITBOX_ACTIVE = i; i++;			// Enter a string to override active frames
+set_hitbox_value(attack, hitbox_num, 83, 0);//HG_MUNO_HITBOX_DAMAGE = i; i++;			// Enter a string to override damage
+set_hitbox_value(attack, hitbox_num, 84, 0);//HG_MUNO_HITBOX_BKB = i; i++;			// Enter a string to override base knockback
+set_hitbox_value(attack, hitbox_num, 85, 0);//HG_MUNO_HITBOX_KBG = i; i++;			// Enter a string to override knockback growth
+set_hitbox_value(attack, hitbox_num, 86, 0);//HG_MUNO_HITBOX_ANGLE = i; i++;			// Enter a string to override angle
+set_hitbox_value(attack, hitbox_num, 87, 0);//HG_MUNO_HITBOX_PRIORITY = i; i++;		// Enter a string to override priority
+set_hitbox_value(attack, hitbox_num, 88, 0);//HG_MUNO_HITBOX_GROUP = i; i++;			// Enter a string to override group
+set_hitbox_value(attack, hitbox_num, 89, 0);//HG_MUNO_HITBOX_BHP = i; i++;			// Enter a string to override base hitpause
+set_hitbox_value(attack, hitbox_num, 90, 0);//HG_MUNO_HITBOX_HPG = i; i++;			// Enter a string to override hitpause scaling
+set_hitbox_value(attack, hitbox_num, 91, 0);//HG_MUNO_HITBOX_MISC = i; i++;			// Enter a string to override the auto-generated misc notes (which include misc properties like angle flipper or elemental effect)
+set_hitbox_value(attack, hitbox_num, 92, 0);//HG_MUNO_HITBOX_MISC_ADD = i; i++;	
 
 // SFX List
 mfx_back
@@ -870,4 +1031,9 @@ Angle Flippers
 7 = Horizontal knockback sends toward the enemy player
 8 = Sends away from the center of the hitbox
 9 = Sends toward the center of the hitbox
+
+full sound function
+sound_play(asset_get( "sfx_ell_steam_hit" ),false,noone,.15, .4 + (.1 * random_func(1, 3, false ))); // soundID,looping,panning,volume,pitch / Pitch range from .4 to .7
+
 */
+

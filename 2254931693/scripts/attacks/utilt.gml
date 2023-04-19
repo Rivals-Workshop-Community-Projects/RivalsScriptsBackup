@@ -4,7 +4,7 @@ set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 3);
 
 set_window_value(AT_UTILT, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sound_get("bonby_swipe_6"));
@@ -36,7 +36,7 @@ set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 46);
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 8.5);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0.55);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));

@@ -29,6 +29,8 @@ if(attack == AT_NSPECIAL)
     else
         hsp = clamp(hsp*1.2, -11, 11);
 }
+
+
 if(attack == AT_DSPECIAL)
 {
     if(hbox_num == 2)

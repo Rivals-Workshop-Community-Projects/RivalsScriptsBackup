@@ -1,4 +1,4 @@
-if ("hudColour" in player_id)
+if ("hudColour" in player_id && player_id.hasCopy)
 {
 	shader_end();
 	gpu_set_fog(1, player_id.hudColour, 0, 1);

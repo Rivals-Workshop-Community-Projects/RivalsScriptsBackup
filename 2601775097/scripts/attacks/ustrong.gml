@@ -13,7 +13,7 @@ var theikos_friction = 0.2;
 
 var window_num = 1; //charge startlag
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_spirit_flame_1"));
@@ -33,7 +33,7 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, theikos_frictio
 
 window_num ++; //attack 1 windup
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -105,8 +105,6 @@ set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
-set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(atk, hitbox_num, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
 
 hitbox_num ++; //attack 1 upward hitbox
@@ -131,8 +129,6 @@ set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
-set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(atk, hitbox_num, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
 
 hitbox_num ++; //attack 1 backward hitbox
@@ -157,8 +153,6 @@ set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
-set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(atk, hitbox_num, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[2]);
 
 hitbox_num ++; //attack 2 projectile

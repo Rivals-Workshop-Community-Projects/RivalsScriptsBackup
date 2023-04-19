@@ -61,7 +61,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 6;		// 4    -  6
-prat_land_time      = 12;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -163,7 +163,7 @@ hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
 
 // Victory
 set_victory_bg(CH_ORCANE); // victory_background.png
-set_victory_theme(CH_HODAN);
+set_victory_theme(sound_get("Scheme_inc"));
 
 // Movement SFX
 land_sound          = asset_get("sfx_land_heavy");
@@ -185,14 +185,34 @@ pot_trap = false;
 food_id = 0;
 shrimpsplosion = false;
 shrimp_proj = 0;
+dspecial_ledge_cancel = 0;
+
+able_to_grab_pot = false;
 //dspecial_spr_var = false;
 
 bubpop_pitch = 0;
 uspec_angle = 0;
 other_is_scalding = false;
 
+var tmp_sync_vars = get_synced_var(player);
+for (var i = 0; i < 2; i++)
+{
+    var shift = (i*4);
+    synced_vars[i] = tmp_sync_vars >> shift & 15;
+}
+
 avocado = false;
-michigan = false;
+secret_alt_on = false;
+switch (synced_vars[0])
+{
+	default:
+	secret_alt_on = false;
+	break;
+	case 1:
+	secret_alt_on = true;
+	break;
+}
+secret_alt_num = 0;
 
 gumbo_is_scalding = false;
 gumbo_scalding = false;
@@ -201,12 +221,18 @@ gumbo_scalding_timer = 0;
 is_scalding = false;
 gumbo_ditto = false;
 enemy_pumbo = noone;
-//I_am_gumbo = self;
+I_am_gumbo = false;
+num_pumbos = 0;
 other_scalding = false;
 custom_food = 0;
 
+genesis_alt = false;
+
+galaxy_scale = 0;
+
 galaxy_timer = 0;
 pot_explode_owner = noone;
+pumbo_pot_ID = 0;
 
 alt = get_player_color(player);
 set_victory_portrait(sprite_get("portrait"));
@@ -230,17 +256,19 @@ custom_food = 6;
 }if(alt == 25){ //riptide
 pot_skin = 1;
 set_victory_portrait(sprite_get("summer_portrait"));
+}if(alt == 26){ //lakers
+pot_skin = 2;
 }
 
-if(get_player_color(player) == 23){//drip
-set_color_profile_slot( 23, 0, 88, 80, 63 ); //Gumbo Skin 1
-set_color_profile_slot( 23, 1, 200, 189, 158 ); //Gumb Skin 2
-set_color_profile_slot( 23, 2, 92, 92, 92 ); //Jeans
-set_color_profile_slot( 23, 3, 89, 89, 89 ); //Hoodie
-set_color_profile_slot( 23, 4, 255, 210, 77 ); //Eyes
-set_color_profile_slot( 23, 5, 242, 207, 207 ); //Po Skin 1
-set_color_profile_slot( 23, 6, 211, 120, 120 ); //Po Skin 2
-set_color_profile_slot( 23, 7, 255, 255, 255 ); //Apron  
+if(get_player_color(player) == 22){//dave land
+set_color_profile_slot( 22, 0, 248, 215, 79 ); //Gumbo Skin 1
+set_color_profile_slot( 22, 1, 248, 182, 0 ); //Gumb Skin 2
+set_color_profile_slot( 22, 2, 101, 103, 166 ); //Jeans
+set_color_profile_slot( 22, 3, 242, 106, 43 ); //Hoodie
+set_color_profile_slot( 22, 4, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 22, 5, 255, 143, 227 ); //Po Skin 1
+set_color_profile_slot( 22, 6, 101, 68, 212 ); //Po Skin 2
+set_color_profile_slot( 22, 7, 255, 255, 255 ); //Apron
 }if(get_player_color(player) == 15){//terry
 set_color_profile_slot( 16, 0, 130, 90, 49 ); //Gumbo Skin 1
 set_color_profile_slot( 16, 1, 107, 107, 107 ); //Gumb Skin 2
@@ -277,6 +305,15 @@ set_color_profile_slot( 12, 4, 163, 46, 39 ); //Eyes
 set_color_profile_slot( 12, 5, 79, 150, 156 ); //Po Skin 1
 set_color_profile_slot( 12, 6, 206, 193, 130 ); //Po Skin 2
 set_color_profile_slot( 12, 7, 63, 83, 110 ); //Apron
+}if(get_player_color(player) == 21){//s&b
+set_color_profile_slot( 21, 0, 77, 78, 94 ); //Gumbo Skin 1
+set_color_profile_slot( 21, 1, 140, 140, 140 ); //Gumb Skin 2
+set_color_profile_slot( 21, 2, 239, 217, 70 ); //Jeans
+set_color_profile_slot( 21, 3, 175, 102, 184 ); //Hoodie
+set_color_profile_slot( 21, 4, 243, 242, 160 ); //Eyes
+set_color_profile_slot( 21, 5, 149, 110, 67 ); //Po Skin 1
+set_color_profile_slot( 21, 6, 110, 70, 27 ); //Po Skin 2
+set_color_profile_slot( 21, 7, 255, 255, 255 ); //Apron
 }
 
 tutorial = 0
@@ -295,12 +332,62 @@ menu_select = 0;
 menu_select_cooldown = 0;
 arrow_heightvar = -120;
 
+presentation_mode = false;
+
 textbox_skipped = false;
 
+pumbo_victory_quote = "I didn't realize we were popular enough to have copycats.";
+pumbo_handled_victory_quote = false;
+pumbo_victory_speaker = 0;
 
-// MunoPhone Touch code - don't touch
-// should be at BOTTOM of file, but above any #define lines
-/*
-muno_event_type = 0;
-user_event(14);
-*/
+//Compat 
+
+// Steve death message.
+steve_death_message = "Steve got cooked well done.";
+
+//Pokemon stadium
+//pkmn_stadium_name_override = ""
+pkmn_stadium_front_img = sprite_get("p&g_front")
+pkmn_stadium_back_img = sprite_get("p&g_back")
+
+//Trial Grounds
+guiltySprite = sprite_get("p&g_trial")
+
+//Mt Dedede
+
+arena_title = "Cajun crusaders";
+
+//Boxing arena
+
+boxing_title = "Bayou 
+connoisseurs";
+
+//Soulbound Conflict message
+
+battle_text = "* A rich smell fills the room.";
+
+//Snake interigations
+
+sna_interrogated_line_01 = "Hey, a little help here Po!";
+sna_interrogated_line_02 = "Hands off the merch bud. I'll make you into a Cajun Snake Fry.";
+sna_interrogated_line_03 = "I'm NOT giving you a discount for this!";
+
+//AgentN Codec
+
+ncode1 = "They are cooks with a resturant called the Mud Flats."
+ncode2 = "Po is the shrimp and Gumbo is the alligator."
+ncode3 = "If encountered please get enough food to share."
+
+//Henry Stickmin fail
+
+has_fail = true;
+fail_text = "Never let bro cook again bruh";
+
+
+//unregistered HyperCam quotes
+
+uhc_victory_quote = "Mu d fats mor lik bad fats :0 llol";
+//Hikaru title
+
+Hikaru_Title = "Cajun"; 
+mamizou_transform_spr = sprite_get("mamizou_pumbo"); 

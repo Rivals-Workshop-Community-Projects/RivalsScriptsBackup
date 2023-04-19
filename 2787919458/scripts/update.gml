@@ -50,7 +50,7 @@ switch(state){
 		}    
     break;
     case PS_PARRY:
-        if(state_timer == 1 && !hitpause){
+        if(state_timer == 1 && !hitpause && !trigger_warning){
         	sound_stop(stupid_sound_shit)
             stupid_sound_shit = sound_play(sound_get("illuminati"),false,noone,0.8,1);
         }
@@ -156,7 +156,7 @@ switch(state){
 		}    
     break;
     case PS_TECH_GROUND:
-		if(state_timer == 1){
+		if(state_timer == 1 && !trigger_warning){
 			sound_stop(airhorn_sfx)
 			airhorn_sfx = sound_play(sound_get("Sonic_Skateboard"));
 		}    
@@ -177,13 +177,15 @@ if(is_fest){
 	trail_pos[trail_cur_num].x = x;
 	trail_pos[trail_cur_num].y = y;
 	trail_pos[trail_cur_num].yscale = image_yscale;
-	trail_pos[trail_cur_num].rot = image_angle;
+	trail_pos[trail_cur_num].rot = image_angle-cur_sprite_rot;
 	trail_pos[trail_cur_num].col = image_blend;
 	
 	trail_cur_num--;
 	if (trail_cur_num < 0) trail_cur_num = trail_total_size - 1;
 }
-
+if((state != PS_HITSTUN && state != PS_TUMBLE) && cur_sprite_rot != 0){
+	cur_sprite_rot = 0;
+}
 if(ringcooldown > 0){
 	ringcooldown -= 1;
 }
@@ -201,17 +203,32 @@ if get_player_color(player) = 2 {
 if(!instance_exists(dorito_hb) && move_cooldown[AT_NSPECIAL] > 65){
 	move_cooldown[AT_NSPECIAL] = 0;
 }
-if(!instance_exists(shrek_door) && move_cooldown[AT_FSTRONG] != 0){
+if(move_cooldown[AT_NSPECIAL] == 0 && instance_exists(dorito_hb)){
+	dorito_hb = noone;
+}
+if(!instance_exists(shrek_door) && move_cooldown[AT_FSTRONG] < 3){
 	move_cooldown[AT_FSTRONG] = 0;
 }
-if(!instance_exists(dat_boi) && move_cooldown[AT_DSTRONG] != 0){
+if(!instance_exists(dat_boi) && move_cooldown[AT_DSTRONG] < 3){
 	move_cooldown[AT_DSTRONG] = 0;
 }
-if(!instance_exists(doge) && move_cooldown[AT_USTRONG] != 0){
+if(!instance_exists(doge) && move_cooldown[AT_USTRONG] < 3){
 	move_cooldown[AT_USTRONG] = 0;
 }
 if((state != PS_RESPAWN && attack != AT_TAUNT || attack == AT_TAUNT && vsp != 0) && respawnplat == 1){
 	respawnplat = 0;
+}
+
+if(instance_exists(dat_boi)){
+	with(asset_get("oPlayer")){
+		if(datboi_hit_cooldown > 0){
+			datboi_hit_cooldown--;
+		}else{
+			with(other.dat_boi){
+				can_hit[other.player] = true;	
+			}
+		}
+	}
 }
 
 if weegee_face == 1 {
@@ -222,4 +239,21 @@ if weegee_face == 1 {
     if state == PS_RESPAWN or state == PS_SPAWN {
     	weegee_face = 1;
     }
+}
+
+if(runesUpdated || get_match_setting(SET_RUNES)){
+	if(runeD){
+	    set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 14);
+	    set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 9);
+	    set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, 1.1);
+	    set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 1.2);
+	}
+	if(runeE){
+		if(!phone_attacking && state != PS_HITSTUN && is_fest && !hitpause){
+			create_hitbox(AT_EXTRA_1,1,x,y);
+	        set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, (vsp<6)?361:315);
+	        set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, (vsp<6)?6:4);
+	        set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, (vsp<6)?.7:.55);
+		}
+	}
 }

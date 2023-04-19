@@ -50,6 +50,7 @@ sprite_change_offset("uspecial_grounded", 47, 69, true);
 sprite_change_offset("dspecial", 52,60, true);
 sprite_change_offset("taunt", 52,86, true);
 sprite_change_offset("taunt_crystal", 40,40, true);
+sprite_change_offset("taunt_laser", 10,15, true);
 
 sprite_change_offset("plat", 100/2, 0, true);
 

@@ -9,7 +9,7 @@ if(my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num  == 2 || my_hitboxID.a
 if(my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1 || my_hitboxID.attack == AT_DATTACK || my_hitboxID.attack == AT_FSTRONG || my_hitboxID.attack == AT_USTRONG
 || my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.type <= 1 && my_hitboxID.hbox_num != 5 || my_hitboxID.hbox_num == 11)
 || my_hitboxID.attack == AT_NAIR && my_hitboxID.hbox_num >= 11 || my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_DAIR
-|| my_hitboxID.attack == AT_FSPECIAL|| my_hitboxID.attack == AT_DSPECIAL){
+|| my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_TAUNT){
 	sound_play(sound_get("slash_hit"));
 }
 if(my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 7 || my_hitboxID.attack == AT_UTILT || my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.type >= 2

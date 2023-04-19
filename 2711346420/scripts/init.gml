@@ -302,7 +302,3 @@ battle_text = "* This monkey seems to be attatched to that giant plastic ball.";
 has_fail = true;
 fail_text = "Fall out!";
 gfzsignspr = sprite_get("gfz")
-
-//phone
-muno_event_type = 0;
-user_event(14);

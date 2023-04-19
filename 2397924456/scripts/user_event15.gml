@@ -242,6 +242,9 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.5", "14 April, 2023");
+initWords("Advertising");
+
 initPatch("1.4", "05 February, 2022");
 initHeader("Legion - Bugfixes");
 initSection("Fixed a crash introduced with the new RoA patch.");

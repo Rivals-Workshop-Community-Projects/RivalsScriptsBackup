@@ -1,4 +1,4 @@
-//user_event1.gml - plusle and minun constants.
+//user_event0.gml - plusle and minun constants.
 //called in init.gml.
 
 if (is_master_player || is_solo_player) {

@@ -38,6 +38,13 @@ if fspecial_air_used == true{
     move_cooldown[AT_FSPECIAL] = 4
 }
 
+if attack == AT_USPECIAL{
+fs_charge_mult = 0.4
+}
+if attack != AT_USPECIAL{
+fs_charge_mult = 1.3
+}
+
 if (!free || state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN){
     fspecial_air_used = false
 }

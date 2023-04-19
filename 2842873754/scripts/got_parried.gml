@@ -15,6 +15,11 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
     }
 }
 
+//Stars should put Dedede in parrystun like a normal move since they are unrefelctable.
+if ((my_hitboxID.attack == AT_USPECIAL || my_hitboxID.attack == AT_USPECIAL_2) && my_hitboxID.hbox_num == 5) {
+	was_parried = true;
+}
+
 //The drums go away on parry.
 
 with (obj_article3) {

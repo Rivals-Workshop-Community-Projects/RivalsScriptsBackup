@@ -197,8 +197,13 @@ if (attack == AT_USPECIAL){
 }
 
 if (attack == AT_DSPECIAL){
+	if (dspeccancel == true){
+		can_jump = false;
+		vsp = clamp(vsp, -15, 0)
+	}
 	if (window == 1){
 		if (window_timer == 1){
+			dspeccancel = false;
 			reset_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH);
 			reset_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX_FRAME);
 			reset_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH);

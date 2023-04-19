@@ -3,7 +3,7 @@
 //check if otestplayer
 is_test_player = (object_index == asset_get("oTestPlayer"));
 //check if solo/co-op player
-is_solo_player = (get_player_color(player) >= 30)
+is_solo_player = (get_player_color(player) >= 30) //get_synced_var() > 0;
 
 if (!custom_clone) {
     is_master_player = true;
@@ -29,6 +29,10 @@ if (!custom_clone) {
     //variable that keeps track of the special button being held
     special_held = 0;
     special_held_counter = 0;
+    
+    //variable that keeps track of the current unit which the master player object is following
+    mimic_clone_id = 0;
+    update_mimic_counter = 0;
     
     //set constants in user_event0.gml.
     user_event(0);
@@ -56,7 +60,7 @@ is_master_player = false;
 //0 = plusle, 1 = minun
 //for the test player, just load plusle.
 if (is_test_player) species_id = 0;
-else if (is_solo_player) species_id = (get_player_color(player) == 31);
+else if (is_solo_player) species_id = (get_player_color(player) == 31); //clamp(get_synced_var() - 1, 0, 1);
 else species_id = clones_player_id.created_instance_index;
 
 //hide any buddies from this unit if they are not plusle.
@@ -118,6 +122,10 @@ uspecial_use_second_part = false;
 uspecial_homing_x = x;
 uspecial_homing_y = y;
 
+//shield/wavedash buffer fix
+manual_input_wavedash = 0;
+shield_down_prev = 0;
+free_prev = 0;
 
 //dspecial crouch armor
 dspecial_record_window = 0;

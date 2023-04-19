@@ -12,6 +12,7 @@ switch (state){
 	case PS_PRATFALL:
 	sprite_index = sprite_get("jump");
 	image_index = 5;
+
 	break;
 
 	case PS_ATTACK_GROUND:
@@ -403,7 +404,130 @@ with (asset_get("hit_fx_obj")){
 
 
 
+// FRAMEDATA
 
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (window == 1 && window_timer == 0){
+	if (tab_frame_disp){
+		for (i = 0; i < 60; i++){
+	    framedata_arr[@i][@0] = noone;
+	    }
+	
+		tab_last_window = 0;
+		for (i = 0; i <= get_num_hitboxes(attack); i++){
+			
+			if (get_hitbox_value(attack, i, HG_WINDOW) > tab_last_window){
+				tab_last_window = get_hitbox_value(attack, i, HG_WINDOW);
+			}
+			
+		}
+	
+		tab_current_frame = 0;
+		tab_frame_type = 0;
+		tab_prev_hboxnum = 0;
+		tab_loop_frames = 0;
+		tab_loop_timer = 0;
+		tab_type_timer = 0;
+		tab_cancellable_check = false;
+	}
+}
+
+
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || state == PS_PRATFALL || state == PS_PRATLAND || state == PS_LANDING_LAG) && (tab_frame_disp) && (attack != 40){
+	
+
+	var current_hitbox = noone;
+	
+	if (tab_loop_timer == 60) && !hitpause{
+	for (i = 0; i < 60; i++){
+		
+		var tab_h = colour_get_hue(framedata_arr[@i][@0]);
+		var tab_s = colour_get_saturation(framedata_arr[@i][@0]) * 0.6;
+		var tab_v = colour_get_value(framedata_arr[@i][@0]) * 0.2;
+		
+		framedata_arr[@i][@0] = make_colour_hsv(tab_h, tab_s, tab_v);
+    }
+		tab_loop_frames++;
+		tab_loop_timer = 0;
+	}
+	
+	
+	
+	with (pHitBox){
+		if (player == other.player){
+			if (hitbox_timer != length)
+			current_hitbox = id;
+		}
+	}
+	
+	
+	if (current_hitbox != noone){
+		
+		if (current_hitbox.type == 1)
+		tab_frame_type = 1;
+		else if (get_hitbox_value(attack, current_hitbox.hbox_num, HG_WINDOW) == window && current_hitbox.type == 2)
+		tab_frame_type = 1;
+		
+		if (get_hitbox_value(attack, current_hitbox.hbox_num, HG_WINDOW)+1 == window && current_hitbox.type == 2){
+		tab_frame_type = 2;
+		}
+
+		
+	}
+	
+	
+	if (current_hitbox == noone && tab_frame_type == 1){
+		tab_frame_type = 2;
+	}
+	
+	if (state == PS_PRATLAND || state == PS_LANDING_LAG)
+	tab_frame_type = 4;
+	
+	
+	if (tab_frame_type == 0)
+		tab_frame_color = c_blue;
+	if (tab_frame_type == 1)
+		tab_frame_color = c_red;
+	if (tab_frame_type == 2){
+		tab_frame_color = c_yellow;
+			if (can_attack || can_jump || can_special || tab_cancellable_check)
+			tab_frame_type = 3;
+	}
+	
+	
+	if (tab_frame_type == 3)
+		tab_frame_color = c_orange;
+	
+
+	
+	if (tab_frame_type == 4)
+		tab_frame_color = c_olive;
+	
+	if (get_window_value(attack, window, AG_WINDOW_IASA) != 0) || (tab_iasa_check)
+		tab_frame_color = c_green;
+	
+	var frame_index = (tab_current_frame - (60 * tab_loop_frames));
+	
+	framedata_arr[@frame_index][@0] = tab_frame_color;
+	
+	if (frame_index > 0){
+		if (framedata_arr[@frame_index][@0] != framedata_arr[@frame_index-1][@0])
+		tab_type_timer = 0;
+	}
+	
+	framedata_arr[@frame_index][@1] = tab_type_timer;	
+	
+	framedata_arr[@frame_index][@3] = invincible;
+	
+	if (framedata_arr[@frame_index][@3] == 0)
+	framedata_arr[@frame_index][@3] = get_window_value( attack, window, AG_WINDOW_INVINCIBILITY );
+	
+	if (!hitpause){
+	tab_type_timer++;
+	tab_current_frame++;
+	tab_loop_timer++;
+	}
+	
+}
 
 
 

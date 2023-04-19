@@ -1,3 +1,22 @@
+
+
+//icon/button
+
+
+if (get_player_color(player) == 26 || get_player_color(player) == 27 || get_player_color(player) == 25) {
+
+    draw_set_font(asset_get("roundFont")) //ensure correct font for string width
+    //draw_set_halign(fa_center)
+    //draw_text_transformed_color(x+55*2,y+(74*2),get_player_name(player),1,1,0,c_green,c_green,c_green,c_green,1);
+    draw_sprite_ext(sprite_get("ssnk_tagpal_icon"),0,(x+90)-(string_width(get_player_name(player))/2),(y+78*2)+1,2,2,0,$66ff99,1);
+
+}
+
+
+
+
+
+
 //--- ---
 //
 // hyuponia's "ae" css code
@@ -24,7 +43,7 @@ if (get_player_color(player) == 14) { //AND 26
     
     
 	draw_sprite_ext(sprite_get("charselect_gb"),1,x+8,y+8,2,2,0,-1,1);
-} else if (get_player_color(player) == 25) { //AND 26
+} else if (get_player_color(player) == 24) { //AND 26
     
     
 	draw_sprite_ext(sprite_get("charselect_prism"),1,x+8,y+8,2,2,0,-1,1);
@@ -96,7 +115,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 29; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(255, 57, 124 ) // "color preview square" color. can be any color!
@@ -168,33 +187,20 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[22,0] = make_color_rgb( 117, 137, 156)
 	ce[22,1] = "Silver Fox"
 	ce[22,2] = ""
-	ce[23,0] = make_color_rgb( 177, 20, 224)
-	ce[23,1] = "nova_alt.png"
+	ce[23,0] = make_color_rgb( 227, 151, 0)
+	ce[23,1] = "BLM"
 	ce[23,2] = ""
-	ce[24,0] = make_color_rgb( 227, 151, 0)
-	ce[24,1] = "BLM"
+	ce[24,0] = make_color_rgb( 215, 215, 215)
+	ce[24,1] = "Shattered Prism"
 	ce[24,2] = ""
-	ce[25,0] = make_color_rgb( 215, 215, 215)
-	ce[25,1] = "Shattered Prism"
+	ce[25,0] = make_color_rgb(145, 0, 0)
+	ce[25,1] = "Event"
 	ce[25,2] = ""
-	ce[26,0] = make_color_rgb( 39, 158, 96)
-	ce[26,1] = "Genji-Ish"
+	ce[26,0] = make_color_rgb( 255, 255, 255)
+	ce[26,1] = "Champions"
 	ce[26,2] = ""
-	ce[27,0] = make_color_rgb( 232, 16, 16)
-	ce[27,1] = "Phantom Menace"
-	ce[27,2] = ""
-	ce[28,0] = make_color_rgb( 39, 111, 163)
-	ce[28,1] = "Riptide"
-	ce[28,2] = ""
-	ce[29,0] = make_color_rgb( 39, 76, 158)
-	ce[29,1] = "Calamity"
-	ce[29,2] = ""
-	ce[30,0] = make_color_rgb( 52, 103, 202)
-	ce[30,1] = "Halloween"
-	ce[30,2] = ""
-	ce[31,0] = make_color_rgb( 179, 32, 32)
-	ce[31,1] = "Ass Ahoy"
-	ce[31,2] = ""
+	
+
 
 	
 	// you can add more, by copypasting and changing the first index of the array accordingly.
@@ -312,17 +318,18 @@ hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
 color_rgb=make_color_rgb(255, 27, 24); //input rgb values here, uses rgb to create a gamemaker colour variable
 hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
 color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot(25, 0, 215,215,215); //uses that variable to set the slot's new colours
+set_color_profile_slot(24, 0, 215,215,215); //uses that variable to set the slot's new colours
 
 color_rgb_2=make_color_rgb(255, 145, 208); //input rgb values here, uses rgb to create a gamemaker colour variable
 hue_2=(color_get_hue(color_rgb_2)+hue_offset) mod 255; //finds the hue and shifts it
 color_hsv_2=make_color_hsv(hue_2,color_get_saturation(color_rgb_2),color_get_value(color_rgb_2)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot(25, 1, color_get_red(color_hsv_2),color_get_green(color_hsv_2),color_get_blue(color_hsv_2)); //uses that variable to set the slot's new colours
+set_color_profile_slot(24, 1, color_get_red(color_hsv_2),color_get_green(color_hsv_2),color_get_blue(color_hsv_2)); //uses that variable to set the slot's new colours
 
 
 
 
 init_shader()
+
 
 
 

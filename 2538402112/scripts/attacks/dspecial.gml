@@ -64,7 +64,7 @@ set_window_value(AT_DSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 15);
 
 
-set_num_hitboxes(AT_DSPECIAL, 4);
+set_num_hitboxes(AT_DSPECIAL, 5);
 
 // Sweet
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 1);
@@ -128,24 +128,29 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 193); // Rock Small
 
 // Spin
-set_hitbox_value(AT_DSPECIAL, 4, HG_LIFETIME, 10);
-set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW, 2);
-set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_X, 0);
-set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_Y, -25);
-set_hitbox_value(AT_DSPECIAL, 4, HG_SHAPE, 0);
-set_hitbox_value(AT_DSPECIAL, 4, HG_WIDTH, 30);
-set_hitbox_value(AT_DSPECIAL, 4, HG_HEIGHT, 60);
-set_hitbox_value(AT_DSPECIAL, 4, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSPECIAL, 4, HG_DAMAGE, 4);
-set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_DSPECIAL, 4, HG_KNOCKBACK_SCALING, .2);
-set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_HITPAUSE, 3);
-set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-set_hitbox_value(AT_DSPECIAL, 4, HG_ANGLE, 300);
-set_hitbox_value(AT_DSPECIAL, 4, HG_ANGLE_FLIPPER, 3);
-set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, 302); // basic small with spin effect in center
+for(i = 4; i < 6; i++){
+    set_hitbox_value(AT_DSPECIAL, i, HG_WINDOW, 2);
+    set_hitbox_value(AT_DSPECIAL, i, HG_WINDOW_CREATION_FRAME, 0);
+    set_hitbox_value(AT_DSPECIAL, i, HG_LIFETIME, 4);
+    set_hitbox_value(AT_DSPECIAL, i, HG_HITBOX_X, 0);
+    set_hitbox_value(AT_DSPECIAL, i, HG_HITBOX_Y, -30);
+    set_hitbox_value(AT_DSPECIAL, i, HG_SHAPE, 2);
+    set_hitbox_value(AT_DSPECIAL, i, HG_WIDTH, 30);
+    set_hitbox_value(AT_DSPECIAL, i, HG_HEIGHT, 70);
+    set_hitbox_value(AT_DSPECIAL, i, HG_PRIORITY, 1);
+    set_hitbox_value(AT_DSPECIAL, i, HG_HITBOX_GROUP, -1);
+    set_hitbox_value(AT_DSPECIAL, i, HG_DAMAGE, 2);
+    set_hitbox_value(AT_DSPECIAL, i, HG_BASE_KNOCKBACK, 5);
+    set_hitbox_value(AT_DSPECIAL, i, HG_KNOCKBACK_SCALING, 0);
+    set_hitbox_value(AT_DSPECIAL, i, HG_BASE_HITPAUSE, 5.5);
+    set_hitbox_value(AT_DSPECIAL, i, HG_HITSTUN_MULTIPLIER, 0.5);
+    set_hitbox_value(AT_DSPECIAL, i, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+    set_hitbox_value(AT_DSPECIAL, i, HG_ANGLE, 270);
+    set_hitbox_value(AT_DSPECIAL, i, HG_ANGLE_FLIPPER, 3);
+    set_hitbox_value(AT_DSPECIAL, i, HG_VISUAL_EFFECT, 302); // basic small with spin effect in center
+}
+set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW, 2);
+set_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 5);
 
 // RUNES
 if has_rune("K"){

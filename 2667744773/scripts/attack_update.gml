@@ -25,17 +25,26 @@ if(attack == AT_DSPECIAL){
 		if(window_timer == 1){
 			Dspecial_count ++;
 		}
-		if(flutterTimer > 0 && Dspecial_count >= 2){
-		can_shield = true
-		can_jump = true
-		if(shield_pressed || jump_pressed){
-			sound_play(sound_get("Run"));
-			flutterTimer -= 30;
-		}
+		if(Dspecial_count >= 2){
+			if(window_timer = 1){
+				spawn_hit_fx(x, y, 305)
+			}
+			if(flutterTimer > 0){
+				if(shield_down && has_airdodge){
+					sound_play(sound_get("Run"));
+					flutterTimer -= 30;
+					set_state(PS_AIR_DODGE)
+				}else if(jump_down || (up_down && can_tap_jump()) || shield_down){
+					sound_play(sound_get("Run"));
+					flutterTimer -= 30;
+					set_state(PS_FIRST_JUMP)
+					hsp = 5 * spr_dir
+					
+				}
+			}
 		}
 		if(place_meeting( x + 5 * spr_dir, y - 20, asset_get("par_block")))
 		{ 
-			window_timer = 0;
 			sound_play(asset_get("sfx_metal_hit_weak"));
 			spr_dir = -spr_dir;
 			destroy_hitboxes();

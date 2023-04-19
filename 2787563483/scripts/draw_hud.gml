@@ -1,10 +1,11 @@
 //aaa
 
 //if "init_var" not in owner exit
-if get_stage_data(SD_ID) == 0 exit
+if (get_stage_data(SD_ID) == 0) exit
+if "icon_select" not in self exit
 
 var life = sprite_get("life_bar")
-var ability_icon = sprite_get("ability_icon")
+var ability_icon = icon_select
 var life_bar_1 = sprite_get("life_bar_gauge")
 var gau_w = sprite_get_width(life_bar_1)
 var gau_h = sprite_get_height(life_bar_1)

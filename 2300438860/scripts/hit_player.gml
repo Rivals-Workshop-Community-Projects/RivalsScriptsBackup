@@ -2,6 +2,23 @@
 
 if cosmetic = 1 {
 finishercd = 0
+} else {
+finishercd = 99999	
+
+if my_hitboxID.kb_scale <= .4 {
+	sound_play(asset_get("sfx_blow_weak1"),false,noone,1,1)
+} else if my_hitboxID.kb_scale <= .6 {
+	sound_play(asset_get("sfx_blow_medium2"),false,noone,1,1)	
+} else  {
+	sound_play(asset_get("sfx_blow_heavy1"),false,noone,1,1)	
+	
+}
+
+if my_hitboxID.attack == AT_DAIR {
+	sound_play(asset_get("sfx_blow_heavy1"),false,noone,1,1)	
+	
+}
+
 }
 
 if my_hitboxID.type == 1 {
@@ -12,8 +29,26 @@ if my_hitboxID.type == 1 {
     }
 }
 
+if cosmetic = 1 {
 switch my_hitboxID.attack {
 
+       case AT_UTHROW :
+          if my_hitboxID.hbox_num <= 6 {
+       		if my_hitboxID.hbox_num < 6 {
+       			sound_play(sound_get("slice"),false,noone,1,1)
+       			 var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       		} else {
+       			sound_play(sound_get("slice"),false,noone,1,0.6)
+       			var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
+			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+	        var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
+			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       		}
+          }
+       break;
+       
        case AT_USPECIAL :
           if my_hitboxID.hbox_num <= 4 {
        		sound_play(sound_get("slicel"),false,noone,1,1)
@@ -177,7 +212,7 @@ switch my_hitboxID.attack {
        break;  
       
 }
-
+}
 
 if cosmetic = 1{
 if get_player_color(player) = 1 {
@@ -234,7 +269,7 @@ dy1 = hit_player_obj.y
 }
 
 
-if my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_USPECIAL and  my_hitboxID.attack != AT_FSPECIAL and  my_hitboxID.attack != AT_DSPECIAL 
+if my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_USPECIAL and  my_hitboxID.attack != AT_FSPECIAL and  my_hitboxID.attack != AT_DSPECIAL and  my_hitboxID.attack != AT_UTHROW
 && attackbar != 0 {
     attackbar = 1
         //spawn_hit_fx (x,y,lighten3)

@@ -1,4 +1,4 @@
-
+//Smoke Stuff
 
 if galaxy_timer > 0 {
 	
@@ -87,16 +87,29 @@ if (state == PS_RESPAWN) {
 
 
 
-if  (get_player_color(player) == 22) {
+if  (get_player_color(player) == 8) {
 //crash prevention line
 shader_end();
 maskHeader();
     draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 0, c_white, 1); //change the 2*spr_dir and 2 to 1 if the character doesnt use small_sprites
 
 maskMidder();
-    draw_sprite_tiled_ext(sprite_get("derbyskirt"), 0, x * spr_dir, y, 1, 1, c_white, 1)
+    draw_sprite_tiled_ext(sprite_get("galaxy"), image_index, x * spr_dir, y, 1, 1, c_white, 1)
 maskFooter();
+
+if object_index != asset_get("oTestPlayer") {
+      maskHeader();
+      draw_sprite_ext(sprite_index, image_index, x+draw_x, y+draw_y, spr_dir, 1, spr_angle, c_white, 1);
+      with pHitBox if player_id == other && type == 2 {
+        draw_sprite_ext(sprite_index, image_index, x, y, 1*spr_dir, 1, 1, c_white, 1);
+    }
+    maskMidder();
+    draw_sprite_tiled_ext(sprite_get("galaxy"), 1, x, y, 1, 1, c_white, 1)
+    maskFooter();
+    }
 }
+
+
 
 //================================================================================
 

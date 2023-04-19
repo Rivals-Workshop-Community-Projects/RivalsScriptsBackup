@@ -26,7 +26,7 @@ if (attack == AT_TAUNT) {
         }
     }
     
-    if (window < 3) {
+    if (window < 3 && !free) {
         if (left_down)
             hsp = -1;
         else if (right_down)
@@ -50,33 +50,9 @@ if (attack == AT_DAIR) {
 	            window_timer = 0;
 	            destroy_hitboxes();
 	        }
-	        
-	        if (instance_exists(lucy_card_id)) {
-	        	var collision_pos = [round(x), round(y) - 11];
-	        	var collision_size = [64, 11];
-	        	var collision_rect = 
-	        		collision_rectangle(collision_pos[0] - collision_size[0] / 2, 
-	        		collision_pos[1] - collision_size[1] / 2,
-	        		collision_pos[0] + collision_size[0] / 2,
-	        		collision_pos[1] + collision_size[1] / 2,
-	        		lucy_card_id, 0, 1);
-	        	if (collision_rect && !hitpause && lucy_card_id.dair_cooldown <= 0) {
-                    sound_play(asset_get("sfx_shovel_brandish"));
-		            window = 4;
-		            window_timer = 0;
-		            destroy_hitboxes();
-		            with (lucy_card_id) {
-                        state = 0;
-                        state_timer = 0;
-                        window = 1;
-                        window_timer = 0;
-                        dair_cooldown = 60;
-		            }
-	        	}
-	        }
         }
     }
-    else if (window < 4) { 
+    else if (window < 4 || window >= 5) { 
         reset_attack_value(attack, AG_CATEGORY);
     }
 }
@@ -164,6 +140,7 @@ if (attack == AT_DSTRONG){
     can_move = window == 5;
     can_fast_fall = false;
     set_attack_value(AT_DSTRONG, AG_OFF_LEDGE, window >= 2);
+    set_window_value(AT_DSTRONG, 3, AG_WINDOW_VSPEED, lerp(-6.5, -9.5, strong_charge / 60));
     if (window == 4 && !hitpause) {
         var card_travel_spd = 17
         switch (card_charge) {
@@ -181,6 +158,7 @@ if (attack == AT_DSTRONG){
                     shoot_card(attack, 1, 16 * spr_dir, -32, card_travel_spd, 315, 1);
                     shoot_card(attack, 1, 16 * spr_dir, -32, card_travel_spd, 300, 1);
                     shoot_card(attack, 1, 16 * spr_dir, -32, card_travel_spd, 285, 1);
+                    sound_play(sound_get("sfx_lucy_nspecial1"));
                 }
             break;
             case 3:
@@ -190,6 +168,7 @@ if (attack == AT_DSTRONG){
                     shoot_card(attack, 1, 16 * spr_dir, -32, card_travel_spd, 300, 1);
                     shoot_card(attack, 1, 16 * spr_dir, -32, card_travel_spd, 285, 1);
                     shoot_card(attack, 1, 16 * spr_dir, -32, card_travel_spd, 270, 1);
+                    sound_play(sound_get("sfx_lucy_nspecial1"));
                 }
             break;
             default:
@@ -203,6 +182,17 @@ if (attack == AT_DSTRONG){
     }
     if (window == 5) {
         card_charge = 0;
+    }
+    if (window >= 5) {
+    		if (!free) {
+    			set_state(PS_LANDING_LAG);
+    			landing_lag_time = 9;
+    		}
+    		can_fast_fall = window_timer >= ceil(get_window_value(attack, window, AG_WINDOW_LENGTH) / 2)
+    }
+    if (window == 1) {
+    	set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
+    	can_fast_fall = false;
     }
 }
 
@@ -352,7 +342,7 @@ if (attack == AT_NSPECIAL){
             default:
                 if (window_timer == 1) {
                     if (!free) shoot_card(attack, 1, 44 * spr_dir, -32, card_travel_spd, 0, 1);
-                    else shoot_card(attack, 1, 48 * spr_dir, -24, card_travel_spd, 300, 1);
+                    else shoot_card(attack, 1, 48 * spr_dir, -24, card_travel_spd, 315, 1);
                     sound_play(sound_get("sfx_lucy_nspecial1"));
                 }
                 reset_window_value(attack, 8, AG_WINDOW_LENGTH);
@@ -419,7 +409,7 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR ){
         }
         var window_l = get_window_value(attack, window, AG_WINDOW_LENGTH);
         if (window_timer >= window_l - 2) {
-            if (!special_down) {
+            if (!special_down || was_parried) {
                 window = 10;
                 window_timer = 0;
             }
@@ -507,36 +497,6 @@ if (attack == AT_USPECIAL) {
         vsp = lerp(vsp, 0, .1)
         
         //Card interaction
-    	if (instance_exists(lucy_card_id) && window_timer >= 4) {
-        	var collision_pos = [round(x), round(y) - 32];
-        	var collision_size = [32, 32];
-        	var collision_rect = 
-        		collision_rectangle(collision_pos[0] - collision_size[0] / 2, 
-        		collision_pos[1] - collision_size[1] / 2,
-        		collision_pos[0] + collision_size[0] / 2,
-        		collision_pos[1] + collision_size[1] / 2,
-        		lucy_card_id, 0, 1);
-        	if (collision_rect && !hitpause) {
-                sound_play(asset_get("sfx_shovel_brandish"));
-	            window = 1;
-	            window_timer = 0;
-	            hsp = lengthdir_x(5, -uspecial_angle_real);
-	            vsp = lengthdir_y(5, uspecial_angle_real);
-	            old_hsp = hsp;
-	            old_vsp = vsp;
-	            hitstop = 5;
-	            hitpause = true;
-	            spawn_hit_fx(round(lucy_card_id.x), round(lucy_card_id.y), fx_cardhit);
-	            
-	            destroy_hitboxes();
-	            with (lucy_card_id) {
-                    state = 0;
-                    state_timer = 0;
-                    window = 1;
-                    window_timer = 0;
-	            }
-        	}
-        }
         
         if (window_timer >= 8 && !hitpause && (special_down || attack_down)) {
             destroy_hitboxes();
@@ -585,6 +545,10 @@ if (attack == AT_DSPECIAL){
     can_jump = end_window && has_hit && window <= 12;
     if (end_window && window != 26) {
         grav = 0.25;
+        if (!has_hit && !has_hit_player && window_timer == 1 && blackjack_cooling_timer <= 0) {
+        	blackjack_meter /= 2;
+        	blackjack_meter = round(blackjack_meter);
+        }
     }
     if (statrup_window && window_timer == 1) {
         blackjack_meter_stored = blackjack_meter;
@@ -720,6 +684,9 @@ if (attack == AT_DSPECIAL){
     force_depth = 1;
     depth = 1;
 }
+
+#define is_ditto(_source, _target) 
+return (_source.url == _target.url && get_char_info(_source.player, INFO_STR_NAME) == get_char_info(_target, INFO_STR_NAME))
 
 #define shoot_card(_attack, _num, _x, _y, _spd, _dir, _charge)
 ///Shoots a card.

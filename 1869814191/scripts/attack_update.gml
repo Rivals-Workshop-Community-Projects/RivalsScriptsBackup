@@ -6,9 +6,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_NSPECIAL) {
-	if (window == 1) {
-		destroy_gaster_blaster = false;
-	}
     if (window == 2 && window_timer == 1) {
     	if (trolled) { sound_play(snd_blaster_charge[trolled]); }
         sound_play(sound_get("sfx_blaster_charge"));
@@ -18,35 +15,34 @@ if (attack == AT_NSPECIAL) {
         blaster.dir = spr_dir;
         blaster.hsp = 3*spr_dir;
         blaster.vsp = 0;
-        
-        //move_cooldown[AT_NSPECIAL] = 180;
-		//move_cooldown[AT_FSTRONG] = 150;
-		//move_cooldown[AT_DSTRONG] = 150;
-		//move_cooldown[AT_USTRONG] = 150;
     }
 }
 
 if (attack == AT_USPECIAL) {
-    if (window >= 1 && window <= 3){
-        hsp = 0;
-        vsp = 0;
-        can_move = false;
-    }
-    if (window == 4){
-        if(!joy_pad_idle){
-            teleport_sp = -64;
-            vsp = (dsin(joy_dir)*teleport_sp);
-            hsp = (dcos(joy_dir)*-teleport_sp);
-        }
-    }
+	switch(window) {
+		case 1:
+		case 2:
+		case 3:
+			can_move = false;
+		case 5:
+			hsp = 0;
+			vsp = 0;
+			can_wall_jump = true;
+		break;
+		
+		case 4:
+			if(!joy_pad_idle){
+				teleport_sp = -64;
+				vsp = (dsin(joy_dir)*teleport_sp);
+				hsp = (dcos(joy_dir)*-teleport_sp);
+			}
+		break;
+	}
     if (window == 5){
     	if (window_timer == 10) {
     		if (free) { state = PS_PRATFALL; }
     		
     	}
-        hsp = 0;
-        vsp = 0;
-        can_wall_jump = true;
     }
 }
 
@@ -56,68 +52,58 @@ if (attack == AT_FSPECIAL) or (attack == AT_FSPECIAL_AIR){
     can_move = false;
     can_fast_fall = false;
     off_edge = false;
-    if (window == 1 && window_timer == 1) {
-        sound_play(sound_get("sfx_sans_alert"));
-    }
-    if (window == 5 && window_timer == 6) {
-    	window = 11;
-    	window_timer = 0;
-    	soulgrabbed_id.grabbed_id = 0;
-    	soulgrabbed_id = noone;
-    }
-    if (window == 7 || window == 8 || window == 9 || window == 10) {
-    	if (window_timer == 20) {
-    		window = 14;
-    		window_timer = 0;
-    	}
-    }
-    if (window == 6) {
-    	soul_id.x = x+spr_dir*78;
-    	soul_id.y = y-3;
-    	soul_id.invincible = true;
-    	fspecial_select_timer++;
-    	if (fspecial_select_timer >= fspecial_select_max) {
-    		window = 7;
-			window_timer = 0;
-			if (window_timer >= 4) {
-				soul_id.invincible = false;
-			}
-    		fspecial_select_timer = 0;
-    	}
-    	if (fspecial_select_timer >= fspecial_select_min) {
-	   		if (down_down) {
-	   			fspecial_select_timer = 0;
-				window = 8;
+    
+	switch(window) {
+		case 1:
+			if (window_timer == 1) { sound_play(sound_get("sfx_sans_alert")) }
+		break;
+		
+		case 5:
+			if (window_timer == 6) {
+				window = 11;
 				window_timer = 0;
-				if (window_timer >= 4) {
-					soul_id.invincible = false;
+				with oPlayer if id != other.id && grabbed_id == other.id {
+					grabbed_id = 0;
 				}
 			}
-	   		if (up_down) {
-	   			fspecial_select_timer = 0;
-				window = 7;
-				window_timer = 0;
-				if (window_timer >= 4) {
-					soul_id.invincible = false;
+		break;
+		
+		case 6:
+			var fspecial_select_max = 60;
+			var fspecial_select_min = 30;
+			with oPlayer if id != other.id && grabbed_id == other.id {
+				x = other.x+other.spr_dir*78;
+				y = other.y-3;
+			}
+			fspecial_select_timer++;
+			if (fspecial_select_timer >= fspecial_select_max) {
+				grabSelect(7);
+			}
+			if (fspecial_select_timer >= fspecial_select_min) {
+				if (up_down) {
+					grabSelect(7);
+				}
+				if (down_down) {
+					grabSelect(8);
+				}
+				if (spr_dir and (left_down)) or (!spr_dir and (right_down)) {
+					grabSelect(9);
+				}
+				if (spr_dir and (right_down)) or (!spr_dir and (left_down)) {
+					grabSelect(10);
 				}
 			}
-	   		if (spr_dir and (left_down)) or (!spr_dir and (right_down)) {
-	   			fspecial_select_timer = 0;
-				window = 9;
+		break;
+		
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+			if (window_timer == 20) {
+				window = 14;
 				window_timer = 0;
-				if (window_timer >= 4) {
-					soul_id.invincible = false;
-				}
-				}
-	   		if (spr_dir and (right_down)) or (!spr_dir and (left_down)) {
-	   			fspecial_select_timer = 0;
-				window = 10;
-				window_timer = 0;
-				if (window_timer >= 4) {
-					soul_id.invincible = false;
-				}
 			}
-    	}
+		break;
     }
     if (window >= 6) and (window < 11) {
     	invincible = true;
@@ -143,9 +129,7 @@ if (attack == AT_DSPECIAL){
         if (blue_bone) {
         spawnBone(7*spr_dir, 0, 24, -4, 0);
         spawnBone(-7*spr_dir, 0, -24, -4, 0);
-    	}
-        
-        if (!blue_bone) {
+    	} else {
         create_hitbox(AT_EXTRA_1, 7, x+(32*spr_dir), y+(-4));
         create_hitbox(AT_EXTRA_1, 8, x+(-32*spr_dir), y+(-4));
     	}
@@ -173,7 +157,6 @@ if (attack == AT_FTILT) {
 
 if (attack == AT_BAIR) {
 	boneCooldown(attack, 15, 20);
-//	move_cooldown[AT_BAIR] = 20;
     if (window == 1) {
         bone_direction = 0;
     }
@@ -205,9 +188,7 @@ if (attack == AT_UAIR) {
 }
 
 if (attack == AT_DTILT && window == 3) {
-	if (window == 3) {
-		move_cooldown[AT_DTILT] = 150;
-	}
+	move_cooldown[AT_DTILT] = 150;
 }
 
 if (attack == AT_DATTACK){ //Dash
@@ -247,25 +228,17 @@ bone.bone_dir = dir;
 bone.id = player.id;
 bone.player = player;
 bone.spr_dir = spr_dir;
-
 #define boneCooldown(_attack, base_cool, max_cool)
 
 move_cooldown[_attack] = base_cool+((max_cool-base_cool)*blue_bone);
+#define grabSelect(_win)
+with oPlayer if id != other.id && grabbed_id == other.id {
+	hitstop = 10;	
+}
 
-/*
-var ftilt_b_cool = 10;
-var ftilt_m_cool = 20;
-
-var utilt_b_cool = 10;
-var utilt_m_cool = 20;
-
-
-var bair_b_cool = 10;
-var bair_m_cool = 20;
-//if attack == AT_BAIR { bair_b_cool = 15; bair_m_cool = 20; }
-
-//move_cooldown[AT_FAIR] = base_cool+((max_cool-base_cool)*blue_bone);
-
-move_cooldown[AT_FTILT] = ftilt_b_cool+((ftilt_m_cool-ftilt_b_cool)*blue_bone);
-move_cooldown[AT_BAIR] = bair_b_cool+((bair_m_cool-bair_b_cool)*blue_bone);
-move_cooldown[AT_UTILT] = utilt_b_cool+((utilt_m_cool-utilt_b_cool)*blue_bone);
+window = _win;
+window_timer = 0;
+if (window_timer >= 4) {
+	//soul_id.invincible = false;
+}
+fspecial_select_timer = 0;

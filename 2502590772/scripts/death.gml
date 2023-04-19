@@ -33,6 +33,7 @@ if (custom_clone) {
     
     //mark this character as an active player so that the game doesn't instance-destroy it
     custom_clone = false;
+    clone = false;
 }
 
 

@@ -323,14 +323,13 @@ if (attack == AT_NSPECIAL){
 		}
 		
 		// Cooldown
-		move_cooldown[AT_NSPECIAL] = 60;
+		move_cooldown[AT_NSPECIAL] = 40;
 		
 		//throw_speed = fc_bunt ? firecracker_speed * .75 : firecracker_speed;
 		throw_speed = firecracker_speed;
 		
-		
 		// Set firecracker speed
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, throw_speed * (-dsin(firecracker_angle)*1.3) + (vsp* 0.5)); //(fc_bunt ? 1.4 : 0.5
+		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, throw_speed * (-dsin(firecracker_angle)*1.4) + (vsp* 0.5)); //(fc_bunt ? 1.4 : 0.5
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, throw_speed * dcos(firecracker_angle));
 		
 		if(fc_bunt){ 
@@ -378,21 +377,22 @@ if (attack == AT_FSPECIAL){
 	
 	if(window == 1)
 	{
+		should_set_sprite_to_spin = false;
 		fspec_yoff = 0;
-		fspec_xoff = 10;
+		fspec_xoff =  20;
 		if((joy_dir < 345 && joy_dir > 195 && spr_dir == 1) || (joy_dir > 195 && joy_dir < 345 && spr_dir == -1) || down_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_down"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_down_air"));
-			fspec_yoff = 45;
-			fspec_xoff = 0;
+			fspec_yoff = 75;
+			fspec_xoff = -10;
 		}
 		else if((joy_dir > 15 && joy_dir < 165 && spr_dir == 1) || (joy_dir < 165 && joy_dir > 15 && spr_dir == -1) || up_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_up"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));
-			fspec_yoff = -34;
-			fspec_xoff = 0;
+			fspec_yoff = -55;
+			fspec_xoff = -15;
 		}
 		else
 		{
@@ -413,8 +413,8 @@ if (attack == AT_FSPECIAL){
 			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -35 + fspec_yoff/2);
 			
 						
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 71 + fspec_xoff);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 36 + fspec_xoff);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 61 + fspec_xoff);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 26 + fspec_xoff);
 	    }
 	}
 	
@@ -473,24 +473,25 @@ if (attack == AT_FSPECIAL){
 	// Grabbing projectile
 	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4) && !grabbed_solid)
 	{
+		var FSpecGrabRadius = 55;
 		
-	// First, get nearby hitboxes
-	var tempProj = collision_circle(
-	x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
-	y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
-	100, //70
-	pHitBox, 
-	true,
-	true );
-	
-	// Player check
-	var tempPlayer = collision_circle(
-	x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
-	y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
-	70, //70
-	oPlayer, 
-	true,
-	true );
+		// First, get nearby hitboxes
+		var tempProj = collision_circle(
+		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
+		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+		FSpecGrabRadius, //70
+		pHitBox, 
+		true,
+		true );
+		
+		// Player check
+		var tempPlayer = collision_circle(
+		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
+		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+		FSpecGrabRadius * 0.7, //70
+		oPlayer, 
+		true,
+		true );
 	
 	// Kragg pillar crash
 	if(tempProj != noone)
@@ -568,6 +569,8 @@ if (attack == AT_FSPECIAL){
 					// Set grabbed projectile properties
 					grabbedProj = tempProj;
 					
+					// Temp properties while grabbed
+					SetTempFirecrackerVariables(grabbedProj,false);
 					
 					var yoff = get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y) - 5;	
 					
@@ -588,7 +591,7 @@ if (attack == AT_FSPECIAL){
 						hsp = 0;
 						vsp = 0;
 						hitbox_timer = 0;
-						damage = damage + 3;
+						damage = min(damage,5);
 						
 
 
@@ -645,20 +648,22 @@ if (attack == AT_FSPECIAL){
 		}
 	}
 
-
 	if(grabbedProj != noone && caught_projectile)
 	{
-		if(shield_down || special_down && !hitpause)
+		
+		if((shield_down || special_down ) && !hitpause)
 		 {
+		 	// Temp properties while grabbed
+			SetTempFirecrackerVariables(grabbedProj,true);
+		 	
 			//grabbedid = tempProj;
 			//grabbedProj = tempProj;
 			grabbed_solid = true;
 			caught_projectile = false;
 			//can_grab_solid_fspec = false;
-			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
+			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 12);
 			clear_button_buffer(PC_SHIELD_PRESSED);
 		    
-
 		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir)
 		   	, y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y))
 		   	, 19 );
@@ -666,7 +671,7 @@ if (attack == AT_FSPECIAL){
 		   	free = true;
 		}
 	}
-   //print_debug(string(window_timer));
+   
    
 
 
@@ -723,23 +728,23 @@ if (attack == AT_FSPECIAL){
     
     
     // Grabbing Platforms
-	if((can_grab_solid_fspec || can_grab_plat_fspec) && !grabbed_solid && grabbedid == noone && (window == 3||window ==4) && !shield_down && !special_down)
+	if((can_grab_solid_fspec || can_grab_plat_fspec) && !grabbed_solid && grabbedid == noone && (window == 3|| window ==4 || (window == 5 && window_timer < 8)) && !shield_down && !special_down)
 	{
 		var can_grab = false;
 		
 		// First, get nearby hitboxes
 		var tempPlat = collision_circle(
-		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir*2.4 - fspec_xoff),
-		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)+fspec_yoff), 
-		20, 
+		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
+		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+		5, 
 		asset_get("par_jumpthrough"), 
 		true,
 		true );
 		
 		var tempSolid = collision_circle(
-		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir*2.4 - fspec_xoff),
-		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)+fspec_yoff), 
-		20, 
+		x+((get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X))*spr_dir),
+		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+		25, 
 		asset_get("par_block"), 
 		true,
 		true );
@@ -769,7 +774,7 @@ if (attack == AT_FSPECIAL){
 		{
 			grabbedid = tempSolid;
 			grabbed_solid = true;
-			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
+			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 12);
 			
 			 // Play sound and hitpause
 			sound_play(sound_get("tenru_grab"));
@@ -952,7 +957,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         		with(grabbedid)
         		{
         			y-=10;
-        			x+=32*other.spr_dir;
+        			x+=34*other.spr_dir;
         		}	
         	}
         	else if(window_timer >= 14)
@@ -960,12 +965,14 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         		with(grabbedid)
         		{
         			y+=22;
-        			x+=22*other.spr_dir;
+        			x+=24*other.spr_dir;
         		}
         	}
         	if(window_timer == 17)
         	{
         		create_hitbox( AT_FSPECIAL, 3, x, y );
+        		grabbedid.x = x + get_hitbox_value( AT_FSPECIAL, 3, HG_HITBOX_X ) * spr_dir;
+        		grabbedid.y = y + get_hitbox_value( AT_FSPECIAL, 3, HG_HITBOX_Y );
         		break_grab = true;
         		
         		// Projectile
@@ -988,6 +995,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         			//vsp += grav * vertical_strength/2;
         			spawn_hit_fx( x, y, 301 );
         			}
+        			SetTempFirecrackerVariables(grabbedProj,true);
         		}
         	}
 
@@ -1034,6 +1042,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	        	if(window_timer == 11)
 	        	{
 	        	    create_hitbox( AT_FSPECIAL, 4, x, y );
+	        	    grabbedid.x = x + get_hitbox_value( AT_FSPECIAL, 4, HG_HITBOX_X ) * spr_dir;
+        			grabbedid.y = y + get_hitbox_value( AT_FSPECIAL, 4, HG_HITBOX_Y ) + 20;
         			break_grab = true;	
         			whiff_dir = "back_whiff";
         			
@@ -1054,6 +1064,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         				vsp -= grav * vertical_strength * 0.7;
         				spawn_hit_fx( x, y, 301 );
         				}
+        				SetTempFirecrackerVariables(grabbedProj,true);
 	        		}
 	        	}
 				
@@ -1064,7 +1075,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		// Front throw
 		if(throw_dir == "front")
 		{
-		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 16);
+		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 14);
         set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 11);
 		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 40);
 		
@@ -1086,6 +1097,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 			    if(window_timer == 8)
 	        	{
 	        	    create_hitbox( AT_FSPECIAL, 5, x, y );
+	        	    grabbedid.x = x + (get_hitbox_value( AT_FSPECIAL, 5, HG_HITBOX_X )+20) * spr_dir;
+        			grabbedid.y = y + get_hitbox_value( AT_FSPECIAL, 5, HG_HITBOX_Y ) + 30;
         			break_grab = true;	
         			
         			// Projectile
@@ -1109,7 +1122,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         				hsp = new_hsp;
         				vsp -= grav * vertical_strength * 0.9;
         				spawn_hit_fx( x, y, 301 );
-        				}			
+        				}
+        				SetTempFirecrackerVariables(grabbedProj,true);
 
         			}
 	        	}
@@ -1159,6 +1173,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 			    if(window_timer == 14)
 	        	{
 	        	    create_hitbox( AT_FSPECIAL, 6, x, y );
+	        	    grabbedid.x = x + get_hitbox_value( AT_FSPECIAL, 6, HG_HITBOX_X ) * spr_dir;
+        			grabbedid.y = y + get_hitbox_value( AT_FSPECIAL, 6, HG_HITBOX_Y ) + 20;
         			break_grab = true;	
         			whiff_dir = "up_whiff";
         			
@@ -1179,6 +1195,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	        				vsp -= grav * vertical_strength;
 	        				spawn_hit_fx( x, y, 301 );
         				}
+        				SetTempFirecrackerVariables(grabbedProj,true);
 	        		}
 	        	}
 				
@@ -1192,23 +1209,28 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         	
         	// Super weird jankfest invisible grab meme fix
         	x = floor(x);
-        	if(x > room_width + 100)
+        	if(x >= (room_width - get_stage_data(SD_X_POS)) + get_stage_data(SD_SIDE_BLASTZONE))
         	{
-        		x = room_width + 100;
+        		x = (room_width - get_stage_data(SD_X_POS)) + get_stage_data(SD_SIDE_BLASTZONE) + 1;
+        		other.break_grab = true;
         	}
-        	if(x < -100)
+        	if(x <= get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE))
         	{
-        		x = -100;
+        		x = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) - 1;
+        		other.break_grab = true;
         	}
         	
+        	
         	y = floor(y);
-        	if(y > room_height + 100)
+        	if(y >= get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE))
         	{
-        		y = room_height + 100;
+        		y = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) + 1;
+        		other.break_grab = true;
         	}
-        	if(y < -100)
+        	if(y <= get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE))
         	{
-        		y = -100;
+        		y = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE) - 1;
+        		other.break_grab = true;
         	}
         	
         	spr_dir = -other.spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
@@ -1230,8 +1252,9 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             // Wall/platform code
             if(grabbed_solid)
             {
-            	
             	free = true;
+            	
+            	should_set_sprite_to_spin = true;
             	
             	hsp = 10.5*spr_dir;
             	
@@ -1248,6 +1271,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             		grabbedProj.vsp = -6;
             		vsp = -7.5;
             		hsp = 12*spr_dir;
+					
             		grabbedProj = noone;
             	}
             		
@@ -1266,10 +1290,20 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             }
         }
         
-
+        if(!hitpause && should_set_sprite_to_spin && grabbedProj == noone)
+        {
+        	should_set_sprite_to_spin = false;
+        	
+    	    set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_air_spin"));
+			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air_spin"));
+			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 14);
+    		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 11);
+			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 40);
 		
-		
-        
+		   	with(pHurtBox) 
+				if(other.player == player && !other.free) sprite_index = sprite_get("fspecial_air_spin_hurt");
+				else if(other.player == player && other.free) sprite_index = sprite_get("fspecial_air_spin_hurt");
+        }
     }
 }
 #endregion
@@ -1278,20 +1312,17 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 #region Uspecial Main
 // Uspecial main
 if (attack == AT_USPECIAL){
-
-	uspecial_ground = false;
-	
 	
     // Ground attributes
 	if(state == PS_ATTACK_GROUND && window_timer == 1 && window == 2)
 	{
-		uspecial_ground = true;
 		vsp = -2;
 	}
 	else if(state == PS_ATTACK_GROUND && window == 8 && window_timer == 1)
 	{
-		vsp = -3;
+		vsp = -2;
 	}
+	
 	if(grabbedid == noone && !hitpause && state == PS_ATTACK_GROUND && ((window == 4 && window_timer == 1)))
 	{
 		sound_play(asset_get("sfx_land_light"));
@@ -1324,6 +1355,9 @@ if (attack == AT_USPECIAL){
 		grabbed_solid = false;
 		KRAGG = false;
 		dspec_buffer = false;
+		uspecial_ground = state == PS_ATTACK_GROUND;
+		first_uspec = !used_uspec;
+		used_uspec = !uspecial_ground;
 	}
 	can_fast_fall = false;
 	
@@ -1348,7 +1382,7 @@ if (attack == AT_USPECIAL){
     // Whiff attributes
     if (grabbedid == noone && window_timer == 1 && window == 1){
 		set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 1);
-		set_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH, uspecial_ground || first_uspec ? 4 : 20);
 		set_window_value(AT_USPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 3);
 		set_window_value(AT_USPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 12);
 		set_window_value(AT_USPECIAL, 7, AG_WINDOW_VSPEED_TYPE, 0);
@@ -1382,25 +1416,27 @@ if (attack == AT_USPECIAL){
     // }
     
     // Grabbing projectile
-	if(grabbedProj == noone && (window < 7 && window > 2))
+	if(grabbedProj == noone && (window < 7 && window > 2) && !grabbed_solid)
 	{
-	// First, get nearby hitboxes
-	var tempProj = collision_circle(
-	x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir),
-	y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)), 
-	100, 
-	pHitBox, 
-	true,
-	true );
-	
-	// Player check
-	var tempPlayer = collision_circle(
-	x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
-	y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
-	70, //70
-	oPlayer, 
-	true,
-	true );
+		var USpecGrabRadius = 55;
+		
+		// First, get nearby hitboxes
+		var tempProj = collision_circle(
+		x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir),
+		y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)), 
+		USpecGrabRadius, 
+		pHitBox, 
+		true,
+		true );
+		
+		// Player check
+		var tempPlayer = collision_circle(
+		x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir),
+		y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y)), 
+		USpecGrabRadius * 0.7, //70
+		oPlayer, 
+		true,
+		true );
 	
 
 		
@@ -1473,6 +1509,9 @@ if (attack == AT_USPECIAL){
 				// Set grabbed projectile properties
 				grabbedProj = tempProj;
 				
+				// Temp properties while grabbed
+				SetTempFirecrackerVariables(grabbedProj,false);
+				
 				var yoff = get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)-20;	
 				var xoff = get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir;
 				
@@ -1491,7 +1530,7 @@ if (attack == AT_USPECIAL){
 					hsp = 0;
 					vsp = 0;
 					hitbox_timer = 0;
-					damage = damage + 3;
+					damage = min(damage,5);
 					
 					// Grabbing projectiles
 					grabbed = 1;
@@ -1550,7 +1589,7 @@ if (attack == AT_USPECIAL){
 	if((can_grab_solid_uspec || can_grab_plat_uspec) && grabbedid == noone && (window < 7 && window > 2) && !shield_down && !special_down)
 	{
 		var extension_x = 15;
-		var extension_y = 6;
+		var extension_y = 10;
 		var can_grab = false;
 		
 		// First, get nearby hitboxes
@@ -1618,7 +1657,7 @@ if (attack == AT_USPECIAL){
 		    
 		    
 		   	spawn_hit_fx(x+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_X)*spr_dir)
-		   	, y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y)-extension_y)
+		   	, y+(get_hitbox_value(AT_USPECIAL, window-2, HG_HITBOX_Y) - (extension_y + get_hitbox_value(AT_USPECIAL, window-2, HG_HEIGHT)/2))
 		   	, 19 );	
 		}
 	}
@@ -1636,7 +1675,6 @@ if (attack == AT_USPECIAL){
 		true,
 		true );
 		
-		
     	if(tempSolid == noone || (special_down || shield_down)) create_hitbox( AT_USPECIAL, 5, floor(x), floor(y) );
     }
 	
@@ -1644,9 +1682,19 @@ if (attack == AT_USPECIAL){
 	if(!hitpause && grabbedid == noone && grabbedProj == noone && window >= 3 && window <= 7 && !KRAGG)
 		if(window_timer == get_window_value(AT_USPECIAL,window,AG_WINDOW_LENGTH) && window < 6)
 			create_hitbox(AT_USPECIAL,window-1,x,y);
-			
-
+	
+	// Pratfall on whiff
+    if(window == 7 && window_timer == get_window_value(AT_USPECIAL,window,AG_WINDOW_LENGTH) && free && whiff && !first_uspec)
+    {
+    	set_state(PS_PRATFALL);
+    }
     
+    // Land anim on whiff
+    if((window == 7 || (window == 8 && window_timer < 10)) && whiff && !free && !uspecial_ground && !first_uspec)
+    {
+    	window = 8;
+    	window_timer = 10;
+    }
 }
 #endregion
 
@@ -1661,6 +1709,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     	whiff = false;
     	can_move = false;
     	can_air_dspecial = true;
+    	used_uspec = false;
     	var proj_strength = 1.5;
     	
     	
@@ -1747,14 +1796,18 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
      
     	if(window == 8 && window_timer == 2 && !grabbed_solid)
     	{
-    		if(grabbedid != noone) create_hitbox( AT_USPECIAL, 6, floor(grabbedid.x), floor(grabbedid.y) );
+    		if(grabbedid != noone) 
+    		{
+    			create_hitbox( AT_USPECIAL, 6, floor(grabbedid.x), floor(grabbedid.y) );
+    			grabbedid.x = x + get_hitbox_value(AT_USPECIAL,6,HG_HITBOX_X) * spr_dir;
+    			grabbedid.y = y + get_hitbox_value(AT_USPECIAL,6,HG_HITBOX_Y) + 20;
+    		}
     		break_grab = true;
     	}
     	
     	if(!grabbed_solid)
     	with(grabbedid)
     	{
-        	
         	if(other.grabbedProj == noone ? !other.hitpause : !hitpause)
         	{
 	    		//x += -other.hsp;
@@ -1775,26 +1828,30 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		        hsp = 0; 
 		        vsp = 0;
 	        	
-	        	
 	        	// Super weird jankfest invisible grab meme fix
 	        	x = floor(x);
-	        	if(x > room_width + 100)
+	        	if(x >= (room_width - get_stage_data(SD_X_POS)) + get_stage_data(SD_SIDE_BLASTZONE))
 	        	{
-	        		x = room_width + 100;
+	        		x = (room_width - get_stage_data(SD_X_POS)) + get_stage_data(SD_SIDE_BLASTZONE) + 1;
+	        		other.break_grab = true;
 	        	}
-	        	if(x < -100)
+	        	if(x <= get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE))
 	        	{
-	        		x = -100;
+	        		x = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) - 1;
+	        		other.break_grab = true;
 	        	}
 	        	
+	        	
 	        	y = floor(y);
-	        	if(y > room_height + 100)
+	        	if(y >= get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE))
 	        	{
-	        		y = room_height + 100;
+	        		y = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) + 1;
+	        		other.break_grab = true;
 	        	}
-	        	if(y < -100)
+	        	if(y <= get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE))
 	        	{
-	        		y = -100;
+	        		y = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE) - 1;
+	        		other.break_grab = true;
 	        	}
         	}
         	
@@ -1810,7 +1867,6 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             grabbedid = noone;
             last_grabbedid = noone;
             throw_dir = whiff_dir;
-        	
             
             if(grabbedProj != noone)
             {
@@ -1819,12 +1875,11 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	            	vsp = -other.vsp;
 	            	hsp = -other.hsp;
             	}
+            	 
+            	// Temp properties while grabbed
+				SetTempFirecrackerVariables(grabbedProj,true);
+				
             	grabbedProj = noone;
-            }
-            else
-            {
-            	// Cooldown to prevent infinite laddering
-            	move_cooldown[AT_USPECIAL] = 20;
             }
         }
 
@@ -1848,7 +1903,7 @@ if (attack == AT_DSPECIAL){
 	//can_move = true;
 	
 	var normal_height = -12;
-	var big_height = -18;
+	var big_height = -12;
 	
 	if(window_timer == 1 && window == 1)
 	{
@@ -1862,7 +1917,7 @@ if (attack == AT_DSPECIAL){
 		// Convert joy dir to radians
 		var rad_joy_dir = joy_dir;
 		var turning_speed = .3;
-		var move_speed = 21;
+		var move_speed = 18;
 		
 		if(spr_dir == 1) 
 		{
@@ -1891,7 +1946,7 @@ if (attack == AT_DSPECIAL){
 		// 	if(vsp > targetvsp) vsp -= turning_speed else vsp += turning_speed;
 		// }
 	}
-	
+
 	
 	if(window == 1 && window_timer == 4)
 	{
@@ -1930,22 +1985,26 @@ if (attack == AT_DSPECIAL){
 	}
 	
 	// Switch to air dspecial
-	if((window > 2 || (window == 2 && window_timer > 6)) && special_pressed)
+	var cancelwindow = has_hit_player ? 4 : 6;
+	var jumpdodgecancelwindow = 1;
+	if((window > 2 || (window == 2 && window_timer > cancelwindow)) && special_pressed)
 	{
 		window = 4;
 		window_timer = 99;
 	}
-	if((window > 2 || (window == 2 && window_timer > 6)) && jump_pressed)
+	if((window > 2 || (window == 2 && window_timer > jumpdodgecancelwindow)) && ((shield_pressed && has_airdodge) || jump_pressed))
 	{
+		clear_button_buffer(PC_SPECIAL_PRESSED);
 		window = 4;
 		window_timer = 99;
-	}
-	if((window > 2 || (window == 2 && window_timer > 6)) && ((shield_pressed && has_airdodge) || attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down))
-	{
-		window = 4;
-		window_timer = 99;
+		
 		wave_land_adj = 1.8;
 		air_dodge_speed = 9;
+	}
+	if((window > 2 || (window == 2 && window_timer > cancelwindow)) && (attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down))
+	{
+		window = 4;
+		window_timer = 99;
 	}
 	
 	
@@ -2116,17 +2175,19 @@ if (attack == AT_AIR_DSPECIAL){
 	
 	
 	 // Grabbing projectile
-	if(grabbedProj == noone && (window == 2) && !special_down)
+	if(grabbedProj == noone && (window == 2) && !shield_down && !special_down)
 	{
 		
-	// First, get nearby hitboxes
-	var tempProj = collision_circle(
-	x+((get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X)+30)*spr_dir),
-	y+(get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y)-30), 
-	70, 
-	pHitBox, 
-	true,
-	true );
+		var DSpecGrabRadius = 55;
+		
+		// First, get nearby hitboxes
+		var tempProj = collision_circle(
+		x+((get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X)+30)*spr_dir),
+		y+(get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y)-30), 
+		DSpecGrabRadius, 
+		pHitBox, 
+		true,
+		true );
 		
 	
 		// Kragg pillar crash
@@ -2194,6 +2255,10 @@ if (attack == AT_AIR_DSPECIAL){
 				
 				// Set grabbed projectile properties
 				grabbedProj = tempProj;
+				
+				// Temp properties while grabbed
+				SetTempFirecrackerVariables(grabbedProj,false);
+				
 				var yoff = get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y);
 				var xoff = get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X)*spr_dir;
 				
@@ -2212,7 +2277,7 @@ if (attack == AT_AIR_DSPECIAL){
 					hsp = 0;
 					vsp = 0;
 					hitbox_timer = 0;
-					damage = damage + 3;
+					damage = min(damage,5);
 					
 					// Grabbing projectiles
 					grabbed = 1;
@@ -2399,6 +2464,9 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
         		vsp = new_vsp;
         		vsp -= grav * vertical_strength;
         		}
+        		
+        		// Temp properties while grabbed
+				SetTempFirecrackerVariables(grabbedProj,true);
         	}
     	}
     	
@@ -2445,6 +2513,9 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
         		vsp -= grav * vertical_strength;
         		hsp = -6*spr_dir;
         		}
+        		
+        		// Temp properties while grabbed
+				SetTempFirecrackerVariables(grabbedProj,true);
         	}
     	}
      
@@ -2495,6 +2566,9 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
         		vsp -= grav * vertical_strength;
         		hsp = 6*spr_dir;
         		}
+        		
+        		// Temp properties while grabbed
+				SetTempFirecrackerVariables(grabbedProj,true);
         	}
     	}
     	
@@ -2506,23 +2580,28 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
         	
         	// Super weird jankfest invisible grab meme fix
         	x = floor(x);
-        	if(x > room_width + 100)
+        	if(x >= (room_width - get_stage_data(SD_X_POS)) + get_stage_data(SD_SIDE_BLASTZONE))
         	{
-        		x = room_width + 100;
+        		x = (room_width - get_stage_data(SD_X_POS)) + get_stage_data(SD_SIDE_BLASTZONE) + 1;
+        		other.break_grab = true;
         	}
-        	if(x < -100)
+        	if(x <= get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE))
         	{
-        		x = -100;
+        		x = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) - 1;
+        		other.break_grab = true;
         	}
         	
+        	
         	y = floor(y);
-        	if(y > room_height + 100)
+        	if(y >= get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE))
         	{
-        		y = room_height + 100;
+        		y = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE) + 1;
+        		other.break_grab = true;
         	}
-        	if(y < -100)
+        	if(y <= get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE))
         	{
-        		y = -100;
+        		y = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE) - 1;
+        		other.break_grab = true;
         	}
         	
         	spr_dir = -other.spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
@@ -2702,6 +2781,10 @@ if(attack == AT_UTILT){
 	// 	window_timer = 0;
 	// }
 	
+	if(window == 1 && window_timer == 1)
+	{
+		spins = 0;
+	}
 	
 	// 1st cancel
 	if((window == 3 || (window == 2 && window_timer == 4)) && (attack_down || up_stick_down) && window_timer < 6 && !was_parried)
@@ -2719,6 +2802,7 @@ if(attack == AT_UTILT){
 		window = 6;
 		window_timer = 0;
 		uptilt_loop = true;
+		spins++;
 	}
 	
 	// Loop finisher
@@ -2800,11 +2884,11 @@ if(attack == AT_DAIR){
 	}
 	
 	
-	if(window == 3 && bounce == 0 && window_timer == 1)
-	{
-		//vsp = -11;
-		djumps = 0;
-	}
+	// if(window == 3 && bounce == 0 && window_timer == 1)
+	// {
+	// 	//vsp = -11;
+	// 	djumps = 0;
+	// }
 
 	
 }
@@ -2939,10 +3023,13 @@ if(attack == AT_FSTRONG){
 	// }
 	
 	// Endlag movement
-	if(((window == 5 && window_timer > 10) || window > 5))
+	if(!free)
 	{
-		if(left_down ) hsp = -7.8 + (window > 5 ? window_timer/2.5 : 0);
-		else if(right_down) hsp = 7.8 - (window > 5 ? window_timer/2.5 : 0);
+		if(((window == 5 && window_timer > 10) || window > 5))
+		{
+			if(left_down ) hsp = -7.8 + (window > 5 ? window_timer/2.5 : 0);
+			else if(right_down) hsp = 7.8 - (window > 5 ? window_timer/2.5 : 0);
+		}
 	}
 	
 	// Air ver
@@ -2961,7 +3048,7 @@ if(attack == AT_FSTRONG){
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 4);
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
-		set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 8);
+		set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 12);
 		
 		if(window >= 3 && window <= 5 && down_down)
 		{
@@ -3061,6 +3148,17 @@ if(attack == AT_DTILT)
 	//sound_play( sound_get( "tenru_fc" + string(fcnum) ) );
 }
 
+#define SetTempFirecrackerVariables(firecracker, doReset)
+{
+	// Reset temp properties
+	with(firecracker)
+	{
+		transcendent = doReset ? false : true;
+		priority = doReset ? 0 : 3;
+		proj_break = doReset ? 0 : 1;
+	}
+}
+
 // NO-INJECT
 // #region vvv LIBRARY DEFINES AND MACROS vvv
 // DANGER File below this point will be overwritten! Generated defines and macros below.
@@ -3070,3 +3168,4 @@ if(attack == AT_DTILT)
     return window_timer == frame and !hitpause
 // DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
 // #endregion
+

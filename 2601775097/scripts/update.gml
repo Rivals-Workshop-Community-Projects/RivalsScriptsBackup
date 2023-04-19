@@ -26,6 +26,8 @@ else
     if (bar_grabbed_id != noone) bar_grabbed_id = noone;
 
     sound_stop(sfx_charge);
+
+    if (state == PS_PRATFALL && !was_parried) can_fast_fall = true;
 }
 
 //play intro
@@ -159,7 +161,8 @@ else { // free
 }
 
 //GLIDE UI
-if (glide_stamina < glide_stamina_max && state != PS_PRATFALL && theikos_type == 0) glide_ui = true; //show glide UI
+if (glide_stamina < glide_stamina_max && state != PS_PRATFALL && prev_state != PS_PRATFALL && theikos_type == 0) glide_ui = true; //show glide UI
+else glide_ui = false;
 
 
 //MP MECHANIC
@@ -180,7 +183,7 @@ if (notice_time > -1)
 {
     if (notice_time == notice_time_max)
     {
-        sound_play(sound_get("mfx_notice"), 0, 0);
+        sound_play(asset_get("mfx_tut_fail"), 0, 0);
         msg = spawn_hit_fx(x-notice[notice_type][0], y-notice[notice_type][1]-char_height+64, notice[notice_type][2]);
         msg.spr_dir = 1;
         msg.depth = -10;
@@ -203,6 +206,12 @@ if (holyburn_active)
     {
         if ("holyburning" not in self) holyburning = false; //playtesting shenaningans
 
+        if (state == PS_DEAD || state == PS_RESPAWN) //set player to stop burning if they are dead
+        {
+            holyburning = false;
+            holyburn_timer = 0;
+        }
+
         if (holyburning && holyburner_id == other)
         {
             if (!hitpause || hitpause && lightstun_type == 2) //only damage if the player isn't in hitpause
@@ -210,7 +219,7 @@ if (holyburn_active)
                 holyburn_timer --;
 
                 if (holyburn_timer % 30 == 0) take_damage(player, other.player, 1); //DoT
-                if (holyburn_timer <= 0 && lightstun_type != 2 || state == PS_DEAD || state == PS_RESPAWN) holyburning = false;
+                if (holyburn_timer <= 0 && lightstun_type != 2) holyburning = false;
 
                 //extra mp gain from mechanics
                 if (holyburn_timer % 15 == 0) with (other) if (mp_current < mp_max && has_rune("J")) mp_current += 1;
@@ -247,7 +256,7 @@ if (lightstun_active)
 {
     with (oPlayer)
     {
-        if ("lightstun_type" not in self) lightstun_type = 0; //playtesting shenaningans:blinding boogaloo
+        if ("lightstun_type" not in self) lightstun_type = 0; //playtesting shenaningans: blinding boogaloo
 
         if (lightstun_timer > -1) lightstun_timer --;
         if (lightstun_timer <= -1 || state == PS_DEAD || state == PS_RESPAWN)
@@ -355,213 +364,223 @@ else bar_grab_time = 0;
 if (skill_cancel_timer <= 0) start_skill_cancel = false;
 else if (start_skill_cancel && !hitpause) skill_cancel_timer --;
 
-//skill/strongs cost (special cooldowns are done inside the skills themselves)
-for (var skill_slot = 0; skill_slot <= 3; ++skill_slot)
+//skill/strongs cost (special cooldowns are done inside the skills themselves) + skill logic
+if (!menu_active)
 {
-    move_cooldown[skill[cur_skills[skill_slot]].skill_attack] = 1 + ceil(skill[cur_skills[skill_slot]].mp_use_cost - mp_current);
-    
-    if (skill[cur_skills[skill_slot]].skill_attack_air != -1) //air ver check
+    for (var i = 0; i <= 3; ++i)
     {
-        move_cooldown[skill[cur_skills[skill_slot]].skill_attack_air] = 1 + ceil(skill[cur_skills[skill_slot]].mp_use_cost - mp_current);
-    }
-}
-move_cooldown[AT_USTRONG] = 1 + ceil(mp_cost_strongs - mp_current);
-move_cooldown[AT_DSTRONG] = 1 + ceil(mp_cost_strongs - mp_current);
-
-
-//skill specific logic
-//n-spec
-switch (skill[cur_skills[0]].skill_id)
-{
-    case 8: //ember fist
-        if (fury_ember_timer > 0) fury_ember_timer --;
-
-        if (fury_ember_timer != 0)
-        {
-            if (fury_ember_timer % 8 == 0) //hitbox spawn
-            {
-                bar_hitbox = create_hitbox(skill[8].skill_attack, 4, fury_ember_x, fury_ember_y);
-                bar_hitbox.fx_particles = get_hitbox_value(skill[8].skill_attack, 4, HG_HIT_PARTICLE_NUM);
-            }
-            if (fury_ember_timer % 4 == 0) //effect work
-            {
-                var random_x = (random_func(765, 5, true)-2)*8;
-                var random_y = (random_func(245, 5, true)-2)*8;
-                var fury_ember = spawn_hit_fx(fury_ember_x + random_x, fury_ember_y + random_y, fx_fireblow[0]);
-                fury_ember.depth = depth-1;
-            }
-        }
-        break;
-}
-
-//f-spec
-switch (skill[cur_skills[1]].skill_id)
-{
-    case 1: //burning fury
-        //check if burning fury is active and change the mana costs accordingly
-        if (burnbuff_active) skill[1].mp_use_cost = skill[1].mp_cost2;
-        else skill[1].mp_use_cost = fury_norm_cost;
-
-        if (burnbuff_active)
-        {
-            if (!infinite_mp_mode) mp_current -= mp_cost_const_rate/60;
-            if (mp_current <= 0) burnbuff_active = false;
-
-            //visual stuff
-            if (got_gameplay_time % 5 == 0) generate_particles(fx_part_fire, x, y-48, 0, depth-1, 11, 11, 0, -1);
-        }
-
-        if (is_attacking) switch (attack)
-        {
-            //burning fury buff on normals
-            case AT_JAB: case AT_UTILT: case AT_FAIR: case AT_DAIR: case AT_USTRONG: case AT_FSTRONG:  case AT_DSTRONG:  case AT_TAUNT: case AT_FSTRONG_2:  case AT_DSTRONG_2:
-                if (window == 1 && window_timer == 0) burnbuff_apply();
-                break;
-        }
-        break;
-    case 9: //light hookshot
-        if (hook_grab > 0)
-        {
-            hsp += hook_charge/2.5*spr_dir+13*spr_dir; //min: 13 || max: 17
-
-            if (hook_grab == 1 && !rune_G_active) vsp -= hook_charge/3+5; //min: 5 || max: 8.33
-            else  vsp -= hook_charge/3+5.75; //min: 5 || max: 9.0833
-            
-            hook_grab = 0;
-        }
-        break;
-}
-
-//u-spec
-switch (skill[cur_skills[2]].skill_id)
-{
-    case 2: //force leap
-        if (leap_used) move_cooldown[skill[2].skill_attack] = 1 + leap_used;
-        break;
-    case 6: //accel blitz
-        if (accel_used) move_cooldown[skill[6].skill_attack] = 1 + accel_used;
-
-        //flash vulnerability
-        if (state_cat == SC_HITSTUN)
-        {
-            if (accel_vulnerable)
-            {
-                hitstop = accel_flashed_time;
-                accel_vulnerable = false;
-            }
-            if (accel_flashed_time > 0) accel_flashed_time --;
-        }
+        move_cooldown[skill[cur_skills[i]].skill_attack] = 1 + ceil(skill[cur_skills[i]].mp_use_cost - mp_current);
         
-        //gives bar time to act out of the attack, only if he isn't on the theikos state
-        if (accel_act_time > 0)
+        if (skill[cur_skills[i]].skill_attack_air != -1) //air ver check
         {
-            if (attack == skill[6].skill_attack) has_hit = false;
-            accel_act_time --;
-            //add motion blur and flash effect stuff here
-            if (accel_act_time % 3 == 0) charge_color = !charge_color;
+            move_cooldown[skill[cur_skills[i]].skill_attack_air] = 1 + ceil(skill[cur_skills[i]].mp_use_cost - mp_current);
         }
-        else
+    }
+    move_cooldown[AT_USTRONG] = 1 + ceil(mp_cost_strongs - mp_current);
+    move_cooldown[AT_DSTRONG] = 1 + ceil(mp_cost_strongs - mp_current);
+
+    //skill specific logic
+    for (var i = 0; i < 4; i++)
+    {
+        switch (skill[cur_skills[i]].skill_id)
         {
-            if (state == PS_PRATFALL || state == PS_PRATLAND
-            || !free && alt_cur != 25 && (!is_attacking || is_attacking && attack != skill[6].skill_attack))
-            {
-                apply_motion_trail = false;
-            }
+            case 8: //ember fist
+                if (fury_ember_timer > 0) fury_ember_timer --;
 
-            if (accel_used && !has_hit && free && !hurtboxID.dodging && state != PS_PRATFALL && !is_attacking) set_state(PS_PRATFALL);
-        }
-        break;
-}
-
-//d-spec
-switch (skill[cur_skills[3]].skill_id)
-{
-    case 3: //photon blast
-        //cooldown
-        if (blast_used) move_cooldown[skill[3].skill_attack] = 1 + blast_used;
-        break;
-    case 7: //polaris
-        if (lightbuff_active)
-        {
-            //mp burning
-            if (!infinite_mp_mode) mp_current -= mp_cost_const_rate/60;
-            if (mp_current <= 0) lightbuff_active = false;
-
-            //internal cooldown stuff
-            if (polaris_shot) polaris_shot = false;
-            if (homing_cooldown >= 0) homing_cooldown --;
-
-            //these multi hitting moves move bar around so i don't want the hitpause to mess with the combo
-            if (is_attacking)
-            {
-                if (attack == skill[1].skill_attack || attack == skill[1].skill_attack_air || attack == skill[10].skill_attack
-                || attack == AT_DATTACK && window < 4 || attack == AT_JAB && window < 10)
+                if (fury_ember_timer != 0)
                 {
-                    set_hitbox_value(skill[7].skill_attack, 1, HG_BASE_KNOCKBACK, 0);
-                    set_hitbox_value(skill[7].skill_attack, 1, HG_KNOCKBACK_SCALING, 0);
-                    set_hitbox_value(skill[7].skill_attack, 1, HG_BASE_HITPAUSE, 0);
-                    set_hitbox_value(skill[7].skill_attack, 1, HG_HITPAUSE_SCALING, 0);
+                    if (fury_ember_timer % 8 == 0) //hitbox spawn
+                    {
+                        bar_hitbox = create_hitbox(skill[8].skill_attack, 4, fury_ember_x, fury_ember_y);
+                        bar_hitbox.fx_particles = get_hitbox_value(skill[8].skill_attack, 4, HG_HIT_PARTICLE_NUM);
+                    }
+                    if (fury_ember_timer % 4 == 0) //effect work
+                    {
+                        var random_x = (random_func(765, 5, true)-2)*8;
+                        var random_y = (random_func(245, 5, true)-2)*8;
+                        var fury_ember = spawn_hit_fx(fury_ember_x + random_x, fury_ember_y + random_y, fx_fireblow[0]);
+                        fury_ember.depth = depth-1;
+                    }
+                }
+                break;
+            /////////////////////////////////////////////////////////////////
+            case 1: //burning fury
+                //check if burning fury is active and change the mana costs accordingly
+                if (burnbuff_active) skill[1].mp_use_cost = skill[1].mp_cost2;
+                else skill[1].mp_use_cost = fury_norm_cost;
+
+                if (burnbuff_active)
+                {
+                    if (!infinite_mp_mode) mp_current -= mp_cost_const_rate/60;
+                    if (mp_current <= 0) burnbuff_active = false;
+
+                    //visual stuff
+                    if (got_gameplay_time % 5 == 0) generate_particles(fx_part_fire, x, y-48, 0, depth-1, 11, 11, 0, -1);
+                }
+
+                if (is_attacking) switch (attack)
+                {
+                    //burning fury buff on normals
+                    case AT_JAB: case AT_UTILT: case AT_FAIR: case AT_DAIR: case AT_USTRONG: case AT_FSTRONG:  case AT_DSTRONG:  case AT_TAUNT: case AT_FSTRONG_2:  case AT_DSTRONG_2:
+                        if (window == 1 && window_timer == 0) burnbuff_apply();
+                        break;
+                }
+                break;
+            case 5: //power smash
+                //disable the burning fury buff
+                if (prev_state == PS_ATTACK_AIR && state != PS_ATTACK_AIR && attack == skill[5].skill_attack && burnbuff_active) burnbuff_active = false;
+                break;
+            case 9: //light hookshot
+                if (hook_grab > 0)
+                {
+                    hsp += hook_charge/2.5*spr_dir+13*spr_dir; //min: 13 || max: 17
+
+                    if (hook_grab == 1 && !rune_G_active) vsp -= hook_charge/3+5; //min: 5 || max: 8.33
+                    else  vsp -= hook_charge/3+5.75; //min: 5 || max: 9.0833
+                    
+                    hook_grab = 0;
+                }
+                break;
+            /////////////////////////////////////////////////////////////////
+            case 2: //force leap
+                if (leap_used) move_cooldown[skill[2].skill_attack] = 1 + leap_used;
+                break;
+            case 6: //accel blitz
+                if (accel_used) move_cooldown[skill[6].skill_attack] = 1 + accel_used;
+
+                //flash vulnerability
+                if (state_cat == SC_HITSTUN)
+                {
+                    if (accel_vulnerable)
+                    {
+                        hitstop = accel_flashed_time;
+                        accel_vulnerable = false;
+                    }
+                    if (accel_flashed_time > 0) accel_flashed_time --;
+                }
+                
+                //gives bar time to act out of the attack, only if he isn't on the theikos state
+                if (accel_act_time > 0)
+                {
+                    if (attack == skill[6].skill_attack) has_hit = false;
+                    accel_act_time --;
+                    //add motion blur and flash effect stuff here
+                    if (accel_act_time % 3 == 0) charge_color = !charge_color;
                 }
                 else
                 {
-                    reset_hitbox_value(skill[7].skill_attack, 1, HG_BASE_KNOCKBACK);
-                    reset_hitbox_value(skill[7].skill_attack, 1, HG_KNOCKBACK_SCALING);
-                    reset_hitbox_value(skill[7].skill_attack, 1, HG_BASE_HITPAUSE);
-                    reset_hitbox_value(skill[7].skill_attack, 1, HG_HITPAUSE_SCALING);
+                    if (state == PS_PRATFALL || state == PS_PRATLAND
+                    || !free && alt_cur != 25 && (!is_attacking || is_attacking && attack != skill[6].skill_attack))
+                    {
+                        apply_motion_trail = false;
+                    }
+
+                    if (accel_used && !has_hit && free && !hurtboxID.dodging && state != PS_PRATFALL && !is_attacking) set_state(PS_PRATFALL);
                 }
-            }
+                break;
+            case 10: //searing descent
+                //disable the burning fury buff
+                if (prev_state == PS_ATTACK_AIR && state != PS_ATTACK_AIR && attack == skill[10].skill_attack && burnbuff_active) burnbuff_active = false;
+                break;
+            /////////////////////////////////////////////////////////////////
+            case 3: //photon blast
+                //cooldown
+                if (blast_used) move_cooldown[skill[3].skill_attack] = 1 + blast_used;
+                break;
+            case 7: //polaris
+                if (lightbuff_active)
+                {
+                    //mp burning
+                    if (!infinite_mp_mode) mp_current -= mp_cost_const_rate/60;
+                    if (mp_current <= 0) lightbuff_active = false;
 
-            //needs to not do the attack
-            if (down_down && special_pressed && state_cat != SC_HITSTUN)
-            {
-                clear_button_buffer(PC_SPECIAL_PRESSED);
+                    //internal cooldown stuff
+                    if (polaris_shot) polaris_shot = false;
+                    if (homing_cooldown >= 0) homing_cooldown --;
 
-                set_state(free ? PS_IDLE_AIR : PS_IDLE);
+                    //these multi hitting moves move bar around so i don't want the hitpause to mess with the combo
+                    if (is_attacking)
+                    {
+                        if (attack == skill[1].skill_attack || attack == skill[1].skill_attack_air || attack == skill[10].skill_attack
+                        || attack == AT_DATTACK && window < 4 || attack == AT_JAB && window < 10)
+                        {
+                            set_hitbox_value(skill[7].skill_attack, 1, HG_BASE_KNOCKBACK, 0);
+                            set_hitbox_value(skill[7].skill_attack, 1, HG_KNOCKBACK_SCALING, 0);
+                            set_hitbox_value(skill[7].skill_attack, 1, HG_BASE_HITPAUSE, 0);
+                            set_hitbox_value(skill[7].skill_attack, 1, HG_HITPAUSE_SCALING, 0);
+                        }
+                        else
+                        {
+                            reset_hitbox_value(skill[7].skill_attack, 1, HG_BASE_KNOCKBACK);
+                            reset_hitbox_value(skill[7].skill_attack, 1, HG_KNOCKBACK_SCALING);
+                            reset_hitbox_value(skill[7].skill_attack, 1, HG_BASE_HITPAUSE);
+                            reset_hitbox_value(skill[7].skill_attack, 1, HG_HITPAUSE_SCALING);
+                        }
+                    }
 
-                spawn_hit_fx(x, y-32, fx_lightblow[1]);
-                sound_play(asset_get("sfx_abyss_despawn"));
+                    //updates the skill input lol
+                    switch (i)
+                    {
+                        case 0: skill_input_dir = joy_pad_idle break;
+                        case 1: skill_input_dir = left_down || right_down break;
+                        case 2: skill_input_dir = up_down; break;
+                        case 3: skill_input_dir = down_down; break;
+                    }
 
-                lightbuff_active = false;
-            }
+                    //needs to not do the attack
+                    if (skill_input_dir && special_pressed && state_cat != SC_HITSTUN)
+                    {
+                        clear_button_buffer(PC_SPECIAL_PRESSED);
 
-            //visual stuff
-            if (got_gameplay_time % 6 == 0) generate_particles(fx_intro, x, y, 180, depth-1, 11, 9, 0, 0);
+                        set_state(free ? PS_IDLE_AIR : PS_IDLE);
 
-            if (lightbuff_increase) lightbuff_alpha += lightbuff_rate;
-            else lightbuff_alpha -= lightbuff_rate;
-            if (lightbuff_alpha >= 0.8 || lightbuff_alpha <= 0) lightbuff_increase = !lightbuff_increase;
+                        spawn_hit_fx(x, y-32, fx_lightblow[1]);
+                        sound_play(asset_get("sfx_abyss_despawn"));
+
+                        lightbuff_active = false;
+                    }
+
+                    //visual stuff
+                    if (got_gameplay_time % 6 == 0) generate_particles(fx_intro, x, y, 180, depth-1, 11, 9, 0, 0);
+
+                    if (lightbuff_increase) lightbuff_alpha += lightbuff_rate;
+                    else lightbuff_alpha -= lightbuff_rate;
+                    if (lightbuff_alpha >= 0.8 || lightbuff_alpha <= 0) lightbuff_increase = !lightbuff_increase;
+                }
+                else
+                {
+                    if (polaris_deactive_cd > 0) polaris_deactive_cd = 0;
+                }
+                break;
+            case 11: //chasm burster
+                set_window_value(skill[11].skill_attack, 1, AG_WINDOW_HAS_SFX, free ? 1 : 0);
+                set_window_value(skill[11].skill_attack, 2, AG_WINDOW_HAS_SFX, free ? 0 : 1);
+
+                if (chasm_burst_timer > 0) chasm_burst_timer --;
+
+                if (chasm_burst_timer != 0)
+                {
+                    //hitbox spawn
+                    if (chasm_burst_timer % chasm_spawn_rate == 0)
+                    {
+                        bar_hitbox = create_hitbox(skill[11].skill_attack, 2 + burnbuff_active*2, chasm_x[chasm_count], chasm_y-40);
+                        bar_hitbox.fx_particles = get_hitbox_value(skill[11].skill_attack, 2 + burnbuff_active*2, HG_HIT_PARTICLE_NUM);
+
+                        spawn_hit_fx(chasm_x[chasm_count], chasm_y, fx_skill11_burst);
+                        var chasm = spawn_hit_fx(chasm_x[chasm_count], chasm_y, fx_skill11_chasm);
+                        chasm.depth = depth-1;
+
+                        sound_play(asset_get("sfx_burnapplied"), 0, 0, 0.7);
+
+                        chasm_count ++;
+                    }
+                    else if (chasm_count >= chasm_limit) chasm_burst_timer = 0;
+                }
+                break;
         }
-        else
-        {
-            if (polaris_deactive_cd > 0) polaris_deactive_cd = 0;
-        }
-        break;
-    case 11: //chasm burster
-        set_window_value(skill[11].skill_attack, 1, AG_WINDOW_HAS_SFX, free ? 1 : 0);
-        set_window_value(skill[11].skill_attack, 2, AG_WINDOW_HAS_SFX, free ? 0 : 1);
-
-        if (chasm_burst_timer > 0) chasm_burst_timer --;
-
-        if (chasm_burst_timer != 0)
-        {
-            //hitbox spawn
-            if (chasm_burst_timer % 5 == 0)
-            {
-                bar_hitbox = create_hitbox(skill[11].skill_attack, 2 + burnbuff_active*2, chasm_x[chasm_count], chasm_y-40);
-                bar_hitbox.fx_particles = get_hitbox_value(skill[11].skill_attack, 2 + burnbuff_active*2, HG_HIT_PARTICLE_NUM);
-
-                spawn_hit_fx(chasm_x[chasm_count], chasm_y, fx_skill11_burst);
-                var chasm = spawn_hit_fx(chasm_x[chasm_count], chasm_y, fx_skill11_chasm);
-                chasm.depth = depth-1;
-
-                sound_play(asset_get("sfx_burnapplied"), 0, 0, 0.7);
-
-                chasm_count ++;
-            }
-            else if (chasm_count >= chasm_limit) chasm_burst_timer = 0;
-        }
-        break;
+    }
 }
+
 
 //theikos strongs
 if (theikos_type > 0 || has_rune("K") || od_cast == 2)
@@ -987,7 +1006,7 @@ prep_hitboxes();
 custom_attack_grid();
 
 //this is the anti-cheapie section which is a mix of theikos bar, a few very useful runes for the occasion and the lord's blessing buff
-if (!found_cheapie && cur_game_time > got_gameplay_time-1 || found_cheapie && theikos_type == 0) check_cheapie();
+if (!found_cheapie && got_gameplay_time > got_gameplay_time-1 || found_cheapie && theikos_type == 0) check_cheapie();
 
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILITIES ///////////////////////////////////////////////////////
 
@@ -1137,7 +1156,6 @@ user_event(7);
     else menu_dir = 0;
 }
 
-
 #define burnbuff_apply()
 {
     var hb_num_total = get_num_hitboxes(attack);
@@ -1160,23 +1178,6 @@ user_event(7);
 
                 set_hitbox_value(attack, hb_num, HG_HITBOX_COLOR, hb_color[3]); //apply fire and change hitbox color
 
-                //effect work
-                if (attack == AT_DSTRONG && hb_num == 2) set_hitbox_value(attack, hb_num, HG_VISUAL_EFFECT, fx_fireblow[1]);
-                else if (attack == AT_FSTRONG || attack == AT_DSTRONG && hb_num == 3 || attack == AT_FSTRONG_2 && hb_num == 3)
-                {
-                    set_hitbox_value(attack, hb_num, HG_VISUAL_EFFECT, fx_fireblow[2]);
-                }
-                else set_hitbox_value(attack, hb_num, HG_VISUAL_EFFECT, fx_fireblow[0]);
-
-                //burning sfx
-                if (attack == AT_JAB || attack == AT_UTILT && hb_num == 2 || attack == AT_FAIR && hb_num == 3
-                || attack == AT_DAIR && hb_num == 2 || attack == AT_DSTRONG && hb_num == 2)
-                {
-                    set_hitbox_value(attack, hb_num, HG_HIT_SFX, asset_get("sfx_burnapplied"));
-                }
-                else if (attack == AT_FSTRONG_2 && hb_num == 3) reset_hitbox_value(attack, hb_num, HG_HIT_SFX);
-                else set_hitbox_value(attack, hb_num, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
-
                 set_hitbox_value(attack, hb_num, HG_HIT_PARTICLE_NUM, 2);
             }
         }
@@ -1187,13 +1188,13 @@ user_event(7);
 /// generate_particles(fx_name, fx_x, fx_y, fx_angle = 0, fx_depth = -1, fx_spread_x = 0, fx_spread_y = 0, fx_hsp = 0, fx_vsp = 0, fx_dir = 0)
 {
     var fx_name = argument[0], fx_x = argument[1], fx_y = argument[2];
-var fx_angle = argument_count > 3 ? argument[3] : 0;
-var fx_depth = argument_count > 4 ? argument[4] : -1;
-var fx_spread_x = argument_count > 5 ? argument[5] : 0;
-var fx_spread_y = argument_count > 6 ? argument[6] : 0;
-var fx_hsp = argument_count > 7 ? argument[7] : 0;
-var fx_vsp = argument_count > 8 ? argument[8] : 0;
-var fx_dir = argument_count > 9 ? argument[9] : 0;
+    var fx_angle = argument_count > 3 ? argument[3] : 0;
+    var fx_depth = argument_count > 4 ? argument[4] : -1;
+    var fx_spread_x = argument_count > 5 ? argument[5] : 0;
+    var fx_spread_y = argument_count > 6 ? argument[6] : 0;
+    var fx_hsp = argument_count > 7 ? argument[7] : 0;
+    var fx_vsp = argument_count > 8 ? argument[8] : 0;
+    var fx_dir = argument_count > 9 ? argument[9] : 0;
 
     var part_x = (random_func(24, floor(fx_spread_x/2), true)-floor(fx_spread_x/4))*fx_spread_x;
     var part_y = (random_func(25, floor(fx_spread_y/2), true)-floor(fx_spread_y/4))*fx_spread_y;

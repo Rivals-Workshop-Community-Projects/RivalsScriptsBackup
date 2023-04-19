@@ -263,7 +263,7 @@ set_hitbox_value(AT_DSTRONG, 9, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DSTRONG, 9, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG, 9, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSTRONG, 9, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_DSTRONG, 9, HG_PROJECTILE_HSPEED, 2);
+//et_hitbox_value(AT_DSTRONG, 9, HG_PROJECTILE_HSPEED, 2);
 set_hitbox_value(AT_DSTRONG, 9, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSTRONG, 9, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 set_hitbox_value(AT_DSTRONG, 9, HG_PROJECTILE_WALL_BEHAVIOR, 2);

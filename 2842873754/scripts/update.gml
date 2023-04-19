@@ -89,8 +89,14 @@ with (pHitBox) {
 
 //Drum Bouncing
 //(I put it here so it can detect multiple instances of the object.)
-if (drum_cooldown > 0)
+if (drum_cooldown > 0) {
     drum_cooldown --;
+}
+    
+if (drum_cooldown == 1) {
+	if (free && state_cat != PS_HITSTUN && state != PS_WALL_JUMP)
+		drum_cooldown ++
+}
 
 var rune_applied = has_rune("H")
 
@@ -99,8 +105,8 @@ with (obj_article3) {
     if (player_id == other.id && hitstop == 0 && state == 0) {
         var player_list = ds_list_create();
         with (oPlayer) {
-            var near = collision_line(round(other.x - lengthdir_x(32, other.img_angle)),round(other.y - 40 - lengthdir_y(40, other.img_angle)), 
-                round(other.x + lengthdir_x(32, other.img_angle)), round(other.y - 40 + lengthdir_y(40, other.img_angle)), id, 0, 0);
+            var near = collision_line(round(other.x - lengthdir_x(40, other.img_angle)),round(other.y - 40 - lengthdir_y(40, other.img_angle)), 
+                round(other.x + lengthdir_x(40, other.img_angle)), round(other.y - 40 + lengthdir_y(40, other.img_angle)), id, 0, 0);
             ds_list_add(player_list, near);
         }
         for (var i = 0; i < ds_list_size(player_list); i++) {

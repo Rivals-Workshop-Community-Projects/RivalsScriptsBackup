@@ -1,9 +1,13 @@
 //article5_update, Room Manager
 
 if !_init && get_gameplay_time() >= 2 { //Initialize things on the first gameplay frame
-	with obj_stage_main other.follow_player = follow_player;
+	with obj_stage_main {
+		other.follow_player = follow_player;
+		cam_pos_left = [view_get_xview(),view_get_yview()];
+		cam_pos_right = [view_get_xview()+view_get_wview(),view_get_yview()+view_get_hview()];
+		true_pos = [cam_pos_left[0]+view_get_wview()/2,cam_pos_left[1]+view_get_hview()/2];
+	}
 	
-    true_pos = [follow_player.x, follow_player.y];
 	follow_objects  = [follow_player];
     reload_rooms();
     switch_to_room_pos = [follow_player.respawn_point[0],follow_player.respawn_point[1]];
@@ -184,7 +188,66 @@ if get_gameplay_time() > 2 {
 		follow_point.x = clamp(follow_point.x , cell_min[0] + 480, cell_max[0] - 480);//+ follow_player.hsp*10;
 		follow_point.y = clamp(follow_point.y, cell_min[1] + 270, cell_max[1] - 270);//+ follow_player.hsp*10;
 	}
-    
+    with obj_stage_main {
+		cam_state_time++;
+		if old_cam_state != cam_state {
+			cam_state_time = 0;
+			old_cam_state = cam_state;
+		}
+		cam_pos_left = [view_get_xview(),view_get_yview()];
+		cam_pos_right = [view_get_xview()+view_get_wview(),view_get_yview()+view_get_hview()];
+		true_pos = [cam_pos_left[0]+view_get_wview()/2,cam_pos_left[1]+view_get_hview()/2];
+	
+		switch cam_state {
+			case -1: //nothing
+				break;
+			case 1: //Controlled by action manager
+				with action_manager {
+					other.g_cam_pos = cam_pos;
+					// other.cam_smooth = cam_smooth;
+					other.cam_smooth = floor((other.cam_smooth+cam_smooth)/2);
+				}
+				//print_debug(string(g_cam_pos));
+				break;
+			case 2: //Controlled by Camera article7
+				if !instance_exists(cam_override_obj) {
+					with room_manager other.g_cam_pos = [follow_point.x,follow_point.y]; //follow_point defined in article5_update
+					cam_state = 0; //reset to room managing if can object is not available
+					break;
+				}
+				with cam_override_obj {
+					other.cam_smooth = floor((other.cam_smooth+cam_smooth)/2);
+					switch lock_type {
+		                case 0: //Lock xy
+		                	other.g_cam_pos = cam_pos;
+		                    break;
+		                case 1: //Lock y
+		                	other.g_cam_pos[1] = cam_pos[1];
+		                    break;
+		                case 2: //Lock x
+		                	other.g_cam_pos[0] = cam_pos[0];
+		                    break;
+		            }
+				}
+				break;
+			default: //not defined, controlled by global/room_manager - "world cam"
+				with room_manager {
+					other.g_cam_pos = [follow_point.x,follow_point.y]; //follow_point defined in article5_update
+					// other.cam_smooth = floor((other.cam_smooth+cam_smooth)/2);
+					other.cam_smooth = floor(ease_linear(other.cam_smooth,cam_smooth,1,100));
+					// if other.cam_state_time > 30/other.cam_smooth other.cam_smooth = cam_smooth;
+					// if (cur_room_time < 30 || other.cam_state_time > 30*floor(other.cam_smooth/2)) other.cam_smooth = cam_smooth;
+					
+				}
+				break;
+			
+		}
+	
+		set_view_position_smooth(g_cam_pos[0],g_cam_pos[1],cam_smooth);
+		// if debug draw_circle_color(g_cam_pos[0],g_cam_pos[1],5,c_blue,c_blue,false);
+		//set_view_position(g_cam_pos[0],g_cam_pos[1]);
+	
+	}
 	if (players_hitstun > 0) obj_stage_main.cam_smooth = smoothing;
     //Frame Cleanups
     scroll_horiz = true;

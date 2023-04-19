@@ -59,6 +59,7 @@ old_vsp = 0;
 old_hsp = 0;
 nvsp = 0;//new vsp to apply for the bunt state
 nhsp = 0;//new hsp to apply for the bunt state
+death_script_cooldown_flag = false; // Added to track death state
 
 //states
 st = 0;//current state

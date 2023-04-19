@@ -230,7 +230,6 @@ switch(get_match_setting(SET_SEASON))
         set_color_profile_slot(pal_num, 6, 255, 159, 244); //LIGHT (the same as venus)
         set_color_profile_slot(pal_num, 7, 175, 98, 130); //FIRE
         break;
-        
     case 2: //SUMMER
         set_color_profile_slot(pal_num, 1, 206, 216, 227); //CLOTHWHITE
         set_color_profile_slot(pal_num, 2, 205, 108, 65); //HAIR
@@ -241,7 +240,6 @@ switch(get_match_setting(SET_SEASON))
         set_color_profile_slot(pal_num, 6, 221, 181, 121); //LIGHT (yellow parts)
         set_color_profile_slot(pal_num, 7, 205, 108, 65); //FIRE (same as clothblack)
         break;
-    
     case 3: //HALLOWEEN
         set_color_profile_slot(pal_num, 1, 246, 240, 206); //CLOTHWHITE
         set_color_profile_slot(pal_num, 2, 156, 197, 235); //HAIR
@@ -252,7 +250,6 @@ switch(get_match_setting(SET_SEASON))
         set_color_profile_slot(pal_num, 6, 246, 240, 206); //LIGHT (same as clothwhite)
         set_color_profile_slot(pal_num, 7, 172, 159, 146); //FIRE (same as hair)
         break;
-      
     case 4: //CHRISTMAS
         set_color_profile_slot(pal_num, 1, 227, 208, 206); //CLOTHWHITE
         set_color_profile_slot(pal_num, 2, 227, 208, 206); //HAIR

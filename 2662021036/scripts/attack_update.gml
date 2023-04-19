@@ -175,11 +175,12 @@ if (attack == AT_USPECIAL){
     if (window > 2 && free && shield_pressed){
     state = PS_PRATFALL;
     state_timer = 0;
+    vsp = -6;
+    old_vsp = -6;
     sound_play( asset_get("sfx_frog_fspecial_cancel"));
     hurtboxID.sprite_index = sprite_get("idle_hurtbox");
     destroy_hitboxes();    
     attack_end();
-vsp = -6;
     }
     
     if (window = 1 && window_timer = 1 && !hitpause){

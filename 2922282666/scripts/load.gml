@@ -1,0 +1,65 @@
+sprite_change_offset("idle", 110, 140);
+sprite_change_offset("hurt", 110, 140);
+sprite_change_offset("hurtground", 110, 140);
+sprite_change_offset("bighurt", 110, 140);
+sprite_change_offset("uphurt", 110, 140);
+sprite_change_offset("downhurt", 110, 140);
+sprite_change_offset("bouncehurt", 110, 140);
+sprite_change_offset("crouch", 110, 140);
+sprite_change_offset("walk", 110, 140);
+sprite_change_offset("walkturn", 110, 140);
+sprite_change_offset("dash", 110, 140);
+sprite_change_offset("dashstart", 110, 140);
+sprite_change_offset("dashstop", 110, 140);
+sprite_change_offset("dashturn", 110, 140);
+
+sprite_change_offset("jumpstart", 110, 140);
+sprite_change_offset("jump", 110, 140);
+sprite_change_offset("doublejump", 110, 140);
+sprite_change_offset("walljump", 110, 140);
+sprite_change_offset("pratfall", 110, 140);
+sprite_change_offset("land", 110, 140);
+sprite_change_offset("landinglag", 110, 140);
+
+sprite_change_offset("parry", 110, 140);
+sprite_change_offset("roll_forward", 110, 140);
+sprite_change_offset("roll_backward", 110, 140);
+sprite_change_offset("airdodge", 110, 140);
+sprite_change_offset("waveland", 110, 140);
+sprite_change_offset("tech", 110, 140);
+
+sprite_change_offset("jab",  110, 140);
+sprite_change_offset("dattack", 110, 140);
+sprite_change_offset("ftilt",  110, 140);
+sprite_change_offset("dtilt",  110, 140);
+sprite_change_offset("utilt", 110, 140);
+sprite_change_offset("nair", 110, 140);
+sprite_change_offset("fair", 110, 140);
+sprite_change_offset("bair", 110, 140);
+sprite_change_offset("uair", 110, 140);
+sprite_change_offset("dair", 110, 140);
+sprite_change_offset("fstrong", 110, 140);
+sprite_change_offset("ustrong", 110, 140);
+sprite_change_offset("dstrong", 110, 140);
+sprite_change_offset("nspecial", 110, 140);
+sprite_change_offset("nspecdash", 110, 140);
+sprite_change_offset("nspecdash_offset", 110, 140);
+sprite_change_offset("fspecial", 110, 140);
+sprite_change_offset("uspecial", 110, 140);
+sprite_change_offset("dspecial", 110, 140);
+sprite_change_offset("taunt", 110, 140);
+
+sprite_change_offset("plat", 110, 140);
+sprite_change_offset("hitspark", 10, 14);
+
+sprite_change_offset("nspecial_proj", 64, 94);
+sprite_change_offset("gem", 128, 130);
+sprite_change_offset("gem_hurtbox", 126, 130);
+sprite_change_offset("gem_glow", 114, 144);
+sprite_change_offset("gem_powerup", 114, 144);
+sprite_change_offset("gem_direction", 100, 140);
+sprite_change_offset("gem_aoe", 106, 106);
+sprite_change_offset("icon_hud", 110, 140);
+sprite_change_offset("icon_select", 110, 140);
+sprite_change_offset("VaccuumEffect", 106, 108);
+sprite_change_offset("whyareyouhere", 110, 140);

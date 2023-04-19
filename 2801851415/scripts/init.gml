@@ -31,15 +31,15 @@ dash_stop_percent = .35; //the value to multiply your hsp by when going into idl
 ground_friction = .4; //4, little lower
 moonwalk_accel = 1.4;
 
-jump_start_time = 6;
+jump_start_time = 5;
 jump_speed = 9.5; //fine
 short_hop_speed = 5; //5, little lower
 djump_speed = 9.5;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //5.5, slightly slower //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 5.5; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .35; // fine
+jump_change = 5; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .3; // fine
 prat_fall_accel = .40; //multiplier of air_accel while in pratfall
 air_friction = .02; //fine
 max_djumps = 1;
@@ -47,14 +47,14 @@ double_jump_time = 50; //the number of frames to play the djump animation. Can't
 walljump_hsp = 5.5;
 walljump_vsp = 9.5;
 walljump_time = 50;
-max_fall = 9; //10, slightly floatier
-fast_fall = 12; //14, now very floaty, bout absa
-gravity_speed = .35;
+max_fall = 10; //10, slightly floatier
+fast_fall = 14; //14, now very floaty, bout absa
+gravity_speed = .4;
 hitstun_grav = .5;
 knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 14;
 wave_land_time = 8;
 wave_land_adj = 1.4; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .040; //grounded deceleration when wavelanding
@@ -65,8 +65,8 @@ crouch_active_frames = 1;
 crouch_recovery_frames = 2;
 
 //parry animation frames
-dodge_startup_frames = 1;
-dodge_active_frames = 1;
+dodge_startup_frames = 2;
+dodge_active_frames = 3;
 dodge_recovery_frames = 2;
 
 //tech animation frames
@@ -104,6 +104,9 @@ debuff_fx = hit_fx_create(sprite_get("ice_debuff"), 20)
 frost_fx = hit_fx_create(sprite_get("icefx"), 30);
 shatter = hit_fx_create(sprite_get("shatterfx"), 25)
 delta_fx = hit_fx_create(sprite_get("icehfx"), 25)
+star = hit_fx_create( sprite_get( "hitspark" ), 15 );
+set_hit_particle_sprite( 1, sprite_get( "hitspark" ));
+
 //Sfx
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");

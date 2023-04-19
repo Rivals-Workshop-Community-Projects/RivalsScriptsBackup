@@ -10,7 +10,7 @@
 */
 	//Get hurt by opponents' hitbox (NOTE: does not work properly with maxarticles > 1)
 
-    if (place_meeting(x, y, asset_get("pHitBox")) && state == 0) {
+    if (place_meeting(x, y, asset_get("pHitBox")) && state != 2) {
     	with (asset_get("pHitBox")){
     		if (player != other.player_id.player){
     			if (place_meeting(x, y, other)){
@@ -52,7 +52,7 @@ if (state != 2){
 	            torched = true;
 				with obj_article1{
 					if (player_id == other.player_id){
-						state_timer += 60
+						state_timer += 90
 					}
 				}
 	    	}
@@ -82,7 +82,8 @@ if (state != 2){
 		if place_meeting(x, y, other) && (player_id == other.player_id) && (attack == AT_FSPECIAL && hbox_num == 1){
 		    if (hitbox_timer < 120){
 	            hitbox_timer = 120
-				bean_timer_reduction = true
+				vsp += -1
+				hsp += 1.8*spr_dir
 				sound_play (sound_get ("wakeup"));
 				with obj_article1{
 					if (player_id == other.player_id){
@@ -137,8 +138,8 @@ if (grav_on){
 //State 0: Freshly spawned
 if (state == 0){
     if (state_timer == 1){
-		spawn_hit_fx(x + 15,y,15)
-		spawn_hit_fx(x - 15,y,15)
+		spawn_hit_fx(x + 16,y,15)
+		spawn_hit_fx(x - 16,y,15)
 	}
 }
 
@@ -216,7 +217,7 @@ if (y > (room_height + 128)){
     exit;
 }
 
-//delete if 1 minute passes
+//delete if 30 seconds pass
 if (state_timer >= 1800){
 	state = 2
 	state_timer = 0
@@ -224,8 +225,8 @@ if (state_timer >= 1800){
 
 //shovel
 if (shovel == true){
-	spawn_hit_fx(x + 15,y,15)
-	spawn_hit_fx(x - 15,y,15)
+	spawn_hit_fx(x + 16,y,15)
+	spawn_hit_fx(x - 16,y,15)
     sound_play (sound_get ("shovel"));
 	if (has_rune("D")){
 		create_hitbox( AT_DSPECIAL, 2, (x),(y) );

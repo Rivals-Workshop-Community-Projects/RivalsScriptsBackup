@@ -126,6 +126,7 @@ window_for_hitbox = 3;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_kragg_rock_land")); //sfx_absa_singlezap1 sfx_absa_singlezap2
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_general);
 hitbox_num++;
 
 // #2 Stomp Hitbox
@@ -152,6 +153,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1")); //sfx_absa_singlezap1 sfx_absa_singlezap2
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 hitbox_num++;
 
 // #3 Stomp 2 Hitbox
@@ -178,6 +180,7 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1")); //sfx_absa_singlezap1 sfx_absa_singlezap2
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 hitbox_num++;
 
 // #4 Kick Hitbox - Final Hitbox with knockback
@@ -204,6 +207,7 @@ window_for_hitbox = 7;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
     set_hitbox_value(attack, hitbox_num, 92, "If gannoncide platform is active, 
     this sends at angle 90 always");//HG_MUNO_HITBOX_MISC
 hitbox_num++;

@@ -1,1 +1,1 @@
-personaQuips[10] = "delete this UU clod";
+personaQuips[10] = "kyogre check my butt";

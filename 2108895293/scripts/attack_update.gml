@@ -155,7 +155,7 @@ if (attack == AT_NSPECIAL){
 	if ((window == 2||window==3) && !special_down){
 		white_flash_timer = 0;
 		if (nsp_charge > max_nsp){
-			if (!free){
+			if (!free || shield_down){
 				if (left_down && spr_dir == 1){
 					spr_dir = -1;
 				}
@@ -318,6 +318,12 @@ if (attack == AT_DSPECIAL_AIR){
 			set_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH, 2); //3//4
 			set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 0);
 			move_cooldown[AT_FSPECIAL] = clamp(move_cooldown[AT_FSPECIAL] - 50, 0, 200);
+			if (spr_dir == 1 && left_down){
+				spr_dir = -1;
+			}
+			if (spr_dir == -1 && right_down){
+				spr_dir = 1;
+			}
 		}
 	}
 	
@@ -408,7 +414,11 @@ if (attack == AT_USPECIAL){
 		if (window_timer == 1){
 			usp_hsp_storage = hsp;
 			usp_vsp_storage = vsp;
+			if (get_player_color( player ) == 14) { //lalala
+			sound_play(sound_get("telestart_magolor"), false, noone, 0.8);
+			}else{
 			sound_play(sound_get("telestart"));
+			}
 			reset_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH);
 			reset_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH);
 			reset_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH);
@@ -442,7 +452,11 @@ if (attack == AT_USPECIAL){
 		draw_indicator = false;
 		invincible = true;
 		invince_time = 1;
+		if (get_player_color( player ) == 14) { //lalala
+		sound_play(sound_get("teleend_magolor"), false, noone, 0.8);
+		}else{
 		sound_play(sound_get("teleend"));
+		}
 	}
 	if ((window == 4||window == 5) && !free){
 			hsp = clamp(hsp, -9.5, 9.5); //9//8
@@ -566,6 +580,7 @@ if (attack == AT_JAB){
 }
 
 if (attack == AT_USTRONG){
+	hud_offset = 50;
 	if (ustrong_target != -4){
 		if (window >= 3 && window <= 6 && has_hit_player == true && ustrong_target.hitstun > 0 && !hitpause){ //Pulls you in, for consistency's sake.
 			ustrong_target.x = lerp(ustrong_target.x, x, 0.1); //These lines gradually pull the player directly above Lumina during ustrong; ustrong's hitboxes handle the rest.
@@ -591,6 +606,10 @@ if (attack == AT_DAIR){
 		/*if (((right_down && spr_dir == -1) || (left_down && spr_dir == 1))&&(attack_down||down_stick_down)){
 			spr_dir = spr_dir*-1
 		}*/
+		//revive - it now happens if you hold shield at the same time
+		if (((right_down && spr_dir == -1) || (left_down && spr_dir == 1))&&shield_down){
+			spr_dir = spr_dir*-1
+		}
 	}
 	if (window == 4){
 		dair_timer++;

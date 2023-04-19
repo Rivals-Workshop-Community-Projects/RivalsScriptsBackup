@@ -4,7 +4,7 @@ set_victory_bg( sprite_get( "bg" ));
 //hit_fx
 fspec_ground = hit_fx_create(sprite_get("fspecial_groundfx"), 15);
 fspec_dash = hit_fx_create(sprite_get("fspecial_dashfx"), 15);
-
+parried_nspecial = false;
 //dragon install stuff
 lightweight = false;
 dragon_install = false;
@@ -22,6 +22,8 @@ set_hit_particle_sprite(2, sprite_get("hfx_part_fire2"));
 hisou_small = hit_fx_create(sprite_get("fire_norm"), 27);
 hisou_large = hit_fx_create(sprite_get("fire_big"), 24);
 hisou_dir = hit_fx_create(sprite_get("fire_dir"), 27);
+ustrong_charge1 = hit_fx_create(sprite_get("ustrong1_enlarge"), 12);
+ustrong_charge2 = hit_fx_create(sprite_get("ustrong2_enlarge"), 12);
 
 skin_alt = 0;
 
@@ -52,7 +54,9 @@ rainbow_dark = c_white;
 rainbow_dark2 = c_white;
 rainbow_color_slow = c_white;
 rainbow_color_ULTRADARK = c_white;
-
+nori_color = c_white;
+nori_color2 = c_white;
+nori_color3 = c_white;
 //possible meter idea
 tenshi_magic = 0;
 old_tenshi_magic = 0;
@@ -250,6 +254,52 @@ if(get_player_color(player) == 29){
 		set_color_profile_slot( 29, 7, 0, 255, 0 ); //Rainbow
 }
 
+//This function takes the bit lengths you put in the previous function, in the same order, and outputs an array with the values you put in (assuming you put in the correct bit lengths), also in the same order.
+//split_var = split_synced_var(bit_length_1, bit_length_2...);
+split_var = split_synced_var(1,1);
+
+color_shift = 0; // Declare variable
+mute_audio = 1; // Declare variable
+
+last_frame_color_alt = get_player_color(player);
+
+// Synced variable overwrite
+color_shift = split_var[0];
+mute_audio = split_var[1];
+music_alt = "";
+music_page = "";
+if(color_shift){
+	if(get_player_color(player) > 0 and  get_player_color(player) < 5){
+		music_page = "_page2_";
+	}
+	music_sprite = sprite_get("song_credits_page2");
+} else {
+	music_sprite = sprite_get("song_credits");
+}
+
+
+
+// Reload on round start
+manual_init_shader_call = true;
+init_shader();
+//print(get_synced_var(player));
+
 
 //Muno Phone -------------------------------------------------------------------
 user_event(14);
+
+#define split_synced_var
+///args chunk_lengths...
+var num_chunks = argument_count;
+var chunk_arr = array_create(argument_count);
+var synced_var = get_synced_var(player);
+var chunk_offset = 0
+for (var i = 0; i < num_chunks; i++) {
+    var chunk_len = argument[i]; //print(chunk_len);
+    var chunk_mask = (1 << chunk_len)-1
+    chunk_arr[i] = (synced_var >> chunk_offset) & chunk_mask;
+    //print(`matching shift = ${chunk_len}`);
+    chunk_offset += chunk_len;
+}
+//print(chunk_arr);
+return chunk_arr;

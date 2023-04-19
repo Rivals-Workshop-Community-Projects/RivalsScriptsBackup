@@ -304,7 +304,7 @@ else
 						set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
 						fire_ang = 90;
 					}
-					if (get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH) != 6)
+					if (get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH) != 6) // if no bone
 					{
 						if (instance_exists(boneObj) && boneObj.state != 2)
 						{
@@ -342,15 +342,16 @@ else
 					draw_x = -lengthdir_y(halfHeight, spr_angle);
 					draw_y = lengthdir_x(halfHeight, spr_angle)-halfHeight;
 					
-					if (window == 2 && window_timer == get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH))
+					if (window_timer == get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH))
 					{
 						var speeed = 10;
 						hsp = speeed * cos(degtorad(fire_ang));
 						vsp = -speeed * sin(degtorad(fire_ang));
 						sound_play(sound_get("se_lucario_special_H02"));
+						if (!has_rune("E")) create_hitbox(AT_USPECIAL_2, 1, x, y-30);
 						if (get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH) != 6) for (var i = 0; i < afterImageMax; ++i)
 						{
-							create_hitbox(AT_USPECIAL_2, 1, floor(x+draw_x-lengthdir_x(i*fireDist/afterImageMax,fire_ang)), floor(y+draw_y-lengthdir_y(i*fireDist/afterImageMax,fire_ang)))
+							if (has_rune("E")) create_hitbox(AT_USPECIAL_2, 1, floor(x+draw_x-lengthdir_x(i*fireDist/afterImageMax,fire_ang)), floor(y+draw_y-lengthdir_y(i*fireDist/afterImageMax,fire_ang)));
 	                        afterImage[i]={sprite_index:sprite_index,image_index:image_index,x:x+draw_x-lengthdir_x(i*fireDist/afterImageMax,fire_ang),y:y+draw_y-lengthdir_y(i*fireDist/afterImageMax,fire_ang),spr_dir:spr_dir,alpha:10*(1-i/64),angle:spr_angle};
 						}
 						else afterImageTimer = afterImageMax;

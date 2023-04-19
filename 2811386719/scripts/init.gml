@@ -23,14 +23,14 @@ dash_turn_accel = 0.5;
 dash_stop_time = 6;
 dash_stop_percent = .25; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .4;
-moonwalk_accel = 1.2;
+moonwalk_accel = 1.3;
 
 jump_start_time = 5;
 jump_speed = 12;
 short_hop_speed = 7.4;
 djump_speed = 12;
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
@@ -48,10 +48,10 @@ hitstun_grav = .53;
 knockback_adj = .9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames
-prat_land_time = 15;
-wave_land_time = 6;
+prat_land_time = 17;
+wave_land_time = 8;
 wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .15; //grounded deceleration when wavelanding
+wave_friction = 0; //grounded deceleration when wavelanding
 
 // can_wall_cling = true;
 do_cling = false;
@@ -105,6 +105,8 @@ bubble_x = 0;
 bubble_y = 8;
 
 airdodge_bubble = sprite_get("airdodge_bubble");
+G9_taunt_fx_spr = sprite_get("G9_taunt_fx");
+G9_lightning_taunt_fx_spr = sprite_get("G9_lightning_taunt_fx");
 lightningfx_uspecial_spr = sprite_get("lightningfx_uspecial");
 lightningfx_uspecial = hit_fx_create(lightningfx_uspecial_spr, 20);
 
@@ -112,6 +114,7 @@ lowest_fps = 99999999999999;
 saved_id = noone;
 payload = false;
 orig_room_speed = room_speed
+
 
 //Custom var
 
@@ -127,6 +130,7 @@ fly_dist = 0;
 nspecial_water_explosion_spr = sprite_get("nspecial_water_explosion");
 nspecial_water_explosion_hfx = hit_fx_create(nspecial_water_explosion_spr, 75)
 moved_up = false
+cancel_cooldown = 0
 
 //dstrong
 
@@ -134,6 +138,7 @@ dstrong_static_overlay = sprite_get("dstrong_static_overlay");
 orb_dissipate_spr = sprite_get("dstrong_proj_nh");
 orb_spawn_spr = sprite_get("orb_spawn");
 orb_loop_spr = sprite_get("orb_loop");
+orb_loop_out_spr = sprite_get("orb_loop_out");
 orb_lifetime_checker = noone;
 right_bubble = noone;
 left_bubble = noone;
@@ -157,7 +162,7 @@ static_bar_spr = sprite_get("static_bar")
 static_max_pull_spr = sprite_get("electric_effect_pull")
 grab_static_pull_spr = sprite_get("nspecial_magnet")
 magnetism_trail_spr = sprite_get("magnetism_layered_trail")
-do_not_consume = false
+consume = true
 
 stage_center = get_stage_data(SD_X_POS) + get_stage_data(SD_WIDTH)/2
 stage_left = get_stage_data(SD_X_POS)
@@ -165,6 +170,8 @@ stage_right = get_stage_data(SD_X_POS) + get_stage_data(SD_WIDTH)
 distance_from_ledge = 0
 
 jet_spr = sprite_get("jet");
+jet_sprite_index = jet_spr
+jet_fstrong_spr = sprite_get("jet_fstrong");
 jet_discharge_spr = sprite_get("jet_discharge");
 jet_static_overlay_spr = sprite_get("jet_static_overlay");
 jet_x = 0;
@@ -172,23 +179,20 @@ jet_y = 0;
 jet_show_charge = false;
 jet_img_idx_charge = 0;
 jet_anim_speed = 0.5;
+jet_ball_timer = 0
+jet_ball_time = 15
 
 bar_alpha = 0;
 drain_timer = 0;
-// var s = static_people;
-// with(oPlayer){
-//   s[player - 1] = id;
-// }
-
 
 magnet_timer = 0;
 static_flash = 0;
-// static_flash_max = 100;
 
 reflector = noone; //Fstrong
 reflect_id = noone; //Fstrong
 reflected_spr = sprite_get("fstrong_lightning"); //Fstrong
 times_reflected = 0;
+can_counter = false
 
 solids = asset_get("par_block");
 plats = asset_get("par_jumpthrough");
@@ -205,12 +209,12 @@ has_walljump_old = false
 have_armor = true;
 no_tilt = false;
 
-
 _old_hsp = 0;
 
 //dspecial
 falling_hbox = noone;
-
+hit_wave = false;
+hurt_img_i = 0
 wave_summoned = false;
 wave_spr = sprite_get("wave");
 wave_fx = hit_fx_create(wave_spr, 15);
@@ -218,7 +222,9 @@ electric_wave_spr = sprite_get("electric_wave");
 electric_wave_fx = hit_fx_create(electric_wave_spr, 15);
 dspecial_initial_speed = 0;
 flash_fx = hit_fx_create(sprite_get("flash"), 8);
-uthrow_hitfx = hit_fx_create(sprite_get("uthrow_hitfx"), 45);
+dspecial_bubble_spr = sprite_get("dspecial_bubble");
+dspecial_bubble_fx_spr = sprite_get("dspecial_bubble_fx");
+dspecial_bubble_fail_fx_spr = sprite_get("dspecial_bubble_fail_fx");
 
 //fspecial
 follow_wave = noone;
@@ -232,6 +238,8 @@ nspecial_water_miss_ground_hitfx_spr = sprite_get("nspecial_water_miss_ground_hi
 nspecial_water_miss_ground_hitfx_hfx = hit_fx_create(nspecial_water_miss_ground_hitfx_spr, 40);
 nspecial_water_geyser_hfx = hit_fx_create(nspecial_water_geyser_spr, 20);
 nspecial_water_hoop_hfx = hit_fx_create(nspecial_water_hoop_spr, 30);
+spark_hfx = hit_fx_create(sprite_get("sparkfx"), 20);
+
 indicador_x = 0;
 indicador_y = 0;
 starting_x = 0;
@@ -280,24 +288,11 @@ mark_to_cancel = false;
 
 modifier = get_synced_var(player)
 // print(modifier)
+alt_with_mods = [5, 10, 15, 19, 20, 27, 30]
 col = get_player_color(player)
-
-switch col{
-  case 19:
-    if(modifier == 0){
-      color_19_0()
-    }else{
-      color_19_1()
-    }
-    break;
-  case 27:
-    if(modifier == 0){
-      color_27_0()
-    }else{
-      color_27_1()
-    }
-    break;
-}
+alt_update_index = col
+user_event(4)
+alt_with_mods = 0
 
 //AI stuff
 showing_thoughts = false;
@@ -305,51 +300,4 @@ is_ai = false;
 opponent_in_static = false;
 n_times_got_hit = 0;
 
-
-#define color_19_0
-
-// Crimson Gear
-set_color_profile_slot( 19, 0, 232, 215, 132 ); //Horn/static
-set_color_profile_slot( 19, 1, 204, 179, 167 ); //Shirt
-set_color_profile_slot( 19, 2, 94, 0, 0 ); //Coat
-set_color_profile_slot( 19, 3, 255, 135, 79 ); //water
-set_color_profile_slot( 19, 4, 138, 92, 73 ); //skin
-set_color_profile_slot( 19, 5, 75, 98, 117 ); //Pants
-set_color_profile_slot( 19, 6, 135, 26, 26 ); //gloves
-set_color_profile_slot( 19, 7, 110, 0, 34 ); //slippers/mouth/heart
-
-#define color_19_1
-
-// Pot XRD
-set_color_profile_slot( 19, 0, 163, 162, 160 ); //Horn/static
-set_color_profile_slot( 19, 1, 79, 84, 79 ); //Shirt
-set_color_profile_slot( 19, 2, 63, 69, 42 ); //Coat
-set_color_profile_slot( 19, 3, 255, 130, 0 ); //water
-set_color_profile_slot( 19, 4, 83, 87, 66 ); //skin
-set_color_profile_slot( 19, 5, 69, 84, 66 ); //Pants
-set_color_profile_slot( 19, 6, 168, 34, 0 ); //gloves
-set_color_profile_slot( 19, 7, 120, 0, 0 ); //slippers/mouth/heart
-
-#define color_27_0
-
-// Cola
-set_color_profile_slot( 27, 0, 245, 253, 255 ); //Horn/static
-set_color_profile_slot( 27, 1, 219, 235, 219 ); //Shirt
-set_color_profile_slot( 27, 2, 222, 36, 67 ); //Coat
-set_color_profile_slot( 27, 3, 117, 70, 44 ); //water
-set_color_profile_slot( 27, 4, 222, 36, 39 ); //skin
-set_color_profile_slot( 27, 5, 255, 39, 77 ); //Pants
-set_color_profile_slot( 27, 6, 227, 255, 227 ); //gloves
-set_color_profile_slot( 27, 7, 219, 235, 219 ); //slippers/mouth/heart
-
-#define color_27_1
-
-// Diet
-set_color_profile_slot( 27, 0, 222, 36, 39 ); //Horn/static
-set_color_profile_slot( 27, 1, 222, 36, 39 ); //Shirt
-set_color_profile_slot( 27, 2, 245, 253, 255 ); //Coat
-set_color_profile_slot( 27, 3, 117, 70, 44 ); //water
-set_color_profile_slot( 27, 4, 245, 253, 255 ); //skin
-set_color_profile_slot( 27, 5, 243, 255, 255 ); //Pants
-set_color_profile_slot( 27, 6, 222, 36, 39 ); //gloves
-set_color_profile_slot( 27, 7, 199, 8, 84 ); //slippers/mouth/heart27
+display = true

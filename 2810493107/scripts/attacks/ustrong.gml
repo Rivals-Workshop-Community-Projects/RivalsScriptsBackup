@@ -14,15 +14,15 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, sound_get("ustrongweakhits"));
 
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 //set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, sound_get("ustrongclap"));
 
-set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_USTRONG, 13);
@@ -199,6 +199,7 @@ set_hitbox_value(AT_USTRONG, 9, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 9, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_USTRONG, 9, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_USTRONG, 9, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_USTRONG, 9, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_USTRONG, 9, HG_VISUAL_EFFECT, hit_fx_create(sprite_get("ghostfx"), 20));
 set_hitbox_value(AT_USTRONG, 9, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 9, HG_VISUAL_EFFECT_Y_OFFSET, -10);

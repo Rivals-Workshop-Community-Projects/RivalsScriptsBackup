@@ -1,0 +1,1 @@
+move_cooldown[AT_FSPECIAL] = 0;

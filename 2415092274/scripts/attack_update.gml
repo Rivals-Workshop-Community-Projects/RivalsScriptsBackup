@@ -13,16 +13,6 @@ if (attack==AT_FAIR && window == 1 && window_timer == 14) {
 	sound_play( sound_get( "SWB1" ) );
 }
 
-if (attack==AT_FAIR && window == 2) {
-	set_attack_value(AT_FAIR, AG_LANDING_LAG, 10);
-}
-
-if (attack==AT_FAIR&&window==1&&window_timer==1) {
-	reset_attack_value(AT_FAIR, AG_LANDING_LAG);
-}
-if (attack==AT_FAIR&&window==3&&window_timer==9) {
-	reset_attack_value(AT_FAIR, AG_LANDING_LAG);
-}
 
 if (attack==AT_UAIR&&window==1&&window_timer==1) {
 	reset_attack_value(AT_UAIR, AG_LANDING_LAG);
@@ -31,8 +21,18 @@ if (attack==AT_UAIR && has_hit_player) {
 	set_attack_value(AT_UAIR, AG_LANDING_LAG, 5);
 }
 
+if (attack==AT_FAIR && window == 2 && window_timer == 2) {
+	sound_play( sound_get("SWB1"),false,noone,0.5,1 );
+	sound_play( sound_get("SWL3"),false,noone,0.7,1.2 );
+}
 if (attack==AT_BAIR && window == 1 && window_timer == 10) {
-	sound_play( sound_get( "SWFS5" ) );
+	sound_play( sound_get("ao_nair"),false,noone,0.5,1.2 );
+}
+if (attack==AT_BAIR && window == 2 && window_timer%2==0 ){
+	spawn_hit_fx( x-16+random_func( 2, 32, true ), y-24-24+random_func( 5, 48, true ), particle2 );
+}
+if (attack==AT_FSPECIAL && (window == 2||window == 3) && window_timer%2==0 ){
+	spawn_hit_fx( x-(20*spr_dir)-16+random_func( 2, 32, true ), y-24-24+random_func( 5, 48, true ), particle1 );
 }
 
 if (attack==AT_USTRONG && free) {
@@ -79,33 +79,105 @@ if (attack==AT_FTILT && window == 6 && window_timer >= 5 && !was_parried) {
 if (attack==AT_BAIR && window == 5 && !was_parried) {
 	iasa_script();
 }
+if (attack==AT_TAUNT_3){
+	if (window == 3 && taunt_down) {
+		window = 2;
+		window_timer = 0;
+	}
+	if (window == 2 || window == 3) {
+		//print(string(dsp_test_buffer))
+		if (left_down){
+			if (dsp_test_buffer!=1){
+				dsp_test_buffer = 1;
+				dsp_test_timer = 0;
+				dsp_test_dir = -1;
+				sound_play(sound_get("altsel"));
+			}
+		}else if (right_down){
+			if (dsp_test_buffer!=2){
+				dsp_test_buffer = 2;
+				dsp_test_timer = 0;
+				dsp_test_dir = 1;
+				sound_play(sound_get("altsel"));
+			}
+		}else{
+			if (dsp_test_buffer!=0){
+				if (dsp_test_buffer = 1){
+					dsp_test_dir = 1;
+					dsp_test_timer = 0;
+					sound_play(sound_get("altsel"));
+				}
+				if (dsp_test_buffer = 2){
+					dsp_test_dir = -1;
+					dsp_test_timer = 0;
+					sound_play(sound_get("altsel"));
+				}
+				dsp_test_buffer = 0;
+			}
+		}
+		if (attack_pressed){
+			dsp_TESTMODE = dsp_test_buffer;
+			clear_button_buffer( PC_ATTACK_PRESSED );
+			sound_play(sound_get("gui_accept"));
+		}
+	}
+}
 
 if (attack==36&&window==2&&taunt_down&&window_timer>=43){window_timer=43}
 if (attack==AT_TAUNT && window == 1 && window_timer == 1) {
 	sound_play( sound_get("scoptool_2") );
 }
+if (attack==AT_TAUNT_4 && window == 1 && window_timer == 1) {
+	sound_play( sound_get("skate"), false, noone, 0.7);
+}
 if (attack==AT_NAIR && window >= 3 && !was_parried && !hitpause) {
 	can_wall_jump = true;
+}
+
+if (dsp_TESTMODE == 2){
+	if (attack==AT_JAB || attack==AT_FTILT || attack==AT_UTILT ||
+		attack==AT_DTILT || attack==AT_DATTACK ||
+		attack==AT_NAIR || attack==AT_FAIR || attack==AT_BAIR || 
+		attack==AT_UAIR || attack==AT_DAIR) {
+		if (is_special_pressed( DIR_DOWN )){
+			dsp_modeii_buffer = true;
+		}
+	}
 }
 
 if (dsp_qualified){
 	if (!was_parried){
 		if (hitpause){
-			if (is_special_pressed( DIR_DOWN )){
+			if (is_special_pressed( DIR_DOWN ) || dsp_modeii_buffer){
 				dsp_confirmed = true;
+				
+				if (attack==AT_FTILT&&!ftilt_hit){
+				}else if (attack==AT_UTILT&&!utilt_hit){
+				}else{
 				attack_end() 
 				destroy_hitboxes()
+				}
 			}
 		}else{
 			if (dsp_confirmed){
-				reset_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS);
-				attack = AT_DSPECIAL;
-				window = 1;
-				window_timer = 5;
-				dsp_free = false;
-				dsp_override = true;
-				dsp_confirmed = false;
-				dsp_qualified = false;
+				if (attack==AT_FTILT&&!ftilt_hit){
+				}else if (attack==AT_UTILT&&!utilt_hit){
+				}else{
+					attack_end() 
+					destroy_hitboxes()
+					reset_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS);
+					attack = AT_DSPECIAL;
+					hurtboxID.sprite_index = get_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE);
+					var ring = instance_create( x, y-30, "obj_article1" );
+					ring.r_dur = 20
+					window = 1;
+					window_timer = 5;
+					dsp_modeii_buffer = false;
+					dsp_free = false;
+					dsp_override = true;
+					dsp_confirmed = false;
+					dsp_qualified = false;
+				}
 			}else{
 				dsp_qualified = false;
 			}
@@ -229,6 +301,56 @@ if (attack==AT_NSPECIAL){
 		can_move = false;
 		can_fast_fall = false;
 	}
+	
+	//mawralgrab
+	if (attack == AT_NSPECIAL) {
+		//reset 'grabbed_player' variables on the first frame when performing a grab.
+		if (window == 1 && window_timer == 1) { 
+			grabbed_player_obj = noone; 
+			grabbed_player_relative_x = 0;
+			grabbed_player_relative_y = 0;
+		}
+	}
+	if (attack == AT_NSPECIAL && instance_exists(grabbed_player_obj)) {
+		
+		//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
+		if (window >= 5) { grabbed_player_obj = noone; }
+		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+
+		else {
+			//keep the grabbed player in hitstop until the grab is complete.
+			grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitpause = true;
+			
+			//if this is the first frame of a window, store the grabbed player's relative position.
+			if (!nsp_hit) {
+				grabbed_player_relative_x = grabbed_player_obj.x - x;
+				grabbed_player_relative_y = grabbed_player_obj.y - y;
+				nsp_hit = true;
+			}
+			 
+				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
+				var pull_to_x = 16 * spr_dir;
+				var pull_to_y = 0;
+			//on the first window, pull the opponent into the grab.
+			if (window == 4) { 
+				
+				if (!hitpause){
+				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
+				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+				grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
+				grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
+				}
+			}
+			if (window >= 5) { 
+				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+				grabbed_player_obj.x = x + pull_to_x
+				grabbed_player_obj.y = y + pull_to_y
+			}
+			//the above block can be copied for as many windows as necessary.
+			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
+		}
+	}
 }
 
 
@@ -284,8 +406,10 @@ if (attack==AT_USPECIAL){
 		hsp = clamp(hsp, -3, 3)
 	}
 	if (window==3){
-		if (!was_parried&&!hitpause){
-			can_shield = true;
+		if (window_timer>=6){
+			if (!was_parried&&!hitpause){
+				can_shield = true;
+			}
 		}
 	}
 	if (window==3&&window_timer==12){
@@ -384,9 +508,9 @@ if (attack==AT_FSPECIAL){
 	if (window>=3){//5
 		if (!was_parried){
 			if (has_hit_player){
-				if (fsp_level<4){
-					fsp_buffer = 20
-				}
+				/*if (fsp_level<4){
+					fsp_buffer = fsp_buffer_amount//20
+				}*/
 				//"fake jump"
 				if (jump_pressed || (tap_jump_pressed && can_tap_jump()) || fsp_jc_confirm ){
 					if (fsp_level<4){
@@ -395,6 +519,7 @@ if (attack==AT_FSPECIAL){
 						window_timer = 0;
 						state_timer = 0;
 						set_state( PS_DOUBLE_JUMP )
+						fsp_buffer = fsp_buffer_amount//20
 					}
 				}
 			}
@@ -408,6 +533,52 @@ if (attack==AT_FSPECIAL){
 
 
 
+// -- -- -- -- --
+// dustland
+// -- -- -- -- --
+if (attack==AT_FSPECIAL){
+	if (!free){
+		if (window==2){
+			if (window_timer==1){
+				spawn_base_dust(x, y, "dash_start")
+			}
+		}
+		if (window==4){
+			if (window_timer==1){
+				spawn_base_dust(x+(50*spr_dir), y, "dash", spr_dir*-1)
+			}
+		}
+	}
+}
+
+if (attack==AT_FTILT){
+	if (window==2){
+		if (window_timer==1){
+			spawn_base_dust(x, y, "dash")
+		}
+	}
+}
+
+if (attack==AT_FSTRONG){
+	if (window==2){
+		if (window_timer==5){
+			spawn_base_dust(x, y, "dash")
+		}
+	}
+	if (window==3){
+		if (window_timer==1){
+			spawn_base_dust(x, y, "dash_start")
+		}
+	}
+}
+
+if (attack==AT_USTRONG){
+	if (window==2){
+		if (window_timer==8){
+			spawn_base_dust(x, y, "jump")
+		}
+	}
+}
 
 
 
@@ -418,3 +589,37 @@ if (attack==AT_FSPECIAL){
 
 
 
+//supersonic's base game dust function thanks super sonic !
+//find this here : https://github.com/SupersonicNK/roa-workshop-templates/blob/master/snippets/spawn_base_dust.md
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

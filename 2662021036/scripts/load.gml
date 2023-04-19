@@ -63,11 +63,11 @@ sprite_change_offset("sludgebomb_particle2", 20, 20);
 
 sprite_change_offset("large_poison_hfx", 80, 80);
 
-sprite_change_offset("final_beam_background", 1056, 1008);
-sprite_change_offset("final_flash", 1555, 1555);
-sprite_change_offset("final_speedlines", 1056, 318);
-sprite_change_offset("final_effects", 90, 662);
-sprite_change_offset("final_effects_2", 90, 662);
+sprite_change_offset("final_beam_background", 528, 504);
+sprite_change_offset("final_flash", 777, 777);
+sprite_change_offset("final_speedlines", 528, 159);
+sprite_change_offset("final_effects", 45, 331);
+sprite_change_offset("final_effects_2", 45, 331);
 sprite_change_offset("final_hitbox", 90, 662);
 sprite_change_offset("final_sun", 112, 112);
 

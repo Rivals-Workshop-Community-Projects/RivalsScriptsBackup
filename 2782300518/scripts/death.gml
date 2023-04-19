@@ -10,6 +10,8 @@ chargeUpVoiceLine = true;
 
 fuel = fuel / 2;
 
+outline_charge = 0;
+
 if (kickTime > 0)
 {
 	feline_power = false;

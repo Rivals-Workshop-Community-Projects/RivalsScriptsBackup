@@ -98,6 +98,7 @@ sfx_dbfz_swipe_weak2 = sound_get("ARC_BTL_CMN_Furi_Short-A");
 sfx_dbfz_swipe_medium1 = sound_get("ARC_BTL_CMN_Furi_Hiji");
 sfx_dbfz_swipe_medium2 = sound_get("ARC_BTL_CMN_Furi_Keri");
 sfx_dbfz_swipe_heavy1 = sound_get("ARC_BTL_CMN_Furi_YokoKeri");
+sfx_drip = sound_get("drip");
 
 sfx_dbfz_superdash = sound_get("ARC_BTL_CMN_homingdash");
 
@@ -105,9 +106,15 @@ sfx_dbfz_teleport = sound_get("ARC_BTL_CMN_TLP_Short");
 sfx_dbfz_teleport_end = sound_get("ARC_BTL_CMN_TLP_End");
 
 // VFX
-vfx_afterimage = hit_fx_create(sprite_get("vfx_afterimage"), 24);
-vfx_afterimage_ssj1 = hit_fx_create(sprite_get("vfx_afterimage_ssj1"), 24);
-vfx_afterimage_ssj3 = hit_fx_create(sprite_get("vfx_afterimage_ssj3"), 24);
+if get_player_color(player) == 0{
+	vfx_afterimage = hit_fx_create(sprite_get("vfx_afterimage_alt0"), 24);
+	vfx_afterimage_ssj1 = hit_fx_create(sprite_get("vfx_afterimage_ssj1_alt0"), 24);
+	vfx_afterimage_ssj3 = hit_fx_create(sprite_get("vfx_afterimage_ssj3_alt0"), 24);
+}else{
+	vfx_afterimage = hit_fx_create(sprite_get("vfx_afterimage"), 24);
+	vfx_afterimage_ssj1 = hit_fx_create(sprite_get("vfx_afterimage_ssj1"), 24);
+	vfx_afterimage_ssj3 = hit_fx_create(sprite_get("vfx_afterimage_ssj3"), 24);
+}
 vfx_ftilt_destroy = hit_fx_create(sprite_get("vfx_ftilt_destroy"), 12);
 vfx_utilt_spawn = hit_fx_create(sprite_get("vfx_utilt_spawn"), 16);
 vfx_nspecial_fire = hit_fx_create(sprite_get("vfx_nspecial_fire"), 16);
@@ -147,9 +154,9 @@ blue_color = original_palette[0]
 
 var hair = [
 	make_color_rgb(
-		color_get_blue(original_palette[4]),
-		color_get_green(original_palette[4]),
-		color_get_red(original_palette[4])
+		color_get_blue(original_palette[3]),
+		color_get_green(original_palette[3]),
+		color_get_red(original_palette[3])
 		),
 	make_color_rgb(
 		color_get_blue(original_palette[5]),
@@ -162,12 +169,35 @@ var hair = [
 // colors are in hex RGB
 ssjs = [];
 SSJ_NONE			= initSsj(0, "Base",				0, hair[0], hair[1]);
-SSJ_1	    		= initSsj(1, "Super Saiyan 1",		1, $ffe07e, $e39500);
-SSJ_3	    		= initSsj(2, "Super Saiyan 3",		2, $ffe07e, $e39500);
-SSJ_GOD	    		= initSsj(3, "Super Saiyan God",	0, $ff3c7d, $b80050);
-SSJ_BLUE    		= initSsj(4, "Super Saiyan Blue",	1, $54edf9, $007bbf);
-SSJ_UI      		= initSsj(5, "Ultra Instinct",		0, $c1dfe7, $6688aa);
-SSJ_ROSE      		= initSsj(6, "Super Saiyan Rosé",	1, $eab1cb, $d95f8f);
+if get_player_color(player) == 16{
+	SSJ_1	    		= initSsj(1, "Super Saiyan 1",		1, $ff8cc0, $CD3277);
+	SSJ_3	    		= initSsj(2, "Super Saiyan 3",		2, $ff8cc0, $CD3277);
+	SSJ_GOD	    		= initSsj(3, "Super Saiyan God",	0, $ff3c7d, $ff3c7d);
+	SSJ_BLUE    		= initSsj(4, "Super Saiyan Blue",	1, $54edf9, $54edf9);
+	SSJ_UI      		= initSsj(5, "Ultra Instinct",		0, $c1dfe7, $c1dfe7);
+	SSJ_ROSE      		= initSsj(6, "Super Saiyan Rosé",	1, $ff8cc0, $CD3277);
+}else if get_player_color(player) == 19{
+	SSJ_1	    		= initSsj(1, "Super Saiyan 1",		1, $FFFFFF, $FFFFFF);
+	SSJ_3	    		= initSsj(2, "Super Saiyan 3",		2, $FFFFFF, $FFFFFF);
+	SSJ_GOD	    		= initSsj(3, "Super Saiyan God",	0, $A6A6A6, $A6A6A6);
+	SSJ_BLUE    		= initSsj(4, "Super Saiyan Blue",	1, $A6A6A6, $A6A6A6);
+	SSJ_UI      		= initSsj(5, "Ultra Instinct",		0, $FFFFFF, $FFFFFF);
+	SSJ_ROSE      		= initSsj(6, "Super Saiyan Rosé",	1, $FFFFFF, $FFFFFF);
+}else if get_player_color(player) == 20{
+	SSJ_1	    		= initSsj(1, "Super Saiyan 1",		1, $D3E29A, $D3E29A);
+	SSJ_3	    		= initSsj(2, "Super Saiyan 3",		2, $D3E29A, $D3E29A);
+	SSJ_GOD	    		= initSsj(3, "Super Saiyan God",	0, $A7BA4A, $A7BA4A);
+	SSJ_BLUE    		= initSsj(4, "Super Saiyan Blue",	1, $A7BA4A, $A7BA4A);
+	SSJ_UI      		= initSsj(5, "Ultra Instinct",		0, $D3E29A, $D3E29A);
+	SSJ_ROSE      		= initSsj(6, "Super Saiyan Rosé",	1, $D3E29A, $D3E29A);
+}else{
+	SSJ_1	    		= initSsj(1, "Super Saiyan 1",		1, $FFCF3F, $CD9B00);
+	SSJ_3	    		= initSsj(2, "Super Saiyan 3",		2, $FFCF3F, $CD9B00);
+	SSJ_GOD	    		= initSsj(3, "Super Saiyan God",	0, $ff3c7d, $C00035);
+	SSJ_BLUE    		= initSsj(4, "Super Saiyan Blue",	1, $4CE1FF, $009DB4);
+	SSJ_UI      		= initSsj(5, "Ultra Instinct",		0, $d5e3e7, $5696A8);
+	SSJ_ROSE      		= initSsj(6, "Super Saiyan Rosé",	1, $FF8CC0, $CD3277);
+}
 
 ssj = SSJ_NONE;
 was_ssj = 0;
@@ -252,6 +282,7 @@ checked_sprite_names = [
     "uspecial", 
     "dspecial", 
     "taunt",
+	"tauntdrip",
     
     "phone_open",
     "intro",
@@ -525,6 +556,270 @@ muno_event_type = 0;
 user_event(14);
 
 
+
+
+
+
+
+//Pac Man
+Namco_Taunt = sprite_get("Pacman_Goku")
+Namco_Taunt_Sound = sound_get("pacman_sound")
+
+//Snake interigations
+
+sna_interrogated_line_01 = "‘Rumble’ hehe, sorry I forgot to eat lunch.";
+sna_interrogated_line_02 = "Lighten up, your expression reminds me of Vegeta.";
+sna_interrogated_line_03 = "Hey, do you know a guy named Tao?";
+
+// Agent N Codecs
+
+nname = "Goku"
+
+ncode1 = "A saiyan raised on earth. Goku is one of the strongest"
+ncode2 = "beings recorded. He has bested the likes of Buu, Frieza,"
+ncode3 = "and jiren. If encountered, do not engage."
+
+// Amber
+plushForAmber = sprite_get("Goku_plush");
+
+//Toon Link
+toonlink_photo = sprite_get("Goku_link_photo");
+toonlink_photo2 = 4
+
+//So Sorry
+sorry_art = sprite_get("Goku_So_Sorry");
+
+//Loadent
+ltweet = sprite_get("ltweet");
+
+//The Chosen One
+tcoart = sprite_get("TCO_Goku");
+
+//Miiverse
+miiverse_post = sprite_get("Goku_miiverse");
+
+//Mamizou futatsuiwa
+
+mamizou_transform_spr = sprite_get("Goku_tanooki");
+
+// Wall-E
+
+walle_taunt_sound = sound_get("Cha_la_head_cha_la")
+walle_taunt_type = [1]
+
+// Mt Dedede
+
+arena_title = "The Saiyan, raised on earth";
+
+//Boxing arena
+
+boxing_title = "Tenkaichi Champion";
+
+//Soulbound Conflict
+
+battle_text = "* Goku, is gonna show you!";
+
+//Hikaru title
+
+Hikaru_Title = "super saiyan";
+
+// Henry stickmin fail
+
+has_fail = true;
+fail_text = "Who do you think you are beerus?";
+
+//Wall-E Taunt
+
+walle_taunt_sound = sound_get("Cha_la_head_cha_la")
+walle_taunt_type = 1
+
+//Trial Grounds
+
+guiltySprite = sprite_get("goku")
+
+//Pokemon stadium
+
+pkmn_stadium_front_img = sprite_get("Goku_pokemon_stadium_front_grey")
+pkmn_stadium_back_img = sprite_get("Goku_pokemon_stadium_Back_grey")
+
+//Wily Castle
+wily_robotmaster_img = sprite_get("Goku_Megaman");
+ 
+ //Green flower zone
+gfzsignspr = sprite_get("DragonBoard")
+gfzsignsfx = sound_get("goku_signpost_fx")
+
+//Last resort
+
+resort_portrait = sprite_get("gohan")
+
+//ttyd stage
+
+ttyd_audience_sprite = sprite_get("chi_chi")
+
+//Feri
+
+feri_costume = sprite_get("Feri_goku");
+
+//demopan
+
+object = sprite_get("demo-pan-goku");
+
+//po and gumbo
+
+pot_compat_variable = sprite_get("goku_rice");
+pot_compat_text = "Chi-Chi's home cooked rice."
+
+//Naruto
+naruto_sexyjutsu_sprite = sprite_get("Goku_naruto_taunt");
+
+//Spamton
+spam_ad = sprite_get("Goku_spamton")
+
+//Unregistered Hypercam
+ uhc_victory_quote = "toop 1o resons gok is week (1 y e i s nt ";
+ uhc_victory_quote = "Whatch draagon bal fweee cick now!:0 :0 ! ! !";
+
+ uhc_taunt_videos[0] = { title:"Dragon ball z intro", sprite:sprite_get("Goku_hyper_Gif"), song:sound_get("Goku_hypercam"), fps:7 }; 
+
+//Moonchild
+childsupport = 1;
+
+//Dracula support
+dracula_portrait = sprite_get("Goku1");
+dracula_portrait2 = sprite_get("Goku2");
+dracula_portrait3 = sprite_get("Goku3");
+dracula_portrait4 = sprite_get("Goku4");
+dracula_portrait5 = sprite_get("Goku5");
+var page = 0;
+
+//Page 0
+dracula_speaker[0] = 1;
+dracula_text[0] = "Yo, are you that dracula guy?";
+page++;
+
+//Page 1
+dracula_speaker[1] = 0;
+dracula_text[1] = "[shake] who dares enter my castle without my permission?!";
+page++;
+
+//page 2
+
+dracula_speaker[2] = 4;
+dracula_text[2] = "Hi i'm goku.";
+page++;
+
+//Page 3
+dracula_speaker[3] = 0;
+dracula_text[3] = "Hm, goku was it?";
+page++;
+
+//Page 4
+dracula_speaker[4] = 4;
+dracula_text[4] = "Yep";
+page++;
+
+//Page 5
+dracula_speaker[5] = 0;
+dracula_text[5] = "I have heard tales of your exploits Saiyan.";
+page++;
+
+//Page 6
+dracula_speaker[6] = 0;
+dracula_text[6] = "The stories claim you are a powerful warrior, but looking at you now, I question their accuracy.";
+page++;
+
+//page 7
+
+dracula_speaker[7] = 1;
+dracula_text[7] = "Heh, well i'm game if you wanna test it.";
+page++;
+
+//page 8
+dracula_speaker[8] = 1;
+dracula_text[8] = "That village outside said you were really strong.";
+page++;
+
+//page 9
+dracula_speaker[9] = 4;
+dracula_text[9] = "As soon as I heard that I knew I had to ask for a spar.";
+page++;
+
+//page 10
+dracula_speaker[10] = 0;
+dracula_text[10] = "A spar? HAH, [shake] I do not SPAR Son goku I feast, now be gone I have no need of a clown.";
+page++;
+
+//page 11
+dracula_speaker[11] = 5;
+dracula_text[11] = "Aw, are you sure? Well at least I can get a good meal at the village.";
+page++;
+
+//page 12
+dracula_speaker[12] = 0;
+dracula_text[12] = "Hm? Ah, yes they will have to be punished for this insult.";
+page++;
+
+//page 13
+dracula_speaker[13] = 1;
+dracula_text[13] = "...";
+page++;
+
+//page 14
+dracula_speaker[14] = 2;
+dracula_text[14] = "Punished?";
+page++;
+
+//page 15
+dracula_speaker[15] = 0;
+dracula_text[15] = "Yes, afterall when slaves rebel against their superiors they must be taught a lesson.";
+page++;
+
+//page 16
+dracula_speaker[16] = 0;
+dracula_text[16] = "Feasting on a few children should be punishment enough.";
+page++;
+
+//page 17
+dracula_speaker[17] = 2;
+dracula_text[17] = "...";
+page++;
+
+//page 18
+dracula_speaker[18] = 0;
+dracula_text[18] = "Don't tell me you object? I had heard you cared only for battle. Surely you don't believe yourself to be some hero?";
+page++;
+
+//page 19
+dracula_speaker[19] = 2;
+dracula_text[19] = "I'm no hero, but I won't let those villagers pay for my mistake.";
+page++;
+
+//page 20
+dracula_speaker[20] = 3;
+dracula_text[20] = "If your gonna hurt them i'll stop you!";
+page++;
+
+//page 21
+dracula_speaker[21] = 0;
+dracula_text[21] = "Hah! [shake] Then I suppose we will do battle after all. [glass]";
+page++;
+
+//page 22
+dracula_speaker[22] = 0;
+dracula_text[22] = "let us see if you have the power Saiyan!";
+page++;
+
+//Pit
+user_event(7)
+
+// misc
+
+set_ui_element(UI_HUD_ICON, sprite_get("hud_base"));
+set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_base"));
+set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_base"));
+
+naruto_sexyjutsu_sprite = sprite_get("taunt_sexyjutsu_custom");
 
 #define initSsj(num, name, hairstyle, color, color_dark)
 

@@ -6,6 +6,7 @@ sprite_change_offset("hurt", 23, 43);
 sprite_change_offset("uphurt", 23, 43);
 sprite_change_offset("downhurt", 23, 43);
 sprite_change_offset("hurtground", 23, 43);
+sprite_change_offset("spinhurt", 23, 43);
 sprite_change_offset("crouch", 23, 43);
 sprite_change_offset("walk", 23, 43);
 sprite_change_offset("walkturn", 23, 43);

@@ -108,6 +108,7 @@ bubble_x = 0;
 bubble_y = 8;
 
 aodev = false;
+aodevcount = 0;
 
 nsp_dir_h = 0;
 nsp_dir_v = 0;
@@ -118,18 +119,40 @@ dsp_done = false;
 dsp_override = false;
 dsp_qualified = false;
 dsp_confirmed = false;
+dsp_TESTMODE = 0;
+dsp_test_buffer = 0;
+dsp_test_timer = 0;
+dsp_test_timer_b = 0;
+dsp_test_max = 50;
+dsp_test_dir = 0;
+dsp_modeii_buffer = false;
+
 fsp_level = 0;
 fsp_time = 0;
 fsp_t_max = 16;
 fsp_a_time = 0;
 fsp_a_t_max = 16;
 fsp_buffer = 0;
+fsp_buffer_amount = 16;//20
 fsp_jc_confirm = false;
 
 usp_did = false;
 
 usp_d_able = false;
 usp_d_done = false;
+
+utilt_hit = false;
+ftilt_hit = false;
+nsp_hit = false;
+
+//mawralgrab
+grabbed_player_obj = noone;
+grabbed_player_relative_x = 0;
+grabbed_player_relative_y = 0;
+
+AT_TAUNT_3 = AT_EXTRA_2;
+AT_TAUNT_4 = AT_EXTRA_3;
+skate_tmp = 0;
 
 optimalmodeEX = false;
 fake_mhID = -4;
@@ -151,3 +174,7 @@ tackle_hfx2 = hit_fx_create( sprite_get("hfx_tackle2"), 24 )
 set_victory_bg( sprite_get( "victorybg" ));
 music_init = false;
 mode = false;
+particle1 = hit_fx_create( sprite_get("particle1"), 12 );
+particle2 = hit_fx_create( sprite_get("particle2"), 12 );
+
+

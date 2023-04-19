@@ -32,3 +32,8 @@ if(hit_player = player and dragon_install){
         temp.super_blue = true;
     }
 }*/
+
+if(enemy_hitboxID.orig_player == player){
+    invince_time = 0;
+    parried_nspecial = true;
+}

@@ -21,7 +21,7 @@ walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 14;
 initial_dash_speed = 7;
-dash_speed = 7;
+dash_speed = 7.5;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -51,7 +51,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
-knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 5;
@@ -61,7 +61,7 @@ wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;
-crouch_active_frames = 1;
+crouch_active_frames = 4;
 crouch_recovery_frames = 1;
 
 //parry animation frames
@@ -70,28 +70,28 @@ dodge_active_frames = 1;
 dodge_recovery_frames = 1;
 
 //tech animation frames
-tech_active_frames = 14;
-tech_recovery_frames = 4;
+tech_active_frames = 1;
+tech_recovery_frames = 3;
 
 //tech roll animation frames
-techroll_startup_frames = 8;
-techroll_active_frames = 12;
-techroll_recovery_frames = 14;
+techroll_startup_frames = 1;
+techroll_active_frames = 6;
+techroll_recovery_frames = 2;
 techroll_speed = 10;
 
 //airdodge animation frames
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 2;
 air_dodge_recovery_frames = 1;
-air_dodge_speed = 7.5;
+air_dodge_speed = 8;
 
 //roll animation frames
-roll_forward_startup_frames = 3;
-roll_forward_active_frames = 14;
-roll_forward_recovery_frames = 12;
-roll_back_startup_frames = 3;
-roll_back_active_frames = 14;
-roll_back_recovery_frames = 12;
+roll_forward_startup_frames = 1;
+roll_forward_active_frames = 6;
+roll_forward_recovery_frames = 2;
+roll_back_startup_frames = 1;
+roll_back_active_frames = 6;
+roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
@@ -137,8 +137,10 @@ thrownBike = noone;
 bike_sp = 0;
 nBoostReadyTimer = 100;
 
+//Miscellaneous
 hitConfirm = false;
-
+dst = 0;
+outline_charge = 0;
 
 //Practice mode
 practice = false;      //Whether you're in Practice Mode or not.
@@ -162,6 +164,10 @@ Fspecial_positionY = 0;
 vsp_tracker = 0;
 chargeUpVoiceLine = true;
 
+//Galaxy Effect
+galaxy_effect = noone;
+galaxy_effect_sprite_index = -1;
+
 //Debug Variable
 debugCheck = false;
 
@@ -175,17 +181,13 @@ boxing_title = "The Kung-Fu Kitty";
 arena_short_name = "Carol";
 battle_text = "You want to pretend to pee really badly";
 miiverse_post = sprite_get("miiverse_post");
-uhc_victory_quote = "chek ot mai deviantart oc do not steel";
+uhc_victory_quote = "chek ot mai deviantart oc donut steel";
 kf_hud_offset = -34;
 copy_ability_id = 12;
 sna_interrogated_line_01 = "I'll tell ya... for the right price!"; // Snake interrogation line 1.
 sna_interrogated_line_02 = "I have some nice cookies if you let me go!"; // Snake interrogation line 2.
 sna_interrogated_line_03 = "I REALLY need to pee right now!"; // Snake interrogation line 2.
 plushForAmber = sprite_get("amber_plush");
-nname = "Carol the Wildcat"
-ncode1 = "An incredibly athletic kitty with ninja like reflexes and a focus on combat"
-ncode2 = "Can mount a motorbike in order to augment her speed and change her moveset"
-ncode3 = "Meow"
 TCG_Kirby_Copy = 4;
 walle_taunt_sound = sound_get("jade_creek");
 walle_taunt_type = 1;
@@ -196,14 +198,36 @@ naruto_sexyjutsu_gender = 2;
 gfzsignspr = sprite_get("carol_sign");
 pot_compat_variable = sprite_get("cat_food");
 pot_compat_text = "Cat Food";
+draw_hud_event = 12;
+guiltySprite = sprite_get("guilty_carol");
+mario_cap_compat = sprite_get("cappytaunt_carol");
+mario_cap_top_compat = sprite_get("cappytaunt_head_carol");
+assistATIndex = 2; //46 is a bike move, changing this so that Carol can use her moveset
 
-kirbyability=16;
-swallowed=false;
-enemykirby=noone;
-carol_handler_id=noone;
-carol_has_kirby_ability=false;
+//Howzit Compatibility
+howzitisthebestshopowner123 = true //activates the compatibility
 
-smallsparkle=hit_fx_create(sprite_get("smallsparkle"), 36);
+howzittaunttextarr[0] = "Howzit going, want to buy 
+something?";
+howzitautoforward[0] = 0;
+howzittaunttextarr[1] = "No, I don't have any shiny 
+golden motorbikes."
+howzitautoforward[1] = 0;
+howzittaunttextarr[2] = "However there might be 
+something else you like.";
+howzitautoforward[2] = 0;
+howzittaunttextarr[3] = "I'm sorry miss, we don't 
+have what you're after here.";
+howzitautoforward[3] = 0;
+howzittaunttextarr[4] = "Maybe next time.";
+howzitautoforward[4] = 0;
+
+howzithasnotso = false;
+hit_player_event = 13;
+
+powerBack=hit_fx_create(sprite_get("power_back"), 26);
+sparkle=hit_fx_create(sprite_get("sparkle"), 30);
+disc_hit= hit_fx_create(sprite_get("disc_hit"), 15);
 bike_smokeH=hit_fx_create(sprite_get("bike_smokeH"), 12);
 bike_smokeD=hit_fx_create(sprite_get("bike_smokeD"), 12);
 bike_smokeV=hit_fx_create(sprite_get("bike_smokeD"), 12);
@@ -219,35 +243,42 @@ dair_aftereffect7=hit_fx_create(sprite_get("dair_after_effect7"), 8);
 nitro_boost=hit_fx_create(sprite_get("nitro_boost"), 7);
 jump_disc=hit_fx_create(sprite_get("jump_disc"), 40);
 parry_shield=hit_fx_create(sprite_get("energy_shield"), 12);
+hit_small=hit_fx_create(sprite_get("hit_small"), 12);
+hit_medium=hit_fx_create(sprite_get("hit_medium"), 16);
+hit_large=hit_fx_create(sprite_get("hit_big"), 20);
+hit_proj=hit_fx_create(sprite_get("hit_proj"), 16);
+
 
 multikick_energy = 200;
 kickTime=0;
-meterShine = 0;
 pounce = false;
 pounceChange = false;
 returnBike = false;
 bikeExplosion = false;
 small_djumps = true;
+prev_hsp = 0;
 
 voice = get_synced_var(player);
 
-land_sound = asset_get("sfx_land_med");
-landing_lag_sound = asset_get("sfx_land");
+land_sound = sound_get("land");
+landing_lag_sound = sound_get("land");
 waveland_sound = asset_get("sfx_waveland_zet");
 jump_sound = sound_get("jump");
 djump_sound = asset_get("sfx_jumpair");
-air_dodge_sound = asset_get("sfx_quick_dodge");
+air_dodge_sound = sound_get("guard");
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
 
 //Abyss Runes
-if has_rune("A"){
+if has_rune("A")
+{
     fuel = 40;
 }
 
-if has_rune("B"){
+if has_rune("B")
+{
     walk_accel = 0.3;
     walk_turn_time = 5;
     initial_dash_time = 8;

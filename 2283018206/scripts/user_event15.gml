@@ -239,6 +239,9 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.32", "14 April, 2023");
+initWords("Advertising");
+
 initPatch("1.31", "17 July, 2022");
 initHeader("FSpecial - Buffs");
 initSection("No longer goes into pratfall on hit, but can only be used once per airtime.");

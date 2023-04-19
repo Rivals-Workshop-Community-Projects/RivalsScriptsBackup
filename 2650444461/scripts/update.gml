@@ -44,7 +44,11 @@ if(nspecialcharge < 20){
 }
 
 if(get_gameplay_time() % 10 == 0 || free){
-	ground_friction = 0.3;wave_friction = 0.1;wave_land_adj = 1.15;
+	if(!has_rune("F") && !runeF){
+		ground_friction = 0.3;wave_friction = 0.1;wave_land_adj = 1.15;
+	}else{
+		ground_friction = 0.1;wave_friction = 0.05;wave_land_adj = 1.6;
+	}
 }
 
 with (asset_get("pHitBox")){
@@ -78,10 +82,6 @@ if(state == PS_PARRY && !hitpause){
 	}
 }
 
-/*if(get_gameplay_time() <= 120){
-	
-}
-
 if (runesUpdated || get_match_setting(SET_RUNES)) {
 	if (has_rune("A") || runeA) {
 		
@@ -91,11 +91,11 @@ if (runesUpdated || get_match_setting(SET_RUNES)) {
 		
 	}
 	if (has_rune("G") || runeG) {
-		
+		set_hitbox_value(AT_TAUNT, 1, HG_PRIORITY, 1);
 	}if (has_rune("H") || runeH) {
-		
+		runeH = true;
 	}if (has_rune("I") || runeI) {
-		
+		runeI = true;nspec_multiplier = 3;
 	}
 	if (has_rune("L") || runeL) {
 		
@@ -106,7 +106,7 @@ if (runesUpdated || get_match_setting(SET_RUNES)) {
 	}if (has_rune("O") || runeO) {
 		
 	}
-}*/
+}
 
 
 if(!loaded){

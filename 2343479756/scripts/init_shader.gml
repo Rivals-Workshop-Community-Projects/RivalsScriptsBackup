@@ -74,4 +74,16 @@ set_character_color_slot(5, 156, 145, 128 ); //dress
 set_character_color_slot(6, 0, 55, 115 ); //eyes
 set_character_color_slot(7, 255, 140, 161 ); //blush
 }
+if (extra_col==5){// spider
+set_character_color_slot(0, 206, 199, 212 ); //pink
+set_character_color_slot(1, 0, 114, 254 ); //hair
+set_character_color_slot(2, 210, 131, 109 ); //skin
+set_character_color_slot(3, 255, 166, 253 ); //red
+set_character_color_slot(4, 255, 166, 253 ); //sleeves
+set_character_color_slot(5, 237, 237, 252 ); //dress
+set_character_color_slot(6, 122, 162, 255 ); //eyes
+set_character_color_slot(7, 255, 199, 254 ); //blush
 }
+}
+
+

@@ -73,6 +73,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 1 );
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("empty"))
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("stickyboom"));
 

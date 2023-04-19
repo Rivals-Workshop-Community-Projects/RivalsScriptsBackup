@@ -4,6 +4,6 @@ if(attack == AT_FSTRONG){
     hsp = clamp(hsp, -5, 5);
 }
 
-if(down_down and attack == AT_TAUNT){
+if(down_down and attack == AT_TAUNT and !suppress_music){
     attack = AT_EXTRA_2;
 }

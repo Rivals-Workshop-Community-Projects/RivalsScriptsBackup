@@ -1,0 +1,3 @@
+
+tetrimino = 0;
+

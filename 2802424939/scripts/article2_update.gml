@@ -1,6 +1,15 @@
-if (get_gameplay_time() mod 12 = 0)
+if (cooldown == 0)
 {
-    image_index += 1;
+    anim_time++;
+    if (anim_time mod 12 = 0)
+    {
+        image_index += 1;
+    }
+    sprite_index = sprite_get("stopwatch");
+}
+else if (cooldown == 1)
+{
+    sprite_index = sprite_get("stopwatch_gray");
 }
 
 with(pHitBox)
@@ -10,31 +19,35 @@ with(pHitBox)
         if (player_id != other.player_id)
         {
             if (type == 1)
-            other.player_id.stopwatch.destroy = 1;
+            {
+                if (other.cooldown == 0)
+                {
+                    other.sound = 1;
+                    other.disable = 1;
+                    other.cooldown = 1;
+                    other.player_id.stopwatch.cooldown = 1;
+                    other.player_id.move_cooldown[AT_DSPECIAL_2] = 120;
+                }
+            }
         }  
     }
 }
 
-if (destroy == 1)
+if (disable == 1)
 {
     if (sound = 1)
     {
-        var hit = spawn_hit_fx(x, y, 301)
+        var hit = spawn_hit_fx(x + 4, y, 301)
         hit.pause = 8;
         sound_play(asset_get("sfx_shovel_hit_light2"));
         sound = 0;
     }
-    with(pHitBox)
-    {
-        if (player_id == other.player_id)
-        {
-            if (type == 2)
-            {
-                if (frozen == 1 )
-                destroyed = 1;
-            }
-        }
-    }
-    destroy = 0;
+    disable = 0;
+}
+
+if (dead == 1)
+{
+    instance_destroy();
+    exit;
 }
 //print("Unfreeze: " + string(unfreeze));

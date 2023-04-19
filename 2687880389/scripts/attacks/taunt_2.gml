@@ -63,6 +63,9 @@ set_window_value(AT_TAUNT_2, 10, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_TAUNT_2, 10, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT_2, 10, AG_WINDOW_ANIM_FRAME_START, 16);
 
+// Penalty Zone
+set_window_value(AT_TAUNT_2, penalty_window, AG_WINDOW_LENGTH, max_penalty_frames);
+
 
 
 /*

@@ -17,6 +17,11 @@ switch (my_hitboxID.attack){
 			hit_player_obj.x = lerp(hit_player_obj.x, (x + 9), 0.1);
 			hit_player_obj.y = lerp(hit_player_obj.y, (y - 65), 0.1);
 		}*/
+		if(my_hitboxID.hbox_num == 3){
+			hit_player_obj.can_bounce = true;
+		}else{
+			hit_player_obj.can_bounce = false;
+		}
 		break;
 	
 	case AT_BAIR:
@@ -26,7 +31,12 @@ switch (my_hitboxID.attack){
 		break;
 
 	case AT_FSTRONG:
-		sound_play(sound_get("sfx_knifehit_l"));
+		if(my_hitboxID.hbox_num == 1){
+			sound_play(sound_get("sfx_knifehit_l"));
+			sound_play(asset_get("sfx_icehit_heavy2"));
+		}else{
+			sound_play(sound_get("sfx_knifehit_l"), false, noone, 0.9, 0.9);
+		}
 		break;
 	
 	case AT_USTRONG:

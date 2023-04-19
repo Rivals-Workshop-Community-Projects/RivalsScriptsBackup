@@ -114,3 +114,14 @@ sprite_change_offset("nspecial_hold", 128, 170);
 sprite_change_offset("dspecial_full", 128, 170);
 sprite_change_offset("dspecial_orbit", 128, 170);
 sprite_change_offset("statue", 128, 168);
+
+//Trial Grounds
+
+sprite_change_offset("Dark_Matter_Trial", 31, 0);
+
+//Feri
+
+sprite_change_offset("Dark_Feri", 84, 114);
+
+//Pac man
+sprite_change_offset("Dark_Pac", 16, 17);

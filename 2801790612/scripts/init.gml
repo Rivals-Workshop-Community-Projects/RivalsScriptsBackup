@@ -221,6 +221,7 @@ sfx_pepsi_psha = sound_get("pepsiman_psha");
 sfx_pepsi_zoop = sound_get("pepsiman_zoop");
 sfx_pepsi_screech = sound_get("pepsiman_screech");
 sfx_alleyoop = sound_get("reyn_ALLEYOOP"); 
+sfx_metal_can = sound_get("metal_can");
 
 
 vfx_pepsi_burst = hit_fx_create(sprite_get("burst_fx"), 10);
@@ -257,9 +258,3 @@ fary = 0;
 // DEBUG VARIABLE
 debug_text = false;
 bigiron = false;
-
-// MunoPhone Touch code - don't touch
-// should be at BOTTOM of file, but above any #define lines
-
-muno_event_type = 0;
-user_event(14);

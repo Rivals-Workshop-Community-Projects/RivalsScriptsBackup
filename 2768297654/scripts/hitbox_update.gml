@@ -2,7 +2,9 @@
 if (attack == AT_FTHROW){
     if(hbox_num == 1){
         if(!free || destroyed){
-            instance_create(x, y-8, ("obj_article1"));
+            if(!player_id.bomb_missfire){
+            player_id.smokebomb = instance_create(x, y-8, ("obj_article1"));
+            }
             destroyed = true;
         }
     }
@@ -10,7 +12,9 @@ if (attack == AT_FTHROW){
 if (attack == AT_DTHROW){
     if(hbox_num == 1){
         if(!free || destroyed){
-            instance_create(x, y-8, ("obj_article1"));
+            if(!player_id.bomb_missfire){
+            player_id.smokebomb = instance_create(x, y-8, ("obj_article1"));
+            }
             destroyed = true;
         }
     }
@@ -18,7 +22,9 @@ if (attack == AT_DTHROW){
 if (attack == AT_UTHROW){
     if(hbox_num == 1){
         if(!free || destroyed){
-            instance_create(x, y-8, ("obj_article1"));
+            if(!player_id.bomb_missfire){
+            player_id.smokebomb = instance_create(x, y-8, ("obj_article1"));
+            }
             destroyed = true;
         }
     }
@@ -26,7 +32,9 @@ if (attack == AT_UTHROW){
 if (attack == AT_DSPECIAL_2){
     if(hbox_num == 1){
         if(!free || destroyed){
-            instance_create(x, y-8, ("obj_article1"));
+            if(!player_id.bomb_missfire){
+            player_id.smokebomb = instance_create(x, y-8, ("obj_article1"));
+            }
             destroyed = true;
         }
     }

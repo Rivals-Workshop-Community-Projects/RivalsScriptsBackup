@@ -30,11 +30,11 @@ set_color_profile_slot_range( 6, 6, 9, 14 );
 
 // Will-O
 set_color_profile_slot( 0, 7, 92, 141, 220 );
-set_color_profile_slot_range( 7, 15, 15, 15 );
+set_color_profile_slot_range( 7, 15, 16, 45 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 26 );
 
 // Pikachu
 set_color_profile_slot( 1, 0, 242, 214, 121 ); //Ghost Purp
@@ -266,19 +266,29 @@ set_color_profile_slot( 23, 5, 214, 152, 36 ); //Tail
 set_color_profile_slot( 23, 6, 88, 252, 104 ); //Cheeks
 set_color_profile_slot( 23, 7, 248, 250, 255 ); //Will-O
 
-// Mal
-set_color_profile_slot( 24, 0, 108, 66, 145 ); //Ghost Purp
-set_color_profile_slot( 24, 1, 225, 92, 198 ); //Body
-set_color_profile_slot( 24, 2, 95, 74, 151 ); //Belly (ColorMap)
-set_color_profile_slot( 24, 3, 49, 35, 56 ); //Shadows
-set_color_profile_slot( 24, 4, 49, 35, 56 ); //Ears (ColorMap)
-set_color_profile_slot( 24, 5, 186, 157, 251 ); //Tail
-set_color_profile_slot( 24, 6, 186, 157, 251 ); //Cheeks
-set_color_profile_slot( 24, 7, 175, 124, 219 ); //Will-O
+// Mimi Echo
+set_color_profile_slot( 24, 0, 61, 116, 238 ); //Ghost Purp
+set_color_profile_slot( 24, 1, 247, 248, 250 ); //Body
+set_color_profile_slot( 24, 2, 247, 248, 250 ); //Belly (ColorMap)
+set_color_profile_slot( 24, 3, 152, 217, 213 ); //Shadows
+set_color_profile_slot( 24, 4, 101, 188, 255 ); //Ears (ColorMap)
+set_color_profile_slot( 24, 5, 61, 116, 238 ); //Tail
+set_color_profile_slot( 24, 6, 101, 188, 255 ); //Cheeks
+set_color_profile_slot( 24, 7, 61, 116, 238 ); //Will-O
+
+// Deoxys
+set_color_profile_slot( 25, 0, 65, 168, 198 ); //Ghost Purp
+set_color_profile_slot( 25, 1, 255, 115, 74 ); //Body
+set_color_profile_slot( 25, 2, 255, 115, 74 ); //Belly (ColorMap)
+set_color_profile_slot( 25, 3, 39, 81, 120 ); //Shadows
+set_color_profile_slot( 25, 4, 65, 168, 198 ); //Ears (ColorMap)
+set_color_profile_slot( 25, 5, 65, 168, 198 ); //Tail
+set_color_profile_slot( 25, 6, 156, 99, 181 ); //Cheeks
+set_color_profile_slot( 25, 7, 156, 99, 181 ); //Will-O
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Ghost Purp","colors":[{"r":122,"g":69,"b":200,"main":true},{"r":79,"g":36,"b":143},{"r":180,"g":136,"b":246},{"r":26,"g":5,"b":57}]},{"name":"Body","colors":[{"r":226,"g":217,"b":175,"main":true},{"r":193,"g":180,"b":119},{"r":134,"g":120,"b":55}]},{"name":"Belly (ColorMap)","colors":[{"r":175,"g":184,"b":226,"main":true},{"r":119,"g":132,"b":193},{"r":55,"g":69,"b":134}]},{"name":"Shadows","colors":[{"r":81,"g":80,"b":78},{"r":42,"g":41,"b":39,"main":true}]},{"name":"Ears (ColorMap)","colors":[{"r":78,"g":81,"b":78,"main":true},{"r":39,"g":42,"b":39}]},{"name":"Tail","colors":[{"r":149,"g":124,"b":104,"main":true},{"r":125,"g":94,"b":68},{"r":88,"g":57,"b":30}]},{"name":"Cheeks","colors":[{"r":209,"g":129,"b":25,"main":true},{"r":176,"g":88,"b":7}]},{"name":"Will-O","colors":[{"r":92,"g":141,"b":220,"main":true},{"r":81,"g":101,"b":211},{"r":144,"g":186,"b":255}]}]}
+{"formatversion":1,"data":[{"name":"Ghost Purp","colors":[{"r":122,"g":69,"b":200,"main":true},{"r":79,"g":36,"b":143},{"r":180,"g":136,"b":246},{"r":26,"g":5,"b":57},{"r":40,"g":18,"b":72},{"r":61,"g":35,"b":100}]},{"name":"Body","colors":[{"r":226,"g":217,"b":175,"main":true},{"r":193,"g":180,"b":119},{"r":134,"g":120,"b":55}]},{"name":"Belly (ColorMap)","colors":[{"r":175,"g":184,"b":226,"main":true},{"r":119,"g":132,"b":193},{"r":55,"g":69,"b":134}]},{"name":"Shadows","colors":[{"r":81,"g":80,"b":78},{"r":42,"g":41,"b":39,"main":true}]},{"name":"Ears (ColorMap)","colors":[{"r":78,"g":81,"b":78,"main":true},{"r":39,"g":42,"b":39}]},{"name":"Tail","colors":[{"r":149,"g":124,"b":104,"main":true},{"r":125,"g":94,"b":68},{"r":88,"g":57,"b":30}]},{"name":"Cheeks","colors":[{"r":209,"g":129,"b":25,"main":true},{"r":176,"g":88,"b":7}]},{"name":"Will-O","colors":[{"r":92,"g":141,"b":220,"main":true},{"r":81,"g":101,"b":211},{"r":144,"g":186,"b":255},{"r":46,"g":71,"b":110},{"r":41,"g":51,"b":106},{"r":72,"g":93,"b":127}]}]}
 === END JSON PALETTE ===
 */

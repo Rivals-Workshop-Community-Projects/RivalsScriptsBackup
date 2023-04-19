@@ -28,13 +28,13 @@ set_color_profile_slot_range( 5, 1, 1, 1 );
 // ALTERNATE COLORS
 set_num_palettes( 32 );
 
-// Cult of the Lost Angels
-set_color_profile_slot( 1, 0, 155, 0, 232 ); //Robes
-set_color_profile_slot( 1, 1, 255, 213, 0 ); //Trim And Eye
-set_color_profile_slot( 1, 2, 255, 194, 89 ); //Dagger
-set_color_profile_slot( 1, 3, 73, 97, 105 ); //Skin Dark
-set_color_profile_slot( 1, 4, 168, 222, 240 ); //Skin Light
-set_color_profile_slot( 1, 5, 119, 0, 156 ); //RobeShading
+// Cult of the Abyss
+set_color_profile_slot( 1, 0, 60, 39, 107 ); //Robes
+set_color_profile_slot( 1, 1, 255, 221, 0 ); //Trim And Eye
+set_color_profile_slot( 1, 2, 0, 229, 255 ); //Dagger
+set_color_profile_slot( 1, 3, 97, 39, 99 ); //Skin Dark
+set_color_profile_slot( 1, 4, 210, 127, 214 ); //Skin Light
+set_color_profile_slot( 1, 5, 38, 21, 56 ); //RobeShading
 
 // Cult of the Inverse
 set_color_profile_slot( 2, 0, 255, 0, 0 ); //Robes
@@ -149,12 +149,12 @@ set_color_profile_slot( 15, 4, 133, 227, 255 ); //Skin Light
 set_color_profile_slot( 15, 5, 255, 99, 227 ); //RobeShading
 
 // Cult of Inner
-set_color_profile_slot( 16, 0, 43, 51, 43 ); //Robes
+set_color_profile_slot( 16, 0, 67, 79, 67 ); //Robes
 set_color_profile_slot( 16, 1, 255, 255, 255 ); //Trim And Eye
 set_color_profile_slot( 16, 2, 255, 242, 0 ); //Dagger
 set_color_profile_slot( 16, 3, 230, 255, 0 ); //Skin Dark
 set_color_profile_slot( 16, 4, 112, 59, 22 ); //Skin Light
-set_color_profile_slot( 16, 5, 23, 23, 23 ); //RobeShading
+set_color_profile_slot( 16, 5, 48, 48, 48 ); //RobeShading
 
 // Cult of the Scribes
 set_color_profile_slot( 17, 0, 207, 193, 175 ); //Robes
@@ -165,12 +165,12 @@ set_color_profile_slot( 17, 4, 185, 33, 0 ); //Skin Light
 set_color_profile_slot( 17, 5, 161, 132, 101 ); //RobeShading
 
 // Cult of Rakdos
-set_color_profile_slot( 18, 0, 62, 63, 64 ); //Robes
+set_color_profile_slot( 18, 0, 91, 93, 94 ); //Robes
 set_color_profile_slot( 18, 1, 240, 251, 255 ); //Trim And Eye
 set_color_profile_slot( 18, 2, 97, 86, 70 ); //Dagger
 set_color_profile_slot( 18, 3, 176, 173, 171 ); //Skin Dark
 set_color_profile_slot( 18, 4, 185, 54, 37 ); //Skin Light
-set_color_profile_slot( 18, 5, 33, 33, 36 ); //RobeShading
+set_color_profile_slot( 18, 5, 49, 49, 54 ); //RobeShading
 
 // Cult of the Sus
 set_color_profile_slot( 19, 0, 197, 17, 17 ); //Robes
@@ -229,12 +229,12 @@ set_color_profile_slot( 25, 4, 173, 167, 126 ); //Skin Light
 set_color_profile_slot( 25, 5, 48, 32, 32 ); //RobeShading
 
 // Cult of the Dreamer
-set_color_profile_slot( 26, 0, 29, 27, 33 ); //Robes
+set_color_profile_slot( 26, 0, 47, 35, 102 ); //Robes
 set_color_profile_slot( 26, 1, 255, 0, 157 ); //Trim And Eye
 set_color_profile_slot( 26, 2, 255, 69, 100 ); //Dagger
 set_color_profile_slot( 26, 3, 175, 184, 207 ); //Skin Dark
 set_color_profile_slot( 26, 4, 84, 235, 255 ); //Skin Light
-set_color_profile_slot( 26, 5, 9, 8, 10 ); //RobeShading
+set_color_profile_slot( 26, 5, 27, 17, 71 ); //RobeShading
 
 // Cult of the Demon
 set_color_profile_slot( 27, 0, 92, 81, 156 ); //Robes

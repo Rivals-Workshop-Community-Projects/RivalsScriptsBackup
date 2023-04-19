@@ -78,7 +78,7 @@ switch(my_hitboxID.attack){
         if(my_hitboxID.hbox_num == 1){
         	sound_play(asset_get("sfx_icehit_weak2"));
         }else if(my_hitboxID.hbox_num == 5){
-        	sound_play(asset_get("sfx_ori_energyhit_heavy"), false, noone, 0.3, 1);
+        	sound_play(asset_get("sfx_ori_energyhit_heavy"), false, noone, 0.3, 1.0);
         }
         break;
     
@@ -159,7 +159,7 @@ switch(my_hitboxID.attack){
         	hit_player_obj.y -= 2;
         }else{ 
         	sound_play(asset_get("sfx_ori_energyhit_heavy"), false, noone, 0.7, 1);
-        	pandoria.uspec_vfx.pause = 15;
+        	pandoria.uspec_vfx.pause = 8;
         	pandoria.uspec_vfx = noone;
         }
         break;
@@ -175,4 +175,5 @@ if(in_affinity){
 	}else{
 	    pandoria.affinity += 2;
 	}
+	pandoria.affinity = clamp(pandoria.affinity, 0, pandoria.affinity_max);
 }

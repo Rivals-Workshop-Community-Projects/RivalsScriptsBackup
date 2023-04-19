@@ -4,7 +4,7 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 54;
-idle_anim_speed = .14;
+idle_anim_speed = .16;
 crouch_anim_speed = .13;
 walk_anim_speed = .2;
 dash_anim_speed = .35;
@@ -14,7 +14,7 @@ walk_speed = 3.5;
 walk_accel = 0.3;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 7;
+initial_dash_speed = 6.55;
 dash_speed = 6.25;
 dash_turn_time = 8;
 dash_turn_accel = 1.75;
@@ -57,8 +57,8 @@ crouch_active_frames = 4;
 crouch_recovery_frames = 1;
 
 //Wait sprites
-wait_time = 274;
-wait_length = 130;
+wait_time = 412;
+wait_length = 220;
 wait_sprite = sprite_get("idle_wait");
 
 //parry animation frames
@@ -113,10 +113,11 @@ randomTaunt = 0;
 hue_offset=0;
 hue_speed=2; //change this to change the speed of the hueshift
 nspecialAfter = hit_fx_create( sprite_get( "nspecial_proj_after" ),16);
-nspecialAfter2 = hit_fx_create( sprite_get( "nspecial_proj2_after" ),14);
+fireAfter = hit_fx_create( sprite_get( "fire_after" ),12);
 nspecialAfter3 = hit_fx_create( sprite_get( "nspecial_proj3_after" ),14);
-fspecialAfter = hit_fx_create( sprite_get( "fspecial_proj_after" ),8);
-fspecialAfter2 = hit_fx_create( sprite_get( "fspecial_proj2_after" ),8);
+fspecialAfter = hit_fx_create( sprite_get( "fspecial_proj_after" ),6);
+fspecialAfter2 = hit_fx_create( sprite_get( "fspecial_proj2_after" ),6);
+ligmaballs = 0;
 
 //Character support
 miiverse_post = sprite_get("miiverse");
@@ -132,6 +133,11 @@ kirbyability = 16;
 swallowed = 0;
 Lmao = has_rune("L");
 diag_portrait=sprite_get("diagportrait");
+pot_compat_variable = sprite_get("pot_compat");
+pot_compat_text = "The 'B'est Cake (Debatably)";
+mamizou_transform_spr = sprite_get("mamizou_compat");
+has_fail = true;
+fail_text = "Don't get too blue over this.";
 
 //Dracula Support
 dracula_portrait = sprite_get("dracportrait1");
@@ -141,25 +147,25 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "Well, what do we have here... A human boy? Strange. You look different, although I had the impression that this world was free of those miserable insects.";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Oh, no, I'm an outsider. Just like you. By the way, nice decor you got around here.";
+dracula_text[page] = "Oh, nah, I'm an outsider. Not unlike you, actually! Nice decor BTW.";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "Hmph... Native of this world or not, that makes you no less of a trespasser to my castle!";
 page++;
 dracula_speaker[page] = 0;
-dracula_text[page] = "Unless, of course, you intend to join my army and swear servitude to me for eternity. Surely, you must be strong enough to have gotten past my guards on your way here.";
+dracula_text[page] = "Unless, of course, you intend to join my army and swear servitude to me for eternity. Surely, you must be strong enough to have gotten past my guards on your way here, especially for such a young and puny age.";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Hmmm... Nah, thanks, I'll pass. But since you mentioned them, I think you need to get better security. Honestly, skeletons and bats? And you've been doing this over and over for centuries?";
+dracula_text[page] = "Hmmm... I'll pass. But since you brought that up, I think you need to get better security. Honestly, skeletons and bats? And you've been doing this over and over for centuries?";
 page++;
 dracula_speaker[page] = 2;
-dracula_text[page] = "...Is it no wonder you keep being whipped to death every time?";
+dracula_text[page] = "Is it any wonder the whip men keep breaking into your house every time?";
 page++;
 dracula_speaker[page] = 0;
-dracula_text[page] = "...That's enough![glass] You dare come into my castle without a permit, and dare to make a mockery of me and my army... You need to be taught a lesson, insolent child!";
+dracula_text[page] = "...That's enough![glass] You dare come into my castle without a permit, and dare make a mockery of me and my army... You need to be taught a lesson, insolent child!";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Alright, then.[taunt] Bring it on, old man!";
+dracula_text[page] = "Oh, I guess we're doing it like that, then.[taunt] Bring it, geezer!";
 page++;
 
 //adventure

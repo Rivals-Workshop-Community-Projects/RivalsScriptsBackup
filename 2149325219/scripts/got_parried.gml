@@ -7,9 +7,15 @@ if(my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 2){
 			hsp *= -1.1;
 			vsp = -1*abs(vsp)
 			state = 1;
-			skull = true;
+			if(!skull){
+				skull = true;
+			}else{
+				skull = false;
+			}
 		}
 	}
+}else{
+	fuse += 120;
 }
 
 if(my_hitboxID.attack == AT_DATTACK){
@@ -18,4 +24,9 @@ if(my_hitboxID.attack == AT_DATTACK){
 if(my_hitboxID.attack == AT_FSPECIAL){
 	window = 3
 	window_timer = 0;
+}
+
+
+if(my_hitboxID.attack == AT_JAB){
+	jabParry = true;
 }

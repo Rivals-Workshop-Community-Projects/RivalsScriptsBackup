@@ -277,3 +277,7 @@ sprite_change_offset("Feri_samus", 84, 114);
 
 sprite_change_offset("Amber_samus_samus", 32, 62);
 sprite_change_offset("Amber_samus_amber", 32, 62);
+
+//mamizou
+
+sprite_change_offset("Samus_raccoon", 24, 52);

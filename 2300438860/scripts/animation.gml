@@ -4,6 +4,12 @@ if attacking && attack == AT_TAUNT && window == 3 && state_timer > 40 {
     image_index = 6
 }
 
+if state == PS_PRATLAND {
+    sprite_index = sprite_get("landinglag")
+    image_index = min(2,state_timer/8)
+}
+
+
 
 /* codes archived, Auto parry in neutral state
 if left_pressed and right_pressed and attack_pressed and special_pressed  {

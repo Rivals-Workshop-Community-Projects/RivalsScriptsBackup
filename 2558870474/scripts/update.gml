@@ -188,11 +188,6 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
 	}
 }
 
-if proposed_balance{
-    // Balance Change Script:
-    user_event(1);
-}
-
 //Update.gml
 if(variable_instance_exists(id,"bTut_mssn_mode") && bTut_mssn_mode) //Checks if mission mode is on!
 {

@@ -57,5 +57,5 @@ set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 4);
-set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);

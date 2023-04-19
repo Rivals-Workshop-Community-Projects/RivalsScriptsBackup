@@ -13,7 +13,7 @@ switch attack {
 	  		set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, 0 );
             set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, -3 );
 	  	}
-     		create_hitbox(AT_DSPECIAL,2,x,y - 20)
+     		//create_hitbox(AT_DSPECIAL,2,x,y - 20)
       }
       
       if hitbox_timer < 90 {

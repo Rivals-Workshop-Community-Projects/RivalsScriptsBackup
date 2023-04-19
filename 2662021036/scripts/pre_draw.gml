@@ -1,7 +1,7 @@
 if ((state = PS_ATTACK_AIR || state = PS_ATTACK_GROUND) && attack == 49){
     
 
-draw_sprite_ext(sprite_get("final_effects"), image_index, x, y, 1 * spr_dir, 1, 0, c_white, 1);  
+draw_sprite_ext(sprite_get("final_effects"), image_index, x, y, 2 * spr_dir, 2, 0, c_white, 1);  
 
 if (window = 1 && window_timer > 2){
     draw_sprite_ext( sprite_get( "final_sun" ), -1, x, y - 64 - finalsunmovement, 1, 1, 0, c_white, finalsunmovement / 160);

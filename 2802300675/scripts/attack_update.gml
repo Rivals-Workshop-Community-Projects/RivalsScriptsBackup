@@ -100,7 +100,7 @@ if(attack == AT_NSPECIAL){
 		
 		if (window >= 3 && window != 7){
 			if (window_timer == 4){
-				move_cooldown[AT_NSPECIAL] = 30;
+				move_cooldown[AT_NSPECIAL] = 50;
 				nspec_charge = 0;
            
         }
@@ -111,10 +111,10 @@ if(attack == AT_NSPECIAL){
         }
     }if(window == 3 && window_timer = 1 && !hitpause){
         if(nspecial_charge_amount != 10){
-            sound_play(asset_get("sfx_swish_weak")); 
+            sound_play(asset_get("sfx_forsburn_reappear")); 
             create_hitbox(AT_NSPECIAL, 1, x + spr_dir * 40, y - 20);
         }if(nspecial_charge_amount == 10){
-            sound_play(asset_get("sfx_swish_medium")); 
+            sound_play(asset_get("sfx_forsburn_reappear_hit")); 
             create_hitbox(AT_NSPECIAL, 2, x + spr_dir * 40, y - 20);
         }
         nspecial_charge_amount = 0;
@@ -127,11 +127,9 @@ if(attack == AT_NSPECIAL){
         }if(free){
         if(shield_pressed){
         	nspecial_charge_amount = 0;
-        	if(has_airdodge){
-            set_state(PS_AIR_DODGE);
-        	}if(!has_airdodge){
-            set_state(PS_IDLE_AIR);
-        	}
+        	sound_play(asset_get("sfx_frog_fspecial_cancel"));
+            window = 5;
+            window_timer = 0;
         }
         }
         
@@ -282,8 +280,8 @@ if(attack == AT_DSPECIAL_2){
         sound_play(asset_get("sfx_shovel_swing_heavy1"));
     }
     if(window == 4){
-    	if(window_timer % 2 == 0){
-    	create_hitbox(AT_DSPECIAL_2, 1, x, y);	
+    	if(window_timer % 3 == 0 && !hitpause){
+    	dspec_hitbox = create_hitbox(AT_DSPECIAL_2, 1, x, y);
     	}
     	
     }
@@ -364,6 +362,12 @@ if(attack == AT_TAUNT){
 		if(window_timer = 12){
 		sound_play(sound_get("bonk"), false, noone, 1.7);	
 		take_damage(player, -1, 1);
+		}
+		if(window_timer = get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH)-4){
+			if(taunt_down){
+				window = 1;
+				window_timer = 6;
+			}
 		}
 	}if(window == 1 && window_timer = get_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH)-1){
 		sound_play(asset_get("sfx_swipe_weak1"), false, noone, 0.8);

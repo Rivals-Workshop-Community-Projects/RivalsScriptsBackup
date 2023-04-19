@@ -284,7 +284,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 24 );
 
 // Hime
 set_color_profile_slot( 1, 0, 109, 140, 161 ); //Hair_light
@@ -528,10 +528,20 @@ set_color_profile_slot( 22, 6, 20, 65, 143 ); //Shirt
 set_color_profile_slot( 22, 7, 224, 101, 47 ); //Pants
 //shading data: [1, 1, 1.1, 1, 1, 2.1, 2, 1]
 
+// Big House
+set_color_profile_slot( 23, 0, 64, 108, 255 ); //Hair_light
+set_color_profile_slot( 23, 1, 62, 64, 176 ); //Hair_dark
+set_color_profile_slot( 23, 2, 255, 238, 209 ); //Skin
+set_color_profile_slot( 23, 3, 224, 255, 247 ); //Energy_light
+set_color_profile_slot( 23, 4, 153, 202, 255 ); //Energy_dark
+set_color_profile_slot( 23, 5, 31, 36, 87 ); //Metal
+set_color_profile_slot( 23, 6, 255, 224, 8 ); //Shirt
+set_color_profile_slot( 23, 7, 32, 41, 56 ); //Pants
+//shading data: [1, 1, 1, 1, 1, 1, -5, 1]
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Hair_light","colors":[{"r":"76","g":"50","b":"39","main":true}]},{"name":"Hair_dark","colors":[{"r":"50","g":"38","b":"34","main":true}]},{"name":"Skin","colors":[{"r":"253","g":"233","b":"185","main":true},{"r":231,"g":196,"b":147},{"r":199,"g":141,"b":99}]},{"name":"Energy_light","colors":[{"r":"249","g":"202","b":"53","main":true}]},{"name":"Energy_dark","colors":[{"r":"225","g":"160","b":"76","main":true}]},{"name":"Metal","colors":[{"r":"41","g":"32","b":"38","main":true},{"r":64,"g":53,"b":59},{"r":27,"g":22,"b":26}]},{"name":"Shirt","colors":[{"r":"39","g":"70","b":"94","main":true},{"r":25,"g":48,"b":75}]},{"name":"Pants","colors":[{"r":"33","g":"33","b":"38","main":true}]}]}
 === END JSON PALETTE ===
 */
-

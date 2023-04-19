@@ -2,6 +2,18 @@
 
 // DO NOT EDIT - Only edit user_event15.gml
 
+with (oPlayer) if (url == "2889369766"){
+	if get_player_color(player) == 2{
+	set_character_color_slot( 0, 157, 235, 243 ); //Fur
+	set_character_color_slot( 1, 233, 219, 248 ); //Muzzle
+	set_character_color_slot( 2, 128, 61, 25 ); //Gold
+	set_character_color_slot( 3, 233, 219, 248 ); //Clothing
+	set_character_color_slot( 4, 42, 163, 239 ); //Blue
+	set_character_color_slot( 5, 128, 61, 25 ); //Sword
+	set_character_color_slot( 6, 42, 163, 239 ); //Effects
+	}
+}
+
 if (!free or state == PS_WALL_JUMP){
     move_cooldown[AT_USPECIAL] = 0;
 	move_cooldown[AT_FSPECIAL] = 0;

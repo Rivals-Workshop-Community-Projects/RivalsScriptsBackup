@@ -45,7 +45,7 @@ if alt == 11 {
 var palette_names = [
   "Sleven",
   "Tenth",
-  "Void",
+  "Null",
   "Cake",
   "Basecast",
   "White Cat",

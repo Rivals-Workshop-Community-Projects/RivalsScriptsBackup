@@ -15,7 +15,7 @@
 
 // Physical size
 char_height					= 56;       //                  not zetterburn's. this is just cosmetic anyway
-normal_knockback_adj		= 1.15;		// 0.9  -  1.2
+normal_knockback_adj		= 1.2;		// 0.9  -  1.2
 
 knockback_adj 				= normal_knockback_adj;
 
@@ -46,8 +46,8 @@ moonwalk_accel      		= normal_moonwalk_accel;
 
 // Air movement
 normal_leave_ground_max 	= 7;		// 4    -  8
-normal_max_jump_hsp 		= 7;		// 4    -  8
-normal_air_max_speed 		= 4.5;  	// 3    -  7         //old bar value: 6
+normal_max_jump_hsp 		= 6.5;		// 4    -  8
+normal_air_max_speed 		= 5;  	    // 3    -  7         //old bar value: 4.5
 jump_change         		= 3;		// 3
 normal_air_accel        	= 0.3;		// 0.2  -  0.4
 normal_prat_fall_accel 		= 0.85;		// 0.25 -  1.5
@@ -190,8 +190,7 @@ alt_cur = get_player_color(player);
 training = (get_match_setting(SET_PRACTICE));
 is_cpu = false;
 playtesting = (object_index == oTestPlayer);
-cur_game_time = get_gameplay_time(); //allows me to run stuff for 1 frame after bar is loaded/reloaded
-got_gameplay_time = get_gameplay_time();
+got_gameplay_time = get_gameplay_time(); //allows me to run stuff for 1 frame after bar is loaded/reloaded
 
 is_dodging = false;
 is_attacking = false;
@@ -424,7 +423,7 @@ skill_script_type = 0;
 user_event(2);
 
 //saves skill data in case it's needed
-if (get_synced_var(player) >= 12816) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
+if (get_synced_var(player) >= 4228) for (var i = 0; i <= 3; i++) cur_skills[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
 else set_synced_var(player, 12816);
 
 //put this in user_event2 ^ because it needs to run on css and ingame
@@ -436,7 +435,7 @@ a = 0; //array start
 AT_SKILL0  = set_skill("Light Dagger", 0, 0, 0, AT_NTHROW, AT_NSPECIAL_AIR, 5, 5, 5);
 AT_SKILL1  = set_skill("Burning Fury", 1, 1, 0, AT_FTHROW, AT_FSPECIAL_AIR, 10, 10, 50);
 AT_SKILL2  = set_skill("Force Leap", 2, 2, 0, AT_UTHROW, -1, 10, 10, 10);
-AT_SKILL3  = set_skill("Photon Blast", 3, 3, 0, AT_DTHROW, -1, 40, 0, 40);
+AT_SKILL3  = set_skill("Photon Blast", 3, 3, 0, AT_DTHROW, -1, 20, 10, 40); //40, 0
 
 AT_SKILL4  = set_skill("Flashbang", 4, 0, 1, 39, -1, 0, 10, 10);
 AT_SKILL5  = set_skill("Power Smash", 5, 1, 1, AT_FSPECIAL_2, -1, 5, 25, 30);
@@ -454,10 +453,7 @@ AG_WINDOW_MP_CONSUME        = 34;   //mana amount to consume
 AG_WINDOW_MP_CONSUME_TIME   = 35;   //the frame to consume mana (0 = window start - default | +1 = window_timer frame | if type one - changes to increments)
 AG_WINDOW_MP_CONSUME_TYPE   = 36;   //type of mana consumption (0 = when pointed out | 1 = rapid consumption throughout the window)
 
-cur_skill_info = 0; //similar to cur_skills but for a single skill
-replaced_skill_temp = 0;
-
-current_skill_sprite = 0;
+cur_skill_spr = 0;
 menu_x = 0;
 menu_y = 0;
 
@@ -618,6 +614,7 @@ angle_saved = 0;
 
 start_skill_cancel = false;
 skill_cancel_timer = 20;
+skill_input_dir = 0; //0 = neutral | 1 = left/right | 2 = up | 3 = down
 
 charge_color = false;
 
@@ -626,6 +623,9 @@ taunt_react_time = 0;
 
 //u-strong
 ustrong_dir = [0, 0];
+
+//dstrong
+dstrong_last_hbox = 0;
 
 //burning fury
 burnbuff_active = false;
@@ -691,6 +691,7 @@ chasm_far_x = -10000; //there has to be a better way than to spawn all the burst
 chasm_x = [];
 chasm_y = [];
 chasm_burst_timer = 0;
+chasm_spawn_rate = 5;
 
 //theikos strongs
 strong2_charge = 0;
@@ -780,8 +781,8 @@ resort_portrait = sprite_get("last_resort");
 battle_text = (theikos_type > 0) ? "* The guardian's true face revealed." : "* Bar braces himself!";
 
 //dracula portrait
-dracula_portrait = (theikos_type > 0) ? sprite_get("dracula_theikos_portrait1") : sprite_get("dracula_portrait1");
-dracula_portrait2 = (theikos_type > 0) ? sprite_get("dracula_theikos_portrait2") : sprite_get("dracula_portrait2");
+dracula_portrait = sprite_get("dracula_port" + string(1 + 2 * (has_theikos || alt_cur == 26)));
+dracula_portrait2 = sprite_get("dracula_port" + string(2 + 2 * (has_theikos || alt_cur == 26)));
 
 //RC car
 kart_sprite = sprite_get("car");
@@ -794,6 +795,9 @@ kart_drift_spr = 3;
 //adventure mode hit_player redirect
 hit_player_event = 13;
 
+//draw_hud redirect
+draw_hud_event = 14;
+
 //pit - palutena's guidance
 user_event(7);
 
@@ -802,7 +806,7 @@ user_event(8);
 
 //the chosen one - art
 tcoart = sprite_get("tcoart1");
-if (alt_cur == 26) tcoart = sprite_get("tcoart2");
+if (has_theikos || alt_cur == 26) tcoart = sprite_get("tcoart2");
 
 //moonchild - music
 childsupport = 1;
@@ -852,6 +856,13 @@ fs_charge_mult = 0;
 //put [fs_charge] in hit_player.gml and parry.gml so it will work like the rune version
 //put [fs_charge_mult] to decide the charge rate if it doesn't suit me fancy
 //use [fs_ai_attempt_use] to make a CPU use the final smash
+
+//mamizou angelhog
+mamizou_transform_spr = sprite_get(alt_cur == 8 ? "mamizou_shadow" : "mamizou_angelhog");
+
+//po and gumbo food
+pot_compat_variable = sprite_get("gumbo_schnitzel");
+pot_compat_text = "Holy Schnitzel";
 
 //////////////////////////////////////////////////////////// #DEFINE SECTION ////////////////////////////////////////////////////////////
 

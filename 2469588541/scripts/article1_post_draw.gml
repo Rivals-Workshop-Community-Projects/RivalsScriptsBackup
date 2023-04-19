@@ -20,7 +20,7 @@ if ("state" in self)
 {
 	var star = -4;
 	var tempDist = -1;
-	with (asset_get("obj_article1")) if (player_id == other.player_id && other != self && (!_isSecondClosest || closestStarMem != self))
+	with (asset_get("obj_article1")) if (player_id == other.player_id && other != self && state == 3 && (!_isSecondClosest || closestStarMem != self))
 	{
 		var currDist = point_distance(x, y, other.x, other.y);
 		if (tempDist == -1 || currDist < tempDist)
@@ -37,7 +37,7 @@ if ("state" in self)
 {
 	var star = -4;
 	var tempDist = 0;
-	with (asset_get("obj_article1")) if (player_id == other.player_id && other != self)
+	with (asset_get("obj_article1")) if (player_id == other.player_id && other != self && state == 3)
 	{
 		var currDist = point_distance(x, y, other.x, other.y);
 		if (currDist > tempDist)

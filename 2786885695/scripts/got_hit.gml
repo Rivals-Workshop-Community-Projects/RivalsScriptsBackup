@@ -26,4 +26,4 @@ if (has_rune("H") && attack == AT_DSPECIAL_2 && window == 2 && is_attacking)
 
     counter_damage = enemy_hitboxID.damage + get_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE)*0.75;
 }
-else counter_success = false;
+else if (!has_rune("H") || !is_attacking || attack != AT_NSPECIAL_2) counter_success = false;

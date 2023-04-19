@@ -75,8 +75,8 @@ sprite_change_offset("dstrong2", 24, 64, true);
 //effects
 sprite_change_offset("fx_intro", 16, 0);
 sprite_change_offset("fx_intro_back", 24, 16);
-sprite_change_offset("fx_part_light", 8, 8);
-sprite_change_offset("fx_part_fire", 8, 8);
+//sprite_change_offset("fx_part_light", 8, 8);
+//sprite_change_offset("fx_part_fire", 8, 8);
 
 sprite_change_offset("fx_light_follow", 9, 9);
 sprite_change_offset("fx_lightblow1", 48, 48);
@@ -163,3 +163,5 @@ sprite_change_offset("miiverse", 60, 30);       //miiverse
 sprite_change_offset("last_resort", 27, 39);    //the last resort
 sprite_change_offset("GFZ_signpost", 18, 41);   //green flower zone
 sprite_change_offset("car", 6, 6);              //RC car
+sprite_change_offset("mamizou_angelhog", 30, 44);
+sprite_change_offset("mamizou_shadow", 30, 44);

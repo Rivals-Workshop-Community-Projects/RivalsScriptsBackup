@@ -72,6 +72,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, vfx_wood_small);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_PARTICLE_NUM, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
 
 //tip command grab
@@ -96,6 +97,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_leafy_hit1"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
 
 //body bash hit
@@ -109,7 +111,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 60);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 60);
 set_hitbox_value(AT_FSPECIAL, 3, HG_SHAPE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 4);
-set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 6);
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 80);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);

@@ -29,7 +29,11 @@ if (attack==AT_NSPECIAL && hbox_num==11){
 					if (!was_parried){ sound_play(sound_get("click3")); }
 					else{ sound_play(asset_get("sfx_ell_steam_hit")); }
 					other.destroyed = true;
+					if (other.player != other.orig_player){
+					parried_storage = other.player;
+					}
 					user_event( 0 );
+					
 				}
 			}
 		}
@@ -56,7 +60,7 @@ if (attack==AT_FSPECIAL && hbox_num==1){
 	if (hitbox_timer==length-1){
 		spawn_hit_fx( x, y, player_id.particle1 );
 		destroyed = true;
-		sound_play(sound_get("click"));
+		with (player_id){sound_play(sound_get("click"));}
 	}
 	if (gather){
 		if (variable_instance_exists(id, "hsp_str")){

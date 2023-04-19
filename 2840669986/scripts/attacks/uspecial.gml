@@ -29,7 +29,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -9.5);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -9.5 - (uspecialBoostRune * 2.25));
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);

@@ -11,10 +11,26 @@ if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == 
 		uairboost = 1;
 	}
 }
-if(instance_exists(time_rift)){
-	move_cooldown[AT_DSPECIAL] = 999;
+if(!runeM){
+	if(instance_exists(time_rift)){
+		move_cooldown[AT_DSPECIAL] = 999;
+	}else{
+		move_cooldown[AT_DSPECIAL] = 0;
+	}
 }else{
-	move_cooldown[AT_DSPECIAL] = 0;
+	var has_time_rift = 0;
+	with(obj_article1){
+		if(player_id == other && player == other.player){
+			with(other) {
+				has_time_rift += 1;
+			}
+		}
+	}
+	if(has_time_rift >= 3){
+		move_cooldown[AT_DSPECIAL] = 999;
+	}else{
+		move_cooldown[AT_DSPECIAL] = 0;
+	}
 }
 
 if(state_timer == 5 && state == PS_DOUBLE_JUMP){
@@ -63,15 +79,37 @@ if(state == PS_PARRY){
 }
 
 if (runesUpdated || get_match_setting(SET_RUNES)) {
-	if (has_rune("K") || runeK) {
+	if (has_rune("A") || runeA) {
+		runeA = true;
+	}if (has_rune("B") || runeB) {
+		runeB = true;
+		set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 7);
+		set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 150);set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 150);
+	}if (has_rune("C") || runeC) {
+		runeC = true;
+		runeC_charge_multiplier = 0.25;
+		runeC_charge_multiplier2 = 3.0;
+	}if (has_rune("D") || runeD) {
+		max_djumps = 8;
+	}
+	if (has_rune("G") || runeG) {
+		runeG = true;
+	}if (has_rune("H") || runeH) {
+		runeH = true;
+		set_window_value(AT_UAIR, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, .1);
+	}if (has_rune("I") || runeI) {
+		runeI = true;
+	}if (has_rune("K") || runeK) {
 		runeK = true;
 	}
 	if (has_rune("L") || runeL) {
 		runeL = true;
+	}if (has_rune("M") || runeM) {
+		runeM = true;
 	}
 }
 if(runeK){
-	if(!instance_exists(contacthitbox)){
+	if(!instance_exists(contacthitbox) && state != PS_HITSTUN && state != PS_HITSTUN_LAND){
 		contacthitbox = create_hitbox(AT_UTILT, 4, x, y-25);contacthitbox.spr_dir = spr_dir;
 	}else{
 		if(contacthitbox.hitbox_timer <= 970){
@@ -98,6 +136,8 @@ if(!loaded){
 	if(!trainingmode){
 		set_attack(AT_TAUNT);window = 10;
 	}
+	
+	var silly = create_hitbox(AT_DSTRONG, 11, x, y+5000);silly.spr_dir = 1;
 	
 	phone.utils_cur[phone.UTIL_FPS_WARN] = false;phone.utils_cur_updated[phone.UTIL_FPS_WARN] = true;
 	loaded = true;

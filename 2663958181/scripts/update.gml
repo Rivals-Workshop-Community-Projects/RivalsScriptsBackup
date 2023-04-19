@@ -88,6 +88,11 @@ current_sprite_set = shades;
 if get_gameplay_time() == 2{
 	if shield_down{
 		shades = 1;
+        set_ui_element(UI_HUD_ICON, sprite_get("hud_hat"));
+        set_ui_element(UI_HUDHURT_ICON, sprite_get("hurt_hat"));
+        set_ui_element(UI_CHARSELECT, sprite_get("charselect_hat"));
+        set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_hat"));
+        set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_hat"));
 		/*
 		if attack_down{
 			shades = 2;
@@ -108,7 +113,7 @@ if can_fspec_jump{
 
 if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
 	if attack == AT_NTHROW{
-		if window == 3 and window_timer == 1{
+		if ((window == 3 and window_timer == 1) and !hitpause){
 			hsp = 8 * spr_dir;
 		}
 	}
@@ -259,7 +264,7 @@ if is_squr_wet{
 			case AT_FSTRONG:
 			case AT_DSTRONG:
 			case AT_USTRONG:
-				if window == 1 and window_timer == 1{
+				if ((window == 1 and window_timer == 1) and !hitpause){
 					spawn_hit_fx(x, y - 16, vfx_specialshine);
 					sound_play(asset_get("sfx_orca_absorb"))
 				}

@@ -1,6 +1,5 @@
 // code made to fix dspec parry jank
 
-
 var is_shoe = false;
 var shoe_moving = false;
 
@@ -22,25 +21,5 @@ with (asset_get("pHitBox"))
 		}
     }
 }
-
-
-// infinite parry bug fix
-/*
-if (is_shoe) {
-	//sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 1);
-	if (state == PS_PARRY) {
-		if (shoe_moving == true) {
-			//state = PS_PRATFALL;
-			
-			// alternative if people want it
-			// state = PS_IDLE; 
-			
-		}
-	}
-}
-*/
-
-
-
 
 

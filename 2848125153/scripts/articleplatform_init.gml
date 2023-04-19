@@ -8,4 +8,5 @@ ignores_walls = true;
 uses_shader = false;
 
 UnReflectable = true;
+Pocketable = false;
 choochoo = noone;

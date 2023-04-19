@@ -61,6 +61,10 @@ if(nspecialcharge < 60 && fspecialcharge < 60){
 //print_debug(string(0.4+(hsp/10*spr_dir)));
 steam_cooldown -= 1;
 
+if(free && /*floating &&*/ (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP) && taunt_pressed){
+   set_attack(AT_TAUNT);
+}
+
 if (attack != AT_NSPECIAL && state != PS_HITSTUN && special_pressed && joy_pad_idle && (attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL)){
     		if(instance_exists(blob_ball)){
 				if (instance_exists(blob_ball.ballhitbox)) {

@@ -9,6 +9,8 @@ if (state == PS_SPAWN && should_do_intro == true) {
 	} else {
 		draw_debug_text(temp_x+4, temp_y-14, "Using alt controls!");		
 	}
+} else {
+	//draw_debug_text(temp_x+4, temp_y-14, "Experimental patch mode!");
 }
 
 muno_event_type = 5;

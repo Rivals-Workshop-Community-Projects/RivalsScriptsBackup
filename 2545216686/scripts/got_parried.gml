@@ -16,10 +16,12 @@ switch (my_hitboxID.attack){
 		break;
 	case AT_DSPECIAL:
 		if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3){
-			tailsdidrobotgetparried = true
+			tailsdidrobotgetparried = true;
 			destroy_hitboxes();
-			prat_land_time = 50;
-			set_state(PS_PRATFALL);
+			if (state != PS_DEAD || state != PS_RESPAWN || state != PS_SPAWN){
+				prat_land_time = 50;
+				set_state(PS_PRATFALL);
+			}
 		}
 		break;
 }

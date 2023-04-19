@@ -49,6 +49,9 @@ if attack == AT_DAIR{
 	can_jump = false;
 	can_shield = false;
 }
+if attack == AT_JAB{
+	can_jump = false;
+}
 
 if attack == AT_BAIR{
 	set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, 7);

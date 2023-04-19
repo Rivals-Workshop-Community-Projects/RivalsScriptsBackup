@@ -2,7 +2,6 @@
 
 //draw_debug_text(floor(x), floor(y)+16*0, "variable = " + string(variable));
 
-
 /*
 for (var i = 0; i <= 3; ++i)
 {
@@ -80,7 +79,7 @@ draw_colored_hitboxes();
 #define draw_colored_hitboxes
 if get_match_setting(SET_HITBOX_VIS) {
     var arrowspr = __kb_arrow_spr
-    with (pHitBox) if player_id == other && draw_colored {
+    with (pHitBox) if player_id == other && "draw_colored" in self && draw_colored {
         draw_sprite_ext(draw_spr, shape, x, y, image_xscale,image_yscale,0,col,0.5);
         var __kb_angle = kb_angle == 361 ? 45 : kb_angle;
         var angle = ((__kb_angle+90)*(hit_flipper==5?-1:1)*spr_dir)-90

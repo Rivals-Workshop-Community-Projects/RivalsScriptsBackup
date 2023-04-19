@@ -79,11 +79,15 @@ for (i = 4; i <= 6; i++) {
     set_hitbox_value(AT_NSPECIAL_2, i, HG_BASE_HITPAUSE, 1);
     set_hitbox_value(AT_NSPECIAL_2, i, HG_EXTRA_HITPAUSE, 15);
     set_hitbox_value(AT_NSPECIAL_2, i, HG_HITSTUN_MULTIPLIER, 2);
+    set_hitbox_value(AT_NSPECIAL_2, i, HG_EXTENDED_PARRY_STUN, true);
     set_hitbox_value(AT_NSPECIAL_2, i, HG_DAMAGE, 1);
     set_hitbox_value(AT_NSPECIAL_2, i, HG_ANGLE_FLIPPER, 9);
     set_hitbox_value(AT_NSPECIAL_2, i, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
     set_hitbox_value(AT_NSPECIAL_2, i, HG_PROJECTILE_MASK, -1);
     set_hitbox_value(AT_NSPECIAL_2, i, HG_PROJECTILE_IS_TRANSCENDENT, true);
+    set_hitbox_value(AT_NSPECIAL_2, i, HG_PROJECTILE_PARRY_STUN, true);
+    set_hitbox_value(AT_NSPECIAL_2, i, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+    set_hitbox_value(AT_NSPECIAL_2, i, HG_PROJECTILE_UNBASHABLE, true);
     set_hitbox_value(AT_NSPECIAL_2, i, HG_VISUAL_EFFECT, 1);
     set_hitbox_value(AT_NSPECIAL_2, i, HG_TECHABLE, 2);
 }

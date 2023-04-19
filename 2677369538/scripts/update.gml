@@ -22,10 +22,6 @@ if (state == PS_ATTACK_AIR && attack == AT_DAIR && window == 2 && hitpause == fa
 	spawn_hit_fx( x, y, brigandine_sparks );
 	afterimage_timer = 0;
 	}
-}	
-
-if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.destroyed == true){ 
-	player_id.move_cooldown[AT_NSPECIAL] = 15; 
 }
 
 if (attack == AT_FSPECIAL){

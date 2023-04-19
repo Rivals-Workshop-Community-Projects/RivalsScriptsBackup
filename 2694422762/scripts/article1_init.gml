@@ -20,9 +20,9 @@ spr_index = sprite_get("card_big");
 img_index = 0;
 
 //Card stuff
-travel_hsp_max = 22;
-travel_decel = 0.5;
-travel_vsp_max = 9;
+travel_hsp_max = 15;
+travel_decel = 0.25;
+travel_vsp_max = 6;
 
 die_time_max = 10 * 60;
 

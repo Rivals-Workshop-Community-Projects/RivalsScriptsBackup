@@ -516,6 +516,22 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+	initPatch("2.9", "2 January, 2023");
+
+initPatchWords_ext("Pre-G9 Nerfs
+-Ustrong endlag 19-21 frames
+-Dstrong endlag 21-23 frames
+-Fstrong startup 14-16 frames (one frame added before and after charge)
+-Fstrong hspeed 7-6
+-Fair endlag 14-16 frames
+-Fair landing lag 7-8 frames
+-Jab 1 and 2 scaling 0.4-0.5
+-Dtilt scaling 0.5-0.6
+-Dspecial hurtbox is larger the frame before it comes out
+-Uspecial sourspot scaling 0.85-0.65
+
+", fa_center, c_white, 0, 0);	
+	
 	
 initPatch("2.8", "25 July, 2022");
 

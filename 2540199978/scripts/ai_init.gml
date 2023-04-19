@@ -19,3 +19,5 @@ close_side_attacks[2] = AT_JAB;
 close_side_attacks[3] = AT_DSTRONG;
 
 ai_state = 0;
+waveland = false;
+topcustom = 0;

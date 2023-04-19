@@ -90,8 +90,14 @@ if proposed_balance{
     	case AT_JAB:
     		switch(window){
     			case 4:
-    				if was_parried and window_timer == get_window_value(attack, 4, AG_WINDOW_LENGTH) * 1.5{
-    					state = PS_IDLE;
+    				if window_timer >= get_window_value(attack, 4, AG_WINDOW_LENGTH) - 2{
+    					can_attack = true;
+    					move_cooldown[AT_JAB] = 2;
+    				}
+    				if was_parried{
+	    				if window_timer == get_window_value(attack, 4, AG_WINDOW_LENGTH) * 1.5{
+	    					state = PS_IDLE;
+	    				}
     				}
     				break;
     		}

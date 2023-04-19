@@ -79,6 +79,7 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_medium);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 hitbox_num++;
@@ -100,6 +101,7 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_medium);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_large);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));

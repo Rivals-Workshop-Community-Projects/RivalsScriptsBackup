@@ -27,10 +27,6 @@ switch(my_hitboxID.attack){
         sound_play(asset_get("sfx_ice_burst_up"), false, noone, .3, 1.2)
         sound_play(asset_get("sfx_icehit_weak1"), false, noone, .35, 1.1)
         break;
-    case AT_TAUNT:
-        hit_player_obj.spr_dir*=-1;
-        hit_player_obj.hsp = -1.2*hit_player_obj.hsp+hit_player_obj.spr_dir*4;
-        break;
     case AT_FSPECIAL:
         if(fspec_misfire){
             spawn_hit_fx(my_hitboxID.x+spr_dir*20, my_hitboxID.y, 304);
@@ -66,6 +62,9 @@ switch(my_hitboxID.attack){
                         sound_play(asset_get("sfx_blow_heavy1"), false, false, .5, 1.1)
             sound_play(asset_get("sfx_ice_shatter"), false, false, .6, 1)
         }
+        break;
+    case AT_EXTRA_2:
+        sound_play(sound_get("graze"))
 
     
 }

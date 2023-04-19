@@ -47,8 +47,8 @@ set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);//7
 set_hitbox_value(AT_BAIR, 1, HG_FINAL_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.75);//0.7
-set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.6);//4
+set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 9);//9
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.7);//4//6
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("hit_med_1"));
 

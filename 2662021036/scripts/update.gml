@@ -99,17 +99,4 @@ with (asset_get("oPlayer")) {
 }
 
 
-with (asset_get("oPlayer")) {
-	
-	if (url == 2265876548){
-		other.id = id;
-		other.url = random_func( 21, 9999999999, false );
-					canon = false;supercanon = false;hypercanon = false;op = false;
-					runeA = false;runeB = false;runeC = false;runeD = false;runeE = false;runeF = false;
-					runeG = false;runeH = false;runeI = false;runeJ = false;runeK = false;
-					runeL = false;runeM = false;runeN = false;runeO = false;
-					runesUpdated = false;
-		
-	}
-	
-}
+

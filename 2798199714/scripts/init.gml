@@ -130,12 +130,24 @@ intro = (state == PS_SPAWN);
 introspeed = 0.2;
 shieldfx = noone;
 shieldfx2 = noone;
+lasernum = 0;
+lasernum2 = 0;
+laser = 0;
+laserscale = 0;
+laserangle = 90;
+laseranglespeed = 0;
+laser_list = ds_list_create();
 contacthitbox = noone;
 windowtiming = 0;
 loaded = false;
 trainingmode = false;
 playtest = (object_index == oTestPlayer);
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
+runeC_charge_multiplier = 1.0;
+runeC_charge_multiplier2 = 1.0;
+
+//runeN = true;runeO = true;runesUpdated = true;
+//runeA = true; runeB = true runeC = true; runeD = true; runeE = true; runeF = true; runeG = true; runeH = true; runeI = true; runeJ = true; runeK = true; runeL = true; runeM = true; runeN = true; runeO = true;
 
 //toonlink_photo = sprite_get("toonlink_photo");
 //toonlink_photo2 = sprite_get("toonlink_photo_TL");

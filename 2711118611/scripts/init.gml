@@ -263,9 +263,3 @@ str_line_one_text = "";
 str_line_two_text = "";
 
 templel = ""
-
-
-
-// Muno template: (don't change)
-
-user_event(14); // General init

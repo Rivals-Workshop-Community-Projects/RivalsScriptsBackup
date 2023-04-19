@@ -68,11 +68,6 @@ if (color >= 17){
     	sound_play(sound_get("CSS_select"), false, 0);
     	soundtime++
     }
-    if color == 24 and soundtime == 1{
-    	sound_stop(sound_get("CSS_select"));
-    	sound_stop(sound_get("timestop"));
-    	sound_play(sound_get("timestop"), false, 0);
-    }
 }
 
 image_index = color;
@@ -329,7 +324,7 @@ image_index = color;
 			var position = 22;
 			ColorPrev = make_color_rgb(255, 83, 124);
 			ColorNext = make_color_rgb(253, 250, 253 );
-			ColorNextNext = make_color_rgb(191, 54, 93);
+			ColorNextNext = make_color_rgb(99, 124, 119);
 			if (path_position == 23 && path_scale == 0){
 				path_position = 24;
 			}
@@ -339,7 +334,7 @@ image_index = color;
 			name = " 24: Hilda";
 			var position = 23;
 			ColorPrev = make_color_rgb(204, 179, 189);
-			ColorNext = make_color_rgb(191, 54, 93 );
+			ColorNext = make_color_rgb(99, 124, 119 );
 			ColorNextNext = make_color_rgb(255, 220, 158);
 			if (path_position == 24 && path_scale == 0){
 				path_position = 25;
@@ -347,7 +342,7 @@ image_index = color;
 				break;
 
 				case 24:
-			name = " 25: Elice";
+			name = " 25: von Karma";
 			var position = 24;
 			ColorPrev = make_color_rgb(253, 250, 253);
 			ColorNext = make_color_rgb(255, 220, 158 );
@@ -360,7 +355,7 @@ image_index = color;
 				case 25:
 			name = " 26: Nia";
 			var position = 25;
-			ColorPrev = make_color_rgb(191, 54, 93);
+			ColorPrev = make_color_rgb(99, 124, 119);
 			ColorNext = make_color_rgb(169, 169, 169 );
 			ColorNextNext = make_color_rgb(180, 34, 36);
 			if (path_position == 26 && path_scale == 0){

@@ -982,6 +982,7 @@ switch(attack){
 		}
 	
 		if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 3);
 			if (taunt_down && TCG_Kirby_Copy != 0){
 				TCG_Kirby_Copy = 0;
 				sound_play(sound_get("sfx_krdl_ability_drop"));
@@ -1050,6 +1051,10 @@ switch(attack){
 					}
 					spawn_hit_fx(x, y - 14, ability_get_fx);
 				}
+			}
+			
+			if (window == 7){
+				set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 9);
 			}
 		}
 	}
@@ -1153,7 +1158,7 @@ if (attack == AT_COPY_BEAM){
 		}
 	}
 	if (window == 5){
-		move_cooldown[AT_COPY_BEAM] = 30;
+		move_cooldown[AT_COPY_BEAM] = 40;
 		set_attack_value(AT_COPY_BEAM, AG_NUM_WINDOWS, 5);
 	}
 	if (window == 6 || window == 7){
@@ -1252,12 +1257,22 @@ if (attack == AT_COPY_RANGER){
 				var rangerProj = create_hitbox(AT_COPY_RANGER, 1, x, y-24);
 			}
 			
+			if (ranger_charge != 0){
+				sound_play(sound_get("sfx_kfl_ranger_fire_lv1"));
+			}
+			
 			rangerProj.playerJoyDirectionMultHSP = dir_cos;
 			rangerProj.playerJoyDirectionMultVSP = dir_sin;
 			rangerProj.playerJoyDirectionRemember = dir_joy_direction;
 			rangerProj.playerJoyDirectionRememberVert = dir_joy_direction_vert;
 			rangerProj.initXOffset = (64*dir_cos)*spr_dir;
 			rangerProj.initYOffset = ((56*dir_sin)+20)*dir_joy_direction_vert;
+			with(rangerProj){
+				var baseMovementSpeed = 11+((hbox_num-1)*3);
+
+				hsp = playerJoyDirectionMultHSP*baseMovementSpeed*(playerJoyDirectionRemember);
+				vsp = playerJoyDirectionMultVSP*baseMovementSpeed*(playerJoyDirectionRememberVert);
+			}
 			
 			move_cooldown[AT_COPY_RANGER] = 45;
 		}
@@ -1300,9 +1315,23 @@ if (attack == AT_COPY_SWORD){
 	for (var i = 1; i < 13; i++){
 		set_hitbox_value(AT_COPY_SWORD, i, HG_BASE_KNOCKBACK, swordMHitHboxBKB);
 	}
+	if (window == 1){
+		sword_charge_timer = 0;
+		sword_charged = false;
+	}
 	if (window == 2){
-		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && special_down){
+		if (window_timer == (get_window_value(attack, window, AG_WINDOW_LENGTH) - 1) && special_down){
 			window_timer = 1;
+		}
+		if (special_down){
+			if (sword_charge_timer < 35){
+				sword_charge_timer++;
+			} else if (sword_charge_timer == 35){
+				sound_play(sound_get("sfx_charge_max"));
+				sword_charged = true;
+				spawn_hit_fx(x, y - 20, 301);
+				sword_charge_timer++;
+			}
 		}
 	}
 	if (window == 3){
@@ -1316,6 +1345,10 @@ if (attack == AT_COPY_SWORD){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 			spawn_base_dust( x+12, y, "dash", -1);
 			spawn_base_dust( x-12, y, "dash", 1);
+			if (sword_charged == false){
+				window = 4;
+				window_timer = 18;
+			}
 		}
 	}
 	if (window == 4){
@@ -1836,6 +1869,7 @@ if (attack == AT_COPY_DRILL){
 		drill_move_value = 0;
 		drill_fall_timer = 0;
 		set_hitbox_value(AT_COPY_DRILL, 1, HG_WINDOW, 2);
+		set_window_value(AT_COPY_DRILL, 8, AG_WINDOW_TYPE, 1);
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-2){
 			sound_play(asset_get("sfx_propeller_dagger_loop"), false, noone, 1, 1);
 		}
@@ -1987,6 +2021,14 @@ if (attack == AT_COPY_DRILL){
 			spawn_base_dust( x, y, "land", spr_dir);
 		}
 		move_cooldown[AT_COPY_DRILL] = 99999;
+	}
+	//theres probably a better way of doing this but idc
+	if (window == 9){
+		if (!hitpause){
+			if (window_timer == 1){
+				vsp = -9;
+			}
+		}
 	}
 }
 

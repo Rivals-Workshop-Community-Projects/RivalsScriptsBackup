@@ -129,7 +129,7 @@ set_hitbox_value(AT_USPECIAL, 4, HG_PRIORITY, 2);
 set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 7);
 set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 90);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 1.15);
+set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 1.05);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_GROUP, -1);

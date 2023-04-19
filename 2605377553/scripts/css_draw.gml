@@ -1,10 +1,35 @@
 //outline for css junk
-if (get_player_color( player ) == 9){
-draw_sprite_ext(sprite_get("mari_outline"),1,x+8,y+8,2,2,0,-1,1);
+
+switch (get_player_color( player ) ){
+    case 8:
+        draw_sprite_ext(sprite_get("css_galaxy"),1,x+8,y+8,2,2,0,-1,1);
+    break;
+    case 9:
+        draw_sprite_ext(sprite_get("mari_outline"),1,x+8,y+8,2,2,0,-1,1);
+        draw_sprite_ext(sprite_get("css_omorispace"),1,x+8,y+8,2,2,0,-1,1);
+    break;
+    case 20:
+        draw_sprite_ext(sprite_get("ghost_outline"),1,x+8,y+8,2,2,0,-1,1);
+    break;
+    case 23:
+        draw_sprite_ext(sprite_get("genesis_charselect"),1,x+8,y+8,2,2,0,-1,1);
+    break;
 }
-if (get_player_color( player ) == 20){
-draw_sprite_ext(sprite_get("ghost_outline"),1,x+8,y+8,2,2,0,-1,1);
-}
+
+//special icons
+switch (get_player_color(player)){
+    case 10:
+        draw_sprite(sprite_get("css_icon_infamous"),0,x+176,y+110);
+        break;
+    case 18:
+	    draw_sprite(sprite_get("css_icon_ranked"),0,x+176,y+110);
+	break;
+    case 22:
+	    draw_sprite(sprite_get("css_icon_riptide"),0,x+176,y+110);
+	break;
+    case 23:
+	    draw_sprite(sprite_get("css_icon_genny"),0,x+176,y+110);	   
+} 
 
 //--- ---
 //
@@ -72,9 +97,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     // the primary part you should change.
     //--- ---
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
-    color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
+    color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 22; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 24; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(225, 92, 198) // "color preview square" color. can be any color!
@@ -92,8 +117,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[4,0] = make_color_rgb(41, 44, 51)
     ce[4,1] = "Chromatic"
     ce[4,2] = "An original color. Black and white, so be it."
-    ce[5,0] = make_color_rgb(52, 182, 194)
-    ce[5,1] = "Riptide"
+    ce[5,0] = make_color_rgb(50, 77, 187)
+    ce[5,1] = "Pretty Pink"
     ce[5,2] = "An original color. It is pretty pink."
     ce[6,0] = make_color_rgb(128, 0, 128)
     ce[6,1] = "Ace in the Hole"
@@ -107,15 +132,15 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[9,0] = make_color_rgb(83, 37, 230)
     ce[9,1] = "By Your Side"
     ce[9,2] = "All it costs is your love! Based on MARI from OMORI."    
-    ce[10,0] = make_color_rgb(227, 219, 141)
-    ce[10,1] = "Artistic Fae"
-    ce[10,2] = "Alola! Based on Mina from Pokémon Sun and Moon."
-    ce[11,0] = make_color_rgb(0, 255, 168)
-    ce[11,1] = "Infamous"
-    ce[11,2] = "Among the paint and the fumes. The 'Infamous' color palette."    
-    ce[12,0] = make_color_rgb(184, 149, 224)
-    ce[12,1] = "Blight"
-    ce[12,2] = "gay people install. Based on Amity from The Owl House."
+    ce[10,0] = make_color_rgb(0, 255, 168)
+    ce[10,1] = "Infamous"
+    ce[10,2] = "Among the paint and the fumes. The 'Infamous' color palette."
+    ce[11,0] = make_color_rgb(247, 172, 178 )
+    ce[11,1] = "Complex"
+    ce[11,2] = "Based on Hitori Gotoh from Bocchi The Rock!."
+    ce[12,0] = make_color_rgb(94, 94, 94)
+    ce[12,1] = "Subway "
+    ce[12,2] = "Try not to become a ghost yourself! Based on Cassandra from Subway Midnight"
     ce[13,0] = make_color_rgb(108, 239, 179)
     ce[13,1] = "Go Fish"
     ce[13,2] = "Based on Macka, original character by Sunfished."
@@ -123,8 +148,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[14,1] = "Dreamscaper"
     ce[14,2] = "Based on Remie, original character by Clay."
     ce[15,0] = make_color_rgb(71, 185, 89)
-    ce[15,1] = "Emissary"
-    ce[15,2] = "Based on Acid Rainbows, original character by Kaggysmilk."
+    ce[15,1] = "End of Love"
+    ce[15,2] = "Based on Heartbrake, original character by Trail Mix."
     ce[16,0] = make_color_rgb(255, 217, 176)
     ce[16,1] = "Step"
     ce[16,2] = "Based on Natsumi from the Natsumi STEP! flash animation."    
@@ -143,9 +168,15 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[21,0] = make_color_rgb(255, 0, 0)
     ce[21,1] = "Canada??"
     ce[21,2] = "Thought it would be kinda funny. Mal is canadian."    
-    ce[22,0] = make_color_rgb(209, 8, 68)
-    ce[22,1] = "Pretty Pink"
-    ce[22,2] = "Thought it would be kinda funny. Mal is canadian."    
+    ce[22,0] = make_color_rgb(52, 182, 194)
+    ce[22,1] = "Riptide"
+    ce[22,2] = "Color scheme based on the Riptide Major logo."    
+    ce[23,0] = make_color_rgb(179, 12, 12)
+    ce[23,1] = "Genesis"
+    ce[23,2] = "Color scheme based on the Genesis Major logo."       
+    ce[24,0] = make_color_rgb(0, 255, 0)
+    ce[24,1] = "Champion's Key"
+    ce[24,2] = "For true champions. Your handle is your key."      
 
 
     // you can add more, by copypasting and changing the first index of the array accordingly.

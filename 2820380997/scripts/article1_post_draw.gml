@@ -3,34 +3,14 @@
 
 //Setting for visual hurtbox in training mode
 if get_match_setting(SET_HITBOX_VIS) {
-	draw_sprite_ext(mask_index,image_index,x,y,1,1,image_angle,c_green,0.5);
+	draw_sprite_ext(mask_index,image_index,x,y,spr_dir,1,image_angle,c_green,0.5);
 }
 
 if (was_parried == true) {
-	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,image_angle,c_dkgray,0.75);
+	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,image_angle,c_dkgray,0.33);
 }
-
-// Draw Platform
-if ((state == CL_DTHROW_TEAM || state == CL_FSPECIAL_AIR) && player_id.free == true) {
-	if(state_timer = 10){ plat_temp_x = player_id.x + (20 * player_id.spr_dir); plat_temp_y = player_id.y - 10;}
-	if(state_timer > 10){
-	plat_exists = true;
-	draw_sprite_ext(plat_clone_assist_sprite,get_gameplay_time()/6,plat_temp_x,plat_temp_y,1,1,0,c_white, (state_timer/10) - 1);
-	}
-}
-// Remove platform
-if(!(state == CL_DTHROW_TEAM || state == CL_FSPECIAL_AIR) && plat_exists == true){
-	if(plat_despawn_timer <= 0){plat_exists = false;plat_despawn_timer = 10;}
-	else {
-		draw_sprite_ext(plat_clone_assist_sprite,get_gameplay_time()/6,plat_temp_x,plat_temp_y,1,1,0,c_white,((-1 * state_timer)/10) + 1);
-		plat_despawn_timer--
-	}
-}
-
 
 /*
-if(draw_debug_hud == true){
-
 draw_debug_text( x -20, y - 80,"Total Timer: " + string(article_total_timer));
 draw_debug_text( x -20, y - 100,"" + string(""));
 draw_debug_text( x -20, y - 120,"Article State: " + string(state));
@@ -43,9 +23,8 @@ draw_debug_text( x -20, y - 240,"image_index " + string(image_index));
 draw_debug_text( x -20, y - 260,"vsp: " + string(vsp));
 draw_debug_text( x -20, y - 280,"hsp: " + string(hsp));
 draw_debug_text( x -20, y - 300,"" + string(""));
-
-}
 */
+
 //Triangle/percentage from Ruber
 draw_sprite_ext(sprite_get("indicator"), 0, x, y - 70, 1, 1, 0, get_player_hud_color(player), 1);
 draw_set_font(asset_get("fName"));

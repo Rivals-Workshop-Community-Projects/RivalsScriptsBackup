@@ -1,5 +1,6 @@
 if ((attack == AT_NSPECIAL && hbox_num == 1) || (attack == AT_USTRONG && hbox_num == 2) || (attack == AT_DSTRONG && hbox_num == 1)) {
     spr_dir = 1;
+    draw_xscale = spr_dir;
     if ("stuck_dir" not in self) {
         stuck_dir = point_direction(0,0,hsp,vsp);
         stuck_dist = point_distance(0,0,hsp,vsp);
@@ -21,40 +22,43 @@ if ((attack == AT_NSPECIAL && hbox_num == 1) || (attack == AT_USTRONG && hbox_nu
             sprite_index = sprite_get("card_proj1");
         }
     }
-    if (position_meeting(x + hsp, y, asset_get("par_block"))) {
-        wall_stuck = true;
-        var i = 0;
-        while (collision_point(x, y, asset_get("par_block"), 1, 1)) {
-            i ++;
-            if (hsp > 0) {
-                x += -1
-            }
-            if (hsp < 0) {
-                x += 1
-            }
-            if (i > 300) {
-                break;
-            }
-        }
-    }
-    if (position_meeting(x, y + vsp, asset_get("par_block"))) {
-        wall_stuck = true;
-        var i = 0;
-        while (collision_point(x, y, asset_get("par_block"), 1, 1)) {
-            i ++;
-            if (vsp > 0) {
-                y += -1
-            }
-            if (vsp < 0) {
-                y += 1
-            }
-            if (i > 300) {
-                break;
-            }
-        }
-    }
-    
     if (!wall_stuck) {
+        if (hitbox_timer > 0) {
+            if (position_meeting(x + hsp, y, asset_get("par_block")) || (position_meeting(x+ hsp, y, asset_get("par_jumpthrough")) && vsp >= 0)) {
+                wall_stuck = true;
+                var i = 0;
+                while (collision_point(x, y, asset_get("par_block"), 1, 1) || collision_point(x, y, asset_get("par_jumpthrough"), 1, 1)) {
+                    i ++;
+                    if (hsp > 0) {
+                        x += -1
+                    }
+                    if (hsp < 0) {
+                        x += 1
+                    }
+                    if (i > 300) {
+                        break;
+                    }
+                }
+            }
+            if (vsp > 0) {
+                if (position_meeting(x, y + vsp, asset_get("par_block")) || (position_meeting(x, y + vsp, asset_get("par_jumpthrough")) && vsp >= 0)) {
+                    wall_stuck = true;
+                    var i = 0;
+                    while (collision_point(x, y, asset_get("par_block"), 1, 1) || collision_point(x, y, asset_get("par_jumpthrough"), 1, 1)) {
+                        i ++;
+                        if (vsp > 0) {
+                            y += -2
+                        }
+                        if (vsp < 0) {
+                            y += 2
+                        }
+                        if (i > 300) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         stuck_dir = point_direction(0,0,hsp,vsp);
         if (attack != AT_DSTRONG || stuck_extended) {
             hsp *= 0.91;
@@ -81,7 +85,7 @@ if ((attack == AT_NSPECIAL && hbox_num == 1) || (attack == AT_USTRONG && hbox_nu
     if (instance_exists(meeting_article1))
     {
         with (meeting_article1) {
-            if (player_id == other.player_id) {
+            if (is_ditto(player_id, other.player_id)) {
                 if (state != 4) {
                         var attacking_hb = other.attack;
                         var attacking_num = other.hbox_num;
@@ -89,10 +93,11 @@ if ((attack == AT_NSPECIAL && hbox_num == 1) || (attack == AT_USTRONG && hbox_nu
                         state_timer = 0;
                         window = 1;
                         window_timer = 0;
+                        if ("card_sound" in self) sound_stop(card_sound);
+                        card_sound = sound_play(asset_get("sfx_shovel_brandish"));
                         with (pHitBox) {
-                            if (player_id == other.player_id && attack == attacking_hb && hbox_num == attacking_num) {
+                            if (attack == attacking_hb && hbox_num == attacking_num) {
                                 if (!wall_stuck && !stuck_extended) {
-                                sound_play(asset_get("sfx_shovel_brandish"));
                                 stuck_extended = true;
                                 lucy_card_charge = 7; 
                                 hitbox_timer = 0;
@@ -116,3 +121,6 @@ if ((attack == AT_NSPECIAL && hbox_num == 1) || (attack == AT_USTRONG && hbox_nu
         }
     }
 }
+
+#define is_ditto(_source, _target) 
+return (_source.url == _target.url && get_char_info(_source.player, INFO_STR_NAME) == get_char_info(_target.player, INFO_STR_NAME))

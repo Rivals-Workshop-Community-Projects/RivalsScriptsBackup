@@ -15,24 +15,27 @@ if (attack == AT_TAUNT && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR))
 		draw_sprite_ext(sprite_get("explosion_ball3"), 0, x,y-45, .8+(window_timer/3), .8+(window_timer/3), 0, -1, 1-(window_timer/10))
 		draw_sprite_ext(sprite_get("explosion_ball3"), 0, x,y-45, .6+(window_timer/2), .6+(window_timer/2), 0, -1, 1-(window_timer/10))
 	}
+	else if(window == 14){
+		draw_sprite_ext(sprite_get("taunt_laser"), 0, x-5*spr_dir ,y-125, 2, (laserscale/100)*2, laserangle, c_white, 1)
+	}
 }
 
 with(pHitBox){
 	if(player_id == other && type == 2 && attack == AT_DSTRONG && hbox_num == 9){
 		if(other.alt == 0){
-			draw_sprite_ext(sprite_get("tornado"), anim, x, y+4400, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado"), anim, x, y+4200, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado"), anim, x, y+4000, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado"), anim, x, y+3800, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado"), anim, x, y+3700, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado"), anim, x, y+3500, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite, anim, x, y+4400, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite, anim, x, y+4200, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite, anim, x, y+4000, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite, anim, x, y+3800, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite, anim, x, y+3700, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite, anim, x, y+3500, 1, 1, 0, c_white, 1);
 		}else{
-			draw_sprite_ext(sprite_get("tornado_alts"), anim, x, y+4400, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado_alts"), anim, x, y+4200, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado_alts"), anim, x, y+4000, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado_alts"), anim, x, y+3800, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado_alts"), anim, x, y+3700, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(sprite_get("tornado_alts"), anim, x, y+3500, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite_alts, anim, x, y+4400, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite_alts, anim, x, y+4200, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite_alts, anim, x, y+4000, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite_alts, anim, x, y+3800, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite_alts, anim, x, y+3700, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(tornado_sprite_alts, anim, x, y+3500, 1, 1, 0, c_white, 1);
 		}
 	}
 }

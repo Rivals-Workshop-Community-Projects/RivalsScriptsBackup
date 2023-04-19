@@ -1,5 +1,11 @@
 // attack_update
 
+//B-reverse stuff
+if (attack == skill[0].skill_attack || attack == skill[0].skill_attack_air || attack == skill[1].skill_attack || attack == skill[1].skill_attack_air ||
+    attack == skill[2].skill_attack || attack == skill[3].skill_attack || attack == skill[4].skill_attack || attack == skill[5].skill_attack ||
+    attack == skill[6].skill_attack || attack == skill[7].skill_attack || attack == skill[8].skill_attack || attack == skill[9].skill_attack ||
+    attack == skill[10].skill_attack || attack == skill[11].skill_attack) trigger_b_reverse();
+
 switch (attack)
 {
     /////////////////////////////////////////////// NORMALS ////////////////////////////////////////////////
@@ -168,6 +174,9 @@ switch (attack)
         }
         switch (window)
         {
+            case 1: //var reset
+                dstrong_last_hbox = 0;
+                break;
             case 2: //charge
                 mp_gainable = false; //doesn't turn false yet
 
@@ -207,7 +216,7 @@ switch (attack)
 
                 if (strong_charge > 30)
                 {
-                    shake_camera(2, 5); //power, time
+                    if (dstrong_last_hbox != 3 && dstrong_last_hbox != 4) shake_camera(2, 5); //power, time
                     if (has_rune("I"))
                     {
                         if (window_timer == 1 && !hitpause)
@@ -235,17 +244,14 @@ switch (attack)
                         }
                     }
                 }
-                else shake_camera(1, 2); //power, time
+                else
+                {
+                    if (dstrong_last_hbox != 3) shake_camera(1, 2); //power, time
+                }
                 break;
         }
         break;
     //////////////////////////////////////////////// SKILLS ////////////////////////////////////////////////
-    //
-    //B-reverse stuff
-    case AT_NSPECIAL_AIR: case AT_FSPECIAL_AIR: case AT_UTHROW: case AT_FSPECIAL_2: case AT_NSPECIAL_2: case AT_DSPECIAL_2:
-    case AT_EXTRA_2: case AT_EXTRA_3: case AT_EXTRA_1:
-        trigger_b_reverse();
-        break;
     //
     case AT_NTHROW: case AT_NSPECIAL_AIR:   //  light dagger
         switch (window)
@@ -274,6 +280,13 @@ switch (attack)
                     if (window_timer == window_end) set_state(free ? PS_IDLE_AIR : PS_IDLE);
                 }
                 else reset_window_value(attack, window, AG_WINDOW_CANCEL_FRAME);
+
+                if (special_pressed && window_timer <= window_cancel_time)
+                {
+                    if (cur_skills[3] != 0 && down_down && skill[cur_skills[3]].mp_use_cost) set_attack(AT_DSPECIAL);
+                    if (cur_skills[2] != 0 && up_down && skill[cur_skills[2]].mp_use_cost) set_attack(AT_USPECIAL);
+                    if (cur_skills[1] != 0 && (right_down || left_down) && skill[cur_skills[1]].mp_use_cost) set_attack(AT_FSPECIAL);
+                }
                 break;
         }
         if (attack == skill[0].skill_attack_air && !free) set_state(PS_LANDING_LAG);
@@ -399,7 +412,7 @@ switch (attack)
                 }
                 if (attack_pressed || special_pressed)
                 {
-                    if (mp_current >= skill[2].mp_cost2) set_window(6); //allow the extention
+                    if (mp_current >= skill[2].mp_cost2 && !was_parried) set_window(6); //allow the extention
                     else //don't allow the extention and pop the low MP error up
                     {
                         if (attack_counter == 1 && notice_time == -1) notice_time = notice_time_max;
@@ -546,14 +559,18 @@ switch (attack)
                 }
             }            
         }
+        
+        if (window == 5 && window_timer == 1) spawn_hit_fx(x+12*spr_dir, y-48, fx_lightblow[0])
 
         //hitbox spawn
         if (window == 6 && window_timer == window_end)
         {
-            spawn_hit_fx_ext(burnbuff_active ? fx_skill4_smear_burn : fx_skill4_smear, x, burnbuff_active ? y+8 : y, true, depth-1);
+            spawn_hit_fx_ext(burnbuff_active ? fx_skill4_smear_burn : fx_skill4_smear, x, burnbuff_active ? y+8 : y, true, depth-3);
             bar_hitbox = create_hitbox(attack, 2+burnbuff_active, x+24*spr_dir, y+32);
             if (burnbuff_active) burnbuff_active = false;
         }
+
+        if (window == 7 && window_timer == 9) spr_dir = -spr_dir;
         break;
     case AT_FSPECIAL_2:                     //  power smash
         can_wall_jump = true;
@@ -561,6 +578,26 @@ switch (attack)
         {
             case 1: //var reset + air redirect
                 skill_cancel_timer = 12;
+
+                if (!burnbuff_active)
+                {
+                    reset_hitbox_value(attack, 2, HG_DAMAGE);
+                    reset_hitbox_value(attack, 2, HG_HIT_SFX);
+                    reset_hitbox_value(attack, 2, HG_VISUAL_EFFECT);
+                    reset_hitbox_value(attack, 3, HG_DAMAGE);
+                    reset_hitbox_value(attack, 3, HG_HIT_SFX);
+                    reset_hitbox_value(attack, 2, HG_VISUAL_EFFECT);
+                }
+                else
+                {
+                    set_hitbox_value(attack, 2, HG_DAMAGE, 13);
+                    set_hitbox_value(attack, 2, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+                    set_hitbox_value(attack, 2, HG_VISUAL_EFFECT, fx_fireblow[2]);
+                    set_hitbox_value(attack, 3, HG_DAMAGE, 9);
+                    set_hitbox_value(attack, 3, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
+                    set_hitbox_value(attack, 3, HG_VISUAL_EFFECT, fx_fireblow[1]);
+                }
+
                 if (free) set_window(3);
                 break;
             case 5: //falling
@@ -584,6 +621,7 @@ switch (attack)
                             power_crater_artc = instance_create(x, y, "obj_article1");
                             power_crater_artc.state = "power_crater";
                         }
+                        if (burnbuff_active) burnbuff_active = false;
                         break;
                 }
                 break;
@@ -770,15 +808,23 @@ switch (attack)
         
         if (window < 3) can_shield = true; //parry cancel
 
-        switch (window)
+        if (window == 1)
+        {
+            reset_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE);
+            reset_hitbox_value(attack, 1, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(attack, 1, HG_LIFETIME);
+
+            reset_window_value(attack, 4, AG_WINDOW_LENGTH);
+            reset_window_value(attack, 4, AG_WINDOW_TYPE);
+            reset_hitbox_value(attack, 1, HG_HITBOX_COLOR);
+        }
+
+        if (!burnbuff_active) switch (window)
         {
             case 1: //var reset
                 hook_charge = 0;
                 hook_chain_amount = 0;
                 hook_grab = 0;
-                reset_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE);
-                reset_hitbox_value(attack, 1, HG_PROJECTILE_HSPEED);
-                reset_hitbox_value(attack, 1, HG_LIFETIME);
 
                 if (window_timer == window_end) sound_play(sfx_charge);
                 break;
@@ -845,6 +891,29 @@ switch (attack)
                 else if (!free) set_state(PS_LAND);
                 break;
         }
+        else switch (window)
+        {
+            case 1:
+                set_window_value(attack, 4, AG_WINDOW_LENGTH, 20);
+                set_window_value(attack, 4, AG_WINDOW_TYPE, 0);
+                set_hitbox_value(attack, 1, HG_HITBOX_COLOR, hb_color[3]);
+                break;
+            case 3: //release
+                if (window_timer == 1 && free)
+                {
+                    hsp = (x < view_get_xview()-48 && spr_dir || x > view_get_wview()+48 && -spr_dir) ? 0 : -4*spr_dir;
+                    vsp = -2;
+                }
+                if (window_timer == window_end) bar_hitbox = create_hitbox(attack, 1, x+32*spr_dir, y-32);
+                break;
+            case 4: //hold pose
+                if (window_timer == window_end)
+                {
+                    burnbuff_active = false;
+                    set_window(7); //continiue animation
+                }
+                break;
+        }
         break;
     case AT_EXTRA_3:                        //  searing descent
         can_fast_fall = false;
@@ -875,15 +944,16 @@ switch (attack)
                 if (bar_grabbed_id != noone)
                 {
                     bar_grabbed_id.hsp = hsp/4;
-                    bar_grabbed_id.vsp = vsp;
+                    bar_grabbed_id.vsp = vsp*1.1;
                 }
                 break;
             case 4: //cancel frame
-                bar_grabbed_id = noone;
                 attack_end();
 
-                if (special_down && mp_current >= skill[10].mp_cost2)
+                if (special_down && mp_current >= skill[10].mp_cost2 && !was_parried)
                 {
+                    if (bar_grabbed_id != noone) bar_grabbed_id.vsp = -5;
+                    bar_grabbed_id = noone;
                     set_window(0);
                     vsp = -9;
                     hsp = 0;
@@ -892,6 +962,7 @@ switch (attack)
                 {
                     set_state(PS_PRATFALL);
                     if (burnbuff_active) burnbuff_active = false;
+                    bar_grabbed_id = noone;
                 }
                 break;
             case 7: //meteor

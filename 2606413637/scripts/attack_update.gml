@@ -43,6 +43,9 @@ switch(attack){
 		break;
 	case AT_TAUNT:
 		if window == 1 && window_timer == 1{
+			if get_player_color(player) == 17{
+				sound_play(sfx_drip);
+			}
 			if funny_broken_mode || has_rune("O"){
 				// sound_stop(voice_playing_sound);
 				voice_playing_sound = sound_play(sound_get("hey_its_me_goku"), false, noone, 1.2);
@@ -52,6 +55,7 @@ switch(attack){
 			}
 		}
 }
+
 
 
 
@@ -772,9 +776,7 @@ switch attack{
 					voice_play(VB_ATK_HUGE);
 					chooseSsj();
 					switch(get_player_color(player)){
-						case 5:
-						case 17:
-						case 27:
+						case 16:
 							ssj = SSJ_ROSE;
 							break;
 					}
@@ -1071,11 +1073,18 @@ if attack_down{
 		ssj = SSJ_BLUE;
 	}
 }
+if strong_down{
+	ssj = SSJ_BLUE;
+}
 if jump_down{
 	ssj = SSJ_GOD;
 	if shield_down{
 		ssj = SSJ_BLUE;
 	}
+}
+
+if get_player_hud_color(player) == c_gray{
+	ssj = random_func(0, SSJ_ROSE - 1, true) + 1;
 }
 
 

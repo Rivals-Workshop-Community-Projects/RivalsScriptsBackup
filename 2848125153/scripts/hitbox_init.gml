@@ -24,12 +24,20 @@ dicearmor = 1;
 dicearmor2 = 0;
 dicetimer = 0;
 
+crit = false;
+critboost_dmg = 1;
+critboost_kb_scale = 1;
+
 if(attack == AT_NSPECIAL){
     if(hbox_num == 1){
         MattCanGrab = true;
         MorshuCanGrab = true;
         CalCanSnack = 2;
         AriaCantAbsorb = true;
+        Pocketable = true;Pocket_hsp = 7;Pocket_vsp = -7;Pocketed = false;
+	    Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 0;
+        
+        dice_has_hit = false;
         
         playerurl = player_id.url;
             orig_player = player;
@@ -51,12 +59,18 @@ if(attack == AT_NSPECIAL){
     			}
             }
             
-        num = random_func(0, 6, true);
+        dicenum = random_func(0, 6, true);
+        if(player_id.runeL){
+        	var extra_rng = random_func(1, 6, true);
+        	if(extra_rng > dicenum){
+        		dicenum = extra_rng;
+        	}
+        }
         if(player_id.phone_cheats[player_id.CHEAT_Dice] > 0){
-            num = player_id.phone_cheats[player_id.CHEAT_Dice]-1;
+            dicenum = player_id.phone_cheats[player_id.CHEAT_Dice]-1;
             player_id.diceluck = 0;
         }else{
-            if(player_id.previousdice == num){
+            if(player_id.previousdice == dicenum){
                 player_id.diceluck += 1;
             }else{
                 player_id.diceluck = 0;
@@ -79,38 +93,38 @@ if(attack == AT_NSPECIAL){
 		    	hurtboxID.sprite_index = sprite_get("uspecial_hurt");
             }
         }
-        image_index = num;
-        originalnum = num;
-        if(num == 0){
+        image_index = dicenum;
+        originalnum = dicenum;
+        if(dicenum == 0){
             kb_value = 0;kb_scale = 0;
             hitstun_factor = -1;damage = 1;kb_angle = 361;
             sound_effect = asset_get("sfx_blow_weak1");
             create_hitbox(AT_NSPECIAL, 3, player_id.x, player_id.y-35);create_hitbox(AT_NSPECIAL, 4, player_id.x, player_id.y-35);
-        }else if(num == 1){
+        }else if(dicenum == 1){
             kb_value = 3;kb_scale = 0.2;
             hitstun_factor = 0.5;damage = 3;kb_angle = 361;
             sound_effect = asset_get("sfx_blow_weak1");
-        }else if(num == 2){
+        }else if(dicenum == 2){
             kb_value = 5;kb_scale = 0.4;
             hitstun_factor = 0.9;damage = 6;kb_angle = 361;
             sound_effect = asset_get("sfx_blow_medium1");
-        }else if(num == 3){
+        }else if(dicenum == 3){
             kb_value = 10;kb_scale = 0.6;
             hitstun_factor = 1;damage = 7;kb_angle = 90;
             extra_hitpause = 5;hit_effect = 304;
-        }else if(num == 4){
+        }else if(dicenum == 4){
             kb_value = 8;kb_scale = 0.9;
             hitstun_factor = 1;damage = 10;kb_angle = 361;
             sound_effect = asset_get("sfx_blow_heavy2");hit_effect = 304;
-        }else if(num == 5){
+        }else if(dicenum == 5){
             kb_value = 10;kb_scale = 0.9;
             hitstun_factor = 1;damage = 15;kb_angle = 270;
             hitpause = 15;hitpause_growth = 2;extra_hitpause = 5;
             sound_effect = player_id.sfx_rest;hit_effect = 304;
         }
-        if(num >= 3){
-            dicearmororig = round(num*1.5);
-        }else if(num >= 1){
+        if(dicenum >= 3){
+            dicearmororig = round(dicenum*1.5);
+        }else if(dicenum >= 1){
             dicearmororig = 2;
         }dicearmor = dicearmororig;
         
@@ -123,21 +137,27 @@ if(attack == AT_NSPECIAL){
             player_id.diceluck = 0;
         }
         
-        player_id.previousdice = num;
+        if(player_id.runeI){
+        	damage *= 1.5;kb_scale *= 1.2;dicearmor = 99999;dicearmor2 = 99999;
+        }
+        
+        player_id.previousdice = dicenum;
     }else if(hbox_num == 2){ //hit collision
         playerurl = player_id.url;
         thedice = noone;
-            with(asset_get("pHitBox")){
-    			if(place_meeting(x,y,other)){
-    		    	if((attack == AT_NSPECIAL && hbox_num == 1 || attack == AT_FSPECIAL && hbox_num <= 2) && player == other.player && hitbox_timer <= 2 && other != self){
-    		        	other.thedice = self;
-    		    	}
-    			}
-    		}
-    		UnReflectable = true;AriaCantAbsorb = true;
-        }else if(hbox_num == 3){
-            can_hit_self = true;
-        }
+        with(asset_get("pHitBox")){
+			if(place_meeting(x,y,other)){
+		    	if((attack == AT_NSPECIAL && hbox_num == 1 || attack == AT_FSPECIAL && hbox_num <= 2) && hitbox_timer <= 2 && player_id == other.player_id && other != self){
+		        	other.thedice = self;thedice = other;
+		    	}
+			}
+		}
+		UnReflectable = true;AriaCantAbsorb = true;
+		Pocketable = false;
+	}else if(hbox_num == 3){
+    	can_hit_self = true;
+    	Pocketable = false;
+	}
 }
 
 if(attack == AT_FSPECIAL){
@@ -147,6 +167,10 @@ if(attack == AT_FSPECIAL){
         CalCanSnack = 2;
         AriaCantAbsorb = true;
         Bounceable = true;
+        Pocketable = true;Pocket_hsp = 7;Pocket_vsp = -7;Pocketed = false;
+	    Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 1;
+        
+        dice_has_hit = false;
         
         playerurl = player_id.url;
             orig_player = player;
@@ -176,41 +200,46 @@ if(attack == AT_FSPECIAL){
     			}
             }
 			
-		num = random_func(0, 8, true);
+		token_num = random_func(0, 8, true);
         if(player_id.phone_cheats[player_id.CHEAT_Fspec] > 0){
-            num = player_id.phone_cheats[player_id.CHEAT_Fspec]-1;
+            token_num = player_id.phone_cheats[player_id.CHEAT_Fspec]-1;
         }
-        image_index = num;
-        originalnum = num;
+        image_index = token_num;
+        originalnum = token_num;
         
-        if(num == 0){ //top hat
+        if(token_num == 0){ //top hat
         	hsp = 2*spr_dir;vsp = -7;
-        }else if(num == 1){ //dog
+        }else if(token_num == 1){ //dog
         	hsp = 4*spr_dir;vsp = -4;
-        }else if(num == 2){ //cat
+        }else if(token_num == 2){ //cat
         	hsp = 3*spr_dir;vsp = -6;
-        }else if(num == 3){ //car
+        }else if(token_num == 3){ //car
 			hsp = 1*spr_dir;vsp = -4;
 			damage = 7+(statboost*10);dicearmor += 2;dicearmor2 += 2;
-        }else if(num == 4){ //plane
+        }else if(token_num == 4){ //plane
         	hsp = 0*spr_dir;vsp = -2;grav = 0;
         	damage = 8+(statboost*10);dicearmor += 3;dicearmor2 += 3;
-        }else if(num == 5){ //duck
+        }else if(token_num == 5){ //duck
         	hsp = 3*spr_dir;vsp = -4;grav = 0;num2 = 1;
-        }else if(num == 6){ //iron
+        }else if(token_num == 6){ //iron
         	hsp = 3*spr_dir;vsp = -4;
-        }else if(num == 7){ //shoe
+        }else if(token_num == 7){ //shoe
         	damage = 2+(statboost*10);hsp = 1*spr_dir;vsp = -6;grav = 0.3;
         }
+        Pocket_hud_imageindex = token_num+1;
         originaldamage = damage;
 	}
 }
 
 if(attack == AT_USPECIAL){
+	Pocketable = false;
+	
 	if(hbox_num == 2){
 		MattCanGrab = true;
         MorshuCanGrab = true;
         CalCanSnack = 2;
+        Pocketable = true;Pocket_hsp = 7;Pocket_vsp = -7;Pocketed = false;
+	    Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 13;
         thedice = instance_create(x,y-40,"obj_article_platform");
         thedice.choochoo = self;
         
@@ -239,16 +268,25 @@ if(attack == AT_USPECIAL){
 if(attack == AT_DSPECIAL){
 	if(hbox_num == 1 || hbox_num == 2 || hbox_num == 3){
 		if(hbox_num == 1){
-			hp = 50;
+			hp = 75;
 			housemoney = 5000;
 		}else if(hbox_num == 2){
-			hp = 100;
+			hp = 150;
 			housemoney = 10000;
 			image_index = 1;
 		}else{
 			hp = 500;
 			housemoney = 30000;
 			image_index = 2;
+		}
+		if(hbox_num <= 2){
+			if(player_id.playercount > 2){
+				hp *= 2;
+			}
+		}//print(player_id.playercount);
+		income_boost = 1;
+		if(player_id.runeB){
+			income_boost = 2;
 		}
 		if("housemoney2" not in self){
 	        housemoney2 = housemoney;
@@ -294,6 +332,7 @@ if(attack == AT_DSPECIAL){
 	}else if(hbox_num >= 4){
 		can_hit_self = true;
 	}
+	Pocketable = false;
 }
 
 if(attack == AT_JAB){
@@ -303,7 +342,7 @@ if(attack == AT_JAB){
 			hit_priority = 0;
 		}
 	}else if(hbox_num == 11){
-	    UnReflectable = true;depth = -2;
+	    UnReflectable = true;//depth = -2;
 	    collision_sprite = sprite_get("moneypile");
 	}CalCanSnack = 1;
 	
@@ -312,6 +351,7 @@ if(attack == AT_JAB){
 	        value = 600;
 	    }
 	}
+	Pocketable = false;
 }
 
 if(attack == AT_DATTACK){
@@ -319,6 +359,8 @@ if(attack == AT_DATTACK){
 		MattCanGrab = true;
         MorshuCanGrab = true;
         CalCanSnack = 2;
+        Pocketable = true;Pocket_hsp = 7;Pocket_vsp = -7;
+	    Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 12;
         thedice = instance_create(x,y-10,"obj_article_platform");
         thedice.choochoo = self;
         thedice.mask_index = sprite_get("choochoo_collision");
@@ -338,7 +380,10 @@ if(attack == AT_DATTACK){
             hitplayertimer = 0;
             dicearmor = 2;
 			dicearmor2 = 2;
+	}else{
+		Pocketable = false;
 	}
+	Pocketed = false;
 	if(hbox_num >= 5){
 		UnReflectable = true;
 	}
@@ -360,6 +405,10 @@ if(attack == AT_BAIR){
         MorshuCanGrab = true;
         CalCanSnack = 2;
 		angle = darctan2(-vsp * spr_dir, hsp * spr_dir);proj_angle = angle;
+		Pocketable = true;Pocket_hsp = 7;Pocket_vsp = -7;Pocketed = false;
+	    Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = hbox_num+6;
+	}else{
+		Pocketable = false;
 	}
 }
 
@@ -367,6 +416,33 @@ if(attack == AT_DSTRONG){
 	if(hbox_num == 6){
 		UnReflectable = true;
 	}
+	Pocketable = false;
+}
+
+if(player_id.runeH){
+	var rng = random_func(0, 100, true);//print(rng);
+	if(player_id.runeL){
+    	var extra_rng = random_func(1, 100, true);//print(extra_rng);
+    	if(extra_rng < rng){
+    		rng = extra_rng;
+    	}
+    	extra_rng = random_func(2, 100, true);//print(extra_rng);
+    	if(extra_rng < rng){
+    		rng = extra_rng;
+    	}
+    }
+	if(rng < 8){
+		crit = true;
+	    damage *= 2;kb_scale *= 1.3;
+	    critboost_dmg = 2;critboost_kb_scale = 1.3;
+	}else{
+		crit = false;
+	}
+}
+
+if(player_id.runeJ){
+	kb_angle = random_func(0, 360, true);
+	hit_flipper = random_func(1, 11, true);
 }
 
 draw_xscale = spr_dir;

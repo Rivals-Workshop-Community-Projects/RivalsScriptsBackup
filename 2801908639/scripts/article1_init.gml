@@ -6,7 +6,7 @@ uses_shader = false;
 should_collide = false;
 
 sprite_index = sprite_get("ball");
-mask_index = sprite_get("ballMask");
+mask_index = sprite_get("ball_mask");
 image_index = 0;
 image_alpha = 0;
 image_speed = 0;
@@ -74,4 +74,8 @@ old_hsp = 0;
 nvsp = 0;//new vsp to apply for the bunt state
 nhsp = 0;//new hsp to apply for the bunt state
 
-
+pspr_dir = 0; //Krankees
+angle3 = 0; //Krankees
+ballhitbox = noone; //Krankees
+movement_lock = 0; //Krankees
+off_grid = 0; //Krankees

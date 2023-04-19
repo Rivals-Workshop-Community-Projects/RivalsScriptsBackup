@@ -1,5 +1,9 @@
 //Draw HUD
 
+//draw_debug_text(30, 320, string(move_cooldown[AT_FSPECIAL]));
+//draw_debug_text(30, 320, "Window Timer: " + string(window_timer));
+//draw_debug_text(30, 340, "Window:" + string(window));
+
 if ("dip_MP" not in self){exit;}
 
 if (dip_MP)
@@ -43,6 +47,11 @@ if (dip_developerMode)
 }
 
 draw_sprite(sprite_get("catooken_ind"), move_cooldown[AT_EXTRA_1] <= 0 ? 0 : 1, temp_x + 188, temp_y - 4);
+
+if (nspecial_ballOut != -1)
+{
+    draw_sprite(sprite_get("call_ind"), move_cooldown[AT_EXTRA_2] <= 0 ? 0 : 1, temp_x + 158, temp_y - 4);
+}
 
 //====> SPHERE OFF-SCREEN #######################################################
 

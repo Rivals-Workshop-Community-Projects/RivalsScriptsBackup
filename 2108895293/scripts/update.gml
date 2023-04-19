@@ -26,7 +26,7 @@ if (state==PS_WALL_JUMP && attack==AT_NSPECIAL){
 }
 
 if (state==PS_SPAWN && extra_col == 0){
-	if (taunt_down&&down_down){//mirage
+	if (special_down&&down_down){//mirage
 		extra_col = 1
 		white_flash_timer = 18;
 		sound_play(sound_get("ting"));
@@ -49,6 +49,20 @@ if (state==PS_SPAWN && extra_col == 0){
 	}
 	if (taunt_down&&left_down){//lightmagic
 		extra_col = 6
+		white_flash_timer = 18;
+		sound_play(sound_get("ting"));
+		sound_play(sound_get("antici_2"));
+		init_shader();
+	}
+	if (taunt_down&&down_down){//arachnid
+		extra_col = 9
+		white_flash_timer = 18;
+		sound_play(sound_get("ting"));
+		sound_play(sound_get("antici_2"));
+		init_shader();
+	}
+	if (taunt_down&&up_down){//prismatic
+		extra_col = 10
 		white_flash_timer = 18;
 		sound_play(sound_get("ting"));
 		sound_play(sound_get("antici_2"));

@@ -1,9 +1,9 @@
 //CSS SFX
-var charuuid = string(sprite_get("idle"));
-	if ("css_char" not in self || css_char != charuuid) {
-        css_char = charuuid;
-        sound_play(sound_get("fairspike"));
-    }
+//var charuuid = string(sprite_get("idle"));
+//	if ("css_char" not in self || css_char != charuuid) {
+//        css_char = charuuid;
+//        sound_play(sound_get("fairspike"));
+//    }
 
 // Lukaru's css_draw
 
@@ -61,7 +61,7 @@ alt_name[19] = "Edutainment Fish";
 alt_name[20] = "Lightning Wolf";
 alt_name[21] = "Justice";
 alt_name[22] = "Card Shark";
-alt_name[23] = "VoidFish";
+alt_name[23] = "Honey Thief";
 alt_name[24] = "Raging Demon";
 alt_name[25] = "Azure Space Bug Hero";
 alt_name[26] = "Amazonian";

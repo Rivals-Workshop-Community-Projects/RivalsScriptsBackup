@@ -60,7 +60,7 @@ if window == 1 && window_timer == 1 {
     	
     	if has_hit {
     		djumps = 0
-              old_vsp = -5
+              old_vsp = -9
               old_hsp = 4*spr_dir
               set_attack(AT_DSPECIAL)
               window = 3
@@ -738,7 +738,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
          	set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -22);
          	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 90);
             set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 60);
-             sound_play(asset_get("sfx_bird_downspecial"))
+             sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.5)
          }   
          
          if has_hit_player {

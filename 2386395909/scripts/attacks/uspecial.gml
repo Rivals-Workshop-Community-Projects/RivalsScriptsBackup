@@ -8,11 +8,11 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 11); //14 > 11 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 2);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 9);
@@ -137,6 +137,7 @@ set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_GROUP,-1);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_USPECIAL, 6, 81, "Ball Hitbox");
 set_hitbox_value(AT_USPECIAL, 6, HG_WINDOW, 9);
 set_hitbox_value(AT_USPECIAL, 6, HG_LIFETIME, 99999999);
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_X, 32);
@@ -158,7 +159,9 @@ set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("spritehit"));
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_USPECIAL, 6, HG_EXTENDED_PARRY_STUN, 1);
 
 
 

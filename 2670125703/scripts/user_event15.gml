@@ -241,6 +241,22 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.02", "14 March, 2023");
+initHeader("GENERAL:");
+initSection("Fixed an issue where DAIR would ignore being parried.");
+initSection("Fixed an issue where USPECIAL could easily escape from being parried.");
+initHeader("MISC:");
+initSection("Added support for Hikaru Title
+Added support for Dedede Stage
+Added support for Boxing Ring Stage
+Added support for Soulbound Conflict Stage
+Added support for Kirby Copy Ability
+Added support for Kirby Fighter Buddy	
+Added support for Solid Snake support
+Added support for Henry Stickmin
+Added support for Future Ducky
+Updated the Dialogue Buddy");
+
 initPatch("1.01", "26 December, 2021");
 initHeader("GENERAL:");
 initSection("He only respects Roger.");

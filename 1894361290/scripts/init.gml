@@ -1,13 +1,38 @@
 timer = 0;
 
+hitbox_view = false
+
+spam_ad = sprite_get("spam_ad")
+
 kirbyability = 16;
 
 honk_sfx = sound_get("honk_01");
+
+//for the following dates, goose's copyright sounds/vfx will be disabled. Used when goose has a chance to appear on stream for whatever reason.
+mute_dates = [
+    [20, 1, 2023], //Genesis 9 dates
+    [21, 1, 2023],
+    [22, 1, 2023],
+    [19, 2, 2023] //vortex gallery
+]
+
+mute_mode = get_synced_var(player);
+
+for (var i = 0; i < array_length(mute_dates); i++) {
+	if mute_dates[i][0] == current_day
+	&& mute_dates[i][1] == current_month
+	&& mute_dates[i][2] == current_year {
+		mute_mode = true
+	}
+}
 
 vfx_feather_side_small = hit_fx_create(sprite_get("vfx_feather_side_small"), 10);
 vfx_feather_up_small = hit_fx_create(sprite_get("vfx_feather_up_small"), 10);
 vfx_feather_side_large = hit_fx_create(sprite_get("vfx_feather_side_large"), 21);
 vfx_feather_up_large = hit_fx_create(sprite_get("vfx_feather_up_large"), 21);
+vfx_water_large = hit_fx_create(sprite_get("vfx_water_large"), 28);
+
+set_hit_particle_sprite(1, sprite_get("particle_feather"));
 
 has_picked_up = false; //whether the wt has been picked up in a frame
 blue_colour = undefined; //colour slot values for blue wt
@@ -49,6 +74,8 @@ trummelcodec_id = noone;
 
 nair_boost = true;
 
+small_djump = true;
+
 char_height = 48;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
@@ -78,7 +105,7 @@ max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.35;
-prat_fall_accel = 0.85; //multiplier of air_accel while in pratfall
+prat_fall_accel = 0.75; //multiplier of air_accel while in pratfall
 air_friction = 0.04;
 max_djumps = 3;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
@@ -170,7 +197,7 @@ spr_dspecial_2 = sprite_get("dspecial_2");
 spr_dspecial_2_vfx = sprite_get("dspecial_2_vfx");
 
 //munophone
-user_event(14);
+//user_event(14);
 
 //pit codec
 user_event(7)

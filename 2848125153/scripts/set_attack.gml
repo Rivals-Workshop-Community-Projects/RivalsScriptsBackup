@@ -3,6 +3,35 @@ DairBounce = 0;
 
 takearideontherailroad = false;
 
+reset_hitbox_value(AT_UTILT, 1, HG_DAMAGE);
+
+if(runeH){
+	if (get_num_hitboxes(attack) && !move_cooldown[attack]){
+	    for(var i = 0; i < get_num_hitboxes(attack); i++){
+	        var num = i + 1;
+	        reset_hitbox_value(attack, num, HG_DAMAGE);
+	        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);
+	    }
+	}
+	
+	var rng = random_func(0, 100, true);//print(rng);
+	if(runeL){
+    	var extra_rng = random_func(1, 100, true);//print(extra_rng);
+    	if(extra_rng < rng){
+    		rng = extra_rng;
+    	}
+    	extra_rng = random_func(2, 100, true);//print(extra_rng);
+    	if(extra_rng < rng){
+    		rng = extra_rng;
+    	}
+    }
+	if(rng < 8){
+		crit = true;
+	}else{
+		crit = false;
+	}
+}
+
 if (attack == AT_NSPECIAL && move_cooldown[AT_NSPECIAL] <= 0){
     //if(!muted){
     	rand = random_func(0, 9, true);
@@ -200,7 +229,7 @@ if (attack == AT_USTRONG){
 if (attack == AT_DATTACK){
     if (move_cooldown[AT_DATTACK] <= 0){
     //if(!muted){
-    	if(alt == 18){
+    	if(alt == 19){
     		rand = random_func(0, 3, true);
     		if(rand == 1){
     			sound_stop(voice);voice = sound_play(sound_get("wario go"));
@@ -312,9 +341,33 @@ if (attack == AT_TAUNT){
 		sound_stop(voice);voice = sound_play(sound_get("i see you"));
 	}else if((right_down || left_down) && current_money >= 10000){
 		attack = AT_FSPECIAL;window = 4;set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 6);move_cooldown[AT_FSPECIAL] = 0;
-		sound_stop(voice);voice = sound_play(sound_get("one million"));
+		if(attack_down && current_money >= 40000){
+			sound_stop(voice);voice = sound_play(sound_get("four million"));tauntmoney = 1;
+		}else{
+			sound_stop(voice);voice = sound_play(sound_get("one million"));tauntmoney = 0;
+		}
 	}else{
 		reset_attack_value(AT_TAUNT, AG_NUM_WINDOWS);
+	}
+}
+
+if(crit){
+	if (get_num_hitboxes(attack) && !move_cooldown[attack]){
+	    for(var i = 0; i < get_num_hitboxes(attack); i++){
+	        var num = i + 1;
+	        set_hitbox_value(attack, num, HG_DAMAGE, get_hitbox_value(attack, num, HG_DAMAGE) * 2);
+	        set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING) * 1.3);
+	    }
+	}
+}
+
+if(runeJ){
+	if (get_num_hitboxes(attack) && !move_cooldown[attack]){
+	    for(var i = 0; i < get_num_hitboxes(attack); i++){
+	        var num = i + 1;
+	        set_hitbox_value(attack, num, HG_ANGLE, random_func(0, 360, true));
+	        set_hitbox_value(attack, num, HG_ANGLE_FLIPPER, random_func(1, 11, true));
+	    }
 	}
 }
 

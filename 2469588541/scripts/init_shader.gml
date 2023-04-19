@@ -1,4 +1,5 @@
-switch (get_player_color(player))
+var playerAlt = "currAlt" in self ? currAlt : get_player_color(player);
+switch (playerAlt)
 {
     //paint
     case 8:
@@ -25,7 +26,7 @@ if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
 
 #define AltColourAlpha(_index, _alpha)
 {
-	var alt = get_player_color(player);
+	var alt = "currAlt" in self ? currAlt : get_player_color(player);
 	var temp_r = get_color_profile_slot_r(alt, _index);
 	var temp_g = get_color_profile_slot_g(alt, _index);
 	var temp_b = get_color_profile_slot_b(alt, _index);

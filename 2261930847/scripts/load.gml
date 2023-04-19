@@ -1,4 +1,4 @@
-sprite_change_offset("intro", 54, 510);
+sprite_change_offset("intro", 54, 512);
 sprite_change_offset("idle", 41, 61);
 sprite_change_offset("hurtbox", 36, 58);
 sprite_change_offset("hurt", 68, 89);
@@ -24,7 +24,7 @@ sprite_change_offset("pratfall", 42, 92);
 sprite_change_offset("land", 36, 62);
 sprite_change_offset("landinglag", 32, 62);
 
-sprite_change_offset("parry", 36, 62);
+sprite_change_offset("parry", 38, 64);
 sprite_change_offset("reverse_parry", 36, 62);
 sprite_change_offset("roll_forward", 32, 62);
 sprite_change_offset("roll_backward", 32, 62);
@@ -65,7 +65,7 @@ sprite_change_offset("dspecial", 64, 68);
 sprite_change_offset("dspecial_no_mud", 64, 68)
 sprite_change_offset("dspecial_air", 74, 78)
 
-sprite_change_offset("taunt", 40, 88);
+sprite_change_offset("taunt", 40, 90);
 sprite_change_offset("down_taunt", 55, 86);
 sprite_change_offset("reverse_down_taunt", 55, 86);
 sprite_change_offset("up_taunt", 58, 574);
@@ -93,7 +93,6 @@ sprite_change_offset("miiverse_post", 60, 30);
 sprite_change_offset("trial_grounds", 31, 0);
 sprite_change_offset("firequagsupport", 39, 74);
 sprite_change_offset("flower_zone", 18, 41);
-sprite_change_offset("phone_open", 36, 64);
 sprite_change_offset("costume_quagsire", 84, 114);
 
 sprite_change_offset("kirby", 42, 90);

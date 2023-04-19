@@ -216,10 +216,11 @@ switch (attack){
 			}
 		    can_fast_fall = false;
 		    can_move = false;
-		    if (state_timer == 6 && free) {
-		    	if (b_reversed)
-		    		hsp += 5 * spr_dir
-		    }
+		    //Shartboost
+		    // if (state_timer == 6 && free) {
+		    // 	if (b_reversed)
+		    // 		hsp += 5 * spr_dir
+		    // }
 		    
 			if (window == 1) {
 				nspecial_loops = 0;
@@ -755,7 +756,8 @@ switch (attack){
 				if (shield_pressed || up_pressed) {
 		            window = 10;
 		            window_timer = 0;
-		            vsp = 0;
+		            vsp /= 2;
+		            vsp = -abs(min(vsp, 2));
 		            clear_button_buffer(PC_SHIELD_PRESSED)
 		            attack_end();
 					destroy_hitboxes();

@@ -28,11 +28,9 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7); // endlag
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
-
 
 set_num_hitboxes(AT_USPECIAL, 1);
 
@@ -45,7 +43,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 20);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6.45);
 set_hitbox_value(AT_USPECIAL, 1, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 set_hitbox_value(AT_USPECIAL, 1, HG_FORCE_FLINCH, 1);

@@ -1,11 +1,4 @@
-if (get_player_color(player) == 11)
-{
-    draw_sprite_ext(sprite_get("charselect_rin"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-}
-else if (get_player_color(player) == 10 or get_player_color(player) == 12)
-{
-    draw_sprite_ext(sprite_get("charselect_white"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
-}
+
 //Fancy CSS template by Muno
 //Put in css_draw.gml
  
@@ -42,7 +35,33 @@ alt_name[17] = "Yumeko";
  
 draw_set_halign(fa_left);
  
- 
+//Butonn
+if ((get_instance_x(cursor_id) >= x + 136 && get_instance_x(cursor_id) <= x + 136 + 30) && (get_instance_y(cursor_id) >= y + 36 && get_instance_y(cursor_id) <= y + 36 + 26)) {
+	suppress_cursor = true;
+	if (mode_draw mod 2 = 0)
+	draw_sprite_ext(sprite_get("css_stopwatch"), 1, x + 136, y + 36, 1, 1, 0, c_white, 1);
+	else
+	draw_sprite_ext(sprite_get("css_stopwatch"), 3, x + 136, y + 36, 1, 1, 0, c_white, 1);
+} else {
+    if (mode_draw mod 2 = 0)
+	draw_sprite_ext(sprite_get("css_stopwatch"), 0, x + 136, y + 36, 1, 1, 0, c_white, 1);
+	else
+	draw_sprite_ext(sprite_get("css_stopwatch"), 2, x + 136, y + 36, 1, 1, 0, c_white, 1);
+}
+if ((get_instance_x(cursor_id) >= x + 170 && get_instance_x(cursor_id) <= x + 170 + 30) && (get_instance_y(cursor_id) >= y + 36 && get_instance_y(cursor_id) <= y + 36 + 26)) {
+    suppress_cursor = true;
+    if (bair_mode_draw mod 2 = 0)
+    draw_sprite_ext(sprite_get("css_knife"), 1, x + 170, y + 36, 1, 1, 0, c_white, 1);
+    else
+    draw_sprite_ext(sprite_get("css_knife"), 3, x + 170, y + 36, 1, 1, 0, c_white, 1);
+} else {
+    if (bair_mode_draw mod 2 = 0)
+    draw_sprite_ext(sprite_get("css_knife"), 0, x + 170, y + 36, 1, 1, 0, c_white, 1);
+    else
+    draw_sprite_ext(sprite_get("css_knife"), 2, x + 170, y + 36, 1, 1, 0, c_white, 1);
+}
+
+
  
  
 //Alt

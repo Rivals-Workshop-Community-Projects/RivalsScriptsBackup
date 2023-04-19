@@ -38,10 +38,9 @@ window_num++;
 
 // Window #3 / Frame(s) # 3-5 / Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 24);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //window_num++;
 
@@ -92,12 +91,13 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(attack, hitbox_num, HG_TECHABLE, 1);
 set_hitbox_value(attack, hitbox_num, HG_FORCE_FLINCH, 1);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 
 hitbox_num++;
 /*

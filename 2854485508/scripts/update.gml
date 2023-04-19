@@ -3,7 +3,6 @@ if (get_player_color(player) == 16 || get_player_color(player) == 17) {
 	alt_glow_timer ++;
 	init_shader();
 }
-
 //Floating
 if (down_pressed){
 	float_cancel_buffer = float_cancel_buffer_max;
@@ -91,6 +90,21 @@ if(state == PS_IDLE || state == PS_CROUCH || state == PS_JUMPSQUAT || state == P
 }
 
 with (pHitBox) {
+	//USpecial
+	if (player_id == other.id) {
+		if (other.uspecial_hit && attack != AT_USPECIAL_2) {
+		    other.uspecial_hit = false;
+			if ((attack == AT_NAIR)
+			|| (attack == AT_FAIR && hbox_num == 2)
+			|| (attack == AT_BAIR)
+			|| (attack == AT_UAIR)
+			|| (attack == AT_DAIR)) {
+				kb_value *= other.uspecial_aerial_decay;
+				hitstun_factor *= other.uspecial_aerial_decay;
+			}
+		}
+	}
+	
     //Follower
     if ("follower_owner" in self && player_id == other.id && type == 1) {
         if (instance_exists(follower_owner)) {	
@@ -163,6 +177,12 @@ with (oPlayer) {
 	    		create_hitbox(AT_EXTRA_1, 1, round(other.x), round(other.y));
 	    	}
 	    }
+	    
+		if (state == PS_RESPAWN || state == PS_DEAD) {
+	    	mamizou_trans = false;
+	    	mamizou_trans_damage = 0;
+	    	draw_y = mamizou_draw_y;
+		}
 	}
 	
 	if (("mamizou_mark_id" in self) && mamizou_mark_id == other.id) {
@@ -204,9 +224,11 @@ switch (name) {
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
-newdust.dust_fx = dfx; //set the fx id
-if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
-newdust.dust_color = dust_color; //set the dust color
-if dir != 0 newdust.spr_dir = dir; //set the spr_dir
-newdust.draw_angle = dfa;
+if (instance_exists(newdust)) {
+	newdust.dust_fx = dfx; //set the fx id
+	if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+	newdust.dust_color = dust_color; //set the dust color
+	if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+	newdust.draw_angle = dfa;
+}
 return newdust;

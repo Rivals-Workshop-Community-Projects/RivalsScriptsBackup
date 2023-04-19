@@ -1,3 +1,6 @@
+// Added to prevent Ctrl + 8 Complaints
+if("ball_cooldown" not in self){exit;}
+
 //draw hud
 if (ball_cooldown < 1) && (ball_exists == false)
 {

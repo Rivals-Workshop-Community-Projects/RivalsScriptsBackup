@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 13, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 27 );
 
 // Shiny
 set_color_profile_slot( 1, 0, 42, 150, 222 ); //Jelly
@@ -216,65 +216,85 @@ set_color_profile_slot( 18, 5, 255, 166, 0 ); //Body shading
 set_color_profile_slot( 18, 6, 120, 120, 120 ); //Cell shading
 set_color_profile_slot( 18, 7, 89, 89, 89 ); //Cell2 shading
 
+// Phosphorus
+set_color_profile_slot( 19, 0, 32, 51, 82 ); //Jelly
+set_color_profile_slot( 19, 1, 232, 237, 239 ); //Body
+set_color_profile_slot( 19, 2, 33, 35, 39 ); //Bebe outline
+set_color_profile_slot( 19, 3, 28, 146, 229 ); //Cell
+set_color_profile_slot( 19, 4, 16, 81, 202 ); //Cell2
+set_color_profile_slot( 19, 5, 187, 197, 206 ); //Body shading
+set_color_profile_slot( 19, 6, 29, 124, 191 ); //Cell shading
+set_color_profile_slot( 19, 7, 25, 54, 110 ); //Cell2 shading
+
+// Egg
+set_color_profile_slot( 20, 0, 255, 255, 255 ); //Jelly
+set_color_profile_slot( 20, 1, 255, 163, 25 ); //Body
+set_color_profile_slot( 20, 2, 255, 163, 25 ); //Bebe outline
+set_color_profile_slot( 20, 3, 255, 163, 25 ); //Cell
+set_color_profile_slot( 20, 4, 255, 163, 25 ); //Cell2
+set_color_profile_slot( 20, 5, 255, 163, 25 ); //Body shading
+set_color_profile_slot( 20, 6, 255, 163, 25 ); //Cell shading
+set_color_profile_slot( 20, 7, 255, 163, 25 ); //Cell2 shading
+
 // BLW
-set_color_profile_slot( 19, 0, 242, 227, 67 ); //Jelly
-set_color_profile_slot( 19, 1, 130, 95, 18 ); //Body
-set_color_profile_slot( 19, 2, 38, 28, 5 ); //Bebe outline
-set_color_profile_slot( 19, 3, 77, 77, 77 ); //Cell
-set_color_profile_slot( 19, 4, 77, 77, 77 ); //Cell2
-set_color_profile_slot( 19, 5, 89, 45, 4 ); //Body shading
-set_color_profile_slot( 19, 6, 38, 38, 38 ); //Cell shading
-set_color_profile_slot( 19, 7, 38, 38, 38 ); //Cell2 shading
+set_color_profile_slot( 21, 0, 242, 227, 67 ); //Jelly
+set_color_profile_slot( 21, 1, 130, 95, 18 ); //Body
+set_color_profile_slot( 21, 2, 38, 28, 5 ); //Bebe outline
+set_color_profile_slot( 21, 3, 77, 77, 77 ); //Cell
+set_color_profile_slot( 21, 4, 77, 77, 77 ); //Cell2
+set_color_profile_slot( 21, 5, 89, 45, 4 ); //Body shading
+set_color_profile_slot( 21, 6, 38, 38, 38 ); //Cell shading
+set_color_profile_slot( 21, 7, 38, 38, 38 ); //Cell2 shading
 
 // Transcendence
-set_color_profile_slot( 20, 0, 255, 194, 231 ); //Jelly
-set_color_profile_slot( 20, 1, 255, 255, 255 ); //Body
-set_color_profile_slot( 20, 2, 43, 153, 149 ); //Bebe outline
-set_color_profile_slot( 20, 3, 46, 213, 242 ); //Cell
-set_color_profile_slot( 20, 4, 40, 193, 204 ); //Cell2
-set_color_profile_slot( 20, 5, 145, 204, 204 ); //Body shading
-set_color_profile_slot( 20, 6, 67, 144, 191 ); //Cell shading
-set_color_profile_slot( 20, 7, 38, 113, 153 ); //Cell2 shading
+set_color_profile_slot( 22, 0, 255, 194, 231 ); //Jelly
+set_color_profile_slot( 22, 1, 255, 255, 255 ); //Body
+set_color_profile_slot( 22, 2, 43, 153, 149 ); //Bebe outline
+set_color_profile_slot( 22, 3, 46, 213, 242 ); //Cell
+set_color_profile_slot( 22, 4, 40, 193, 204 ); //Cell2
+set_color_profile_slot( 22, 5, 145, 204, 204 ); //Body shading
+set_color_profile_slot( 22, 6, 67, 144, 191 ); //Cell shading
+set_color_profile_slot( 22, 7, 38, 113, 153 ); //Cell2 shading
 
 // Girl Power
-set_color_profile_slot( 21, 0, 242, 134, 61 ); //Jelly
-set_color_profile_slot( 21, 1, 255, 255, 255 ); //Body
-set_color_profile_slot( 21, 2, 115, 40, 96 ); //Bebe outline
-set_color_profile_slot( 21, 3, 242, 170, 223 ); //Cell
-set_color_profile_slot( 21, 4, 242, 170, 223 ); //Cell2
-set_color_profile_slot( 21, 5, 204, 142, 81 ); //Body shading
-set_color_profile_slot( 21, 6, 179, 107, 147 ); //Cell shading
-set_color_profile_slot( 21, 7, 179, 107, 147 ); //Cell2 shading
+set_color_profile_slot( 23, 0, 242, 134, 61 ); //Jelly
+set_color_profile_slot( 23, 1, 255, 255, 255 ); //Body
+set_color_profile_slot( 23, 2, 115, 40, 96 ); //Bebe outline
+set_color_profile_slot( 23, 3, 242, 170, 223 ); //Cell
+set_color_profile_slot( 23, 4, 242, 170, 223 ); //Cell2
+set_color_profile_slot( 23, 5, 204, 142, 81 ); //Body shading
+set_color_profile_slot( 23, 6, 179, 107, 147 ); //Cell shading
+set_color_profile_slot( 23, 7, 179, 107, 147 ); //Cell2 shading
 
 // Ace Trainer
-set_color_profile_slot( 22, 0, 115, 115, 115 ); //Jelly
-set_color_profile_slot( 22, 1, 230, 230, 230 ); //Body
-set_color_profile_slot( 22, 2, 49, 13, 64 ); //Bebe outline
-set_color_profile_slot( 22, 3, 230, 230, 230 ); //Cell
-set_color_profile_slot( 22, 4, 167, 34, 230 ); //Cell2
-set_color_profile_slot( 22, 5, 182, 162, 191 ); //Body shading
-set_color_profile_slot( 22, 6, 182, 162, 191 ); //Cell shading
-set_color_profile_slot( 22, 7, 94, 41, 166 ); //Cell2 shading
+set_color_profile_slot( 24, 0, 115, 115, 115 ); //Jelly
+set_color_profile_slot( 24, 1, 230, 230, 230 ); //Body
+set_color_profile_slot( 24, 2, 49, 13, 64 ); //Bebe outline
+set_color_profile_slot( 24, 3, 230, 230, 230 ); //Cell
+set_color_profile_slot( 24, 4, 167, 34, 230 ); //Cell2
+set_color_profile_slot( 24, 5, 182, 162, 191 ); //Body shading
+set_color_profile_slot( 24, 6, 182, 162, 191 ); //Cell shading
+set_color_profile_slot( 24, 7, 94, 41, 166 ); //Cell2 shading
 
 // Bicycle
-set_color_profile_slot( 23, 0, 217, 32, 125 ); //Jelly
-set_color_profile_slot( 23, 1, 175, 12, 230 ); //Body
-set_color_profile_slot( 23, 2, 69, 9, 89 ); //Bebe outline
-set_color_profile_slot( 23, 3, 37, 61, 184 ); //Cell
-set_color_profile_slot( 23, 4, 37, 61, 184 ); //Cell2
-set_color_profile_slot( 23, 5, 124, 19, 128 ); //Body shading
-set_color_profile_slot( 23, 6, 51, 34, 115 ); //Cell shading
-set_color_profile_slot( 23, 7, 51, 34, 115 ); //Cell2 shading
+set_color_profile_slot( 25, 0, 217, 32, 125 ); //Jelly
+set_color_profile_slot( 25, 1, 175, 12, 230 ); //Body
+set_color_profile_slot( 25, 2, 69, 9, 89 ); //Bebe outline
+set_color_profile_slot( 25, 3, 37, 61, 184 ); //Cell
+set_color_profile_slot( 25, 4, 37, 61, 184 ); //Cell2
+set_color_profile_slot( 25, 5, 124, 19, 128 ); //Body shading
+set_color_profile_slot( 25, 6, 51, 34, 115 ); //Cell shading
+set_color_profile_slot( 25, 7, 51, 34, 115 ); //Cell2 shading
 
 // Panoramic
-set_color_profile_slot( 24, 0, 255, 0, 144 ); //Jelly
-set_color_profile_slot( 24, 1, 255, 229, 0 ); //Body
-set_color_profile_slot( 24, 2, 77, 70, 15 ); //Bebe outline
-set_color_profile_slot( 24, 3, 0, 210, 217 ); //Cell
-set_color_profile_slot( 24, 4, 0, 210, 217 ); //Cell2
-set_color_profile_slot( 24, 5, 166, 124, 25 ); //Body shading
-set_color_profile_slot( 24, 6, 0, 140, 126 ); //Cell shading
-set_color_profile_slot( 24, 7, 0, 140, 128 ); //Cell2 shading
+set_color_profile_slot( 26, 0, 255, 0, 144 ); //Jelly
+set_color_profile_slot( 26, 1, 255, 229, 0 ); //Body
+set_color_profile_slot( 26, 2, 77, 70, 15 ); //Bebe outline
+set_color_profile_slot( 26, 3, 0, 210, 217 ); //Cell
+set_color_profile_slot( 26, 4, 0, 210, 217 ); //Cell2
+set_color_profile_slot( 26, 5, 166, 124, 25 ); //Body shading
+set_color_profile_slot( 26, 6, 0, 140, 126 ); //Cell shading
+set_color_profile_slot( 26, 7, 0, 140, 128 ); //Cell2 shading
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

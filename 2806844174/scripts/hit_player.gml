@@ -33,6 +33,12 @@ switch (hatk) {
 	case AT_FSPECIAL:
 		if hnum == 2 sound_play(sound_get("coreblade_hit_05"));
 		break;
+	case AT_NSPECIAL_2:
+		if hnum == 6 {
+			sound_play(sound_get("coreblade_hit_05"));
+			old_vsp = -8
+		}
+		break;
 	case AT_NAIR:
 		if hnum == 2 sound_play(sound_get("coreblade_hit_05"));
 		break;

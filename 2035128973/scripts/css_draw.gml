@@ -45,15 +45,26 @@ if (get_synced_var(player))
 	alt_name[8]  = "Green";
 	alt_name[9]  = "Pink";
 	alt_name[10]  = "Orange";
-	alt_name[11]  = "Hikaru";
-	alt_name[12]  = "Flake";
-	alt_name[13]  = "Melon";
-	alt_name[14]  = "CMY";
-	alt_name[15]  = "RGB";
-	alt_name[16]  = "Transcend";
-	alt_name[17]  = "Pan";
-	alt_name[18]  = "Enby";
-	alt_name[19]  = "Agender";
+	alt_name[11]  = "Spectrum";
+	alt_name[12]  = "BadassF42069";
+	alt_name[13]  = "Flake";
+	alt_name[14]  = "Hikaru";
+	alt_name[15]  = "Lorekeeper";
+	alt_name[16]  = "CMY";
+	alt_name[17]  = "RGB";
+	alt_name[18]  = "Snowblind";
+	alt_name[19]  = "Drunken";
+	alt_name[20]  = ".net";
+	alt_name[21]  = "Lemongrass";
+	alt_name[22]  = "Melon";
+	alt_name[23]  = "Transcend";
+	alt_name[24]  = "Pan";
+	alt_name[25]  = "Enby";
+	alt_name[26]  = "Agender";
+	alt_name[27]  = "Candy";
+	alt_name[28]  = "God of Death";
+	alt_name[29]  = "Coffee Cake";
+	alt_name[30]  = "Seeing Stars";
 }
 else
 {
@@ -87,7 +98,7 @@ else
 	alt_name[27]  = "Paint";
 	alt_name[28]  = "God of Death";
 	alt_name[29]  = "Mewmew";
-	alt_name[30]  = "Bnuuy";
+	alt_name[30]  = GetCustomAltName();
 }
 
 var num_alts = array_length_1d(alt_name);
@@ -143,4 +154,18 @@ init_shader();
 	draw_set_alpha(alpha);
 	draw_rectangle_color(x1, y1, x2, y2, color, color, color, color, false);
 	draw_set_alpha(1);
+}
+
+#define GetCustomAltName()
+{
+	user_event(3);
+	switch (string_upper(get_player_name(player)))
+	{
+		default: return "Bnuuy";
+		case "KARU":
+		case "LUKARU": return "Input Delay";
+		case "AURORA":
+		case "AURO<3": return "Aurora";
+		case "NIGHT": return "Surprising!";
+	}
 }

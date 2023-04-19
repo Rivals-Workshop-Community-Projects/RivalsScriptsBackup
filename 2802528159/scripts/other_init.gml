@@ -1,4 +1,3 @@
-grabbed = false;
-emmi_frozen = false;
-emmi_shocked = false;
-shock_shader = 0;
+emmi_fr = 0;
+emmi_st = 0;
+emmi_rune = 0;

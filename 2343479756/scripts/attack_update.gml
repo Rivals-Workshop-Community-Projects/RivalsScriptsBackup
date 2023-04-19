@@ -34,6 +34,22 @@ if (attack==AT_BAIR){
 		iasa_script();
 	}
 }
+if (attack==AT_UAIR){
+	/*if (!hitpause){
+		if (window == 1 && window_timer == 10){
+			create_hitbox( AT_UAIR, 1, x, y )
+			attack_end()
+		}
+		if (window == 2 && window_timer == 3){
+			create_hitbox( AT_UAIR, 1, x, y )
+			attack_end()
+		}
+		if (window == 2 && window_timer == 7){
+			create_hitbox( AT_UAIR, 1, x, y )
+			attack_end()
+		}
+	}*/
+}
 if (attack==AT_UTILT){
 	if (window==5){
 		iasa_script();
@@ -191,7 +207,7 @@ if (attack==AT_DSPECIAL||attack==AT_DSPECIAL_AIR){
 			var w_l = get_window_value(attack, 6, AG_WINDOW_LENGTH);
 			hsp = (ease_quadOut( -12, 0, window_timer, w_l ) * spr_dir) //+ dsp_target.hsp
 		}
-		if (window_timer>=15){
+		if (window_timer>=13){//15
 			iasa_script();
 		}
 		can_move = true;
@@ -213,6 +229,9 @@ if (attack==AT_USPECIAL){
 			CAR.player = player;
 			CAR.spr_dir = spr_dir*-1;
 		}
+	}
+	if (window < 4){
+		hsp = clamp( hsp, -2, 2 )
 	}
 }
 

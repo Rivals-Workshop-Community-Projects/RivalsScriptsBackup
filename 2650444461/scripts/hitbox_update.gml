@@ -4,7 +4,7 @@ if (attack == AT_NSPECIAL){
     if(hbox_num == 1){
         free = true;hsp *= 0.97;vsp *= 0.99;
         if(hitbox_timer == 40 || destroyed){
-            sound_play(sound_get("Bubble Pop"));spawn_hit_fx(x,y,player_id.fx_bubbles);
+            sound_play(bubble_pop_sfx);spawn_hit_fx(x,y,player_id.fx_bubbles);
         }
     }
 }
@@ -47,7 +47,7 @@ if (attack == AT_FAIR){
         sound_effect = asset_get("sfx_waterhit_medium");hit_effect = 304;image_xscale = 0.2;image_yscale = 0.2;
     }
     if(hitbox_timer == 40 || destroyed){
-        sound_play(sound_get("Bubble Pop"));spawn_hit_fx(x,y,player_id.fx_bubbles);
+        sound_play(bubble_pop_sfx);spawn_hit_fx(x,y,player_id.fx_bubbles);
     }
 }
 
@@ -72,6 +72,9 @@ if (attack == AT_DTILT){
 }
 
 if (attack == AT_TAUNT){
+	if(player != orig_player){
+		taunt_rain_Y = room_height;
+	}
     if(y >= taunt_rain_Y){
         destroyed = true;
         spawn_hit_fx(x,taunt_rain_Y,player_id.fx_watersplash_verysmall);

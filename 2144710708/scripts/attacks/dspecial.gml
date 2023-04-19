@@ -11,14 +11,14 @@ set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 // startup
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, sound_get("toolgun_fire1"));
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 11);
 
 // attack
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, sound_get("toolgun_fire1"));
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX_FRAME, 0);
 
 // endlag
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 12);
@@ -58,7 +58,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_FRICTION, 0.7);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("oldboot_collision"));
 //set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 
 
 

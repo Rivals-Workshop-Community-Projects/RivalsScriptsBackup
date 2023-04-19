@@ -1,4 +1,8 @@
 ///
+draw_xscale = spr_dir;
+
+
+
 if attack == AT_FSPECIAL_2 && hbox_num == 2  {
    hit_effect_x = 20 - random_func(1,41,true)
    hit_effect_y = 20 - random_func(2,41,true)
@@ -10,6 +14,8 @@ if attack == AT_FSPECIAL_2 && hbox_num == 2  {
    }
    hit_priority = 9
    }
+   
+
 }
 
 if attack == AT_FSPECIAL_2 && hbox_num == 1  {
@@ -19,6 +25,7 @@ if attack == AT_FSPECIAL_2 && hbox_num == 1  {
 	} else {
 		hsp = 0
 	}
+	
 	
 	if hitbox_timer = 3 {
 		spawn_hit_fx(x,y+40,306)
@@ -135,7 +142,14 @@ if attack == AT_FSPECIAL_2 && hbox_num == 1  {
 
 
 if attack == AT_USPECIAL {
-    
+	
+   with player_id {
+   	if "ai_target" in self {
+   		other.x = x - 30*spr_dir 
+   		other.y = y + 20
+   	}
+   }
+   
     if player_id.state_cat == SC_HITSTUN {
         destroyed = true
     }

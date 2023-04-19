@@ -20,24 +20,26 @@ if (remap_specials) {
 }
 */
 
-// Special Taunt
-if (attack == AT_TAUNT) && (down_down) {
-    attack = AT_TAUNT_2;
-    window = 1;
-    window_timer = 0;
-}
-
-// If playing as Emerl, play a sound if attacking during the leap
-if (codename_emerl_active) {
-    if (afterimage_countdown > 0) {
-        if ((attack == AT_NAIR)
-            || (attack == AT_UAIR)
-            || (attack == AT_FAIR)
-            || (attack == AT_BAIR)
-            || (attack == AT_DAIR)) {
-            sound_play(sound_get("emerl_dash_followup"));
-        }
-    }
+if (!tournament_legal_mode_active) {
+	// Special Taunt
+	if (attack == AT_TAUNT) && (down_down) {
+	    attack = AT_TAUNT_2;
+	    window = 1;
+	    window_timer = 0;
+	}
+	
+	// If playing as Emerl, play a sound if attacking during the leap
+	if (codename_emerl_active) {
+	    if (afterimage_countdown > 0) {
+	        if ((attack == AT_NAIR)
+	            || (attack == AT_UAIR)
+	            || (attack == AT_FAIR)
+	            || (attack == AT_BAIR)
+	            || (attack == AT_DAIR)) {
+	            sound_play(sound_get("emerl_dash_followup"));
+	        }
+	    }
+	}
 }
 
 // Fizzle out if a rush move is used without charges
@@ -66,6 +68,12 @@ if (attack == AT_USPECIAL) {
 	if (rocket_fuel <= 0) {
 		attack = AT_USPECIAL_2;
 	}
+	
+	if (djumping_prev) {
+		if (djumps < max_djumps) {
+			djumps++;
+		}
+	}
 }
 //}
 
@@ -77,7 +85,7 @@ if (((attack == AT_USPECIAL) && (move_cooldown[AT_USPECIAL] == 0))
     fuel_recovery_active = false;
 }
 
-// Can skip turning into a car if already a car (if (driving)), but don't incur that penalty
+// Can skip turning into a car if already a car, but don't incur that penalty
 if (attack == AT_DSPECIAL) {
     dspecial_grounded = false;
 	dspecial_dust_deployed = false;
@@ -86,7 +94,33 @@ if (attack == AT_DSPECIAL) {
     } else {
         window = 2;
     }
+    
+    /*
+	if (window >= 5) {
+    	if (down_down && attack_down) {
+    		attack_end();
+    		set_attack(AT_DTILT);
+    	}
+	}
+	*/
 }
+
+/*
+	if ((window == 5) && (window_timer == 1)) {
+		// Only allow dtilt and dstrong
+		move_cooldown[AT_USTRONG] = dspecial_duration;
+		move_cooldown[AT_FSTRONG] = dspecial_duration;
+		move_cooldown[AT_JAB] = dspecial_duration;
+		move_cooldown[AT_DATTACK] = dspecial_duration;
+		move_cooldown[AT_FTILT] = dspecial_duration;
+		move_cooldown[AT_UTILT] = dspecial_duration;
+		move_cooldown[AT_FAIR] = dspecial_duration;
+		move_cooldown[AT_UAIR] = dspecial_duration;
+		move_cooldown[AT_BAIR] = dspecial_duration;
+		move_cooldown[AT_DAIR] = dspecial_duration;
+		move_cooldown[AT_NAIR] = dspecial_duration;
+	}
+*/
 
 // Ability to do ustrong/fstrong in the air
 if (free
@@ -131,6 +165,27 @@ if (free
     }
 }
 */
+
+// Incur a small penalty for being in car form
+if (penalty_frames > 0) {
+	if ((attack == AT_JAB)
+		|| (attack == AT_DATTACK)
+		|| (attack == AT_FTILT)
+		|| (attack == AT_UTILT)
+		|| (attack == AT_FSTRONG)
+		|| (attack == AT_USTRONG)
+		|| (attack == AT_USTRONG_2)
+		|| (attack == AT_NSPECIAL)
+		|| (attack == AT_FSPECIAL)
+		|| (attack == AT_USPECIAL)
+		|| (attack == AT_USPECIAL_2)
+		|| (attack == AT_TAUNT)
+		|| (attack == AT_TAUNT_2))
+	{
+		window = penalty_window;
+		//window_timer = max_penalty_frames - penalty_frames;
+	}
+}
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

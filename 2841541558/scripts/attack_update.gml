@@ -42,6 +42,7 @@ switch(attack){
 		if window == 2 && window_timer == 9{
 			array_push(phone_dust_query, [x, y, "dash", spr_dir]);
 		}
+		if (has_hit && window == 3) can_jump = true;
 		break;
 	case AT_FSTRONG:
 		if window == 1 && window_timer == 3{
@@ -324,7 +325,7 @@ switch(attack){
 			var uspecial_move_speed = 4;
 			var uspecial_hitbox = AT_USPECIAL;
 			var uspecial_hbox_num = 5;
-			var uspecial_soft_armor = 4;
+			var uspecial_soft_armor = 10;
 			var uspecial_max_fall = 18;
 
     		can_fast_fall = false;
@@ -337,6 +338,17 @@ switch(attack){
 					spawn_base_dust(round(x), round(y), "doublejump")
 				}
 			}
+			if (window == 2 && !hitpause){
+				if (shield_pressed) {
+		            window = 7;
+		            window_timer = 0;
+		            vsp = -10;
+		            clear_button_buffer(PC_SHIELD_PRESSED)
+		            attack_end();
+					destroy_hitboxes();
+					sound_play(asset_get("sfx_forsburn_consume_fail"));
+		        }
+			}
 			if (window == 2 && window_timer == 1 && !hitpause) {
 				soft_armor = 4;
 				uspecial_hsp += uspecial_move_speed * (right_down - left_down)
@@ -348,6 +360,15 @@ switch(attack){
 				if (window_timer == 12) {
 					soft_armor = 0;
 				}
+				if (shield_pressed) {
+		            window = 7;
+		            window_timer = 0;
+		            vsp = -8;
+		            clear_button_buffer(PC_SHIELD_PRESSED)
+		            attack_end();
+					destroy_hitboxes();
+					sound_play(asset_get("sfx_forsburn_consume_fail"));
+		        }
 			}
 			if (window == 4 && !hitpause) {
 				soft_armor = 4;
@@ -369,7 +390,7 @@ switch(attack){
 				else if (shield_pressed) {
 		            window = 7;
 		            window_timer = 0;
-		            vsp = 0;
+		            vsp = -5;
 		            clear_button_buffer(PC_SHIELD_PRESSED)
 		            attack_end();
 					destroy_hitboxes();

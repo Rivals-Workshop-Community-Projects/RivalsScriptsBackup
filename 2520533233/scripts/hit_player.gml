@@ -1,4 +1,6 @@
 
+if("my_hitboxID" not in self){exit}
+
 if(hit_player_obj != self){
     teleport_target = hit_player_obj;
 }

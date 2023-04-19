@@ -12,3 +12,5 @@
 
 
 blinkT = 0;
+
+DstrongGrab = false;

@@ -1,0 +1,23 @@
+eust_fearTime = 0;		// How scared the opponent is
+eust_fearMax = 170;		// Maximum timer for the fear
+eust_fearCooldown = 0;		// how long until they can get out of the fear
+eust_fearID = 0;
+eust_gotShook = 3;		// Shake flipper
+eust_outlineFlag = false;
+eust_wildRide = false;
+eust_wildTime = 0;
+eust_wildID = 0;
+eust_curDir = 1;
+eust_lastDir = 1;
+eust_assKicked = 0;
+eust_willLaunch = false;
+eust_fearLaunchU = 0;
+eust_fearLaunchV = 0;
+eust_laughedAt = false;
+eust_isLaughing = false;
+eust_shakeTime = 0;
+
+eust_isUhOhed = false;		// for Final Smash stun
+eust_isStuckX = 0;
+eust_isStuckY = 0;		// for Final Smash freezing
+eust_getsSmashing = 0;		// internal tracking for draw scripts

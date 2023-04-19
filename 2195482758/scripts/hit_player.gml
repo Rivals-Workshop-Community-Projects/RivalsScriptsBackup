@@ -29,12 +29,16 @@ if(my_hitboxID.attack == AT_DSPECIAL)
 if (my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num <= 5)
 {
 	vsp -= 3;
+	old_hsp *= 0.5;
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
 {
 	
 	move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL],1);
+
+	// Set angle flipper
+	set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, other.free ? 2 : 7);
 
     // Find what slot this is in
     for (var i = 0; i < 10; i++;)
@@ -119,12 +123,19 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 	    window = 5;
 	    window_timer = 1;
 	    grabbedid.x = x + (spr_dir * 80);
-	     grabbedid.y = y-5;
+	     grabbedid.y = y-(fspec_yoff >= 0 ? fspec_yoff == 0 ? 5 : -30 : 30);
     }
 }
 
 // Uspecial grab
-if (my_hitboxID.attack == AT_USPECIAL){
+if (my_hitboxID.attack == AT_USPECIAL && uspec_grab_cooldown == 0){
+
+    if(my_hitboxID.hbox_num == 6)
+	{
+    	// Cooldown to prevent infinite laddering
+    	uspec_grab_cooldown = uspec_grab_cooldown_max;
+	}
+
 	if(hit_player_obj.state_cat == SC_HITSTUN)
     if ((window == 2 || window == 3 || window == 4 || window == 5 || window == 6 || window == 7) && grabbedid == noone){
         hit_player_obj.grabbed = 1;
@@ -141,6 +152,15 @@ if (my_hitboxID.attack == AT_USPECIAL){
 		}
 		
 	    GrabEasingTimer = 0;
+	    
+	    // Destroy any active hitboxes on player hit to prevent jank
+	    with(pHitBox)
+	    {
+	    	if(player_id == other.id && attack == AT_USPECIAL)
+	    	{
+	    		destroyed = true;
+	    	}
+	    }
 	    
 	    var max_moves = 30;
 	    with(grabbedid) while(collision_line(x + (5*other.spr_dir),y,x + (5*other.spr_dir),y+30,asset_get("par_block"),false,true) && max_moves > 0){

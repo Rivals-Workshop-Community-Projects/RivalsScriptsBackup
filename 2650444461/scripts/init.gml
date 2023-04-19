@@ -112,11 +112,13 @@ upb_hit_sprite2 = sprite_get("uspecial_hit2");
 upb_hit_sprite3 = sprite_get("uspecial_hit3");
 upb_hit_sprite4 = sprite_get("uspecial_hit4");
 nspecialcharge = 0;
+nspec_multiplier = 1;
 nspecialcharge2 = 0;
 fspecialcooldown = false;
 dspecialtime = 0;
 dspec_mud = noone;
 dtiltmud = false;
+crit = false;
 outline_timer = 0;
 outline_rev = false;
 intro = (state == PS_SPAWN);
@@ -128,6 +130,8 @@ loaded = false;
 trainingmode = false;
 playtest = (object_index == oTestPlayer);
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
+
+//runeF = true;runesUpdated = true;
 
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = sprite_get("toonlink_photo_TL");

@@ -1,30 +1,28 @@
-//
-/*
-with (pHitBox) {
-	if player_id == other.id {
-        hit_effect = 301
-	}
-}
-sound_stop(asset_get("sfx_ice_shieldup"))
-sound_stop(asset_get("sfx_ice_on_player"))
-sound_stop(asset_get("sfx_shovel_swing_heavy1"))
-sound_stop(asset_get("sfx_shovel_swing_heavy2"))
-sound_stop(asset_get("sfx_shovel_swing_med1"))
-sound_stop(asset_get("sfx_shovel_swing_med2"))
-sound_stop(sound_get("slice"))
-sound_stop(sound_get("slicel"))
-sound_stop(sound_get("hweak"))
-sound_stop(sound_get("hmed"))
-sound_stop(sound_get("hstrong"))
-sound_stop(sound_get("hextra"))
-sound_stop(sound_get("hcine"))
-sound_stop(sound_get("fstrong2"))
-sound_stop(sound_get("fspec1"))
-sound_stop(sound_get("fspec2"))
-sound_stop(sound_get("fspec3"))
-sound_stop(sound_get("uspec"))
+//\
 
-*/
+
+
+if cosmetic == 0 {
+    with (pHitBox) {
+    	if player_id == other.id {
+            hit_effect = 301
+    	}
+    }
+    sound_stop(asset_get("sfx_ice_shieldup"))
+    sound_stop(asset_get("sfx_ice_on_player"))
+    sound_stop(asset_get("sfx_shovel_swing_heavy1"))
+    sound_stop(asset_get("sfx_shovel_swing_heavy2"))
+    sound_stop(sound_get("slice"))
+    sound_stop(sound_get("slicel"))
+    sound_stop(sound_get("hweak"))
+    sound_stop(sound_get("hmed"))
+    sound_stop(sound_get("hstrong"))
+    sound_stop(sound_get("hextra"))
+    sound_stop(sound_get("hcine"))
+    sound_stop(sound_get("fstrong2"))
+    sound_stop(sound_get("uspec"))
+
+}
 
 
  if cheapmode == 0 && get_gameplay_time() < 60 {
@@ -213,7 +211,7 @@ hit_player_obj = self
 }
 
 if attackbar != 0 or barpause {
-	suppress_stage_music( 0.3, 10 );
+	suppress_stage_music( 0.3, 0.05 );
 }
 
 if attackbar != 0 && !hitpause && state_cat != SC_HITSTUN{
@@ -360,12 +358,12 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 
 if (state == PS_WALL_JUMP){
 	wjcap += 1
-move_cooldown[AT_USPECIAL] = 0
+move_cooldown[AT_DSPECIAL] = 0
 move_cooldown[AT_FSPECIAL] = 0
 }
 if !free {
 	wjcap = 0
-	move_cooldown[AT_USPECIAL] = 0
+	move_cooldown[AT_DSPECIAL] = 0
 }
 
 if wjcap > 0 {
@@ -426,58 +424,61 @@ init_shader();
 
 if songcd > 50 {
 	songcd -= 1
-	  suppress_stage_music(0.6, 1 );
+	  suppress_stage_music(0.4, 0.05 );
 }
 
 
 if songcd == 120 {
+	 	var volume = 0;
+        volume = get_local_setting(3)*1.2;
+        
 	if songplay % 12 == 0 {
 			sound_stop(sound_get("megalo12"))
-	sound_play(sound_get("megalo1"),false,noone,1)
+	sound_play(sound_get("megalo1"),false,noone,volume*1)
 	}
 	if songplay % 12 == 1 {
 		sound_stop(sound_get("megalo1"))
-	sound_play(sound_get("megalo2"),false,noone,1)	
+	sound_play(sound_get("megalo2"),false,noone,volume*1)	
 	}
 	if songplay % 12 == 2 {
 			sound_stop(sound_get("megalo2"))
-	sound_play(sound_get("megalo3"),false,noone,1)	
+	sound_play(sound_get("megalo3"),false,noone,volume*1)	
 	}
 	if songplay % 12 == 3 {
 		sound_stop(sound_get("megalo3"))	
-	sound_play(sound_get("megalo4"),false,noone,0.84)	
+	sound_play(sound_get("megalo4"),false,noone,volume*0.84)	
 	}
 	if songplay % 12 == 4 {
 		sound_stop(sound_get("megalo4"))	
-	sound_play(sound_get("megalo5"),false,noone,0.84)	
+	sound_play(sound_get("megalo5"),false,noone,volume*0.84)	
 	}
 		if songplay % 12 == 5 {
 		sound_stop(sound_get("megalo5"))	
-	sound_play(sound_get("megalo6"),false,noone,0.84)	
+	sound_play(sound_get("megalo6"),false,noone,volume*0.84)	
 	}
 		if songplay % 12 == 6 {
 		sound_stop(sound_get("megalo6"))	
-	sound_play(sound_get("megalo7"),false,noone,0.84)	
+	sound_play(sound_get("megalo7"),false,noone,volume*0.84)	
 	}
 		if songplay % 12 == 7 {
 		sound_stop(sound_get("megalo7"))	
-	sound_play(sound_get("megalo8"),false,noone,0.84)	
+	sound_play(sound_get("megalo8"),false,noone,volume*0.84)	
 	}
 		if songplay % 12 == 8 {
 		sound_stop(sound_get("megalo8"))	
-	sound_play(sound_get("megalo9"),false,noone,0.84)	
+	sound_play(sound_get("megalo9"),false,noone,volume*0.84)	
 	}
 		if songplay % 12 == 9 {
 		sound_stop(sound_get("megalo9"))	
-	sound_play(sound_get("megalo10"),false,noone,0.84)	
+	sound_play(sound_get("megalo10"),false,noone,volume*0.84)	
 	}
 		if songplay % 12 == 10 {
 		sound_stop(sound_get("megalo10"))	
-	sound_play(sound_get("megalo11"),false,noone,0.84)	
+	sound_play(sound_get("megalo11"),false,noone,volume*0.84)	
 	}
 		if songplay % 12 == 11 {
 		sound_stop(sound_get("megalo11"))	
-	sound_play(sound_get("megalo12"),false,noone,0.84)	
+	sound_play(sound_get("megalo12"),false,noone,volume*0.84)	
 	}
 }
 
@@ -489,14 +490,14 @@ if get_player_color(player) == 15 {
 		sound_stop(sound_get("bl2"))
 	}
 	if (free or hsp != 0 or attacking) && state_cat != SC_HITSTUN {
-				  suppress_stage_music(0.5, 40 );
+				  suppress_stage_music(0.5, 0.05 );
     }
 	if songcd2 != 0 {
 		songcd2 -= 1
 	}
 	
 	if (free or hsp != 0 or attacking) && state_cat != SC_HITSTUN{
-		  suppress_stage_music(0.8, 1 );	
+		  suppress_stage_music(0.8, 0.05 );	
 	}
 	if (free or hsp != 0 or attacking) && songcd2 == 0 {
 		sound_play(sound_get("bl1"),false,noone,0.6)
@@ -505,13 +506,17 @@ if get_player_color(player) == 15 {
 }
 
 
-if get_gameplay_time() <= 120 && cosmetic == 1 {
+if get_gameplay_time() <= 120 && cosmetic == 0 {
 
 
-	if taunt_down {
-		sound_play(asset_get("sfx_gem_collect"));
-		cosmetic = 0
-	}
+	//if taunt_down {
+		//sound_play(asset_get("sfx_gem_collect"));
+		with oPlayer {
+		 if "wjcap" in self {
+		 	cosmetic = 1
+		 }
+		}
+	//}
 	
 }
 

@@ -1,5 +1,146 @@
 ///
 
+hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+if attack == AT_JAB {
+	if window == 1 && window_timer == 1{
+                sound_play(asset_get("sfx_swipe_weak1"))
+        }
+}
+if attack == AT_UTHROW {
+	can_fast_fall = false
+	fall_through = true 
+	if window > 1 && window < 6 && (window_timer == 1 or window_timer == 4) && !hitpause {
+		 sound_play(asset_get("sfx_ice_on_player"),false,noone,1,2)
+		 if free {
+		 	hsp /= 1.1
+		 }else{
+		 	hsp /= 1.05
+		 }
+		 ovsp /= 1.09
+	}
+	if window == 7 && window_timer < 14 && free {
+		ox = x
+		oy = y
+		vsp -= 5
+		hsp /= 1.5	
+		set_state(PS_PRATFALL)
+		prat_land_time = 20
+		state_timer = 9000
+	}
+	if window == 7 && window_timer == 14 && !free {
+			set_state(PS_PRATLAND)
+		prat_land_time = 25
+	}
+	
+	if window == 1  {
+		if (window_timer == 1 or window_timer % 8 == 0) && !hitpause {
+            sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1.3 - state_timer/200)
+		}
+		if window_timer == 1 {
+			sound_play(sound_get("fspec3"),false,noone,1.4,1.25)
+		}
+		vsp /= 1.15 
+		hsp /= 2
+		if vsp > 0 vsp = 0 
+		
+	   if window_timer == 7*3 -1 && !hitpause {
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1)
+            sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)
+		}
+    } else {
+    	can_walljump = true
+    }
+    
+    if window < 6 && window > 1 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
+    	hit_player_obj.x += floor((x + 40*spr_dir - hit_player_obj.x)/2)
+    	hit_player_obj.y += floor((y - 4 - hit_player_obj.y)/4)
+    }
+    
+    if window == 2 && window_timer == 1 && !hitpause {
+    	sound_play(sound_get("fspec2"),false,noone,.8,1.25)
+    	if dmgmul == 1.5 {
+    		spawn_hit_fx (x,y - 40, shit1)   
+    	specialing = 1
+		attackbar = 0
+		dmgmul = 0
+    	state_timer = 300	
+    	sound_play(sound_get("hcine"),false,noone,0.4)
+    		move_cooldown [AT_NSPECIAL] = 180
+    	}
+    	
+    	if dmgmul == 2 {
+    		spawn_hit_fx (x,y - 40, shit4)   
+        specialing = 1
+		attackbar = 0
+		dmgmul = 0	
+    	state_timer = 400
+    	sound_play(sound_get("hcine"),false,noone,0.8)
+    		move_cooldown [AT_NSPECIAL] = 180
+    	}
+    	
+    	if dmgmul == 3 {
+    		spawn_hit_fx (x,y - 40, shit5)   
+    		specialing = 1
+		attackbar = 0
+		dmgmul = 0	
+    		spawn_hit_fx (x,y,lighten3)
+    	state_timer = 500
+    	sound_play(sound_get("hcine"),false,noone,1.4)
+    		move_cooldown [AT_NSPECIAL] = 180
+    	}
+    	
+    	if right_down - left_down != 0 {
+    		spr_dir = right_down - left_down
+    	}
+    	if !up_down && !down_down {
+    		hsp = 14*spr_dir 
+    		ovsp = 0
+    	}
+    	if up_down && !down_down {
+    		hsp = 10*spr_dir 
+    		ovsp = -6
+    	}
+    	if !up_down && down_down {
+    		hsp = 10*spr_dir 
+    		ovsp = 6
+    	}
+    }
+    
+    if window == 2 && window_timer == 6 {
+    	window = 6 
+    	if state_timer > 300 {
+    	window = 5 	
+    	}
+    	if state_timer > 400 {
+    	window = 4	
+    	}
+    	if state_timer > 500 {
+    	window = 3 	
+    	}
+        window_timer = 0
+    }
+    
+    if window >= 2 {
+    	can_move = false 
+    	can_walljump = true 
+    	if free {
+    		hsp /= 1.03
+    	}
+    }
+    
+    if window >= 7 {
+    	if free {
+    		hsp /= 1.07
+    	} else {
+    		hsp /= 1.05
+    	}
+    } else if window > 1 && !hitpause{
+    	vsp = ovsp/(1+window/10)
+    }
+    
+}
+
+
 if attack == 49 {
 	sound_play(sound_get("hcine"),false,noone,1)
 	if !free { 
@@ -38,7 +179,7 @@ if attack == 49 {
 	}
 	
 	if state_timer % 6 == 0 && state_timer < 30{
-		sound_play(sound_get("fspec2"),false,noone,0.8,1.2)
+		sound_play(sound_get("fspec2"),false,noone,1,1.2)
 	  	create_hitbox(AT_FSPECIAL,1, x,y - 30)
 	  	fx = spawn_hit_fx(x,y-30,306)
 	  fx.pause = 5
@@ -172,7 +313,7 @@ if !hitpause {
         
         if window == 1 && window_timer == 10{
             sound_play(sound_get("hstrong"))
-            take_damage (player, -1, 6)
+            take_damage (player, -1, 33)
         }
         
         if window == 2 && window_timer == 1{
@@ -204,7 +345,7 @@ if !hitpause {
         	window_timer = 10
 
             sound_play(sound_get("fstrong2"))
-            take_damage (player, -1, -6)
+            take_damage (player, -1, -33)
             x = savex
             y = savey
             savex = 0
@@ -214,7 +355,7 @@ if !hitpause {
         	sound_play(sound_get("fstrong2"))
         	 sound_play(sound_get("uspec"))
         	 set_state(PS_PRATFALL)
-                    take_damage (player, -1, -6)
+                    take_damage (player, -1, -33)
                     hsp = 0
             x = savex
             y = savey
@@ -272,6 +413,9 @@ if !hitpause {
     }
     
     if attack == AT_DAIR {
+       if window == 1 && window_timer == 1{
+                sound_play(asset_get("sfx_swipe_heavy1"))
+        }	
         if window == 1 && window_timer == 10 {
                 sound_play(asset_get("sfx_swipe_medium2"))
         }
@@ -452,8 +596,8 @@ if !hitpause {
     	if window == 1 {
     		
     		if window_timer == 1 {
-    			sound_play(sound_get("hcine"),false,noone,0.6,1.6)
-    			sound_play(asset_get("sfx_watergun_fire"),false,noone,0.8,1.1)
+    			sound_play(sound_get("fspec2"),false,noone,1,1.4)
+    			sound_play(asset_get("sfx_spin"),false,noone,0.8,1.1)
     			
     		vsp = -6
     		if vsp > 0 {
@@ -463,14 +607,14 @@ if !hitpause {
     	
     	}
     	if window == 2 {
-    			move_cooldown [AT_USPECIAL] = 999
+    			move_cooldown [AT_DSPECIAL] = 999
     			if window_timer == 1 && !hitpause {
-    				sound_play(sound_get("fspec2"),false,noone,0.8,1.2)
+    				sound_play(sound_get("hextra"),false,noone,1,1)
+    				sound_play(sound_get("slice"),false,noone,1,0.6)
     		if dmgmul >= 1.5 {
 				attackbar = 0
-				vsp = -8
 				if dmgmul == 1.5 {
-						create_hitbox (AT_USPECIAL, 3 , x , y - 20 )
+						create_hitbox (AT_USPECIAL, 3 , x , y  )
 					    sound_play(sound_get("hcine"),false,noone,0.4)
 				}
 				
@@ -478,17 +622,19 @@ if !hitpause {
 			}
 			
 			if dmgmul >= 2 {
-				vsp = -10
 				if dmgmul == 2 {
-					    create_hitbox (AT_USPECIAL, 4 , x , y )
+					    create_hitbox (AT_USPECIAL, 4 , x , y  )
 					    sound_play(sound_get("hcine"),false,noone,0.8)
 				}
 			}
 			
 			if dmgmul = 3 {
+				vsp = -8
                 spawn_hit_fx (x,y,lighten3)
-				create_hitbox (AT_USPECIAL, 4 , x - 44 , y - 20 )
-				create_hitbox (AT_USPECIAL, 4 , x + 44 , y - 20 )
+				proj1 = create_hitbox (AT_USPECIAL, 4 , x - 44 , y  )
+				proj1.spr_dir = -1
+				proj2 = create_hitbox (AT_USPECIAL, 4 , x + 44 , y )
+				proj2.spr_dir = 1
 				if dmgmul == 3 {
 					    sound_play(sound_get("hcine"),false,noone,1.4)
 				}			
@@ -496,7 +642,7 @@ if !hitpause {
 			}
 			
 			if dmgmul == 0 {
-				create_hitbox (AT_USPECIAL, 1 , x , y - 20)
+				create_hitbox (AT_USPECIAL, 1 , x , y )
 			}
 			
     	}

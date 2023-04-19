@@ -18,8 +18,10 @@
 
 if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){	
 	if attack == AT_FSTRONG{
+	shader_start();
 		if window == 2 && window_timer == 0{dust_pos3 = x; boost_timer = 0}
 		if boost_timer != -1 && window != 1 {draw_sprite_ext( sprite_get("boost"), boost_timer/3, dust_pos3- 24*spr_dir, y-35, spr_dir, 1, 0, c_white, 1);}
+		shader_end();
 	}
 	
 	//BOOST VISUAL EFFECT

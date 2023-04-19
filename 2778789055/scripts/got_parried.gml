@@ -23,9 +23,19 @@ if(my_hitboxID.attack == AT_FSPECIAL_2) with my_hitboxID{
 	}
 }
 
+/*
 if(other_is_scalding && hit_player_obj.other_scalding = true && hit_player_obj.other_scalding_timer != 0){
 	sound_play(asset_get("sfx_hod_steam_level1"));
-	hit_player_obj.other_scalding = false;
-	hit_player_obj.other_scalding_timer = 0;
-	other_is_scalding = false;
+	temp_player.other_scalding = false;
+	temp_player.other_scalding_timer = 0;
+	//other_is_scalding = false;
+}
+*/
+
+with(oPlayer){
+	if(other_scalding && other_scalding_timer != 0){
+	sound_play(asset_get("sfx_hod_steam_level1"));
+	other_scalding = false;
+	other_scalding_timer = 0;	
+	}
 }

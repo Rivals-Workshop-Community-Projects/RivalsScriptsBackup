@@ -6,8 +6,6 @@ set_attack_value(AT_TAUNT_2, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_TAUNT_2, AG_AIR_SPRITE, sprite_get("taunt2_air"));
 set_attack_value(AT_TAUNT_2, AG_HURTBOX_SPRITE, sprite_get("owen_hurtbox"));
 
-set_attack_value(AT_TAUNT_2, AG_MUNO_ATTACK_EXCLUDE, 1);
-
 // 37 frames total
 
 // reload

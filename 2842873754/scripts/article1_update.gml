@@ -4,6 +4,10 @@ if (hitstop == 0) {
     switch(state) {
         case -1:
             if (instance_exists(hitbox)) instance_destroy(hitbox);
+            if (player_id.state_cat == SC_HITSTUN) { 
+                destroy_self();
+            	exit;
+            }
         break;
         case 0:
             img_index = state_timer * 0.1;
@@ -183,8 +187,18 @@ if (getting_bashed) {
 }
 
 if (state == 0 || state == 1) {
-    if (place_meeting(round(x), round(y), asset_get("plasma_field_obj"))) {
-        destroy_self();
+    var plasma_field = collision_circle(x, y, 40, asset_get("plasma_field_obj"), 1, 0)
+    if (plasma_field != noone) {
+		if (get_instance_player(plasma_field) != owned_player) {
+		    spawn_hit_fx(x, y, 129);
+		    sound_play(asset_get("sfx_clairen_hit_med"));
+            owned_player = get_instance_player(plasma_field);
+            hsp = -hsp;
+            if (vsp > 0)
+                vsp = -bounce_speed;
+            hit_already = true;
+            state_timer = 0;
+        }
     }
 }
 

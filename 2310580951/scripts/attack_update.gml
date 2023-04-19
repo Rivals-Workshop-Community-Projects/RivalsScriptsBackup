@@ -508,7 +508,7 @@ if (attack == AT_NTHROW) {
 	}
 	if window == 7 && window_timer == 4 {
 		if ItsAMeMario {
-			if hit_player_obj.url == 2207197597 || hit_player_obj.url == 2037682193 {
+			if hit_player_obj.url == 2207197597 || hit_player_obj.url == 2037682193 || hit_player_obj.url == 2962798543 || hit_player_obj.url == 2611384650 {
 				sound_play(bowser);
 			} else {
 				sound_play(buhbye);
@@ -525,7 +525,7 @@ if (attack == AT_FTHROW) {
 	}
 	if window == 4 && window_timer == 4 {
 		if ItsAMeMario {
-			if hit_player_obj.url == 2207197597 || hit_player_obj.url == 2037682193 {
+			if hit_player_obj.url == 2207197597 || hit_player_obj.url == 2037682193 || hit_player_obj.url == 2962798543 || hit_player_obj.url == 2611384650 {
 				sound_play(bowser);
 			} else {
 				sound_play(buhbye);
@@ -588,8 +588,69 @@ if attack == AT_TAUNT {
 		can_shield = true;	
 		can_jump = true;	
 	}
-	if window == 1 && window_timer > 18 || window == 2 {
+	if window == 3 && window_timer == 7 && taunt_down {
+		window_timer = 6;
+	}
+	if window == 1 && window_timer > 18 || window == 2 || window == 3 && 8 > window_timer {
 		hud_offset = 44;
+	}
+}
+
+//Sleep
+if attack == AT_TAUNT_2 {
+	if window == 1 {
+	sleepTimer = 0;
+	}
+	if window == 5 || window == 6 || window == 7 { //Sleep 1 windows
+		if 700 > sleepTimer { //Timer to transition to sleep 2
+			sleepTimer++;
+		}
+		if attack_pressed || left_pressed || right_pressed || up_pressed || jump_pressed { //Wake up
+			window = 8;
+			window_timer = 0;
+		}
+		if down_pressed { //Lay down
+				window = 10;
+				window_timer = 0;
+				sleepTimer = 0;
+		}		
+	}
+	if window == 7 { 
+		if window_timer == (get_window_value(AT_TAUNT_2, 7, AG_WINDOW_LENGTH)) {
+			if sleepTimer >= 700 { //Transition into sleep 2 if enough time has passed
+				window = 10;
+				window_timer = 0;
+				sleepTimer = 0;
+			}	else {
+				window = 5;
+				window_timer = 0;		
+			}
+		}	
+	}
+	if window == 9 { //Sleep 1 endlag
+		if window_timer == (get_window_value(AT_TAUNT_2, 9, AG_WINDOW_LENGTH)) {
+			set_state(PS_IDLE);
+			state_timer = 0;
+		}
+	}
+	
+	if window == 9 || window == 16 { 
+		can_jump = true;
+		can_attack = true;
+		can_shield = true;
+	}
+	
+	if window == 12 || window == 13 || window == 14 { //Sleep 1 windows
+		if attack_pressed || left_pressed || right_pressed || up_pressed || jump_pressed { //Wake up
+			window = 15;
+			window_timer = 0;
+		}
+	}
+	if window == 14 { 
+		if window_timer == (get_window_value(AT_TAUNT_2, 14, AG_WINDOW_LENGTH)) {
+			window = 12;
+			window_timer = 0;
+		}
 	}
 }
 
@@ -714,6 +775,32 @@ if ItsAMeMario && !hitpause {
 	if attack == AT_TAUNT {
 		if window == 1 && window_timer == 24 {
 			sound_play(herewego);
+		}
+	}
+	
+	if attack == AT_TAUNT_2 {
+		if window == 1 && window_timer == 1 {
+			sound_play(yawn);
+		}
+		if window == 5 && window_timer == 1 {
+			sound_play(snore1);
+		}
+		if window == 6 && window_timer == 20 {
+			sound_play(snore2);
+			sound_stop(snore1);
+		}
+
+		if window == 12 && window_timer == 1 {
+			sound_play(snore1, false, noone, 1, .75);
+		}
+		if window == 13 && window_timer == 20 {
+			sound_play(snore2);
+			sound_stop(snore1);
+		}
+		
+		if window == 8 || window == 15 {
+			sound_stop(snore2);
+			sound_stop(snore1);
 		}
 	}		
 }

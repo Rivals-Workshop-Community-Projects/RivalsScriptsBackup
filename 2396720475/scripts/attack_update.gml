@@ -173,7 +173,8 @@ if (attack == AT_DSPECIAL){
 			movingbox.initial_spawn = true;
 			movingbox.hitfxowner = id;
 			
-			if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 4){
+			if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || 
+				SecretColor == 2 || SecretColor = 3 || SecretColor == 4){
 				flag_destroy = false;
 				movingbox.flag = true;
 			}

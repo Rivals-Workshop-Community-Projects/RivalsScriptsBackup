@@ -2,7 +2,7 @@ set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 2.2);
+set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 // Startup
@@ -34,7 +34,7 @@ set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
 // End
 set_window_value(AT_NAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_NAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -7,8 +7,8 @@ if ("practice" in self)
 		var article = noone;
 		with (obj_article1) if (player_id == other && returning && state != 3 && index == i+1) {article = self; break;}
 		var height = article==noone?0:article.state==0?1:article.state==1?article.state_timer/(article.idleTime-article.offsetTimer):0;
-		height = floor(height*12)/12;
-		if (height > 0) draw_sprite_part_ext(sprite_get("nspecialCharge"), 0, 0, 12*height, 8, 14,temp_x + 204 + (i-nspecIcicles)*6-3*2, temp_y - (((nspecCharge-10) > nspecChargeMax/nspecIcicles*(i+1))?8:4) + floor(tutAlpha*4)*2-8-7*2+(12*height*2), 2, 2, IcicleColour(i), tutAlpha);
+		height = floor(height*16)/16;
+		if (height > 0) draw_sprite_part_ext(sprite_get("nspecialCharge"), 0, 0, 16*height, 8, 14,temp_x + 204 + (i-nspecIcicles)*6-6, temp_y - (((nspecCharge-10) > nspecChargeMax/nspecIcicles*(i+1))?8:4) + floor(tutAlpha*4)*2-24+(16*height*2), 2, 2, IcicleColour(i), tutAlpha);
 		shader_end();
 	}
 

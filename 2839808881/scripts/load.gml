@@ -110,6 +110,7 @@ sprite_change_offset("ability_esp_proj_elec", 100, 118);
 sprite_change_offset("ability_drill_dirt_emerge", 100, 118);
 
 sprite_change_offset("taunt", 96, 114);
+sprite_change_offset("taunt2", 36, 62);
 
 sprite_change_offset("phone_open", 96, 114);
 

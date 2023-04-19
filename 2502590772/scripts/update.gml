@@ -15,6 +15,9 @@ if (is_master_player) {
     	user_event(3); //user_event3.gml - initialize master player instance.
     }
 	
+	//don't draw the HUD
+	draw_indicator = false;
+	
 	//determine the leader.
 	var leader_unit_index = noone;
 	if (instance_exists(unit_player_id_array[0]) && unit_player_id_array[0].custom_clone == false) {
@@ -28,9 +31,13 @@ if (is_master_player) {
 	if (leader_unit_index != noone) {
 		var leader_unit = unit_player_id_array[leader_unit_index];
 		
-		//make the master player follow the leader player around. this way desyncs can still be detected, and default CPUs will still know where to attack.
-		x = clamp(leader_unit.x, blastzone_l, blastzone_r);
-		y = clamp(leader_unit.y, blastzone_t, blastzone_b);
+		//make the master player follow one of the players at any time. update which one the master player follows every few seconds. 
+		//this really only exists so that CPUs know who to attack.
+		leader_update_mimic(leader_unit);
+		
+		
+		
+		
 		
 		//lock in full invincibility and hitpause for the master player.
 		hitstop = 9999;
@@ -80,10 +87,6 @@ if (is_master_player) {
 
 	exit;
 }
-
-
-
-
 
 
 //at_extra_3 is the despawn attack state. do nothing until respawned.
@@ -210,6 +213,7 @@ if (!custom_clone) {
 	//nspecial is handled by this script during spawns and respawns
 	leader_spawn_nspecial_handler();
 	
+	
 	//state handler
 	switch (state) {
 		case PS_DASH_START:
@@ -226,8 +230,6 @@ if (!custom_clone) {
     		//don't draw the hud until respawned
     		if (state_timer < 40) draw_indicator = false;
     	break;
-    	
-
 	}
 	
 	//update health variable every frame
@@ -372,6 +374,19 @@ else {
 			depth = -3.5;
         break;
 		
+		case PS_PARRY:
+			//skip parry active frames if the leader gets attacked during them.
+			if (state_timer < 2 || state_timer > 9) break;
+			if (instance_exists(teammate_player_id) && teammate_player_id.state_cat == SC_HITSTUN && teammate_player_id.state_timer == 0) {
+				force_depth = true;
+				depth = -3.5;
+				spawn_hit_fx(x, y, vfx_parrycancel).depth = depth - 1;
+				
+				parry_lag = 28 - state_timer;
+				was_parried = true;
+				set_state(PS_PRATLAND);
+			}
+		break;
 		
 		case PS_FIRST_JUMP:
         case PS_DOUBLE_JUMP:
@@ -384,7 +399,7 @@ else {
             }
         }
         
-        
+
         
 		//don't break
 		default:
@@ -402,6 +417,8 @@ else {
 // ==============================
 
 
+//waveland fix (because oplayer clones are weird)
+waveland_handler();
 
 //hud
 hud_handler();
@@ -414,6 +431,37 @@ leading_teammate_got_parried_handler();
 
 //check for hh buffs
 deactivate_helping_hand_buff_when_teammate_stops_using_helping_hand();
+
+
+
+#define waveland_handler
+//for some reason, one clone being in the middle of an airdodge stops the other one from performing any shield options.
+//shield_pressed stops updating entirely, but shield_down can still be checked.
+//this is a hard-coded workaround for such a situation, that allows all shield options.
+
+if (shield_down == true && shield_down_prev == false) {
+	manual_input_wavedash = 6;
+}
+else {
+	manual_input_wavedash = max(0, manual_input_wavedash - 1);
+}
+
+if (!free && free_prev && state != PS_JUMPSQUAT && state != PS_FIRST_JUMP) {
+	manual_input_wavedash = 0;
+}
+
+shield_down_prev = shield_down;
+free_prev = free;
+
+if (shield_pressed) return;
+
+if ((manual_input_wavedash) &&  ( (has_airdodge && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL)) || (state == PS_FIRST_JUMP && state_timer == 0) ) ) {
+	set_state(PS_AIR_DODGE);
+	//if (!shield_pressed) spawn_hit_fx(x, y, 3) //debug
+}
+
+
+
 
 
 
@@ -806,6 +854,31 @@ if (!custom_clone) {
 	else {
 		visual_hh_powerup_counter = max(visual_hh_powerup_counter - 1, 0);
 	}
+}
+
+#define leader_update_mimic
+var last_interaction_player_obj = argument0.hit_player_obj;
+
+update_mimic_counter++;
+
+if (update_mimic_counter >= 120) {
+	update_mimic_counter = 0;
+	//see if the last-interacted player exists
+	if (instance_exists(last_interaction_player_obj) && instance_exists(unit_player_id_array[0]) && instance_exists(unit_player_id_array[1])) {
+		//see which clone is closest to it
+		var xx = last_interaction_player_obj.x;
+		var yy = last_interaction_player_obj.y;
+		var plusle_distance = point_distance(xx, yy, unit_player_id_array[0].x, unit_player_id_array[0].y);
+		var minun_distance  = point_distance(xx, yy, unit_player_id_array[1].x, unit_player_id_array[1].y);
+		if (plusle_distance <= minun_distance) mimic_clone_id = 0;
+		else mimic_clone_id = 1;
+	}
+	x = clamp(unit_player_id_array[mimic_clone_id].x, blastzone_l, blastzone_r);
+	y = clamp(unit_player_id_array[mimic_clone_id].y, blastzone_t, blastzone_b);
+}
+else if (instance_exists(unit_player_id_array[mimic_clone_id]))  {
+	x = clamp(unit_player_id_array[mimic_clone_id].x, blastzone_l, blastzone_r);
+	y = clamp(unit_player_id_array[mimic_clone_id].y, blastzone_t, blastzone_b);
 }
 
 

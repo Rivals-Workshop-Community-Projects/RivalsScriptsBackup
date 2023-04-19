@@ -1,7 +1,3 @@
-if phone_cheats[cheat_funny_snail]{
-	draw_debug_text(x, y, "woag");
-}
-
 //draw_debug_text(x, y + 12, string(room_height));
 //draw_debug_text(x, y + 24, string(y));
 //draw_debug_text(x - 24, y + 24, string(vsp));
@@ -49,8 +45,3 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECI
 //else if (sword_one == noone) {
 //	draw_debug_text(x, y + 12, string("NO SWORD"));
 //}
-
-
-
-
-user_event(12);

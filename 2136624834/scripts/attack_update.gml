@@ -34,7 +34,20 @@ if attack == AT_EXTRA_3 {
 	
 }
 
+if attack == AT_UTHROW {
+        hsp = 0
+        vsp = 0
+}
+
 if attack == AT_DTHROW && !hitpause  {
+        if window >= 4 {
+             hsp = 0
+             vsp = 0
+         }
+
+
+ 
+
 	if window == 4 && window_timer == 1 {
 	 ts1 = spawn_hit_fx(x,y-40,306)
 	 ts2 = spawn_hit_fx(x,y-40,304)
@@ -52,7 +65,7 @@ if attack == AT_DTHROW && !hitpause  {
 
 if attack == AT_DSPECIAL && !hitpause  {
 	
-    if window == 1 && (timestop < 100 or (state_timer == 8 && !special_down)) {
+    if window == 1 && ((timestop < 100 or (state_timer == 8 && !special_down)) or free) {
      set_attack(AT_DTHROW)
      if timestop <= 30 {
      	timestop = 0
@@ -493,6 +506,10 @@ if attack == AT_FSPECIAL && !hitpause {
 /// function
 
 if attack == AT_USPECIAL {
+  if window == 1 && window_timer == 1 && !hitpause {
+		  sound_play(asset_get("sfx_ice_shatter"));
+		   sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.3)
+ }
  
 can_fast_fall = false
 if timefreeze > 40  {
@@ -682,6 +699,10 @@ if attack == AT_NSPECIAL {
 	}
 	if free && window < 4{
 		window = 4 
+                if ncharge >= 60 {
+    		sound_play(asset_get("sfx_bird_sidespecial"));
+    		}
+    		sound_play(asset_get("sfx_ori_bash_launch"));
 	}
 	
 	if (window == 2 or (window == 1 && window_timer > 5)) {
@@ -782,6 +803,11 @@ if !hitpause and ((window == 3 && window_timer == 4) or (window == 5 && window_t
 }
 if attack == AT_FSTRONG {
 
+if window == 4 && window_timer == 15 && !hitpause {
+		create_hitbox(AT_FTHROW,18,x- 36*spr_dir,y - 38)
+	}
+	
+	
 if window == 4 && window_timer == 11 && !hitpause {
 		sound_play(asset_get("sfx_ori_energyhit_medium"))
 		shake_camera(4,4)
@@ -823,7 +849,6 @@ if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_t
 }
 
 }
-
 if attack == AT_DSTRONG {
 	
 	if window == 1 && window_timer == 1 && !hitpause {
@@ -849,10 +874,10 @@ if attack == AT_DSTRONG {
 	 
     
     if window < 3 && grabbed && !hitpause{
-    	window_timer += 0.5
+    	window_timer += 1
     }
     
-     if grabbed && window == 3 && window_timer > 6 {
+     if grabbed && window == 3 && window_timer > 2 {
      	if hit_player_obj.x < x {
      		spr_dir = -1
      	} else {
@@ -894,7 +919,7 @@ if attack == AT_USTRONG {
         	vsp = 0
         }
         
-    if grabbed && window == 2 && !hitpause {
+    if grabbed && window <= 3 && !hitpause {
         window = 4
         window_timer = 0
         vsp = -8
@@ -963,10 +988,10 @@ if attack == AT_FAIR {
     }
     
     if window == 3 && has_hit_player{
-    	
-        if window_timer == 4 && timefreeze <= 2 {
+    	destroy_hitboxes()
+        if window_timer == 3 && timefreeze <= 2 {
              vsp = -7
-             hsp /= 3
+             hsp = 0
              
              if move_cooldown[AT_DSPECIAL_2] != 0 {
     		   set_state(PS_PRATFALL)

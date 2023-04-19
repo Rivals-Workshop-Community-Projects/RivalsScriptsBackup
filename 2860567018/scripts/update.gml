@@ -49,6 +49,17 @@ if(state == PS_WAVELAND and state_timer == 1){
     sound_play(asset_get("sfx_waveland_cla"), false, noone, .4, 1.1)
 }
 
+if(lunatic_timer > 0 and visible){
+	if(lunatic_timer == 120){
+		sound_play(sound_get("spell_card"), false, 0, 1, 1);
+	}
+	lunatic_timer--;
+}
+
+if(suppress_music){
+	suppress_stage_music(0, 0.02);
+}
+
 #define diminishing_multi_jumps()
 //reduce height gain based on jumps used
 switch(djumps){

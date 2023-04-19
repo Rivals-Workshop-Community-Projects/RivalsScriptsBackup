@@ -70,6 +70,9 @@ set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_GRAVITY, 0.5);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1); // ignore enemies
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
+// Penalty Zone
+set_window_value(AT_TAUNT, penalty_window, AG_WINDOW_LENGTH, max_penalty_frames);
+
 
 /*
 set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 21);

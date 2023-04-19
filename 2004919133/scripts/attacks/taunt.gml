@@ -6,4 +6,4 @@ set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, asset_get("hatkid_hurt"));
 
 set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 9);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 56);
-set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 8);
+set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 10);

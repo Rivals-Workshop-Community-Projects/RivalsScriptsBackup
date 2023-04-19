@@ -1,9 +1,5 @@
 //set_attack
 
-if attack == AT_USPECIAL{
-	set_num_hitboxes(AT_USPECIAL, 2);
-	show_flames = 0;
-}
 
 if attack == AT_USTRONG{
 	set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -40,6 +36,12 @@ if attack == AT_FSPECIAL{
 	   }
 	done_reflecting_article = 0;
 }
+
+if attack == AT_USPECIAL{
+	set_num_hitboxes(AT_USPECIAL, 2);
+	show_flames = 0;
+}
+
 
 
 //user_event(13);

@@ -31,44 +31,44 @@ if (turnabout && turnaboutID == self)
         cornered_segment = 1;
         if (get_player_color(player) == 14) // saul
         {
-            cornered_sound = sound_play(sound_get("saul_intro"), 0, 0, 1, 1,);
+            cornered_sound = sound_play(sound_get("saul_intro"), 0, 0, cornered_volume, 1,);
             song_type = 1;
         }
         else if (get_player_color(player) == 15) // matpat
         {
-            cornered_sound = sound_play(sound_get("matpat_intro"), 0, 0, 1, 1,);
+            cornered_sound = sound_play(sound_get("matpat_intro"), 0, 0, cornered_volume, 1,);
             song_type = 2;
         }
         else // phoenix
         {
-            cornered_sound = sound_play(sound_get("cornered_intro"), 0, 0, 1, 1,);
+            cornered_sound = sound_play(sound_get("cornered_intro"), 0, 0, cornered_volume, 1,);
             song_type = 0;
         }
     }
     if (cornered_segment == 1) switch (song_type)
     {
         default: // phoenix theme
-            if (cornered_timer >= 371)
+            if (cornered_timer >= 371) //371
             {
                 cornered_segment = 2;
                 cornered_timer = 0;
-                cornered_sound = sound_play(sound_get("cornered"), 1, 0, 1, 1,);
+                cornered_sound = sound_play(sound_get("cornered"), 1, 0, cornered_volume, 1,);
             } 
             break;
         case 1: // saul theme
-            if (cornered_timer >= 179)
+            if (cornered_timer >= 179) //179
             {
                 cornered_segment = 2;
                 cornered_timer = 0;
-                cornered_sound = sound_play(sound_get("saul"), 1, 0, 1, 1,);
+                cornered_sound = sound_play(sound_get("saul"), 1, 0, cornered_volume, 1,);
             }  
             break;
         case 2: // matpat theme
-            if (cornered_timer >= 161)
+            if (cornered_timer >= 161) //161
             {
                 cornered_segment = 2;
                 cornered_timer = 0;
-                cornered_sound = sound_play(sound_get("matpat"), 1, 0, 0.8, 1,);
+                cornered_sound = sound_play(sound_get("matpat"), 1, 0, cornered_volume, 1,);
             }  
             break;
     }

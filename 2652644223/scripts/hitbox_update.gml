@@ -1,3 +1,4 @@
+draw_xscale = spr_dir;
 if(attack == AT_NSPECIAL){
     if(hitbox_timer > 2)
     {

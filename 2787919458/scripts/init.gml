@@ -182,6 +182,7 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+fx_dust = hit_fx_create(sprite_get("dust_effect"), 20);
 ringcooldown = 0;
 upb = false;
 upbtimer = 0;
@@ -195,6 +196,7 @@ yeth = false;
 dspec_stall = false;
 killcam_timer = 0;
 trigger_warning = get_synced_var(player);
+alt = get_player_color(player);
 need_to_reload = false;
 airhorn_sfx = noone;
 sanic_throw_hb = noone;
@@ -224,19 +226,20 @@ dash_hsp = 0;
 san_has_played = false;
 current_taunt = 0;
 bair_grab_projectile_box = noone;
+datboi_hit_cooldown = 0;
 weegee_face = get_player_color(player) == 15;
 if(get_player_color(player) == 22){
     set_ui_element(UI_HUD_ICON,sprite_get("dorito_hud"));
     set_ui_element(UI_HUDHURT_ICON,sprite_get("dorito_hud_hurt"));
     set_ui_element(UI_OFFSCREEN,sprite_get("dorito_offscreen"));
     set_ui_element(UI_WIN_PORTRAIT,sprite_get("dorito_portrait"));
-    set_ui_element(UI_WIN_SIDEBAR,sprite_get("dorito_result_small"));
+    //set_ui_element(UI_WIN_SIDEBAR,sprite_get("dorito_result_small"));
 }else{
     set_ui_element(UI_HUD_ICON,get_char_info(player,INFO_HUD));
     set_ui_element(UI_HUDHURT_ICON,get_char_info(player,INFO_HUDHURT));
     set_ui_element(UI_OFFSCREEN,get_char_info(player,INFO_OFFSCREEN));
     set_ui_element(UI_WIN_PORTRAIT,get_char_info(player,INFO_PORTRAIT));
-    set_ui_element(UI_WIN_SIDEBAR,get_char_info(player,INFO_SIDEBAR));    
+    //set_ui_element(UI_WIN_SIDEBAR,get_char_info(player,INFO_SIDEBAR));    
 }
 //hyper
 hue_offset=0;
@@ -244,11 +247,20 @@ hue_speed=1;
 //dtilt
 dtilt_mash = 0;
 spin_sound = noone;
+hit_attack_timer = 0;
 fs_char_portrait_y = 94;
 fs_char_chosen_final_smash = "custom";
-
+//hurt spin rotation
+cur_sprite_rot = 0;
+should_rotate = false;
+rotate_time = -1;
 //screams
 screamList = [
+    "gangstar_choir",//uphurt
+    "wolves",
+    "going_up",
+    "beatbox",
+    
     "scream",
     "waaa",
     "JumpScare",
@@ -291,7 +303,10 @@ screamList = [
     "nnsg_4",
     "nnsg_5",
     "nnsg_6",
-    "nnsg_7"
+    "nnsg_7",
+    "aaAAAUGH",
+    "toad",
+    "flyforyou"
     ];
 // intro
 introTimer = -2;
@@ -320,11 +335,21 @@ repeat (trail_total_size)
     t++;
 }
     
+
+sprite_names = [
+    "dattack", 
+    "bair", 
+    "fspecial",
+    "doge",
+    "datboi",
+    "shrek"
+    ];
+
     
 //Rune Support
 abyssEnabled = false;
 enum runes {A = 1,B = 2,C = 3,D = 4,E = 5,F = 6,G = 7,H = 8,I = 9,J = 10,K = 11,L = 12,M = 13,N = 14,O = 15}
-runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
+runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false;
 ab_hud_x = 0;
 ab_hud_y = 0;
 
@@ -334,14 +359,17 @@ ab_hud_y = 0;
 // 1 - ranged mod: Modifies a projectile attack.
 // 2 - hit mod: Modifies a direct physical interaction with an opponent.
 // 3 - ability boost: Powers up a character attribute or action.
+runesUpdated = false;
 var rune_letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"];
- 
-for (var rune_num = 0; rune_num < array_length(rune_letters); rune_num++){
+for (var rune_num = 0; rune_num < array_length(rune_letters); rune_num++) {
     variable_instance_set(self, "rune" + rune_letters[rune_num], has_rune(rune_letters[rune_num]));
 }
 abyssMods = array_create(16,[-1,"Not Implemented."]);
-abyssMods[@ runes.H] = [3, "Gives Sanic his old FAIR"];
+abyssMods[@ runes.D] = [3, "Slap go ouchy,,,"];
+abyssMods[@ runes.E] = [3, "When fast enough you have a hitbox."];
 abyssMods[@ runes.F] = [3, "Allows DTilt to mash up to 69 times."];
+abyssMods[@ runes.G] = [3, "All 3 summons can be out at once"];
+abyssMods[@ runes.H] = [3, "Gives Sanic his old FAIR"];
     
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

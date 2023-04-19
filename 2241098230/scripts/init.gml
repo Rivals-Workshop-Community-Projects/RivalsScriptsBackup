@@ -223,6 +223,8 @@ page++;
 pot_compat_variable = sprite_get("big_beef");
 pot_compat_text = "Big Beef"
 
+//Mamizou
+mamizou_transform_spr = sprite_get("mamizou");
 initIndexes();
 
 //Below code from MunoPhone API.

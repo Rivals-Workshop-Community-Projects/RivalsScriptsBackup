@@ -190,6 +190,12 @@ if ("practice" in self)
 						AddText("DAttack now goes into endlag on hit immediately");
 						AddText("");
 						AddText("Updated to new AI system");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.11.2 - 5 Jan 2023");
+						AddText("");
+						AddText("Fixed AI from a base game update.");
+						AddText("Added compatibility with Dakota's Citizen mod");
 						break;
 				}
 				DrawTutorialBlock();

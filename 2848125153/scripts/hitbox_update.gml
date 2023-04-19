@@ -2,7 +2,7 @@
 
 if(attack == AT_NSPECIAL){
     if(hbox_num == 1){
-    	num = originalnum;
+    	dicenum = originalnum;
         if(hit_priority > 0){
             proj_angle -= 5*spr_dir;
         }else{
@@ -26,22 +26,11 @@ if(attack == AT_NSPECIAL){
         	sound_play(asset_get("sfx_land_med"));
         	landtimer = 6;dicearmor = round(dicearmororig/4);
         }landtimer -= 1;
-        /*if(vsp < 6){
-        	kb_angle = 45;
-        	if(kb_scale <= .7){
-        		kb_scale = .7;
-        	}
-        }else{
-        	kb_angle = 315;
-        	if(kb_scale == .7 || kb_scale <= .55){
-        		kb_scale = .55;
-        	}
-        }
-        if(get_gameplay_time() % 2 == 0 && hit_priority > 0){
-	        planet_trail = spawn_hit_fx(x,y,player_id.fx_planet_trail);planet_trail.depth = depth+1;
-	    }*/
-	    if(instance_exists(thedice) && hit_priority > 0){
+        
+	    if(instance_exists(thedice)){
 	    	thedice.x = x; thedice.y = y;
+	    }
+	    if(instance_exists(thedice) && hit_priority > 0){
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other.thedice)){
     	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
@@ -77,7 +66,7 @@ if(attack == AT_NSPECIAL){
 	    	    		            }else{
 	    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
 	    	    		            }
-    	    	        		}
+    	    	        		}other.hit_priority = 4;
     	    	                spawn_hit_fx(other.x, other.y, hit_effect);
     	    					sound_play(sound_effect);
     	    	                other.lasthitbox = id;other.hitbox_timer = 0;
@@ -86,7 +75,9 @@ if(attack == AT_NSPECIAL){
     	            }
     	        }
     	    }
-	    }
+	    }else if(!instance_exists(thedice) && dicetimer >= 10 && !dice_has_hit){
+			destroyed = true;
+		}
 	    if(hitstop <= 0){
 	    	in_hitpause = false;hitlockout -= 1;
 	    	if (instance_exists(lasthitbox)) {
@@ -99,8 +90,11 @@ if(attack == AT_NSPECIAL){
 	    }
 	    if(hit_priority > 0 && (x > room_width+400 || x < -400 || y >= room_height+300) || hit_priority <= 0 && (x > room_width || x < 0 || y >= room_height) || y < -2000 || hitbox_timer >= length){
 		    destroyed = true;
+		    if(instance_exists(thedice)){
+		    	thedice.destroyed = true;
+		    }
 		}
-		hitbox_timer = 0;
+		hitbox_timer = min(hitbox_timer,10);
 		dicetimer += 1;
 		if(dicetimer >= 240){
 			if(player_id.thedice1 == self){
@@ -109,11 +103,16 @@ if(attack == AT_NSPECIAL){
 				player_id.thedice2 = noone;
 			}
 		}
+		if(hit_priority <= 0){
+			grounds = 1;walls = 1;
+		}else{
+			grounds = 2;walls = 2;
+		}
     }else if(hbox_num == 2){
         if(!instance_exists(thedice)){
 			destroyed = true;
 		}
-		hitbox_timer = 0;
+		hitbox_timer = min(hitbox_timer,10);
     }
 }
 
@@ -131,64 +130,69 @@ if(attack == AT_FSPECIAL){
 	        }
         }
         if(hitstop <= 0){
-        if(vsp > 8 || num == 7 && vsp > 2){ //spike
+        if(vsp > 8 || token_num == 7 && vsp > 2){ //spike
 			kb_angle = 270;
+			if(player_id.runeJ){random_angle();}
 			if(abs(hsp) < 8 && abs(vsp) < 8){
-				kb_value = 4;kb_scale = 0.5+(statboost/3);damage = originaldamage;
-				hitpause = 8;hitpause_growth = .7;
+				kb_value = 4;kb_scale = 0.5+(statboost/3)*critboost_kb_scale;damage = originaldamage*critboost_dmg;
+				hitpause = 8;hitpause_growth = .7;hitstun_factor = 0.9;
             	sound_effect = asset_get("sfx_shovel_hit_heavy2");hit_effect = 302;
 			}else{
-				kb_value = 6;kb_scale = 0.6+(statboost/3);damage = originaldamage+(2+(statboost*10));
-				hitpause = 12;hitpause_growth = 1;
+				kb_value = 6;kb_scale = 0.6+(statboost/3)*critboost_kb_scale;damage = originaldamage+(2+(statboost*10))*critboost_dmg;
+				hitpause = 12;hitpause_growth = 1;hitstun_factor = 1;
             	sound_effect = asset_get("sfx_shovel_hit_heavy1");hit_effect = 304;
 			}
 		}else{
 			if(abs(hsp) < 8 && abs(vsp) < 8){
-				kb_value = 6;kb_scale = 0.6+statboost;damage = originaldamage;
-				hitpause = 8;hitpause_growth = .7;
+				kb_value = 6;kb_scale = 0.6+statboost*critboost_kb_scale;damage = originaldamage*critboost_dmg;
+				hitpause = 8;hitpause_growth = .7;hitstun_factor = 0.9;
             	sound_effect = asset_get("sfx_shovel_hit_heavy2");hit_effect = 302;
 			}else{
-				kb_value = 7;kb_scale = 0.8+statboost;damage = originaldamage+(2+(statboost*10));
-				hitpause = 12;hitpause_growth = 1;
+				kb_value = 7;kb_scale = 0.8+statboost*critboost_kb_scale;damage = originaldamage+(2+(statboost*10))*critboost_dmg;
+				hitpause = 12;hitpause_growth = 1;hitstun_factor = 1;
             	sound_effect = asset_get("sfx_shovel_hit_heavy1");hit_effect = 304;
 			}
 		}
+		if(hbox_num == 1 && (token_num == 0 || token_num == 5 || token_num == 6 || token_num == 7) && abs(hsp) < 8 && abs(vsp) < 8){ //lower hitstun for certain normal tokens when moving slowly (hat, iron, duck, shoe)
+        	hitstun_factor = 0.7;
+        }
+		
 		if(vsp < -8){ //up angle
-			kb_angle = 90;
-		}else if(vsp < 8 && num != 7){ //horizontal angle
-			kb_angle = 45;
+			kb_angle = 90;if(player_id.runeJ){random_angle();}
+		}else if(vsp < 8 && token_num != 7){ //horizontal angle
+			kb_angle = 45;if(player_id.runeJ){random_angle();}
 		}
-        num = originalnum;
-        if(num == 0){ //top hat
+        token_num = originalnum;
+        if(token_num == 0){ //top hat
         	if(!free){
         		vsp = -6;
         	}
-        }else if(num == 1){ //dog
+        }else if(token_num == 1){ //dog
         	if(abs(hsp) < 4){
 				hsp += 0.5*spr_dir;
 			}
         	if(!free){
-	        	if((position_meeting(x,y+30,asset_get("par_block")) || position_meeting(x,y+30,asset_get("par_jumpthrough"))) && (!position_meeting(x+45*spr_dir,y+30,asset_get("par_block")) && !position_meeting(x+45*spr_dir,y+30,asset_get("par_jumpthrough")))){
+	        	if(hit_priority > 0 && ((position_meeting(x,y+30,asset_get("par_block")) || position_meeting(x,y+30,asset_get("par_jumpthrough"))) && (!position_meeting(x+45*spr_dir,y+30,asset_get("par_block")) && !position_meeting(x+45*spr_dir,y+30,asset_get("par_jumpthrough"))))){
 		        	hsp += 3*spr_dir;vsp = -10;can_hit[1] = true;can_hit[2] = true;can_hit[3] = true;can_hit[4] = true;
-		        }else{
+		        }else if(hit_priority > 0){
 		        	vsp = -2;
 		        }
 	        }
-        }else if(num == 2){ //cat
+        }else if(token_num == 2){ //cat
         	if(abs(hsp) < 3){
 				hsp += 0.5*spr_dir;
 			}
         	if(!free){
-	        	if((position_meeting(x,y+30,asset_get("par_block")) || position_meeting(x,y+30,asset_get("par_jumpthrough"))) && (!position_meeting(x+45*spr_dir,y+30,asset_get("par_block")) && !position_meeting(x+45*spr_dir,y+30,asset_get("par_jumpthrough")))){
+	        	if(hit_priority > 0 && ((position_meeting(x,y+30,asset_get("par_block")) || position_meeting(x,y+30,asset_get("par_jumpthrough"))) && (!position_meeting(x+45*spr_dir,y+30,asset_get("par_block")) && !position_meeting(x+45*spr_dir,y+30,asset_get("par_jumpthrough"))))){
 		        	hsp += 1*spr_dir;vsp = -12;can_hit[1] = true;can_hit[2] = true;can_hit[3] = true;can_hit[4] = true;
-		        }else{
+		        }else if(hit_priority > 0){
 		        	vsp = -1.5;
 		        }
 	        }
         	if(landtimer > 0 && (position_meeting(x,y+20,asset_get("par_block")) || position_meeting(x,y+20,asset_get("par_jumpthrough")))){
 	        	landtimer = 20;
 	        }
-        }else if(num == 3){ //car
+        }else if(token_num == 3){ //car
 			if(abs(hsp) < 20){
 				if(abs(hsp) < 2){
 					hsp += 0.025*spr_dir;
@@ -196,7 +200,7 @@ if(attack == AT_FSPECIAL){
         			hsp += 0.5*spr_dir;
         		}
 			}
-        }else if(num == 4){ //plane
+        }else if(token_num == 4){ //plane
         	if(abs(hsp) < 20){
         		if(abs(hsp) < 1){
 					hsp += 0.025*spr_dir;
@@ -220,7 +224,7 @@ if(attack == AT_FSPECIAL){
 				}
 			}
         	grav = 0;
-        }else if(num == 5){ //duck
+        }else if(token_num == 5){ //duck
         	if(abs(hsp) < 4){
 				hsp += 0.05*spr_dir;
 			}if(num2 == 0){
@@ -235,11 +239,11 @@ if(attack == AT_FSPECIAL){
 				}
 			}
         	grav = 0;
-        }else if(num == 6){ //iron
+        }else if(token_num == 6){ //iron
         	if(abs(hsp) < 5 && !free){
 				hsp += 0.25*spr_dir;
 			}
-        }else if(num == 7){ //shoe
+        }else if(token_num == 7){ //shoe
         	if(abs(hsp) < 1){
 				hsp += 0.1*spr_dir;
 			}
@@ -271,8 +275,10 @@ if(attack == AT_FSPECIAL){
         	landtimer -= 1;
         //}
         }
-	    if(instance_exists(thedice) && hit_priority > 0){
+        if(instance_exists(thedice)){
 	    	thedice.x = x; thedice.y = y;
+	    }
+	    if(instance_exists(thedice) && hit_priority > 0){
     	    with(asset_get("pHitBox")){
     	    	if(place_meeting(x,y,other.thedice)){
     	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox /*&& player != other.current_player*/ && other != self && effect != 100){
@@ -308,7 +314,7 @@ if(attack == AT_FSPECIAL){
 	    	    		            }else{
 	    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*2);
 	    	    		            }
-    	    	        		}
+    	    	        		}other.hit_priority = 4;
     	    	                spawn_hit_fx(other.x, other.y, hit_effect);
     	    					sound_play(sound_effect);
     	    	                other.lasthitbox = id;other.hitbox_timer = 0;
@@ -317,7 +323,9 @@ if(attack == AT_FSPECIAL){
     	            }
     	        }
     	    }
-	    }
+	    }else if(!instance_exists(thedice) && dicetimer >= 10 && hit_priority > 0){
+			destroyed = true;
+		}
 	    if(hitstop <= 0){
 	    	in_hitpause = false;hitlockout -= 1;
 	    	if (instance_exists(lasthitbox)) {
@@ -330,19 +338,28 @@ if(attack == AT_FSPECIAL){
 	    }
 	    if(hit_priority > 0 && (x > room_width+400 || x < -400 || y >= room_height+300) || hit_priority <= 0 && (x > room_width || x < 0 || y >= room_height) || y < -2000 || hitbox_timer >= length){
 		    destroyed = true;
+		    if(instance_exists(thedice)){
+		    	thedice.destroyed = true;
+		    }
 		}
-		hitbox_timer = 0;
+		hitbox_timer = min(hitbox_timer,10);
 		dicetimer += 1;
 		if(dicetimer >= 90){
 			if(player_id.thetoken == self){
 				player_id.thetoken = noone;
 			}
 		}
+		if(hit_priority <= 0){
+			grounds = 1;walls = 1;
+		}else{
+			grounds = 0;walls = 2;
+		}
     }
 }
 
 if(attack == AT_USPECIAL){
 	if(hbox_num == 2){
+		if(!Pocketed){
 		hitbox_timer = 0;
 		
 		if(free){
@@ -353,23 +370,23 @@ if(attack == AT_USPECIAL){
 			}
 			//num = 0;
 			if(vsp > 3){ //spike
-				kb_angle = 270;
+				kb_angle = 270;if(player_id.runeJ){random_angle();}
 				if(num == 0){
-		    		kb_value = 8;kb_scale = 0.8;damage = 12;dicearmor = 10;dicearmor2 = 10;
+		    		kb_value = 8;kb_scale = 0.8*critboost_kb_scale;damage = 12*critboost_dmg;dicearmor = 10;dicearmor2 = 10;
 				}else{
-					kb_value = 6;kb_scale = 0.6;damage = 8;dicearmor = 5;dicearmor2 = 5;
+					kb_value = 6;kb_scale = 0.6*critboost_kb_scale;damage = 8*critboost_dmg;dicearmor = 5;dicearmor2 = 5;
 				}
 			}else{
 				if(num == 0){
-					kb_value = 8;kb_scale = 1.0;damage = 12;dicearmor = 10;dicearmor2 = 10;
+					kb_value = 8;kb_scale = 1.0*critboost_kb_scale;damage = 12*critboost_dmg;dicearmor = 10;dicearmor2 = 10;
 				}else{
-					kb_value = 8;kb_scale = 0.9;damage = 8;dicearmor = 5;dicearmor2 = 5;
+					kb_value = 8;kb_scale = 0.9*critboost_kb_scale;damage = 8*critboost_dmg;dicearmor = 5;dicearmor2 = 5;
 				}
 			}
 			if(vsp < -5){ //up angle
-				kb_angle = 90;
+				kb_angle = 90;if(player_id.runeJ){random_angle();}
 			}else if(vsp < 3){ //horizontal angle
-				kb_angle = 45;
+				kb_angle = 45;if(player_id.runeJ){random_angle();}
 			}num2 = 0;
 		}else{
 			/*num += 1;
@@ -462,6 +479,12 @@ if(attack == AT_USPECIAL){
 	    }else{
 	    	hitstop -= 1;
 	    }
+		}else if(Pocketed){
+			if(instance_exists(thedice)){
+				thedice.x = x;thedice.y = y-9999;thedice.spr_dir = spr_dir;
+				thedice.hsp = round(hsp);thedice.vsp = vsp;
+			}
+		}
 	}else if(hbox_num == 3){
 		depth = -2;hsp = 0;vsp = 0;hitbox_timer = 0;spr_dir = 1;
 		/*if((!free || place_meeting(x,y,asset_get("par_block")) && hit_priority > 0) || y >= room_height+500 || x >= room_width+1000 || x < -1000){
@@ -479,7 +502,7 @@ if(attack == AT_USPECIAL){
 if(attack == AT_DSPECIAL){
 	if(hbox_num == 1 || hbox_num == 2 || hbox_num == 3){
 		hitbox_timer = 0;
-		num = originalnum;
+		//num = originalnum;
 		//spr_dir = 1;
 		moneytimer += 1;
 		if(hbox_num == 1){
@@ -489,7 +512,7 @@ if(attack == AT_DSPECIAL){
 			}
 			if(moneytimer >= 300){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 302);
-		    	player_id.current_money += 500;moneytimer = 0;
+		    	player_id.current_money += 1500*income_boost;moneytimer = 0;
 			}
 		}else if(hbox_num == 2){
 			if(housemoney >= 30000){
@@ -498,12 +521,12 @@ if(attack == AT_DSPECIAL){
 			}
 			if(moneytimer >= 300){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 304);
-		    	player_id.current_money += 1000;moneytimer = 0;
+		    	player_id.current_money += 3000*income_boost;moneytimer = 0;
 			}
 		}else if(hbox_num == 3){
 			if(moneytimer >= 600){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 304);
-		    	housemoney += 500;moneytimer = 0;
+		    	housemoney += 500*income_boost;moneytimer = 0;
 			}
 		}
 		if(hbox_num == 1 && housemoney >= 10000 || hbox_num == 2 && housemoney >= 30000){
@@ -554,7 +577,7 @@ if(attack == AT_DSPECIAL){
     	    	if(place_meeting(x,y,other/*.thedice*/)){
     	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && player != other.player && get_player_team(player) != get_player_team(other.player) && other != self && effect != 100){
     	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 && type <= 1){
-    	            		if(throws_rock < 1 && type <= 1){
+    	            		if(throws_rock < 1 && type <= 1 && !other.player_id.runeF){
     	            			other.hp -= round(damage*(1+(player_id.strong_charge/100)));
     	            		}
     	    	                other.hitplayertimer -= 10;
@@ -612,17 +635,20 @@ if(attack == AT_DSPECIAL){
 		    	    	sound_play(sound_get("money_pickup2"),false,noone,2);sound_play(sound_get("soldsfx"),false,noone,2);
 		    	    	spawn_hit_fx(round(x), round(y), 302);
 		    	    	if(hbox_num == 1){
-		    	    		player_id.current_money += 1000;
+		    	    		player_id.current_money += 1000*income_boost;
 		    	    	}else if(hbox_num == 2){
-		    	    		player_id.current_money += 2000;
+		    	    		player_id.current_money += 3000*income_boost;
 		    	    	}
 		    	    	playermoneytimer = 6;
 	    			}
 	    			if("current_money" in self){
 	    				if(other.hbox_num == 1){
-		    	    		current_money -= 1000;
+		    	    		current_money -= 1000*income_boost;
 		    	    	}else if(other.hbox_num == 2){
-		    	    		current_money -= 3000;
+		    	    		current_money -= 3000*income_boost;
+		    	    	}
+		    	    	if(current_money < 0){
+		    	    		current_money = 0;
 		    	    	}
 	                }
 	    		}
@@ -765,23 +791,28 @@ if(attack == AT_DSPECIAL){
 if(attack == AT_JAB){
 	if(hbox_num == 10){
 		hsp *= 0.95;vsp *= 0.95;
-		if(hitbox_timer >= 16){
+		if(hitbox_timer >= 10){
 			hit_priority = 0;image_xscale = 0.2;image_yscale = 0.2;
-		}if(hitbox_timer >= 90){
-			depth = -2;
-		}
+		}if(hitbox_timer >= 100)depth = -2;
 		if(!free){
 			destroyed = true;
 			//create_hitbox(AT_JAB, 11, round(x), round(y+8));
 			var pile = create_hitbox(AT_JAB, 11, round(x), round(y+8));
-            pile.value = value;
+            pile.value = value;pile.hitbox_timer = hitbox_timer;
 			sound_play(sound_get("money_land"),false,noone,2);
+		}
+		var distance = point_distance(x, y, player_id.x, player_id.y - 30);
+		if(hitbox_timer >= 70 && (!player_id.runeK && distance < 90 || player_id.runeK && distance < 300)
+		&& player_id.state != PS_HITSTUN && player_id.state != PS_HITSTUN_LAND && player_id.state != PS_PRATFALL && player_id.state != PS_PRATLAND && player_id.state != PS_DEAD && player_id.state != PS_RESPAWN){
+			var angle = point_direction(x, y, player_id.x, player_id.y - 30);
+			hsp = lengthdir_x(5, angle);
+			vsp = lengthdir_y(5, angle);
 		}
 		if (y >= room_height+500 || x >= room_width+1000 || x < -1000) {
 			destroyed = true;
 		}
 	}else if(hbox_num == 11){
-		depth = -2;
+		if(hitbox_timer >= 100)depth = -2;
 		if(free){
 			num += 1;
 			if(num >= 10 && !destroyed){
@@ -792,7 +823,7 @@ if(attack == AT_JAB){
 		}else{
 			num = 0;
 		}
-		if(hitbox_timer >= 120){
+		if(hitbox_timer >= 180){
 			if(hitbox_timer >= 120 && hitbox_timer < 240 && hitbox_timer % 12 == 0 || hitbox_timer >= 240 && hitbox_timer % 5 == 0){
 		    	if(num2 == 0){
 		    		sprite_index = asset_get("empty_sprite");num2 = 1;
@@ -806,17 +837,20 @@ if(attack == AT_JAB){
 			}
 		}
 	}
-	if(!destroyed && /*(hbox_num == 10 && hitbox_timer >= 90 || hbox_num == 11)*/ hbox_num == 11 && hitbox_timer <= 10){
-			with(asset_get("pHitBox")){
-				var dist = point_distance(other.x, other.y, x, y); //distance
-    	    	if((other.hbox_num == 10 || other.hbox_num == 11 && dist < 25) && place_meeting(x,y,other)){
-    	            if(get_player_team(player) == get_player_team(other.player) && "current_money" in player_id && attack == AT_JAB && hbox_num == 11 && !destroyed){
-    	            	other.destroyed = true;
-			            value += other.value;hitbox_timer = 0;
-    	            }
-    	        }
-    	    }
-		}
+	if(!destroyed && (hbox_num == 10 && hitbox_timer >= 60 && hitbox_timer % 10 == 0 || hbox_num == 11 && hitbox_timer <= 10)){
+		with(asset_get("pHitBox")){
+			var dist = point_distance(other.x, other.y, x, y); //distance
+	    	if(self != other && ((other.hbox_num == 10 && dist < 65 || other.hbox_num == 11 && dist < 50) || place_meeting(x,y,other))){
+	            if(/*get_player_team(player) == get_player_team(other.player) &&*/ "current_money" in player_id && attack == AT_JAB && hbox_num == other.hbox_num && !destroyed && !other.destroyed){
+	            	other.destroyed = true;
+		            value += other.value;
+		            if(hbox_num == 11){
+		            	hitbox_timer = 0;
+		            }
+	            }
+	        }
+	    }
+	}
 	
 	if((hbox_num == 10 || hbox_num == 11) && value >= 1000){
 		if(value >= 1000 && get_gameplay_time() % 14 == 0 || value >= 2000 && get_gameplay_time() % 10 == 0 || value >= 3000 && get_gameplay_time() % 6 == 0 || value >= 4000 && get_gameplay_time() % 2 == 0){
@@ -824,22 +858,17 @@ if(attack == AT_JAB){
 	    	var sparkle = spawn_hit_fx((x) + round(lengthdir_x(15, rand_dir)), y + round(lengthdir_y(15, rand_dir)), player_id.fx_shine_small);sparkle.depth = depth-1;
 		}
 	}
-	if(hbox_num == 10 && hitbox_timer >= 90 || hbox_num == 11){
+	if((hbox_num == 10 || hbox_num == 11) && hitbox_timer >= 70){
         with(oPlayer){
             //var dist = point_distance(other.x, other.y+50, x, y); //distance
             //if(dist <= 60 && !other.destroyed && hitstun <= 0){
-            if(place_meeting(x,y,other) && !other.destroyed && /*hitstun <= 0*/ state != PS_HITSTUN && state != PS_HITSTUN_LAND && state != PS_PRATFALL && state != PS_PRATLAND && state != PS_DEAD && state != PS_RESPAWN){
+            if(place_meeting(x,y,other) && !other.destroyed && /*hitstun <= 0*/ state != PS_HITSTUN && state != PS_HITSTUN_LAND && state != PS_PRATFALL && state != PS_PRATLAND && state != PS_DEAD && state != PS_RESPAWN
+            && (get_player_team(player) == get_player_team(other.player) && other.hitbox_timer >= 70 || get_player_team(player) != get_player_team(other.player) && other.hitbox_timer >= 100)){
                 with(other){
                     destroyed = true;
                     rand = random_func(0, 3, true);                    
                     sound_play(sound_get("money_pickup"+string(rand+1)));
                 }
-                /*if(get_player_team(player) == get_player_team(other.player) && self != other.player_id){
-                    other.player_id.current_money += 600;
-                }
-                if("current_money" in self){
-                    current_money += 600;
-                }*/
                 if(get_player_team(player) == get_player_team(other.player) && self != other.player_id){
                     other.player_id.current_money += other.value;
                 }
@@ -852,7 +881,7 @@ if(attack == AT_JAB){
 }
 
 if(attack == AT_DATTACK){
-	if(hbox_num == 4){
+	if(hbox_num == 4 && !Pocketed){
 		hitbox_timer = 0;
 		
 		with(player_id){
@@ -866,20 +895,20 @@ if(attack == AT_DATTACK){
 			hsp += 0.05*spr_dir;
 		//}
 		if(abs(hsp) > 14 || abs(vsp) > 14){
-			kb_value = 8;kb_scale = 1.0;
-            hitstun_factor = 1;damage = 10;kb_angle = 361;
+			kb_value = 8;kb_scale = 1.0*critboost_kb_scale;
+            hitstun_factor = 1;damage = 10*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
             hitpause = 12;hitpause_growth = 1;
             sound_effect = asset_get("sfx_shovel_hit_heavy1");
 			hit_priority = 2;num = 1;hit_effect = 304;
 		}else if(abs(hsp) > 7 || abs(vsp) > 7){
-			kb_value = 7;kb_scale = 0.9;
-            hitstun_factor = 0.9;damage = 7;kb_angle = 361;
+			kb_value = 7;kb_scale = 0.9*critboost_kb_scale;
+            hitstun_factor = 0.9;damage = 7*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
             hitpause = 8;hitpause_growth = .7;
             sound_effect = asset_get("sfx_shovel_hit_heavy1");
 			hit_priority = 2;num = 2;hit_effect = 304;
 		}else if(abs(hsp) > 3 || abs(vsp) > 3){
-			kb_value = 6;kb_scale = 0.5;
-            hitstun_factor = 0.5;damage = 4;kb_angle = 361;
+			kb_value = 6;kb_scale = 0.5*critboost_kb_scale;
+            hitstun_factor = 0.5;damage = 4*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
             hitpause = 6;hitpause_growth = .5;
             sound_effect = asset_get("sfx_shovel_hit_heavy2");
 			hit_priority = 2;num = 3;hit_effect = 302;
@@ -965,6 +994,11 @@ if(attack == AT_DATTACK){
 	    }else{
 	    	hitstop -= 1;
 	    }
+	}else if(Pocketed){
+		if(instance_exists(thedice)){
+			thedice.x = x;thedice.y = y-9999;thedice.spr_dir = spr_dir;
+			thedice.hsp = round(hsp);thedice.vsp = vsp;
+		}
 	}
 	if(hbox_num == 10){
 		hitbox_timer = 0;
@@ -972,35 +1006,35 @@ if(attack == AT_DATTACK){
     	with(asset_get("pHitBox")){
 			if(place_meeting(x,y,other) && other.player_id.state != PS_HITSTUN && other.player_id.state != PS_HITSTUN_LAND){
 		    	if(damage > 0 && kb_value > 0 && hit_priority > 0 && other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox && player != other.player){
-				    	other.hitlockout = 6;other.hitlockout2 = 10;
-    	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-    	    	        			if(other.hitpausehit <= 0){
-    	    	        				other.hitpausehit = 5;
-    	    	        			}
-    	    	        			other.hitstop = other.hitpausehit;
-						other.player_id.hitpause = true;other.player_id.hitstop = hitpause;
-						if(kb_value+(kb_scale*6) > other.armor){
-	                	knockback_angle = kb_angle;
-    	    	        			other.knockback_power = kb_value;
-	    	    		            other.player_id.old_hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
-	    	    		            if(other.player_id.old_hsp > 0){
-	    	    		            	other.spr_dir = 1;
-	    	    		            }else if(other.player_id.old_hsp < 0){
-	    	    		            	other.spr_dir = -1;
-	    	    		            }
-	    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
-	    	    		                other.player_id.old_vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
-	    	    		            }else{
-	    	    		                other.player_id.old_vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
-	    	    		            }
-						}
-						if(type == 1){
-	    	        		player_id.hitpause = true;player_id.hitstop = hitpause;
-	                		player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-						}
-						spawn_hit_fx(other.x, other.y, hit_effect);
-    	    					sound_play(sound_effect);
-    	    	                other.lasthitbox = id;other.hitbox_timer = 0;
+			    	other.hitlockout = 6;other.hitlockout2 = 10;
+        			other.hitpausehit = hitpause;other.in_hitpause = true;
+        			if(other.hitpausehit <= 0){
+        				other.hitpausehit = 5;
+        			}
+        			other.hitstop = other.hitpausehit;
+					other.player_id.hitpause = true;other.player_id.hitstop = hitpause;
+					if(kb_value+(kb_scale*6) > other.armor){
+                		knockback_angle = kb_angle;
+	        			other.knockback_power = kb_value;
+    		            other.player_id.old_hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
+    		            if(other.player_id.old_hsp > 0){
+    		            	other.spr_dir = 1;
+    		            }else if(other.player_id.old_hsp < 0){
+    		            	other.spr_dir = -1;
+    		            }
+    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
+    		                other.player_id.old_vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+    		            }else{
+    		                other.player_id.old_vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+    		            }
+					}
+					if(type == 1){
+    	        		player_id.hitpause = true;player_id.hitstop = hitpause;
+                		player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+					}
+					spawn_hit_fx(other.x, other.y, hit_effect);
+					sound_play(sound_effect);
+	                other.lasthitbox = id;other.hitbox_timer = 0;
 		    	}
 			}
 		}
@@ -1026,27 +1060,27 @@ if(attack == AT_BAIR){
 		angle = darctan2(-vsp * spr_dir, hsp * spr_dir);proj_angle = angle;
 		
 		if(vsp > 5){ //spike
-			kb_angle = 270;
+			kb_angle = 270;if(player_id.runeJ){random_angle();}
 	    	if(hbox_num == 3){
-	    		kb_value = 4;kb_scale = 0.3;
+	    		kb_value = 4;kb_scale = 0.3*critboost_kb_scale;
 	    	}else if(hbox_num == 4){
-	    		kb_value = 5;kb_scale = 0.5;
+	    		kb_value = 5;kb_scale = 0.5*critboost_kb_scale;
 	    	}else if(hbox_num == 5){
-	    		kb_value = 6;kb_scale = 0.6;
+	    		kb_value = 6;kb_scale = 0.6*critboost_kb_scale;
 	    	}
 		}else{
 			if(hbox_num == 3){
-	    		kb_value = 6;kb_scale = 0.3;
+	    		kb_value = 6;kb_scale = 0.3*critboost_kb_scale;
 	    	}else if(hbox_num == 4){
-	    		kb_value = 7;kb_scale = 0.75;
+	    		kb_value = 7;kb_scale = 0.75*critboost_kb_scale;
 	    	}else if(hbox_num == 5){
-	    		kb_value = 8;kb_scale = 1.0;
+	    		kb_value = 8;kb_scale = 1.0*critboost_kb_scale;
 	    	}
 		}
 		if(vsp < -5){ //up angle
-			kb_angle = 90;
+			kb_angle = 90;if(player_id.runeJ){random_angle();}
 		}else if(vsp < 5){ //horizontal angle
-			kb_angle = 45;
+			kb_angle = 45;if(player_id.runeJ){random_angle();}
 		}
 		
 		with(asset_get("pHitBox")){
@@ -1087,6 +1121,7 @@ if(attack == AT_BAIR){
 		    	}
         	}
         }
+        //print(Pocket_hud_imageindex);
 	}
 }
 
@@ -1136,17 +1171,17 @@ if(attack == AT_DSTRONG && hbox_num == 6){
     if(instance_exists(reflect_target)){
     	with(reflect_target){
     		player = other.player;
-            		spr_dir = other.spr_dir; //flips it to monopoly's direction
-            		var oldspeed = abs(hsp)+abs(vsp);
-	    			hsp = (10+(oldspeed/2))*other.spr_dir;vsp = -(10+(oldspeed/2));
+    		spr_dir = other.spr_dir; //flips it to monopoly's direction
+    		var oldspeed = abs(hsp)+abs(vsp);
+			hsp = (10+(oldspeed/2))*other.spr_dir;vsp = -(10+(oldspeed/2));
     		if("was_parried" in self){
 		    	was_parried = true;
 			}if("hitbox_timer" in self){
 		    	hitbox_timer = 0;
 			}if("damage" in self){
 		    	damage *= 1.5;
-			}if("kb_value" in self){
-		    	kb_value *= 1.25;
+			}if("kb_scale" in self){
+			    kb_scale *= 1.25;
 			}if("hit_priority" in self && hit_priority <= 0){
 				hit_priority = 1;
 			}
@@ -1155,5 +1190,9 @@ if(attack == AT_DSTRONG && hbox_num == 6){
     	sound_play(sound_get("reflect"));
     }
 }
+
+#define random_angle
+	kb_angle = random_func(0, 360, true);
+	hit_flipper = random_func(1, 11, true);
 
 draw_xscale = spr_dir;

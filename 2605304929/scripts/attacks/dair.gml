@@ -9,7 +9,7 @@ set_attack_value(attack, AG_HURTBOX_AIR_SPRITE, 0);
 set_attack_value(attack, AG_NUM_WINDOWS, 3);
 set_attack_value(attack, AG_HAS_LANDING_LAG, 1);
 set_attack_value(attack, AG_OFF_LEDGE, 0);
-set_attack_value(attack, AG_LANDING_LAG, 8);
+set_attack_value(attack, AG_LANDING_LAG, 6);
 set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
 
@@ -63,16 +63,16 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -1);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 35);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 60);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
-//set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // 304 - basic large
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); // 304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 hitbox_num++;
 /*
 //Body sourspot hitbox (Aka nipple hitbox)

@@ -1,0 +1,1 @@
+personaQuips[10] = "EE OING!";

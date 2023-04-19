@@ -120,9 +120,9 @@ if (state = 2)
     if (player_id.meem_num > 0)
     {
 	
-	if (obj_article_solid.free != true)
+	if (obj_article_solid.free == true or false)
 	{
-		mstrength = mstrength / 4;
+		mstrength = mstrength / 3;
 	}
 	
 	if (mstrength > 20)

@@ -31,7 +31,7 @@ set_hitbox_value(43, 1, HG_HITBOX_Y, -55);
 set_hitbox_value(43, 1, HG_PRIORITY, 9);
 set_hitbox_value(43, 1, HG_DAMAGE, 1);
 set_hitbox_value(43, 1, HG_TECHABLE, 2);
-set_hitbox_value(43, 1, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(43, 1, HG_VISUAL_EFFECT, hit_proj);
 set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(43, 1, HG_HIT_PARTICLE_NUM, 1);
 

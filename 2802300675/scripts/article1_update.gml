@@ -54,7 +54,7 @@ if (state == 1){
     				proj_sprdir = hitbox_hit.spr_dir
     				hitby = hitbox_hit.player_id;
     				
-    			if(hitbox_hit.player_id.attack == AT_NSPECIAL && hitbox_hit.hbox_num == 1){	
+    			if(hitbox_hit.player_id.attack == AT_NSPECIAL && hitbox_hit.hbox_num == 1 && hitbox_hit.destroy_fx = player_id.hitsmoke){	
     				/*if(hitby.spr_dir != proj_sprdir){
     					proj_sprdir = proj_sprdir * -1;
     				}*/
@@ -68,9 +68,9 @@ if (state == 1){
     					hbox.hsp = -9;
     					hbox.spr_dir = -1;
     				}
-    				projectile_hit_cooldown = 60;
+    				projectile_hit_cooldown = 50;
     				hitbox_hit.destroyed = true;
-    			} if(hitbox_hit.player_id.attack == AT_NSPECIAL && hitbox_hit.hbox_num == 2){	
+    			} if(hitbox_hit.player_id.attack == AT_NSPECIAL && hitbox_hit.hbox_num == 2 && hitbox_hit.destroy_fx = player_id.hitsmoke){	
     				/*if(hitby.spr_dir != proj_sprdir){
     					proj_sprdir = proj_sprdir * -1;
     				}*/
@@ -84,7 +84,7 @@ if (state == 1){
     					hbox.hsp = -11;
     					hbox.spr_dir = -1;
     				}
-    				projectile_hit_cooldown = 60;
+    				projectile_hit_cooldown = 50;
     				hitbox_hit.destroyed = true;
     				}
     				
@@ -107,7 +107,7 @@ with (pHitBox){
 }
 
 //Fspecial and Dspecial interactions
-	    player_id.player_in_smog = false;
+	player_id.player_in_smog = false;
 	playerdetect = collision_circle(x , y - 40, 90, oPlayer, false, false);
 	if (playerdetect != noone && instance_exists(playerdetect)){
 	    	with(playerdetect){
@@ -141,6 +141,8 @@ with (pHitBox){
 	    	 		destroy_hitboxes();
 	    	 		attack_end();
 	    	 		attack = AT_DSPECIAL_2;
+	    	 		        other.state = 2;
+        					other.state_timer = 0;
 	    	 		if(window == 3 && window_timer > 3){
 	    	 			create_hitbox(AT_DSPECIAL_2, 1, x, y);
 	    	 			}
@@ -148,7 +150,8 @@ with (pHitBox){
 	    		}
 	    	}
 	    }
-	}	player_id.player_in_smog = false;
+	}	
+	player_id.player_in_smog = false;
 	playerdetect = collision_circle(x , y - 40, 90, player_id, false, false);
 	if (playerdetect != noone && instance_exists(playerdetect)){
 	    	with(playerdetect){
@@ -181,15 +184,16 @@ with (pHitBox){
 	    	 		destroy_hitboxes();
 	    	 		attack_end();
 	    	 		attack = AT_DSPECIAL_2;
+	    	 		        other.state = 2;
+        					other.state_timer = 0;
 	    	 		if(window == 3 && window_timer > 3){
 	    	 			create_hitbox(AT_DSPECIAL_2, 1, x, y);
 	    	 				}
 	    				}
 	    			}
 	    }
-	}if(!collision_circle(x , y - 40, 90, self, false, false)){
-			player_id.player_in_smog = false;
-			//init_shader();
+	}if(!collision_circle(x , y - 40, 90, oPlayer, false, false)){
+				player_id.player_in_smog = false;
 	}
 	
 	//poison cloud
@@ -301,7 +305,7 @@ if (state == 3){
     				proj_sprdir = hitbox_hit.spr_dir
     				hitby = hitbox_hit.player_id;
     				
-    			if(hitbox_hit.player_id.attack == AT_NSPECIAL && hitbox_hit.hbox_num == 1){	
+    			if(hitbox_hit.player_id.attack == AT_NSPECIAL && hitbox_hit.hbox_num == 1 && hitbox_hit.destroy_fx = player_id.hitsmoke){	
     				/*if(hitby.spr_dir != proj_sprdir){
     					proj_sprdir = proj_sprdir * -1;
     				}*/
@@ -317,7 +321,7 @@ if (state == 3){
     				}
     				projectile_hit_cooldown = 60;
     				hitbox_hit.destroyed = true;
-    			} if(hitbox_hit.player_id.attack == AT_NSPECIAL && hitbox_hit.hbox_num == 2){	
+    			} if(hitbox_hit.player_id.attack == AT_NSPECIAL && hitbox_hit.hbox_num == 2 && hitbox_hit.destroy_fx = player_id.hitsmoke){	
     				/*if(hitby.spr_dir != proj_sprdir){
     					proj_sprdir = proj_sprdir * -1;
     				}*/
@@ -354,7 +358,7 @@ with (pHitBox){
 }
 
 //Fspecial and Dspecial interactions
-	    player_id.player_in_smog = false;
+	player_id.player_in_smog = false;
 	playerdetect = collision_circle(x , y - 40, 90, oPlayer, false, false);
 	if (playerdetect != noone && instance_exists(playerdetect)){
 	    	with(playerdetect){
@@ -388,6 +392,8 @@ with (pHitBox){
 	    	 		destroy_hitboxes();
 	    	 		attack_end();
 	    	 		attack = AT_DSPECIAL_2;
+	    	 		        other.state = 2;
+        					other.state_timer = 0;
 	    	 		if(window == 3 && window_timer > 3){
 	    	 			create_hitbox(AT_DSPECIAL_2, 1, x, y);
 	    	 				}
@@ -395,7 +401,7 @@ with (pHitBox){
 	    			}
 	    		}
 	    }
-	} player_id.player_in_smog = false;
+	} 	player_id.player_in_smog = false;
 	playerdetect = collision_circle(x , y - 40, 90, player_id, false, false);
 	if (playerdetect != noone && instance_exists(playerdetect)){
 	    	with(playerdetect){
@@ -428,6 +434,8 @@ with (pHitBox){
 	    	 		destroy_hitboxes();
 	    	 		attack_end();
 	    	 		attack = AT_DSPECIAL_2;
+	    	 		        other.state = 2;
+        					other.state_timer = 0;
 	    	 		if(window == 3 && window_timer > 3){
 	    	 			create_hitbox(AT_DSPECIAL_2, 1, x, y);
 	    	 				}
@@ -467,7 +475,8 @@ if (place_meeting(x, y, asset_get("plasma_field_obj"))) {
 
 
 //Assign each state both a sprite it should have and a way it should animate
-if  (get_player_color(player) != 24) {
+//Assign each state both a sprite it should have and a way it should animate
+if  (get_player_color(player) != 24 && get_player_color(player) != 25) {
 switch(state){
     case 0:
         new_sprite = sprite_get("cloud_idle");
@@ -486,7 +495,7 @@ switch(state){
         animation_type = 2;
         break;
 	}
-}if  (get_player_color(player) == 24) {
+}if  (get_player_color(player) == 24 or get_player_color(player) == 25) {
 switch(state){
     case 0:
         new_sprite = sprite_get("outline_cloud_idle");

@@ -6,44 +6,35 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || a
 }
 
 // removes nametag during respective moves
-/*
+
 if (attack == AT_UAIR || attack == AT_USTRONG || attack == AT_UTILT) {
 
-		draw_indicator = false;
+		//draw_indicator = false;
 		//char_height = 110;
 
 }
-*/
 
-// jab no parry stun
-if(attack == AT_JAB && was_parried){
-    was_parried = false;
+
+// jab handler
+if(attack == AT_JAB){
+
+	// funny new rivals one hit jab universal patch
+	// starting past the third frame of endlag you can cancel into tilts
+	// (on whiff)
+	// also, you can't turn around and do it.
+	if (window == 1) {
+		// reset button
+		set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 0);
+	}
+	if !(has_hit) {
+		if (window == 3) {
+			set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
+		}
+	}
+	
 }
 
 
-// phone cheat that gives jumps on hit
-if (phone_cheats[cheat_hit_jumps] != 0) {
-	if (has_hit == true) {
-		djumps = 0;
-	}
-}
-
-
-// fair buffffff...........
-// (munophone cheat)
-/*
-if (attack == AT_FAIR) {
-	if (phone_cheats[cheat_fair_buff] == 1) {
-		set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 20000);
-		set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 20000);
-	}
-	else if (phone_cheats[cheat_fair_buff] == 0) {
-		// probably shouldn't put constants here but oh well
-		set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 68);
-		set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 84);
-	}
-}
-*/
 
 // for abyss rune M meter
 // when meter is active, make aerials jump and attack cancellable
@@ -168,7 +159,7 @@ if (attack == AT_NSPECIAL){
 		if (ammo == 0) {
 			if (window_timer == 1) {
 				// plays sound when no ammo
-				sound_play(sound_get("pistol_empty"));
+				sound_play(asset_get("sfx_mol_flare_ready"));
 			}
 		}
 	}
@@ -233,8 +224,10 @@ if (attack == AT_FSPECIAL){
 		
 		// sakk wanted this
 		// jump/attack cancel
-		can_attack = true;
-		can_jump = true;
+		if (hitpause == false) {
+			can_attack = true;
+			can_jump = true;
+		}
 		
 		// prevent lingering hitboxes
 		destroy_hitboxes();
@@ -248,9 +241,7 @@ if (attack == AT_FSPECIAL){
 
 	// if the move hasn't hit a player by window 4 and it's in the air, set a cooldown
 	if (window == 4 && free == true && has_hit == false) {
-		if (!phone_cheats[cheat_no_cooldowns] == 1) {
-			move_cooldown[attack] = 1000;
-		}
+		move_cooldown[attack] = 1000;
 	}
 	
 	// cancel fspecial with walljump after/during window 3
@@ -264,6 +255,11 @@ if (attack == AT_FSPECIAL){
 	}
 }
 
+// dair timer (needed for dair's "bounce" to work)
+if (dair_timer > 0 && hitpause == false) {
+	dair_timer = dair_timer - 1;
+}
+
 // WARNING: SPAGHETTI CODE AHEAD
 // dair bounce
 if (attack == AT_DAIR){
@@ -273,7 +269,7 @@ if (attack == AT_DAIR){
 		//can_fast_fall = false;
 		has_run_check = false;
 	}
-	else if (window >= 5){
+	else if (window >= 3){
 		can_fast_fall = true;
 	}
 	
@@ -283,7 +279,9 @@ if (attack == AT_DAIR){
 		if(hitpause == false){
 			// instantly switch to the last window
 			if (!runeH) {
-				window = 5; 
+				window = 4;
+				//window_timer = 10;
+				
 			}
 			else {
 				window = 3;
@@ -298,16 +296,17 @@ if (attack == AT_DAIR){
 
 		// window_timer has run check handler
 		if(has_run_check == false){
-			dair_timer = 2;	
 			window_timer = 0;
+			dair_timer = 2;	
 			has_run_check = true;
 		}
+					
+		
+		// busted but fun
+		//can_attack = true;
 	}
 	
-	// dair timer (needed for dair's "bounce" to work)
-	if (dair_timer > 0 && hitpause == false) {
-		dair_timer = dair_timer - 1;
-	}
+
 	
 	// cancel dair with jump or shield in certain windows
 	/*
@@ -345,11 +344,11 @@ if (attack == AT_USPECIAL){
 		}
 		
 		if (window_timer == 3) {
-			//spawn_dust_fx( x-(4*spr_dir), y, sprite_get("uspecial_effect"), 10 );
+			spawn_dust_fx( x-(4*spr_dir), y, sprite_get("uspecial_effect"), 16 );
 		}
 		
 		if (window_timer == 7) {
-			//spawn_dust_fx( x-(4*spr_dir), y, sprite_get("uspecial_effect"), 10 );
+			spawn_dust_fx( x-(4*spr_dir), y, sprite_get("uspecial_effect"), 16 );
 			
 		}
 
@@ -357,7 +356,7 @@ if (attack == AT_USPECIAL){
 	
 	if (window == 3) {
 		if (window_timer == 2) {
-			spawn_dust_fx( x-(19*spr_dir), y-16, sprite_get("uspecial_aftersmear"), 10 );
+			spawn_dust_fx( x-(21*spr_dir), y-16, sprite_get("uspecial_aftersmear"), 10 );
 		}
 	}
 	
@@ -377,9 +376,7 @@ if (attack == AT_USPECIAL){
 	}
 	
 	// move cooldown for up special, should not be active again until landing
-	if (!phone_cheats[cheat_no_cooldowns] == 1) {
-		move_cooldown[attack] = 10000;	
-	}
+	move_cooldown[attack] = 10000;	
 
 	// up special cancel 
 	// puts user into freefall
@@ -415,7 +412,7 @@ if (attack == AT_USPECIAL){
 		sound_stop(sound_get("tau_charge"));
 		sound_stop(sound_get("tau_charge_quick"));
 		spawn_hit_fx(x, y, 20);
-		sound_play(sound_get("tau_overcharge"));
+		sound_play(sound_uspecial_misfire);
 		
 		can_fast_fall = true;
 		if (!runeC) {
@@ -450,7 +447,7 @@ if (attack == AT_FSTRONG) {
 		if (window_timer = 3) {
 			spawn_dust_fx( x+(25*spr_dir), y-52, sprite_get("fstrong_effect"), 10 );
 			//sound_play(sound_get("crowbar_hit2"));
-			sound_play(sound_get("crowbar_hit2"), false, noone, 0.5, 1);
+			sound_play(sound_fstrong_hitfloor, false, noone, sound_fstrong_hitfloor_volume, 1);
 		}
 	}
 }
@@ -514,6 +511,20 @@ if (attack == AT_TAUNT_2) {
 
 // handles nametag and (abyss rune only) cooldown during taunt
 if (attack == AT_TAUNT) {
+	
+	// toggle viewable boot data in practice
+	if (practice) {
+		if (window == 1 && window_timer == 1) {
+			if (shield_pressed || shield_down) {
+				if (boot_data == 0) {
+					boot_data = 1;
+				}
+				else if (boot_data == 1) {
+					boot_data = 0;
+				}
+			}
+		}
+	}
 	
 	if (window == 1) {
 		char_height = 72;	
@@ -647,53 +658,30 @@ if (attack == AT_DATTACK) {
 	}
 }
 
-
-// code for phone cheat
-var is_shoe = false;
-var hityourself = phone_cheats[cheat_boot_selfdamage];
-
-with (asset_get("pHitBox"))
-{
-    if (player_id == other)
-    {
-		if (attack == AT_DSPECIAL) {
-			var is_shoe = true;
-			var inst = self;
-			
-			if (hsp != 0) && (vsp != 0) {
-				shoe_moving = true;
-			}
-			else {
-				shoe_moving = false;
-			}
-			
-			
-			if (hityourself == true) {
-				can_hit_self = true;
-			}
-			else {
-				can_hit_self = false;
-			}
-		}
-    }
-}
-
 // deathbox for super
 if (attack == AT_DSPECIAL_2) {
-	if (window == 3 && window_timer == 0) {
+	if (window == 3 && has_hit_player) {
 		create_deathbox(
-			x+(992*spr_dir), // x
-			y-36, // y
-			1920, // w
-			20, // h
-			0, // player
+			has_hit_id.x, // x
+			has_hit_id.y, // y
+			100, // w
+			100, // h
+			has_hit_id.player, // player
 			true, // free
 			1, // shape
-			1, // lifespan
+			3, // lifespan
 			2 // bg_type
 		);
 	}
 }
 
+// additional sfx for dspecial
+if (no_copyright == true) {
+	if (attack == AT_DSPECIAL) {
+		if (window == 1 && window_timer == 11) {
+			sound_play(asset_get("sfx_mol_flare_ready"));
+		}
+	}
+}
 
 

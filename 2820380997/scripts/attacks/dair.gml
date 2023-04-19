@@ -74,6 +74,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
 set_hitbox_value(attack, hitbox_num, 81, "Spin 1 Feet");//HG_MUNO_HITBOX_NAME = i;
 hitbox_num++;
 
@@ -99,6 +100,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
 set_hitbox_value(attack, hitbox_num, 81, "Spin 1 Body");//HG_MUNO_HITBOX_NAME = i;
 
 hitbox_num++;
@@ -125,6 +127,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
 set_hitbox_value(attack, hitbox_num, 81, "Spin 2 Feet");//HG_MUNO_HITBOX_NAME = i;
 
 hitbox_num++;
@@ -151,6 +154,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_directional);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
 set_hitbox_value(attack, hitbox_num, 81, "Spin 2 Body");//HG_MUNO_HITBOX_NAME = i;
 
 hitbox_num++;
@@ -177,6 +181,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_medium);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_disperse);
 set_hitbox_value(attack, hitbox_num, 81, "Spin 3 Feet");//HG_MUNO_HITBOX_NAME = i;
 
 hitbox_num++;
@@ -203,6 +208,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, vfx_fire_medium);
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_disperse);
 set_hitbox_value(attack, hitbox_num, 81, "Spin 3 Body");//HG_MUNO_HITBOX_NAME = i;
 
 hitbox_num++;

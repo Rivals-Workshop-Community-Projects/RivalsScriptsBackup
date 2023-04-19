@@ -48,3 +48,24 @@ if (my_hitboxID.attack==AT_UAIR){
 	}
 }
 */
+
+if (my_hitboxID.attack==AT_UAIR){
+	if (my_hitboxID.hbox_num==1){
+		hit_player_obj.y -= 14;
+	}
+}
+if (my_hitboxID.attack==AT_BAIR){
+	if (my_hitboxID.hbox_num==1){
+		sound_play(sound_get("hit_gen_2"), false, noone, 0.7, 0.7);
+	}
+}
+
+
+
+
+
+
+
+
+
+

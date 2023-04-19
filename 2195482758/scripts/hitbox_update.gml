@@ -2,7 +2,6 @@
 if(was_parried)
 {
     reflected = true;
-    transcendent = true;
     
     // if(attack == AT_NSPECIAL && hbox_num == 1)
     // {
@@ -17,41 +16,55 @@ if(was_parried)
 }
 
 
-if(set_transcendent)
-{
-    set_transcendent = false;
+// if(set_transcendent)
+// {
+//     set_transcendent = false;
     
-    transcendent = true;
+//     transcendent = true;
     
-    if(sprite_index == sprite_get("firecracker_single_nooutline")) sprite_index = sprite_get("firecracker_single");
-    if(sprite_index == sprite_get("firecracker_double_nooutline")) sprite_index = sprite_get("firecracker_double");
-    if(sprite_index == sprite_get("firecracker_triple_nooutline")) sprite_index = sprite_get("firecracker_triple");
+//     if(sprite_index == sprite_get("firecracker_single_nooutline")) sprite_index = sprite_get("firecracker_single");
+//     if(sprite_index == sprite_get("firecracker_double_nooutline")) sprite_index = sprite_get("firecracker_double");
+//     if(sprite_index == sprite_get("firecracker_triple_nooutline")) sprite_index = sprite_get("firecracker_triple");
     
-    if(sprite_index == sprite_get("firecracker_single_spin_nooutline")) sprite_index = sprite_get("firecracker_single_spin");
-    if(sprite_index == sprite_get("firecracker_double_spin_nooutline")) sprite_index = sprite_get("firecracker_double_spin");
-    if(sprite_index == sprite_get("firecracker_triple_spin_nooutline")) sprite_index = sprite_get("firecracker_triple_spin");
+//     if(sprite_index == sprite_get("firecracker_single_spin_nooutline")) sprite_index = sprite_get("firecracker_single_spin");
+//     if(sprite_index == sprite_get("firecracker_double_spin_nooutline")) sprite_index = sprite_get("firecracker_double_spin");
+//     if(sprite_index == sprite_get("firecracker_triple_spin_nooutline")) sprite_index = sprite_get("firecracker_triple_spin");
     
-    if(sprite_index == sprite_get("firecracker_single_bunt_nooutline")) sprite_index = sprite_get("firecracker_single_bunt");
-    if(sprite_index == sprite_get("firecracker_double_bunt_nooutline")) sprite_index = sprite_get("firecracker_double_bunt");
-    if(sprite_index == sprite_get("firecracker_triple_bunt_nooutline")) sprite_index = sprite_get("firecracker_triple_bunt");
-}
+//     if(sprite_index == sprite_get("firecracker_single_bunt_nooutline")) sprite_index = sprite_get("firecracker_single_bunt");
+//     if(sprite_index == sprite_get("firecracker_double_bunt_nooutline")) sprite_index = sprite_get("firecracker_double_bunt");
+//     if(sprite_index == sprite_get("firecracker_triple_bunt_nooutline")) sprite_index = sprite_get("firecracker_triple_bunt");
+// }
 
-if(transcendent && hitbox_timer >= player_id.fc_lifetime*0.5)
-{
-    transcendent = false;
+// if(transcendent && hitbox_timer >= player_id.fc_lifetime*0.5)
+// {
+//     transcendent = false;
     
-    if(sprite_index == sprite_get("firecracker_single")) sprite_index = sprite_get("firecracker_single_nooutline");
-    if(sprite_index == sprite_get("firecracker_double")) sprite_index = sprite_get("firecracker_double_nooutline");
-    if(sprite_index == sprite_get("firecracker_triple")) sprite_index = sprite_get("firecracker_triple_nooutline");
+//     if(sprite_index == sprite_get("firecracker_single")) sprite_index = sprite_get("firecracker_single_nooutline");
+//     if(sprite_index == sprite_get("firecracker_double")) sprite_index = sprite_get("firecracker_double_nooutline");
+//     if(sprite_index == sprite_get("firecracker_triple")) sprite_index = sprite_get("firecracker_triple_nooutline");
     
-    if(sprite_index == sprite_get("firecracker_single_spin")) sprite_index = sprite_get("firecracker_single_spin_nooutline");
-    if(sprite_index == sprite_get("firecracker_double_spin")) sprite_index = sprite_get("firecracker_double_spin_nooutline");
-    if(sprite_index == sprite_get("firecracker_triple_spin")) sprite_index = sprite_get("firecracker_triple_spin_nooutline");
+//     if(sprite_index == sprite_get("firecracker_single_spin")) sprite_index = sprite_get("firecracker_single_spin_nooutline");
+//     if(sprite_index == sprite_get("firecracker_double_spin")) sprite_index = sprite_get("firecracker_double_spin_nooutline");
+//     if(sprite_index == sprite_get("firecracker_triple_spin")) sprite_index = sprite_get("firecracker_triple_spin_nooutline");
     
-    if(sprite_index == sprite_get("firecracker_single_bunt")) sprite_index = sprite_get("firecracker_single_bunt_nooutline");
-    if(sprite_index == sprite_get("firecracker_double_bunt")) sprite_index = sprite_get("firecracker_double_bunt_nooutline");
-    if(sprite_index == sprite_get("firecracker_triple_bunt")) sprite_index = sprite_get("firecracker_triple_bunt_nooutline");
-}
+//     if(sprite_index == sprite_get("firecracker_single_bunt")) sprite_index = sprite_get("firecracker_single_bunt_nooutline");
+//     if(sprite_index == sprite_get("firecracker_double_bunt")) sprite_index = sprite_get("firecracker_double_bunt_nooutline");
+//     if(sprite_index == sprite_get("firecracker_triple_bunt")) sprite_index = sprite_get("firecracker_triple_bunt_nooutline");
+// }
+
+// [TEMP]
+if(sprite_index == sprite_get("firecracker_single_nooutline")) sprite_index = sprite_get("firecracker_single");
+if(sprite_index == sprite_get("firecracker_double_nooutline")) sprite_index = sprite_get("firecracker_double");
+if(sprite_index == sprite_get("firecracker_triple_nooutline")) sprite_index = sprite_get("firecracker_triple");
+
+if(sprite_index == sprite_get("firecracker_single_spin_nooutline")) sprite_index = sprite_get("firecracker_single_spin");
+if(sprite_index == sprite_get("firecracker_double_spin_nooutline")) sprite_index = sprite_get("firecracker_double_spin");
+if(sprite_index == sprite_get("firecracker_triple_spin_nooutline")) sprite_index = sprite_get("firecracker_triple_spin");
+
+if(sprite_index == sprite_get("firecracker_single_bunt_nooutline")) sprite_index = sprite_get("firecracker_single_bunt");
+if(sprite_index == sprite_get("firecracker_double_bunt_nooutline")) sprite_index = sprite_get("firecracker_double_bunt");
+if(sprite_index == sprite_get("firecracker_triple_bunt_nooutline")) sprite_index = sprite_get("firecracker_triple_bunt");
+
 
 // var enemybox = noone;
 

@@ -46,7 +46,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
-set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 
 //weaker
@@ -65,5 +65,5 @@ set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.05);
 set_hitbox_value(AT_FSTRONG, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0.7);
-set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));

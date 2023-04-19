@@ -1,8 +1,3 @@
-// MunoPhone Touch code - don't touch
-// should be at TOP of file
-muno_event_type = 4;
-user_event(14);
-
 //draw_debug_text(x, y, string(12 % 25))
 
 // Shamelessly ripped from Bat Bat for your Pepsi Pleasure.

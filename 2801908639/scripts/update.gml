@@ -83,6 +83,9 @@ if can_press > 0 && can_press != 0
 //     actionlinesi = 0;
 // }
 
+if(state == PS_JUMPSQUAT and down_down and special_pressed){
+    set_attack(AT_DSPECIAL);
+}
 
 if(grabbedid != noone){
 	grabbedid.ungrab++;
@@ -93,4 +96,43 @@ if(grabbedid != noone){
 		grabbedid.ungrab = 0;
 		grabbedid = noone;
 	}
+	
+}
+
+//Krankees Stuff for jumping out of uspecial 
+if (state != PS_ATTACK_AIR	&& state != PS_ATTACK_GROUND)
+{
+	if (jump > 0)
+	{
+		move_cooldown[AT_USPECIAL] = 9999;
+		jump = 0;
+	}
+	stop_fx = 0;
+}
+
+if (!free || state == PS_WALL_JUMP)
+{
+	move_cooldown[AT_USPECIAL] = 0;
+}
+
+//Krankees Stuff for hitting ball
+if (instance_exists(ball))
+{
+	set_hitbox_value(AT_USPECIAL, 6, HG_ANGLE_FLIPPER, 6);
+	set_hitbox_value(AT_USPECIAL, 6, HG_ANGLE, ball.angle3);
+	if (fspec_ball == true and grabbedid == noone)
+	{
+		hsp = 0;
+		if (stop_fx == 0)
+		{
+			var hit_fx = spawn_hit_fx(ball.x - 10, ball.y, 301)
+			hit_fx.pause = 8;
+			stop_fx = 1;
+		}
+        ball.y = lerp(ball.y, y + -25, 0.6); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
+	}
+}
+if (state == PS_HITSTUN)
+{
+	fspec_ball = false;
 }

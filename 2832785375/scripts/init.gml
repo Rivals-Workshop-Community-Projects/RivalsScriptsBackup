@@ -5,6 +5,10 @@ vfx_wood_small = hit_fx_create(sprite_get("vfx_wood_small"), 18)
 vfx_flower_large = hit_fx_create(sprite_get("vfx_flower_large"), 18)
 vfx_flower_sweetspot = hit_fx_create(sprite_get("vfx_flower_sweetspot"), 21)
 
+set_hit_particle_sprite(1, sprite_get("particle_flower"));
+set_hit_particle_sprite(2, sprite_get("particle_leaf"));
+set_hit_particle_sprite(3, sprite_get("particle_wood"));
+
 sfx_ivy_swipe_heavy1 = sound_get("ivy_swipe_heavy1")
 sfx_ivy_swipe_heavy2 = sound_get("ivy_swipe_heavy2")
 sfx_ivy_swipe_heavy3 = sound_get("ivy_swipe_heavy3")
@@ -14,10 +18,18 @@ sfx_ivy_swipe_weak2 = sound_get("ivy_swipe_weak2")
 
 arb_marked = false
 
+was_canceled = false //jab jab special cancel
+
 AG_VINE_SPRITE = 1000
 remote_strong = false
 strong_draw_x = x
 strong_draw_y = y
+
+grabbedID = undefined;
+grabbedTimer = 0;
+wall_grab = false
+seed_grab = false
+seed_grab_id = undefined
 
 timer = 0;
 seed_count = 0;
@@ -85,7 +97,7 @@ hitstun_grav = .5;
 knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 14;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .11; //grounded deceleration when wavelanding

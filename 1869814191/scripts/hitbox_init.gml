@@ -1,3 +1,3 @@
 //hitbox_init
 
-ownerdirection = player.spr_dir;
+//ownerdirection = player.spr_dir;

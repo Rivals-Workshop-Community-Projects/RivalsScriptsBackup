@@ -41,4 +41,4 @@ set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7);//8
 set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .6);//8
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 //set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 6);
-set_hitbox_value(AT_FTILT, 1, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_FTILT, 1, HG_IGNORES_PROJECTILES, 0);

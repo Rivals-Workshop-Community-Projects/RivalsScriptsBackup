@@ -1,6 +1,3 @@
-  user_event(13);
-  
- if (phone_cheats[cheat_bonk] == 0) {
  	  if(attack == AT_FSTRONG)
 {
    if( 1 > random_func(0, 20, true))
@@ -15,24 +12,8 @@
     }} else {
     	reset_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX);
     	bonk = false;
-    }}} 
+    }}
     
-    if (phone_cheats[cheat_bonk] == 1) {
-    	 	  if(attack == AT_FSTRONG)
-{
-   if( 20 > random_func(0, 20, true))
-    {
-        if (spr_dir = 1){
-       set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("sfx_bonk"));
-           bonk = true;
-
-        } else {
-       set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("sfx_bonk"));
-          bonk = true;
-    }} else {
-    	reset_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX);
-    	bonk = false;
-}}}
 
 
 if (attack == AT_TAUNT)

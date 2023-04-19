@@ -67,7 +67,7 @@ window_num++;
 
 // Window #6 / Frame(s) #10 - 11 / Dismounted / Pushed Off
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, -6);
@@ -106,6 +106,7 @@ window_for_hitbox = 3;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_kragg_rock_land")); //sfx_absa_singlezap1 sfx_absa_singlezap2
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_general);
     set_hitbox_value(attack, hitbox_num, 81, "Start Hit");//HG_MUNO_HITBOX_NAME
 hitbox_num++;
 
@@ -135,6 +136,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 30);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 30);
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1")); //sfx_absa_singlezap1 sfx_absa_singlezap2
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
     set_hitbox_value(attack, hitbox_num, 81, "Shock" + string(hitbox_num - 1));//HG_MUNO_HITBOX_NAME
     set_hitbox_value(attack, hitbox_num, 91, "Turns off SDI and Drift during grab");//HG_MUNO_HITBOX_MISC
 }
@@ -153,16 +155,17 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 66);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 3);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 60);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
-    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
+    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); // 197 - lightning large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
     set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, 1); // 
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, 1);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
     set_hitbox_value(attack, hitbox_num, 81, "Final Hit");//HG_MUNO_HITBOX_NAME
     set_hitbox_value(attack, hitbox_num, 92, "If gannoncide platform is active, 
     this sends at angle 90 always");//HG_MUNO_HITBOX_MISC

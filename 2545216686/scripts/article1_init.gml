@@ -53,6 +53,8 @@ blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
 
 //DEFINE YOUR OWN VARIABLES HERE!
 
+robotNumber = 1;
+
 //Sprites (the number in [brackets] is the state)
 
 //Changing the sprites used for the robot if Tails is not using an alt.

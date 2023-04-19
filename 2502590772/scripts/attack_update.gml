@@ -65,27 +65,6 @@ if (!custom_clone && is_special_pressed(DIR_NONE) && has_hit && !hitpause && win
 
 switch (attack) {
 
-case AT_FSTRONG:
-case AT_DSTRONG:
-case AT_USTRONG:
-case AT_FTHROW: //fstrong when used by partner
-case AT_DTHROW: //dstrong when used by partner
-case AT_UTHROW: //ustrong when used by partner
-//case AT_MINUN_FSTRONG:
-//case AT_MINUN_DSTRONG:
-//case AT_MINUN_USTRONG:
-	if (!custom_clone || window != 1 || hitpause) break;
-	//ai can't charge strongs.
-	if (window_timer == 1) skip_strong_charge = 0;
-	else if (is_end_of_window()) {
-		skip_strong_charge++;
-		if (skip_strong_charge >= 2) {
-			window++;
-			window_timer = 0;
-			strong_charge = 0;
-		}
-	}
-break;
 
 case AT_DTILT:
 case AT_MINUN_DTILT:
@@ -142,7 +121,7 @@ case AT_MINUN_JAB:
 		break;
 		
 		case 5:
-			if (is_attack_pressed(DIR_ANY)) jab2_input_was_buffered = true;
+			if (is_attack_pressed(DIR_ANY) || attack_pressed || (window_timer > 13 && attack_down)) jab2_input_was_buffered = true;
 			if (hitpause) break;
 			if (window_timer == 1) sound_play(asset_get("sfx_absa_jab1"), 0, noone, 0.3);
 			else if (window_timer == 13) sound_play(asset_get("sfx_absa_jab2"), 0, noone, 0.3);
@@ -167,6 +146,8 @@ case AT_NSPECIAL:
 		case 1:
 			//if dspecial is used during this move, the player will use dspecial after this move completes.
 			nspecial_buffer_into_dspecial = false;
+			//clear the button buffer, so that the dspecial input must be intentional
+			clear_button_buffer(PC_SPECIAL_PRESSED);
 		break;
 		
 		case 2:
@@ -616,7 +597,7 @@ break;
 case AT_FSTRONG_2:
 	switch (window) {
 		case 1: //startup: slow fall if sliding off the edge
-			vsp = min(vsp, 4);
+			vsp = min(vsp, 6);
 			if (free) can_move = false;
 			
 			spawn_empowered_strong_attack_dust_fx();
@@ -641,13 +622,14 @@ case AT_FSTRONG_2:
 				window = 5;
 				window_timer = 0;
 				hitpause = true;
-				hitstop = 3;
+				hitstop = 6;
 				hsp = 0;
 				vsp = 0;
 				old_hsp = -spr_dir * 4;
 				old_vsp = -7;
 				has_hit = true;
-				sound_play(asset_get("sfx_blow_weak3"), false, noone, 0.5, 1.25);
+				sound_play(sound_get("strong_2_launch"));
+				sound_play(asset_get("sfx_blow_weak3"), false, noone, 1, 1.25);
 				break;
 			}
 			
@@ -704,7 +686,7 @@ case AT_FSTRONG_2:
 		break;
 		
 		case 6:
-			if (has_hit && !was_parried) iasa_script();
+			if (has_hit && !was_parried && window_timer >= 8) iasa_script();
 		break;
 	
 		case 7: //final frame
@@ -719,13 +701,23 @@ case AT_FSTRONG_2:
 break;
 
 case AT_DSTRONG_2:
-	if (window != 1) break;
-	spawn_empowered_strong_attack_dust_fx();
-	if (window_timer == 1 && strong_charge == 0 && !hitpause) {
-		var new_fx = spawn_hit_fx(x, y - 60, vfx_dstrong_thundertell);
-		new_fx.spr_dir *= 2;
-		new_fx.image_yscale = 2;
+	switch (window) {
+		case 1:
+			spawn_empowered_strong_attack_dust_fx();
+			if (window_timer == 1 && strong_charge == 0 && !hitpause) {
+				var new_fx = spawn_hit_fx(x, y - 60, vfx_dstrong_thundertell);
+				new_fx.spr_dir *= 2;
+				new_fx.image_yscale = 2;
+			}
+		break;
+		case 3:
+		//spawn projectile that instakills opponents far above the blastzone
+		//otherwise, the normal lightning hitboxes will meteor the opponents back down.
+		if (!hitpause && window_timer == get_hitbox_value(attack, 3, HG_WINDOW_CREATION_FRAME)) {
+			create_hitbox(attack, 4, x, master_player_id.blastzone_t - 1032);
+		}
 	}
+
 break;
 
 case AT_USTRONG_2:

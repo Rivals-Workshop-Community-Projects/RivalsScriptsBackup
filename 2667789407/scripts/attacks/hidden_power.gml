@@ -63,6 +63,7 @@ set_window_value(AT_TAUNT, 2, AG_UNOWN_WINDOW_ACTIVE, true);
 
 //==============================================================
 //hiding PHONE frame data here to have exactly 28 attack files
+/*
 set_attack_value(AT_PHONE, AG_SPRITE, sprite_get("phone_open_2"));
 set_attack_value(AT_PHONE, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_PHONE, AG_HAS_LANDING_LAG, 3);
@@ -120,3 +121,4 @@ set_attack_value(UNOWN_ATK.Z, AG_MUNO_ATTACK_NAME, "Z");
 set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_NAME, "!");
 set_attack_value(UNOWN_ATK.QM, AG_MUNO_ATTACK_EXCLUDE, 1);
 set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_EXCLUDE, 1);
+*/

@@ -46,8 +46,9 @@ if(my_hitboxID.attack == AT_DSPECIAL){
 if(my_hitboxID.attack == AT_DATTACK){
     if(my_hitboxID.hbox_num == 1){
         sound_play (sound_get("spring"))
-        spring.img_spd = .35;
+        spring.img_spd = .25;
         spring.launched = 30;
+        spring.image_index = 2;
         var fx = spawn_hit_fx( spring.x +15*spr_dir, spring.y-0, 305 );fx.pause = 8.58;
         with(hit_player_obj){
             djumps = 0;has_airdodge = true;
@@ -82,13 +83,25 @@ if(my_hitboxID.attack == AT_DATTACK){
         }
     }
 }
+if(my_hitboxID.attack == AT_DTILT){
+    old_vsp = -9;    
+}
 if(my_hitboxID.attack == AT_FSTRONG){
     if(my_hitboxID.hbox_num == 1){
         sound_play(asset_get("sfx_blow_heavy2"));
         shake_camera(6,8)
     }
 }
+if(my_hitboxID.attack == AT_DSTRONG){
+    spawn_hit_fx(my_hitboxID.x+22*my_hitboxID.spr_dir,my_hitboxID.y-14,304);
+	hit_player_obj.datboi_hit_cooldown = 30;
+}
 if("should_make_shockwave" in hit_player_obj && hit_player_obj.should_make_shockwave){
     sound_play(sound_get("hit_marker"));
     var fx = spawn_hit_fx(hit_player_obj.x,hit_player_obj.y-30,fx_marker)fx.depth = depth -4;
+}
+
+//charge final smash when projectiles hit
+if("fs_charge" in self && my_hitboxID.type == 2){
+    fs_charge += my_hitboxID.damage;
 }

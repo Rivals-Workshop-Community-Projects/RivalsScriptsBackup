@@ -38,7 +38,7 @@
 				
 				
 				
-				if (parried_storage!=-4){
+				/*if (parried_storage!=-4){
 					print_debug("parriedstorage happened");
 					lb1.player = parried_storage;
 					lb2.player = parried_storage;
@@ -69,6 +69,38 @@
 					
 					parried_storage = -4;
 					print_debug("parriedstorage over");
+				}else{*/
+				if (parried_storage!=-4){
+					//print_debug("parriedstorage happened");
+					lb1.player = parried_storage;
+					lb2.player = parried_storage;
+					lb3.player = parried_storage;
+					lb4.player = parried_storage;
+					lb5.player = parried_storage;
+					lb6.player = parried_storage;
+					lb7.player = parried_storage;
+					lb8.player = parried_storage;
+					
+					lb1.spr_dir = spr_dir * -1;
+					lb2.spr_dir = spr_dir * -1;
+					lb3.spr_dir = spr_dir * -1;
+					lb4.spr_dir = spr_dir * -1;
+					lb5.spr_dir = spr_dir * -1;
+					lb6.spr_dir = spr_dir * -1;
+					lb7.spr_dir = spr_dir * -1;
+					lb8.spr_dir = spr_dir * -1;
+					
+					lb1.hsp = 6.5*(spr_dir); // middle
+					lb2.hsp = 6.5*(spr_dir); // middle
+					lb3.hsp = 7*(spr_dir); // near center
+					lb4.hsp = 7*(spr_dir); // near center
+					lb5.hsp = 6*(spr_dir); // furthest
+					lb6.hsp = 6*(spr_dir); // furthest
+					lb7.hsp = 7.1*(spr_dir); // centre
+					lb8.hsp = 7.1*(spr_dir); // centre
+					
+					parried_storage = -4;
+					//print_debug("parriedstorage over");
 				}else{
 				
 				if (attack == AT_BAIR){

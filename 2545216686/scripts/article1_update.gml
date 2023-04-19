@@ -19,9 +19,14 @@
 
 */
 
-player_id.tailsrobotx = x
-player_id.tailsroboty = y
-
+if (robotNumber == 1){
+player_id.tailsrobotx = x;
+player_id.tailsroboty = y - 26;
+}
+if (robotNumber == 2){
+player_id.tailsrobot2x = x;
+player_id.tailsrobot2y = y - 26;
+}
 if (hit_wall == true && state < 4){ //>
 	x = x - 6 * spr_dir
 	setState(8);
@@ -62,11 +67,17 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_get_hit && state != 8) { //
 				move_cooldown[AT_DSPECIAL] = 150;
 			}
 			
-			setState(8);
+			if (player_id.remoteRobotDetonateRune == false){
+				setState(8);
+				sound_play(hitbox_hit.sound_effect);
+				spawn_hit_fx(floor(hitbox_hit.x),floor(hitbox_hit.y),hitbox_hit.hit_effect);
+			} else if (player_id.remoteRobotDetonateRune == true){
+				setState(6);
+			}
 			
 			//sound_play(sound_get("doink"));
-			sound_play(hitbox_hit.sound_effect);
-			spawn_hit_fx(floor(hitbox_hit.x),floor(hitbox_hit.y),hitbox_hit.hit_effect);
+			//sound_play(hitbox_hit.sound_effect);
+			//spawn_hit_fx(floor(hitbox_hit.x),floor(hitbox_hit.y),hitbox_hit.hit_effect);
 			
 			//hitbox_hit.player_id.hitpause = 1;
 			//hitbox_hit.player_id.hitstop_full = hitbox_hit.hitpause;
@@ -92,14 +103,22 @@ if (state == 0
 || state == 3
 ){
 	if (player_id.tailsdidbombhitrobot == true){
-		player_id.tailsdidbombhitrobot = false
+		player_id.tailsdidbombhitrobot = false;
 		//sound_play(asset_get("mfx_star"));
 		//sound_play(asset_get("sfx_mobile_gear_jump"));
 		setState(9);
 	}
-	if (player_id.tailsdidstartingdownbhitboxhit == true && state == 0){
-		player_id.tailsdidstartingdownbhitboxhit = false
-		setState(6);
+	if (robotNumber == 1){
+		if (player_id.tailsdidstartingdownbhitboxhitRobot1 == true && state == 0){
+			player_id.tailsdidstartingdownbhitboxhitRobot1 = false;
+			setState(9);
+		}
+	}
+	if (robotNumber == 2){
+		if (player_id.tailsdidstartingdownbhitboxhitRobot2 == true && state == 0){
+			player_id.tailsdidstartingdownbhitboxhitRobot2 = false;
+			setState(9);
+		}
 	}
 	
 }
@@ -111,11 +130,37 @@ if (state == 0){ //Being Spawned
     }
 	
 	if (state_timer == 0){
-		vsp = -10
-		hsp = 3.2 * spr_dir
-		create_hitbox(AT_DSPECIAL, 3, x, y);
+		vsp = -10;
+		hsp = 3.2 * spr_dir;
+		if (robotNumber == 1){
+			var throwHitbox = create_hitbox(AT_DSPECIAL, 3, x, y - 26);
+		} else if (robotNumber == 2){
+			var throwHitbox2 = create_hitbox(AT_DSPECIAL, 5, x, y - 26);
+		}
 	}
+	/*
+	if (robotNumber == 1){
+		if (instance_exists(throwHitbox)){
+			throwHitbox.robotNumber = robotNumber;
+			throwHitbox.x = x;
+			throwHitbox.y = y - 18;
+		}
+	}
+	*/
+	/*
+	if (robotNumber == 2){
+	
+		player_id.tailsrobot2x = x;
 
+		player_id.tailsrobot2y = y - 26;
+	
+		if (instance_exists(throwHitbox2)){
+			throwHitbox2.robotNumber = robotNumber;
+			throwHitbox2.x = x;
+			throwHitbox2.y = y - 18;
+		}
+	}
+	*/
 	vsp += 0.55
 
 	if (vsp > 15){
@@ -127,7 +172,6 @@ if (state == 0){ //Being Spawned
 		setState(1);
 	}
 	player_id.tailsdidpressdownbwhenthingisactive = 0
-
     //Custom idle behavior goes here
 }
 
@@ -137,7 +181,7 @@ if (state == 1){ //Landing after State 0
 	hsp = 0
 	vsp = 0
 	if (state_timer == 1){
-		sound_play(asset_get("sfx_gus_land"))
+		sound_play(asset_get("sfx_gus_land"));
 		spawn_base_dust( x + (0 * spr_dir), y, "land", spr_dir)
 	}
 	if (state_timer == 11){

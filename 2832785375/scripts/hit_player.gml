@@ -62,12 +62,22 @@ if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3 {
     sound_play(asset_get("sfx_leafy_hit2"))
 }
 
+if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 3 {
+    if hit_player_obj.arb_marked {
+        //seed_hit = true
+    }
+}
+
+if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3 {
+    sound_play(asset_get("sfx_crunch"))
+}
+
 
 
 if hit_player_obj.arb_marked {
     var atk = my_hitboxID.attack
     var hbox = my_hitboxID.hbox_num
-    var sweetspots = [[AT_FAIR,2], [AT_UAIR,1], [AT_USTRONG,1], [AT_FSPECIAL,3], [AT_DTILT, 1]]
+    var sweetspots = [[AT_FAIR,2], [AT_UAIR,1], [AT_USTRONG,1], [AT_FSPECIAL,3], [AT_DTILT, 1], [AT_JAB, 3], [AT_DATTACK, 3], [AT_USPECIAL, 5], [AT_USPECIAL, 6], [AT_DAIR, 3], [AT_DAIR, 4]]
     for(var i = 0; i < array_length(sweetspots); i++) {
         if atk == sweetspots[i][0] && hbox == sweetspots[i][1] {
             //run code below

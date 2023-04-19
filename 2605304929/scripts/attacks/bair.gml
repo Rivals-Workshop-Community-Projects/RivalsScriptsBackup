@@ -30,7 +30,7 @@ window_num++;
 
 // Window #2 / Frame(s) # 6- / Overhead
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
 
@@ -38,7 +38,7 @@ window_num++;
 
 // Window #3 / Frame(s) # 7- / In Front
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
 
@@ -46,7 +46,7 @@ window_num++;
 
 // Window #4 / Frame(s) # 8- / Bottom Quarter
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
 
@@ -54,7 +54,7 @@ window_num++;
 
 // Window #5 / Frame(s) # 9- / Bottom
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 2);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 9);
 
@@ -86,7 +86,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -84);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 60);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 28);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 135);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .8);
@@ -95,6 +95,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); 
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Top Hitbox");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 
@@ -111,7 +112,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -69);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 59);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 60);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
@@ -120,6 +121,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Back Hit 1");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 
@@ -136,7 +138,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -19);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 61);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 60);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
@@ -145,6 +147,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Back Hit 2");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 
@@ -161,15 +164,16 @@ set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -17);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 39);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 55);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
-set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 10);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); //304 - basic large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_waterelectric);
 set_hitbox_value(attack, hitbox_num, 81, "Final Under Hitbox");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Sets water mark status on hit");//HG_MUNO_HITBOX_MISC_ADD
 

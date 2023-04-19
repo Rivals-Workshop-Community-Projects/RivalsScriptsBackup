@@ -24,11 +24,12 @@ if attack == AT_NSPECIAL and (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUN
 }
 
 // Slot 1
+
 draw_sprite_ext(sprite_get("spells"), spellselect[0] , spell1x, spellsy, 1, 1, 0, slotone_col, 1);
 
 // Slot 2
 draw_sprite_ext(sprite_get("spells"), spellselect[1] , spell2x, spellsy, 1, 1, 0, slottwo_col, 1);
-//}
+
 
 if show_flashing_icon{
     draw_sprite_ext(sprite_get("spells"), prev_spell_icon , spell1x + 14, spellsy - 4, 1, 1, 0, col_flashing, 1);

@@ -33,6 +33,18 @@ if (attack == AT_JAB){
 }
 
 
+//Fair Slow Fall On Hit
+if (old_vsp > 0 && attack == AT_FAIR && has_hit){
+	old_vsp = 0;
+}
+
+
+//Nair Slow Fall On Hit
+if (old_vsp > 0 && attack == AT_NAIR && has_hit){
+	old_vsp = 1;
+}
+
+
 //Up Special Wall Jump
 if (attack == AT_USPECIAL){
 	can_wall_jump = true;
@@ -54,35 +66,7 @@ if (attack == AT_USPECIAL && has_rune("G")){
 }
 
 
-//Special Cooldowns
-if (attack == AT_NSPECIAL && !has_rune("L")){
-	move_cooldown[AT_NSPECIAL] = 720;
-}
 
-if (attack == AT_FSPECIAL && !has_rune("L")){
-	move_cooldown[AT_FSPECIAL] = 720;
-}
-
-if (attack == AT_DSPECIAL && !has_rune("L")){
-	move_cooldown[AT_DSPECIAL] = 720;
-}
-
-
-//Prevent Duplication
-if (attack == AT_NSPECIAL){
-	move_cooldown[AT_USTRONG] = 160;
-	move_cooldown[AT_JAB] = 160;
-}
-
-if (attack == AT_FSPECIAL){
-	move_cooldown[AT_FSTRONG] = 70;
-	move_cooldown[AT_DTILT] = 70;
-}
-
-if (attack == AT_DSPECIAL){
-	move_cooldown[AT_DSTRONG] = 20;
-	move_cooldown[AT_UTILT] = 20;
-}
 
 
 

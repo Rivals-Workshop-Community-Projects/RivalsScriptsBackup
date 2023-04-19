@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 26 );
 
 // vex
 set_color_profile_slot( 1, 0, 57, 179, 166 ); //white
@@ -46,15 +46,15 @@ set_color_profile_slot( 1, 5, 52, 52, 84 ); //death
 set_color_profile_slot( 1, 6, 105, 117, 129 ); //death outline
 set_color_profile_slot( 1, 7, 145, 145, 184 ); //gas skull
 
-// anthem
-set_color_profile_slot( 2, 0, 236, 204, 65 ); //white
-set_color_profile_slot( 2, 1, 200, 126, 25 ); //white shad
-set_color_profile_slot( 2, 2, 54, 108, 28 ); //skin
-set_color_profile_slot( 2, 3, 82, 108, 70 ); //purple
-set_color_profile_slot( 2, 4, 95, 205, 228 ); //eye
-set_color_profile_slot( 2, 5, 136, 136, 136 ); //death
-set_color_profile_slot( 2, 6, 60, 60, 60 ); //death outline
-set_color_profile_slot( 2, 7, 191, 191, 191 ); //gas skull
+// Like an Enderman
+set_color_profile_slot( 2, 0, 71, 71, 71 ); //white
+set_color_profile_slot( 2, 1, 38, 38, 38 ); //white shade
+set_color_profile_slot( 2, 2, 81, 70, 102 ); //skin
+set_color_profile_slot( 2, 3, 182, 75, 196 ); //purple
+set_color_profile_slot( 2, 4, 247, 128, 255 ); //eye
+set_color_profile_slot( 2, 5, 51, 16, 77 ); //death
+set_color_profile_slot( 2, 6, 199, 61, 224 ); //death outline
+set_color_profile_slot( 2, 7, 119, 66, 158 ); //gas skull
 
 // ao
 set_color_profile_slot( 3, 0, 70, 98, 168 ); //white
@@ -182,8 +182,8 @@ set_color_profile_slot( 15, 1, 58, 47, 87 ); //white shad
 set_color_profile_slot( 15, 2, 211, 216, 252 ); //skin
 set_color_profile_slot( 15, 3, 115, 31, 71 ); //purple
 set_color_profile_slot( 15, 4, 210, 5, 33 ); //eye
-set_color_profile_slot( 15, 5, 255, 246, 219 ); //death
-set_color_profile_slot( 15, 6, 237, 143, 3 ); //death outline
+set_color_profile_slot( 15, 5, 242, 241, 240 ); //death
+set_color_profile_slot( 15, 6, 205, 0, 224 ); //death outline
 set_color_profile_slot( 15, 7, 255, 239, 181 ); //gas skull
 
 // ayaka
@@ -276,9 +276,12 @@ set_color_profile_slot( 24, 5, 44, 33, 59 ); //death
 set_color_profile_slot( 24, 6, 255, 255, 255 ); //death outline
 set_color_profile_slot( 24, 7, 255, 255, 255 ); //gas skull
 
-
-/* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
-=== BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"white","colors":[{"r":232,"g":224,"b":255,"main":true}]},{"name":"white shad","colors":[{"r":182,"g":158,"b":251,"main":true}]},{"name":"skin","colors":[{"r":68,"g":164,"b":115,"main":true},{"r":36,"g":117,"b":75},{"r":0,"g":85,"b":41}]},{"name":"purple","colors":[{"r":110,"g":103,"b":216,"main":true},{"r":67,"g":61,"b":164}]},{"name":"eye","colors":[{"r":69,"g":103,"b":225,"main":true},{"r":33,"g":71,"b":206}]},{"name":"death","colors":[{"r":152,"g":91,"b":198,"main":true},{"r":117,"g":40,"b":170},{"r":139,"g":62,"b":192}]},{"name":"death outline","colors":[{"r":55,"g":8,"b":87,"main":true}]},{"name":"gas skull","colors":[{"r":219,"g":167,"b":255,"main":true}]}]}
-=== END JSON PALETTE ===
-*/
+// genesis
+set_color_profile_slot( 25, 0, 63, 64, 63 ); //white
+set_color_profile_slot( 25, 1, 25, 29, 33 ); //white shad
+set_color_profile_slot( 25, 2, 222, 67, 78 ); //skin
+set_color_profile_slot( 25, 3, 255, 245, 245 ); //purple
+set_color_profile_slot( 25, 4, 0, 0, 0 ); //eye
+set_color_profile_slot( 25, 5, 28, 28, 28 ); //death
+set_color_profile_slot( 25, 6, 255, 0, 0 ); //death outline
+set_color_profile_slot( 25, 7, 255, 148, 148 ); //gas skull

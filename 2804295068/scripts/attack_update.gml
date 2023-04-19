@@ -74,27 +74,53 @@ if (attack == AT_BAIR){
 }
 
 if (attack == AT_DAIR){
+	hover_used = true
 	if (window == 1 || window == 4){
         can_fast_fall = true;
     }else{
 	    can_fast_fall = false;
-		hsp = clamp(hsp, -3.5, 3.5);
+		hsp = clamp(hsp, -4, 4);
 	}
 	if (window == 3){
         can_wall_jump = true
-		if (shield_pressed){
-			window = 4;
-			window_timer = 0;
-			clear_button_buffer( PC_SHIELD_PRESSED );
-        }
-		if (left_down && !attack_down){
+		if (left_down && !right_down){
             spr_dir = -1
         }
-		if (right_down && !attack_down){
+		if (right_down && !left_down){
             spr_dir = 1
         }
 		if (has_rune("C")){
-			can_jump = true
+			iasa_script()
+			if (((attack_pressed && right_down && !up_down) || (right_stick_pressed && !up_stick_pressed) || (right_strong_pressed && !up_strong_pressed)) && spr_dir = 1){
+				set_attack( AT_FAIR );
+				window = 1
+				window_timer = 8
+			}
+			if (((attack_pressed && left_down && !up_down) || (left_stick_pressed && !up_stick_pressed) || (left_strong_pressed && !up_strong_pressed)) && spr_dir = -1){
+				set_attack( AT_FAIR );
+				window = 1
+				window_timer = 8
+			}
+			if (((attack_pressed && left_down && !up_down) || (left_stick_pressed && !up_stick_pressed) || (left_strong_pressed && !up_strong_pressed)) && spr_dir = 1){
+				set_attack( AT_BAIR );
+				window = 1
+				window_timer = 6
+			}
+			if (((attack_pressed && right_down && !up_down) || (right_stick_pressed && !up_stick_pressed) || (right_strong_pressed && !up_strong_pressed)) && spr_dir = -1){
+				set_attack( AT_BAIR );
+				window = 1
+				window_timer = 6
+			}
+	    } else {
+			if (shield_pressed){
+				if (has_airdodge) {
+					state = PS_IDLE_AIR;
+					state_timer = 0;
+				} else {
+					state = PS_PRATFALL;
+					state_timer = 0;
+				}
+			}
 		}
 	}
 }
@@ -308,7 +334,7 @@ if (attack == AT_FSPECIAL){
 		}
 	    if (window_timer == 1){
             if (bean_bomb_recharge >= 450){
-                create_hitbox( AT_FSPECIAL, 1, x+20*spr_dir, y-36 );
+                create_hitbox( AT_FSPECIAL, 1, x+12*spr_dir, y-36 );
 				sound_play (sound_get("bean_fire"));
 		        bean_bomb_recharge = 0
 	        } else if (bean_bomb_recharge < 450){
@@ -325,7 +351,7 @@ if (attack == AT_USPECIAL){
 	            if place_meeting(x, y, other) && (state != 2){
 				    with player_id{
 						set_attack( AT_USPECIAL_2 );
-						take_damage (player, -1, 4)
+						take_damage (player, -1, 3)
 						sound_play (sound_get ("wakeup"));
 					}
 					state = 2
@@ -350,6 +376,9 @@ if (attack == AT_USPECIAL_2){
 	if (window == 1){
 	    can_fast_fall = false
 		soft_armor = 12
+		if (window_timer mod 4 == 0){
+			spawn_hit_fx(x - 18,y,4)
+		}
 	}
 	if (window != 1){
         can_wall_jump = true
@@ -396,10 +425,8 @@ if (attack == AT_DSPECIAL){
 if (has_rune("I")){
 	if (attack == AT_FSTRONG){
 		airraid_used = true
-		if (state != PS_PRATFALL){
-			can_fast_fall = false
-			fall_through = true
-		}
+		can_fast_fall = false
+		fall_through = true
         if (!joy_pad_idle){
             hsp += lengthdir_x(1, joy_dir);
             vsp += lengthdir_y(1, joy_dir);
@@ -414,6 +441,33 @@ if (has_rune("I")){
             hsp = lengthdir_x(max_speed, fly_dir);
             vsp = lengthdir_y(max_speed, fly_dir);
         }
+	}
+}
+
+if (attack == AT_DSTRONG && window < 5){
+	if (window == 3 && window_timer >= 3){
+        with oPlayer if id != other.id && split_grabbed1 == other.id {
+            x = lerp(x + 30*other.spr_dir, other.x + 30*other.spr_dir, 0.5)
+            y = lerp(y - 2, other.y - 2, 0.5)
+        }
+    }
+	if (window == 4 && window_timer >= 3){
+        with oPlayer if id != other.id && split_grabbed2 == other.id {
+            x = lerp(x - 30*other.spr_dir, other.x - 30*other.spr_dir, 0.5)
+            y = lerp(y - 2, other.y - 2, 0.5)
+			split_grabbed1 = false;
+        }
+    }
+	if (window == 5){
+        with oPlayer if id != other.id && split_grabbed2 == other.id {
+			split_grabbed2 = false;
+        }
+    }
+}
+
+if (attack == AT_TAUNT){
+	if (window == 4 && window_timer >= 16) || window == 5{
+		iasa_script();
 	}
 }
 

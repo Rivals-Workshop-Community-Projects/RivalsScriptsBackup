@@ -1,3 +1,11 @@
+//RC
+kart_sprite = sprite_get("kart")
+kart_frames = 1
+kart_anim_speed = 1
+kart_anim_speed_scaling = 1
+kart_engine_sound = 1
+kart_drift_spr = 1
+
 //trum & alto codec stuff
 trummelcodecneeded = false;
 trummelcodec_id = noone;

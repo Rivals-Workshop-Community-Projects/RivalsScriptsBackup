@@ -17,6 +17,21 @@
 //    }
 //}
 
+
+/*
+//yoshi
+djump_speed = -1;
+djump_accel = -2;
+djump_accel_start_time = 2;
+djump_accel_end_time = 11;
+if (state == PS_DOUBLE_JUMP){
+	if (state_timer < 15){
+		soft_armor = 6;
+	}
+}
+*/
+
+
 if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
 	grabbed = -4;
 }

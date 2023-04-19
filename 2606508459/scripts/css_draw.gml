@@ -43,6 +43,7 @@ var arr_peeps = [ //Alt Name, Creator, ID Peep, Additional Blue Text, Alt portra
     ,["Anglara", "Laylowthetyrant", 20, "@", 1]
     ,["Tricolour", "Z0nyX", 22, "@", 1]
     ,["TRANS", "RIGHTS", 25, "", 1]
+    ,["Elkiies", "???", 27, "@", 1] 
     ,["T. Gear", "KeroBerry1/The5oul", 0, "@", 2]
     ,["A. Master", "KeroBerry1", 0, "@", 2]
     ,["TuQiu", "Usagibun1", 9, "@", 2] 
@@ -54,6 +55,7 @@ var arr_peeps = [ //Alt Name, Creator, ID Peep, Additional Blue Text, Alt portra
     ,["Riptide Summer", "RiptideSSB", 23, "@", 4]
     ,["Fernet Tourn.", "KeroBerry1/The5oul", 0, "@", 5]
     ,["Riptide Tourn.", "RiptideSSB", 23, "@", 5]
+    ,["Big House", "???", 27, "@", 5] 
 ];
 
 //To Search for other parts of the code that handles Alts, look for the keyord "---> ALT RELATED CODE"

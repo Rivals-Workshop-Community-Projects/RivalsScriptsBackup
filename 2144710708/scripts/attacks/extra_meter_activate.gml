@@ -7,8 +7,6 @@ set_attack_value(AT_NSPECIAL_2, AG_HAS_LANDING_LAG, 200); // hmm
 set_attack_value(AT_NSPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("owen_hurtbox"));
 
-set_attack_value(AT_NSPECIAL_2, AG_MUNO_ATTACK_EXCLUDE, 1);
-
 // dab
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_INVINCIBILITY, 1); // Lol!
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 18);

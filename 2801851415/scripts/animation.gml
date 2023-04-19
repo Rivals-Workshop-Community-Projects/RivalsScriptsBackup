@@ -18,3 +18,21 @@ switch(state)
         if(random_func(4, 100, false) > 90 && get_player_color(player) == 11)
             image_index -= 1+random_func(1, 4, true);
 }
+
+
+#define basic_animations()
+/// Run this after changing the sprite_index.
+// Corrects certain animations to be how they normally would be.
+switch (state){
+    case PS_IDLE:
+    case PS_RESPAWN:
+    case PS_SPAWN:
+        image_index = state_timer*idle_anim_speed;
+    break;
+    case PS_WALK:
+        image_index = state_timer*walk_anim_speed;
+    break;
+    case PS_DASH:
+        image_index = state_timer*dash_anim_speed;
+    break;
+}

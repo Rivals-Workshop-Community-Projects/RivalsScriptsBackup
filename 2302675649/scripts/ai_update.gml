@@ -32,6 +32,7 @@ SetAttack();
 
 #define CheckRecover()
 {
+	if (!free && place_meeting(x, y+1, asset_get("par_block"))) topcustom = y;
 	if (ai_state == AS_ADVANTAGE) ai_recovering = false;
 	else
 	{
@@ -59,6 +60,7 @@ SetAttack();
 	{
 		case AS_ADVANTAGE:
 			ai_attack_time = 4;
+			Movement()
 			break;
 		case AS_RECOVER:
 			ai_attack_time = 40;
@@ -66,6 +68,7 @@ SetAttack();
 			break;
 		case AS_NEUTRAL:
 			ai_attack_time = 30;
+			Movement()
 			break;
 	}
 
@@ -138,7 +141,7 @@ SetAttack();
 						jump_pressed = true;
 						jump_counter = 0;
 					}
-					tryParry();
+					TryParry();
 				}
 				break;
 
@@ -166,6 +169,14 @@ SetAttack();
 						}
 						break;
 				}
+				break;
+
+			case AT_TAUNT:
+			case AT_TAUNT_2:
+			case AT_EXTRA_1:
+			case AT_EXTRA_2:
+				taunt_down = (ai_target == self);
+				taunt_pressed = taunt_down;
 				break;
 		}
 	}
@@ -222,7 +233,7 @@ SetAttack();
 				TaskDone();
 				break;
 			}
-			tryParry();
+			TryParry();
 
 		case AS_ADVANTAGE:
 			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && get_training_cpu_action() == CPU_FIGHT)
@@ -235,6 +246,15 @@ SetAttack();
 				switch (task)
 				{
 					case TSK_NONE:
+						if (ai_target == self)
+						{
+							if (!free)
+							{
+								up_down = true;
+								DoAttack(AT_TAUNT);
+							}
+							break;
+						}
 						if (ai_target.invincible) break;
 						if (aura && ydist < 10 && xdist < 120 && xdist > 40 && get_player_damage(ai_target.player) >= 150)
 						{
@@ -265,7 +285,7 @@ SetAttack();
 							HoldTowardsTarget();
 							DoAttack(AT_DSPECIAL);
 						}
-						else if (!free && ai_state == AS_NEUTRAL && ydist < 90)
+						else if (!free && ai_state == AS_NEUTRAL && ydist < 90 && ai_target.temp_level>0)
 						{
 							DoAttack(AT_NSPECIAL);
 						}
@@ -312,11 +332,12 @@ SetAttack();
 
 #define DoAttack(attack)
 {
-	tryParry();
+	TryParry();
 	switch (attack)
 	{
 		case AT_TAUNT:
 			taunt_down = true;
+			taunt_pressed = true;
 			break;
 		case AT_NAIR:
 		case AT_JAB:
@@ -409,54 +430,41 @@ SetAttack();
 	}
 }
 
-#define tryParry()
+#define TryParry
 {
+	var _frameAdvance = argument_count > 0 ? argument[0] : 3;
 	if (state == PS_PARRY_START) // no rolls
 	{
 		left_down = false;
 		right_down = false;
 		joy_pad_idle = true;
 	}
-	else
+	else if (!free)
 	{
 		var doParry = false;
-		if (!ai_target.was_parried && !doParry)
+		if (!ai_target.was_parried)
 		{
-			with (pHitBox) // proj
+			with (pHitBox) if (player != other.player && type == 2 && place_meeting(x+hsp*(_frameAdvance+1),y+vsp*(_frameAdvance+1),other)) // proj
 			{
-				if (player != other.player && type == 2)
-				{
-					if (place_meeting(x+hsp*4,y+vsp*4,other))
-						doParry = true;
-				}
+				doParry = true;
+				break;
 			}
-			with (oPlayer) // phys
+			with (oPlayer) if (!doParry && player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) // phys
 			{
-				if (player != other.player && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
+				var numHitboxes = get_num_hitboxes(attack);
+				var numWindows = get_attack_value(attack, AG_NUM_WINDOWS);
+				for (var i = 1; i <= numHitboxes; ++i) if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
 				{
-					var numWindows = get_num_hitboxes(attack);
-					for (var i = 1; i <= numWindows; ++i)
+					var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
+					if (firstwindow == clamp(firstwindow, 1, numWindows))
 					{
-						if (get_hitbox_value(attack, i, HG_HITBOX_TYPE) == 1)
+						var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);
+						if (abs((x+get_hitbox_value(attack,i,HG_HITBOX_X)*spr_dir)-other.x)<get_hitbox_value(attack,i,HG_WIDTH)
+							&& abs((y+get_hitbox_value(attack,i,HG_HITBOX_Y))-other.y)<get_hitbox_value(attack,i,HG_HEIGHT)
+							&& (firstwindowframe<2)?firstwindow==window+1&&get_window_value(attack,firstwindow-1,AG_WINDOW_LENGTH)==window_timer+_frameAdvance:firstwindow==window&&firstwindowframe==window_timer+_frameAdvance)
 						{
-							var firstwindow = get_hitbox_value(attack, i, HG_WINDOW);
-							if (firstwindow == clamp(firstwindow, 1, numWindows))
-							{
-								var prevwindowlen = get_window_value(attack, firstwindow-1, AG_WINDOW_LENGTH);
-								var firstwindowframe = get_hitbox_value(attack, i, HG_WINDOW_CREATION_FRAME);
-								var hboxlength = get_hitbox_value(attack, i, HG_WIDTH);
-								var hboxheight = get_hitbox_value(attack, i, HG_HEIGHT);
-								var hboxx = get_hitbox_value(attack, i, HG_HITBOX_X);
-								var hboxy = get_hitbox_value(attack, i, HG_HITBOX_Y);
-								
-								if (abs((x+hboxx*spr_dir)-other.x)<hboxlength
-									&& abs((y+hboxy)-other.y)<hboxheight
-									&& (firstwindowframe<2)?firstwindow==window+1&&prevwindowlen==window_timer+3:firstwindow==window&&firstwindowframe==window_timer+3)
-								{
-									doParry = true;
-									break;
-								}
-							}
+							doParry = true;
+							break;
 						}
 					}
 				}
@@ -469,7 +477,9 @@ SetAttack();
 			left_down = false;
 			right_down = false;
 			ai_state = AS_ADVANTAGE;
+			return true;
 		}
+		return false;
 	}
 }
 
@@ -519,5 +529,59 @@ SetAttack();
 			else
 				other.cheatTracker[player].nextParry = state == PS_PARRY_START;
 		}
+	}
+}
+
+#define Movement()
+{
+	if (get_training_cpu_action() == CPU_FIGHT)
+	{
+		Hitfall();
+		Waveland();
+		FallThrough();
+		JumpEnemy();
+	}
+}
+
+#define JumpEnemy()
+{
+	if (ai_target.y < y-64)
+	{
+		if (vsp > -1) jump_pressed = true;
+		if ((ai_target.y < y-32)) jump_down = true;
+	}
+}
+
+#define Hitfall()
+{
+	if (free && hitpause && hitstop_full > 4 && hitstop <= 0 && has_hit_player && (collision_line(x, y, x, y+64, asset_get("par_block"), 1, 0) || collision_line(x, y, x, y+64, asset_get("par_jumpthrough"), 1, 0)))
+	{
+		do_a_fast_fall = true;
+	}
+}
+
+#define FallThrough()
+{
+	if (state_cat == SC_GROUND_NEUTRAL && !freemd && ai_target.y > y)
+	{
+		free = true;
+		y+=max_fall;
+	}
+}
+
+#define Waveland()
+{
+	if (free && can_shield && has_airdodge && vsp < 0 && abs(ai_target.x-x)>80 && position_meeting(x,y-1,asset_get("par_jumpthrough")) && position_meeting(x,y,asset_get("par_jumpthrough")))
+	{
+		shield_pressed = true;
+		waveland = true;
+	}
+	else if (waveland)
+	{
+		waveland = false;
+		joy_pad_idle = false;
+		joy_dir = 270+sign(ai_target.x-x)*90;
+		left_down = true;
+		right_down = true;
 	}
 }

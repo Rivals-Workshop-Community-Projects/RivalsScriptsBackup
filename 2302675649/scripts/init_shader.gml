@@ -4,7 +4,7 @@ switch (playerAlt)
     //default
     case 0:
     {
-        if ("isFurry" in self && isFurry)
+        if ("isFurry" in self?isFurry:get_synced_var(player))
         {
             AltColour(1, make_color_rgb(255, 255, 255));
             AltColour(2, make_color_rgb(160, 164, 190));

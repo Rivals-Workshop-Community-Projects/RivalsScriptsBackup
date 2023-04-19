@@ -8,14 +8,14 @@ idle_anim_speed = .2;
 crouch_anim_speed = .1;
 walk_anim_speed = .2;
 dash_anim_speed = .3;
-pratfall_anim_speed = .25;
+pratfall_anim_speed = .15;
 
-walk_speed = 2.75;
+walk_speed = 3;
 walk_accel = 0.2;
 walk_turn_time = 5;
 initial_dash_time = 8;
-initial_dash_speed = 6.1;
-dash_speed = 5.2;
+initial_dash_speed = 6.25;
+dash_speed = 5.75;
 dash_turn_time = 12;
 dash_turn_accel = 1.3;
 dash_stop_time = 8;
@@ -91,7 +91,7 @@ land_sound = asset_get("sfx_land_light");
 landing_lag_sound = asset_get("sfx_land_light");
 waveland_sound = asset_get("sfx_waveland_abs");
 jump_sound = asset_get("sfx_jumpground");
-djump_sound = asset_get("sfx_absa_jump");
+djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 
 //visual offsets for when you're in Ranno's bubble
@@ -108,6 +108,10 @@ hsp_at_start_of_double_jump = 0;
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
+player_location_start_of_grab_x = 0;
+player_location_start_of_grab_y = 0;
+pull_to_x = 0;
+pull_to_y = 0;
 
 //Fspecial Variable
 ganoncide_preventor_available_flag = true; // Flag used to detect ganoncide and prevent it, but only one time before touching ground
@@ -133,20 +137,40 @@ hitfx_consume_water_obj = noone;
 hitfx_cooldown_obj = noone;
 hitfx_water_dust_obj_1 = noone;
 hitfx_water_dust_obj_2 = noone;
-hitfx_boosted_grab_obj = noone;
+hitfx_mark_consume_obj = noone;
+hitfx_mark_disperse_obj = noone;
 
 // HitFX
 hitfx_large_elec = hit_fx_create(sprite_get("hitfx_large_elec"),12);
-hitfx_large_water = hit_fx_create(sprite_get("hitfx_large_water"),12);
+hitfx_large_water = hit_fx_create(sprite_get("hitfx_large_water"),20);
 hitfx_water_paw = hit_fx_create(sprite_get("hitfx_water_paw"),25);
 hitfx_elec_paw = hit_fx_create(sprite_get("hitfx_elec_paw"),25);
 hitfx_consume_water = hit_fx_create(sprite_get("consume_water"),45);
-hitfx_boosted_grab = hit_fx_create(sprite_get("hitfx_boosted_grab"),15);
 hitfx_consume_elec = hit_fx_create(sprite_get("consume_elec"),30);
 hitfx_bubbles = hit_fx_create(sprite_get("bubbles"),30);
-hitfx_large_combined = hit_fx_create(sprite_get("hitfx_large_combined"),15);
 hitfx_cooldown = hit_fx_create(sprite_get("cooldown_electricity"),60);
 hitfx_water_dust = hit_fx_create(sprite_get("hitfx_water_dust"),14);
+hitfx_mark_consume = hit_fx_create(sprite_get("hitfx_mark_consume"),90);
+hitfx_mark_disperse = hit_fx_create(sprite_get("hitfx_mark_disperse"),40);
+
+hfx_dspecial_floor = hit_fx_create(sprite_get("hfx_dspecial_floor"),30);
+hfx_uspecial_jumpfx = hit_fx_create(sprite_get("hfx_uspecial_jumpfx"),16);
+hfx_electric_dash = hit_fx_create(sprite_get("hfx_electric_dash"),24);
+hfx_electric_directional_arrow = hit_fx_create(sprite_get("hfx_electric_directional_arrow"),24);
+
+// Hit Particles
+set_hit_particle_sprite(1,sprite_get("hit_particle1")); // General Body
+set_hit_particle_sprite(2,sprite_get("hit_particle2")); // Paw specifc
+set_hit_particle_sprite(3,sprite_get("hit_particle3")); // Water
+set_hit_particle_sprite(4,sprite_get("hit_particle4")); // Electric
+set_hit_particle_sprite(5,sprite_get("hit_particle5")); // Water + Electric
+
+// Hit Particle List
+hp_general = 1;
+hp_paw = 2;
+hp_water = 3;
+hp_electric = 4;
+hp_waterelectric = 5;
 
 // intro Code
 intro_sound_played_flag = false;
@@ -172,6 +196,7 @@ AT_FINAL_SMASH_GRAB = 49;
 AT_FINAL_SMASH_THROW = 48;
 cinetmatic_timer = 0;
 play_final_smash_grab_cintematic_flag = false;
+
 //fs_portrait_x = OFFSET HERE
 //`fs_char_portrait_override = sprite_get('MY PORTRAIT OVERRIDE SPRITE");`
 //`fs_char_attack_index = AT_ATTACK_INDEX_OF_YOUR_CHOICE;`
@@ -191,6 +216,8 @@ if(get_player_color(player) == 25 || get_player_color(player) == 22){ // Amatera
 Hikaru_Title = "Dance in the rain with me";
 arena_title = "The Eye of the Storm";
 battle_text = "*They took everything from me."; // Opening line of "Lost at Birth" by Public Enemy
+pot_compat_variable = sprite_get("compat_pot");
+pot_compat_text = "Stormy Sushi"
 
 //Dialogue Buddy by Ducky! get it at https://steamcommunity.com/workshop/filedetails/discussion/2557293251/3062995463267073852/
 diag_portrait=sprite_get("dialogue_buddy"); // This will allow you to put any custom portrait onto the dialogue buddy!
@@ -228,6 +255,7 @@ print("flag_round_start_dialog: "+ string(flag_round_start_dialog) + string(get_
 
 // Reload on round start
 manual_init_shader_call = true;
+last_frame_color_alt = get_player_color(player);
 init_shader();
 
 //#endregion

@@ -85,6 +85,7 @@ phone_blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZON
 // phone_blastzone_r = get_stage_data(SD_BLASTZONE_RIGHT_X);
 // phone_blastzone_t = get_stage_data(SD_BLASTZONE_TOP_Y);
 // phone_blastzone_b = get_stage_data(SD_BLASTZONE_BOTTOM_Y);
+phone_game_over = false;
 phone_lagging = false;
 phone_online = 0;
 for (var cur = 0; cur < 4; cur++){
@@ -104,7 +105,7 @@ instance_create(x, y, "obj_article_solid");
 phone = {
 	
 	// version
-	firmware: 3,
+	firmware: 4,
 	
 	// dev-end config
 	uses_shader: 0,
@@ -439,7 +440,6 @@ i = phone.starting_ag_index;
 
 // General Attack Indexes
 AG_MUNO_ATTACK_EXCLUDE = i; i++;		// Set to 1 to exclude this move from the list of moves
-AG_MUNO_ATTACK_REFRESH = i; i++;		// Set to 1 to refresh this move's data every frame while the frame data guide is open
 AG_MUNO_ATTACK_NAME = i; i++;			// Enter a string to override move name
 AG_MUNO_ATTACK_FAF = i; i++;			// Enter a string to override FAF
 AG_MUNO_ATTACK_ENDLAG = i; i++;			// Enter a string to override endlag
@@ -555,10 +555,7 @@ if !phone_hud_hidden && draw_indicator{
 
 #define CORE_css_draw
 
-var is_online = 0;
-for (var cur = 0; cur < 4; cur++){
-	if get_player_hud_color(cur+1) == $64e542 is_online = 1;
-}
+var is_online = get_player_hud_color(player) == $64e542;
 
 shader_end();
 
@@ -574,14 +571,22 @@ user_event(15);
 
 rectDraw(x + 10, y + 10, 202, 6, c_black);
 
-var offset = (alt_cur > 15) * 16;
-
 var col = alt_ui_recolor == noone ? c_white : make_color_rgb(get_color_profile_slot_r(alt_cur, alt_ui_recolor), get_color_profile_slot_g(alt_cur, alt_ui_recolor), get_color_profile_slot_b(alt_cur, alt_ui_recolor));
- 
-for(i = 0; i < (num_alts - offset) && i < 16; i++){
-	var draw_color = (i == alt_cur - offset) ? col : c_gray * 0.5;
-	var draw_x = x + 78 + 8 * i;
-	rectDraw(draw_x, y + 10, 6, 4, draw_color);
+
+// var offset = (alt_cur > 15) * 16;
+
+// for (i = 0; i < (num_alts - offset) && i < 16; i++){
+// 	var draw_color = (i == alt_cur - offset) ? col : c_gray * 0.5;
+// 	var draw_x = x + 78 + 8 * i;
+// 	rectDraw(draw_x, y + 10, 6, 4, draw_color);
+// }
+
+var thin = num_alts > 16;
+
+for (i = 0; i < num_alts; i++){
+	var draw_color = (i == alt_cur) ? col : c_gray * 0.5;
+	var draw_x = x + 78 + (thin ? 4 : 8) * i;
+	rectDraw(draw_x, y + 10, thin ? 2 : 6, 4, draw_color);
 }
 
 var txt = "#" + string(alt_cur);
@@ -1089,7 +1094,7 @@ if phone.big_screen_pos_offset < 1{
 						text_x += add_x * 2;
 					
 						for (var j = 0; j < array_length(stats_table); j++){
-							textDraw(text_x, text_y, "fName", hb.parent_hbox && hb.parent_hbox != j && j > 0 ? c_gray : c_white, 18, 24, fa_left, 1, 0, 1, stats_table[j], true);
+							textDraw(text_x, text_y, "fName", hb.parent_hbox && hb.parent_hbox != i + 1 && j > 0 ? c_gray : c_white, 18, 24, fa_left, 1, 0, 1, stats_table[j], true);
 							text_x += add_x;
 						}
 						
@@ -1212,6 +1217,16 @@ if phone_practice && !phone.frame_data_loaded{
 }
 
 if !phone.lightweight{
+	
+	if !phone_game_over{
+		var dead = [1, 1, 1, 1];
+		with oPlayer if state != PS_DEAD{
+			dead[get_player_team(player) - 1] = 0;
+		}
+		if dead[0] + dead[1] + dead[2] + dead[3] > 2{
+			phone_game_over = true;
+		}
+	}
 
 	if !phone_char_ided{
 		with oPlayer if self != other{
@@ -1365,11 +1380,6 @@ if !phone.lightweight{
 			}
 		}
 		else if phone_lagging != 1 phone_lagging = 0;
-		
-		if phone.utils_cur_updated[phone.UTIL_DMG_FREEZE]{
-			phone.utils_cur_updated[phone.UTIL_DMG_FREEZE] = 0;
-			phone_frozen_damage = get_player_damage(player);
-		}
 	}
 
 	if array_length(phone_dust_query){
@@ -1385,6 +1395,11 @@ if phone_practice{
 
 	if phone.utils_cur[phone.UTIL_DMG_FREEZE]{
 		set_player_damage(player, phone_frozen_damage);
+	}
+	
+	if phone.utils_cur_updated[phone.UTIL_DMG_FREEZE]{
+		phone.utils_cur_updated[phone.UTIL_DMG_FREEZE] = 0;
+		phone_frozen_damage = get_player_damage(player);
 	}
 	
 	if phone.utils_cur_updated[phone.UTIL_STATE_SAVE]{

@@ -1,6 +1,6 @@
 
 // buff banner aura effect behind soldier
-if (buff_active) {
+if (buff_active || teammate_triggered_buff > 0) {
 	
 	var dspec_image = get_gameplay_time() / 6;
 	
@@ -11,8 +11,6 @@ if (buff_active) {
 
 // displays parachute
 if (para_active) {
-	
-
 
 	if (spr_dir > 0) {
 		draw_sprite_ext(sprite_get("uspecial_para"), uspec_image, x, y, 1, 1, 0, c_white, 1);

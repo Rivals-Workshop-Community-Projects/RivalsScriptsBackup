@@ -397,6 +397,24 @@ arena_title = "The Lone Swordsman";
 arena_short_name = "Meta Knight";
 battle_text = "* You begin to feel tense just by looking at the masked swordsman.";
 
+//
+boxing_title = "The Lone 
+Swordsman";
+//pokemon stadium
+pkmn_stadium_name_override = "meta k.";
+pkmn_stadium_front_img = sprite_get("metaknight_front")
+pkmn_stadium_back_img = sprite_get("metaknight_back")
+
+//Trial grounds
+guiltySprite = sprite_get("metaknight_trial")
+
+//po and gumbo
+ pot_compat_text = "Meta Knight Chocolate Fondant"
+pot_compat_variable = sprite_get("Meta_knight_food");
+
+//Feri
+feri_costume = sprite_get("Feri_meta_cosplay");
+
 //Adventure Mode lol
 
 pronouns = ["he","him",];

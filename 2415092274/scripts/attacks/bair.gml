@@ -15,8 +15,8 @@ set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 11);//9//10
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 8);
-//set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sound_get("SWFS5"));
+set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sound_get("SWFS2"));
+set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 10);
 
 set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 8);//12
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);

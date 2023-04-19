@@ -70,7 +70,7 @@ sprite_change_offset("dspecial_ball_explode", 117, 144);
 sprite_change_offset("dspec_cursor", 117, 144);
 sprite_change_offset("dspecial_fire", 118, 144);
 sprite_change_offset("dspecial_glow", 118, 144);
-sprite_change_offset("nspecial_proj", 118, 142);
+sprite_change_offset("nspecial_proj", 118, 144);
 sprite_change_offset("articlearrow", 34, 64);
 sprite_change_offset("dtilt_proj", 116, 142);
 sprite_change_offset("reload_input", 118, 142);

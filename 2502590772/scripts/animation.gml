@@ -13,10 +13,12 @@ if (!custom_clone) {
 else {
 	//update health
 	damage_percent_as_teammate = clamp(damage_percent_as_teammate, 0, 999);
+	
 }
 
 
 switch (state) {
+
     case PS_ATTACK_GROUND:
     case PS_ATTACK_AIR:
         //attack animation handler
@@ -73,18 +75,13 @@ switch (state) {
         //dashing has its own hurtbox
         hurtboxID.sprite_index = spr_hurtbox_dash;
         //if minun, reskin the dash
-        if (species_id != 1) break;
-        //replace the sprite according to the reskin array
-        var img_index = image_index;
-        sprite_index = spr_minun_reskin[state];
-        image_index = img_index;
+        minun_sprite_replace();
     break;
-    
-    case PS_LANDING_LAG:
     
     case PS_HITSTUN:
         //sprite reskin for minun only
         if (species_id != 1) break;
+        
         //get the correct hurt sprite
         var hurt_index = max( ds_list_find_index(ds_list_original_hurt_sprites, sprite_index) , 0);
         //var img_index = image_index;
@@ -97,13 +94,10 @@ switch (state) {
         //reset hurtbox
         hurtboxID.sprite_index = hurtbox_spr;
         //sprite reskin for minun only
-        if (species_id != 1) break;
-        //get the correct hurt sprite
-        var img_index = image_index;
-        sprite_index = spr_minun_reskin[state];
-        image_index = img_index;
+        minun_sprite_replace();
     break;
     
+
     
     case PS_SPAWN:
         var intro_delay = 20;
@@ -143,11 +137,15 @@ switch (state) {
     //don't break
 
     default:
-        //sprite reskin for minun only
-        if (species_id != 1) break;
-        //replace the sprite according to the reskin array
-        var img_index = image_index;
-        sprite_index = spr_minun_reskin[state];
-        image_index = img_index;
+        minun_sprite_replace();
     break;
 }
+
+#define minun_sprite_replace
+//sprite reskin for minun only
+if (species_id != 1) return;
+//replace the sprite according to the reskin array
+var img_index = image_index;
+sprite_index = spr_minun_reskin[state];
+image_index = img_index;
+return;

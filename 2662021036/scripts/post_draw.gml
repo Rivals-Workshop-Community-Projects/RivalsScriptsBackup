@@ -14,7 +14,7 @@ with (asset_get("oPlayer")){
 
 if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == 49){
     
-draw_sprite_ext(sprite_get("final_effects_2"), image_index, x, y, 1 * spr_dir, 1, 0, c_white, 1);  
+draw_sprite_ext(sprite_get("final_effects_2"), image_index, x, y, 2 * spr_dir, 2, 0, c_white, 1);  
 
     
 }

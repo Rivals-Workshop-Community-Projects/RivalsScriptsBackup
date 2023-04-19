@@ -50,7 +50,7 @@ sprite_change_offset("nspecial2", 32, 63, true);
 sprite_change_offset("fspecial", 32, 63, true);
 sprite_change_offset("uspecial", 32, 47, true);
 sprite_change_offset("uspecial2", 32, 47, true);
-sprite_change_offset("dspecial", 32, 47, true);
+sprite_change_offset("dspecial", 48, 63, true);
 sprite_change_offset("dspecial2", 32, 47, true);
 sprite_change_offset("taunt", 32, 47);
 

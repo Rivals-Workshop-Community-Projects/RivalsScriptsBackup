@@ -78,6 +78,11 @@ switch(state)
         image_index = 2 + floor(state_timer/3)
         if(state_timer >= 12)
         {
+            with(pHitBox)
+            {
+                if(player_id == other.player_id && attack == AT_DSPECIAL && hbox_num == 2)
+                destroyed = true;
+            }
             instance_destroy();
             sound_play(asset_get("sfx_icehit_medium2"), 0, noone, 1, 1.5);
             exit;

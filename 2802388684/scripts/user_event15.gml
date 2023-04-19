@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 11;
+num_alts = 13;
 
 // Whether or not to display a name for each alt.
 use_alt_names = true;
@@ -51,7 +51,9 @@ alt_names = [
 	"Boruto",
 	"Madara",
 	"Trans Jutsu",
+	"Manga",
 	"GameBoy",
+	"Abyss",
 	];
 
 

@@ -8,7 +8,7 @@ draw_sprite_ext(sprite_get("charselectbg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 
 if ("prev_alt" not in self){
 drawtime = 0
-drawing = 1
+drawing = 2
 }
     
 if ("prev_alt" in self && prev_alt != alt){
@@ -27,7 +27,7 @@ if alt == 5 {
 
 
 if "drawing" not in self {
-         draw_sprite_ext(sprite_get("charselect2"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+         draw_sprite_ext(sprite_get("charselect1"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 
   if drawing == 0 {
@@ -61,7 +61,7 @@ if alt == 5 {
 //define the palette names
 var palette_names = [
   "Forest Ranger",
-  "Zetta",
+  "Miko",
   "Olympia",
   "Ken",
   "Phantom",

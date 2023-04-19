@@ -86,6 +86,19 @@ if (state == PS_WALL_JUMP) {
 	numFlashes = 2;
 }
 
+if ("myBurst" in self && instance_exists(myBurst)) {
+	myBurst.x = x;
+	myBurst.y = y - 40;
+}
+
+if (shouldKillBurst < 0) {shouldKillBurst++;}
+if (hit_player_obj != noone && hit_player_obj.activated_kill_effect && shouldKillBurst > 0){
+	myKillBurst = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 40, killBurst);
+	myKillBurst.depth = depth - 1;
+	shouldKillBurst = -20;
+	sound_play(sound_get("smrpg_enemy_dead"));
+}
+
 with (pHitBox) {
     if (player_id == other.id) {
 		hboxShape = -2;
@@ -189,5 +202,5 @@ if (drm == 1) {
 }
 
 if (drm == 0 && url != 2318304706) {
-	drm = 1;
+	//drm = 1;
 }

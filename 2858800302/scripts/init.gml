@@ -42,7 +42,7 @@ should_attack = false;
 flash_timer = 0;
 
 boomerang_speed = 0.15;
-nspec_cooldown = 40;
+nspec_cooldown = 65;
 
 flower_crown_effect_length = 150;
 time_between_damage = 40;

@@ -195,7 +195,9 @@ so that things like page breaks can work properly.
 
 initTip("Neutral Special: Revolution Swords");
 initWords("Galacta Knight summons floating swords. If tapped he only summons 2, but if held he can summon more, until he has swords all around him.
-The swords can't harm opponents until he launches them and will disappear if Galacta Knight gets hit however!");
+The swords can't harm opponents until he launches them and will disappear if Galacta Knight gets hit however!
+
+Also, if you hold up when releasing this move, some of the swords above Galacta Knight will go up into the air! This can catch opponents high up, but the swords will also come raining down diagonally shortly afterwards, just like in his boss fight.");
 
 initTip("Side Special: Crescent Shot");
 initWords("Galacta Knight blocks with his shield, absorbing damage from both projectiles and physical attacks. When releasing the button, he fires a projectile from his shield.
@@ -254,6 +256,15 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.81", "16th March, 2023");
+initHeader("Buffs");
+initSection("- DStrong tornado can now also be used on platforms, because why not (obviously the platform has to be big enough though)");
+initSection("- If Jab1 is parried, it will no longer remove the DSpecial time rift");
+initSection("- If you hold up when releasing NSpecial, some of the swords can be sent upward, which will cause them to rain down diagonally again a moment later (basically just like in his boss fight)");
+initHeader("Fixes / Other Changes");
+initSection("- Added 11 new runes");
+initSection("- Added Villager compatibility");
 
 initPatch("1.8", "4th August, 2022");
 initHeader("Fixes / Other Changes");

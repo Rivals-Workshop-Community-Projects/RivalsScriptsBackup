@@ -143,13 +143,21 @@ if (!free) {
 }
 
 
-
+if (special_pressed && !right_down && !left_down && !up_down && !down_down && state_cat != SC_HITSTUN && state != PS_PARRY && state != PS_PARRY_START && attack != AT_EXTRA_3 && attack != AT_DSPECIAL && attack != AT_DSPECIAL_2 && attack != AT_FTHROW && phantom.state != 1 && phantom.state != 3 && !(phantom.state == 6 && phantom.last_state == 1) && phantom.state != 7 && !phantom.used_for_fly) 
+{
+	    move_cooldown[AT_NSPECIAL] = 5;
+    move_cooldown[AT_NSPECIAL_AIR] = 5;
+    if (phantom.state != 4 && (move_cooldown[AT_NSPECIAL_2] = 0)) {
+        phantom.state = 4;
+        phantom.state_timer = 0;
+    }
+}
 
 //print_debug(dracvoice);
 //print_debug(page);
 //print_debug(fstrong1fhit)
 //print_debug(start_sprdir);
 
-//print_debug(phantom.state);
+print_debug(phantom.state);
 
 // Code for handling phantom state on opponent death is in article1_update.gml (state 2).

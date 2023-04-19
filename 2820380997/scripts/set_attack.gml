@@ -19,7 +19,7 @@ if(instance_exists(clone_object_ID)){
         case AT_FSPECIAL:
             var distance_to_clone = point_distance(x,y - 30,clone_object_ID.x,clone_object_ID.y - 30);
             if(distance_to_clone < 75){window = 2;}
-            if(distance_to_clone > 75){attack = AT_FSPECIAL_AIR;}
+            if(distance_to_clone > 75){attack = AT_FSPECIAL_AIR;} // TOo far or shield down at input time
             //hurtboxID.sprite_index = get_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
             break;
             

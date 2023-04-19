@@ -41,12 +41,12 @@ for (i = 0; i <= 1; i++) {
 	set_hitbox_value(curr_attack, 1, HG_WIDTH, 100);
 	set_hitbox_value(curr_attack, 1, HG_HEIGHT, 30);
 	set_hitbox_value(curr_attack, 1, HG_PRIORITY, 2);
-	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 6);
-	set_hitbox_value(curr_attack, 1, HG_ANGLE,  90);
+	set_hitbox_value(curr_attack, 1, HG_DAMAGE, 7);
+	set_hitbox_value(curr_attack, 1, HG_ANGLE,  361);
 	set_hitbox_value(curr_attack, 1, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(curr_attack, 1, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(curr_attack, 1, HG_KNOCKBACK_SCALING, .3);
 	set_hitbox_value(curr_attack, 1, HG_BASE_HITPAUSE, 7);
-	set_hitbox_value(curr_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+	set_hitbox_value(curr_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 	set_hitbox_value(curr_attack, 1, HG_HITPAUSE_SCALING, .35);
 	set_hitbox_value(curr_attack, 1, HG_VISUAL_EFFECT, leak_vfx_big);
 }

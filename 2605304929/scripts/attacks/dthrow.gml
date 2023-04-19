@@ -158,7 +158,7 @@ set_num_hitboxes(attack, 6); // Swap 1 for number of hitboxes
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
 
-// Hitbox 1 - Final Hitbox with knockback
+// Hitbox 1 - Start Up
 window_for_hitbox = 3; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 1);
@@ -182,6 +182,7 @@ window_for_hitbox = 3;
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
     set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, -1); // Reset SDI
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, -1); // Reset SDI
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
     set_hitbox_value(attack, hitbox_num, 81, "Start Hit");//HG_MUNO_HITBOX_NAME
 
 // Hitbox 2-5
@@ -209,6 +210,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
     set_hitbox_value(attack, hitbox_num, HG_DRIFT_MULTIPLIER, -1); // Negate most drive and SDI during shock.
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, -1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
     set_hitbox_value(attack, hitbox_num, 81, "Shock" + string(hitbox_num - 1));//HG_MUNO_HITBOX_NAME
     set_hitbox_value(attack, hitbox_num, 91, "Turns off SDI and Drift during grab");//HG_MUNO_HITBOX_MISC
 }
@@ -230,8 +232,8 @@ window_for_hitbox = 6;
     set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .3);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
-    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
+    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .4);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 8);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); // 
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_bird_downspecial_end"));
@@ -239,6 +241,7 @@ window_for_hitbox = 6;
     set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, 1); // Reset SDI
     set_hitbox_value(attack, hitbox_num, HG_HITSTUN_MULTIPLIER, .9);
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_electric);
     set_hitbox_value(attack, hitbox_num, 81, "Final Hit");//HG_MUNO_HITBOX_NAME
 //hitbox_num++;
 

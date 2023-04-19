@@ -36,9 +36,10 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 
 set_num_hitboxes(AT_FSPECIAL, 1);
 
+set_hitbox_value(AT_FSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Bob-Omb");
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 900);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 9999);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, -25);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -65);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 40);
@@ -66,28 +67,34 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, false);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, false);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, false);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, bomb_explode);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, bomb_pop);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, bomb_explode);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_PARTICLE_NUM, 2);
 
+
 // usually id do temp num stuff but i guess this works - Lemons
+
+set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Explosion");
+set_hitbox_value(AT_FSPECIAL, 2, HG_MUNO_HITBOX_MISC_ADD, "Active for 11 frames");
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 11);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 0);
-set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 60);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 60);
-set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 20);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, 10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 100);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 100);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, empty_fx);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.7);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);

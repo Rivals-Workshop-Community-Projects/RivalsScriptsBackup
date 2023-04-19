@@ -9,13 +9,15 @@
 
 /*with pHitBox{ //i was here
 	//draw_debug_text(x +30 , y , string(id%1000));
-	draw_debug_text(x +60 , y , string(hsp));
-	//draw_debug_text(x +90 , y , string(hitbox_timer));
+	draw_debug_text(x +60 , y , string(damage));
+	draw_debug_text(x +90 , y , string(kb_value));
+	draw_debug_text(x +120 , y , string(hitstun_factor));
 }*/
 
-//DRAWING PILL FOR NSPECIAL - IF FRAME DATA IS CHANGED THIS MUST BE UPDATED
 
+//DRAWING PILL FOR NSPECIAL - IF FRAME DATA IS CHANGED THIS MUST BE UPDATED
 if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
+
 	if attack == AT_NSPECIAL{
 		if window == 1{
 			switch(order[pill]){

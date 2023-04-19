@@ -29,11 +29,11 @@ alt_name[8]  = "Smash Green";
 alt_name[9]  = "SB2749";
 alt_name[10] = "Fleskhjerta";
 alt_name[11] = "SMG4";
-alt_name[12] = "MM54321";
+alt_name[12] = "Brazil";
 alt_name[13] = "Boli";
 alt_name[14] = "Smash";
 alt_name[15] = "Jumpman";
- 
+alt_name[16] = "Fire";
  
  
 //Alt

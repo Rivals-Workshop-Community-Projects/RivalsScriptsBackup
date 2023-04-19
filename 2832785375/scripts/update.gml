@@ -21,6 +21,7 @@ if ground_seed_count > 1 {
     }
     */
     oldest_id.state = PS_DEAD
+    oldest_id.state_timer = 0
     //instance_destroy(oldest_id);
 }
 

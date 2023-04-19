@@ -30,35 +30,6 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 
 }
 
-
-if (my_hitboxID.attack == AT_DSPECIAL) {
-	
-	// basically, this forces the boot to not move when parried from either direction
-	// that or cause a desync Lol!
-	
-	/*
-	if(hit_player_obj.spr_dir != my_hitboxID.spr_dir) {
-		if (hit_player_obj.spr_dir == -1) {
-			my_hitboxID.x = my_hitboxID.x + bootoffset;
-		}
-		else if (hit_player_obj.spr_dir == 1) {
-			my_hitboxID.x = my_hitboxID.x - bootoffset;
-		} 
-	}
-	else if (hit_player_obj.spr_dir == my_hitboxID.spr_dir) {
-		if (hit_player_obj.spr_dir == -1) {
-			my_hitboxID.x = my_hitboxID.x - bootoffset;
-		}
-		else if (hit_player_obj.spr_dir == 1) {
-			my_hitboxID.x = my_hitboxID.x + bootoffset;
-		} 
-	}
-	*/
-	
-	//my_hitboxID.destroyed = true;
-
-}
-
 if (my_hitboxID.attack == AT_DSPECIAL_2) {
 	sound_play(sound_get("button15"), false, noone, 1, 1);
 	y = 2500;

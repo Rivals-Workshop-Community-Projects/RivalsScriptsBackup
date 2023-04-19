@@ -114,8 +114,10 @@ if (ex_cooldown <= 0){
 
 //Resets the FSpecial and USpecial cooldown
 if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
-	move_cooldown[AT_FSPECIAL] = 0;
 	move_cooldown[AT_USPECIAL] = 0;
+}
+if (state == PS_WALL_JUMP || state == PS_HITSTUN){
+	move_cooldown[AT_FSPECIAL] = 0;
 }
 
 //Plays the EX Ready stuff

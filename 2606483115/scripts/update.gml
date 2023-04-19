@@ -188,6 +188,7 @@ if(instance_exists(steam_rocket)){
 if(cancel_buffer){
 	if(!hitpause && move_cooldown[AT_NSPECIAL] <= 0){
 		set_attack(AT_NSPECIAL)
+		sound_play(asset_get("mfx_back"))
 		cancel_buffer = false
 		if(steam > 34){
 			steam -= 34
@@ -210,24 +211,80 @@ if(move_cooldown[AT_NSPECIAL] == 1){
 	col_g_outline = 255
 	col_b_outline = 255
 }
-if(steam <= 0){
+
+//Tired Moves
+if(tired && steam > 0){
+	//Dspecial
+	set_hitbox_value(AT_DSPECIAL, 6, HG_DAMAGE, 7);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.55);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_HITPAUSE, 9);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_HITPAUSE_SCALING, 0.55);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_ANGLE, 65);
+	
+	//Fspecial
+	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 8);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 55);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8.5);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.55);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 9);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .6);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 304);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+	
+	//Uspecial
+	set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 11);
+}else{
+	//Dspecial
+	set_hitbox_value(AT_DSPECIAL, 6, HG_DAMAGE, 5);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_KNOCKBACK, 7.5);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.3);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_HITPAUSE, 9);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_HITPAUSE_SCALING, 0.3);
+	set_hitbox_value(AT_DSPECIAL, 6, HG_ANGLE, 85);
+	
+	//Fspecial
+	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 75);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.2);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .15);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 301);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+	
+	//Uspecial
+	set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 6);
+}
+
+//Tired Stats
+if(tired){
 	col_r_outline = 100 + sin(lifetime / 20) * 50
-	if(tired == false){
-		tired = true
-		move_cooldown[AT_NSPECIAL] = 180
-		sound_play(sound_get("sfx_tired"))
+	walk_speed = 3;
+	initial_dash_speed = 4;
+	dash_speed = 5.5;
+	knockback_adj = 1.05
+	air_max_speed = 4.5
+	air_accel = .15;
+	wave_land_adj = 1
+	if(lifetime mod 15 == 0){
+		spawn_hit_fx(x - 40 + random_func(2, 80, true), y - 60 + random_func(1, 80, true), vfx_steam_small)
 	}
 }else{
-	tired = false
+	walk_speed = 4;
+	initial_dash_speed = 6;
+	dash_speed = 7.5;
+	knockback_adj = 1
+	air_max_speed = 5.5
+	air_accel = .45;
+	wave_land_adj = 1.2
 }
 
 outline_color = [col_r_outline, col_g_outline, col_b_outline]
 
 init_shader();
 
-if(steam > 0){
-	col_r_outline = lerp(col_r_outline, 0, 0.05)
-}
+col_r_outline = lerp(col_r_outline, 0, 0.05)
 col_b_outline = lerp(col_g_outline, 0, 0.05)
 col_g_outline = lerp(col_b_outline, 0, 0.05)
 //Wavecancel
@@ -330,6 +387,9 @@ if(state == PS_SPAWN || not_moved){
 		spr_fstrong = sprite_get("masked_fstrong");
 		spr_ustrong = sprite_get("masked_ustrong");
 		spr_dstrong = sprite_get("masked_dstrong");
+		spr_fstrong_2 = sprite_get("masked_fstrong_tired");
+		spr_ustrong_2 = sprite_get("masked_ustrong_tired");
+		spr_dstrong_2 = sprite_get("masked_dstrong_tired");
 		spr_nspecial = sprite_get("masked_nspecial");
 		spr_fspecial = sprite_get("masked_fspecial");
 		spr_uspecial = sprite_get("masked_uspecial");
@@ -391,7 +451,6 @@ if(state == PS_SPAWN || not_moved){
 
 if(not_moved && state != PS_SPAWN){
 	if(state != PS_IDLE || !joy_pad_idle){
-		set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sfx_steam3);
 		set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sfx_steam_cloth);
 		set_window_value(AT_DATTACK, 3, AG_WINDOW_SFX, sfx_steam1);
 		set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX, sfx_steam1);
@@ -504,7 +563,6 @@ if(not_moved && state != PS_SPAWN){
 		    
 		    set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 5);
 		    
-		    set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sfx_steam3);
 			set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sfx_steam_cloth);
 			set_window_value(AT_DATTACK, 3, AG_WINDOW_SFX, sfx_steam1);
 			set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX, sfx_steam1);
@@ -635,6 +693,22 @@ if(steam >= 50){
 }
 */
 
+//Dsppecial Sprite Change
+if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+	if(!masked){
+		if(tired){
+			spr_dspecial = sprite_get("dspecial_tired");
+		}else{
+			spr_dspecial = sprite_get("dspecial");
+		}
+	}else{
+		if(tired){
+			spr_dspecial = sprite_get("masked_dspecial_tired");
+		}else{
+			spr_dspecial = sprite_get("masked_dspecial");
+		}
+	}
+}
 //Uspecial Air Accel
 if(attack == AT_USPECIAL && state == PS_ATTACK_AIR){
 	air_accel = 0.9;
@@ -651,6 +725,7 @@ if(halloween == true){
     }
 }
 
+/*
 //Pedal to the Metal
 if(pedal_to_metal){
 	if(chuff_noise_timer >= 30){
@@ -779,9 +854,6 @@ if(pedal_to_metal){
 		
 		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 11);
 	}else{
-		if(lifetime mod 5 == 0){
-			spawn_hit_fx(x - 40 + random_func(2, 80, true), y - 60 + random_func(1, 80, true), vfx_steam_small)
-		}
 		red_indicator_timer = 26
 		
 		idle_anim_speed = .1;
@@ -1004,7 +1076,7 @@ set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.95 * damage_adj);
 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, round(10 * damage_adj));
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 10 * damage_adj);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, 0.75 * damage_adj);
-
+*/
 
 steam_wall_no_down--
 switch_timer--

@@ -20,3 +20,12 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, (old_hsp)*2*spr_dir - 2 +
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, (old_vsp)*2 - 2 + random_func(2,5,true));
 create_hitbox(AT_DSPECIAL,2,x,y - 40)
 }
+
+
+with hit_player_obj {
+	if string_count("donyoku", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0 {
+			with other {
+				take_damage(player,-1,ceil(other.enemy_hitboxID.damage))
+			}
+	} 
+}

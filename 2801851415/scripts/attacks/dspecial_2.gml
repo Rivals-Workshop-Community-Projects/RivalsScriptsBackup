@@ -44,8 +44,8 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITPAUSE_SCALING, .35);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITPAUSE_SCALING, .8);
+//set_hitbox_value(AT_DSPECIAL_2, 1, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, 16);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("dspecial2_proj")); //this sets the projectile sprite
 // set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_MASK, sprite_get("dspecial2_proj")); //this sets the hitbox of the projectile to be the same as the sprite
@@ -55,6 +55,6 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 7);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -5);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_GRAVITY, 0.3);
-
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_EFFECT, 13);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, shatter);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, shatter);

@@ -18,6 +18,7 @@ neutral_attacks[1] = AT_NAIR;
 neutral_attacks[2] = AT_NSPECIAL;
 
 ai_state = 0;
+waveland = false;
 waveshine = 0;
 topcustom = 0;
 cheatTracker = 0;

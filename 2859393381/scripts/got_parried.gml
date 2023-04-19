@@ -18,3 +18,8 @@ if (!turnabout)
         break;
     }
 }
+else
+{
+        if (turnabout_timer_pause) turnabout_timer_pause = 0;
+        turnabout_timer-= 90;
+}

@@ -19,8 +19,8 @@ walk_speed          = 3.75;		// 3    -  4.5
 walk_accel          = 0.3;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
 initial_dash_time   = 10;		// 8    -  16       zetterburn's is 14
-initial_dash_speed  = 7;		// 4    -  9
-dash_speed          = 8.5;		// 5    -  9
+initial_dash_speed  = 7.25;		// 4    -  9
+dash_speed          = 7;		// 5    -  9
 dash_turn_time      = 15;		// 8    -  20
 dash_turn_accel     = 2;		// 0.1  -  2
 dash_stop_time      = 6;		// 4    -  6        zetterburn's is 4
@@ -34,7 +34,7 @@ max_jump_hsp        = 6;		// 4    -  8
 air_max_speed       = 6.5;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
-prat_fall_accel     = 0.85;		// 0.25 -  1.5
+prat_fall_accel     = 0.65;		// 0.25 -  1.5
 air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 12;		// 6    -  11
 fast_fall           = 15;		// 11   -  16
@@ -52,7 +52,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 14;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 18;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -180,6 +180,8 @@ splatrecalled = 0;
 dstrong_charge = 0;
 dstrong_charged = false;
 
+grabbed_id = noone;
+
 alt = get_player_color(player);
 lancer_laugh = sound_get("snd_lancerlaugh");
 if(alt == 6){ //susie
@@ -233,3 +235,4 @@ hue_speed=1; //change this to change the speed of the hueshift
 muno_event_type = 0;
 user_event(14);
 */
+user_event(7);

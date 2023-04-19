@@ -21,6 +21,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1) {
 if (attack == AT_DSPECIAL && (hbox_num == 2 || hbox_num == 3)) {
 	if (!free) {
 		print_debug("I am grounded. I must disappear now.");
+		sound_play(player_id.sfx_metal_can);
 		destroyed = true;
 		//instance_destroy();
 		return;
@@ -42,7 +43,7 @@ if (attack == AT_USTRONG && hbox_num == 2) {
 			kb_angle = 75;
 		}
 		else {
-			kb_angle = 255;
+			kb_angle = 270;
 		}
 
 		// Couldnt figure out spin. Spr_Angle doesn't work?

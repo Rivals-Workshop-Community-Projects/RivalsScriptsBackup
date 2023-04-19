@@ -1,7 +1,48 @@
-
+print_debug(hue_offset);
 
 //update
 
+if (hue_offset == 0){
+	hue_rising = -1;
+	hue_hold -= 1;
+	if hue_hold == 0{
+		print_debug("lol");
+		hue_hold = 40;
+		hue_offset += 1;
+		hue_rising = 1;
+	}
+}
+else if (hue_offset == 106){
+	hue_rising = -1;
+	hue_hold -= 1;
+	if hue_hold == 0{
+		hue_hold = 40;
+		hue_offset -= 1;
+		hue_rising = 0;
+		print_debug(hue_rising);
+		print_debug(hue_offset);
+	}
+}
+
+if (hue_offset >= 0 && hue_offset <= 106){
+  if (hue_rising == 1){
+	hue_offset+=hue_speed;
+	hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+  }
+  if (hue_rising == 0) {
+    hue_offset-=hue_speed;
+	hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+  }
+}
+
+
+
+color_rgb=make_color_rgb(89, 238, 255) //input rgb values here, uses rgb to create a gamemaker colour variable
+hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+set_color_profile_slot( 11, 6, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
+set_article_color_slot( 6, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); 
+init_shader();
 
 //hehe
 if (joycon_drift = "on"){
@@ -121,7 +162,12 @@ with (asset_get("oPlayer")){
 
 if (joycon_drift_timer>0){
 	if (joycon_drift=="off"){
+		if (get_player_color( player ) == 15){
+			sound_play(sound_get("fortnite"));
+		}
+		
 		sound_play(sound_get("off"));
+		
 		joycon_drift = "on"
 		white_flash_timer = 24
 		joycon_drift_anim = joycon_drift_anim_duration;

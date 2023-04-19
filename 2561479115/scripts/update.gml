@@ -100,6 +100,17 @@ else if can_special && is_special_pressed(DIR_DOWN) && move_cooldown[AT_DSPECIAL
     beacon_error = 40;
 }
 
+//funny things
+if attacking {
+    if attack == AT_BAIR {
+        if (window == 3) {
+			if (window_timer == 0) {
+				destroy_hitboxes(); //kill the lingering hit on normal endlag
+			}	
+		}
+    }
+}
+
 //#region Other Update
 user_event(0);
 //#endregion
@@ -254,7 +265,7 @@ repeat (ds_list_size(particles)) {
 }
 #define grab_process
 var t;
-if state == clamp(state, 5, 6)
+if state == clamp(state, 5, 6) && attack == AT_DSTRONG
     for (var i = 0; i < ds_list_size(roke_dstrong_targets); i++) {
         t = roke_dstrong_targets[|i];
         if !instance_exists(t) {

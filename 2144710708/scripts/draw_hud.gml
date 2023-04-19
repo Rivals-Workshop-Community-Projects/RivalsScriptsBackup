@@ -16,7 +16,11 @@ if ("literally_sliced_in_half" in self) { // no more weird error message :D
 	//draw_debug_text(temp_x+0,temp_y-44,"Hitstun: "+string(hitstun));
 	//draw_debug_text(temp_x+0,temp_y-30,"State: "+string(state));
 	//draw_debug_text(temp_x+0,temp_y-30,"Stage: "+string(get_stage_data( SD_WIDTH )));
-
+		
+		
+		if (get_gameplay_time() < 127 && practice) {
+			draw_debug_text(temp_x,temp_y-26,"Shield+Taunt to see boot data.")
+		}
 
 		// boot icon. grayed out if cooldown is active
 		if (move_cooldown[AT_DSPECIAL] == 0) {
@@ -76,10 +80,13 @@ if ("literally_sliced_in_half" in self) { // no more weird error message :D
 		//further y positions should go up in multiples of 16 from 64
 		}
 		
-		// munophone touch support
-			muno_event_type = 5;
-			user_event(14);
-		
+		// dnd joke code
+		/*
+		if (get_player_color(player) == 3 && hit_chance_var != 8) {
+			draw_debug_text(temp_x,temp_y-32,"Last Roll: " + string(hit_chance_var-8) +"+9 dex")
+			draw_debug_text(temp_x,temp_y-16,"Number to beat: " + string(number_to_beat))
+		}
+		*/
 	}
 }
 

@@ -46,6 +46,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, vfx_wood_large);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_PARTICLE_NUM, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, 1);
 
 //when remote strong is active

@@ -636,7 +636,7 @@ if (attack == AT_USPECIAL)
 
 		if (window_timer == 4 && !hitpause)
 		{
-			vsp = -16;
+			vsp = -16.5;
 		}		
 	}
 	
@@ -671,7 +671,7 @@ if (attack == AT_USPECIAL_2)
 		
 		if (window_timer == 4 && !hitpause)
 		{
-			vsp = -12;
+			vsp = -13;
 		}
 	}
 	
@@ -837,17 +837,30 @@ if (attack == AT_DSPECIAL_2)
 		soft_armor = 0;
 	}
 	
+	//	Grab Command Centre
 	if (window > 1 && window < 4 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN)
 	{
 		hit_player_obj.x += floor((x + 50*spr_dir - hit_player_obj.x)/6)
 		hit_player_obj.y += floor((y - 8 - hit_player_obj.y)/6)
 	}
 	
-	if (window == 6 && window_timer == 1 && !hitpause)
+	if (window == 4 || window == 5)
+	{		
+		if (has_hit_player)
+		{			
+			grabbed_player_obj.x = lerp(grabbed_player_obj.x, x + 64 * spr_dir, 0.5);
+			grabbed_player_obj.y = lerp(grabbed_player_obj.y, y - 12, 0.5);
+		}
+	}
+	
+	if (window == 6)
 	{
-		if (!has_hit)
+		if (window_timer == 1 && !hitpause)
 		{
-			sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.90);
+			if (!has_hit)
+			{
+				sound_play(asset_get("sfx_ell_strong_attack_explosion"), false, noone, 0.90);
+			}
 		}
 	}
 	

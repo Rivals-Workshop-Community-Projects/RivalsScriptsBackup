@@ -1,9 +1,4 @@
-//take_damage(player, -1, hit_player); //applies (hit_player) damage to the workshop character
-//trace("hut_player called", hit_player)
-
 var boost = -1;
-
-//print(my_hitboxID.hbox_num)
 
 var can_pull;
 can_pull = !hit_player_obj.clone and hit_player_obj.free;
@@ -18,9 +13,6 @@ switch (my_hitboxID.attack)
             nspecial_grab_timer = nspecial_grab_max_time;
             nspecial_grabbed_player.old_hsp = 0;
             nspecial_grabbed_player.old_vsp = 0;
-            
-            attack_end();
-            set_state(PS_IDLE)
         }
     break;
     case AT_EXTRA_1:
@@ -43,29 +35,32 @@ switch (my_hitboxID.attack)
     case AT_DATTACK:
         if can_pull
         {
-            hit_player_obj.x = lerp(hit_player_obj.x,x+(30*spr_dir),0.3)
-            //hit_player_obj.y = lerp(hit_player_obj.y,y-10,0.)            
+            hit_player_obj.x = lerp(hit_player_obj.x,x+(30*spr_dir),0.3)         
         }
         break;
     case AT_USTRONG:
-        if can_pull
-        {
+        if can_pull {
             hit_player_obj.x = lerp(hit_player_obj.x,x,0.1)
             hit_player_obj.y = lerp(hit_player_obj.y,y-70,0.2)
         }
+		if !has_rune("I") && hit_player_obj.should_make_shockwave {
+		    sound_play(sound_get("star_get"));
+		}
         break;
     case AT_DAIR:
-        if my_hitboxID.hbox_num == 1 old_vsp = -10
+        if my_hitboxID.hbox_num == 1 { 
+		old_vsp = -10;
+		shake_camera( 10, 20+ round(get_player_damage(hit_player_obj.player) / 4) );
+		}
     break;
     case AT_NAIR:
     case AT_BAIR:
         var dir = sign((hit_player_obj.y - (hit_player_obj.char_height/2)) - (y - (char_height/2)));
         old_vsp += dir*(!fast_falling)
-        //print(dir)
     case AT_UAIR:
         if can_pull and attack != AT_BAIR
         {
-             hit_player_obj.x = lerp(hit_player_obj.x,x,0.1)
+             if !(attack = AT_UAIR && my_hitboxID.hbox_num = 1) hit_player_obj.x = lerp(hit_player_obj.x,x,0.1)
              hit_player_obj.y = lerp(hit_player_obj.y,y-55,0.21)
         }
         var t = ((attack == AT_BAIR) * 2) + ((attack == AT_UAIR)*1)
@@ -73,7 +68,7 @@ switch (my_hitboxID.attack)
         old_vsp = min(old_vsp - t,0)
     break;
 	
-	 case AT_USPECIAL:
+	case AT_USPECIAL:
 		with(my_hitboxID){
 			if ("ownerarticle" in self){
 				ownerarticle.hitstop = hitpause;
@@ -83,17 +78,24 @@ switch (my_hitboxID.attack)
 				ownerarticle.disappear_time = ownerarticle.disappear_time_max - 30;
 			}
 		}
-	 break;
+	break;
 	 
-	 case AT_FSTRONG:
-	     if my_hitboxID.hbox_num = 3{
-		 whomp_hashit = true;
-		 }
-	 break;
+	case AT_FSTRONG:
+	    whomp_id.eergh_hitpause = hit_player_obj.hitstop - (my_hitboxID.extra_hitpause);
+		if state = PS_ATTACK_GROUND && attack = AT_FSTRONG {
+		    hitstop = hit_player_obj.hitstop - (my_hitboxID.extra_hitpause);
+		}
+	break;
+	case AT_DSTRONG:
+	if !has_rune("M") {
+	    thwomp_id.eergh_hitpause = hit_player_obj.hitstop - (my_hitboxID.extra_hitpause);
+		if (state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && attack = AT_DSTRONG {
+		    hitstop = hit_player_obj.hitstop;
+		}
+	}
+	break;
+	
+	case AT_FSPECIAL:
+	    sound_stop(sm64_fuse);
+	break;
 }
-/*
-if (attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) // I guess
-{    
-       var k = spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, bomb_hit);
-       k.depth = depth - 1;
-}*/

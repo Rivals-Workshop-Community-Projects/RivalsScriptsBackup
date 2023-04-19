@@ -6,11 +6,11 @@ set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 // Startup
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 // Charging First
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 40);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 32);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
@@ -20,7 +20,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED, 1);
 
 // Charging Max
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_GOTO, 7);

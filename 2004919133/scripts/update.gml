@@ -1,4 +1,5 @@
 //RUNES
+/*
 if runesUpdated {
 	if runeA { //trigger the attribute change
 		divespeed = 12;
@@ -59,10 +60,12 @@ if runesUpdated {
 	}
 }
 
+*/
 if (url != 2004919133){
 	player = -1;
 	spawn_hit_fx(x,y,0);
 }
+/*
 
 if runeM { //trigger the attribute change
 	if (knockback_adj > .7){
@@ -95,6 +98,7 @@ if (runeD && (state == PS_HITSTUN || state_cat == SC_GROUND_NEUTRAL || state == 
     taunt_timer = 0;
 }
 
+*/
 
 
 
@@ -109,6 +113,10 @@ if (runeD && (state == PS_HITSTUN || state_cat == SC_GROUND_NEUTRAL || state == 
 
 //update.gml
 
+if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
+	grabbed = -4;
+}
+
 pon_mod = pon_count mod 2;
 
 if (error_cooldown > 0){
@@ -121,11 +129,6 @@ if (click_cooldown > 0){
 
 if (horn_cooldown > 0){
     horn_cooldown -= 1;
-}
-
-if ((state == PS_DASH || state == PS_DASH_START) && taunt_pressed && horn_cooldown <= 0){
-    sound_play( sound_get ( "sfx_scooter_beep" ) );
-    horn_cooldown = 250;
 }
 
 if (shop_open == 1 && attack == AT_DSPECIAL && state != PS_ATTACK_GROUND){
@@ -158,6 +161,7 @@ if (uspecial_timer <= 0){
 
 var alt_cur = get_player_color(player);
 
+/*
 //hime alt
 if (state == PS_SPAWN && get_player_color(player) > 0 && up_down && state_timer == 0 && alt_cur != 11 && alt_cur != 12 && alt_cur != 13 && alt_cur != 14 && alt_cur != 15) {
     sound_play (asset_get ("mfx_star"));
@@ -209,6 +213,7 @@ if (state == PS_SPAWN && get_player_color(player) > 0 && left_down && state_time
     set_color_profile_slot( get_player_color(player), 6, 33, 33, 33 ); //zipper
     set_color_profile_slot( get_player_color(player), 7, 79, 239, 255 ); //umbrella
 }
+*/
 
 //old shop
 if (state == PS_SPAWN && state_timer <= 100 && shop_type == "current" && taunt_down){
@@ -227,19 +232,6 @@ else{
 //practice pons
 if (attack == AT_TAUNT && down_pressed && practice){
     pon_count = 999;
-}
-
-//dash smoke
-if (state == PS_DASH_START && state_timer == 1){
-	spawn_hit_fx( x, y - 14, 144 );
-}
-
-if (state == PS_DASH_STOP && state_timer == 4){
-	spawn_hit_fx( x, y - 14, 144 );
-}
-
-if ((prev_state == PS_DASH || prev_state == PS_DASH_START || prev_state == PS_DASH_TURN) && state_timer == 1 && state != PS_DASH && state != PS_DASH_TURN && state != PS_DASH_STOP && (state != PS_ATTACK_GROUND && attack != AT_DATTACK && state != PS_ATTACK_AIR)){
-	spawn_hit_fx( x, y - 14, 144 );
 }
 
 //dattack parry thing idk
@@ -265,6 +257,102 @@ if (taunt_time == 0){
 //if (prev_state == PS_WALK && state_timer == 1){
 //	spawn_hit_fx( x, y - 14, 14 );
 //}
+
+
+
+//change dash sprite and stats
+if (badge_slot_1 == 2 || badge_slot_2 == 2 || badge_slot_3 == 2){
+	//dash smoke
+	/*
+	if (state == PS_DASH_START && state_timer == 1){
+		spawn_hit_fx( x, y - 14, 144 );
+	}
+		
+	if (state == PS_DASH_STOP && state_timer == 2){
+		spawn_hit_fx( x, y - 14, 144 );
+	}
+		
+	if ((prev_state == PS_DASH || prev_state == PS_DASH_START || prev_state == PS_DASH_TURN) && state_timer == 1 && state != PS_DASH && state != PS_DASH_TURN && state != PS_DASH_STOP && (state != PS_ATTACK_GROUND && attack != AT_DATTACK && state != PS_ATTACK_AIR)){
+		spawn_hit_fx( x, y - 14, 144 );
+	}
+	*/
+	
+	set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("dattack_scoot"));
+	set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack_scoot"));
+	
+    spr_dash = sprite_get("dash_scoot");
+    spr_dashstart = sprite_get("dashstart_scoot");
+    spr_dashstop = sprite_get("dashstop_scoot");
+    spr_dashturn = sprite_get("dashturn_scoot");
+    
+    initial_dash_time = 14;
+	initial_dash_speed = 7;
+	dash_speed = 8;
+	dash_turn_time = 14;
+	dash_turn_accel = .9;
+	dash_stop_time = 6;
+	dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
+	ground_friction = .25;
+	moonwalk_accel = 1.4;
+	
+	if ((state == PS_DASH || state == PS_DASH_START) && taunt_pressed && horn_cooldown <= 0){
+	    sound_play( sound_get ( "sfx_scooter_beep" ) );
+	    horn_cooldown = 250;
+	}
+}
+else{
+	set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("dattack"));
+	set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
+	
+    spr_dash = sprite_get("dash");
+    spr_dashstart = sprite_get("dashstart");
+    spr_dashstop = sprite_get("dashstop");
+    spr_dashturn = sprite_get("dashturn");
+    
+    initial_dash_time = 14;
+	initial_dash_speed = 7.5;
+	dash_speed = 6.5;
+	dash_turn_time = 10;
+	dash_turn_accel = 1.5;
+	dash_stop_time = 4;
+	dash_stop_percent = .45; //the value to multiply your hsp by when going into idle from dash or dashstop
+	ground_friction = .3;
+	moonwalk_accel = 1.35;
+}
+
+if (free){
+	set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial_air"));
+	set_attack_value(AT_DSPECIAL_2, AG_AIR_SPRITE, sprite_get("dspecial_air"));
+}
+else{
+	set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
+	set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("dspecial"));
+}
+
+if (state == PS_HITSTUN || state == PS_WALL_JUMP || state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED || state == PS_RESPAWN){
+    move_cooldown[AT_NSPECIAL] = 0;
+}
+
+if (state == PS_HITSTUN || state == PS_WALL_JUMP || state == PS_RESPAWN){
+    with (asset_get("pHitBox")){
+	    if (player_id == other.id){
+	        if (attack == AT_NSPECIAL_2){
+	        	if (hbox_num == 1){
+	        		destroyed = true;
+	        	}
+	    	}
+	    }
+	}
+}
+
+if (badge_slot_1 == 3 || badge_slot_2 == 3 || badge_slot_3 == 3){
+	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_hook"));
+	set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_hook"));
+}
+else{
+	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
+	set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
+}
 
 //rainbow alt
 hue_offset+=hue_speed;
@@ -300,17 +388,23 @@ if (has_rune("A")){
 
 if (has_rune("B")){
 	set_window_value(AT_DSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 0);
-	
-	set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 4);
 }
 
 if (has_rune("C")){
-	runeO = true;
+	rune_C_equipped = true;
 }
 
 if (has_rune("D")){
-	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 85);
-	set_hitbox_value(AT_EXTRA_1, 3, HG_LIFETIME, 55);
+	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+		if (attack == AT_FSPECIAL){
+			if (window == 1 || window == 2){
+				super_armor = true;
+			}
+			else{
+				super_armor = false;
+			}
+		}
+	}
 }
 
 if (has_rune("E")){
@@ -324,16 +418,17 @@ if (has_rune("G")){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.15);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 7);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 65);
 }
 
 if (has_rune("I")){
 	set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 8);
-	set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -8.5);
+	set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -1);
 	
 	set_hitbox_value(AT_USPECIAL_2, 5, HG_BASE_KNOCKBACK, 9);
-	set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, -12.5);
+	set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, -3.5);
 }
+
 
 if (has_rune("J")){
 	set_attack_value(AT_FAIR, AG_CATEGORY, 1);
@@ -372,7 +467,7 @@ if (has_rune("J")){
 	
 	set_window_value(AT_FAIR, 3, AG_WINDOW_TYPE, 5);
 	set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 13);
-	set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
+	set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 4);
 	set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 	set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
 	set_window_value(AT_FAIR, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
@@ -432,7 +527,7 @@ if (has_rune("J")){
 	
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_TYPE, 1);
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 3);
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 5);
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_VSPEED, 0);
@@ -449,7 +544,7 @@ if (has_rune("J")){
 	set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 1);
 	set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 3);
 	set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
-	set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+	set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 	set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
 	set_window_value(AT_FSTRONG, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
 	set_window_value(AT_FSTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
@@ -459,8 +554,8 @@ if (has_rune("J")){
 	
 	set_window_value(AT_FSTRONG, 4, AG_WINDOW_TYPE, 3);
 	set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 18);
-	set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);
-	set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
+	set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
+	set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 	set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
 	set_window_value(AT_FSTRONG, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
 	set_window_value(AT_FSTRONG, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
@@ -506,7 +601,6 @@ if (has_rune("J")){
 }
 
 if (has_rune("H")){ 
-	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_rune"));
 	set_num_hitboxes(AT_FSTRONG, 1);
 	
 	set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 2);
@@ -533,10 +627,9 @@ if (has_rune("F")){
 }
 
 if (has_rune("K")){
-	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 8);
-
-	divespeed = 11;
+	hook_not_always_active = false;
+	hook_reverse_speed = 2.5;
+	set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 50);
 }
 
 
@@ -566,6 +659,7 @@ if (has_rune("N")){
 
 if (has_rune("O")){
 
+		set_window_value(AT_DSTRONG, 2, AG_WINDOW_VSPEED_TYPE, 1);
 		
 		set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
 		set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
@@ -597,7 +691,7 @@ if (has_rune("O")){
 
 
 
-
+/*
 
 //kirby ability
 if swallowed {
@@ -710,6 +804,8 @@ var myicon = sprite_get("poyo")
 with enemykirby {
     newicon = myicon
 }
+
+*/
 
 //wireframe reset
 //if (get_player_color(player) != 14){

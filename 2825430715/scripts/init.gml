@@ -8,6 +8,8 @@ snapdamage = 0
 cheapmode = 0
 noparryedit = 0
 
+pleasework = 0
+
 potbuster = 0
 potbusterx = 0
 astate = 0

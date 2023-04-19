@@ -30,7 +30,8 @@ if attack == AT_EXTRA_2 && hbox_num < 5{
 		sound_stop(sound_get("zoice_chith"))
 		sound_stop(sound_get("zoice_chitv"))
 		hit_player_obj.hsp = 0
-		hit_player_obj.vsp = 0
+		hit_player_obj.vsp = 0 
+                hit_player_obj.hitstop = 2
 		if other.hitbox_timer < 10 {
 		uphit = 0
 		downhit = 0

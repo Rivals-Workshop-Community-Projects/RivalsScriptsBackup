@@ -117,35 +117,25 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ENEMY_BEHAVIOR, !has_rune("G"));
 
-//UNUSED - BURNING LIGHT HOOKSHOT
-/*
-    hitbox_num ++; //burning spear
-    set_hitbox_value(atk, hitbox_num, HG_WINDOW, 99); //excluded from HG_PARENT_HITBOX
-    set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1); //excluded from HG_PARENT_HITBOX
-    set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2); //excluded from HG_PARENT_HITBOX
-    set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 55); //excluded from HG_PARENT_HITBOX
-    set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 16); //excluded from HG_PARENT_HITBOX
-    set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -30); //excluded from HG_PARENT_HITBOX
-    set_hitbox_value(atk, hitbox_num, HG_SHAPE, 0);
-    set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48);
-    set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 16);
-    set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50);
-    set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 6);
-    set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6);
-    set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.8);
-    set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
-    set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.7);
-    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("fx_skill9burn_proj"));
-    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
-    set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow2);
-    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, fx_fireblow2);
-    set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnconsume"));
-    set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
-    set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, 2);
-    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.2);
-    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, 10);
-    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
-    set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-    set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
-*/
+hitbox_num ++; //burning spear explosion (this is the part that actually hurts a lot)
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 4); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
+set_hitbox_value(atk, hitbox_num, HG_SHAPE, 0);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 96);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 96);
+set_hitbox_value(atk, hitbox_num, HG_ANGLE, 50);
+set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 9);
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.7);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_fireblow[1]);
+set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+set_hitbox_value(atk, hitbox_num, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[3]);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 1);

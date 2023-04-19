@@ -49,7 +49,6 @@ if my_hitboxID.attack == AT_FSTRONG {
 }
 
 
-
 if my_hitboxID.attack == AT_NSPECIAL {
     sound_stop(sound_get("RI"))
       sound_play(sound_get("RI"),false,noone,.7,1)

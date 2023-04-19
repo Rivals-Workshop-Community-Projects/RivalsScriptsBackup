@@ -77,12 +77,13 @@ set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 5);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .2);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .2);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 302); // 302 - basic small with spin effect in center
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 
 hitbox_num++;
 

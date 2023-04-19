@@ -5,6 +5,8 @@ if(player_id.pot_skin = 0){
 sprite_index = sprite_get("pot_idle");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
 }if(player_id.pot_skin = 1){
 sprite_index = sprite_get("pot_idle_summer");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
+}if(player_id.pot_skin = 2){
+sprite_index = sprite_get("pot_idle_ball");           //The sprite that the article will (initially) use. Replace text in quotes with your sprite's name
 }
 
 mask_index = sprite_get("pot_hurtbox");
@@ -52,6 +54,13 @@ shoulddie = false;                                  //If this is set to true, th
 type = 0;
 can_be_hit = false;
 can_opponent_hit = true;
+gumbo_is_me = player_id;
+if(!player_id.genesis_alt){
+backboard_sprite = sprite_get("pot_idle_ball_behind");
+}else{
+backboard_sprite = sprite_get("white_pot_idle");    
+}
+backboard_height = 0;
 
 //hitbox stuff
 hitby = noone;
@@ -59,6 +68,12 @@ hitbox_hit = noone;
 hsp_var = 0;
 pot_owner = noone;
 pot_hitbox_active = false;
+pot_hitbox = 0;
+artificial_hitstop = 0;
+hitpause_hsp = 0;
+hitpause_vsp = 0;
+
+spice_transition = false;
 
 has_shrimp = false;
 explode_timer = 0;
@@ -70,6 +85,9 @@ pot_trapped_gumbo = false;
 clink_cooldown = 0;
 no_hitbox = false;
 player_near_pot = false;
+
+player_touching_pot = false;
+pot_can_be_thrown = true;
 
 pot_hitbox_id = -1;
 pot_hitbox_group = -1;

@@ -51,7 +51,7 @@ with(obj_article1){
 
 with(oPlayer){
     if(id == other.player_id){
-        if((state == PS_JUMPSQUAT || (attack == AT_USTRONG && window == 2))&& Ustrong_mine && other.state != 100){
+        if(((state == PS_JUMPSQUAT && down_down) || (attack == AT_USTRONG && window == 2))&& Ustrong_mine && other.state != 100){
             other.state = 100
             other.state_timer = 0;
         }

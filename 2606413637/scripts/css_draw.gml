@@ -1,14 +1,19 @@
+if (get_player_color(player) == 0){
+	set_ui_element(UI_CHARSELECT, sprite_get("hud_default_charselect"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_default_portrait"));
+	draw_sprite(sprite_get("hud_belt_default"),0,x + 8,y + 8);
+}
+else{
+	set_ui_element(UI_CHARSELECT, sprite_get("hud_alt1_charselect"));
+	set_ui_element(UI_WIN_PORTRAIT, sprite_get("hud_alt1_portrait"));
+	draw_sprite(sprite_get("hud_belt_alt1"),0,x + 8,y + 8);
+}
+
 muno_event_type = 6;
 user_event(14);
 
-var alt_cur = get_player_color(player);
-var num_alts = 12;
-var offset = 0;
-for(i = 0; i < num_alts; i++){
-    var draw_color = (i == alt_cur - offset) ? c_white : c_gray * 0.5;
-    var draw_x = x + 78 + 8 * i;
-    rectDraw(draw_x, y + 10, 5, 3, draw_color);
-}
+
+
 sprite_change_offset("hud_base", 0, -2);
 set_ui_element(UI_HUD_ICON, sprite_get("hud_base"));
 set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_base"));
@@ -96,6 +101,23 @@ if voicebutton == 1 || voicebutton == 4 || voicebutton == 7 {
 }
 set_synced_var( player, voiced)
 draw_sprite_ext(sprite_get("cssvoice_button"), 0+voicebutton, x + tmp_xl, y + tmp_yl, 1, 1, 0, c_white, 1);
+
+var height_offset = round(sin(get_gameplay_time() / 8)) * 2;
+var x_off = x + 110;
+var y_off = y + 188 + height_offset;
+var col = c_white;
+
+// draw_rectangle_color(x_off, y_off - 2, x_off + 29, y_off + 27, col, col, col, col, false);
+// draw_sprite_ext(sprite_get("_info_alert"), 0, x_off, y_off, 2, 2, 0, c_white, 1);
+
+draw_sprite_ext(sprite_get("_info_outline"), 0, x_off-2, y_off-12-height_offset, 2, 2, 0, c_white, sin(get_gameplay_time() / 8) + 1);
+
+// draw_debug_text(round(x+70), round(y+188 + height_offset), "!!! ->")
+// draw_debug_text(round(x+70), round(y+186 + height_offset), "!!! ->")
+
+
+
+
 
 #define rectDraw(x1, y1, width, height, color)
 draw_rectangle_color(x1, y1, x1 + width, y1 + height, color, color, color, color, false);

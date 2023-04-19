@@ -239,12 +239,21 @@ stored_power_angular_dash_speed_x = stored_power_dash_speed / sqrt(2);
 stored_power_angular_dash_speed_y = stored_power_dash_speed / sqrt(2);
 stored_power_angular_proj_speed_x = stored_power_proj_speed / sqrt(2);
 stored_power_angular_proj_speed_y = stored_power_proj_speed / sqrt(2);
-
+//UAIR grab stuff
+grabbed_player_obj = noone;    //the player object currently being grabbed.
+grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
+grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
 // Hurtbox sprites
 hurtbox_spr         = sprite_get("hurtbox");
 crouchbox_spr       = sprite_get("churtbox");
 air_hurtbox_spr     = -1; // -1 = use hurtbox_spr
 hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
+//Compat Stuff
+mamizou_transform_spr = sprite_get("mamizou-solosis");
+pot_compat_variable = sprite_get("jellydoughnut");
+pot_compat_text = "Kiwi Jelly Doughnut"
+fducky_intro1 = "What the hell is that?"
+fducky_intro2 = "Some sort of psychic fetus?"
 
 // Victory
 set_victory_bg(sprite_get("victory_background")); // victory_background.png
@@ -255,7 +264,7 @@ land_sound          = asset_get("sfx_land_light");
 landing_lag_sound   = asset_get("sfx_land_med");
 waveland_sound      = asset_get("sfx_waveland_ran"); // recommended to try out all 14 reun cast wavedash sfx (see sfx page in roa manual)
 jump_sound          = asset_get("sfx_jumpground");
-djump_sound         = asset_get("sfx_jumpair");
+djump_sound         = asset_get("sfx_absa_jump");
 air_dodge_sound     = asset_get("sfx_quick_dodge");
 
 // Visual offsets for when you're in Ranno's bubble

@@ -85,7 +85,7 @@ if (state != 5)
                             }
                             if (hitbox.attack = AT_DAIR && hitbox.hbox_num = 1) hitbox.player_id.vsp = -5;
                             if (hitbox.attack = AT_DAIR && hitbox.hbox_num > 1) hitbox.player_id.vsp = -8;
-                            if (hitbox.attack = AT_JAB && hitbox.hbox_num = 3 || hitbox.attack = AT_FSPECIAL && hitbox.hbox_num >= 2 || hitbox.attack = AT_FSTRONG)
+                            if (hitbox.attack = AT_JAB && hitbox.hbox_num = 3 || hitbox.attack = AT_FSPECIAL && hitbox.hbox_num >= 2 && !hitbox.was_parried || hitbox.attack = AT_FSTRONG)
                             {
                                 if (level < 3)
                                 {
@@ -232,6 +232,7 @@ switch (state)
             state = 1;
         }
         bubble_hitbydspecial = 0;
+        bubble_hitbyopponent = 0;
         if (instance_exists(bubble_hitbox))
         {
         bubble_hitbox.destroyed = true;
@@ -244,7 +245,8 @@ switch (state)
         {
             if (bubble_hitbox_out <= 0)
             {
-                bubble_hitbox = create_hitbox(AT_NSPECIAL, floor(level-bubble_growing), floor(x)+floor(hsp), floor(y)+floor(vsp)); 
+                bubble_hitbox = create_hitbox(AT_NSPECIAL, round(level), floor(x)+floor(hsp), floor(y)+floor(vsp)); 
+                //if (level = 1 && bubble_hitbydspecial) bubble_hitbox = create_hitbox(AT_NSPECIAL, floor(3), floor(x)+floor(hsp), floor(y)+floor(vsp)); 
                 bubble_hitbox.spr_dir = hsp>0?1:-1;   
                 bubble_hitbox_out = 1;
             }

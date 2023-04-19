@@ -29,6 +29,7 @@ set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
+/*
 set_window_value(AT_FTILT, 5, AG_WINDOW_TYPE, 0);
 set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAMES, 3);
@@ -51,8 +52,9 @@ set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FTILT, 7, AG_WINDOW_HSPEED, -4);
 set_window_value(AT_FTILT, 7, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FTILT, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
+*/
 
-set_num_hitboxes(AT_FTILT,4);
+set_num_hitboxes(AT_FTILT,2);
 
 set_hitbox_value(AT_FTILT, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);
@@ -67,6 +69,7 @@ set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FTILT, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("mfx_timertick_holy"));
@@ -86,13 +89,14 @@ set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, .65);
 set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, tada);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FTILT, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_holy_tablet"));
 set_hitbox_value(AT_FTILT, 2, HG_HIT_LOCKOUT, 10);
 
+/*
 set_hitbox_value(AT_FTILT, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 3, HG_WINDOW, 5);
 set_hitbox_value(AT_FTILT, 3, HG_WINDOW_CREATION_FRAME, 7);
@@ -129,3 +133,4 @@ set_hitbox_value(AT_FTILT, 4, HG_VISUAL_EFFECT_Y_OFFSET, 40);
 set_hitbox_value(AT_FTILT, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FTILT, 4, HG_HIT_SFX, asset_get("sfx_absa_uair"));
 set_hitbox_value(AT_FTILT, 4, HG_HIT_LOCKOUT, 10);
+*/

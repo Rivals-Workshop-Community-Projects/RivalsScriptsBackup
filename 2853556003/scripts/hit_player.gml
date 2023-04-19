@@ -63,13 +63,15 @@ if(instance_exists(hurricane)){
 		}
 	}
 	if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 2){
-		if(hurricane.grabbedid != hit_player_obj){
+		if(hurricane.grabbedid != hit_player_obj && hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND){
 			hurricane.grabbedid = hit_player_obj
 		}
 		if(hurricane.multihits == 0){
 			hurricane.state_timer = 1
 		}
-		hurricane.multihits += 1
+		if(hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND){
+			hurricane.multihits += 1
+		}
 	}
 }
 

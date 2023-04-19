@@ -1,11 +1,12 @@
 set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
+set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 
 // Anim Frame 0
-set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);

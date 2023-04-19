@@ -126,9 +126,3 @@ switch (get_match_setting(SET_SEASON)) { //Seasonal Colors (thank you based supe
         set_color_profile_slot(8, 5, 224, 224, 224);
     break;
 }
-
-if (get_player_color(player) == 9){
-    for(i = 0; i < 6; i++){
-        set_character_color_shading(i, 0);
-    }
-}

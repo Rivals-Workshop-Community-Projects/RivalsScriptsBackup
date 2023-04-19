@@ -72,7 +72,7 @@ switch (attack)
                 spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir);
                 sound_play(asset_get("sfx_ghost_glove"));
                 spawn_base_dust(floor(x), floor(y), "drip", spr_dir);
-                if (aura)
+                if (aura && temp_level == 0 && object_index!=oTestPlayer)
                 {
                     if (instance_exists(auraClone))
                     {
@@ -257,7 +257,7 @@ switch (attack)
             case 1:
                 if (window_timer == 1)
                 {
-                    strongEndFree = true;
+                    //strongEndFree = true;
                     with (asset_get("obj_article1")) if (player_id == other.id && replacedCount == 2) isDespawn = true;
                 }
                 if (jsCStick)
@@ -299,14 +299,14 @@ switch (attack)
                     if (abs(strongAng-90) < 10 && NumOfPortals() >= 2) tutDoneAdv[0] = true;
                 }
                 break;
-            case 5:
-                if (free) strongEndFree = true;
-                if (strongEndFree && !free)
-                {
-                    strongEndFree = false;
-                    spawn_base_dust(x, y, "land", spr_dir);
-                    sound_play(land_sound);
-                }
+            //case 5:
+            //    if (free) strongEndFree = true;
+            //    if (strongEndFree && !free)
+            //    {
+            //        strongEndFree = false;
+            //        spawn_base_dust(x, y, "land", spr_dir);
+            //        sound_play(land_sound);
+            //    }
             case 4:
                 can_wall_jump = !was_parried;
                 can_jump = !was_parried && has_hit;

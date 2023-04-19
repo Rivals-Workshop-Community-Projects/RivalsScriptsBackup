@@ -1,41 +1,65 @@
 //update
 
+var ct = current_time;
+
+//Change stats based on whether on bike or not
+char_height = motorbike? 56 : 50;
+walk_speed = motorbike? 6 : 3.25;
+initial_dash_speed = motorbike? 10 : 7;
+dash_speed = motorbike? 10: 7.5;
+dash_stop_time = motorbike? 12: 4;
+djump_speed = motorbike? 10: 3;
+
+is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
+was_attacking = (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR);
+is_dodging = (hurtboxID.dodging);
+var time = get_gameplay_time();
+
+//renders effects in front of you
+//credit to supersonic for the help
+with (hit_fx_obj)
+{
+    //effects default depth when they spawn is 3, so this will make it so it won't overwrite values if i add them manually
+    if (player == other.player && depth == 3) depth = player_id.depth-1;
+}
+
 //Charge the meter
 if (feline_power = false)
 {
 	kickTime = 0;
 	multikick_energy = (motorbike? 200 - move_cooldown[AT_NSPECIAL_2] : 200 - move_cooldown[AT_NSPECIAL]);
-}
-
-if (move_cooldown[AT_NSPECIAL] == 0 && kickTime > 0)
-{
-	feline_power = true;
-}
-
-//Stop charging if meter is full
-if (multikick_energy == 200)
-{
-	feline_power = true;
-	meterShine++;
-	if (meterShine == 174)
+	if (multikick_energy >= 199)
 	{
-		meterShine = 0;
+		sound_play(sound_get("regen"));
+		outline_charge = 255;
+		init_shader();
+		spawn_base_dust(x - 10, y - 30, "fastfall");
+		spawn_base_dust(x, y - 50, "fastfall");
+		spawn_base_dust(x + 10, y - 40, "fastfall");
+		//var sparkly1 = spawn_hit_fx(x, y, powerBack);
+		//sparkly1.depth = -100;
 	}
 }
 
+//Stop charging if meter is full
+if (multikick_energy >= 200)
+{
+	multikick_energy = 200;
+	if (outline_charge <= 0)
+	{
+		outline_charge = 0;
+	}
+	if (outline_charge > 0)
+	{
+		outline_charge-= 40;
+	}
+	init_shader();	
+	feline_power = true;
+}
 
 if (motorbike == false)
 {
 	//Reset values back to default if coming from the bike
-	char_height = 50;
-	walk_speed = 3.25;
-	initial_dash_speed = 7;
-	dash_speed = 7;
-	dash_stop_time = 4;
-	short_hop_speed = 5;
-	jump_speed = 11.5;
-	djump_speed = 3;
-	ground_friction= .35;
 	hurtbox_spr = sprite_get("carol_hurtbox_standing");
 	crouchbox_spr = sprite_get("carol_hurtbox_crouch");
 	jump_sound = sound_get("jump");
@@ -44,7 +68,8 @@ if (motorbike == false)
 	wait_time = 400;
 	
 	//Abyss Runes reset, just in case!
-	if has_rune("B"){
+	if has_rune("B")
+	{
     	walk_accel = 0.3;
     	walk_turn_time = 5;
     	initial_dash_time = 8;
@@ -105,7 +130,8 @@ if (motorbike == false)
 		bsprite_index=-1;
 	}
 	
-	if (free==false){
+	if (free==false)
+	{
 		pounce = false;
 	}
 
@@ -128,7 +154,7 @@ if (motorbike == false)
     		}
     	}
 	}
-	if (walljump_number >= 2)
+	if (walljump_number >= 2 && !has_rune("M"))
 	{
 		move_cooldown[AT_FSPECIAL] = 40;
 	}
@@ -139,10 +165,12 @@ if (motorbike == false)
 	}
 	
 	//This code animated the tail and adds an effect to Parry depending on state
-	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND){
+	if (state!=PS_ATTACK_AIR && state!=PS_ATTACK_GROUND)
+	{
 		comboCounter = 0;
 		hitConfirm = false;
-		switch (state){
+		switch (state)
+		{
 			case PS_IDLE:
 				tsprite_index=-1;
 				trotation=0;
@@ -215,129 +243,109 @@ if (motorbike == false)
 				}
 			break;
 	  		case PS_PARRY:
-	  		//Custom Parry Effect
-	  		sound_stop(asset_get("sfx_parry_use"));
-	  		if (state_timer == 0)
-	  		{
-	  			sound_play(sound_get("guard"));
-	  		}
-     		tsprite_index=sprite_get("tail_idle");
-			trotation=0;
-			timage_number=12;
-			timage_speed=0.25;
-			tfront=false;
-			tx=-46*spr_dir;
-			ty=-66;
-			tsx=1;
-			tsy=1;
-    		bsprite_index=-1;
-			if (thrownBike != noone && state_timer = 0)
-			{
-				set_state(PS_IDLE);
-			}
-			
+		  		//Custom Parry Effect
+		  		sound_stop(asset_get("sfx_parry_use"));
+		  		if (state_timer == 0)
+		  		{
+		  			sound_play(sound_get("guard"));
+		  		}
+		  		tsprite_index=sprite_get("tail_idle");
+				trotation=0;
+				timage_number=12;
+				timage_speed=0.25;
+				tfront=false;
+				tx=-46*spr_dir;
+				ty=-66;
+				tsx=1;
+				tsy=1;
+    			bsprite_index=-1;
+				if (thrownBike != noone && state_timer = 0)
+				{
+					set_state(PS_IDLE);
+				}
 			break;
 			case PS_WALK:
 			case PS_WALK_TURN:
-    		tsprite_index=sprite_get("tail_walk");
-			trotation=0;
-			timage_number=7;
-			timage_speed=0.25;
-			tfront=false;
-			tx=-45*spr_dir;
-			ty=-76;
-			tsx=1;
-			tsy=1;
-			bsprite_index=-1;
+	    		tsprite_index=sprite_get("tail_walk");
+				trotation=0;
+				timage_number=7;
+				timage_speed=0.25;
+				tfront=false;
+				tx=-45*spr_dir;
+				ty=-76;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;
+			break;
 			case PS_DASH_START:
 			case PS_DASH:
-    		tsprite_index=sprite_get("tail_walk");
-			trotation=0;
-			timage_number=7;
-			timage_speed=0.25;
-			tfront=false;
-			tx=-40*spr_dir;
-			ty=-78;
-			tsx=1;
-			tsy=1;
-			bsprite_index=-1;
+		 		tsprite_index=sprite_get("tail_walk");
+				trotation=0;
+				timage_number=7;
+				timage_speed=0.25;
+				tfront=false;
+				tx=-40*spr_dir;
+				ty=-78;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;
     		break;
     		case PS_DASH_STOP:
 			case PS_DASH_TURN:
-    	    tsprite_index=sprite_get("tail_walk");
-			trotation=0;
-			timage_number=7;
-			timage_speed=0.25;
-			tfront=false;
-			tx=-50*spr_dir;
-			ty=-70;
-			tsx=1;
-			tsy=1;
-			bsprite_index=-1;
-    		break;
-    		case PS_FIRST_JUMP:
-    		case PS_WALL_JUMP:
-    		case PS_IDLE_AIR:
-    		tsprite_index=sprite_get("tail_jump");
-			trotation=0;
-			timage_number=6;
-			timage_speed=0.17;
-			tfront=false;
-			tx=-46*spr_dir;
-			ty=-66;
-			tsx=1;
-			tsy=1;
-			bsprite_index=-1;
-    		break;
+	    	    tsprite_index=sprite_get("tail_walk");
+				trotation=0;
+				timage_number=7;
+				timage_speed=0.25;
+				tfront=false;
+				tx=-50*spr_dir;
+				ty=-70;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;
+	 		break;
     		case PS_DOUBLE_JUMP:
-			can_attack = false;
-			can_special = false;
-			can_shield = false;
-			can_strong = false;
-		 	tsprite_index = sprite_get("tail_walk");
-			timage_index=0;
-			timage_number=7;
-			tfront=false;
-			tx=-46*spr_dir;
-			ty=-70;
-			tsx=1;
-			tsy=1;
-			bsprite_index=-1;    
+				can_attack = false;
+				can_special = false;
+				can_shield = false;
+				can_strong = false;
+			 	tsprite_index = sprite_get("tail_walk");
+				timage_index=0;
+				timage_number=7;
+				tfront=false;
+				tx=-46*spr_dir;
+				ty=-70;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;    
 			break;
     		case PS_CROUCH:
-    		tsprite_index=sprite_get("tail_walk");
-			trotation=0;
-			timage_number=7;
-			timage_speed=0.25;
-			tfront=false;
-			tx=-46*spr_dir;
-			ty=-70;
-			tsx=1;
-			tsy=1;
-			bsprite_index=-1;
+    			tsprite_index=sprite_get("tail_walk");
+				trotation=0;
+				timage_number=7;
+				timage_speed=0.25;
+				tfront=false;
+				tx=-46*spr_dir;
+				ty=-70;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;
 			break;
-		default:
-			tsprite_index=-1;
-			trotation=0;
-			tfront=0;
-			tx=0;
-			ty=0;
-			tsx=1;
-			tsy=1;
-			bsprite_index=-1;
-		break;
+			default:
+				tsprite_index=-1;
+				trotation=0;
+				tfront=0;
+				tx=0;
+				ty=0;
+				tsx=1;
+				tsy=1;
+				bsprite_index=-1;
+			break;
     	}
 	}
 }
 //While riding the motorbike, fuel is consumed
 else if (motorbike == true)
 {
-	char_height = 56;
-	walk_speed = 6;
-	initial_dash_speed = 10;
-	dash_speed = 10;
-	dash_stop_time = 12;
-	djump_speed = 10;
 	hurtbox_spr = sprite_get("bike_hurtbox");
 	crouchbox_spr = sprite_get("bike_crouch_hurtbox");
 	jump_sound = sound_get("motorbike_jump");
@@ -379,7 +387,6 @@ else if (motorbike == true)
 		initial_dash_speed = 11;
  		dash_turn_time = 12;
 	}
-	
 	fuel_burn++;
 	{
 		if has_rune ("H")
@@ -415,13 +422,13 @@ else if (motorbike == true)
 			switch (bike_state_timer)
 			{
 				case 1:
-				sound_play(sound_get("motorbike_idle"));
-				sound_stop(sound_get("motorbike_move"));
+					sound_play(sound_get("motorbike_idle"));
+					sound_stop(sound_get("motorbike_move"));
 				break;
 				case 100:
-				sound_stop(sound_get("motorbike_idle"));
-				sound_play(sound_get("motorbike_idle"));
-				bike_state_timer = 0;
+					sound_stop(sound_get("motorbike_idle"));
+					sound_play(sound_get("motorbike_idle"));
+					bike_state_timer = 0;
 				break;
 				default:
 				break;
@@ -536,16 +543,16 @@ else if (motorbike == true)
 			switch (state)
 			{
 				case PS_WALK:
-				var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
+				var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , sparkle);
 					smallspark.depth = -100;			
 				break;
 				case PS_DASH:
-					var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , smallsparkle);
+					var smallspark = spawn_hit_fx(x - 80 * spr_dir, y-32 , sparkle);
 					smallspark.depth = -100;
 				break;
 				case PS_FIRST_JUMP:
 				case PS_IDLE_AIR:
-					var smallspark = spawn_hit_fx (x - 60 * spr_dir, y - 14, smallsparkle);
+					var smallspark = spawn_hit_fx (x - 60 * spr_dir, y - 14, sparkle);
 					smallspark.depth = -100;
 				break;
 				default:
@@ -653,9 +660,17 @@ if (clinging == true && hitpause == false)
 	sound_play(sound_get("motorbike_move"));
 	sound_stop(sound_get("motorbike_idle"));
 	vsp = -7;
+	
+	if (old_vsp == 7 && vsp !=7)
+	{
+		old_vsp = 0;
+		vsp = 0;
+	}
 	if (clinging == false)
 	{
+		old_vsp = 0;
 		vsp = 0;
+		set_state(PS_IDLE_AIR);
 	}
 }
 
@@ -663,7 +678,6 @@ if (clinging == true && hitpause == false)
 
 if (state = PS_AIR_DODGE || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD)
 {
-	feline_power = false;
 	if (dodgeCounter = 249)
 	{
 		dodgeTaunt = true;
@@ -685,37 +699,103 @@ if (dodgeTaunt == true)
 	}
 }
 
-//Unique quote if Lilac is KO'd
-
-with (oPlayer) {
-	if (player != other.player && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1) {
+with (oPlayer) 
+{
+	//Custon Galaxy Effect
+	if (player != other.player && activated_kill_effect && last_player == other.player && state_timer == 0)
+	{
+		with (other)
 		{
-			switch (url)
+			switch (attack)
 			{
-				case "2697174282":
-				case "1870616155":
-				case "1897152603":
-		 		with (other)
-		 		{
-					if (voice == 1)
-					{
-						sound_stop(sound_get ("hold_on_lilac"));
-						sound_play(sound_get ("hold_on_lilac"));
-					}
-		 		}
-		 		break;
-		 		default:
-		 		with (other)
-		 		{
-					if (voice == 1)
-					{
-						sound_stop(sound_get ("did_you_see_that"));
-						sound_play(sound_get ("did_you_see_that"));
-					}
-		 		}
-		 		break;
-		 	}
+				case AT_JAB:
+				case AT_FTILT:
+				case AT_FAIR:
+				case AT_NAIR:
+				case AT_DTILT:
+				case AT_FSTRONG:
+				case AT_FSTRONG_2:
+				case AT_NSPECIAL:
+				case AT_NSPECIAL_2:
+				case AT_FSPECIAL:
+				case AT_FSPECIAL_2:
+				case AT_EXTRA_1:
+				case AT_EXTRA_2:
+				case 43:
+				case 44:
+				case 45:
+				case 47:
+				case 48:
+					galaxy_effect_sprite_index = sprite_get("galaxy_right");
+				break;
+				case AT_BAIR:
+				case 39:
+					galaxy_effect_sprite_index = sprite_get("galaxy_left");
+				break;
+				case AT_UTILT:
+				case AT_UAIR:
+				case AT_USTRONG:
+				case AT_USTRONG_2:
+				case AT_USPECIAL:
+				case AT_USPECIAL_2:
+				case AT_DSTRONG:
+				case AT_DSTRONG_2:
+				case 42:
+				case 46:
+					galaxy_effect_sprite_index = sprite_get("galaxy_up");
+				break;
+				case AT_DAIR:
+				case AT_DSPECIAL_AIR:
+				case 40:
+					galaxy_effect_sprite_index = sprite_get("galaxy_down");
+				break;
+				default:
+				break;
+			}
+			if (!instance_exists(galaxy_effect))
+			{
+				var top_left_x = floor(view_get_xview());
+				var top_right_x = floor(view_get_xview()) + floor(view_get_wview());
+				var top_left_y = floor(view_get_yview());
+				if (spr_dir = 1)
+				{
+					galaxy_effect = instance_create(top_left_x - 52, top_left_y - 100, "obj_article1");
+				}
+				else
+				{
+					galaxy_effect = instance_create(top_right_x + 52, top_left_y - 100, "obj_article1");
+				}
+			}
 		}
+	}
+	//Unique quote if Lilac is KO'd
+	if (player != other.player && (state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1) 
+	{
+		switch (url)
+		{
+			case "2697174282":
+			case "1870616155":
+			case "1897152603":
+	 		with (other)
+	 		{
+				if (voice == 1)
+				{
+					sound_stop(sound_get ("hold_on_lilac"));
+					sound_play(sound_get ("hold_on_lilac"));
+				}
+	 		}
+	 		break;
+	 		default:
+	 		with (other)
+	 		{
+				if (voice == 1)
+				{
+					sound_stop(sound_get ("did_you_see_that"));
+					sound_play(sound_get ("did_you_see_that"));
+				}
+	 		}
+	 		break;
+	 	}
 	}
 }
 
@@ -746,11 +826,13 @@ if (bike_hit == true)
 
 //Sprite Index animations for tail and bike
 
-if (tsprite_index!=-1){
+if (tsprite_index!=-1)
+{
 	timage_index=(timage_index+timage_speed)%timage_number;
 }
 
-if (bsprite_index!=-1){
+if (bsprite_index!=-1)
+{
 	bimage_index=(bimage_index+bimage_speed)%bimage_number;
 }
 
@@ -792,366 +874,9 @@ if (get_match_setting(SET_PRACTICE) == true)
 	practice_hud_clearance++;
 }
 
-//Kirby Stuff
-
-if (swallowed)
-{
-    swallowed = 0;
-    var ability_spr = sprite_get("kirby_carol");
-    var ability_hurt = sprite_get("kirby_carol_hurt");
-    var ability_icon = sprite_get("kirby_icon");
-    var ability_sound = sound_get("wild_kick");
-    carol_handler_id = other;
-    with enemykirby {
-        newicon = ability_icon;
-		set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
-		set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 1);
-		set_attack_value(AT_EXTRA_3, AG_SPRITE, ability_spr);
-		set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
-		set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, ability_hurt);
-
-		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
-		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 6);
-		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 1);
-		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
-		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, ability_sound);
-
-		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
-		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 80);
-		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 16);
-		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-
-		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
-		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 18);
-		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 1);
-		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 0);
-
-		set_num_hitboxes(AT_EXTRA_3, 16);
-
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -22);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 1, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW_CREATION_FRAME, 6);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_Y, -18);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_X, 40);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 2, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 3, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_WINDOW_CREATION_FRAME, 11);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_HITBOX_Y, -39);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_HITBOX_X, 40);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 3, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 3, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 4, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_WINDOW_CREATION_FRAME, 16);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_HITBOX_Y, -16);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_HEIGHT, 32);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 4, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 4, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 5, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_WINDOW_CREATION_FRAME, 21);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_HITBOX_Y, -14);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_HITBOX_X, 28);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_BASE_KNOCKBACK, 2);;
-		set_hitbox_value(AT_EXTRA_3, 5, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 5, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 5, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 6, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_WINDOW_CREATION_FRAME, 26);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_HITBOX_Y, -36);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_HEIGHT, 32);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 6, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 6, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_WINDOW_CREATION_FRAME, 31);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_Y, -40);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 7, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 7, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 8, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_WINDOW_CREATION_FRAME, 36);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_HITBOX_Y, -40);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_HITBOX_X, 40);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 8, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 8, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 9, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_WINDOW_CREATION_FRAME, 41);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_HITBOX_Y, -22);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 9, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 9, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 10, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_WINDOW_CREATION_FRAME, 46);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_HITBOX_Y, -18);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_HITBOX_X, 40);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 10, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 10, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 11, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_WINDOW_CREATION_FRAME, 51);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_HITBOX_Y, -39);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_HITBOX_X, 40);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 11, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 11, HG_IGNORES_PROJECTILES, 1);
-		
-		set_hitbox_value(AT_EXTRA_3, 12, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_WINDOW_CREATION_FRAME, 56);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_HITBOX_Y, -16);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_HEIGHT, 32);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 12, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 12, HG_IGNORES_PROJECTILES, 1);
-		
-		set_hitbox_value(AT_EXTRA_3, 13, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_WINDOW_CREATION_FRAME, 61);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_HITBOX_Y, -14);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_HITBOX_X, 28);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 13, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 13, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 14, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_WINDOW_CREATION_FRAME, 66);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_HITBOX_Y, -36);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_HEIGHT, 32);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 14, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 14, HG_IGNORES_PROJECTILES, 1);
-
-		set_hitbox_value(AT_EXTRA_3, 15, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_WINDOW_CREATION_FRAME, 71);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_HITBOX_Y, -40);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_BASE_KNOCKBACK, 2);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 15, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-		set_hitbox_value(AT_EXTRA_3, 15, HG_IGNORES_PROJECTILES, 1);
-		
-		set_hitbox_value(AT_EXTRA_3, 16, HG_HITBOX_TYPE, 1);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_WINDOW_CREATION_FRAME, 76);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_SHAPE, 2);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_HITBOX_GROUP, -1);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_LIFETIME, 2);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_HITBOX_Y, -40);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_HITBOX_X, 40);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_WIDTH, 40);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_PRIORITY, 5);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_DAMAGE, 1);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_ANGLE, 361);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_BASE_KNOCKBACK, 8);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_EFFECT, 303);
-		set_hitbox_value(AT_EXTRA_3, 16, HG_HIT_SFX, asset_get("sfx_blow_strong2"));
-		set_hitbox_value(AT_EXTRA_3, 16, HG_IGNORES_PROJECTILES, 1);
-		
-		carol_handler_id = other;
-		carol_has_kirby_ability=true;
-    }
-}
-//This code makes sure Wild Kick works as intended with a copied Kirby
-with (oPlayer) if (carol_handler_id = other)
-{
-	if (carol_has_kirby_ability)
-	{
-		//Check if Kirby still has ability
-		if (current_ability==0){
-			carol_handler_id = noone;
-			carol_has_kirby_ability = false;
-			move_cooldown[AT_EXTRA_3]= 0;
-		}
-		else if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
-	             && attack == AT_EXTRA_3)
-		{
-			can_move=false;
-			// *sigh* unfortunately you can't put cancels on Kirby abilities so he will have to go without them
-			can_fast_fall=false;
-			if (window == 2)
-			{
-				super_armor=true;
-			}
-			if (window == 2 && window_timer == 79)
-			{
-				move_cooldown[AT_EXTRA_3]= 200;
-			}
-			//Remove Super Armour in final window
-			if (window == 3)
-			{
-				super_armor=false;
-			}
-		}
-	}
-}
+//print_debug(string(hsp));
+prev_hsp = hsp;
+//print_debug("Time:" + string(current_time-ct));
 
 //Dialogue Buddy
 if(variable_instance_exists(id,"diag"))
@@ -1183,24 +908,24 @@ if(variable_instance_exists(id,"diag"))
 //  Specific Character Interactions
 
 //  Regular dialogue
+	//Lilac
     if(otherUrl == "2697174282" && diag != "") //Change the url into a specific character's
     {
         diag = "Can't you be Little Miss Heropants some other time?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
-
     if(otherUrl == "1870616155" && diag != "") //Change the url into a specific character's
     {
         diag = "Can't you be Little Miss Heropants some other time?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
-
     if(otherUrl == "1897152603" && diag != "") //Change the url into a specific character's
     {
         diag = "Can't you be Little Miss Heropants some other time?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
     }
-    
+
+	//Amber    
     if(otherUrl == "2229887722" && diag != "")
     {
         diag = "Look... I don't want to fight you as much as you don't want to fight me!";
@@ -1213,16 +938,44 @@ if(variable_instance_exists(id,"diag"))
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!    	
     }
     
+    //Otto
     if(otherUrl == "2283018206" && diag != "")
     {
         diag = "You have a bike too! let's see which one of us has the better bike!";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!    	
+        diag_index = 0;    	
     }
-    
+
+    //Wario (DE)
+	if(otherUrl == "2946784030" && diag != "")
+	{
+        diag = "You have a bike too! let's see which one of us has the better bike!";
+        diag_index = 0;	
+	}
+	//Mira (Flophawk)
+    if(otherUrl == "2895402617" && diag != "")
+    {
+        diag = "You have a bike too! let's see which one of us has the better bike!";
+        diag_index = 0;
+    }
+
+	//Kick
+    if(otherUrl == "1978251132" && diag != "")
+    {
+        diag = "You have a bike too! let's see which one of us has the better bike!";
+        diag_index = 0;
+    }
+
+	//Lancer
+    if(otherUrl == "2627476892" && diag != "")
+	{
+        diag = "You have a bike too! let's see which one of us has the better bike!";
+        diag_index = 0;		
+	}
+
     if (otherUrl == "2109435121" && diag != "")
     {
         diag = "I guess Lilac isn't the only dragon left after all huh?";
-        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!    	
+        diag_index = 0; 	
     }
    
 	if (otherUrl == "2780876151" && diag != "")
@@ -1235,6 +988,40 @@ if(variable_instance_exists(id,"diag"))
 	{
         diag = "I guess Lilac isn't the only dragon left after all huh?";
         diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction! 		
+	}
+
+	if (otherUrl == "1879932407" && diag != "")
+	{
+        diag = "I guess Lilac isn't the only dragon left after all huh?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction! 		
+	}
+
+	//Daora
+	if (otherUrl == "2605304929" && diag != "")
+	{
+        diag = "I guess Lilac isn't the only water dragon left after all huh?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction! 		
+	}
+
+	//SSL Lilac	
+	if (otherUrl == "2822151579" && diag != "")
+	{
+		diag = "Lilac? Is that you? You look kind of pale, what happened?";
+		diag_index = 0;
+	}
+	
+	//Shantae
+	if (otherUrl == "2890757258" && diag != "")
+	{
+		diag = "You know, you remind me of my friend Lilac quite a lot!";
+		diag_index = 0;
+	}
+	
+	//Crewmate
+	if (otherUrl == "2217843818" && diag != "")
+	{
+		diag = "Something seems kind of sus here!";
+		diag_index = 0;		
 	}
 	
 	if (otherUrl == CH_ELLIANA && diag != "")
@@ -1288,6 +1075,7 @@ switch (name) {
     case "wallride":dlen = 24; dfx = 3; dfg = 2626; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    case "fastfall": dlen = 44; dfx = 17; dfg = 2657; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(round(x),round(y),asset_get("empty_sprite"),dlen);
 if newdust == noone return noone;

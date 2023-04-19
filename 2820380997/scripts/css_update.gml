@@ -12,6 +12,7 @@
 #macro BOX_INTRO_DIALOG_ENABLE 10
 #macro BOX_SWAP_INPUTS 11
 #macro BOX_NECO_PORTRAIT 12
+#macro BOX_ALT_OUTFIT 13
 
 #macro BUTTON_NAME 0
 #macro BUTTON_IX 1
@@ -95,11 +96,11 @@ if(last_frame_color_alt != get_player_color(player)){
 
 //Handle setting portraits
 switch(portrait_to_use){
-	case 0:
+	case 0: // Default Roekoko
 		set_ui_element(UI_CHARSELECT, get_char_info(player, INFO_CHARSELECT));
 	break;
 	case 1: // Ninetailed Roekoko
-		
+		set_ui_element(UI_CHARSELECT, sprite_get("9t-charselect"));
 	break;
 	case 2: // Neco Roekoko
 		set_ui_element(UI_CHARSELECT, sprite_get("portrait_neco_roe_css"));
@@ -229,6 +230,10 @@ switch(draw_menu){
 	    // Color Shift Button
 	    current_box_draw = BOX_SHIFT_COLOR_ALTS;
 	    Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
+	    // Alt Outfit Button
+	    current_box_draw = BOX_ALT_OUTFIT;
+	    Detect_Cursor(current_box_draw,menu_box[current_box_draw][BUTTON_IX],menu_box[current_box_draw][BUTTON_EX],menu_box[current_box_draw][BUTTON_IY],menu_box[current_box_draw][BUTTON_EY]);
+	    
 	    // Color SHift Button Pressed
 	    if(menu_box[BOX_SHIFT_COLOR_ALTS][BUTTON_PRESSED] == true){
 	        color_shift++;
@@ -241,6 +246,23 @@ switch(draw_menu){
 	        menu_box[@BOX_SHIFT_COLOR_ALTS][@BUTTON_PRESSED] = false;
 	        menu_box[@BOX_SHIFT_COLOR_ALTS][@BUTTON_CURSOR_HOVER_TIMER] = 0;
 	    }
+	    
+	    // Alt Outfit Button Pressed
+	    if(menu_box[BOX_ALT_OUTFIT][BUTTON_PRESSED] == true){
+	        // Set variable
+	        if(alt_outfit_enabled == 1){ // If active, disable
+	        	alt_outfit_enabled = 0; // Disable Alt Outfit
+	        	portrait_to_use = 0; // Default Portrait
+	        }
+			else { // Otherwise, enable the skin
+				alt_outfit_enabled = 1; // Enable alt outfit
+				portrait_to_use = 1; // Alt Outfit Portrait
+			}
+	        
+	        menu_box[@BOX_ALT_OUTFIT][@BUTTON_PRESSED] = false;
+	        menu_box[@BOX_ALT_OUTFIT][@BUTTON_CURSOR_HOVER_TIMER] = 0;
+	    }
+	    
 	    // Exit Button Press
 	    if(menu_box[BOX_CLOSE_INTERAL_MENU][BUTTON_PRESSED] == true){
 	        draw_menu = DRAW_MENU_SUB_MENU;
@@ -345,9 +367,11 @@ if(get_player_color(player) == 27){
 2. Status of Win Quotes Enabled - 1 bit
 3. Status of Round Start Dialog Enabled - 1 bit
 4. Swap Inputs - 1 bit
+5. Portrait to use
+6. Alt Outfit to use
 */
 
-generated_var = generate_synced_var(color_shift,2,flag_win_quote_enabled,1,flag_round_start_dialog,1,swap_nspec_dspec_input,1,portrait_to_use,2)
+generated_var = generate_synced_var(color_shift,2,flag_win_quote_enabled,1,flag_round_start_dialog,1,swap_nspec_dspec_input,1,portrait_to_use,2,alt_outfit_enabled,1)
 set_synced_var(player, real(generated_var));
 //print(generated_var);
 
@@ -574,6 +598,7 @@ return real(output);
 	with(asset_get("player_obj")){
         rainbowAlt(3); // //Kimono Accent
         rainbowAlt(4); // //Sash and Anklet
+        rainbowAlt(5); // //Tail Tip
         rainbowAlt(6); // //Soul Fire 1
 	}
 //print(string(color_r) + ", " + string(color_g) + ", " + string(color_b))

@@ -10,10 +10,13 @@ switch (state){
     break;
 }
 
-if ((attack == AT_NSPECIAL || attack == AT_EXTRA_1) && left_down && !right_down && !free && special_down && state == PS_ATTACK_GROUND) {
+if ((attack == AT_NSPECIAL || attack == AT_EXTRA_1) && !free && special_down && state == PS_ATTACK_GROUND)
+&& ((left_down && !right_down) || (right_down && !left_down)) && !nspec_dir {
     sprite_index = sprite_get("runagun");
     image_index = floor(image_number*state_timer/(image_number*5));
 }
+
+/*
 
 if ((attack == AT_NSPECIAL || attack == AT_EXTRA_1) && right_down && !left_down && !free && special_down && state == PS_ATTACK_GROUND) {
     sprite_index = sprite_get("runagun");

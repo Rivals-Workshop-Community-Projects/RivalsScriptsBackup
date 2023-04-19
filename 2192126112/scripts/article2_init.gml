@@ -58,4 +58,8 @@ hit_wall = false;       //If the article moves into a wall on its own, this vari
 
 blink_timer = 5;
 
+//tinmines stuff
+demo = player_id.player;
+
+
 //articleX_init.gml

@@ -318,6 +318,37 @@ else if (get_player_color(player) != 1 && get_player_color(player) != 4 && get_p
 
 //	Workshop Support Zone
 
+//	Hikaru
+Hikaru_Title 		= "The Eternal Rival";
+
+//	Dedede Stage
+arena_title 		= "The Eternal Rival";
+
+//	Boxing Ring Stage
+boxing_title 		= "The Eternal Rival";
+
+//	Soulbound Conflict Stage
+battle_text 		= "* you";
+battle_text2 		= "* are not"
+battle_text3 		= "* roger..."
+
+//	Kirby Copy Ability
+TCG_Kirby_Copy 		= 2;
+
+//	Kirby Fighter Buddy	
+copy_ability_id 	= 1;
+
+//	Solid Snake support
+sna_interrogated_line_01 = "You're not Roger.";
+sna_interrogated_line_02 = "I only respect Roger.";
+sna_interrogated_line_03 = "You bore me...";
+
+//	Henry Stickmin
+has_fail 	= true;
+fail_text 	= "You weren't Roger.";
+
+//	Future Ducky
+fducky_intro1 = "It's over, demon scum!";
 
 //----------------------------------------------------------------------------------------------
 

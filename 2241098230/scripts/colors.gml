@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 5, 8, 9 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 24 );
 
 // Blue
 set_color_profile_slot( 1, 0, 255, 209, 196 ); //Skin
@@ -77,23 +77,23 @@ set_color_profile_slot( 5, 4, 255, 255, 228 ); //White
 set_color_profile_slot( 5, 5, 169, 38, 255 ); //Fire Outline
 set_color_profile_slot( 5, 6, 102, 58, 86 ); //Smoke
 
-// Abyss
-set_color_profile_slot( 6, 0, 166, 172, 214 ); //Skin
-set_color_profile_slot( 6, 1, 46, 52, 84 ); //Hair
-set_color_profile_slot( 6, 2, 220, 112, 255 ); //Fire/Gold
-set_color_profile_slot( 6, 3, 86, 84, 146 ); //Pants
-set_color_profile_slot( 6, 4, 166, 172, 214 ); //White
-set_color_profile_slot( 6, 5, 86, 84, 146 ); //Fire Outline
-set_color_profile_slot( 6, 6, 86, 84, 146 ); //Smoke
+// Sylvanos
+set_color_profile_slot( 6, 0, 104, 112, 83 ); //Skin
+set_color_profile_slot( 6, 1, 122, 163, 84 ); //Hair
+set_color_profile_slot( 6, 2, 196, 44, 69 ); //Fire/Gold
+set_color_profile_slot( 6, 3, 145, 86, 70 ); //Pants
+set_color_profile_slot( 6, 4, 255, 255, 228 ); //White
+set_color_profile_slot( 6, 5, 153, 29, 48 ); //Fire Outline
+set_color_profile_slot( 6, 6, 122, 163, 84 ); //Smoke
 
-// EA
-set_color_profile_slot( 7, 0, 167, 186, 74 ); //Skin
-set_color_profile_slot( 7, 1, 83, 112, 62 ); //Hair
-set_color_profile_slot( 7, 2, 211, 226, 154 ); //Fire/Gold
-set_color_profile_slot( 7, 3, 83, 112, 62 ); //Pants
-set_color_profile_slot( 7, 4, 211, 226, 154 ); //White
-set_color_profile_slot( 7, 5, 167, 186, 74 ); //Fire Outline
-set_color_profile_slot( 7, 6, 83, 112, 62 ); //Smoke
+// Tauros
+set_color_profile_slot( 7, 0, 255, 173, 150 ); //Skin
+set_color_profile_slot( 7, 1, 102, 90, 82 ); //Hair
+set_color_profile_slot( 7, 2, 167, 170, 183 ); //Fire/Gold
+set_color_profile_slot( 7, 3, 96, 84, 76 ); //Pants
+set_color_profile_slot( 7, 4, 255, 255, 228 ); //White
+set_color_profile_slot( 7, 5, 57, 50, 45 ); //Fire Outline
+set_color_profile_slot( 7, 6, 167, 170, 183 ); //Smoke
 
 // Ganondorf
 set_color_profile_slot( 8, 0, 198, 183, 126 ); //Skin
@@ -140,23 +140,23 @@ set_color_profile_slot( 12, 4, 255, 255, 228 ); //White
 set_color_profile_slot( 12, 5, 66, 12, 0 ); //Fire Outline
 set_color_profile_slot( 12, 6, 245, 76, 37 ); //Smoke
 
-// Sylvanos
-set_color_profile_slot( 13, 0, 104, 112, 83 ); //Skin
-set_color_profile_slot( 13, 1, 122, 163, 84 ); //Hair
-set_color_profile_slot( 13, 2, 196, 44, 69 ); //Fire/Gold
-set_color_profile_slot( 13, 3, 145, 86, 70 ); //Pants
-set_color_profile_slot( 13, 4, 255, 255, 228 ); //White
-set_color_profile_slot( 13, 5, 153, 29, 48 ); //Fire Outline
-set_color_profile_slot( 13, 6, 122, 163, 84 ); //Smoke
+// Abyss
+set_color_profile_slot( 13, 0, 166, 172, 214 ); //Skin
+set_color_profile_slot( 13, 1, 46, 52, 84 ); //Hair
+set_color_profile_slot( 13, 2, 220, 112, 255 ); //Fire/Gold
+set_color_profile_slot( 13, 3, 86, 84, 146 ); //Pants
+set_color_profile_slot( 13, 4, 166, 172, 214 ); //White
+set_color_profile_slot( 13, 5, 86, 84, 146 ); //Fire Outline
+set_color_profile_slot( 13, 6, 86, 84, 146 ); //Smoke
 
-// Tauros
-set_color_profile_slot( 14, 0, 255, 173, 150 ); //Skin
-set_color_profile_slot( 14, 1, 102, 90, 82 ); //Hair
-set_color_profile_slot( 14, 2, 167, 170, 183 ); //Fire/Gold
-set_color_profile_slot( 14, 3, 96, 84, 76 ); //Pants
-set_color_profile_slot( 14, 4, 255, 255, 228 ); //White
-set_color_profile_slot( 14, 5, 57, 50, 45 ); //Fire Outline
-set_color_profile_slot( 14, 6, 167, 170, 183 ); //Smoke
+// EA
+set_color_profile_slot( 14, 0, 167, 186, 74 ); //Skin
+set_color_profile_slot( 14, 1, 83, 112, 62 ); //Hair
+set_color_profile_slot( 14, 2, 211, 226, 154 ); //Fire/Gold
+set_color_profile_slot( 14, 3, 83, 112, 62 ); //Pants
+set_color_profile_slot( 14, 4, 211, 226, 154 ); //White
+set_color_profile_slot( 14, 5, 167, 186, 74 ); //Fire Outline
+set_color_profile_slot( 14, 6, 83, 112, 62 ); //Smoke
 
 // Android 13
 set_color_profile_slot( 15, 0, 92, 107, 242 ); //Skin
@@ -230,7 +230,14 @@ set_color_profile_slot( 22, 4, 250, 241, 192 ); //White
 set_color_profile_slot( 22, 5, 255, 223, 18 ); //Fire Outline
 set_color_profile_slot( 22, 6, 255, 211, 117 ); //Smoke
 
-
+//Galactic
+set_color_profile_slot( 23, 0, 123, 0, 255 ); //Skin
+set_color_profile_slot( 23, 1, 98, 0, 189 ); //Hair
+set_color_profile_slot( 23, 2, 71, 0, 214 ); //Fire/Gold
+set_color_profile_slot( 23, 3, 50, 0, 150 ); //Pants
+set_color_profile_slot( 23, 4, 244, 222, 255 ); //White
+set_color_profile_slot( 23, 5, 83, 0, 250 ); //Fire Outline
+set_color_profile_slot( 23, 6, 83, 0, 250 ); //Smoke
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Skin","colors":[{"r":114,"g":105,"b":86},{"r":86,"g":72,"b":72},{"r":166,"g":150,"b":145,"main":true}]},{"name":"Hair","colors":[{"r":170,"g":149,"b":58},{"r":128,"g":96,"b":28},{"r":88,"g":55,"b":17,"main":true}]},{"name":"Fire/Gold","colors":[{"r":255,"g":228,"b":0,"main":true},{"r":255,"g":124,"b":0}]},{"name":"Pants","colors":[{"r":122,"g":25,"b":14,"main":true},{"r":83,"g":17,"b":9}]},{"name":"White","colors":[{"r":255,"g":255,"b":228,"main":true},{"r":193,"g":193,"b":157}]},{"name":"Fire Outline","colors":[{"r":170,"g":0,"b":0,"main":true}]},{"name":"Smoke","colors":[{"r":80,"g":87,"b":92,"main":true},{"r":57,"g":66,"b":71}]}]}

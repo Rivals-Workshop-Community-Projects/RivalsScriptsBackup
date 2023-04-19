@@ -298,7 +298,7 @@ if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FO
     	spr_dir *= -1
     }
     
-    if state_timer == 21 {
+    if state_timer == 22 {
     	spr_dir *= -1
     }
     

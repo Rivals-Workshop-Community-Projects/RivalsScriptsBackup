@@ -262,6 +262,8 @@ if(hyperJump){
 	}
 }
 
+/*
+//pandora
 if(item[15, 3] == 1 && state == PS_CROUCH && crouchCounter < 100){
 	crouchCounter++;
 	
@@ -288,30 +290,34 @@ if(crouchCounter >= 100 && !hitpause){
 		spawn_hit_fx( x - ((25 - random_func(1, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , smokeKT3 );
 	}
 }
+*/
 
 if(!free){
 	carbounceRestoredJumps = false;
 }
 
 //clamp max speed when jumping out of fspecial - later
-/*
+
 if(state == PS_DOUBLE_JUMP && state_timer == 0 && prev_state == PS_ATTACK_AIR && attack == AT_FSPECIAL){
-	hsp = clamp(hsp, 0, (spr_dir * 6));
+	hsp = clamp(hsp, 0, (spr_dir * 8));
 }
-*/
+
 
 if(state == PS_LANDING_LAG){
 	char_height = 44;
+	leafBlower = false;
 }
 
 if(state == PS_WALL_JUMP){
 	move_cooldown[AT_FSPECIAL] = 0;
 }
 
+/*
 //pandora unlock
 if(suitcaseLevel >= 8 && item[15, 3] == 0 && item[15, 7] == false){
 	achieveUnlock(15);
 }
+*/
 
 //f key unlock
 if(practice && get_gameplay_time() > 10 && keyboard_string == "f" && item[26, 3] == 0 && item[26, 7] == false){
@@ -350,6 +356,7 @@ if(state_cat == SC_AIR_NEUTRAL && prev_state == PS_ATTACK_GROUND && attack == AT
 	item[3, 6] = "101% SANDBERT DAIR";
 }
 
+/*
 //pandora cheevo VS katie/sai
 if(PS_SPAWN){
 	with (oPlayer) {
@@ -365,10 +372,11 @@ if(PS_SPAWN){
 		}
 	}
 }
+*/
 
 
 //intro stuff
-if(get_player_color(player) == 15){
+if(get_player_color(player) == 16){
 	arizonaIntro = true;
 } else if(get_player_color(player) == 14){
 	gameboyIntro = true;
@@ -380,6 +388,8 @@ if(get_player_color(player) == 15){
 	goldenIntro = true;
 } else if (get_player_color(player) == 12){
 	beachIntro = true;
+} else if (get_player_color(player) == 15){
+	geneIntro = true;
 }
 if(get_player_color(player) == 11 && get_gameplay_time() % 21 == 0 && !hitpause && state != PS_RESPAWN){
 	var goldFX = spawn_hit_fx( x - ((22 - random_func(1, 50, true)) * spr_dir) , y - random_func(12, 58, true) , sparkle );
@@ -402,6 +412,7 @@ if(abyssIntro){
 	if (state == PS_SPAWN && state_timer == 3){		//abyss 3
 		sound_play (asset_get ("sfx_abyss_portal_spawn"));
 	}
+/*
 } else if(pandoraIntro){
 	if (introTimer2 < 4) {
 		introTimer2++;
@@ -421,6 +432,7 @@ if(abyssIntro){
 			sound_play (asset_get ("sfx_ell_arc_taunt_start"));
 		}
 	}
+*/
 } else if(gameboyIntro){
 	if (introTimer2 < 3) {
 		introTimer2++;

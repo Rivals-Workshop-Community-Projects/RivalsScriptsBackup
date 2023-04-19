@@ -24,7 +24,7 @@
 #macro AD_CY 4
 #macro AD_FRAME 5
 
-// This code is a frankenstein of qazz roborocky AI and fudgepop AI, with modification of mine #Pejota#3122
+// This code is a frankenstein of qazz roborocky AI and fudgepop AI, with modification of mine #pejota#3122
 
 if (!attack_data_obtained) obtain_attack_data();
 
@@ -49,53 +49,75 @@ ct = current_time - ct;
 // the main AI "hub" script that controls stuff 
 #define main()
 
+last_xdist = xdist
 xdisp = ai_target.x - x
 ydisp = ai_target.y - y
 xdist = abs(xdisp);
 ydist = abs(ydisp);
-dist = point_distance(x, y, ai_target.x, ai_target.y)
-var upward_velocity = min(0, vsp)
 
-var offstage = (x > room_width - stagex || x < stagex);
-var hurtboxWidth = HurtboxWidth(ai_target);
-var ai_target_offstage = (ai_target.x - hurtboxWidth > room_width - stagex || ai_target.x + hurtboxWidth < stagex);
+dist = point_distance(x, y, ai_target.x, ai_target.y)
+
+approaching = (xdist - last_xdist) > 0
+
+var upward_velocity = min(0, vsp)
+tgt_teching = (ai_target.state == PS_TECH_GROUND or ai_target.state == PS_TECH_BACKWARD or ai_target.state == PS_TECH_FORWARD)
+tgt_rolling = (ai_target.state == PS_ROLL_BACKWARD or ai_target.state == PS_ROLL_FORWARD)
+
+offstage = (x >= stage_right || x <= stage_left) and free;
+near_stage_wall = offstage and !(x > stage_width + stage_left + 90 or x < stage_left - 90)
+near_stage_ledge = !offstage and (x > stage_width + stage_left - 60 or x < stage_left + 60)
+hurtboxWidth = HurtboxWidth(ai_target);
+ai_target_offstage = (ai_target.x - hurtboxWidth > stage_width + stage_left || ai_target.x + hurtboxWidth < stage_left);
+
+closest_wall_xdist = min(abs(stage_left - x), abs(stage_right - x));
+
+chosenAttack = noone;
 
 targetdamage = get_player_damage( ai_target.player );
 
 AttackUpdate();
 
-if (ai_target.state == PS_DEAD or ai_target.state == PS_RESPAWN) and !free and !(x > room_width/2 - 100 and x < room_width/2 + 100){
-	clear_button_buffer(PC_JUMP_PRESSED);
-	jump_down = false;
-	jump_pressed = false;
-	tiltDance();
-}
-
-// if(!free){
-// 	if(ground_type == 2){
-// 		if(xdist < 50 and ydisp > char_height and !ai_target.free){
-// 			tap_down()
-// 		}
-// 	}
-// }
-
-if !free and ai_target.y - 70 > y and !ai_target.free {
+if !free and ai_target.y - 70 > y and !ai_target.free and ground_type != 1 {
 	tap_down()
 }
 
-if(free and has_hit and state == PS_ATTACK_AIR and !offstage){
-	if ((y > stagey - char_height and y < stagey) or collision_line(x, y + 20, x, y+char_height, platform_asset, false, true)){
+if(free and (has_hit or has_hit_player) and state == PS_ATTACK_AIR and !offstage){
+	if (collision_line(x, y + 20, x, y+135, solid_asset, false, true) or collision_line(x, y + 20, x, y+100, platform_asset, false, true)){
+		unpress_actions()
 		tap_down()
 	}
 }
 
 // print(agressive_score())
 
+if(state == PS_WALK and ai_target != self and !near_stage_ledge){
+	hold_towards_target()
+	tap_current_horizontal_direction()
+}
 
+var dont_attack = false
+if(ai_target.invince_time > 5 or ai_target == self){
+	dont_attack = true
+}
+if(ai_recovering){
+	time_recovering++
+	
+	if(newPredict(self, 50, hsp, vsp, true, false)[@1] > stagey + 300 - (!has_walljump + djumps == max_djumps)*100){
+		// print("DONT ATTACK")
+		// print(game_time)
+		dont_attack = true
+	}
+}else{
+	time_recovering = -1
+}
 
-chosenAttack = noone;
-if(can_attack or state == PS_DASH_START or state == PS_DASH){
-	if(!free){
+// if(!has_walljump and djumps == max_djumps) dont_attack = true
+
+var in_strong = attack == AT_FSTRONG or attack == AT_USTRONG or attack == AT_DSTRONG
+var valid_states = ((can_attack or can_strong or can_special) or (state == PS_DASH_START or state == PS_DASH or state_cat == SC_GROUND_NEUTRAL))
+valid_states = valid_states or (attacking and ((attack == AT_FSPECIAL and window == 11) or (attack == AT_DATTACK and state_timer < 5)))
+if(delay_time <= 0 and valid_states and !dont_attack){
+	if(!free and state != PS_JUMPSQUAT){
 		strongPercent = (2 - ai_target.knockback_adj) * 70 < targetdamage;
 		
 		if can_strong{
@@ -107,27 +129,205 @@ if(can_attack or state == PS_DASH_START or state == PS_DASH){
 		if(can_special){
 		  
       hitboxloc("specials")
+
       if(ai_target.static_pull and dist > 200){
         if(free){
           perform_attack(AT_NSPECIAL)
         }else{
-          perform_attack(random_func(1, 2, true) == 0 ? AT_USPECIAL_GROUND : AT_USPECIAL_GROUND)
+          perform_attack(AT_USPECIAL_GROUND)
         }
         // var static_attacks = free ? [AT_NSPECIAL] : [AT_NSPECIAL, AT_USPECIAL_GROUND];
 		    
 		  }
     }
+		if(attack == AT_DATTACK and attacking) hitboxloc("DACUS")
 	}else{
 		hitboxloc("aerials")
 	}
 }
 
-if(chosenAttack != noone){
-	clear_ai_inputs();
-	perform_attack(chosenAttack); 
-	print(get_attack_name(chosenAttack));
+if(delay_time > 0){
+	delay_time--
 }
 
+if(chosenAttack != noone){
+	clear_ai_inputs();
+	perform_attack(chosenAttack);
+	if(chosenAttack == AT_DATTACK and !(state == PS_DASH and PS_DASH_START)){
+		// print("BEGINNING DASH")
+	}else{ print(get_attack_name(chosenAttack)); }
+	delay_time = (90 - temp_level*10) + 5
+}else{
+	if(ai_recovering){
+		if(vsp > 0 and y < stagey and !near_stage_wall and !near_stage_ledge and closest_wall_xdist > 280 and xdist > 280){
+				if(move_cooldown[AT_FSPECIAL_AIR] <= 0) perform_attack(AT_FSPECIAL)
+		}else{
+			var pos = newPredict(ai_target, 16, ai_target.hsp, ai_target.vsp, true, false)
+			var posdist = point_distance(x,y, pos[0], pos[1])
+			if(random_func(100, 100, true) < 10 and vsp > 0 and y + 50 < stagey and !near_stage_wall and !near_stage_ledge and closest_wall_xdist > 180 and dist > 180 and posdist > 180){
+				if(move_cooldown[AT_FSPECIAL] <= 0) if(random_func(7, 100, true) < 30) perform_attack(AT_FSPECIAL)
+			}
+		}
+		if(y > stagey and y < stagey + 50 and near_stage_wall and closest_wall_xdist < 80 and !has_walljump and !has_airdodge){
+			if(move_cooldown[AT_FSPECIAL_AIR] <= 0){
+				perform_attack(AT_FSPECIAL)
+				hold_toward_center()
+			} 
+		}
+		if(state == PS_DOUBLE_JUMP and x < stage_right + 200 and x > stage_left - 200 and ai_target.y + 75 < y){
+			if(state_timer <= 1){
+				if(random_func(4, 100, true) < (40 + 60*(y - 70 > stagey and y < stagey + 200 and !has_walljump))) perform_attack(AT_DSPECIAL)
+			}
+		}
+	}else{
+		if(ai_target != self){
+			
+			try_wavedash()
+			
+			if(state_cat == SC_GROUND_NEUTRAL and xdist > 230 and !near_stage_wall and !near_stage_ledge and !ai_target_offstage and !jump_down and !jump_pressed and !attacking){
+				if(move_cooldown[AT_FSPECIAL] <= 0) perform_attack(AT_FSPECIAL)
+			}
+			
+			if(instance_exists(right_bubble)){
+				var dirt = point_direction(x, y - char_height, ai_target.x, ai_target.y - ai_target.char_height)
+				var dirb = point_direction(x, y - char_height, right_bubble.x, right_bubble.y - 20)
+				var dirbt = point_direction(right_bubble.x, right_bubble.y - 20, ai_target.x, ai_target.y - ai_target.char_height)
+				var pitb = point_direction(0,0, right_bubble.hsp, right_bubble.vsp)
+				
+				
+				var dot = dot_product(dcos(pitb) + dcos(dirbt), -(dsin(pitb) + dsin(dirbt)), dcos(dirb), -dsin(dirb))
+
+				if(!free){
+					if(angle_difference(dirb, dirt) >= 120 or dot <= 0){
+						if(dist > 300) perform_attack(AT_USPECIAL_GROUND)
+					}else{
+						var pos = newPredict(right_bubble, 5, right_bubble.hsp, right_bubble.vsp, true, true)
+						
+						var intersect_left = max(x+ 10*spr_dir, pos[@0])
+						var intersect_right = min(x+ 100*spr_dir, pos[@0])
+					
+						var intersect_top = max(y - 60, pos[@1])
+						var intersect_bottom = min(y , pos[@1])
+						if intersect_right == intersect_left and intersect_bottom == intersect_top {
+							unpress_actions()
+							perform_attack(AT_JAB)
+						}
+					}
+				}
+			}else{
+				if(state_cat == SC_GROUND_NEUTRAL and xdist > 300 and !approaching){
+					unpress_actions()
+					perform_attack(AT_DSTRONG)
+				}
+			}
+		}
+		// if(state == PS_HITSTUN and !hitpause){
+		// 	var pos = newPredict(self, hitstun, hsp, vsp, true, false)
+		// 	if(pos[@0] < lblastzone or pos[@0] > rblastzone){
+		// 		hold_toward_center()
+		// 	}
+		// }
+	}
+}
+
+var try_parry = false
+if(!attacking and !free){
+	with pHitBox {
+		if(type == 2 and player != other.player and does_not_reflect == false){
+			var pos = newPredict(id, 7, hsp, vsp, true, true)
+			if(place_meeting(pos[@0], pos[@1], other.hurtboxID)){
+				try_parry = true
+			}
+		}
+	}
+}
+if(try_parry){
+	hold_neutral()
+	press_parry()
+}
+
+if(state == PS_JUMPSQUAT or (state == PS_FIRST_JUMP and state_timer <= 1)){
+	//Fullhop if needed
+	if(ydisp < -100){
+		jump_down = true
+	}
+}
+
+if ai_target == self and !free and !attacking{
+	clear_button_buffer(PC_JUMP_PRESSED);
+	unpress_actions()
+	tiltDance();
+}
+
+#define try_wavedash()
+
+if(approaching and (state == PS_DASH or state == PS_DASH_START or state_cat == SC_GROUND_NEUTRAL)){
+	if(ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND ) and xdist < 150 and ydist < 30{
+		press_jump()
+	}
+}
+if(ydisp < -100 and ai_target.state_cat == SC_HITSTUN and !free and abs(hsp) < 7){
+	press_jump()
+}
+if(attacking and attack == AT_FSPECIAL and xdist > 150 and ydisp < 0 and vsp >= 0){
+	press_jump()
+}
+if(state == PS_IDLE){
+	if ((xdist > 175 or state_timer > 5) and !near_stage_ledge) press_jump()
+}
+if(state == PS_JUMPSQUAT){
+	if(approaching and (ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND ) and xdist < 150) {
+		hold_away_from_target()
+	}
+}
+if(state_cat == SC_AIR_NEUTRAL and !check_fast_fall){
+	var pred_ydisp = abs((ai_target.y + ai_target.vsp*3.7) - y)
+	if((pred_ydisp < 90 and ydisp < 60 or xdist > 350) and (position_meeting(x, y, platform_asset) or position_meeting(x, y, solid_asset) or position_meeting(x + 50*sign(xdisp), y, platform_asset))){
+		if(!(xdist < 100) or (xdisp*spr_dir > 0) or random_func(11, 100, 50) < 50) press_parry()
+	}
+	
+}
+if(state == PS_AIR_DODGE){
+	var pl = position_meeting(x, y, platform_asset);
+	var sl = position_meeting(x, y, solid_asset);
+	
+	if(pl or sl){
+		
+		if(ai_target.state_cat == SC_HITSTUN and ydisp > -150){
+			hold_towards_target()
+		}
+		if(ydisp > -100 and xdist > 100){
+			hold_towards_target()
+		}
+		if(tgt_teching or tgt_rolling){
+			var dir = (-1 + random_func_2(10, 2, true)*2);
+			if(dist < 100) hold_toward_direction(dir)
+			else hold_towards_target()
+		}
+		if(ai_target.state_cat == SC_GROUND_NEUTRAL){
+			var dir = (-1 + random_func_2(10, 2, true)*2);
+			hold_toward_direction(dir)
+		}
+		if(approaching and (ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND )) {
+			hold_away_from_target()
+		}
+		if(xdist > 350){
+			hold_towards_target()
+		}
+	}else{
+		if(position_meeting(x + 50, y, platform_asset)){
+			press_right()
+		}
+		if(position_meeting(x - 50, y, platform_asset)){
+			press_left()
+		}
+	}
+}
+if(state_cat == SC_GROUND_NEUTRAL and (tgt_teching or tgt_rolling) and ai_target.state_timer > 7 and abs(ai_target.hsp) > 0 and ai_target.state_timer < 14){
+	if(xdist < 100){
+		press_jump()
+	}
+}
 
 #define agressive_score()
 var value = 0;
@@ -144,51 +344,114 @@ return value
 
 if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
   switch(attack){
+  	case AT_NTHROW:
+  		if(near_stage_ledge){
+      	hold_toward_center()
+      }
+    break;
     case AT_NSPECIAL:
-    	if(ai_target.static_pull and dist > 200) or ai_target.hitstun_full - ai_target.hitstun > 30{
+    	var pull_dist = point_distance( pull_dir_x, pull_dir_y, ai_target.x, ai_target.y)
+    	if pull_dist > 50 and ((ai_target.static_pull and dist < 200) or ai_target.hitstun_full - ai_target.hitstun > 30){
         press_special()
       }
-      break;
+      
+    break;
     case AT_USPECIAL:
+    	if(near_stage_wall and window == 1 and y > stagey + 35){
+    		// print("GO UP IDO")
+    		unpress_left()
+    		unpress_right()
+    		press_up()
+    	}
     	if(vsp > 0 and collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, solid_asset, false, true)){
     		// print("pressing jump")
     		press_jump()
     	}
+    break;
     case AT_USPECIAL_GROUND:
     	var pull_dist = point_distance( pull_dir_x, pull_dir_y, ai_target.x, ai_target.y)
-      if(ai_target.static_pull and pull_dist > 200) or (ai_target.state == PS_HITSTUN and  ai_target.hitstun_full - ai_target.hitstun > 10){
+      if(ai_target.static_pull and min(pull_dist, dist) > 240) or (ai_target.state == PS_HITSTUN and  ai_target.hitstun_full - ai_target.hitstun > 15){
         press_special()
       }
-      break;
+    break;
+    case AT_DSPECIAL:
+    	if(vsp > 0 and collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, solid_asset, false, true)){
+    		// print("pressing jump")
+    		press_jump()
+    	}
     break;
     case AT_FSPECIAL:
-      if(window == 2 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1){
-        press_parry()
+    	hold_towards_target()
+    	tap_current_horizontal_direction()
+    	if(window == 1 and window_timer <= 1){
+    		tried_to_parry = false
+    	}
+      if(window == 2){
+      	var par_value = clamp(times_tried_to_parry*30, 0, 80)
+      	if((random_func(0, 100, true) < (10 + par_value) and ai_target.state_cat == SC_GROUND_NEUTRAL) or (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 1)){
+	      	// print("pressing parry")
+	        press_parry()
+      	}
       }
+      if(ai_target.state == PS_PARRY and state_timer == 0){
+      	tried_to_parry = true
+      	times_tried_to_parry++
+      }
+      if(window == 10 or window == 3){
+      	if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1){
+      		if(!tried_to_parry and times_tried_to_parry > 0) times_tried_to_parry--
+      	}
+      }
+      // if(near_stage_ledge and ai_target_offstage) press_parry()
     break;
     case AT_EXTRA_1:
     	if(y - stagey > 120){
     		press_jump()
     	}
+    break
+    case AT_DATTACK:
+    	// if(state_timer < 5){
+    		
+    	// 	hitboxloc("DACUS")
+    	// 	if(chosenAttack != noone){
+    	// 		perform_attack(AT_USTRONG)
+    	// 	}
+    	// }
+    break;
   }
 }
 
-#define newPredict(tgt, frame, vo_x, vo_y)
+#define newPredict(tgt, frame, vo_x, vo_y, apply_grav, is_hitbox)
 
 var xx = tgt.x;
 var yy = tgt.y;
-var ac_y = tgt.free ? tgt.grav : 0 ;
-var ac_x = tgt.free ? -tgt.air_friction*sign(tgt.hsp) : -tgt.ground_friction*sign(tgt.hsp);
-// print(ac_y)
-var new_x2 = xx + vo_x*frame;
-var new_x = new_x2 + ac_x*frame*frame/2;
-var new_y = yy;
+var tgt_attacking = !is_hitbox ? tgt.state == PS_ATTACK_GROUND or tgt.state == PS_ATTACK_AIR : false
+var ac_y = tgt.free and apply_grav ? tgt.grav : 0 ;
+var ac_x = tgt.free ? -tgt.air_friction*sign(tgt.hsp) : -tgt.frict*sign(tgt.hsp);
 
-if(sign(new_x2 - xx) != sign(new_x - xx)){
-	new_x = xx;
+if(tgt_attacking){
+	with tgt{
+		if(get_attack_value(attack, AG_USES_CUSTOM_GRAVITY)){
+			ac_y *= get_window_value(attack, window, AG_WINDOW_CUSTOM_GRAVITY);
+		}
+	}
 }
 
-var max_fall_spd = tgt.fast_falling ? fast_fall : max_fall;
+// print(ac_y)
+var new_x2 = xx + vo_x*frame;
+var new_hsp = vo_x + ac_x*frame;
+var new_x = new_x2 + ac_x*frame*frame/2;
+var new_y = yy;
+// print(sign(new_hsp*tgt.hsp))
+
+if(sign(new_hsp*tgt.hsp) == -1){
+	var zero_hsp_frame = (-vo_x)/ac_x
+	// print(zero_hsp_frame)
+	new_x = new_x2 + ac_x*zero_hsp_frame*zero_hsp_frame/2
+}
+
+if(!is_hitbox) var max_fall_spd = tgt.fast_falling ? tgt.fast_fall : tgt.max_fall;
+else var max_fall_spd = 999
 var voat = ceil((max_fall_spd - vo_y)/ac_y); // t when max_speed
 
 
@@ -200,18 +463,15 @@ if(tgt.free){
 		new_y = yy + vo_y*frame + ac_y*frame*frame/2;
 	}
 }
-
-
 // make_line(xx,yy,new_x,new_y, c_fuchsia);
 
 return [new_x, new_y];
 
-#define hitboxloc
+#define hitboxloc(type)
 
-switch(argument[0]){
+switch(type){
 	case "tilts":
-		var attacke = [AT_JAB, AT_DTILT, AT_FTILT, AT_UTILT, AT_USPECIAL_GROUND];
-
+		var attacke = [AT_JAB, AT_DTILT, AT_FTILT, AT_UTILT, AT_DATTACK, AT_USPECIAL_GROUND];
 		break;
 		
 	case "aerials":
@@ -226,8 +486,11 @@ switch(argument[0]){
 		break;
 	case "DACUS":
 		var attacke = [AT_USTRONG];
+		// print("trying DACUUUUUUS")
 		break;
 }
+
+var which_hop = (state == PS_JUMPSQUAT)*(jump_down + 1)
 
 var len = array_length_1d(attacke);
 
@@ -241,19 +504,24 @@ var thh = HurtboxHeight(ai_target);
 for(var i = 0; i < len; i++){
 	// print(ai_attack_data)
   var cad = ai_attack_data[@ attacke[@ i]];
-  var vo_x = self.hsp;
+  var vo_x = self.hsp*(1 - (state==PS_WAVELAND)*0.75);
   var vo_y = self.vsp;
+	var apply_grav = true
+	var apply_grav_target = true
   
-  if(attacke[i] == AT_DATTACK){
-  	distadd_x = 100;
-  }
   if(attacke[i] == AT_FSPECIAL_AIR){
-  	vo_x = 3*spr_dir;
+  	vo_x = 3*spr_dir + spr_dir > 0 ? max(hsp, 2) : min(hsp, -2);
   	vo_y = -8;
-  }	
+  }
+	if(attacke[i] == AT_DATTACK){
+  	vo_x = 0;
+  }
+	if(attacke[i] == AT_USTRONG){
+		vo_x = vo_x + sign(hsp)*12*0.2
+	}
   
-  lastPos = newPredict(self, cad[@ AD_FRAME], vo_x, vo_y);
-  estOPos = newPredict(ai_target, cad[@ AD_FRAME], ai_target.hsp, ai_target.vsp);
+  lastPos = newPredict(self, cad[@ AD_FRAME], vo_x, vo_y, apply_grav, false);
+  estOPos = newPredict(ai_target, cad[@ AD_FRAME], ai_target.hsp, ai_target.vsp, apply_grav_target, false);
 
   
   var ai_target_hurtbox_bbox = [estOPos[@ 1] + thh, estOPos[@ 1], estOPos[@ 0] - thw / 2, estOPos[@ 0] + thw / 2];
@@ -266,7 +534,10 @@ for(var i = 0; i < len; i++){
     
   var ov = amount_of_rectangle_overlap(ai_target_hurtbox_bbox[@ BBOX_LEFT], ai_target_hurtbox_bbox[@ BBOX_TOP], ai_target_hurtbox_bbox[@ BBOX_RIGHT], ai_target_hurtbox_bbox[@ BBOX_BOTTOM], 
         attack_bbox[@ BBOX_LEFT], attack_bbox[@ BBOX_TOP], attack_bbox[@ BBOX_RIGHT], attack_bbox[@ BBOX_BOTTOM])
-  // if(true) make_rect_outline(attack_bbox[@ BBOX_LEFT], attack_bbox[@ BBOX_TOP], attack_bbox[@ BBOX_RIGHT], attack_bbox[@ BBOX_BOTTOM], $880088);
+
+  if(attacke[@ i] == AT_USTRONG) make_rect_outline(attack_bbox[@ BBOX_LEFT], attack_bbox[@ BBOX_TOP], attack_bbox[@ BBOX_RIGHT], attack_bbox[@ BBOX_BOTTOM], $880088);
+  if(attacke[@ i] == AT_USTRONG) make_rect_outline(ai_target_hurtbox_bbox[@ BBOX_LEFT], ai_target_hurtbox_bbox[@ BBOX_TOP], ai_target_hurtbox_bbox[@ BBOX_RIGHT], ai_target_hurtbox_bbox[@ BBOX_BOTTOM], $008888);
+  
   if(ov){
   	listAtk[j] = attacke[i];
 		j++;
@@ -280,7 +551,7 @@ for(var i = 0; i < len; i++){
 var reroll = true;
 len = array_length_1d(listAtk);
 iterations = 0;
-
+var temp_chosen = chosenAttack
 //Chooses from the new array based on a set of conditions randomly, test are done to reroll for a new attack if a condition is not met
 if len != 0{
 	while(reroll and iterations < 5){
@@ -290,12 +561,27 @@ if len != 0{
 		
 		chosenAttack = listAtk[random_func(2, j, true)];
 		
-		if(chosenAttack == AT_DATTACK){
-			if(state != PS_DASH_START or state != PS_DASH){
-				reroll = true;
-			}
+		if(chosenAttack != noone and move_cooldown[chosenAttack] > 0){
+			reroll = true;
+			chosenAttack = temp_chosen
+			if(len == 1) break
 		}
 		
+		if(chosenAttack == AT_NSPECIAL){
+			if(temp_chosen == AT_DTILT){
+				reroll = true;
+				chosenAttack = temp_chosen
+				if(len == 1) break
+			} 
+		}
+		
+		// if(chosenAttack == AT_FSTRONG or chosenAttack == AT_DSTRONG or chosenAttack == AT_USTRONG){
+		// 	if(ai_target.state_cat == SC_AIR_NEUTRAL or ai_target.state_cat == SC_GROUND_NEUTRAL){
+		// 		reroll = true;
+		// 		chosenAttack = temp_chosen
+		// 		if(len == 1) break
+		// 	}
+		// }
 	}
 	
 }
@@ -437,6 +723,32 @@ if !free{
 	}
 }
 
+#define get_direction(angle)
+
+var dir = floor(point_direction(0,0, dcos(angle), -dsin(angle))/45 + .5)%8;
+return dir
+
+#define hold_towards_target_8way(tgt)
+
+var pd = point_direction(x, y, tgt.x, tgt.y)
+var dir = get_direction(pd);
+hold_toward_direction_8way(dir)
+
+return dir
+
+#define hold_toward_direction_8way(dir)
+
+joy_dir = dir*45
+joy_pad_idle = false
+
+var coss = dcos(joy_dir)
+var sinn = dsin(joy_dir)
+
+right_down  = coss > 0;
+left_down  = coss < 0;
+up_down = sinn > 0;
+down_down = sinn < 0;
+
 
 #define hold_toward_direction(dir)
 	if dir < 0 {
@@ -507,6 +819,10 @@ if !free{
 	down_strong_pressed = false
 	
 #define press_left()
+	// print("left")
+	joy_dir = 180
+	joy_pad_idle = false
+	
 	left_down = true
 	left_pressed = true
 	unpress_right()	
@@ -517,6 +833,10 @@ if !free{
 	left_hard_pressed = true
 
 #define press_right()
+	// print("right")
+	joy_dir = 0
+	joy_pad_idle = false
+	
 	right_down = true
 	right_pressed = true
 	unpress_left()
@@ -527,6 +847,10 @@ if !free{
 	right_hard_pressed = true
 
 #define press_up()
+	
+	joy_dir = 90
+	joy_pad_idle = false
+	
 	up_down = true
 	up_pressed = true
 	unpress_down()
@@ -537,8 +861,12 @@ if !free{
 	up_hard_pressed = true
 
 #define press_down()
-  	down_down = true
-  	down_pressed = true
+	
+	joy_dir = 90
+	joy_pad_idle = false
+	
+	down_down = true
+	down_pressed = true
 	unpress_up()
 
 #define tap_down
@@ -572,6 +900,7 @@ if !free{
 	unpress_actions()
 	attack_down = true
 	attack_pressed = true
+	attack_counter = 0
 	
 #define press_special()
 	unpress_actions()
@@ -643,15 +972,33 @@ if !free{
 	return  overlap
 
 #define perform_attack(_attack)
+
 	switch _attack {
-		case AT_JAB:	
+		case AT_JAB:
+		case AT_FSTRONG:
+		case AT_USTRONG:
+		case AT_DSTRONG:
+		case AT_FTILT:
+		case AT_UTILT:
+		case AT_DTILT:
+			if(state == PS_DASH_START or state == PS_DASH){
+				print("BABY DASH")
+				hold_neutral()
+				return;
+			}
+		break
+	}
+
+	switch _attack {
+		case AT_JAB:
+			hold_neutral()
 			press_attack()
 		break
 		case AT_DATTACK:
 			hold_neutral()
 			hold_towards_target()
 			tap_current_horizontal_direction()
-			press_attack()
+			 press_attack()
 		break
 		case AT_NSPECIAL:
 			hold_neutral()
@@ -866,49 +1213,60 @@ if !free{
   for (var i = 0; i < len; i++) {
     var atp = ai_attacks[@ i];
     var thisAttack = atp[@ 0];
-    var groups = array_length_1d(atp);
-    for (var j = 1; j < groups; j++) {
-      ai_attack_data[@ thisAttack] = calc_attack_data(thisAttack, atp[@ j]);
+    var g_index = 2
+    var groups = array_length_1d(atp)-g_index;
+    for (var j = 0; j < groups; j++) {
+      ai_attack_data[@ thisAttack] = calc_attack_data(i, thisAttack, atp[@ j + g_index]);
     }
   }
   attack_data_obtained = true;
 
-#define calc_attack_data(index, hitboxes)
-  var hit_window = get_hitbox_value( index, hitboxes[0], HG_WINDOW );
-  var startFrame = get_hitbox_value( index, hitboxes[0], HG_WINDOW_CREATION_FRAME );
-  for (var i = 0; i < hit_window; i++) {
-    startFrame += get_window_value( index, i+1, AG_WINDOW_LENGTH );
+#define calc_attack_data(data_index, _attack, hitboxes)
+  var hit_window = get_hitbox_value( _attack, hitboxes[0], HG_WINDOW );
+  var startFrame = get_hitbox_value( _attack, hitboxes[0], HG_WINDOW_CREATION_FRAME );
+  for (var i = 0; i < hit_window-1; i++) {
+    startFrame += get_window_value( _attack, i+1, AG_WINDOW_LENGTH );
   }
+  
   var left = 9999;
   var top = 9999;
   var right = -9999;
   var bottom = -9999;
-
-  var len = array_length_1d(hitboxes);
-  for (var i = 0; i < len; i++) {
-    var hb = hitboxes[i];
-    var hbx = get_hitbox_value( index, hb, HG_HITBOX_X );
-    var hby = get_hitbox_value( index, hb, HG_HITBOX_Y );
-    var hbsx = get_hitbox_value( index, hb, HG_WIDTH );
-    var hbsy = get_hitbox_value( index, hb, HG_HEIGHT );
-
-    var t = hby - hbsy / 2;
-    if (top > t) top = t;
-    var b = hby + hbsy / 2;
-    if (bottom < b) bottom = b;
-    var l = hbx - hbsx / 2;
-    if (left > l) left = l;
-    var r = hbx + hbsx / 2;
-    if (right < r) right = r;
-  }
-
-  var width = (right - left);
-  var height = (bottom - top);
-  var cx = (right + left) / 2;
-  var cy = (bottom + top) / 2;
-
+	
+	var overwrite = ai_attacks[@ data_index][1];
+	print(overwrite)
+	if( array_length_1d(overwrite) > 3 ){
+		var width = overwrite[2];
+		var height = overwrite[3];
+		var cx = overwrite[0];
+		var cy = overwrite[1];
+	}else{
+	  var len = array_length_1d(hitboxes);
+	  for (var i = 0; i < len; i++) {
+	    var hb = hitboxes[i];
+	    var hbx = get_hitbox_value( _attack, hb, HG_HITBOX_X );
+	    var hby = get_hitbox_value( _attack, hb, HG_HITBOX_Y );
+	    var hbsx = get_hitbox_value( _attack, hb, HG_WIDTH );
+	    var hbsy = get_hitbox_value( _attack, hb, HG_HEIGHT );
+	
+	    var t = hby - hbsy / 2;
+	    if (top > t) top = t;
+	    var b = hby + hbsy / 2;
+	    if (bottom < b) bottom = b;
+	    var l = hbx - hbsx / 2;
+	    if (left > l) left = l;
+	    var r = hbx + hbsx / 2;
+	    if (right < r) right = r;
+	  }
+	
+	  var width = (right - left);
+	  var height = (bottom - top);
+	  var cx = (right + left) / 2;
+	  var cy = (bottom + top) / 2;
+	  print("ran this")
+	}
   var data = [
-    index,
+    _attack,
     width,
     height,
     cx,

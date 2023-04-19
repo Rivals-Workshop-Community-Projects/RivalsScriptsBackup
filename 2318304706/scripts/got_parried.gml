@@ -35,3 +35,4 @@ switch (my_hitboxID.attack) {
 		}
 		break;
 }
+gbeamStoredCharge = 0;

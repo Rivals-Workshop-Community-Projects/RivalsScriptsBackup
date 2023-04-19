@@ -118,4 +118,6 @@ sprite_change_offset("plat", 92, 16);
 
 sprite_change_offset("arc_anchor", 2, 0);
 
+sprite_change_offset("kart", 10, 10);
+
 set_victory_theme(sound_get("ell_victory"));

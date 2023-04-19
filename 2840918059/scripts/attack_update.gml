@@ -283,7 +283,7 @@ if (attack == AT_DSPECIAL && window == 1 && free){
 	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 99999);
 	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
 	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 1);
-	vsp = 12;
+	vsp = 15;
 	hsp = 0;
 }
 

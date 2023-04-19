@@ -4,8 +4,10 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 large_plasma_hfx = hit_fx_create(sprite_get("large_plasma_hfx"), 38);
-plasma_hfx = hit_fx_create(sprite_get("plasma_hfx"),40);
+plasma_hfx = hit_fx_create(sprite_get("plasma_hfx"),30);
 
+ball = noone;//Krankees edit
+fspec_ball = 0;//Krankees edit
 ball_hit = hit_fx_create(sprite_get("screen_effect"),120);
 ball_hit2 = hit_fx_create(sprite_get("plasma_hitfx"),50);
 ball_hittest = hit_fx_create(sprite_get("plasma_hitfx"),50);
@@ -14,6 +16,11 @@ dust = hit_fx_create(sprite_get("dust"),45);
 charge = hit_fx_create(sprite_get("charge_effect"),45);
 stock_explosion = hit_fx_create(sprite_get("spr_exp"),45);
 
+//DELTA CHANGES
+trigger_dtilt_jc = false;
+dtilt_jc_on = true; // if you ever decide to get rid of jc stuff just set this to false
+
+jump = 0; //jump stuff; Krankees edit
 ball_cooldown = 0;
 ball_exists = false;
 
@@ -63,13 +70,13 @@ jump_start_time = 5;
 jump_speed = 12;
 short_hop_speed = 7;
 djump_speed = 10;
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .5;
 prat_fall_accel = .75; //multiplier of air_accel while in pratfall
-air_friction = .015;
+air_friction = .04;
 max_djumps = 1;
 double_jump_time = 35; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 5;
@@ -80,7 +87,7 @@ max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 17; //fast fall speed
 gravity_speed = .55;
 hitstun_grav = .5;
-knockback_adj = .8; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 5; //normal landing frames
 prat_land_time = 20;
@@ -134,3 +141,6 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+//Hit fx stuff
+stop_fx = 0;

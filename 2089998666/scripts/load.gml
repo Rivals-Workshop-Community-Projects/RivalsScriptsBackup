@@ -74,9 +74,3 @@ sprite_change_offset("smoke_l", 35, 80);
 sprite_change_offset("smoke_r", 19, 80);
 sprite_change_offset("hudbobblehead", -6, -2);
 sprite_change_offset("miiverse", 60, 30);
-
-sprite_change_offset("yosr", 130, 130);
-sprite_change_offset("yosl", 130, 130);
-sprite_change_offset("yosrn", 130, 130);
-sprite_change_offset("yosln", 126, 130);
-sprite_change_offset("fireheal", 30, 30);

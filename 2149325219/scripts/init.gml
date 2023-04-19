@@ -10,12 +10,12 @@ walk_anim_speed = .2;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
-walk_speed = 3.5;
+walk_speed = 3.0;
 walk_accel = 0.5;
 walk_turn_time = 6;
 initial_dash_time = 6;
-initial_dash_speed = 8.2;
-dash_speed = 6.5;
+initial_dash_speed = 8.0;
+dash_speed = 6;
 dash_turn_time = 15;
 dash_turn_accel = 4.0;
 dash_stop_time = 4;
@@ -114,6 +114,7 @@ rocketpunch = noone;
 fuse = 580
 fuse_max = 480
 fusesound = false;
+fusesound2 = false;
 ovenhands = 10;
 explode = false;
 lowfuse = false;
@@ -133,6 +134,7 @@ msparka = 0;
 sparktimer = 0;
 
 //extra1
+handsDisplay = false;
 handsx = 15
 handsy = 40;
 boomvsp = 0;
@@ -140,12 +142,16 @@ boomhsp = 0;
 handsoff = false;
 handsoff_tumble = -1;
 skullhands = false;
+alterExtra = false;
 
 //fair
 fair_spike = false;
 
 //bair
 bair_launch = false;
+
+//Jab
+jabParry = false;
 
 
 //bomb limit
@@ -169,6 +175,8 @@ uspec_lowcancel = false;
 //strongs
 strong = 0;
 Ustrong_mine = false;
+dMinex = 0;
+dMiney = 0;
 
 
 //mine
@@ -184,3 +192,11 @@ spinhit5 = true;
 spinhit6 = true;
 fst_bomb = noone;
 fst_cos = cos(degtorad(point_direction(0,0,hsp,vsp)))*55
+
+
+
+//Counter Play Prime
+primeDamageLimit = 10;
+primeDamage = 0;
+primeCounter = false;
+primeCounterTimer = 0;

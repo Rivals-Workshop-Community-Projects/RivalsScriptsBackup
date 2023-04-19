@@ -378,7 +378,8 @@ childsupport = 1;
 
 object = sprite_get("Samus_demopan");
 
-
+//mamizou
+mamizou_transform_spr = sprite_get("Samus_raccoon");
 
 //Hikaru title
 
@@ -538,6 +539,7 @@ land_sound = sound_get("jump_land");
 landing_lag_sound = sound_get("jump_land");
 jump_sound = sound_get("jump_spin");
 djump_sound = sound_get("jump_spin");
+game_time = 0;
 
 //hud
 menu_y = -12; //-12 is low, -42 is high

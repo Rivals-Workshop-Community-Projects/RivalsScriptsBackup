@@ -1,6 +1,3 @@
-user_event(14);
-
-spr_phoneopen = sprite_get("phone_open");
 
 hurtbox_spr = sprite_get("hurtbox");
 crouchbox_spr = sprite_get("crouch_hurt");
@@ -140,9 +137,6 @@ bonk_hit_fx2 = hit_fx_create( sprite_get( "bonk_reverse_hit"), 27 );
 
 //others
 set_victory_theme( sound_get( "sfx_victory" ));
-
-toonlink_photo = sprite_get("toonlink_photo");
-toonlink_photo2 = 3
 
 arena_title = "The Slippery Slouch"
 

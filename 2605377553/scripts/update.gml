@@ -1,3 +1,5 @@
+user_event(9); //Leave this at the top of update.
+
 // update.gml
 
 with (asset_get("oPlayer")){
@@ -23,7 +25,7 @@ with (oPlayer)
 			sickTimer--;
 		
 		//Take damage when sick
-		if (sickTimer % 45 == 0)
+		if (sickTimer % 90 == 0)
 			take_damage(player, other.player, 1);		
 	}
 	
@@ -37,10 +39,7 @@ with (oPlayer)
 	}
 }
 
-//Mariiii
-if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 9 && get_gameplay_time() == 5){
-	sound_play(sound_get("mari"));
-}
+
 
 //secret colors
 //Sun (clown)
@@ -62,7 +61,7 @@ if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 2 &&taunt
 }
 
 //Doge (ex derby chamption)
-if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 5){
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 19) or (get_gameplay_time() == 5 && get_player_color( player ) == 19 && get_player_name( player ) == "ELLIE" ){
 	if (taunt_down&&down_down){
 		extra_col = 3
 		white_flash_timer = 18;
@@ -105,15 +104,106 @@ if (extra_col == 0 && get_player_color( player ) == 9){
 	}
 }
 
+//JH (Urban Magic)
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 1 &&taunt_down&&down_down) or (get_gameplay_time() == 5 && get_player_color( player ) == 1 && get_player_name( player ) == "JH" ){
+	extra_col = 7
+	white_flash_timer = 18;
+	sound_play(sound_get("jh_alt"));
+	init_shader();
+}
+
+//Fungus (seyshun complex)
+if (get_gameplay_time() == 5 && extra_col == 0 && get_player_color( player ) == 11 ){
+	sound_play(sound_get("fungus_alt"));
+}
+
+//Robo (Cass Subway Midnight)
+if (get_gameplay_time() == 5 && extra_col == 0 && get_player_color( player ) == 12 ){
+	sound_play(sound_get("robo_alt"));
+}
+
+///////////////////////
+///////////////////////
+///Champion's Key////
+
+if (get_gameplay_time() == 1 && get_player_color( player ) == 24){
+	switch(get_player_name( player ) ){
+		case "NUZLF":
+		extra_col_key = 2
+		white_flash_timer = 20;
+		sound_play(sound_get("nuzl_viola"));
+		init_shader();	
+		break;
+		
+		case "ELLIE":
+		extra_col_key = 3
+		white_flash_timer = 20;
+		sound_play(asset_get("sfx_holy_tablet_appear"));
+		init_shader();	
+		break;
+		
+		case "JH":
+		extra_col_key = 7
+		white_flash_timer = 20;
+		sound_play(sound_get("jh_alt"));
+		init_shader();
+		break;
+		
+		case "JOHN":
+		case "DAVE":
+		case "KARKAT":
+		case "ANDREW":
+		case "HUSSIE":
+		case "TROLL":
+		case "DOOM":
+		extra_col_key = 97
+		white_flash_timer = 20;
+		sound_play(sound_get("it's a secret!"));
+		init_shader();
+		break;
+		
+		case "MAYA":
+		case "MIA":
+		case "NICK":
+		case "ACE":
+		case "APOLLO":
+		case "BURGER":
+		case "BORGAR":
+		extra_col_key = 98
+		white_flash_timer = 20;
+		sound_play(sound_get("it's a secret!"));
+		init_shader();
+		break;
+		
+		case "OW":
+		case "OUCH":
+		case "STRAIN":
+		case "DEATH":
+		case "HUNGER":
+		case "WAR":
+		extra_col_key = 99
+		white_flash_timer = 20;
+		sound_play(sound_get("it's a secret!"));
+		init_shader();
+		
+	}
+}
+
+//congrats, your diligence reading through dumbass code has earned you: the passwords for 3 secret alts! you probably wont use them, but check them out by changing your in-game tag to the keys!
+
+
 //smoke consume (airdog)
 if state == PS_AIR_DODGE
 {
     if state_timer == 0
     {
+    	if get_player_color(player) == 8 {
+    		sound_play(sound_get("dashing_mad"));  
+    	}
     	uspeccancel = false
 		var consumed = consumeSmokeCloud();
     	
-        if consumed{
+        if consumed or turnonsuperwavedash = true{
             air_dodge_speed = 12;
             wave_land_adj = 1.2;
             }
@@ -122,26 +212,46 @@ if state == PS_AIR_DODGE
             awave_land_adj = 1.35; 
         }	
 			
-        if consumed
-			sound_play(sound_get("airdodgeboost"));                
+        if consumed or turnonsuperwavedash = true
+        	if get_player_color(player) == 8{
+        		sound_play(sound_get("getboosted_mad"));	
+        	}
+        	else
+				sound_play(sound_get("airdodgeboost"));
     }
+}
+
+if get_player_color(player) == 8{
+	if state == PS_RESPAWN
+	{
+	    if state_timer == 0
+	    {
+	    		sound_play(sound_get("revive_mad"));  
+	    }
+	}
+	
+	//celeste from hit game celeste
+	if state == PS_AIR_DODGE {
+	    	bluehairandpronouns = true;
+	    }
+	else if (state == PS_LAND or state == PS_WAVELAND) &&  bluehairandpronouns == true{
+	    	bluehairandpronouns = false;
+	    	white_flash_timer = 7;
+	    }
+
 }
 
 
 
-//celeste from hit game celeste
-if has_airdodge = false && get_player_color(player) == 8 {
-    	set_character_color_slot(2,79, 172, 233 ); //Hair //hair goes blue!!!
-    }
-if state == PS_LAND && get_player_color(player) == 8 {
-    	set_character_color_slot(2, 236, 89, 68 ); //Hair //hair goes blue!!!
-    }
+
+
+
 
 
 //alt portrait
 if (get_player_color(player) == 3 || get_player_color(player) == 4 || 
-	get_player_color(player) == 6 || get_player_color(player) == 8 || get_player_color(player) == 15 ||
-	get_player_color(player) == 20 || get_player_color(player) == 12){
+	get_player_color(player) == 6 || get_player_color(player) == 8 || get_player_color(player) == 11 || get_player_color(player) == 15 ||
+	get_player_color(player) == 20){
 set_victory_portrait( sprite_get( "portrait_alt" ));
 init_shader();
 }
@@ -189,8 +299,11 @@ with(oPlayer)
 	//ignore if it's us
 	if id == other
 		continue;
+		
+	if "malsick_immune" in self and malsick_immune
+		continue;
 
-	//fail to get the foe sick if theyre invincible
+	//fail to get the foe sick if theyre invincible or immune
 	if invincible
 	{
 		sickGrace = 0;
@@ -244,13 +357,33 @@ with(oPlayer)
 if !free || state == SC_HITSTUN || state == PS_WALL_JUMP || state = PS_HITSTUN_LAND
 || state = PS_TUMBLE || state = PS_PRATFALL|| state = PS_PRATLAND{
 move_cooldown[AT_FSPECIAL] = 0;
+uspechassmogboosted = false;
+turnonsuperwavedash = false;
 }
 
-//bair reset
-if !free || state == SC_HITSTUN || state = PS_HITSTUN_LAND
-|| state = PS_TUMBLE || state = PS_PRATFALL|| state = PS_PRATLAND{
-bairused = false;
+//unchained attack details
+if state == SC_HITSTUN || state == PS_HITSTUN || state == SC_AIR_NEUTRAL || state == SC_GROUND_NEUTRAL || state == PS_WALL_JUMP || state == PS_HITSTUN_LAND
+|| state == PS_TUMBLE || state == PS_PRATFALL|| state == PS_PRATLAND|| state == PS_IDLE || state == PS_IDLE_AIR{
+	knockback_adj = 1.00
+	markConsumed = false;
 }
+
+if state == SC_AIR_NEUTRAL || state == SC_GROUND_NEUTRAL || state == PS_WALL_JUMP || state == PS_PRATFALL|| state == PS_PRATLAND|| state == PS_IDLE || state == PS_IDLE_AIR{
+	breakable = false;
+}
+
+
+
+if (state == PS_HITSTUN) && glassbreak == false && breakable == true
+{
+    //We set that we played a sound. This is to prevent further sound playing
+    glassbreak = true;
+    breakable = false;
+    sound_play(sound_get("glassbreak"));
+}
+
+if (state != PS_HITSTUN)
+    glassbreak = false;
 
 //whether the player is inside smoke, and consumes it. returns true if smoke was consumed
 
@@ -271,7 +404,7 @@ bairused = false;
 	for(var i=0; i<instance_number(obj_article1); i++)
 	{
 		var o = instance_find(obj_article1,i);
-		if o.player_id == id && place_meeting(x,y,o) && o.type == 0 && o.myLife > o.shrinkTime
+		if o.player_id == id && place_meeting(x,y,o) && o.myLife > o.shrinkTime
 		{
 			var distO = point_distance(x,y,o.x,o.y);
 			if closest == noone

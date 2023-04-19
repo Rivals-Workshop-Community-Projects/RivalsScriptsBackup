@@ -1,37 +1,32 @@
-if ssj == 0 || ssj == 3 || ssj == 5 {
-	set_ui_element(UI_HUD_ICON, sprite_get("hud_base"));
-	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_base"));
-	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_base"));
-}
-if ssj == 1 || ssj == 4 || ssj == 6 {
-	set_ui_element(UI_HUD_ICON, sprite_get("hud_SSJ1"));
-	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_SSJ1"));
-	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_SSJ1"));
-	
-}
-if ssj == 2{
-	set_ui_element(UI_HUD_ICON, sprite_get("hud_SSJ3"));
-	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudhurt_SSJ3"));
-	set_ui_element(UI_OFFSCREEN, sprite_get("offscreen_SSJ3"));	
-}
 
 if "ki" not in self exit;
-
 if !phone_cheats[CHEAT_TRAILER]{
-	
+	var alt_costume = get_player_color(player);
 	var hair_sprite = sprite_get("meter_hair");
 	var bg_sprite = sprite_get("meter_back");
 	var mask_sprite = sprite_get("meter_mask");
 	var fill_sprite = sprite_get("meter_fill");
 	var marker_sprite = sprite_get("meter_marker");
-	var full_sprite = sprite_get("meter_full");
+	if get_player_color(player) == 16{
+		var full_sprite = sprite_get("meter_full_alt16");
+		var meter_ready_splash = sprite_get("meter_ready_splash_alt16")
+	}else if get_player_color(player) == 19{
+		var full_sprite = sprite_get("meter_full_alt19");
+		var meter_ready_splash = sprite_get("meter_ready_splash_alt19")
+	}else if get_player_color(player) == 20{
+		var full_sprite = sprite_get("meter_full_alt20");
+		var meter_ready_splash = sprite_get("meter_ready_splash_alt19")
+	}else{
+		var full_sprite = sprite_get("meter_full_alt0");
+		var meter_ready_splash = sprite_get("meter_ready_splash_alt0")
+	}
+
 	
 	var dx = temp_x - 24;
 	var dy = temp_y - 74;
 	
 	shader_start();
 	
-	if !phone_fast draw_sprite(hair_sprite, current_sprite_set, dx, dy);
 	draw_sprite(bg_sprite, ssj == SSJ_UI, dx, dy);
 	
 	shader_end();
@@ -65,7 +60,7 @@ if !phone_cheats[CHEAT_TRAILER]{
 	}
 	
 	if meter_full_splash_timer{
-		draw_sprite(sprite_get("meter_ready_splash"), lerp(0, 4, meter_full_splash_timer / 25), dx + 10, dy - 38);
+		draw_sprite(meter_ready_splash, lerp(0, 4, meter_full_splash_timer / 25), dx + 10, dy - 38);
 	}
 	
 	if funny_broken_mode{

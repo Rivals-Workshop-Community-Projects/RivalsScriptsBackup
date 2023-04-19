@@ -38,7 +38,7 @@ set_num_palettes( 24 );
 
 // Blue - Sonic
 set_color_profile_slot( 1, 0, 22, 62, 212 ); //Fur
-set_color_profile_slot( 1, 1, 14, 26, 161 ); //Fur 2
+set_color_profile_slot( 1, 1, 0, 2, 138 ); //Fur 2
 set_color_profile_slot( 1, 2, 255, 255, 255 ); //Shoe 1
 set_color_profile_slot( 1, 3, 255, 0, 0 ); //Shoe 2
 set_color_profile_slot( 1, 4, 255, 255, 255 ); //Gloves
@@ -48,7 +48,7 @@ set_color_profile_slot( 1, 7, 0, 148, 0 ); //Eye Color
 
 // Red - Eggman
 set_color_profile_slot( 2, 0, 240, 9, 0 ); //Fur
-set_color_profile_slot( 2, 1, 151, 19, 7 ); //Fur 2
+set_color_profile_slot( 2, 1, 145, 0, 0 ); //Fur 2
 set_color_profile_slot( 2, 2, 255, 255, 255 ); //Shoe 1
 set_color_profile_slot( 2, 3, 54, 54, 54 ); //Shoe 2
 set_color_profile_slot( 2, 4, 255, 255, 255 ); //Gloves
@@ -58,7 +58,7 @@ set_color_profile_slot( 2, 7, 1, 49, 223 ); //Eye Color
 
 // Green - Jet, Bean
 set_color_profile_slot( 3, 0, 11, 153, 49 ); //Fur
-set_color_profile_slot( 3, 1, 9, 92, 44 ); //Fur 2
+set_color_profile_slot( 3, 1, 0, 84, 27 ); //Fur 2
 set_color_profile_slot( 3, 2, 120, 120, 120 ); //Shoe 1
 set_color_profile_slot( 3, 3, 255, 0, 0 ); //Shoe 2
 set_color_profile_slot( 3, 4, 120, 120, 120 ); //Gloves
@@ -78,7 +78,7 @@ set_color_profile_slot( 4, 7, 115, 115, 115 ); //Eye Color
 
 // Lavender - Blaze
 set_color_profile_slot( 5, 0, 188, 150, 254 ); //Fur
-set_color_profile_slot( 5, 1, 130, 70, 199 ); //Fur 2
+set_color_profile_slot( 5, 1, 115, 62, 176 ); //Fur 2
 set_color_profile_slot( 5, 2, 255, 255, 255 ); //Shoe 1
 set_color_profile_slot( 5, 3, 206, 52, 104 ); //Shoe 2
 set_color_profile_slot( 5, 4, 255, 255, 255 ); //Gloves
@@ -108,8 +108,8 @@ set_color_profile_slot( 7, 7, 35, 67, 49 ); //Eye Color
 
 // Yellow - Classic
 set_color_profile_slot( 8, 0, 255, 200, 0 ); //Fur
-set_color_profile_slot( 8, 1, 193, 151, 13 ); //Fur 2
-set_color_profile_slot( 8, 2, 255, 61, 61 ); //Shoe 1
+set_color_profile_slot( 8, 1, 217, 116, 0 ); //Fur 2
+set_color_profile_slot( 8, 2, 255, 46, 46 ); //Shoe 1
 set_color_profile_slot( 8, 3, 255, 255, 255 ); //Shoe 2
 set_color_profile_slot( 8, 4, 255, 255, 255 ); //Gloves
 set_color_profile_slot( 8, 5, 255, 255, 255 ); //Tail Tips
@@ -128,7 +128,7 @@ set_color_profile_slot( 9, 7, 61, 211, 201 ); //Eye Color
 
 // Brown - SATAM/AOSTH
 set_color_profile_slot( 10, 0, 140, 57, 0 ); //Fur
-set_color_profile_slot( 10, 1, 110, 45, 0 ); //Fur 2
+set_color_profile_slot( 10, 1, 82, 15, 0 ); //Fur 2
 set_color_profile_slot( 10, 2, 219, 17, 27 ); //Shoe 1
 set_color_profile_slot( 10, 3, 214, 229, 246 ); //Shoe 2
 set_color_profile_slot( 10, 4, 214, 229, 246 ); //Gloves
@@ -137,8 +137,8 @@ set_color_profile_slot( 10, 6, 239, 221, 182 ); //"Skin"
 set_color_profile_slot( 10, 7, 0, 0, 0 ); //Eye Color
 
 // Bright Pink - Trans
-set_color_profile_slot( 11, 0, 245, 169, 184 ); //Fur
-set_color_profile_slot( 11, 1, 214, 107, 137 ); //Fur 2
+set_color_profile_slot( 11, 0, 255, 158, 176 ); //Fur
+set_color_profile_slot( 11, 1, 255, 74, 143 ); //Fur 2
 set_color_profile_slot( 11, 2, 255, 255, 255 ); //Shoe 1
 set_color_profile_slot( 11, 3, 91, 206, 250 ); //Shoe 2
 set_color_profile_slot( 11, 4, 91, 206, 250 ); //Gloves
@@ -158,7 +158,7 @@ set_color_profile_slot( 12, 7, 240, 188, 84 ); //Eye Color
 
 // Cream - Cream
 set_color_profile_slot( 13, 0, 247, 215, 177 ); //Fur
-set_color_profile_slot( 13, 1, 217, 160, 112 ); //Fur 2
+set_color_profile_slot( 13, 1, 179, 129, 89 ); //Fur 2
 set_color_profile_slot( 13, 2, 253, 218, 0 ); //Shoe 1
 set_color_profile_slot( 13, 3, 255, 90, 0 ); //Shoe 2
 set_color_profile_slot( 13, 4, 255, 255, 255 ); //Gloves
@@ -178,7 +178,7 @@ set_color_profile_slot( 14, 7, 0, 168, 243 ); //Eye Color
 
 // Burgundy - Chip
 set_color_profile_slot( 15, 0, 192, 34, 95 ); //Fur
-set_color_profile_slot( 15, 1, 120, 28, 67 ); //Fur 2
+set_color_profile_slot( 15, 1, 112, 18, 58 ); //Fur 2
 set_color_profile_slot( 15, 2, 255, 255, 255 ); //Shoe 1
 set_color_profile_slot( 15, 3, 255, 255, 255 ); //Shoe 2
 set_color_profile_slot( 15, 4, 255, 255, 255 ); //Gloves
@@ -188,7 +188,7 @@ set_color_profile_slot( 15, 7, 234, 193, 36 ); //Eye Color
 
 // Neon - Infamous
 set_color_profile_slot( 16, 0, 0, 255, 168 ); //Fur
-set_color_profile_slot( 16, 1, 4, 186, 125 ); //Fur 2
+set_color_profile_slot( 16, 1, 0, 161, 159 ); //Fur 2
 set_color_profile_slot( 16, 2, 72, 77, 87 ); //Shoe 1
 set_color_profile_slot( 16, 3, 55, 234, 255 ); //Shoe 2
 set_color_profile_slot( 16, 4, 84, 81, 167 ); //Gloves
@@ -198,7 +198,7 @@ set_color_profile_slot( 16, 7, 212, 69, 254 ); //Eye Color
 
 // Pure Gold
 set_color_profile_slot( 17, 0, 224, 192, 0 ); //Fur
-set_color_profile_slot( 17, 1, 184, 129, 0 ); //Fur 2
+set_color_profile_slot( 17, 1, 161, 107, 0 ); //Fur 2
 set_color_profile_slot( 17, 2, 248, 235, 141 ); //Shoe 1
 set_color_profile_slot( 17, 3, 252, 212, 53 ); //Shoe 2
 set_color_profile_slot( 17, 4, 252, 201, 0 ); //Gloves
@@ -208,7 +208,7 @@ set_color_profile_slot( 17, 7, 158, 144, 50 ); //Eye Color
 
 // Ranked Gold
 set_color_profile_slot( 18, 0, 247, 227, 61 ); //Fur
-set_color_profile_slot( 18, 1, 207, 148, 29 ); //Fur 2
+set_color_profile_slot( 18, 1, 189, 131, 13 ); //Fur 2
 set_color_profile_slot( 18, 2, 145, 147, 227 ); //Shoe 1
 set_color_profile_slot( 18, 3, 255, 255, 255 ); //Shoe 2
 set_color_profile_slot( 18, 4, 145, 147, 227 ); //Gloves
@@ -217,8 +217,8 @@ set_color_profile_slot( 18, 6, 255, 255, 255 ); //"Skin"
 set_color_profile_slot( 18, 7, 255, 132, 0 ); //Eye Color
 
 // Deep Gray - Champion
-set_color_profile_slot( 19, 0, 83, 89, 99 ); //Fur
-set_color_profile_slot( 19, 1, 53, 59, 71 ); //Fur 2
+set_color_profile_slot( 19, 0, 90, 97, 107 ); //Fur
+set_color_profile_slot( 19, 1, 35, 44, 59 ); //Fur 2
 set_color_profile_slot( 19, 2, 153, 187, 187 ); //Shoe 1
 set_color_profile_slot( 19, 3, 74, 240, 96 ); //Shoe 2
 set_color_profile_slot( 19, 4, 74, 240, 96 ); //Gloves
@@ -228,7 +228,7 @@ set_color_profile_slot( 19, 7, 140, 140, 140 ); //Eye Color
 
 // Black - Shadow
 set_color_profile_slot( 20, 0, 50, 50, 50 ); //Fur
-set_color_profile_slot( 20, 1, 39, 39, 39 ); //Fur 2
+set_color_profile_slot( 20, 1, 28, 28, 28 ); //Fur 2
 set_color_profile_slot( 20, 2, 65, 65, 65 ); //Shoe 1
 set_color_profile_slot( 20, 3, 255, 255, 255 ); //Shoe 2
 set_color_profile_slot( 20, 4, 207, 0, 0 ); //Gloves
@@ -238,7 +238,7 @@ set_color_profile_slot( 20, 7, 207, 0, 0 ); //Eye Color
 
 // Red (Again) - Fiona
 set_color_profile_slot( 21, 0, 233, 34, 39 ); //Fur
-set_color_profile_slot( 21, 1, 162, 13, 19 ); //Fur 2
+set_color_profile_slot( 21, 1, 158, 0, 0 ); //Fur 2
 set_color_profile_slot( 21, 2, 39, 28, 35 ); //Shoe 1
 set_color_profile_slot( 21, 3, 74, 112, 135 ); //Shoe 2
 set_color_profile_slot( 21, 4, 39, 28, 35 ); //Gloves
@@ -248,7 +248,7 @@ set_color_profile_slot( 21, 7, 25, 114, 181 ); //Eye Color
 
 // Light Green - Cosmo
 set_color_profile_slot( 22, 0, 81, 211, 42 ); //Fur
-set_color_profile_slot( 22, 1, 57, 148, 29 ); //Fur 2
+set_color_profile_slot( 22, 1, 39, 130, 9 ); //Fur 2
 set_color_profile_slot( 22, 2, 255, 255, 255 ); //Shoe 1
 set_color_profile_slot( 22, 3, 81, 211, 42 ); //Shoe 2
 set_color_profile_slot( 22, 4, 255, 255, 255 ); //Gloves

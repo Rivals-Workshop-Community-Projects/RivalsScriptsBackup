@@ -10,7 +10,7 @@ with (asset_get("hit_fx_obj"))
 
 // star count
 var noOfStars = 0;
-with(asset_get("obj_article1")) if (player_id == other.id && state == 1)
+with (asset_get("obj_article1")) if (player_id == other.id && state == 1)
 {
 	noOfStars += isBig+1;
 }
@@ -25,15 +25,22 @@ switch (my_hitboxID.attack)
 			hit_player_obj.should_make_shockwave = false;
 		break;
 	case AT_NSPECIAL:
-		if (nspecCharge >= 6)
+		if (my_hitboxID.hbox_num == 1)
 		{
-			hitstop = 0;
-			hit_player_obj.hitstop = 8;
+			if (nspecCharge >= 6)
+			{
+				hitstop = 0;
+				hit_player_obj.hitstop = 8;
+			}
+			if (aura && get_player_damage(hit_player_obj.player) >= 150)
+			{
+				hit_player_obj.hitstop = 60;
+				set_attack(49);
+			}
 		}
-		if (aura && get_player_damage(hit_player_obj.player) >= 150)
+		else if ("ownerArticle" in my_hitboxID && instance_exists(my_hitboxID.ownerArticle))
 		{
-			hit_player_obj.hitstop = 60;
-			set_attack(49);
+			my_hitboxID.ownerArticle.hitArray = my_hitboxID.can_hit;
 		}
 		break;
 	case AT_USPECIAL:
@@ -68,7 +75,7 @@ if((my_hitboxID.attack == AT_FSTRONG
 		constellationTime = other.hit_player_obj.hitstop_full+32;
 		newState = 3;
 	}
-    tutDone[0] = true;
+	tutDone[0] = true;
 	sound_play(sound_get("constellation"));
 	//shake_camera(8*min(noOfStars, 10), 2*min(noOfStars, 10));
 	
@@ -82,13 +89,19 @@ if((my_hitboxID.attack == AT_FSTRONG
 else
 {
 	if (!(my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 1) &&
-		!(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num >= 2 && !aura) &&
+		!(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num >= 2) &&
 		!(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) &&
 		!(my_hitboxID.attack == 49) &&
 		(my_hitboxID.attack != AT_DAIR || dairTimes < 2))
 	{
-		SpawnStar(my_hitboxID.attack == AT_NSPECIAL?18:8, (my_hitboxID.attack == AT_FSPECIAL_2) + 1);
+		SpawnStar((my_hitboxID.attack == AT_NSPECIAL||my_hitboxID.attack == AT_USPECIAL_2)?24:8, (my_hitboxID.attack == AT_FSPECIAL_2) + 1);
 	}
+}
+
+if (aura)
+{
+	hitstop = floor(hitstop/2);
+	hitstop_full = hitstop;
 }
 
 #define SpawnStar(_startupTime, _numRepeat)
@@ -99,9 +112,10 @@ else
 		star.hsp = hit_player_obj.old_hsp*0.5;
 		star.vsp = hit_player_obj.old_vsp*0.5;
 		star.startupTime = _startupTime;
-	    if (aura && hit_player_obj.should_make_shockwave)
+		if (aura && hit_player_obj.should_make_shockwave)
 		{
 			star.newState = 5;
+			star.replacedCount = 2;
 		}
 	}
 }

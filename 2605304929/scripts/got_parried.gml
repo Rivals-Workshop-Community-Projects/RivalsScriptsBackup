@@ -6,13 +6,13 @@ that was parried.*/
 //my_hitboxID
 // hit_player_obj
 if("my_hitboxID" not in self){exit};
-
+// Set parry stun
 if(attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_NSPECIAL_AIR){
-	if(free) {set_state(PS_PRATFALL);parry_lag = 40;}
+	if(free) {set_state(PS_PRATFALL);parry_lag = 60;}
 	if(!free) {
 		//vsp = -1;
 		set_state(PS_PRATLAND);
-		parry_lag = 40;
+		parry_lag = 60;
 	}
 		
 }
@@ -22,12 +22,12 @@ if(attack == AT_DATTACK){
 	hsp=0;
 	vsp=0;
 }
-
+/* Removed for balancing
 //Nspecial no parry stun like Clairen grab
 if(my_hitboxID.attack == AT_NSPECIAL && !free){
     parry_lag = 0;
 }
-
+*/
 // Cleanse Mark on Parry
 if(hit_player_obj.status_effect_water == true)
 {

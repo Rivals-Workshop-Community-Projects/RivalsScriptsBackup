@@ -6,3 +6,7 @@ if my_hitboxID.attack == AT_BAIR{
 
 
 
+
+if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num ==1{
+	my_hitboxID.sprite_index = sprite_get("nspecial_smoke_detonate");
+}

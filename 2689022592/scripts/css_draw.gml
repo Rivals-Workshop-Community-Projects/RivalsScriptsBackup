@@ -25,6 +25,9 @@ if prev_alt != alt {
 
 prev_alt = alt;
 
+if alt == 5 {
+	draw_sprite_ext(sprite_get("charselect_alt_prirat"),1,temp_x-2,temp_y-2,2,2,0,-1,1);
+}
 
 //define the palette names
 var palette_names = [
@@ -33,7 +36,8 @@ var palette_names = [
   "Vlad",
   "Soul Stealer",
   "Darkness",
-  "Void",
+  //"Void",
+  "Dorime Rato",
   "Popstar",
   "Xeno",
   "Crystar",

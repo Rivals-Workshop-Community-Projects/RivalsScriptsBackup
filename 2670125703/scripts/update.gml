@@ -316,4 +316,112 @@ if (variable_instance_exists(id,"diag"))
             }
         }
     }	
+	
+	//	Card
+	if(otherUrl == 2802365520) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Not interested.",
+                "Are you sure? Something tells me you have a chance here.",
+                "Not. Interested."]
+            }
+        }
+    }	
+	
+	//	Dewi
+	if(otherUrl == 2845614848) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Get lost, kid.",
+                "Someone needs a hug. What's biting you Edge, Edger and Edgey?",
+                "Don't make me repeat myself..."]
+            }
+        }
+    }	
+	
+	//	Dreadbeak
+	if(otherUrl == 2860024078) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "I have no business with you, Abyss Creature.",
+                "Oh? Thou not worthy of your time?",
+                "The only one I see worthy is an orange hedgehog..."]
+            }
+        }
+    }	
+	
+	//	Kodiak DE
+	if(otherUrl == 2860398151) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "You again.",
+                "Yes, me. And I see you haven't changed at all.",
+                "I have. Roger won't know what will hit him."]
+            }
+        }
+    }	
+	
+	//	Shantae
+	if(otherUrl == 2890757258) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Annoying genie, begone.",
+                "Wow! I just got here. What's your problem?",
+                "You're not the one I'm looking for..."]
+            }
+        }
+    }
+
+	//	Disco
+	if(otherUrl == 2941534514) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "I don't have time for your annoying dance moves.",
+                "Not cool, bro. Not cool.",
+                "The only I know that's cool is Roger and you're not him!"]
+            }
+        }
+    }		
 }

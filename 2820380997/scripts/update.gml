@@ -140,10 +140,9 @@ if (get_gameplay_time() % color_timer == 0) {
         break;
     }
 }
-//print(string(color_r) + ", " + string(color_g) + ", " + string(color_b))
+
 #endregion
 
-//print(instance_number("cs_indicatorobj"));
 
 #define is_even(value)
 {

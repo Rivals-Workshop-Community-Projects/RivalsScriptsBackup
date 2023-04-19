@@ -1,5 +1,62 @@
 // the dreaded... UPDATE AHHHH
 
+// check for copyright 
+if (get_gameplay_time() < 127) || (get_player_color( player ) == 24) { // just so it doesn't check for this every frame
+	if (no_copyright == true) {
+		
+		// fair hit sound
+		set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy1"));
+		
+		// fstrong floor hit sound
+		sound_fstrong_hitfloor = asset_get("sfx_shovel_hit_med2")
+		sound_fstrong_hitfloor_volume = 0.8
+		
+		// waveland sound
+		waveland_sound = asset_get("sfx_waveland_pom");
+		
+		// nspecial sounds
+		// firing
+		set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_mol_flare_shoot"));
+		// reloading
+		set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX, asset_get("sfx_mol_flash_bounce1"));
+		set_window_value(AT_TAUNT_2, 2, AG_WINDOW_SFX, asset_get("sfx_mol_flash_bounce2"));
+		
+		// fspecial sounds
+		// pull
+		set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_dash_attack_perform"));
+		// hit
+		set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+		set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+		// hit boot
+		sound_fspecial_boot = asset_get("sfx_ori_energyhit_medium");
+		
+		// dspecial sounds
+		// spawning
+		set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_seinhit_weak"));
+		// boot land
+		sound_boot_land_sound = asset_get("sfx_land_med");
+		
+		// uspecial sounds
+		// fire
+		set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_absa_cloud_pop"));
+		// misfire
+		sound_uspecial_misfire = asset_get("sfx_absa_singlezap2");
+		
+		// jab sounds
+		// swing
+		set_window_value(AT_JAB, 1, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light1"));
+		// hit
+		set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
+		
+	}
+	/*
+	if ( ((down_pressed || down_down) && (taunt_pressed || taunt_down)) && no_copyright == false) {
+		sound_play(asset_get("mfx_star"));
+		no_copyright = true;
+	}
+	*/
+}
+
 
 // sleep kirby support
 //Sleep Kirby Hat Offsets
@@ -41,12 +98,6 @@ if (nothanks == true) {
 		move_cooldown[AT_USPECIAL] = 2;
 	}
 }
-
-
-// munophone touch support
-	muno_event_type = 1;
-	user_event(14);
-	
 // practice mode check -- p2
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice = true;
@@ -160,16 +211,30 @@ else {
 */
 
 
-// special taunt for specific alts
-if (get_player_color( player ) == 30) {
-	set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 50);
-	set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("hecu_letsgo"));
+// owen gets a deeper voice when taunting as the adrian shephard alt
+if (no_copyright == false ) {
+	if (get_player_color( player ) == 30) {
+		set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 50);
+		set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("hecu_letsgo"));
+	}
 }
 
+// taunt for nes and gameboy are significantly lower quality
+if (get_player_color( player ) == 22) || (get_player_color( player ) == 14) {
+	set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("meow_crusty"));
+}
+
+// taunt for freeman alt is silent
 if (get_player_color( player ) == 6) {
 	if (window == 1) {
 		set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 0)
 	}
+}
+
+// using the genesis alt allows you to experience the wonders of
+// ROYALTY FREE SOUNDS
+if (get_player_color( player ) == 24) {
+	no_copyright = true;
 }
 
 
@@ -255,184 +320,6 @@ with (asset_get("pHitBox"))
 			}
 		}
     }
-}
-
-// air strongs cheat
-if (phone_cheats[cheat_air_strongs] != 0) {
-	set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
-	set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
-	set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
-}
-else {
-	reset_attack_value(AT_FSTRONG, AG_CATEGORY);
-	reset_attack_value(AT_USTRONG, AG_CATEGORY);
-	reset_attack_value(AT_DSTRONG, AG_CATEGORY);
-}
-
-
-// always active boot cheat 
-if (phone_cheats[cheat_boot_active] != 0) {
-	move_cooldown[AT_USPECIAL_GROUND] = 9999;
-}
-else {
-	move_cooldown[AT_USPECIAL_GROUND] = 0;
-}
-
-// vibrate phone cheat
-if (phone_cheats[cheat_vibrate] != 0) {
-	
-	funny_variable = phone_cheats[cheat_vibrate];
-	
-	hsp = hsp + (-funny_variable + random_func( 0, funny_variable*2, false ));
-	vsp = vsp + (-funny_variable + random_func( 1, funny_variable*2, false ));
-}
-
-// no cooldowns phone cheat
-if (phone_cheats[cheat_no_cooldowns] == 1) {
-	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.41);
-}
-else if (phone_cheats[cheat_no_cooldowns] == 0) {
-	set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.4);
-}
-
-// floaty phone cheat
-if (phone_cheats[cheat_floaty] == 1) {
-	// generally absa stats
-	gravity_speed = 0.3; 
-	hitstun_grav = 0.45;
-	air_accel = 0.4;
-	jump_speed = 7.60;
-	djump_speed = 6.60;
-	short_hop_speed = 4.50;
-	double_jump_time = 40;
-}
-else if (phone_cheats[cheat_floaty] == 0) {
-	gravity_speed = prev_gravity_speed;
-	hitstun_grav = prev_hitstun_grav;
-	air_accel = prev_air_accel;
-	jump_speed = prev_jump_speed;
-	djump_speed = prev_djump_speed;
-	short_hop_speed = prev_short_hop_speed;
-	double_jump_time = prev_double_jump_time;
-}
-
-// hidden alts during countdown if you push a button if you're using the setaria alt
-// (deprecated)
-/*
-if (hidden_alt_enabled) {
-	if (get_player_color( player ) == 4) {
-		if (get_gameplay_time() > 3 && get_gameplay_time() < 127 && hidden_alt_active == false) {
-			if (taunt_down) { // trans rights
-				set_color_profile_slot( 4, 0, 255, 255, 255 ); //body
-				set_color_profile_slot( 4, 1, 91, 206, 250 ); //hair
-				set_color_profile_slot( 4, 2, 245, 169, 184 ); //shirt
-				set_color_profile_slot( 4, 3, 91, 206, 250 ); //shorts
-				set_color_profile_slot( 4, 4, 245, 169, 184 ); //crowbar
-				set_color_profile_slot( 4, 5, 91, 206, 250 ); //crowbar edges
-				hidden_alt_active = true;
-			}
-			if (special_down) { // return of the cane king
-				set_color_profile_slot( 4, 0, 255, 255, 191 ); //body
-				set_color_profile_slot( 4, 1, 112, 92, 79 ); //hair
-				set_color_profile_slot( 4, 2, 255, 255, 0 ); //shirt
-				set_color_profile_slot( 4, 3, 79, 79, 79 ); //shorts
-				set_color_profile_slot( 4, 4, 204, 204, 204 ); //crowbar
-				set_color_profile_slot( 4, 5, 204, 204, 204 ); //crowbar edges
-				hidden_alt_active = true;
-			}
-			if (attack_down) { // becker
-				set_color_profile_slot( 4, 0, 191, 158, 141 ); //body
-				set_color_profile_slot( 4, 1, 160, 102, 72 ); //hair
-				set_color_profile_slot( 4, 2, 226, 226, 226 ); //shirt
-				set_color_profile_slot( 4, 3, 84, 105, 168 ); //shorts
-				set_color_profile_slot( 4, 4, 63, 127, 70 ); //crowbar
-				set_color_profile_slot( 4, 5, 166, 166, 166 ); //crowbar edges
-				hidden_alt_active = true;
-			}
-			if (shield_down) { // oc 2
-				set_color_profile_slot( 4, 0, 255, 235, 214 ); //body
-				set_color_profile_slot( 4, 1, 255, 204, 132 ); //hair
-				set_color_profile_slot( 4, 2, 59, 51, 40 ); //shirt
-				set_color_profile_slot( 4, 3, 34, 23, 17 ); //shorts
-				set_color_profile_slot( 4, 4, 153, 185, 112 ); //crowbar
-				set_color_profile_slot( 4, 5, 188, 71, 78 ); //crowbar edges
-				hidden_alt_active = true;
-			}
-			if (up_down) { // clairen
-				set_color_profile_slot(4, 0, 65, 54, 80); // body
-				set_color_profile_slot(4, 1, 65, 54, 80); // hair
-				set_color_profile_slot(4, 2, 170, 34, 74); // shirt
-				set_color_profile_slot(4, 3, 79, 79, 79); // shorts
-				set_color_profile_slot(4, 4, 255, 13, 106); // crowbar
-				set_color_profile_slot(4, 5, 0, 255, 247); // crowbar edges
-				hidden_alt_active = true;
-			}
-			if (left_down) { // fancy pants
-				set_color_profile_slot(4, 0, 255, 255, 255); // body
-				set_color_profile_slot(4, 1, 255, 255, 255); // hair
-				set_color_profile_slot(4, 2, 79, 79, 79); // shirt
-				set_color_profile_slot(4, 3, 255, 152, 0); // shorts
-				set_color_profile_slot(4, 4, 255, 152, 0); // crowbar
-				set_color_profile_slot(4, 5, 153, 91, 0); // crowbar edges
-				hidden_alt_active = true;
-			}
-			if (right_down) { // sand cat
-				set_color_profile_slot(4, 0, 255, 235, 198); // body
-				set_color_profile_slot(4, 1, 237, 211, 167); // hair
-				set_color_profile_slot(4, 2, 250, 249, 249); // shirt
-				set_color_profile_slot(4, 3, 96, 75, 60); // shorts
-				set_color_profile_slot(4, 4, 187, 224, 217); // crowbar
-				set_color_profile_slot(4, 5, 30, 86, 163); // crowbar edges	
-				hidden_alt_active = true;
-			}
-			if (down_down) { // slashe
-				set_color_profile_slot(4, 0, 250, 236, 193); // body
-				set_color_profile_slot(4, 1, 231, 240, 245); // hair
-				set_color_profile_slot(4, 2, 155, 173, 199); // shirt
-				set_color_profile_slot(4, 3, 155, 173, 199); // shorts
-				set_color_profile_slot(4, 4, 192, 206, 216); // crowbar
-				set_color_profile_slot(4, 5, 108, 99, 99); // crowbar edges
-				hidden_alt_active = true;
-			}
-			if (jump_down) { // nekomata okayu by zerks
-				set_color_profile_slot( 4, 0, 255, 246, 239 ); //body
-				set_color_profile_slot( 4, 1, 218, 199, 229 ); //hair
-				set_color_profile_slot( 4, 2, 129, 133, 137 ); //shirt
-				set_color_profile_slot( 4, 3, 255, 255, 255 ); //shorts
-				set_color_profile_slot( 4, 4, 76, 73, 79 ); //crowbar
-				set_color_profile_slot( 4, 5, 232, 87, 235 ); //crowbar edges
-				hidden_alt_active = true;
-			}
-			if (strong_down) { // bob
-				set_color_profile_slot( 4, 0, 234, 124, 255 ); //body
-				set_color_profile_slot( 4, 1, 216, 37, 255 ); //hair
-				set_color_profile_slot( 4, 2, 255, 70, 120 ); //shirt
-				set_color_profile_slot( 4, 3, 216, 37, 255 ); //shorts
-				set_color_profile_slot( 4, 4, 255, 165, 25 ); //crowbar
-				set_color_profile_slot( 4, 5, 250, 237, 237 ); //crowbar edges
-				hidden_alt_active = true;
-			}
-		}
-	}
-}
-*/
-
-if (hidden_alt_enabled) {
-	if (get_player_color( player ) == 16) {
-		if (get_gameplay_time() > 3 && get_gameplay_time() < 127 && hidden_alt_active == false) {
-			if (taunt_down || taunt_pressed) {
-				// nb
-				set_color_profile_slot( 16, 0, 252, 252, 252 ); //body
-				set_color_profile_slot( 16, 1, 156, 89, 209 ); //hair
-				set_color_profile_slot( 16, 2, 156, 89, 209 ); //shirt
-				set_color_profile_slot( 16, 3, 44, 44, 44 ); //shorts
-				set_color_profile_slot( 16, 4, 252, 244, 52 ); //crowbar
-				set_color_profile_slot( 16, 5, 44, 44, 44 ); //crowbar edges
-				hidden_alt_active = true;
-				init_shader();
-			}
-		}
-	}
 }
 
 // Lethal League stage exclusive changes
@@ -572,7 +459,7 @@ if (get_gameplay_time() > 130){
 			wearing_hat = 1;
 		}
 	}
-	/*
+	
 	if wearing_hat_blu == 1 {
 		if state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE {
 			wearing_hat_blu = -1;
@@ -587,8 +474,8 @@ if (get_gameplay_time() > 130){
 			wearing_hat_blu = 1;
 		}
 	}
-	*/
 	
+
 }
 
 // reset cooldown of upsecial if wall teched, wall jumped, or commited to landing
@@ -653,8 +540,8 @@ if (runeE == true) {
 	// make the active hitbox come out a frame slower
 	set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 3);
 	
-	// return of bonk 
-	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("owen_bonk"));
+	// vineboom is funnier than bonk
+	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("vineboom"));
 	
 	// old bkb lol
 	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .8);
@@ -1060,7 +947,7 @@ if swallowed { //Kirby ability script starts here
 }
 
 // kirby stuff p2
-if enemykirby != undefined { //if kirby is in a match & swallowed
+if enemykirby != noone { //if kirby is in a match & swallowed
 	with oPlayer { //Run through all players
 		if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3) {
 			
@@ -1187,7 +1074,17 @@ if get_player_color(player) = 12 { // rainbow alt (hair, crowbar edges, pants)
 	hue7=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue7,color_get_saturation(color_rgb),color_get_value(color_rgb));
 	set_color_profile_slot(12,5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	
+/*
+	color_rgb=make_color_rgb(255, 121, 255);
+	hue8=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue8,color_get_saturation(color_rgb),color_get_value(color_rgb));
+	set_color_profile_slot(12,6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+*/
+	color_rgb=make_color_rgb(255, 121, 255);
+	hue9=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue9,color_get_saturation(color_rgb),color_get_value(color_rgb));
+	set_color_profile_slot(12,7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+
 }
 else if get_player_color(player) = 8 { // sakk alt (crowbar, crowbar edges)
 	hue+=1 if hue>255 hue-=255;

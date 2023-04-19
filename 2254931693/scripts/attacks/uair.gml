@@ -68,4 +68,3 @@ set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .15);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.45);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 304);

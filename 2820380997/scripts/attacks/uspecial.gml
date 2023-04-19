@@ -91,6 +91,7 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_fire_small);
 //set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_chester_jump"));
 set_hitbox_value(attack, hitbox_num, 81, "Launcher Hitbox at throw start up");//HG_MUNO_HITBOX_NAME
 set_hitbox_value(attack, hitbox_num, 92, "Physical attack attached to Roekoko, does not travel with the clone.");//HG_MUNO_HITBOX_MISC_ADD

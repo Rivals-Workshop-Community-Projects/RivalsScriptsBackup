@@ -136,7 +136,7 @@ if (attack == AT_TAUNT_2) {
 if (attack == AT_DATTACK) {
     if (window == 2) {
         if (slowstart_state == SLOWSTART_STATE_OFF && window_timer == 1 && !hitpause) {
-            hsp += 6 * spr_dir;
+            hsp += 5 * spr_dir;
         }
     }
     if (window == 3 && has_rune("F")) {

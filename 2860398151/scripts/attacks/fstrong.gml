@@ -4,11 +4,11 @@ set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_TYPE, 9);
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_charge_blade_ready"));
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 16);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 14);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.25);
 

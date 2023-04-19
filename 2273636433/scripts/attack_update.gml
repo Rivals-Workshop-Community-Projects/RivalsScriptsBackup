@@ -161,12 +161,12 @@ if(attack==AT_DSPECIAL){
 		}
 		if(!was_parried){
 			if(special_pressed)&&(!hitpause) {
-				vsp=-2.75 -has_rune("L")+ cyclone*3;
+				vsp=-2.75 -has_rune("L")+ cyclone*1.5;
 			} else if (special_down)&&(!hitpause){
-				vsp=-2.25 -has_rune("L") + cyclone*3;			
+				vsp=-2.25 -has_rune("L") + cyclone*1.5;			
 			}else {
-				vsp= vsp + 0.25 + down_hard_pressed;	
-				if (vsp >(1+cyclone*3+ down_hard_pressed)) { vsp = 1 + +cyclone*3+ down_hard_pressed;}
+				vsp= vsp + 0.5 + down_hard_pressed;	
+				if (vsp >(1.5+cyclone*3+ down_hard_pressed)) { vsp = 1.5 + +cyclone*3+ down_hard_pressed;}
 			}
 		}
 	
@@ -178,8 +178,12 @@ if(attack==AT_DSPECIAL){
 
 	}
 
+	if window == 3 && window_timer ==6 && free && !hitpause &&!was_parried{
+		vsp-=3;
+	}
+
 	if window == 4 && window_timer ==1{
-		cyclone++;;
+		cyclone++;
 	}
 	if window == 4{
 		can_move = false;
@@ -260,11 +264,25 @@ if (attack == AT_FSPECIAL && window == 2 && done_reflecting_article == 0 ) {
 							other.play_sound = 1;
 							//was_parried = true;											
 
-							//For the hitbox
-							image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
+							//Movement and properties
+							x = other.x +55*other.spr_dir;
+							if abs(hsp) <= 3  {				//Varely any HSP
+								hsp = 4*other.spr_dir;
+								spr_dir = other.spr_dir;
+								if !free && grav != 0 {				
+									vsp = -5;
+								} else{
+									vsp = -abs(vsp)*1.2;
+								}
+							}else{
+								damage *= 1.25;
+								kb_value *= 1.25;
+								spr_dir = other.spr_dir;
+								hsp =  1.25* abs(hsp) *other.spr_dir;
+								old_hsp =  1.25* abs(old_hsp) *other.spr_dir;
+							}
+
 							//Actual Reflect
-							damage *= 1.25;
-							kb_value *= 1.25;
 							other.hitpause = 1;
 							other.hitstop = 3;
 							other.hitstop_full=3;
@@ -274,28 +292,13 @@ if (attack == AT_FSPECIAL && window == 2 && done_reflecting_article == 0 ) {
 							can_hit[other.player] = false;
 							if does_not_reflect == false && hit_check == noone {hitbox_timer =0;}
 							other.done_reflecting_hitbox[id%1000] = 1;		//Player gets notified
-								
+							image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
 
-							//Movement
-							x = other.x +50*other.spr_dir;
-							if abs(hsp) <= 2  {				//Varely any HSP
-								hsp = 4*other.spr_dir;
-								spr_dir = other.spr_dir;
-								if !free && grav != 0 {				
-									vsp = -5;
-								} else{
-									vsp = -abs(vsp);
-								}
-							}else{
-								spr_dir = other.spr_dir;
-								hsp =  1.25* abs(hsp) *other.spr_dir;
-								old_hsp =  1.25* abs(old_hsp) *other.spr_dir;
-							}
 							//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
 							if variable_instance_exists(self, "C_knock") {	
 							   C_knock += 1;
+							   C_dam += 1;
 							   forced = 1;
-							   extra_hitpause +=2;
 							}
 						}
 						//Movement For Articles
@@ -306,7 +309,6 @@ if (attack == AT_FSPECIAL && window == 2 && done_reflecting_article == 0 ) {
 									hit_check.spr_dir = other.spr_dir;
 									hit_check = noone;
 									other.done_reflecting_article = 1;										//Player gets notified
-
 								}
 							} 
 						}
@@ -437,10 +439,6 @@ if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) 
 	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 	
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
-	
-	set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
-	
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 	
 	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 40);
 	

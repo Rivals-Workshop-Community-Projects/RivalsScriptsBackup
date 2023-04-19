@@ -11,7 +11,7 @@ if(trail_draw_size > 1)
             trail_pos[pos].sprite,
             trail_pos[pos].subimg,
             floor(trail_pos[pos].x),
-            floor(trail_pos[pos].y),
+            floor(trail_pos[pos].y)+draw_y,
             trail_pos[pos].xscale*(small_sprites+1)*spr_dir,
             trail_pos[pos].yscale+1,
             trail_pos[pos].rot,
@@ -24,7 +24,7 @@ if(trail_draw_size > 1)
 }
 
 with(pHitBox){
-    if(player_id == other && attack == AT_NSPECIAL && hbox_num == 1 && hit_priority > 0){
+    if(player_id == other && (attack == AT_NSPECIAL || attack == AT_DSTRONG && hbox_num == 1) && hit_priority > 0){
         gpu_set_fog(1, get_player_hud_color(player), 0, 1);
     	draw_sprite_ext(sprite_index, image_index, x+2, y+2, spr_dir, 1, proj_angle, c_white, 1);
     	draw_sprite_ext(sprite_index, image_index, x-2, y+2, spr_dir, 1, proj_angle, c_white, 1);

@@ -1,3 +1,5 @@
+
+
 if(!instance_exists(cursor_id)) exit;
 //Button Location
 if player == 0{ // player online

@@ -1,5 +1,6 @@
 attack = player_id.attack;
 quick = false;
+uses_shader = 1;
 //taunt
 if(player_id.attack == AT_TAUNT){
     item_id = player_id.item_id;

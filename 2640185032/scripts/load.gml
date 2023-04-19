@@ -1,3 +1,4 @@
+
 sprite_change_halfoffset("idle", 76, 122, false);
 sprite_change_halfoffset("crouch", 76, 122, false);
 sprite_change_halfoffset("walk", 76, 122, false);

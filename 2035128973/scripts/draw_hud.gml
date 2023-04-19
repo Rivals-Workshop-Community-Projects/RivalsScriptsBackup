@@ -19,20 +19,21 @@ if ("rollArray" in self)
 	with (pHitBox) if (player_id == other.id && attack == AT_USPECIAL && hbox_num == 1)
 	{
 		var clampCheckX = x != clamp(x, view_get_xview(), view_get_xview()+view_get_wview());
-		var clampCheckY = y != clamp(y, view_get_yview(), view_get_yview()+view_get_hview());
+		var clampCheckY = y != clamp(y, view_get_yview(), view_get_yview()+view_get_hview()-52);
 		if (clampCheckX || clampCheckY)
 		{
 			var hudShape = clampCheckX&&clampCheckY;
-			var hudOffset = 34;
+			var hudOffset = 32;
 			var drawX = clamp(x-view_get_xview(), hudOffset, view_get_wview()-hudOffset);
-			var drawY = clamp(y-view_get_yview(), hudOffset, view_get_hview()-hudOffset);
+			var drawY = clamp(y-view_get_yview(), hudOffset, view_get_hview()-52-hudOffset);
 			var hudRot = 0;
 			if (drawX == view_get_wview()-hudOffset) hudRot = 90;
 			if (drawY == hudOffset) hudRot = 180;
-			if (drawX == hudOffset) hudRot = (drawY==view_get_hview()-hudOffset)?0:270;
-
-			draw_sprite_ext(sprite_get("hud"), hudShape , drawX,  drawY, 2, 2, hudRot, get_player_hud_color(other.player), 1);
-			draw_sprite_ext(sprite_get("boneHud"), 0, drawX,  drawY, 2, 2, 0, c_white, 1);
+			if (drawX == hudOffset) hudRot = (drawY==view_get_hview()-52-hudOffset)?0:270;
+			draw_sprite_ext(sprite_get("hud"), hudShape , drawX, drawY, 2, 2, hudRot, get_player_hud_color(other.player), 1);
+			with (other) shader_start();
+			draw_sprite_ext(sprite_get("boneHud"), 0, drawX, drawY, 2, 2, 0, c_white, 1);
+			shader_end();
 		}
 	}
 
@@ -294,6 +295,67 @@ if ("rollArray" in self)
 						AddText("v3.1.1 - 21 Jul 2022");
 						AddText("");
 						AddText("Added Anti-Dan code");
+						break;
+					case 13:
+						AddText("v3.2 - 17 Sep 2022");
+						AddText("");
+						AddText("Aura Sphere Charge Angle 80 -> 90");
+						AddText("");
+						AddText("Changed Critical Force Palm hit sound effect");
+						AddText("Revert Critical Force Palm KB 10+1.1 -> 10+1.05");
+						AddText("");
+						AddText("Dattack Angle 38 -> 70");
+						AddText("Dattack KB 9+0.5 -> 9+0.2");
+						AddText("Dattack Damage 8 -> 5");
+						AddText("");
+						AddText("Boneless UTilt is now 3 frames faster");
+						AddText("");
+						AddText("Revert Bone NAir 2 Angle 20 -> 10");
+						AddText("");
+						AddText("DStrong Widened hitboxes slightly");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v3.2.1 - 20 Dec 2022");
+						AddText("");
+						AddText("Fixed AI from a base game update.");
+						break;
+					case 14:
+						AddText("v3.3 - 4 Jan 2023");
+						AddText("");
+						AddText("Added compatibility with Dakota's Citizen mod");
+						AddText("Readjusted Bone projectile offscreen hud code");
+						AddText("");
+						AddText("Fixed AI taunt code");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v3.3.1 - 5 Jan 2023");
+						AddText("");
+						AddText("Bone projectile offscreen hud now recolours with alts");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v3.3.2 - 7 Jan 2023");
+						AddText("");
+						AddText("Added more alts for 100% Accurate Lucario");
+						AddText("");
+						AddText("CPU 100% Accurate button on the CSS can now be pressed by all players");
+						break;
+					case 15:
+						AddText("v3.4 - 8 Mar 2023");
+						AddText("");
+						AddText("Bone FAir Startup 10 -> 12");
+						AddText("Bone FAir Total active time 4 -> 3");
+						AddText("");
+						AddText("Bone UAir Startup 14 -> 15");
+						AddText("Bone UAir Endlag 12 -> 16 (Before whifflag multiplier)");
+						AddText("Bone UAir Total active time 6 -> 4");
+						AddText("");
+						AddText("Extreme Speed USpec will no longer have a hitbox across the travel distance");
+						AddText("The hitbox is now only at the end");
+						AddText("");
+						AddText("Added custom colours on the last alt for specific tags:");
+						AddText("Input Delay: Lukaru, Karu");
+						AddText("Surprising!: Night");
+						AddText("Aurora: Aurora, Auro<3");
 						break;
 				}
 				DrawTutorialBlock();

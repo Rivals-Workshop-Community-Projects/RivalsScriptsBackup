@@ -18,4 +18,3 @@ if ("moist_rn" in self){ //HUD Wrapper
 }
 
 
-user_event(11);

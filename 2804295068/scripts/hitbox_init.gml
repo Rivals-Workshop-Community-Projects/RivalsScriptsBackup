@@ -10,6 +10,6 @@ if (attack == AT_JAB || attack == AT_EXTRA_1 || (attack == AT_NAIR && hbox_num =
 }
 
 torch_damage_mult = round(damage*2);
-torch_length_mult = length*1.4;
-torch_hsp_mult = hsp*1.4;
-torch_vsp_mult = vsp*1.4;
+torch_length_mult = length*1.3;
+torch_hsp_mult = hsp*1.3;
+torch_vsp_mult = vsp*1.3;

@@ -79,114 +79,128 @@ draw_set_alpha(1);
 {
     var win_quote;
     // Base Cast
-    if(character_name == "Zetterburn")
-        win_quote = "It was an honor to face a past legend. May you rest in peace."
-    if(character_name == "Forsburn")
-        win_quote = "You're nothing like your brother. Your tricks won't work against me."
-    if(character_name == "Clairen")
-        win_quote = "I don't know why you drew your blade against a fellow member on your side. Now it's all up to me."
-    if(character_name == "Mollo")
-        win_quote = "Your hand-crafted bombs stood no chance against the future, keep your toys off the battlefield."
-    if(character_name == "Wrastor")
-        win_quote = "No wonder the Armada fell, they never stood a chance with you as the last line."
-    if(character_name == "Absa")
-        win_quote = "Your clouds could be of use to study from, it seems that my gun can learn more from past comings."
-    if(character_name == "Elliana")
-        win_quote = "You thought you stood a chance against me with such unstable architecture? Stay away from the skies."
-    if(character_name == "Pomme")
-        win_quote = "How sickening that Loxodont would use you to spread propaganda, you've sang your last note."
-    if(character_name == "Kragg")
-        win_quote = "Similar to the pillar you've built, you crumbled alongside it."
-    if(character_name == "Maypul")
-        win_quote = "Wrapped up in your dreams, your pursuit has left you tied up in your own vines."
-    if(character_name == "Sylvanos")
-        win_quote = "A God or not, you fall like the people you were supposed to protect."
-    if(character_name == "Olympia")
-        win_quote = "Deflecting my lasers with your crystal fists only made you an easier target."
-    if(character_name == "Orcane")
-        win_quote = "Looks like only I was the one who made the last splash. Let's see you come out of your puddle now."
-    if(character_name == "Etalus")
-        win_quote = "Between the two of us, you ended up freezing in your hesistation. Shows you how to stay cool."
-    if(character_name == "Ranno")
-        win_quote = "A pacifist that you are, I wouldn't have wanted to see your potential if you weren't one."
-    
-    //Personal Lore
-     if(character_name == "Ducky")    
-        win_quote = "Sparring with my past ancestor put things to perspective. Your punches were strong, but your heart shined through."
-     if(character_name == "Kyort")    
-        win_quote = "You were the last person to see Ducky and you can't muster the strength to get back up for her?"
-     if(character_name == "Kinunosu")    
-        win_quote = "Finally, I can rest. If you're out of the picture, that means Aether will be able to see through the darkness."
-    //TGP GANG
-    if(character_name == "Daora")
-        win_quote = "Your kind heart shouldn't have to witness these cruel acts, you deserve better than this."
-    // Riptide
-    if(character_name == "Anglara") 
-        win_quote = "All of this trouble for a lantern? You've shown true strength with just your fists alone."
-    if(character_name == "Barr")    
-        win_quote = "What a fascinating weapon, you've made quite the impression to keep me on my feet."
-    if(character_name == "Bluey" || character_name == "Fernet")   
-        win_quote = "A battlefield is no playground for a kid, stay out of this."
-    if(character_name == "Callie")  
-        win_quote = "I appreciate your enthusiasm, but there's no such thing as bright happy days in war."
-    if(character_name == "Candyman")    
-        win_quote = "You're quite the wildcard, but there's always a method to your madness."
-    if(character_name == "Chimera") 
-        win_quote = "Such a wild animal, you're quite the sight. Your creators shouldn't have done this to you."
-    if(character_name == "Crewmate")    
-        win_quote = "Never thought I would see an alien in the past. Keep your knife down."
-    if(character_name == "Donyoku") 
-        win_quote = "Next time, you should keep your blood in your body before you go entirely cold."
-    if(character_name == "Epinel")  
-        win_quote = "Your gravitational powers could have crushed me into a pulp, but you have much to learn still."
-    if(character_name == "Henry Stickmin")  
-        win_quote = "Sorry but your crimes was bound to catch up to you sooner or later."
-    if(character_name == "Lukastar")    
-        win_quote = "Another mythical creature? Where did you guys go when the aether needed you the most?"
-    if(character_name == "Lyca")    
-        win_quote = "Your arrows will never fly as far as my lasers. Hope you'll adapt to the technology."
-    if(character_name == "Mal") 
-        win_quote = "The element to control one's emotions has never been seen in the Aether, you were something else."
-    if(character_name == "Maverick")    
-        win_quote = "Looks like I didn't miss out anything in the Armada. You've blown your last whirlwind, Maverick."
-    if(character_name == "N/A") 
-        win_quote = "Coming from the abyss, we have barely scratched the surface. What else lies beyond the depths?"
-    if(character_name == "Nade")    
-        win_quote = "Seems like my assumptions were right. You couldn't keep up with proper tactics."
-    if(character_name == "Nate")    
-        win_quote = "Now get out of the way, your powers is much more suited outside the battlefield."
-    if(character_name == "Future Ducky")    
-        win_quote = "Stay down! You were never supposed to be here and we're putting an end to this."
-    if(character_name == "Po & Gumbo")  
-        win_quote = "If your cooking involves putting a person into a pot, you need to keep me out of it."
-    if(character_name == "Rin Kaenbyou")    
-        win_quote = "Those spirits deserve to rest, you shouldn't be playing with such powers for fun."
-    if(character_name == "Rykenburn")   
-        win_quote = "Your evil plans will be exposed sooner or later, what has gotten into you?"
-    if(character_name == "Suitcase")
-        win_quote = "Such a fascinating object, the abyss has held more secrets than we thought."
-    if(character_name == "Torga")
-        win_quote = "You should've stayed out of sight, a pacifist has no right in the battlefield"
-    if(character_name == "Wally")
-        win_quote = "Your grapples are scary. Luckily enough for me, I'm used to being underwater."
-    if(character_name == "Zephrie")
-        win_quote = "Trickier and faster than all the creatures I've seen in the Aether. You've earned my respect."
-
+    if(results_data.neco == 0)
+    {
+        if(character_name == "Zetterburn")
+            win_quote = "It was an honor to face a past legend. May you rest in peace."
+        else if(character_name == "Forsburn")
+            win_quote = "You're nothing like your brother. Your tricks won't work against me."
+        else if(character_name == "Clairen")
+            win_quote = "I don't know why you drew your blade against a fellow member on your side. Now it's all up to me."
+        else if(character_name == "Mollo")
+            win_quote = "Your hand-crafted bombs stood no chance against the future, keep your toys off the battlefield."
+        else if(character_name == "Wrastor")
+            win_quote = "No wonder the Armada fell, they never stood a chance with you as the last line."
+        else if(character_name == "Absa")
+            win_quote = "Your clouds could be of use to study from, it seems that my gun can learn more from past comings."
+        else if(character_name == "Elliana")
+            win_quote = "You thought you stood a chance against me with such unstable architecture? Stay away from the skies."
+        else if(character_name == "Pomme")
+            win_quote = "How sickening that Loxodont would use you to spread propaganda, you've sang your last note."
+        else if(character_name == "Kragg")
+            win_quote = "Similar to the pillar you've built, you crumbled alongside it."
+        else if(character_name == "Maypul")
+            win_quote = "Wrapped up in your dreams, your pursuit has left you tied up in your own vines."
+        else if(character_name == "Sylvanos")
+            win_quote = "A God or not, you fall like the people you were supposed to protect."
+        else if(character_name == "Olympia")
+            win_quote = "Deflecting my lasers with your crystal fists only made you an easier target."
+        else if(character_name == "Orcane")
+            win_quote = "Looks like only I was the one who made the last splash. Let's see you come out of your puddle now."
+        else if(character_name == "Etalus")
+            win_quote = "Between the two of us, you ended up freezing in your hesistation. Shows you how to stay cool."
+        else if(character_name == "Ranno")
+            win_quote = "A pacifist that you are, I wouldn't have wanted to see your potential if you weren't one."
+        
+        //Personal Lore
+        else if(character_name == "Ducky")    
+            win_quote = "Sparring with my past ancestor put things to perspective. Your punches were strong, but your heart shined through."
+        else if(character_name == "Kyort")    
+            win_quote = "You were the last person to see Ducky and you can't muster the strength to get back up for her?"
+        else if(character_name == "Kinunosu")    
+            win_quote = "Finally, I can rest. If you're out of the picture, that means Aether will be able to see through the darkness."
+        //GENESIS Additions
+        else if(character_name == "Untitled Goose") 
+            win_quote = "You were just like me. Trying to make history."
+        else if(character_name == "Heartbrake") 
+            win_quote = "Revenge will only eat you from the inside. There's always someone worth loving."
+        else if(character_name == "Jerma") 
+            win_quote = "Atleast the furnace will keep running for a bit longer."
+        else if(character_name == "Dazz") 
+            win_quote = "No more magic tricks for you, little girl. This show is over."
+        else if(character_name == "Lode and Puul") 
+            win_quote = "Your bond is nothing like I've seen before. You two stick together very well."
+        //TGP GANG
+        else if(character_name == "Daora")
+            win_quote = "Your kind heart shouldn't have to witness these cruel acts, you deserve better than this."
+        // Riptide
+        else if(character_name == "Anglara") 
+            win_quote = "All of this trouble for a lantern? You've shown true strength with just your fists alone."
+        else if(character_name == "Barr")    
+            win_quote = "What a fascinating weapon, you've made quite the impression to keep me on my feet."
+        else if(character_name == "Bluey" || character_name == "Fernet")   
+            win_quote = "A battlefield is no playground for a kid, stay out of this."
+        else if(character_name == "Callie")  
+            win_quote = "I appreciate your enthusiasm, but there's no such thing as bright happy days in war."
+        else if(character_name == "Candyman")    
+            win_quote = "You're quite the wildcard, but there's always a method to your madness."
+        else if(character_name == "Chimera") 
+            win_quote = "Such a wild animal, you're quite the sight. Your creators shouldn't have done this to you."
+        else if(character_name == "Crewmate")    
+            win_quote = "Never thought I would see an alien in the past. Keep your knife down."
+        else if(character_name == "Donyoku") 
+            win_quote = "Next time, you should keep your blood in your body before you go entirely cold."
+        else if(character_name == "Epinel")  
+            win_quote = "Your gravitational powers could have crushed me into a pulp, but you have much to learn still."
+        else if(character_name == "Henry Stickmin")  
+            win_quote = "Sorry but your crimes was bound to catch up to you sooner or later."
+        else if(character_name == "Lukastar")    
+            win_quote = "Another mythical creature? Where did you guys go when the aether needed you the most?"
+        else if(character_name == "Lyca")    
+            win_quote = "Your arrows will never fly as far as my lasers. Hope you'll adapt to the technology."
+        else if(character_name == "Mal") 
+            win_quote = "The element to control one's emotions has never been seen in the Aether, you were something else."
+        else if(character_name == "Maverick")    
+            win_quote = "Looks like I didn't miss out anything in the Armada. You've blown your last whirlwind, Maverick."
+        else if(character_name == "N/A") 
+            win_quote = "Coming from the abyss, we have barely scratched the surface. What else lies beyond the depths?"
+        else if(character_name == "Nade")    
+            win_quote = "Seems like my assumptions were right. You couldn't keep up with proper tactics."
+        else if(character_name == "Nate")    
+            win_quote = "Now get out of the way, your powers is much more suited outside the battlefield."
+        else if(character_name == "Future Ducky")    
+            win_quote = "Stay down! You were never supposed to be here and we're putting an end to this."
+        else if(character_name == "Po & Gumbo")  
+            win_quote = "If your cooking involves putting a person into a pot, you need to keep me out of it."
+        else if(character_name == "Rin Kaenbyou")    
+            win_quote = "Those spirits deserve to rest, you shouldn't be playing with such powers for fun."
+        else if(character_name == "Rykenburn")   
+            win_quote = "Your evil plans will be exposed sooner or later, what has gotten into you?"
+        else if(character_name == "Suitcase")
+            win_quote = "Such a fascinating object, the abyss has held more secrets than we thought."
+        else if(character_name == "Torga")
+            win_quote = "You should've stayed out of sight, a pacifist has no right in the battlefield"
+        else if(character_name == "Wally")
+            win_quote = "Your grapples are scary. Luckily enough for me, I'm used to being underwater."
+        else if(character_name == "Zephrie")
+            win_quote = "Trickier and faster than all the creatures I've seen in the Aether. You've earned my respect."
+    }
     //Generic Quotes if none are listed above
     if(win_quote == 0)
     {
-        switch(results_data.color)
+        if(results_data.neco == 1)
         {
-            case 1: //Neco Duck
-                var winChoices = [
-                    "have you been blind to the truest perfection? i am built from 1000 years of perfect genetics.",
-                    "it is just only a game, playing it is always the losing gamble.",
-                    "i would've shined up-strong on last stock to punish my gameplays.",
-                    "there is one thing a duck always keeps and its the revolving door.",
-                    "you like that mix too, huh?",
-                    "where is the nearest pickle juice bar?"
-                    ];
-                break;
+            var winChoices = [
+                "have you been blind to the truest perfection? i am built from 1000 years of perfect genetics.",
+                "it is just only a game, playing it is always the losing gamble.",
+                "i would've shined up-strong on last stock to punish my gameplays.",
+                "there is one thing a duck always keeps and its the revolving door.",
+                "you like that mix too, huh?",
+                "where is the nearest pickle juice bar?"
+                ];
+        }
+        else switch(results_data.color)
+        {
             case 31: //Miku
                 var winChoices = [
                     "Keep on being Happy! You've sung quite beautifully.",

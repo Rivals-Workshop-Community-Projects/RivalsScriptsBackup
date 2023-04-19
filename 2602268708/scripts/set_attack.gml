@@ -1,62 +1,32 @@
 user_event(13);  
-    if !(respawn_taunt) && (get_player_color( player ) == 25 || get_player_color( player ) == 24 || get_player_color( player ) == 23 && attack == AT_TAUNT){
-    
-	if phone_practice && !joy_pad_idle {
-	    if (taunt_pressed || taunt_down){
+if attack = AT_TAUNT {
+    if (alt >= 23 && alt <= 25) && !(phone_practice && joy_pad_idle) {
+	    if !respawn_taunt {
 	    attack = AT_TAUNT_2;
+		} else {
+		attack = AT_EXTRA_3;
 		}
-    } else if !phone_practice {
-	    if (taunt_pressed || taunt_down){
-	    attack = AT_TAUNT_2;
-	    }
 	}
+	
+if !respawn_taunt {
+	if down_down  {
+	attack = AT_EXTRA_2;
+	}
+	if up_down  {
+	attack = AT_NTHROW;
+	}
+}
+}
+
+if nspecial_grabbed_player != noone {
+
+    if has_rune("L"){
+	    wobble_timer = 0;
 	}
 
-if nspecial_grabbed_player != noone
-{
-	if(nspecial_prevangleturn != spr_dir){
 		attack_end();
-		
-		switch attack
-		{
-			//Down throw
-			case AT_DAIR:
-			case AT_DTILT:
-			case AT_DSPECIAL:
-			case AT_DSTRONG:
-				attack = AT_DTHROW;
-			break;
-				
-			//Up throw
-			case AT_UAIR:
-			case AT_UTILT:
-			case AT_USPECIAL:
-			case AT_USTRONG:
-				attack = AT_UTHROW;
-			break;
-			
-			//Forward/Back throw
-			default:
-				var usebthrow = false;
-				
-				if ((left_down - right_down == -spr_dir) && (left_down - right_down != 0))
-					usebthrow = true;
-				
-				if (usebthrow){
-					spr_dir = -spr_dir;
-					attack = AT_EXTRA_1;
-				}
-				else
-					attack = AT_FTHROW;
-			break;
-		}
-	}
-	else{
-		attack_end();
-		
-		//attack_end();
-		switch attack
-		{
+	
+		switch attack {
 			//Forward throw
 			case AT_FTILT:
 			case AT_FSTRONG:
@@ -90,5 +60,14 @@ if nspecial_grabbed_player != noone
 				attack = AT_EXTRA_1;
 			break;
 		}
+}
+
+if attack = AT_FTHROW {
+    if ((left_stick_down && prev_dir > 0) || (right_stick_down && prev_dir < 0)) || (prev_state = PS_WALK_TURN) {
+        stickbthrow = true;
+        attack = AT_EXTRA_1;
 	}
 }
+
+muno_event_type = 2;
+user_event(14);

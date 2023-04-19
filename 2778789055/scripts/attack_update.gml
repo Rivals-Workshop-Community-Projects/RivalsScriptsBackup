@@ -61,8 +61,8 @@ switch(attack){
 
 if(attack == AT_FTILT){
 if(window == 1 && window_timer == get_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH)-1){
-	vfx = spawn_hit_fx(x + spr_dir * 140, y - 40, spice_effect);
-	vfx.depth = -10;
+	//vfx = spawn_hit_fx(x + spr_dir * 140, y - 40, spice_effect);
+	//vfx.depth = -10;
 }
 }
 
@@ -83,13 +83,13 @@ if(attack == AT_USPECIAL){
 	hud_offset = 40;
 	can_fast_fall = false;
 	can_wall_jump = true;
-	if(window == 1 && window_timer = 1){
+	if(window == 1 && window_timer == 1){
 		uspec_angle = 0
 	}
-	if(window == 2 && window_timer = 1){
+	if(window == 1 && window_timer = get_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH)-1){
 		sound_play(asset_get("sfx_bubblemouth"));
 	}if(window == 2 || window == 3){
-		if(window_timer % 2 == 0 && !hitpause){
+		if(window_timer % 2 == 0 && !hitpause && hitstop == 0){
 			snd_rng = random_func(0, 4, true);
 			if (snd_rng == 0) {
 			create_hitbox(AT_USPECIAL, 1, x + spr_dir, y);
@@ -140,10 +140,45 @@ if(attack == AT_USPECIAL){
 }
 
 if(attack == AT_NSPECIAL){
+	if(window == 1 && window_timer == 6 && !hitpause){
+	if(!has_pot){
+		with(pumbo_pot_ID){
+			if(player_id.special_down){
+				if(state != 8){
+					spawn_hit_fx(floor(x) - spr_dir, floor(y) - 40, player_id.dust_effect);
+					sound_play(sound_get("pocket"));
+					state = 8;
+					state_timer = 0;
+				}	
+			}
+		}
+	}
+	}
 	if(window == 2 && window_timer == 1){
 		if(has_pot){
-		instance_create(x + spr_dir * 20, y-8, ("obj_article1"));
+		pumbo_pot_ID = instance_create(x + spr_dir * 20, y-8, ("obj_article1"));
 		has_pot = false;
+		}else{
+			/*
+			if(special_down){
+			if(shrimpsplosion){
+				set_attack(AT_NSPECIAL_2);
+				window = 1;
+				window = 0;
+				hurtboxID.sprite_index = sprite_get("pot_activation_hurt");
+			}else{
+			pumbo_pot_ID.state = 0;
+			pumbo_pot_ID.state_timer = 0;
+			pumbo_pot_ID.x = x + 20*spr_dir;
+			pumbo_pot_ID.y = y-8;				
+			}
+			}else{
+				*/
+			pumbo_pot_ID.state = 0;
+			pumbo_pot_ID.state_timer = 0;
+			pumbo_pot_ID.x = x + 20*spr_dir;
+			pumbo_pot_ID.y = y-8;
+			//}
 		}
 	}
 }
@@ -152,6 +187,7 @@ if(attack == AT_FSPECIAL){
 	if(window == 1 && window_timer = get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH)-1){
 		move_cooldown[AT_FSPECIAL] = 240;
 		move_cooldown[AT_FSPECIAL_2] = 60;
+		mamizou_transform_spr = sprite_get("mamizou_justgumbo"); 
 		has_shrimp = false;
 	}if(window == 2 && window_timer = 1 and !hitpause){
 		shrimp_proj = create_hitbox(AT_FSPECIAL, 1, x + spr_dir * 35, y - 38);
@@ -235,6 +271,27 @@ if(window == 2 && window_timer = 2){
 			}
 		}
 	}
+	
+		//ledge cancel
+	if(window == 1 && window_timer = 1){ 
+		dspecial_ledge_cancel = 0;
+		moved_up = false;
+	}if(window == 4 && !free && !has_hit && !was_parried){
+		dspecial_ledge_cancel = 1;
+	}	else {
+		can_move = false;
+	}
+	
+	// MOVE UP AT LEDGE
+    if ((window == 4) && !moved_up && free && place_meeting(x+hsp,y,asset_get("par_block"))) {
+        for (var i = 0; i < 30; i++){
+            if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))) {
+                y -= i + 20;
+                moved_up = true;
+                break;
+            }
+        }
+    }
 }
 
 if(attack == AT_DSPECIAL_2){
@@ -256,12 +313,36 @@ if(window == 1 && window_timer = 1){
 	move_cooldown[AT_DSPECIAL] = 99999;
 	move_cooldown[AT_DSPECIAL_2] = 99999;
 	}
+	
+		//ledge cancel
+	if(window == 1 && window_timer = 1){ 
+		dspecial_ledge_cancel = 0;
+		moved_up = false;
+	}if(window == 2 && !free && !has_hit && !was_parried){
+		dspecial_ledge_cancel = 1;
+	}	else {
+		can_move = false;
+	}
+	
+	// MOVE UP AT LEDGE
+    if ((window == 2) && !moved_up && free && place_meeting(x+hsp,y,asset_get("par_block"))) {
+        for (var i = 0; i < 30; i++){
+            if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))) {
+                y -= i + 20;
+                moved_up = true;
+                break;
+            }
+        }
+    }
 }
 
 if(attack == AT_FSTRONG){
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 9 + strong_charge/7);
 	if(window == 2 && window_timer = 1){
 		sound_play(asset_get("sfx_orca_soak"));
+	}
+	if(window == 1 && strong_charge == 2){
+	water = create_hitbox(AT_FSTRONG, 4, x + spr_dir * 38, y-4);	
 	}
 }
 if(attack == AT_TAUNT){
@@ -357,6 +438,7 @@ if(attack == AT_NSPECIAL_2){
 if(attack == AT_TAUNT_2){
 	soft_armor = 999;
 		practicetutorial = 0;
+		//talking code originally by Harbige!
 		if(window == 1 && window_timer = 1){
 			if(tutorial_up == true){
 				window = 2;
@@ -513,7 +595,7 @@ if(attack == AT_TAUNT_2){
         textbox_linetext = "";
         textbox_linenum = 0;
         
-        max_line_length = 256;
+        max_line_length = 248;
         max_lines = 12;
         character_speed = 1;
         textbox_timer = 0;

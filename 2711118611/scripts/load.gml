@@ -51,7 +51,6 @@ sprite_change_offset("fspecial", 149, 178);
 sprite_change_offset("uspecial", 149, 178);
 sprite_change_offset("dspecial", 149, 178);
 sprite_change_offset("taunt", 149, 178);
-sprite_change_offset("phone_open", 149, 178);
 sprite_change_offset("spinhurt", 149, 178);
 sprite_change_offset("bighurt", 149, 178);
 sprite_change_offset("downhurt", 149, 178);

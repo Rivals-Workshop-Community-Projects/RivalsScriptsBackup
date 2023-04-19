@@ -1,4 +1,3 @@
-
 if  (get_player_color(player) == 24) {
 //crash prevention line
 shader_end();
@@ -20,7 +19,27 @@ with(player_id){
 }
 
 }
+if  (get_player_color(player) == 25) {
+//crash prevention line
+shader_end();
+maskHeader();
+draw_self();
+maskMidder();
 
+if(state != 3){
+    var fx_image_index = get_gameplay_time() / 6;
+    draw_sprite_tiled_ext(sprite_get("rumor"), fx_image_index, x, y, 1, 1, c_white, 1)
+}if(state == 3){
+    var fx_image_index = get_gameplay_time() / 6;
+    draw_sprite_tiled_ext(sprite_get("rumor"), fx_image_index, x, y, 1, 1, c_gray, 1)
+}
+maskFooter();
+
+with(player_id){
+    shader_start();
+}
+
+}
 //================================================================================
 
 #define maskHeader

@@ -215,14 +215,8 @@ unown_turning_time_per_frame = 6;
 prev_spr_dir = spr_dir;
 
 //initialize form
-var stage_id = get_stage_data(SD_ID);
-if (is_string(stage_id)) 
-{ 
-    stage_id = string_digits(stage_id);
-    stage_id = (string_length(stage_id) > 0 ? real(stage_id) : 0)
-}
-unown_current_form = 1 + random_func((player + stage_id) % 24, 28, true);
-vfx_shiny_override = (0 == random_func((player + stage_id) % 24, 8192, true));
+unown_current_form = 1 + random_func((player) % 24, 28, true);
+vfx_shiny_override = (0 == random_func((player) % 24, 8192, true));
 
 hurtbox_spr = unown_form_data[unown_current_form].hurtbox;
 
@@ -290,6 +284,7 @@ unown_y_water_dying_time = 10;
 //================================================================
 // Pokémon Teaches Typing
 unown_text_buffer = "";
+unown_last_text_buffer = ""; //to save relevant information post-death
 unown_text_maxlength = 16; //max number of characters on the buffer
 unown_attack_is_fresh = false; //wether an attack is recent or not (if true, will add a letter when it reaches an active window)
 unown_diagonal_leniency = 0; //if above zero, allows switching to diagonals when using cardinal attacks
@@ -323,9 +318,16 @@ with (oPlayer) if (self != other) && ("unown_dictionary" in self)
 pkmn_stadium_front_img = sprite_get("cmp_stadium_front");
 pkmn_stadium_back_img = sprite_get("cmp_stadium_back");
 
+//Po & Gumbo
+pot_compat_variable = sprite_get("cmp_gumbo");
+pot_compat_text = "Alphabet Soup";
+
+
+
+
 //================================================================
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 
-muno_event_type = 0;
-user_event(14);
+//muno_event_type = 0;
+//user_event(14);

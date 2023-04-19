@@ -6,12 +6,17 @@ with (asset_get("oPlayer")) {
     }
 }
 
+if get_player_color(player) == 8 {
+	sound_play(sound_get("death_mad"));
+}
+
 //remove all our smokes
-with(obj_article1)
+for(var i=0; i<array_length(smokeList); i++)
 {
-	if(player_id == other && type == 0 && myLife > shrinkTime)
+	var s = smokeList[i];
+	if(s.myLife > s.shrinkTime)
 	{
-		myLife = shrinkTime;
+		s.myLife = s.shrinkTime;
 	}
 }
 

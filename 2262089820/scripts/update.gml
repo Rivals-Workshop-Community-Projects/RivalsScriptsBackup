@@ -71,7 +71,7 @@ if (get_gameplay_time() > 125 && mus_phase == 1){
 }
 
 
-if (disable_optimalmode == false){
+if(false){//if (disable_optimalmode == false){
 	if (lowrealfpscount < minrealfpscount){
 		if (fps_real<70){
 			lowrealfpscount++;

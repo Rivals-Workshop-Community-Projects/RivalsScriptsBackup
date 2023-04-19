@@ -319,7 +319,9 @@ if (attack == AT_NSPECIAL){
 		        		waterBomb.strong = true
 		        	}
 		        	waterBomb.hsp = 6.5 * spr_dir * C_modifier
+		        	waterBomb.old_hspeed = waterBomb.hsp
 		        	waterBomb.vsp = -4 * C_modifier
+		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	
 				}else if(pointing_direction == 45 || pointing_direction == 135){
 					//Up-Forwards
@@ -329,7 +331,9 @@ if (attack == AT_NSPECIAL){
 		        		waterBomb.strong = true
 		        	}
 		        	waterBomb.vsp = -7 * C_modifier
+		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	waterBomb.hsp = 4 * spr_dir * C_modifier
+		        	waterBomb.old_hspeed = waterBomb.hsp
 		        	
 				}else if(pointing_direction == 315 || pointing_direction == 225){
 					//Down-Forwards
@@ -339,7 +343,9 @@ if (attack == AT_NSPECIAL){
 		        		waterBomb.strong = true
 		        	}
 		        	waterBomb.hsp = 4 * spr_dir * C_modifier
+		        	waterBomb.old_hspeed = waterBomb.hsp
 		        	waterBomb.vsp = -3 * C_modifier
+		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	
 				}else if(pointing_direction == 90){
 					//Up
@@ -349,6 +355,7 @@ if (attack == AT_NSPECIAL){
 		        		waterBomb.strong = true 
 		        	}
 		        	waterBomb.vsp = -7.5 * C_modifier
+		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	
 				}else if(pointing_direction == 270){
 					//Down
@@ -358,7 +365,9 @@ if (attack == AT_NSPECIAL){
 		        		waterBomb.strong = true
 		        	}
 		        	waterBomb.vsp = -3.5 * C_modifier
+		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	waterBomb.hsp = 1.2*spr_dir * C_modifier
+		        	waterBomb.old_hspeed = waterBomb.hsp
 				}else{
 					//Same as Down
 					waterBomb = instance_create(x + (spr_dir*25),y - 35,"obj_article2");
@@ -367,7 +376,9 @@ if (attack == AT_NSPECIAL){
 		        		waterBomb.strong = true
 		        	}
 		        	waterBomb.vsp = -3.5 * C_modifier
+		        	waterBomb.old_vspeed = waterBomb.vsp
 		        	waterBomb.hsp = 1.2*spr_dir * C_modifier
+		        	waterBomb.old_hspeed = waterBomb.hsp
 				}
 				
 				if(free){
@@ -1084,12 +1095,28 @@ if(attack == AT_USPECIAL){
 	}
 	if(window == 2){
 		if(window_timer <= 1){
+			uspecial_charge = 0
 			if(right_down){
 				spr_dir = 1
 			}else if(left_down){
 				spr_dir = -1
 			}
 		}
+		/*
+		}else if(window_timer >= 18 && window_timer < 20 && !free){
+			if(special_down && uspecial_charge < 20){
+				window_timer = 17
+				uspecial_charge += 1
+			}
+			if(uspecial_charge > 2){
+				var waterfx = spawn_hit_fx(x - ((40 - random_func_2(1, 80, true)) * spr_dir), y - 10 + random_func_2(2, 20, true), vfx_waterfx_small)
+			}
+		}
+		if(!free){
+			col_r_outline = lerp(col_r_outline, col_r_2, ((uspecial_charge * 5) / 100))
+		    col_g_outline = lerp(col_g_outline, col_g_2, ((uspecial_charge * 5) / 100))
+		    col_b_outline = lerp(col_b_outline, col_b_2, ((uspecial_charge * 5) / 100))
+		}*/
 		if(window_timer == 20 && !hitpause){
 			if(instance_exists(waterBomb) && teleport){
 				if(waterBomb.state == 1){
@@ -1109,7 +1136,7 @@ if(attack == AT_USPECIAL){
 					}else{
 						set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 						vsp = -7
-						hsp += 4*spr_dir
+						hsp += 5.5*spr_dir
 						/*
 						if(!down_down && !shield_down){
 							vsp = -7
@@ -1135,6 +1162,9 @@ if(attack == AT_USPECIAL){
 					set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 					vsp = -7
 					hsp += 4*spr_dir
+					sound_play(asset_get("sfx_swipe_weak2"))
+					
+					uspecial_charge = 0
 					/*
 					if(!down_down && !shield_down){
 						vsp = -7
@@ -1143,7 +1173,6 @@ if(attack == AT_USPECIAL){
 						hsp += 8*spr_dir
 						set_state(PS_WAVELAND)
 					}*/
-					sound_play(asset_get("sfx_swipe_weak2"))
 				}
 			}
 		}
@@ -1159,6 +1188,10 @@ if(attack == AT_FSPECIAL){
 		}
 	}
 	if(window == 2){
+		if(window_timer == 1){
+			spawn_hit_fx(x + 10*spr_dir, y - 40, vfx_fspecial)
+			sound_play(asset_get("sfx_waterhit_weak"))
+		}
 		if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
             for (var i = 1; i < 25; i++){
                 if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) {
@@ -1194,34 +1227,6 @@ if(attack == AT_FSPECIAL){
 			window = 3
 			window_timer = 0
 		}
-	}
-	if(window == 2 && window_timer > 4){
-		if(shield_pressed){
-			set_state(PS_PRATFALL)
-			vsp = -2
-			sound_play(asset_get("mfx_back"))
-			prat_land_time = 16;
-			if(spr_dir == 1){
-				if(left_down){
-					hsp = -1
-				}else{
-					hsp /= 1.5
-				}
-			}else if(spr_dir == -1){
-				if(right_down){
-					hsp = 1
-				}else{
-					hsp /= 1.5
-				}
-			}
-		}
-		/*
-		if(attack_pressed || down_stick_pressed || up_stick_pressed || left_stick_pressed || right_stick_pressed){
-			set_state(PS_IDLE_AIR)
-			was_parried = true
-			hsp *= 1.1
-		}
-		*/
 	}
 	if(window == 2 || window == 3 && window_timer < 7){
 		can_wall_jump = true

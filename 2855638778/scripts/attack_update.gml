@@ -6,9 +6,9 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 // reload again if you push the special button during the reload
 // does not do this if you push a directional special (e.g. up special)
 if (attack == AT_NSPECIAL){
-	if (rockets_clip < 4) {
+	if (rockets_clip < rockets_clip_max) {
 		if (window == 3){
-			if(window_timer >= 8) {
+			if(window_timer >= 6) {
 				if (special_pressed){
 					if (!left_down && !right_down && !up_down && !down_down) {
 						window = 1;
@@ -38,9 +38,10 @@ if (attack == AT_DSTRONG) {
 	
 }
 
-// adds a rocket when it enters the chamber.
+// adds a rocket to the clip at a certain point in nspecial
+// an abyss rune is here too that increases reload speed
 if (attack == AT_NSPECIAL) {
-	if (window == 1 && window_timer == 9) {
+	if (window == 1 && window_timer == 9) || (runeG && (window == 1 && window_timer == 3)) {
 		if (hitpause == false) {
 			rockets_clip++;
 		}
@@ -76,6 +77,12 @@ if (attack == AT_USPECIAL) {
 	if (window > 3) {
 		can_wall_jump = true;
 	}
+	
+	if (window == 2) {
+		if (vsp > 0) {
+			vsp = 0;
+		}
+	}
 }
 
 // if you're in practice mode and taunt, you instantly get full buff banner.
@@ -88,12 +95,25 @@ if (attack == AT_TAUNT || attack == AT_TAUNT_2) {
 // dtilt cancel into strongs on hit
 // was considering other cancels
 if (attack == AT_DTILT) {
-	if (has_hit == true) {
-		//can_jump = true;
-		//can_attack = true;
-		can_strong = true;
-		can_ustrong = true;
-		//can_up_strong = true;
+	if (!runeH) {
+		if (has_hit == true) {
+			//can_jump = true;
+			//can_attack = true;
+			can_strong = true;
+			can_ustrong = true;
+			//can_up_strong = true;
+		}
+	}
+	else {
+		if (has_hit == true) { // abyss rune: dtilt cancels into anything
+			can_jump = true;
+			can_attack = true;
+			can_strong = true;
+			can_ustrong = true;
+			can_up_strong = true;
+			can_special = true;
+			can_shield = true;
+		}
 	}
 }
 
@@ -124,6 +144,7 @@ if (attack == AT_FSPECIAL) {
 		rocket_cancel = false;
 		
 		if (up_down) {
+			rj_anim_pos = 2; // variable used for blastjump state anim
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -5);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_up"));
@@ -132,6 +153,7 @@ if (attack == AT_FSPECIAL) {
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));
 		}
 		else if (down_down) {
+			rj_anim_pos = 1;
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 10);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_down"));
@@ -140,6 +162,7 @@ if (attack == AT_FSPECIAL) {
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_down_air"));
 		}
 		else {
+			rj_anim_pos = 0;
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
 			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj"));
@@ -186,6 +209,7 @@ if (attack == AT_DSTRONG) {
 		
 		if (spr_dir == 1) {
 			if (left_down) {
+				rj_dstrong_anim_pos = 2;
 				rocket_dstrong_boost_direction = 1;
 				set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_VSPEED, 10);
 				set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_HSPEED, -5);
@@ -197,6 +221,7 @@ if (attack == AT_DSTRONG) {
 				//spr_dir = 1;
 			}
 			else if (right_down) {
+				rj_dstrong_anim_pos = 1;
 				rocket_dstrong_boost_direction = -1;
 				set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_VSPEED, 10);
 				set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_HSPEED, 5);
@@ -208,6 +233,7 @@ if (attack == AT_DSTRONG) {
 				//spr_dir = -1;
 			}
 			else {
+				rj_dstrong_anim_pos = 0;
 				rocket_dstrong_boost_direction = 0;
 				set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_VSPEED, 10);
 				set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_HSPEED, 0);
@@ -270,6 +296,7 @@ if (attack == AT_BAIR) {
 					can_strong = true;
 					can_attack = true;
 					can_special = true;
+					
 				}
 			}
 		}
@@ -279,12 +306,14 @@ if (attack == AT_BAIR) {
 	if (window == 1) {
 		rocket_cancel = false;
 		grenade_explode = 0;
+		set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 	}
 	
 	// variable turns on upon RJ bair hitting
 	if (has_hit) {
 		if (hitpause == false) {
 			grenade_explode++;
+			can_fast_fall = false; // late addition lol. might remove if players want to fastfall during this
 		}
 	}
 	
@@ -292,11 +321,14 @@ if (attack == AT_BAIR) {
 	if (grenade_explode == 1) {
 		if (hitpause == false) {
 			if (blastjumping) {
+				vsp = -0.1;
+				set_attack_value(AT_BAIR, AG_CATEGORY, 2);
 				spawn_hit_fx(x-(spr_dir * 50), y-40, 143);
 				//create_hitbox( 51, 1, x, y);
 				create_hitbox( AT_EXTRA_1, 1, x-(spr_dir * 50), y-40);
 				sound_stop(explosion_sound);
-				sound_play(explosion_sound, false, noone, 0.9, 1);	
+				sound_play(explosion_sound, false, noone, 0.9, 1);
+	
 			}
 		}
 	}
@@ -314,6 +346,7 @@ if (attack == AT_USTRONG) {
 					can_strong = true;
 					can_attack = true;
 					can_special = true;
+					can_fast_fall = false; // late addition lol. might remove if players want to fastfall during this
 				}
 			}
 		}
@@ -329,6 +362,7 @@ if (attack == AT_USTRONG) {
 	if (has_hit) {
 		if (hitpause == false) {
 			grenade_explode++;
+			can_fast_fall = false; // late addition lol. might remove if players want to fastfall during this
 		}
 	}
 	
@@ -337,6 +371,9 @@ if (attack == AT_USTRONG) {
 	if (grenade_explode == 1) {
 		if (hitpause == false) {
 			if (blastjumping) {
+				vsp = -0.1;
+				y = y - 1;
+				set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
 				spawn_hit_fx(x-10, y-65, 143);
 				//create_hitbox( 51, 1, x, y);
 				create_hitbox( 50, 1, x-10, y-65);
@@ -353,11 +390,6 @@ if (attack == AT_USPECIAL_2) {
 	
 	// undeploys parachute
 	para_should_undeploy = true;
-	/*
-	if (window > 3) {
-		can_wall_jump = true;
-	}
-	*/
 }
 
 // for situations where you land during awkward points of uspecial
@@ -369,6 +401,12 @@ if (attack == AT_USPECIAL && !free) {
 // unique handlers for using attacks that don't instantly end blastjump state upon touching the ground
 if (!free && blastjumping) {
 	
+	/*
+	if (up_strong_down || up_strong_pressed) && (jump_down || jump_pressed) {
+		vsp = -8;
+	}
+	*/
+	
 	// to prevent being able to jump away from whiffed ustrong and still have blast jump status
 	if (attack == AT_USTRONG) {
 		if (window == 4 && !has_hit) {
@@ -379,7 +417,7 @@ if (!free && blastjumping) {
 	// janky fix to prevent being able to use fspecial repeatedly on the ground
 	if (attack == AT_FSPECIAL) {
 		if (window == 1) {
-			blastjump_should_undeploy = true;
+			fspecial_blast_ground_timer++;
 		}
 	}
 	
@@ -393,9 +431,56 @@ if (!free && blastjumping) {
 	
 	
 }
-/*
-if (attack == AT_USTRONG || attack == AT_FSTRONG) {
-	
-	
+
+
+// abyss rune junk!
+
+// handles abyss rune D
+// (up b explodes)
+if (runeD) {
+	if (attack == AT_USPECIAL) {
+		if (rockets_clip > 0) {
+			if (rocket_cancel == true) {
+				if (window == 3) {
+					if (window_timer > 3) { // not sure how necessary it is to wait 3 frames
+						can_jump = true;
+						can_strong = true;
+						can_attack = true;
+						can_special = true;
+					}
+				}
+			}
+			
+			// resets variables
+			if (window == 1) {
+				rocket_cancel = false;
+				grenade_explode = 0;
+			}
+			
+			// variable turns on upon uspecial activating
+			if (hitpause == false) {
+				if (window == 2) {
+					if (window_timer == 8) {
+						grenade_explode++;
+						rockets_clip--
+					}
+				}
+			}
+			
+			// spawns hit fx, creates explosion hitbox, plays sound near location where bair hit
+			if (window == 2) {
+				if (window_timer == 8) {
+					if (hitpause == false) {
+						spawn_hit_fx(x, y-75, 143);
+						//create_hitbox( 51, 1, x, y);
+						create_hitbox( 50, 1, x, y-65);
+						sound_stop(explosion_sound);
+						sound_play(explosion_sound, false, noone, 0.9, 1);	
+					}
+				}
+			}
+			
+		}
+	}
 }
-*/
+

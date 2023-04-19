@@ -39,3 +39,4 @@ if (state == PS_DASH && (state_timer % 10 == 0 or state_timer == 1))  {
     sound_stop(asset_get("sfx_waveland_wra"))
     sound_play(asset_get("sfx_waveland_wra"),false,noone,0.6, 1 + random_func(1,30,true)/100)
 }
+

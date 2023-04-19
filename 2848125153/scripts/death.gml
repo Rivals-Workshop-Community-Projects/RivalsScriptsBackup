@@ -8,7 +8,7 @@ current_money2 = current_money;
 
 if(get_player_stocks(player) <= 1){ //last stock
 	current_money = 0;
-    if(alt == 18){
+    if(alt == 19){
         sound_play(sound_get("wario_death2"),false,noone,1);
     }else{
 	    rand = random_func(0, 4, true);
@@ -36,7 +36,7 @@ if(get_player_stocks(player) <= 1){ //last stock
 	current_money = floor(current_money/2);
 	rand = random_func(0, 4, true);
 	if(rand < 3){
-		if(alt == 18){
+		if(alt == 19){
         	rand = random_func(1, 3, true);
         	if(rand == 0){
     			sound_play(sound_get("wario_missed"),false,noone,1);

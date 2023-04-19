@@ -4,7 +4,7 @@ set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 set_attack_value(AT_JAB, AG_NO_PARRY_STUN, 1);
 
 set_window_value(AT_JAB, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 3 - (jabRune));
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_SFX, sfx_star_allies_cleaning_swipe_3);
@@ -15,7 +15,7 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_JAB, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 12 - (jabRune * 4));
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_JAB, 3,AG_WINDOW_HAS_WHIFFLAG, 1);

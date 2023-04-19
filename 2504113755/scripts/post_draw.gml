@@ -15,9 +15,28 @@ draw_debug_text( x, y + 40, "index" + string( sprite_index ) + "  swords:" + str
 user_event(12);
 
 var tempColour = c_white;
+if (get_player_color(player) == 24) {
 
-col1 = GetColourPlayer(0)
+
+
+
+
+
+col1 = make_colour_rgb(color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv))
 col2 = GetColourPlayer(1)
+
+
+} else if (get_player_color(player) == 25 && get_synced_var(player) == 0) {
+
+col1 = make_colour_rgb(145, 0, 0);
+col2 = make_colour_rgb(237, 64, 64);
+
+}
+else { col1 = GetColourPlayer(0) 
+	col2 = GetColourPlayer(1)
+
+}
+
 
 
 if (blink_state_timer < blink_start_frame) {

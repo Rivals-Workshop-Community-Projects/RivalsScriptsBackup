@@ -1,9 +1,3 @@
-if (hit_player_obj.cofa_mummy){
-	hit_player_obj.cofa_mummy = false;
-	hit_player_obj.cofa_mummy_id = noone;
-	hit_player_obj.cofa_mummy_timer = 0;
-}
-
 switch(my_hitboxID.attack){
 	case AT_NSPECIAL:
 		if (my_hitboxID.hbox_num == 1){

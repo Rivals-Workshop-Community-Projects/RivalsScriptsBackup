@@ -185,6 +185,23 @@ tab_is_typing = false;
 tab_held_key = 0;
 tab_can_type = true;
 
+tab_current_frame = 0;
+tab_frame_type = 0; //0 startup 1 active 2 recovery
+tab_frame_color = c_blue;
+tab_last_window = 0;
+tab_loop_frames = 0;
+tab_loop_timer = 0;
+tab_type_timer = 0;
+
+tab_iasa_check = false; //set this to true in Attack Update in windows with IASA script
+
+for (i = 60; i >= 0; i--){
+framedata_arr[i] = [noone,0,0,0];
+}
+
+
+
+
 tab_confirm_type = "--";
 
 tab_top_text = "[JUMP/SHIELD] Change Tab | [TAUNT] Exit 

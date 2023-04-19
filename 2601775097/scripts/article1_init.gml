@@ -23,4 +23,6 @@ alt_cur = get_player_color(player);
 rec_fire_count = 3;
 fire_offset = 48;
 
+had_burnbuff = player_id.burnbuff_active;
+
 artc_image_index = 0; //regular image index kinda gets fucked in pause

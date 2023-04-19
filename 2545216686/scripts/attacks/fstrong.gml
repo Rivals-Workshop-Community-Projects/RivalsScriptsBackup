@@ -29,7 +29,7 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_FSTRONG,1);
+set_num_hitboxes(AT_FSTRONG, 1 + fstrongWindRune);
 
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
@@ -39,7 +39,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -31);
 set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 72);
 set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 54);
 set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
@@ -47,6 +47,26 @@ set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.85);
-set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+
+if (fstrongWindRune){
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 3);
+set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 115);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -33);
+set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 190);
+set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 90);
+set_hitbox_value(AT_FSTRONG, 2, HG_SHAPE, 2);
+set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 1);
+set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 30);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITSTUN_MULTIPLIER, 0);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("there is none"));
+set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE_FLIPPER, 0);
+}

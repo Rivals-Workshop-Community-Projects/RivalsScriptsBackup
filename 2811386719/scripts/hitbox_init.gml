@@ -4,16 +4,16 @@ if(attack == AT_USPECIAL and hbox_num == 1){
     var sspr_x_offset = sprite_get_xoffset(sprite_get("uspecial"))
     var sspr_y_offset = sprite_get_yoffset(sprite_get("uspecial"))
     // print(sspr_y_offset)
-    hitbox_pos[0] = [ 9 * 2, 58* 2]//offset is 1x, this is why *2
-    hitbox_pos[1] = [ 25 * 2, 39 * 2]
-    hitbox_pos[2] = [ 26 * 2, 24 * 2]
-    hitbox_pos[3] = [ 18 * 2, 15 * 2]
-    hitbox_pos[4] = [ 11 * 2, 8 * 2]
-    hitbox_pos[5] = [ 7 * 2, 6 * 2]
-    hitbox_pos[6] = [ 7 * 2, 6 * 2]
-    hitbox_pos[7] = [ 7 * 2, 6 * 2]
-    hitbox_pos[8] = [ 7 * 2, 6 * 2]
-    hitbox_pos[9] = [ 7 * 2, 6 * 2]
+    hitbox_pos[0] = [ 4 * 2, 48* 2]//offset is 1x, this is why *2
+    hitbox_pos[1] = [ 17 * 2, 37 * 2]
+    hitbox_pos[2] = [ 20 * 2, 24 * 2]
+    hitbox_pos[3] = [ 14 * 2, 18 * 2]
+    hitbox_pos[4] = [ 8 * 2, 16 * 2]
+    hitbox_pos[5] = [ 6 * 2, 15 * 2]
+    hitbox_pos[6] = [ 6 * 2, 15 * 2]
+    hitbox_pos[7] = [ 6 * 2, 15 * 2]
+    hitbox_pos[8] = [ 6 * 2, 15 * 2]
+    hitbox_pos[9] = [ 6 * 2, 15 * 2]
 
     
     //draw_sprite_ext(sprite_get("uspecial"), 4, new_x, new_y, 1, 1, 100, c_white, 255);

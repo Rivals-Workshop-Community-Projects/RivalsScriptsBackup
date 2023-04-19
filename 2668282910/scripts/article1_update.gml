@@ -94,6 +94,16 @@ if (state == 1){
 	wisp_hitbox.x = x+hsp;
 	wisp_hitbox.y = y+vsp;
 	
+	if (state_timer > 1 && (place_meeting(x,y-15,asset_get("par_block")))){
+		if (wisp_ex == true){
+			spawn_hit_fx(x, y, player_id.zetter_hit3);
+		}
+		else {
+			spawn_hit_fx(x, y, player_id.zetter_hit2);
+		}
+		shoulddie = true;
+	}
+	
 	if (state_timer > 1 && wisp_hitbox.destroyed == true){
 		if (wisp_ex == true){
 			spawn_hit_fx(x, y, player_id.zetter_hit3);

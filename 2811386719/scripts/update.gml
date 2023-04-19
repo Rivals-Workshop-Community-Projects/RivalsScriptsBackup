@@ -1,5 +1,5 @@
 game_time = get_gameplay_time();
-
+attacking = state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND
 
 if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
     move_cooldown[AT_USPECIAL] = 0;
@@ -17,7 +17,7 @@ if(state != PS_WALL_JUMP){
 	// can_cling = can_wall_jump and has_walljump and !(attack == AT_EXTRA_1 and window > 0);
 	
 }else{
-	if(state_timer == 0 and has_walljump and ((state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND))){
+	if(state_timer == 0 and has_walljump and !attacking){
 		doCling()
 	}
   if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
@@ -25,7 +25,7 @@ if(state != PS_WALL_JUMP){
   }
 }
 
-can_cling = can_wall_jump and has_walljump and ((state != PS_ATTACK_AIR or state != PS_ATTACK_GROUND));
+can_cling = can_wall_jump and has_walljump and !attacking;
 
 if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
 	if(can_cling and (jump_down or (can_tap_jump() and tap_jump_pressed))){
@@ -55,46 +55,40 @@ if(state == PS_ATTACK_AIR or state == PS_PRATFALL){
 
 has_walljump_old = has_walljump
 
-// if(keyboard_lastkey == ord("O")){
-// 	// payload = !payload;
-// 	keyboard_lastkey = 0
-// 	with oPlayer{
-// 		if(state != PS_ATTACK_GROUND){
-// 			set_attack(AT_TAUNT)
-// 		}
-// 	}
+with oPlayer{
+	if(state_cat != SC_HITSTUN and !hitpause){
+		if(hit_wave) with other spawn_dust_fx(other.x, other.y - char_height/2, dspecial_bubble_fail_fx_spr, 6)
+		hit_wave = false
+	}
+	if(hit_wave){
+		if(state == PS_HITSTUN_LAND){
+			vsp = -4
+			hitstun = 26
+			hitstun_full = 26
+			can_tech = true
+			hit_wave = false
+			with other spawn_dust_fx(other.x, other.y - char_height/2, dspecial_bubble_fx_spr, 9)
+			sound_play(asset_get("sfx_bubblepop"))
+			set_state(PS_HITSTUN)
+			hurt_img = 5
+		}
+	}
+	// if(id != other.id){
+	// 	print(soft_armor)
+	// }
+}
 
-// } 
+// with(oPlayer) if(id != other.id) print(has_armor)
 
-// with other with other  drawing_hud = false;
-// global.drawing_hud = false;
-// if(keyboard_lastkey == ord("T")){
-// 	payload = !payload;
-// 	keyboard_lastkey = 0
-// } 
-// if(payload){
-// 	room_speed = 30
-// } 
-// else{
-// 	room_speed = orig_room_speed
-// } 
 // with geyser_dfx{
-//   var ls = ds_list_create()
-// 	variable_instance_get_names(id,ls)
-// 	var s = 9
-// 	for (var i = 0; i < ds_list_size(ls); i += s){
-// 	  	var strings = "";
-// 	  	for(var j = 0; j < s; j++){
-// 	  		if(ls[| i + j] == undefined or string_pos("inv", ls[| i + j]) == 0) continue;
-// 	  		strings += ls[| i + j] + " ";
-// 	  	}
-// 	  	if(strings != "")print(strings);
-	  
-	  
-// 	} 
-// 	ds_list_destroy(ls);
+//   display_variables()
 // }
 
+// with oPlayer{
+// 	if(state == PS_PARRY){
+// 		if(window_timer > 1 )window_timer--;
+// 	}
+// }
 // for(var i = 0; )
 // print(set_ui_element(4, sprite_get("tech")))
 
@@ -102,6 +96,8 @@ has_walljump_old = has_walljump
 //     static = 100;
 //     permanent_static = true;
 // }
+
+// activated_kill_effect = true
 
 distance_from_ledge = -min(x - stage_left, stage_right - x, 0)
 
@@ -146,9 +142,39 @@ if(static >= 100){
 
 pullFactor()
 
+// var print_input = 'f'; //Change this to change what keyboard input prints your variables.
+// //Capital letters require shift to be held (e.g. 'F' as Shift + F, just like typing normally) 
+// if string_pos(print_input, keyboard_string) {
+//     with oPlayer if(id != other.id) print_vars();
+//     keyboard_string = ''
+// }
+//alternatively, if you can otherwise ensure it only runs for a frame, just call print_vars();
+
+#define print_vars
+/// print_vars(instance = self)
+//prints the variables in the given instance, or in whatever instance ran the function.
+var instance = argument_count > 0 ? argument[0] : self;
+with (instance) {
+    var names = variable_instance_get_names(self);
+    var str = "";
+    var lb = "
+";
+    for (var i = 0; i < array_length_1d(names); i++) {
+        var val_to_add = string(variable_instance_get(self, names[i]));
+      str += names[i] + ': ' + (string_length(val_to_add) > 100 ? "!!value ommitted due to size!!" : val_to_add) + ';'+lb
+      
+    }
+    var str_length = string_length(str);
+    var it = 1;
+    var max_pages = ceil(str_length/4096);
+    for (var i = 1; i < str_length; i+=4096) {
+        get_string(`variables pg ${it++}/${max_pages}`, string_copy(str,i,4096));
+    }
+}
+
 #define doCling()
 
-print(distance_from_ledge)
+// print(distance_from_ledge)
 clear_button_buffer(PC_JUMP_PRESSED);
 can_let_go_jump = false;
 has_walljump = false;
@@ -158,20 +184,26 @@ set_attack(AT_EXTRA_1);
 
 #define jet_update()
 
-jet_x = lerp(jet_x, x-55*spr_dir, 0.5)
-jet_y = lerp(jet_y, y-(char_height+hud_offset+10), 0.5)
-jet_show_charge = static != old_static;
-jet_img_idx_charge = game_time % 3 == 0 ? (100 - static)*0.4 : jet_img_idx_charge;
-if(static < 100){
-	var is_dash = (state == PS_DASH_START or state == PS_DASH);
-  if(old_static != static and game_time % (5 - is_dash) == 1 and !hitpause){
-		
-		sound_play(asset_get("sfx_absa_singlezap1"), false, noone, 0.67 - (drain_timer>0)*.24 - is_dash*0.28, (0.7 + static*0.005));
-	
-  } 
+if(attack == AT_FSTRONG and attacking){
+	jet_x = lerp(jet_x, x+5*spr_dir, 0.2)
+	jet_y = lerp(jet_y, y-(char_height+hud_offset+10), 0.2)
+	if(window > 1) jet_ball_timer++
 }else{
-	if(old_static < 100)sound_play(asset_get("sfx_gem_collect"))
+	jet_x = lerp(jet_x, x-55*spr_dir, 0.5)
+	jet_y = lerp(jet_y, y-(char_height+hud_offset+10), 0.5)
+	jet_show_charge = static != old_static;
+	if(static < 100){
+		var is_dash = (state == PS_DASH_START or state == PS_DASH);
+	  if(old_static != static and game_time % (5 - is_dash) == 1 and !hitpause){
+			
+			sound_play(asset_get("sfx_absa_singlezap1"), false, noone, 0.67 - (drain_timer>0)*.24 - is_dash*0.28, (0.7 + static*0.005));
+		
+	  } 
+	}else{
+		if(old_static < 100) sound_play(asset_get("sfx_gem_collect"))
+	}
 }
+
 
 
 #define pullFactor()
@@ -179,19 +211,15 @@ if(static < 100){
 // var len = array_length(static_people);
 var count = 0;
 with oPlayer{
+	// if(other.shield_pressed) static_pull = 450
 	if(self != other and static_pull > 0){
     // sp.static_pull--;
+    
     if(state == PS_DEAD or state == PS_RESPAWN) static_pull = 0;
-    if(state == PS_DASH or state == PS_DASH_START){
-    	
-    }else{
+    if(state != PS_DASH and state != PS_DASH_START){
     	saved_hsp = 0;
     }
     count++;
-    
-    if(state == PS_PRATFALL){
-    	
-    }
   }
   if(static_transfer_cooldown) static_transfer_cooldown--;
 }
@@ -201,7 +229,7 @@ if(state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND){
 		default:
 			pulling = false;
 		case AT_NSPECIAL:
-			pulling = (window == 2);
+			pulling = (window == 2 or window == 3);
 
 			break;
 		case AT_USPECIAL_GROUND:
@@ -249,7 +277,7 @@ bar_alpha = max(drain_timer/10, static_cooldown/60)
 
 if(static_cooldown > 0) static_cooldown--;
 
-jet_update()
+jet_update();
 
 old_static = static;
 #define gain_static()
@@ -289,3 +317,19 @@ if(static_cooldown <= 0){
 	} 
    
 }
+
+#define display_variables()
+
+var ls = ds_list_create();
+variable_instance_get_names(id,ls);
+var s = 9;
+for (var i = 0; i < ds_list_size(ls); i += s){
+  	var strings = "";
+  	for(var j = 0; j < s; j++){
+  		if(ls[| i + j] == undefined or string_pos("strong", ls[| i + j]) == 0) continue;
+  		strings += ls[| i + j] + " ";
+  	}
+  	if(strings != "") print(strings);
+
+} 
+ds_list_destroy(ls);

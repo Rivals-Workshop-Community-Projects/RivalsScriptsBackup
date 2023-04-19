@@ -64,6 +64,7 @@ switch(attack){
 
 if(attack == AT_NSPECIAL){
 	if(window == 1 && window_timer = 1 && !hitpause){
+		grabbed_id = noone;
 	sound_play(sound_get("snd_weaponpull"));	
 	nspecial_projectile_var = 0;
 	nspecial_grab_failed = 0;
@@ -106,7 +107,7 @@ if(attack == AT_NSPECIAL){
 			}
 		}
 		if(window_timer = 40){
-		move_cooldown[AT_NSPECIAL] = 60;	
+		move_cooldown[AT_NSPECIAL] = 120;	
 		}
 	}if(window > 3){
 		can_move = false;
@@ -119,9 +120,16 @@ if(attack == AT_NSPECIAL){
 			window_timer = 0;
 		}
 	}if(window == 10){
-		move_cooldown[AT_NSPECIAL] = 60;
+		move_cooldown[AT_NSPECIAL] = 120;
 	}if(window == 3){
-		move_cooldown[AT_NSPECIAL] = 60;
+		move_cooldown[AT_NSPECIAL] = 120;
+	}
+	
+	if(window == 4 || window == 5){
+		if(grabbed_id != noone){
+			grabbed_id.hitpause = true;
+			grabbed_id.hitstop = 2;
+		}
 	}
 }
 

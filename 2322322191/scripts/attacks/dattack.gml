@@ -25,7 +25,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.7);
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -75,8 +75,10 @@ set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_SPRITE, sprite_get("none"));
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
-set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_PLASMA_SAFE, false);
 
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DATTACK, 3, HG_WINDOW, 4);

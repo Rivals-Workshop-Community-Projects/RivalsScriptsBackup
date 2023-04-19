@@ -25,6 +25,15 @@ else if(my_hitboxID.attack == AT_FAIR_G){
         set_attack_value(AT_FAIR_G, AG_HAS_LANDING_LAG, 1);
     }
 }
+
+//ftilt grab
+else if(my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1){
+    if (my_grab_id == noone && !hit_player_obj.clone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) && !hit_player_obj.bubbled)
+    {
+        my_grab_id = hit_player_obj;
+        grab_time = max_grab_time;
+    }
+}
 //flag for explosion when hitting with ftilt_g or bair_g sweetspot
 //need to set hitpause here due to bad interaction with rock wall aether stage
 else if((my_hitboxID.attack == AT_FTILT_G && my_hitboxID.hbox_num == 2) || (my_hitboxID.attack == AT_BAIR_G

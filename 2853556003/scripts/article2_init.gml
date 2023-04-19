@@ -24,6 +24,9 @@ hit_wall = false;                                   //If the article moves into 
 
 is_waterbomb = true
 
+old_vspeed = 0
+old_hspeed = 0
+
 current_owner = player
 
 //State buffering (for if the article is busy when you send it a state command)
@@ -75,6 +78,11 @@ sprite[2] = sprite_get("bubbleBombBreak");
 bbExplode = hit_fx_create( sprite_get( "bubbleBombExplode" ), 18 );
 vfx_waterfx_small = hit_fx_create( sprite_get( "vfx_waterfx_small" ), 16 );
 vfx_star = hit_fx_create( sprite_get( "vfx_star" ), 21);
+
+vfx_waterhit_medium_sweet = hit_fx_create( sprite_get( "vfx_delta_waterhit_sweet" ), 24);
+vfx_waterhit_medium = hit_fx_create( sprite_get( "vfx_waterhit_medium" ), 24);
+vfx_waterhit_small = hit_fx_create( sprite_get( "vfx_waterhit_small" ), 18 );
+vfx_waterhit_huge = hit_fx_create( sprite_get( "vfx_waterhit_huge" ), 32 );
 
 hitstun = -1
 got_hit_timer = -1

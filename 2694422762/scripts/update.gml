@@ -1,4 +1,8 @@
 //
+if (get_player_color(player) == 29) {
+	alt_glow_timer ++;
+	init_shader();
+}
 //Training toggle
 training_toggle = get_training_cpu_action() != CPU_FIGHT
 
@@ -71,6 +75,86 @@ if (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_STOP || state
         set_attack(AT_TAUNT);
     }
 }
+
+//Card Interaction
+
+with (obj_article1) {
+    if (object_index != obj_article1) continue;
+    if (player_id == other.id && hitstop == 0) {
+        var player_list = ds_list_create();
+        with (oPlayer) {
+            var near = collision_rectangle(other.bbox_left - 128, other.bbox_top - 128, other.bbox_right + 128, other.bbox_bottom + 128, id, 1, 0)
+            if (instance_exists(player_near))
+                ds_list_add(player_list, near);
+        }
+        for (var i = 0; i < ds_list_size(player_list); i++) {
+            var player_near = player_list[|i]
+            if (instance_exists(player_near) && (player_near.state == PS_ATTACK_AIR || player_near.state == PS_ATTACK_GROUND) && is_ditto(player_near, player_id)) {
+                with (player_near) {
+                    if (attack == AT_DAIR) {
+                        if ((window == 2) || (window == 3 && window_timer >= 0 && window_timer <= 12) && !hitpause) { 
+                            var collision_pos = [round(x), round(y) - 11];
+            	        	var collision_size = [64, 11];
+            	        	var collision_rect = 
+            	        		collision_rectangle(collision_pos[0] - collision_size[0] / 2, 
+            	        		collision_pos[1] - collision_size[1] / 2,
+            	        		collision_pos[0] + collision_size[0] / 2,
+            	        		collision_pos[1] + collision_size[1] / 2,
+            	        		other, 0, 0);
+            	        	if (collision_rect != -4 && !hitpause && collision_rect.dair_cooldown <= 0) {
+                                sound_play(asset_get("sfx_shovel_brandish"));
+            		            window = 4;
+            		            window_timer = 0;
+            		            destroy_hitboxes();
+            		            with (collision_rect) {
+                                    state = 0;
+                                    state_timer = 0;
+                                    window = 1;
+                                    window_timer = 0;
+                                    dair_cooldown = 60;
+            		            }
+            	        	}
+                        }
+                    }
+                    if (attack == AT_USPECIAL && window == 5 && !hitpause) {
+                        var collision_pos = [round(x), round(y) - 32];
+                    	var collision_size = [32, 32];
+                    	var collision_rect = 
+                    		collision_rectangle(collision_pos[0] - collision_size[0] / 2, 
+                    		collision_pos[1] - collision_size[1] / 2,
+                    		collision_pos[0] + collision_size[0] / 2,
+                    		collision_pos[1] + collision_size[1] / 2,
+                    		other, 0, 0);
+                    	if (collision_rect != -4 && !hitpause) {
+                            sound_play(asset_get("sfx_shovel_brandish"));
+            	            window = 1;
+            	            window_timer = 0;
+            	            hsp = lengthdir_x(5, -uspecial_angle_real);
+            	            vsp = lengthdir_y(5, uspecial_angle_real);
+            	            old_hsp = hsp;
+            	            old_vsp = vsp;
+            	            hitstop = 5;
+            	            hitpause = true;
+            	            spawn_hit_fx(round(collision_rect.x), round(collision_rect.y), fx_cardhit);
+            	            
+            	            destroy_hitboxes();
+            	            with (collision_rect) {
+                                state = 0;
+                                state_timer = 0;
+                                window = 1;
+                                window_timer = 0;
+            	            }
+                    	}
+                    }
+                }
+            }
+        }
+        ds_list_destroy(player_list);
+    }
+}
+
+#define is_ditto(_source, _target) 
+return (_source.url == _target.url && get_char_info(_source.player, INFO_STR_NAME) == get_char_info(_target.player, INFO_STR_NAME))
 
 #define eyes_same_shade()
 var alt = get_player_color(player);

@@ -74,9 +74,9 @@ set_hitbox_value(AT_DSTRONG_2, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_LIFETIME, 6);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_HITBOX_X, 0);
-set_hitbox_value(AT_DSTRONG_2, 2, HG_HITBOX_Y, -40);
-set_hitbox_value(AT_DSTRONG_2, 2, HG_WIDTH, 84);
-set_hitbox_value(AT_DSTRONG_2, 2, HG_HEIGHT, 90);
+set_hitbox_value(AT_DSTRONG_2, 2, HG_HITBOX_Y, -38);
+set_hitbox_value(AT_DSTRONG_2, 2, HG_WIDTH, 86);
+set_hitbox_value(AT_DSTRONG_2, 2, HG_HEIGHT, 86);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PRIORITY, 7);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_DAMAGE, 8);
@@ -116,6 +116,43 @@ set_hitbox_value(AT_DSTRONG_2, 3, HG_HIT_SFX, sound_get("bair1"));
 set_hitbox_value(AT_DSTRONG_2, 3, HG_VISUAL_EFFECT_Y_OFFSET, 600);
 set_hitbox_value(AT_DSTRONG_2, 3, HG_HITSTUN_MULTIPLIER, 0.9); //reduced hitstun
 set_hitbox_value(AT_DSTRONG_2, 3, HG_TECHABLE, 2); //through platforms
+
+
+//snipe above screen - spawned manually
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HITBOX_TYPE, 2); //projectile
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HITBOX_GROUP, 1); //shares group with floor hitbox
+set_hitbox_value(AT_DSTRONG_2, 4, HG_WINDOW, 3);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_LIFETIME, 1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HITBOX_X, 0);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_WIDTH, 34);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HEIGHT, 2000);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_SHAPE, 1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PRIORITY, 9);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_DAMAGE, 10);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_ANGLE, 50);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HITPAUSE_SCALING, 0.75);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HIT_SFX, sound_get("bair1"));
+set_hitbox_value(AT_DSTRONG_2, 4, HG_VISUAL_EFFECT_Y_OFFSET, 500);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_VISUAL_EFFECT_X_OFFSET, 0);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_VISUAL_EFFECT_Y_OFFSET, 42);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1); //transcendent, can't be interacted with in any way
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DSTRONG_2, 4, HG_PROJECTILE_DESTROY_EFFECT, 1); //none
+set_hitbox_value(AT_DSTRONG_2, 4, HG_HIT_LOCKOUT, 10);
 /*
 
 set_attack_value(AT_DSTRONG_2, AG_SPRITE, sprite_get_pm("dstrong_2"));

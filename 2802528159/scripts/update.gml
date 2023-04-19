@@ -1,1109 +1,582 @@
-if(state == PS_SPAWN && state_timer == 0){
-	sound_stop(sound_get("beep"));
+//don't change
+has_walljump = 0;
+set_victory_portrait(sprite_get(string(plate) + "_portrait"));
+set_victory_sidebar(sprite_get(string(plate) + "_result_small"));
+if get_player_color(player) == 23 || get_player_color(player) == 26{
+	init_shader();
+	if get_player_color(player) == 23 radar_color[@23] = [make_color_rgb(get_color_profile_slot_r(23, 6), get_color_profile_slot_g(23, 6), get_color_profile_slot_b(23, 6)), make_color_rgb(get_color_profile_slot_r(23, 6), get_color_profile_slot_g(23, 6), get_color_profile_slot_b(23, 6)), make_color_rgb(get_color_profile_slot_r(23, 6), get_color_profile_slot_g(23, 6), get_color_profile_slot_b(23, 6))];
+}
+if state == PS_PRATFALL can_fast_fall = 1;
+
+//load attacks to array=========================================================
+if load_atk{
+	for(var n = 0; n < 10; n++){
+	    if n != 0 && n != 2 && n != 3{
+	    	for(var k = 1; k <= get_num_hitboxes(n); k++){
+				array_push(temp1, get_hitbox_value(n, k, HG_ANGLE));
+				array_push(temp2, get_hitbox_value(n, k, HG_HITBOX_X));
+				array_push(temp2, get_hitbox_value(n, k, HG_HITBOX_Y));
+				array_push(temp3, get_hitbox_value(n, k, HG_WIDTH));
+				array_push(temp3, get_hitbox_value(n, k, HG_HEIGHT));
+			}
+	    }
+	    array_push(og_angle, temp1);
+	    array_push(og_pos, temp2);
+	    array_push(og_size, temp3);
+	    temp1 = [];
+		temp2 = [];
+		temp3 = [];
+	}
+	load_atk = 0;
 }
 
-//anger stat differences
-switch(anger_state){
-    case 0:
-    set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 36);
-    set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 40);
-    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 36);
+//special states stuff==========================================================
+switch(state){
+    case PS_DASH_START:
+    if state_timer < 7 hsp = 0;
     break;
-    case 1:
-    set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 30);
-    set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 36);
-    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 30);
-    break;
-    case 2:
-    set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 24);
-    set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 30);
-    set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 24);
+    case PS_FIRST_JUMP:
+    if(state_timer == 1 && !hitstop){
+        y -= 54;
+    }
     break;
 }
 
-//hurtbox wall change
-hurtboxID.image_angle = spr_angle;
-if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (wall == 1 || wall == 2){
-	sprite_change_offset("jab_hurt", 168, 154);
-	sprite_change_offset("ftilt_hurt", 204, 142);
-	sprite_change_offset("dtilt_hurt", 194, 244);
-	sprite_change_offset("utilt_hurt", 194, 262 - 18);
-	sprite_change_offset("fstrong_hurt", 168, 172 - 18);
-	sprite_change_offset("ustrong_hurt", 246, 220 - 18);
-	sprite_change_offset("dstrong_hurt", 256, 322 - 18);
-}else{
-	sprite_change_offset("jab_hurt", 168, 172);
-	sprite_change_offset("ftilt_hurt", 204, 160);
-	sprite_change_offset("dtilt_hurt", 194, 262);
-	sprite_change_offset("utilt_hurt", 194, 262);
-	sprite_change_offset("fstrong_hurt", 168, 172);
-	sprite_change_offset("ustrong_hurt", 246, 220);
-	sprite_change_offset("dstrong_hurt", 256, 322);
-}
+//uspecial single use thingie===================================================
+if !free && wall%360 == 0 && move_cooldown[AT_USPECIAL] move_cooldown[AT_USPECIAL] = 0;
+else if move_cooldown[AT_USPECIAL] && free move_cooldown[AT_USPECIAL] += 1;
 
-//changes the wall variable at the end of the climbing
-if(attack == AT_EXTRA_1 && climb_timer == get_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH) - 1 && climbing == true){
-    spr_dir = prevprev_dir;
-    endclimb = climb_timer;
-    if(wall == 0){
-        climbing = false;
-        if(prev_dir == 1){
-            wall = 1;
-            x += 49;
-            y -= 132;
-            set_state(PS_IDLE);
-        }else if (prev_dir == -1){
-            wall = 2;
-            x -= 49;
-            y -= 132;
-            set_state(PS_IDLE);
-        }
-    }else if(wall == 1){
-        climbing = false;
-        if(prev_dir == 1){
-            wall = 3;
-            x -= 112;
-            y -= 79;
-            set_state(PS_IDLE);
-        }else if(prev_dir == -1){
-            wall = 0;
-            x -= 112;
-            y += 82;
-            set_state(PS_IDLE);
-        }
-    }else if(wall == 2){
-        climbing = false;
-        if(prev_dir == 1){
-            wall = 0;
-            x += 112;
-            y += 82;
-            set_state(PS_IDLE);
-        }else if(prev_dir == -1){
-            wall = 3;
-            x += 112;
-            y -= 79;
-            set_state(PS_IDLE);
-        }
-    }else if(wall == 3){
-        climbing = false;
-        if(prev_dir == 1){
-            wall = 2;
-            x -= 50;
-            y += 132;
-            set_state(PS_IDLE);
-        }else if (prev_dir == -1){
-            wall = 1;
-            x += 50;
-            y += 132;
-            set_state(PS_IDLE);
+//awareness checks==============================================================
+if aware != prev_aware init_shader();
+radx = lerp(radx, x + radar_b_pos[@(wall % 360)/90][@0], 0.4);
+rady = lerp(rady, y - 40 + radar_b_pos[@(wall % 360)/90][@1], 0.4);
+if((radar_img >= 5 || hit_aw) && aware < 2){
+    aware_sound -= (aware_sound > 0? 1: 0);
+    if(collision_line(x + radar_x * spr_dir, y + radar_y, x + (radar_x + 120 * cos(degtorad(radar_angle - 15))) * spr_dir, y + (radar_y - 120 * sin(degtorad(radar_angle - 15))), oPlayer, 1, 1) || collision_line(x + radar_x * spr_dir, y + radar_y, x + (radar_x + 120 * cos(degtorad(radar_angle + 15))) * spr_dir, y + (radar_y - 120 * sin(degtorad(radar_angle + 15))), oPlayer, 1, 1) || collision_line(x + radar_x * spr_dir, y + radar_y, x + (radar_x + 120 * cos(degtorad(radar_angle))) * spr_dir, y + (radar_y - 120 * sin(degtorad(radar_angle))), oPlayer, 1, 1) || hit_aw){
+        if !hit_aw awareness += (awareness < 1000? 10/3: 0)* (has_rune("I") + 1);
+        else awareness += hit_aw * (has_rune("I") + 1);
+        hit_aw = 0;
+        aware = floor(awareness / 500);
+        if aware_sound == 0 && awareness < 1000{
+            sound_play(sound_get("radar_sound"));
+            aware_sound = 80;
+        }else if(awareness >= 1000){
+        	awareness = 1000;
+            suppress_stage_music(0.0, 0.05);
+            sound_play(sound_get("anger_on"));
+            sound_stop(sound_get(get_player_color(player) >= 19 && get_player_color(player) <= 22? "sax_chase": "chase"));
+            sound_play(sound_get(get_player_color(player) >= 19 && get_player_color(player) <= 22? "sax_chase": "chase"));
         }
     }
-}else if(attack == AT_EXTRA_2 && climb_timer == get_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH) - 1 && climbing == true){
-    spr_dir = prevprev_dir;
-    endclimb = climb_timer;
-    if(wall == 0){
-        climbing = false;
-        if(prev_dir == 1){
-            wall = 2;
-            x += 100;
-            y += 86;
-            set_state(PS_IDLE);
-        }else if (prev_dir == -1){
-            wall = 1;
-            x -= 96;
-            y += 86;
-            set_state(PS_IDLE);
-        }
-    }else if(wall == 1){ // to do
-        climbing = false;
-        if(prev_dir == 1){
-            wall = 0;
-            x += 104;
-            set_state(PS_IDLE);
-        }else if(prev_dir == -1){
-            wall = 3;
-            x += 104;
-            y += 80;
-            set_state(PS_IDLE);
-        }
-    }else if(wall == 2){ // to do
-        climbing = false;
-        if(prev_dir == 1){
-            wall = 3;
-            x -= 104;
-            y += 80;
-            set_state(PS_IDLE);
-        }else if(prev_dir == -1){
-            wall = 0;
-            x -= 104;
-            set_state(PS_IDLE);
-        }
-    }else if(wall == 3){ // to do
-        climbing = false;
-        if(prev_dir == 1){
-            wall = 1;
-            x -= 98;
-            y -= 86;
-            set_state(PS_IDLE);
-        }else if (prev_dir == -1){
-            wall = 2;
-            x += 98;
-            y -= 86;
-            set_state(PS_IDLE);
-        }
-    }
-}else if(attack == AT_EXTRA_3 && climb_timer == get_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH) - 1 && climbing == true){
-    spr_dir = prevprev_dir;
-    endclimb = climb_timer;
-    climbing = false;
-    wall = 3;
-    if(prev_dir == 1){
-        spr_dir = -1;
-        y -= 106;
-        set_state(PS_IDLE);
-    }else if (prev_dir == -1){
-        spr_dir = 1;
-        y -= 106;
-        set_state(PS_IDLE);
+}else if(aware == 2){
+    suppress_stage_music(0.0, 0.05);
+    if !has_rune("O") awareness -= (collision_circle(radx, rady, 200, oPlayer, 1, 1)? 0.5: 1.5);
+    if awareness <= 0{
+    	emmi_cancel = 1;
+    	with oPlayer if url = other.url && self != other{
+    		if aware == 2{
+    			other.emmi_cancel = 0;
+    		}
+    	}
+        if emmi_cancel sound_stop(sound_get(get_player_color(player) >= 19 && get_player_color(player) <= 22? "sax_chase": "chase"));
+        sound_play(sound_get("radar_sound"));
+        awareness = 0;
+        aware = 0;
+        hit_aw = 0;
+        init_shader();
     }
 }
 
-//climbing timer
-if(climbing == true) || (state == PS_ATTACK_GROUND && attack == AT_TAUNT_2 && !hitstop){
-    move_cooldown[AT_JAB] = 10;
-    move_cooldown[AT_DATTACK] = 10;
-    move_cooldown[AT_NSPECIAL] = 10;
-    move_cooldown[AT_NSPECIAL_AIR] = 10;
-    move_cooldown[AT_FSPECIAL] += 2;
-    move_cooldown[AT_FSPECIAL_AIR] += 2;
-    move_cooldown[AT_USPECIAL] = 10;
-    move_cooldown[AT_DSPECIAL] += 2;
-    move_cooldown[AT_DSPECIAL_AIR] += 2;
-    move_cooldown[AT_FSTRONG] = 10;
-    move_cooldown[AT_USTRONG] = 10;
-    move_cooldown[AT_DSTRONG] = 10;
-    move_cooldown[AT_FTILT] = 10;
-    move_cooldown[AT_UTILT] = 10;
-    move_cooldown[AT_DTILT] = 10;
-    move_cooldown[AT_NAIR] = 10;
-    move_cooldown[AT_FAIR] = 10;
-    move_cooldown[AT_BAIR] = 10;
-    move_cooldown[AT_DAIR] = 10;
-    move_cooldown[AT_UAIR] = 10;
-    move_cooldown[AT_TAUNT] = 10;
-    climb_timer++;
+var prev_aware = aware;
+
+//plate ========================================================================
+plate_timer -= (plate_timer > 0? 1: 0);
+if !plate soft_armor = (attack == AT_TAUNT && state == PS_ATTACK_GROUND? 10: (attack == AT_TAUNT_2 && state == PS_ATTACK_GROUND? 9999999999: 7));
+if plate_hp > 0 plate = 0;
+if plate_hp > 0 && plate_timer <= 0 && plate_hp < (has_rune("H")? 50: 30){
+    plate_hp++;
+    plate_timer = 20;
+}else if(!plate && plate_hp <= 0 && !free && (state != PS_ATTACK_GROUND || attack != AT_TAUNT_2)){
+    set_attack(AT_EXTRA_1);
+    plate = 1;
+    soft_armor = 999999;
     hsp = 0;
     vsp = 0;
-}else{
-    climb_timer = 0;
 }
 
-if(climb_timer == 0){
-    prevprev_dir = spr_dir;
+//grab protection===============================================================
+if instance_exists(grabp) && (((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_NSPECIAL && attack != AT_NSPECIAL_AIR) || (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)){
+	grabp.state = PS_HITSTUN;
+	grabp.visible = 1;
+	grabp.wrap_time = 0;
+	grabp.perfect_dodging = 0;
+	grabp.invincible = 0;
+	grabp = noone;
+}
+if(!hitstop && sresume == 1){
+	sresume = 0;
+	sound_stop(sound_get(get_player_color(player) >= 19 && get_player_color(player) <= 22? "sax_chase": "chase"));
+	sound_play(sound_get(get_player_color(player) >= 19 && get_player_color(player) <= 22? "sax_chase": "chase"));
+}else if sresume > 1{
+	suppress_stage_music(0.0, 0.05);
+	sresume--;
 }
 
-//wall changes, gravity, movement etc
-switch(wall){
-    case 0:
-    if(state == PS_FIRST_JUMP){
-    	sprite_change_offset("hurtboxxy_air", 62, 114)
-    }else{
-    	sprite_change_offset("hurtboxxy_air", 62, 64)
-    }
-    sprite_change_offset("hurtboxxy", 82, 64);
-    sprite_change_offset("hurtboxxy_wall", 82, 64);
-    if(climbing == false && state != PS_CROUCH && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        hurtboxID.sprite_index = sprite_get("hurtboxxy");
-        hurtboxID.image_angle = 0;
-    }else if(climbing == true && attack == AT_EXTRA_1 && !free){
-        hurtboxID.sprite_index = sprite_get("climb1_hurt");
-        hurtboxID.image_index = 8 / window_timer;
-        hurtboxID.image_angle = 0;
-    }else if(climbing == true && attack == AT_EXTRA_2 && !free){
-        hurtboxID.sprite_index = sprite_get("climb2_hurt");
-        hurtboxID.image_index = 9 / window_timer;
-        hurtboxID.image_angle = 0;
-    }else if(climbing == true && attack == AT_EXTRA_3 && free){
-        hurtboxID.sprite_index = sprite_get("climb3_hurt");
-        hurtboxID.image_index = 10 / window_timer;
-        hurtboxID.image_angle = 0;
-    }
-    if(state == PS_ATTACK_GROUND && attack == AT_TAUNT){
-    	mask_index = sprite_get("taunt_box");
-    }else{
-   	    mask_index = sprite_get("hurtboxxy_wall");
-    }
-    if(attack == AT_USPECIAL && window == 4){
-        mask_index = sprite_get("hurtboxxy_uspecial");
-        hurtboxID.sprite_index = sprite_get("hurtboxxy_uspecial");
-        switch(stored_head){
-			case 0:
-			spr_angle = (spr_dir = 1? -90: 90);
-			break;
-			case 1:
-			spr_angle = (spr_dir = 1? -45: 45);
-			break;
-			case 2:
-			spr_angle = 0;
-			break;
-			case 3:
-			spr_angle = (spr_dir = 1? 45: -45);
-			break;
-			case 4:
-			spr_angle = (spr_dir = 1? 90: -90);
-			break;
-			case 5:
-			spr_angle = (spr_dir = 1? 135: 225);
-			break;
-			case 6:
-			spr_angle = 180;
-			break;
-			case 7:
-			spr_angle = (spr_dir = 1? 225: 135);
-			break;
-		}
-		set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, cos(degtorad(45 * stored_head)) * 40);
-		set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, sin(degtorad(45 * stored_head)) * 40 * -1);
-		gravity_speed = 0;
-		if(window_timer == 1){
-			var tx = x;
-			var ty = y;
-			y = ty - 20;
-			x = tx - 40 * spr_dir;
-		}
-    }else if(window > 4 && window < 9 && attack == AT_USPECIAL){
-    	sprite_change_offset("hurtboxxy_uspecial", 20, 32);
-		if(window_timer == 1){
-			spr_angle = 0;
-		}
-    }else if(window == 9 && attack == AT_USPECIAL){
-    	if(window_timer == 1){
-			spr_angle = 0;
-		}
-    	sprite_change_offset("hurtboxxy_uspecial", 0, 140);
-    }else{
-    	sprite_change_offset("hurtboxxy_uspecial", 20, 32);
-        spr_angle = 0;
-        gravity_speed = 0.5;
-    }
-    sprite_change_offset("0_climb1", 84, 151);
-    sprite_change_offset("1_climb1", 84, 151);
-    sprite_change_offset("climb1_hurt", 168, 302);
-    sprite_change_offset("0_climb2", 86, 100);
-    sprite_change_offset("1_climb2", 86, 100);
-    sprite_change_offset("climb2_hurt", 172, 200);
-    sprite_change_offset("0_idle", 81, 78);
-    sprite_change_offset("1_idle", 81, 78);
-    sprite_change_offset("0_walk", 42, 36);
-    sprite_change_offset("1_walk", 42, 36);
-    sprite_change_offset("0_dash", 80, 66);
-    sprite_change_offset("1_dash", 80, 66);
-    if(right_down) && !free{
-        if(place_meeting(x + 2, y, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK)){
-            set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
-            set_attack(AT_EXTRA_1);
-            climbing = true;
-        }else if !collision_point(x + 80, y + 30, asset_get("solid_32_obj"), false, true) && position_meeting(x + 70, y + 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK){
-            set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
-            set_attack(AT_EXTRA_2);
-            climbing = true;
-        }
-    }else if(left_down) && !free{
-        if(place_meeting(x - 2, y, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK)){
-            set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
-            set_attack(AT_EXTRA_1);
-            climbing = true;
-        }else if !collision_point(x - 80, y + 30, asset_get("solid_32_obj"), false, true) && position_meeting(x - 70, y + 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK){
-            set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
-            set_attack(AT_EXTRA_2);
-            climbing = true;
-        }
-    }else if(up_down && position_meeting(x + 70, y - 115 + 26, asset_get("solid_32_obj")) && position_meeting(x - 70, y - 115 + 26, asset_get("solid_32_obj")) && climbing == false && (state == PS_IDLE_AIR || state == PS_DOUBLE_JUMP || state == PS_FIRST_JUMP) && wall_gauge >= 300){
-        set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get(string(plate_state) + "_climb3"));
-        set_attack(AT_EXTRA_3);
-        climbing = true;
-    }
-    break;
-    
-    case 1:
-    free = true;
-    if(spr_dir == 1){
-        sprite_change_offset("hurtboxxy_diag", 46, 82);
-        sprite_change_offset("hurtboxxy_wall_diag", 46, 82);
-    }else{
-        sprite_change_offset("hurtboxxy_diag", 18, 82);
-        sprite_change_offset("hurtboxxy_wall_diag", 18, 82);
-    }
-    if(climbing == false && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        hurtboxID.sprite_index = sprite_get("hurtboxxy_diag");
-        hurtboxID.image_angle = 0;
-    }else if(climbing == true && attack == AT_EXTRA_1){
-        hurtboxID.sprite_index = sprite_get("climb1_hurt");
-        hurtboxID.image_angle = 90;
-        hurtboxID.image_index = 8 / window_timer;
-    }else if(climbing == true && attack == AT_EXTRA_2){
-        hurtboxID.sprite_index = sprite_get("climb2_hurt");
-        hurtboxID.image_angle = 90;
-        hurtboxID.image_index = 9 / window_timer;
-    }
-    if(state == PS_ATTACK_GROUND && attack == AT_TAUNT){
-    	mask_index = sprite_get("taunt_box");
-    }else{
-   	    mask_index = sprite_get("hurtboxxy_wall_diag");
-    }
-    spr_angle = 90;
-    sprite_change_offset("0_climb1", 84, 141);
-    sprite_change_offset("1_climb1", 84, 141);
-    sprite_change_offset("climb1_hurt", 168, 282);
-    sprite_change_offset("0_climb2", 87, 91);
-    sprite_change_offset("1_climb2", 87, 91);
-    sprite_change_offset("climb2_hurt", 174, 182);
-    sprite_change_offset("0_idle", 81, 69);
-    sprite_change_offset("1_idle", 81, 69);
-    sprite_change_offset("0_walk", 42, 27);
-    sprite_change_offset("1_walk", 42, 27);
-    sprite_change_offset("0_dash", 80, 58);
-    sprite_change_offset("1_dash", 80, 58);
-    hsp = 15;
-    gravity_speed = 0;
-    if(up_down) && place_meeting(x + 4, y, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        switch(anger_state){
-            case 0:
-            state = PS_WALK;
-            vsp = -3;
-            break;
-            case 1:
-            state = PS_WALK;
-            vsp = -4;
-            break;
-            case 2:
-            state = PS_DASH;
-            vsp = -6;
-            break;
-        }
-        spr_dir = 1;
-    }else if(down_down) && place_meeting(x + 4, y, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        switch(anger_state){
-            case 0:
-            state = PS_WALK;
-            vsp = 3;
-            break;
-            case 1:
-            state = PS_WALK;
-            vsp = 4;
-            break;
-            case 2:
-            state = PS_DASH;
-            vsp = 6;
-            break;
-        }
-        spr_dir = -1;
-    }else if place_meeting(x + 4, y, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        state = PS_IDLE;
-        vsp = 0;
-    }else if(climbing == false && state != PS_IDLE && state != PS_WALK && state != PS_DASH && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        wall = 0;
-    }
-    if(up_down){
-        if(place_meeting(x, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
-            set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
-            set_attack(AT_EXTRA_1);
-            climbing = true;
-        }else if !collision_point(x + 30, y - 80, asset_get("solid_32_obj"), false, true) && position_meeting(x + 60, y - 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
-            set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
-            set_attack(AT_EXTRA_2);
-            climbing = true;
-        }
-    }else if(down_down){
-        if(place_meeting(x, y + 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
-            set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
-            set_attack(AT_EXTRA_1);
-            climbing = true;
-        }else if !collision_point(x + 30, y + 80, asset_get("solid_32_obj"), false, true) && position_meeting(x + 60, y + 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
-            set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
-            set_attack(AT_EXTRA_2);
-            climbing = true;
-        }
-    }
-    //this enables tilts and strongs on walls
-    if(state != PS_ATTACK_AIR){
-        if(strong_down){
-            if(left_down){
-                set_attack(AT_USTRONG);
-            }else if(right_down){
-                set_attack(AT_DSTRONG);
-            }else if(up_down || down_down || strong_down){
-                set_attack(AT_FSTRONG);
-            }
-        }else if(left_strong_pressed){
-        	set_attack(AT_USTRONG);
-        }else if(right_strong_pressed){
-            set_attack(AT_DSTRONG);
-        }else if(up_strong_pressed || down_strong_pressed){
-        	set_attack(AT_FSTRONG);
-        }
-    }
-    if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        if(attack_down){
-            if(left_down){
-                set_attack(AT_UTILT);
-            }else if(right_down){
-                set_attack(AT_DTILT);
-            }else if(up_down || down_down){
-                set_attack(AT_FTILT);
-            }else{
-                set_attack(AT_JAB);
-            }
-        }
-    }else{
-        vsp = 0;
-    }
-    if(jump_pressed && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-    	spr_dir = 1;
-    	spr_angle = 0;
-    	draw_x = -64 * spr_dir;
-    	set_attack(AT_NTHROW);
-    }
-    break;
-    
-    case 2:
-    free = true;
-    if(spr_dir == 1){
-        sprite_change_offset("hurtboxxy_diag", 18, 82);
-        sprite_change_offset("hurtboxxy_wall_diag", 18, 82);
-    }else{
-        sprite_change_offset("hurtboxxy_diag", 46, 82);
-        sprite_change_offset("hurtboxxy_wall_diag", 46, 82);
-    }
-    if(climbing == false && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        hurtboxID.sprite_index = sprite_get("hurtboxxy_diag");
-        hurtboxID.image_angle = 0;
-    }else if(climbing == true && attack == AT_EXTRA_1){
-        hurtboxID.sprite_index = sprite_get("climb1_hurt");
-        hurtboxID.image_index = 8 / window_timer;
-        hurtboxID.image_angle = 270;
-    }else if(climbing == true && attack == AT_EXTRA_2){
-        hurtboxID.sprite_index = sprite_get("climb2_hurt");
-        hurtboxID.image_index = 9 / window_timer;
-        hurtboxID.image_angle = 270;
-    }
-    if(state == PS_ATTACK_GROUND && attack == AT_TAUNT){
-    	mask_index = sprite_get("taunt_box");
-    }else{
-   	    mask_index = sprite_get("hurtboxxy_wall_diag");
-    }
-    spr_angle = 270;
-    sprite_change_offset("0_climb1", 84, 141);
-    sprite_change_offset("1_climb1", 84, 141);
-    sprite_change_offset("climb1_hurt", 168, 282);
-    sprite_change_offset("0_climb2", 87, 91);
-    sprite_change_offset("1_climb2", 87, 91);
-    sprite_change_offset("climb2_hurt", 174, 182);
-    sprite_change_offset("0_idle", 81, 69);
-    sprite_change_offset("1_idle", 81, 69);
-    sprite_change_offset("0_walk", 42, 27);
-    sprite_change_offset("1_walk", 42, 27);
-    sprite_change_offset("0_dash", 80, 58);
-    sprite_change_offset("1_dash", 80, 58);
-    hsp = -15;
-    gravity_speed = 0;
-    if(down_down) && place_meeting(x - 4, y, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        switch(anger_state){
-            case 0:
-            state = PS_WALK;
-            vsp = 3;
-            break;
-            case 1:
-            state = PS_WALK;
-            vsp = 4;
-            break;
-            case 2:
-            state = PS_DASH;
-            vsp = 6;
-            break;
-        }
-        spr_dir = 1;
-    }else if(up_down) && place_meeting(x - 4, y, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        switch(anger_state){
-            case 0:
-            state = PS_WALK;
-            vsp = -3;
-            break;
-            case 1:
-            state = PS_WALK;
-            vsp = -4;
-            break;
-            case 2:
-            state = PS_DASH;
-            vsp = -6;
-            break;
-        }
-        spr_dir = -1;
-    }else if place_meeting(x - 4, y, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        state = PS_IDLE;
-        vsp = 0;
-    }else if(climbing == false && state != PS_IDLE && state != PS_WALK && state != PS_DASH && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        wall = 0;
-    }
-    if(up_down){
-        if(place_meeting(x, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
-            set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
-            set_attack(AT_EXTRA_1);
-            climbing = true;
-        }else if !collision_point(x - 30, y - 80, asset_get("solid_32_obj"), false, true) && position_meeting(x - 60, y - 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
-            set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
-            set_attack(AT_EXTRA_2);
-            climbing = true;
-        }
-    }else if(down_down){
-        if(place_meeting(x, y + 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
-            set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
-            set_attack(AT_EXTRA_1);
-            climbing = true;
-        }else if !collision_point(x - 30, y + 80, asset_get("solid_32_obj"), false, true) && position_meeting(x - 60, y + 70, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
-            set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
-            set_attack(AT_EXTRA_2);
-            climbing = true;
-        }
-    }
-    //this enables tilts and strongs on walls
-    if(state != PS_ATTACK_AIR){
-        if(strong_down){
-            if(left_down){
-                set_attack(AT_DSTRONG);
-            }else if(right_down){
-                set_attack(AT_USTRONG);
-            }else if(up_down || down_down || strong_down){
-                set_attack(AT_FSTRONG);
-            }
-        }else if(left_strong_pressed){
-        	set_attack(AT_DSTRONG);
-        }else if(right_strong_pressed){
-        	set_attack(AT_USTRONG);
-        }else if(up_strong_pressed || down_strong_pressed){
-        	set_attack(AT_FSTRONG);
-        }
-    }
-    if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        if(attack_down){
-            if(left_down){
-                set_attack(AT_DTILT);
-            }else if(right_down){
-                set_attack(AT_UTILT);
-            }else if(up_down || down_down){
-                set_attack(AT_FTILT);
-            }else{
-                set_attack(AT_JAB);
-            }
-        }
-    }else{
-        vsp = 0;
-    }
-    if(jump_pressed && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-    	spr_dir = -1;
-    	spr_angle = 0;
-    	draw_x = -64 * spr_dir;
-    	set_attack(AT_NTHROW);
-    }
-    break;
-    
-    case 3:
-    sprite_change_offset("hurtboxxy", 82, 0);
-    sprite_change_offset("hurtboxxy_wall", 82, 0);
-    if(climbing == false && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        air_hurtbox_spr = -1;
-        hurtboxID.image_angle = 0;
-    }else if(climbing == true && attack == AT_EXTRA_1){
-        hurtboxID.sprite_index = sprite_get("climb1_hurt");
-        hurtboxID.image_index = 8 / window_timer;
-        hurtboxID.image_angle = 180;
-    }else if(climbing == true && attack == AT_EXTRA_2){
-        hurtboxID.sprite_index = sprite_get("climb2_hurt");
-        hurtboxID.image_index = 9 / window_timer;
-        hurtboxID.image_angle = 180;
-    }
-    if(state == PS_ATTACK_GROUND && attack == AT_TAUNT){
-    	mask_index = sprite_get("taunt_box");
-    }else{
-   	    mask_index = sprite_get("hurtboxxy_wall");
-    }
-    spr_angle = 180;
-    sprite_change_offset("0_climb1", 84, 151);
-    sprite_change_offset("1_climb1", 84, 151);
-    sprite_change_offset("climb1_hurt", 168, 302);
-    sprite_change_offset("0_climb2", 86, 100);
-    sprite_change_offset("1_climb2", 86, 100);
-    sprite_change_offset("climb2_hurt", 172, 200);
-    sprite_change_offset("0_idle", 81, 78);
-    sprite_change_offset("1_idle", 81, 78);
-    sprite_change_offset("0_walk", 42, 36);
-    sprite_change_offset("1_walk", 42, 36);
-    sprite_change_offset("0_dash", 80, 67);
-    sprite_change_offset("1_dash", 80, 67);
-    gravity_speed = 0;
-    vsp = -15;
-    if(left_down) && place_meeting(x, y - 4, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        switch(anger_state){
-            case 0:
-            state = PS_WALK;
-            hsp = -3;
-            break;
-            case 1:
-            state = PS_WALK;
-            hsp = -4;
-            break;
-            case 2:
-            state = PS_DASH;
-            hsp = -6;
-            break;
-        }
-        spr_dir = 1;
-    }else if(right_down) && place_meeting(x, y - 4, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        switch(anger_state){
-            case 0:
-            state = PS_WALK;
-            hsp = 3;
-            break;
-            case 1:
-            state = PS_WALK;
-            hsp = 4;
-            break;
-            case 2:
-            state = PS_DASH;
-            hsp = 6;
-            break;
-        }
-        spr_dir = -1;
-    }else if place_meeting(x, y - 4, asset_get("solid_32_obj")) && climbing == false && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND{
-        state = PS_IDLE;
-        hsp = 0;
-    }else if(climbing == false && state != PS_IDLE && state != PS_WALK && state != PS_DASH && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        wall = 0;
-    }
-    if(right_down){
-        if(place_meeting(x + 2, y, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
-            set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
-            set_attack(AT_EXTRA_1);
-            climbing = true;
-        }else if !collision_point(x + 80, y - 30, asset_get("solid_32_obj"), false, true) && position_meeting(x + 70, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
-            set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
-            set_attack(AT_EXTRA_2);
-            climbing = true;
-        }
-    }else if(left_down){
-        if(place_meeting(x - 2, y, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH)){
-            set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get(string(plate_state) + "_climb1"));
-            set_attack(AT_EXTRA_1);
-            climbing = true;
-        }else if !collision_point(x - 80, y - 30, asset_get("solid_32_obj"), false, true) && position_meeting(x - 70, y - 2, asset_get("solid_32_obj")) && climb_timer == 0 && climbing == false && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
-            set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get(string(plate_state) + "_climb2"));
-            set_attack(AT_EXTRA_2);
-            climbing = true;
-        }
-    }
-    //this enables tilts and strongs on walls
-    if(state != PS_ATTACK_AIR){
-        if(strong_down){
-            if(down_down){
-                set_attack(AT_USTRONG);
-            }else if(up_down){
-                set_attack(AT_DSTRONG);
-            }else if(left_down || right_down || strong_down){
-                set_attack(AT_FSTRONG);
-            }
-        }else if(down_strong_pressed){
-        	set_attack(AT_USTRONG);
-        }else if(up_strong_pressed){
-        	set_attack(AT_DSTRONG);
-        }else if(left_strong_pressed || right_strong_pressed){
-        	set_attack(AT_FSTRONG);
-        }
-    }
-    if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-        if(attack_down){
-            if(down_down){
-                set_attack(AT_UTILT);
-            }else if(up_down){
-                set_attack(AT_DTILT);
-            }else if(left_down || right_down){
-                set_attack(AT_FTILT);
-            }else{
-                set_attack(AT_JAB);
-            }
-        }
-    }else{
-        hsp = 0;
-    }
-    if(jump_pressed && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-    	spr_angle = 0;
-    	y += 201;
-    	spr_dir *= -1;
-    	set_attack(AT_DTHROW);
-    }
-    break;
-}
 
-//aerial disable
-if(wall != 0){
-    move_cooldown[AT_NAIR] = 10;
-    move_cooldown[AT_FAIR] = 10;
-    move_cooldown[AT_BAIR] = 10;
-    move_cooldown[AT_DAIR] = 10;
-    move_cooldown[AT_UAIR] = 10;
-    move_cooldown[AT_NSPECIAL] = 10;
-    if(move_cooldown[AT_FSPECIAL] <= 5){
-    	move_cooldown[AT_FSPECIAL] = 5;
-    }
-    if(move_cooldown[AT_DSPECIAL] <= 5){
-    	move_cooldown[AT_DSPECIAL] = 5;
-    }
-    move_cooldown[AT_NSPECIAL_AIR] = 10;
-    move_cooldown[AT_DSPECIAL_AIR] = 10;
-    move_cooldown[AT_FSPECIAL_AIR] = 10;
-    move_cooldown[AT_USPECIAL] = 10;
-}
-
-//anim timer for wall stuff
-if(special_anim_timer < 1000){
-    special_anim_timer++
-}else{
-    special_anim_timer = 0;
-}
-
-//crawling code
-if(state == PS_CROUCH){
-    can_move = true;
-    if(right_down){
-        crawling = true;
-        hsp = 3;
-        spr_dir = 1;
-    }else if(left_down){
-        crawling = true;
-        hsp = -3;
-        spr_dir = -1;
-    }else{
-        hsp = 0;
-        crawling = false;
-    }
-}else{
-    crawling = false;
-}
-
-//plate stat changes and stuff
-set_victory_portrait(sprite_get(string(plate_state) + "_portrait"));
-set_victory_sidebar(sprite_get(string(plate_state) + "_result_small"));
-
-plate_damage += get_player_damage(player) - prev_damage;
-prev_damage = get_player_damage(player);
-if(plate_damage < 0){
-	plate_damage = 0;
-}
-
-if(plate_timer == 40 && plate_damage < (has_rune("H")? 40: 30)){
-	plate_timer = 0;
-	plate_damage -= (plate_damage > 0? 1: 0);
-}else if(plate_damage < (has_rune("H")? 40: 30)){
-	plate_timer++;
-}
-
-if(plate_damage >= (has_rune("H")? 40: 30) && plate_state == 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-	set_attack(AT_TAUNT_2);
-	invincible = false;
-    plate_state = 1;
-}else if(plate_damage < (has_rune("H")? 40: 30) && plate_state == 1){
-    plate_state = 0;
-}
-
-if(state == PS_ATTACK_GROUND && attack == AT_TAUNT_2){
-	soft_armor = 999999999999;
-}else{
-	soft_armor = 0;
-}
-
-if(plate_state == 0){
-    soft_armor = (attack = AT_TAUNT && state = PS_ATTACK_GROUND? 8.5: 7.5);
-    walk_speed          = 3.25;
-    initial_dash_speed  = 6;
-    dash_speed          = 6.5;	
-}else if(plate_state == 1){
-	soft_armor = ((attack = AT_EXTRA_1 || attack = AT_EXTRA_2 || attack = AT_EXTRA_3) && (state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR)? 9999999999999: 0);
-    walk_speed          = 2.25;
-    initial_dash_speed  = 5;
-    dash_speed          = 5.5;	
-}
-
-//jumpsquat
-if(state == PS_JUMPSQUAT){
-    hsp = 0;
-}
-
-//anger value stuff
-if(anger_value > 0 && anger_state == 2){
-    anger_value -= (has_rune("O")? 0: (instance_exists(collision_circle(radar_posx, radar_posy - 20, 200, oPlayer, 1, 1))? 1: 2));
-}
-radar_posx = lerp(radar_posx, x, 0.2);
-radar_posy = lerp(radar_posy, y - 20, 0.2);
-
-if(anger_value < 500 && anger_state != 2){
-    anger_state = 0;
-    init_shader();
-}else if(anger_value < 1000 && anger_state != 2){
-    anger_state = 1;
-    init_shader();
-}else if(anger_value >= 1000){
-    anger_state = 2;
-    if(sound_effect == 0){
-    	sound_stop(sound_get("beep"));
-    	beep_sound = 0;
-    	sound_play(sound_get("anger_on"), false, false, 100);	
-    }else if(sound_effect == 1){
-    	beep_sound = 0;
-    	sound_play(sound_get("tur_there_you_are"), false, false, 1);	
-    }
-    init_shader();
-}else if(anger_state == 2 && anger_value == 2){
-    anger_state = 0;
-    init_shader();
-}
-
-if(bar_glow > 0.4){
-    bar_glow -= 0.025;
-}else if(bar_glow == 0.4){
-    bar_glow = -0.4;
-}else if(bar_glow > -1 && bar_glow < 0){
-    bar_glow -= 0.025;
-}else if(bar_glow == -1){
-    bar_glow = 1;
-}
-
-//nspecial
-if(attack == AT_NSPECIAL && free && wall == 0 && state == PS_ATTACK_GROUND){
-    attack = AT_NSPECIAL_AIR;
-    hurtboxID.sprite_index = sprite_get("nspecial_air_hurt");
-}
-
-//fspecial
-if(attack == AT_FSPECIAL && free && wall == 0 && state == PS_ATTACK_GROUND){
-    attack = AT_FSPECIAL_AIR;
-    hurtboxID.sprite_index = sprite_get("fspecial_air_hurt");
-}
-if(instance_exists(ice_victim) && ice_victim.emmi_frozen == true){
-    move_cooldown[AT_FSPECIAL] = 420;
-    ice_victim.state = PS_HITSTUN;
-    ice_victim.state_timer = 0;
-    if(ice_size == false){
-        ice_victim.hitstop = (has_rune("N")? 120: 70);
-        ice_size = true;
-        ice_victim.y -= 0.1;
-    }
-    ice_victim.hsp = 0;
-    ice_victim.vsp = 0;
-    ice_victim.hitstun = true;
-    if(ice_victim.hitstop <= 0){
-        ice_victim.emmi_frozen = false;
-    }
-}else{
-    ice_size = false;
-}
-
-//dspecial
-if(attack == AT_DSPECIAL && free && wall == 0){
-    attack = AT_DSPECIAL_AIR;
-    hurtboxID.sprite_index = sprite_get("dspecial_air_hurt");
-}
-if(instance_exists(shock_victim) && shock_victim.emmi_shocked == true){
-    move_cooldown[AT_DSPECIAL] = 420;
-    shock_victim.state_timer = 0;
-    shock_victim.hitstun = true;
-    emmi_shock_timer--;
-    if(shock_victim.y > room_height){
-    	emmi_shock_timer = 0;
-    }
-    if(emmi_shock_timer == 0){
-        shock_victim.emmi_shocked = false;
-        shock_victim.sprite_xoffset = 0;
-    }
-}
-
-//uspecial
-if(on_cooldown == 1){
-	move_cooldown[AT_USPECIAL] = 2;
-}
-if(!free){
-    on_cooldown = 0;
-}
-
-if(attack == AT_USPECIAL && window > 4 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
-	wall = temp_wall;
-}
-
-//dattack
-if(spark_timer > 0){
-	spark_timer--;
-}else{
-	stored_spark = false;
-}
-
-//walljumps
-if(!free){
-	max_djumps = 1;
-}
-
-//climb gauge
-if(wall != 0 && wall_gauge > 0 && !has_rune("G")){
-	wall_gauge -= (wall == 3? 4: 2);
-}else if(wall_gauge < 1000){
-	wall_gauge += (free? 1: (wall_gauge <= 995? 5: 1000 - wall_gauge));
-}
-
-if(wall_gauge == 0){
-	wall = 0;
-}
-
-//jump_fix
-if(prev_state == PS_FIRST_JUMP && state == PS_IDLE_AIR && state_timer == 1){
-	y -= 57;
-}
-
-//radar
-if(state == PS_IDLE || state == PS_IDLE_AIR || state == PS_WALK || state == PS_DASH_START || state == PS_DASH || state == PS_DASH_STOP) && anger_state != 2 && wall == 0{
-	radar_state = 1;
-}else{
-	radar_state = 0;
-}
-if(radar_state == 0 && radar_img > 0){
-	radar_img -= 1.5;
-}else if(radar_state == 1 && radar_img < 9){
-	radar_img += 1.5;
-}
-if(free){
-	radar_angle = -35;
-}else{
-	radar_angle = 0;
-}
-switch(state){
-	case PS_SPAWN:
-	radar_x = 120;
-	radar_y = -42;
-	radar_hbox_x = 162;
-	radar_hbox_y = -42;
-	break;
-	case PS_IDLE:
-	radar_x = 120;
-	radar_y = -42;
-	radar_hbox_x = 162;
-	radar_hbox_y = -42;
-	break;
-	case PS_IDLE_AIR:
-	radar_x = 104;
-	radar_y = 14;
-	radar_hbox_x = 139;
-	radar_hbox_y = 39;
-	break;
-	case PS_WALK:
-	radar_x = 120;
-	radar_y = -36;
-	radar_hbox_x = 162;
-	radar_hbox_y = -36;
-	break;
-	case PS_DASH_START:
-	radar_x = 114;
-	radar_y = -32;
-	radar_hbox_x = 156;
-	radar_hbox_y = -32;
-	break;
-	case PS_DASH:
-	radar_x = 114;
-	radar_y = -22;
-	radar_hbox_x = 156;
-	radar_hbox_y = -22;
-	break;
-	case PS_DASH_STOP:
-	radar_x = 116;
-	radar_y = -32;
-	radar_hbox_x = 158;
-	radar_hbox_y = -32;
-	break;
-}
-if(radar_state == 1 && radar_img >= 5 && anger_state != 2 && (collision_circle(x + radar_hbox_x * spr_dir, y + radar_hbox_y, 30 + (has_rune("B")? 20: 0), oPlayer, false, true) || collision_line(x + 40 * spr_dir, y - 40, x + radar_hbox_x * spr_dir, y + radar_hbox_y, oPlayer, false, true)) && anger_value < 1000){
-	anger_value += (has_rune("I")? 8: 4);
-	if(radar_sound == 0){
-		radar_sound = 1;
-		if(sound_effect == 0){
-			sound_play(sound_get("radar_sound"), true, false, 100);
-		}else if(sound_effect == 1){
-			var soundberg = radar_turret[random_func_2(abs(floor(x % 200)), 3, true)]
-			sound_play(sound_get(soundberg),false, false, 1);
-		}
-	}
-}else{
-	radar_sound = 0;
-	if(sound_effect == 0){
-		sound_stop(sound_get("radar_sound"));
-	}else if(sound_effect == 1){
-		sound_stop(soundberg);
-	}
-}
-
-//turn
-if(state == PS_WALK_TURN || state == PS_DASH_TURN){
-	turned = 1;
-}
-if(turned == 1 && state != PS_WALK_TURN && prev_state != PS_DASH_TURN && state_timer == 0){
-	turned = 0;
-	x += 26 * spr_dir;
-}
-//sound
-beep_timer -= 1;
-if(sound_effect == 0){
-	if(beep_sound == 0 && beep_timer <= 0 && anger_state != 2){
-		sound_play(sound_get("beep"), false, false, 100);
-		beep_timer = 330;
-	}
-}else if(sound_effect == 1){
-	beep_turret_timer--;
-	hit_turret--;
-	if(beep_turret_timer <= 0 && anger_state <= 1){
-		sound_play(sound_get(beep_turret[random_func_2(120, 4, true)]), false, false, 1);
-		beep_turret_timer = 300;
-	}
-}
-//rollfix
-if state == PS_ROLL_FORWARD && state_timer == 28{
-	state = PS_IDLE;
-	spr_dir *= -1;
-}
-//parry fix
+//parry fix=====================================================================
 if(attack == AT_UTHROW && state == PS_PRATLAND && pratcancel == 0){
 	state = PS_IDLE;
 	pratcancel = 1;
 }
-//sound stuff
-sound_select -= (sound_select > 0? 1: 0);
-if(state == PS_SPAWN){
-	if(taunt_pressed && sound_select == 0){
-		sound_effect += (sound_effect = 2? -2: 1);
-		sound_select = 8;
-		sound_play(sound_get("hud_select"));
+
+//fspecial refresh==============================================================
+with oPlayer if self != other{
+	if(state != PS_WRAPPED){
+		emmi_fr = 0;
 	}
 }
-//rune C
-if(has_rune("C") && wall == 0 && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-	create_hitbox(AT_TAUNT_2, 1, x, y);
-}
-//airdodge fix
-has_airdodge = airdodge_cooldown;
-if(state == PS_AIR_DODGE){
-	airdodge_cooldown = 0;
-}
-if(!free && wall == 0){
-	airdodge_cooldown = 1;
+
+//dspecial stun=================================================================
+with oPlayer if self != other && emmi_st{
+	emmi_st--;
+	hitstun = 1;
+	state_timer = 0;
+	if y > room_height emmi_st = 0;
+	if hitstop emmi_st = 0;
+	with other{move_cooldown[AT_DSPECIAL] = (has_rune("M")? 0: 200)}
+	if !(emmi_st % 20) spawn_hit_fx(x, y - char_height / 2 + 30, 255);
 }
 
-//constant variables
-visible = true;
-has_walljump = false;
-if(wall != 0){
-    djumps = 1;
+//fspecial air and dspecial air landing lag=====================================
+if(!free && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && ((attack == AT_FSPECIAL_AIR || attack == AT_DSPECIAL_AIR))){
+	if attack == AT_FSPECIAL_AIR && window == 1 move_cooldown[AT_FSPECIAL] = (has_rune("M")? 0: 30);
+	else if window == 1 move_cooldown[AT_DSPECIAL] = (has_rune("M")? 0: 30);
+	state = PS_LANDING_LAG;
+	state_timer = 0;
 }
-prev_dir = spr_dir;
+
+//height reset==================================================================
+if(state != PS_ATTACK_GROUND && mask_index = sprite_get("taunt_box")){
+	state = PS_IDLE_AIR;
+	state_timer = 0;
+	char_height = lerp(char_height, 110, 0.6);
+	sound_stop(sound_get("beep"));
+	mask_index = sprite_get("def_mask");
+}
+if state != PS_ATTACK_GROUND || attack != AT_DATTACK sound_stop(sound_get("boost_run"));
+
+//wall stuff====================================================================
+if wall % 360 != 0{
+	move_cooldown[AT_NAIR] = 10;
+	move_cooldown[AT_FAIR] = 10;
+	move_cooldown[AT_UAIR] = 10;
+	move_cooldown[AT_BAIR] = 10;
+	move_cooldown[AT_DAIR] = 10;
+	move_cooldown[AT_NSPECIAL] = 10;
+	move_cooldown[AT_FSPECIAL] = 80;
+	move_cooldown[AT_DSPECIAL] = 80;
+	move_cooldown[AT_USPECIAL] = move_cooldown[AT_USPECIAL];
+}
+if wall_cool > 0 wall_cool--;
+switch (wall % 360){
+	case 0:
+	if collision_line(x, y - 40, x + 92 * spr_dir, y - 40, asset_get("par_block"), 1, 1) && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !wall_cool && !free && state != PS_HITSTUN && state != PS_HITSTUN_LAND{
+		set_attack_value(AT_FTHROW, AG_SPRITE, sprite_get(string(plate) + "26"));
+		set_attack(AT_FTHROW);
+		hurtboxID.sprite_index = sprite_get("climb1_hurt");
+		soft_armor = 999999;
+	}
+	if collision_rectangle(x + wall_c[(wall%360)/90][0], y + wall_c[(wall%360)/90][1], x + wall_c[(wall%360)/90][2], y + wall_c[(wall%360)/90][3], asset_get("par_block"), 1, 1) && !collision_line(x + 92 * spr_dir, y - 1, x + 92 * spr_dir, y + 30, asset_get("par_block"), 1, 1) && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !wall_cool && !free && (spr_dir? right_down: left_down) && state == PS_WALK{
+		set_attack_value(AT_DTHROW, AG_SPRITE, sprite_get(string(plate) + "28"));
+		set_attack(AT_DTHROW);
+		hurtboxID.sprite_index = sprite_get("climb2_hurt");
+		soft_armor = 999999;
+	}
+	break;
+	case 90:
+	free = 0;
+	has_airdodge = 0;
+	sound_stop(asset_get("sfx_quick_dodge"));
+	can_fast_fall = 0;
+	if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR hsp = 4;
+	//wall_controls
+	if turning && statet < 20{
+		state = PS_WALK_TURN;
+		vsp = 0;
+	}else if turning && statet = 20{
+		turning = 0;
+	}
+	if state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND && !up_down && !down_down{
+		state = PS_IDLE;
+		vsp = 0;
+	}
+	if up_down && state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		if spr_dir{
+			vsp = -4 - (aware + has_rune("D")) * 2;
+			state = PS_WALK;
+		}else{
+			statet = 0;
+			turning = 1;
+			state = PS_WALK_TURN;
+			spr_dir *= -1;
+			vsp = 0;
+		}
+	}else if down_down && state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		if spr_dir{
+			statet = 0;
+			turning = 1;
+			state = PS_WALK_TURN;
+			spr_dir *= -1;
+			vsp = 0;
+		}else{
+			vsp = 4 + (aware + has_rune("D")) * 2;
+			state = PS_WALK;
+		}
+	}
+	//wall attacks
+	if state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		var dir = (joy_pad_idle? 4: floor((floor(joy_dir/45)%8)/2 + .5)%4);
+		og_dir = spr_dir;
+		if attack_pressed{
+			vsp = 0;
+			switch(dir){
+				case 0:
+				set_attack(AT_DTILT);
+				break;
+				case 1:
+				spr_dir = 1;
+				og_dir = spr_dir;
+				set_attack(AT_FTILT);
+				break;
+				case 2:
+				set_attack(AT_UTILT);
+				break;
+				case 3:
+				spr_dir = -1;
+				og_dir = spr_dir;
+				set_attack(AT_FTILT);
+				break;
+				case 4:
+				set_attack(AT_JAB);
+				break;
+			}
+		}else if right_strong_pressed || up_strong_pressed || left_strong_pressed || down_strong_pressed{
+			vsp = 0;
+			if right_strong_pressed{
+				set_attack(AT_DSTRONG);
+			}else if up_strong_pressed{
+				spr_dir = 1;
+				og_dir = spr_dir;
+				set_attack(AT_FSTRONG);
+			}else if left_strong_pressed{
+				set_attack(AT_USTRONG);
+			}else if down_strong_pressed{
+				spr_dir = -1;
+				og_dir = spr_dir;
+				set_attack(AT_FSTRONG);
+			}
+		}
+		spr_dir = og_dir;
+	}
+	state_timer = statet;
+	statet++;
+	if collision_line(x - 40, y, x - 40, y - 92 * spr_dir, asset_get("par_block"), 1, 1) && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !wall_cool && state != PS_HITSTUN && state != PS_HITSTUN_LAND{
+		set_attack_value(AT_FTHROW, AG_SPRITE, sprite_get(string(plate) + "26"));
+		set_attack(AT_FTHROW);
+		hurtboxID.sprite_index = sprite_get("climb1_hurt");
+		soft_armor = 999999;
+	}
+	if(jump_pressed && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+		set_attack_value(AT_FSTRONG_2, AG_SPRITE, sprite_get(string(plate) + "20"));
+		spr_dir = 1;
+		set_attack(AT_FSTRONG_2);
+		hurtboxID.sprite_index = sprite_get("walljump_hurt");
+		wall = 0;
+		has_airdodge = 1;
+	}
+	if collision_rectangle(x + wall_c[(wall%360)/90][0], y + wall_c[(wall%360)/90][1], x + wall_c[(wall%360)/90][2], y + wall_c[(wall%360)/90][3], asset_get("par_block"), 1, 1) && !collision_line(x - 1, y - 92 * spr_dir, x + 30, y - 92 * spr_dir, asset_get("par_block"), 1, 1) && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !wall_cool && !free && (spr_dir? up_down: down_down) && state == PS_WALK{
+		set_attack_value(AT_DTHROW, AG_SPRITE, sprite_get(string(plate) + "28"));
+		set_attack(AT_DTHROW);
+		hurtboxID.sprite_index = sprite_get("climb2_hurt");
+		soft_armor = 999999;
+	}
+	break;
+	case 180:
+	free = 0;
+	has_airdodge = 0;
+	sound_stop(asset_get("sfx_quick_dodge"));
+	can_fast_fall = 0;
+	if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR vsp = -4;
+	//wall_controls
+	if turning && statet < 20{
+		state = PS_WALK_TURN;
+		hsp = 0;
+	}else if turning && statet = 20{
+		turning = 0;
+	}
+	if state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND && !left_down && !right_down{
+		state = PS_IDLE;
+		hsp = 0;
+	}
+	if right_down && state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		if -spr_dir{
+			hsp = 4 + (aware + has_rune("D")) * 2;
+			state = PS_WALK;
+		}else{
+			statet = 0;
+			turning = 1;
+			state = PS_WALK_TURN;
+			spr_dir *= -1;
+			hsp = 0;
+		}
+	}else if left_down && state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		if -spr_dir{
+			statet = 0;
+			turning = 1;
+			state = PS_WALK_TURN;
+			spr_dir *= -1;
+			hsp = 0;
+		}else{
+			hsp = -4 - (aware + has_rune("D")) * 2;
+			state = PS_WALK;
+		}
+	}
+	//wall attacks
+	if state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		var dir = (joy_pad_idle? 4: floor((floor(joy_dir/45)%8)/2 + .5)%4);
+		og_dir = spr_dir;
+		if attack_pressed{
+			hsp = 0;
+			switch(dir){
+				case 0:
+				spr_dir = -1;
+				og_dir = spr_dir;
+				set_attack(AT_FTILT);
+				break;
+				case 1:
+				set_attack(AT_DTILT);
+				break;
+				case 2:
+				spr_dir = 1;
+				og_dir = spr_dir;
+				set_attack(AT_FTILT);
+				break;
+				case 3:
+				set_attack(AT_UTILT);
+				break;
+				case 4:
+				set_attack(AT_JAB);
+				break;
+			}
+		}else if right_strong_pressed || up_strong_pressed || left_strong_pressed || down_strong_pressed{
+			hsp = 0;
+			if right_strong_pressed{
+				spr_dir = -1;
+				og_dir = spr_dir;
+				set_attack(AT_FSTRONG);
+			}else if up_strong_pressed{
+				set_attack(AT_DSTRONG);
+			}else if left_strong_pressed{
+				spr_dir = 1;
+				og_dir = spr_dir;
+				set_attack(AT_FSTRONG);
+			}else if down_strong_pressed{
+				set_attack(AT_USTRONG);
+			}
+		}
+		spr_dir = og_dir;
+	}
+	state_timer = statet;
+	statet++;
+	if collision_line(x, y + 40, x + 92 * -spr_dir, y + 40, asset_get("par_block"), 1, 1) && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !wall_cool && state != PS_HITSTUN && state != PS_HITSTUN_LAND{
+		set_attack_value(AT_FTHROW, AG_SPRITE, sprite_get(string(plate) + "26"));
+		set_attack(AT_FTHROW);
+		hurtboxID.sprite_index = sprite_get("climb1_hurt");
+		soft_armor = 999999;
+	}
+	if(jump_pressed && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !hitstop){
+		set_attack_value(AT_USTRONG_2, AG_SPRITE, sprite_get(string(plate) + "22"));
+		spr_dir = -spr_dir;
+		set_attack(AT_USTRONG_2);
+		hurtboxID.sprite_index = sprite_get("ceilingjump_hurt");
+		wall = 0;
+		has_airdodge = 1;
+	}
+	if collision_rectangle(x + wall_c[(wall%360)/90][0], y + wall_c[(wall%360)/90][1], x + wall_c[(wall%360)/90][2], y + wall_c[(wall%360)/90][3], asset_get("par_block"), 1, 1) && !collision_line(x - 92 * spr_dir, y, x - 92 * spr_dir, y - 30, asset_get("par_block"), 1, 1) && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !wall_cool && !free && (-spr_dir? right_down: left_down) && state == PS_WALK{
+		set_attack_value(AT_DTHROW, AG_SPRITE, sprite_get(string(plate) + "28"));
+		set_attack(AT_DTHROW);
+		hurtboxID.sprite_index = sprite_get("climb2_hurt");
+		soft_armor = 999999;
+	}
+	break;
+	case 270:
+	free = 0;
+	has_airdodge = 0;
+	sound_stop(asset_get("sfx_quick_dodge"));
+	can_fast_fall = 0;
+	if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR hsp = -4;
+	//wall_controls
+	if turning && statet < 20{
+		state = PS_WALK_TURN;
+		vsp = 0;
+	}else if turning && statet = 20{
+		turning = 0;
+		vsp = 0;
+	}
+	if state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND && !up_down && !down_down{
+		state = PS_IDLE;
+		vsp = 0;
+	}
+	if up_down && state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		if -spr_dir{
+			vsp = -4 - (aware + has_rune("D")) * 2;
+			state = PS_WALK;
+		}else{
+			statet = 0;
+			turning = 1;
+			state = PS_WALK_TURN;
+			spr_dir *= -1;
+			vsp = 0;
+		}
+	}else if down_down && state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		if -spr_dir{
+			statet = 0;
+			turning = 1;
+			state = PS_WALK_TURN;
+			spr_dir *= -1;
+			vsp = 0;
+		}else{
+			vsp = 4 + (aware + has_rune("D")) * 2;
+			state = PS_WALK;
+		}
+	}
+	//wall attacks
+	if state != PS_WALK_TURN && state != PS_ATTACK_AIR && state!= PS_ATTACK_GROUND{
+		var dir = (joy_pad_idle? 4: floor((floor(joy_dir/45)%8)/2 + .5)%4);
+		og_dir = spr_dir;
+		if attack_pressed{
+			vsp = 0;
+			switch(dir){
+				case 0:
+				set_attack(AT_UTILT);
+				break;
+				case 1:
+				spr_dir = -1;
+				og_dir = spr_dir;
+				set_attack(AT_FTILT);
+				break;
+				case 2:
+				set_attack(AT_DTILT);
+				break;
+				case 3:
+				spr_dir = 1;
+				og_dir = spr_dir;
+				set_attack(AT_FTILT);
+				break;
+				case 4:
+				set_attack(AT_JAB);
+				break;
+			}
+		}else if right_strong_pressed || up_strong_pressed || left_strong_pressed || down_strong_pressed{
+			vsp = 0;
+			if right_strong_pressed{
+				set_attack(AT_USTRONG);
+			}else if up_strong_pressed{
+				spr_dir = -1;
+				og_dir = spr_dir;
+				set_attack(AT_FSTRONG);
+			}else if left_strong_pressed{
+				set_attack(AT_DSTRONG);
+			}else if down_strong_pressed{
+				spr_dir = 1;
+				og_dir = spr_dir;
+				set_attack(AT_FSTRONG);
+			}
+		}
+		spr_dir = og_dir;
+	}
+	state_timer = statet;
+	statet++;
+	if collision_line(x + 40, y, x + 40, y + 92 * spr_dir, asset_get("par_block"), 1, 1) && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !wall_cool && state != PS_HITSTUN && state != PS_HITSTUN_LAND{
+		set_attack_value(AT_FTHROW, AG_SPRITE, sprite_get(string(plate) + "26"));
+		set_attack(AT_FTHROW);
+		hurtboxID.sprite_index = sprite_get("climb1_hurt");
+		soft_armor = 999999;
+	}
+	if(jump_pressed && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+		set_attack_value(AT_FSTRONG_2, AG_SPRITE, sprite_get(string(plate) + "20"));
+		spr_dir = -1;
+		set_attack(AT_FSTRONG_2);
+		hurtboxID.sprite_index = sprite_get("walljump_hurt");
+		wall = 0;
+		has_airdodge = 1;
+	}
+	if collision_rectangle(x + wall_c[(wall%360)/90][0], y + wall_c[(wall%360)/90][1], x + wall_c[(wall%360)/90][2], y + wall_c[(wall%360)/90][3], asset_get("par_block"), 1, 1) && !collision_line(x, y + 92 * spr_dir, x - 30, y + 92 * spr_dir, asset_get("par_block"), 1, 1) && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && !wall_cool && !free && (-spr_dir? up_down: down_down) && state == PS_WALK{
+		set_attack_value(AT_DTHROW, AG_SPRITE, sprite_get(string(plate) + "28"));
+		set_attack(AT_DTHROW);
+		hurtboxID.sprite_index = sprite_get("climb2_hurt");
+		soft_armor = 999999;
+	}
+	break;
+}
+if hurtboxID.image_angle != wall hurtboxID.image_angle = wall;
+
+//wall failsafe=================================================================
+if(wall % 360 != 0 && !hitstop){
+	if !has_rune("G") wall_en -= (wall_en > 0? 1: 0);
+	if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && (wall_en = 0 || wall_cool > 25){
+		wall = 0;
+		image_angle = 0;
+		spr_angle = 0;
+		if wall_en = 0 wall_cool = 400;
+	}
+	if (state != PS_IDLE && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && state != PS_WALK && state != PS_WALK_TURN){
+		wall = 0;
+		image_angle = 0;
+		spr_angle = 0;
+		wall_cool = 400;
+	}
+	wall_c = [[-53 * spr_dir, 4, 48 * spr_dir, 0], [0, -53 * spr_dir, 4, 48 * spr_dir], [-53 * spr_dir, -4, 48 * spr_dir, 0], [0, 53 * spr_dir, -4, -48 * spr_dir]];
+	if !collision_rectangle(x + wall_c[(wall%360)/90][0], y + wall_c[(wall%360)/90][1], x + wall_c[(wall%360)/90][2], y + wall_c[(wall%360)/90][3], asset_get("par_block"), 1, 1) || state == PS_HITSTUN{
+		if wall % 360 = 180 spr_dir = -spr_dir;
+		wall = 0;
+		image_angle = 0;
+		spr_angle = 0;
+	}
+}else{
+	if wall_en < 300 wall_en += (free? 0.5: 1);
+	if wall_en >= 300 wall_en = 300;
+	if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && image_angle != 0 image_angle = 0;
+}
+if spr_angle != wall % 360 && ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || attack != AT_USPECIAL) spr_angle = wall % 360;
+if wall % 360 != 0 djumps = 1;
+gravity_speed = (wall % 360 = 0? 0.5: 0);
+
+//shinespark vfx thing==========================================================
+if !((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_USPECIAL) && !hitstop && usp_ch > 0{
+	usp_ch--;
+}
+if has_rune("B") && usp_ch <= 10 usp_ch = 300;
+if usp_ch{
+	if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_USPECIAL{
+		cols = [get_color_profile_slot_r(get_player_color(player), 7), get_color_profile_slot_g(get_player_color(player), 7), get_color_profile_slot_b(get_player_color(player), 7)];
+	}else{
+		cols = [get_color_profile_slot_r(get_player_color(player), 7) * abs(usp_ch % 21 - 10)/10, get_color_profile_slot_g(get_player_color(player), 7) * abs(usp_ch % 21 - 10)/10, get_color_profile_slot_b(get_player_color(player), 7) * abs(usp_ch % 21 - 10)/10];
+	}
+	outline_color = cols;
+	init_shader();
+}else if outline_color[0] = cols[0]{
+	outline_color = [0, 0, 0];
+	init_shader();
+}
+
+//rune C========================================================================
+if(has_rune("C") && wall%360 == 0 && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+	create_hitbox(AT_TAUNT, 1, x, y);
+}
+
+//invisible fix=================================================================
+if should_vis && !visible && state != PS_RESPAWN{
+	visible = 1;
+	should_vis = 0;
+}

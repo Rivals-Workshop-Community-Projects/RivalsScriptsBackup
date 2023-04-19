@@ -7,73 +7,68 @@ if "prev_alt" not in self {
        prev_alt = 0;  
 }
 
-if "sound_played" not in self {
-       sound_played = 0;  
-}
-
-// Intro Sound
-if(sound_played == 0){
-    sound_play(sound_get("beep"), false, false, 1.5);
-    sound_played = 1;
-}
-
-
 //alt names
-alt_name[0] = "E.M.M.I.-02SM";
-alt_name[1] = "E.M.M.I.-01P";
-alt_name[2] = "E.M.M.I.-03MB";
-alt_name[3] = "E.M.M.I.-04SB";
-alt_name[4] = "E.M.M.I.-05IM";
-alt_name[5] = "E.M.M.I.-06WB";
-alt_name[6] = "E.M.M.I.-07PB";
-alt_name[7] = "E.M.M.I.-08PS";
-alt_name[8] = "E.M.M.I.-09VS";
-alt_name[9] = "E.M.M.I.-10GS";
-alt_name[10] = "E.M.M.I.-11KR";
-alt_name[11] = "E.M.M.I.-12RL";
-alt_name[12] = "E.M.M.I.-13RB";
-alt_name[13] = "E.M.M.I.-01EVA";
-alt_name[14] = "E.M.M.I.-00EVA";
-alt_name[15] = "E.M.M.I.-02EVA";
-alt_name[16] = "E.M.M.I.-14IV";
-alt_name[17] = "E.M.M.I.-15SL";
-alt_name[18] = "E.M.M.I.-16MG";
-alt_name[19] = "E.M.M.I.-17WM";
-alt_name[20] = "E.M.M.I.-18FS";
-alt_name[21] = "E.M.M.I.-19FV";
-alt_name[22] = "E.M.M.I.-20FG";
-alt_name[23] = "E.M.M.I.-21ΩS";
-alt_name[24] = "E.M.M.I.-22EA";
-alt_name[25] = "E.M.M.I.-23AB";
-alt_name[26] = "E.M.M.I.-24VAE";
+alt_name = [
+"E.M.M.I.-02SM",
+"E.M.M.I.-01P",
+"E.M.M.I.-03MB",
+"E.M.M.I.-04SB",
+"E.M.M.I.-05IM",
+"E.M.M.I.-06WB",
+"E.M.M.I.-07PB",
+"E.M.M.I.-08PS",
+"E.M.M.I.-09VS",
+"E.M.M.I.-10GS",
+"E.M.M.I.-11KR",
+"E.M.M.I.-12RL",
+"E.M.M.I.-13RB",
+"E.M.M.I.-01EVA",
+"E.M.M.I.-00EVA",
+"E.M.M.I.-02EVA",
+"E.M.M.I.-14IV",
+"E.M.M.I.-15SL",
+"E.M.M.I.-163PO",
+"E.M.M.I.-16FS",
+"E.M.M.I.-17FV",
+"E.M.M.I.-18FG",
+"E.M.M.I.-19SAX",
+"E.M.M.I.-20HB",
+"E.M.M.I.-21EA",
+"E.M.M.I.-22AB",
+"E.M.M.I.-23GL",
+"E.M.M.I.-24VAE"
+]
 
-alt_name_desc[0] = "Spider Magnet";
-alt_name_desc[1] = "Prototype";
-alt_name_desc[2] = "Morph Ball";
-alt_name_desc[3] = "Speed Booster";
-alt_name_desc[4] = "Ice Missiles";
-alt_name_desc[5] = "Wave Beam";
-alt_name_desc[6] = "Power Bomb";
-alt_name_desc[7] = "Power Suit";
-alt_name_desc[8] = "Varia Suit";
-alt_name_desc[9] = "Gravity Suit";
-alt_name_desc[10] = "Kraid";
-alt_name_desc[11] = "Ridley";
-alt_name_desc[12] = "Raven Beak";
-alt_name_desc[13] = "EVA UNIT 01";
-alt_name_desc[14] = "EVA UNIT 00";
-alt_name_desc[15] = "EVA UNIT 02";
-alt_name_desc[16] = "Inverted";
-alt_name_desc[17] = "Sentinel";
-alt_name_desc[18] = "Mango";
-alt_name_desc[19] = "Watermelon";
-alt_name_desc[20] = "Fusion Suit";
-alt_name_desc[21] = "Fusion Varia";
-alt_name_desc[22] = "Fusion Gravity";
-alt_name_desc[23] = "Omega Suit";
-alt_name_desc[24] = "Early Access";
-alt_name_desc[25] = "Abyss";
-alt_name_desc[26] = "Villains Of Aether";
+alt_name_desc = [
+"Spider Magnet",
+"Prototype",
+"Morph Ball",
+"Speed Booster",
+"Ice Missiles",
+"Wave Beam",
+"Power Bomb",
+"Power Suit",
+"Varia Suit",
+"Gravity Suit",
+"Kraid",
+"Ridley",
+"Raven Beak",
+"EVA UNIT 01",
+"EVA UNIT 00",
+"EVA UNIT 02",
+"Inverted",
+"Sentinel",
+"C-3P0",
+"Fusion Suit",
+"Fusion Varia",
+"Fusion Gravity",
+"SA-X",
+"hyper beam",
+"Early Access",
+"Abyss",
+"Galaxy",
+"Villains Of Aether"
+];
 
 draw_set_halign(fa_left);
 
@@ -86,7 +81,7 @@ if(alpher_alt > 0){
 }
 
 if(alt_cur != prev_alt){
-    alpher_alt = 3
+    alpher_alt = alt_cur = 23? 6: 3
 }
 
 draw_set_font(asset_get("fName"));
@@ -95,9 +90,13 @@ prev_alt = alt_cur;
 
 //extra icons
 if(alt_cur == 24){
-    draw_sprite_ext(sprite_get("ccs_icons"), 3, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("ccs_icons"), 3, temp_x + 178, temp_y + 108, 1, 1, 0, c_white, 1);
 }else if(alt_cur == 25){
-    draw_sprite_ext(sprite_get("ccs_icons"), 1, temp_x + 180, temp_y + 102, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(sprite_get("ccs_icons"), 2, temp_x + 178, temp_y + 108, 1, 1, 0, c_white, 1);
+}else if(alt_cur == 26){
+    draw_sprite_ext(sprite_get("ccs_icons"), 1, temp_x + 178, temp_y + 108, 1, 1, 0, c_white, 1);
+}else if(alt_cur == 27){
+    draw_sprite_ext(sprite_get("ccs_icons"), 9, temp_x + 178, temp_y + 108, 1, 1, 0, c_white, 1);
 }
 
 //alt name
@@ -109,7 +108,7 @@ textDraw(temp_x + 56, temp_y + 139, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 56, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 58, temp_y + 141, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 textDraw(temp_x + 58, temp_y + 137, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
-textDraw(temp_x + 58, temp_y + 139, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(alt_cur, 0), get_color_profile_slot_b(alt_cur, 0)), 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
+textDraw(temp_x + 58, temp_y + 139, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, (alt_cur = 23 || alt_cur = 26 ? 6: 0)), get_color_profile_slot_g(alt_cur, (alt_cur = 23 || alt_cur = 26 ? 6: 0)), get_color_profile_slot_b(alt_cur, (alt_cur = 23 || alt_cur = 26 ? 6: 0))), 0, 100000, 1, false, alpher_alt, alt_name[alt_cur]);
 
 textDraw(temp_x + 60, temp_y + 124, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 60, temp_y + 122, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
@@ -119,7 +118,9 @@ textDraw(temp_x + 56, temp_y + 122, "fName", c_black, 0, 100000, 1, false, alphe
 textDraw(temp_x + 56, temp_y + 120, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 58, temp_y + 124, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
 textDraw(temp_x + 58, temp_y + 120, "fName", c_black, 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
-textDraw(temp_x + 58, temp_y + 122, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, 0), get_color_profile_slot_g(alt_cur, 0), get_color_profile_slot_b(alt_cur, 0)), 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
+textDraw(temp_x + 58, temp_y + 122, "fName", make_color_rgb(get_color_profile_slot_r(alt_cur, (alt_cur = 23 || alt_cur = 26 ? 6: 0)), get_color_profile_slot_g(alt_cur, (alt_cur = 23 || alt_cur = 26 ? 6: 0)), get_color_profile_slot_b(alt_cur, (alt_cur = 23 || alt_cur = 26 ? 6: 0))), 0, 100000, 1, false, alpher_alt, alt_name_desc[alt_cur]);
+
+if get_player_color(player) == 23 init_shader();
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 
@@ -142,6 +143,4 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 #define rectDraw(x1, y1, x2, y2, color, outline)
 
 draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], argument[5]);
-
-
 

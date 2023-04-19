@@ -11,11 +11,6 @@ if (custom_clone) {
         draw_set_font(font_fname);
         draw_text_color(x, y - char_height - 32, string(damage_percent_as_teammate) + "%", c_white, c_white, c_white, c_white, 1);
     }  
-    //draw_debug_text(x, y - char_height - 160, "sync_next_predicted_state: " + get_state_name(sync_next_predicted_state));
-    //draw_debug_text(x, y - char_height - 128, "run direction: " + string(right_down - left_down));
-    //draw_debug_text(x, y - char_height - 96, "state: " + get_state_name(state));
-    //draw_debug_text(x, y - char_height - 128, "should_not_be_running: " + string(should_not_be_dashing));
-    //draw_debug_text(x, y - char_height - 96, "should_be_running: " + string(should_be_dashing));
 }
 
 else {
@@ -62,8 +57,25 @@ else {
     shader_end();
 }
 
+
+   
 //remnants of debug hell, c. 2021 commentized
 
+
+//if (has_airdodge) draw_rectangle_color(x - 16, y + 30, x + 16, y + 50, c_aqua, c_aqua, c_aqua, c_aqua, false);
+//draw_sprite_ext(sprite_get("fspecial_proj_minun_article_mask"), 0, x - 16, y - 40, 1, jump_counter, 0, c_white, 1);
+//draw_sprite_ext(sprite_get("fspecial_proj_minun_article_mask"), 0, x + 16, y - 40, 1, shield_counter, 0, c_blue, 1);
+//draw_rectangle_color(x - 16, y - 80, x - 4, y - 100 - jump_counter * 4, c_red, c_red, c_red, c_red, false);
+//draw_rectangle_color(x + 16, y - 80, x + 4, y - 100 - shield_counter * 4, c_blue, c_blue, c_blue, c_blue, false);
+//if (!custom_clone && master_player_id.shield_pressed) draw_rectangle_color(x - 16, y - 10, x + 16, y + 10, c_yellow, c_yellow, c_yellow, c_yellow, false);
+//if (!custom_clone &&  master_player_id.shield_counter < 6) draw_rectangle_color(x - 16, y + 10, x + 16, y + 30, c_orange, c_orange, c_orange, c_orange, false);
+//if (!custom_clone &&  master_player_id.shield_down) draw_rectangle_color(x - 16, y + 30, x + 16, y + 50, c_aqua, c_aqua, c_aqua, c_aqua, false);
+
+//draw_debug_text(x, y - char_height - 160, "sync_next_predicted_state: " + get_state_name(sync_next_predicted_state));
+//draw_debug_text(x, y - char_height - 128, "run direction: " + string(right_down - left_down));
+//draw_debug_text(x, y - char_height - 96, "state: " + get_state_name(state));
+//draw_debug_text(x, y - char_height - 128, "should_not_be_running: " + string(should_not_be_dashing));
+//draw_debug_text(x, y - char_height - 96, "should_be_running: " + string(should_be_dashing));
 
 //with (obj_article3) draw_debug_text(x, y - 100, string(state))
 //var xx = x + 150 * (species_id * 2 - 1);
@@ -88,8 +100,6 @@ else {
 //draw_debug_text(xx, y + i, "jump: " + string(jump_counter)); i += n;
 //draw_debug_text(xx, y + i, "shield: " + string(shield_counter)); i += n;
 //draw_debug_text(xx, y + i, "do_a_fast_fall: " + string(do_a_fast_fall)); i += n;
-
-
 
 //draw_debug_text(x, y + i, "left_stick_counter: " + string(left_stick_counter)); i += n;
 //draw_debug_text(x, y + i, "right_stick_counter: " + string(right_stick_counter)); i += n;

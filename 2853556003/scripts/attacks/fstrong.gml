@@ -25,7 +25,7 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_waterhit_heavy2"));
 
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -69,7 +69,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_FSTRONG, 2, HG_SHAPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 6.5);
-set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1.15);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sfx_waterhit_heavy);

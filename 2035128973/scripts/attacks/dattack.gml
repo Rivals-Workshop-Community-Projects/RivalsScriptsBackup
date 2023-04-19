@@ -135,12 +135,12 @@ else
 	set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 68);
 	set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 50);
 	set_hitbox_value(AT_DATTACK, 1, HG_PRIORITY, 1);
-	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 8);
-	set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 38);
+	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 5);
+	set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 70);
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.5);
+	set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.2);
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 9);
-	set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.5);
+	set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.3);
 	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 301);
 	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 }

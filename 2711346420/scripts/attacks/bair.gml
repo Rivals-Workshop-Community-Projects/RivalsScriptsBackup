@@ -2,7 +2,7 @@ set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 5);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 1);
@@ -31,7 +31,6 @@ set_window_value(AT_BAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_BAIR, 2);
 
-set_hitbox_value(AT_BAIR, 1, HG_MUNO_HITBOX_NAME, "Early Hit");
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 2);
@@ -53,7 +52,6 @@ set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 0);
 
-set_hitbox_value(AT_BAIR, 2, HG_MUNO_HITBOX_NAME, "Late Hit");
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 4);

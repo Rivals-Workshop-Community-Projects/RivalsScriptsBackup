@@ -67,6 +67,7 @@ sprite_change_offset("kinnikubehind", 140, 190);
 sprite_change_offset("kinnikufront", 140, 190);
 
 sprite_change_offset("plat", 64, 94);
+sprite_change_offset("hfx_uspec_large", 157,152 );
 sprite_change_offset("uspecial_proj", 64, 64);
 sprite_change_offset("bubble_proj", 64, 64);
 sprite_change_offset("nspecial_proj", 64, 64);

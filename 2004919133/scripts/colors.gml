@@ -2,15 +2,15 @@
 
 // clothes
 set_color_profile_slot( 0, 0, 84, 63, 139 );
-set_color_profile_slot_range( 0, 10, 17, 6 );
+set_color_profile_slot_range( 0, 7, 9, 16 );
 
 // cape
 set_color_profile_slot( 0, 1, 248, 165, 41 );
-set_color_profile_slot_range( 1, 11, 6, 14 );
+set_color_profile_slot_range( 1, 37, 6, 30 );
 
 // hair
 set_color_profile_slot( 0, 2, 115, 55, 30 );
-set_color_profile_slot_range( 2, 10, 17, 19 );
+set_color_profile_slot_range( 2, 8, 3, 11 );
 
 // skin
 set_color_profile_slot( 0, 3, 254, 227, 186 );
@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 38, 13, 8 );
 
 // zipper
 set_color_profile_slot( 0, 6, 155, 149, 176 );
-set_color_profile_slot_range( 6, 1, 1, 1 );
+set_color_profile_slot_range( 6, 13, 8, 16 );
 
 // umbrella
 set_color_profile_slot( 0, 7, 98, 196, 236 );
@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 21, 16, 22 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 19 );
 
 // mafia
 set_color_profile_slot( 1, 0, 67, 121, 210 ); //clothes
@@ -57,14 +57,14 @@ set_color_profile_slot( 2, 6, 160, 240, 187 ); //zipper
 set_color_profile_slot( 2, 7, 76, 21, 36 ); //umbrella
 
 // bow kid
-set_color_profile_slot( 3, 0, 181, 255, 109 ); //clothes
+set_color_profile_slot( 3, 0, 172, 255, 92 ); //clothes
 set_color_profile_slot( 3, 1, 254, 254, 254 ); //cape
-set_color_profile_slot( 3, 2, 60, 29, 35 ); //hair
-set_color_profile_slot( 3, 3, 235, 143, 104 ); //skin
+set_color_profile_slot( 3, 2, 94, 45, 55 ); //hair
+set_color_profile_slot( 3, 3, 186, 135, 113 ); //skin
 set_color_profile_slot( 3, 4, 60, 158, 249 ); //pants
 set_color_profile_slot( 3, 5, 123, 176, 128 ); //pons
-set_color_profile_slot( 3, 6, 115, 74, 135 ); //zipper
-set_color_profile_slot( 3, 7, 0, 199, 86 ); //umbrella
+set_color_profile_slot( 3, 6, 69, 157, 245 ); //zipper
+set_color_profile_slot( 3, 7, 222, 100, 216 ); //umbrella
 
 // rumbi
 set_color_profile_slot( 4, 0, 31, 31, 31 ); //clothes
@@ -156,15 +156,15 @@ set_color_profile_slot( 12, 5, 189, 172, 44 ); //pons
 set_color_profile_slot( 12, 6, 60, 19, 124 ); //zipper
 set_color_profile_slot( 12, 7, 60, 19, 124 ); //umbrella
 
-// frisk
-set_color_profile_slot( 13, 0, 201, 228, 242 ); //clothes
-set_color_profile_slot( 13, 1, 229, 6, 243 ); //cape
-set_color_profile_slot( 13, 2, 11, 11, 59 ); //hair
-set_color_profile_slot( 13, 3, 117, 250, 237 ); //skin
-set_color_profile_slot( 13, 4, 11, 11, 59 ); //pants
-set_color_profile_slot( 13, 5, 117, 250, 237 ); //pons
-set_color_profile_slot( 13, 6, 201, 228, 242 ); //zipper
-set_color_profile_slot( 13, 7, 237, 148, 165 ); //umbrella
+// madeleine
+set_color_profile_slot( 13, 0, 91, 110, 225 ); //clothes
+set_color_profile_slot( 13, 1, 255, 153, 51 ); //cape
+set_color_profile_slot( 13, 2, 172, 50, 50 ); //hair
+set_color_profile_slot( 13, 3, 238, 195, 154 ); //skin
+set_color_profile_slot( 13, 4, 135, 55, 36 ); //pants
+set_color_profile_slot( 13, 5, 250, 47, 47 ); //pons
+set_color_profile_slot( 13, 6, 244, 245, 255 ); //zipper
+set_color_profile_slot( 13, 7, 153, 11, 11 ); //umbrella
 
 // rainbow
 set_color_profile_slot( 14, 0, 15, 15, 15 ); //clothes
@@ -177,18 +177,48 @@ set_color_profile_slot( 14, 6, 0, 0, 0 ); //zipper
 set_color_profile_slot( 14, 7, 10, 10, 10 ); //umbrella
 
 // sepia
-set_color_profile_slot( 15, 0, 183, 139, 44 ); //clothes
-set_color_profile_slot( 15, 1, 255, 234, 164 ); //cape
+set_color_profile_slot( 15, 0, 69, 37, 16 ); //clothes
+set_color_profile_slot( 15, 1, 186, 99, 62 ); //cape
 set_color_profile_slot( 15, 2, 51, 32, 2 ); //hair
-set_color_profile_slot( 15, 3, 255, 234, 164 ); //skin
-set_color_profile_slot( 15, 4, 255, 234, 164 ); //pants
-set_color_profile_slot( 15, 5, 255, 234, 164 ); //pons
-set_color_profile_slot( 15, 6, 126, 81, 0 ); //zipper
-set_color_profile_slot( 15, 7, 183, 139, 44 ); //umbrella
+set_color_profile_slot( 15, 3, 252, 207, 162 ); //skin
+set_color_profile_slot( 15, 4, 209, 187, 148 ); //pants
+set_color_profile_slot( 15, 5, 204, 187, 133 ); //pons
+set_color_profile_slot( 15, 6, 46, 29, 29 ); //zipper
+set_color_profile_slot( 15, 7, 255, 242, 242 ); //umbrella
+
+// AR
+set_color_profile_slot( 16, 0, 71, 184, 89 ); //clothes
+set_color_profile_slot( 16, 1, 181, 73, 219 ); //cape
+set_color_profile_slot( 16, 2, 181, 73, 219 ); //hair
+set_color_profile_slot( 16, 3, 255, 208, 179 ); //skin
+set_color_profile_slot( 16, 4, 48, 48, 48 ); //pants
+set_color_profile_slot( 16, 5, 15, 125, 20 ); //pons
+set_color_profile_slot( 16, 6, 108, 43, 130 ); //zipper
+set_color_profile_slot( 16, 7, 255, 39, 30 ); //umbrella
+
+// bluey
+set_color_profile_slot( 17, 0, 16, 12, 89 ); //clothes
+set_color_profile_slot( 17, 1, 158, 158, 255 ); //cape
+set_color_profile_slot( 17, 2, 55, 28, 10 ); //hair
+set_color_profile_slot( 17, 3, 255, 189, 122 ); //skin
+set_color_profile_slot( 17, 4, 0, 71, 236 ); //pants
+set_color_profile_slot( 17, 5, 0, 71, 236 ); //pons
+set_color_profile_slot( 17, 6, 122, 122, 145 ); //zipper
+set_color_profile_slot( 17, 7, 0, 71, 236 ); //umbrella
+
+// genesis
+set_color_profile_slot( 18, 0, 70, 68, 68 ); //clothes
+set_color_profile_slot( 18, 1, 248, 92, 105 ); //cape
+set_color_profile_slot( 18, 2, 214, 223, 234 ); //hair
+set_color_profile_slot( 18, 3, 250, 229, 192 ); //skin
+set_color_profile_slot( 18, 4, 248, 92, 105 ); //pants
+set_color_profile_slot( 18, 5, 248, 92, 105 ); //pons
+set_color_profile_slot( 18, 6, 214, 223, 234 ); //zipper
+set_color_profile_slot( 18, 7, 70, 68, 68 ); //umbrella
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"clothes","colors":[{"r":"84","g":"63","b":"139","main":true},{"r":49,"g":37,"b":128}]},{"name":"cape","colors":[{"r":"248","g":"165","b":"41","main":true},{"r":214,"g":107,"b":26}]},{"name":"hair","colors":[{"r":"115","g":"55","b":"30","main":true},{"r":69,"g":16,"b":7}]},{"name":"skin","colors":[{"r":"254","g":"227","b":"186","main":true},{"r":199,"g":142,"b":111}]},{"name":"pants","colors":[{"r":"218","g":"195","b":"164","main":true}]},{"name":"pons","colors":[{"r":86,"g":200,"b":113,"main":true},{"r":120,"g":218,"b":203}]},{"name":"zipper","colors":[{"r":"155","g":"149","b":"176","main":true}]},{"name":"umbrella","colors":[{"r":98,"g":196,"b":236,"main":true},{"r":50,"g":101,"b":184}]}]}
+{"formatversion":1,"data":[{"name":"clothes","colors":[{"r":84,"g":63,"b":139,"main":true},{"r":63,"g":38,"b":102}]},{"name":"cape","colors":[{"r":"248","g":"165","b":"41","main":true},{"r":214,"g":107,"b":26},{"r":224,"g":60,"b":40},{"r":173,"g":21,"b":21}]},{"name":"hair","colors":[{"r":"115","g":"55","b":"30","main":true},{"r":89,"g":33,"b":21}]},{"name":"skin","colors":[{"r":"254","g":"227","b":"186","main":true},{"r":199,"g":142,"b":111}]},{"name":"pants","colors":[{"r":"218","g":"195","b":"164","main":true}]},{"name":"pons","colors":[{"r":86,"g":200,"b":113,"main":true},{"r":120,"g":218,"b":203}]},{"name":"zipper","colors":[{"r":155,"g":149,"b":176,"main":true},{"r":120,"g":107,"b":138}]},{"name":"umbrella","colors":[{"r":98,"g":196,"b":236,"main":true},{"r":50,"g":101,"b":184}]}]}
 === END JSON PALETTE ===
 */

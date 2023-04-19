@@ -11,6 +11,17 @@ with (obj_article2) {
     }
 }
 
+//Remote Tanuki attacks 
+/*if (is_attack_pressed(DIR_ANY)) {
+    with (obj_article2) {
+        if (!committed) {
+        	next_attack = AT_EXTRA_3;
+        	ai_attack_cooldown = 30;
+        	ai_attack_timer = 0;
+        }
+    }
+}*/
+
 if (player_marked) {
     if (attack == AT_NSPECIAL)
         attack = AT_NSPECIAL_2;

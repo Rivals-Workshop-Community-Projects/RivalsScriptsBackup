@@ -33,14 +33,11 @@ var grav_max = 0;
 var air_friction = 0;
 
 //gravity
-if (type == 0){
-	if (free && vsp < 12){
-		vsp = vsp + grav_speed;
-	}
+if (free && vsp < 12){
+	vsp = vsp + grav_speed;
 }
-else if (type == 1){
-	//do things
-}
+
+
 
 
 
@@ -49,15 +46,35 @@ else if (type == 1){
 if (state == 0){
 	if(state_timer = 1){
 		sound_play(sound_get("sfx_smokebomb"), false, noone, 2);
+		//smoke_owner = player;
+		if(player_id.bomb_missfire = true){
+with (oPlayer){
+	if (place_meeting(x, y, other)){
+		if (id != other.player_id && url != other.player_id.url){
+			//dodoofart
+		}else {
+			other.smoke_owner = last_player;
+		}
 	}
-	if(state_timer == 75){
+}
+}
+state_timer = 14;
+	}
+	if(state_timer == 105){
 		state = 1;
 		state_timer = 0;
-	}if(state_timer % 15 == 0){
+	}if(state_timer % 15 == 0 && state_timer > 1){
 		sound_play(asset_get("sfx_burnend"));
 						smoke_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y);
+						//smoke_hitbox.player = smoke_owner;
+		//if(player_id.bomb_missfire != false){	
+			//smoke_owner = player;
+		//}
+		print(smoke_owner);
 		if(player_id.bomb_missfire = true){
-		smoke_hitbox.can_hit_self = true;	
+
+//smoke_owner = player_id.bomb_owner;
+smoke_hitbox.player = smoke_owner;
 		}
 		snd_rng = random_func(0, 8, true);
 		if(snd_rng = 0){
@@ -99,6 +116,45 @@ if (state == 0){
         other.state_timer = 0;
     }
 }
+
+if(player_id.bomb_missfire = false){
+if (place_meeting(x, y, asset_get("pHitBox")) && state == 0) { //makes the pot hittable when can_get_hit is true
+    	with (asset_get("pHitBox")){
+    		if (player != other.player_id.player){
+    			if (place_meeting(x, y, other) && hit_priority != 0 && hitpause != 0 && kb_value != 0){
+    				other.hitbox_hit = self;
+    				if(type != 2){
+    				player_id.hitpause = true;
+                    player_id.hitstop = hitpause;
+    				}
+                    other.hitstop = hitpause;
+    			}
+    		}
+    	}
+    	if (hitbox_hit != noone){
+    		if(hitbox_hit.hitpause != 0 && hitbox_hit.hit_priority != 0 && hitbox_hit.kb_value != 0){
+    			with (hitbox_hit){
+        			sound_play(sound_effect);
+        			spawn_hit_fx(floor(x), floor(y), hit_effect);
+    			}
+    			if(hitbox_hit.type == 1){
+    			hitbox_hit.player_id.hitpause = true;
+    			hitbox_hit.player_id.hitstop_full = hitbox_hit.hitpause;
+    			hitbox_hit.player_id.old_hsp = hitbox_hit.player_id.hsp
+    			hitbox_hit.player_id.old_vsp = hitbox_hit.player_id.vsp
+    			hitbox_hit.player_id.has_hit = true;
+    			hitstop = hitbox_hit.hitpause;
+    			hitby = hitbox_hit.player_id;
+    			}
+				state = 1;
+				state_timer = 0;
+    		}
+    		}
+    }
+    else{
+    	hitbox_hit = noone;
+    }
+}
 }
 
 
@@ -120,7 +176,7 @@ if (state == 2){
 		vsp = -1.5;
 	}if(state_timer = 10){
 		state = 0;
-		state_timer = 1;
+		state_timer = 14;
 	}
 }
 

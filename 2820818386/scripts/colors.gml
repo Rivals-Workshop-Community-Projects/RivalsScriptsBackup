@@ -22,33 +22,33 @@ set_color_profile_slot_range(7, 20, 15, 20); //MICHELANGELO
 
 //BLUE
 set_color_profile_slot(1, 0, 30, 73, 62); //SKIN
-set_color_profile_slot(1, 1, 8, 44, 72); //SHELL BACK
-set_color_profile_slot(1, 2, 43, 37, 51); //WRAPS
-set_color_profile_slot(1, 3, 118, 153, 163); //SHELL FRONT
+set_color_profile_slot(1, 1, 15, 82, 112); //SHELL BACK
+set_color_profile_slot(1, 2, 116, 134, 145); //WRAPS
+set_color_profile_slot(1, 3, 146, 179, 196); //SHELL FRONT
 set_color_profile_slot(1, 4, 51, 137, 186); //LEONARDO
 set_color_profile_slot(1, 5, 113, 47, 223); //DONATELLO
 set_color_profile_slot(1, 6, 69, 36, 93); //RAPHAEL
 set_color_profile_slot(1, 7, 167, 139, 165); //MICHELANGELO
 
 //RED
-set_color_profile_slot(2, 0, 88, 55, 17); //SKIN
+set_color_profile_slot(2, 0, 145, 113, 51); //SKIN
 set_color_profile_slot(2, 1, 97, 0, 0); //SHELL BACK
 set_color_profile_slot(2, 2, 101, 31, 31); //WRAPS
 set_color_profile_slot(2, 3, 154, 79, 66); //SHELL FRONT
 set_color_profile_slot(2, 4, 83, 54, 73); //LEONARDO
-set_color_profile_slot(2, 5, 110, 40, 67); //DONATELLO
+set_color_profile_slot(2, 5, 112, 19, 69); //DONATELLO
 set_color_profile_slot(2, 6, 97, 0, 0); //RAPHAEL
-set_color_profile_slot(2, 7, 220, 116, 67); //MICHELANGELO
+set_color_profile_slot(2, 7, 229, 90, 13); //MICHELANGELO
 
 //GREEN
-set_color_profile_slot(3, 0, 30, 63, 28); //SKIN
-set_color_profile_slot(3, 1, 9, 29, 11); //SHELL BACK
-set_color_profile_slot(3, 2, 75, 78, 49); //WRAPS
-set_color_profile_slot(3, 3, 122, 170, 94); //SHELL FRONT
-set_color_profile_slot(3, 4, 47, 135, 101); //LEONARDO
-set_color_profile_slot(3, 5, 65, 54, 80); //DONATELLO
-set_color_profile_slot(3, 6, 121, 90, 77); //RAPHAEL
-set_color_profile_slot(3, 7, 154, 147, 66); //MICHELANGELO
+set_color_profile_slot(3, 0, 36, 66, 9); //SKIN
+set_color_profile_slot(3, 1, 29, 48, 21); //SHELL BACK
+set_color_profile_slot(3, 2, 134, 111, 69); //WRAPS
+set_color_profile_slot(3, 3, 159, 171, 54); //SHELL FRONT
+set_color_profile_slot(3, 4, 15, 156, 123); //LEONARDO
+set_color_profile_slot(3, 5, 60, 65, 122); //DONATELLO
+set_color_profile_slot(3, 6, 99, 66, 19); //RAPHAEL
+set_color_profile_slot(3, 7, 181, 171, 61); //MICHELANGELO
 
 //BLACK/WHITE
 set_color_profile_slot(4, 0, 120, 120, 120); //SKIN
@@ -61,13 +61,13 @@ set_color_profile_slot(4, 6, 160, 0, 0); //RAPHAEL
 set_color_profile_slot(4, 7, 160, 0, 0); //MICHELANGELO
 
 //PURPLE/PINK
-set_color_profile_slot(5, 0, 113, 111, 78); //SKIN
+set_color_profile_slot(5, 0, 161, 151, 67); //SKIN
 set_color_profile_slot(5, 1, 70, 38, 105); //SHELL BACK
 set_color_profile_slot(5, 2, 106, 62, 96); //WRAPS
 set_color_profile_slot(5, 3, 111, 94, 166); //SHELL FRONT
 set_color_profile_slot(5, 4, 90, 87, 186); //LEONARDO
-set_color_profile_slot(5, 5, 176, 63, 255); //DONATELLO
-set_color_profile_slot(5, 6, 96, 20, 23); //RAPHAEL
+set_color_profile_slot(5, 5, 136, 29, 173); //DONATELLO
+set_color_profile_slot(5, 6, 92, 20, 82); //RAPHAEL
 set_color_profile_slot(5, 7, 212, 82, 98); //MICHELANGELO
 
 //ABYSS

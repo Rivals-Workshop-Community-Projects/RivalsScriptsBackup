@@ -38,24 +38,16 @@ sprite_change_offset("tech", 84, 138);
 //Grounded Normals
 sprite_change_offset("jab", 56, 74);
 sprite_change_offset("dattack", 84, 138);
-sprite_change_offset("dattack_noblur", 84, 138);
 sprite_change_offset("ftilt", 56, 72);
-sprite_change_offset("ftilt_noblur", 56, 72);
 sprite_change_offset("dtilt", 76, 58);
-sprite_change_offset("dtilt_noblur", 76, 58);
-sprite_change_offset("dtilt_muno", 76, 58);
 sprite_change_offset("utilt", 64, 130);
 
 //Aerials
 sprite_change_offset("nair", 100, 118);
-sprite_change_offset("nair_noblur", 100, 118);
 sprite_change_offset("fair", 44, 72);
 sprite_change_offset("bair", 98, 114);
-sprite_change_offset("bair_noblur", 98, 114);
 sprite_change_offset("uair", 100, 118);
-sprite_change_offset("uair_noblur", 100, 118);
 sprite_change_offset("dair", 92, 108);
-sprite_change_offset("dair_noblur", 92, 108);
 
 //Strongs
 sprite_change_offset("fstrong", 84, 138);
@@ -65,16 +57,12 @@ sprite_change_offset("dstrong_vfx", 154, 138);
 
 //Specials
 sprite_change_offset("nspecial", 84, 138);
-sprite_change_offset("nspecial_muno", 84, 138);
 sprite_change_offset("nspecial_air", 84, 138);
 sprite_change_offset("energy_shot", 24, 24);
 sprite_change_offset("fspecial", 100, 118);
-sprite_change_offset("fspecial_muno", 100, 118);
 sprite_change_offset("fspecial_2", 100, 118);
-sprite_change_offset("fspecial_2_muno", 100, 118);
 sprite_change_offset("fspecial_air", 100, 118);
 sprite_change_offset("uspecial", 100, 118);
-sprite_change_offset("uspecial_muno", 100, 118);
 sprite_change_offset("dspecial", 84, 138);
 sprite_change_offset("dspecial_air", 84, 138);
 sprite_change_offset("dspecial_2", 84, 138);

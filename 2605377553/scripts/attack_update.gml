@@ -10,6 +10,23 @@ if attack == AT_TAUNT
 	}
 }
 
+
+if attack == AT_JAB || attack = AT_DATTACK || attack = AT_FTILT|| attack = AT_UTILT|| attack = AT_DTILT|| 
+attack = AT_FAIR|| attack = AT_NAIR|| attack = AT_BAIR|| attack = AT_DAIR|| attack = AT_UAIR || attack = AT_DSPECIAL||
+attack = AT_USPECIAL|| attack = AT_NSPECIAL|| attack = AT_FSPECIAL
+{
+	    markConsumed = false;
+}
+
+if attack = AT_JAB|| attack = AT_DATTACK || attack = AT_FTILT|| attack = AT_UTILT|| attack = AT_DTILT||  attack = AT_BAIR|| attack = AT_DAIR|| attack = AT_UAIR || attack = AT_DSPECIAL||
+attack = AT_USPECIAL|| attack = AT_FSPECIAL
+{
+	    breakable = 0;
+		glassbreak = 0;
+		knockback_adj = 1.00;
+}
+
+
 //hud offsets
 if attack == AT_USTRONG
 {
@@ -22,10 +39,13 @@ if attack == AT_USTRONG
 
 move_cooldown[AT_NSPECIAL] = 20;
 
+//The hex is strong, it can be wielded by you, but be wary: you'll soon find yourself untethered to our own reality; the more you draw the frailer your body aches.
+if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_NSPECIAL || attack == AT_FAIR || attack == AT_NAIR {
+	knockback_adj = 1.15
+	breakable = 1;
+}
+
 //cloud pushers
-
-
-
 if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG
 {
 	var fstrongEnd = 4;
@@ -57,7 +77,7 @@ if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG
 				
 				with(obj_article1)
 				{
-					if (player_id == other && type == 0 && myLife > shrinkTime)
+					if (player_id == other && myLife > shrinkTime)
 						myLife = shrinkTime;
 				}
 			}
@@ -184,6 +204,24 @@ if (attack == AT_NSPECIAL)
 
 //FSPECIAL
 if (attack == AT_FSPECIAL){
+	//turnonsuperwavedash = true;
+    //if window == 4 {
+    //	if uspeccancel = true {
+    //    	can_shield = true;
+    //    	turnonsuperwavedash = false;
+    //	}  	
+    //	
+    //	
+    //	if shield_down && uspechassmogboosted != true{
+    //		var consumed = consumeSmokeCloud();
+    //		uspechassmogboosted = true;
+    //	}
+    //	
+    //	if consumed{
+    //			can_shield = true;
+    //	}
+    //}
+	
 	if window <= 3 {
 		hsp = hsp * 1.05
 	}
@@ -201,9 +239,24 @@ if (attack == AT_FSPECIAL){
 }
 
 if (attack == AT_USPECIAL){
-    if uspeccancel = true && window = 3{
-        can_shield = true;
-    }  	
+	turnonsuperwavedash = true;
+    if window == 3{
+    	if uspeccancel = true {
+        	can_shield = true;
+        	turnonsuperwavedash = false;
+    	}  	
+    	
+    	
+    	
+    	if shield_down && uspechassmogboosted != true{
+    		var consumed = consumeSmokeCloud();
+    		uspechassmogboosted = true;
+    	}
+    	
+    	if consumed{
+    			can_shield = true;
+    	}
+    }
 	
     can_fast_fall = false;
     can_wall_jump = true;
@@ -253,8 +306,6 @@ if attack == AT_DSPECIAL
 	move_cooldown[AT_DSPECIAL] = 30;
 	if window == 3 && window_timer == 1
 	{
-		depth = 10;
-		
 		//Edit these variables
 		var maxSmoke = 2;
 		var life = 60*20;
@@ -297,8 +348,6 @@ if attack == AT_DTILT
 {
 	if window == 4 && window_timer == 1 && canSmoke(1)
 	{
-		depth = 10;
-		
 		//Edit these variables
 		var life = 60*20;
 		var spd = 2;//This is how fast it accelerates.
@@ -323,8 +372,6 @@ if attack == AT_USPECIAL
 {
 	if window >= 4 && window_timer == 1 && canSmoke(1)
 	{
-		depth = 10;
-		
 		//Edit these variables
 		var life = 60*20;
 		var spd = 2;//This is how fast it accelerates.
@@ -370,22 +417,8 @@ if (attack == AT_UTILT) {
 {
 	var smoke = instance_create(smokeX,smokeY,"obj_article1");
 	smoke.myLife = life;
-	smoke.depth = depth-2;
-	smoke.sprite_index = sprite_get("smoke");
-	
-	var smokeShade = instance_create(smokeX,smokeY,"obj_article1");
-	smokeShade.type = 1;
-	smokeShade.depth = depth-1;
-	smokeShade.sprite_index = sprite_get("smokeshade");
-	smokeShade.par = smokeShade;
-	smoke.top = smokeShade;
-	
-	var smokeBack = instance_create(smokeX,smokeY,"obj_article1");
-	smokeBack.type = 2;
-	smokeBack.depth = depth;
-	smokeBack.sprite_index = sprite_get("smokeback");
-	smokeBack.par = smoke;
-	smoke.back = smokeBack;
+	smoke.depth = depth+9;
+	//smoke.sprite_index = sprite_get("smoke");
 	
 	//obama gaming
 	array_push(smokeList,smoke);
@@ -420,7 +453,7 @@ if (attack == AT_UTILT) {
 	for(var i=0; i<instance_number(obj_article1); i++)
 	{
 		var s = instance_find(obj_article1,i);
-		if s.orig_player == player && s.type == 0
+		if s.orig_player == player
 			a++;
 	}
 	return a+amount <= maxSmoke;
@@ -444,4 +477,35 @@ if (attack == AT_UTILT) {
 		if player_id == other && place_meeting(x,y,other) && myLife > shrinkTime
 			myLife = shrinkTime;
 	}
+}
+
+#define consumeSmokeCloud()
+{
+	var consumed = false;
+	var closest = noone;
+	for(var i=0; i<instance_number(obj_article1); i++)
+	{
+		var o = instance_find(obj_article1,i);
+		if o.player_id == id && place_meeting(x,y,o) && o.myLife > o.shrinkTime
+		{
+			var distO = point_distance(x,y,o.x,o.y);
+			if closest == noone
+				closest = o;
+			else
+			{
+				var distC = point_distance(x,y,closest.x,closest.y);
+				if distO < distC
+					closest = o;
+			}
+		}
+	}
+	
+	if closest != noone
+	{
+		closest.myLife = closest.shrinkTime;
+		closest.isShrinking = true;
+		consumed = true;
+	}
+	
+	return consumed;
 }

@@ -31,6 +31,16 @@ if attack == AT_DSPECIAL {
     }
 }
 
+if (attack == AT_TAUNT){
+	if (window == 1){
+		if (down_down){
+			window = 7;
+			window_timer = 0;
+			set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 7);
+		}
+	}
+}
+
 if attack == AT_DSPECIAL_AIR {
     //stonevar = random_func( 0, stoneamt, true)
     stonecheck = random_func( 0, 101, true);

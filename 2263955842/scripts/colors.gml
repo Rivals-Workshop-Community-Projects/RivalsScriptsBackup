@@ -147,7 +147,7 @@ set_color_profile_slot(11, 7, 254, 240, 206); //PINK
 // CtC
 set_color_profile_slot(12, 0, 255, 255, 255); //DRESS + SLEEVES (light)
 set_color_profile_slot(12, 1, 255, 255, 255); //BOW (light)
-set_color_profile_slot(12, 2, 56,50,50); //HAIR (light)
+set_color_profile_slot(12, 2, 56, 50, 50); //HAIR (light)
 set_color_profile_slot(12, 3, 255, 215, 198); //SKIN (light)
 set_color_profile_slot(12, 4, 140, 8, 6);//EYES (light)
 set_color_profile_slot(12, 5, 188,53,53); //BELT

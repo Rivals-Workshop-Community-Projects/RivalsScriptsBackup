@@ -92,8 +92,8 @@ set_hitbox_value(AT_USTRONG, 3, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 4, HG_LIFETIME, 20);
-set_hitbox_value(AT_USTRONG, 4, HG_WIDTH, 0);
-set_hitbox_value(AT_USTRONG, 4, HG_HEIGHT, 0);
+set_hitbox_value(AT_USTRONG, 4, HG_WIDTH, 25);
+set_hitbox_value(AT_USTRONG, 4, HG_HEIGHT, 320);
 set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_SPRITE, sprite_get("ustrong_lightning"));
 set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_ANIM_SPEED, .4);
@@ -105,6 +105,7 @@ set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_USTRONG, 4, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_LOCKOUT, 2);
 
 set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_TYPE, 2);
@@ -135,8 +136,8 @@ set_hitbox_value(AT_USTRONG, 5, HG_HIT_LOCKOUT, 2);
 
 set_hitbox_value(AT_USTRONG, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 6, HG_LIFETIME, 20);
-set_hitbox_value(AT_USTRONG, 6, HG_WIDTH, 0);
-set_hitbox_value(AT_USTRONG, 6, HG_HEIGHT, 0);
+set_hitbox_value(AT_USTRONG, 6, HG_WIDTH, 25);
+set_hitbox_value(AT_USTRONG, 6, HG_HEIGHT, 320);
 set_hitbox_value(AT_USTRONG, 6, HG_PROJECTILE_SPRITE, sprite_get("ustrong_lightning"));
 set_hitbox_value(AT_USTRONG, 6, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USTRONG, 6, HG_PROJECTILE_ANIM_SPEED, .4);
@@ -147,6 +148,7 @@ set_hitbox_value(AT_USTRONG, 6, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 6, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_USTRONG, 6, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_USTRONG, 6, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_USTRONG, 6, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USTRONG, 6, HG_HIT_LOCKOUT, 2);
 
 set_hitbox_value(AT_USTRONG, 7, HG_HITBOX_TYPE, 2);

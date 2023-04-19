@@ -11,7 +11,7 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 7);
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 

@@ -1,4 +1,26 @@
-//set_attack
+if(runeH){
+	if (get_num_hitboxes(attack) && !move_cooldown[attack]){
+	    for(var i = 0; i < get_num_hitboxes(attack); i++){
+	        var num = i + 1;
+	        reset_hitbox_value(attack, num, HG_DAMAGE);
+	        reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);
+	    }
+	}
+	
+	var rng = random_func(0, 100, true);
+	if(rng < 8){
+		crit = true;
+		if (get_num_hitboxes(attack) && !move_cooldown[attack]){
+		    for(var i = 0; i < get_num_hitboxes(attack); i++){
+		        var num = i + 1;
+		        set_hitbox_value(attack, num, HG_DAMAGE, get_hitbox_value(attack, num, HG_DAMAGE) * 2);
+		        set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING) * 1.3);
+		    }
+		}
+	}else{
+		crit = false;
+	}
+}
 
 if (attack == AT_FSPECIAL){
 	reset_attack_value(AT_FSPECIAL, AG_SPRITE);
@@ -7,6 +29,13 @@ if (attack == AT_FSPECIAL){
 	reset_hitbox_value(AT_FSPECIAL, 8, HG_BASE_KNOCKBACK);reset_hitbox_value(AT_FSPECIAL, 8, HG_KNOCKBACK_SCALING);
 	reset_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH);reset_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT);
 	reset_hitbox_value(AT_FSPECIAL, 8, HG_WIDTH);reset_hitbox_value(AT_FSPECIAL, 8, HG_HEIGHT);
+	
+	if(has_rune("E") || runeE){
+		set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_muddy"));
+		set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air_muddy"));
+		set_hitbox_value(AT_FSPECIAL, 8, HG_DAMAGE, 8);set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_HITPAUSE, 15);set_hitbox_value(AT_FSPECIAL, 8, HG_ANGLE, 361);
+		set_hitbox_value(AT_FSPECIAL, 8, HG_BASE_KNOCKBACK, 9);set_hitbox_value(AT_FSPECIAL, 8, HG_KNOCKBACK_SCALING, 1.1);
+	}
 }
 
 if (attack == AT_USPECIAL){

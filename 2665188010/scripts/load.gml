@@ -23,11 +23,6 @@ sprite_change_offset("waveland", 31, 47);
 sprite_change_offset("tech", 31, 47);
 
 sprite_change_offset("hurt", 31, 47);
-sprite_change_offset("hurtground", 31, 47);
-sprite_change_offset("bighurt", 31, 47);
-sprite_change_offset("uphurt", 31, 47);
-sprite_change_offset("downhurt", 31, 47);
-sprite_change_offset("bouncehurt", 31, 47);
 sprite_change_offset("spinhurt", 31, 47);
 
 sprite_change_offset("jab", 31, 45, true);
@@ -59,3 +54,4 @@ sprite_change_offset("arrow", 3, 2);
 sprite_change_offset("psybeam", 59*2, (15*2)+1);
 sprite_change_offset("azelf_hitbox", 18, 48);
 sprite_change_offset("azelf_crouch_hitbox", 18, 48);
+sprite_change_offset("offscreen", 16, 16);

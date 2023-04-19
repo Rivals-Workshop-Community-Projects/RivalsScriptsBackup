@@ -240,6 +240,13 @@ uhc_lost_hat_timer_max = 32;
 uhc_batteries = detect_online() || !((current_day == 1) && (current_month == 4));
 
 uhc_buffer_breaks_music = (get_synced_var(player) & 0x01) == 0;
+uhc_music_is_broken = false;
+uhc_music_break_sfx = sound_get("unused");
+uhc_music_break_strength = 11;
+uhc_music_break_storage = [];
+for (var i = 0; i < uhc_music_break_strength; i++)
+    uhc_music_break_storage[i] = sound_play(uhc_music_break_sfx, true, 0, 0, 0);
+
 
 //=================================================
 // Taunt video
@@ -451,6 +458,12 @@ ncode1 = "Outfitted with a deadly sawblade and throwing stars.";
 ncode2 = "Creator unknown, but deeply nostalgic.";
 ncode3 = "Pretends to be royalty; incessantly asks to subscribe.";
 
+//Po & Gumbo
+pot_compat_variable = sprite_get("cmp_gumbo");
+pot_compat_text = "PBJ Sandwich";
+
+//Mamizou
+mamizou_transform_spr = sprite_get("cmp_mamizou");
 
 //=========================================================================
 #define make_uhc_video

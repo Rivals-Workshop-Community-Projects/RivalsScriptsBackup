@@ -33,7 +33,7 @@ meter_not_full = 1;
 current_shot = 1;
 
 nspecial_proj_spawned = false;
-
+nspec_dir = 0;
 nspecial_jumped = false;
 nspecial_spread = false;
 
@@ -54,15 +54,12 @@ chargeshot_charge_reset = false;
 uspecial_used = false;
 uspecial_left = false;
 uspecial_right = false;
-
 dash_enabled = false;
 air_dashed = false;
 
 invincible_super = false;
-invincibility_timer = 0;
-invincible_countdown = 5;
-rune_invincible_countdown = 7;
-superart_time = 8;
+var fuckington = 8;
+invincible_time = [fuckington, fuckington*1.5];
 second = 60;
 
 ex_spawned = false;
@@ -81,79 +78,55 @@ ex_cost_multiplier = 1;
 parry_multiplier = 1;
 n_double_jumped = false;
 
-
 is_ai = false;
 
-//training room stuff - borrowed from kris
-timer1 = get_game_timer();
-timer2 = 0;    
-practice = false;
-
 //visual effects
-
 smoke_bomb = hit_fx_create(sprite_get("smoke_bomb"), 30);
-
 eightway_top = hit_fx_create(sprite_get("ew_vfx_top"), 25);
 eightway_middle = hit_fx_create(sprite_get("ew_vfx_middle"), 30);
 eightway_bottom = hit_fx_create(sprite_get("ew_vfx_bottom"), 35);
-
 kablooey_vfx = hit_fx_create(sprite_get("kablooey_vfx"), 15);
-
 radical_barrage = hit_fx_create(sprite_get("radicalbarrage"), 30);
 
-peashooter_vfx = hit_fx_create(sprite_get("nspecial_vfx_p"), 4);
-spread_vfx = hit_fx_create(sprite_get("nspecial_vfx_s"), 4);
-chase_vfx = hit_fx_create(sprite_get("nspecial_vfx_c"), 4);
-lobber_vfx = hit_fx_create(sprite_get("nspecial_vfx_l"), 4);
-charge_vfx = hit_fx_create(sprite_get("nspecial_vfx_c2"), 4);
-roundabout_vfx = hit_fx_create(sprite_get("nspecial_vfx_r"), 4);
+cup_Shootcur = 0;
+sfx_cupShoot[0] = getWeaponSounds("sfx_peashoot"); //default
+sfx_cupShoot[1] = getWeaponSounds("sfx_peashoot");
+sfx_cupShoot[2] = getWeaponSounds("sfx_spread");
+sfx_cupShoot[3] = getWeaponSounds("sfx_chaser");
+sfx_cupShoot[4] = getWeaponSounds("sfx_lobber");
+//i can get away with not adding weapon sounds for charge, Lol!
+sfx_cupShoot[6] = getWeaponSounds("sfx_roundabout");
 
 //workshop item compatibility
 
 //trummel & alto
 trummelcodecneeded = false;
 trummelcodec_id = noone;
-
 //feri
 feri_costume = sprite_get("feri_costume_cuphead");
-
 //otto
 otto_bobblehead_sprite = sprite_get("bobble_cuphead");
-
 //miiverse
 miiverse_post = sprite_get("cup_miiverse1");
-
 sprite_change_offset("cup_miiverse1", 60, 30);
-
 //dedede it's the star of the show
 arena_title = "The Gunning Cartoon";
-
 //d-d-danganronpa
 guiltySprite = sprite_get("cupganronpa");
-
 //last resort
 resort_portrait = sprite_get("portrait_cuphead");
-
 //waaaalllllll-eeeee
 walle_taunt_sound = sound_get("sfx_cuphead_flag");
 walle_taunt_type = 2;
-
 //amber :)
 plushForAmber = sprite_get("plushCuphead");
-
 //pokemon - gotta catch em all
 pkmn_stadium_front_img = sprite_get("cuphead_front");
 pkmn_stadium_back_img = sprite_get("cuphead_back");
-
 //greenflower - aka my past catching up to me
 gfzsignspr = sprite_get("signcuphead");
 
-//boss fight "support" - idea taken from kris - i was initially going to leave
-//cuphead as-is since he can gain meter from parrying anyway, but did it anyway
-//purely for ease of access
-
 wallop = false;
-
 hit_player_event = 12;
 
 //soulbound conflict
@@ -274,37 +247,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-/*
-//abyss runes
-abyssEnabled = false;
-enum runes {A = 1,B = 2,C = 3,D = 4,E = 5,F = 6,G = 7,H = 8,I = 9,J = 10,K = 11,L = 12,M = 13,N = 14,O = 15}
-runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
-ab_hud_x = 0;
-ab_hud_y = 0;
+user_event(0);
 
-//abyssMods[1 to 15] = [type, description];
-//types are: -1 - disabled
-// 0 - object mod: Modifies a static object left behind after an attack.
-// 1 - ranged mod: Modifies a projectile attack.
-// 2 - hit mod: Modifies a direct physical interaction with an opponent.
-// 3 - ability boost: Powers up a character attribute or action.
-abyssMods = array_create(16,[-1,"no"]);
-
-
-// Level 2
-abyssMods[@ runes.A] = [2, "Dash Attack becomes jump-cancellable on hit."];
-abyssMods[@ runes.B] = [3, "Horizontal speed is faster during NSPECIAL."];
-abyssMods[@ runes.C] = [3, "Can double jump during NSPECIAL."];
-abyssMods[@ runes.D] = [3, "When courage is active, you can dash cancel any move."];
-
-// Level 2
-abyssMods[@ runes.G] = [1, "Chaser EX attack has Clairen Tipper effect upon hit."];
-abyssMods[@ runes.H] = [3, "NSPECIAL charge shot charges faster."];
-abyssMods[@ runes.I] = [3, "If you get parried, you have a one in ten chance of not being in stun."];
-abyssMods[@ runes.J] = [3, "When courage is active, you can dash cancel any move."];
-
-// Level 3
-abyssMods[@ runes.L] = [2, "Super meter gain is doubled."];
-abyssMods[@ runes.M] = [3, "Super Art invincibility time lasts 10 seconds instead of 5 seconds."];
-abyssMods[@ runes.N] = [3, "EX attacks cost 10% of the super meter instead of 20%."];
-abyssMods[@ runes.O] = [3, "When courage is active, you can dash cancel any move."];
+#define getWeaponSounds(name)
+var i = [sound_get(name+"_1"), sound_get(name+"_2"), sound_get(name+"_3")];
+return i;

@@ -71,8 +71,12 @@ sprite_change_offset("sansintro", 48, 74);
 sprite_change_offset("nspecial", 82, 136);
 sprite_change_offset("fspecial", 82, 136);
 sprite_change_offset("uspecial", 82, 136);
+sprite_change_offset("uthrow", 82, 136);
 sprite_change_offset("dspecial", 82, 136);
 
+sprite_change_offset("rift", 83, 83);
+sprite_change_offset("riftgone", 83, 83);
+sprite_change_offset("riftnumb", 80, 80);
 
 sprite_change_offset("uspecialpar", 48, 74);
 

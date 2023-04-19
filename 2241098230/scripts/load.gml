@@ -77,3 +77,4 @@ sprite_change_collision_mask("smoke3", 0, 2, 8, 8, 56, 56, 2);
 
 sprite_change_offset("riptide_hat", 48, 126);
 sprite_change_offset("riptide_hat_d", 48, 126);
+sprite_change_offset("mamizou", 64, 80);

@@ -27,7 +27,7 @@ set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_absa_jump")); 
+set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_superjump_sein")); 
 
 window_num++;
 
@@ -106,6 +106,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 21); //21  - lightning medium
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 
 hitbox_num++;
 
@@ -128,6 +129,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 21); //21  - lightning medium
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 
 hitbox_num++;
 
@@ -150,6 +152,7 @@ set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 21); //21  - lightning medium
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_PARTICLE_NUM, hp_paw);
 
 hitbox_num++;
 /*

@@ -22,11 +22,6 @@ if(my_hitboxID.attack == AT_FSPECIAL){
     if(my_hitboxID.hbox_num == 2){
         hurricane.current_owner = hit_player
         hurricane.hsp *= -1
-        if(hurricane.lifetime < 20){
-            set_state(PS_PRATLAND)
-            was_parried = true
-            parry_lag = 30
-        }
     }else{
         parriedID = hit_player
     }

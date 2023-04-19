@@ -3,19 +3,26 @@
 //menu stuff
 menu_state = "choose";
 browser_show = false; //Whether or not to display the game.
+game_show = false;
 
 search_term = ""; //search terms
 successful_search = 0; //Number of successes
 search_page = 0;
 search_max = 7; //Max Lines per page
 
+/*
+hitbox_list = [
+	//[AT_FAIR, sprite_get("fair"),  sprite_get("fair_hurt"), 0, 2, 0, 40, -45, 70, 90]
+];
+*/
+
 //Load offsets
-user_event(1);
+user_event(1)
 small_sprites = 0;
 idle_anim_speed = 6;
 idle_frame_count = 8;
 
-browser_type = "text";
+browser_type = "Info Deluxe";
 
 text_timer = 0
 //Info Data
@@ -43,14 +50,18 @@ pages =
 	["DSPECIAL Info", "DSPECIAL sets up a clone that can read attack and strong based inputs. Holding the input allows the clone to store the move for later."],
 	["DSPECIAL Weakness", "Opponents hitting the clone destroys it and puts it on a cooldown. When the owner is hit the clone loses it's held attack."],
 	["JAB Info", "A basic 2 Hit leek swing."],
-	["Dash Atttack Info", ""],
-	["", ""],
-	["", ""],
-	["", ""],
-	["", ""],
-	["", ""],
-	["", ""],
-	["", ""],
+	["Dash Atttack Info", "Outward sending leek hit. Dash Attack Cancel Up Strong is very good at catching opponents."],
+	["FTILT Info", "Big horizontal disjointed outwards sending hitbox."],
+	["DTILT Info", "Quick outward leek poke with a lot of range."],
+	["UTILT Info", "Lingering upward sending combo move with the leek."],
+	["FSTRONG Info", "Strong horizontal kill move with a lot of disjoint with high whifflag."],
+	["DSTRONG Info", "Wide ranged kill move that has an awkward DI angle for opponents. Small blind spot on top of Miku."],
+	["USTRONG Info", "Strong vertical kill move with a thin hitbox."],
+	["NAIR Info", "Multihitting combo move. Try hitfalling it for great damage especially with clone."],
+	["FAIR Info", "Big outward sending move with a leek."],
+	["DAIR Info", "Big weak leek hitbox that sends in, but has a strong spike in the middle for 1 frame."],
+	["BAIR Info", "Small combo move with the leek."],
+	["UAIR Info", "Big juggling vertical hitbox for ladder combos. Try using Uspecial as a finisher near the top of your ladder combo."]
 ]
 used_pages = [];
 
@@ -70,7 +81,3 @@ css_x = 6;
 css_y =  7;
 css_w = 8; 
 css_h = 9;
-hitbox_list = [
-	[AT_FAIR, sprite_get("fair"),  sprite_get("fair_hurt"), 0, 2, 0, 40, -45, 70, 90]
-];
-

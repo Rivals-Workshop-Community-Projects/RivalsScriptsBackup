@@ -26,7 +26,7 @@ if(instance_exists(thetoken)){
 	}
 }
 
-if(alt == 27){
+if(alt == 29){
 	if(state == PS_AIR_DODGE || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD){
 		if(state_timer == 0 && !hitpause){
 			sound_play(sound_get("dbz teleport"));
@@ -61,9 +61,10 @@ if(!loaded){
 		trainingmode = true;
 	}*/
 	
-	with(oPlayer){
+	/*with(oPlayer){
 		other.playercount += 1;
-	}
+	}*/
+	
 	phone.utils_cur[phone.UTIL_FPS_WARN] = false;phone.utils_cur_updated[phone.UTIL_FPS_WARN] = true;
 	loaded = true;
 }
@@ -72,6 +73,14 @@ if(get_gameplay_time() <= 120){
 	if(taunt_pressed && !muted){
 		muted = true;
 	}
+	if(shield_pressed && kewtmode <= 0){
+		kewtmode = 2;
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt"));
+		set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("tokens_kewt_golden"));
+		sound_play(sound_get("big"));
+	}
+	playercount = 0;
+	with(oPlayer){ if(is_player_on(player)){ other.playercount++;}}
 }
 
 if(phone_cheats_updated[CHEAT_Money]){
@@ -86,7 +95,7 @@ if(phone_cheats[CHEAT_JailCard] == 1){
 	jailcard = true;
 }
 
-if(playercount > 1){
+if(playercount > 1 && get_gameplay_time() > 120){
 	if(get_gameplay_time() % 120 == 0 || get_game_timer() <= 0 || diedienow >= playercount-1){
 		if(get_player_stocks(player) >= 1){
 			diedienow = 0;
@@ -157,17 +166,49 @@ if(finalsmashtimer > 0){
 	invincible = true;invince_time = 4;
 }
 
-if (runesUpdated || get_match_setting(SET_RUNES)) {
+if ((runesUpdated || get_match_setting(SET_RUNES)) && !runesUpdated2) {
 	if (has_rune("A") || runeA) {
 		runeA = true;
+		current_money = 40000;current_money2 = 40000;
 	}if (has_rune("B") || runeB) {
-		
+		runeB = true;
+	}if (has_rune("C") || runeC) {
+		runeC = true;
+		discount = 0.5;
+	}if (has_rune("D") || runeD) {
+		runeD = true;
+		income_boost = 2;
+	}if (has_rune("E") || runeE) {
+		runeE = true;
+	}if (has_rune("F") || runeF) {
+		runeF = true;
 	}
 	
 	if (has_rune("G") || runeG) {
-		
-	}
-	if (has_rune("H") || runeH) {
+		runeG = true;
+	}if (has_rune("H") || runeH) {
 		runeH = true;
+	}if (has_rune("I") || runeI) {
+		runeI = true;
+	}if (has_rune("J") || runeJ) {
+		runeJ = true;
+	}if (has_rune("K") || runeK) {
+		runeK = true;
+	}
+	if (has_rune("L") || runeL) {
+		runeL = true;
+	}if (has_rune("M") || runeM) {
+		runeM = true;
+		discount_stocks = 50000;
+	}
+	
+	runesUpdated = false;
+	runesUpdated2 = true;
+}
+if(runeE){
+	if(get_gameplay_time() % 300 == 0){
+		sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 304);
+    	current_money += 3000*income_boost;
 	}
 }
+			

@@ -451,26 +451,6 @@ if trummelcodecneeded{
     trummelcodecline[page,4] = "plan stays the same";
     page++; 
 }
-
-//MUNOPHONE
-
- if (phone_cheats[cheat_more_djumps] == 1) {
-	 	   max_djumps = 1;
-	  } else if (phone_cheats[cheat_more_djumps] == 2){
-	       max_djumps = 2;
-	  } else if (phone_cheats[cheat_more_djumps] == 3){
-	       max_djumps = 3;
-	  } else if (phone_cheats[cheat_more_djumps] == 4){
-	       max_djumps = 4;
-	  } else if (phone_cheats[cheat_more_djumps] == 5){
-	       max_djumps = 5;
-	  } else if (phone_cheats[cheat_more_djumps] == 0){
-	       max_djumps = 0;
-	  } 
-	  
-	  if phone_cheats[cheat_recoil] with pHitBox if player_id == other can_hit_self = 1;
-	  
-	  
 	 //RUNES 
 	  
 	  

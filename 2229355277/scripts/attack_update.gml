@@ -156,10 +156,8 @@ if attack == AT_UTILT{
   }
 }
 
-if (attack == AT_DTILT and window == 3 and has_hit){
-  if window_timer >= 7{
-    iasa_script();
-  }
+if (attack == AT_DTILT and has_hit){
+	can_jump = true;
 }
 
 if (attack == AT_BAIR){

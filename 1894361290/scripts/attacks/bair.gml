@@ -66,6 +66,7 @@ set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, vfx_feather_side_large);
+set_hitbox_value(AT_BAIR, 2, HG_HIT_PARTICLE_NUM, 0);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, 1);

@@ -84,3 +84,15 @@ if (fs_exploding) {
 } else {
     frame_timer %= twinkle_frame_duration;
 }
+
+with (oPlayer) 
+{
+    if (other.player_id == id && state == PS_RESPAWN)
+    {
+        with(other)
+        {
+            instance_destroy();
+            break;
+        }
+    }
+}

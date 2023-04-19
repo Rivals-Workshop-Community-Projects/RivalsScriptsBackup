@@ -10,7 +10,7 @@ sprite_change_offset("p1ball", 16,16);
 sprite_change_offset("p2ball", 16,16);
 sprite_change_offset("p3ball", 16,16);
 sprite_change_offset("p4ball", 16,16);
-sprite_change_offset("ball_mask", 16,16);
+sprite_change_offset("ball_mask", 20,20);
 sprite_change_offset("screen_effect", 960,540);
 sprite_change_offset("wall1", 39,270);
 sprite_change_offset("wall2", 402,34);
@@ -110,7 +110,7 @@ sprite_change_offset("taunt_hurt", 64, 94);
 
 sprite_change_offset("plat", 46, 8);
 sprite_change_offset("large_plasma_hfx",128,128);
-sprite_change_offset("plasma_hfx",64,64);
+sprite_change_offset("plasma_hfx",86, 90);
 sprite_change_offset("spr_exp", 48, 48);
 set_victory_theme( sound_get( "victorytheme" ));
 set_victory_bg( sprite_get( "victoryroyalebg" ));

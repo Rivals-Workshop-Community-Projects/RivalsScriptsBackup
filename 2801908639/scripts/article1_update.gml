@@ -1,4 +1,5 @@
 //article1_update
+print(string(x))
 if st != 5
 {
     switch(player_id.player)
@@ -133,8 +134,9 @@ if playsound == true
     {
 
         var cool_effect = spawn_hit_fx(x,y,hitball_fx);
-        cool_effect.draw_angle = angle;
+        cool_effect.draw_angle = angle3;
         cool_effect.spr_dir = 1;
+        cool_effect.pause = 8;
         cool_effect.depth = depth-10;
     }
     shake_camera( 4, 4 )
@@ -195,40 +197,42 @@ if st != 5
                             destroy_hitboxes();
                         }
                     }
-                    /*if attack == AT_FSPECIAL /// BALL GRAB CODE
+                    if attack == AT_FSPECIAL /// BALL GRAB CODE
                     {
-                        if hbox_num == 2
+                    	//edited this code block in order to get it to work; Krankees
+                        if hbox_num == 1
                         {
-                            other.st = 8;
                             other.stt = 0;
+                            player_id.fspec_ball = 1;
                             with player_id
                             {
-                                old_hsp = hsp;
-                                old_vsp = vsp;       
+								hsp = 0;
+                                old_vsp = vsp;
                                 hitpause = true;
                                 hitstop = 5;
                                 has_hit = true;
                                 destroy_hitboxes();
                             }
                         }
-                        if hbox_num == 3 && other.st == 8
+                        if hbox_num == 2
                         {
-                            kb_angle = 0;
-                            other.spd = 60;
+                        	player_id.fspec_ball = false;
+                        	player_id.lock_movement = 0;
+                        	other.spd = 60;
                             other.st = 2;
                             other.stt = 0;
                             cool_hitboxstuff();    
                         }
-                    }*/
+                    }
                 }
                 else 
                 {
                     if (other.hitlockout != player || other.hitlockout2 == 0) && (other.hitstop == 0)
                     {
-                        if player_id != other.player_id
+                        /*if player_id != other.player_id
                         {
                             other.life-=1;
-                        }
+                        }*/
                         if other.spd >= 60
                         {
                             other.draw_e = 1;
@@ -266,22 +270,100 @@ if st != 5
                         {
                             other.hitstop_increase += round(other.spd/10);
                         }
-                        switch (attack)
+                        switch(attack)
                         {
-                            case AT_DAIR: if !(player_id == other.player_id || player_id.url == other.candyman_url){kb_angle = 270;} break;
-                            case AT_FAIR: kb_angle = -45; other.spd+= 10;break;
-                            case AT_BAIR: kb_angle = 180;break;
-                            case AT_FTILT: kb_angle = 0;break;
-                            case AT_UAIR: kb_angle = 90; break;
-                            case AT_FSTRONG: kb_angle = 0;break;
-                            case AT_DATTACK: kb_angle = 0; other.spd+= 5;break;break;
-                            case AT_UTILT: if (player_id == other.player_id){other.spd-= 15;}break;
-                        break;
+                        	case AT_JAB:
+                        	case AT_FTILT:
+                    			other.hsp = round(lengthdir_x(other.spd/2, 0 + 90 * (player_id.spr_dir - 1)));
+    							other.vsp = round(lengthdir_y(other.spd/2, 0));
+    							other.angle3 = get_hitbox_angle(id);
+    							other.angle = 0 + 90 * (player_id.spr_dir - 1);
+    							other.movement_lock = 1;
+                        		break;
+                        	case AT_DAIR: 
+                        		if !(player_id == other.player_id || player_id.url == other.candyman_url)
+                        		{
+                        			other.hsp = round(lengthdir_x(other.spd/2, 270));
+    								other.vsp = round(lengthdir_y(other.spd/2, 270));
+    								other.angle3 = get_hitbox_angle(id);
+    								other.angle = 270;
+    								other.movement_lock = 1;
+                        		} 
+                        		break;
+                            case AT_FAIR: 
+                        		if (player_id == other.player_id)
+                        		{
+                        			other.hsp = round(lengthdir_x(other.spd/2, -45 + 45 * (player_id.spr_dir - 1)));
+    								other.vsp = round(lengthdir_y(other.spd/2, -45));
+    								other.angle3 = get_hitbox_angle(id);
+    								other.angle = -45 + 45 * (player_id.spr_dir - 1);
+    								other.movement_lock = 1;
+                        		} 
+                            	break;
+                            case AT_BAIR: 
+                        		if (player_id == other.player_id)
+                        		{
+                        			other.hsp = round(lengthdir_x(other.spd/2, 180 - 90 * (player_id.spr_dir - 1)));
+    								other.vsp = round(lengthdir_y(other.spd/2, 0));
+    								other.angle3 = get_hitbox_angle(id);
+     								other.angle = 180 - 90 * (player_id.spr_dir - 1);
+    								other.movement_lock = 1;
+                        		}
+                            	break;
+                            case AT_UAIR: 
+                        		if (player_id == other.player_id)
+                        		{
+                        			other.hsp = round(lengthdir_x(other.spd/2, 90));
+    								other.vsp = round(lengthdir_y(other.spd/2, 90));
+    								other.angle3 = get_hitbox_angle(id);
+    								other.angle = 90;
+    								other.movement_lock = 1;
+                        		} 
+	                            break;
+                            case AT_FSTRONG: 
+                        		if (player_id == other.player_id)
+                        		{
+                        			other.angle3 = get_hitbox_angle(id);
+                        			if (other.angle3 > 0 and other.angle3 < 90)
+                        			{
+										other.hsp = round(lengthdir_x(other.spd/2, 0));
+										other.angle3 = 45;
+										other.angle = 0;
+                        			}
+                        			else if (other.angle3 > 90 and other.angle3 < 180)
+                        			{
+                        				other.hsp = round(lengthdir_x(other.spd/2, 180));
+										other.angle3 = 135;
+										other.angle = 180;
+                        			}
+    								other.vsp = round(lengthdir_y(other.spd/2, 0));
+    								other.movement_lock = 1;
+                        		} 
+                            	break;
+                            case AT_DATTACK: 
+                        		if (player_id == other.player_id)
+                        		{
+									other.hsp = round(lengthdir_x(other.spd/2, 0 + 90 * (player_id.spr_dir - 1)));
+    								other.vsp = round(lengthdir_y(other.spd/2, 0));
+    								other.spd += 5;
+		                        	other.angle3 = get_hitbox_angle(id);
+    								other.angle = 0 + 90 * (player_id.spr_dir - 1);
+    								other.movement_lock = 1;
+                        		} 
+                        		break;
+                            case AT_UTILT: 
+                            	other.spd-= 15;
+                            	break;
                         }
                         cool_hitboxstuff();
                         hit_priority = 10;
                         if type == 1
                         {
+                        	if (other.movement_lock < 1)
+                        	other.angle3 = get_hitbox_angle(id);
+                        	if (other.angle3 < 0)
+                        	other.angle3 += 360;
+                        	other.spr_dir = 1;
                             with player_id 
                             {
                                 old_hsp = hsp;
@@ -290,8 +372,8 @@ if st != 5
                                 hitstop = 10;
                                 if invincible = false
                                 {
-                                    invincible = true;
-                                    invince_time = 10;
+                                   /// invincible = true;
+                                  ///  invince_time = 10;
                                 }
                                 if url == CH_WRASTOR
                                 {
@@ -396,7 +478,7 @@ if (st == 1)//idle state
 }
 if (st == 2) //ball movement
 {
-
+	movement_lock = 0;
     if (spd >= 20) 
     {
         if hit_exists == false
@@ -409,7 +491,7 @@ if (st == 2) //ball movement
                 hit_exists = true;
                 if life > 0
                 {
-                    ballhitbox = create_hitbox(AT_USPECIAL,6,x,y);
+                    ballhitbox = create_hitbox(AT_USPECIAL,6,0,0); //changed the values to 0; hopefully this doesn't break anything
                 }
                 donotdraw = false;
             }
@@ -428,13 +510,14 @@ if (st == 2) //ball movement
             first_hit = 1;
         }        
         ballhitbox.player = hit_by_opponent;
+        ballhitbox.kb_angle = angle3;
         if (spd >= 4) && (spd <= 39)
         {
-            ballhitbox.damage = 10;
+            ballhitbox.damage = 6;
         }
         else if spd >= 50
         {
-            ballhitbox.damage = 20;
+            ballhitbox.damage = 8;
         }
         ballhitbox.x = round(x+hsp);
         ballhitbox.y = round(y+vsp);
@@ -452,7 +535,7 @@ if (st == 2) //ball movement
     if hitstop == 0
     {
         image_index = 0;
-        if (y < (stagefloor-250))
+        if (y < (stagefloor-250) and player_id.fspec_ball == false and vsp < 0)
         {
             if hit_exists == true
             {
@@ -473,7 +556,7 @@ if (st == 2) //ball movement
             }
             angle*=-1;
         }
-        else if (y > (stagefloor-15))
+        else if (y > (stagefloor-15) and player_id.fspec_ball == false and vsp > 0)
         {
             if hit_exists == true
             {
@@ -493,9 +576,13 @@ if (st == 2) //ball movement
             }
             angle*=-1;            
         }
-        if (x < stage_x)
+        if (x < stage_x and player_id.fspec_ball == false and hsp < 0)
         {
-            spr_dir*=-1;
+        	spr_dir *= -1;
+        	if ((angle3 > 0 and angle3 < 90) or (angle3 > 180 and angle3 < 270))
+        	angle3 -= (90 * spr_dir);
+        	else if ((angle3 > 90 and angle3 < 180) or (angle3 > 270 and angle3 < 360))
+        	angle3 += (90 * spr_dir);
             if hit_exists == true
             {
                 ballhitbox.x = round(x);
@@ -514,9 +601,13 @@ if (st == 2) //ball movement
                 hitstop = 2;
             }
         }
-        if (x > room_width - stage_x) 
+        if (x > (room_width - stage_x) and player_id.fspec_ball == false and hsp > 0) 
         {
-            spr_dir*=-1;
+        	spr_dir *= -1; 
+        	if ((angle3 > 0 and angle3 < 90) or (angle3 > 180 and angle3 < 270))
+        	angle3 -= (90 * spr_dir);
+        	else if ((angle3 > 90 and angle3 < 180) or (angle3 > 270 and angle3 < 360))
+        	angle3 += (90 * spr_dir);
             if hit_exists == true
             {
                 ballhitbox.x = round(x);
@@ -723,7 +814,11 @@ if (st = 7)//bunt
         }
         if (x < stage_x)
         {
-            spr_dir*=-1;
+        	spr_dir *= -1;
+        	if ((angle3 > 0 and angle3 < 90) or (angle3 > 180 and angle3 < 270))
+        	angle3 -= (90 * spr_dir);
+        	else if ((angle3 > 90 and angle3 < 180) or (angle3 > 270 and angle3 < 360))
+        	angle3 += (90 * spr_dir);
             if hit_exists == true
             {
                 ballhitbox.x = round(x);
@@ -748,7 +843,11 @@ if (st = 7)//bunt
         }
         if (x > room_width - stage_x) 
         {
-            spr_dir*=-1;
+        	spr_dir *= -1;
+        	if ((angle3 > 0 and angle3 < 90) or (angle3 > 180 and angle3 < 270))
+        	angle3 -= (90 * spr_dir);
+        	else if ((angle3 > 90 and angle3 < 180) or (angle3 > 270 and angle3 < 360))
+        	angle3 += (90 * spr_dir);        	
             var wallfx = spawn_hit_fx( x, y, wall_fx);
             i_hit_wall = true;
             wall2a = 1.2;
@@ -772,17 +871,14 @@ if (st = 7)//bunt
 
 if st == 8
 {
-    image_speed = 0;
-    image_alpha = 0;
-    donotdraw = true;
-    x = player_id.x+40*player_id.spr_dir;
-    y = player_id.y-40;
+    player_id.ball_exists = false
+    instance_destroy();
+    exit;
 }
 
 #endregion
 
 stt++;
-
 #define cool_hitboxstuff()
 {
     if other.donotdraw = false
@@ -793,9 +889,12 @@ stt++;
         other.hitlockout = player;
         other.hitlockout2 = 20;
     }
-    other.hsp = round(lengthdir_x(other.spd/2, get_hitbox_angle(id)));
-    other.vsp = round(lengthdir_y(other.spd/2, get_hitbox_angle(id)));
-    other.angle = get_hitbox_angle(id);
+    if (other.movement_lock = 0) //Krankees
+    {
+    	other.hsp = round(lengthdir_x(other.spd/2, get_hitbox_angle(id)));
+    	other.vsp = round(lengthdir_y(other.spd/2, get_hitbox_angle(id)));
+    	other.angle = get_hitbox_angle(id);
+    }
     other.angle2 = get_hitbox_angle(id);
     other.old_vsp = other.vsp;
     other.old_hsp = other.hsp;

@@ -57,7 +57,7 @@ set_window_value(AT_BAIR, 6, AG_WINDOW_VSPEED, -1);
 
 // Window 3 End
 set_window_value(AT_BAIR, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 7, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_BAIR, 7, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_BAIR, 7, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_BAIR, 7, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_BAIR, 7, AG_WINDOW_HAS_WHIFFLAG, 1);

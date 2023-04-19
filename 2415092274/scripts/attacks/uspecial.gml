@@ -45,7 +45,7 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
 
 //land
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 16);//14
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 18);//14//16
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
@@ -87,7 +87,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 5);
 //set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 32);//41//12
 
-set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 48);
+set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 40);//48
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -12);
 
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("uspecial_slash"));
@@ -118,9 +118,9 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 2);//1
 set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 5);
-set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 64);//-2
+set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 51);//-2//64
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -18);
-set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 88);//62
+set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 66);//62//88
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 9);
 set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 1);//1
@@ -139,9 +139,9 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, sound_get("ARWave_v2"));
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 2);//1
 set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 5);
-set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 64);//-2
+set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 51);//-2//64
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -56);
-set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 88);//62
+set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 66);//62//88
 set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 21);
 set_hitbox_value(AT_USPECIAL, 3, HG_SHAPE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_PRIORITY, 2);//1
@@ -160,9 +160,9 @@ set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("ARWave_v2"));
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_WINDOW, 4);//1
 set_hitbox_value(AT_USPECIAL, 4, HG_LIFETIME, 1);
-set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X, 62);//-2
+set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X, 56);//-2//62
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y, -12);
-set_hitbox_value(AT_USPECIAL, 4, HG_WIDTH, 80);//62
+set_hitbox_value(AT_USPECIAL, 4, HG_WIDTH, 68);//62//80
 set_hitbox_value(AT_USPECIAL, 4, HG_HEIGHT, 39);
 set_hitbox_value(AT_USPECIAL, 4, HG_SHAPE, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_PRIORITY, 1);//1
@@ -182,9 +182,9 @@ set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, sound_get("ARSlash"));
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_WINDOW, 5);//1
 set_hitbox_value(AT_USPECIAL, 5, HG_LIFETIME, 4);
-set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_X, 0);//-2
+set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_X, 12);//-2//0
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_Y, -26);
-set_hitbox_value(AT_USPECIAL, 5, HG_WIDTH, 80);//62
+set_hitbox_value(AT_USPECIAL, 5, HG_WIDTH, 56);//62//80
 set_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT, 40);
 set_hitbox_value(AT_USPECIAL, 5, HG_SHAPE, 2);
 set_hitbox_value(AT_USPECIAL, 5, HG_PRIORITY, 1);//1

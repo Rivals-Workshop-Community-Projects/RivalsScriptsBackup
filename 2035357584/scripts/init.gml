@@ -5,6 +5,9 @@ handle_parry = false //used to handle parries in special situations
 introTimer = 0;
 introTimer2 = 0;
 
+playtest_active = false;
+with (oTestPlayer) playtest_active = true;
+
 hurtbox_spr = sprite_get("nade_hurtbox");
 sprite_change_offset("nade_hurtbox", 64, 105);
 crouchbox_spr = sprite_get("nade_crouch_hurtbox");
@@ -218,6 +221,11 @@ traps[2] = noone;
 num_traps = 1;
 aerial_traps_destructible = true;
 
+//ftilt variables
+my_grab_id = noone; 
+grab_time = 0;
+max_grab_time = 60;
+
 //nair variables
 max_nairs = 5
 nairs = 1;
@@ -233,7 +241,7 @@ DAIR_CAN_CANCEL = 200;
 DAIR_FALL_CANCEL = 35;
 
 //taunt variables
-taunt_speed = 1;
+taunt_speed = 1.7;
 taunt = false;
 
 //dattack variables

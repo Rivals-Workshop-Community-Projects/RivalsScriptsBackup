@@ -35,14 +35,15 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 //--------------------
 //since ustrong makes the clone attack, see AT_USTRONG_2 for the 'main' hitbox
 
-set_num_hitboxes(AT_USTRONG,0);
+set_num_hitboxes(AT_USTRONG, 0);
 
+//Using this for hitbox analysis in ai
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -90);
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -75);
 set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 70);
-set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 60);
+set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 150);
 set_hitbox_value(AT_USTRONG, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 7);

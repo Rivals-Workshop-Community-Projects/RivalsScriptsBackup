@@ -1,5 +1,8 @@
 // https://cdn.discordapp.com/attachments/736813501808377866/839920810725736458/5655445645546546556565645454545445452324434343431123221321423432545435345345345345353453453454353453.mp4
 
+// death
+small_sprites = 1;
+
 debug = 0;
 
 hurtbox_spr = sprite_get("owen_hurtbox");
@@ -65,7 +68,7 @@ crouch_recovery_frames = 2;
 //parry animation frames
 dodge_startup_frames = 1;
 dodge_active_frames = 1;
-dodge_recovery_frames = 2;
+dodge_recovery_frames = 3;
 
 //tech animation frames
 tech_active_frames = 1;
@@ -133,9 +136,12 @@ dair_timer = 0;
 // rainbow color init
 hue = 0;
 
+// determines whether to display boot data
+boot_data = 0;
+
 // festive hat init
 wearing_hat = get_player_color(player) == 15;
-//wearing_hat_blu = get_player_color(player) == 3;
+wearing_hat_blu = get_player_color(player) == 3;
 
 // variables for abyss rune meter balance
 hype_max_multiplier = 1;
@@ -234,6 +240,22 @@ if (stage_id == "nt\383980\2634489514") {
 	print_debug( "Hallowflame stage detected" );
 }
 
+// april fools joke code
+//hit_chance_var = 8;
+//number_to_beat = 0;
+
+// toggles certain copyrighted sounds
+no_copyright = false;
+
+// associated variables
+sound_fstrong_hitfloor = sound_get("crowbar_hit2");
+sound_fstrong_hitfloor_volume = 0.6;
+
+sound_fspecial_boot = sound_get("gravgun_launch2");
+
+sound_boot_land_sound = sound_get("toolgun_shoe_place");
+
+sound_uspecial_misfire = sound_get("tau_overcharge");
 
 // WORKSHOP SUPPORTS BEGIN HERE
 
@@ -361,7 +383,7 @@ ncode3 = "of creating a shoe that absorbs attacks."
 hidden_alt_active = false;
 hidden_alt_enabled = true; // can remove feature at any time
 
-// funny variables for phone thing
+// funny variables for thing
 prev_gravity_speed = gravity_speed;
 prev_hitstun_grav = hitstun_grav;
 prev_air_accel = air_accel;
@@ -370,9 +392,6 @@ prev_djump_speed = djump_speed;
 prev_short_hop_speed = short_hop_speed;
 prev_double_jump_time = double_jump_time;
 prev_knockback_adj = knockback_adj;
-
-// munophone cheat related variable that determines how intensely you vibrate
-funny_variable = 0;
 
 // steve
 steve_death_message = "this shouldn't appear";
@@ -486,9 +505,9 @@ walle_taunt_type = [1]; // music file
 // mt dedede stage compatiblity init
 arena_title = "Funny Cat";
 
-// toon link support
-toonlink_photo = sprite_get("toonlink_photo");
-toonlink_photo2 = 0;
+// toon link support lol jk get trolled
+// toonlink_photo = sprite_get("toonlink_photo");
+// toonlink_photo2 = 0;
 
 // greenflower
 gfzsignspr = sprite_get("owen_gfz");
@@ -939,10 +958,6 @@ Namco_Taunt_Sound = sound_get("vineboom")
 // (it's in update.gml)
 //diag_portrait=sprite_get(""); // This will allow you to put any custom portrait onto the dialogue buddy!
 
-// munophone touch support
-	muno_event_type = 0;
-	user_event(14);
-
 // pit support
 user_event(7);
 
@@ -964,3 +979,14 @@ copy_ability_id = 5;
 
 // bar stage support
 greenwood_cheer = 1;
+
+// Po & Gumbo food
+pot_compat_variable = sprite_get("food_owen");
+pot_compat_text = "Cheeseburger";
+
+// Henry Stickmin "fail"
+has_fail = true;
+fail_text = "That was FailRP.";
+
+// Mamizou Transformation
+mamizou_transform_spr = sprite_get("owen_mamizou");

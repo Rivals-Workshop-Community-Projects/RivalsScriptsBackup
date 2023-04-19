@@ -24,7 +24,7 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DAIR, 3, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_DAIR, 3, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED, 10);
+set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED, 13);
 set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DAIR, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));

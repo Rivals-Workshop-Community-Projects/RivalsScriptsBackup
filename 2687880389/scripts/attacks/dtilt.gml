@@ -3,7 +3,7 @@ set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 
 // Windup
-set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 7); // 10
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
@@ -39,10 +39,10 @@ set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 69);
 set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 51);
 set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 8);
+set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 7); // 8
 set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 80);
-set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .45);
+set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 8); // 9
+set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.45);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));

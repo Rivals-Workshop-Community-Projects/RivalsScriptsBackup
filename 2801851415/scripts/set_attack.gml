@@ -24,3 +24,9 @@ if(attack == AT_DSPECIAL)
     }
 }
 
+
+
+reset_attack_value(attack, AG_NUM_WINDOWS);
+
+for(i=1; i < get_num_hitboxes(attack)+1; i++)
+	set_hitbox_value(attack, i, HG_HIT_PARTICLE_NUM, 1); 

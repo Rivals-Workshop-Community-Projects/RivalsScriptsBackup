@@ -28,8 +28,8 @@ set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2
 window_num++;
 // Window 2 / Frame(s) # - / Nair 1 Active
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 
 
@@ -37,9 +37,9 @@ window_num++;
 // Window 3 / Frame(s) # - / Nair 1 Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 16);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 20);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 window_num++;
@@ -55,17 +55,17 @@ set_window_value(attack, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1
 window_num++;
 // Window # / Frame(s) # - / Nair 2 Active
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 14);
 
 window_num++;
 // Window # / Frame(s) # - / Nair 2 Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 //set_window_value(attack, window_num, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 16);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 20);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(attack, window_num, AG_WINDOW_GOTO, 10);
 
@@ -85,16 +85,16 @@ set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 window_num++;
 // Window # / Frame(s) # - / Nair 3 Active
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 6);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 23);
 
 window_num++;
 // Window # / Frame(s) # - / Nair 3 Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 25);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 9);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 24);
 set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //Hitbox Values --------------------------------------------------------------------------

@@ -32,7 +32,7 @@ if (my_hitboxID.attack == AT_UTHROW && my_hitboxID.hbox_num == 2|| my_hitboxID.a
 }
 
 if (my_hitboxID.attack == AT_DSPECIAL_AIR && my_hitboxID.hbox_num < 3 && get_player_color(player) == 22) {
-    //sound_play(sound_get( "sfx_footdive" ))
+    sound_play(sound_get( "sfx_footdive" ))
 }
 
 //Throws

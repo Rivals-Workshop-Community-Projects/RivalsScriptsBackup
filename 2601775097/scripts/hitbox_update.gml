@@ -35,16 +35,31 @@ switch (attack)
         break;
     //light hookshot
     case AT_EXTRA_2:
-        generate_particles(hbox_num-1); //particles
+        if ("explosive_spear" in self) generate_particles(explosive_spear); //particles
+
         if (hbox_num == 1 && player_id.is_attacking)
         {
-            if (player_id.hook_grab == 0)
+            if (!explosive_spear)
             {
-                if (has_hit && player != other) player_id.hook_grab = 1; //players
-                else if (place_meeting(x, y, asset_get("solid_32_obj"))) player_id.hook_grab = 2; //the ground and walls
+                if (player_id.hook_grab == 0)
+                {
+                    if (has_hit && player != other) player_id.hook_grab = 1; //players
+                    else if (place_meeting(x, y, asset_get("par_block"))) player_id.hook_grab = 2; //the ground and walls
+                }
+                if (player_id.hook_grab > 0) destroyed = true;
             }
-            if (player_id.hook_grab > 0) destroyed = true;
+            else
+            {
+                if (place_meeting(x, y, asset_get("par_block")))
+                {
+                    create_hitbox(attack, 2, x, y); //the ground and walls
+                    sound_play(asset_get("sfx_burnconsume"))
+                    destroyed = true;
+                }
+            }
         }
+        
+        if (hbox_num == 2 && hitbox_timer == 1) spawn_hit_fx(x, y, player_id.fx_fireblow[2])
         break;
     //polaris
     case AT_USPECIAL_2:
@@ -57,9 +72,28 @@ switch (attack)
         //afterimage effect
         if (hitbox_timer % 4 == 0) spawn_hit_fx(x, y, player_id.fx_skill7_afterimage);
 
-        //always follow the target
-        if (!was_parried) player_id.polaris_id = player_id.hit_player_obj;
-        else player_id.polaris_id = player_id;
+        //target changing
+        if (!instance_exists(player_id.hit_player_obj))
+        {
+            if (player_id.hit_player_obj.clone || player_id.hit_player_obj.custom_clone) //if they had a clone, go track the original
+            {
+                with (oPlayer) if (player == other.player_id.hit_player_obj) other.player_id.polaris_id = self;
+            }
+            else //search for new target if the hit_player_obj doesn't exist
+            {
+                var closest_distance = 9999999999999;
+                with (oPlayer)
+                {
+                    if (self != other.player_id && point_distance(x, y, other.x, other.y) < closest_distance)
+                    {
+                        closest_distance = point_distance(x, y, other.x, other.y);
+                        other.player_id.polaris_id = self;
+                    }
+                }
+            }
+        }
+
+        if (was_parried) player_id.polaris_id = player_id;
 
         //hit detection
         for(var i = array_length(can_hit); i > -1; i--;)

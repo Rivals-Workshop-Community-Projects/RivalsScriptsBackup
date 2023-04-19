@@ -1,0 +1,1 @@
+if ("cpu_skill_pool" in self && ds_list_valid(cpu_skill_pool)) ds_list_destroy(cpu_skill_pool);

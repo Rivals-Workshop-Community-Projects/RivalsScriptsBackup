@@ -1,7 +1,7 @@
 // on death
 
 // resets ammo
-rockets_clip = 4;
+rockets_clip = rockets_clip_max;
 rockets_reserve = 20; // funny unused variable
 
 // if buff was not active, divide buff meter by 2

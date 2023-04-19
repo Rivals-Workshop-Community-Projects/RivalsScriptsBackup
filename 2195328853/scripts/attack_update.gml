@@ -609,7 +609,36 @@ if (attack == AT_NSPECIAL){
 	        }
 	    }
     }
-    djumps = 5;
+    
+    //dance
+    if(window == 3){
+    	if(!free){
+    		if(right_down && hsp < 2){
+    			hsp += 0.5;
+    		}else if(left_down && hsp > -2){
+    			hsp -= 0.5;
+    		}
+    	}
+    	if(window_timer == 12 && !hitpause){
+    		if(!free){
+				sound_play(asset_get("sfx_land"));
+    		}else{
+    			sound_play(asset_get("sfx_swipe_medium1"));
+    		}
+		}
+        if(!taunt_down){
+            window = 11;window_timer = 0;
+        }
+    }
+    
+    //pose
+    if(window == 4){
+        
+    }else if(window == 5){
+        if(!taunt_down){
+            window = 6;window_timer = 0;
+        }
+    }
 }
 
 #define cancelattack

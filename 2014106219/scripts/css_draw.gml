@@ -7,7 +7,7 @@ patch_ver = "2.749";
 patch_day = "31";
 patch_month = "FEB";
  
-var num_alts = 16;
+var num_alts = 19;
 var alt_cur = get_player_color(player);
  
 if (get_player_color(player) == 11) {
@@ -21,17 +21,21 @@ alt_name[1]  = "Bluey";
 alt_name[2]  = "Fiery";
 alt_name[3]  = "Green";
 alt_name[4]  = "Purple";
-alt_name[5]  = "Matrix?";
+alt_name[5]  = "Goth-ish";
 alt_name[6]  = "BLM";
-alt_name[7]  = "Swapped Notes";
-alt_name[8]  = "Crazy Caps";
-alt_name[9]  = "Cool Rainbow Alt";
+alt_name[7]  = "Fairytale";
+alt_name[8]  = "Wild Headgear";
+alt_name[9]  = "Extreme Pink";
 alt_name[10] = "Retro";
-alt_name[11] = "Ramen";
-alt_name[12] = "Flower Fairy";
-alt_name[13] = "Artist";
-alt_name[14] = "Brigade Chief";
-alt_name[15] = "Reddy";
+alt_name[11] = "Yellow";
+alt_name[12] = "Aqua";
+alt_name[13] = "Snow";
+alt_name[14] = "Reddy";
+alt_name[15] = "Brazil";
+alt_name[16] = "Matrimelee";
+alt_name[17] = "Yippee";
+alt_name[18] = "DD4";
+ 
  
  
  

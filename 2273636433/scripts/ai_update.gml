@@ -1,11 +1,5 @@
 //ai_update - called every frame for this character as a CPU
 
-//REFLECT TESTING
-//if can_special{
-	//set_attack(AT_FSPECIAL);
-//}
-
-
 //General Logic
 
 xdist = abs(ai_target.x - x);
@@ -83,7 +77,7 @@ if (ai_target.state == PS_RESPAWN && !free){
 // DSPECIAL RECOVERY
 var stage_x = get_stage_data( SD_X_POS );
 var stage_y = get_stage_data( SD_Y_POS );
-if((x < 160)||((room_width - x)< 160)||(djumps==1 && cyclone==0 && ai_recovering))&&(free)&&(!hitstun)&&(state!=PS_ATTACK_AIR)&&(can_special){
+if((x < 150)||((room_width - x)< 150)||(djumps==1 && cyclone==0 && ai_recovering))&&(free)&&(!hitstun)&&(state!=PS_ATTACK_AIR)&&(can_special){
 	if(x < stage_x){spr_dir=1;}
 	if(x > stage_x){spr_dir=-1;}
 	set_attack(AT_DSPECIAL);

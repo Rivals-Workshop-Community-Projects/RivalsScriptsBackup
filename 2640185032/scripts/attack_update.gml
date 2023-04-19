@@ -110,10 +110,9 @@ switch(attack){
         break;
         
     case AT_DAIR:
-        if(window == 3 && window_timer == 1){
-            if(has_hit && !fast_falling){
-                vsp = -7;
-            }
+        if(has_hit && !fast_falling && !hitpause && dair_bounce){
+            vsp = -7;
+            dair_bounce = false;
         }
         break;
 
@@ -300,21 +299,21 @@ switch(attack){
             }
         }
         if(window == 1){
-            vsp = clamp(-5, vsp, 5);
-            hsp = clamp(-4, hsp, 4);
+            vsp = clamp(vsp, -3, 0);
+            hsp = clamp(hsp, -3, 3);
         }else if(window == 2 || window == 3){
             
             //movement
             if(left_down || right_down){
                 hsp += (0.2 * right_down) - (0.2 * left_down);
             }
-            hsp = clamp(-6, hsp, 6);
+            hsp = clamp(hsp, -6, 6);
             
             //loop
             if(window_timer == 9){
                 window_timer = 1;
                 uspec_loop++;
-                if(uspec_loop == 2){
+                if(uspec_loop == 1){ //was 2
                     window_timer = 0;
                     window++;
                 }
@@ -324,10 +323,10 @@ switch(attack){
             if(has_hit && !hitpause && (window == 2 && window_timer == 3)){
                 destroy_hitboxes();
                 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
-                set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 14 + (2 * uspec_bounce));
+                set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18 + (2 * uspec_bounce));
                 window_timer = 0;
                 window = 4;
-                vsp = min(-2.5, -10 + (2.5 * uspec_bounce));
+                vsp = min(-4.5, -12 + (1.5 * uspec_bounce));
             }
             
             //transition into knife throw

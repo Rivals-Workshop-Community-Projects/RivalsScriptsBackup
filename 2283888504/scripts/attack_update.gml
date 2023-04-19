@@ -484,8 +484,11 @@ if (attack == AT_UAIR){
                 //hsp = 0;
                 //can_move = false;
                 can_fast_fall = hitpause;
-                hit_player_obj.x += hsp;
-                hit_player_obj.y += vsp;
+                //hit_player_obj.x += hsp;
+                //hit_player_obj.y += vsp;
+                hit_player_obj.hsp = lerp(hit_player_obj.hsp, hsp, 0.2);
+                hit_player_obj.vsp = lerp(hit_player_obj.vsp, vsp - 2.5, 0.2);
+                
                 
                 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_X, 4);
                 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, -84);

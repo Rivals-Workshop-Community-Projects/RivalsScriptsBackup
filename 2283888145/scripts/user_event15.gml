@@ -336,6 +336,25 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.21", "14 April, 2023");
+initWords("Advertising");
+
+initPatch("1.20", "29 December, 2022");
+initWords("Community Patch: JPEG Warrior
+(again)");
+initHeader("UAir - Buffs");
+initSection("SDI Multiplier 1.0 --> 0.5.
+Adjusted multi-hit pull code to connect more reliably.");
+initHeader("FSpecial - QoL");
+initSection("Melee hit lifetime 5 --> 4.");
+initHeader("Ustrong - QoL");
+initSection("Hit vfx changed.");
+initHeader("DTilt - QoL");
+initSection("Hitpause scaling 0.5 --> 0.7.
+Hit vfx changed.");
+initHeader("UTilt - QoL");
+initSection("Hit sfx changed.");
+
 initPatch("1.19", "19 September, 2021");
 initHeader("General");
 initSection("Upgraded to MunoPhone Touch.

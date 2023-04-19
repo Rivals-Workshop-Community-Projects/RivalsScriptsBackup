@@ -63,10 +63,10 @@ if (attack == AT_FTILT){
             } else if special_pressed && move_cooldown[AT_FSPECIAL] == 0 {
                 axes_num -= 1;
                 set_attack(AT_FSPECIAL);
-            } else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
+            }/* else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
                 axes_num -= 1;
                 set_attack(AT_FSTRONG);
-            }
+            }*/
         }
         if window_timer >= 12 {
             fspec_walk_timer += 1;
@@ -118,17 +118,21 @@ if (attack == AT_FSPECIAL){
     if window == 1 && window_timer == 1 {
         clear_button_buffer(PC_JUMP_PRESSED);
     }
+    can_wall_jump = true;
+    /*
     if free { //no charge in the air
         set_attack_value(AT_FSPECIAL,AG_STRONG_CHARGE_WINDOW,10);
     } else {
         set_attack_value(AT_FSPECIAL,AG_STRONG_CHARGE_WINDOW,1);
     }
-    can_wall_jump = true;
+    
     //strong charge
     strong_down = special_down;
     if smash_charging {
         fspecial_charging = true;
     }
+    */
+    
     //movement if not charging
     if !(fspecial_charging && window < 4) {
         //schmove
@@ -180,10 +184,10 @@ if (attack == AT_FSPECIAL){
         } else if attack_pressed && move_cooldown[AT_FTILT] == 0 {
             axes_num -= 1;
             set_attack(AT_FTILT);
-        } else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
+        }/* else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
             axes_num -= 1;
             set_attack(AT_FSTRONG);
-        }
+        }*/
     }
     if window == 4 && window_timer >= 20 {
         fspec_walk_timer += 1;
@@ -236,16 +240,20 @@ if (attack == AT_FSPECIAL_RED){
     if window == 1 && window_timer == 1 {
         clear_button_buffer(PC_JUMP_PRESSED);
     }
+    can_wall_jump = true;
+    /*
     if free { //no charge in the air
         set_attack_value(AT_FSPECIAL_RED,AG_STRONG_CHARGE_WINDOW,10);
     } else {
         set_attack_value(AT_FSPECIAL_RED,AG_STRONG_CHARGE_WINDOW,1);
     }
-    can_wall_jump = true;
+    
     strong_down = special_down;
     if smash_charging {
         fspecial_charging = true;
     }
+    */
+    
     if !(fspecial_charging && window < 4) {
         if (has_touched_grass) {
             if abs(right_down - left_down) {
@@ -295,10 +303,10 @@ if (attack == AT_FSPECIAL_RED){
         } else if attack_pressed && move_cooldown[AT_FTILT] == 0 {
             axes_num -= 1;
             set_attack(AT_FTILT);
-        } else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
+        }/* else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
             axes_num -= 1;
             set_attack(AT_FSTRONG);
-        }
+        }*/
     }
     if window == 4 && window_timer >= 20 {
         fspec_walk_timer += 1;
@@ -352,16 +360,20 @@ if (attack == AT_FSPECIAL_BLUE){
     if window == 1 && window_timer == 1 {
         clear_button_buffer(PC_JUMP_PRESSED);
     }
+    can_wall_jump = true;
+    /*
     if free { //no charge in the air
         set_attack_value(AT_FSPECIAL_BLUE,AG_STRONG_CHARGE_WINDOW,10);
     } else {
         set_attack_value(AT_FSPECIAL_BLUE,AG_STRONG_CHARGE_WINDOW,1);
     }
-    can_wall_jump = true;
+    
     strong_down = special_down;
     if smash_charging {
         fspecial_charging = true;
     }
+    */
+    
     if !(fspecial_charging && window < 4) {
         if (has_touched_grass) {
             if abs(right_down - left_down) {
@@ -411,10 +423,10 @@ if (attack == AT_FSPECIAL_BLUE){
         } else if attack_pressed && move_cooldown[AT_FTILT] == 0 {
             axes_num -= 1;
             set_attack(AT_FTILT);
-        } else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
+        }/* else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
             axes_num -= 1;
             set_attack(AT_FSTRONG);
-        }
+        }*/
     }
     if window == 4 && window_timer >= 20 {
         fspec_walk_timer += 1;
@@ -468,16 +480,19 @@ if (attack == AT_FSPECIAL_GREEN){
     if window == 1 && window_timer == 1 {
         clear_button_buffer(PC_JUMP_PRESSED);
     }
+    can_wall_jump = true;
+    /*
     if free { //no charge in the air
         set_attack_value(AT_FSPECIAL_GREEN,AG_STRONG_CHARGE_WINDOW,10);
     } else {
         set_attack_value(AT_FSPECIAL_GREEN,AG_STRONG_CHARGE_WINDOW,1);
     }
-    can_wall_jump = true;
     strong_down = special_down;
     if smash_charging {
         fspecial_charging = true;
     }
+    */
+    
     if !(fspecial_charging && window < 4) {
         if (has_touched_grass) {
             if abs(right_down - left_down) {
@@ -526,10 +541,10 @@ if (attack == AT_FSPECIAL_GREEN){
         } else if attack_pressed && move_cooldown[AT_FTILT] == 0 {
             axes_num -= 1;
             set_attack(AT_FTILT);
-        } else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
+        }/* else if (left_strong_pressed or right_strong_pressed) && move_cooldown[AT_FSTRONG] == 0 {
             axes_num -= 1;
             set_attack(AT_FSTRONG);
-        }
+        }*/
     }
     if window == 4 && window_timer >= 20 {
         fspec_walk_timer += 1;
@@ -578,6 +593,7 @@ if (attack == AT_FSPECIAL_GREEN){
     }
 }
 
+/* old axe throw fstrong
 if (attack == AT_FSTRONG){
     if window == 4 && window_timer >= 18 {
         if attack_pressed && move_cooldown[AT_FTILT] == 0 {
@@ -588,7 +604,7 @@ if (attack == AT_FSTRONG){
             set_attack(AT_FSPECIAL);
         }
     }
-}
+}*/
 
 
 //teleport
@@ -629,7 +645,7 @@ if (attack == AT_USPECIAL){
                 //y += lengthdir_y(250,tel_dir);
                 pratphobia = true;
                 has_touched_grass = false;
-                move_cooldown[AT_DSPECIAL] = 420 + get_window_value(AT_USPECIAL,3,AG_WINDOW_LENGTH) + get_window_value(AT_USPECIAL,4,AG_WINDOW_LENGTH);
+                move_cooldown[AT_DSPECIAL] = dspecial_base_cooldown + get_window_value(AT_USPECIAL,3,AG_WINDOW_LENGTH) + get_window_value(AT_USPECIAL,4,AG_WINDOW_LENGTH);
                 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE,0);
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 3);
                 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 6);

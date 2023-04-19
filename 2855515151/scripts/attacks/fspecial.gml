@@ -54,6 +54,8 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .6)
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_FSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
@@ -73,6 +75,8 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, .6)
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 20 * 5); //DinoBros change the 5 to anim speed
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_FSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
@@ -89,7 +93,9 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_FSPECIAL, 4, HG_ANGLE, 45);
 //set_hitbox_value(AT_FSPECIAL2 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSPECIAL, 4, HG_KNOCKBACK_SCALING, 1.2)
+set_hitbox_value(AT_FSPECIAL, 4, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(AT_FSPECIAL, 4, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

@@ -53,7 +53,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 45);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 55); //was 70
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_knifebreak);
@@ -78,7 +78,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 25);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 25);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 55); //was 70
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, vfx_knifebreak);

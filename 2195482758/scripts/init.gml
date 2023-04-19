@@ -39,10 +39,10 @@ short_hop_speed = 7;
 djump_speed = 13.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 5.0; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .25;
-prat_fall_accel = .4; //multiplier of air_accel while in pratfall
+air_accel = .3;
+prat_fall_accel = .7; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
@@ -53,16 +53,16 @@ walljump_vsp = 10;
 walljump_time = 32;
 max_fall = 8; //10 //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
-gravity_speed = .60;
+gravity_speed = .6;
 hitstun_grav = .5;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 10; // was 8
-base_wave_land_adj = 1.45; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+base_wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_land_adj = base_wave_land_adj; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .06; //grounded deceleration when wavelanding
+wave_friction = .10; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -132,13 +132,15 @@ fc_base_y = -40;
 fc_base_x = 0;
 fc_backspin = false;
 fc_bunt = false;
+fc_standardized_bounce_speed = -8;
+fc_standardized_min_bounce_speed = -1;
 
 fc_trail = hit_fx_create( sprite_get( "smoketrail" ), 15 );
 fc_effect = hit_fx_create( sprite_get( "explosion_single" ), 7 );
 party_effect = hit_fx_create( sprite_get( "party_boom" ), 28 );
 party_has_moved = false;
 
-fc_lifetime = 400; // 85 -> // 100
+fc_lifetime = 200; // 85 -> // 100
 
 fc_string = "firecracker_single";
 
@@ -185,11 +187,16 @@ can_grab_solid_fspec = true;
 can_grab_plat_fspec = true;
 can_grab_solid_uspec = true;
 can_grab_plat_uspec = true;
+should_set_sprite_to_spin = false;
 base_uspecial_vsp = -9;
 varying_uspecial_vsp = -9;
 fspec_yoff = 0;
 uspecial_ground = false;
 KRAGG = false;
+used_uspec = false;
+first_uspec = false;
+uspec_grab_cooldown_max = 60;
+uspec_grab_cooldown = 0;
 
 // Air dspecial
 AT_AIR_DSPECIAL = AT_DSPECIAL_2;
@@ -220,6 +227,7 @@ scream_timer = 0;
 // Utilt tomfoolery
 spin_timer = 0;
 utilt_stick = false;
+spins = 0;
 
 // Victory
 set_victory_theme( sound_get( "tenru_victory" ));

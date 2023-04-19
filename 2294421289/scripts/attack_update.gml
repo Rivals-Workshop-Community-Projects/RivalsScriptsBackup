@@ -87,7 +87,7 @@ if (attack == AT_USPECIAL)
 { 
   if (window == 1)
   {
-  	if (window_timer == 20)
+  	if (window_timer == 18)
   	{
   		sound_play( asset_get( "sfx_swipe_medium1" ) );
   	}

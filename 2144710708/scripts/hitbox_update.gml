@@ -184,12 +184,7 @@ if (attack == AT_DSPECIAL) {
 		hit_priority = 1;
 	}
 	else {
-		if (player_id.move_cooldown[AT_USPECIAL_GROUND] > 0) { //munophone
-			hit_priority = 1;
-		}
-		else {
-			hit_priority = 0;
-		}
+		hit_priority = 0;
 	}
 	
 	// cooldown stuff
@@ -214,7 +209,7 @@ if (attack == AT_DSPECIAL) {
 	
 	// play sound upon touching the ground
 	if (!free && times_played > 0) {
-		sound_play(boot_land_sound, false, noone, 1, 1);
+		sound_play(boot_land_sound, false, noone, 0.66, 1);
 		times_played = times_played - 1;
 
 	}
@@ -267,7 +262,7 @@ if (attack == AT_DSPECIAL) {
 				player_id.has_hit = 1;		
 
 				spawn_hit_fx(other.x, other.y, 21);
-				sound_play(sound_get("gravgun_launch2"), false, noone, 1, 1.1);
+				sound_play(player_id.sound_fspecial_boot, false, noone, 1, 1.1);
 
 				other.player = player_id.player;
 				other.spr_dir = spr_dir;
@@ -299,7 +294,7 @@ if (attack == AT_DSPECIAL) {
 				player_id.has_hit = 1;		
 				
 				spawn_hit_fx(other.x, other.y, 21);
-				sound_play(sound_get("gravgun_launch2"), false, noone, 1, 1.1);
+				sound_play(player_id.sound_fspecial_boot, false, noone, 1, 1.1);
 				
 				other.hitstop = 10;
 				other.in_hitpause = 1;
@@ -474,7 +469,7 @@ if (attack == AT_DSPECIAL) {
 				player_id.has_hit = 1;		
 
 				spawn_hit_fx(other.x, other.y, 21);
-				sound_play(sound_get("gravgun_launch2"), false, noone, 1, 1.1);
+				sound_play(player_id.sound_fspecial_boot, false, noone, 1, 1.1);
 
 				other.player = player_id.player;
 				other.spr_dir = spr_dir;
@@ -507,7 +502,7 @@ if (attack == AT_DSPECIAL) {
 				player_id.has_hit = 1;		
 				
 				spawn_hit_fx(other.x, other.y, 21);
-				sound_play(sound_get("gravgun_launch2"), false, noone, 1, 1.1);
+				sound_play(player_id.sound_fspecial_boot, false, noone, 1, 1.1);
 				
 				other.hitstop = 10;
 				other.in_hitpause = 1;

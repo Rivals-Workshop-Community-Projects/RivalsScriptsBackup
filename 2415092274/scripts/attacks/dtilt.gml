@@ -18,34 +18,46 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 3);//5
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
 
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 5);//5
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);//this is new
 
-set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 6);//8
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);//this is new
 
+/*
+
+//windows below are for testing my debugdraw
+set_window_value(AT_DTILT, 7, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAMES, 2);
+
+
+set_window_value(AT_DTILT, 9, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DTILT, 9, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DTILT, 9, AG_WINDOW_ANIM_FRAMES, 2);
+*/
+
 set_num_hitboxes(AT_DTILT, 1);
 
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 36);//28
+set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 38);//28//36
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
 //set_hitbox_value(AT_DTILT, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 3);//6
-set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 61);//46
+set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 68);//46//61
 set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 23);
 set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 40);//78
+set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 90);//78//40
 set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 6);//4
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.25);//.35
 //set_hitbox_value(AT_DTILT, 1, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 4);//2
+set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 6);//2//4
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, 0.4);//.6
 set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 1); //1.1
 //set_hitbox_value(AT_DTILT, 1, HG_FORCE_FLINCH, 1); 

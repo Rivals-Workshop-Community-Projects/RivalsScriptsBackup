@@ -317,6 +317,9 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.6", "14 April, 2023");
+initWords("Advertising");
+
 initPatch("1.5", "23 September, 2021");
 initHeader("DAttack - Buffs");
 initSection("Hit 1 hitbox size increased.");

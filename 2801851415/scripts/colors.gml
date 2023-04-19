@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 12, 23 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 30 );
 
 // Blue
 set_color_profile_slot( 1, 0, 0, 156, 132 ); //Blue
@@ -265,6 +265,33 @@ set_color_profile_slot( 26, 3, 0, 255, 0 ); //Pink
 set_color_profile_slot( 26, 4, 0, 255, 0 ); //Belt
 set_color_profile_slot( 26, 5, 0, 255, 0 ); //Eyes
 set_color_profile_slot( 26, 6, 0, 255, 0 ); //ice
+
+// Bice Cream
+set_color_profile_slot( 27, 0, 255, 15, 138 ); //Blue
+set_color_profile_slot( 27, 1, 120, 22, 150 ); //Fur
+set_color_profile_slot( 27, 2, 0, 0, 199 ); //Gold
+set_color_profile_slot( 27, 3, 255, 0, 136 ); //Pink
+set_color_profile_slot( 27, 4, 0, 64, 125 ); //Belt
+set_color_profile_slot( 27, 5, 255, 74, 74 ); //Eyes
+set_color_profile_slot( 27, 6, 0, 0, 255 ); //ice
+
+// Hyper Light
+set_color_profile_slot( 28, 0, 191, 51, 51 ); //Blue
+set_color_profile_slot( 28, 1, 64, 183, 189 ); //Fur
+set_color_profile_slot( 28, 2, 21, 21, 30 ); //Gold
+set_color_profile_slot( 28, 3, 134, 134, 134 ); //Pink
+set_color_profile_slot( 28, 4, 219, 33, 48 ); //Belt
+set_color_profile_slot( 28, 5, 40, 50, 40 ); //Eyes
+set_color_profile_slot( 28, 6, 0, 255, 255 ); //ice
+
+// Dragon
+set_color_profile_slot( 29, 0, 0, 251, 255 ); //Blue
+set_color_profile_slot( 29, 1, 255, 28, 28 ); //Fur
+set_color_profile_slot( 29, 2, 255, 249, 184 ); //Gold
+set_color_profile_slot( 29, 3, 252, 230, 255 ); //Pink
+set_color_profile_slot( 29, 4, 252, 230, 255 ); //Belt
+set_color_profile_slot( 29, 5, 0, 183, 255 ); //Eyes
+set_color_profile_slot( 29, 6, 207, 235, 209 ); //ice
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

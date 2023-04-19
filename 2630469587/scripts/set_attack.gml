@@ -11,6 +11,7 @@ if ((attack = AT_NSPECIAL || attack = AT_NSPECIAL_AIR) && phantom.state != 1 && 
     }
 }
 
+
 if (attack = AT_DSPECIAL && free) {
     attack = AT_DSPECIAL_AIR;
 }

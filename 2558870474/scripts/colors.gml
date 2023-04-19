@@ -266,15 +266,15 @@ set_color_profile_slot( 23, 5, 59, 51, 47 ); //Boots
 set_color_profile_slot( 23, 6, 64, 66, 66 ); //Umbrella
 set_color_profile_slot( 23, 7, 242, 252, 255 ); //IceIceBaby
 
-// Winter's Coming
-set_color_profile_slot( 24, 0, 255, 255, 255 ); //Fur
-set_color_profile_slot( 24, 1, 255, 82, 193 ); //Hair/Tail
-set_color_profile_slot( 24, 2, 231, 199, 237 ); //Floof
-set_color_profile_slot( 24, 3, 191, 54, 93 ); //Jacket
-set_color_profile_slot( 24, 4, 231, 199, 237 ); //Skirt
-set_color_profile_slot( 24, 5, 55, 28, 37 ); //Boots
-set_color_profile_slot( 24, 6, 255, 255, 255 ); //Umbrella
-set_color_profile_slot( 24, 7, 255, 82, 193 ); //IceIceBaby
+// German Prosecutor
+set_color_profile_slot( 24, 0, 253, 238, 232 ); //Fur
+set_color_profile_slot( 24, 1, 166, 185, 193 ); //Hair/Tail
+set_color_profile_slot( 24, 2, 255, 255, 255 ); //Floof
+set_color_profile_slot( 24, 3, 99, 124, 119 ); //Jacket
+set_color_profile_slot( 24, 4, 61, 82, 82 ); //Skirt
+set_color_profile_slot( 24, 5, 75, 86, 85 ); //Boots
+set_color_profile_slot( 24, 6, 130, 81, 48 ); //Umbrella
+set_color_profile_slot( 24, 7, 228, 166, 87 ); //IceIceBaby
 
 // Driver
 set_color_profile_slot( 25, 0, 254, 237, 218 ); //Fur

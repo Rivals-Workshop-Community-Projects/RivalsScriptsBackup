@@ -164,6 +164,7 @@ switch(sprite){
 	case "uspecial":
 	case "dspecial":
 	case "taunt":
+	case "tauntdrip":
 	case "phone_open":
 		image_index = img_set_number;
 		break;

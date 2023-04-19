@@ -1,5 +1,4 @@
 //
-
 if (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1) {
 	
 	//Before grabbing the opponent, first make sure that:

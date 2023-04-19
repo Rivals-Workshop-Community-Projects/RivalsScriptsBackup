@@ -494,7 +494,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 6){ // Color 26 Secret Alt
+		if (get_player_color(player) == 6){ // Color 6 Secret Alt
 
 			// Genesis - alt color
 			if (up_down && !down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
@@ -505,7 +505,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 26){ // Color 26 Secret Alt
+		if (get_player_color(player) == 11){ // Color 11 Secret Alt
 
 			// Yshtola - alt color
 			if (!up_down && down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
@@ -516,11 +516,33 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 26){ // Color 26 Secret Alt
+		if (get_player_color(player) == 6){ // Color 6 Secret Alt
 
 			// Heatwave - alt color
 			if (!up_down && !down_down && left_down && !right_down && !shield_down && attack_down && !special_down){
 				SecretColor = 11;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 6){ // Color 6 Secret Alt
+
+			// Riptide - alt color
+			if (!up_down && !down_down && !left_down && right_down && !shield_down && attack_down && !special_down){
+				SecretColor = 12;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 6){ // Color 6 Secret Alt
+
+			// Big House - alt color
+			if (!up_down && !down_down && !left_down && !right_down && shield_down && attack_down && !special_down){
+				SecretColor = 13;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -825,6 +847,12 @@ with (oPlayer){
 			}
 			other.hsp = clamp(other.hsp, -4, 4);
 		}
+		
+		// Applies Extra Hitpause
+		if (other.window >=3 && other.window <= 5 && other.attack == AT_NTHROW){
+			hitstop += 1;
+		}
+		
 		
 		if (other.window == 1 && other.attack == AT_NTHROW){
 			y = other.y;

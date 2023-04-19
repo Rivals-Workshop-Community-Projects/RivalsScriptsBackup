@@ -10,7 +10,9 @@ set_hit_particle_sprite(2, sprite_get("hfx_part_ice_small"));
 
 set_victory_theme(sound_get("victory" + string(random_func(1, 3, true)+1)));
 set_victory_bg(sprite_get("bg"))
-
+	play_music = false;
+suppress_music = false;
+lunatic_timer = 0;
 hfx_egg = hit_fx_create(sprite_get("hfx_egg"), 24)
 hfx_special = hit_fx_create(sprite_get("hfx_special"), 14)
 
@@ -110,3 +112,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+//Compat
+//TCG Kirby
+TCG_Kirby_Copy = 8;

@@ -1,6 +1,5 @@
 
 color = get_player_color(player);
-
 //Timer for Fading out text
 
 CSS_image_alpha = max(CSS_image_alpha - 0.1, 0);

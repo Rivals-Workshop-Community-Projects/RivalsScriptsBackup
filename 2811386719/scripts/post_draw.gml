@@ -9,7 +9,12 @@ shader_start()
 
 // draw_static_bar()
 draw_jet()
-
+with(right_bubble){
+	if(was_parried){
+		draw_sprite_ext(other.orb_loop_out_spr, image_index, x, y, 2*spr_dir, 2, 0, get_player_hud_color(player), 1);
+	}
+	
+}
 
 
 if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
@@ -17,12 +22,20 @@ if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
     draw_sprite_ext(dstrong_static_overlay, image_index, x, y, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 1);
   }
   if(attack == AT_NSPECIAL){
-    if(window == 2){
+    if(window == 2 or window == 3){
+    	if(col == 5 and modifier == 0){
+    		draw_sprite_ext(grab_static_pull_spr, game_time/3, x + 55*spr_dir + 2, y - 115 + 2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_red, 0.5);
+    		draw_sprite_ext(grab_static_pull_spr, game_time/3, x + 55*spr_dir - 2, y - 115 - 2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_red, 0.5);
+    	}
       draw_sprite_ext(grab_static_pull_spr, game_time/3, x + 40*spr_dir, y - 35, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 1);
     }
   }
   if(attack == AT_USPECIAL_GROUND){
     if(window == 2 or window == 3){
+    	if(col == 5 and modifier == 0){
+    		draw_sprite_ext(grab_static_pull_spr, game_time/3, x + 55*spr_dir + 2, y - 115 + 2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_red, 0.5);
+    		draw_sprite_ext(grab_static_pull_spr, game_time/3, x + 55*spr_dir - 2, y - 115 - 2, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_red, 0.5);
+    	}
       draw_sprite_ext(grab_static_pull_spr, game_time/3, x + 55*spr_dir, y - 115, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 1);
     }
   }
@@ -34,6 +47,19 @@ if(state == PS_AIR_DODGE){
     
 }
 
+if(hit_wave){
+	var ind = 0
+	var ini_length = 9
+	if(state_timer < ini_length){
+		ind = state_timer*3/ini_length
+	}else{
+		ind = 3 + (game_time%7)/15
+	}
+	shader_start()
+	draw_sprite_ext(dspecial_bubble_spr, ind, x - bubble_x, y - char_height/2 - bubble_y, 2, 2, 0, c_white, 1)
+	shader_end()
+}
+
 shader_end()
 
 if(instance_exists(lightning_hbox)){
@@ -43,54 +69,83 @@ if(instance_exists(lightning_hbox)){
 
 
 
-// if(ds_list_valid(ai_draw)){
-//     var len = ds_list_size(ai_draw);
-//     for(var i = 0; i < len; i++){
-//         var type_draw = ai_draw[| i].type;
+if(is_ai and ds_list_valid(ai_draw)){
+    var len = ds_list_size(ai_draw);
+    for(var i = 0; i < len; i++){
+        var type_draw = ai_draw[| i].type;
         
-//         switch(type_draw){
-//             case "rectOutlineCenter":
+        switch(type_draw){
+            case "rectOutlineCenter":
                 
-//                 draw_rectangle_color(ai_draw[| i].x - ai_draw[| i].width/2,
-//                     ai_draw[| i].y - ai_draw[| i].height/2,
-//                     ai_draw[| i].x + ai_draw[| i].width/2,
-//                     ai_draw[| i].y + ai_draw[| i].height/2,
-//                     ai_draw[| i].color, ai_draw[| i].color,
-//                     ai_draw[| i].color, ai_draw[| i].color, true );
-//                 break;
-//             case "rectOutline":
+                draw_rectangle_color(ai_draw[| i].x - ai_draw[| i].width/2,
+                    ai_draw[| i].y - ai_draw[| i].height/2,
+                    ai_draw[| i].x + ai_draw[| i].width/2,
+                    ai_draw[| i].y + ai_draw[| i].height/2,
+                    ai_draw[| i].color, ai_draw[| i].color,
+                    ai_draw[| i].color, ai_draw[| i].color, true );
+                break;
+            case "rectOutline":
                 
-//                 draw_rectangle_color(ai_draw[| i].left,
-//                     ai_draw[| i].top,
-//                     ai_draw[| i].right,
-//                     ai_draw[| i].bottom,
-//                     ai_draw[| i].color, ai_draw[| i].color,
-//                     ai_draw[| i].color, ai_draw[| i].color, true );
-//                 break;
+                draw_rectangle_color(ai_draw[| i].left,
+                    ai_draw[| i].top,
+                    ai_draw[| i].right,
+                    ai_draw[| i].bottom,
+                    ai_draw[| i].color, ai_draw[| i].color,
+                    ai_draw[| i].color, ai_draw[| i].color, true );
+                break;
                 
-//             case "line":
-//                 draw_line_color(ai_draw[| i].x1,
-//                     ai_draw[| i].y1,
-//                     ai_draw[| i].x2,
-//                     ai_draw[| i].y2,
-//                     ai_draw[| i].color, ai_draw[| i].color);
-//                 break; 
-//         }
+            case "line":
+                draw_line_color(ai_draw[| i].x1,
+                    ai_draw[| i].y1,
+                    ai_draw[| i].x2,
+                    ai_draw[| i].y2,
+                    ai_draw[| i].color, ai_draw[| i].color);
+                break; 
+        }
         
-//     }
-// }
+    }
+}
 
 #define draw_jet()
-
-if(jet_show_charge){
-	draw_sprite_ext(jet_discharge_spr, jet_img_idx_charge, jet_x, jet_y, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 1);
+if(attack == AT_FSTRONG and attacking){
+	// if(can_counter or smash_charging){
+	if(reflect_id != noone){
+		jet_sprite_index = jet_fstrong_spr
+		if(window == 1){
+			jet_img_idx_charge = (game_time/5) % 4
+		}else{
+			if(jet_ball_timer <= jet_ball_time + 2){
+				jet_img_idx_charge = 3 + jet_ball_timer*4/jet_ball_time
+			}else{
+				jet_img_idx_charge = 8
+			}
+		}
+	}else{
+		if(times_reflected and jet_ball_timer < 20){
+			jet_sprite_index = jet_fstrong_spr
+			jet_img_idx_charge = 8
+		}else{
+			jet_sprite_index = jet_spr
+			jet_img_idx_charge = (floor(static/25)*8 + (game_time/5 %8))
+		}
+		
+	}
+	
 }else{
-	draw_sprite_ext(jet_spr, (floor(static/25)*8 + (game_time/5 %8)), jet_x, jet_y, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 1);
+	if(jet_show_charge) {
+		jet_sprite_index = jet_discharge_spr
+		jet_img_idx_charge = game_time % 3 == 0 ? (100 - static)*0.4 : jet_img_idx_charge;
+	}else{
+		jet_sprite_index = jet_spr
+		jet_img_idx_charge = (floor(static/25)*8 + (game_time/5 %8))
+	}
 }
 
 if(static >= 100){
-    draw_sprite_ext(jet_static_overlay_spr, floor(game_time/5)%8, jet_x, jet_y, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 1);
+   draw_sprite_ext(jet_static_overlay_spr, floor(game_time/5)%8, jet_x, jet_y, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 1);
 }
+
+draw_sprite_ext(jet_sprite_index, jet_img_idx_charge, jet_x, jet_y, spr_dir * (small_sprites + 1), small_sprites + 1, 0, c_white, 1);
 
 #define draw_static_bar()
 

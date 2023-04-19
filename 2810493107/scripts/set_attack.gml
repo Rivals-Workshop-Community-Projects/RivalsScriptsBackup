@@ -4,11 +4,11 @@
 /*if (attack == AT_NSPECIAL) {
     attack = AT_NSPECIAL_AIR;
 }*/
+reset_attack_value(attack, AG_NUM_WINDOWS);
 
-
-if (attack == AT_USPECIAL) {
-    attack = AT_USPECIAL_2;
-}
+// if (attack == AT_USPECIAL) {
+//     attack = AT_USPECIAL_2;
+// }
 
 if (attack == AT_DSPECIAL) {
     attack = AT_DSPECIAL_2;

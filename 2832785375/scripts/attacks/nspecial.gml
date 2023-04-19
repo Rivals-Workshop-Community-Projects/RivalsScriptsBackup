@@ -37,6 +37,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_flower_large);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_leafy_hit2"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("seed_proj"));

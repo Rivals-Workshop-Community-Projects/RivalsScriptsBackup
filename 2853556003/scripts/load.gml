@@ -135,6 +135,7 @@ sprite_change_offset("watershield", 31, 31);
 sprite_change_offset("fshield_left", 31, 31);
 sprite_change_offset("fshield_right", 31, 31);
 sprite_change_offset("shieldshatter", 31, 31);
+sprite_change_offset("fspecial_fx", 122, 122);
 
 sprite_change_offset("water_geyser", 48, 48);
 sprite_change_offset("water_geyser_mask", 48, 48);
