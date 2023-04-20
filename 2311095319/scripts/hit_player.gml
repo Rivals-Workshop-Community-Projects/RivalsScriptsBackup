@@ -63,9 +63,14 @@ if (my_hitboxID.attack == AT_USPECIAL){
 		
 		*/
 	}
-	if (my_hitboxID.hbox_num != 1 && my_hitboxID.hbox_num != 5){
-		hit_player_obj.x = x + 14 * spr_dir
-		hit_player_obj.y = y - 48
+	if (uspecGrabbedPlayer == noone){
+		if (my_hitboxID.hbox_num != 1 && my_hitboxID.hbox_num != 5){
+			hit_player_obj.x = x + 14 * spr_dir
+			hit_player_obj.y = y - 48
+		}
+	}
+	if (my_hitboxID.hbox_num == 1){
+		uspecGrabbedPlayer = hit_player_obj;
 	}
 	var fx = spawn_hit_fx(lerp(my_hitboxID.x,hit_player_obj.x, 0.5), lerp(my_hitboxID.y,hit_player_obj.y - (hit_player_obj.char_height/2), 0.5), coin_effect);
 	fx.depth = hit_player_obj.depth + 1;

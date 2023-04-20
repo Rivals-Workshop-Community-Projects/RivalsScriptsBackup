@@ -139,6 +139,8 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+puddle_combust = hit_fx_create(sprite_get("dspecial_proj_explode"), 32);
+
 if(get_player_color(player) != 12){
 	puddle_bounceoff = hit_fx_create(sprite_get("goop_bounce"), 20);
 }else{

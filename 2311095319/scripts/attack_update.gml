@@ -106,6 +106,35 @@ if (attack == AT_DTILT){
 	}
 }
 
+//Air Voices lol
+if (attack == AT_NAIR
+	|| attack == AT_DAIR
+	|| attack == AT_UAIR
+	|| attack == AT_BAIR
+	|| attack == AT_FTILT
+	|| attack == AT_DTILT
+	|| attack == AT_UTILT){
+		if (window == 1){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				if (voiced == true){
+					var gaming = random_func( 1, 9, true );
+					switch (gaming){
+						case 1:
+							sound_play(vc_mario_hooh);
+							break;
+						case 2:
+							sound_play(vc_mario_wah);
+							break;
+						case 3:
+							sound_play(vc_mario_yah);
+							break;
+					}
+				}
+			}
+		}
+	}
+
+
 //Forward Air: Forward Knuckle
 if (attack == AT_FAIR){
 	if (window == 1){
@@ -165,23 +194,6 @@ if (attack == AT_FSTRONG_2){
 }
 
 //Up Strong (Rising Uppercut)
-//if (attack == AT_USTRONG){
-//	if (window == 1){
-//		ustrong_charge = strong_charge / 5
-//			if (window_timer == 1){
-//				sound_stop(sfx_dattack);
-//				if (hsp > 8){
-//					hsp = 8
-//				}
-//				if (hsp < -8){
-//					hsp = -8
-//				}
-//			}
-//	}
-//}
-
-//>
-
 if (attack == AT_USTRONG){
 	if (window == 2){
 		if (window_timer == 1){
@@ -226,7 +238,12 @@ if (attack == AT_USTRONG){
 		vsp = vsp + 0.125
 		
 		if (!free){
-			set_state(PS_LANDING_LAG);
+			if (was_parried == false){
+				set_state(PS_LANDING_LAG);
+			} else {
+				set_state(PS_PRATLAND);
+				sound_play(landing_lag_sound);
+			}
 		}
 	}
 }
@@ -258,7 +275,13 @@ if (attack == AT_NSPECIAL){
 			window = 6
 			window_timer = 0
 			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 8);
+			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialbig"));
+			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialbig"));
 			hasfirebrand = false
+		} else {
+			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 5);
+			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
+			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 		}
 		if (window_timer == 9){
 			sound_play(sfx_mario_fireball_charge);
@@ -337,6 +360,14 @@ if (attack == AT_FSPECIAL){
 		if (!free){
 			window = 4
 			window_timer = 0
+			if (voiced == true){
+				var gaming = random_func( 1, 4, true );
+				switch (gaming){
+					case 1:
+						sound_play(vc_mario_uhh);
+						break;
+				}
+			}
 		}
 		if (vsp < 0){
 			set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -375,6 +406,17 @@ if (attack == AT_FSPECIAL){
 		can_jump = false;
 		can_shield = false;
 		can_attack = false;
+		if (voiced == true){
+			var gaming = random_func( 1, 4, true );
+			switch (gaming){
+				case 1:
+					sound_play(vc_mario_hooh);
+					break;
+				case 2:
+					sound_play(vc_mario_haha);
+					break;
+			}
+		}
 	}
 	if (window == 6){
 		if (window_timer == 1){
@@ -435,6 +477,7 @@ if (attack == AT_FSPECIAL){
 if (attack == AT_USPECIAL){
 	can_wall_jump = true
 	if (window == 1){
+		uspecGrabbedPlayer = noone;
 		if (window_timer == 0){
 			clear_button_buffer( PC_LEFT_HARD_PRESSED );
 			clear_button_buffer( PC_RIGHT_HARD_PRESSED );
@@ -449,6 +492,17 @@ if (attack == AT_USPECIAL){
 			if(free){
 				spawn_base_dust( x, y, "doublejump", spr_dir);
 			}
+			if (voiced == true){
+					var gaming = random_func( 1, 8, true );
+					switch (gaming){
+						case 2:
+							sound_play(vc_mario_yeehaw);
+							break;
+						case 3:
+							sound_play(vc_mario_wahah);
+							break;
+					}
+				}
 		}
 	}
 	if (window != 4){
@@ -476,7 +530,12 @@ if (attack == AT_USPECIAL){
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 		}
 	}
+	if (window == 3 && instance_exists(uspecGrabbedPlayer)){
+		uspecGrabbedPlayer.x = x + 14 * spr_dir
+		uspecGrabbedPlayer.y = y - 48
+	}
 	if (window == 4){
+		uspecGrabbedPlayer = noone;
 		if (window_timer == 1){
 			vsp = -6.5
 		}

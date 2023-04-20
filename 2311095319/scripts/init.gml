@@ -12,9 +12,9 @@ isundershirtunfixed = false
 
 //Voiced Mode Stuff
 //0 is false, 1 is true.
-voiced = 0
-voiced_in_vs = false
-normal_voiced_toggle = 0
+voiced = 0;
+voiced_in_vs = false;
+normal_voiced_toggle = 0;
 
 deathvoiceline = 0
 
@@ -27,19 +27,19 @@ phone_voiced_toggle = 0
 dattack_veffect = hit_fx_create( sprite_get( "dattack_slideeffect" ), 16 );
 
 //Dash Attack
-da_cheat_active = false
+da_cheat_active = false;
 
 //Forward Tilt
-ftilthatputbackontimer = 0
+ftilthatputbackontimer = 0;
 
 //Forward Air
 fair_cheat_active = false;
 
 //Down Air: Stomp
-dairtimeshit = 0
+dairtimeshit = 0;
 
 //Up Strong
-ustrong_charge = -4
+ustrong_charge = -4;
 
 //Neutral Special: Fireball
 firecharge = 0
@@ -52,6 +52,9 @@ fireball_big_explode = hit_fx_create(sprite_get("fireball_big_explode"),16);
 
 //Forward Special: Dive
 divelandtimesfx = 0
+
+// Up Special: Super Jump Punch
+uspecGrabbedPlayer = noone;
 
 //Down Special: Mario Tornado
 tornadospin = 0

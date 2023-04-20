@@ -48,7 +48,7 @@ sprite_change_offset("nspecial", 55, 198);
 sprite_change_offset("nthrow", 55, 198);
 sprite_change_offset("nspecial_2", 55, 198);
 sprite_change_offset("fspecial", 40, 74);
-sprite_change_offset("uspecial", 55, 198);
+sprite_change_offset("uspecial", 42, 96);
 sprite_change_offset("dspecial", 38, 84);
 sprite_change_offset("taunt", 55, 108);
 sprite_change_offset("taunt_smile", 85, 108);

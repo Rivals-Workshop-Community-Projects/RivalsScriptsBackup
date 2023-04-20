@@ -290,7 +290,11 @@ switch(attack){
 					window_timer = 0;
 				}
 				if !free{
-					set_state(PS_LANDING_LAG);
+					if !was_parried{
+						set_state(PS_LANDING_LAG);
+					} else {
+						set_state(PS_PRATLAND);
+					}
 				}
 			break;
 			case 4:
@@ -301,7 +305,11 @@ switch(attack){
 					window_timer = 0;
 				}
 				if !free{
-					set_state(PS_LANDING_LAG);
+					if !was_parried{
+						set_state(PS_LANDING_LAG);
+					} else {
+						set_state(PS_PRATLAND);
+					}
 				}
 			break;
 		}

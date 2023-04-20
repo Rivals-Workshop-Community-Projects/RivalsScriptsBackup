@@ -9,8 +9,8 @@ set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 0);
 
 // startup
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_absa_whip_charge"));
 
@@ -35,9 +35,9 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 9);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, 2);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
 

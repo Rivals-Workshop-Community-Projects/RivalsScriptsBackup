@@ -202,7 +202,7 @@ if (attack == AT_DSPECIAL){
     	//spawn_hit_fx(x, y-10, 202);
     	destroyed = true;
     	with (player_id){
-    	spawn_hit_fx(x-60 * spr_dir, y-15, 202);
+    	spawn_hit_fx(other.x, other.y-16, puddle_combust);
     	hitpause = true;
     	hitstop = 7;
     	old_vsp = vsp;
@@ -217,13 +217,15 @@ if (attack == AT_DSPECIAL){
 
 if (attack == AT_FSPECIAL){
 	if (in_hitpause == true && hitpause_timer > 1){ instance_destroy(); exit; }
-	if (in_hitpause == true && hitpause_timer == 1){ spawn_hit_fx(x+20 * spr_dir, y+20, 200); }
+	if (in_hitpause == true && hitpause_timer == 1){ spawn_hit_fx(hit_goop.x, hit_goop.y-16, player_id.puddle_combust); }
 	
 	with (pHitBox){ //Touching FSpecial Fireball, exploding
-    if (player_id == other.player_id && attack == AT_DSPECIAL && other.in_hitpause == false && (hbox_num == 1 || hbox_num == 2) && (place_meeting(x, y-1, other) || place_meeting(x, y-32, other)) && hsp == 0){
-    	create_hitbox(AT_DSPECIAL, 4, x, y-13);
-    	goop_destroy = true;
-    	other.in_hitpause = true;
+    	if (player_id == other.player_id && attack == AT_DSPECIAL && other.in_hitpause == false && (hbox_num == 1 || hbox_num == 2) && (place_meeting(x, y-1, other) || place_meeting(x, y-32, other)) && hsp == 0){
+    		//spawn_hit_fx(x, y-16, puddle_combust);
+    		create_hitbox(AT_DSPECIAL, 4, x, y-13);
+    		goop_destroy = true;
+    		other.in_hitpause = true;
+    		other.hit_goop = id;
     	}
 	}
 	

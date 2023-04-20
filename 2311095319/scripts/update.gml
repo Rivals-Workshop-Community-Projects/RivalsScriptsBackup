@@ -23,8 +23,11 @@ if (normal_voiced_toggle == 1){
 } else if (normal_voiced_toggle == 0){
 	voiced = 0
 }
-
-
+/*
+if (state == PS_DOUBLE_JUMP && state_timer == 0){
+	sound_play(sound_get("sfx_jump"), false, noone, 1, 1.35);
+}
+*/
 if (fair_cheat_active == true){
 
 	//very funy

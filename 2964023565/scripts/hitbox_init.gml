@@ -26,6 +26,8 @@ goop_repeat = 0;
 goop_destroy = false;
 goop_destroy_timer = 0;
 
+hit_goop = noone;
+
 hitpause_timer = 0;
 hitbox_timer2 = 0;
 
