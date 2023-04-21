@@ -8,9 +8,8 @@ if (get_color_profile_slot_r(0, 0) == 92){
 fade_timer = 0;
 current_alt = 0;
 custom_alpha = 1;
-test_online = false;
+test_online = player == 0 ? true : false;
 test_team = false;
-if player == 0 test_online = true;
 //Alt name init. var doesn't work with arrays lol
 alt_name[0]  = "Default";
 alt_name[1]  = "Celebi";
@@ -37,5 +36,3 @@ alt_name[21] = "Espurr";
 alt_name[22] = "Ampharos";
 alt_name[23] = "Krookodile";
 alt_name[24] = "Shiny";
-// "Marshtomp"
-// "Combusken"

@@ -191,6 +191,7 @@ switch(attack){
 				//toast.damageOverride = true;
 				explosionhitbox.damage = ceil(explosionhitbox.damage+(downspecialcharge));explosionhitbox.kb_scale = explosionhitbox.kb_scale+(downspecialcharge/50);
 				explosionhitbox.damage = min(explosionhitbox.damage,999);explosionhitbox.kb_scale = min(explosionhitbox.kb_scale,2);				
+				//print(explosionhitbox.damage);print(explosionhitbox.kb_scale);
 				sound_play(sound_get("dspecial_explode"),false,noone,1);shake_camera(10, 5);
 				toast.spr_dir = spr_dir;
 				toast.hsp = 9*spr_dir;toast.vsp *= 0.25;

@@ -1,7 +1,6 @@
 //update
 
 if (!free || (free && (state = PS_WALL_JUMP || state = PS_WALL_TECH || state = PS_HITSTUN))){
-    move_cooldown[AT_USPECIAL] = 0;
     move_cooldown[AT_DSPECIAL] = 0;
     grov_fspecial_airuse = false;
     grov_fspecial_cooldown = 0;

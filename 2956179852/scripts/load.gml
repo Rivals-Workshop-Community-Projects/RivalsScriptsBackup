@@ -61,6 +61,7 @@ sprite_change_offset("phone_open", 106/2, 134/2);
 
 sprite_change_offset("plat", 50, 0);
 sprite_change_offset("plat_smb", 50, 0);
+sprite_change_offset("lastresort", 27, 39);
 
 sprite_change_offset("toast", 20, 20);
 sprite_change_offset("dust_effect_dark", 15, 15);

@@ -10,23 +10,20 @@ fade_timer ++;
 var alt_cur = get_player_color(player);
 
 if alt_cur != current_alt{
-	fade_timer = 0
-	current_alt = alt_cur
+	fade_timer = 0;
+	current_alt = alt_cur;
 	custom_alpha = 1;
 }
 
-if fade_timer > 50 custom_alpha = max((50 - (fade_timer - 50))/50,0)
+if fade_timer > 50 custom_alpha = max((50 - (fade_timer - 50))/50,0);
 
 //Alt
 draw_set_halign(fa_left);
-draw_set_alpha(custom_alpha)
+draw_set_alpha(1);
 shader_end();
 
 //include alt. name
 textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, custom_alpha, (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
- 
-draw_set_alpha(1);
-shader_end();
 
 switch (get_player_color(player))
 {
@@ -81,5 +78,3 @@ if argument[7]{ //outline. doesn't work lol
 }
 draw_text_ext_transformed_color(argument[0], argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[3], argument[3], argument[3], argument[3], argument[8]);
 return string_width_ext(argument[9], argument[4], argument[5]);
-#define rectDraw(x1, y1, x2, y2, color)
-draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);

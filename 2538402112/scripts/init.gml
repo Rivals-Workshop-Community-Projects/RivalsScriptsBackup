@@ -82,10 +82,10 @@ air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 1;
+roll_forward_active_frames = 2;
 roll_forward_recovery_frames = 2;
 roll_back_startup_frames = 1;
-roll_back_active_frames = 1;
+roll_back_active_frames = 2;
 roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
@@ -102,18 +102,18 @@ bubble_x = 0;
 bubble_y = 8;
 
 // Custom vars
-grov_pouncex = 0
-grov_pouncey = 0
-grov_pounce_foe = false
-grov_pounce_foe_id = null
-grov_digdir = 1
-grov_wandangle = 0
-grov_dspecial_loops = 0
-grov_fspecial_cooldown = 0
-grov_fspecial_airuse = false
-grov_char_height = char_height
-grov_emeratimer = 0
-grov_gen3 = false
+grov_pouncex = 0;
+grov_pouncey = 0;
+grov_pounce_foe = false;
+grov_pounce_foe_id = null;
+grov_digdir = 1;
+grov_wandangle = 0;
+grov_dspecial_loops = 0;
+grov_fspecial_cooldown = 0;
+grov_fspecial_airuse = false;
+grov_char_height = char_height;
+grov_emeratimer = 0;
+grov_gen3 = false;
 grov_hasruneO = false; // Added to prevent draw_hud from crashing when f5ing with runes on.
 
 //workshop support
@@ -134,11 +134,16 @@ miiverse_post = sprite_get("miiverse_grovyle");
 pkmn_stadium_front_img = sprite_get("gen1_grovyle");
 pkmn_stadium_back_img = sprite_get("gen1_grovyle_back");
 link_spear_drop = 6;
+copy_ability_id = 48; //Leaf
+kf_custom_icon = sprite_get("kf_ability_icon");
+mamizou_transform_spr = get_player_color(player) == 0 ? sprite_get("mamizou_transform_default"):sprite_get("mamizou_transform");
+Hikaru_Title = "Time Gear Theif";
+pot_compat_variable = sprite_get("po_gumbo_dish");
+pot_compat_text = "Four-Leaf Cookie";
 
 //Amber interaction variables
 amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-amber_thisHugSprite = sprite_get("grovyle_cheer_alt0");
-if get_player_color(player) > 0 amber_thisHugSprite = sprite_get("grovyle_cheer");
+amber_thisHugSprite = get_player_color(player) == 0 ? sprite_get("grovyle_cheer_alt0"):sprite_get("grovyle_cheer");
 amber_herHugSprite = sprite_get("amber_cheer");
 amber_startHug = false; //This variable is set true from Amber's scripts
 amber_thisSpriteInFront = true; //When true, this character's sprite is rendered over Amber's sprite
@@ -154,9 +159,7 @@ amber_useSprDirOffset = true;
 amber_hugExitTimer = 30; //How many frames should pass before either player can exit the hug window loop
 amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop
 
-Hikaru_Title = "Time Gear Theif";
-
-other_name = null
+// other_name = null;
 
 //RUNES
 if has_rune("A"){

@@ -30,15 +30,17 @@ with (oPlayer){
     if self != other.player_id && !free{
         if (get_player_team(player) != get_player_team(other.player_id.player) || get_match_setting(SET_TEAMATTACK) == 1)//Check Teams
             if place_meeting(x,y,other) && !place_meeting(x,y-8,other){//If overlapping at the bottom.
-                if !invincible && state_cat != SC_HITSTUN && grov_emeratimer == 0 && clone == false{//If can take damage
-                    grov_emerashard = true;
-                    if hsp != 0 || grov_emera_land == 1{
-                        grov_emeratimer = 30;
-                        grov_emera_land = 2; //Only damage once per landing.
-                        hurt = true;
-                        take_damage(player,other.player_id.player,1);
+                if !invincible && grov_emeratimer == 0 && clone == false && state_cat != SC_HITSTUN{//If can take damage
+                    if state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD{//Help how do I shorten this?
+                        grov_emerashard = true;
+                        if hsp != 0 || grov_emera_land == 1{
+                            grov_emeratimer = 30;
+                            grov_emera_land = 2; //Only damage once per landing.
+                            hurt = true;
+                            take_damage(player,other.player_id.player,1);
+                        }
+                        if hurt sound_play(asset_get("sfx_blow_weak1"),false,false,0.75);
                     }
-                    if hurt sound_play(asset_get("sfx_blow_weak1"),false,false,0.75);
                 }
             }
     }

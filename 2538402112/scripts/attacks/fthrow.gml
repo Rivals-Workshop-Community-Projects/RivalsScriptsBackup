@@ -41,7 +41,7 @@ set_hitbox_value(AT_FTHROW, 1, HG_ANGLE, 55);
 set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, 4.5);
 set_hitbox_value(AT_FTHROW, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_FTHROW, 1, HG_HITSTUN_MULTIPLIER, .6);
 set_hitbox_value(AT_FTHROW, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, 303); // Basic Small Directional
 set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);

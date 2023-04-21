@@ -23,8 +23,3 @@ switch (state){
         break;
     break;
 }
-
-// if get_player_color(player) == 0 && grov_gen3{
-//     set_character_color_slot(3, 38, 112, 130);
-//     set_article_color_slot(3, 38, 112, 130);
-// }

@@ -12,3 +12,6 @@ if has_rune("G"){
 if my_hitboxID.attack = AT_DAIR && my_hitboxID.hbox_num < 6{
     hit_player_obj.should_make_shockwave = false;
 }
+if my_hitboxID.attack = AT_DSPECIAL && my_hitboxID.hbox_num >= 4{
+    hit_player_obj.should_make_shockwave = false;
+}

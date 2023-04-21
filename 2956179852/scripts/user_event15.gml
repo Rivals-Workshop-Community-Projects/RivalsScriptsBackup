@@ -252,6 +252,14 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.2", "20th April, 2023");
+initHeader("Nerfs");
+initSection("- DSpecial explosion base stats are weaker (9->7 dmg, 8->7 bkb, 1.0->0.7 kbs)");
+
+initHeader("Fixes / Other Changes");
+initSection("- Fixed some wrong colors on hud
+- Added compatibility with Pokemon Stadium and The Last Resort");
+
 initPatch("1.1", "2nd April, 2023");
 initHeader("Nerfs");
 initSection("- Hitting Mario while doing FStrong will make Peach continue to run but not hit the player
@@ -473,6 +481,10 @@ of code.
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = 0;
 wily_robotmaster_img = sprite_get("Wily_Castle");
+pkmn_stadium_front_img = sprite_get("pkmn");
+pkmn_stadium_back_img = sprite_get("pkmn_back");
+pkmn_stadium_name_override = "H. Mario";
+resort_portrait = sprite_get("lastresort");
 /*
 Trummel codec:
 

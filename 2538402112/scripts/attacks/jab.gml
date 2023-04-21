@@ -95,14 +95,12 @@ set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 2);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 40);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 4);
-// set_hitbox_value(AT_JAB, 2, HG_SDI_MULTIPLIER, 0.9);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 17); // Leaf Small
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT_X_OFFSET, 12);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT_Y_OFFSET, 10);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_leafy_hit2"));
 set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 2);
-// set_hitbox_value(AT_JAB, 2, HG_TECHABLE, 3);
 
 // Jab3
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
@@ -124,4 +122,3 @@ set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_Y_OFFSET, 10);
 set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_leafy_hit1"));
 set_hitbox_value(AT_JAB, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, 3);
-// set_hitbox_value(AT_JAB, 3, HG_TECHABLE, 3);
