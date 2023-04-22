@@ -106,7 +106,7 @@ if (attack == AT_NSPECIAL)
 				
 				sound_play(sfx_shantae_fball);
 				
-				create_hitbox(AT_NSPECIAL, 1, x+42*spr_dir, y-42);		//	Middle
+				create_hitbox(AT_NSPECIAL, 1, x+42*spr_dir, y-46);		//	Middle
 
 				move_cooldown[AT_NSPECIAL] = 60;
 			}
@@ -128,8 +128,8 @@ if (attack == AT_NSPECIAL)
 				sound_play(sfx_shantae_fball_3);
 				sound_stop(sfx_shantae_fball);
 				
-				create_hitbox(AT_NSPECIAL, 1, x+40*spr_dir, y-74);		//	Top						
-				create_hitbox(AT_NSPECIAL, 1, x+40*spr_dir, y-10);		//	Bottom	
+				create_hitbox(AT_NSPECIAL, 1, x+40*spr_dir, y-78);		//	Top						
+				create_hitbox(AT_NSPECIAL, 1, x+40*spr_dir, y-14);		//	Bottom	
 
 				move_cooldown[AT_NSPECIAL] = 70;				
 			}			

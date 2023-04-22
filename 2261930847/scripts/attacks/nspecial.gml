@@ -47,7 +47,6 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -63,7 +62,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("sfx_splat"));
@@ -78,4 +77,3 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);

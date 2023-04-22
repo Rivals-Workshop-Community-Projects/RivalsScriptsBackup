@@ -244,6 +244,18 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.08", "22 April, 2023");
+initHeader("GENERAL:");
+initSection("Updated the localization files");
+initHeader("DSTRONG:");
+initSection("+ Start-Up increased from 6 -> 8
+(final hitbox related)
+* Angle Flipper changed from 3 to 6
+- KBS decreased from 1.05 -> 0.90");
+initHeader("NSPECIAL:");
+initSection("Readjusted the triple fireball positions and hitbox sizes once more as 
+there were rare cases where the fireballs would destroy themselves when parried.");
+
 initPatch("1.07", "08 April, 2023");
 initHeader("GENERAL:");
 initSection("Added Shantae’s final stock death sfx in the mute button
