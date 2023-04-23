@@ -1,0 +1,1 @@
+flowey_ustrong_quick_grab = noone;
