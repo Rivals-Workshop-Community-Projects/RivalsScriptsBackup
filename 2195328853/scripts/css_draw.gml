@@ -1,3 +1,5 @@
+alt_fix = player; //keep this line, on the online css the player is actually player 0, we later go on init_shader to check for this variable
+
 patch_ver = "1.67";
 
 if (get_player_color( player ) == 7){

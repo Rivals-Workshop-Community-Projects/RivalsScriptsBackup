@@ -1,5 +1,5 @@
 //
-//draw_debug_text(temp_x, temp_y-24,string(ftilt_cooldown));
+//draw_debug_text(temp_x, temp_y-24,string(shield_cooldown));
 //draw_debug_text(temp_x, temp_y-34,string(shield_plat_aerith));
 
 var fx_image_index = get_gameplay_time() / 10;

@@ -81,6 +81,13 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+        patch_note_title[i] = "1.72"
+        patch_note_text[i++] = 
+		"If this patch doesn't fix all the issues that occur from wall riding and getting hit I don't know what will. Added an extra variable to prevent Carol from flying off into space when getting hit.
+		
+		Made a small tweak to Wild Kick so that super armour is applied during startup and in the move itself, but not endlag. This move will be reworked in 2.0 to be a move that you hold down the button instead of shield cancelling.
+		
+		Added Dracula compatibility"
 
         patch_note_title[i] = "1.71"
         patch_note_text[i++] = 

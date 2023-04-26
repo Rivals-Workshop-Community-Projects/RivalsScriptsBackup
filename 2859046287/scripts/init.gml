@@ -169,6 +169,7 @@ wait_sprite = sprite_get("wait");   // sets the wait animation sprite strip
 //////////////////////////////////////////////////////// USEFUL CUSTOM VARIABLES ////////////////////////////////////////////////////////
 
 debug_display = get_match_setting(SET_PRACTICE); //0 = no display | 1 = draw_hud display (will display in practice mode by default with this setup)
+hbox_view = get_match_setting(SET_HITBOX_VIS);
 attack_names = [ //has the names of all the attacks
     "0",
     "AT_JAB",
@@ -237,7 +238,7 @@ game_time = 0; //checks get_gameplay_time() so we don't need to call the functio
 
 //custom intro
 AT_INTRO = 2; //the attack index the intro uses, 2 doesn't overwrite any other attack
-has_intro = true; //change to false if you don't have one
+has_intro = true; //change to false if you don't have one/don't want it active
 //relevant scripts:
 //  - update
 //  - attack_update (case 2)
@@ -246,10 +247,12 @@ has_intro = true; //change to false if you don't have one
 my_grab_id = noone; //grabbed player ID, the game has it's own way of setting up the grabs but this is easier
 grab_time = 0; //timer for grabbing, works as a state_timer of sorts
 //relevant scripts:
+//  - update
 //  - attack_update (case AT_FTILT)
 //  - hit_player
 //  - got_hit
 //  - got_parried
+//  - death
 
 cur_loop_sound = noone; //you can use this to store a sound instance that you can silence later
 
@@ -267,13 +270,30 @@ AG_WINDOW_LOOP_TIMES = 37;          //attack grid index, the number you put next
 window_loops = 0;                   //decides the amount of times to loop
 //usage: set_window_value(attack, window, AG_WINDOW_LOOP_TIMES, #loops)
 
+//projectile with melee hitbox behaviour
+HG_PROJECTILE_MELEE = 65;               //if true, it makes it so the projectile applies hitpause and sets off hit player flags
+//  set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_MELEE, true);
+
 //projectile multihit
 HG_PROJECTILE_MULTIHIT = 58;            //hitbox grid index, the number of times the projectile should hit
 HG_PROJECTILE_HITRATE = 59;             //the delay time between multihits
 HG_MULTIHIT_DAMAGE = 60;                //overwrites damage for multihits
 HG_MULTIHIT_VFX = 61;                   //overwrites HG_VISUAL_EFFECT for the multihits, putting -1 will not overwrite it
 HG_MULTIHIT_SFX = 62;                   //overwrites HG_HIT_SFX for multihits, putting -1 will not overwrite it
-//usage example: set_hitbox_value(attack, hbox_num, HG_PROJECTILE_MULTIHIT, #amount)
+//usage example:
+//  set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MULTIHIT, 4);
+//  set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MULTIHIT, 6);
+//  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_DAMAGE, 3);
+//  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_VFX, HFX_GEN_OMNI);
+//  set_hitbox_value(AT_FSPECIAL, 3, HG_MULTIHIT_SFX, asset_get("sfx_blow_medium2"));
+
+//projectile homing
+HG_PROJECTILE_HOMING = 63;              //if true, allow projectile to use the homing code
+HG_PROJECTILE_HOMING_TURN = 64;         //how sharp the angle for the homing is, and only applies if homing is true (make sure it's a number between 0 and 1)
+//usage example:
+//  set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HOMING, true);
+//  set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HOMING_TURN, 0.4);
+
 
 //custom "dust" effect support
 uses_custom_dusts = false;

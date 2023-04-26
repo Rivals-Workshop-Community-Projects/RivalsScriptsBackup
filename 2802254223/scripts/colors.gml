@@ -276,22 +276,22 @@ set_color_profile_slot( 27, 5, 230, 230, 230 ); //Spear
 set_color_profile_slot( 27, 6, 255, 255, 140 ); //VFX
 
 // Wattmelon
-set_color_profile_slot( 28, 0, 202, 204, 202 ); //Skin
-set_color_profile_slot( 28, 1, 92, 230, 112 ); //Outfit1
-set_color_profile_slot( 28, 2, 255, 179, 214 ); //Outfit2
-set_color_profile_slot( 28, 3, 255, 255, 128 ); //Teeth
-set_color_profile_slot( 28, 4, 51, 51, 51 ); //Shades
-set_color_profile_slot( 28, 5, 255, 236, 64 ); //Spear
-set_color_profile_slot( 28, 6, 255, 255, 128 ); //VFX
+set_color_profile_slot( 28, 0, 255, 191, 221 ); //Skin
+set_color_profile_slot( 28, 1, 32, 230, 36 ); //Outfit1
+set_color_profile_slot( 28, 2, 255, 97, 134 ); //Outfit2
+set_color_profile_slot( 28, 3, 255, 252, 254 ); //Teeth
+set_color_profile_slot( 28, 4, 0, 0, 0 ); //Shades
+set_color_profile_slot( 28, 5, 255, 248, 64 ); //Spear
+set_color_profile_slot( 28, 6, 253, 255, 128 ); //VFX
 
-// Ducky
-set_color_profile_slot( 29, 0, 255, 252, 77 ); //Skin
-set_color_profile_slot( 29, 1, 255, 252, 254 ); //Outfit1
-set_color_profile_slot( 29, 2, 255, 153, 197 ); //Outfit2
+// Derogatory
+set_color_profile_slot( 29, 0, 158, 141, 166 ); //Skin
+set_color_profile_slot( 29, 1, 153, 15, 151 ); //Outfit1
+set_color_profile_slot( 29, 2, 102, 255, 158 ); //Outfit2
 set_color_profile_slot( 29, 3, 255, 255, 250 ); //Teeth
-set_color_profile_slot( 29, 4, 77, 39, 39 ); //Shades
-set_color_profile_slot( 29, 5, 179, 36, 36 ); //Spear
-set_color_profile_slot( 29, 6, 255, 25, 25 ); //VFX
+set_color_profile_slot( 29, 4, 129, 255, 230 ); //Shades
+set_color_profile_slot( 29, 5, 230, 230, 230 ); //Spear
+set_color_profile_slot( 29, 6, 129, 255, 230 ); //VFX
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

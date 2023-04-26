@@ -13,9 +13,9 @@ pratfall_anim_speed = .25;
 walk_speed = 3.1;
 walk_accel = 0.4;
 walk_turn_time = 5;
-initial_dash_time = 14;
-initial_dash_speed = 7;
-dash_speed = 7.7;
+initial_dash_time = 10;//14
+initial_dash_speed = 6.5;
+dash_speed = 5.5;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -24,14 +24,14 @@ ground_friction = .6;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 14;
-short_hop_speed = 8;
-djump_speed = 13;
+jump_speed = 12;
+short_hop_speed = 7;
+djump_speed = 11;
 leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .5;
+air_accel = .35;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .1;
 max_djumps = 1;
@@ -39,16 +39,16 @@ double_jump_time = 32; //the number of frames to play the djump animation. Can't
 walljump_hsp = 8;
 walljump_vsp = 10;
 walljump_time = 32;
-max_fall = 13; //maximum fall speed without fastfalling
+max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
 gravity_speed = .65;
 hitstun_grav = .5;
 knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
-wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+prat_land_time = 14;
+wave_land_time = 7.5;
+wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -101,9 +101,13 @@ bubble_y = 8;
 // creates a 30 frame explosion effect:
 flashbang_explosion = hit_fx_create( sprite_get( "flashbang_explode" ), 12 );
 
+explode_fx = hit_fx_create( asset_get("moth_boom_small_spr"), 28 );
+
 // creates a 30 frame explosion effect:
-weednova = hit_fx_create( sprite_get( "weednova" ), 30 );
+weednova = hit_fx_create( sprite_get( "weednova" ), 20 );
 
 //varrriaairiaiables :(((
 
 weedcharge = 0;
+mid_weedcharge = 30;
+max_weedcharge = 70;

@@ -25,8 +25,10 @@ switch(attack){
         can_fast_fall = false;
         if window == 1 and window_timer == 1 and !instance_exists(fspecial_grind_hitbox)
         {
-            ollie_move_should_get_bar = true;
-            add_attack_to_combo(true)
+            if !riding_plat {
+                ollie_move_should_get_bar = true;
+                add_attack_to_combo(true)
+            }
             fspecial_grind_hitbox = create_hitbox(attack, 1, x, y);
         }
         
@@ -72,8 +74,26 @@ switch(attack){
     case AT_FSPECIAL:
     can_move = false;
     can_wall_jump = true;
-        if (window == 1)
-        {
+    
+    if window > 1 {
+        //Thank you to Ducky for the ledge forgiveness template
+            if (!fspecial_ledgeforgiven and (free and place_meeting(x+hsp,y,asset_get("par_block"))))
+            {
+                for (var i = 0; i < 40; i++)
+                {
+                    if fspecial_ledgeforgiven break;
+                    
+                    if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block")))
+                    {
+                        y -= i;
+                        fspecial_ledgeforgiven = true;
+                    }
+                }
+            }        
+    }
+    
+    switch (window) {
+        case 1:
             hsp *= 0.9;
             vsp *= 0.9;
             
@@ -82,39 +102,43 @@ switch(attack){
                 hsp = 11 * spr_dir;
                 vsp = -5.5;
             }
-        }
-        
-        var detected_plat = instance_place(x, y, asset_get("par_jumpthrough"));
-        var plat = place_meeting(x,y + 1, asset_get("par_jumpthrough")) and free and (detected_plat != noone and distance_to_object(detected_plat) < 1)
-        
-        
-        if (((instance_exists(rail_obj) and place_meeting(x,y,rail_obj)) or plat) and window == 2)
-        {
-            destroy_hitboxes();
-            attack_end();
+        break;
+        case 2:
+            var detected_plat = instance_place(x, y, asset_get("par_jumpthrough")); 
+            var plat = place_meeting(x,y + 1, asset_get("par_jumpthrough")) and free and (detected_plat != noone and abs(get_instance_y(detected_plat) - (y - (char_height / 2) )) < 16) 
             
-            riding_plat = plat;
             
-            if riding_plat {
-                plat_rail_obj = detected_plat;
-            }
-            
-            window = 1;
-            window_timer = 0;
-            with spawn_hit_fx(x+(10*spr_dir),y-10,spark_vfx)
+            if (((instance_exists(rail_obj) and place_meeting(x,y,rail_obj)) or plat))
             {
-                spr_dir *= -1;
-                depth = other.depth - 10    
-            }
-            fspecial_timer = 0;
-            set_attack(AT_EXTRA_1);
-            hurtboxID.sprite_index = sprite_get("fspecial_grind_hurt");
-        }
-        
-        if window == 3 and window_timer == (get_window_value(attack, 3, AG_WINDOW_LENGTH) * 1.5) - 1 and !has_hit and free
+                destroy_hitboxes();
+                attack_end();
+                
+                riding_plat = plat;
+                
+                if riding_plat {
+                    plat_rail_obj = detected_plat;
+                }
+                
+                window = 1;
+                window_timer = 0;
+                with spawn_hit_fx(x+(10*spr_dir),y-10,spark_vfx)
+                {
+                    spr_dir *= -1;
+                    depth = other.depth - 10    
+                }
+                fspecial_timer = 0;
+                set_attack(AT_EXTRA_1);
+                hurtboxID.sprite_index = sprite_get("fspecial_grind_hurt");
+            }        
+        break;
+        case 3:
+        if window_timer == (get_window_value(attack, 3, AG_WINDOW_LENGTH) * 1.5) - 1 and !has_hit and free
         {
             set_state(PS_PRATFALL)
         }
+        break;
+    }
+    
     break;
     
     //case AT_NAIR:
@@ -155,10 +179,15 @@ switch(attack){
         }
         break;
     case AT_UTILT:
-        //utilt code goes here
+        if window == 1 and window_timer == 6 {
+            sound_play(sound_get("nspecial_startup"), false, noone, 0.4, 1.3)
+        }
         break;
     case AT_UAIR:
-        //uair code goes here
+            if (window == 1 and window_timer > 4) or window == 2 or (window == 3 and window_timer < 3)
+            {
+                hud_offset = round(lerp(hud_offset, 260, 0.1))
+            }
         break;
     case AT_USPECIAL:
         //uspecial code goes here
@@ -173,10 +202,21 @@ switch(attack){
         //down tilt code goes here
         break;
     case AT_DAIR:
-        //down air code goes here
+        if window == 2 {
+            if window_timer mod 2 == 0 and !hitpause
+            {
+                create_hitbox(AT_DAIR, 1, x, y)
+            }
+        }
+        
+        if window == 4 and window_timer == 1 {
+            sound_play(sound_get("wood_break_new"), false, noone)
+            sound_play(sound_get("wood_break"), false, noone, 0.4, 1.1)
+            sound_play(asset_get("zetter_downb"))
+        }
         break;
     case AT_DSPECIAL:
-    
+        can_fast_fall = false;
         switch window
         {
             case 1:
@@ -185,13 +225,14 @@ switch(attack){
                 hsp *= 0.9;
             break;
             case 2:
+            can_move = false
                 if !hitpause
                 {
                     vsp = lerp(vsp, -7, 0.15)
+                    var dir = right_down - left_down
                     
-                    if window_timer mod 4 == 0
-                    {
-                        create_hitbox(AT_DSPECIAL,1,x,y);
+                    if dir != 0 {
+                        hsp = lerp(hsp, 4*dir, 0.1)
                     }
                     
                     if window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 1 and ollie_bar_current_level != 1
@@ -232,7 +273,12 @@ switch(attack){
         //taunt code goes here
         break;
     case AT_DATTACK:
-        if ( has_hit and jump_pressed)
+        if (window == 2 or window == 3) and window_timer mod 3 == 1 and !hitpause {
+            var t = spawn_hit_fx(x - (20*spr_dir),y,spark_vfx)
+            t.spr_dir *= -1
+        }
+    
+        if (has_hit and jump_pressed)
         {
             should_jc_dattack = true;
         }
@@ -248,11 +294,14 @@ destroy_hitboxes();
 sound_play(asset_get("sfx_spin"));
 vsp = -8;
 instance_destroy(fspecial_grind_hitbox);
+if !riding_plat {
+    ollie_move_should_get_bar = true;
+    add_attack_to_combo(true)
+}
+fall_through = false;
+
 set_attack(AT_EXTRA_2);
 hurtboxID.sprite_index = sprite_get("fspecial_spin_hurt");
-ollie_move_should_get_bar = true;
-add_attack_to_combo(true)
-fall_through = false;
 
 #define add_attack_to_combo(limit_one)
 

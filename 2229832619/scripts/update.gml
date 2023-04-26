@@ -160,13 +160,19 @@ if (state==PS_SPAWN && extra_col == 0 && taunt_down){
 		init_shader();
 	}
 	if (jump_down){
-		extra_col = 7
+		extra_col = 9
 		white_flash_timer = 18;
 		sound_play(sound_get("shine"));
 		init_shader();
 	}
 	if (special_down){
 		extra_col = 8
+		white_flash_timer = 18;
+		sound_play(sound_get("shine"));
+		init_shader();
+	}
+	if (strong_down){
+		extra_col = 7
 		white_flash_timer = 18;
 		sound_play(sound_get("shine"));
 		init_shader();

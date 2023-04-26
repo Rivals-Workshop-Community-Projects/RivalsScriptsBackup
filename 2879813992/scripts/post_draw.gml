@@ -9,7 +9,7 @@ if(attack == AT_DSTRONG && state == PS_ATTACK_GROUND){
         var anim = 2 + (strong_charge / 3) % 3;
         shader_start();
         //draw_sprite(sprite_get("dstrong_hold"), anim, x*2, y*2);
-        draw_sprite_ext(sprite_get("dstrong_hold"), anim, x + spr_dir, y, 2 * spr_dir, 2, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("dstrong_hold"), anim, x + -4*spr_dir, y - 8, 2 * spr_dir, 2, 0, c_white, 1);
         shader_end();
     }
 }

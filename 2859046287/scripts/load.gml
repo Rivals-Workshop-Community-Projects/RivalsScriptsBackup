@@ -69,6 +69,7 @@ sprite_change_offset("offscreen_icons", 16, 16);
 sprite_change_offset("offscreen_arrow", 16, 16);
 
 sprite_change_offset("walkback_runeF",  24, 47);
+sprite_change_offset("fx_gravfield_runeH",  112, 112);
 
 //effects
 sprite_change_offset("fx_pow_hit1",         64, 64);

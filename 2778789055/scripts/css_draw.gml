@@ -47,8 +47,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.0";
-patch_day = "20";
-patch_month = "MAR";
+patch_day = "25";
+patch_month = "APR";
  
 var num_alts = 27;
 var alt_cur = get_player_color(player);
@@ -226,9 +226,6 @@ if (cpu_hover_time > 0) {
     draw_debug_text(plate_bounds[2]-17, plate_bounds[3]+1, `P${cpu_hovering_player}`);
     draw_set_alpha(1);
 }
-
-//set_synced_var(player, voice_button);
-//set_synced_var(player, alt_button);
 
 #define cpu_hover_update()
 var p = player;

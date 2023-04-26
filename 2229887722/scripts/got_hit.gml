@@ -4,6 +4,15 @@
 //and knockback while in hitstun. The penalty is removed once no longer in hitstun.
 //Amber also loses the charged/charging status when hit
 //Don't call the getting hit if we got hit by our own yarn ball
+
+if(runeA){
+    healTimer = 0;
+}
+
+if(runeK){
+    isChargePunished = true;
+}
+
 if (enemy_hitboxID != yarnBallObject)
 {
     

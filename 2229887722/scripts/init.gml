@@ -67,7 +67,7 @@ fast_fall = 15; //fast fall speed
 gravity_speed = .6;
 
 //Effective Weight
-knockback_adj = 1.31; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.3; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 hitstun_grav = .45;
 air_friction = .04;
 
@@ -141,6 +141,7 @@ bubble_y = 8;
 thisIsAmber = true; //For some reason urls don't work on init. To allow Amber to detect duplicates of herself, use this variable
 clonedAmberExists = false; //Becomes true if Amber detects another Amber in match
 playerDecimalDamage = 0; //Affected by defense debuff from charged state
+spawn_anim_fix = false;
 
 //Charging variables
 isCharging = false; //A bool state if the player is charging or not
@@ -302,6 +303,9 @@ afterImageUpdateTimer = 2; //Every 2 frames the afterImage sets itself to the pl
 afterImageColor = make_colour_rgb(0, 93, 122);
 originAfterImageColor = make_colour_rgb(0, 93, 122);
 afterImageFadeOutSpeed = 0.05;
+
+//afterimages
+afterimage_array = 0;
 
 //Yarn Ball related variables
 aimingArrowSprite = sprite_get("aimingarrow");
@@ -468,7 +472,7 @@ tauntType = 1;
 11 - Read Scroll
 */
 
-#region //Abyss Runes
+//#region Abyss Runes
 //abyssMods[1 to 15] = [type, description];
 //types are: -1 - disabled
 // 0 - object mod: Modifies a static object left behind after an attack.
@@ -516,9 +520,84 @@ runeM = has_rune("M");
 runeN = has_rune("N");
 runeO = has_rune("O");
 
-#endregion
+//rune variables
+healTimer = 0;
+shurikatLoopCountStorageAbyss = 0;
+laserPointerObject = noone;
+shurikenSpriteIndex = 0;
+runeMakeProj = false;
+runeTeleportTarget = noone;
+runeTeleportCooldown = 0;
+runeTeleportFree = false;
+finalWrapTarget = noone;
+spawnFX = false;
 
-#region//Amber interaction with others variables
+currentDamage = get_player_damage(player);
+
+//RUNE INIT
+if(runeH){
+	set_hitbox_value(AT_DSPECIAL, 1, HG_EFFECT, 98 );
+}
+
+if(runeL){
+	infiniteMeter = true;
+}
+
+if(runeM){
+	set_num_hitboxes(AT_JAB, 13);
+	set_num_hitboxes(AT_FTILT, 10);
+	set_num_hitboxes(AT_UTILT, 6);
+	set_hitbox_value(AT_UTILT, 1, HG_HIT_LOCKOUT, 3 );
+	set_hitbox_value(AT_UTILT, 2, HG_HIT_LOCKOUT, 3 );
+	set_num_hitboxes(AT_DTILT, 4);
+	// set_hitbox_value(AT_DTILT, 2, HG_HIT_LOCKOUT, 3);
+	set_hitbox_value(AT_DTILT, 3, HG_HIT_LOCKOUT, 3);
+	set_num_hitboxes(AT_DATTACK, 4);
+	
+	set_num_hitboxes(AT_NAIR, 12);
+	set_num_hitboxes(AT_FAIR, 10);
+	set_num_hitboxes(AT_UAIR, 7);
+	set_hitbox_value(AT_UAIR, 4, HG_HIT_LOCKOUT, 6 );
+	set_hitbox_value(AT_UAIR, 5, HG_HIT_LOCKOUT, 6 );
+	set_hitbox_value(AT_UAIR, 6, HG_HIT_LOCKOUT, 6 );
+	set_num_hitboxes(AT_BAIR, 3);
+	set_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT, 4 );
+	set_num_hitboxes(AT_DAIR, 4);
+	set_hitbox_value(AT_DAIR, 1, HG_HIT_LOCKOUT, 5);
+	set_hitbox_value(AT_DAIR, 2, HG_HIT_LOCKOUT, 5);
+	set_hitbox_value(AT_DAIR, 3, HG_HIT_LOCKOUT, 5);
+	
+	set_num_hitboxes(AT_FSTRONG, 10);
+	set_num_hitboxes(AT_USTRONG, 7);
+	set_hitbox_value(AT_USTRONG, 3, HG_EXTRA_HITPAUSE, 6);
+	set_hitbox_value(AT_USTRONG, 4, HG_HIT_LOCKOUT, 6);
+	set_hitbox_value(AT_USTRONG, 3, HG_EXTRA_CAMERA_SHAKE, -1);
+	set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 8);
+}
+
+if(runeN){
+	set_num_hitboxes(AT_NTHROW, 2);
+}
+
+if(runeO){
+	pacifistModeEnabled = true;
+}
+if(pacifistModeEnabled){
+	set_player_stocks( player, floor(get_player_stocks( player ) * 2/3) + get_player_stocks(player));
+}
+if (pacifistModeEnabled){
+    //screwing over every move's hitpause growth
+    for(var i=1; i<= 50; i++){
+        for(var j=1; j<=20; j++){
+            set_hitbox_value(i, j, HG_HITPAUSE_SCALING, 0);
+            set_hitbox_value(i, j, HG_EXTRA_CAMERA_SHAKE, -1);
+        }
+    }
+}
+
+//#endregion
+
+//#region Amber interaction with others variables
 amberHugState = 0; //0 means inactive. 1 is Amber command prompt (Amber wants to hug). 2 means start up. 3 is actual hugging. 4 is exiting
 amberHugCanExitTimer = 0; //For looping windows. Pressing shield, attack, etc. will move to exit frames
 amberHugExitWindow = 0;
@@ -538,9 +617,9 @@ amberHugA2ZSpriteBase = sprite_get("a2z_base");
 amberHugA2ZSpriteAmber = sprite_get("a2z_amber");
 amberHugA2ZSpriteAstra = sprite_get("a2z_astra");
 amberHugA2ZSpriteZerra = sprite_get("a2z_zerra");
-#endregion
+//#endregion
 
-#region//Character interaction variables
+//#region Character interaction variables
 //=================================
 
 //Trummel and Alto Codecs
@@ -641,4 +720,4 @@ if (stage_id == "nt\383980\2217830677") {
     //print_debug(string( get_hitbox_value( AT_BAIR, 1, HG_ANGLE)));
 }
 
-#endregion
+// #endregion

@@ -4,8 +4,10 @@ if(player_id.box){ //cube
 	sprite_index = sprite_get("blob_ball_box");
 }
 
+BlueBlobBall = true;
 ball = 0;
 ball_timer = 10;
+dontdestroylol = true;
 bomb_anim = 0;
 bomb_timer = 0;
 
@@ -32,6 +34,11 @@ hitplayertimer = 0;
 MattCanGrab = true;
 MorshuCanGrab = true;
 CalCanSnack = 2;
+UnReflectable = false;
+Pocketable = true;Pocketed = false;
+Pocket_hsp = 7;Pocket_vsp = -5;
+Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 0;
+SpikeCanEat = true;SpikeHealPercent = 2;
 
 spr_dir = player_id.spr_dir;
 

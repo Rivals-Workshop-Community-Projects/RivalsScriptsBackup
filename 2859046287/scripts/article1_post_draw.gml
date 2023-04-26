@@ -62,7 +62,11 @@ if (offscreen_arrow_enabled)
     else depth = orig_depth; //reset depth back to normal when it's on screen
 }
 
-
 /////////////////////////////////////////////////// SHOW MASK ON HITBOX VIEW ///////////////////////////////////////////////////
 
-if (get_match_setting(SET_HITBOX_VIS)) draw_sprite_ext(mask_index, image_index, x, y, 1, 1, 0, c_white, 0.5);
+if (player_id.hbox_view) draw_sprite_ext(mask_index, image_index, x, y, 1, 1, 0, c_white, 0.5);
+
+///////////////////////////////////////////////////////////// OTHER /////////////////////////////////////////////////////////////
+
+//darken sprite when gravity field is on cooldown by drawing the same sprite
+if (has_rune("H") && gravity_field_cd > 0) draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_black, 0.5);

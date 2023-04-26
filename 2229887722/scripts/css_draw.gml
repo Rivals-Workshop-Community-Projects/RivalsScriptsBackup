@@ -13,11 +13,11 @@ if ("currentAlt" not in self)
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "2.8";
-patch_day = "02";
-patch_month = "JUL";
+patch_ver = "3.0";
+patch_day = "24";
+patch_month = "APR";
 
-var num_alts = 16;
+var num_alts = 20;
 
 //Fade out the css_draw but refresh alpha when changing alts
 var prevAlt = get_player_color(player);
@@ -44,8 +44,11 @@ alt_name[11] = "Shadow (K.H)";
 alt_name[12] = "E.Access (GB)";
 alt_name[13] = "Retro Amber";
 alt_name[14] = "Abyss";
-alt_name[15] = "Nyan Cat (wip)";
-
+alt_name[15] = "Nyan Cat";
+alt_name[16] = "Blanc";
+alt_name[17] = "Nor";
+alt_name[18] = "Gold";
+alt_name[19] = "Casper";
 
 
 //Patch Text

@@ -1,5 +1,22 @@
 //article1_update
 
+depth = player_id.depth-1;
+if(current_player != orig_player && current_player != player){
+	player = current_player;
+}
+dontdestroylol = false;
+
+//detach if owner change
+if(player != orig_player){
+	if(player_id.blob_ball == self){
+		player_id.blob_ball = noone;
+	}else if(player_id.blob_ball2 == self){
+		player_id.blob_ball2 = noone;
+	}else if(player_id.blob_ball3 == self){
+		player_id.blob_ball3 = noone;
+	}
+}
+
 if(ball_timer == 10){
 	if(ball == 0){
 	    vsp = -4;hsp = 2*spr_dir;
@@ -12,7 +29,7 @@ if(ball_timer == 10){
 
 ball_timer += 1;
 
-if(ballmode == 0){
+if(ballmode == 0){ //normal
 	ignores_walls = true;
     if(vsp < 10){
         vsp += 0.15;
@@ -33,13 +50,15 @@ if(ballmode == 0){
 			image_index = 1;
 		}
 	}
-}else if(ballmode == 1){
+	Pocket_hsp = 7;Pocket_vsp = -5;Pocket_hud_imageindex = 0;
+}else if(ballmode == 1){ //ice
 	ignores_walls = false;
 	if(vsp < 11){
         vsp += 0.45;
     }
 	image_index = 5;
-}else if(ballmode == 2){
+	Pocket_hsp = 7;Pocket_vsp = -5;Pocket_hud_imageindex = 3;
+}else if(ballmode == 2){ //steam
 	ignores_walls = true;
 	if(hsp*spr_dir < 15){
         hsp += 0.1*spr_dir;
@@ -53,7 +72,8 @@ if(ballmode == 0){
 	    	image_index = 7;bounceanim = 0;ballnum = 0;
 		}
 	}
-}else if(ballmode == 3){
+	Pocket_hsp = 10;Pocket_vsp = 0;Pocket_hud_imageindex = 1;
+}else if(ballmode == 3){ //whirlpool
 	ignores_walls = false;
 	if(vsp < 7){
         vsp -= 0.1;
@@ -67,6 +87,7 @@ if(ballmode == 0){
 	    	image_index = 9;bounceanim = 0;ballnum = 0;
 		}
 	}
+	Pocket_hsp = 2;Pocket_vsp = -3;Pocket_hud_imageindex = 2;
 }
 
 bouncetimer -= 1;
@@ -120,7 +141,7 @@ if(bouncetimer <= 0){
 		}
 	}
 }
-if(hsp >= 0){
+if(hsp > 0){
 	spr_dir = 1;
 }else if(hsp < 0){
 	spr_dir = -1;
@@ -299,7 +320,7 @@ with(asset_get("pHitBox")){
         if(place_meeting(x,y,other)){
         	if(damage > 0 && kb_value > 0 && hit_priority > 0 && other.ballmode != 3 || attack == AT_FSPECIAL && (hbox_num == 2 || hbox_num == 3) && player_id == other.player_id){
 	        		//if(other != ballhitbox /*&& place_meeting(x,y,other)*/ && player != other.player){
-	                other.current_player = player;
+	                other.player = player;other.current_player = player;
 	                if(instance_exists(other.ballhitbox)){
 	                	if(instance_exists(other.ballhitbox.player)){
 	                    	other.ballhitbox.player = player;
@@ -360,7 +381,7 @@ with(asset_get("pHitBox")){
 	        				other.vsp = 14;
 	        			}
 	        		}
-	                spawn_hit_fx(other.x, other.y, hit_effect);
+	                spawn_hit_fx(round(other.x), round(other.y), hit_effect);
 					sound_play(sound_effect);
 	                other.lasthitbox = id;
 	                other.ball_timer -= 60;
@@ -401,7 +422,7 @@ if(ballmode == 3){
 if(get_gameplay_time() % 2 == 0){
 	if(ballmode == 0 || ballmode == 1){
     	var rand_dir = random_func(1, 359, true);
-    	spawn_hit_fx((x) + round(lengthdir_x(5, rand_dir)), y + round(lengthdir_y(5, rand_dir)), player_id.fx_bluetrail);
+    	spawn_hit_fx(round((x) + round(lengthdir_x(5, rand_dir))), round(y + round(lengthdir_y(5, rand_dir))), player_id.fx_bluetrail);
 	}else if(ballmode == 3){
     	//var rand_dir = random_func(1, 359, true);
     	spawn_hit_fx(x, y+8, player_id.fx_bluetrailwhirlpool2);
@@ -411,12 +432,12 @@ if(get_gameplay_time() % 2 == 0){
 if(get_gameplay_time() % 1 == 0){
 	if(ballmode == 2){
 		var rand_dir = random_func(1, 359, true);
-    	spawn_hit_fx((x) + round(lengthdir_x(10, rand_dir)), y + round(lengthdir_y(10, rand_dir)), player_id.fx_bluetrail2);
+    	spawn_hit_fx(round((x) + round(lengthdir_x(10, rand_dir))), round(y + round(lengthdir_y(10, rand_dir))), player_id.fx_bluetrail2);
 	}
 }
 if(hitstop < 0){
 	if(get_gameplay_time() % 20 == 0){
-		spawn_hit_fx(x,y, player_id.fx_blob_ball_explosion);
+		spawn_hit_fx(round(x),round(y), player_id.fx_blob_ball_explosion);
 	}
 }
 if(x > room_width || x < 0 || y >= room_height+65 || y <= -200 /*|| ball_timer > 300*/ || balldestroy){
@@ -425,23 +446,23 @@ if(x > room_width || x < 0 || y >= room_height+65 || y <= -200 /*|| ball_timer >
     	ballhitbox = noone;
     }
     if(ballmode == 0){
-				    create_hitbox(AT_NSPECIAL,3,x,y);
-				    spawn_hit_fx(x+20,y+20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y+20, player_id.fx_blob_ball_explosion);
-				    spawn_hit_fx(x+20,y-20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y-20, player_id.fx_blob_ball_explosion);
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}else if(ballmode == 1){ //ice
-				    create_hitbox(AT_NSPECIAL,4,x,y);
-				    spawn_hit_fx(x,y, 199);
-				    sound_play(asset_get("sfx_ice_back_air"));
-				}else if(ballmode == 2){ //steam
-				    create_hitbox(AT_NSPECIAL,5,x,y);
-				    spawn_hit_fx(x+20,y-20, 144);spawn_hit_fx(x-20,y-20, 144);spawn_hit_fx(x+20,y+20, 144);spawn_hit_fx(x-20,y+20, 144);
-					sound_play(asset_get("sfx_ell_steam_release"));
-				}else if(ballmode == 3){ //whirlpool
-				    create_hitbox(AT_NSPECIAL,6,x,y);
-				    spawn_hit_fx(x,y, 196);
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}
+	    create_hitbox(AT_NSPECIAL,3,round(x),round(y));
+	    spawn_hit_fx(round(x+20),round(y+20), player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y+20, player_id.fx_blob_ball_explosion);
+	    spawn_hit_fx(round(x+20),round(y-20), player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y-20, player_id.fx_blob_ball_explosion);
+	    sound_play(asset_get("sfx_waterhit_heavy"));
+	}else if(ballmode == 1){ //ice
+	    create_hitbox(AT_NSPECIAL,4,round(x),round(y));
+	    spawn_hit_fx(round(x),round(y), 199);
+	    sound_play(asset_get("sfx_ice_back_air"));
+	}else if(ballmode == 2){ //steam
+	    create_hitbox(AT_NSPECIAL,5,round(x),round(y));
+	    spawn_hit_fx(round(x+20),round(y-20), 144);spawn_hit_fx(round(x-20),round(y-20), 144);spawn_hit_fx(round(x+20),round(y+20), 144);spawn_hit_fx(round(x-20),round(y+20), 144);
+		sound_play(asset_get("sfx_ell_steam_release"));
+	}else if(ballmode == 3){ //whirlpool
+	    create_hitbox(AT_NSPECIAL,6,round(x),round(y));
+	    spawn_hit_fx(round(x),round(y), 196);
+	    sound_play(asset_get("sfx_waterhit_heavy"));
+	}
     
     instance_destroy();
     exit;

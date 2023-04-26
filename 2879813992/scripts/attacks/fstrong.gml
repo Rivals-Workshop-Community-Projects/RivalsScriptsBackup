@@ -10,7 +10,7 @@ set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, sound_get("se_zelda_smash_S01"));
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 4);
 
 //attack startup
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_TYPE, 1);
@@ -85,8 +85,8 @@ set_hitbox_value(AT_FSTRONG, 3, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_FSTRONG, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_X, 88);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_Y, -48);
-set_hitbox_value(AT_FSTRONG, 3, HG_WIDTH, 95);
-set_hitbox_value(AT_FSTRONG, 3, HG_HEIGHT, 30);
+set_hitbox_value(AT_FSTRONG, 3, HG_WIDTH, 105);
+set_hitbox_value(AT_FSTRONG, 3, HG_HEIGHT, 40);
 set_hitbox_value(AT_FSTRONG, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSTRONG, 3, HG_ANGLE, 45);

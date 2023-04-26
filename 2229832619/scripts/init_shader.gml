@@ -13,6 +13,31 @@ set_character_color_shading( slot_num, 0 );
 }
 
 
+/*
+if (get_player_color( player ) == 9) {
+	if ( (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR)&&(attack==AT_TAUNT||attack==AT_DSPECIAL) ){
+*/
+if (get_player_color( player ) == 9) {
+if (variable_instance_exists(id, "eyechecker")){
+if (eyechecker == false){
+	// shade, r, g, b, alpha
+	set_character_color_slot(4, 255, 255, 255 ); //white_eye
+	set_article_color_slot(4, 255, 255, 255 ); //white_eye
+	set_character_color_slot(5, 255, 255, 255 ); //abyss_eye
+	set_article_color_slot(5, 255, 255, 255 ); //abyss_eye
+	set_character_color_shading( 5, 2 );
+}else{
+	set_character_color_slot(4, 0, 89, 84 ); //white_eye
+	set_article_color_slot(4, 0, 89, 84 ); //white_eye
+	set_character_color_slot(5, 255, 0, 0 ); //abyss_eye
+	set_article_color_slot(5, 255, 0, 0 ); //abyss_eye
+	set_character_color_shading( 5, 1 );
+}
+}
+}
+
+
+
 
 
 //behold. the messiest rainbow code.
@@ -189,7 +214,7 @@ set_article_color_slot(6, 255, 188, 101 ); //blade
 set_article_color_slot(7, 253, 116, 136 ); //blade.2
 base_col = make_colour_rgb(254, 91, 148 );
 }
-if (extra_col==7){//landkon "moon"
+if (extra_col==7){//landkon old "moon"
 // shade, r, g, b, alpha
 set_character_color_slot(0, 36, 37, 60 ); //main
 set_character_color_slot(1, 30, 32, 50 ); //main.2
@@ -227,7 +252,29 @@ set_article_color_slot(4, 255, 255, 255 ); //white_eye
 set_article_color_slot(5, 255, 153, 0 ); //abyss_eye
 set_article_color_slot(6, 217, 45, 17 ); //blade
 set_article_color_slot(7, 140, 9, 9 ); //blade.2
+base_col = make_colour_rgb(230, 239, 245 );
 }
+if (extra_col==9){//landkon new "pale"
+// shade, r, g, b, alpha
+set_character_color_slot(0, 55, 57, 79 ); //main
+set_character_color_slot(1, 45, 46, 71 ); //main.2
+set_character_color_slot(2, 29, 31, 56 ); //main.3
+set_character_color_slot(3, 254, 170, 229 ); //purple
+set_character_color_slot(4, 254, 239, 249 ); //white_eye
+set_character_color_slot(5, 255, 247, 253 ); //abyss_eye
+set_character_color_slot(6, 236, 238, 255 ); //blade
+set_character_color_slot(7, 174, 177, 206 ); //blade.2
+set_article_color_slot(0, 55, 57, 79 ); //main
+set_article_color_slot(1, 45, 46, 71 ); //main.2
+set_article_color_slot(2, 29, 31, 56 ); //main.3
+set_article_color_slot(3, 254, 170, 229 ); //purple
+set_article_color_slot(4, 254, 239, 249 ); //white_eye
+set_article_color_slot(5, 255, 247, 253 ); //abyss_eye
+set_article_color_slot(6, 236, 238, 255 ); //blade
+set_article_color_slot(7, 174, 177, 206 ); //blade.2
+base_col = make_colour_rgb(254, 170, 229 );
+}
+
 
 if (variable_instance_exists(id, "state")){
 if ((state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND) && (attack==AT_DSPECIAL || attack==AT_DSPECIAL_AIR)){

@@ -1,3 +1,25 @@
+//armored E.specials rune
+if(runeG && chargeAttackReady && (attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL)){
+    super_armor = true;
+}
+
+if(chargeAttackReady){
+    if(totalDamageDealt >= totalDamageDealtCap){
+        totalDamageDealtPrevious = totalDamageDealt;
+    }
+    setChargedAttackHitboxValues();
+    if(attack == AT_FSPECIAL && move_cooldown[AT_FSPECIAL] == 0){
+        if(totalDamageDealt < totalDamageDealtCap){
+            totalDamageDealt -= 10;
+            if(totalDamageDealt < 0){
+                totalDamageDealt = 0;
+            }
+        } else {
+            totalDamageDealtPrevious = totalDamageDealt;
+        }
+    }
+}
+
 //set attack
 switch (attack)
 {
@@ -138,6 +160,17 @@ switch (attack)
         superShurikatHitChargedTotalDamage = 0;
         shurikatHitFirstHitbox = false;
         
+        //frame data reduction rune
+        if(runeE){
+            if(chargeAttackReady){
+                set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 2);
+                set_window_value(AT_FSPECIAL, 9, AG_WINDOW_LENGTH, 12);
+            } else {
+                reset_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH);
+                reset_window_value(AT_FSPECIAL, 9, AG_WINDOW_LENGTH);
+            }
+        }
+        
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 0);
         set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0);
     break;
@@ -196,6 +229,12 @@ switch (attack)
                             totalDamageDealt = 0;
                         
                         set_window_value(AT_DSPECIAL, 10, AG_WINDOW_LENGTH, 20);
+                        
+                        //frame data reduction rune
+                        if(runeE){
+                            set_window_value(AT_DSPECIAL, 10, AG_WINDOW_LENGTH, 4);
+                        }
+                        
                         chargeAttackReadyTimer = chargeAttackReadyLength;
                         if (tutSuccessUsedEmpowered == false)
                             tutSuccessUsedEmpowered = true;
@@ -231,6 +270,10 @@ switch (attack)
                     //window_timer = 9;
                     window = 20;
                     clear_button_buffer(PC_SPECIAL_PRESSED);
+                    if(fast_falling){
+                        fast_falling = false;
+                        vsp = max_fall;
+                    }
                 }
             }
         }
@@ -245,3 +288,51 @@ switch (attack)
         set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_LENGTH, 30);
     break;
 }
+
+//frame date reduction rune
+if(runeE){
+    set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 2);
+    set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_LENGTH, 8);
+}
+
+#define setChargedAttackHitboxValues
+
+
+//FTHROW (aka Feral Blitz)
+set_hitbox_value(AT_FTHROW, 7, HG_DAMAGE, 5 + (totalDamageDealt * 0.4));
+set_hitbox_value(AT_FTHROW, 7, HG_KNOCKBACK_SCALING, 0.6 + (totalDamageDealt * 0.0035));
+
+//FSPECIAL is defined in #setShurikatParams
+
+
+
+if (totalDamageDealtPrevious >= totalDamageDealtCap)
+{
+    //USPECIAL_2
+    set_hitbox_value(AT_USPECIAL_2, 6, HG_DAMAGE, 12);
+    set_hitbox_value(AT_USPECIAL_2, 7, HG_DAMAGE, 12);
+    set_hitbox_value(AT_USPECIAL_2, 7, HG_KNOCKBACK_SCALING, 0.9);
+    
+    //DSPECIAL_2 (Finishing Yarn)
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 40);
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 9);//12
+    //These hitbox values are also modified in hit_player.gml if Amber hits the enemy
+    //while charged yarn dashing
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 2);//1.75
+}
+else
+{
+    //USPECIAL_2
+    set_hitbox_value(AT_USPECIAL_2, 6, HG_DAMAGE, 7);
+    set_hitbox_value(AT_USPECIAL_2, 7, HG_DAMAGE, 7);
+    set_hitbox_value(AT_USPECIAL_2, 7, HG_KNOCKBACK_SCALING, 0.7);
+    
+    //DSPECIAL_2 (Finishing Yarn)
+    //These hitbox values are also modified in hit_player.gml if Amber hits the enemy
+    //while charged yarn dashing
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 40);
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 8); //12
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 1.1); //1
+}
+//set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 361);

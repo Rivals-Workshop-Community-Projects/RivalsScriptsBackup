@@ -109,7 +109,7 @@ alt_name[25] = "Fungus Amogus";
 alt_name[26]  = "Femboy Death";
 alt_name[27]  = "More like Spade";
 alt_name[28]  = "Sharcmelon";
-alt_name[29]  = "YOUAERE My FUCKIGN GI>RLFREIONGD";
+alt_name[29]  = "Derogatory Sharc";
 if(!doNotInitShader){
     init_shader(); // makes the shader update when you return to the CSS (don't know why the game is coded so that this necessary)
 }

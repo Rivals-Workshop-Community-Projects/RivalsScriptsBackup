@@ -11,5 +11,33 @@ else if (artc_hp <= 0 && hitstop <= 0) //article has no health so it spontanious
     sound_play(asset_get("sfx_ell_strong_attack_explosion")); //plays exolosion sound
 
     if (has_rune("D")) create_hitbox(AT_DSPECIAL, 1, x, y-article_height/2);
-    instance_destroy(); //destroys the article
+    instance_destroy(); //destroys the article, make sure there is nothing below this point
+    exit; //but if there is, add exit; to make it ignore the rest of the script for that frame
+}
+
+//gravity field rune
+if (has_rune("H"))
+{
+    if (!hitpause && gravity_field_cd > 0) gravity_field_cd --;
+    if (gravity_field_time > 0)
+    {
+        gravity_field_time --;
+
+        with (oPlayer) if (player != other.player && !invincible && state != PS_DEAD && state != PS_RESPAWN && !hurtboxID.dodging)
+        {
+            var drag_dist = point_distance(other.x, other.y - other.article_height/2, x, y);
+            var drag_angle = point_direction(other.x, other.y, x, y);
+            var drag_speed = (drag_dist - other.gravity_field_range) / 50 - 1;
+            
+            if (drag_dist <= other.gravity_field_range)
+            {
+                if (y < other.y && position_meeting(x, y + 1, asset_get("par_jumpthrough")) && !free) y += 4;
+                go_through = true;
+                free = true;
+
+                hsp += lengthdir_x(drag_speed, drag_angle);
+                vsp += lengthdir_y(drag_speed, drag_angle);
+            }
+        }
+    }
 }

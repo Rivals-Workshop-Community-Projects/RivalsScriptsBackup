@@ -56,4 +56,14 @@ fx_dspec_despawn = hit_fx_create(sprite_get("fx_dspec_despawn"), 32);
 //spawns the hit fx that appears alongside the article
 spawn_hit_fx(x, y-32, fx_dspec_spawn);
 
-strikes = 0;
+if (has_rune("H"))
+{
+    gravity_field_range = 150; //how far away does the gravity take effect
+    gravity_field_lifetime = 5; //how many frames the gravity field stays on for
+
+    gravity_field_time = 0; //count down how many frames left it has
+    gravity_field_cd = 0; //count down when it can be used again
+    gravity_field_cd_set = 120; //cooldown for gravity field
+
+    fx_gravfield = hit_fx_create(sprite_get("fx_gravfield_runeH"), 16);
+}

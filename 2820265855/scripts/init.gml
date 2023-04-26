@@ -236,3 +236,9 @@ fs_charge = 0;
 //pokemon stadium
 pkmn_stadium_front_img = sprite_get("Blaze_PKMN");
 pkmn_stadium_back_img = sprite_get("Blaze_PKMN_Back");
+
+//Dialogue Buddy
+diag_portrait=sprite_get("diagportrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
+//Adjust positioning of the portraits accordingly! Useful if the characters face is way too low
+diag_portrait_x = 0; // +: Backwards -:Forwards
+diag_portrait_y = 0; // +: Downwards -:Upwards

@@ -4,10 +4,10 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 set_victory_theme(sound_get("ollie_victory_theme"));
 
-char_height = 52;
-idle_anim_speed = .1;
+char_height = 46;
+idle_anim_speed = .16;
 crouch_anim_speed = .1;
-walk_anim_speed = .125;
+walk_anim_speed = .14;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
@@ -15,7 +15,7 @@ walk_speed = 3.25;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 14;
-initial_dash_speed = 8;
+initial_dash_speed = 7.5;
 dash_speed = 7;
 dash_turn_time = 14;
 dash_turn_accel = 0.9;
@@ -29,10 +29,10 @@ jump_speed = 10.5;
 short_hop_speed = 6;
 djump_speed = 10.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .35;
+air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .035;
 max_djumps = 1;
@@ -44,12 +44,12 @@ max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
-knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 10;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -105,6 +105,7 @@ uspecial_projectile = hit_fx_create( sprite_get( "uspecialreturn" ), 30 );
 fspecial_grind_hitbox = noone;
 fspecial_timer = 0;
 fspecial_max_time = 20;
+fspecial_ledgeforgiven = false;
 
 //Rail object
 rail_obj = noone;
@@ -149,7 +150,7 @@ ollie_combo_end_timer = 160;
 ollie_combo_end_threshold = 150;
 
 //List of valid combo moves.
-ollie_combo_moves = [AT_JAB,AT_NAIR,AT_DATTACK,AT_FAIR,AT_FSPECIAL_2,AT_DAIR,AT_USPECIAL, AT_FSTRONG, AT_DSTRONG, AT_USTRONG];
+ollie_combo_moves = [AT_JAB,AT_NAIR,AT_DATTACK,AT_FAIR,AT_FSPECIAL_2,AT_DAIR,AT_USPECIAL, AT_FSTRONG, AT_DSTRONG, AT_USTRONG, AT_UTILT];
 
 //List of combo moves valid when not hitting an opponent
 ollie_combo_moves_no_hit = [AT_EXTRA_1, AT_EXTRA_2]
@@ -174,10 +175,14 @@ ollie_levelclear_threshold = 100;
 //VFX for when you level up
 comboend_vfx = hit_fx_create( sprite_get( "comboend" ), 20 );
 
+//VFX for when you level up
+prep_vfx = hit_fx_create( sprite_get( "vfx_bigprep" ), 20 );
+
 //color
 var p_col = get_player_color(player)
 var slot = 2
 bar_color = make_color_rgb(get_color_profile_slot_r(p_col,slot),get_color_profile_slot_g(p_col,slot),get_color_profile_slot_b(p_col,slot))
 
 explosion_vfx = hit_fx_create( sprite_get( "explosion" ), 21 );
+explosion_p_vfx = hit_fx_create( sprite_get( "explosion_placeholder" ), 32 );
 spark_vfx = hit_fx_create( sprite_get( "sparks" ), 20 );

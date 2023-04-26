@@ -1,4 +1,4 @@
-sprite_change_offset("aerith_hurtbox", 40, 88);//
+sprite_change_offset("aerith_hurtbox", 40, 90);//
 
 sprite_change_offset("idle", 37, 71);
 sprite_change_offset("hurt", 46, 71);

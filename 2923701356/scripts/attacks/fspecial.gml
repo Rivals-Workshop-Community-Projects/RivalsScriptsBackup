@@ -116,8 +116,8 @@ hitbox_num = 1;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 20); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 8);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -30);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 10);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -25);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 70);
 set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 70);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);

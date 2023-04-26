@@ -255,6 +255,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.24", "25th April, 2023");
+initHeader("Fixes / Other Changes");
+initSection("+ Added Miiverse compatibility");
+
 initPatch("1.23", "22nd March, 2023");
 initHeader("Buffs");
 initSection("+ DSpecial water can now push Villager's projectiles (works if it's his own, from another Villager, or if he currently owns it). Particularly useful with Lloid or bowling ball, and could have some use with pocketed projectiles potentially");

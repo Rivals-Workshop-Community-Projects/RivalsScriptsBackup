@@ -4,13 +4,13 @@
 
 if (attack == AT_USPECIAL&&(state==PS_ATTACK_AIR||state==PS_ATTACK_GROUND)){
 	if (window<=3){
-		var tmp_range1 = ease_cubeIn( 160, 40, state_timer, 50 )
+		var tmp_range1 = ease_cubeIn( 160, 40, state_timer, 40 )//50
 		var tmp_range2 = clamp(ease_cubeIn( 70, 0, state_timer, 22 ), 0, 80)
 		
-		var tmp_alpha1 = ease_cubeIn( 0, 100, state_timer, 50 )/100
+		var tmp_alpha1 = ease_cubeIn( 0, 100, state_timer, 40 )/100//50
 		var tmp_alpha2 = clamp(ease_cubeIn( 100, 0, state_timer, 22 )/100, 0, 1)
 		var tmp_alpha3 = tmp_alpha2 - clamp(ease_cubeIn( 100, 0, state_timer, 6 )/100, 0, 1)
-		var tmp_alpha4 = ease_quadOut( 0, 60, state_timer, 50 )/100
+		var tmp_alpha4 = ease_quadOut( 0, 60, state_timer, 40 )/100//50
 		
 		var make_color = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 0), get_color_profile_slot_g( get_player_color(player), 0), get_color_profile_slot_b( get_player_color(player), 0));
 		

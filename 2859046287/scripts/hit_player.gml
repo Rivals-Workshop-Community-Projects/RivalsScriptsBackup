@@ -7,7 +7,8 @@ if (my_hitboxID.orig_player_id != self) exit; //this line makes it so only hitbo
 switch (my_hitboxID.attack)
 {
     case AT_FTILT: //command grab
-        if (my_hitboxID.hbox_num == 1) set_grab_id(); //special function you can see below that sets the hit player to be grabbed
+        //special function you can see below that sets the hit player to be grabbed
+        if (my_hitboxID.hbox_num == 1 && !hit_player_obj.clone && !hit_player_obj.custom_clone) set_grab_id();
         else my_grab_id = noone; //the 2nd hitbox in the grab should always hit, releasing opponents from the grabbed state
         break;
     case AT_USTRONG: //strong charge increasing height
@@ -52,11 +53,30 @@ if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_EFFECT) == 30)
     hit_player_obj.test_status_owner = self; //sets status owner to us (so we can show different colors on them)
 }
 
-//multihit logic
-with (my_hitboxID)
+
+with (my_hitboxID) if (type == 2)
 {
+    //psuedo melee hitbox hitbpause
+    if (psuedo_melee_hitbox)
+    {
+        in_hitpause = true;
+        with (other)
+        {
+            old_hsp = hsp;
+            old_vsp = vsp;
+            hitstop = hit_player_obj.hitstop;
+            hitstop_full = hit_player_obj.hitstop_full;
+            hitpause = true;
+        }
+    }
+
+    //stop projectile homing if multihits start multihitting
+    if (multihit_amount > 0 && homing_enabled) homing_enabled = false;
+
+    ///////////////////////////////////////// MULTIHIT LOGIC /////////////////////////////////////////
+
     //if the multihit amount is more than 0 it should activate the multihit code
-    if (type == 2 && multihit_amount > 0)
+    if (multihit_amount > 0)
     {
         //proj_hit_count is the current amount of hits done already
         //every time our projectile hits, it counts up by one
@@ -90,9 +110,8 @@ with (my_hitboxID)
     //  - make sure your grabbed ID is noone so it will grab the first player it collides with
     //  - if the ID is a clone (clones usually disappear which will pop up an error)
     //  - if the hit player is in a hitstun state (so it won't grab armored player)
-    //  - if the player isn't in ranno's bubble
-    
-    if (my_grab_id == noone && !hit_player_obj.clone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) && !hit_player_obj.bubbled)
+
+    if (my_grab_id == noone && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND))
     {
         my_grab_id = hit_player_obj;
     }

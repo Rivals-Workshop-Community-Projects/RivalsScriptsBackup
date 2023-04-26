@@ -29,8 +29,6 @@ set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED, -2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 5);
-set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_charged_flame_release"));
 
 window_num ++; //endlag
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
@@ -47,18 +45,16 @@ set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_forsburn_consume_full"));
 
 window_num ++; //attack
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED, -4);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 9);
-set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_abyss_explosion"));
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 22);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -69,8 +65,9 @@ set_attack_value(atk, AG_NUM_WINDOWS, window_num);
 
 hitbox_num = 1; //tap blast
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MELEE, 1); //custom hitbox grid value that applies hitpause and sets offhit player flags
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 3);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 8);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 7);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -32-5); //these offsets reflect the effect's offsets
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -40+2); //the (-5, +2) offsets correspond to hsp and vsp, since tester moves at this point
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 56);
@@ -94,8 +91,9 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PLASMA_SAFE, 1);
 
 hitbox_num ++; //hold blast
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MELEE, 1); //custom hitbox grid value that applies hitpause and sets offhit player flags
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 6);
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 12);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 11);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, -32-9); //these offsets reflect the effect's offsets
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -40+4); //the (-5, +2) offsets correspond to hsp and vsp, since tester moves at this point
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 104);

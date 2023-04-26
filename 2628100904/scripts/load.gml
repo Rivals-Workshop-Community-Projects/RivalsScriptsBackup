@@ -44,8 +44,9 @@ sprite_change_offset("dspecial", 160, 198); //good
 sprite_change_offset("taunt", 160, 198); //good
 
 sprite_change_offset("bullet", 40, 40);
-sprite_change_offset("coin", 40, 40);
+sprite_change_offset("coin", 40, 42);
 sprite_change_offset("bluebullet", 40, 40);
+sprite_change_offset("greenbullet", 40, 40);
 sprite_change_offset("flashbang", 40, 40);
 sprite_change_offset("flashbang_explode", 160, 160);
 sprite_change_offset("weednova", 160, 160);

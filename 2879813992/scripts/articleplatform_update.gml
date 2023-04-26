@@ -90,7 +90,7 @@ if (state == 4){
 	stood_on = false;
 	}
 	with oPlayer if !free && place_meeting(floor(x), floor(y)+1, other) && !place_meeting(floor(x), floor(y), other){
-		other.vsp = 1;
+		other.vsp = 2;
 		other.stood_on = true;
 	}
 	
@@ -161,7 +161,8 @@ if (state == 4){
 if (y > room_height){
 		sound_play(asset_get("sfx_ice_shatter"));
 		sound_play(sound_get("se_zelda_magic01"));
-		player_id.shield_plat_aerith = 0;
+		player_id.shield_cooldown = 3;		
+		//player_id.shield_plat_aerith = 0;
     instance_destroy();
     exit;
 }
@@ -169,7 +170,8 @@ if (y > room_height){
 if (x < 0 || x > room_width){
 		sound_play(asset_get("sfx_ice_shatter"));
 		sound_play(sound_get("se_zelda_magic01"));
-		player_id.shield_plat_aerith = 0;
+		player_id.shield_cooldown = 3;
+		//player_id.shield_plat_aerith = 0;
     instance_destroy();
     exit;
 }

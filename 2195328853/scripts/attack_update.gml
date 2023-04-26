@@ -25,95 +25,46 @@ if (attack == AT_NSPECIAL){
 			   	spawn_hit_fx(x,y-15, fx_blob_ball_explosion);spawn_hit_fx(x,y-15, fx_blob_ball_explosion2);
 			   	sound_play(asset_get("sfx_waterhit_heavy"));
 			}
-	        if(!instance_exists(blob_ball)){
+			if(!instance_exists(blob_ball)){
 				blob_ball = instance_create(x+30*spr_dir,y-30,"obj_article1");
-			}else{
-				if (instance_exists(blob_ball.ballhitbox)) {
-			    	instance_destroy(blob_ball.ballhitbox);
-			    }if(blob_ball.ballmode == 0){
-				    if(nspecialcharge < 60){
-				    	create_hitbox(AT_NSPECIAL,3,blob_ball.x,blob_ball.y);
-				    	spawn_hit_fx(blob_ball.x+20,blob_ball.y+20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball.x-20,blob_ball.y+20, fx_blob_ball_explosion);
-				    	spawn_hit_fx(blob_ball.x+20,blob_ball.y-20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball.x-20,blob_ball.y-20, fx_blob_ball_explosion);
-				    }else{
-				    	create_hitbox(AT_NSPECIAL,2,blob_ball.x,blob_ball.y);
-				    	spawn_hit_fx(blob_ball.x,blob_ball.y, fx_blob_ball_explosion);spawn_hit_fx(blob_ball.x,blob_ball.y, fx_blob_ball_explosion2);
-				    }
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}else if(blob_ball.ballmode == 1){ //ice
-				    create_hitbox(AT_NSPECIAL,4,blob_ball.x,blob_ball.y);
-				    spawn_hit_fx(blob_ball.x,blob_ball.y, 199);
-				    sound_play(asset_get("sfx_ice_back_air"));
-				}else if(blob_ball.ballmode == 2){ //steam
-				    create_hitbox(AT_NSPECIAL,5,blob_ball.x,blob_ball.y);
-				    spawn_hit_fx(blob_ball.x+20,blob_ball.y-20, 144);spawn_hit_fx(blob_ball.x-20,blob_ball.y-20, 144);spawn_hit_fx(blob_ball.x+20,blob_ball.y+20, 144);spawn_hit_fx(blob_ball.x-20,blob_ball.y+20, 144);
-					sound_play(asset_get("sfx_ell_steam_release"));
-				}else if(blob_ball.ballmode == 3){ //whirlpool
-				    create_hitbox(AT_NSPECIAL,6,blob_ball.x,blob_ball.y);
-				    spawn_hit_fx(blob_ball.x,blob_ball.y, 196);
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}instance_destroy(blob_ball);
 			}
 			if(runeM){
 			if(!instance_exists(blob_ball2)){
 				blob_ball2 = instance_create(x+30*spr_dir,y-30,"obj_article1");
 				blob_ball2.ball = 1;
-			}else{
-				if (instance_exists(blob_ball2.ballhitbox)) {
-			    	instance_destroy(blob_ball2.ballhitbox);
-			    }if(blob_ball2.ballmode == 0){
-				    if(nspecialcharge < 60){
-				    	create_hitbox(AT_NSPECIAL,3,blob_ball2.x,blob_ball2.y);
-				    	spawn_hit_fx(blob_ball2.x+20,blob_ball2.y+20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball2.x-20,blob_ball2.y+20, fx_blob_ball_explosion);
-				    	spawn_hit_fx(blob_ball2.x+20,blob_ball2.y-20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball2.x-20,blob_ball2.y-20, fx_blob_ball_explosion);
-				    }else{
-				    	create_hitbox(AT_NSPECIAL,2,blob_ball2.x,blob_ball2.y);
-				    	spawn_hit_fx(blob_ball2.x,blob_ball2.y, fx_blob_ball_explosion);spawn_hit_fx(blob_ball2.x,blob_ball2.y, fx_blob_ball_explosion2);
-				    }
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}else if(blob_ball2.ballmode == 1){ //ice
-				    create_hitbox(AT_NSPECIAL,4,blob_ball2.x,blob_ball2.y);
-				    spawn_hit_fx(blob_ball2.x,blob_ball2.y, 199);
-				    sound_play(asset_get("sfx_ice_back_air"));
-				}else if(blob_ball2.ballmode == 2){ //steam
-				    create_hitbox(AT_NSPECIAL,5,blob_ball2.x,blob_ball2.y);
-				    spawn_hit_fx(blob_ball2.x+20,blob_ball2.y-20, 144);spawn_hit_fx(blob_ball2.x-20,blob_ball2.y-20, 144);spawn_hit_fx(blob_ball2.x+20,blob_ball2.y+20, 144);spawn_hit_fx(blob_ball2.x-20,blob_ball2.y+20, 144);
-				    sound_play(asset_get("sfx_ell_steam_release"));
-				}else if(blob_ball2.ballmode == 3){ //whirlpool
-				    create_hitbox(AT_NSPECIAL,6,blob_ball2.x,blob_ball2.y);
-				    spawn_hit_fx(blob_ball2.x,blob_ball2.y, 196);
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}instance_destroy(blob_ball2);
 			}if(!instance_exists(blob_ball3)){
 				blob_ball3 = instance_create(x+30*spr_dir,y-30,"obj_article1");
 				blob_ball3.ball = 2;
-			}else{
-				if (instance_exists(blob_ball3.ballhitbox)) {
-			    	instance_destroy(blob_ball3.ballhitbox);
-			    }if(blob_ball3.ballmode == 0){
-				    if(nspecialcharge < 60){
-				    	create_hitbox(AT_NSPECIAL,3,blob_ball3.x,blob_ball3.y);
-				    	spawn_hit_fx(blob_ball3.x+20,blob_ball3.y+20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball3.x-20,blob_ball3.y+20, fx_blob_ball_explosion);
-				    	spawn_hit_fx(blob_ball3.x+20,blob_ball3.y-20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball3.x-20,blob_ball3.y-20, fx_blob_ball_explosion);
-				    }else{
-				    	create_hitbox(AT_NSPECIAL,2,blob_ball3.x,blob_ball3.y);
-				    	spawn_hit_fx(blob_ball3.x,blob_ball3.y, fx_blob_ball_explosion);spawn_hit_fx(blob_ball3.x,blob_ball3.y, fx_blob_ball_explosion2);
-				    }
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}else if(blob_ball3.ballmode == 1){ //ice
-				    create_hitbox(AT_NSPECIAL,4,blob_ball3.x,blob_ball3.y);
-				    spawn_hit_fx(blob_ball3.x,blob_ball3.y, 199);
-				    sound_play(asset_get("sfx_ice_back_air"));
-				}else if(blob_ball3.ballmode == 2){ //steam
-				    create_hitbox(AT_NSPECIAL,5,blob_ball3.x,blob_ball3.y);
-				    spawn_hit_fx(blob_ball3.x+20,blob_ball3.y-20, 144);spawn_hit_fx(blob_ball3.x-20,blob_ball3.y-20, 144);spawn_hit_fx(blob_ball3.x+20,blob_ball3.y+20, 144);spawn_hit_fx(blob_ball3.x-20,blob_ball3.y+20, 144);
-					sound_play(asset_get("sfx_ell_steam_release"));
-				}else if(blob_ball3.ballmode == 3){ //whirlpool
-				    create_hitbox(AT_NSPECIAL,6,blob_ball3.x,blob_ball3.y);
-				    spawn_hit_fx(blob_ball3.x,blob_ball3.y, 196);
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}instance_destroy(blob_ball3);
 			}
+			}
+			with(obj_article1){
+				if("BlueBlobBall" in self && BlueBlobBall && player_id == other && !dontdestroylol && !Pocketed){
+		        	if (instance_exists(ballhitbox)) {
+				    	instance_destroy(ballhitbox);
+				    }if(ballmode == 0){
+					    if(other.nspecialcharge < 60){
+					    	var explosion = create_hitbox(AT_NSPECIAL,3,x,y);explosion.player = player;
+					    	spawn_hit_fx(x+20,y+20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y+20, player_id.fx_blob_ball_explosion);
+					    	spawn_hit_fx(x+20,y-20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y-20, player_id.fx_blob_ball_explosion);
+					    }else{
+					    	var explosion = create_hitbox(AT_NSPECIAL,2,x,y);explosion.player = player;
+					    	spawn_hit_fx(x,y, player_id.fx_blob_ball_explosion);spawn_hit_fx(x,y, player_id.fx_blob_ball_explosion2);
+					    }
+					    sound_play(asset_get("sfx_waterhit_heavy"));
+					}else if(ballmode == 1){ //ice
+					    var explosion = create_hitbox(AT_NSPECIAL,4,x,y);explosion.player = player;
+					    spawn_hit_fx(x,y, 199);
+					    sound_play(asset_get("sfx_ice_back_air"));
+					}else if(ballmode == 2){ //steam
+					    var explosion = create_hitbox(AT_NSPECIAL,5,x,y);explosion.player = player;
+					    spawn_hit_fx(x+20,y-20, 144);spawn_hit_fx(x-20,y-20, 144);spawn_hit_fx(x+20,y+20, 144);spawn_hit_fx(x-20,y+20, 144);
+					    sound_play(asset_get("sfx_ell_steam_release"));
+					}else if(ballmode == 3){ //whirlpool
+					    var explosion = create_hitbox(AT_NSPECIAL,6,x,y);explosion.player = player;
+					    spawn_hit_fx(x,y, 196);
+					    sound_play(asset_get("sfx_waterhit_heavy"));
+					}instance_destroy(self);
+		    	}
 			}
 			nspecialcharge = 0;
 	    }
@@ -136,38 +87,18 @@ if (attack == AT_NSPECIAL){
     }else if(window == 2){
     	can_move = false;
         if(window_timer == 1){
-        	//if(!special_down){
-		        if(instance_exists(blob_ball)){
-		        	if(blob_ball.ballmode != 2){
-						blob_ball.ballmode = 2;blob_ball.bounceanim = 0;blob_ball.hitplayertimer = 0;blob_ball.hitstop = 0;
-						if(blob_ball.hitlockout < 10){
-							blob_ball.hsp = 0.5*spr_dir;	
+        	with(obj_article1){
+				if("BlueBlobBall" in self && BlueBlobBall && player_id == other && !Pocketed){
+		        	if(ballmode != 2){
+						ballmode = 2;bounceanim = 0;hitplayertimer = 0;hitstop = 0;
+						if(hitlockout < 10){
+							hsp = 0.5*other.spr_dir;	
 						}
-		        	}else if(blob_ball.ballmode == 2){
-						blob_ball.ballmode = 0;blob_ball.hitplayertimer = 0;blob_ball.hitstop = 0;
+		        	}else if(ballmode == 2){
+						ballmode = 0;hitplayertimer = 0;hitstop = 0;
 		        	}
-				}if(instance_exists(blob_ball2)){
-		        	if(blob_ball2.ballmode != 2){
-						blob_ball2.ballmode = 2;blob_ball2.bounceanim = 0;blob_ball2.hitplayertimer = 0;blob_ball2.hitstop = 0;
-						if(blob_ball2.hitlockout < 10){
-							blob_ball2.hsp = 0.5*spr_dir;	
-						}
-		        	}else if(blob_ball2.ballmode == 2){
-						blob_ball2.ballmode = 0;blob_ball2.hitplayertimer = 0;blob_ball2.hitstop = 0;
-		        	}
-				}if(instance_exists(blob_ball3)){
-		        	if(blob_ball3.ballmode != 2){
-						blob_ball3.ballmode = 2;blob_ball3.bounceanim = 0;blob_ball3.hitplayertimer = 0;blob_ball3.hitstop = 0;
-						if(blob_ball3.hitlockout < 10){
-							blob_ball3.hsp = 0.5*spr_dir;	
-						}
-		        	}else if(blob_ball3.ballmode == 2){
-						blob_ball3.ballmode = 0;blob_ball3.hitplayertimer = 0;blob_ball3.hitstop = 0;
-		        	}
-				}
-			//}else{
-        		//window = 4;window_timer = 0;
-        	//}
+		    	}
+			}
 	    }
     }else if(window == 3){
         can_move = false;
@@ -229,12 +160,12 @@ if (attack == AT_NSPECIAL){
 				}
         	}else{
         		if(!runeI){
-        			create_hitbox(AT_FSPECIAL,3,x+30*spr_dir,y-30);
+        			create_hitbox(AT_FSPECIAL,3,round(x+30)*spr_dir,round(y-30));
         		}else{
-					create_hitbox(AT_FSPECIAL,3,x+50*spr_dir,y-30);
-					create_hitbox(AT_FSPECIAL,3,x+10*spr_dir,y-30);
-					create_hitbox(AT_FSPECIAL,3,x+30*spr_dir,y-50);
-					create_hitbox(AT_FSPECIAL,3,x+30*spr_dir,y-10);
+					create_hitbox(AT_FSPECIAL,3,round(x+50)*spr_dir,round(y-30));
+					create_hitbox(AT_FSPECIAL,3,round(x+10)*spr_dir,round(y-30));
+					create_hitbox(AT_FSPECIAL,3,round(x+30)*spr_dir,round(y-50));
+					create_hitbox(AT_FSPECIAL,3,round(x+30)*spr_dir,round(y-10));
 				}
         	}
 	    }
@@ -250,21 +181,21 @@ if (attack == AT_NSPECIAL){
     	vsp = 0;hsp = -2.5*spr_dir;
         if(window_timer <= 1 || window_timer == 4 || window_timer == 8 || window_timer == 12 || window_timer == 16 || window_timer == 20 || window_timer == 24 || window_timer == 28){
         	if(!runeI){
-        		create_hitbox(AT_FSPECIAL,4,x+620*spr_dir,y-25);
+        		create_hitbox(AT_FSPECIAL,4,round(x+620)*spr_dir,round(y-25));
         	}else if(runeI){
-        		create_hitbox(AT_FSPECIAL,4,x+610*spr_dir,y-35);
-        		create_hitbox(AT_FSPECIAL,4,x+610*spr_dir,y-20);
-        		create_hitbox(AT_FSPECIAL,4,x+630*spr_dir,y-5);
-        		create_hitbox(AT_FSPECIAL,4,x+630*spr_dir,y-45);
+        		create_hitbox(AT_FSPECIAL,4,round(x+610)*spr_dir,round(y-35));
+        		create_hitbox(AT_FSPECIAL,4,round(x+610)*spr_dir,round(y-20));
+        		create_hitbox(AT_FSPECIAL,4,round(x+630)*spr_dir,round(y-5));
+        		create_hitbox(AT_FSPECIAL,4,round(x+630)*spr_dir,round(y-45));
         	}
 	    }else if(window_timer == 32){
         	if(!runeI){
-        		create_hitbox(AT_FSPECIAL,5,x+620*spr_dir,y-25);
+        		create_hitbox(AT_FSPECIAL,5,round(x+620)*spr_dir,round(y-25));
         	}else if(runeI){
-        		create_hitbox(AT_FSPECIAL,5,x+610*spr_dir,y-35);
-        		create_hitbox(AT_FSPECIAL,5,x+610*spr_dir,y-20);
-        		create_hitbox(AT_FSPECIAL,5,x+630*spr_dir,y-5);
-        		create_hitbox(AT_FSPECIAL,5,x+630*spr_dir,y-45);
+        		create_hitbox(AT_FSPECIAL,5,round(x+610)*spr_dir,round(y-35));
+        		create_hitbox(AT_FSPECIAL,5,round(x+610)*spr_dir,round(y-20));
+        		create_hitbox(AT_FSPECIAL,5,round(x+630)*spr_dir,round(y-5));
+        		create_hitbox(AT_FSPECIAL,5,round(x+630)*spr_dir,round(y-45));
         	}
         }else if(window_timer == 44){
         	window = 9;window_timer = 0;
@@ -288,29 +219,15 @@ if (attack == AT_NSPECIAL){
 	    }
     }else if(window == 2){
         if(window_timer == 1){
-        	//if(!special_down){
-		        if(instance_exists(blob_ball)){
-		        	if(blob_ball.ballmode != 3){
-						blob_ball.ballmode = 3;blob_ball.hitplayertimer = 0;blob_ball.hitstop = 0;
-		        	}else if(blob_ball.ballmode == 3){
-						blob_ball.ballmode = 0;blob_ball.vsp *= 1.75;blob_ball.hitplayertimer = 0;blob_ball.hitstop = 0;
+        	with(obj_article1){
+				if("BlueBlobBall" in self && BlueBlobBall && player_id == other && !Pocketed){
+		        	if(ballmode != 3){
+						ballmode = 3;hitplayertimer = 0;hitstop = 0;
+		        	}else if(ballmode == 3){
+						ballmode = 0;vsp *= 1.75;hitplayertimer = 0;hitstop = 0;
 		        	}
-				}if(instance_exists(blob_ball2)){
-		        	if(blob_ball2.ballmode != 3){
-						blob_ball2.ballmode = 3;blob_ball2.hitplayertimer = 0;blob_ball2.hitstop = 0;
-		        	}else if(blob_ball2.ballmode == 3){
-						blob_ball2.ballmode = 0;blob_ball2.vsp *= 1.75;blob_ball2.hitplayertimer = 0;blob_ball2.hitstop = 0;
-		        	}
-				}if(instance_exists(blob_ball3)){
-		        	if(blob_ball3.ballmode != 3){
-						blob_ball3.ballmode = 3;blob_ball3.hitplayertimer = 0;blob_ball3.hitstop = 0;
-		        	}else if(blob_ball3.ballmode == 3){
-						blob_ball3.ballmode = 0;blob_ball3.vsp *= 1.75;blob_ball3.hitplayertimer = 0;blob_ball3.hitstop = 0;
-		        	}
-				}
-        	//}else{
-        		//window = 4;
-        	//}
+		    	}
+			}
 	    }
     }else if(window == 4){
     	upb = true;upbtimer = 0;
@@ -355,24 +272,14 @@ if (attack == AT_NSPECIAL){
 	    }
     }else if(window == 2){
         if(window_timer == 1){
-	        if(instance_exists(blob_ball)){
-	        	if(blob_ball.ballmode != 1){
-					blob_ball.ballmode = 1;blob_ball.hsp *= 0.25;
-	        	}else if(blob_ball.ballmode == 1){
-					blob_ball.ballmode = 0;
-	        	}blob_ball.hitstop = 0;
-			}if(instance_exists(blob_ball2)){
-	        	if(blob_ball2.ballmode != 1){
-					blob_ball2.ballmode = 1;blob_ball2.hsp *= 0.25;
-	        	}else if(blob_ball2.ballmode == 1){
-					blob_ball2.ballmode = 0;
-	        	}blob_ball2.hitstop = 0;
-			}if(instance_exists(blob_ball3)){
-	        	if(blob_ball3.ballmode != 1){
-					blob_ball3.ballmode = 1;blob_ball3.hsp *= 0.25;
-	        	}else if(blob_ball3.ballmode == 1){
-					blob_ball3.ballmode = 0;
-	        	}blob_ball3.hitstop = 0;
+        	with(obj_article1){
+				if("BlueBlobBall" in self && BlueBlobBall && player_id == other && !Pocketed){
+		        	if(ballmode != 1){
+						ballmode = 1;hsp *= 0.25;
+		        	}else if(ballmode == 1){
+						ballmode = 0;
+		        	}hitstop = 0;
+		    	}
 			}
 	    }
     }else if(window == 4){
@@ -395,24 +302,27 @@ if (attack == AT_NSPECIAL){
         }else if(window == 7 && free){
         	window = 6;window_timer = 0;
         }if(window == 6){
-        	if(instance_exists(dspecialhitbox2)){
+        	/*if(instance_exists(dspecialhitbox2)){
         		dspecialhitbox2.damage = 4+(vsp/2);
 	    		dspecialhitbox2.kb_scale = 0.3+(vsp/16);
-        	}if(instance_exists(dspecialhitbox)){
+	    		print(dspecialhitbox2.kb_scale);
+        	}*/if(instance_exists(dspecialhitbox)){
 	        	instance_destroy(dspecialhitbox);
         	}vsp += 0.5;
         }else if(window == 7){
         	if(instance_exists(dspecialhitbox)){
-	        	dspecialhitbox.damage = 3+(hsp/3*spr_dir);
-		    	dspecialhitbox.kb_scale = 0.1+(hsp/12*spr_dir);
+	        	//dspecialhitbox.damage = 3+(hsp/3*spr_dir);
+		    	dspecialhitbox.kb_scale = 0.1+(abs(hsp)/7);dspecialhitbox.kb_scale = min(1.4, dspecialhitbox.kb_scale);
 		    	//print_debug(string(dspecialhitbox.kb_scale));
         	}if(instance_exists(dspecialhitbox2)){
 	        	instance_destroy(dspecialhitbox2);
+        	}if(instance_exists(dspecialhitbox3)){
+	        	instance_destroy(dspecialhitbox3);
         	}
         }
         if(window_timer == 1){
         	if(window == 6 && vsp > 0.5){
-	    		dspecialhitbox2 = create_hitbox(AT_DSPECIAL,3,x,y);
+	    		dspecialhitbox2 = create_hitbox(AT_DSPECIAL,3,x,y);dspecialhitbox3 = create_hitbox(AT_DSPECIAL,6,x,y);
         	}if(window == 7 && (hsp*spr_dir > 1.5 || hsp*spr_dir < -0.5)){
 	    		dspecialhitbox = create_hitbox(AT_DSPECIAL,4,x,y);
         	}
@@ -427,6 +337,8 @@ if (attack == AT_NSPECIAL){
 	        	instance_destroy(dspecialhitbox);
         	}if(instance_exists(dspecialhitbox2)){
 	        	instance_destroy(dspecialhitbox2);
+        	}if(instance_exists(dspecialhitbox3)){
+	        	instance_destroy(dspecialhitbox3);
         	}
 	    }
     }else if(window == 8){
@@ -522,6 +434,12 @@ if (attack == AT_NSPECIAL){
 }else if (attack == AT_NAIR){
     if((window == 3 && window_timer >= 15 || window == 4) && jump_pressed){
         window = 10;window_timer = 100;
+    }
+    if((window == 3 || window == 5) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause && attack_down){
+        window = 5;window_timer = 0;
+    }
+    if(window == 5 && !attack_down){
+        window = 4;window_timer = 0;
     }
 }else if (attack == AT_UAIR){
     if(window == 1 && window_timer == 1){

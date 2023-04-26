@@ -38,3 +38,30 @@ last_attack_id = noone;
 last_id_group = noone;
 last_player = noone;
 }
+
+//projectile rune stuff
+
+if(player_id.runeM){
+    if((attack == AT_BAIR && hbox_num == 3) || (attack == AT_NAIR && hbox_num == 12)){
+        spr_dir *= -1;
+        draw_xscale = spr_dir;
+    }
+    
+    if(attack == AT_FSTRONG && hbox_num == 9){
+        strong_charge = player_id.strong_charge;
+    }
+
+    if(attack == AT_USTRONG && (hbox_num == 5 || hbox_num == 6)){
+        proj_grab_id = noone;
+    }
+    
+    if(attack == AT_USTRONG && hbox_num == 6){
+        spr_dir *= -1;
+        draw_xscale = spr_dir;
+    }
+
+    if(effect == 99 || effect == 98){
+        can_hit_self = true;
+        can_hit[player_id.player] = false;
+    }
+}

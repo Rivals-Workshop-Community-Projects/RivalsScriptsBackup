@@ -234,11 +234,31 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.77", "5th october 2022");
+initPatch("1.79", "22nd April 2022");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed a small bug with the latest patch where FSpecial turning the blob ball into it's steam form wouldn't flip it to Blue Blob's direction (so now it works like it used to)");
+
+initPatch("1.78", "21st April 2022");
+initHeader("Buffs");
+initSection("+ NAir can now be held cuz yay
++ Many moves now have a bit of disjoint to them, like most KoB characters (BB noteably lacked this)
++ DSpecial ice block can now spike during the falling sourspot on aerial opponents, and in general the move should be a bit better due to some redone code and improved stats
++ Blue Blob can now turn around with his double jumps like other multi-jump characters");
+initHeader("Nerfs");
+initSection("- When blowing up the blob ball, the ownership of the explosion should match the balls owner (aka BB can't just punish you for hitting or grabbing it anymore)
+- Technically a nerf, but some DSpecial stuff is a bit weaker in some ways due to buggy/janky stats");
+initHeader("Fixes / Other Changes");
+initSection("- Improved some animations to be a bit smoother (ex: jab), and some smears to look better (ex: dair)
+- Redid some DSpecial stuff as it was pretty janky
+- Blob Ball now displays an outline color if it's owned by another player, to help indicate the owner change (if BB himself owns it then it'll have no outline like before, since that just looks best)
+- Added Villager compatibility & fixed a bunch of KoB interaction stuff
+- Did a bunch of misc fixes");
+
+initPatch("1.77", "5th October 2022");
 initHeader("Fixes / Other Changes");
 initSection("- Added crown sprite to most animations when using King Blob or KoB alts");
 
-initPatch("1.76", "5th october 2022");
+initPatch("1.76", "5th October 2022");
 initHeader("Buffs");
 initSection("- Blue Blob can now taunt in the air, and he now has 2 new taunts (side taunt and down taunt). Credit to Skycrafter for making the taunts");
 

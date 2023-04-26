@@ -4,6 +4,249 @@ introInputs();
 checkForClonedAmbers();
 initRuneStats();
 
+if(totalDamageDealt < 10){
+    move_cooldown[AT_NSPECIAL] = 3;
+}
+
+if(get_player_color(player) == 15){
+    afterimage_array[array_length_1d(afterimage_array)] = {x:x+draw_x, y:y+draw_y, spr_dir:spr_dir, sprite_width:sprite_width, sprite_height:sprite_height, sprite_xoffset:sprite_xoffset, sprite_yoffset:sprite_yoffset, sprite_index:sprite_index, image_index:image_index, rot:spr_angle, col:c_white, timer:0, timerMax:15};
+}
+
+if(runeA){
+    if(state == PS_CROUCH && down_down && !hitpause){
+        healTimer++;
+    } else {
+        healTimer = 0;
+    }
+    
+    if(state == PS_CROUCH && healTimer > 20 && healTimer%10 == 1){
+        take_damage(player, player, -1);
+        if(pacifistModeEnabled){
+            currentDamage--;
+        }
+    }
+}
+
+if(runeE && prat_land_time > 4){
+    prat_land_time = 4;
+}
+
+if(runeF){
+    if(move_cooldown[AT_USPECIAL] > 30){
+        move_cooldown[AT_USPECIAL] = 30;
+    }
+}
+
+if(chargeAttackReady && runeG){
+    if(runeI){
+        soft_armor = 14 * knockback_scaling;
+    } else {
+        soft_armor = 16;
+    }
+}
+
+if(runeH){
+    hasYarnBall = true;
+}
+
+
+if(runeI){
+    knockback_scaling = .4;
+    damage_scaling = .7;
+}
+
+if(runeK && totalDamageDealt == 50){
+    create_hitbox(AT_EXTRA_1, 1, round(x + hsp), round(y + vsp)-26);
+    attack_invince = 2;
+    shurikenSpriteIndex++;
+}
+
+if(runeL){
+    empoweredCooldownLength = 120;
+}
+
+if(runeN){
+    smokeBombMeterCost = 0;
+    if(runeTeleportCooldown > 0 || runeTeleportFree == true){
+        move_cooldown[AT_NTHROW] = 2;
+    }
+    if(!free){
+        runeTeleportFree = false;
+    }
+    if(runeTeleportCooldown > 0){
+        runeTeleportCooldown--;
+    }
+}
+
+//Pacifist Amber
+if(pacifistModeEnabled){
+    set_hitbox_value(AT_DAIR, 4, HG_BASE_KNOCKBACK, 5);
+    set_hitbox_value(AT_DAIR, 4, HG_KNOCKBACK_SCALING, .5);
+    set_hitbox_value(AT_DAIR, 4, HG_HITSTUN_MULTIPLIER, .6);
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 1);
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_DAMAGE, 30);
+    
+    var blastzone_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE);
+    var blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE);
+    var blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);
+    var blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
+    
+    var endTheGame = true;
+    var othersExist = false;
+    
+    var wrapTarget = finalWrapTarget;
+    
+    if(state_cat == SC_HITSTUN || state == PS_DEAD || state == PS_RESPAWN 
+    || (runeG && hitpause && (soft_armor > 0 || super_armor))){
+        currentDamage = get_player_damage( player );
+    } else {
+        set_player_damage( player, currentDamage );
+    }
+    if(currentDamage < 0){
+        currentDamage = 0;
+    }
+    
+    with(oPlayer){
+        if(self != other){
+            var othersExist = true;
+            if(highest_damage < get_player_damage(player) || other.state == PS_DEAD){
+                highest_damage = get_player_damage(player)
+            } else if(highest_damage > get_player_damage(player)){
+                highest_damage++;
+                set_player_damage(player, highest_damage);
+            }
+            if(lowest_stocks > get_player_stocks(player)){
+                lowest_stocks = get_player_stocks(player)
+            } else if(lowest_stocks < get_player_stocks(player)){
+                set_player_stocks(player, lowest_stocks);
+            }
+            if(damage_scaling < 1){
+                damage_scaling = 1;
+            }
+            // if(knockback_scaling < 1){
+            //     knockback_scaling = 1;
+            // }
+            if(other.state == PS_DEAD){
+                knockback_adj = orig_knockback_adj;
+            } else {
+                knockback_adj = .2;
+            }
+            //blast zone detection ripped from steve
+            if ((hit_player_obj == other || state_cat != SC_HITSTUN ) && (x + hsp != clamp(x + hsp, blastzone_l, blastzone_r) || y + vsp > blastzone_b || y + vsp < blastzone_t) 
+            && !final_wrapped){
+        		hsp = 0;
+        		vsp = 0;
+                x = room_width / 2;
+                y = get_stage_data(SD_Y_POS) - 96;
+                was_parried = true;
+        		set_state(PS_PRATFALL);
+        		var fxer = self;
+        		take_damage(player, other.player, 100)
+        		other.spawnFX = true;
+    		}
+    		if(!final_wrapped && state != PS_DEAD){
+    		    endTheGame = false;
+    		}
+    		if(get_player_damage( player ) == 999 && !final_wrapped && other.state != PS_RESPAWN && other.state != PS_DEAD){
+    		    wrapTarget = self;
+    		}
+    		if(final_wrapped){
+    		    set_player_damage( player, 999 );
+    		    set_player_stocks( player, 1 );
+    		    state = PS_WRAPPED;
+    		}
+    		if(other.state == PS_DEAD && final_wrapped){
+    		    x = 99999;
+    		    y = -99999;
+    		}
+        }
+    }
+    
+    with(pHurtBox){
+        if(playerID != other){
+            if(playerID.final_wrapped){
+                dodging = true;
+            }
+        } else if(playerID == other){
+            if(other.finalWrapTarget != noone){
+                dodging = false;
+            }
+        }
+    }
+    
+    if(spawnFX){
+        sound_play(sound_get("dsfx_emp_hit"));
+        sound_play(asset_get("sfx_mol_tauntup"));
+        spawn_hit_fx(fxer.x, fxer.y, 312);
+    }
+    spawnFX = false;
+    
+    finalWrapTarget = wrapTarget;
+    
+    if(finalWrapTarget != noone){
+        if(finalWrapTarget.final_wrapped == true && state != PS_DEAD){
+            finalWrapTarget = noone;
+        } else if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+            attack = 0;
+        }
+    }
+    
+    if(finalWrapTarget != noone){
+        set_attack_value(AT_DSPECIAL_2, AG_NO_PARRY_STUN, 1);
+        set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE, 1);
+        with(finalWrapTarget){
+            if(!final_wrapped){
+                if(!free){
+                    y -= 10;
+                }
+                set_state(PS_PRATFALL);
+                vsp = 0;
+                hsp = 0;
+                invincible = false;
+                super_armor = false;
+                invince_time = 0;
+                attack_invince = 0;
+                respawn_invince_time = 0;
+                hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
+                set_player_damage( player, 999 );
+        		set_player_stocks( player, 1 );
+            }
+        }
+        if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && attack != AT_DSPECIAL_2 && state != PS_RESPAWN && state != PS_DEAD){
+            attack_invince = 1;
+            if(state != PS_ATTACK_AIR && state != PS_ATTACK_AIR){
+                set_attack(AT_DSPECIAL_2);
+                speedlinesEnable = true;
+                x = finalWrapTarget.x;
+                y = finalWrapTarget.y;
+                sound_play(sound_get("dsfx_emp_hit"));
+                sound_play(asset_get("sfx_mol_tauntup"));
+                spawn_hit_fx(finalWrapTarget.x, finalWrapTarget.y, 312);
+                hitpause = false;
+                hitstop = -1;
+                hitstop_full = -1;
+            }
+        }
+    } else {
+        reset_attack_value(AT_DSPECIAL_2, AG_NO_PARRY_STUN);
+        reset_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE);
+    }
+    
+    if(endTheGame && othersExist){
+        set_player_stocks( player, 9999 );
+        end_match();
+    }
+    
+    //amber will not die
+    with(oPlayer){
+        if(variable_instance_exists(self, "snapplayer")){
+            if(snapplayer == other){
+                snapplayer = noone;
+            }
+        }
+    }
+}
+
 //Allow Amber to wall jump 2 times
 //=================================
 if (state == PS_WALL_JUMP && prev_state != PS_WALL_JUMP)
@@ -84,7 +327,6 @@ else if (char_height != originCharHeight && attack != AT_DSTRONG && attack != AT
     char_height = originCharHeight;
 }
 
-
 //if (miniBoostMeterTargetAlpha > 0)
   //  miniBoostMeterTargetAlpha -= 0.1;
 
@@ -153,19 +395,20 @@ if (chargeAttackReady == true)
     if (tutSuccessUsedEmpowered == false && tutEmpoweredBubbleAnimTimer < tutEmpoweredBubbleShowLength)
         tutEmpoweredBubbleAnimTimer += tutEmpoweredBubbleAnimSpeed;
     
-    outline_color = chargeAttackReadyOutlineColor;
+    // outline color OLD
+    // outline_color = chargeAttackReadyOutlineColor;
     init_shader();
 }
 if (chargeAttackReadyTimer < 17) //For animation purposes
     chargeAttackReadyTimer++;
 
 
-
-if (outline_color != originOutlineColor && chargeAttackReady == false)
-{
-    outline_color = originOutlineColor;
-    init_shader();
-}
+// outline color OLD
+// if (outline_color != originOutlineColor && chargeAttackReady == false)
+// {
+//     outline_color = originOutlineColor;
+//     init_shader();
+// }
 #endregion
 //Enable wall clinging again if we are not charging or charged
 if (isCharging == false && can_wall_cling == false)
@@ -183,8 +426,7 @@ if (move_cooldown[AT_USPECIAL] > 0 || move_cooldown[AT_USPECIAL_2] > 0)
     //move_cooldown[AT_USPECIAL] = 2;
     //move_cooldown[AT_USPECIAL_2] = 2;
     
-    if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED
-        || state == PS_WALL_JUMP ||  state == PS_WALL_TECH)
+    if (!free || state == PS_WALL_JUMP ||  state == PS_WALL_TECH  || state_cat == SC_HITSTUN) // uspecial restored when you get hit
     {
         move_cooldown[AT_USPECIAL] = 0;
         move_cooldown[AT_USPECIAL_2] = 0;
@@ -685,7 +927,18 @@ if (infiniteMeter == true && totalDamageDealt < totalDamageDealtCap && !(attack 
     totalDamageDealt = totalDamageDealtCap;
 } 
 
-#region//Other character interactions
+// update afterimage array
+if(get_player_color(player) == 15){
+    var newArray = 0;
+    for (var i = 0; i < array_length_1d(afterimage_array); ++i)
+    {
+        var obj = afterimage_array[i];
+        if (++obj.timer <= obj.timerMax) newArray[array_length_1d(newArray)] = obj;
+    }
+    afterimage_array = newArray;
+}
+
+#region Other character interactions
 //===================================================
 //This is for Trummel and Alto codec interaction
 if (trummelcodecneeded)
@@ -965,43 +1218,48 @@ hasSetChargedHurtboxes = false;
 
 #define disableAllAttacks
 //This is used for Amber holding the yarn ball
-move_cooldown[AT_JAB] = 2;
-move_cooldown[AT_DATTACK] = 2;
-move_cooldown[AT_NSPECIAL] = 2;
-move_cooldown[AT_FSPECIAL] = 2;
-move_cooldown[AT_USPECIAL] = 2;
 
-move_cooldown[AT_DSPECIAL] = 2;
+for(var i = 0; i < 50; i++){
+    move_cooldown[i] = 2;
+}
 
-move_cooldown[AT_FSTRONG] = 2;
-move_cooldown[AT_USTRONG] = 2;
-move_cooldown[AT_DSTRONG] = 2;
-move_cooldown[AT_FTILT] = 2;
-move_cooldown[AT_UTILT] = 2;
-move_cooldown[AT_DTILT] = 2;
-move_cooldown[AT_NAIR] = 2;
-move_cooldown[AT_FAIR] = 2;
-move_cooldown[AT_BAIR] = 2;
-move_cooldown[AT_DAIR] = 2;
-move_cooldown[AT_UAIR] = 2;
+// move_cooldown[AT_JAB] = 2;
+// move_cooldown[AT_DATTACK] = 2;
+// move_cooldown[AT_NSPECIAL] = 2;
+// move_cooldown[AT_FSPECIAL] = 2;
+// move_cooldown[AT_USPECIAL] = 2;
 
-move_cooldown[AT_NSPECIAL_2] = 2;
-move_cooldown[AT_NSPECIAL_AIR] = 2;
-move_cooldown[AT_FSPECIAL_2] = 2;
-move_cooldown[AT_FSPECIAL_AIR] = 2;
-move_cooldown[AT_USPECIAL_2] = 2;
-move_cooldown[AT_USPECIAL_GROUND] = 2;
-move_cooldown[AT_DSPECIAL_2] = 2;
-move_cooldown[AT_DSPECIAL_AIR] = 2;
+// move_cooldown[AT_DSPECIAL] = 2;
 
-move_cooldown[AT_FSTRONG_2] = 2;
-move_cooldown[AT_USTRONG_2] = 2;
-move_cooldown[AT_DSTRONG_2] = 2;
+// move_cooldown[AT_FSTRONG] = 2;
+// move_cooldown[AT_USTRONG] = 2;
+// move_cooldown[AT_DSTRONG] = 2;
+// move_cooldown[AT_FTILT] = 2;
+// move_cooldown[AT_UTILT] = 2;
+// move_cooldown[AT_DTILT] = 2;
+// move_cooldown[AT_NAIR] = 2;
+// move_cooldown[AT_FAIR] = 2;
+// move_cooldown[AT_BAIR] = 2;
+// move_cooldown[AT_DAIR] = 2;
+// move_cooldown[AT_UAIR] = 2;
 
-move_cooldown[AT_FTHROW] = 2;
-move_cooldown[AT_UTHROW] = 2;
-move_cooldown[AT_DTHROW] = 2;
-move_cooldown[AT_NTHROW] = 2;
+// move_cooldown[AT_NSPECIAL_2] = 2;
+// move_cooldown[AT_NSPECIAL_AIR] = 2;
+// move_cooldown[AT_FSPECIAL_2] = 2;
+// move_cooldown[AT_FSPECIAL_AIR] = 2;
+// move_cooldown[AT_USPECIAL_2] = 2;
+// move_cooldown[AT_USPECIAL_GROUND] = 2;
+// move_cooldown[AT_DSPECIAL_2] = 2;
+// move_cooldown[AT_DSPECIAL_AIR] = 2;
+
+// move_cooldown[AT_FSTRONG_2] = 2;
+// move_cooldown[AT_USTRONG_2] = 2;
+// move_cooldown[AT_DSTRONG_2] = 2;
+
+// move_cooldown[AT_FTHROW] = 2;
+// move_cooldown[AT_UTHROW] = 2;
+// move_cooldown[AT_DTHROW] = 2;
+// move_cooldown[AT_NTHROW] = 2;
 
 
 /*
@@ -1252,11 +1510,23 @@ else if (speedlinesEnable == false)
 #define initRuneStats
 if (get_gameplay_time() == 1)
 {
-    if (runeC)
-        knockback_adj = 1.31;
+    //ran again because idk if it works
+    if (pacifistModeEnabled){
+        //screwing over every move's hitpause growth
+        for(var i=1; i<= 50; i++){
+            for(var j=1; j<=20; j++){
+                set_hitbox_value(i, j, HG_HITPAUSE_SCALING, 0);
+                set_hitbox_value(i, j, HG_EXTRA_CAMERA_SHAKE, -1);
+            }
+        }
+    }
+    // Old rune, don't use
+    // if (runeC)
+    //     knockback_adj = 1.31;
         
-    if (runeL)
-        infiniteMeter = true;
+    // in update
+    // if (runeL)
+    //     infiniteMeter = true;
 }
 
 #define lethalLeagueInit

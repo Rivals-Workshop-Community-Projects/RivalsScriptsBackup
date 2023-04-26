@@ -667,10 +667,10 @@ if (dir = -1){
 
 			poke_x_2 = midpoint + 6*tile;
 			poke_y_2 = ground_level;
-			poke_speed_2 = 6;
+			poke_speed = 6;
 			poke_sprite_2 = sprite_get("pkmn_beedrill");
-			draw_sprite_ext(poke_sprite_2, get_gameplay_time()/poke_speed_2, poke_x_2, poke_y_2, -2*spr_dir*size, 2*size, 0, c_white, 1);
-			draw_sprite_ext(poke_sprite_2, get_gameplay_time()/poke_speed_2, poke_x_2, poke_y_2, -2*spr_dir*size, 2*size, 0, c_aqua, transparency);
+			draw_sprite_ext(poke_sprite_2, get_gameplay_time()/poke_speed, poke_x_2, poke_y_2, -2*spr_dir*size, 2*size, 0, c_white, 1);
+			draw_sprite_ext(poke_sprite_2, get_gameplay_time()/poke_speed, poke_x_2, poke_y_2, -2*spr_dir*size, 2*size, 0, c_aqua, transparency);
 
 			poke_x_3 = midpoint + 9*tile;
 			poke_y_3 = ground_level;

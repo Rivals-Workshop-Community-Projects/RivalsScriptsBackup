@@ -14,10 +14,6 @@ with (ai_target) if ("char_height" not in self) exit; //prevents annoying error 
 if (get_training_cpu_action() == CPU_FIGHT) cpu_fight_time ++;
 else cpu_fight_time = 0;
 
-target_dist = point_distance(x, y, ai_target.x, ai_target.y);
-target_angle = point_direction(x, y-char_height/2, ai_target.x, ai_target.y-ai_target.char_height/2);
-
-
 //recovery logic
 if (ai_recovering)
 {
@@ -25,8 +21,9 @@ if (ai_recovering)
 }
 
 //fight logic
-if (cpu_fight_time >= 0)
+if (cpu_fight_time > 0)
 {
-    //checks if the CPU facing their target
-    target_face = (x > ai_target.x && spr_dir == -1 || x < ai_target.x && spr_dir == 1);
+    target_face = (x > ai_target.x && spr_dir == -1 || x < ai_target.x && spr_dir == 1); //checks if the CPU facing their target
+    target_dist = point_distance(x, y, ai_target.x, ai_target.y); //distance from target
+    target_angle = point_direction(x, y-char_height/2, ai_target.x, ai_target.y-ai_target.char_height/2); //angle from target
 }

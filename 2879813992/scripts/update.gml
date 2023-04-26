@@ -1,6 +1,7 @@
-if(state_cat == SC_HITSTUN || state == PS_RESPAWN){
+if(state == PS_RESPAWN){
     has_shield = true;
 }
+
 
 if(move_cooldown[AT_DSPECIAL] != 2){
     move_cooldown[AT_DSPECIAL] = 2;
@@ -237,7 +238,11 @@ if(materia_currhp < 0){
     materia_currhp = 0;
 }
 
-if(shield_plat_aerith != 0){
+if(shield_cooldown != 0){
+    shield_cooldown--;
+}
+
+if(instance_exists(shield_plat_aerith)){
         if(!shield_plat_aerith.on_shield){
     if(!free){
    has_shield = true; 
@@ -245,7 +250,9 @@ if(shield_plat_aerith != 0){
         }
 }else{
     if(!free){
-    has_shield = true;     
+        if(shield_cooldown == 0){
+    has_shield = true;   
+        }
     }
 }
 

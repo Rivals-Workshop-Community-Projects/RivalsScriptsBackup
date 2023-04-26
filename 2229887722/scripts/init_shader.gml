@@ -7,3 +7,6 @@ if (get_player_color(player) == 12){
         set_character_color_shading(i, 0);
     }
 }
+
+// set_character_color_shading(3, 1);
+// set_character_color_shading(5, 1);

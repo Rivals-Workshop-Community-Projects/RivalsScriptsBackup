@@ -123,3 +123,9 @@ sprite_change_offset("a2z_amber", 55, 108);
 sprite_change_offset("a2z_astra", 55, 108);
 sprite_change_offset("a2z_zerra", 55, 108);
 
+//abyss
+sprite_change_offset("abyss_projectile", 60, 40);
+sprite_change_offset("abyss_projectile_up", 53, 35);
+sprite_change_offset("abyss_projectile_down", 46, 43);
+sprite_change_offset("shuriken_large_proj", 74, 92);
+

@@ -14,7 +14,40 @@ else if (blinkTimer >= blinkTargetTimer)
 }
 
 switch (state){
+    case PS_SPAWN:
+    {
+        var wakeup_frame = 50;
+        var standup_frame = 115;
+        if(state_timer < wakeup_frame){
+            sprite_index = sprite_get("crouch_blink2");
+            image_index = 9;
+        } else if(state_timer <= standup_frame){
+            if(state_timer < wakeup_frame + 2){
+                sprite_index = sprite_get("crouch_blink1");
+                if(state_timer == wakeup_frame){
+                    // var hfx = spawn_hit_fx(x + 38 * spr_dir, y - 47, 29);
+                    // hfx.depth = depth+1;
+                    sound_play(asset_get("sfx_coin_collect"));
+                }
+            } else {
+                sprite_index = sprite_get("crouch");
+            }
+            image_index = 3 + (((state_timer - (wakeup_frame - 18))/3)%14);
+        } else if(state_timer <= standup_frame + 10){
+            sprite_index = sprite_get("crouch");
+            image_index = 17 + (state_timer - 115)/3
+        } else {
+            sprite_index = sprite_get("idle");
+            image_index = 0;
+        }
+    }
+    break;
     case PS_IDLE:
+        if(prev_state == PS_SPAWN && !spawn_anim_fix){
+            state_timer = 0;
+            image_index = 0;
+            spawn_anim_fix = true;
+        }
         if (blinkTimer >= blinkTargetTimer)
         {
             var prev_imageIndex = image_index;
@@ -147,6 +180,10 @@ if (attack == AT_EXTRA_3)
     }
     
     
+}
+
+if(state != PS_SPAWN && state != PS_IDLE){
+    spawn_anim_fix = false;
 }
 
 if (state != PS_WALL_JUMP && wallJumpAnimCounter > 0)

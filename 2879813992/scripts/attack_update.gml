@@ -146,7 +146,7 @@ if (attack == AT_FSPECIAL){
 	}
 	
 	//deploy starbits
-	if(window == 4){
+	if(window == 4 && !hitpause){
 		if(window_timer > 2){
 			if(fspecial_charge < 7){
 			if(window_timer < 3 + fspecial_charge){
@@ -386,80 +386,166 @@ if (attack == AT_DSPECIAL){
 if(window == 1 && window_timer = 1){
 switch(attack){
 	case AT_JAB:
-    set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 3 + (materia_damage_buff/2));
-    set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 3 + (materia_damage_buff/2));
-    set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 6 + (materia_damage_buff/2));
+	reset_hitbox_value(AT_JAB, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_JAB, 1, HG_DAMAGE);
+    set_hitbox_value(AT_JAB, 1, HG_DAMAGE, dm1 + (materia_damage_buff/2));
+    
+	reset_hitbox_value(AT_JAB, 2, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_JAB, 2, HG_DAMAGE);    
+    set_hitbox_value(AT_JAB, 2, HG_DAMAGE, dm2 + (materia_damage_buff/2));
+    
+	reset_hitbox_value(AT_JAB, 3, HG_DAMAGE);
+	var dm3 = get_hitbox_value(AT_JAB, 3, HG_DAMAGE);     
+    set_hitbox_value(AT_JAB, 3, HG_DAMAGE, dm3 + (materia_damage_buff/2));
 	break;
 	
 	case AT_FTILT:
-	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 4 + materia_damage_buff);
-	set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 6 + (materia_damage_buff/2));
+	reset_hitbox_value(AT_FTILT, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_FTILT, 1, HG_DAMAGE);	
+	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, dm1 + materia_damage_buff);
+	
+	reset_hitbox_value(AT_FTILT, 2, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_FTILT, 2, HG_DAMAGE);		
+	set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, dm2 + (materia_damage_buff/2));
 	break;
 	
 	case AT_UTILT:
-	set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 1 + (materia_damage_buff/2));
-	set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 2 + (materia_damage_buff/2));
-	set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 2 + (materia_damage_buff/2));
-	set_hitbox_value(AT_UTILT, 4, HG_DAMAGE, 2 + (materia_damage_buff/2));
-	set_hitbox_value(AT_UTILT, 5, HG_DAMAGE, 4 + (materia_damage_buff/2));
+	reset_hitbox_value(AT_UTILT, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_UTILT, 1, HG_DAMAGE);		
+	set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, dm1 + (materia_damage_buff/2));
+	
+	reset_hitbox_value(AT_UTILT, 2, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_UTILT, 2, HG_DAMAGE);		
+	set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, dm2 + (materia_damage_buff/2));
+	
+	reset_hitbox_value(AT_UTILT, 3, HG_DAMAGE);
+	var dm3 = get_hitbox_value(AT_UTILT, 3, HG_DAMAGE);		
+	set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, dm3 + (materia_damage_buff/2));
+	
+	reset_hitbox_value(AT_UTILT, 4, HG_DAMAGE);
+	var dm4 = get_hitbox_value(AT_UTILT, 4, HG_DAMAGE);		
+	set_hitbox_value(AT_UTILT, 4, HG_DAMAGE, dm4 + (materia_damage_buff/2));
+	
+	reset_hitbox_value(AT_UTILT, 5, HG_DAMAGE);
+	var dm5 = get_hitbox_value(AT_UTILT, 5, HG_DAMAGE);		
+	set_hitbox_value(AT_UTILT, 5, HG_DAMAGE, dm5 + (materia_damage_buff/2));
 	break;
 	
 	case AT_DTILT:
-	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 8 + materia_damage_buff);
-	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 6 + materia_damage_buff);
+	reset_hitbox_value(AT_DTILT, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_DTILT, 1, HG_DAMAGE);		
+	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, dm1 + materia_damage_buff);
+
+	reset_hitbox_value(AT_DTILT, 2, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_DTILT, 2, HG_DAMAGE);		
+	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, dm2 + materia_damage_buff);
 	break;
 	
 	case AT_DATTACK:
-	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 6 + materia_damage_buff);
+	reset_hitbox_value(AT_DATTACK, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_DATTACK, 1, HG_DAMAGE);		
+	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, dm1 + materia_damage_buff);
 	break;
 	
 	case AT_FSTRONG:
-	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 2 + (materia_damage_buff/2));
-	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 2 + (materia_damage_buff/2));
-	set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 8 + (materia_damage_buff/2));
+	reset_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE);	
+	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, dm1 + (materia_damage_buff/2));
+
+	reset_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE);	
+	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, dm2 + (materia_damage_buff/2));
+	
+	reset_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE);
+	var dm3 = get_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE);	
+	set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, dm3 + (materia_damage_buff/2));
 	break;	
 	
 	case AT_USTRONG:
-	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 2 + (materia_damage_buff/2));
-	set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 2 + (materia_damage_buff/2));
-	set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 8 + (materia_damage_buff/2));
+	reset_hitbox_value(AT_USTRONG, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_USTRONG, 1, HG_DAMAGE);	
+	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, dm1 + (materia_damage_buff/2));
+
+	reset_hitbox_value(AT_USTRONG, 2, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_USTRONG, 2, HG_DAMAGE);	
+	set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, dm2 + (materia_damage_buff/2));
+	
+	reset_hitbox_value(AT_USTRONG, 3, HG_DAMAGE);
+	var dm3 = get_hitbox_value(AT_USTRONG, 3, HG_DAMAGE);	
+	set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, dm3 + (materia_damage_buff/2));
 	break;
 	
 	case AT_DSTRONG:
-	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 14 + materia_damage_buff);
+	reset_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE);	
+	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, dm1 + materia_damage_buff);
 	break;
 	
 	case AT_NAIR:
-	set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 7 + materia_damage_buff);
-	set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 7 + materia_damage_buff);
-	set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, 7 + materia_damage_buff);
-	set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, 7 + materia_damage_buff);
+	reset_hitbox_value(AT_NAIR, 1, HG_DAMAGE);
+	reset_hitbox_value(AT_NAIR, 2, HG_DAMAGE);
+	reset_hitbox_value(AT_NAIR, 3, HG_DAMAGE);
+	reset_hitbox_value(AT_NAIR, 4, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_NAIR, 1, HG_DAMAGE);
+	
+	set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, dm1 + materia_damage_buff);
+	set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, dm1 + materia_damage_buff);
+	set_hitbox_value(AT_NAIR, 3, HG_DAMAGE, dm1 + materia_damage_buff);
+	set_hitbox_value(AT_NAIR, 4, HG_DAMAGE, dm1 + materia_damage_buff);
 	break;
 	
 	case AT_FAIR:
-	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 8 + materia_damage_buff);
-	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 10 + materia_damage_buff);
-	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 6 + materia_damage_buff);
+	reset_hitbox_value(AT_FAIR, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_FAIR, 1, HG_DAMAGE);
+	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, dm1 + materia_damage_buff);
+
+	reset_hitbox_value(AT_FAIR, 2, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_FAIR, 2, HG_DAMAGE);	
+	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, dm2 + materia_damage_buff);
+	
+	reset_hitbox_value(AT_FAIR, 3, HG_DAMAGE);
+	var dm3 = get_hitbox_value(AT_FAIR, 3, HG_DAMAGE);		
+	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, dm3 + materia_damage_buff);
 	break;
 	
 	case AT_UAIR:
-	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 7 + materia_damage_buff);
+	reset_hitbox_value(AT_UAIR, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_UAIR, 1, HG_DAMAGE);	
+	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, dm1 + materia_damage_buff);
 	break;
 	
 	case AT_DAIR:
-	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 11 + materia_damage_buff);
+	reset_hitbox_value(AT_DAIR, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_DAIR, 1, HG_DAMAGE);
+	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, dm1 + materia_damage_buff);
 	break;
 	
 	case AT_BAIR:
-	set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 6 + materia_damage_buff);
-	set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 10 + materia_damage_buff);
+	reset_hitbox_value(AT_BAIR, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_BAIR, 1, HG_DAMAGE);
+	set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, dm1 + materia_damage_buff);
+	
+	reset_hitbox_value(AT_BAIR, 2, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_BAIR, 2, HG_DAMAGE);	
+	set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, dm2 + materia_damage_buff);
 	break;
 	
 	case AT_FSPECIAL:
-	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 2 + (materia_damage_buff/2));
-	set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 1 + (materia_damage_buff/4)); 
-	set_hitbox_value(AT_FSPECIAL, 4, HG_DAMAGE, 1 + (materia_damage_buff/4)); 
-	set_hitbox_value(AT_FSPECIAL, 5, HG_DAMAGE, 2 + (materia_damage_buff/2)); 
+	reset_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE);
+	var dm1 = get_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE);	
+	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, dm1 + (materia_damage_buff/2));
+	
+	reset_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE);
+	var dm2 = get_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE);		
+	set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, dm2 + (materia_damage_buff/4)); 
+	
+	reset_hitbox_value(AT_FSPECIAL, 4, HG_DAMAGE);
+	var dm3 = get_hitbox_value(AT_FSPECIAL, 4, HG_DAMAGE);	
+	set_hitbox_value(AT_FSPECIAL, 4, HG_DAMAGE, dm3 + (materia_damage_buff/4)); 
+	
+	reset_hitbox_value(AT_FSPECIAL, 5, HG_DAMAGE);
+	var dm4 = get_hitbox_value(AT_FSPECIAL, 5, HG_DAMAGE);	
+	set_hitbox_value(AT_FSPECIAL, 5, HG_DAMAGE, dm4 + (materia_damage_buff/2)); 
 	break;
 	}
 }

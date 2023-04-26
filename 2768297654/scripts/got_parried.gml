@@ -47,6 +47,7 @@ if (my_hitboxID.attack == AT_FTHROW || my_hitboxID.attack == AT_DTHROW || my_hit
 }
 
 if(my_hitboxID.attack == AT_DSPECIAL){
+	move_cooldown[AT_DSPECIAL] += 240;
 bomb_missfire = true;
 smokebomb.state = 2;
 smokebomb.state_timer = 0;

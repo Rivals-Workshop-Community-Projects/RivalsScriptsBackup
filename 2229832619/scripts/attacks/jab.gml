@@ -45,7 +45,7 @@ set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_JAB, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 0.85);//1
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("claw"));
 
 //axe
@@ -67,7 +67,7 @@ set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_JAB, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_JAB, 2, HG_HITSTUN_MULTIPLIER, 0.85);//1
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sound_get("hit4"));
 
 

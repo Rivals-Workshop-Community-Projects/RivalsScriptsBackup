@@ -26,3 +26,5 @@ if(attack == AT_DSPECIAL){
         //}
     }
 }
+
+draw_xscale = spr_dir;

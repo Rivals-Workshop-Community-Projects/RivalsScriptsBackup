@@ -31,7 +31,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 
-window_num ++; //whifflag
+window_num ++; //endlag (it has no whifflag because it's a special)
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);

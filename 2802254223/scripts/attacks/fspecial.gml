@@ -6,8 +6,8 @@ set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 18);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 15);
@@ -23,6 +23,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 11);
 
 set_num_hitboxes(AT_FSPECIAL, 0);
 
+//Club
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 100);
@@ -46,6 +47,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, club_explosion);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
 
+//Spade
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 200);
@@ -66,6 +68,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 30);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_orca_bite"));
 
+//Spade multi-hit
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 1);
@@ -86,6 +89,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, .75);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
+//Small Diamond
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 2);
@@ -112,8 +116,9 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_HITPAUSE_SCALING, .3);
 //set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_icehit_weak2"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, true);
-//set_hitbox_value(AT_FSPECIAL, 4, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_FSPECIAL, 4, HG_EXTENDED_PARRY_STUN, true);
 
+//Big Diamond
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 2);
@@ -140,8 +145,9 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_HITPAUSE_SCALING, .3);
 //set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, true);
-//set_hitbox_value(AT_FSPECIAL, 5, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_FSPECIAL, 5, HG_EXTENDED_PARRY_STUN, true);
 
+//Heart
 set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 6, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 6, HG_LIFETIME, 80);

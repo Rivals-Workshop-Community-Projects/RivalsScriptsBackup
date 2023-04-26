@@ -28,7 +28,7 @@ switch(state)
             //gravity
             if (free) {
             	if (gravitytimer < 20)
-                	vsp += 0.9;
+                	vsp += 0.5;
                 else
                 	vsp += 0.35;
             }

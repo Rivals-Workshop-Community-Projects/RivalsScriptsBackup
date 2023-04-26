@@ -97,11 +97,11 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[7,0] = make_color_rgb(167, 186, 74)
 	ce[7,1] = "Turris" //tower
 	ce[8,0] = make_color_rgb(255, 246, 245)
-	ce[8,1] = "CRIMSON WINGS" //02
+	ce[8,1] = "Angel" //02
 	ce[9,0] = make_color_rgb(0, 89, 84)
-	ce[9,1] = "CORONATION" //magolor
+	ce[9,1] = "Crown" //magolor
 	ce[10,0] = make_color_rgb(79, 6, 2)
-	ce[10,1] = "ASTRAL BIRTH" //void
+	ce[10,1] = "Astral Birth" //void
 	ce[11,0] = make_color_rgb(0, 222, 130)
 	ce[11,1] = "doomsday"
 	ce[12,0] = make_color_rgb(79, 61, 94)

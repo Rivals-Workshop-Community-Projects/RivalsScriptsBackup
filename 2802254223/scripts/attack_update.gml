@@ -8,7 +8,7 @@ if (attack == AT_NSPECIAL)
     if(move_cooldown[AT_DSPECIAL] < 10) move_cooldown[AT_DSPECIAL] = 5;
     if(move_cooldown[AT_FSPECIAL] < 10) move_cooldown[AT_FSPECIAL] = 5;
     move_cooldown[AT_NSPECIAL] = 60;
-    if(window == 2 && window_timer == 1)
+    if(window == 2 && window_timer == 2)
     {
         instance_create(x+48*spr_dir, y-52, "obj_article2");
         
@@ -173,7 +173,10 @@ if (attack == AT_JAB){
 if(hit_player_obj != -4)
 {
     if (hit_player_obj.activated_kill_effect = 1 && hit_player_obj.state_timer = 0){
-        sound_play(sound_get("DS_acecrit"));
+        if (get_player_color(player) == 29)
+            sound_play(sound_get("DS_metalpipe"));
+        else
+            sound_play(sound_get("DS_acecrit"));
         hit_player_obj.state_timer = 1;
     }
 }
@@ -200,6 +203,11 @@ if (attack == AT_TAUNT_2){
     if (window = 3){
     	suppress_stage_music(1, 0.1);
     }
+}
+if (attack == AT_EXTRA_1 && window > 2 && !taunt_down){
+    window = 6;
+    window_timer = 10;
+    sound_stop(sound_get("DS_Acumalaka"));
 }
 
 #define spawn_base_dust

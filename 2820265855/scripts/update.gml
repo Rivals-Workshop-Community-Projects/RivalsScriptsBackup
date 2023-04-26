@@ -156,3 +156,87 @@ for (var i = 0; i < array_length_1d(afterimage_array); ++i)
     if (++obj.timer <= obj.timerMax) newArray[array_length_1d(newArray)] = obj;
 }
 afterimage_array = newArray;
+
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Blaze"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "I've come so far to get here, so I will not falter!",
+    "I wish Dorian could help me here, but he can't travel through dimensions like I can. I'll have to make quick work of you myself!",
+    "Seems like battles here aren't done in turns..."
+    "Let's dance!"
+    "Where's my HP bar?"
+    "What, never seen some dude just jump out of a portal before? Wow, you need to get out more."
+    "You're in my way! Do you have a death wish or something?"
+    "An enemy draws near!"
+    "Drip"]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == "2964956057" && diag != "2964956057") //Change the url into a specific character's
+    {
+        diag = "Maybe I'll pick a flower for Iris today. I feel she'll like thi- OH CRAP!";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+
+        if(otherUrl == "2904498757" && diag != "2904498757") //Change the url into a specific character's
+    {
+        diag = "Please let me try your pizza! I'll fight you for it, if I have to!";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    
+        if(otherUrl == "2786885695" && diag != "2786885695") //Change the url into a specific character's
+    {
+        diag = "Why can't I blink?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+
+        if(otherUrl == "2962798543" && diag != "2962798543") //Change the url into a specific character's
+    {
+        diag = "What a strange Dragon...";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    
+        if(otherUrl == "2820265855" && diag != "2820265855") //Change the url into a specific character's
+    {
+        diag = "It's... ME?!.";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+
+    
+//  NRS/3-Part dialogue
+    if(otherUrl == 2932444130) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "Emmanuel, for the last time, I am NOT a demon.",
+                "Silence. The aura you emanate is unmistakable. I won't be fooled.",
+                "Guess I'll have to knock some sense into that fake skull of yours!"]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+}

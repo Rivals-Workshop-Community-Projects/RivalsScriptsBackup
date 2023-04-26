@@ -20,6 +20,19 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3) {
     }
 }
 
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 6) {
+    set_player_damage( player, clamp(get_player_damage(player)-7,0,999));
+}
+
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 5) {
     set_player_damage( my_hitboxID.hbox_owner, clamp(get_player_damage(my_hitboxID.hbox_owner)-7,0,999));
+}
+if (get_player_color(player) == 29 && my_hitboxID.attack != AT_NSPECIAL && my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT_DSPECIAL){
+    
+    if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX) == 643 || get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX) == 644)
+        sound_play(sound_get("DS_crowbar_weak"), false, noone, 0.5, randomizeSFX);
+    if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX) == 647 || get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX) == 648 || get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX) == 649)
+        sound_play(sound_get("DS_crowbar_med"), false, noone, 0.5, randomizeSFX);
+    if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX) == 654 || get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX) == 655)
+        sound_play(sound_get("DS_crowbar_strong"), false, noone, 0.5, randomizeSFX);
 }

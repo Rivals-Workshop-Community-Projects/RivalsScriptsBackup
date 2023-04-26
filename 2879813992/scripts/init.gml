@@ -201,3 +201,4 @@ turn_off_timer = 0;
 ftilt_cooldown = 0;
 
 shield_plat_aerith = 0;
+shield_cooldown = 0;

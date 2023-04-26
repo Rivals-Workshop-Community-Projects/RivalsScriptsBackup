@@ -9,10 +9,96 @@ if (get_player_damage( hit_player_obj.player ) == 0)
 }
 */
 
+// RUNE PROJECTILES USE EFFECT 99
+if(my_hitboxID.effect == 99 && my_hitboxID.type == 2 && my_hitboxID.attack == attack){
+    has_hit = true;
+    has_hit_player = true;
+}
+
+if(runeJ){
+   take_damage(hit_player_obj.player, player, ceil(my_hitboxID.damage * 0.5)); 
+}
+
+if((my_hitboxID.attack == AT_FTILT || my_hitboxID.attack == AT_FAIR) && runeM){ // abyss projectile rune
+    if(my_hitboxID.type == 1){
+        runeMakeProj = false;
+    }
+}
+
+if(runeN){
+    runeTeleportTarget = hit_player_obj;
+}
+
+if(runeN && my_hitboxID.attack == AT_NTHROW && my_hitboxID.hbox_num == 2 && empoweredCooldownTimer <= 0){
+    totalDamageDealtPrevious = totalDamageDealt;
+    sound_play(asset_get( "sfx_ori_bash_hit" ));
+    chargeAttackReady = true;
+    chargeAttackReadyTimer = 0;
+    
+    //FTHROW (aka Feral Blitz)
+    set_hitbox_value(AT_FTHROW, 7, HG_DAMAGE, 5 + (totalDamageDealt * 0.4));
+    set_hitbox_value(AT_FTHROW, 7, HG_KNOCKBACK_SCALING, 0.6 + (totalDamageDealt * 0.0035));
+    
+    //FSPECIAL is defined in #setShurikatParams
+    
+    
+    
+    if (totalDamageDealtPrevious >= totalDamageDealtCap)
+    {
+        //USPECIAL_2
+        set_hitbox_value(AT_USPECIAL_2, 6, HG_DAMAGE, 12);
+        set_hitbox_value(AT_USPECIAL_2, 7, HG_DAMAGE, 12);
+        set_hitbox_value(AT_USPECIAL_2, 7, HG_KNOCKBACK_SCALING, 0.9);
+        
+        //DSPECIAL_2 (Finishing Yarn)
+        set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 9);//12
+        //These hitbox values are also modified in hit_player.gml if Amber hits the enemy
+        //while charged yarn dashing
+        set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 2);//1.75
+    }
+    else
+    {
+        //USPECIAL_2
+        set_hitbox_value(AT_USPECIAL_2, 6, HG_DAMAGE, 7);
+        set_hitbox_value(AT_USPECIAL_2, 7, HG_DAMAGE, 7);
+        set_hitbox_value(AT_USPECIAL_2, 7, HG_KNOCKBACK_SCALING, 0.7);
+        
+        //DSPECIAL_2 (Finishing Yarn)
+        //These hitbox values are also modified in hit_player.gml if Amber hits the enemy
+        //while charged yarn dashing
+        set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 8);//12
+        set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 1.2); //1
+    }
+    
+}
+
+//Pacifist Mode
 if (pacifistModeEnabled)
 {
-    print_debug(string(hit_player_obj.last_player_hit_me));
+    hit_player_obj.knockback_scaling = 1;
+    // print_debug(string(hit_player_obj.last_player_hit_me));
     hit_player_obj.last_player_hit_me = 0;
+    hit_player_obj.should_make_shockwave = false;
+    var max_damage = 40;
+    var default_knockback_adj = 1;
+    var hitstun_factor = my_hitboxID.hitstun_factor;
+    if(hitstun_factor == 0){
+        hitstun_factor = 1;
+    }
+    if(hitstun_factor == -1){
+        hitstun_factor = 0;
+    }
+    var max_knockback = my_hitboxID.kb_value + max_damage * my_hitboxID.kb_scale * 0.12 * default_knockback_adj;
+    var max_hitstun = (my_hitboxID.kb_value * 4 * ((default_knockback_adj - 1) * 0.6 + 1)
+    + max_damage * 0.12 * my_hitboxID.kb_scale * 4 * 0.65 * default_knockback_adj) * hitstun_factor;
+    
+    if(hit_player_obj.orig_knock > max_knockback){
+        hit_player_obj.orig_knock = max_knockback;
+        hit_player_obj.hitstun = max_hitstun;
+        hit_player_obj.hitstun_full = max_hitstun;
+    }
+    
+    take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * 1.5));
 }
 
 if (instance_exists(yarnTieArticle))
@@ -86,8 +172,11 @@ if (my_hitboxID.attack == AT_USTRONG)
             hit_player_obj.y = y + 30;
         }
     }
-    
-    if (my_hitboxID.hbox_num == 4)
+    if(my_hitboxID.hbox_num == 3 && runeM) // abyss projectile rune
+    {
+        hit_player_obj.should_make_shockwave = false;
+    }
+    if (my_hitboxID.hbox_num == 4 || (my_hitboxID.hbox_num == 7 && runeM)) // abyss projectile rune
     {
         sound_play( asset_get("sfx_blow_medium2") );
         sound_play( asset_get("sfx_blow_heavy1") );
@@ -107,6 +196,10 @@ if (my_hitboxID.attack == AT_USTRONG)
             spawnFullChargeHitFX();
             //sound_play(asset_get("sfx_abyss_explosion"));
         }
+    }
+    if (my_hitboxID.hbox_num == 5 || my_hitboxID.hbox_num == 6) && runeM // abyss projectile rune
+    {
+        my_hitboxID.proj_grab_id = hit_player_obj;
     }
 }
 
@@ -333,11 +426,12 @@ if (my_hitboxID.attack == AT_FAIR)
             }
         }
     }
-    else if (my_hitboxID.hbox_num == 6) //Let the player know they landed a stronger fair hitbox with an extra sfx (works on grounded enemies)
-    {
-        sound_play( asset_get("sfx_blow_medium2") );
-        sound_play( asset_get("sfx_blow_heavy1") );
-    }
+    //removed cause old code interupted projectiles
+    // else if (my_hitboxID.hbox_num == 6) //Let the player know they landed a stronger fair hitbox with an extra sfx (works on grounded enemies)
+    // {
+    //     sound_play( asset_get("sfx_blow_medium2") );
+    //     sound_play( asset_get("sfx_blow_heavy1") );
+    // }
     
 }
 
@@ -784,7 +878,41 @@ if (my_hitboxID.attack == AT_FSTRONG)
         window_timer = 0;
         
     }
-    
+    else if (my_hitboxID.hbox_num == 9)
+    {
+        spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 111);
+        if(hit_player_obj.super_armor == false && hit_player_obj.soft_armor < my_hitboxID.kb_value){
+            hit_player_obj.x = my_hitboxID.x;
+            hit_player_obj.y = my_hitboxID.y + 20; 
+        }
+    }
+    else if (my_hitboxID.hbox_num == 10) && runeM // abyss projectile rune
+    {
+        if (strong_charge == 60 && hit_player_obj.state_cat == SC_HITSTUN )
+        {
+            sound_play( asset_get("sfx_blow_medium2") );
+            sound_play( asset_get("sfx_blow_heavy1") );
+            //sound_play(asset_get("sfx_ori_energyhit_heavy"));
+            sound_play(asset_get("sfx_burnconsume"),  false, false, 1, 1 );
+            //sound_play(asset_get("sfx_abyss_explosion"), false, false, 1, 1);
+            sound_play( asset_get("sfx_ell_dspecial_explosion_3") );
+            //sound_play( sound_get("dsfx_med_star"), false, false, 1.5, 1 );
+            sound_play( sound_get("dsfx_emp_hit"), false, false, 1.5, 1 );
+            //sound_play( sound_get("dsfx_heavy"), false, false, 1, 1 );
+            //sound_play(asset_get("sfx_ori_energyhit_medium"),  false, false, 1, 1.1 );
+            //sound_play(asset_get("sfx_abyss_explosion_start"));
+            sound_play(asset_get("sfx_ori_taunt2"), false, false, 1.5, 0.9);
+            
+            spawnFullChargeHitFX();
+            //spawn_hit_fx( hit_player_obj.x + 32, hit_player_obj.y - 10, 127 );
+            //hitpause = true;
+            //hitstop += 45;
+            //hit_player_obj.hitstop += 45;
+            //forceExtendedHitPause = true;
+            //sound_play(asset_get("sfx_clairen_fspecial_slash"));
+            //sound_play(asset_get("sfx_ori_energyhit_medium"));
+        }
+    }
 }
 
 if (my_hitboxID.attack == AT_FTHROW)
@@ -903,6 +1031,7 @@ if (my_hitboxID.attack == AT_DSPECIAL)
                 old_vsp = 0;
                 y = hit_player_obj.y;
                 
+                set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 361);
                 set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 6);
                 //Change hitbox values
                 if (totalDamageDealtPrevious == totalDamageDealtCap)
@@ -911,7 +1040,7 @@ if (my_hitboxID.attack == AT_DSPECIAL)
                     totalDamageDealt = 0;
                 }
                 else
-                    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 0.6); 
+                    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 0.5);//.6
                 //set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 361);
                 //set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial2_hurt"));
                 hurtboxID.sprite_index = sprite_get("dspecial2_hurt"); //WOW THIS HURTBOXID WAS NOT DOCUMENTED!!!!
@@ -1163,6 +1292,9 @@ if (get_player_stocks(hit_player_obj.player) == 1)
     //hit_player_obj.vsp = -100;
     hit_player_obj.wrap_time = 999999;
     hit_player_obj.state = PS_WRAPPED;
+    hit_player_obj.final_wrapped = true;
+    hit_player_obj.wrap_sprite = asset_get("empyt_sprite");
+    set_player_damage( hit_player_obj.player, 999 );
     
     //hit_player_obj.enemyYarnFinished = true;
     /*
@@ -1174,11 +1306,11 @@ if (get_player_stocks(hit_player_obj.player) == 1)
     enemyTempSprDir = hit_player_obj
     */
     
-    var neutralizedEnemy = instance_create( hit_player_obj.x, hit_player_obj.y, "obj_article1" );
-    neutralizedEnemy.articleType = 0;
-    neutralizedEnemy.spr_dir = hit_player_obj.spr_dir;
-    neutralizedEnemy.sprite_index = hit_player_obj.sprite_index;
-    neutralizedEnemy.image_index = hit_player_obj.image_index;
+    // var neutralizedEnemy = instance_create( hit_player_obj.x, hit_player_obj.y, "obj_article1" );
+    // neutralizedEnemy.articleType = 0;
+    // neutralizedEnemy.spr_dir = hit_player_obj.spr_dir;
+    // neutralizedEnemy.sprite_index = hit_player_obj.sprite_index;
+    // neutralizedEnemy.image_index = hit_player_obj.image_index;
     
     var yarnTie = instance_create(hit_player_obj.x, hit_player_obj.y - (char_height * 0.5), "obj_article1");
     yarnTie.articleType = 1;
@@ -1193,7 +1325,7 @@ if (get_player_stocks(hit_player_obj.player) == 1)
     sound_play(asset_get("sfx_abyss_explosion"));
     sound_play(asset_get("sfx_burnconsume"));
     
-    end_match();
+    // end_match();
     
     //Finish off the enemy with a deathbox but quickly replace their position
     //with a drawn sprite before KOing them

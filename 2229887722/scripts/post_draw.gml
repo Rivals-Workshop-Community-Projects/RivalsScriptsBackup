@@ -1,11 +1,20 @@
 //===============================================
 //VFX Drawing
 //===============================================
+
+
 #region
 //Draw the charge effect if charging state
 if (isCharging == true && currentChargeTime < chargeTimeLength)
     draw_sprite_ext( charge_sprite, currentChargeTime - 1, x-76,y-86, 2, 2, 0, c_white, 1);
 
+if(state == PS_SPAWN){
+    if(state_timer < 50){
+        draw_sprite_ext(sprite_get("ZZZ"), state_timer/7, x - 40 * spr_dir, y - 88, 2, 2, image_angle, image_blend, image_alpha );
+    } else if(state_timer <= 80){
+        draw_sprite(sprite_get("wake"), 0, x + 16 * spr_dir, y - 65 );
+    }
+}
 
 //Draw charged status VFX if in charged state
 //if (drawChargeVfx == true)
@@ -27,6 +36,18 @@ if (chargeAttackReadyTimer < 17)
             chargeAttackReadyVfxAlpha = 1;
         draw_sprite_ext( sprite_get("chargeready_vfx"), chargeAttackReadyTimer - 1, x-66,y-86, 2, 2, 0, c_white, chargeAttackReadyVfxAlpha);
     }
+}
+
+//Indicator for if especials can be used
+var dark_indicator = make_color_rgb(
+color_get_red	(get_player_hud_color(player)) * 0.25,
+color_get_green	(get_player_hud_color(player)) * 0.25,
+color_get_blue	(get_player_hud_color(player)) * 0.25
+);
+var indicator = (totalDamageDealt < 10)
+if(draw_indicator){
+    var col = (indicator && !(indicator - 1 < 25 && (indicator - 1) % 10 >= 5)) ? dark_indicator : get_player_hud_color(player);
+	draw_sprite_ext(sprite_get("indicator"), 0, x - 7, y - char_height - hud_offset - 28, 1, 1, 0, col, 1);
 }
 
 /*
@@ -85,19 +106,39 @@ switch (attack)
         shader_start();
         
         //Draw aiming arrow
-        if (window == 4 || window == 5)
+        if (window == 4 || window == 5){
             draw_sprite_ext( aimingArrowSprite, yarnBallAimingPower - 1, x, y - 32, 1, 1, yarnBallThrowAngle, c_white, 1);
+        }
             
         if (window == 11 && state != PS_PRATFALL)
         {
-            if (spr_dir == 1)
+            if (spr_dir == 1){
                 draw_sprite_ext( yarnDashSprite, 0, x - (6 * spr_dir), y - 20, spr_dir, 1, yarnDashAngleDirection, c_white, 1);
-            else if (spr_dir == -1)
+            } else if (spr_dir == -1){
                 draw_sprite_ext( yarnDashSprite, 0, x - (6 * spr_dir), y - 20, spr_dir, 1, yarnDashAngleDirection - 180, c_white, 1);
+            }
         }
         
         shader_end();
     break;
+    
+    //RUNE B jump sprite draw
+    case AT_EXTRA_1:
+        if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+            //Affected by pallet change
+            shader_start();
+            
+            if (window == 2 && state != PS_PRATFALL)
+            {
+                if (spr_dir == 1)
+                    draw_sprite_ext( yarnDashSprite, 0, x - (6 * spr_dir), y - 20, spr_dir, 1, 0, c_white, 1);
+                else if (spr_dir == -1)
+                    draw_sprite_ext( yarnDashSprite, 0, x - (6 * spr_dir), y - 20, spr_dir, 1, 0, c_white, 1);
+            }
+        }
+        shader_end();
+    break;
+    
     
     case AT_TAUNT:
         switch (tauntType)
@@ -123,7 +164,7 @@ switch (attack)
             case 10: //Tutorial Bubble Menu
                 if (tutCurrentMenuCategory == 1 && state == PS_ATTACK_GROUND)
                 {
-                    #region //Draw the Tutorial Bubble Menu
+                    #region Draw the Tutorial Bubble Menu
                     t_bubbleX = ( x + (254));
                     t_bubbleY = y - 240;
                     
@@ -284,11 +325,11 @@ shader_start();
 //Show cooldown above Amber
 if (hasYarnBall == true && move_cooldown[AT_DSPECIAL] > 2 && state != PS_SPAWN)
 {
-    draw_sprite_ext( sprite_get("yarnball_cooldown_icon"), 0, x - 16, y - char_height - 94, 2, 2, 0, c_white, 1);
+    draw_sprite_ext( sprite_get("yarnball_cooldown_icon"), 0, x - 16, y - char_height - 94 + (!draw_indicator * 40), 2, 2, 0, c_white, 1);
 }
 else if (yarnDashCooldownTimer > 0)
 {
-    draw_sprite_ext( sprite_get("yarndash_icon"), 0, x - 16, y - char_height - 80, 2, 2, 0, c_gray, 1);
+    draw_sprite_ext( sprite_get("yarndash_icon"), 0, x - 16, y - char_height - 80 + (!draw_indicator * 40), 2, 2, 0, c_gray, 1);
 }
 
 /*
@@ -305,7 +346,7 @@ if (empoweredCooldownTimer > 0)
 }
 #endregion
 
-#region //Amber holding yarnball
+#region Amber holding yarnball
 if (isHoldingYarnBall)
 {
     switch (state)

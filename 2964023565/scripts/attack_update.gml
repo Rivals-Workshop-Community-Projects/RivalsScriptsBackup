@@ -284,7 +284,7 @@ switch(attack){
 			break;
 			case 3:
 				if (puddle_jump == true){ can_jump = true; }
-				if shield_pressed{
+				if shield_pressed || down_hard_pressed{
 					destroy_hitboxes();
 					window = 5;
 					window_timer = 0;
@@ -299,7 +299,7 @@ switch(attack){
 			break;
 			case 4:
 				if (puddle_jump == true){ can_jump = true; }
-				if shield_pressed{
+				if shield_pressed || down_hard_pressed{
 					destroy_hitboxes();
 					window = 5;
 					window_timer = 0;

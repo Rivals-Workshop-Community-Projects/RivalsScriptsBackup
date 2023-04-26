@@ -1,3 +1,18 @@
+if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) and attack == AT_DSPECIAL {
+    
+    if window == 2 and window_timer mod 4 == 0 and !hitpause {
+        create_hitbox(AT_DSPECIAL,1,x,y);
+    }
+    
+    if ollie_bar_current_level > 1 {
+        set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+        set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -56);
+        set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 130);
+        set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 120);
+    }
+}
+
+
 //This shows a "laggy" meter -- variable controls how long it takes for the meter to update to its true value.
 ollie_bar_shown_amount = lerp(ollie_bar_shown_amount, ollie_bar_amount, 0.08);
 ollie_bar_buffer = max(ollie_bar_buffer-1,0)

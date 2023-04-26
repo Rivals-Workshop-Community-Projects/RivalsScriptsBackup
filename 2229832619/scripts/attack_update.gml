@@ -444,7 +444,8 @@ if (attack == AT_USPECIAL){
 		}
 	}
 	if (window==3){
-		usp_distance = ease_linear(10, 55, window_timer, get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH));
+		usp_distance = ease_linear(18, 55, window_timer, get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH));
+		//old: 10-55
 		if (!special_down){
 			if (window_timer>5){
 				window = 4;
@@ -452,7 +453,7 @@ if (attack == AT_USPECIAL){
 				sound_play(sound_get("shine"), false, noone, 1, 0.7);
 			}
 		}
-		if (window_timer == 32){
+		if (window_timer == get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH)){ //when the window end proper
 			sound_play(sound_get("shine"), false, noone, 1, 0.8);
 		}
 	}
@@ -641,7 +642,7 @@ if (attack == AT_USPECIAL){
 			usp_vsp_storage = vsp;
 		}
 	}
-	if (window==6||window==7){
+	if (window==6||(window==7&&window_timer<10)){
 		usp_hsp_storage=usp_hsp_storage/1.12;
 		usp_vsp_storage=usp_vsp_storage/1.12;
 		hsp=usp_hsp_storage;
@@ -841,7 +842,8 @@ if (attack==AT_TAUNT&&window==5){
 		}else if (get_player_color(player)==7){//towerofheaven
 			sound_play(sound_get( "scream_ea2"), false, noone, 1.1, 1 );
 		}else if (get_player_color(player)==9){//crown
-			sound_play(sound_get( "scream4" ));
+			sound_play(sound_get( "scream8" ));//4
+			sound_play(sound_get( "scream8" ));
 		}else if (get_player_color(player)==10){//astral
 			sound_play(sound_get( "scream5" ));
 		//}else if (get_player_color(player)==11){//doomsday
@@ -859,3 +861,35 @@ if (attack==AT_TAUNT&&window==5){
 	}
 	
 }
+if ( (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR) ){
+	if (attack==AT_TAUNT){
+		init_shader()
+		if (window>4 && window<10){
+			eyechecker = true;
+		}else{ eyechecker = false; }
+	}else if (attack==AT_DSPECIAL){
+		init_shader()
+		if ( (window>0 && window<4) || (window>8 && window<14)){
+			eyechecker = true;
+		}else{ eyechecker = false; }
+	}else{
+		eyechecker = false;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

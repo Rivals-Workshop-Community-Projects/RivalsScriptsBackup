@@ -580,3 +580,8 @@ if should_vis && !visible && state != PS_RESPAWN{
 	visible = 1;
 	should_vis = 0;
 }
+
+//beep end======================================================================
+if ((state != PS_ATTACK_GROUND && attack != AT_TAUNT) || aware == 2) && instance_exists(beep){
+	sound_stop(beep);
+}

@@ -632,6 +632,7 @@ if (bikeExplosion == true)
 //Reset Wall jumps and certain cooldowns
 if (!free)
 {
+	wall_ride = false;
 	if (state !=PS_ATTACK_GROUND)
 	{
 		walljump_number = 0;
@@ -656,6 +657,7 @@ if (clinging == true && hitpause == false)
 		spawn_base_dust(x - 20 *spr_dir, y + 30, "wallride");
 		spawn_base_dust(x - 20 *spr_dir, y - 30, "wallride");
 	}
+	wall_ride = true;
 	sound_stop(sound_get("motorbike_move"));
 	sound_play(sound_get("motorbike_move"));
 	sound_stop(sound_get("motorbike_idle"));
@@ -873,6 +875,8 @@ if (get_match_setting(SET_PRACTICE) == true)
 	practice = true;
 	practice_hud_clearance++;
 }
+
+user_event(6);
 
 //print_debug(string(hsp));
 prev_hsp = hsp;

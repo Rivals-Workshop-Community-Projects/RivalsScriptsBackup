@@ -7,7 +7,6 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3) {
             state_timer = 0;
         }
     }
-    move_cooldown[AT_NSPECIAL] = 75;
 }
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3) {
     with(pHitBox)

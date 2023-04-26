@@ -24,13 +24,13 @@ set_color_profile_slot_range( 4, 8, 18, 37 );
 set_color_profile_slot( 0, 5, 80, 194, 255 );
 set_color_profile_slot_range( 5, 7, 6, 19 );
 
-// Eyelashes (Fake Black)
+// Eyelashes
 set_color_profile_slot( 0, 6, 0, 0, 88 );
 set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 20 );
 
 // White (Ori)
 set_color_profile_slot( 1, 0, 213, 157, 230 ); //Main 1
@@ -167,6 +167,42 @@ set_color_profile_slot( 15, 4, 235, 0, 255 ); //Yarn
 set_color_profile_slot( 15, 5, 253, 240, 255 ); //Eye 2
 set_color_profile_slot( 15, 6, 0, 0, 0 ); //Eyelashes
 
+// Blanc (Blanc & Nor)
+set_color_profile_slot( 16, 0, 246, 252, 255 ); //Main 1
+set_color_profile_slot( 16, 1, 246, 252, 255 ); //Main 2
+set_color_profile_slot( 16, 2, 239, 177, 219 ); //Accessory
+set_color_profile_slot( 16, 3, 0, 211, 255 ); //Eye 1
+set_color_profile_slot( 16, 4, 239, 134, 204 ); //Yarn
+set_color_profile_slot( 16, 5, 80, 194, 255 ); //Eye 2
+set_color_profile_slot( 16, 6, 0, 0, 0 ); //Eyelashes
+
+// Nor (Blanc & Nor)
+set_color_profile_slot( 17, 0, 28, 24, 36 ); //Main 1
+set_color_profile_slot( 17, 1, 30, 26, 36 ); //Main 2
+set_color_profile_slot( 17, 2, 77, 113, 174 ); //Accessory
+set_color_profile_slot( 17, 3, 107, 96, 26 ); //Eye 1
+set_color_profile_slot( 17, 4, 77, 113, 174 ); //Yarn
+set_color_profile_slot( 17, 5, 107, 96, 26 ); //Eye 2
+set_color_profile_slot( 17, 6, 0, 0, 0 ); //Eyelashes
+
+// Gold
+set_color_profile_slot( 18, 0, 230, 213, 157 ); //Main 1
+set_color_profile_slot( 18, 1, 222, 177, 0 ); //Main 2
+set_color_profile_slot( 18, 2, 189, 185, 201 ); //Accessory
+set_color_profile_slot( 18, 3, 218, 206, 219 ); //Eye 1
+set_color_profile_slot( 18, 4, 255, 204, 0 ); //Yarn
+set_color_profile_slot( 18, 5, 218, 206, 219 ); //Eye 2
+set_color_profile_slot( 18, 6, 0, 0, 0 ); //Eyelashes
+
+// Casper
+set_color_profile_slot( 19, 0, 229, 220, 211 ); //Main 1
+set_color_profile_slot( 19, 1, 117, 93, 69 ); //Main 2
+set_color_profile_slot( 19, 2, 28, 22, 17 ); //Accessory
+set_color_profile_slot( 19, 3, 141, 142, 102 ); //Eye 1
+set_color_profile_slot( 19, 4, 177, 135, 121 ); //Yarn
+set_color_profile_slot( 19, 5, 141, 142, 102 ); //Eye 2
+set_color_profile_slot( 19, 6, 0, 0, 0 ); //Eyelashes
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
@@ -174,24 +210,34 @@ set_color_profile_slot( 15, 6, 0, 0, 0 ); //Eyelashes
 === END JSON PALETTE ===
 */
 
+//brigher nor
+// set_color_profile_slot( 17, 0, 50, 43, 60 ); //Main 1
+// set_color_profile_slot( 17, 1, 50, 43, 60 ); //Main 2
+// set_color_profile_slot( 17, 2, 77, 113, 174 ); //Accessory
+// set_color_profile_slot( 17, 3, 107, 96, 26 ); //Eye 1
+// set_color_profile_slot( 17, 4, 77, 113, 174 ); //Yarn
+// set_color_profile_slot( 17, 5, 80, 194, 255 ); //Eye 2
+// set_color_profile_slot( 17, 6, 0, 0, 0 ); //Eyelashes
+
+
 //Secret colors
 // Pink (Nekomata - D. Children)
-/*
-set_color_profile_slot( 8, 0, 213, 157, 230 ); //Main 1
-set_color_profile_slot( 8, 1, 224, 22, 107 ); //Main 2
-set_color_profile_slot( 8, 2, 194, 81, 146 ); //Accessory
-set_color_profile_slot( 8, 3, 203, 22, 155 ); //Eye 1
-set_color_profile_slot( 8, 4, 245, 228, 34 ); //Yarn
-set_color_profile_slot( 8, 5, 253, 240, 255 ); //Eye 2
-set_color_profile_slot( 8, 6, 0, 0, 0 ); //Eyelashes
-*/
 
-/*
-set_color_profile_slot( 8, 0, 255, 224, 188 ); //Main 1
-set_color_profile_slot( 8, 1, 217, 34, 116 ); //Main 2
-set_color_profile_slot( 8, 2, 201, 78, 191 ); //Accessory
-set_color_profile_slot( 8, 3, 203, 22, 155 ); //Eye 1
-set_color_profile_slot( 8, 4, 245, 228, 34 ); //Yarn
-set_color_profile_slot( 8, 5, 253, 240, 255 ); //Eye 2
-set_color_profile_slot( 8, 6, 0, 0, 0 ); //Eyelashes
-*/
+// set_color_profile_slot( 8, 0, 213, 157, 230 ); //Main 1
+// set_color_profile_slot( 8, 1, 224, 22, 107 ); //Main 2
+// set_color_profile_slot( 8, 2, 194, 81, 146 ); //Accessory
+// set_color_profile_slot( 8, 3, 203, 22, 155 ); //Eye 1
+// set_color_profile_slot( 8, 4, 245, 228, 34 ); //Yarn
+// set_color_profile_slot( 8, 5, 253, 240, 255 ); //Eye 2
+// set_color_profile_slot( 8, 6, 0, 0, 0 ); //Eyelashes
+
+
+
+// set_color_profile_slot( 8, 0, 255, 224, 188 ); //Main 1
+// set_color_profile_slot( 8, 1, 217, 34, 116 ); //Main 2
+// set_color_profile_slot( 8, 2, 201, 78, 191 ); //Accessory
+// set_color_profile_slot( 8, 3, 203, 22, 155 ); //Eye 1
+// set_color_profile_slot( 8, 4, 245, 228, 34 ); //Yarn
+// set_color_profile_slot( 8, 5, 253, 240, 255 ); //Eye 2
+// set_color_profile_slot( 8, 6, 0, 0, 0 ); //Eyelashes
+

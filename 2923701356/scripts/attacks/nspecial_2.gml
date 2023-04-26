@@ -18,7 +18,7 @@ var window_num = 1;
 
 // Window 1 / Frame(s) 0 - 2 / Startup
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1);
@@ -28,7 +28,7 @@ window_num++;
 
 // Window 2 / Frame(s) 3 - 6 / Idle
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 18);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 

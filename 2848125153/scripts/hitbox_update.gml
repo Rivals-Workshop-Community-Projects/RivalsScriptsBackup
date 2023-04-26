@@ -512,7 +512,7 @@ if(attack == AT_DSPECIAL){
 			}
 			if(moneytimer >= 300){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 302);
-		    	player_id.current_money += 1500*income_boost;moneytimer = 0;
+		    	player_id.current_money += 1000*income_boost;moneytimer = 0;
 			}
 		}else if(hbox_num == 2){
 			if(housemoney >= 30000){
@@ -521,7 +521,7 @@ if(attack == AT_DSPECIAL){
 			}
 			if(moneytimer >= 300){
 				sound_play(sound_get("soldsfx"),false,noone,1.5);spawn_hit_fx(round(x), round(y), 304);
-		    	player_id.current_money += 3000*income_boost;moneytimer = 0;
+		    	player_id.current_money += 2000*income_boost;moneytimer = 0;
 			}
 		}else if(hbox_num == 3){
 			if(moneytimer >= 600){

@@ -205,6 +205,7 @@ radar_col = [0, 0, 0];
 //sfx
 emmi_ch_sfx = noone;
 emmi_cancel = 0;
+beep = noone;
 
 radar_img = 8; //small
 radar_rad1 = 0;

@@ -1355,6 +1355,7 @@ switch (attack)
 	case AT_NSPECIAL:
 	case AT_NSPECIAL_2:
 	trigger_b_reverse();
+	super_armor = window < 3;
 	if (attack == AT_NSPECIAL)
 	{
     	tsprite_index=sprite_get("tail_idle");
@@ -1384,7 +1385,6 @@ switch (attack)
 	//Increase Kick Time to make the meter drain during the attack
 	if (window == 2 && !hitpause)
 	{
-		super_armor=true;
 		can_jump=(has_hit_player && window < 3);
 		kickTime++;
 		//multikick Recharge meter
@@ -1422,11 +1422,6 @@ switch (attack)
 		feline_power = false;
 		move_cooldown[AT_NSPECIAL]= 200;
 		move_cooldown[AT_NSPECIAL_2]= 200;
-	}
-	//Remove super armour at end of attack
-	if (window == 3)
-	{
-		super_armor=false;
 	}
 	break;
 	default:

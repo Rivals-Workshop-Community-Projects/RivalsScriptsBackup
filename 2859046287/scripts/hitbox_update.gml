@@ -22,9 +22,10 @@ switch (attack)
             }
         }
         
-        if (hbox_num == 3) //restore speed to the projectile if it doesn't hit the next multihit on time (if it wasn't parried)
+        //restore speed to the projectile if it doesn't hit the next multihit on time (if it wasn't parried or homing isn't enabled)
+        if (hbox_num == 3)
         {
-            if (proj_gap_timer <= 1)
+            if (should_record_nspec3_values && proj_gap_timer <= 1)
             {
                 hsp = was_parried ? -nspec3_hsp : nspec3_hsp; //these vaules are recorded on creation
                 vsp = was_parried ? -nspec3_vsp : nspec3_vsp;
@@ -40,6 +41,18 @@ switch (attack)
             if (place_meeting(x, y, asset_get("par_block")) || place_meeting(x, y, asset_get("par_jumpthrough"))) player_id.fspec_found_target = true;
         }
         break;
+}
+
+if (psuedo_melee_hitbox)
+{
+    player_id.has_hit = has_hit;
+    player_id.has_hit_player = has_hit_player;
+    
+    if (in_hitpause)
+    {
+        hitbox_hitstop = player_id.hitstop;
+        if (hitbox_hitstop <= 0) in_hitpause = false;
+    }
 }
 
 //multihit projectile code, only should run if multihit_hit_player actually exists
@@ -112,5 +125,33 @@ if (multihit_amount > 0)
             hitbox_hitstop = multihit_hit_player.hitstop;
             if (hitbox_hitstop <= 0) in_hitpause = false;
         }
+    }
+}
+
+//projectile homing
+if (homing_enabled) //original code by DarkDakurai, modified slightly by Bar-Kun
+{
+    if (!in_hitpause) //should only work if the projectile isn't in hitpause
+    {
+        //homing detection
+        with (oPlayer) if (player != other.player) //make sure the player isn't the current owner of the projectile and isn't a clone
+        {
+            //if the target doesn't exist set it to the current player
+            //otherwise if there is another, closer target, set the target to them instead
+            if (other.home_target == noone) other.home_target = self;
+            else if (distance_to_object(other) < point_distance(other.x, other.y, other.home_target.x, other.home_target.y)) other.home_target = self;
+        }
+
+        //apply homing to nearest target
+        if (instance_exists(home_target))
+        {
+            //helps us detect the actual center of the target's hurtbox, otherwise it would aim for their feet
+            var near_angle = point_direction(x, y, home_target.x, home_target.y - home_target.char_height/2);
+            hsp = lerp(hsp, home_max_speed * dcos(near_angle), home_turn_speed);
+            vsp = lerp(vsp, -home_max_speed * dsin(near_angle), home_turn_speed);
+        }
+
+        //optional - make projectile tilt along the direction it's moving (* make sure the projectile's sprite goes straight right for the best results)
+        proj_angle = point_direction(x, y, x + hsp * spr_dir, y + vsp * spr_dir);
     }
 }

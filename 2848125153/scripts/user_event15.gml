@@ -319,6 +319,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.18", "22nd April, 2023");
+initHeader("Nerfs");
+initSection("- Reverted passive income for House and Hotel (150k->100k, 300k->200k), as it seems to have been too much");
+
 initPatch("1.18", "30th March, 2023");
 initHeader("Fixes / Other Changes");
 initSection("+ Fixed a bug where cancelling USpecial would spawn a hitbox sometimes");

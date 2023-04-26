@@ -10,7 +10,7 @@ depth = -999;
 state = 0;                                          //The behavior state the article should start in.
 state_timer = 0;
 bounces = 5;                                      //The point in time during that state the article should start in. (0 = beginning)
-vsp = -8;
+vsp = -4;
 gravitytimer = 0;
 lifetime = 0;
 //hsp = 0.5*player_id.spr_dir;

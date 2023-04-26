@@ -7,6 +7,7 @@
 is_attacking = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR); //attack check - becomes true if the state is PS_ATTACK_GROUND or PS_ATTACK_AIR
 is_dodging = (hurtboxID.dodging); //dodge check - becomes true if the character is invincible when dodging/teching
 game_time = get_gameplay_time(); //get_gameplay_time() is a timer that counts up every frame of the match
+hbox_view = get_match_setting(SET_HITBOX_VIS); //keeps track if hitbox view is on or off
 
 if (is_attacking)
 {
@@ -33,7 +34,7 @@ else
 }
 
 //grab logic
-if (my_grab_id != noone) //if you have grabbed someone
+if (instance_exists(my_grab_id) && my_grab_id != noone) //if you have grabbed someone (and made sure they exist)
 {
 	grab_time ++;
 
@@ -126,10 +127,10 @@ if (is_attacking)
             switch (window)
             {
                 case 3: //blast - weak
-                    if (window_timer == 0) spawn_hit_fx(x-32*spr_dir, y-40, fx_pow_hit[0]);
+                    if (window_timer == 0 && !hitpause) spawn_hit_fx(x-32*spr_dir, y-40, fx_pow_hit[0]);
                     break;
                 case 6: //blast - strong
-                    if (window_timer == 0) spawn_hit_fx(x-32*spr_dir, y-40, fx_pow_hit[1]);
+                    if (window_timer == 0 && !hitpause) spawn_hit_fx(x-32*spr_dir, y-40, fx_pow_hit[1]);
                     break;
             }
             break;
@@ -443,7 +444,7 @@ prep_hitboxes();
     if (!hitpause)
     {
         //loop window
-        if (get_window_value(attack, window, AG_WINDOW_TYPE) == 9) //this will make it so it only works if the window type is 9
+        if (get_window_value(attack, window, AG_WINDOW_TYPE) == 9 && is_attacking) //this will make it so it only works if the window type is 9
         {
             if (window_timer == window_end-1) //checks almost the end of the window
             {

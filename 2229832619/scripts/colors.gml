@@ -111,24 +111,24 @@ set_color_profile_slot( 7, 6, 211, 226, 154 ); //blade
 set_color_profile_slot( 7, 7, 167, 186, 74 ); //blade.2
 
 // angel
-set_color_profile_slot( 8, 0, 255, 246, 245 ); //main
-set_color_profile_slot( 8, 1, 212, 195, 195 ); //main.2
-set_color_profile_slot( 8, 2, 181, 159, 159 ); //main.3
+set_color_profile_slot( 8, 0, 255, 255, 255 ); //main
+set_color_profile_slot( 8, 1, 212, 195, 201 ); //main.2
+set_color_profile_slot( 8, 2, 181, 147, 159 ); //main.3
 set_color_profile_slot( 8, 3, 179, 0, 0 ); //purple
 set_color_profile_slot( 8, 4, 207, 0, 0 ); //white_eye
 set_color_profile_slot( 8, 5, 255, 24, 0 ); //abyss_eye
-set_color_profile_slot( 8, 6, 255, 225, 0 ); //blade
-set_color_profile_slot( 8, 7, 222, 140, 0 ); //blade.2
+set_color_profile_slot( 8, 6, 255, 238, 110 ); //blade
+set_color_profile_slot( 8, 7, 222, 155, 0 ); //blade.2
 
 // crown
-set_color_profile_slot( 9, 0, 0, 89, 84 ); //main
-set_color_profile_slot( 9, 1, 0, 51, 49 ); //main.2
-set_color_profile_slot( 9, 2, 0, 26, 24 ); //main.3
-set_color_profile_slot( 9, 3, 207, 199, 174 ); //purple
+set_color_profile_slot( 9, 0, 0, 99, 94 ); //main
+set_color_profile_slot( 9, 1, 23, 56, 61 ); //main.2
+set_color_profile_slot( 9, 2, 36, 28, 43 ); //main.3
+set_color_profile_slot( 9, 3, 194, 196, 179 ); //purple
 set_color_profile_slot( 9, 4, 255, 255, 255 ); //white_eye
-set_color_profile_slot( 9, 5, 255, 0, 0 ); //abyss_eye
-set_color_profile_slot( 9, 6, 242, 241, 225 ); //blade
-set_color_profile_slot( 9, 7, 189, 184, 147 ); //blade.2
+set_color_profile_slot( 9, 5, 255, 255, 255 ); //abyss_eye
+set_color_profile_slot( 9, 6, 238, 227, 240 ); //blade
+set_color_profile_slot( 9, 7, 134, 127, 148 ); //blade.2
 
 // void
 set_color_profile_slot( 10, 0, 255, 255, 255 ); //main

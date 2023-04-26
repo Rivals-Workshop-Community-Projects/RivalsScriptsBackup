@@ -5,7 +5,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 
 //Startup window
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 12);//8
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 //set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 //set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
@@ -13,6 +13,7 @@ set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 //set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_ori_ustrong_charge"));
+// set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 2);
 
 //Lunge window
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_TYPE, 1);
@@ -438,7 +439,7 @@ set_hitbox_value(AT_FSTRONG, 7, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSTRONG, 7, HG_ANGLE, 45);
 set_hitbox_value(AT_FSTRONG, 7, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FSTRONG, 7, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FSTRONG, 7, HG_KNOCKBACK_SCALING, 1.06);
+set_hitbox_value(AT_FSTRONG, 7, HG_KNOCKBACK_SCALING, 1.05);//1.06
 set_hitbox_value(AT_FSTRONG, 7, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSTRONG, 7, HG_HITPAUSE_SCALING, 1.5);
 set_hitbox_value(AT_FSTRONG, 7, HG_TECHABLE, 0);
@@ -469,3 +470,103 @@ set_hitbox_value(AT_FSTRONG, 8, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FSTRONG, 8, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSTRONG, 8, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FSTRONG, 8, HG_EXTRA_CAMERA_SHAKE, -1);
+
+//ABYSS PROJECTILES
+
+set_hitbox_value(AT_FSTRONG, 9, HG_PARENT_HITBOX, 9);
+set_hitbox_value(AT_FSTRONG, 9, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FSTRONG, 9, HG_HITBOX_TYPE, 2 );
+set_hitbox_value(AT_FSTRONG, 9, HG_WINDOW, 4);
+set_hitbox_value(AT_FSTRONG, 9, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_FSTRONG, 9, HG_LIFETIME, 80);
+set_hitbox_value(AT_FSTRONG, 9, HG_WIDTH, 80);
+set_hitbox_value(AT_FSTRONG, 9, HG_HEIGHT, 75);
+set_hitbox_value(AT_FSTRONG, 9, HG_HITBOX_X, 0);
+set_hitbox_value(AT_FSTRONG, 9, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_FSTRONG, 9, HG_SHAPE, 0 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSTRONG, 9, HG_DAMAGE, 0.8);
+set_hitbox_value(AT_FSTRONG, 9, HG_ANGLE, 90);
+set_hitbox_value(AT_FSTRONG, 9, HG_BASE_KNOCKBACK, 2);
+set_hitbox_value(AT_FSTRONG, 9, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, 9, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_FSTRONG, 9, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, 9, HG_EXTRA_HITPAUSE, -3);
+set_hitbox_value(AT_FSTRONG, 9, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FSTRONG, 9, HG_SDI_MULTIPLIER, .1);
+set_hitbox_value(AT_FSTRONG, 9, HG_ANGLE_FLIPPER, 9 );
+set_hitbox_value(AT_FSTRONG, 9, HG_GROUNDEDNESS, 0 );
+set_hitbox_value(AT_FSTRONG, 9, HG_IGNORES_PROJECTILES, 0 );
+set_hitbox_value(AT_FSTRONG, 9, HG_TECHABLE, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_FORCE_FLINCH, 0 );
+set_hitbox_value(AT_FSTRONG, 9, HG_THROWS_ROCK, 0 );
+set_hitbox_value(AT_FSTRONG, 9, HG_EXTRA_CAMERA_SHAKE, -1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_VISUAL_EFFECT, 1 ); //111
+set_hitbox_value(AT_FSTRONG, 9, HG_HIT_SFX, sound_get("amber_magic_hit_medium1"));
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_SPRITE, sprite_get("shuriken_large_proj"));
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_MASK, -1); // was yarnball_cmask
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_HSPEED, 8.5);
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_GRAVITY, 0);
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_GROUND_FRICTION, 0);
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_AIR_FRICTION, 0);
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_WALL_BEHAVIOR, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_GROUND_BEHAVIOR, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_ENEMY_BEHAVIOR, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_UNBASHABLE, 0 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_PARRY_STUN, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_DOES_NOT_REFLECT, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_IS_TRANSCENDENT, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_PLASMA_SAFE, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_DESTROY_EFFECT, 112); // was 109
+set_hitbox_value(AT_FSTRONG, 9, HG_EFFECT, 98); //this effect is used for knowing if it's a rune projectile
+set_hitbox_value(AT_FSTRONG, 9, HG_HIT_LOCKOUT, 1 );
+set_hitbox_value(AT_FSTRONG, 9, HG_PROJECTILE_ANIM_SPEED, 1);
+
+//projectile manually spawned in hitbox_update
+set_hitbox_value(AT_FSTRONG, 10, HG_PARENT_HITBOX, 10);
+set_hitbox_value(AT_FSTRONG, 10, HG_HITBOX_TYPE, 2 );
+//set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 4);
+//set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_FSTRONG, 10, HG_LIFETIME, 6);
+set_hitbox_value(AT_FSTRONG, 10, HG_WIDTH, 80);
+set_hitbox_value(AT_FSTRONG, 10, HG_HEIGHT, 75);
+set_hitbox_value(AT_FSTRONG, 10, HG_HITBOX_X, 0);
+set_hitbox_value(AT_FSTRONG, 10, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_FSTRONG, 10, HG_SHAPE, 0 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSTRONG, 10, HG_DAMAGE, 8);
+set_hitbox_value(AT_FSTRONG, 10, HG_ANGLE, 50);
+set_hitbox_value(AT_FSTRONG, 10, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSTRONG, 10, HG_KNOCKBACK_SCALING, 1.05);
+set_hitbox_value(AT_FSTRONG, 10, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FSTRONG, 10, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_FSTRONG, 10, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FSTRONG, 10, HG_ANGLE_FLIPPER, 0 );
+set_hitbox_value(AT_FSTRONG, 10, HG_GROUNDEDNESS, 0 );
+set_hitbox_value(AT_FSTRONG, 10, HG_IGNORES_PROJECTILES, 0 );
+set_hitbox_value(AT_FSTRONG, 10, HG_TECHABLE, 0 );
+set_hitbox_value(AT_FSTRONG, 10, HG_FORCE_FLINCH, 0 );
+set_hitbox_value(AT_FSTRONG, 10, HG_THROWS_ROCK, 0 );
+set_hitbox_value(AT_FSTRONG, 10, HG_HITBOX_GROUP, -2);
+set_hitbox_value(AT_FSTRONG, 10, HG_EXTRA_CAMERA_SHAKE, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_HIT_LOCKOUT, 4 );
+set_hitbox_value(AT_FSTRONG, 10, HG_VISUAL_EFFECT, 112 );
+set_hitbox_value(AT_FSTRONG, 10, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_MASK, -1); // was yarnball_cmask
+//set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 10);
+//set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_GRAVITY, 0);
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_GROUND_FRICTION, 0);
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_AIR_FRICTION, 0);
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_WALL_BEHAVIOR, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_GROUND_BEHAVIOR, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_ENEMY_BEHAVIOR, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_UNBASHABLE, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_PARRY_STUN, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_DOES_NOT_REFLECT, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_IS_TRANSCENDENT, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_PLASMA_SAFE, 1 );
+set_hitbox_value(AT_FSTRONG, 10, HG_PROJECTILE_DESTROY_EFFECT, 1); // was 109
+set_hitbox_value(AT_FSTRONG, 10, HG_EFFECT, 99); //this effect is used for knowing if it's a rune projectile

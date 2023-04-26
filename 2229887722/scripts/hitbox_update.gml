@@ -23,9 +23,9 @@ if (attack == AT_DSPECIAL)
 		}
 		
 		//Destroy this if it's offstage
-		if (y > get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS)
-		|| x < get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE)
-		|| x > room_width + get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE))
+		if (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y)
+		|| x < get_stage_data(SD_LEFT_BLASTZONE_X)
+		|| x > get_stage_data(SD_RIGHT_BLASTZONE_X))
 		{
 			if (player_id.window == 11)
 			{
@@ -81,7 +81,7 @@ if (attack == AT_DSPECIAL)
 				    && other.last_hitbox != id
 				    && other.last_hitbox_group != hbox_group)
 				    {
-				    	if (other.player_id.has_hit_player == false)
+				    	if (other.player_id.has_hit_player == false && !other.player_id.runeH)
 				    	{
 				    		//Prevent Amber from knocking back the yarnball from the yarn dash hitbox
 				    		//Also prevent Ori from repeatedly hitting the ball during Bash grab hold
@@ -113,6 +113,11 @@ if (attack == AT_DSPECIAL)
 		    					sound_play(asset_get("sfx_blow_weak1"));
 		    					player_id.has_hit = true;
 				    		}
+				    	}
+				    	
+				    	//rune waterballoon
+				    	if(other.player_id.runeH){
+				    		other.has_hit = true;
 				    	}
 				    	
 				    	//If an enemy hit this yarn ball
@@ -244,7 +249,78 @@ if (attack == AT_DSPECIAL)
 	}
 }
 
+//waterballoon rune
+if(player_id.runeH){
 
+	// with(pHurtBox){
+	// 	if(playerID != other.player_id){
+	// 		var checkHurt = place_meeting(x,y,other);
+	// 	} else {
+	// 		var checkHurt = false;
+	// 	}
+	// }
+	
+	var checkHurt = instance_place(x, y, player_id.hurtboxID)
+	if(checkHurt != instance_place(x, y, pHurtBox)){
+		checkHurt = true;
+	} else {
+		checkHurt = false;
+	}
+	
+	if((!free || has_hit || checkHurt) && attack == AT_DSPECIAL && hbox_num == 1){
+		create_hitbox(AT_DSPECIAL, 7, x, y);
+		spawn_hit_fx(x, y, 161);
+		hitbox_timer = length;
+		sound_play(asset_get("sfx_waterhit_heavy"))
+	}
+
+}
+
+//projectile immunity rune
+if(player_id.runeK){
+	if(attack == AT_EXTRA_1 && hbox_num == 1){
+		with(asset_get("pHitBox")){
+			if(type == 2 && !plasma_safe && player_id != other.player_id && (place_meeting(x,y,other))){
+				destroyed = true;
+				can_hit[other.player_id.player] = false;
+			}
+		}
+		if(player_id.totalDamageDealt != 50){
+			destroyed = true;
+		}
+	}
+}
+
+//projectile rune
+if(player_id.runeM){
+	if(attack == AT_FSTRONG && hbox_num == 9){
+		hsp -= .1 * spr_dir;
+	    for (var i = 0; i < 20; i++) {
+			can_hit[i] = (i != player_id.player);
+		}
+		if(hitbox_timer == length){
+			var temp_hitbox = create_hitbox(AT_FSTRONG, 10, x, y);
+			temp_hitbox.can_hit_self = true;
+			temp_hitbox.can_hit[player_id.player] = false;
+		}
+		player_id.strong_charge = strong_charge;
+		player_id.move_cooldown[AT_FSTRONG] = 8;
+		player_id.move_cooldown[AT_DSTRONG] = 8;
+		player_id.move_cooldown[AT_USTRONG] = 8;
+	}
+	
+	if(attack == AT_USTRONG && (hbox_num == 5 || hbox_num == 6) && proj_grab_id != noone){
+		proj_grab_id.x = x + 30 * spr_dir;
+		proj_grab_id.y = y + 10;
+		proj_grab_id.hitstop = 2;
+		proj_grab_id.hitstop_full = 2;
+		if(hitbox_timer == length){
+			var temp_hitbox = create_hitbox(AT_USTRONG, 7, x + 30 * spr_dir, y - 30);
+			temp_hitbox.can_hit_self = true;
+			temp_hitbox.can_hit[player_id.player] = false;
+		}
+	}
+}
 
 #define despawnYarnBallProj
 player_id.hasYarnBall = true;

@@ -19,6 +19,12 @@ enemyTestVar = 0;
 enemyIsYarnDizzy = false;
 enemyDizzyTimer = 0;
 
+//pacifist rune variable
+final_wrapped = false;
+highest_damage = 0;
+lowest_stocks = 3;
+orig_knockback_adj = knockback_adj;
+
 /*
 //If this is a duplicate Amber player
 if (real(url) == 1994508755)

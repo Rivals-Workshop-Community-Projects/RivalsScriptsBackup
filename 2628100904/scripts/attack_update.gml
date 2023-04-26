@@ -7,16 +7,47 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 //cooldowns
 
-if (attack == AT_USTRONG){
-    move_cooldown[AT_USTRONG] = 80;
+if (attack == AT_FSTRONG){
+    move_cooldown[AT_FSTRONG] = 30;
 }
 
 if (attack == AT_NSPECIAL){
-    move_cooldown[AT_NSPECIAL] = 140;
+    move_cooldown[AT_NSPECIAL] = 140 * !has_rune("L");
+    if(window == 2 && (!special_down || state_timer >= 30)){
+    	set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
+    	set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 99);
+    	set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 99);
+    	if(state_timer >= 30){
+    		if(weedcharge == max_weedcharge){
+    			set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 99);
+		    	set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 99);
+		    	set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 3);
+		    	weedcharge = 0;
+    		} else if(weedcharge >= mid_weedcharge){
+    			set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 99);
+		    	set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 3);
+		    	set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 99);
+		    	weedcharge = 0;
+    		}
+    	}
+    	window = 3;
+    	window_timer = 0;
+    }
+    if(special_pressed && has_rune("L")){
+    	window = 2;
+    	window_timer = 0;
+    	clear_button_buffer(PC_SPECIAL_PRESSED);
+    }
 }
 
 if (attack == AT_FSPECIAL){
-    move_cooldown[AT_FSPECIAL] = 80;
+    move_cooldown[AT_FSPECIAL] = 120;
+}
+
+if(attack == AT_JAB){
+	if(window == 7 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+		sound_play(sound_get("pistol_shoot"));
+	}
 }
 
 //badass weed move (heavily referncing bluey's charge shot for this hopefully i can get it to work :)
@@ -35,19 +66,19 @@ if (attack == AT_DSPECIAL){
 			if (window_timer == 20){ //loop
 				window_timer = 1;
 			}
-			if (80 > weedcharge) { //Adding charge
+			if (max_weedcharge > weedcharge) { //Adding charge
 			weedcharge += .5;
-				if weedcharge == 0 || weedcharge == 45 || weedcharge == 80 {
-					sound_play(asset_get("sfx_ell_fspecial_charge"), false, noone, 1, 1+(weedcharge/80));		
+				if weedcharge == 0 || weedcharge == mid_weedcharge || weedcharge == max_weedcharge {
+					sound_play(asset_get("sfx_ell_fspecial_charge"), false, noone, 1, 1+(weedcharge/max_weedcharge));		
 					}		
 			}
 		}
 		else { //Releasing special to use the move		
-				if (weedcharge >= 80) { //fully charged
+				if (weedcharge >= max_weedcharge) { //fully charged
 						window = 5;
 						window_timer = 0;
 				}
-				else if (weedcharge >= 45){ //partially charged
+				else if (weedcharge >= mid_weedcharge){ //partially charged
 						window = 7;
 						window_timer = 0;
 					}
@@ -76,19 +107,29 @@ if (attack == AT_DSPECIAL){
 		}
 	}
 	if (window == 4 ) {
+		vsp *= .9;
 		if window_timer == 36 { //endlag
 			window = 8; //window 8 does not exist this just makes it end the attack i gues
 			window_timer = 0;
 		}
 	}
 	if (window == 5 ) {
+		if(window_timer < 20){
+			soft_armor = 18;
+		}
+		if(window_timer == 10 && !hitpause){
+			sound_play(asset_get("sfx_abyss_portal_intro"));
+		}
 		if window_timer == 24 { //endlag
 			window = 8; //window 8 does not exist this just makes it end the attack i gues
 			window_timer = 0;
 		}
 		if (window_timer == 22 && !hitpause) { //splosion
+			soft_armor = 0;
 			create_hitbox(AT_DSPECIAL, 6, x, y-35);
-            spawn_hit_fx(x, y-35, weednova);
+			create_hitbox(AT_DSPECIAL, 7, x, y-35);
+            var hfx = spawn_hit_fx(x, y-35, weednova);
+            hfx.depth = depth - 1;
             sound_play(sound_get("d_explode"))
 		}
 	}
@@ -104,10 +145,39 @@ if (attack == AT_DSPECIAL){
 //please god let it be easy i hate programming
 //fuckign hate programming
 
+if(attack == AT_USPECIAL){
+	if(window == 3 && window_timer == 6 && special_down && !hitpause){
+		if(weedcharge == max_weedcharge){
+			create_hitbox(AT_USPECIAL, 4, x, y - char_height/2);
+			var hbox = create_hitbox(AT_USPECIAL, 3, x, y - char_height/2);
+			hbox.can_hit_self = true;
+			for(var i = 0; i < 20; i++){
+				hbox.can_hit[i] = (i == player);
+			}
+			spawn_hit_fx(x, y - char_height/2, HFX_ELL_BOOM_BIG);
+			sound_play(asset_get("sfx_ell_uspecial_explode"));
+			sound_play(asset_get("sfx_ell_strong_attack_explosion"));
+			weedcharge = 0;
+		} else if(weedcharge >= mid_weedcharge){
+			create_hitbox(AT_USPECIAL, 6, x, y - char_height/2);
+			var hbox = create_hitbox(AT_USPECIAL, 5, x, y - char_height/2);
+			hbox.can_hit_self = true;
+			for(var i = 0; i < 20; i++){
+				hbox.can_hit[i] = (i == player);
+			}
+			spawn_hit_fx(x, y - char_height/2, HFX_ELL_FSPEC_BIG_MISS);
+			sound_play(asset_get("sfx_ell_uspecial_explode"));
+			sound_play(asset_get("sfx_ell_strong_attack_explosion"));
+			weedcharge = 0;
+		}
+		
+	}
+}
+
 //taunt loop
 if (attack == AT_TAUNT){
 	if window = 3 {
-		if (window_timer == 3 && taunt_down) {
+		if (window_timer == 3 && (taunt_down || respawn_taunt >= 240)) {
 			window_timer = 1;
 		}
 	}

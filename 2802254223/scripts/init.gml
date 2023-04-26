@@ -22,6 +22,7 @@ ds_Timer = 0;
 ds_Msg = "";
 cfToggle = false;
 cardFlipScale = 0;
+randomizeSFX = 1;
 
 club_explosion = hit_fx_create( sprite_get( "explosion-club" ), 30);
 heartHit = hit_fx_create( sprite_get( "hfx_heart" ), 24);

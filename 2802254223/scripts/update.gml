@@ -112,3 +112,7 @@ if(curSuit > 3)
 	curSuit = 0;
 if(hudtimer != 0)
 	hudtimer --;
+if (state != PS_ATTACK_GROUND)
+	sound_stop(sound_get("DS_Acumalaka"));
+
+randomizeSFX = 0.975+(random_func(1, 1, false)/20);

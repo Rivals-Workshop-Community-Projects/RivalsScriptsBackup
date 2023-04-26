@@ -30,7 +30,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
 
-window_num ++; //endlag (it has no whifflag because it's only shoots a projectile)
+window_num ++; //endlag (it has no whifflag because it's only shoots a projectile and it's a special)
 //set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20); //value is overwritten in attack_update
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 7);
@@ -63,6 +63,8 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.4);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, 12); //vspeed is set in attack_update.gml
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, -1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HOMING, has_rune("G"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HOMING_TURN, 0.05);
 
 hitbox_num ++; //proj 2
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
@@ -89,6 +91,8 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, 0.3);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, 10); //vspeed is set in attack_update.gml
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GROUND_BEHAVIOR, -1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HOMING, has_rune("G"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HOMING_TURN, 0.02);
 
 hitbox_num ++; //proj 3
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);
@@ -124,6 +128,8 @@ set_hitbox_value(atk, hitbox_num, HG_MULTIHIT_SFX, asset_get("sfx_ori_seinhit_me
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(atk, hitbox_num, HG_SDI_MULTIPLIER, 1.8);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HOMING, has_rune("G"));
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HOMING_TURN, 0.005);
 
 hitbox_num ++; //rune E explosion
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 2);

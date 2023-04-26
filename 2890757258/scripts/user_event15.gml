@@ -244,6 +244,16 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.09", "25 April, 2023");
+initHeader("GENERAL:");
+initSection("Updated the localization files");
+initHeader("USTRONG:");
+initSection("(for hitboxes 3 & 4)
++ Knockback Scaling increased from 1.0 -> 1.10");
+initHeader("FSTRONG:");
+initSection("(for all hitboxes)
++ Base Knockback increased from 7 -> 7.5");
+
 initPatch("1.08", "22 April, 2023");
 initHeader("GENERAL:");
 initSection("Updated the localization files");

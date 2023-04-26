@@ -37,7 +37,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.14";
-patch_day = "2";
+patch_day = "25";
 patch_month = "APR";
  
 var num_alts = 25;

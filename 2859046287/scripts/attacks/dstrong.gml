@@ -31,7 +31,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_ori_dsmash_skitter_alone"));
 
-window_num ++; //endlag
+window_num ++; //endlag (normally we should apply whifflag as soon as the hitbox ends but in the case we have a loop that makes it harder)
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 8);
@@ -47,7 +47,7 @@ set_hitbox_value(atk, hitbox_num, HG_PARENT_HITBOX, 1);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 4);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW_CREATION_FRAME, 1); //because of the looping, window_timer 0 won't spawn hitboxes
-set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
+set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3); //multihit value - final hit is on attack_update.gml
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 64);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -28);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48); //multihit value - final hit is on attack_update.gml

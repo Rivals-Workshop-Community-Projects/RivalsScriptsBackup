@@ -13,13 +13,13 @@ set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 
 window_num ++; //attack
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 2);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 

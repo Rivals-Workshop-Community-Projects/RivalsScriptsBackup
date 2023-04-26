@@ -1,10 +1,35 @@
 var spent_bar = false;
 switch (my_hitboxID.attack)
 {
-    case AT_NAIR:
-        if (my_hitboxID.hbox_num == 4) {
-            old_vsp = -6.5;
+    case AT_UTHROW:
+    case AT_DTHROW:
+    case AT_FTHROW:
+        sound_play(sound_get("utilt_sweet"), false, noone, 0.8, 1.06)
+    break;
+    case AT_UTILT:
+        if my_hitboxID.hbox_num == 2{
+            sound_play(sound_get("utilt_sweet"), false, noone, 0.85, 1)
+        }        
+    break;
+    case AT_BAIR:
+        if my_hitboxID.hbox_num == 2 {
+            sound_play(asset_get("sfx_pom_tailhit_back"), false, noone, 1, 0.97)
         }
+    break;
+    case AT_DSPECIAL:
+        if hit_player_obj.free
+        {
+            hit_player_obj.y = lerp(hit_player_obj.y, y, 0.1)
+        }
+    break;
+    case AT_DAIR:
+        if my_hitboxID.hbox_num == 1 and !hit_player_obj.super_armor {
+            hit_player_obj.x = lerp(hit_player_obj.x, my_hitboxID.x, 0.1)
+        }
+    break;
+    case AT_UAIR:
+        sound_play(asset_get("sfx_pom_tailhit_forward"), false, noone, 1, 0.9)
+        sound_play(asset_get("sfx_pom_slap2"), false, noone, 0.7, 1)
     break;
     case AT_FSPECIAL:
     {
@@ -41,6 +66,7 @@ switch (my_hitboxID.attack)
 }
 
 if spent_bar exit;
+if attack == AT_UTILT and my_hitboxID.hbox_num == 1 exit;
 
 //If you are able to put the move in the meter, put it in.
 if (ollie_move_should_get_bar and array_find_index(ollie_combo_moves, my_hitboxID.attack) != -1 and (array_length(ollie_move_combo_array) == 0 or ollie_move_combo_array[array_length(ollie_move_combo_array) - 1] != my_hitboxID.attack))

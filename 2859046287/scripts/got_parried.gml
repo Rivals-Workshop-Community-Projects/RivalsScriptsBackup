@@ -2,9 +2,8 @@
 //as the name suggests, this script runs when the player is parried, this can be useful for disabling effects like certain debuffs
 //or redirecting the character into certain states
 
-
 //prevents the grab ID from staying
-if (my_grab_id != noone) my_grab_id = noone;
+if (instance_exists(my_grab_id) && my_grab_id != noone) my_grab_id = noone;
 
 //disables u-air status on parry
 if (hit_player_obj.test_status_timer > 0) hit_player_obj.test_status_timer = 0;

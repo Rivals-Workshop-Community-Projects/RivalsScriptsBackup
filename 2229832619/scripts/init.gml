@@ -101,7 +101,7 @@ techroll_speed = 9.6;
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 2;
 air_dodge_recovery_frames = 3;
-air_dodge_speed = 9; //7.5
+air_dodge_speed = 10; //7.5//9
 
 //roll animation frames
 roll_forward_startup_frames = 1;
@@ -151,16 +151,16 @@ na_aura3 = hit_fx_create( sprite_get( "na_aura3" ), 16 );
 
 arena_title = "N/A";
 arena_short_name = "N/A";
-battle_text = "* Fear.";
+battle_text = "* Devoid of environment.";
 Hikaru_Title = "-4";
 pkmn_stadium_front_img = sprite_get("na_ps_f");
 pkmn_stadium_back_img = sprite_get("na_ps_b");
-ncode1 = "Unidentified instance of an 'abyss' creature."
-ncode2 = "May be stronger than other abyssal creatures in the database."
-ncode3 = "Abort mission and prioritize escaping."
 steve_death_message = "death.attack.void";
 tcoart = sprite_get("na_stickman");
 feri_costume = sprite_get("na_feri");
+has_fail = true; fail_text = "You stared into the abyss I guess.";
+pot_compat_variable = sprite_get("pogumbo_food");
+pot_compat_text = "Le abyssfishe au chocolat";
 
 //table of contents:
 //article1 is abyss bubble
@@ -221,6 +221,7 @@ extra_col = 0;
 na_bh = false;
 
 v_fstrong = false;
+eyechecker = false;
 
 practice = false;
 

@@ -8,15 +8,15 @@ set_attack_value(AT_USPECIAL, AG_OFF_LEDGE, 1);
 //usps1 usps2 usps3 uspan   uspab   uspat usphl usprec uspend
 //0-1:2 2-2:1 3-3:1 4-4:1   5-5:1   5-6:2 7-8:2 9-13:5 14-14:1
 
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 7);//8
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);//10
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 26);//32
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 

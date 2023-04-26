@@ -4,6 +4,9 @@
 //if the destroy effect isn't set, just make it the hit effect (no idea why this *isn't* a thing)
 if (destroy_fx == 0) destroy_fx = hit_effect;
 
+//PROJECTILE WITH MELEE HITBOX BEHAVIOUR
+psuedo_melee_hitbox = false;
+
 //MULTIHIT PROJECTILE
 proj_hit_count = 0; //counts up the hits
 proj_gap_timer = 0; //timer that counts down when hits should connect
@@ -20,14 +23,25 @@ multihit_damage = 0;
 multihit_vfx = 0; //sets the hit effect for when a multihit hits
 multihit_sfx = 0;
 
+//HOMING PROJECTILE
+homing_enabled = false;
+home_target = noone; //the player to target with the homing
+home_max_speed = abs(point_distance(0, 0, hsp, vsp)); //speed limiter, it prevents the projectile from going faster than what you put as HG_PROJECTILE_HSPEED and _VSPEED
+home_turn_speed = 0.1; //turning speed
+
 //stores hitbox grid varuables
 with (player_id)
 {
+    other.psuedo_melee_hitbox = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MELEE);
+
     other.multihit_amount = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_MULTIHIT);
     other.multihit_gap = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_HITRATE);
     other.multihit_damage = get_hitbox_value(other.attack, other.hbox_num, HG_MULTIHIT_DAMAGE);
     other.multihit_vfx = get_hitbox_value(other.attack, other.hbox_num, HG_MULTIHIT_VFX);
     other.multihit_sfx = get_hitbox_value(other.attack, other.hbox_num, HG_MULTIHIT_SFX);
+
+    other.homing_enabled = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_HOMING);
+    other.home_turn_speed = get_hitbox_value(other.attack, other.hbox_num, HG_PROJECTILE_HOMING_TURN);
 }
 
 if (multihit_amount > 0) //only works if the hitbox grid actually has multihits active
@@ -63,7 +77,8 @@ if (multihit_amount > 0) //only works if the hitbox grid actually has multihits 
 //////////////////////////////////////////////////////// TESTER SPECIFIC ///////////////////////////////////////////////////////////
 
 //restores normal speed to projectile
-if (attack == AT_NSPECIAL && hbox_num == 3)
+should_record_nspec3_values = !homing_enabled;
+if (attack == AT_NSPECIAL && hbox_num == 3 && should_record_nspec3_values)
 {
     nspec3_hsp = hsp;
     nspec3_vsp = vsp;

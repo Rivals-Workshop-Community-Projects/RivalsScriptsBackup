@@ -2,6 +2,8 @@
 //this script is used for anything you want to display on the CSS in real-time
 //NOTE: CSS is short for Character Select Screen
 
+if ("css_anim_time" not in self) exit; //prevents error spam on loading, as CSS update runs after CSS init for some reason
+
 css_anim_time ++; //animates the css by counting up, similarly to a state_timer
 alt_cur = get_player_color(player); //checks the current alt
 alt_fix = player; //keep this line, on the online css the player is actually player 0, we later go on init_shader to check for this variable

@@ -17,6 +17,10 @@ if(curr_materia > 0){
 	if(my_hitboxID.hbox_num == 5){
 	materia_act();	
 	}
+	}if(my_hitboxID.attack == AT_FTILT){
+	if(my_hitboxID.hbox_num == 2){
+	materia_act();	
+	}
 	}
 }
 

@@ -331,7 +331,7 @@ switch(attack){
         case 1:
         if window_timer == 1 && !hitstop{
             step_sound();
-            if aware < 2 sound_play(sound_get("beep"), 1, 0, 100);
+            if aware < 2 beep = sound_play(sound_get("beep"), 1, 0, 100);
         }
         break;
         case 2:
@@ -366,7 +366,7 @@ switch(attack){
         if special_pressed{
             window = 5;
             window_timer = 0;
-            sound_stop(sound_get("beep"));
+            sound_stop(beep);
         }
         if taunt_pressed{
             window = 6;

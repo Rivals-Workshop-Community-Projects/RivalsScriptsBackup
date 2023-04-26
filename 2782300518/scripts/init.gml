@@ -136,6 +136,7 @@ bike_state_timer = 0;
 thrownBike = noone;
 bike_sp = 0;
 nBoostReadyTimer = 100;
+wall_ride = false;
 
 //Miscellaneous
 hitConfirm = false;
@@ -203,6 +204,9 @@ guiltySprite = sprite_get("guilty_carol");
 mario_cap_compat = sprite_get("cappytaunt_carol");
 mario_cap_top_compat = sprite_get("cappytaunt_head_carol");
 assistATIndex = 2; //46 is a bike move, changing this so that Carol can use her moveset
+
+dracula_portrait = sprite_get("dracula_port1");
+dracula_portrait2 = sprite_get("dracula_port2");
 
 //Howzit Compatibility
 howzitisthebestshopowner123 = true //activates the compatibility

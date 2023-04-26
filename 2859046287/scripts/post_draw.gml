@@ -4,10 +4,7 @@
 shader_start(); //everything between this and shader_end(); will be affected by alts
 
 //respawn platform - check if the player is either in the respawn state or taunting while in the respawn state
-if (state == PS_RESPAWN || respawn_taunt > 0)
-{
-    draw_sprite_ext(sprite_get("plat_post"), game_time * plat_speed, x, y, 2, 2, 0, c_white, 1);
-}
+if (state == PS_RESPAWN || respawn_taunt > 0) draw_sprite_ext(sprite_get("plat_post"), game_time * plat_speed, x, y, small_sprites + 1, small_sprites + 1, 0, c_white, 1);
 
 shader_end();
 
@@ -96,29 +93,38 @@ if (get_match_setting(SET_RUNES))
     if (has_rune("A")) if (clinging && wall_slide_enabled && state_timer % 6 == 0) spawn_base_dust(x-20*spr_dir, y-char_height/2, "walk", spr_dir, 90);
 }
 
-
 //written by muno
 #define rectDraw(x1, y1, width, height, color)
 {
     draw_rectangle_color(x1, y1, x1 + width, y1 + height, color, color, color, color, false);
 }
-#define textDraw(x1, y1, font, color, lineb, linew, align, scale, outline, alpha, text, array_bool)
+
+//text_draw(x, y, string, color, font, align, alpha, outline, line_alpha, line_col)
+#define text_draw
 {
+    var x = argument[0];
+    var y = argument[1];
+    var string = argument[2];
+    var color = argument[3];
+    var font = argument[4];
+    var align = argument[5];
+    var alpha = argument_count > 6 ? argument[6] : 1;
+    var outline = argument_count > 7 ? argument[7] : false;
+    var line_alpha = argument_count > 8 ? argument[8] : 1;
+    var line_col = argument_count > 9 ? argument[9] : c_black;
+
     draw_set_font(asset_get(font));
     draw_set_halign(align);
 
-    if outline {
-        for (i = -1; i < 2; i++) {
-            for (j = -1; j < 2; j++) {
-                draw_text_ext_transformed_color(x1 + i * 2, y1 + j * 2, text, lineb, linew, scale, scale, 0, c_black, c_black, c_black, c_black, alpha);
-            }
+    if (outline && line_alpha > 0)
+    {
+        for (var i_x = -1; i_x < 2; ++i_x) for (var i_y = -1; i_y < 2; ++i_y)
+        {
+            draw_text_color(x + i_x * 2, y + i_y * 2, string, line_col, line_col, line_col, line_col, line_alpha * alpha);
         }
     }
 
-    if alpha draw_text_ext_transformed_color(x1, y1, text, lineb, linew, scale, scale, 0, color, color, color, color, alpha);
-
-    if array_bool return [string_width_ext(text, lineb, linew), string_height_ext(text, lineb, linew)];
-    else return;
+    draw_text_color(x, y, string, color, color, color, color, alpha);
 }
 
 //written by supersonic, modified by bar-kun

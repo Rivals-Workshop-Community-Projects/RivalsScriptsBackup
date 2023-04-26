@@ -59,94 +59,51 @@ if(nspecialcharge < 60 && fspecialcharge < 60){
 	}
 }
 //print_debug(string(0.4+(hsp/10*spr_dir)));
-steam_cooldown -= 1;
+if(steam_cooldown > 0)steam_cooldown -= 1;
+
+if(state_timer == 5 && state == PS_DOUBLE_JUMP){
+    if(right_down && spr_dir == -1){
+        spr_dir = 1;
+    }else if(left_down && spr_dir == 1){
+        spr_dir = -1;
+    }
+}
 
 if(free && /*floating &&*/ (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP) && taunt_pressed){
    set_attack(AT_TAUNT);
 }
 
 if (attack != AT_NSPECIAL && state != PS_HITSTUN && special_pressed && joy_pad_idle && (attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL)){
-    		if(instance_exists(blob_ball)){
-				if (instance_exists(blob_ball.ballhitbox)) {
-			    	instance_destroy(blob_ball.ballhitbox);
-			    }if(blob_ball.ballmode == 0){
-				    if(nspecialcharge < 60){
-				    	create_hitbox(AT_NSPECIAL,3,blob_ball.x,blob_ball.y);
-				    	spawn_hit_fx(blob_ball.x+20,blob_ball.y+20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball.x-20,blob_ball.y+20, fx_blob_ball_explosion);
-				    	spawn_hit_fx(blob_ball.x+20,blob_ball.y-20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball.x-20,blob_ball.y-20, fx_blob_ball_explosion);
-				    }else{
-				    	create_hitbox(AT_NSPECIAL,2,blob_ball.x,blob_ball.y);
-				    	spawn_hit_fx(blob_ball.x,blob_ball.y, fx_blob_ball_explosion);spawn_hit_fx(blob_ball.x,blob_ball.y, fx_blob_ball_explosion2);
-				    }
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}else if(blob_ball.ballmode == 1){ //ice
-				    create_hitbox(AT_NSPECIAL,4,blob_ball.x,blob_ball.y);
-				    spawn_hit_fx(blob_ball.x,blob_ball.y, 199);
-				    sound_play(asset_get("sfx_ice_back_air"));
-				}else if(blob_ball.ballmode == 2){ //steam
-				    create_hitbox(AT_NSPECIAL,5,blob_ball.x,blob_ball.y);
-				    spawn_hit_fx(blob_ball.x+20,blob_ball.y-20, 144);spawn_hit_fx(blob_ball.x-20,blob_ball.y-20, 144);spawn_hit_fx(blob_ball.x+20,blob_ball.y+20, 144);spawn_hit_fx(blob_ball.x-20,blob_ball.y+20, 144);
-				    sound_play(asset_get("sfx_ell_steam_release"));
-				}else if(blob_ball.ballmode == 3){ //whirlpool
-				    create_hitbox(AT_NSPECIAL,6,blob_ball.x,blob_ball.y);
-				    spawn_hit_fx(blob_ball.x,blob_ball.y, 196);
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}instance_destroy(blob_ball);
-			}
-			if(instance_exists(blob_ball2)){
-				if (instance_exists(blob_ball2.ballhitbox)) {
-			    	instance_destroy(blob_ball2.ballhitbox);
-			    }if(blob_ball2.ballmode == 0){
-				    if(nspecialcharge < 60){
-				    	create_hitbox(AT_NSPECIAL,3,blob_ball2.x,blob_ball2.y);
-				    	spawn_hit_fx(blob_ball2.x+20,blob_ball2.y+20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball2.x-20,blob_ball2.y+20, fx_blob_ball_explosion);
-				    	spawn_hit_fx(blob_ball2.x+20,blob_ball2.y-20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball2.x-20,blob_ball2.y-20, fx_blob_ball_explosion);
-				    }else{
-				    	create_hitbox(AT_NSPECIAL,2,blob_ball2.x,blob_ball2.y);
-				    	spawn_hit_fx(blob_ball2.x,blob_ball2.y, fx_blob_ball_explosion);spawn_hit_fx(blob_ball2.x,blob_ball2.y, fx_blob_ball_explosion2);
-				    }
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}else if(blob_ball2.ballmode == 1){ //ice
-				    create_hitbox(AT_NSPECIAL,4,blob_ball2.x,blob_ball2.y);
-				    spawn_hit_fx(blob_ball2.x,blob_ball2.y, 199);
-				    sound_play(asset_get("sfx_ice_back_air"));
-				}else if(blob_ball2.ballmode == 2){ //steam
-				    create_hitbox(AT_NSPECIAL,5,blob_ball2.x,blob_ball2.y);
-				    spawn_hit_fx(blob_ball2.x+20,blob_ball2.y-20, 144);spawn_hit_fx(blob_ball2.x-20,blob_ball2.y-20, 144);spawn_hit_fx(blob_ball2.x+20,blob_ball2.y+20, 144);spawn_hit_fx(blob_ball2.x-20,blob_ball2.y+20, 144);
-					sound_play(asset_get("sfx_ell_steam_release"));
-				}else if(blob_ball2.ballmode == 3){ //whirlpool
-				    create_hitbox(AT_NSPECIAL,6,blob_ball2.x,blob_ball2.y);
-				    spawn_hit_fx(blob_ball2.x,blob_ball2.y, 196);
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}instance_destroy(blob_ball2);
-			}if(instance_exists(blob_ball3)){
-				if (instance_exists(blob_ball3.ballhitbox)) {
-			    	instance_destroy(blob_ball3.ballhitbox);
-			    }if(blob_ball3.ballmode == 0){
-				    if(nspecialcharge < 60){
-				    	create_hitbox(AT_NSPECIAL,3,blob_ball3.x,blob_ball3.y);
-				    	spawn_hit_fx(blob_ball3.x+20,blob_ball3.y+20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball3.x-20,blob_ball3.y+20, fx_blob_ball_explosion);
-				    	spawn_hit_fx(blob_ball3.x+20,blob_ball3.y-20, fx_blob_ball_explosion);spawn_hit_fx(blob_ball3.x-20,blob_ball3.y-20, fx_blob_ball_explosion);
-				    }else{
-				    	create_hitbox(AT_NSPECIAL,2,blob_ball3.x,blob_ball3.y);
-				    	spawn_hit_fx(blob_ball3.x,blob_ball3.y, fx_blob_ball_explosion);spawn_hit_fx(blob_ball3.x,blob_ball3.y, fx_blob_ball_explosion2);
-				    }
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}else if(blob_ball3.ballmode == 1){ //ice
-				    create_hitbox(AT_NSPECIAL,4,blob_ball3.x,blob_ball3.y);
-				    spawn_hit_fx(blob_ball3.x,blob_ball3.y, 199);
-				    sound_play(asset_get("sfx_ice_back_air"));
-				}else if(blob_ball3.ballmode == 2){ //steam
-				    create_hitbox(AT_NSPECIAL,5,blob_ball3.x,blob_ball3.y);
-				    spawn_hit_fx(blob_ball3.x+20,blob_ball3.y-20, 144);spawn_hit_fx(blob_ball3.x-20,blob_ball3.y-20, 144);spawn_hit_fx(blob_ball3.x+20,blob_ball3.y+20, 144);spawn_hit_fx(blob_ball3.x-20,blob_ball3.y+20, 144);
-					sound_play(asset_get("sfx_ell_steam_release"));
-				}else if(blob_ball3.ballmode == 3){ //whirlpool
-				    create_hitbox(AT_NSPECIAL,6,blob_ball3.x,blob_ball3.y);
-				    spawn_hit_fx(blob_ball3.x,blob_ball3.y, 196);
-				    sound_play(asset_get("sfx_waterhit_heavy"));
-				}instance_destroy(blob_ball3);
-			}
-			nspecialcharge = 0;
+	with(obj_article1){
+		if("BlueBlobBall" in self && BlueBlobBall && player_id == other /*&& player == other.player*/ && !Pocketed){
+        	if (instance_exists(ballhitbox)) {
+		    	instance_destroy(ballhitbox);
+		    }if(ballmode == 0){
+			    if(other.nspecialcharge < 60){
+			    	var explosion = create_hitbox(AT_NSPECIAL,3,x,y);explosion.player = player;
+			    	spawn_hit_fx(x+20,y+20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y+20, player_id.fx_blob_ball_explosion);
+			    	spawn_hit_fx(x+20,y-20, player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y-20, player_id.fx_blob_ball_explosion);
+			    }else{
+			    	var explosion = create_hitbox(AT_NSPECIAL,2,x,y);explosion.player = player;
+			    	spawn_hit_fx(x,y, player_id.fx_blob_ball_explosion);spawn_hit_fx(x,y, player_id.fx_blob_ball_explosion2);
+			    }
+			    sound_play(asset_get("sfx_waterhit_heavy"));
+			}else if(ballmode == 1){ //ice
+			    var explosion = create_hitbox(AT_NSPECIAL,4,x,y);explosion.player = player;
+			    spawn_hit_fx(x,y, 199);
+			    sound_play(asset_get("sfx_ice_back_air"));
+			}else if(ballmode == 2){ //steam
+			    var explosion = create_hitbox(AT_NSPECIAL,5,x,y);explosion.player = player;
+			    spawn_hit_fx(x+20,y-20, 144);spawn_hit_fx(x-20,y-20, 144);spawn_hit_fx(x+20,y+20, 144);spawn_hit_fx(x-20,y+20, 144);
+			    sound_play(asset_get("sfx_ell_steam_release"));
+			}else if(ballmode == 3){ //whirlpool
+			    var explosion = create_hitbox(AT_NSPECIAL,6,x,y);explosion.player = player;
+			    spawn_hit_fx(x,y, 196);
+			    sound_play(asset_get("sfx_waterhit_heavy"));
+			}instance_destroy(self);
+    	}
+	}
+	nspecialcharge = 0;
 }
 
 //Crawl

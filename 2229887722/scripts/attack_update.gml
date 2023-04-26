@@ -5,12 +5,91 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL_2 ||
         trigger_b_reverse();
 }
 
+//Rune Additions
+if(runeB){
+    if(shurikatChargeLevel == 4 && !has_hit_player && shurikatLoopCountStorageAbyss == 0){
+        shurikatLoopCountStorageAbyss = 6;
+    }
+    if(shurikatChargeLevel == 5 && !has_hit_player && shurikatLoopCountStorageAbyss == 0){
+        shurikatLoopCountStorageAbyss = 10;
+    }
+    if(attack == AT_FSPECIAL && window == 1 && window_timer == 1){
+        shurikatLoopCountStorageAbyss = 0;
+    }
+    if(window < 4 && !has_hit_player){
+        if(shurikatLoopCountStorageAbyss != 0){
+            shurikatLoopCount = 99;
+        }
+    }
+    if(window == 4 && has_hit_player){
+        if(shurikatCurrentLoopCount > shurikatLoopCountStorageAbyss - 4 && shurikatLoopCountStorageAbyss != 0){
+            shurikatLoopCount = shurikatLoopCountStorageAbyss;
+            shurikatCurrentLoopCount = shurikatLoopCountStorageAbyss - 4;
+            shurikatLoopCountStorageAbyss = 0;
+        }
+        if(shurikatCurrentLoopCount <= shurikatLoopCountStorageAbyss - 4 && shurikatLoopCountStorageAbyss != 0){
+            shurikatLoopCount = shurikatLoopCountStorageAbyss;
+            shurikatLoopCountStorageAbyss = 0;
+        }
+    }
+    
+    if((point_distance(x, y, get_stage_data(SD_LEFT_BLASTZONE_X), y) < 30 || point_distance(x, y, get_stage_data(SD_RIGHT_BLASTZONE_X), y) < 30)
+    && attack == AT_FSPECIAL && window == 4 && shurikatLoopCountStorageAbyss != 0){
+        spr_dir *= -1;
+        set_attack(AT_EXTRA_1);
+        hurtboxID.sprite_index = sprite_get("dspecial_hurt");
+        shurikatLoopCount = 0;
+        shurikatLoopCountStorageAbyss = 0;
+    }
+}
+
+if(runeE){
+    if (window == 1 && window_timer == 1 && attack == AT_USPECIAL_2) 
+    {
+        sound_stop(asset_get( "sfx_ori_grenade_aim" ));
+        sound_play(asset_get("sfx_ori_grenade_launch"));
+        
+        if (free)
+            set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -15);
+        else
+            set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -16);
+    }
+}
+
+if(runeM && (attack == AT_FTILT || attack == AT_FAIR)){ // abyss projectile rune
+    if(window == 1 || window == 3 || window == 6 || window == 9 || window == 12){
+        runeMakeProj = true;
+    }
+    if(!runeMakeProj){
+        set_num_hitboxes(AT_FTILT, 5);
+        set_num_hitboxes(AT_FAIR, 5);
+    } else {
+        set_num_hitboxes(AT_FTILT, 10);
+        set_num_hitboxes(AT_FAIR, 10);
+    }
+}
+
+var notAttack = (attack != AT_NTHROW && attack != AT_FSPECIAL && attack != AT_USPECIAL_2 && attack != AT_DSPECIAL_2 && attack != AT_DSPECIAL);
+if(runeN && has_hit_player && !hitpause && special_pressed && notAttack && runeTeleportTarget != noone && runeTeleportCooldown == 0 && runeTeleportFree == false){
+    attack_end();
+    destroy_hitboxes();
+    attack = AT_NTHROW;
+    hurtboxID.sprite_index = asset_get("hurtbox");
+    window = 2;
+    window_timer = 0;
+    runeTeleportFree = true;
+    speedlinesEnable = false;
+    chargeAttackReady = false;
+}
+
+var claw_hit = (has_hit || has_rune("M"));
+
 switch (attack)
 {
     case AT_NSPECIAL:
         clear_button_buffer( PC_SPECIAL_PRESSED  );
         
-        if (chargeAttackReady == true)
+        if (chargeAttackReady == true && move_cooldown[AT_NTHROW] == 0)//added second half of code to make it work
         {
             //if (smokeBombCooldownTimer <= 0)
             //{
@@ -26,7 +105,7 @@ switch (attack)
                 //chargeAttackReadyTimer = chargeAttackReadyLength;
             //}
         }
-        else if (empoweredCooldownTimer <= 0)
+        else if (empoweredCooldownTimer <= 0  && chargeAttackReady == false) //added second half of code to make it work
         {
             totalDamageDealtPrevious = totalDamageDealt;
             setChargedAttackHitboxValues();
@@ -41,6 +120,10 @@ switch (attack)
             set_attack(AT_NTHROW);
             window = 6;
             window_timer = 0;
+        }
+        else if(runeG)
+        {
+            super_armor = false;
         }
         iasa_script();
         /*
@@ -131,6 +214,10 @@ switch (attack)
             
             if(window == 3 && window_timer == 4 && (has_hit || runeF))
             {
+                //Uspecial rune
+                if(runeF && has_hit){
+                    djumps = 0;
+                }
                 set_state(PS_IDLE_AIR);
                 can_fast_fall = true;
             }
@@ -154,10 +241,22 @@ switch (attack)
     case AT_USPECIAL_2:
         can_wall_jump = true;
         chargeAttackReady = false;
+        if(window == 1 && window_timer == 1 && totalDamageDealt < totalDamageDealtCap && !hitpause){
+            totalDamageDealt -= 10;
+            if(totalDamageDealt < 0){
+                totalDamageDealt = 0;
+            }
+        }
         drawChargeVfx = false;
         
         if (tutSuccessUsedEmpowered == false)
             tutSuccessUsedEmpowered = true;
+        
+        if(window == 1){
+            if(vsp > 0){
+                vsp *= .9;
+            }
+        }
         
         //Allow the player to fast fall if they have hit the player and on the ending window
         if (has_hit_player == false)
@@ -307,10 +406,10 @@ switch (attack)
         {
             //Amber's Ftilt behaves like a jab combo chain. Allow her to chain each
             //attack into each other
-            if (window == 3 && window_timer >= 1 ||
-                window == 6 && window_timer >= 1 ||
-                window == 9 && window_timer >= 1 ||
-                window == 12 && window_timer >= 1)
+            if (window == 3 && window_timer >= (1 + !claw_hit * 6) ||
+                window == 6 && window_timer >= (1 + !claw_hit * 6) ||
+                window == 9 && window_timer >= (1 + !claw_hit * 6) ||
+                window == 12 && window_timer >= (1 + !claw_hit * 6))
             {
                 if (attack_down && !up_down && !down_down || left_stick_down && spr_dir == -1 || right_stick_down && spr_dir == 1 || simpleModeEnabled == true && has_hit_player && !up_down && !down_down)
                 {
@@ -534,7 +633,15 @@ switch (attack)
     break;
     case AT_DSTRONG:
         if (window == 1 && window_timer == 1)
-        currentEaseTime = 0;
+        {
+            currentEaseTime = 0;
+            //rune laser despawn
+            if(runeC && laserPointerObject != noone)
+            {
+                laserPointerObject.state = 69;
+                laserPointerObject.state_timer = 0;
+            }
+        }
         
         //Cancel d-strong charges when not grounded, but allow us to be in the air right before the attack
         if (window < 4 && free)
@@ -570,6 +677,12 @@ switch (attack)
                 char_height = ease_quadOut( 100, originCharHeight, currentEaseTime, 10);
                 currentEaseTime++;
             }
+        }
+        
+        if (window == 11 && window_timer == 6 && !hitpause && runeC)
+        {
+            //rune laser spawn
+            laserPointerObject = instance_create(x + 56 * spr_dir, y, "obj_article3");
         }
         
         //Teleport the enemy towards the front of Amber during pounce windows
@@ -638,10 +751,10 @@ switch (attack)
         {
             //Amber's Ftilt behaves like a jab combo chain. Allow her to chain each
             //attack into each other
-            if (window == 3 && window_timer >= 1 ||
-                window == 6 && window_timer >= 1 ||
-                window == 9 && window_timer >= 1 ||
-                window == 12 && window_timer >= 1 )
+            if (window == 3 && window_timer >= (1 + !claw_hit * 6) ||
+                window == 6 && window_timer >= (1 + !claw_hit * 6) ||
+                window == 9 && window_timer >= (1 + !claw_hit * 6) ||
+                window == 12 && window_timer >= (1 + !claw_hit * 6) )
             {
                 if (attack_down || left_stick_down && spr_dir == -1 || right_stick_down && spr_dir == 1 || simpleModeEnabled == true && has_hit_player || simpleModeEnabled == true && clawComboCounter < 5)
                 {
@@ -885,6 +998,9 @@ switch (attack)
                     create_hitbox( AT_DATTACK, 2, x + (8 * spr_dir), y - 26 );
                 }
             }
+            // if(window == 4){
+            //     iasa_script();
+            // }
                 
         }
         else if (has_hit_player == false && window == 2 && window_timer == 2 && hitpause == false)
@@ -947,8 +1063,9 @@ switch (attack)
                             shurikatChargeLevel = 1;
                     
                 }
-                else if (special_down == false && window_timer < 89 && window_timer >= 4 && shurikatChargeLevel < 5 
-                        || shurikatChargeLevel == 5 && window_timer < 89 && window_timer >= 8) //Unleash Shurikat
+                else if ((special_down == false && window_timer < 89 && window_timer >= 4 && shurikatChargeLevel < 5) 
+                        || (shurikatChargeLevel == 5 && window_timer < 89 && window_timer >= 8) 
+                        || shurikatChargeLevel == 5 && window_timer < 89 && window_timer >= 2 && runeE /*rune frame data reduction on E.fspecial*/ ) //Unleash Shurikat
                 {
                     shurikatCurrentLoopCount = 0;
                     window_timer = 89;
@@ -959,7 +1076,7 @@ switch (attack)
                 if (window_timer >= 89)
                     setShurikatParam();
                 
-                if(runeD)
+                if(runeD && !hitpause)
                     window_timer++;
             break;
             
@@ -990,8 +1107,9 @@ switch (attack)
                     set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, shurikatHitHsp); //Modified from attack_update. Ranges from 10-20, based on charge rate
                     move_cooldown[AT_FSPECIAL] = 2;
                     move_cooldown[AT_NSPECIAL] = 2;
-                    if (runeB)
-                        iasa_script();
+                    // if (runeB)
+                    //     iasa_script();
+                    // changed rune
                 }
                 
                 //Skip to the finisher if the special button is pressed again
@@ -1101,12 +1219,13 @@ switch (attack)
     break;
     case AT_FSTRONG:
         feralBlitzChargeParam();
+        
         //Reset counter upon start of the attack
         if (window == 1)
         {
             if (window_timer <= 1)
                 feralBlitzCounter = 0;
-            else if (window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH ) - 1 && runeD)
+            else if (window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH ) - 1 && runeD && !hitpause)
                 strong_charge++;
                 
         }
@@ -1194,6 +1313,11 @@ switch (attack)
         }
     break;
     case AT_NTHROW: //Smoke bomb
+        if(runeN){ //teleportation rune
+            runeTeleportCooldown = 60;
+            runeTeleportFree = true;
+        }
+    
         if (tutSuccessUsedEmpowered == false)
             tutSuccessUsedEmpowered = true;
         
@@ -1207,6 +1331,9 @@ switch (attack)
             {
                 char_height = ease_quadOut( originCharHeight, 64, currentEaseTime, 6);
                 currentEaseTime++;
+            }
+            if(vsp > 0){
+                vsp *= .9;
             }
         }
         
@@ -1224,6 +1351,9 @@ switch (attack)
                 var smokefx = spawn_hit_fx(x - 102, y - 130, smokeBombVfx);
                 smokefx.spr_dir = 1;
                 smokefx.depth = depth - 30;
+            }
+            if(vsp > 0){
+                vsp *= .9;
             }
         }
         if (window == 3 && window_timer == 4)
@@ -1244,7 +1374,7 @@ switch (attack)
         }
         
         //Looping invis
-        if (window == 4)
+        if (window == 4 && !runeN && (runeTeleportTarget == noone || !instance_exists(runeTeleportTarget)))
         {
             fall_through = true;
             can_fast_fall = false;
@@ -1293,6 +1423,57 @@ switch (attack)
             {
                 window = 5;
                 window_timer = 0;
+            }
+        } else if (window == 4 && runeN)
+        {
+            fall_through = true;
+            can_fast_fall = false;
+            
+            attack_invince = 1;
+            hsp = 0;
+            vsp = 0;
+            
+            if(totalDamageDealt <= 0)
+                totalDamageDealt++;
+                
+            if(smokeBombInvisTimer > 8)
+                smokeBombInvisTimer = 8;
+            
+            //Increaes smokebomb cooldown if we ran out of boost meter
+            if (totalDamageDealt <= 0)
+                smokeBombCooldownTimer += 10; //Update.gml subtracts 1 from this due to passively reducing cooldown
+                
+            if (playerDecimalDamage >= 1)
+            {
+                take_damage( player, hit_player_obj.player, playerDecimalDamage - (playerDecimalDamage % 1) );
+                playerDecimalDamage -= playerDecimalDamage - (playerDecimalDamage % 1);
+            }
+            
+            if(smokeBombInvisTimer == 0 && runeTeleportTarget != noone && instance_exists(runeTeleportTarget)){
+                if(runeTeleportTarget.x > x){
+                    spr_dir = 1;
+                } else {
+                    spr_dir = -1;
+                }
+                x = runeTeleportTarget.x;
+                y = runeTeleportTarget.y;
+            }
+            
+            if (smokeBombBurstSpeedTimer > 0)
+                smokeBombBurstSpeedTimer--;
+            
+            if (smokeBombInvisTimer > 0)
+                smokeBombInvisTimer--;
+            else
+            {
+                window = 5;
+                window_timer = 0;
+                var smokefx = spawn_hit_fx(x - 102, y - 130, smokeBombVfx);
+                smokefx.spr_dir = 1;
+                smokefx.depth = depth - 30;
+                invincible = true;
+                invince_time = 4;
+                vsp = -20;
             }
         }
         
@@ -1351,10 +1532,10 @@ switch (attack)
             clear_button_buffer( PC_SPECIAL_PRESSED  );
         }
         
-        if (window == 3 || window == 2 && (left_down || right_down || jump_pressed))
+        if (window == 3 || window == 2 && (left_down || right_down || jump_pressed) && isHoldingYarnBall)
             iasa_script();
         
-        if (window <= 3)
+        if (window <= 3 && isHoldingYarnBall)
             can_wall_jump = true;
         
         //A new Workshop update has broke the use of cancel windows from stopping parts of the D-Special moves
@@ -1575,6 +1756,12 @@ switch (attack)
         can_fast_fall = false;
         can_move = false;
         chargeAttackReady = false;
+        if(window == 1 && window_timer == 1 && totalDamageDealt < totalDamageDealtCap && !hitpause){
+            totalDamageDealt -= 10;
+            if(totalDamageDealt < 0){
+                totalDamageDealt = 0;
+            }
+        }
         isCharged = false;
         hurtboxID.sprite_index = sprite_get("dspecial2_hurt");
         
@@ -1584,6 +1771,11 @@ switch (attack)
         if (window == 1)
         {
             set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_LENGTH, 30);
+            //frame data reduction rune
+            if(runeE){
+                set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_LENGTH, 8);
+            }
+            
             attack_end(); //Refresh hitboxes in case we were KO'd earlier while using Finishing Yarn
             
             //Check if the attack is used near the side blast zones by calculating the
@@ -2093,7 +2285,10 @@ switch (shurikatChargeLevel)
         
         set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
         
-        
+        //frame data reduction rune
+        if(runeE){
+            set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 6);
+        }
         
         
         shurikatLoopCount = 10 - (5 * lethalLeague_stage);
@@ -2371,10 +2566,11 @@ if (totalDamageDealtPrevious >= totalDamageDealtCap)
     set_hitbox_value(AT_USPECIAL_2, 7, HG_KNOCKBACK_SCALING, 0.9);
     
     //DSPECIAL_2 (Finishing Yarn)
-    set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 12);
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 40);
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 9);//12
     //These hitbox values are also modified in hit_player.gml if Amber hits the enemy
     //while charged yarn dashing
-    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 1.75);
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 2);//1.75
 }
 else
 {
@@ -2386,14 +2582,20 @@ else
     //DSPECIAL_2 (Finishing Yarn)
     //These hitbox values are also modified in hit_player.gml if Amber hits the enemy
     //while charged yarn dashing
-    set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 12);
-    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 1); 
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 40);
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 8); //12
+    set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 1.1); //1
 }
 //set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 361);
 
 #define feralBlitzChargeParam
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 10 + (strong_charge * 0.083));
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 10 + (strong_charge * 0.083));
+if(runeD){
+    set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 14 + (strong_charge * 0.2));
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 14 + (strong_charge * 0.2));
+} else {
+    set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 12 /*10*/ + (strong_charge * 0.09));//0.083
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 12 /*10*/ + (strong_charge * 0.09));//0.083
+}
 if (strong_charge < 60)
     set_hitbox_value(AT_FSTRONG, 7, HG_BASE_HITPAUSE, 6 + (strong_charge * 0.166));
 else

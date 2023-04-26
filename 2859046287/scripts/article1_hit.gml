@@ -15,14 +15,35 @@ if (is_hittable)
 
         //check is the hitbox' owner is not the owner of the article or a teammate of the owner of the article
         //alternatively, check if it is owner of the article and if they are using fspec on it
-        if (hit_player_obj != player_id && get_player_team(hit_player_obj.player) != get_player_team(player) ||
-            hit_player_obj == player_id && enemy_hitboxID.attack == AT_FSPECIAL)
+        if (hit_player_obj != player_id && get_player_team(hit_player_obj.player) != get_player_team(player) || //check enemies
+            hit_player_obj == player_id && (enemy_hitboxID.attack == AT_FSPECIAL || //check owner if using fspec/has rune H
+            (has_rune("H") && (enemy_hitboxID.attack != AT_FTILT || enemy_hitboxID.hbox_num != 2) && gravity_field_cd == 0))) //rune H shenanigans
         {
-            artc_hp --;
-            //reduces HP by one if you want to simular % like on players you need to do it like so:
-            //artc_hp += enemy_hitboxID.damage;
-            //the code will take the enemy's damage from the hitbox as the value to add to the article's %
+            if (hit_player_obj != player_id) //enemies reduce article hp
+            {
+                artc_hp --;
+                //reduces HP by one if you want to simular % like on players you need to do it like so:
+                //artc_hp += enemy_hitboxID.damage;
+                //the code will take the enemy's damage from the hitbox as the value to add to the article's %
+            }
+            else //player interraction (fspec / rune H)
+            {
+                if (player_id.attack == AT_FSPECIAL)
+                {
+                    if (enemy_hitboxID.hbox_num == 1) player_id.has_hit = true;
+                    if (enemy_hitboxID.hbox_num == 2) player_id.fspec_found_target = true;
+                }
+                
+                if (has_rune("H") && gravity_field_cd == 0)
+                {
+                    gravity_field_time = gravity_field_lifetime;
+                    gravity_field_cd = gravity_field_cd_set;
+                    var fx = spawn_hit_fx(x, y - article_height/2, fx_gravfield);
+                    fx.depth = 5;
+                }
+            }
 
+            //hitbox interraction
             with (enemy_hitboxID)
             {
                 //applies hitstop (hitpause) to article
@@ -52,14 +73,6 @@ if (is_hittable)
                 with (other) spawn_hit_fx(x, y-32, fx_dspec_hit); //spawns shards
 
                 if (type == 2 && enemies == 0) instance_destroy(self);
-            }
-
-            //player interraction
-            if (player_id.attack == AT_FSPECIAL)
-            {
-                if (enemy_hitboxID.hbox_num == 1) player_id.has_hit = true;
-                if (enemy_hitboxID.hbox_num == 2) player_id.fspec_found_target = true;
-                artc_hp ++; //it shouldn't reduce HP lol
             }
         }
         else

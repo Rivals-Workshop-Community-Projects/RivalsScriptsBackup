@@ -4,6 +4,15 @@
 
 //draw_debug_text(x, y, "text = " + string(variable));
 
+
+//article gravity field range (note it doesn't quite work like a hitbox cuz it isn't one, it just checks if the player's coordinates are in range)
+if (instance_exists(artc_dspec) && has_rune("H") && artc_dspec.gravity_field_time > 0 && hbox_view)
+{
+    draw_set_alpha(0.5)
+    draw_circle_color(artc_dspec.x, artc_dspec.y - artc_dspec.article_height/2, artc_dspec.gravity_field_range, c_blue, c_blue, false);
+    draw_set_alpha(1)
+}
+
 //Put this above all the #defines in your script.
 draw_colored_hitboxes();
 

@@ -2,7 +2,7 @@
 //this script runs when the player gets hit, can be useful to stop certain effects or apply certain effects on your player
 
 //stops grab
-if (my_grab_id != noone)
+if (instance_exists(my_grab_id) && my_grab_id != noone)
 {
     my_grab_id.hitstop = 0;
     my_grab_id = noone; //let go of the grabbed person

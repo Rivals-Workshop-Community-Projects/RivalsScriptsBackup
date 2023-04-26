@@ -20,7 +20,7 @@ switch (attack)
 			grab_time = 0;
 		}
 
-		if (my_grab_id != noone) //if you have grabbed someone
+		if (instance_exists(my_grab_id) && my_grab_id != noone) //if you have grabbed someone (and made sure they exist)
 		{
 			//"with" switches the perspective of the code, in this case to the grabbed player
 			//if you want to reffer to yourself in this scenario you are called "other"
@@ -77,14 +77,24 @@ switch (attack)
 						break;
 				}
 			}
-			break;
+
+			//makes it so the throw will only affect the grabbed player
+			with (pHitBox) if (player == other.player && attack == AT_FTILT && hbox_num == 2) //checks for the exact hitbox to tweak (our player, Ftilt, throw hitbox)
+			{
+				for (var i = 0; i < array_length(can_hit); i++) //can_hit is an array in hitboxes that checks which players can be hit by the hitbox
+				{
+					//filters every other player that wasn't grabbed to not be hit by the hitbox
+					if (i == other.my_grab_id.player) can_hit[i] = true;
+					else can_hit[i] = false;
+				}
+			}
 		}
 		break;
 	case AT_DTILT: //cancel attack to jump
-		if (has_hit && window == 2 && !was_parried) can_jump = true;
+		if (has_hit && (window == 2 || window == 3) && !was_parried) can_jump = true;
 		//this cancel is allowed to be done if:
 		//	- we hit any hittable object, including articles
-		//	- we are in window 2
+		//	- we are in window 2 or window 3
 		//	- also check if the player isn't parried
 		break;
 	case AT_DATTACK: //cancel attack to a specific attack only on hitting a player
@@ -102,7 +112,7 @@ switch (attack)
 			set_window_value(attack, 4, AG_WINDOW_VSPEED, -8-(strong_charge/15));
 
 			//increase the endlag window according to the charge
-			set_window_value(attack, window_last, AG_WINDOW_LENGTH, 15+(strong_charge/5));
+			set_window_value(attack, window_last, AG_WINDOW_LENGTH, 13+(strong_charge/5));
 		}
 
 		//if in the air and going back down, put landing lag
@@ -123,12 +133,16 @@ switch (attack)
 				if (window_timer == 1) sound_stop(cur_loop_sound);
 				break;
 			case 4: //effects
-				if (window_timer % 2 == 0 && window_timer != window_end) //first 2 hits
+				if (!hitpause) switch (window_timer)
 				{
-					var fstrong_fx = spawn_hit_fx(x + (48 + window_timer * 8) * spr_dir, y - 32, fx_fstrong_pop);
-					fstrong_fx.draw_angle = random_func(12, 30, true) * 12; //changes effect angle randomly
+					case 2: case 4: //first 2 hits
+						var fstrong_fx = spawn_hit_fx(x + (48 + window_timer * 8) * spr_dir, y - 32, fx_fstrong_pop);
+						fstrong_fx.draw_angle = random_func(12, 30, true) * 12; //changes effect angle randomly
+						break;
+					case 6: //last hit
+						spawn_hit_fx(x + 96 * spr_dir, y - 32, fx_pow_hit[0]);
+						break;
 				}
-				else if (window_timer == window_end) spawn_hit_fx(x + 96 * spr_dir, y - 32, fx_pow_hit[0]); //last hit
 				break;
 		}
 		break;
@@ -151,7 +165,7 @@ switch (attack)
 					set_hitbox_value(attack, 1, HG_HITPAUSE_SCALING, 0.8);
 					set_hitbox_value(attack, 1, HG_VISUAL_EFFECT, fx_pow_hit[1]);
 					set_hitbox_value(attack, 1, HG_HIT_SFX, asset_get("sfx_ori_seinhit_heavy"));
-
+					
 					set_hitbox_value(attack, 1, HG_HITBOX_X, 72);
 					set_hitbox_value(attack, 2, HG_HITBOX_X, -56);
 				}
@@ -176,7 +190,7 @@ switch (attack)
 		break;
 	case AT_NAIR: //conditional attack transitions
 		var nair_cancel_time = 10; //smaller number means the delay is bigger
-        if ((window == 2 || window == 3 && window_timer < nair_cancel_time-1) && has_hit) //N-air canceling
+        if ((window == 2 || window == 3 && window_timer < nair_cancel_time-1) && has_hit && !hitpause) //N-air canceling
         {
             window = 3;
             window_timer = nair_cancel_time;
@@ -197,12 +211,16 @@ switch (attack)
 				if (window_timer == window_end && (attack_down || left_stick_down || right_stick_down)) set_window(5);
 				break;
 			//TAP VERSION
+			case 2: //tap blast sound play (should play in window 3 but attack_update doesn't have window_timer 0)
+				if (window_timer == window_end) sound_play(asset_get("sfx_ori_charged_flame_release"));
+				break;
 			case 4: //tap version end - go to PS_IDLE_AIR to exit the move
 				if (window_timer == window_end) set_state(PS_IDLE_AIR);
 				break;
 			//HOLD VERSION
-			case 5: //set landing lag to the hold version landing lag
+			case 5: //set landing lag to the hold version landing lag + hold blast sound play (should play in window 6 but attack_update doesn't have window_timer 0)
 				set_attack_value(attack, AG_LANDING_LAG, 12);
+				if (window_timer == window_end) sound_play(asset_get("sfx_abyss_explosion"));
 				break;
 		}
 		break;

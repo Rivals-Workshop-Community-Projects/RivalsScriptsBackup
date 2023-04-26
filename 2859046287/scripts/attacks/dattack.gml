@@ -15,16 +15,16 @@ set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 window_num ++; //attack
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6); //16
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, window_num, AG_WINDOW_HSPEED, 10);
 
 window_num ++; //endlag
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16); //12 -> 22
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_attack_value(atk, AG_NUM_WINDOWS, window_num);
