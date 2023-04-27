@@ -131,6 +131,17 @@ set_character_color_shading( 6, 1 );
 set_character_color_shading( 7, 2 );
 }
 
+if get_player_color(player) == 24 {
+set_character_color_shading( 0, 0 );
+set_character_color_shading( 1, 0 );
+set_character_color_shading( 2, 0 );
+set_character_color_shading( 3, 0 );
+set_character_color_shading( 4, 0 );
+set_character_color_shading( 5, 0 );
+set_character_color_shading( 6, 1 );
+set_character_color_shading( 7, 1.75 );
+}
+
 if get_player_color(player) == 25 {
 set_character_color_shading( 0, 0 );
 set_character_color_shading( 1, 0 );

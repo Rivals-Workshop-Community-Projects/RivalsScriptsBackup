@@ -55,7 +55,7 @@ sprite_change_offset("taunt_smile", 85, 108);
 
 sprite_change_offset("plat", 64, 94);
 
-sprite_change_offset("fireball", 18, 36);
+sprite_change_offset("fireball", 18, 18);
 sprite_change_offset("ptooie", 32, 32);
 sprite_change_offset("ptooie_default", 32, 32);
 

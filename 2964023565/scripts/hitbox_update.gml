@@ -41,6 +41,11 @@ if (attack == AT_NSPECIAL){
 }
 
 if attack == AT_NSPECIAL && hbox_num == 1{
+	/*if place_meeting(x, y, pHitBox){
+		can_hit[player_id] = true;
+		hsp *= -1;
+		vsp = -6;
+	}/*
 	/*if ( y-800 > get_instance_y(asset_get("camera_obj"))){
     destroyed = true;
     move_cooldown[AT_NSPECIAL] = 2;
@@ -150,6 +155,10 @@ if (attack == AT_DSPECIAL){
         	var moveDir = sign(x-other.x);
         	if (moveDir == 0) moveDir = id>other?-1:1;
         	hsp += 4 * moveDir;
+        	touch_timer += 1;
+        	if touch_timer > 5 && hsp = 0{
+        		instance_destroy(id);
+        	}
     		}
 		}
 }
@@ -194,6 +203,14 @@ if (attack == AT_DSPECIAL){
     
     if ( (abs(hsp) > 0 || vsp == 0) && img_spd == 0
 	&& !((place_meeting( x, y+3, asset_get("par_block"))) || (place_meeting( x, y+3, asset_get("par_jumpthrough"))) ) ){ instance_destroy(); exit; }
+    
+    if ((place_meeting( x, y+3, asset_get("par_block"))) || (place_meeting( x, y+3, asset_get("par_jumpthrough"))) ) && !((place_meeting( x + 72, y+3, asset_get("par_block"))) || (place_meeting( x + 72, y+3, asset_get("par_jumpthrough"))) ){
+    	hsp = -2;
+    } else if ((place_meeting( x, y+3, asset_get("par_block"))) || (place_meeting( x, y+3, asset_get("par_jumpthrough"))) ) && !((place_meeting( x - 72, y+3, asset_get("par_block"))) || (place_meeting( x - 72, y+3, asset_get("par_jumpthrough"))) ){
+    	hsp = 2;
+    } else if ((place_meeting( x, y+3, asset_get("par_block"))) || (place_meeting( x, y+3, asset_get("par_jumpthrough"))) ){
+    	hsp = 0;
+    }
     
     with (pHitBox){ //Bair hitting the goop
 	if (player_id == other.player_id && (attack == AT_BAIR) && place_meeting(x,y+13,other.id)) {

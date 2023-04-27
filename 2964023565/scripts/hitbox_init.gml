@@ -25,6 +25,7 @@ ptDir = 0;
 goop_repeat = 0;
 goop_destroy = false;
 goop_destroy_timer = 0;
+touch_timer = 0;
 
 hit_goop = noone;
 
