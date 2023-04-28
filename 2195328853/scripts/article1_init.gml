@@ -43,4 +43,4 @@ SpikeCanEat = true;SpikeHealPercent = 2;
 spr_dir = player_id.spr_dir;
 
 ballhitbox = create_hitbox(AT_NSPECIAL,1,floor(x),floor(y))
-ballhitbox.player = current_player;
+ballhitbox.player = current_player;ballhitbox.blob_ball = self;

@@ -141,6 +141,7 @@ runeM = false;
 runeO = false;
 outline_timer = 0;
 outline_rev = false;
+KewtFriend = true;
 
 intro = (state == PS_SPAWN);
 introspeed = 0.2;

@@ -147,25 +147,25 @@ if (attack == AT_NSPECIAL){
         }
     }else if(window == 6){
     	can_move = false;
-        if(window_timer <= 1){
+        if(window_timer == 1){
         	if(steam_cooldown <= 0 && !instance_exists(steam_cloud) && fspecialcharge >= 60){
 				steam_cooldown = 600;
 				if(!runeI){
-					steam_cloud = instance_create(x+30*spr_dir,y-30,"obj_article2");
+					steam_cloud = instance_create(round(x+30*spr_dir),round(y-30),"obj_article2");
 				}else{
-					steam_cloud = instance_create(x+50*spr_dir,y-30,"obj_article2");
-					steam_cloud2 = instance_create(x+10*spr_dir,y-30,"obj_article2");
-					steam_cloud3 = instance_create(x+30*spr_dir,y-50,"obj_article2");
-					steam_cloud4 = instance_create(x+30*spr_dir,y-10,"obj_article2");
+					steam_cloud = instance_create(round(x+50*spr_dir),round(y-30),"obj_article2");
+					steam_cloud2 = instance_create(round(x+10*spr_dir),round(y-30),"obj_article2");
+					steam_cloud3 = instance_create(round(x+30*spr_dir),round(y-50),"obj_article2");
+					steam_cloud4 = instance_create(round(x+30*spr_dir),round(y-10),"obj_article2");
 				}
         	}else{
         		if(!runeI){
-        			create_hitbox(AT_FSPECIAL,3,round(x+30)*spr_dir,round(y-30));
+        			create_hitbox(AT_FSPECIAL,3,round(x+30*spr_dir),round(y-30));
         		}else{
-					create_hitbox(AT_FSPECIAL,3,round(x+50)*spr_dir,round(y-30));
-					create_hitbox(AT_FSPECIAL,3,round(x+10)*spr_dir,round(y-30));
-					create_hitbox(AT_FSPECIAL,3,round(x+30)*spr_dir,round(y-50));
-					create_hitbox(AT_FSPECIAL,3,round(x+30)*spr_dir,round(y-10));
+					create_hitbox(AT_FSPECIAL,3,round(x+50*spr_dir),round(y-30));
+					create_hitbox(AT_FSPECIAL,3,round(x+10*spr_dir),round(y-30));
+					create_hitbox(AT_FSPECIAL,3,round(x+30*spr_dir),round(y-50));
+					create_hitbox(AT_FSPECIAL,3,round(x+30*spr_dir),round(y-10));
 				}
         	}
 	    }

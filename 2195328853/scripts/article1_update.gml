@@ -241,7 +241,7 @@ if (instance_exists(ballhitbox)) { //hitbox when moving
 } else {
 	if(hitplayertimer <= 0 && !hitplayer && hitstop <= 0 && ((ballmode == 1 && (hsp >= 2 || hsp <= -2 || vsp > 1 || vsp < -1)) || ballmode != 1)){
 	    ballhitbox = create_hitbox(AT_NSPECIAL,1,floor(x),floor(y))
-		ballhitbox.player = current_player;
+		ballhitbox.player = current_player;ballhitbox.blob_ball = self;
 		if(ballmode == 0){
 			ballhitbox.kb_angle = darctan2(-vsp, hsp * spr_dir);
 			if(ballhitbox.kb_angle < 35 && ballhitbox.kb_angle > -20){
@@ -446,20 +446,24 @@ if(x > room_width || x < 0 || y >= room_height+65 || y <= -200 /*|| ball_timer >
     	ballhitbox = noone;
     }
     if(ballmode == 0){
-	    create_hitbox(AT_NSPECIAL,3,round(x),round(y));
+	    var explode = create_hitbox(AT_NSPECIAL,3,round(x),round(y));
+		explode.player = current_player;explode.blob_ball = self;
 	    spawn_hit_fx(round(x+20),round(y+20), player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y+20, player_id.fx_blob_ball_explosion);
 	    spawn_hit_fx(round(x+20),round(y-20), player_id.fx_blob_ball_explosion);spawn_hit_fx(x-20,y-20, player_id.fx_blob_ball_explosion);
 	    sound_play(asset_get("sfx_waterhit_heavy"));
 	}else if(ballmode == 1){ //ice
-	    create_hitbox(AT_NSPECIAL,4,round(x),round(y));
+	    var explode = create_hitbox(AT_NSPECIAL,4,round(x),round(y));
+	    explode.player = current_player;explode.blob_ball = self;
 	    spawn_hit_fx(round(x),round(y), 199);
 	    sound_play(asset_get("sfx_ice_back_air"));
 	}else if(ballmode == 2){ //steam
-	    create_hitbox(AT_NSPECIAL,5,round(x),round(y));
+	    var explode = create_hitbox(AT_NSPECIAL,5,round(x),round(y));
+	    explode.player = current_player;explode.blob_ball = self;
 	    spawn_hit_fx(round(x+20),round(y-20), 144);spawn_hit_fx(round(x-20),round(y-20), 144);spawn_hit_fx(round(x+20),round(y+20), 144);spawn_hit_fx(round(x-20),round(y+20), 144);
 		sound_play(asset_get("sfx_ell_steam_release"));
 	}else if(ballmode == 3){ //whirlpool
-	    create_hitbox(AT_NSPECIAL,6,round(x),round(y));
+	    var explode = create_hitbox(AT_NSPECIAL,6,round(x),round(y));
+	    explode.player = current_player;explode.blob_ball = self;
 	    spawn_hit_fx(round(x),round(y), 196);
 	    sound_play(asset_get("sfx_waterhit_heavy"));
 	}

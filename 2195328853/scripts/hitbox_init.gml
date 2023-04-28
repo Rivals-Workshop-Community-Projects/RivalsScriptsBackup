@@ -12,6 +12,9 @@ Pocketable = false;
 if(attack == AT_NSPECIAL){
     if (hbox_num == 1){
         UnReflectable = true;
+        if("blob_ball" not in self){
+            blob_ball = noone; 
+        }
     }
     AriaDontDestroyWhenAbsorbed = true;
 }

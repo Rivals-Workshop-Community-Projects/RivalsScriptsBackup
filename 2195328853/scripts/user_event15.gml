@@ -234,6 +234,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.80", "27nd April 2022");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed some bugs from last patch with the blob ball and FSpecial");
+
 initPatch("1.79", "22nd April 2022");
 initHeader("Fixes / Other Changes");
 initSection("- Fixed a small bug with the latest patch where FSpecial turning the blob ball into it's steam form wouldn't flip it to Blue Blob's direction (so now it works like it used to)");
