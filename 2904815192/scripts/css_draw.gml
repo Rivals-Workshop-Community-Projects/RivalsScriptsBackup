@@ -31,7 +31,9 @@ alt_name[21] = "Infomaniac";
 alt_name[22] = "Old Man";
 alt_name[23] = "Teal";
 alt_name[24] = "5 Cent Raise";
-alt_name[25] = "Unmappped";
+alt_name[25] = "Puzzle Solver";
+alt_name[26] = "Old Baltic";
+alt_name[27] = "Unmappped";
 
 //Alt
  

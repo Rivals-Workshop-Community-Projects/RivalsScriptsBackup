@@ -234,6 +234,7 @@ sfx_smash_ult_snake_uspec_1 = sound_get("sfx_smash_ult_snake_uspec_1");
 sfx_smash_ult_snake_uspec_2 = sound_get("sfx_smash_ult_snake_uspec_2");
 victory_theme = sound_get("victory");
 victory_theme_infomaniac = sound_get("victory_infomaniac");
+victory_theme_layton = sound_get("victory_layton");
 
 //Victory Theme (Pulled from Monopoly PLUS: "Game Over")
 set_victory_theme(victory_theme);
@@ -255,6 +256,9 @@ switch (get_player_color( player )){
 		set_victory_sidebar( sprite_get( "result_small_gold" ));
 		break;
 	case 21:
+		set_victory_theme(victory_theme_infomaniac);
+		break;
+	case 25:
 		set_victory_theme(victory_theme_infomaniac);
 		break;
 }

@@ -122,7 +122,7 @@ if (attack == AT_DATTACK){
 				hsp = 3.5*spr_dir;
 				vsp = -4.5+(incJumpHeight);
 				destroy_hitboxes();
-				spawn_hit_fx( x, y - 10, 144 );
+				spawn_hit_fx( x, y - 24, 144 );
 				sound_stop(sfx_monopoly_pc_taxi_move);
 				sound_play(sfx_monopoly_pc_taxi_stop);
 			}
@@ -307,7 +307,7 @@ if (attack == AT_DSTRONG){
 	}
 	if (window == 6){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_hit_fx( x + (58 * spr_dir), y - 16, 144 );
+			spawn_hit_fx( x + (58 * spr_dir), y - 24, 144 );
 		}
 	}
 	//Hud Offset

@@ -278,3 +278,11 @@ set_hitbox_value(AT_DSPECIAL, 6, HG_EFFECT, 11);
 set_hitbox_value(AT_DSPECIAL, 6, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_DSPECIAL, 6, HG_EXTRA_HITPAUSE, 20);
 set_hitbox_value(AT_DSPECIAL, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+
+
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_DSPECIAL, 4, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_DSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_DOES_NOT_REFLECT, true);

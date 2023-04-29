@@ -195,23 +195,39 @@ if (state == 1){
 						if (x == other.x){
 							hsp = 0;
 						}
-						print("mario")
+						//print("mario")
 					} else {
-						print("luigi");
+						//print("luigi");
 					}
 				}
-				if (collision_rectangle(x-(36+other.offsetBoostRune), y-6, x+(36+other.offsetBoostRune), y+60, other, 0, 1)){
-					if (player != other.player_id.player){//im too lazy to remove this part
-						if (other.player_id.propertyAutoAttackRune == true){//rune
-							other.opponentIsTouching = true;
-						} else if (other.player_id.propertyAutoAttackRune == false){//not rune
-							if ((state == PS_HITSTUN
-							|| state == PS_HITSTUN_LAND
-							|| state == PS_TUMBLE
-							|| state == PS_PARRY_START)
-							||
-							(hsp > -1.5 && hsp < 1.5)){//>
+				if (state == PS_HITSTUN	|| state == PS_HITSTUN_LAND){
+					if (collision_rectangle(x-(36+other.offsetBoostRune), y - 6, x+(36+other.offsetBoostRune), y+60, other, 0, 1)){
+						if (player != other.player_id.player){//im too lazy to remove this part
+							if (other.player_id.propertyAutoAttackRune == true){//rune
 								other.opponentIsTouching = true;
+							} else if (other.player_id.propertyAutoAttackRune == false){//not rune
+								if ((state == PS_TUMBLE
+								|| state == PS_PARRY_START)
+								|| (hsp > -1.5 && hsp < 1.5)){//>
+									other.opponentIsTouching = true;
+									other.opponentWasInHitstun = true;
+								}
+							}
+						}
+					}
+				} else if (state != PS_HITSTUN && state != PS_HITSTUN_LAND){
+					if (collision_rectangle(x-(36+other.offsetBoostRune), y - 6, x+(36+other.offsetBoostRune), y+20, other, 0, 1)){
+						if (player != other.player_id.player){//im too lazy to remove this part
+							if (other.player_id.propertyAutoAttackRune == true){//rune
+								other.opponentIsTouching = true;
+							} else if (other.player_id.propertyAutoAttackRune == false){//not rune
+								if ((state == PS_TUMBLE
+								|| state == PS_PARRY_START)
+								||
+								(hsp > -1.5 && hsp < 1.5)){//>
+									other.opponentIsTouching = true;
+									other.opponentWasInHitstun = false;
+								}
 							}
 						}
 					}
@@ -239,7 +255,17 @@ if (state == 2){
 	sprite_index = spr_attack;
 	image_index = 0;
 	
-	if (state_timer == 3){
+	if (opponentWasInHitstun){
+		opponentWasInHitstunNumStuff = 3;
+	} else {
+		opponentWasInHitstunNumStuff = 0;
+	}
+	
+	if (state_timer == 1){
+		sound_play(asset_get("mfx_star"), false, noone, 1, .9);
+	}
+	
+	if (state_timer == (6 - opponentWasInHitstunNumStuff)){
 		
 		sound_play(asset_get("sfx_charge_blade_swing"), false, noone, 0.9, .9);
 		attackCooldown = 120;

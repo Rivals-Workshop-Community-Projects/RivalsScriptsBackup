@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 18, 62, 16 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 20 );
 
 // cirno
 set_color_profile_slot( 1, 0, 138, 236, 247 ); //hair/eyes
@@ -186,15 +186,15 @@ set_color_profile_slot( 15, 5, 251, 55, 57 ); //shoes
 set_color_profile_slot( 15, 6, 234, 215, 140 ); //skin
 set_color_profile_slot( 15, 7, 251, 169, 55 ); //light
 
-// champion
-set_color_profile_slot( 16, 0, 227, 227, 227 ); //hair/eyes
-set_color_profile_slot( 16, 1, 176, 146, 157 ); //hair shade/eyes shade
-set_color_profile_slot( 16, 2, 99, 99, 99 ); //pants
-set_color_profile_slot( 16, 3, 163, 224, 193 ); //shirt
-set_color_profile_slot( 16, 4, 94, 171, 168 ); //shirt shade
-set_color_profile_slot( 16, 5, 163, 224, 193 ); //shoes
-set_color_profile_slot( 16, 6, 245, 212, 176 ); //skin
-set_color_profile_slot( 16, 7, 163, 224, 193 ); //light
+// rider nightbug
+set_color_profile_slot( 16, 0, 253, 168, 217 ); //hair/eyes
+set_color_profile_slot( 16, 1, 179, 98, 181 ); //hair shade/eyes shade
+set_color_profile_slot( 16, 2, 105, 107, 146 ); //pants
+set_color_profile_slot( 16, 3, 81, 69, 95 ); //shirt
+set_color_profile_slot( 16, 4, 39, 35, 64 ); //shirt shade
+set_color_profile_slot( 16, 5, 254, 55, 94 ); //shoes
+set_color_profile_slot( 16, 6, 252, 252, 213 ); //skin
+set_color_profile_slot( 16, 7, 223, 252, 53 ); //light
 
 // rainbow
 set_color_profile_slot( 17, 0, 166, 69, 69 ); //hair/eyes
@@ -205,6 +205,26 @@ set_color_profile_slot( 17, 4, 31, 31, 31 ); //shirt shade
 set_color_profile_slot( 17, 5, 255, 255, 255 ); //shoes
 set_color_profile_slot( 17, 6, 255, 255, 255 ); //skin
 set_color_profile_slot( 17, 7, 110, 79, 79 ); //light
+
+// champion
+set_color_profile_slot( 18, 0, 227, 227, 227 ); //hair/eyes
+set_color_profile_slot( 18, 1, 176, 146, 157 ); //hair shade/eyes shade
+set_color_profile_slot( 18, 2, 99, 99, 99 ); //pants
+set_color_profile_slot( 18, 3, 163, 224, 193 ); //shirt
+set_color_profile_slot( 18, 4, 94, 171, 168 ); //shirt shade
+set_color_profile_slot( 18, 5, 163, 224, 193 ); //shoes
+set_color_profile_slot( 18, 6, 245, 212, 176 ); //skin
+set_color_profile_slot( 18, 7, 163, 224, 193 ); //light
+
+// dev derby
+set_color_profile_slot( 19, 0, 119, 119, 64 ); //hair/eyes
+set_color_profile_slot( 19, 1, 77, 67, 35 ); //hair shade/eyes shade
+set_color_profile_slot( 19, 2, 165, 93, 93 ); //pants
+set_color_profile_slot( 19, 3, 212, 186, 160 ); //shirt
+set_color_profile_slot( 19, 4, 166, 126, 106 ); //shirt shade
+set_color_profile_slot( 19, 5, 134, 88, 168 ); //shoes
+set_color_profile_slot( 19, 6, 255, 231, 212 ); //skin
+set_color_profile_slot( 19, 7, 165, 93, 93 ); //light
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

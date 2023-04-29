@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 2, 3, 22 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 28 );
 
 // Blue
 set_color_profile_slot( 1, 0, 0, 114, 187 ); //Hat + Suit
@@ -276,15 +276,35 @@ set_color_profile_slot( 24, 5, 192, 59, 80 ); //Bowtie
 set_color_profile_slot( 24, 6, 236, 187, 146 ); //Skin
 set_color_profile_slot( 24, 7, 72, 63, 56 ); //Hair + Undershirt
 
+// Puzzle Solver - Prof. Layton
+set_color_profile_slot( 25, 0, 75, 56, 44 ); //Hat + Suit
+set_color_profile_slot( 25, 1, 169, 60, 31 ); //Hat Band
+set_color_profile_slot( 25, 2, 75, 56, 44 ); //Pants
+set_color_profile_slot( 25, 3, 75, 82, 53 ); //Shoes
+set_color_profile_slot( 25, 4, 191, 250, 255 ); //Cane
+set_color_profile_slot( 25, 5, 192, 105, 48 ); //Bowtie
+set_color_profile_slot( 25, 6, 224, 167, 116 ); //Skin
+set_color_profile_slot( 25, 7, 118, 78, 44 ); //Hair + Undershirt
+
+// Blue-Violet - Old Baltic
+set_color_profile_slot( 26, 0, 70, 32, 124 ); //Hat + Suit
+set_color_profile_slot( 26, 1, 191, 194, 186 ); //Hat Band
+set_color_profile_slot( 26, 2, 191, 194, 186 ); //Pants
+set_color_profile_slot( 26, 3, 26, 9, 82 ); //Shoes
+set_color_profile_slot( 26, 4, 118, 120, 115 ); //Cane
+set_color_profile_slot( 26, 5, 13, 166, 207 ); //Bowtie
+set_color_profile_slot( 26, 6, 238, 204, 173 ); //Skin
+set_color_profile_slot( 26, 7, 246, 253, 255 ); //Hair + Undershirt
+
 // Unmapped
-set_color_profile_slot( 25, 0, 63, 63, 74 ); //Hat + Suit
-set_color_profile_slot( 25, 1, 108, 131, 82 ); //Hat Band
-set_color_profile_slot( 25, 2, 79, 42, 0 ); //Pants
-set_color_profile_slot( 25, 3, 68, 47, 112 ); //Shoes
-set_color_profile_slot( 25, 4, 0, 255, 183 ); //Cane
-set_color_profile_slot( 25, 5, 195, 0, 217 ); //Bowtie
-set_color_profile_slot( 25, 6, 238, 204, 173 ); //Skin
-set_color_profile_slot( 25, 7, 2, 153, 184 ); //Hair + Undershirt
+set_color_profile_slot( 27, 0, 63, 63, 74 ); //Hat + Suit
+set_color_profile_slot( 27, 1, 108, 131, 82 ); //Hat Band
+set_color_profile_slot( 27, 2, 79, 42, 0 ); //Pants
+set_color_profile_slot( 27, 3, 68, 47, 112 ); //Shoes
+set_color_profile_slot( 27, 4, 0, 255, 183 ); //Cane
+set_color_profile_slot( 27, 5, 195, 0, 217 ); //Bowtie
+set_color_profile_slot( 27, 6, 238, 204, 173 ); //Skin
+set_color_profile_slot( 27, 7, 2, 153, 184 ); //Hair + Undershirt
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -42,11 +42,6 @@ if (get_player_color(player) == 4){
 	set_character_color_shading( 2, 2 );
 }
 
-//Pink
-if (get_player_color(player) == 5){
-	set_character_color_shading( 2, 2 );
-}
-
 //Yellow
 if (get_player_color(player) == 8){
 	set_character_color_shading( 0, 1.5 );
@@ -78,7 +73,15 @@ if (get_player_color(player) == 15){
 	set_character_color_shading( 2, 1.4 );
 }
 
-//Old Artwork
+// Infamous
+if (get_player_color(player) == 16){
+	set_character_color_shading( 0, 1.9 );
+	set_character_color_shading( 1, 1.25 );
+	set_character_color_shading( 2, 1.6 );
+	set_character_color_shading( 3, 1.25 );
+}
+
+// Ranked Gold
 if (get_player_color(player) == 18){
 	set_character_color_shading( 0, 1.4 );
 }

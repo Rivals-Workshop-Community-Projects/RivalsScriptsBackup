@@ -75,7 +75,7 @@ if (attack == AT_NSPECIAL){
 		grounds = 0;
 		proj_angle = 0;
 		sprite_index = sprite_get("dice_number");
-		mask_index = -1;
+		mask_index = sprite_get("empty");
 		image_index = dice_number-1;
 		hsp *= 0.4;
 		width = 0;
@@ -84,6 +84,8 @@ if (attack == AT_NSPECIAL){
 		kb_value = 0;
 		kb_scale = 0;
 		hit_effect = 1;
+		proj_break = 0;
+		transcendent = false;
 		sound_effect = asset_get("mario");
 		//
 		if (place_meeting(x,y, asset_get("pHitBox"))){

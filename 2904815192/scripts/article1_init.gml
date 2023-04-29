@@ -51,6 +51,8 @@ decayWhiteVisual = 20;
 
 opponentIsTouching = false;
 hud_color = get_player_hud_color(player_id.player);
+opponentWasInHitstun = false;
+opponentWasInHitstunNumStuff = 0;
 
 offsetBoostRune = 0;
 

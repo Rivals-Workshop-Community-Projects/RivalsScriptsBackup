@@ -5,7 +5,7 @@ if (get_player_color(player) == 7){
     }
 }
 
-if (get_player_color(player) == 16){
+if (get_player_color(player) == 18){
     set_character_color_slot(0, 255, 255, 255, .5);
     set_character_color_slot(1, 176, 146, 157, .5);
     set_character_color_slot(5, 176, 146, 157, .5);
