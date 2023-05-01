@@ -29,8 +29,8 @@ window_num++;
 
 // Window 2 / Frame(s) 2 - 4 / Active
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 9);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 
 window_num++;
@@ -38,9 +38,10 @@ window_num++;
 
 // Window 3 / Frame(s) 5 - 6 / Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 window_num++;
 

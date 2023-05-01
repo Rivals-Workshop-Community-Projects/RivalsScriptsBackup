@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 8, 14 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 19 );
+set_num_palettes( 20 );
 
 // Blue
 set_color_profile_slot( 1, 0, 0, 107, 148 ); //Scales
@@ -215,6 +215,16 @@ set_color_profile_slot( 18, 4, 0, 174, 255 ); //Eye 1
 set_color_profile_slot( 18, 5, 213, 255, 236 ); //Eye 2
 set_color_profile_slot( 18, 6, 194, 142, 0 ); //Skateboard 1
 set_color_profile_slot( 18, 7, 56, 55, 52 ); //Skateboard 2
+
+// TehEnd
+set_color_profile_slot( 19, 0, 81, 70, 102 ); //Scales
+set_color_profile_slot( 19, 1, 132, 62, 140 ); //Belly
+set_color_profile_slot( 19, 2, 74, 41, 99 ); //Hat/Buttons
+set_color_profile_slot( 19, 3, 132, 62, 140 ); //Shoe/Case
+set_color_profile_slot( 19, 4, 23, 23, 23 ); //Eye 1
+set_color_profile_slot( 19, 5, 132, 62, 140 ); //Eye 2
+set_color_profile_slot( 19, 6, 59, 29, 83 ); //Skateboard 1
+set_color_profile_slot( 19, 7, 132, 62, 140 ); //Skateboard 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

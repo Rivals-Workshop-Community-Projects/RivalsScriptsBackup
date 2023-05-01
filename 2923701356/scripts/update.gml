@@ -77,7 +77,6 @@ if (ollie_combo_end_timer == ollie_combo_end_threshold-1)
     ollie_move_combo_array = [];
     
     //Play a sound
-    print("lol")
     sound_play(asset_get("mfx_star"))
 }
 

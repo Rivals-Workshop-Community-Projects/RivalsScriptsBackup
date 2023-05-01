@@ -4,11 +4,11 @@ switch (my_hitboxID.attack)
     case AT_UTHROW:
     case AT_DTHROW:
     case AT_FTHROW:
-        sound_play(sound_get("utilt_sweet"), false, noone, 0.8, 1.06)
+        sound_play(sound_get("utilt_sweet"), false, noone, 0.5, 1.06)
     break;
     case AT_UTILT:
         if my_hitboxID.hbox_num == 2{
-            sound_play(sound_get("utilt_sweet"), false, noone, 0.85, 1)
+            sound_play(sound_get("utilt_sweet"), false, noone, 0.55, 1)
         }        
     break;
     case AT_BAIR:
